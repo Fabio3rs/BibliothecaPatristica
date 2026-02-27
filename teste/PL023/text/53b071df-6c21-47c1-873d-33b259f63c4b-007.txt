@@ -1,0 +1,60 @@
+<pagina estado="com_texto">
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,160">
+ELENCHUS OPERUM.
+QUÆ IN HOC VOLUMINE CONTINENTUR.
+——◊——
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="60,160,940,500">
+S. HIERONYMI OPERUM TOMUS II.
+
+Vitæ S. Pauli, S. Hilarionis et Malchi, monachorum. col. 43
+Regulæ S. Pachomii translatio Latina. 61
+SS. Pachomii et Theodori epistolæ et verba mystica. 87
+Interpretatio libri Didymi de Spiritu sancto. 101
+Dialogus contra Luciferianos. 135
+Liber de perpetua Virginitate B. Mariæ. 183
+Libri duo adversus Jovinianum. 211
+Liber contra Vigilantium. 337
+Liber contra Joannem Hierosolymitanum. 355
+Apologia adversus libros Rufini. 397
+Dialogus adversus Pelagianos. 495
+Theodori Mopsuesteni fragmenta. 589
+Liber de Viris illustribus. 602
+De Vitis apostolorum. 719
+Epistola ad Desiderium. 723
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="60,500,860,820">
+S. HIERONYMI OPERUM TOMUS III.
+
+Liber de Nominibus Hebraicis. 771
+Liber Hebraicarum Quæstionum in Genesim. 935
+Commentarius in Ecclesiasten. 1009
+Interpretatio homiliarum duarum Origenis in Canticum. 1117
+Græca fragmenta libri Nominum Hebraicorum. 1145
+Liber Nominum Græcorum ex Actis. 1297
+De Benedictionibus Jacobi patriarchæ. 1307
+De decem Tentationibus populi Israel in deserto. 1319
+Commentarius in Canticum Reboæ. 1321
+Quæstiones Hebraicæ in libros Regum et Paralipomenon. 1329
+Expositio interlinearis in librum Job. 1401
+Commentarii in S. Hieronymi libros, auctore Mart. 1479
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="60,820,940,980">
+Col. 87., init. : Theodorici; leg. Theodori.
+Col. 1138, lin. 12 (ascendendo) : οἰνάνων; lege οἰνάνω.
+Col. 713, 1153, numeros ad notas revocantes lege hoc eodem ordine: 1, 2, 3, 4, pro: 1, 2, 3.
+Col. 1207 mss. : OPUSCULUM; lege OPUSCULUM.
+
+MIGNE, succursalis[ilegivel], [ilegivel] de [ilegivel], imprimé à Paris.
+  </bloco>
+
+  <notas>
+- Script identificado: latino.
+- Corrigi várias leituras do rascunho OCR segundo o que é visível na imagem: por exemplo "Interpretatio homiliarum duarum Origenis in Canticum" (o rascunho tinha formas corrompidas), "Liber de perpetua Virginitate B. Mariæ" (corrigido para a leitura latina esperada conforme impresso), "Liber contra Joannem Hierosolymitanum", "Theodori Mopsuesteni fragmenta".
+- Marquei como [ilegivel] palavras/fragmentos na linha final do rodapé/publ. onde a impressão está degradada e a leitura não é segura.
+- BBoxs são aproximadas (escala 0–1000) e seguem a ordem visual de cima para baixo.
+  </notas>
+</pagina>

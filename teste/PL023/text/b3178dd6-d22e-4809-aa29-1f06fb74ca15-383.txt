@@ -1,0 +1,51 @@
+<pagina estado="com_texto">
+  <bloco tipo="cabecalho" script="latino" bbox="40,20,960,120">
+II.
+EPISTOLA
+
+Edita jam sub S. HIERONYMI nomine,
+
+* DE DUODECIM DOCTORIBUS AD DESIDERIUM
+
+Jam sub nomine BEDE,
+
+b DE LUMINARIBUS ECCLESIÆ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="60,140,940,360">
+CENSURA.
+
+Otio abutatur, qui probare multis argumentis non esse hunc Hieronymi, sed male feriati auctoris fefum, contenderit. Totius verborum salebra, putida circumlocutiones, temporum atque ordinis immania σφάλματα, et ne quid deterius dicam, perversa de Scriptoribus judicia monachum continuo movent Hieronymianæ gloriæ studiosis, indignæ ferentibus hujusmodi blateramenta in maximi Doctoris nomen conferri. At non ideo Erasmus illud jure accusarit, siletitque, quod ubi Auctor professus esset se de Luminaribus toto mundi firmamento lucentibus dicturum, Pelagium, Jovinianum, et consimiles inculcarit tenebriones. Non enim eos inter lumina Ecclesiæ collocat, quorum scripta reprehendit, et veneno ac felle infecta non diffidet. Et pauca, inquit, de Scriptoribus manifestissime dicam. Verius illud vitio vertendum fuisset, quod Hilarium Romanum Pontificem cap. secunde memoret, qui S. Leoni successit, et diu post mortem Hieronymi inclaruit. Sed hominem usque adeo bardum ac stupidum, qui hæc ignoraret, hunc fuisse non puto; factum vero librariorum culpa, ut episcopi nomen irrepseret quod ipse non scripsit. Certe Hilarium Romanum diaconum Luciferianæ sectæ assertorem, ferme præcipuum, quod et Hieronymus notat, cap. 95, et cui in Epistolam ad Romanos Commentarii tribuuntur, laudari ipsa mihi persuadeni priora verba quibus Lucifer ipse Caralitanus alluditur: Hilarius, inquit, Lucifer Romanorum. Hæc dixerim, ne supra quam videtur promereri, censuris auctor pseudonymus vexaretur. Ceterum hac una fere de causâ hocce ejus opusculum adjungo, et ea Mss. quoque fidem subinde exigo, ne quid quod ad Hieronymum pertineat, Lector aut eruditus, aut ineruditus desideret.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="60,380,480,940">
+961 HIERONYMUS DESIDERIO.
+
+Vis nunc acriter, mi frater Desideri, ut tibi quasi de luminibus, quæ toto firmamento mundi refulgent, pauca de Scriptoribus, qui nobis multa de obscuritatibus, quæ propter carnalem mentem intelligentiam impediunt, ad splendorem considerationis spiritualem proferre potuerunt, manifestissime dicam. Sed vereor Susannae Helechæ filias, ne in me sententia iniquo judicio presbyterorum impleatur, dicentis: Angustiæ mihi undique [Al. ubique] sunt. Et mihi similiter sunt angustiae. Si enim voluero aliquem ex his reprehendere, adversarios atque inimicitias mihi undique concitabo. Si autem nolvero, numquam quæ postulasti invenies. Sed unius tantum voluntatem condemnare quam multorum consilia transire vel despicere, melius esse videtur, quia unusquisque eorum in Scripturis sanctis diligenter laudari meruit, sed omnes breviter leviterque cum omni amore tangam, ut utrumque pacifice impleam.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="500,380,940,940">
+A I. Augustinus episcopus volans per montium cacamina quasi aquila, et ea quæ in radicibus montium fiunt, non considerans, multa caelorum spatia, terrarumque situs, et aquarum circulum, claro sermone pronuntiat. Qui enim in lignum fructuosum ascendere vult, paulatim ad superiora et majora carpere poma festinat, ramos autem proximos parvulis relinquit. Nos autem qui parvuli sumus, infirmique atque minores, si inferiora congregari valuerimus, nobiscum bene agetur.
+
+B II. Hilarius episcopus Romanorum, Lucifer lucernaque Ecclesiarum, et pretiosus lapis ad quem immortalia vix ascendunt, pulchro sermone aureoque ore universa loquitur. Et si enim aliqua secus viam cecidisse polulssent, tamen ab eo in Scripturis messis exorta est magna.
+
+III. Origenes Adamantius, altiora atque majora cogitans, f propriumque ingenium ferre non sufficiens, dum aliud loquitur, per aliud se necit. Et cum hoc nimio mentis ardore cogitasset, oneribus majoribus caricabat se, et cum sic incedere non posset...
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="60,940,940,1000">
+* Ita in mss. Florentinis Annuntiatae Servitarum, et S. Crucis Minorum, teste Martianeo, et in Ambrosiano penes v. c. Ludov. Anton. Muratorium inscribitur.
+b Habetur hoc titulo sub Bede nomine tom. ejus operum III, p. 491.
+
+c In mss., leniter leviterque.
+d Idem, episcopus Lucifer Romanorum, Ecclesiarumque lucerna. Recole superiorem Censuram.
+f Mss., propriique ingenio non sufficiens, aliud subnectit, etc.
+  </bloco>
+
+  <notas>
+- Script identificados: predomínio latino com presença isolada de grego (palavra "σφάλματα") — por isso usei script="misto" no bloco da CENSURA.
+- Corrigi várias leituras do rascunho OCR baseando-me unicamente na imagem: ex. "EPISTOLA", "CENSURA", "Hilarium Romanum diaconum Luciferianæ sectæ", "Angustiæ mihi undique", etc.
+- Onde o original mostra variantes de leitura entre manuscritos ou notas editoriais (ex.: [Al. ubique], sinais de asterisco e letras de chamada), mantive-as tal como visíveis na página.
+- Algumas linhas finais da coluna direita (fim de III.) estão cortadas/menos legíveis; transcrevi até o trecho claramente visível e terminei com reticência para não introduzir conteúdo não presente.
+- BBOX são aproximações relativas à escala 0–1000, definidas para manter a ordem visual (cima para baixo, esquerda para direita).
+  </notas>
+</pagina>

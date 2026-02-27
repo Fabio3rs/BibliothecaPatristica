@@ -1,0 +1,346 @@
+---
+import Layout from '../components/Layout.astro';
+const base = import.meta.env.BASE_URL || '/';
+const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
+---
+<Layout title="Viewer" description="Visualizador de páginas do corpus patrístico" breadcrumbs={[{label:'Início', href: baseWithSlash},{label:'Viewer'}]}>
+  <div id="viewer-root" style="min-height:60vh;">
+    <div style="padding:var(--space-8) 0;text-align:center;color:var(--color-muted);">
+      <p>Carregando página...</p>
+    </div>
+  </div>
+
+  <script type="module" define:vars={{ assetBase: baseWithSlash }}>
+    const viewerRoot = document.getElementById('viewer-root');
+    const jsonCache = new Map();
+
+    async function getJSON(path) {
+      if (jsonCache.has(path)) return jsonCache.get(path);
+      const p = fetch(path).then(async (res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status} ao buscar ${path}`);
+        return res.json();
+      }).catch((err) => {
+        jsonCache.delete(path);
+        throw err;
+      });
+      jsonCache.set(path, p);
+      return p;
+    }
+
+    function safeUrl(raw) {
+      if (!raw) return '#';
+      try {
+        const resolved = new URL(raw, window.location.origin);
+        // Mesmo domínio: retorna caminho relativo
+        if (resolved.origin === window.location.origin) return resolved.pathname + resolved.search + resolved.hash;
+        // Externo http/https: permitido (o viewer é estático; http cobre servidores locais,
+        // https cobre GitHub raw em produção — import.meta.env.DEV não é confiável em
+        // builds estáticos servidos localmente pois é substituído por false no bundle)
+        if (resolved.protocol === 'https:' || resolved.protocol === 'http:') return resolved.href;
+        return '#';
+      } catch (err) {
+        if (raw.startsWith('/')) return raw;
+        return '#';
+      }
+    }
+
+    function labelize(ids = [], dict = []) {
+      const map = new Map(dict.map((d) => [d.id, d.label]));
+      return ids.map((id) => map.get(id) || id);
+    }
+
+    function escapeHtml(s) {
+      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function escapeRegex(s) {
+      return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function renderMarkdown(text) {
+      if (!text) return '';
+      return text
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        .replace(/\n/g, '<br>');
+    }
+
+    function applyHighlight(el, term) {
+      if (!el || !term) return;
+      // Extrai o texto plano (sem as tags HTML já renderizadas) para re-renderizar
+      // com os highlights por cima do Markdown processado.
+      const txt = el.textContent || '';
+      if (!txt) return;
+      const re = new RegExp(`(${escapeRegex(term)})`, 'gi');
+      // Re-aplica o renderMarkdown sobre o texto original armazenado em data-raw,
+      // preservando a formatação e adicionando os <mark>.
+      const raw = el.dataset.raw || txt;
+      el.innerHTML = renderMarkdown(raw).replace(re, (_, m) => `<mark>${escapeHtml(m)}</mark>`);
+    }
+
+    async function load() {
+      try {
+        const url = new URL(window.location.href);
+        const doc = url.searchParams.get('doc') || 'PG144';
+        const pageNumber = Number(url.searchParams.get('page') || 396);
+        const highlight = (url.searchParams.get('highlight') || '').trim();
+
+        const volumes = await getJSON(`${assetBase}volumes.json`);
+
+        const [keywords, entities] = await Promise.all([
+          getJSON(`${assetBase}dict/keywords.json`),
+          getJSON(`${assetBase}dict/entities.json`),
+        ]);
+
+        const volume = volumes.volumes.find((v) => v.id === doc);
+        if (!volume) throw new Error('Volume não encontrado nos mocks');
+
+        const meta = await getJSON(`${assetBase}${volume.meta_url.replace(/^\//, '')}`);
+        const block = meta.page_blocks.find((b) => pageNumber >= b.page_first && pageNumber <= b.page_last);
+        if (!block) throw new Error('Bloco não encontrado');
+
+        const blockData = await getJSON(`${assetBase}${block.file.replace(/^\//, '')}`);
+        const page = blockData.pages.find((p) => p.page === pageNumber) || blockData.pages[0];
+
+        const segmentsFile = meta.segment_blocks?.[0]?.file;
+        const snapshotFile = meta.snapshot_blocks?.[0]?.file;
+        const segments = segmentsFile ? (await getJSON(`${assetBase}${segmentsFile.replace(/^\//, '')}`)).segments : [];
+        const snapshots = snapshotFile ? (await getJSON(`${assetBase}${snapshotFile.replace(/^\//, '')}`)).snapshots : [];
+
+        const pageSegments = segments.filter((s) => (page.segment_ids || []).includes(s.id));
+        const pageSnapshots = snapshots.filter((s) => (page.snapshot_ids || []).includes(s.id));
+
+        const keywordsLabels = labelize(page.keyword_ids, keywords.items);
+        const entitiesLabels = labelize(page.entity_ids, entities.items);
+        const segmentLabels = pageSegments.map((s) => s.label);
+        const snapshotLabels = pageSnapshots.map((s) => s.label);
+        const summaryGlobal = page.summary_global || pageSnapshots[0]?.summary || '';
+
+        // Atualizar título da aba e breadcrumb
+        document.title = `${volume.id} — Pág. ${page.page} | Bibliotheca Patristica`;
+        const crumbCurrent = document.querySelector('.breadcrumbs [aria-current="page"]');
+        if (crumbCurrent) crumbCurrent.textContent = `${volume.id} — Pág. ${page.page}`;
+
+        viewerRoot.innerHTML = '';
+
+        // Injetar estilos do viewer apenas uma vez
+        if (!document.getElementById('viewer-styles')) {
+          const styleTag = document.createElement('style');
+          styleTag.id = 'viewer-styles';
+          styleTag.textContent = `
+            .viewer-grid { grid-template-columns: 1fr 300px; align-items: start; }
+            @media (max-width: 900px) { .viewer-grid { grid-template-columns: 1fr; } }
+            .viewer-header-nav { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+            .viewer-header-nav .button.disabled { opacity: 0.45; pointer-events: none; cursor: default; }
+          `;
+          document.head.appendChild(styleTag);
+        }
+
+        const mainGrid = document.createElement('div');
+        mainGrid.className = 'main-grid viewer-grid';
+        
+        const mainContent = document.createElement('div');
+        mainContent.className = 'card';
+        
+        const sidebar = document.createElement('aside');
+        sidebar.style.cssText = 'display:flex; flex-direction:column; gap:var(--space-4);';
+
+        // Cabeçalho com Navegação
+        const header = document.createElement('header');
+        header.style.cssText = 'display:flex; justify-content:space-between; align-items:center; gap:var(--space-3); margin-bottom:var(--space-5); border-bottom:1px solid var(--color-border); padding-bottom:var(--space-4); flex-wrap: wrap;';
+
+        const titleGroup = document.createElement('div');
+        const volP = document.createElement('p');
+        volP.style.margin = '0';
+        volP.style.color = 'var(--color-muted)';
+        volP.textContent = `Volume ${volume.id}${volume.title ? ' — ' + volume.title : ''}`;
+        const h2 = document.createElement('h2');
+        h2.style.margin = '0';
+        h2.textContent = `Página ${page.page}`;
+        titleGroup.appendChild(volP);
+        titleGroup.appendChild(h2);
+        header.appendChild(titleGroup);
+
+        const navGroup = document.createElement('div');
+        navGroup.className = 'viewer-header-nav';
+
+        // Calcular limites de página a partir dos blocos de metadados
+        const allBlocks = meta.page_blocks || [];
+        const firstPage = allBlocks.length ? allBlocks[0].page_first : 1;
+        const lastPage = allBlocks.length ? allBlocks[allBlocks.length - 1].page_last : pageNumber;
+
+        function buildNavUrl(targetPage) {
+          const p = new URLSearchParams({ doc, page: String(targetPage) });
+          if (highlight) p.set('highlight', highlight);
+          return `?${p.toString()}`;
+        }
+
+        const hasPrev = pageNumber > firstPage;
+        const hasNext = pageNumber < lastPage;
+
+        const prevBtn = document.createElement('a');
+        prevBtn.className = `button secondary${hasPrev ? '' : ' disabled'}`;
+        prevBtn.textContent = '← Anterior';
+        prevBtn.setAttribute('aria-disabled', hasPrev ? 'false' : 'true');
+        if (hasPrev) prevBtn.href = buildNavUrl(pageNumber - 1);
+
+        const nextBtn = document.createElement('a');
+        nextBtn.className = `button secondary${hasNext ? '' : ' disabled'}`;
+        nextBtn.textContent = 'Próxima →';
+        nextBtn.setAttribute('aria-disabled', hasNext ? 'false' : 'true');
+        if (hasNext) nextBtn.href = buildNavUrl(pageNumber + 1);
+
+        navGroup.appendChild(prevBtn);
+        navGroup.appendChild(nextBtn);
+
+        // Link de retorno à busca (se veio de uma busca com highlight)
+        if (highlight) {
+          const backLink = document.createElement('a');
+          backLink.className = 'button secondary';
+          backLink.style.fontSize = '0.85rem';
+          const backParams = new URLSearchParams({ term: highlight });
+          backLink.href = `${assetBase}search?${backParams.toString()}`;
+          backLink.textContent = '↩ Voltar à busca';
+          navGroup.prepend(backLink);
+        }
+
+        header.appendChild(navGroup);
+
+        mainContent.appendChild(header);
+
+        // Funções auxiliares para blocos de texto
+        function createTextBlock(title, text, isSerif = true) {
+          const wrap = document.createElement('div');
+          wrap.style.marginBottom = 'var(--space-5)';
+          const h = document.createElement('h3');
+          h.style.cssText = 'margin:0 0 0.5rem; font-family: var(--font-serif); color: var(--color-accent);';
+          h.textContent = title;
+          const p = document.createElement('p');
+          p.style.margin = '0';
+          p.style.lineHeight = '1.6';
+          if (isSerif) p.style.fontFamily = 'var(--font-serif)';
+          const safeText = text || 'Sem conteúdo disponível.';
+          p.dataset.raw = safeText;
+          p.innerHTML = renderMarkdown(safeText);
+          wrap.appendChild(h);
+          wrap.appendChild(p);
+          return { wrap, p };
+        }
+
+        const resPagina = createTextBlock('Resumo da página', page.summary_page);
+        const resGlobal = createTextBlock('Resumo global', summaryGlobal);
+        const trechoRes = createTextBlock('Trecho Notável', page.excerpt, true);
+        
+        mainContent.appendChild(resPagina.wrap);
+        mainContent.appendChild(resGlobal.wrap);
+
+        trechoRes.p.style.fontStyle = 'italic';
+        trechoRes.p.style.color = 'var(--color-muted)';
+        if (!page.excerpt) trechoRes.wrap.style.display = 'none';
+        mainContent.appendChild(trechoRes.wrap);
+
+        // Bloco OCR Original inline (expansível)
+        const rawHref = safeUrl(page.raw?.url);
+        if (rawHref !== '#') {
+          const details = document.createElement('details');
+          details.style.cssText = 'margin-top:var(--space-5); border-top:1px solid var(--color-border); padding-top:var(--space-4);';
+
+          const summary = document.createElement('summary');
+          summary.style.cssText = 'cursor:pointer; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--color-muted); user-select:none; list-style:none; display:flex; align-items:center; gap:var(--space-2);';
+          summary.innerHTML = '<span class="ocr-arrow" style="display:inline-block;transition:transform 0.2s;">▶</span> OCR Original';
+
+          const pre = document.createElement('pre');
+          pre.style.cssText = 'margin:var(--space-4) 0 0; white-space:pre-wrap; word-break:break-word; font-size:0.82rem; line-height:1.6; color:var(--color-text); font-family:var(--font-mono, monospace); max-height:60vh; overflow-y:auto;';
+          pre.textContent = 'Carregando…';
+
+          const extLink = document.createElement('a');
+          extLink.href = rawHref;
+          extLink.target = '_blank';
+          extLink.rel = 'noreferrer';
+          extLink.style.cssText = 'font-size:0.75rem; margin-left:auto; color:var(--color-muted);';
+          extLink.textContent = '↗ abrir arquivo';
+          summary.appendChild(extLink);
+
+          details.appendChild(summary);
+          details.appendChild(pre);
+          mainContent.appendChild(details);
+
+          let loaded = false;
+          details.addEventListener('toggle', async () => {
+            const arrow = details.querySelector('.ocr-arrow');
+            if (arrow) arrow.style.transform = details.open ? 'rotate(90deg)' : '';
+            if (!details.open || loaded) return;
+            loaded = true;
+            try {
+              const res = await fetch(rawHref);
+              if (!res.ok) throw new Error(`HTTP ${res.status}`);
+              const txt = await res.text();
+              pre.textContent = txt;
+              if (highlight) applyHighlight(pre, highlight);
+            } catch (e) {
+              pre.textContent = `Erro ao carregar OCR: ${e.message}`;
+            }
+          });
+        }
+
+        // Sidebar Metadados
+        function addMetaBlock(title, items, isKeywords = false) {
+          if (!items || !items.length) return null;
+          const block = document.createElement('div');
+          block.className = 'meta-block';
+          const h4 = document.createElement('h4');
+          h4.style.cssText = 'font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--color-muted); margin:0 0 0.75rem;';
+          h4.textContent = title;
+          block.appendChild(h4);
+
+          const ul = document.createElement('ul');
+          ul.className = 'chips';
+          items.forEach((txt) => {
+            const li = document.createElement('li');
+            if (isKeywords) {
+              const a = document.createElement('a');
+              a.href = `${assetBase}search?term=${encodeURIComponent(txt)}`;
+              a.textContent = txt;
+              a.style.textDecoration = 'none';
+              a.style.color = 'inherit';
+              li.appendChild(a);
+            } else {
+              li.textContent = txt;
+            }
+            ul.appendChild(li);
+          });
+          block.appendChild(ul);
+          return block;
+        }
+
+        const kwBlock = addMetaBlock('Keywords', keywordsLabels, true);
+        if (kwBlock) sidebar.appendChild(kwBlock);
+
+        const entBlock = addMetaBlock('Entidades', entitiesLabels);
+        if (entBlock) sidebar.appendChild(entBlock);
+
+        const segBlock = addMetaBlock('Segmentos', segmentLabels);
+        if (segBlock) sidebar.appendChild(segBlock);
+
+        const snapBlock = addMetaBlock('Snapshots', snapshotLabels);
+        if (snapBlock) sidebar.appendChild(snapBlock);
+
+        mainGrid.appendChild(mainContent);
+        mainGrid.appendChild(sidebar);
+        viewerRoot.appendChild(mainGrid);
+
+        if (highlight) {
+          applyHighlight(resPagina.p, highlight);
+          applyHighlight(resGlobal.p, highlight);
+          applyHighlight(trechoRes.p, highlight);
+        }
+      } catch (err) {
+        const safeMsg = escapeHtml(err instanceof Error ? err.message : String(err));
+        viewerRoot.innerHTML = `<div class="card"><p style="color:var(--color-focus)">Erro ao carregar viewer: ${safeMsg}</p></div>`;
+      }
+    }
+
+    load();
+  </script>
+</Layout>
