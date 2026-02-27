@@ -1,0 +1,1161 @@
+#!/usr/bin/env python3
+"""
+keywords_serial.py – Extração de keywords página-a-página via Ollama ou OpenAI.
+
+Lê dados do DB de resumos (patristica_resumos.db) e extrai keywords de cada
+página. Por padrão opera em DRY RUN (imprime no stdout sem gravar).
+
+Fontes de input configuráveis (--source):
+  - resumo_pagina  : usa só o resumo da página (rápido, menos tokens)
+  - resumo_global  : usa só o resumo global acumulado
+  - pagina_texto   : usa o texto OCR completo da página
+  - resumo+pagina  : usa resumo da página + texto OCR (mais completo)
+  - tudo            : usa resumo_pagina + resumo_global + pagina_texto
+
+Uso (dry run – padrão):
+    python keywords_serial.py --doc PG001 --limit 5
+    python keywords_serial.py --doc PG001 --source pagina_texto --limit 3
+    python keywords_serial.py --doc PG001 --source resumo+pagina
+
+Uso (gravar no DB):
+    python keywords_serial.py --doc PG001 --write
+    python keywords_serial.py --all --write --provider openai --model gpt-5-mini
+
+Tweaking rápido:
+    python keywords_serial.py --doc PG001 --page 4 --source resumo+pagina
+    python keywords_serial.py --doc PG001 --page 4 --source pagina_texto --model qwen3:8b
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import logging
+import os
+import re
+import sqlite3
+import sys
+import time
+import urllib.error
+import urllib.request
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import List, Optional, Tuple
+
+# ---------------------------------------------------------------------------
+# Constantes
+# ---------------------------------------------------------------------------
+PROJECT_ROOT = Path(__file__).resolve().parent
+DEFAULT_RESUMOS_DB = PROJECT_ROOT / "data" / "patristica_resumos.db"
+DEFAULT_KEYWORDS_DB = PROJECT_ROOT / "data" / "patristica_keywords.db"
+DEFAULT_MODEL = "qwen3:30b"
+DEFAULT_OLLAMA_URL = "http://localhost:11434"
+DEFAULT_TIMEOUT_OLLAMA = 120  # Ollama local é rápido
+DEFAULT_TIMEOUT_OPENAI = 300  # OpenAI com reasoning pode demorar
+
+DEFAULT_NUM_CTX = 16384
+TOKEN_RESERVE_OUTPUT = 1024  # keywords precisam de menos output
+TOKEN_RESERVE_SYSTEM = 400
+CHARS_PER_TOKEN = 3.8
+
+VALID_SOURCES = [
+    "resumo_pagina",
+    "resumo_global",
+    "pagina_texto",
+    "resumo+pagina",
+    "tudo",
+]
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s  %(levelname)-8s  %(message)s",
+    datefmt="%H:%M:%S",
+)
+log = logging.getLogger("keywords_serial")
+
+# ---------------------------------------------------------------------------
+# SQLite – leitura do DB de resumos
+# ---------------------------------------------------------------------------
+
+
+def connect_readonly(path: Path) -> sqlite3.Connection:
+    if not path.exists():
+        raise FileNotFoundError(f"DB de resumos não encontrado: {path}")
+    uri = f"file:{path}?mode=ro"
+    con = sqlite3.connect(uri, uri=True)
+    con.row_factory = sqlite3.Row
+    return con
+
+
+def connect_readwrite(path: Path) -> sqlite3.Connection:
+    """Abre DB de resumos em modo leitura/escrita (para gravar keywords)."""
+    if not path.exists():
+        raise FileNotFoundError(f"DB de resumos não encontrado: {path}")
+    con = sqlite3.connect(path)
+    con.row_factory = sqlite3.Row
+    con.execute("PRAGMA journal_mode = WAL")
+    con.execute("PRAGMA busy_timeout = 30000")
+    return con
+
+
+def connect_keywords_db(path: Path) -> sqlite3.Connection:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    con = sqlite3.connect(path)
+    con.row_factory = sqlite3.Row
+    con.execute("PRAGMA journal_mode = WAL")
+    con.execute("PRAGMA busy_timeout = 30000")
+    con.execute("PRAGMA foreign_keys = ON")
+    return con
+
+
+def init_keywords_schema(con: sqlite3.Connection) -> None:
+    con.executescript(
+        """
+        CREATE TABLE IF NOT EXISTS keywords (
+            id            INTEGER PRIMARY KEY AUTOINCREMENT,
+            documento     TEXT    NOT NULL,
+            pagina_num    INTEGER NOT NULL,
+            source        TEXT    NOT NULL,
+            keywords_json TEXT    NOT NULL,
+            keywords_raw  TEXT    NOT NULL,
+            modelo        TEXT    NOT NULL,
+            prompt_hash   TEXT    NOT NULL DEFAULT '',
+            criado_em     TEXT    NOT NULL,
+            UNIQUE(documento, pagina_num, source, modelo)
+        );
+        CREATE INDEX IF NOT EXISTS idx_kw_doc
+            ON keywords(documento);
+        CREATE INDEX IF NOT EXISTS idx_kw_doc_page
+            ON keywords(documento, pagina_num);
+        """
+    )
+    con.commit()
+
+
+def _now_iso() -> str:
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+
+
+def ensure_keywords_columns(con: sqlite3.Connection) -> None:
+    """Adiciona colunas de keywords na tabela resumos se não existirem."""
+    for col, typedef in [
+        ("keywords_json", "TEXT NOT NULL DEFAULT ''"),
+        ("keywords_source", "TEXT NOT NULL DEFAULT ''"),
+        ("keywords_modelo", "TEXT NOT NULL DEFAULT ''"),
+    ]:
+        try:
+            con.execute(f"ALTER TABLE resumos ADD COLUMN {col} {typedef}")
+        except sqlite3.OperationalError:
+            pass  # coluna já existe
+    con.commit()
+
+
+def list_documents(con: sqlite3.Connection) -> List[str]:
+    rows = con.execute(
+        "SELECT DISTINCT documento FROM resumos ORDER BY documento"
+    ).fetchall()
+    return [r["documento"] for r in rows]
+
+
+def fetch_pages(
+    con: sqlite3.Connection,
+    documento: str,
+    page: Optional[int] = None,
+    limit: Optional[int] = None,
+) -> List[dict]:
+    """Busca páginas do DB de resumos."""
+    sql = "SELECT * FROM resumos WHERE documento = ?"
+    params: list = [documento]
+    if page is not None:
+        sql += " AND pagina_num = ?"
+        params.append(page)
+    sql += " ORDER BY pagina_num"
+    if limit is not None:
+        sql += " LIMIT ?"
+        params.append(limit)
+    rows = con.execute(sql, params).fetchall()
+    return [dict(r) for r in rows]
+
+
+def is_already_done(
+    con: sqlite3.Connection,
+    documento: str,
+    pagina_num: int,
+    source: str,
+    modelo: str,
+) -> bool:
+    row = con.execute(
+        """SELECT 1 FROM keywords
+           WHERE documento=? AND pagina_num=? AND source=?""",
+        (documento, pagina_num, source),
+    ).fetchone()
+    return row is not None
+
+    # O "modelo" foi removido da consulta porque não é necessário para verificar se as keywords já foram extraídas.
+    # Se o modelo estiver presente na consulta, isso causa o resultado ser refeito ao mudar de modelo
+    # row = con.execute(
+    #     """SELECT 1 FROM keywords
+    #        WHERE documento=? AND pagina_num=? AND source=? AND modelo=?""",
+    #     (documento, pagina_num, source, modelo),
+    # ).fetchone()
+    # return row is not None
+
+
+def is_already_done_resumos(
+    con: sqlite3.Connection,
+    documento: str,
+    pagina_num: int,
+) -> bool:
+    """Verifica se keywords já foram extraídas para esta página na tabela resumos.
+
+    Retorna False (= reprocessar) se keywords_json está vazio, nulo,
+    ou contém uma lista vazia de keywords (ex: '{"keywords": []}').
+    Usa json_array_length() do SQLite para filtrar direto na query.
+    """
+    row = con.execute(
+        """SELECT 1 FROM resumos
+           WHERE documento=? AND pagina_num=?
+             AND keywords_json IS NOT NULL
+             AND keywords_json != ''
+             AND json_array_length(json_extract(keywords_json, '$.keywords')) > 0""",
+        (documento, pagina_num),
+    ).fetchone()
+    return row is not None
+
+
+def save_keywords(
+    con: sqlite3.Connection,
+    documento: str,
+    pagina_num: int,
+    source: str,
+    keywords_json: str,
+    keywords_raw: str,
+    modelo: str,
+) -> None:
+    con.execute(
+        """INSERT OR REPLACE INTO keywords
+           (documento, pagina_num, source, keywords_json, keywords_raw,
+            modelo, criado_em)
+           VALUES (?, ?, ?, ?, ?, ?, ?)""",
+        (
+            documento,
+            pagina_num,
+            source,
+            keywords_json,
+            keywords_raw,
+            modelo,
+            _now_iso(),
+        ),
+    )
+    con.commit()
+
+
+def save_keywords_to_resumos(
+    con: sqlite3.Connection,
+    documento: str,
+    pagina_num: int,
+    keywords_json: str,
+    source: str,
+    modelo: str,
+) -> None:
+    """Grava keywords diretamente na tabela resumos."""
+    con.execute(
+        """UPDATE resumos
+           SET keywords_json = ?, keywords_source = ?, keywords_modelo = ?
+           WHERE documento = ? AND pagina_num = ?""",
+        (keywords_json, source, modelo, documento, pagina_num),
+    )
+    con.commit()
+
+
+# ---------------------------------------------------------------------------
+# Estimativa de tokens e truncamento
+# ---------------------------------------------------------------------------
+
+
+def estimate_tokens(text: str, chars_per_token: float = CHARS_PER_TOKEN) -> int:
+    if not text:
+        return 0
+    return int(len(text) / chars_per_token) + 1
+
+
+def truncate_to_budget(
+    text: str,
+    budget_tokens: int,
+    chars_per_token: float = CHARS_PER_TOKEN,
+    label: str = "input",
+) -> str:
+    """Trunca texto para caber num budget de tokens."""
+    tokens = estimate_tokens(text, chars_per_token)
+    if tokens <= budget_tokens:
+        return text
+    max_chars = int(budget_tokens * chars_per_token)
+    truncated = text[:max_chars]
+    last_nl = truncated.rfind("\n")
+    if last_nl > max_chars * 0.7:
+        truncated = truncated[:last_nl]
+    truncated = truncated.rstrip() + f"\n[... {label} truncado]"
+    log.info(
+        "%s truncado: %d→%d tokens (budget=%d)",
+        label,
+        tokens,
+        estimate_tokens(truncated, chars_per_token),
+        budget_tokens,
+    )
+    return truncated
+
+
+# ---------------------------------------------------------------------------
+# LLM – Ollama
+# ---------------------------------------------------------------------------
+
+
+def ollama_chat(
+    prompt_system: str,
+    prompt_user: str,
+    model: str,
+    base_url: str = DEFAULT_OLLAMA_URL,
+    timeout: int = DEFAULT_TIMEOUT_OLLAMA,
+    num_ctx: int = DEFAULT_NUM_CTX,
+    think: bool = False,
+) -> str:
+    url = f"{base_url}/api/chat"
+    payload: dict = {
+        "model": model,
+        "stream": False,
+        "messages": [
+            {"role": "system", "content": prompt_system},
+            {"role": "user", "content": prompt_user},
+        ],
+        "options": {
+            "temperature": 0.2,
+            "num_ctx": num_ctx,
+            "repeat_penalty": 2,
+            "repeat_last_n": 80,
+        },
+    }
+    # Desativa thinking em modelos qwen3/deepseek-r1 etc.
+    if not think:
+        payload["think"] = False
+    data = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(
+        url,
+        data=data,
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            body = json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        detail = exc.read().decode("utf-8", errors="ignore")
+        raise RuntimeError(f"Ollama HTTP {exc.code}: {detail}") from exc
+    except Exception as exc:
+        raise RuntimeError(f"Ollama falhou: {exc}") from exc
+
+    # Log de estatísticas de performance
+    if log.isEnabledFor(logging.DEBUG):
+        eval_count = body.get("eval_count", 0)
+        eval_duration = body.get("eval_duration", 0)
+        prompt_eval_count = body.get("prompt_eval_count", 0)
+        if eval_duration > 0:
+            tps = eval_count / (eval_duration / 1e9)
+            log.debug(
+                "Ollama stats: %d prompt tokens, %d eval tokens, %.1f tok/s",
+                prompt_eval_count,
+                eval_count,
+                tps,
+            )
+
+    content = (body.get("message") or {}).get("content", "")
+    return content.strip()
+
+
+# ---------------------------------------------------------------------------
+# LLM – OpenAI
+# ---------------------------------------------------------------------------
+
+
+def openai_chat(
+    prompt_system: str,
+    prompt_user: str,
+    model: str,
+    base_url: str = "https://api.openai.com/v1",
+    timeout: int = DEFAULT_TIMEOUT_OPENAI,
+    reasoning_effort: str = "high",
+    api_key_env: str = "OPENAI_API_KEY",
+) -> str:
+    api_key = os.getenv(api_key_env)
+    if not api_key:
+        raise RuntimeError(f"Variável de ambiente {api_key_env} não definida.")
+    url = f"{base_url}/chat/completions"
+    payload: dict = {
+        "model": model,
+        "messages": [
+            {"role": "system", "content": prompt_system},
+            {"role": "user", "content": prompt_user},
+        ],
+        "top_p": 1.0,
+    }
+    if reasoning_effort:
+        payload["reasoning_effort"] = reasoning_effort
+    data = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(
+        url,
+        data=data,
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {api_key}",
+        },
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            body = json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        detail = exc.read().decode("utf-8", errors="ignore")
+        raise RuntimeError(f"OpenAI HTTP {exc.code}: {detail}") from exc
+    except Exception as exc:
+        raise RuntimeError(f"OpenAI falhou: {exc}") from exc
+    choices = body.get("choices") or []
+    if not choices:
+        raise RuntimeError("OpenAI retornou sem choices")
+    content = choices[0].get("message", {}).get("content", "")
+    return content.strip()
+
+
+# ---------------------------------------------------------------------------
+# Despacho unificado
+# ---------------------------------------------------------------------------
+
+
+def llm_chat(
+    prompt_system: str,
+    prompt_user: str,
+    *,
+    provider: str = "ollama",
+    model: str = DEFAULT_MODEL,
+    base_url: str = DEFAULT_OLLAMA_URL,
+    timeout: int = DEFAULT_TIMEOUT_OLLAMA,
+    reasoning_effort: str = "high",
+    api_key_env: str = "OPENAI_API_KEY",
+    num_ctx: int = DEFAULT_NUM_CTX,
+    think: bool = False,
+) -> str:
+    # print(f'{prompt_system} {prompt_user}')
+    if provider == "openai":
+        return openai_chat(
+            prompt_system=prompt_system,
+            prompt_user=prompt_user,
+            model=model,
+            base_url=base_url,
+            timeout=timeout,
+            reasoning_effort=reasoning_effort,
+            api_key_env=api_key_env,
+        )
+    return ollama_chat(
+        prompt_system=prompt_system,
+        prompt_user=prompt_user,
+        model=model,
+        base_url=base_url,
+        timeout=timeout,
+        num_ctx=num_ctx,
+        think=think,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Prompt de keywords (edite à vontade para testar)
+# ---------------------------------------------------------------------------
+
+SYSTEM_PROMPT = """\
+Você é um especialista em Patrística (Patrologia Graeca e Patrologia Latina) \
+e em catalogação bibliográfica.
+
+Sua tarefa é extrair **keywords** (palavras-chave) do conteúdo fornecido.
+
+Regras:
+- Extraia entre 5 e 20 keywords, ordenadas por relevância (mais relevante primeiro).
+- Inclua nomes próprios (autores, santos, personagens bíblicos), obras citadas, \
+temas teológicos, conceitos filosóficos e termos técnicos.
+- Mantenha termos em latim/grego quando forem nomes próprios ou termos técnicos \
+consagrados (ex: "Epistola ad Corinthios", "homilia", "Trinitas").
+- Traduza conceitos genéricos para português do Brasil.
+- NÃO inclua palavras genéricas demais (ex: "texto", "página", "volume").
+- NÃO invente keywords que não estejam no conteúdo.
+
+Formato de resposta (siga rigorosamente):
+
+Keywords:
+1. keyword_um
+2. keyword_dois
+3. keyword_três
+...
+
+Categorias (agrupe as keywords acima):
+- Pessoas: ...
+- Obras: ...
+- Temas: ...
+- Termos técnicos: ...
+"""
+
+
+def replace_linebreak(text: str) -> str:
+    return text.replace("-\n", " ")
+
+
+def build_user_prompt(
+    row: dict,
+    source: str,
+    doc_name: str,
+) -> str:
+    """Monta o prompt de usuário com o conteúdo conforme --source."""
+    parts: List[str] = []
+    parts.append(f"Documento: {doc_name}  |  Página: {row['pagina_num']}\n")
+
+    if source == "resumo_pagina":
+        parts.append("<conteúdo>")
+        parts.append(row["resumo_pagina"])
+        parts.append("</conteúdo>\n")
+
+    elif source == "resumo_global":
+        parts.append("<conteúdo>")
+        parts.append(row["resumo_global"])
+        parts.append("</conteúdo>\n")
+
+    elif source == "pagina_texto":
+        parts.append("<conteúdo>")
+        parts.append(row["pagina_texto"])
+        parts.append("</conteúdo>\n")
+
+    elif source == "resumo+pagina":
+        parts.append("<texto_original>")
+        parts.append(replace_linebreak(row["pagina_texto"]))
+        parts.append("</texto_original>\n")
+
+        parts.append("<resumo_da_pagina>")
+        parts.append(row["resumo_pagina"])
+        parts.append("</resumo_da_pagina>\n")
+
+    elif source == "tudo":
+        parts.append("<resumo_global>")
+        parts.append(row["resumo_global"])
+        parts.append("</resumo_global>\n")
+
+        parts.append("<texto_original>")
+        parts.append(replace_linebreak(row["pagina_texto"]))
+        parts.append("</texto_original>\n")
+
+        parts.append("<resumo_da_pagina>")
+        parts.append(row["resumo_pagina"])
+        parts.append("</resumo_da_pagina>\n")
+
+    parts.append(
+        "Extraia as keywords do conteúdo acima seguindo rigorosamente "
+        "o formato de resposta especificado."
+    )
+
+    return "\n".join(parts)
+
+
+# ---------------------------------------------------------------------------
+# Parsing da resposta
+# ---------------------------------------------------------------------------
+
+# Tipo estruturado retornado pelo parser
+KeywordsResult = dict  # {"keywords": List[str], "categorias": Dict[str, List[str]]}
+
+
+def _parse_numbered_keywords(raw: str) -> List[str]:
+    """Extrai keywords de linhas numeradas: '1. keyword', '2. keyword', etc."""
+    keywords: List[str] = []
+    for m in re.finditer(r"^\s*\d+\.\s*(.+)$", raw, re.MULTILINE):
+        kw = m.group(1).strip().rstrip(".")
+        # Limpa parênteses explicativos do modelo: "Barnabas (Barnabé in Portuguese)"
+        kw = re.sub(
+            r"\s*\((?:since|the |Latin|Portuguese|but |most |key |mentioned).*\)\s*$",
+            "",
+            kw,
+            flags=re.IGNORECASE,
+        ).strip()
+        if kw and len(kw) < 200:
+            keywords.append(kw)
+    return keywords
+
+
+def _parse_categories(raw: str) -> dict:
+    """
+    Extrai categorias da resposta. Resiliente a variações de formato:
+      - Pessoas: X, Y, Z
+      - **Pessoas**: X, Y, Z
+      - Pessoas — X, Y, Z
+      - Pessoas: X; Y; Z
+    """
+    categorias: dict = {}
+
+    # Padrão flexível: "- LABEL:" ou "- **LABEL**:" seguido de itens
+    cat_pattern = re.compile(
+        r"^\s*[-•*]\s*\**\s*"  # bullet: -, •, *
+        r"([\w\s\u00C0-\u024F]+?)"  # nome da categoria (unicode para acentos)
+        r"\s*\**\s*[:—–\-]\s*"  # separador: :, —, –, -
+        r"(.+)$",  # conteúdo
+        re.MULTILINE,
+    )
+
+    for m in cat_pattern.finditer(raw):
+        cat_name = m.group(1).strip().rstrip("*").strip()
+        cat_content = m.group(2).strip()
+
+        # Normaliza nome da categoria
+        cat_name = cat_name.capitalize()
+
+        # Ignora se parece ser uma keyword numerada acidentalmente capturada
+        if re.match(r"^\d+\.", cat_name):
+            continue
+
+        # Split por , ou ; (respeitando itens entre aspas)
+        items = re.split(r"\s*[,;]\s*", cat_content)
+        items = [it.strip().strip("*").strip() for it in items if it.strip()]
+        # Remove itens vazios ou muito longos (noise)
+        items = [it for it in items if 1 < len(it) < 200]
+
+        if items:
+            categorias[cat_name] = items
+
+    return categorias
+
+
+def _strip_think_block(raw: str) -> str:
+    """Remove blocos <think>...</think> da resposta (chain-of-thought vazado)."""
+    return re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL).strip()
+
+
+def parse_keywords_response(raw: str) -> Tuple[KeywordsResult, str]:
+    """
+    Extrai keywords e categorias da resposta do LLM.
+    Retorna (resultado_estruturado, raw_completo).
+
+    resultado_estruturado = {
+        "keywords": ["kw1", "kw2", ...],
+        "categorias": {
+            "Pessoas": ["X", "Y"],
+            "Obras": ["A", "B"],
+            "Temas": ["T1", "T2"],
+            "Termos técnicos": ["TT1", "TT2"],
+        }
+    }
+    """
+    # Remove blocos de raciocínio que o modelo pode vazar mesmo com think=false
+    clean = _strip_think_block(raw)
+
+    keywords = _parse_numbered_keywords(clean)
+    categorias = _parse_categories(clean)
+
+    result: KeywordsResult = {
+        "keywords": keywords,
+    }
+    if categorias:
+        result["categorias"] = categorias
+
+    return result, raw
+
+
+# ---------------------------------------------------------------------------
+# Pipeline
+# ---------------------------------------------------------------------------
+
+
+def process_page(
+    row: dict,
+    source: str,
+    *,
+    provider: str,
+    model: str,
+    base_url: str,
+    timeout: int,
+    num_ctx: int,
+    reasoning_effort: str,
+    api_key_env: str,
+    retries: int,
+    think: bool = False,
+) -> Tuple[KeywordsResult, str]:
+    """Processa uma página e retorna (resultado_estruturado, raw_response)."""
+    doc_name = row["documento"]
+    user_prompt = build_user_prompt(row, source, doc_name)
+
+    # Trunca se necessário (Ollama)
+    ctx_window = num_ctx if provider == "ollama" else 128000
+    budget = ctx_window - TOKEN_RESERVE_OUTPUT - TOKEN_RESERVE_SYSTEM
+    if budget > 0:
+        user_prompt = truncate_to_budget(
+            user_prompt,
+            budget,
+            label="user_prompt",
+        )
+
+    MIN_KEYWORDS = 3  # mínimo para considerar resposta parseável
+
+    prompt_tokens_est = estimate_tokens(user_prompt)
+    log.info(
+        "[%s] p%d  chamando LLM (%s)  ~%d tokens prompt  source=%s",
+        doc_name,
+        row["pagina_num"],
+        model,
+        prompt_tokens_est,
+        source,
+    )
+
+    raw_response = ""
+    result: KeywordsResult = {"keywords": []}
+    for attempt in range(1, retries + 1):
+        try:
+            raw_response = llm_chat(
+                prompt_system=SYSTEM_PROMPT,
+                prompt_user=user_prompt,
+                provider=provider,
+                model=model,
+                base_url=base_url,
+                timeout=timeout,
+                reasoning_effort=reasoning_effort,
+                api_key_env=api_key_env,
+                num_ctx=num_ctx,
+                think=think,
+            )
+        except Exception as exc:
+            log.warning(
+                "[%s] p%d tentativa %d/%d – erro LLM: %s",
+                doc_name,
+                row["pagina_num"],
+                attempt,
+                retries,
+                exc,
+            )
+            if attempt < retries:
+                time.sleep(3 * attempt)
+            continue
+
+        # Valida se a resposta é parseável
+        if not raw_response or not raw_response.strip():
+            log.warning(
+                "[%s] p%d tentativa %d/%d – resposta vazia",
+                doc_name,
+                row["pagina_num"],
+                attempt,
+                retries,
+            )
+            if attempt < retries:
+                time.sleep(2 * attempt)
+            continue
+
+        result, _ = parse_keywords_response(raw_response)
+        if len(result["keywords"]) >= MIN_KEYWORDS:
+            break  # sucesso: resposta parseável com keywords suficientes
+
+        log.warning(
+            "[%s] p%d tentativa %d/%d – parsing retornou apenas %d keywords "
+            "(mín: %d). Primeiros 200 chars: %.200s",
+            doc_name,
+            row["pagina_num"],
+            attempt,
+            retries,
+            len(result["keywords"]),
+            MIN_KEYWORDS,
+            raw_response.replace("\n", " "),
+        )
+        if attempt < retries:
+            time.sleep(2 * attempt)
+
+    if not raw_response:
+        log.error(
+            "[%s] p%d esgotou tentativas – nenhuma resposta",
+            doc_name,
+            row["pagina_num"],
+        )
+        return {"keywords": []}, ""
+
+    if len(result["keywords"]) < MIN_KEYWORDS:
+        log.error(
+            "[%s] p%d esgotou tentativas – parsing falhou (%d keywords)",
+            doc_name,
+            row["pagina_num"],
+            len(result["keywords"]),
+        )
+        return result, raw_response
+
+    return result, raw_response
+
+
+# ---------------------------------------------------------------------------
+# Formatação dry-run
+# ---------------------------------------------------------------------------
+
+
+def format_dry_output(
+    doc: str,
+    pnum: int,
+    source: str,
+    result: KeywordsResult,
+    raw: str,
+    verbose: bool = False,
+) -> str:
+    lines: List[str] = []
+    keywords = result.get("keywords", [])
+    categorias = result.get("categorias", {})
+
+    lines.append(f"{'─' * 60}")
+    lines.append(f"  {doc}  página {pnum}  (source: {source})")
+    lines.append(f"{'─' * 60}")
+
+    if keywords:
+        lines.append(f"  Keywords ({len(keywords)}):")
+        for i, kw in enumerate(keywords, 1):
+            lines.append(f"    {i:2d}. {kw}")
+    else:
+        lines.append("  ⚠ Nenhuma keyword extraída")
+
+    if categorias:
+        lines.append("")
+        lines.append("  Categorias:")
+        for cat, items in categorias.items():
+            lines.append(f"    {cat}: {', '.join(items)}")
+
+    if verbose and raw:
+        lines.append("")
+        lines.append("  ── Resposta completa ──")
+        for l in raw.splitlines():
+            lines.append(f"  │ {l}")
+
+    lines.append("")
+    return "\n".join(lines)
+
+
+# ---------------------------------------------------------------------------
+# CLI
+# ---------------------------------------------------------------------------
+
+
+def build_parser() -> argparse.ArgumentParser:
+    p = argparse.ArgumentParser(
+        description="Extração de keywords de páginas da Patrística via LLM. "
+        "Dry run por padrão (stdout).",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""\
+Exemplos:
+  # Testar com 3 páginas do PG001, usando resumo da página (dry run)
+  python keywords_serial.py --doc PG001 --limit 3
+
+  # Testar uma página específica com texto completo
+  python keywords_serial.py --doc PG001 --page 4 --source pagina_texto
+
+  # Testar com OpenAI
+  python keywords_serial.py --doc PG001 --page 4 --provider openai
+
+  # Ver resposta completa do modelo (verbose)
+  python keywords_serial.py --doc PG001 --page 4 -v
+
+  # Gravar keywords na tabela resumos (padrão)
+  python keywords_serial.py --doc PG001 --write
+
+  # Gravar em DB separado (patristica_keywords.db)
+  python keywords_serial.py --doc PG001 --write --separate-db
+
+  # Processar todos os documentos
+  python keywords_serial.py --all --write --skip-done
+""",
+    )
+
+    # Seleção de documentos
+    g = p.add_mutually_exclusive_group()
+    g.add_argument("--doc", help="Documento específico (ex: PG001).")
+    g.add_argument("--all", action="store_true", help="Processar todos os documentos.")
+
+    p.add_argument(
+        "--page",
+        type=int,
+        default=None,
+        help="Página específica (para testes rápidos).",
+    )
+    p.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="Limitar quantidade de páginas a processar por documento.",
+    )
+
+    # Fonte de input
+    p.add_argument(
+        "--source",
+        choices=VALID_SOURCES,
+        default="resumo_pagina",
+        help="Fonte de conteúdo para extração (default: resumo_pagina).",
+    )
+
+    # Output
+    p.add_argument(
+        "--write",
+        action="store_true",
+        help="Gravar keywords (sem isso, dry run no stdout). "
+        "Por padrão grava na tabela resumos; use --separate-db para DB à parte.",
+    )
+    p.add_argument(
+        "--separate-db",
+        action="store_true",
+        help="Gravar num DB separado (patristica_keywords.db) em vez da tabela resumos.",
+    )
+    p.add_argument(
+        "-v",
+        "--verbose",
+        action="store_true",
+        help="Mostra resposta completa do modelo no dry run.",
+    )
+    p.add_argument(
+        "--json",
+        action="store_true",
+        dest="json_output",
+        help="Output em JSON Lines (uma linha por página) no dry run.",
+    )
+
+    # Databases
+    p.add_argument(
+        "--resumos-db",
+        type=Path,
+        default=DEFAULT_RESUMOS_DB,
+        help=f"DB de resumos (input, default: {DEFAULT_RESUMOS_DB}).",
+    )
+    p.add_argument(
+        "--keywords-db",
+        type=Path,
+        default=DEFAULT_KEYWORDS_DB,
+        help=f"DB de keywords (output, default: {DEFAULT_KEYWORDS_DB}).",
+    )
+
+    # LLM
+    p.add_argument("--provider", choices=["ollama", "openai"], default="ollama")
+    p.add_argument(
+        "--model", default=None, help=f"Modelo (default: {DEFAULT_MODEL} / gpt-5-mini)."
+    )
+    p.add_argument("--ollama-url", default=DEFAULT_OLLAMA_URL)
+    p.add_argument("--openai-url", default="https://api.openai.com/v1")
+    p.add_argument("--api-key-env", default="OPENAI_API_KEY")
+    p.add_argument(
+        "--reasoning-effort", choices=["low", "medium", "high"], default="high"
+    )
+    p.add_argument("--num-ctx", type=int, default=DEFAULT_NUM_CTX)
+    p.add_argument(
+        "--timeout",
+        type=int,
+        default=None,
+        help="Timeout em segundos (default: 120 ollama, 300 openai).",
+    )
+    p.add_argument("--retries", type=int, default=5, help="Número de tentativas em caso de falha.")
+    p.add_argument(
+        "--think",
+        action="store_true",
+        help="Habilita thinking (chain-of-thought) em modelos qwen3/deepseek-r1. "
+        "Desligado por padrão pois keywords não precisam de raciocínio profundo.",
+    )
+
+    # Controle
+    p.add_argument(
+        "--skip-done",
+        action="store_true",
+        help="Pula páginas que já têm keywords (com --write).",
+    )
+
+    return p
+
+
+def main() -> None:
+    args = build_parser().parse_args()
+
+    # Resolve modelo
+    if args.model is None:
+        args.model = "gpt-5-mini" if args.provider == "openai" else DEFAULT_MODEL
+
+    # Resolve timeout por provider (se não especificado)
+    if args.timeout is None:
+        args.timeout = (
+            DEFAULT_TIMEOUT_OPENAI
+            if args.provider == "openai"
+            else DEFAULT_TIMEOUT_OLLAMA
+        )
+
+    # Resolve base_url
+    base_url = args.openai_url if args.provider == "openai" else args.ollama_url
+
+    # Modo de gravação
+    use_separate_db = args.separate_db and args.write
+    use_resumos_inline = args.write and not args.separate_db
+    dry_run = not args.write
+
+    # Conexões
+    if use_resumos_inline:
+        # Leitura + escrita no mesmo DB de resumos
+        resumos_con = connect_readwrite(args.resumos_db)
+        ensure_keywords_columns(resumos_con)
+        mode_label = f"GRAVANDO na tabela resumos → {args.resumos_db}"
+    else:
+        # Somente leitura
+        resumos_con = connect_readonly(args.resumos_db)
+
+    kw_con: Optional[sqlite3.Connection] = None
+    if use_separate_db:
+        kw_con = connect_keywords_db(args.keywords_db)
+        init_keywords_schema(kw_con)
+        mode_label = f"GRAVANDO → {args.keywords_db}"
+
+    if dry_run:
+        mode_label = "DRY RUN (stdout)"
+
+    log.info("═" * 60)
+    log.info("  Keywords Serial – Patrística")
+    log.info("═" * 60)
+    log.info("  Modo:     %s", mode_label)
+    log.info("  Source:   %s", args.source)
+    log.info("  Provider: %s  |  Modelo: %s", args.provider, args.model)
+    if args.provider == "ollama":
+        log.info(
+            "  num_ctx:  %d  |  think: %s", args.num_ctx, "ON" if args.think else "OFF"
+        )
+    log.info("═" * 60)
+
+    # Descobre documentos
+    if args.doc:
+        docs = [args.doc]
+    elif args.all:
+        docs = list_documents(resumos_con)
+    else:
+        log.error("Especifique --doc NOME ou --all")
+        sys.exit(1)
+
+    if not docs:
+        log.warning("Nenhum documento encontrado no DB de resumos.")
+        sys.exit(1)
+
+    log.info("Documentos: %d", len(docs))
+
+    total_kw = 0
+    total_pages = 0
+    total_skipped = 0
+
+    for doc in docs:
+        pages = fetch_pages(resumos_con, doc, page=args.page, limit=args.limit)
+        if not pages:
+            log.warning("[%s] Nenhuma página encontrada", doc)
+            continue
+
+        log.info("[%s] %d páginas a processar", doc, len(pages))
+
+        for row in pages:
+            pnum = row["pagina_num"]
+
+            # Pula já processadas
+            if args.skip_done:
+                if use_resumos_inline and is_already_done_resumos(
+                    resumos_con, doc, pnum
+                ):
+                    total_skipped += 1
+                    continue
+                if (
+                    use_separate_db
+                    and kw_con
+                    and is_already_done(kw_con, doc, pnum, args.source, args.model)
+                ):
+                    total_skipped += 1
+                    continue
+
+            t0 = time.time()
+            result, raw = process_page(
+                row,
+                source=args.source,
+                provider=args.provider,
+                model=args.model,
+                base_url=base_url,
+                timeout=args.timeout,
+                num_ctx=args.num_ctx,
+                reasoning_effort=args.reasoning_effort,
+                api_key_env=args.api_key_env,
+                retries=args.retries,
+                think=args.think,
+            )
+            elapsed = time.time() - t0
+
+            keywords = result.get("keywords", [])
+            n_cats = len(result.get("categorias", {}))
+            total_pages += 1
+            total_kw += len(keywords)
+
+            # Output
+            if dry_run:
+                if args.json_output:
+                    obj = {
+                        "documento": doc,
+                        "pagina_num": pnum,
+                        "source": args.source,
+                        "modelo": args.model,
+                        **result,
+                        "elapsed_s": round(elapsed, 1),
+                    }
+                    if args.verbose:
+                        obj["raw"] = raw
+                    print(json.dumps(obj, ensure_ascii=False))
+                else:
+                    print(
+                        format_dry_output(
+                            doc,
+                            pnum,
+                            args.source,
+                            result,
+                            raw,
+                            verbose=args.verbose,
+                        )
+                    )
+            elif use_resumos_inline:
+                # Grava na tabela resumos (JSON estruturado)
+                kw_json = json.dumps(result, ensure_ascii=False)
+                save_keywords_to_resumos(
+                    con=resumos_con,
+                    documento=doc,
+                    pagina_num=pnum,
+                    keywords_json=kw_json,
+                    source=args.source,
+                    modelo=args.model,
+                )
+            elif use_separate_db:
+                # Grava no DB separado (JSON estruturado)
+                kw_json = json.dumps(result, ensure_ascii=False)
+                save_keywords(
+                    con=kw_con,
+                    documento=doc,
+                    pagina_num=pnum,
+                    source=args.source,
+                    keywords_json=kw_json,
+                    keywords_raw=raw,
+                    modelo=args.model,
+                )
+
+            cat_info = f"  {n_cats} cats" if n_cats else ""
+            log.info(
+                "[%s] p%d  %d keywords%s  %.1fs  ✓",
+                doc,
+                pnum,
+                len(keywords),
+                cat_info,
+                elapsed,
+            )
+
+    # Resumo final
+    log.info("─" * 60)
+    log.info("Total: %d páginas, %d keywords extraídas", total_pages, total_kw)
+    if total_skipped:
+        log.info("Puladas (já feitas): %d", total_skipped)
+    if total_pages:
+        log.info("Média: %.1f keywords/página", total_kw / total_pages)
+    log.info("─" * 60)
+
+    resumos_con.close()
+    if kw_con:
+        kw_con.close()
+
+
+if __name__ == "__main__":
+    main()
