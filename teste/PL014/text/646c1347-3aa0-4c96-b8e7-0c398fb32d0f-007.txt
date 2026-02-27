@@ -1,0 +1,53 @@
+<pagina estado="com_texto">
+  <bloco tipo="cabecalho" script="latino" bbox="100,40,900,300">
+SANCTI
+
+AMBROSII
+
+MEDIOLANENSIS EPISCOPI.
+
+OPERA OMNIA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,300,920,560">
+EDITIO PRAE ALIIS OMNIBUS COMPLETA, QUARUM INSTAR HABERI POTEST ;
+
+AD MANUSCRIPTOS CODICES VATICANOS, GALLICANOS, BELGICOS, ETC., NECNON AD VETERES
+EDITIONES, MAXIME VERO AD BENEDICTINAM RECENSITA ET EMENDATA ;
+
+NOTIS LECTIONIBUSQUE VARIANTIBUS, TEXTUI SUBJACENTIBUS, CONTINENTER ILLUSTRATA ;
+
+VARIIS INSUPER OPUSCULIS QUAE VEL OMISERE VEL NE MEMORAVERE QUIDEM ERUDITI
+BENEDICTINI, LOCUPLETATA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="200,560,800,720">
+— • —
+
+TOMI PRIMI PARS PRIOR.
+
+— • —
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="160,760,880,920">
+MIGNE, SUCCURSALISTE A MONTROUGE,
+DE VRAYET DE SORCY, IMPRIMEUR
+A PARIS.
+
+1855.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="700,920,980,990">
+Digitized by Google
+  </bloco>
+  <notas>
+- Identificação visual: trata-se de uma página de rosto / capa (não em branco).
+- Script identificado: latino (toda a página em maiúsculas latinas).
+- Correções e decisões em relação ao rascunho OCR:
+  * "EDITIO PRAE ALIIS OMNIBUS COMPLETA, QUARUM INSTAR HABERI POTEST ;" foi corrigido a partir de leituras incorretas do rascunho (ex.: "PERJE" etc.). Usei "PRAE" (ligadura Œ/Æ normalizada para PRAE).
+  * "MANUSCBRIPTOS" do rascunho foi corrigido para "MANUSCRIPTOS".
+  * "BENEDICTINAM" e "RECENSITA ET EMENDATA" foram regularizadas a partir de leituras fragmentárias.
+  * A linha com "VARIIS INSUPER OPUSCULIS QUAE VEL OMISERE VEL NE MEMORAVERE QUIDEM ERUDITI BENEDICTINI, LOCUPLETATA." foi reconstruída visualmente; o rascunho continha várias corrupções ("VANS", "BENEDICTIM)"); transcrevi conforme aparece no impresso.
+  * A ornamentação gráfica central foi representada por "— • —" para indicar a presença do elemento decorativo; não invoquei texto não existente.
+  * A linha do editor/impressor foi transcrita conforme visível: "MIGNE, SUCCURSALISTE A MONTROUGE, DE VRAYET DE SORCY, IMPRIMEUR". A leitura do nome/prefixo "DE VRAYET DE SORCY" é pouco clara no original; mantive a forma literal observada em imagem, em vez de normalizar para um nome moderno conhecido.
+  * A data no rodapé é "1855." conforme visível.
+  * A marca "Digitized by Google" no canto inferior direito foi incluída pois aparece impressa na imagem digitalizada.
+- Observações sobre bboxes: coordenadas fornecidas em escala 0-1000 (aproximações geométricas), preservando a ordem visual de cima para baixo.
+  </notas>
+</pagina>

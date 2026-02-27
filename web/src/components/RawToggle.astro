@@ -1,0 +1,10 @@
+---
+const { url } = Astro.props;
+---
+<div class="raw-box">
+  {url ? (
+    <a class="button secondary" href={url} target="_blank" rel="noreferrer">Abrir OCR bruto</a>
+  ) : (
+    <p style="margin:0; color:var(--color-muted);">OCR bruto não publicado neste espelho.</p>
+  )}
+</div>

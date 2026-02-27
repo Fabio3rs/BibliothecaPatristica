@@ -1,0 +1,65 @@
+---
+import '../styles/global.css';
+import Breadcrumbs from './Breadcrumbs.astro';
+
+const { title = 'Bibliotheca Patristica', description = 'Acervo estático demonstrativo', breadcrumbs = [] } = Astro.props;
+const rawBase = import.meta.env.BASE_URL || '/';
+const base = rawBase;
+const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={`${baseWithSlash}favicon.svg`} />
+    <slot name="head" />
+    <style>
+      @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 400; src: local('Source Serif 4'); }
+      @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; src: local('Inter'); }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="wrapper header-grid">
+          <div>
+            <a href={base} class="logo" aria-label="Bibliotheca Patristica — página inicial">
+              <span aria-hidden="true">📚</span> Bibliotheca
+            </a>
+            <div style="color: var(--color-muted); font-size: 0.95rem;">Acervo demo — busca estática</div>
+          </div>
+          <nav aria-label="Navegação principal">
+            <div class="nav-links">
+              <a href={`${baseWithSlash}search`}>Busca</a>
+              <a href={`${baseWithSlash}viewer?doc=PG144&page=396`}>Viewer</a>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <main id="conteudo" class="wrapper" tabindex="-1">
+        {breadcrumbs.length > 1 && <Breadcrumbs items={breadcrumbs} />}
+        {Astro.slots.default ? <slot /> : null}
+      </main>
+      <aside class="wrapper disclaimer-wrapper" aria-label="Aviso sobre o conteúdo gerado por IA">
+        <div class="disclaimer-box">
+          <p style="margin:0 0 0.5rem;"><strong>⚠️ Sobre resumos e palavras‑chave</strong></p>
+          <p style="margin:0 0 0.4rem;">Usamos IA para gerar resumos e termos em português e ajudar a localizar rapidamente temas no corpus patrístico.</p>
+          <p style="margin:0 0 0.4rem;">O acervo ainda está incompleto e pode conter erros de OCR. Se um tema não aparecer na busca, ele pode existir; se uma palavra‑chave surgir, confirme no texto antes de usar academicamente.</p>
+          <p style="margin:0;">Resultados são rascunhos: leitura do original e revisão humana são sempre necessárias.</p>
+        </div>
+      </aside>
+      <footer class="footer">
+        <div class="wrapper" style="padding:0;">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-3);">
+            <span>Camada de publicação demo • Astro + JSON mocks</span>
+            <span style="color:var(--color-muted);">GitHub Pages • static build</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<pagina estado="com_texto">
+  <bloco tipo="cabecalho" script="ethiopico" bbox="430,100,520,120">
+    ሕወ- ::
+  </bloco>
+  <bloco tipo="texto_principal" script="ethiopico" bbox="100,150,850,400">
+    I, 1* አዳም : ሴት : ኖስ : ²ቃየን : መልአለል : ኢያርድ : ³ሄኖክ : ማተሰላ :
+    ⁴ላሜ : ⁵ህ : ወልደ : ኖህ : ሰም : ወካም : ኢያፌት : ⁶ደቀ : ጎመር :
+    ጎመር : ወማግ : ማዳይ : እሙሃን : እሊስ : በል : ሞክ : ወቲራ :
+    ⁷ደቀ : ጎመር : አስከነስ : ወራፍ : ወተርማ : ⁸ደቂ : ኢዮን :
+    ኤስ : ታርሰስ : ቄጤይ : ወሮድዒ : ⁹ደቂቀ : ካም : ስ : ምራም :
+    ጡ : ወከነዓን : ¹⁰ደቀ : ኩስ : ባ : 'ዊላን : ባታ : ግማን :
+    ሰባን : ወዳታን : ¹¹ኩሲ ወለደ መሮጠ : ዝንቱ ቀ : ዘኀያል :
+    ወአዳኒ : በምድር : ¹²ምጽራም ወለደ ሎድያም : ላቤን : ታቢም :
+    ፓጣሮስኒዔም : ከሳሎዔም : መ ወጹ : ፈልስጥዔም : ወለካፍሪዔም :
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="100,410,850,500">
+    I, 5. ማደይ] P ግደይ. — ib. post ማደይ A add. ፈ. — ib. ወያፌት] A om. — ib. ምስሙ] A ስ ስሙ. — ib. ቲራ] A ራኦ. — 6. ቲራ] A ቲራ. — 8. ኢዮሃን] A ኢዮን. — 9. ዮሃን] A ኢዮሃን. — ib. ኤሊስ] A ኤሊስ. — ib. ሰባ] A ባ. — 10. ኩስ] A ኩስ. — ib. ሶባ] A ሶባ. — ib. ሮግማን] A ሮማን. — 11-12. ወከሳሎኒዔም] A ኦሮ : ወቦሮሜ : ወአሜግማን : ወነስሮማን.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="860,200,900,230">
+    * P,
+    75 r° a.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="250,550,700,620">
+    LES PARALIPOMÈNES
+
+    LIVRE PREMIER
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,650,850,900">
+    I, ¹* 'Adàm, Sèt, Hènon, ²Qàyñan, Malál'èl, 'Iyàrod, ³Hènok, Màtousalà,
+    Lámèk, ⁴No. Les fils de No furent Sém, Kàm et 'Iyâfèt. ⁵Les fils de
+    'Iyâfèt furent Gàmèr, Màgoug, Màdáy, 'Imouhyàn, 'Èlis, Tobèl, Mosek et Tirà.
+    ⁶Les fils de Gàmèr furent 'Askènèsà, Ràftà et Termà. ⁷Les fils de 'Iyohyàn
+    furent 'Èles, Tarsès, Qètèy et Rod'e. ⁸ Les fils de Kàm furent Kous, Masram,
+    Foutou et Kàna'an. ⁹ Les fils de Kous furent Sebi, 'Iwilan, Sobatà, Rogmàn,
+    Seban et Dàtàn. ¹⁰ Kousi engendra Meroṭ. C'est le premier qui fut géant
+    et chasseur sur la terre. ¹¹ Masarèm engendra Lodi'am, Labèn, Nertabi'èm,
+    ¹² Pàṭarosni'èm et Kesàloni'èm, de qui furent issus Felest'èm et Lèkafr'èm.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="860,700,900,730">
+    * P,
+    75 r° a.
+  </bloco>
+  <notas>
+    A página contém texto em Ge'ez (Etíope) na parte superior, seguido de aparato crítico misto (Latim/Ge'ez) e tradução para o Francês na parte inferior.
+    O OCR rascunho falhou completamente no reconhecimento do script Ge'ez, gerando caracteres aleatórios (Hebraico, Armênio, etc.). O llm_ocr foi utilizado como base para o Ge'ez, com correções visuais (ex: `ወልደ` em vez de `ወደቀ` no contexto de genealogia, e remoção de inserções errôneas como `ኢያቶሙ` na linha 2).
+    A pontuação francesa e acentos foram verificados (ex: `PARALIPOMÈNES`, `et` em vez de `và`).
+    Números de versículo estão em sobrescrito no texto francês e integrados no texto Ge'ez.
+    Notas marginais de referência de fólio (`* P, 75 r° a.`) aparecem à direita dos blocos de texto.
+  </notas>
+</pagina>

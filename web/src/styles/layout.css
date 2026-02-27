@@ -1,0 +1,83 @@
+.page-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  background: color-mix(in srgb, var(--color-surface) 85%, transparent);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.wrapper {
+  width: min(100%, var(--max-width));
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-4) var(--space-6);
+}
+
+.header-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.nav-links { display: flex; gap: var(--space-4); }
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: var(--space-6);
+}
+
+@media (max-width: 900px) {
+  .main-grid { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-m);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-soft);
+}
+
+.footer {
+  margin-top: auto;
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted);
+}
+
+/* Inputs e selects herdam as cores do tema */
+input[type="search"],
+input[type="text"],
+select {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  border-color: var(--color-border);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+}
+input[type="search"]::placeholder { color: var(--color-muted); }
+input[type="search"]:focus,
+input[type="text"]:focus,
+select:focus { outline: 2px solid var(--color-accent); outline-offset: 1px; border-color: var(--color-accent); }
+
+/* Classes utilitárias para inputs padronizados */
+.search-input {
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--radius-s);
+  border: 1px solid var(--color-border);
+  min-width: 220px;
+}
+.page-size-select {
+  padding: 0.45rem 0.55rem;
+  border-radius: var(--radius-s);
+  border: 1px solid var(--color-border);
+}

@@ -1,0 +1,40 @@
+###############################################################################
+# Astro + Pagefind workspace
+###############################################################################
+
+# dependencies
+node_modules/
+
+# build output
+dist/
+.dist/
+.astro/
+pagefind/
+
+# Pagefind CLI artifacts
+pagefind.json
+pagefind.log
+
+# env and local config
+.env
+.env.*
+!.env.example
+
+# logs
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# editor / OS junk
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# tooling caches
+coverage/
+*.tsbuildinfo
+.playwright-cache/

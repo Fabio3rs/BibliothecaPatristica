@@ -1,0 +1,10 @@
+# Agrupa fragmentos maiores → menos arquivos de índice
+chunk_size: 10000        # padrão é 400 palavras por fragmento
+
+# Exclui metadados desnecessários do índice
+exclude_selectors:
+  - "nav"
+  - "footer"
+  - ".sidebar"
+
+
