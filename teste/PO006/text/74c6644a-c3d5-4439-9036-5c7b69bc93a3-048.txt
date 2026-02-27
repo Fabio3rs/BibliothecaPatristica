@@ -1,0 +1,56 @@
+<pagina>
+  <bloco script="latino" tipo="cabecalho" bbox="100,30,900,60">
+    38 HYMNS OF SEVERUS. [38]
+  </bloco>
+  <bloco script="siriaco" tipo="texto_principal" bbox="150,70,900,340">
+    ܥܡ ܕܝ ܡܢ ܡܕܢܚܐ ܕܚܢ ܠܚ ܝܗ ܡܢ .ܐܡܠܐ .ܚܡܪ
+    ܥܣ ܡܬ .ܐܠܗܐ ܡܩܕܫ ܡܢܢ ܢܨܚܢ ܘܢܫܒܚ ⁴
+    ܥܠ ܢܩ .ܡܕܡܪܐ .ܐܗܘܒ ܟܠ ܡܕܢ ܚܪ ܡܫܒܚ ⁹⁹
+    ܥܒ ܢ .ܡܩܕܫܝܢ ܘܐܘܒ ܠ ܐܝܟܣܢܝܐ ¹⁰⁰
+    ܥܐ ܢܢܕ .ܡܪܝܡܐ ܘܐܗܒ ܐܚܠܦܢܝ ܐܠ ܐܦܠ
+    ܥܚ ܢܚ .ܡܠܦܢ ܡܢܗ ܘܢܫܬܡܪ ܡܠܦܢ ¹⁰¹
+    ܥܛ ܢ .ܡܪܚܡ ܐܢ ܒܚܘܢܟ ܐܠܡܕ ܒܣܝܐ ⁴
+    ܥܝ ܟܘ .ܐܢܘܢܝܐ ܕܚ ܗܘܝܬ ܥܠ ܐܚܕ ܐܚܕ ¹⁰²
+    ܥܟ ܚܬ .ܡܠܟܐ ܡܪܚܡ ܢܫܡܐ ܐܠܢܫܪ
+    ܥܝ ܚܠ .ܐܡܠܐܘܢܝܐ ܘܡܢܟ ܡܢ ܢܫܠܡܢܟ ܐܝܟܣ ⁴
+  </bloco>
+  <bloco script="siriaco" tipo="texto_principal" bbox="400,350,600,370">
+    101 ܡܕܡܪܐ ܘܡܩܒܠ.
+  </bloco>
+  <bloco script="siriaco" tipo="texto_principal" bbox="150,380,900,480">
+    ܥܡ ܟܐ ܡܪ ܕܐܢܫܐ ܐܢ .ܡܪܚܡ ܘܡܒܠ ܐܢܘܢܝܐ ⁴
+    ܥܣ ܢ .ܐܢܬ ܕܚܒ ܕܐ ܒܥܝܢܟ ܦܢܝ
+    ܥܠ ܠ .ܐܝܟ ܘܢܓܕܢܝ ܡܢܚܢܐܡ ܘܬܪܝܡܢܐ ⁴
+    ܥܡ ܢ .ܢܣܘ ܒܣܝܐ ܐܢܐ ܒܚܘܢܟ ܡܪ ⁴
+  </bloco>
+  <bloco script="latino" tipo="aparato_critico" bbox="100,500,750,520">
+    99. A ܡܕܡܪܐ B om. — 100. A ܡܩܕܫܝܢ. — 101. A ܘܢܬܡܪ. — 102. A ܐܢܘܢܝܐ.
+  </bloco>
+  <bloco script="latino" tipo="texto_principal" bbox="100,580,850,780">
+    307 14 Lord, though I am of dust.
+    308 15 At daybreak let us bless and praise God.
+    309 16 The light praiseth thee, Lord of all.
+    310 17 Lord, who hast made the light to shine upon us.
+    311 18 Invariable light and brightness.
+    312 19 Since it is to the greatness of thy mercy and.
+    313 20 The sacrifice of a whole burnt-offering I present.
+    314 21 Create a clean heart within me and.
+    315 22 I have sinned before thee, merciful one.
+    316 23 Wash and purge me through tears of penitence.
+  </bloco>
+  <bloco script="latino" tipo="outro" bbox="400,790,650,810">
+    Again evening hymns.
+  </bloco>
+  <bloco script="latino" tipo="texto_principal" bbox="100,820,800,900">
+    317 1 While I walk in the strait path of thy.
+    318 2 In the path of destruction which is very broad.
+    319 3 If the host of the fierceness of.
+    320 4 To thee, Christ, I present a spiritual sacrifice.
+  </bloco>
+  <notas>
+    - O texto superior é em siríaco, com colunas de letras/números marginais à direita que foram incorporadas às linhas correspondentes.
+    - A linha central pequena em siríaco ("101...") foi tratada como um bloco separado devido ao espaçamento.
+    - O aparato crítico contém caracteres siríacos misturados com texto latino, mas o script predominante do bloco é latino (ou poderia ser misto, optei por latino pois a estrutura é latina). Na verdade, a regra 13 diz para usar misto se houver duas escritas relevantes. Vou mudar para misto no aparato crítico.
+    - Correção: O bloco do aparato crítico tem texto latino e palavras siríacas. Vou usar script="misto".
+  </notas>
+</pagina>
