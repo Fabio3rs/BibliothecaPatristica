@@ -39,6 +39,14 @@ const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
       <main id="conteudo" class="wrapper">
         {Astro.slots.default ? <slot /> : null}
       </main>
+      <div class="wrapper" style="margin-top:1.5rem;">
+        <section style="padding:1rem;border:1px solid var(--color-border);border-radius:12px;background:var(--color-surface-2);">
+          <p style="margin:0 0 0.6rem;"><strong>Sobre os resumos e palavras‑chave</strong></p>
+          <p style="margin:0 0 0.6rem;">Usamos IA para gerar resumos e termos em português e ajudar a localizar rapidamente temas no corpus patrístico.</p>
+          <p style="margin:0 0 0.6rem;">O acervo ainda está incompleto e pode conter erros de OCR. Se um tema não aparecer na busca, ele pode existir; se uma palavra‑chave surgir, confirme no texto antes de usar academicamente.</p>
+          <p style="margin:0;">Resultados são rascunhos: leitura do original e revisão humana são sempre necessárias.</p>
+        </section>
+      </div>
       <footer class="footer">
         <div class="wrapper" style="padding:0;">
           <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-3);">

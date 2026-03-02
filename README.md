@@ -31,3 +31,14 @@ Digitalização e processamento das coleções *Patrologia Graeca*, *Latina* e *
 
 ## Estado/Roadmap
 OCR estável; resumos/keywords em produção. Próximo foco: indexação FTS5 + agente de RAG bibliotecário.
+
+## Aviso sobre IA, cobertura e revisão humana
+Este projeto usa IA (LLMs) para acelerar a catalogação do corpus patrístico e facilitar a localização rápida de temas. Isso traz ganhos de velocidade e alcance, mas também limitações:
+
+- **Cobertura incompleta**: nem todo o corpus está processado; páginas ou volumes podem faltar.
+- **Erros de OCR**: páginas com ruído, diacríticos ou colunas podem gerar texto defeituoso e influenciar resumos/keywords.
+- **Falsos negativos**: se a busca não retorna um tema, ele pode existir — confira o original.
+- **Falsos positivos**: uma keyword sugerida pode não refletir fielmente o texto; não use sem validação.
+- **Interpretação automática**: modelos podem introduzir anacronismos, vieses ou simplificações teológicas.
+
+Portanto, todo resultado deve ser verificado no texto original e, para uso acadêmico, revisado por especialistas antes de citação ou análise. Registramos data, modelo e provedor de IA nos metadados para transparência.
