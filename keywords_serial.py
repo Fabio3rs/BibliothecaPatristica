@@ -395,6 +395,7 @@ def openai_chat(
             {"role": "user", "content": prompt_user},
         ],
         "top_p": 1.0,
+        "service_tier": "flex",
     }
     if reasoning_effort:
         payload["reasoning_effort"] = reasoning_effort

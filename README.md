@@ -23,5 +23,11 @@ Digitalização e processamento das coleções *Patrologia Graeca*, *Latina* e *
 - Resumo: `python resumo_serial.py --volume-dir <dir>` e verificar escrita em `data/patristica_resumos.db`.
 - Download: executar os passos do README em `download/` e checar nomes `PL/PG/PO###.pdf`.
 
+## Licenças
+- Código-fonte sob MIT (`LICENSE`).
+- Textos gerados pelo projeto (OCR, resumos, keywords, metadados) dedicados ao domínio público via CC0 1.0 (`LICENSE-CC0`).
+- Os PDFs/imagens originais **não** ficam no repositório; direitos podem variar por país/fonte. Baixe por sua conta e risco.
+- Dependências externas (Tesseract, OpenCV, Ollama/OpenAI etc.) mantêm suas próprias licenças.
+
 ## Estado/Roadmap
 OCR estável; resumos/keywords em produção. Próximo foco: indexação FTS5 + agente de RAG bibliotecário.

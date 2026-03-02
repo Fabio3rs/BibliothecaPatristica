@@ -123,14 +123,28 @@ def get_last_processed_page(con: sqlite3.Connection, documento: str) -> Optional
     return int(val) if val is not None else None
 
 
-def get_last_resumo_global(con: sqlite3.Connection, documento: str) -> Optional[str]:
-    """Retorna o resumo_global da última página processada."""
-    row = con.execute(
-        """SELECT resumo_global FROM resumos
-           WHERE documento = ?
-           ORDER BY pagina_num DESC LIMIT 1""",
-        (documento,),
-    ).fetchone()
+def get_processed_pages_set(con: sqlite3.Connection, documento: str) -> set[int]:
+    """Retorna um conjunto com todas as páginas já processadas para este documento."""
+    rows = con.execute("SELECT pagina_num FROM resumos WHERE documento = ?", (documento,)).fetchall()
+    return {r["pagina_num"] for r in rows}
+
+
+def get_last_resumo_global(con: sqlite3.Connection, documento: str, before_page: Optional[int] = None) -> Optional[str]:
+    """Retorna o resumo_global da última página processada. Se before_page for informado, pega a página anterior mais próxima."""
+    if before_page is not None:
+        row = con.execute(
+            """SELECT resumo_global FROM resumos
+               WHERE documento = ? AND pagina_num < ?
+               ORDER BY pagina_num DESC LIMIT 1""",
+            (documento, before_page),
+        ).fetchone()
+    else:
+        row = con.execute(
+            """SELECT resumo_global FROM resumos
+               WHERE documento = ?
+               ORDER BY pagina_num DESC LIMIT 1""",
+            (documento,),
+        ).fetchone()
     return str(row["resumo_global"]) if row else None
 
 
@@ -550,12 +564,14 @@ def process_volume(
     page_filter: Optional[int] = None,
     page_limit: Optional[int] = None,
     verbose: bool = False,
+    fill_gaps: bool = False,
 ) -> None:
     """Processa todas as páginas de um volume sequencialmente.
 
     Se dry_run=True, chama o LLM mas imprime no stdout sem gravar no DB.
     page_filter filtra uma página específica (para testes rápidos).
     page_limit limita a quantidade de páginas a processar.
+    fill_gaps verifica individualmente e preenche páginas que faltam no DB.
     """
     doc_name = volume_dir.name
     text_dir = volume_dir / "text"
@@ -578,29 +594,44 @@ def process_volume(
 
     total = len(pages)
 
+    processed_set = set()
+    last_done = None
+    contexto = ""
+
     if dry_run:
-        last_done = None
         # Em dry run, tenta pegar contexto do DB se disponível
-        contexto = ""
         if con is not None:
             contexto = get_last_resumo_global(con, doc_name) or ""
     else:
-        last_done = get_last_processed_page(con, doc_name)
-        contexto = get_last_resumo_global(con, doc_name) or ""
+        if con is not None:
+            if fill_gaps:
+                processed_set = get_processed_pages_set(con, doc_name)
+            else:
+                last_done = get_last_processed_page(con, doc_name)
+                contexto = get_last_resumo_global(con, doc_name) or ""
 
-    if last_done is not None and not dry_run:
+    if not fill_gaps and last_done is not None and not dry_run:
         log.info(
             "[%s] Retomando após página %d  (%d páginas total)",
             doc_name, last_done, total,
         )
+    elif fill_gaps and not dry_run:
+        log.info("[%s] Modo fill-gaps: Mapeando %d páginas processadas para detectar omissões.", doc_name, len(processed_set))
 
     pages_done = 0
     for idx, page_path in enumerate(pages):
         pnum = page_number(page_path)
 
-        # Pula páginas já processadas (só em modo gravação)
-        if not dry_run and last_done is not None and pnum <= last_done:
-            continue
+        if fill_gaps and not dry_run:
+            if pnum in processed_set:
+                continue
+            # Se a página estava em falta, precisamos do contexto cronológico da página anterior a ela
+            if con is not None:
+                contexto = get_last_resumo_global(con, doc_name, before_page=pnum) or ""
+        else:
+            # Pula páginas já processadas sequencialmente na lógica tradicional (só em gravação)
+            if not dry_run and last_done is not None and pnum <= last_done:
+                continue
 
         # Lê conteúdo da página
         try:
@@ -826,7 +857,12 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument(
         "--resume",
         action="store_true",
-        help="Retoma processamento de onde parou (comportamento padrão, flag explícita).",
+        help="Retoma de onde parou no SQLite em cada diretório.",
+    )
+    p.add_argument(
+        "--fill-gaps",
+        action="store_true",
+        help="Preenche buracos entre páginas processadas (útil após saltos no log).",
     )
     p.add_argument(
         "--dry-run",
@@ -920,6 +956,7 @@ def main() -> None:
                 page_filter=args.page,
                 page_limit=args.limit if args.dry_run else None,
                 verbose=args.verbose,
+                fill_gaps=args.fill_gaps,
             )
         except KeyboardInterrupt:
             log.info("Interrompido pelo usuário. Progresso salvo no DB.")
