@@ -1,0 +1,117 @@
+---
+import Layout from '../components/Layout.astro';
+import PageMetadata from '../components/PageMetadata.astro';
+const base = import.meta.env.BASE_URL || '/';
+const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
+---
+<Layout title="Viewer" description="Viewer mock" breadcrumbs={[{label:'Início', href: baseWithSlash},{label:'Viewer'}]}>
+  <section class="card" style="margin-bottom:var(--space-4);">
+    <h1 style="margin-top:0; font-family: var(--font-serif);">Viewer demo</h1>
+    <p style="margin:0; color:var(--color-muted);">Carrega manifests mock do volume PG144 e renderiza a página pedida via query string.</p>
+  </section>
+
+  <div id="viewer-root">
+    <p>Carregando página...</p>
+  </div>
+
+  <script type="module" define:vars={{ assetBase: baseWithSlash }}>
+    const viewerRoot = document.getElementById('viewer-root');
+
+    const dictCache = {};
+
+    async function getJSON(path) {
+      const res = await fetch(path);
+      if (!res.ok) throw new Error('Erro ao buscar ' + path);
+      return res.json();
+    }
+
+    function labelize(ids = [], dict = []) {
+      const map = new Map(dict.map((d) => [d.id, d.label]));
+      return ids.map((id) => map.get(id) || id);
+    }
+
+    async function load() {
+      try {
+        const url = new URL(window.location.href);
+        const doc = url.searchParams.get('doc') || 'PG144';
+        const pageNumber = Number(url.searchParams.get('page') || 396);
+
+        const [volumes, keywords, entities, authors, themes] = await Promise.all([
+          getJSON(`${assetBase}volumes.json`),
+          getJSON(`${assetBase}dict/keywords.json`),
+          getJSON(`${assetBase}dict/entities.json`),
+          getJSON(`${assetBase}dict/authors.json`),
+          getJSON(`${assetBase}dict/themes.json`)
+        ]);
+
+        const volume = volumes.volumes.find((v) => v.id === doc);
+        if (!volume) throw new Error('Volume não encontrado nos mocks');
+
+        const meta = await getJSON(`${assetBase}${volume.meta_url.replace(/^\//, '')}`);
+        const block = meta.page_blocks.find((b) => pageNumber >= b.page_first && pageNumber <= b.page_last);
+        if (!block) throw new Error('Bloco não encontrado');
+
+        const blockData = await getJSON(`${assetBase}${block.file.replace(/^\//, '')}`);
+        const page = blockData.pages.find((p) => p.page === pageNumber) || blockData.pages[0];
+
+        const segmentsFile = meta.segment_blocks?.[0]?.file;
+        const snapshotFile = meta.snapshot_blocks?.[0]?.file;
+        const segments = segmentsFile ? (await getJSON(`${assetBase}${segmentsFile.replace(/^\//, '')}`)).segments : [];
+        const snapshots = snapshotFile ? (await getJSON(`${assetBase}${snapshotFile.replace(/^\//, '')}`)).snapshots : [];
+
+        const pageSegments = segments.filter((s) => (page.segment_ids || []).includes(s.id));
+        const pageSnapshots = snapshots.filter((s) => (page.snapshot_ids || []).includes(s.id));
+
+        const keywordsLabels = labelize(page.keyword_ids, keywords.items);
+        const entitiesLabels = labelize(page.entity_ids, entities.items);
+        const segmentLabels = pageSegments.map((s) => s.label);
+        const snapshotLabels = pageSnapshots.map((s) => s.label);
+
+        viewerRoot.innerHTML = '';
+        const section = document.createElement('section');
+        section.innerHTML = `<div class="card">
+          <header style="display:flex;justify-content:space-between;align-items:flex-start;gap:var(--space-3);">
+            <div>
+              <p style="margin:0;color:var(--color-muted);">Volume ${volume.id}</p>
+              <h2 style="margin:0;">Página ${page.page}</h2>
+            </div>
+            ${page.raw?.url ? `<a class="button secondary" href="${page.raw.url}" target="_blank" rel="noreferrer">Abrir OCR bruto</a>` : ''}
+          </header>
+          <div style="margin-top:var(--space-4); display:grid; gap:var(--space-4);">
+            <div>
+              <h3 style="margin:0 0 0.35rem; font-family: var(--font-serif);">Resumo</h3>
+              <p style="margin:0;">${page.summary_page || 'Sem resumo disponível.'}</p>
+            </div>
+            <div>
+              <h3 style="margin:0 0 0.35rem; font-family: var(--font-serif);">Trecho</h3>
+              <p style="margin:0; color:var(--color-muted);">${page.excerpt || 'Sem trecho fornecido.'}</p>
+            </div>
+            <div class="meta-grid">
+              <div class="meta-block">
+                <h4>Keywords</h4>
+                <ul class="chips">${keywordsLabels.map((k) => `<li>${k}</li>`).join('')}</ul>
+              </div>
+              <div class="meta-block">
+                <h4>Entidades</h4>
+                <ul class="chips">${entitiesLabels.map((e) => `<li>${e}</li>`).join('')}</ul>
+              </div>
+              <div class="meta-block">
+                <h4>Segmentos</h4>
+                <ul class="chips">${segmentLabels.map((s) => `<li>${s}</li>`).join('')}</ul>
+              </div>
+              <div class="meta-block">
+                <h4>Snapshots</h4>
+                <ul class="chips">${snapshotLabels.map((s) => `<li>${s}</li>`).join('')}</ul>
+              </div>
+            </div>
+          </div>
+        </div>`;
+        viewerRoot.appendChild(section.firstElementChild);
+      } catch (err) {
+        viewerRoot.innerHTML = `<p>Erro ao carregar viewer: ${err.message}</p>`;
+      }
+    }
+
+    load();
+  </script>
+</Layout>

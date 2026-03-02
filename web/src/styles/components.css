@@ -1,0 +1,52 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-accent) 12%, var(--color-surface));
+  color: var(--color-ink);
+  font-size: 0.85rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.1rem;
+  border-radius: var(--radius-s);
+  border: 1px solid var(--color-border);
+  background: var(--color-ink);
+  color: var(--color-surface);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+.button.secondary {
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+.button:hover { filter: brightness(1.05); }
+
+.breadcrumbs { display: flex; gap: 0.35rem; align-items: center; flex-wrap: wrap; }
+.breadcrumbs a { color: var(--color-muted); }
+.breadcrumbs span { color: var(--color-muted); }
+
+.filters { display: flex; flex-direction: column; gap: var(--space-3); }
+.filters h3 { margin: 0; font-size: 1rem; }
+.filters label { display: flex; gap: 0.5rem; align-items: center; color: var(--color-ink); }
+
+.results-list { display: grid; gap: var(--space-4); }
+
+.result-title { margin: 0 0 0.35rem; font-size: 1.1rem; font-weight: 700; color: var(--color-ink); }
+.result-snippet { margin: 0; color: var(--color-muted); }
+
+.meta-grid { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.meta-block { border: 1px solid var(--color-border); border-radius: var(--radius-s); padding: var(--space-4); background: var(--color-surface); }
+.meta-block h4 { margin: 0 0 0.5rem; }
+
+.raw-box { border: 1px dashed var(--color-border); border-radius: var(--radius-s); padding: var(--space-4); background: color-mix(in srgb, var(--color-surface) 80%, transparent); }
+
+ul.chips { list-style: none; padding: 0; margin: 0; display: flex; gap: 0.35rem; flex-wrap: wrap; }
+ul.chips li { font-size: 0.9rem; padding: 0.35rem 0.65rem; border-radius: var(--radius-s); background: color-mix(in srgb, var(--color-accent) 12%, var(--color-surface)); border: 1px solid var(--color-border); }

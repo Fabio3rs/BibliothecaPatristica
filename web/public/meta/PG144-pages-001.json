@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "volume_id": "PG144",
+  "block_type": "pages",
+  "block_index": 1,
+  "page_first": 394,
+  "page_last": 396,
+  "dict_refs": {
+    "keywords": "dict/keywords.json",
+    "entities": "dict/entities.json",
+    "authors": "dict/authors.json",
+    "themes": "dict/themes.json"
+  },
+  "pages": [
+    {
+      "pid": "PG144:394",
+      "page": 394,
+      "label": "394",
+      "viewer_url": "viewer?doc=PG144&page=394",
+      "summary_page": "Homilia sobre a Trindade enfatiza a unidade na diversidade.",
+      "excerpt": "Como Deus se revela sem confundir as pessoas, mantendo uma só essência...",
+      "keyword_ids": ["k:trinity", "k:unity"],
+      "entity_ids": ["e:god"],
+      "author_ids": ["a:john_chrysostom"],
+      "theme_ids": ["t:trinity"],
+      "segment_ids": ["seg:PG144:001"],
+      "snapshot_ids": ["snap:PG144:global-v1"],
+      "raw": {"mode": "external", "published": true, "url": "https://raw.example.org/ocr/PG144/394.txt"}
+    },
+    {
+      "pid": "PG144:395",
+      "page": 395,
+      "label": "395",
+      "viewer_url": "viewer?doc=PG144&page=395",
+      "summary_page": "Continua a argumentação sobre a coeternidade do Filho.",
+      "excerpt": "O Verbo está com o Pai desde sempre, luz de luz...",
+      "keyword_ids": ["k:trinity", "k:christology"],
+      "entity_ids": ["e:christ"],
+      "author_ids": ["a:john_chrysostom"],
+      "theme_ids": ["t:christology"],
+      "segment_ids": ["seg:PG144:001"],
+      "snapshot_ids": ["snap:PG144:global-v1"],
+      "raw": {"mode": "external", "published": true, "url": "https://raw.example.org/ocr/PG144/395.txt"}
+    },
+    {
+      "pid": "PG144:396",
+      "page": 396,
+      "label": "396",
+      "viewer_url": "viewer?doc=PG144&page=396",
+      "summary_page": "Aplica a doutrina à vida comunitária e pastoral.",
+      "excerpt": "Se cremos numa só essência, devemos viver em caridade indivisa...",
+      "keyword_ids": ["k:charity", "k:trinity"],
+      "entity_ids": ["e:church"],
+      "author_ids": ["a:john_chrysostom"],
+      "theme_ids": ["t:pastoral"],
+      "segment_ids": ["seg:PG144:002"],
+      "snapshot_ids": ["snap:PG144:global-v1"],
+      "raw": {"mode": "external", "published": true, "url": "https://raw.example.org/ocr/PG144/396.txt"}
+    }
+  ]
+}

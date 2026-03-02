@@ -1,0 +1,40 @@
+---
+const { page, summary, excerpt, keywords = [], entities = [], segments = [], snapshots = [], rawUrl } = Astro.props;
+---
+<section class="card" aria-labelledby="page-meta-heading">
+  <header style="display:flex;justify-content:space-between;align-items:flex-start;gap:var(--space-3);">
+    <div>
+      <p style="margin:0;color:var(--color-muted);">Página</p>
+      <h2 id="page-meta-heading" style="margin:0;">{page?.label ?? '—'}</h2>
+    </div>
+    {rawUrl && <a class="button secondary" href={rawUrl} target="_blank" rel="noreferrer">Abrir OCR bruto</a>}
+  </header>
+  <div style="margin-top:var(--space-4); display:grid; gap:var(--space-4);">
+    <div>
+      <h3 style="margin:0 0 0.35rem; font-family: var(--font-serif);">Resumo</h3>
+      <p style="margin:0;">{summary ?? 'Sem resumo disponível.'}</p>
+    </div>
+    <div>
+      <h3 style="margin:0 0 0.35rem; font-family: var(--font-serif);">Trecho</h3>
+      <p style="margin:0; color:var(--color-muted);">{excerpt ?? 'Sem trecho fornecido.'}</p>
+    </div>
+    <div class="meta-grid">
+      <div class="meta-block">
+        <h4>Keywords</h4>
+        <ul class="chips">{keywords.map((k) => <li>{k}</li>)}</ul>
+      </div>
+      <div class="meta-block">
+        <h4>Entidades</h4>
+        <ul class="chips">{entities.map((e) => <li>{e}</li>)}</ul>
+      </div>
+      <div class="meta-block">
+        <h4>Segmentos</h4>
+        <ul class="chips">{segments.map((s) => <li>{s}</li>)}</ul>
+      </div>
+      <div class="meta-block">
+        <h4>Snapshots</h4>
+        <ul class="chips">{snapshots.map((s) => <li>{s}</li>)}</ul>
+      </div>
+    </div>
+  </div>
+</section>

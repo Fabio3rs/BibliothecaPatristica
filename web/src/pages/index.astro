@@ -1,0 +1,69 @@
+---
+import Layout from '../components/Layout.astro';
+const base = import.meta.env.BASE_URL || '/';
+const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
+const assetBase = baseWithSlash; // para uso em scripts, garantindo a barra final
+---
+<Layout title="Bibliotheca Patristica" description="Demo estática" breadcrumbs={[{label:'Início'}]}>
+  <section class="card" style="margin-top:var(--space-4);">
+    <h1 style="margin-top:0;font-family:var(--font-serif);">Bibliotheca Patristica (demo)</h1>
+    <p>Protótipo estático para a camada publicada: manifests JSON, busca mock e viewer de página.</p>
+    <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-4);">
+      <a class="button" href={`${baseWithSlash}search`}>Buscar</a>
+      <a class="button secondary" href={`${baseWithSlash}viewer?doc=PG144&page=396`}>Abrir viewer demo</a>
+    </div>
+  </section>
+
+  <section class="card" style="margin-top:var(--space-4);">
+    <header style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);flex-wrap:wrap;">
+      <div>
+        <p style="margin:0;color:var(--color-muted);">Explorar temas</p>
+        <h2 style="margin:0;font-family:var(--font-serif);">Nuvem de tags (mock)</h2>
+      </div>
+      <small style="color:var(--color-muted);">Baseada em dict/keywords.json</small>
+    </header>
+    <div id="tag-cloud" style="margin-top:var(--space-4); display:flex; gap:0.6rem; flex-wrap:wrap; align-items:flex-end;">
+      <p style="margin:0;color:var(--color-muted);">Carregando tags...</p>
+    </div>
+  </section>
+
+  <script type="module" define:vars={{ assetBase }}>
+    const cloud = document.getElementById('tag-cloud');
+    // BASE calculada no servidor e injetada como literal.
+    const searchUrl = (tag) => `${assetBase}search?term=${encodeURIComponent(tag)}`;
+
+    function renderCloud(items) {
+      cloud.innerHTML = '';
+      const min = 0.9, max = 1.6;
+      const count = items.length || 1;
+      const sizes = items.map((_, i) => min + (i / Math.max(1, count - 1)) * (max - min));
+      items.forEach((item, idx) => {
+        const a = document.createElement('a');
+        a.href = searchUrl(item.label);
+        a.textContent = item.label;
+        a.style.fontSize = `${sizes[idx]}rem`;
+        a.style.fontWeight = 600;
+        a.style.color = 'var(--color-ink)';
+        a.style.textDecoration = 'none';
+        a.style.padding = '0.2rem 0.35rem';
+        a.style.borderRadius = '6px';
+        a.style.background = 'color-mix(in srgb, var(--color-accent) 10%, var(--color-surface))';
+        a.style.border = '1px solid var(--color-border)';
+        cloud.appendChild(a);
+      });
+    }
+
+    async function loadTags() {
+      try {
+        const res = await fetch(`${assetBase}dict/keywords.json`);
+        const data = await res.json();
+        const items = (data.items || []).slice(0, 20); // limita para demo
+        renderCloud(items);
+      } catch (err) {
+        cloud.innerHTML = `<p style="margin:0;color:var(--color-muted);">Falha ao carregar tags.</p>`;
+      }
+    }
+
+    loadTags();
+  </script>
+</Layout>

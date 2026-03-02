@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "PG144",
+  "slug": "PG144",
+  "collection_id": "PG",
+  "title": "Patrologia Graeca 144",
+  "author_ids": ["a:john_chrysostom"],
+  "theme_ids": ["t:trinity", "t:homily"],
+  "page_first": 1,
+  "page_last": 800,
+  "page_count": 800,
+  "page_block_size": 100,
+  "page_blocks": [
+    { "index": 1, "file": "meta/PG144-pages-001.json", "page_first": 394, "page_last": 396, "count": 3 }
+  ],
+  "segment_blocks": [
+    { "index": 1, "file": "segments/PG144-segments-001.json", "segment_count": 2 }
+  ],
+  "snapshot_blocks": [
+    { "index": 1, "file": "snapshots/PG144-snapshots.json", "snapshot_count": 1 }
+  ],
+  "raw": {
+    "mode": "external",
+    "base_url": "https://raw.example.org/ocr/PG144/",
+    "pattern": "{page}.txt"
+  },
+  "stats": {
+    "pages_with_summary": 100,
+    "pages_with_excerpt": 100,
+    "pages_with_raw": 100,
+    "segments": 2,
+    "snapshots": 1
+  },
+  "updated_at": "2026-03-02T12:00:00Z"
+}

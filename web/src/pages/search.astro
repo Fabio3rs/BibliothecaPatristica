@@ -1,0 +1,106 @@
+---
+import Layout from '../components/Layout.astro';
+import FiltersPanel from '../components/FiltersPanel.astro';
+import ResultCard from '../components/ResultCard.astro';
+const base = import.meta.env.BASE_URL || '/';
+const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
+---
+<Layout title="Busca" description="Busca mock" breadcrumbs={[{label:'Início', href: baseWithSlash},{label:'Busca'}]}>
+  <div class="main-grid">
+    <FiltersPanel filters={{
+      collection: ['PG','PL','PO'],
+      volume: ['PG144','PL001'],
+      author: ['João Crisóstomo','Agostinho'],
+      theme: ['Trindade','Cristologia','Liturgia']
+    }} />
+
+    <section aria-label="Resultados" style="display:flex;flex-direction:column;gap:var(--space-4);">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);flex-wrap:wrap;">
+        <div>
+          <p style="margin:0;color:var(--color-muted);">Demo</p>
+          <h1 style="margin:0;">Resultados mock</h1>
+        </div>
+        <input id="search-box" type="search" placeholder="Buscar..." style="padding:0.65rem 0.75rem; border-radius:var(--radius-s); border:1px solid var(--color-border); min-width:220px;" />
+      </header>
+
+      <div id="results" class="results-list" aria-live="polite">
+        <p>Carregando dados de demonstração...</p>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" define:vars={{ baseUrl: baseWithSlash }}>
+    const assetBase = baseUrl;
+    const resultsEl = document.getElementById('results');
+    const searchBox = document.getElementById('search-box');
+    const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"]'));
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const termUrl = urlParams.get('term');
+
+    if (termUrl) {
+      searchBox.value = termUrl || '';
+    }
+
+    let data = [];
+
+    async function load() {
+      try {
+        const res = await fetch(assetBase + 'pagefind/mock-search.json');
+        data = await res.json();
+        render();
+      } catch (err) {
+        resultsEl.innerHTML = '<p>Falha ao carregar dados mock.</p>';
+      }
+    }
+
+    function render() {
+      const term = searchBox.value.toLowerCase();
+      const active = {};
+      checkboxes.filter((c) => c.checked).forEach((c) => {
+        if (!active[c.name]) active[c.name] = [];
+        active[c.name].push(c.value);
+      });
+
+      const filtered = data.filter((item) => {
+        const textMatch =
+          !term ||
+          item.title.toLowerCase().includes(term) ||
+          item.snippet.toLowerCase().includes(term);
+        if (!textMatch) return false;
+        for (const k in active) {
+          const vals = active[k];
+          if (!vals || !vals.length) continue;
+          const itemVals = (item.filters && item.filters[k]) || [];
+          if (!vals.some((v) => itemVals.includes(v))) return false;
+        }
+        return true;
+      });
+
+      if (!filtered.length) {
+        resultsEl.innerHTML = '<p>Nenhum resultado nos mocks.</p>';
+        return;
+      }
+
+      resultsEl.innerHTML = '';
+      filtered.forEach((item) => {
+        const badges = Object.values(item.filters || {}).flat();
+        const card = document.createElement('div');
+        const target = item.url && item.url.startsWith('http')
+          ? item.url
+          : assetBase + (item.url || '').replace(/^\//, '');
+        card.innerHTML = `<article class="card">
+          <h3 class="result-title"><a href="${target}">${item.title}</a></h3>
+          <p class="result-snippet">${item.snippet}</p>
+          <ul class="chips">${badges.map((b) => `<li>${b}</li>`).join('')}</ul>
+        </article>`;
+        resultsEl.appendChild(card.firstElementChild);
+      });
+    }
+
+    searchBox.addEventListener('input', render);
+    checkboxes.forEach((cb) => cb.addEventListener('change', render));
+
+    load();
+  </script>
+</Layout>

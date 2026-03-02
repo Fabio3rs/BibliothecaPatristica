@@ -1,0 +1,12 @@
+---
+const { title, url, snippet, badges = [] } = Astro.props;
+---
+<article class="card">
+  <h3 class="result-title"><a href={url}>{title}</a></h3>
+  <p class="result-snippet">{snippet}</p>
+  {badges.length > 0 && (
+    <ul class="chips" aria-label="Metadados">
+      {badges.map((b) => <li>{b}</li>)}
+    </ul>
+  )}
+</article>

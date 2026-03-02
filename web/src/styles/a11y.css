@@ -1,0 +1,10 @@
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --color-border: color-mix(in srgb, var(--color-accent) 40%, #000);
+    --shadow-soft: none;
+  }
+}
