@@ -1,6 +1,5 @@
 ---
 import Layout from '../components/Layout.astro';
-import PageMetadata from '../components/PageMetadata.astro';
 const base = import.meta.env.BASE_URL || '/';
 const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
 ---
@@ -17,17 +16,40 @@ const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
   <script type="module" define:vars={{ assetBase: baseWithSlash }}>
     const viewerRoot = document.getElementById('viewer-root');
 
-    const dictCache = {};
-
     async function getJSON(path) {
       const res = await fetch(path);
       if (!res.ok) throw new Error('Erro ao buscar ' + path);
       return res.json();
     }
 
+    function safeUrl(raw) {
+      if (!raw) return '#';
+      try {
+        const resolved = new URL(raw, window.location.origin);
+        const isSameOrigin = resolved.origin === window.location.origin;
+        const isHttps = resolved.protocol === 'https:';
+        const isHttp = resolved.protocol === 'http:';
+        if (isSameOrigin) return resolved.pathname + resolved.search + resolved.hash;
+        if (import.meta.env.DEV && (isHttp || isHttps)) return raw;
+        if (!import.meta.env.DEV && isHttps) return raw;
+        return '#';
+      } catch (err) {
+        if (raw.startsWith('/')) return raw;
+        return '#';
+      }
+    }
+
     function labelize(ids = [], dict = []) {
       const map = new Map(dict.map((d) => [d.id, d.label]));
       return ids.map((id) => map.get(id) || id);
+    }
+
+    function labelizeCategories(catObj = {}, dict = []) {
+      const map = new Map(dict.map((d) => [d.id, d.label]));
+      return Object.entries(catObj).map(([cat, ids]) => {
+        const labels = (ids || []).map((id) => map.get(id) || id).filter(Boolean);
+        return { cat, labels };
+      }).filter((c) => c.labels.length);
     }
 
     async function load() {
@@ -63,52 +85,149 @@ const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
         const pageSnapshots = snapshots.filter((s) => (page.snapshot_ids || []).includes(s.id));
 
         const keywordsLabels = labelize(page.keyword_ids, keywords.items);
+        const keywordCategories = labelizeCategories(page.keyword_categories, keywords.items);
         const entitiesLabels = labelize(page.entity_ids, entities.items);
         const segmentLabels = pageSegments.map((s) => s.label);
         const snapshotLabels = pageSnapshots.map((s) => s.label);
+        const summaryGlobal = page.summary_global || pageSnapshots[0]?.summary || '';
 
         viewerRoot.innerHTML = '';
-        const section = document.createElement('section');
-        section.innerHTML = `<div class="card">
-          <header style="display:flex;justify-content:space-between;align-items:flex-start;gap:var(--space-3);">
-            <div>
-              <p style="margin:0;color:var(--color-muted);">Volume ${volume.id}</p>
-              <h2 style="margin:0;">Página ${page.page}</h2>
-            </div>
-            ${page.raw?.url ? `<a class="button secondary" href="${page.raw.url}" target="_blank" rel="noreferrer">Abrir OCR bruto</a>` : ''}
-          </header>
-          <div style="margin-top:var(--space-4); display:grid; gap:var(--space-4);">
-            <div>
-              <h3 style="margin:0 0 0.35rem; font-family: var(--font-serif);">Resumo</h3>
-              <p style="margin:0;">${page.summary_page || 'Sem resumo disponível.'}</p>
-            </div>
-            <div>
-              <h3 style="margin:0 0 0.35rem; font-family: var(--font-serif);">Trecho</h3>
-              <p style="margin:0; color:var(--color-muted);">${page.excerpt || 'Sem trecho fornecido.'}</p>
-            </div>
-            <div class="meta-grid">
-              <div class="meta-block">
-                <h4>Keywords</h4>
-                <ul class="chips">${keywordsLabels.map((k) => `<li>${k}</li>`).join('')}</ul>
-              </div>
-              <div class="meta-block">
-                <h4>Entidades</h4>
-                <ul class="chips">${entitiesLabels.map((e) => `<li>${e}</li>`).join('')}</ul>
-              </div>
-              <div class="meta-block">
-                <h4>Segmentos</h4>
-                <ul class="chips">${segmentLabels.map((s) => `<li>${s}</li>`).join('')}</ul>
-              </div>
-              <div class="meta-block">
-                <h4>Snapshots</h4>
-                <ul class="chips">${snapshotLabels.map((s) => `<li>${s}</li>`).join('')}</ul>
-              </div>
-            </div>
-          </div>
-        </div>`;
-        viewerRoot.appendChild(section.firstElementChild);
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        const header = document.createElement('header');
+        header.style.cssText = 'display:flex;justify-content:space-between;align-items:flex-start;gap:var(--space-3);';
+
+        const left = document.createElement('div');
+        const volP = document.createElement('p');
+        volP.style.margin = '0';
+        volP.style.color = 'var(--color-muted)';
+        volP.textContent = `Volume ${volume.id}`;
+        const h2 = document.createElement('h2');
+        h2.style.margin = '0';
+        h2.textContent = `Página ${page.page}`;
+        left.appendChild(volP);
+        left.appendChild(h2);
+        if (page.created_at) {
+          const metaP = document.createElement('p');
+          metaP.style.cssText = 'margin:0; color:var(--color-muted); font-size:0.9rem;';
+          metaP.textContent = `Gerado em ${page.created_at}`;
+          left.appendChild(metaP);
+        }
+        header.appendChild(left);
+
+        const rawHref = safeUrl(page.raw?.url);
+        if (page.raw?.url && rawHref !== '#') {
+          const rawLink = document.createElement('a');
+          rawLink.className = 'button secondary';
+          rawLink.href = rawHref;
+          rawLink.target = '_blank';
+          rawLink.rel = 'noreferrer';
+          rawLink.textContent = 'Abrir OCR bruto';
+          header.appendChild(rawLink);
+        }
+
+        const content = document.createElement('div');
+        content.style.cssText = 'margin-top:var(--space-4); display:grid; gap:var(--space-4);';
+
+        function addTextBlock(title, text) {
+          const wrap = document.createElement('div');
+          const h = document.createElement('h3');
+          h.style.cssText = 'margin:0 0 0.35rem; font-family: var(--font-serif);';
+          h.textContent = title;
+          const p = document.createElement('p');
+          p.style.margin = '0';
+          p.style.whiteSpace = 'pre-line';
+          p.textContent = text || 'Sem conteúdo disponível.';
+          wrap.appendChild(h);
+          wrap.appendChild(p);
+          return wrap;
+        }
+
+        const resumo = addTextBlock('Resumo da página', page.summary_page);
+        const resumoGlobal = addTextBlock('Resumo global', summaryGlobal);
+
+        const trecho = document.createElement('div');
+        const trechoH = document.createElement('h3');
+        trechoH.style.cssText = 'margin:0 0 0.35rem; font-family: var(--font-serif);';
+        trechoH.textContent = 'Trecho';
+        const trechoP = document.createElement('p');
+        trechoP.style.margin = '0';
+        trechoP.style.color = 'var(--color-muted)';
+        trechoP.textContent = page.excerpt || 'Sem trecho fornecido.';
+        trecho.appendChild(trechoH);
+        trecho.appendChild(trechoP);
+
+        const metaGrid = document.createElement('div');
+        metaGrid.className = 'meta-grid';
+
+        const blocks = [
+          { title: 'Keywords', items: keywordsLabels },
+          { title: 'Categorias', categories: keywordCategories },
+          { title: 'Entidades', items: entitiesLabels },
+          { title: 'Segmentos', items: segmentLabels },
+          { title: 'Snapshots', items: snapshotLabels }
+        ];
+
+        blocks.forEach(({ title, items, categories }) => {
+          const block = document.createElement('div');
+          block.className = 'meta-block';
+          const h4 = document.createElement('h4');
+          h4.textContent = title;
+          block.appendChild(h4);
+
+          if (categories) {
+            if (!categories.length) {
+              const empty = document.createElement('p');
+              empty.className = 'muted';
+              empty.textContent = 'Nenhuma categoria para esta página.';
+              block.appendChild(empty);
+            } else {
+              categories.forEach(({ cat, labels }) => {
+                const catTitle = document.createElement('p');
+                catTitle.style.cssText = 'margin:0 0 0.35rem; font-weight:600;';
+                catTitle.textContent = cat;
+                const ul = document.createElement('ul');
+                ul.className = 'chips';
+                labels.forEach((txt) => {
+                  const li = document.createElement('li');
+                  li.textContent = txt;
+                  ul.appendChild(li);
+                });
+                block.appendChild(catTitle);
+                block.appendChild(ul);
+              });
+            }
+          } else {
+            const ul = document.createElement('ul');
+            ul.className = 'chips';
+            if (items && items.length) {
+              items.forEach((txt) => {
+                const li = document.createElement('li');
+                li.textContent = txt;
+                ul.appendChild(li);
+              });
+            } else {
+              const li = document.createElement('li');
+              li.textContent = 'Nenhum dado';
+              li.className = 'muted';
+              ul.appendChild(li);
+            }
+            block.appendChild(ul);
+          }
+          metaGrid.appendChild(block);
+        });
+
+        content.appendChild(resumo);
+        content.appendChild(resumoGlobal);
+        content.appendChild(trecho);
+        content.appendChild(metaGrid);
+
+        card.appendChild(header);
+        card.appendChild(content);
+        viewerRoot.appendChild(card);
       } catch (err) {
-        viewerRoot.innerHTML = `<p>Erro ao carregar viewer: ${err.message}</p>`;
+        viewerRoot.textContent = `Erro ao carregar viewer: ${err.message}`;
       }
     }
 

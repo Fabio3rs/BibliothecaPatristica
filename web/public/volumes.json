@@ -1,39 +1,26 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-03-02T12:00:00Z",
-  "site": {
-    "title": "Bibliotheca Patristica",
-    "viewer_url": "viewer",
-    "search_bundles": ["pagefind/mock"],
-    "default_raw_mode": "external"
-  },
-  "dict": {
-    "keywords": "dict/keywords.json",
-    "entities": "dict/entities.json",
-    "authors": "dict/authors.json",
-    "themes": "dict/themes.json",
-    "collections": "dict/collections.json"
-  },
+  "generated_at": "2026-03-02T23:58:26+00:00",
   "volumes": [
     {
       "id": "PG144",
-      "slug": "PG144",
       "collection_id": "PG",
-      "title": "Patrologia Graeca 144",
-      "author_ids": ["a:john_chrysostom"],
-      "theme_ids": ["t:trinity", "t:homily"],
-      "page_first": 1,
-      "page_last": 800,
-      "page_count": 800,
+      "page_first": 2,
+      "page_last": 731,
+      "page_count": 728,
       "meta_url": "meta/PG144.json",
-      "search_bundle": "pagefind/mock",
-      "viewer_url_template": "viewer?doc=PG144&page={page}",
-      "raw": {
-        "mode": "external",
-        "base_url": "https://raw.example.org/ocr/PG144/",
-        "pattern": "{page}.txt"
-      },
-      "updated_at": "2026-03-02T12:00:00Z"
+      "search_bundle": "pagefind/main",
+      "viewer_url_template": "/pdfocr/viewer?doc=PG144&page={page}"
+    },
+    {
+      "id": "PL001",
+      "collection_id": "PL",
+      "page_first": 1,
+      "page_last": 691,
+      "page_count": 690,
+      "meta_url": "meta/PL001.json",
+      "search_bundle": "pagefind/main",
+      "viewer_url_template": "/pdfocr/viewer?doc=PL001&page={page}"
     }
   ]
 }

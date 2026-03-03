@@ -10,6 +10,7 @@
   --color-accent-strong: #0f4e59;
   --color-border: #d7d1c8;
   --color-focus: #c94f3d;
+  --color-surface-2: color-mix(in srgb, var(--color-surface) 90%, var(--color-bg) 10%);
 
   --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
   --radius-s: 6px;
@@ -32,6 +33,7 @@
     --color-border: #2c323a;
     --color-accent: #5fb0c2;
     --color-accent-strong: #4393a4;
+    --color-surface-2: color-mix(in srgb, var(--color-surface) 75%, #000 25%);
     --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.45);
   }
 }

@@ -2,6 +2,10 @@
 
 Digitalização e processamento das coleções *Patrologia Graeca*, *Latina* e *Orientalis* para gerar texto OCR, resumos e keywords em português. Os PDFs/imagens originais **não** são versionados; apenas os `.txt` de OCR são mantidos. Próximos passos incluem busca FTS5 e RAG/agent.
 
+## Escopo e volume de dados
+- Corpus OCR versionado em `teste/P*/text/*`: ~289.852 arquivos de página.
+- Volume total estimado: perto de **1 bilhão de tokens** de texto bruto.
+
 ## Scripts essenciais
 - `main2.py` — OCR página a página com Tesseract + OpenCV (lat/grc), paralelismo com limites OMP.
 - `resumo_serial.py` — Gera resumos/keywords por página a partir dos `.txt` (Ollama padrão ou OpenAI).

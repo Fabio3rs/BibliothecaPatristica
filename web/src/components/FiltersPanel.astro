@@ -1,25 +1,27 @@
 ---
-const { filters = {} } = Astro.props;
-const sections = [
-  { key: 'collection', label: 'Coleção' },
-  { key: 'volume', label: 'Volume' },
-  { key: 'author', label: 'Autor' },
-  { key: 'theme', label: 'Tema' }
-];
+const { sections = [], loading = false } = Astro.props;
 ---
 <aside class="card" aria-label="Filtros">
   <h2 style="margin-top:0;">Filtros</h2>
-  <div class="filters">
-    {sections.map((section) => (
-      <div>
-        <h3>{section.label}</h3>
-        {(filters[section.key] || []).map((item) => (
-          <label>
-            <input type="checkbox" name={section.key} value={item} />
-            {item}
-          </label>
-        ))}
-      </div>
-    ))}
-  </div>
+  {loading ? (
+    <p class="muted" style="margin:0;">Carregando filtros...</p>
+  ) : (
+    <div class="filters">
+      {sections.map((section) => (
+        <div>
+          <h3>{section.label}</h3>
+          {(section.items || []).length ? (
+            section.items.map((item) => (
+              <label>
+                <input type="checkbox" name={section.key} value={item} />
+                {item}
+              </label>
+            ))
+          ) : (
+            <p class="muted" style="margin:0;">Sem opções</p>
+          )}
+        </div>
+      ))}
+    </div>
+  )}
 </aside>

@@ -1,30 +1,35 @@
 ---
 import Layout from '../components/Layout.astro';
 import FiltersPanel from '../components/FiltersPanel.astro';
-import ResultCard from '../components/ResultCard.astro';
 const base = import.meta.env.BASE_URL || '/';
 const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
 ---
-<Layout title="Busca" description="Busca mock" breadcrumbs={[{label:'Início', href: baseWithSlash},{label:'Busca'}]}>
+<Layout title="Busca" description="Busca" breadcrumbs={[{label:'Início', href: baseWithSlash},{label:'Busca'}]}>
   <div class="main-grid">
-    <FiltersPanel filters={{
-      collection: ['PG','PL','PO'],
-      volume: ['PG144','PL001'],
-      author: ['João Crisóstomo','Agostinho'],
-      theme: ['Trindade','Cristologia','Liturgia']
-    }} />
+    <FiltersPanel client:idle loading={true} />
 
     <section aria-label="Resultados" style="display:flex;flex-direction:column;gap:var(--space-4);">
       <header style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);flex-wrap:wrap;">
         <div>
-          <p style="margin:0;color:var(--color-muted);">Demo</p>
-          <h1 style="margin:0;">Resultados mock</h1>
+          <p style="margin:0;color:var(--color-muted);">Busca estática (Pagefind)</p>
+          <h1 style="margin:0;">Resultados</h1>
         </div>
-        <input id="search-box" type="search" placeholder="Buscar..." style="padding:0.65rem 0.75rem; border-radius:var(--radius-s); border:1px solid var(--color-border); min-width:220px;" />
+        <div style="display:flex;align-items:center;gap:var(--space-2);flex-wrap:wrap;">
+          <label class="sr-only" for="search-box">Buscar</label>
+          <input id="search-box" type="search" placeholder="Buscar..." style="padding:0.65rem 0.75rem; border-radius:var(--radius-s); border:1px solid var(--color-border); min-width:220px;" />
+
+          <label for="page-size" style="font-size:0.9rem;color:var(--color-muted);">Itens:</label>
+          <select id="page-size" style="padding:0.45rem 0.55rem; border-radius:var(--radius-s); border:1px solid var(--color-border);">
+            <option value="10">10</option>
+            <option value="25" selected>25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </div>
       </header>
 
       <div id="results" class="results-list" aria-live="polite">
-        <p>Carregando dados de demonstração...</p>
+        <p>Carregando índice...</p>
       </div>
     </section>
   </div>
@@ -33,74 +38,200 @@ const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
     const assetBase = baseUrl;
     const resultsEl = document.getElementById('results');
     const searchBox = document.getElementById('search-box');
-    const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"]'));
+    const pageSizeSel = document.getElementById('page-size');
+    const filtersRoot = document.querySelector('aside[aria-label="Filtros"]');
+    let checkboxNodes = [];
 
     const urlParams = new URLSearchParams(window.location.search);
     const termUrl = urlParams.get('term');
-
-    if (termUrl) {
-      searchBox.value = termUrl || '';
+    if (termUrl) searchBox.value = termUrl || '';
+    const pageSizeParam = parseInt(urlParams.get('pageSize'), 10);
+    if (!Number.isNaN(pageSizeParam) && pageSizeParam > 0) {
+      pageSizeSel.value = String(pageSizeParam);
     }
 
-    let data = [];
+    let pagefindInstance = null;
+    let pagefindPromise = null;
 
-    async function load() {
+    const basePath = assetBase.endsWith('/') ? assetBase.slice(0, -1) : assetBase;
+
+    async function loadFilters() {
       try {
-        const res = await fetch(assetBase + 'pagefind/mock-search.json');
-        data = await res.json();
-        render();
+        const [volumesObj, keywordsObj] = await Promise.all([
+          fetch(`${assetBase}volumes.json`).then((r) => r.json()),
+          fetch(`${assetBase}dict/keywords.json`).then((r) => r.json()),
+        ]);
+
+        const volumes = volumesObj.volumes || [];
+        const keywords = keywordsObj.items || [];
+
+        const collections = Array.from(new Set(volumes.map((v) => v.collection_id))).sort();
+        const volumeIds = volumes.map((v) => v.id).sort();
+        const keywordLabels = keywords.map((k) => k.label).sort().slice(0, 300); // cap para não explodir UI
+
+        const sections = [
+          { key: 'collection', label: 'Coleção', items: collections },
+          { key: 'volume', label: 'Volume', items: volumeIds },
+          { key: 'keyword', label: 'Keywords', items: keywordLabels },
+        ];
+
+        filtersRoot.innerHTML = `
+          <h2 style="margin-top:0;">Filtros</h2>
+          <div class="filters">
+            ${sections.map((sec) => `
+              <div>
+                <h3>${sec.label}</h3>
+                ${sec.items.length ? sec.items.map((item) => `
+                  <label>
+                    <input type="checkbox" name="${sec.key}" value="${item}">
+                    ${item}
+                  </label>
+                `).join('') : '<p class="muted" style="margin:0;">Sem opções</p>'}
+              </div>
+            `).join('')}
+          </div>
+        `;
+
+        checkboxNodes = Array.from(filtersRoot.querySelectorAll('input[type="checkbox"]'));
+        checkboxNodes.forEach((cb) => cb.addEventListener('change', render));
       } catch (err) {
-        resultsEl.innerHTML = '<p>Falha ao carregar dados mock.</p>';
+        filtersRoot.innerHTML = '<p class="muted" style="margin:0;">Filtros indisponíveis.</p>';
+        console.error(err);
       }
     }
 
-    function render() {
-      const term = searchBox.value.toLowerCase();
-      const active = {};
-      checkboxes.filter((c) => c.checked).forEach((c) => {
-        if (!active[c.name]) active[c.name] = [];
-        active[c.name].push(c.value);
-      });
+    function normalizeUrl(raw) {
+      if (!raw) return '#';
+      if (/^https?:\/\//i.test(raw)) return raw; // Absolutos
 
-      const filtered = data.filter((item) => {
-        const textMatch =
-          !term ||
-          item.title.toLowerCase().includes(term) ||
-          item.snippet.toLowerCase().includes(term);
-        if (!textMatch) return false;
-        for (const k in active) {
-          const vals = active[k];
-          if (!vals || !vals.length) continue;
-          const itemVals = (item.filters && item.filters[k]) || [];
-          if (!vals.some((v) => itemVals.includes(v))) return false;
+      // Remove repetição do base em qualquer formato
+      let path = raw.trim();
+      const baseNoSlash = basePath.replace(/^\//, '');
+      const stripPrefixes = [basePath, `${basePath}/`, baseNoSlash, `${baseNoSlash}/`];
+      for (const pref of stripPrefixes) {
+        while (path.startsWith(pref)) {
+          path = path.slice(pref.length);
         }
-        return true;
-      });
-
-      if (!filtered.length) {
-        resultsEl.innerHTML = '<p>Nenhum resultado nos mocks.</p>';
-        return;
       }
 
-      resultsEl.innerHTML = '';
-      filtered.forEach((item) => {
-        const badges = Object.values(item.filters || {}).flat();
-        const card = document.createElement('div');
-        const target = item.url && item.url.startsWith('http')
-          ? item.url
-          : assetBase + (item.url || '').replace(/^\//, '');
-        card.innerHTML = `<article class="card">
-          <h3 class="result-title"><a href="${target}">${item.title}</a></h3>
-          <p class="result-snippet">${item.snippet}</p>
-          <ul class="chips">${badges.map((b) => `<li>${b}</li>`).join('')}</ul>
-        </article>`;
-        resultsEl.appendChild(card.firstElementChild);
+      // Garante barra inicial
+      if (!path.startsWith('/')) path = `/${path}`;
+
+      return `${basePath}${path}`;
+    }
+
+    async function ensurePagefind() {
+      if (pagefindInstance) return pagefindInstance;
+      if (pagefindPromise) return pagefindPromise;
+      pagefindPromise = (async () => {
+        try {
+          const mod = await import(`${assetBase}pagefind/pagefind.js`);
+          // Caso o bundle já retorne uma instância com search
+          if (mod && typeof mod.search === 'function') return mod;
+          const pfModule = mod?.default || mod?.pagefind || mod;
+          if (pfModule && typeof pfModule.search === 'function') return pfModule;
+          if (pfModule && typeof pfModule.init === 'function') {
+            const pf = await pfModule.init({ basePath: `${assetBase}pagefind/` });
+            if (pf && typeof pf.search === 'function') return pf;
+          }
+          throw new Error('Bundle Pagefind sem search/init utilizável');
+        } catch (err) {
+          console.error(err);
+          resultsEl.textContent = 'Índice Pagefind não disponível. Gere o índice e recarregue.';
+          return null;
+        }
+      })();
+      pagefindInstance = await pagefindPromise;
+      return pagefindInstance;
+    }
+
+    async function render() {
+      const term = (searchBox.value || '').trim();
+      const searchTerm = term === '' ? '*' : term;
+      const pageSize = parseInt(pageSizeSel.value, 10) || 25;
+      const filters = {};
+      checkboxNodes.filter((c) => c.checked).forEach((c) => {
+        if (!filters[c.name]) filters[c.name] = [];
+        filters[c.name].push(c.value);
       });
+
+      try {
+        const pf = await ensurePagefind();
+        if (!pf) return;
+        if (typeof pf.search !== 'function') {
+          resultsEl.textContent = 'Índice Pagefind não disponível.';
+          return;
+        }
+        const searchResult = await pf.search(searchTerm, { filters: Object.keys(filters).length ? filters : undefined });
+        if (!searchResult || !searchResult.results) {
+          resultsEl.textContent = 'Índice Pagefind não disponível ou vazio.';
+          return;
+        }
+        let hits = await Promise.all(searchResult.results.map((r) => r.data()));
+        const total = hits.length;
+        let truncated = false;
+        if (searchTerm === '*' && total > pageSize) {
+          hits = hits.slice(0, pageSize);
+          truncated = true;
+        }
+        if (!hits.length) {
+          resultsEl.textContent = term ? 'Nenhum resultado.' : 'Índice vazio (gere o Pagefind).';
+          return;
+        }
+
+        resultsEl.innerHTML = '';
+        if (truncated) {
+          const info = document.createElement('p');
+          info.className = 'results-info';
+          info.textContent = `Mostrando ${hits.length} de ${total} resultados. Use filtros ou aumente "Itens".`;
+          resultsEl.appendChild(info);
+        }
+
+        hits.forEach((hit) => {
+          const article = document.createElement('article');
+          article.className = 'card';
+
+          const h3 = document.createElement('h3');
+          h3.className = 'result-title';
+          const link = document.createElement('a');
+          const rawUrl = hit.url || '#';
+          const target = normalizeUrl(rawUrl);
+          link.href = target;
+          link.textContent = hit.meta?.title || 'Sem título';
+          h3.appendChild(link);
+
+          const snippet = document.createElement('p');
+          snippet.className = 'result-snippet';
+          snippet.textContent = hit.excerpt || (hit.content ? hit.content.slice(0, 180) : 'Sem trecho.');
+
+          article.appendChild(h3);
+          article.appendChild(snippet);
+
+          const badges = [];
+          const filtersHit = hit.filters || {};
+          Object.values(filtersHit).forEach((vals) => {
+            if (Array.isArray(vals)) badges.push(...vals);
+          });
+          if (badges.length) {
+            const chips = document.createElement('ul');
+            chips.className = 'chips';
+            badges.forEach((b) => {
+              const li = document.createElement('li');
+              li.textContent = b;
+              chips.appendChild(li);
+            });
+            article.appendChild(chips);
+          }
+
+          resultsEl.appendChild(article);
+        });
+      } catch (err) {
+        resultsEl.textContent = 'Erro ao buscar no índice.';
+        console.error(err);
+      }
     }
 
     searchBox.addEventListener('input', render);
-    checkboxes.forEach((cb) => cb.addEventListener('change', render));
-
-    load();
+    loadFilters().then(render);
   </script>
 </Layout>
