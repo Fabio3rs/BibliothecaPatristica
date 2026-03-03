@@ -183,7 +183,11 @@ def page_blocks(recs: List[PageRecord], block_size: int, volume_id: str, keyword
 
 def write_json(path: Path, obj: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(obj, ensure_ascii=False, indent=2), encoding="utf-8")
+    # Grava JSON compacto para economizar espaço em disco/banda
+    path.write_text(
+        json.dumps(obj, ensure_ascii=False, separators=(",", ":")),
+        encoding="utf-8",
+    )
 
 
 def main():

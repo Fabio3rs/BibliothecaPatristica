@@ -175,7 +175,11 @@ def main() -> None:
 
     index = build_index(volumes_meta)
     index_path = args.out / "index.json"
-    index_path.write_text(json.dumps(index, ensure_ascii=False, indent=2), encoding="utf-8")
+    # Catálogo em JSON compacto para economizar espaço
+    index_path.write_text(
+        json.dumps(index, ensure_ascii=False, separators=(",", ":")),
+        encoding="utf-8",
+    )
     print(f"[OK] catálogo escrito em {index_path}")
 
 
