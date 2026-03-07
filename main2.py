@@ -2,22 +2,27 @@
 # -*- coding: utf-8 -*-
 
 import base64
+from dataclasses import dataclass
+import hashlib
 import io
 import os
 import sys
 from pathlib import Path
 from typing import List, Optional
 import json
+import unicodedata
 import requests
 import xml.etree.ElementTree as ET
 from pathlib import Path
-
 import numpy as np
 import re
 import cv2
 from PIL import Image
 import pytesseract
 from pdf2image import convert_from_path
+from tools.classify_scan_kind import process as classify_scan_page
+import difflib
+import sqlite3
 
 # ============ CONFIGS PADRÃO ============
 DEFAULT_DPI = 300  # 300dpi é o "doce" do Tesseract; subir só se necessário
@@ -34,6 +39,125 @@ DEFAULT_OLLAMA_URL = "http://localhost:11434/api/chat"
 # Opcional: evitar oversubscription quando você já paraleliza por fora
 # (Tesseract usa OpenMP; limitar as threads internas ajuda quando há várias páginas)
 os.environ.setdefault("OMP_THREAD_LIMIT", "4")  # ajuste conforme seus núcleos
+
+
+@dataclass
+class LatinOverlapResult:
+    overlap_ratio: float  # % de tokens do LLM que aparecem no Tesseract
+    recall_ratio: float  # % de tokens do Tesseract que aparecem no LLM
+    seq_ratio: float  # similaridade de sequência para os tokens comuns
+    llm_only: list[str]  # tokens no LLM mas não no Tesseract — candidatos a alucinação
+    tess_only: list[str]  # tokens no Tesseract mas não no LLM — possível omissão
+    common: list[str]  # tokens confirmados pelos dois
+    llm_token_count: int
+    tess_token_count: int
+
+
+def connect_db(path: Path) -> sqlite3.Connection:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    # Set a longer timeout *before* any PRAGMA that may need a write lock
+    # to avoid "database is locked" when many processes open the cache together.
+    con = sqlite3.connect(path, timeout=30.0)
+    con.row_factory = sqlite3.Row
+    con.execute("PRAGMA busy_timeout = 30000")  # 30s de espera em caso de lock
+    con.execute("PRAGMA journal_mode = WAL")
+    con.execute("PRAGMA foreign_keys = ON")
+    return con
+
+
+def open_tesseract_cache_db():
+    return connect_db(Path("data/tesseract.db"))
+
+
+def init_tesseract_cache(con: sqlite3.Connection) -> None:
+    con.execute(
+        """
+        CREATE TABLE IF NOT EXISTS tesseract_cache (
+            image_hash TEXT PRIMARY KEY,
+            imgpath        TEXT NOT NULL,
+            lang        TEXT NOT NULL,
+            result      TEXT NOT NULL,
+            created_at  TEXT DEFAULT (datetime('now'))
+        )
+    """
+    )
+    con.commit()
+
+
+def get_tesseract_cached(
+    con: sqlite3.Connection, image_path: Path, lang: str
+) -> str | None:
+    # hash do conteúdo do arquivo, não do path — imagem movida ainda bate
+    h = hashlib.md5(image_path.read_bytes()).hexdigest()
+    row = con.execute(
+        "SELECT result FROM tesseract_cache WHERE image_hash = ? AND lang = ?",
+        (h, lang),
+    ).fetchone()
+    return row["result"] if row else None
+
+
+def remove_xml_tags(text: str) -> str:
+    """Remove XML tags from a string."""
+    return re.sub(r"<[^>]+>", "", text)
+
+
+def split_latin_words(text: str) -> List[str]:
+    """Extrai tokens que parecem latim/francês — ignora blocos orientais."""
+    # Pega só palavras com caracteres ASCII + diacríticos latinos
+    tokens = re.findall(r"[a-zA-ZÀ-öø-ÿ]{3,}", text)
+    return tokens
+
+
+def extract_latin_tokens(text: str) -> set[str]:
+    """Extrai tokens que parecem latim/francês — ignora blocos orientais."""
+    # Pega só palavras com caracteres ASCII + diacríticos latinos
+    tokens = re.findall(r"[a-zA-ZÀ-öø-ÿ]{3,}", text)
+    return {t.lower() for t in tokens}
+
+
+def extract_latin_from_xml(xml_text: str) -> set[str]:
+    """Extrai tokens latinos só dos blocos com script=latino."""
+    blocks = re.findall(
+        r'<bloco[^>]*script="(?:latino|misto)"[^>]*>(.*?)</bloco>', xml_text, re.DOTALL
+    )
+    tokens = set()
+    for b in blocks:
+        tokens |= extract_latin_tokens(b)
+    return tokens
+
+
+def latin_overlap_ratio(xml_text: str, tesseract_text: str) -> float:
+    """Retorna % de tokens latinos do XML que aparecem no Tesseract."""
+    xml_tokens = extract_latin_from_xml(xml_text)
+    tess_tokens = extract_latin_tokens(tesseract_text)
+
+    if not xml_tokens:
+        return 1.0  # sem texto latino pra comparar, não penaliza
+
+    matches = xml_tokens & tess_tokens
+    return len(matches) / len(xml_tokens)
+
+
+def prepare_for_diff(text: str) -> list[str]:
+    """
+    Limpeza mínima focada em extrair tokens latinos comparáveis.
+    Não usa clean_ocr_text_optimized — ela é agressiva demais pro diff.
+    """
+    # normalização básica
+    text = unicodedata.normalize("NFC", text)
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
+
+    # une hifenização de fim de linha (ex: "interver-\nsion" → "interversion")
+    text = re.sub(r"-\n([a-zA-ZÀ-öø-ÿ])", r"\1", text)
+
+    # remove bloco de notas inteiro (conteúdo é meta-comentário, não transcrição)
+    text = re.sub(r"<notas>.*?</notas>", "", text, flags=re.DOTALL)
+
+    # remove XML tags se vier do LLM
+    text = re.sub(r"<[^>]+>", "", text)
+
+    # extrai tokens latinos >= 3 chars, lowercase
+    return [t.lower() for t in re.findall(r"[a-zA-ZÀ-öø-ÿ]{3,}", text)]
 
 
 def preprocess_image(img_bgr: np.ndarray) -> np.ndarray:
@@ -147,28 +271,31 @@ MAIS REGRAS:
 """.strip()
 
 
-
 def optimize_image_for_cloud(image_path, max_size=3200):
     """
     Reduz a imagem para acelerar o processamento na nuvem e evitar erro 500 por timeout.
     """
     img = Image.open(image_path)
-    
+
     # Redimensiona mantendo a proporção se for maior que o max_size
     img.thumbnail((max_size, max_size), Image.Resampling.LANCZOS)
-    
+
     # Converte para escala de cinza para reduzir os canais de cor (já que o texto é P&B/Sépia)
     img = img.convert("L")
-    
+
     buffered = io.BytesIO()
     # Salva com compressão JPEG para diminuir drasticamente o payload Base64
     img.save(buffered, format="JPEG", quality=85)
-    
+
     return base64.b64encode(buffered.getvalue()).decode("utf-8")
 
 
 def ollama_process_image(
-    image_path, model: str = DEFAULT_LLM_MODEL, url: str = DEFAULT_OLLAMA_URL, current_try: int = 1
+    image_path,
+    model: str = DEFAULT_LLM_MODEL,
+    url: str = DEFAULT_OLLAMA_URL,
+    current_try: int = 1,
+    prompt: str = PROMPT,
 ):
     if current_try <= 2:
         img_b64 = optimize_image_for_cloud(image_path)
@@ -177,7 +304,7 @@ def ollama_process_image(
 
     payload = {
         "model": model,
-        "messages": [{"role": "user", "content": PROMPT, "images": [img_b64]}],
+        "messages": [{"role": "user", "content": prompt, "images": [img_b64]}],
         "stream": False,
     }
 
@@ -220,7 +347,11 @@ def parse_llm_xml_stats(xml_text):
     stats = {
         "text_length": len(xml_text),
         "total_bbox_area": 0,
-        "is_complete": bool(re.search(r"</pagina>", xml_text)),
+        "is_complete": bool(re.search(r"</pagina>", xml_text))
+        or bool(re.search(r"<pagina[^>]*estado\s*=\s*['\"]vazio['\"]", xml_text))
+        or bool(
+            re.search(r"<pagina[^>]*tipo\s*=\s*['\"]capa_ou_guarda['\"]", xml_text)
+        ),
         "has_refusal": bool(
             re.search(
                 r"(não há texto|página em branco|vazio|sem conteúdo)", xml_text, re.I
@@ -238,6 +369,12 @@ def parse_llm_xml_stats(xml_text):
 
     stats["coverage_ratio"] = stats["total_bbox_area"] / 1_000_000
     return stats
+
+
+def parse_llm_estado(xml_text: str) -> str | None:
+    """Extrai o atributo estado da tag <pagina>."""
+    m = re.search(r'<pagina[^>]*estado="([^"]+)"', xml_text)
+    return m.group(1) if m else None
 
 
 def get_clean_ink_ratio(image_path):
@@ -287,8 +424,15 @@ def validate_ocr_result(llm_text, image_path):
     Retorna: (bool_ok, "motivo")
     """
     xml_stats = parse_llm_xml_stats(llm_text)
+    llm_estado = parse_llm_estado(llm_text)
 
     # 1. Integridade básica (sempre checar primeiro)
+    if llm_estado not in {"com_texto", "vazio"}:
+        return False, "ESTADO_AUSENTE_OU_INVALIDO"
+
+    if llm_estado == "com_texto" and not re.search(r"</pagina>", llm_text):
+        return False, "SEM_FECHO_PAGINA"
+
     if not xml_stats["is_complete"]:
         return False, "XML_INCOMPLETO"
 
@@ -300,17 +444,29 @@ def validate_ocr_result(llm_text, image_path):
     # Se a LLM disse que é capa, costumamos aceitar, a menos que o OpenCV detecte MUITA tinta
     is_cover = 'tipo="capa_ou_guarda"' in llm_text
 
-    # Agora sim chamamos o OpenCV (CLAHE + Denoising)
-    ink_ratio = get_calibrated_ink_ratio(image_path)
+    # Classificação da página (vazia/capa/texto) usando heurísticas de cor/borda
+    page_stats = classify_scan_page(
+        Path(image_path), max_dim=2000, border_frac=0.08, center_frac=0.5
+    )
+
+    ink_ratio = page_stats.ink_ratio
 
     # 4. Validação da Capa: Se for capa, toleramos ink_ratio maior sem disparar erro
-    if is_cover:
+    if is_cover and page_stats.classification == "capa":
         if (
             ink_ratio < 4.0
         ):  # Capas costumam ter ruído de textura, aumentamos o threshold
             return True, "CAPA_CONFIRMADA"
         else:
             return False, f"CAPA_SUSPEITA (Tinta demais: {ink_ratio:.2f}%)"
+
+    # 4.1 Cross-check do atributo estado da LLM com a classificação visual
+    if llm_estado == "vazio":
+        if page_stats.classification == "texto" or ink_ratio > 0.5:
+            return (
+                False,
+                f"LLM_DISSE_VAZIO_MAS_IMAGEM_TEM_TEXTO (ink {ink_ratio:.2f}%, cls {page_stats.classification})",
+            )
 
     # 5. Omissão em páginas comuns
     if ink_ratio > 1.5 and xml_stats["coverage_ratio"] < 0.05:
@@ -319,17 +475,19 @@ def validate_ocr_result(llm_text, image_path):
     return True, "OK"
 
 
-
 def llm_process_image_autoretry(
     image_path: Path,
     retries: int = 10,
     model: str = DEFAULT_LLM_MODEL,
     url: str = DEFAULT_OLLAMA_URL,
+    prompt: str = PROMPT,
 ):
     txt = ""
     for i in range(retries):
         try:
-            txt = ollama_process_image(image_path, model=model, url=url, current_try=i + 1)
+            txt = ollama_process_image(
+                image_path, model=model, url=url, current_try=i + 1, prompt=prompt
+            )
 
             is_ok, reason = validate_ocr_result(txt, image_path)
 
@@ -350,15 +508,41 @@ def llm_process_image_autoretry(
     raise RuntimeError("All attempts failed: " + image_path.name)
 
 
+def preprocess_adaptative_ocr(img_bgr: np.ndarray) -> np.ndarray:
+    """
+    Pré-processamento otimizado para auto-ocr.
+    """
+    gray = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2GRAY)
+
+    # normaliza iluminação não uniforme (papel amarelado, sombras de encadernação)
+    clahe = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(8, 8))
+    gray = clahe.apply(gray)
+
+    # binarização adaptativa — mais robusta que threshold global
+    binary = cv2.adaptiveThreshold(
+        gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 15, 10
+    )
+
+    # remove ruído de papel sem destruir caracteres pequenos
+    kernel = np.ones((2, 2), np.uint8)
+    binary = cv2.morphologyEx(binary, cv2.MORPH_OPEN, kernel)
+
+    return binary
+
+
 def ocr_tesseract(img_path: Image, lang: str = DEFAULT_LANG) -> str:
     with Image.open(img_path) as pil_im:
         # converter para cv2 BGR, pré-processar e voltar para PIL
         im_bgr = cv2.cvtColor(np.array(pil_im), cv2.COLOR_RGB2BGR)
-        im_pre = preprocess_image(im_bgr)
+        im_pre = preprocess_adaptative_ocr(im_bgr)
         pil_pre = Image.fromarray(im_pre)
 
         # OCR
-        txt = pytesseract.image_to_string(pil_pre, lang=lang)
+        txt = pytesseract.image_to_string(
+            pil_pre,
+            lang=lang,
+            config="--psm 3 --oem 1",  # psm 3 = layout automático, oem 1 = LSTM
+        )
 
     return txt
 
@@ -371,6 +555,7 @@ def ocr_images_to_text(
     algorithm: str = "ollama",
     llm_model: str = DEFAULT_LLM_MODEL,
     ollama_url: str = DEFAULT_OLLAMA_URL,
+    prompt: str = PROMPT
 ) -> None:
     """
     Faz OCR página-a-página e salva um .txt por página em txt_dir.
@@ -391,7 +576,7 @@ def ocr_images_to_text(
 
         # leitura streaming, garantindo liberação de memória
         if algorithm == "ollama":
-            txt = llm_process_image_autoretry(img_path, model=llm_model, url=ollama_url)
+            txt = llm_process_image_autoretry(img_path, model=llm_model, url=ollama_url, prompt=prompt)
         else:
             txt = ocr_tesseract(img_path)
 
@@ -488,6 +673,134 @@ def get_current_process_index() -> int:
     """Retorna o índice do processo atual baseado no PID"""
     current_pid = os.getpid()
     return _process_index_map.get(current_pid, -1)
+
+
+def latin_overlap_result(
+    xml_text: str, tesseract_text: str, name: str = ""
+) -> LatinOverlapResult:
+    xml_tokens = prepare_for_diff(
+        xml_text
+    )  # já faz: remove tags, une hifens, extrai tokens
+    tess_tokens = prepare_for_diff(tesseract_text)
+
+    xml_set = set(xml_tokens)
+    tess_set = set(tess_tokens)
+    common = xml_set & tess_set
+
+    llm_only = [t for t in xml_tokens if t not in tess_set]
+    tess_only = [t for t in tess_tokens if t not in xml_set]
+
+    seq_ratio = difflib.SequenceMatcher(
+        None,
+        [t for t in xml_tokens if t in common],
+        [t for t in tess_tokens if t in common],
+    ).ratio()
+
+    overlap_ratio = len(common) / len(xml_set) if xml_set else 1.0
+    recall_ratio = len(common) / len(tess_set) if tess_set else 1.0
+
+    if overlap_ratio < 0.5:
+        # Debug prints para identificar o texto dos dois lados e o arquivo no terminal:
+        print(
+            f"[VERIFY] Resultado {name}; Overlap ratio: {overlap_ratio:.2f} Recall ratio: {recall_ratio:.2f} (LLM): {' '.join(xml_tokens)}; (Tesseract): {' '.join(tess_tokens)}"
+        )
+
+    return LatinOverlapResult(
+        overlap_ratio=overlap_ratio,
+        recall_ratio=recall_ratio,
+        seq_ratio=seq_ratio,
+        llm_only=llm_only,
+        tess_only=tess_only,
+        common=sorted(common),
+        llm_token_count=len(xml_tokens),
+        tess_token_count=len(tess_tokens),
+    )
+
+
+def run_tesseract_cached(con: sqlite3.Connection, image_path: Path, lang: str) -> str:
+    cached = get_tesseract_cached(con, image_path, lang)
+    if cached is not None:
+        return cached
+
+    result = ocr_tesseract(image_path, lang=lang)
+
+    h = hashlib.sha256(image_path.read_bytes()).hexdigest()
+    con.execute(
+        "INSERT OR REPLACE INTO tesseract_cache (image_hash, lang, result, imgpath) VALUES (?, ?, ?, ?)",
+        (h, lang, result, str(image_path)),
+    )
+    con.commit()
+    return result
+
+
+def verify_page(
+    img_path: Path, txt_dir: Path, lang: str = "fra+lat+grc+ell+syr"
+) -> bool:
+    """
+    Verifica se a página foi processada corretamente.
+    """
+    page_txt_path = txt_dir / (img_path.stem + ".txt")
+    if not page_txt_path.exists():
+        print(f"[VERIFY] {img_path.name} — arquivo de texto não encontrado")
+        return False
+
+    txt = page_txt_path.read_text(encoding="utf-8", errors="ignore")
+    if len(txt.strip()) == 0:
+        print(f"[VERIFY] {img_path.name} — texto vazio")
+        return False
+
+    tesseract_db = open_tesseract_cache_db()
+    init_tesseract_cache(tesseract_db)
+
+    tesseractres = run_tesseract_cached(tesseract_db, img_path, lang=lang)
+    overlap = latin_overlap_result(txt, tesseractres, name=img_path.name)
+
+    if overlap.recall_ratio > 0.2 and overlap.recall_ratio <= 0.6:  # LLM detectou texto latino, mas Tesseract só pegou parte → possível degradação ou script complexo
+        print(
+            f"[VERIFY] {img_path.name} — possível degradação/script complexo (Overlap: {overlap.overlap_ratio:.2f}, Recall: {overlap.recall_ratio:.2f})"
+        )
+
+    if overlap.recall_ratio < 0.2:  # LLM detectou muito texto latino, mas Tesseract quase nada → provável omissão ou alucinação
+        # Debug prints para identificar o texto dos dois lados e o arquivo no terminal:
+        page_stats = classify_scan_page(
+            img_path, max_dim=2000, border_frac=0.08, center_frac=0.5
+        )
+        print(
+            f"[VERIFY] Resultado RAW {img_path.name}; Classificação OpenCV2: {page_stats.classification}; Overlap ratio: {overlap.overlap_ratio:.2f}; Recall ratio: {overlap.recall_ratio:.2f} (LLM): {txt}; (Tesseract): {tesseractres}"
+        )
+
+        if page_stats.classification == "capa":
+            is_cover = (
+                'tipo="capa_ou_guarda"' in txt or "<pagina>" in txt
+            )  # pagina sem props
+
+            if is_cover or overlap.llm_token_count < 10:
+                # É capa, então supomos que a LLM esteja correta e o Tesseract só puxou lixo do ruído da capa
+                print(f"[VERIFY] {img_path.name} — é capa")
+                return True
+
+        return False
+
+    return True
+
+
+def verify_one(
+    img_path: Path, txt_dir: Path, lang: str = "fra+lat+grc+ell+syr"
+) -> tuple[Path, bool]:
+    """
+    Verifica se uma única página foi processada corretamente.
+    """
+
+    # Obter informações do processo atual
+    current_pid = os.getpid()
+    process_index = get_current_process_index()
+    omp_places = os.environ.get("OMP_PLACES", "not set")
+
+    print(
+        f"[{time.strftime('%H:%M:%S')}] [START] {img_path.name} (PID: {current_pid}, Index: {process_index}, OMP_PLACES: {omp_places})"
+    )
+
+    return img_path, verify_page(img_path, txt_dir, lang=lang)
 
 
 def _ocr_one(
@@ -609,6 +922,41 @@ def ocr_images_to_text_parallel(
         save_all_text_path.write_text("\n\n".join(all_text_chunks), encoding="utf-8")
 
 
+def verify_all_parallel(
+    images: List[Path],
+    txt_dir: Path,
+    lang: str = "fra+lat+grc+ell+syr",
+    processes: int = 4,
+    omp_threads_per_proc: int = 2,
+    chunksize: int = 2,
+    maxtasksperchild: int = 1000,
+) -> list[Path]:
+    ensure_dir(txt_dir)
+
+    # Reinicializar contadores globais para cada execução
+    global _process_counter, _process_index_map
+    with _process_counter_lock:
+        _process_counter.value = 0
+        _process_index_map.clear()
+
+    ctx = mp.get_context("fork" if sys.platform != "win32" else "spawn")
+    with ctx.Pool(
+        processes=processes,
+        initializer=_init_omp_env,
+        initargs=(omp_threads_per_proc,),
+        maxtasksperchild=maxtasksperchild,
+    ) as pool:
+        worker = partial(verify_one, txt_dir=txt_dir, lang=lang)
+        results = pool.imap_unordered(worker, images, chunksize=chunksize)
+
+        failures = [img_path for img_path, is_valid in results if not is_valid]
+
+    for img_path in failures:
+        print(f"[VERIFY] {img_path.name} — falhou na verificação")
+
+    return failures
+
+
 def main():
     import argparse
 
@@ -644,6 +992,12 @@ def main():
         default=DEFAULT_OLLAMA_URL,
         help=f"Endpoint Ollama (default: {DEFAULT_OLLAMA_URL}).",
     )
+    ap.add_argument(
+        "--verify",
+        action="store_true",
+        default=False,
+        help="Verifica a integridade dos textos comparando resultados .txt prontos com o Tesseract.",
+    )
     args = ap.parse_args()
 
     pdf_path = Path(args.pdf).resolve()
@@ -663,6 +1017,21 @@ def main():
     print(f"Total de imagens: {len(images)}")
 
     concat_path = (base_out / "texto_extraido.txt") if args.concat else None
+
+    if args.verify:
+        print("Verificando integridade dos textos...")
+        verify_all_parallel(
+            images,
+            text_dir,
+            lang=args.lang,
+            processes=args.procs,
+            omp_threads_per_proc=args.omp_threads,
+            chunksize=args.chunksize,
+            maxtasksperchild=args.maxtasksperchild,
+        )
+        print("Verificação concluída.")
+        return
+
     print("OCR paralelo (Pool)...")
     ocr_images_to_text_parallel(
         images,
