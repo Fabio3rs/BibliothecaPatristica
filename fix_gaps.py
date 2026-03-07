@@ -21,7 +21,10 @@ def process_doc(doc_name, idx, total):
         "--fill-gaps",
         "--provider", "openai",
         "--model", "gpt-5-mini",
-        "--reasoning-effort", "low"
+        "--reasoning-effort", "low",
+        # "--provider", "ollama",
+        # "--model", "deepseek-v3.2:cloud",
+        "--retries", "20"
     ]
     
     try:
