@@ -23,6 +23,9 @@ from pdf2image import convert_from_path
 from tools.classify_scan_kind import process as classify_scan_page
 import difflib
 import sqlite3
+import multiprocessing as mp
+from functools import partial
+import time
 
 # ============ CONFIGS PADRÃO ============
 DEFAULT_DPI = 300  # 300dpi é o "doce" do Tesseract; subir só se necessário
@@ -88,7 +91,7 @@ def get_tesseract_cached(
     con: sqlite3.Connection, image_path: Path, lang: str
 ) -> str | None:
     # hash do conteúdo do arquivo, não do path — imagem movida ainda bate
-    h = hashlib.md5(image_path.read_bytes()).hexdigest()
+    h = hashlib.sha256(image_path.read_bytes()).hexdigest()
     row = con.execute(
         "SELECT result FROM tesseract_cache WHERE image_hash = ? AND lang = ?",
         (h, lang),
@@ -462,7 +465,10 @@ def validate_ocr_result(llm_text, image_path):
 
     # 4.1 Cross-check do atributo estado da LLM com a classificação visual
     if llm_estado == "vazio":
-        if page_stats.classification == "texto" or ink_ratio > 0.5:
+        # Se é realmente texto, precisa ter uma certa quantidade de tinta
+        if (
+            page_stats.classification == "texto" and ink_ratio > 0.01
+        ) or ink_ratio > 0.5:
             return (
                 False,
                 f"LLM_DISSE_VAZIO_MAS_IMAGEM_TEM_TEXTO (ink {ink_ratio:.2f}%, cls {page_stats.classification})",
@@ -475,6 +481,128 @@ def validate_ocr_result(llm_text, image_path):
     return True, "OK"
 
 
+def is_library_label(raw: str) -> bool:
+    text = " ".join(prepare_for_diff(raw)).strip()
+
+    # Padrão 1: Nome de universidade (comum em etiquetas de scan)
+    univ_pattern = r"(UNIVERSITY\s+OF\s+[A-Z]+|COLLEGE|LIBRARY|INSTITUTE)"
+
+    # Padrão 2: Sequência de código de barras (grupos de números longos)
+    barcode_pattern = r"(\d{1,4}\s\d{4,8}\s\d{4,8}\s\d{1,2})"
+
+    text_upper = text.upper()
+
+    has_univ = re.search(univ_pattern, text_upper)
+    has_barcode = re.search(barcode_pattern, text_upper)
+
+    # Se tiver ambos ou apenas o código de barras formatado na capa, é etiqueta
+    return bool(has_univ or has_barcode or "etiqueta de biblioteca" in raw) and (
+        len(text) < 100
+    )  # e o texto não pode ser muito longo
+
+
+def latin_overlap_result(
+    xml_text: str, tesseract_text: str, name: str = ""
+) -> LatinOverlapResult:
+    xml_tokens = prepare_for_diff(
+        xml_text
+    )  # já faz: remove tags, une hifens, extrai tokens
+    tess_tokens = prepare_for_diff(tesseract_text)
+
+    xml_set = set(xml_tokens)
+    tess_set = set(tess_tokens)
+    common = xml_set & tess_set
+
+    llm_only = [t for t in xml_tokens if t not in tess_set]
+    tess_only = [t for t in tess_tokens if t not in xml_set]
+
+    seq_ratio = difflib.SequenceMatcher(
+        None,
+        [t for t in xml_tokens if t in common],
+        [t for t in tess_tokens if t in common],
+    ).ratio()
+
+    overlap_ratio = len(common) / len(xml_set) if xml_set else 1.0
+    recall_ratio = len(common) / len(tess_set) if tess_set else 1.0
+
+    if overlap_ratio < 0.5:
+        # Debug prints para identificar o texto dos dois lados e o arquivo no terminal:
+        print(
+            f"[VERIFY] Resultado {name}; Overlap ratio: {overlap_ratio:.2f} Recall ratio: {recall_ratio:.2f} (LLM): {' '.join(xml_tokens)}; (Tesseract): {' '.join(tess_tokens)}"
+        )
+
+    return LatinOverlapResult(
+        overlap_ratio=overlap_ratio,
+        recall_ratio=recall_ratio,
+        seq_ratio=seq_ratio,
+        llm_only=llm_only,
+        tess_only=tess_only,
+        common=sorted(common),
+        llm_token_count=len(xml_tokens),
+        tess_token_count=len(tess_tokens),
+    )
+
+
+def verify_page(
+    img_path: Path, txt_dir: Path, lang: str = "fra+lat+grc+ell+syr"
+) -> bool:
+    """
+    Verifica se a página foi processada corretamente.
+    """
+    page_txt_path = txt_dir / (img_path.stem + ".txt")
+    if not page_txt_path.exists():
+        print(f"[VERIFY] {img_path.name} — arquivo de texto não encontrado")
+        return False
+
+    txt = page_txt_path.read_text(encoding="utf-8", errors="ignore")
+    if len(txt.strip()) == 0:
+        print(f"[VERIFY] {img_path.name} — texto vazio")
+        return False
+
+    tesseract_db = open_tesseract_cache_db()
+    init_tesseract_cache(tesseract_db)
+
+    tesseractres = run_tesseract_cached(tesseract_db, img_path, lang=lang)
+    overlap = latin_overlap_result(txt, tesseractres, name=img_path.name)
+
+    if (
+        overlap.recall_ratio > 0.2 and overlap.recall_ratio <= 0.6
+    ):  # LLM detectou texto latino, mas Tesseract só pegou parte → possível degradação ou script complexo
+        print(
+            f"[VERIFY] {img_path.name} — possível degradação/script complexo (Overlap: {overlap.overlap_ratio:.2f}, Recall: {overlap.recall_ratio:.2f})"
+        )
+
+    if (
+        overlap.recall_ratio < 0.2
+    ):  # LLM detectou muito texto latino, mas Tesseract quase nada → provável omissão ou alucinação
+        # Debug prints para identificar o texto dos dois lados e o arquivo no terminal:
+        page_stats = classify_scan_page(
+            img_path, max_dim=2000, border_frac=0.08, center_frac=0.5
+        )
+
+        if is_library_label(txt):
+            print(f"[VERIFY] {img_path.name} — é etiqueta de biblioteca")
+            return True
+
+        print(
+            f"[VERIFY] Resultado RAW {img_path.name}; Classificação OpenCV2: {page_stats.classification}; Overlap ratio: {overlap.overlap_ratio:.2f}; Recall ratio: {overlap.recall_ratio:.2f} (LLM): {txt}; (Tesseract): {tesseractres}"
+        )
+
+        if page_stats.classification == "capa":
+            is_cover = (
+                'tipo="capa_ou_guarda"' in txt or "<pagina>" in txt
+            )  # pagina sem props
+
+            if is_cover or overlap.llm_token_count < 10:
+                # É capa, então supomos que a LLM esteja correta e o Tesseract só puxou lixo do ruído da capa
+                print(f"[VERIFY] {img_path.name} — é capa")
+                return True
+
+        return False
+
+    return True
+
+
 def llm_process_image_autoretry(
     image_path: Path,
     retries: int = 10,
@@ -483,6 +611,7 @@ def llm_process_image_autoretry(
     prompt: str = PROMPT,
 ):
     txt = ""
+    contagem_vazio = 0
     for i in range(retries):
         try:
             txt = ollama_process_image(
@@ -497,8 +626,14 @@ def llm_process_image_autoretry(
                 print(
                     f"⚠️ Tentativa {i+1} falhou para {image_path.name}: {reason}. Tentando novamente..."
                 )
+
+                if "LLM_DISSE_VAZIO_MAS_IMAGEM_TEM_TEXTO" in reason:
+                    contagem_vazio += 1
                 # Opcional: aumentar a temperatura ou mudar o prompt levemente aqui
 
+                if contagem_vazio > 3:
+                    # Disse que está vazio 3 vezes, provavelmente o validador tem algo a ser revisado, retornar o texto atual
+                    return txt
         except Exception as e:
             print(f"Attempt {i + 1} failed: {e} for {image_path.name}")
 
@@ -547,6 +682,22 @@ def ocr_tesseract(img_path: Image, lang: str = DEFAULT_LANG) -> str:
     return txt
 
 
+def run_tesseract_cached(con: sqlite3.Connection, image_path: Path, lang: str) -> str:
+    cached = get_tesseract_cached(con, image_path, lang)
+    if cached is not None:
+        return cached
+
+    result = ocr_tesseract(image_path, lang=lang)
+
+    h = hashlib.sha256(image_path.read_bytes()).hexdigest()
+    con.execute(
+        "INSERT OR REPLACE INTO tesseract_cache (image_hash, lang, result, imgpath) VALUES (?, ?, ?, ?)",
+        (h, lang, result, str(image_path)),
+    )
+    con.commit()
+    return result
+
+
 def ocr_images_to_text(
     images: List[Path],
     txt_dir: Path,
@@ -555,7 +706,7 @@ def ocr_images_to_text(
     algorithm: str = "ollama",
     llm_model: str = DEFAULT_LLM_MODEL,
     ollama_url: str = DEFAULT_OLLAMA_URL,
-    prompt: str = PROMPT
+    prompt: str = PROMPT,
 ) -> None:
     """
     Faz OCR página-a-página e salva um .txt por página em txt_dir.
@@ -576,7 +727,9 @@ def ocr_images_to_text(
 
         # leitura streaming, garantindo liberação de memória
         if algorithm == "ollama":
-            txt = llm_process_image_autoretry(img_path, model=llm_model, url=ollama_url, prompt=prompt)
+            txt = llm_process_image_autoretry(
+                img_path, model=llm_model, url=ollama_url, prompt=prompt
+            )
         else:
             txt = ocr_tesseract(img_path)
 
@@ -587,11 +740,6 @@ def ocr_images_to_text(
     # arquivo único concatenado (opcional)
     if save_all_text_path:
         save_all_text_path.write_text("\n\n".join(all_text_chunks), encoding="utf-8")
-
-
-import multiprocessing as mp
-from functools import partial
-import time
 
 
 """
@@ -673,115 +821,6 @@ def get_current_process_index() -> int:
     """Retorna o índice do processo atual baseado no PID"""
     current_pid = os.getpid()
     return _process_index_map.get(current_pid, -1)
-
-
-def latin_overlap_result(
-    xml_text: str, tesseract_text: str, name: str = ""
-) -> LatinOverlapResult:
-    xml_tokens = prepare_for_diff(
-        xml_text
-    )  # já faz: remove tags, une hifens, extrai tokens
-    tess_tokens = prepare_for_diff(tesseract_text)
-
-    xml_set = set(xml_tokens)
-    tess_set = set(tess_tokens)
-    common = xml_set & tess_set
-
-    llm_only = [t for t in xml_tokens if t not in tess_set]
-    tess_only = [t for t in tess_tokens if t not in xml_set]
-
-    seq_ratio = difflib.SequenceMatcher(
-        None,
-        [t for t in xml_tokens if t in common],
-        [t for t in tess_tokens if t in common],
-    ).ratio()
-
-    overlap_ratio = len(common) / len(xml_set) if xml_set else 1.0
-    recall_ratio = len(common) / len(tess_set) if tess_set else 1.0
-
-    if overlap_ratio < 0.5:
-        # Debug prints para identificar o texto dos dois lados e o arquivo no terminal:
-        print(
-            f"[VERIFY] Resultado {name}; Overlap ratio: {overlap_ratio:.2f} Recall ratio: {recall_ratio:.2f} (LLM): {' '.join(xml_tokens)}; (Tesseract): {' '.join(tess_tokens)}"
-        )
-
-    return LatinOverlapResult(
-        overlap_ratio=overlap_ratio,
-        recall_ratio=recall_ratio,
-        seq_ratio=seq_ratio,
-        llm_only=llm_only,
-        tess_only=tess_only,
-        common=sorted(common),
-        llm_token_count=len(xml_tokens),
-        tess_token_count=len(tess_tokens),
-    )
-
-
-def run_tesseract_cached(con: sqlite3.Connection, image_path: Path, lang: str) -> str:
-    cached = get_tesseract_cached(con, image_path, lang)
-    if cached is not None:
-        return cached
-
-    result = ocr_tesseract(image_path, lang=lang)
-
-    h = hashlib.sha256(image_path.read_bytes()).hexdigest()
-    con.execute(
-        "INSERT OR REPLACE INTO tesseract_cache (image_hash, lang, result, imgpath) VALUES (?, ?, ?, ?)",
-        (h, lang, result, str(image_path)),
-    )
-    con.commit()
-    return result
-
-
-def verify_page(
-    img_path: Path, txt_dir: Path, lang: str = "fra+lat+grc+ell+syr"
-) -> bool:
-    """
-    Verifica se a página foi processada corretamente.
-    """
-    page_txt_path = txt_dir / (img_path.stem + ".txt")
-    if not page_txt_path.exists():
-        print(f"[VERIFY] {img_path.name} — arquivo de texto não encontrado")
-        return False
-
-    txt = page_txt_path.read_text(encoding="utf-8", errors="ignore")
-    if len(txt.strip()) == 0:
-        print(f"[VERIFY] {img_path.name} — texto vazio")
-        return False
-
-    tesseract_db = open_tesseract_cache_db()
-    init_tesseract_cache(tesseract_db)
-
-    tesseractres = run_tesseract_cached(tesseract_db, img_path, lang=lang)
-    overlap = latin_overlap_result(txt, tesseractres, name=img_path.name)
-
-    if overlap.recall_ratio > 0.2 and overlap.recall_ratio <= 0.6:  # LLM detectou texto latino, mas Tesseract só pegou parte → possível degradação ou script complexo
-        print(
-            f"[VERIFY] {img_path.name} — possível degradação/script complexo (Overlap: {overlap.overlap_ratio:.2f}, Recall: {overlap.recall_ratio:.2f})"
-        )
-
-    if overlap.recall_ratio < 0.2:  # LLM detectou muito texto latino, mas Tesseract quase nada → provável omissão ou alucinação
-        # Debug prints para identificar o texto dos dois lados e o arquivo no terminal:
-        page_stats = classify_scan_page(
-            img_path, max_dim=2000, border_frac=0.08, center_frac=0.5
-        )
-        print(
-            f"[VERIFY] Resultado RAW {img_path.name}; Classificação OpenCV2: {page_stats.classification}; Overlap ratio: {overlap.overlap_ratio:.2f}; Recall ratio: {overlap.recall_ratio:.2f} (LLM): {txt}; (Tesseract): {tesseractres}"
-        )
-
-        if page_stats.classification == "capa":
-            is_cover = (
-                'tipo="capa_ou_guarda"' in txt or "<pagina>" in txt
-            )  # pagina sem props
-
-            if is_cover or overlap.llm_token_count < 10:
-                # É capa, então supomos que a LLM esteja correta e o Tesseract só puxou lixo do ruído da capa
-                print(f"[VERIFY] {img_path.name} — é capa")
-                return True
-
-        return False
-
-    return True
 
 
 def verify_one(
