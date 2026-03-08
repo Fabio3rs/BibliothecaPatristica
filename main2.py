@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import base64
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 import hashlib
 import io
 import os
@@ -13,7 +13,6 @@ import json
 import unicodedata
 import requests
 import xml.etree.ElementTree as ET
-from pathlib import Path
 import numpy as np
 import re
 import cv2
@@ -26,6 +25,8 @@ import sqlite3
 import multiprocessing as mp
 from functools import partial
 import time
+
+import entropy_lib
 
 # ============ CONFIGS PADRÃO ============
 DEFAULT_DPI = 300  # 300dpi é o "doce" do Tesseract; subir só se necessário
@@ -52,6 +53,17 @@ class LatinOverlapResult:
     llm_only: list[str]  # tokens no LLM mas não no Tesseract — candidatos a alucinação
     tess_only: list[str]  # tokens no Tesseract mas não no LLM — possível omissão
     common: list[str]  # tokens confirmados pelos dois
+    llm_token_count: int
+    tess_token_count: int
+    segments: list["SegmentOverlap"] = field(default_factory=list)
+
+
+@dataclass
+class SegmentOverlap:
+    idx: int
+    overlap_ratio: float
+    recall_ratio: float
+    seq_ratio: float
     llm_token_count: int
     tess_token_count: int
 
@@ -161,6 +173,43 @@ def prepare_for_diff(text: str) -> list[str]:
 
     # extrai tokens latinos >= 3 chars, lowercase
     return [t.lower() for t in re.findall(r"[a-zA-ZÀ-öø-ÿ]{3,}", text)]
+
+
+def _split_segments(text: str, is_xml: bool) -> list[str]:
+    """Divide texto em segmentos comparáveis (blocos ou parágrafos)."""
+    if is_xml:
+        # tenta extrair conteúdo de cada <bloco>...</bloco>
+        blocks = re.findall(r"<bloco[^>]*>(.*?)</bloco>", text, flags=re.DOTALL)
+        if blocks:
+            return [b for b in blocks if b.strip()]
+    # fallback: parágrafos por dupla quebra de linha
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
+    return [p for p in re.split(r"\n\s*\n+", text) if p.strip()]
+
+
+def _overlap_metrics(
+    xml_tokens: list[str], tess_tokens: list[str]
+) -> tuple[float, float, float, list[str], list[str], list[str]]:
+    xml_set = set(xml_tokens)
+    tess_set = set(tess_tokens)
+    common = xml_set & tess_set
+
+    llm_only = [t for t in xml_tokens if t not in tess_set]
+    tess_only = [t for t in tess_tokens if t not in xml_set]
+
+    if common:
+        seq_ratio = difflib.SequenceMatcher(
+            None,
+            [t for t in xml_tokens if t in common],
+            [t for t in tess_tokens if t in common],
+        ).ratio()
+    else:
+        seq_ratio = 0.0
+
+    overlap_ratio = len(common) / len(xml_set) if xml_set else 0.0
+    recall_ratio = len(common) / len(tess_set) if tess_set else 0.0
+
+    return overlap_ratio, recall_ratio, seq_ratio, llm_only, tess_only, sorted(common)
 
 
 def preprocess_image(img_bgr: np.ndarray) -> np.ndarray:
@@ -509,26 +558,35 @@ def latin_overlap_result(
     )  # já faz: remove tags, une hifens, extrai tokens
     tess_tokens = prepare_for_diff(tesseract_text)
 
-    xml_set = set(xml_tokens)
-    tess_set = set(tess_tokens)
-    common = xml_set & tess_set
-
-    llm_only = [t for t in xml_tokens if t not in tess_set]
-    tess_only = [t for t in tess_tokens if t not in xml_set]
-
-    seq_ratio = difflib.SequenceMatcher(
-        None,
-        [t for t in xml_tokens if t in common],
-        [t for t in tess_tokens if t in common],
-    ).ratio()
-
-    overlap_ratio = len(common) / len(xml_set) if xml_set else 1.0
-    recall_ratio = len(common) / len(tess_set) if tess_set else 1.0
+    overlap_ratio, recall_ratio, seq_ratio, llm_only, tess_only, common = (
+        _overlap_metrics(xml_tokens, tess_tokens)
+    )
 
     if overlap_ratio < 0.5:
         # Debug prints para identificar o texto dos dois lados e o arquivo no terminal:
         print(
             f"[VERIFY] Resultado {name}; Overlap ratio: {overlap_ratio:.2f} Recall ratio: {recall_ratio:.2f} (LLM): {' '.join(xml_tokens)}; (Tesseract): {' '.join(tess_tokens)}"
+        )
+
+    # Comparação por segmentos (blocos ou parágrafos) para pegar casos de um bloco bom + lixo
+    xml_segments = _split_segments(xml_text, is_xml=True)
+    tess_segments = _split_segments(tesseract_text, is_xml=False)
+    seg_count = min(len(xml_segments), len(tess_segments))
+    segment_results: list[SegmentOverlap] = []
+
+    for idx in range(seg_count):
+        x_tok = prepare_for_diff(xml_segments[idx])
+        t_tok = prepare_for_diff(tess_segments[idx])
+        ovr, rec, seq, _, _, _ = _overlap_metrics(x_tok, t_tok)
+        segment_results.append(
+            SegmentOverlap(
+                idx=idx,
+                overlap_ratio=ovr,
+                recall_ratio=rec,
+                seq_ratio=seq,
+                llm_token_count=len(x_tok),
+                tess_token_count=len(t_tok),
+            )
         )
 
     return LatinOverlapResult(
@@ -537,9 +595,10 @@ def latin_overlap_result(
         seq_ratio=seq_ratio,
         llm_only=llm_only,
         tess_only=tess_only,
-        common=sorted(common),
+        common=common,
         llm_token_count=len(xml_tokens),
         tess_token_count=len(tess_tokens),
+        segments=segment_results,
     )
 
 
@@ -573,9 +632,10 @@ def verify_page(
         )
 
     if (
-        overlap.recall_ratio < 0.2
+        overlap.recall_ratio < 0.1 and overlap.overlap_ratio < 0.1
     ):  # LLM detectou muito texto latino, mas Tesseract quase nada → provável omissão ou alucinação
         # Debug prints para identificar o texto dos dois lados e o arquivo no terminal:
+
         page_stats = classify_scan_page(
             img_path, max_dim=2000, border_frac=0.08, center_frac=0.5
         )
@@ -584,18 +644,33 @@ def verify_page(
             print(f"[VERIFY] {img_path.name} — é etiqueta de biblioteca")
             return True
 
+        if overlap.tess_token_count < 10:
+            print(f"[VERIFY] {img_path.name} — Tesseract detectou poucos tokens")
+            return True
+
         print(
             f"[VERIFY] Resultado RAW {img_path.name}; Classificação OpenCV2: {page_stats.classification}; Overlap ratio: {overlap.overlap_ratio:.2f}; Recall ratio: {overlap.recall_ratio:.2f} (LLM): {txt}; (Tesseract): {tesseractres}"
         )
 
-        if page_stats.classification == "capa":
-            is_cover = (
-                'tipo="capa_ou_guarda"' in txt or "<pagina>" in txt
-            )  # pagina sem props
+        is_cover = (
+            'tipo="capa_ou_guarda"' in txt or "<pagina>" in txt or 'estado="vazio"' in txt
+        )  # pagina sem props
 
-            if is_cover or overlap.llm_token_count < 10:
+        if page_stats.classification != "texto" and is_cover:
+            if is_cover or overlap.llm_token_count < 20:
                 # É capa, então supomos que a LLM esteja correta e o Tesseract só puxou lixo do ruído da capa
                 print(f"[VERIFY] {img_path.name} — é capa")
+                return True
+
+        if is_cover:
+            noise, score = entropy_lib.detect_ocr_noise(tesseractres)
+
+            # noise, Score: >>> entropy_lib.detect_ocr_noise(raw)
+            # (True, {'entropy': 5.346547694379972, 'compression_ratio': 0.6229532598987794, 'alpha_ratio': 0.42001836547291094, 'flags': ['alpha_lt_0.45', 'entropy_gt_4.7_and_low_alpha']})
+
+            print(f"[VERIFY] {img_path.name} — ruído OCR detectado: {noise}, {score}, llm token count: {overlap.llm_token_count}")
+            if is_cover and overlap.llm_token_count < 30 and noise:
+                print(f"[VERIFY] {img_path.name} — provavelmente é uma capa mesmo; Ignorando página")
                 return True
 
         return False

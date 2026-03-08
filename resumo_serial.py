@@ -42,10 +42,10 @@ DEFAULT_MODEL = "qwen3:30b"
 DEFAULT_OLLAMA_URL = "http://localhost:11434"
 DEFAULT_TIMEOUT = 300  # segundos – resumos longos podem demorar
 
-DEFAULT_NUM_CTX = 16384       # janela de contexto padrão do Ollama (tokens)
-TOKEN_RESERVE_OUTPUT = 2048   # tokens reservados para a resposta do modelo
-TOKEN_RESERVE_SYSTEM = 600    # estimativa p/ system prompt + boilerplate
-CHARS_PER_TOKEN = 3.8         # heurística: ~3.8 chars/token (latim/grego/pt misturados)
+DEFAULT_NUM_CTX = 16384  # janela de contexto padrão do Ollama (tokens)
+TOKEN_RESERVE_OUTPUT = 2048  # tokens reservados para a resposta do modelo
+TOKEN_RESERVE_SYSTEM = 600  # estimativa p/ system prompt + boilerplate
+CHARS_PER_TOKEN = 3.8  # heurística: ~3.8 chars/token (latim/grego/pt misturados)
 
 SERIES_RE = re.compile(r"^(PG|PL|PO)(\d+)(.*)$")
 PAGE_NUM_RE = re.compile(r"-(\d+)\.txt$", re.IGNORECASE)
@@ -61,6 +61,7 @@ log = logging.getLogger("resumo_serial")
 # ---------------------------------------------------------------------------
 # SQLite
 # ---------------------------------------------------------------------------
+
 
 def _now_iso() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
@@ -102,7 +103,7 @@ def init_resumo_schema(con: sqlite3.Connection) -> None:
     )
     # Migração: adiciona colunas se tabela já existia sem elas
     for col, typedef in [
-        ("keywords_json",   "TEXT NOT NULL DEFAULT ''"),
+        ("keywords_json", "TEXT NOT NULL DEFAULT ''"),
         ("keywords_source", "TEXT NOT NULL DEFAULT ''"),
         ("keywords_modelo", "TEXT NOT NULL DEFAULT ''"),
     ]:
@@ -125,11 +126,15 @@ def get_last_processed_page(con: sqlite3.Connection, documento: str) -> Optional
 
 def get_processed_pages_set(con: sqlite3.Connection, documento: str) -> set[int]:
     """Retorna um conjunto com todas as páginas já processadas para este documento."""
-    rows = con.execute("SELECT pagina_num FROM resumos WHERE documento = ?", (documento,)).fetchall()
+    rows = con.execute(
+        "SELECT pagina_num FROM resumos WHERE documento = ?", (documento,)
+    ).fetchall()
     return {r["pagina_num"] for r in rows}
 
 
-def get_last_resumo_global(con: sqlite3.Connection, documento: str, before_page: Optional[int] = None) -> Optional[str]:
+def get_last_resumo_global(
+    con: sqlite3.Connection, documento: str, before_page: Optional[int] = None
+) -> Optional[str]:
     """Retorna o resumo_global da última página processada. Se before_page for informado, pega a página anterior mais próxima."""
     if before_page is not None:
         row = con.execute(
@@ -181,6 +186,7 @@ def save_resumo(
 # Ollama (texto livre, sem forçar JSON)
 # ---------------------------------------------------------------------------
 
+
 def ollama_chat(
     prompt_system: str,
     prompt_user: str,
@@ -202,6 +208,7 @@ def ollama_chat(
             "temperature": 0.3,
             "num_ctx": num_ctx,
         },
+        "reasoning_effort": "high",
     }
     data = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
@@ -219,13 +226,22 @@ def ollama_chat(
     except Exception as exc:
         raise RuntimeError(f"Ollama falhou: {exc}") from exc
 
-    content = (body.get("message") or {}).get("content", "")
+    message = body.get("message") or {}
+    content = message.get("content", "")
+    thinking = message.get("thinking", "")
+
+    # Se o conteúdo principal estiver vazio, mas houver raciocínio,
+    # usamos o raciocínio como resposta.
+    if not content.strip() and thinking.strip():
+        return thinking.strip()
+
     return content.strip()
 
 
 # ---------------------------------------------------------------------------
 # OpenAI (texto livre, suporte a reasoning)
 # ---------------------------------------------------------------------------
+
 
 def openai_chat(
     prompt_system: str,
@@ -273,7 +289,7 @@ def openai_chat(
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             body = json.loads(resp.read().decode("utf-8"))
 
-        service_tier = body.get('service_tier', '')
+        service_tier = body.get("service_tier", "")
         log.debug(f"Service Tier: {service_tier}")
     except urllib.error.HTTPError as exc:
         detail = exc.read().decode("utf-8", errors="ignore")
@@ -291,6 +307,7 @@ def openai_chat(
 # ---------------------------------------------------------------------------
 # Despacho unificado
 # ---------------------------------------------------------------------------
+
 
 def llm_chat(
     prompt_system: str,
@@ -330,6 +347,7 @@ def llm_chat(
 # Estimativa de tokens e truncamento de contexto
 # ---------------------------------------------------------------------------
 
+
 def estimate_tokens(text: str, chars_per_token: float = CHARS_PER_TOKEN) -> int:
     """Estima o número de tokens de um texto.
 
@@ -362,7 +380,9 @@ def truncate_context(
         log.warning(
             "num_ctx=%d é muito pequeno (reserve output=%d, system=%d). "
             "Enviando sem contexto prévio.",
-            num_ctx, TOKEN_RESERVE_OUTPUT, TOKEN_RESERVE_SYSTEM,
+            num_ctx,
+            TOKEN_RESERVE_OUTPUT,
+            TOKEN_RESERVE_SYSTEM,
         )
         return ""
 
@@ -374,7 +394,8 @@ def truncate_context(
         log.warning(
             "Página sozinha (~%d tokens) excede budget disponível (%d tokens). "
             "Enviando sem contexto prévio.",
-            tokens_page, budget_total,
+            tokens_page,
+            budget_total,
         )
         return ""
 
@@ -393,7 +414,9 @@ def truncate_context(
     if last_nl > max_chars * 0.7:  # não perde mais que 30%
         truncated = truncated[:last_nl]
 
-    truncated = truncated.rstrip() + "\n[... contexto truncado para caber na janela do modelo]"
+    truncated = (
+        truncated.rstrip() + "\n[... contexto truncado para caber na janela do modelo]"
+    )
 
     log.info(
         "Contexto truncado: %d→%d tokens (budget=%d, página=~%d tokens, janela=%d)",
@@ -421,6 +444,10 @@ português do Brasil correto e conciso.
 Siga rigorosamente o modelo de resposta abaixo. Não invente informações. \
 Se a página tiver conteúdo irrelevante (índice, página em branco, cabeçalho repetido), \
 diga apenas isso no resumo da página e mantenha o resumo global anterior.
+Se o título da obra ou o nome do autor não estiverem explícitos no texto ou no cabeçalho da página, \
+indique como 'Não identificado' em vez de deduzir. \
+Evite inferências baseadas em conhecimentos externos se não houver evidência textual direta na página.
+Se o autor ou a obra mudarem, atualize as informações no resumo global.
 
 Modelo de resposta:
 
@@ -431,13 +458,31 @@ Resumo global:
 Autor: ...
 Livro/obra identificada: ...
 Resumo até o momento: ...
-"""
+""".strip()
 
 
-def build_user_prompt(contexto_previo: str, page_text: str, page_num: int, doc_name: str) -> str:
+def remove_noise(text: str) -> str:
+    # normalização básica
+    # text = unicodedata.normalize("NFC", text)
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
+
+    # une hifenização de fim de linha (ex: "interver-\nsion" → "interversion")
+    text = re.sub(r"-\n([a-zA-ZÀ-öø-ÿ])", r"\1", text)
+
+    # remove XML tags se vier do LLM
+    # text = re.sub(r"<[^>]+>", "", text)
+
+    return text
+
+
+def build_user_prompt(
+    contexto_previo: str, page_text: str, page_num: int, doc_name: str
+) -> str:
     parts: List[str] = []
 
     parts.append(f"Documento: {doc_name}  |  Página: {page_num}\n")
+
+    page_text = remove_noise(page_text)
 
     if contexto_previo:
         parts.append("<contexto_prévio>")
@@ -466,6 +511,7 @@ def build_user_prompt(contexto_previo: str, page_text: str, page_num: int, doc_n
 # Parsing da resposta da LLM
 # ---------------------------------------------------------------------------
 
+
 def parse_llm_response(raw: str) -> Tuple[str, str]:
     """
     Tenta separar 'Resumo da página:' e 'Resumo global:'.
@@ -473,6 +519,9 @@ def parse_llm_response(raw: str) -> Tuple[str, str]:
     """
     # Remove blocos de raciocínio que o modelo pode vazar mesmo com think=false
     clean = re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL).strip()
+
+    if len(clean) == 0:
+        print(f"Raw response was empty: {raw}")
 
     resumo_pagina = ""
     resumo_global = ""
@@ -482,11 +531,11 @@ def parse_llm_response(raw: str) -> Tuple[str, str]:
     marker_page = re.search(r"(?i)resumo\s+da\s+p[áa]gina\s*:", clean)
 
     if marker_page and marker_global and marker_page.start() < marker_global.start():
-        resumo_pagina = clean[marker_page.end(): marker_global.start()].strip()
-        resumo_global = clean[marker_global.end():].strip()
+        resumo_pagina = clean[marker_page.end() : marker_global.start()].strip()
+        resumo_global = clean[marker_global.end() :].strip()
     elif marker_global:
         resumo_pagina = clean[: marker_global.start()].strip()
-        resumo_global = clean[marker_global.end():].strip()
+        resumo_global = clean[marker_global.end() :].strip()
 
     return resumo_pagina, resumo_global
 
@@ -500,6 +549,7 @@ def is_parseable_response(resumo_pagina: str, resumo_global: str) -> bool:
 # ---------------------------------------------------------------------------
 # Descoberta de volumes e páginas
 # ---------------------------------------------------------------------------
+
 
 def page_sort_key(path: Path) -> Tuple[int, str]:
     m = PAGE_NUM_RE.search(path.name)
@@ -525,7 +575,9 @@ def discover_pages(text_dir: Path) -> List[Path]:
     return pages
 
 
-def discover_volumes(root: Path, series_filter: str, limit: Optional[int] = None) -> List[Path]:
+def discover_volumes(
+    root: Path, series_filter: str, limit: Optional[int] = None
+) -> List[Path]:
     """Descobre diretórios PG*/PL*/PO* que possuem subdir text/."""
     series_set = {s.strip().upper() for s in series_filter.split(",") if s.strip()}
     volumes: List[Path] = []
@@ -548,6 +600,7 @@ def discover_volumes(root: Path, series_filter: str, limit: Optional[int] = None
 # ---------------------------------------------------------------------------
 # Pipeline principal
 # ---------------------------------------------------------------------------
+
 
 def process_volume(
     volume_dir: Path,
@@ -613,10 +666,16 @@ def process_volume(
     if not fill_gaps and last_done is not None and not dry_run:
         log.info(
             "[%s] Retomando após página %d  (%d páginas total)",
-            doc_name, last_done, total,
+            doc_name,
+            last_done,
+            total,
         )
     elif fill_gaps and not dry_run:
-        log.info("[%s] Modo fill-gaps: Mapeando %d páginas processadas para detectar omissões.", doc_name, len(processed_set))
+        log.info(
+            "[%s] Modo fill-gaps: Mapeando %d páginas processadas para detectar omissões.",
+            doc_name,
+            len(processed_set),
+        )
 
     pages_done = 0
     for idx, page_path in enumerate(pages):
@@ -645,7 +704,9 @@ def process_volume(
             continue
 
         # Trunca contexto se necessário para caber na janela (relevante p/ Ollama)
-        ctx_window = num_ctx if provider == "ollama" else 128000  # OpenAI tem janela grande
+        ctx_window = (
+            num_ctx if provider == "ollama" else 128000
+        )  # OpenAI tem janela grande
         contexto_safe = truncate_context(contexto, page_text, ctx_window)
 
         # Monta prompt
@@ -654,7 +715,10 @@ def process_volume(
         prompt_tokens_est = estimate_tokens(user_prompt)
         log.info(
             "[%s] p%d  chamando LLM (%s)  ~%d tokens prompt",
-            doc_name, pnum, model, prompt_tokens_est,
+            doc_name,
+            pnum,
+            model,
+            prompt_tokens_est,
         )
 
         # Chama LLM com retry (inclui validação de parsing)
@@ -677,7 +741,11 @@ def process_volume(
             except Exception as exc:
                 log.warning(
                     "[%s] Página %d tentativa %d/%d – erro LLM: %s",
-                    doc_name, pnum, attempt, retries, exc,
+                    doc_name,
+                    pnum,
+                    attempt,
+                    retries,
+                    exc,
                 )
                 if attempt < retries:
                     time.sleep(5 * attempt)
@@ -687,8 +755,16 @@ def process_volume(
             if not raw_response or not raw_response.strip():
                 log.warning(
                     "[%s] Página %d tentativa %d/%d – resposta vazia",
-                    doc_name, pnum, attempt, retries,
+                    doc_name,
+                    pnum,
+                    attempt,
+                    retries,
                 )
+                if attempt > 4:
+                    print(
+                        f"Raw user prompt {user_prompt}; Raw response was empty: {raw_response}"
+                    )
+
                 if attempt < retries:
                     time.sleep(3 * attempt)
                 continue
@@ -702,22 +778,31 @@ def process_volume(
                 "[%s] Página %d tentativa %d/%d – parsing falhou "
                 "(resumo_pagina=%d chars, resumo_global=%d chars). "
                 "Primeiros 200 chars: %.200s",
-                doc_name, pnum, attempt, retries,
-                len(resumo_pagina), len(resumo_global),
+                doc_name,
+                pnum,
+                attempt,
+                retries,
+                len(resumo_pagina),
+                len(resumo_global),
                 raw_response.replace("\n", " "),
             )
             if attempt < retries:
                 time.sleep(3 * attempt)
 
         if not raw_response:
-            log.error("[%s] Página %d esgotou tentativas – nenhuma resposta, pulando", doc_name, pnum)
+            log.error(
+                "[%s] Página %d esgotou tentativas – nenhuma resposta, pulando",
+                doc_name,
+                pnum,
+            )
             continue
 
         if not is_parseable_response(resumo_pagina, resumo_global):
             log.error(
                 "[%s] Página %d esgotou tentativas – parsing falhou, "
                 "usando raw como fallback",
-                doc_name, pnum,
+                doc_name,
+                pnum,
             )
             # Fallback: usa raw inteiro para ambos (melhor que perder a página)
             resumo_pagina = raw_response.strip()
@@ -732,7 +817,9 @@ def process_volume(
             # Imprime resultado formatado sem gravar
             sep = "─" * 70
             print(f"\n{sep}")
-            print(f"📄  {doc_name}  │  Página {pnum}/{total}  │  {page_path.name}  │  modelo: {model}")
+            print(
+                f"📄  {doc_name}  │  Página {pnum}/{total}  │  {page_path.name}  │  modelo: {model}"
+            )
             print(sep)
             print(f"\n{'━' * 30} RESUMO PÁGINA {'━' * 30}")
             print(resumo_pagina)
@@ -744,7 +831,11 @@ def process_volume(
             print(sep)
             log.info(
                 "[%s] Página %d/%d  (dry-run)  ✓  resumo_pag=%d chars  resumo_glob=%d chars",
-                doc_name, pnum, total, len(resumo_pagina), len(resumo_global),
+                doc_name,
+                pnum,
+                total,
+                len(resumo_pagina),
+                len(resumo_global),
             )
         else:
             # Salva no SQLite
@@ -760,7 +851,10 @@ def process_volume(
             )
             log.info(
                 "[%s] Página %d/%d  (arquivo %s)  ✓",
-                doc_name, pnum, total, page_path.name,
+                doc_name,
+                pnum,
+                total,
+                page_path.name,
             )
 
     log.info("[%s] %d página(s) processada(s).", doc_name, pages_done)
@@ -769,6 +863,7 @@ def process_volume(
 # ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
+
 
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
@@ -831,7 +926,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument(
         "--reasoning-effort",
-        choices=['', 'none', "low", "medium", "high"],
+        choices=["", "none", "low", "medium", "high"],
         default="high",
         help="Nível de reasoning para modelos OpenAI que suportam (default: high).",
     )
@@ -840,7 +935,7 @@ def build_parser() -> argparse.ArgumentParser:
         type=int,
         default=DEFAULT_NUM_CTX,
         help=f"Janela de contexto em tokens para Ollama (default: {DEFAULT_NUM_CTX}). "
-             "O contexto prévio será truncado automaticamente se o total estimado exceder este valor.",
+        "O contexto prévio será truncado automaticamente se o total estimado exceder este valor.",
     )
     p.add_argument(
         "--timeout",
@@ -868,7 +963,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--dry-run",
         action="store_true",
         help="Chama o LLM e imprime resultados sem gravar no banco. "
-             "Útil para comparar modelos.",
+        "Útil para comparar modelos.",
     )
     p.add_argument(
         "--page",
@@ -877,7 +972,8 @@ def build_parser() -> argparse.ArgumentParser:
         help="Processar apenas a página N (ex: --page 5).",
     )
     p.add_argument(
-        "-v", "--verbose",
+        "-v",
+        "--verbose",
         action="store_true",
         help="Mostra raw response completa no modo dry-run.",
     )
