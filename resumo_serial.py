@@ -440,6 +440,7 @@ Sua tarefa é ler uma página de um volume da Patrística e produzir:
 1. Um **resumo exclusivo da página atual** em português do Brasil correto e conciso.
 2. Um **resumo global (overview)** atualizado do documento até o momento, também em \
 português do Brasil correto e conciso.
+3. Caso haja textos de línguas orientais antigas e latinos, o texto latino possui mais chances de estar correto, prefira o latino.
 
 Siga rigorosamente o modelo de resposta abaixo. Não invente informações. \
 Se a página tiver conteúdo irrelevante (índice, página em branco, cabeçalho repetido), \
@@ -926,7 +927,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument(
         "--reasoning-effort",
-        choices=["", "none", "low", "medium", "high"],
+        choices=["", "none", "minimal", "low", "medium", "high"],
         default="high",
         help="Nível de reasoning para modelos OpenAI que suportam (default: high).",
     )

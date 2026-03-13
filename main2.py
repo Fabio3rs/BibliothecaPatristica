@@ -15,6 +15,7 @@ import requests
 import xml.etree.ElementTree as ET
 import numpy as np
 import re
+import regex
 import cv2
 from PIL import Image
 import pytesseract
@@ -25,8 +26,36 @@ import sqlite3
 import multiprocessing as mp
 from functools import partial
 import time
+import socket
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 import entropy_lib
+
+
+# Monkey-patch para injetar socket options
+import urllib3.connection as _uc
+
+_orig_connect = _uc.HTTPConnection.connect
+
+
+def make_session() -> requests.Session:
+    session = requests.Session()
+    adapter = HTTPAdapter(
+        max_retries=Retry(total=0),  # retry no seu próprio código, não aqui
+    )
+
+    def _connect_with_keepalive(self):
+        _orig_connect(self)
+        self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
+        self.sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_KEEPIDLE, 60)
+        self.sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_KEEPINTVL, 10)
+        self.sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_KEEPCNT, 5)
+
+    _uc.HTTPConnection.connect = _connect_with_keepalive
+    session.mount("https://", adapter)
+    return session
+
 
 # ============ CONFIGS PADRÃO ============
 DEFAULT_DPI = 300  # 300dpi é o "doce" do Tesseract; subir só se necessário
@@ -36,6 +65,34 @@ IMAGE_FMT = "png"  # png ou jpeg (evitar PPM para não inflar memória)
 MAX_THREADS_CONVERT = 12  # ajuste conforme seus núcleos
 DEFAULT_LLM_MODEL = "qwen3.5:397b-cloud"
 DEFAULT_OLLAMA_URL = "http://localhost:11434/api/chat"
+# OpenAI HTTP (sem SDK)
+DEFAULT_OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-5-mini")
+DEFAULT_OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
+
+
+# O que estiver abaixo deve ser ignorado porque é um caso perdido, não há nada legível recuperável
+CASOS_PERDIDOS = [
+    ("PO009", 496),
+    (
+        "PO009",
+        497,
+    ),  # PO vol 9, página 497 teste/PO009/images/e408d0d8-83d6-4af6-8456-70f12bcffb93-497.png
+    # teste/PO017/images/b89d6661-ee0e-46ed-b3d2-e9907874d56a-046.png
+    ("PO017", 46),
+]
+
+
+def avalia_caso_perdido(text_or_image_path: Path) -> bool:
+    # teste/PO009/images/e408d0d8-83d6-4af6-8456-70f12bcffb93-497.png -> PO009, 497
+    # averiguar se o path está na lista de casos perdidos
+    for caso in CASOS_PERDIDOS:
+        if (
+            caso[0] in str(text_or_image_path)
+            and f"-{str(caso[1])}" in text_or_image_path.stem
+        ):
+            return True
+    return False
+
 
 # Opcional: se precisar apontar para o executável do Tesseract explicitamente
 # pytesseract.pytesseract.tesseract_cmd = r"/usr/bin/tesseract"
@@ -105,8 +162,8 @@ def get_tesseract_cached(
     # hash do conteúdo do arquivo, não do path — imagem movida ainda bate
     h = hashlib.sha256(image_path.read_bytes()).hexdigest()
     row = con.execute(
-        "SELECT result FROM tesseract_cache WHERE image_hash = ? AND lang = ?",
-        (h, lang),
+        "SELECT result FROM tesseract_cache WHERE image_hash = ?",
+        (h,),
     ).fetchone()
     return row["result"] if row else None
 
@@ -151,6 +208,59 @@ def latin_overlap_ratio(xml_text: str, tesseract_text: str) -> float:
 
     matches = xml_tokens & tess_tokens
     return len(matches) / len(xml_tokens)
+
+
+TOKEN_RE = regex.compile(
+    r"\p{Latin}{3,}"
+    r"|\p{Greek}{3,}"
+    r"|\p{Coptic}{3,}"
+    r"|\p{Cyrillic}{3,}"
+    r"|\p{Armenian}{3,}"
+    r"|\p{Hebrew}{3,}"
+    r"|\p{Arabic}{3,}"
+    r"|\p{Syriac}{3,}"
+    r"|\p{Ethiopic}{3,}",
+    regex.UNICODE,
+)
+
+
+def prepare_for_diff_oriental(text: str) -> list[str]:
+    text = unicodedata.normalize("NFC", text)
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
+
+    # Remover comentários XML/HTML
+    text = regex.sub(r"<!--.*?-->", "", text, flags=regex.DOTALL)
+
+    # une hifenização de fim de linha (ex: "interver-\nsion" → "interversion")
+    text = regex.sub(r"-\n(\p{Letter})", r"\1", text)
+
+    text = regex.sub(r"<notas>.*?</notas>", "", text, flags=regex.DOTALL)
+    text = regex.sub(r"\p{Mn}", "", text)
+    text = regex.sub(r"<[^>]+>", "", text)
+
+    return [t.lower() for t in TOKEN_RE.findall(text)]
+
+
+def clean_text_oriental(text: str) -> str:
+    text = unicodedata.normalize("NFC", text)
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
+
+    # Remover comentários XML/HTML
+    text = regex.sub(r"<!--.*?-->", "", text, flags=regex.DOTALL)
+
+    # une hifenização de fim de linha (ex: "interver-\nsion" → "interversion")
+    text = regex.sub(r"-\n(\p{Letter})", r"\1", text)
+
+    text = regex.sub(r"<notas>.*?</notas>", "", text, flags=regex.DOTALL)
+    text = regex.sub(r"\p{Mn}", "", text)
+    text = regex.sub(r"<[^>]+>", "", text)
+
+    return text
+
+
+def strip_bidi_markers(text: str) -> str:
+    # Remove LRM, RLM, e outros control characters bidirecionais
+    return re.sub(r"[\u200e\u200f\u202a-\u202e\u2066-\u2069]", "", text)
 
 
 def prepare_for_diff(text: str) -> list[str]:
@@ -296,7 +406,7 @@ Antes de gerar o XML, identifique se a página é:
 Se a página estiver REALMENTE em branco (apenas papel), use: <pagina estado="vazio" tipo="capa_ou_guarda" />
 Caso contrário, siga o formato abaixo.
 
-Valores permitidos para script: latino, grego, copta, siriaco, cirilico, ethiopico, misto, desconhecido.
+Valores permitidos para script: latino, grego, copta, siriaco, cirilico, ethiopico, armenio, arabe, hebraico, misto, desconhecido.
 Valores permitidos para tipo: cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal, outro.
 
 REGRAS CRÍTICAS CONTRA OMISSÃO:
@@ -322,6 +432,176 @@ MAIS REGRAS:
 - Retorne APENAS o XML.
 """.strip()
 
+PROMPT_VERIFY_VS_TESSERACT = """
+Você é um especialista em paleografia e transcrição de documentos históricos e edições críticas (Patrologia Orientalis).
+Sua missão é comparar a imagem da página com o rascunho de OCR abaixo e produzir uma transcrição fiel, corrigindo erros do Tesseract e descartando qualquer trecho que não apareça na imagem.
+
+<rascunho_ocr>
+{tesseract_text}
+</rascunho_ocr>
+
+### ETAPA 1: ANÁLISE VISUAL OBRIGATÓRIA
+Antes de gerar o XML, identifique se a página é:
+- Uma capa ou página de guarda (pode estar em branco ou apenas amarelada).
+- Uma página de texto denso (mesmo que degradado ou com scripts complexos como Siriaco/Grego).
+- Uma página com gravuras ou tabelas.
+
+### ETAPA 2: TRANSCRIÇÃO ESTRUTURADA (XML)
+Se a página estiver REALMENTE em branco (apenas papel), use: <pagina estado="vazio" tipo="capa_ou_guarda" />
+Caso contrário, siga o formato abaixo.
+
+Valores permitidos para script: latino, grego, copta, siriaco, cirilico, ethiopico, armenio, arabe, hebraico, misto, desconhecido.
+Valores permitidos para tipo: cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal, outro.
+
+REGRAS CRÍTICAS CONTRA OMISSÃO E ERROS DO OCR:
+1. PROIBIÇÃO DE NEGATIVA: É terminantemente proibido ignorar blocos de texto ou afirmar que a página está em branco se houver qualquer vestígio de tinta. Se o texto estiver difícil, transcreva o que for possível; NUNCA desista de um bloco.
+2. INTEGRIDADE: Cada nota de rodapé e aparato crítico deve ser mapeado. A omissão de blocos será considerada falha grave de processamento.
+3. ESTADO DA PÁGINA: A tag raiz <pagina> deve conter o atributo 'estado' ("com_texto" ou "vazio").
+4. BBOX: Deve ser x1,y1,x2,y2 (escala 0-1000).
+5. USE O RASCUNHO COMO PISTA, NÃO COMO FONTE CONFIÁVEL: só aproveite palavras/trechos do <rascunho_ocr> que você confirma visualmente na imagem; corrija erros e descarte alucinações de caracteres, palavras, etc.
+6. COERÊNCIA VISUAL: se o rascunho tiver linhas ausentes ou extras, siga SEMPRE o que está na imagem.
+7. AVISO DE DEFEITOS: o OCR rascunho pode falhar e confundir caracteres de um idioma com outro, pode misturar dentro de um mesmo idioma, e pode não reconhecer caracteres especiais, ligaduras ou diacríticos; corrija conforme possível baseando-se na compreensão da imagem.
+
+Formato de saída:
+<pagina estado="com_texto">
+  <bloco tipo="..." script="..." bbox="x1,y1,x2,y2">
+    transcrição literal preservando quebras de linha
+  </bloco>
+  <notas>
+    Explique aqui se houve scripts complexos identificados (ex: Siriaco Estrangelo) ou correções relevantes feitas sobre o rascunho do Tesseract.
+  </notas>
+</pagina>
+
+MAIS REGRAS:
+- Preserve a ordem visual (cima para baixo).
+- Não traduza, não normalize, não invente texto.
+- Use [ilegivel] apenas para palavras específicas, não para blocos inteiros.
+- Retorne APENAS o XML.
+""".strip()
+
+PROMPT_VERIFY_LLM_VS_TESSERACT = """
+Você é um especialista em paleografia e transcrição de documentos históricos e edições críticas (Patrologia Orientalis).
+Sua missão é comparar a imagem da página com o rascunho de OCR abaixo e produzir uma transcrição fiel, corrigindo erros do Tesseract e descartando qualquer trecho que não apareça na imagem.
+
+<rascunho_ocr>
+{tesseract_text}
+</rascunho_ocr>
+
+<llm_ocr>
+{llm_ocr}
+</llm_ocr>
+
+### ETAPA 1: ANÁLISE VISUAL OBRIGATÓRIA
+Antes de gerar o XML, identifique se a página é:
+- Uma capa ou página de guarda (pode estar em branco ou apenas amarelada).
+- Uma página de texto denso (mesmo que degradado ou com scripts complexos como Siriaco/Grego).
+- Uma página com gravuras ou tabelas.
+
+### ETAPA 2: TRANSCRIÇÃO ESTRUTURADA (XML)
+Se a página estiver REALMENTE em branco (apenas papel), use: <pagina estado="vazio" tipo="capa_ou_guarda" />
+Caso contrário, siga o formato abaixo.
+
+Valores permitidos para script: latino, grego, copta, siriaco, cirilico, ethiopico, armenio, arabe, hebraico, misto, desconhecido.
+Valores permitidos para tipo: cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal, outro.
+
+REGRAS CRÍTICAS CONTRA OMISSÃO E ERROS DO OCR:
+1. PROIBIÇÃO DE NEGATIVA: É terminantemente proibido ignorar blocos de texto ou afirmar que a página está em branco se houver qualquer vestígio de tinta. Se o texto estiver difícil, transcreva o que for possível; NUNCA desista de um bloco.
+2. INTEGRIDADE: Cada nota de rodapé e aparato crítico deve ser mapeado. A omissão de blocos será considerada falha grave de processamento.
+3. ESTADO DA PÁGINA: A tag raiz <pagina> deve conter o atributo 'estado' ("com_texto" ou "vazio").
+4. BBOX: Deve ser x1,y1,x2,y2 (escala 0-1000).
+5. USE O RASCUNHO COMO PISTA, NÃO COMO FONTE CONFIÁVEL: só aproveite palavras/trechos do <rascunho_ocr> que você confirma visualmente na imagem; corrija erros e descarte alucinações de caracteres, palavras, etc.
+6. COERÊNCIA VISUAL: se o rascunho tiver linhas ausentes ou extras, siga SEMPRE o que está na imagem.
+7. AVISO DE DEFEITOS: o OCR rascunho pode falhar e confundir caracteres de um idioma com outro, pode misturar dentro de um mesmo idioma, e pode não reconhecer caracteres especiais, ligaduras ou diacríticos; corrija conforme possível baseando-se na compreensão da imagem.
+8. llm_ocr pode parecer mais organizado e fluente, entretanto, pode sofrer de alucinação de conteúdo e de estrutura.
+9. Possíveis pistas para identificação real do texto nas línguas orientais: a maioria das páginas possui textos de anotações, críticas e em muitos casos, traduções da língua oriental para uma língua latina, pense na relação entre todos os textos.
+10. O llm_ocr pode estar errado. Não use sua estrutura como referência para a ordem da página.
+
+Formato de saída:
+<pagina estado="com_texto">
+  <bloco tipo="..." script="..." bbox="x1,y1,x2,y2">
+    transcrição literal preservando quebras de linha
+  </bloco>
+  <notas>
+    Explique aqui se houve scripts complexos identificados (ex: Siriaco Estrangelo) ou correções relevantes feitas sobre o rascunho do Tesseract.
+  </notas>
+</pagina>
+
+MAIS REGRAS:
+- Preserve a ordem visual (cima para baixo).
+- Não traduza, não normalize, não invente texto.
+- Use [ilegivel] apenas para palavras específicas, não para blocos inteiros.
+- Retorne APENAS o XML.
+""".strip()
+
+
+PROMPT_LLM_JUDGE = """
+Você é um especialista em paleografia e transcrição de documentos históricos e edições críticas (Patrologia Orientalis).
+Sua missão é comparar a imagem da página com as transcrições abaixo e avaliar qual delas é mais fiel à imagem.
+
+<rascunho_ocr>
+{tesseract_text}
+</rascunho_ocr>
+
+<llm_ocr>
+{llm_ocr}
+</llm_ocr>
+
+Priorize a qualidade textual, o rascunho_ocr vem de um OCR tradicional e é um rascunho, pode conter lixo ou palavras com caracteres trocados.
+O rascunho_ocr pode ter confundido palavras de outros idiomas orientais ou misturado ocidental com oriental, neste caso, priorizar a LLM se a semântica encaixar no rascunho_ocr, avaliando o encaixe com a imagem.
+O texto gerado pela LLM pode parecer correto, mas pode não refletir com precisão o conteúdo da imagem ou mesmo não refletir nada da imagem.
+
+A organização deve ser secundária, a importância é a fidelidade ao conteúdo da imagem, mesmo que a estrutura seja mais bagunçada ou diferente entre os dois.
+
+Formato de saída:
+Visto: *explicação da relação entre o texto do rascunho_ocr e o texto da LLM com a imagem*
+Julgamento: *Aqui você deve informar qual é o mais fiel, os valores aceitos são: ambos, rascunho_ocr, llm_ocr, nenhum*
+""".strip()
+
+
+def render_prompt_verify_vs_tesseract(
+    tesseract_text: str, max_chars: int = 12000
+) -> str:
+    """Renderiza o prompt de comparação usando o rascunho do Tesseract.
+
+    O rascunho é truncado para evitar prompts gigantes que explodem o token limit.
+    """
+    cleaned = tesseract_text.strip()
+    if len(cleaned) > max_chars:
+        cleaned = cleaned[:max_chars] + "\n[TRUNCADO]"
+    return PROMPT_VERIFY_VS_TESSERACT.format(tesseract_text=cleaned)
+
+
+def preprocess_adaptative_ocr(img_bgr: np.ndarray) -> np.ndarray:
+    """
+    Pré-processamento otimizado para auto-ocr.
+    """
+    gray = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2GRAY)
+
+    # normaliza iluminação não uniforme (papel amarelado, sombras de encadernação)
+    clahe = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(8, 8))
+    gray = clahe.apply(gray)
+
+    # binarização adaptativa — mais robusta que threshold global
+    binary = cv2.adaptiveThreshold(
+        gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 15, 10
+    )
+
+    # remove ruído de papel sem destruir caracteres pequenos
+    kernel = np.ones((2, 2), np.uint8)
+    binary = cv2.morphologyEx(binary, cv2.MORPH_OPEN, kernel)
+
+    return binary
+
+
+def optimize_adaptative_cloud(image_path: Path, max_size=3200) -> str:
+    """
+    Aplica otimizações adaptativas na imagem para melhorar o OCR.
+    """
+    img_bgr = cv2.imread(str(image_path))
+    img_processed = preprocess_adaptative_ocr(img_bgr)
+    _, img_encoded = cv2.imencode(".jpg", img_processed, [cv2.IMWRITE_JPEG_QUALITY, 85])
+    return base64.b64encode(img_encoded).decode("utf-8")
+
 
 def optimize_image_for_cloud(image_path, max_size=3200):
     """
@@ -342,21 +622,39 @@ def optimize_image_for_cloud(image_path, max_size=3200):
     return base64.b64encode(buffered.getvalue()).decode("utf-8")
 
 
+images_max_size = [1600, 1800, 3200, 3200, 3200]
+
+
 def ollama_process_image(
     image_path,
     model: str = DEFAULT_LLM_MODEL,
     url: str = DEFAULT_OLLAMA_URL,
     current_try: int = 1,
     prompt: str = PROMPT,
+    reprocess: bool = False,
 ):
-    if current_try <= 2:
-        img_b64 = optimize_image_for_cloud(image_path)
+    if current_try <= 3:  # and not reprocess:
+        img_b64 = optimize_adaptative_cloud(image_path, images_max_size[current_try - 1])
     else:
         img_b64 = base64.b64encode(Path(image_path).read_bytes()).decode("utf-8")
 
+    if current_try > 4:
+        prompt += f"\nEsta é uma tentativa de recuperação, número {current_try}\n"
+
+    print(
+        f"{len(img_b64) / 1024:.2f} KB de imagem para {image_path.name}; tamanho original {Path(image_path).stat().st_size / 1024:.2f} KB (try {current_try})"
+    )
+
     payload = {
         "model": model,
-        "messages": [{"role": "user", "content": prompt, "images": [img_b64]}],
+        "messages": [
+            {"role": "system", "content": prompt},
+            {
+                "role": "user",
+                "content": "Transcreva a página em XML conforme instruções do system.",
+                "images": [img_b64],
+            },
+        ],
         "stream": False,
     }
 
@@ -376,6 +674,94 @@ def ollama_process_image(
     # print(data["message"]["content"])
 
     return data["message"]["content"]
+
+
+def openai_process_image(
+    image_path: Path,
+    model: str = DEFAULT_OPENAI_MODEL,
+    base_url: str = DEFAULT_OPENAI_BASE_URL,
+    api_key: str | None = None,
+    current_try: int = 1,
+    prompt: str = PROMPT,
+    mime: str = "image/png",
+    reprocess: bool = False,
+):
+    """
+    Faz OCR via endpoint de chat da OpenAI usando apenas requests.
+    """
+    api_key = api_key or os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        raise ValueError("OPENAI_API_KEY não encontrado no ambiente.")
+
+    # Usa versão comprimida nas primeiras tentativas para evitar timeouts/payloads grandes
+    if current_try <= 3 and not reprocess:
+        img_b64 = optimize_image_for_cloud(image_path, images_max_size[current_try - 1])
+        mime = "image/jpeg"  # Compressão para JPEG nas primeiras tentativas
+    else:
+        # Se estamos refazendo por motivo textual, vamos mandar a imagem original
+        img_b64 = base64.b64encode(Path(image_path).read_bytes()).decode("utf-8")
+
+    if current_try > 4:
+        prompt += f"\nEsta é uma tentativa de recuperação, número {current_try}\n"
+
+    print(
+        f"{len(img_b64) / 1024:.2f} KB de imagem para {image_path.name}; try {current_try} (openai)"
+    )
+
+    image_url = {"url": f"data:{mime};base64,{img_b64}"}
+
+    messages = [
+        {"role": "system", "content": prompt},
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Transcreva a página em XML conforme instruções do system.",
+                },
+                {"type": "image_url", "image_url": image_url},
+            ],
+        },
+    ]
+
+    payload = {
+        "model": model,
+        "messages": messages,
+        "top_p": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0,
+    }
+
+    timeout = 120
+
+    if "gpt-5" not in model:
+        payload["temperature"] = 0.05
+    else:
+        if reprocess:
+            payload["reasoning_effort"] = "medium"
+            timeout = 900
+        else:
+            payload["reasoning_effort"] = "low"
+
+    url = base_url.rstrip("/") + "/chat/completions"
+
+    with make_session() as session:
+        r = session.post(
+            url,
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {api_key}",
+            },
+            data=json.dumps(payload),
+            timeout=timeout,
+        )
+
+    if r.status_code != 200:
+        print(r.text)
+    r.raise_for_status()
+    data = r.json()
+
+    return data["choices"][0]["message"]["content"]
 
 
 def get_physical_ink_ratio(image_path):
@@ -602,6 +988,12 @@ def latin_overlap_result(
     )
 
 
+def get_tokens_discrepance(num_tokens_1: int, num_tokens_2: int) -> float:
+    if num_tokens_1 == 0 and num_tokens_2 == 0:
+        return 0.0
+    return abs(num_tokens_1 - num_tokens_2) / max(num_tokens_1, num_tokens_2)
+
+
 def verify_page(
     img_path: Path, txt_dir: Path, lang: str = "fra+lat+grc+ell+syr"
 ) -> bool:
@@ -613,6 +1005,10 @@ def verify_page(
         print(f"[VERIFY] {img_path.name} — arquivo de texto não encontrado")
         return False
 
+    if avalia_caso_perdido(img_path):
+        print(f"[VERIFY] {img_path.name} — caso perdido")
+        return True
+
     txt = page_txt_path.read_text(encoding="utf-8", errors="ignore")
     if len(txt.strip()) == 0:
         print(f"[VERIFY] {img_path.name} — texto vazio")
@@ -622,7 +1018,11 @@ def verify_page(
     init_tesseract_cache(tesseract_db)
 
     tesseractres = run_tesseract_cached(tesseract_db, img_path, lang=lang)
-    overlap = latin_overlap_result(txt, tesseractres, name=img_path.name)
+
+    # Vou descartar os ilegíveis para evitar conflito com o Tesseract que não insere [ilegivel]
+    overlap = latin_overlap_result(
+        txt.replace("[ilegivel]", ""), tesseractres, name=img_path.name
+    )
 
     if (
         overlap.recall_ratio > 0.2 and overlap.recall_ratio <= 0.6
@@ -631,6 +1031,11 @@ def verify_page(
             f"[VERIFY] {img_path.name} — possível degradação/script complexo (Overlap: {overlap.overlap_ratio:.2f}, Recall: {overlap.recall_ratio:.2f})"
         )
 
+    if txt.count("[ilegivel]") > 5:
+        print(f"[VERIFY] {img_path.name} — muitos tokens ilegíveis detectados")
+        return False
+
+    return True  # desativado de momento, quero apenas rodar de novo os com muito token ilegível
     if (
         overlap.recall_ratio < 0.1 and overlap.overlap_ratio < 0.1
     ):  # LLM detectou muito texto latino, mas Tesseract quase nada → provável omissão ou alucinação
@@ -644,6 +1049,16 @@ def verify_page(
             print(f"[VERIFY] {img_path.name} — é etiqueta de biblioteca")
             return True
 
+        if (
+            get_tokens_discrepance(overlap.llm_token_count, overlap.tess_token_count)
+            > 0.9
+            and overlap.llm_token_count > overlap.tess_token_count
+        ):
+            print(
+                f"[VERIFY] {img_path.name} — alta discrepância de tokens; possível alucinação (LLM: {overlap.llm_token_count}, Tesseract: {overlap.tess_token_count})"
+            )
+            return False
+
         if overlap.tess_token_count < 10:
             print(f"[VERIFY] {img_path.name} — Tesseract detectou poucos tokens")
             return True
@@ -653,7 +1068,9 @@ def verify_page(
         )
 
         is_cover = (
-            'tipo="capa_ou_guarda"' in txt or "<pagina>" in txt or 'estado="vazio"' in txt
+            'tipo="capa_ou_guarda"' in txt
+            or "<pagina>" in txt
+            or 'estado="vazio"' in txt
         )  # pagina sem props
 
         if page_stats.classification != "texto" and is_cover:
@@ -668,9 +1085,13 @@ def verify_page(
             # noise, Score: >>> entropy_lib.detect_ocr_noise(raw)
             # (True, {'entropy': 5.346547694379972, 'compression_ratio': 0.6229532598987794, 'alpha_ratio': 0.42001836547291094, 'flags': ['alpha_lt_0.45', 'entropy_gt_4.7_and_low_alpha']})
 
-            print(f"[VERIFY] {img_path.name} — ruído OCR detectado: {noise}, {score}, llm token count: {overlap.llm_token_count}")
+            print(
+                f"[VERIFY] {img_path.name} — ruído OCR detectado: {noise}, {score}, llm token count: {overlap.llm_token_count}"
+            )
             if is_cover and overlap.llm_token_count < 30 and noise:
-                print(f"[VERIFY] {img_path.name} — provavelmente é uma capa mesmo; Ignorando página")
+                print(
+                    f"[VERIFY] {img_path.name} — provavelmente é uma capa mesmo; Ignorando página"
+                )
                 return True
 
         return False
@@ -681,17 +1102,38 @@ def verify_page(
 def llm_process_image_autoretry(
     image_path: Path,
     retries: int = 10,
+    provider: str = "ollama",
     model: str = DEFAULT_LLM_MODEL,
     url: str = DEFAULT_OLLAMA_URL,
+    openai_base_url: str = DEFAULT_OPENAI_BASE_URL,
+    openai_api_key: str | None = None,
     prompt: str = PROMPT,
+    reprocess: bool = False,
 ):
+    # ultimo_doc_legivel = ""
     txt = ""
     contagem_vazio = 0
     for i in range(retries):
         try:
-            txt = ollama_process_image(
-                image_path, model=model, url=url, current_try=i + 1, prompt=prompt
-            )
+            if provider == "openai":
+                txt = openai_process_image(
+                    image_path,
+                    model=model,
+                    base_url=openai_base_url,
+                    api_key=openai_api_key,
+                    current_try=i + 1,
+                    prompt=prompt,
+                    reprocess=reprocess,
+                )
+            else:
+                txt = ollama_process_image(
+                    image_path,
+                    model=model,
+                    url=url,
+                    current_try=i + 1,
+                    prompt=prompt,
+                    reprocess=reprocess,
+                )
 
             is_ok, reason = validate_ocr_result(txt, image_path)
 
@@ -711,6 +1153,7 @@ def llm_process_image_autoretry(
                     return txt
         except Exception as e:
             print(f"Attempt {i + 1} failed: {e} for {image_path.name}")
+            time.sleep(2 * (i + 1))  # espera um pouco antes de tentar novamente
 
     if len(txt) > 0:
         return txt
@@ -718,26 +1161,43 @@ def llm_process_image_autoretry(
     raise RuntimeError("All attempts failed: " + image_path.name)
 
 
-def preprocess_adaptative_ocr(img_bgr: np.ndarray) -> np.ndarray:
-    """
-    Pré-processamento otimizado para auto-ocr.
-    """
-    gray = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2GRAY)
+def llm_process_chat_retry(
+    image_path: Path,
+    retries: int = 10,
+    provider: str = "ollama",
+    model: str = DEFAULT_LLM_MODEL,
+    url: str = DEFAULT_OLLAMA_URL,
+    openai_base_url: str = DEFAULT_OPENAI_BASE_URL,
+    openai_api_key: str | None = None,
+    prompt: str = PROMPT,
+):
+    # ultimo_doc_legivel = ""
+    txt = ""
+    for i in range(retries):
+        try:
+            if provider == "openai":
+                txt = openai_process_image(
+                    image_path,
+                    model=model,
+                    base_url=openai_base_url,
+                    api_key=openai_api_key,
+                    current_try=i + 1,
+                    prompt=prompt,
+                )
+            else:
+                txt = ollama_process_image(
+                    image_path, model=model, url=url, current_try=i + 1, prompt=prompt
+                )
 
-    # normaliza iluminação não uniforme (papel amarelado, sombras de encadernação)
-    clahe = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(8, 8))
-    gray = clahe.apply(gray)
+            return txt
+        except Exception as e:
+            print(f"Attempt {i + 1} failed: {e} for {image_path.name}")
+            time.sleep(2 * (i + 1))  # espera um pouco antes de tentar novamente
 
-    # binarização adaptativa — mais robusta que threshold global
-    binary = cv2.adaptiveThreshold(
-        gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 15, 10
-    )
+    if len(txt) > 0:
+        return txt
 
-    # remove ruído de papel sem destruir caracteres pequenos
-    kernel = np.ones((2, 2), np.uint8)
-    binary = cv2.morphologyEx(binary, cv2.MORPH_OPEN, kernel)
-
-    return binary
+    raise RuntimeError("All attempts failed: " + image_path.name)
 
 
 def ocr_tesseract(img_path: Image, lang: str = DEFAULT_LANG) -> str:
@@ -781,6 +1241,8 @@ def ocr_images_to_text(
     algorithm: str = "ollama",
     llm_model: str = DEFAULT_LLM_MODEL,
     ollama_url: str = DEFAULT_OLLAMA_URL,
+    openai_base_url: str = DEFAULT_OPENAI_BASE_URL,
+    openai_api_key: str | None = None,
     prompt: str = PROMPT,
 ) -> None:
     """
@@ -801,9 +1263,15 @@ def ocr_images_to_text(
             continue
 
         # leitura streaming, garantindo liberação de memória
-        if algorithm == "ollama":
+        if algorithm in {"ollama", "openai"}:
             txt = llm_process_image_autoretry(
-                img_path, model=llm_model, url=ollama_url, prompt=prompt
+                img_path,
+                provider=algorithm,
+                model=llm_model,
+                url=ollama_url,
+                openai_base_url=openai_base_url,
+                openai_api_key=openai_api_key,
+                prompt=prompt,
             )
         else:
             txt = ocr_tesseract(img_path)
@@ -924,6 +1392,9 @@ def _ocr_one(
     algorithm: str,
     llm_model: str,
     ollama_url: str,
+    openai_base_url: str,
+    openai_api_key: str | None,
+    reprocess: bool = False,
 ) -> str:
     start_total = time.time()
 
@@ -936,25 +1407,74 @@ def _ocr_one(
         f"[{time.strftime('%H:%M:%S')}] [START] {img_path.name} (PID: {current_pid}, Index: {process_index}, OMP_PLACES: {omp_places})"
     )
 
+    txt = None
     page_txt_path = txt_dir / (img_path.stem + ".txt")
     if page_txt_path.exists():
         txt = page_txt_path.read_text(encoding="utf-8", errors="ignore")
 
-        if len(txt.strip()) == 0:
-            print(f"[{time.strftime('%H:%M:%S')}] [WARN] {img_path.name} (txt vazio)")
-        else:
-            print(
-                f"[{time.strftime('%H:%M:%S')}] [SKIP] {img_path.name} (txt já existe)"
-            )
-            return txt
+        # Iremos usar o original no reprocessamento
+        if not reprocess:
+            if len(txt.strip()) == 0:
+                print(
+                    f"[{time.strftime('%H:%M:%S')}] [WARN] {img_path.name} (txt vazio)"
+                )
+            else:
+                print(
+                    f"[{time.strftime('%H:%M:%S')}] [SKIP] {img_path.name} (txt já existe)"
+                )
+                return txt
 
-    if algorithm == "ollama":
-        t4 = time.time()
-        txt = llm_process_image_autoretry(img_path, model=llm_model, url=ollama_url)
-        t5 = time.time()
-        print(
-            f"[{time.strftime('%H:%M:%S')}] {img_path.name} — LLM OCR: {t5 - t4:.3f}s"
-        )
+    if algorithm in {"ollama", "openai"}:
+
+        if reprocess:
+            tesseract_db = open_tesseract_cache_db()
+            init_tesseract_cache(tesseract_db)
+
+            tesseractres = strip_bidi_markers(
+                run_tesseract_cached(tesseract_db, img_path, lang=lang)
+            ).strip()
+
+            txt = clean_text_oriental(txt).strip()
+
+            # PROMPT_VERIFY_LLM_VS_TESSERACT
+            prompt_llm_judge = PROMPT_VERIFY_LLM_VS_TESSERACT.format(
+                tesseract_text=tesseractres, llm_ocr=txt
+            )
+
+            print(f"PROMPT_VERIFY_LLM_VS_TESSERACT  {prompt_llm_judge}")
+
+            t4 = time.time()
+            txt = llm_process_image_autoretry(
+                img_path,
+                provider=algorithm,
+                model=llm_model,
+                url=ollama_url,
+                openai_base_url=openai_base_url,
+                openai_api_key=openai_api_key,
+                prompt=prompt_llm_judge,
+                reprocess=reprocess,
+            )
+            t5 = time.time()
+            print(
+                f"[{time.strftime('%H:%M:%S')}] {img_path.name} — LLM ({algorithm}) OCR: {t5 - t4:.3f}s"
+            )
+
+            print(f"PROMPT_VERIFY_LLM_VS_TESSERACT  {prompt_llm_judge}\n{txt}")
+
+        else:
+            t4 = time.time()
+            txt = llm_process_image_autoretry(
+                img_path,
+                provider=algorithm,
+                model=llm_model,
+                url=ollama_url,
+                openai_base_url=openai_base_url,
+                openai_api_key=openai_api_key,
+            )
+            t5 = time.time()
+            print(
+                f"[{time.strftime('%H:%M:%S')}] {img_path.name} — LLM ({algorithm}) OCR: {t5 - t4:.3f}s"
+            )
     else:
         # leitura
         t0 = time.time()
@@ -1004,7 +1524,10 @@ def ocr_images_to_text_parallel(
     algorithm: str = "tesseract",
     llm_model: str = DEFAULT_LLM_MODEL,
     ollama_url: str = DEFAULT_OLLAMA_URL,
+    openai_base_url: str = DEFAULT_OPENAI_BASE_URL,
+    openai_api_key: str | None = None,
     save_all_text_path: Optional[Path] = None,
+    reprocess: bool = False,
 ) -> None:
     ensure_dir(txt_dir)
 
@@ -1028,6 +1551,9 @@ def ocr_images_to_text_parallel(
             algorithm=algorithm,
             llm_model=llm_model,
             ollama_url=ollama_url,
+            openai_base_url=openai_base_url,
+            openai_api_key=openai_api_key,
+            reprocess=reprocess,
         )
         # imap_unordered tende a dar melhor throughput geral
         all_text_chunks = list(pool.imap_unordered(worker, images, chunksize=chunksize))
@@ -1090,15 +1616,15 @@ def main():
     ap.add_argument("--maxtasksperchild", type=int, default=1000)
     ap.add_argument(
         "--algorithm",
-        choices=["tesseract", "ollama"],
+        choices=["tesseract", "ollama", "openai"],
         default="tesseract",
-        help="Escolhe engine: tesseract (default) ou ollama.",
+        help="Escolhe engine: tesseract (default), ollama ou openai.",
     )
     ap.add_argument(
         "--llm-model",
         type=str,
         default=DEFAULT_LLM_MODEL,
-        help=f"Modelo usado quando --algorithm=ollama (default: {DEFAULT_LLM_MODEL}).",
+        help=f"Modelo usado quando --algorithm usa LLM (default: {DEFAULT_LLM_MODEL} para Ollama, {DEFAULT_OPENAI_MODEL} para OpenAI).",
     )
     ap.add_argument(
         "--ollama-url",
@@ -1107,10 +1633,28 @@ def main():
         help=f"Endpoint Ollama (default: {DEFAULT_OLLAMA_URL}).",
     )
     ap.add_argument(
+        "--openai-base-url",
+        type=str,
+        default=DEFAULT_OPENAI_BASE_URL,
+        help=f"Endpoint OpenAI (default: {DEFAULT_OPENAI_BASE_URL}).",
+    )
+    ap.add_argument(
+        "--openai-api-key",
+        type=str,
+        default=None,
+        help="API key OpenAI (fallback: variável de ambiente OPENAI_API_KEY).",
+    )
+    ap.add_argument(
         "--verify",
         action="store_true",
         default=False,
         help="Verifica a integridade dos textos comparando resultados .txt prontos com o Tesseract.",
+    )
+    ap.add_argument(
+        "--verify-fix",
+        action="store_true",
+        default=False,
+        help="Verifica e corrige a integridade dos textos comparando resultados .txt prontos com o Tesseract.",
     )
     args = ap.parse_args()
 
@@ -1118,6 +1662,13 @@ def main():
     if not pdf_path.exists():
         print(f"PDF não encontrado: {pdf_path}", file=sys.stderr)
         sys.exit(1)
+
+    # Ajustes de defaults para OpenAI
+    if args.algorithm == "openai" and args.llm_model == DEFAULT_LLM_MODEL:
+        args.llm_model = DEFAULT_OPENAI_MODEL
+
+    if args.openai_api_key is None:
+        args.openai_api_key = os.getenv("OPENAI_API_KEY")
 
     base_out = Path(args.out) / pdf_path.stem
     images_dir = base_out / "images"
@@ -1132,9 +1683,9 @@ def main():
 
     concat_path = (base_out / "texto_extraido.txt") if args.concat else None
 
-    if args.verify:
+    if args.verify or args.verify_fix:
         print("Verificando integridade dos textos...")
-        verify_all_parallel(
+        failures = verify_all_parallel(
             images,
             text_dir,
             lang=args.lang,
@@ -1143,6 +1694,33 @@ def main():
             chunksize=args.chunksize,
             maxtasksperchild=args.maxtasksperchild,
         )
+
+        if failures:
+            print(f"Verificação falhou para as seguintes imagens: {failures}")
+
+        if failures and args.verify_fix:
+            print("Reprocessando imagens com falha...")
+
+            algorithm = args.algorithm if len(args.algorithm) > 0 else "ollama"
+            if algorithm == "openai" and args.llm_model == DEFAULT_LLM_MODEL:
+                args.llm_model = DEFAULT_OPENAI_MODEL
+
+            ocr_images_to_text_parallel(
+                failures,
+                text_dir,
+                lang=args.lang,
+                processes=args.procs,
+                omp_threads_per_proc=args.omp_threads,
+                chunksize=args.chunksize,
+                maxtasksperchild=args.maxtasksperchild,
+                algorithm=algorithm,
+                llm_model=args.llm_model,
+                ollama_url=args.ollama_url,
+                openai_base_url=args.openai_base_url,
+                openai_api_key=args.openai_api_key,
+                save_all_text_path=concat_path,
+                reprocess=True,
+            )
         print("Verificação concluída.")
         return
 
@@ -1158,6 +1736,8 @@ def main():
         algorithm=args.algorithm,
         llm_model=args.llm_model,
         ollama_url=args.ollama_url,
+        openai_base_url=args.openai_base_url,
+        openai_api_key=args.openai_api_key,
         save_all_text_path=concat_path,
     )
     print("Concluído.")
