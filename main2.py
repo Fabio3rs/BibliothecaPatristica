@@ -1170,6 +1170,7 @@ def llm_process_chat_retry(
     openai_base_url: str = DEFAULT_OPENAI_BASE_URL,
     openai_api_key: str | None = None,
     prompt: str = PROMPT,
+    reprocess: bool = False,
 ):
     # ultimo_doc_legivel = ""
     txt = ""
@@ -1183,6 +1184,7 @@ def llm_process_chat_retry(
                     api_key=openai_api_key,
                     current_try=i + 1,
                     prompt=prompt,
+                    reprocess=reprocess,
                 )
             else:
                 txt = ollama_process_image(

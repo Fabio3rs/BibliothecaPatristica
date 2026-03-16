@@ -1,23 +1,40 @@
 #!/usr/bin/env node
 // build_pagefind_from_shards.mjs
-// Gera índice Pagefind usando createIndex/addCustomRecord
-// Uso: node tools/build_pagefind_from_shards.mjs --public web/public --out web/public/pagefind --base /BibliothecaPatristica
+// Gera índice Pagefind usando createIndex/addCustomRecord com paralelismo
+// Uso: node tools/build_pagefind_from_shards.mjs \\
+//         --public web/public --out web/public/pagefind --base /BibliothecaPatristica \\
+//         [--min-count 1] [--skip-noise|--include-noise]
 
 import fs from 'fs';
 import path from 'path';
+import os from 'os';
 import { pathToFileURL } from 'url';
 
-function readJSON(p) { return JSON.parse(fs.readFileSync(p, 'utf-8')); }
+async function readJSON(p) { 
+  const data = await fs.promises.readFile(p, 'utf-8');
+  return JSON.parse(data); 
+}
 function ensureDir(p) { fs.mkdirSync(p, { recursive: true }); }
 
 function parseArgs() {
   const args = process.argv.slice(2);
-  const params = { publicDir: 'web/public', outDir: 'web/public/pagefind', base: '/BibliothecaPatristica' };
+  const params = {
+    publicDir: 'web/public',
+    outDir: 'web/public/pagefind',
+    base: '/BibliothecaPatristica',
+    minCount: 1,
+    skipNoise: true,
+    concurrency: Math.max(1, Math.min(4, (os.cpus()?.length || 2))), // bound default to avoid overloading
+  };
   for (let i = 0; i < args.length; i++) {
     const a = args[i];
     if (a === '--public') params.publicDir = args[++i];
     else if (a === '--out') params.outDir = args[++i];
     else if (a === '--base') params.base = args[++i];
+    else if (a === '--min-count') params.minCount = parseInt(args[++i], 10) || 1;
+    else if (a === '--skip-noise') params.skipNoise = true;
+    else if (a === '--include-noise') params.skipNoise = false;
+    else if (a === '--concurrency') params.concurrency = Math.max(1, parseInt(args[++i], 10) || params.concurrency);
   }
   return params;
 }
@@ -43,11 +60,19 @@ async function main() {
   }
   const { createIndex, close } = await import(pathToFileURL(modPath).href);
 
-  const volumes = readJSON(path.join(params.publicDir, 'volumes.json')).volumes || [];
-  const keywords = readJSON(path.join(params.publicDir, 'dict', 'keywords.json')).items || [];
-  const kwMap = new Map(keywords.map(k => [k.id, k.label]));
+  const volumesData = await readJSON(path.join(params.publicDir, 'volumes.json'));
+  const volumes = volumesData.volumes || [];
+  const keywordsData = await readJSON(path.join(params.publicDir, 'dict', 'keywords.json'));
+  const keywords = keywordsData.items || [];
+  const kwMap = new Map(keywords.map(k => [k.id, k])); // meta: label, group_id, count, is_noise
 
+  // Limpa a pasta de saída para garantir que não haja resíduos do índice anterior
+  if (fs.existsSync(params.outDir)) {
+    console.log(`Limpando índice anterior em ${params.outDir}...`);
+    fs.rmSync(params.outDir, { recursive: true, force: true });
+  }
   ensureDir(params.outDir);
+
   const { index, errors: initErrors } = await createIndex({
     rootSelector: null,
     writePlayground: false,
@@ -59,69 +84,118 @@ async function main() {
     process.exit(1);
   }
 
-  let records = 0;
-  for (const vol of volumes) {
+  let totalRecords = 0;
+  const BATCH_SIZE = 50; // Quantidade de blocos processados em paralelo por volume
+
+  async function indexVolume(vol) {
     const vid = vol.id;
+    process.stdout.write(`Indexando volume: ${vid}... `);
 
     // snapshot
     try {
-      const snapObj = readJSON(path.join(params.publicDir, 'snapshots', `${vid}.json`));
+      const snapObj = await readJSON(path.join(params.publicDir, 'snapshots', `${vid}.json`));
       const snap = (snapObj.snapshots || [])[0];
       if (snap && snap.summary) {
-        const r = await index.addCustomRecord({
+        await index.addCustomRecord({
           url: `${base}/viewer?doc=${vid}&page=${vol.page_first || 1}&snapshot=global`,
-          content: snap.summary,
-          meta: { title: `${vid} resumo global`, volume: vid },
+          content: snap.summary.replace(/<[^>]*>?/gm, ''),
+          meta: { title: `${vid} resumo global`, volume: vid, collection: vol.collection_id },
           filters: { collection: [vol.collection_id], volume: [vid] },
           language: 'pt',
         });
-        if (r.errors?.length) { console.error('Erro snapshot', vid, r.errors); process.exit(1); }
-        records += 1;
+        totalRecords++;
       }
     } catch (e) { /* ignore missing snapshot */ }
 
-    // páginas: ler manifesto do volume para pegar os blocos
-    let metaObj = null;
-    try {
-      metaObj = readJSON(path.join(params.publicDir, vol.meta_url));
-    } catch (e) {
-      console.error('Manifesto não encontrado para', vid, vol.meta_url);
-      process.exit(1);
-    }
+    // páginas
+    let metaObj = await readJSON(path.join(params.publicDir, vol.meta_url));
+    const blocks = metaObj.page_blocks || [];
 
-    for (const pb of metaObj.page_blocks || []) {
-      const block = readJSON(path.join(params.publicDir, pb.file));
-      for (const p of block.pages) {
-        const kwLabels = (p.keyword_ids || []).map(id => kwMap.get(id) || id);
-        const kwCatLabels = Object.values(p.keyword_categories || {}).flat().map(id => kwMap.get(id) || id);
-        const content = `${p.summary_page || ''}\n${p.summary_global || ''}\n${kwLabels.join(' ')} ${kwCatLabels.join(' ')}`;
+    for (let i = 0; i < blocks.length; i += BATCH_SIZE) {
+      const batch = blocks.slice(i, i + BATCH_SIZE);
+      
+      await Promise.all(batch.map(async (pb) => {
+        const block = await readJSON(path.join(params.publicDir, pb.file));
+        const pagePromises = block.pages.map(p => {
+          const usable = (meta) => {
+            if (!meta) return false;
+            if (params.skipNoise && meta.is_noise) return false;
+            if (meta.count !== undefined && meta.count < params.minCount) return false;
+            return !!meta.label;
+          };
 
-        const r = await index.addCustomRecord({
-          url: `${base}/viewer?doc=${vid}&page=${p.page}`,
-          content,
-          meta: { title: `${vid} p.${p.page}`, volume: vid, page: String(p.page) },
-          filters: {
-            collection: [vol.collection_id],
-            volume: [vid],
-            keyword: kwLabels.length ? kwLabels : undefined,
-            keyword_category: kwCatLabels.length ? kwCatLabels : undefined,
-          },
-          language: 'pt',
+          const kwLabels = (p.keyword_ids || [])
+            .map(id => kwMap.get(id))
+            .filter(usable)
+            .map(meta => meta.label);
+
+          const kwGroups = Array.from(new Set(
+            (p.keyword_ids || [])
+              .map(id => kwMap.get(id))
+              .filter(meta => usable(meta) && meta.group_id !== undefined && meta.group_id !== null)
+              .map(meta => String(meta.group_id))
+          ));
+
+          const kwCatLabels = Object.values(p.keyword_categories || {})
+            .flat()
+            .map(id => kwMap.get(id))
+            .filter(usable)
+            .map(meta => meta.label);
+          
+          // Conteúdo limpo para o Pagefind (remove qualquer tag HTML residual)
+          const content = `
+            ${p.summary_page || ''}
+            ${p.summary_global || ''}
+            ${kwLabels.join(' ')}
+            ${kwCatLabels.join(' ')}
+          `.replace(/<[^>]*>?/gm, '').replace(/\s+/g, ' ').trim();
+
+          return index.addCustomRecord({
+            url: `${base}/viewer?doc=${vid}&page=${p.page}`,
+            content: content,
+            meta: { 
+              title: `${vid} p.${p.page}`, 
+              volume: vid, 
+              page: String(p.page),
+              collection: vol.collection_id
+            },
+            filters: {
+              collection: [vol.collection_id],
+              volume: [vid],
+              keyword: kwLabels.length ? kwLabels : undefined,
+              keyword_group: kwGroups.length ? kwGroups : undefined,
+              keyword_category: kwCatLabels.length ? kwCatLabels : undefined,
+            },
+            language: 'pt',
+          });
         });
-        if (r.errors?.length) { console.error('Erro página', vid, p.page, r.errors); process.exit(1); }
-        records += 1;
-      }
+
+        const results = await Promise.all(pagePromises);
+        totalRecords += results.length;
+      }));
     }
+    process.stdout.write(`OK (${totalRecords} total)\n`);
   }
 
-  if (!records) {
+  // Processa volumes em paralelo respeitando a concorrência configurada
+  const queue = [...volumes];
+  const workers = Array.from({ length: params.concurrency }, async () => {
+    while (queue.length) {
+      const vol = queue.shift();
+      if (vol) await indexVolume(vol);
+    }
+  });
+  await Promise.all(workers);
+
+  if (!totalRecords) {
     console.error('Nenhum record adicionado ao índice Pagefind. Abortando.');
     process.exit(1);
   }
 
+  console.log("Escrevendo arquivos do índice (aguarde)...");
   await index.writeFiles({ outputPath: params.outDir });
   await close();
-  console.log(`[OK] Pagefind index written to ${params.outDir} (records: ${records})`);
+  console.log(`[OK] Pagefind index written to ${params.outDir} (total records: ${totalRecords})`);
 }
 
 main().catch((err) => {

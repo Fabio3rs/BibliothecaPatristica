@@ -134,6 +134,14 @@ def build_keywords_dict(volumes_pages: Dict[str, List[PageRecord]]) -> Tuple[Dic
     return label_to_id, items
 
 
+def load_keywords_dict(path: Path) -> Tuple[Dict[str, str], List[dict]]:
+    """Lê keywords.json existente e retorna (label->id, items)."""
+    data = json.loads(path.read_text(encoding="utf-8"))
+    items = data.get("items") or []
+    label_to_id = {it.get("label"): it.get("id") for it in items if it.get("label") and it.get("id")}
+    return label_to_id, items
+
+
 def page_blocks(recs: List[PageRecord], block_size: int, volume_id: str, keyword_ids: Dict[str, str]) -> Tuple[List[dict], List[dict]]:
     recs_sorted = sorted(recs, key=lambda r: r.page)
     blocks = []
@@ -195,6 +203,7 @@ def main():
     ap.add_argument("--index", type=Path, default=Path("data/shards/enrichment/index.json"))
     ap.add_argument("--out", type=Path, default=Path("web/public"))
     ap.add_argument("--page-block-size", type=int, default=100)
+    ap.add_argument("--reuse-keywords-json", action="store_true", help="Não re-gerar dict/keywords.json se já existir; usa-o para mapear IDs.")
     args = ap.parse_args()
 
     ensure_dirs(args.out)
@@ -218,10 +227,15 @@ def main():
         log(f"Volume {vid}: {len(recs)} páginas carregadas.")
 
     # Dicionário global de keywords
-    log("Gerando dicionário global de keywords...")
-    kw_map, kw_items = build_keywords_dict(volumes_pages)
-    write_json(args.out / "dict" / "keywords.json", {"items": kw_items})
-    log(f"Keywords distintas: {len(kw_items)}")
+    dict_path = args.out / "dict" / "keywords.json"
+    if args.reuse_keywords_json and dict_path.exists():
+        log(f"Reutilizando dicionário existente em {dict_path}")
+        kw_map, kw_items = load_keywords_dict(dict_path)
+    else:
+        log("Gerando dicionário global de keywords...")
+        kw_map, kw_items = build_keywords_dict(volumes_pages)
+        write_json(dict_path, {"items": kw_items})
+        log(f"Keywords distintas: {len(kw_items)}")
 
     volumes_out = []
     for vol in idx.get("volumes", []):
