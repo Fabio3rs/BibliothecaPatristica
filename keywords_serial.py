@@ -39,7 +39,11 @@ import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
+from statistics import mean, median
 from typing import List, Optional, Tuple
+
+# Heurísticas de ruído/rejeição de página OCR
+from test_limpeza_ocr import clean_ocr_text_optimized, classify_page_noise
 
 # ---------------------------------------------------------------------------
 # Constantes
@@ -56,6 +60,11 @@ DEFAULT_NUM_CTX = 16384
 TOKEN_RESERVE_OUTPUT = 1024  # keywords precisam de menos output
 TOKEN_RESERVE_SYSTEM = 400
 CHARS_PER_TOKEN = 3.8
+RECOMMENDED_MIN_KEYWORDS = 5
+RECOMMENDED_MAX_KEYWORDS = 20
+MAX_KEYWORDS_LENGTH = 180
+OUTLIER_LOW_RATIO = 0.4
+OUTLIER_HIGH_RATIO = 2.0
 
 VALID_SOURCES = [
     "resumo_pagina",
@@ -501,7 +510,7 @@ Categorias (agrupe as keywords acima):
 
 
 def replace_linebreak(text: str) -> str:
-    return text.replace("-\n", " ")
+    return text.replace("-\n", "")
 
 
 def build_user_prompt(
@@ -583,6 +592,26 @@ def _parse_numbered_keywords(raw: str) -> List[str]:
     return keywords
 
 
+def _parse_numbered_keywords_fallback(raw: str) -> List[str]:
+    """
+    Fallback para respostas compactadas em uma única linha, ex.:
+    "Keywords: 1.Atanásio;2.Epístola ...;3.Ariano ...4.Meleciano..."
+    Captura blocos numerados mesmo sem novas linhas ou com separadores ';'.
+    """
+    raw_main = raw.split("Categorias", 1)[0]
+    pattern = re.compile(
+        r"\b\d+[.)]?\s*(.+?)(?=(?:\s*\d+[.)]|$))",
+        re.DOTALL,
+    )
+    keywords: List[str] = []
+    for m in pattern.finditer(raw_main):
+        kw = m.group(1).strip().strip(";,:.-")
+        kw = re.sub(r"\s+\(.{0,80}\)$", "", kw).strip()
+        if kw and len(kw) < 200:
+            keywords.append(kw)
+    return keywords
+
+
 def _parse_categories(raw: str) -> dict:
     """
     Extrai categorias da resposta. Resiliente a variações de formato:
@@ -649,6 +678,13 @@ def parse_keywords_response(raw: str) -> Tuple[KeywordsResult, str]:
     clean = _strip_think_block(raw)
 
     keywords = _parse_numbered_keywords(clean)
+    if not keywords:
+        keywords = _parse_numbered_keywords_fallback(clean)
+    else:
+        extra = _parse_numbered_keywords_fallback(clean)
+        for kw in extra:
+            if kw not in keywords:
+                keywords.append(kw)
     categorias = _parse_categories(clean)
 
     result: KeywordsResult = {
@@ -658,6 +694,320 @@ def parse_keywords_response(raw: str) -> Tuple[KeywordsResult, str]:
         result["categorias"] = categorias
 
     return result, raw
+
+
+# ---------------------------------------------------------------------------
+# Validação e limpeza de keywords existentes
+# ---------------------------------------------------------------------------
+
+
+def normalize_keywords_payload(raw: str) -> Tuple[KeywordsResult, Optional[str]]:
+    """
+    Converte keywords_json em estrutura padrão {"keywords": [...], "categorias": {...}}
+    e sinaliza problemas de parsing.
+    """
+    if not raw or not raw.strip():
+        return {"keywords": []}, "missing_keywords_json"
+
+    try:
+        data = json.loads(raw)
+    except Exception:
+        return {"keywords": []}, "invalid_json"
+
+    result: KeywordsResult = {}
+    parse_issue: Optional[str] = None
+
+    if isinstance(data, list):
+        result["keywords"] = [kw for kw in data if isinstance(kw, str)]
+        parse_issue = "legacy_list_format"
+        return result, parse_issue
+
+    if isinstance(data, dict):
+        kws = data.get("keywords")
+        if isinstance(kws, list):
+            result["keywords"] = [kw for kw in kws if isinstance(kw, str)]
+        else:
+            result["keywords"] = []
+            parse_issue = "missing_keywords_field"
+
+        cats = data.get("categorias") or data.get("categories")
+        if isinstance(cats, dict):
+            clean_cats = {}
+            for name, items in cats.items():
+                if not isinstance(items, list):
+                    continue
+                clean_items = [it for it in items if isinstance(it, str)]
+                if clean_items:
+                    clean_cats[name] = clean_items
+            if clean_cats:
+                result["categorias"] = clean_cats
+
+        return result, parse_issue
+
+    return {"keywords": []}, "unexpected_structure"
+
+
+def _clean_list(items: List[str]) -> Tuple[List[str], List[str]]:
+    """Normaliza lista de strings removendo duplicatas, espaços e itens inválidos."""
+    issues: set = set()
+    cleaned: List[str] = []
+    seen = set()
+
+    for raw in items:
+        if not isinstance(raw, str):
+            issues.add("removed_non_string")
+            continue
+
+        kw = re.sub(r"\s+", " ", raw.strip())
+        kw = kw.rstrip(".,;•-")
+        if not kw:
+            issues.add("removed_empty")
+            continue
+        if len(kw) > MAX_KEYWORDS_LENGTH:
+            issues.add("removed_too_long")
+            continue
+
+        key = kw.casefold()
+        if key in seen:
+            issues.add("removed_duplicate")
+            continue
+        seen.add(key)
+        cleaned.append(kw)
+
+    return cleaned, sorted(issues)
+
+
+def clean_keywords_structure(
+    result: KeywordsResult,
+) -> Tuple[KeywordsResult, List[str]]:
+    """Aplica limpeza leve nas keywords/categorias e devolve issues encontradas."""
+    issues: List[str] = []
+
+    kws = result.get("keywords") or []
+    cleaned_kws, kw_issues = _clean_list(kws)
+    issues.extend(kw_issues)
+
+    cleaned: KeywordsResult = {"keywords": cleaned_kws}
+
+    cats = result.get("categorias") or {}
+    if isinstance(cats, dict):
+        clean_cats = {}
+        for name, items in cats.items():
+            if not isinstance(items, list):
+                issues.append("category_not_list")
+                continue
+            cleaned_items, cat_issues = _clean_list(items)
+            issues.extend(cat_issues)
+            if cleaned_items:
+                clean_cats[name] = cleaned_items
+        if clean_cats:
+            cleaned["categorias"] = clean_cats
+
+    # Normaliza duplicatas de issues
+    issues = sorted(set(issues))
+    return cleaned, issues
+
+
+def validate_keywords(cleaned: KeywordsResult, parse_issue: Optional[str]) -> List[str]:
+    """Valida lista de keywords já limpa; retorna lista de issues."""
+    issues: List[str] = []
+    kw_count = len(cleaned.get("keywords", []))
+
+    if parse_issue:
+        issues.append(parse_issue)
+
+    if kw_count == 0:
+        issues.append("empty_keywords")
+    elif kw_count < RECOMMENDED_MIN_KEYWORDS:
+        issues.append(f"few_keywords({kw_count})")
+    elif kw_count > RECOMMENDED_MAX_KEYWORDS + 7:  # tolera até +7 como outlier extremo
+        issues.append(f"many_keywords({kw_count})")
+
+    if any(len((kw or "").split()) >= 9 for kw in cleaned.get("keywords", [])):
+        issues.append("keyword_looks_sentence")
+
+    return issues
+
+
+def verify_documents(
+    con: sqlite3.Connection,
+    docs: List[str],
+    *,
+    apply_fix: bool = False,
+    rerun_bad: bool = False,
+    process_params: Optional[dict] = None,
+    page: Optional[int] = None,
+    limit: Optional[int] = None,
+    provider: str | None = None,
+    model: str | None = None
+) -> None:
+    """Valida keywords já gravadas e, opcionalmente, aplica correções leves."""
+
+    total_pages = 0
+    total_issue_pages = 0
+    total_fixes = 0
+    total_reruns = 0
+
+    for doc in docs:
+        rows = fetch_pages(con, doc, page=page, limit=limit)
+        if not rows:
+            log.warning("[%s] Nenhuma página encontrada para validar", doc)
+            continue
+
+        doc_counts: List[int] = []
+        page_reports = []
+
+        for row in rows:
+            pnum = row["pagina_num"]
+            raw_kw = row.get("keywords_json", "")
+
+            parsed, parse_issue = normalize_keywords_payload(raw_kw)
+            cleaned, clean_issues = clean_keywords_structure(parsed)
+            issues = clean_issues + validate_keywords(cleaned, parse_issue)
+
+            page_reports.append(
+                {
+                    "pagina": pnum,
+                    "count": len(cleaned.get("keywords", [])),
+                    "issues": set(issues),
+                    "cleaned": cleaned,
+                    "parsed": parsed,
+                    "parse_issue": parse_issue,
+                    "source": row.get("keywords_source", ""),
+                    "modelo": row.get("keywords_modelo", ""),
+                    "row": row,
+                }
+            )
+            doc_counts.append(len(cleaned.get("keywords", [])))
+
+        doc_median = median(doc_counts) if doc_counts else 0
+        doc_avg = mean(doc_counts) if doc_counts else 0
+
+        # Marca outliers por doc
+        if doc_median:
+            low_threshold = max(2, int(doc_median * OUTLIER_LOW_RATIO))
+            high_threshold = max(
+                RECOMMENDED_MAX_KEYWORDS + 7, int(doc_median * OUTLIER_HIGH_RATIO)
+            )
+            for rep in page_reports:
+                if rep["count"] < low_threshold:
+                    rep["issues"].add(f"outlier_low_vs_doc(med={doc_median:.1f})")
+                if rep["count"] > high_threshold:
+                    rep["issues"].add(f"outlier_high_vs_doc(med={doc_median:.1f})")
+
+        # Log e aplica fixes
+        issue_pages_doc = 0
+        for rep in page_reports:
+            if rep["issues"]:
+                issue_pages_doc += 1
+                total_issue_pages += 1
+                log.warning(
+                    "[%s] p%d  %d keywords  issues: %s",
+                    doc,
+                    rep["pagina"],
+                    rep["count"],
+                    ", ".join(sorted(rep["issues"])),
+                )
+
+            if (
+                apply_fix
+                and not rep.get("parse_issue")
+                and rep["cleaned"] != rep["parsed"]
+            ):
+                kw_json = json.dumps(rep["cleaned"], ensure_ascii=False)
+                save_keywords_to_resumos(
+                    con=con,
+                    documento=doc,
+                    pagina_num=rep["pagina"],
+                    keywords_json=kw_json,
+                    source=rep["source"],
+                    modelo=rep["modelo"],
+                )
+                total_fixes += 1
+                log.info(
+                    "[%s] p%d auto-fix aplicado (dedupe/limpeza)", doc, rep["pagina"]
+                )
+
+        # Reprocessa via LLM páginas ainda com issues
+        if rerun_bad and process_params:
+            for rep in page_reports:
+                if not rep["issues"]:
+                    continue
+
+                row = rep["row"]
+                src = rep.get("source") or process_params.get("source", "resumo_pagina")
+
+                if not model:
+                    model = process_params.get("model", rep.get("modelo") or DEFAULT_MODEL)
+
+                if not provider:
+                    provider = process_params.get("provider", rep.get("provider") or "ollama")
+
+                try:
+                    result, raw = process_page(
+                        row,
+                        source=src,
+                        provider=provider,
+                        model=model,      
+                        base_url=process_params["base_url"],
+                        timeout=process_params["timeout"],
+                        num_ctx=process_params["num_ctx"],
+                        reasoning_effort=process_params["reasoning_effort"],
+                        api_key_env=process_params["api_key_env"],
+                        retries=process_params["retries"],
+                        think=process_params["think"],
+                    )
+                except Exception as exc:
+                    log.error("[%s] p%d rerun falhou: %s", doc, rep["pagina"], exc)
+                    continue
+
+                kw_json = json.dumps(result, ensure_ascii=False)
+                save_keywords_to_resumos(
+                    con=con,
+                    documento=doc,
+                    pagina_num=rep["pagina"],
+                    keywords_json=kw_json,
+                    source=src,
+                    modelo=model,
+                )
+                total_reruns += 1
+                log.info(
+                    "[%s] p%d rerun LLM concluído (%d keywords)",
+                    doc,
+                    rep["pagina"],
+                    len(result.get("keywords", [])),
+                )
+
+        total_pages += len(rows)
+        log.info(
+            "[%s] %d páginas | média %.1f | mediana %.1f | páginas com issues: %d%s",
+            doc,
+            len(rows),
+            doc_avg,
+            doc_median,
+            issue_pages_doc,
+            (
+                " | FORA DO RANGE"
+                if doc_avg
+                and (
+                    doc_avg < RECOMMENDED_MIN_KEYWORDS
+                    or doc_avg > RECOMMENDED_MAX_KEYWORDS
+                )
+                else ""
+            ),
+        )
+
+    log.info("─" * 60)
+    log.info(
+        "Validação concluída: %d páginas verificadas, %d páginas com issues",
+        total_pages,
+        total_issue_pages,
+    )
+    if apply_fix:
+        log.info("Auto-fixes aplicados: %d páginas", total_fixes)
+    if rerun_bad:
+        log.info("Reruns via LLM: %d páginas", total_reruns)
+    log.info("─" * 60)
 
 
 # ---------------------------------------------------------------------------
@@ -903,6 +1253,16 @@ Exemplos:
         help="Gravar num DB separado (patristica_keywords.db) em vez da tabela resumos.",
     )
     p.add_argument(
+        "--verify",
+        action="store_true",
+        help="Somente valida keywords já gravadas (não chama LLM).",
+    )
+    p.add_argument(
+        "--verify-fix",
+        action="store_true",
+        help="Valida e aplica auto-fix leve (dedupe/limpeza) nas keywords já gravadas.",
+    )
+    p.add_argument(
         "-v",
         "--verbose",
         action="store_true",
@@ -913,6 +1273,18 @@ Exemplos:
         action="store_true",
         dest="json_output",
         help="Output em JSON Lines (uma linha por página) no dry run.",
+    )
+    p.add_argument(
+        "--no-skip-noise",
+        dest="skip_noise",
+        action="store_false",
+        help="Processa também páginas classificadas como ruído/boilerplate.",
+    )
+    p.set_defaults(skip_noise=True)
+    p.add_argument(
+        "--rerun-bad",
+        action="store_true",
+        help="Após verify/verify-fix, reprocessa páginas ainda com issues chamando o LLM.",
     )
 
     # Databases
@@ -938,7 +1310,9 @@ Exemplos:
     p.add_argument("--openai-url", default="https://api.openai.com/v1")
     p.add_argument("--api-key-env", default="OPENAI_API_KEY")
     p.add_argument(
-        "--reasoning-effort", choices=["low", "medium", "high"], default="high"
+        "--reasoning-effort",
+        choices=["minimal", "low", "medium", "high"],
+        default="high",
     )
     p.add_argument("--num-ctx", type=int, default=DEFAULT_NUM_CTX)
     p.add_argument(
@@ -947,7 +1321,9 @@ Exemplos:
         default=None,
         help="Timeout em segundos (default: 120 ollama, 300 openai).",
     )
-    p.add_argument("--retries", type=int, default=5, help="Número de tentativas em caso de falha.")
+    p.add_argument(
+        "--retries", type=int, default=5, help="Número de tentativas em caso de falha."
+    )
     p.add_argument(
         "--think",
         action="store_true",
@@ -983,40 +1359,59 @@ def main() -> None:
     # Resolve base_url
     base_url = args.openai_url if args.provider == "openai" else args.ollama_url
 
-    # Modo de gravação
-    use_separate_db = args.separate_db and args.write
-    use_resumos_inline = args.write and not args.separate_db
-    dry_run = not args.write
+    # Modo de gravação/validação
+    verify_mode = args.verify or args.verify_fix
+    apply_fix = args.verify_fix
+    rerun_bad = args.rerun_bad
 
     # Conexões
-    if use_resumos_inline:
-        # Leitura + escrita no mesmo DB de resumos
-        resumos_con = connect_readwrite(args.resumos_db)
+    if verify_mode:
+        needs_write = apply_fix or rerun_bad
+        resumos_con = (
+            connect_readwrite(args.resumos_db)
+            if needs_write
+            else connect_readonly(args.resumos_db)
+        )
+        mode_label = "VERIFICAR keywords"
+        if apply_fix:
+            mode_label += " (auto-fix ON)"
+        if rerun_bad:
+            mode_label += " + RERUN LLM"
         ensure_keywords_columns(resumos_con)
-        mode_label = f"GRAVANDO na tabela resumos → {args.resumos_db}"
     else:
-        # Somente leitura
-        resumos_con = connect_readonly(args.resumos_db)
+        use_separate_db = args.separate_db and args.write
+        use_resumos_inline = args.write and not args.separate_db
+        dry_run = not args.write
 
-    kw_con: Optional[sqlite3.Connection] = None
-    if use_separate_db:
-        kw_con = connect_keywords_db(args.keywords_db)
-        init_keywords_schema(kw_con)
-        mode_label = f"GRAVANDO → {args.keywords_db}"
+        if use_resumos_inline:
+            resumos_con = connect_readwrite(args.resumos_db)
+            ensure_keywords_columns(resumos_con)
+            mode_label = f"GRAVANDO na tabela resumos → {args.resumos_db}"
+        else:
+            resumos_con = connect_readonly(args.resumos_db)
 
-    if dry_run:
-        mode_label = "DRY RUN (stdout)"
+        kw_con: Optional[sqlite3.Connection] = None
+        if use_separate_db:
+            kw_con = connect_keywords_db(args.keywords_db)
+            init_keywords_schema(kw_con)
+            mode_label = f"GRAVANDO → {args.keywords_db}"
+
+        if dry_run:
+            mode_label = "DRY RUN (stdout)"
 
     log.info("═" * 60)
     log.info("  Keywords Serial – Patrística")
     log.info("═" * 60)
     log.info("  Modo:     %s", mode_label)
-    log.info("  Source:   %s", args.source)
-    log.info("  Provider: %s  |  Modelo: %s", args.provider, args.model)
-    if args.provider == "ollama":
-        log.info(
-            "  num_ctx:  %d  |  think: %s", args.num_ctx, "ON" if args.think else "OFF"
-        )
+    if not verify_mode or rerun_bad:
+        log.info("  Source:   %s", args.source)
+        log.info("  Provider: %s  |  Modelo: %s", args.provider, args.model)
+        if args.provider == "ollama":
+            log.info(
+                "  num_ctx:  %d  |  think: %s",
+                args.num_ctx,
+                "ON" if args.think else "OFF",
+            )
     log.info("═" * 60)
 
     # Descobre documentos
@@ -1034,9 +1429,36 @@ def main() -> None:
 
     log.info("Documentos: %d", len(docs))
 
+    # Apenas validação
+    if verify_mode:
+        process_params = {
+            "provider": args.provider,
+            "model": args.model,
+            "base_url": base_url,
+            "timeout": args.timeout,
+            "num_ctx": args.num_ctx,
+            "reasoning_effort": args.reasoning_effort,
+            "api_key_env": args.api_key_env,
+            "retries": args.retries,
+            "think": args.think,
+            "source": args.source,
+        }
+        verify_documents(
+            con=resumos_con,
+            docs=docs,
+            apply_fix=apply_fix,
+            rerun_bad=rerun_bad,
+            process_params=process_params,
+            page=args.page,
+            limit=args.limit,
+        )
+        resumos_con.close()
+        return
+
     total_kw = 0
     total_pages = 0
     total_skipped = 0
+    total_skipped_noise = 0
 
     for doc in docs:
         pages = fetch_pages(resumos_con, doc, page=args.page, limit=args.limit)
@@ -1062,6 +1484,21 @@ def main() -> None:
                     and is_already_done(kw_con, doc, pnum, args.source, args.model)
                 ):
                     total_skipped += 1
+                    continue
+
+            # Pula páginas lixo/boilerplate detectadas pelo pipeline de limpeza
+            if args.skip_noise:
+                texto_original = row.get("pagina_texto") or ""
+                texto_limpo, meta = clean_ocr_text_optimized(texto_original)
+                quality = classify_page_noise(texto_original, texto_limpo, meta=meta)
+                if quality.get("drop_original_embedding"):
+                    total_skipped_noise += 1
+                    log.info(
+                        "[%s] p%d pulada (noise): %s",
+                        doc,
+                        pnum,
+                        quality.get("reason", "noise"),
+                    )
                     continue
 
             t0 = time.time()
@@ -1149,12 +1586,14 @@ def main() -> None:
     log.info("Total: %d páginas, %d keywords extraídas", total_pages, total_kw)
     if total_skipped:
         log.info("Puladas (já feitas): %d", total_skipped)
+    if total_skipped_noise:
+        log.info("Puladas (ruído/boilerplate): %d", total_skipped_noise)
     if total_pages:
         log.info("Média: %.1f keywords/página", total_kw / total_pages)
     log.info("─" * 60)
 
     resumos_con.close()
-    if kw_con:
+    if not verify_mode and kw_con:
         kw_con.close()
 
 

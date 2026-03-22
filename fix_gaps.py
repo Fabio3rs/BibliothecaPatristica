@@ -19,12 +19,14 @@ def process_doc(doc_name, idx, total):
         "python3", "resumo_serial.py",
         "--volume-dir", f"teste/{doc_name}",
         "--fill-gaps",
-        "--provider", "openai",
-        "--model", "gpt-5-mini",
-        "--reasoning-effort", "low",
-        # "--provider", "ollama",
-        # "--model", "deepseek-v3.2:cloud",
-        "--retries", "20"
+        # "--provider", "openai",
+        # "--model", "gpt-5-mini",
+        # "--model", "deepseek-chat",
+        "--reasoning-effort", "minimal",
+        # "--openai-url", "https://api.deepseek.com/v1",
+        "--provider", "ollama",
+        "--model", "qwen3.5:397b-cloud",
+        "--retries", "100"
     ]
     
     try:

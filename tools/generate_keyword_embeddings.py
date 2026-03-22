@@ -46,16 +46,73 @@ CREATE TABLE IF NOT EXISTS keyword_embedding (
     embedding BLOB NOT NULL,
     prompt_text TEXT,
     ranked_from_model INTEGER,
-    embedding_hash TEXT UNIQUE,
+    embedding_hash TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 CREATE UNIQUE INDEX IF NOT EXISTS idx_kw_emb_model ON keyword_embedding(keyword_id, model);
+CREATE INDEX IF NOT EXISTS idx_kw_emb_hash ON keyword_embedding(embedding_hash);
 """
+
+
+KW_EMBED_TABLE_TEMPLATE = """
+CREATE TABLE {table_name} (
+    id INTEGER PRIMARY KEY,
+    keyword_id INTEGER NOT NULL REFERENCES keywords(id),
+    model TEXT NOT NULL,
+    embedding_dim INTEGER NOT NULL,
+    embedding BLOB NOT NULL,
+    prompt_text TEXT,
+    ranked_from_model INTEGER,
+    embedding_hash TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+"""
+
+KW_EMBED_COLS = (
+    "id, keyword_id, model, embedding_dim, embedding, "
+    "prompt_text, ranked_from_model, embedding_hash, created_at, updated_at"
+)
+
+
+def _table_exists(con: sqlite3.Connection, name: str) -> bool:
+    row = con.execute(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name=?", (name,)
+    ).fetchone()
+    return row is not None
+
+
+def _has_unique_hash_index(con: sqlite3.Connection) -> bool:
+    """Detecta esquema antigo com UNIQUE em embedding_hash."""
+    for idx in con.execute("PRAGMA index_list('keyword_embedding')"):
+        if not idx[2]:  # unique flag
+            continue
+        idx_name = idx[1]
+        cols = [row[2] for row in con.execute(f"PRAGMA index_info('{idx_name}')")]
+        if cols == ["embedding_hash"]:
+            return True
+    return False
+
+
+def _rebuild_kw_embedding_without_unique(con: sqlite3.Connection) -> None:
+    tmp_table = "keyword_embedding_tmp_mig"
+    con.execute(f"DROP TABLE IF EXISTS {tmp_table}")
+    con.execute(KW_EMBED_TABLE_TEMPLATE.format(table_name=tmp_table))
+    con.execute(
+        f"INSERT INTO {tmp_table} ({KW_EMBED_COLS}) "
+        f"SELECT {KW_EMBED_COLS} FROM keyword_embedding"
+    )
+    con.execute("DROP TABLE keyword_embedding")
+    con.execute(f"ALTER TABLE {tmp_table} RENAME TO keyword_embedding")
+    con.execute("CREATE UNIQUE INDEX IF NOT EXISTS idx_kw_emb_model ON keyword_embedding(keyword_id, model)")
+    con.execute("CREATE INDEX IF NOT EXISTS idx_kw_emb_hash ON keyword_embedding(embedding_hash)")
 
 
 def ensure_embedding_schema(con: sqlite3.Connection) -> None:
     con.executescript(SCHEMA_EMBED)
+    if _table_exists(con, "keyword_embedding") and _has_unique_hash_index(con):
+        _rebuild_kw_embedding_without_unique(con)
     con.commit()
     # Garante coluna hdbscan_group_id em keywords para migração de rascunho
     try:
@@ -84,7 +141,7 @@ def fetch_pending_keywords(
         WHERE NOT EXISTS (
             SELECT 1 FROM keyword_embedding e
             WHERE e.keyword_id = k.id AND e.model = ?
-        )
+        ) AND k.is_noise = 0
     """
     params: List[object] = [model]
     if start_after is not None:

@@ -18,12 +18,13 @@ Uso:
 import re
 import sqlite3
 import unicodedata
+import xml.etree.ElementTree as ET
 from collections import Counter
 from pathlib import Path
-from typing import Dict, Any
+from typing import Dict, Any, List, Tuple
 
 DB_PATH = Path("data/patristica_resumos.db")
-TEST_LIMIT = 8
+TEST_LIMIT = 25
 
 COLUMNS_ADD = """
 -- ============================================================
@@ -190,6 +191,159 @@ def add_word_count(counter: Counter, texto: str) -> None:
 
 
 # ============================================================
+# XML (novo formato de OCR)
+# ============================================================
+
+
+def _parse_blocks_with_regex(xml_text: str) -> List[Tuple[str, str]]:
+    """Fallback leve para extrair blocos quando o XML estiver malformado."""
+    blocks: List[Tuple[str, str]] = []
+    # captura script se existir; se não, script="" vira None
+    for m in re.finditer(
+        r"<bloco[^>]*?(?:script=\"(?P<script>[^\"]+)\")?[^>]*>(?P<content>.*?)</bloco>",
+        xml_text,
+        flags=re.DOTALL | re.IGNORECASE,
+    ):
+        script = (m.group("script") or "").strip().lower()
+        content = m.group("content") or ""
+        blocks.append((script, content))
+    return blocks
+
+
+def extract_text_from_ocr_xml(text: str) -> Dict[str, Any]:
+    """
+    Extrai texto plano e metadados de páginas no novo XML.
+
+    Regras:
+    - Usa apenas blocos script={latino,misto}; se forem < 50% dos blocos, usa todos.
+    - Ignora <notas> e atributos.
+    - <pagina estado="vazio"> => texto vazio + marca para descarte.
+    - Fallback seguro para texto plano ou XML malformado.
+    """
+
+    if not text:
+        return {
+            "text": "",
+            "is_xml": False,
+            "estado": "",
+            "scripts_kept": [],
+            "total_blocks": 0,
+            "used_all_scripts": False,
+            "parse_ok": False,
+        }
+
+    stripped = text.strip()
+    if not stripped.startswith("<pagina"):
+        return {
+            "text": text,
+            "is_xml": False,
+            "estado": "",
+            "scripts_kept": [],
+            "total_blocks": 0,
+            "used_all_scripts": False,
+            "parse_ok": False,
+        }
+
+    estado = ""
+    blocks: List[Tuple[str, str]] = []
+    parse_ok = True
+
+    def normalize_script(s: str) -> str:
+        s = (s or "").lower().strip()
+        mapping = {
+            "latim": "latino",
+            "latin": "latino",
+            "lat": "latino",
+            "mixed": "misto",
+            "mix": "misto",
+        }
+        return mapping.get(s, s)
+
+    try:
+        root = ET.fromstring(stripped)
+        estado = root.attrib.get("estado", "").lower()
+
+        for bloco in root.findall("bloco"):
+            script = normalize_script(bloco.attrib.get("script", ""))
+            content = "".join(bloco.itertext())
+            blocks.append((script, content))
+    except Exception:
+        parse_ok = False
+        blocks = _parse_blocks_with_regex(stripped)
+        # tenta obter estado do atributo da tag pagina via regex
+        m_estado = re.search(r"<pagina[^>]*estado=\"([^\"]+)\"", stripped)
+        if m_estado:
+            estado = m_estado.group(1).lower()
+        # normaliza scripts em fallback
+        blocks = [(normalize_script(s), c) for (s, c) in blocks]
+
+    def detect_latin_ratio(s: str) -> float:
+        if not s:
+            return 0.0
+        latin_chars = len(RE_LATIN_CHAR.findall(s))
+        total = len(s)
+        return latin_chars / total if total else 0.0
+
+    total_blocks = len(blocks)
+    if estado == "vazio":
+        return {
+            "text": "",
+            "is_xml": True,
+            "estado": estado,
+            "scripts_kept": [],
+            "total_blocks": total_blocks,
+            "used_all_scripts": False,
+            "parse_ok": parse_ok,
+        }
+
+    if not blocks:
+        # XML sem blocos -> trata como texto vazio porém marcado como XML
+        return {
+            "text": "",
+            "is_xml": True,
+            "estado": estado or "com_texto",
+            "scripts_kept": [],
+            "total_blocks": 0,
+            "used_all_scripts": True,
+            "parse_ok": parse_ok,
+        }
+
+    # completa scripts ausentes usando heurística de 10% de caracteres latinos
+    classified_blocks: List[Tuple[str, str]] = []
+    for script, content in blocks:
+        s = script
+        if not s:
+            if detect_latin_ratio(content) >= 0.10:
+                s = "misto"
+        classified_blocks.append((s, content))
+
+    blocks = classified_blocks
+
+    # contagem de scripts para decidir inclusão
+    latin_like_scripts = {"latino", "misto"}
+    latin_blocks = [(s, c) for (s, c) in blocks if s in latin_like_scripts]
+
+    use_all = len(latin_blocks) * 2 < total_blocks
+    selected = blocks if use_all else latin_blocks
+
+    scripts_kept = [s or "" for (s, _) in selected]
+    text_joined = "\n\n".join(content.strip() for _, content in selected if content.strip())
+
+    non_latin_only = bool(selected) and all(s not in latin_like_scripts for s, _ in selected)
+
+    return {
+        "text": text_joined,
+        "is_xml": True,
+        "estado": estado or "com_texto",
+        "scripts_kept": scripts_kept,
+        "total_blocks": total_blocks,
+        "used_all_scripts": use_all,
+        "parse_ok": parse_ok,
+        "non_latin_only": non_latin_only,
+    }
+
+
+# ============================================================
 # Regex / normalização básica
 # ============================================================
 
@@ -200,6 +354,9 @@ RE_HYPHEN_LINEBREAK = re.compile(r"(?<=\w)-\s*\n\s*(?=\w)", re.UNICODE)
 RE_NBSP = re.compile(r"[\u00A0\u2007\u202F]")
 RE_SPACES = re.compile(r"[ \t]+")
 RE_MULTI_NL = re.compile(r"\n{2,}")
+
+# Letras latinas para heurística de script ausente
+RE_LATIN_CHAR = re.compile(r"[A-Za-zÀ-ÖØ-öø-ÿ]")
 
 # URLs
 RE_URL = re.compile(r"https?://\S+|www\.\S+", re.IGNORECASE)
@@ -347,33 +504,72 @@ def strip_google_boilerplate(text: str) -> str:
     return "\n".join(linhas)
 
 
-def clean_ocr_text_optimized(texto: str) -> str:
-    if not texto:
-        return ""
+def clean_ocr_text_optimized(texto: str) -> tuple[str, Dict[str, Any]]:
+    """Limpa OCR com suporte ao novo XML.
+
+    Retorna texto limpo + metadados da extração.
+    """
+
+    meta = extract_text_from_ocr_xml(texto)
+    base_text = meta["text"]
+
+    if not base_text:
+        return "", meta
 
     # A. Unicode / normalização inicial
-    texto = normalize_text(texto)
+    cleaned = normalize_text(base_text)
 
     # B. Unir hifenização de fim de linha
-    texto = RE_HYPHEN_LINEBREAK.sub("", texto)
+    cleaned = RE_HYPHEN_LINEBREAK.sub("", cleaned)
 
     # C. Remover boilerplate Google
-    texto = strip_google_boilerplate(texto)
+    cleaned = strip_google_boilerplate(cleaned)
 
     # D. Limpeza de caracteres preservando contexto leve
-    texto = RE_CLEAN_CONTEXT.sub(" ", texto)
+    cleaned = RE_CLEAN_CONTEXT.sub(" ", cleaned)
 
     # E. Normalização final
-    texto = compact_whitespace(texto)
+    cleaned = compact_whitespace(cleaned)
 
-    return texto
+    meta["clean_text"] = cleaned
+    return cleaned, meta
 
 
-def classify_page_noise(texto_original: str, texto_limpo: str) -> Dict[str, Any]:
+def prepare_for_diff(text: str) -> list[str]:
+    """
+    Limpeza mínima focada em extrair tokens latinos comparáveis.
+    Não usa clean_ocr_text_optimized — ela é agressiva demais pro diff.
+    """
+    # normalização básica
+    text = unicodedata.normalize("NFC", text)
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
+
+    # une hifenização de fim de linha (ex: "interver-\nsion" → "interversion")
+    text = re.sub(r"-\n([a-zA-ZÀ-öø-ÿ])", r"\1", text)
+
+    # remove XML tags se vier do LLM
+    text = re.sub(r"<[^>]+>", "", text)
+
+    # extrai tokens latinos >= 3 chars, lowercase
+    return [t.lower() for t in re.findall(r"[a-zA-ZÀ-öø-ÿ]{3,}", text)]
+
+
+def classify_page_noise(
+    texto_original: str,
+    texto_limpo: str,
+    meta: Dict[str, Any] | None = None,
+) -> Dict[str, Any]:
     """
     Heurística simples para decidir se a página original é boa
     o suficiente para embedding/indexação lexical.
     """
+    if meta and meta.get("is_xml") and meta.get("estado") == "vazio":
+        return {
+            "drop_original_embedding": True,
+            "drop_pagefind_original": True,
+            "reason": "xml_pagina_vazia",
+        }
+
     if not texto_limpo:
         return {
             "drop_original_embedding": True,
@@ -395,7 +591,15 @@ def classify_page_noise(texto_original: str, texto_limpo: str) -> Dict[str, Any]
     token_count = len(tokens)
     single_ratio = (single_char_tokens / token_count) if token_count else 1.0
 
-    if token_count < 6 or alpha_chars < 25:
+    if meta and meta.get("non_latin_only"):
+        # Em páginas só orientais, apenas checa mínimo bruto de tamanho
+        if token_count < 3 or alpha_chars < 10:
+            return {
+                "drop_original_embedding": True,
+                "drop_pagefind_original": True,
+                "reason": "non_latin_too_short",
+            }
+    elif token_count < 6 or alpha_chars < 25:
         return {
             "drop_original_embedding": True,
             "drop_pagefind_original": True,
@@ -485,7 +689,9 @@ def clean_summary_global_for_search(text: str) -> str:
     Não recomendado como embedding principal de página.
     """
     fields = extract_global_summary_fields(text)
-    return fields["summary"]
+    summary = fields["summary"]
+    summary = re.sub(r"(?i)^in[ií]cio da obra\\s*:\\s*", "", summary).strip()
+    return summary
 
 
 # ============================================================
@@ -497,12 +703,21 @@ def should_drop_page_from_similarity(
     ocr_clean: str,
     resumo_pagina_clean: str,
     page_quality: Dict[str, Any] | None = None,
+    meta: Dict[str, Any] | None = None,
 ) -> Dict[str, Any]:
     """
     Decide se a página deve ficar fora de embeddings/similares.
     """
     ocr_clean = (ocr_clean or "").strip()
     resumo = (resumo_pagina_clean or "").strip().lower()
+
+    if meta and meta.get("is_xml") and meta.get("estado") == "vazio":
+        return {"drop": True, "reason": "xml_pagina_vazia"}
+
+    if meta and meta.get("non_latin_only"):
+        # tolera resumos curtos; só descarta vazio total
+        if not ocr_clean and not resumo:
+            return {"drop": True, "reason": "non_latin_empty"}
 
     if page_quality and page_quality.get("drop_original_embedding"):
         return {
@@ -559,8 +774,8 @@ def process_records(con: sqlite3.Connection, limit: int = TEST_LIMIT) -> None:
         resumo_pagina = row["resumo_pagina"] or ""
         resumo_global = row["resumo_global"] or ""
 
-        texto_limpo = clean_ocr_text_optimized(texto_original)
-        quality = classify_page_noise(texto_original, texto_limpo)
+        texto_limpo, meta = clean_ocr_text_optimized(texto_original)
+        quality = classify_page_noise(texto_original, texto_limpo, meta=meta)
 
         resumo_pagina_limpo = clean_summary_page_for_embedding(resumo_pagina)
         global_fields = extract_global_summary_fields(resumo_global)
@@ -570,13 +785,21 @@ def process_records(con: sqlite3.Connection, limit: int = TEST_LIMIT) -> None:
             ocr_clean=texto_limpo,
             resumo_pagina_clean=resumo_pagina_limpo,
             page_quality=quality,
+            meta=meta,
         )
 
         print(f"ID {record_id} | {documento} p.{pagina_num}")
         print(f"Texto original: {texto_original[:1200]}")
-        print(f"Texto OCR limpo: {texto_limpo[:1200]}")
+        print(
+            f"Texto OCR limpo: {texto_limpo[:1200]}"
+            f" | XML={{meta['is_xml']}} estado={meta.get('estado','')}"
+            f" blocks={meta.get('total_blocks',0)} kept={meta.get('scripts_kept', [])}"
+            f" all_scripts={meta.get('used_all_scripts', False)} parse_ok={meta.get('parse_ok', False)}"
+        )
         print(f"Resumo página limpo: {resumo_pagina_limpo[:500]}")
+        print(f"Resumo página ORIGINAL: {resumo_pagina[:500]}")
         print(f"Resumo global limpo: {resumo_global_limpo[:500]}")
+        print(f"Resumo global ORIGINAL: {resumo_global[:500]}")
         print(
             f"Campos globais extraídos: "
             f"author={global_fields['author']!r}, work={global_fields['work']!r}"

@@ -31,6 +31,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 import entropy_lib
+import evaluation_db
 
 
 # Monkey-patch para injetar socket options
@@ -66,7 +67,7 @@ MAX_THREADS_CONVERT = 12  # ajuste conforme seus núcleos
 DEFAULT_LLM_MODEL = "qwen3.5:397b-cloud"
 DEFAULT_OLLAMA_URL = "http://localhost:11434/api/chat"
 # OpenAI HTTP (sem SDK)
-DEFAULT_OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-5-mini")
+DEFAULT_OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-5")
 DEFAULT_OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
 
 
@@ -340,6 +341,66 @@ def list_existing_images(images_dir: Path) -> List[Path]:
     return sorted(images_dir.glob(f"*.{IMAGE_FMT}"))
 
 
+def stable_image_path(pdf_path: Path, images_dir: Path, page_num: int) -> Path:
+    """Nome determinístico para as imagens, sem UUID no prefixo."""
+    return images_dir / f"{pdf_path.stem}-{page_num:03d}.{IMAGE_FMT}"
+
+
+def find_image_by_page(images_dir: Path, page_num: int) -> Optional[Path]:
+    """
+    Retorna uma imagem já existente para a página, seja com UUID ou já normalizada.
+    Ex.: *-170.png corresponde à página 170.
+    """
+    stable_name = f"*{page_num:03d}.{IMAGE_FMT}"
+    matches = sorted(images_dir.glob(stable_name))
+    if matches:
+        return matches[0]
+    matches = sorted(images_dir.glob(f"*-{page_num}.{IMAGE_FMT}"))
+    return matches[0] if matches else None
+
+
+def purge_tesseract_cache(
+    con: sqlite3.Connection, image_path: Path, lang: Optional[str] = None
+) -> int:
+    """
+    Remove a entrada do cache para a imagem (opcionalmente filtrando por lang).
+    Retorna o número de linhas removidas.
+    """
+    h = hashlib.sha256(image_path.read_bytes()).hexdigest()
+    if lang:
+        cur = con.execute(
+            "DELETE FROM tesseract_cache WHERE image_hash = ? AND lang = ?", (h, lang)
+        )
+    else:
+        cur = con.execute("DELETE FROM tesseract_cache WHERE image_hash = ?", (h,))
+    con.commit()
+    return cur.rowcount
+
+
+def txt_path_for_image(img_path: Path, txt_dir: Path) -> Path:
+    """
+    Seleciona o txt associado a uma imagem:
+    - Usa o nome estável se existir.
+    - Caso contrário, procura qualquer txt que termine com o número da página.
+    - Fallback: path estável mesmo que ainda não exista (para escrita).
+    """
+    stable = txt_dir / (img_path.stem + ".txt")
+    if stable.exists():
+        return stable
+
+    page_num = parse_page_num_from_filename(img_path)
+    if page_num is not None:
+        # prioriza zero-padding, depois sem padding
+        candidates = sorted(txt_dir.glob(f"*-{page_num:03d}.txt"))
+        if candidates:
+            return candidates[0]
+        candidates = sorted(txt_dir.glob(f"*-{page_num}.txt"))
+        if candidates:
+            return candidates[0]
+
+    return stable
+
+
 NUM_RE = re.compile(r"-(\d+)\.txt$", re.IGNORECASE)
 
 
@@ -358,6 +419,8 @@ def pages_to_images(
     dpi: int = DEFAULT_DPI,
     first_page: Optional[int] = None,
     last_page: Optional[int] = None,
+    text_dir: Optional[Path] = None,
+    refresh_pages: Optional[set[int]] = None,
 ) -> List[Path]:
     """
     Converte páginas do PDF em imagens no disco e retorna a lista de caminhos.
@@ -367,33 +430,108 @@ def pages_to_images(
     ensure_dir(images_dir)
 
     def sort_key(p: Path):
-        m = re.search(r"-(\d+)\.[^.]+$", p.name)
-        return int(m.group(1)) if m else 0
+        num = parse_page_num_from_filename(p)
+        return num if num is not None else 0
 
-    # se já existem imagens, reaproveita
-    existing = list_existing_images(images_dir)
-    if existing:
-        return [p.resolve() for p in sorted(existing, key=sort_key)]
+    refresh_set: set[int] = set(refresh_pages or [])
 
-    # senão, converte agora
-    paths = convert_from_path(
-        str(pdf_path),
-        dpi=dpi,
-        fmt=IMAGE_FMT,
-        output_folder=str(images_dir),
-        paths_only=True,  # retorna só caminhos (sem PIL em memória)
-        use_pdftocairo=USE_PDFTOCAIRO,  # backend pdftocairo (bom em PDFs complexos)
-        thread_count=MAX_THREADS_CONVERT,
-        first_page=first_page,
-        last_page=last_page,
-    )
-    # ordena pelo código numérico no final do nome
-    path_objs = sorted((Path(p) for p in paths), key=sort_key)
-    return [p.resolve() for p in path_objs]
+    def rename_to_stable(raw_paths: List[str]) -> List[Path]:
+        """Converte nomes com UUID em prefixo determinístico e alinha txt correspondente."""
+        normalized: list[Path] = []
+        for raw in raw_paths:
+            src = Path(raw)
+            page_num = parse_page_num_from_filename(src)
+            if page_num is None:
+                continue
+
+            target = stable_image_path(pdf_path, images_dir, page_num)
+            # se já existe a versão estável, descartamos a duplicata
+            if target.exists() and target != src:
+                try:
+                    src.unlink()
+                except FileNotFoundError:
+                    pass
+            else:
+                if src != target:
+                    src.rename(target)
+
+            normalized.append(target.resolve())
+
+        return sorted(normalized, key=sort_key)
+
+    # 1) Normaliza arquivos já existentes (remove UUID) e retorna cedo se nada a fazer
+    existing = rename_to_stable([str(p) for p in list_existing_images(images_dir)])
+
+    def filter_range(imgs: List[Path]) -> List[Path]:
+        def ok(p: Path) -> bool:
+            n = parse_page_num_from_filename(p)
+            if n is None:
+                return False
+            if first_page is not None and n < first_page:
+                return False
+            if last_page is not None and n > last_page:
+                return False
+            return True
+
+        return [p for p in imgs if ok(p)]
+
+    if existing and not refresh_set:
+        return filter_range(existing)
+
+    # 2) Reextrai páginas específicas quando solicitado
+    page_map: dict[int, Path] = {
+        parse_page_num_from_filename(p): p for p in existing if parse_page_num_from_filename(p) is not None
+    }
+
+    if refresh_set:
+        for page_num in sorted(refresh_set):
+            # Se já existe qualquer imagem para essa página (UUID ou estável), apenas normaliza
+            existing_page_img = find_image_by_page(images_dir, page_num)
+            if existing_page_img:
+                rename_to_stable([str(existing_page_img)])
+                page_map[page_num] = stable_image_path(pdf_path, images_dir, page_num)
+                continue
+
+            raw = convert_from_path(
+                str(pdf_path),
+                dpi=dpi,
+                fmt=IMAGE_FMT,
+                output_folder=str(images_dir),
+                paths_only=True,
+                use_pdftocairo=USE_PDFTOCAIRO,
+                thread_count=1,
+                first_page=page_num,
+                last_page=page_num,
+            )
+            refreshed = rename_to_stable(list(raw))
+            if refreshed:
+                page_map[page_num] = refreshed[0]
+
+    # 3) Se ainda não há imagens (diretório limpo), processa o intervalo completo
+    if not page_map:
+        raw = convert_from_path(
+            str(pdf_path),
+            dpi=dpi,
+            fmt=IMAGE_FMT,
+            output_folder=str(images_dir),
+            paths_only=True,
+            use_pdftocairo=USE_PDFTOCAIRO,
+            thread_count=MAX_THREADS_CONVERT,
+            first_page=first_page,
+            last_page=last_page,
+            output_file=pdf_path.stem,  # força prefixo determinístico
+        )
+        page_map = {
+            parse_page_num_from_filename(p): p
+            for p in rename_to_stable(list(raw))
+            if parse_page_num_from_filename(p) is not None
+        }
+
+    return filter_range(sorted(page_map.values(), key=sort_key))
 
 
 PROMPT = """
-Você é um especialista em paleografia e transcrição de documentos históricos e edições críticas (Patrologia Orientalis).
+Você é um especialista em paleografia e transcrição de documentos históricos e edições críticas (Patrologia Graeca, Latina et Orientalis).
 Sua missão é realizar uma análise visual exaustiva e transcrever cada vestígio de texto na imagem.
 
 ### ETAPA 1: ANÁLISE VISUAL OBRIGATÓRIA
@@ -433,7 +571,7 @@ MAIS REGRAS:
 """.strip()
 
 PROMPT_VERIFY_VS_TESSERACT = """
-Você é um especialista em paleografia e transcrição de documentos históricos e edições críticas (Patrologia Orientalis).
+Você é um especialista em paleografia e transcrição de documentos históricos e edições críticas (Patrologia Graeca, Latina et Orientalis).
 Sua missão é comparar a imagem da página com o rascunho de OCR abaixo e produzir uma transcrição fiel, corrigindo erros do Tesseract e descartando qualquer trecho que não apareça na imagem.
 
 <rascunho_ocr>
@@ -480,7 +618,7 @@ MAIS REGRAS:
 """.strip()
 
 PROMPT_VERIFY_LLM_VS_TESSERACT = """
-Você é um especialista em paleografia e transcrição de documentos históricos e edições críticas (Patrologia Orientalis).
+Você é um especialista em paleografia e transcrição de documentos históricos e edições críticas (Patrologia Graeca, Latina et Orientalis).
 Sua missão é comparar a imagem da página com o rascunho de OCR abaixo e produzir uma transcrição fiel, corrigindo erros do Tesseract e descartando qualquer trecho que não apareça na imagem.
 
 <rascunho_ocr>
@@ -535,26 +673,49 @@ MAIS REGRAS:
 
 
 PROMPT_LLM_JUDGE = """
-Você é um especialista em paleografia e transcrição de documentos históricos e edições críticas (Patrologia Orientalis).
-Sua missão é comparar a imagem da página com as transcrições abaixo e avaliar qual delas é mais fiel à imagem.
+Você é um especialista em paleografia e transcrição de documentos históricos (Patrologia Graeca, Latina et Orientalis).
+Compare a imagem com a transcrição na tag <ocr> e avalie a fidelidade.
 
-<rascunho_ocr>
-{tesseract_text}
-</rascunho_ocr>
+# Critérios de avaliação
 
-<llm_ocr>
+**Fidelidade** — quão bem a transcrição reflete o que está na imagem:
+- alta: texto principal correto, erros mínimos ou apenas em scripts difíceis
+- media: erros parciais, omissões menores, mas estrutura preservada
+- baixa: erros significativos, blocos omitidos, confusão de scripts
+- descartar: transcrição irreconhecível ou completamente incorreta
+
+**Usabilidade** — se o texto é aproveitável para produção de resumos:
+- alta: semântica preservada, termos principais identificáveis
+- media: compreensível com esforço, perdas pontuais de sentido
+- baixa: sentido comprometido por erros acumulados
+- descartar: inutilizável
+
+# Notas importantes
+- Para blocos em scripts não-latinos (armênio, siríaco, grego), avalie apenas:
+  (a) se o bloco está presente na transcrição
+  (b) se a extensão aproximada parece compatível com a imagem
+  (c) se não há confusão óbvia de script (ex: caracteres árabes no meio de armênio)
+  Não avalie a correção caractere a caractere nesses scripts.
+- Para blocos em francês/latim/inglês, avalie semântica e fidelidade completas.
+
+Formato de saída esperado (retorne apenas o XML válido preenchido de acordo com o julgamento da imagem):
+<avaliacao>
+  <comentario>
+    Comentário específico por bloco: o que está correto, o que está errado ou omitido.
+  </comentario>
+  <idiomas_identificados>
+    <idioma>armênio</idioma>
+    <!-- outros idiomas em PT-BR, cite o idioma identificado no texto, exemplo: "francês" -->
+  </idiomas_identificados>
+  <julgamento>
+    <fidelidade>alta|media|baixa|descartar</fidelidade>
+    <usabilidade>alta|media|baixa|descartar</usabilidade>
+  </julgamento>
+</avaliacao>
+
+<ocr>
 {llm_ocr}
-</llm_ocr>
-
-Priorize a qualidade textual, o rascunho_ocr vem de um OCR tradicional e é um rascunho, pode conter lixo ou palavras com caracteres trocados.
-O rascunho_ocr pode ter confundido palavras de outros idiomas orientais ou misturado ocidental com oriental, neste caso, priorizar a LLM se a semântica encaixar no rascunho_ocr, avaliando o encaixe com a imagem.
-O texto gerado pela LLM pode parecer correto, mas pode não refletir com precisão o conteúdo da imagem ou mesmo não refletir nada da imagem.
-
-A organização deve ser secundária, a importância é a fidelidade ao conteúdo da imagem, mesmo que a estrutura seja mais bagunçada ou diferente entre os dois.
-
-Formato de saída:
-Visto: *explicação da relação entre o texto do rascunho_ocr e o texto da LLM com a imagem*
-Julgamento: *Aqui você deve informar qual é o mais fiel, os valores aceitos são: ambos, rascunho_ocr, llm_ocr, nenhum*
+</ocr>
 """.strip()
 
 
@@ -634,7 +795,7 @@ def ollama_process_image(
     reprocess: bool = False,
 ):
     if current_try <= 3:  # and not reprocess:
-        img_b64 = optimize_adaptative_cloud(image_path, images_max_size[current_try - 1])
+        img_b64 = optimize_image_for_cloud(image_path, images_max_size[current_try - 1])
     else:
         img_b64 = base64.b64encode(Path(image_path).read_bytes()).decode("utf-8")
 
@@ -651,7 +812,7 @@ def ollama_process_image(
             {"role": "system", "content": prompt},
             {
                 "role": "user",
-                "content": "Transcreva a página em XML conforme instruções do system.",
+                "content": "Proceda conforme instruções do system.",
                 "images": [img_b64],
             },
         ],
@@ -667,7 +828,19 @@ def ollama_process_image(
 
     # Melhor printar antes de lançar a exception
     if r.status_code != 200:
-        print(r.text)
+        print(f"=== ERRO 500 ===")
+        print(f"Status: {r.status_code}")
+        print(f"Headers: {dict(r.headers)}")
+        print(f"Body: {r.text[:2000]}")  # primeiros 2000 chars
+        print(f"Imagem: {image_path.name}")
+        print(f"Tamanho payload: {len(json.dumps(payload))} bytes")
+        print(f"================")
+
+        with open("errors_500.log", "a") as f:
+            f.write(
+                f"{image_path.name} | B64 Size {len(img_b64)} | try={current_try} | {r.status_code} | {r.text[:500]} | Headers: {dict(r.headers)}\n"
+            )
+
     r.raise_for_status()
     data = r.json()
 
@@ -717,7 +890,7 @@ def openai_process_image(
             "content": [
                 {
                     "type": "text",
-                    "text": "Transcreva a página em XML conforme instruções do system.",
+                    "text": "Proceda conforme instruções do system.",
                 },
                 {"type": "image_url", "image_url": image_url},
             ],
@@ -994,13 +1167,31 @@ def get_tokens_discrepance(num_tokens_1: int, num_tokens_2: int) -> float:
     return abs(num_tokens_1 - num_tokens_2) / max(num_tokens_1, num_tokens_2)
 
 
+def parse_page_num_from_filename(image_path: Path) -> Optional[int]:
+    """
+    Extrai o sufixo numérico final da imagem, ex.: foo-076.png -> 76.
+    """
+    m = re.search(r"-([0-9]{1,4})$", image_path.stem)
+    return int(m.group(1)) if m else None
+
+
+def infer_volume_id(image_path: Path) -> Optional[str]:
+    """
+    Considera a convenção teste/<VOL>/images/<file>.png → retorna <VOL>.
+    """
+    try:
+        return image_path.parent.parent.name
+    except Exception:
+        return None
+
+
 def verify_page(
     img_path: Path, txt_dir: Path, lang: str = "fra+lat+grc+ell+syr"
 ) -> bool:
     """
     Verifica se a página foi processada corretamente.
     """
-    page_txt_path = txt_dir / (img_path.stem + ".txt")
+    page_txt_path = txt_path_for_image(img_path, txt_dir)
     if not page_txt_path.exists():
         print(f"[VERIFY] {img_path.name} — arquivo de texto não encontrado")
         return False
@@ -1035,9 +1226,9 @@ def verify_page(
         print(f"[VERIFY] {img_path.name} — muitos tokens ilegíveis detectados")
         return False
 
-    return True  # desativado de momento, quero apenas rodar de novo os com muito token ilegível
+    # return True  # desativado de momento, quero apenas rodar de novo os com muito token ilegível
     if (
-        overlap.recall_ratio < 0.1 and overlap.overlap_ratio < 0.1
+        overlap.recall_ratio < 0.2 and overlap.overlap_ratio < 0.2
     ):  # LLM detectou muito texto latino, mas Tesseract quase nada → provável omissão ou alucinação
         # Debug prints para identificar o texto dos dois lados e o arquivo no terminal:
 
@@ -1097,6 +1288,72 @@ def verify_page(
         return False
 
     return True
+
+
+def _latest_eval_is_good(
+    image_path: Path, eval_db_path: Optional[Path]
+) -> tuple[bool, str]:
+    """
+    Verifica no evaluations se a última avaliação é média/alta.
+    Retorna (is_good, reason).
+    """
+    if not eval_db_path:
+        return False, ""
+
+    try:
+        if not eval_db_path.exists():
+            return False, ""
+        con = evaluation_db.connect_eval_db(eval_db_path)
+        row = con.execute(
+            """
+            SELECT fidelidade, usabilidade
+            FROM evaluations
+            WHERE image_path = ?
+            ORDER BY created_at DESC
+            LIMIT 1
+            """,
+            (str(image_path),),
+        ).fetchone()
+        if not row:
+            return False, ""
+        fid = (row["fidelidade"] or "").lower()
+        usa = (row["usabilidade"] or "").lower()
+        bad = {"baixa", "descartar"}
+        if fid and fid not in bad and usa and usa not in bad:
+            return True, "latest_eval_ok"
+    except Exception:
+        return False, ""
+    return False, ""
+
+
+def should_call_llm_judge(
+    img_path: Path,
+    txt_dir: Path,
+    lang: str = "fra+lat+grc+ell+syr",
+    eval_db_path: Optional[Path] = None,
+) -> tuple[bool, str]:
+    """
+    Decide se deve acionar o LLM judge.
+    Retorna (needs_llm, reason).
+    """
+    page_txt_path = txt_path_for_image(img_path, txt_dir)
+    if not page_txt_path.exists():
+        return True, "txt_missing"
+
+    txt = page_txt_path.read_text(encoding="utf-8", errors="ignore")
+    if len(txt.strip()) == 0:
+        return True, "txt_empty"
+
+    if avalia_caso_perdido(img_path):
+        return False, "caso_perdido"
+
+    is_good, reason = _latest_eval_is_good(img_path, eval_db_path)
+    if is_good:
+        return False, reason
+
+    # reuse verificações determinísticas
+    ok = verify_page(img_path, txt_dir, lang=lang)
+    return (not ok, "verify_failed" if not ok else "verify_pass")
 
 
 def llm_process_image_autoretry(
@@ -1188,7 +1445,12 @@ def llm_process_chat_retry(
                 )
             else:
                 txt = ollama_process_image(
-                    image_path, model=model, url=url, current_try=i + 1, prompt=prompt
+                    image_path,
+                    model=model,
+                    url=url,
+                    current_try=i + 1,
+                    prompt=prompt,
+                    reprocess=reprocess,
                 )
 
             return txt
@@ -1203,13 +1465,12 @@ def llm_process_chat_retry(
 
 
 def ocr_tesseract(img_path: Image, lang: str = DEFAULT_LANG) -> str:
+    """OCR com pré-processamento adaptativo."""
     with Image.open(img_path) as pil_im:
-        # converter para cv2 BGR, pré-processar e voltar para PIL
         im_bgr = cv2.cvtColor(np.array(pil_im), cv2.COLOR_RGB2BGR)
-        im_pre = preprocess_adaptative_ocr(im_bgr)
+        im_pre = preprocess_image(im_bgr)
         pil_pre = Image.fromarray(im_pre)
 
-        # OCR
         txt = pytesseract.image_to_string(
             pil_pre,
             lang=lang,
@@ -1219,14 +1480,49 @@ def ocr_tesseract(img_path: Image, lang: str = DEFAULT_LANG) -> str:
     return txt
 
 
-def run_tesseract_cached(con: sqlite3.Connection, image_path: Path, lang: str) -> str:
-    cached = get_tesseract_cached(con, image_path, lang)
-    if cached is not None:
-        return cached
+def ocr_tesseract_raw(img_path: Image, lang: str = DEFAULT_LANG) -> str:
+    """OCR direto no original (sem pré-processamento)."""
+    with Image.open(img_path) as pil_im:
+        txt = pytesseract.image_to_string(
+            pil_im,
+            lang=lang,
+            config="--psm 3 --oem 1",
+        )
+    return txt
+
+
+def run_tesseract_cached(
+    con: sqlite3.Connection, image_path: Path, lang: str, force: bool = False
+) -> str:
+    h = hashlib.sha256(image_path.read_bytes()).hexdigest()
+
+    if force:
+        con.execute(
+            "DELETE FROM tesseract_cache WHERE image_hash = ? AND lang = ?", (h, lang)
+        )
+        con.commit()
+    else:
+        cached = get_tesseract_cached(con, image_path, lang)
+        if cached is not None:
+            if len(cached.strip()) < 100:
+                # cache parece corrompido/incompleto, recalcula
+                con.execute(
+                    "DELETE FROM tesseract_cache WHERE image_hash = ? AND lang = ?",
+                    (h, lang),
+                )
+                con.commit()
+            else:
+                return cached
 
     result = ocr_tesseract(image_path, lang=lang)
 
-    h = hashlib.sha256(image_path.read_bytes()).hexdigest()
+    # Fallback: se a saída parecer muito curta, tenta sem pré-processamento
+    if len(result.strip()) < 50:
+        alt = ocr_tesseract_raw(image_path, lang=lang)
+        if len(alt.strip()) > len(result.strip()) * 1.5:
+            print(f"[TESS] Fallback raw melhor para {image_path.name} (len {len(alt)} vs {len(result)})")
+            result = alt
+
     con.execute(
         "INSERT OR REPLACE INTO tesseract_cache (image_hash, lang, result, imgpath) VALUES (?, ?, ?, ?)",
         (h, lang, result, str(image_path)),
@@ -1258,7 +1554,7 @@ def ocr_images_to_text(
         print(f"[OCR] Página {i}/{len(images)}: {img_path.name}")
 
         # se já existe o txt desta página, reaproveita
-        page_txt_path = txt_dir / (img_path.stem + ".txt")
+        page_txt_path = txt_path_for_image(img_path, txt_dir)
         if page_txt_path.exists():
             txt = page_txt_path.read_text(encoding="utf-8", errors="ignore")
             all_text_chunks.append(txt)
@@ -1410,7 +1706,7 @@ def _ocr_one(
     )
 
     txt = None
-    page_txt_path = txt_dir / (img_path.stem + ".txt")
+    page_txt_path = txt_path_for_image(img_path, txt_dir)
     if page_txt_path.exists():
         txt = page_txt_path.read_text(encoding="utf-8", errors="ignore")
 
@@ -1436,7 +1732,11 @@ def _ocr_one(
                 run_tesseract_cached(tesseract_db, img_path, lang=lang)
             ).strip()
 
-            txt = clean_text_oriental(txt).strip()
+            if txt is None:
+                txt = ""
+                print(f"[{time.strftime('%H:%M:%S')}] [WARN] {img_path.name} (txt vazio)")
+            else:
+                txt = clean_text_oriental(txt).strip()
 
             # PROMPT_VERIFY_LLM_VS_TESSERACT
             prompt_llm_judge = PROMPT_VERIFY_LLM_VS_TESSERACT.format(
@@ -1599,6 +1899,154 @@ def verify_all_parallel(
     return failures
 
 
+def judge_one(
+    img_path: Path,
+    txt_dir: Path,
+    lang: str,
+    algorithm: str,
+    llm_model: str,
+    ollama_url: str,
+    openai_base_url: str,
+    openai_api_key: str | None,
+    eval_db_path: Path,
+    prompt_version: str,
+    judge_force: bool = False,
+) -> tuple[Path, bool]:
+    """
+    Gating determinístico + LLM judge opcional.
+    """
+    con = evaluation_db.connect_eval_db(eval_db_path)
+    evaluation_db.init_eval_schema(con)
+
+    needs_llm = judge_force
+    decision_reason = "judge_force" if judge_force else ""
+
+    if not needs_llm:
+        needs_llm, decision_reason = should_call_llm_judge(
+            img_path, txt_dir, lang=lang, eval_db_path=eval_db_path
+        )
+
+    page_txt_path = txt_path_for_image(img_path, txt_dir)
+    txt_content = ""
+    if page_txt_path.exists():
+        txt_content = page_txt_path.read_text(encoding="utf-8", errors="ignore")
+
+    volume_id = infer_volume_id(img_path)
+    page_num = parse_page_num_from_filename(img_path)
+
+    if not needs_llm:
+        evaluation_db.record_evaluation(
+            con,
+            volume_id=volume_id,
+            page_num=page_num,
+            image_path=img_path,
+            text_path=page_txt_path if page_txt_path.exists() else None,
+            provider=algorithm,
+            model=llm_model,
+            prompt_version=prompt_version,
+            decision="deterministic_pass",
+            deterministic_reason=decision_reason,
+            xml_raw=None,
+            parse_result={},
+            duration_ms=0,
+            status="deterministic_pass",
+        )
+        print(f"[JUDGE] {img_path.name}: skip LLM ({decision_reason})")
+        return img_path, True
+
+    prompt_llm_judge = PROMPT_LLM_JUDGE.format(llm_ocr=txt_content)
+    t0 = time.time()
+    xml_result = llm_process_chat_retry(
+        img_path,
+        provider=algorithm,
+        model=llm_model,
+        url=ollama_url,
+        openai_base_url=openai_base_url,
+        openai_api_key=openai_api_key,
+        prompt=prompt_llm_judge,
+        reprocess=True,
+    )
+    t1 = time.time()
+
+    print(f"PROMPT_LLM_JUDGE  {prompt_llm_judge}\nSAÍDA DA LLM:\n{xml_result}")
+
+    parse_result = evaluation_db.parse_llm_judge_xml(xml_result)
+    status = parse_result.get("status", "parse_error")
+
+    evaluation_db.record_evaluation(
+        con,
+        volume_id=volume_id,
+        page_num=page_num,
+        image_path=img_path,
+        text_path=page_txt_path if page_txt_path.exists() else None,
+        provider=algorithm,
+        model=llm_model,
+        prompt_version=prompt_version,
+        decision="llm_judged",
+        deterministic_reason=decision_reason,
+        xml_raw=xml_result,
+        parse_result=parse_result,
+        duration_ms=(t1 - t0) * 1000,
+        status=status,
+    )
+
+    return img_path, status == "parse_ok"
+
+
+def judge_all_parallel(
+    images: List[Path],
+    txt_dir: Path,
+    eval_db_path: Path,
+    lang: str = "fra+lat+grc+ell+syr",
+    processes: int = 4,
+    omp_threads_per_proc: int = 2,
+    chunksize: int = 2,
+    maxtasksperchild: int = 1000,
+    algorithm: str = "ollama",
+    llm_model: str = DEFAULT_LLM_MODEL,
+    ollama_url: str = DEFAULT_OLLAMA_URL,
+    openai_base_url: str = DEFAULT_OPENAI_BASE_URL,
+    openai_api_key: str | None = None,
+    prompt_version: str = "",
+    judge_force: bool = False,
+) -> list[Path]:
+    ensure_dir(txt_dir)
+
+    global _process_counter, _process_index_map
+    with _process_counter_lock:
+        _process_counter.value = 0
+        _process_index_map.clear()
+
+    ctx = mp.get_context("fork" if sys.platform != "win32" else "spawn")
+    with ctx.Pool(
+        processes=processes,
+        initializer=_init_omp_env,
+        initargs=(omp_threads_per_proc,),
+        maxtasksperchild=maxtasksperchild,
+    ) as pool:
+        worker = partial(
+            judge_one,
+            txt_dir=txt_dir,
+            lang=lang,
+            algorithm=algorithm,
+            llm_model=llm_model,
+            ollama_url=ollama_url,
+            openai_base_url=openai_base_url,
+            openai_api_key=openai_api_key,
+            eval_db_path=eval_db_path,
+            prompt_version=prompt_version,
+            judge_force=judge_force,
+        )
+
+        results = pool.imap_unordered(worker, images, chunksize=chunksize)
+        failures = [img_path for img_path, ok in results if not ok]
+
+    for img_path in failures:
+        print(f"[JUDGE] {img_path.name} — falhou no parse do LLM judge")
+
+    return failures
+
+
 def main():
     import argparse
 
@@ -1658,11 +2106,42 @@ def main():
         default=False,
         help="Verifica e corrige a integridade dos textos comparando resultados .txt prontos com o Tesseract.",
     )
+    ap.add_argument(
+        "--verify-judge-llm",
+        action="store_true",
+        default=False,
+        help="Executa o LLM judge com gating determinístico; chama LLM só quando necessário.",
+    )
+    ap.add_argument(
+        "--judge-force",
+        action="store_true",
+        default=False,
+        help="Força rodar o LLM judge em todas as páginas (ignora o gating).",
+    )
+    ap.add_argument(
+        "--refresh-pages",
+        type=str,
+        default="",
+        help="Lista de páginas para reextrair, separadas por vírgula (ex.: 12,45,102). Usa nomes estáveis sem UUID.",
+    )
     args = ap.parse_args()
 
     pdf_path = Path(args.pdf).resolve()
     if not pdf_path.exists():
         print(f"PDF não encontrado: {pdf_path}", file=sys.stderr)
+        sys.exit(1)
+
+    # Flags mutuamente exclusivas
+    verify_flags = [
+        args.verify,
+        args.verify_fix,
+        args.verify_judge_llm,
+    ]
+    if sum(1 for f in verify_flags if f) > 1:
+        print(
+            "Use apenas uma das flags: --verify, --verify-fix ou --verify-judge-llm.",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
     # Ajustes de defaults para OpenAI
@@ -1677,13 +2156,81 @@ def main():
     text_dir = base_out / "text"
     ensure_dir(base_out)
 
+    refresh_pages = set()
+    if args.refresh_pages.strip():
+        try:
+            refresh_pages = {
+                int(x)
+                for x in re.split(r"[,\s]+", args.refresh_pages.strip())
+                if x
+            }
+        except ValueError:
+            print("--refresh-pages deve conter apenas números separados por vírgula", file=sys.stderr)
+            sys.exit(1)
+
     print("Convertendo páginas para imagens (com cache em disco)...")
     images = pages_to_images(
-        pdf_path, images_dir, dpi=args.dpi, first_page=args.first, last_page=args.last
+        pdf_path,
+        images_dir,
+        dpi=args.dpi,
+        first_page=args.first,
+        last_page=args.last,
+        text_dir=text_dir,
+        refresh_pages=refresh_pages,
     )
     print(f"Total de imagens: {len(images)}")
 
     concat_path = (base_out / "texto_extraido.txt") if args.concat else None
+
+    if args.verify_judge_llm:
+        print("Rodando avaliação com LLM judge (gating determinístico)...")
+        prompt_version = evaluation_db.compute_prompt_version(PROMPT_LLM_JUDGE)
+        eval_db_path = Path("data/ocr_eval.db")
+
+        failures = judge_all_parallel(
+            images,
+            text_dir,
+            eval_db_path=eval_db_path,
+            lang=args.lang,
+            processes=args.procs,
+            omp_threads_per_proc=args.omp_threads,
+            chunksize=args.chunksize,
+            maxtasksperchild=args.maxtasksperchild,
+            algorithm=args.algorithm if len(args.algorithm) > 0 else "ollama",
+            llm_model=args.llm_model,
+            ollama_url=args.ollama_url,
+            openai_base_url=args.openai_base_url,
+            openai_api_key=args.openai_api_key,
+            prompt_version=prompt_version,
+            judge_force=args.judge_force,
+        )
+
+        if failures:
+            print(f"Páginas com falha de parse: {[p.name for p in failures]}")
+            print("Reprocessando imagens com falha...")
+
+            algorithm = args.algorithm if len(args.algorithm) > 0 else "ollama"
+            if algorithm == "openai" and args.llm_model == DEFAULT_LLM_MODEL:
+                args.llm_model = DEFAULT_OPENAI_MODEL
+
+            ocr_images_to_text_parallel(
+                failures,
+                text_dir,
+                lang=args.lang,
+                processes=args.procs,
+                omp_threads_per_proc=args.omp_threads,
+                chunksize=args.chunksize,
+                maxtasksperchild=args.maxtasksperchild,
+                algorithm=algorithm,
+                llm_model=args.llm_model,
+                ollama_url=args.ollama_url,
+                openai_base_url=args.openai_base_url,
+                openai_api_key=args.openai_api_key,
+                save_all_text_path=concat_path,
+                reprocess=True,
+            )
+        print("Avaliação concluída.")
+        return
 
     if args.verify or args.verify_fix:
         print("Verificando integridade dos textos...")

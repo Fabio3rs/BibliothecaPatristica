@@ -21,6 +21,7 @@ import json
 import sqlite3
 import time
 import unicodedata
+import re
 from pathlib import Path
 from typing import Dict, Iterable, List, Tuple
 
@@ -42,11 +43,45 @@ from keywords_serial import (
 # -----------------------------------------------------------------------------
 
 
-def normalize_kw(text: str) -> str:
-    """Normaliza keyword para chave canônica (NFKC + casefold + trim + dedupe)."""
+def strip_markdown_wrappers(text: str) -> str:
+    """
+    Remove marcas simples de markdown/bullet que chegam como parte das keywords.
+    - bullets iniciais: *, -, +, •, >, # (com espaço opcional)
+    - code/ênfase simétrica em volta (*...*, **...**, __...__, `...`)
+    """
+    t = (text or "").strip()
+    # Remove bullets/headers quoting no início
+    t = re.sub(r"^(?:[>#]+|\*+|[-+•\u2022]+|#+)\s*", "", t)
+    # Descasca wrappers simétricos comuns
+    while len(t) >= 2 and t[0] == t[-1] and t[0] in "*_`'\"":
+        t = t[1:-1].strip()
+    return t
+
+
+def clean_keyword_original(text: str) -> str:
+    """Limpa keyword para armazenar como original (sem aspas/pontuação de borda)."""
+    text = strip_markdown_wrappers(text)
     text = unicodedata.normalize("NFKC", text or "")
     text = " ".join(text.split())
-    text = text.rstrip(".,;•-")
+    strip_chars = " \"'«»“”‘’()[]{}|\\/–—-:;.,!?·•*&"
+    return text.strip(strip_chars)
+
+
+def normalize_kw(text: str) -> str:
+    """Normaliza keyword para chave canônica.
+
+    Passos:
+    - NFKD + remoção de diacríticos (acentos) para colapsar variantes como "simōn"/"simón".
+    - NFKC para recompor, trim de whitespace/pontuação leve/aspas envoltórias, casefold.
+    """
+    text = strip_markdown_wrappers(text)
+    text = unicodedata.normalize("NFKD", text or "")
+    text = "".join(ch for ch in text if not unicodedata.combining(ch))
+    text = unicodedata.normalize("NFKC", text)
+    text = " ".join(text.split())
+    # remove aspas/pontuação só nas extremidades para evitar keywords iniciando por """
+    strip_chars = " \"'«»“”‘’()[]{}|\\/–—-:;.,!?·•*&"
+    text = text.strip(strip_chars)
     return text.casefold()
 
 
@@ -60,6 +95,14 @@ def normalize_category(label: str) -> Tuple[str, str]:
 def chunked(seq: List, size: int) -> Iterable[List]:
     for i in range(0, len(seq), size):
         yield seq[i : i + size]
+
+
+# Keywords com menos de N caracteres normalizados serão marcados como ruído.
+MIN_KEYWORD_LEN_NOISE = 3
+
+
+def is_noise_norm(norm: str) -> bool:
+    return len(norm) < MIN_KEYWORD_LEN_NOISE
 
 
 # -----------------------------------------------------------------------------
@@ -109,10 +152,12 @@ CREATE TABLE IF NOT EXISTS keyword_embedding (
     embedding BLOB NOT NULL,
     prompt_text TEXT,
     ranked_from_model INTEGER,
-    embedding_hash TEXT UNIQUE,
+    embedding_hash TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE INDEX IF NOT EXISTS idx_kw_emb_hash ON keyword_embedding(embedding_hash);
 
 CREATE TABLE IF NOT EXISTS keyword_occurrence (
     id INTEGER PRIMARY KEY,
@@ -417,6 +462,7 @@ def ingest(
         "parse_issue": 0,
         "empty_keywords": 0,
         "alias_added": 0,
+        "noise_keywords": 0,
         "batches": 0,
     }
 
@@ -507,17 +553,24 @@ def ingest(
         if limit_pages is not None and pages >= limit_pages:
             break
 
-        # Stage keywords: collect unique norms in batch
+        # Stage keywords: collect unique norms em batch
         batch_norm_to_original: Dict[str, str] = {}
+        noise_norm_to_original: Dict[str, str] = {}
+        noise_norms: set[str] = set()
         page_kw_ids: Dict[Tuple[str, int], List[int]] = {}
         for rec in page_records:
             kw_ids: List[int] = []
             for kw in rec["keywords"]:
+                kw_clean = clean_keyword_original(kw)
                 norm = normalize_kw(kw)
                 if not norm:
                     continue
+                if is_noise_norm(norm):
+                    noise_norms.add(norm)
+                    noise_norm_to_original.setdefault(norm, kw_clean)
+                    continue
                 if norm not in batch_norm_to_original:
-                    batch_norm_to_original[norm] = kw
+                    batch_norm_to_original[norm] = kw_clean
                 kw_ids.append(norm)  # temporarily store norm; will map to id after
             page_kw_ids[(rec["documento"], rec["pagina_num"])] = kw_ids
 
@@ -533,6 +586,17 @@ def ingest(
             cache.update(fetched)
         if len(cache) > cache_len_before:
             kws_touched += len(cache) - cache_len_before
+
+        # Inserir keywords curtas como ruído (is_noise=1)
+        noise_new = [n for n in noise_norm_to_original if n not in cache]
+        if noise_new:
+            dst_con.executemany(
+                "INSERT OR IGNORE INTO keywords (keyword_norm, keyword_original, is_noise) VALUES (?, ?, 1)",
+                [(n, noise_norm_to_original[n]) for n in noise_new],
+            )
+            fetched_noise = fetch_ids_for_norms(dst_con, noise_new)
+            cache.update(fetched_noise)
+            stats["noise_keywords"] += len(noise_new)
 
         # Resolve ids for all norms in batch
         alias_rows = []

@@ -32,10 +32,18 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Optional, Tuple
 
+# Permite importar utilitários de limpeza compartilhados
+PROJECT_ROOT = Path(__file__).resolve().parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+from test_limpeza_ocr import (  # type: ignore  # noqa: E402
+    clean_summary_global_for_search,
+    clean_summary_page_for_embedding,
+)
+
 # ---------------------------------------------------------------------------
 # Constantes
 # ---------------------------------------------------------------------------
-PROJECT_ROOT = Path(__file__).resolve().parent
 DEFAULT_DB = PROJECT_ROOT / "data" / "patristica_resumos.db"
 DEFAULT_ROOT = PROJECT_ROOT / "teste"
 DEFAULT_MODEL = "qwen3:30b"
@@ -106,12 +114,32 @@ def init_resumo_schema(con: sqlite3.Connection) -> None:
         ("keywords_json", "TEXT NOT NULL DEFAULT ''"),
         ("keywords_source", "TEXT NOT NULL DEFAULT ''"),
         ("keywords_modelo", "TEXT NOT NULL DEFAULT ''"),
+        ("author_detected", "TEXT NOT NULL DEFAULT ''"),
+        ("work_detected", "TEXT NOT NULL DEFAULT ''"),
+        ("summary_page_clean", "TEXT NOT NULL DEFAULT ''"),
+        ("summary_global_clean", "TEXT NOT NULL DEFAULT ''"),
     ]:
         try:
             con.execute(f"ALTER TABLE resumos ADD COLUMN {col} {typedef}")
         except sqlite3.OperationalError:
             pass  # coluna já existe
     con.commit()
+
+
+def ensure_resumos_embedding_schema(con: sqlite3.Connection) -> None:
+    # Garante colunas hdbscan_group_id em resumos
+    try:
+        # Adiciona colunas para armazenar os IDs dos grupos HDBSCAN
+        # Resumo global deve conter pouca variação dentro de um mesmo livro de um autor dentro de um volume
+        # Usaremos para agrupamento e otimização indexação do pagefind
+        # Iremos testar 5D UMAP
+        con.execute("ALTER TABLE resumos ADD COLUMN resumo_global_hdbscan_group_id INTEGER")
+
+        # Resumo da página provavelmente irá variar um pouco mais conforme o autor for argumentando
+        # Iremos testar 15D UMAP
+        con.execute("ALTER TABLE resumos ADD COLUMN resumo_pagina_hdbscan_group_id INTEGER")
+    except sqlite3.OperationalError:
+        pass
 
 
 def get_last_processed_page(con: sqlite3.Connection, documento: str) -> Optional[int]:
@@ -134,23 +162,30 @@ def get_processed_pages_set(con: sqlite3.Connection, documento: str) -> set[int]
 
 def get_last_resumo_global(
     con: sqlite3.Connection, documento: str, before_page: Optional[int] = None
-) -> Optional[str]:
-    """Retorna o resumo_global da última página processada. Se before_page for informado, pega a página anterior mais próxima."""
+) -> Tuple[str, str, str]:
+    """Retorna (resumo_global, author_detected, work_detected) da última página processada.
+    Se before_page for informado, pega a página anterior mais próxima."""
     if before_page is not None:
         row = con.execute(
-            """SELECT resumo_global FROM resumos
+            """SELECT resumo_global, author_detected, work_detected FROM resumos
                WHERE documento = ? AND pagina_num < ?
                ORDER BY pagina_num DESC LIMIT 1""",
             (documento, before_page),
         ).fetchone()
     else:
         row = con.execute(
-            """SELECT resumo_global FROM resumos
+            """SELECT resumo_global, author_detected, work_detected FROM resumos
                WHERE documento = ?
                ORDER BY pagina_num DESC LIMIT 1""",
             (documento,),
         ).fetchone()
-    return str(row["resumo_global"]) if row else None
+    if not row:
+        return ("", "", "")
+    return (
+        str(row["resumo_global"] or ""),
+        str(row["author_detected"] or ""),
+        str(row["work_detected"] or ""),
+    )
 
 
 def save_resumo(
@@ -162,12 +197,17 @@ def save_resumo(
     resumo_pagina: str,
     resumo_global: str,
     modelo: str,
+    author_detected: str,
+    work_detected: str,
+    summary_page_clean: str,
+    summary_global_clean: str,
 ) -> None:
     con.execute(
         """INSERT OR REPLACE INTO resumos
            (documento, pagina_num, pagina_file, pagina_texto,
-            resumo_pagina, resumo_global, modelo, criado_em)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
+            resumo_pagina, resumo_global, modelo, criado_em,
+            author_detected, work_detected, summary_page_clean, summary_global_clean)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
         (
             documento,
             pagina_num,
@@ -177,6 +217,10 @@ def save_resumo(
             resumo_global,
             modelo,
             _now_iso(),
+            author_detected,
+            work_detected,
+            summary_page_clean,
+            summary_global_clean,
         ),
     )
     con.commit()
@@ -200,6 +244,7 @@ def ollama_chat(
     payload = {
         "model": model,
         "stream": False,
+        "format": "json",
         "messages": [
             {"role": "system", "content": prompt_system},
             {"role": "user", "content": prompt_user},
@@ -267,6 +312,7 @@ def openai_chat(
             {"role": "system", "content": prompt_system},
             {"role": "user", "content": prompt_user},
         ],
+        "response_format": { "type": "json_object" },
         "top_p": 1.0,
         "service_tier": "flex",
     }
@@ -434,32 +480,31 @@ def truncate_context(
 # ---------------------------------------------------------------------------
 
 SYSTEM_PROMPT = """\
-Você é um especialista em Patrística (Patrologia Graeca e Patrologia Latina). \
-Sua tarefa é ler uma página de um volume da Patrística e produzir:
+Você é um REDATOR TÉCNICO de enciclopédias teológicas modernas.
+Sua missão: REESCREVER o conteúdo da página em PORTUGUÊS DO BRASIL denso e direto.
 
-1. Um **resumo exclusivo da página atual** em português do Brasil correto e conciso.
-2. Um **resumo global (overview)** atualizado do documento até o momento, também em \
-português do Brasil correto e conciso.
-3. Caso haja textos de línguas orientais antigas e latinos, o texto latino possui mais chances de estar correto, prefira o latino.
+REGRAS DE OURO (SEM EXCEÇÕES):
+0. IDIOMA ÚNICO: 100% da resposta deve ser em PORTUGUÊS DO BRASIL. 
+   - É PROIBIDO manter frases, expressões ou listas em latim (ex: não escreva 'ad Ephesios', escreva 'aos Efésios').
+   - Termos em latim/grego são permitidos APENAS se forem conceitos técnicos sem tradução (ex: Logos, ousia, hypostasis).
+1. ESTILO TELEGRÁFICO: Elimine preâmbulos ("A página trata", "O autor diz"). Use: [Conceito]: [Explicação técnica].
+2. DENSIDADE: O papel é caro. Use frases nominais. 
+   - Ruim: "Inácio escreveu uma carta para os Romanos onde ele pede martírio."
+   - Bom: "Epístola aos Romanos: petição pelo martírio; desejo de união com Cristo via feras."
+3. FONTE: Use o texto latino para extrair o fatos, mas entregue o produto final totalmente em português.
 
-Siga rigorosamente o modelo de resposta abaixo. Não invente informações. \
-Se a página tiver conteúdo irrelevante (índice, página em branco, cabeçalho repetido), \
-diga apenas isso no resumo da página e mantenha o resumo global anterior.
-Se o título da obra ou o nome do autor não estiverem explícitos no texto ou no cabeçalho da página, \
-indique como 'Não identificado' em vez de deduzir. \
-Evite inferências baseadas em conhecimentos externos se não houver evidência textual direta na página.
-Se o autor ou a obra mudarem, atualize as informações no resumo global.
+OBSERVAÇÕES:
+- A qualquer momento, pode-se iniciar um a nova obra ou autor durante o volume, quando acontecer, atualize os campos "autor" e "obra" no JSON para o autor atual.
+- Se estamos trocando de obra (apresentada por um texto especial), é importante também atualizar a sintese_acumulada para refletir que é o início da obra.
+- Se forem vários autores, pode separar os nomes com vírgula no campo autor.
 
-Modelo de resposta:
-
-Resumo da página:
-A página atual descreve... o autor fala sobre... etc.
-
-Resumo global:
-Autor: ...
-Livro/obra identificada: ...
-Resumo até o momento: ...
-""".strip()
+REGRAS DE FORMATAÇÃO (JSON PURO):
+{
+"autor": "Nome em português.",
+"obra": "Título em português.",
+"traducao_compacta": "CONCEITO 1: Texto denso em PT-BR. CONCEITO 2: Texto denso em PT-BR.",
+"sintese_acumulada": "Resumo do progresso em português do Brasil."
+}""".strip()
 
 
 def remove_noise(text: str) -> str:
@@ -467,8 +512,16 @@ def remove_noise(text: str) -> str:
     # text = unicodedata.normalize("NFC", text)
     text = text.replace("\r\n", "\n").replace("\r", "\n")
 
+    # remove indentação/espaços no início das linhas
+    text = re.sub(r"^[ \t]+", "", text, flags=re.MULTILINE)
+
     # une hifenização de fim de linha (ex: "interver-\nsion" → "interversion")
     text = re.sub(r"-\n([a-zA-ZÀ-öø-ÿ])", r"\1", text)
+
+    # elimina quebras de linha restantes e colapsa múltiplos espaços
+    # text = text.replace("\n", " ")
+
+    text = re.sub(r"[ \t]+", " ", text).strip()
 
     # remove XML tags se vier do LLM
     # text = re.sub(r"<[^>]+>", "", text)
@@ -477,32 +530,49 @@ def remove_noise(text: str) -> str:
 
 
 def build_user_prompt(
-    contexto_previo: str, page_text: str, page_num: int, doc_name: str
+    contexto_previo: str, page_text: str, page_num: int, doc_name: str, author: str, work: str
 ) -> str:
     parts: List[str] = []
 
-    parts.append(f"Documento: {doc_name}  |  Página: {page_num}\n")
+    # Cabeçalho técnico para o modelo se localizar
+    # Mapeamento de siglas para nomes extensos
+    MAPA_SERIES = {
+        "PG": "Patrologia Graeca (Migne)",
+        "PL": "Patrologia Latina (Migne)",
+        "PO": "Patrologia Orientalis (Graffin/Nau)",
+        "ACO": "Acta Conciliorum Oecumenicorum", # Caso decidas expandir no futuro
+    }
+
+    # No build_user_prompt, extraímos o prefixo (ex: 'PG' de 'PG005')
+    prefixo = "".join(re.findall(r'[A-Za-z]+', doc_name))
+    serie_nome = MAPA_SERIES.get(prefixo, "Coleção Patrística")
+
+    parts.append(f"### DADOS DA ENTRADA: Documento {doc_name} | Coleção: {serie_nome} | Página {page_num}")
 
     page_text = remove_noise(page_text)
 
+    if author and work:
+        parts.append(f"### DADOS DA OBRA: Autor: {author} | Obra: {work}")
+
+    # Contexto Prévio (Sintese Acumulada das páginas anteriores)
+    parts.append("<contexto_prévio_acumulado>")
     if contexto_previo:
-        parts.append("<contexto_prévio>")
         parts.append(contexto_previo)
-        parts.append("</contexto_prévio>\n")
     else:
-        parts.append("<contexto_prévio>")
-        parts.append("(primeira página — ainda não há contexto prévio)")
-        parts.append("</contexto_prévio>\n")
+        parts.append("(Início da obra: não há conteúdo anterior)")
+    parts.append("</contexto_prévio_acumulado>\n")
 
-    parts.append("<page>")
+    # Conteúdo da Página Atual
+    parts.append("<conteudo_pagina_atual>")
     parts.append(page_text)
-    parts.append("</page>\n")
+    parts.append("</conteudo_pagina_atual>\n")
 
+    # Instrução de fechamento alinhada ao JSON
     parts.append(
-        "Acima estou fornecendo o contexto prévio deste livro da Patrística. "
-        "Produza um resumo exclusivo do conteúdo da página atual e em seguida "
-        "produza um overview geral (resumo global) em português do Brasil correto e conciso, "
-        "seguindo o modelo de resposta."
+        "COMANDO:\n"
+        "1. 'traducao_compacta': Tradução (para português do Brasil) direta e densa do conteúdo novo na <conteudo_pagina_atual>.\n"
+        "2. 'sintese_acumulada': Evolução do argumento em português do Brasil. Adicione os pontos novos da página atual ao que já existe no <contexto_prévio_acumulado>.\n"
+        "3. ESTAGNAÇÃO: Se a página for administrativamente irrelevante (índice, em branco, capa), a 'traducao_compacta' deve ser exatamente 'Conteúdo administrativo' e a 'sintese_acumulada' deve ser UMA CÓPIA IDENTICA do <contexto_prévio_acumulado>."
     )
 
     return "\n".join(parts)
@@ -513,10 +583,10 @@ def build_user_prompt(
 # ---------------------------------------------------------------------------
 
 
-def parse_llm_response(raw: str) -> Tuple[str, str]:
+def parse_llm_response(raw: str) -> Tuple[str, str, str, str]:
     """
-    Tenta separar 'Resumo da página:' e 'Resumo global:'.
-    Se não conseguir, retorna ("", "") para indicar parse falhou.
+    Retorna (resumo_pagina, sintese_pura, autor, obra).
+    Se não conseguir parsear, retorna strings vazias para indicar falha.
     """
     # Remove blocos de raciocínio que o modelo pode vazar mesmo com think=false
     clean = re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL).strip()
@@ -524,27 +594,89 @@ def parse_llm_response(raw: str) -> Tuple[str, str]:
     if len(clean) == 0:
         print(f"Raw response was empty: {raw}")
 
+    # ------------------------------------------------------------
+    # Utilitários de limpeza simples (mínimo de regex)
+    # ------------------------------------------------------------
+    def clean_summary_text(text: str) -> str:
+        if not text:
+            return ""
+        return " ".join(text.replace("\r", "\n").replace("\n", " ").split()).strip()
+
+    def strip_code_fence(text: str) -> str:
+        if "```" in text:
+            m = re.search(r"```(?:json)?(.*?)```", text, re.DOTALL)
+            if m:
+                return m.group(1)
+        return text
+
+    def try_parse_json_like(text: str) -> Optional[dict]:
+        cand = strip_code_fence(text)
+        # Pega apenas o primeiro bloco {...} se houver ruído antes/depois
+        m = re.search(r"\{.*\}", cand, re.DOTALL)
+        if m:
+            cand = m.group(0)
+        try:
+            return json.loads(cand)
+        except Exception:
+            return None
+
+    def pick_line_prefix(lines: list[str], prefix: str) -> Optional[str]:
+        pref = prefix.lower()
+        for ln in lines:
+            if ln.lower().startswith(pref):
+                return ln[len(prefix):].strip()
+        return None
+
     resumo_pagina = ""
-    resumo_global = ""
+    sintese = ""
+    autor = ""
+    obra = ""
 
-    # Tenta split por "Resumo global:"
-    marker_global = re.search(r"(?i)resumo\s+global\s*:", clean)
-    marker_page = re.search(r"(?i)resumo\s+da\s+p[áa]gina\s*:", clean)
+    parsed = try_parse_json_like(clean)
+    if isinstance(parsed, dict):
+        resumo_pagina = clean_summary_text(str(parsed.get("traducao_compacta", "")))
+        sintese = clean_summary_text(str(parsed.get("sintese_acumulada", "")))
+        autor = clean_summary_text(str(parsed.get("autor", "")))
+        obra = clean_summary_text(str(parsed.get("obra", "")))
+        return resumo_pagina, sintese, autor, obra
 
-    if marker_page and marker_global and marker_page.start() < marker_global.start():
-        resumo_pagina = clean[marker_page.end() : marker_global.start()].strip()
-        resumo_global = clean[marker_global.end() :].strip()
-    elif marker_global:
-        resumo_pagina = clean[: marker_global.start()].strip()
-        resumo_global = clean[marker_global.end() :].strip()
+    # Fallback leve: procura linhas com "autor:" / "obra:" e o resto vira síntese
+    lines = [ln.strip() for ln in clean.splitlines() if ln.strip()]
+    autor_line = pick_line_prefix(lines, "autor:")
+    obra_line = pick_line_prefix(lines, "obra:")
+    if autor_line:
+        autor = clean_summary_text(autor_line)
+    if obra_line:
+        obra = clean_summary_text(obra_line)
 
-    return resumo_pagina, resumo_global
+    # Remove eventuais linhas de autor/obra para formar síntese
+    filtered = []
+    for ln in lines:
+        low = ln.lower()
+        if low.startswith("autor:") or low.startswith("obra:") or low.startswith("resumo global:"):
+            continue
+        filtered.append(ln)
+    if filtered:
+        sintese = clean_summary_text(" ".join(filtered))
+
+    # Por padrão, resumo_pagina recebe a mesma síntese quando não há separação clara
+    resumo_pagina = resumo_pagina or sintese
+
+    return resumo_pagina, sintese, autor, obra
 
 
-def is_parseable_response(resumo_pagina: str, resumo_global: str) -> bool:
+def is_page_administrative(text: str) -> bool:
+    t = (text or "").lower()
+    return "administrativ" in t  # cobre "administrativo", "administrativa", etc.
+
+
+def is_parseable_response(resumo_pagina: str, sintese_pura: str) -> bool:
+    if is_page_administrative(resumo_pagina):
+        return True
+
     """Verifica se a resposta tem conteúdo mínimo nos dois campos."""
     MIN_CHARS = 30  # mínimo ~uma frase curta
-    return len(resumo_pagina) >= MIN_CHARS and len(resumo_global) >= MIN_CHARS
+    return len(resumo_pagina) >= MIN_CHARS and len(sintese_pura) >= MIN_CHARS
 
 
 # ---------------------------------------------------------------------------
@@ -619,6 +751,7 @@ def process_volume(
     page_limit: Optional[int] = None,
     verbose: bool = False,
     fill_gaps: bool = False,
+    fill_gaps_overlap: int = 10,
 ) -> None:
     """Processa todas as páginas de um volume sequencialmente.
 
@@ -651,18 +784,20 @@ def process_volume(
     processed_set = set()
     last_done = None
     contexto = ""
+    author_ctx = ""
+    work_ctx = ""
 
     if dry_run:
         # Em dry run, tenta pegar contexto do DB se disponível
         if con is not None:
-            contexto = get_last_resumo_global(con, doc_name) or ""
+            contexto, author_ctx, work_ctx = get_last_resumo_global(con, doc_name)
     else:
         if con is not None:
             if fill_gaps:
                 processed_set = get_processed_pages_set(con, doc_name)
             else:
                 last_done = get_last_processed_page(con, doc_name)
-                contexto = get_last_resumo_global(con, doc_name) or ""
+                contexto, author_ctx, work_ctx = get_last_resumo_global(con, doc_name)
 
     if not fill_gaps and last_done is not None and not dry_run:
         log.info(
@@ -673,21 +808,33 @@ def process_volume(
         )
     elif fill_gaps and not dry_run:
         log.info(
-            "[%s] Modo fill-gaps: Mapeando %d páginas processadas para detectar omissões.",
+            "[%s] Modo fill-gaps: %d páginas no DB; reprocessando %d após cada lacuna.",
             doc_name,
             len(processed_set),
+            fill_gaps_overlap,
         )
 
     pages_done = 0
+    redo_until_page = 0
+    overlap_forward = max(0, fill_gaps_overlap)
     for idx, page_path in enumerate(pages):
         pnum = page_number(page_path)
 
         if fill_gaps and not dry_run:
-            if pnum in processed_set:
+            missing_in_db = pnum not in processed_set
+            in_overlap = redo_until_page > 0 and pnum <= redo_until_page
+
+            if not missing_in_db and not in_overlap:
                 continue
-            # Se a página estava em falta, precisamos do contexto cronológico da página anterior a ela
-            if con is not None:
-                contexto = get_last_resumo_global(con, doc_name, before_page=pnum) or ""
+
+            if missing_in_db:
+                redo_until_page = max(redo_until_page, pnum + overlap_forward)
+                # Se a página estava em falta, precisamos do contexto cronológico da página anterior a ela
+                if con is not None:
+                    contexto, author_ctx, work_ctx = get_last_resumo_global(
+                        con, doc_name, before_page=pnum
+                    )
+            # Em páginas de overlap mantemos o contexto recente gerado no loop
         else:
             # Pula páginas já processadas sequencialmente na lógica tradicional (só em gravação)
             if not dry_run and last_done is not None and pnum <= last_done:
@@ -701,7 +848,28 @@ def process_volume(
             continue
 
         if not page_text:
-            log.info("[%s] Página %d vazia, pulando", doc_name, pnum)
+            log.info("[%s] Página %d vazia, marcando como administrativa e seguindo", doc_name, pnum)
+            if not dry_run and con is not None:
+                resumo_pagina = "Conteúdo administrativo"
+                resumo_global = contexto or "(Início da obra: não há conteúdo anterior)"
+                summary_page_clean = clean_summary_page_for_embedding(resumo_pagina)
+                summary_global_clean = clean_summary_global_for_search(resumo_global)
+                save_resumo(
+                    con=con,
+                    documento=doc_name,
+                    pagina_num=pnum,
+                    pagina_file=page_path.name,
+                    pagina_texto="",
+                    resumo_pagina=resumo_pagina,
+                    resumo_global=resumo_global,
+                    modelo=model,
+                    author_detected=author_ctx,
+                    work_detected=work_ctx,
+                    summary_page_clean=summary_page_clean,
+                    summary_global_clean=summary_global_clean,
+                )
+                if fill_gaps:
+                    processed_set.add(pnum)
             continue
 
         # Trunca contexto se necessário para caber na janela (relevante p/ Ollama)
@@ -711,7 +879,9 @@ def process_volume(
         contexto_safe = truncate_context(contexto, page_text, ctx_window)
 
         # Monta prompt
-        user_prompt = build_user_prompt(contexto_safe, page_text, pnum, doc_name)
+        user_prompt = build_user_prompt(
+            contexto_safe, page_text, pnum, doc_name, author_ctx, work_ctx
+        )
 
         prompt_tokens_est = estimate_tokens(user_prompt)
         log.info(
@@ -725,7 +895,6 @@ def process_volume(
         # Chama LLM com retry (inclui validação de parsing)
         raw_response = ""
         resumo_pagina = ""
-        resumo_global = ""
         for attempt in range(1, retries + 1):
             try:
                 raw_response = llm_chat(
@@ -739,6 +908,8 @@ def process_volume(
                     api_key_env=api_key_env,
                     num_ctx=num_ctx,
                 )
+                log.info("[%s] Página %d tentativa %d/%d – resposta LLM: %s",
+                         doc_name, pnum, attempt, retries, raw_response)
             except Exception as exc:
                 log.warning(
                     "[%s] Página %d tentativa %d/%d – erro LLM: %s",
@@ -771,20 +942,29 @@ def process_volume(
                 continue
 
             # Valida parsing
-            resumo_pagina, resumo_global = parse_llm_response(raw_response)
-            if is_parseable_response(resumo_pagina, resumo_global):
+            resumo_pagina, sintese_pura, autor_detectado, obra_detectada = parse_llm_response(
+                raw_response
+            )
+            if is_page_administrative(resumo_pagina):
+                resumo_pagina = "Conteúdo administrativo"
+                # Mantém continuidade da síntese para não quebrar parsing/fluidez
+                if not sintese_pura.strip():
+                    sintese_pura = contexto or "(Início da obra: não há conteúdo anterior)"
+                autor_detectado = ""
+                obra_detectada = ""
+            if is_parseable_response(resumo_pagina, sintese_pura):
                 break  # sucesso
 
             log.warning(
                 "[%s] Página %d tentativa %d/%d – parsing falhou "
                 "(resumo_pagina=%d chars, resumo_global=%d chars). "
-                "Primeiros 200 chars: %.200s",
+                ": %s",
                 doc_name,
                 pnum,
                 attempt,
                 retries,
                 len(resumo_pagina),
-                len(resumo_global),
+                len(sintese_pura),
                 raw_response.replace("\n", " "),
             )
             if attempt < retries:
@@ -798,7 +978,7 @@ def process_volume(
             )
             continue
 
-        if not is_parseable_response(resumo_pagina, resumo_global):
+        if not is_parseable_response(resumo_pagina, sintese_pura):
             log.error(
                 "[%s] Página %d esgotou tentativas – parsing falhou, "
                 "usando raw como fallback",
@@ -807,12 +987,19 @@ def process_volume(
             )
             # Fallback: usa raw inteiro para ambos (melhor que perder a página)
             resumo_pagina = raw_response.strip()
-            resumo_global = raw_response.strip()
+            sintese_pura = raw_response.strip()
+            autor_detectado = ""
+            obra_detectada = ""
 
         # Atualiza contexto para a próxima iteração
-        contexto = resumo_global
+        contexto = sintese_pura
+        author_ctx = autor_detectado
+        work_ctx = obra_detectada
 
         pages_done += 1
+
+        if fill_gaps and not dry_run:
+            processed_set.add(pnum)
 
         if dry_run:
             # Imprime resultado formatado sem gravar
@@ -824,8 +1011,10 @@ def process_volume(
             print(sep)
             print(f"\n{'━' * 30} RESUMO PÁGINA {'━' * 30}")
             print(resumo_pagina)
-            print(f"\n{'━' * 30} RESUMO GLOBAL  {'━' * 30}")
-            print(resumo_global)
+            print(f"\n{'━' * 30} SÍNTESE GLOBAL (pura) {'━' * 30}")
+            print(sintese_pura)
+            print(f"\nAutor detectado: {autor_detectado or '(vazio)'}")
+            print(f"Obra detectada : {obra_detectada or '(vazio)'}")
             if verbose:
                 print(f"\n{'━' * 30} RAW RESPONSE   {'━' * 30}")
                 print(raw_response)
@@ -836,10 +1025,12 @@ def process_volume(
                 pnum,
                 total,
                 len(resumo_pagina),
-                len(resumo_global),
+                len(sintese_pura),
             )
         else:
             # Salva no SQLite
+            summary_page_clean = clean_summary_page_for_embedding(resumo_pagina)
+            summary_global_clean = clean_summary_global_for_search(sintese_pura)
             save_resumo(
                 con=con,
                 documento=doc_name,
@@ -847,8 +1038,12 @@ def process_volume(
                 pagina_file=page_path.name,
                 pagina_texto=page_text,
                 resumo_pagina=resumo_pagina,
-                resumo_global=resumo_global,
+                resumo_global=sintese_pura,
                 modelo=model,
+                author_detected=autor_detectado,
+                work_detected=obra_detectada,
+                summary_page_clean=summary_page_clean,
+                summary_global_clean=summary_global_clean,
             )
             log.info(
                 "[%s] Página %d/%d  (arquivo %s)  ✓",
@@ -961,6 +1156,12 @@ def build_parser() -> argparse.ArgumentParser:
         help="Preenche buracos entre páginas processadas (útil após saltos no log).",
     )
     p.add_argument(
+        "--fill-gaps-overlap",
+        type=int,
+        default=10,
+        help="No modo --fill-gaps, reprocessa também N páginas subsequentes a cada lacuna (default: 10). Motivo: garantir coerência do resumo global.",
+    )
+    p.add_argument(
         "--dry-run",
         action="store_true",
         help="Chama o LLM e imprime resultados sem gravar no banco. "
@@ -1014,6 +1215,7 @@ def main() -> None:
     else:
         con = connect_db(args.db)
         init_resumo_schema(con)
+        ensure_resumos_embedding_schema(con)
         log.info("DB: %s", args.db)
 
     log.info("Provider: %s   Modelo: %s", args.provider, args.model)
@@ -1054,6 +1256,7 @@ def main() -> None:
                 page_limit=args.limit if args.dry_run else None,
                 verbose=args.verbose,
                 fill_gaps=args.fill_gaps,
+                fill_gaps_overlap=args.fill_gaps_overlap,
             )
         except KeyboardInterrupt:
             log.info("Interrompido pelo usuário. Progresso salvo no DB.")

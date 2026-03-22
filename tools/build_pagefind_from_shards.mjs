@@ -10,9 +10,9 @@ import path from 'path';
 import os from 'os';
 import { pathToFileURL } from 'url';
 
-async function readJSON(p) { 
+async function readJSON(p) {
   const data = await fs.promises.readFile(p, 'utf-8');
-  return JSON.parse(data); 
+  return JSON.parse(data);
 }
 function ensureDir(p) { fs.mkdirSync(p, { recursive: true }); }
 
@@ -93,7 +93,7 @@ async function main() {
 
     // snapshot
     try {
-      const snapObj = await readJSON(path.join(params.publicDir, 'snapshots', `${vid}.json`));
+      /*const snapObj = await readJSON(path.join(params.publicDir, 'snapshots', `${vid}.json`));
       const snap = (snapObj.snapshots || [])[0];
       if (snap && snap.summary) {
         await index.addCustomRecord({
@@ -104,7 +104,7 @@ async function main() {
           language: 'pt',
         });
         totalRecords++;
-      }
+      }*/
     } catch (e) { /* ignore missing snapshot */ }
 
     // páginas
@@ -113,7 +113,7 @@ async function main() {
 
     for (let i = 0; i < blocks.length; i += BATCH_SIZE) {
       const batch = blocks.slice(i, i + BATCH_SIZE);
-      
+
       await Promise.all(batch.map(async (pb) => {
         const block = await readJSON(path.join(params.publicDir, pb.file));
         const pagePromises = block.pages.map(p => {
@@ -141,21 +141,19 @@ async function main() {
             .map(id => kwMap.get(id))
             .filter(usable)
             .map(meta => meta.label);
-          
+
           // Conteúdo limpo para o Pagefind (remove qualquer tag HTML residual)
           const content = `
             ${p.summary_page || ''}
-            ${p.summary_global || ''}
             ${kwLabels.join(' ')}
-            ${kwCatLabels.join(' ')}
           `.replace(/<[^>]*>?/gm, '').replace(/\s+/g, ' ').trim();
 
           return index.addCustomRecord({
             url: `${base}/viewer?doc=${vid}&page=${p.page}`,
             content: content,
-            meta: { 
-              title: `${vid} p.${p.page}`, 
-              volume: vid, 
+            meta: {
+              title: `${vid} p.${p.page}`,
+              volume: vid,
               page: String(p.page),
               collection: vol.collection_id
             },
@@ -163,8 +161,7 @@ async function main() {
               collection: [vol.collection_id],
               volume: [vid],
               keyword: kwLabels.length ? kwLabels : undefined,
-              keyword_group: kwGroups.length ? kwGroups : undefined,
-              keyword_category: kwCatLabels.length ? kwCatLabels : undefined,
+              keyword_group: kwGroups.length ? kwGroups : undefined
             },
             language: 'pt',
           });
