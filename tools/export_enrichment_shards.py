@@ -77,7 +77,7 @@ def normalize_keywords(raw: str) -> list:
         if isinstance(val, list):
             return val
         if isinstance(val, dict):
-            kws = val.get("keywords")
+            kws = val.get("keywords") or val.get("keywords_ranking")
             if isinstance(kws, list):
                 return kws
     except Exception:

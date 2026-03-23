@@ -85,6 +85,11 @@ def normalize_kw(text: str) -> str:
     return text.casefold()
 
 
+def normalize_word(text: str) -> str:
+    """Normalização pedante para campo word (strip + lower)."""
+    return (text or "").strip().lower()
+
+
 def normalize_category(label: str) -> Tuple[str, str]:
     """Retorna (label_norm, label_original_trimmed)."""
     orig = " ".join((label or "").split())
@@ -117,6 +122,13 @@ CREATE TABLE IF NOT EXISTS keywords (
     id INTEGER PRIMARY KEY,
     keyword_norm TEXT NOT NULL UNIQUE,
     keyword_original TEXT NOT NULL,
+    -- Novos campos para pipeline de ranking/clustering
+    word TEXT UNIQUE,
+    categoria TEXT,
+    cluster_id INTEGER,
+    cluster_label TEXT,
+    embedding BLOB,
+    -- Campos existentes
     is_noise INTEGER DEFAULT 0,
     hdbscan_group_id INTEGER,
     status TEXT DEFAULT 'pending' CHECK(status IN ('pending','validated','rejected')),
@@ -162,21 +174,24 @@ CREATE INDEX IF NOT EXISTS idx_kw_emb_hash ON keyword_embedding(embedding_hash);
 CREATE TABLE IF NOT EXISTS keyword_occurrence (
     id INTEGER PRIMARY KEY,
     keyword_id INTEGER NOT NULL REFERENCES keywords(id),
-    documento TEXT NOT NULL,
-    pagina_num INTEGER NOT NULL,
+    pagina_id INTEGER REFERENCES resumos(id),
+    documento TEXT,
+    pagina_num INTEGER,
     keywords_source TEXT,
     keywords_modelo TEXT,
     rank_in_page INTEGER,
+    rank_position INTEGER,
     count_in_page INTEGER DEFAULT 1,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    UNIQUE(keyword_id, documento, pagina_num, keywords_modelo, keywords_source)
+    UNIQUE(keyword_id, pagina_id)
 );
 
 CREATE INDEX IF NOT EXISTS idx_kw_occ_keyword ON keyword_occurrence(keyword_id);
 CREATE INDEX IF NOT EXISTS idx_kw_occ_doc_page ON keyword_occurrence(documento, pagina_num);
 CREATE INDEX IF NOT EXISTS idx_keywords_noise_status ON keywords(is_noise, status);
 CREATE INDEX IF NOT EXISTS idx_keywords_hdbscan_group ON keywords(hdbscan_group_id);
+CREATE INDEX IF NOT EXISTS idx_kw_occ_pagina ON keyword_occurrence(pagina_id);
 """
 
 
@@ -188,12 +203,61 @@ CREATE INDEX IF NOT EXISTS idx_keywords_hdbscan_group ON keywords(hdbscan_group_
 def ensure_schema(con: sqlite3.Connection) -> None:
     con.executescript(SCHEMA)
     con.commit()
-    # Garante coluna hdbscan_group_id em DBs antigos
+    # Migrações idempotentes para novos campos
+    for sql in [
+        "ALTER TABLE keywords ADD COLUMN word TEXT",
+        "ALTER TABLE keywords ADD COLUMN categoria TEXT",
+        "ALTER TABLE keywords ADD COLUMN cluster_id INTEGER",
+        "ALTER TABLE keywords ADD COLUMN cluster_label TEXT",
+        "ALTER TABLE keywords ADD COLUMN embedding BLOB",
+        "CREATE UNIQUE INDEX IF NOT EXISTS idx_keywords_word ON keywords(word)",
+        "CREATE INDEX IF NOT EXISTS idx_keywords_cluster ON keywords(cluster_id)",
+    ]:
+        try:
+            con.execute(sql)
+        except sqlite3.OperationalError:
+            pass
+    for sql in [
+        "ALTER TABLE keyword_occurrence ADD COLUMN pagina_id INTEGER REFERENCES resumos(id)",
+        "ALTER TABLE keyword_occurrence ADD COLUMN rank_position INTEGER",
+    ]:
+        try:
+            con.execute(sql)
+        except sqlite3.OperationalError:
+            pass
     try:
-        con.execute("ALTER TABLE keywords ADD COLUMN hdbscan_group_id INTEGER")
-        con.execute("CREATE INDEX IF NOT EXISTS idx_keywords_hdbscan_group ON keywords(hdbscan_group_id)")
+        con.execute("CREATE INDEX IF NOT EXISTS idx_kw_occ_pagina ON keyword_occurrence(pagina_id)")
     except sqlite3.OperationalError:
         pass
+    # Backfill word a partir de keyword_norm
+    try:
+        con.execute(
+            "UPDATE keywords SET word = LOWER(TRIM(keyword_norm)) WHERE word IS NULL OR word = ''"
+        )
+    except sqlite3.OperationalError:
+        pass
+    # Views RRF
+    con.executescript(
+        """
+        DROP VIEW IF EXISTS view_global_keyword_score;
+        CREATE VIEW IF NOT EXISTS view_global_keyword_score AS
+            SELECT keyword_id,
+                   SUM(1.0 / (60.0 + rank_position)) AS importance_score,
+                   COUNT(pagina_id) AS freq
+            FROM keyword_occurrence
+            WHERE rank_position IS NOT NULL
+            GROUP BY keyword_id;
+
+        DROP VIEW IF EXISTS view_cluster_mass_score;
+        CREATE VIEW IF NOT EXISTS view_cluster_mass_score AS
+            SELECT k.cluster_id,
+                   SUM(g.importance_score) AS massa_teologica
+            FROM keywords k
+            JOIN view_global_keyword_score g ON g.keyword_id = k.id
+            WHERE k.cluster_id IS NOT NULL
+            GROUP BY k.cluster_id;
+        """
+    )
 
 
 def connect_db(path: Path) -> sqlite3.Connection:
@@ -244,14 +308,16 @@ def upsert_keyword(
     kw_original: str,
 ) -> Tuple[int, bool]:
     """Upsert keyword. Retorna (keyword_id, is_new_or_alias_added)."""
+    word = normalize_word(kw_original)
     con.execute(
         """
-        INSERT INTO keywords (keyword_norm, keyword_original)
-        VALUES (?, ?)
+        INSERT INTO keywords (keyword_norm, keyword_original, word)
+        VALUES (?, ?, ?)
         ON CONFLICT(keyword_norm) DO UPDATE
-            SET updated_at=CURRENT_TIMESTAMP
+            SET updated_at=CURRENT_TIMESTAMP,
+                word=COALESCE(keywords.word, excluded.word)
         """,
-        (kw_norm, kw_original),
+        (kw_norm, kw_original, word),
     )
     row = con.execute(
         "SELECT id, keyword_original FROM keywords WHERE keyword_norm = ?",
@@ -349,7 +415,7 @@ def iter_resumos_rows(
     limit_pages: int | None,
 ) -> Iterable[sqlite3.Row]:
     base_sql = """
-        SELECT documento, pagina_num, keywords_json, keywords_source, keywords_modelo
+        SELECT id AS pagina_id, documento, pagina_num, keywords_json, keywords_source, keywords_modelo
         FROM resumos
         WHERE keywords_json != ''
     """
@@ -374,7 +440,7 @@ def fetch_pages_batch(
 ) -> List[sqlite3.Row]:
     """Lê páginas (sem expandir keywords) em batch via LIMIT/OFFSET."""
     sql = """
-        SELECT documento, pagina_num, keywords_json, keywords_source, keywords_modelo
+        SELECT id AS pagina_id, documento, pagina_num, keywords_json, keywords_source, keywords_modelo
         FROM resumos
         WHERE keywords_json != ''
     """
@@ -405,7 +471,7 @@ def fetch_keywords_sql_batch(
     """
     sql = """
         WITH sub AS (
-            SELECT documento, pagina_num, keywords_json, keywords_source, keywords_modelo,
+            SELECT id AS pagina_id, documento, pagina_num, keywords_json, keywords_source, keywords_modelo,
                    json_extract(keywords_json, '$.categorias') AS categorias_json
             FROM resumos
             WHERE keywords_json != ''
@@ -419,6 +485,7 @@ def fetch_keywords_sql_batch(
 
     sql += """
         SELECT
+            sub.pagina_id,
             sub.documento,
             sub.pagina_num,
             sub.keywords_source,
@@ -426,7 +493,13 @@ def fetch_keywords_sql_batch(
             CAST(json_each.key AS INT) AS rank,
             json_each.value AS keyword,
             sub.categorias_json
-        FROM sub, json_each(sub.keywords_json, '$.keywords')
+        FROM sub,
+             json_each(
+                COALESCE(
+                    json_extract(sub.keywords_json, '$.keywords_ranking'),
+                    json_extract(sub.keywords_json, '$.keywords')
+                )
+             )
     """
     if max_keywords_per_page:
         sql += " WHERE CAST(json_each.key AS INT) < ?"
@@ -491,15 +564,16 @@ def ingest(
                 key = (r["documento"], r["pagina_num"])
                 if key not in grouped:
                     grouped[key] = {
+                        "pagina_id": r["pagina_id"],
                         "documento": r["documento"],
                         "pagina_num": r["pagina_num"],
                         "keywords_source": r["keywords_source"] or "",
                         "keywords_modelo": r["keywords_modelo"] or "",
-                        "keywords": [],
+                        "keywords_ranked": [],
                         "categorias": {},
                         "categorias_json": r["categorias_json"],
                     }
-                grouped[key]["keywords"].append(r["keyword"])
+                grouped[key]["keywords_ranked"].append((r["keyword"], r["rank"]))
             # Parse categorias uma vez por página
             for rec in grouped.values():
                 cat_raw = rec.get("categorias_json")
@@ -528,7 +602,7 @@ def ingest(
                 payload = r["keywords_json"]
                 parsed, parse_issue = normalize_keywords_payload(payload)
                 cleaned, _clean_issues = clean_keywords_structure(parsed)
-                keywords = cleaned.get("keywords", [])
+                keywords = cleaned.get("keywords_ranking") or cleaned.get("keywords") or []
                 categorias = cleaned.get("categorias", {})
                 if parse_issue:
                     stats["parse_issue"] += 1
@@ -540,11 +614,12 @@ def ingest(
                     stats["truncated_pages"] += 1
                 page_records.append(
                     {
+                        "pagina_id": r["pagina_id"],
                         "documento": r["documento"],
                         "pagina_num": r["pagina_num"],
                         "keywords_source": r["keywords_source"] or "",
                         "keywords_modelo": r["keywords_modelo"] or "",
-                        "keywords": keywords,
+                        "keywords_ranked": list(enumerate(keywords)),
                         "categorias": categorias,
                     }
                 )
@@ -553,16 +628,17 @@ def ingest(
         if limit_pages is not None and pages >= limit_pages:
             break
 
-        # Stage keywords: collect unique norms em batch
+        # Stage keywords: collect unique norms em batch (inclui termos só em categorias)
         batch_norm_to_original: Dict[str, str] = {}
         noise_norm_to_original: Dict[str, str] = {}
         noise_norms: set[str] = set()
-        page_kw_ids: Dict[Tuple[str, int], List[int]] = {}
+        page_kw_ids: Dict[Tuple[str, int], List[Tuple[Optional[int], str]]] = {}
         for rec in page_records:
-            kw_ids: List[int] = []
-            for kw in rec["keywords"]:
+            kw_entries: List[Tuple[int, str]] = []
+            for rank_pos, kw in rec["keywords_ranked"]:
                 kw_clean = clean_keyword_original(kw)
                 norm = normalize_kw(kw)
+                word_norm = kw.strip().lower()
                 if not norm:
                     continue
                 if is_noise_norm(norm):
@@ -571,16 +647,31 @@ def ingest(
                     continue
                 if norm not in batch_norm_to_original:
                     batch_norm_to_original[norm] = kw_clean
-                kw_ids.append(norm)  # temporarily store norm; will map to id after
-            page_kw_ids[(rec["documento"], rec["pagina_num"])] = kw_ids
+                kw_entries.append((rank_pos, norm))
+            # Termos que aparecem só nas categorias
+            cat_terms: List[str] = []
+            for items in (rec.get("categorias") or {}).values():
+                if isinstance(items, list):
+                    cat_terms.extend([it for it in items if isinstance(it, str)])
+            for kw in cat_terms:
+                kw_clean = clean_keyword_original(kw)
+                norm = normalize_kw(kw)
+                if not norm or is_noise_norm(norm):
+                    continue
+                if norm not in batch_norm_to_original:
+                    batch_norm_to_original[norm] = kw_clean
+                # evita duplicar se já veio no ranking
+                if all(norm != n for _, n in kw_entries):
+                    kw_entries.append((None, norm))  # rank ausente
+            page_kw_ids[(rec["documento"], rec["pagina_num"])] = kw_entries
 
         new_norms = [n for n in batch_norm_to_original if n not in cache]
         # bulk insert new norms
         cache_len_before = len(cache)
         if new_norms:
             dst_con.executemany(
-                "INSERT OR IGNORE INTO keywords (keyword_norm, keyword_original) VALUES (?, ?)",
-                [(n, batch_norm_to_original[n]) for n in new_norms],
+                "INSERT OR IGNORE INTO keywords (keyword_norm, keyword_original, word) VALUES (?, ?, ?)",
+                [(n, batch_norm_to_original[n], normalize_word(batch_norm_to_original[n])) for n in new_norms],
             )
             fetched = fetch_ids_for_norms(dst_con, new_norms)
             cache.update(fetched)
@@ -591,8 +682,8 @@ def ingest(
         noise_new = [n for n in noise_norm_to_original if n not in cache]
         if noise_new:
             dst_con.executemany(
-                "INSERT OR IGNORE INTO keywords (keyword_norm, keyword_original, is_noise) VALUES (?, ?, 1)",
-                [(n, noise_norm_to_original[n]) for n in noise_new],
+                "INSERT OR IGNORE INTO keywords (keyword_norm, keyword_original, word, is_noise) VALUES (?, ?, ?, 1)",
+                [(n, noise_norm_to_original[n], normalize_word(noise_norm_to_original[n])) for n in noise_new],
             )
             fetched_noise = fetch_ids_for_norms(dst_con, noise_new)
             cache.update(fetched_noise)
@@ -624,9 +715,8 @@ def ingest(
         # Build occurrences rows
         occ_rows = []
         for rec in page_records:
-            norms = page_kw_ids[(rec["documento"], rec["pagina_num"])]
-            rank = 1
-            for norm in norms:
+            norms_ranked = page_kw_ids[(rec["documento"], rec["pagina_num"])]
+            for rank_pos, norm in norms_ranked:
                 entry = cache.get(norm)
                 if not entry:
                     continue
@@ -634,26 +724,28 @@ def ingest(
                 occ_rows.append(
                     (
                         kw_id,
+                        rec.get("pagina_id"),
                         rec["documento"],
                         rec["pagina_num"],
                         rec["keywords_source"],
                         rec["keywords_modelo"],
-                        rank,
+                        None if rank_pos is None else rank_pos + 1,  # rank_in_page
+                        rank_pos,      # rank_position 0-based para RRF (pode ser None)
                         1,
                     )
                 )
-                rank += 1
 
         if occ_rows:
             dst_con.executemany(
                 """
                 INSERT INTO keyword_occurrence
-                    (keyword_id, documento, pagina_num, keywords_source, keywords_modelo,
-                     rank_in_page, count_in_page)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
-                ON CONFLICT(keyword_id, documento, pagina_num, keywords_modelo, keywords_source)
+                    (keyword_id, pagina_id, documento, pagina_num, keywords_source, keywords_modelo,
+                     rank_in_page, rank_position, count_in_page)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(keyword_id, pagina_id)
                     DO UPDATE SET
                         rank_in_page=excluded.rank_in_page,
+                        rank_position=excluded.rank_position,
                         count_in_page=excluded.count_in_page,
                         updated_at=CURRENT_TIMESTAMP
                 """,

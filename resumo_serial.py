@@ -133,11 +133,15 @@ def ensure_resumos_embedding_schema(con: sqlite3.Connection) -> None:
         # Resumo global deve conter pouca variação dentro de um mesmo livro de um autor dentro de um volume
         # Usaremos para agrupamento e otimização indexação do pagefind
         # Iremos testar 5D UMAP
-        con.execute("ALTER TABLE resumos ADD COLUMN resumo_global_hdbscan_group_id INTEGER")
+        con.execute(
+            "ALTER TABLE resumos ADD COLUMN resumo_global_hdbscan_group_id INTEGER"
+        )
 
         # Resumo da página provavelmente irá variar um pouco mais conforme o autor for argumentando
         # Iremos testar 15D UMAP
-        con.execute("ALTER TABLE resumos ADD COLUMN resumo_pagina_hdbscan_group_id INTEGER")
+        con.execute(
+            "ALTER TABLE resumos ADD COLUMN resumo_pagina_hdbscan_group_id INTEGER"
+        )
     except sqlite3.OperationalError:
         pass
 
@@ -312,7 +316,7 @@ def openai_chat(
             {"role": "system", "content": prompt_system},
             {"role": "user", "content": prompt_user},
         ],
-        "response_format": { "type": "json_object" },
+        "response_format": {"type": "json_object"},
         "top_p": 1.0,
         "service_tier": "flex",
     }
@@ -492,6 +496,10 @@ REGRAS DE OURO (SEM EXCEÇÕES):
    - Ruim: "Inácio escreveu uma carta para os Romanos onde ele pede martírio."
    - Bom: "Epístola aos Romanos: petição pelo martírio; desejo de união com Cristo via feras."
 3. FONTE: Use o texto latino para extrair o fatos, mas entregue o produto final totalmente em português.
+4. FOCO SEMÂNTICO TOTAL: Ignore ruídos de OCR, caracteres corrompidos ou formatação de página. 
+   - Proibido comentar sobre a qualidade do reconhecimento de texto. 
+   - Extraia exclusivamente o sumo teológico, os argumentos filosóficos e a linha narrativa.
+   - Se a página for totalmente ilegível, retorne apenas "Conteúdo ilegível" no campo de tradução e repita os outros campos.
 
 OBSERVAÇÕES:
 - A qualquer momento, pode-se iniciar um a nova obra ou autor durante o volume, quando acontecer, atualize os campos "autor" e "obra" no JSON para o autor atual.
@@ -530,7 +538,12 @@ def remove_noise(text: str) -> str:
 
 
 def build_user_prompt(
-    contexto_previo: str, page_text: str, page_num: int, doc_name: str, author: str, work: str
+    contexto_previo: str,
+    page_text: str,
+    page_num: int,
+    doc_name: str,
+    author: str,
+    work: str,
 ) -> str:
     parts: List[str] = []
 
@@ -540,14 +553,16 @@ def build_user_prompt(
         "PG": "Patrologia Graeca (Migne)",
         "PL": "Patrologia Latina (Migne)",
         "PO": "Patrologia Orientalis (Graffin/Nau)",
-        "ACO": "Acta Conciliorum Oecumenicorum", # Caso decidas expandir no futuro
+        "ACO": "Acta Conciliorum Oecumenicorum",  # Caso decidas expandir no futuro
     }
 
     # No build_user_prompt, extraímos o prefixo (ex: 'PG' de 'PG005')
-    prefixo = "".join(re.findall(r'[A-Za-z]+', doc_name))
+    prefixo = "".join(re.findall(r"[A-Za-z]+", doc_name))
     serie_nome = MAPA_SERIES.get(prefixo, "Coleção Patrística")
 
-    parts.append(f"### DADOS DA ENTRADA: Documento {doc_name} | Coleção: {serie_nome} | Página {page_num}")
+    parts.append(
+        f"### DADOS DA ENTRADA: Documento {doc_name} | Coleção: {serie_nome} | Página {page_num}"
+    )
 
     page_text = remove_noise(page_text)
 
@@ -624,7 +639,7 @@ def parse_llm_response(raw: str) -> Tuple[str, str, str, str]:
         pref = prefix.lower()
         for ln in lines:
             if ln.lower().startswith(pref):
-                return ln[len(prefix):].strip()
+                return ln[len(prefix) :].strip()
         return None
 
     resumo_pagina = ""
@@ -653,7 +668,11 @@ def parse_llm_response(raw: str) -> Tuple[str, str, str, str]:
     filtered = []
     for ln in lines:
         low = ln.lower()
-        if low.startswith("autor:") or low.startswith("obra:") or low.startswith("resumo global:"):
+        if (
+            low.startswith("autor:")
+            or low.startswith("obra:")
+            or low.startswith("resumo global:")
+        ):
             continue
         filtered.append(ln)
     if filtered:
@@ -848,7 +867,11 @@ def process_volume(
             continue
 
         if not page_text:
-            log.info("[%s] Página %d vazia, marcando como administrativa e seguindo", doc_name, pnum)
+            log.info(
+                "[%s] Página %d vazia, marcando como administrativa e seguindo",
+                doc_name,
+                pnum,
+            )
             if not dry_run and con is not None:
                 resumo_pagina = "Conteúdo administrativo"
                 resumo_global = contexto or "(Início da obra: não há conteúdo anterior)"
@@ -908,8 +931,14 @@ def process_volume(
                     api_key_env=api_key_env,
                     num_ctx=num_ctx,
                 )
-                log.info("[%s] Página %d tentativa %d/%d – resposta LLM: %s",
-                         doc_name, pnum, attempt, retries, raw_response)
+                log.info(
+                    "[%s] Página %d tentativa %d/%d – resposta LLM: %s",
+                    doc_name,
+                    pnum,
+                    attempt,
+                    retries,
+                    raw_response,
+                )
             except Exception as exc:
                 log.warning(
                     "[%s] Página %d tentativa %d/%d – erro LLM: %s",
@@ -942,14 +971,16 @@ def process_volume(
                 continue
 
             # Valida parsing
-            resumo_pagina, sintese_pura, autor_detectado, obra_detectada = parse_llm_response(
-                raw_response
+            resumo_pagina, sintese_pura, autor_detectado, obra_detectada = (
+                parse_llm_response(raw_response)
             )
             if is_page_administrative(resumo_pagina):
                 resumo_pagina = "Conteúdo administrativo"
                 # Mantém continuidade da síntese para não quebrar parsing/fluidez
                 if not sintese_pura.strip():
-                    sintese_pura = contexto or "(Início da obra: não há conteúdo anterior)"
+                    sintese_pura = (
+                        contexto or "(Início da obra: não há conteúdo anterior)"
+                    )
                 autor_detectado = ""
                 obra_detectada = ""
             if is_parseable_response(resumo_pagina, sintese_pura):

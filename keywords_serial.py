@@ -35,6 +35,7 @@ import re
 import sqlite3
 import sys
 import time
+import unicodedata
 import urllib.error
 import urllib.request
 from datetime import datetime, timezone
@@ -225,7 +226,10 @@ def is_already_done_resumos(
            WHERE documento=? AND pagina_num=?
              AND keywords_json IS NOT NULL
              AND keywords_json != ''
-             AND json_array_length(json_extract(keywords_json, '$.keywords')) > 0""",
+             AND COALESCE(
+                   json_array_length(json_extract(keywords_json, '$.keywords')),
+                   json_array_length(json_extract(keywords_json, '$.keywords_ranking'))
+                 ) > 0""",
         (documento, pagina_num),
     ).fetchone()
     return row is not None
@@ -331,6 +335,7 @@ def ollama_chat(
     payload: dict = {
         "model": model,
         "stream": False,
+        "format": "json",
         "messages": [
             {"role": "system", "content": prompt_system},
             {"role": "user", "content": prompt_user},
@@ -338,8 +343,8 @@ def ollama_chat(
         "options": {
             "temperature": 0.2,
             "num_ctx": num_ctx,
-            "repeat_penalty": 2,
-            "repeat_last_n": 80,
+            "repeat_penalty": 1.1,
+            "repeat_last_n": 64,
         },
     }
     # Desativa thinking em modelos qwen3/deepseek-r1 etc.
@@ -403,6 +408,7 @@ def openai_chat(
             {"role": "system", "content": prompt_system},
             {"role": "user", "content": prompt_user},
         ],
+        "response_format": {"type": "json_object"},
         "top_p": 1.0,
         "service_tier": "flex",
     }
@@ -478,34 +484,31 @@ def llm_chat(
 # ---------------------------------------------------------------------------
 
 SYSTEM_PROMPT = """\
-Você é um especialista em Patrística (Patrologia Graeca e Patrologia Latina) \
-e em catalogação bibliográfica.
+Você é um Especialista em Catalogação de Patrística. Sua tarefa é gerar metadados precisos cruzando o texto original e seu resumo técnico.
 
-Sua tarefa é extrair **keywords** (palavras-chave) do conteúdo fornecido.
+### DIRETRIZES DE EXTRAÇÃO:
+1. VALIDAÇÃO DE ENTIDADES (Texto Original): Use o texto bruto para extrair a grafia exata de nomes próprios (Santos, Autores, Hereges), Cidades e Obras citadas. Ignore erros de OCR, mas mantenha a terminologia técnica (ex: 'Logos', 'Ousia').
+2. MAPEAMENTO TEMÁTICO (Resumo): Use o resumo_global e resumo_da_pagina para identificar os grandes temas teológicos (ex: 'Cristologia', 'Soteriologia', 'Eclesiologia').
+3. HIERARQUIA: Priorize keywords que apareçam em ambos ou que definam o núcleo do argumento da página. Cite em ordem aproximada de importância, mais importante primeiro, em keywords_ranking.
+4. LITERALIDADE: Preserve a literalidade dos textos originais, evitando paráfrases ou interpretações excessivas, usando traduções literais quando possível ou citando no original quando termo consagrado. Se for uma citação bíblica, evite abreviar, cite o nome completo do livro.
 
-Regras:
-- Extraia entre 5 e 20 keywords, ordenadas por relevância (mais relevante primeiro).
-- Inclua nomes próprios (autores, santos, personagens bíblicos), obras citadas, \
-temas teológicos, conceitos filosóficos e termos técnicos.
-- Mantenha termos em latim/grego quando forem nomes próprios ou termos técnicos \
-consagrados (ex: "Epistola ad Corinthios", "homilia", "Trinitas").
-- Traduza conceitos genéricos para português do Brasil.
-- NÃO inclua palavras genéricas demais (ex: "texto", "página", "volume").
-- NÃO invente keywords que não estejam no conteúdo.
+OBSERVAÇÕES:
+- resumo_global se trata do contexto geral da obra até agora, enquanto resumo_da_pagina foca em aspectos específicos desta página.
+- Se forem vários autores na página, extraia todos os nomes e trate-os como entidades separadas.
+- Normalização de Nomes: Para nomes de pessoas, use a forma canônica em português sempre que possível (ex: 'Ioannes Chrysostomus' -> 'João Crisóstomo'), a menos que seja um autor muito obscuro, mantendo a grafia do original.
+- Não abrevie livros bíblicos nem nomes de obras/autores; escreva o nome completo (ex.: ‘Apocalipse de João’, ‘Atos dos Apóstolos’).
 
-Formato de resposta (siga rigorosamente):
-
-Keywords:
-1. keyword_um
-2. keyword_dois
-3. keyword_três
-...
-
-Categorias (agrupe as keywords acima):
-- Pessoas: ...
-- Obras: ...
-- Temas: ...
-- Termos técnicos: ...
+### FORMATO DE SAÍDA (JSON):
+Retorne EXCLUSIVAMENTE um JSON puro, sem markdown:
+{
+  "keywords_ranking": ["Termo 1", "Termo 2", "..."],
+  "categorias": {
+    "pessoas": ["Nome 1", "Nome 2"],
+    "obras_citadas": ["Obra A", "Obra B"],
+    "temas_teologicos": ["Tema X", "Tema Y"],
+    "termos_tecnicos_lat_gr": ["Termo 1", "Termo 2"]
+  }
+}
 """
 
 
@@ -519,8 +522,24 @@ def build_user_prompt(
     doc_name: str,
 ) -> str:
     """Monta o prompt de usuário com o conteúdo conforme --source."""
+
+    # Cabeçalho técnico para o modelo se localizar
+    # Mapeamento de siglas para nomes extensos
+    MAPA_SERIES = {
+        "PG": "Patrologia Graeca (Migne)",
+        "PL": "Patrologia Latina (Migne)",
+        "PO": "Patrologia Orientalis (Graffin/Nau)",
+        "ACO": "Acta Conciliorum Oecumenicorum",  # Caso decidas expandir no futuro
+    }
+
+    # No build_user_prompt, extraímos o prefixo (ex: 'PG' de 'PG005')
+    prefixo = "".join(re.findall(r"[A-Za-z]+", doc_name))
+    serie_nome = MAPA_SERIES.get(prefixo, "Coleção Patrística")
+
     parts: List[str] = []
-    parts.append(f"Documento: {doc_name}  |  Página: {row['pagina_num']}\n")
+    parts.append(
+        f"Documento: {doc_name} | Coleção: {serie_nome} | Página: {row['pagina_num']}\n"
+    )
 
     if source == "resumo_pagina":
         parts.append("<conteúdo>")
@@ -659,6 +678,25 @@ def _strip_think_block(raw: str) -> str:
     return re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL).strip()
 
 
+def _is_admin_or_blank_page(row: dict) -> bool:
+    """
+    Heurística leve para detectar páginas administrativas/lixo e evitar retries inúteis.
+    Considera como admin se resumo_pagina ou resumo_global contiver "conteúdo administrativo"
+    (case-insensitive) ou se todos os campos de texto estiverem vazios.
+    """
+    resumo_p = (row.get("resumo_pagina") or "").strip().lower()
+    resumo_g = (row.get("resumo_global") or "").strip().lower()
+    texto = (row.get("pagina_texto") or "").strip()
+
+    if "conteúdo administrativo" in resumo_p or "conteúdo administrativo" in resumo_g:
+        return True
+
+    if not resumo_p and not resumo_g and not texto:
+        return True
+
+    return False
+
+
 def parse_keywords_response(raw: str) -> Tuple[KeywordsResult, str]:
     """
     Extrai keywords e categorias da resposta do LLM.
@@ -676,6 +714,39 @@ def parse_keywords_response(raw: str) -> Tuple[KeywordsResult, str]:
     """
     # Remove blocos de raciocínio que o modelo pode vazar mesmo com think=false
     clean = _strip_think_block(raw)
+
+    # Tenta parsing direto de JSON no formato esperado do system prompt
+    try:
+        data = json.loads(clean)
+    except Exception:
+        data = None
+
+    if isinstance(data, dict):
+        kws_from_json: List[str] = []
+        if isinstance(data.get("keywords_ranking"), list):
+            kws_from_json = [
+                kw for kw in data["keywords_ranking"] if isinstance(kw, str)
+            ]
+        elif isinstance(data.get("keywords"), list):
+            kws_from_json = [kw for kw in data["keywords"] if isinstance(kw, str)]
+
+        categorias = data.get("categorias")
+        if isinstance(categorias, dict):
+            categorias = {k: v for k, v in categorias.items() if isinstance(v, list)}
+        else:
+            categorias = {}
+
+        result: KeywordsResult = {"keywords": kws_from_json}
+        if kws_from_json:
+            # preserva campo novo para quem consome o JSON cru
+            result["keywords_ranking"] = kws_from_json
+        if categorias:
+            result["categorias"] = categorias
+        return result, clean
+
+    if isinstance(data, list):
+        kws_from_json = [kw for kw in data if isinstance(kw, str)]
+        return {"keywords": kws_from_json}, clean
 
     keywords = _parse_numbered_keywords(clean)
     if not keywords:
@@ -718,14 +789,22 @@ def normalize_keywords_payload(raw: str) -> Tuple[KeywordsResult, Optional[str]]
     parse_issue: Optional[str] = None
 
     if isinstance(data, list):
-        result["keywords"] = [kw for kw in data if isinstance(kw, str)]
+        result["keywords"] = [
+            _deep_clean_keyword(kw) for kw in data if isinstance(kw, str)
+        ]
+        result["keywords"] = [kw for kw in result["keywords"] if kw]
         parse_issue = "legacy_list_format"
         return result, parse_issue
 
     if isinstance(data, dict):
-        kws = data.get("keywords")
+        kws = data.get("keywords") or data.get("keywords_ranking")
         if isinstance(kws, list):
-            result["keywords"] = [kw for kw in kws if isinstance(kw, str)]
+            clean_kws = [_deep_clean_keyword(kw) for kw in kws if isinstance(kw, str)]
+            clean_kws = [kw for kw in clean_kws if kw]
+            result["keywords"] = clean_kws
+            # preserva campo novo para quem ainda lê keywords_ranking
+            if data.get("keywords_ranking"):
+                result["keywords_ranking"] = clean_kws
         else:
             result["keywords"] = []
             parse_issue = "missing_keywords_field"
@@ -736,7 +815,10 @@ def normalize_keywords_payload(raw: str) -> Tuple[KeywordsResult, Optional[str]]
             for name, items in cats.items():
                 if not isinstance(items, list):
                     continue
-                clean_items = [it for it in items if isinstance(it, str)]
+                clean_items = [
+                    _deep_clean_keyword(it) for it in items if isinstance(it, str)
+                ]
+                clean_items = [it for it in clean_items if it]
                 if clean_items:
                     clean_cats[name] = clean_items
             if clean_cats:
@@ -745,6 +827,44 @@ def normalize_keywords_payload(raw: str) -> Tuple[KeywordsResult, Optional[str]]
         return result, parse_issue
 
     return {"keywords": []}, "unexpected_structure"
+
+
+def _strip_markdown_wrappers(text: str) -> str:
+    """Remove bullets/ênfase/code simples que podem envolver a keyword."""
+    t = (text or "").strip()
+    # Fences e blocos de code inline
+    t = re.sub(r"^```[\w-]*\s*|\s*```$", "", t, flags=re.DOTALL)
+    t = re.sub(r"`{1,3}([^`]+?)`{1,3}", r"\1", t)
+    # Bullets / headers iniciais
+    t = re.sub(r"^(?:[>#]+|\*+|[-+\u2022•]+|#+)\s*", "", t)
+    # Ênfase simples
+    t = re.sub(r"\*{1,3}([^*]+?)\*{1,3}", r"\1", t)
+    t = re.sub(r"_{1,3}([^_]+?)_{1,3}", r"\1", t)
+    # Aspas/fences simétricos
+    while len(t) >= 2 and t[0] == t[-1] and t[0] in "*_`'\"":
+        t = t[1:-1].strip()
+    return t
+
+
+def _deep_clean_keyword(text: str) -> str:
+    """Normalização agressiva para keywords vindas do LLM (quotes/ênfase/whitespace)."""
+    t = _strip_markdown_wrappers(text)
+    t = unicodedata.normalize("NFKC", t or "")
+    t = t.replace("\u00a0", " ")
+    t = re.sub(r"\s+", " ", t).strip()
+    strip_chars = " \"'«»“”‘’()[]{}|\\/–—-:;.,!?·•*&"
+    t = t.strip(strip_chars)
+    return t
+
+
+def _split_conjoined_keywords(
+    raw_text: str, cleaned_text: str
+) -> Tuple[List[str], bool]:
+    """
+    Split desativado para evitar falsos positivos em nomes compostos.
+    Mantém assinatura para compatibilidade, mas devolve item único.
+    """
+    return [cleaned_text], False
 
 
 def _clean_list(items: List[str]) -> Tuple[List[str], List[str]]:
@@ -758,21 +878,31 @@ def _clean_list(items: List[str]) -> Tuple[List[str], List[str]]:
             issues.add("removed_non_string")
             continue
 
-        kw = re.sub(r"\s+", " ", raw.strip())
-        kw = kw.rstrip(".,;•-")
+        kw = _deep_clean_keyword(raw)
         if not kw:
             issues.add("removed_empty")
             continue
-        if len(kw) > MAX_KEYWORDS_LENGTH:
-            issues.add("removed_too_long")
-            continue
 
-        key = kw.casefold()
-        if key in seen:
-            issues.add("removed_duplicate")
-            continue
-        seen.add(key)
-        cleaned.append(kw)
+        parts, did_split = _split_conjoined_keywords(raw, kw)
+        if did_split:
+            issues.add("split_conjoined_keywords")
+
+        for part in parts:
+            if len(part) > MAX_KEYWORDS_LENGTH:
+                issues.add("removed_too_long")
+                continue
+
+            # descarta tokens sem nenhuma letra (evita ".1,5.", "123", "....")
+            if not re.search(r"[A-Za-zÀ-ÖØ-öø-ÿΑ-ωα-ω]", part):
+                issues.add("removed_non_alpha")
+                continue
+
+            key = part.casefold()
+            if key in seen:
+                issues.add("removed_duplicate")
+                continue
+            seen.add(key)
+            cleaned.append(part)
 
     return cleaned, sorted(issues)
 
@@ -826,6 +956,13 @@ def validate_keywords(cleaned: KeywordsResult, parse_issue: Optional[str]) -> Li
     if any(len((kw or "").split()) >= 9 for kw in cleaned.get("keywords", [])):
         issues.append("keyword_looks_sentence")
 
+    # Flag números isolados virando keywords (ex.: "4")
+    if any(
+        re.fullmatch(r"\d+[.,]?", (kw or "").strip())
+        for kw in cleaned.get("keywords", [])
+    ):
+        issues.append("keyword_isolated_number")
+
     return issues
 
 
@@ -839,7 +976,7 @@ def verify_documents(
     page: Optional[int] = None,
     limit: Optional[int] = None,
     provider: str | None = None,
-    model: str | None = None
+    model: str | None = None,
 ) -> None:
     """Valida keywords já gravadas e, opcionalmente, aplica correções leves."""
 
@@ -938,17 +1075,21 @@ def verify_documents(
                 src = rep.get("source") or process_params.get("source", "resumo_pagina")
 
                 if not model:
-                    model = process_params.get("model", rep.get("modelo") or DEFAULT_MODEL)
+                    model = process_params.get(
+                        "model", rep.get("modelo") or DEFAULT_MODEL
+                    )
 
                 if not provider:
-                    provider = process_params.get("provider", rep.get("provider") or "ollama")
+                    provider = process_params.get(
+                        "provider", rep.get("provider") or "ollama"
+                    )
 
                 try:
                     result, raw = process_page(
                         row,
                         source=src,
                         provider=provider,
-                        model=model,      
+                        model=model,
                         base_url=process_params["base_url"],
                         timeout=process_params["timeout"],
                         num_ctx=process_params["num_ctx"],
@@ -1097,13 +1238,35 @@ def process_page(
                 time.sleep(2 * attempt)
             continue
 
-        result, _ = parse_keywords_response(raw_response)
+        parsed_result, _ = parse_keywords_response(raw_response)
+        cleaned_result, clean_issues = clean_keywords_structure(parsed_result)
+        if clean_issues:
+            log.debug(
+                "[%s] p%d parsing issues: %s",
+                doc_name,
+                row["pagina_num"],
+                ",".join(clean_issues),
+            )
+        result = cleaned_result
         if len(result["keywords"]) >= MIN_KEYWORDS:
             break  # sucesso: resposta parseável com keywords suficientes
 
+        # Checa se página é administrativa/lixo para não insistir
+        if _is_admin_or_blank_page(row):
+            log.warning(
+                "[%s] p%d tentativa %d/%d – página administrativa/lixo detectada; "
+                "mantendo %d keywords e encerrando retries",
+                doc_name,
+                row["pagina_num"],
+                attempt,
+                retries,
+                len(result["keywords"]),
+            )
+            break
+
         log.warning(
             "[%s] p%d tentativa %d/%d – parsing retornou apenas %d keywords "
-            "(mín: %d). Primeiros 200 chars: %.200s",
+            "(mín: %d). Resposta: %s",
             doc_name,
             row["pagina_num"],
             attempt,
