@@ -29,6 +29,8 @@ PATTERN="teste/P*"
 TIMEOUT=300
 RETRIES=3
 NUM_CTX=16384
+OLLAMA_URL="http://localhost:11434"
+OPENAI_URL="https://api.openai.com/v1"
 DB="${SCRIPT_DIR}/data/patristica_resumos.db"
 DRY_RUN=0
 LOG_DIR="${SCRIPT_DIR}/logs/resumo_parallel"
@@ -44,6 +46,8 @@ while [[ $# -gt 0 ]]; do
         --timeout)        TIMEOUT="$2";   shift 2 ;;
         --retries)        RETRIES="$2";   shift 2 ;;
         --num-ctx)        NUM_CTX="$2";   shift 2 ;;
+        --ollama-url)     OLLAMA_URL="$2"; shift 2 ;;
+        --openai-url)     OPENAI_URL="$2"; shift 2 ;;
         --db)             DB="$2";        shift 2 ;;
         --dry-run)        DRY_RUN=1;      shift   ;;
         --help|-h)
@@ -70,6 +74,8 @@ echo "  Provider:          $PROVIDER"
 echo "  Modelo:            $MODEL"
 echo "  Reasoning effort:  $REASONING"
 echo "  Num ctx (Ollama):  $NUM_CTX"
+echo "  Ollama URL:        $OLLAMA_URL"
+echo "  OpenAI URL:        $OPENAI_URL"
 echo "  Volumes:           $TOTAL"
 echo "  Jobs paralelos:    $JOBS"
 echo "  DB:                $DB"
@@ -93,6 +99,8 @@ build_cmd() {
         --model '${MODEL}' \
         --reasoning-effort '${REASONING}' \
         --num-ctx '${NUM_CTX}' \
+        --ollama-url '${OLLAMA_URL}' \
+        --openai-url '${OPENAI_URL}' \
         --timeout '${TIMEOUT}' \
         --retries '${RETRIES}' \
         --db '${DB}' \
@@ -185,6 +193,8 @@ run_with_bash_jobs() {
             --model "${MODEL}" \
             --reasoning-effort "${REASONING}" \
             --num-ctx "${NUM_CTX}" \
+            --ollama-url "${OLLAMA_URL}" \
+            --openai-url "${OPENAI_URL}" \
             --timeout "${TIMEOUT}" \
             --retries "${RETRIES}" \
             --db "${DB}" \
@@ -240,6 +250,8 @@ if command -v parallel &>/dev/null; then
             --model '${MODEL}' \
             --reasoning-effort '${REASONING}' \
             --num-ctx '${NUM_CTX}' \
+            --ollama-url '${OLLAMA_URL}' \
+            --openai-url '${OPENAI_URL}' \
             --timeout '${TIMEOUT}' \
             --retries '${RETRIES}' \
             --db '${DB}' \

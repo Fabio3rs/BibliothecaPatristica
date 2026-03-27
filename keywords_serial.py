@@ -75,6 +75,11 @@ VALID_SOURCES = [
     "tudo",
 ]
 
+
+TEMPERATURE_DEFAULT = 0.1
+TOP_P_DEFAULT = 0.3
+
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s  %(levelname)-8s  %(message)s",
@@ -341,12 +346,12 @@ def ollama_chat(
             {"role": "user", "content": prompt_user},
         ],
         "options": {
-            "temperature": 0.2,
+            "temperature": TEMPERATURE_DEFAULT,
+            "top_p": TOP_P_DEFAULT,
             "num_ctx": num_ctx,
-            "repeat_penalty": 1.1,
-            "repeat_last_n": 64,
         },
     }
+
     # Desativa thinking em modelos qwen3/deepseek-r1 etc.
     if not think:
         payload["think"] = False
@@ -409,11 +414,18 @@ def openai_chat(
             {"role": "user", "content": prompt_user},
         ],
         "response_format": {"type": "json_object"},
-        "top_p": 1.0,
         "service_tier": "flex",
     }
     if reasoning_effort:
         payload["reasoning_effort"] = reasoning_effort
+
+    if not "gpt-5" in model:
+        # Model não é gpt-5, portanto deve suportar temperatura
+        payload["temperature"] = TEMPERATURE_DEFAULT
+        payload["top_p"] = TOP_P_DEFAULT
+    else:
+        payload["verbosity"] = "low"
+
     data = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
         url,
@@ -487,16 +499,18 @@ SYSTEM_PROMPT = """\
 Você é um Especialista em Catalogação de Patrística. Sua tarefa é gerar metadados precisos cruzando o texto original e seu resumo técnico.
 
 ### DIRETRIZES DE EXTRAÇÃO:
-1. VALIDAÇÃO DE ENTIDADES (Texto Original): Use o texto bruto para extrair a grafia exata de nomes próprios (Santos, Autores, Hereges), Cidades e Obras citadas. Ignore erros de OCR, mas mantenha a terminologia técnica (ex: 'Logos', 'Ousia').
-2. MAPEAMENTO TEMÁTICO (Resumo): Use o resumo_global e resumo_da_pagina para identificar os grandes temas teológicos (ex: 'Cristologia', 'Soteriologia', 'Eclesiologia').
-3. HIERARQUIA: Priorize keywords que apareçam em ambos ou que definam o núcleo do argumento da página. Cite em ordem aproximada de importância, mais importante primeiro, em keywords_ranking.
-4. LITERALIDADE: Preserve a literalidade dos textos originais, evitando paráfrases ou interpretações excessivas, usando traduções literais quando possível ou citando no original quando termo consagrado. Se for uma citação bíblica, evite abreviar, cite o nome completo do livro.
+1. VALIDAÇÃO DE ENTIDADES (Texto Original): Use o texto bruto para extrair a grafia exata de nomes próprios (Santos, Autores, Hereges), Cidades e Obras citadas. Ignore erros de OCR, mas mantenha a terminologia técnica no original (latim/grego) caso presente no texto_original (ex: 'Logos', 'Ousia', etc.).
+2. MAPEAMENTO TEMÁTICO (Resumo): Bússola temática: resumo_global e resumo_da_pagina para identificar os grandes temas teológicos (ex: 'Cristologia', 'Soteriologia', 'Eclesiologia', etc.), entretanto, cite a keyword apenas se a ver dentro do texto_original.
+3. HIERARQUIA: Priorize keywords que apareçam em texto_original e que definam o núcleo do argumento da página. Cite em ordem aproximada de importância, mais importante primeiro, em keywords_ranking.
+4. LITERALIDADE: Preserve a literalidade dos textos originais, evitando paráfrases ou interpretações, usando traduções literais para PT-BR quando possível ou citando no original quando termo consagrado. Se for uma citação bíblica, evite abreviar, cite o nome completo do livro.
 
 OBSERVAÇÕES:
 - resumo_global se trata do contexto geral da obra até agora, enquanto resumo_da_pagina foca em aspectos específicos desta página.
 - Se forem vários autores na página, extraia todos os nomes e trate-os como entidades separadas.
 - Normalização de Nomes: Para nomes de pessoas, use a forma canônica em português sempre que possível (ex: 'Ioannes Chrysostomus' -> 'João Crisóstomo'), a menos que seja um autor muito obscuro, mantendo a grafia do original.
 - Não abrevie livros bíblicos nem nomes de obras/autores; escreva o nome completo (ex.: ‘Apocalipse de João’, ‘Atos dos Apóstolos’).
+- texto_original é a âncora
+- notas são totalmente opcionais, não coloque explicações dentro de keywords_ranking ou categorias, se precisar explicar algo use "notas"
 
 ### FORMATO DE SAÍDA (JSON):
 Retorne EXCLUSIVAMENTE um JSON puro, sem markdown:
@@ -507,13 +521,16 @@ Retorne EXCLUSIVAMENTE um JSON puro, sem markdown:
     "obras_citadas": ["Obra A", "Obra B"],
     "temas_teologicos": ["Tema X", "Tema Y"],
     "termos_tecnicos_lat_gr": ["Termo 1", "Termo 2"]
-  }
+  },
+  "notas": { "Termo 1": "Nota sobre o termo 1 (opcional)" }
 }
 """
 
 
 def replace_linebreak(text: str) -> str:
-    return text.replace("-\n", "")
+    # Captura hífen padrão, meia-risca (–) ou travessão (—)
+    # seguido de espaços/quebras e remove também espaços no início da próxima linha
+    return re.sub(r"[-–—]\s*[\r\n]+\s*", "", text)
 
 
 def build_user_prompt(
@@ -553,7 +570,7 @@ def build_user_prompt(
 
     elif source == "pagina_texto":
         parts.append("<conteúdo>")
-        parts.append(row["pagina_texto"])
+        parts.append(replace_linebreak(row["pagina_texto"]))
         parts.append("</conteúdo>\n")
 
     elif source == "resumo+pagina":
@@ -570,16 +587,16 @@ def build_user_prompt(
         parts.append(row["resumo_global"])
         parts.append("</resumo_global>\n")
 
-        parts.append("<texto_original>")
-        parts.append(replace_linebreak(row["pagina_texto"]))
-        parts.append("</texto_original>\n")
-
         parts.append("<resumo_da_pagina>")
         parts.append(row["resumo_pagina"])
         parts.append("</resumo_da_pagina>\n")
 
+        parts.append("<texto_original>")
+        parts.append(replace_linebreak(row["pagina_texto"]))
+        parts.append("</texto_original>\n")
+
     parts.append(
-        "Extraia as keywords do conteúdo acima seguindo rigorosamente "
+        "Extraia as keywords do texto_original seguindo rigorosamente "
         "o formato de resposta especificado."
     )
 
@@ -852,7 +869,8 @@ def _deep_clean_keyword(text: str) -> str:
     t = unicodedata.normalize("NFKC", t or "")
     t = t.replace("\u00a0", " ")
     t = re.sub(r"\s+", " ", t).strip()
-    strip_chars = " \"'«»“”‘’()[]{}|\\/–—-:;.,!?·•*&"
+    # Keep parentheses intact to avoid stripping closing ")" from keywords that carry context
+    strip_chars = " \"'«»“”‘’[]{}|\\/–—-:;.,!?·•*&"
     t = t.strip(strip_chars)
     return t
 
@@ -907,6 +925,28 @@ def _clean_list(items: List[str]) -> Tuple[List[str], List[str]]:
     return cleaned, sorted(issues)
 
 
+def has_mixed_scripts(text: str) -> bool:
+    # Detecta mistura de letras latinas e gregas na mesma palavra
+    pattern = r"\b(?=[^\s]*[a-zA-Z])(?=[^\s]*[\u0370-\u03FF])[^\s]+\b"
+    matches = re.findall(pattern, text)
+    if matches:
+        print(f"Alerta: Palavras corrompidas detectadas: {matches}")
+        return True
+    return False
+
+
+def has_unbalanced_parentheses(text: str) -> bool:
+    balance = 0
+    for ch in text:
+        if ch == "(":
+            balance += 1
+        elif ch == ")":
+            balance -= 1
+            if balance < 0:
+                return True
+    return balance != 0
+
+
 def clean_keywords_structure(
     result: KeywordsResult,
 ) -> Tuple[KeywordsResult, List[str]]:
@@ -955,6 +995,19 @@ def validate_keywords(cleaned: KeywordsResult, parse_issue: Optional[str]) -> Li
 
     if any(len((kw or "").split()) >= 9 for kw in cleaned.get("keywords", [])):
         issues.append("keyword_looks_sentence")
+
+    if any("a lista " in (kw or "") for kw in cleaned.get("keywords", [])):
+        issues.append("keyword_contains_lista")
+
+    if any("palavras-chave" in (kw or "") for kw in cleaned.get("keywords", [])):
+        issues.append("keyword_contains_palavras-chave")
+
+    # Verifica por misturas de latim e grego: has_mixed_scripts
+    if any(has_mixed_scripts(kw) for kw in cleaned.get("keywords", [])):
+        issues.append("keyword_mixed_scripts")
+
+    if any(has_unbalanced_parentheses(kw) for kw in cleaned.get("keywords", [])):
+        issues.append("keyword_unbalanced_parentheses")
 
     # Flag números isolados virando keywords (ex.: "4")
     if any(

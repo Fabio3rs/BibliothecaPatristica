@@ -169,6 +169,11 @@ def get_tesseract_cached(
     return row["result"] if row else None
 
 
+def is_page_xml(text: str) -> bool:
+    t = (text or "").lower().strip()
+    return t.startswith("<") and t.endswith(">") and ("<pagina" in t or "</pagina" in t)
+
+
 def remove_xml_tags(text: str) -> str:
     """Remove XML tags from a string."""
     return re.sub(r"<[^>]+>", "", text)
@@ -480,7 +485,9 @@ def pages_to_images(
 
     # 2) Reextrai páginas específicas quando solicitado
     page_map: dict[int, Path] = {
-        parse_page_num_from_filename(p): p for p in existing if parse_page_num_from_filename(p) is not None
+        parse_page_num_from_filename(p): p
+        for p in existing
+        if parse_page_num_from_filename(p) is not None
     }
 
     if refresh_set:
@@ -1186,7 +1193,10 @@ def infer_volume_id(image_path: Path) -> Optional[str]:
 
 
 def verify_page(
-    img_path: Path, txt_dir: Path, lang: str = "fra+lat+grc+ell+syr"
+    img_path: Path,
+    txt_dir: Path,
+    lang: str = "fra+lat+grc+ell+syr",
+    expect_txt_xml: bool = True,
 ) -> bool:
     """
     Verifica se a página foi processada corretamente.
@@ -1203,6 +1213,14 @@ def verify_page(
     txt = page_txt_path.read_text(encoding="utf-8", errors="ignore")
     if len(txt.strip()) == 0:
         print(f"[VERIFY] {img_path.name} — texto vazio")
+        return False
+
+    if expect_txt_xml:
+        if is_page_xml(txt):
+            print(f"[VERIFY] {img_path.name} — página XML detectada")
+            return True
+
+        print(f"[VERIFY] {img_path.name} — texto não parece ser XML")
         return False
 
     tesseract_db = open_tesseract_cache_db()
@@ -1520,7 +1538,9 @@ def run_tesseract_cached(
     if len(result.strip()) < 50:
         alt = ocr_tesseract_raw(image_path, lang=lang)
         if len(alt.strip()) > len(result.strip()) * 1.5:
-            print(f"[TESS] Fallback raw melhor para {image_path.name} (len {len(alt)} vs {len(result)})")
+            print(
+                f"[TESS] Fallback raw melhor para {image_path.name} (len {len(alt)} vs {len(result)})"
+            )
             result = alt
 
     con.execute(
@@ -1734,7 +1754,9 @@ def _ocr_one(
 
             if txt is None:
                 txt = ""
-                print(f"[{time.strftime('%H:%M:%S')}] [WARN] {img_path.name} (txt vazio)")
+                print(
+                    f"[{time.strftime('%H:%M:%S')}] [WARN] {img_path.name} (txt vazio)"
+                )
             else:
                 txt = clean_text_oriental(txt).strip()
 
@@ -2160,12 +2182,13 @@ def main():
     if args.refresh_pages.strip():
         try:
             refresh_pages = {
-                int(x)
-                for x in re.split(r"[,\s]+", args.refresh_pages.strip())
-                if x
+                int(x) for x in re.split(r"[,\s]+", args.refresh_pages.strip()) if x
             }
         except ValueError:
-            print("--refresh-pages deve conter apenas números separados por vírgula", file=sys.stderr)
+            print(
+                "--refresh-pages deve conter apenas números separados por vírgula",
+                file=sys.stderr,
+            )
             sys.exit(1)
 
     print("Convertendo páginas para imagens (com cache em disco)...")

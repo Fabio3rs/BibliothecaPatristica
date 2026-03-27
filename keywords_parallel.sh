@@ -7,11 +7,15 @@
 #
 # Uso:
 #   ./keywords_parallel.sh                       # defaults: gpt-5-mini, high, 40 jobs, source tudo
-#   ./keywords_parallel.sh --jobs 20             # limitar paralelismo
-#   ./keywords_parallel.sh --source resumo_pagina # altera nivel de extração
+#   ./keywords_parallel.sh --jobs 20               # limitar paralelismo
+#   ./keywords_parallel.sh --source resumo_pagina  # altera nivel de extração
 #   ./keywords_parallel.sh --provider ollama --model qwen3:30b --jobs 4
-#   ./keywords_parallel.sh --pattern "PL*"       # só PL (baseado no nome do doc no BD e nao dir)
-#   ./keywords_parallel.sh --dry-run             # mostra comandos sem executar
+#   ./keywords_parallel.sh --pattern "PL*"         # só PL (no DB)
+#   ./keywords_parallel.sh --verify                # só validar keywords já gravadas
+#   ./keywords_parallel.sh --verify-fix            # validar e aplicar dedupe/limpeza
+#   ./keywords_parallel.sh --rerun-bad              # (com verify) reprocessa páginas com issues via LLM
+#   ./keywords_parallel.sh --no-skip-noise         # processar páginas marcadas como ruído
+#   ./keywords_parallel.sh --dry-run               # mostra comandos sem executar
 # --------------------------------------------------------------------------
 set -euo pipefail
 
@@ -21,17 +25,22 @@ KEYWORDS_SCRIPT="${SCRIPT_DIR}/keywords_serial.py"
 # ── Defaults ──────────────────────────────────────────────────────────────
 PROVIDER="openai"
 MODEL="gpt-5-mini"
-REASONING="low"
+REASONING="minimal"
 SOURCE="tudo"
 JOBS=40
 PATTERN="%"
 TIMEOUT=300
 RETRIES=3
 NUM_CTX=16384
+OLLAMA_URL="http://localhost:11434"
+OPENAI_URL="https://api.openai.com/v1"
 DB="${SCRIPT_DIR}/data/patristica_resumos.db"
 DRY_RUN=0
 LOG_DIR="${SCRIPT_DIR}/logs/keywords_parallel"
 WRITE_FLAG="--write"
+VERIFY_FLAG=""
+NOISE_FLAG=""   # vazio = comportamento padrão (pular ruído)
+RERUN_FLAG=""
 
 # ── Parse args ────────────────────────────────────────────────────────────
 while [[ $# -gt 0 ]]; do
@@ -45,7 +54,13 @@ while [[ $# -gt 0 ]]; do
         --timeout)        TIMEOUT="$2";   shift 2 ;;
         --retries)        RETRIES="$2";   shift 2 ;;
         --num-ctx)        NUM_CTX="$2";   shift 2 ;;
+        --ollama-url)     OLLAMA_URL="$2"; shift 2 ;;
+        --openai-url)     OPENAI_URL="$2"; shift 2 ;;
         --db)             DB="$2";        shift 2 ;;
+        --verify)         VERIFY_FLAG="--verify"; WRITE_FLAG=""; shift ;;
+        --verify-fix)     VERIFY_FLAG="--verify-fix"; WRITE_FLAG=""; shift ;;
+        --rerun-bad)      RERUN_FLAG="--rerun-bad"; shift ;;
+        --no-skip-noise)  NOISE_FLAG="--no-skip-noise"; shift ;;
         --dry-run)        DRY_RUN=1; WRITE_FLAG=""; shift ;;
         --help|-h)
             head -18 "$0" | tail -14
@@ -72,12 +87,22 @@ echo "  Modelo:            $MODEL"
 echo "  Reasoning effort:  $REASONING"
 echo "  Source Extracao:   $SOURCE"
 echo "  Num ctx (Ollama):  $NUM_CTX"
+echo "  Ollama URL:        $OLLAMA_URL"
+echo "  OpenAI URL:        $OPENAI_URL"
 echo "  Volumes (DB):      $TOTAL"
 echo "  Jobs paralelos:    $JOBS"
 echo "  DB:                $DB"
 echo "  Timeout:           ${TIMEOUT}s"
 echo "  Retries:           $RETRIES"
-echo "  Writes:            $(if [[ -n "$WRITE_FLAG" ]]; then echo "Sim"; else echo "Nao (Dry Run)"; fi)"
+MODE_LABEL="write"
+if [[ -n "$VERIFY_FLAG" ]]; then
+    MODE_LABEL="$VERIFY_FLAG"
+elif [[ -z "$WRITE_FLAG" ]]; then
+    MODE_LABEL="dry-run"
+fi
+echo "  Writes/Modo:       $MODE_LABEL"
+echo "  Process noise:     $(if [[ -z \"$NOISE_FLAG\" ]]; then echo \"Sim\"; else echo \"Nao\"; fi)"
+echo "  Rerun bad (verify):$(if [[ -n \"$RERUN_FLAG\" ]]; then echo \"Sim\"; else echo \"Nao\"; fi)"
 echo "  Logs:              $LOG_DIR/"
 echo "═══════════════════════════════════════════════════════════════"
 
@@ -94,6 +119,8 @@ build_cmd() {
         --model '${MODEL}' \
         --reasoning-effort '${REASONING}' \
         --num-ctx '${NUM_CTX}' \
+        --ollama-url '${OLLAMA_URL}' \
+        --openai-url '${OPENAI_URL}' \
         --source '${SOURCE}' \
         --timeout '${TIMEOUT}' \
         --retries '${RETRIES}' \
@@ -101,6 +128,9 @@ build_cmd() {
         --doc '${vol}' \
         --skip-done \
         ${WRITE_FLAG} \
+        ${VERIFY_FLAG} \
+        ${RERUN_FLAG} \
+        ${NOISE_FLAG} \
         > '${logfile}' 2>&1"
 }
 
@@ -148,6 +178,8 @@ run_with_bash_jobs() {
             --model "${MODEL}" \
             --reasoning-effort "${REASONING}" \
             --num-ctx "${NUM_CTX}" \
+            --ollama-url "${OLLAMA_URL}" \
+            --openai-url "${OPENAI_URL}" \
             --source "${SOURCE}" \
             --timeout "${TIMEOUT}" \
             --retries "${RETRIES}" \
@@ -155,6 +187,9 @@ run_with_bash_jobs() {
             --doc "${vol}" \
             --skip-done \
             ${WRITE_FLAG} \
+            ${VERIFY_FLAG} \
+            ${RERUN_FLAG} \
+            ${NOISE_FLAG} \
             > "${logfile}" 2>&1 &
 
         pids+=($!)
@@ -206,6 +241,8 @@ if command -v parallel &>/dev/null; then
             --model '${MODEL}' \
             --reasoning-effort '${REASONING}' \
             --num-ctx '${NUM_CTX}' \
+            --ollama-url '${OLLAMA_URL}' \
+            --openai-url '${OPENAI_URL}' \
             --source '${SOURCE}' \
             --timeout '${TIMEOUT}' \
             --retries '${RETRIES}' \
@@ -213,6 +250,9 @@ if command -v parallel &>/dev/null; then
             --doc '{}' \
             --skip-done \
             ${WRITE_FLAG} \
+            ${VERIFY_FLAG} \
+            ${RERUN_FLAG} \
+            ${NOISE_FLAG} \
             > '${LOG_DIR}/{}.log' 2>&1"
 
     echo ""

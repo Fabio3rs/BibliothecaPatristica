@@ -59,6 +59,10 @@ SERIES_RE = re.compile(r"^(PG|PL|PO)(\d+)(.*)$")
 PAGE_NUM_RE = re.compile(r"-(\d+)\.txt$", re.IGNORECASE)
 PAGE_NUM_FALLBACK_RE = re.compile(r"(\d+)(?=\.[^.]+$)")
 
+TEMPERATURE_DEFAULT = 0.2
+TOP_P_DEFAULT = 0.5
+
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s  %(levelname)-8s  %(message)s",
@@ -254,10 +258,11 @@ def ollama_chat(
             {"role": "user", "content": prompt_user},
         ],
         "options": {
-            "temperature": 0.3,
+            "temperature": TEMPERATURE_DEFAULT,
+            "top_p": TOP_P_DEFAULT,
             "num_ctx": num_ctx,
         },
-        "reasoning_effort": "high",
+        # "reasoning_effort": "high",
     }
     data = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
@@ -317,13 +322,19 @@ def openai_chat(
             {"role": "user", "content": prompt_user},
         ],
         "response_format": {"type": "json_object"},
-        "top_p": 1.0,
         "service_tier": "flex",
     }
 
     # reasoning_effort é suportado por modelos com reasoning (o1, o3, gpt-5-mini, etc.)
     if reasoning_effort and len(reasoning_effort) > 0:
         payload["reasoning_effort"] = reasoning_effort
+
+    if not "gpt-5" in model:
+        # Model não é gpt-5, portanto deve suportar temperatura
+        payload["temperature"] = TEMPERATURE_DEFAULT
+        payload["top_p"] = TOP_P_DEFAULT
+    else:
+        payload["verbosity"] = "low"
 
     data = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
@@ -492,12 +503,12 @@ REGRAS DE OURO (SEM EXCEÇÕES):
    - É PROIBIDO manter frases, expressões ou listas em latim (ex: não escreva 'ad Ephesios', escreva 'aos Efésios').
    - Termos em latim/grego são permitidos APENAS se forem conceitos técnicos sem tradução (ex: Logos, ousia, hypostasis).
 1. ESTILO TELEGRÁFICO: Elimine preâmbulos ("A página trata", "O autor diz"). Use: [Conceito]: [Explicação técnica].
-2. DENSIDADE: O papel é caro. Use frases nominais. 
+2. DENSIDADE: O papel é caro. Use frases nominais.
    - Ruim: "Inácio escreveu uma carta para os Romanos onde ele pede martírio."
    - Bom: "Epístola aos Romanos: petição pelo martírio; desejo de união com Cristo via feras."
 3. FONTE: Use o texto latino para extrair o fatos, mas entregue o produto final totalmente em português.
-4. FOCO SEMÂNTICO TOTAL: Ignore ruídos de OCR, caracteres corrompidos ou formatação de página. 
-   - Proibido comentar sobre a qualidade do reconhecimento de texto. 
+4. FOCO SEMÂNTICO TOTAL: Ignore ruídos de OCR, caracteres corrompidos ou formatação de página.
+   - Proibido comentar sobre a qualidade do reconhecimento de texto.
    - Extraia exclusivamente o sumo teológico, os argumentos filosóficos e a linha narrativa.
    - Se a página for totalmente ilegível, retorne apenas "Conteúdo ilegível" no campo de tradução e repita os outros campos.
 
@@ -505,6 +516,7 @@ OBSERVAÇÕES:
 - A qualquer momento, pode-se iniciar um a nova obra ou autor durante o volume, quando acontecer, atualize os campos "autor" e "obra" no JSON para o autor atual.
 - Se estamos trocando de obra (apresentada por um texto especial), é importante também atualizar a sintese_acumulada para refletir que é o início da obra.
 - Se forem vários autores, pode separar os nomes com vírgula no campo autor.
+- Se não houver autor ou obra identificável, pode deixar os campos como 'Não identificado'.
 
 REGRAS DE FORMATAÇÃO (JSON PURO):
 {
@@ -586,7 +598,7 @@ def build_user_prompt(
     parts.append(
         "COMANDO:\n"
         "1. 'traducao_compacta': Tradução (para português do Brasil) direta e densa do conteúdo novo na <conteudo_pagina_atual>.\n"
-        "2. 'sintese_acumulada': Evolução do argumento em português do Brasil. Adicione os pontos novos da página atual ao que já existe no <contexto_prévio_acumulado>.\n"
+        "2. 'sintese_acumulada': Evolução do argumento em português do Brasil. Adicione os pontos novos da página atual ao que já existe no <contexto_prévio_acumulado>. Se a sintese_acumulada estiver muito longa, torne-a concisa para os pontos mais relevantes para esta página.\n"
         "3. ESTAGNAÇÃO: Se a página for administrativamente irrelevante (índice, em branco, capa), a 'traducao_compacta' deve ser exatamente 'Conteúdo administrativo' e a 'sintese_acumulada' deve ser UMA CÓPIA IDENTICA do <contexto_prévio_acumulado>."
     )
 
@@ -598,10 +610,11 @@ def build_user_prompt(
 # ---------------------------------------------------------------------------
 
 
-def parse_llm_response(raw: str) -> Tuple[str, str, str, str]:
+def parse_llm_response(raw: str) -> Tuple[str, str, str, str, bool]:
     """
-    Retorna (resumo_pagina, sintese_pura, autor, obra).
-    Se não conseguir parsear, retorna strings vazias para indicar falha.
+    Retorna (resumo_pagina, sintese_pura, autor, obra, parsed_ok).
+    parsed_ok=True somente quando o JSON foi parseado com sucesso.
+    Se não conseguir parsear, retorna strings vazias e parsed_ok=False.
     """
     # Remove blocos de raciocínio que o modelo pode vazar mesmo com think=false
     clean = re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL).strip()
@@ -624,64 +637,36 @@ def parse_llm_response(raw: str) -> Tuple[str, str, str, str]:
                 return m.group(1)
         return text
 
-    def try_parse_json_like(text: str) -> Optional[dict]:
-        cand = strip_code_fence(text)
-        # Pega apenas o primeiro bloco {...} se houver ruído antes/depois
-        m = re.search(r"\{.*\}", cand, re.DOTALL)
-        if m:
-            cand = m.group(0)
-        try:
-            return json.loads(cand)
-        except Exception:
-            return None
-
-    def pick_line_prefix(lines: list[str], prefix: str) -> Optional[str]:
-        pref = prefix.lower()
-        for ln in lines:
-            if ln.lower().startswith(pref):
-                return ln[len(prefix) :].strip()
-        return None
-
     resumo_pagina = ""
     sintese = ""
     autor = ""
     obra = ""
 
-    parsed = try_parse_json_like(clean)
-    if isinstance(parsed, dict):
-        resumo_pagina = clean_summary_text(str(parsed.get("traducao_compacta", "")))
-        sintese = clean_summary_text(str(parsed.get("sintese_acumulada", "")))
-        autor = clean_summary_text(str(parsed.get("autor", "")))
-        obra = clean_summary_text(str(parsed.get("obra", "")))
-        return resumo_pagina, sintese, autor, obra
+    cand = strip_code_fence(clean).strip()
+    if not (cand.startswith("{") and cand.endswith("}")):
+        return "", "", "", "", False
 
-    # Fallback leve: procura linhas com "autor:" / "obra:" e o resto vira síntese
-    lines = [ln.strip() for ln in clean.splitlines() if ln.strip()]
-    autor_line = pick_line_prefix(lines, "autor:")
-    obra_line = pick_line_prefix(lines, "obra:")
-    if autor_line:
-        autor = clean_summary_text(autor_line)
-    if obra_line:
-        obra = clean_summary_text(obra_line)
+    try:
+        parsed = json.loads(cand)
+    except Exception:
+        return "", "", "", "", False
 
-    # Remove eventuais linhas de autor/obra para formar síntese
-    filtered = []
-    for ln in lines:
-        low = ln.lower()
-        if (
-            low.startswith("autor:")
-            or low.startswith("obra:")
-            or low.startswith("resumo global:")
-        ):
-            continue
-        filtered.append(ln)
-    if filtered:
-        sintese = clean_summary_text(" ".join(filtered))
+    if not isinstance(parsed, dict):
+        return "", "", "", "", False
 
-    # Por padrão, resumo_pagina recebe a mesma síntese quando não há separação clara
-    resumo_pagina = resumo_pagina or sintese
+    resumo_pagina = clean_summary_text(str(parsed.get("traducao_compacta", "")))
+    sintese = clean_summary_text(str(parsed.get("sintese_acumulada", "")))
+    autor = clean_summary_text(str(parsed.get("autor", "")))
+    obra = clean_summary_text(str(parsed.get("obra", "")))
 
-    return resumo_pagina, sintese, autor, obra
+    required_keys_present = (
+        "traducao_compacta" in parsed and "sintese_acumulada" in parsed
+    )
+
+    if not required_keys_present:
+        return "", "", "", "", False
+
+    return resumo_pagina, sintese, autor, obra, True
 
 
 def is_page_administrative(text: str) -> bool:
@@ -689,13 +674,26 @@ def is_page_administrative(text: str) -> bool:
     return "administrativ" in t  # cobre "administrativo", "administrativa", etc.
 
 
+def is_page_ilegible(text: str) -> bool:
+    t = (text or "").lower()
+    return "conteúdo" in t and "ilegível" in t
+
+
 def is_parseable_response(resumo_pagina: str, sintese_pura: str) -> bool:
     if is_page_administrative(resumo_pagina):
+        return True
+
+    if is_page_ilegible(resumo_pagina):
         return True
 
     """Verifica se a resposta tem conteúdo mínimo nos dois campos."""
     MIN_CHARS = 30  # mínimo ~uma frase curta
     return len(resumo_pagina) >= MIN_CHARS and len(sintese_pura) >= MIN_CHARS
+
+
+def is_page_xml(text: str) -> bool:
+    t = (text or "").lower().strip()
+    return t.startswith("<") and t.endswith(">") and ("<pagina" in t or "</pagina" in t)
 
 
 # ---------------------------------------------------------------------------
@@ -918,6 +916,7 @@ def process_volume(
         # Chama LLM com retry (inclui validação de parsing)
         raw_response = ""
         resumo_pagina = ""
+        parsed_ok = False
         for attempt in range(1, retries + 1):
             try:
                 raw_response = llm_chat(
@@ -971,9 +970,25 @@ def process_volume(
                 continue
 
             # Valida parsing
-            resumo_pagina, sintese_pura, autor_detectado, obra_detectada = (
-                parse_llm_response(raw_response)
-            )
+            (
+                resumo_pagina,
+                sintese_pura,
+                autor_detectado,
+                obra_detectada,
+                parsed_ok,
+            ) = parse_llm_response(raw_response)
+            if not parsed_ok:
+                log.warning(
+                    "[%s] Página %d tentativa %d/%d – JSON inválido; retry",
+                    doc_name,
+                    pnum,
+                    attempt,
+                    retries,
+                )
+                if attempt < retries:
+                    time.sleep(3 * attempt)
+                    continue
+
             if is_page_administrative(resumo_pagina):
                 resumo_pagina = "Conteúdo administrativo"
                 # Mantém continuidade da síntese para não quebrar parsing/fluidez
@@ -983,6 +998,17 @@ def process_volume(
                     )
                 autor_detectado = ""
                 obra_detectada = ""
+
+            if is_page_ilegible(resumo_pagina):
+                is_xml = is_page_xml(page_text)
+                if len(page_text) < 100 and not is_xml:
+                    # página RAW
+                    # TODO: Implementar lógica para lidar com páginas RAW chamando o main2.py na feature --refresh-pages e max retries
+                    break
+
+                if is_xml:
+                    break
+
             if is_parseable_response(resumo_pagina, sintese_pura):
                 break  # sucesso
 
@@ -1007,20 +1033,23 @@ def process_volume(
                 doc_name,
                 pnum,
             )
-            continue
+            raise ValueError("Nenhuma resposta em todas as tentativas")
 
-        if not is_parseable_response(resumo_pagina, sintese_pura):
+        if not parsed_ok:
             log.error(
-                "[%s] Página %d esgotou tentativas – parsing falhou, "
-                "usando raw como fallback",
+                "[%s] Página %d esgotou tentativas – JSON inválido em todas as tentativas, pulando este volume",
                 doc_name,
                 pnum,
             )
-            # Fallback: usa raw inteiro para ambos (melhor que perder a página)
-            resumo_pagina = raw_response.strip()
-            sintese_pura = raw_response.strip()
-            autor_detectado = ""
-            obra_detectada = ""
+            raise ValueError("JSON inválido em todas as tentativas")
+
+        if not is_parseable_response(resumo_pagina, sintese_pura):
+            log.error(
+                "[%s] Página %d esgotou tentativas – JSON válido porém conteúdo mínimo ausente, pulando",
+                doc_name,
+                pnum,
+            )
+            raise ValueError("Conteúdo mínimo ausente, pulando este volume")
 
         # Atualiza contexto para a próxima iteração
         contexto = sintese_pura

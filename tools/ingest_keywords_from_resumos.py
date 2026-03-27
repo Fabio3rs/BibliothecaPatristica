@@ -23,7 +23,7 @@ import time
 import unicodedata
 import re
 from pathlib import Path
-from typing import Dict, Iterable, List, Tuple
+from typing import Dict, Iterable, List, Optional, Tuple
 
 # Garantir que o diretório raiz do projeto esteja no sys.path para importar keywords_serial
 import sys
@@ -110,6 +110,42 @@ def is_noise_norm(norm: str) -> bool:
     return len(norm) < MIN_KEYWORD_LEN_NOISE
 
 
+# Categorias com rotulos claramente meta (notas/observacoes) nao devem virar keywords
+def is_noise_category_label(label: str) -> bool:
+    norm = normalize_word(label)
+    return norm.startswith("nota") or norm.startswith("observa")
+
+
+# Itens de categoria que sao frases meta/instrutivas ou listas genericas
+CATEGORY_TERM_STOPWORDS = {
+    "palavras-chave",
+    "palavras chave",
+    "keywords",
+    "lista",
+    "ajustada",
+    "solicitado",
+    "solicitada",
+    "agrupadas",
+    "agrupada",
+    "extracao",
+    "falha",
+    "erro",
+    "limite",
+    "observacao",
+    "nota",
+}
+
+
+def is_noise_category_term(term: str) -> bool:
+    norm = normalize_word(term)
+    if any(stop in norm for stop in CATEGORY_TERM_STOPWORDS):
+        return True
+    # Frases longas quase sempre sao notas ou instrucoes do modelo
+    if len(norm.split()) >= 9:
+        return True
+    return False
+
+
 # -----------------------------------------------------------------------------
 # Schema
 # -----------------------------------------------------------------------------
@@ -174,7 +210,7 @@ CREATE INDEX IF NOT EXISTS idx_kw_emb_hash ON keyword_embedding(embedding_hash);
 CREATE TABLE IF NOT EXISTS keyword_occurrence (
     id INTEGER PRIMARY KEY,
     keyword_id INTEGER NOT NULL REFERENCES keywords(id),
-    pagina_id INTEGER REFERENCES resumos(id),
+    pagina_id INTEGER,
     documento TEXT,
     pagina_num INTEGER,
     keywords_source TEXT,
@@ -218,7 +254,7 @@ def ensure_schema(con: sqlite3.Connection) -> None:
         except sqlite3.OperationalError:
             pass
     for sql in [
-        "ALTER TABLE keyword_occurrence ADD COLUMN pagina_id INTEGER REFERENCES resumos(id)",
+        "ALTER TABLE keyword_occurrence ADD COLUMN pagina_id INTEGER",
         "ALTER TABLE keyword_occurrence ADD COLUMN rank_position INTEGER",
     ]:
         try:
@@ -573,7 +609,8 @@ def ingest(
                         "categorias": {},
                         "categorias_json": r["categorias_json"],
                     }
-                grouped[key]["keywords_ranked"].append((r["keyword"], r["rank"]))
+                # Mantém a mesma ordem da branch Python: (rank_position, keyword)
+                grouped[key]["keywords_ranked"].append((r["rank"], r["keyword"]))
             # Parse categorias uma vez por página
             for rec in grouped.values():
                 cat_raw = rec.get("categorias_json")
@@ -648,11 +685,16 @@ def ingest(
                 if norm not in batch_norm_to_original:
                     batch_norm_to_original[norm] = kw_clean
                 kw_entries.append((rank_pos, norm))
-            # Termos que aparecem só nas categorias
+            # Termos que aparecem só nas categorias (filtra labels/termos ruidosos)
             cat_terms: List[str] = []
-            for items in (rec.get("categorias") or {}).values():
-                if isinstance(items, list):
-                    cat_terms.extend([it for it in items if isinstance(it, str)])
+            for label, items in (rec.get("categorias") or {}).items():
+                if not isinstance(items, list):
+                    continue
+                if is_noise_category_label(label):
+                    continue
+                cat_terms.extend(
+                    [it for it in items if isinstance(it, str) and not is_noise_category_term(it)]
+                )
             for kw in cat_terms:
                 kw_clean = clean_keyword_original(kw)
                 norm = normalize_kw(kw)
@@ -855,6 +897,8 @@ def main() -> None:
     args = build_parser().parse_args()
 
     with connect_db(args.resumos_db) as src_con, connect_db(args.out_db) as dst_con:
+        # FK para resumos pode faltar no banco de keywords; evita erro de tabela ausente.
+        dst_con.execute("PRAGMA foreign_keys = OFF;")
         ensure_schema(dst_con)
 
         initial_changes = dst_con.total_changes
