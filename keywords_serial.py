@@ -31,17 +31,22 @@ import argparse
 import json
 import logging
 import os
+import random
 import re
 import sqlite3
 import sys
 import time
+import traceback
 import unicodedata
 import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 from statistics import mean, median
-from typing import List, Optional, Tuple
+from typing import List, Optional, Tuple, Any
+
+# Validação linguística de keywords (NLTK + CLTK)
+from keyword_integrity import IntegrityStatus, ValidationEvidence
 
 # Heurísticas de ruído/rejeição de página OCR
 from test_limpeza_ocr import clean_ocr_text_optimized, classify_page_noise
@@ -67,6 +72,23 @@ MAX_KEYWORDS_LENGTH = 180
 OUTLIER_LOW_RATIO = 0.4
 OUTLIER_HIGH_RATIO = 2.0
 
+MAX_TOKENS_DEFAULT = 6 * 1024
+
+# Integridade via serviço HTTP (opcional)
+INTEGRITY_HTTP_URL = os.getenv("KW_INTEGRITY_HTTP_URL", "").strip()
+INTEGRITY_HTTP_TIMEOUT = float(os.getenv("KW_INTEGRITY_HTTP_TIMEOUT", "60.0"))
+
+# Flags de integridade (controladas via CLI)
+INTEGRITY_ENABLED = True
+INTEGRITY_DEBUG = False
+
+
+def set_integrity_flags(enabled: bool, debug: bool) -> None:
+    global INTEGRITY_ENABLED, INTEGRITY_DEBUG
+    INTEGRITY_ENABLED = enabled
+    INTEGRITY_DEBUG = debug
+
+
 VALID_SOURCES = [
     "resumo_pagina",
     "resumo_global",
@@ -77,11 +99,11 @@ VALID_SOURCES = [
 
 
 TEMPERATURE_DEFAULT = 0.1
-TOP_P_DEFAULT = 0.3
+TOP_P_DEFAULT = 0.4
 
 
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.DEBUG,
     format="%(asctime)s  %(levelname)-8s  %(message)s",
     datefmt="%H:%M:%S",
 )
@@ -335,6 +357,8 @@ def ollama_chat(
     timeout: int = DEFAULT_TIMEOUT_OLLAMA,
     num_ctx: int = DEFAULT_NUM_CTX,
     think: bool = False,
+    top_p: float = TOP_P_DEFAULT,
+    temperature: float = TEMPERATURE_DEFAULT,
 ) -> str:
     url = f"{base_url}/api/chat"
     payload: dict = {
@@ -346,8 +370,8 @@ def ollama_chat(
             {"role": "user", "content": prompt_user},
         ],
         "options": {
-            "temperature": TEMPERATURE_DEFAULT,
-            "top_p": TOP_P_DEFAULT,
+            "temperature": temperature,
+            "top_p": top_p,
             "num_ctx": num_ctx,
         },
     }
@@ -386,6 +410,14 @@ def ollama_chat(
             )
 
     content = (body.get("message") or {}).get("content", "")
+
+    # Remover ```json ``` se o modelo retornar JSON dentro de markdown
+    if content.startswith("```json") and content.endswith("```"):
+        content = content[7:-3].strip()
+    # Se retornar apenas ``` e ```, remover também
+    elif content.startswith("```") and content.endswith("```"):
+        content = content[3:-3].strip()
+
     return content.strip()
 
 
@@ -402,38 +434,57 @@ def openai_chat(
     timeout: int = DEFAULT_TIMEOUT_OPENAI,
     reasoning_effort: str = "high",
     api_key_env: str = "OPENAI_API_KEY",
+    json_schema: dict | None = None,
+    top_p: float = TOP_P_DEFAULT,
+    temperature: float = TEMPERATURE_DEFAULT,
 ) -> str:
     api_key = os.getenv(api_key_env)
     if not api_key:
         raise RuntimeError(f"Variável de ambiente {api_key_env} não definida.")
     url = f"{base_url}/chat/completions"
+
+    response_format = {"type": "json_object"}
+
+    if json_schema:
+        response_format = {"type": "json_schema", "json_schema": json_schema}
+
     payload: dict = {
         "model": model,
         "messages": [
             {"role": "system", "content": prompt_system},
             {"role": "user", "content": prompt_user},
         ],
-        "response_format": {"type": "json_object"},
-        "service_tier": "flex",
+        "response_format": response_format,
     }
-    if reasoning_effort:
+    if reasoning_effort and len(reasoning_effort) > 0:
         payload["reasoning_effort"] = reasoning_effort
 
     if not "gpt-5" in model:
         # Model não é gpt-5, portanto deve suportar temperatura
-        payload["temperature"] = TEMPERATURE_DEFAULT
-        payload["top_p"] = TOP_P_DEFAULT
+        payload["temperature"] = temperature
+        payload["top_p"] = top_p
+        payload["max_tokens"] = MAX_TOKENS_DEFAULT
     else:
         payload["verbosity"] = "low"
+        payload["service_tier"] = "flex"
 
     data = json.dumps(payload).encode("utf-8")
+    with open("debug.json", "w") as f:
+        f.write(data.decode("utf-8"))
+    # Alguns provedores (ex.: Cerebras via Cloudflare) bloqueiam user-agents
+    # padrão do urllib. Enviamos um UA explícito e cabeçalho Accept para
+    # evitar falsos positivos de WAF.
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {api_key}",
+        "Accept": "application/json",
+        "User-Agent": os.getenv("OPENAI_USER_AGENT", "curl/8.5.0"),
+    }
+
     req = urllib.request.Request(
         url,
         data=data,
-        headers={
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {api_key}",
-        },
+        headers=headers,
         method="POST",
     )
     try:
@@ -441,9 +492,11 @@ def openai_chat(
             body = json.loads(resp.read().decode("utf-8"))
     except urllib.error.HTTPError as exc:
         detail = exc.read().decode("utf-8", errors="ignore")
+        print(detail, exc)
         raise RuntimeError(f"OpenAI HTTP {exc.code}: {detail}") from exc
     except Exception as exc:
         raise RuntimeError(f"OpenAI falhou: {exc}") from exc
+    print(body)
     choices = body.get("choices") or []
     if not choices:
         raise RuntimeError("OpenAI retornou sem choices")
@@ -468,6 +521,9 @@ def llm_chat(
     api_key_env: str = "OPENAI_API_KEY",
     num_ctx: int = DEFAULT_NUM_CTX,
     think: bool = False,
+    json_schema: dict | None = None,
+    top_p: float = TOP_P_DEFAULT,
+    temperature: float = TEMPERATURE_DEFAULT,
 ) -> str:
     # print(f'{prompt_system} {prompt_user}')
     if provider == "openai":
@@ -479,6 +535,9 @@ def llm_chat(
             timeout=timeout,
             reasoning_effort=reasoning_effort,
             api_key_env=api_key_env,
+            json_schema=json_schema,
+            top_p=top_p,
+            temperature=temperature,
         )
     return ollama_chat(
         prompt_system=prompt_system,
@@ -488,6 +547,8 @@ def llm_chat(
         timeout=timeout,
         num_ctx=num_ctx,
         think=think,
+        top_p=top_p,
+        temperature=temperature,
     )
 
 
@@ -495,25 +556,54 @@ def llm_chat(
 # Prompt de keywords (edite à vontade para testar)
 # ---------------------------------------------------------------------------
 
+# SYSTEM_PROMPT = """\
+# Você é um Especialista em Catalogação de Patrística. Sua tarefa é gerar metadados precisos cruzando o texto original e seu resumo técnico.
+
+# ### DIRETRIZES DE EXTRAÇÃO:
+# 1. VALIDAÇÃO DE ENTIDADES (Texto Original): Use o texto bruto para extrair a grafia exata de nomes próprios (Santos, Autores, Hereges), Cidades e Obras citadas. Ignore erros de OCR (corrigindo pequenas falhas conhecidas de OCR).
+# 2. MAPEAMENTO TEMÁTICO (Resumo): Bússola temática: resumo_global e resumo_da_pagina para identificar os grandes temas teológicos (ex: 'Cristologia', 'Soteriologia', 'Eclesiologia', etc.), entretanto, cite a keyword apenas se a ver dentro do texto_original.
+# 3. HIERARQUIA: Priorize keywords que apareçam em texto_original e que definam o núcleo do argumento teológico/narrativo/filosófico da página. Cite em ordem aproximada de importância, mais importante primeiro, em keywords_ranking.
+# 4. LITERALIDADE: Preserve a literalidade dos textos originais, evitando paráfrases ou interpretações, usando traduções literais para PT-BR quando possível ou citando no original quando termo consagrado (latim/grego) (ex: 'Logos', 'Ousia', etc.). Se for uma citação bíblica, evite abreviar, cite o nome completo do livro.
+
+# OBSERVAÇÕES:
+# - resumo_global se trata do contexto geral da obra até agora, enquanto resumo_da_pagina foca em aspectos específicos desta página.
+# - Se forem vários autores na página, extraia todos os nomes e trate-os como entidades separadas.
+# - Normalização de Nomes: Para nomes de pessoas, use a forma canônica em português sempre que possível (ex: 'Ioannes Chrysostomus' -> 'João Crisóstomo'), a menos que seja um autor muito obscuro, mantendo a grafia do original.
+# - Não abrevie livros bíblicos nem nomes de obras/autores; escreva o nome completo (ex.: ‘Apocalipse de João’, ‘Atos dos Apóstolos’).
+# - texto_original é a âncora
+# - notas são totalmente opcionais, não coloque explicações dentro de keywords_ranking ou categorias, se precisar explicar algo use "notas"
+
+# ### FORMATO DE SAÍDA (JSON):
+# Retorne EXCLUSIVAMENTE um JSON puro, sem markdown:
+# {
+#   "keywords_ranking": ["Termo 1", "Termo 2", "..."],
+#   "categorias": {
+#     "pessoas": ["Nome 1", "Nome 2"],
+#     "obras_citadas": ["Obra A", "Obra B"],
+#     "temas_teologicos": ["Tema X", "Tema Y"],
+#     "termos_tecnicos_lat_gr": ["Termo 1", "Termo 2"]
+#   },
+#   "notas": { "Termo 1": "Nota sobre o termo 1 (opcional)" }
+# }
+# """
+
 SYSTEM_PROMPT = """\
-Você é um Especialista em Catalogação de Patrística. Sua tarefa é gerar metadados precisos cruzando o texto original e seu resumo técnico.
+Você é um Especialista em Catalogação de Patrística. Sua tarefa é captar metadados precisos do texto_original e seu resumo técnico.
 
 ### DIRETRIZES DE EXTRAÇÃO:
-1. VALIDAÇÃO DE ENTIDADES (Texto Original): Use o texto bruto para extrair a grafia exata de nomes próprios (Santos, Autores, Hereges), Cidades e Obras citadas. Ignore erros de OCR, mas mantenha a terminologia técnica no original (latim/grego) caso presente no texto_original (ex: 'Logos', 'Ousia', etc.).
-2. MAPEAMENTO TEMÁTICO (Resumo): Bússola temática: resumo_global e resumo_da_pagina para identificar os grandes temas teológicos (ex: 'Cristologia', 'Soteriologia', 'Eclesiologia', etc.), entretanto, cite a keyword apenas se a ver dentro do texto_original.
-3. HIERARQUIA: Priorize keywords que apareçam em texto_original e que definam o núcleo do argumento da página. Cite em ordem aproximada de importância, mais importante primeiro, em keywords_ranking.
-4. LITERALIDADE: Preserve a literalidade dos textos originais, evitando paráfrases ou interpretações, usando traduções literais para PT-BR quando possível ou citando no original quando termo consagrado. Se for uma citação bíblica, evite abreviar, cite o nome completo do livro.
+1. Use o texto_original para extrair a grafia exata de nomes próprios (Santos, Autores, Hereges), Cidades e Obras citadas. Corrija pequenas falhas de OCR.
+2. Bússola temática: resumo_global e resumo_da_pagina para identificar os grandes temas teológicos (ex: 'Cristologia', 'Soteriologia', 'Eclesiologia', etc.), entretanto, cite a keyword apenas se a ver dentro do texto_original.
+3. Priorize keywords que apareçam em texto_original e que definam o núcleo do argumento teológico/narrativo/filosófico da página. Cite em keywords_ranking, por ordem de importância argumentativa, mais importante primeiro.
+4. Literalidade dos textos originais, evitando paráfrases ou interpretações, use traduções literais para PT-BR quando possível ou cite no original quando termo consagrado (latim/grego) (ex: 'Logos', 'Ousia', etc.).
 
 OBSERVAÇÕES:
 - resumo_global se trata do contexto geral da obra até agora, enquanto resumo_da_pagina foca em aspectos específicos desta página.
-- Se forem vários autores na página, extraia todos os nomes e trate-os como entidades separadas.
-- Normalização de Nomes: Para nomes de pessoas, use a forma canônica em português sempre que possível (ex: 'Ioannes Chrysostomus' -> 'João Crisóstomo'), a menos que seja um autor muito obscuro, mantendo a grafia do original.
-- Não abrevie livros bíblicos nem nomes de obras/autores; escreva o nome completo (ex.: ‘Apocalipse de João’, ‘Atos dos Apóstolos’).
+- Se forem vários autores na página, extraia todos os nomes e trate-os como entidades separadas. Para nomes de pessoas, use a forma canônica em PT-BR sempre que possível (ex: 'Ioannes Chrysostomus' -> 'João Crisóstomo'), a menos que seja um autor muito obscuro, mantendo a grafia do original.
+- Bíblia e Obras devem estar por extenso. 'Gn 1,1' -> 'Gênesis 1,1'.
 - texto_original é a âncora
-- notas são totalmente opcionais, não coloque explicações dentro de keywords_ranking ou categorias, se precisar explicar algo use "notas"
+- notas são totalmente opcionais, qualquer explicação deve ser colocada aqui.
 
-### FORMATO DE SAÍDA (JSON):
-Retorne EXCLUSIVAMENTE um JSON puro, sem markdown:
+### FORMATO DE SAÍDA JSON UTF-8 (com acentos e caracteres especiais) sem markdown:
 {
   "keywords_ranking": ["Termo 1", "Termo 2", "..."],
   "categorias": {
@@ -526,11 +616,166 @@ Retorne EXCLUSIVAMENTE um JSON puro, sem markdown:
 }
 """
 
+# Prompt para verificação de keywords
+
+# SYSTEM_PROMPT_VERIFICACAO = """\
+# Você é o Revisor Crítico de Metadados Patrísticos. Sua missão é validar o JSON prévio contra o `texto_original`.
+
+# ### CRITÉRIOS DE AUDITORIA:
+# 1. EXISTÊNCIA MATERIAL: A keyword existe no `texto_original`? (Exceção apenas para categorias de 'Temas Teológicos' que usem termos técnicos para descrever o assunto central, desde que o conceito esteja explícito).
+# 2. CANONIZAÇÃO DE NOMES: Se o JSON prévio trouxe "Agostinho", mude para "Santo Agostinho". Se trouxe "Jo. Crisóstomo", mude para "João Crisóstomo", mas em caso de ambiguidade, preserve o original (keep).
+# 3. ELIMINAÇÃO DE ABREVIAÇÕES: Bíblia e Obras devem estar por extenso. 'Gn 1,1' -> 'Gênesis 1,1'.
+# 4. CONSOLIDAÇÃO SEMÂNTICA: Se houver "Logos" e "Verbo" (referindo-se ao mesmo conceito no texto), consolide no termo mais técnico ou frequente, deletando o redundante.
+# 5. LIMPEZA DE OCR: Corrija termos como "Pa-dre" para "Padre" ou "Eglreja" para "Igreja".
+# 6. HIERARQUIA DE SAÍDA: O JSON deve ser construído na ordem de importância teológica/narrativa. O termo que define o núcleo do argumento da página DEVE ser a primeira chave do objeto JSON.
+# 7. TERMOS TÉCNICOS CONSOLIDADOS: O que for termo teológico/filosófico técnico consolidado da Patrística, deve ser mantido em latim ou grego transliterado latino.
+
+# ### LÓGICA DE DECISÃO:
+# - keep: O termo está perfeito e segue as diretrizes.
+# - change: O termo existe, mas precisa de normalização, correção de grafia ou expansão.
+# - delete: O termo é alucinação, não consta no texto, é uma paráfrase genérica ou é redundante.
+# - merge: O termo foi absorvido por outro mais abrangente.
+
+# ### FILTRO DE RUÍDO (IGNORAR SEMPRE):
+# - Remova terminologias de coleções editoriais e referências de volume/coluna:
+#   Ex: "Migne", "Patrologia Latina", "Patrologia Graeca", "PL", "PG", "Série Latina", "Série Grega".
+# - Remova marcadores de numeração de página ou coluna do Migne:
+#   Ex: "Col. 123", "Vol. 45", "Tomo VII", "Caput X".
+# - Nota: Se o texto mencionar a "Vida de São Fulano escrita por Migne", remova o nome do editor (Migne) e mantenha apenas a entidade (São Fulano).
+
+# ### FORMATO DE SAÍDA (JSON UTF-8 (com acentos e caracteres especiais) PURO):
+# {
+#   "terms": [
+#     {
+#       "original": "<termo original>",
+#       "nota": "Breve justificativa técnica (máx 10 palavras)",
+#       "decision": "keep | change | delete | merge",
+#       "change_to": "Novo Termo ou Nome do Termo que o absorveu",
+#       "is_canon_name": true/false
+#     },
+#     ...
+#   ]
+# }
+# """.strip()
+
+SYSTEM_PROMPT_VERIFICACAO = """\
+Você é o Revisor Crítico de Metadados Patrísticos. Sua missão é validar o JSON prévio contra o `texto_original`.
+
+### CRITÉRIOS DE AUDITORIA:
+1. A keyword existe texto_original mesmo de forma traduzida ou em forma de 'Temas Teológicos' geral explícito do texto? Se não existir `delete`
+2. Se o JSON prévio trouxe "Agostinho", mude para "Santo Agostinho". Se trouxe "Jo. Crisóstomo", mude para "João Crisóstomo", mas em caso de ambiguidade, preserve o original (keep).
+3. Bíblia e Obras devem estar por extenso. 'Gn 1,1' -> 'Gênesis 1,1'.
+4. Se houver keywords diferentes de mesmo sentido semântico, use `merge` escolhendo o termo mais técnico patrístico-bíblico.
+5. Termo teológico/filosófico técnico consolidado da Patrística, deve ser mantido em latim ou grego transliterado latino.
+
+### LÓGICA DE DECISÃO:
+- keep: O termo segue as diretrizes.
+- change: O termo existe, mas precisa de normalização, correção de grafia ou expansão.
+- delete: O termo é alucinação, não consta no texto, é uma paráfrase genérica ou é redundante.
+- merge: O termo foi absorvido por outro mais abrangente.
+
+### FILTRO DE RUÍDO (`delete`):
+- Terminologias de coleções editoriais e referências de volume/coluna: 
+  Ex: "Migne", "Patrologia Latina", "Patrologia Graeca", "PL", "PG", "Série Latina", "Série Grega".
+- Marcadores de numeração de página ou coluna do Migne: 
+  Ex: "Col. 123", "Vol. 45", "Tomo VII", "Caput X".
+- Nota: Se o texto mencionar a "Vida de São Fulano escrita por Migne", remova o nome do editor (Migne) e mantenha apenas a entidade (São Fulano). (`change`)
+
+### FORMATO DE SAÍDA (JSON UTF-8 (com acentos e caracteres especiais) PURO):
+{
+  "terms": [
+    {
+      "original": "<termo original presente no keywords_previa_json>",
+      "nota": "Breve justificativa técnica (máx 10 palavras)",
+      "decision": "keep | change | delete | merge",
+      "change_to": "Novo Termo correto/Nome do Termo que o absorveu"
+    },
+    ...
+  ]
+}
+""".strip()
+
 
 def replace_linebreak(text: str) -> str:
     # Captura hífen padrão, meia-risca (–) ou travessão (—)
     # seguido de espaços/quebras e remove também espaços no início da próxima linha
     return re.sub(r"[-–—]\s*[\r\n]+\s*", "", text)
+
+
+def build_user_review_prompt(
+    row: dict, keywords_originais: str, doc_name: str = ""
+) -> str:
+    """
+    Monta o prompt para o Revisor Crítico.
+    Passa o texto limpo, o resumo (para contexto de temas) e as keywords prévias.
+    """
+
+    parts: List[str] = []
+
+    # 1. Identificação do Contexto (Ajuda a identificar ruídos de coleção como Migne)
+    if doc_name:
+        parts.append(f"--- CONTEXTO: {doc_name} ---\n")
+
+    # 2. Texto Original (A âncora)
+    parts.append("<texto_original>")
+    parts.append(
+        clean_ocr_text_optimized(replace_linebreak(row.get("pagina_texto") or ""))[0]
+    )
+    parts.append("</texto_original>\n")
+
+    # 3. Resumo da Página (Essencial para validar a 'Exceção' de Temas Teológicos)
+    parts.append("<resumo_volume>")
+    resumo_global_limpo = clean_ocr_text_optimized(row.get("resumo_global") or "")[0]
+
+    # Adiciona ao contexto autor e obra detectada se não estiver no resumo_global_limpo já
+    if "author_detected" in row and not row["author_detected"].lower() in resumo_global_limpo.lower():
+        parts.append(f"Autor Detectado: {row['author_detected']}\n")
+    if "work_detected" in row and not row["work_detected"].lower() in resumo_global_limpo.lower():
+        parts.append(f"Obra Detectada: {row['work_detected']}\n")
+
+    parts.append(resumo_global_limpo)
+    parts.append("</resumo_volume>\n")
+
+    parts.append("<resumo_contextual>")
+    parts.append(clean_ocr_text_optimized(row.get("resumo_pagina") or "")[0])
+    parts.append("</resumo_contextual>\n")
+
+    # 4. As keywords que precisam de auditoria
+    parts.append("<keywords_previa_json>")
+    parts.append(
+        json.dumps(json.loads(keywords_originais), ensure_ascii=False)
+    )  # Normaliza em UTF-8 e formata o JSON
+    parts.append("</keywords_previa_json>\n")
+
+    parts.append(
+        "TAREFA: Compare as keywords_previa_json com o texto_original. "
+        "Use o resumo_contextual apenas para validar temas teológicos conceituais. "
+        "Gere o JSON revisado respeitando a ordem de importância e as regras."
+    )
+
+    return "\n".join(parts)
+
+
+def _pretty_keywords_json(raw: str) -> str:
+    """Deixa o JSON legível para o prompt; cai para string crua se não parsear."""
+    if not raw or not raw.strip():
+        return "[]"
+    try:
+        parsed = json.loads(raw)
+        return json.dumps(parsed, ensure_ascii=False, indent=2)
+    except Exception:
+        return raw.strip()
+
+
+def _pretty_keywords_json(raw: str) -> str:
+    """Deixa o JSON legível para o prompt; cai para string crua se não parsear."""
+    if not raw or not raw.strip():
+        return "[]"
+    try:
+        parsed = json.loads(raw)
+        return json.dumps(parsed, ensure_ascii=False, indent=2)
+    except Exception:
+        return raw.strip()
 
 
 def build_user_prompt(
@@ -596,7 +841,7 @@ def build_user_prompt(
         parts.append("</texto_original>\n")
 
     parts.append(
-        "Extraia as keywords do texto_original seguindo rigorosamente "
+        "Extraia as keywords teológicas/filosóficas/narrativas/históricas mais importantes do texto_original seguindo rigorosamente "
         "o formato de resposta especificado."
     )
 
@@ -759,6 +1004,9 @@ def parse_keywords_response(raw: str) -> Tuple[KeywordsResult, str]:
             result["keywords_ranking"] = kws_from_json
         if categorias:
             result["categorias"] = categorias
+
+        if data.get("notas"):
+            result["notas"] = data["notas"]
         return result, clean
 
     if isinstance(data, list):
@@ -785,6 +1033,114 @@ def parse_keywords_response(raw: str) -> Tuple[KeywordsResult, str]:
 
 
 # ---------------------------------------------------------------------------
+# Judge parser (SYSTEM_PROMPT_VERIFICACAO)
+# ---------------------------------------------------------------------------
+
+
+def parse_judge_response(raw: str) -> Tuple[List[dict], List[str]]:
+    """
+    Extrai decisões do LLM-judge.
+    Retorna (decisions, issues). Mantém ordem recebida.
+    decisions[i] = {
+        "original": str,
+        "decision": keep|change|delete|merge,
+        "change_to": str|None,
+        "nota": str|None,
+        "is_canon_name": bool|None,
+    }
+    """
+    issues: List[str] = []
+    if not raw or not raw.strip():
+        return [], ["empty_response"]
+
+    cleaned = _strip_think_block(raw)
+
+    # Rejeita respostas com caracteres de controle (ex.: \u0000, \u007f) para forçar retry
+    if re.search(
+        r"\\u00(?:0[0-9a-fA-F]|1[0-9a-fA-F]|7f)", cleaned, flags=re.IGNORECASE
+    ) or re.search(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", cleaned):
+        return [], ["invalid_control_chars"]
+
+    try:
+        data = json.loads(cleaned)
+    except Exception:
+        return [], ["invalid_json"]
+
+    # Normaliza estruturas possíveis
+    terms: List[dict] = []
+    if isinstance(data, dict):
+        if "terms" in data and isinstance(data["terms"], list):
+            terms = data["terms"]
+        else:
+            # formato {"Termo": {...}}
+            for key, val in data.items():
+                if isinstance(val, dict):
+                    term = {"original": key}
+                    term.update(val)
+                    terms.append(term)
+    elif isinstance(data, list):
+        terms = data
+    else:
+        return [], ["unsupported_root_type"]
+
+    if not isinstance(terms, list):
+        return [], ["terms_not_list"]
+
+    normalized: List[dict] = []
+    seen_originals: set[str] = set()
+    allowed = {"keep", "change", "delete", "merge"}
+
+    for idx, item in enumerate(terms):
+        if not isinstance(item, dict):
+            issues.append(f"item_not_object[{idx}]")
+            continue
+
+        original = item.get("original") or item.get("term") or item.get("keyword")
+        if not original or not isinstance(original, str):
+            issues.append(f"missing_original[{idx}]")
+            continue
+
+        decision_raw = item.get("decision") or ""
+        decision = str(decision_raw).strip().lower()
+        if decision not in allowed:
+            issues.append(f"decision_invalid[{original}]")
+            decision = "keep"  # fallback seguro
+
+        change_to = item.get("change_to")
+        if change_to is not None and not isinstance(change_to, str):
+            change_to = str(change_to)
+
+        nota = item.get("nota")
+        if nota is not None and not isinstance(nota, str):
+            nota = str(nota)
+
+        is_canon = item.get("is_canon_name")
+        if is_canon is not None:
+            is_canon = bool(is_canon)
+
+        if original in seen_originals:
+            issues.append(f"duplicate_original[{original}]")
+            # mantém apenas a primeira ocorrência
+            continue
+        seen_originals.add(original)
+
+        normalized.append(
+            {
+                "original": _deep_clean_keyword(original),
+                "decision": decision,
+                "change_to": _deep_clean_keyword(change_to) if change_to else None,
+                "nota": nota,
+                "is_canon_name": is_canon,
+            }
+        )
+
+        if decision in {"change", "merge"} and not change_to:
+            issues.append(f"missing_change_to[{original}]")
+
+    return normalized, sorted(set(issues))
+
+
+# ---------------------------------------------------------------------------
 # Validação e limpeza de keywords existentes
 # ---------------------------------------------------------------------------
 
@@ -796,6 +1152,9 @@ def normalize_keywords_payload(raw: str) -> Tuple[KeywordsResult, Optional[str]]
     """
     if not raw or not raw.strip():
         return {"keywords": []}, "missing_keywords_json"
+
+    if _contains_control_chars(raw):
+        return {"keywords": []}, "invalid_control_chars_existing"
 
     try:
         data = json.loads(raw)
@@ -875,6 +1234,17 @@ def _deep_clean_keyword(text: str) -> str:
     return t
 
 
+def _contains_control_chars(text: str) -> bool:
+    """Detecta controles ASCII (0x00-0x1F e 0x7F) ou escapes \\u00xx."""
+    if not text:
+        return False
+    if re.search(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", text):
+        return True
+    if re.search(r"\\u00(?:0[0-9a-fA-F]|1[0-9a-fA-F]|7f)", text, flags=re.IGNORECASE):
+        return True
+    return False
+
+
 def _split_conjoined_keywords(
     raw_text: str, cleaned_text: str
 ) -> Tuple[List[str], bool]:
@@ -947,6 +1317,57 @@ def has_unbalanced_parentheses(text: str) -> bool:
     return balance != 0
 
 
+def looks_like_reference_keyword(text: str) -> bool:
+    """
+    Heurística para referências abreviadas (ps. l, 7 / xxvii, 9 / fol. 55, r a).
+    Considera ruim strings curtas compostas só de abreviações, algarismos romanos
+    e números.
+    """
+    if not text:
+        return False
+    raw = text.lower()
+    raw_abbrev_dot = bool(re.search(r"\b[a-z]{1,6}\.", raw))
+
+    norm = raw.strip()
+    norm = norm.replace(".", "")
+    tokens = [t for t in re.split(r"[\s,;]+", norm) if t]
+
+    if not tokens or len(tokens) > 7:
+        return False
+
+    abbr = roman = numeric = singles = 0
+    for tok in tokens:
+        if re.fullmatch(r"[a-z]{1,4}", tok):
+            abbr += 1
+            continue
+        if re.fullmatch(r"[ivxlcdm]+", tok):
+            roman += 1
+            continue
+        if re.fullmatch(r"\d{1,3}(?:-\d{1,3})?", tok):
+            numeric += 1
+            continue
+        if re.fullmatch(r"[a-z]", tok):
+            singles += 1
+            continue
+        return False
+
+    if raw_abbrev_dot and len(text) <= 40:
+        return True
+
+    return (roman >= 1) or (
+        abbr + numeric + singles >= 2 and roman + numeric + abbr >= 1
+    )
+
+
+# Padrões proibidos explícitos
+FORBIDDEN_KEYWORD_PATTERNS: list[tuple[re.Pattern[str], str]] = [
+    (
+        re.compile(r"^caput\s+(?:[ivxlcdm]+|\d{1,3})$", flags=re.IGNORECASE),
+        "keyword_forbidden_caput_number",
+    ),
+]
+
+
 def clean_keywords_structure(
     result: KeywordsResult,
 ) -> Tuple[KeywordsResult, List[str]]:
@@ -978,7 +1399,97 @@ def clean_keywords_structure(
     return cleaned, issues
 
 
-def validate_keywords(cleaned: KeywordsResult, parse_issue: Optional[str]) -> List[str]:
+GREEK_RE = re.compile(r"[\u0370-\u03FF\u1F00-\u1FFF]")
+LATIN_RE = re.compile(r"[A-Za-z]")
+
+
+def _doc_language_hint(doc_name: Optional[str], keywords: List[str]) -> Optional[str]:
+    """
+    Heurística: prioriza detecção por caracteres nas próprias keywords.
+    - Se houver qualquer caractere grego, assume grego.
+    - Se houver grego E latim, sinaliza multi (sem viés; decide por token).
+    - Se houver apenas letras latinas, força latim apenas para docs PL; caso contrário deixa o detector por token decidir.
+    - Caso contrário, cai para heurística por prefixo do documento.
+    """
+    concat = " ".join(keywords)
+    has_greek_chars = bool(GREEK_RE.search(concat))
+    has_latin_chars = bool(LATIN_RE.search(concat))
+
+    if has_greek_chars and has_latin_chars:
+        return "multi"
+    if has_greek_chars:
+        return "grc"
+    if has_latin_chars and not has_greek_chars:
+        if doc_name and str(doc_name).upper().startswith("PL"):
+            return "lat"
+        return None
+
+    if doc_name:
+        m = re.match(r"[A-Za-z]+", str(doc_name))
+        prefix = m.group(0).upper() if m else ""
+        if prefix.startswith("PG"):
+            return "grc"
+        if prefix.startswith("PL"):
+            return "lat"
+        if prefix.startswith("PO"):
+            return "multi"  # multilingue, deixa detector decidir
+    return None
+
+
+def _integrity_http_batch(
+    keywords: List[str], language_hint: Optional[str]
+) -> List[ValidationEvidence]:
+    """Consulta o serviço HTTP; em falha propaga exceção para ser tratada acima."""
+    import urllib.request
+    import urllib.error
+
+    if not INTEGRITY_HTTP_URL:
+        return []
+
+    payload = {
+        "terms": keywords,
+        "language_hint": language_hint,
+        "is_canon_flags": None,
+    }
+    req = urllib.request.Request(
+        INTEGRITY_HTTP_URL.rstrip("/") + "/batch",
+        data=json.dumps(payload).encode("utf-8"),
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+    with urllib.request.urlopen(req, timeout=INTEGRITY_HTTP_TIMEOUT) as resp:
+        if resp.status != 200:
+            raise RuntimeError(f"integrity_http_status_{resp.status}")
+        data = json.loads(resp.read().decode("utf-8"))
+
+    evidences: List[ValidationEvidence] = []
+    for ev in data:
+        status_str = ev.get("status", "UNKNOWN")
+        try:
+            status = IntegrityStatus(status_str)
+        except Exception:
+            status = IntegrityStatus.UNKNOWN
+        evidences.append(
+            ValidationEvidence(
+                raw_term=ev.get("raw_term", ""),
+                normalized_term=ev.get("normalized_term", ev.get("raw_term", "")),
+                status=status,
+                reasons=ev.get("reasons", []) or [],
+                lemma=ev.get("lemma"),
+                matched_vocab=ev.get("matched_vocab", False),
+                matched_stopword=ev.get("matched_stopword", False),
+                control_chars_found=ev.get("control_chars_found", False),
+                script_flags=ev.get("script_flags", {}) or {},
+                confidence=ev.get("confidence", 0.0),
+                language=ev.get("language", "unknown"),
+            )
+        )
+    return evidences
+
+
+def validate_keywords(
+    cleaned: KeywordsResult, parse_issue: Optional[str], doc_name: Optional[str] = None
+) -> List[str]:
     """Valida lista de keywords já limpa; retorna lista de issues."""
     issues: List[str] = []
     kw_count = len(cleaned.get("keywords", []))
@@ -1009,6 +1520,15 @@ def validate_keywords(cleaned: KeywordsResult, parse_issue: Optional[str]) -> Li
     if any(has_unbalanced_parentheses(kw) for kw in cleaned.get("keywords", [])):
         issues.append("keyword_unbalanced_parentheses")
 
+    if any(looks_like_reference_keyword(kw) for kw in cleaned.get("keywords", [])):
+        issues.append("keyword_probable_reference")
+
+    for kw in cleaned.get("keywords", []):
+        for pattern, code in FORBIDDEN_KEYWORD_PATTERNS:
+            if pattern.match(kw or ""):
+                issues.append(code)
+                break
+
     # Flag números isolados virando keywords (ex.: "4")
     if any(
         re.fullmatch(r"\d+[.,]?", (kw or "").strip())
@@ -1016,7 +1536,223 @@ def validate_keywords(cleaned: KeywordsResult, parse_issue: Optional[str]) -> Li
     ):
         issues.append("keyword_isolated_number")
 
+    # Linguistic integrity (HTTP service preferido; fallback local). Fail-open on errors.
+    if INTEGRITY_ENABLED:
+        evidences: List[ValidationEvidence] = []
+        kws = cleaned.get("keywords", [])
+        try:
+            doc_hint = _doc_language_hint(doc_name, kws)
+            if INTEGRITY_HTTP_URL:
+                evidences = _integrity_http_batch(kws, doc_hint)
+            else:
+                log.warning("Integrity skipped: KW_INTEGRITY_HTTP_URL not set")
+
+            suspect_langs: set[str] = set()
+            stopword_langs: set[str] = set()
+            for ev in evidences:
+                lang = ev.language or "unknown"
+                if ev.status in {IntegrityStatus.SUSPECT, IntegrityStatus.NOISE}:
+                    suspect_langs.add(lang)
+                    log.debug(
+                        "Integrity suspect/noise (doc %s) term found: %s", doc_name, ev
+                    )
+                if ev.status == IntegrityStatus.STOPWORD:
+                    stopword_langs.add(lang)
+
+            if suspect_langs:
+                issues.append(
+                    f"integrity_suspect_terms({'+'.join(sorted(suspect_langs))})"
+                )
+            if stopword_langs:
+                issues.append(
+                    f"integrity_contains_stopwords({'+'.join(sorted(stopword_langs))})"
+                )
+
+            if INTEGRITY_DEBUG and evidences:
+                log.debug("Integrity evidences: %s", evidences)
+        except Exception as exc:  # pragma: no cover — defensive
+            log.error(f"Integrity checker failed (fail-open): {exc}")
+            # fail-open: não adiciona issue de erro
+
     return issues
+
+
+def _apply_decision_to_item(
+    item: str, decision: dict, issues: List[str]
+) -> Optional[str]:
+    """Aplica decisão a um item único; retorna novo valor ou None (delete)."""
+    dec = decision.get("decision")
+    change_to = decision.get("change_to")
+    original = decision.get("original", "")
+
+    if dec == "delete":
+        return None
+    if dec == "change":
+        if not change_to:
+            issues.append(f"change_without_target[{original}]")
+            return item
+        if _deep_clean_keyword(change_to) == _deep_clean_keyword(item):
+            # keep silencioso: trata como keep, não registra issue
+            return item
+        return change_to
+    if dec == "merge":
+        if not change_to:
+            issues.append(f"merge_without_target[{original}]")
+            return item
+        if _deep_clean_keyword(change_to) == _deep_clean_keyword(item):
+            # keep silencioso: trata como keep, não registra issue
+            return item
+        return change_to
+    # keep ou fallback
+    return item
+
+
+def _dedupe_preserve_order(items: List[str]) -> List[str]:
+    seen: set[str] = set()
+    out: List[str] = []
+    for it in items:
+        key = it.casefold()
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(it)
+    return out
+
+
+def apply_judge_decisions(
+    existing_json_str: str,
+    decisions: List[dict],
+    *,
+    order_from_judge: bool = True,
+    include_categories: bool = True,
+) -> Tuple[KeywordsResult, dict]:
+    """
+    Aplica decisões do judge sobre keywords_json existente.
+    Retorna (novo_struct, report).
+    report: {changes, removed, merged, issues: [...]}.
+    """
+    base, parse_issue = normalize_keywords_payload(existing_json_str)
+    report: dict = {
+        "changes": 0,
+        "removed": 0,
+        "merged": 0,
+        "issues": [],
+    }
+    if parse_issue:
+        report["issues"].append(parse_issue)
+
+    if not base.get("keywords"):
+        report["issues"].append("no_keywords_in_existing")
+        return base, report
+
+    decision_map: dict[str, dict] = {}
+    for d in decisions:
+        orig = d.get("original")
+        if not orig:
+            continue
+        if orig in decision_map:
+            report["issues"].append(f"duplicate_original_decision[{orig}]")
+            continue
+        decision_map[orig] = d
+
+    orig_keywords: List[str] = base.get("keywords", [])
+    touched: set[str] = set()
+
+    new_keywords: List[str] = []
+
+    if order_from_judge:
+        for d in decisions:
+            orig = d.get("original")
+            if orig not in orig_keywords:
+                continue
+            touched.add(orig)
+            new_val = _apply_decision_to_item(orig, d, report["issues"])
+            if new_val is None:
+                report["removed"] += 1
+                continue
+            if d.get("decision") == "merge":
+                report["merged"] += 1
+            if new_val != orig:
+                report["changes"] += 1
+            if new_val in new_keywords:
+                # auto-merge: mantém ordem do primeiro, não duplica nem loga issue
+                if d.get("decision") == "merge" or d.get("decision") == "change":
+                    report["merged"] += 1
+                    report["removed"] += 1
+                continue
+            new_keywords.append(new_val)
+
+        # adiciona keywords não tocadas mantendo ordem original
+        for kw in orig_keywords:
+            if kw in touched:
+                continue
+            if kw in new_keywords:
+                # já presente; mantém ordem do primeiro
+                continue
+            new_keywords.append(kw)
+    else:
+        for kw in orig_keywords:
+            d = decision_map.get(kw)
+            if d:
+                touched.add(kw)
+                new_val = _apply_decision_to_item(kw, d, report["issues"])
+                if new_val is None:
+                    report["removed"] += 1
+                    continue
+                if d.get("decision") == "merge":
+                    report["merged"] += 1
+                if new_val != kw:
+                    report["changes"] += 1
+                if new_val in new_keywords:
+                    if d.get("decision") == "merge" or d.get("decision") == "change":
+                        report["merged"] += 1
+                        report["removed"] += 1
+                    continue
+                new_keywords.append(new_val)
+            else:
+                new_keywords.append(kw)
+
+    new_keywords = _dedupe_preserve_order(new_keywords)
+
+    # Aplica a categorias
+    new_categories: dict = {}
+    cats = base.get("categorias") if include_categories else {}
+    if isinstance(cats, dict):
+        for cat, items in cats.items():
+            if not isinstance(items, list):
+                continue
+            updated_items: List[str] = []
+            for it in items:
+                d = decision_map.get(it)
+                if d:
+                    new_val = _apply_decision_to_item(it, d, report["issues"])
+                    if new_val is None:
+                        report["removed"] += 1
+                        continue
+                    if d.get("decision") == "merge":
+                        report["merged"] += 1
+                    if new_val != it:
+                        report["changes"] += 1
+                    updated_items.append(new_val)
+                else:
+                    updated_items.append(it)
+            updated_items = _dedupe_preserve_order(updated_items)
+            if updated_items:
+                new_categories[cat] = updated_items
+
+    cleaned, clean_issues = clean_keywords_structure(
+        {
+            "keywords": new_keywords,
+            **({"categorias": new_categories} if new_categories else {}),
+        }
+    )
+    report["issues"].extend(clean_issues)
+    report["issues"] = sorted(set(report["issues"]))
+
+    # copia keywords_ranking para manter contrato
+    cleaned["keywords_ranking"] = cleaned.get("keywords", [])
+
+    return cleaned, report
 
 
 def verify_documents(
@@ -1053,7 +1789,9 @@ def verify_documents(
 
             parsed, parse_issue = normalize_keywords_payload(raw_kw)
             cleaned, clean_issues = clean_keywords_structure(parsed)
-            issues = clean_issues + validate_keywords(cleaned, parse_issue)
+            issues = clean_issues + validate_keywords(
+                cleaned, parse_issue, doc_name=doc
+            )
 
             page_reports.append(
                 {
@@ -1136,6 +1874,36 @@ def verify_documents(
                     provider = process_params.get(
                         "provider", rep.get("provider") or "ollama"
                     )
+
+                raw_kw = row.get("keywords_json") or ""
+                has_outlier_low = any(
+                    "outlier_low_vs_doc" in issue for issue in rep["issues"]
+                )
+                if (not has_outlier_low) and (
+                    raw_kw.strip() or rep["count"] > RECOMMENDED_MIN_KEYWORDS
+                ) and False: # Desativando temporariamente
+                    judge_args = argparse.Namespace(
+                        provider=provider,
+                        model=model,
+                        timeout=process_params["timeout"],
+                        num_ctx=process_params["num_ctx"],
+                        reasoning_effort=process_params["reasoning_effort"],
+                        api_key_env=process_params["api_key_env"],
+                        retries=process_params["retries"],
+                        think=process_params["think"],
+                        source=src,
+                        verbose=False,
+                    )
+                    judge_llm_with_retry_and_save(
+                        args=judge_args,
+                        row=row,
+                        base_url=process_params["base_url"],
+                        doc=doc,
+                        pnum=rep["pagina"],
+                        resumos_con=con,
+                        raw_kw=raw_kw,
+                    )
+                    continue
 
                 try:
                     result, raw = process_page(
@@ -1267,12 +2035,13 @@ def process_page(
             )
         except Exception as exc:
             log.warning(
-                "[%s] p%d tentativa %d/%d – erro LLM: %s",
+                "[%s] p%d tentativa %d/%d – erro LLM: %s resposta: %s",
                 doc_name,
                 row["pagina_num"],
                 attempt,
                 retries,
                 exc,
+                raw_response,
             )
             if attempt < retries:
                 time.sleep(3 * attempt)
@@ -1281,15 +2050,25 @@ def process_page(
         # Valida se a resposta é parseável
         if not raw_response or not raw_response.strip():
             log.warning(
-                "[%s] p%d tentativa %d/%d – resposta vazia",
+                "[%s] p%d tentativa %d/%d – resposta vazia: %s",
                 doc_name,
                 row["pagina_num"],
                 attempt,
                 retries,
+                raw_response,
             )
             if attempt < retries:
                 time.sleep(2 * attempt)
             continue
+
+        log.debug(
+            "[%s] p%d tentativa %d/%d – resposta: %s",
+            doc_name,
+            row["pagina_num"],
+            attempt,
+            retries,
+            raw_response,
+        )
 
         parsed_result, _ = parse_keywords_response(raw_response)
         cleaned_result, clean_issues = clean_keywords_structure(parsed_result)
@@ -1349,6 +2128,230 @@ def process_page(
         return result, raw_response
 
     return result, raw_response
+
+
+def preview_llm_judge(
+    row: dict,
+    *,
+    provider: str,
+    model: str,
+    base_url: str,
+    timeout: int,
+    num_ctx: int,
+    reasoning_effort: str,
+    api_key_env: str,
+    think: bool = False,
+    retry: int = 0,
+) -> Tuple[str, str]:
+    """Constrói o prompt de verificação e chama o LLM apenas para preview."""
+    doc_name = row.get("documento", "")
+    keywords_originais = _pretty_keywords_json(row.get("keywords_json", ""))
+    user_prompt = build_user_review_prompt(row, keywords_originais, doc_name=doc_name)
+
+    ctx_window = num_ctx if provider == "ollama" else 128000
+    budget = ctx_window - TOKEN_RESERVE_OUTPUT - TOKEN_RESERVE_SYSTEM
+    if budget > 0:
+        user_prompt = truncate_to_budget(
+            user_prompt,
+            budget,
+            label="review_prompt",
+        )
+
+    prompt_tokens_est = estimate_tokens(user_prompt)
+    log.info(
+        "[%s] p%d  chamando LLM-judge (%s)  ~%d tokens prompt",
+        doc_name,
+        row.get("pagina_num"),
+        model,
+        prompt_tokens_est,
+    )
+
+    # Precisa combinar com o SYSTEM_PROMPT_VERIFICACAO
+    json_schema = {
+        "name": "term_analysis_schema",
+        "strict": True,
+        "schema": {
+            "type": "object",
+            "properties": {
+                "terms": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "original": {
+                                "type": "string",
+                                "description": "O termo original que está sendo analisado",
+                            },
+                            "nota": {
+                                "type": "string",
+                                "description": "Breve justificativa técnica (máx 10 palavras)",
+                            },
+                            "decision": {
+                                "type": "string",
+                                "enum": ["keep", "change", "delete", "merge"],
+                                "description": "Ação a ser tomada com o termo",
+                            },
+                            "change_to": {
+                                "type": ["string", "null"],
+                                "description": "Novo Termo ou Nome do Termo que o absorveu (null se não houver)",
+                            },
+                            "is_canon_name": {
+                                "type": "boolean",
+                                "description": "Indica se este é o nome canônico/oficial",
+                            },
+                        },
+                        "required": [
+                            "original",
+                            "nota",
+                            "decision",
+                            "change_to",
+                            # "is_canon_name",
+                        ],
+                        "additionalProperties": False,
+                    },
+                }
+            },
+            "required": ["terms"],
+            "additionalProperties": False,
+        },
+    }
+
+    top_p = TOP_P_DEFAULT
+    temperature = TEMPERATURE_DEFAULT
+
+    if retry > 1:
+        temperature = 0.5
+        top_p = 0.9
+
+    if retry > 3:
+        json_schema = None  # desativa schema após muitas tentativas para evitar falhas por parsing de schema
+
+    response = llm_chat(
+        prompt_system=SYSTEM_PROMPT_VERIFICACAO,
+        prompt_user=user_prompt,
+        provider=provider,
+        model=model,
+        base_url=base_url,
+        timeout=timeout,
+        reasoning_effort=reasoning_effort,
+        api_key_env=api_key_env,
+        num_ctx=num_ctx,
+        think=think,
+        json_schema=json_schema,
+        top_p=top_p,
+        temperature=temperature,
+    )
+    return user_prompt, response
+
+
+def judge_llm_with_retry_and_save(
+    args: argparse.Namespace,
+    row: dict,
+    base_url: str,
+    doc: str,
+    pnum: int,
+    resumos_con: sqlite3.Connection,
+    raw_kw: str,
+) -> bool:
+    prompt_user = ""
+    response = ""
+    decisions: List[dict] = []
+    parse_issues: List[str] = []
+    for attempt in range(1, args.retries + 1):
+        try:
+            prompt_user, response = preview_llm_judge(
+                row,
+                provider=args.provider,
+                model=args.model,
+                base_url=base_url,
+                timeout=args.timeout,
+                num_ctx=args.num_ctx,
+                reasoning_effort=args.reasoning_effort,
+                api_key_env=args.api_key_env,
+                think=args.think,
+                retry=attempt,
+            )
+            decisions, parse_issues = parse_judge_response(response)
+            if decisions:
+                break
+            log.warning(
+                "[%s] p%d LLM-judge tentativa %d/%d sem decisões: %s",
+                doc,
+                pnum,
+                attempt,
+                args.retries,
+                ",".join(parse_issues) if parse_issues else "unknown",
+            )
+        except Exception as exc:
+            traceback.print_exc()
+            log.warning(
+                "[%s] p%d LLM-judge tentativa %d/%d falhou: %s",
+                doc,
+                pnum,
+                attempt,
+                args.retries,
+                exc,
+            )
+        if attempt < args.retries:
+            backoff = 1.5 ** (attempt - 1)
+            jitter = random.uniform(0.5, 1.5)
+            time.sleep(backoff * jitter)
+
+    if not decisions:
+        log.error(
+            "[%s] p%d LLM-judge esgotou tentativas; parse_issues=%s",
+            doc,
+            pnum,
+            ",".join(parse_issues) if parse_issues else "none",
+        )
+        return False
+
+    new_struct, report = apply_judge_decisions(
+        raw_kw,
+        decisions,
+        order_from_judge=True,
+        include_categories=True,
+    )
+
+    if not new_struct.get("keywords"):
+        log.warning(
+            "[%s] p%d resultado vazio; issues=%s", doc, pnum, report.get("issues")
+        )
+        return False
+
+    kw_json = json.dumps(new_struct, ensure_ascii=False)
+    save_keywords_to_resumos(
+        con=resumos_con,
+        documento=doc,
+        pagina_num=pnum,
+        keywords_json=kw_json,
+        source=row.get("keywords_source", args.source),
+        modelo=row.get("keywords_modelo", args.model),
+    )
+
+    log.info(
+        "[%s] p%d judge aplicado: %d keywords, changes=%d removed=%d issues=%s",
+        doc,
+        pnum,
+        len(new_struct.get("keywords", [])),
+        report.get("changes"),
+        report.get("removed"),
+        ",".join(report.get("issues", [])) or "none",
+    )
+
+    if args.verbose:
+        print("─" * 60)
+        print(f"  {doc}  página {pnum}  (LLM-judge)")
+        print("─" * 60)
+        print("PROMPT USUÁRIO:\n")
+        print(prompt_user)
+        print("\nRESPOSTA LLM:\n")
+        print(response)
+        print("\nJSON ANTIGO:\n")
+        print(_pretty_keywords_json(raw_kw))
+        print("\nJSON NOVO:\n")
+        print(json.dumps(new_struct, ensure_ascii=False, indent=2))
+        print("")
 
 
 # ---------------------------------------------------------------------------
@@ -1502,6 +2505,21 @@ Exemplos:
         action="store_true",
         help="Após verify/verify-fix, reprocessa páginas ainda com issues chamando o LLM.",
     )
+    p.add_argument(
+        "--preview-llm-judge",
+        action="store_true",
+        help=(
+            "Monta SYSTEM_PROMPT_VERIFICACAO + build_user_review_prompt e chama o LLM, "
+            "apenas para preview (stdout); não grava nem valida."
+        ),
+    )
+    p.add_argument(
+        "--llm-judge",
+        action="store_true",
+        help=(
+            "Aplica o LLM-judge às keywords existentes, atualizando keywords_json em resumos."
+        ),
+    )
 
     # Databases
     p.add_argument(
@@ -1527,7 +2545,7 @@ Exemplos:
     p.add_argument("--api-key-env", default="OPENAI_API_KEY")
     p.add_argument(
         "--reasoning-effort",
-        choices=["minimal", "low", "medium", "high"],
+        choices=["", "minimal", "low", "medium", "high"],
         default="high",
     )
     p.add_argument("--num-ctx", type=int, default=DEFAULT_NUM_CTX)
@@ -1546,6 +2564,16 @@ Exemplos:
         help="Habilita thinking (chain-of-thought) em modelos qwen3/deepseek-r1. "
         "Desligado por padrão pois keywords não precisam de raciocínio profundo.",
     )
+    p.add_argument(
+        "--no-integrity-check",
+        action="store_true",
+        help="Desliga a checagem linguística (NLTK/CLTK) das keywords.",
+    )
+    p.add_argument(
+        "--integrity-debug",
+        action="store_true",
+        help="Loga evidências detalhadas do verificador de integridade.",
+    )
 
     # Controle
     p.add_argument(
@@ -1559,6 +2587,9 @@ Exemplos:
 
 def main() -> None:
     args = build_parser().parse_args()
+
+    preview_mode = args.preview_llm_judge
+    llm_judge_mode = args.llm_judge
 
     # Resolve modelo
     if args.model is None:
@@ -1580,8 +2611,41 @@ def main() -> None:
     apply_fix = args.verify_fix
     rerun_bad = args.rerun_bad
 
+    # Ajusta flags do verificador de integridade
+    set_integrity_flags(enabled=not args.no_integrity_check, debug=args.integrity_debug)
+
+    if (llm_judge_mode and preview_mode) or (
+        llm_judge_mode and (verify_mode or args.write or args.separate_db or rerun_bad)
+    ):
+        log.error(
+            "--llm-judge é exclusivo; não combine com preview/verify/write/separate-db/rerun-bad."
+        )
+        sys.exit(1)
+
+    if preview_mode and (args.write or verify_mode or args.separate_db or rerun_bad):
+        log.error(
+            "--preview-llm-judge é apenas para inspeção; não combine com "
+            "--write/--verify/--verify-fix/--separate-db/--rerun-bad."
+        )
+        sys.exit(1)
+
     # Conexões
-    if verify_mode:
+    if preview_mode:
+        resumos_con = connect_readonly(args.resumos_db)
+        mode_label = "PREVIEW LLM-JUDGE (stdout)"
+        kw_con = None
+        dry_run = True
+        use_resumos_inline = False
+        use_separate_db = False
+    elif llm_judge_mode:
+        resumos_con = connect_readwrite(args.resumos_db)
+        ensure_keywords_columns(resumos_con)
+        mode_label = "LLM-JUDGE (write keywords_json)"
+        kw_con = None
+        dry_run = False
+        use_resumos_inline = True
+        use_separate_db = False
+    elif verify_mode:
         needs_write = apply_fix or rerun_bad
         resumos_con = (
             connect_readwrite(args.resumos_db)
@@ -1644,6 +2708,103 @@ def main() -> None:
         sys.exit(1)
 
     log.info("Documentos: %d", len(docs))
+
+    if preview_mode:
+        for doc in docs:
+            rows = fetch_pages(resumos_con, doc, page=args.page, limit=args.limit)
+            if not rows:
+                log.warning("[%s] Nenhuma página encontrada para preview", doc)
+                continue
+
+            log.info("[%s] %d páginas para preview LLM-judge", doc, len(rows))
+            for row in rows:
+                pnum = row["pagina_num"]
+
+                # Opcionalmente pula páginas lixo/boilerplate se o usuário não desligou
+                if args.skip_noise:
+                    texto_original = row.get("pagina_texto") or ""
+                    texto_limpo, meta = clean_ocr_text_optimized(texto_original)
+                    quality = classify_page_noise(
+                        texto_original, texto_limpo, meta=meta
+                    )
+                    if quality.get("drop_original_embedding"):
+                        log.info(
+                            "[%s] p%d pulada (noise): %s",
+                            doc,
+                            pnum,
+                            quality.get("reason", "noise"),
+                        )
+                        continue
+
+                try:
+                    prompt_user, response = preview_llm_judge(
+                        row,
+                        provider=args.provider,
+                        model=args.model,
+                        base_url=base_url,
+                        timeout=args.timeout,
+                        num_ctx=args.num_ctx,
+                        reasoning_effort=args.reasoning_effort,
+                        api_key_env=args.api_key_env,
+                        think=args.think,
+                    )
+                except Exception as exc:
+                    log.error("[%s] p%d preview LLM-judge falhou: %s", doc, pnum, exc)
+                    continue
+
+                print("─" * 60)
+                print(f"  {doc}  página {pnum}  (preview judge)")
+                print("─" * 60)
+                print("PROMPT USUÁRIO:\n")
+                print(prompt_user)
+                print("\nRESPOSTA LLM:\n")
+                print(response)
+                print("")
+
+        resumos_con.close()
+        return
+    elif llm_judge_mode:
+        for doc in docs:
+            rows = fetch_pages(resumos_con, doc, page=args.page, limit=args.limit)
+            if not rows:
+                log.warning("[%s] Nenhuma página encontrada para judge", doc)
+                continue
+
+            log.info("[%s] %d páginas para LLM-judge", doc, len(rows))
+            for row in rows:
+                pnum = row["pagina_num"]
+
+                if args.skip_noise:
+                    texto_original = row.get("pagina_texto") or ""
+                    texto_limpo, meta = clean_ocr_text_optimized(texto_original)
+                    quality = classify_page_noise(
+                        texto_original, texto_limpo, meta=meta
+                    )
+                    if quality.get("drop_original_embedding"):
+                        log.info(
+                            "[%s] p%d pulada (noise): %s",
+                            doc,
+                            pnum,
+                            quality.get("reason", "noise"),
+                        )
+                        continue
+
+                raw_kw = row.get("keywords_json") or ""
+                if not raw_kw.strip():
+                    log.warning("[%s] p%d sem keywords_json; pulando", doc, pnum)
+                    continue
+
+                judge_llm_with_retry_and_save(
+                    args=args,
+                    row=row,
+                    base_url=base_url,
+                    doc=doc,
+                    pnum=pnum,
+                    resumos_con=resumos_con,
+                    raw_kw=raw_kw,
+                )
+        resumos_con.close()
+        return
 
     # Apenas validação
     if verify_mode:
