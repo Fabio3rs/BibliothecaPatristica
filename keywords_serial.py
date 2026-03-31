@@ -588,31 +588,29 @@ def llm_chat(
 # """
 
 SYSTEM_PROMPT = """\
-Você é um Especialista em Catalogação de Patrística. Sua tarefa é captar metadados precisos do texto_original e seu resumo técnico.
+Você extrai metadados de texto patrístico.
 
-### DIRETRIZES DE EXTRAÇÃO:
-1. Use o texto_original para extrair a grafia exata de nomes próprios (Santos, Autores, Hereges), Cidades e Obras citadas. Corrija pequenas falhas de OCR.
-2. Bússola temática: resumo_global e resumo_da_pagina para identificar os grandes temas teológicos (ex: 'Cristologia', 'Soteriologia', 'Eclesiologia', etc.), entretanto, cite a keyword apenas se a ver dentro do texto_original.
-3. Priorize keywords que apareçam em texto_original e que definam o núcleo do argumento teológico/narrativo/filosófico da página. Cite em keywords_ranking, por ordem de importância argumentativa, mais importante primeiro.
-4. Literalidade dos textos originais, evitando paráfrases ou interpretações, use traduções literais para PT-BR quando possível ou cite no original quando termo consagrado (latim/grego) (ex: 'Logos', 'Ousia', etc.).
+Regras:
+- texto_original é a âncora.
+- Use resumo_global e resumo_da_pagina apenas como bússola temática; só inclua keyword se o termo ou conceito estiver explicitamente sustentado por texto_original.
+- Extraia apenas termos com valor real de indexação.
+- Priorize o núcleo argumentativo da página; ordene keywords_ranking por importância.
+- Normalize nomes de pessoas em forma canônica PT-BR quando houver forma consagrada.
+- Obras e referências bíblicas por extenso.
+- Preserve termos técnicos patrísticos consagrados em latim/grego transliterado quando for o uso mais estável.
+- Corrija pequenas falhas de OCR sem inventar conteúdo.
+- Qualquer explicação vai apenas em notas.
 
-OBSERVAÇÕES:
-- resumo_global se trata do contexto geral da obra até agora, enquanto resumo_da_pagina foca em aspectos específicos desta página.
-- Se forem vários autores na página, extraia todos os nomes e trate-os como entidades separadas. Para nomes de pessoas, use a forma canônica em PT-BR sempre que possível (ex: 'Ioannes Chrysostomus' -> 'João Crisóstomo'), a menos que seja um autor muito obscuro, mantendo a grafia do original.
-- Bíblia e Obras devem estar por extenso. 'Gn 1,1' -> 'Gênesis 1,1'.
-- texto_original é a âncora
-- notas são totalmente opcionais, qualquer explicação deve ser colocada aqui.
-
-### FORMATO DE SAÍDA JSON UTF-8 (com acentos e caracteres especiais) sem markdown:
+Retorne JSON puro:
 {
-  "keywords_ranking": ["Termo 1", "Termo 2", "..."],
+  "keywords_ranking": [],
   "categorias": {
-    "pessoas": ["Nome 1", "Nome 2"],
-    "obras_citadas": ["Obra A", "Obra B"],
-    "temas_teologicos": ["Tema X", "Tema Y"],
-    "termos_tecnicos_lat_gr": ["Termo 1", "Termo 2"]
+    "pessoas": [],
+    "obras_citadas": [],
+    "temas_teologicos": [],
+    "termos_tecnicos_lat_gr": []
   },
-  "notas": { "Termo 1": "Nota sobre o termo 1 (opcional)" }
+  "notas": {}
 }
 """
 
@@ -659,38 +657,26 @@ OBSERVAÇÕES:
 # """.strip()
 
 SYSTEM_PROMPT_VERIFICACAO = """\
-Você é o Revisor Crítico de Metadados Patrísticos. Sua missão é validar o JSON prévio contra o `texto_original`.
+Valide keywords_previa_json contra texto_original.
 
-### CRITÉRIOS DE AUDITORIA:
-1. A keyword existe texto_original mesmo de forma traduzida ou em forma de 'Temas Teológicos' geral explícito do texto? Se não existir `delete`
-2. Se o JSON prévio trouxe "Agostinho", mude para "Santo Agostinho". Se trouxe "Jo. Crisóstomo", mude para "João Crisóstomo", mas em caso de ambiguidade, preserve o original (keep).
-3. Bíblia e Obras devem estar por extenso. 'Gn 1,1' -> 'Gênesis 1,1'.
-4. Se houver keywords diferentes de mesmo sentido semântico, use `merge` escolhendo o termo mais técnico patrístico-bíblico.
-5. Termo teológico/filosófico técnico consolidado da Patrística, deve ser mantido em latim ou grego transliterado latino.
+Regras:
+- Delete se o termo não estiver sustentado por texto_original, exceto tema teológico realmente explícito no conteúdo.
+- Normalize nomes próprios para a forma canônica PT-BR quando inequívoca.
+- Expanda Bíblia e obras por extenso.
+- Se houver duplicatas semânticas, faça merge no termo mais técnico e estável.
+- Preserve termos técnicos patrísticos consagrados em latim/grego transliterado.
+- Delete ruído editorial e marcadores de edição: Migne, Patrologia Latina, Patrologia Graeca, PL, PG, série, tomo, volume, coluna, caput etc.
+- Corrija OCR leve quando necessário.
 
-### LÓGICA DE DECISÃO:
-- keep: O termo segue as diretrizes.
-- change: O termo existe, mas precisa de normalização, correção de grafia ou expansão.
-- delete: O termo é alucinação, não consta no texto, é uma paráfrase genérica ou é redundante.
-- merge: O termo foi absorvido por outro mais abrangente.
-
-### FILTRO DE RUÍDO (`delete`):
-- Terminologias de coleções editoriais e referências de volume/coluna: 
-  Ex: "Migne", "Patrologia Latina", "Patrologia Graeca", "PL", "PG", "Série Latina", "Série Grega".
-- Marcadores de numeração de página ou coluna do Migne: 
-  Ex: "Col. 123", "Vol. 45", "Tomo VII", "Caput X".
-- Nota: Se o texto mencionar a "Vida de São Fulano escrita por Migne", remova o nome do editor (Migne) e mantenha apenas a entidade (São Fulano). (`change`)
-
-### FORMATO DE SAÍDA (JSON UTF-8 (com acentos e caracteres especiais) PURO):
+Retorne JSON puro:
 {
   "terms": [
     {
-      "original": "<termo original presente no keywords_previa_json>",
-      "nota": "Breve justificativa técnica (máx 10 palavras)",
+      "original": "<escreva como está no json para automação localizar>",
+      "nota": "",
       "decision": "keep | change | delete | merge",
-      "change_to": "Novo Termo correto/Nome do Termo que o absorveu"
-    },
-    ...
+      "change_to": ""
+    }
   ]
 }
 """.strip()
@@ -728,9 +714,15 @@ def build_user_review_prompt(
     resumo_global_limpo = clean_ocr_text_optimized(row.get("resumo_global") or "")[0]
 
     # Adiciona ao contexto autor e obra detectada se não estiver no resumo_global_limpo já
-    if "author_detected" in row and not row["author_detected"].lower() in resumo_global_limpo.lower():
+    if (
+        "author_detected" in row
+        and not row["author_detected"].lower() in resumo_global_limpo.lower()
+    ):
         parts.append(f"Autor Detectado: {row['author_detected']}\n")
-    if "work_detected" in row and not row["work_detected"].lower() in resumo_global_limpo.lower():
+    if (
+        "work_detected" in row
+        and not row["work_detected"].lower() in resumo_global_limpo.lower()
+    ):
         parts.append(f"Obra Detectada: {row['work_detected']}\n")
 
     parts.append(resumo_global_limpo)
@@ -742,9 +734,7 @@ def build_user_review_prompt(
 
     # 4. As keywords que precisam de auditoria
     parts.append("<keywords_previa_json>")
-    parts.append(
-        json.dumps(json.loads(keywords_originais), ensure_ascii=False)
-    )  # Normaliza em UTF-8 e formata o JSON
+    parts.append(keywords_originais)
     parts.append("</keywords_previa_json>\n")
 
     parts.append(
@@ -1879,9 +1869,11 @@ def verify_documents(
                 has_outlier_low = any(
                     "outlier_low_vs_doc" in issue for issue in rep["issues"]
                 )
-                if (not has_outlier_low) and (
-                    raw_kw.strip() or rep["count"] > RECOMMENDED_MIN_KEYWORDS
-                ) and False: # Desativando temporariamente
+                if (
+                    (not has_outlier_low)
+                    and (raw_kw.strip() or rep["count"] > RECOMMENDED_MIN_KEYWORDS)
+                    and False
+                ):  # Desativando temporariamente
                     judge_args = argparse.Namespace(
                         provider=provider,
                         model=model,
@@ -2147,6 +2139,8 @@ def preview_llm_judge(
     doc_name = row.get("documento", "")
     keywords_originais = _pretty_keywords_json(row.get("keywords_json", ""))
     user_prompt = build_user_review_prompt(row, keywords_originais, doc_name=doc_name)
+
+    log.debug("[%s] p%d  prompt: %s", doc_name, row.get("pagina_num"), user_prompt)
 
     ctx_window = num_ctx if provider == "ollama" else 128000
     budget = ctx_window - TOKEN_RESERVE_OUTPUT - TOKEN_RESERVE_SYSTEM

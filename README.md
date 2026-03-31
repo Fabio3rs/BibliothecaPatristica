@@ -21,6 +21,9 @@ Digitalização e processamento das coleções *Patrologia Graeca*, *Latina* e *
 - Python 3.10+, Tesseract (com traineddata lat/grc) e Poppler (`pdftocairo`).
 - Pip do `requirements.txt`.
 - Para OpenAI: `OPENAI_API_KEY` definido. Para Ollama: serviço local com modelo (ex.: `qwen3:30b`).
+- Dados linguísticos (recomendado para verificador de keywords):
+  - NLTK: `python - <<'PY'\nimport nltk\nfor pkg in ['punkt','stopwords','floresta','words','omw-1.4']:\n    nltk.download(pkg)\nPY`
+  - CLTK: `cltk download lat grc syr hye ara hbo gez`
 
 ## Smoke test
 - OCR: rodar `python main2.py` em um PDF pequeno e conferir `.txt` gerado.
