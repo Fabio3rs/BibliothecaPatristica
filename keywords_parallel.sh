@@ -41,6 +41,8 @@ WRITE_FLAG="--write"
 VERIFY_FLAG=""
 NOISE_FLAG=""   # vazio = comportamento padrão (pular ruído)
 RERUN_FLAG=""
+THINK_FLAG="" # --think
+LLM_JUDGE="" # --llm-judge
 
 # ── Parse args ────────────────────────────────────────────────────────────
 while [[ $# -gt 0 ]]; do
@@ -62,6 +64,8 @@ while [[ $# -gt 0 ]]; do
         --rerun-bad)      RERUN_FLAG="--rerun-bad"; shift ;;
         --no-skip-noise)  NOISE_FLAG="--no-skip-noise"; shift ;;
         --dry-run)        DRY_RUN=1; WRITE_FLAG=""; shift ;;
+        --think)         THINK_FLAG="--think"; shift ;;
+        --llm-judge)    LLM_JUDGE="--llm-judge"; shift ;;
         --help|-h)
             head -18 "$0" | tail -14
             exit 0 ;;
@@ -94,6 +98,7 @@ echo "  Jobs paralelos:    $JOBS"
 echo "  DB:                $DB"
 echo "  Timeout:           ${TIMEOUT}s"
 echo "  Retries:           $RETRIES"
+echo "  LLM Judge:         $LLM_JUDGE"
 MODE_LABEL="write"
 if [[ -n "$VERIFY_FLAG" ]]; then
     MODE_LABEL="$VERIFY_FLAG"
@@ -131,6 +136,8 @@ build_cmd() {
         ${VERIFY_FLAG} \
         ${RERUN_FLAG} \
         ${NOISE_FLAG} \
+        ${THINK_FLAG} \
+        ${LLM_JUDGE} \
         > '${logfile}' 2>&1"
 }
 

@@ -63,3 +63,15 @@ Entretanto, em vários casos a LLM pode despejar textos que não estão na pági
 O `main2.py` acumula várias heurísticas porque o pipeline precisa decidir automaticamente, e com baixo custo, se uma página pode ser aceita ou deve ser reprocessada: checamos integridade do XML (estado, fechamento), cruzamos tinta/bordas com a declaração da LLM para detectar alucinações ou omissões, ajustamos capas/guardas para não penalizar textura, usamos classificação visual (vazia/capa/texto) para validar o atributo `estado`, calculamos sobreposição token a token com o Tesseract e agora também bloco a bloco/parágrafo a parágrafo para pegar casos de “um trecho bom + lixo”. Essas regras evitam gastar GPU/LLM em reruns desnecessários, mas, sobretudo, bloqueiam falsos positivos (LLM inventando texto ou marcando vazio quando há conteúdo), mantendo a qualidade do OCR sem explodir custo ou I/O.
 
 Portanto, todo resultado deve ser verificado no texto original e, para uso acadêmico, revisado por especialistas antes de citação ou análise. Registramos data, modelo e provedor de IA nos metadados para transparência.
+
+
+# Citações bíblicas
+
+Neste projeto, as citações bíblicas seguem o padrão tradicional das línguas latinas, em especial o uso consagrado no português. Por isso, adota-se a vírgula como elemento de separação entre capítulo e versículo, em vez dos dois-pontos. Assim, escreve-se, por exemplo, “João 3,16” e não “João 3:16”. Essa escolha não altera o sentido do texto sagrado, mas apenas reflete uma convenção tipográfica própria da nossa língua e amplamente utilizada em edições católicas da Sagrada Escritura.
+
+A vírgula, neste contexto, não exerce função sintática comum (como separar termos de uma frase), mas atua como um marcador de referência. Ela indica a passagem de uma unidade maior (o capítulo) para uma unidade menor (o versículo), de modo semelhante a um endereço que conduz o leitor com precisão ao trecho desejado. Trata-se, portanto, de um uso técnico e padronizado, que facilita tanto a leitura quanto a localização das citações.
+
+Para manter a clareza e a uniformidade, estabelece-se o seguinte padrão de citação: o nome do livro (abreviado ou por extenso) é seguido do número do capítulo, depois uma vírgula, e então o número do versículo. Quando houver intervalo de versículos, utiliza-se o hífen (por exemplo: “Mateus 5,3-12”). Para múltiplas citações, estas devem ser separadas por ponto e vírgula (por exemplo: “João 3,16; 4,1-3; 5,24”).
+
+Essa padronização busca não apenas a consistência formal, mas também a fidelidade ao uso tradicional presente em textos e documentos da Igreja, como o Catecismo da Igreja Católica. Desse modo, garante-se que o projeto permaneça em continuidade com a prática editorial católica, ao mesmo tempo em que oferece ao leitor uma forma clara, ordenada e reconhecível de acessar as referências bíblicas.
+

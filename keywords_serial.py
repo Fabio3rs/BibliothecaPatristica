@@ -50,6 +50,7 @@ from keyword_integrity import IntegrityStatus, ValidationEvidence
 
 # Heurísticas de ruído/rejeição de página OCR
 from test_limpeza_ocr import clean_ocr_text_optimized, classify_page_noise
+from scripture_ref_normalizer import _extract_citations_from_value
 
 # ---------------------------------------------------------------------------
 # Constantes
@@ -596,7 +597,7 @@ Regras:
 - Extraia apenas termos com valor real de indexação.
 - Priorize o núcleo argumentativo da página; ordene keywords_ranking por importância.
 - Normalize nomes de pessoas em forma canônica PT-BR quando houver forma consagrada.
-- Obras e referências bíblicas por extenso.
+- Obras e referências bíblicas por extenso, sem abreviações. Capítulo e versículo separados por vírgula quando explicitamente citados no texto original.
 - Preserve termos técnicos patrísticos consagrados em latim/grego transliterado quando for o uso mais estável.
 - Corrija pequenas falhas de OCR sem inventar conteúdo.
 - Qualquer explicação vai apenas em notas.
@@ -662,7 +663,7 @@ Valide keywords_previa_json contra texto_original.
 Regras:
 - Delete se o termo não estiver sustentado por texto_original, exceto tema teológico realmente explícito no conteúdo.
 - Normalize nomes próprios para a forma canônica PT-BR quando inequívoca.
-- Expanda Bíblia e obras por extenso.
+- Obras e referências bíblicas por extenso, sem abreviações. Capítulo e versículo separados por vírgula quando explicitamente citados no texto original.
 - Se houver duplicatas semânticas, faça merge no termo mais técnico e estável.
 - Preserve termos técnicos patrísticos consagrados em latim/grego transliterado.
 - Delete ruído editorial e marcadores de edição: Migne, Patrologia Latina, Patrologia Graeca, PL, PG, série, tomo, volume, coluna, caput etc.
@@ -675,7 +676,8 @@ Retorne JSON puro:
       "original": "<escreva como está no json para automação localizar>",
       "nota": "",
       "decision": "keep | change | delete | merge",
-      "change_to": ""
+      "change_to": "",
+      "is_canon_name": true/false/null
     }
   ]
 }
@@ -1311,16 +1313,28 @@ def looks_like_reference_keyword(text: str) -> bool:
     """
     Heurística para referências abreviadas (ps. l, 7 / xxvii, 9 / fol. 55, r a).
     Considera ruim strings curtas compostas só de abreviações, algarismos romanos
-    e números.
+    e números. Citações bíblicas reconhecidas pelo normalizer não entram aqui.
     """
     if not text:
         return False
+
+    if _extract_citations_from_value(
+        text,
+        source_kind="keywords",
+        source_path="heuristic",
+        support_mode=False,
+    ):
+        return False
+
+    if _normalize_ambiguous_bible_reference(text):
+        return False
+
     raw = text.lower()
     raw_abbrev_dot = bool(re.search(r"\b[a-z]{1,6}\.", raw))
 
     norm = raw.strip()
-    norm = norm.replace(".", "")
-    tokens = [t for t in re.split(r"[\s,;]+", norm) if t]
+    norm = re.sub(r"[.,;:]+", " ", norm)
+    tokens = [t for t in re.split(r"\s+", norm) if t]
 
     if not tokens or len(tokens) > 7:
         return False
@@ -1383,6 +1397,9 @@ def clean_keywords_structure(
                 clean_cats[name] = cleaned_items
         if clean_cats:
             cleaned["categorias"] = clean_cats
+
+    cleaned, citation_issues = extract_citations(cleaned)
+    issues.extend(citation_issues)
 
     # Normaliza duplicatas de issues
     issues = sorted(set(issues))
@@ -1565,6 +1582,183 @@ def validate_keywords(
             # fail-open: não adiciona issue de erro
 
     return issues
+
+
+# ---------------------------------------------------------------------------
+# Bíblia — normalização de citações dentro do próprio keywords_json
+# ---------------------------------------------------------------------------
+
+
+def _normalized_category_key(text: str) -> str:
+    nfkd = unicodedata.normalize("NFKD", str(text or ""))
+    ascii_approx = "".join(c for c in nfkd if not unicodedata.combining(c))
+    return re.sub(r"\s+", "_", ascii_approx).strip().casefold()
+
+
+def _find_bible_works_category_key(categorias: dict) -> str | None:
+    if not isinstance(categorias, dict):
+        return None
+    target_keys = {"obras_citadas", "obras", "works", "works_cited"}
+    for key, value in categorias.items():
+        if not isinstance(value, list):
+            continue
+        if _normalized_category_key(key) in target_keys:
+            return key
+    return None
+
+
+_AMBIGUOUS_BIBLE_REF_RE = re.compile(
+    r"^\s*(?P<book>(?:[1-3IVXivx]{1,3}\s+)?(?:cor|tm|ts|pe))\s+"
+    r"(?P<chapter>\d{1,3})\s*[:.]\s*(?P<verse>\d{1,3}(?:-\d{1,3})?)\s*$",
+    re.IGNORECASE,
+)
+
+
+def _normalize_ambiguous_bible_reference(text: str) -> str | None:
+    match = _AMBIGUOUS_BIBLE_REF_RE.fullmatch(text or "")
+    if not match:
+        return None
+    raw_book = re.sub(r"\s+", " ", match.group("book")).strip()
+    tokens = raw_book.split()
+    pretty_tokens: list[str] = []
+    for token in tokens:
+        if token.isdigit():
+            pretty_tokens.append(token)
+            continue
+        if re.fullmatch(r"[ivx]+", token, re.IGNORECASE):
+            pretty_tokens.append(token.upper())
+            continue
+        pretty_tokens.append(token[:1].upper() + token[1:].lower())
+    book = " ".join(pretty_tokens)
+    return f"{book} {match.group('chapter')},{match.group('verse')}"
+
+
+def _comparison_keys(rec: dict) -> set[tuple[int, int | None, str | None]]:
+    keys = {(rec.get("book_idx"), rec.get("number"), rec.get("verse"))}
+    if rec.get("verse") is None and rec.get("alt_number") is not None:
+        keys.add((rec.get("book_idx"), rec.get("alt_number"), None))
+    return keys
+
+
+def _citation_covers_whole_item(item: str, rec: dict) -> bool:
+    raw = _deep_clean_keyword(item)
+    frag = _deep_clean_keyword(rec.get("raw", ""))
+    return bool(raw and frag and raw.casefold() == frag.casefold())
+
+
+def _record_matches_anchor(anchor: dict, candidate: dict) -> bool:
+    if _comparison_keys(anchor) & _comparison_keys(candidate):
+        return True
+    return anchor.get("number") is None and candidate["book_idx"] == anchor["book_idx"]
+
+
+def _full_item_citation_record(item: str, records: List[dict]) -> dict | None:
+    for rec in records:
+        if _citation_covers_whole_item(item, rec):
+            return rec
+    return None
+
+
+def _dedupe_after_citation_normalization(items: List[str]) -> tuple[List[str], bool]:
+    deduped = _dedupe_preserve_order(items)
+    return deduped, len(deduped) != len(items)
+
+
+def extract_citations(payload: dict) -> tuple[KeywordsResult, list[str]]:
+    """Normaliza citações bíblicas em obras_citadas e keywords com âncoras seguras."""
+    if not isinstance(payload, dict):
+        return {"keywords": []}, []
+
+    categorias = payload.get("categorias") if isinstance(payload, dict) else {}
+    obras_key = _find_bible_works_category_key(categorias)
+    obras = categorias.get(obras_key) if obras_key and isinstance(categorias, dict) else []
+    if not isinstance(obras, list):
+        obras = []
+    keywords_list = payload.get("keywords") if isinstance(payload, dict) else []
+    if not isinstance(keywords_list, list):
+        keywords_list = []
+
+    issues: list[str] = []
+    anchors: list[dict] = []
+    seen_anchor: set[tuple[int, int | None, str | None]] = set()
+    normalized_obras: list[str] = []
+    for idx, raw in enumerate(obras):
+        if not isinstance(raw, str):
+            continue
+        records = _extract_citations_from_value(
+            raw,
+            source_kind="obras_citadas",
+            source_path=f"categorias.obras_citadas[{idx}]",
+            support_mode=False,
+        )
+        normalized_value = raw
+        full_item_record = _full_item_citation_record(raw, records)
+        if full_item_record:
+            normalized_value = full_item_record["normalized"]
+        else:
+            ambiguous_normalized = _normalize_ambiguous_bible_reference(raw)
+            if ambiguous_normalized:
+                normalized_value = ambiguous_normalized
+        normalized_obras.append(normalized_value)
+
+        for rec in records:
+            key = (rec["book_idx"], rec.get("number"), rec.get("verse"))
+            if key in seen_anchor:
+                continue
+            seen_anchor.add(key)
+            anchors.append(rec)
+
+    if normalized_obras != obras:
+        issues.append("normalized_bible_citation")
+    normalized_obras, removed_obras_dup = _dedupe_after_citation_normalization(
+        normalized_obras
+    )
+    if removed_obras_dup:
+        issues.append("removed_duplicate")
+
+    normalized_keywords: list[str] = []
+    for idx, raw in enumerate(keywords_list):
+        if not isinstance(raw, str):
+            continue
+        records = _extract_citations_from_value(
+            raw,
+            source_kind="keywords",
+            source_path=f"keywords[{idx}]",
+            support_mode=True,
+        )
+        normalized_value = raw
+        full_item_record = _full_item_citation_record(raw, records)
+        if full_item_record:
+            rec = full_item_record
+            if any(_record_matches_anchor(anchor, rec) for anchor in anchors):
+                normalized_value = rec["normalized"]
+        else:
+            ambiguous_normalized = _normalize_ambiguous_bible_reference(raw)
+            if ambiguous_normalized:
+                normalized_value = ambiguous_normalized
+        normalized_keywords.append(normalized_value)
+
+    if normalized_keywords != keywords_list:
+        issues.append("normalized_bible_citation")
+    normalized_keywords, removed_kw_dup = _dedupe_after_citation_normalization(
+        normalized_keywords
+    )
+    if removed_kw_dup:
+        issues.append("removed_duplicate")
+
+    cleaned: KeywordsResult = {"keywords": normalized_keywords}
+    clean_cats: dict[str, list[str]] = {}
+    if isinstance(categorias, dict):
+        for name, items in categorias.items():
+            if obras_key is not None and name == obras_key:
+                if normalized_obras:
+                    clean_cats[name] = normalized_obras
+                continue
+            if isinstance(items, list) and items:
+                clean_cats[name] = items
+    if clean_cats:
+        cleaned["categorias"] = clean_cats
+    return cleaned, sorted(set(issues))
 
 
 def _apply_decision_to_item(
@@ -1872,7 +2066,6 @@ def verify_documents(
                 if (
                     (not has_outlier_low)
                     and (raw_kw.strip() or rep["count"] > RECOMMENDED_MIN_KEYWORDS)
-                    and False
                 ):  # Desativando temporariamente
                     judge_args = argparse.Namespace(
                         provider=provider,
@@ -1896,6 +2089,9 @@ def verify_documents(
                         raw_kw=raw_kw,
                     )
                     continue
+
+                if True:
+                    continue # desativação temporária
 
                 try:
                     result, raw = process_page(
@@ -2190,7 +2386,7 @@ def preview_llm_judge(
                                 "description": "Novo Termo ou Nome do Termo que o absorveu (null se não houver)",
                             },
                             "is_canon_name": {
-                                "type": "boolean",
+                                "type": ["boolean", "null"],
                                 "description": "Indica se este é o nome canônico/oficial",
                             },
                         },
@@ -2199,7 +2395,7 @@ def preview_llm_judge(
                             "nota",
                             "decision",
                             "change_to",
-                            # "is_canon_name",
+                            "is_canon_name",
                         ],
                         "additionalProperties": False,
                     },
