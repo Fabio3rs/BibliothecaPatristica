@@ -151,7 +151,7 @@ def judge_img(
         url=ollama_url,
         openai_base_url=openai_base_url,
         openai_api_key=openai_api_key,
-        prompt=prompt_llm_judge,
+        system_prompt=prompt_llm_judge,
         reprocess=reprocess,
     )
     t5 = time.time()
@@ -204,7 +204,7 @@ def process_img(
         url=ollama_url,
         openai_base_url=openai_base_url,
         openai_api_key=openai_api_key,
-        prompt=prompt_llm_judge,
+        system_prompt=prompt_llm_judge,
         reprocess=reprocess,
     )
     t5 = time.time()

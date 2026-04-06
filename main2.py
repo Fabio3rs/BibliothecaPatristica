@@ -625,9 +625,37 @@ MAIS REGRAS:
 """.strip()
 
 PROMPT_VERIFY_LLM_VS_TESSERACT = """
-Você é um especialista em paleografia e transcrição de documentos históricos e edições críticas (Patrologia Graeca, Latina et Orientalis).
-Sua missão é comparar a imagem da página com o rascunho de OCR abaixo e produzir uma transcrição fiel, corrigindo erros do Tesseract e descartando qualquer trecho que não apareça na imagem.
+Você é um especialista em paleografia e transcrição de documentos históricos (Patrologia Graeca, Latina et Orientalis).
 
+Analise a imagem e produza uma transcrição XML fiel. Identifique primeiro o tipo de página (capa/guarda, texto, gravura).
+
+Se a página estiver realmente em branco: <pagina estado="vazio" tipo="capa_ou_guarda" />
+
+Scripts permitidos: latino, grego, copta, siriaco, cirilico, ethiopico, armenio, arabe, hebraico, misto, desconhecido.
+Tipos permitidos: cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal, outro.
+
+REGRAS:
+1. NUNCA afirme que a página está em branco se houver qualquer vestígio de tinta. Transcreva o que for possível.
+2. Mapeie todos os blocos: rodapés, aparato crítico, notas marginais. Omissão é falha grave.
+3. Tag raiz deve ter atributo estado="com_texto" ou estado="vazio".
+4. BBOX: x1,y1,x2,y2 (escala 0-1000).
+5. Os rascunhos OCR são pistas — confirme visualmente antes de usar. O Tesseract erra scripts, diacríticos e ligaduras. O llm_ocr pode alucinar estrutura e conteúdo; a imagem é sempre a fonte de verdade.
+6. Em duas colunas: transcreva a coluna esquerda inteira, depois a direita. Cabeçalhos e rodapés span-completo ficam na posição visual que ocupam.
+7. Não traduza, não normalize, não invente. Use [ilegivel] apenas por palavra, nunca por bloco.
+
+Formato de saída:
+<pagina estado="com_texto">
+  <bloco tipo="..." script="..." bbox="x1,y1,x2,y2">
+    transcrição literal preservando quebras de linha
+  </bloco>
+  <notas>scripts complexos ou correções relevantes se foram realizadas</notas>
+</pagina>
+
+Retorne APENAS o XML.
+""".strip()
+
+
+USER_PROMPT_VERIFY_LLM_VS_TESSERACT = """
 <rascunho_ocr>
 {tesseract_text}
 </rascunho_ocr>
@@ -636,46 +664,7 @@ Sua missão é comparar a imagem da página com o rascunho de OCR abaixo e produ
 {llm_ocr}
 </llm_ocr>
 
-### ETAPA 1: ANÁLISE VISUAL OBRIGATÓRIA
-Antes de gerar o XML, identifique se a página é:
-- Uma capa ou página de guarda (pode estar em branco ou apenas amarelada).
-- Uma página de texto denso (mesmo que degradado ou com scripts complexos como Siriaco/Grego).
-- Uma página com gravuras ou tabelas.
-
-### ETAPA 2: TRANSCRIÇÃO ESTRUTURADA (XML)
-Se a página estiver REALMENTE em branco (apenas papel), use: <pagina estado="vazio" tipo="capa_ou_guarda" />
-Caso contrário, siga o formato abaixo.
-
-Valores permitidos para script: latino, grego, copta, siriaco, cirilico, ethiopico, armenio, arabe, hebraico, misto, desconhecido.
-Valores permitidos para tipo: cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal, outro.
-
-REGRAS CRÍTICAS CONTRA OMISSÃO E ERROS DO OCR:
-1. PROIBIÇÃO DE NEGATIVA: É terminantemente proibido ignorar blocos de texto ou afirmar que a página está em branco se houver qualquer vestígio de tinta. Se o texto estiver difícil, transcreva o que for possível; NUNCA desista de um bloco.
-2. INTEGRIDADE: Cada nota de rodapé e aparato crítico deve ser mapeado. A omissão de blocos será considerada falha grave de processamento.
-3. ESTADO DA PÁGINA: A tag raiz <pagina> deve conter o atributo 'estado' ("com_texto" ou "vazio").
-4. BBOX: Deve ser x1,y1,x2,y2 (escala 0-1000).
-5. USE O RASCUNHO COMO PISTA, NÃO COMO FONTE CONFIÁVEL: só aproveite palavras/trechos do <rascunho_ocr> que você confirma visualmente na imagem; corrija erros e descarte alucinações de caracteres, palavras, etc.
-6. COERÊNCIA VISUAL: se o rascunho tiver linhas ausentes ou extras, siga SEMPRE o que está na imagem.
-7. AVISO DE DEFEITOS: o OCR rascunho pode falhar e confundir caracteres de um idioma com outro, pode misturar dentro de um mesmo idioma, e pode não reconhecer caracteres especiais, ligaduras ou diacríticos; corrija conforme possível baseando-se na compreensão da imagem.
-8. llm_ocr pode parecer mais organizado e fluente, entretanto, pode sofrer de alucinação de conteúdo e de estrutura.
-9. Possíveis pistas para identificação real do texto nas línguas orientais: a maioria das páginas possui textos de anotações, críticas e em muitos casos, traduções da língua oriental para uma língua latina, pense na relação entre todos os textos.
-10. O llm_ocr pode estar errado. Não use sua estrutura como referência para a ordem da página.
-
-Formato de saída:
-<pagina estado="com_texto">
-  <bloco tipo="..." script="..." bbox="x1,y1,x2,y2">
-    transcrição literal preservando quebras de linha
-  </bloco>
-  <notas>
-    Explique aqui se houve scripts complexos identificados (ex: Siriaco Estrangelo) ou correções relevantes feitas sobre o rascunho do Tesseract.
-  </notas>
-</pagina>
-
-MAIS REGRAS:
-- Preserve a ordem visual (cima para baixo).
-- Não traduza, não normalize, não invente texto.
-- Use [ilegivel] apenas para palavras específicas, não para blocos inteiros.
-- Retorne APENAS o XML.
+Proceda conforme instruções do system.
 """.strip()
 
 
@@ -798,7 +787,8 @@ def ollama_process_image(
     model: str = DEFAULT_LLM_MODEL,
     url: str = DEFAULT_OLLAMA_URL,
     current_try: int = 1,
-    prompt: str = PROMPT,
+    system_prompt: str = PROMPT,
+    user_prompt: str = "Proceda conforme instruções do system.",
     reprocess: bool = False,
 ):
     if current_try <= 3:  # and not reprocess:
@@ -807,7 +797,9 @@ def ollama_process_image(
         img_b64 = base64.b64encode(Path(image_path).read_bytes()).decode("utf-8")
 
     if current_try > 4:
-        prompt += f"\nEsta é uma tentativa de recuperação, número {current_try}\n"
+        system_prompt += (
+            f"\nEsta é uma tentativa de recuperação, número {current_try}\n"
+        )
 
     print(
         f"{len(img_b64) / 1024:.2f} KB de imagem para {image_path.name}; tamanho original {Path(image_path).stat().st_size / 1024:.2f} KB (try {current_try})"
@@ -816,10 +808,10 @@ def ollama_process_image(
     payload = {
         "model": model,
         "messages": [
-            {"role": "system", "content": prompt},
+            {"role": "system", "content": system_prompt},
             {
                 "role": "user",
-                "content": "Proceda conforme instruções do system.",
+                "content": user_prompt,
                 "images": [img_b64],
             },
         ],
@@ -862,7 +854,8 @@ def openai_process_image(
     base_url: str = DEFAULT_OPENAI_BASE_URL,
     api_key: str | None = None,
     current_try: int = 1,
-    prompt: str = PROMPT,
+    system_prompt: str = PROMPT,
+    user_prompt: str = "Proceda conforme instruções do system.",
     mime: str = "image/png",
     reprocess: bool = False,
 ):
@@ -882,7 +875,9 @@ def openai_process_image(
         img_b64 = base64.b64encode(Path(image_path).read_bytes()).decode("utf-8")
 
     if current_try > 4:
-        prompt += f"\nEsta é uma tentativa de recuperação, número {current_try}\n"
+        system_prompt += (
+            f"\nEsta é uma tentativa de recuperação, número {current_try}\n"
+        )
 
     print(
         f"{len(img_b64) / 1024:.2f} KB de imagem para {image_path.name}; try {current_try} (openai)"
@@ -891,13 +886,13 @@ def openai_process_image(
     image_url = {"url": f"data:{mime};base64,{img_b64}"}
 
     messages = [
-        {"role": "system", "content": prompt},
+        {"role": "system", "content": system_prompt},
         {
             "role": "user",
             "content": [
                 {
                     "type": "text",
-                    "text": "Proceda conforme instruções do system.",
+                    "text": user_prompt,
                 },
                 {"type": "image_url", "image_url": image_url},
             ],
@@ -922,6 +917,8 @@ def openai_process_image(
             timeout = 900
         else:
             payload["reasoning_effort"] = "low"
+
+        payload["service_tier"] = "flex"
 
     url = base_url.rstrip("/") + "/chat/completions"
 
@@ -1365,6 +1362,10 @@ def should_call_llm_judge(
     if avalia_caso_perdido(img_path):
         return False, "caso_perdido"
 
+    # A partir de agora, todos os txts deverão estar no padrão XML, o que não estiver, rejeitamos e rodamos de novo
+    if not txt.strip().startswith("<pagina"):
+        return True, "txt_invalid"
+
     is_good, reason = _latest_eval_is_good(img_path, eval_db_path)
     if is_good:
         return False, reason
@@ -1382,7 +1383,8 @@ def llm_process_image_autoretry(
     url: str = DEFAULT_OLLAMA_URL,
     openai_base_url: str = DEFAULT_OPENAI_BASE_URL,
     openai_api_key: str | None = None,
-    prompt: str = PROMPT,
+    system_prompt: str = PROMPT,
+    user_prompt: str = "Proceda conforme instruções do system.",
     reprocess: bool = False,
 ):
     # ultimo_doc_legivel = ""
@@ -1397,7 +1399,8 @@ def llm_process_image_autoretry(
                     base_url=openai_base_url,
                     api_key=openai_api_key,
                     current_try=i + 1,
-                    prompt=prompt,
+                    system_prompt=system_prompt,
+                    user_prompt=user_prompt,
                     reprocess=reprocess,
                 )
             else:
@@ -1406,7 +1409,8 @@ def llm_process_image_autoretry(
                     model=model,
                     url=url,
                     current_try=i + 1,
-                    prompt=prompt,
+                    system_prompt=system_prompt,
+                    user_prompt=user_prompt,
                     reprocess=reprocess,
                 )
 
@@ -1444,7 +1448,8 @@ def llm_process_chat_retry(
     url: str = DEFAULT_OLLAMA_URL,
     openai_base_url: str = DEFAULT_OPENAI_BASE_URL,
     openai_api_key: str | None = None,
-    prompt: str = PROMPT,
+    system_prompt: str = PROMPT,
+    user_prompt: str = "Proceda conforme instruções do system.",
     reprocess: bool = False,
 ):
     # ultimo_doc_legivel = ""
@@ -1458,7 +1463,8 @@ def llm_process_chat_retry(
                     base_url=openai_base_url,
                     api_key=openai_api_key,
                     current_try=i + 1,
-                    prompt=prompt,
+                    system_prompt=system_prompt,
+                    user_prompt=user_prompt,
                     reprocess=reprocess,
                 )
             else:
@@ -1467,7 +1473,8 @@ def llm_process_chat_retry(
                     model=model,
                     url=url,
                     current_try=i + 1,
-                    prompt=prompt,
+                    system_prompt=system_prompt,
+                    user_prompt=user_prompt,
                     reprocess=reprocess,
                 )
 
@@ -1589,7 +1596,7 @@ def ocr_images_to_text(
                 url=ollama_url,
                 openai_base_url=openai_base_url,
                 openai_api_key=openai_api_key,
-                prompt=prompt,
+                system_prompt=prompt,
             )
         else:
             txt = ocr_tesseract(img_path)
@@ -1700,7 +1707,8 @@ def verify_one(
         f"[{time.strftime('%H:%M:%S')}] [START] {img_path.name} (PID: {current_pid}, Index: {process_index}, OMP_PLACES: {omp_places})"
     )
 
-    return img_path, verify_page(img_path, txt_dir, lang=lang)
+    # A partir de agora, todos os txts deverão estar no padrão XML, o que não estiver, rejeitamos e rodamos de novo
+    return img_path, verify_page(img_path, txt_dir, lang=lang, expect_txt_xml=True)
 
 
 def _ocr_one(
@@ -1761,7 +1769,9 @@ def _ocr_one(
                 txt = clean_text_oriental(txt).strip()
 
             # PROMPT_VERIFY_LLM_VS_TESSERACT
-            prompt_llm_judge = PROMPT_VERIFY_LLM_VS_TESSERACT.format(
+            prompt_llm_judge = PROMPT_VERIFY_LLM_VS_TESSERACT
+
+            user_prompt = USER_PROMPT_VERIFY_LLM_VS_TESSERACT.format(
                 tesseract_text=tesseractres, llm_ocr=txt
             )
 
@@ -1775,7 +1785,8 @@ def _ocr_one(
                 url=ollama_url,
                 openai_base_url=openai_base_url,
                 openai_api_key=openai_api_key,
-                prompt=prompt_llm_judge,
+                system_prompt=prompt_llm_judge,
+                user_prompt=user_prompt,
                 reprocess=reprocess,
             )
             t5 = time.time()
@@ -1985,7 +1996,7 @@ def judge_one(
         url=ollama_url,
         openai_base_url=openai_base_url,
         openai_api_key=openai_api_key,
-        prompt=prompt_llm_judge,
+        system_prompt=prompt_llm_judge,
         reprocess=True,
     )
     t1 = time.time()
