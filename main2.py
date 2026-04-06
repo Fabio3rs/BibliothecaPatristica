@@ -577,51 +577,34 @@ MAIS REGRAS:
 - Retorne APENAS o XML.
 """.strip()
 
-PROMPT_VERIFY_VS_TESSERACT = """
-Você é um especialista em paleografia e transcrição de documentos históricos e edições críticas (Patrologia Graeca, Latina et Orientalis).
-Sua missão é comparar a imagem da página com o rascunho de OCR abaixo e produzir uma transcrição fiel, corrigindo erros do Tesseract e descartando qualquer trecho que não apareça na imagem.
+PROMPT_VERIFY_TESSERACT = """
+Você é um especialista em paleografia e transcrição de documentos históricos (Patrologia Graeca, Latina et Orientalis).
 
-<rascunho_ocr>
-{tesseract_text}
-</rascunho_ocr>
+Analise a imagem e produza uma transcrição XML fiel. Identifique primeiro o tipo de página (capa/guarda, texto, gravura).
 
-### ETAPA 1: ANÁLISE VISUAL OBRIGATÓRIA
-Antes de gerar o XML, identifique se a página é:
-- Uma capa ou página de guarda (pode estar em branco ou apenas amarelada).
-- Uma página de texto denso (mesmo que degradado ou com scripts complexos como Siriaco/Grego).
-- Uma página com gravuras ou tabelas.
+Se a página estiver realmente em branco: <pagina estado="vazio" tipo="capa_ou_guarda" />
 
-### ETAPA 2: TRANSCRIÇÃO ESTRUTURADA (XML)
-Se a página estiver REALMENTE em branco (apenas papel), use: <pagina estado="vazio" tipo="capa_ou_guarda" />
-Caso contrário, siga o formato abaixo.
+Scripts permitidos: latino, grego, copta, siriaco, cirilico, ethiopico, armenio, arabe, hebraico, misto, desconhecido.
+Tipos permitidos: cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal, outro.
 
-Valores permitidos para script: latino, grego, copta, siriaco, cirilico, ethiopico, armenio, arabe, hebraico, misto, desconhecido.
-Valores permitidos para tipo: cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal, outro.
-
-REGRAS CRÍTICAS CONTRA OMISSÃO E ERROS DO OCR:
-1. PROIBIÇÃO DE NEGATIVA: É terminantemente proibido ignorar blocos de texto ou afirmar que a página está em branco se houver qualquer vestígio de tinta. Se o texto estiver difícil, transcreva o que for possível; NUNCA desista de um bloco.
-2. INTEGRIDADE: Cada nota de rodapé e aparato crítico deve ser mapeado. A omissão de blocos será considerada falha grave de processamento.
-3. ESTADO DA PÁGINA: A tag raiz <pagina> deve conter o atributo 'estado' ("com_texto" ou "vazio").
-4. BBOX: Deve ser x1,y1,x2,y2 (escala 0-1000).
-5. USE O RASCUNHO COMO PISTA, NÃO COMO FONTE CONFIÁVEL: só aproveite palavras/trechos do <rascunho_ocr> que você confirma visualmente na imagem; corrija erros e descarte alucinações de caracteres, palavras, etc.
-6. COERÊNCIA VISUAL: se o rascunho tiver linhas ausentes ou extras, siga SEMPRE o que está na imagem.
-7. AVISO DE DEFEITOS: o OCR rascunho pode falhar e confundir caracteres de um idioma com outro, pode misturar dentro de um mesmo idioma, e pode não reconhecer caracteres especiais, ligaduras ou diacríticos; corrija conforme possível baseando-se na compreensão da imagem.
+REGRAS:
+1. NUNCA afirme que a página está em branco se houver qualquer vestígio de tinta. Transcreva o que for possível.
+2. Mapeie todos os blocos: rodapés, aparato crítico, notas marginais. Omissão é falha grave.
+3. Tag raiz deve ter atributo estado="com_texto" ou estado="vazio".
+4. BBOX: x1,y1,x2,y2 (escala 0-1000).
+5. O rascunho OCR é uma pista — confirme visualmente antes de usar. O Tesseract erra scripts, diacríticos e ligaduras.
+6. Em duas colunas: transcreva a coluna esquerda inteira, depois a direita. Cabeçalhos e rodapés span-completo ficam na posição visual que ocupam.
+7. Não traduza, não normalize, não invente. Use [ilegivel] apenas por palavra, nunca por bloco.
 
 Formato de saída:
 <pagina estado="com_texto">
   <bloco tipo="..." script="..." bbox="x1,y1,x2,y2">
     transcrição literal preservando quebras de linha
   </bloco>
-  <notas>
-    Explique aqui se houve scripts complexos identificados (ex: Siriaco Estrangelo) ou correções relevantes feitas sobre o rascunho do Tesseract.
-  </notas>
+  <notas>scripts complexos ou correções relevantes se foram realizadas</notas>
 </pagina>
 
-MAIS REGRAS:
-- Preserve a ordem visual (cima para baixo).
-- Não traduza, não normalize, não invente texto.
-- Use [ilegivel] apenas para palavras específicas, não para blocos inteiros.
-- Retorne APENAS o XML.
+Retorne APENAS o XML.
 """.strip()
 
 PROMPT_VERIFY_LLM_VS_TESSERACT = """
@@ -667,6 +650,13 @@ USER_PROMPT_VERIFY_LLM_VS_TESSERACT = """
 Proceda conforme instruções do system.
 """.strip()
 
+USER_PROMPT_VERIFY_TESSERACT = """
+<rascunho_ocr>
+{tesseract_text}
+</rascunho_ocr>
+
+Proceda conforme instruções do system.
+""".strip()
 
 PROMPT_LLM_JUDGE = """
 Você é um especialista em paleografia e transcrição de documentos históricos (Patrologia Graeca, Latina et Orientalis).
@@ -713,19 +703,6 @@ Formato de saída esperado (retorne apenas o XML válido preenchido de acordo co
 {llm_ocr}
 </ocr>
 """.strip()
-
-
-def render_prompt_verify_vs_tesseract(
-    tesseract_text: str, max_chars: int = 12000
-) -> str:
-    """Renderiza o prompt de comparação usando o rascunho do Tesseract.
-
-    O rascunho é truncado para evitar prompts gigantes que explodem o token limit.
-    """
-    cleaned = tesseract_text.strip()
-    if len(cleaned) > max_chars:
-        cleaned = cleaned[:max_chars] + "\n[TRUNCADO]"
-    return PROMPT_VERIFY_VS_TESSERACT.format(tesseract_text=cleaned)
 
 
 def preprocess_adaptative_ocr(img_bgr: np.ndarray) -> np.ndarray:
@@ -1769,11 +1746,19 @@ def _ocr_one(
                 txt = clean_text_oriental(txt).strip()
 
             # PROMPT_VERIFY_LLM_VS_TESSERACT
-            prompt_llm_judge = PROMPT_VERIFY_LLM_VS_TESSERACT
+            prompt_llm_judge = ""
+            user_prompt = ""
 
-            user_prompt = USER_PROMPT_VERIFY_LLM_VS_TESSERACT.format(
-                tesseract_text=tesseractres, llm_ocr=txt
-            )
+            if clean_text_oriental(tesseractres).strip() == txt:
+                prompt_llm_judge = PROMPT_VERIFY_TESSERACT
+                user_prompt = USER_PROMPT_VERIFY_TESSERACT.format(
+                    tesseract_text=tesseractres
+                )
+            else:
+                prompt_llm_judge = PROMPT_VERIFY_LLM_VS_TESSERACT
+                user_prompt = USER_PROMPT_VERIFY_LLM_VS_TESSERACT.format(
+                    tesseract_text=tesseractres, llm_ocr=txt
+                )
 
             print(f"PROMPT_VERIFY_LLM_VS_TESSERACT  {prompt_llm_judge}")
 
