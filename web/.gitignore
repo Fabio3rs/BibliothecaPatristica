@@ -9,9 +9,9 @@ node_modules/
 dist/
 .dist/
 .astro/
-pagefind/
 
-# Pagefind CLI artifacts
+# Pagefind CLI artifacts (only in dist, not in public/)
+dist/pagefind/
 pagefind.json
 pagefind.log
 
