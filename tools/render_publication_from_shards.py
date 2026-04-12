@@ -27,10 +27,12 @@ import argparse
 import json
 import sqlite3
 import unicodedata
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional
+
+import numpy as np
 
 
 def log(msg: str) -> None:
@@ -48,8 +50,6 @@ class PageRecord:
     keywords: List[str]
     keyword_categories: Dict[str, List[str]]
     created_at: str
-    resumo_pagina_hdbscan_group_id: Optional[int] = None
-    resumo_global_hdbscan_group_id: Optional[int] = None
 
 
 def now_iso() -> str:
@@ -82,22 +82,18 @@ def load_shard(shard_path: Path) -> List[PageRecord]:
                 if clean:
                     kw_cats_norm[str(cat).strip()] = clean
 
-            recs.append(PageRecord(
-                doc=r["doc"],
-                page=int(r["page"]),
-                file=r.get("file", ""),
-                summary_page=r.get("summary_page", ""),
-                summary_global=r.get("summary_global", ""),
-                keywords=r.get("keywords") or [],
-                keyword_categories=kw_cats_norm,
-                created_at=r.get("created_at", ""),
-                resumo_pagina_hdbscan_group_id=(
-                    None if r.get("resumo_pagina_hdbscan_group_id") is None else int(r.get("resumo_pagina_hdbscan_group_id"))
-                ),
-                resumo_global_hdbscan_group_id=(
-                    None if r.get("resumo_global_hdbscan_group_id") is None else int(r.get("resumo_global_hdbscan_group_id"))
-                ),
-            ))
+            recs.append(
+                PageRecord(
+                    doc=r["doc"],
+                    page=int(r["page"]),
+                    file=r.get("file", ""),
+                    summary_page=r.get("summary_page", ""),
+                    summary_global=r.get("summary_global", ""),
+                    keywords=r.get("keywords") or [],
+                    keyword_categories=kw_cats_norm,
+                    created_at=r.get("created_at", ""),
+                )
+            )
     return recs
 
 
@@ -106,9 +102,7 @@ def ensure_dirs(out: Path) -> None:
         sub.mkdir(parents=True, exist_ok=True)
 
 
-def build_keyword_lookup(
-    db_path: Path, keywords_json_path: Path
-) -> Dict[str, str]:
+def build_keyword_lookup(db_path: Path, keywords_json_path: Path) -> Dict[str, str]:
     """Constrói mapa  keyword_original (bruta do shard) → canonical_id.
 
     Estratégia:
@@ -139,7 +133,9 @@ def build_keyword_lookup(
         slug = "-".join([p for p in slug.split("-") if p])
         return slug or "kw"
 
-    def canonical_slug_id(nome_canonico: str, label_norm: str, label: str, group_id: int) -> str:
+    def canonical_slug_id(
+        nome_canonico: str, label_norm: str, label: str, group_id: int
+    ) -> str:
         for base in (nome_canonico, label_norm, label):
             s = slugify(base or "")
             if s and s != "kw":
@@ -206,9 +202,141 @@ def build_keyword_lookup(
     con.close()
 
     if skipped:
-        log(f"[WARN] {skipped} keywords do DB não encontradas no keywords.json (ignoradas).")
+        log(
+            f"[WARN] {skipped} keywords do DB não encontradas no keywords.json (ignoradas)."
+        )
 
     return lookup
+
+
+# ---------------------------------------------------------------------------
+# KNN sobre embeddings UMAP de página (cross-volume related pages)
+# ---------------------------------------------------------------------------
+
+
+class PageKNN:
+    """Índice KNN sobre os embeddings UMAP reduzidos de resumo_pagina.
+
+    Carrega a tabela `resumo_pagina_embedding_reduced` do SQLite de resumos
+    (patristica_resumos.db) e monta um NearestNeighbors sklearn (euclidean).
+    Uso: knn.query(doc, page, topk) → lista de {"doc", "page", "dist"}.
+
+    Páginas do mesmo documento são excluídas dos resultados para garantir
+    diversidade cross-volume nas sugestões do front-end.
+    """
+
+    def __init__(self, db_path: Path, topk_internal: int = 30) -> None:
+        """topk_internal: vizinhos buscados internamente antes de filtrar
+        mesmo-doc; deve ser maior que o topk real para absorver exclusões."""
+        from sklearn.neighbors import NearestNeighbors
+
+        log(f"[KNN] Carregando embeddings UMAP de página de {db_path} ...")
+        con = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
+        con.execute("PRAGMA busy_timeout = 30000;")
+        rows = con.execute(
+            "SELECT documento, pagina_num, n_components, embedding "
+            "FROM resumo_pagina_embedding_reduced "
+            "ORDER BY rowid"
+        ).fetchall()
+        con.close()
+
+        if not rows:
+            raise RuntimeError(
+                "resumo_pagina_embedding_reduced está vazia ou não existe."
+            )
+
+        n_components = rows[0][2]
+        self._rows_meta: List[Tuple[str, int]] = [(r[0], r[1]) for r in rows]
+        self._pos: Dict[Tuple[str, int], int] = {
+            k: i for i, k in enumerate(self._rows_meta)
+        }
+        X = np.frombuffer(b"".join(r[3] for r in rows), dtype=np.float32).reshape(
+            len(rows), n_components
+        )
+
+        log(f"[KNN] {len(rows)} vetores ({n_components}d). Construindo índice ...")
+        self._nn = NearestNeighbors(
+            n_neighbors=min(topk_internal, len(rows)),
+            metric="euclidean",
+            algorithm="auto",
+            n_jobs=-1,
+        )
+        self._nn.fit(X)
+        self._X = X
+        self._topk_internal = topk_internal
+        log("[KNN] Índice pronto.")
+
+    def query(
+        self,
+        doc: str,
+        page: int,
+        topk: int,
+        cross_doc_only: bool = True,
+        min_dist: float = 0.01,
+    ) -> List[Dict]:
+        """Retorna até `topk` vizinhos mais próximos para uma única página.
+
+        Se cross_doc_only=True (padrão) exclui páginas do mesmo documento.
+        min_dist filtra vizinhos com distância < threshold (padrão 0.01) —
+        evita que páginas de conteúdo administrativo/folhas de rosto que
+        colapsaram no mesmo ponto UMAP apareçam como "relacionadas".
+        Resultado: [{"doc": str, "page": int, "dist": float}, ...]
+        """
+        result = self.query_batch(
+            [(doc, page)], topk=topk, cross_doc_only=cross_doc_only, min_dist=min_dist
+        )
+        return result.get((doc, page), [])
+
+    def query_batch(
+        self,
+        keys: List[Tuple[str, int]],
+        topk: int,
+        cross_doc_only: bool = True,
+        min_dist: float = 0.01,
+    ) -> Dict[Tuple[str, int], List[Dict]]:
+        """Calcula vizinhos para um lote de páginas em uma única chamada KNN.
+
+        Muito mais eficiente que chamar query() individualmente — executa um
+        único kneighbors em batch (shape: [N_keys, topk_internal]).
+
+        Retorna dict (doc, page) → [{"doc", "page", "dist"}, ...]
+        As chaves sem embedding no índice são omitidas do resultado.
+        """
+        # Filtrar apenas chaves presentes no índice e registrar posições
+        valid: List[Tuple[Tuple[str, int], int]] = []  # (key, qi)
+        for key in keys:
+            qi = self._pos.get(key)
+            if qi is not None:
+                valid.append((key, qi))
+        if not valid:
+            return {}
+
+        query_idxs = [qi for _, qi in valid]
+        X_query = self._X[query_idxs]  # shape (N, n_components)
+
+        k = min(self._topk_internal + 1, len(self._rows_meta))
+        all_dists, all_idxs = self._nn.kneighbors(X_query, n_neighbors=k)
+
+        out: Dict[Tuple[str, int], List[Dict]] = {}
+        for (key, qi), dists_row, idxs_row in zip(valid, all_dists, all_idxs):
+            doc, _ = key
+            results: List[Dict] = []
+            for idx, dist in zip(idxs_row, dists_row):
+                if idx == qi:
+                    continue
+                if dist < min_dist:
+                    continue
+                ndoc, npage = self._rows_meta[idx]
+                if cross_doc_only and ndoc == doc:
+                    continue
+                results.append(
+                    {"doc": ndoc, "page": npage, "dist": round(float(dist), 4)}
+                )
+                if len(results) >= topk:
+                    break
+            if results:
+                out[key] = results
+        return out
 
 
 def page_blocks(
@@ -217,12 +345,25 @@ def page_blocks(
     volume_id: str,
     keyword_ids: Dict[str, str],
     raw_base_url: str = "",
+    knn: Optional["PageKNN"] = None,
+    related_topk: int = 5,
+    knn_min_dist: float = 0.01,
 ) -> Tuple[List[dict], List[dict]]:
     recs_sorted = sorted(recs, key=lambda r: r.page)
     blocks = []
     page_files = []
+
+    # Pré-calcula KNN para TODAS as páginas do volume em uma única chamada batch,
+    # eliminando o overhead de 288k chamadas individuais kneighbors.
+    knn_results: Dict[Tuple[str, int], List[Dict]] = {}
+    if knn is not None:
+        all_keys = [(volume_id, r.page) for r in recs_sorted]
+        knn_results = knn.query_batch(
+            all_keys, topk=related_topk, cross_doc_only=True, min_dist=knn_min_dist
+        )
+
     for idx, start in enumerate(range(0, len(recs_sorted), block_size), start=1):
-        chunk = recs_sorted[start:start+block_size]
+        chunk = recs_sorted[start : start + block_size]
         file_name = f"meta/{volume_id}-pages-{idx:03d}.json"
         block = {
             "schema_version": 1,
@@ -232,7 +373,7 @@ def page_blocks(
             "page_first": chunk[0].page,
             "page_last": chunk[-1].page,
             "dict_refs": {"keywords": "dict/keywords.json"},
-            "pages": []
+            "pages": [],
         }
         for r in chunk:
             kws = [keyword_ids[k] for k in r.keywords if k in keyword_ids]
@@ -252,10 +393,16 @@ def page_blocks(
                 "keyword_ids": kws,
                 "keyword_categories": kw_cats_ids,
                 "snapshot_ids": [f"snap:{volume_id}:global"],
-                # clusters gerados externamente (HDBSCAN)
-                "resumo_pagina_hdbscan_group_id": r.resumo_pagina_hdbscan_group_id,
-                "resumo_global_hdbscan_group_id": r.resumo_global_hdbscan_group_id,
+                # HDBSCAN group IDs ficam comentados: são dados de pipeline intermediário.
+                # O front-end usa related_pages (KNN) em vez de lookups por cluster_id.
+                # "resumo_pagina_hdbscan_group_id": r.resumo_pagina_hdbscan_group_id,
+                # "resumo_global_hdbscan_group_id": r.resumo_global_hdbscan_group_id,
             }
+
+            # Páginas relacionadas: resultado pré-calculado no batch acima
+            related = knn_results.get((volume_id, r.page))
+            if related:
+                page_entry["related_pages"] = related
 
             # Salva o nome do arquivo de texto OCR e, se tivermos uma base URL,
             # monta a URL completa para o GitHub raw content.
@@ -269,52 +416,16 @@ def page_blocks(
 
             block["pages"].append(page_entry)
         blocks.append(block)
-        page_files.append({
-            "index": idx,
-            "file": file_name,
-            "page_first": chunk[0].page,
-            "page_last": chunk[-1].page,
-            "count": len(chunk)
-        })
+        page_files.append(
+            {
+                "index": idx,
+                "file": file_name,
+                "page_first": chunk[0].page,
+                "page_last": chunk[-1].page,
+                "count": len(chunk),
+            }
+        )
     return blocks, page_files
-
-
-def write_cluster_files(out_base: Path, volume_id: str, recs: List[PageRecord], ndjson_threshold: int = 1000) -> None:
-    """Gera arquivos por cluster (página/global) em web/public/clusters/{volume}/page|global/."""
-    base = out_base / "clusters" / volume_id
-    page_dir = base / "page"
-    global_dir = base / "global"
-    page_dir.mkdir(parents=True, exist_ok=True)
-    global_dir.mkdir(parents=True, exist_ok=True)
-
-    clusters_page: Dict[int, List[int]] = {}
-    clusters_global: Dict[int, List[int]] = {}
-    for r in recs:
-        if r.resumo_pagina_hdbscan_group_id is not None:
-            clusters_page.setdefault(int(r.resumo_pagina_hdbscan_group_id), []).append(r.page)
-        if r.resumo_global_hdbscan_group_id is not None:
-            clusters_global.setdefault(int(r.resumo_global_hdbscan_group_id), []).append(r.page)
-
-    # Escrita: JSON pequeno, NDJSON para grandes
-    def _write_cluster(dirpath: Path, gid: int, pages: List[int]):
-        fname_json = dirpath / f"{gid}-hdbscan.json"
-        fname_nd = dirpath / f"{gid}-hdbscan.ndjson"
-        obj = {"cluster_id": gid, "pages": sorted(pages), "count": len(pages)}
-        if len(pages) >= ndjson_threshold:
-            # ndjson: um objeto por linha (mais eficiente para streams)
-            with fname_nd.open("w", encoding="utf-8") as f:
-                for p in sorted(pages):
-                    f.write(json.dumps({"page": p}, ensure_ascii=False) + "\n")
-            # grava também um resumo JSON
-            write_json(fname_json, {"cluster_id": gid, "count": len(pages), "format": "ndjson"})
-        else:
-            write_json(fname_json, obj)
-
-    for gid, pages in clusters_page.items():
-        _write_cluster(page_dir, gid, pages)
-
-    for gid, pages in clusters_global.items():
-        _write_cluster(global_dir, gid, pages)
 
 
 def write_json(path: Path, obj: dict) -> None:
@@ -327,14 +438,61 @@ def write_json(path: Path, obj: dict) -> None:
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Renderiza artefatos do site a partir dos shards de enriquecimento.")
-    ap.add_argument("--index", type=Path, default=Path("data/shards/enrichment/index.json"))
+    ap = argparse.ArgumentParser(
+        description="Renderiza artefatos do site a partir dos shards de enriquecimento."
+    )
+    ap.add_argument(
+        "--index", type=Path, default=Path("data/shards/enrichment/index.json")
+    )
     ap.add_argument("--out", type=Path, default=Path("web/public"))
     ap.add_argument("--page-block-size", type=int, default=100)
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB,
-                    help="SQLite patristica_keywords.db (para resolver keywords → IDs canônicos)")
-    ap.add_argument("--keywords-json", type=Path, default=DEFAULT_KEYWORDS_JSON,
-                    help="keywords.json gerado por export_keywords_dicts.py")
+    ap.add_argument(
+        "--db",
+        type=Path,
+        default=DEFAULT_DB,
+        help="SQLite patristica_keywords.db (para resolver keywords → IDs canônicos)",
+    )
+    ap.add_argument(
+        "--keywords-json",
+        type=Path,
+        default=DEFAULT_KEYWORDS_JSON,
+        help="keywords.json gerado por export_keywords_dicts.py",
+    )
+    ap.add_argument(
+        "--resumos-db",
+        type=Path,
+        default=None,
+        help=(
+            "SQLite patristica_resumos.db com tabela resumo_pagina_embedding_reduced. "
+            "Se fornecido, emite related_pages em cada página via KNN (cross-volume). "
+            "Omita para desativar o cálculo de páginas relacionadas."
+        ),
+    )
+    ap.add_argument(
+        "--related-topk",
+        type=int,
+        default=5,
+        help="Número de páginas relacionadas a emitir por página (padrão: 5).",
+    )
+    ap.add_argument(
+        "--related-knn-pool",
+        type=int,
+        default=40,
+        help=(
+            "Vizinhos buscados internamente antes de filtrar mesmo-doc "
+            "(deve ser > related-topk; padrão: 40)."
+        ),
+    )
+    ap.add_argument(
+        "--related-min-dist",
+        type=float,
+        default=0.01,
+        help=(
+            "Distância mínima euclidiana (espaço UMAP) para aceitar um vizinho. "
+            "Filtra páginas administrativas/folhas-de-rosto que colapsam em dist≈0. "
+            "Padrão: 0.01."
+        ),
+    )
     ap.add_argument(
         "--raw-base-url",
         type=str,
@@ -350,6 +508,14 @@ def main():
 
     ensure_dirs(args.out)
     idx = load_index(args.index)
+
+    # KNN para páginas relacionadas (opcional)
+    knn: Optional[PageKNN] = None
+    if args.resumos_db is not None:
+        try:
+            knn = PageKNN(args.resumos_db, topk_internal=args.related_knn_pool)
+        except Exception as e:
+            log(f"[WARN] KNN desativado — falha ao carregar {args.resumos_db}: {e}")
 
     # Carregar todos os records por volume
     volumes_pages: Dict[str, List[PageRecord]] = {}
@@ -396,22 +562,24 @@ def main():
                     "summary": summary_global or "",
                     "keyword_ids": [],
                 }
-            ]
+            ],
         }
         write_json(snapshot_path, snapshot_obj)
 
         # blocos de páginas
-        blocks, page_files = page_blocks(recs, args.page_block_size, vid, kw_map, args.raw_base_url)
+        blocks, page_files = page_blocks(
+            recs,
+            args.page_block_size,
+            vid,
+            kw_map,
+            args.raw_base_url,
+            knn=knn,
+            related_topk=args.related_topk,
+            knn_min_dist=args.related_min_dist,
+        )
         for b in blocks:
             out_path = args.out / "meta" / f"{vid}-pages-{b['block_index']:03d}.json"
             write_json(out_path, b)
-
-        # gera arquivos por cluster (página/global) para o volume
-        try:
-            write_cluster_files(args.out, vid, recs)
-            log(f"Volume {vid}: cluster files escritos em {args.out}/clusters/{vid}/")
-        except Exception as e:
-            log(f"[WARN] falha ao escrever cluster files para {vid}: {e}")
 
         # manifesto do volume
         meta_obj = {
@@ -434,16 +602,18 @@ def main():
         write_json(args.out / "meta" / f"{vid}.json", meta_obj)
 
         # volumes.json entry
-        volumes_out.append({
-            "id": vid,
-            "collection_id": vid[:2],
-            "page_first": page_first,
-            "page_last": page_last,
-            "page_count": len(recs),
-            "meta_url": f"meta/{vid}.json",
-            "search_bundle": "pagefind/main",
-            "viewer_url_template": f"/pdfocr/viewer?doc={vid}&page={{page}}",
-        })
+        volumes_out.append(
+            {
+                "id": vid,
+                "collection_id": vid[:2],
+                "page_first": page_first,
+                "page_last": page_last,
+                "page_count": len(recs),
+                "meta_url": f"meta/{vid}.json",
+                "search_bundle": "pagefind/main",
+                "viewer_url_template": f"/pdfocr/viewer?doc={vid}&page={{page}}",
+            }
+        )
         log(f"Volume {vid}: snapshots/meta/page-blocks escritos.")
 
     volumes_json = {

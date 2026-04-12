@@ -326,6 +326,59 @@ const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
         const snapBlock = addMetaBlock('Snapshots', snapshotLabels);
         if (snapBlock) sidebar.appendChild(snapBlock);
 
+        // Páginas relacionadas (KNN cross-volume)
+        const relatedPages = page.related_pages || [];
+        if (relatedPages.length) {
+          const volMap = new Map(volumes.volumes.map((v) => [v.id, v]));
+
+          const relBlock = document.createElement('div');
+          relBlock.className = 'meta-block';
+          {
+            const relH4 = document.createElement('h4');
+            relH4.style.cssText = 'font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--color-muted); margin:0 0 0.75rem;';
+            relH4.textContent = 'Páginas relacionadas';
+            relBlock.appendChild(relH4);
+          }
+          {
+            const relH4 = document.createElement('h4');
+            relH4.style.cssText = 'font-size:0.6rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--color-muted); margin:0 0 0.75rem;';
+            relH4.textContent = '(Distância semântica por LLM)';
+            relBlock.appendChild(relH4);
+          }
+
+          const relList = document.createElement('ul');
+          relList.style.cssText = 'list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:var(--space-2);';
+
+          relatedPages.forEach((rel) => {
+            const relVol = volMap.get(rel.doc);
+            const li = document.createElement('li');
+
+            const a = document.createElement('a');
+            const params = new URLSearchParams({ doc: rel.doc, page: String(rel.page) });
+            a.href = `${assetBase}viewer?${params.toString()}`;
+            a.style.cssText = 'display:flex; flex-direction:column; gap:2px; padding:var(--space-2) var(--space-3); border-radius:var(--radius); background:var(--color-surface); border:1px solid var(--color-border); text-decoration:none; color:inherit; transition: border-color 0.15s;';
+            a.addEventListener('mouseenter', () => a.style.borderColor = 'var(--color-accent)');
+            a.addEventListener('mouseleave', () => a.style.borderColor = 'var(--color-border)');
+
+            const titleSpan = document.createElement('span');
+            titleSpan.style.cssText = 'font-size:0.85rem; font-weight:600; color:var(--color-accent);';
+            const volTitle = relVol?.title ? ` — ${relVol.title}` : '';
+            titleSpan.textContent = `${rel.doc}${volTitle} · pág. ${rel.page}`;
+
+            const distSpan = document.createElement('span');
+            distSpan.style.cssText = 'font-size:0.72rem; color:var(--color-muted);';
+            distSpan.textContent = `similaridade ${(1 - Math.min(rel.dist, 1)).toFixed(2)}`;
+
+            a.appendChild(titleSpan);
+            a.appendChild(distSpan);
+            li.appendChild(a);
+            relList.appendChild(li);
+          });
+
+          relBlock.appendChild(relList);
+          sidebar.appendChild(relBlock);
+        }
+
         mainGrid.appendChild(mainContent);
         mainGrid.appendChild(sidebar);
         viewerRoot.appendChild(mainGrid);

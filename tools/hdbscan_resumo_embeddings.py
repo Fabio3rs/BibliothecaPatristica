@@ -20,7 +20,6 @@ from pathlib import Path
 from typing import Iterable, List, Tuple
 
 import numpy as np
-import pandas as pd
 import tqdm
 import umap
 from hdbscan import HDBSCAN
@@ -34,25 +33,67 @@ from resumo_embedding_utils import (
 
 
 def build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(description="Clustering UMAP+HDBSCAN para embeddings de resumos.")
+    p = argparse.ArgumentParser(
+        description="Clustering UMAP+HDBSCAN para embeddings de resumos."
+    )
     p.add_argument("--db", type=Path, default=Path("data/patristica_resumos.db"))
-    p.add_argument("--model", help="Filtra embeddings por modelo (ex.: qwen3-embedding:8b)")
+    p.add_argument(
+        "--model", help="Filtra embeddings por modelo (ex.: qwen3-embedding:8b)"
+    )
     p.add_argument("--chunksize", type=int, default=50000)
-    p.add_argument("--limit", type=int, default=0, help="Limite opcional de embeddings (0 = todos)")
+    p.add_argument(
+        "--limit", type=int, default=0, help="Limite opcional de embeddings (0 = todos)"
+    )
     p.add_argument("--kind", choices=["page", "global", "both"], default="both")
-    p.add_argument("--umap-components-page", type=int, default=5)
-    p.add_argument("--umap-components-global", type=int, default=5)
-    p.add_argument("--umap-neighbors", type=int, default=150)
-    p.add_argument("--min-cluster-size", type=int, default=10, help="Fallback se específico não for informado.")
-    p.add_argument("--min-cluster-size-page", type=int, default=3, help="Override para resumo_pagina.")
-    p.add_argument("--cluster-selection-epsilon", type=float, default=0.1, help="Epsilon para seleção de cluster.")
-    p.add_argument("--min-cluster-size-global", type=int, default=5, help="Override para resumo_global.")
+    p.add_argument("--umap-components-page", type=int, default=10)
+    p.add_argument("--umap-components-global", type=int, default=10)
+    p.add_argument("--umap-neighbors", type=int, default=70)
+    p.add_argument(
+        "--min-cluster-size",
+        type=int,
+        default=10,
+        help="Fallback se específico não for informado.",
+    )
+    p.add_argument(
+        "--min-cluster-size-page",
+        type=int,
+        default=3,
+        help="Override para resumo_pagina.",
+    )
+    p.add_argument(
+        "--cluster-selection-epsilon",
+        type=float,
+        default=0.1,
+        help="Epsilon para seleção de cluster.",
+    )
+    p.add_argument(
+        "--min-cluster-size-global",
+        type=int,
+        default=5,
+        help="Override para resumo_global.",
+    )
     p.add_argument("--min-samples", type=int, default=3)
-    p.add_argument("--low-memory", action="store_true", help="Passa low_memory=True ao UMAP")
+    p.add_argument(
+        "--low-memory", action="store_true", help="Passa low_memory=True ao UMAP"
+    )
+    p.add_argument(
+        "--save-umap",
+        action="store_true",
+        default=True,
+        help="Salva embeddings UMAP reduzidos em resumo_*_embedding_reduced (padrão: ativo).",
+    )
+    p.add_argument(
+        "--no-save-umap",
+        dest="save_umap",
+        action="store_false",
+        help="Desativa gravação dos embeddings UMAP reduzidos.",
+    )
     return p
 
 
-def run_umap(X: np.ndarray, n_components: int, n_neighbors: int, low_memory: bool) -> np.ndarray:
+def run_umap(
+    X: np.ndarray, n_components: int, n_neighbors: int, low_memory: bool
+) -> np.ndarray:
     reducer = umap.UMAP(
         n_neighbors=n_neighbors,
         n_components=n_components,
@@ -64,7 +105,62 @@ def run_umap(X: np.ndarray, n_components: int, n_neighbors: int, low_memory: boo
     return reducer.fit_transform(X)
 
 
-def run_hdbscan(X_reduced: np.ndarray, min_cluster_size: int, min_samples: int, cluster_selection_epsilon: float = 0.0) -> HDBSCAN:
+def save_umap_reduced(
+    con: sqlite3.Connection,
+    kind: str,
+    rows_meta: List[Tuple[str, int]],
+    X_reduced: np.ndarray,
+    n_components: int,
+    umap_neighbors: int,
+) -> None:
+    """Salva embeddings UMAP reduzidos em resumo_{page|global}_embedding_reduced.
+
+    Esquema:
+        documento TEXT, pagina_num INTEGER  — chave primária
+        n_components INTEGER               — dimensionalidade do UMAP
+        umap_neighbors INTEGER             — n_neighbors usado
+        embedding BLOB                     — vetor float32 serializado (numpy tobytes)
+
+    Útil para calcular top-K vizinhos mais tarde sem reprocessar os 4096-d.
+    Tamanho estimado: 288k × n_components × 4 bytes ≈ 5-6 MB para n_components=5.
+    """
+    table = (
+        "resumo_pagina_embedding_reduced"
+        if kind == "page"
+        else "resumo_global_embedding_reduced"
+    )
+
+    con.execute(f"DROP TABLE IF EXISTS {table}")
+    con.execute(
+        f"""
+        CREATE TABLE {table} (
+            documento      TEXT    NOT NULL,
+            pagina_num     INTEGER NOT NULL,
+            n_components   INTEGER NOT NULL,
+            umap_neighbors INTEGER NOT NULL,
+            embedding      BLOB    NOT NULL,
+            PRIMARY KEY (documento, pagina_num)
+        )
+        """
+    )
+    # Converte para float32 para economizar espaço (4 bytes/dim vs 8 de float64)
+    X_f32 = X_reduced.astype(np.float32)
+    data = [
+        (doc, int(pg), n_components, umap_neighbors, X_f32[i].tobytes())
+        for i, (doc, pg) in enumerate(rows_meta)
+    ]
+    con.executemany(f"INSERT INTO {table} VALUES (?, ?, ?, ?, ?)", data)
+    print(
+        f"[save_umap_reduced] {table}: {len(data)} linhas gravadas ({n_components}d float32)."
+    )
+
+
+def run_hdbscan(
+    X_reduced: np.ndarray,
+    min_cluster_size: int,
+    min_samples: int,
+    cluster_selection_epsilon: float = 0.0,
+) -> HDBSCAN:
     clusterer = HDBSCAN(
         min_cluster_size=min_cluster_size,
         min_samples=min_samples,
@@ -86,7 +182,9 @@ def save_cluster_table(
     cluster_persistence: np.ndarray,
 ) -> None:
     table = "resumo_pagina_clusters" if kind == "page" else "resumo_global_clusters"
-    meta_table = "resumo_pagina_cluster_meta" if kind == "page" else "resumo_global_cluster_meta"
+    meta_table = (
+        "resumo_pagina_cluster_meta" if kind == "page" else "resumo_global_cluster_meta"
+    )
 
     con.execute(f"DROP TABLE IF EXISTS {table}")
     con.execute(
@@ -118,12 +216,23 @@ def save_cluster_table(
         )
         """
     )
-    cluster_meta = [(int(idx), float(p)) for idx, p in enumerate(cluster_persistence.tolist())]
+    cluster_meta = [
+        (int(idx), float(p)) for idx, p in enumerate(cluster_persistence.tolist())
+    ]
     con.executemany(f"INSERT INTO {meta_table} VALUES (?, ?)", cluster_meta)
 
 
-def update_resumos_clusters(con: sqlite3.Connection, kind: str, rows_meta: List[Tuple[str, int]], labels: np.ndarray) -> None:
-    column = "resumo_pagina_hdbscan_group_id" if kind == "page" else "resumo_global_hdbscan_group_id"
+def update_resumos_clusters(
+    con: sqlite3.Connection,
+    kind: str,
+    rows_meta: List[Tuple[str, int]],
+    labels: np.ndarray,
+) -> None:
+    column = (
+        "resumo_pagina_hdbscan_group_id"
+        if kind == "page"
+        else "resumo_global_hdbscan_group_id"
+    )
     payload = []
     for (doc, pg), lbl in zip(rows_meta, labels.tolist()):
         val = None if lbl == -1 else int(lbl)
@@ -137,7 +246,9 @@ def update_resumos_clusters(con: sqlite3.Connection, kind: str, rows_meta: List[
 def summarize(labels: np.ndarray, kind: str) -> None:
     total = len(labels)
     noise = int(np.sum(labels == -1))
-    print(f"{kind}: total={total} noise={noise} ({noise/total:.2%}) clusters={len(set(labels)) - (1 if -1 in labels else 0)}")
+    print(
+        f"{kind}: total={total} noise={noise} ({noise/total:.2%}) clusters={len(set(labels)) - (1 if -1 in labels else 0)}"
+    )
     # Top clusters
     counts = {}
     for lbl in labels.tolist():
@@ -159,16 +270,35 @@ def process_kind(
         chunksize=args.chunksize,
         limit=args.limit,
     )
-    components = args.umap_components_page if kind == "page" else args.umap_components_global
+    components = (
+        args.umap_components_page if kind == "page" else args.umap_components_global
+    )
 
     t0 = time.time()
-    X_reduced = run_umap(X, n_components=components, n_neighbors=args.umap_neighbors, low_memory=args.low_memory)
+    X_reduced = run_umap(
+        X,
+        n_components=components,
+        n_neighbors=args.umap_neighbors,
+        low_memory=args.low_memory,
+    )
     t1 = time.time()
+
+    if args.save_umap:
+        save_umap_reduced(
+            con, kind, rows_meta, X_reduced, components, args.umap_neighbors
+        )
+        con.commit()
+
     if kind == "page":
         min_cluster_size = args.min_cluster_size_page or args.min_cluster_size
     else:
         min_cluster_size = args.min_cluster_size_global or args.min_cluster_size
-    clusterer = run_hdbscan(X_reduced, min_cluster_size=min_cluster_size, min_samples=args.min_samples, cluster_selection_epsilon=args.cluster_selection_epsilon)
+    clusterer = run_hdbscan(
+        X_reduced,
+        min_cluster_size=min_cluster_size,
+        min_samples=args.min_samples,
+        cluster_selection_epsilon=args.cluster_selection_epsilon,
+    )
     t2 = time.time()
 
     save_cluster_table(
