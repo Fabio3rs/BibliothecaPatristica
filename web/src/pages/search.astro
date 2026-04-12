@@ -275,7 +275,9 @@ const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
           return;
         }
 
-        const searchResult = await pf.search(searchTerm, { filters: Object.keys(filters).length ? filters : undefined });
+        const searchResult = await pf.debouncedSearch(searchTerm, { filters: Object.keys(filters).length ? filters : undefined }, 300);
+        // debouncedSearch retorna null quando uma chamada mais recente foi enfileirada — abandona silenciosamente
+        if (searchResult === null) return;
         if (!searchResult || !searchResult.results) {
           resultsEl.textContent = 'Índice Pagefind não disponível ou vazio.';
           return;
@@ -284,55 +286,31 @@ const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
         const allResults = searchResult.results;
         const total = allResults.length;
 
-        // ── Caminho sem critério: paginação lazy (não carrega todos de uma vez) ──
-        if (noCriteria) {
-          if (total === 0) {
-            resultsEl.innerHTML = `
-              <div style="padding: var(--space-8) var(--space-4); text-align: center; color: var(--color-muted); border: 2px dashed var(--color-border); border-radius: var(--radius-m);">
-                <h2 style="color: var(--color-ink); font-family: var(--font-serif); margin-top: 0;">Explore o Acervo Patrístico</h2>
-                <p style="max-width: 500px; margin: 0 auto var(--space-5);">
-                  Utilize a caixa de busca acima para pesquisar termos em latim ou grego, ou use os filtros laterais para navegar por coleções e volumes específicos.
-                </p>
-                <div style="display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;">
-                  <div class="card" style="flex: 1; min-width: 200px; text-align: left; padding: var(--space-4);">
-                    <h4 style="margin: 0 0 var(--space-2);">Busca Textual</h4>
-                    <p style="font-size: 0.9rem; margin: 0;">Pesquise por conceitos como "Trinitas", "Logos" ou "Gratia".</p>
-                  </div>
-                  <div class="card" style="flex: 1; min-width: 200px; text-align: left; padding: var(--space-4);">
-                    <h4 style="margin: 0 0 var(--space-2);">Filtros Avançados</h4>
-                    <p style="font-size: 0.9rem; margin: 0;">Refine sua busca por volume ou coleção específica (PG, PL, PO).</p>
-                  </div>
+        // ── Tela inicial: sem critério e sem resultados ──
+        if (noCriteria && total === 0) {
+          resultsEl.innerHTML = `
+            <div style="padding: var(--space-8) var(--space-4); text-align: center; color: var(--color-muted); border: 2px dashed var(--color-border); border-radius: var(--radius-m);">
+              <h2 style="color: var(--color-ink); font-family: var(--font-serif); margin-top: 0;">Explore o Acervo Patrístico</h2>
+              <p style="max-width: 500px; margin: 0 auto var(--space-5);">
+                Utilize a caixa de busca acima para pesquisar termos em latim ou grego, ou use os filtros laterais para navegar por coleções e volumes específicos.
+              </p>
+              <div style="display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;">
+                <div class="card" style="flex: 1; min-width: 200px; text-align: left; padding: var(--space-4);">
+                  <h4 style="margin: 0 0 var(--space-2);">Busca Textual</h4>
+                  <p style="font-size: 0.9rem; margin: 0;">Pesquise por conceitos como "Trinitas", "Logos" ou "Gratia".</p>
+                </div>
+                <div class="card" style="flex: 1; min-width: 200px; text-align: left; padding: var(--space-4);">
+                  <h4 style="margin: 0 0 var(--space-2);">Filtros Avançados</h4>
+                  <p style="font-size: 0.9rem; margin: 0;">Refine sua busca por volume ou coleção específica (PG, PL, PO).</p>
                 </div>
               </div>
-            `;
-            return;
-          }
-
-          const totalPages = Math.max(1, Math.ceil(total / pageSize));
-          state.page = Math.min(Math.max(1, state.page), totalPages);
-          const start = (state.page - 1) * pageSize;
-          const end = Math.min(start + pageSize, total);
-          const hits = await Promise.all(allResults.slice(start, end).map((r) => r.data()));
-
-          resultsEl.innerHTML = '';
-
-          // Controles de paginação
-          const nav = buildPagination(state.page, totalPages, total, start, end);
-          resultsEl.appendChild(nav);
-
-          hits.forEach((hit) => resultsEl.appendChild(buildCard(hit, term)));
-
-          // Paginação inferior (cópia)
-          resultsEl.appendChild(buildPagination(state.page, totalPages, total, start, end));
+            </div>
+          `;
           return;
         }
 
-        // ── Caminho com termo ou filtros: carrega todos, trunca se necessário ──
-        let hits = await Promise.all(allResults.map((r) => r.data()));
-        const truncated = hits.length > pageSize;
-        if (truncated) hits = hits.slice(0, pageSize);
-
-        if (!hits.length) {
+        // ── Sem resultados com critério ──
+        if (total === 0) {
           resultsEl.innerHTML = `
             <div style="padding: var(--space-8) var(--space-4); text-align: center; color: var(--color-muted);">
               <h2 style="color: var(--color-ink); font-family: var(--font-serif);">Nenhum resultado encontrado</h2>
@@ -343,15 +321,18 @@ const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
           return;
         }
 
-        resultsEl.innerHTML = '';
-        if (truncated) {
-          const info = document.createElement('p');
-          info.className = 'results-info';
-          info.textContent = `Mostrando ${hits.length} de ${total} resultados. Use filtros ou aumente "Itens".`;
-          resultsEl.appendChild(info);
-        }
+        // ── Paginação lazy: slice ANTES de chamar .data() ──
+        const totalPages = Math.max(1, Math.ceil(total / pageSize));
+        state.page = Math.min(Math.max(1, state.page), totalPages);
+        const start = (state.page - 1) * pageSize;
+        const end = Math.min(start + pageSize, total);
+        const hits = await Promise.all(allResults.slice(start, end).map((r) => r.data()));
 
+        resultsEl.innerHTML = '';
+        const nav = buildPagination(state.page, totalPages, total, start, end);
+        resultsEl.appendChild(nav);
         hits.forEach((hit) => resultsEl.appendChild(buildCard(hit, term)));
+        resultsEl.appendChild(buildPagination(state.page, totalPages, total, start, end));
 
       } catch (err) {
         resultsEl.textContent = 'Erro ao buscar no índice.';
@@ -464,6 +445,13 @@ const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
     }
 
     searchBox.addEventListener('input', () => {
+      // Pré-carrega os fragmentos do índice enquanto o usuário digita,
+      // sem ainda executar a busca — reduz latência percebida.
+      ensurePagefind().then((pf) => {
+        if (pf && typeof pf.preload === 'function' && searchBox.value) {
+          pf.preload(searchBox.value);
+        }
+      });
       if (renderTimer) clearTimeout(renderTimer);
       renderTimer = setTimeout(() => {
         handleTermInput();
