@@ -1,11 +1,13 @@
 ---
+import { useTranslations } from '../i18n';
 interface FilterSection { key: string; label: string; items: string[] }
 const { sections = [] as FilterSection[], loading = false } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
 ---
-<aside class="card" aria-label="Filtros">
-  <h2 style="margin-top:0;">Filtros</h2>
+<aside class="card" aria-label={t.filtersTitle}>
+  <h2 style="margin-top:0;">{t.filtersTitle}</h2>
   {loading ? (
-    <p class="muted" style="margin:0;">Carregando filtros...</p>
+    <p class="muted" style="margin:0;">{t.filtersLoading}</p>
   ) : (
     <div class="filters">
       {sections.map((section: FilterSection) => (
@@ -19,7 +21,7 @@ const { sections = [] as FilterSection[], loading = false } = Astro.props;
               </label>
             ))
           ) : (
-            <p class="muted" style="margin:0;">Sem opções</p>
+            <p class="muted" style="margin:0;">{t.filtersNoOptions}</p>
           )}
         </div>
       ))}

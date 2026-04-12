@@ -1,0 +1,540 @@
+---
+import Layout from '../Layout.astro';
+import FiltersPanel from '../FiltersPanel.astro';
+import { useTranslations, serializeTranslations } from '../../i18n';
+const base = import.meta.env.BASE_URL || '/';
+const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
+const t = useTranslations(Astro.currentLocale);
+const uiStrings = serializeTranslations(t);
+const uiLocale = Astro.currentLocale ?? 'pt-br';
+---
+<Layout title={t.searchTitle} description={t.searchSubtitle} breadcrumbs={[{label: t.breadcrumbHome, href: baseWithSlash},{label: t.breadcrumbSearch}]}>
+  <div class="main-grid">
+    <FiltersPanel loading={true} />
+
+    <section aria-label={t.ariaResults} style="display:flex;flex-direction:column;gap:var(--space-4);">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);flex-wrap:wrap;">
+        <div>
+          <p style="margin:0;color:var(--color-muted);">{t.searchSubtitle}</p>
+          <h1 style="margin:0;">{t.searchTitle}</h1>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--space-2);flex-wrap:wrap;">
+          <label class="sr-only" for="search-box">{t.searchPlaceholder}</label>
+          <input id="search-box" type="search" placeholder={t.searchPlaceholder} list="keywords-suggestions" class="search-input" />
+          <datalist id="keywords-suggestions"></datalist>
+
+          <label for="page-size" style="font-size:0.9rem;color:var(--color-muted);">{t.searchItemsLabel}</label>
+          <select id="page-size" class="page-size-select">
+            <option value="10">10</option>
+            <option value="25" selected>25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </div>
+      </header>
+
+      <div id="results" class="results-list" aria-live="polite">
+        <p>{t.searchLoading}</p>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" define:vars={{ baseUrl: baseWithSlash, uiStrings, uiLocale }}>
+    const assetBase = baseUrl;
+    const resultsEl = document.getElementById('results');
+    const searchBox = document.getElementById('search-box');
+    const pageSizeSel = document.getElementById('page-size');
+    // uiStrings não contém filtersTitle pois é string (está em uiStrings), mas o aside
+    // usa o atributo aria-label renderizado pelo servidor. Selecionamos pelo papel semântico.
+    const filtersRoot = document.querySelector('aside[aria-label]');
+    const datalist = document.getElementById('keywords-suggestions');
+    let checkboxNodes = [];
+    let keywordOptions = [];
+
+    // Reconstrói funções de formatação (não serializáveis via define:vars)
+    const s = uiStrings;
+    const isEn = uiLocale === 'en';
+    const paginationShowing = isEn
+      ? (start, end, total) => `Showing ${start}–${end} of ${total} results`
+      : (start, end, total) => `Mostrando ${start}–${end} de ${total} resultados`;
+    const paginationPage = isEn
+      ? (page, total) => `Page ${page} / ${total}`
+      : (page, total) => `Página ${page} / ${total}`;
+    const ariaFilterBy = isEn
+      ? (cat, val) => `Filter by ${cat}: ${val}`
+      : (cat, val) => `Filtrar por ${cat}: ${val}`;
+
+    const state = {
+      term: '',
+      pageSize: 25,
+      page: 1,
+      filters: {},
+    };
+
+    function readStateFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const term = params.get('term') || '';
+      const pageSize = parseInt(params.get('pageSize'), 10);
+      const page = parseInt(params.get('page'), 10);
+      const filters = {};
+      // Apenas 'collection' e 'volume' são filtros estruturais do Pagefind (leves).
+      // 'keyword' é resolvido via busca textual (term) para evitar baixar o chunk de 7MB.
+      ['collection', 'volume'].forEach((key) => {
+        const values = params.getAll(key);
+        if (values.length) filters[key] = values;
+      });
+      // Keywords vindas da URL (?keyword=X) são convertidas em term de busca textual
+      const kwValues = params.getAll('keyword');
+      const termFromKw = kwValues.join(' ');
+      state.term = term || termFromKw;
+      state.pageSize = !Number.isNaN(pageSize) && pageSize > 0 ? pageSize : 25;
+      state.page = !Number.isNaN(page) && page > 0 ? page : 1;
+      state.filters = filters;
+    }
+
+    function syncUrl() {
+      const params = new URLSearchParams();
+      if (state.term.trim()) params.set('term', state.term.trim());
+      if (state.pageSize && state.pageSize !== 25) params.set('pageSize', String(state.pageSize));
+      if (state.page && state.page > 1) params.set('page', String(state.page));
+      // Apenas filtros estruturais (collection, volume) na URL — keywords vão em 'term'
+      Object.entries(state.filters).forEach(([key, values]) => {
+        if (key === 'keyword') return; // não serializa keyword como filtro
+        values.forEach((v) => params.append(key, v));
+      });
+      const newUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ''}`;
+      window.history.replaceState({}, '', newUrl);
+    }
+
+    readStateFromUrl();
+    searchBox.value = state.term;
+    pageSizeSel.value = String(state.pageSize);
+
+    let pagefindInstance = null;
+    let pagefindPromise = null;
+    let renderTimer = null;
+
+    const basePath = assetBase.endsWith('/') ? assetBase.slice(0, -1) : assetBase;
+
+    async function loadFilters() {
+      try {
+        // Volumes e collections são leves e necessários para os filtros estruturais.
+        // Keywords (2,3 MB) são carregadas separadamente, com delay, pois são usadas
+        // apenas para os chips visuais e sugestões — não bloqueiam a busca por volume.
+        const volumesObj = await fetch(`${assetBase}volumes.json`).then((r) => r.json());
+
+        const volumes = volumesObj.volumes || [];
+
+        const collections = Array.from(new Set(volumes.map((v) => v.collection_id))).sort();
+        const volumeIds = volumes.map((v) => v.id).sort();
+        const keywordLabels = []; // renderiza vazio inicialmente; preenchido após lazy load
+
+        const sections = [
+          { key: 'collection', label: s.filterCollection, items: collections },
+          { key: 'volume', label: s.filterVolume, items: volumeIds },
+        ];
+
+        filtersRoot.innerHTML = `
+          <h2 style="margin-top:0;">${s.filtersTitle}</h2>
+          <div class="filters">
+            ${sections.map((sec) => `
+              <div>
+                <h3>${sec.label}</h3>
+                ${sec.items.length ? sec.items.map((item) => `
+                  <label>
+                    <input type="checkbox" name="${sec.key}" value="${item}">
+                    ${item}
+                  </label>
+                `).join('') : `<p class="muted" style="margin:0;">${s.filtersNoOptions}</p>`}
+              </div>
+            `).join('')}
+            <div>
+              <h3>${s.filterKeywords}</h3>
+              <p style="font-size:0.8rem;color:var(--color-muted);margin:0 0 0.5rem;">${s.filterKeywordsHint}</p>
+              <div id="keywords-chips" style="display:flex;flex-wrap:wrap;gap:0.3rem;">
+                <span style="font-size:0.8rem;color:var(--color-muted);">${s.filterKeywordsLoading}</span>
+              </div>
+            </div>
+          </div>
+        `;
+
+        checkboxNodes = Array.from(filtersRoot.querySelectorAll('input[type="checkbox"]'));
+
+        // aplicar estado inicial de filtros vindos da URL
+        checkboxNodes.forEach((cb) => {
+          const { name, value } = cb;
+          if (state.filters[name] && state.filters[name].includes(value)) {
+            cb.checked = true;
+          }
+          cb.addEventListener('change', handleFilterChange);
+        });
+
+        // Carrega keywords em background, sem bloquear a renderização dos filtros estruturais
+        fetch(`${assetBase}dict/keywords.json`)
+          .then((r) => r.json())
+          .then((keywordsObj) => {
+            const keywords = keywordsObj.items || [];
+            keywordOptions = keywords.map((k) => k.label).sort();
+            const chipsContainer = document.getElementById('keywords-chips');
+            if (!chipsContainer) return;
+            const chips = keywordOptions.slice(0, 300);
+            chipsContainer.innerHTML = chips.map((kw) => `
+              <a href="?term=${encodeURIComponent(kw)}"
+                 style="font-size:0.78rem;padding:0.15rem 0.45rem;border-radius:999px;border:1px solid var(--color-border);background:var(--color-surface);color:var(--color-ink);text-decoration:none;cursor:pointer;"
+                 title="${kw}">${kw}</a>
+            `).join('');
+            if (state.term) updateSuggestions();
+          })
+          .catch(() => {
+            const chipsContainer = document.getElementById('keywords-chips');
+            if (chipsContainer) chipsContainer.innerHTML = `<span style="font-size:0.8rem;color:var(--color-muted);">${s.filterKeywordsUnavailable}</span>`;
+          });
+      } catch (err) {
+        filtersRoot.innerHTML = `<p class="muted" style="margin:0;">${s.filtersUnavailable}</p>`;
+        console.error(err);
+      }
+    }
+
+    function normalizeUrl(raw) {
+      if (!raw) return '#';
+      if (/^https?:\/\//i.test(raw)) return raw; // Absolutos
+
+      // Remove repetição do base em qualquer formato
+      let path = raw.trim();
+      const baseNoSlash = basePath.replace(/^\//, '');
+      const stripPrefixes = [basePath, `${basePath}/`, baseNoSlash, `${baseNoSlash}/`];
+      for (const pref of stripPrefixes) {
+        while (path.startsWith(pref)) {
+          path = path.slice(pref.length);
+        }
+      }
+
+      // Garante barra inicial
+      if (!path.startsWith('/')) path = `/${path}`;
+
+      return `${basePath}${path}`;
+    }
+
+    async function ensurePagefind() {
+      if (pagefindInstance) return pagefindInstance;
+      if (pagefindPromise) return pagefindPromise;
+      pagefindPromise = (async () => {
+        try {
+          const mod = await import(`${assetBase}pagefind/pagefind.js`);
+          // Caso o bundle já retorne uma instância com search
+          if (mod && typeof mod.search === 'function') return mod;
+          const pfModule = mod?.default || mod?.pagefind || mod;
+          if (pfModule && typeof pfModule.search === 'function') return pfModule;
+          if (pfModule && typeof pfModule.init === 'function') {
+            const pf = await pfModule.init({ basePath: `${assetBase}pagefind/` });
+            if (pf && typeof pf.search === 'function') return pf;
+          }
+          throw new Error('Bundle Pagefind sem search/init utilizável');
+        } catch (err) {
+          console.error(err);
+          resultsEl.textContent = s.searchIndexUnavailable;
+          return null;
+        }
+      })();
+      pagefindInstance = await pagefindPromise;
+      return pagefindInstance;
+    }
+
+    function handleFilterChange() {
+      const filters = {};
+      checkboxNodes.filter((c) => c.checked).forEach((c) => {
+        if (!filters[c.name]) filters[c.name] = [];
+        filters[c.name].push(c.value);
+      });
+      state.filters = filters;
+      state.page = 1;
+      syncUrl();
+      
+      if (renderTimer) clearTimeout(renderTimer);
+      renderTimer = setTimeout(() => {
+        render();
+      }, 300);
+    }
+
+    function toggleFilter(name, value) {
+      // Keywords são buscadas como texto (evita baixar o filter chunk de 7MB)
+      if (name === 'keyword') {
+        state.term = state.term === value ? '' : value;
+        searchBox.value = state.term;
+        state.page = 1;
+        syncUrl();
+        if (renderTimer) clearTimeout(renderTimer);
+        renderTimer = setTimeout(render, 50);
+        return;
+      }
+      if (!state.filters[name]) state.filters[name] = [];
+      const idx = state.filters[name].indexOf(value);
+      if (idx === -1) {
+        state.filters[name].push(value);
+      } else {
+        state.filters[name].splice(idx, 1);
+      }
+      if (state.filters[name].length === 0) delete state.filters[name];
+      
+      // Sincronizar checkboxes se existirem
+      checkboxNodes.forEach(cb => {
+        if (cb.name === name && cb.value === value) {
+          cb.checked = !cb.checked;
+        }
+      });
+      
+      state.page = 1;
+      syncUrl();
+      if (renderTimer) clearTimeout(renderTimer);
+      renderTimer = setTimeout(render, 50);
+    }
+
+    window.clearAllFilters = function() {
+      state.filters = {};
+      state.term = '';
+      state.page = 1;
+      searchBox.value = '';
+      checkboxNodes.forEach(cb => cb.checked = false);
+      syncUrl();
+      if (renderTimer) clearTimeout(renderTimer);
+      renderTimer = setTimeout(render, 50);
+    };
+
+    function handleTermInput() {
+      state.term = searchBox.value;
+      state.page = 1;
+      syncUrl();
+      render();
+    }
+
+    function handlePageSizeChange() {
+      const val = parseInt(pageSizeSel.value, 10);
+      state.pageSize = Number.isNaN(val) ? 25 : val;
+      state.page = 1;
+      syncUrl();
+      render();
+    }
+
+    async function render() {
+      const term = (state.term || '').trim();
+      const searchTerm = term === '' ? null : term;
+      const pageSize = state.pageSize || 25;
+      const filters = state.filters;
+      const noCriteria = searchTerm === null && Object.keys(filters).length === 0;
+
+      // ── Sem critério: passa term null normalmente ao Pagefind ──
+      // Porém, se já houve uma busca com filtro antes (pagefind inicializado),
+      // precisamos cancelar qualquer debouncedSearch anterior que esteja em voo
+      // com searchTerm=null+filtros, pois quando acorda ele executa search(null,{})
+      // varrendo 287k registros na thread principal e travando o browser.
+      // A forma de cancelar é chamar debouncedSearch('', ...) — string vazia faz o
+      // Pagefind incrementar o searchID interno e retornar {} sem varrer nada,
+      // descartando a chamada anterior em voo.
+      if (noCriteria && pagefindInstance) {
+        pagefindInstance.debouncedSearch('', {}, 0);
+      }
+
+      // Feedback visual imediato
+      resultsEl.innerHTML = `
+        <div style="padding: var(--space-8) 0; text-align: center; color: var(--color-muted);">
+          <p>${s.searchBusy}</p>
+        </div>
+      `;
+
+      try {
+        const pf = await ensurePagefind();
+        if (!pf) {
+          resultsEl.textContent = s.searchIndexUnavailable;
+          return;
+        }
+
+        const searchResult = await pf.debouncedSearch(searchTerm, { filters: Object.keys(filters).length ? filters : undefined }, 300);
+        // debouncedSearch retorna null quando uma chamada mais recente foi enfileirada — abandona silenciosamente
+        if (searchResult === null) return;
+        if (!searchResult || !searchResult.results) {
+          resultsEl.textContent = s.searchIndexEmpty;
+          return;
+        }
+
+        const allResults = searchResult.results;
+        const total = allResults.length;
+
+        // ── Sem resultados com critério ──
+        if (total === 0) {
+          resultsEl.innerHTML = `
+            <div style="padding: var(--space-8) var(--space-4); text-align: center; color: var(--color-muted);">
+              <h2 style="color: var(--color-ink); font-family: var(--font-serif);">${s.searchNoResults}</h2>
+              <p>${s.searchNoResultsDesc}</p>
+              <button class="button secondary" style="margin-top: var(--space-4);" onclick="window.clearAllFilters()">${s.searchClearFilters}</button>
+            </div>
+          `;
+          return;
+        }
+
+        // ── Paginação lazy: slice ANTES de chamar .data() ──
+        const totalPages = Math.max(1, Math.ceil(total / pageSize));
+        state.page = Math.min(Math.max(1, state.page), totalPages);
+        const start = (state.page - 1) * pageSize;
+        const end = Math.min(start + pageSize, total);
+        const hits = await Promise.all(allResults.slice(start, end).map((r) => r.data()));
+
+        resultsEl.innerHTML = '';
+        const nav = buildPagination(state.page, totalPages, total, start, end);
+        resultsEl.appendChild(nav);
+        hits.forEach((hit) => resultsEl.appendChild(buildCard(hit, term)));
+        resultsEl.appendChild(buildPagination(state.page, totalPages, total, start, end));
+
+      } catch (err) {
+        resultsEl.textContent = s.searchIndexError;
+        console.error(err);
+      }
+    }
+
+    function buildPagination(page, totalPages, total, start, end) {
+      const nav = document.createElement('div');
+      nav.style.cssText = 'display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);flex-wrap:wrap;padding:var(--space-2) 0;';
+
+      const info = document.createElement('span');
+      info.style.color = 'var(--color-muted)';
+      info.style.fontSize = '0.9rem';
+      info.textContent = paginationShowing(start + 1, end, total);
+      nav.appendChild(info);
+
+      const btnWrap = document.createElement('div');
+      btnWrap.style.cssText = 'display:flex;gap:var(--space-2);align-items:center;';
+
+      const prevBtn = document.createElement('button');
+      prevBtn.className = 'button secondary';
+      prevBtn.textContent = s.paginationPrev;
+      prevBtn.disabled = page === 1;
+      prevBtn.setAttribute('aria-label', s.paginationPrevLabel);
+      prevBtn.addEventListener('click', () => {
+        state.page = Math.max(1, state.page - 1);
+        syncUrl();
+        render();
+        resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      const pageSpan = document.createElement('span');
+      pageSpan.style.fontSize = '0.9rem';
+      pageSpan.textContent = paginationPage(page, totalPages);
+
+      const nextBtn = document.createElement('button');
+      nextBtn.className = 'button secondary';
+      nextBtn.textContent = s.paginationNext;
+      nextBtn.disabled = page === totalPages;
+      nextBtn.setAttribute('aria-label', s.paginationNextLabel);
+      nextBtn.addEventListener('click', () => {
+        state.page = Math.min(totalPages, state.page + 1);
+        syncUrl();
+        render();
+        resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      btnWrap.appendChild(prevBtn);
+      btnWrap.appendChild(pageSpan);
+      btnWrap.appendChild(nextBtn);
+      nav.appendChild(btnWrap);
+      return nav;
+    }
+
+    function buildCard(hit, term) {
+      const article = document.createElement('article');
+      article.className = 'card';
+
+      const h3 = document.createElement('h3');
+      h3.className = 'result-title';
+      const link = document.createElement('a');
+      const rawUrl = hit.url || '#';
+      const target = normalizeUrl(rawUrl);
+      if (term && target.startsWith(basePath)) {
+        const urlObj = new URL(target, window.location.origin);
+        urlObj.searchParams.set('highlight', term);
+        link.href = urlObj.pathname + urlObj.search + urlObj.hash;
+      } else {
+        link.href = target;
+      }
+      link.textContent = hit.meta?.title || s.searchNoTitle;
+      h3.appendChild(link);
+
+      const snippet = document.createElement('p');
+      snippet.className = 'result-snippet';
+      // Usar innerHTML para que as tags <mark> do Pagefind sejam renderizadas
+      snippet.innerHTML = hit.excerpt || (hit.content ? hit.content.slice(0, 180) : s.searchNoSnippet);
+
+      article.appendChild(h3);
+      article.appendChild(snippet);
+
+      const badges = [];
+      const filtersHit = hit.filters || {};
+      Object.entries(filtersHit).forEach(([category, vals]) => {
+        if (Array.isArray(vals)) {
+          vals.forEach(v => badges.push({ category, value: v }));
+        }
+      });
+
+      if (badges.length) {
+        const chips = document.createElement('ul');
+        chips.className = 'chips';
+        badges.forEach((b) => {
+          const li = document.createElement('li');
+          li.textContent = b.value;
+          li.style.cursor = 'pointer';
+          li.title = ariaFilterBy(b.category, b.value);
+          li.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleFilter(b.category, b.value);
+          };
+          chips.appendChild(li);
+        });
+        article.appendChild(chips);
+      }
+
+      return article;
+    }
+
+    searchBox.addEventListener('input', () => {
+      // Pré-carrega os fragmentos do índice enquanto o usuário digita,
+      // sem ainda executar a busca — reduz latência percebida.
+      ensurePagefind().then((pf) => {
+        if (pf && typeof pf.preload === 'function' && searchBox.value) {
+          pf.preload(searchBox.value);
+        }
+      });
+      if (renderTimer) clearTimeout(renderTimer);
+      renderTimer = setTimeout(() => {
+        handleTermInput();
+        updateSuggestions();
+      }, 120);
+    });
+
+    // Suporte a Enter
+    searchBox.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        if (renderTimer) clearTimeout(renderTimer);
+        handleTermInput();
+      }
+    });
+
+    pageSizeSel.addEventListener('change', handlePageSizeChange);
+
+    function updateSuggestions() {
+      const term = (searchBox.value || '').toLowerCase();
+      if (!term || keywordOptions.length === 0) {
+        datalist.innerHTML = '';
+        return;
+      }
+      const suggestions = keywordOptions.filter((k) => k.toLowerCase().includes(term)).slice(0, 15);
+      datalist.innerHTML = suggestions.map((s) => `<option value="${s}"></option>`).join('');
+    }
+
+    // Render inicial imediato
+    render();
+
+    // Carga preguiçosa dos filtros para não travar o render inicial
+    loadFilters().then(() => {
+      if (state.term) updateSuggestions();
+    });
+  </script>
+</Layout>
