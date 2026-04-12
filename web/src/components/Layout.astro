@@ -1,14 +1,27 @@
 ---
 import '../styles/global.css';
 import Breadcrumbs from './Breadcrumbs.astro';
+import { useTranslations, getLocaleSwitchUrl } from '../i18n';
 
 const { title = 'Bibliotheca Patristica', description = 'Acervo estático demonstrativo', breadcrumbs = [] } = Astro.props;
 const rawBase = import.meta.env.BASE_URL || '/';
 const base = rawBase;
 const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
+
+const t = useTranslations(Astro.currentLocale);
+// Mapeia locale para tag BCP-47 válida no atributo lang do HTML
+const htmlLang = (Astro.currentLocale ?? 'pt-br') === 'en' ? 'en' : 'pt-BR';
+
+// URL para o mesmo caminho no outro locale
+const switchUrl = getLocaleSwitchUrl(
+  Astro.currentLocale,
+  Astro.url.pathname,
+  base,
+  Astro.url.search,
+);
 ---
 <!doctype html>
-<html lang="pt-BR">
+<html lang={htmlLang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,23 +32,61 @@ const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
     <style>
       @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 400; src: local('Source Serif 4'); }
       @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; src: local('Inter'); }
+      .lang-switch {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        padding: 0.2rem 0.55rem;
+        border-radius: var(--radius, 6px);
+        border: 1px solid var(--color-border);
+        background: transparent;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        color: var(--color-muted);
+        text-decoration: none;
+        transition: border-color 0.15s, color 0.15s, background 0.15s;
+        white-space: nowrap;
+      }
+      .lang-switch:hover {
+        border-color: var(--color-accent);
+        color: var(--color-accent);
+        background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+      }
+      .lang-switch .ls-current {
+        color: var(--color-accent);
+        font-weight: 700;
+      }
+      .lang-switch .ls-sep {
+        opacity: 0.4;
+      }
     </style>
   </head>
   <body>
-    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <a class="skip-link" href="#conteudo">{t.skipToContent}</a>
     <div class="page-shell">
       <header class="topbar">
         <div class="wrapper header-grid">
           <div>
-            <a href={base} class="logo" aria-label="Bibliotheca Patristica — página inicial">
-              <span aria-hidden="true">📚</span> Bibliotheca
+            <a href={base} class="logo" aria-label={t.logoLabel}>
+              <span aria-hidden="true">📚</span> {t.logoText}
             </a>
-            <div style="color: var(--color-muted); font-size: 0.95rem;">Acervo demo — busca estática</div>
+            <div style="color: var(--color-muted); font-size: 0.95rem;">{t.tagline}</div>
           </div>
-          <nav aria-label="Navegação principal">
+          <nav aria-label={t.navSearch + ' / ' + t.navViewer}>
             <div class="nav-links">
-              <a href={`${baseWithSlash}search`}>Busca</a>
-              <a href={`${baseWithSlash}viewer?doc=PG144&page=396`}>Viewer</a>
+              <a href={`${baseWithSlash}search`}>{t.navSearch}</a>
+              <a href={`${baseWithSlash}viewer?doc=PG144&page=396`}>{t.navViewer}</a>
+              <a
+                href={switchUrl}
+                class="lang-switch"
+                aria-label={t.langSwitchLabel}
+                title={t.langSwitchLabel}
+              >
+                <span class="ls-current">{t.langSwitchCurrent}</span>
+                <span class="ls-sep">|</span>
+                <span>{t.langSwitchOther}</span>
+              </a>
             </div>
           </nav>
         </div>
@@ -44,19 +95,22 @@ const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
         {breadcrumbs.length > 1 && <Breadcrumbs items={breadcrumbs} />}
         {Astro.slots.default ? <slot /> : null}
       </main>
-      <aside class="wrapper disclaimer-wrapper" aria-label="Aviso sobre o conteúdo gerado por IA">
+      <aside class="wrapper disclaimer-wrapper" aria-label={t.disclaimerAriaLabel}>
         <div class="disclaimer-box">
-          <p style="margin:0 0 0.5rem;"><strong>⚠️ Sobre resumos e palavras‑chave</strong></p>
-          <p style="margin:0 0 0.4rem;">Usamos IA para gerar resumos e termos em português e ajudar a localizar rapidamente temas no corpus patrístico.</p>
-          <p style="margin:0 0 0.4rem;">O acervo ainda está incompleto e pode conter erros de OCR. Se um tema não aparecer na busca, ele pode existir; se uma palavra‑chave surgir, confirme no texto antes de usar academicamente.</p>
-          <p style="margin:0;">Resultados são rascunhos: leitura do original e revisão humana são sempre necessárias.</p>
+          <p style="margin:0 0 0.5rem;"><strong>{t.disclaimerTitle}</strong></p>
+          <p style="margin:0 0 0.4rem;">{t.disclaimerLine1}</p>
+          <p style="margin:0 0 0.4rem;">{t.disclaimerLine2}</p>
+          <p style="margin:0 0 0.4rem;">{t.disclaimerLine3}</p>
+          {(Astro.currentLocale ?? 'pt-br') !== 'pt-br' && (
+            <p style="margin:0; font-style: italic; color: var(--color-muted); font-size: 0.9rem;">{t.disclaimerDataLang}</p>
+          )}
         </div>
       </aside>
       <footer class="footer">
         <div class="wrapper" style="padding:0;">
           <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-3);">
-            <span>Camada de publicação demo • Astro + JSON mocks</span>
-            <span style="color:var(--color-muted);">GitHub Pages • static build</span>
+            <span>{t.footerLeft}</span>
+            <span style="color:var(--color-muted);">{t.footerRight}</span>
           </div>
         </div>
       </footer>

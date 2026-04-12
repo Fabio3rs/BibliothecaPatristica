@@ -1,38 +1,40 @@
 ---
+import { useTranslations } from '../i18n';
 const { page, summary, excerpt, keywords = [], entities = [], segments = [], snapshots = [], rawUrl } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
 ---
 <section class="card" aria-labelledby="page-meta-heading">
   <header style="display:flex;justify-content:space-between;align-items:flex-start;gap:var(--space-3);">
     <div>
-      <p style="margin:0;color:var(--color-muted);">Página</p>
+      <p style="margin:0;color:var(--color-muted);">{t.metaPageLabel}</p>
       <h2 id="page-meta-heading" style="margin:0;">{page?.label ?? '—'}</h2>
     </div>
-    {rawUrl && <a class="button secondary" href={rawUrl} target="_blank" rel="noreferrer">Abrir OCR bruto</a>}
+    {rawUrl && <a class="button secondary" href={rawUrl} target="_blank" rel="noreferrer">{t.metaOpenOcr}</a>}
   </header>
   <div style="margin-top:var(--space-4); display:grid; gap:var(--space-4);">
     <div>
-      <h3 style="margin:0 0 0.35rem; font-family: var(--font-serif);">Resumo</h3>
-      <p style="margin:0;">{summary ?? 'Sem resumo disponível.'}</p>
+      <h3 style="margin:0 0 0.35rem; font-family: var(--font-serif);">{t.metaSummaryTitle}</h3>
+      <p style="margin:0;">{summary ?? t.metaSummaryEmpty}</p>
     </div>
     <div>
-      <h3 style="margin:0 0 0.35rem; font-family: var(--font-serif);">Trecho</h3>
-      <p style="margin:0; color:var(--color-muted);">{excerpt ?? 'Sem trecho fornecido.'}</p>
+      <h3 style="margin:0 0 0.35rem; font-family: var(--font-serif);">{t.metaExcerptTitle}</h3>
+      <p style="margin:0; color:var(--color-muted);">{excerpt ?? t.metaExcerptEmpty}</p>
     </div>
     <div class="meta-grid">
       <div class="meta-block">
-        <h4>Keywords</h4>
+        <h4>{t.metaKeywords}</h4>
         <ul class="chips">{keywords.map((k: string) => <li>{k}</li>)}</ul>
       </div>
       <div class="meta-block">
-        <h4>Entidades</h4>
+        <h4>{t.metaEntities}</h4>
         <ul class="chips">{entities.map((e: string) => <li>{e}</li>)}</ul>
       </div>
       <div class="meta-block">
-        <h4>Segmentos</h4>
+        <h4>{t.metaSegments}</h4>
         <ul class="chips">{segments.map((s: string) => <li>{s}</li>)}</ul>
       </div>
       <div class="meta-block">
-        <h4>Snapshots</h4>
+        <h4>{t.metaSnapshots}</h4>
         <ul class="chips">{snapshots.map((s: string) => <li>{s}</li>)}</ul>
       </div>
     </div>

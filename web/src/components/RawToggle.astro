@@ -1,10 +1,12 @@
 ---
+import { useTranslations } from '../i18n';
 const { url } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
 ---
 <div class="raw-box">
   {url ? (
-    <a class="button secondary" href={url} target="_blank" rel="noreferrer">Abrir OCR bruto</a>
+    <a class="button secondary" href={url} target="_blank" rel="noreferrer">{t.rawOpen}</a>
   ) : (
-    <p style="margin:0; color:var(--color-muted);">OCR bruto não publicado neste espelho.</p>
+    <p style="margin:0; color:var(--color-muted);">{t.rawUnavailable}</p>
   )}
 </div>
