@@ -1,4 +1,7 @@
 # Contributing to the Patrística Digital Project
+- Corpus ~1B tokens in `teste/P*/text/*`; don't run jobs over the full set without coordination. Use subsets (`--first/--last`, `--pattern`, `--limit`).
+- Do **not** commit PDFs/images. Large deploy artifacts (Pagefind/dist) only in the publish branch.
+- SQLite databases (`data/*.db`) and Parquet files are **not versioned** — they exceed GitHub's file-size limit. Recreate them locally by running the pipeline. Keep the schemas intact; see `docs/PIPELINE.md` for the expected structure of `patristica_resumos.db`, `patristica_keywords.db`, and others.stica Digital Project
 
 **Language note:** Project artifacts (OCR text, summaries, keywords, prompts) are PT-BR only. This guide is in English first to reduce friction for external collaborators; a PT-BR mirror follows below.
 
@@ -75,7 +78,7 @@
 ## Dados e limites
 - Corpus ~1B tokens em `teste/P*/text/*`; evite rodar em tudo. Use filtros (`--first/--last`, `--pattern`, `--limit`).
 - Não commitar PDFs/imagens; artefatos grandes só no branch de publicação.
-- Preserve schemas dos SQLite (ver `docs/PIPELINE.md`).
+- Bancos SQLite (`data/*.db`) e arquivos Parquet **não são versionados** — excedem o limite de tamanho do GitHub. Recrie-os localmente rodando o pipeline. Preserve os schemas; veja a estrutura esperada de `patristica_resumos.db`, `patristica_keywords.db` e demais em `docs/PIPELINE.md`.
 
 ## Qualidade & testes
 - Mudou parsing/normalização: `pytest test_keywords_clean.py test_keyword_integrity.py -q`.
