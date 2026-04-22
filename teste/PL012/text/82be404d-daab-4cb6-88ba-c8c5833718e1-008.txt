@@ -1,59 +1,78 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="360,20,640,80">
-SANCTI
+  <bloco tipo="cabecalho" script="latino" bbox="120,20,880,150">
+    SANCTI
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="100,80,900,220">
-EUSEBII
+  <bloco tipo="texto_principal" script="latino" bbox="90,150,910,320">
+    EUSEBII
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="740,140,920,220">
-82660
+  <bloco tipo="texto_principal" script="latino" bbox="60,320,940,420">
+    EPISCOPI VERCELLENSIS
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,230,960,320">
-EPISCOPI VERCELLENSIS
+  <bloco tipo="texto_principal" script="latino" bbox="180,430,820,520">
+    OPERA OMNIA,
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="120,330,880,450">
-OPERA OMNIA,
-NUNC PRIMUM CURA QUA PAR ERAT REDACTA.
+  <bloco tipo="texto_principal" script="latino" bbox="120,520,880,590">
+    NUNC PRIMUM CURA QUA PAR ERAT REDACTA.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="180,460,720,560">
-EDITIONEM AUSPICATUR MAXIMEQUE COMMENDAT
-EUSEBII EVANGELIUM
+  <bloco tipo="texto_principal" script="latino" bbox="220,600,780,640">
+    EDITIONEM AUSPICATUR MAXIMEQUE COMMENDAT
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,560,900,700">
-CUM VARIIS VERSIONIS ITALIÆ CODICIBUS COLLATUM,
-SIVE
-EVANGELIARUM QUADRUPLEX LATINÆ VERSIONIS ANTIQUÆ,
-JUXTA MEMORATISSIMAS BLANCHINI VERONENSIS LUCUBRATIONES RECOGNITUM ET EXPRESSUM;
+  <bloco tipo="texto_principal" script="latino" bbox="300,650,700,680">
+    EUSEBII EVANGELIUM
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,700,860,860">
-CUI,
-POST RELIQUA SANCTI EUSEBII OPUSCULA,
-ACCEDUNT -
-FIRMICI MATERNI
-NECNON
-SANCTI PHILASTRII
-OPERA OMNIA,
-AD EXQUISITAS F. MUNTERIS ET P. GALEARDI
-EDITIONES CASTIGATA ET EMENDATA.
+  <bloco tipo="texto_principal" script="latino" bbox="140,690,860,730">
+    CUM VARIIS VERSIONIS ITALÆ CODICIBUS COLLATUM,
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="180,860,820,920">
------◊-----
-TOMUS UNICUS.
------◊-----
+  <bloco tipo="texto_principal" script="latino" bbox="300,740,700,760">
+    SIVE
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="140,920,820,980">
-PARISIIS, EXCUDEBAT VRAYET,
-IN VIA DICTA D'AMBOISE, PRES LA BARRIERE D'ENFER,
-OU PETIT-MONTROUGE.
-1845.
+  <bloco tipo="texto_principal" script="latino" bbox="70,760,930,840">
+    EVANGELIARUM QUADRUPLEX LATINÆ VERSIONIS ANTIQUÆ,
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="760,980,980,1000">
-Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="70,840,930,900">
+    JUxta MEMORATISSIMAS BLANCHINI VERONENSIS LUCUBRATIONES RECOGNITUM ET EXPRESSUM;
   </bloco>
-  <notas>
-    - Script identificado: latino (toda a página em maiúsculas latinas tipográficas).
-    - Correções feitas em relação ao rascunho OCR: "YARIIS" corrigido para "VARIIS"; "LATINJE"/"LATINJE" corrigido para "LATINÆ"; "ITALIE"/"ITALIE" lido como "ITALIÆ"; "MEMOBATISSIMAS" corrigido para "MEMORATISSIMAS"; data corrigida para "1845" (rascunho informou "1945"). Também padronizei "EVANGELIARJUM" para "EVANGELIARUM" e "LATINJE VERSIONIS ANTIQUJE" para "LATINÆ VERSIONIS ANTIQUÆ" conforme a leitura tipográfica da imagem.
-    - Observações sobre leitura: existe um carimbo manuscrito/numérico "82660" à direita do título "EUSEBII" — incluí como bloco separado. Ornamentos gráficos e linhas decorativas foram transcritas como linhas de marcador "-----◊-----" para preservar sua presença visual, sem tentar reproduzir exatamente o desenho.
-    - Não foram identificados scripts orientais, notas marginais legíveis ou aparato crítico separado além do texto editorial principal e do rodapé do editor.
-  </notas>
+  <bloco tipo="texto_principal" script="latino" bbox="420,900,580,920">
+    CUI,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,920,880,980">
+    POST RELIQUA SANCTI EUSEBII OPUSCULA,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="320,980,680,1040">
+    ACCEDUNT
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="200,1040,800,1110">
+    FIRMICI MATERNl
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="420,1110,580,1130">
+    NECNON
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="140,1130,860,1210">
+    SANCTI PHILASTRII
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="180,1210,820,1260">
+    OPERA OMNIA,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="160,1260,840,1310">
+    AD EXQUISITAS F. MUNTERIS ET P. GALEARDI
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="260,1310,740,1340">
+    EDITIONES CASTIGATA ET EMENDATA.
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="300,1400,700,1430">
+    TOMUS UNICUS.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="140,1510,860,1620">
+    PARISIIS, EXCUDEBAT VRAYET,
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="120,1620,880,1670">
+    IN VIA DICTA D'AMBOISE, PRES LA BARRIERE D'ENFER,
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="300,1670,700,1700">
+    OU PETIT-MONTRouGE.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="420,1710,580,1740">
+    1845.
+  </bloco>
+  <notas>Script predominante: latino. Pequeno carimbo manuscrito à direita superior com número ilegível parcialmente "82860" transcrito conforme visível. Mantive maiúsculas e capitalização conforme impresso; uso de lettere "Æ/Æ" normalizado visualmente como "Æ" onde aparente; palavra "FIRMICI MATERNl" apresenta um "I" final que pode ser forma tipográfica.</notas>
 </pagina>

@@ -1,61 +1,64 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="80,10,920,500">
+  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,180">
 S. EUSEBII
-
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="40,100,960,260">
 HIERONYMI
-
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="220,220,780,300">
 STRIDONENSIS PRESBYTERI
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,300,880,420">
 OPERA OMNIA
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,420,920,480">
 POST MONACHORUM ORDINIS S. BENEDICTI E CONGREGATIONE S. MAURI
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,500,920,820">
-SED POTISSIMUM JOANNIS MARTIANAEI HUJUS ORDINIS RECENSIONEM,
-DENUO AD MANUSCRIPTOS ROMANOS, AMBROSIANOS, VERONENSES ET MULTOS ALIOS,
+  <bloco tipo="texto_principal" script="latino" bbox="40,480,960,640">
+SBD POTISSIMUM JOANNIS MARTIANAEI HUJUS ORDINIS RECENSIONEM,
+DE NVO AD MANUSCRIPTOS ROMANOS, AMBROSIANOS, VERONENSES ET MULTOS ALIOS,
 NEC NON AD OMNES EDITIONES GALLICANAS ET EXTERAS CASTIGATA,
 PLURIMIS ANTEA OMNINO INEDITIS MONUMENTIS,
-ALIQVE S. DOCTORIS LUCUBRATIONIBUS SEORSIM TANTUM VULGATIS AUCTA,
-INNUMERIS NOTIS, OBSERVATIONIBUS, CORRECTIONIBUS ILLUSTRATA,
-
+ALIISQVE S. DOCTORIS LVCUBRATIONIBVS SEORSIM TANTUM VVL GATIS AVCTA,
+INNUMERIS NOTIS, OBSERVATIONIBUS, CORRECTIONIBVS ILLUSTRATA,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="160,640,840,720">
 STUDIO ET LABORE
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,720,880,820">
 VALLARSII ET MAFFÆII
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="160,820,820,900">
 VERONÆ PRESBYTERORUM,
-OPÉRAM NAVANTIBUS ALIIS IN EADEM CIVITATE; LITTERATIS VIRIS.
-
+OPERAM NAVANTIBUS ALIIS IN EADEM CIVITATE; LITTERATIS VIRIS.
 EDITIO PARISIORUM NOVISSIMA
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="40,900,960,980">
 EX SECUNDA AB IPSIS VERONENSIBUS EDITORIBUS CURIS POSTERIORIBUS ITA RECOGNITA,
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="60,820,920,1000">
-RECENTIUS DETECTIS
-
-UT PRÆSENS EDITIO, AMPLITUDINE SOLA, CÆTERIS OMISSIS EMENDATIONIBUS,
+  <bloco tipo="texto_principal" script="latino" bbox="40,980,960,1100">
+ATQVE EX RECENTIUS DETECTIS SIC DITATA
+UT PRÆSENS EDITIO, AMPLITVDINE SOLA, CÆTERIS OMISSIS EMENDATIONIBVS,
 PRÆCEDENTES OMNES EDITIONES, ETIAM BENEDICTINAS,
-
-tertia parte seu triente materialiter superet,
-
-ACCURANTE ET AD V. TIMUM RECOGNOSCENTE J. P. MIGNE, CURSUUM COMPLETORUM IN ANGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
-
-TOMI SECUNDUS ET TERTIUS.
-
-PARISI, EXCUDEBAT VRAYET,
-IN VIA DICTA D'EMBOISE, PRES LA BARRIERE D'ENFER,
-OU PETIT-MONTROUGE.
-
-1845.
-
-Digitized by Google
   </bloco>
-  <notas>
-    Script identificado: latino. Correções e observações principais (comparado ao rascunho OCR):
-    - Corrigi leituras óbvias do OCR: "MARTIANJZEI / MARTIANJZEI" → "MARTIANAEI".
-    - Normalizei leituras corruptas de maiúsculas e ligaduras mantendo grafia arcaica visível: ex. "ALIH:QUe" → "ALIQVE", "VALLARSII ET MAFF'JEII" → "VALLARSII ET MAFFÆII".
-    - Reconheci e preservei formas tipográficas antigas (V usado por U, uso de Æ, o uso de PRÆSENS/PRÆCEDENTES).
-    - Transcrevi literalmente apenas o que é legível na imagem; trechos incertos foram evitados ou transcritos na forma mais próxima do que aparece (ex.: "PARISI, EXCUDEBAT VRAYET" conforme a leitura visível).
-    - Usei quebras de linha e a ordem visual superior→inferior conforme a página.
-    - Não foram incluídas palavras que não aparecem visualmente; removi alucinações do OCR e do llm_ocr.
-  </notas>
+  <bloco tipo="texto_principal" script="latino" bbox="60,1100,940,1200">
+tertia parte seu triente materialiter superet,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="40,1200,960,1280">
+ACCURANTE ET AD V. TIMUM RECOGNOSCENTE J. P. MIGNE, CVRSVM COMPLE-
+TORUM IN ANGULOS SCIENTIÆ ECCLESIASTICÆ, RAMOS EDITORE.
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="200,1280,800,1370">
+TOMI SECUNDUS ET TERTIUS.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="120,1400,880,1540">
+PARISI, EXCUDEBAT VRAYET,
+IN VIA DICTA AMBOISE, PRES LA BARRIERE D'ENFER,
+OU PETIT-MONTROUGE.
+1845.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="760,1320,960,1500">
+[impressão do selo: BIBLIOTHECA BODLEIANA]
+  </bloco>
+  <notas>Transcrição preserva ortografia tipográfica original (ligaduras e caracteres latinos antigos). Alguns sinais decorativos e pequenos ruídos de impressão foram descritos como parte do texto somente quando legíveis; marca do selo manteve-se como nota_marginal. Onde caracteres estavam parcialmente ilegíveis, optou-se por leitura contextual sem normalização.</notas>
 </pagina>

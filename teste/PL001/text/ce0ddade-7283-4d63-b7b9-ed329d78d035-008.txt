@@ -1,66 +1,50 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,90">
-QUINTI SEPTIMII FLORENTIS
+<pagina estado="com_texto" tipo="capa_ou_guarda">
+  <bloco tipo="cabecalho" script="latino" bbox="186,82,816,112">
+    QUINTI SEPTIMII FLORENTIS
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="50,90,950,230">
-TERTULLIANI
+  <bloco tipo="texto_principal" script="latino" bbox="52,132,942,202">
+    TERTULLIANI
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="180,230,820,280">
-PRESBYTERI CARTHAGINENSIS
+  <bloco tipo="texto_principal" script="latino" bbox="312,222,686,242">
+    PRESBYTERI CARTHAGINIENSIS
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="180,280,820,360">
-OPERA OMNIA
+  <bloco tipo="texto_principal" script="latino" bbox="252,262,746,298">
+    OPERA OMNIA
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="100,360,900,470">
-CUM
-SELECTIS PRÆCEDENTIUM EDITIONUM LECTIONIBUS
-VARIORUMQUE COMMENTARIIS.
+  <bloco tipo="texto_principal" script="latino" bbox="102,318,896,402">
+    CUM
+    SELECTIS PRÆCEDENTIUM EDITIONUM LECTIONIBUS
+    VARIORUMQUE COMMENTARIIS.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="360,470,640,490">
-— • —
+  <bloco tipo="texto_principal" script="latino" bbox="306,476,692,506">
+    PARS PRIMA.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="200,520,800,590">
-PARS PRIMA.
+  <bloco tipo="texto_principal" script="latino" bbox="106,526,892,562">
+    LIBRI AB AUCTORE NONDUM MONTANISTA SCRIPTI, INTER QUOS INTEGER
+    DE ORATIONE LIBER EX RECENSIONE MURATORII.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,590,940,700">
-LIBRI AB AUCTORE NONDUM MONTANISTA SCRIPTI, INTER QUOS INTEGER I
-DE ORATIONE LIBER EX RECENSIONE MURATORII.
+  <bloco tipo="texto_principal" script="latino" bbox="56,576,942,632">
+    ACCEDUNT PLURES DIVERSI ARGUMENTI DISSERTATIONES JAC. PAMELII, DD. NICOL. LE NOURRY,
+    GOTHOPR. LUMPER, JOH. A. NOESSELT, LAUR. MOSHEIM, NEC NON ET PERPETUUS
+    SIGEBERTI HAVERCAMPI IN APOLOGETICUM COMMENTARIUS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,700,940,760">
-ACCEDUNT PLURES DIVERSI ARGUMENTI DISSERTATIONES JAC. PAMELII, DD. NICOL. LE NOURRY,
-GOTHOFR. LUMPER, JOH. A. NOESSELT, LAUR. MOSHEIM, NEC NON ET PERPETUUS
-SIGEBERTI HAVERCAMPI IN APOLOGETICUM COMMENTARIUS.
+  <bloco tipo="texto_principal" script="latino" bbox="352,726,646,752">
+    TOMUS PRIMUS.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="360,760,640,780">
-— • —
+  <bloco tipo="rodape" script="latino" bbox="206,816,792,942">
+    PARISIIS
+    EXCUDEBAT MIGNE,
+    IN VIA DICTA : D'AMBOISE, PRÈS LA BARRIÈRE D'ENFER,
+    OU PETIT-MONTROUGE.
+    1844.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="320,780,680,820">
-TOMUS PRIMUS.
+  <bloco tipo="nota_marginal" script="latino" bbox="752,792,946,932">
+    BIBLIOTECA BODLIANA
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="320,820,680,840">
-— • —
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="180,840,820,940">
-PARISIIS
-EXCUDEBAT MIGNE,
-IN VIA DICTA: D'AMBOISE, PRÈS LA BARNIÈRE D'ENFER,
-OU PETIT-MONTROUGE.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="420,940,580,980">
-1844.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="720,940,980,1000">
-Digitized by Google
+  <bloco tipo="outro" script="latino" bbox="602,962,896,988">
+    Digitized by Google
   </bloco>
   <notas>
-    - Script identificado: latino (toda a página em caracteres latinos).
-    - Corrigi e padronizei diversas leituras do rascunho OCR segundo o que é visível na imagem:
-      * "PRESBYTERI CARTHAGINENSIS" (corrigido do rascunho que apresentou variantes).
-      * "PRÆCEDENTIUM" mantido com a ligadura Æ conforme aparece na página.
-      * "LIBER EX RECENSIONE MURATORII" confirmado da imagem.
-      * Nomes e abreviaturas na linha das dissertações transcritos conforme visíveis: "JAC. PAMELII, DD. NICOL. LE NOURRY, GOTHOFR. LUMPER, JOH. A. NOESSELT, LAUR. MOSHEIM, ... SIGEBERTI HAVERCAMPI".
-    - Ornamentos (linhas decorativas) foram representados por "— • —" em blocos separados.
-    - Pequenos elementos (carimbo na margem direita) visíveis na imagem não foram transcritos como texto corrido; foi citado que existe no rodapé ("Digitized by Google" também transcrito).
-    - BBOX são aproximações em escala 0–1000, estimadas para preservar a ordem visual de cima para baixo.
+    Transcrição de página de título (frontispício). Ligatura "Æ" preservada em "PRÆCEDENTIUM". Acentos graves em "PRÈS" e "BARRIÈRE". Carimbo da biblioteca Bodleiana visível no canto inferior direito.
   </notas>
 </pagina>

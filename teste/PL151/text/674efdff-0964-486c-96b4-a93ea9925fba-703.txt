@@ -1,81 +1,64 @@
 <pagina estado="com_texto">
-  <bloco tipo="texto_principal" script="misto" bbox="50 50 200 350">
-    fig 5. 6. et 7. d.
-    A Λ λ
-    B C C α
-    D D, E E E
-    F G
-    H H, I J K
-    L L, M N
-    M m N
-    N N, O P
-    P, Q R R
-    S, T U V
-    U V X Y
-    Z.
+  <bloco tipo="cabecalho" script="latino" bbox="140,20,860,150">
+HUNC LIBRUM REGI [ilegivel]
+[ilegivel] [ilegivel] [ilegivel]
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="220 50 750 150">
-    HUNC LIBRUM REGI MAHTHILD ROO N XTORI GO
-    QUAE NORITALA RUS SUEUORU OUX HERICAN
-    NUS
-    fig 1
+  <bloco tipo="nota_marginal" script="latino" bbox="20,80,220,660">
+A A A
+B C C C
+D D, E E E
+E / G
+H H, I J A
+L L, M M
+M M M
+N N, O P
+P, Q R R
+S, T T U
+a v x y
+z.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="780 50 950 300">
-    fig 8.
-    a, b, c, d
-    e, f, g, h
-    i, k, l,
-    m, n, n,
-    o, p, q,
-    r, s, t
-    v u x
-    y, z
+  <bloco tipo="texto_principal" script="latino" bbox="200,120,780,560">
+[Figura central: rei sentado à direita com cetro e figura ofertante à esquerda segurando um livro]
+fig.3
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="50 380 200 600">
-    fig 7.
-    Otto I
-    Domusouis
-    fig 8
-    corona longob.
+  <bloco tipo="nota_marginal" script="latino" bbox="780,80,980,660">
+a,b,c,d
+e,f,g,h
+i,k,l
+m,m,n
+o,p,q
+r,s,t
+v,u,x
+y,z
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="750 300 950 550">
-    fig 11.
-    Otto II fig 963.
-    fig 10.
-    Otto II fig 974
+  <bloco tipo="nota_marginal" script="latino" bbox="20,560,240,920">
+fig.7
+otto I Domeniquio? [ilegivel]
+fig.8
+corona congol.
+fig.9
+[ilegivel] Otto I fig
+[ilegivel] .970.
+[ilegivel] fig.12
+[ilegivel]
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50 650 250 950">
-    fig 6 B) a
-    g : g
-    q : q
-    ma : m
-    ha : y
-    na : n
-    e : e
-    et : et
-    te : t
-    re : r
-    Otto I fig
-    a. 970.
-    Otto I
-    Sign.
-    Magd.
-    Fig 12
+  <bloco tipo="texto_principal" script="latino" bbox="240,560,620,920">
+fig.3
+[ornamento entrelaçado grande, sem legenda textual legível]
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="300 580 650 950">
-    fig. 3
+  <bloco tipo="nota_marginal" script="latino" bbox="620,560,980,920">
+fig.11
+Otto II fig 963.
+fig.10
+Otto II fig 974
+fig.13
+fig.15
+Otto II sign. [ilegivel]
+Blandinus? fig.4
+Otto III fig 995.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="650 580 950 900">
-    fig 13
-    Otto II
-    Sign. Magd.
-    fig 15.
-    Bladimir. 1
-    fig 4.
-    Otto III
-    fig 996.
+  <bloco tipo="rodape" script="latino" bbox="420,960,780,998">
+Digitized by Google
   </bloco>
-  <notas>
-    A página é uma placa ilustrativa de um trabalho de paleografia ou diplomática, contendo amostras de alfabetos (latino e grego), textos em escrita antiga (uncial/carolina), e ilustrações de figuras históricas (Otto I, II, III, Bladimir) com datas e legendas. O texto de dedicação no topo ("HUNC LIBRUM...") está em escrita simulada antiga. O OCR do rascunho continha muitos erros de leitura dessa escrita ("MAHTHILROONXTORIGO"), que foram corrigidos parcialmente com base na visualização, embora a escrita seja estilizada. O llm_ocr forneceu uma estrutura melhor para as legendas das figuras.
-  </notas>
+  <notas>Pagina com imagem e numerosas legendas marginais. Script principal latino; muitas legendas e listas de letras alfabéticas marginais parcialmente danificadas/ilegíveis — usei a marca [ilegivel] por palavras cuja leitura não pôde ser determinada com segurança. As caixas bbox foram estimadas proporcionalmente à imagem (escala 0-1000).</notas>
 </pagina>

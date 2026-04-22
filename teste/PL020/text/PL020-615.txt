@@ -1,55 +1,41 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="250,100,750,180">
+  <bloco tipo="cabecalho" script="latino" bbox="120,60,880,210">
     ELENCHUS OPERUM
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="160,210,840,270">
     QUÆ IN HOC TOMO XXI CONTINENTUR.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="480,280,600,300">
+  <bloco tipo="texto_principal" script="latino" bbox="220,320,780,420">
     RUFINUS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,310,900,630">
-    De Benedictionibus Patriarcharum libri duo. . . . . . . . . . . . . . . . Col. 99
-    Commentarius in Symbolum Apostolorum. . . . . . . . . . . . . . . . . . . . 33
-    Historia monachorum . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
-    Historiæ ecclesiasticæ libri duo . . . . . . . . . . . . . . . . . . . . 46
-    Apologiæ in S. Hieronymum libri duo . . . . . . . . . . . . . . . . . . . 54
-    Apologia altera ad Anastasium papam . . . . . . . . . . . . . . . . . . . 62
+  <bloco tipo="texto_principal" script="latino" bbox="100,430,920,670">
+    De Benedictionibus Patriarcharum libri duo. . . . . . . . . . . . . . . . . . . . . . . Col. 29
+    Commentarius in Symbolum Apostolorum. . . . . . . . . . . . . . . . . . . . . . . 33
+    Historia monachorum . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+    Historiæ ecclesiasticæ libri duo . . . . . . . . . . . . . . . . . . . . . 46
+    Apologie in S. Hieronymum libri duo . . . . . . . . . . . . . . . . . . . 54
+    Apologia altera ad Anastasiium papam . . . . . . . . . . . . . . . . . . . 62
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,640,750,660">
+  <bloco tipo="texto_principal" script="latino" bbox="240,690,760,760">
     OPERA RUFINO ASCRIPTA.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,670,900,780">
-    Commentarius in LXXV psalmos. . . . . . . . . . . . . . . . . . . . . . . 65
-    Commentarius in Osee, Joel et Amos . . . . . . . . . . . . . . . . . . . 93
-    Vita S. Eugeniæ . . . . . . . . . . . . . . . . . . . . . . . . . . . . 110
-    Libelli duo de fide. . . . . . . . . . . . . . . . . . . . . . . . . . . 112
+  <bloco tipo="texto_principal" script="latino" bbox="100,770,920,920">
+    Commentarius in LXXV psalmos. . . . . . . . . . . . . . . . . . . . . . . . 63
+    Commentarius in Osee, Joel et Amos . . . . . . . . . . . . . . . . . . . . 95
+    Vita S. Eugenii. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 110
+    Libelli duo de fide. . . . . . . . . . . . . . . . . . . . . . . . . . . . 112
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,790,850,850">
+  <bloco tipo="texto_principal" script="latino" bbox="140,940,860,1010">
     PELAGIUS, JULIANUS, CŒLESTIUS ET ANIANUS.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="160,1010,840,1070">
     Horum hæreticorum memorantur tantum opera alibi a nobis edita.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="250,890,850,910">
-    CLICHY. — EX TYPIS PAUL DUPONT, 12, VIA DICTA BAG-D'ASNIÈRES. (1707, 2-8.)
+  <bloco tipo="rodape" script="latino" bbox="180,1400,820,1460">
+    CLICHY. — EX TYPIS PAUL DUPONT, 12, VIA DICTA BAC-D'ASNIÈRES. (1707, 2-8.)
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="620,960,850,980">
+  <bloco tipo="outro" script="latino" bbox="760,1480,920,1550">
     Digitized by Google
   </bloco>
-  <notas>
-    Transcrição corrigida baseada na imagem. O rascunho do OCR continha muitos erros nos números das colunas (ex: 99, 33, 38, etc. foram lidos como caracteres gregos ou lixo) e nas ligaduras latinas (Æ, Œ). 
-    Correções principais:
-    - "QU/E" -> "QUÆ"
-    - "XX!" -> "XXI"
-    - Números das colunas corrigidos (99, 33, 38, 46, 54, 62, 65, 93, 110, 112).
-    - "Patriarcharuur" -> "Patriarcharum"
-    - "Ápostolorum" -> "Apostolorum"
-    - "Historie ecclesiastice" -> "Historiæ ecclesiasticæ"
-    - "Apologie" -> "Apologiæ"
-    - "allera" -> "altera"
-    - "Commentariusin" -> "Commentarius in"
-    - "Joelet" -> "Joel et"
-    - "Eugenie" -> "Eugeniæ"
-    - "Libeliduodefide" -> "Libelli duo de fide"
-    - "COELESTIUS &r" -> "CŒLESTIUS ET"
-    - "h:ereticorum" -> "hæreticorum"
-    - Rodapé corrigido: "CLicuv. — Ex Typis Ρλυι, Ώύνοντ..." -> "CLICHY. — EX TYPIS PAUL DUPONT..."
-  </notas>
+  <notas>Texto em latim impresso; bboxes estimadas em escala 0-1000. Pontuações e espaçamentos reproduzidos literalmente; qualquer pequena imperfeição tipográfica mantida.</notas>
 </pagina>

@@ -1,72 +1,30 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="650,20,950,150">
-    Regulae Boetii
-    et Huchbaldi
-    Monochordum.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,150,950,800">
-    Diatonicum.
+  <bloco tipo="texto_principal" script="latino" bbox="40,60,960,920">
+    III. dec. VIII.
+    III. CC. LXX. III.
+    synon.
+    [ilegivel]
+    Diatoniconum.
     Chromaticum.
-    Enarmonium.
-
-    III. dC. V III.
-    Mese chromi.
-    4III. dC. VII.
-    Mese enar.
-    III. dCCC.
-    III. dC. VIII.
-    se paranete
-    C. VIII. III. XC. VI.
-    Q.
-    T.
-    P.
-    R.
-    S.
-    T.
-    trite
-    synem.
-    III. CC. C. LXX.
-    IIII. C. IIII.
-    T.
-    S.
-    T.
-    paranete synem.
-    IIII. CCC. LXX. IIII.
-    Q.
-    T.
-    para nete
-    synem.
-    III. CC. CCC. L. VI.
-    T.
-    S.
-    T.
-    nete synem.
-    III. CC. CC. L. VI.
-    T.
-    S.
-    T.
-    nete synemenon.
-    III. CCC. C. L. VI.
-    T.
-    S.
-    T.
-
-    TETRACH
-    ORDUM SUPERIORU
-    CHORDUM DIEZEUGME
-    NON
-    TETRACHORDUM EXCELLENTI
-    TETRACH
-    ORDUM DIEZEUGME
-    NON
+    Enharmonicum.
+    TETRA CHORORUM EXCELLENTI.
+    ORDUM SUPERIORUM.
+    TE.
+    TETRACHI
+    A. B. C. D.
+    (colunas e células da tabela com numerosas abreviações numéricas e literais; muitos campos contêm siglas: III., II., CCC., LXX., XXX., LX., &lt;f&gt;., &lt;g&gt;., &lt;i&gt;.)
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="200,850,600,900">
-    (SEQUITUR TABULA. A deorsum in sursum lege.)
+  <bloco tipo="nota_marginal" script="latino" bbox="760,140,820,820">
+    A.
+    B.
+    C.
+    D.
+    E.
+    F.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="600,950,950,990">
+  <bloco tipo="rodape" script="latino" bbox="120,930,880,990">
+    (Sequitur Tabula. A deorsum in sinum lege.)
     Digitized by Google
   </bloco>
-  <notas>
-    A página contém uma tabela musical complexa (Monochordum) de Boécio e Hucbaldo. O texto está orientado de forma que o cabeçalho "Regulae Boetii" aparece no topo direito (rotacionado 90 graus na lógica da página impressa, mas visualmente no topo da imagem fornecida). O OCR rascunho continha muitos erros de reconhecimento de caracteres (confundindo tabelas com grego), que foram corrigidos com base no llm_ocr e na inspeção visual dos termos latinos musicais (e.g., "Diatonicum", "Mese", "synemenon"). A nota de rodapé indica a ordem de leitura da tabela ("A deorsum in sursum lege" - De baixo para cima).
-  </notas>
+  <notas>Pagina digitalizada e rotacionada; tabela complexa com muitas abreviaturas e números romanos. Onde a leitura é incerta usei a marca [ilegivel] por palavra. Mantive as formas latinas visíveis (Diatoniconum, Chromaticum, Enharmonicum, TETRA CHORORUM EXCELLENTI). A localização dos blocos é aproximada em escala 0-1000.</notas>
 </pagina>

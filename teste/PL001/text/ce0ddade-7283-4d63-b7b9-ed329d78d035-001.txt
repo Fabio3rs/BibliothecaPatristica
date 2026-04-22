@@ -1,20 +1,27 @@
 <pagina estado="com_texto">
-  <bloco tipo="texto_principal" script="latino" bbox="78,524,677,661">
+  <bloco tipo="cabecalho" script="desconhecido" bbox="50,620,950,630">
+    [linha horizontal]
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,670,720,780">
 This is a reproduction of a library book that was digitized
 by Google as part of an ongoing effort to preserve the
 information in books and make it universally accessible.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="52,694,677,790">
+  <bloco tipo="texto_principal" script="latino" bbox="60,810,620,890">
 Google™ books
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="78,806,677,855">
+  <bloco tipo="outro" script="desconhecido" bbox="700,790,940,940">
+[QR code image]
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="70,930,500,970">
 https://books.google.com
   </bloco>
-  <bloco tipo="outro" script="desconhecido" bbox="833,694,938,831">
-  </bloco>
   <notas>
-    Identificação visual: página com texto no rodapé e espaço em branco acima; script latino predominante.
-    Correções sobre o rascunho OCR: removi inserções alucinadas presentes no rascunho (ex.: "5x", caracteres extraneous e aspas) e confirmei o parágrafo principal, o logotipo ("Google™ books" com o símbolo ™ visível) e a URL "https://books.google.com".
-    Observações de transcrição: mantive as quebras de linha do parágrafo conforme visíveis; incluí um bloco separado para o QR-code (apenas como área gráfica, sem texto transcrito) com script marcado como "desconhecido".
+Tipo de página: capa_ou_guarda
+Os bounding boxes são aproximações normalizadas ao sistema 0-1000.
+O traço horizontal é um elemento gráfico representado como "[linha horizontal]".
+O código QR é um elemento gráfico não transcrito, identificado como "[QR code image]".
+O sinal de marca (TM) após "Google" foi transcrito como "™".
+Script predominante: latino.
   </notas>
 </pagina>

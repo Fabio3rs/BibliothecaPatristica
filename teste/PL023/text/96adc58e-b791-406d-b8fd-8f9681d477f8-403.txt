@@ -1,52 +1,45 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="150,40,850,120">
+  <bloco tipo="cabecalho" script="latino" bbox="120,20,880,170">
 ELENCHUS
+
+OPERUM QUÆ IN HOC TOMO CONTINENTUR.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="120,120,880,190">
-OPERUM QUAE IN HOC TOMO CONTINENTUR.
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="200,200,800,260">
+  <bloco tipo="texto_principal" script="latino" bbox="140,170,860,700">
 S. EUSEBII HIERONYMI
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,270,920,420">
+
 Liber de Nominibus Hebraicis.
-Liber de Situ et Nominibus locorum Hebraicorum, cum Graeco Eusebii textu.
-Liber Quaestionum Hebraicarum in Genesim.
+Liber de Situ et Nominibus Locorum Hebraicorum, cum Graeco Eusebii textu.
+Liber Quæstionum Hebraicarum in Genesim.
 Commentarius in Ecclesiasten.
-Homiliae duae Origenis in Canticum Canticorum, Latine abs Hieronymo redditae.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="140,430,880,560">
+Homiliæ duæ Origenis in Canticum Canticorum, Latine abs Hieronymo reddite.
+
 APPENDIX. — PARS PRIMA.
-Quinque Graeca Fragmenta libri Nominum Hebraicorum.
-Lexicon Graecum Nominum Hebraicorum, quod Origenianum audit.
+
+Quinque Græca Fragmenta libri Nominum Hebraicorum.
+Lexicon Græcum Nominum Hebraicorum, quod Origenianum addit.
 Ejusdem libri aliud exemplar.
 Excerpta ex Operibus Philonis Judæi.
 Excerpta ex Operibus Flavii Josephi.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,580,920,860">
+
 APPENDICIS PARS ALTERA.
-(Quæ asterisco prænotantur, primo accessere Editioni Vallarsianæ, vel ex Mss., vel ex editis aliis libris adscita.)
-- Liber nominum Locorum ex Actis.
-- De Hebraico Alphabeto, et decem Dei Nominibus.
-- De Benedictionibus Jacob Patriarcha.
-- Ejusdem libelli alterum exemplar.
+
+(Quæ asterisco prænotantur, primo accesserunt Editioni Vallarsianæ, vel ex Mss., vel ex
+edi‌tiis aliis libris adscita.)
+
+Liber nominum Locorum ex Actis.
+De Hebraico Alphabelo, et decem Dei Nominibus.
+De Benedictionibus Jacob Patriarchæ.
+Ejusdem libelli alterum exemplar.
 De decem Tentationibus in deserto.
-In Canticum Debhorae Commentarium.
-Quaestiones Hebraicæ in libros Regum.
-Quaestiones Hebraicæ in libros Paralipomenon.
+In Canticum Debboræ Commentarium.
+Quæstiones Hebraicæ in libros Regum.
+Quæstiones Hebraicæ in libros Paralipomenon.
 In Job interlinearis Expositio Philippi.
-- Excerpta ex Commentario Ms. in eundem librum.
+Excerpta ex Commentario Ms. in eundem librum.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="220,880,820,980">
-MIGNE succursaliste, Montrouge, de Vrayet de Surcy,
+  <bloco tipo="rodape" script="latino" bbox="160,900,840,980">
+MIGNE succursaliste, Montrouge, de Vrayet de Surey,
 imprimeur à Paris.
   </bloco>
-  <notas>
-- Script identificado: latino apenas. Não há escrituras orientais na página.
-- As caixas (bbox) são estimativas em escala 0-1000, fornecidas para cada bloco na ordem visual de cima para baixo.
-- Corrigi vários erros do rascunho OCR: "TONO" -> "TOMO"; normalizei para formas latinas visíveis (ex.: "Hebraicis", "Graecum", "Philonis Judæi", "Flavii Josephi"). 
-- A rubrica parentética em "APPENDICIS PARS ALTERA" está parcialmente degradada; transcrevi-a de acordo com o texto impresso visível, mantendo termos latinos (Quæ, asterisco, Editioni Vallarsianæ, Mss., adscita).
-- Usei sinais diacríticos latinos (æ/æ ligaturas) onde o tipo impresso aparenta tê-los; caso não visíveis nitidamente, mantive a forma latinizada legível.
-- Não inventei blocos: cada linha transcrita corresponde ao texto visível na imagem. Onde o original tinha pontos ou marcas tipográficas (traços, viñetas), mantive o sentido do item sem acrescentar conteúdo alheio.
-  </notas>
+  <notas>Transcrição feita de impresso em latim. Pequenas manchas e sinais tipográficos transcritos literalmente; palavra "edi‌tiis" apresenta um espaço de ligadura/quebra no original; mantida ortografia original (ex.: Græca, Hebraicorum, Quæstiones).</notas>
 </pagina>

@@ -1,51 +1,32 @@
 <pagina estado="com_texto">
-  <bloco tipo="nota_marginal" script="latino" bbox="20,10,200,80">
-0
-Anal.
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,220">
+    Anal.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="60,80,940,220">
-SIXTI PAPÆ, DIONYSII PAPÆ, DIONYSII ALEXANDRINI,
-S. FELICIS, S. EUTYCHIANI, CAII, COMMODIANI, ANTONII,
+  <bloco tipo="texto_principal" script="latino" bbox="60,220,940,1060">
+    SIXTI PAPÆ, DIONYSII PAPÆ, DIONYSII ALEXANDRINI,
+    S. FELICIS, S. EUTYCHIANI, CAII, COMMODIANI, ANTONII,
+    S. VICTORINI, MAGNETIS,
+    
+    ARNOBII
+    
+    AFRI,
+    
+    OPERA OMNIA,
+    
+    AD INTEGRAS D. COUTANTII , GALLANDII, ORELLII EDITIONES EXPRESSA,
+    ET PRÆCIPUIS RIGALTI, DAVISII, MURATORII, ORELLII
+    , AC VARIORUM LECTIONIBUS ET NOTIS INSTRUCTA, NECNON ET ACCEDUNT
+    QUÆDAM DODWELLI CYPRIANICÆ DISSERTATIONES.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="180,220,820,300">
-S. VICTORINI, MAGNETIS,
+  <bloco tipo="outro" script="latino" bbox="200,1060,800,1220">
+    TOMUS UNICUS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,300,800,380">
-ARNOBII
+  <bloco tipo="rodape" script="latino" bbox="220,1480,780,1830">
+    PARISIIS
+    EXCUDEBAT SIROU,
+    IN VIA DICTA D'AMBOISE, PRÈS LA BARRIÈRE D'ENFER,
+    OU PETIT-MONTROUGE.
+    1854.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,380,700,460">
-AFRI,
-OPERA OMNIA,
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,460,940,660">
-AD INTEGRAS D. COUTANTII, GALLANDII, ORELLII EDITIONES EXPRESSA,
-ET PRÆCIPUIS RIGALTII, DAVISII, MURATORII, ORELLII
-AC VARIORUM LECTIONIBUS ET NOTIS INSTRUCTA, NECNON ET ACCEDUNT
-QUAEDAM DODWELLI CYPRIANICÆ DISSERTATIONES.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,660,880,760">
-——————— 
-TOMUS UNICUS.
-———————
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="200,800,800,940">
-PARISIIS
-EXCUDEBAT SIROU,
-IN VIA DICTA D'AMBOISE, PRÈS LA BARRIÈRE D'ENFER,
-OU PETIT-MONTROUGE.
-1844.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="760,960,980,995">
-Digitized by Google
-  </bloco>
-  <notas>
-Esta é uma página de capa (capa). O script é latino. Correções e observações relevantes feitas com base na imagem:
-- Foi transcrito literalmente o cabecalho e título principais (SIXTI PAPÆ, DIONYSII PAPÆ, DIONYSII ALEXANDRINI, etc.).
-- Corrigidos erros evidentes do rascunho OCR: por exemplo, "DIONYSII" (não formas corrompidas como DIUNYSII), "COMMODIANI" (não οοΜΜΟΡΙΑΝΙ), "ARNOBII" (título grande) e a data correcta "1844" (o rascunho indicava 1885, que é incorreto para a imagem).
-- Conservadas formas tipográficas visíveis, incluindo o uso de ligadura/AE em "PRÆCIPUIS" e "CYPRIANICÆ" conforme impresso.
-- Incluídas marcas marginais visíveis: o algarismo circulado "0" e a anotação manuscrita "Anal." no topo.
-- Incluído o selo moderno "Digitized by Google" visível no rodapé da imagem.
-- Ornamentos horizontais que aparecem na página foram representados por linhas de traços para sinalizar sua presença.
-- As bboxes são aproximações normalizadas à escala 0–1000, e seguem a ordem visual de cima para baixo.
-  </notas>
+  <notas>Script principal latino in stampa tipografica. Piccola annotazione manoscritta "Anal." in alto; trattata come parte del cabeçalho. BBOX approssimati su scala 0-1000 secondo istruzioni.</notas>
 </pagina>

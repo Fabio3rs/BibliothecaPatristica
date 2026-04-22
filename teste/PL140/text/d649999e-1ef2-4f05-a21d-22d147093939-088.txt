@@ -1,44 +1,22 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,60">
-    167 S. HENRICI IMPERATORIS 168
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,80">
+167
+S. HENRICI IMPERATORIS
+168
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="360,60,900,340">
-    [Illustratio Shrine]
-    HIC IVS BOALRICI ASCOR REGIS SS NI ET ACTAS
-    ZEDECHIAS REX IUDA TRADITUR
-    EMITER AMICIS ET FACIAT SOLAMEN IN ADLICTIS
-    HENRICUS PACIFICUS
-    NATUR SIMINITAS O BEAT
+  <bloco tipo="outro" script="latino" bbox="40,120,220,360">
+[ilegivel]
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="150,150,350,250">
-    [Illustratio Minor]
-    HENRICUS
+  <bloco tipo="outro" script="latino" bbox="120,100,900,760">
+[ilegivel] [ilegivel] CVNVDVS [ilegivel] +IBV XPE [ilegivel]
   </bloco>
-  <bloco tipo="outro" script="misto" bbox="150,350,900,550">
-    [Illustratio Sceptrum]
-    CVNDVS
-    + IHV XPE
-    IC XC NI KA
-    Ο ΑΓΙΟΣ
-    IO HC
-    OV
+  <bloco tipo="outro" script="latino" bbox="140,420,860,920">
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
   </bloco>
-  <bloco tipo="outro" script="misto" bbox="200,550,900,900">
-    [Diagramma]
-    Matheus
-    Marcus
-    Lucas
-    Iohannes
-    GLORIA QUI SUSCIPIT QVI EST OMNIPOTENS
-    OMNIPOTENS SIT NOMEN DOMINI BENEDICTUM EX HOC NUNC
-    [scriptura cipher/runica]
+  <bloco tipo="rodape" script="latino" bbox="720,920,1000,1000">
+Digitized by Google
   </bloco>
   <notas>
-    A página contém uma combinação de texto latino, grego e ilustrações de artefatos religiosos (um relicário/shrine, um cetro e um diagrama com símbolos dos evangelistas).
-    - O cabeçalho "S. HENRICI IMPERATORIS" está no topo.
-    - O relicário superior tem inscrições latinas nas bordas. O texto superior parece ser "HIC IVS BOALRICI ASCOR REGIS SS NI ET ACTAS". O inferior "EMITER AMICIS ET FACIAT SOLAMEN IN ADLICTIS".
-    - O cetro no meio tem inscrições gregas ("IC XC NI KA", "Ο ΑΓΙΟΣ") e latinas ("+ IHV XPE", "CVNDVS").
-    - A parte inferior tem um diagrama com os nomes dos evangelistas e texto em cifra ou taquigrafia antiga ("OMNIPOTENS SIT NOMEN...").
-    - O OCR rascunho tinha muitos erros de leitura de caracteres especiais e orientação. O llm_ocr foi mais preciso na identificação do conteúdo latino e grego.
+script principal: latino. Página dominada por gravura/placa ilustrativa contendo numerosas legendas pequenas em letra de caixa; muitas inscrições são ilegíveis em reprodução — marquei como [ilegivel] por palavra onde a leitura não é certa. A imagem está rotacionada no original scan; bboxes estimadas em escala 0-1000.
   </notas>
 </pagina>

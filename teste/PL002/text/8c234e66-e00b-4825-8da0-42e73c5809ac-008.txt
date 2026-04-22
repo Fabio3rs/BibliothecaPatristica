@@ -1,38 +1,54 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="300,50,700,150">
-    ELENCHUS RERUM
+  <bloco tipo="cabecalho" script="latino" bbox="450,100,750,130">
+    ELENCHUS RÉRUM
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="300,150,800,180">
     QUÆ IN HOC VOLUMINE CONTINENTUR.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="150,200,600,250">
+  <bloco tipo="texto_principal" script="latino" bbox="150,250,600,280">
     1. Liber de Præscriptionibus adversus hæreticos.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,280,800,450">
+  <bloco tipo="cabecalho" script="latino" bbox="500,300,650,320">
     SERIES PRIMA.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="300,330,750,350">
     SCRIPTA TERTULLIANI MONTANISTÆ POLEMICA.
-    De Corona militis.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="180,360,500,480">
+    De Corona militis. 13
     De Fuga in persecutione.
-    Adversus Gnosticos Scorpiace.
-    Adversus Praxeam.
+    Adversus Gnosticos Scorpiace. 11
+    Adversus Praxeam. 15
     Adversus Hermogenem.
     Adversus Marcionem libri quinque.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="580,360,850,460">
     12. Adversus Valentinianos.
     Adversus Judæos.
-    De Anima adversus philosophos.
-    De Carne Christi.
-    De Resurrectione carnis.
+    14. De Anima adversus philosophos.
+    16. De Carne Christi.
+    17. De Resurrectione carnis.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,460,800,550">
+  <bloco tipo="cabecalho" script="latino" bbox="500,490,650,510">
     SERIES SECUNDA.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="300,520,750,540">
     SCRIPTA TERTULLIANI MONTANISTÆ MORALIA.
-    De velandis Virginibus.
-    De Exhortatione Castitatis.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="180,550,500,610">
+    De velandis Virginibus. 7
+    De Exhortatione Castitatis. 8
     De Monogamia.
-    De Jejunis.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="580,550,750,610">
+    6. De Jejunis.
     De Pudicitia.
     De Pallio.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,560,900,720">
+  <bloco tipo="cabecalho" script="latino" bbox="500,580,650,600">
     APPENDICES.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,620,500,720">
     APP. I. CARMINA TERTULLIANO ADSCRIPTA.
     Adversus Marcionem libri V.
     Genesis.
@@ -40,28 +56,18 @@
     Ad Senatorem.
     De Jona et Ninive.
     De Ligno vitæ.
-    APP. II. Fragmentum de execrandis Diis, e bibliotheca Vaticana erutum a Joh. Mar. Suaresio Avenionensi.
+    APP. II. Fragmentum de execrandis Diis, e bibliotheca Vaticana erutum a Joh. Mar. Suarezio Avenionensi.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,620,900,700">
     APP. III. Græcorum operum fragmenta et notulæ.
     APP. IV. Deperditorum operum fragmenta et mentio.
     APP. V. In libros de Baptismo et Pœnitentia adnotationes R. P. D. Corbiniani Thomæ, monachi O. S. B., cum ejusdem dissertatione de affinitate inter Baptismum et Pœnitentiam apud Tertullianum.
     Indices.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="600,950,850,980">
+  <bloco tipo="rodape" script="latino" bbox="600,950,800,980">
     Digitized by Google
   </bloco>
   <notas>
-    Transcrição baseada na imagem fornecida, que é uma página de índice (Elenchus Rerum) de uma edição de Tertuliano (provavelmente Patrologia Latina). 
-    Correções feitas em relação ao OCR rascunho:
-    - "Proscriptionibus" corrigido para "Præscriptionibus".
-    - "nilitis" corrigido para "militis".
-    - "Clrigji" corrigido para "Christi".
-    - "Marcionerm" corrigido para "Marcionem".
-    - "bxreticos" corrigido para "hæreticos".
-    - "Montanistue" corrigido para "Montanistæ".
-    - "pe velandis" corrigido para "De velandis".
-    - "Belejuniis" corrigido para "De Jejunis".
-    - "bihfiotlieca" corrigido para "bibliotheca".
-    - Estrutura de colunas na imagem foi linearizada para fins de transcrição lógica, mantendo a ordem de leitura dos títulos e listas.
-    - O item "Adversus Marcionem libri V." aparece listado sob "APP. I. CARMINA TERTULLIANO ADSCRIPTA" na imagem, embora bibliograficamente seja uma obra em prosa; mantive a fidelidade ao texto impresso na página.
+    Transcrição de página de índice (Elenchus Rerum). Ligaturas æ e œ mantidas. Números de página intercalados nas colunas centrais foram associados ao bloco da esquerda por proximidade visual.
   </notas>
 </pagina>

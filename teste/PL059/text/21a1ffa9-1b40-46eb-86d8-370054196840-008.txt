@@ -1,53 +1,64 @@
 <pagina estado="com_texto">
-  <bloco tipo="texto_principal" script="latino" bbox="80 50 480 450">
-    Incipit prooemium Aurelii Prudentii
-    Liber cathemerinon incipit;
-    liber cathemerinon non incipit
-    P
-    er quinquennia iam decem
-    ni fallor fuimus: septem insuper
-    annos candoratae dum frugum sole uelutatis
-    inter lunae &amp; diem adunget adponit.
-    Vicinum senio la dr applicat i
-    H
-    INCIPIT YMNUS IN HONORE SCORUM
-    XVIII MARTYRUM CAESAR AUGUS
-    TANORUM
-    IIS NOVEM NR POPULUS SUB UNO
-    Martyrum feruax cineres sepul chro
-    Caesaraugusta vocata murvrbem flectunauit
-    A
-    INCIPIT PASSIO SCLAVRENTII
-    antiqua fanorum parens iam roma
-    orbe dedita
+  <bloco tipo="texto_principal" script="latino" bbox="35,30,495,420">
+I.ncipit proemii aurelii [ilegivel]
+Liber cathemeron. incipit;
+
+P
+Per quinque iam decem
+[ilegivel] iam decem
+[ilegivel] funxit septum instup
+anni carducorum diu frumentore voluit
+intrat die aduances adponit.
+Veniu senio la drappulace;
+
+INCIPIT YMNUS IN HONORE SCORU
+CVII MARTYRUM CAESAR AUGUS
+TANORUM
+IS NOVEM R POPVLUS SUBVNO
+MARTYRUM servat cineres sepulchro.
+Caesara augusta vota muta verbum restituunt;
+
+A INCIPIT PASSIO SCLAVRENTII
+[ilegivel]
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520 50 920 450">
-    AUR. PRV DEN TII
-    CLEMENTIS · V · C ·
-    FINIT CONTRA
-    SYMMACHU LIB · II ·
-    INCIPIT EIUSDEM
-    ROMANUS CONTRA
-    GENTILES:
-    IAMBI CV
-    METR V
-    R
-    omane ceptas iam feras Aftorandi.
-    lingua fori organu faucomoue,
-    famy, meloquiffime
-    Labgure coeptu Carm inftatiffimo.
+
+  <bloco tipo="texto_principal" script="latino" bbox="505,30,965,420">
+AVR PRV DENTII
+CLEMENTIS . V . G.
+
+FINIT CONTRA
+SYMMACH L. LIB. II
+
+Incipit eiusdem
+Romanus contra
+gentiles:
+
+R
+Romanus episcopus [ilegivel]
+[ilegivel]
+[ilegivel]
+[ilegivel]
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="100 830 480 870">
-    Lucerna fictilis veterum Christianorum ex museo
-    F. B. Passeri.
+
+  <bloco tipo="outro" script="desconhecido" bbox="35,430,495,720">
+[Figura: gravura — lucerna (reprodução de exemplar antigo)]
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="530 830 900 860">
-    Prototypon vetustum SS. septem dormientium.
+
+  <bloco tipo="outro" script="desconhecido" bbox="505,430,965,720">
+[Figura: gravura — Prototypon / relevo iconográfico (reprodução de exemplar antigo)]
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="600 960 900 990">
-    Digitized by Google
+
+  <bloco tipo="rodape" script="latino" bbox="35,720,495,760">
+Lucerna fictilis veterum Christianorum ex museo F. B. Passeri.
   </bloco>
-  <notas>
-    A página contém texto em latim com iniciais ornamentadas (P, H, A, R) e duas gravuras na parte inferior. O OCR do Tesseract estava extremamente degradado ("auvélaÍrubenny"), enquanto o LLM OCR forneceu uma base melhor, mas com algumas alucinações e correções prematuras. A transcrição foi ajustada para refletir a ortografia visível na imagem (ex: "murvrbem", "faucumoue", "Aftorandi"), preservando abreviações e erros originais do impresso quando visíveis. O texto dentro das iniciais é pequeno e denso. As legendas das imagens foram transcritas abaixo das respectivas áreas visuais.
-  </notas>
+
+  <bloco tipo="rodape" script="latino" bbox="505,720,965,760">
+Prototypon vetustum SS. septem dormientium.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="680,760,980,980">
+Digitized by Google
+  </bloco>
+
+  <notas>Tipo de página: página de texto com gravuras (duas colunas no terço superior; duas gravuras no terço inferior; legendas e carimbo "Digitized by Google" no rodapé). Script predominante: latino. Os blocos foram transcritos visualmente em ordem: coluna esquerda inteira seguida da direita, conforme layout. Preservei maiúsculas, capitulares e separação em linhas tal como no original; não expandi abreviaturas. Usei a marca [ilegivel] por palavras isoladas que não puderam ser lidas com segurança (sempre por palavra, nunca por bloco). As caixas (bbox) são aproximadas em escala 0-1000 correspondendo à posição visual observada. Elementos icnográficos dentro das gravuras não foram transcritos letra-a-letra devido à baixa legibilidade; em lugar disso descrevi a figura entre colchetes.</notas>
 </pagina>

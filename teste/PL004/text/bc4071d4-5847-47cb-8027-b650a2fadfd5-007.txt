@@ -1,50 +1,38 @@
 <pagina estado="com_texto">
-  <bloco tipo="nota_marginal" script="latino" bbox="380,30,620,90">
+  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,130">
     Anal.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="220,90,780,170">
-    SANCTI THASCHII CÆCILII
+  <bloco tipo="texto_principal" script="latino" bbox="120,120,880,220">
+    SANCTI THASCHI CÆCILII
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="120,170,880,300">
+  <bloco tipo="texto_principal" script="latino" bbox="70,220,930,360">
     CYPRIANI
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="90,310,910,380">
+  <bloco tipo="texto_principal" script="latino" bbox="80,360,920,430">
     EPISCOPI CARTHAGINENSIS ET MARTYRIS
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="220,400,780,460">
+  <bloco tipo="texto_principal" script="latino" bbox="220,430,780,500">
     OPERA OMNIA,
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,470,920,700">
+  <bloco tipo="texto_principal" script="latino" bbox="80,500,920,700">
     AD INTEGRAM STEPHANI BALUZII EDITIONEM EXPRESSA ,
-    ET PRÆCIPUIS FELLI, PAMELII, RIGALTII LECTIONIBUS ET NOTIS INSTRUCTA,
+    ET PRÆCIPUIS FELLI, PAMELII, RIGALTI LECTI0NIBUS ET NOTIS INSTRUCTA ,
     VARIISQUE AUCTA OPUSCULIS DUBIIS ,
-    AUT NOVISSIME TROMBELLII ET MINGARELLI, DURANDI ET
+    AUT NOVISSIME TROMBELLI ET MINGARELLI, DURANDI ET
     MARTENII CURA EDITIS.
     NEC NON ET ACCEDUNT IN QUOSDAM LIBROS TUM RECENTES JOSEPHI MARTINI
     ROUTHII NOTÆ, TUM D. NICOLAI LE NOURRY DISSERTATIO.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="150,700,850,840">
-    ———————
+  <bloco tipo="texto_principal" script="latino" bbox="150,700,850,780">
     TOMUS UNICUS.
-    ———————
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="160,860,840,980">
+  <bloco tipo="rodape" script="latino" bbox="220,860,780,980">
     PARISIIS
     EXCUDEBAT SIROU,
-    IN VIA DICTA D'AMBOISE, PRES LA BARRIERE D'ENFER,
+    IN VIA DICTA D'AMBOISE, PRÈS LA BARRIÈRE D'ENFER,
     OU PETIT-MONTROUGE.
-    -
+    —
     1844.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="800,940,980,990">
-    Digitized by Google
-  </bloco>
-  <notas>
-    - Página identificada como folha de rosto / capa (texto tipográfico centralizado e informações de edição).
-    - Corrigi vários erros evidentes do rascunho OCR baseando-me na imagem: p.ex. ano "1844" (visível no rodapé), "CYPRIANI", "EPISCOPI CARTHAGINENSIS ET MARTYRIS", e o corpo da indicação editorial ("AD INTEGRAM STEPHANI BALUZII ...").
-    - Transcrevi "SANCTI THASCHII CÆCILII" conforme aparece impresso; a grafia antiga/peculiar de THASCHII pode variar em edições e foi preservada tal como visível.
-    - Corrigi para "MARTENII" (linha editorial) conforme impressão; rascunhos OCR haviam apresentado variantes.
-    - Usei letras latinas comuns; não foram identificados scripts não-latinos ou notações siríacas/árabes, apenas uma anotação manuscrita "Anal." no topo e uma marca gráfica à esquerda.
-    - BBOXs são estimativas relativas (escala 0-1000) e seguem a ordem visual de cima para baixo.
-  </notas>
+  <notas>Transcrição feita de um frontispício tipográfico em latim. Mantidas letras como aparecem (ex.: "LECTI0NIBUS" com zero conforme imagem) e sinais tipográficos. Pequenas manchas e sinais marginais foram ignorados; não foram inferidas palavras ilegíveis. Uso de "Æ" reproduzido como 'Æ' onde visível.</notas>
 </pagina>

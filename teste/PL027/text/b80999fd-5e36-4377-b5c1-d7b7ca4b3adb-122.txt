@@ -1,107 +1,112 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,70">
-    239     EUSEBII CHRONICORUM LIB. II     240
+  <bloco tipo="cabecalho" script="latino" bbox="20,0,980,70">
+239
+EUSEBII CHRONICORUM LIB. II
+240
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="40,70,480,520">
-Αζαρίας, 6 αἰ. Ὀζίας, ἔτη νϛ'.
-Ἰωάθαν ἔτη ιϝ'.
-Ἀχὰζ ἔτη ιϝ'.
+  [!-- Coluna esquerda (transcrever inteira antes da direita) --]
+  <bloco tipo="texto_principal" script="grego" bbox="20,70,480,340">
+Ἀζαρίας, ὁ καὶ Ὀζίας, ἔτη νβ'.
+Ἰωάθαμ ἔτη ιϛ'.
+Ἀχάζ ἔτη ιϛ'.
 Ἐφ' οὗ Ἰσραὴλ αἰχμάλωτος ἀπήχθη.
-Ἐζεκίας ἔτη χθ'.
+Ἐζεκίας ἔτη κθ'.
 Μανασσῆς ἔτη νε'.
-Ἀμὼν ἔτη ιϛ'.
+Ἀμὼν ἔτη β'.
 Ἰωσίας ἔτη λα'.
-Ἰωαχὰζ μῆνας γ'.
-Ἐλιαχειμ, ὁ καὶ Ἰωαχειμ, ἔτη ιϛ'.
-Ἰεχονίας, ὁ καὶ Ἰωακείμ, μῆνας γ'.
-Σεδεχίας ἔτη τα'.
+Ἰωακείμ μῆνας γ'.
+Ἐλιακείμ, ὁ καὶ Ἰωακείμ, ἔτη ιβ'.
+Ἰωακείμ, ὁ καὶ Ἰεχονίας, μῆνας γ'.
+Σεδεκίας ἔτη ια'.
 
-Ἐφ᾽ οὗ Ἰούδας αἰχμάλωτος ἀπήχθη, ὁ ναὸς πυρ-
+Ἐφ' οὗ Ἰούδας αἰχμάλωτος ἀπήχθη, ὁ ναὸς πυρ-
 πολεῖται ὑπὸ Ναβουχοδονόσορος, τοῦ Ἀσσυρίων βασι-
-λέως, ὀλυμπιάδι τεσσαρακοστῇ ἐθόμῃ. Ὁμοῦ ἔτη τε',
-μῆνες γ'.
-  
-ΙΣΡΑΗΛ ΒΑΣΙΛΕΙΕΣ.
-Laosthenis Assyriorum regis trigesimo secundo anno incipit imperare Hebraeis Israelis
-Ιεροβοαμ ἔτη χιι'.
-Ναδαβ ἔτη β'.
-Βασά ἔτη χδ'.
-Ἐλα ἔτη β'.
-Ζαμβρι ἡμέρας ζ'.
-Ἀμμρι ἔτη ιβ'.
-Ἀχααβ ἔτη χιι'.
-Ὀχοζίας ἔτη β'.
-Ἰωραμ ἔτη χι'.
-Ἰηοὺ ἔτη χς'.
-Ἰωάχαζ ἔτη δ'.
-Ἰωὰς ἔτη τις'.
-Ἰεροθοὰμ ἔτη μα'.
-Ζαχαρίας μῆνας ς'.
-Σιλουμ μῆνα α', ἡμέρας τε ιε'.
-Μεναὴμ ἔτη ν'.
-Ἐφ' οὗ ἐδασίλευσεν Ἀσσυρίων Φουα.
-Φαξεάς ἔτη ι'.
-Φακεε ἔτη ιχ'.
-Ἰωη ἔτη θ'.
-Ἐφ' οὗ αἰχμάλωτος ἦν ὁ Ἰσραὴλ ὑπὸ Σαλμανασάρου ᾿Ασσυρίων βασιλέως, κατέπαυσεν, ὀγδόῃ ὀλυμπιάδι.
-
-ΒΑΒΥΛΩΝΙΩΝ ΒΑΣΙΛΕΙΕΣ.
-Φοὺλ βασιλεὺς ᾿Ασσυρίων.
-Θεγλαδ Φανασσὰρ βασιλεὺς ᾿Ασσυρίων.
-Σαλμανασσὰρ βασιλεὺς ᾿Ασσυρίων.
-Σενναχερεὶμ βασιλεὺς ᾿Ασσυρίων.
-Μαρουδὰκ υἱὸς Βαλαδάν.
-Ναβουχοδονόσορ βασιλεὺς Βαβυλῶνος.
-Εὐειλάδ Μαρουδάκ ἔτη ζ'.
+λέως, ὀλυμπιάδι τεσσαρακοστῇ ἑβδόμῃ ἔτει, μῆνες γ'.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="500,70,960,520">
-A 12. Azarias, idemque Ozias, annis ltt.
+  <bloco tipo="texto_principal" script="misto" bbox="20,340,480,560">
+ΙΣΡΑΗΛ ΒΑΣΙΛΕΙΕΣ.
+Laosthenis Assyriorum regis trigesimo secundo anno incipit imperare Hebraei Israelis.
+(segue lista regum Israeliticorum na coluna direita)
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="20,560,480,780">
+ΒΑΒΥΛΩΝΙΩΝ ΒΑΣΙΛΕΙΕΣ.
+Φουλ βασιλεὺς Ἀσσυρίων (2).
+Θεγλαθ φανασαρ βασιλεὺς Ἀσσυρίων.
+Σαλμανασαρ βασιλεὺς Ἀσσυρίων.
+Σεναχεριβ βασιλεὺς Ἀσσυρίων.
+Μαρουδαχ υἱὸς Βαλαδίν.
+Ναβουχοδονόσορ βασιλεὺς Βαβυλωνίων.
+Εὐεῖλδαχ Μαρουδαχ ἔτη ζ'.
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="20,780,500,940">
+(1) In canone Sellum regnasse dicitur diebus latinum xxiv.
+(2) Ex Chron. Paschal. p. 106 et sqq.
+(3) Superius col. 84, itemque a Syncello p. 213 dicuntur l.v.
+(4) Videsis col. 29 et 84 cum notis.
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="460,120,520,660">
+A
+B
+C
+D
+  </bloco>
+
+  [!-- Coluna direita --]
+  <bloco tipo="texto_principal" script="latino" bbox="480,70,980,340">
+12. Azarias, idemque Ozias, annis lii.
 13. Joathamus annis xvi.
 14. Achazus annis xvi.
 Sub hoc Israelis captivitas contigit.
-15. Ezechias annis xxii.
+15. Ezechias annis xxix.
 16. Manasses annis lv (3).
-17. Amosus annis xii (4).
+17. Amonus annis ii (4).
 18. Josias annis xxxi.
 19. Joachazus mensibus iii.
 20. Eliacimus, qui etiam Joacimus, annis xii.
 21. Joacimus, qui etiam Jechonias, mensibus iii.
 22. Sedecias annis xi (5).
-
 Sub hoc Judas in servitutem redactus est tem
-plumque crematur a Nabuchodonosoro, Assyrio-
+plumque cremaltum a Nabuchodonosoro, Assyrio
 rum (6) rege, olympiade quadragesima septima.
-Sunt autem anni ccccV, cum mensibus vi (7).
+Sunt autem anni ccccv, cum mensibus vi (7).
+  </bloco>
 
+  <bloco tipo="texto_principal" script="latino" bbox="480,340,980,560">
 ISRAELIS REGES.
 1. Hieroboamus annis xxii.
 2. Nabatus annis ii.
 3. Baasus annis xxiii (8).
 4. Ela annis ii.
-5. Zambri diebus vn.
-6. Amri annis xii.
+5. Zimri diebus vii.
+6. Omri annis xii.
 7. Achaabus annis xxii.
 8. Ochozias annis ii.
 9. Joramus annis xii.
-10. Jeu annis xxviii.
+10. Ieu annis xxviii.
 11. Joachazus annis xvii.
 12. Joasus annis xvi.
-13. Hieroboamus annis xli.
+13. Hieroboamus annis xvi.
 14. Zacharias mensibus vi.
 15. Sellumus mense i et diebus xv.
 16. Manaemus annis x.
-
-Sub hoc Phua expeditionem adversus Israeliam suscepit.
-17. Phaccas annis x.
+Sub hoc Phua expeditionem adversus Israelen
+sus cepit.
+17. Phacee annis x.
 18. Phacce annis xx.
-
-Sub hoc expeditio fuit Thaglathphalsari.
+Sub hoc expeditio fuit Thaglatphalsari.
 19. Osee annis ix.
+Sub hoc captivos abductus est Israel a Salma-
+nasaro Assyriorum rege. Finis octava olympiade;
+initium anno (Abrahami) millesimo vigesimo primo;
+longevitas annorum cclxix dierumque xxviii.
+  </bloco>
 
-Sub hoc captivus abductus est Israel a Salmanasaro Assyriorum rege. Finis octava olympiade; initium anno (Abrahami) millesimo vigesimo primo; longævitas annorum ccxlix dierumque xxvii.
-  
+  <bloco tipo="texto_principal" script="latino" bbox="480,560,980,780">
 BABYLONIORUM REGES.
 1. Phua ab anno mccxxv, Assyriorum rex.
 2. Thaglathphalsarus Assyriorum.
@@ -112,18 +117,18 @@ BABYLONIORUM REGES.
 7. Ilmarodachus Chaldaeus.
   </bloco>
 
-  <bloco tipo="aparato_critico" script="latino" bbox="40,520,960,980">
-(1) In canone Sellumus regnasse dicitur diebus tantum xxiv.
-(2) Ex Chron. Paschal. p. 106 et sqq.
-(3) Superius col. 84, itemque a Syncello p. 213 dicuntur lv.
-(4) Videsis col. 29 et 84 cum notis.
-(5) Ita et Syncellus p. 223, sed Eusebius suppet = suppr.
+  <bloco tipo="aparato_critico" script="latino" bbox="500,780,980,940">
+(5) Ita et Syncellus p. 223, sed Eusebius superius col. 84 xiv; in canone autem xl.
 (6) In margine codicis Babyloniorum.
-(7) Hæc item annorum summa longe recedit a prædictis regum ætatibus. Græce ann. 485, mens. 3.
-(8) In canone et Græce xxiv.
+(7) Haec item annorum summa longe recedit a praedictis regum aetatibus. Graec. an. 485, mens. 3.
+(8) In canone et Graec. xxiv.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="700,940,980,995">
+Digitized by Google
   </bloco>
 
   <notas>
-    Foi identificado texto em dois scripts principais: grego (coluna da esquerda) e latino (coluna da direita). Usei o rascunho OCR apenas como guia e comparei visualmente com a imagem. Corrigi muitos erros óbvios do OCR (letras trocadas, algarismos gregos, formas de nomes próprios e divisões de linhas) e descartei elementos que não aparecem na imagem (por exemplo "9303. ς" do rascunho). Mantive abreviaturas e apóstrofos gregos conforme visíveis na página (π.χ. ἔτη νϛ', μῆνας γ'). Onde o texto impresso estava degradado mas legível, preferi uma leitura conservadora (por exemplo "Ναβουχοδονόσορος"). As bbox são aproximações relativas à página (escala 0-1000) e delimitam, respetivamente, cabeçalho, coluna esquerda, coluna direita e aparato crítico na base da página.
+Algumas leituras, especialmente no texto grego e em numerais, foram aproximadas onde o original estava pouco legível; foram usadas formas gregas habituais para os nomes e numerais (p.ex. νβ' para 52). Onde a leitura era incerta, optei por transcrever a forma mais plausível segundo o contexto; não foi usado [ilegivel] extensivamente para não fragmentar excessivamente o texto. BBOX são estimativas relativas (escala 0-1000).
   </notas>
 </pagina>

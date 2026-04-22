@@ -1,101 +1,131 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,60">
+  <bloco tipo="cabecalho" script="misto" bbox="50,20,950,60">
     527 TERTULLIANI 528
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,65,950,160">
+  <bloco tipo="texto_principal" script="latino" bbox="50,60,950,150">
     Hactenus ille. Quod tamen cum in MS. codicibus neque Rhenanus, neque ego factum invenerimus,
     expediebat ad intellectum majorem, hunc Nominum Catalogum præfigere. Quem nunc et locupletavi, et in or-
     dinem congruum redegi, adjecto majoris explicationis gratia capitum numero, ubi de singulis ipsorum agitur.
     Annotavi etiam quæ hic aut alibi Tertulliano usitata, quæ Irenæo Latino lib. I adv. hæres., c. I, quæ denique
-    Epiphanio Græco hæres. XXXI, aut ejus Interprete Latino; e quibus etiam nomina aliquot castigata sunt. PAM.
+    Epiphanio Græco hæres. XXXI, aut ejus Interpreti Latino; e quibus etiam nomina aliquot castigata sunt. PAM.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,170,950,200">
+  <bloco tipo="texto_principal" script="latino" bbox="100,160,900,190">
     GENERALIA NOMINA, AD PRODUCTIONEM, CONJUGIA, ET NUMERUM ÆONUM PERTINENTIA, EX
     CAP. VII, VIII, XII, XXIII, XXX ET XXXI.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="50,210,950,500">
-    SERIES                  SERIES                  NOMINUM
-    NOMINUM LATINA.         NOMINUM GRÆCA.          INTERPRETATIO.
-
-    Æon, Tertull. Iren. . . . . . αἰών, Epiph. . . . . . Sæculum, Int. Epiph.
-    Æones. . . . . . . . . . . . . αἰῶνες. . . . . . . . . . . . Sæcula.
-    Syzygia. . . . . . . . . . . . συζυγία . . . . . . . . . . } Conjugatio, Tertull.
-    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . } Copulatio, Tertull.
-    Nymphôn. . . . . . . . . . . νυμφών. . . . . . . . . . . } Nuptiarum domus.
-    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . } Thalamus.
-    Probolê . . . . . . . . . . . . προβολὴ . . . . . . . . . . Emissio, Tertull.
-    Ogdoas. . . . . . . . . . . . . ὀγδοάς. . . . . . . . . . . . } Octonarius, Tertull.
-    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . } Octonarius, Iren.
-    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . } Quaternarius, Int. Epiph.
-    Tetras, Tertull. Iren. . . . . τετράς, Epiph. . . . . . } Quadriga, Tertull.
-    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . } Quaternatio, Iren.
-    Decas. . . . . . . . . . . . . . δεκάς . . . . . . . . . . . . Denarius.
-    Dôdecas . . . . . . . . . . . . δωδεκάς . . . . . . . . . . Duodenarius.
-    Triacontas. . . . . . . . . . . τριακοντάς. . . . . . . . Tricenarius.
-    Ectrôma . . . . . . . . . . . . ἔκτρωμα. . . . . . . . . . Partus abortivus.
+  <bloco tipo="texto_principal" script="misto" bbox="100,190,900,220">
+    SERIES                 SERIES                 NOMINUM
+    NOMINUM LATINA.        NOMINUM GRÆCA.         INTERPRETATIO.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,510,950,550">
+  <bloco tipo="texto_principal" script="misto" bbox="50,220,950,250">
+    Æon, Tertull. Iren. . . . . . . . . αἰών, Epiph. . . . . . Sæculum, Int. Epiph.
+    Æones. . . . . . . . . . . . . . . . αἰῶνες. . . . . . . . Sæcula.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,250,950,280">
+    Syzygia. . . . . . . . . . . . . . . συζυγία . . . . . . . {Conjugatio, Tertull.
+                                                              {Copulatio, Tertull.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,280,950,310">
+    Nymphōn. . . . . . . . . . . . . . . νυμφών. . . . . . . . {Nuptiarum domus.
+                                                              {Thalamus.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,310,950,330">
+    Probolē . . . . . . . . . . . . . . . προβολὴ . . . . . . . Emissio, Tertull.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,330,950,360">
+    Ogdoas. . . . . . . . . . . . . . . . ὀγδοάς. . . . . . . . {Octonarius, Tertull.
+                                                              {Octonarius, Iren.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,360,950,400">
+    Tetras, Tertull. Iren. . . . . . . . . τετράς, Epiph. . . . {Quaternarius, Int. Epiph.
+                                                              {Quadriga, Tertull.
+                                                              {Quaternatio, Iren.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,400,950,420">
+    Decas. . . . . . . . . . . . . . . . . δεκάς . . . . . . . . Denarius.
+    Dōdecas . . . . . . . . . . . . . . . δωδεκάς . . . . . . . Duodenarius.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,420,950,440">
+    Triacontas. . . . . . . . . . . . . . τριακοντάς. . . . . . Tricenarius.
+    Ectrōma . . . . . . . . . . . . . . . ἔκτρωμα . . . . . . . Partus abortivus.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,450,650,470">
     XXX. ÆONUM NOMINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="200,470,800,490">
     OGDOAS, SEU QUADRIGA DUPLEX, ÆONUM. CAP. VII.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="50,560,950,850">
-    I.   { Bythos, Tertull. Iren. . . βυθός, Epiph. . . . . . Profundum, Int. Epiph.
-         } Æôn telios . . . . . . . . . αἰὼν τέλειος . . . . . . } Sæculum perfectum.
-         } . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . } Æon perfectus, Iren.
-         } Archê. . . . . . . . . . . . . ἡ ἀρχὴ . . . . . . . . . . . } Initium, Iren.
-         } . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . } Principium.
-         } Proarchê. . . . . . . . . . προαρχὴ, Iren. . . . . Prior principio.
-         } Propatôr. . . . . . . . . . προπάτωρ, Epiph. . . } Primus
-         } . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . } Immensus } Pater, Tertull.
-         } Pater. . . . . . . . . . . . . . πατήρ. . . . . . . . . . . } Pater.
-         } Pater pantôn. . . . . . . . πατὴρ πάντων . . . . Pater omnium.
-         } Proôn. . . . . . . . . . . . . . προών. . . . . . . . . . . . } Præexistens.
-         } . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . } Qui ante fuit, Iren.
-         } Autopatôr, Epiph. . . . . αὐτοπάτωρ . . . . . . . Ipse per se pater.
-         } Anarchos, Iren. . . . . . . ἄναρχος . . . . . . . . . Carens principio.
-         } Risa, Epiph. . . . . . . . . . ῥίζα. . . . . . . . . . . . . Radix.
-         } Sigê, Tertull. Iren. . . . . σιγή, Epiph. . . . . . . Silentium, Int. Epiph.
-
-    II.  { Ennoê. . . . . . . . . . . . . ἔννοια. . . . . . . . . . . . } Intelligentia.
-         } . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . } Cogitatio.
-         } Charis. . . . . . . . . . . . χάρις. . . . . . . . . . . . Gratia.
-
-    III. { Mater. . . . . . . . . . . . . μήτηρ. . . . . . . . . . . . Mater.
-         } Nus. . . . . . . . . . . . . . . νοῦς. . . . . . . . . . . . . Mens.
-         } Monogenes . . . . . . . . . μονογενής. . . . . . . Unigenitus.
-         } Protogenes, Tertull. . . . πρωτογενής. . . . . . Prior genitus, Tertull.
-         } Pater, Tertull. Iren. . . . πατήρ. . . . . . . . . . . Pater.
-         } Archê tôn pantôn. . . . . ἀρχὴ τῶν πάντων. . . Initium omnium.
-
-    IV.  Alêtheia. . . . . . . . . . . . ἀλήθεια. . . . . . . . . . Veritas.
-
-    V.   Logos, Iren. . . . . . . . . . λόγος. . . . . . . . . . . . } Sermo, Tertull.
-         . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . } Verbum.
-
-    VI.  Zoê, Tertull. Iren. . . . . . ζωή . . . . . . . . . . . . . Vita, Tertull.
-
-    VII. Anthrôpos, Iren. . . . . . ἄνθρωπος. . . . . . . . Homo, Tertull.
-
-    VIII. Ecclesia, Tertull. Iren. . ἐκκλησία. . . . . . . . . Ecclesia, Tertull. Iren.
+  <bloco tipo="texto_principal" script="misto" bbox="50,490,950,530">
+    1. Bythos, Tertull. Iren. . . . . . . βυθός, Epiph. . . . . Profundum, Int. Epiph.
+       Æon telios . . . . . . . . . . . . αἰὼν τέλειος . . . . {Sæculum perfectum.
+                                                             {Æon perfectus, Iren.
+       Archē. . . . . . . . . . . . . . . ἡ ἀρχὴ . . . . . . . {Initium, Iren.
+                                                             {Principium.
+       Proarchē. . . . . . . . . . . . . . προαρχὴ, Iren. . . . Prior principio.
+       Propatōr. . . . . . . . . . . . . . προπάτωρ, Epiph. . . {Primus
+                                                             {Immensus } Pater, Tertull.
+       Pater. . . . . . . . . . . . . . . πατήρ. . . . . . . . Pater.
+       Pater pantōn. . . . . . . . . . . . πατὴρ πάντων . . . . Pater omnium.
+       Proōn. . . . . . . . . . . . . . . πρώων. . . . . . . . {Præexistens.
+                                                             {Qui ante fuit, Iren.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="50,860,950,960">
+  <bloco tipo="texto_principal" script="misto" bbox="50,530,950,590">
+       Autopatōr, Epiph. . . . . . . . . . εὐτοπάτωρ . . . . . Ipse per se pater.
+       Anarchos, Iren. . . . . . . . . . . ἄναρχος . . . . . . Carens principio.
+       Risa, Epiph. . . . . . . . . . . . . ῥίζα. . . . . . . . Radix.
+       Sigē, Tertull. Iren. . . . . . . . . σιγή, Epiph. . . . . Silentium, Int. Epiph.
+    II. Ennoē. . . . . . . . . . . . . . . ἔννοια. . . . . . . {Intelligentia.
+                                                             {Cogitatio.
+       Charis. . . . . . . . . . . . . . . χάρις. . . . . . . . Gratia.
+       Mater. . . . . . . . . . . . . . . . μήτηρ. . . . . . . . Mater.
+       Nus. . . . . . . . . . . . . . . . . νοῦς. . . . . . . . Mens.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,590,950,640">
+    III. Monogenes . . . . . . . . . . . . μονογενής. . . . . . Unigenitus.
+         Protogenes, Tertull. . . . . . . . πρωτογενής. . . . . Prior genitus, Tertull.
+         Pater, Tertull. Iren. . . . . . . πατήρ. . . . . . . . Pater.
+         Archē tōn pantōn. . . . . . . . . ἀρχὴ τν πάντων. . . Initium omnium.
+    IV. Alētheia. . . . . . . . . . . . . . ἀλήθεια. . . . . . . Veritas.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,640,950,660">
+    V. Logos, Iren. . . . . . . . . . . . λόγος. . . . . . . . {Sermo, Tertull.
+                                                             {Verbum.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,660,950,680">
+    VI. Zōē, Tertull. Iren. . . . . . . . ζωή . . . . . . . . . Vita, Tertull.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,680,950,700">
+    VII. Anthrōpos, Iren. . . . . . . . . ἄνθρωπος . . . . . . Homo, Tertull.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,700,950,720">
+    VIII. Ecclesia, Tertull. Iren. . . . . ἐκκλησία . . . . . . Ecclesia, Tertull. Iren.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,740,650,760">
     DECAS ÆONUM. CAP. VIII.
-
-    IX.  Bythios, Tert. Iren. . . . βύθιος, Epiph. . . . . . Profundus, Int. Epiph.
-    X.   Mixis. . . . . . . . . . . . . . μίξις. . . . . . . . . . . . . Mixtio.
-    XI.  Agêratos. . . . . . . . . . . ἀγήρατος. . . . . . . . . Non senescens.
-    XII. Henôsis. . . . . . . . . . . ἕνωσις. . . . . . . . . . . Unio.
-    XIII. Autophyes . . . . . . . . αὐτοφυής. . . . . . . . . Per se naturalis.
-    XIV. Hêdonê . . . . . . . . . . . ἡδονή. . . . . . . . . . . . Voluptas.
-    XV.  Akinêtos. . . . . . . . . . . ἀκίνητος . . . . . . . . . Immobilis.
-    XVI. { Syncrasis, Tertull. . . . . σύγκρασις. . . . . . . Commixtio.
-         } Homosyncrasis, Iren. . ὁμοσύγκρασις. . . . Similis commixtio.
-    XVII. Monogenes . . . . . . . . μονογενής. . . . . . . . Unigenitus.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="550,965,850,990">
+  <bloco tipo="texto_principal" script="misto" bbox="50,760,950,800">
+    IX.  Bythios, Tert. Iren. . . . . . . βύθιος, Epiph. . . . Profundus, Int. Epiph.
+    X.   Mixis. . . . . . . . . . . . . . μίξις. . . . . . . . Mixtio.
+    XI.  Agēratos. . . . . . . . . . . . . ἀγήρως . . . . . . . Non senescens.
+    XII. Henōsis . . . . . . . . . . . . . ἕνωσις . . . . . . . Unio.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,800,950,840">
+    XIII. Autophyes . . . . . . . . . . . αὐτοφυής . . . . . . Per se naturalis.
+    XIV. Hēdonē . . . . . . . . . . . . . ἡδονή. . . . . . . . Voluptas.
+    XV.  Akinētos. . . . . . . . . . . . . ἀκίνητος . . . . . . Immobillis.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,840,950,880">
+    XVI. {Syncrasis, Tertull. . . . . . . σύγκρασις. . . . . . Commixtio.
+         Homosyncrasis, Iren. . . . . . . ὁμοσύγκρασις . . . . Similis commixtio.
+    XVII. Monogenes . . . . . . . . . . . μονογενής. . . . . . Unigenitus.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="550,960,850,990">
     Digitized by Google
   </bloco>
   <notas>
-    A página contém uma tabela crítica comparando terminologia gnóstica (Valentiniana) em Latim e Grego, com referências a Tertuliano, Ireneu e Epifânio. O texto é predominantemente em Latim, com termos técnicos em Grego. O OCR original continha muitos erros na transliteração do Grego (ex: "ey Epiph" em vez de "αἰών, Epiph.") e na estrutura das colunas. A transcrição foi corrigida para refletir a ortografia grega correta visível na imagem (ex: συζυγία, προβολή, ὀγδοάς, etc.) e a estrutura de chaves `{` usada para agrupar interpretações.
+    Transcrição de página contendo tabelas comparativas de termos teológicos em Latim, Grego e suas interpretações.
+    O texto inclui abreviações patrísticas comuns (Tertull., Iren., Epiph., Int.).
+    A palavra "Immobillis" na linha XV parece ser um erro de impressão para "Immobilis", mas foi transcrita literalmente.
+    As chaves `{` indicam agrupamentos de significados ou termos relacionados no original.
   </notas>
 </pagina>

@@ -1,42 +1,45 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,40,900,200">
-ELENCHUS
-
-OPERUM QUÆ IN HOC VOLUMINE CONTINENTUR.
+  <bloco tipo="cabecalho" script="latino" bbox="120,20,880,160">
+    ELENCHUS
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="80,200,920,540">
-S. EUSEBIUS VERCELLENSIS.
-
-Evangelium S. Eusebii . . . . . . . . . . . . . . . . . col. 9
-Ejusdem Epistolæ . . . . . . . . . . . . . . . . . . . . . 947
-
-FIRMICUS MATERNUS.
-
-Liber de Errore profanarum religionum . . . . . . . . . . . 971
-
-S. PHILASTRIUS.
-
-Liber de Hæresibus, cum præcedentibus prolegomenis . . . . . . 1049
+  <bloco tipo="cabecalho" script="latino" bbox="120,150,880,220">
+    OPERUM QUÆ IN HOC VOLUMINE CONTINENTUR.
   </bloco>
-
-  <bloco tipo="aparato_critico" script="misto" bbox="60,560,920,900">
-ERRATA.—Col. 85, lin. 17 (ascendendo) : τῷ; leg. eo. — Col. 125, 129, 135, 137, in titulo superiori: ad episcopum Gurcensem; leg. ad Muscellium. — Col. 981, lin. 5 (ascendendo): præmium; leg. prodmium. — Col. 1004, lin. 28 (ascendendo): ἀναλίσκονται; leg. ἀναλίσκωνται. — Col. 1015, lin. penult.: Ἀοιδῆς τε κνισσῆς τε τὸ γὰρ λάχομεν γέρας ἡμεῖς, λέγοντες. — Col. 1030, lin. 3 (ascendendo): νίφοςν; leg. νῖφος. — Col. 1038, lin. 26 (ascendendo): ὅι; leg. οἱ. — Col. 1055, lin. 7 (ascendendo): Ἰσραὴλ; leg. Ἰσραὴλ. — Col. 1031, lin. ult.: ἄδην; leg. ἄδων. — Col. 1033, lin. 18 (ascendendo): αἰώνος; leg. αἰῶνος. — Ibid., lin. 17 (ascendendo): in passione; leg. in Passione. — Ibid., lin. 17-15: εἶτα ἐκθλεθεὶς ... τοῦ ἅδου ... — Ibid., lin. 14-12: Σήμερον ... χαλκᾶς ... σιδηροῦς ... ὡς ψιλὸς. — Col. 1028, lin. 26 (ascendendo): δράχων ταύρου; leg. δράχων ταύρων. — Col. 1028, lin. penult.: δράκων; leg. δράκων. — Col. 1039, lin. 23-21 (ascendendo): ἀλλ᾽ ... τις ... τῇ ... ἑορτῇ ... ἄν; leg. ἀλλ᾽ ... τίς ... τῇ ... — Col. 1051, lin. 9 (ascendendo): Bochartus; leg. Bochartus. — Col. 1216, lin. 1: représentationem; leg. repensationem.
+  <bloco tipo="texto_principal" script="latino" bbox="260,300,740,500">
+    S. EUSEBIUS VERCELLENSIS.
+    
+    Evangelium S. Eusebii. . . . . . . . . . . . . . . . . . . . . col. 9
+    Ejusdem Epistolæ. . . . . . . . . . . . . . . . . . . . . . . 947
   </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="220,900,780,980">
-MIGNÉ, succursaliste, à Montrouge, de Vrayet de Surcy, imprimeur à Paris.
+  <bloco tipo="texto_principal" script="latino" bbox="300,500,700,620">
+    FIRMICUS MATERNUS.
+    
+    Liber de Errore profanarum religionum. . . . . . . . . . . . 971
   </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="720,960,980,990">
-Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="300,640,700,760">
+    S. PHILASTRIUS.
+    
+    Liber de Hæresibus, cum præcedentibus prolegomenis. . . . . . . . 1049
   </bloco>
-
-  <notas>
-    A página contém texto latino principal (títulos e sumário) e um aparato crítico/errata com numerosos trechos em grego; por isso o bloco do aparato foi marcado como script="misto". 
-    Correções efetuadas em relação ao rascunho OCR: restabeleci as maiúsculas e sinais latinos (ex.: "ELENCHUS", "OPERUM QUÆ IN HOC VOLUMINE CONTINENTUR."), corrigi títulos e pontuações visíveis, e transcrevi as leituras gregas legíveis (acentos e diacríticos em grego mantidos quando visíveis). 
-    Onde o impresso apresenta elipses ou trechos pouco nítidos (reticências), preservei "..." em vez de preencher com conjecturas. 
-    Descartei sequências claramente alucinadas pelo OCR (garbage não correspondendo à imagem). 
-    Observação: as coordenadas bbox são aproximações relativas à página (escala 0-1000) e seguem a ordem visual de cima para baixo.
-  </notas>
+  <bloco tipo="outro" script="latino" bbox="200,780,800,820">
+    ------------------------------------------------------------
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="80,820,920,1120">
+    ERRATA. — Col. 85, lin. 17 (ascendendo) : ω; leg. «e». — Col. 125, 129, 133, 137, in titulo superiori. ad episcopum Gur-
+    censum; leg. ad Muscellium. — Col. 981, lin. 5 (ascendendo) : præmium; leg. proæmium. — Col. 1004, lin. 28 (ascendendo) :
+    Avalonmorum; leg. adtalinorum. — Col. 1013, lin. penult. : « Αλεξης τε ασαυξα » τὸ παρ' ἡμων γερ[.] : μιχαελ, λεγ. : ι ελευθετ:
+    πιστωτ. τ. ; ad τὰ λαμπρο' τῆς μήτρ . μίαν. — Col. 1020, lin. 3 (ascendendo) : νιγχρ; leg. νιγος. — Col. 1030, lin. 8 (ascendendo) :
+    et ; leg. et. — Col. 1033, lin. 7 (ascendendo) : ιρρα; leg. 'torpa'. Col. 1031, lin. ult. : ἐθνῶ; leg. ἐθνῶ. — Col. 1035, lin. 18
+    (ascendendo) : alius; leg. alīus. — Ibid., lin. 17 (ascendendo) : in passim; leg. in Passione. — Ibid., lin. 17-15 : Etca
+    ἐκδικει. — ubi ἀὖσι… νοεῖται… τ. ; leg. Etca δεομεν. — col. ἀ[.] . . . - . . . . . . — Ibid., lin. 44-12 : Ἑναερ.— παραισίου. — ibid.,
+    γίνομ; leg. ἐπαναρχ— γκάμος… σχίσματα… ὡς ῥῶ. — Col. 1038, lin. 26 (ascendendo) : ὀποντα τραπῆ; leg. τῆς τραπ/ τραπ.— Ibid., lin.
+    penult. : ὀθιαν; leg. ὀθιαν. — Col. 1039, lin. 22-21 (ascendendo) : ἀκι. : γινα. . . . ; leg. ἁμαρτ . . . ; ἐμοσον; leg. αι . . . τῆς. .
+    παντ. . . . . . . . . . . — Col. 1051, lin. 9 (ascendendo) : Bochorhus; leg. Bocharius. — Col. 1216, lin. 1 : representationem; leg.
+    repenslationem.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="260,1120,740,1240">
+    MIGNE, succursaliste, à Montrouge, de Vrayet de Surcy,
+    imprimeur à Paris.
+  </bloco>
+  <notas>Script predominante latino. Pequenas inserções e formas gregas na seção ERRATA; transcrevi sinais fragmentários e breves grupos ilegíveis como aparecem, usando [ilegivel] apenas se palavra isolada impossível — neste caso optei por manter a sequencia tal como visível, preservando pontos e traços.</notas>
 </pagina>

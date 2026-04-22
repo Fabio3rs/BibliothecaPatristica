@@ -1,31 +1,37 @@
 <pagina estado="com_texto">
-  <bloco tipo="nota_marginal" script="latino" bbox="140,25,330,100">
-    C 550.1
-    *
+  <bloco tipo="cabecalho" script="latino" bbox="80,30,360,150">
+C 550.1
+*
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="315,305,685,645">
-    HARVARD COLLEGE
-    LIBRARY
+  <bloco tipo="texto_principal" script="latino" bbox="320,300,680,640">
+HARVARD COLLEGE
+LIBRARY
 
-    [VERI TAS]
+VERITAS
 
-    FROM THE BEQUEST OF
-    JAMES WALKER
-    (Class of 1814)
-    President of Harvard College
+FROM THE BEQUEST OF
 
-    "Preference being given to works in the Intellectual
-    and Moral Sciences"
+JAMES WALKER
+(Class of 1814)
+
+President of Harvard College
+
+"Preference being given to works in the Intellectual
+and Moral Sciences"
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="560,955,780,985">
-    Digitized by Google
+  <bloco tipo="nota_marginal" script="desconhecido" bbox="0,400,70,530">
+[marcador semicircular preto junto à margem esquerda]
   </bloco>
-  <notas>
-    Correções feitas sobre o rascunho do OCR:
-    1. Adicionado texto manuscrito no canto superior esquerdo ("C 550.1 *") que estava ausente no OCR.
-    2. Corrigido "Preforence" para "Preference" na citação.
-    3. Corrigido "Intelloctual" para "Intellectual" na citação.
-    4. Incluído o texto do emblema central "[VERI TAS]" que foi ignorado pelo OCR.
-    5. A estrutura foi ajustada para refletir a disposição visual dentro da caixa do ex-libris.
-  </notas>
+  <bloco tipo="nota_marginal" script="desconhecido" bbox="30,850,260,990">
+[selo/retângulo recortado no canto inferior esquerdo]
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="700,920,990,995">
+Digitized by Google
+  </bloco>
+  <notas>Tipo de página: capa/guarda (etiqueta ex libris / bookplate).
+Observações de transcrição:
+- Notação manuscrita no canto superior esquerdo transcrita como "C 550.1"; o manuscrito é ligeiramente ambíguo e pode também ser lido como "C 550,1".
+- Emblema heráldico central: letras transcritas como "VERITAS".
+- Marcas não-textuais (marcador semicircular à esquerda e selo retangular recortado no canto inferior esquerdo) foram descritas entre colchetes e marcadas com script="desconhecido".
+- Quebra de linha no texto final do bookplate mantida conforme a imagem ("...Intellectual" / "and Moral Sciences").</notas>
 </pagina>

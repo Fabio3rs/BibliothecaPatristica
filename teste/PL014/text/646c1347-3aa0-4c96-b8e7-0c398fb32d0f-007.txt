@@ -1,53 +1,45 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,40,900,300">
-SANCTI
-
-AMBROSII
-
-MEDIOLANENSIS EPISCOPI.
-
-OPERA OMNIA.
+  <bloco tipo="cabecalho" script="latino" bbox="120,20,880,180">
+    SANCTI
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,300,920,560">
-EDITIO PRAE ALIIS OMNIBUS COMPLETA, QUARUM INSTAR HABERI POTEST ;
-
-AD MANUSCRIPTOS CODICES VATICANOS, GALLICANOS, BELGICOS, ETC., NECNON AD VETERES
-EDITIONES, MAXIME VERO AD BENEDICTINAM RECENSITA ET EMENDATA ;
-
-NOTIS LECTIONIBUSQUE VARIANTIBUS, TEXTUI SUBJACENTIBUS, CONTINENTER ILLUSTRATA ;
-
-VARIIS INSUPER OPUSCULIS QUAE VEL OMISERE VEL NE MEMORAVERE QUIDEM ERUDITI
-BENEDICTINI, LOCUPLETATA.
+  <bloco tipo="cabecalho" script="latino" bbox="140,160,860,320">
+    AMBROSII
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,560,800,720">
-— • —
-
-TOMI PRIMI PARS PRIOR.
-
-— • —
+  <bloco tipo="cabecalho" script="latino" bbox="80,300,920,420">
+    MEDIOLANENSIS EPISCOPI.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="160,760,880,920">
-MIGNE, SUCCURSALISTE A MONTROUGE,
-DE VRAYET DE SORCY, IMPRIMEUR
-A PARIS.
-
-1855.
+  <bloco tipo="texto_principal" script="latino" bbox="200,420,800,520">
+    OPERA OMNIA.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,920,980,990">
-Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="60,520,940,680">
+    EDITIO PRÆ ALIIS OMNIBUS COMPLETA, QUARUM INSTÂR HABERI POTEST;
   </bloco>
-  <notas>
-- Identificação visual: trata-se de uma página de rosto / capa (não em branco).
-- Script identificado: latino (toda a página em maiúsculas latinas).
-- Correções e decisões em relação ao rascunho OCR:
-  * "EDITIO PRAE ALIIS OMNIBUS COMPLETA, QUARUM INSTAR HABERI POTEST ;" foi corrigido a partir de leituras incorretas do rascunho (ex.: "PERJE" etc.). Usei "PRAE" (ligadura Œ/Æ normalizada para PRAE).
-  * "MANUSCBRIPTOS" do rascunho foi corrigido para "MANUSCRIPTOS".
-  * "BENEDICTINAM" e "RECENSITA ET EMENDATA" foram regularizadas a partir de leituras fragmentárias.
-  * A linha com "VARIIS INSUPER OPUSCULIS QUAE VEL OMISERE VEL NE MEMORAVERE QUIDEM ERUDITI BENEDICTINI, LOCUPLETATA." foi reconstruída visualmente; o rascunho continha várias corrupções ("VANS", "BENEDICTIM)"); transcrevi conforme aparece no impresso.
-  * A ornamentação gráfica central foi representada por "— • —" para indicar a presença do elemento decorativo; não invoquei texto não existente.
-  * A linha do editor/impressor foi transcrita conforme visível: "MIGNE, SUCCURSALISTE A MONTROUGE, DE VRAYET DE SORCY, IMPRIMEUR". A leitura do nome/prefixo "DE VRAYET DE SORCY" é pouco clara no original; mantive a forma literal observada em imagem, em vez de normalizar para um nome moderno conhecido.
-  * A data no rodapé é "1855." conforme visível.
-  * A marca "Digitized by Google" no canto inferior direito foi incluída pois aparece impressa na imagem digitalizada.
-- Observações sobre bboxes: coordenadas fornecidas em escala 0-1000 (aproximações geométricas), preservando a ordem visual de cima para baixo.
-  </notas>
+  <bloco tipo="texto_principal" script="latino" bbox="60,680,940,780">
+    AD MANUSCRIPTOS CODICES VATICANOS, GALLICANOS, BELGICOS, ETC., NECNON AD VETERES
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="60,760,940,860">
+    EDITIONES, MAXIME VERÒ AD BENEDICTINAM RECENSITA ET EMENDATA;
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="60,860,940,940">
+    NOTIS LECTIONIBUSQUE VARIANTIBUS, TEXTUI SUBJACENTIBUS, CONTINENTER ILLUSTRATA;
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="60,940,940,1020">
+    VARIIS INSUPER OPUSCULIS QUÆ VEL OMISSÆR VEL NE MEMORAVERË QUIDEM ERUDITI
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="60,1020,940,1100">
+    BENEDICTINI, LOCUPLETATA.
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="280,1180,720,1250">
+    TOMI PRIMI PARS PRIOR.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="160,1400,840,1560">
+    MIGNE, SUCCURSALISTE A MONTROUGE,
+    DE VIVIET DE SURCY, IMPRIMEUR
+    A PARIS.
+    1845.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="760,1560,940,1640">
+    Digitized by Google
+  </bloco>
+  <notas>Script: latino. Algumas linhas compostas por pequenas variações tipográficas (ex.: PRÆ, VERÒ, QUÆ, OMISSÆR) mantidas literais. BBOX aproximadas em escala 0-1000.</notas>
 </pagina>

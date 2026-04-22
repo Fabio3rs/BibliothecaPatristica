@@ -1,18 +1,22 @@
 <pagina estado="com_texto">
-  <bloco tipo="nota_marginal" script="latino" bbox="60,20,180,50">
-    C 550.1
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,240,110">
+    C55011
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="280,320,720,480">
+  <bloco tipo="outro" script="latino" bbox="120,200,200,270">
+    *
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="300,320,700,520">
     1875, March 22.
     Bequest of
     James Walker, D.D., L.L.D.
-    (H.U. 1814,)
+    (H. U. 1814,)
     President of Harv. Univ.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="580,960,780,980">
+  <bloco tipo="rodape" script="latino" bbox="640,930,980,995">
     Digitized by Google
   </bloco>
   <notas>
-    A página contém uma anotação manuscrita de proveniência (bequest) no centro, uma cota manuscrita no canto superior esquerdo e o carimbo de digitalização no rodapé. O rascunho OCR inicial (<rascunho_ocr>) apresentou alucinações graves (caracteres gregos inexistentes), enquanto o segundo rascunho (<llm_ocr>) estava correto quanto ao conteúdo textual central. A transcrição foi baseada na conferência visual da caligrafia inglesa.
+    tipo_pagina: capa_ou_guarda.
+    Observações: caligrafia manuscrita no bloco principal; transcrição mantida literal incluindo pontuação e abreviações (H. U. 1814,). Símbolo em forma de estrela transcrito como "*". BBoxs estimadas em escala 0-1000.
   </notas>
 </pagina>

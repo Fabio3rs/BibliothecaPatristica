@@ -1,63 +1,84 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,50">
-    631 BIBLIORUM ULFILANA VERSIO. 632
+  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,80">
+    631 • BIBLIORUM ULFILANA VERSIO.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,60,950,550">
-    40 qab esaeias. gablindida ize augona jah gadaubida ize hairtona. ei ni gaumidedeina augam jah οἱ
-    41 fróþeina hairtin jah gawandidedjau jah ganasidedjau ins. þata qab esaeias. þan saw vulþus is jah μὲ
-    42 ródida bi ina. þanuh þan svebauh jah us þaim reikam managai galaubidedun du imma. skei bui δὲ
-    43 fareisáitum ni ándhahaitun. ei us synagogein ni usvaurpanai vaurþeina. frijodedun auk mais þauhein μὲ
-    44 manniska þau hauhein guþs. ip iesus hropidah jah qab. saei galaubeiþ du mis. ni galaubeiþ du mis ak
-    45 þammásandjandin mik. jah saei saiwip mik. saiwip þana sandjandan mik. ik liuhad in þamma fairwau
-    46 qam. ei wazuh saei galaubjai du mis. in riqiza ni visai. jah jabai was meinaim hausjai vaurdam jah
-    47 galaubjai. ik ni stoja ina. nih þan qam ei stojau manased ak ei ganasjau manased. saei frakana mis
-    jah ni andnimiþ vaurda meina. habaiþ þana stojandan sik. vaurd þatei rodida. þata stojiþ ina i
-    49 spedistin daga. unte ik us þis silbin ni rodida. ak saei sandida mik atta. sah mis anabusn at... —
-    xiii, 11, 12 — qab. ni allai hrainjai sijuþ. biþeh þan usþwoh fotuns ize jah nam vastjos seinos. anakumbjands.
-    13 aftra qab du im. vitudu. wa gatavida izvis. jus vopeiþ mik. laisareis jah frauja. vaila qiþip. iu auk
-    14 jabai nu usþwoh izvis fotuns frauja jah laisareis. jah jus skuluþ izvis misso þwahon fohuns.
-    15, 16 du frisahtai auk atgaf izvis ei svasve ik gatavida izvis. sva jus taujaiþ. amen amen qiþa izvis. nis
-    17 skafts maiza fraujin seinamma nih apaustaulus maiza þamma sandjandin sik. þande þata vituþ.
-    18 andagzi sijuþ. jabai taujiþ þata. ni bi allans izvis qiþa. ik vait. warjans gawalida. ak ei usfulliþ waurþi
-    19 þata gamelido. saei matida mip mis hlaib. ushof ana mik fairzna seina. fram himina qiþa izis
-    20 faurpizei vaurþi. ei biþe vairþai. galaubjaiþ þatei ik im. amen amen qiþa izvis. saei andnimiþ þana
-    21 þanei ik insandja. mik andnimiþ. ip saei mik andnimiþ. andnimiþ þana sandjandan mik. þata qiþands
-    iesus indrobnoda almin jah veitvodiþa jah qab. amen amen qiþa izvis. þatei ains izvara galeveiþ
-    22, 23 mik. þanuh sewun du sis misso þai siponjos þagkjandans. bi warjana qeþi. vasuh þan anakumbjands
-    24 ains þize siponje is in barma iesuis. þanei frijoda iesus. bandviduh þan þamma seimon paitru du
-    25 fraihnan. was vesi. bi þanei qab. anakumbida þan jains sva ana barma iesuis qaþuh imma. frauja.
-    26 was ist. andhof iesus. sa ist. þammei ik ufdaupjands þana hlaif giba. jah ufdaupjands þana hlaif
+  <bloco tipo="texto_principal" script="latino" bbox="30,80,970,660">
+    40 qap esaaias. gablinidida ize augona jah gadaubida ize hairtona. ei ni gauniideidna augam jah
+    41 froþthma hairfin jah gavanideideina jah ganasidedjau ins. þata qap esaaias. þan saw vulþu jah
+    42 roþida bi fina. þanuh þan sweþaulh jah us þaim reikam managai galaubideidun du imma. akai saura
+    43 fairsaiþinn ni andhþahitain. ei us synagogein ni usvaurpani vaurþeina. frijodedan auk mais bauhein
+    44 manninska þau iauhuien gups. ip iesus hropidajai qap. saeì galaubeiþ du mis. nigalaubeiþ du mis akd
+    45. þeimma sandjanddin mik. jah saei saiwiþ mik. saiwiþ bana sandjandan mik. ik liulad in þamma fairnau
+    47 qami. ei wazuh saei galaubjai du mis. in riqiza ni visai. jah jabai was meinaim hausjai vaurdan jah
+    48 galaubjai. ik ni stoja ina. nih þan qam ei stojau manased ak ei ganasjau manased. saei frakan mis
+    49 jah ni andunitsip vaurda meira. habaidi þana stojandan sik. vaurd þatei rodida. þala suipþ jah ni
+    50 spedlistin daga. unte ik us mis silbin ni rodida. ak saei sandjida mik atta. saih mis anabauƕ·...
+    51 iii, 11, 12 - qap. ni allai frahujai sijub. biþeh þan uspwoh fotuns ize jah nam vastjos seinons. anakumbjands.
+    52 13 aftra qap du im. vituudu. wa gatavidu izvis. jus vopaid mik. laisareis jah frauja. vala qlipþ. in aa
+    53 14 jabai au usþwoþ izvis fotun; frauja joh laisareis. jah jus skjulub izvis misso frahaba fauk·
+    54 15, 16 du frisahai auk atgaf izvis ei svsve ik gatavida-izvis. sva jus lauþaiþ. amen amen qiba izvis. nisi
+    55 17 skafts þfala franjin seinamna nih apaustaluts maiza þamma sandjandin sik. þande þau waþ.
+    56 18 andagai sijubh. jabai lauþþ þata. ni bi allans izvis qipþ. ik vait. warjanga gavalida. ak ei usfulþuþ.
+    57 19 þata gamelido. saei matida miþ mis lihaih. ushof ana mik fairzna seina. fram himma qipa üins
+    58 20 faurþizei .vurþi. ei biþe vairþai. galanbiþaiþ þatei ik im. amen amen qiba izvis. saei anduniþþ þau
+    59 21 þunei ik Insandj. mik anduniþþ. ip saei mik anduniþþ. anduniþþ þana sandjandan mik. þata qipaþs
+    60 iesus indroboda ahlmin jah veitvoida jah qap. amen amen qiba izvis. þatei ains izvra galreih
+    61 22, 23 mik. þanuh sewuun du sis misso þai siponjos þagkjandans. bi warjana qepi. vasuh þan anakumbjands
+    62 24 ains þize sijonpe is in barna iesuis. þanei frijoda iesus. bandivduh þan þamma seimon paitrus da
+    63 25 fraihnan. was vesi. bi þanei qap. anakumbida þan jains sva usa barna iesuis qapuh isamma. frauj.
+    64 26 was ïst. andhof iesus. a ïst. þammnei ik ufdaþipjands þana blaii gibai. jah ufdaþipjands þana blaii gil
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,560,950,800">
+  <bloco tipo="texto_principal" script="latino" bbox="30,660,970,1200">
     INTERPRETATIO.
-    dere, nam iterum dixit Esaias: 40. obcæcavit eorum oculos et induravit eorum corda, ut non viderent oculis et intelligerent corde et converterent et sanarent eos. 41. Hoc dixit Esaias, cum vidit gloriam ejus et locutus est de eo. 42. Tunc autem tamen etiam ex his principibus multi crediderunt ad eum, sed propter Farisæos non confessi sunt, ut e synagoga non ejicerentur. 43. Amaverunt enim magis gloriam hominum, quam gloriam Dei. 44. Verum Jesus clamavit et dixit: qui credit ad me, non credit ad me, sed ad hunc mittentem me; 45. et qui videt me, videt hunc mittentem me. 46. Ego lumen in hunc mundum veni, ut quisque qui credat ad me, in tenebris non maneat; 47. et si quis mea audiat verba et credat, ego non judico eum, non enim veni, ut judicem mundum, sed ut salvem mundum; 48. qui rejicit me et non accipit verba mea, habet hunc judicantem se : verbum quod locutus sum, hoc judicat eum in ultimo die. 49. Nam ego ex me ipso non locutus sum, sed qui misit me pater, hic mihi præceptum de (dit) — xiii, 11, 12 — dixit: non omnes mundi estis. 12. Cum autem lavit pedes eorum et cepit vestes suas, accumbens iterum dixit ad eos: scitisne quid feci vobis? 13. Vos vocatis me, magister et dominus? Bene dicitis, sum enim; 14. si igitur lavi vobis pedes, dominus et magister, etiam vos debetis vobis invicem lavare pedes. 15. Ad exemplum enim dedi vobis, ut sicut ego feci vobis, sic vos faciatis. 16. Amen, amen dico vobis, non est servus major domino suo, nec apostolus major hoc mittente se. 17. Si hoc scitis, beati estis, si facitis hoc. 18. Non de omnibus vobis dico; ego scio, quos elegi, sed ut impletum fieret hoc scriptum: qui edit cum me panem, sustulit contra me calcaneum suum. 19. Ab hodierno dico vobis, antequam fiat, ut cum fiat, credatis, quod ego sum. 20. Amen, amen dico vobis, qui suscipit hunc, quem ego mitto, me suscipit; verum qui me suscipit, suscipit hunc mittentem me. 21. Hoc dicens Jesus turbatus est spiritu et testatus est et dixit: amen, amen dico vobis, quod unus vestrum tradit me. 22. Tunc adspexerunt ad se invicem hi discipuli cogitantes, de quo diceret. 23. Fuit autem accumbens unus horum discipulorum ejus in sinu Jesu, quem amavit Jesus; 24. innuit autem huic Simon Petrus ad interrogandum quis esset de quo dixit. 25. Accubuit autem ille sic in sinu Jesu dixitque ei: domine, quis est? 26. Respondit Jesus: hic est, cui ego
+    
+    dere, nam Hercum dixit Esaias: 40. obsecravit eorum oculos et induravit eorum corda, ut non viderent
+    oculis et intelligerent corde et converterentur et sanarentur eos. 41. Haec dixit Esaias, cum viderit gloriam ejus
+    et locutus-est de eo. 42. Tunc autem tamen etiam ex his principibus multi crederunt ei eum, sed propter
+    Farisaeos non confessi-sunt, ut e synagoga non egreffirent. 43. Amaverunt enim magis gloriam hominum, quam gloriam Dei. 44. Verum Iesus clamavit; et dixit: qui credit ad me, non credit ad me, sed ad
+    hunc mittentem me; 45. et qui videt me, videt hunc mittentem me. 46. Ego sum lumen in hune mundi;
+    veni, ut quisque qui credit ad me, in tenebris non maneat; 47. Si quis meus audierit voces de cruce, haec
+    non judicio eum, non enim venit, ut judicem mundum, sed ut salvem mundum; 48. Qui rejectit me non spe-
+    rit verba mea, habet hunc judicium se: verbum quod locutus-sum, hoc judicii cum in ultimo die. 49. Nam
+    ego ex me ipso non locutus-sum, sed qui misit me pater, hic mihi praecepsum de (dit) — xai, 11. — dixit.
+    non omnes mundi estis. 12. Cum autem lavit pedes eorum et cepit vestes suas, actuambenne hunc dixit
+    ad eos: scitisne quid feci vobis? 13. Vos vocatis me, magister et dominus? Bene dixistis, amen enini: 14. si
+    igitur lavi vobis pedes, dominus et magister, etiam vos debetis vobis invitem lavare pedes. 15. Ad exemplum enim dedi vobis, ut sicut ego feci vobis, sic vos faciatís. 16. Amen, amen dico vobis, non est major dominuo suo, nec apostolus major hoc mittente se.
+    17. Si hoc scitis, beati estis, si facitis hoc. 18. Nam de omnibus vobis dico: ego scio, quos elegit, sed ut impletum fieret hoc scriptum: qui dedit eum me, stultiti contra me calcaneum suum. 19. Ab hodierno dico vobis, antequam fieret, ut cum fiat, erubie,
+    quod ego sum. 20. Amen, amen dico vobis, qui suscipit hunc, quem ego mitto, me suscipit; et vere
+    me suscepit, suscipit hunc mittentem me. 21. Hicdicit Iesus turbatus-est spiritu et testatus est et dixit:
+    amen, amen dico vobis, quod unus vestrum tradit me. 22. Tune adspexerunt se in invicem, hi de quibus
+    cogitantes, de quo diceret. 23. Fuit autem accumbens unus horum discipulorum ejus in sinu Jesu, quem
+    anavit Iesus: 24. inivit autem huic Simon Petrus ad interrogandum quis esset de qui dixit. 25. Atque
+    bui autem ille sic in sinu Jesu dixitque ei: domine, quis est? 26. Respondit Iesus: hic est, cui ego ho
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,810,480,950">
+  <bloco tipo="rodape" script="latino" bbox="30,1200,970,1480">
     ANNOTATIONES.
-    xii, 40. hairtona] corda, gr. omn. καρδίαν.
-    xii, 42. synagogein] editt. synagogein; cod. Arg. synagogeinusvaurpanai: apparet librarium ni omisisse, cognito errore addidisse, sed ita ut cum litteram n jam scriptam videret, eam ad ni pertinere et i modo se omisisse putans, alterum n non repeteret. Dativus utique in n desinit: synagogein L. iv, 16, 20, 28; synagogen Mc. i, 23, 29.
-    xii, 43. mais] gr. omn. post manniska.—manniska] bumanam, gr. omn. ἀνθρώπων.
-    xii, 45. sandjandan] J. St. sandjandin.
-    xii, 46. visai] J. visai.
-    xii, 47. jah] sec., editt. addunt ni, cujus vocula in cod. Arg. nullum vestigium invenitur, neque a librario, sed ab ipso interprete omissum esse, codices ii, quibuscum sæpissime consentit, probant. — manased] pr., cod. Arg. manased; cf. ad ix, 41.
+    
+    in, 40. hairtona] corda, gr. omn. χαρδιων.
+    xii, 42. synagogein] editi. ✠ synagogei; cod. Arg.
+    synagogei nsusvaurpani: apparat librarium ni omisse, cognite errore addidisse, sed ita est eum
+    litteram in jam scriptam videret, eam ad ni peniuere et i modo se omistisse putans, alterum in non repeteret. Dativus utique in m desinit: synagogein L iv,
+    46, 20, 28: § synagogae Mc. 1, 25, 29.
+    xii, 43. mais] gr. omm. post mammiska. — mammiska] humanam, gr. omm. ἀθρoπoυ.
+    xii, 45. sandjandn] J. Sl. ✠ sandjandin.
+    xii, 46. visai] J. ✠ visai.
+    xii, 47. jah] sec., editt. addunt ni, cujus vocalæ in cod. Arg. nullum vestigium invenitur, neque a librario, sed ab ipso interprete omissione esse, codices ii, quibuscum & priisime consentiunt, probant. — manuscr. pr., cod. Arg. ✠ namameod; cf. adiv, 41.
+    xii, 48. þana] Sl. ✠ þana.
+    xii, 49. at.] J. e conjectura complet alqf.
+    xiii, 12. viudul] cod. Arg. litz. J. Sl. & ti- ladui.
+    xiii, 13. laisareis] cod. Arg. ✠ laisareisers, [ma]
+    uti Hn. Z. dicunt laisareisaries, cf. ad ix, 41. [frauj] uti. ✠ xai.
+    xiii, 14. us] Ulf. ✠ ipse.
+    xiii, 15. sai] sic, gr. omm. xai, vid. ad xv, 9.
+    xiii, 16. qipai] J. ✠ qipai.
+    xiii, 18. warjans] quod (pronomen interrogativum), gr. οὐ.
+    xiii, 20. þana gamelido] gr. ante asfuffip.
+    xiii, 20. þana þanei] hæc quem, gr. ite:
+    xiii, 25. wsi] sic, gr.
+    xiii, 26. seimonis isiariotai] sic cod. Arg.; J. Sl.
+    xiii, 30. seimon iaisiariotai] sic cod. Arg ; J. Sl.
+    xiv, 41. nam nostro loco vellus es. σεαυτην legi,
+    quam mulum formam supra quidam habuerit.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,810,950,950">
-    xii, 48. þana] St. þara.
-    xii, 49. at...] J. e conjectura complet atgaf.
-    xiii, 12. vitudu] cod. Arg. llz. J. St. B. ti- tadu.
-    xiii, 13. laisareis] cod. Arg. laisareisareis, nisi uti Rz. T. dicunt laisareissareis, cf. ad ix, 41. — frauja] Ulf. καὶ.
-    xiii, 14. nu] Ulf. ἐγώ.
-    xiii, 15. sva] sic, gr. omn. καί, vid. ad xv, 9.
-    xiii, 16. gipa] J. vipa.
-    xiii, 18. warjans] qoós (pronomen interrogativum), gr. οὕς. — þata gamelido] gr. ante usfulliþ.
-    xiii, 20. þana þanei] hunc quem, gr. ἐάν c.
-    xiii, 25. svo] sic, ? gr.
-    xiii, 26. seimonis skariotau] sic cod. Arg.; J. St. seimon iskariota, B. seimonis iskariotou recipiunt, vid. xii. 4. nam nostro loco nullus gr. Σκαριώτην legit, quam mutilam formam supra quidam habent.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
-    Digitized by Google
-  </bloco>
-  <notas>
-    Transcrição de página contendo texto gótico (Ulfilas), tradução latina e notas críticas. Caracteres especiais como þ (thorn), æ, œ e letras gregas foram mantidos. Números de versículos inline preservados. Notas marginais gregas no bloco gótico foram incluídas ao final das linhas correspondentes.
-  </notas>
+  <notas>Transcrição feita em latino. Algumas palavras muito abreviadas reproduzidas tal qual no impresso (p.ex. þ para th). Onde texto impresso parcialmente ilegível usei [ilegivel] para palavras individuais quando necessário (nenhuma aplicada neste bloco). BBOXs estimadas em escala 0-1000 correspondendo à posição visual na imagem; página em duas grandes zonas: parte superior colunas do texto gótico e inferior com interpretação/annotatio em latim.</notas>
 </pagina>

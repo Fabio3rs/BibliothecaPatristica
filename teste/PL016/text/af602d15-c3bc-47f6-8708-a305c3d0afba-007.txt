@@ -1,48 +1,38 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="280,30,720,90">
+  <bloco tipo="cabecalho" script="latino" bbox="120,20,880,180">
     SANCTI
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="180,100,820,260">
+  <bloco tipo="cabecalho" script="latino" bbox="120,160,880,310">
     AMBROSII
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="120,270,880,360">
+  <bloco tipo="cabecalho" script="latino" bbox="100,300,900,420">
     MEDIOLANENSIS EPISCOPI
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="300,380,700,440">
+  <bloco tipo="cabecalho" script="latino" bbox="220,430,780,510">
     OPERA OMNIA.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="140,460,860,540">
-    EDITIO PRÆ ALIIS OMNIBUS COMPLETA, QUARUM INSTAR HABERI POTEST ;
+  <bloco tipo="texto_principal" script="latino" bbox="80,520,920,660">
+    EDITIO PRÆ ALIS OMNIBUS COMPLETA, QUARUM INSTAR HABERI POTEST ;
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,560,920,720">
+  <bloco tipo="texto_principal" script="latino" bbox="60,660,940,820">
     AD MANUSCRIPTOS CODICES VATICANOS, GALLICANOS, BELGICOS, ETC., NECNON AD VETERES
-    EDITIONES, MAXIME VERO AD BENEDICTINAM RECENSITA ET EMENDATA;
+    EDITIONES, MAXIMÉ VERO AD BENEDICTINIANAM RECENSITAS ET EMENDATAS;]
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,820,880,940">
     NOTIS LECTIONIBUSQUE VARIANTIBUS, TEXTUI SUBJACENTIBUS, CONTINENTER ILLUSTRATA ;
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="140,940,860,1020">
     : VARIIS INSUPER OPUSCULIS QUÆ VEL OMISERE VEL NE MEMORAVERE QUIDEM ERUDITI
     BENEDICTINI, LOCUPLETATA.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="150,720,860,780">
+  <bloco tipo="rodape" script="latino" bbox="140,1140,860,1210">
     TOMI SECUNDI ET ULTIMI PARS PRIOR.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="200,820,840,920">
-    PARISIIS, EXCUDERAT VRAYET,
+  <bloco tipo="rodape" script="latino" bbox="200,1360,800,1500">
+    PARISIIS, EXCUDEBAT VRAYET,
     IN VIA DICTA D'AMBOISE, PRES LA BARRIERE D'ENFER,
     OU PETIT-MONTROUGE.
     1845.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="760,940,980,980">
-    Digitized by Google
-  </bloco>
-  <notas>
-    A página é uma capa / página de guarda com texto em caracteres latinos (capitulares e pequenas letras).
-    Correções visuais feitas em relação ao rascunho OCR:
-    - "PRÆ" (ligadura) restituída em "EDITIO PRÆ ALIIS..." conforme impressão.
-    - "AD MANUSCRIPTOS CODICES VATICANOS..." corrigido de variantes incorretas do OCR (p.ex. "ADÉMANUSCBIPTOS").
-    - "RECENSITA" corrigido de leituras erradas como "BECENSITA".
-    - "TEXTUI SUBJACENTIBUS" corrigido de "TEXTUI S$UBJACENTIBUS" do rascunho.
-    - O parágrafo relativo a opúsculos ("VARIIS INSUPER OPUSCULIS...") transcrito mantendo dois versos conforme visual.
-    - A linha do impressor foi lida como "PARISIIS, EXCUDERAT VRAYET, IN VIA DICTA D'AMBOISE, PRES LA BARRIERE D'ENFER, OU PETIT-MONTROUGE." A forma exata do verbo (EXCUDERAT/EXCUDEBAT) é ambígua no original impresso; foi transcrita como "EXCUDERAT" segundo leitura visual.
-    - O ano inferior é "1845." conforme impresso.
-    - A marca "Digitized by Google" foi transcrita tal qual aparece no rodapé.
-  </notas>
+  <notas>Texto em latim impresso. Pequenos sinais tipográficos e ornamentos gráficos foram ignorados; colchete de fechamento ']' na linha de edição aparece no original.</notas>
 </pagina>

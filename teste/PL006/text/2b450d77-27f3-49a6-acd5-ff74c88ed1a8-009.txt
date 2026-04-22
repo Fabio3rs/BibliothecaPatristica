@@ -1,54 +1,50 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="180,20,820,150">
-ELENCHUS RERUM
-
-QUÆ IN HOC VOLUMINE CONTINENTUR
+  <bloco tipo="cabecalho" script="latino" bbox="120,40,880,150">
+    ELENCHUS RERUM
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,160,480,360">
-Notiones biographicæ necnon et bibliographicæ de
-sanctis pontificibus romanis :
-
-MARCELLINO,    EUSEBIO,
-MARCELLO,      MELCHIADE.
-
-RIETICI Fragmentum.
-ANONYMI carmen de Laudibus Domini.
+  <bloco tipo="cabecalho" script="latino" bbox="140,150,860,210">
+    QUÆ IN HOC VOLUMINE CONTINENTUR
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,160,940,360">
-CELSI Præfatio in altercationem Jasonis et Papisci.
-LACTANTII Divinarum Institutionum libri septem.
-Dissertatio N. LE NOBREY in libros Divinarum Institutionum.
-Selectae Isaei in septem Divinarum Institutionum libros notæ.
-Epitome Divinarum Institutionum.
+  <bloco tipo="texto_principal" script="latino" bbox="80,220,480,520">
+    Notiones biographicæ necnon et bibliographicæ de
+    sanctis pontificibus romanis :
+    
+    MARCELLINO,    EUSEBIO,
+    MARCELLO,     MELCHIADES.
+    
+    RIUETICI Fragmentum.
+    ANONYMI carmen de Laudibus Domini.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="200,360,800,400">
-------◊◊------
+  <bloco tipo="texto_principal" script="latino" bbox="520,220,920,520">
+    CELSI Præfatio in altercationem Jasonis et Papisci.
+    LACTANTII Divinarum Institutionum libri septem.
+    Dissertatio N. LE NOBBY in libros Divinarum Institutionum.
+    
+    Selectæ Isael in septem Divinarum Institutionum li-
+    bros nolle.
+    Epitome Divinarum Institutionum.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="420,400,580,460">
-ERRATA.
+  <bloco tipo="outro" script="latino" bbox="180,520,820,560">
+    ---------
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="60,460,480,620">
-Col. 142, lin. 27, Lamie, lege Lamia.
-Col. 148, lin. 31, Appolini, lege Apollinis.
-Col. 154, lin. 29, Isac, lege Isaac.
-Col. 184, lin. 7, transfe.unt, lege transferunt.
+  <bloco tipo="cabecalho" script="latino" bbox="420,580,580,640">
+    ERRATA.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="520,460,940,620">
-Col. 326, lin. 49, Brasichii, lege Brasicheili.
-Col. 344, lin. 8, simulacrum, lege simulacrorum.
-Col. 574, lin. 55, ather, lege ather.
-Col. 900, lin. 8, ubique, lege ibique.
+  <bloco tipo="texto_principal" script="latino" bbox="80,640,480,820">
+    Col. 142, lin. 27, lunie, lege Lamie.
+    Col. 148, lin. 31, Appolini?, lege Apollinis.
+    Col. 154, lin. 29, Ise, lege Isaac.
+    Col. 184, lin. 7, transiunt, lege transferunt.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="220,800,780,940">
-Succursale, au Petit-Montrouge, de l'imprimerie de Sirou,
-rue des Noyers, 57, à Paris.
-
-Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="520,640,920,820">
+    Col. 326, lin. 49, Brasichii, lege Brasichelli.
+    Col. 344, lin. 8, simulacrum, lege simulacrorum.
+    Col. 574, lin. 53, asher, lege adher.
+    Col. 900, lin. 8, ubique, lege ibique.
   </bloco>
-  <notas>
-- Script identificado: latino. 
-- Transcrição feita visualmente a partir da imagem; o rascunho OCR continha várias leituras erradas (ex.: "EUsEb:0", "LE Norrby", "simulacr orum" etc.). Corrigi grafias visíveis na página (p.ex. "Notiones biographicæ...", "ANONYMI carmen de Laudibus Domini", "ERRATA"). 
-- Em alguns casos de abreviação ou ligadura (ex.: "Præfatio", "biographicæ") mantive o caractere conforme aparece na imagem. 
-- A grafia de nomes próprios pouco nítidos (p.ex. "LE NOBREY", "RIETICI") foi transcrita tal como legível na imagem, sem normalização adicional.
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="160,920,840,980">
+    Succursale, au Petit-Montrouge, de l'imprimerie de Sirou,
+    rue des Noyers, 37, à Paris.
+  </bloco>
+  <notas>Texto em latim impresso. Algumas palavras pouco nítidas foram transcritas com interrogação quando ilegíveis: "Appolini?"; mantido hífen de divisão de linha em "li-" e "bros". BBOXs aproximados em escala 0-1000.</notas>
 </pagina>
