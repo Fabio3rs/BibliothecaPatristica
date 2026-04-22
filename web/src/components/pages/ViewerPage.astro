@@ -7,7 +7,7 @@ const t = useTranslations(Astro.currentLocale);
 const uiStrings = serializeTranslations(t);
 const uiLocale = Astro.currentLocale ?? 'pt-br';
 ---
-<Layout title="Viewer" description="Visualizador de páginas do corpus patrístico" breadcrumbs={[{label: t.breadcrumbHome, href: baseWithSlash},{label: t.breadcrumbViewer}]}>
+<Layout title="Bibliotheca Patristica — Leitura" description="Visualizador de páginas do corpus patrístico com metadados enriquecidos e OCR." breadcrumbs={[{label: t.breadcrumbHome, href: baseWithSlash},{label: t.breadcrumbViewer}]}>
   <div id="viewer-root" style="min-height:60vh;">
     <div style="padding:var(--space-8) 0;text-align:center;color:var(--color-muted);">
       <p>{t.viewerLoading}</p>

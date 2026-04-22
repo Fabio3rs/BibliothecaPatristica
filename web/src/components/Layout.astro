@@ -3,7 +3,7 @@ import '../styles/global.css';
 import Breadcrumbs from './Breadcrumbs.astro';
 import { useTranslations, getLocaleSwitchUrl } from '../i18n';
 
-const { title = 'Bibliotheca Patristica', description = 'Acervo estático demonstrativo', breadcrumbs = [] } = Astro.props;
+const { title = 'Bibliotheca Patristica', description = 'Acervo digital aberto da Patrologia Graeca, Latina e Orientalis de J.P. Migne — busca textual e metadados enriquecidos.', breadcrumbs = [] } = Astro.props;
 const rawBase = import.meta.env.BASE_URL || '/';
 const base = rawBase;
 const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
@@ -28,6 +28,17 @@ const switchUrl = getLocaleSwitchUrl(
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href={`${baseWithSlash}favicon.svg`} />
+    <meta name="theme-color" content="#1f6b7a" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Bibliotheca Patristica" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${baseWithSlash}favicon.svg`} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="manifest" href={`${baseWithSlash}manifest.json`} />
+
     <slot name="head" />
     <style>
       @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 400; src: local('Source Serif 4'); }
@@ -74,7 +85,10 @@ const switchUrl = getLocaleSwitchUrl(
             <div style="color: var(--color-muted); font-size: 0.95rem;">{t.tagline}</div>
           </div>
           <nav aria-label={t.navSearch + ' / ' + t.navViewer}>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label={t.navMenuLabel} aria-expanded="false" aria-controls="primary-nav" id="nav-toggle">
+              ☰
+            </button>
+            <div class="nav-links" id="primary-nav">
               <a href={`${baseWithSlash}search`}>{t.navSearch}</a>
               <a href={`${baseWithSlash}viewer?doc=PG144&page=396`}>{t.navViewer}</a>
               <a
@@ -115,5 +129,24 @@ const switchUrl = getLocaleSwitchUrl(
         </div>
       </footer>
     </div>
-  </body>
+  <script type="module">
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('primary-nav');
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.textContent = open ? '✕' : '☰';
+      });
+      // Fecha ao clicar fora
+      document.addEventListener('click', (e) => {
+        if (!toggle.contains(e.target) && !nav.contains(e.target) && nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.textContent = '☰';
+        }
+      });
+    }
+  </script>
+</body>
 </html>

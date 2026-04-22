@@ -3,14 +3,12 @@ import Layout from '../Layout.astro';
 import { useTranslations, serializeTranslations } from '../../i18n';
 const base = import.meta.env.BASE_URL || '/';
 const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
-const assetBase = baseWithSlash; // para uso em scripts, garantindo a barra final
+const assetBase = baseWithSlash;
 
 const t = useTranslations(Astro.currentLocale);
 const uiStrings = serializeTranslations(t);
 const uiLocale = Astro.currentLocale ?? 'pt-br';
 
-// startPoints — labels em pt-BR pois os dados do corpus estão em pt-BR.
-// Se quiser traduzir os labels de autores/temas também, inclua no dicionário i18n.
 const startPoints = {
   "Autores Notáveis": [
     { label: "Agostinho de Hipona", term: "Augustinus Hipponensis" },
@@ -25,29 +23,81 @@ const startPoints = {
     { label: "Gnose", term: "Gnosis" },
   ]
 };
+
+const personas = [
+  {
+    icon: '🕊️',
+    title: t.personaDevotoTitle,
+    desc: t.personaDevotoDesc,
+    cta: t.personaDevotoCta,
+    href: `${baseWithSlash}search?term=${encodeURIComponent('Joannes Chrysostomus')}`,
+  },
+  {
+    icon: '📖',
+    title: t.personaTheologyTitle,
+    desc: t.personaTheologyDesc,
+    cta: t.personaTheologyCta,
+    href: `${baseWithSlash}search`,
+  },
+  {
+    icon: '🔬',
+    title: t.personaResearcherTitle,
+    desc: t.personaResearcherDesc,
+    cta: t.personaResearcherCta,
+    href: `${baseWithSlash}search?term=${encodeURIComponent('Trinitas')}`,
+  },
+];
 ---
+
 <style>
+  .hero {
+    text-align: center;
+    padding: var(--space-8) var(--space-4);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--color-accent) 8%, var(--color-bg)) 0%, var(--color-bg) 100%);
+    border-radius: var(--radius-m);
+    border: 1px solid var(--color-border);
+  }
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    margin: 0 0 var(--space-3);
+    line-height: 1.2;
+  }
+  .hero p {
+    max-width: 65ch;
+    margin: 0 auto var(--space-5);
+    color: var(--color-muted);
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+  }
+  .hero-actions {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
   .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: var(--space-4);
     margin-top: var(--space-4);
     text-align: center;
   }
   .stat-item h3 {
-    font-size: 2.2rem;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
     font-weight: 700;
     margin: 0;
     color: var(--color-accent);
   }
   .stat-item p {
-    margin: 0;
-    font-size: 0.9rem;
+    margin: var(--space-1) 0 0;
+    font-size: 0.85rem;
     color: var(--color-muted);
   }
+
   .start-points-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: var(--space-5);
     margin-top: var(--space-4);
   }
@@ -57,6 +107,7 @@ const startPoints = {
     font-family: var(--font-serif);
     border-bottom: 2px solid var(--color-border);
     padding-bottom: var(--space-2);
+    font-size: 1.1rem;
   }
   .start-points-grid ul {
     list-style: none;
@@ -77,25 +128,75 @@ const startPoints = {
   .start-points-grid a:hover {
     background-color: var(--color-surface-raised);
   }
+
+  .personas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-5);
+    margin-top: var(--space-4);
+  }
+  .persona-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-m);
+    padding: var(--space-5);
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .persona-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  }
+  .persona-icon {
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+  .persona-card h3 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+  }
+  .persona-card p {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    flex: 1;
+  }
+  .persona-card .button {
+    align-self: flex-start;
+    margin-top: auto;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .persona-card:hover {
+      box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+    }
+  }
 </style>
 
-<Layout title="Bibliotheca Patristica" description="Uma interface de pesquisa para as coleções da Patrologia de Migne." breadcrumbs={[{label: t.breadcrumbHome, href: baseWithSlash}]}>
+<Layout title="Bibliotheca Patristica" description={t.homeSubtitle.replace(/<[^>]*>/g, '')} breadcrumbs={[{label: t.breadcrumbHome, href: baseWithSlash}]}>
   <Fragment slot="head">
     <link rel="prefetch" href={`${baseWithSlash}search`} />
     <link rel="prefetch" href={`${baseWithSlash}pagefind/pagefind.js`} />
   </Fragment>
-  <section class="card" style="margin-top:var(--space-4);">
-    <h1 style="margin-top:0;font-family:var(--font-serif);">{t.homeTitle}</h1>
+
+  <!-- Hero -->
+  <section class="hero" style="margin-top:var(--space-4);">
+    <h1>{t.homeTitle}</h1>
     <p set:html={t.homeSubtitle}></p>
-    <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-4);">
+    <div class="hero-actions">
       <a class="button" href={`${baseWithSlash}search`}>{t.homeCtaSearch}</a>
       <a class="button secondary" href={`${baseWithSlash}viewer?doc=PG059&page=535`}>{t.homeCtaExample}</a>
     </div>
   </section>
 
+  <!-- Stats -->
   <section class="card-plain" style="margin-top:var(--space-5);">
     <div class="stats-grid" id="stats-grid">
-      <!-- Preenchido dinamicamente via volumes.json -->
       <div class="stat-item"><h3>…</h3><p>{t.statVolumes}</p></div>
       <div class="stat-item"><h3>{t.statSeries}</h3><p>{t.statSeriesLabel}</p></div>
       <div class="stat-item"><h3>…</h3><p>{t.statPages}</p></div>
@@ -103,6 +204,23 @@ const startPoints = {
     </div>
   </section>
 
+  <!-- Personas -->
+  <section class="card" style="margin-top:var(--space-5);">
+    <h2 style="margin-top:0;font-family:var(--font-serif);">{t.personasTitle}</h2>
+    <p style="color:var(--color-muted); max-width:65ch;">{t.personasDesc}</p>
+    <div class="personas-grid">
+      {personas.map(p => (
+        <div class="persona-card">
+          <div class="persona-icon" aria-hidden="true">{p.icon}</div>
+          <h3>{p.title}</h3>
+          <p>{p.desc}</p>
+          <a class="button" href={p.href}>{p.cta}</a>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Pontos de partida -->
   <section class="card" style="margin-top:var(--space-5);">
     <h2 style="margin-top:0;font-family:var(--font-serif);">{t.startPointsTitle}</h2>
     <p style="color:var(--color-muted); max-width:65ch;">{t.startPointsDesc}</p>
@@ -120,6 +238,7 @@ const startPoints = {
     </div>
   </section>
 
+  <!-- Tag Cloud -->
   <section class="card" style="margin-top:var(--space-5);">
     <header style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);flex-wrap:wrap;">
       <div>
@@ -138,7 +257,6 @@ const startPoints = {
     const statsGrid = document.getElementById('stats-grid');
     const searchUrl = (tag) => `${assetBase}search?term=${encodeURIComponent(tag)}`;
 
-    // Reconstrói funções de formatação no cliente (não serializáveis via define:vars)
     const isEn = uiLocale === 'en';
     const s = uiStrings;
     const ariaOccurrences = isEn
@@ -173,7 +291,6 @@ const startPoints = {
       const minLog = Math.log1p(Math.min(...items.map(i => i.count || 1)));
       const logRange = Math.max(1, maxLog - minLog);
 
-      // Embaralhamento Fisher-Yates para visual orgânico
       const shuffled = [...items];
       for (let i = shuffled.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));

@@ -12,9 +12,10 @@ export const en: Translations = {
   skipToContent: 'Skip to content',
   logoLabel: 'Bibliotheca Patristica — home page',
   logoText: 'Bibliotheca',
-  tagline: 'Demo corpus — static search',
+  tagline: 'Open digital corpus of patristic literature',
   navSearch: 'Search',
-  navViewer: 'Viewer',
+  navViewer: 'Reader',
+  navMenuLabel: 'Navigation menu',
   langSwitchLabel: 'Mudar para Português',
   langSwitchCurrent: 'EN',
   langSwitchOther: 'PT',
@@ -24,16 +25,16 @@ export const en: Translations = {
   disclaimerLine1:
     'We use AI to generate summaries and terms in order to help quickly locate themes in the patristic corpus.',
   disclaimerLine2:
-    'The collection is still incomplete and may contain OCR errors. If a theme does not appear in the search it may still exist; if a keyword appears, please verify it in the original text before using it academically.',
+    'The collection is still expanding and may contain OCR errors. If a theme does not appear in the search it may still exist; if a keyword appears, please verify it in the original text before using it academically.',
   disclaimerLine3:
-    'Results are drafts: reading the original and human review are always necessary.',
+    'Results are aids: reading the original and human review are always necessary.',
   disclaimerDataLang:
     '🌐 Summaries and keywords were generated in Brazilian Portuguese (pt-BR) and do not change according to the UI language.',
   disclaimerAriaLabel: 'Notice about AI-generated content',
 
   // ─── Footer ────────────────────────────────────────────────────────────────
-  footerLeft: 'Demo publication layer • Astro + JSON mocks',
-  footerRight: 'GitHub Pages • static build',
+  footerLeft: 'Collaborative project • open source',
+  footerRight: 'GitHub Pages',
 
   // ─── Home page (index) ─────────────────────────────────────────────────────
   homeTitle: 'Bibliotheca Patristica Digital',
@@ -61,9 +62,25 @@ export const en: Translations = {
   tagCloudError: 'Failed to load keywords.',
   statsLoadError: 'Stats not loaded:',
 
+  // ─── Personas ──────────────────────────────────────────────────────────────
+  personasTitle: 'Who is this corpus for?',
+  personasDesc: 'Choose your profile and discover how Bibliotheca Patristica can help.',
+  personaDevotoTitle: 'I am a devotee',
+  personaDevotoDesc:
+    'I want to know the Church Fathers, their letters and sermons. Start with the most-read authors and spiritual themes.',
+  personaDevotoCta: 'Explore authors',
+  personaTheologyTitle: 'I study theology',
+  personaTheologyDesc:
+    'I need to quickly locate treatises on the Trinity, Christology or Scripture. Use advanced search and collection filters.',
+  personaTheologyCta: 'Go to search',
+  personaResearcherTitle: 'I am a researcher',
+  personaResearcherDesc:
+    'I am looking for primary sources for articles or dissertations. Browse by volume, author and keywords with enriched metadata.',
+  personaResearcherCta: 'Search the corpus',
+
   // ─── Search ────────────────────────────────────────────────────────────────
   searchTitle: 'Results',
-  searchSubtitle: 'Static search (Pagefind)',
+  searchSubtitle: 'Full-text search in the patristic corpus',
   searchPlaceholder: 'Search...',
   searchItemsLabel: 'Items:',
   searchLoading: 'Loading index...',
@@ -145,7 +162,7 @@ export const en: Translations = {
   breadcrumbNav: 'Breadcrumb',
   breadcrumbHome: 'Home',
   breadcrumbSearch: 'Search',
-  breadcrumbViewer: 'Viewer',
+  breadcrumbViewer: 'Reader',
 
   // ─── Accessibility / ARIA ──────────────────────────────────────────────────
   ariaMetadata: 'Metadata',

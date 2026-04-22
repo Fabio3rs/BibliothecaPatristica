@@ -10,9 +10,10 @@ export const ptBR: Record<string, any> = {
   skipToContent: 'Pular para o conteúdo',
   logoLabel: 'Bibliotheca Patristica — página inicial',
   logoText: 'Bibliotheca',
-  tagline: 'Acervo demo — busca estática',
+  tagline: 'Acervo digital aberto da literatura patrística',
   navSearch: 'Busca',
-  navViewer: 'Viewer',
+  navViewer: 'Leitura',
+  navMenuLabel: 'Menu de navegação',
   /** Botão de troca de idioma na topbar */
   langSwitchLabel: 'Switch to English',
   langSwitchCurrent: 'PT',
@@ -23,17 +24,17 @@ export const ptBR: Record<string, any> = {
   disclaimerLine1:
     'Usamos IA para gerar resumos e termos em português e ajudar a localizar rapidamente temas no corpus patrístico.',
   disclaimerLine2:
-    'O acervo ainda está incompleto e pode conter erros de OCR. Se um tema não aparecer na busca, ele pode existir; se uma palavra‑chave surgir, confirme no texto antes de usar academicamente.',
+    'O acervo ainda está em expansão e pode conter erros de OCR. Se um tema não aparecer na busca, ele pode existir; se uma palavra‑chave surgir, confirme no texto antes de usar academicamente.',
   disclaimerLine3:
-    'Resultados são rascunhos: leitura do original e revisão humana são sempre necessárias.',
+    'Resultados são auxiliares: leitura do original e revisão humana são sempre necessárias.',
   /** Aviso específico: dados gerados em PT-BR mesmo com UI em outro idioma */
   disclaimerDataLang:
     '🌐 Os resumos e palavras-chave foram gerados em português do Brasil e não variam conforme o idioma da interface.',
   disclaimerAriaLabel: 'Aviso sobre o conteúdo gerado por IA',
 
   // ─── Footer ────────────────────────────────────────────────────────────────
-  footerLeft: 'Camada de publicação demo • Astro + JSON mocks',
-  footerRight: 'GitHub Pages • static build',
+  footerLeft: 'Projeto colaborativo • código aberto',
+  footerRight: 'GitHub Pages',
 
   // ─── Página inicial (index) ────────────────────────────────────────────────
   homeTitle: 'Bibliotheca Patristica Digital',
@@ -61,9 +62,25 @@ export const ptBR: Record<string, any> = {
   tagCloudError: 'Falha ao carregar as palavras-chave.',
   statsLoadError: 'Stats não carregadas:',
 
+  // ─── Personas ──────────────────────────────────────────────────────────────
+  personasTitle: 'Para quem é este acervo?',
+  personasDesc: 'Escolha o seu perfil e descubra como a Bibliotheca Patristica pode ajudar.',
+  personaDevotoTitle: 'Sou devoto',
+  personaDevotoDesc:
+    'Quero conhecer os Pais da Igreja, suas cartas e sermões. Comece pelos autores mais lidos e pelos temas espirituais.',
+  personaDevotoCta: 'Explorar autores',
+  personaTheologyTitle: 'Estudo teologia',
+  personaTheologyDesc:
+    'Preciso localizar rapidamente tratados sobre Trindade, Cristologia ou Escritura. Use a busca avançada e os filtros por coleção.',
+  personaTheologyCta: 'Ir para a busca',
+  personaResearcherTitle: 'Sou pesquisador',
+  personaResearcherDesc:
+    'Busco fontes primárias para artigos ou dissertações. Navegue por volume, autor e palavras-chave com metadados enriquecidos.',
+  personaResearcherCta: 'Pesquisar no acervo',
+
   // ─── Busca (search) ────────────────────────────────────────────────────────
   searchTitle: 'Resultados',
-  searchSubtitle: 'Busca estática (Pagefind)',
+  searchSubtitle: 'Busca textual no acervo patrístico',
   searchPlaceholder: 'Buscar...',
   searchItemsLabel: 'Itens:',
   searchLoading: 'Carregando índice...',
@@ -145,7 +162,7 @@ export const ptBR: Record<string, any> = {
   breadcrumbNav: 'Breadcrumb',
   breadcrumbHome: 'Início',
   breadcrumbSearch: 'Busca',
-  breadcrumbViewer: 'Viewer',
+  breadcrumbViewer: 'Leitura',
 
   // ─── Acessibilidade / ARIA ─────────────────────────────────────────────────
   ariaMetadata: 'Metadados',

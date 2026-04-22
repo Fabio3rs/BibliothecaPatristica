@@ -1,0 +1,6 @@
+---
+// Rota PT-BR (padrão) — delega para o componente de página compartilhado.
+// O locale 'pt-br' é detectado automaticamente (arquivo na raiz de pages/).
+import HomePage from '../components/pages/HomePage.astro';
+---
+<HomePage />
