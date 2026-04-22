@@ -28,7 +28,6 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
             <option value="10">10</option>
             <option value="25" selected>25</option>
             <option value="50">50</option>
-            <option value="100">100</option>
           </select>
         </div>
       </header>
@@ -50,6 +49,20 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     const datalist = document.getElementById('keywords-suggestions');
     let checkboxNodes = [];
     let keywordOptions = [];
+    const _jsonCache = new Map();
+    function getJsonOnce(url) {
+      if (!_jsonCache.has(url)) {
+        const p = fetch(url).then(async (res) => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res.json();
+        }).catch((err) => {
+          _jsonCache.delete(url);
+          throw err;
+        });
+        _jsonCache.set(url, p);
+      }
+      return _jsonCache.get(url);
+    }
 
     // Reconstrói funções de formatação (não serializáveis via define:vars)
     const s = uiStrings;
@@ -79,7 +92,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       const filters = {};
       // Apenas 'collection' e 'volume' são filtros estruturais do Pagefind (leves).
       // 'keyword' é resolvido via busca textual (term) para evitar baixar o chunk de 7MB.
-      ['collection', 'volume'].forEach((key) => {
+      ['collection', 'volume', 'book'].forEach((key) => {
         const values = params.getAll(key);
         if (values.length) filters[key] = values;
       });
@@ -87,7 +100,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       const kwValues = params.getAll('keyword');
       const termFromKw = kwValues.join(' ');
       state.term = term || termFromKw;
-      state.pageSize = !Number.isNaN(pageSize) && pageSize > 0 ? pageSize : 25;
+      state.pageSize = !Number.isNaN(pageSize) && pageSize > 0 ? Math.min(pageSize, 50) : 25;
       state.page = !Number.isNaN(page) && page > 0 ? page : 1;
       state.filters = filters;
     }
@@ -121,7 +134,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         // Volumes e collections são leves e necessários para os filtros estruturais.
         // Keywords (2,3 MB) são carregadas separadamente, com delay, pois são usadas
         // apenas para os chips visuais e sugestões — não bloqueiam a busca por volume.
-        const volumesObj = await fetch(`${assetBase}volumes.json`).then((r) => r.json());
+        const volumesObj = await getJsonOnce(`${assetBase}volumes.json`);
 
         const volumes = volumesObj.volumes || [];
 
@@ -170,8 +183,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         });
 
         // Carrega keywords em background, sem bloquear a renderização dos filtros estruturais
-        fetch(`${assetBase}dict/keywords.json`)
-          .then((r) => r.json())
+        getJsonOnce(`${assetBase}dict/keywords.json`)
           .then((keywordsObj) => {
             const keywords = keywordsObj.items || [];
             keywordOptions = keywords.map((k) => k.label).sort();
@@ -179,10 +191,16 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
             if (!chipsContainer) return;
             const chips = keywordOptions.slice(0, 300);
             chipsContainer.innerHTML = chips.map((kw) => `
-              <a href="?term=${encodeURIComponent(kw)}"
-                 style="font-size:0.78rem;padding:0.15rem 0.45rem;border-radius:999px;border:1px solid var(--color-border);background:var(--color-surface);color:var(--color-ink);text-decoration:none;cursor:pointer;"
-                 title="${kw}">${kw}</a>
+              <button type="button" class="keyword-chip" data-keyword="${kw.replace(/"/g, '&quot;')}"
+                 style="font-size:0.78rem;padding:0.15rem 0.45rem;border-radius:999px;border:1px solid var(--color-border);background:var(--color-surface);color:var(--color-ink);cursor:pointer;"
+                 title="${kw.replace(/"/g, '&quot;')}">${kw.replace(/</g, '&lt;').replace(/&/g, '&amp;')}</button>
             `).join('');
+            chipsContainer.querySelectorAll('.keyword-chip').forEach((btn) => {
+              btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleFilter('keyword', btn.dataset.keyword);
+              });
+            });
             if (state.term) updateSuggestions();
           })
           .catch(() => {
@@ -377,12 +395,18 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         const start = (state.page - 1) * pageSize;
         const end = Math.min(start + pageSize, total);
         const hits = await Promise.all(allResults.slice(start, end).map((r) => r.data()));
+        const activeEl = document.activeElement;
+        const focusAria = activeEl && activeEl.classList.contains('button') ? activeEl.getAttribute('aria-label') : null;
 
         resultsEl.innerHTML = '';
         const nav = buildPagination(state.page, totalPages, total, start, end);
         resultsEl.appendChild(nav);
         hits.forEach((hit) => resultsEl.appendChild(buildCard(hit, term)));
         resultsEl.appendChild(buildPagination(state.page, totalPages, total, start, end));
+        if (focusAria) {
+          const btn = resultsEl.querySelector(`[aria-label="${focusAria}"]`);
+          if (btn) btn.focus();
+        }
 
       } catch (err) {
         resultsEl.textContent = s.searchIndexError;

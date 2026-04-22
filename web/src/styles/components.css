@@ -142,3 +142,141 @@ ul.chips li[style*="cursor"]:hover { background: color-mix(in srgb, var(--color-
   .meta-grid { grid-template-columns: 1fr; }
   .result-title { font-size: 1rem; }
 }
+
+/* ── OCR estruturado (viewer) ─────────────────────────────── */
+.ocr-card { overflow: hidden; }
+.ocr-view-toggle {
+  display: flex;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+}
+.ocr-view-btn {
+  padding: 0.25rem 0.55rem;
+  border-radius: var(--radius-s);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-muted);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: var(--font-sans);
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.ocr-view-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+.ocr-view-btn.active {
+  background: var(--color-accent);
+  color: var(--color-surface);
+  border-color: var(--color-accent);
+}
+
+.ocr-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+}
+.ocr-script-badge {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-muted);
+}
+
+.ocr-block {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-s);
+  padding: var(--space-3);
+  margin-bottom: var(--space-2);
+  background: var(--color-surface);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.ocr-block:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.ocr-block-meta {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: var(--space-2);
+  flex-wrap: wrap;
+}
+.ocr-type {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-s);
+  background: color-mix(in srgb, var(--color-accent) 15%, var(--color-surface));
+  color: var(--color-accent-strong);
+}
+.ocr-script {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-muted);
+}
+.ocr-bbox {
+  font-size: 0.7rem;
+  color: var(--color-muted);
+  font-family: monospace;
+  opacity: 0.7;
+}
+
+.ocr-block-text {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--color-ink);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Script color accents — left border */
+.script-latino,
+.script-latin { border-left: 3px solid #5b8c5a; }
+.script-grego { border-left: 3px solid #8b5a9f; }
+.script-siriaco { border-left: 3px solid #c46a3a; }
+.script-copta,
+.script-copte,
+.script-copto { border-left: 3px solid #3a7ca5; }
+.script-cirilico { border-left: 3px solid #a03030; }
+.script-ethiopico { border-left: 3px solid #6a5a20; }
+.script-armenio { border-left: 3px solid #205a6a; }
+.script-arabe { border-left: 3px solid #206a30; }
+.script-hebraico { border-left: 3px solid #4a3060; }
+.script-misto { border-left: 3px solid #8a7a50; }
+.script-desconhecido { border-left: 3px solid #999; }
+
+/* Tipo visual hints */
+.type-cabecalho { background: color-mix(in srgb, var(--color-accent) 4%, var(--color-surface)); }
+.type-texto_principal { background: var(--color-surface); }
+.type-aparato_critico { background: color-mix(in srgb, #c94f3d 4%, var(--color-surface)); }
+.type-rodape { background: color-mix(in srgb, var(--color-muted) 5%, var(--color-surface)); }
+.type-nota,
+.type-nota_marginal { background: color-mix(in srgb, #e8a838 5%, var(--color-surface)); }
+.type-titulo { background: color-mix(in srgb, var(--color-accent) 6%, var(--color-surface)); font-weight: 600; }
+
+/* OCR plain view */
+.ocr-plain-view {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-ink);
+  overflow-x: auto;
+}
+
+@media (max-width: 720px) {
+  .ocr-view-toggle { margin-left: 0 !important; margin-top: var(--space-2); width: 100%; }
+  .ocr-block-meta { gap: 0.3rem; }
+  .ocr-block { padding: var(--space-2); }
+}

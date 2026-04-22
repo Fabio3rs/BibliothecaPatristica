@@ -24,7 +24,6 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       ...uiStrings,
       viewerVolume: (id, title) => `${uiStrings.viewerVolume.replace ? uiStrings.viewerVolume : ''}${id}${title ? ' — ' + title : ''}`,
       viewerPage: isEn ? (n) => `Page ${n}` : (n) => `Página ${n}`,
-      viewerOcrError: isEn ? (msg) => `Error loading OCR: ${msg}` : (msg) => `Erro ao carregar OCR: ${msg}`,
       viewerRelatedSim: isEn ? (sim) => `similarity ${sim.toFixed(2)}` : (sim) => `similaridade ${sim.toFixed(2)}`,
       viewerRelatedTitle: isEn
         ? (doc, title, page) => `${doc}${title ? ' — ' + title : ''} · p. ${page}`
@@ -96,6 +95,106 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       // preservando a formatação e adicionando os <mark>.
       const raw = el.dataset.raw || txt;
       el.innerHTML = renderMarkdown(raw).replace(re, (_, m) => `<mark>${escapeHtml(m)}</mark>`);
+    }
+
+    // ── Parser e renderer de OCR estruturado ──
+    function parseOcrXml(xmlText) {
+      try {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(xmlText, 'application/xml');
+        const pagina = doc.querySelector('pagina');
+        if (!pagina) return null;
+        const estado = pagina.getAttribute('estado') || '';
+        const blocos = Array.from(pagina.querySelectorAll('bloco')).map((b) => {
+          const bbox = (b.getAttribute('bbox') || '').split(',').map(Number);
+          return {
+            tipo: b.getAttribute('tipo') || 'outro',
+            script: b.getAttribute('script') || 'desconhecido',
+            bbox: bbox.length === 4 ? bbox : null,
+            text: (b.textContent || '').trim(),
+          };
+        }).filter((b) => b.text.length > 0);
+        return { estado, blocos };
+      } catch (e) {
+        console.warn('OCR XML parse error:', e);
+        return null;
+      }
+    }
+
+    function scriptLabel(script) {
+      const labels = {
+        latino: 'Latino', latin: 'Latino',
+        grego: 'Grego',
+        copta: 'Copta', copte: 'Copta', copto: 'Copta',
+        siriaco: 'Siríaco',
+        cirilico: 'Cirílico',
+        ethiopico: 'Etíope',
+        armenio: 'Armênio',
+        arabe: 'Árabe',
+        hebraico: 'Hebraico',
+        misto: 'Misto',
+        desconhecido: '?',
+      };
+      return labels[script?.toLowerCase()] || (script || '?');
+    }
+
+    function typeLabel(tipo) {
+      const labels = {
+        cabecalho: 'Cabeçalho',
+        texto_principal: 'Texto',
+        aparato_critico: 'Aparato crítico',
+        rodape: 'Rodapé',
+        nota: 'Nota',
+        nota_marginal: 'Nota marginal',
+        outro: 'Outro',
+        titulo: 'Título',
+        capa_ou_guarda: 'Capa',
+      };
+      return labels[tipo?.toLowerCase()] || (tipo || 'Bloco');
+    }
+
+    function renderOcrStructured(container, ocrData) {
+      container.innerHTML = '';
+      if (!ocrData || !ocrData.blocos.length) {
+        container.innerHTML = `<p style="color:var(--color-muted);margin:0;">${s.viewerOcrNoBlocks}</p>`;
+        return;
+      }
+
+      const legend = document.createElement('div');
+      legend.className = 'ocr-legend';
+      const scriptsSeen = new Set(ocrData.blocos.map((b) => b.script));
+      scriptsSeen.forEach((sc) => {
+        const chip = document.createElement('span');
+        chip.className = `ocr-script-badge script-${sc.toLowerCase().replace(/[^a-z0-9]/g, '_')}`;
+        chip.textContent = scriptLabel(sc);
+        legend.appendChild(chip);
+      });
+      container.appendChild(legend);
+
+      ocrData.blocos.forEach((bloco) => {
+        const el = document.createElement('div');
+        const scriptClass = `script-${bloco.script.toLowerCase().replace(/[^a-z0-9]/g, '_')}`;
+        const tipoClass = `type-${bloco.tipo.toLowerCase().replace(/[^a-z0-9]/g, '_')}`;
+        el.className = `ocr-block ${scriptClass} ${tipoClass}`;
+
+        const meta = document.createElement('div');
+        meta.className = 'ocr-block-meta';
+        meta.innerHTML = `<span class="ocr-type">${typeLabel(bloco.tipo)}</span> <span class="ocr-script">${scriptLabel(bloco.script)}</span>`;
+        if (bloco.bbox) {
+          const bb = document.createElement('span');
+          bb.className = 'ocr-bbox';
+          bb.textContent = `${bloco.bbox[0]},${bloco.bbox[1]} → ${bloco.bbox[2]},${bloco.bbox[3]}`;
+          bb.title = `x1=${bloco.bbox[0]} y1=${bloco.bbox[1]} x2=${bloco.bbox[2]} y2=${bloco.bbox[3]}`;
+          meta.appendChild(bb);
+        }
+        el.appendChild(meta);
+
+        const text = document.createElement('div');
+        text.className = 'ocr-block-text';
+        text.textContent = bloco.text;
+        el.appendChild(text);
+        container.appendChild(el);
+      });
     }
 
     async function load() {
@@ -269,10 +368,6 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           summary.style.cssText = 'cursor:pointer; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--color-muted); user-select:none; list-style:none; display:flex; align-items:center; gap:var(--space-2);';
           summary.innerHTML = `<span class="ocr-arrow" style="display:inline-block;transition:transform 0.2s;">▶</span> ${s.viewerOcrTitle}`;
 
-          const pre = document.createElement('pre');
-          pre.style.cssText = 'margin:var(--space-4) 0 0; white-space:pre-wrap; word-break:break-word; font-size:0.82rem; line-height:1.6; color:var(--color-text); font-family:var(--font-mono, monospace); max-height:60vh; overflow-y:auto;';
-          pre.textContent = s.viewerOcrLoading;
-
           const extLink = document.createElement('a');
           extLink.href = rawHref;
           extLink.target = '_blank';
@@ -281,8 +376,16 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           extLink.textContent = s.viewerOcrOpen;
           summary.appendChild(extLink);
 
+          const bodyWrap = document.createElement('div');
+          bodyWrap.style.cssText = 'margin:var(--space-4) 0 0;';
+
+          const pre = document.createElement('pre');
+          pre.style.cssText = 'white-space:pre-wrap; word-break:break-word; font-size:0.82rem; line-height:1.6; color:var(--color-text); font-family:var(--font-mono, monospace); max-height:60vh; overflow-y:auto;';
+          pre.textContent = s.viewerOcrLoading;
+
+          bodyWrap.appendChild(pre);
           details.appendChild(summary);
-          details.appendChild(pre);
+          details.appendChild(bodyWrap);
           mainContent.appendChild(details);
 
           let loaded = false;
@@ -295,8 +398,54 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
               const res = await fetch(rawHref);
               if (!res.ok) throw new Error(`HTTP ${res.status}`);
               const txt = await res.text();
-              pre.textContent = txt;
-              if (highlight) applyHighlight(pre, highlight);
+
+              const ocrData = parseOcrXml(txt);
+              if (ocrData && ocrData.blocos.length > 0) {
+                pre.textContent = txt;
+                if (highlight) applyHighlight(pre, highlight);
+
+                const toggleWrap = document.createElement('div');
+                toggleWrap.style.cssText = 'display:flex; gap:var(--space-2); margin-bottom:var(--space-3); flex-wrap:wrap;';
+
+                const btnPlain = document.createElement('button');
+                btnPlain.className = 'button';
+                btnPlain.style.fontSize = '0.8rem';
+                btnPlain.textContent = s.viewerOcrPlain;
+
+                const btnStruct = document.createElement('button');
+                btnStruct.className = 'button secondary';
+                btnStruct.style.fontSize = '0.8rem';
+                btnStruct.textContent = s.viewerOcrStructured;
+
+                const structContainer = document.createElement('div');
+                structContainer.style.cssText = 'max-height:60vh; overflow-y:auto;';
+                renderOcrStructured(structContainer, ocrData);
+                structContainer.style.display = 'none';
+
+                function showPlain() {
+                  pre.style.display = '';
+                  structContainer.style.display = 'none';
+                  btnPlain.className = 'button';
+                  btnStruct.className = 'button secondary';
+                }
+                function showStruct() {
+                  pre.style.display = 'none';
+                  structContainer.style.display = '';
+                  btnStruct.className = 'button';
+                  btnPlain.className = 'button secondary';
+                }
+
+                btnPlain.addEventListener('click', showPlain);
+                btnStruct.addEventListener('click', showStruct);
+                toggleWrap.appendChild(btnPlain);
+                toggleWrap.appendChild(btnStruct);
+                bodyWrap.insertBefore(toggleWrap, pre);
+                bodyWrap.appendChild(structContainer);
+                showPlain();
+              } else {
+                pre.textContent = txt;
+                if (highlight) applyHighlight(pre, highlight);
+              }
             } catch (e) {
               pre.textContent = s.viewerOcrError(e.message);
             }
