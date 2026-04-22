@@ -1,22 +1,41 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,110">
-    2123                          HEXAPLORUM QUÆ SUPERSUNT.                          2124
+  <bloco tipo="cabecalho" script="misto" bbox="100,20,900,50">
+    2123 HEXAPLORUM QUÆ SUPERSUNT. 2124
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="20,120,320,860">
-    TO EBRAIKON.
-    8. צבאות אלהי ישראל
-    10. את־דברי־הטוב
-    11 כי אנכי ודעתי את־מחשבותי אשר אנכי חשב עליכם כן־יהודה מחשבות שלום תקוה
-    12 ויקרואתם את־חלמם
-    13 ונשמתם
-    14 ונמצאתי לכם נעשה־שדה ושמתי את־שבתכם וקבצתי אתכם מכל־הגוים ומכל־המקומות אשר הגיתי אתכם מהם והבאתי אתכם אל־המקום אשר־ביתי אתכם שם
-    15 כי א־י־ם אבתם וקים לי יהודה יבאו בגללה
-    16 כי־כן אמר יהוה אל־יהודה והישב אל־כסא דוד וכל־העם היושב בעיר הזאת אחכם אשר לא־יוסר אתם בגללה
-    17 כה אמר יהוה בבאתי הנני משלחם את־חולל את־חרב ואת־הדרור ונתתי אתם כענים השומרים אשר לא־המשלמה מות
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,120,660,860">
-    TO EBRAIKON
+  
+  [!-- SEÇÃO SUPERIOR: TEXTOS ORIGINAIS --]
+  <bloco tipo="cabecalho" script="misto" bbox="150,60,850,90">
+    TO EBPAIKON. TO EBPAIKON ΑΚΥΛΑΣ.
     Ἑλληνικοῖς γράμμασι.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,90,350,500">
+    צבאות אלהי ישראל 8
+    את־דברי השלום 10
+    כי אנכי ידעתי את־המחשבת 11
+    אשר אנכי חשב עליכם נאם־יהוה
+    מחשבת שלום
+    ולא לרעה
+    וקראתם אתי והלכתם 12
+    ונמצאתי לכם 13
+    ושבתי את־שבותכם נאם־יהוה 14
+    וקבצתי אתכם מכל־
+    הגוים ומכל־המקומות אשר הדחתי
+    אתכם נאם־יהוה והשבתי אתכם
+    אל־המקום אשר־הגליתי אתכם משם
+    כי אמרתם הקים לנו יהוה 15
+    נביאים בבבל
+    כי־כה אמר יהוה אל־המלך 16
+    היושב אל־כסא דוד ולאל־כל־העם
+    היושב בעיר הזאת אחיכם אשר לא־
+    יצאו אתכם בגולה
+    כה אמר יהוה צבאות הנני 17
+    משלח בם את־החרב את־הרעב
+    ואת־הדבר ונתתי אותם כתאנים
+    השערים אשר לא־תאכלנה מרע
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="380,90,520,500">
     8.
     10.
     11.
@@ -27,57 +46,65 @@
     16.
     17.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,120,960,860">
-    ΑΚΙΛΑΣ.|
-    8. ✶ Τῶν δυνάμεων ὁ θεὸς Ἰσραὴλ.
+
+  <bloco tipo="texto_principal" script="grego" bbox="550,90,950,500">
+    8. Τῶν δυνάμεων ὁ Θεὸς Ἰσραήλ.
     10.
-    11. ✶ Ὅτι ἐγώ οἶδα τὰς λογισμούς, ὅν ἐγὼ εἰμι (λογίζων).
-    ✶ Καὶ ἐλπῖδα.
-    12. ✶ Καὶ ἐπικαλεσάσθαι με, καὶ πορεύεσθε.
+    11. Ὅτι ἐγὼ οἶδα τὸν λογισμόν, ὃν ἐγὼ εἰμι (λογίζων).
+    Καὶ ἐλπδα.
+    12. Καὶ ἐπικαλεσασθέ με, καὶ πορεύεσθε.
     13.
     14.
     15.
     16.
     17. 2...
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="20,880,960,1140">
-    VERSIO HEBRAICI TEXT.
-    8. Exercitum Deus Israel.
+
+  [!-- SEÇÃO INFERIOR: VERSÕES LATINAS --]
+  <bloco tipo="cabecalho" script="latino" bbox="100,550,900,580">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,580,350,950">
+    8. Exercituum Deus Israel.
     10. Verbum meum bonum.
     11. Nam ego novi cogitationes, quas ego cogito super vos, dixit Dominus: cogitationes pacis.
     Et spem.
     12. Et invocabitis me, et ibitis.
     13. Et invenietis.
-    14. Et inveniar a vobis, ait Dominus, et reduc am captivitatem vestram, et congregabo vos de universis gentibus, et de cunctis locis, ad quæ expuli vos, dicit Dominus: et reverti vos faciam ad locum unde migrare vos feci.
-    15. Quia dixistis, Suscitavit nobis Dominus prophetes in Babelen.
+    14. Et inveniar a vobis, ait Dominus, et reducam captivitatem vestram, et congregabo vos de universis gentibus, et de cunctis locis, ad quæ expuli vos, dicit Dominus: et reverti vos faciam ad locum unde migrare vos feci.
+    15. Quia dixistis, Suscitavit nobis Dominus prophetas in Babylone.
     16. Quia sic dicit Dominus ad regem sedentem super solium David, et ad omnem populum sedentem in urbe hac, fratres vestros, qui non egressi sunt vobiscum in transmigrationem.
-    17. Sic dicit Dominus exercituum: Ecce ego mittens in eos gladium, famem, et pestem, et dabo eos sicut ficus turpes, quæ non comedentur præ malitia.
-    
-    VULGATA LATINA.
+    17. Sic dixit Dominus exercituum: Ecce ego mittens in eos gladium, famem, et pestem, et dabo eos sicut ficus turpes, quæ non comedentur præ malitia.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="380,580,650,950">
     8. Exercituum Deus Israel.
     10. Verbum meum bonum.
-    11. Ego enim scio cogitationes, quas ego cogio super vos, ait Dominus, cogitationes pacis.
+    11. Ego enim scio cogitationes, quas ego cogito super vos, ait Dominus, cogitationes pacis.
     Et patientiam.
     12. Et invocabitis me, et ibitis.
     13. Et invenietis.
-    14. Et inveniar a vobis, ait Dominus, et reduc am captivitatem vestram, et congregabo vos de universis gentibus, et de cunctis locis, ad quæ expuli vos, dicit Dominus: et reverti vos faciam de loco, ad quem transmigravre vos feci.
-    15. Quia dixistis, Suscitavit nobis Dominus propheas in Babylone.
-    16. Quia hæc dicit Dominus ad regem, qui sedet super solium David, et ad omnem populum habitatorum urbis hujus, ad fratres vestros, qui non sunt egressi vobiscum in transmigrationem.
-    17. Hæc dicit Dominus exercituum: Ecce mittam in eos gladium, et famem, et pestem: et ponam eos quasi ficus malas, quæ comedi non possunt, eo quod pessimae sint.
-    
-    AQUILA.
+    14. Et inveniar a vobis, ait Dominus, et reducam captivitatem vestram, et congregabo vos de universis gentibus, et de cunctis locis, ad quæ expuli vos, dicit Dominus: et reverti vos faciam de loco, ad quem transmigrare vos feci.
+    15. Quia dixistis, Suscitavit nobis Dominus prophetas in Babylone.
+    16. Quia hæc dicit Dominus ad regem, qui sedet super solium David, et ad omnem populum habitatorem urbis hujus, ad fratres vestros, qui non sunt egressi vobiscum in transmigrationem.
+    17. Hæc dicit Dominus exercituum: Ecce mittam in eos gladium, et famem, et pestem: et ponam eos quasi ficus malas, quæ comedi non possunt, eo quod pessimæ sint.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="680,580,950,950">
     8. Virtutum Deus Israel.
     10.
     11. Quia ego novi cogitationem, quam ego sum (cogitans).
     Et spem.
-    12. Et invocate me, et iite.
+    12. Et invocate me, et ite.
     13.
     14.
     15.
     16.
     17. 2. Pessimas.
-    
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="600,960,900,990">
     Digitized by Google
   </bloco>
-  <notas>Scripts presentes: hebraico (direção direita-para-esquerda) e grego/latim. Algumas linhas hebraicas parcialmente danificadas; usei [ilegivel] somente quando palavra não pude decifrar — neste caso não foi necessário. BBox estimadas em escala 0-1000.</notas>
 </pagina>

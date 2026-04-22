@@ -1,31 +1,33 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="80,10,920,90">
-    HEXAPLORUM QUÆ SUPERSUNT.
-    TO EBPAIKON.  Ελλητικοίς γράμμασι.  AKYΔAΣ.
+  <bloco tipo="cabecalho" script="latino" bbox="60,40,900,80">
+    687 HEXAPLORUM QUÆ SUPERSUNT. 688
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,100,320,880">
-    TO EBPAIKON.
-    אראה שמות 10
-    יובל
-    שׁנה־חמישּׁה
-    ושׁנת־חמישׁה
-    ואל־יעול 11
-    אנדרונ
-    ויד₪רה 12
-    אוּלה החמישׁ 13
-    אל־ישׂ 14
-    והבל 15
-    ויספר־
-    פדה 19
-    כרימן 25
-    (ט) תו Σαμαρ. Λιτερ. 28
-    הגיל 28
-    הלך
-    ושם התורה 30
-    בעלל
-    ובמל 31
+  <bloco tipo="texto_principal" script="misto" bbox="100,80,350,540">
+    TO ΕΒΡΑΙΚΟΝ.
+    וּקְרָאתֶם דְּרוֹר 10
+    יוֹבֵל
+    לַאֲחֻזָּתוֹ
+    אֶל־מִשְׁפְּחֹתָיו
+    יוֹבֵל הִוא 11
+    תִּהְיֶה־לָּכֶם
+    קֹדֶשׁ תִּהְיֶה 12
+    הִיא לָכֶם קֹדֶשׁ 13
+    אַל־תּוֹנוּ אִישׁ 14
+    אֶת־עֲמִיתֶךָ
+    יוֹבֵל 15
+    יוֹסִיף לְךָ
+    פִּירָה 19
+    כִּי־יִמָּכֵר 25
+    טוֹב שָׁמַר. λυτρωτής.
+    הַגֹּאֵל 28
+    בְּעִבְרִי
+    שְׁנַת תְּמִימָה 30
+    בְּחֶסְבּוֹ
+    וּבַיֹּבֵל 31
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,100,660,880">
+  <bloco tipo="texto_principal" script="grego" bbox="380,80,600,540">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
     10.
     11.
     12.
@@ -37,43 +39,44 @@
     28.
     30.
     31.
-
-    VERSIO HEBRAICI TEXT.
-    10. Ei vocabis libertatem.
-    Iobel.
-    Ad possessionem suam.
-    Ad familiam suam.
-    11. Iobel ipse.
-    Separationes ejus.
-    13. Re agro.
-    13. Iobel istius.
-    14. Ne opprimatis vir.
-    15. Iobel.
-    Vendet tibi
-    19. Fructum suum.
-    25. Cum attenuatus fuerit.
-    Redimens. Semar., redemptor.
-    28. Iobel.
-    In Iobel.
-    30. Annum integrum
-    In Iobel.
-    31. Et in Iobel.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,100,980,880">
-    AKYΔAΣ.
-    10. Παραφώριον.
-
+  <bloco tipo="texto_principal" script="grego" bbox="620,80,850,540">
+    ΑΚΥΛΑΣ.
+    10. Παρακόρυν.
     11.
     12.
     13.
     14.
     15.
     19.
-    25. [ Ἐὰν δὲ ἐκπλησῇ].
+    25. [Ἐὰν δὲ ἐκπέσῃ].
     28.
     30.
     31.
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,550,350,940">
+    VERSIO HEBRAICI TEXT.
+    10. Et vocabitis libertatem.
+    Iobel.
+    Ad possessionem suam.
+    Ad familiam suam.
+    11. Iobel ipse.
+    Separationes ejus.
+    13. De agro.
+    13. Iobel istius.
+    14. Ne opprimatis vir.
+    15. Iobel.
+    Vendet tibi
+    19. Fructum suum.
+    25. Cum attenuatus fuerit.
+    Redimens. Samar., redemptor.
+    28. Iobel.
+    In Iobel.
+    30. Annum integrum
+    In Iobel.
+    31. Et in Iobel.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,550,600,940">
     VULGATA LATINA.
     10. Et vocabitis remissionem.
     Jubilæus.
@@ -90,11 +93,12 @@
     25. Si attenuatus.
     Propinquus.
     28. Jubilæum.
-    Vacet.
+    Vacat.
     30. Anni circulus.
-    In jubileō.
+    In jubilæo.
     31. Et in jubilæo.
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="620,550,850,940">
     AQUILA.
     10. Insanorum.
     11.
@@ -106,10 +110,12 @@
     25. Si exciderit.
     28.
     30.
-    31.
+    31
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="720,930,980,990">
+  <bloco tipo="rodape" script="latino" bbox="550,950,800,980">
     Digitized by Google
   </bloco>
-  <notas>Scripts presentes: hebraico (coluna esquerda superior com numerais e palavras hebraicas), grego (cabeçalho misto) e latino (colunas centrais e direitas). Algumas palavras hebraicas estão parcialmente illegíveis; transcrição feita literal onde possível. Pequena interlineação griega/latinizada "Τό Σαμαρ." retida tal como aparece.</notas>
+  <notas>
+    A página apresenta uma disposição complexa em seis colunas (três superiores com texto hebraico, transliteração grega e versão de Áquila em grego; três inferiores com versões latinas correspondentes). O texto hebraico contém algumas formas que podem ser variantes ou erros de impressão (ex: יוֹסִיף לְךָ no v. 15). A nota "Samar., redemptor" na coluna latina inferior esquerda refere-se à versão Samaritana.
+  </notas>
 </pagina>

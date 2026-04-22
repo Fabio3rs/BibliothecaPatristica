@@ -1,25 +1,23 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,90">
-    1087                                      HEXAPLORUM QUÆ SUPERSUNT.                                       1088
-    TO EBPAIKON.                                     TO EBPAIKON                                      AKYΛAΣ.
-                                                      Ἑλληνικὸς γράμμασι.
+  <bloco tipo="cabecalho" script="misto" bbox="100,40,900,80">
+    1087 HEXAPLORUM QUÆ SUPERSUNT. 1088
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="50,100,330,760">
-    טו אבראיקון. 16
-    לשמוע שימים גּרים
-    לבאת ראושים גדלים וקדילג
-    יז אחי 17
-    חל-סבין
-    יח 18
-    מוחמי שׁה
-    יטב מצא כספ 19
-    כסלמם 20
-    נדמר
-    כגמ 21
-    מעל קדשׁים
-    סה נם 22
+  <bloco tipo="cabecalho" script="grego" bbox="150,80,850,120">
+    TO EBPAIKON. TO EBPAIKON Ἑλληνικοῖς γράμμασι. AKYΛAΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,100,660,760">
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,130,380,500">
+    למה ישבת בין המשפתים 16
+    לשבט שרקים עורים
+    לבלתת ראובן נחלתו קרללב
+    אשר ישב 17
+    חף
+    מרומי שדה 18
+    בצעי כסף 19
+    נגרמו 20
+    נחל קדומים 21
+    ואת לחמו 22
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,130,480,500">
     16.
     17.
     18.
@@ -28,42 +26,66 @@
     21.
     22.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="670,100,950,760">
-    16. Ὅτι μοι χάθησε ἀνταμείβειν τῶν χλήρων.
-    Διαίρειες τοῦ Ῥουθὴ μεγαλει ακριβωσύνη καρδίας.
+  <bloco tipo="texto_principal" script="grego" bbox="600,130,900,500">
+    16. Ἵνατί μοι καθήσαι ἀναμέσον τῶν κλήρων.
+    Διαίρεσις τοῦ Ῥουβὴν μεγάλη ἀκριβολογίαι καρδίας.
     17.
     18.
-    19. Τῆς χώρας.
+    Ὕψη χώρας.
+    19.
     20.
     21.
+    Καυσώνων.
     22.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="50,760,950,980">
-    VERSIO HEBRAICI TEXT.                     VULGATA LATINA.                            AQUILA.
-    
-    16. Ut quid sedisti inter ordines       16. Quare habitas inter duos             16. Ut quid mihi sades inter
-    duos.                                 terminos.                              sortes.
-    Ad audiendum sibilos gregum.          Ut audias sibilos gregum.
-    
-    In divisionibus Ruben, magnae         Divisa contra se Ruben, magno-         Divisiones Ruben magnai acce-
-    scrutationes cordis.                  rum reperta est contentio.             rati sermones cordis.
-    
-    17. Aser sedlit.                       17. Aser habitabat.                     17.
-    Et super fracturas suas.               In portibus.
-    
-    18. Repudiavit.                        18. Obluserunt.                        18.
-    
-    Altitudines agri.                     In regione Merome.                     Excelsa regionis.
-    19. Cupiditatem argenti.               19. Et tamen nihil tulere pre-          19.
-                                          dantes.
-    20. De exaltationibus suis.            20. Manentes in ordine et cursu       20.
-                                          suo.
-    Pugnaverunt.                           Pugnaverunt.
-    
-    21. Devolvit eos.                      21. Traxit cadavera eorum.              21.
-    Torrens Cadumim.                       Torrens Cadumim.                       Æstuum.
-    
-    22. Tunc contusi sunt.                 22. Ceciderunt.                         22.
+  <bloco tipo="cabecalho" script="latino" bbox="100,520,900,560">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
   </bloco>
-  <notas>Scripts presentes: hebraico, latino, grego. Alguns vocábulos hebraicos parcial e parcialmente ilegíveis; mantida literalidade sem normalização.</notas>
+  <bloco tipo="texto_principal" script="latino" bbox="100,570,380,920">
+    16. Ut quid sedisti inter ordines duos.
+    Ad audiendum sibilos gregum.
+    In divisionibus Ruben, magnæ scrutationes cordis.
+    17. Aser sedit.
+    Et super fracturas suas.
+    18. Repudiavit.
+    Altitudines agri.
+    19. Cupiditatem argenti.
+    20. De exaltationibus suis.
+    Pugnaverunt.
+    21. Devolvit eos.
+    Torrens Cadumim.
+    22. Tunc contusi sunt.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,570,650,920">
+    16. Quare habitas inter duos terminos.
+    Ut audias sibilos gregum.
+    Diviso contra se Ruben, magnorum reperta est contentio.
+    17. Aser habitabat.
+    In portubus.
+    18. Obtulerunt.
+    In regione Merome.
+    19. Et tamen nihil tulere prædantes.
+    20. Manentes in ordine et cursu suo.
+    Pugnaverunt.
+    21. Traxit cadavera eorum.
+    Torrens Cadumim.
+    22. Ceciderunt.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,570,900,920">
+    16. Ut quid mihi sodes inter sortes.
+    Divisiones Ruben magni accurati sermones cordis.
+    17.
+    18.
+    Excelsa regionis.
+    19.
+    20.
+    21. Æstuum.
+    22.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="500,950,800,980">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição de página poliglota (Hexapla). A coluna central superior contém apenas numeração de versículos, embora o cabeçalho indique "Hebraico em letras gregas". O texto hebraico foi transcrito literalmente. A grafia latina "prædantes" foi mantida conforme aparência visual (ligatura æ).
+  </notas>
 </pagina>

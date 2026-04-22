@@ -1,41 +1,26 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,90">
-    HEXAPLORUM QUÆ SUPERSUNT.
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    1311 HEXAPLORUM QUÆ SUPERSUNT. 1312
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="30,90,330,850">
-    TO ΕΒΡΑΙΚΟΝ.
-    15.
-    טחצ 15
-    באד
-    נפצצ מעיניך חנה 16
-    16.
-    ברד 18
-    ויעלת-חן 19
-    דידיה ינד
-    נכה 21
-    21.
-    מעונתי
-    עזדחין 22
-    22.
-    ובחלי השאות יחנן
-    באין מסר 23
-    אתלי יושב
-    VERSIO HEBRAICI TEXT.
-    15. De cisterna tua.
-    Putei tui.
-    16. Dispergantur fontes tui foras.
-    18. Benedicta.
-    19. Et ibyx gratiæ.
-    Ubera ejus inebriend te.
-    21. Coram.
-    Orbital ejus.
-    22. Iniquitates suæ.
-    Et in funibus peccati sui tenebitur.
-    23. In non eruditione.
-    Stultitiæ suæ errabit.
+  
+  <bloco tipo="texto_principal" script="misto" bbox="50,70,320,340">
+    TO EBPAIKON.
+    מִבּוֹרְךָ 15
+    מִבּוֹרְךָ
+    יִפְצוּ מַעְיְנֹתֶיךָ חוּצָה 16
+    בְּרִיךְ 18
+    יַעֶלְתּ־חֵן 19
+    הִדֵּי יִרְדּוּ
+    כִּי נֹכַח 21
+    מַעְלָלָיו
+    עַוְלֹתָיו 22
+    וּבְגַדִּי תַּאֲוָה וְחֶסֶר
+    בְּאֵין מוּסָר 23
+    אֱלֹהֵי יִשְׁעֶה
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="340,90,660,850">
-    ΤΟ ΕΒΡΑΙΚΟΝ
+
+  <bloco tipo="texto_principal" script="grego" bbox="350,70,620,340">
+    TO EBPAIKON
     Ἑλληνικοῖς γράμμασι.
     15.
     16.
@@ -44,13 +29,46 @@
     21.
     22.
     23.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="650,70,950,340">
+    ΑΚΥΛΑΣ.
+    15. Ἐκ λάκκου σου.
+    16. Μὴ διασκορπιζέσθωσαν αἱ πηγαί σου ἔξω.
+    18. Εὐλογημένη.
+    19.
+    Τιθοὶ αὐτῆς μεθυσκέτωσάν σε.
+    21.
+    Καμπάς.
+    22. Ἀνομίαι αὐτοῦ.
+    Καὶ ἐν σχοινίοις ἁμαρτίας αὐτοῦ.
+    23.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,350,320,540">
+    VERSIO HEBRAICI TEXT.
+    15. De cisterna tua.
+    Putei tui.
+    16. Dispergantur fontes tui foras.
+    18. Benedicta.
+    19. Et ibyx gratiæ.
+    Ubera ejus inebrient te.
+    21. Coram.
+    Orbitas ejus.
+    22. Iniquitates suæ.
+    Et in funibus peccati sui tenebitur.
+    23. In non eruditione.
+    Stultitiæ suæ errabit.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="350,350,620,540">
     VULGATA LATINA.
     15. De cisterna tua.
     Putei tui.
     16. Deriventur fontes tui foras.
     18. Benedicta.
     19. Et gratissimus hinnulus.
-    Ubera ejus inebriend te.
+    Ubera ejus inebrient te.
     21. Respicit Dominus.
     Gressus.
     22. Iniquitates suæ.
@@ -58,57 +76,93 @@
     23. Quia non habuit disciplinam.
     Stultitiæ suæ decipietur.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="670,90,980,850">
-    ΑΚΥΛΑΣ.
-    15. Ἐκ λάκκου σου.
-    16. Μὴ διασκορπισθῶσαν αἱ πηγαι σου ἔξω.
-    18. Εὐλογημένη.
-    19.
-    Τιτθοι αὐτῆς μεθυσκετώσαν σε.
-    21.
-    Καμπάς.
-    22. Ἀνομία αὐτοῦ.
-    Καὶ ἐν σχοινίοις ἁμαρτίας αὐτοῦ.
-    23.
+
+  <bloco tipo="texto_principal" script="latino" bbox="650,350,950,540">
     AQUILA.
     15. De lacu tuo.
     16. Ne dispergantur fontes tui foras.
     18. Benedicta
     19.
-    Ubera ejus inebricient te.
+    Ubera ejus inebrient te.
+    21.
+    Semitas.
+    22. Iniquitates suæ.
+    Et in funiculis peccati sui.
+    23.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="30,860,980,1260">
-    Notæ et variœ lectiones ad cap. V Proverbiorum.
-    V. 1. Θ. , τῇ φρονῇσει etc. Drusius.
-    V. 2. 'A., Σ., Θ., και γινωσ. Idem. Trium interpolatio voci מצע] ionuenda est, non autem præcedenti מצא, cui Drusius eam copulavit: et vero ipse in nota sua suspicatur illud και γνῶσιν Hebraicum מצא respicere.
-    V. 5. 'A., Σ., Θ., αλλοτρας. Drusius.
-    Ibid. Σ., Θ., και λεϊος etc. Idem. רחק Aquila etiam λεῖος vertit Gen. xxvii, 16.
-    V. 4. 'A., ωσ' αμφιβολ. Drusius.
-    V. 5. 'Αλλος, μετ' οδνης. Idem.
-    V. 6. 'A., αι χαμησ' etc. Idem.
-    V. 7. 'A., και μη αποτοπτε etc. Idem.
-    V. 9. Σ., μηποτε ὅς etc. Drusius. Ed. Rom., ζω-
-    Ibid. 'A., Σ., Θ., και τα ἐτι ουν. Drusius.
-    V. 11. 'A., Σ., Θ., και στεναξεις. Inde Vulgata, genas.
-    Ibid. Σ., εν τῷ εἰκλεινειν. Drusius (').
-    V. 12. Θ., παρασφεν. Drusius. Ilic idem: «Legit forte ינך (in Piel) siquidem ינח (in Kal) est aver-
-    sarii, in Piel vero irritare, provocare. Psalm. x , 3, ינח. Alius, παροξυνει τον Κυριον, acerbavit Do-
-    mimum. Alius, διέσυρε, detrectavit, laceravit probris ac convitiis. Psalm. LXXIV, 40, ינח LXX, παροξυνει,
-    Prov. i, 30, ינח. 'A., διέσυρ. Sym., Th., παρων-.
-    (') Ο, νυν α' καταρτισθησ. Sic reposuimus, pro εν' εσχατων, quod oscilanter edidit Montf; hoc enim respondet praecedenti verbo, מצא. DRACH.
-    PROVERBIORUM CAPVT VI.
-    ΤΟ ΕΒΡΑΙΚΟΝ
-    1
-    לשד 1
-    חחצ לזר יפרט
-    VERSIO HEBRAICI TEXT:
+
+  <bloco tipo="nota" script="latino" bbox="50,550,950,570">
+    Notæ et variæ lectiones ad cap. V Proverbiorum.
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="50,575,480,750">
+    V. 1. Θ., τῇ φρονήσει etc. Drusius.
+    V. 2. Ἀ., Σ., Θ., καὶ γνῶσιν. Idem. Trium interpretatio voci תּוֹדָעַת jungenda est, non autem præcedenti חָכְמִי, cui Drusius eam copulavit : et vero ipse in nota sua suspicatur illud καὶ γνῶσιν Hebraicum תּוֹדָעַת respicere.
+    V. 3. Ἀ., Σ., Θ., ἀλλοτρίας. Drusius.
+    Ibid. Σ., Θ., καὶ λεῖος etc. Idem. פֶּתֶן Aquila etiam λεῖος vertit Gen. xxvii, 16.
+    V. 4. Ἀ., ὡς ἀψίνθιον. Drusius.
+    V. 5. Ἄλλος, μετ᾽ ὀδύνης. Idem.
+    V. 6. Ἀ., αἱ καμπαὶ etc. Idem.
+    V. 7. Ἀ., καὶ μὴ ἀπόστητε etc. Idem.
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="500,575,950,750">
+    V. 9. Σ., μήποτε δῷς etc. Drusius. Ed. Rom., δῷς.
+    Ibid. Ἀ., Σ., Θ., καὶ τὰ ἔτη σου. Drusius.
+    V. 11. Ἀ., Σ., Θ., καὶ στενάξεις. Inde Vulgata, gemas.
+    Ibid. Σ., ἐν τῷ ἐκλείπειν. Drusius (*).
+    V. 12. Θ., παρώξυνεν. Drusius. Ilic idem : « Legit forte יַכְאִיב (in Piel) siquidem יָכָא (in Kal) est aversari, in Piel vero irritare, provocare. Psalm. x, 3, הַכְאִיב יְיָ. Alius, παρόξυνε τὸν Κύριον, acerbavit Dominum. Alius, διέσυρε, detractavit, laceravit probris ac convitiis. Psalm. LXXIV, 10, יְנָאֵץ LXX, παροξυνεῖ, Prov. I, 30, יָאצוּ A., διέσυρον. Sym., Th., παρώ-
+  </bloco>
+
+  <bloco tipo="nota" script="misto" bbox="50,755,950,790">
+    (*) Ο, ἡνίκα ἂν κατατριβῶσι. Sic reposuimus, pro ἐπ᾽ ἐσχάτων, quod oscitanter edidit Montf ; hoc enim respondet præcedenti verbo, יִכָּלֶה. DRACH.
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="350,795,650,815">
+    PROVERBIORUM CAPUT VI.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="50,820,320,860">
+    TO EBPAIKON.
+    לֵךְ 1
+    תִּקְעָה לְרֵעֲךָ
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="350,820,620,860">
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
+    1.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="650,820,950,860">
+    ΑΚΥΛΑΣ.
+    1. Σὸν ταῖρον.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,870,320,930">
+    VERSIO HEBRAICI TEXT.
     1. Sodali tuo.
     Defixisti alieno volas tuas.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="350,870,620,930">
     VULGATA LATINA.
     1. Amico tuo.
     Defixisti apud extraneum manum tuam.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="650,870,950,930">
     AQUILA.
     1. Amicum tuum.
   </bloco>
-  <notas>Scriptos mistos: colunas em hebraico (direita-esquerda), grego e latino. BBOX estimadas em escala 0-1000. Algumas palavras hebraicas parcialmente ilegíveis transcritas conforme visível; marcado texto hebraico com sinais e espaços preservados. Não se normalizou ortografia.</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="550,960,850,990">
+    Digitized by Google
+  </bloco>
+  
+  <notas>
+    Documento apresenta colunas paralelas de texto sagrado (Hexapla) em Hebraico, Grego e Latim.
+    Transcrição de caracteres hebraicos baseada na visualização direta (ex: מִבּוֹרְךָ, יִפְצוּ).
+    Notas críticas contêm abreviações de nomes de tradutores (A., S., Th., Sym.) e referências bíblicas.
+  </notas>
 </pagina>

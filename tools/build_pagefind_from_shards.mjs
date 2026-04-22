@@ -113,37 +113,73 @@ async function main() {
 
       await Promise.all(batch.map(async (pb) => {
         const block = await readJSON(path.join(params.publicDir, pb.file));
+
+        const extractBookName = (label) => {
+          if (!label || typeof label !== 'string') return null;
+          // Remove conteúdo parentético e notas, ex: "Apocalipse (Ap 3, 7-12)" -> "Apocalipse"
+          let s = label.replace(/\s*\([^)]*\)\s*$/g, '');
+          // Remove número de verso/capítulo residual e trims
+          s = s.replace(/[:;,-]+\s*$/g, '').trim();
+          // Em alguns labels compostos com barra ou hífen, ficar com a primeira parte
+          s = s.split(/\/|-|—/)[0].trim();
+          return s || null;
+        };
+
         const pagePromises = block.pages.map(p => {
           const usable = (meta) => {
             if (!meta) return false;
+            // Se for citação (iscit), consideramos útil mesmo com baixa contagem
+            if (meta.iscit) return !!meta.label;
             if (meta.count !== undefined && meta.count < params.minCount) return false;
             return !!meta.label;
           };
 
-          const kwLabels = (p.keyword_ids || [])
+          const kwMetas = (p.keyword_ids || [])
             .map(id => kwMap.get(id))
-            .filter(usable)
-            .map(meta => meta.label);
+            .filter(kw => !!kw && usable(kw));
+
+          const kwLabels = kwMetas.map(meta => meta.label);
+
+          // extraia nomes de livro limpos para melhorar buscas por book name
+          const bookNames = Array.from(new Set(kwMetas
+            .filter(m => m.iscit)
+            .map(m => extractBookName(m.label))
+            .filter(Boolean)));
+
+          // monte título enriquecido com até 3 keywords principais
+          const topKeywords = kwLabels.slice(0, 3);
+          const enrichedTitle = topKeywords.length ? `${vid} p.${p.page} — ${topKeywords.join(' • ')}` : `${vid} p.${p.page}`;
 
           // Conteúdo limpo para o Pagefind (remove qualquer tag HTML residual)
-          const content = `
-            ${p.summary_page || ''}
-            ${kwLabels.join(' ')}
-          `.replace(/<[^>]*>?/gm, '').replace(/\s+/g, ' ').trim();
+          const contentPieces = [p.summary_page || ''];
+          if (kwLabels.length) contentPieces.push(kwLabels.join(' '));
+          if (bookNames.length) contentPieces.push(bookNames.join(' '));
+          const content = contentPieces.join(' ').replace(/<[^>]*>?/gm, '').replace(/\s+/g, ' ').trim();
+
+          const filters = {
+            collection: [vol.collection_id],
+            volume: [vid],
+          };
+          if (bookNames.length) filters.book = bookNames;
+
+          // monte meta objetct condicionalmente para evitar enviar arrays onde
+          // Pagefind espera strings (erro: invalid type: sequence, expected a string)
+          const metaObj = {
+            title: enrichedTitle,
+            volume: vid,
+            page: String(p.page),
+            collection: vol.collection_id,
+          };
+          if (bookNames.length) {
+            // envie nomes de livro como uma string única (mais seguro para o parser)
+            metaObj.books = bookNames.join(' • ');
+          }
 
           return index.addCustomRecord({
             url: `${base}/viewer?doc=${vid}&page=${p.page}`,
             content: content,
-            meta: {
-              title: `${vid} p.${p.page}`,
-              volume: vid,
-              page: String(p.page),
-              collection: vol.collection_id
-            },
-            filters: {
-              collection: [vol.collection_id],
-              volume: [vid],
-            },
+            meta: metaObj,
+            filters: filters,
             language: 'pt',
           });
         });

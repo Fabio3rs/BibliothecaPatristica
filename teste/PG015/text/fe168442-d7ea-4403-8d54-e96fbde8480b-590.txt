@@ -1,27 +1,63 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,90">
-    1175                              HEXAPLORUM QUÆ SUPERSUNT.                              1176
-    TO EBRAIKON.                        TO EBPAIKON                        AKYLAΣ.
-    Ελληνικοὶς γράμμασι.
+  <bloco tipo="cabecalho" script="latino" bbox="50,40,950,80">
+    1175 HEXAPLORUM QUÆ SUPERSUNT. 1176
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="20,100,320,820">
-    [הבראיכם]   ו[ה]ת[ה]
+  <bloco tipo="texto_principal" script="misto" bbox="100,80,900,120">
+    TO EBPAIKON. TO EBPAIKON AKYLAS.
+    Ἑλληνικος γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="80,120,350,510">
+    וְחִתַּת לְאֹיְבֵינוּ
+    לְלֹאֹת 27
+    וְהוּא 29
+    וַיַּעֲבֹר הַמִּצְפָּה
+    אִם־תִּתּן חֵת 30
+    מִחְלְּתִי 31
+    וַיַּעֲבֹר 32
+    לְהִלָּחֶם
+    נִכְנְעוּ 33
+    יְחִידָה 34
+    הִכְרַעְתַּנִי וְאַתָּה הִיא 35
+    בְּעִתִּי
+    אֲשֶׁר־עָשִׂיתָ לִי יְהוָה 36
+    יִעָשֶׂה לּי הַדָּבָר הַזֶּה 37
+    מִקֵּץ 39
+    וְשָׁבָה
+    וַיַּעַשׂ לָהּ
+    יָמִים 40
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="360,120,450,510">
     27.
-    29.   [ו]ה[י]
-    30.   [וא]ת[י]ן
-    31.   [מ]ל[ה]
-    32.   [וע]ד
-    33.   [ו]ב[ע]
-    34.   [יהוה]
-    35.   [זה]רב[ה]   [ו]ר[ע]י[נ]ו   ואר[י]   [ח]י[י]
-    36.   [אד]ו[י]   [אשר]   עשה   לך   יהוה
-    37.   [עשה]ת לי הדבר הזה
-    39.   [מקץ]
-    [חשך]
-    [ה]יום לה
+    29.
+    30.
+    31.
+    32.
+    33.
+    34.
+    35.
+    36.
+    37.
+    39.
     40.
-    VERSIO HEBRAICI TEXT.
-    Et quare non eruistis ?
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="600,120,900,510">
+    29. Εγενήθη.
+    30.
+    31.
+    32.
+    33. Ενετράπησαν.
+    34.
+    35. Κάμψασα εκαμψάς με.
+    36.
+    37.
+    39.
+    40.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="100,520,900,550">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,550,350,950">
+    Et quare non eruistis?
     27. Pugnando.
     29. Et fuit.
     Et transivit Mispeh.
@@ -39,22 +75,10 @@
     Et fecit ei.
     40. Diebus.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,100,660,820">
-    27.
-    29.
-    30.
-    31.
-    32.
-    33.
-    34.
-    35.
-    36.
-    37.
-    39.
-    40.
-    VULGATA LATINA.
-    Quare tanto tempore nihil asper hac repetitione tentastis ?
-    27. Indiciens mihi bella.
+  <bloco tipo="texto_principal" script="latino" bbox="360,550,600,950">
+    Quare tanto tempore nihil super
+    hac repetitione tentastis?
+    27. Indicens mihi bella.
     29. Factus est.
     Maspha quoque.
     30. Si tradideris.
@@ -63,33 +87,21 @@
     Ut pugnaret.
     33. Humiliatique sunt.
     34. Unigenita.
-    35. Decepisti me, et ipsa decepta es.
+    35. Docepuisti me, et ipsa decepisti me.
     36. Concessa tibi ultione.
-    37. Iloc solum mihi præsta quod deprecor.
+    37. Hoc solum mihi præsta quod deprecor.
     39. Expletisque duobus mensibus.
     Reversa est.
     Et fecit ei.
     40. Diebus.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,100,980,820">
-    29. Εγενθη.
-    30.
-    31.
-    32.
-    33. Εντράπησαν.
-    34.
-    35. Κά[μ]ψας ἑκα[μ]βάς με.
-    36.
-    37.
-    39.
-    40.
-    AQUILA.
+  <bloco tipo="texto_principal" script="latino" bbox="600,550,900,950">
     27.
     29. Factus est.
     30.
     31.
     32.
-    33. Confusit sunt.
+    33. Confusi sunt.
     34.
     35. Incurvando incurvare fecisti me.
     36.
@@ -97,9 +109,13 @@
     39.
     40.
   </bloco>
+  <bloco tipo="rodape" script="latino" bbox="550,960,800,990">
+    Digitized by Google
+  </bloco>
   <notas>
-    - Text contains Hebrew words and Latin columns; Hebrew transcription contains several illegible or uncertain graphemes marked with brackets.
-    - Column layout: three vertical columns (Hebrew left, Latin Vulgate center, Aquila/right). Headline spans page.
-    - BBOX coordinates are approximate on 0-1000 scale.
+    Transcrição de página da Hexapla de Orígenes (Hexaplorum quæ supersunt).
+    Scripts: Latino, Grego, Hebraico.
+    Na coluna Vulgata Latina, verso 35, a palavra parece ser "Docepuisti" (possível erro tipográfico para Docuisti).
+    Na coluna hebraica, os números dos versículos aparecem à esquerda do texto (fim da linha em RTL).
   </notas>
 </pagina>

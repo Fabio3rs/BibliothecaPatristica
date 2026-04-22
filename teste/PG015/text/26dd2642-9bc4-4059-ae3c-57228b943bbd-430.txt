@@ -1,76 +1,155 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,90">
-    HEXAPLORUM QUIE SUPERSUNT.
+  <bloco tipo="cabecalho" script="misto" bbox="50,20,950,60">
+    855 HEXAPLORUM QUÆ SUPERSUNT. 856
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,90,980,420">
-    TO EBRAIKON.            TO EBRAIKON          ἈΚΥΛΑΣ.
-    TO EPAIKON.             Ἑλληνικοὶ χαρακτῆρες.
-      9. מִגְדָּל 9         9.                   9. Ἀποστασίας τῶν λεγων.
-      18. משׁה 18         18.                  18. Δευτεροβιμενον.
-      20. שאול 20         20.                  20.
-    
-    בשנה
-      בשנה 22           22.                22. Ἐν ταῖς πόλισι σου.
-      חיי                 22.                Ὅμοῦ.
-    
-    VERSIO HEBRAICI TEXT.    VULGATA LATINA.        AQUILA.
-    9. Belial, dicendo.       9. Impia cogitatio, et dicas.   9. Defectionis, dicendo.
-    18. Duplex.               18. Vacat.                      18. Iteratum.
-    20. Comedes eum.          20. Comedes ea.                 20.
-    
-    In anno.                 Per annos singulos.
-    22. In portis tuis.      22. Intra portás.              22. In portis tuis.
-    Pariter.                 Similiter.                   Pariter.
-    
-    Notae et variae lectiones ad cap. XV Deuteronomii.
-    
-    V. 1. Aquila lectiones versuum 4, 9, 18, 22,     V. 3. 'Ἄλλος, ἀλλογενῆς. Ex Basilensi.
-    praefert Coislin.                               V. 7. 'Ἄλλος, ἀποστραφής. Basil. Est forte variis
-    </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="20,420,980,500">
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,60,300,200">
+    TO EBRAIKON.
+    לְבַלְיַעַל 9
+    בְּשָׁנָה 18
+    אֲכַלְתָּ 20
+    בַּשְּׁעָרֶיךָ 22
+    יָחִיד
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="350,60,550,200">
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
+    9.
+    18.
+    20.
+    22.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,60,950,200">
+    ἈΚΥΛΑΣ.
+    9. Ἀποστασίας τῷ λέγειν.
+    18. Δευτερούμενον.
+    20.
+    22. Ἐν ταῖς πύλαις σου.
+    Ὁμο.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,200,300,350">
+    VERSIO HEBRAICI TEXT.
+    9. Belial, dicendo.
+    18. Duplex.
+    20. Comedes eum.
+    In anno.
+    22. In portis tuis.
+    Pariter.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,200,550,350">
+    VULGATA LATINA.
+    9. Impia cogitatio, et dicas.
+    18. Vacat.
+    20. Comedes ea.
+    Per annos singulos.
+    22. Intra portàs.
+    Similiter.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,200,950,350">
+    AQUILA.
+    9. Defectionis, dicendo.
+    18. Iteratum.
+    20.
+    22. In portis tuis.
+    Pariter.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="50,360,950,450">
+    Notæ et variæ lectiones ad cap. XV Deuteronomii.
+    V. 1. Aquilæ lectiones versuum 1, 9, 18, 22, præfert Coislin.
+    V. 3. Ἄλλος, ἀλλογενῆ. Ex Basiliensi.
+    V. 7. Ἄλλος, ἀποστρέφεις. Basil. Est forte varis
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="300,460,700,490">
     CAPUT XVI DEUTERONOMII.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,500,980,1150">
-    TO EBRAIKON.           TO EBRAIKON           AKYLAS.
-    TO EPAIKON.            Ἑλληνικοι- γράμματα.
-    
-    פרק 1                 1.                   1.  Θεσθ.
-    ודברתי אליך בעבר מי רגעים ... [ilegivel]
-    
-    פרק 3                 5.                   3. Ζυματῶν.
-    עני                   5.                   Κακουχιας.
-    פרק 8                 8.                   'Εν ταράξης.
-    פרק 10                10.                  8. Επίσχεσις.
-    פרק 16                16.                  40. Ἐπαισον ἔκουσιων.
-    פרק 17                17.                  16. Καθῶς.
-    פרק 18                18.                  17. Κατὰ δόσιν.
-                                              18. 'Ἀκρίβαστός Coisl. ἰσθίσασ-
-                                              τίκ.
-    
-    VERSIO HEBRAICI TEXT.    VULGATA LATINA.         AQUILA.
-    1. Pesah.                 1. Phase.               1. Phase.
-    Exduxit te Dominus Deus tuus de  Exduxit te Dominus Deus tuus  4. Phase.
-    Ægypto nocte.            de Ægypto nocte.
-    
-    3. Fermentatum.          3. Panem fermentatum.    3. Fermentatum.
-    Afflictionis.            Afflictionis.           Afflictionis.
-    In festinatione.         In pavore.              In pavore.
-    8. Retentio.             8. Collecta.            8. Retentio.
-    10. Sufficientiam spontaneitatis.10. Oblationem spontaneam. 10. Elevationem spontaneorum.
-    16. Vicibus.             16. Vicibus.             16. Descensibus, seu vicibus.
-    17. Secundum dotum.      17. Quod habuerit.       17. Secundum donum.
-    18. Ex praefecto.         18. Magistros.          18. Legislatores. Coisl., educa-
-                                                    res.
-    
-    Notae et variae lectiones ad cap. XVI Deuteronomii.
-    
-    V. 1. 'Ἄλλος, ἐγγυαὶ σε, etc. Sic quaedam  Aquilae lectiones versuum 4, 5, 8, 10, 16, 17
-    exemplaria. Videntur autem esse versio reliquorum  habet cod. Coislinianus.
-    interpretorum. Non enim alio modo Hebraica verti   V. 18. 'Ἀ...ακριβαστεω. Sic Basil. Omnia derivata
-    posse videntur.                                     ab ἀκριβῶς, vel ἀκριβάσθη, Aquilae praeim in usu
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,490,300,650">
+    TO EBPAIKON.
+    פֶּסַח 1
+    וְהוֹצִיאֲךָ יְהוָה אֱלֹהֶיךָ מִמִּצְרַיִם לַיְלָה
+    חָמֵץ 3
+    עֳנִי
+    בְּחֻפְזָה
+    חָג 8
+    אֹסֶף יָדֶךָ 10
+    כְּמִצְוָה 16
+    כַּחֹדֶשׁ 17
+    הַשְּׁפָטִים 18
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="20,1150,980,1260">
+  <bloco tipo="texto_principal" script="grego" bbox="350,490,550,650">
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
+    1.
+    3.
+    8.
+    10
+    16
+    17.
+    18.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,490,950,650">
+    ΑΚΥΛΑΣ.
+    1. Φεσέ.
+    3. Ζυμωτόν.
+    Κακουχίας.
+    Ἐν θαμβήσει.
+    8. Ἐπίσχεσις.
+    10. Ἔπαρσιν ἑκουσίαν.
+    16. Καθόδους.
+    17. Κατὰ θέσιν.
+    18. Ἀκριβαστάς Coisl. ἐκθεσ-
+    πτάς.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,650,300,800">
+    VERSIO HEBRAICI TEXT.
+    1. Pesah.
+    Eduxit te Dominus Deus tuus de Ægypto nocte.
+    3. Fermentatum.
+    Afflictionis.
+    In festinatione.
+    8. Retentio.
+    10. Sufficientiam spontaneitatis.
+    16. Vicibus.
+    17. Secundum donum.
+    18. Et præfectos.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,650,550,800">
+    VULGATA LATINA.
+    1. Phase.
+    Eduxit te Dominus Deus tuus de Ægypto nocte.
+    3. Panem fermentatum.
+    Afflictionis.
+    In pavore.
+    8. Collecta.
+    10. Oblationem spontaneam.
+    16. Vicibus.
+    17. Quod habuerit.
+    18. Magistros.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,650,950,800">
+    AQUILA.
+    1. Phese.
+    3. Fermentatum.
+    Afflictionis.
+    In pavore.
+    8. Retentio.
+    10. Elevationem spontaneorum.
+    16. Descensibus, seu vicibus.
+    17. Secundum donum.
+    18. Legislatores. Coisl., educto-
+    res.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="50,810,950,920">
+    Notæ et variæ lectiones ad cap. XVI Deuteronomii.
+    V. 1. Ἄλλος, ἐξήγαγέ σε, etc. Sic quædam exemplaria. Videtur autem esse versio reliquorum interpretum. Non enim alio modo Hebraica verti posse videntur.
+    Aquilæ lectiones versuum 1, 3, 8, 10, 16, 17 habet cod. Coislinianus.
+    V. 18. Ἄ., ἀκριβαστάς. Sic Basil. Omnia derivata ab ἀκριβάζω, vel ἀκριβάζω, Aquilæ passim in usu
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="500,950,800,990">
     Digitized by Google
   </bloco>
-  <notas>Pagina contém textos em latino, grego e hebraico; algumas linhas hebraicas estão parcialmente ilegíveis e marcam-se com [ilegivel] por palavra conforme necessário. As colunas foram transcritas esquerda para direita; abreviações e sinais editoriais foram mantidos literalemente onde visíveis.</notas>
+  <notas>
+    Transcrição de página poliglota (Hexapla) contendo Hebraico, Grego (transliteração e tradução de Aquila) e Latim (Vulgata e outras versões).
+    Textos em Hebraico e Grego contêm sinais diacríticos (niqqud, acentos gregos).
+    Abreviações latinas como 'quæ', 'variæ', 'præfert' mantidas.
+    Palavras divididas no final da linha (ex: ἐκθεσ- / πτάς, educto- / res) transcritas conforme aparecem.
+  </notas>
 </pagina>

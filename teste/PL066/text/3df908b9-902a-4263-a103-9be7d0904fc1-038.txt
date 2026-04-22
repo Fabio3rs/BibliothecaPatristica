@@ -1,80 +1,157 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,70">
-    63    AGAPETI PAPÆ I    64
+63    AGAPETI PAPÆ I    64
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="35,80,490,910">
-Δανιὴλ πρεσβύτερος, καὶ ἡγούμενος μονῆς [ilegivel] ὑπέγραφα.
-Ἰωάννης πρεσβύτερος, καὶ ἡγούμενος μονῆς Ἀναστασίου ὑπέγραφα.
-Ἀνθήμιος πρεσβύτερος, καὶ ἡγούμενος μονῆς Νείωνος ὑπέγραφα.
-Ἰωάννης πρεσβύτερος, καὶ ἡγούμενος μονῆς τῆς ἐπικλήσεως τῶν Χριστῶν ὑπέγραφα.
-Ἰωάννης πρεσβύτερος, καὶ ἡγούμενος μονῆς Μάρας ὑπέγραφα.
-Φωκᾶς πρεσβύτερος, καὶ ἡγούμενος μονῆς [ilegivel] ὑπέγραφα.
-Ζώσιμος πρεσβύτερος, καὶ ἡγούμενος μονῆς Εὐτυχίου τοῦ Λυκάνων ὑπέγραφα.
-Τιμοθέος πρεσβύτερος, καὶ ἡγούμενος μονῆς Ἀστερίου ὑπέγραφα.
-Πολυχρόνιος πρεσβύτερος, καὶ ἡγούμενος μονῆς [ilegivel] ὑπέγραφα.
-Σεβεριανὸς πρεσβύτερος ὑπέγραψεν ὑπὲρ αὐτοῦ, καὶ πεπιστευμένον παρ' αὐτοῦ [ilegivel].
-Στρατονίκιος πρεσβύτερος, καὶ ἡγούμενος μονῆς τοῦ ἁγίου Δουμητίου ὑπέγραφα.
-Ἀνδρέας πρεσβύτερος, καὶ ἀρχιμανδρίτης μονῆς τῶν Ῥωμαίων ὑπέγραφα.
-Μαρτύριος πρεσβύτερος, καὶ ἡγούμενος μονῆς Πέτρου ἢ Βαλεντίνου πλησίον τῶν Ἀποστόλων ὑπέγραφα.
-Ἀνδρέας πρεσβύτερος, καὶ ἡγούμενος μονῆς ἐν τῇ οἰκίᾳ τῆς Θεοτόκου πλησίον τοῦ Λουκᾶ ὑπέγραφα.
-Μᾶρκος πρεσβύτερος, καὶ ἡγούμενος μονῆς Κυρικίου ὑπέγραφα.
-Ἰάκωβος πρεσβύτερος, καὶ ἀρχιμανδρίτης μονῆς Ἀβίβιλ Συρίων ὑπέγραφα.
-Ἀνίκιος πρεσβύτερος, καὶ ἡγούμενος μονῆς [ilegivel] ὑπέγραφα.
-Ἰωσήφ πρεσβύτερος, καὶ ἡγούμενος μονῆς τῆς Θεοτόκου ἐν λιθοστρώτῳ ὑπέγραφα.
-Παῦλος πρεσβύτερος, καὶ ἡγούμενος, ὑπέγραφα.
-Ἀναστάσιος πρεσβύτερος, καὶ δευτεράρης μονῆς τοῦ ἁγίου Φιλίππου ἐν Βρεφοτροφίῳ, ὑπέγραφα διὰ τὸ μὴ παρόντος τοῦ ἡγουμένου.
-Γρηγόριος πρεσβύτερος, καὶ ἀρχιμανδρίτης μονῆς [ilegivel] ὑπέγραφα.
-Κυριακός πρεσβύτερος, καὶ ἀρχιμανδρίτης μονῆς Συρίων ὑπέγραφα.
-Ζώσιμος πρεσβύτερος, καὶ ἀρχιμανδρίτης μονῆς Μαξιμινίων ὑπέγραφα.
-Ἐλπίδιος πρεσβύτερος, καὶ ἀρχιμανδρίτης μονῆς Βασιλείου ὑπέγραφα.
-Πολυχρόνιος πρεσβύτερος, καὶ ἀρχιμανδρίτης μονῆς Κρητ[ικῶν] ὑπέγραφα.
-Πάυλος πρεσβύτερος, καὶ ἡγούμενος μονῆς Ἁγίας Ἑρμιονίας ὑπέγραφα.
+
+  <bloco tipo="texto_principal" script="grego" bbox="30,80,490,900">
+Δανιὴλ τοῦ ἐν τῷ στύλῳ, καὶ τοῦ ἁγίου Ἰωάννου ἐν τῷ
+μιχρῷ βάθει, καὶ τοῦ ἁγίον ᾿Αποστόλου ᾿Ανδρέον πλησίον
+τοῦ στύλου ἀξιώσας ὑπέγραψα.
+
+Ἰωάννης πρεσβύτερος, καὶ ἡγούμενος μονῆς ᾿Αναστα-
+σίου ἀξιώσας ὑπέγραψα.
+
+᾿Ανθέμιος πρεσβύτερος, καὶ ἡγούμενος μονῆς Νέωνος
+ἀξιώσας ὑπέγραψα.
+
+Ἰωάννης πρεσβύτερος, καὶ ἡγούμενος μονῆς τῆς ἐπίκλην
+τῶν Χριστῶν ἀξιώσας ὑπέγραψα.
+
+Ἰωάννης πρεσβύτερος, καὶ ἡγούμενος μονῆς Μαρᾶ
+πλησίον τῆς 'Δετίου κιστέρνης, ὑπέγραψα.
+
+Φωχᾶς πρεσβύτερος, καὶ ἡγούμενος μονῆς τῆς ἐπίχλην
+τῶν Ἰωνᾶ πλησίον τοῦ δευτέρου, ὑπέγραψα.
+
+Ζώσιμος πρεσβύτερος, καὶ ἡγούμενος μονῆς Εὐ-
+τυχίον τοῦ Λυχαόνων πλησίον τῶν Ματρώνης ὑπέ-
+γραψα.
+
+Τιμόθεος πρεσβύτερος, καὶ ἡγούμενος μονῆς τῶν
+᾿Αστερίον ἀξιώσας ὑπέγραψα.
+
+Πολυχρόνιος πρεσβύτερος, καὶ ἡγούμενος μονῆς τοῦ
+Αἰθρείον, ἀξιώσας ὑπέγραψα.
+
+Σεθηριανὸς πρεσβύτερος ὑπέγραψα ὑπὲρ αὐτοῦ, ἐπιτρα-
+πεὶς παρ' αὐτοῦ.
+
+᾿ Σοτατόνιχος πρεσβύτερος, καὶ ἡγούμενος μονῆς τοῦ
+ἁγίου Δομετίου ἀξιώσας ὑπέγραψα.
+
+᾿Ανδορέας ἐλέῳ Θεοῦ πρεσβύτερος, καὶ ἀρχιμανδρίτης
+μονῆς τῶν Ρωμαίων ἀξιώσας ὑπέγραψα.
+
+Μαιτύριος πρεσβύτερος, καὶ ἡγούμενος μονῆς Πέτρου
+ἤτοι Οὐάλεντος καὶ Δαυδάτου πλησίον τῶν ἁγίων "Apo-
+στόλων ἀξιώσας ὑπέγραψα.
+
+Ἀνδρέας πρεσβύτερος, καὶ ἡγούμενος μονῆς διακειμένης
+ἂν τῷ σεθασυΐ.» οἴμῳ τῆς ἁγίας θεοτόχου πλησίον τοῦ
+ἀγίον Λουκᾶ ἀξιώσας ὑπέγραψα.
+
+Μάρκος πρεσβύτερος, καὶ ἡγούμενος μονῆς τοῦ ἁγίου
+Kvoivov ἀξιώσας ὑπέγραψα.
+
+Ἰάχωδος πρεσβύτερος, καὶ ἀρχιμανδρίτης μονῆς
+Αὔϊθον Σὺρος Συριστὶ ὑπέγεαψα.
+
+'Arrtxóg πρεσθδύτερος, καὶ ἡγούμενος μονῆς; τῶν Εὐ-
+κρατάδων ἀξιώσας ὑπέγραψα
+
+Ἰωσήφ πρεσβύτερος, καὶ ἡγούμενος μονῆς τῆς ἁγίας
+θεοτόκου ἐν τῷ λιθοστρώτῳ ὑπέγραψα.
+
+Παῦλος πρεσύύτερος;, καὶ ἡγούμενος ἀξιώσας ὑπέ-
+γραψα.
+
+᾿Αναστάσιος πρεσβύτερος, καὶ δευτεράριος μονῆς τοῦ
+ἁγίου Φιλίππου τοῦ ἐν τῷ βρεγοτρὶφεί ὑπέγραψα διὰ τὸ
+μὴ παρεῖναι τὸν ἡγούμενον.
+
+Γεώργιος πρεσδύτερος, καὶ ἀρχιμανδρίτης μονῆς τῶν [ilegivel] ἀξιώσας ὑπέγραψα.
+
+Βυριαχὸς πρεσδ'τιρος, καὶ ἀρχιμανδρίτης μονῆς τῶν
+Σύρων ἀξιώσας ὑπέγραψα.
+
+Ζώσιμος πρεσδ'τιρος, xal ἀρχιμανδρίτης μονῆς τῶν
+Μαξιμίνου ἀξιώσας ὑπέγραψα.
+
+Ἐλπίδιος πρεσβύτερος, xai ἀρχιμανδρίτης μονῆς τῶν
+Βασιανοῦ ἀξιώσας ὑπέγραψα.
+
+Πολυχρόνιος πρεσδύτερος, xai ἀρχιμανδρίτη; μονῆς
+τῶν Κρητιχῶν ἀξιώσας ὑπέγραψα.
+
+Παῦλος πρεσδύτερος, xal ἡγούμενος μονῆς τῆς ἁγίας
+Ἕρμιόνης ἀξιώσας ὑπέγραψα.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,150,515,180">
-A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,320,515,350">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,520,515,550">
-C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,690,515,720">
-D
-  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="485,150,515,180">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,320,515,350">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,520,515,550">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,690,515,720">D</bloco>
+
   <bloco tipo="texto_principal" script="latino" bbox="505,80,965,910">
-Joannes presbyter et prior monasterii Anastasi(i) prope Agogum, rogans subscripsi.
+in parvo profundo, et sancti Andreae apostoli prope
+stylum, rogans subscripsi.
+
+Joannes presbyter et prior monasterii Anastasii prope Agogum, rogans subscripsi.
 Anthemius [Eleutherius] presbyter et prior monasterii Neonis, rogans subscripsi.
-Joannes presbyter et prior monasterii quod appellatur Charissii, rogans subscripsi.
+Joannes presbyter et prior monasterii quod appellatur Charisii, rogans subscripsi.
 Joannes presbyter et prior monasterii Mara prope Aetii cisternam a, rogans subscripsi.
 Phocas presbyter et prior monasterii quod dicitur Ionea juxta Secundum, rogans subscripsi.
-Zosimus [Cosmus] presbyter et prior monasterii Eutychi Lycaonum, prope villam Matronae, subscripsi.
-Timotheus presbyter et prior monasterii Asterii, rogans subscripsi.
-Polychronius presbyter et prior monasterii Æthrii, rogans subscripsi.
-Severianus presbyter et prior subscripsi pro ipso, cum commissum illi mihi ab ipso.
-Stratonicus presbyter et prior monasterii Sancti Dumetii, rogans subscripsi.
-Andreas, Dei miseratione, presbyter et archimandrita monasterii Romanorum, rogans subscripsi.
-Martyrius presbyter et prior monasterii Petri sive Valentini et Daudati prope SS. Apostolos, rogans subscripsi.
-Andreas presbyter et prior monasterii jacentis in venerabili domo sanctae Dei Genitricis prope Sanctum Lucan, rogans subscripsi.
-Marcus presbyter et prior monasterii Sancti Cyrici, rogans subscripsi.
-Jacobus presbyter et archimandrita monasterii Abibil Syrus (Syriace), subscripsi.
-Anicius presbyter et prior monasterii [ilegivel], rogans subscripsi.
-Alicius presbyter et prior monasterii Euceratadum, rogans subscripsi.
+Zosimus [Cosmus] presbyter et prior monasterii Eutyehii Lycaonum, prope villam Matronae, subsup-
+scripsi.
+
+Timotheus presbyter et prior monasterii Asterii,
+rogans subscripsi.
+Polychronius presbyter et prior monasterii Æthrii,
+rogans subscripsi.
+Severianus presbyter et prior subscripsi pro ipso,
+cum commissum illi mihi ab ipso.
+Stratonicus presbyter et prior monasterii Sancti
+Dometii, rogans subscripsi.
+Andreas Dei miseratione presbyter et archiman-
+drita monasterii Romanorum, rogans subscripsi.
+Martyrius presbyter et prior monasterii Petri sive
+Valentini [Valentis] et Daudati prope SS. Apostolos,
+rogans subscripsi.
+Andreas presbyter et prior monasterii jacentis in
+venerabili domo sanctae Dei Genitricis prope Sanctum
+Lucam, rogans subscripsi.
+Marcus presbyter et prior monasterii Sancti Cyrici,
+rogans subscripsi.
+Jacobus presbyter et archimandrita monasterii
+Abibi Syrus, Syriace [Syriaci] subscripsi.
+Atticus presbyter et prior monasterii Eucratadarum, rogans subscripsi.
 Josephus presbyter et prior monasterii Dei Genitricis in Lithostroto, subscripsi.
 Paulus presbyter et prior, rogans subscripsi.
-Anastasius presbyter et secundarius monasterii Sancti Philippi in Brephotrophio, subscripsi eo quod non adesset prior.
-Gregorius presbyter et archimandrita monasterii Cyri, rogans subscripsi.
-Dominicus presbyter et archimandrita monasterii Syriorum, rogans subscripsi.
-Zosimus [Cosmus] presbyter et archimandrita monasterii Maximini, rogans subscripsi.
-Elpidius presbyter et archimandrita monasterii Basilii, rogans subscripsi.
-Polychronius presbyter et archimandrita monasterii Creten(sium) (Criticorum), rogans subscripsi.
-P[?]ulus presbyter et prior monasterii Sanctae Ermioniae, rogans subscripsi.
+Anastasius presbyter et secundarius monasterij
+Sancti Philippi in Brephotrophio, subscripsi eo quod
+non adesset prior.
+
+Gregorius presbyter et archimandrita monasterii
+Cyr i, rogans subscripsi.
+Dominicus presbyter et archimandrita monasterii
+Syriorum, rogans subscripsi.
+Zosimus [Cosmus] presbyter et archimandrita monaste-
+rii Maximini, rogans subscripsi.
+Elpidius presbyter et archimandrita monasterii Ba-
+sini, rogans subscripsi.
+Polychronius presbyter et archimandrita monaste-
+rii Creten(sium) [Criticorum], rogans subscripsi.
+P[?]-ulus presbyter et prior monasterii Sanctae Er-
+mionicia, rogans subscripsi.
   </bloco>
+
   <bloco tipo="rodape" script="latino" bbox="35,910,490,975">
 a Maria prope Actiam cisternam : al. aream cis.
   </bloco>
+
   <bloco tipo="outro" script="latino" bbox="420,970,760,995">
 Digitized by Google
   </bloco>
-  <notas>Coluna esquerda em grego (script="grego"), coluna direita em latim (script="latino"). Letras marginais A–D ao centro (nota_marginal). Muitas formas pròprias e nomes de mosteiros estão parcialmente degradados/ilegíveis — marquei palavras incertas com [ilegivel]. A legenda "Digitized by Google" é adição digital e foi marcada como bloco "outro".</notas>
+
+  <notas>Coluna esquerda em grego; coluna direita em latim. Letras marginais A–D isoladas em blocos próprios ao centro do rasgo (nota_marginal). A palavra/trecho terminal do latim (P[?]-ulus ... Ermionicia) segue a leitura mais próxima disponível na imagem/OCR, marcada com [ilegivel] quando improvável.</notas>
 </pagina>

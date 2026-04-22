@@ -1,35 +1,45 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="80,20,920,120">
-    HEXAPLORUM QUÆ SUPERSUNT.
-    PROVERBIORUM CAPUT XIII.
-    TO EBPAIKON.         TO EBPAIKON         ΑΚΥΛΑΣ.
-    Ελληνικοὶς γράμμασι.
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,60">
+    1367 HEXAPLORUM QUÆ SUPERSUNT. PROVERBIORUM CAPUT XIII. 1368
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="20,130,300,900">
-    טו הנה נא 1
-    ת - מכ─יה - לי 3
-    ־ ממׂה ואין נפש על 4
-    חדין
-    וחכמין 5
-    צדקה תציל חס - רך 6
-    ומשך הילף תשאח
-    מחורשׁים 7
-    כבד 8
-    לא - ישמע גנבה
-    10 בחזן יוקו ממה
-    ואת - רעיכם חכמה
-    מהבל 11
-    הבבל 13
-    ימלל
-    לספר מבקשי בת 14
-    16 אלת
-    מלאך רעע 17
+  
+  <bloco tipo="texto_principal" script="grego" bbox="150,70,300,90">
+    TO ΕΒΡΑΙΚΟΝ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="400,70,600,90">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικος γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,70,850,90">
+    ΑΚΥΛΑΣ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,100,300,450">
+    1 בן חכם
+    3 מוחת-לו
+    4 מתאוה ואין נפשו עגל
+    חדש
+    5 יתפאר
+    6 צדקה תצר תם-דרך
+    ורשעה תהפך חטאת
+    7 מתחרש
+    8 כפר
+    לא-שמע נגרה
+    10 בזדון יתן מצה
+    ואת-נועצים חכמה
+    11 מהבל
+    13 יהכל
+    יגדל
+    14 למד מכושיו חת
+    16 אולת
+    17 מלאך רשע
     וציר אמונים מרפא
-    ראש וקלון פרץ בוסר 18
+    18 ריש וקלון פורע מוסר
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,130,620,900">
+
+  <bloco tipo="texto_principal" script="grego" bbox="400,100,500,450">
     1.
-    3.
+    5.
     4.
     5.
     6.
@@ -43,85 +53,92 @@
     17.
     18.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="640,130,980,900">
+
+  <bloco tipo="texto_principal" script="grego" bbox="650,100,900,450">
     1. Υἱὸς σοφός.
-    3.
+    5.
     4.
     5.
     6.
     7.
-    8. Ἐξέλασμα.
-    . . . ἐπιτιμησιν.
-    10. Ἐν ὑπερηφανίᾳ δίωσει μάχην.
+    8. Ἐξίλασμα.
+    ... ἐπιτίμησιν.
+    10. Ἐν ὑπερηφανίᾳ δώσει μάχην.
     11. Ἀπὸ ματαιότητος
-    13
-    Εἰρηνεύσει.
+    13 Εἰρηνεύσει.
     14.
     16. Ἀφροσύνην.
     17. Ἄγγελος ἀσεβής.
     Ὅμηρος πίστεως ἴασις.
     18.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="20,920,980,980">
-    VERSIO HEBRAICI TEXT.     VULGATA LATINA.     AQUILA.
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,470,300,490">
+    VERSIO HEBRAICI TEXT.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,980,1000,1900">
+  <bloco tipo="texto_principal" script="latino" bbox="400,470,600,490">
+    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,470,850,490">
+    AQUILA.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,500,350,900">
     1. Filius sapiens.
     3. Contritio ei.
-    4. Concupiscens, et non anima ipsius pigri.
-    Impinquabitur.
+    4. Concupiscens, et non anima
+    ipsius pigri.
+    Impinguabitur.
     5. Et pudore afficiet.
-    
-    6. Justitia custodiet perfectum via.
+    6. Justitia custodiet perfectum
+    via.
     Et impietas pervertet peccatum.
-    
     7. Depauperans se.
     8. Redemptio.
     Non audivit increpationem.
-    
     10. In superbia dabit litem.
     Et cum consultis sapientia.
-    
     11. A vanitate.
     13. Corrumpetur.
-    
     Compensabitur.
-    14. Ad recedendum a laqueis mortis.
-    
+    14. Ad recedendum a laqueis
+    mortis.
     16. Stultitiam.
     17. Nuntius impius.
     Et legatus veritatum sanitas.
-    
-    18. Paupertas et ignominiia desererut eruditionem.
-    
+    18. Paupertas et ignominia de-
+    serenti eruditionem.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="400,500,650,900">
     1. Filius sapiens.
     3. Sentiet mala.
     4. Vult et non vult piger.
-    Impinquabitur.
+    Impinguabitur.
     5. Et confundetur.
-    
-    6. Justitia custodit innocentiis viam.
-    Impietas autem peccatorem supplanat.
-    
+    6. Justitia custodit innocentis
+    viam.
+    Impietas autem peccatorem sup-
+    plantat.
     7. Est quasi pauper.
     8. Redemptio.
     Increpationem non sustinet.
-    
-    10. Inter superbos semper jurigia sunt.
-    Qui autem agunt omnia cum consilio, reguntur sapientia.
-    
+    10. Inter superbos semper jur-
+    gia sunt.
+    Qui autem agunt omnia cum
+    consilio, reguntur sapientia.
     11. Festinata.
     13. Ipse se in futurum obligat.
-    
     In pace versabitur.
     14. Ut declinet a ruina mortis.
-    
     16. Stultitiam.
     17. Nuntius impii.
     Legatus autem fidelis, sanitas.
-    
-    18. Egestas et ignominia ei qui deseruit disciplinam.
-    
+    18. Egestas et ignominia ei qui
+    deserit disciplinam.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="700,500,900,900">
     1. Filius sapiens.
     3.
     4.
@@ -129,20 +146,18 @@
     6.
     7.
     8. Expiatio.
-    . . . increpationem.
-    
+    ... increpationem.
     10. In superbia dabit pugnam.
-    
     11. A vanitate.
-    13.
-    
-    Pace fruitur.
+    13. Pace fruitur.
     14.
-    
     16. Stultitiam.
     17. Nuntius impius.
     Obses fidei, medela
     18.
   </bloco>
-  <notas>Transcrição manteve separação por colunas: coluna hebraica (esquerda superior), numeração latina central e tradução grega direita. Usei [ilegivel] não foi necessário. Alguns sinais tipográficos e pontuações mantidos conforme original.</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="600,950,850,980">
+    Digitized by Google
+  </bloco>
 </pagina>

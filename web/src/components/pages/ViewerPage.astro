@@ -24,6 +24,20 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       ...uiStrings,
       viewerVolume: (id, title) => `${uiStrings.viewerVolume.replace ? uiStrings.viewerVolume : ''}${id}${title ? ' — ' + title : ''}`,
       viewerPage: isEn ? (n) => `Page ${n}` : (n) => `Página ${n}`,
+      viewerPageOfTotal: isEn ? (n, t) => `Page ${n} of ${t}` : (n, t) => `Página ${n} de ${t}`,
+      viewerFirst: isEn ? 'First' : 'Primeira',
+      viewerLast: isEn ? 'Last' : 'Última',
+      viewerGo: isEn ? 'Go' : 'Ir',
+      viewerPageInputLabel: isEn ? 'Page number' : 'Número da página',
+      viewerFocusMode: isEn ? 'Focus mode' : 'Modo foco',
+      viewerNormalMode: isEn ? 'Normal mode' : 'Modo normal',
+      viewerDecreaseFont: isEn ? 'A-' : 'A-',
+      viewerIncreaseFont: isEn ? 'A+' : 'A+',
+      viewerContinueReading: isEn ? 'Continue reading' : 'Continuar lendo',
+      viewerProgress: isEn ? 'Progress' : 'Progresso',
+      viewerSearchInVolume: isEn ? 'Search in this volume…' : 'Buscar neste volume…',
+      viewerIndex: isEn ? 'Index' : 'Índice',
+      viewerNoIdentity: isEn ? 'Volume information not available' : 'Informação do volume não disponível',
       viewerRelatedSim: isEn ? (sim) => `similarity ${sim.toFixed(2)}` : (sim) => `similaridade ${sim.toFixed(2)}`,
       viewerRelatedTitle: isEn
         ? (doc, title, page) => `${doc}${title ? ' — ' + title : ''} · p. ${page}`
@@ -94,7 +108,55 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       // Re-aplica o renderMarkdown sobre o texto original armazenado em data-raw,
       // preservando a formatação e adicionando os <mark>.
       const raw = el.dataset.raw || txt;
-      el.innerHTML = renderMarkdown(raw).replace(re, (_, m) => `<mark>${escapeHtml(m)}</mark>`);
+      // Se for XML bruto (classe viewer-ocr-xml), aplicar highlight seguro sobre os nós de texto
+      if (el.classList && el.classList.contains('viewer-ocr-xml')) {
+        // remove marcas anteriores
+        Array.from(el.querySelectorAll('mark')).forEach((m) => {
+          m.replaceWith(document.createTextNode(m.textContent));
+        });
+
+        // percorre nós de texto e envolve ocorrências em <mark>
+        const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
+        const textNodes = [];
+        while (walker.nextNode()) textNodes.push(walker.currentNode);
+        textNodes.forEach((node) => {
+          const parent = node.parentNode;
+          if (!parent) return;
+          const text = node.nodeValue || '';
+          const matches = text.match(re);
+          if (!matches) return;
+          const frag = document.createDocumentFragment();
+          let lastIndex = 0;
+          text.replace(re, (match, offset) => {
+            const before = text.slice(lastIndex, offset);
+            if (before) frag.appendChild(document.createTextNode(before));
+            const mk = document.createElement('mark');
+            mk.textContent = match;
+            frag.appendChild(mk);
+            lastIndex = offset + match.length;
+          });
+          const after = text.slice(lastIndex);
+          if (after) frag.appendChild(document.createTextNode(after));
+          parent.replaceChild(frag, node);
+        });
+      } else {
+        el.innerHTML = renderMarkdown(raw).replace(re, (_, m) => `<mark>${escapeHtml(m)}</mark>`);
+      }
+    }
+
+    // Simple XML syntax highlighter — escapes HTML then wraps tags/attrs/names
+    function highlightXml(txt) {
+      if (!txt) return '';
+      const esc = escapeHtml(txt);
+      // Regex to capture tags and attributes (simple, not full XML parser)
+      return esc
+        .replace(/(&lt;!--[\s\S]*?--&gt;)/g, '<span class="xml-comment">$1</span>')
+        .replace(/(&lt;\/?)([a-zA-Z0-9_:-]+)([^&]*?)(&gt;)/g, (m, open, name, rest, close) => {
+          // color attributes inside rest
+          const attrs = rest.replace(/([a-zA-Z0-9:_-]+)(=)\"([^\"]*)\"/g, '<span class="xml-attr">$1</span>$2<span class="xml-value">"$3"</span>');
+          return `${open}<span class="xml-name">${name}</span>${attrs}${close}`;
+        })
+        .replace(/([^&]|^)([^\n]+)/g, (m) => m); // noop for other text
     }
 
     // ── Parser e renderer de OCR estruturado ──
@@ -160,41 +222,98 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         return;
       }
 
-      const legend = document.createElement('div');
-      legend.className = 'ocr-legend';
+      const wrap = document.createElement('div');
+      wrap.className = 'viewer-ocr-body';
+
+      // Legenda compacta de scripts
       const scriptsSeen = new Set(ocrData.blocos.map((b) => b.script));
-      scriptsSeen.forEach((sc) => {
-        const chip = document.createElement('span');
-        chip.className = `ocr-script-badge script-${sc.toLowerCase().replace(/[^a-z0-9]/g, '_')}`;
-        chip.textContent = scriptLabel(sc);
-        legend.appendChild(chip);
-      });
-      container.appendChild(legend);
+      if (scriptsSeen.size > 1) {
+        const legend = document.createElement('div');
+        legend.style.cssText = 'display:flex; gap:var(--space-2); flex-wrap:wrap; margin-bottom:var(--space-3); font-size:0.75rem; color:var(--color-muted);';
+        scriptsSeen.forEach((sc) => {
+          const chip = document.createElement('span');
+          chip.style.cssText = 'display:inline-flex; align-items:center; gap:6px; padding:2px 8px; border-radius:var(--radius-s); background:var(--color-surface-2); border:1px solid var(--color-border);';
+          const colorDot = document.createElement('span');
+          colorDot.className = 'ocr-script-chip';
+          // map script -> color
+          const scriptColors = {
+            latino: '#2b8cbe',
+            latin: '#2b8cbe',
+            grego: '#8da0cb',
+            copta: '#e78ac3',
+            siriaco: '#66c2a5',
+            cirilico: '#a6d854',
+            ethiopico: '#fc8d62',
+            armenio: '#ffd92f',
+            arabe: '#e5c494',
+            hebraico: '#b3b3b3',
+            misto: '#999999',
+            desconhecido: '#999999'
+          };
+          const key = (sc || '').toLowerCase();
+          colorDot.style.background = scriptColors[key] || '#b0b0b0';
+          chip.appendChild(colorDot);
+          const label = document.createElement('span');
+          label.textContent = scriptLabel(sc);
+          chip.appendChild(label);
+          legend.appendChild(chip);
+        });
+        wrap.appendChild(legend);
+      }
 
       ocrData.blocos.forEach((bloco) => {
         const el = document.createElement('div');
-        const scriptClass = `script-${bloco.script.toLowerCase().replace(/[^a-z0-9]/g, '_')}`;
-        const tipoClass = `type-${bloco.tipo.toLowerCase().replace(/[^a-z0-9]/g, '_')}`;
-        el.className = `ocr-block ${scriptClass} ${tipoClass}`;
+        const tipoNorm = bloco.tipo.toLowerCase().replace(/[^a-z0-9]/g, '_');
+        el.className = `ocr-block ${tipoNorm}`;
 
-        const meta = document.createElement('div');
-        meta.className = 'ocr-block-meta';
-        meta.innerHTML = `<span class="ocr-type">${typeLabel(bloco.tipo)}</span> <span class="ocr-script">${scriptLabel(bloco.script)}</span>`;
-        if (bloco.bbox) {
-          const bb = document.createElement('span');
-          bb.className = 'ocr-bbox';
-          bb.textContent = `${bloco.bbox[0]},${bloco.bbox[1]} → ${bloco.bbox[2]},${bloco.bbox[3]}`;
-          bb.title = `x1=${bloco.bbox[0]} y1=${bloco.bbox[1]} x2=${bloco.bbox[2]} y2=${bloco.bbox[3]}`;
-          meta.appendChild(bb);
+        // Apenas mostrar meta para tipos não-comuns ou scripts não-latinos
+        const isCommon = ['corpo', 'texto', 'paragrafo', 'outro'].includes(tipoNorm);
+        const isLatin = ['latino', 'latin', 'desconhecido'].includes(bloco.script?.toLowerCase());
+        const showMeta = !isCommon || !isLatin;
+
+        if (showMeta) {
+          const meta = document.createElement('div');
+          meta.style.cssText = 'font-size:0.72rem; color:var(--color-muted); margin-bottom:0.25em; display:flex; gap:var(--space-2);';
+          // adicionar chip colorido ao lado do script
+          if (!isLatin && bloco.script) {
+            const span = document.createElement('span');
+            span.className = 'meta-script';
+            const dot = document.createElement('span');
+            dot.className = 'ocr-script-chip';
+            const scriptColors = {
+              latino: '#2b8cbe',
+              latin: '#2b8cbe',
+              grego: '#8da0cb',
+              copta: '#e78ac3',
+              siriaco: '#66c2a5',
+              cirilico: '#a6d854',
+              ethiopico: '#fc8d62',
+              armenio: '#ffd92f',
+              arabe: '#e5c494',
+              hebraico: '#b3b3b3',
+              misto: '#999999',
+              desconhecido: '#999999'
+            };
+            dot.style.background = scriptColors[(bloco.script || '').toLowerCase()] || '#b0b0b0';
+            const lbl = document.createElement('span'); lbl.textContent = `· ${scriptLabel(bloco.script)}`;
+            span.appendChild(dot);
+            span.appendChild(lbl);
+            meta.appendChild(document.createElement('span'));
+            meta.firstChild.textContent = typeLabel(bloco.tipo);
+            meta.appendChild(span);
+          } else {
+            meta.innerHTML = `<span>${typeLabel(bloco.tipo)}</span>`;
+          }
+          el.appendChild(meta);
         }
-        el.appendChild(meta);
 
         const text = document.createElement('div');
-        text.className = 'ocr-block-text';
         text.textContent = bloco.text;
         el.appendChild(text);
-        container.appendChild(el);
+        wrap.appendChild(el);
       });
+
+      container.appendChild(wrap);
     }
 
     async function load() {
@@ -206,9 +325,10 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
         const volumes = await getJSON(`${assetBase}volumes.json`);
 
-        const [keywords, entities] = await Promise.all([
+        const [keywords, entities, collections] = await Promise.all([
           getJSON(`${assetBase}dict/keywords.json`),
           getJSON(`${assetBase}dict/entities.json`),
+          getJSON(`${assetBase}dict/collections.json`),
         ]);
 
         const volume = volumes.volumes.find((v) => v.id === doc);
@@ -236,21 +356,93 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         const summaryGlobal = page.summary_global || pageSnapshots[0]?.summary || '';
 
         // Atualizar título da aba e breadcrumb
-        document.title = `${volume.id} — ${s.viewerPage(page.page)} | Bibliotheca Patristica`;
-        const crumbCurrent = document.querySelector('.breadcrumbs [aria-current="page"]');
-        if (crumbCurrent) crumbCurrent.textContent = `${volume.id} — ${s.viewerPage(page.page)}`;
+        document.title = `${s.viewerVolumeLabel(volume.id, volume.title || '')} · ${s.viewerPage(page.page)} | Bibliotheca Patristica`;
+        const breadcrumbsEl = document.querySelector('.breadcrumbs ol');
+        if (breadcrumbsEl) {
+          breadcrumbsEl.innerHTML = `
+            <li style="display:flex;align-items:center;gap:0.35rem;">
+              <a href="${assetBase}">${uiStrings.breadcrumbHome || (isEn ? 'Home' : 'Início')}</a>
+            </li>
+            <li style="display:flex;align-items:center;gap:0.35rem;" aria-hidden="true"><span>/</span></li>
+            <li style="display:flex;align-items:center;gap:0.35rem;"><span>${s.viewerVolumeLabel(volume.id, volume.title || '')}</span></li>
+            <li style="display:flex;align-items:center;gap:0.35rem;" aria-hidden="true"><span>/</span></li>
+            <li style="display:flex;align-items:center;gap:0.35rem;"><span aria-current="page">${s.viewerPage(page.page)}</span></li>
+          `;
+        }
 
-        viewerRoot.innerHTML = '';
+        // Bookmark: save current position
+        try {
+          const bookmarks = JSON.parse(localStorage.getItem('viewerBookmarks') || '{}');
+          bookmarks[doc] = { page: pageNumber, ts: Date.now() };
+          localStorage.setItem('viewerBookmarks', JSON.stringify(bookmarks));
+        } catch (_) {}
+
+viewerRoot.innerHTML = '';
 
         // Injetar estilos do viewer apenas uma vez
         if (!document.getElementById('viewer-styles')) {
           const styleTag = document.createElement('style');
           styleTag.id = 'viewer-styles';
           styleTag.textContent = `
-            .viewer-grid { grid-template-columns: 1fr 300px; align-items: start; }
-            @media (max-width: 900px) { .viewer-grid { grid-template-columns: 1fr; } }
-            .viewer-header-nav { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+            .viewer-grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; align-items: start; gap: var(--space-6); }
+            @media (min-width: 1400px) { .viewer-grid { grid-template-columns: minmax(0, 1fr) 340px; gap: var(--space-8); } }
+            @media (max-width: 1100px) { .viewer-grid { grid-template-columns: 1fr; gap: var(--space-4); } }
+            .viewer-grid aside { order: 2; }
+            .viewer-grid .main-content { order: 1; }
+            .viewer-header-nav { display: flex; gap: var(--space-2); flex-wrap: wrap; align-items: center; }
             .viewer-header-nav .button.disabled { opacity: 0.45; pointer-events: none; cursor: default; }
+            .viewer-header-nav input[type="number"] { width: 4.5rem; padding: 0.35rem 0.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-s); background: var(--color-surface); color: var(--color-ink); font-size: 0.9rem; text-align: center; }
+            .viewer-header-nav input[type="number"]:focus { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+            .viewer-header-nav .button { padding: 0.35rem 0.65rem; font-size: 0.85rem; }
+            @media (max-width: 720px) {
+              .viewer-header-nav .button { padding: 0.3rem 0.5rem; font-size: 0.8rem; }
+              .viewer-header-nav input[type="number"] { width: 3.8rem; font-size: 0.85rem; }
+            }
+            @media (max-width: 480px) {
+              .viewer-header-nav { gap: 4px; }
+              .viewer-header-nav .button { padding: 0.25rem 0.4rem; font-size: 0.75rem; min-width: 2rem; text-align: center; }
+              .viewer-header-nav .nav-label-text { display: none; }
+            }
+            .viewer-identity { margin-bottom: var(--space-4); padding: var(--space-4); border-radius: var(--radius-m); background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-2) 100%); border: 1px solid var(--color-border); }
+            .viewer-identity h3 { margin: 0 0 var(--space-2); font-family: var(--font-serif); color: var(--color-accent); font-size: 1.15rem; }
+            @media (min-width: 1400px) { .viewer-identity h3 { font-size: 1.35rem; } }
+            .viewer-identity p { margin: 0; color: var(--color-muted); font-size: 0.9rem; line-height: 1.5; }
+            .viewer-identity .identity-meta-wrap { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; margin-top: var(--space-2); }
+            .viewer-identity .identity-badge { display: inline-block; padding: 2px 8px; border-radius: var(--radius-s); background: var(--color-surface); border: 1px solid var(--color-border); font-size: 0.75rem; color: var(--color-muted); }
+            .viewer-progress-bar { width: 100%; height: 4px; background: var(--color-border); border-radius: 2px; margin-top: var(--space-3); overflow: hidden; }
+            .viewer-progress-bar > div { height: 100%; background: var(--color-accent); border-radius: 2px; transition: width 0.3s ease; }
+            .viewer-focus-mode .viewer-grid { grid-template-columns: 1fr !important; }
+            .viewer-focus-mode aside { display: none !important; }
+            .viewer-focus-mode .main-content { max-width: 720px; margin: 0 auto; }
+            @media (min-width: 1400px) { .viewer-focus-mode .main-content { max-width: 800px; } }
+            .viewer-bookmark-banner { margin-bottom: var(--space-4); padding: var(--space-3) var(--space-4); border-radius: var(--radius-m); background: var(--color-surface-2); border: 1px solid var(--color-accent); display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); flex-wrap: wrap; }
+            .viewer-index-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(3rem, 1fr)); gap: 4px; max-height: 200px; overflow-y: auto; }
+            @media (min-width: 1400px) { .viewer-index-list { max-height: 320px; grid-template-columns: repeat(auto-fill, minmax(3.2rem, 1fr)); } }
+            .viewer-index-list a { display: block; padding: 4px; text-align: center; border-radius: var(--radius-s); font-size: 0.8rem; text-decoration: none; color: var(--color-ink); background: var(--color-surface); border: 1px solid var(--color-border); transition: all 0.15s; }
+            .viewer-index-list a:hover, .viewer-index-list a.current { background: var(--color-accent); color: white; border-color: var(--color-accent); }
+            .viewer-ocr-body { font-family: var(--font-serif); line-height: 1.8; font-size: 1.05rem; }
+            .viewer-ocr-body .ocr-block { margin-bottom: 1em; }
+            .viewer-ocr-body .ocr-block.titulo { font-weight: 700; font-size: 1.2em; color: var(--color-accent); }
+            .viewer-ocr-body .ocr-block.nota { font-size: 0.9em; color: var(--color-muted); border-left: 3px solid var(--color-border); padding-left: 1em; }
+            .viewer-ocr-body .ocr-block.cabecalho { font-variant: small-caps; letter-spacing: 0.05em; }
+            /* Chips to indicate script with a visible color */
+            .ocr-script-chip { display:inline-block; width:10px; height:10px; border-radius:50%; margin-left:6px; vertical-align:middle; border:1px solid rgba(0,0,0,0.08); }
+            .ocr-block .meta-script { display:inline-flex; align-items:center; gap:6px; }
+
+            /* XML syntax highlight for plain OCR view */
+            pre.viewer-ocr-xml { font-family:var(--font-mono, monospace); font-size:0.82rem; line-height:1.6; white-space:pre-wrap; word-break:break-word; }
+            pre.viewer-ocr-xml .xml-tag { color: #0b5; }
+            pre.viewer-ocr-xml .xml-name { color: #07f; }
+            pre.viewer-ocr-xml .xml-attr { color: #c67; }
+            pre.viewer-ocr-xml .xml-value { color: #a31515; }
+            pre.viewer-ocr-xml .xml-text { color: var(--color-text); }
+            .viewer-toolbar { display: flex; gap: var(--space-2); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-border); }
+            @media (max-width: 480px) { .viewer-toolbar { flex-direction: column; align-items: stretch; } .viewer-search-local { width: 100%; } }
+            .viewer-search-local { display: flex; gap: var(--space-2); align-items: center; flex: 1; min-width: 200px; }
+            .viewer-search-local input { flex: 1; padding: 0.4rem 0.6rem; border: 1px solid var(--color-border); border-radius: var(--radius-s); background: var(--color-surface); color: var(--color-ink); font-size: 0.9rem; }
+            .viewer-search-local input:focus { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+            .viewer-sidebar-section { margin-bottom: var(--space-4); }
+            .viewer-sidebar-section h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-muted); margin: 0 0 0.75rem; }
           `;
           document.head.appendChild(styleTag);
         }
@@ -264,7 +456,168 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         const sidebar = document.createElement('aside');
         sidebar.style.cssText = 'display:flex; flex-direction:column; gap:var(--space-4);';
 
+        // Calcular limites de página a partir dos blocos de metadados
+        const allBlocks = meta.page_blocks || [];
+        const firstPage = allBlocks.length ? allBlocks[0].page_first : 1;
+        const lastPage = allBlocks.length ? allBlocks[allBlocks.length - 1].page_last : pageNumber;
+
+        function buildNavUrl(targetPage) {
+          const p = new URLSearchParams({ doc, page: String(targetPage) });
+          if (highlight) p.set('highlight', highlight);
+          return `?${p.toString()}`;
+        }
+
         // Cabeçalho com Navegação
+        // ── Cartão de identidade do volume ──
+        const identityCard = document.createElement('div');
+        identityCard.className = 'viewer-identity';
+        identityCard.style.marginBottom = 'var(--space-4)';
+
+        // Tentar extrair autor/obra do snapshot global
+        let volumeAuthor = '';
+        let volumeWork = '';
+        let volumeSummary = '';
+        try {
+          const snapshotFile = meta.snapshot_blocks?.[0]?.file;
+          if (snapshotFile) {
+            const snapData = await getJSON(`${assetBase}${snapshotFile.replace(/^\//, '')}`);
+            const globalSnap = snapData.snapshots?.find((s) => s.kind === 'volume_summary');
+            if (globalSnap?.summary) {
+              const lines = globalSnap.summary.split('\n');
+              for (const line of lines) {
+                if (line.startsWith('Autor:')) volumeAuthor = line.replace('Autor:', '').trim();
+                else if (line.startsWith('Livro/obra identificada:')) volumeWork = line.replace('Livro/obra identificada:', '').trim();
+                else if (!volumeSummary && line.trim().length > 10 && !line.includes('não há conteúdo anterior')) volumeSummary = line.trim();
+              }
+              if (!volumeSummary) volumeSummary = lines.find((l) => l.trim().length > 20 && !l.includes('não há conteúdo anterior')) || '';
+            }
+          }
+        } catch (e) { /* ignore */ }
+
+        const volCollectionLabel = collections.items.find((c) => c.id === volume.collection_id)?.label || volume.collection_id;
+        const identityTitle = document.createElement('h3');
+        identityTitle.textContent = volumeAuthor && volumeWork ? `${volumeAuthor} — ${volumeWork}` : (volumeWork || volumeAuthor || s.viewerVolumeLabel(volume.id, volume.title || ''));
+        identityCard.appendChild(identityTitle);
+
+        const identityMetaWrap = document.createElement('div');
+        identityMetaWrap.className = 'identity-meta-wrap';
+
+        const badgeCollection = document.createElement('span');
+        badgeCollection.className = 'identity-badge';
+        badgeCollection.textContent = volCollectionLabel;
+        identityMetaWrap.appendChild(badgeCollection);
+
+        const badgePage = document.createElement('span');
+        badgePage.className = 'identity-badge';
+        badgePage.textContent = s.viewerPageOfTotal(pageNumber, lastPage);
+        identityMetaWrap.appendChild(badgePage);
+
+        if (volumeSummary) {
+          const summaryP = document.createElement('p');
+          summaryP.style.cssText = 'margin: var(--space-2) 0 0; color: var(--color-muted); font-size: 0.9rem; line-height: 1.5;';
+          summaryP.textContent = volumeSummary.substring(0, 200) + (volumeSummary.length > 200 ? '…' : '');
+          identityCard.appendChild(identityMetaWrap);
+          identityCard.appendChild(summaryP);
+        } else {
+          identityCard.appendChild(identityMetaWrap);
+        }
+
+        // Barra de progresso
+        const progressWrap = document.createElement('div');
+        progressWrap.className = 'viewer-progress-bar';
+        progressWrap.setAttribute('role', 'progressbar');
+        progressWrap.setAttribute('aria-valuemin', '0');
+        progressWrap.setAttribute('aria-valuemax', String(lastPage));
+        progressWrap.setAttribute('aria-valuenow', String(pageNumber));
+        progressWrap.setAttribute('aria-label', s.viewerProgress);
+        const progressBar = document.createElement('div');
+        const progressPct = lastPage > 1 ? ((pageNumber - 1) / (lastPage - 1) * 100) : 100;
+        progressBar.style.width = `${progressPct}%`;
+        progressWrap.appendChild(progressBar);
+        identityCard.appendChild(progressWrap);
+
+        // ── Barra de ferramentas ──
+        const toolbar = document.createElement('div');
+        toolbar.className = 'viewer-toolbar';
+
+        // Modo foco
+        const focusBtn = document.createElement('button');
+        focusBtn.className = 'button secondary';
+        focusBtn.style.fontSize = '0.8rem';
+        let isFocusMode = false;
+        focusBtn.textContent = s.viewerFocusMode;
+        focusBtn.addEventListener('click', () => {
+          isFocusMode = !isFocusMode;
+          viewerRoot.classList.toggle('viewer-focus-mode', isFocusMode);
+          focusBtn.textContent = isFocusMode ? s.viewerNormalMode : s.viewerFocusMode;
+          try { localStorage.setItem('viewerFocusMode', isFocusMode ? '1' : '0'); } catch (_) {}
+        });
+        try { if (localStorage.getItem('viewerFocusMode') === '1') { isFocusMode = true; viewerRoot.classList.add('viewer-focus-mode'); focusBtn.textContent = s.viewerNormalMode; } } catch (_) {}
+
+        // Font size
+        const fontDown = document.createElement('button');
+        fontDown.className = 'button secondary';
+        fontDown.style.fontSize = '0.8rem';
+        fontDown.textContent = s.viewerDecreaseFont;
+        const fontUp = document.createElement('button');
+        fontUp.className = 'button secondary';
+        fontUp.style.fontSize = '0.8rem';
+        fontUp.textContent = s.viewerIncreaseFont;
+
+        let fontSizeLevel = parseInt(localStorage.getItem('viewerFontSize') || '0', 10) || 0;
+        function applyFontSize() {
+          const sizes = ['0.95rem', '1.05rem', '1.15rem', '1.3rem'];
+          const idx = Math.max(0, Math.min(fontSizeLevel + 1, sizes.length - 1));
+          mainContent.style.fontSize = sizes[idx];
+          try { localStorage.setItem('viewerFontSize', String(fontSizeLevel)); } catch (_) {}
+        }
+        applyFontSize();
+        fontDown.addEventListener('click', () => { fontSizeLevel = Math.max(-1, fontSizeLevel - 1); applyFontSize(); });
+        fontUp.addEventListener('click', () => { fontSizeLevel = Math.min(2, fontSizeLevel + 1); applyFontSize(); });
+
+        // Busca local
+        const localSearchWrap = document.createElement('div');
+        localSearchWrap.className = 'viewer-search-local';
+        const localSearchInput = document.createElement('input');
+        localSearchInput.type = 'search';
+        localSearchInput.placeholder = s.viewerSearchInVolume;
+        localSearchInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' && localSearchInput.value.trim()) {
+            window.location.href = `${assetBase}search?term=${encodeURIComponent(localSearchInput.value.trim())}&volume=${encodeURIComponent(doc)}`;
+          }
+        });
+        localSearchWrap.appendChild(localSearchInput);
+
+        toolbar.appendChild(focusBtn);
+        toolbar.appendChild(fontDown);
+        toolbar.appendChild(fontUp);
+        toolbar.appendChild(localSearchWrap);
+
+        // ── Índice de páginas (collapsible) ──
+        const indexDetails = document.createElement('details');
+        indexDetails.style.marginBottom = 'var(--space-4)';
+        const indexSummary = document.createElement('summary');
+        indexSummary.style.cssText = 'cursor:pointer; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--color-muted); user-select:none; list-style:none; display:flex; align-items:center; gap:var(--space-2);';
+        indexSummary.innerHTML = `<span style="display:inline-block;transition:transform 0.2s;" class="idx-arrow">▶</span> ${s.viewerIndex}`;
+        indexDetails.appendChild(indexSummary);
+
+        const indexList = document.createElement('ul');
+        indexList.className = 'viewer-index-list';
+        for (let p = firstPage; p <= lastPage; p++) {
+          const a = document.createElement('a');
+          a.textContent = String(p);
+          a.href = buildNavUrl(p);
+          if (p === pageNumber) { a.classList.add('current'); a.setAttribute('aria-current', 'page'); }
+          const li = document.createElement('li');
+          li.appendChild(a);
+          indexList.appendChild(li);
+        }
+        indexDetails.appendChild(indexList);
+        indexDetails.addEventListener('toggle', () => {
+          const arrow = indexDetails.querySelector('.idx-arrow');
+          if (arrow) arrow.style.transform = indexDetails.open ? 'rotate(90deg)' : '';
+        });
+
         const header = document.createElement('header');
         header.style.cssText = 'display:flex; justify-content:space-between; align-items:center; gap:var(--space-3); margin-bottom:var(--space-5); border-bottom:1px solid var(--color-border); padding-bottom:var(--space-4); flex-wrap: wrap;';
 
@@ -283,34 +636,57 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         const navGroup = document.createElement('div');
         navGroup.className = 'viewer-header-nav';
 
-        // Calcular limites de página a partir dos blocos de metadados
-        const allBlocks = meta.page_blocks || [];
-        const firstPage = allBlocks.length ? allBlocks[0].page_first : 1;
-        const lastPage = allBlocks.length ? allBlocks[allBlocks.length - 1].page_last : pageNumber;
-
-        function buildNavUrl(targetPage) {
-          const p = new URLSearchParams({ doc, page: String(targetPage) });
-          if (highlight) p.set('highlight', highlight);
-          return `?${p.toString()}`;
-        }
-
         const hasPrev = pageNumber > firstPage;
         const hasNext = pageNumber < lastPage;
 
-        const prevBtn = document.createElement('a');
-        prevBtn.className = `button secondary${hasPrev ? '' : ' disabled'}`;
-        prevBtn.textContent = s.viewerPrev;
-        prevBtn.setAttribute('aria-disabled', hasPrev ? 'false' : 'true');
-        if (hasPrev) prevBtn.href = buildNavUrl(pageNumber - 1);
+        function makeNavBtn(text, targetPage, enabled, ariaLabel, iconText) {
+          const a = document.createElement('a');
+          a.className = `button secondary${enabled ? '' : ' disabled'}`;
+          // Em telas pequenas, mostra apenas ícone/símbolo; em maiores, texto
+          a.innerHTML = `<span class="nav-icon" aria-hidden="true">${iconText || text}</span><span class="nav-label-text">${text}</span>`;
+          a.setAttribute('aria-disabled', enabled ? 'false' : 'true');
+          if (ariaLabel) a.setAttribute('aria-label', ariaLabel);
+          if (enabled) a.href = buildNavUrl(targetPage);
+          return a;
+        }
 
-        const nextBtn = document.createElement('a');
-        nextBtn.className = `button secondary${hasNext ? '' : ' disabled'}`;
-        nextBtn.textContent = s.viewerNext;
-        nextBtn.setAttribute('aria-disabled', hasNext ? 'false' : 'true');
-        if (hasNext) nextBtn.href = buildNavUrl(pageNumber + 1);
+        const firstBtn = makeNavBtn(s.viewerFirst || '<<', firstPage, pageNumber > firstPage, s.viewerFirst, '⏮');
+        const prevBtn = makeNavBtn(s.viewerPrev, pageNumber - 1, hasPrev, s.viewerPrev, '◀');
+        const nextBtn = makeNavBtn(s.viewerNext, pageNumber + 1, hasNext, s.viewerNext, '▶');
+        const lastBtn = makeNavBtn(s.viewerLast || '>>', lastPage, pageNumber < lastPage, s.viewerLast, '⏭');
 
+        const pageInputWrap = document.createElement('span');
+        pageInputWrap.style.cssText = 'display:inline-flex; align-items:center; gap:var(--space-1); font-size:0.9rem; color:var(--color-muted);';
+
+        const pageInput = document.createElement('input');
+        pageInput.type = 'number';
+        pageInput.min = String(firstPage);
+        pageInput.max = String(lastPage);
+        pageInput.value = String(pageNumber);
+        pageInput.setAttribute('aria-label', s.viewerPageInputLabel || 'Page number');
+
+        const pageTotalSpan = document.createElement('span');
+        pageTotalSpan.textContent = `${isEn ? 'of' : 'de'} ${lastPage}`;
+
+        pageInput.addEventListener('change', () => {
+          let v = parseInt(pageInput.value, 10);
+          if (isNaN(v)) return;
+          if (v < firstPage) v = firstPage;
+          if (v > lastPage) v = lastPage;
+          window.location.href = buildNavUrl(v);
+        });
+        pageInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') pageInput.dispatchEvent(new Event('change'));
+        });
+
+        pageInputWrap.appendChild(pageInput);
+        pageInputWrap.appendChild(pageTotalSpan);
+
+        navGroup.appendChild(firstBtn);
         navGroup.appendChild(prevBtn);
+        navGroup.appendChild(pageInputWrap);
         navGroup.appendChild(nextBtn);
+        navGroup.appendChild(lastBtn);
 
         // Link de retorno à busca (se veio de uma busca com highlight)
         if (highlight) {
@@ -323,9 +699,30 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           navGroup.prepend(backLink);
         }
 
+        // Atalhos de teclado para navegação
+        document.addEventListener('keydown', (e) => {
+          if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable)) return;
+          if (e.key === 'ArrowLeft' && hasPrev) { e.preventDefault(); window.location.href = buildNavUrl(pageNumber - 1); }
+          if (e.key === 'ArrowRight' && hasNext) { e.preventDefault(); window.location.href = buildNavUrl(pageNumber + 1); }
+        });
+
         header.appendChild(navGroup);
 
+        mainContent.appendChild(identityCard);
+        mainContent.appendChild(toolbar);
         mainContent.appendChild(header);
+
+        // Índice de páginas: em telas grandes (>1100px) vai para a sidebar
+        const isWide = window.innerWidth > 1100;
+        if (isWide) {
+          // Mover índice para sidebar com wrapper
+          const sidebarIndexWrap = document.createElement('div');
+          sidebarIndexWrap.className = 'viewer-sidebar-section';
+          sidebarIndexWrap.appendChild(indexDetails);
+          sidebar.appendChild(sidebarIndexWrap);
+        } else {
+          mainContent.appendChild(indexDetails);
+        }
 
         // Funções auxiliares para blocos de texto
         function createTextBlock(title, text, isSerif = true) {
@@ -379,9 +776,10 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           const bodyWrap = document.createElement('div');
           bodyWrap.style.cssText = 'margin:var(--space-4) 0 0;';
 
-          const pre = document.createElement('pre');
-          pre.style.cssText = 'white-space:pre-wrap; word-break:break-word; font-size:0.82rem; line-height:1.6; color:var(--color-text); font-family:var(--font-mono, monospace); max-height:60vh; overflow-y:auto;';
-          pre.textContent = s.viewerOcrLoading;
+                const pre = document.createElement('pre');
+                pre.className = 'viewer-ocr-xml';
+                pre.style.cssText = 'max-height:60vh; overflow-y:auto;';
+                pre.textContent = s.viewerOcrLoading;
 
           bodyWrap.appendChild(pre);
           details.appendChild(summary);
@@ -401,7 +799,10 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
               const ocrData = parseOcrXml(txt);
               if (ocrData && ocrData.blocos.length > 0) {
-                pre.textContent = txt;
+                // mostrar XML colorido no <pre>
+                pre.innerHTML = highlightXml(txt);
+                // armazenar raw para busca/highlight de termos
+                pre.dataset.raw = txt;
                 if (highlight) applyHighlight(pre, highlight);
 
                 const toggleWrap = document.createElement('div');
@@ -435,13 +836,15 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
                   btnPlain.className = 'button secondary';
                 }
 
-                btnPlain.addEventListener('click', showPlain);
-                btnStruct.addEventListener('click', showStruct);
+                btnPlain.addEventListener('click', () => { localStorage.setItem('viewerOcrMode', 'plain'); showPlain(); });
+                btnStruct.addEventListener('click', () => { localStorage.setItem('viewerOcrMode', 'struct'); showStruct(); });
                 toggleWrap.appendChild(btnPlain);
                 toggleWrap.appendChild(btnStruct);
                 bodyWrap.insertBefore(toggleWrap, pre);
                 bodyWrap.appendChild(structContainer);
-                showPlain();
+                const savedOcrMode = localStorage.getItem('viewerOcrMode');
+                if (savedOcrMode === 'struct') showStruct();
+                else showPlain();
               } else {
                 pre.textContent = txt;
                 if (highlight) applyHighlight(pre, highlight);
@@ -545,6 +948,26 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           relBlock.appendChild(relList);
           sidebar.appendChild(relBlock);
         }
+
+        // Bookmark banner (continuar lendo)
+        try {
+          const bookmarks = JSON.parse(localStorage.getItem('viewerBookmarks') || '{}');
+          const saved = bookmarks[doc];
+          if (saved && saved.page !== pageNumber) {
+            const banner = document.createElement('div');
+            banner.className = 'viewer-bookmark-banner';
+            const bannerText = document.createElement('span');
+            bannerText.innerHTML = `📖 ${s.viewerContinueReading}: <strong>${s.viewerVolumeLabel(volume.id, volume.title || '')} · ${s.viewerPage(saved.page)}</strong>`;
+            const bannerLink = document.createElement('a');
+            bannerLink.href = buildNavUrl(saved.page);
+            bannerLink.className = 'button';
+            bannerLink.style.fontSize = '0.85rem';
+            bannerLink.textContent = s.viewerGo;
+            banner.appendChild(bannerText);
+            banner.appendChild(bannerLink);
+            viewerRoot.appendChild(banner);
+          }
+        } catch (_) {}
 
         mainGrid.appendChild(mainContent);
         mainGrid.appendChild(sidebar);

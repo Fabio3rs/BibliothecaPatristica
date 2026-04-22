@@ -1,61 +1,74 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,70">
-    667                                                          HEXAPLORUM QUAE SUPERSUNT.                                                          668
+  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,80">
+    667 HEXAPLORUM QUÆ SUPERSUNT. 668
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,70,320,960">
-    TO EBPAIKON.
-    τὸν εὐραικον μετρον 1
-    2.
-    4.
-    Σελ.
-    7.
-    8.
-    
-    VERSIO HEBRAICI TEXT.
-    1. Victori, canticum ipsi David.
-    Hieron., victori, psalmus David.
-    
-    2. Extollat te. Hieron., protegat te.
-    
-    4. Et oblationem tuam in cine- rem reducet. Hieron., et holocau- stum tuum pingue fiat.
-    Selah. Hieron., semper.
-    
-    7. In fortitudinibus salus dex- terae ejus. Hieron., in fortitudine salutis dexterae ejus.
-    
-    8. Nos autem in nomine Domini Dei nostri recordabimur. Hieron. idem.
+  
+  <bloco tipo="texto_principal" script="misto" bbox="100,85,950,120">
+    TO ΕΒΡΑΙΚΟΝ. PSALMUS XIX. ΑΚΥΛΑΣ.
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,70,660,960">
-    PSALMUS XIX.
-    ΤΟ ΕΒΡΑΙΚΟΝ
-    Ἑλληνικοὶς γράμμασι.
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,120,400,260">
+    לַמְנַצֵּחַ מִזְמוֹר לְדָוִד 1
+    יַעַנְךָ 2
+    וְעוֹלֹתֶיךָ יְדַשֵּׁן 4
+    סֶלָה
+    בִּגְבוּרֹת יֵשַׁע יְמִינוֹ 7
+    וַאֲנַחְנוּ בְשֵׁם־יְהוָה אֱלֹהֵינוּ נַזְכִּיר 8
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="420,120,650,260">
     1.
     2.
     4.
     Σελ.
     7.
     8.
-    
-    VULGATA LATINA.
-    1. In finem, psalmus David.
-    
-    2. Protegat te.
-    
-    4. Et holocaustum tuum pingue fiat.
-    Vacat.
-    
-    7. In potentialibus salus dexterae ejus.
-    
-    8. Nos autem in nomine Domini Dei nostri invocabimus.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="680,70,960,420">
-    ΑΚΥΛΑΣ.
-    1. Τῷ νικόποϊῳ μελώδημα τῷ Δαυιδ.
+
+  <bloco tipo="texto_principal" script="grego" bbox="680,120,950,260">
+    1. Τῷ νικοποιῷ μελῴδημα τῷ
+    Δαυΐδ.
     2
     4.
-    'Αει.
+    Ἀεί.
     7.
     8.
-    
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,265,400,480">
+    VERSIO HEBRAICI TEXT.
+    1. Victori, canticum ipsi David.
+    Hieron., victori, psalmus David.
+    2. Extollat te. Hieron., protegat
+    te.
+    4. Et oblationem tuam in cine-
+    rem reducat. Hieron., et holocau-
+    stum tuum pingue fiat.
+    Selah. Hieron., semper.
+    7. In fortitudinibus salus dex-
+    teræ ejus. Hieron., in fortitudine
+    salutis dexteræ ejus.
+    8. Nos autem in nomine Domini
+    Dei nostri recordabimur. Hieron.
+    idem.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="420,265,650,480">
+    VULGATA LATINA.
+    1. In finem, psalmus David.
+    2. Protegat te.
+    4. Et holocaustum tuum pingue
+    fiat.
+    Vacat.
+    7. In potentatibus salus dexteræ
+    ejus.
+    8. Nos autem in nomine Domini
+    Dei nostri invocabimus.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="680,265,950,480">
     AQUILA.
     1. Victori, canticum ipsi David.
     2.
@@ -64,71 +77,93 @@
     7.
     8
   </bloco>
-  <bloco tipo="aparat0_critico" script="latino" bbox="40,420,960,700">
-    Notae et variae lectiones ad Psalmum XIX.
-    
-    V. 1. De inscriptione frequenter superius actum est.
-    V. 2. 'Αλλος , προσταθειν σοι etc. Coislinianus. Ille vero trium lectiones videntur esse A., S., Th.
-    
-    V. 4. Σ., και την αναφοραν σου τινα ποιησ. Sic unus codex. Alter legit, πλειονα, minus recte. Reliquae lectiones ex Drusio.
-    Ibid. Heb. σελ. etc. Vide supra psalm. III.
-    V. 7. Σ., παραδεξως. Sic unus codex. Eamdem
+
+  <bloco tipo="nota" script="latino" bbox="100,485,950,550">
+    Notæ et variæ lectiones ad Psalmum XIX.
+    V. 1. De inscriptione frequenter superius actum
+    est.
+    V. 2. Ἄλλος, προσταθείη σοι etc. Coislinianus.
+    Ilæ vero trium lectiones videntur esse A., S.,
+    Th.
+    V. 4. Σ., καὶ τὴν ἀναφοράν σου πίονα ποιήσῃ. Sic
+    unus codex. Alter legit, πλειόνα, minus recte. Re-
+    liquæ lectiones ex Drusio.
+    Ibid. Heb. סֶלָה etc. Vide supra psalm. III.
+    V. 7. Σ., παραδόξως. Sic unus codex. Eamdem
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="300,700,660,760">
-    PSALMUS XX.
-    TO EBPAIKON
-    Ἑλληνικοὶς γράμμασι.
+
+  <bloco tipo="texto_principal" script="misto" bbox="100,560,950,600">
+    TO ΕΒΡΑΙΚΟΝ. PSALMUS XX. ΑΚΥΛΑΣ.
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικος γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,760,320,960">
-    TO EBPAIKON.
-    τὸν εὐραικον μετρον 1
-    3
-    Σελ.
-    5
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,600,400,740">
+    לַמְנַצֵּחַ מִזְמוֹר לְדָוִד 1
+    וְיִרְאֶשׁ 3
+    סֶלָה
+    עוֹלָם עֵד 5
+    וְהוֹדֵוּ בִשְׁחוּחַ אֶת־פָּנֶיךָ 7
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="420,600,650,740">
+    1.
+    3.
+    Σελ
+    5.
     7
-    
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="680,600,950,740">
+    1. Τῷ νικοποιῷ, μελῴδημα τῷ
+    Δαυΐδ.
+    3.
+    Ἀεί.
+    5. Εἰς αἰωνα και ἐτι.
+    7.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,745,400,920">
     VERSIO HEBRAICI TEXT.
     1. Victori, canticum ipsi David.
     Hieron., victori, psalmus David.
-    
-    3. Et prolaltionem. Hieron., et voluntate.
+    3. Et prolationem. Hieron., et
+    voluntate.
     Selah. Hieron., semper.
-    
-    5. Saeculum et in perpetuum.
-    Hieron., in saeculum et in aeter- num.
-    
-    7. Laetificabis eum in gaudio cum faciebus tuis. Hieron., et hilarabis cum laetitia apud valtu- tum.
+    5. Sæculum et in perpetuum.
+    Hieron., in sæculum et in æter-
+    num.
+    7. Lætificabis eum in gaudio
+    cum faciebus tuis. Hieron., et hi-
+    larabis cum lætitia apud vultum
+    tuum.
   </bloco>
-  <bloco tipo="texto_principal" script="latin" bbox="340,760,660,960">
-    1.
-    3.
-    Σελ.
-    5.
-    7
-    
+
+  <bloco tipo="texto_principal" script="latino" bbox="420,745,650,920">
     VULGATA LATINA.
     1. In finem, psalmus David.
-    
     3. Et voluntate.
     Vacat.
-    
-    5. In saeculum saeculi.
-    
-    7. Laetificabis eum in gaudio cum vultu tuo.
+    5. In sæculum sæculi.
+    7. Lætificabis eum in gaul.o
+    cum vultu tuo.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="680,760,960,960">
-    ΑΚΥΛΑΣ.
-    1. Τῷ νικόποϊῳ, μελώδημα τῷ Δαυιδ.
-    3.
-    'Αει.
-    5. Εἰς αἰωνα και ετι.
-    7.
-    
+
+  <bloco tipo="texto_principal" script="latino" bbox="680,745,950,920">
     AQUILA.
     1. Victori, canticum ipsi David.
     3.
     Semper.
     5. In æternum et ultra.
   </bloco>
-  <notas>Transcrição preserva sinais tipográficos e abreviaturas; algumas palavras hebraicas e gregas apresentavam caracteres antigos e foram transcritas conforme aparência. Marca [ilegivel] não foi necessária.</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="550,950,850,980">
+    Digitized by Google
+  </bloco>
+  
+  <notas>
+    A página apresenta uma edição poliglota (Hexapla) com colunas em Hebraico, Grego (transliteração e tradução de Áquila) e Latim (Vulgata e tradução do Hebraico).
+    Na coluna do meio, verso 7 da Vulgata (Ps 20), a palavra "gaudio" aparece impressa como "gaul.o".
+    As notas centrais (Notæ) estão dispostas em duas colunas internas ao bloco de notas.
+  </notas>
 </pagina>

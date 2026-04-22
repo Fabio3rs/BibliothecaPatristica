@@ -127,6 +127,29 @@ def op_canny(img: np.ndarray, args: argparse.Namespace) -> np.ndarray:
     return cv2.Canny(gray, args.canny_low, args.canny_high)
 
 
+
+
+def preprocess_adaptative_ocr_sem_gray(img_bgr: np.ndarray, _: argparse.Namespace) -> np.ndarray:
+    """
+    Pré-processamento otimizado para auto-ocr.
+    """
+    # normaliza iluminação não uniforme (papel amarelado, sombras de encadernação)
+    clahe = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(8, 8))
+    img_bgr = clahe.apply(img_bgr)
+
+    # binarização adaptativa — mais robusta que threshold global
+    binary = cv2.adaptiveThreshold(
+        img_bgr, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 15, 10
+    )
+
+    # remove ruído de papel sem destruir caracteres pequenos
+    kernel = np.ones((2, 2), np.uint8)
+    binary = cv2.morphologyEx(binary, cv2.MORPH_OPEN, kernel)
+
+    return binary
+
+
+
 OPERATIONS: Dict[str, Operation] = {
     "id": op_identity,
     "gray": op_gray,
@@ -140,6 +163,7 @@ OPERATIONS: Dict[str, Operation] = {
     "close3": op_close3,
     "invert": op_invert,
     "canny": op_canny,
+    "preprocess_adaptative_ocr": preprocess_adaptative_ocr_sem_gray,
 }
 
 
@@ -153,6 +177,7 @@ DEFAULT_CHAINS = [
     "gray,bilateral,adaptive",
     "gray,clahe,adaptive,open2,close3",
     "gray,canny",
+    "gray,preprocess_adaptative_ocr",
 ]
 
 

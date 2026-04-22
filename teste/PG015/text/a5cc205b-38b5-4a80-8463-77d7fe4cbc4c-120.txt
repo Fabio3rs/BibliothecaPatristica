@@ -1,66 +1,90 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,120">
-    235                    HEXAPLORUM QUAE SUPERSUNT.                    236
-    TO ΕΒΡΑΙΚΟΝ.                  TO ΕΒΡΑΙΚΟΝ                   ΑΚΥΛΑΣ.
-                             Ἑλληνικοὶ γράμμασι.
-    [עברית] 14                    14.                              14.
-    [עברית] 18                    18.                              18.
+  <bloco tipo="cabecalho" script="misto" bbox="50,20,950,60">
+    235 HEXAPLORUM QUÆ SUPERSUNT. 236
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="30,120,970,580">
-    [עברית] 31                   31.                              31.
-    [עברית] 33                   33.                              33.  Δένδρα φυτείαν.
-
-    VERSIO HEBRAICI TEXT.              VULGATA LATINA.              AQUILA.
-    14. Bersabee.                      14. Bersabee.                 14.
-    18. Et corroborat manum tuam      18. Et tolle manum illius.    18.
-    31. Bersabee.                      31. Bersabee.                 31.
-    33. Arborem.                       33. Nemus.                   33. Arborum plantationem.
-
-    Notae et variae lectiones ad cap. XXI Genesis.
-
-    V. 8. Coislín. in margine, πότερον μέγαv. Sic autem soleat vertere Aquila et Symmaches.
-    V. 48. Sic editio Romana. Saut qui putent LXX interpretes germanam suam expressione: Tene
-    illam manum tuam, quibus consentit Vulgata et alii interpres, qui vertunt: Tene manum illius.
-    V. 33. Sic Drusius et editio Rom. eandem vero ipsam vocem [Hebr] habemus infra I Reg. xxxi, 31,
-    cum animum interpretem versione. Niniam, Άλ.
-    δένδρον, arborelan; Σ. φυτον, arbo rem; Ο' ἀρω.
-
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,950,100">
+    TO EBPAIKON. TO EBPAIKON Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebreu" bbox="150,100,300,180">
+    וישכם אברהם בבקר 14
+    כי לגוי גדול אשימנו 18
+    על כן קרא למקום ההוא באר שבע 31
+    ויטע אשל 33
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,100,550,180">
+    14.
+    18.
+    31.
+    33.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,100,900,180">
+    14.
+    18.
+    31.
+    33. Δενδρῶνα φυτείαν.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,180,950,280">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+    14. Bersabee. 14. Bersabee. 14.
+    18. Et corrobora manum tuam 18. Et tene manum illius. 18.
+    in eo.
+    31. Bersabee. 31. Bersabee. 31.
+    33. Arborem. 33. Nemus. 33. Arborum plantationem.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="100,290,900,390">
+    Notæ et variæ lectiones ad cap. XXI Genesis.
+    V. 8. Coislin. in margine, πύτον μέγαν. Sic autem soleat vertere Aquila et Symmachus.
+    V. 18. Sic editio Romana. Sunt qui putent LXX Interpretes germanum sensum expressisse : Tene illum manu tua, quibus consentit Vulgata et alius interpres, qui vertunt : Tene manum illius.
+    V. 33. Sic Drusius et editio Rom. eamdem vero ipsam vocem ישׁא habemus infra I Reg. xxxi, 31, cum omnium interpretum versione. Nimirum, Ἀκ. δενδρώνα, arboretum; Σ. φυτόν, arborem; Ὁ δρυ-
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,400,650,420">
     CAPUT XXII GENESIS.
-
-    TO ΕΒΡΑΙΚΟΝ.                  ΤΟ ΕΒΡΑΙΚΟΝ                   ΑΚΥΛΑΣ.
-                                Ἑλληνικοὶ γράμμασι.
-    [עברית] 1                      1.                              1.
-    [עברית] 2                      2.                              2. Τον μονογενῆ.
-    [עברית] 12                     12.                             12.
-    [עברית] 13 ו Σιρων και ο     13.                             13.
-    Σωραιος, χρεος χρεμάντος.      Εν συχω, el. συγχωρήσ.
-    [עברית] בְּקִרְבּוֹ
-
-    VERSIO HEBRAICI TEXT.             VULGATA LATINA.             AQUILA.
-    4. Tentavit.                      1. Tentavit.               1.
-    2. Unicum.                        2. Unigenitum tuum.        2. Unigenitum.
-    In terram Moria.                  In terram visionis.       In terram conspicuam.
-    12. Unicum tuum.                  12. Unico.                 12.
-    13. Aries detentus. Syrus et      13. Arietem inter vepres.  13.
-    Hebr., aries suspensus.           In perplexo cornibus suis. In condenso.
-
-    Notae et variae lectiones ad cap. XXII.
-
-    V. 1. E. ιδεσθηv. Forte mendum pro ιδεσθαι- autem sic: In primo Regum ubi Graeci, terra visio-
-    suv, excrevit, probavit, vel tentavit: nam sic et nius: Hebrœus habet, terra Moria.
-    series et non potestai. Jud. iii, 1. quod ver- 
-    ut Symmachus, ἀσκησα, ad exercendam.
-    V. 2. Sic Editio Romana. Vocem tum sic explicat interpretes Psalm. xxiv, 16. A. μονογενης. E. μο-
-    νο- Ο'. μονογενής. Aquila, Solaarius, Syrus, miscuit;
-    LXX. unigenitus. Et Proverbs. iv, 8; A. Z. θ. μονο-
-    γενής. Ο'. ἀγαπητικώς. Sic in eadem voce variant hic ut et alibi.
-    Ibid. Hieronymus in Illud. Vide in terorem excellentem. Difficilis est, inquit, idcines lingua Hebræa in
-    Latinum servare. Ubi nunc dicitur: Vade in terram excelsam, in Hebræo habet, vocat, quod Agila transsit, τὴν καταραμένην, hoc est, judicium.
-    Symmachus, τὴν ζημίαν, hoc est, Visionis. Ait ergo Hebræi hanc vocem esse, in quo potius tem-
-    plum conditum est in area Orna Jehusi. Exeberis
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,580,970,990">
+  <bloco tipo="texto_principal" script="misto" bbox="50,420,950,450">
+    TO EBPAIKON. TO EBPAIKON Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebreu" bbox="100,450,300,550">
+    ויהי 1
+    אחר הדברים 2
+    האלה ויאמר
+    קח נא 12
+    וישא אברהם את עיניו וירא והנה איל אחר נאחז בסבך בקרניו 13
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="350,450,550,550">
+    1.
+    2.
+    12.
+    13. Ὁ Σῦρος καὶ ὁ βραῖος, κριὸς κρεμάμενος.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="600,450,900,550">
+    1.
+    2. Τὸν μονογενῆ.
+    Εἰς τὴν γῆν τὴν καταφανῆ.
+    12.
+    13. Ἐν συχμῷ, al. συχεώνᾳ.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,560,950,680">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+    1. Tentavit. 1. Tentavit. 1.
+    2. Unicum. 2. Unigenitum tuum. 2. Unigenitum.
+    In terram Moria. In terram visionis. In terram conspicuam.
+    12. Unicum tuum. 12. Unico. 12.
+    13. Aries detentus. Syrus et 13. Arietem inter vepres. 13.
+    Hebr., aries suspensus. Hærentem cornibus suis. In condenso.
+    In perplexo cornibus suis.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="100,690,900,920">
+    Notæ et variæ lectiones ad cap. XXII.
+    V. 1. Σ. ἐδόξασεν. Forte mendum pro ἐδοκίμασεν, exercuit, probavit, vel tentavit : nam sic et series et vox נסה postulat. Jud. III, 1. נסה vertit Symmachus, δοκῆσαι, ad exercendum.
+    V. 2. Sic Editio Romana. Vocem יחיד sic explicant Interpretes Psalm. xxiv, 16. Ἀ. μοναχός. Σ. μόνος. Ὁ. μονογενής. Aquila, Solitarius; Sym., unicus; LXX, unigenitus. Et Proverb. IV, 5. Ἀ. Σ. Θ. μονογενής. Ὁ. ἀγαπώμενος. Sic in eadem voce variant hic ut et alibi.
+    Ibid. Hieronymus in illud, Vade in terram excelsam. Difficile est, inquit, idioma linguæ Hebrææ in Latinum sermonem vertere. Ubi nunc dicitur, Vade in terram excelsam, in Hebræo habet, moria, quod Aquila transtulit, τὴν καταφανῆ, hoc est, lucidam. Symmachus, τῆς ὀπτασίας, hoc est, Visionis. Aiunt ergo Hebræi hunc montem esse, in quo postea templum conditum est in area Ornæ Jebusæi. Eucherius autem sic : In primo Regum ubi Græci, terra visionis : Hebræus habet, terra Moria.
+    V. 13. Sic omnes mss. et Combefisius ex Eusebio Emiseno cujus hæc sunt verba, τὸ « κατεχόμενον » τῶν καρπάτων, ὁ Σύρος καὶ Ὁ βραῖος « κρεμάμενος » φασίν. Id est : Illud « cornibus detentus » Syrus et Hebræus « suspensus » dicunt.
+    Coislin. עקד בצבא איל 13. Ἀ. Ἐν συχεών ἐν κέρασιν αὐτοῦ. Σ. Κρατούμενον ἐν δικτύῳ τοῖς κέρασιν αὐτοῦ. Ὁ Κατεχόμενος ἐν φυτῷ Σαβὲκ τῶν καρπάτων. 13. Hebr., detentus in perplexitate in cornibus suis. A., in condenso in cornibus suis. S., detentum in rete cornibus suis. LXX, qui tenebatur in virgulto Sabec cornibus. Vulg., inter vepres hærentem cornibus. Sinceriorem plenioremque hic A. et S. lectionem exhibet, quæ cum Hieronymo consonat : nam ille συχεώνᾳ posuit, ut lectionem Aquilæ ad scriem suam adaptaret, uti
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="400,950,600,990">
     Digitized by Google
   </bloco>
-  <notas>Scripts mistos: latim predominante com palavras e linhas em hebraico (transcritas aqui como [עברית]) e trechos gregos com caracteres latinos. Algumas palavras ilegíveis representadas por [ilegivel] não foram necessárias; marquei palavras hebraicas como [עברית] por fidelidade ao original gráfico. BBOX estimadas na escala 0-1000.</notas>
+  <notas>
+    Transcrição de página da Patrologia Graeca (Hexaplorum quæ supersunt). Contém colunas paralelas em Hebraico, Grego e Latim. Algumas abreviações latinas (e.g., "mss.", "ms.") foram mantidas. Caracteres hebraicos e gregos foram transcritos conforme visíveis.
+  </notas>
 </pagina>

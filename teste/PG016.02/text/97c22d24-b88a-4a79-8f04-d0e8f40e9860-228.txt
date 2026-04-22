@@ -1,29 +1,42 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="60,20,940,140">
-    1707                                HEXAPLORUM QUÆ SUPERSUNT.                                1708
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,50">
+    1707 HEXAPLORUM QUAE SUPERSUNT. 1708
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="40,140,320,820">
-    ΤΟ ΕΒΡΑΙΚΟΝ.
-    'Ελληνικοί; γράμματα.
-    שלחחיה
-    עמרי ים
-    חשמנ 9
-    ואלהיה
-    10 מן־הרמעל
-    ובבאים לא־ירדן
-    11 מים למהאב כמדר כבדו ידמו וקדי
-    לקר חודש
-    13, 14. ואמר: דבר יהוה
-    לאמר בשלש שנים כפני שעבר
-    ונקלה כבד מאד בכל החמים
+  <bloco tipo="texto_principal" script="misto" bbox="50,50,330,300">
+    TO ΕΒΡΑΙΚΟΝ.
+    הַשּׁוּחָתִית
+    עַבְרֵי יָם
+    לְאֵלֶּה 9
+    מִן-הַכֶּרֶם 10
+    וּבְכַרְמִים לֹא-יָרֹנּוּ
+    עַל-כֵּן יֶהֱמֶה לִבִּי לְמוֹאָב 11
+    כִּי-חִיר שָׂרֶשׂ
+    כִּי-מֵעַתָּה דָּבַר יְהוָה 14, 13
+    לֵאמֹר בְּשָׁלֹשׁ שָׁנִים כִּשְׁנֵי שָׂכִיר
+    וְנִקְלְתָה כְּבוֹד מוֹאָב בְּכֹל ההָמוֹן
+    רָב מְאֹד
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,140,660,820">
-    TO EBRAIKON
+  <bloco tipo="texto_principal" script="misto" bbox="340,50,550,300">
+    TO ΕΒΡΑΙΚΟΝ
+    Ελληνικοις γραμμασι.
     9.
     10.
     11.
     13, 14.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="560,50,950,300">
+    ΑΚΥΛΑΣ.
+    ✠ Ἀπ' αὐτῆς.
+    Διέβησαν τὴν θάλασσαν.
+    9.
+    Καὶ Ἐλεαλή.
+    10. Ἀπὸ τοῦ Καρμήλου.
+    Καὶ ἐν ἀμπελῶσι οὐκ αἰνέσει.
+    11.
+    13, 14. . . . ἐν τρισὶν ἔτεσι μι-
+    σθωτοῦ.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,310,330,550">
     VERSIO HEBRAICI TEXT.
     Emissiones ejus.
     Transierunt mare.
@@ -31,30 +44,34 @@
     Et Eleale.
     10. A Charmel.
     Et in vineis non exsultabit.
-    
     11. Viscera mea ad Moab ut ci-
-    thara tumultuantur: et intestina
-    meuni super Chir Haros.
-    13, 14. Ex tunc. Et nunc loqu-
-    tus est Dominus dicendo: In tri-
+    thara tumultuabuntur : et intesti-
+    num meuni super Chir Hares.
+    13, 14. Ex tunc. Et nunc locu-
+    tus est Dominus dicendo : In tri-
     bus annis tanquam annis merce-
     narii.
-    
     Et vilipendetur gloria Moab in
     omni turba multa.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="660,140,950,820">
-    ΑΚΥΛΑΣ.
-    Ἀπ' αὐτῆς.
-    Διέβησαν τὴν θάλασσαν.
-    9.
-    Καὶ Ἐλειεὴ.
-    10. Ἀπὸ τοῦ Καρμηλοῦ.
-    Καὶ ἐν ἀμπέλοις οὐκ ἀνθέσει.
-    11.
-    13, 14. . . . ἐν τρισὶν ἔτεσι μι-
-    σθωτοῖς.
-    
+  <bloco tipo="texto_principal" script="latino" bbox="340,310,600,550">
+    VULGATA LATINA.
+    Propagines ejus.
+    Transierunt mare.
+    9. Hesebon.
+    Et Eleale.
+    10. De Carmelo.
+    Et in vineis non exsultabit.
+    11. Venter meus ad Moab quasi
+    cithara sonabit, et viscera mea ad
+    murum cocti lateris.
+    13, 14. Ex tunc : et nunc locu-
+    tus est Dominus dicens : In tribus
+    annis, quasi anni mercenarii.
+    Auferetur gloria Moab super
+    omni populo multo.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="610,310,900,550">
     AQUILA
     ✠ Ab ea.
     Transierunt mare.
@@ -66,81 +83,67 @@
     13, 14. . . . In tribus annis mer-
     cenarii.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="40,820,960,1410">
-    VULGATA LATINA.
-    Propagines ejus.
-    Transierunt mare.
-    9. Hesebon.
-    Et Eleale.
-    10. De Carmelo.
-    Et in vineis non exsultabit.
-    
-    11. Venter meas ad Moab quasi
-    cithara sonabit, et viscera mea ad
-    murum cocti lateris.
-    
-    13, 14. Ex tunc: et nunc locu-
-    tus est Dominus dicens: In tribus
-    annis, quasi anni mercenarii.
-    
-    Auferetur gloria Moab super
-    omni populo multo.
-    
-    Notæ et variæ lectiones ad cap. XVI Hesaiæ.
-    
-    V. 1. In textu LXX interpretum codicis Jes. le-
-    gitur τὸ Φος Σιων, ad marg. vero, θυγατρὸς, δοκι-
-    μιὸς et Γ'. Scilicet tres interpretes habebant ut hodie
-    legitur in edit. Roin. τὸν ὅ, τὸ Φος θυγατρὸς Σιων.
-    V. 2. 'Α., και ὁ στρετ etc. Curterius ex cod. Jes.
-    Sed in edito Curterii vos nossid desideralut. Aliter
-    quam Montf. edidimus A. et Th. lectiones hujus et
-    sequentis versus, ex ipso Curterio qui ita habet:
-    6., αι διασάσεις του Αρων φερετ βολην. 'Α., δια-
-    σάσεις του 'Αρων φ. Dracii.]
-    V. 3. 'Α., φέρετ βουλήν. Lectio Aquilæ et Theo-
-    dotionis ex Curterio. A Massoretes notatur legerun-
-    dum και, et sic legerunt LXX et Vulgatus inter-
-    pres. Alii καὶ legerunt. [sulem discutium de verbo
-    subsequendi. Chietib, TVV, facie. Edit. Ald. , notette.
-    Keri, νυς, fac. Aliae editi., notee te. Sed cum hoc
-    res non sit in textu Hebr., verisimile videtur libra-
-    rijs secidisse poesis in notti re. Dracii.]
-    Ibid. Σ., αναταιον κτλ. Ex Theodoretio pleniore
-    lectiones mutuarun, quam ex Curterio.
-    V. 4. 'Αλοσ, ηννὸν ἀποχηρὰσι αὐταις. Sic Curte-
-    rius sane interpretis nomine. Suspicio esse Aquilae.
-    Ibid. Cod. Jes. 8., Σ, ex in. tess cum obelo.
-    Dracii.] 'Α, ὁμολοι τοι; ὁ.'
-    V. 5. 'Α., και στεμματκιξεται: etc. Eusebius in
-    Hesaiam, et Procopius.
-    V. 6. Σ., υπερψαφνος etc. Lectio Symmachi ex
-    Curterio et Procopio; alterius interpretis ex Cur-
-    terio. [Ibid. 'Αλλος, και etc. In textu habent Ald.
-    et Conpln., καὶ την ὑβριν (All., η ὑβρισ αυτου, και
-    η μήνησ αυτου, qua apud Procop. sub asteriscis
-    marginis addita sunt. Dracii.]
-    V. 7. 'Α., τε διυκροοπος etc. Hæ omnes lectio-
-    nes ex Curterio. [L. Bos lept in Aquil., ατράκων,
-    teste.—Ibid. Decdeb. Aliter. ὁς ΣΕΟ, et ita ad. Rom.
-    Iterumque aliter, Pesseb. Dracii.]
-    V. 8. 'Α., ἀρσουστ τε. Ex eodern. [L. Bos in Th.
-    effer, αγρος, ager. Dracii.]
-    Ibid. Curterius, Χ'Α., Σ., ἀπ' αὐτης. Asterisco
-    significatur hæc in LXX omniafuisse. [Cod. Jes.,
-    'Α., Σ., Χ'Α' αυτης καταλελφθησαν. Cf. Vulg.
-    Graec. Dracii.]
-    Ibid. 'Α., Σ., ὁ, ὅδιγον την θαλασσαν. Sic
-    Drusius, atque ita legisse videtur Procopius, qui
-    sic habet: 'Αθθθιεπαι γαρ εισιν εκ θεου, ως μη
-    διαθεχθηντες την θαλασσαν, και τους περισσοτρας ως
-    πεισφοντες. Quia sic vertit Curterius: Divina spica-
-    bit; ex alia vero sunt delisti, quod mare non transi-
-    runt, nee tentationes effugerunt. Curterius vero ex
-    ms. Jes. in margine ponit θαλασσαν α' Γ' quia vi-
+  <bloco tipo="cabecalho" script="latino" bbox="250,560,700,580">
+    Notæ et variæ lectiones ad cap. XVI Hesiaiæ.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="720,1410,960,1510">
+  <bloco tipo="texto_principal" script="misto" bbox="50,580,490,900">
+    V. 1. In textu LXX Interpretum codicis Jes. le-
+    gitur τὸ ὄρος Σιών, ad marg. vero, θυγατρός, ὁμοί-
+    ως ol Γ'. Scilicet tres Interpretes habebant ut hodie
+    legitur in edit. Roin. τῶν Ο', τὸ ὄρος θυγατρὸς Σιών.
+    V. 2. Ἀ., καὶ ἔσται etc. Curterius ex cod. Jes.
+    Sed in edito Curterii vox νοσσὰ desideratur. [Aliter
+    quam Montf. edidimus A. et Th. lectiones hujus et
+    sequentis versus, ex ipso Curterio qui ita habet :
+    Θ., αἱ διαβάσεις τοῦ Ἀρνν φέρετε βουλήν. Ἀ., δια-
+    βάσεις τοῦ Ἀρνν c. β. DRACH.]
+    V. 3. Ἀ., φέρετε βουλήν. Lectio Aquilæ et Theo-
+    dotionis ex Curterio. A Massoretis notatur legen-
+    dum וְהָיָה, et sic legerunt LXX et Vulgatus inter-
+    pres. Alii וְהָיָה legerunt. [Idem dicendum de verbo
+    subsequenti. Chetib, ושׁע, facite. Edit. Ald., ποιήσατε.
+    Keri, ושׁע, fac. Aliæ edit., ποίει τε. Sed cum hoc
+    τε non sit in textu Hebr., verisimile videtur libra-
+    rios scidisse ποιήσατε in ποίει τε. DRACH.]
+    Ibid. Σ., ἀνάστατον etc. Ex Theodoretio pleniores
+    lectiones mutuamur, quam ex Curterio.
+    V. 4. Ἄλλος, γίνου ἀποκρυφὴ αὐτοῖς. Sic Curte-
+    rius sine interpretis nomine. Suspicor esse Aquilæ.
+    Ibid. Cod. Jes. Θ., Σ., ἐκ τῆς γς [cum obelo.
+    DRACH.], Ἀ. ὁμοίως τοῖς Ο'.
+    V. 5. Ἀ., κα ἑτοιμασθήσεται etc. Eusebius in
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="500,580,950,900">
+    Hesaiam, et Procopius.
+    V. 6. Σ., ὑπερήφανος etc. Lectio Symmachi ex
+    Curterio et Procopio ; alterius interpretis ex Cur-
+    terio. [Ibid. Ἄλλος. καὶ etc. In textu habent Ald.
+    et Compl., καὶ τὴν δριν (Ald., ἡ ὕδρις) αὐτοῦ, καὶ
+    ἡ μῆνις αὐτοῦ, quæ apud Procop. sub asteriscis
+    margini addita sunt. DRACH.]
+    V. 7. Ἀ., τοῖς πολυχρονίοις etc. Hæ omnes lectio-
+    nes ex Curterio. [L. Bos legit in Aquil., ὀστράκου,
+    testæ.—Ibid. Δεσθ. Αἴτητ. δὲ Σέθ, et ita ed. Rom.
+    Iterumque aiiter, Ῥεσώθ. DRACH.]
+    V. 8. Ἀ., ρουραι etc. Ex eodem. [L. Bos in Th.
+    effert, ἀγρός, ager. DRACH.]
+    Ibid. Curterius, ✠ Ἀ., Σ., ἀπ' αὐτῆς. Asterisco
+    significatur hæc in LXX omissa fuisse. [Cod. Jes.,
+    Ἀ., Σ., ✠ ἀπ' αὐτῆς κατελείφθησαν. Cf. Vulg.
+    Græc. DRACH.]
+    Ibid. Ἀ., Σ., Θ., διέβησαν τὴν θάλασσαν. Sic
+    Drusius, atque ita legisse videtur Procopius, qui
+    sic habet : Ἀδοχθητοί γάρ εἰσιν ἐκ Θεοῦ, ὡς μὴ
+    διαβεβηκότες τὴν θάλασσαν, καὶ τοὺς πειρασμοὺς πε-
+    φυγόντες. Quæ sic vertit Curterius : Divina siqui-
+    dem ope ideo sunt destituti, quod mare non transie-
+    runt, nec tentationes effugerunt. Curterius vero ex
+    ms. Jes. in margine ponit θάλασσαν ol Γ' quia vi-
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,950,800,980">
     Digitized by Google
   </bloco>
-  <notas>Pagina com texto misto: latim, grego e hebraico. Algumas palavras ilegíveis foram mantidas conforme imagem; margens e colunas mapeadas esquerda->direita. BBOX estimadas em escala 0-1000.</notas>
+  <notas>
+    Texto contém hebraico, grego e latim. A transcrição do hebraico segue a visualização na imagem, que pode conter variantes textuais (ex. הַשּׁוּחָתִית no início). Números de versículos estão intercalados. Notas críticas na parte inferior contêm abreviações e referências a manuscritos (Cod. Jes., Ald., etc.).
+  </notas>
 </pagina>

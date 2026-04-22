@@ -1,24 +1,28 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="capa_ou_guarda">
   <bloco tipo="cabecalho" script="latino" bbox="33,24,179,113">
     BUILDING
     USE ONLY
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="301,105,618,178">
-    [ilegivel] [ilegivel] [ilegivel]
   </bloco>
   <bloco tipo="nota_marginal" script="latino" bbox="8,162,65,421">
     BUILDING
     USE ONLY
   </bloco>
+  <bloco tipo="nota" script="latino" bbox="301,105,618,178">
+    [ilegivel] [ilegivel] [ilegivel]
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="700,20,900,90">
+    [ilegivel]
+  </bloco>
   <bloco tipo="nota_marginal" script="latino" bbox="24,729,244,955">
+    BUILDING
+    USE ONLY
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="0,940,180,1000">
     BUILDING
     USE ONLY
   </bloco>
   <bloco tipo="rodape" script="latino" bbox="773,884,992,988">
     Digitized by Google
   </bloco>
-  <notas>
-    tipo_pagina: capa_ou_guarda;
-    observacoes: página com carimbos e marcas; texto principal limitado a selos "BUILDING / USE ONLY" em várias posições (incluindo rotações), uma mancha/caroço ilegível no terço superior central, e rodapé "Digitized by Google". Transcrição preserva maiúsculas e quebras visuais. Nenhuma normalização realizada.
-  </notas>
+  <notas>tipo_pagina: capa_ou_guarda; observacoes: página com selos/carimbos repetidos "BUILDING / USE ONLY" (carimbo horizontal no canto superior esquerdo; duas incidências verticais ao longo da margem esquerda; carimbo inclinado parcialmente visível no canto inferior esquerdo). Uma mancha/transferência no terço superior-central, não legível (transcrita como três ocorrências [ilegivel]); pequena marca/risca no canto superior direito (transcrita como [ilegivel]); rodapé "Digitized by Google". Transcrições preservam caixa (maiúsculas) e quebras visuais; [ilegivel] usado por palavra quando o conteúdo não é decifrável. BBOX são aproximações no sistema 0-1000; carimbos verticais/rotacionados mantidos como nota_marginal (rotações não normalizadas). Ordem dos blocos baseada na leitura visual da página (cabecalho e marcas marginais identificadas separadamente).</notas>
 </pagina>

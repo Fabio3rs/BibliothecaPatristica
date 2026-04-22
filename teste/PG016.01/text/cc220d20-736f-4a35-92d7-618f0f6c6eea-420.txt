@@ -1,75 +1,93 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,120">
-    803                                                HEXAPLORUM QUÆ SUPERSUNT.                                                 804
-    TO EBPAIKON.                              TO EBPAIKON                       AKTUALS.
-                                             Ἑλληνικοῖς γράμμασι.
+  <bloco tipo="cabecalho" script="latino" bbox="50,40,950,80">
+    803 HEXAPLORUM QUÆ SUPERSUNT. 804
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,120,360,620">
-    (Hebrew column:)
-    מִשְׁנָה 12
-    כי אדניך 13
-    -שׂר-צ?
-    במתנה
-    ממתנת זהב 14
-    למצוות 15
-    תתתת?
-    מבואות
-    תחת אבותיך יהיו בנך 17
-    אזכירה שמך בכל-דד 18
-    על-ק עמים יהודוך לעולם עד
+  <bloco tipo="texto_principal" script="misto" bbox="50,80,950,120">
+    TO EBPAIKON. TO EBPAIKON AKYLAS.
+    Ἑλληνικοῖς γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="360,120,640,620">
-    (Latin column:)
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,120,350,400">
+    יתאו 12
+    כי-הוא אדניך 13
+    בת-צר
+    במנחה
+    במשכנות זהב 14
+    לרקמות 15
+    תחתנה
+    מחבאות
+    תחת אבתיך יהיו בניך 17
+    אזכירה שמך בכל-דר ודר 18
+    על-כן עמים יהודוך לעולם ועד
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,120,450,400">
     12.
     13.
     14.
     15.
     17.
     18.
-    VERSIO HEBRAICI TEXT.
-    12. Et concupiscet. Hieron., ia.
-    Quoniam ipse Dominus tuus.
-    Hieron., quia ipse etc.
-    13. Et incurva te ei. Hieron., et adora eum.
-    Filia sor. Hieron., filia fortis.
-    In munere. Hieron., in mune ribus.
-    14. Ex ocellaturis auri. Hieron., fasciis aureis.
-    15. In scutulatis. Hieron., id.
-    Sociae ejus. Hieron., amicæ ejus.
-    Adductæ. Hieron., ducentur.
-    17 Pro patribus tuis erunt filii tui. Hieron., id.
-    18. Memorare faciam nomen tuum in omni generatione et generatione. Propterea populi confitebuntur tibi in sæculum et perpetuum. Hieron., recordabor nominis tui in omni generatione et generatione. Propterea populi confitebuntur tibi in sæculum et in æternum.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="640,120,960,620">
-    (Greek column:)
+  <bloco tipo="texto_principal" script="grego" bbox="650,120,900,400">
     12.
-    13. Και προσκυνήσουσιν αὐτή.
-    θυγάτηρ Σόρ.
+    13. Καὶ προσκύνησον αὐτῷ.
+    Θυγάτηρ Σόρ.
     14.
     15.
-    17. Ἀπὸ τῶν πατέρων σου ἔσονται σοι υἱοὶ σου.
-    18. Ἀναμνήσῃσοι τὸ ὄνομά σου καθ' ἑκάστην γενεάν, διὰ τοῦτο λαοὶ ὑμνήσουσι σὲ εἰς αἰῶνα διηνεκῶς.
+    17. Ἀντὶ τῶν πατέρων σου ἔσονταί σοι υἱοί σου.
+    18. Ἀναμνήσω τὸ ὄνομά σου καθ' ἑκάστην γενεάν, διὰ τοῦτο λαοὶ ὑμνήσουσί σε εἰς αἰῶνα δι-ηνεκῶς.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,620,960,980">
-    VULGATA LATINA.                           AQUILA.
-    Circumdata varietate.                    12.
-    12. Et concupiscet.                      12.
+  <bloco tipo="texto_principal" script="latino" bbox="50,420,950,450">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,450,350,730">
+    12. Et concupiscet. Hieron., ia.
+    Quoniam ipse Dominus tuus. Hieron., quia ipse etc.
+    13. Et incurva te ei. Hieron., et adora eum.
+    Filia sor. Hieron., filia fortis.
+    In munere. Hieron., in muneribus.
+    14. Ex ocellaturis auri. Hieron., fasciis aureis.
+    15. In scutulatis. Hieron., id.
+    Sociæ ejus. Hieron., amicæ ejus.
+    Adductæ. Hieron., ducentur.
+    17 Pro patribus tuis erunt filii tui. Hieron., id.
+    18. Memiorare faciam nomen tuum in omni generatione et generatione. Propterea populi confitebuntur tibi in sæculum et perpetuum. Hieron., recordabor nominis tui in omni generatione et generatione. Propterea populi confitebuntur tibi in sæculum et in æternum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,450,620,730">
+    Circumdata varietate.
+    12. Et concupiscet.
     Quoniam ipse est Dominus Deus tuus.
-    13. Et adorabunt eum.                     13. Et adora eum.
-    Filiae Tyri.                             Filia sor.
-    'n muneribus.                            14.
-    14. In fimbriis aureis.                   14.
-    15. Circumamicta varietatibus.           15.
+    13. Et adorabunt eum.
+    Filiae Tyri.
+    In muneribus.
+    14. In fimbriis aureis.
+    15. Circumamicta varietatibus.
     Proximæ ejus.
     Afferentur
     17. Pro patribus tuis nati sunt tibi filii.
-    18. Memores erunt nominis tui in omni generatione et generationem. Propterea populi confitebuntur tibi in aeternum et in sæculum sæculi.
-    17. Pro patribus tuis erunt tibi filii tui.
-    18. Memorabo nomen tuum per unacumque generationem; propterea populi celebrabunt te in sæculum semper.
-    
-    Notæ et variæ lectiones ad Psalmum XLIV.
-    V. 4. Tituli lectiones suppediant Eusebius, mss., Drusius et Hieronymus Epist. ad Principiam; ita ut quæ in aliis desunt, ex aliis supplentur. Non omittenda autem Hieronymi verba. In Hebraico, sic ille, scriptum est, LAMANASSES AL SOSANNIN LABNE CORE MESCHIL SIR IDDOTH, quod nos in Latinum vertimus : Victori pro illis filiorum
-    Core, eruditionis canticum amansissimi. Symmachus more suo manifestius, triumphum pro doribus, interpretatus est. Igitur SOSANNIM vel, pro his qui commendati sunt, vel in illa transferunt et flores : MESCHIL, quoque et eruditionem, et docissimum sonat. SIR, canticum : DIDDIA antiquum Salomonis est nomen, qui alio sensu pacificus appellat.
+    18. Memores erunt nominis tui in omni generatione et generationem. Propterea populi confitebuntur tibi in æternum et in sæculum sæculi.
   </bloco>
-  <notas>Scripts present: hebrew, latin, greek. Some Hebrew words partially illegible; [ilegivel] not used because isolated uncertain fragments left as-is. BBOXes are approximate relative positions on page (0-1000 scale).</notas>
+  <bloco tipo="texto_principal" script="latino" bbox="650,450,900,730">
+    12.
+    13. Et adora eum.
+    Filia sor.
+    14.
+    15.
+    17. Pro patribus tuis erunt tibi filii tui.
+    18. Memorabo nomen tuum per unamquamque generationem: propterea populi celebrabunt te in sæculum semper.
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="50,740,950,760">
+    Notæ et variæ lectiones ad Psalmum XLIV.
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="50,760,480,920">
+    V. 1. Tituli lectiones suppeditant Eusebius, mss., Drusius et Hieronymus Epist. ad Principiam; ita ut quæ in aliis deficiunt, ex aliis suppleantur. Non omittenda autem Hieronymi verba, In Hebraico, sic ille, scriptum est, LAMANASSE AL SOSANNIM LABNE CORE MESCHIL SIR IDIDOTH, quod nos in Latinum vertimus : Victori pro liliis filiorum
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="500,760,950,920">
+    Core, eruditionis canticum amantissimi. Symmachus more suo manifestius, triumphum pro floribus. interpretatus est. Igitur SOSANIM vel, pro his qui commutandi sunt, vel in lilia transfertur et flores: MESCHII. quoque et eruditionem, et doctissimum sonat. SIR, canticum: IDIDIA antiquum Salomonis est nomen, qui alio sensu pacificus appella-
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="550,950,800,990">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Documento apresenta estrutura poliglota (Hexapla). Coluna 1 superior em hebraico. Coluna 3 superior em grego (Aquila). Seção média em latim. Notas críticas em latim na parte inferior.
+  </notas>
 </pagina>

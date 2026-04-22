@@ -1,52 +1,83 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,160">
+  <bloco tipo="cabecalho" script="latino" bbox="410,35,590,55">
     SÆCULUM IV.
   </bloco>
-  <bloco tipo="cabecalho" script="grego" bbox="150,150,850,260">
+  <bloco tipo="texto_principal" script="grego" bbox="270,65,730,90">
     ΤΟΥ ΕΝ ΑΓΙΟΙΣ ΠΑΤΡΟΣ ΗΜΩΝ
   </bloco>
-  <bloco tipo="cabecalho" script="grego" bbox="80,260,920,420">
+  <bloco tipo="texto_principal" script="grego" bbox="130,100,870,180">
     ΜΕΘΟΔΙΟΥ,
   </bloco>
-  <bloco tipo="cabecalho" script="grego" bbox="220,420,780,480">
+  <bloco tipo="texto_principal" script="grego" bbox="380,190,620,210">
     ΕΠΙΣΚΟΠΟΥ ΚΑΙ ΜΑΡΤΥΡΟΣ,
   </bloco>
-  <bloco tipo="cabecalho" script="gregο" bbox="160,490,840,560">
+  <bloco tipo="texto_principal" script="grego" bbox="200,220,800,250">
     ΤΑ ΕΥΡΙΣΚΟΜΕΝΑ ΠΑΝΤΑ.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="80,600,920,760">
+  <bloco tipo="texto_principal" script="latino" bbox="100,280,900,340">
     S. P. N. METHODII,
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="220,760,780,820">
+  <bloco tipo="texto_principal" script="latino" bbox="390,350,610,370">
     EPISCOPI ET MARTYRIS,
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="200,830,800,900">
+  <bloco tipo="texto_principal" script="latino" bbox="290,380,710,410">
     OPERA OMNIA.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,920,880,1260">
+  <bloco tipo="texto_principal" script="latino" bbox="470,430,530,445">
     ACCEDUNT
-    S. PETRI ET S. ALEXANDRI, ALEXANDRINORUM PRESULUM,
-    S. EUSTATHII ANTIOCHENI EPISCOPI ET CONFESSORIS, TITI BOSTRENSIS, THEODORI HERACLEENSIS,
-    ALEXANDRI LYCOPOLITANI,
-    
-    SCRIPTA QUÆ SUPERSUNT,
-    
-    ACCURANTE ET RECOGNOSCENTE J.-P. MIGNE,
-    BIBLIOTHECÆ CÆLI UNIVERSÆ
-    SIVE
-    CURSUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ ...
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="200,1290,800,1420">
+  <bloco tipo="texto_principal" script="latino" bbox="250,455,750,470">
+    S. PETRI ET S. ALEXANDRI, ALEXANDRINORUM PRÆSULUM,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,475,900,490">
+    S. EUSTATHII ANTIOCHENI EPISCOPI ET CONFESSORIS, TITI BOSTRENSIS, THEODORI HERACLEENSIS,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,495,650,510">
+    ALEXANDRI LYCOPOLITANI,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="310,520,690,545">
+    SCRIPTA QUÆ SUPERSUNT,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="240,560,760,580">
+    ACCURANTE ET RECOGNOSCENTE J.-P. MIGNE,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="280,590,720,610">
+    BIBLIOTHECÆ CLERI UNIVERSÆ
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,615,520,630">
+    SIVE
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,635,850,655">
+    CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ CURSUS
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="620,580,940,650">
+    PHILADELPHIA
+    DIVINITY SCHOOL
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,695,600,720">
     TOMUS UNICUS.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="220,1430,780,1500">
+  <bloco tipo="texto_principal" script="latino" bbox="360,770,640,790">
     VENIT 10 FRANCIS GALLICIS.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="60,1520,940,1840">
-    EXCUDEBATUR ET VENIT APUD J.-P. MIGNÉ EDITOREM,
+  <bloco tipo="rodape" script="latino" bbox="220,855,780,875">
+    EXCUDEBATOR ET VENIT APUD J.-P. MIGNE EDITOREM,
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="110,875,890,895">
     IN VIA DICTA D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM,
-    SEU PETIT-MONROUGE.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="380,895,620,910">
+    SEU PETIT-MONTROUGE.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="470,920,530,940">
     1857
   </bloco>
-  <notas>Scriptos principais latim e grego. Texto central contém carimbo parcialmente ilegível transposto como "..." no final do bloco principal. Pequenas manchas e carimbo à direita sobre texto principal não alteraram leitura essencial; palavras muito danificadas marcadas por reticências.</notas>
+  <bloco tipo="outro" script="latino" bbox="580,960,850,985">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Página de título com texto em grego e latim.
+    Carimbo de biblioteca "PHILADELPHIA DIVINITY SCHOOL" sobreposto ao texto na seção "BIBLIOTHECÆ...".
+    Ligaturas Æ utilizadas em PRÆSULUM, QUÆ, ECCLESIASTICÆ, LUTETIÆ.
+  </notas>
 </pagina>

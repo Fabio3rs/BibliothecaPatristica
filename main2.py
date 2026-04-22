@@ -770,7 +770,7 @@ REGRAS:
 6. Em duas colunas: transcreva a coluna esquerda inteira, depois a direita. Cabeçalhos e rodapés span-completo ficam na posição visual que ocupam.
 7. Não traduza, não normalize, não invente. Use [ilegivel] apenas por palavra, nunca por bloco.
 
-Nota sobre layout: Letras A, B, C, D na vertical central são nota_marginal de identificação do parágrafo.
+Nota sobre layout: Letras A, B, C, D na vertical central são nota_marginal de seção.
 
 Formato de saída:
 <pagina estado="com_texto">
@@ -784,6 +784,39 @@ Retorne APENAS o XML.
 """.strip()
 
 
+PROMPT_CORRECAO_LLM_VS_TESSERACT = """
+Atue como especialista em paleografia (Patrologia). Transcreva a imagem para XML fiel, priorizando a visão da imagem sobre os rascunhos de OCR (Tesseract/LLM).
+
+Diretrizes:
+1. Estado: Use `vazio` apenas se não houver tinta; caso contrário, `com_texto`.
+2. Layout: Mapeie todos os blocos (cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal). Letras centrais A, B, C, D são `nota_marginal`.
+3. Fluxo: Transcreva coluna esquerda, depois a direita. BBOX em escala 0-1000.
+4. Fidelidade: Proibido traduzir ou normalizar. Use `[ilegivel]` apenas por palavra.
+5. Scripts: latino, grego, copta, siriaco, cirilico, ethiopico, armenio, arabe, hebraico, misto.
+
+Formato de Saída (APENAS XML):
+<pagina estado="com_texto/vazio" tipo="capa_ou_guarda/texto/gravura">
+  <bloco tipo="..." script="..." bbox="x1,y1,x2,y2">
+    transcrição literal
+  </bloco>
+  <notas>detalhes técnicos ou correções</notas>
+</pagina>
+""".strip()
+
+
+USER_PROMPT_CORRECAO_LLM_VS_TESSERACT = """
+<tesseract>
+{tesseract_text}
+</tesseract>
+
+<llm_ocr>
+{llm_ocr}
+</llm_ocr>
+
+Proceda conforme instruções do system. Retorne apenas o XML sem markdown.
+Atenção as colunas e ao gutter (se houver), identificação A,B,C,D devem ficar em seu próprio bloco de nota_marginal. Cuidado: NÃO coloque a identificação das seções dentro do texto das colunas.
+""".strip()
+
 USER_PROMPT_VERIFY_LLM_VS_TESSERACT = """
 <rascunho_ocr>
 {tesseract_text}
@@ -794,6 +827,7 @@ USER_PROMPT_VERIFY_LLM_VS_TESSERACT = """
 </llm_ocr>
 
 Proceda conforme instruções do system. Retorne apenas o XML sem markdown.
+Atenção as colunas e ao gutter (se houver), identificação A,B,C,D devem ficar em seu próprio bloco de nota_marginal. Cuidado: NÃO coloque a identificação das seções dentro do texto das colunas.
 """.strip()
 
 USER_PROMPT_VERIFY_TESSERACT = """
@@ -802,6 +836,7 @@ USER_PROMPT_VERIFY_TESSERACT = """
 </rascunho_ocr>
 
 Proceda conforme instruções do system. Retorne apenas o XML sem markdown.
+Atenção as colunas e ao gutter (se houver), identificação A,B,C,D devem ficar em seu próprio bloco de nota_marginal. Cuidado: NÃO coloque a identificação das seções dentro do texto das colunas.
 """.strip()
 
 PROMPT_LLM_JUDGE = """
@@ -1011,8 +1046,7 @@ def ollama_process_image(
             {"role": "system", "content": system_prompt},
             {
                 "role": "user",
-                "content": user_prompt
-                + "\nAtenção as colunas e ao gutter (se houver), identificação A,B,C,D devem ficar em seu próprio bloco de nota_marginal. Cuidado: NÃO coloque a identificação das seções dentro do texto das colunas.",
+                "content": user_prompt,
                 "images": [img_b64],
             },
         ],
@@ -1120,6 +1154,13 @@ def openai_process_image(
 
     image_url = {"url": f"data:{mime};base64,{img_b64}"}
 
+    if "gpt-5" in model:
+        image_url["detail"] = "high"
+
+    if "gpt-5.4" in model:
+        # A partir do 5.4 original rende a melhor qualidade disponível
+        image_url["detail"] = "original"
+
     messages = [
         {"role": "system", "content": system_prompt},
         {
@@ -1147,10 +1188,9 @@ def openai_process_image(
     if "gpt-5" not in model:
         payload["temperature"] = 0.05
     else:
-        # payload["detail"] = "original"
         if reprocess:
-            payload["reasoning_effort"] = "high"
-            timeout = 900
+            payload["reasoning_effort"] = "medium"
+            timeout = 1200
         else:
             payload["reasoning_effort"] = "medium"
 
@@ -1562,7 +1602,9 @@ def verify_page(
 
     # Vou descartar os ilegíveis para evitar conflito com o Tesseract que não insere [ilegivel]
     overlap = latin_overlap_result(
-        txt.replace("[ilegivel]", ""), tesseractres, name=img_path.name
+        txt.replace("[ilegivel]", "").replace("[ilegível]", ""),
+        tesseractres,
+        name=img_path.name,
     )
 
     if (
@@ -1572,7 +1614,7 @@ def verify_page(
             f"[VERIFY] {img_path.name} — possível degradação/script complexo (Overlap: {overlap.overlap_ratio:.2f}, Recall: {overlap.recall_ratio:.2f})"
         )
 
-    if txt.count("[ilegivel]") > 10:
+    if (txt.count("[ilegivel]") + txt.count("[ilegível]")) > 3:
         print(f"[VERIFY] {img_path.name} — muitos tokens ilegíveis detectados")
         return False
 
@@ -1960,6 +2002,8 @@ def ocr_images_to_text(
                 openai_base_url=openai_base_url,
                 openai_api_key=openai_api_key,
                 system_prompt=prompt,
+                user_prompt="Proceda conforme instruções do system."
+                + "\nAtenção as colunas e ao gutter (se houver), identificação A,B,C,D devem ficar em seu próprio bloco de nota_marginal. Cuidado: NÃO coloque a identificação das seções dentro do texto das colunas.",
             )
         else:
             txt = ocr_tesseract(img_path)
@@ -1979,7 +2023,8 @@ def ocr_images_to_text(
                     model=llm_model,
                     prompt_key="PROMPT",
                     system_prompt=prompt,
-                    user_prompt="Proceda conforme instruções do system.",
+                    user_prompt="Proceda conforme instruções do system."
+                    + "\nAtenção as colunas e ao gutter (se houver), identificação A,B,C,D devem ficar em seu próprio bloco de nota_marginal. Cuidado: NÃO coloque a identificação das seções dentro do texto das colunas.",
                 )
             else:
                 _ev_id = ocr_versions_db.get_or_create_engine_version(
@@ -2138,9 +2183,11 @@ def _ocr_one(
         )
 
         txt = None
+        txtoriginal = None
         page_txt_path = txt_path_for_image(img_path, txt_dir)
         if page_txt_path.exists():
             txt = page_txt_path.read_text(encoding="utf-8", errors="ignore")
+            txtoriginal = txt
 
             to_reset = []
 
@@ -2225,9 +2272,9 @@ def _ocr_one(
                         tesseract_text=tesseractres
                     )
                 else:
-                    prompt_llm_judge = PROMPT_VERIFY_LLM_VS_TESSERACT
-                    user_prompt = USER_PROMPT_VERIFY_LLM_VS_TESSERACT.format(
-                        tesseract_text=tesseractres, llm_ocr=txt
+                    prompt_llm_judge = PROMPT_CORRECAO_LLM_VS_TESSERACT
+                    user_prompt = USER_PROMPT_CORRECAO_LLM_VS_TESSERACT.format(
+                        tesseract_text=tesseractres, llm_ocr=txtoriginal
                     )
 
                 print(f"PROMPT_VERIFY_LLM_VS_TESSERACT  {prompt_llm_judge}")
@@ -2262,6 +2309,10 @@ def _ocr_one(
                     openai_base_url=openai_base_url,
                     openai_api_key=openai_api_key,
                     reprocess=reprocess,  # Dependendo do provedor, isto influencia a qualidade que iremos enviar
+                    user_prompt=(
+                        "Proceda conforme instruções do system."
+                        + "\nAtenção as colunas e ao gutter (se houver), identificação A,B,C,D devem ficar em seu próprio bloco de nota_marginal. Cuidado: NÃO coloque a identificação das seções dentro do texto das colunas."
+                    ),
                 )
                 t5 = time.time()
                 print(

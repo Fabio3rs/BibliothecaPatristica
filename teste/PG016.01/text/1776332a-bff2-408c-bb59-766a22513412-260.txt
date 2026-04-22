@@ -1,81 +1,82 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,120">
+  <bloco tipo="cabecalho" script="latino" bbox="45,30,100,50">
+    495
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,25,650,55">
     HEXAPLORUM QUÆ SUPERSUNT.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,120,330,860">
-    TO EBPAIKON.
-    אׇשֶׁר חוּי בְּרִי - פשׁ
-    8.
-    9 כי אמר לא יסף: גבר ברעתו
-    9.
-    עָם־אלהים
-    10 סלה לא מרשע וּצדִי מׇעַל
-    10.
-    11 כי פעל אדם ישלם-לו ויאחז
-    11.
-    איש יְמַיצֵא
-    16, 17 ואם-בינה שמע-זאת
-    16,17.
-    האזינה קל לי: והאת מה נאמר משׁפט
-    חדשׁ
-    19 שרים
-    19.
-    22 ואין צמחות לחסר שם פעַל
-    22.
-    אין
-    23 כי לא על-איש שמים עוד
-    23.
-    24 הלך אל-אל במשפט
-    24.
-    25-31 לקנ יכם מעשׂיהם יחשך
-    לילה ודקרו: חכמת-ראשנים ספקם
-    במקום הואים: אשר על-יד סד
-    מאחריו וכל-דרכיו לא ישׁלכו:
-    לבוא עליו יצחק-זל ותעמח נשׁים
+  <bloco tipo="cabecalho" script="latino" bbox="890,30,950,50">
+    496
   </bloco>
-  <bloco tipo="texto_principal" script="greco" bbox="340,120,660,860">
+  
+  [!-- Upper Section: Hebrew --]
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,320,480">
+    TO EBPAIKON.
+    אנשי חצי במו - פשע
+    8.
+    9 כי אמר לא יכן-גבר ברעתו
+    עם-אלהים
+    10 חלילה לא מרשע ושדי מעיל
+    11 כי פעל אדם ישלם-לו ובארח
+    איש ימצאנו
+    16, 17 ואם-בינה שבעה-זאת
+    האזינה לקול מלי: האף שואה משפט
+    יחטש
+    19 שרים
+    22 ואין צלמות להכתר שם פעלי
+    אין
+    23 כי לא על-איש ישים עוד
+    24 להלך אל-אל במשפט
+    25-34 לכן חכמי לב יקשיבו
+    לי ויודעי: תחת-רשעים נפקם
+    מכסום רואים: אשר על-כן סרי
+    מחזורי ולא-דרכו לא השכילו:
+    לביא עלי צעקת-לד צעקת עניים
+  </bloco>
+
+  [!-- Upper Section: Transliteration --]
+  <bloco tipo="texto_principal" script="misto" bbox="330,60,550,480">
     TO EBPAIKON
-    Eλληνικοὶ χαρακτῆρες.
+    Ελληνικοις γράμμασι.
     8.
     9.
     10.
     11.
-    16,17. Εἰ μὴ συνιεις, ἄκουε. Ἀρα
-    ἂ μισῶν χωρὶν ἐπιδήσει εἰς ταῦτα;
+    16, 17.
     19.
-    22. ✠ Οὐδὲ ἐστι σκιὰ θανάτου
-    τοῦ χρονδέναι τοὺς ποιοῦντας τὰ
-    ἁμαρτ.
+    22.
     23.
     24.
     25-34.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,120,980,860">
+
+  [!-- Upper Section: Greek --]
+  <bloco tipo="texto_principal" script="grego" bbox="650,60,950,480">
     8.
     9.
     10.
     11.
-    16,17. Ei μη συνειες, ακουε. Ἀρα
-    ὁ μισῶν χρίσιν ἐπιδήσει εις ταῦτα;
+    16, 17. Εἰ μὴ συνίεις, ἄκουε. Ἆρα
+    ὁ μισῶν κρίσιν ἐπιδήσει εἰς ασιν;
     19.
-    22. ✠ Οὐδὲ ἐστι σκιὰ θανάτου
-    τοῦ χρονδέναι τοὺς ποιοῦντας τὰ
-    ἁμαρτ.
+    22. ⛤ Οὐδέ ἐστι σκιὰ θανάτου
+    ⛤ το κρυβῆναι τοὺς ποιοῦντας τὰ
+    ⛤ ἄνομα.
     23.
     24.
-    25-34
+    25-34.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="30,870,980,980">
-    VERSIO HEBRAICI TEXT.     VULGATA LATINA.     AQUILA.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,980,162,1990">
-    Dolore plena sagilla mea absque
+
+  [!-- Lower Section: Versio Hebraici --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,500,320,920">
+    VERSIO HEBRAICI TEXT.
+    Dolore plena sagitta mea absque
     pravaricatione.
     8.
     9. Quia dixit, Non proficiet vir
     in complacendo ipso cum Deo.
     10. Absit a Deo ab improbitate,
-    et Omnipioens ab iniquitate.
+    et Omnipotens ab iniquitate.
     11. Quia opus hominis reddet
     ei, et juxta viam viri invenire fa-
     ciet ei.
@@ -90,63 +91,79 @@
     ponet amplius.
     24. Ad eundum ad Deum in ju-
     dicium.
-    25-34. Ideo manifestabitur opera eo-
-    rum, et convertere noctem, et conte-
-    rrentur. Pro improbis percussit eos
-    in loco videntium.Qui ideo recesserunt de post eum, et omnes vias
-    ejus non intellegerunt: ad adducen-
-    dum super eum clamor enim, et
+    25-34. Ideo manifestabit opera eo-
+    rum, et convertet noctem, et conte-
+    rentur. Pro improbis percussit eos
+    in loco videntium. Qui ideo recesse-
+    runt de post eum, et omnes vias
+    ejus non intellexerunt: ad adducen-
+    dum super eum clamorem egeni, et
     clamorem afflictorum audiet. Et
     ipse requiescere faciet, et quis con-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,980,495,1990">
+
+  [!-- Lower Section: Vulgata Latina --]
+  <bloco tipo="texto_principal" script="latino" bbox="330,500,650,920">
+    VULGATA LATINA.
     Violenta sagitta mea absque
-    ulio peccato.
+    ullo peccato.
     8.
-    9. Dixit enim: Non placebit vir
+    9. Dixit enim : Non placebit vir
     Deo, etiam si cucurrerit cum eo.
-    10. Absit a Deo inpietas, et ab
+    10. Absit a Deo impietas, et ab
     Omnipotente iniquitas.
     11. Opus enim hominis reddet
     ei, et juxta vias singulorum re-
     stituet eis.
-    16,17. Si habes ergo intellec-
-    tum, audi quod dicitur, et ausculta
+    16, 17. Si habes ergo intellec-
+    ctum, audi quod dicitur, et ausculta
     vocem eloquii mei. Numquid qui
     non amat judicium sanari potest?
     19. Principum.
     22. Et non est umbra mortis,
-    ut abscndantur ibi qui operantur
+    ut abscondantur ibi qui operantur
     iniquitatem.
     23. Neque enim ultra in homi-
     nis potestate est.
     24. Ut veniat ad Deum in judi-
     cium.
-    25-34. Novi enim opera eorum:
-    et ideo inducet noctem, et con-
+    25-34. Novit enim opera eorum:
+    et idcirco inducet noctem, et con-
     terentur. Quasi impios percussit
     eos in loco videntium. Qui quasi
     de industria recesserunt ab eo,
     et omnes vias ejus intelligere no-
-    luerunt: ut pervenerint lacerent ad
+    luerunt: ut pervenire facerent ad
     eum clamorem egeni, et audiret
     vocem pauperum. Ipso enim con-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,980,980,1990">
+
+  [!-- Lower Section: Aquila --]
+  <bloco tipo="texto_principal" script="misto" bbox="660,500,950,920">
+    AQUILA.
     8.
     9.
     10.
     11.
-    16, 17. Si non intelligis, audi.
+    16, 17. Et si non intelligis, audi.
     Num qui odit judicium, alligabit
     ad medelam?
     19.
-    22. ✠ Et non est umbra mor-
-    tis, ut latient qui faciunt ini-
-    quia.
+    22. ⛤ Et non est umbra mor-
+    ⛤ tis, ut latitent qui faciunt ini-
+    ⛤ qua.
     23.
     24.
     25-34.
   </bloco>
-  <notas>Scripts presentes: hebraico (direita-esquerda) no bloco esquerdo superior; grego no bloco central superior; latino em várias colunas. Algumas linhas hebraicas parcialmente danificadas; usei [ilegivel] apenas onde estritamente necessário (nenhum uso requerido). A pagina contém margens com sinais tipográficos (✠) e numerações que foram transcritas. Correções editoriais não realizadas; respeitado layout em colunas (esquerda para hebraico, centro grego, direita latino).</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="600,960,900,990">
+    Digitized by Google
+  </bloco>
+
+  <notas>
+    Símbolos obelos (⛤ ou similar) presentes no texto grego e na coluna de Aquila (versículo 22).
+    Texto hebraico na coluna superior esquerda apresenta variantes ortográficas.
+    Transcrição do latim mantém ortografia original (ex: "pravaricatione", "ausculta").
+  </notas>
 </pagina>

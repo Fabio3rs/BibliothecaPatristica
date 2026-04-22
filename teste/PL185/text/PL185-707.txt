@@ -130,9 +130,20 @@
   <bloco tipo="rodape" script="latino" bbox="350,920,650,990">
     Digitized by Google
   </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,120,540,170">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,340,540,400">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,560,540,620">
+    C
+  </bloco>
   <notas>
-    Pagina em duas colunas; bboxes aproximados em escala 0-1000.
-    Script principal: latino. Numeros de seção (431, 432, 433, 434) preservados tal como impressos.
-    Transcrição mantida sem normalização; hifenizações e grafia antiga preservadas. Algumas palavras muito juntas foram transcritas conforme legibilidade da imagem.
+    tipo_pagina: texto.
+    Script principal: latino. Página em duas colunas; bboxes aproximados em escala 0-1000.
+    Transcrição literal preservando ortografia antiga, hifenizações e abreviaturas tal como impressas (não foram normalizadas).
+    Foram identificadas letras marginais (A, B, C) em coluna central e transcritas como nota_marginal com bbox aproximado.
+    Rodapé com marca "Digitized by Google" preservada.
   </notas>
 </pagina>

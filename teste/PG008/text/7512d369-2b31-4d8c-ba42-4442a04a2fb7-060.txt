@@ -1,54 +1,151 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,80">
+  <bloco tipo="cabecalho" script="misto" bbox="10,10,980,60">
     109 COHORTATIO AD GENTES. 110
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="40,80,480,930">
-    τοὺς θεοὺς· τοιούτους δὲ εὔχεσθαι εἶναι τοὺς ἀνδρας τοὺς ἠμαυτῶν, ὅτῳ σιώπωντας, ἵνα ὧσιν ὅμοιοι τοῖς θεοῖς, τὰ ἑα ζ̓ηλωκότας. Τοιούτους εἴδωσιν (79) οἱ παλ-
-    αῖες ὑμῶν ὀσέειν, ἵνα καὶ ἀνδρες γενώσωνται, εἰκόνα πορνείας ἐναγῇ τοὺς θεοὺς παραλαμβάνοντες. Ἀλλʼ οἱ μὲν ἄθλιοι αὐτοῖς τῶν θεῶν ἔτως μόνοι ἄπιστοι περὶ τὰ ἄφροδια.
-    
-    θηλύτερα (80) δὲ θεαὶ μέν̓ ἀιοὶ οἶκοι ἐκάστη,
-    φησιν Ὅμηρος, αἰδούμεναι αἱ θεαὶ διὰ σεμνότητα Ἀφροδίτην ἰδεῖν μεμιωχεγμένην. Αἱ δὲ ἀκολασταὶ-
-    γμοῦνται ἐμπαθεστέρον ἐν τῇ μοιχείᾳ δεδέσθαι· Ὡς ἐπὶ Τιθωνῷ, Σελήνῃ ἐπὶ Ἐνύδμωι (81), Νηρηῖς ἐπὶ Αἰαχῷ, καὶ ἐπὶ Πηλεῖ Θέτις· ἐπὶ δὲ Ἰάσωνι Δημήτηρ, καὶ ἐπὶ Ἀιδωνίδι (82) Φερέφασα. Ἀργ-
-    διτη δε, ἐπʼ Ἀρετ κατηχομένη, μετήλθεν ἐπὶ Κυθῆ-
-    ραν, καὶ Ἀργιπην Ἐγγεμνικ̓ καὶ φαλδοῦσα (83) ἔλθηκα,
-    καὶ τῆρα Ἀλωόιδιος· ἐφλοινεῖ δε τῇ ῥασιῇ, καὶ
-    τὰ ὀπυδαγμαδὰ μὰ πλὸν (84) αἱ θεαὶ, γυμνατ τρεσῖον τ̣ῷ προίμεν, εἴ τις (85) αὐτῶν ὀδέκῃ χαλῆ. Ἰδι ὅ δε (86)
-    καὶ τοὺς ἀγῶνας ἐν βραχε̑ περιοιέσθωμεν, καὶ τὰς ἐπιτυμβίους ταυταὶ παγνύρεις καταλύσωμεν, Ἰσθ-
-    μὰς τε, καὶ Νέμεα, καὶ Πύθια, καὶ ἐπὶ τούτοις Ὑλύμπια. Πυθοὶ μὲν οὖν ὁ δράκων ὁ Πυθιος θρη-
-    σκέυεται, καὶ τοῦ ζωοῦ ἡ πανηγυρὺς καταγγέλτειται (87) Πόλις· Ἰσθμοὶ δὲ σκέλοιοπρ̣ προστένεις εἰζεινὴν ἡ θάλασσα· καὶ Μελιχέρτην ὀδύρεται τά Ἰσθμια· Νεμέαι δὲ ἄλλο (88) παιδίον (89) Ἀρχεμω-
+  <bloco tipo="texto_principal" script="grego" bbox="10,60,490,560">
+    τοὺς θεούς· τοιούτους δὲ εὐχεσθῶν εἶναι τοὺς ἄνδρας
+    τοὺς ἑαυτῶν, οὕτω σώφρονας, ἵνα σι μοιοι τος θεοῖς,
+    τὰ ἴσα ἐξηλωκότες. Τοιούτους ἐθιζόντων (79) οἱ πα-
+    δες ὑμῶν σέβειν, ἵνα καὶ ἄνδρες γενήσωνται, εἰκόνα
+    πορνείας ἐναγῆ τοῖς θεοῖς παραλαμβάνοντες. Ἀλλ'
+    εἰ μὲν ἄρρενες αὐτοῖς τῶν θεῶν ἴσως μόνοι ἄπτουσι
+    περὶ τὰ ἀφροδίσια·
+    Θηλύτεραι (80) δὲ θεα μένον αἰδοῖ οἴκοι ἑκάστη,
+    φησὶν Ὅμηρος, αἰδούμεναι αἱ θεαὶ διὰ σεμνότητα
+    Ἀφροδίτην ἰδεῖν μεμοιχευμένην. Αἱ δὲ ἀκολασταί-
+    γουσιν ἐμπαθέστερον ἐν τῇ μοιχείᾳ δεδεμέναι· Ἠὼς
+    ἐπὶ Τιθωνῷ, Σελήνη ἐπὶ Ἐνδυμίωνι (81), Νηρηΐς
+    ἐπὶ Αακῷ, καὶ ἐπὶ Πηλεῖ Θέτις· ἐπὶ δὲ Ἰάσονι
+    Δημήτηρ, καὶ ἐπ Ἀδώνιδι (82) Φερσέφαττα. Ἀφρο-
+    δίτη δὲ, ἐπ' Ἄρει κατηγορυμένη, μετῆλθεν ἐπὶ Κινύ-
+    ραν, καὶ Ἄγχίσην ἔγημεν· καὶ Φαέθοντα (83) ἐλόγα,
+    καὶ ἥρα Ἀδώνιδος· ἐφιλονείκει δὲ τῇ οιπι, καὶ
+    ἀποδυσάμεναι διὰ μῆλον (84) αἱ θεαί, γυμναὶ προσεῖχον
+    τῷ ποιμένι, εἴ τις (85) αὐτν δόξει καλή. Ἴθι δή (86)
+    καὶ τοὺς ἀγῶνας ἐν βραχεῖ περιοδεύσωμεν, καὶ τὰς
+    ἐπιτυμβίους ταυτασὶ πανηγύρεις καταλύσωμεν, Ἴσθ-
+    μά τε, καὶ Νέμεα, καὶ Πύθια, καὶ τὰ ἐπὶ τούτοις
+    Ὀλύμπια. Πυθοὶ μὲν ον ὁ δράκων ὁ Πύθιος θρη-
+    σκεύεται, καὶ τοῦ ὄρεως ἡ πανήγυρις καταγγέλλε-
+    ται (87) Πύθια· Ἴσθμοί δὲ σκύβαλον προσέπτυσεν
+    ὕλεινθὸν ἡ θάλασσα· καὶ Μελικέρτην ὀδύρεται τὰ
+    Ἴσθμια· Νεμέασι δὲ ἄλλο (88) παιδίον (89) Ἀρχέμο-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="480,80,960,930">
-    COHORTATIO AD GENTES.
-    Hos deos uestrae uxores adorent, tales sibi maritos praeferunt, adeo temperantes, ut similes sint diis, et similia consecntentur. Hos filii vestri colere assuescant, ut execrabile scortandi exemplum a diis capientes, viri evadant. 10 Sed ex diis soli forte masculi in venerem feruntur :
-    
-    Feminae autem deae manebant pudore domi si.gula,
-    ait Homerus, verecunde scilicet erubescentes Venerem videre in adulterio deprehensam. Verum haec libidinosus adhuc vivunt, seque dedunt adulteriis : Aurora quidem cum Tithono, Luna cum Euhdymione, Nereis cum Æaco, Thetis cum Peleo, Ceres ✠ cum Jasone, Proserpina cum Adonide. Venus proper Martem dedecus passa, transit ad Cinyram, et nupsit Anchisae, et insidias paravit Phaethonti, et Adonidem amavit. Eadem cum Junone contendit, et cum pomi gratia deæ vestes exuissent, permiserunt se pastori judicaturq, quaenam esset ex eis pulchra. Age vero, cermamina quoque vestra paucis obeamus, ac sepulcrales istos conventus, Isthmica, Ne
+  <bloco tipo="texto_principal" script="latino" bbox="500,60,980,560">
+    amavit. Hos deos vestrae uxores adorent, tales sibi
+    maritos precentur, adeo temperantes, ut similes
+    sint diis, et similia consectentur. Hos filii vestri
+    colere assuescant, ut execrabile scortandi exem-
+    plum a diis capientes, viri evadant. 10 Sed ex diis
+    soli forte masculi in venerem feruntur :
+    Feminae autem deae manebant pudore domi singulae,
+    ait Homerus, verecunde scilicet erubescentes Vene-
+    rem videre in adulterio deprehensam. Verum hae
+    libidinosius adhuc vivunt, seque dedunt adulteriis :
+    Aurora quidem cum Tithono, Luna cum Endymione,
+    Nereis cum AEaco, Thetis cum Peleo, Ceres &amp; cum
+    Jasone, Proserpina cum Adonide. Venus propter
+    Martem dedecus passa, transiit ad Cinyram, et
+    nupsit Anchisae, et insidias paravit Phaethonti, et
+    Adonidem amavit. Eadem cum Junone contendit, et
+    cum pomi gratia deae vestes exuissent, permiserunt
+    se pastori judicanturo, quaenam esset ex eis pulchra.
+    Age vero, certamina quoque vestra paucis obea-
+    mus, ac sepulcrales istos conventus, Isthmica, Ne-
     mea, Pythia, Olympia denique, dissipemus. Pytho-
-    ne quidem, Pythium draconem venerantur, serpentiusque convenitum nomine Pythiorum inducunt. Apud Isthmum autem, mare eiectitum ac miserabile cadaver expulit, jamque Melicertem Isthmia lamentantur. Nemeæ similiter, cum alium pusionem Ar-
-    
-    ℵ P. 29 ED. POTTER.
-    
-    (79) Εθιζόντων. Rectius, opinor, passiva forma C tέθιζεσθαι, consuesfant. SYLBURG. — Mox, γενν̣ται pro γεγόνται, Nov.
-    
-    (80) θηλύτερα. Odysse. 8, v. 324. Cæterum pro μένων, quod apud Homerum occurrit, et Nov. primæ Clementis edit. habent μόνον.
-    
-    (81) Ἐπὶ Ἐνύδμωι. Ἐπὶ abest a vulg. edit. et Nov. Inserendam esse, perspicuum est e sequentibus. Ibidem mox pro Ἰασωνι scribendum Ἰάσων et apud Diodorum Siculum 257, 7 : Ἐν Δήμητρος καὶ Ἰασίων χους γεγόνασι παῖδα Πλούτον, et Ovidium, Metam. IX :
-    
-      — queritur canecere miltem Iasiona Ceres. —
-    
-    SYlBURG.
-    
-    (82) Ἀδώντι. Pro Ἀδώντι reponendum esse Ἀδιωνι, cum aliunde liquet, tum ex p. 14, l. 23, et Athenæi loco modo citato. SYLBURG. Perinde apud Justinum M., cujus haec sunt verba Apoll. l. c. 23 : Περισπέτ̓ν Ἀρίσταν, τές δὲ τὸν Ἀδώνἰς αὐτοπρόσειας· Προσερήγησαν τ᾿ Ἐνύδμον, προτερὶ Ἀδονιν τε ἐν τοῖς ἔργοις. Syburg. scribere jussit : Τιν μὲν διὰ τὸν Ἀδώνιν, τὴν δὲ διὰ τὸν Ἀλκιναο αὐτην ὁπρόσε μα· Hanc quidem propter Adonis, illam vero propter Aidona in fuorem actam : Nam Venus quidem, inquit, Adonim deperiit ; Proserpina vero ab Aidoneo, seu Plutone, rapta fuit. I id quidem nimis audacter, Justini et Clementis codicibus receptam lectionem tantumiliue tenuitibus. Quum illi etiam Adonim à Proserpina, idque apud inferos, admisatum fuisse referunt. Theocritus, Idyll. 15, v. 86 :
-    
-    Ὁ τρυγάσας Ἀδώνις, ὁπὸ Ἀλκύοισι ἐλέξα,
-    Ter amabillis Adonis, qui etiam apud inferos [lamaur].
-    
-    Ubi scholiasteς, τρεῖς· Ἀποσπαστὸς, ὀπωλήρωσις, ὅς καὶ παρʼ ὑμῖν· Απορριπ̓ τριφόντης· ἄ ντι ὑπὸ τρων ἐγόλ᾿, ὧν, Ἀφροδίτης, καὶ Περσεφόνης ἐν
-    
-    (83) φαθεροτα. Theodorus Canterus lib. 1, cap.
+    ne quidem, Pythium draconem venerantur, serpen-
+    tisque conventum nomine Pythiorum indicunt. Apud
+    Isthmum autem, mare ejecitium ac miserabile ca-
+    daver expuit, jamque Melicertem Isthmia lamen-
+    tantur. Nemeae similiter, cum alium pusionem Ar-
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,930,960,990">
-    Digitized by Google
+  <bloco tipo="nota" script="latino" bbox="10,560,490,580">
+    P. 29 ED. POTTER.
   </bloco>
-  <notas>Pagina com duas colunas: coluna esquerda em grego contendo notas de apparatus no fim; coluna direita em latim com texto e notas críticas. Pequenos sinais e crucifixos mantidos conforme original. Algumas palavras encerradas por hífen na quebra de linha preservadas; usei [lamaur] apenas onde aparecia fragmento parcialmente ilegível dentro de versículo.</notas>
+  <bloco tipo="aparato_critico" script="misto" bbox="10,580,490,980">
+    (79) Ἐθιζόντων. Rectius, opinor, passiva forma
+    ἐθιζέσθωσαν, conseufiant. SYLBURG. — Mox, γένωνται
+    pro γενήσωνται, Nov.
+    (80) Θηλύτεραι. Odys. θ , v. 324. Cæterum pro
+    μένον, quod apud Homerum occurrit, et Nov. primae
+    Clementis edit. habent μόνον.
+    (81) Ἐπὶ Ἐνδυμίωνι. Ἐπὶ abest a vulg. edit. et
+    Nov. Inserendam esse, perspicuum este sequentibus.
+    Ibidem mox pro Ἰάσωνι scribendum Ἰασίονι ut apud
+    Diodorum Siculum 237, 7 : Ἐκ Δήμητρος καὶ Ἰασίο-
+    νος γενέσθαι παῖδα Πλοῦτον, et Ovidium, Metam. ix :
+    —— queritur canescere mitem
+    Iasiona Ceres. ——
+    SYLBURG.
+    (82) Ἀδώνιδι. Pro Ἀδώνιδι reponendum esse
+    Ἄϊδωνεῖ, cum aliunde liquet, tum ex p. 14, l. 23,
+    et Athenaei loco modo citato. SYLBURG. Perinde apud
+    Justinum M., cujus haec sunt verba Apol. 1, c. 23 :
+    Περσεφόνην καὶ Ἀφροδίτην, τὰς διὰ τὸν Ἄδωνιν
+    οἰστρηθείσας· Proserpinam et Venerem, propter Ado-
+    nidem in furorem actas : Sylburg. scribere jussit :
+    Τὴν μὲν διὰ τὸν Ἄδωνιν, τὴν δὲ διὰ τὸν Ἄϊδωνέα
+    οἰστρηθεῖσαν· Hanc quidem propter Adonin, illam
+    vero propter Aidonea in furorem actam : « Nam Ve-
+    nus quidem, inquit, Adonin deperiit; Proserpina
+    vero ab Aidoneo, seu Plutone, rapta fuit. » Id qui-
+    dem nimis audacter, Justini et Clementis codici-
+    bus receptam lectionem unanimiter tuentibus. Quin
+    alii etiam Adonin a Proserpina, idque apud inferos,
+    adamatum fuisse referunt. Theocritus, Idyll. 15, v. 86 :
+    Ὁ τριφίλατος Ἄδωνις, ὃ κὴν Ἀχέροντι φιλεῖται.
+    Ter amabilis Adonis, qui etiam apud inferos
+    [amatur.
+    Ubi scholiastes, τριφίλατος, inquit, ὁ πολυφίλητος, ὡς
+    καὶ παρ' Ὁμήρῳ· Ἀσπασίη τριφίλητος· ἢ τι ὑπὸ
+    τριῶν ἐφιλήθη, Διός, Ἀφροδίτης, καὶ Περσεφόνης ἐν
+    Ἅϊδου.
+    (83) Φαέθοντα. Theodorus Canterus lib. 1, cap.
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="500,580,980,980">
+    19, Var. lect., in hunc locum Arnobii lib. iv :
+    Nonne vestris cautum est litteris, post Vulcanum,
+    Phaonem, Martem, in Anchisae nuptias AEneadam
+    matrem arsisse? Hoc loco suspicabar, pro Phaonem,
+    Phaonem scribendum esse; sed in eo non acquie-
+    vi; verum, consulens exemplar Romanum, longe
+    aliam lectionem inveni, nimirum hanc, post Vulca-
+    num Phaethontem; quae lectio prima fronte alienis-
+    sima visa est : tandem consului Clementem, ubi
+    haec respexi, καὶ Φαέθοντα ἐλόγα· quare hic locus
+    Arnobii non emendationem, sed observationem re-
+    quirit. Haec ille. Athenaeus tamen lib. ii sub finem :
+    Κρατῖνος δέ φησι, Φάωνος ἐρασθεῖσαν τὴν Ἀφροδίτην,
+    ἐν χαλαῖς θριδακίναις αὐτὸν ἀποκρύψαι· Μαρούας δὲ
+    ἐν χλόῃ κριθῶν. AElianus lib. xii, c. 18, Var. hist. :
+    Phaonem omnibus hominibus elegantia formae prae-
+    stantem Venus in lactucis abscondit. Legendum ita-
+    que in utroque videtur Phaonem. COLLECT.
+    (84) Μῆλον. Μᾶλλον, Nov. mendose.
+    (85) Εἴ τις. Pro el τις aprius forsan ἥτις, quam.
+    SYLBURG.
+    (86) Ἴθι δή. Ἴθι δέ, Joan. Etenim hunc locum
+    de sacrorum certaminum institutione recitat Eusebius,
+    Præp. evangel., lib. II, cap. 6. Mox, περιοδεύσομεν
+    pro περιοδεύσωμεν, Joan.
+    (87) Καταγγέλλεται. A. καταλέγεται· sed καταγ-
+    γέλλεται agnoscit etiam Eusebius. SYLBURG.
+    (88) Νεμέασι δὲ ἄλλο. Scholiastes Pindari in
+    praefatione Nemeorum : Τὰ Νέμεα φασὶν γεσθαι ἐπ
+    Ὀφέλτῃ. Paulo post, Ὄφις ἀνεῖλε τὸν παῖδα· Ἀμ-
+    φιάραος δὲ τούτοις μαντευόμενος, Ἀρχέμορον αὐτὸν
+    ἐκάλεσεν, ὅτι ἀρχὴ μόρου ἐγένετο ὁ τοῦ παιδὸς θά-
+    νατος. Sed hunc Eupheti et Creusae, non Lycurgi et
+    Eurydices filium dici adverte. Cæterum necesse non
+    fuit mutare lectionem apud Clementem, Καὶ τοῦ
+    Πέλοπος τὰς γόας τὰ Ὀλύμπια ὁ Φειδίου σφετερίζε-
+    ται Ζεύς. COLLECT.
+    (89) Παυδὼν. Πεδίον, Joan. mendose. Nam αι et
+    ε propter soni similitudinem εὐμετάβολοι sunt.
+  </bloco>
+  <notas>
+    A página contém texto em grego e latim em duas colunas, com aparato crítico na parte inferior.
+    A nota (83) inicia na coluna esquerda e continua na coluna direita ("cap. 19").
+    Há marcas de digitalização do Google no rodapé.
+  </notas>
 </pagina>

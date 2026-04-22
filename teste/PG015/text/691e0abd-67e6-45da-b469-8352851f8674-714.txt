@@ -1,154 +1,70 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,110">
-    HEXAPLORUM QUÆ SUPERSUNT.
+  <bloco tipo="cabecalho" script="misto" bbox="100,40,900,80">
+    1419 HEXAPLORUM QUÆ SUPERSUNT. 1420
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,110,300,330">
-    יהוּדִיקוֹן.
-    טו השׁמות בק׳ 20
-    וקרע
-    ונתנאה 21
-    ושיב 23
-    ותול 24
+  
+  <bloco tipo="texto_principal" script="misto" bbox="150,90,850,190">
+    TO EBPAIKON. TO EBPAIKON ΑΚΥΛΑΣ.
+    Ἑλληνικοῖς γράμμασι.
+    ויאמר... 20 20. 20.
+    אקרה 21. 21. Ἠγνόησα.
+    יתן... 23. 23.
+    ישיב 24. 24.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="320,110,640,330">
-    ΤΟ ΕΒΡΑΙΚΟΝ
-    Ἑλληνικὸν γράμμασι.
-    20.
-    21.
-    23.
-    24.
+
+  <bloco tipo="texto_principal" script="latino" bbox="150,195,850,300">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+    20. Ad quærendum pollicem unum. 20. Ut quærat unguem unum. 20.
+    Perdicem. Perdix.
+    21. Stulte egi. 21. Stulte egerim. 21. Ignoravi.
+    23. Reddat. 23. Retribuet. 23.
+    24. Magnificetur. 24. Magnificetur. 24.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,110,980,330">
-    ΑΚΥΛΑΣ.
-    20.
-    21. Ψηγήσθη.
-    23.
-    24.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,330,340,470">
-    VERSIO HEBRAICI TEXT.
-    20. Ad quaerendum pulicem u-
-    num.
-    
-    Perdicem.
-    21. Stulte egit.
-    23. Reddidit.
-    24. Magnificetur.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="360,330,660,470">
-    VULGATA LATINA.
-    20. Ut quaerat pulicem unum.
-    
-    Perdix.
-    21. Stulte egerim.
-    23. Retribue[t].
-    24. Magnificetur.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,330,980,470">
-    AQUILA.
-    20.
-    21. Ignoravi.
-    23.
-    24.
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="40,470,980,680">
+
+  <bloco tipo="nota" script="misto" bbox="150,310,850,480">
     Notæ et variæ lectiones ad cap. XXVI lib. I Regum.
-    V. 4. Σ., χρῆσαι. Coislm. 2. 'Αλλος, κτ'.
-    3. χρῆσαι. Reg.
-    Ibid. 'Α., ὅς περικραυγησεν. Σ., χρήσων. Reg. et
-    Exoehius De locis Hebraicis. V. supra, c. xxiii, v. 24.
-    Ibid. Ἰεσσαριών. Edit. Rom. , Ἰεσσαριών. Sic
-    etiam infra.
-    V. 5. 'Αλλος, ἐξ τῆς ἐρημον τῶν αὐχμῶν. Reg.
-    V. 5. 'Α., τῆς πραν-. V. supra, v. 1.
-    V. 5. 'Α., ὁ τῆς στρεγγλώσεως. Reg. et Procop.
-    In hunc locum Procopius et Reg., λαμπρότερον ἔδοξ
-    ἠμέρις (Procop., ἀριθμήσεις), ὅς καὶ ἡ ἀστραπή, ὁ
-    ἔξ 'Αχλας, ὅς στρεγγλώσεως ῥηξις; ἡ δὲ τὸ ὄχημα
-    πρὸς κατασκευήν, ἡ δὲ ἡλὸς τὰ ἀχειλικεῖσθαι τῆς στρεγ-
-    γλώσεως ὑπὸ βασιλεών. I. c. Lampsac, recens ex cur-
-    rus, ut etiam apex. Aquila dicit, ὅτι στρεγγλώσεως,
-    vel propter figuram apparatur, vel declarat regem
-    exercitu circumdatum fuisse. Coislianus de
-    lampade ait, ἔιδος ἀμῆς λαμπρὸς ὅλον καθαρὼς.
-    Ibid. 'Α., κάμην Σ., σπυρ. Σ., ἐν τῇ στρεπ-
-    λώσει. Sic Coislm. Binax ex Symmacho lectio
-    habemus, ut alibi.
-    V. 7. 'Α., τῆς κάμης etc. Idem.
+    V. 1. Σ., κρύπτεται. Coislin. 2. Ἄλλος, κέκρυπται. Reg.
+    Ibid. Ἀ., τῆς ἠφανισμένης. Σ., ἐρήμου. Reg. et Eusebius De locis Hebraicis. V. supra, c. XIII, v. 24.
+    Ibid. Ἰεσεμούν. Edit. Rom., Ἰεσεμοῦ. Sic etiam infra.
+    V. 2. Ἄλλος, εἰς τὴν ἔρημον τῶν αὐχμῶν. Reg.
+    V. 3. Ἀ., τῆς σαν. V. supra, v. 1.
+    V. 5. Ἀ., ἐν τῇ στρογγυλώσει. Reg. et Procop. In hunc locum Procopius et Reg., λαμπέτην εἶδος ἀμάξης (Procop., ἀρμαμάξης), ὡς κα ἡ ἀπήνη, ὁ δὲ Ἀκύλας, τῇ στρογγυλώσει φησίν· ἢ διὰ τὸ σχῆμα τῆς κατασκευῆς, ἢ δηλοῖ τὸ κεκυκλῶσθαι τῷ στρατοπέδῳ τὸν βασιλέα. I. e. Lampene, genus est currus, ut etiam apene. Aquila dicit, τῇ στρογγυλώσει, vel propter figuram apparatus, vel declarat regem exercitu circumdatum fuisse. » Coislinianus de lampene ait, εἶδος ἀμάξης λαμπρᾶς οον παρούχης. Ibid. Ἀ., κάμπη. Σ., σκηνή. Σ., ἐν τῇ στρογγυλώσει. Sic Coislin. Binas ex Symmacho lectiones habemus, ut alibi.
+    V. 7. Ἀ., τῇ κάμπῃ etc. Idem.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,680,980,740">
+
+  <bloco tipo="cabecalho" script="latino" bbox="350,490,650,510">
     CAPUT XXVII LIB. I REGUM.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,740,360,960">
-    ΤΟ ΕΒΡΑΙΚΟΝ.
-    אלילי את 1
-    1.
-    ושׁו ירושלים
-    ימים וימים שם 7
-    7.
-    
-    ויהי ימי - על - השׁמע 8
-    8.
-    ויהוה נתן ויהי ומרב המים אשר
-    ומשו ויהי שׁרוים בימי שׁריהם
+
+  <bloco tipo="texto_principal" script="misto" bbox="150,515,850,650">
+    TO EBPAIKON. TO EBPAIKON ΑΚΥΛΑΣ.
+    Ἑλληνικοῖς γράμμασι.
+    ויאמר דוד... 1 1. 1. Ἀπογνώσεται.
+    וישב... 7 7. 7.
+    ויעל... 8 8. 8.
+    נגב 10 10. 10. Νότον.
+    הקני Κινέου.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="380,740,690,960">
-    ΤΟ ΕΒΡΑΙΚΟΝ
-    Ἑλληνικὸν γράμμασι.
-    1.
-    4.
-    7.
-    8.
+
+  <bloco tipo="texto_principal" script="misto" bbox="150,660,850,900">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+    1. Nunc consumar. 1. Aliquando incidam. 1. Desperabat.
+    Et desperet de me. Cessetque me quærere.
+    7. Dies et quatuor menses. 7. Quatuor mensium. 7.
+    8. Et effuderunt se ad Gessuritam, 8. Et agebant prædas de Gessuri, 8.
+    et Gerzitam, et Amalecitiain, et de Gerzi, et de Amalecitis:
+    quia ipsi inhabitantes terram quæ hi enim pagi habitabantur in terra
+    a sæculo, ingrediendo te Sur, et antiquitus, euntibus Sur usque
+    usque ad terram Ægypti. ad terram Ægypti.
+    10. Meridiem. 10. Meridiem. 10. Austrum.
+    Ceni. Ceni. Cinæi.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="710,740,980,960">
-    ΑΚΥΛΑΣ.
-    1.
-    4.
-    7.
-    8.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,960,340,1250">
-    10 10.
-    10. Nomen.
-    VERSIO HEBRAICI TEXT.
-    1. Nemo consumur.
-    6. desperet de me.
-    7. Dies et quatuor menses.
-    
-    8. Et extulerunt se ad Gesuri-
-    tam, et Gerziam, et Amalecitam,
-    quia ipsi inhabitantes terram quæ
-    a sæculo, ingrediendo te Sur, et
-    usque ad terram Ægypti.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="360,960,660,1250">
-    VULGATA LATINA.
-    1. Aliquando licebit.
-    Consquenter me quaerere.
-    7. Quatuor menses.
-    
-    8. Et agebant prædas de Gesu-
-    ri, et de Gerzi, et de Amalecitis:
-    hi enim pagi habitabantur in terra
-    antiquitus, cunctibus Sur usque
-    ad terram Ægypti.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,960,980,1250">
-    AQUILA.
-    1.
-    4.
-    Desperabat.
-    7.
-    8.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,1250,980,1350">
-    10. Meridiem.
-    Cosi.
-    10. Meridiem.
-    Cosi.
-    10. Austrum.
-    Cosi.
+
+  <bloco tipo="rodape" script="latino" bbox="550,950,800,980">
     Digitized by Google
   </bloco>
-  <notas>Scripts mistos: hebraico, greco e latino. Usei [ ] apenas para possível abreviação "Retribue[t]". Pequenas manchas afetaram legibilidade em partes do aparato critico; mantive leitura literal sem normalizar acentos.</notas>
+  
+  <notas>
+    Transcrição de página da Patrologia Graeca (Hexapla de Orígenes). Contém colunas paralelas em Hebraico, Grego (transliteração e Aquila) e Latim (Versio Hebraici Text, Vulgata, Tradução de Aquila). Inclui aparato crítico ("Notæ et variæ lectiones").
+  </notas>
 </pagina>

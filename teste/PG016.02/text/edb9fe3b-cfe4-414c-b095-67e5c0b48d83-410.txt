@@ -1,120 +1,194 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,90">
-    HEXAPLORUM QUAE SUPERSUNT.
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,50">
+    2067 HEXAPLORUM QUÆ SUPERSUNT. 2068
   </bloco>
-  <bloco tipo="texto_principal" script="misturado" bbox="30,90,320,940">
-    TO EBRAIKON.
-    [Hebraico linhas e versículos em colunas; transcrição literal dos sinais hebraicos tal como impressos:]
-    בט-נד-בכל? 7 ביד נבוכדראצר מלך-בבל
-    8 [ilegivel]
-    9 ולא ימר? 
-    10 והיה-לו
-    11 נאם-יהוה
-    12 פני רע מעללם
-    13 שובת העמק עד הצוקי
-    14 ופחדו עליכם כנפי פסי מלעולם
-    VERSIO HEBRAICI TEXT.
-    7. In manu Nabuchodretsar regis Babel.
-    Et non miserebitur.
-    9. Et in peste.
-    Et erit ei.
-    10. Dixit Dominus.
-    12. A facie malitiae studiorum eorum.
-    13. Habitatrix vallis petra planitii. Syrus, quae inter montes sita est, in cavo loco.
-    14. Et visitabo super vos juxta fructum studiorum vestrorum, dicit Dominus.
+  
+  <bloco tipo="texto_principal" script="misto" bbox="0,50,330,250">
+    TO EBPAIKON.
+    7 ביד נבוכדנאצר מלך-בל
+    לא ירחם
+    9 ודבר
+    10 והיתה-לך
+    10 נאם-יהוה
+    12 מפני רע מעלליהם
+    13 יושבת עמק צור המישור 'O
+    Σύρος, τὴν μεταξύ ὑμῶν (sic) κει-
+    μένην, ἐν κοίλῳ τόπῳ.
+    14 ופקדתי עליכם כפרי מעלליכם
+    נאם-יהוה
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="330,90,660,940">
+
+  <bloco tipo="texto_principal" script="grego" bbox="330,50,660,250">
     TO EBPAIKON
-    Ελληνικοις γραμμασι.
+    Ἑλληνικοῖς γράμμασι.
     7.
     9.
     10.
     12.
-    13.
+    15.
     4.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="660,50,1000,250">
+    AKYΛAΣ.
+    7. Ἐν χειρὶ Ναβουχοδονοσορ
+    βασιλέως Βαβυλῶνος.
+    9.
+    Καὶ ἔσται αὐτῷ.
+    10. ☩ Φησὶ Κύριος.
+    12.
+    15. 1. (Στερεὰς.) 2. Τύρου.
+    14. ☩ Καὶ ἐπισκέψομαι ἐφ' ὑμᾶς
+    κατὰ τὰ πονηρὰ ἐπιτηδεύματα
+    αὐτῶν, φησὶ Κύριος.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="0,250,330,450">
+    VERSIO HEBRAICI TEXT.
+    7. In manu Nabuchadretsar re-
+    gis Babel.
+    Et non miserebitur.
+    9. Et in peste.
+    Et erit ei.
+    10. Dixit Dominus.
+    12. A facie malitiæ studiorum
+    eorum.
+    13. Habitatrix vallis petra pla-
+    nitici. Syrus, quæ inter montes
+    sita est, in cavo loco.
+    14. Et visitabo super vos juxta
+    fructum studiorum vestrorum, di-
+    cit Dominus.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="330,250,660,450">
     VULGATA LATINA.
-    7. In manu Nabuchodonosor regis Babylonis.
+    7. In manu Nabuchodonosor
+    regis Babylonis.
     Nec miserebitur.
     9. Et in peste.
     Et erit ei.
     10. Ait Dominus.
-    12. Propter malitiam studiorum vestrorum.
-    13. Habitatricem vallis solidae atque campestris.
-    14. Et visitabo super vos juxta fructum studiorum vestrorum, dicit Dominus.
+    12. Propter malitiam studiorum
+    vestrorum.
+    13. Habitatricem vallis solidæ
+    atque campestris.
+    14. Et visitabo super vos juxta
+    fructum studiorum vestrorum, di-
+    cit Dominus.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,90,980,940">
-    AKYLAS.
-    7. * Εν χειρι Ναβουχοδονσορ βασιλεως Βαβυλωνος.
-    9.
-    Και έσται κ αυτῶ.
-    10. * Φησι Κυριος,
-    12.
-    13. 1. (Στερεα͵) 2. Τυρου.
-    14. * Και επισκεψομαι ἐφ ̓υμᾶς κατὰ τὰ πονηρὰ επιπνευματα αυτῶν, φησι Κυριος.
+
+  <bloco tipo="texto_principal" script="latino" bbox="660,250,1000,450">
     AQUILA.
-    7. In manu Nabuchodonosor regis Babylonis.
-    9. Et erit ei.
+    7. In manu Nabuchodonosor
+    regis Babylonis.
+    9.
+    Et erit ei.
     10. Dicit Dominus.
     12.
-    13. 1. Solidac. 2. Tyri.
-    14. Et visitabo super vos secundum mala studia eorum, dicit Dominus.
+    13. 1. Solidæ. 2. Tyri.
+    14. Et visitabo super vos se-
+    cundum mala studia eorum, di-
+    cit Dominus.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,940,980,1010">
-    Notae et variae lectiones ad cap. XXI Jeremiae.
-    V. 2. 'A., Θ., ✳ Ναβουχοδονσορ. Ms. Jes.
-    Ibid. 'Αλλος, ✳ μετ' ὑμων. Idem.
-    V. 4. 'A., Σ., Θ., * Φειδὼς Ἰσραηλ. Idem.
-    Ibid. Σ., τὰ δε κεφαλ. ὑμων. Idem.
-    Ibid. 'A., Σ., Θ., του βασιλεα Βαβ. Idem.
-    Ibid. Σ., και συνών αυτοῦς. Idem. Olim deerat
+
+  <bloco tipo="nota" script="misto" bbox="0,450,1000,480">
+    Notæ et variæ lectiones ad cap. XXI Jeremiæ.
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="0,480,500,600">
+    V. 2. 'A., Θ., ☩ Ναβουχοδονόσορ. Ms. Jes.
+    Ibid. Ἄλλος, ☩ μεθ' ὑμῶν. Idem.
+    V. 4. 'A., Σ., ☩ ὁ Θεὸς Ἰσραήλ. Idem.
+    Ibid. Σ., τὰ ἐν χερσὶν ὑμν. Idem.
+    Ibid. 'A., Σ., Θ., τὸν βασιλέα Βαβ- Idem.
+    Ibid. Σ., καὶ συνάξω αὐτούς. Idem. Olim deerat
     in LXX, sed in exemplaribus hodiernis legitur.
-    V. 7. 'A., Σ., Θ., εν χειρι Ναβ- Idem.
+    V. 7. 'A., Σ., Θ., ἐν χειρὶ Ναβ- Idem.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="50,1010,950,1070">
+
+  <bloco tipo="aparato_critico" script="misto" bbox="500,480,1000,600">
+    Ibid. Ἄλλος, ☩ καὶ οὐκ ἐλεήσω etc. Idem.
+    V. 9. Ἄλλος, ☩ καὶ ἐν θανάτῳ. Idem.
+    Ibid. 'A., Σ., Θ., καὶ ἔσται αὐτῷ. Idem.
+    V. 10. 'A., Σ., Θ., ☩ φησὶ Κύριος. Idem.
+    V. 12. Θ., ἀπὸ προσώπου etc. Idem.
+    V. 13. Hieron.: In valle SOR, pro quo Sym. pe-
+    tram; Theod. obsessam interpretati sunt; Aquilæ
+    prima editio, solidam; secunda, Tyrum. Sor enim,
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="330,600,660,620">
     JEREMIÆ CAPUT XXII.
   </bloco>
-  <bloco tipo="texto_principal" script="misturado" bbox="30,1070,320,1880">
-    TO EBRAIKON.
-    [Hebraico linhas e versículos:]
-    ד-בן-דב 1
-    5 - בתים?
-    14 ואמר
-    15 הטוען כי אנה מפתח אחו? המה 
-    אביך הלא אוכל לשתות ומשחט ומשפט וצדקה? את תבוא לו טוב לו
-    VERSIO HEBRAICI TEXT.
-    1. Verbum.
-    5. Verba.
-    14. Dicens.
-    15. Numquid regnabis, quia tu concitas te in cedro? Pater tuus nonne comedit et bibit, et fecit judicium et justitiam, tunc bonum ei.
+
+  <bloco tipo="texto_principal" script="misto" bbox="0,620,330,750">
+    TO EBPAIKON.
+    1 את-חבר
+    5 את-דברים
+    14 האח
+    15 התחת כי אתה מחתה בארז
+    אדני אלה אשר עשה משפט
+    וצדקה אז טוב לו
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="330,1070,660,1880">
+
+  <bloco tipo="texto_principal" script="grego" bbox="330,620,660,750">
     TO EBPAIKON
-    Ελληνικοις γραμμασι.
+    Ἑλληνικοῖς γράμμασι.
     1.
     5
     14.
     15.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="660,620,1000,750">
+    AKYΛAΣ.
+    1. ☩ Σὺν τὸν λόγον.
+    5. ☩ Σὺν τοὺς λόγους.
+    14. ☩ Ὁ λέγων.
+    15. Μὴ βασιλεύσεις ὅτι ἀμιλλά-
+    σαι πρὸς τὴν κέδρον; Ὁ πατήρ σου
+    οὐκ ἔφαγε καὶ ἔπιε, καὶ ἐποίησε
+    κρίμα καὶ δικαιοσύνην; τότε ἀγα-
+    θὸν ατῷ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="0,750,330,950">
+    VERSIO HEBRAICI TEXT.
+    1. Verbum.
+    5. Verba.
+    14. Dicens.
+    15. Numquid regnabis, quia tu
+    concitas te in cedro? Pater tuus
+    nonne comedit et bibit, et fecit
+    judicium et justitiam, tunc bonum
+    ei.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="330,750,660,950">
     VULGATA LATINA.
     1. Verbum.
     5. Verba.
     14. Qui dicit.
-    15. Numquid regnabis, quoniam confers te cedro? Pater tuus numquid non comedit et bibit, et fecit judicium et justitiam, tunc cum bene erat ei?
+    15. Numquid regnabis quoniam
+    confers te cedro? Pater tuus num-
+    quid non comedit et bibit, et fecit
+    judicium et justitiam, tunc cum
+    bene erat ei?
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,1070,980,1880">
-    AKYLAS.
-    1. ✳ Συν͂ τὸν λογον.
-    5. ✳ Συν͂ τοὺς λογους.
-    14. ✳ Ο λεγων.
-    15. Μη βασιλευσῃς ὅτι αμιλλασ ς πρὸς την κεδροιν; ὁ πατηρ σου οὐκ εφαγε και ἐπιο͂ και εποιεσεν χρήμα και δικαιοσυνην; τότε αγαθον αυτῷ.
+
+  <bloco tipo="texto_principal" script="latino" bbox="660,750,1000,950">
     AQUILA.
     1. Verbum.
     5. Verba.
     14. Dicens.
-    15. Numquid regnabis quia certas cum cedro? Pater tuus nonne comedit et bibit, et fecit judicium et justitiam? tunc bonum ei.
+    15. Numquid regnabis quia cer-
+    tas cum cedro? Pater tuus nonne
+    comedit et bibit, et fecit judicium
+    et justitiam? tunc bonum ei.
   </bloco>
-  <notas>
-    - Página com colunas trilingues: hebraico (direita-à-esquerda), grego e latim.
-    - Hebraico reproduzido tal como impresso; porções ilegíveis marcadas [ilegivel] por palavra.
-    - Mantida ordem: coluna esquerda (hebraico/latim), coluna central (grego/latim), coluna direita (grego/latim).
-  </notas>
+
+  <bloco tipo="rodape" script="latino" bbox="600,950,900,1000">
+    Digitized by Google
+  </bloco>
 </pagina>

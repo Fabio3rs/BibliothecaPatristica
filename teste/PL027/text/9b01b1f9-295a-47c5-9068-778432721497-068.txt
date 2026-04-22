@@ -1,10 +1,17 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,70">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,80">
 131          EUSEBII CHRONICORUM LIB. I.          132
   </bloco>
 
+  <bloco tipo="nota_marginal" script="latino" bbox="470,120,530,760">
+A
+B
+C
+D
+  </bloco>
+
   <bloco tipo="texto_principal" script="latino" bbox="20,80,480,740">
-[ilegivel] mihi videtur facturus, si olym-
+Opere pretiam mihi videtur facturus, si olympi-
 piades etiam, quæ a Græcis celebratæ sunt, libro
 meo complectar.
 
@@ -12,56 +19,55 @@ CAPUT XXXII.
 
 Graecorum olympiades.
 
-Prima olympias, qua vicit stadium Coroebus
+*Prima olympias, qua vicit stadium Coroebus
 Eleus. Hinc ratio temporum apud Graecos videtur
-certo posse constitui: nam antea quidem ex sua
+certo posse constitui : nam antea quidem ex sua
 quisque sententia rem definiebat (1).
 
-* De institutione agonis (quae est certantium exercitatio (2) ).
+* De institutione agonis (quæ est certantium exercita-
+tio (2) ).
 
-1. De agone opus est disserere aliquantum, cujus instituti qui maxime aetatem ampliant, ante
-Herculem a quodam ex Idaeis Dactylis conditum affirmant; exin ab Aethlio celebratum ob filios suos
-exercendos; a quo et ii, qui decertabant, nomen
+1. De agone opus est disserere aliquantum, cu-
+jus instituti qui maxime ætatem ampliant, ante
+Herculem a quodam ex Idaeis Dactylis conditum af-
+firmant; exin ab Aethlio celebratum ob filios suos
+exercendos; a quo ei, qui decertabant, nomen
 athletarum (3) traxerunt. Deinde hujus filium
 Epeum, deinde Endymionem, deinde Alexinum,
-deinde [ilegivel] profectos fuisse sacrorum: tum
-Pelopem patri (4) Jovis in honorem sacra obtulisse:
-ad extremum Herculem Alcmenae et Jovis
-filium: post quem alii aetates decem, alii vero tres
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="480,150,520,720">
-A
-B
-C
-D
+deinde [ilegivel] profectos fuisse sacrorum : tum
+Pelopem patri (4) Jovis in honorem sacra obtulisse :
+ad extremum Herculem Alcmenæ et Jovis
+filium : post quem alii ætiates decem, alii vero tres
   </bloco>
 
   <bloco tipo="texto_principal" script="latino" bbox="520,80,980,740">
 tantum extitisse (3) esse aiunt sacros ad Iphitum,
 qui agonem instauravit.
 
-2. Hic enim patria Eleis, Graecis jucundae stu-
-diorum, cum bella civitatum tota Peloponneso
-sedare cuperet, misit oratores (6) qui de urgentium
-bellorum compositione oraculum rogarent, atque
-hoc responsum a Deo editum esse Peloponnesiis:
-"Delubrum ingredimini, sacra ferte, et vatum iussis
-morem gerite." Item Eleis hoc editum est oraculum: "Elei qui majorum instituta firmiter retinentes,
-patriam vestram liberastis, finem bellis impone,
-commune sacrum cum Graecis institute, doceo cum
-celebratione sacris annuus redeat." Hujus
-rei gratia Iphitus [ilegivel] pacem vacati onem bellorum esse jussit, et suo quocunque cibo tranquille
-se vesci; vetitumque ab Hercule monuit, ne quis vim
-exercendos; atque ita agonem perpessus Iphitus cum
-Lycurgo Lacedaemonio (8); etant autem ambo He-
-raclidae. Nihil porro tum erat agon præterquam stadium. Alia deinceps certamina ex intervallo accesserunt.
+2. Hic enim patria Eleis, Græcis jucunda studiorum,
+cum bella civitatum tota Peloponneso sedare cuperet,
+misit oratores (7) qui de urgentium bellorum compositione
+oraculum rogarent, atque hoc responsum a Deo editum esse
+Peloponnesiis :
+" Delubrum ingredimini, sacra ferte, et vatum
+jussis mortem gerite. " Item Eleis hoc editum est oraculum :
+" Elei qui majorum instituta firmiter retinentes, patriam vestram
+liberastis, finem bellis impone, commune fœdus cum Græcis
+instituite, doceo cum celebratione sacris annuus redeat . "
+Hujus
+rei gratia Iphitus fœderata pace vacationem bellofum esse
+jussit, et suo quique cibo tranquille se vesci ; vetitumque ab
+Hercule monuit, ne quis vim
+exercendos; atque ita agonem peregit Iphitus cum
+Lycurgo Lacedomonio (8) ; etant autem ambo He-
+raclidae. Nihil porro tum erat agon præter quam stadium.
+Alia deinceps certamina ex intervallo accesserunt.
 
 3. Verumtamen Aristodemus Eleus (9) refert,
-exacta vicesima et septima olympiade (postquam
+exacta vicesima et septima olympiade (postquam ἡ
   </bloco>
 
-  <bloco tipo="aparato_critico" script="misto" bbox="20,740,980,960">
+  <bloco tipo="aparato_critico" script="misto" bbox="20,740,500,995">
 (1) Πρώτη ὀλυμπιάς, ἣν ἐνίκησε Κόροιβος Ἠλεῖος. Ἀπὸ γὰρ τούτων τὰ τῆς Ἑλλήνων χρονογραφίας
 ἀκριβοῦς ἀναγραφὰς τετυργμένα δοκεῖ, ἄλλα τὰ ὧν, ὡς ἐκδότες φανῶσιν. — Scaligeri excerpta p. 38-39.
 
@@ -69,46 +75,60 @@ exacta vicesima et septima olympiade (postquam
 1. Ὀλιγὰ δὲ ἀναγκαῖον περὶ τοῦ ἀγῶνος εἰπεῖν, ὡς οἱ μὲν πορρωτάτω τοῖς χρόνῳ τὴν θέσιν αὐτῶν
 προάγουσι, πρὸ Ἡρακλέους αὐτὸν τεθῆναί φασιν ὑπὸ ἑνὸς τῶν Ἰδαίων Δακτύλων· εἶτα ὑπὸ
 ἄλλων ὡς οἱ ἀγωνισταὶ ἀθληταὶ ἐκλήθησαν· ἐπὶ ὃν τὸν υἱὸν αὐτοῦ Ἐπεῶν, εἶτα τῶν αὐτοῦ παίδων,
-ἔπειτα Ἰνδυμίωνα, ἑξῆς δὲ Ἀλεξῖνον, εἶτα Οἰνόμαον προδητῆναί τῆς θυσίας, μετὰ ὃν Πλοπα εἰς τιμὴν τῷ πατρίῳ Διὶ ἀγαγεῖν, εἶτα Ἡρακλέα τὸν Ἀλχημήνης καὶ Διός, ἀφ᾽ οὗ γενεὰς δέκα τυγχάνειν.
+ἔπειτα Ἰνδυμίωνα, ἑξῆς δὲ Ἀλεξῖνον, εἶτα Οἰνόμαον προδητῆναί τῆς θυσίας, μετὰ ὃν Πλοπα εἰς τιμὴν τῷ πατρίῳ Διὶ ἀγαγεῖν, εἶτα Ἡρακλέα τὸν Ἀλχημήνης καὶ Διὸς, ἀφ᾽ οὗ γενεὰς δέκα τυγχάνειν.
 
 2. Τοῦτον γὰρ Ἠλεῖον ὄντα, καὶ προνοούμενον τῆς Ἑλλάδος, παῦσαι τε σπεύδοντα πολέμων τὰς πόλεις
 ἀπὰ πάσης Πελοποννήσου στείλαι θεωροὺς τοὺς πεπουσμένους περὶ τῆς τῶν κατεχόντων πολέμων ἀπαλλαγῆς,
 χρησμόν τε λαβεῖν Πυθικόν τοῦτον.
-
 "Πελοποννήσου γὰρ κάθ᾽ ἑκάστην κατὰ βωμὸν ἰόντες θύετε, καὶ πείθεσθε τὰ κεν μάντειξ ἐγγυῶσιν."
-
 Τὰ δὲ Ἠλεῖοις τάδε προαγορεύει:
-
 "Πάτορος νόμον θύνοντες, ὑμῶν ῥύεσθε πόλεμον, πολέμου δ' ἀκέχεσθε,
 Ἀοιφοδίνου ῥίδης ἡγούμενοι Ἕλληνες,
 ἂν ἐνὶ ξυνόδοις ἔλθῃ φιλόφρων ἐνιαυτὸς."
-
-Ἰούτου χάριν Ἴφιτος κατήγγειλε τὴν Ἐκεχειρίαν ἐπὶ ἡμέρᾳ ἀλλήλοις· οὐκ ἐκέφερον. Ἰόν δὲ τι τὲτελέκεσαν Αἴσ:
+Ἰούτου χάριν Ἴφιτος κατήγγειλε τὴν ἐκεχειρίαν ἐπὶ ἡμέρᾳ
+ἀλλήλοις· οὐκ ἐκέφερον. Ἰόν δὲ τι τὲτελέκεσαν Αἴσ:
 Ἡρακλεῖδαι. Καὶ τότε μόνον ὃν σταδίου ὁ ἀγών· ὕστερον δὲ τὰ ἄλλα ἅθλα κατὰ μέρος προσετέθησαν.
 
-Res annos CCCCXVI ab Inachi regno (nisi iste Inachus C Suidas vocet Φλέγων). Fragmentum proemii
-olympiarum Sicyonii est; ad primam olympiam tradit, jam apud Phlegontis typis jam diu commendatum est.
-
-(3) Audendus. Varro apud Genserinum cap. 81: Varro tria discrimina temporum esse tradit; prima...
-(4) Interpres Armenius: patrus, perperam ex Graeco.
-(5) Armenius interpres addit glossam oppugnatoriam.
-(6) Interpres Arm., Graecis proceratum.
-(7) Interpres Arm. θεσμοφόροις intellexit exploratores.
-(8) Graec. cognatio.
-(9) Arm. Aristodemus cum notis; perperam intellecta locutione ὑπὲρ Ἀριστόδημον.
-(10) Τῶν ὀλυμπίων non legebat interpres Arm.
+Res annos CCCCXVI ab Inachi regno (nisi iste Inachus C Suidas vocet Φλέγων). Fragmentum proemii olym-
+piarum Sicyonii est; ad primam olympiudem tradit, jam apud Phlegontis typis jam diu commendatum est.
   </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="350,960,650,995">
-Digitized by Google
+  <bloco tipo="aparato_critico" script="misto" bbox="500,740,980,995">
+(3) Audtendus. Varro apud Genserinum cap. 81: Varro tria discrimina temporum esse tradit ; pri-
+&amp;m ab kominum principio «d. cataclysmum priorem, quod. propier iynorasitava vocatur ἄδηλον ; sevurdum a cetaclyrmo priore ad olympitdem primam,
+«uod quia in eo utu. fa bulosa referuntur, mo0iXX6óv nominatur; erliwm a. prima olympiade ad nos,
+wod dicitur ἱστοριχόν, wig ves in eo gere veris isloriis continentur. Sed contradicR. Phulorohus in
+ANNuma, cap. 4.
+
+49) Extrema hac. verba videntur Armeniaci in.
+Verpretis glossa. Jam de olympiadibus cum multi e
+weteribus, («m copiosissime omnéwtm scripserat
+Pblegen, Adriani «evi aar, cujas priecipinm ea
+de re opus (nam plura eodem wsper argamento ediderat) legit Photius cod. x.vn. Viaendus quoque
+iadum Phiegontis typis jam diu commendatumest.
+mque lekntur Pausanias in. Eliacis.
+
+(5) Armenius interpres addit glossam eeppugnatovam. »
+
+(2) fnterpres Arm., patris, perperam ez. Graeco
+πατρίῳ. L.
+
+e DN Arfmeniws interpres cum Scaligeriano tex -
+1u consentiens, iR quo τελείας thntummodo fegitur. Veruntamen. Syncellus p. 186 A addit ὀλυμ-
+πκἄδας, Hà ut daodecim polius. anni, quam »onaginta, id est ztates tres, intelligi debeamt. L.
+
+" Wnterpres Arm., Grecta yrocurátor.
+
+(7) Interpres Arm. θδωρούς intellexit explormtovts.
+
+Grizce, cognato.
+
+9) Arrh. Aristodemss cum sociis, perperam imtellecta locutione ol περὶ ᾿Αριστόδημον.
+
+(10) Τῶν ὄλυμ πίων non legebat interpres &amp;rma.
   </bloco>
 
-  <notas>
-- Tipo de página: texto (página de obra impressa, duas colunas).
-- Leitura em duas colunas: transcrevi primeiro a coluna esquerda ([texto_principal bbox="20,80,480,740"]) e depois a coluna direita ([texto_principal bbox="520,80,980,740"]). Cabeçalho e rodapé ocupam a largura total.
-- Scripts: principal em latino; o aparato crítico contém grego e latin (script="misto"). Notas marginais (letras A–D) transcritas como estão verticalizadas entre colunas.
-- Usei [ilegivel] por palavras/segmentos que não se conseguiam decifrar com segurança (apenas por palavra, conforme norma).
-- As bounding boxes são aproximadas, em escala 0–1000, e mapeiam visualmente os blocos (cabeçalho, colunas, margem central, aparato e rodapé).
-- Não foram realizadas normalizações de grafia; mantive a ortografia e a pontuação visíveis; onde a leitura é incerta marquei [ilegivel].
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="410,985,740,1000">Digitized by Google</bloco>
+
+  <notas>Transcrição literal baseada na imagem; quando a leitura não foi possível em uma palavra, foi marcado [ilegivel]. Os blocos do texto principal foram transcritos no fluxo coluna esquerda e depois coluna direita. Aparato crítico preservado em script misto (grego + latino) conforme impresso.</notas>
 </pagina>

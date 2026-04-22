@@ -1,8 +1,10 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,20,960,80">
-870   AD OPERA S. LEONIS MAGNI APPENDIX.   880
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="120,0,880,90">
+879 • AD OPERA S. LEONIS MAGNI APPENDIX. • 880
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,90,480,560">
+
+  [!-- coluna esquerda --]
+  <bloco tipo="texto_principal" script="latino" bbox="40,90,500,740">
 653 X. • Item placuit ut agri vel quæcunqe præ-
 dia Ecclesiæ in diœcesi constituta, fuerint derelicta,
 non ea matrici Ecclesiæ applicari usurpet episcopus.
@@ -13,17 +15,18 @@ runt: Aurelius, Simplicius, Augustinus et cæteri.
 III.
 b STATUTA ECCLESIÆ ANTIQUA.
 (Ex præstantissimis mss. collectionibus edita.)
+
 1. e Qui episcopus ordinandus est, antea examine-
-tur si natura prudens est, si docilis, si moribus
+tur si natura prudens est, si docilis , si moribus
 temperatus, si vita castus, si sobrius, si semper de suis
 negotiis vacans, si hominibus affabilis, si misericors,
 si litteratus, si in lege Domini instructus, si in Scri-
 pturarum sensibus cautus, si in dogmatibus eccle-
 siasticis exercitatus, et ante omnia si fidei documenta
-verbis simplicibus asserat, id est, Patrem et Filium B
+verbis simplicibus asserat, id est, Patrem et Filium
 et Spiritum sanctum unum Deum esse confirmans,
-totamque in Trinitate Deitatem coessentialem, et
-consubstantialem, et coæternalem, et coomnipoten-
+totamque in Trinitate Deitatem coessentialem, et consubstan-
+tialem, et coæternalem, et coomnipoten-
 tem prædicans; si singulam quamque in Trinitate
 personam plenum Deum, et totas tres personas unum
 Deum; si incarnationem divinam non in Patre, ne-
@@ -31,54 +34,60 @@ que in Spiritu sancto factam, sed in Filio tantum
 credat, 654 ut qui erat in Divinitate Dei Patris Fi-
 lius, ipse fecerit in homine hominis matris filius,
 Deus verus ex Patre, et homo verus ex matre, car-
+nem ex matris visceribus habens, et animam humanam ra-
+tionalem: , simul in eo ambz nature, id est ,
+ho:wo et Deus, una persona , unus filius , unus
+Christus, unus Dominus * creator omnium quæ sunt,
+et auctor , et Duminus , et rector cum Patre et S;.iritu
+sancto omnium creaturarum ; qui passus est vera
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,90,960,560">
+
+  [!-- notas marginais (cintura central) --]
+  <bloco tipo="nota_marginal" script="latino" bbox="470,120,510,200">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,260,510,340">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,380,510,460">C</bloco>
+
+  [!-- coluna direita --]
+  <bloco tipo="texto_principal" script="latino" bbox="500,90,960,740">
 carnis passione, mortuus vera corporis sui mor-
-te, surrexit vera carnis suæ resurrectione, et vera animae
-resumptione, in qua veniet judicare vivos et mor-
+te, surrexit vera carnis suæ resurrectione, et vera animiæ
+resumptione , in qua veniet judicare vivos et mor-
 tuos. Quærendum est etiam ab eo si novi et veteris
-Testamenti, id est, Legis et Prophetarum, et apo-
-stolorum unum eundemque credat auctorem et Deum;
+Testamenti, id est, Legis et Prophetarum, et aposto-
+lorum unum eundemque credat auctorem et Deum;
 si diabolus non per condictionem, sed per arbitrium
 factus sit malus. Quærendum etiam ab eo si credat
 hujus quam gestamus, et non alterius, carnis resur-
 rectionem; si credat judicium futurum, et receptu-
 ros singulos pro his quæ in hac carne gesserunt, vel
-poenas, vel gloriam; si nuptias non improbet, si
-secunda matrimonia non danner, si carnium percep-
-tionem non culpet, si penitentibus reconciliatis
+poenas , vel gloriam; si nuptias non improbet, si
+secunda matrimonia non dan:net, si carnium percep-
+tionem non culpet, si penitentibus reconciliais
 communicet, si in baptismo omnia peccata, id est
 tam illud originale contractum quam illa quæ volun-
 tarie admissa sunt, dimittantur; si extra Ecclesiam
 catholicam nullus salvetur. Cum in his omnibus ex-
-aminatus, inventus fuerit plene instructus, tunc cum
+aminatus, inventus fuerit plene iustru-
+tus , tune cum
 consensu clericorum et laicorum et conventu totius
-provinciae episcoporum, maximeq[ue] metropolitani
+provincia episcoporum, maximeq[ue] metropolitani
 vel auctoritate vel præsentiali ordinetur episcopus.
-Suscepto in nomine Christi episcopatu, 655 non
+Suscepto in nomine Christi episcopatu, 655 nou
 sua: I delectationi, nec suis moribus, sed his Patronu[m]
-definitionibus acquiescat. In cujus ordinatione etiam
+definitionibus acquiescat. * In cujus ordinatione etiam
 alias requiritur quam sancti Patres exemplo Salva-
 toris in præslegendis episcopis, constituerunt.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="470,120,510,200">
-A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="470,260,510,340">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="470,380,510,460">
-C
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="40,560,480,920">
+
+  <bloco tipo="aparato_critico" script="latino" bbox="40,740,500,990">
 a. In presenti autem concilio hæc mutatio vel pri-
 mitibus inducta fuit: unde hic canon postea cum hac
 lectione renovatus est in synodo Hipponensi anni 427,
 teste Ferrando n. 47, ubi legimus: Ut episcopi viri
 Ecclesiæ sine primatis consilio non recant. Concil.
-Hipponigen. tit. 9. Priorem vero hujus canonis partem
-ex eodem concilio Hipponigensi tit. 9 idem Ferrandus
-laudat postea num. 95.
+Hipponigen. tit. 9. Priorem vero hujus canonis
+partem ex eodem concilio Hipponigensi tit. 9, idem
+Ferrandus laudat postea num. 95.
 
 a. Illic canon in hoc concilio eodem sensu, sed aliis
 verbis, clarius exponitur quam in synodo anni 419,
@@ -93,15 +102,16 @@ hunc et precedentem canonem eodem titulo 9 desi-
 gnerit, manifestum est ut utrumque in synodo Hippo-
 nensi unum canonem confecisse. [ilegivel]
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="520,560,960,920">
+
+  <bloco tipo="aparato_critico" script="latino" bbox="520,740,960,990">
 b. Codices quos in his statutais edendis adhibuimus,
-sunt trium collectionum, minimo Vat. 1312 et Bar-
+sunt trium collectionum, nimirum Vat. 1312 et Bar-
 berinus 2888. Vallicellanus A. 5, et Vat. 5845 addi-
 tionum Dionysii, ac Vat. Palat. 574, Herovallianum
 etiam, ex quo Jacobus Petit aliquot canones suæ col-
-lectionis inseruit, aliquando allegabimus: in quo la-
+lectionis inseruit, aliquando allegabimus : in quo la-
 boramus aliqua literis mutata colllectionis arbitrio de-
-prehendimus. Numeri Arabici singulorum e nominum initio
+prehendimus. Numeri Arabici singulorum e nominau[m] initio
 notati ordinem innuunt quod sub nomine Carthaginensis
 in vulgatis editi sunt. Il. Conciliorum Ven. edit. col. 1456 et seqq.
 [ilegivel] alia additamenta Dionysii hoc proximo manent in signant, et in sequentibus ali-
@@ -111,8 +121,8 @@ notavit. Divisionem autem ventisitorum collectionum
 Vat. 1312 et simi is barr. 2888, alteriusque Vat.
 Palat. 574, sequentiam censuimus.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="360,920,640,980">
-Digitized by Google
-  </bloco>
-  <notas>Script: latino. Foram mantidos hífens e quebras de linha conforme o impresso; usei [ilegivel] por segmentos realmente incertos. BBOX aproximadas em escala 0-1000. Letras A, B, C na cunha central transcritas como notas marginais. Alguns termos e abreviaturas paleográficas (p. ex. mss., n., tit.) restaram conformes ao impresso; onde a leitura era duvidosa marquei [ilegivel].</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="580,960,960,1000">Digitized by Google</bloco>
+
+  <notas>Script: latino. BBOX aproximadas em escala 0-1000. Segmentos realmente incertos: [ilegivel]. As letras centrais A, B, C foram transcritas em blocos de nota_marginal.</notas>
 </pagina>

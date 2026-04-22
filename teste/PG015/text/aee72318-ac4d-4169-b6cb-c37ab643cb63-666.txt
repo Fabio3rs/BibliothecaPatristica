@@ -1,63 +1,79 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,80">
-    HEXAPLORUM QUÆ SUPERSUNT.
+  <bloco tipo="cabecalho" script="misto" bbox="50,20,950,60">
+    1323 HEXAPLORUM QUÆ SUPERSUNT. 1324
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,90,360,340">
-    TO ΕΒΡΑΙΚΟΝ.
-    [Hebrew text] 18
-    [Hebrew text] 20
-    [Hebrew text] 21
-    [Hebrew text] 23
+  
+  <bloco tipo="texto_principal" script="latino" bbox="150,70,850,100">
+    TO EBRAIKON. TO EBRAIKON' AKYLAS.
+    Ἑλληνικοῖς γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="370,90,640,340">
-    ΤΟ ΕΒΡΑΙΚΟΝ
-    Ελληνικοῖς γράμμασι.
+
+  <bloco tipo="texto_principal" script="ebraico" bbox="100,110,450,280">
+    וישם את ראש המטה 18
+    על גבעת המצבים
+    וירדו אל המחנה 20
+    פלשתים
+    והיתה הפצירה פים לחרשים 21
+    ולמחשתים ולשלש קלשון ולחצין
+    ויצא מצב פלשתים אל-מעבר 23
+    מכמש
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="460,110,540,280">
     18.
     20.
     21.
     23.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,90,980,340">
-    ΑΚΥΛΑΣ.
-    18. Καὶ κεφαλὴ ἡ μία ἔνδοθεν ὅδῳ τοῦ ἔκκυπτοντος καὶ φέρει αὐτὸν διὰ τῶν δαιμον. (Al. δοκιμάζειν.)
-    20. Το ὀπότερον αὐτοῦ, καὶ τὸ σκέλος αὐτοῦ, καὶ ἔκαστος τὴν ἔξω γνώμην αὐτοῦ καὶ τὸν τριβόμενον αὐτοῦ.
+
+  <bloco tipo="texto_principal" script="greco" bbox="600,110,900,220">
+    18. Καὶ κεφαλὴ ἡ μία ἔνευεν ὁδὸν τοῦ ἐκκύπτοντος ἐπὶ φάραγγα τῶν δαιμῶν. (Al. δορκάδων.)
+    20. Τὸ θέριστρον αὐτοῦ , καὶ τὸ σκεῦος αὐτοῦ, καὶ ἕκαστος τὴν ἀξίνην αὐτοῦ καὶ τὸν τρίόδοντα αὐτοῦ.
     21.
-    23.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,350,320,640">
-    VERSIO HEBRAICI TEXT.
-    18. Et caput unum respiciebat viam termini perspicientem super vallem Seboim.
-    20. Vomerem suum et ligonem suum, et securim suam, et fossorium suum.
-    21. Et erat lima ora habens, vomeribus, et ligonibus, et tridentibus, et securibus, et ad statuen-
-    dum simulacrum.
-    23. Et egressus est praefectus Philisthim ad transitum Machmas.
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,290,900,480">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+    18. Et caput unum respiciebat 18. Tertius autem verterat se 18. Et caput unum vergebat ad
+    viam termini perspicieutem super ad iter termini imminentis valli viam respicientis in vallem hyæ-
+    vallem Seboim. Seboim contra desertum. narum. (Al. caprearum.)
+    20. Vomerem suum et ligonem 20. Vomerem suum, et ligonem, 20. Messorium suum , et vas
+    suum, et securim suam, et fosso- et securim et sarculum. suum, et unusquisque secarim
+    rium suum. suam, et tridentem suam.
+    21. Et erat lima ora habens, vo- 21. Retusæ itaque erant acies 21.
+    meribus, et ligonibus, et tridenti- vomerum et ligonum et tridentum,
+    bus, et securibus, et ad statuen- et securium usque ad stimulum
+    dum stimulum. corrigendum.
+    23. Et egressus est præfectus 23. Egressa est autem statio 23.
+    Philisthim ad transitum Machmas. Philisthiim, ut transcenderet in
+    Machmas.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,350,640,640">
-    VULGATA LATINA.
-    18. Tertius autem verterat se ad iter termini imminentis vallis Seboim contra desertum.
-    20. Vomerem suum, et ligonem, et securim et arculum.
-    21. Retuse itaque erant acies vomerum et ligonum et tridentum, et securium usque ad stimulus corrigendum.
-    23. Egressus est autem statio Philisthim, ut transcenderet in Machmas.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,350,980,640">
-    AQUILA.
-    18. Et caput unum vergebat ad viam respiciens in valle hyenarum. (Al. caperarum.)
-    20. Messorium suum, et vas suum, et unusquisque securim suam, et tridentem suum.
-    21.
-    23.
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="40,650,980,1260">
+
+  <bloco tipo="nota" script="latino" bbox="250,490,750,510">
     Notæ et variæ lectiones ad cap. XIII lib. I Regum.
-    V. 1. Σ., utb ēx τραχύτερον Σαουλ etc. Ita habent Prœcipus et cod. Reg. Drusius minus recte, utb ēx ἐννέκασαι. Altera lectio est Prœcipi et codicis Reg. Tertia affertur a Drusio. In LXX vacat. Nec præeximendum scholion Regii dicitis: Συμμαχους, ὑπάρχειν ἐν τῷ στρατοπεδῷ Σαουλ. Δηλῶ σὺ τοῦτο τὴν αἰτίαν τῆς φυγῆς Σαουλ, ὅν ἐν τῷ βασιλεῖ χειροτονηθῆναι. Ταῦτα οἱ δὲν ἐπὶ πολλοῖς ἐχρήσαντο: ὁθεν χρεώμενοι, καὶ δύο ἦσαν ἀδελφοῦσαν ἐν τῇ Ἰσραήλ, μετα τῆς ἀδικίας ἐλαλήσαν. Μεθ' ἃ ἔκλεψε τὴν ὑπόλοιπον, τῶν δεῖνων γάρ. Ὅθεν ὁ λοιπὸς χρόνος, ὁ διαλέκτης, ὑπὸ τῶν Σαουλ στρατιωτικῶν κελευστον ἔπεσε. 1. e. Synmacchus, filius quasi amicius: quo simplicitas animi Saulis declaratur, quamhabuit cum in regem inauguratus est, quam tamen non diu servavit. Quare additur: Et duobus annis regnavit super Israel, nempe cum illa morum simplicitate. Postea quippe ad nullam declinarum, divina gratia destitutus est. Quamobrem reliquum tempus quo regnavit, Samuels administratio comparatur. Hunc locum habet Proco-
-    p.
-    CAPUT XIV LIB. I REGUM.
-    TO ΕΒΡΑΙΚΟΝ.
-    Τῷ ΕΒΡΑΙΚῷ γράμμασι.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,1260,980,1410">
-    VERSIO HEBRAICI TEXT.    VULGATA LATINA.    AQUILA.
-    1. Ad stationem Philisthiim.    1. Ad stationem Philisthinorum.    1. Stationem.
+
+  <bloco tipo="nota" script="misto" bbox="100,520,490,810">
+    V. 1. Σ., υἱὸς ὡς ἐνιαύσιος Σαοὺλ etc. Ita habent Procopius et cod. Reg. Drusius minus recte, υἱὸς ὢν ἐνιαυσιαῖος. Altera lectio est Procopii et codicis Reg. Tertia affertur a Drusio. In LXX vacat. Nec prætermittendum scholion Regii codicis. Σύμμαχος, υἱὸς ὡς ἐνιαύσιος Σαούλ. Δηλοῖ δὲ τοῦτο τὴν ἁπλότητα τῆς ψυχῆς Σαούλ, ἣν εἶχε βασιλεὺς χειροτονού-μενος. Ταύτῃ δὲ οὐκ ἐπὶ πλεῖστον ἐχρήσατο· ὅθεν ἐφίσταται, καὶ δύο ἔτη ἐβασίλευσεν ἐπὶ τὸν σραήλ, μετὰ τῆς ἀπλότητος δηλαδή. Μεθ' ἃ κλίνας πρὸς πονηρίαν, ὃν θείας γεγύμνωται χάριτος. Ὅθεν  λοιπὸς χρόνος, ὃν ἐβασίλευσε, τῇ τοῦ Σαμουὴλ δη-μαγωγίᾳ λέλογισται. I. e. « Symmachus, Filius quasi anniculus : quo simplicitas animi Saulis de-claratur, quam habuit cum in regem inauguratus est, quam tamen non diu servavit. Quare additur : Et duobus annis regnavit super Israel, nempe cum illa morum simplicitate. Postea quippe ad malitiam declinans, divina gratia destitutus est. Quamobrem reliquum tempus quo regnavit, Samuelis admini-strationi computatur. » Hunc locum habet Proco-
+  </bloco>
+
+  <bloco tipo="nota" script="misto" bbox="510,520,900,810">
+    pius, sed admodum vitiatum, ita ut aptam senten-tiam non reperias. Qui autem sic posuit υἱὸς τριἀ-χοντα ἐτῶν, vitiatum esse textum putavit, suoque marte restituit. Ibid. Ἄλλος, καὶ δύο ἔτη ἐβασίλευσεν etc. Ita cod. Reg. In LXX vacat. V. 5. Ἀ., τὸ ὑπόστημα τῶν ἀλλοφύλων. Ita Reg et Procop., ὑπόστημα vero pro statione militum exstat, ut monet Drusius, II Reg. xxII, et ὑπόστασις quoque eadem significatione capite sequenti, v. 1. Ibid. Ἀ., ἀκουστάωσαν οἱ Ἑβραῖοι. Σ., ἀκουστ-τωσαν οἱ ἐν τῷ πέραν. Sic Drusius, Reg. et Proco-pius, qui loco τοῦ Ἑβραῖοι, ad Aquilam habet οἱ δολοι, lapsu graphico scilicet, quia librarius ver-sionem LXX Aquilæ tribuit. Aquila eamdem vocem infra vertit Ἑβραῖοι, cap. xiv, v. 21. V. 4. Ἄλλος, καὶ ἐξουδένωσαν. Reg. V. 6. Ἄλλος, ὅτι ἐκθλίβονται etc. Reg. V. 7. Σ., καὶ οἱ ἐκ τοῦ πέραν. Reg. Ibid. Ἀ., ἐξεπλάγη. Σ., ἠκολούθησε. Ita Reg. V. 8. Ἀ., καὶ περιέμεινεν etc. Has Aquilæ et
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="350,820,650,840">
+    CAPUT XIV LIB. I REGUM.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="100,850,900,940">
+    TO EBRAIKON. TO EBRAIKON. AKYLAS.
+    Ἑλληνικοῖς γράμμασι.
+    המצב 1 1. 1. Την υπόστασιν.
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+    1. Ad stationem Philisthiim. 1. Ad stationem Philisthinorum. 1. Stationem.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
     Digitized by Google
   </bloco>
-  <notas>Blocos hebraicos parcialmente ilegíveis: substituí indicação genérica "[Hebrew text]" para linhas hebraicas quando caracteres não totalmente claros; mantida ordem e divisão por colunas; BBOX são estimativas na escala 0-1000.</notas>
 </pagina>

@@ -1,33 +1,48 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,90">
-    739                                                           HEXAPLORUM QUÆ SUPERSVNT.                                                           740
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,100,50">
+    739
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,100,320,860">
-    TO ΕΒΡΑΪΚΟΝ.
-    12 זעם רש רעץ ליצק ורחק עלו
-    13- אנכי ישחק־לו
-    17 וספק צדקים
-    18 ידע יהו ימי תמימים
-    20 כל־רשעים ! ואבדו
-    22 ואברי יהוה
-    22 מברכיו
-    ויפללו
-    23 חרם יתנפו
-    25 נער ! החיי-גם-יקצתי
-    לא ראיתי צדיק נעבד ודרש
-    מבקשי לחם
-    26 כל־הימים חנן וחמלה
-    27 ושכן לעולם
-    28 את־חסדיו
-    32 צופה
+  <bloco tipo="cabecalho" script="latino" bbox="350,20,650,50">
+    HEXAPLORUM QUÆ SUPERSUNT.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="340,100,640,860">
-    ΤΟ ΕΒΡΑΙΚΟΝ
-    Ἑλληνικοὶς γράμμασι.
+  <bloco tipo="cabecalho" script="latino" bbox="900,20,950,50">
+    740
+  </bloco>
+  
+  [!-- Upper Section Headers --]
+  <bloco tipo="texto_principal" script="grego" bbox="150,60,300,90">
+    TO ΕΒΡΑΙΚΟΝ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="400,60,600,90">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικος γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,60,850,90">
+    ΑΚΥΛΑΣ.
+  </bloco>
+
+  [!-- Upper Section Content --]
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,90,330,430">
+    12 יוֹם וּמִשְׁמָר לְצַדִּיק חָרַץ עָלָיו
+    שִׁנּוֹ
+    13 אֲדֹנָי יִשְחַק-לוֹ
+    17 וְסִכֵּךְ צַדִּיקִים
+    18 יוֹדֵעַ יְהוָה יְמֵי תְמִימִם
+    20 כִּי רְשָׁעִים יֹאבֵדוּ
+    22 וְאֹיְבֵי יְהוָה | כִּכְרַם בְּנֵי כֶבֶשׂ וּמַלְלוֹל
+    23 חַדְלֵי לְהָפֵץ
+    25 נַעַר הָיִיתִי גַּם-זָקַנְתִּי
+    לֹא רָאִיתִי צַדִּיק נֶעֱזָב וְזַרְעוֹ מְבַקֶּשׁ-לָחֶם
+    26 כָּל-הַיּוֹם חוֹנֵן וּמַלְוֶה
+    27 וְזַרְעוֹ לִבְרָכָה
+    28 סוּר מֵרָע וַעֲשֵׂה-טוֹב
+    32 קַוֵּה אֶל-יְהוָה
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="450,90,550,430">
     12.
     13.
-    17.
-    18.
+    17
+    18
     20.
     22.
     23.
@@ -37,42 +52,52 @@
     28.
     32.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,100,960,860">
-    ΑΚΥΛΑΣ.
+  <bloco tipo="texto_principal" script="grego" bbox="700,90,900,430">
     12.
     13.
     17.
     18.
-    20. "Οτι οι αμαρτωλοι απολλυνται.
-    Και οι εχθροι του Κυριου.
+    20. Ὅτι οἱ ἁμαρτωλοὶ ἀπολοῦνται.
+    Καὶ οἱ ἐχθροὶ τοῦ Κυρίου.
     22.
     23.
     25.
-    26. "Ολην ὃλην ἡμεῖων δωρεϊται και δανείζει.
+    26. Ὅλην τὴν μέραν δωρεῖται καὶ δανείζει.
     27
     28.
     32.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,880,320,1980">
+
+  [!-- Lower Section Headers --]
+  <bloco tipo="texto_principal" script="latino" bbox="100,440,330,470">
     VERSIO HEBRAICI TEXT.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,440,650,470">
+    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,440,850,470">
+    AQUILA.
+  </bloco>
+
+  [!-- Lower Section Content --]
+  <bloco tipo="texto_principal" script="latino" bbox="100,470,330,900">
     12. Machinans impius contra justum, et frendens super eum dentibus suis. Hieron., cogitat impius de justo, et frendet adversum eum dentibus suis.
     13. Dominus ridebit ei. Hieron., Dominus deridebit eum.
     17. Et sustentans justos. Hier., sublevat autem justos.
-    18. Sciens Dominus dies per- fectorum. Hieron., novit Dominus dies immaculatorum.
-    20. Quia impii peribunt. Hie- ron., id.
+    18. Sciens Dominus dies perfectorum. Hieron., novit Dominus dies immaculatorum.
+    20. Quia impii peribunt. Hieron., id.
     Et inimici Domini. Hieron., id.
-    22. Benedicti ejus. Hieron., qui benedicit fuerint ab eo.
-    Et maledicit ejus. Hieron., et qui maledici.
-    23. Et viam ejus volet. Hie- ron., id.
-    25. Puer fui, etiam senui. Hie- ron., puer fui, siquidem senui.
-    Et non vidi justum derelictum, et semen ejus quaerens panem. Hieron., et non vidi justum derelictum, neque semen ejus quaerens panes.
-    26. Omni die miserans et mu- tuans. Hieron., tota die donat et commodat.
-    27. Et habita in sæculum. Hie- ron., et inhabita in sempiterno.
+    22. Benedicti ejus. Hieron., qui benedicti fuerint ab eo.
+    Et maledicti ejus. Hieron., et qui maledicti.
+    23. Et viam ejus volet. Hieron., id.
+    25. Puer fui, etiam senui. Hieron., puer fui, siquidem senui.
+    Et non vidi justum derelictum, et semen ejus quærens panem. Hieron., et non vidi justum derelictum, neque semen ejus quærens panes.
+    26. Omni die miserans et mutuans. Hieron., tota die donat et commodat.
+    27. Et habita in sæculum. Hieron., et inhabita in sempiterno.
     28. Pios suos. Hieron., sanctos suos.
-    32. Speculans. Hieron., consid- erat.
+    32. Speculans. Hieron., considerat.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,880,640,1980">
-    VULGATA LATINA.
+  <bloco tipo="texto_principal" script="latino" bbox="400,470,650,900">
     12. Observabit peccator justum, et stridebit super eum dentibus suis.
     13. Dominus autem irridebit eum.
     17. Confirmat autem justos.
@@ -83,27 +108,32 @@
     Maledicentes autem ei.
     23. Et viam ejus volet.
     25. Junior fui, etenim senui.
-    Et non vidi justum derelictum, et semen ejus quaerens panem.
+    Et non vidi justum derelictum, et semen ejus quærens panem.
     26. Tota die miseretur et commodat.
     27. Et inhabita in sæculum sæculi.
     28. Sanctos suos.
     32. Considerat.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,880,960,1980">
-    AQUILA.
+  <bloco tipo="texto_principal" script="latino" bbox="700,470,900,900">
     12.
     13.
-    17.
+    17
     18.
     20. Quia peccatores peribunt.
     Et inimici Domini.
     22.
     23.
     25.
-    26. Tota die donat et commodat.
+    26. Tota die douat et commodat.
     27.
     28.
     32.
   </bloco>
-  <notas>Scripts identificados: colunas esquerda hebraico; central grego; direita latim/latim (Vulgata/Aquila). Algumas linhas hebraicas fragmentárias e abreviações foram transcritas tal qual; palavras ilegíveis indicadas por fragmentos ou divisão silábica conforme imagem.</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="550,950,800,980">
+    Digitized by Google
+  </bloco>
+  <notas>
+    A página apresenta uma disposição poliglota complexa (Hexapla). A transcrição foi dividida em blocos verticais correspondentes às colunas visuais para manter a fidelidade ao layout. O texto hebraico foi transcrito da direita para a esquerda conforme o original. Na coluna de Aquila (Latina), nota-se a grafia "douat" em vez de "donat" no verso 26.
+  </notas>
 </pagina>

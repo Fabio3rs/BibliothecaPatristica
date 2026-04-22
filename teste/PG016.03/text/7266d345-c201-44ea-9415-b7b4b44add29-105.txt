@@ -1,29 +1,67 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,90">
-    2385 EZECHIELIS CAPUT XXX. 2386
-    EZECHIELIS CAPUT XXX.
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="misto" bbox="10,20,980,60">
+    2585 ΕΖΕΧΙΗΛΙΣ CAPUT XXX. 2586
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="30,100,320,820">
-    ΣΥΜΜΑΧΟΣ.
+  <bloco tipo="cabecalho" script="grego" bbox="350,60,650,90">
+    ΕΖΕΧΙΗΛΙΣ CAPUT XXX.
+    Ο.
+  </bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="50,90,950,110">
+    ΣΥΜΜΑΧΟΣ. ΘΕΟΔΟΤΙΩΝ.
+  </bloco>
+  
+  [!-- Greek Text Section --]
+  <bloco tipo="texto_principal" script="grego" bbox="20,120,300,380">
     2.
     3.
     4.
-    5. Και παιδα ϝ Αραβια.
-    9.
-    Εν ετιξει.
+    5. Καὶ πᾶσα  Ἀραβία.
+    9. Ἐν ἐτείξει.
     12.
     13.
-    14. Εν Νω.
+    14. Ἐν Νώ.
     16.
-    21. Ουκ ἐπαδιθη.
+    21. Οὐκ ἐπεδέθη.
     22.
-    SYMMACHUS.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="350,120,630,380">
+    2. Ἄλλος, ὀλολύξατε.
+    3. ☦ Ἡμέρα νεφέλης. Οἱ Γ', id. Πέρας ἐθνῶν σται. Ἄλλος, καιρὸς ἐθνῶν σται.
+    4. Vacat. Ἄλλος, καὶ λήψονται τὸ πλῆθος αὐτῆς.
+    5. Καὶ πάντες οἱ ἐπίμικτοι.
+    9. Vacat. Σπεύδοντες. Vacat.
+    12. Vacat.
+    13. Καὶ ἀπολῶ (μεγιστάνας).
+    14. Ἐν Διοσπόλει.
+    16. Vacat. Ἄλλος. καὶ ἐν τῇ Μέμφει πολέμιοι αὐθημερινοί.
+    21. Οὐ κατεδέθη. Τοῦ δοθῆναι ἰσχύν. Ἄλλος, τοῦ ἐσθῆναι τοῦ κατισχῦσαι.
+    22. Τοὺς ἰσχυρούς, καὶ τοὺς τετμημένους.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,120,960,380">
+    3.
+    4.
+    5.
+    9. Ἐκ προσώπου μου. Ἐν Σείμ. Τὴν ἐλπίδα.
+    12. ☦ Καὶ ἀποδώσομαι τὴν γῆν ἐν χειρὶ πονηρῶν.
+    13. ☦ Καὶ ἀπολῶ βδελύγματα καὶ καταπαύσω (μεγιστάνας).
+    14. Ἐν Νώ.
+    16.
+    21.
+    22. Τὸν ἰσχυρὸν κα μέγαν.
+  </bloco>
+
+  [!-- Latin Text Section Headers --]
+  <bloco tipo="cabecalho" script="latino" bbox="50,400,950,420">
+    SYMMACHUS. LXX INTERPRETES. THEODOTIO.
+  </bloco>
+
+  [!-- Latin Text Section --]
+  <bloco tipo="texto_principal" script="latino" bbox="20,430,300,680">
     2.
     3.
     4.
     5. Et omnis Arabia.
-    9.
-    In festinatione.
+    9. In festinatione.
     12.
     13.
     14. In No.
@@ -31,63 +69,25 @@
     21. Non est alligatum.
     22.
   </bloco>
-  <bloco tipo="texto_principal" script="greco-latino" bbox="320,100,660,820">
-    Ὀ.
-    2. Ἄλλος, ἀκολουθεῖτε.
-    3. ☓ Ἡμέρᾳ νεφέλης. Οἱ Γ', id.
-    Πέρας ἐθνῶν ἔσται. Ἄλλος, καιρὸς ἐθνῶν ἔσται.
-    4. Vacat. Ἄλλος, καὶ λήψονται τὸ πλῆθος αὐτῆς.
-    5. Καὶ πάντες οἱ ἐπιμήκτοι.
-    9. Vacat.
-    Σπιδόντες.
-    Vacat.
-    12. Vacat.
-    13. Καὶ ἀπολύ (μεγιστανας).
-    14. Ἐν Δυσπολεί.
-    16. Vacat. Ἄλλος, καὶ ἐν τῇ Μέρσει πολέμιοι αὐθημεροι.
-    21. Οὗ καταβῇ.
-    Τοῦ σθένους ἰσχύι. Ἄλλος, τοῦ ἰσθῆναι τοῦ κατακυσαι.
-    22. Τοὺς ἰσχυρους, καὶ τοὺς τεραμένους.
-    LXX INTERPLETES.
+  <bloco tipo="texto_principal" script="latino" bbox="350,430,630,680">
     2. Alius, ululate.
-    3. Tres et LXX int., dies nubis.
-    Finis gentium erit. Alius, tempus gentium erit.
+    5. Tres et LXX int., dies nubis. Finis gentium erit. Alius, tempus gentium erit.
     4. Vacat. Al., et accipient multitudinem ejus.
-    5. Et omnes commisf.
-    9. Vacat.
-    Festinantes.
-    Vacat.
+    5. Et omnes commisti.
+    9. Vacat. Festinantes. Vacat.
     12. Vacat.
     13. Et perdam (optimates).
-    14. In Diospoli.
+    14. In Diospoli,
     16. Vacat. Alius, et in Memphi inimici eo ipso die.
-    21. Non est ligatum.
-    Ad dandum robur. Al., ad ligandum et roborandum.
-    22. Fortia et exsenta
+    21. Non est ligatum. Ad dandum robur. Al., ad ligandum et roborandum.
+    22. Fortia et extenta
   </bloco>
-  <bloco tipo="texto_principal" script="greco" bbox="660,100,965,820">
-    ΘΕΟΔΩΤΙΟ.
+  <bloco tipo="texto_principal" script="latino" bbox="650,430,960,680">
     2.
-    3.
+    5.
     4.
     5.
-    9. Ἐκ προσώπου μου.
-    Ἐν Σειρ.
-    Τὴν ἐλπῖδα.
-    12. ☓ Καὶ ἀπωδώσομαι τὴν γῆν ἐν χειρὶ πονηρῶν.
-    13. ☓ Καὶ ἀπολῶ βδελύγματα καὶ καταπαύσω (μεγιστανας).
-    14. Ἐν Νιῶ.
-    16.
-    21.
-    22. Τὸν ἰσχυρὸν καὶ μέγαν.
-    THEODOTIO.
-    2.
-    3.
-    4.
-    5.
-    9. A facie mea.
-    In Sîm.
-    Spem.
+    9. A facie mea. In Sim. Spem.
     12. Et tradam terram in manum malignorum.
     13. Et perdam abominationes, et cessare faciam (optimates).
     14. In No.
@@ -95,14 +95,28 @@
     21.
     22. Robustum et magnum,
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,820,965,980">
+
+  [!-- Notes Section --]
+  <bloco tipo="cabecalho" script="latino" bbox="250,690,750,710">
     Notæ et variæ lectiones ad cap. XXX Ezechielis.
-    or Tetraplorum, cum tamen S. Hier. habeat, Chub. - B : A., καὶ παιδα Αραβια. Ε., Αραβια. Apud Theodor. και Αἰθιοπες, καὶ παιδα ϝ Αραβια. — B : ? :
-    V. 6, C. ✷ τάδε λέγει Ἀσωνιακ Κυριος. και περισυνειτ etc. Hebr., sic dixit Jehova. B : Π., ✷ τάδε ἔχει ΜΙΠΙ, sic melius. Et mox C obelo expungit vs Σιηνς, quod tamen est in Hebr. — B : Ο', τὰ αντιγραφματα. Ἀ., Σ., οἱ ὑποστηρίζοντες. — Ο', και καταδιώξεται. Θ., και καταδιώξεται, destructur. — Ο', ὑδρος. Α., Σ., τὰ uπερφανια. — Ο', ἀπὸ Μαγδόλου. Α., Σ., ἀπὸ πυργου. Cf. supra xxix, 40. DRACH.
-    V. 7. C, ἔν μεσῳ χρόνῳ ✷ φανερωθησιν (etiam Alex. rcp.). και ἀπολέσ- αὐτοὺς (scriptoris vltimum, pro αἱ et poleis αὐτων) ἰν μέσῳ χρόνων: — B : ὀχρων. Ἄλλος, πόλεων. Idem.
-    V. 9. Θ., ἔκ προσώπου μου etc. Ita lectiones ex Drusio et ex ms. Jes. produnt. Hieronymus, A., Th., in Sim. Sym., festinantes. Hic ms. hes. sic habet : ἐκ προσώπου μου ἑαυτοι (sic). E., ἐν ἐπει.
-    Est. Drusius vero sic : Scholiastes hoc loco ex
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="20,710,480,900">
+    or Tetraplorum, cum tamen S. Hier. habeat, Chub. — B : Ἄ., κα πᾶσα ραβα. Σ., ραβία. Apud Theodor., καὶ Αἰθίοπες, καὶ πᾶσα  Ἀραβία. — B : γ, Πέρσαι καὶ Κρτες. Ἄ., Σ., Θ., Αἰθιοπία καὶ Ἰούδ. — Ἄ., Σ., Θ., ☦ καὶ Χουβάλ. Hæc lectio palam respicit Hebr. חב. Quomodo autem reddatur, non in promptu est dicere, invertunt enim ordinem. Non autem omittunt, ut credit Rosenmullerus, qui non attendit tot exprimere nationes LXX quot textus Hebr., nimirum, sex. — Οἱ Γ',  τῆς. . e. addunt τῆς ante διαθήκης. — C , ἐν αὐτ μαχαίρα πεσονται. DRACH.]
+    V. 6. C, ☦ τάδε λέγει Ἀδωναὶ Κύριος, : καὶ πεσοῦνται etc. Hebr., sic dixit Jehova. B : Π., ☦ τάδε γει ΠΙΠΙ, sic melius. Et mox C obelo expungit ὡς Ξυήνης, quod tamen est in Hebr. — B : Ο', τὰ
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="500,710,960,900">
+    ἀντιστηρίγματα. Ἄ., Σ., οἱ ὑποστηρίζοντες. — Ο', καὶ καταθήσεται. Θ., καὶ καθαρεθήσεται, destruetur. — Ο', ἡ ὕδρις. Ἄ., Σ., ἡ ὑπερφανία. — Ο', ἀπὸ Μαγδώλου. Ἄ., Σ., ἀπὸ πύργου. Cf. supra XXIX, 10. DRACH.
+    V. 7. C, ἐν μέσῳ χωρῶν ☦ ἠφανισμένων (etiam Alex. ἡρ.).) ☦ καὶ ἀπολεῖς ατοὺς (scriptoris vitium, pro καὶ αἱ πόλεις αὐτῶν) ἐν μέσῳ πόλεων : — B : Ο', χωρῶν. Ἄλλος, πόλεων. IDEM.
+    V. 8. B : Ο', συντριβώσι. Ἄλλος, συντριβήσονται. IDEM.
+    V. 9. Θ., ἐκ προσώπου μου etc. Hæ lectiones ex Drusio et ex ms. Jes. prodeunt. Hieronymus, a A., Th., in Siim. Sym., festinantes. » Hic ms. Jes. sic habet : ἐκ προσώπου μου ἔσλμ (sic). Σ., ἐν ἐπείξει. Drusius vero sic : « Scholiastes hoc loco ex
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,950,900,980">
     Digitized by Google
   </bloco>
-  <notas>Scriptos gregos e latinos misturados; mapeamento em três colunas; marcas editoriales (✷, ☓) preservadas; algumas abreviações e sinais de obelus mantidos conforme impresso.</notas>
+  <notas>
+    Símbolo ☦ representa uma cruz dentro de um círculo (marca critica).
+    Texto hebraico חב (Chub) presente nas notas.
+    Transcrição literal incluindo abreviações como "int.", "Al.", "ms.", "sic".
+    A palavra "palam" foi reconstruída de "pa- / lam" devido à quebra de linha visual no original, mas mantida junta no bloco para coerência.
+  </notas>
 </pagina>

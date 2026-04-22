@@ -1,71 +1,134 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,120">
-    929                JOSUE CAPUT I.                             950
-                      CAPUT XXXIV DEUTERONOMII.
-    ΣΥΜΜΑΧΟΣ.                             Ο.                        ΘΕΟΔΟΤΙΟΝ.
+  <bloco tipo="cabecalho" script="latino" bbox="50,40,950,100">
+    929 JOSUE CAPUT I. 930
+    CAPUT XXXIV DEUTERONOMII.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="20,120,980,360">
-    1. [Εκ πεδιάδος Μωάβ.]
-    1.  Ἀπὸ Ἀραβῶθ Μωάβ.
-    Φασγά.
-    Ἐπὶ προσώπου. Ἄλλος, κατὰ προσώπου.
+  <bloco tipo="texto_principal" script="grego" bbox="50,100,300,250">
+    ΣΥΜΜΑΧΟΣ.
+    1. [Ἐκ πεδιάδος Μωάβ.]
     7.
-    7. Χελώνια αὐτοῦ. Οἱ λοιποὶ, σταγών αὐτοῦ.
-    8.  Ἐπὶ τὴν πεδιάδα τῆς Μωάβ.
-    8.  Ἐπὶ δυσμῶν Μωάβ.
+    8. Ἐπ τὴν πεδιάδα τῆς Μωάβ.
     12.
-    12.  Ἐναντί. Ἄλλος, ἑνίπιον.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,360,980,600">
-    SYMMACHUS.                     LXX INTERPRETES.                   THEODOTIO.
-    1. Ex campestri Moab.          1. Ab Araboth Moab.                 1.
-                                   Phasga.
-                                   Super faciem. Alius, secundum faciem.
-    7.                             7. Labia ejus. Reliqui, maxilla ejus.   7.
-    8. In campestri Moab.          8. Ad occidentem Moab.              8. Ad occidentem Moab.
-    12.                           12. Ante. Alius, coram.              12.
+  <bloco tipo="texto_principal" script="grego" bbox="350,100,650,250">
+    Ο'.
+    1. Ἀπὸ Ἀραβὼθ Μωάβ.
+    Φασγά.
+    Ἐπὶ προσώπου. Ἄλλος, κατὰ
+    πρόσωπον.
+    7. Χελώνια αὐτοῦ. Οἱ λοιποί,
+    σιαγὼν ατοῦ.
+    8. Ἐπ δυσμῶν Μωάβ.
+    12. Ἔναντι. Ἄλλος, ἐνώπιον.
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="20,600,980,740">
+  <bloco tipo="texto_principal" script="grego" bbox="700,100,950,250">
+    ΘΕΟΔΟΤΙΩΝ.
+    7
+    8. Ἐπὶ δυσμῶν Μωάβ.
+    12.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,260,300,400">
+    SYMMACHUS.
+    1. Ex campestri Moab.
+    7.
+    8. In campestri Moab.
+    12.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,260,650,400">
+    LXX INTERPRETES.
+    1. Ab Araboth Moab.
+    Phasga.
+    Super faciem. Alius, secundum
+    faciem.
+    7. Labia ejus. Reliqui, maxilla
+    ejus.
+    8. Ad occidentem Moab.
+    12. Ante. Alius, coram.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,260,950,400">
+    THEODOTIO.
+    1.
+    7.
+    8. Ad occidentem Moab.
+    12.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="200,410,800,440">
     Notæ et variæ lectiones ad cap. XXXIV Deuteronomii.
-    χελῶνια.
-    Ibid. Οἱ λοιποί, σταγίων αὐτοῦ. IIa Basiliensis.
-    V. 8. Vide Num. xxii, 1.
-    V. 9. [ע]דמ.  V, συντέως. Coislín. marg., σοφίας
-    V. 12. Ἄλλ., ἑνώπιον. Basiliensis.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="20,740,980,980">
-    Procopius in: Heptateuchum.
+  <bloco tipo="aparato_critico" script="misto" bbox="50,440,450,490">
+    χελώνια.
+    Ibid. Οἱ λοιποί, σιαγὼν αὐτοῦ. Ita Basiliensis.
+    V. 8. Vide Num. xxII, 1.
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="500,440,950,490">
+    V. 9. חמח. Ο'. συνέσεως. Coislin. marg., σοφίας
+    V. 12. Ἄλλ., ἐνώπιον. Basiliensis.
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="50,550,900,680">
+    Procopius in Heptateuchum.
     Andreas Masius in Josue.
-    Jo. Ernest: Grabe editio.
-    Nola editionis Romanae et Drusii (1).
-    Porro non modicum discrimini observabit plerumque eruditus lector inter ea quae Masins et Grabe asseruerunt notant, et ea quæ in Basiliensi servantur. Quae vero sit varietatis hujusmodi causa in Preliminaribus indicabimus.
-    (1) Quas deprompsit posterioris Montfauconi notas et varias lectiones e codice Coisliniano, reposuimus usumquamque in locum suum.
+    Jo. Ernesti Grabe editio.
+    Notæ editionis Romanæ et Drusii (*).
+    Porro non modicum discriminis observabit plerumque eruditus lector inter ea quæ Masius et Grabe asteriscis notant, et ea quæ in Basiliensi *eruntur. Quæ vero sit varietatis hujusmodi causa in Præliminaribus indagatum.
+    (*) Quas deprompsit posterius Montfauconius notas et varias lectiones e codice Coisliniano, reposuimus unamquamque in locum suum.
     Editor.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="120,980,880,1150">
+  <bloco tipo="cabecalho" script="latino" bbox="300,700,700,730">
     CAPUT PRIMUM JOSUE.
-    ΣΥΜΜΑΧΟΣ.                     Ο,                       ΘΕΟΔΟΤΙΟΝ.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="20,1150,980,1480">
-    1. Μετὰ δὲ τὴν τελευτὴν Μωυσῆ
-    δοῦλου Κυρίου εἶπε Κύριος.
-    1. Καὶ ἐγένετο μετὰ τὴν τελευ-
-    τὴν Μωσῆ εἶπε Κύριος.
-    Τ[η]γρνχ. Ἄλλ., λεπτογραφ.
+  <bloco tipo="texto_principal" script="grego" bbox="50,730,300,850">
+    ΣΥΜΜΑΧΟΣ.
+    1. Μετὰ δὲ τὴν τελευτὴν Μωϋσῆ
+    δούλου Κυρίου εἶπε Κύριος.
     2.
-    2. Τὸν Ἰορδάνην. Οἱ λοιποὶ, τὸν Ἰορδάνην τοῦτον.
-    3.
-    3. Vacat. Ἄλλος, παίσει ἐπὶ τὴν γῆν τοῦ Χετταίου.
+    4.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,1480,980,1850">
-    SYMMACHUS.                   LXX INTERPRETES.                 THEODOTIO.
-    1. Post mortem autem Moysi   1. Et factum est post mortem   1.
-    servi Domini dixit Dominus.    Mosis, dixit Dominus.
-    2.                           Administro. Alii, ministro.
-    2. Jordanem. Reliqui, Jordanem 2.
+  <bloco tipo="texto_principal" script="grego" bbox="350,730,650,850">
+    Ο'.
+    1. Καὶ ἐγένετο μετὰ τὴν τελευ-
+    τὴν Μωϋσῆ εἶπε Κύριος.
+    Ὑπουργ. Ἄλλ., λειτουργῷ.
+    2. Τὸν ορδάνην. Οἱ λοιποί, τὸν
+    Ἰορδάνην τοῦτον.
+    4. Vacat. Ἄλλος, πᾶσαν τὴν
+    γῆν τοῦ Χετταίου.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="700,730,950,850">
+    ΘΕΟΔΟΤΙΩΝ.
+    1.
+    2.
+    4.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,860,300,980">
+    SYMMACHUS.
+    1. Post mortem autem Moysis
+    servi Domini dixit Dominus.
+    2.
+    4.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,860,650,980">
+    LXX INTERPRETES.
+    1. Et factum est post mortem
+    Mosiæ, dixit Dominus.
+    Administrro. Alii, ministro.
+    2. Jordanem. Reliqui, Jordanem
     hunc.
-    4. Vacat. Alius, omnem terram 4.
-    Chettai.
+    4. Vacat. Alius, omnem terram
+    Chettæi.
   </bloco>
-  <notas>Transcrição inclui textos em grego e latim. Algumas abreviaturas e sinais tipográficos mantidos; palavras parcialmente danificadas marcadas conforme imagem. BBOXs estimados em escala 0-1000.</notas>
+  <bloco tipo="texto_principal" script="latino" bbox="700,860,950,980">
+    THEODOTIO.
+    1.
+    2.
+    4.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="500,960,800,990">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Texto em grego e latim comparando versões bíblicas (Symmachus, LXX, Theodotion).
+    Nota crítica contém caracteres hebraicos (חמח).
+    Erro de impressão aparente em "Administrro." (bloco LXX Interpretes, Joshua 1).
+    Asterisco em "*eruntur" no bloco de notas Procopius.
+  </notas>
 </pagina>

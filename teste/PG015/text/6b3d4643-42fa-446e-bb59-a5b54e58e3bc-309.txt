@@ -1,9 +1,14 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,90">
-    613                             LEVITICI CAP. XV.                             614
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="30,90,320,640">
-    ΣΥΜΜΑΧΟΣ.
+  <bloco tipo="cabecalho" script="misto" bbox="80,30,120,50">613</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="400,30,580,50">LEVITICI CAP. XV.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="880,30,920,50">614</bloco>
+  
+  <bloco tipo="cabecalho" script="grego" bbox="160,55,260,75">ΣΥΜΜΑΧΟΣ.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="480,55,510,75">θ'.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="710,55,820,75">ΘΕΟΔΟΤΙΩΝ.</bloco>
+
+  [!-- Greek Section --]
+  <bloco tipo="texto_principal" script="grego" bbox="80,85,120,300">
     36.
     37.
     38.
@@ -11,27 +16,31 @@
     49.
     52.
     56.
-    36. Ἀκαθαρτα γίγνεται. Ἄλλος, ἀκαθαρτισθῇ.
-    37. Καὶ ἡ ὕξις αὐτῶν ταπεινο-
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="350,85,620,300">
+    36. Ἀκάθαρτα γένηται. Ἄλλος,
+    ἀκαθαρτισθῇ.
+    37. Καὶ ἡ ὄψις αὐτῶν ταπεινο-
     τέρα. Ἄλλος, καὶ ἡ ἰδέα αὐτῶν
     κοιλοτέρα.
     38. Ἐκ τῆς οἰκίας. Ἄλλος, ἀπὸ
     τῆς οἰκίας.
-    44. Ἐμμονῆς. Ἄλλος, σπαντ-
+    44. Ἔμμονος. Ἄλλος, σπανί-
     ζουσα.
-    49. Λήψεται ἀφανίσαι. Ἄλλος,
-    καὶ λήψεται περὶ ἁμαρτείας.
-    Κεκλεισμένον. Ἄλλος, ἁλλοού-
+    49. Λήψεται ἀφαγνίσαι. Ἄλλος,
+    καὶ λήψεται περὶ ἁμαρτίας.
+    Κεκλιωσμένον. Ἄλλος, ἁλλοιού-
     μενον.
-    52. Κεκλεισμένῳ. Ἄλλος, ἀλ-
-    λουμένου.
+    52. Κεκλιωμένῳ. Ἄλλος, ἁλ-
+    λοιουμένῳ.
     56. Οὐλῆς, καὶ σημασίας, καὶ
-    τοῦ αὐξάνοντος. Ἄλλος, τοῦ σήθ
-    και του ἐνδεδωκότος. Ἄλλος, τοῦ
-    αὐξάματος.
+    τοῦ αὐγάζοντος. Ἄλλος, τοῦ σῖθ
+    καὶ τοῦ ἐνδεωκότος. Ἄλλος, τοῦ
+    αὐγάσματος.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,90,670,640">
-    SYMMACHUS.
+
+  <bloco tipo="texto_principal" script="grego" bbox="650,85,690,300">
     36.
     37.
     38.
@@ -39,31 +48,42 @@
     49.
     52.
     56.
+  </bloco>
+
+  [!-- Latin Section Headers --]
+  <bloco tipo="cabecalho" script="latino" bbox="150,310,260,330">SYMMACHUS.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="390,310,560,330">LXX INTERPRETES.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="710,310,810,330">THEODOTIO</bloco>
+
+  [!-- Latin Section Content --]
+  <bloco tipo="texto_principal" script="latino" bbox="80,340,120,500">
+    36.
+    37.
+    38.
+    44.
+    49.
+    52.
+    56.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="350,340,620,500">
     36. Immunda fiant. Alius, im-
     munda facta fuerint.
-    37. Et aspectus eorum humiliior.
+    37. Et aspectus eorum humilior.
     Alius, et conspectus eorum depres-
     sior.
     38. E domo. Alius, a domo
-    44. Permanens. Alius, rar.
+    44. Permanens. Alius, rara.
     49. Sumet ad purificandum
     Alius, et sumet ad expiandum.
     Tortum. Alius, variatum.
-    52. Torto. Alius, variato.
+    52. Tortio. Alius, variato.
     56. Cicatricis, et significationis,
-    et splendinis. Alius, ipsius seth
+    et splendentis. Alius, ipsius seth
     et influentis. Alius, splendoris.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,90,960,640">
-    ΘΕΟΔΟΤΙΟΝ.
-    36.
-    37.
-    38.
-    44.
-    49.
-    52.
-    56.
-    THEODOTIO
+
+  <bloco tipo="texto_principal" script="latino" bbox="650,340,690,500">
     36.
     37.
     38.
@@ -72,36 +92,82 @@
     52.
     56.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="30,640,960,1100">
-    Notes et variae lectiones ad cap. XIV Levitici.
-    Ibid. A.11., ἁλλοιούμενον. Ex eodem.
-    V. 57. A.11., ἀλλοιουμένῳ. Ex eodem.
-    V. 36. A.11., τοῦ σήθ και του ἐνδεδωκότος. Est
-    lectio Theodotionis, qui capite praecedenti, vers. 19,
-    τυχὼ verit opin.
-    Hæc notantur in margine Coislm. V. 4. τηι ̣̣̣̣̣ ̣̣̣̣, καὶ κέρινον, marg. χειρόγραφος. Ibid. τιτι ̣̣,
-    και ὑποσημ., m. ἔργανον. Videtur scholion. V. 10.
-    ζησ ̣, και πολύμη, m. εἴρων. V. 12. σπνοὺ ὁ,
-    της πηληκελας., m. περὶ γύμνασιν. V. 14. π̣̣̣̣̣̣ ̣̣
-    ̣, της πηληκελας. m. του μάσοματος. Ibid. τιτι
-    ὀ, λοβὸν, m., ὕψος. V. 21. τετρηθος, ἀφαίρεμα, m.,
-    EX CAP. XV LEVITICI, UT HABETUR IN COD. COLB. 5081.
-    μέρρη  ἤ σχήζει ληψεται ἑκαστῷ δύο τριγόνων, ἢ δύο
-    παροδοὺς πεπραγμ., και ἀπεὶ ἀπὸς πρὸς τὴν ἱερά
-    τιτ τῆν ὕμην τῆς σπάρτης τοι μαρτυρεῖν. 50. Και
-    ποιεῖται ὁ ἱερεὺς τὸν μὲν ἑαυτὴ ἀμαρτίας, και τὴν
-    μὲν εἰς ἀποκαθαρισμ. και ἐξαλείψει περὶ αὐτῆς ὁ
-    ἱερεὺς ἔσται Κυρίου ἀπὸ ῥύσεως ἀκαθαρσίας αὐτῆς.
-    51. Και ἀδελφα ̄ ἐκβαλετ̓ ῥασιν ὑποκ ῖ Ἰσραελ ἀπὸ
-    τῶν ἀκαθαρσιῶν αὐτῶν, και οἱ ἀποδοθήσονται ᾶν
-    τὴν ἀκαθαρσιὰν αὐτῶν, ἐν τῇ ἡλίαιν αὐτῶς ᾶν
-    σκηνὴν που τὴν ἐν αὐτῷ. 52. Ὅποιος ὁ νόμος τοῦ πα-
-    ρορύχου, και ἔαν ἐπὶ ἐλεφθῇ τῶν τῶν σκηνων,
-    μέρος, ἔσται μεταθεσις ἐν αὐτῷ. 53. Και τὴ ἁιρέσ
-    προσάκηγ, ἐν τῇ ἑαυτῆς αὐτῆς, και ὁ γονοςρίς τῇ βλ-
-    σι αὐτοῦ, τῷ ἧρι, ἡ ῥητὴ, καὶ τὸ ἀμή, ὅ
-    ἄν κατορθᾶ μετὰ ἀποκαθαρίωμα.
-    Digitized by Google
+
+  [!-- Notes Section --]
+  <bloco tipo="cabecalho" script="latino" bbox="260,510,720,530">Notæ et variæ lectiones ad cap. XIV Levitici.</bloco>
+
+  <bloco tipo="nota" script="misto" bbox="80,540,480,700">
+    Ibid. Ἄλλ., ἁλλοιούμενον. Ex eodem.
+    V. 52. Ἄλλ., λλοιουμένῳ. Ex eodem.
+    V. 56. Ἄλλ., τοῦ σθ καὶ το ἐνδεωκότος. Est
+    lectio Theodotionis, qui capite præcedenti, vers. 19,
+    πυκὸν vertit σῖθ.
+    Hæc notantur in margine Coislin. V. 4. יטמ יקח
+    O', καὶ χέτρινον, marg. κυπάρισσος. Ibid. לחשׁ O',
+    καὶ ὕσσωπον, m. ὄργανον. Videtur scholion. V. 10.
+    גח O', καὶ κοτίλην, m. ξέστην. V. 12. םשח O',
+    τῆς πλημμελείας, m. περὶ λυτρώσεως. V. 14. םשׁח
+    O', τῆς πλημμελείας, m. τοῦ μιάσματος. Ibid. ךמׁח
+    O', λοβόν, m., ὕψος. V. 21. רפׁעח O', ἀφαίρεμα, m.,
   </bloco>
-  <notas>Página com colunas; grego e latino misturados. Algumas abreviações e sinais marginalia foram transcritos literalmente quando legíveis; palavras muito danificadas marcadas como [ilegivel] não foram necessárias nesta página.</notas>
+
+  <bloco tipo="nota" script="misto" bbox="490,540,900,680">
+    ἀφόρισμα. V. 22. תשׁח-ךמׁח O', ὅσα εὗρεν, m., ὡς ν
+    δυνηθ. V. 32. זיח עמׁח-ל ךמׁח O', καὶ τοῦ μ εὑρίσκον-
+    τος, etc., m. ἐὰν δυνατεῖ [l. ἀδυνατεῖ] ἡ χερ αὐτοῦ.
+    V. 36. ורצׁי O', καὶ προστάξει, m. καὶ ἐντελεῖται
+    ὁ ἱερεύς, καὶ ἐκφορήσουσι τὰ ἐν τῇ οκί. Ibid.
+    אטמׁח אל O', οὐ μὴ ἀκάθαρτα, m., οὐ μιανθήσεται.
+    V. 38. ירשׁע O', ἀφοριεῖ, m., ἀποκλείσει. V. 42. O',
+    ἐξαλείψουσι, m., χρίσουσι. V. 45. ורפׁח O', ἐξαλειφθή-
+    ναι, m., χρισθῆναι. V. 46. רשׂב O', διακέχυται, m.,
+    σπανίζουσα. Ibid. ןומׁאמ O', ἔμμονος, m., φιλόνεικος.
+    V. 57. תרתׁח O', ἐξηγήσασθαι, m., φωτίσαι.
+  </bloco>
+
+  [!-- Bottom Section --]
+  <bloco tipo="cabecalho" script="latino" bbox="230,710,750,730">EX CAP. XV LEVITICI, UT HABETUR IN COD. COLB. 3084.</bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="80,740,480,930">
+    ἡμέρᾳ τῇ ὀγδόῃ λήψεται ἑαυτῇ δύο τρύγονας, ἢ δύο
+    νοσσοὺς περιστερῶν, καὶ οἴσει αὐτὰ πρὸς τν ἱερέα
+    ἐπὶ τὴν θύραν τῆς σκηνῆς το μαρτυρίου. 30. Καὶ
+    ποιήσει ὁ ἱερεὺς τὴν μίαν περὶ ἁμαρτίας, καὶ τὴν
+    μίαν εἰς ὁλοκαύτωμα· καὶ ἐξιλάσεται περὶ αὐτῆς 
+    ἱερεὺς ἔναντι Κυρίου ἀπὸ ῥύσεως ἀκαθαρσίας αὐτῆς.
+    31. Καὶ εὐλαβεῖς ποιήσετε τοὺς υἱοὺς Ἰσραὴλ ἀπὸ
+    τῶν ἀκαθαρσιῶν αὐτῶν, καὶ οὐκ ἀποθανοῦνται διὰ
+    τὴν ἀκαθαρσίαν αὐτῶν, ἐν τῷ μιαίνειν αὐτοὺς τν
+    σκηνήν μου τὴν ἐν αὐτοῖς. 32. Οὗτος  νόμος τοῦ γο-
+    νοῤῥύου, καὶ ἐάν τινι ἐξέλθῃ ἐξ αὐτοῦ κοίτη σπέρ-
+    ματος, ὥστε μιανθῆναι ἐν αὐτῇ. 33. Καὶ τῇ αἱμοῤ-
+    ρούσ ἐν τῇ ἀφέδρῳ αὐτῆς, καὶ ὁ γονοῤῥύης τῇ ῥύ-
+    σει αὐτοῦ, τῷ ἄρσενι ἢ τῇ θηλείᾳ, καὶ τῷ ἀνδρί, ὃς
+    ἂν κοιμηθῇ μετὰ ἀποκαθημένης.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="490,740,900,930">
+    columbarum, et feret ea ad sacerdotem ad ostium
+    tabernaculi testimonii. 30. Et faciet sacerdos unum
+    pro peccato, et unum in holocaustum : et expiabit
+    pro ea sacerdos ante Dominum a fluxu immunditiæ
+    ejus. 31. Et pios facietis filios Israel ab immundi-
+    tiis suis, et non morientur propter immunditias
+    suam, in eo quod ipsi inquinent tabernaculum
+    meum quod in eis. 32. Hæc est lex ejus qui patitur
+    fluxum seminis, et si cui exeat ex eo concubitus
+    seminis, ita ut inquinetur in illo. 33. Et ei quæ
+    patitur fluxum sanguinis in purgatione sua, et qui
+    patitur fluxum seminis in fœdore suo, masculo vel
+    feminæ, et viro quicunque dormierit cum men-
+    struata.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="550,960,800,990">Digitized by Google</bloco>
+  
+  <notas>
+    A página apresenta uma edição crítica comparando versões gregas (Symmachus, LXX, Theodotion) e latinas de Levítico.
+    O cabeçalho central grego "θ'." é ambíguo, possivelmente uma abreviatura para Theodotion ou um marcador de seção, embora a coluna corresponda ao texto LXX na tradução latina abaixo.
+    Transcrição fiel das abreviações (m. para margo, V. para Versus, l. para lege).
+  </notas>
 </pagina>

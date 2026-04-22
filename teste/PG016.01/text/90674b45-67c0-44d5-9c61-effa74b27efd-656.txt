@@ -1,28 +1,35 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="70,40,930,160">
+  <bloco tipo="cabecalho" script="latino" bbox="350,90,650,140">
     ORDO RERUM
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="110,160,890,220">
+  <bloco tipo="cabecalho" script="latino" bbox="200,155,800,195">
     QUÆ IN TOMI XVI PARTE PRIMA CONTINENTUR.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,240,920,420">
+  <bloco tipo="texto_principal" script="latino" bbox="150,220,550,330">
     ORIGENES.
-    HEXAPLORUM QUÆ SUPERSUNT.
-    Liber II Regum.                11
-    Liber III Regum.              143
-    Liber IV Regum.               195
-    Liber I Paralipomenon.        235
-    Liber II Paralipomenon        365
-    Jobium in Librum Job          367
-    Liber Job.                    387
-    Morium in Librum Psalmorum.   401
-    Liber Psalmorum.              554
+    HEXAPLORUM QUÆ SUPERSUNT.,
+    Liber II Regum. 41
+    Liber III Regum. 145
+    Liber IV Regum. 195
+    Liber I Paralipomenon. 255
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="240,460,760,540">
+  <bloco tipo="texto_principal" script="latino" bbox="580,220,900,330">
+    Liber II Paralipomenon 263
+    Monitum in Librum Job 281
+    Liber Job. 381
+    Moritum in Librum Psalmorum. 567
+    Liber Psalmorum. 567
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="320,440,680,470">
     FINIS PARTIS PRIMÆ TOMI DECIMI SEXTI.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="660,900,930,980">
+  <bloco tipo="rodape" script="latino" bbox="620,890,920,920">
     Imprimerie MIGNE, au Petit Montrouge.
   </bloco>
-  <notas>Texto em latim impresso. Pequenos sinais ornamentais entre blocos foram ignorados como decoração; todos os blocos de texto visíveis foram transcritos literalmente. Alguns espaçamentos e alinhamentos foram aproximados; '[ilegivel]' não foi necessário.</notas>
+  <bloco tipo="outro" script="latino" bbox="550,940,800,970">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição literal mantendo erros tipográficos originais (ex: "Moritum" em vez de "Monitum", "SUPERSUNT.,"). Números de página na coluna direita estimados visualmente (381, 567).
+  </notas>
 </pagina>

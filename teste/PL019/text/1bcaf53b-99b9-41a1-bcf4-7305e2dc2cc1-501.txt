@@ -1,8 +1,11 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,80">
-987   QUE IN IV LIBRIS HISTORIAE EVANG. JUVENCI CONTINENTUR.   990
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="80,0,920,70">
+987
+QUE IN IV LIBRIS HISTORIAE EVANG. JUVENCI CONTINENTUR.
+990
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,100,320,880">
+
+  <bloco tipo="texto_principal" script="latino" bbox="20,80,320,920">
 Supra sidera, i, 717.
 Surgam testis, iv, 667.
 Surgent nomina, i, 756.
@@ -30,10 +33,12 @@ Syri, i, 485.
 Syria, i, 474. Regebat, i, 181.
 Syrorum, iii, 176.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="330,140,360,760">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="300,300,380,520">
 T
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="365,100,655,880">
+
+  <bloco tipo="texto_principal" script="latino" bbox="300,80,650,920">
 Tabe languoris, i, 476. Morborum, iii, 75.
 Tabes dolorosa, i, 478.
 Tabulata laterum, iv, 31.
@@ -61,7 +66,7 @@ Temnuntur, iii, 60.
 Tempore excussam aurem, iv, 368.
 Tenaci sensu, ii, 791.
 Tenax virtutis, iii, 518.
-Tendentem, ii, 111. Diffusa umbracula, iii, 658.
+Tend[en]tem, ii, 111. Diffusa umbracula, iii, 658.
 Tendit ad limina, ii, 635. Per devia, iv, 481.
 Teneantur amore, iv, 42.
 Tenebant praecepta amplexos, i, 42.
@@ -77,10 +82,11 @@ Tenentem confidia, iv, 915. Operum justa, i, 501.
 Tenentur lege, iii, 504. Molli cum veste, ii, 533.
 Teneram plebem, i, 296.
 Tenere corda libera sanguinis, iv, 621.
-Script[a], iii, 650.
+Scripta, iii, 650.
 Terent jejunia, ii, 365. Pectora, ii, 353.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,100,970,880">
+
+  <bloco tipo="texto_principal" script="latino" bbox="650,80,1000,920">
 Teneret dona, ii, 36.
 Tenefris auris, ii, 77.
 Tenete haec jussa, i, 668.
@@ -198,10 +204,7 @@ Transvolvere, iii, 378.
 Transubunda, iii, 667. Tellus, iv, 706.
 Transfixa, i, 196.
 Tremefacta, i, 196.
-Trementibus ulnis, i, 235.
-Trenisset, iv, 107.
-Treniscus, iii, 302.
-Tremulo pavore, iv, 105.
+Tremescent, i, 108.
 Trepidare vitæ, iv, 136.
 Trepida manu, iii, 394.
 Trepidantibus, iv, 688.
@@ -232,8 +235,10 @@ Tueris nomen, iv, 278.
 Tulerat vitam, iv, 725.
 Tuunebat feritas, iv, 301.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="360,900,980,990">
+
+  <bloco tipo="rodape" script="latino" bbox="200,880,700,960">
 Digitized by Google
   </bloco>
-  <notas>Tipo de página: texto. Script principal: latino. Página em três colunas; letra marginal "T" (nota_marginal) marca o verbete T. BBOXs são aproximações em escala 0-1000. Foram mantidas abreviaturas e pontuação visíveis. Usei a marca [ilegivel] por palavras cuja leitura estava incerta; não foram feitas normalizações ou traduções. Certas leituras de números e abreviaturas (i, ii, iii, iv, etc.) e algumas formas ligadas foram transcritas conforme a leitura visual; palavras duvidosas foram marcadas com [ilegivel].</notas>
+
+  <notas>Layout inferido: página com 3 colunas de texto; transcrição seguiu coluna esquerda (S...), depois coluna central (Tabe...), depois coluna direita (Teneret... até Tuunebat...). A letra marginal “T” foi mantida em bloco separado como nota_marginal. Usei [ilegivel] apenas em ocorrência marcada pelo OCR/baixa legibilidade. BBOXs aproximadas em escala 0-1000.</notas>
 </pagina>

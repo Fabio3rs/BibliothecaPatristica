@@ -1,93 +1,138 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="60,10,940,80">
-HEXAPLORUM QUÆ SUPERSUNT.
-TO EBRAIKON.		TO EBRAIKON		AKYΛAΣ.
-		Έλληνικός γράμμασι.
+  <bloco tipo="cabecalho" script="latino" bbox="350,40,650,60">
+    HEXAPLORUM QUÆ SUPERSUNT.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="60,90,320,760">
-(hebraico line 1)
-(hebraico line 2)
-(hebraico line 3)
-(hebraico line 4)
-(hebraico line 5)
-(hebraico line 6)
-(hebraico line 7)
-(hebraico line 8)
-(hebraico line 9)
-(hebraico line 10)
-(hebraico line 11)
-(hebraico line 12)
-(hebraico line 13)
-(hebraico line 14)
-(hebraico line 15)
-(hebraico line 16)
-(hebraico line 17)
-(hebraico line 18)
-(hebraico line 19)
-(hebraico line 20)
-(hebraico line 21)
-(hebraico line 22)
+  <bloco tipo="cabecalho" script="latino" bbox="80,40,120,60">
+    1143
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,90,660,760">
-VERSIO HEBRAICI TEXT.
-Laetificans Deum et homines.
-
-Promoveri super ligna.
-
-14. Ad rhamnum.
-15. In regem super vos.
-
-Confidite.
-De rhamno.
-46. Juxta retributionem.
-
-17. Pugnavit.
-
-20. Et ai non.
-
-25. Et posuerunt.
-Insidias.
-Omnem qui transibat.
-
-26. Et speraverunt.
-
-27. Laudes.
-Et maledixerunt.
-30. Et iratus est nasus ejus.
-
-31. In dolo.
-Venientes in Sechem, et ecce ipsi angustianles civitatem super te.
+  <bloco tipo="cabecalho" script="latino" bbox="880,40,920,60">
+    1144
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,90,940,760">
-VULGATA LATINA.		AQUILA.
-Quod laetificat Deum et homines.
 
-Inter ligna cætera promoveri.
-
-14. Ad rhamnum.		14. Ad rhamnum.
-
-15. Regem vobis.		15.
-
-Requiescite.		Sperate.
-De Rhamno.		16.
-16. Vicem.		16.
-
-17. Pugnavit.		17.
-
-20. Sin autem.		20. Et si non.
-
-25. Posueruntque.		25.
-Insidias.		25.
-Prætereruntibus.
-
-26. Erecti.		26.
-
-27. Cantantium choris	27. Maledicebant.	Maledixerunt.
-Maledicebant.
-30. Iratus est valde.	30.
-
-31. Clam.		31.
-Et oppugnat adversum te civilitatem.
+  [!-- Coluna Superior Esquerda: Hebraico --]
+  <bloco tipo="texto_principal" script="misto" bbox="100,70,300,500">
+    TO ΕΒΡΑΙΚΟΝ.
+    וּמְשַׂמֵּחַ אֱלֹהִים וַאֲנָשִׁים
+    לָלֶכֶת לְהִתְנוֹעֵעַ
+    14 אֶל־הָאָטָד
+    15 לְמֶלֶךְ עֲלֵיכם
+    חִסוּ
+    בְּצִלְכֶם
+    16 נַגְמְלוּ
+    17 נִחַם
+    20 וְאִם־אֵין
+    25 וַיָּשִׂימוּ
+    מֹאֲרָבִים
+    לוֹ כָּל־אֹשְׁרֵי־עֵץ
+    26 וַיִּבְּחוּ
+    27 הָאֱלֹהִים
+    וַיְקַלְלוּ
+    30 וַיִּחַר אַפּוֹ
+    31 וַתִּחְמֶה
+    בְּאֵין שֶׁבֶת הֵגֶם יֹצִיא אֶת־הָעִיר
+    עָלֶיךָ
   </bloco>
-  <notas>Transcrição feita visualmente; linhas hebraicas foram marcadas genericamente como "(hebraico line N)" onde o traço é denso/impróprio para transcrição literal sem risco de erro. Mantive números e colunas em ordem: coluna esquerda hebraico + latim (VERSIO), coluna direita latim (VULGATA/AQUILA). Alguns termos em cabeçalho grego latinizados conforme imagem.</notas>
+
+  [!-- Coluna Superior Central: Hebraico em letras gregas (apenas números visíveis) --]
+  <bloco tipo="texto_principal" script="misto" bbox="350,70,550,500">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+    14.
+    15.
+    16.
+    17.
+    20.
+    25.
+    26.
+    27.
+    30.
+    31.
+  </bloco>
+
+  [!-- Coluna Superior Direita: Aquila (Grego) --]
+  <bloco tipo="texto_principal" script="grego" bbox="600,70,850,500">
+    ΑΚΥΛΑΣ.
+    14. Προς την βάμνον.
+    15.
+    Ἐλπίζετε.
+    16.
+    17.
+    20. Καὶ ε μή.
+    25.
+    26.
+    27.
+    Κατηράσαντο.
+    30.
+    31.
+  </bloco>
+
+  [!-- Coluna Inferior Esquerda: Versio Hebraici Text --]
+  <bloco tipo="texto_principal" script="latino" bbox="100,520,300,930">
+    VERSIO HEBRAICI TEXT.
+    Lætificans Deum et homines.
+    Promoveri super ligna.
+    14. Ad rhamnum.
+    15. In regem super vos.
+    Confidite.
+    De rhamno.
+    16. Juxta retributionem.
+    17. Pugnavit.
+    20. Et si non.
+    25. Et posuerunt.
+    Insidias.
+    Omnem qui transibat.
+    26. Et speraverunt.
+    27. Laudes.
+    Et maledixerunt.
+    30. Et iratus est nasus ejus.
+    31. In dolo.
+    Venientes in Sechem, et ecce
+    ipsi angustiantes civitatem super
+    te.
+  </bloco>
+
+  [!-- Coluna Inferior Central: Vulgata Latina --]
+  <bloco tipo="texto_principal" script="latino" bbox="350,520,600,930">
+    VULGATA LATINA.
+    Quod lætificat Deum et homines.
+    Inter ligna cætera promoveri.
+    14. Ad rhamnum.
+    15. Regem vobis.
+    Requiescite.
+    De Rhamno.
+    16. Vicem.
+    17. Pugnavit.
+    20. Sin autem.
+    25. Posueruntque.
+    Insidias.
+    Prætereuntibus.
+    26. Erecti.
+    27. Cantantium choris
+    Maledicebant.
+    30. Iratus est valde.
+    31. Clam.
+    Et oppugnat adversum te civi-
+    tatem.
+  </bloco>
+
+  [!-- Coluna Inferior Direita: Aquila (Latim) --]
+  <bloco tipo="texto_principal" script="latino" bbox="650,520,850,930">
+    AQUILA.
+    14. Ad rhamnum.
+    15.
+    Sperate.
+    16.
+    17.
+    20. Et si non.
+    25.
+    26.
+    27.
+    Maledixerunt.
+    30.
+    31.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="550,950,800,980">
+    Digitized by Google
+  </bloco>
 </pagina>

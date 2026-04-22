@@ -1,28 +1,38 @@
-<pagina estado="com_texto">
-  <bloco tipo="outro" script="latino" bbox="10,5,990,45">
-tipo_pagina: texto
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="15,20,90,60">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="40,20,170,65">
 357
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="320,18,680,60">
+  <bloco tipo="cabecalho" script="latino" bbox="290,20,710,65">
 CARMINUM LIB. II.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="910,20,985,60">
+  <bloco tipo="cabecalho" script="latino" bbox="860,20,1000,65">
 358
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="20,70,480,860">
-Herbida 1 pasturam sinuantia saxa virentem
-Illiciam oculos nobilior e dolo.
-Pellat opus lanam arte, regat natura figuras,
+  <bloco tipo="nota_marginal" script="latino" bbox="485,135,525,215">
+A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,300,525,400">
+B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,490,525,585">
+C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,665,525,755">
+D
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="10,70,485,830">
+Herbida * pasturam sinu'antia saxa virentem
+Illiciant oculos nobiliores dolo.
+Pellat opus lanae arte, regat natura figuras,
 Viscera dum lapidum fingit imaginibus.
-Candorem ruseo perfundat doctor ab ore,
+Candorem roseo perfundat doctor ab ore,
 Depingat sparsis congrua membra notis.
 Aurum, caelum, ebur, tabulis, laquearia, gemmas
 Non datur humanis plus rutilare bonis.
 In pretio cautis fors et sine lege iocatur.
-Moribus ut constes, crede, labori erit.
+Moribus ut constes, crede, laboris erit.
 
 XI.
 (IN' BASILICA APOSTOLORUM NOVARIAE.)
@@ -30,7 +40,7 @@ Antiquum ecce nitet templum, quod sorduit ante,
 Cui faciem veterem lux nova composuit.
 Perdidit antiquum quis religione sacellum,
 Numinibus pulsis quod bene numen habet.
-Di quibus hoc paluit, possessas linquite sedes.
+Di quibus hoc patuit, possessas linquite sedes.
 Quod fecit Victor, victor ubique tenet.
 Adduxit ad cultum merito successor et actis,
 Qui morum nomen hinc, illo orare, geris.
@@ -41,147 +51,180 @@ XII.
 (ITEM IN DOMO [ilegivel]N[ilegivel].)
 Aspice de cujus biberit domus arcta fluentis,
 Atria quod superat porticibus modicis.
-Pontificis summi studio constructa rendet,
+Pontificis summi studio constructa renidet,
 Laurenti proprium possidet ista diem.
 Splendida per census consurgunt tecta ruinam,
 Occasum nescit quod venit a Domino.
-Vix caries senium comitata hoc dederit unquam,
+Vix caries senium comitata hoc deterit unquam,
 Gloria factoris quod bene condiderit.
-Subula de magnis nunquam tacitura reservat,
-Quod vincens avum nomen ad astra ferat.
+F[b]ula de manis nunq'iam tacitura reservat,
+Quod vincens νηὶ nomen ad astra ferat.
 
 XIII.
 Ille fuit rigidi semper servator honesti,
 Terribilis culpis, supplicibusque pius.
-Quem nunquam flexit vitium, miseratio semper,
+Quem nanquam flexit vitium, miseratio semper,
 Judicium facie certus ubique dedit.
 Crimina corripuit vultu, compuncta refovit,
-Conscia secreti dedulit ora tui.
-Ille utero genitrix caelestem fudit in aulam,
-Ubera subducens tradidit uberibus.
-Cana venerandum stupebant saecula vatem:
-Moribus an[ilegivel] fuit, quod gerit officio.
+Conscia secreti detulit ora tui.
+Ille utero genitrix celestem fudit in aulam,
+Ubera subducens tradidit uberibu:;
+Cana venerandum stupebant δα υἷα vatem :
+Morib.:s aut: fuit, quod gerit officio.
 
 XIV.
 Qui possessa diu felix habitacula liquit,
-Quae crevit Domino sic viduata domus.
-[Herbida sacra] Marmor Laced[a]emonium, viridi
-colore. Prudentius: Quia viridis Lacedemon habet.
-Sidonius in Burr. o?
-Herbosis quae verant marmora venis.
+Que crevit Domino sic viduata domus.
   </bloco>
 
-  <bloco tipo="aparato_critico" script="latino" bbox="20,860,480,995">
-* In basilica Apostolorum] In omnibus libris titulus hic erat; versus ibidem, quod falsum est. Iaque aliquam
-fecimus ex Dictione Q., quae ejusdem est argument.
-Rursum in codice Vaticano primus versus primum
-tamen est pedum: abest enim to antiquum: pro quo in
-Sarti libro scriptum est in fine to lavacrum, hoc
-modo: Ecce nitet templum, quod sorduit ante lavacrum; in tertio, ante vetustam.
-
-* Super regiam Triclinii] Portam maximam, me-
-diam, scaenily, ideo postes et valvas interpretat.
-Sic fores et regias in basilicis appellantur. Gre-
-  </bloco>
-
-  [!-- Notas marginais (letras verticais na zona central/gutter) --]
-  <bloco tipo="nota_marginal" script="latino" bbox="490,140,520,210">
-A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,320,520,390">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,500,520,570">
-C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,680,520,750">
-D
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="500,70,980,860">
-Aulica suscipiens m. d[ilegivel]ram[ilegivel] raptus inceptum,
-Quod pretio mentes quaeritur, obtinetur.
-Nunc locus irriguo retinet quod sorbit haustu,
-Prospera custodies faucibus arta semel.
-Extemplo quisquis successu manserit et luxes,
-Ingresso dextrum contulit ista pedem.
-Quid praestet censors ad sanctam discite vitam,
-Si reddunt mundus lecta dicata viron.
+  <bloco tipo="texto_principal" script="latino" bbox="500,70,990,830">
+Aulica suscipiens ni. deramina raptus ineptum
+Quod pretio mentis quaeritur, obtinuit.
+Nunc locus irriguo retinet quod sorbuit haustu,
+Prospera custodiens faucibus arta semel.
+Extemplo quisquis successit mansor et haeres,
+Ingressso dextrum contulit ista pedem.
+Quid praestet consors ad sanctam discite vitam,
+Si reddunt mundos lecta dicata viros.
 
 XV.
 Da, Pater omnipotens, per saecula longa, precamur,
 Spes et certa piis hospitibus venia.
-Candida ne meritis suscensentur stamina nostris,
-Neu metas sistat palma parata meis.
-Surgat qui propriae genitricis lotus in alvo
-Ad gustum vitae per sua dona venit.
-
-B
+Candida ne meritis fuscetur stamina nostris,
+Neu metas [ilegivel]t palma parata meis.
+Surgat qui proprie genitricis lotus in alvo
+Ad gustum vit: per tua dona venit.
 Tu mea vel tenui perfundis corda sapore,
-Tu testes linguam san[g?]uminis esse facis.
-Celsa tenebroso frondescent arbuta luxu,
+Tu testes linguam sah; uinis esse facis.
+Celsa tenebroso frondescunt arbuta luxu,
 Quae nullis strinxit falcibus agricola.
 
 XVI.
-Eloquium certus naturae consiliis index,
-Perfecti fontem quaerere qui sit iatius.
-Libertas semper studiis reservatur honestis,
+Eloquium certus naturae censtitit indes,
+Perfecti fontem quaerere qui s:tiat.
+Libertas semper studiis reseratur honestis,
 Infabricata latet nobilitas studiis.
 Captivum venis servasset terra metallum,
 Ni daret inventor quod vocat in medium.
 Scrutator fulvum concessit pallidus aurum,
-Qui polit ingenium sic facit esse suum.
-Ilactenus Ionium perlustrans remige pauco
-Ad portum cymbam flecce, Thalia, ri?eam.
+Qui polit, ingenium sic facit esse suum.
+lHlactenus Ionium perlustrans remige pauco
+Ad portum cymbam flecte, Thalia, n[ilegivel]eam..
 
 XVII.
 (SUPER * REGIAM TRICLINII IN DOMO.)
 Navita per postes suspendit munera ponti,
 In foribus propriis flumine parta gerens.
-Venator portis opponit missile ferrum,
+Venator portis apponit missile ferrum,
 Vestibulum galea comitur armigeri.
 Discitur in valvis ars, virtus, nomen, origo.
 Nos frontis signo credimur esse Dei.
-Sic nostrorum pande studium dux littera recit,
+Sic nostrum pande studium dux littera reci,
 Ut domus ingenium non taceat Domini.
-Qui geras Latium satiatus pectora rorem,
-Aspice serpentes hic Helicones aquas.
+Qui geras Latium satiatus pectora rorem, 
+Aspice serpentes hic Heliconis aquas.
 
 XVIII.
-(IN * MISSORIO, QUOD HABET E.P. CACTIS JUVITEN SUPER
-EQVO, TENENTEM VICT?RIAN IN NAVU.)
-Ecce tenet victoria penuam dextera numero:
-Venit, et ad reditum non habet arma vix.
+(IN * MISSORIO, QUOD HABET L^h CATUM JUVINEM SUPER
+EQVUM, TENENTEM VICTORIAM IN NAVU.)
+Ecce tenet vi:c'tis peunatum dextera numen:
+Venit, et ad reditum non habet arma viz.
   </bloco>
 
-  <bloco tipo="aparato_critico" script="latino" bbox="500,860,980,995">
-D. gorius Tuo: on. lib. iv, cap. 43: Dum deambulabant
-per ecclesiam, ad regias portas sacrae quae tunc reseratae fuerant, appropinquarunt. Anastasius Biblioth. in
-Honorio: Inuisit regias in ingressu ecclesiae majoris,
-quae appellantur mediane, ex argenteo. Item in Connec:
-Qui missi fuerant de exercitu ad exod[ilegivel]endas regiones
-basilicae lausans observabant. Graeci [ilegivel] vocant.
+  <bloco tipo="aparato_critico" script="misto" bbox="10,760,990,975">
+* [Herbida saxa]. Marmor Lacedzmonium, viridi
+colore. Prudentius: Qua viridis Lacedemon lubet.
+Sidonius in Dur,o :
+Herbosis qua vernant marmora venis.
 
-* In missorio] In lance seu disco; ut epigram. 92.
-Missorium inter vasa essecatrum numerat Isidorus Or-
-iginum xx, dictumque a mensa pulla, quasi mensa-
-rium: ruga a missu dictuum mulum, ut gustatorium a
-gustatione. Gloasse Isidori, lancibus missioris. Vetus
-aliud Glossarium, dicunt missiorum. Graeci, [ilegivel] ...
-Atque de Missiorum hunc equitem habet cum Victoria,
-et alterum infra imaginem ipsius Ennodi: sic Antho-
-thologia lib. iv menzionat. duplex describitur, unum
+* |n basilica Apostolorum | In omnibus libris titulus
+hic erat, vERSUS IBIREM, quod falsum est. liaque.alium
+fecimus ex Dictione 2, qua eju-dem est argumenti.
+Rursum in codice Vaticsno primus versus quinum
+tanium est pedum : abest enim τὸ antiquum: pro quoin
+Fabri libro scriptum est. in line τὸ lavacrum, hoc
+modo: Ecce nitet. templum, quod sorduit ante lavaerum ; in tertio, ante vetustum.
+
+? Super regiam Triclinii | Portam maximam, me- .
+diam, βασιλικὴν, ideo postes et valvas interpretatur.
+Sic fores et regias in basilicis oppellabant. Gre-
+CARMINUM LIB. 1i.
+
+N38
+
+A Aulica suscipiens ni. deramina raptus ineptum
+Quod pretio mentis quxritur, obtinuit.
+Nunc locus irriguo retinet qux sorbuit haustu,
+Prosperà custodiens faucibus acta semel.
+Ex:emplo quisquis successit mansor et [8 168,
+Ingresso dextrum contulit ista pedem.
+Quid prastet consors ad sanctam discite vitam,
+Si reddunt mundos tec!a dicata viros.
+
+XV.
+Da, Pater omnipotens, per szcula longa, precamur,
+Spes el certa piis hospitibus venia,
+
+Candida ne meritis fuscentur stamina nostris,
+Neu metis si$tal palma parata meis.
+
+Surgat qui proprice genitricis fotus in alvo
+Ad gustum vit: per tua dona vcnit.
+
+p Tu mea vel tenui perfundis corda sapore,
+
+Tu testem linguam sah; uinis esse facis.
+Celsa tenebroso frondescunt arbuta luxu,
+Quse nullis strinxit falcibus agricola.
+XVI.
+Eloquium certus natura reform? censtitit indes,
+Perfecti fontem quaerere qui s:tiat.
+Libertas semper studiis reseratur honestis,
+Infabricata latet nobilitas studiis.
+Captivum venis servasset terra metallum,
+Ni daret inventor quod vocat in medium.
+Scrutator fulvum concessit pallidus aurum,
+Qui polit, ingenium sic facit esse suum.
+lHlactenus Jonium perlustrans remige pauco
+Ad portum cymbam flecte, Thalia, n:eam..
+
+Xvil.
+SUPER ? REGIAM TRICLINI! IN DOMO.
+Navita per postes suspendit munera ponti,
+In foribus propriis flumine parta gerens.
+Venator portis apponit missile ferrum ,
+Vestibelum galea comitur ormigeri.
+Discitur in valvis ars, virtus, nomen, origo.
+Nos frontis signo credimur esse Dci.
+Sic nostrum pande studium dux littera reci,
+Ut domus ingenium non taceat Domini.
+Qui ges!as Latium satiatus pectora rorem, ᾿
+Aspice serpentes hic lHeliconis aqua«.
+
+XVI.
+IN * MISSORIO, QUOD HADET L^h CATUM JUYI NEM SUPEN
+EQUUM, TENFNT£M ΥἹΟΤΙ RIAM AN MANU.
+Ecce tenet vietiix peunatum dextera numen :
+Venit, et ad reditum non habet arma viz.
+gorius Tu:on. lib. iv, cap. 35: Dum deambulabant
+
+per ecclesiam, ad regias «dis sacre qua tunc reserat? fuerant, appropinquant. Anastasius Biblioth. in
+
+- Honorio: Investivit regias in ingressu ecclesie majoris,
+
+que appellantur mediand, ex argento. lem in Conone:
+Qui missi. fuerant de. exercitu ad cus'odiendas. regias
+basilic «lausas ebservabant. Grxci βασιλικὰς vocant.
+
+* [n missorio ] In lance seu disco * ut epigram. 92.
+Missorium inter vasa escaria. numerat Isidorus Or ginum xx, dictumque a mensa putal, quasi mensarium : ego ἃ missu ductum malim, ut gustatorium a
+gustatione, Glessz Isidori, lancibus missoriis. Vetus
+aliud Glessarium, discum miseoritm. Groci, μισσώριον.
+Atque ut missorium hoc equitem liabet cumVictoria,
+οἱ alterum infra imaginem ipsius Ennodii : sic Anthologiz lib. 1v μινσώριον. duplex. describitur, upum
   </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="400,960,600,995">
+  <bloco tipo="rodape" script="latino" bbox="600,965,980,995">
 Digitized by Google
   </bloco>
-
-  <notas>
-- Script: latino (tipografia impressa). 
-- A página é do tipo texto (indicado no primeiro bloco).
-- Foram usadas marcas [ilegivel] para palavras ou segmentos cuja leitura é incerta no original digitalizado; essas marcas substituem somente palavras individuais conforme instruído.
-- As letras A, B, C, D na vertical central foram transcritas como notas marginais separadas.
-- BBOX aproximadas em escala 0-1000.
-  </notas>
 </pagina>

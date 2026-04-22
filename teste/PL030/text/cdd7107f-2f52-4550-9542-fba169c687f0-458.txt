@@ -1,9 +1,10 @@
-<pagina estado="com_texto">
-  <bloco tipo="texto_principal" script="latino" bbox="10,40,330,900">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="60,40,315,120">
 ORDO
 Veterum editionum.
 Epist.
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="60,120,315,930">
 130
 155
 19
@@ -15,7 +16,7 @@ Vacat.
 133
 25
 25
-30
+400
 54
 149
 18
@@ -41,21 +42,7 @@ Vacat.
 128
 140
 86
-[ilegivel]
-87
-35
-83
-84
-28
-132
-126
-151
-29
-50
-199
-[ilegivel]
-199
-[ilegivel]
+Desideratur.
 66
 62
 64
@@ -67,51 +54,52 @@ Vacat.
 72
 67
 73
-[ilegivel]
-[ilegivel]
-[ilegivel]
-[ilegivel]
+Inedita.
+Inedita.
+Inedita.
+Inedita.
+Caret numero.
 78
-[ilegivel]
-[ilegivel]
+Caret numero.
 31
+Caret numero.
 90
 91
 98
 88
 92
-95
-133
+135
 7
 27
 85
 93
 89
-89
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="340,40,660,900">
+
+  <bloco tipo="cabecalho" script="misto" bbox="335,40,680,120">
 ORDO
 HUJUS EDITIONIS.
-
 Epist.
-XXIX. Ad eandem de Ephod et Therapim,
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="335,120,680,930">
+XXIX. Ad eandem de Ephod et Theraphim,
 XXX. Ad Paulam de Alphabeto,
 XXXI. Ad Eustochium de munusculis,
 XXXII. Ad Marcellam brevis,
-XXXIII. Ad Paulum de Origene, Frag.,
+XXXIII. Ad Paulam de Origene, Frag.,
 XXXIV. Ad Marcellam de psalm. cxxvi,
 XXXV. Damasi ad Hieron. de quinque Quaestionibus,
 XXXVI. Ad Damasum de quinque Quaestionibus,
-XXXVII. Ad Marcellam de Commentar. Rheticil,
+XXXVII. Ad Marcellam de Commentar. Rheticii,
 XXXVIII. Ad Marcellam de aegrotat. Blesillae,
-XXXIX. Ad Paulum de obitu Blesillae,
+XXXIX. Ad Paulam de obitu Blesillae,
 XL. Ad Marcellam de Onaso,
 XLI. Ad eandem contra Montanum,
-XLII. Ad eandem contra Novatianus,
+XLII. Ad eandem contra Novatianos,
 XLIII. Ad eandem de laudibus ruris,
 XLIV. Ad eandem de Munusculis,
 XLV. Ad Asellam,
-XLVI. Paulae et Eustochii ad Marcellam,
+XLVI. Paule et Eustochii ad Marcellam,
 XLVII. Ad Desiderium,
 XLVIII. Ad Pammach. pro libris contra Jovin.,
 XLIX. Ad eundem alia,
@@ -122,21 +110,21 @@ LIII. Ad Paulinum de studio Scripturarum,
 LIV. Ad Furiam,
 LV. Ad Amandum,
 LVI. Augustini ad Hieronymum,
-LVII. Ad Pammachium de Optimo genere interpr.,
+LVII. Ad Pammachium de Optimo genere interp.,
 LVIII. Ad Paulinum altera,
 LIX. Ad Marcellam de quaestion. N. T.,
-LX. Ad Heliodori Epitaphium Nepotiani,
+LX. Ad Heliodorum Epitaphium Nepotiani,
 LXI. Ad Vigilantium,
 LXII. Ad Tranquillinum,
 LXIII. Ad Theophilum de Origenis causa,
 LXIV. Ad Fabiolam de veste Sacerdot.,
 LXV. Ad Principiam in psalm. xliv,
-LXVI. Ad Pammachium de morte Paulinae,
+LXVI. Ad Pammachium de morte Paulin,
 LXVII. Augustini ad Hieronymum,
-LXVIII. Ad Castrucium,
+LXVIII. Ad Castruccium,
 LXIX. Ad Oceanum,
 LXX. Ad Magnum,
-LXXI. Ad Lucinum,
+LXXI. Ad Lucinium,
 LXXII. Ad Vitalem,
 LXXIII. Ad Evangelium de Melchisedech,
 LXXIV. Ad Rufinum Romanum presbyterum,
@@ -147,7 +135,7 @@ LXXVIII. Ad Fabiolam de XII Mansionibus,
 LXXIX. Ad Salvian.,
 LXXX. Rufini praefatio in libros «ut ἀρχῶν»,
 LXXXI. Ad Rufinum,
-LXXXII. Ad Theophilum contra Joan. Jerosol.,
+LXXXII. Ad Theophilum contra Joan. Jerosol. ,
 LXXXIII. Pammachii et Oceani ad Hieronymum,
 LXXXIV. Ad Pammachium et Oceanum,
 LXXXV. Ad Paulinum de duabus Quaestiunculis,
@@ -173,22 +161,24 @@ CIV. Augustini ad Hieronymum,
 CV. Ad Augustinum,
 CVI. Ad Sunnam et Fretellam,
 CVII. Ad Laetam,
-CVIII. Ad Eustochium, Epitaphium Paulsæ,
+CVIII. Ad Eustochium, Epitaphium Paulæ,
 CIX. Ad Riparium de Vigilantio,
 CX. Augustini ad Hieronymum,
 CXI. Ejusdem ad Praesidium,
 CXII. Ad Augustinum,
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,40,990,900">
+
+  <bloco tipo="cabecalho" script="latino" bbox="685,40,960,120">
 ORDO
 Benedictinæ editionis.
 Epist.
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="685,120,960,930">
 435    Ibid. 7.
 441    Ibid. 17.
-445    Ibid. 25.
-446    Ibid. 24.
-       Ibid. 29
+445    25
+446    24.
+       Ibid. 29.
 448    Inter Critic. t. II, 18.
 451    Ibid. 1.
 452    Ibid. 2.
@@ -262,14 +252,10 @@ Epist.
 916    73
 931    74
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="320,120,350,800">
-A
-B
-C
-D
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="300,940,700,995">
+
+  <bloco tipo="rodape" script="latino" bbox="400,945,610,990">
 Digitized by Google
   </bloco>
-  <notas>Tipo de página: texto (três colunas). Script predominante: latino; presença pontual de grego na rubrica LXXX («ἀρχῶν») — por isso o bloco central está marcado script="misto". Transcrição feita a partir da imagem; utilizei [ilegivel] para pequenos algarismos no bloco esquerdo que não se mostraram nítidos na reprodução e que não quis inventar. Todos os três blocos de texto principais, a nota marginal (A–D) e o rodapé foram mapeados. BBOX estimadas em escala 0–1000.</notas>
+
+  <notas>Página em três colunas; blocos de cabeçalho separados por coluna. Coluna central marcada como script="misto" por conter grafema grego (ἀρχῶν). BBOX estimadas em escala 0-1000. Transcrição feita prioritariamente a partir da imagem; não foram feitas normalizações de ortografia. Leituras incertas/ambíguas detectadas em alguns topónimos/abreviaturas (ex.: "Commentar. Rheticii", "aegrotat. Blesillae", "Ad Pammachium de morte Paulin"); estas leituras mantidas conforme visível na imagem.</notas>
 </pagina>

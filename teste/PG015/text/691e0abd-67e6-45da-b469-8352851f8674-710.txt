@@ -1,28 +1,29 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,90">
-    HEXAPLORUM QUÆ SUPERSUNT.
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    1411 HEXAPLORUM QUÆ SUPERSUNT. 1412
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,100,320,700">
-    TO EBPAIKON.
-    [Hebrew characters] 26
-    [Hebrew characters] 28
-    [Hebrew characters]
-    [Hebrew characters] 29
-    [Hebrew characters]
-    [Hebrew characters] 31
-    [Hebrew characters]
-    [Hebrew characters] 32
-    [Hebrew characters] 33
-    [Hebrew characters]
-    [Hebrew characters] 34
-    [Hebrew characters]
-    [Hebrew characters] 35
-    [Hebrew characters] 39
-    [Hebrew characters] 44
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,950,100">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="340,100,660,700">
-    TO EBPAIKON
-    Ἑλληνικαὶ γράμματ.
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,100,350,400">
+    םימדם אובמ 26
+    אש 28
+    היער
+    דבכ 29
+    ךותב
+    הפלה 31
+    ונח
+    ךדב 32
+    ךמעט 33
+    אתבמ
+    עשיו
+    םלאו 34
+    יתנמ-םא
+    ךיב אתא 35
+    ךשח 39
+    םינלמ רשא ךילדב ילשל 44
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,100,550,400">
     26.
     28.
     29.
@@ -34,67 +35,100 @@
     39.
     44.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,100,960,700">
-    AKVLAΣ.
+  <bloco tipo="texto_principal" script="grego" bbox="550,100,950,400">
     26. Τοῦ μὴ μυσάζειν.
     28.
-    29. Ταράξῃ ἐλαχίῳ.
-    31. Λυγμὸς. (Al. vuj?)
+    29. Ταρφὶ πλαγίῳ.
+    31. Λυγμός. (Al. νυγ-
     32.
     33. Ἡ γνώμη σου.
-    34. ☥ Καὶ.
-    35. Ἤρα. Ἑλλην.
+    34. ⌘ Καί.
+    35. Ἥρα. Εἴληφα.
     39.
     44.
   </bloco>
-  <bloco tipo="aptoado" script="latino" bbox="30,720,960,1120">
-    ! VERSIO HEBRAICI TEXT.          VULGATA LATINA.               AQUILA.
-    26. A veniendo in sanguinibus.    26. Ne venires in sanguinem.    26. Ad non scelus agendum.
-    28. Parce.                         28. Aufer.                      28.
-    Et malitia.                      Malitia.
-    29. In fasciculo.                 29. In fasciculo.               29. In fascella obliqua.
-    In medio.                        Vacat.
-    31. In vacillationem.            31. In singultum.               31. Singultus. (Al. companctio.)
-    Gratus.                          Innovium.
-                                     Vacat.
-    32. Benedictus.                  32. Benedictus.                32.
-    33. Discretio tua.               33. Eloquium.                  33. Sententia tua.
-    A veniendo.                      Re irem.
-    Salvaro.                         Et ulciscere me.
-    34. Et quidem.                    34. Alioquin.                  34. ☥ El.
-    Si remansisset.                  Non remansisset.
-    35. Et tuli facies tuas.          35. Honoravi faciem tuam.      35. Tuli.
-                                     Accepti.
-    39. Retinuit.                    39. Custodivit.                39.
-    44. Pali illo Lais, qui de Galliis.44. Phalti illo Lais, qui erat de
-                                     Gallium.
+  <bloco tipo="texto_principal" script="latino" bbox="50,400,950,450">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="60,1120,940,1410">
+  <bloco tipo="texto_principal" script="latino" bbox="50,450,350,750">
+    26. A veniendo in sanguinibus.
+    28. Parce.
+    Et malitia.
+    29. In fasciculo.
+    In medio.
+    31. In vacillationem.
+    Gratis.
+    32. Benedictus.
+    33. Discretio tua.
+    A veniendo.
+    Salvaro.
+    34. Et quidem.
+    Si remansisset.
+    35. Et tuli facies tuas.
+    39. Retinuit.
+    44. Palri filio Lais, qui de Galliu.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,450,650,750">
+    26. Ne venires in sanguinem.
+    28. Aufer.
+    Malitia.
+    29. In fasciculo.
+    Vacat.
+    31. In singultum.
+    Innoxium.
+    Vacat.
+    32. Benedictus.
+    33. Eloquium.
+    Ne irem.
+    Et ulciscerer me.
+    34. Alioquin.
+    Non remansisset.
+    35. Honoravi faciem tuam.
+    39. Custodivit.
+    44. Phalti filio Lais, qui erat de Galliu.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,450,950,750">
+    26. Ad non scelus agendum.
+    28.
+    29. In fiscella obliqua.
+    31. Singultus. (Al. compunctio.
+    32.
+    33. Sententia tua.
+    34. ⌘ Et.
+    35. Tuli.
+    Accepi.
+    39.
+    44.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,750,950,780">
     Notæ et variæ lectiones ad cap. XXV lib. I Regum.
-    V. 2. ἄλλος, † τρεψις. Reg. Sic item legit Procopius.
-    Ibid. ἄλλος, τρέβασα τρεψ. Reg.
-    V. 3. Σ., ενδυάνατος. Cusin. 2.
-    Ibid. Σ., καταχρήσεις. Idem.
-    V. 5. ἄλλος, καταστάσε. Reg. ἄλλος, προσετ-
-    τενε. Cusin. 2.
-    V. 7. Α., νεφελήσης etc. Idem.
-    V. 9. Οἱ λοιποὶ, και πανίσαντο. Idem.
-    V. 10. Θ., αποδιδρασκοντες. Idem.
-    V. 14. Α., ὑποψιν etc. Idem.
-    V. 15. ἄλλος, περιπλάσσειν. Reg.
-    V. 17. Σ., κατὰ τοῦ ὅπ. Cusin. 2.
-    Ibid. Ἀ., ὥσπεραιτις etc. Has lectiones refert idem.
-    V. 18. Α., ἀμφοτερις. Reg. Sic etiam supra, v. 24,
-    et xvi, 3. Σ., διωνος. 6., ἀεί. Cusin. 2.
-    Ibid. Ἀ., πέντε ὅπ. Sic Drusius. Procop. Reg.
-    Vide Gen. xviii, 6. In hunc locum hanc notam ha-
-    bent cod. Reg. et Procop: 'Αχ., τρεψιγενος ἀκτια.',
-    Τὸ δὲ γόμον ἐσον τῷ ὅπῳ, ὡς ἑν τῇ Ἑλληνικῇ σημα-
-    σίᾳ. I. e. Aquila interpretatus est satis. Gomur
-    autem est æquale expil, ut in Eschiele didicimus.
-    Ibid. Ἀ., φυσις ως κομματισης κεφαλῆς. Idem. Non
-    sine quadam suspicione hanc Aquilæ interpreta-
-    tionem admittimus.
   </bloco>
-  <notas>Transcrição inclui colunas em hebraico (fontes impressas), grego e latino; algumas palavras hebraicas ilegíveis foram marcadas como [Hebrew characters] por limitação de renderização; símbolos tipográficos reproduzidos como vistos (☥, !).</notas>
+  <bloco tipo="texto_principal" script="misto" bbox="50,780,500,950">
+    V. 2. Ἄλλος, ἡ ἐργασία. Reg. Sic item legit Procopius.
+    Ibid. Ἄλλος, πρόβατα τριχ. Reg.
+    V. 3. Σ., εὐδιανόητος. Coislin. 2.
+    Ibid. Σ., κακογνώμων. Idem.
+    V. 5. Ἄλλος, ἀσπάσασθε. Reg. Ἄλλος, προσείπατε. Coislin. 2.
+    V. 7. Ἄ., περίψαμεν etc. Idem.
+    V. 9. Οἱ λοιποί, καὶ ἐπαύσαντο. Idem.
+    V. 10. Θ., ἀποδιδράσκοντες. Idem.
+    V. 14. Ἄ., τρύνθη etc. Idem.
+    V. 15. Ἄλλος, ἐπιετάχασιν. Reg.
+    V. 17. Σ., κατὰ τοῦ οκ. Coislin. 2.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="500,780,950,950">
+    Ibid. Ἄ., ἀποστασίας etc. Has lectiones refert idem.
+    V. 18. Ἄ., ἀμφοτεῖς. Reg. Sic etiam supra, 1, 24, et xvi, 3. Σ., ἀσκοὺς. Θ., νέβελ. Coislin. 2.
+    Ibid. Ἄ., πέντε σάτα. Sic Drusius. Procop. Reg. Vide Gen. xviii, 6. In hunc locum hanc notam habent cod. Reg. et Procop : Ἄχ., ἠρώτηκε σάτα. Τὸ δὲ γόμορ ἴσον τῷ σίφι, ὡς ἐν Ἰεζεκιὴλ μεμνήμεθα. I. e. « Aquila interpretatus est sata. Gomor autem est æquale eephi, ut in Ezechiele didicimus. »
+    Ibid. Ἄ., φρυκτῶν κεχυμένης κριθῆς. Idem. Non sine quadam suspicione hanc Aquilæ interpretationem admittimus.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="400,950,600,990">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Texto em layout de colunas comparativas (Hexapla).
+    Símbolo "⌘" usado para representar marca crítica (paragraphos/diple) nas colunas de Aquila.
+    Transcrição do Hebraico baseada na forma visual das letras.
+    Abreviações mantidas (Reg., Coislin., Ibid., etc.).
+  </notas>
 </pagina>

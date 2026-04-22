@@ -1,113 +1,184 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,80">
-487  AURELII PRUDENTII CARMINA  488
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,70">
+487
+AURELII PRUDENTII CARMINA
+488
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,90,480,360">
+
+  [!-- coluna esquerda: poema --]
+  <bloco tipo="texto_principal" script="latino" bbox="40,80,485,395">
 Inflatur ira, solvitur libidine :
 510 Plerumque felle tincta livores trahit.
-Aurum [ilegivel] nonne carni acquiritur ?
+Aurum regestum nonne carni acquiritur ?
 Illusa vestis, gemma, bombyx, purpura
-in carnis usum mille [ilegivel] dolis ;
-Luxus vorandi carnis arvinam fovet.
+in carnis usum mille quaerunt dolis :
+Luxus vorandi carnis arvinam fovet ;
 515 Carnis voluptas omne per nefas ruit.
 Medere, queso, carnifex, tantis malis :
-Concide, carpe fomitem peccaminum.
+Conicide, carpe fomitem peccaminum .
 1112 Fac ut, resecto debilis carnis sit in,
-Dolore ab omni mens super:it libera,
+Dolore ab omni mens super-it libera,
 520 Nec gestet ultra quod tyrannus amputet.
 Nec terrearis, turba circumstantium :
 Hoc perdo solum quod peribit omnibus,
 Reji, clienti, pauperique, et diviti.
 Sic vernularum, sic senatorum caro
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,90,960,360">
-525 Tabescit, imo cum sepulcro condita est
+
+  [!-- coluna direita: poema --]
+  <bloco tipo="texto_principal" script="latino" bbox="515,80,960,395">
+A 525 Tabescit, imo cum sepulcro condita est
 Jactura vilis mordet, et damnum leve ;
 Si quo carendum est perdere extimescimus,
 Cur quod necesse est non voluntas occupat ?
 Natura cur non vertit in rem gloriæ ?
 530 Legale damnum deputemus præmiis.
 Sed præmiorum forma quæ sit fortibus .
-1113 Videamus: illa tempe quæ nunquam perit.
-Cœlo refusus subvolvit spiritus,
-Dei parentis perfuetur lumine,
+1113 Videamus: illa tempe quæ nunquam
+perit.
+Cœlo refusus subvolbit spiritus,
+Dei parentis perfruetur lumine,
 535 Regnante Christo stans in arce regia.
 Quandoque cœlum, ceu liber, plicabitur,
 Cadet rotati solis in terram globus,
 Sphæræ ruina menstrualem destruet :
 Deus superstes solus, et justi simul
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,370,960,410">
+
+  [!-- notas marginais A-D --]
+  <bloco tipo="nota_marginal" script="latino" bbox="455,175,535,215">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="455,240,535,280">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="455,305,535,345">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="455,372,535,412">D</bloco>
+
+  <bloco tipo="nota" script="latino" bbox="380,390,640,440">
 GLOSSE VETERES.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,420,480,560">
-510. Livores, colores pallidos de nigra cholera dicit, l.
-511. Rege-tum, absconditum, a terra [ilegivel], l.
-512. Illusa, picta. — Bombyx, sericum: vermis de cujus sanguine purpura tingitur, l.
-514. Luxus, dulcedo, superfluitas. — Arvinam, pinguedinem, l.
-515. Voluptas, delectatio, l.
+
+  [!-- glossae --]
+  <bloco tipo="aparato_critico" script="latino" bbox="40,440,485,610">
+510. Livores, colores pallidos de nigra cholera
+dicit, i.
+511. Rege-tum, absconditum, a terra abstr.c-
+i. i.
+512. Illusa, picta. — Bombyx, sericum: vermis de
+cujus sanguine purpura tingitur, i.
+514. Luxus, dulcedo, superfluitas.— Arvinam, pin-
+guedinem, l.
+515. Voluptas, aelectatio, l.
 517. Fomitem, incendium, l.
 518. Situs, situs hic ponitur pro vetustate, Vat. A.
-519. Superest, ut remaneat, l.
+519. Supersit, ut remaneat, l.
 521. Turba, o mea, l.
-523. Cli-nti, minori, rasso, vassallo, serviendi, l.
+523. Cli-nti, minori, rasso, vassallo, servi:enti, l.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,420,960,560">
-524. Vernularum, servorum, l.
-526. Jactura, perditio, damnum; proprie est damnum quod navigantes in mari patiuntur; sed ponitur pro omni damno. — Mordet, punit, contingit, l.
+
+  <bloco tipo="aparato_critico" script="latino" bbox="515,440,960,610">
+524. Vernularum, sertorum, l.
+525. Jactura, perditio, damnum, proprie est dam-
+num quod navigantes in mari pariuntur; sed ponitur
+pro omni damno.— Mordet, puni t, contig-it, l.
 528. Occupari, scilicet mori, l.
-529. Natura, naturalis res est mors. — Vertit pro vertitur, l.
-530. Damnum, mortem. — Præmiis, sempiternis, l.
+529. Natura, naturalis res est mors.— Vertit pro
+vertitur, l.
+530. Damnum, mortem.— Præmiis, sempiternis, l.
 531. Fortibus, martyribus, l.
 533. Subvolabit, ascendit, l.
-536. Plicabitur, involvetur, c.m non cadet, sed [ilegivel] timore ita videbitur, l.
-538. Sphæram, lunam. — Menstrualem, quæ singulis mensibus crescet, l.
+536. Plicabitur, involvetur, c.m non cadet, sed pre-
+nim o timore ita videbitur, l.
+538. Sphæræ, lunam.— Menstrualem, quæ singulis
+mensibus crescit, l.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,580,960,620">
+
+  <bloco tipo="nota" script="latino" bbox="390,610,680,670">
 COMMENTARIUS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,630,480,930">
-produci ablativum, ut a mor e, fame, tabe, sorde. C gloriosam. Potest etiam sumi vertit pro vertitur, scilicet cur natura, sive necessitas moriendi non vertitur in rem gloria? Justinus martyr ad Romanos: Nec debet displicere. Mar. a pr ma manu, liquitur, supra — vero occideremur, nec potentiores nobis essent iniqui homines, nisi omnino cui libet homini genito etiam mori constitutum esset. Id igitur debitum (mortis) nos per‑solventes, gratias agimus.
 
-509. De libidine proprie dicitur solvi et diffundere. Vide comment. ad vers. 87 hymni 7 Cabh.
-510. Weitzius, Ald., intincta pro tincta. Parrhasius, felle tracta, minus bene. Mar., labores; supra, re.f., livores.
-512. Virgilius in Georg., Illusasque auro vestes.
-514. Carnes pro carnis in Teorio error est metri.
+  [!-- comentário: coluna esquerda --]
+  <bloco tipo="texto_principal" script="latino" bbox="40,670,485,990">
+proluci ablativum, ut a moe, fame, tabe, sorde. C gloriosam. Potest etiam sumi vertit pro vertitur, sci-
+Weitzius id seccutus est cum Egm. et Hailsbr.
+Scripti nostri οἱ lleinsiani habent sordet, qu»d n.
+debet displicere. Mar. a pr ma manu, relinquitur, supra
+liquatur, contra. Parrhasius, felt : retine
+fetet. Nebrissensis sord.4 ad avariti-m referri posse
+opinatur, quo sordes pro avaritia legimus. Horatius, —
+solventes, gratias agimus.
+
+lib. w sat. 5, Sepulcrum Permissum arbitrio.
+sine 5350. Cauch., Rott. egale damnum. Rectius fegale,
+sordibus exstrue. quia serfho est de lege moriendi.
+
+509. De libidine proprie dicitur solvi et diffundere.
+Vide comment. ad vers. 87 hymni 7 Ca h.
+510. Weitzius, Ald., intincta pro tincta. Parrhasius,
+felle lucta, minus bene. Mar., labores; supra, re.t', livores.
+
+512. Virgilius in Georg., Illusasque auro resles.
+514. Carnes pro carnis in Teo'io error est metri.
 517. Prag., rape, ad marg., probe, carpe.
-518. Parrhasius corrumpit metrum carnis usu pro carnis situ.
-520. Ald., Weitz., alii, ne gestet. Ald., tyrannos mendosœ.
-522. Egn., Pal., et codex Beccamii, si diversus est a Palatino. Weitzii, hoc perdolosum. Vat. A, hoc per dolosum. Lege hoc perdo solum. In Aldo et nonnullis vulg. error irrepsit prado pro prado.
-527. Egn., Pal., quod carendum est: atque ita legendum esse asseverat Gifanius in Utor quarto casu. hic locus est et in litura partim demersus. Pro ex imescimus Vat. B.
+518. Parrhasius corrumpit metruni carnis usu pro
+carnis situ.
+520. Ald., Weitz., alii, ne gestet. Ald., tyrannos,
+mendose.
+522. Egm., Pal., et codex Becmani, si diversus
+est a Palatino Weitzii, hoc perdolosum. Vat. A, hoc
+per dolosum. Lege hoc perdo solum. In Aldo et non-
+nullis vulg. error irrepsit prado pro prado.
+
+527. Egm., Pal., quod carendum est: atque ita le-
+gendum esse asseverat Gifanius in Utor quarto casui.—
+hic locus est et in litura partim demersus. Pro ex imescimus Vat. B,
+Rat., Mar. a prima manu, egemiscinus. Prag., minus
+recte, per'timescimus.
+
+529. In Rat., perperam, naturam a recenti manu.
+Fabricius ait Prudentium loqui admirantis animo,
+quia boc a natura præstari non potest: munus enim
+Dei est, si quis mortem judicet esse gloriam. Ceterum
+natura similiter pro ipso homine, seu natura humana,
+quæ gratiæ munere mortem pro Christ o judicat
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,630,960,930">
-529. In Rat., perperam, naturam a recenti manu. Fabricius ait Prudentium loqui admirantis animo, quia hoc a natura præstari non potest: munus enim Dei est, si quis mortem judicet esse gloriam. Ceterum natura similiter pro ipso homine, seu natura humana, quæ gratiæ munere mortem pro Christo judicant gloriosam. Potest etiam sumi vertiti pro vertitur, scilicet cur natura, sive necessitas moriendi non vertitur in rem gloria? Justinus, sive quis alius, in respons. ad quæst. 9: Quemadmodum cœli revolutio divinae litteræ persimilitudinem.
-530. Cauch., Rott. regale damnum. Rectius legale, quia sermo est de lege moriendi.
-532. Vat. A, qui: emenda quæ.
-533. Cauch. et Ambr., cælo revulsus. Parrhasius edidit cælo revulsus. Neutrum probo.
+
+  [!-- comentário: coluna direita --]
+  <bloco type="texto_principal" script="latino" bbox="515,670,960,990">
+gloriosam. Potest etiam sumi vertiti pro vertitur, sci-
+licet cur natura, sive necessitas moriendi in rem vertitur
+in rem gloriam ? Justinus martyr ad Romanos : Nec
+vero occideremur, nec potentiores nobis essent iniqui
+homines, nisi omnino cuivis homini genito etiam mori
+constitutum esset. Id igitur debitum (mortis) nos ver-
+solventes, gratias agimus.
+
+530. Cauch., Rott. egale damnum. Rectius legale,
+quia sermo est de lege moriendi.
+532. Vat. A, qui : emenda quæ.
+533. Cauch. et Ambr., cælo revulsus. Parrhasius
+edidit cælo revulsus. Neutrum probo.
 534. Prag., Dei perennis.
 535. Ald., regente; alii, regnante.
-536. Weitzio libuit exarare per eca:ritur, quia ita invenit in Egn. Isaiae xxxiv. Et tabescet omnis militia cœlorum et compilcabuntur sicut liber cœli. Justinus, sive quis alius, in respons. ad quæst. 9: Quemadmodum cœli exsultationem divinae litteræ persimilitudinem.
-537. Parrhasius, notatus.
-538. Alii sphaeram, alii speram, alii spearam, alii spheram scribunt. Ille loco potest stare sphaeram. Alibi cum prima corripitur, scribendum est sphaera.
+536. Weitzi o libuit exarare per eca:itur, quia ita in-
+venit in Egm. Isaiae xxxiv, 4, Et tabescet omnis militia
+cœlorum et compilcabuntur sicut liber cœli. Justinus,
+sive quis alius, in respons. ad quæst. 9 : Quemud-
+modum cœli exsultationem divine litteræ persimilitudinem conferunt cum aliis rebus,
+— cum volunino involvendo et implicando. In Apoca-
+lyps. phrasi simil i eadem sententia exponitur cap.
+vi , vers. 15 et 14, Et stelle de celo ceciderunt... El
+caelum recessit, sicut liber involutus. Vide Ludovicum
+Alcazar ad loc. cit. Apocalyps.
+
+537. Parrhasiius, rotatus.
+538. Alii spheram, alii speram, alii spearam, alii
+sphæram scribunt. Ille loco potest stare sphaeram.
+Alibi cum prima corripitur, scribendum est sphæra.
+sednlose soles pro solus. Quod autem Deus solus di-
+cit, intelligitur Deum cum justis et angelis p:rma-
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,180,510,200">
-A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,250,510,270">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,320,510,340">
-C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,390,510,410">
-D
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,955,970,995">
+
+  <bloco tipo="rodape" script="latino" bbox="350,985,820,1025">
 Digitized by Google
   </bloco>
-  <notas>
-Pagina identificada como página de texto (dois corpos/duas colunas). Script principal: latino.
-Estrutura mapeada em coluna esquerda (texto_principal), coluna direita (texto_principal), glossae (duas colunas), commentarius (duas colunas), notas marginais (A–D) e rodapé. BBOX aproximadas em escala 0–1000.
-Foram mantidos numerais e sinais tal como aparecem. Marquei como [ilegivel] palavras cuja leitura estava incerta na imagem (apenas palavras isoladas, conforme instruções). Onde haja abreviações tipográficas ou caracteres antigos (ſ, æ, ligaturae) transcrevi em forma legível, preservando o mais fielmente possível a grafia visível.
-  </notas>
+
+  <notas>Transcrição fiel ao conteúdo visível na imagem. Script: latino. Mapeamento em duas colunas para o texto principal, duas colunas para GLOSSE VETERES e duas colunas para COMMENTARIUS. A/B/C/D em bloco próprio do tipo nota_marginal. BBOX aproximadas em escala 0–1000.</notas>
 </pagina>

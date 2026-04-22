@@ -3,102 +3,52 @@ import json
 from pathlib import Path
 import requests
 
-image_path = "teste/PO002/images/d0d8ff89-f30e-4dc9-bf09-0bf404b4d336-239.png"
+image_path = "teste/PL011/images/PL011-088.png"
 
 prompt = """
-Você é um transcritor de documentos históricos.
+Você é um especialista em paleografia e transcrição de documentos históricos (Patrologia Graeca, Latina et Orientalis).
 
-Analise a página da imagem e identifique os blocos visuais de texto.
+Analise a imagem e produza uma transcrição XML fiel. Identifique primeiro o tipo de página (capa/guarda, texto, gravura).
 
-Para cada bloco produza um elemento XML contendo:
-- o script principal do bloco
-- o bounding box aproximado da região
-- a transcrição literal do texto visível
+Se a página estiver realmente em branco: <pagina estado="vazio" tipo="capa_ou_guarda" />
 
-Use apenas estas tags:
+Scripts permitidos: latino, grego, copta, siriaco, cirilico, ethiopico, armenio, arabe, hebraico, misto, desconhecido.
+Tipos permitidos: cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal, outro.
 
-<pagina>
-<bloco tipo="..." script="..." bbox="x1,y1,x2,y2">
-<notas>
+REGRAS:
+1. NUNCA afirme que a página está em branco se houver qualquer vestígio de tinta. Transcreva o que for possível.
+2. Mapeie todos os blocos: rodapés, aparato crítico, notas marginais. Omissão é falha grave.
+3. Tag raiz deve ter atributo estado="com_texto" ou estado="vazio".
+4. BBOX: x1,y1,x2,y2 (escala 0-1000).
+5. Em duas colunas: transcreva a coluna esquerda inteira, depois a direita. Cabeçalhos e rodapés span-completo ficam na posição visual que ocupam.
+6. Não traduza, não normalize, não invente. Use [ilegivel] apenas por palavra, nunca por bloco.
 
-Cada bloco textual deve seguir este formato:
-
-<bloco script="SCRIPT" bbox="x1,y1,x2,y2">
-transcrição literal
-</bloco>
-
-Valores permitidos para script:
-- latino
-- grego
-- siriaco
-- cirilico
-- ethiopico
-- misto
-- desconhecido
-
-Valores permitidos para tipo:
-- cabecalho
-- texto_principal
-- aparato_critico
-- rodape
-- nota
-- nota_marginal
-- outro
-
-Regras importantes:
-
-1. bbox deve ser x1,y1,x2,y2 com valores inteiros de 0 a 1000 relativos à imagem.
-2. Preserve a ordem visual dos blocos na página, de cima para baixo.
-3. Um bloco textual deve corresponder a uma região visual coerente, normalmente contendo
-   várias palavras, uma linha completa, ou várias linhas contíguas do mesmo trecho.
-4. Não crie um bloco separado para elementos isolados como:
-   - um único número
-   - um único caractere
-   - um único símbolo tipográfico
-   - marcadores críticos isolados
-   - números de linha ou de página isolados
-5. Elementos pequenos e isolados devem ser incorporados ao bloco textual mais próximo,
-   quando fizer sentido visualmente.
-6. Prefira blocos maiores e coerentes em vez de muitos blocos pequenos.
-7. Preserve as quebras de linha do texto.
-8. Não traduza.
-9. Não normalize ortografia.
-10. Não translitere entre alfabetos.
-11. Não invente texto.
-12. Quando algo estiver ilegível, use [ilegivel].
-13. Use script="misto" apenas quando houver duas ou mais escritas visivelmente relevantes no mesmo bloco.
-   Se houver apenas palavras isoladas de outro script dentro de um bloco majoritário, use o script majoritário.
-14. Se o script não puder ser identificado com confiança, use script="desconhecido".
-15. Use <notas> apenas para explicar ambiguidades importantes de segmentação,
-    leitura ou identificação de script.
-16. Retorne apenas o XML, sem markdown e sem comentários fora das tags.
+Nota sobre layout: Letras A, B, C, D na vertical central são nota_marginal de identificação do parágrafo.
 
 Formato de saída:
-<pagina>
-  <bloco script="..." bbox="x1,y1,x2,y2">
-    ...
+<pagina estado="com_texto">
+  <bloco tipo="..." script="..." bbox="x1,y1,x2,y2">
+    transcrição literal
   </bloco>
-  <bloco script="..." bbox="x1,y1,x2,y2">
-    ...
-  </bloco>
-  <notas>
-    ...
-  </notas>
+  <notas>scripts complexos ou correções relevantes se foram realizadas</notas>
 </pagina>
+
+Retorne APENAS o XML.
 """.strip()
 
 img_b64 = base64.b64encode(Path(image_path).read_bytes()).decode("utf-8")
 
 payload = {
-    "model": "qwen3.5:397b-cloud",
+    "model": "qwen3.5:27b",
     "messages": [
+        {"role": "system", "content": prompt},
         {
             "role": "user",
-            "content": prompt,
-            "images": [img_b64]
-        }
+            "content": "Proceda conforme instruções do system.",
+            "images": [img_b64],
+        },
     ],
-    "stream": False
+    "stream": False,
 }
 
 r = requests.post(
@@ -111,4 +61,3 @@ r = requests.post(
 r.raise_for_status()
 data = r.json()
 print(data["message"]["content"])
-

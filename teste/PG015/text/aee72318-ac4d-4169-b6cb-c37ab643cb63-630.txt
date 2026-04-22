@@ -1,32 +1,38 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,15,960,120">
-    1255                             HEXAPLORUM QUÆ SUPERSUNT.                            1256
-    TO EBRAIKON.                       TO EBRAIKON                        AKULAΣ.
-                                        Ἑλληνικοῖς γράμμασι.
+  <bloco tipo="cabecalho" script="misto" bbox="100,30,900,60">
+    1255 HEXAPLORUM QUÆ SUPERSUNT. 1256
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,120,480,760">
-    (Hebrew column)
-    חואל
-    לטת 7
-    ויתדבצרו דרעות חוים 8
-    ויאכלו שׁניהם
-    לטת 9
-    ויצא
-    רשע
-    רן
-    חלת
-    ולא אכלו 10
+  <bloco tipo="texto_principal" script="misto" bbox="150,70,350,90">
+    TO ΕΒΡΑΙΚΟΝ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="400,70,600,110">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,70,850,90">
+    ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,100,350,500">
+    הלך
+    ללכת 7
+    ויתמהמהו עד־מטות היום 8
+    ויאכלו שניהם
+    ללכת 9
+    ויעד
+    רפה
+    לין
+    הלכת
+    הראבה 10
     ויבא
-    והמתים
-    דד 11
-    ויצהר
-    12 מלכים
-    למלך 13
-    תלי
-    חלם 14
+    חמרים
+    דר 11
+    הנער
+    מבניו 12
+    לנער 13
+    חלו
+    הלכו 14
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="480,120,960,760">
-    (Latin/Greek columns)
+  <bloco tipo="texto_principal" script="misto" bbox="400,100,500,500">
     7.
     8.
     9.
@@ -35,32 +41,81 @@
     12.
     13.
     14.
-    
-    VERSIO HEBRAICI TEXT.          VULGATA LATINA.                 AQUILA
-    Vels.
-    7. Ad eundum.                  Quasso le.                     7.
-                                  7. Coepit velle proficisci.
-    8. Et tardaverunt usque dum     8. Donec increscat dies.       8. Et tarde.
-    declinaret dies.
-    Et comederunt ipsi duo.        Comederunt ergo simul.
-    
-    9. Ad eundum.                  9. Ut pergeret.                 9.
-    Et puer ejus.                  Et puero.
-    Remisit se.                    Ad occasum declivior sit.
-    Pernocta.                       Mane.
-    Et ibis.                        Proficisceris.
-    10. Et noluit.                  10. Et noluit.                  10.
-    11 venit.                       Et venit.
-    Asinorum.                      Asinos.
-    11. Descenderat.               11. Mutabatur in noctem.       11.
-    Puer.                          Puer.
-    12. De filiis.                 12. De filiis.                 12.
-    13. Puerc ejus.                13. Vacat.                     13.
-    Et pernoctabimus.              Manebimus.
-    14. Et abierunt.               14. Et coeptum carpebant iter.  14.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="680,880,960,980">
+  <bloco tipo="texto_principal" script="grego" bbox="700,100,850,500">
+    7.
+    8. Καὶ νωθρεύθῃσι.
+    9.
+    10.
+    11.
+    12.
+    13.
+    14.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,520,380,550">
+    VERSIO HEBRAICI TEXT.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,520,600,550">
+    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,520,850,550">
+    AQUILA
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,560,380,900">
+    Velle.
+    7. Ad eundum.
+    8. Et tardaverunt usque dum
+    declinaret dies.
+    Et comederunt ipsi duo.
+    9. Ad eundum.
+    Et puer ejus.
+    Remisit se.
+    Pernocta.
+    Et ibis.
+    10. Et noluit.
+    Et venit.
+    Asinorum.
+    11. Descenderat.
+    Puer.
+    12. De filiis.
+    13. Puero ejus.
+    Et pernoctabimus.
+    14. Et abierunt.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,560,650,900">
+    Quæso te.
+    7. Cœpit velle proficisci.
+    8. Donec increscat dies.
+    Comederunt ergo simul.
+    9. Ut pergeret.
+    Et puero.
+    Ad occasum declivior sit.
+    Mane.
+    Proficisceris.
+    10. Et noluit.
+    Et venit.
+    Asinos.
+    11. Mutabatur in noctem.
+    Puer.
+    12. De filiis.
+    13. Vacat.
+    Manebimus.
+    14. Et cœptum carpebant iter.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,560,850,900">
+    7.
+    8. Et tarda.
+    9.
+    10.
+    11.
+    12.
+    13.
+    14.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="500,950,800,980">
     Digitized by Google
   </bloco>
-  <notas>Script identification: left column Hebrew (hebraico) with some illegible words; central/right columns Latin and Greek headings. Some Hebrew words unclear; [ilegivel] not used because isolated words approximated. BBOX coordinates estimated on 0-1000 scale.</notas>
+  <notas>
+    Transcrição de página poliglota (Hexapla). Colunas superiores: Hebraico, Hebraico em letras gregas (apenas números visíveis), Aquila (Grego). Colunas inferiores: Versão Latina do Texto Hebraico, Vulgata Latina, Aquila (Latim).
+  </notas>
 </pagina>

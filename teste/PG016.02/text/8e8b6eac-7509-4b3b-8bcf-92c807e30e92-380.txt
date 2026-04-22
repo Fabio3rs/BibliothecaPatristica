@@ -1,58 +1,57 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,90">
+  <bloco tipo="cabecalho" script="latino" bbox="460,20,750,40">
     HEXAPLORUM QUÆ SUPERSUNT.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="20,90,330,320">
-    TO ΕΒΡΑΙΚΟΝ.
-    [Hebrew text:]
-    עמי 14
-    עשו 15
-    ודעי עדה את־אשר־בם 18
-    למה־לה לי 20
-    ונקה
-    וגוי גדול 22
-    מבצר 27
+  <bloco tipo="texto_principal" script="latino" bbox="150,20,200,40">
+    2007
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="340,90,660,320">
-    TO ΕΒΡΑΙΚΟΝ
-    'Ελληνικοῖς γράμμασι.
+  <bloco tipo="texto_principal" script="misto" bbox="100,50,900,180">
+    TO EBPAIKON.
+    ימי 14
+    ששו 15
+    בב - אשר - את הוד ידע 18
+    יל - לכה - ו 20
+    וקנ
+    בל ויו 22
+    רבצ 27
+
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
     14.
     15.
     18.
     20.
     22.
     27.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,90,960,320">
-    ΑΚΥΛΑΣ.
+
+    AKYLAS.
     14.
-    15. ✳ Ἐποίησαν.
+    15. Χ Ἐποίησαν.
     18.
-    20. Ἰνατί ✳ τοῦτο; με;
+    20. Ἱνατί Χ τοῦτό ; μοι;
     22.
-    27. . . . .
+    27. . . . . .
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,320,320,560">
+  <bloco tipo="texto_principal" script="latino" bbox="100,200,900,350">
     VERSIO HEBRAICI TEXT.
     14. Populi mei.
     15. Fecerunt.
-    18. Et cognosce, cœlus quæ in eis.
+    18. Et cognosce, cœtus quæ in eis.
     20. Ut quid hoc mihi?
     Et calamus.
     22 Et gens magna.
     27. Munitionem.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,320,660,560">
+
     VULGATA LATINA.
     14. Populi mei.
     15. Fecerunt.
-    18. Et cognosce, congregatio, quanta ego faciam eis.
+    18. Et cognosce, congregatio,
+    quanta ego faciam eis.
     20. Ut quid mihi?
     Et calamum.
     22. Et gens magna.
     27. Robustum.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,320,960,560">
+
     AQUILA.
     14.
     15. Fecerunt.
@@ -61,56 +60,63 @@
     22.
     27. Munitum.
   </bloco>
-  <bloco tipo="nota" script="latino_misto" bbox="20,560,960,840">
+  <bloco tipo="texto_principal" script="misto" bbox="100,360,900,600">
     Notæ et variæ lectiones ad cap. VI Jeremiæ.
-    V. 2. 'A., Θ., την ὑπαλαιαν και την φανεραν. Ms. Jes. Sic exscripsit vir cl. Michael Lequien. Suspicor autem, et ipse quoque suspicatur, legendum esse προσφεραν, delicatam, pro φανεραν, ut quadret ad לִקָּה. [LXX, και σφαραφεβεται το ὑφος (Alex. et Ald. addunt sou?) , et auferetur celsitudo sua. Perspicuum est locum non desiderari apud senes, sed eos aliter legisse textum Hebr. DRACH.]
-    V. 5. Ο', (αναλωσιν) ἐπ' αὐτῆς. In aliis deest, nec habent Hebr. et Vulg. DRACH.
-    V. 6. Hebr., dicit Jehova exercituum: Cædite ligno. Ο, λέγει Κύριος, Ἐσεσθον τα ξύλα αὐτῆς. MSS., Ald., Complut., λέγει Κύριος των δυνάμεων (sic etiam 9 sq.). Ἐκχύσονται τὰ ἐ. Et pro ξύλα, Complut., θεμέλια sine articulo. Porro, αὕτης dubium est an habeat textus Hebr., ubi litera ב masculine soretice scripta est absque punclo dagesch. IDEM.
-    V. 7. Hieronymus: Hoc autem Latinus lector intelligat, ut semel dixisse sufficiat, lacum non slangum sonare juxta Græcos, sed cisternam, quæ sermone Syro et Hebraico GUBBA appellatur. h præesenti autem loco pro lacu, quem omnes similiter transtulerunt, in Hebraico BOR dicitur. [Hebr. Chetib בòr (bôr), cisterna, lacus. Keri autem ביאיר (bayir), puteus, fons. GUBBA, a radice גבה, non est Hebraicum, sed Chaldaicum et Syriacum. DRACH.]
-    V. 8. 'Αλλος, ου κατασχηστοταται etc. Hæ lectiones in ms. Jes. et in aliis codicibus reperiuntur. [Ald., τατωκισθησεται. DRACH.]
-    V. 10. Ο, οιδασιοσται. Cod. Vatic., αιδουσι. Sic etiam Alex. et Complut. DRACH.
-    V. 12. 'A., και συληπφορησονται. Ms. Jes. Suspicor hanc Aquilæ versionem pertinere ad illud præcedentis versus που.
-    V. 14. Σ., της θυγατρος. Ms. Jes. Addis hæc dubie, του λαου. Illud autem, της θυγατρος, mirum ex Symmacho poni cum asterisco, ac si in LXX desiensus resisteretur ex Hebræo, ubi tamen non reperitur.
+    V. 2. Ἀ., Θ., τὴν ραίαν καὶ τν φανεράν. Ms. Jes. Sic exscripsit vir cl. Michael Lequien. Suspicor autem, et ipse quoque suspicatur, legendum esse τρυφεράν, delicatam, pro φανεράν, ut quadret ad חמדות. [LXX, καὶ ἀφαιρεθήσεται τὸ ὕψος (Alex. et Ald. addunt σου) , et auferetur celsitudo tua. Perspicuum est locum non desiderari apud senes, sed eos aliter legisse textum Hebr. DRACH.]
+    V. 5. Ο', (ἀναδῶμεν) ἐπ' αὐτήν. In aliis deest, nec habent Hebr. et Vulg. DRACH.
+    V. 6. Hebr., dicit Jehova exercituum : Cædite ligna. Ο', λέγει Κύριος, Ἐκκόψαν τὰ ξύλα αὐτῆς. Mss., Ald., Complut., λέγει Κύριος τῶν δυνάμεων (sic etiam § 9 sq.)· Ἐκκόψατε τὰ ξ. α. Et pro ξύλα , Complut., θεμέλια sine articulo. Porro, αὐτς dubium est an habeat textus Hebr., ubi litera ה masoretice scripta est absque puncto dagesch. IDEM.
+    V. 7. Hieronymus : « Hoc autem Latinus lector intelligat, ut semel dixisse sufficiat, lacum non stagnum sonare juxta Græcos, sed cisternam, quæ sermone Syro et Hebraico GUBBA appellatur. In præsenti autem loco pro lacu, quem omnes similiter transtulerunt, in Hebraico BOR dicitur. » [Hebr. Chetib בור (bôr), cisterna, lacus. Keri autem בעיר (bayir), puteus, fons. GUBBA, a radice בב, non est Hebraicum, sed Chaldaicum et Syriacum. DRACH.]
+    V. 8. Ἄλλος, οὗ κατοικηθήσεται etc. Hæ lectiones in ms. Jes. et in aliis codicibus reperiuntur. [Alex., κατοικηθήσεται. Ald. et Complut., κατοικισθήσεται. DRACH.]
+    V. 10. Ο', εἰσακούσεται. Cod. Vatic., ἀκούσεται. Sic etiam Alex. et Complut. DRACH.
+    V. 12. Ἀ., καὶ συλληφθήσονται. Ms. Jes. Suspicor hanc Aquilæ versionem pertinere ad illud præcedentis versus דוללי.
+    V. 14. Σ., τῆς θυγατρός. Ms. Jes. Addas haud dubie, τοῦ λαο. Illud autem, τῆς θυγατρός, mirum ex Symmacho poni cum asterisco, ac si in LXX deficiens restitueretur ex Hebræo, ubi tamen non reperitur.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="20,840,960,900">
+  <bloco tipo="cabecalho" script="latino" bbox="450,610,650,630">
     JEREMIÆ CAPUT VII.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="20,900,360,1180">
-    TO ΕΒΡΑΙΚΟΝ.
-    [Hebrew text:]
-    ודבר־אל־יהו־להים־בית־יהוה אל־לבב
-    מאן היהו אל־אשר
-    עמד ששער בית יהוה וקראת שם את־הדבר הזה ואמרת שמעון
-    דבר־יהוה־הנה־הבאין־בשערים האלה להשבית־לה יהוה
-    והנה אשבנו אתכם במקום הזה
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="370,900,660,1180">
-    TO ΕΒΡΑΙΚΟΝ
-    'Ελληνικοῖς γράμμασι.
+  <bloco tipo="texto_principal" script="misto" bbox="100,630,900,750">
+    TO EBPAIKON.
+    הדבר אשר היה אל ירמיהו 1
+    מאת יהוה לאמר
+    עמוד בשער בית יהוה וקראת 2
+    שם את הדבר הזה ואמרת שמעו
+    דבריהודה כלבאיכם הבאים בשערים
+    האלה להשתחות ליהוה
+    ואשכנה אתכם במקום הזה 3
+
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
+    1.
+    2.
+    3.
+
+    AKYLAS.
     1.
     2.
     3.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,900,960,1180">
-    ΑΚΥΛΑΣ.
-    1.
-    2.
-    3.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,1180,320,1480">
-    VERSIO HEBRAICI TEXT:
+  <bloco tipo="texto_principal" script="latino" bbox="100,760,900,950">
+    VERSIO HEBRAICI TEXT.
     1. Verbum quod fuit ad Jeremiam a Domino dicendo.
-    2. Sta in porta domus Domini: et prædicas ibi verbum istud, et dices, Audite verbum Domini, omnis Juda, ingredientes per portas illas ad incurvandum vos Domino.
+    2. Sta in porta domus Domini : et prædicabis ibi verbum istud , et dices, Audite verbum Domini, omnis Juda, ingredientes per portas illas ad incurvandum vos Domino.
     3. Et habitare faciam vos in loco isto.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,1180,660,1480">
+
     VULGATA LATINA.
     1. Verbum quod factum est ad Jeremiam a Domino, dicens.
-    2. Sta in porta domus Domini, et prædica ibi verbum istud: Audite verbum Domini, omnis Juda, qui ingredimini per portas has, ut adoretis Dominum.
+    2. Sta in porta domus Domini, et prædica ibi verbum istud : Audite verbum Domini, omnis Juda, qui ingredimini per portas has, ut adoretis Dominum.
     3. Et habitabo vobiscum in loco isto.
+
+    AQUILA.
+    1.
+    2.
+    3.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="20,1480,960,1600">
+  <bloco tipo="rodape" script="latino" bbox="550,960,850,990">
     Digitized by Google
   </bloco>
-  <notas>Scripts identificados: latino, grego, hebraico. Algumas linhas hebraicas parcialmente ilegíveis; usei [Hebrew text:] marcador e mantive transcrição literal quando legível. Pequenas lacunas marcadas por elipses ou [ilegivel] não detectadas explicitamente.</notas>
+  <notas>
+    Transcrição de página poliglota (Hexapla) contendo Hebraico, Grego e Latino.
+    Alguns caracteres hebraicos podem apresentar variações tipográficas específicas da edição.
+    Notas críticas contêm abreviações padrão (Ms., Ald., Complut., etc.).
+  </notas>
 </pagina>

@@ -1,74 +1,168 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,80">
-    HEXAPLORUM QUÆ SUPERSUNT.
+  <bloco tipo="cabecalho" script="latino" bbox="350,20,650,50">
+    HEXAPLORUM QUAE SUPERSUNT.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="20,80,980,920">
-TO EBRAIKON.		TO EBRAIKON		AKYΛAΣ.
-		Ἑλληνικαῖς γράμμασι·
-
-אחים	17		17.	Λέγοντες.
-כי מי עבד בסוד יהוה	18		18.	Ἐν ὑποστἱμᾷι Κυρίου;
-
-וישמעו		✠ Καὶ ἤκουσεν.
-בְּעָה	20	20.		
-את־המלאכים	21	21.	✠ Σὺν ; τοὺς προφήτας.
-בּסוד	22	22.	...
-וישבּו מרחם רע
-
-23	הא־לוּי קרב אני נאם־יהוה	25.	23. Μὴ θεὸν εγγύθεν ἐγὼ εἰμι,
-לא אלהי מרחק			λεγει Κύριος, και οὐ θεός ποιζώ-
-					 θεν·
-
-נאם־יהוה 24	24.	24. ✠ φησὶ Κύριος.
-שׁבחתי את אשר 25	25.	25. Ἠκούσα ✠ σύν ; ἀ
-את־עמי 27	27.	27. ✠ Τὸν λαόν μου.
-
-נאם־יהוה 28	28.	28. ✠ φησὶ Κύριος·
-נאם־יהוה 32	32.	32. ✠ φησὶ Κύριος.
-נאם־יהוה		✠ Φησι Κύριος.
-נשא 33	33.	33. Ἄρμα.
-על־האיש ההוא 34	34.	34. ✠ Ἐπὶ τὸν ἄνθρωπον ἐκεῖ-
-					 τον.
-
-36	הפחיתם את־דבר־אלהים חיים	36	36.
-יהוה צבאות
-
-37 כה ואמר אל־הביא מתי־עיק	57	37.
-
-אם־ישא יהוה האמר 38	38.	38.
-
-VERSIO HEBRAICI TEXT.		VULGATA LATINA.		AQUILA.
-
-17. Dicentes.		17. Dicunt.		17. Dicentes.
-18. Etenim quis stetīt in secre-	18. Quis enim adfuit in consi-	18. In subsistentia Domini ?
-to Domini ?				tio Domini ?
-Et audivit.			Et audivit.		Et audivit.
-20. Intelligentia.		20. Consilium ejus.	20.
-21. Prophetas.			21. Propheta s.		21. Propheta s.
-22. In secreto meo.		22. In consilio meo.	22. In secreto meo.
-Et averti fecissent eos a via sua		Avertissem ul|que eos a via sua	mala.
-mala.
-
-23. Numquid Deus de propin-	23. Putasne Deus e vicino ego	23. Numquid Deus de propin-
-quo ego, ait Dominus, et non Deus	sum, dicit Dominus, et non Deus	quo ego sum, dicit Dominus, et
-de longinquo ?			de longe ?			non Deus de longe?
-24. Dixit Dominus.		24. Dicit Dominus.	24. Dicit Dominus.
-25. Audivit quæ.		25. Audivit quæ.		25. Audivit quæ.
-27. Populum meum.		27. Populus meus.	27. Populum meum.
-28. Dicit Dominus.		28. Dicit Dominus.	28. Dicit Dominus.
-32. Dicit Dominus.		32. Ait Dominus.		32. Dicit Dominus.
-Dicit Dominus.			Dicit Dominus.
-33. Onus.			33. Onus.		33. Onus.
-34. Super virum illum.		34. Super virum illum.	34. Super virum illum.
-36. Et pervertistis verba Dei	36. Et pervertistis verba Dei	36.
-viventis, Domini exercituum.	viventis, Domini exercituum.
-37. Sic dices ad prophetam,	37. Hæc dices ad prophetam,	37.
-Quid respondit tibi Dominus ?	Quid respondit tibi Dominus ?	Quid respondit tibi Dominus ?
-38. Si autem onus Domini dixe-	38. Si autem onus Domini dixe-	38.
-ritis.				ritis.
+  <bloco tipo="outro" script="latino" bbox="80,20,130,40">
+    2079
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,920,980,990">
+  <bloco tipo="outro" script="latino" bbox="880,20,930,40">
+    2080
+  </bloco>
+  
+  [!-- Coluna Superior Esquerda (Hebraico) --]
+  <bloco tipo="texto_principal" script="hebraico" bbox="80,60,330,500">
+    TO EBPAIKON.
+    אורים 17
+    כי מי עמד בסוד יהוה 18
+    וישמע
+    בינה 20
+    את־הנבאים 21
+    בסודי 22
+    וישובו מדרכם הרע
+    הלא־כה אמרי נאם־יהוה 23
+    לא אלהי מרחק
+    נאם־יהוה 24
+    שמעתי את אשר 25
+    את־עמי 27
+    נאם־יהוה 28
+    נאם־יהוה 32
+    נאם־יהוה
+    משא 33
+    על־האיש הזה 34
+    המפחם את־דברי אלהים חיים 36
+    יהוה צבאות
+    כה תאמר אל־הנביא מדעך 37
+    יהוה
+    ואם משא יהוה תאמרו 38
+  </bloco>
+
+  [!-- Coluna Superior Central (Transliteração/Números) --]
+  <bloco tipo="texto_principal" script="grego" bbox="380,60,550,80">
+    TO EBPAIKON
+    Ελληνικοις γραμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,90,450,500">
+    17.
+    18.
+    20.
+    21.
+    22.
+    25.
+    24.
+    25.
+    27.
+    28.
+    32.
+    33.
+    34.
+    36.
+    37.
+    38.
+  </bloco>
+
+  [!-- Coluna Superior Direita (Aquila Grego) --]
+  <bloco tipo="texto_principal" script="grego" bbox="650,60,920,500">
+    ΑΚΥΛΑΣ.
+    17. Λέγοντες.
+    18. Ἐν ποστήματι Κυρίου;
+    ✠ Καὶ ἤκουσεν.
+    20.
+    21. ✠ Σὺν τοὺς προφήτας.
+    22. . . . .
+    23. Μὴ Θεὸς ἐγγύθεν ἐγώ εἰμι, λέγει Κύριος, καὶ οὐ Θεὸς πόρρωθεν;
+    24. ✠ Φησὶ Κύριος.
+    25. Ἤκουσα ✠ σὺν ἃ
+    27. ✠ Τὸν λαόν μου.
+    28. ✠ Φησὶ Κύριος.
+    32. ✠ Φησὶ Κύριος.
+    ✠ Φησὶ Κύριος.
+    33. Ἄρμα.
+    34. ✠ Ἐπὶ τὸν ἄνθρωπον ἐκεῖνον.
+    36.
+    37.
+    38.
+  </bloco>
+
+  [!-- Cabeçalhos Seção Inferior --]
+  <bloco tipo="cabecalho" script="latino" bbox="120,510,300,540">
+    VERSIO HEBRAICI TEXT.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="420,510,600,540">
+    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="780,510,880,540">
+    AQUILA.
+  </bloco>
+
+  [!-- Coluna Inferior Esquerda (Latim Hebraico) --]
+  <bloco tipo="texto_principal" script="latino" bbox="80,550,330,950">
+    17. Dicentes.
+    18. Etenim quis stetit in secreto Domini?
+    Et audivit.
+    20. Intelligentia.
+    21. Prophetas.
+    22. In secreto meo.
+    Et averti fecissent eos a via sua mala.
+    23. Numquid Deus de propinquo ego, ait Dominus, et non Deus de longinquo?
+    24. Dixit Dominus.
+    25. Audivi quæ.
+    27. Populum meum.
+    28. Dixit Dominus.
+    32. Dixit Dominus.
+    Dixit Dominus.
+    33. Onus.
+    34. Super virum illum.
+    36. Et pervertistis verba Dei viventis, Domini exercituum.
+    37. Sic dices ad prophetam: Quid respondit tibi Dominus?
+    38. Si autem onus Domini dixeritis.
+  </bloco>
+
+  [!-- Coluna Inferior Central (Vulgata) --]
+  <bloco tipo="texto_principal" script="latino" bbox="380,550,630,950">
+    17. Dicunt.
+    18. Quis enim adfuit in consilio Domini?
+    Et audivit.
+    20. Consilium ejus.
+    21. Prophetas.
+    22. In consilio meo.
+    Avertissem utique eos a via sua mala.
+    23. Putasne Deus e vicino ego sum, dicit Dominus, et non Deus de longe?
+    24. Dicit Dominus.
+    25. Audivi quæ.
+    27. Populus meus.
+    28. Dicit Dominus.
+    32. Ait Dominus.
+    Dicit Dominus.
+    33. Onus.
+    34. Super virum illum.
+    36. Et pervertistis verba Dei viventis, Domini exercituum.
+    37. Hæc dices ad prophetam, Quid respondit tibi Dominus?
+    38. Si autem onus Domini dixeritis.
+  </bloco>
+
+  [!-- Coluna Inferior Direita (Aquila Latim) --]
+  <bloco tipo="texto_principal" script="latino" bbox="650,550,920,950">
+    17. Dicentes.
+    18. In subsistentia Domini?
+    Et audivit.
+    20.
+    21. Prophetas.
+    22. In secreto meo.
+    23. Numquid Deus de propinquo ego sum, dicit Dominus, et non Deus de longe?
+    24. Dicit Dominus.
+    25. Audivi quæ.
+    27. Populum meum.
+    28. Dicit Dominus.
+    32. Dicit Dominus.
+    Dicit Dominus.
+    33. Onus.
+    34. Super virum illum.
+    36.
+    37.
+    38.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="600,960,850,990">
     Digitized by Google
   </bloco>
-  <notas>Page contains mixed scripts: Hebrew (right column Hebrew lines), Greek (top headers and right column translations), Latin (lower translations). BBOX values estimated on 0-1000 scale. Some Hebrew words transcribed with minimal spacing preserved. Occasional illegible small marks represented by ellipses or preserved as in image.</notas>
 </pagina>

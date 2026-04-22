@@ -1,33 +1,30 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,110">
-    1563        HEXAPLORUM QUÆ SUPERSUNT        1561
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    1563 HEXAPLORUM QUÆ SUPERSUNT 1564
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="20,110,320,860">
-    TO ΕΒΡΑΙΚΟΝ.
-    ויגשו כל-בית השיר
-    5 גם מבנה ירא והנתינים בידך
-    ואיש יסתכל והזהב יגרף
-    והאמונה כי-אדם אל-בית
-    ילמד וכסף במשק המלים
-    6 עד אשר לא-יונח תכל הכספ
-    והיין גלת הזהב והשמר
-    8 וגאל הבלים
-    9 ויתר
-    ויאמר והקר
-    10 בקש קלת
-    חצץ
-    וכתוב שיר
-    11 ונשמים
-    בעלי אספת
-    12 הזוהר
-    13 כי-זה כל-האדם
-    14 כי ארה-כל-מעשה
-    על כל-נעלם אסור ואסף
+  
+  [!-- Coluna Esquerda Superior: Hebraico --]
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,330,450">
+    TO EBPAIKON.
+    וְיָשֹׁשׁ כָּל־בְּנוֹת הַשִּׁיר
+    5 גַּם מִגָּבֹהַּ יִרְאוּ וְחַתְחַתִּים בַּדֶּרֶךְ וְיָנֵץ הַשָּׁקֵד וְתִסְתַּבֵּל הָאֲרָבֶה וְתָפֵר הָאֲבִיּוֹנָה כִּי־הֹלֵךְ הָאָדָם אֶל־בֵּית עוֹלָמוֹ וְסַבְּבוּ בַּשּׁוּק הַסֹּפְדִים
+    6 עַד אֲשֶׁר לא־יֵרָמֵק חֶבֶל הַכֶּסף
+    וְתָרֻץ גֻּלַּת הַזָּהָב וְתִשָּׁבֶר
+    8 הֲבֵל הבָלִים
+    9 יוֹתֵר
+    10 וְאָזַן חֵקֶר
+    11 נְטוּעִים
+    בַּעֲלֵי אֲסֻפּוֹת
+    12 הִזָּהֵר
+    13 כִּיזֶה כָּל־הָאָדָם
+    14 כִּי אֶת־כָּל־מַעֲשֶׂה
+    עַל־כָּל־נֶעְלָם אִם־טוֹב וְאִם־רָע
   </bloco>
-  <bloco tipo="texto_principal" script="greco" bbox="340,110,660,860">
-    TO EΒΡΑΙΚΟΝ
-    Ἑλληνικοῖς γράμμασι.
-    3.
+
+  [!-- Coluna Central Superior: Transliteração --]
+  <bloco tipo="texto_principal" script="misto" bbox="350,60,630,450">
+    TO EBPAIKON Ἑλληνικοῖς γράμμασι.
+    5.
     6.
     8.
     9.
@@ -36,56 +33,82 @@
     12.
     13.
     14.
-    ΑΚΥΛΑΣ.
-    Και κλιθήσονται πάντα τα της
-    ψῆς.
-    5. ... τρόμῳ τρεμήσουσι ἐν τῇ
-    ὁδῷ ...
+  </bloco>
+
+  [!-- Coluna Direita Superior: Aquila (Grego) --]
+  <bloco tipo="texto_principal" script="griego" bbox="650,60,950,450">
+    AKYΛAΣ.
+    Καὶ κλιθήσονται πάντα τὰ τῆς ᾠδῆς.
+    5. ...τρόμῳ τρομήσουσιν ἐν τῇ ὁδῷ...
     6.
-    8. Ἄτμος ἀτμίδων.
-    9.
-    Ἠνωτίσατο καὶ ἠρεύνυσε.
-    10.
-    Χρειας.
-    Και συνέγραψεν ὀρθώς.
-    11. Περφυτευμένοι.
+    8. Ἀτμὸς ἀτμίδων.
+    9. Ἠνωτίσατο καὶ ἠρεύνησε.
+    10. Χρείας. Καὶ συνέγραψεν ὀρθς.
+    11. Πεφυτευμένοι.
     12.
     13.
-    14. Πᾶσαν γὰρ πράξιν.
+    14. Πᾶσαν γὰρ πρᾶξιν.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,860,980,2000">
-    VERSIO HEBRAICI TEXT.         VULGATA LATINA.         AQUILA.
-    Et incuruabuntur omnes filiae       Et obscurdescent omnes filiæ car-      Et jacebunt omnia quæ sunt
-    canticci.                            niminis.                                  cantici.
-    5. Eliam de excelsio timebunt,       5. Excelsa quoque timebunt, et          5. ... tremore trement in via..
-    et consternati in via : et florebit    mirab dtuant in via, florebit amyg- 
-    amygdalus, et oneri erit locusta,    dalus, impingnabitur locusta, et        ...
-    et dissipabitur aviditas : quoniam    dissipabitur apparis : quoniam        6.
-    vadens homo ad domum sæculi          ibit homo in domum æternitatis
-    sui. et circubtunt in platea plan-    suæ, et circubuunt in platea plan-
-    gentes.                               gentes.
-    6. Donec non elongetur funis         6. Antequam rumpatur funi-             6.
-    argenti.                              lus argenteus.
-    Et confringatur lenticula aurea,     Et recurrat vitta aurea, et con- 
-    et conteratur.                         teratur.
-    8. Vanitas vanitatum.                 8. Vanitas vanitatum.                 8. Vapor vaporum.
-    9. Et amplius.                        9. Sapientissimus.                     9.
-    Et auscultare fecit et investiga-     Et auris scrutabitur.                 Percepit et scrutatus est.
-    vit.
-    10. Quæsivit Coheleth.                10. Quæsivit.                          10.
-    Voluntatis.                           Utilia.                               Utilitatis.
-    Et scripturam rectitudinis.           Et conscripsit sermones rectis-       Et scripsit recte.
-                                          simos.
-    11. Plantati.                         11. Defixi:                            11. Plantati.
-    Auctores collectionum.                Per magistrorum consilium.
-    12. Sis monitus.                      12. Ne requiras.                       12.
-    13. Quia hoc omnis homo.              13. Hoe est enim omnis homo.            13.
-    14. Quia omne opus.                    14. Et cuncta, quæ fiunt.             14. Omnem enim actionem.
-    Super omne occultum, sive bo-         Pro omni errato, sive bonum,
-    cum, sive malum.                      sive malum illud sit.
+
+  [!-- Coluna Esquerda Inferior: Versio Hebraici Text --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,460,330,950">
+    VERSIO HEBRAICI TEXT.
+    Et incurvabuntur omnes filiæ cantici.
+    5. Etiam de excelso timebunt, et consternati in via : et florebit amygdalus, et oneri erit locusta, et dissipabit aviditas : quoniam vadens homo ad domum sæculi sui . et circuibunt in platea plangentes.
+    6. Donec non elongetur funis argenti.
+    Et confringatur lenticula aurea, et conteratur.
+    8. Vanitas vanitatum.
+    9. Et amplius.
+    Et auscultare fecit et investigavit.
+    10. Quæsivit Coheleth.
+    Voluntatis.
+    Et scripturam rectitudinis.
+    11. Plantati.
+    Auctores collectionum.
+    12. Sis monitus.
+    13. Quia hoc omnis homo.
+    14. Quia omne opus.
+    Super omne occultum, sive bonum, sive malum.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="760,1960,980,2030">
+
+  [!-- Coluna Central Inferior: Vulgata Latina --]
+  <bloco tipo="texto_principal" script="latino" bbox="350,460,630,950">
+    VULGATA LATINA.
+    Et obsurdescent omnes filiæ carminis.
+    5. Excelsa quoque timebunt, et formidabunt in via, florebit amygdalus, impinguabitur locusta, et dissipabitur capparis : quoniam ibit homo in domum æternitatis suæ, et circuibunt in platea plangentes.
+    6. Antequam rumpatur funiculus argenteus.
+    Et recurrat vitta aurea, et conteratur.
+    8. Vanitas vanitatum.
+    9. Sapientissimus.
+    Et auris scrutabitur.
+    10. Quæsivit.
+    Utilia.
+    Et conscripsit sermones rectissimos.
+    11. Defixi.
+    Per magistrorum consilium.
+    12. Ne requiras.
+    13. Hæc est enim omnis homo.
+    14. Et cuncta, quæ fiunt.
+    Pro omni errato, sive bonum, sive malum illud sit.
+  </bloco>
+
+  [!-- Coluna Direita Inferior: Aquila (Latim) --]
+  <bloco tipo="texto_principal" script="latino" bbox="650,460,950,950">
+    AQUILA.
+    Et jacebunt omnia quæ sunt cantici.
+    5. ... tremore trement in via...
+    6.
+    8. Vapor vaporum.
+    9. Percepit et scrutatus est.
+    10. Utilitatis.
+    Et scripsit recte.
+    11. Plantati.
+    12.
+    13.
+    14. Omnem enim actionem.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="600,960,900,990">
     Digitized by Google
   </bloco>
-  <notas>Disposição em três colunas: coluna esquerda em hebraico, coluna central grego e latino curto no topo, inferior seções latinas e aquila em latim. Pequenos danos de impressão e palavras parcialmente ilegíveis transcritas literalmente; uso de pontuação e espaçamento conforme imagem.</notas>
 </pagina>

@@ -1,52 +1,89 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,90">
-    1141 PSALMUS; CX. 1142
-    Notæ et variæ lectiones ad Psalmum CVIII.
-    V. 20. Οἱ λοιποἰ, τῶν ἀντικειμένων. Drusius.
-    V. 24. Σ., καὶ ἡ σάρξ μου ἠλοιώθη ἀπὸ ἀναλειψίας. Drusius, qui male vertit: et caro mea immu-
-    tata est propter unctionem. Nam est oppositus loci
-    sensus.
-    V. 29. Ἄλλος, οἱ ἀντικειμενοι μου. Drusius.
-    V. 31. Ἀ., χοιvόντων etc. Idem.
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,200,50">
+    1141
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,90,490,540">
+  <bloco tipo="cabecalho" script="latino" bbox="400,20,600,50">
+    PSALMUS, CX.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="800,20,950,50">
+    1142
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="250,60,750,90">
+    Notæ et variæ lectiones ad Psalmum CVIII.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,90,480,160">
+    V. 20. Οἱ λοιποί, τῶν ἀντικειμένων. Drusius.
+    V. 24. Σ., καὶ ἡ σάρξ μου ἠλλοιώθη ἀπὸ ἀνελεί-ψίας. Drusius, qui male vertit : et caro mea immutata est propter unctionem. Nam est oppositus loci
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="520,90,950,160">
+    sensus.
+    V. 29. Ἄλλος, οἱ ἀντικείμενοί μου. Drusius.
+    V. 31. Ἀ., κοινόντων etc. Idem.
+  </bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="50,170,200,190">
+    ΣΥΜΜΑΧΟΣ.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="400,160,600,190">
     PSALMUS CIX.
-    ΣΥΜΜΑΧΟΣ.  0.
-    2. Συ δὲ παίδευε ἔνδον τοὺς ἐχθρούς σου.
-    3. Ἐν ὄρεσιν ἁγίοις.
-    Ὡς κατ' ὄρθρον σοι δρόσος ἡ νεότητι μου.
-    4. Διωλώσατο Κύριος και οὐ μεταμέλει.
+    θ'.
+  </bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="750,170,900,190">
+    ΘΕΟΔΟΤΙΩΝ.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,190,320,500">
+    2. Σὺ δὲ παίδευε ἔνδον τοὺς ἐχ-θρούς σου.
+    3. Ἐν ρεσιν ἁγίοις.
+    Ὡς κατ' ὄρθρον σοι δρόσος ἡ νιότης μου.
+    4. Διωμόσατο Κύριος καὶ οὐ μεταμελεῖ.
     SYMMACHUS.
     2. Tu vero erudi intus inimicos tuos.
     3. In montibus sanctis.
-    Quasi in diluculo tibi ros juventus mea.
+    Quasi in diluculo tibi ros juventutis meæ.
     4. Juravit Dominus, et non pœnitebit eum
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="490,90,930,540">
-    2. Κατακυριευε ἐν μέσῳ τῶν ἐχθρῶν σου. Ε', κατακυριευσον, G', κατακυριευσεις.
-    3. Ἐν ταῖς λαμπρότησι τῶν ἁγίων. E, ἐν εὐπρεπεῖᾳ ἁγίου
-    'Ἐκ γαστρός πρὸ ἐωσφόρου ἐγέννησά σε. E', ἐκ μήτρας ἀπὸ βρ-
-    θρου σοι δρόσος ἐν νεότητῇ σου. G', ἐκ γαστρὸς ζητήσου σε, δρό-
-    σος νεανιότητος σου.
-    4. έώμασε Κύριος, και οὐ μεταμεληθήσεται.
+  <bloco tipo="texto_principal" script="misto" bbox="350,190,650,500">
+    2. Κατακυρίευε ἐν μέσῳ τῶν ἐχθρῶν σου. Ἐ', κατακυριεύσον. Ϛ', κατακυριεύσεις.
+    3. Ἐν τας λαμπρότησι τῶν ἁ-γίων. Ἐ', ἐν εὐπρεπείᾳ ἁγίου
+    Ἐκ γαστρὸς πρὸ ἑωσφόρου ἐγέν-νησά σε. Ἐ', ἐκ μήτρας ἀπὸ ὄρ-θρου σοι δρόσος ἐν νεότητί σου. Ϛ', ἐκ γαστρὸς ζητήσουσί σε, δρό-σος νεανιότητός σου.
+    4. Ὤμοσε Κύριος, καὶ οὐ μετα-μεληθήσεται.
     LXX INTERPRETES.
     2. Dominare in medio inimicorum tuorum. V, dominare. VI, dominaberis.
     3. In splendoribus sanctorum. V, in decore sancti.
-    Ex utero ante luciferum genui te. V, ex utero a matutino tibi ros in juventute tua. VI, ex utero quaerent ce, ros juventilitatis tuae.
+    Ex utero ante luciferum genui te. V, ex utero a matutino tibi ros in juventute tua. VI, ex utero quærent te, ros juvenilitatis tuæ.
     4. Juravit Dominus, et non pœnitebit eum.
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="50,540,930,710">
+  <bloco tipo="texto_principal" script="misto" bbox="680,190,950,500">
+    2.
+    3. Ἐν εὐπρεπείᾳ ἁγίου.
+    Ἐκ μήτρας ἀπὸ πρωΐ νεότητός μου.
+    4.
+    THEODOTIO.
+    2.
+    3. In decore sancti.
+    De vulva a matutino juventutis meæ.
+    4.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="250,510,750,530">
     Notæ et variæ lectiones ad Psalmum CIX.
-    Μαριάμ. Οὐδα δὲ εἰς τοῦτο τινος ἀκούσας, ὡς τῆς Ἑβραϊκῆς φωνῆς ἐνταῦθα τῆς Μαρίας ὑμνογενούσης· ἐν γὰρ, Μαριάμ, τὸ Μαρίας ὄνομα σημαίνει, ὡς ὀνομάσαι τὸν τοῦτων τῆς Θεοτόκου ἀναγεννήσεως.
-    I. e. Hebraicum habet Mariam. Aliquo autem narrante novi, Hebraicam vocem hic Mariam nomen significat; nam illud, Mariam, Marie nomen significat;
-    ita ut his nominatim Deipara commemoretur. Quæ opinio magis pia, quam vera est. [In Aquile versione, pro mea, quod edi jussit Montf., restituitus cou, quod legitur apud Eusebium, postulatae Hebraica veritas. Drach.]
-    V. 4. Σ., διορώσατο etc. Sic mss. duo.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="50,710,930,760">
+  <bloco tipo="texto_principal" script="misto" bbox="50,530,480,650">
+    Μαριάμ. Οἶδα δ εἰς τοτό τινος ἀκούσας, ὡς τῆς Ἑβραϊκῆς φωνῆς ἐνταῦθα τῆς Μαρίας μνημονεύσας· τὸ γάρ, Μαριάμ, τὸ Μαρίας ὄνομα σημαίνει, ὡς ὀνομαστὶ διὰ τούτων τῆς Θεοτόκου μνημονευθείσης. I. e. Hebraicum habet Mariam. Aliquo autem narrante novi, Hebraicam vocem hic Mariam memi-nisse : nam illud, Mariam, Mariæ nomen significat ;
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,530,950,650">
+    ita ut his nominatim Deipara commemoretur. Quæ opinio magis pia, quam vera est. [In Aquilæ versione, pro μου, quod edi jussit Montf., restituimus σου, quod legitur apud Eusebium, postulatque Hebraica veritas. DRACH.]
+    V. 4. Σ., δωμόσατο etc. Sic mss. duo.
+  </bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="50,660,200,680">
+    ΣΥΜΜΑΧΟΣ.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="400,650,600,680">
     PSALMUS CX.
+    θ'.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,760,490,1170">
-    ΣΥΜΜΑΧΟΣ.  0.
+  <bloco tipo="cabecalho" script="grego" bbox="750,660,900,680">
+    ΘΕΟΔΟΤΙΩΝ.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,680,320,950">
     2.
     3.
     5. Θήραν ἔδωκε τοῖς φοβουμένοις αὐτόν.
@@ -57,19 +94,29 @@
     5. Prædam dedit timentibus se.
     Memor æterni pacti sui.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="490,760,930,1170">
-    2. Ἐξεξηγημένα. Ἄλλος, ἠκρο-
-    θωμένα. Ἄλλος, παρασκευασμένα.
-    3. Ἐξομολογήσῃ καὶ μεγαλωπρε-
-    πεῖα τὸ ἔργον αὐτοῦ. Ἄλλος, ἔπαι-
-    νος καὶ ἀξίωμα ἡ ἐργασία αὐτοῦ.
-    5. Τροφή ἔδωκε τοῖς φοβουμένοις αὐτόν.
-    Μνησθήσεται εἰς τὸν αἰῶνα διαθήκης αὐτοῦ.
+  <bloco tipo="texto_principal" script="misto" bbox="350,680,650,950">
+    2. Ἐξεζητημένα. Ἄλλος, ἠκρι-βωμένα. Ἄλλος, παρεσκευασμένα.
+    3. Ἐξομολόγησις καὶ μεγαλοπρέ-πεια τὸ ργον αὐτοῦ. Ἄλλος, ἔπαι-νος καὶ ἀξίωμα ἡ ἐργασία αὐτοῦ.
+    5. Τροφὴν δωκε τοῖς φοβουμέ-νοις αὐτόν.
+    Μνησθήσεται εἰς τὸν αἰῶνα δια-θήκης αὐτοῦ.
     LXX INTERPRETES.
-    2. Exquisita. Alius, diligenter perquisita. Alius, preparata.
+    2. Exquisita. Alius, diligenter perquisita. Alius, præparata.
     3. Confessio et magnificentia opus ejus. Alius, laus et dignitas operatio ejus.
     5. Escam dedit timentibus se.
     Memor erit in sæculum testamenti sui.
   </bloco>
-  <notas>Scripts presentes: grego (principal), latino (notas e interpetres). Colunas: duas; transcrição feita coluna esquerda seguida da direita. Alguns cortes de linha preservados; uso de sinais de abreviação mantido; palavras parcialmente ilegíveis marcadas individualmente quando necessário (nenhuma foi substituída por [ilegivel] como bloco).</notas>
+  <bloco tipo="texto_principal" script="misto" bbox="680,680,950,950">
+    2.
+    3
+    5. Θήραν
+    THEODOTIO.
+    2.
+    3.
+    5. Prædam.
+  </bloco>
+  <notas>
+    Scripts: Misto (Latino e Grego).
+    Estrutura: Página de edição crítica com colunas paralelas (Symmachus, LXX, Theodotion).
+    O caractere "θ'." aparece como cabeçalho central nas secções dos Salmos CIX e CX.
+  </notas>
 </pagina>

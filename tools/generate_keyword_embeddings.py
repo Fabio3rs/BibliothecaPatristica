@@ -157,6 +157,9 @@ def embed_batch(
     model: str,
     ollama_url: str,
 ) -> List[List[float]]:
+    # Remover "(REVISÃO NECESSÁRIA)" e "REVISÃO NECESSÁRIA" para não sujar o espaço vetorial
+    keywords = [k.replace("(REVISÃO NECESSÁRIA)", "").replace("REVISÃO NECESSÁRIA", "").strip() for k in keywords]
+
     payload = {
         "model": model,
         "input": [build_instruct_query(k) for k in keywords],

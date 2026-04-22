@@ -1,71 +1,136 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,90">
-    367                                                                                      HEXAPLORUM QUÆ SUPERSUNT.                                                                                       368
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,60">
+    367 HEXAPLORUM QUÆ SUPERSUNT. 368
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="30,90,970,470">
-    TO EBRAIKON.                                TO EBPAIKON                              AKVILAΣ.
-    Ελληνικός γράμμασι.
-    22.                                      22.
-    [Hebraico] .................................. 22.
-    [Hebraico] ..................................
-    23.
-    [Hebraico] ..................................
-    24. Και λεγει πάσα ἡ Αίγυπτος
-    σκυλλὰς τοὺ ἱέβρου ὑδάτι τουτον͵
-    ται͵ ἴνα οὐκ ἡδυνάντο πιειν τα τοὺς
-    ύδατος τοὺ ποταμου͵
-    
-    VERSIO HEBRAICI TEXT.                    VULGATA LATINA.                         AQUILA.
-    22. Et fecerunt sic gêneblilaci       22. Feceruntque similiter mali-         22. Agnipe ipsi occulturum in-
-    Aegypti incantationibus suis.          sci Aegyptiorum incantationibus       terpretes Aegypti et in incantatio-
-                                           suis.                                 nibus suis sic.
-    Et non audivit.                        Nec audivit.
-    24. Et foderunt omnes Aegypti          24. Foderunt autem omnes                 24. Et foderunt universa Aegyptus
-    circuitibus fluminis aquas ut bi-     Aegypti per circuitum fluminis       in circuitu alvei aquam ad thiben-
-    berent, quia non poterant bibere       aquam ut bibérent : non enim          dum, quia non poterant bibere ex
-    ex aquis fluminis.                     poterant bibere de aqua fluminis.    aqua fluminis.
-    
-    Notes et variae lectiones ad cap. VII Exodi.
-    
-    V. 1. Siq uariones Aquile habet codex Basi-      liensis cum nominibus interpretum. Coler quidam
-    licensis. Alii omnes et Brusius, θεόν χᾶρις. Prae- Colbertinus ad lectionem Symmachj habet εν ἀπο-
-    stat lectio Basilensis. Quæ Theodotionis sunt, ex χειροῦ. Regius 1888, iv ἀποχράσεως· και αἰ τε-
-    uno Basilicensi producta.                      προστατουται tantum afferunt. Basilimensis vero le-
-                                                    ciones integras exhibet, et οἱ τῶν ἀποχράσων ἱη
-    V. 7. Ἀλλος, Ἀλλασσων. Sic calæne nostrā manu-  habet; hunc scilicet versus ET 22; editio item Ro-
-    scriptus.                                       maana est τῶν ἀποχράσων. Vocem [Hebraico] χρησι-
-    V. 9. Αʹ, χητος. Coislín.                       στής vertere solet Aquila. Sic Gen. xli, 8, et infra
-    V. 11. Sic omnes lectiones plenae habet Basi- 
-    lensis. 
-    
+  
+  [!-- Top Section: Exodus VII --]
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,320,190">
+    TO EBPAIKON.
+    וַיַּעֲשׂוּ כֵן הַחַרְטֻמִּים בְּלָטֵיהֶם 22
+    וַיַּחְפְּרוּ כָל־מִצְרַיִם סְבִיבֹת הַיְאֹר מַיִם לִשְתּוֹת כִּי לֹא יָכְלוּ לִשְׁתּוֹת מִמֵּי הַיְאֹר 24
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="330,60,550,190">
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
+    22.
+    24.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="560,60,950,190">
+    ΑΚΥΛΑΣ.
+    22. Καί γε αὐτοὶ ο κρυφιαστα Αἰγύπτου καὶ ἐν ἠρεμίαις οὕτως
+    24. Καὶ ὤρυξε πᾶσα ἡ Αἴγυπτος κυκλόθεν τοῦ ποταμοῦ ὕδωρ τοῦ πιεῖν, ὅτι οὐκ ἠδύναντο πιεῖν ἐκ τοῦ ὕδατος τοῦ ποταμοῦ.
+  </bloco>
+
+  [!-- Latin Translations Top --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,200,320,340">
+    VERSIO HEBRAICI TEXT.
+    22. Et fecerunt sic genethliaci Ægypti incantationibus suis.
+    Et non audivit.
+    24. Et foderunt omnes Ægyptii circuitibus fluminis aquas ut biberent, quia non poterant bibere ex aquis fluminis.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="330,200,550,340">
+    VULGATA LATINA.
+    22. Feceruntque similiter malefici Ægyptiorum incantationibus suis.
+    Nec audivit.
+    24. Foderunt autem omnes Ægyptii per circuitum fluminis aquam ut biberent : non enim poterant bibere de aqua fluminis.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="560,200,950,340">
+    AQUILA.
+    22. Atque ipsi occultorum interpretes Ægypti et in incantationibus suis sic.
+    24. Et fodit universa Ægyptus in circuitu alvei aquam ad bibendum, quia non poterant bibere ex aqua fluminis.
+  </bloco>
+
+  [!-- Notes Section --]
+  <bloco tipo="cabecalho" script="latino" bbox="250,350,750,370">
+    Notæ et variæ lectiones ad cap. VII Exodi.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="50,370,480,480">
+    V. 1. Sic versionem Aquilæ habet codex Basiliensis. Alii omnes et Drusius, Θεὸν Φαραώ. Præstat lectio Basiliensis. Quæ Theodotionis sunt, ex uno Basiliensi prodeunt.
+    V. 7. Ἄλλος, ἐλάλησαν. Sic cæteræ nostræ mss. subscriptæ.
+    V. 9. Ἁ., κῆτος. Coislin.
+    V. 11. Sic omnes lectiones plenas habet Basi-
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="490,370,950,480">
+    liensis cum nominibus interpretum. Codex quidam Colberlinus ad lectionem Symmachi habet ἐν ἀποκρύφῳ· Regius 1888, ἐν ἀποκρύφοις· sed hi ἀποκρύμματα tantum afferunt. Basiliensis vero lectiones integras exhibet, et διὰ τῶν ἀποκρύφων his habet; huc scilicet versu et 22; editio item Romana διὰ τῶν ἀποκρύφων. Vocem סתרַי חשׁפי- στὴς vertere solet Aquila. Sic Gen. xli, 8, et infra
+  </bloco>
+
+  [!-- Caput VIII Header --]
+  <bloco tipo="cabecalho" script="latino" bbox="350,500,650,530">
     CAPUT VIII EXODI.
-    
-    TO EBRAIKON.                               TO EBPAIKON                              AKVILAΣ.
-    Ελληνικός γράμμασι.
-    [Hebraico] 3                              3.
-    [Hebraico] 7                              7. Οι χρημασται εν τρεμεσις
-                                              αυτων.
-    [Hebraico] 8                              8.
-    [Hebraico] 14                             14. Συνεχουσιν.
-                                             Κόρυς, κόρου͵
-    [Hebraico] 15                             15. Ἀναπνευσις.
-    [Hebraico] 16                             16.
-    [Hebraico] 17                             17.
-    
-    VERSIO HEBRAICI TEXT.                    VULGATA LATINA.                         AQUILA.
-    3. In consperciones tuas.                3. Et in reliquias ciborum seu-          3.
-    7. Genechidaei incantationibus          7. Malefici per incantationes           7. Occultorum interpretes in
-    suis.                                   suas.                                   incantationibus suis.
-    8. Et dimittam populum.                 8. Et dimittam populum.                 8.
-    14. Et congregaverunt.                   14. Congregaveruntque.                 14. Obruerunt.
-    Acervos, acervos.                        In immensos aggeres.                   Cumulos, cumulos.
-    15. Respiratio.                          15. Requies.                            15. Respiratio.
-    16. In pediculos.                        16. Sciniphes.                           16.
-    17. Omnis pulvis terrae fuit pedicu-    17. Omnis pulvis terrae versus         17.
-    eius.                                    est in sciniphes.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="400,470,950,990">
+
+  [!-- Caput VIII Polyglot --]
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,530,320,730">
+    TO EBPAIKON.
+    עַל־מַכֹּתיךָ 3
+    הַצְפַרְדְּעִים 7
+    וְשִׁלַּחְתִּי 8
+    וַיַּעְמִידוּ 14
+    וַיִּצְבְּרוּ אֹתָם 15
+    לַכִּנִּים 16
+    כָּל־עֲפַר הָאָרֶץ הָיָה כִנִּים 17
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="330,530,550,730">
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
+    3.
+    7
+    8.
+    14.
+    15.
+    16.
+    17.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="560,530,950,730">
+    ΑΚΥΛΑΣ.
+    3.
+    7. Οἱ κρυφιασταὶ ἐν ἠρεμαίοις αὐτῶν.
+    8.
+    14. Συνήχθεσαν. Κορους, κόρους.
+    15. Ἀνάπνευσις.
+    16.
+    17.
+  </bloco>
+
+  [!-- Bottom Latin Translations --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,740,320,930">
+    VERSIO HEBRAICI TEXT.
+    3. In conspersiones tuas.
+    7. Genethliaci incantationibus suis.
+    8. Et dimittam populum.
+    14. Et congregaverunt. Acervos, acervos.
+    15. Respiratio.
+    16. In pediculos.
+    17. Omnis pulvis terræ fuit pediculi.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="330,740,550,930">
+    VULGATA LATINA.
+    3. Et in reliquiis ciborum tuorum.
+    7. Malefici per incantationes suas.
+    8. Et dimittam populum.
+    14. Congregaveruntque. In immensos aggeres.
+    15. Requies.
+    16. Sciniphes.
+    17. Omnis pulvis terræ versus est in sciniphas.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="560,740,950,930">
+    AQUILA.
+    3.
+    7. Occultorum interpretes in incantationibus suis.
+    8.
+    14. Obruerunt. Cumulos, cumulos.
+    15. Respiratio.
+    16.
+    17.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="450,950,800,990">
     Digitized by Google
   </bloco>
-  <notas>Scriptos hebraicos apresentados como [Hebraico] quando ilegíveis para transcrição exata; foram mantidos textos gregos e latinos literais, conservando abreviações e pontuações conforme imagem. Alguns termos hebraicos e caracteres menores tiveram de ser agrupados em marcações [Hebraico] por legibilidade; não se inventaram leituras não visíveis.</notas>
+  
+  <notas>
+    Texto poliglota contendo Hebraico, Grego (incluindo transliteração) e Latino.
+    A seção de notas (Notæ) é dividida em duas colunas contínuas.
+    A coluna central superior e inferior (TO EBPAIKON Ἑλληνικοῖς γράμμασι) contém principalmente numeração de versículos nesta página específica.
+  </notas>
 </pagina>

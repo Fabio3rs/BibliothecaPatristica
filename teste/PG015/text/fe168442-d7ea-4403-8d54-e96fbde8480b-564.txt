@@ -1,71 +1,133 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,120">
-    1123                             HEXAPLORUM QUÆ SUPERSUNT.                              1124
-    TO EBRAICON.                       TO EBRAICON                      ΑΚΥΛΑΣ.
-                                       Ἑλληνικοὶ γράμμασι
+  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,100">
+    1123 HEXAPLORUM QUÆ SUPERSUNT. 1124
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,120,300,300">
-    [Hebrew text]
+  <bloco tipo="texto_principal" script="misto" bbox="100,100,330,300">
+    TO EBPAIKON.
+    שׁדי 25
+    אבן
+    בצרים
+    מעבר
+    VERSIO HEBRAICI TEXT.
+    Et persecuti sunt.
+    25. In petra.
+    In torculari Zeeb.
+    A transitu.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="350,100,580,300">
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι
     25.
-    [Hebrew text]
+    VULGATA LATINA.
+    Persequebantur.
+    25. in petra.
+    In torculari Zeeb.
+    Trans fluenta.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="300,120,700,300">
-    VERSIO HEBRAICI TEXT.                     VULGATA LATINA.                     AQUILA.
-    Et persecuti sunt.                         Persequebantur.
-    
-    25. In petra.                              25. in petra.                        25. In petra.
-    In luculari Zeeb.                         In loculari Zeeb.
-    A transitu.                               Trans fluenta.
-    
+  <bloco tipo="texto_principal" script="misto" bbox="600,100,900,300">
+    AKYLAΣ.
+    25. Ἐν πέτρᾳ.
+    AQUILA.
+    25. In petra.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="300,310,700,330">
     Notæ et variæ lectiones ad cap. VII Judicum.
-    V. 1. 'Α., Ο', Θ., 'Αρσεώ. Basil. In edit. Rom.          Ibid. 'Α., Ο', Θ., χάμψ. Basil. et sic etiam Alex.
-    legitur. 'Αρσεώ.                                      E.dit. Rom., χάψ.
-    Ibid. 'Α., ἀπὸ τοῦ ὕψιλου. Οἱ λοιπαῖ, ἀπὸ τοῦ           V. 6. 'Αλλος, λαμβάνετον. Basil. Edit. Rom.,
-    φωνοῦ. Basil.                                       'Αλλος, λείφθων. Alex., λαμβάνετον.
-    V. 3. 'Αλλαξ, ὅτι τὰ ἔτη. Sic Basil. et Alex.           Ibid. 'Αλλος, τῇ γλώσσῃ. Basil. Alex. vero, ]v
-    Editi. vero Romana, ]v nott. Sequentes anteum le-       τῇ γλώσσῃ.
-    clivient, 'Α., ἀπεστράφησαν etc. ex Basilienis.        Ibid. 'Αλλος, καὶ πά̣ς ὁ Ἰουδαϊσμος. Basil. et Alex.
-    V. 4. 'Αλλος, μεταβησε. Sic Basil. et Alex.             Ibid. 'Αλλος, κειμηρι. Basil. et Alex.
-    Ibid. 'Α., Θ., τυφεῖον etc. Basil. 'Αλλος, δοκι-        V. 7. 'Αλλος, λειχκτοϊ. Basil.
-    μῶν. Basil. et Alex. Grabe legit δοκιμα.               Ibid. 'Αλλος, ἀπορρύφετο. Basil. et Alex.
-    V. 5. 'Αλλος, καταβέβησε. Basil. et Alex.             V. 8. 'Αλλος, ὅτι ἐν τῷ χρώματι. Basil. et Alex.
-    Ibid. 'Αλλος, λέψο. Basil. ad marg. et sic edit.      Ibid. 'Αλλος, τῶν ἐν τῷ τραχεστένων etc. Basil. et
-    Rom. Basil. in textu, λεῖψ. Alex. vero, λέψῃ, et       Alex.
-    μοι, λείψῃ.
-    V. 9. 'Αλλος, αὐτοσχέδιον. Basil. ad marg. Edit.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,300,960,360">
+  <bloco tipo="aparato_critico" script="misto" bbox="100,330,500,500">
+    V. 1. Ἀ., Οʹ, Θ., Ἀρειδ. Basil. In edit. Rom.
+    legitur. Ἀράδ.
+    Ibid. Ἀ., ἀπὸ τοῦ ὑψηλοῦ. Οἱ λοιποί, ἀπὸ τοῦ
+    βουνοῦ. Basil.
+    V. 3. Ἄλλως, εἰς τὰ ὀπίω. Sic Basil. et Alex.
+    Edit. vero Romana, ἐν ἐωσί. Sequentes autem le-
+    ctiones, Ἀ., ἀπεστράφησαν e.c. ex Basiliensi.
+    V. 4. Ἄλλος, κατάγαγε. Sic Basil. et Alex.
+    Ibid. Ἀ., Θ., πυρόβου etc. Basil. Ἄλλος, δοκι-
+    μοῦ. Basil. et Alex. Grabe legit δοκιμῶ.
+    V. 5. Ἄλλος, κατεδίβασεν. Basil. et Alex.
+    Ibid. Ἄλλος, λέίφη. Basil. ad marg. et sic edit.
+    Rom. Basil. in textu, λείίη. Alex. vero, λέγη, et
+    mox, λήίμη.
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="520,330,900,500">
+    Ibid. Ἀ., Ο, Θ., κάμψη. Basil. et sic etiam Alex.
+    Edit. Rom., κλίνη.
+    V. 6. Ἄλλως, λαλάνεων. Basil. Edit. Rom.,
+    Ἄλλος, λειξάντων. Alex., λαμβάντων.
+    Ibid. Ἄλλος, τῇ γλώσσῃ. Basil. Alex. vero, ἐν
+    τῇ γλώσσῃ.
+    Ibid. Ἄλλος, καὶ πᾶς  ἐπίλοιπος. Basil. et Alex.
+    Ibid. Ἄλλος, ἔκαμψεν. Basil. et Alex.
+    V. 7. Ἄλλος, λελαίχασι. Basil.
+    Ibid. Ἄλλος, ἀποτρεχέτω. Basil. et Alex.
+    V. 8. Ἄλλος, εἰς τὸ σκήνωμα. Basil. et Alex.
+    Ibid. Ἄλλος, τῶν δὲ τριακοσίων etc. Basil. et
+    Alex.
+    V. 9. Ἄλλώς, ἀναστάς. Basil. ad marg. Edit.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,510,650,540">
     CAPUT VIII JUDICUM.
-    TO EBRAICON.                       TO EBRAICON                      ΑΚΥΛΑΣ.
-                                       Ἑλληνικοὶ γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,360,300,700">
-    [Hebrew chapter headings and verse numbers]
+  <bloco tipo="texto_principal" script="misto" bbox="100,540,330,900">
+    TO EBPAIKON.
+    ויאמר 1
+    הרפים אתי עמי
+    שעפים 3
+    עיפים העם 4
+    אנשי ברלי 5
+    עיפים הם
+    ואנכי רדף
+    לצק 6
+    VERSIO HEBRAICI TEXT.
+    1. Ad eum.
+    Et jurgaverunt cum eo in forti
+    tudine.
+    3. Se remisit.
+    4. Lassi et persequentes
+    5. Qui in pedibus meis
+    Lassi ipsi.
+    Et ego persequens.
+    6. Exercitui tuo.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="350,540,580,900">
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
     1.
-    [Hebrew text]
+    3.
+    4.
+    5.
+    6.
+    VULGATA LATINA.
+    1. Ad eum.
+    Jurgantes fortiter.
+    3. Requievit
+    4. Præ lassitudine fugientes per-
+    sequi non poterant.
+    5. Qui mecum est.
+    Quia valde defecerunt.
+    Ut possimus persequi.
+    6. Exercitui tuo.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="600,540,900,900">
+    AKYLAΣ.
+    1.
+    3.
+    4.
+    5.
+    6.
+    AQUILA.
+    1.
     3.
     4.
     5.
     6.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="300,360,700,700">
-    VERSIO HEBRAICI TEXT.                   VULGATA LATINA.                   AQUILA.
-    1. Ad eum.                               1. Ad eum.                         1.
-    Et juraverant cum eo in forti          Jurgantes fortiter.
-    sudine.
-    
-    3. Se remisit.                          3. Receperit                       3.
-    4. Lassì et persequentes                4. Pra lassitudine fugientes per-  4.
-                                           sequi non poterant.
-    
-    5. Qui in pedibus meis                   5. Qui mecum est.                   5.
-    Lassì ipsi.                             
-    Ei ego perseverans.                      Quia valde defecerunt.
-                                            Ut possimus persequi.
-    6. Exercitui tuo.                       6. Exercitui tuo.                   6.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,900,960,980">
+  <bloco tipo="rodape" script="latino" bbox="500,950,800,990">
     Digitized by Google
   </bloco>
-  <notas>Blocos com texto hebraico apresentados como [Hebrew text] quando caracteres individuais não foram transcritos letteralmente em razão da legibilidade; várias linhas gregas e latinas contêm abreviações e sinais críticos mantidos conforme análise visual. Mantive ordem: coluna esquerda (hebraico/latim) seguida da direita (vulgata/aqila). BBOXs estimados em escala 0-1000.</notas>
+  <notas>
+    Transcrição de página poliglota (Hexapla). Scripts mistos: Latino, Grego, Hebraico.
+    Algumas palavras hebraicas podem apresentar variações ortográficas ou abreviações típicas de manuscritos/impressos antigos.
+    A coluna direita inferior (Aquila) contém apenas numeração de versículos.
+  </notas>
 </pagina>

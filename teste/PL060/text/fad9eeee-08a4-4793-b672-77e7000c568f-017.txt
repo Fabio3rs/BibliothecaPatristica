@@ -1,50 +1,68 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto" >
   <bloco tipo="cabecalho" script="latino" bbox="30,10,970,70">
 13   PSYCHOMACHIAE PRAEFATIO.   14
   </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="485,100,515,140">
+A 20
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,280,515,340">
+B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,460,515,510">
+C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,700,515,760">
+D
+  </bloco>
+
   <bloco tipo="texto_principal" script="latino" bbox="30,80,490,340">
 Quod dulce cordi, quod pium, quod unicum,
 Deo libenter offerendum credo.
 Pugnare nosmet cum profanis gentibus
-10 Suasit, [ilegivel] suusor exemplum dedit :
+10 Suasit, suumque suusor exemplum dedit :
 Nec ante prolem conjugalem gignere,
-Deo parente, matre virtute editam,
+Deo parente, matre virtute ediam,
 580 Quam strage multa bellicosus spiritus
 Portenta cordis servientis vicerit.
+
 15 Victum feroces forte reges ceperant
 Loth, immorantem criminosis urbibus
 Sodomae et Gomorrhae, quas fovebat advena,
 Pollens honore patruelis gloriae.
 Abram, sinistris excitatus nuntiis,
   </bloco>
+
   <bloco tipo="texto_principal" script="latino" bbox="510,80,970,340">
 20 Audit, propinquum, sorte captum bellica,
 Servire duris barbarorum vinculis :
 Armat trecentos, terque senos uernulas,
 Pergant ut hostis terga euntis caedere :
 581 Quem gaza dives, ac triumphus nobilis
-25 Capitis tenebant impediti[ilegivel] cupiis.
+25 Capitis tenebant impedi um copiis.
 Quin ipse ferrum stringit, et plectus Deo
-Reges superbos uole praeclarum graves
+Reges superbos mole prasdarum graves
 Pellit fugatos, sauciatos proterit,
 Frangit catenas, et rapinam liberat,
 30 Aurum, puellas, parvulos, mobilia,
 Greges equarum, vasa, vestem, buculas.
 Loth ipse ruptis expeditus nexibus
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="30,340,970,380">
+
+  <bloco tipo="aparato_critico" script="latino" bbox="30,340,970,380">
 GLOSSAE VETERES.
   </bloco>
+
   <bloco tipo="aparato_critico" script="latino" bbox="30,380,480,860">
 7. Quod, sicut Abraham unigenitum, quem diligebat, obtulit, sic offerendum Deo credat fidelis, quidquid praecipuum cordis inrenuerit. — Cordi, scilicet est. — Ium, dilectum, I.
 
 9. Profanis, profanae gentes sunt passiones animi, et vitia sunt potentiae cordis et animae passiones, quae cupiditas, laetitia, et agridudo; unde et Virgilius canit: Cupiunt, gaudentque, dolentque, &amp;c. — Cupiunt, gaudentque, dolentique, [ilegivel].
 
-10. Exemplum, sicut ille veros reges perdidit, ita nos exterminare vitia suasit, quibus in quinque sensibus aliquando sumus. Nam Abraham spiritum bellicum significat; quinque reges quinque sensus corporis; Loth idem captans est vitii, quam relaxat spiritus bellicosus; cccxxviii [ilegivel] fidem significat quae in Niceno concilio est constituta a cccxxii episcopis, sed x ad decalogum, una ad octo beatitudines pertinentes possunt; qui his omnibus caret, nunquam ad praedictas beatitudines perveniet, Iso.
+10. Exemplum, sicut ille veros reges perdidit , ita nos exterminare vitia suasit, quibus in quinque sensibus aliquando sumus. Nam Abraham spiritum bellicum significat; quinque reges quinque sensus corporis; Loth idem captans est vitii, quam relaxat spiritus bellicosus; cccxxviii [ilegivel] fidem significat quae in Niceno concilio est constituta a cccxxii episcopis, sed x ad decalogum, una ad octo beatitudines pertinentes possunt; qui his omnibus caret, nunquam ad praedictas beatitudines perveniet, Iso.
 
 11. Prolem, fructum boni operis, Iso.
 
-12. Editam, prolata, procreatam, Iso.
+12. Editam, prolata , procreatam, Iso.
 
 13. Strage, caede. — Bellicosus spiritus, ratio, quae est in anima, pugnam exercens contra vitia, ab harum servitute cum cor bellicosus spiritus liberaverit, erit consequens ut de naturae virtute placens Deo proles creetur boni scilicet operis fructus, I.
 
@@ -52,6 +70,7 @@ GLOSSAE VETERES.
 
 15. Ceperant, merito capiuntur, qui cum criminosis morantur; imo deligerat inmorari; contra quod Moyses ad populum, Discede, inquit, a tabernaculis hominum impiorum; haud dubium quin dicat abire, ne et ipsi [ilegivel].
   </bloco>
+
   <bloco tipo="aparato_critico" script="latino" bbox="510,380,970,860">
 B involvantur in peccatis eorum, Iso.
 
@@ -76,6 +95,7 @@ B involvantur in peccatis eorum, Iso.
 31. Buculas, uaccas, greges vaccarum, armenta boum, Iso.
 32. Expeditus, liberatus, velox, vel solutus, Iso.
   </bloco>
+
   <bloco tipo="aparato_critico" script="latino" bbox="30,860,480,920">
 COMMENTARIUS.
 
@@ -85,12 +105,13 @@ COMMENTARIUS.
 12. Mar., Rat., Weitz. cum aliis, Gis., parente. Heinssiniam omne, Alex., Valt. F, G, et plerique alii, placentem. Fuldens, male, placente. Heinssius ait in suis esse Deo placente cum Aldo; addit Teolius, editiones omnes Heinso antiquiores, Aldina excepta, habere Deo parente. A non solum in Aldina editione, sed in aliis etiam antiquis invenio Deo placentem, ut in Basileensis anni 1540, Colonienis 1594, et aliis. Sichardo placet parente, quia sequitur mater virtus, ut Clarae gloriaatur, se sine nobilitatis parentem habere laborem. Virtus mater dicitur, ut castitas mater hymno II Cathem. vers. 14.
 14. Ald., Gis., Erfurt., Bong., Ang. cum Valt. C, G, O, R, H, et aliis, contoruit. Pult., Oxto, Agm., Widm., Bonn., Alex., Mar., Rat. a prima manu, et alii servientes, quo verba simili ratione saepe usus est Prudentius. Bartholus, lib. xiii, cap. 7 Advers.
   </bloco>
+
   <bloco tipo="aparato_critico" script="latino" bbox="510,860,970,920">
 in quodam ms. invenientur secventis, quod optimum putat; sed facietur in plerisque codd. esse servientes, et explicat, nisi cor redigerit in servitutem, et ita potentia ejus, sive malignas cogitationes vicerit.
 
 15. In Mar. error est cecpit, correctum supra ceperant. Simile memorant in Vat. C, cceperant.
 
-22. Pignoribus, de Servis pag. 22 et seqq., de vernac et vernulae appellatione edisserit: ita vocabant antiquii servos domi natos. Sed aliquando vernae vox latiore notione pro quibuslibet servus accipiuntur, ut exemplis confutant Pignorii.
+22. Pignoribus, de Servis pag. 22 et seqq., de vernac et vernulae appellatione edisserit: ita vocabant antiquii servos domi natos. Sed aliquando vernae vox latiore notione pro quibuslibet servus accipiebatur, ut exemplis confutant Pignorii.
 
 23. Mar., pregar; supra pergar, recte.
 
@@ -102,22 +123,12 @@ in quodam ms. invenientur secventis, quod optimum putat; sed facietur in plerisq
 31. Elmenhorsii in Arnobium pag. 16, buccham pro bove, juvenca, bucca ex glossis veteribus, Virgilio, Aldhelmo dicit comprobant. Ald. et Ang., vesela; alii, vessela.
 32. Mar. et Bonon. cum Heinssinianis, praeter Puteacum, expeditus vinculis, quos sequi voluit Heinssius.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,100,515,140">
-A 20
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,280,515,340">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,460,515,510">
-C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,700,515,760">
-D
-  </bloco>
+
   <bloco tipo="rodape" script="latino" bbox="350,940,640,980">
 Digitized by Google
   </bloco>
+
   <notas>
-Transcricao realizada a partir da imagem; scriptus: latino. Marcas marginais A, B, C, D transcritas onde visiveis. Varios termos pequenos ou pouco nítidos foram assinalados como [ilegivel]. Os blocos "GLOSSAE VETERES" e "COMMENTARIUS" foram tratados como aparato_critico. Modernismo/rodape "Digitized by Google" mantido.
+Transcrição conforme leitura visual com apoio do texto fornecido; estado com_texto. Marcas marginais A, B, C, D transcritas em blocos de nota_marginal. Onde a leitura não foi segura, mantive [ilegivel]. Rodapé “Digitized by Google” mantido exatamente.
   </notas>
 </pagina>

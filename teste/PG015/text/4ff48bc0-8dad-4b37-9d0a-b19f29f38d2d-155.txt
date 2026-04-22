@@ -1,136 +1,200 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="80,20,920,140">
-    365 .  GENESIS CAP. XLII.  506
+  <bloco tipo="cabecalho" script="latino" bbox="100,40,200,70">
+    365
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="400,40,600,60">
+    GENESIS CAP. XLI.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="400,60,600,85">
     CAPUT XLII GENESIS.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="60,140,440,820">
+  <bloco tipo="cabecalho" script="latino" bbox="800,40,900,70">
+    366
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="100,90,300,110">
     ΣΥΜΜΑΧΟΣ.
-    Ο.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="480,90,520,110">
+    σ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="700,90,850,110">
+    ΘΕΟΔΟΤΙΩΝ
+  </bloco>
+
+  [!-- Coluna Grega Esquerda (Symmachus) --]
+  <bloco tipo="texto_principal" script="grego" bbox="100,120,300,420">
     2.
-    2. Καὶ πείςας ἡμῖν. Ἄλλος·
-    καὶ ἀγοράσατε ἡμῖν.
-    4. Κίνδυνος.
-    4. Μαλακία.
+    3. Κίνδυνος.
     7.
-    7. Τηλεσκοπεῖτο. Ἄλλος· ἐκ-
-    ξενοῦτο.
     9.
-    9. Κατάσκοπος.
-    Τὰ κρυπτὰ ἀπὸς χώρας·
-    Τὰ ἔργα τῆς χώρας.
-    11. Ἀπλός.
-    11. Εἱρηνεῖ.
+    Τὰ κρυπτὰ ἀτῆς χώρας·
+    11. Ἁπλοῖ.
     12. Τὰ κρυπτὰ τῆς γῆς.
-    12. Τὰ ἔργα τῆς γῆς.
-    15. Ἐν τούτῳ δοκιμασθήσεσθε.
-    15. Ἐν τούτῳ φαυλεῖσθ.
-    Νὴ τὴν ὑγίειαν θυμῶν· Ἄλλος·
-    μὰ τὴν ὑγίειαν.
-    16. Ἀσύστατος.
-    16. Ἀσθενής.
-    21. Μάλα, ἡ ὕπαρξις.
-    21. Ναι τὰ ὁμοιώματα.
-    27. Σάκκον.
-    27. Μέγα πρακτικόν.
-    Μαρτυρίαι.
-    28. Ἐπὶ τῷ σάκκῳ μου.
-    28. Ἀποδέξασθαι με.
-    30. Ἐκεῖσεται.
-    30. Ἔλεος.
-    36.
-    36. Ἐκ τῷ ἡμῖν. Ἄλλος· κατ' 
-    ἔμεσι.
-    38.
-    38. Μαλακωθῆναι. Ἄλλος ἁφ-
-    μερισθῆναι.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="460,140,940,820">
-    THEODOTION
-    2.
-    2.
-    2.
-    4. Malacia.
-    7.
-    7.
-    9.
-    9.
-    11.
-    11.
-    12.
-    12.
-    15.
-    15.
-    16.
-    16.
-    21.
-    21.
-    27.
-    27.
+    13. Ἐν τούτῳ δοκιμασθήσεσθε.
+    16. Δεθήσεσθε.
+    21. Μάλα, ἢ ὄντως.
+    27. Σάκκον.
     28.
-    28.
-    30.
-    30.
+    Ἐν τῷ σάκκῳ μου.
+    30. Ἐλογίσασθε.
     36.
-    36.
-    38.
     38.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,820,940,1400">
+
+  [!-- Coluna Grega Central (LXX) --]
+  <bloco tipo="texto_principal" script="grego" bbox="350,120,600,420">
+    2. Καὶ πρίασθε ἡμν. Ἄλλος·
+    καὶ ἀγοράσατε ἡμῖν.
+    4. Μαλακία.
+    7. Ἠλλοτριώσατο. Ἄλλος· ἀπ-
+    εξενώσατο.
+    9. Κατάσκοποι.
+    Τὰ ἴχνη τῆς χώρας.
+    11. Εἰρηνικοί.
+    12. Τὰ ἴχνη τῆς γῆς.
+    13. Ἐν τούτῳ φανεσθε.
+    Νὴ τὴν ὑγίειαν Φαραώ. Ἄλλος·
+    μὰ τὴν ὑγίειαν.
+    16. Ἀπάχθητε.
+    21. Ναὶ ἐν ἁμαρτίαις.
+    27. Μάρσιππον.
+    Μαρσίππου.
+    28. Ἀπεδόθη μοι.
+    Ἐν τῷ μαρσίππῳ μου.
+    30. ἔθετο.
+    36. Ἐφ᾽ ἐμέ. Ἄλλος· κατ᾽
+    ἐμοῦ.
+    38. Μαλακισθῆναι. Ἄλλος· ἀρ-
+    ρωστῆσαι.
+  </bloco>
+
+  [!-- Coluna Grega Direita (Theodotion) --]
+  <bloco tipo="texto_principal" script="grego" bbox="650,120,750,420">
+    2.
+    4.
+    7.
+    9.
+    11.
+    12.
+    13.
+    16.
+    21.
+    27.
+    28.
+    30.
+    36.
+    38.
+  </bloco>
+
+  [!-- Cabeçalhos Latinos --]
+  <bloco tipo="texto_principal" script="latino" bbox="150,430,280,450">
     SYMMACHUS.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,430,600,450">
     LXX INTERPRETES.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,430,850,450">
     THEODOTIO.
+  </bloco>
+
+  [!-- Coluna Latina Esquerda (Symmachus) --]
+  <bloco tipo="texto_principal" script="latino" bbox="100,460,300,780">
     2.
+    4. Periculum.
+    7.
+    9.
+    Occulta regionis.
+    11. Simplices.
+    12. Occulta terræ.
+    13. In hoc probabimini.
+    16. Viniemini.
+    21. Utique, vel vere.
+    27. Saccum.
+    28.
+    In sacco meo.
+    30. Putavit.
+    36.
+    38.
+  </bloco>
+
+  [!-- Coluna Latina Central (LXX) --]
+  <bloco tipo="texto_principal" script="latino" bbox="350,460,600,780">
     2. Et emite nobis Alius, et emite
     nobis.
-    4. Periculum.
-    4. Laxores.
-    7.
-    7. Aliquem se fecit. Alius, exterius
-    necnon se ostendit.
-    9. 9. Exploratores.
-    Occulta regionis.
+    4. Languor.
+    7. Alienum se fecit. Alius, et extra
+    neum se ostendit.
+    9. Exploratores.
     Vestigia regionis.
-    11. Simplices.
     11. Pacifici.
-    12. Occulta terrae.
-    12. Vestigia terrae.
-    15. In hoc probabilmini.
-    15. In hoc manifestoi eritus.
+    12. Vestigia terræ.
+    13. In hoc manifesti eritis.
     Per salutem Pharaonis. Alius,
     per salutem.
-    16. Visicemini.
     16. Abducamini.
-    21. Utique, vel vere.
     21. Certe in peccatis.
-    27. Saccum.
     27. Marsupium.
-    28.
+    Marsupii.
     28. Redditum est mihi.
-    In sacco meo.
     In marsupio meo.
-    30. Fulsavit.
-    30. Posui.
-    36.
+    30. Posuit.
     36. Super me. Alius, contra me.
-    38.
-    38. Lanquare. Alius, infirmari.
+    38. Languere. Alius, infirmari.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="60,1400,940,1760">
-    Notae et variae lectiones ad cap. XLII Genesis.
+
+  [!-- Coluna Latina Direita (Theodotion) --]
+  <bloco tipo="texto_principal" script="latino" bbox="650,460,750,780">
+    2.
+    4.
+    7.
+    9.
+    11.
+    12.
+    13.
+    16.
+    21.
+    27.
+    28.
+    30.
+    36.
+    38.
+  </bloco>
+
+  [!-- Notas --]
+  <bloco tipo="nota" script="misto" bbox="250,790,750,810">
+    Notæ et variæ lectiones ad cap. XLII Genesis.
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="100,820,480,950">
     sine interpretum nomine. Sed edit. Rom. nomina
     ascribit.
-    Ibid. Sic manuscripta duo, tactis de more no-
-    misimus. Editio Romana nomen Aquilae ascribit.
-    Lectionem, μὰ τὴν ὑγίειαν habet cod. Reg. 1871.
-    V. 16. Hæc Aquilae et Symmachi lectio desmi-
+    Ibid. Sic manuscripti duo, tacitis de more no-
+    minibus. Editio Romana nomen Aquilæ ascribit.
+    Lectionem, μὰ τὴν ὑγίειαν habet cod. Reg. 1871.
+    V. 16. Hæc Aquilæ et Symmachi lectio desumi-
     tur ex editione Rom.
-    V. 21. A., μάλιστα etc. Ex Coislin.
-    V. 25. Coislin. ad illud, τὰ ἀργύρια, in rois U'
-    positum, notat in margine, ἀργύρια, καὶ μάρτυρας
-    καὶ σάκκον, καὶ πορπεῖα, μαλακὰ ξευχὺν τὰ ὀμάσιαν,
-    edd.
-    [continues with critical apparatus lines, marginal notes and variants in Latin and Greek; some abbreviations and punctuation preserved as in original]
+    V. 21. Ἀ., μάλιστα etc. Ex Coislin.
+    V. 25. Coislin. ad illud, τὰ ἀγγεῖα, in τοῖς U'
+    positum, notat in margine, ἀγγεῖα, καὶ μάρσιπποι
+    καὶ σάκκοι, καὶ πορεῖα, μίαν ἔχουσι τὴν σημασίαν,
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="490,820,900,950">
+    ὡς ἐν τοῖς ἑπομένοις εὑρήσεις.
+    Ibid. ad ἐπισιτισμόν, notat Coisl. in marg.: τροφάς.
+    V. 27. Ἀ., θύλακον, etc. Ex edit. Rom.
+    Ibid. Ἀ., θύλακον. Coislin.
+    V. 28. Ἀ., ἀπεστράφη μοι. Ex cod.
+    Ibid. Σ., ἐν τῷ σάκκῳ μου. Codex Reg. 1871 sine
+    interpretis nomine: sed Symmachi esse suadet si-
+    milis interpretatio versus 27.
+    V. 30. Σ., ἐλογίσατο. Ita Coislin.
+    V. 36. Ἄλλος, κατ' ἐμοῦ. Ex cod.
+    V. 38. Ἀρρωστῆσαι. Ex cod.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="500,960,800,990">
     Digitized by Google
   </bloco>
-  <notas>Página com três colunas visuais: coluna esquerda em grego (Symmachus), coluna central mista grego/latim (capitulum e llx interpretes) e coluna direita em latino (Theodotion). Rodapé contém aparato crítico em latim com intercaladas leituras gregas; algumas linhas pequenas e abreviações tornam certas palavras parcialmente ilegíveis, mas transcrição literal foi preservada; marcas de paginação e logotipo "Digitized by Google" incluídas.</notas>
 </pagina>

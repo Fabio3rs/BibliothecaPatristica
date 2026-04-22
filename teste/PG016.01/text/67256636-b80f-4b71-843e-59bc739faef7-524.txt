@@ -1,29 +1,44 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,110">
+  <bloco tipo="cabecalho" script="latino" bbox="400,40,600,70">
     HEXAPLORUM QUÆ SUPERSUNT.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,110,320,660">
-    TO ΕΒΡΑΙΚΟΝ.
-    אל דה׳חיין לב לאינאמן את
-    אל רודה
-    15 יקב צים במדבר
-    17 לחתות עליך בביה
-    20 שאר
-    21 ויהיברו
-    24, 25 הדושנים גרן למו: לחם
-    אבירים אכל אשר
-    26 יסע קיים בשמים ויתג בעוז
-    חימן
-    27 ויפטר עליהם כעפר שאר
-    ומחל ימים עלף כה
-    28 ויפל בקרב מחננו סביב
-    למשבחותיו
-    29 ויאכלו וישעמו מאד ותהא להם
-    יבא להם: לא-ידו מתאדם
+  <bloco tipo="outro" script="latino" bbox="100,50,150,70">
+    1007
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="330,110,650,660">
-    ΤΟ ΕΒΡΑΙΚΟΝ
-    Ελληνικοῖς γράμμασι.
+  <bloco tipo="outro" script="latino" bbox="850,50,900,70">
+    1006
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="misto" bbox="150,90,300,120">
+    TO ΕΒΡΑΙΚΟΝ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="380,90,600,120">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,90,850,120">
+    ΑΚΥΛΑΣ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,130,350,380">
+    דור לא־נאמנה את־אל רוח
+    15 יקע צור במדבר
+    17 למחות עלימו בניה
+    20 שאר
+    21 ויתעבר
+    25, 24 לחם מן־השמים נתן למו : לחם
+    אבירים אכל איש
+    26 יסע קדים בשמים וינהג ברוח
+    יימן
+    27 וימטר עליהם כעפר שאר
+    וכחול ימים עוף כנף
+    28 ויפל בקרב מחנהו סביב
+    למשכנתיו
+    29 ויאכלו וישבעו מאד ותאותם
+    יבא למו : לא־נדר מתאותם
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="380,130,550,380">
     15.
     17.
     20.
@@ -34,53 +49,63 @@
     28.
     29.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="660,110,950,660">
-    ΑΚΥΛΑΣ.
-    ... και αδελφιος προς τον θεον
-    τω πνευματι τω εαυτης.
-    15. Ἐσχισε πέτρος ἐν ἐρήμῳ.
-    17. Τοῦ προσκεφται ὑγιανῃ ἐν
-    ἀβασιν.
+
+  <bloco tipo="texto_principal" script="grego" bbox="650,130,900,380">
+    ... καὶ ἀβέβαιος πρὸς τὸν Θεὸν
+    τῷ πνεύματι τῷ ἑαυτῆς.
+    15. Ἔσχισε πέτρους ἐν ἐρήμῳ.
+    17. Τοῦ προσερεῖσαι· Ὑψίστῳ ἐν
+    ἀβάτῳ.
     20. Κρέα.
-    21. Καὶ ἀνυπερθέητον.
-    24, 25. ... ἄρτον δυνατῶν ἔχ-
-    γεν ἀνὴρ.
+    21. Καὶ ἀνυπερθέτησεν.
+    24, 25. ... ἄρτον δυναστῶν ἔφα-
+    γεν ἀνήρ.
     26.
     27.
     28.
     29.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,660,320,980">
+
+  <bloco tipo="texto_principal" script="latino" bbox="150,400,350,420">
     VERSIO HEBRAICI TEXT.
-    Generatio non preparavit cor
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="450,400,600,420">
+    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,400,850,420">
+    AQUILA.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,430,350,900">
+    Generatio non præparavit cor
     suum : nec fidelis fuit cum Deo
     spiritus ejus. Hieron., generatio
-    quæ non preparavit cor suum :
+    quæ non præparavit cor suum :
     et non credidit Deo spiritus ejus.
     15. Scidit petras in deserto.
     Hieron., scidit petram in deserto.
-    17. Ad exacerbandum?Excelsum
+    17. Ad exacerbandum Excelsum
     in solitudine. Hieron., ut provoca-
-    ret Excelsum in invio.
+    rent Excelsum in invio.
     20. Carnem. Hieron., id.
     21. Et iratus est. Hieron., non
-    disiulit.
+    distulit.
     24, 25. Et triticum cœleste de-
-    dit eis : panem fortium conedidit
+    dit eis : panem fortium comedit
     vir. Hieron., id.
-    26. Proflisci fecit eorum in
+    26. Proficisci fecit eurum in
     cœlis, et induxit in fortitudine sua
-    austrum. Hieron., abstulit eorum
-    de cælo, et induxit in fortitudine
-    sua africum.|
-    27. Et pluvi super eos sicut pul-
+    austrum. Hieron., abstulit eurum
+    de cœlo, et induxit in fortitudine
+    sua africum.]
+    27. Et pluit super eos sicut pul-
     verem carnem, et sicut arenam
     marium volatile alatum. Hieron.,
     et pluit super eos quasi pulverem
     carnes, et quasi arenam maris vo-
     latilia pennata.
     28. Et cadere fecit in medio ca-
-    stramentationis ejus circa habita-
+    strametationis ejus circa habita-
     cula ejus. Hieron., et ceciderunt in
     medio castrorum eorum, in cir-
     cuitu tabernaculorum eorum.
@@ -90,10 +115,10 @@
     a desiderio suo. Hieron., et come-
     derunt et saturati sunt nimis : et
     desiderium eorum attulit eis : non
-    indigerunt de cupiditate sua.|
+    indiguerunt de cupiditate sua.]
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,660,640,980">
-    VULGATA LATINA.
+
+  <bloco tipo="texto_principal" script="latino" bbox="380,430,650,900">
     Generatio quæ non direxit cor
     suum ; et non est creditus cum
     Deo spiritus ejus.
@@ -103,12 +128,12 @@
     sum in inaquoso.
     20.
     21. Distulit.
-    24,25. Et panem cœli dedit eis :
-    panem angelorum manducavit bo-
+    24, 25. Et panem cœli dedit eis :
+    panem angelorum manducavit ho-
     mo.
-    26. Transfuit austrum de cœlo,
+    26. Transtulit austrum de cœlo,
     et induxit in virtute sua africum.
-    27. Et pluit super eos sicut
+    27. Et pluit super eos* sicut
     pulverem carnes, et sicut arenam
     maris volatilia pennata.
     28. Et ceciderunt in medio ca-
@@ -119,21 +144,27 @@
     eorum attulit eis : non sunt frau-
     dati a desiderio suo.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,660,950,980">
-    AQUILA.
+
+  <bloco tipo="texto_principal" script="latino" bbox="680,430,900,900">
     ... et non firma erga Deum
     spiritu suo.
     15. Scidit petras in deserto.
     17. Ad litigandum cum Altissi-
     mo in invia.
     20. Carnes.
-    21. Et non disiulit.
-    24,25...panem potentium come-
+    21. Et non distulit.
+    24, 25...panem potentium come-
     dit vir.
     26.
     27.
     28.
     29.
   </bloco>
-  <notas>Scripts mistos: hebraico para coluna esquerda superior; gregos lineares para cabeçalho central e coluna direita superior; latim para as três colunas inferiores. Algumas abreviações e sinais editoriais preservados como no original; usei [ilegivel] apenas onde não foi necessário; transcrição literal respeitada sem normalização.</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="600,950,900,980">
+    Digitized by Google
+  </bloco>
+  <notas>
+    A página apresenta uma disposição poliglota complexa (Hexapla). A coluna superior esquerda contém texto hebraico, a central transliteração em grego (parcialmente ausente na primeira linha), e a direita o texto grego de Áquila. A seção inferior apresenta três colunas em latim: versão do texto hebraico (com notas de Jerônimo), Vulgata Latina e versão latina de Áquila. Os números dos versículos estão intercalados no texto.
+  </notas>
 </pagina>

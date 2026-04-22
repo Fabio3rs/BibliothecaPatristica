@@ -1,40 +1,26 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,90">
-    HEXAPLORUM QUAE SUPERSVNT.. 1588
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,60">
+    1587. HEXAPLORUM QUÆ SUPERSUNT. 1588
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="30,90,320,820">
-    TO EBPAIKON.
-    אבה
-    מַחֲנָה
-    לבתמן9
-    9.
-    באחד עין מחזקיך
-    י ע 10
-    מין 11
-    נבה 11
-    13 שלחת פרים רמיים &x στόματός σου παράδεισος ῥῶν.
-    מָגַדִים
-    14 ואחלת
-    15 ונזלים
-    16 יחל
-    מבדיל
-    VERSIO HEBRAICI TEXT.
-    Amana.
-    De habitaculis.
-    9. Abstulisti cor meum.
-    In una torque de cervicibus tuis.
-    10. Pulcri sunt.
-    A vino.
-    11. Favum.
-    13. Propagines tuæ paradisus malorum punicorum. Heb. lul. ex ore tuo paradisus malorum punicorum.
-    . Dulcedinum.
-    14. Et aloes.
-    15. Et fluentium.
-    16. Fluunt.
-    Dulcedinum suarum.
+  
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,350,400">
+    TO ΕΒΡΑΙΚΟΝ.
+    אמנה
+    תשוכותי
+    לבבתי 9
+    יין 10
+    מי 11
+    שלח פרדס רמונים 13 Ἐβρ.,
+    ἐκ στόματος σου παράδεισος ῥοῶν.
+    כנרים
+    תפוחים 14
+    נרדים 15
+    כפר 16
+    קנמון
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="340,90,640,820">
-    TO EBPAIKON
+
+  <bloco tipo="texto_principal" script="grego" bbox="360,60,600,400">
+    TO ΕΒΡΑΙΚΟΝ
     Ἑλληνικοῖς γράμμασι.
     9.
     10.
@@ -43,6 +29,46 @@
     14.
     15.
     16.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="610,60,950,400">
+    ΑΚΥΛΑΣ.
+    Ἀμανά.
+    Ἀπὸ κατοικητηρίου.
+    9.
+    Ἐν ἑνὶ πλοκάμῳ ἀπὸ τραχήλου
+    σου.
+    10. Ἐκαλλωπίσθησαν
+    11. Γλυκασμόν.
+    13.
+    14. Καὶ ἀλωή.
+    15.
+    16. Ῥυήτωσαν.
+    Ὀπωρῶν ατοῦ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,400,350,580">
+    VERSIO HEBRAICI TEXT.
+    Amana.
+    De habitaculis.
+    9. Abstulisti cor meum.
+    In una torque de cervicibus
+    tuis.
+    10. Pulcri sunt.
+    A vino.
+    11. Favum.
+    13. Propagines tuæ paradisus
+    malorum punicorum. Heb. Int. ex
+    ore tuo paradisus malorum puni-
+    corum.
+    Dulcedinum.
+    14. Et aloes.
+    15. Et fluentium.
+    16. Fluunt.
+    Dulcedinum suarum.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="360,400,600,580">
     VULGATA LATINA.
     Amana.
     De cubilibus.
@@ -51,26 +77,16 @@
     10. Pulcra sunt.
     Vino.
     11. Favus.
-    13. Emissiones tuæ paradisiis malorum punicorum.
+    13. Emissiones tuæ paradisus
+    malorum punicorum.
     Pomorum.
     14. Cinnamomum.
-    15. Quæ fluunt impetus.
+    15. Quæ fluunt impetu.
     16. Fluunt.
     Pomorum.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,90,980,820">
-    AKYΛAΣ.
-    Ἀμανα.
-    Ἀπὸ κατοικητηρίου.
-    9.
-    Ἐν ἑνὶ πλοχῶμι ἀπὸ τραχήλου σου.
-    10. Ἐκαλλωπίσθησαν
-    11. Γλυκασμῶν.
-    13.
-    14. Καὶ ἀλοιφ.
-    15.
-    16. Ῥυΐστωσαν.
-    ὑπὸρῶν αὐτοῖ.
+
+  <bloco tipo="texto_principal" script="latino" bbox="610,400,950,580">
     AQUILA.
     Amana.
     De habitaculo.
@@ -79,35 +95,87 @@
     10. Ornata fuerunt.
     11. Dulcedinem.
     13.
-    14. Et aloε.
+    14. Et aloe.
     15.
     16. Fluunt.
     Fructuum autumnalium ejus.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="40,820,980,1360">
+
+  <bloco tipo="nota" script="misto" bbox="50,580,950,850">
     Notæ et variæ lectiones ad cap. IV Cantici Canticorum.
-    V. 1. Ε, ἀπὸ πλήθους etc. Ed. Rom. et Drusius.
-    V. 2. Α., διδαχόμεθον. Idem.
-    V. 3. Α., ἐν κόκκῳ. Idem. Apud Drusium hic locus reperitur ad versum 6, cap. VI, quo perperam translatus fuerat. Ibi vero ad Aquilam fertur τῆς σχόνης. Eodem loco sequens Symmaci versiο, ἐκάλεξεν σου καὶ.
-    Ibid. Σ., ἀ παρεσται σου etc. Ed. Rom. et Drusius.
-    V. 4. Α., elε ἐπαλέξεις. Sic ed. Rom. et unus Reg. Verum tres alii Regii habent, ἐπάνω ἐπάλεξαν, supra pinnas. Σ., εις ψυχ. Sic ed. Rom. et tres Regii: unus habet, εις ὕδους, in altitudinem, sed minus recte : nam vox Hebraica pluralis est. Quinquæ editionis lectionem adferunt duo Regii. LXX Interpretes vocem Hebraicam מִנְפָחִים Graecis litteris expreseunt θαλπῶσι.
-    V. 5. Σ., ὑμετες ἀνθη. Ex Theod., qui ait, Σ.,
+    V. 1. Εἰ, ἀπὸ πλήθους etc. Ed. Rom. et Drusius.
+    V. 2. Ἀ., διδυμοτόκοι. Iidem.
+    V. 3. Ἀ., ἐκ κόκκου. Iidem. Apud Drusium hic
+    locus reperitur ad versum 6, cap. vi, quo perperam
+    translatum fuerat. Ibi vero ad Aquilam fertur τῆς
+    κόκκου. Eodem loco sequens Symmachi versio,
+    διάλεξις σου καλή.
+    Ibid. Σ., αἱ παρειαί σου etc. Ed. Rom. et Drusius.
+    V. 4. Ἀ., ες ἐπάλξεις. Sic ed. Rom. et unus
+    Reg. Verum tres alii Regii habent, ἐπάνω ἐπάλξεων,
+    supra pinnas. Σ., εἰς ψη. Sic ed. Rom. et tres Re-
+    gii : unus habet, εἰς ψος, in altitudinem, sed mi-
+    nus recte : nam vox Hebraica pluralis est. Quintæ
+    editionis lectionem adferunt duo Regii, LXX Inter-
+    pretes vocem Hebraicam חמקים Græcis litteris ex-
+    presserunt θαλιμώθ.
+    V. 5. Σ., νέμοντες ἄνθη. Ex Theod., qui ait, Σ.,
+    ἄνθη νέμειν : sed Symm. modum mutavit, ut hæc
+    ad seriem suam aptaret, ut quisque videre possit.
+    V. 6. Ἀ., ως οὗ κοπάτῃ ἡμέρα etc. Edit. Romana
+    et Drusius.
+    Ibid. Ἀ., πορεύσομαι etc. Hic et sequens versi-
+    culus, qui olim in τοῖς Ο' desiderabantur (non enim
+    ipsos legit Theodoretus), ex Aquilæ versione in ver-
+    sionem τῶν Ο' inducti sunt, ut monet hæc nota in
+    codice uno Regio : Οὗτοι ο δύο στίχοι ἐκ τῶν
+    Ἀκύλα προσετέθησαν. I. e. Hi duo versiculi ex
+    Aquila additi sunt. Verum hic secundum veterem
+    computandi modum non duo, sed quatuor versiculi
+    haberentur ; nempe,
+    Πορεύσομαι ἐμαυτῷ πρὸς τὸ ὄρος τῆς σμύρνης,
+    Καὶ πρς τὸν βουνὸν τοῦ Λιβάνου,
+    Ὅλη καλὴ εἶ, ἡ πλησίον μου,
+    Καὶ μῶμος οὐκ ἔστιν ἐν σοί.
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="350,850,650,870">
     CANTICI CANTICORUM CAPUT V.
-    TO EBPAIKON.
-    TO EBPAIKON
-    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="50,870,350,980">
+    TO ΕΒΡΑΙΚΟΝ.
+    באתי לגני אחתי כלה 1
+    ארי נדדי
     VERSIO HEBRAICI TEXT.
     1. Comedi favum meum.
     Dilecti.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="360,870,600,980">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+    1.
     VULGATA LATINA.
     1. Comedi favum.
     Charissimi.
-    AKYΛAΣ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="610,870,950,980">
+    ΑΚΥΛΑΣ.
     1.
-    Ἐταίροι, δελφύδεσι.
+    Ἑταραι, ἀδελφιδοί.
     AQUILA.
     1.
-    Socii, fratruculæ.
+    Socii, fratruelis.
   </bloco>
-  <notas>Scriptos mistos: hebraico (direção rtl), grego e latino. Algumas palavras fragmentárias e sinais tipográficos modernizados por impressão; mantidas como no original. BBOXs estimadas em escala 0-1000.</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="400,980,600,1000">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição de página poliglota (Hexapla) contendo hebraico, grego e latim.
+    A seção de notas (Notæ) contém duas colunas de texto denso intercaladas.
+    Alguns caracteres hebraicos podem apresentar variações tipográficas antigas.
+  </notas>
 </pagina>

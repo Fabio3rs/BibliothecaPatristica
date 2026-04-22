@@ -1,29 +1,40 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,80">
-    119                      HEXAPLORUM QUAE SUPERSUNT.                      120
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    419 HEXAPLORUM QUÆ SUPERSUNT. 120
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,90,320,700">
-    TO EBRAIKON.
-    (Hebrew column)
-    תה פשר 24
-    תל-עשׂה
-    רמוי 26
-    ירגל בעבדך 27
-    ומה-שׁי-לי עד צדק ולפיך 28
-    עד אל-רבנן
-    בשׁירי בחניך 32
-    36 פעמם
-    37 ישובא
-    טוב
-    וכל אשר-תבחר עלי 38
-    42 קרוב המלך אלי
-    נשאת
-    43 ואל-יהיה דברי ראשן לי
-    לחשיב אדנבלני
+  <bloco tipo="texto_principal" script="grego" bbox="100,70,900,100">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="340,90,660,700">
-    TO EBPAIKON
-    Ελληνικοῖς γράμμασι.
+  <bloco tipo="texto_principal" script="hebraico" bbox="80,110,400,450">
+    וַיֹּאמֶר 24
+    לֹא-עָשָׂה
+    רִמָּנִי 26
+    וַיֹּגֶל בְּעַבְדְּךָ 27
+    וְהִנֵּה-יִשְׂלִי עַד-צֶדֶק לְחֹק 28
+    עַד אֶל-הַמֶּלֶךְ
+    בְּשִׁבְתּוֹ בַּמַּחֲנָיִם 32
+    כִּמְעַט 36
+    אָשׁוּבָה 37
+    טוֹב
+    וְכֹל אֲשֶׁר-תִּבְחַר עָלַי 38
+    כִּי-קָרוֹב הַמֶּלֶךְ אֵלַי 42
+    נִשְׁאַתִּי
+    לֹא-הָיָה דְבָרִי רָאשׁוֹן לִי 43
+    לְהָשִׁיב אֶת-מַלְכִּי
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="420,110,550,450">
+    24.
+    26.
+    27
+    28.
+    32.
+    36.
+    37.
+    38.
+    42.
+    43.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="700,110,850,450">
     24.
     26.
     27.
@@ -35,8 +46,40 @@
     42.
     43.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,90,960,700">
-    AKVILAS.
+  <bloco tipo="texto_principal" script="latino" bbox="100,480,900,510">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,520,400,900">
+    24. Et Mephiboseth.
+    Et non fecerat.
+    26. Decepit me.
+    27. Et detraxit in servum tuum.
+    28. Et quid est mihi ultra justitia, et ad clamandum ultra ad regem?
+    32. In conversione ejus in Mananaim.
+    36. Quasi paululum.
+    37. Revertatur, obsecro.
+    Bonum.
+    38. Et omne quod elegeris super me.
+    42. Quia propinquus rex ad me.
+    Donativum.
+    43. Et non fuit verbum meum primum mihi ad reducendum regem meum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="420,520,650,900">
+    24. Miphiboseth quoque.
+    Intonsa barba.
+    26. Contempsit me.
+    27. Insuper et accusavit me servum tuum.
+    28. Quid ergo habeo justæ querelæ? aut quid possum ultra vociferari ad regem?
+    32. Cum moraretur in castris.
+    36. Paululum.
+    37. Sed obsecro ut revertar.
+    Bonum.
+    38. Omne quod petieris a me.
+    42. Quia mihi propior est rex.
+    Munera.
+    43. Et non mihi nuntiatum est priori, ut reducerem regem meum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,520,850,900">
     24.
     26.
     27.
@@ -48,31 +91,10 @@
     42.
     43.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,720,960,1800">
-    VERSIO HEBRAICI TEXT.               VULGATA LATINA.               AQUILA.
-    24. Et Miphiboseth.                 24. Miphihoseth quoque.        24.
-    Et non fecerat.                     Intonsa barba.
-    26. Decepit me.                     26. Contempsit me.            26.
-    27. Et detraxit in servum tuum.      27. Insuper et accusavit me    27.
-                                       servum tuum.
-    28. Et quid est mihi ultra justi-    28. Quid ergo habeo justae que-  28.
-    ta, et ad clamandum ultra ad re-     rela? aut quid possum ultra voci-
-    gem ?
-    32. In conversione ejus in Ma-      32. Cum moraretur in castris. 32.
-    hanaim.
-    36. Quasi paululum.                 36. Paululum.                 36.
-    37. Revertatur, obsecro.            37. Sed obsecro ut revertar.  37.
-    Bonum.                              Bonum.
-    38. Et omne quod elegeris super     38. Omne quod petieris a me.  38.
-    me.
-    42. Quia propinquus rex ad me.      42. Quia mihi propior est rex.42.
-    Donativum.                          Munera.
-    43. Et non fuit verbum meum         43. Et non mihi nuntiatum est  43.
-    primum mihi ad reducendum re-       priori, ut reducerem regem meum.
-    gem meum.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="760,1840,960,1950">
+  <bloco tipo="rodape" script="latino" bbox="550,950,850,990">
     Digitized by Google
   </bloco>
-  <notas>Scripts: hebraico column on left; Greek headings present; Latin main text in three parallel columns. Some Hebrew words partially faded; transcribed to best legibility. BBOX coordinates approximate on 0-1000 scale. I used [ilegivel] not necessary here.</notas>
+  <notas>
+    A página apresenta uma disposição em três colunas principais (Hexapla). A seção superior contém texto hebraico, transliteração grega (representada apenas por números nesta página) e a versão de Áquila (também apenas números). A seção inferior contém traduções latinas correspondentes. O texto hebraico apresenta variantes (ex: "וַיֹּגֶל" em vez de "וַיֹּאמֶר" no v.27, "יִשְׂלִי" no v.28).
+  </notas>
 </pagina>

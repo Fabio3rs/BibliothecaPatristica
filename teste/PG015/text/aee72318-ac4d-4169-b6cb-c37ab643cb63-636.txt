@@ -1,75 +1,141 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,90">
-    1263                        HEXAPLORUM QUIE SUPERSUNT.                         1264
+  <bloco tipo="cabecalho" script="latino" bbox="100,30,900,60">
+    1263 HEXAPLORUM QUÆ SUPERSUNT. 1264
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,90,960,470">
-    TO EBRAIKON.                      TO EBRAIKON.                      AKYΛAΣ.
-                               Ἑλληνικοὶ γράμμασι.
-      [Hebr.] ׳כג 23                       23.                             23.
-      [Hebr.] כו 25                       25.                             25.
-                                            
-    
-    VERSIO HEBRAICI TEXT.            VULGATA LATINA.                AQUILA.
-    Educ.                             Eluc.
-    23. Ne.                          23. Nolite.                    23.
-    Male faciat is.                  Facere n alum hocc.
-    
-    25. Et noluerunt.                25. Nolebant.                  25.
-    
-    Mane.                            Mane.
-    Nodae et variae lectiones ad cap. XIX Judicum.
-    V. 2.  Ἀλλλως, και ὑφότ̓ ον αὐτῷ. Basil. ad
-    marg. et Alex. in textu.
-    Ibid. 0, Θ., και ἐγένετο. Basil. Sic item Alex.
-    Ibid. Ἀλλως, τετάρτυτον. Basil. ad marg. et
-    Alex. in textu.
-    V. 3.  0, Θ., καταστάθην αὐτῷ. Basil. Sic etiam
-    Alex.
-    Ibid. Basil. ad marg., διαλλάξει αὐτῷ. Sic et
-    Alex. in textu.
-    Ibid. 0, Θ., το παιδάριον. Basil. Sic etiam Alex.
-    Ibid. Basil. ad marg., και πορευθῆντος οἴκων. Et
-    Alex. in textu.
-    Ibid. Ἀλλ., παρέβ η ελκ ἀπαντησει αὐτοῦ. Sic
-    Basil. et Alex.
-    Ibid. 0, Θ., ἐπήκουσαν. Basil. Sic etiam legitur
-    in Alex.
-    V. 5. V, 6., ἀπελθών. Basil. Et sic Alex. habet
-    in textu.
+  <bloco tipo="texto_principal" script="misto" bbox="100,70,900,110">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,470,960,830">
+  <bloco tipo="texto_principal" script="hebraico" bbox="200,110,400,190">
+    אל תעשו 23
+    ויאבו 25
+    ויקם
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="420,110,600,190">
+    23.
+    25.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,110,800,190">
+    23.
+    25.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,200,900,230">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,230,400,310">
+    Educ.
+    23. No.
+    Male faciatis.
+    25. Et noluerunt.
+    Mane.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="420,230,600,310">
+    Educ.
+    23. Nolite.
+    Facere malum hoc.
+    25. Nolebant.
+    Mane.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,230,800,310">
+    23.
+    25.
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="100,320,900,340">
+    Notæ et variæ lectiones ad cap. XIX Judicum.
+  </bloco>
+  <bloco tipo="nota" script="grego" bbox="100,340,550,590">
+    V. 2. Ἄλλως, καὶ ὠργίσθη αὐτῷ. Basil. ad marg. et Alex. in textu.
+    Ibid. Ο', Θ., καὶ ἐγένετο. Basil. Sic item Alex.
+    Ibid. Ἄλλως, τετράμηνον. Basil. ad marg. et Alex. in textu.
+    V. 3. Ο', Θ., κατόπισθεν αὐτς. Basil. Sic etiam Alex.
+    Ibid. Basil. ad marg., διαλλάξαι αὐτήν. Sic et Alex. in textu.
+    Ibid. Ο', Θ., τὸ παιδάριον. Basil. Sic etiam Alex.
+    Ibid. Basil. ad marg., καὶ ἐπορεύθη ἕως οἴκου. Et Alex. in textu.
+    Ibid. Ἄλλ., παρὴν εἰς ἀπάντησιν αὐτοῦ. Sic Basil. et Alex.
+    V. 4. Ο', Θ., ὅπωςαν. Basil. Sic etiam legitur in Alex.
+    V. 5. Ο', Θ., ἀπελθεῖν. Basil. Et sic Alex. habet in textu.
+  </bloco>
+  <bloco tipo="nota" script="grego" bbox="580,340,900,590">
+    Ibid. Ο', Θ., γαμβρόν. Basil. Sic etiam Alex. Lectio sequens hujus versus Ἄλλως et Θ., similiterque sequentes versus 6 et 7, quæ in Basil. habentur cum hac nota Ο', Θ., in Alexandrino etiam codice exstant, sed in textu, et sine nota interpretis ulla, quod semper intelligendum.
+    V. 8. Ἀ., κα νωθρεύητι. Σ., διάτριψον. Ita Coislin.
+    Ibid. Ἄλλ., στρατεύθητι etc. Sic Basil. et Alex. et Coislin.
+    Ibid. Ἄλλ., καὶ ἔφαγον καὶ ἔπιον οἱ δύο. Ἄλλ., ἀμφότεροι. Basil.
+    V. 9. Basil. ad marg., Ο' ἄλλως, ἀπελθεῖν. Et sic Alex. in textu.
+    Ibid. Ἄλλ., τὸ παιδάριον. Basil. et Alex.
+    Ibid. Ἄλλ., κίκλιον. Basil. et Alex.
+    Ibid. Ἄλλ., κατάλυσον. Basil. et Alex.
+    Ibid. Ο', Θ., καὶ ἀπελεύσῃ. Basil. et sic item Alex.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,600,650,630">
     CAPUT XX JUDICUM.
-    TO EBRAIKON.                      TO EBRAIKON.                       AKYΛAΣ.
-                                  Ἑλληνικοὶ γράμμασι.
-      [Hebr.] ו׳ 6                           6.                              6.
-      [Hebr.] טו 15                         15.                             15.
-    
-    VERSIO HEBRAICI TEXT.            VULGATA LATINA.                AQUILA.
-    6. Fecerunt abominationem et       6. Numquam tantum nef as et      6.
-    scedilitatem.                      tam grande piaculun factum est.
-    15. Viginti et sex.                15. Viginti quinque.            15.
-    
-    Notae et variae lectiones ad cap. XX Judicum.
-    V. 6.  Ἐπόησαν ζήμια. Jam supra vidimus Levit.
-    xviii., 17, vocem Hebraicam [Hebr.] a Symnacho
-    literis Graecis redditam. Theodotio item ζήμια
-    vertit Ezech. xvi, 28. Item incertus, Levit. xx, 14.
-    Codex Alexandrinus ἀφοσιώμενον habet : qui eam
-    Theodotionem sequ i solet; indicare videtur hanc
-    lectionem esse Theodotionis.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="100,630,900,660">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικος γράμμασι. ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="200,660,400,710">
+    ויעשו תועבה ונבלה 6
+    חמשה עשר 15
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="420,660,600,710">
+    6.
+    15.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,660,800,710">
+    6.
+    15.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,710,900,740">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,740,400,790">
+    6. Fecerunt abominationem et fœditatem.
+    15. Viginti et sex.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="420,740,600,790">
+    6. Numquam tantum nefas et tam grande piaculum factum est.
+    15. Viginti quinque.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,740,800,790">
+    6.
+    15.
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="100,800,900,820">
+    Notæ et variæ lectiones ad cap. XX Judicum.
+  </bloco>
+  <bloco tipo="nota" script="grego" bbox="100,820,550,880">
+    V. 6. Ἐποίησαν ζέμα. Jam supra vidimus Levit. XVIII, 17, vocem Hebraicam זמה a Symmacho litteris Græcis redditam. Theodotio item ζέμα vertit Ezech. XVI, 28. Item incertus, Levit. XX, 14.
+  </bloco>
+  <bloco tipo="nota" script="grego" bbox="580,820,900,880">
+    Codex Alexandrinus ἀφροσύνην habet : qui eam Theodotionem sequi soleat, indicare videtur hanc lectionem esse Theodotionis.
     V. 15. Mira lectionum varietas. Codex Alexandr.
-    
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,890,650,910">
     CAPUT XXI JUDICUM.
-    TO EBRAIKON.                      TO EBRAIKON.                      AKYΛAΣ.
-                                    Ἑλληνικοὶ γράμμασι.
-      [Hebr.] כב 22                          22.                             22.
-    
-    VERSIO HEBRAICI TEXT.            VULGATA LATINA.                AQUILA.
-    22. Juxta tempus delinquentis.     22. Et a vestra parte peccatum    22.
-                                      est.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="360,830,960,980">
-    Digitized by Google
+  <bloco tipo="texto_principal" script="misto" bbox="100,910,900,940">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
   </bloco>
-  <notas>Scripts presentes: latino, grego, hebraico (algumas siglas hebraicas inseridas). Algumas siglas hebraicas e caracteres diacríticos sono parzialmente illeggibili; ho mantenuto [Hebr.] dove il testo è ebraico non completamente decifrabile. Ho rispettato l'ordine colunar: sinistra prima poi destra combinando blocchi centrali.</notas>
+  <bloco tipo="texto_principal" script="hebraico" bbox="200,940,400,960">
+    כעת חטא 22
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="420,940,600,960">
+    22.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,940,800,960">
+    22.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,960,900,980">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,980,400,995">
+    22. Juxta tempus delinquetis.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="420,980,600,995">
+    22. Et a vestra parte peccatum est.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,980,800,995">
+    22.
+  </bloco>
+  <notas>
+    Transcrição de página da obra Hexaplorum quæ supersunt. Contém texto em Hebraico, Grego e Latino. As notas críticas (Notæ) estão dispostas em duas colunas abaixo de cada seção de texto bíblico.
+  </notas>
 </pagina>

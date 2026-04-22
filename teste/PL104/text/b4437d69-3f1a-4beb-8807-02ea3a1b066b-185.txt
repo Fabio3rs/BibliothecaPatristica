@@ -1,50 +1,52 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,70">
-361                              CUM LAURISSENSIBUS COLLATI. — MONITUM.                              362
+    361                              CUM LAURISSENSIBUS COLLATI. — MONITUM.                              362
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="120,70,880,170">
-Annales Laurissenses.
+  <bloco tipo="cabecalho" script="latino" bbox="220,80,780,160">
+    Annales Laurissenses.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="60,170,940,220">
-1, ex cod. bibl. Christinae reginae No. 617 membr. in 8o. fol.
+  <bloco tipo="nota" script="latino" bbox="40,145,900,215">
+    1, ex cod. bibl. Christinae reginae N:o 617. membr. in 8o. fol.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,220,880,440">
-fecerunt cum [ilegivel]
+  <bloco tipo="texto_principal" script="latino" bbox="225,205,620,405">
+fecerunt cum exercitu
 in saxonia ingressus est
-usque ad fluvium Albi
-per uenerunt ad locum
-qui dicitur Hlaum in
-quod tunc [ilegivel] zin
-[ilegivel] [ilegivel] [ilegivel] [ilegivel]
+usque ad fluuum malbū
+per uenit ad locum
+qui dicitur hluum in
+quo tunc [ilegivel]
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="60,440,940,520">
+  <bloco tipo="nota_marginal" script="latino" bbox="260,405,740,490">
+[ilegivel]
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="40,500,940,560">
 2, ex cod. bibl. palat. Vindobon. hist. eccl. N:o 90.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,520,920,600">
-maligna adorans[e] sacramentur lapidib. digne motie[leg] finu[ilegivel]
-ur · ] In thac uero dum magna p[ilegivel] secum ad langobardorum
+  <bloco tipo="texto_principal" script="latino" bbox="90,560,930,665">
+maligna adorans[e] sacramentur lapidib. digne motiefin. ur. In thac uero dum magna p[ilegivel] secum ad langobardorum.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="60,600,940,660">
-3, ex cod. bibl. palat. Vindobon. hist. prof. No. 989 fol. 12 b.
+  <bloco tipo="nota" script="latino" bbox="40,680,940,740">
+3, ex cod. bibl. palat. Vindobon. hist. prof. N:o 989. fol. 12 b.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,660,940,920">
-[parte superior do manuscrito pouco legível; linhas intermédias mais esbatidas]
-parti exilio danti S. [ilegivel] uilla celo
-brail sup dict? glorios? rex natal dni. &amp; 
-pascha similic. terminauit se numerus
+  <bloco tipo="texto_principal" script="latino" bbox="120,740,900,935">
+vna cui fortis ege. Et tunc tota saxonia
+subnigrare est. Curriano barthadi et orienta-
+lis francog[ilegivel] comit rege [ilegivel] &amp; sparueteran
+deprehensa et de auctores et parti more
+parti exilio danti S. [ilegivel] de uilla cele
+braui supdict[ilegivel] glori[ilegivel] rex natal dni. &amp;
+pascha similic: terminauit se numerus
 annorum 113.
+
 Turic dies Karoli recep[m]sit exercitu sui
-partib; brucanmg; vna cui musso suo au
+partib; brucamang; vna cum misso suo au
 dulso timescaluo. &amp; ibi multos brutones
-ex quibus fuit vna cui castellus &amp; firmitates
+ex quibus fuit vna cum castellus &amp; firmitates
 eq. loci palustris; seu circumscos. &amp; sic
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="0,920,1000,1000">
-PATROL. CIV.                                                          Digitized by Google
+  <bloco tipo="rodape" script="latino" bbox="0,940,1000,1000">
+PATROL. CIV.                                                          12
+Digitized by Google
   </bloco>
-  <notas>
-- Página com texto em latim (script: latino). Vários trechos manuscritos são bastante degradados/ilegíveis; usei a tag [ilegivel] por palavra quando a leitura é incerta.
-- Linhas com sinais e abreviações (abreviações notoriais medievais) foram transcritas conforme possível; em muitos casos a expansão das abreviações é incerta e não foi normalizada.
-- O bloco entre 660 e 920 contém escrita mais pálida/folio de cópia facsimilar; várias palavras e letras foram estimadas e marcadas como [ilegivel] quando necessário.
-  </notas>
+  <notas>Transcrição literal baseada na imagem. Priorizei a leitura direta do fac-símile sobre os rascunhos de OCR; não normalizei ortografia nem expandi abreviações. Usei [ilegivel] apenas quando a palavra inteira não pôde ser lida com segurança. As coordenadas bbox são estimadas em escala 0-1000 para largura/altura da página; todos os blocos foram marcados como script="latino".</notas>
 </pagina>

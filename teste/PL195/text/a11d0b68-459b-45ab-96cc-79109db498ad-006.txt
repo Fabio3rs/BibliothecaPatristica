@@ -1,14 +1,13 @@
-<pagina estado="com_texto">
-  <bloco tipo="texto_principal" script="latino" bbox="50,80,480,900">
-B
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="200,20,800,140">
 DICTIONNAIRE
-BAA
-
-BAA
-
-(Note: partie inférieure de la colonne — lecture partiellement illisible)
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,420,530,560">
+B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="40,140,480,880">
 [ilegivel] de l'ordinaire, et, de là, de nouveaux
-mais se produisent en masse. Il y a des nouveaux
+faits se produisent en masse. Il y a des nouveaux
 zélés pour la gloire du clergé; le matériel
 de propagation s'augmente; il en résulte plus de
 prise de l'opinion publique; des prêtres et des
@@ -20,7 +19,7 @@ lointain où l'on verra se produire, en grand,
 des événements [ilegivel] qui surprendront le monde.
 Les mêmes choses ont déjà eu lieu dans d'autres
 pays; elles se reproduisent avec des variantes;
-l'histoire de l'Eglise nous apprend ces faits.
+l'histoire de l'Église nous apprend ces faits.
 [ilegivel] 333 en 399 au sujet des conciles;
 le concile de Chalcédoine est cité;
 la question des indépendances des membres
@@ -30,16 +29,15 @@ Les passions, les intérêts particuliers, le goût
 du pouvoir donnent naissance à des dissensions.
 [ilegivel] et des réclamations dans les juridictions
 ecclésiastiques; par la séparation des âmes
-et des coeurs se forment de nouveaux partis.
+et des cœurs se forment de nouveaux partis.
 [ilegivel] de l'ordre et des autorités religieuses,
 qui ont du mal à imposer la paix. Ces causes
 sont si variées que l'on ne peut les rappeler en
 quelques mots; il est évident cependant que la
 manière de juger et la discipline sont souvent
 la cause immédiate d'une recrudescence d'hérésies.
-</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,80,950,900">
-B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,140,960,880">
 BASSA. Prophéties qui le concernent.
 BASSA. Prophéties qui le concernent. — Cet article
 [ilegivel] a trait à la nation de Bassas, à ses moeurs,
@@ -70,9 +68,9 @@ on y trouve des formules rituelles, des invocations
 La croyance en ces oracles a persisté chez quelques
 familles qui prétendent en conserver la tradition.
 (Notes et renvois aux manuscrits locaux.)
-</bloco>
-  <bloco tipo="rodape" script="latino" bbox="200,920,800,990">
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="200,880,800,990">
 307    Digitized by Google
-</bloco>
-  <notas>Page comportant deux colonnes imprimées; texte imprimé moderne en latin-script (français). De nombreuses portions sont partiellement illisibles sur le scan; mots marqués [ilegivel] indiquent passages impossibles à déterminer sans une image plus nette. Grand caractère "B" en haut de page = rubrique de lettre; aucune annotation marginale lisible identifiée.</notas>
+  </bloco>
+  <notas>Pagina impressa em duas colunas; script predominante: latino (francês). A imagem entregue está rodadA 180°; a transcrição foi feita considerando a leitura na orientação normal (texto legível). Usei [ilegivel] para palavras isoladas que se encontravam degradadas/ilegíveis. A letra capitular/grande "B" central foi extraída para um bloco tipo="nota_marginal" (identificações alfabéticas centrais A,B,C,D devem ocupar bloco próprio). As bboxes são aproximações em escala 0-1000: cabecalho (200,20,800,140); coluna esquerda (40,140,480,880); coluna direita (520,140,960,880); nota_marginal "B" (470,420,530,560); rodapé (200,880,800,990). Não foi identificado aparato crítico explícito nem notas marginais adicionais além da letra capitular; conservei quebras de parágrafo e sinais tal como aparecem visivelmente no documento.</notas>
 </pagina>

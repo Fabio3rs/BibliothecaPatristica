@@ -1,33 +1,43 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,110">
-    627                                   HEXAPLORUM QUAE SUPERSUNT.                                      6?s
-    9.  ὁμοίως τοῖς Θ', Th. ut LXX.
-    Ibid.  Σ., ἵνα δοθῶσιν etc. Drusius. Vaticanus habet τεθῶσιν.
-    Ibid.  'A., ἐπὶ σὲ καταλ- etc. Hasce trium lectiones ex Vaticano mutuamur.¶
-    Ibid. 'Αλλος, σὺ ἐγένου. 'Αλλος, σὺ ἔση. Drus.
-    Ibid. 'A., Θ., E', G', βοηθῶν. Vaticanus.
-    V. 15. Σ., ἐκζητηθήσεται etc. Symmachi lectio-
+  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,80">
+    627 HEXAPLORUM QUÆ SUPERSUNT. 628
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="300,110,700,170">
+  <bloco tipo="texto_principal" script="misto" bbox="100,85,900,140">
+    Θ. ομοιως τοις Ο', Th. ut LXX.
+    Ibid. Σ., ινα δωσωσιν etc. Drusius. Vaticanus habet τεθώσιν.
+    Ibid. Ἀ., επι σε καταλ- ετε. Hasce trium lectio-
+    nes ex Vaticano mutuamur.
+    Ibid. Ἄλλος, συ εγένου. Ἄλλος, συ εση. Drus.
+    Ibid. Ἀ., Θ., Ε', ζ', βοηθῶν. Vaticanus.
+    V. 15. Σ., εκζητηθήσεται etc. Symmachi lectio-
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="400,150,600,170">
     PSALMUS X.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,170,320,560">
-    TO EBPAIKON.
-    תּוֹ דָּוִד 1
-    נָסוּ דְרָכָם צָפֶת
-    כְּנוֹע עָל-יָתוֹר 2
-    לִירִחַת בְּמוּ-אֶכְל לְעַשְׁ-לָב,
-    כִּי תּֽשָׁוְתִי יִדְעוּם 3
-    צַדִּיק מִי-פָעָל
-    פִּיהוּ 4
-    עָצְמֵי בְטוֹחַ
-    5 יְהוּה יִצְדָּק יָגֶן וְשָׁפֵט
-    וְאָהַב חָסֶד שָׁנָה נַפְשׁוֹ
-    מָסָר עַל-רָשָׁעִים פִּתָּם 6.
+  <bloco tipo="texto_principal" script="grego" bbox="150,180,300,200">
+    ΤΟ ΕΒΡΑΙΚΟΝ.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="360,170,660,560">
+  <bloco tipo="texto_principal" script="grego" bbox="400,180,550,210">
     ΤΟ ΕΒΡΑΙΚΟΝ
     Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,180,850,200">
+    ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,210,350,480">
+    1 לַמְנַצֵּחַ לְדָוִד
+    נָדַד רִבְכֶם צְפוֹר
+    2 בְּיְהוָה חָסִיתִי אֵיךְ
+    תֹּאמְרוּ לְנַפְשִׁי נִדּוּ-לָב.
+    3 כִּי הִנֵּה הָרְשָׁעִים יִדְרְכוּן
+    יִתְרוּ
+    4
+    5 לַהֲרֹף בְּעֵקֶב יָשָׁר
+    אֹהֶל כּסוֹ נתַּץ נִשְׁבָּר
+    6 וְיוֹסֵד לֹא-יִצְמְצוּ בָסִים
+    לְעֵינֵי
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="380,210,450,480">
     1.
     2.
     3.
@@ -35,67 +45,69 @@
     5.
     6.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="680,170,980,560">
-    ΑΚΥΛΑΣ.
-    1. Τῷ νικοτοποιῷ τῷ Δαυίδ.
-    Ἀναστατοῦ εἰς τὰ ὄρη ὡς στρουθίον.
-    2. Ἦδρασαν βέλος αὐτῶν ἐπὶ τὴν νευράν.
-    3. Ὅτι οἱ ὀσμῖλοι καταβρεθῆ-
-    σονται.
-    Δίκαιος τί κατεργάσατο;
+  <bloco tipo="texto_principal" script="grego" bbox="600,210,900,480">
+    1. Τῷ νικητορίῳ τ Δαυίδ.
+    Ἀναστατοῦ εἰς τὰ ὄρη ὡς στρου-θίον.
+    2. Ἤδρασαν βέλος αὐτῶν ἐπὶ τὴν νευράν.
+    3. Ὅτι οἱ θεμέλιοι καθαρεθή-σονται.
+    Δίκαιος τί κατειργάσατο;
     4. Ὀραματίζονται.
     Τὰ βλέφαρα αὐτοῦ δοκιμάζει.
     5. Κύριος δίκαιον δοκιμάζει, καὶ ἀσεβῆ.
-    Καὶ ἀγαπῶντα ἀδίκῳ ἔμπισται ἡ ψυχή αὐτοῦ.
+    Καὶ ἀγαπῶντα δικα ἐμίσησεν ἡ ψυχὴ αὐτοῦ.
     6.
   </bloco>
-  <bloco tipo="outro" script="hebraico" bbox="40,560,320,680">
-    VERSION HEBRAICI TEXT.
+  <bloco tipo="cabecalho" script="latino" bbox="100,490,900,510">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="360,560,660,980">
-    VULGATA LATINA.
+  <bloco tipo="texto_principal" script="latino" bbox="100,515,350,930">
+    1. Victori ipsi David, Hieron., victori, psalmus David.
+    Transvola montem vestrum, passer. Hieron., transvola in montem ut avis.
+    2. Paraverunt sagittam suam super nervum. Hieron., posuerunt sagittam suam super nervum.
+    Ad sagittandum in ipsa caligine in rectos corde. Hieron., ut sagittent in abscondito rectos corde.
+    3. Quoniam fundamenta destruentur. Hieron., quia leges dissipatæ sunt.
+    Justus quid operatus est? Hieron., id.
+    4. Videbunt. Hieron., vident.
+    Palpebræ ejus probabunt. Hieron., palpebræ ejus probant.
+    5. Dominus justum probabit et impium. Hieron., Dominus justum probat : impium autem.
+    Et diligentem rapinam odio habuit anima ejus. Hieron., et diligentem iniquitatem odit anima ejus.
+    6. Pluet super impios laqueos. Hieron., pluet super peccatores laqueos.
+    Terrorum. Hieron., tempestatum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,515,650,930">
     1. In finem, psalmus David.
     Transmigra in montem sicut passer.
     2. Paraverunt sagittas suas in pharetra.
     Ut sagittent in obscuro rectos corde.
-    3. Quoniam quae perfecisti destruxerunt.
+    3. Quoniam quæ perfecisti destruxerunt.
     Justus autem quid fecit?
     4. Respiciunt.
-    Palpebrae ejus interrogant.
+    Palpebræ ejus interrogant.
     5. Dominus interrogat justum et impium.
     Qui autem diligit iniquitatem odit animam suam.
-    6. Pluct super peccatores laqueos.
+    6. Pluet super peccatores laqueos.
     Procellarum.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,680,980,980">
-    VERSIO HEBRAICI TEXT.
-    1. Victori ipsi David. Hieron., victori, psalmus David.
-    Transvola montem vestrum, passer. Hieron., transvola in montem ut avis.
-    2. Paraverunt sagittam suam super nervum. Hieron., posuerunt sagittam suam super nervum.
-    Ad sagittandum in ipsa caligine in rectos corde. Hieron., ut sagittent in abscondito rectos corde.
-    3. Quoniam fundamenta destruxerunt. Hieron., quia leges dissipatae sunt.
-    Justus quid operatus est? Hieron., id.
-    4. Videntur. Hieron., vident.
-    Palpebrae ejus probabant. Hieron., palpebrae ejus probant.
-    5. Dominus justum probabit et impium. Hieron., Dominus justum probat: impium autem.
-    Et diligenter rapinam odio habuit anima ejus. Hieron., et diligentem iniquitatem odit anima ejus.
-    6. Pluet super impios laqueos. Hieron., pluet super peccatores laqueos.
-    Terrorum. Hieron., tempesta-
-    tum.
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="680,680,980,980">
-    AQUILA.
+  <bloco tipo="texto_principal" script="latino" bbox="680,515,900,930">
     1. Victori ipsi David.
     Abscede in montes sicut passer.
     2. Firmaverunt sagittam suam super nervum.
-    3. Quoniam fundamenta dire-
-    entur.
+    3. Quoniam fundamenta diremtur.
     Justus quid operatus est?
     4. Vident.
-    Palpebrae ejus probant.
+    Palpebræ ejus probant.
     5. Dominus justum probat et impium.
     Et diligentem iniqua odit anima ejus.
     6.
   </bloco>
-  <notas>Scripts presentes: hebraico, greco e latino. Algumas linhas gregas no bloco central estão abreviadas; partes do hebraico apresentam ligaduras tradicionais. Usei [ilegivel] não foi necessário.</notas>
+  <bloco tipo="rodape" script="latino" bbox="500,960,800,990">
+    Digitized by Google
+  </bloco>
+  <notas>
+    A página apresenta uma edição poliglota do Salmo X (11 na numeração hebraica).
+    Coluna Hebraica: O texto apresenta variantes ortográficas ou erros de impressão visíveis (ex: "נָדַד רִבְכֶם" em vez do esperado "נִדּוּ לָכֶם"; "נִדּוּ-לָב" no final da linha 4). Transcrito literalmente conforme visível.
+    Coluna Grega (Aquila): Texto grego da tradução de Áquila.
+    Colunas Latinas Inferiores: Jerome (Versio Hebraici Text), Vulgata, e tradução Latina de Áquila.
+    Script misto: Hebraico, Grego, Latino.
+  </notas>
 </pagina>

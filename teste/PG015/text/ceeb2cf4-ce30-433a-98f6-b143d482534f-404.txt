@@ -1,36 +1,64 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,90">
-    PECCAPLORGII QVÆ SUPERSVNT. 805 806
+  <bloco tipo="cabecalho" script="misto" bbox="50,40,950,80">
+    805 HEXAPLORUM QUÆ SUPERSUNT. 806
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="30,90,970,860">
-    TO ΕΒΡΑΙΚΟΝ.            ΤΟ ΕΒΡΑΙΚΟΝ           ΑΚΥΛΑΣ.
-    Ελληνικαῖς γράμμασι.
-    (coluna esquerda - hebraico/latim)
-    14.    14.
-    16.    16.
-    18.    18.
-    19    19.
-    23.   23.
-    25.   25.
-    27.   27.
-    30.   30.
-    34.   34.
-    
-    VERSIO IEBRAICI TEXT.
+  <bloco tipo="texto_principal" script="misto" bbox="150,90,850,130">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,130,300,300">
+    ון 14
+    קרמ 16
+    רעדא 18
+    ומן וכר 19
+    מיתכת עח 23
+    רפכמ
+    לא 25
+    הצעא 27
+    ב 30
+    םדח 34
+    דיש
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,130,500,300">
+    14.
+    16.
+    18
+    19
+    23.
+    25.
+    27.
+    30.
+    34.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="700,130,850,300">
+    14. Ἐτελειώθη.
+    16. Ἀπὸ ἐγχώτου.
+    18.
+    19.
+    23. Ἄζα Χαφθωρείμ.
+    Χαφθώρ.
+    25. Ἄρξαι.
+    27.
+    30.
+    34. Καὶ ἀναθεματίσαμεν.
+    Λείμμα.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,310,850,330">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,330,300,500">
     14. Consumeretur.
     16. Ab interiori.
     18. Har.
     19. Et accedes e regione.
-    23. Ilaza,? Caphtorim.
-    De Caphtor.
+    23. Haza, Capthorim.
+    De Caphthor.
     25. Incipiam
     27. Transibo.
     30. In eo.
     34. Et anathematizavimus.
-    Superstitum.
-    
-    (coluna central - Vulgata Latina)
-    VULGATA LATINA.
+    Superstitiem.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,330,600,500">
     14. Consumeretur.
     16. Vacat.
     18. Urbem nomine Ar.
@@ -40,74 +68,103 @@
     25. Incipiam.
     27. Transibimus.
     30. Vacat.
-    34. Interfecit habitatoribus.
+    34. Interfectis habitatoribus.
     Quidquam.
-    
-    (coluna direita - Aquila / Grego)
-    AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,330,850,500">
     14. Consumeretur.
     16. Ab interiori.
     18.
     19.
-    23. ̓Ασ Καπθορίμ.
-    Χαβωρ.
-    25. Ἀρξαι.
-    27.
+    23. Aza Chapthorim.
+    Chaphthor.
+    25. Incipe.
+    27
     30.
-    34. Και ἀνεθεματισαμεν.
-    Λειψα.
-    
-    Notæ et variae lectiones ad cap. II Deuteronomii.
-    V. 4. τπτ. Coisl. in ad marg., ϙ, τριγυρ́ος; 'A., ϙριγυος.
-    V. 6. πωωμ. Id., ϙ, ἀγοράσηται; in marg., 'A., αφγριρου.
-    V. 7. παπ. Id., ϙ, μεγάλων; marg., πολλῶν.
-    V. 8. Vide cap. præcedenti v. 1 et 7.
-    Ibid. 'Αλλος, βορυ. Ex Basilicensi.
-    V. 13. 'Αλλος, ἀνάληψι. Ex codem. — vgs. Ceislini., ϙ, φόραγα; marg., χειρόφρων. Videtur esse Aquilæ ut supra.
-    
-    CAPCT III DEUTERONOMII.
-    TO ΕΒΡΑΙΚΟΝ.           ΤΟ ΕΒΡΑΙΚΟΝ           ΑΚΥΛΑΣ.
-    Ελληνικαῖς γράμμασι.
-    (segunda seção hebraico/latim)
-    3    3
-    4    4
-    5    5
-    6    6
-    7    7
-    
-    VERSIO IEBRAICI TEXT.
-    3. Et percussimus cum
-    Superstitem.
+    34. Et anathematizavimus.
+    Residuum.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="100,510,900,590">
+    Notæ et variæ lectiones ad cap. II Deuteronomii.
+    V. 4. ויין. Coislin. ad marg., Ο', τριχωτός. Ἀ., τριχούς.
+    V. 6. דמשק. Id., Ο', ἀγοράσατε; in marg., Ἀ., ἀργυρίου.
+    V. 7. גדול. Id., Ο', μεγάλην; marg., πολλήν.
+    V. 8. Vide cap. præcedenti v. 1 et 7. Ibid. Ἄλλος, δρυς. Ex Basiliensi.
+    V. 13. Ἄλλος, ἀνάβητε. Ex eodem. — כן. Coislin., Ο', φάραγγα; marg., χειμάῤον. Videtur esse Aquilæ ut supra.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,600,650,620">
+    CAPUT III DEUTERONOMII.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="150,630,850,670">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικος γράμμασι. ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,670,300,800">
+    ונתנ 3
+    דיש
+    בלח 4
+    ברא
+    מלסמ
+    חצנ 5
+    דיזח
+    םדח 6
+    בתנ 7
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,670,500,800">
+    3
+    4.
+    5
+    6.
+    7.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="700,670,850,800">
+    3. Ἀνεθεματίσαμεν αὐτὸν
+    Λείμμα.
+    4. Σχοινίσματα.
+    5. Διηρμέναι.
+    Ἀτειχίστων.
+    6. Ἀνεθεματίσαμεν.
+    7. Διηρπάσαμεν.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,810,850,830">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,830,300,950">
+    3. Et percussimus eum
+    Superstitiem.
     4. Funem.
     Argob.
     Regni.
     5. Munitæ.
     Non muratis.
-    6. Et decolavimus.
-    7. Predati sumus.
-    
-    VULGATA LATINA.
+    6. Et desolavimus.
+    7 Prædati sumus.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,830,600,950">
     3. Percussimusque eos.
-    Interfectionem.
+    Internecionem
     4. Regione
     Argob.
     Regni.
-    5. 3. Munitæ.
-    Quae non habebant muros.
+    5. Munitæ.
+    Quæ non habebant muros.
     6. Delevimus.
     7. Disperdentes.
-    
-    AQUILA.
-    3. Exterminavimus eam.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,830,850,950">
+    3. Exterminavimus eum.
     Residuum.
     4. Funiculos.
-    5. Elevatæ, vel, clausa.
-    Non muratis.
+    5. Elevatæ, vel, elatæ.
+    Non muralis.
     6. Anathematizavimus.
-    7. Predati sumus.
+    7. Prædati sumus.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="280,860,740,980">
+  <bloco tipo="rodape" script="latino" bbox="550,960,750,990">
     Digitized by Google
   </bloco>
-  <notas>Script principal é misto: colunas contêm hebraico (hebraico impresso), grego (polytonic) e latim. BBOXs aproximados em escala 0-1000; transcrição preserva linhas de colunas e indicação de áreas colaterais. Alguns vocábulos gregos com diacríticos representados conforme leitura; palavras ilegíveis não foram marcadas explicitamente.</notas>
+  <notas>
+    Transcrição de página poliglota (Hebraico, Grego, Latim) contendo comparações textuais da Hexapla (Deuteronômio).
+    Alguns caracteres hebraicos podem apresentar variações tipográficas antigas.
+    A seção de notas ("Notæ") contém abreviações críticas (Coislin., marg., etc.).
+  </notas>
 </pagina>

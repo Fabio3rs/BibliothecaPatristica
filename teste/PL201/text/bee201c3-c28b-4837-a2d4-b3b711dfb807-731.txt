@@ -1,25 +1,30 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="120,950,880,995">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="120,960,880,995">
     PETRI CLEMENTIS
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,120,500,940">
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+  <bloco tipo="nota" script="latino" bbox="460,930,520,960">
+    2
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,120,960,940">
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+  <bloco tipo="texto_principal" script="latino" bbox="40,120,500,920">
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,120,960,920">
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
   </bloco>
   <bloco tipo="rodape" script="latino" bbox="720,985,980,999">
     Digitized by Google
   </bloco>
-  <notas>Pagina impressa em latino; imagem apresentada invertida/rotacionada (texto visivelmente em 180°). Dois colunas de texto principais (transcritas como blocos esquerdo e direito). Devido à rotação, à resolução e à presença de tinta densa, a transcrição literal de cada palavra não pôde ser realizada aqui — foram inseridos marcadores [ilegivel] por palavra onde o conteúdo exato não pôde ser recuperado com segurança. Cabeçalho e rodapé identificados e preservados.</notas>
+  <notas>
+    Página de texto em duas colunas. Script principal: latino. A página está rotacionada 180° na imagem original; o cabeçalho "PETRI CLEMENTIS" e o rodapé "Digitized by Google" foram confirmados visualmente. As bboxes são aproximações relativas à página em escala 0-1000 e foram atribuídas assim: cabeçalho (120,960–880,995), nota de página (460,930–520,960), coluna esquerda (40,120–500,920), coluna direita (500,120–960,920), rodapé (720,985–980,999). Transcrição priorizou a leitura direta da imagem; onde o conteúdo não pôde ser identificado com segurança foi marcado por [ilegivel] por palavra. Não foram detectadas letras marginais identificadas como A, B, C ou D. Nenhum aparato crítico legível identificado.
+  </notas>
 </pagina>

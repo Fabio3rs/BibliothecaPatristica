@@ -1,33 +1,30 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,90">
-    1507                HEXAPLORUM QUÆ SUPERSUNT.                 1508
-    TO EBPAIKON.            ΤΟ ΕΒΡΑΙΚΟΝ            ΑΚΥΛΑΣ.
+  <bloco tipo="cabecalho" script="latino" bbox="100,30,900,60">
+    1307 HEXAPLORUM QUÆ SUPERSUNT. 1308
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,90,330,420">
-    [Hebrew text column]
-    בּנימין בׇשּׂ
-    .  והי נשׂא אביו אדניאל שׂמו.
-    רחב לכם לחם מה אעשה לבני
-    ... 
-    (lines of Hebrew short entries and numbers corresponding to left column)
+  <bloco tipo="texto_principal" script="misto" bbox="150,60,850,100">
+    TO EBPAIKON. TO EBPAIKON ΑΚΥΛΑΣ.
+    בִּנְיָמִי בְּצֶלְצַח 2 2. Ἑλληνικος γράμμασι. 2.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="340,90,660,420">
-    TU EBPAIKON
-    Ελληνικός γράμματι.
-    2.
-    3.    3.
-    4.    4.
-    5.    5.
-    9.    9.
-    10.   10.
-    11.   11.
-    12.   12.
-    14.   14. Πατροβέλερος
-    17.   17.
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,130,350,500">
+    הִנֵּה נֶשֶׁק אָבִיךָ אֶת־דִּבְרֵי הָאֲתֹנוֹת .
+    וְאָנֹכִי לא לְבַקּשׁ מָה אַעֲשֶׂה לְבָנִי
+
+    עַד־אֵלוֹן תָּבוֹר 3
+    בְּרִיּוֹת
+    נֵבֶל
+    שְׁתֵּי לֶחֶם 4
+    גִּבְעַת הָאֱלֹהִים 5
+    חֶבֶל
+    כִּשְׂפְתֵיכם שְׁכֶם 9
+
+    הַגִּבְעָתָה 10
+    הִנֵּה שָׁאוּל 11
+    לְמָשָׁל 12
+    דּוֹד 14
+    וַיִּצְעַק שְׁמוּאֵל אֶת־הָעָם 17
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,90,970,420">
-    AKYLAS.
-    2.
+  <bloco tipo="texto_principal" script="latino" bbox="380,230,450,500">
     3.
     4.
     5.
@@ -38,36 +35,78 @@
     14.
     17.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,430,970,820">
-    VERSIO HEBRAICI TEXT.           VULGATA LATINA.           AQUILA.
-    2. Biniamin in Selsah.         2. Benjamin in meridie.      2.
-    
-    Et exce dimisit pater tuus verba    Et intermisus pater tuus asinis,
-    fatiarum, et sollicitus est vobis,    sollicitus est pro vobis, et dicit :
-    dicendo : Quid faciam fillo meo ?     Quid faciam de filio meo ?
-    
-    3. Usque ad Elon Thabor.         3. Ad quercam Thabor.       3.
-    
-    Hodos.                           Iliaios.                   Tortas.
-    Tortas.                          Tortas.                   Amphoras.
-    Utrem.                           Lagenam.
-    4. Duos panes.                   4. Duos panes.             4. Duos panes.
-    5. Collem Dei.                   5. Collem Dei.             5.
-    Funiculus.                       Gregem.
-    9. In vertendo humerum suum.      9. Cum avertisset humerum     9.
-                                     suum.
-    
-    10. Ad collem.                    10. Ad praedictum collem.   10.
-    
-    11. Num etiam Saul ?              11. Num et Saul ?           11.
-    12. In parabolam.                 12. In proverbium.          12.
-    
-    14. Patruus.                      14. Patruus.               14. Patruus.
-    17. Et accivit Samuel populum.    17. Et convocavit Samuel po- 17.
-                                     pulum.
+  <bloco tipo="texto_principal" script="grego" bbox="600,230,850,500">
+    3.
+    Πέρικαρπα.
+    Ἀμφορία.
+    4. Δύο ἄρτους.
+    5.
+    9.
+    10.
+    11.
+    12.
+    14. Πατράδελφος
+    17.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,820,970,980">
+  <bloco tipo="cabecalho" script="latino" bbox="100,520,850,550">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,550,650,620">
+    2. Biniamin in Selsah. 2. Benjamin in meridie. 2.
+    Et ecce dimisit pater tuus verba Et intermissis pater tuus asinis,
+    asinarum, et sollicitus est vobis, sollicitus est pro vobis, et dicit :
+    dicendo : Quid faciam filio meo ? Quid faciam de filio meo ?
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,660,350,920">
+    3. Usque ad Elon Thabor.
+    Hodos.
+    Tortas.
+    Utrem.
+    4. Duos panes.
+    5. Collem Dei.
+    Funiculo.
+    9. In vertendo humerum suum.
+    10. Ad collem.
+    11. Num etiam Saul ?
+    12. In parabolam.
+    14. Patruus.
+    17. Et accivit Samuel populum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,660,650,940">
+    3. Ad quercum Thabor.
+    Hodos.
+    Tortas.
+    Lagenam.
+    4. Duos panes.
+    5. Collem Dei.
+    Gregem.
+    9. Cum avertisset humerum
+    suum.
+    10. Ad prædictum collem.
+    11. Num et Saul ?
+    12. In proverbium.
+    14. Patruus.
+    17. Et convocavit Samuel po-
+    pulum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="600,660,850,920">
+    3.
+    Tortas.
+    Amphoram.
+    4. Duos panes.
+    5.
+    9.
+    10.
+    11.
+    12.
+    14. Patruus.
+    17.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="550,950,800,980">
     Digitized by Google
   </bloco>
-  <notas>Page contains mixed scripts: Hebrew column at left (transcribed only indicatively where small type makes full literal transcription difficult). All visible blocks mapped; some Hebrew lines abbreviated with placeholder "[Hebrew text column]" where characters are densely printed and indistinct at image resolution. Numbers and Latin/Greek transcriptions rendered literally. No margins notes distinctly visible.</notas>
+  <notas>
+    Documento apresenta texto em colunas comparativas (Hexapla). Scripts: Hebraico, Grego, Latino.
+    Transcrição do hebraico baseada na visualização: בְּרִיּוֹת (linha 4 col 1), נֵבֶל (linha 5 col 1), חֶבֶל (linha 8 col 1).
+  </notas>
 </pagina>

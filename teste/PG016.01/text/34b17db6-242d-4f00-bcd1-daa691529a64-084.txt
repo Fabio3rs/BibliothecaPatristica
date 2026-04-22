@@ -1,27 +1,64 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,110">
-    HEXAPLORUM QUÆ SUPERSUNT.
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,60">
+    155 HEXAPLORUM QUÆ SUPERSUNT. 156
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,110,970,190">
+  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,110">
+    tein mensura Palæstinæ, quæ LXX sextarios capit et quatuor choas, ut Josephus ait. Corus autem est modiorum triginta, ita ut sint artabæ decem. Sic nota. Lectiones autem μεχίρ, item βαθ et
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="520,60,950,110">
+    βάτον vitiatæ videntur, nec ad Hebræum, quaorant. Μαλχὰλ autem ponitur pro μαχχλά, מַחְלָה. Hujus porro versus lectiones pleniores affert Coislin. 2, ut nos exhibemus.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,120,650,145">
     CAPUT VI LIB. III REGUM.
   </bloco>
-  <bloco tipo="texto_principal" script="mist o" bbox="30,190,960,360">
-    TO EBPAIKON.               TO EBPAIKON              AKYAAE.
-    . . .                      Ἑλληνικοὶς γράμμασι.      . .
-    [עברית] 1                 1. βασεψμειμ.             1. Ὀγδοηκοστῷ.
-    [עברית] 2                 2.                       2.
-    [עברית] 3                 3.                       3.
-    [עברית] 4                 4.                       4. θωρίδας ἀποδεπτούσας βεβι-
-    [עברית] 5                 5.                       σμένας.
-    [עברית] 6                 6.                       5.
-    [עברית] 9                 9.                       Καὶ χρηματιστηρίου.
-    [עברית] 10                10.                      9. Καὶ ὀρόφωσει.
-                              .                        10. Καὶ ἐχώσθημε τὸ στρώμα
-                                                       ἐπὶ πάντα τὸν οἶκον πέντε πήχων
-                                                       ἀνάσκεψα αὐτοῦ.
+  <bloco tipo="texto_principal" script="grego" bbox="50,150,250,170">
+    TO ΕΒΡΑΙΚΟΝ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,360,320,640">
+  <bloco tipo="texto_principal" script="grego" bbox="350,150,650,170">
+    TO ΕΒΡΑΙΚΟΝ. Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,150,950,170">
+    ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,175,250,300">
+    1 שְׁנֵים עָשָׂר
+    2 שִׁשִּׁים
+    3 הָאֱלֹם
+    4 הַחֹלֶן שְׁקוּפִים אֲטוּמִים
+    5 יָצוּעַ
+    6 לַדִּיר
+    7 וַיִּסְעַ
+    9 10 וְאֶת־הַיְצִיעַ עַל־כָּל־בֵּית
+    שֵׂבֶת עוֹצִים כּוֹכְבִים
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="350,175,650,300">
+    1. βασεμονειμ.
+    2.
+    3.
+    4.
+    5.
+    9.
+    10.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,175,950,300">
+    1. Ὀγδοηκοστῷ.
+    2.
+    3.
+    4. Θυρίδας ἀποβλεπούσας βιβυσμένας.
+    5.
+    9. Καὶ ὄρόωσεν.
+    10. Καὶ ᾠκοδόμησε τὸ στρῶμα ἐπὶ πάντα τὸν οἶκον πέντε πηχῶν ἀνάστημα αὐτοῦ.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,310,250,330">
     VERSIO HEBRAICI TEXT.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,310,650,330">
+    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,310,950,330">
+    AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,335,250,450">
     1. Octogesimo.
     2. Sexaginta.
     3. Et porticus.
@@ -29,10 +66,9 @@
     5. Thalamum.
     Et ad oraculum.
     9. Et texit.
-    10. Et ædificavit thalamum super omnem domum, quinque cubitorum altitudò ejus.
+    10. Et ædificavit thalamum super omni domo, quinque cubitorum altitudo ejus.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,360,650,640">
-    VULGATA LATINA.
+  <bloco tipo="texto_principal" script="latino" bbox="350,335,650,450">
     1. Octogesimo.
     2. Sexaginta.
     3. Et porticus.
@@ -42,39 +78,48 @@
     9. Et texit.
     10. Et ædificavit tabulatum super omnem domum, quinque cubitis altitudinis.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,360,960,640">
-    AQUILA.
+  <bloco tipo="texto_principal" script="latino" bbox="750,335,950,450">
     1. Octogesimo.
     2.
     3.
-    4. Fenestras ad prospectum obturatas.
+    4. Fenestras ad prospectum obturtas.
     5.
     Et oraculi.
     9. Et texit.
     10. Et ædificavit tabulatum super totam domum, quinque cubitorum altitudo ejus.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,640,320,980">
-    [linha hebraica] 11-14: ויהי דבר־יהוה אל־שׁלמוהו לֶאמֹר׃ ...
-    [segue texto hebraico em várias linhas, parcialmente ilegível em pontos, mantendo palavras separadas:]
-    ... על־שׁלמה דבר־יהוה לאמור בית־זה אשר־תּבנה לי היה־לשׁם־לעולם׃ ...
-    [mais linhas hebraicas até 20]
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,460,480,530">
+    11-14 ויהי דבר־יהוה אל־שלמה לאמר : הבית הזה אשר אתה בנה אם־תלך בחקתי ואת־משפטי תעשה ושמרת את־כל־מצותי ללכת בהם והקמתי את־דברי אתך אשר דברתי אל־דוד אביך : ושכנתי בתוך בני ישראל ולא אעזב את־עמי ישראל :
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="330,640,650,980">
-    11-14. Ἑβρ. Et fuit verbum Domini ad Salomonem dicendo: Domus ista, quam tu ædificas, si ambu-
-    laveris in decretis meis, et judicia mea feceris, et custodieris omnia prœcepta mea, ambulando in
-    eis, et statuam verbum meum tecum, quod locutus sum ad David patrem tuum: et habitabo in
-    ἐποίησεν ἐκ τοῦ Δαβιδ εἰς τὸν ἅγιον τῶν ἁγίων. Θ.
-    Καὶ ἐποίησεν αὐτῷ ἐσωθεν τοῦ Δαβὶδ εἰς τὰ ἅγια τῶν ἁγίων.
-    16. H. Et ædificavit sibi intra oraculum in san-
-    17-20. H. Et quadraginta in cubito erat domus ipsa, templum ad facies ejus. El cedrus ad domum
-    intrinsecus: sculptura instar funde coloniarium, et apertiones florum: omnia cedrus, nec lapis ap-
-    parebat. Et oraculum in medio domus intrinsecus parare fecit ad dandun ibi arcam scederis Domini.
+  <bloco tipo="texto_principal" script="grego" bbox="520,460,950,530">
+    ἐλάλησα. πρὸς Δαυΐδ τν πατέρα σου. Καὶ κατασκηνώσω ἐν μέσῳ υἱῶν σραήλ, κα οὐκ ἐγκαταλείψω τὸν λαόν μου Ἰσραήλ. Καὶ ᾠκοδόμησε Σαλωμὼν τὸν οἶκον, καὶ συνετέλεσεν αὐτόν.
   </bloco>
-  <bloco tipo="nota_marginal" script="hebraico" bbox="30,980,480,1000">
-    [notas hebraicas e abreviações marginais; linhas pequenas legíveis parcialmente]
+  <bloco tipo="texto_principal" script="grego" bbox="50,535,480,630">
+    Ἄλλοι, καὶ ἐγένετο λόγος Κυρίου πρὸς Σαλωμὼν λέγων· Ὁ οἶκος οὗτος, ν σὺ οἰκοδομεῖς, ἐὰν ὁδεύῃς τοῖς προστάγμασί μου, καὶ τὰ κρίματά μου ποιῇς, καὶ φυλάσσῃς πάσας τὰς ἐντολάς μου, ἀναστρέφεσθαι ἐν αὐταῖς, στήσω τὸν λόγον μου ἐν
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="480,980,960,1000">
+  <bloco tipo="texto_principal" script="latino" bbox="520,535,950,630">
+    11-14. Hebr. Et fuit verbum Domini ad Salomone dicendo : Domus ista, quam tu ædificas, si ambulaveris in decretis meis, et judicia mea feceris, et custodieris omnia præcepta mea, ambulando in eis, et statuam verbum meum tecum, quod locutus sum ad David patrem tuum : et habitabo in
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,635,480,950">
+    15 A. Σ. Θ. Ἕως τοῦ οκου. Ο'. Ἕως τῶν δοκῶν.
+    16 A. Καὶ ᾠκοδόμησεν αὐτ ἔσωθεν το χρηματιστηρίου γιασμένου τν ἡγιασμένων. Σ. Καὶ ᾠκοδόμησεν αὐτῷ ἑσώτερον τοῦ χρηματιστηρίου, εἰς γιον ἁγίων. Ο'. Καὶ : וְאֶת־עֶשְׂרִים אַמָּה מִכְתְּפוֹת הַבַּיִת וְעָשָׂה אֶת־הַדְּבִיר מִלִּפְנִים לְקֹדֶשׁ הַקֳּדָשִׁים :
+    20-17 וְאַרְבָּעִים אַמָּה הָיָה הַבַּיִת הוּא הַהֵיכָל לִפְנֵי : וְצִפָּה אֶת־הַבַּיִת פְּנִימָה זָהָב סָגוּר וַיְעַבֵּר אֶת־הַמִּזְבֵּחַ אֶרֶז וְהוּא מֵצֶף אֶת־הַבַּיִת מִפְּנִימָה בְּרוֹשִׁים וּבְתוֹךְ הַבַּיִת עָשָׂה את־הַדְּבִיר לְתִת שָׁם אֶת־אֲרוֹן בְּרִית יְהוָה : וְלִפְנֵי הַדְּבִיר אַמָּה עֶשְׂרִים אֹרֶךְ וְעֶשְׂרִים אַמָּה רֹחַב וְעֶשְׂרִים אַמָּה קוֹמָתוֹ וַיְצַפֵּהוּ זָהָב סָגוּר וַיְצַף מִזְבֵּחַ אָרֶז :
+    A. Θ. Καὶ τεσσαράκοντα πηχῶν ἦν ὁ οἶκος, αὐτὸς ὁ ναὸς τῇ ἐσχόλῃ. Κα κέδρος πρς τὸν οκον ἔνδον, διατετορευμένα ξυστρωτὰ καὶ περίγλυφα ἐκπίπτοντα, τὰ πάντα κέδρος, οὐκ ἦν λίθος βλεπόμενος. Καὶ χρηματιστήριον ἐν μέσῳ το οἴκου νδοθεν ἡτοίμασε, τοῦ δοναι ἐκεῖ γλωσσόκομον συνθήκης Κυρίου. Καὶ εἰς πρόσωπον τοῦ χρηματιστηρίου εἰ-
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="520,635,950,950">
+    15. Θ. Ἕως τοῦ οκου. Ο'. Ἕως τῶν δοκῶν.
+    16. H. Et ædificavit sibi intra oraculum in sancto sanctorum.
+    17-20. H. Et quadraginta in cubito erat domus ipsa, templum ad facies ejus. Et cedrus ad domum intrinsecus : sculptura instar fundæ colocyntarum, et apertiones florum : omnia cedrus, nec lapis apparebat. Et oraculum in medio domus intrinsecus parare fecit ad dandum ibi arcam fœderis Domini. Et faciebus ipsius oraculi viginti cubitorum longitudo, et viginti cubitorum latitudo, et viginti cubitorum statura ejus. Et operuit illud auro concluso. A. Th. Et quadraginta cubitorum erat domus : ipsum templum in otii abundantia. Et cedrus ad domum intus, tornata complanata, et circumsculpta excidentia, omnia cedrus : non erat lapis qui vide-
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="500,960,800,990">
     Digitized by Google
   </bloco>
-  <notas>Scripts na página: latim maioritariamente, colunas com hebraico (direita-esquerda) e grego. Hebraico no corpo e em notas marginales; algumas palavras ilegíveis foram marcadas como [linha hebraica] ou indicadas como parcialmente ilegível. Mantive a ordem: col. esquerda (Lat./Hebraico versão) depois col. central e direita (Latina/Vulgata e Aquila/Grego). Onde o hebraico completo não pôde ser transcrito com segurança, resumi indicando presença e início de verso, sem normalizar.</notas>
+  <notas>
+    A página apresenta uma estrutura complexa de colunas comparativas (Hexapla).
+    - Topo: Introdução em Latim.
+    - Meio: Tabela comparativa com Hebraico, Transliteração Grega e Versão de Áquila (Grego), seguida de versões em Latim (Versio Hebraici Text, Vulgata, Áquila Latim).
+    - Fundo: Duas colunas principais de texto contendo comentários e variantes textuais (Hebraico, Grego, Latim) para os versículos 11-20 de 3 Reis (1 Reis 6).
+    - A transcrição do Hebraico foi feita com base nos caracteres visíveis, incluindo vogais e acentos onde perceptíveis.
+    - Abreviações como "H." (Hebræus), "A." (Aquila), "Θ." (Theodotio), "Σ." (Symmachus), "Ο'" (Quinta) foram mantidas.
+  </notas>
 </pagina>

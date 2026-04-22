@@ -1,70 +1,153 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,90">
-    547                         HEXAPLORUM QUAE SUPERSUNT.                          548
-    TO EBRAICON.                      TO EBRAICON                      AKYLAS.
-                                      Ελληνικαὶ γράμμασι
+  <bloco tipo="cabecalho" script="latino" bbox="120,40,200,60">
+    547
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="80,100,460,760">
-    1. עוֹשִׂים
-    2. עַל־הַשּׁוּב
-    3. עַל־הַשּׁוּב
-    9. הַפְּסָלִים
-    10. הַמַּחֲרִים
-    11. בְּלִיעָל
-    13. גְּוִיּוֹת דָּם
-    14. הָקָל
-    [ilegivel]
-    [ilegivel]
-    17. את פּני
+  <bloco tipo="cabecalho" script="latino" bbox="400,30,680,50">
+    HEXAPLORUM QUÆ SUPERSUNT.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="880,30,920,50">
+    548
+  </bloco>
+
+  [!-- Top Section Headers --]
+  <bloco tipo="texto_principal" script="grego" bbox="200,60,350,80">
+    TO ΕΒΡΑΙΚΟΝ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="420,60,600,90">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικος γράμμασι
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,60,850,80">
+    ΑΚΥΛΑΣ.
+  </bloco>
+
+  [!-- Top Section Content --]
+  [!-- Left Column: Hebrew --]
+  <bloco tipo="texto_principal" script="hebraico" bbox="250,90,400,540">
+    החטאת 8
+    וּמִן
+    על קרב
+    על קרב
+    השלמים 9
+    השלמים 10
+    על־ירכיו 11
+    ונעלם 13
+    הקהל 14
+    והביאו
+    את פני 17
     18
-    [ilegivel]
-    [ilegivel]
-    20. לּב
-    [ilegivel]
-    21. ויקרל
-    22. בשוגג
+    אל־יסוד
+    העלה
+    לו־ 20
+    והובאת
+    הקהל 21
+    בשגגה 22
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="480,100,940,760">
+
+  [!-- Middle Column: Numbers --]
+  <bloco tipo="texto_principal" script="latino" bbox="420,90,500,540">
     8.
-    9.
     9.
     10.
     11.
-    11.
     13.
-    14.
     14.
     17.
     18.
     20.
     21.
-    22. Εν αγνοια.
+    22.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,760,960,1500">
-    VERSIO HEBRAICI TEXT.                VULGATA LATINA.                 AQUILA
-    8. Peccati.                          8. Pro peccato.                 8.
-    Levabit.                             Auferet.
-    Intestinum.                          Vitalia.
-    Super intestinum.                    Quae intrinsecus sunt.
-    9. Ilia.                             9. Ilia.                         9.
-    10. Pacificorum.                     10. Pacificorum.                 10.
-    11. Et cum cruribus ejus.            11. Pedibus.                     11.
-    13. Et absconditum fuerit ver-       13. Et per imperitiam.           13.
-    bum.
-    14. Congregatio.                     14. Vacat.                       14.
-    Ad peccatum.                         Pro peccato suo.
-    Et adducant.                         Adducet.
-    17. Ad facies.                       17. Contra.                      17.
-    18.                                  18.                             18.
-    Ad fundamentum.                      Juxta basim.
-    Ascensioiis.                         Holocaustorum.
-    20. αὐτος.                           20. De hoc vitulo.               20.
-    Peccati.                             Vacet.
-    21. Congregationis.                  21. Multitudinis.                21.
-    22. In ignorantia.                   22. Per ignorantiam.             22. In ignorantia.
+
+  [!-- Right Column: Aquila (Greek) --]
+  <bloco tipo="texto_principal" script="grego" bbox="680,90,800,540">
+    8.
+    9.
+    10.
+    11.
+    13.
+    14.
+    17.
+    18.
+    20.
+    21.
+    22. Ἐν ἀγνοίᾳ.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="720,1480,980,1560">
+
+  [!-- Bottom Section Headers --]
+  <bloco tipo="texto_principal" script="latino" bbox="150,550,380,570">
+    VERSIO HEBRAICI TEXT.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="450,550,650,570">
+    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="780,550,850,570">
+    AQUILA
+  </bloco>
+
+  [!-- Bottom Section Content --]
+  [!-- Left Column: Latin Translation of Hebrew --]
+  <bloco tipo="texto_principal" script="latino" bbox="130,580,380,920">
+    8. Peccati.
+    Levabit.
+    Intestinum.
+    Super intestinum.
+    9. Ilia.
+    10. Pacificorum
+    11. Et cum cruribus ejus.
+    13. Et absconditum fuerit verbum.
+    14. Congregatio.
+    Ad peccatum.
+    Et adducent.
+    17. Ad facies.
+    18.
+    Ad fundamentum.
+    Ascensionis.
+    20. Juvenco.
+    Peccati.
+    21. Congregationis.
+    22. In ignorantia.
+  </bloco>
+
+  [!-- Middle Column: Vulgate --]
+  <bloco tipo="texto_principal" script="latino" bbox="420,580,650,920">
+    8. Pro peccato.
+    Auferet.
+    Vitalia.
+    Quæ intrinsecus sunt.
+    9. Ilia.
+    10. Pacificorum.
+    11. Podibus.
+    13. Et per imperitiam.
+    14. Vacat.
+    Pro peccato suo.
+    Adducet.
+    17. Contra.
+    18.
+    Juxta basim.
+    Holocaustorum.
+    20. De hoc vitulo.
+    Vacat.
+    21. Multitudinis.
+    22. Per ignorantiam.
+  </bloco>
+
+  [!-- Right Column: Aquila Latin --]
+  <bloco tipo="texto_principal" script="latino" bbox="700,580,850,920">
+    8.
+    9.
+    10.
+    11.
+    13.
+    14.
+    17.
+    18.
+    20.
+    21.
+    22. In ignorantia.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="550,960,800,990">
     Digitized by Google
   </bloco>
-  <notas>Scripts: bloco central esquerdo em hebraico; algumas palavras ilegíveis transcritas como [ilegivel]. Mantida pontuação e numeração original. Linhas muito fragmentárias foram transcritas por palavra; onde não foi possível ler palavra inteira usei [ilegivel].</notas>
 </pagina>

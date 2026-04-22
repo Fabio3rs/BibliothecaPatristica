@@ -1,8 +1,11 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,80">
-1815    DISSERTATIO CRITICA DE HONORIO PAPA I.    1816
+  <bloco tipo="outro" script="latino" bbox="0,0,1000,40">
+    tipo_pagina: texto
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,80,490,820">
+  <bloco tipo="cabecalho" script="latino" bbox="0,40,1000,100">
+    1815    DISSERTATIO CRITICA DE HONORIO PAPA I.    1816
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="40,100,495,760">
 hanc nostram regiam urbem, quatenus diligentis-
 sima inquisitio fiat dogmatis de voluntate, opera-
 tione, Christi veri Dei nostri; innotescere quoque
@@ -47,7 +50,10 @@ bant Honorium ab omnibus judicatum esse ut vere
 catholicum, et ultra xl annos post mortem suam in
 possessione bonæ famæ perdurasse. Duæ epistolæ,
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,80,970,820">
+  <bloco tipo="nota_marginal" script="latino" bbox="480,140,520,185">
+A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="505,100,960,760">
 A quas proposui a n. 32, saltem non nisi in sequenti
 concilio anno 680, in lucem protratae sunt; sed
 nunc concilii Acta perpendantur.
@@ -61,7 +67,7 @@ Cpliani prima dicitur habita fuisse die 7 Novembris
 (d) anno 680, Constantini 27, post ejus consulatum
 anno 43. Herachii et Tiberii fratrum ejus anno 92,
 indictione 9, in trullo seu palatio imperatoris, qui et
-praesidebant stipatus su ex-consulibus. Ecclesiastici con-
+præsidebant stipatus su ex-consulibus. Ecclesiastici con-
 venisse leguntur sequenti ordine: 1° legati Agatho-
 nis; 2° patriarcha Cplianus, Alexandrinus per legatum,
 Antiochenus et Jerosolymitanus pariter per
@@ -94,7 +100,10 @@ Antiochenus cum suo discipulo Petro presbytero
 monacho, et episcopi Petrus Nicomediensis ac Salo-
 men Claneensis (f), responderunt pro sedibus
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="30,820,970,930">
+  <bloco tipo="nota_marginal" script="latino" bbox="480,345,520,390">
+B
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="40,760,960,920">
 12. Vid. n. 32, ubi annus post consulatum 43 componitur cum anno Constantini 27. Insuper videri-
 dum videtur ut imperator Constantinopoli existens
 ad patriarcham Cplianam istam scripserit epistolam.
@@ -139,8 +148,11 @@ adfluit.
 (f) Georgius Cplianus tacuit, saltem in Actis non
 legitur fuisse locutus.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="0,930,1000,1000">
+  <bloco tipo="nota_marginal" script="latino" bbox="480,740,520,785">
+C
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="0,920,1000,1000">
 Digitized by Google
   </bloco>
-  <notas>Leitura baseada em inspeção visual da imagem; valores de bbox aproximados. Preservei a ortografia impressa (ex.: "Cpolim", "Cplianus") sem normalizações. Pequenas incertezas de leitura foram resolvidas pelo contexto editoral; não marquei palavras com [ilegivel].</notas>
+  <notas>Pagina de duas colunas em latim. Preservei grafia impressa (ex.: "Cpolim", "Cplianus", abreviações e caracteres tipográficos como "æ"). BBOXs são aproximados no sistema 0–1000. Identifiquei as letras A, B, C na cunha central como notas marginais de secção e as marquei separadamente. Transcrição feita por inspeção visual; não foram usadas marcações [ilegivel].</notas>
 </pagina>

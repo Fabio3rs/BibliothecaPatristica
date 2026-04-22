@@ -1,19 +1,34 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="60,20,940,120">
-    123        LIB. II REGUM CAPUT XX.                                         126
+  <bloco tipo="cabecalho" script="misto" bbox="50,20,950,60">
+    125 LIB. II REGUM CAPUT XX. 126
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,120,300,920">
-    Notæ et variæ lectiones ad cap. XIX. lib. II Regum.
-    
-    Ibid. Σ., και ουκ ιχε ιπτο. Reg. et Coislin. 2.
-    V. 26. Αλλος, απεφθιηκε με. Reg.
-    V. 27. Αλλος, και κατηγορησται τον δουλον σου. Reg.
-    V. 28. Αλλος, ιχ χωρας τινος εστι μοι etc. Reg.
-    V. 32. Αλλος, εν τω καθησθαι εν παραβολαις.
-    Hæc versio videtur esse Theodotionis, qui vocem וימת vertere solet παραβολας.
-    
-    SYMMACHUS.
-    
+  <bloco tipo="texto_principal" script="latino" bbox="250,60,750,90">
+    Notæ et variæ lectiones ad cap. XIX lib. II Regum.
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="50,90,480,220">
+    Ibid. 2., καὶ οὐκ ἐπείρατο. Reg. et Coislin. 2.
+    V. 26. Ἄλλος, ἀπέρρυψέ με. Reg.
+    V. 27. Ἄλλος, καὶ κατηγόρηκασι τὸν δοῦλόν σου. Reg.
+    V. 38. Ἄλλος, ἐκ χειρὸς τίνος ἐστι μοι etc. Reg.
+    V. 52. Ἄλλος, ἐν τῷ καθσθαι ἐν παρεμβολαῖς.
+    Hæc versio videtur esse Theodotionis, qui vocem [hebraice] vertere solet παρεμβολάς.
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="520,90,950,220">
+    V. 56. Ἄλλος, ὅτι λίγον. Reg.
+    V. 57. Ἄλλος, ἀποστρεψάτω. Reg.
+    Ibid. Ἄλλος, ἀρεστόν. Reg.
+    V. 58. Ἄλλος, καὶ ὁ ἂν ἐπιτάξῃς μοι. Reg.
+    V. 42. Ἄλλος, ὅτι ἐγγίζει ἡμν ὁ βασιλεύς. Reg.
+    Ibid. Ἄλλος, προσφύγιον. Reg.
+    V. 45. Ἄλλος, καὶ οὐκ ἐγένετο ῥῆμά μου etc. Reg
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,240,650,270">
+    CAPUT XX LIB. II REGUM.
+  </bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="150,280,850,310">
+    ΣΥΜΜΑΧΟΣ. σ. ΘΕΟΔΟΤΙΩΝ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,310,200,600">
     1.
     2.
     4.
@@ -23,41 +38,66 @@
     11.
     15.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="300,120,700,920">
-    CAPUT XX LIB. II REGUM.
-    
-    ΣΥΜΜΑΧΟΣ.                           Ο.                       ΘΕΟΔΩΤΙΟΝ.
-    
-    1.    1. Και εχει επικαλουμενος υιὸς παρανομoς. Αλλος, και εχει απηντα ανηρ υιος λοιμός.
-    2.    2. Και ανηρ Ἰουδα εκολληθη τῷ βασιλει αυτων. Αλλος, οι δε ανηρ Ἰουδα προσευχθησαν περὶ τον βασιλεα αυτων.
-    4.    4. Αυτοι. Αλλος, ενταθω.
-    5.    5. Και εκρονιζεν απο του καιρου, ου εταζετο αυτω Δαυιδ. Αλλος, και υστερησε της διαταξεως, ης διεταξατο αυτω Δαυιδ.
-    6.    6. Και σκιασε τους οφθαλμους ημων. Αλλος, και σκεπασθη αρ ημων.
-    8.    8. Εν Γαβαων. Αλλος, επι του βουνού.
-          Και Αμεσσαϊ εισοθεν εστωπροσθεν αυτων. Αλλος, και Αμεσσαι παρεγενετο κατα προσωπον αυτων.
-          'Εξευγημενη. Αλλος, αμφιμηχη.
-    11.   11. Και ανηρ εστη επ' αυτον. Αλλος, και ανηρ επεστη αυτω τῷ Αμεσσαι.
-    15.   15. Και παρεγενηθησαν και επολιόρκουν επ' αυτον εν Αβελ και Φερμαχη, και εδεξαν προσχωμα προς την πολιν. Αλλος, και πα-
-          (continues)
+  <bloco tipo="texto_principal" script="grego" bbox="350,310,650,600">
+    1. Καὶ ἐκεῖ ἐπικαλούμενος υἱὸς παράνομος. Ἄλλος, καὶ ἐκεῖ ἀπήντα ἀνὴρ υἱὸς λοιμός.
+    2. Καὶ ἀνὴρ Ἰούδα ἐκολήθη τῷ βασιλεῖ αὐτῶν. Ἄλλος, οἱ δ ἄνδρες ούδα προσεχώρησαν περὶ τὸν βασιλέα αὐτῶν.
+    4. Αὐτοῦ. λλος, ἐνταῦθα.
+    5. Καὶ ἐχρόνισεν ἀπὸ τοῦ καιροῦ, ο ἐτάξατο ατῷ Δαυίδ. Ἄλλος, καὶ ὑστέρησε τῆς διατάξεως, ἧς διετάξατο αὐτῷ Δαυίδ.
+    6. Καὶ σκιάσει τοὺς ὀφθαλμοὺς ἡμῶν. Ἄλλος, καὶ σκεπασθή ἀφ' ἡμῶν.
+    8. Ἐν Γαβαών. Ἄλλος, ἐπὶ τοῦ βουνοῦ.
+    Καὶ Ἀμεσσαὶ εἰσῆλθεν ἔμπροσθεν αὐτῶν. Ἄλλος, καὶ Ἀμεσσαὶ παρεγένετο κατὰ πρόσωπον αὐτῶν. Ἐξευγμένην. Ἄλλος, ἀμφιμήκη.
+    11. Καὶ ἀνὴρ ἔστη ἐπ' αὐτόν. Ἄλλος, καὶ ἀνὴρ ἐπέστη αὐτῷ τ Ἀμεσσαί.
+    15. Καὶ παρεγενήθησαν καὶ ἐπολιόρκουν ἐπ' αὐτὸν ἐν Ἀβλ καὶ Φερμαχὰ, καὶ ἐξέχεαν πρόχωμα πρὸς τὴν πόλιν. Ἄλλος, καὶ παρ-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="700,120,960,920">
-    SYMMACHUS.
-    
-    LXX INTERPRETES.
-    
-    1.    1. Et ibi advocatus filius iniquus. Alius, et illic occurrerbat vir filius pestilens.
-    2.    2. Et vir Juda adhæsit regi suo. Alius, viri autem Juda accesserunt circa regem suum.
-    4.    4. Hic. Alius, idem.
-    5.    5. Et tardavit a tempore, quo constituerat ei David. Alius, et procrastinavit a præcepto, quod præceperat ei David.
-    6.    6. Et teget oculos nostros. Alius, et se oblegat a nobis.
-    8.    8. In Gabao. Alius, super collem.
-          Et Amessai intravit ante eos. Alius, et Amessai advēnit ante faciem eorum.
-          Conjuncto. Alius, oblongō.
-    11.   11. Et vir stetit super eum. Alius, et vir institit ipsi Amessai.
-    15.   15. Et advenerunt, et obsederunt super eum in Abel et Phermacha : et effuderunt aggerem ad civitatem. Alius, et advenerunt, et circumsederunt eum in Ebel et
+  <bloco tipo="texto_principal" script="grego" bbox="700,310,850,600">
+    1.
+    2.
+    4.
+    6.
+    8.
+    11.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="720,900,960,980">
+  <bloco tipo="cabecalho" script="latino" bbox="150,610,850,640">
+    SYMMACHUS. LXX INTERPRETES. THEODOTIO.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,640,200,950">
+    1.
+    2.
+    4.
+    5.
+    6.
+    8.
+    11.
+    15.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,640,650,950">
+    1. Et ibi advocatus filius iniquus. Alius, et illic occurrebat vir filius pestilens.
+    2. Et vir Juda adhæsit regi suo. Alius, viri autem Juda accesserunt circa regem suum.
+    4. Hic. Alius, idem.
+    5. Et tardavit a tempore, quo constituerat ei David. Alius, et procrastinavit a præcepto, quod præceperat ei David.
+    6. Et teget oculos nostros. Alius, et se obtegat a nobis.
+    8. In Gabaon. Alius, super collem.
+    Et Amessai intravit ante eos. Alius, et Amessai advenit ante faciem eorum.
+    Conjuncto. Alius, oblongo.
+    11. Et vir stetit super eum. Alius, et vir institit ipsi Amessai.
+    15. Et advenerunt, et obsederunt super eum in Abel et Phermacha : et effuderunt aggerem ad civitatem. Alius, et advenerunt, et circumsederunt eum in Ebel et
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,640,850,950">
+    1.
+    2.
+    4.
+    5.
+    6.
+    8.
+    11.
+    15.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="500,960,800,990">
     Digitized by Google
   </bloco>
-  <notas>Texto em grego no corpo central com variantes latinas; algumas linhas truncadas na coluna grega direita ("(continues)") onde a imagem corta o final da linha. Usei [ilegivel] não foi necessário. Scripts presentes: latino e grego.</notas>
+  <notas>
+    - O bloco hebraico na linha "Hæc versio videtur esse Theodotionis..." foi transcrito como [hebraice] devido à baixa resolução para caracteres específicos, embora contextualmente seja "מחנה" (machaneh).
+    - A página apresenta uma estrutura de colunas paralelas (Poliglota): Grego (Symmachus, LXX, Theodotion) e Latino (Symmachus, LXX, Theodotion).
+    - As colunas laterais (Symmachus e Theodotion) contêm apenas numeração de versículos neste trecho, enquanto o texto principal está na coluna central.
+  </notas>
 </pagina>

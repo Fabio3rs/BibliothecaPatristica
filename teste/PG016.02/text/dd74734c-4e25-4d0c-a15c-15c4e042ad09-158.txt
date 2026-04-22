@@ -1,59 +1,124 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,20,970,140">
-    HEXAPLORUM OCAE SUPERSUNT.
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    4567 HEXAPLORUM QUÆ SUPERSUNT. 4568
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="200,60,800,90">
     Notæ et variæ lectiones ad cap. XII Ecclesiastæ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,150,960,800">
-    MONITUM IN CANTICUM CANTICORUM.
-    
-    His libris manuscriptis atque editis usi sumus in variis Hexaplorum lectionibus colligendis et emendandis:
-    Codice Regio 1890, V saeculi membranaceo.
-    Cod. Reg. 1990, X saeculi membranaceo: est Procopii, fuisse olim Archiepiscopi Rhemensis Caroli Mauritii
-    Tellerii
-    
-    CANTICI CANTICORUM CAPUT PRIMUM.
-    
-    TO EBRAIKON.                TO EBRAIKON               ΑΚΥΛΑΣ.
-                                Ἑλληνικοῖς γράμμασι.
-    
-    (hebraico column, right-aligned) 4.         4.  "Ἔλκυσόν με.
-    (hebrew lines)
-    משכנע 4
-    רבאני
-    נגילה
-    
-    משרים אדני
-    ששדה 5                      5.         5.  Ὸς σκήνω.
-    ונאיה
-    כארתי
-    מששתני 6                   6.         6.  Ὅτι συνέχουσί με.
-    חד-ב
-    שמני בגידה את-הדרתם
-    
-    (hebrew) 7                     7.         7.
-    א־ני לך עקבין כאן 8        8.         8.  Ἔξελθε σεαυτῷ...
-    
-    על משכנות רעים
-    
-    VERSIO HEBRAICI TEXT.        VULGATA LATINA.          AQUILA.
-    4. Trahe me.                 4. Trahe me.              4. Trahito me.
-    Introduxit me.               Introduxit me.
-    Exsultabimus.                Exsultabimus.
-    Rectitudines dilexerunt te.  Recti diligunt te.
-    5. Nigra.                    5. Nigra.                 5.
-    Et pulcra.                   Sed formosa.             Sicut tabernacula.
-    Sicut tentoria.              Sicut pelles.
-    6. Quia radiavit me.         6. Quia decoloravit me.   6. Quia adussit me.
-    Succensi sunt in me.         Pugnaverunt contra me.
-    Posuerunt me custodem vinea- Posuerunt me custodem in vi-
-    rum.                         neis.
-    7. Sicut operiens se.        7. Ne vagari incipiam.   7.
-    8. Egredere tibi in vestigia 8. Egredere, et abi post vestigia 8. Egredere tibi ipsi....
-    pecoris.                     gregum.
-    Super tabernacula pastorum.  Juxta tabernacula pastorum.
+  <bloco tipo="texto_principal" script="misto" bbox="50,90,480,230">
+    V. 1. Σ., πρὶν ἐλθεῖν etc. Editio Romana et Drusius.
+    V. 2. Σ., πρίν. Iidem.
+    V. 4. Σ., διαφθαρώσιν etc. Ex edit. Rom. et ex Hieronymo, qui ait Symmachum vertisse, *fortes*, et Aquilam, *errabunt*.
+    Ibid. Σ., καὶ ἀργηθῶσιν. Edit. Rom. et Drusius.
+    Ibid. Σ., αἱ ὁράσεις. Iidem.
+    V. 4. Σ., ἀχρειωθείσης etc. Iidem, ut et sequens lectio.
+    V. 6. S. Super hæc etc. Sic Hieronymus versio-
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,820,980,980">
+  <bloco tipo="texto_principal" script="misto" bbox="520,90,950,230">
+    nem Symmachi Latine refert. Græca desiderantur exceptis his verbis, καὶ διελυθῇ ἡ ἐπίπονος, quæ cum Latinis Hieronymi non consonant. Hic etiam ab Hebraico deflectere Symmachum testificatur Hieronymus, additque Apollinarem Laodicenum ipsum secutum esse.
+    V. 6. Σ., καὶ τρυφή etc. Drusius et edit. Rom.
+    Ibid. Σ., καὶ ἐλαθῇ etc. Iidem.
+    V. 8. Ἀ., ἀτρὺς ἀτρίβων. Iidem.
+    V. 9. Σ., ὑπερβάλλον. Iidem.
+    Ibid. Ἀ., ἠνωτίσατο etc. Iidem.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="200,260,800,300">
+    MONITUM IN CANTICUM CANTICORUM.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,310,900,400">
+    His libris manuscriptis atque editis usi sumus in variis Hexaplorum lectionibus colligendis et emendandis :
+    Codice Regio 1890, Y sæculi membranaceo.
+    Cod. Reg. 1990, X sæculi membranaceo : est Procopii, fuitque olim Archiepiscopi Rhemensis Caroli Mauritii Tellerii
+    2
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,420,750,450">
+    CANTICI CANTICORUM CAPUT PRIMUM.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="150,460,850,490">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,490,350,700">
+    4 משכני
+    הביאני
+    נגילה
+    מישרים אהבך
+    5 שחורה
+    ונאוה
+    כאהלי
+    6 שזפתני
+    חדר־בי
+    ש בני נטרה את־הכרמים
+    7 כצמיה
+    8 צאי־לך בעקבי הצאן
+    על משכנות הרעים
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,490,450,700">
+    4.
+    5.
+    6.
+    7.
+    8.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="600,490,850,700">
+    4. Ἕλκυσόν με.
+    5.
+    5. Ὡς σκηναί.
+    6.
+    6. Ὅτι συνέκαυσέ με.
+    7.
+    8. Ἔξελθε σεαυτῇ...
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,710,900,740">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,740,350,950">
+    4. Trahe me.
+    Introduxit me.
+    Exsultabimus.
+    Rectitudines dilexerunt te.
+    5. Nigra.
+    Et pulcra.
+    Sicut tentoria.
+    6. Quia radiavit me.
+    Succensi sunt in me.
+    Posuerunt me custodem vinearum.
+    7. Sicut operiens se.
+    8. Egredere tibi in vestigia pecoris.
+    Super tabernacula pastorum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,740,650,950">
+    4. Trahe me.
+    Introduxit me.
+    Exsultabimus.
+    Recti diligunt te.
+    5. Nigra.
+    Sed formosa.
+    Sicut pelles.
+    6. Quia decoloravit me.
+    Pugnaverunt contra me.
+    Posuerunt me custodem in vineis.
+    7. Ne vagari incipiam.
+    8. Egredere, et abi post vestigia gregum.
+    Juxta tabernacula pastorum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,740,900,950">
+    4. Trahito me.
+    5.
+    5. Sicut tabernacula.
+    6. Quia adussit me.
+    7.
+    8. Egredere tibi ipal....
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="500,960,800,990">
     Digitized by Google
   </bloco>
-  <notas>Página com três línguas principais: latino (tipografia), hebraico (coluna de texto hebraico parcialmente ilegível em pontos), grego (transcrições e títulos). Organização em três colunas tipográficas; hebraico lido verticalmente na coluna esquerda do quadro principal. Algumas palavras hebraicas e pequenas marcas tipográficas foram transcritas tal qual aparencem; onde folhas apresentam manchas ou caracteres muito pequenos preservei a linha e indiquei ligadura com hífen quando texto quebra ao final da linha.</notas>
+  <notas>
+    A página apresenta uma estrutura complexa de colunas comparativas (Hexapla).
+    - Seção superior: Notas críticas em duas colunas (Latim/Grego).
+    - Seção média: "Monitum" introdutório.
+    - Seção inferior: Texto de Cântico dos Cânticos cap. 1, disposto em colunas paralelas: Hebraico, Hebraico transliterado (apenas números visíveis), Versão de Áquila (Grego).
+    - Rodapé da página: Versões Latinas comparativas (Versio Hebraici Text., Vulgata, Áquila Latim).
+    - O caractere 'Y' em "Y sæculi" foi transcrito literalmente conforme aparência visual, embora possa ser uma abreviatura numérica.
+    - Texto Hebraico transcrito da direita para a esquerda conforme padrão, mas posicionado no bloco esquerdo da página.
+  </notas>
 </pagina>

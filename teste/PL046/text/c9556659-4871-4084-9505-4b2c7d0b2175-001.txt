@@ -1,40 +1,31 @@
-<pagina estado="com_texto">
-  <bloco tipo="outro" script="latino" bbox="0,0,1000,1000">
-    capa_ou_guarda
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="nota_marginal" script="latino" bbox="215,86,335,126">
+BUILDING
+USE ONLY
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="150,50,340,140">
-    BUILDING
-    USE ONLY
+  <bloco tipo="nota_marginal" script="latino" bbox="65,495,145,535">
+LDING
+ONLY
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="40,360,180,520">
-    LDING
-    ONLY
+  <bloco tipo="texto_principal" script="latino" bbox="415,315,585,365">
+1817
+ARTES       SCIENTIA
+VERITAS
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="300,300,700,650">
-    LIBRARY
-    OF THE
-    UNIVERSITY OF MICHIGAN
+  <bloco tipo="texto_principal" script="latino" bbox="365,365,635,415">
+LIBRARY OF THE
+UNIVERSITY OF MICHIGAN
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="300,760,700,900">
-    BUILDING
-    USE ONLY
+  <bloco tipo="texto_principal" script="latino" bbox="465,445,535,495">
+TUEBOR
+CIRCUMSPICE
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,920,995,995">
-    Digitized by Google
+  <bloco tipo="nota_marginal" script="latino" bbox="355,865,495,905">
+BUILDING
+USE ONLY
   </bloco>
-  <notas>
-    Tipo de página: capa/guarda (folha de guarda com ex-libris colado e carimbos).
-    Script predominante: latino.
-
-    Observações de transcrição e critérios:
-    - As bboxes são estimativas visuais na escala 0-1000.
-    - Usei a imagem como fonte primária; os rascunhos OCR serviram apenas de referência.
-    - Não reconstrui letras ausentes nem normalizei texto; transcrevi literalmente o que é visível.
-    - Carimbo superior (topo esquerdo): transcrito "BUILDING" / "USE ONLY".
-    - Carimbo lateral esquerdo (nota marginal), parcialmente oculto por grampo metálico: transcrito literalmente "LDING" / "ONLY" (não foi acrescentada a letra presumida).
-    - Ex-libris central (texto_principal): transcrevi apenas as linhas claramente legíveis: "LIBRARY" / "OF THE" / "UNIVERSITY OF MICHIGAN". Inscrições menores e legendas no brasão não foram transcritas por falta de legibilidade.
-    - Carimbo inferior (rodapé, centro): "BUILDING" / "USE ONLY".
-    - Crédito de digitalização (rodapé, canto inferior direito): "Digitized by Google".
-    - Grampos metálicos e dobras de papel são visíveis na imagem mas não foram transcritos como texto.
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="615,965,815,985">
+Digitized by Google
+  </bloco>
+  <notas>Transcrição de página de guarda com ex-libris colado da University of Michigan. Carimbos administrativos em verde ("BUILDING USE ONLY") presentes no topo, margem esquerda (parcial) e parte inferior. Marca d'água de digitalização no rodapé direito. BBOX normalizadas para escala 0-1000.</notas>
 </pagina>

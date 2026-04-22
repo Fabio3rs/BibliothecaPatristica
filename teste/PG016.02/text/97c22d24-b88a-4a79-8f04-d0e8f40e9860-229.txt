@@ -1,94 +1,191 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,80">
+  <bloco tipo="cabecalho" script="misto" bbox="0,20,1000,60">
     1709 HESAIÆ CAPUT XVI. 1710
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="20,80,320,610">
+  <bloco tipo="texto_principal" script="grego" bbox="50,60,300,90">
     ΣΥΜΜΑΧΟΣ.
-    ✠ Ἀπ’ αὐτῆς.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="450,60,500,90">
+    Ο.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="700,60,900,90">
+    ΘΕΟΔΟΤΙΩΝ.
+  </bloco>
+  
+  [!-- Coluna Esquerda: Grego (Symmachus) --]
+  <bloco tipo="texto_principal" script="grego" bbox="20,100,300,320">
+    Ἀπ' αὐτῆς.
     Διέβησαν τὴν θάλασσαν.
-    9. Ἐσθὼν.
-    Καὶ Ἐλεαλί.
-    10. Ἐκ τοῦ Καρυήλου.
-    
-    11. Ἡ κοιλία μου τῷ Μωάβ ὡς ψαλτήριον ἠχήσει· καὶ τὰ ἔντός μου τῷ τέχνει τῷ δουρανικῷ.
-    13, 14. Ἔστησε καὶ νῦν Ἐλάλησε Κύριος λέγων, Ἐν τρισὶν ἔτεσιν ὡς ἔτι [Ι. Επὶ μισθωτοῦ].
+    9. Ἐσεβών.
+    Καὶ Ἐλεαλή.
+    10. Ἐκ τοῦ Καρμήλου.
+    11. Ἡ κοιλία μου τῷ Μωὰβ ὡς
+    ψαλτήριον ἠχήσει· καὶ τὰ ἐντός
+    μου τῷ τείχει τῷ ὀστρακίνῳ.
+    13, 14. Ἔκτοτε καὶ νῦν ἐλάλησε
+    Κύριος λέγων, Ἐν τρισὶν τεσιν ὡς
+    ἐπὶ [f. ἔτη] μισθωτοῦ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,80,660,610">
-    O.
-    Οι αποστελλμενοι ✠ απ’ αυτης.
+
+  [!-- Coluna do Meio: Grego (LXX) --]
+  <bloco tipo="texto_principal" script="grego" bbox="320,100,600,330">
+    Οἱ ἀπεσταλμένοι ἀπ' αὐτς.
     Διέβησαν γὰρ πρὸς τὴν θάλασσαν.
-    9. Ἐσθὼν.
-    Καὶ Ἐλεαλί.
+    9. Ἐσεβών.
+    Καὶ Ἐλεαλή.
     10. Vacat.
-    Καὶ ἐν τοῖς ἀμπελώσι σου οὐ μὴ εὐφρανθησονται.
-    
-    11. Ἡ κοιλία μου ἐπὶ Μωάβ ὡς ψαλτήριον ἠχήσει, καὶ τὰ ἔντός μου ὡς τεῖχος ἐνεκαίνισας.
-    13, 14. Ἀ. Ὑπόστε ἔλαλησε. Καὶ νῦν λέγω, Ἐν τρισὶν ἔτεσιν ἔσται μισθω-
+    Καὶ ἐν τοῖς ἀμπελῶσί σου οὐ μὴ
+    εὐφρανθήσονται.
+    11. Ἡ κοιλία μου ἐπὶ Μωὰβ ὡς
+    κιθάρα ἠχήσει, καὶ τὰ ἐντός μου ὡς
+    τεῖχος ἐνεκαίνισας.
+    13, 14. Ὁπότε ἐλάλησε. Καὶ νν
+    λέγω, Ἐν τρισὶν ἔτεσιν ἐτῶν μισθω-
     τοῦ.
-    
-    Ἀτιμασθήσεται ἡ δόξα Μωὰβ παντὶ τῷ πλήθει τῷ πολλῷ. Οἱ λοιποὶ, καὶ ἀτιμασθήσεται ἡ δόξα Μωὰβ, σὺν παντὶ τῷ πλήθει πολλῶν.
+    Ἀτιμασθήσεται ἡ δόξα Μωὰβ
+    παντὶ τ πλούτῳ τῷ πολλῷ. Οἱ
+    λοιποί, καὶ ἀτιμασθήσεται ἡ δόξα
+    Μωὰβ, σὺν παντὶ τ πλήθει πολλῷ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,80,980,610">
-    ΘΕΟΔΩΤΙΟΝ.
+
+  [!-- Coluna Direita: Grego (Theodotion) --]
+  <bloco tipo="texto_principal" script="grego" bbox="620,100,900,290">
     Διέβησαν τὴν θάλασσαν.
     9.
-    Καὶ Ἐλεαλί.
-    10. Ἐκ τοῦ Καρυήλου.
-    
-    11. (Εἰς τὸν τοῖχον ἀφανισθέντα.)
-    13, 14. Ἀπὸ τότε καὶ νῦν ἔλαλησα καὶ Κύριος λέγων, Ἐν τρισὶν ἔτεσιν ὡς ἔτι μισθωτοῦ.
+    Καὶ Ἐλεαλή.
+    10. Ἐκ τοῦ Καρμήλου.
+    11. (Εἰς τν τοῖχον ἀφανισθέντα.)
+    13, 14. Ἀπὸ τότε καὶ νῦν ἐλάλη-
+    σε Κύριος λέγω, Ἐν τρισὶν ἔτεσιν
+    ὡς ἐνιαυτοῖς μισθωτοῦ. Ἄλλως,
+    ἔτεσιν ὡς ἐπὶ μισθωτῶν ἐνιαυτοῖς.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="20,610,980,680">
-    SYMMACHUS. LXX INTERPRETES. TIIEODOTIO.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,680,420,960">
-    ✠ Ab ca.
+
+  [!-- Coluna Esquerda: Latim (Symmachus) --]
+  <bloco tipo="texto_principal" script="latino" bbox="20,330,300,540">
+    SYMMACHUS.
+    Ab ea.
     Transierunt mare.
     9. Esbon.
     Et Eleale.
-    10. De Carnelo.
-    
-    41. Venter meus ipsi Moab ut psalterium sonabit, et intestina mea muro testaeco.
-    13, 14. Ex tunc et nunc locutus est Dominus dicens, In tribus annis tanquam anni mercenarii.
+    10. De Carmelo.
+    11. Venter meus ipsi Moab ut
+    psalterium sonabit, et intestina
+    mea muro testaceo.
+    13, 14. Ex tunc et nunc locutus
+    est Dominus dicens, In tribus an-
+    nis tanquam anni mercenarii.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="420,680,700,960">
+
+  [!-- Coluna do Meio: Latim (LXX) --]
+  <bloco tipo="texto_principal" script="latino" bbox="320,330,600,540">
     LXX INTERPRETES.
-    Qui missi estis ✠ ab ea.
+    Qui missi estis ab ea.
     Transierunt enim ad mare.
     9. Esebon.
     Et Eleale.
     10. Vacat.
-    Et in vineis tuis non laetabuntur.
-    
-    11. Venter meus super Moab ut cithara sonabit, et intestina mea quasi murum renovasti.
-    13, 14. Quando locutus est, Et nunc dico : In tribus annis annorum mercenarii.
-    
-    Inhonorabitur gloria Moab omnibus divitiis multis. Reliqui, et inhonorabitur gloria Moab, cum omni turba multa.
+    Et in vineis tuis non lætabun-
+    tur.
+    11. Venter meus super Moab ut
+    cithara sonabit, et intestina mea
+    quasi murum renovasti.
+    13, 14. Quando locutus est. Et
+    nunc dico: In tribus annis anno-
+    rum mercenarii.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="700,680,980,960">
-    TIIEODOTIO.
+
+  [!-- Coluna Direita: Latim (Theodotion) --]
+  <bloco tipo="texto_principal" script="latino" bbox="620,330,900,540">
+    THEODOTIO.
     Transierunt mare.
     9.
     Et Eleale.
-    10. De Carnelo.
-    
+    10. De Carmelo.
     11. Ad murum dissipatum.
-    
-    13, 14. Ex tunc et nunc locutus est Dominus dicens : In tribus annis, quasi annis mercenarii. Aliter, annis quasi super merce-
-    dariis.
+    13, 14. Ex tunc et nunc locu-
+    tus est Dominus dicens: In tribus
+    annis, quasi annis mercenariis.
+    Aliter, annis quasi super merce-
+    nariis.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="20,960,980,1020">
-    Notæ et variœ lectiones ad cap. XVI Hesiæ.
-    delict et eodem codice in textu τῶν Ο’ legitur, διεθύσαν γὰρ τὴν θάλασσαν, lapsu graphice, ut vide-
-    tur : nam in editione Romana legitur, διεβησαν γὰρ πρὸς τὴν θάλασσαν, ut nos edimus.
-    V. 9. Z., Ἐσθὼν. Curiensis.
-    Ibid. Curterius, Ἐλεαλί φωνῶς τε οἱ Γ. Curte-
-    rius perperam legit Ἑωαλοι, de more. Idem codex aliam exhibet Symmachici versionem, καὶ ἐλάλησε. Sic etiam in textu LXX Alex. et Ald. Drach.
-    V. 10. A., ἀπὸ τοῦ Καρρ-. Curter. ex ms. Jes. [Ni-
-    rimun sub obelo. Attamen habetur in Hebr. Dr.]
-    Ibid. A., καὶ ἐν ἀμπελώσι κτλ. Idem.
-    V. 11. S., ἡ κοιλία μου etc. Hanc lectionem plenam effert Theodoretus. Theodotiou autem habet, ad murum dissipatum. Sic Hieronymus. Septuaginta vero qui sic interpretantur, ως τεῖχος ἐνεκαινισας, haud dubie legisse videntur מָלָא : mutation autem τοῦ י in τ est vicissim, frequentissima est, ut saepe diximus.
-    V. 13, 14. Quae sequuntur hujus capitis professuntur ex Eusebio in Hesaiam, qui sic habet : Ἡ χερα [Aliter, κατὰ Ἐβραϊκὴν φωνὴν, τ᾽ καθ. Dr.] τοις τοις ἐρημωθεῖς μεταξὺ βηβλῶσι σαφεστέραι καταστιχηται τῆς ἀνάγνωσιν. Κατὰ μὲν γὰρ τῷ Αἰκῇν εἶρηται· ἐν τρισὶν ἔτεσιν μισθωτοῖς,
+
+  [!-- Bloco Central Inferior (Continuação Latim LXX) --]
+  <bloco tipo="texto_principal" script="latino" bbox="320,550,600,610">
+    Inhonorabitur gloria Moab om-
+    nibus divitiis multis. Reliqui, et
+    inhonorabitur gloria Moab, cum
+    omni turba multa.
   </bloco>
-  <notas>Pagina com colunas; scripts mistos (grego e latino). Pequenas lacunas marcadas como Vacat e [Ι. ...]. Mantida ortografia original; preservadas abreviaturas e sinais tipográficos.</notas>
+
+  [!-- Cabeçalho das Notas --]
+  <bloco tipo="cabecalho" script="latino" bbox="250,620,750,650">
+    Notæ et variæ lectiones ad cap. XVI Hesaiæ.
+  </bloco>
+
+  [!-- Notas Coluna Esquerda --]
+  <bloco tipo="nota" script="misto" bbox="20,650,480,920">
+    delicet in eodem codice in textu τῶν Ο' legitur,
+    διέβησαν γὰρ τὴν ἔρημον, lapsu graphico, ut vide-
+    tur: nam in editione Romana legitur, διέβησαν γὰρ
+    πρὸς τν θάλασσαν, ut nos edimus.
+    V. 9. Σ., Ἐσβών. Curterius.
+    Ibid. Curterius, Ἐλεαλὴ ὁμοίως τε οἱ Γ. Curte-
+    rius perperam legit ὅμως τε, de more. [Idem codex
+    aliam exhibet Symmachi versionem, καὶ ἐλάλησεν.
+    Sic etiam in textu LXX Alex. et Ald. DRACH.]
+    V. 10. Ἀ., ἀπὸ το Καρμ.- Curter. ex ms. Jes. [Ni-
+    mirum sub obelo. Atiamen habetur in Hebr. DR.]
+    Ibid. Ἄ., καὶ ἐν ἀμπελῶσι etc. Idem.
+    V. 11 Σ., ἡ κοιλία μου etc. Hanc lectionem ple-
+    nam effert Theodoretus. Theodotio autem habet,
+    ad murum dissipatum. Sic Hieronymus. Septuaginta
+    vero qui sic interpretantur, ὡς τεῖχος ἐνεκαίνισας,
+    haud dubie legisse videntur חומה חדשת: mutatio
+    autem του ח in ח et vicissim, frequentissima est,
+    ut sæpe diximus.
+    V. 13, 14. Quæ sequuntur hujus capitis profe-
+    runtur ex Eusebio in Hesaiam, qui sic habet: Ἡ
+    κατὰ [Aliter, κατὰ Ἑβραϊκὴν φωνήν, ἡ κατὰ DR.]
+    τοὺς λοιποὺς ἑρμηνευτὰς διαστολὴ μεταξὺ βληθεῖσα
+    σαφεστέραν κατέστησε τὴν διάνοιαν. Κατὰ μὲν γὰρ
+    τὸν Ἀκύλαν εἴρηται· ἐν τρισὶν τεσι μισθωτοῦ,
+  </bloco>
+
+  [!-- Notas Coluna Direita --]
+  <bloco tipo="nota" script="misto" bbox="480,650,950,920">
+    κατὰ δὲ τὸν Σύμμαχον· Ἔκτοτε καὶ νῦν ἐλάλησε
+    Κύριος λέγων· ἐν τρισὶν ἔτεσιν ὡς ἐπὶ μισθωτοῦ·
+    κατὰ δὲ τὸν Θεοδοτίωνα· ἀπὸ τότε καὶ νῦν ἐλά-
+    λησε Κύριος λέγων· ἐν τρισὶν τεσιν ὡς ἐνι-
+    αυτοῖς μισθωτοῦ. Ετα ἀπὸ τέρας ἀρχῆς εἴρηται
+    παρὰ τοῖς λοιποῖς ρμηνευταῖς [Alii ll. addunt, καὶ
+    κατὰ τὴν Ἑβρ. φωνήν, τὸ. DR.] καὶ ἀτιμασθήσε-
+    ται ἡ δόξα Μωὰβ σὺν παντὶ τῷ πλήθει [Alii ll.,
+    τῷ πλούτῳ. DR.] τῷ πολλῷ. Ὁ γὰρ, καί, σύνδεσμος
+    μέσος παρεμβληθείς, ἑτέραν διάνοιαν παρέστησε τὴν,
+    ἀπὸ τοῦ, καὶ ἀτιμασθήσεται ἡ δόξα Μωὰβ. I. e.
+    Interposita apud reliquos interpretes distinctio cla-
+    riorem sententiam efficit: nam secundum Aquilam
+    dicitur, in tribus annis mercenarii; secundum Sym-
+    machum vero, Ex eo tempore et nunc locutus est
+    Dominus, dicens: In tribus annis quasi super
+    mercenario; secundum Theodotionem autem, Ab
+    eo tempore et nunc locutus est Dominus dicens:
+    In tribus annis, quasi annis mercenariis. Deinde
+    alio resumpto principio, dicitur apud reliquos inter-
+    pretes, Et inhonorabitur gloria Moab cum omni
+    turba multa. Nam conjunctio et, quæ media inter-
+    ponitur, aliam effert sententiam, ab his verbis, et in-
+    honorabitur gloria Moab.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="600,950,850,990">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição de página comparativa de traduções bíblicas (Isaías XVI) com texto em Grego e Latim.
+    O cabeçalho central "Ο." refere-se provavelmente à Septuaginta (LXX).
+    Notas críticas contêm mistura de Latim e Grego com abreviações editoriais (DR., ms., ll.).
+  </notas>
 </pagina>

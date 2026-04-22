@@ -1,10 +1,37 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,110">
-    HEXAPLORUM QUÆ SUPERSUNT.
-    CAPVT L GENESIS.
+  <bloco tipo="cabecalho" script="misto" bbox="100,20,900,60">
+    331 HEXAPLORUM QUÆ SUPERSUNT. 332
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,110,320,900">
-    TO EBRAIKON.
+  
+  [!-- Top Table Section --]
+  <bloco tipo="texto_principal" script="grego" bbox="150,65,300,90">
+    TO ΕΒΡΑΙΚΟΝ.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="350,65,650,100">
+    CAPUT L GENESIS.
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,65,850,90">
+    ΑΚΥΛΑΣ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,100,350,350">
+    על-פני 1
+    המבשמים 3
+    לאמר 16
+    17 אל תשבע לחץ
+    18 גם-אתה וכו' לבניך
+    19 אל-תיראו כי אנכי תחת אלהים
+    טו Σαμαρ., μὴ φοβεῖσθε, καὶ
+    γὰρ φοβούμενος Θεόν εἰμι ἐγώ.
+    21 לא-כן
+    23 העלותה
+    26 החנטו
+    בארון
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="380,100,450,300">
     1.
     3.
     16.
@@ -12,85 +39,123 @@
     18.
     19.
     21.
+    23.
     25.
-    26.
-    VERSIO HEBRAICI TEXT.
-    1. Super faciem.
-    3. Balsamarorum.
-    16. Dicendo.
-    17. Parce nunc praevaricationi fratrum tuorum.
-    Malum retribuerunt tibi.
-    18. Etiam fratres ejus, et ceciderunt in conspectu ejus. Suntur: Ne timeatis, clamat timens Deum sum ego.
-    19. Ne timeatis, quoniam numquid pro Deo ego?
-    21. Aliam.
-    25. Et facies ascendere.
-    26. Balsamarunt.
-    In arca.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,110,660,900">
-    TO EBRAIKON
-    Ελληνικος γραμματι.
-    1.
-    3.
-    16.
-    17.
-    18.
-    19.
-    21.
-    25.
-    26.
-    VULGATA LATINA.
-    1. Super faciem.
-    3. Cadaverum conditorum.
-    16. Ut hæc tibi verbis illius diceream.
-    17. Oblivisceris sceleris fratrum tuorum.
-    Atque malitiis quam exercuerunt in te.
-    18. Fratres sui, et proni adorantes in terram.
-    19. Nolite timere: num Dei possumus resistere voluntati?
-    21. Vescam.
-    25. Apoaurte.
-    26. Conditus aromatibus.
-    In loculo.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,110,980,900">
-    AKVILA.
+
+  <bloco tipo="texto_principal" script="grego" bbox="650,100,900,350">
     1.
     3. Τῶν ἀρωματιζομένων.
     16.
-    17. Ἄρον δὴ ἀδοξίαν ἀδελφῶν αὐτῶν.
-    Κακίᾳ ἠμειφάντο σι.
+    17. Ἄρον δὴ ἀθεσίαν ἀδελφῶν
+    σου.
+    Κακίᾳ ἠμείψαντό σε.
     18.
-    19. Ὅτι μὴ ἀντὶ Θεοῦ ἐγώ;
+    19. Ὅτι μὴ ἀντὶ Θεο ἐγώ;
     21. Διοικήσω.
-    25.
+    23.
     26. Ἠρωμάτισαν.
-    Ἐν γλιστοκοφίῳ.
+    Ἐν γλωσσοκόμῳ.
+  </bloco>
+
+  [!-- Middle Table Section (Latin Versions) --]
+  <bloco tipo="texto_principal" script="latino" bbox="100,360,350,640">
+    VERSIO HEBRAICI TEXT.
+    1. Super faciem.
+    3. Balsamatorum.
+    16. Dicendo.
+    17. Parce nunc prævaricationi
+    fratrum tuorum.
+    Malum retribuerunt tibi.
+    18. Etiam fratres ejus, et ceci-
+    derunt in conspectu ejus. Samar.:
+    Ne timeatis, etenim timens Deum
+    sum ego.
+    19. Ne timeatis, quoniam num-
+    quid pro Deo ego?
+    21. Alam.
+    23. Et facietis ascendere.
+    26. Balsamarunt.
+    In arca.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="380,360,620,640">
+    VULGATA LATINA.
+    1. Super faciem.
+    3. Cadaverum conditorum.
+    16. Ut hæc tibi verbis illius di-
+    ceremus.
+    17. Obliviscaris sceleris fratrum
+    tuorum.
+    Atque malitiæ quam exercue-
+    runt in te.
+    18. Fratres sui, et proni adoran-
+    tes in terram.
+    19. Nolite timere : num Dei pos-
+    sumus resistere voluntati?
+    21. Pascam.
+    23. Asportate.
+    26. Conditus aromatibus.
+    In loculo.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="650,360,900,640">
     AQUILA.
     1.
     3. Aromatibus conditorum.
     16.
-    17. Tolle, quaeso, praevaricationem fratrum tuorum.
+    17. Tolle, quæso, prævaricatio-
+    nem fratrum tuorum
     Malitia tibi gratiam retulerunt.
     18.
     19. Quoniam an pro Deo ego?
     21. Curabo.
-    25.
+    23.
     26. Aromatibus condierunt.
     In loculo.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,900,960,1180">
-    Notæ et variœ lectiones ad cap. L Genesis.
-    V. 4. 'Αλλος, ἐπὶ τὸν τράχλον. Sic mss. nostri. sicis notata.
-    V. 5. Aquilæ lectiones versuum 3, 17, 21, 25, 26, e cod. Coislini mutuali sumus.
-    V. 16. Σ., παρακαλῶν. Ex Coislio.
-    V. 18. Καλὺς ἀδελφός etc. Quæ hic prætermina sunt a LIX, iis supplentur in Coislin. cod., ante-
-    V. 19. Duras Aquilæ et Symmachii lectiones differunt editio Rom. et Dresiis; primum neque, quam supra lectur in textu; alterum vero qua sic habet: 'Α, ὅτι μὴ ἔγω; quoniam an Deus ego? Ex duplici autem Aquilæ et Symmachi editione putat
-    IN EXODUM ADMONITIO.
-    In Exodum bene multas veterum interpretum lectiones variis ex manuscriptis collegimus, quarum maxima pars in eodem observata fuerat. Caeteræ autem a Drusio allatae, si cum aliis nunc primum editis concurrant, numero paucissimi sunt, ac plerisque in locis ope manuscriptorum vel expendiantur, vel plenius observentur. Hi porro codices sunt miss. tum editi, nobis ad hæc adornanda subsidio fuerunt.
-    Codex Regius 1825, x vel xii saeculi, membranaceus.
-    Cod. Reg. 1871, exspurgatine nota, x saeculi, membran.
-    Cod. Reg. 1886, bombaynus, xii saeculi.
-    Cod. 1889, recens, continet ab initio Exodi ad caput xii.
+
+  [!-- Notes Section --]
+  <bloco tipo="aparato_critico" script="latino" bbox="250,650,750,670">
+    Notæ et variæ lectiones ad cap. L Genesis.
   </bloco>
-  <notas>Página contém texto impresso em colunas; transcrição respeitou ordem esquerda-para-direita; algumas abreviações e sinais tipográficos foram preservados tal como visíveis; pequenos traços e manchas foram interpretados como parte da tipografia, não como escrita marginal.</notas>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="100,670,500,780">
+    V. 1. Ἄλλος, ἐπὶ τὸν τράχηλον. Sic mss. nostri.
+    V. 3. Aquilæ lectiones versuum 3, 17, 21, 25,
+    26, e cod. Coislin. mutuati sumus.
+    V. 16. Σ., παρακαλῶν. Ex Coislin.
+    V. 18. Καίγε ἀδελφοί etc. Quæ hic prætermissa
+    sunt a LXX, ita supplentur in Coislin. cod., aste-
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="520,670,900,780">
+    riscis notata.
+    V. 19. Duas Aquilæ et Symmachi lectiones affe-
+    runt editio Rom. et Drusius; primam nempe, quæ
+    supra fertur in textu; alteram vero quæ sic habet:
+    Ἆ, ὅτι μὴ Θεός ἐγώ; quoniam an Deus ego? E., μὴ
+    γὰρ ἀντὶ Θεο ἐγώ; Num enim pro Deo ego? Ex du-
+    plici autem Aquilæ et Symmachi editione putat
+  </bloco>
+
+  [!-- Bottom Section --]
+  <bloco tipo="cabecalho" script="latino" bbox="300,800,700,830">
+    IN EXODUM ADMONITIO.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,840,900,950">
+    In Exodum bene multas veterum interpretum lectiones variis ex manuscriptis collegimus, quarum ma-
+    xima pars nondum observata fuerat. Cæteræ autem a Drusio allatæ, si cum aliis nunc primum editis con-
+    ferantur, numero paucissimæ sunt, ac plerisque in locis ope manuscriptorum vel emendantur, vel plenius
+    afferuntur. Hi porro codices tum mss. tum editi, nobis ad hæc adornanda subsidio fuerunt.
+    Codex Regius 1825, XI vel XII sæculi, membranaceus.
+    Cod. Reg. 1871, egregiæ notæ, X sæculi, membran.
+    Cod. Reg. 1888, bombycinus, XII sæculi.
+    Cod. 1889. recens, continet ab initio Exodi ad caput XII.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="550,960,800,990">
+    Digitized by Google
+  </bloco>
 </pagina>

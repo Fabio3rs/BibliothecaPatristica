@@ -1,50 +1,136 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,90">
-    395 HEXAPLORUM QUÆ SUPERSUNT. 396
-    TO EBPAIKON. TO EBPAIKON ΑΚΥΛΑΣ.
-    Ἑλληνικοὶς γράμμασι.
+  <bloco tipo="cabecalho" script="misto" bbox="50,20,950,60">
+    595 HEXAPLORUM QUÆ SUPERSUNT. 596
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,90,320,220">
-    והשוטי מי ישׁוה
-    אם־יחד על־עפר מזח 16
+  
+  [!-- Top Section Headers --]
+  <bloco tipo="texto_principal" script="grego" bbox="100,70,300,90">
+    TO ΕΒΡΑΙΚΟΝ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,90,680,220">
+  <bloco tipo="texto_principal" script="grego" bbox="380,70,600,110">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικος γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,70,850,90">
+    ΑΚΥΛΑΣ.
+  </bloco>
+
+  [!-- Top Section Content --]
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,100,300,140">
+    ותחתי מי ישרתי
+    אם-יחי על-עפר נחתי 16
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,100,600,140">
     16.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,100,850,140">
+    16.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,150,300,170">
     VERSIO HEBRAICI TEXT.
-    Et præstolationem meam quis intuetur eam?
-    16. Num pariter super pulverem requies?
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,90,960,220">
+  <bloco tipo="texto_principal" script="latino" bbox="380,150,600,170">
     VULGATA LATINA.
-    Et patientiam meam quis considerat?
-    16. Putasne saltem ibi erit requies mihi?
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,150,850,170">
     AQUILA.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,175,300,240">
+    Et præstolationem meam quis
+    intuebitur eam?
+    16. Num pariter super pulverem
+    requies?
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,175,600,240">
+    Et patientiam meam quis con-
+    siderat?
+    16. Putasne saltem ibi erit re-
+    quies mihi?
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,175,850,240">
     16.
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="40,220,960,420">
+
+  [!-- Notes Section --]
+  <bloco tipo="nota" script="latino" bbox="50,250,950,270">
     Notæ et variæ lectiones ad cap. XVII Job.
-    V. 1. Ἄλλος, φονεύομαι τοῖς λογισμοῖς. Colbert.
-    V. 2. Σ., παραλελόυγται. Colbert.
-    V. 3. Colbertinus habet, ex 6. oi ō, id est, quatuor versiculi, στίχοι, ex Theodotione. Notat postea post primum versiculum, Symmachum deinde cum Theodotione concurrere. Itaque sic quatuor versiculi erant in Hexaplari τῶν 0ᵗ editione:
-    ✳ 6. τις ἐστιν οὗτος; τῆς χειρὸν μοι συνεθέτω,
-    ✳ Σ. 8. ὅτι καρδίαν αὐτῶν ἐχρύσαν (l. Ἐχρύψας)
-    (*) Certe certius est alterum siglum, ϘR non prós sed Θεοδοτίον significare: sic vero enonlantor omnes difficultates e quibus se non potuit expedire ill. hexaplorum instaurator, ut ingenue fatetur in
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,420,960,480">
+
+  <bloco tipo="nota" script="misto" bbox="50,275,500,380">
+    V. 1. Ἄλλος, φονεύσομαι τοῖς λογισμοῖς. Colbert.
+    V. 2. Σ., παραλελόγισμαι. Colbert.
+    V. 3. Colbertinus habet, ἐκ Θ. οἱ δ', id est, qua-
+    tuor versiculi, στίχοι, ex Theodotione. Notat postea
+    post primum versiculum, Symmachum deinde cum
+    Theodotione concurrere. Itaque sic quatuor versi-
+    culi erant in Hexaplari τῶν Ο' editione :
+    ☧ Θ. τίς ἐστιν οὗτος ; τῇ χειρί μου συνδεθήτω,
+    ☧ Σ. Θ. ὅτι καρδίαν αὐτῶν ἐκρυψαν (l. ἐκρυψας)
+  </bloco>
+
+  <bloco tipo="nota" script="misto" bbox="520,275,950,380">
+    ἀπὸ φρονήσεως
+    ☧ Διὰ τοῦτο οὐ μὴ ὑψώσης αὐτούς.
+    ☧ Τῇ μερίδι ἀναγγέλλει (l. ἀναγγελεῖ) κακίας.
+    Hos item versus asteriscis notat editio Latina, ut
+    nos edimus. In codice Colbertino post illud ἐκ Θ.
+    οἱ δ' subjicitur ⸖ , quo significatur, ut puto,
+    solum Theodotionem in primo versiculo haberi
+    μόνος πρὸς ᾱ. Symmachum deinde indicat pro se-
+    cundo, tertio et quarto, hoc modo, ☧ C  ☧ ☧.(¹)
+  </bloco>
+
+  <bloco tipo="nota" script="latino" bbox="50,385,950,410">
+    (¹) Certo certius est alterum siglum, ⸖ non πρὸς sed Θεοδοτίων significare : sic vero enodantur
+    omnes difficultates e quibus se non potuit expedire ill. hexaplorum instaurator, ut ingenue fatetur in
+  </bloco>
+
+  [!-- Bottom Section Header --]
+  <bloco tipo="cabecalho" script="latino" bbox="400,420,600,440">
     CAPUT XVIII JOB.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,480,320,820">
-    במות 3 3.
-    סך נפש באש 4 4.
-    לא־יגא־שובו אש 5 5.
-    ארד חושך באהל 6 6.
-    עלי 7 7.
-    מחוללי עטר 9 9.
-    ומלחות על־כיתב 10 10.
-    לגגיו יה רהב אב 11, 12 11, 12.
+
+  [!-- Bottom Section Headers --]
+  <bloco tipo="texto_principal" script="grego" bbox="100,450,300,470">
+    TO ΕΒΡΑΙΚΟΝ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,480,680,820">
-    TO EBPAIKON
+  <bloco tipo="texto_principal" script="grego" bbox="380,450,600,490">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,450,850,470">
+    ΑΚΥΛΑΣ.
+  </bloco>
+
+  [!-- Bottom Section Content - Hebrew Column --]
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,480,300,720">
+    מדוע 3
+    חרף נפשו באפו 4
+    לא-ינה שבב אש 5
+    אור חשך באהלו 6
+    עליו
+    תשלכנו עצתו 7
+    יחזק עליו צמים 9
+    חבלו-טמן בארץ 10
+    לגריו יה רעב 12, 11
+  </bloco>
+
+  [!-- Bottom Section Content - Greek Translit Column --]
+  <bloco tipo="texto_principal" script="latino" bbox="380,480,600,720">
+    5.
+    4.
+    5.
+    6.
+    7.
+    9.
+    10.
+    11, 12.
+  </bloco>
+
+  [!-- Bottom Section Content - Aquila Column --]
+  <bloco tipo="texto_principal" script="latino" bbox="750,480,850,720">
     3.
     4.
     5.
@@ -53,38 +139,58 @@
     9.
     10.
     11, 12.
+  </bloco>
+
+  [!-- Bottom Section Latin Translations --]
+  <bloco tipo="texto_principal" script="latino" bbox="100,730,300,750">
     VERSIO HEBRAICI TEXT.
-    3. Quare.
-    4. Rapiens animam suam in furore suo.
-    5. Et non splendet scintilla ignis ejus.
-    6. Lux tenebrescit in tabernaculo ejus.
-    Super eum.
-    7. Et projiciet eum consilium suum.
-    9. Roborabit super eum siti- bundos.
-    10. Et decipula ejus super semitam.
-    11, 12. In pedibus ejus. Erit famelicum robur ejus.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,480,960,820">
-    TO EBPAIKON
-    3.
-    4.
-    5.
-    6.
-    7.
-    9.
-    10.
-    11, 12.
+  <bloco tipo="texto_principal" script="latino" bbox="380,730,600,750">
     VULGATA LATINA.
-    3. Quare.
-    4. Qui perdis animam tuam in furore tuo.
-    5. Nec splendet flamma ignis ejus.
-    6. Lux obtinebrescet in tabernaculo illius.
-    Super eum.
-    7. Et præcipitabit eum consilium suum.
-    9. Et exardescet contra eum sitis.
-    10. Et decipula illius super semitam.
-    11, 12. Et involvent pedes ejus. Attenuetur sane robur ejus.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,730,850,750">
     AQUILA.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,755,300,920">
+    3. Quare.
+    4. Rapiens animam suam in fu-
+    rore suo.
+    5. Et non splendebit scintilla
+    ignis ejus.
+    6. Lux tenebrescit in taberna-
+    culo ejus.
+    Super eum.
+    7. Et projiciet eum consilium
+    suum.
+    9. Roborabit super eum siti-
+    bundos.
+    10. Et decipula ejus super se-
+    mitam.
+    11, 12. In pedibus ejus. Erit
+    famelicum robur ejus.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="380,755,600,920">
+    3. Quare.
+    4. Qui perdis animam tuam in
+    furore tuo.
+    5. Nec splendebit flamma ignis
+    ejus.
+    6. Lux obtenebrescet in taber-
+    naculo illius.
+    Super eum.
+    7. Et præcipitabit eum consi-
+    lium suum.
+    9. Et exardescet contra eum
+    sitis.
+    10. Et decipula illius super se-
+    mitam.
+    11, 12. Et involvent pedes ejus.
+    Attenuetur fame robur ejus.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="750,755,850,920">
     3.
     4.
     5.
@@ -94,8 +200,12 @@
     10.
     11, 12.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="720,920,960,980">
+
+  <bloco tipo="rodape" script="latino" bbox="600,950,900,980">
     Digitized by Google
   </bloco>
-  <notas>Scripts presentes: latim, hebraico, grego header. Pequenas abreviações e sinais críticos latinos e gregos mantidos literais; usei [nenhum ilegivel] pois todas as palavras foram legíveis na imagem.</notas>
+  
+  <notas>
+    Símbolos críticos como ☧ e ⸖ foram transcritos conforme visíveis. O texto hebraico foi transcrito literalmente da imagem, incluindo possíveis variações ortográficas visíveis (ex: לא-ינה em vez de לא-ינהג).
+  </notas>
 </pagina>

@@ -1,76 +1,81 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,110">
-    HEXAPLORUM QUAE SUPERSUNT.
+  <bloco tipo="cabecalho" script="latino" bbox="100,40,900,70">
+    1031 HEXAPLORUM QUÆ SUPERSUNT. 1032
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="20,110,990,410">
-    TO EBRAIKON.            TO EBRAIKON            AKYΛAΣ.
-    .27.                    27.                   27.
-    .28.                    28.                   28.
-    .29.                    29.                   29.
-    
-    (Hebrew column)        Ελληνικοις γραμμασι.      (Greek/Latin headings)
-    (Hebrew)                27.
-    (Hebrew)                28.
-    (Hebrew)                29.
-    
-    (Hebrew words)         30.                    30.
-                           32.                    32.
-                           34.                    34.
-                           36.                    36.
-    
-    VERSIO HEBRAICI TEXT.  VULGATA LATINA.        .36. (Όμαλγ.)
-    27. Golan.              27. Gaulon.            AQUILA.
-    28. Dabrath.            28. Dabereth.         27.
-    29. Jarmuth.            29. Jaranoth.         28.
-    
-    Engannim.              Engannim.
-    
-    30. Misal.             30. Masal.             30.
-    32. Homicidæ.          32. Vacat.             32.
-    
-    34. Jocnanm.           34. Jeconm.            34.
-    Carta.                 Cartha.
-    36.                    36. Misor.             36. Planitiem.
-    
+  
+  <bloco tipo="texto_principal" script="misto" bbox="100,70,900,250">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ ΑΚΥΛΑΣ.
+    Ἑλληνικοῖς γράμμασι.
+    אהלתלח 27 27. 27.
+    אידברה 28 28. 28.
+    אתירוחת 29 29. 29.
+    אטיעין נביב
+    לאמשא 30 30. 30.
+    הרמה 32 32. 32.
+    םיקיתע 34 34. 34.
+    התרקח
+    36 36. 36. ('Ομαλήν.)
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,250,900,400">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+    27. Golan. 27. Gaulon. 27.
+    28. Dabrath. 28. Dabereth. 28.
+    29. Jarmuth. 29. Jaramoth. 29.
+    Engannim. Engannim.
+    30. Misal. 30. Masal. 30.
+    32. Ilomicidæ. 32. Vacat. 32.
+    34. Jocnaam. 34. Jecnam. 34.
+    Cartha. Cartha.
+    36. 36. Misor. 36. Planitiem.
+  </bloco>
+
+  <bloco tipo="nota" script="misto" bbox="100,400,900,550">
     Notæ et variæ lectiones ad cap. XXI Josue.
-    V. 9. 'Αλλοι, προσϕετειν αυτων. Basil. Hæc interpretatio videtur esse Symmachi, ut supra, c. XIV, v. 1.
-    V. 4. 'Αλλοι, δια χιλιας. Basil.
-    V. 16. 'Αλλοι, και 'Αν' etc. Sic Basil. in icetu, qui hodiernam των ὀ lectionem ad marginem refert.
-    V. 20. 'Α., Σ., παλαις κλπρων αυτων. Ex Basil. et
-    Drusiο. ϕ' ε ϕ. videntur legisse ϲΕΠΘ, qui vertunt, ιχϕων αυτων.
-    V. 23. 'Αλλ, 'Ελδδακι etc. Ex Basil.
-    V. 27. 'Αλλοι, Γωλον. Basil.
-    V. 28. 'Αλλοι, Δαβραθ. Basil.
-    V. 29. 'Αλλοι, Γωμ.? 'Αλλοι, Ερμοθ. Basil. Ibid. οι λοιποι, Πηγανη, lapsu scilicet grafico pro παγκη Γανιη. Basil.
+    V. 2. Ἄλλος, πρόσθεια αὐτῶν. Basil. Hæc in- Drusio. O' et Θ. videntur legisse םדמד, qui vertunt,
+    terpretatio videtur esse Symmachi, ut supra, c. xiv, ἱερέων αὐτῶν.
+    γ 4. V. 23. Ἄλλ, Ἐλθεκάμ etc. Ex Basil.
+    V. 4. Ἄλλος, διὰ κλήρου. Basil. V. 27. Ἄλλος, Γωλάν. Basil.
+    V. 16. Ἄλλος, καὶ Ἀὶν etc. Sic Basil. in V. 28. Ἄλλος, Δαβράθ. Basil.
+    textu, qui hodiernam τῶν Ο' lectionem ad margi- V. 29. Ἄλλος, Γομάθ. Ἄλλος, Ειρμώθ. Basil.
+    nem refert. Ibid. Οἱ λοιποί, Ιηγανίμ, lapsu scilicet gra-
+    V. 20. Ἀ., Σ., πόλεις κλήρου αὐτῶν. Ex Basil. et phico pro πηγὴν Γανίμ. Basil.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="20,410,990,470">
+
+  <bloco tipo="cabecalho" script="latino" bbox="400,550,600,570">
     CAPUT XXII JOSUE.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="20,470,980,900">
-    TO EBRAIKON.            TO EBRAIKON            AKYΛAΣ.
-    Ελληνικοίς γραμμασι.
-    (Hebrew lines)         1.                     1.
-                           4.                     4.
-                           5.                     5.
-                           8.                     8.
-                           9.                     9.
-    
-    (Hebrew)              10.                    10.
-    
-    VERSIO HEBRAICI TEXT.  VULGATA LATINA.        AQUILA.
-    1. Rubenitas.          1. Rubenitas.          1.
-    4. Servus Domini.      4. Servus Domini.      4.
-    5. Corde vestro.       5. Corde.              5.
-    8. Revertimini.        8. Revertimini.       8.
-    
-    Partimini.             Dividite.
-    
-    9. Reversi sunt.       9. Reversi sunt.      9.
-    Qua apprehensi sunt in ea. Quam obtinucrant.
-    
-    10. Ad culmina.        10. Ad tumulos.        10.
-    
+
+  <bloco tipo="texto_principal" script="misto" bbox="100,570,900,720">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ ΑΚΥΛΑΣ.
+    Ἑλληνικοῖς γράμμασι.
+    ינבארל 1 1. 1.
+    יהו דבע 4 4. 4.
+    םכבל 5 5. 5.
+    ובש 8 8. 8.
+    ךלה
+    ובשיו 9 9. 9.
+    התידאנ אשא
+    תילגלא 10 10. 10.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,720,900,950">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+    1. Rubenitas. 1. Rubenitas. 1.
+    4. Servus Domini. 4. Servus Domini. 4.
+    5. Corde vestro. 5. Corde. 5.
+    8. Revertimini. 8. Revertimini. 8.
+    Partimini. Dividite.
+    9. Reversi sunt. 9. Reversi sunt. 9.
+    Qua apprehensi sunt in ea. Quam obtinuerant.
+    10. Ad confinia. 10. Ad tumulos. 10.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="550,960,800,990">
     Digitized by Google
   </bloco>
-  <notas>Observações: página com texto misto latino, grego e hebraico. Partes do hebraico e algumas palavras gregas são manchadas/ilegíveis; indicado genericamente como (Hebrew) onde os sinais são pequenos e agrupados. Preservou-se a ordem visual: colunas esquerda então direita. BBOXs estimados em escala 0-1000.</notas>
+
+  <notas>
+    O documento apresenta colunas comparativas de textos bíblicos (Hexapla). O texto hebraico em algumas seções parece apresentar inversões ou caracteres específicos desta edição (ex: "ינבארל" para לבני ראובן). Transcrição literal dos caracteres visíveis.
+  </notas>
 </pagina>

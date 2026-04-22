@@ -1,25 +1,30 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,90">
-    67 HEXAPLORUM QUAE SUPERSUNT. 65
-    CAPUT XI LIB. II REGUM.
-    TO EBPAIKON, TO EBPAIKON AKYΛAΣ.
-    Ελληνικοὶς γράμμασι.
-  </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,90,320,640">
-    וטש 3
-    קהתב 4
-    מטהומא
-    ולשולם ומלכתמה 7
+  <bloco tipo="cabecalho" script="latino" bbox="60,50,100,100">67</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,50,650,90">HEXAPLORUM QUÆ SUPERSUNT.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="900,50,940,90">66</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="350,100,650,130">CAPUT XI LIB. II REGUM.</bloco>
+  
+  <bloco tipo="texto_principal" script="misto" bbox="150,140,300,170">ΤΟ ΕΒΡΑΙΚΟΝ.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="400,140,600,170">ΤΟ ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="800,140,900,170">ΑΚΥΛΑΣ.</bloco>
+  
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,180,350,400">
+    וידרש 3
+    מתקדש 4
+    מטמאתו
+    לשלום המלחמה 7
     מבית המלך 8
-    אחריר משאח המלך
-    חיי וד כלום נפשך אם-אנשד 11
-    אזהדבר הזה
-    את כל דברי המלחמה 18
-    חדרה 25
-    ויאסף 27
-    ויירד הדבר
+    אחריו משאת המלך
+    חי יהי נפשך אם-אעשה 11
+    את-דברך הזה
+    את כל-דברי המלחמה 18
+    והרסה 25
+    ויאספה 27
+    וירע הדבר
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,90,660,640">
+  
+  <bloco tipo="texto_principal" script="latino" bbox="400,180,500,400">
     3.
     4.
     7.
@@ -28,57 +33,52 @@
     18.
     25.
     27.
-    VERSIO HEBRAICI TEXT.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="750,180,900,400">
+    3.
+    4. Ἀπολελουμένη.
+    7.
+    8.
+    11.
+    18.
+    25.
+    27.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="150,420,350,450">VERSIO HEBRAICI TEXT.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="450,420,650,450">VULGATA LATINA.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="800,420,900,450">AQUILA.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="150,460,350,680">
     3. Et requisivit.
     4. Sanctificans se.
     Ab immunditia sua.
-    7. Et in pacem belli.
+    7. Ei in pacem belli.
     8. E domo regis.
     Post eum ferculum regis.
-    11. Vita tua et vita animae tuae, si faciam verbum hoc.
-    18. Omnia verba praelii.
+    11. Vita tua et vita animæ tuæ, si faciam verbum hoc.
+    18. Omnia verba prælii.
     25. Et destrue eam.
     27. Et collegit eam.
     Et malum fuit verbum.
-    Notae et variae lectiones ad cap. XI lib. II Regum.
-    V 3. Σ., περιεγραφάτο. Coislin. 2.
-    V. 7. Σ., περὶ τῆς σωτηρίας. Θ., et ὑγιαίνει ἐκε.
-    V. 4. Ἀπολελουμένη. Reg.
-    Ibid. Σ., ἀπὸ μισασμοῦ αὐτῆς. Θ., ἀπὸ ἀφ-. Reg.
-    V. 8. Ἀλλ., ἐκ προσώπου τοῦ βασιλέως. Reg.
-    et Coislin. 2 qui habent Σ., Θ., ἀπὸ μισασμοῦ ἀφέδρου.
   </bloco>
-  <bloco tipo="texto_principal" script="griego" bbox="670,90,960,640">
-    3.
-    4. Ἀπολελουμένη.
-    7.
-    8.
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="50,640,960,760">
-    CAPUT XII LIB. II REGUM.
-    TO EBPAIKON, TO EBPAIKON ΑΚΥΛΑΣ.
-    Ελληνικοὶς γράμμασι.
-  </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,760,400,980">
-    וטני 3
-    ותא דר שביר ואיש השייר 4
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="410,760,960,980">
-    VERSIO HEBRAICI TEXT.
-    3. Et grandis evaserat.
-    4. Et venit viator ad virum divitem.
-    VULGATA LATINA.
+  
+  <bloco tipo="texto_principal" script="latino" bbox="450,460,650,680">
     3. Requisivit.
     4. Sanctificata est.
     Ab immunditia sua.
     7. Quomodo administraretur bellum.
     8. De domo regis.
-    11. Per salutem tuam, et per salutem animae tuae, non faciam rem hanc.
-    18. Omnia verba praelii.
-    25. Ut desruas eam.
+    Secutusque est eum cibus regius.
+    11. Per salutem tuam, et per salutem animæ tuæ, non faciam rem hanc.
+    18. Omnia verba prælii.
+    25. Ut destruas eam.
     27. Introduxit eam.
     Et displicuit verbum.
-    AQUILA.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="750,460,900,680">
     3.
     4. Abluta.
     7.
@@ -87,10 +87,68 @@
     18.
     25.
     27.
-    3. Quae creverat.
+  </bloco>
+  
+  <bloco tipo="aparato_critico" script="latino" bbox="300,700,700,730">Notæ et variæ lectiones ad cap. XI lib. II Regum.</bloco>
+  
+  <bloco tipo="aparato_critico" script="misto" bbox="150,730,500,800">
+    V. 3. Σ., περιειργάσατο. Coislin. 2.
+    V. 4. Ἀ., ἀπολελουμένη. Reg.
+    Ibid. Σ., ἀπὸ μιασμοῦ αὐτῆς. Θ., ἀπὸ ἀφ-. Reg.
+    et Coislin. 2 qui habent Σ., Θ., ἀπὸ μιασμοῦ ἀφέδρου.
+  </bloco>
+  
+  <bloco tipo="aparato_critico" script="misto" bbox="550,730,900,800">
+    V. 7. Σ., περὶ τῆς σωτηρίας. Θ., εἰ ὑγιαίνει εἰς Coislin. 2.
+    V. 8. Ἀλ., ἐκ προσώπου τοῦ βασιλέως. Reg.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="350,810,650,840">CAPUT XII LIB. II REGUM.</bloco>
+  
+  <bloco tipo="texto_principal" script="misto" bbox="150,850,300,880">ΤΟ ΕΒΡΑΙΚΟΝ.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="400,850,600,880">ΤΟ ΕΒΡΑΙΚΟΝ Ἑλληνικος γράμμασι.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="800,850,900,880">ΑΚΥΛΑΣ.</bloco>
+  
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,890,350,930">
+    הגדל 3
+    ויבא אליו איש העשיר 4
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="400,890,500,930">
+    3.
+    4.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="750,890,950,930">
+    3.
+    4. Καὶ ἦλθε παροδίτης τῷ ἀνδρὶ τῷ πλουσίῳ.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="150,940,350,960">VERSIO HEBRAICI TEXT.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="450,940,650,960">VULGATA LATINA.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="800,940,900,960">AQUILA.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="150,970,350,990">
+    3. Et grandis evaserat.
+    4. Et venit viator ad virum divitem.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="450,970,650,990">
+    3. Quæ creverat.
     4. Cum autem peregrinus quidam venisset ad divitem.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="750,970,950,990">
     3.
     4. Et venit viator viro diviti.
   </bloco>
-  <notas>Scriptos mistos: hebraico, latino e grego. Algumas linhas hebraicas fragmentárias; transcrição realizada literal conservando ortografia impressa. Coordenadas bbox estimadas proporcionalmente à imagem (escala 0-1000).</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="500,970,800,995">Digitized by Google</bloco>
+  
+  <notas>
+    Transcrição de página da Hexapla de Orígenes (Patrologia Graeca).
+    Layout complexo em colunas comparando Hebraico, transliteração grega, versão de Áquila e Vulgata Latina.
+    Texto Hebraico inclui vogais e acentos massoréticos parciais.
+    Notas críticas no rodapé usam abreviações de manuscritos (Σ, Θ, Reg, Coislin).
+  </notas>
 </pagina>

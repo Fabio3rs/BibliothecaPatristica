@@ -1,34 +1,39 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,90">
-555    SUPPLEMENTUM AD OPERA S. AUGUSTINI.    556
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,90">
+555
+SUPPLEMENTUM AD OPERA S. AUGUSTINI.
+556
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="40,100,490,940">
+
+  <bloco tipo="texto_principal" script="latino" bbox="40,90,480,320">
 saepius sparsum accepimus. Credas non dicam doctis-
 simo, quia, ut Petronii verbis utar, non sum de glo-
 riosis, saltem amicissimo, te multum olei et operae,
-plurimum vero; etiam salis perdidisse, dum eodem tua
+plurimum vero;etiam salis perdidisse, dum eodem tua
 scripta condenda existimasti, veritus ne illa molesta
-et insipida lectoribus viderentur. Etenim si sali [ilegivel]
-tot lepidis de Glyceria, et Glycereo, de
+et insipida lectoribus viderentur. Etenim si sali pe-
+percisses, tot lepidis de Glyceria, et Glycerio, de
 Melania, et Melanio scholiis conspersa sunt, tam
 bellis historiolis de Albino, aut patre, aut avo, aut
-avunculo, aut socero, aut patrio condita, ut minime
+avunculo, aut socero, aut patruo condita, ut minime
 dubitem quin eruditi non modo hilari animo, verum
 etiam ore ridenti eadem lecturi sint. Certe egomet,
 qui tamen illis impeter, non potui, cum illa legerem,
 a risu temperare.
+  </bloco>
 
+  <bloco tipo="texto_principal" script="latino" bbox="40,320,480,450">
 Quoniam tuae elegantissimae simulque vehementissi-
-mae praefationis mentio incidit, juvat unam et alte-
-ram illius periodum hic recitare. Haec fulmina contra
+mae praefationis mentio incidit, juvat unam et alteram
+illius periodum hicrecitare. Haec fulmina contra
 ecclesiasticae historiae cultores, seu ut vocas, bajulos
-valentissimos, ore tonas: In ruri[s] caesisque versantur:
-dummodo antiquarios se ostendant, sibi satisfaciant;
-literarios et ruderarios praestant. Latomorum instar
-cadunt lapicidinas priscorum monumentorum, et ef-
-ferunt lapides, et aceruos struunt. Scias velim bajulos
-illos valentissimos strenuos etiam lapidarios quando-
-que agere. Saxa eadem qua volumina manu volvunt
+valentissimos, ore tonas : In rutis caesisque versantur :
+dummodo antiquarios se ostendant, sibi satisfaciunt ;
+literarios οἱ ruderarios praestant. Latomorum instar
+cedunt lapicidinas priscorum monumentorum, et efferunt
+lapides, et acervos struunt. Scias velim bajulos
+illos valentissimos strenuos etiam lapidarios quandoque
+agere. Saxa eadem qua volumina manu volvunt
 ac revolvunt; siquidem inscripti lapides certissimi
 illis sunt testes antiquitatis. Attende quid a lapidariis
 afferri possit, ut Albinae, de qua tantum pulverem ab
@@ -36,99 +41,128 @@ ingenio tuo excitatu[m] video, et pater, et frater, et
 familiae etiam intelligantur. In libello de Vita S. Me-
 laniae apud Surium die 31 Decembris, Lippomanum
 vero die 31 Ianuarii, haec de eadem recitantur, cum
-Byzantium appulisset: Inueniri autem summum quoque pa-
-trum Volusianum gravis morbo oppressum. Exstat in
+Byzantium appulisset : Inuenit autem suum quoque pa-
+trum Volusianum gravi morbo oppressum. Exstat in
 bibliotheca serenissimi Magni Ducis idem libellus
 Graece scriptus, inter opuscula S. Gregorii Nazianzeni
 in pluteo 7, num. 6, ubi laudata verba ita leguntur:
-εὑρέθη δὲ καὶ τὸν θεῖον τοῦ Βολουσιανοῦ χαλεπῷ νόσῳ κεκριμένον.
-At falsum est Volusianum finisse patruum S. Melaniae; etenim pater Melaniae nullum fratrem habuit, cum unicus filius Melaniae seniori fuisset, quemadmodum Hieronymus, Paulinus ac Palladius, quorum verba superius laudavi, disertissime contestantur. Quare cum Volusianus non fuerit frater patris Melaniae junioris, nec istius patruus scribi potest. Ex interpretum vitio error vulgaris derivavit. Photius codice VII Volusiani mentionem facit, idemque ibidem nuncupatur θεῖος τῆς ἀγρίας Μελάνιας. At nomen illud θεῖος apud Graecos promiscuè significat fratrem patris et matris, nempe patruum vel avunculum; quemadmodum apud Italos vox zio et apud Hispanos tio, quae verba a Graecis mutuata esse mihi certum est, idque forte etiam ostendit Octavius Ferrarius V. C. et magnum bonarum artium in Italia columen et praesidium, in opere de Origine linguae Italicae, quod proxime typis daturus est. Interpretes, quos inter Schotius, genealogiae Melaniae ignari, vo-
-cem θεῖον patruum Latine reddiderunt, cum avunculum scribere debuissent, et quidem Baronius ad an. 420
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,140,520,185">
-A
+
+  <bloco tipo="texto_principal" script="grego" bbox="55,430,475,500">
+εὑρέθη δὲ καὶ τὸν θεῖον αὐτῆς Βολουσιανὸν χαλεπῇ νόσῳ
+κεχρατημένον.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,100,970,480">
+
+  <bloco tipo="texto_principal" script="latino" bbox="40,500,480,650">
+At falsum est Volusianum finisse pa-
+truum S. Melaniae; etenim pater Melaniae nullum
+fratrem habuit, cum unicus filius Melaniae seniori fnerit,
+quemadmodum Hieronymus, Paulinus ac Palladius, quorum verba superius laudavi, disertissime
+contestantur. Quare cum Volusianus non fuerit frater
+patris Melaniae junioris, nec istius patr̄uus scribi potest. Ex interpretum vitio error vulgaris derivavit.
+Photius codice LII Volusiani mentionem facit, idemque ibidem nuncupatur θεῖος τῆς ἁγίας Μελανίας. At
+nomen illud θεῖος apud Grecos promiscue significat
+fratrem patris et matris, nempe patruum vel avuncu-
+lum ; quemadmodum apud Italos vox zio et apud
+Hispanos tio, quae verba a Grecis mutuata esse mihi
+certum est, idque forte etiam ostendet Octavius Ferrarius V. C. et magnum bonarum artium in Italia
+columen et presidium, in opere de Origine linguae
+Italicae, quod proxime typis daturus est. Interpretes,
+quos inter Schotius, genealogiae Melaniae ignari, vocem
+θεῖον patruum Latine reddiderunt, cum avunculum
+scribere debuissent, et quidem Baronius ad an. 420
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="480,140,520,185">A</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="500,90,970,430">
 recte Volusianum S. Melaniae avunculum dixit. Itaque
 Volusianus fuit frater Albinae et avunculus sanctae
-Melaniae. Ex his pater, frater ac familia Albinae
-nullis huc usque scriptoribus indagata, intelligitur.
-Etenim illa fuit filia Rufii Ceionii Albini ac soror
-Rufii Ceionii Volusiani, ut postea ostendam. Albinos
-e Ceionia gente fuisse patet ex epistola Ceionii ad
-Ælium Bassianum, apud Capitolinum in Albino, cap. 4.
-Ibi vero Clodius Albinius Ceionii filius, qui una cum
-Septimio Severo Caesar fuit, laudatur a Capitolino uti
-originem a Romanis familiis trahens, Posthumiorum
-scilicet, et Albiorum Ceioniorum. Quae familia, inquit,
-hodie quoque, Constantinae maxime, nobilissima est, et
-per te aucta et augenda, quae per Gordianos et
-Gallienum plurimum crevit. Quod vero ex hac familia,
-Constantino imperante, summos honores consecutus
-fuerit, ex hac inscriptione multa colligitur apud Gruterum pag. [ilegivel], 5:
+Melaniae. Ex his pater, frater ac familia Albinae nullis huc usque scriptoribus indagata, intelligitur. Etenim
+illa fuit filia Rufii Ceionii Albini ac soror Rufii Ceionii Volusiani, ut postea ostendam. Albinos e Ceionia
+gente fuisse patet ex epistola Ceionii ad Ælium Bassianum, apud Capitolinum in Albino, cap. 4. Ibi vero
+Clodius Albinus Ceionii filius, qui una cum Septimio
+Severo Caesar fuit, laudatur a Capitolino uti originem
+a Romanis familiis trahens, Posthumiorum scilicet,
+et Albiorum Ceioniorum. Quae familia, inquit, hodie
+quoque, Constantinae maxime, nobilissima est, et per te
+aucta et augenda, quae per Gordianos et Gallienum plurimum crevit. Quod vero ex hac familia, Constantino
+imperante, summos honores consecutus fuerit, ex hac
+inscriptione mutila colligitur apud Gruterum pag.
+CCCLXXVII, 5:
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="510,480,970,640">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="480,310,520,345">B</bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="500,430,970,600">
 RELIGIOSISSIMOQUE.
-C. CEIONIO. RVFVO. VOLVSINIO. V. C.
+C. CEIONIO. RVFO. VOLVSIANO. V. C.
 CORR. ITALIAE. PER ANNOS OCTO.
-PROCONSVL. AFRICAE.
+PROCONSVL AFRICAE.
 COMITI. DOMINI. NOSTRI.
 CONSTANTINI. INVICTI.
-ET PERPETV[ilegivel] SEMP[ilegivel] AVGVTIS.
-PRAEFECTO. VERBI. IVDICI. SACRARVM.
+ET PERPET VI. SEMPER AVGVTIS.
+PRAEFECTO. VERBI. IV DICI. SACRARVM.
 COGNITIONVM. CONSVL.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,310,520,345">
-B
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,640,970,940">
+
+  <bloco tipo="texto_principal" script="latino" bbox="500,600,970,740">
 At Ceionia familia ante Albinum Severi collegam
-Romanum orbem moderata est; etenim L. Ceionius C.
-in Æliam et Antoniam familiam transcriptus, cum
+Romanum orbem moderata est; etenim L. Ceionius
+familia etiam intelligantur. In libello de Vita S. Me-
+laniae apud Surium die 31 Decembris, Lippomanum
+vero die 31 Ianuarii, haec de eadem recitantur, cum
+Byzantium appulisset : Inuenit autem suum quoque pa-
+trum Volusianum gravi morbo oppressum. Exstat in
+bibliotheca serenissimi Magni Ducis idem libellus
+Graece scriptus, inter opuscula S. Gregorii Nazianzeni
+in pluteo 7, num. 6, ubi laudata verba ita leguntur:
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="500,740,970,810">
+At Ceionia familia ante Albinum Severi collegam
+Romanum orbem moderata est; etenim L. Ceionius
+C. Æliam et Antoniam familiam transcriptus, cum
 Antonio philosopho Augustus fuit, ac appellatus
-L. Ceionius Ælius Commodus verus Antonius ex Capi-
-tolio in vita ejusdem initio. Illius vero pater Ceionius
-Commodus ab Hadriano Caesar designatus, paulo
+L. Ceionius Ælius Commodus verus Antonius ex Capitolino in vita ejusdem initio. Illius vero pater Ceionius Commodus ab Hadriano Caesar designatus, paulo
 post improvisa morte decesserat. Porro Ceionios Albi-
 nos cognomen Volusiani habuisse constat ex hac
-inscriptione apud meum Panvinium anno V. C. [ilegivel]:
+inscriptione apud meum Panvinium anno V. C.
+MXXCVII :
 S. P. Q.
+  </bloco>
 
-CEIONVM RVFVM ALBINVM. V. C. PHILOSOPHVM. RVF.
-VOLSVIANI. IVD. ORD. CONS. FILIVM. SENAT. CONSVLTO
-SVQ. EIVS. LIBERIS. POST. CASARIANAE. TEMPORA. I.
-POST. ANNOS. CCLXXXX. ET. I. AUCTORITATE. DECREVIT.
-FL. MAGNNVS. IANVARIVS. V. C. VII. STATVARVM.
+  <bloco tipo="aparato_critico" script="latino" bbox="500,810,970,910">
+CEIONIVM RVFVM. ALBINVM. V. C. PHILOSOPHVM. RVFI.
+VOLVSIANI. IVD. ORD. CONS. FILIVM. SENAT. CONSVLTO
+SVOQ... EIVS. LIBERIS. POST. CAESARIANA. TEMPORA. I.
+POST. ANNOS. CCCLXXX. ET. I. AVCTORITATE. DECREVIT.
+FL. MAGNVS. JANVARIVS. V. C. VII. STATVARVM.
+  </bloco>
 
+  <bloco tipo="nota_marginal" script="latino" bbox="480,480,520,520">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,770,520,820">D</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="500,910,970,980">
 Cum inter majores suos referentur Volusum ducem
-Rutulorum, inde Albinos Volusiani cognomen et
-sumpsisse scribit Rutilius Numatianus lib. I itinerarii
-vers. 167:
-
+Rutulorum, inde Albinos Volusiani cognomen sumpsisse scribit Rutilius Numatianus lib. I itinerarii
+vers. 167 :
 Jamque alii Romam redeuntibus, haerent eunti
-Rufus, Albinique gloria viam patris;
+Rufius, Albini gloria viva patris;
 Qui Volusi antiquo derivat stemmate nomen,
-Et reges Rutulos, teste Marone, referunt.
+Et reges Rutulos, teste Marone, refert.
 
-Hunc Rufum Volusianum Ceionii Albini filium, fra-
-trem nostrae Albinae et S. Melaniae avunculum illum
+Hunc Rufium Volusianum Ceionii Albini filium, fratrem nostrae Albinae et S. Melaniae avunculum illum
 fuisse qui postea contra Pelagianos, cum iterum
 Urbi praefectus esset, edictum publicavit, scribunt
-eruditi viri cardin. Baronius ad annum 412, et
-Jacobus Sirmondus in notis ad epistolam 16, lib. ii,
-Sidonii, quibus subservit Rutilii scholiaste Casparus
+eruditiss. viri cardin. Baronius ad annum 419, et
+Jacobus Sirmondus in notis ad epistolam 16, lib. IX,
+Sidonii, quibus subscribit Rutilii scholiaste Casparus
 Barthius num. 169. Itaque Ceionia Albina mater
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,480,520,520">
-C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,770,520,820">
-D
-  </bloco>
+
   <notas>
-- Ocorreu leitura parcial incerta em alguns termos (especialmente algarismos romanos em "Gruterum pag. [ilegivel]" e em partes da inscrição em maiúsculas); nesses casos substituí a palavra incerta por [ilegivel] (marcação por palavra, conforme instruções).
-- Um fragmento grego foi transcrito; alguns vocábulos apresentavam incerteza e foram normalizados para a forma mais provável: "εὑρέθη δὲ καὶ τὸν θεῖον τοῦ Βολουσιανοῦ χαλεπῷ νόσῳ κεκριμένον". Onde houvesse impossibilidade de leitura segura, usei [ilegivel].
-- Coloquei quatro notas marginais (A, B, C, D) conforme letras visíveis na margem central vertical.
-- BBOX foram aproximadas em escala 0-1000 para mapear visualmente os blocos (cabeçalho, colunas, aparatos e notas marginais).
+- Transcrição baseada na leitura direta da imagem; marcas de margens centrais (A, B, C, D) foram lançadas em blocos próprios.
+- Mantive a segmentação e os hífens de quebra de linha conforme o impresso (quando visíveis).
   </notas>
 </pagina>

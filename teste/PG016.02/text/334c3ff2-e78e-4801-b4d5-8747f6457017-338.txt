@@ -1,116 +1,145 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,80">
-    HEXAPLORUM QUÆ SUPERSVNT.
-    TO EBPAIKON. TO EBPAIKON 'Ελληνικοὶ χαρακτῆρες. AKYΛΑΣ.
-    1923 1924
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,60">
+    1923 HEXAPLORUM QUÆ SUPERSUNT. 1924
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="20,80,320,420">
-    TO ΕΒΡΑΙΚΟΝ.
-    11 הנה אנכי מרביץ בכם אביך
-    12 כנגד
-    16 בוא
-    17 ויחיה
-    וכל-לשון תתן-לך להכאיב
-    VERSIO HEBRAICI TEXT.
-    pacis meæ non movebit se, dixit
-    miserator tuus Dominus.
-    11. Ecce ego faciens accubare
-    in carbunculo lapides tuos.
-    12. Crystallum.
-    Et portas tuas in lapides gemmæ rutilantis.
-    16. In igne.
-    17. Fictum.
-    Et omnis lingua surget tecum
-    ad judicium.
+  
+  [!-- Top Section: Hebrew, Greek Transliteration, Aquila --]
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,320,200">
+    TO EBPAIKON.
+    יא הנה אנכי מרביץ באבניך
+    יב כדכד
+    ושעריך לאבני אקדח
+    טז באש
+    יז וצרי
+    וכל-בניך למודי יהוה
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,80,660,420">
+  <bloco tipo="texto_principal" script="grego" bbox="350,60,620,200">
     TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
     11.
     12.
     16.
     17.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,60,950,200">
+    AKYΛAΣ.
+    11. Ἰδοὺ κατακλίνω ἐν στίβει τοὺς λίθους σου.
+    12.
+    Τὰς πύλας σου λίθους τρυπανισμοῦ.
+    16. ⛪ Ἐν πυρί.
+    17. Πλασσόμενον.
+  </bloco>
+
+  [!-- Top Latin Section --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,210,320,240">
+    VERSIO HEBRAICI TEXT.
+    pacis meæ non movebit se, dixit miserator tuus Dominus.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,210,620,240">
     VULGATA LATINA.
-    a te, et foedus pacis meæ non
-    movebitur : dixit miserator tuus
-    Dominus.
-    11. Ecce ego sternam per ordi-
-    nem lapides tuos.
+    a te, et fœdus pacis meæ non movebitur : dixit miserator tuus Dominus.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,210,950,240">
+    AQUILA.
+  </bloco>
+
+  [!-- Verses 11-17 Latin --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,250,320,380">
+    11. Ecce ego faciens accubare in carbunculo lapides tuos.
+    12. Crystallum.
+    Et portas tuas in lapides gemmæ rutilantis.
+    16. In igne.
+    17. Fictum.
+    Et omnis lingua surget tecum ad judicium.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,250,620,380">
+    11. Ecce ego sternam per ordinem lapides tuos.
     12. Jaspidem.
     Portas tuas lapides sculptos.
     16. In igne.
     17. Quod fictum est.
-    Et omnem linguam resistentem
-    tibi in judicio.
+    Et omnem linguam resistentem tibi in judicio.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="680,80,980,420">
-    AKYΛΑΣ.
-    11. Ἰδού κατακλίνω ἐν στίβι
-    τοὺς λίθους σου.
+  <bloco tipo="texto_principal" script="latino" bbox="650,250,950,380">
+    11. Ecce depono in stibio lapides tuos.
     12.
-    16. Ἐν πυρί.
-    17. Πλασσόμενον.
-    AQUILA.
-    11. Ecce depono in stibio la-
-    pides tuos.
-    12.
-    Portas tuas lapides cælaterrae.
-    16. ✶ In igne.
-    17. Formatun.
+    Portas tuas lapides cælaturos.
+    16. ⛪ In igne.
+    17. Formatum.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="20,420,980,680">
+
+  [!-- Critical Notes --]
+  <bloco tipo="cabecalho" script="latino" bbox="250,390,750,410">
     Notæ et variæ lectiones ad cap. LIV Hesaiæ.
-    V. 1. Hieronymus : a Symmachus hunc locum
-    ita interpretatus est : Letare, sterilis, quæ non pe-
-    perisit : gaude in exultatone, et hinni, quæ non par-
-    turisti ; plures enim filii dissipatae magis quam ejus
-    quæ erant sub viro ; a quo Theodocio et Aquila, præ-
-    ter pauca verba, non discrepant.•
-    Ibid. 'A., Iκπανον etc. Ex Curterio et Procopio.
-    Illud autem, και τέτρω, premisso asterisco adfert
-    Curterius ex cod. Marchaliano. [Aquila et Symma-
-    chi versiones invicem permutatvi, a Drusiō in er-
-    rorem inductus, Mountf., qui, ait Schleusn., oculis
-    nimis fugiëntibus, aut potius nullis, inspexit verba
-    Procopii. Et revera hæc in commentario sic legun-
-    tur : 'Αντ' δε του ὧν ἐρημον και βόσκου, Συμ. μεν, κε-
-    θέλεσ... ειρηκεν, ὁ δε' Αχ., λιθάρων... DRACH.]
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="50,415,480,580">
+    V. 1. Hieronymus : « Symmachus hunc locum ita interpretatus est : Lætare, sterilis, quæ non peperisti : gaude in exsultatione, et hinní, quæ non parturisti; plures enim filii dissipatæ magis quam ejus quæ erat sub viro ; a quo Theodotio et Aquila, præter pauca verba, non discrepant. »
+    Ibid. Ἀ., Δάρυγον etc. Ex Curterio et Procopio. Illud autem, καὶ τέρπου, præmisso asterisco adfert Curterius ex cod. Marchaliano. [Aquilæ et Symmachi versiones invicem permutavit, a Drusio in errorem inductus, Montf., qui, ait Schleusn., oculis nimiis fugientibus, aut potius nullis, inspexit verba Procopii. Et revera hæc in commentario sic leguntur : Ἀντὶ δὲ τοῦ ῥσον καὶ βόησον, Σύμ. μὲν, κα-λάδες... εἴρηκεν, ὁ δὲ Ἀκ., Δάρυγον... DRACH.]
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="500,415,950,580">
+    V. 3. Σ., καὶ πόλεις ἦσαν. Procopius.
+    V. 9. Σ., ὡς αἱ ἡμέραι Νῶε etc. Procopius. Theodotionis vero versionem ex Curterio et ms. Jes. mutuamur hoc et sequenti versu. [In Symmachi lectione addidimus ex ipso Procopio particulam ἔτι. In Marchaliano cod. Θ. connectit ἐν σοὶ sequenti versiculo ; hoc modo : Ἐν σοὶ γὰρ τὰ ὄρη σαλευθήσονται. Sic etiam LXX connectunt. DRACH.]
+    V. 10. Σ., ἱλεὼς σοι Κύριος. Procopius.
+    Ibid. οἱ Γ', εἰπὼν οἰκτείρας etc. Curter. ex ms. Jes.
+    Ibid. Ο', ἱλεὼς σοι Κύριος. Ita Compl. Ed. Rom., ἱλεώς σοι, Κύριε. Alex. vero, Κύριος ἱλ. σοι. DRACH.
+    V. 11. Ἀ., ἰδοὺ etc. Euseb., Procop., Drusius et unus Reg. Eusebius ad Symmachum legit, στιμμίς, ad Theodotionem, στιμμή. Procopius in tri-
+  </bloco>
+
+  [!-- Bottom Section Header --]
+  <bloco tipo="cabecalho" script="latino" bbox="350,590,650,610">
     HESAIÆ CAPUT LV.
+  </bloco>
+
+  [!-- Bottom Hebrew, Greek Trans, Aquila --]
+  <bloco tipo="texto_principal" script="misto" bbox="50,615,320,750">
     TO EBPAIKON.
-    ΤΟ ΕΒΡΑΙΚΟΝ
+    א כל צמא
+    ב למה תשקלו כסף
+    ולא-לחם
+    ויגיעכם ללא-שבעו
+    ג שמעו אלי
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="350,615,620,750">
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
     1.
     2.
     3.
-    TO ΕΒΡΑΙΚΟΝ.
-    1. Ἰτε, emite.
-    2. Absque argento et absque pre-
-    tio vinum et lac.
-    3. Misericordias David.
-    VERSIO HEBRAICI TEXT.
-    1. Ite, emite.
-    Absque argento et absque pre-
-    tio vinum et lac.
-    2. Quare appenditis argentum
-    absque pane, et laborem vestrum
-    absque saturitate.
-    Audite audiendo ad me.
-    3. Misericordias David.
-    VULGATA LATINA.
-    1. Properate, emite.
-    Absque argento et absque ulla
-    commulatione vinum et lac.
-    2. Quare appenditis argentum
-    non in panibus, et laborem ve-
-    strum non in saturitate.
-    Audite audientes me.
-    3. Misericordias David.
-    AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,615,950,750">
+    AKYΛAΣ.
     1.
-    Sine commutatione ✶ vinum :
-    et lac.
+    Ἄνευ ἀλλάγματος ⛪ ονον : καὶ γάλα.
     2.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="760,680,980,980">
+
+  [!-- Bottom Latin Section --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,755,320,920">
+    VERSIO HEBRAICI TEXT.
+    1. Ite, emite.
+    Absque argento et absque pretio vinum et lac.
+    2. Quare appenditis argentum absque pane, et laborem vestrum absque saturitate.
+    Audite audiendo ad me.
+    3. Misericordias David.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,755,620,920">
+    VULGATA LATINA.
+    1. Properate, emite.
+    Absque argento et absque ulla commutatione vinum et lac.
+    2. Quare appenditis argentum non in panibus, et laborem vestrum non in saturitate.
+    Audite audientes me.
+    3. Misericordias David.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,755,950,920">
+    AQUILA.
+    1.
+    Sine commutatione ⛪ vinum : et lac.
+    2.
+    3.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
     Digitized by Google
   </bloco>
-  <notas>Layout em três colunas: coluna esquerda contém hebraico e versão latina; coluna central contém números e Vulgata; coluna direita contém grego (Aquila) e comentários. Pequenas palavras ilegíveis marcadas como [ilegivel] não foram encontradas; transcrição feita literal sem normalização.</notas>
+  <notas>O símbolo ⛪ foi utilizado para representar uma cruz ou marca crítica presente no texto original (semelhante a um obelo ou asterisco contextual). A palavra "cælaturos" na coluna de Aquila (topo, direita) foi transcrita literalmente conforme apparece na imagem, embora o contexto sugira "cælaturas".</notas>
 </pagina>

@@ -1,23 +1,33 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,70">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,100,40">
+    1387
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,20,650,40">
     HEXAPLORUM QUÆ SUPERSUNT.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,80,320,630">
-    TO EBRAIKON.
-    לא תתן שמות ל-ל
-    21 אל תתן שמחה לחסר-לב
-    22 הכס לא תחשוב אין כה
-    וכבור יעצים תקום
-    26 והודרים
-    27 נער בידה
-    29 בצע מרשעים
-    30 מאור-עינים
-    31 און שמעת חומת חיים עקב
-    33 ותלכני כבד ענה
+  <bloco tipo="cabecalho" script="latino" bbox="900,20,950,40">
+    1388
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="340,80,640,630">
-    ΤΟ ΕΒΡΑΙΚΟΝ
-    Ἑλληνικοὶς γράμμασι.
+  
+  <bloco tipo="texto_principal" script="misto" bbox="50,50,320,280">
+    TO ΕΒΡΑΙΚΟΝ.
+    21 אֱלֹהֵי שְׂחוֹק לְסֵר־לִבּ
+    22 מַחְשְׁבוֹת בְּלִי־סוֹד
+    וּבְרֹב יוֹעֲצִים תָּקוּם
+    26 וּנְזִירִים
+    27 עֲכַר בֵּיתוֹ
+    בֹּצֵעַ בָּצַע
+    29 מִרְשָׁעִים
+    30 מִאֹר־עֵינָיִם
+    תִּשְׁקֹ
+    31 אֹזֶן שׁמַעַת תּוֹכַחַת חַיִּים בְּקֶרֶב
+    חֲכָמִים תָּלִין
+    33 לְפָנֵי כָבוֹד עֲנָוָה
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="350,50,550,280">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
     21.
     22.
     26.
@@ -27,51 +37,67 @@
     31.
     33.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,80,940,630">
+
+  <bloco tipo="texto_principal" script="grego" bbox="600,50,950,280">
     ΑΚΥΛΑΣ.
     21.
     22.
-    Και ἐν πλήθει συμβουλευόντων
+    Καὶ ἐν πλήθει συμβουλευόντων
     στήσεται.
     26.
     27.
     29.
-    30. Φωστήρ ὀφθαλμῶν.
+    30. Φωστὴρ ὀφθαλμῶν.
     31.
     33.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,640,320,960">
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,300,320,550">
     VERSIO HEBRAICI TEXT.
-    21. Stultitia lætitia carenti corde.
-    22. Infringere cogitationes in non secreto.
-    Et in multitudine consiliariorum stabit.
+    21. Stultitia lætitia carenti
+    corde.
+    22. Infringere cogitationes in
+    non secreto.
+    Et in multitudine consiliario-
+    rum stabit.
     26. Et munda.
     27. Turbans domum suam.
     Appetens concupiscentiam.
     29. Ab impiis.
     30. Lux oculorum.
     Impinguabit.
-    31. Auris audiens increpationem vitæ, in medio sapientium commorabitur.
+    31. Auris audiens increpatio-
+    nem vitæ, in medio sapientium
+    commorabitur.
     33. Et ante gloriam modestia.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,640,640,960">
+
+  <bloco tipo="texto_principal" script="latino" bbox="350,300,600,550">
     VULGATA LATINA.
     21. Stultitia gaudium stulto.
-    22. Dissipantur cogitationes ubi non est consilium.
-    Ubi vero sunt plures consiliarii, confirmantur.
+    22. Dissipantur cogitationes ubi
+    non est consilium.
+    Ubi vero sunt plures consiliarii,
+    confirmantur.
     26. Et purus sermo.
     27. Conturbat domum suam.
     Qui sectatur avaritiam.
     29. Ab impiis.
-    30. Lux oculorum. Impinguat.
-    31. Auris quæ audit increpationem vitæ, in medio sapientium commorabitur.
-    33. Et gloriam præcedit humilitas.
+    30. Lux oculorum.
+    Impinguat.
+    31. Auris quæ audit increpatio-
+    nem vitæ, in medio sapientium
+    commorabitur.
+    33. Et gloriam præcedit humi-
+    litas.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,640,940,960">
+
+  <bloco tipo="texto_principal" script="latino" bbox="650,300,950,550">
     AQUILA.
     21.
     22.
-    Et in multitudine consiliariorum stabit.
+    Et in multitudine consiliariorum
+    stabit.
     26.
     27.
     29.
@@ -79,50 +105,83 @@
     31.
     33.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,960,940,1370">
+
+  <bloco tipo="nota" script="misto" bbox="50,560,950,680">
     Notæ et variæ lectiones ad cap. XV Proverbiorum.
-    V. 1. Σ., ἀπόκρισις ἀπαλὴ etc. Sic editio Romana et Drusius, et in reliquis versiculis uno excepto qui notatur.
-    V. 5. Οἱ δὲ ἀσεβεῖς ἀλοβήξαι etc. Hæc quæ ab alio interprete diverso modo enuntiantur, et in Vulgata quoque exprimuntur, non existant in Hebræo. Vul-
-    gata alterum interpretem, a LXX diversum, sequitur. Ibid. Ἄλλος, διασώζει. Montf. prave reddidit latine, irridet. Drach.
-    V. 10. Παιδεία ἀκάσου etc., mendose ut videtur ex χασού factum est ἀκάσου: nam Hebraicum חנּו זקוק postulât.
+    V. 1. Σ., ἀπόκρισις ἁπαλὴ etc. Sic editio Romana
+    et Drusius, et in reliquis versiculis uno excepto
+    qui notatur.
+    V. 5. Οἱ δὲ ἀσεβεῖς λόφριζοι etc. Hæc quæ ab alio
+    interprete diverso modo enuntiantur, et in Vulgata
+    quoque exprimuntur, non exstant in Hebræo. Vul-
+    gata alterum interpretem, a LXX diversum, sequitur.
+    Ibid. Ἄλλος, διασύρει. Montf. prave reddidit la-
+    tine, irridet. Drach.
+    V. 10. Παιδεία ἀκάκου etc., mendose ut vide-
+    tur ex κακοῦ factum est ἀκάκου : nam Hebraicum
+    עַן κακοῦ postulat.
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="350,690,650,710">
     PROVERBIORUM CAPUT XVI.
-    TO EBRAIKON.
-    ΤΟ ΕΒΡΑΙΚΟΝ
-    2.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,1370,320,1870">
-    - כל-דרכי-אש
-    2.
-    10 תהפוך
-    11 כלי ומזני משפט
+
+  <bloco tipo="texto_principal" script="misto" bbox="50,710,320,800">
+    TO ΕΒΡΑΙΚΟΝ.
+    2 כָּל־דַּרְכֵי־אִישׁ
+    10 קֶסֶם עַל־שִׂפְתֵי
+    11 כָּל־אַבְנֵי־כִיס
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="340,1370,640,1870">
-    ΤΟ ΕΒΡΑΙΚΟΝ
+
+  <bloco tipo="texto_principal" script="grego" bbox="350,710,550,800">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
     2.
     10.
     11.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,1370,940,1870">
+
+  <bloco tipo="texto_principal" script="grego" bbox="600,710,950,800">
     ΑΚΥΛΑΣ.
     2.
-    Διαυγεῖς ἐν ὀφθαλμοῖς αὐτοῦ.
-    10. Οὐ παροξυσται.
+    Διανυγεὶς ἐν ὀφθαλμοῖς αὐτοῦ.
+    10. Οὐ παραβήσεται.
     11. Σταθμὸς καὶ ζύγια δίκαια.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,810,320,920">
     VERSIO HEBRAICI TEXT.
     2. Omnes viæ viri
     Mundæ in oculis ejus.
     10. Non transgredietur.
-    11. Statera et bilances judicii. Omnes lapides marsupii.
+    11. Statera et bilances judicii.
+    Omnes lapides marsupii.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="350,810,600,920">
     VULGATA LATINA.
     2. Omnes viæ hominis
     Patent oculis ejus.
     10. Non errabit.
-    11. Pondus et statera judicii. Omnes lapides sacculi.
+    11. Pondus et statera judicia.
+    Omnes lapides sacculi.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="650,810,950,920">
     AQUILA.
     2.
     Pellucidæ in oculis ejus.
     10. Non transgredietur.
-    11. Pondus et stateræ justa.
+    11. Pondus et stateræ justæ.
   </bloco>
-  <notas>Scripts presentes: latino, hebraico, greco. Algumas palavras hebraicas parcialmente ilegíveis; mantida ortografia visível sem normalização. BBOX estimadas em escala 0-1000.</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="600,960,900,990">
+    Digitized by Google
+  </bloco>
+
+  <notas>
+    Transcrição de página da edição dos Hexapla (Patrologia Graeca).
+    O texto hebraico na nota (V. 10) foi transcrito como עַן baseado na forma visível.
+    Ortografia latina preservada (e.g., lætitia, commorabitur, Hebræo).
+  </notas>
 </pagina>

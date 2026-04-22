@@ -1,39 +1,31 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,80">
-    HEXAPLORUM QUÆ SUPERSUNT.
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,60">
+    1167 HEXAPLORUM QUÆ SUPERSUNT. 1168
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,90,320,900">
+  
+  [!-- Coluna Esquerda Superior: Hebraico --]
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,70,300,450">
     TO ΕΒΡΑΙΚΟΝ.
-    120 סור מפתע ברי ?
-    121 עשרי משבר?
-    122 בל־תניחי לנפשך ערב עבדי לסוב
-    126 מת לעשות ללדה
-    הפיר תורק
-    136 על לא־שביך תורק.
-    159 שמחתי כנאני
-    143 צר־הצצקצ צנאני מועדך שעועי
-    149 במשפטי חני
-    150 קדם חפין
-    152 קדם ידיתי מעתיך.
-    154 ריבך ריבי
-    VERSIO HEBRAICI TEXT.
-    120. Horruit a pavore tuo caro mea. Hieron., horroripilavit a timore tuo caro mea.
-    121. Feci judicium. Hieron., id.
-    Ne permisstas me opprimenibus me. Hieron., ne derelinquas me his qui calumniantur me.
-    122. Fidejube servo tuo in bonum. Hieron., sponde pro servo tuo in bonum.
-    126. Tempus faciendi Domino. Hieron., tempus est ut facias, Domine.
-    Dissipaverunt legem tuam. Hieron., id.
-    136. Propterea quod non custodiuerunt legem tuam. Hieron., quia non custodierunt legem tuam.
-    139. Succidit me zelus meus. Hieron., consumpsit me zelus meus.
-    143. Afflicto et angustia invenerunt me : praecepta tua delectationes meæ. Hieron., tribulatio et angustia invenerunt me : mandata tua meditatio mea.
-    149. Secundum judicium tuum vivifica me. Hieron., id.
-    150. Appropinquauerunt persecuti me. Hieron., appropinquauerunt persecutores mei.
-    152. A principio cognoui de testimoniis tuis. Hieron., id.
-    154. Contende contentionem meam. Hieron., judica causam meam.
-    Et redime me. Hieron., id.
+    פלח מבשרי יראתי 120
+    עשיתי משפט 121
+    בל-תבטיני לשקרי
+    ערב עבדך לטוב 122
+    עת לעשות ליהוה 126
+    הפרו תורתך
+    פלגי-מים ירדו עיני 136
+    צמתתני קנאתי 139
+    צר-ומצוק מצאוני 143
+    שעשעי
+    כמשפטיך חייני 149
+    קרב רדפי 150
+    קדם ידעתי עדותיך 152
+    ריבה ריבי 154
+    וגאלני
   </bloco>
-  <bloco tipo="texto_principal" script="greco" bbox="330,90,640,900">
-    ΤΟ ΕΒΡΑΙΚΟΝ
+
+  [!-- Coluna Central Superior: Hebraico em letras gregas (apenas números visíveis) --]
+  <bloco tipo="texto_principal" script="misto" bbox="350,70,550,450">
+    TO ΕΒΡΑΙΚΟΝ
     Ἑλληνικοῖς γράμμασι.
     120.
     121.
@@ -46,51 +38,85 @@
     150.
     152.
     154.
+  </bloco>
+
+  [!-- Coluna Direita Superior: Aquila (Grego) --]
+  <bloco tipo="texto_principal" script="grego" bbox="600,70,950,450">
+    ΑΚΥΛΑΣ.
+    120. Ἠλώθη ἀπὸ πτοήσεως ἡ σάρξ μου.
+    121. Ἐποίησα κρίσιν.
+    Μή ἀφῇς με τοῖς συκοφαντοῦσί με.
+    122. Ἐγγύησαι....
+    126.
+    Ἠκύρωσαν τὸν νόμον σου.
+    136.
+    139. Ἐξήλωσέν με ὁ ζῆλός σου.
+    143. Θλιμμὸς καὶ συνοχὴ εὗρόν με...
+    149. Κατὰ κρίσεις σου ζώωσόν με.
+    150.
+    152. Ἀρχθεν ἔγνων ἀπὸ τῶν μαρτυρίων σου.
+    154. Δίκασαι δικασίαν μου.
+    Καὶ ἀγχίστευσον με.
+  </bloco>
+
+  [!-- Coluna Esquerda Inferior: Versão do Texto Hebraico (Latim) --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,460,300,950">
+    VERSIO HEBRAICI TEXT.
+    120. Horruiit a pavore tuo caro mea. Hieron., horripilavit a timore tuo caro mea.
+    121. Feci iudicium. Hieron., id.
+    Ne permittas me opprimentibus me. Hieron., ne derelinquas me his qui calumniantur me.
+    122. Fidejube servo tuo in bonum. Hieron., sponde pro servo tuo in bonum.
+    126. Tempus faciendi Domino. Hieron., tempus est ut facias, Domine.
+    Dissipaverunt legem tuam. Hieron., id.
+    136. Propterea quod non custodierunt legem tuam. Hieron., quia non custodierunt legem tuam.
+    139. Succidit me zelus meus. Hier., consumpsit me zelus meus.
+    143. Afflictio et angustia invenerunt me: præcepta tua delectationes meæ. Hieron., tribulatio et angustia invenerunt me : mandata tua meditatio mea.
+    149. Secundum judicium tuum vivifica me. Hieron., id.
+    150. Appropinquaverunt persequentes me. Hieron., appropinquaverunt persecutores mei.
+    152. A principio cognovi de testimoniis tuis. Hieron., id.
+    154. Contende contentionem meam. Hier., judica causam meam.
+    Et redime me. Hieron., id.
+  </bloco>
+
+  [!-- Coluna Central Inferior: Vulgata Latina --]
+  <bloco tipo="texto_principal" script="latino" bbox="350,460,550,950">
     VULGATA LATINA.
-    120. Confice timore tuo carnes meas.
+    120. Confige timore tuo carnes meas.
     121. Feci judicium.
     Ne tradas me calumniantibus me.
     122. Suscipe servum tuum in bonum.
     126. Tempus faciendi, Domine.
-    Dissipauerunt legem tuam.
+    Dissipaverunt legem tuam.
     136. Quia non custodierunt legem tuam.
     139. Tabescere me fecit zelus meus.
-    143. Tribulatio et angustia invenerunt me : mandata tua meditatio mea est.
+    143. Tribulatio et angustia invenerunt me: mandata tua meditatio mea est.
     149. Secundum judicium tuum vivifica me.
-    150. Appropinquauerunt persequentes me.
-    152. Initio cognoui de testimoniis tuis.
-    154. Judica judicium meum,
+    150. Appropinquaverunt persequentes me.
+    152. Initio cognovi de testimoniis tuis.
+    154. Judica judicium meum.
     Et redime me.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,90,970,900">
-    ΑΚΥΛΑΣ.
-    120. Ἡλθὴν ἀπὸ ποτὲσεως ἡ σὰρξ μου.
-    121. Ἐποίησα κρίσιν.
-    122. Μήθρῃς με τοῖς συκοφαντουσι με.
-    123. Ἐγγίγνα....
-    126.
-    136.
-    139. Ἐζώλεσέν με ὁ ζῆλος σου.
-    143. Θλίψις καὶ συνοχὴ εὗρή με...
-    149. Κατὰ κρίσιν σου ζώσων με.
-    150.
-    152. Ἀρχήθεν ἔγνων ἀπὸ τῶν μαρτυρίων σου.
-    154. Δίκασαι δικαίαι μου.
-    Καὶ ἀγχίτευσον με.
+
+  [!-- Coluna Direita Inferior: Aquila (Latim) --]
+  <bloco tipo="texto_principal" script="latino" bbox="600,460,950,950">
     AQUILA.
     120. Confixa est a consternatione caro mea.
     121. Feci judicium.
     Ne dimittas me calumniantibus me.
     122. Fidejube...
     126.
+    Abrogaverunt legem tuam.
     136.
     139. Perdidit me zelus tuus.
-    143. Afflicto et angustia invenerunt me...
+    143. Afflictio et angustia invenerunt me...
     149. Secundum judicia tua vivifica me.
     150.
-    152. A principio cognoui de testimonis tuis.
+    152. A principio cognovi de testimoniis tuis.
     154. Judica causam meam.
-    Et jure propinquitalis redime me.
+    Et jure propinquitatis redime me.
   </bloco>
-  <notas>Scripts identificados: hebraico (coluna esquerda superior), grego (coluna central superior), latino (coluna direita includes Latin/Vulgate/Aquila headings). Algumas linhas hebraicas parcialmente ilegíveis marcadas com ? onde incerto. BBOX estimadas proporcionalmente à imagem (0-1000 scale).</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="400,960,800,990">
+    Digitized by Google
+  </bloco>
 </pagina>

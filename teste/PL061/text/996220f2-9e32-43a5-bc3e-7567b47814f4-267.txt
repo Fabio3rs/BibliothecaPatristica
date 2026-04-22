@@ -1,13 +1,15 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,80">
-    525   POEMA XIX.   526
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="40,0,960,110">
+525   POEMA XIX.   526
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,100,480,620">
+
+  [!-- coluna esquerda --]
+  <bloco tipo="texto_principal" script="latino" bbox="40,110,500,650">
 O cæcis mens digna animis, et numina digna
 Aversis servire Deo (a). Venus, et nemus (b)
 [illis
 185 Sit (c) Deus : ebrietas demens, amor impius illos
-Sanctificinet : abscissa colant (d), miserique (e)
+Sanctificent : abscissa colant (d), miserique (e)
 [pudorem
 Erroris foedi Matris mysteria dicant.
 Digna fides illis, quibus almo in lumine veri,
@@ -20,7 +22,7 @@ Queis (g) Deus ipse Deus non est, quibus in
 Gloria nulla subest, quia non dignatur adire
 195 Degeneres animos virtus crucis. Inde beatis (h)
 Felix, ut reliqui diverso martyres orbe,
-Nolanis medices fuit, estque perennis ope ista :
+Nolanis medicus fuit, estque perennis ope ista :
 Nec modo Nolanis, sed et omnibus, a quibus
 [idem]
 Imploratus erit, dabit isto jure salutem,
@@ -33,20 +35,26 @@ Cypris (j) adulteriis, furiis regnare Lyæus,
 Ignis enim divinus inest, ubi vis crucis intus
 Ardescente fide cruciat male conscia corda,
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,130,520,170">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="500,120,540,190">
 A
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,100,980,620">
+  <bloco tipo="nota_marginal" script="latino" bbox="500,310,540,380">
+B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,505,540,585">
+C
+  </bloco>
+
+  [!-- coluna direita --]
+  <bloco tipo="texto_principal" script="latino" bbox="540,110,980,650">
 Vivificatque (k) animam vitiis in carne peremptis.
 Hostibus his (l) obtrita diu, corruptaque tantis
 210 Pestibus ingentem poscebat (m) Nola medelam.
 Atque ideo pensante Deo discrimen, opemque,
 Felicem accepit medicum, qui vinceret omnem
 Quamlibet antiquum miserorum in cordibus
-[patris (n)]
-
-463-464 Perniciem, et meriti virtute potentior alii (o)
-
+[atris (n)
 215 Vulneribus ductum super ulcera putria callum
 Scinderet, ut saniem suffusa (p) labe coactam
 Exprimeret sinibus ruptis, ac deinde lacunam
@@ -63,36 +71,34 @@ Nuncius instantis cessura nocte diei.
 Et propiante (r) Deo cunctis mox judice terris
 Adventus vexilla sui prætendit ubique,
 Perque suos Christus sua signa coruscat (s)
-[amicos]
+[amicos.
 Ex quibus hac voluit sibi prælucere sub ora
 
 230 Felicem, ut nostras isto depelleret (t) umbras
-Sidere, et antiquos ista quoque pellelret urbe
+Sidere, et antiquos ista quoque pelleret urbe
 Dæmonas (u), ut pulsis hominum de corde co-
 [lonis]
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,330,520,370">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,540,520,580">
-C
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="40,660,480,960">
-(a) Mur. cod. sic habet: O cæcis mens digna animis, et numine, digna Adversis servire deis! Ego no- stri codicis lectionem seclusus sum.
+
+  [!-- aparato crítico (lado esquerdo) --]
+  <bloco tipo="aparato_critico" script="latino" bbox="40,650,500,950">
+(a) Mur. cod. sic habet: O cæcis mens digna animis, εἰ numine, digna Adversis servire deis! Ego nostri codicis lectionem seclusus sum.
 
 (b) Nemora, quæ alio nomine luci appellantur, apud antiquos magna superstitione soli solebant. Nemus Aricinum, ubi Dianæ simulacrum conditum, Lucus Martis apud Athenienses, et in Ponto et alia nemora passim memorata audimus. Ovid. lib. II Fast.
 
 Lucus Aventino suberat niger illicus umbra,
-Quo passis vis dicere: Numen inest. Claudian. de Rapt. Proo. I. III, lucum venerabilem refert prope flumen Acym, additque numen loco, religionemque fuisse. Proper. el. 10, lib. IV: Lucoque abscede reverendo. His addam Apuleium in Apolog. pag. 377 ita loquentem: Iste vero nec diis rarionibus, qui eam pascunt, ac vestiunt, segetis ulla, aut vitis, aut gregis primitiis impartit, nullum in villa ejus de[ilegivel] lubrum situm, nullus locus, aut lucus consecratus. Et huc in re satis nota sint salis. Hanc eruditionem supra omnes illustravit Pinto Ramirez in Spicileg. sacro, tract. 1, cap. 6, quem consule. MURATORIUS.
+Quo passis vis dicere: Numen inest. Claudian. de Rapt. Pros. I. III, lucum venerabilem refert prope flumen Acym, additque numen loco, religionemque fuisse. Proper. el. 10, lib. IV: Lucoque abscede reverendo. His addam Apuleium in Apolog. pag. 377 ita loquentem: Iste vero nec diis rarionibus, qui eam pascunt, ac vestiunt, segetis ulla, aut vitis, aut gregis primitiis imparüit, nullum in villa ejus de[ilegivel] lubrum situm, nullus locus, aut lucus consecratus. Et huc in re satis nota sint salis. Hanc eruditionem supra omnes illustravit Pinto Ramirez in Spicileg. sacro, tract. 1, cap. 6, quem consule. MURATORIUS.
 
 (c) Mur. codex, Sini.
 
-(d) Tum in Isaciis, tum in Orgiis nefandus hic ritus inoleverat, ut virilia colerentur, quo Phallum nominabant antiqu. Diodor. lib. i. Biblioth. hæc omnia explicat: Virgilia, inquit, Osiridis a Typhone in fabulis objecta esse animi, quod sociorum nemo hæc [ilegivel] recepit; id sibi recepta diu honores. Nam in templis effigies eorum adoranda colunt, precandi, et ceremonijs, sacrificiisque deo isti præsidiis honoratissimus ut esset effect. Idecirco et Graeci postquam sacrorum Bacchicorum, et Orgionum solemnitatës ab Ægyptiis accepere, membrum id in mysteriis, initiationibus, et sacrificiis die hujus Phalli nomine honorant. MURATORIUS.
+(d) Tum in lsiacis, tum in Orgiis nefandus hic ritus inoleverat, ut viriliascolerentur, quæ Phallum nominabant antiqui. Diodor. lib. i. Biblioth. hǝc omnia explicat : Virilia, inquit, Osiridis a Typhone in fluvium abjecta esse. aiunl, quod sociorum nemo hec [ilegivel] recepit; quæ tamen ab Iside recepla divinis sunt honoribusaffecta. Nam in templis effigiem eorum adornatam coli precepit, et ceremoniis, sacrificiisque deo isti peragendis honoratissimus ut esset effect. Idcirco εἰ Graxi postquam sacrorum. Bacchicorum, et Orgiorum solemnitates. ab /£ gyptiis accepere, membrum id in mysteriis, initiationibus, et sacrificiis dei hujus Phalli nomine honorant. MuRATORIUS.
 
 (e) Murat. codex, miserique; noster, miserumque.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="520,660,980,960">
-(f) Respicit cap. in Epistola I Pauli ad Philipp., ubi de inimicis crucis Christi ait Apostolus: Quorum finis interitus, quorum Deus venter, etc. MURATORIUS.
+
+  [!-- aparato crítico (lado direito) --]
+  <bloco tipo="aparato_critico" script="latino" bbox="500,650,980,950">
+(f) Respicit cap. m Epistole I Pauli ad Philipp., ubi de inimicis crucis Christi ait Apostolus : Quorum finis interitus, quorum Deus venter, etc. MURATORIUS.
 
 (g) In nostro cod. quæ alio nomine luci appellantur. [ilegivel]
 
@@ -102,32 +108,35 @@ Quo passis vis dicere: Numen inest. Claudian. de Rapt. Proo. I. III, lucum vener
 
 (j) In Mur. cod., Cypres. At legendum Cypris, ut est in nostro codice.
 
-(k) In Mur. cod., vivificans pro vivificaque.
+(k) In Mur. cod., vivificans pro vivificatque.
 
-(l) In nostro cod., tibi. Sed legendum est his, ut est in cod. Mur. Attamen quemadmodum vers. 259 vos idem est duarum syllabarum, ita fieri potest ut is adhibeatur Paulinus ut unam syllabam. Vide et vers. 268 et 313, et carm. 10 vers. 331.
+(l) In nostro cod., iis. Sed legendum est his, ut est in cod. Mur. Attamen quemadmodum vers. 959 vox iisdem est duarum syllabarum, ita fieri potest ut iis adhibuerit Paulinus ut unam syllabam. Vide et vers. 208 et 515, et carm. 10 vers. 534.
 
 (m) In nostro cod., pascebat. At perspicuum est legendum esse poscebat.
 
-(n) Post vocem artis est in Mur. cod. iste versus: Hic qui crederant esse unam in crimine numen. De quo versus diximus pag. superiore.
+(n) Post vocem atris est in Mur. cod. iste versus : Hic qui crederant esse unum in crimine numen. De quo versus diximus pag. superiore.
 
-(o) In Mur. cod., altis.
+(o) In Mur. cod., aliis.
 
-(p) In Mur. cod. At in nostro codice pro suffusa labe mendose legitur suffusa a labe.
+(p) Ita noster codex. At in Mur. cod., præfulget astris.
 
-(q) Ita noster codex. At in Mur. cod., præfulget astris.
+(q) In Mur. cod., propitiante Deo. At nostri codicis lectio verior. Vide carm. 12, vers. 409.
 
-(r) In Mur. cod., propitiante Deo. At nostri codicis lectio verior. Vide carm. 12, vers. 409.
+(r) Eleganter, atque meliorum exemplo id usurpatum. Virgil. lib. xii Æneid.:
 
-(s) Eleganter, atque meliorum exemplo id usurpatum. Virg. lib. x. Æneid.
+(Eneas iustant contra, telumque corruscat.
+Iterum ibidem :
+Hinc atque hinc oditque moras, hostqamque coruscat.)
+Grecorum quidem ad imitationem hoc factum, sed venuste admodum. MURATORIUS.
 
-(t) Ita noster codex. At Mur. cod., decerpere: quod videtur mendum.
+(s) Ita noster codex. At Mur. cod., decerpere: quod videtur mendum.
 
-(u) Mur., Damones.
+(t) Mur., Damones.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="20,970,980,999">
-    Digitized by Google
+
+  <bloco tipo="rodape" script="latino" bbox="40,950,980,1030">
+Digitized by Google
   </bloco>
-  <notas>
-    Página em latim (script="latino"). Letras marginais A, B, C foram separadas como blocos nota_marginal conforme disposição visual entre colunas. Vários vocábulos em apparatus crítico estão pouco nítidos; onde a leitura era insegura marquei [ilegivel] por palavra. Transcrição preserva acentuação e grafia impressa, inclusas notas intercaladas entre colchetes e sinais editoriais.
-  </notas>
+
+  <notas>Transcrição paleográfica integral segundo a impressão/imagem. Letras marginais (A, B, C) em bloco próprio conforme a posição no espaço entre colunas. Onde a leitura era incerta pela resolução da imagem, mantive [ilegivel] exatamente por palavra.</notas>
 </pagina>

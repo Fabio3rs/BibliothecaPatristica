@@ -1,67 +1,99 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,20,970,80">
-    SANCTI IGNATH EPISTOŁE GENUINÆ.
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,50">
+    687 SANCTI IGNATH EPISTOLÆ GENUINÆ. 688
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,80,510,880">
-    est principium, si gratiam consequar, sortem meam A sine impedimento accipienda. Timeo enim vestram charitatem, ne ea mihi noceat. Vobis enim facile est, quod vultis facere; mihi vero difficile est Deo potiri, si vos mihi parcere studetis.
-    
+  
+  [!-- Coluna Esquerda Superior (Latim) --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,150">
+    est principium, si gratiam consequar, sortem meam sine impedimento accipiendi. Timeo enim vestram charitatem, ne ea mihi noceat. Vobis enim facile est, quod vultis facere; mihi vero difficile est Deo potiri, si vos mihi parcere studetis.
+  </bloco>
+
+  [!-- Coluna Direita Superior (Grego) --]
+  <bloco tipo="texto_principal" script="grego" bbox="520,60,950,150">
+    οἰκονόμος ἐστιν, (35) ἐὰν περ χάριτος ἐπιτύχω, εἰς τὸ τὸν κλῆρόν μου ἀνεμποδίστως ἀπολαβεῖν. (36) Φοβοῦμαι γὰρ τὴν ὑμν ἀγάπην, μὴ αὐτὴ με ἀδικήσῃ. μῖν γὰρ εὐχερές ἐστιν, ὃ θέλετε ποιῆσαι· ἐμοὶ δὲ δύσκολόν ἐστι τοῦ Θεοῦ ἐπιτυχεῖν, ἐάνπερ ὑμεῖς (37) φείσησθέ μου.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,60,510,80">
+    A
+  </bloco>
+
+  [!-- Cabeçalho Seção II --]
+  <bloco tipo="cabecalho" script="latino" bbox="520,155,950,175">
     II. Nolite me martyrio eripere.
-    
-    Nolo enim vobis tanquam hominibus placere, sed Deo placere, quemadmodum et vos ei placetis. Nec enim ego umquam tale tempus Deo potiendi attingam; nec vos, si silueritis, meliori operi inscribi poteritis. Si enim de me silueritis, ego Dei fiam; si autem carnem meam amaveritis, denuo mihi erit currendum. Nolite plus mihi praebere, quam ut immoler Deo, dum adhuc altare paratum est; ut in charitate chorus effecti canatis Patri in Christo Jesu, quod Deus episcopum Syriæ dignum judicaverit, qui ab Oriente in Occidentem arcessitus inveniretur. Bonum est, a mundo occidere ad Deum, ut in ipso oriar.
-    
-    III. Rogate polius Deum, ut ad martyrum mihi vires suppediet.
-    
-    Nolli unquam invidiiss; alios docuistis. Ego vero illa quoque firma esse volo, quae docetis et præcipitis. Vires tantum mihi et internas et externas petite, ut non solum loquar, sed et velim; ut non solum dicar Christianus, sed et inveniar. Si enim inventus fuero, etiam dico potero Christianus, et tunc fidelis esse valebo, cum mundo amplius
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="510,80,970,880">
-    αἰκονόμητός ἐστιν, (35) ἄν περὸ γάριστός ἐπιτυχώ, εἰς τὸ τὸν κλῆρον μου ανεμποδίστως ἀπολαβεῖν· (36) φοβούμαι γὰρ τὴν ὑμῶν ἀγάπην, μὴ αὕτη με ἀδίκησῃ. Ἰμῖν γὰρ εὐχρές ἐστιν, ὃ θέλετε ποιήσαι· ἐμὲ δὲ δυσκολόν ἐστι τοῦ θεοῦ ἐπιτυχεῖν, ἐὰνπερ ὑμεῖς (37) φεισήσθε μου.
-    
-    (38) Οὐ γὰρ θέλω ὑμῖν ἀνθρωπαρεσκῆσαι, ἀλλὰ θεῷ ἀρεσ͂αι, ὥσπερ καὶ ἀρεσκεῖτε. Οὐ γὰρ ἐγὼ ποτε ἔχω καιρὸν τοιοῦτον θεοῦ ἐπιτυχεῖν· οὔτε ὑμεῖς, ἐὰν σιωπήσητε, χρείττον ἔργῳ ἔξετε ἐπιγραφῆναι. Ἐὰν γὰρ σιωπήσητε (39) ἀπ᾿ ἐμοῦ, (40) ἔγω γενήσομαι θεοῦ· ἐὰν ἐμὰ ερασθῆτε τῆς σαρκὸς μου, πάλιν ἔσται μοι (41) τρεῖς, πλέον μοι μάρτυρας ἰσχύειν τοῦ (42) σπονδοῦνδὴν θεῷ, ὡς ἐτὶ θυσαστηρίων ἐτοιμών ὑστίνα ἐν ἀγαπῇ χοροῖς γενόμενοι ἅψτε τῷ Πατρὶ ἐν Χριστῷ Ἰησοῦ, (43) ὅτι τὸν ἐπίσκοπον Συρίας ὁ θεὸς κατηχήσωσεv εὑρεθῆνα ἐξ ἀνατολῆς (44) μεταπεμφθέντος. Καλὸν τὸ δυναῖ ἀπὸ κόσμου πρὸς θεὸν, ἵνα εἰς αὐτὸν ἀνατελώ.
-    
-    Οὐδέποτε (45) ἑώδινατε οὐδένα· ἄλλους ἐδιδάξατε. (46) Ἐγὼ δὲ θέλω, ἵνα κακεῖνα βέβαια ᾔͅ, ἀ̓ (47) μαθητεύοντες ἐντέλλεσθε. Μόνον μοι δύναμιν αἰτεῖσθε ἵνα ἐσούμην τε καὶ ἐξωθεν, ἵνα μὴ μόνον λεγω, ἀλλὰ καὶ θέλω, ἵνα μὴ μόνον λέγωμαι Χριστιανός, ἀλλὰ καὶ C εὐροῦθι. Ἐὰν γὰρ (48) καὶ εὐρεθῷ, καὶ λεγεται ὑμῶν, καὶ τότε πιστὸς εἶναι, ὅταν κόσμῳ μὴ φαινῶμαι.
+
+  [!-- Coluna Esquerda Média (Latim) --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,180,480,350">
+    Nolo enim vobis tanquam hominibus placere, sed Deo placere, quemadmodum et vos ei placetis. Nec enim ego unquam tale tempus Deo potiendi attin- gam; nec vos, si silueritis, meliori operi inscribi poteritis. Si enim de me silueritis, ego Dei fiam; si autem carnem meam amaveritis, denuo mihi erit currendum. Nolite plus mihi præbere, quam ut immoler Deo, dum adhuc altare paratum est; ut in charitate chorus effecti canatis Patri in Christo Jesu, quod Deus episcopum Syriæ dignum judica- verit, qui ab Oriente in Occidentem arcessitus in- veniretur. Bonum est, a mundo occidere ad Deum, ut in ipso oriar.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,880,970,980">
+
+  [!-- Coluna Direita Média (Grego) --]
+  <bloco tipo="texto_principal" script="grego" bbox="520,180,950,350">
+    (38) Οὐ γὰρ θέλω ὑμῖν ἀνθρωπαρεσκῆσαι, ἀλλὰ Θεῷ ἀρέσαι, ὥσπερ καὶ ἀρέσκετε. Οὐ γὰρ ἐγώ ποτε ἕξω καιρὸν τοιοῦτον Θεοῦ ἐπιτυχεῖν· οὔτε ὑμες, ἐὰν σιωπήσητε, κρεῖττον ἔργον ξετε ἐπιγραφῆναι. Ἐὰν γὰρ σιωπήσητε (39) ἀπ' ἐμοῦ, (40) ἐγὼ γενήσομαι Θεοῦ· ἐὰν δὲ ἐρασθῆτε τῆς σαρκός μου, πάλιν ἔσο- μαι (41) τρέχων. Πλέον μοι μὴ παράσχησθε τοῦ (42) σπονδισθῆναι Θεῷ, ς ἔτι θυσιαστήριον ἑτοιμόν ἐστιν· ἵνα ἐν ἀγάπῃ χορς γενόμενοι ἄσητε τῷ Πατρὶ ἐν Χριστῷ ησοῦ, (43) ὅτι τὸν ἐπίσκοπον Συρίας ὁ Θεὸς κατηξίωσεν εὑρεθῆναι εἰς δύσιν ἀπὸ ἀνατολῆς (44) μεταπεμψάμενος. Καλὸν τ δῦναι ἀπὸ κόσμου πρὸς Θεόν, ἵνα ες αὐτν ἀνατείλω.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,280,510,300">
+    B
+  </bloco>
+
+  [!-- Cabeçalho Seção III --]
+  <bloco tipo="cabecalho" script="latino" bbox="520,355,950,375">
+    III. Rogate potius Deum, ut ad martyrium mihi vires suppeditet.
+  </bloco>
+
+  [!-- Coluna Esquerda Inferior (Latim) --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,380,480,550">
+    Nulli unquam invidistis; alios docuistis. Ego vero illa quoque firma esse volo, quæ docetis et præcipitis. Vires tantum mihi et internas et exter- nas petite, ut non solum loquar, sed et velim; ut non solum dicar Christianus, sed et inveniar. Si enim inventus fuero, etiam dici potero Christianus, et tunc fidelis esse valebo, cum mundo amplius
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,500,510,520">
+    C
+  </bloco>
+
+  [!-- Coluna Direita Inferior (Grego) --]
+  <bloco tipo="texto_principal" script="grego" bbox="520,380,950,550">
+    Οὐδέποτε (45) ἐδασκάνατε οὐδένα· ἄλλους ἐδιδά- ξατε. (46) Ἐγὼ δὲ θέλω, ἵνα κἀκεῖνα βέβαια ᾖ, ἃ (47) μαθητεύοντες ἐντέλλεσθε. Μόνον μοι δύναμιν αἰτεῖσθε ἔσωθέν τε καὶ ἔξωθεν, ἵνα μὴ μόνον λέγω, ἀλλὰ καὶ θέλω, ἵνα μ μόνον λέγωμαι Χριστιανός, ἀλλὰ καὶ εὑρεθῶ. ὰν γὰρ (48) καὶ εὑρεθ, καὶ λέγεσθαι δύ- ναμαι, καὶ τότε πιστὸς εναι, ὅταν κόσμῳ μὴ φαίνω-
+  </bloco>
+
+  [!-- Seção Vetus Interpres --]
+  <bloco tipo="cabecalho" script="latino" bbox="400,560,600,580">
     Vetus interpres.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,585,950,610">
     mento lucrari. Timeo enim charitatem vestram, ne ipsa me lædat. Vobis enim facile est, quod vultis facere; mihi autem difficile est Deo potiri; siquidem vos non parcitis mihi.
-    
+  </bloco>
+
+  [!-- Caput II --]
+  <bloco tipo="cabecalho" script="latino" bbox="400,615,600,635">
     CAPUT II.
-    
-    Non enim volo vos hominibus placere, sed Deo placere, quemadmodum et placetis. Neque enim ego habeo aliquando tempus tale Deo potiendi; neque vos, si taceatis, meliori operi habetis inscribi. Si enim taceatis a me, ego Dei; si autem desideretis carnem meam, rursus factus sum vox. Plus autem mihi non tribuletis, quam sacrificari Deo, dum adhuc sacrificatorium paratum est, ut in charitate chorus effecti canatis Patri in Jesu Christo, quoniam episcopum Syriæ dignitcavit Deus inveniri, in Occidentem ab Oriente transmissus. Bonum occidere a mundo in Deum, ut in ipso oriar.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,640,950,685">
+    Non enim volo vos hominibus placere, sed Deo placere, quemadmodum et placetis. Neque enim ego habeo aliquando tempus tale Deo potiendi : neque vos, si taceatis, meliori operi habetis inscribi. Si enim taceatis a me, ego ero Dei; si autem desideretis carnem meam, rursus factus sum vox. Plus autem mihi non tribuetis, quam sacrificari Deo, dum adhuc sacrificatorium paratum est, ut in charitate chorus effecti cantetis Patri in Jesu Christo, quoniam episcopum Syriæ dignificavit Deus inveniri, in Occidentem ab Oriente transmittens. Bonum occidere a mundo in Deum, ut in ipso oriar.
+  </bloco>
+
+  [!-- Caput III --]
+  <bloco tipo="cabecalho" script="latino" bbox="400,690,600,710">
     CAPUT III.
-    
-    Nunquam invidistis in aliquo; alios edocuisitis. Ego autem volo, ut et illa firma sint, quæ docentes præcepistis. Solum mihi potestian petals ab intra et ab extra, ut non solum dicam, sed et velim; non ut solum dicar Christianus, sed et inveniar. Si enim inveniar, et dici possum; et tunc fidelis esse, quando utique mundo non appareo. Nihil apparentia bonum est. Deus enim noster Jesus Christus in Patre exsi-
-    
-    (35) Syrus, qui hoc caput habet, legisse videtur: D 'Ενώπτεσ επηντυχὸ τὸν κλῆρον μου εἰς πέρας ανεμποδίστως ἀπολαβέιν.
-    
-    (36) Ignatius verebatur ne Romani, vel precibus ad Deum et homines, vel pecunia, aut per vim eam a supplicio eximerent. Cot.
-    
-    (37) I. e. si vos impedimento mihi estis conatus nostro, me liberandi. Interpolator et versio antiqua, ab Usserio edita, nec non Syrus male exibillent qui ante posuit.
-    
-    (38) Initium capitis secundii Οὐ γὰρ θέλω . . ἀρεσκεσθε desit in Syro.
-    
-    (39) i. q. κεφ. ἐμου. Smith.
-    
-    (40) Syrus legit: Ἐομαι λόγος θεοῦ, quod sensu caret.
-    
-    (41) Syrus et vetus interpres Latinus legerunt ἔσομαι τή; factus sum vox, ut interpres reddidit.
-    
-    (42) (Cfr. II Tim. iv. 6.)
-    
-    (43) Syrus legisse videtur: ὅτι τὸν ἐπίσκοπον κατηχήσωσεv τοῦ θεοῦ εὑρεθῆνα.
-    
-    (44) Aut medium pro passivo positum putes, aut veritas: Quod Deus episcopum Syriæ inveniri dignatus est, ab Oriente in Occidentem eum arcessens.
-    
-    (45) i. e. nulli invidistis gloriam, pro Christo moriendi. Smith.
-    
-    (46) Ἐγὼ — ἐντελλέσθε desit in Syro.
-    
-    (47) I. e. Exemplum et authoritatio, quibus alios ad martyrum subeundum animare soliti fuistis. Smith.
-    
-    (48) Particula καὶ, nec a vetere interprete, nec a Syro aggiuta, delenda est.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,715,950,760">
+    Nunquam invidistis in aliquo; alios edocuistis. Ego autem volo, ut et illa firma sint, quæ docentes præ- cepistis. Solum mihi potentiam petatis ab intra et ab extra, ut non solum dicam, sed et velim; non ut solum dicar Christianus, sed et inveniar. Si enim inveniar, et dici possunt; et tunc fidelis esse, quando utique mundo non appareo. Nihil apparentia bonum est. Deus enim noster Jesus Christus in Patre exsi-
+  </bloco>
+
+  [!-- Aparato Crítico (Coluna Esquerda) --]
+  <bloco tipo="aparato_critico" script="misto" bbox="50,770,480,950">
+    (35) Syrus, qui hoc caput habet, legisse videtur : Ἐάνπερ ἐπιτύχω τὸν κλῆρόν μου εἰς πέρας ἀνεμπο- δίστως ἀπολαβεῖν. (36) Ignatius verebatur ne Romani, vel precibus ad Deum et homines, vel pecunia, aut per vim eum a supplicio eximerent. COT. (37) I. e. si vos impedimento mihi estis conatu vestro, me liberandi. Interpolator et versio antiqua, ab Usserio edita, nec non Syrus male exhibent μὴ ante φείσησθε. (38) Initium capitis secundi Οὐ γὰρ θέλω . . . ἀρέ- σκετε deest in Syro. (39) I. q. περὶ ἐμοῦ. SMITH. (40) Syrus legit : Ἔσομαι λόγος Θεοῦ, quod sensu caret. (41) Syrus et vetus interpres Latinus legerunt ἔσομαι τἰχώ, factus sum vox, ut interpres reddidit.
+  </bloco>
+
+  [!-- Aparato Crítico (Coluna Direita) --]
+  <bloco tipo="aparato_critico" script="misto" bbox="520,770,950,950">
+    Multo præferenda est lectio Græci textus. Sensus est : Denuo mihi erit currendum in hoc stadio vitæ, cujus metam pene attigi. Cfr. I Cor. ix, 24. (42) Cfr. II Tim. iv, 6. (43) Syrus legisse videtur : ὅτι τὸν ἐπίσκοπον κατηξίωσεν τοῦ Θεο εὑρεθναι. (44) Aut medium pro passivo positum putes, aut vertas : Quod Deus episcopum Syriæ inveniri digna- tus est, ab Oriente in Occidentem eum arcessens. (45) I. e. nulli invidistis gloriam, pro Christo mo- riendi. SMITH. (46) Ἐγὼ — ἐντέλλεσθε deest in Syro. (47) I. e. Exemplum et adhortatio, quibus alios ad martyrium subeundum animare soliti fuistis. SMITH. (48) Particula καί, nec a vetere interprete, nec a Syro agnita, delenda est.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,780,510,800">
+    D
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="0,960,1000,990">
     Digitized by Google
   </bloco>
-  <notas>scriptos principais: latino (coluna esquerda e rodapé) e grego (coluna direita). Pequenas notas críticas em latim e grego no rodapé; preservei abreviações e sinais conforme visível. Algumas palavras parcialmente ilegíveis foram transcritas conforme forma mais provável, sem normalização.</notas>
+
+  <notas>
+    Transcrição de página bilingue (Latim/Grego) com aparato crítico. Letras A, B, C, D identificadas como notas marginais no gutter central.
+  </notas>
 </pagina>

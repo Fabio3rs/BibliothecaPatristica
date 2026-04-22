@@ -1,64 +1,78 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,20,970,120">
-    535                                              HEXAPLORUM QUÆ SÚPERSUNT.                                             538
-    TO ΕΒΡΑΙΚΟΝ.                                ΤΟ ΕΒΡΑΙΚΟΝ                                         ΑΚΥΛΑΣ.
-                                                 Ἑλληνικοῖς γράμμασι.
+  <bloco tipo="cabecalho" script="misto" bbox="50,20,950,60">
+    335 HEXAPLORUM QUÆ SUPERSUNT. 338
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,120,220,420">
-    למען
-    לאשא
-    ששחחתני 21
-    21.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="230,120,440,420">
-    21.
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,330,240">
+    TO ΕΒΡΑΙΚΟΝ.
+    למשכיל
+    לאשת
+    ואניני ותשגני 21
     VERSIO HEBRAICI TEXT.
     In occursum.
     In onus.
     21. Et quæres me mane, et non ego.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="450,120,670,420">
+  <bloco tipo="texto_principal" script="misto" bbox="350,60,650,240">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+    21.
     VULGATA LATINA.
     Contrarium.
     Gravis.
-    21. Et si mane me quæseris, non subsistam.
+    21. Et si mane me quæsieris, non subsistam.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,120,950,420">
+  <bloco tipo="texto_principal" script="misto" bbox="670,60,950,240">
+    ΑΚΥΛΑΣ.
+    21.
     AQUILA.
     21.
   </bloco>
-  <bloco tipo="aparatocrítico" script="latino" bbox="40,420,960,650">
+  <bloco tipo="cabecalho" script="latino" bbox="250,250,750,270">
     Notæ et variæ lectiones ad cap. VII Job.
-    V. 1. 'A., μὴτι οὐ στρατεία etc. Colbert. et Regius unus.
-    V. 4. 'A., Θ., πότε ἀναστήσομαι. Sic omnes.
-    V. 6. Οι λοιποί, αι ημέραι μου. Colbertinus.
-    Ibid. Σ., ταχύτερα ὑφάσματoς. Δ* γρ. δρομέως.
-    Sic Colbertinus post Symmachi versionem, indicans, ἤ putamus, in Tetraplis legi δρομέως pro ὑφάσμα- ος. Hæc autem lectio δρομέως, videtur huc trans- ata ex cap. ix, v. 24. Coislinianus lumboycinus unx seculi, qui incipit a fine capitis vi habet, οι λοιπ., δρομέως.
-    Ibid. Σ., αι ημέραι etc. Sic Reg. unus et Drusius. Suspicor autem, illud al ημέραι, non a Symmacho epetitum, sed postea, ut sententia quadraret, ad- ditum.
-    V. 8. 'A., Θ., οι περιβλέπεται etc. Hæc asterisco notantur in cod. Colbertino, ut indicetur hæc quæ olim in τοῖς Θ' desiderabantur, ex Aquila et Theo- dotione desumpta fuisse. Asterisco etiam notantur in versione Latina de qua sæpe agimus. In Tetraplis legebatur, ὡς ἄπθεν, non perspiciet, ut notat Colb.
-    ibid. Οι σφαλαγμοί σου etc. Hæc item asterisco si- gnanur in Colbert. et in edit. Lainia.
-    V. 9. Σ., χαλάπετo etc. Sic tres mss., Nicetas et Drusius.
-    V. 11. 'A., Θ., τοσαχρον. Coll. et Regius unus.
-    Ibid. Σ., διαλεχθήσομαι etc. Sic quatuor mss. Ni- cetas et Drusius.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,650,960,720">
+  <bloco tipo="aparato_critico" script="misto" bbox="50,270,480,440">
+    V. 1. Ἁ., μήτι οὐ στρατεία etc. Colbert. et Regius unus.
+    V. 4. Ἁ., Θ., πότε ἀναστήσομαι. Sic omnes.
+    V. 6. Οἱ λοιποί, αἱ ἡμέραι μου. Colbertinus.
+    Ibid. Σ., ταχυτέρα ὑφάσματος. Δ* γρ. δρομέως. Sic Colbertinus post Symmachi versionem, indicans, ut putamus, in Tetraplis legi δρομέως pro ὑφάσματος. Hæc autem lectio δρομέως, videtur huc transata ex cap. IX, v. 24. Coislinianus bombycinus CIV sæculi, qui incipit a fine capitis VI habet, οἱ λοιπ., δρομέως.
+    Ibid. Σ., αἱ ἡμέραι etc. Sic Reg. unus et Drusius. Suspicer autem, illud αἱ ἡμέραι, non a Symmacho epetitium, sed postea, ut sententia quadraret, additum.
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="500,270,950,440">
+    ditum.
+    V. 8. Ἁ., Θ., οὐ περιβλέψεται etc. Hæc asterisco notantur in cod. Colbertino, ut indicetur hæc quæ olim in τοῖς Ο' desiderabantur, ex Aquila et Theodotione desumpta fuisse. Asterisco etiam notantur in versione Latina de qua sæpe agimus. In Tetraplis legebatur, οὐκ ἀτενιεῖ, non perspiciet, ut notat Colb. ibid. Οἱ ὀφθαλμοί σου etc. Hæc item asterisco signantur in Colbert. et in edit. Latina.
+    V. 9. Σ., καθάπερ etc. Sic tres mss., Nicetas et Drusius.
+    V. 11. Ἁ., Θ., τοιγαροῦν. Colb. et Regius unus.
+    Ibid. Σ., διαλεχθήσομαι etc. Sic quatuor mss. Nicetas et Drusius.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="400,450,600,470">
     CAPUT VIII JOB.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,720,290,960">
-    .ΤΟ ΕΒΡΑΙΚΟΝ.
-    ורח ברך - 2.
-    אמש 3
-    רעהי-צדק 4
-    פט 6
-    ימינו 9
-    אדם-נש 11
-    עדו באו לא יסתר 12
-    ובית עכבר מבטחו 14
-    ישכן על-ביתו ולא יעצב 15
-    רטב הוא לפני-שמש 16
+  <bloco tipo="texto_principal" script="misto" bbox="50,470,330,900">
+    TO ΕΒΡΑΙΚΟΝ.
+    האם רב גבר 2.
+    מה אנוש 3.
+    ימי 6.
+    כלה 9.
+    אני לא אחשך 11.
+    העתיד לא יספני 12.
+    ובית עכביש מבטחו 14.
+    ישען על ביתו ולא יקום 15.
+    רטוב הוא לפני שמש 16.
+    VERSIO HEBRAICI TEXT.
+    2. Et spiritus validus.
+    3. Pervertet.
+    Pervertet justitiam.
+    6. Habitaculum.
+    9. Dies nostri.
+    11. Crescet pratum.
+    12. Adhuc eo in virore suo, non succidetur.
+    14. Domus araneæ fiducia ejus.
+    15. Innitetur super domum scam, et non stabit.
+    16. Humidus ipse ad facies solis.
   </bloco>
-  <bloco tipo="texto_principal" script="greco" bbox="300,720,620,960">
-    ΤΟ ΕΒΡΑΙΚΟΝ
+  <bloco tipo="texto_principal" script="misto" bbox="350,470,650,900">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
     2.
     3.
     6.
@@ -68,33 +82,6 @@
     14.
     15.
     16.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="630,720,960,960">
-    ΑΚΥΛΑΣ.
-    2.
-    3. Σκελεσει.
-    6.
-    9.
-    11. "Η πληθυνθήσεται ἔλεσ.
-    12. "Ετι αὐτοῦ ἐν ὥρᾳ αὐτοῦ οὐ περικαθίσεται.
-    14. Οἶκος ἀράχνης ἡ πεποίθησις αὐτοῦ.
-    15.
-    16. Ἐνιχμός ἐστιν εἰς πρόσωπον ἡλίου.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,960,480,1360">
-    VERSIO HEBRAICI TEXT.
-    2. Ei spiritus validus.
-    3. Perveret.
-    Pervertet justitiam.
-    6. Habitaculum.
-    9. Dies nostri.
-    11. Crescet pratum.
-    12. Adhuc eo in virore suo, non succidetur.
-    14. Domus aranææ fiducia ejus.
-    15. Inniletur super domum suam, et non stabit.
-    16. Humidus ipse ad facies solis.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="480,960,720,1360">
     VULGATA LATINA.
     2. Spiritus multiplex.
     3. Supplantat.
@@ -103,24 +90,39 @@
     9. Dies nostri.
     11. Aut crescere carectum.
     12. Cum adhuc sit in flore, nec carpatur manu.
-    14. Et sicut tela aranearum fi- ducia ejus.
-    15. Inniletur super domum suam, et non stabit.
-    16. Humectus videtur, antequam venial sol.
+    14. Et sicut tela aranearum fiducia ejus.
+    15. Innitetur super domum suam, et non stabit.
+    16. Humectus videtur, antequam veniat sol.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="720,960,960,1360">
+  <bloco tipo="texto_principal" script="misto" bbox="670,470,950,900">
+    ΑΚΥΛΑΣ.
+    2.
+    3. Σκελίσει.
+    6.
+    9.
+    11. Ἢ πληθυνθήσεται ἕλος.
+    12. Ἔτι αὐτοῦ ἐν ὥρᾳ αὐτοῦ οὐ περικλασθήσεται.
+    14. Οἶκος ἀράχνης ἡ πεποίθησις αὐτοῦ.
+    15.
+    16. Ἐνικμός ἐστιν εἰς πρόσωπον ἡλίου.
     AQUILA.
     2.
     3. Supplantabit.
     6.
     9.
-    11. Aut crescet palus.
-    12. Adhuc eo in specie sua exi stente, non perfringetur.
-    14. Domus aranææ fiducia ejus.
+    11. Aut crescent palus.
+    12. Adhuc eo in specie sua existente, non perfringetur.
+    14. Domus araneæ fiducia ejus
     15.
-    16. Illumidus est coram sole.
+    16. Humidus est coram sole.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,1360,960,1480">
+  <bloco tipo="rodape" script="latino" bbox="500,950,800,990">
     Digitized by Google
   </bloco>
-  <notas>Scripts presentes: latim, grego, hebraico. Pequenas abreviações e sinais criticis foram preservados literalmente; alguns caracteres hebraicos fragmentários transcritos conforme visível. Onde texto ilegível dentro de palavras não foi encontrado, usei [ilegivel] — none applied.</notas>
+  <notas>
+    Transcrição de página da Hexapla (Hexaplorum quæ supersunt). Contém texto em Hebraico, Grego e Latino.
+    A seção "Notæ" é um aparato crítico.
+    Alguns caracteres hebraicos podem variar ligeiramente devido à qualidade da imagem, mas foram transcritos conforme o contexto bíblico (Jó 7 e 8).
+    Na coluna inferior esquerda, verso 15, a palavra "scam" parece ser um erro de impressão ou abreviação para "suam" (confirmado pela coluna do meio "suam"), mas foi transcrito literalmente como "scam".
+  </notas>
 </pagina>

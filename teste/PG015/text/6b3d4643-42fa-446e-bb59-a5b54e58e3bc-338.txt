@@ -1,31 +1,31 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,110">
-    HEXAPLORUM QUÆ SUPERSUNT.
-    TO EBRAIKON.  TO EBRAIKON  ΑἙβραϊκὸς γράμμασι.
-    AKTAAΣ.
+  <bloco tipo="cabecalho" script="misto" bbox="50,20,950,80">
+    671 ΠΕΧΑΠΛΟΡUM QUÆ SUPERSUNT. 672
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,120,320,900">
-    15. טו
-    שבע שמונה תשרין
-    16. טז
-    17. יז
-    18. יח
-    19. יט
-    21. כא
-    22. כב
-    שם
-    לקס
-    24. כד
-    תרעה
-    25. חלאה ע:זה
-    27. כז
-    28. בעדם הדם הזה
-    36. לאה
-    צדקה
-    צדקה
-    VERSIO HEBRAICI TEXT.
+  <bloco tipo="cabecalho" script="misto" bbox="100,80,850,120">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. AKΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,120,660,900">
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,120,350,520">
+    התנופה 15
+    שבע שבתות תמימת
+    השבת השביעת 16
+    התנופה 17
+    האמה 18
+    נחת
+    עבדה 21
+    ובקצרכם 22
+    פאת
+    לקט
+    בשופר 24
+    התרועה
+    מלאכת עבדה 25
+    תענום 27
+    בגצם היום הזה 28
+    אשה 36
+    עצרת
+    עצרת
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="380,120,600,520">
     15.
     16.
     17.
@@ -37,9 +37,8 @@
     27.
     28.
     36.
-    VULGATA LATINA.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,120,970,900">
+  <bloco tipo="texto_principal" script="grego" bbox="650,120,800,520">
     15.
     16.
     17.
@@ -51,28 +50,69 @@
     27.
     28.
     36.
-    AQUILA.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,900,970,1000">
-    15. Elevationis.             15. Primitivarum.            15.
-    Septem cessationes consummatae.  Septem hebdomadas plenae.   .
-    16. Sabbatum septimi.       16. Hebdomade septimæ.     16.
-    17. Elevationis.            17. Primitivarum.          17.
-    18. Ignitio.                18. Vacat.                 18.
-    Quietis.                   'Suavissimum.
-    21. Servituis.              21. Servile.               21.
-    22. In metendo vos.         22. Postquam messueritis.  22.
-    Angulum.                   Usque ad solem.
-    Spicilegium.               Remanentes epicas.
-    24. Requies.                24. Sabbathum.             24.
-    Vociferationis.            Clangentibus tubis.
-    25. Functionem servitutis.  25. Opus servile.         25.
-    27. Affligetis.             27. Affligetis.           27.
-    28. In corpore diei ipsius. 28. In tempore diei hujus. 28.
-    36. Ignitionem.             36. Holocausta.           36.
-    Retentio.                  Collectae.
-    Servitutis.                 Servile.
+  <bloco tipo="cabecalho" script="latino" bbox="100,520,800,560">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,560,350,920">
+    15. Elevationis.
+    Septem cessationes consummatæ.
+    16. Sabbatum septimi.
+    17. Elevationis.
+    18. Ignitio.
+    Quietis.
+    21. Servitutis.
+    22. In metendo vos.
+    Angulum.
+    Spicilegium.
+    24. Requies.
+    Vociferationis.
+    25. Functionem servitutis.
+    27. Affigetis.
+    28. In corpore diei ipsius.
+    36 Ignitionem.
+    Retentio.
+    Servitutis.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,560,620,920">
+    15. Primitiarum.
+    Septem hebdomadas plenas.
+    16. Hebdomadæ septimæ.
+    17. Primitiarum.
+    18. Vacat.
+    Suavissimum.
+    21. Servile.
+    22. Postquam messueritis.
+    Usque ad solum.
+    Remanentes spicas.
+    24. Sabbatum.
+    Clangentibus tubis.
+    25. Opus servile.
+    27. Affigetis.
+    28. In tempore diei hujus.
+    36. Holocausta.
+    Collectæ.
+    Servile.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,560,750,920">
+    15.
+    16.
+    17.
+    18.
+    21.
+    22.
+    24.
+    25.
+    27.
+    28.
+    36
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="550,950,800,990">
     Digitized by Google
   </bloco>
-  <notas>Scriptos: coluna esquerda contém hebraico impresso transliterado com abreviações; colunas centrais e direita em latino impresso. Algumas palavras hebraicas parcialmente ilegíveis; preservei separações e números conforme layout. BBOX aproximadas em escala 0-1000.</notas>
+  <notas>
+    O título superior "ΠΕΧΑΠΛΟΡUM" parece ser uma transliteração mista (grega/latina) de "HEXAPLORUM".
+    A coluna hebraica inferior apresenta "עצרת" repetido duas vezes, embora o contexto latino sugira variações.
+    Transcrição literal dos números e textos conforme visível.
+  </notas>
 </pagina>

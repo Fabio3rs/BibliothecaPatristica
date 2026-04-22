@@ -1,45 +1,95 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="80,10,920,90">
+  <bloco tipo="cabecalho" script="latino" bbox="100,50,150,70">
+    819
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,40,650,70">
     HEXAPLORUM QUÆ SUPERSUNT.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,50,900,70">
+    820
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="380,80,620,100">
     CAPUT VI DEUTERONOMII.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,90,300,520">
+  
+  [!-- Top Section: Hebrew, Greek transliteration, Aquila --]
+  <bloco tipo="texto_principal" script="misto" bbox="50,100,300,400">
     TO ΕΒΡΑΙΚΟΝ.
-    לֶבֶן 5
-    השמוע 7
-    במשק בביתך ולכה מאד
-    ובשמש ויקחך
-    שמעי 8
-    לשמר
-    שמחתם 9
-    וכבישך
-    השמר 13
-    הגורם 17
-    אשר כן
-    הפרקים 20
-    וארבעים וארבע 24
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,90,680,520">
-    TO EBPAIKON
-    Ελληνικάς γραμμάς.
-    5.
-    7.
-    8.
-    9.
-    15.
-    17.
-    20.
-    24.
     
+    לבך 5
+    
+    ושננתם 7
+    בביתך ולכת בדרך
+    ובשכבך ובקומך
+    
+    וקשרתם 8
+    לטוטפת
+    בין עיניך 9
+    
+    וכתבתם
+    
+    השעריך 13
+    
+    מצות 15
+    
+    חקותיו 17
+    
+    חקותיו 20
+    
+    ויצונו ה' 24
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="350,100,550,400">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικος γράμμασι.
+    
+    5.
+    
+    7.
+    
+    8.
+    
+    9.
+    
+    13.
+    
+    17.
+    
+    20.
+    
+    24.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="650,100,950,400">
+    ΑΚΥΛΑΣ.
+    
+    5.
+    
+    7. Δευτερώσεις.
+    
+    8. Συνδήσεις.
+    Ἄνακτα.
+    9.
+    
+    13. Φυλαξαι.
+    
+    17. Ἀκριβώματα.
+    
+    20. Ἀκριβώματα.
+    24.
+  </bloco>
+
+  [!-- Middle Section: Latin Versions --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,430,300,750">
     VERSIO HEBRAICI TEXT.
-    5. Cordæ tuo.
+    5. Corde tuo.
     7. Repetes ea.
     In sedendo te in domo tua, et in
     eundo te in via, et in accumbendo
-    tu, et in surgendo te.
+    te, et in surgendo te.
     
     8. Et ligabis ea.
-    In frontaliâ.
+    In frontalia.
     9. Et scribes ea.
     
     Et in portis tuis.
@@ -53,70 +103,74 @@
     20. Et statuta.
     24. Omnia statuta.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="700,90,980,520">
-    ΑΚΥΛΑΣ.
-    5.
-    7. Δευτερούσας.
-    8. Συνθήκας.
-    9.
-    15. Φυλαξαι.
-    17. Ἀκριβώματα.
-    20. Ἀκριβώματα.
-    24.
-    
+
+  <bloco tipo="texto_principal" script="latino" bbox="350,430,600,750">
     VULGATA LATINA.
     5. Corde tuo.
     7. Narrabis ea.
     Sedens in domo tua, et ambu-
-    las in itinere, dormiens atque
+    lans in itinere , dormiens atque
     consurgens.
     
     8. Et ligabis.
     Et movebuntur.
-    9. Scribeisque ea.
+    9. Scribesque ea.
     
-    Et paruas domus tuæ.
+    Et januas domus tuæ.
     
     13. Cave diligenter.
     Ne obliviscaris.
     
-    17. Et ceremonias.
+    17. Et cæremonias.
     Quas præcepit tibi.
     
-    20. Et ceremonie.
-    24. Omnia legittima.
-    
+    20. Et cæremoniæ.
+    24. Omnia legitima.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="650,430,900,750">
     AQUILA.
     5.
     7. Repetes.
+    
     8. Colligabis.
-    Immota.
+    Immotæ.
     9.
+    
     13. Observa.
+    
     17. Accurate statuta.
+    
     20. Accurate statuta.
     24.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="60,520,940,940">
-    Notes et variæ lectiones ad cap. VI Deuteronomii.
+
+  [!-- Bottom Section: Notes --]
+  <bloco tipo="aparato_critico" script="misto" bbox="50,770,950,950">
+    Notæ et variæ lectiones ad cap. VI Deuteronomii.
     
-    V. 5. 'Αλλος, τῆς κεφαλῆς. Basil. Verisimile est
-    esse reliquorum omnium interpretum. — Vv. O',
-    ψυχῆς. Couslin. ad marg., 'δυναλος'. ΤΙΝΟ'. O'. δυ-
-    ναμος. Couslin. marg., 'λογος'.
-    V.7. 'Α', δευτερούσας. Couslin.
-    Ubi. 'Αλλος, τῷ χειρισηφῳ', etc. Videtur esse
+    V. 5. "Αλλος , τῆς καρδίας. Basil. Verisimile est
+    esse reliquorum omnium interpretum. — לְבָבְךָ. O',
+    ψυχῆς. Coislin. ad marg., διανοίας. .O'. δυ-
+    νάμεως. Coislin. marg., ἰσχύος.
+    V. 7. 'Α., δευτερώσεις. Coislin.
+    Ibid. "Αλλος, ἐν τῷκαθῆσθαι, etc. Videtur esse
     
-    Aquilæ, qui Hebraica, vatiȧ ῥηνα, sequtur. Ex Ba-
-    silianis. — O', κατασημος tv ὁδῃ. Couslin. marg., tv
-    τῳ καθησθῃ tv ὁδῃ, etc., et hæc notantur asterisco.
-    V.8. 'Α', ανωσις, melius, divinatus. Σ., Bucer-
-    plava. Ex Basil. Vide quas diximus Exod. xiii, 16.
-    — O', ἀσθλεπετα. Couslin. marg., 'Α., ΗΛΚΤΑ', ccr-
+    Aquilæ, qui Hebraica , κατὰ πόδα , sequitur. Ex Ba-
+    siliensi. — O', καθήμενος ἐν οἴκῳ. Coislin. marg., ἐν
+    τῷ καθῆσθαι ἐν οἴκῳ, etc., et hæc notantur asteriscis.
+    V. 8. 'Α., ἄνακτα, melius, ἀτίνακτα. Σ., διασταλ-
+    μένα. Ex Basil. Vide quæ diximus Exod. xiii , 16.
+    — O', ἀσάλευτα. Coislin. marg., 'Α., ΗΑΚΤΑ , cor-
   </bloco>
   <notas>
-    - BBOX valores estimados em escala 0-1000; leitura parcial com abreviações e palavras [ilegivel] não necessárias.
-    - Identificados três colunas principais: hebraico à esquerda, grego/latim central, aquila/didascalia à direita.
-    - Foram mantidas formas e pontuações originais; não se normalizou ortografia.
+    A página apresenta uma disposição poliglota típica das Hexaplas.
+    Coluna 1 (Topo): Texto Hebraico.
+    Coluna 2 (Topo): Transliteração do Hebraico em caracteres Gregos (apenas números visíveis nesta página).
+    Coluna 3 (Topo): Versão de Áquila em Grego.
+    Coluna 1 (Meio): Versão Latina do Texto Hebraico.
+    Coluna 2 (Meio): Vulgata Latina.
+    Coluna 3 (Meio): Versão Latina de Áquila.
+    Rodapé: Notas críticas em Latim e Grego.
   </notas>
 </pagina>

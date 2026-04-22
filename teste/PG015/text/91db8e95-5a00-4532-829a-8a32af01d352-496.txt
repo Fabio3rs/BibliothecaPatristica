@@ -1,90 +1,114 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,90">
-    HEXAPLORUM QUÆ SUPERSUNT.
-  </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,110,330,760">
-    TO ΕΒΡΑΙΚΟΝ.
-    [יהוה] 10
-    [ו]יתרו אבנים 11
-    [גם] 12
-    [בן] 13
-    13. [לא-]יָדְעוּ עַל-מֶרְכָּז
-    14. לישׁב יהוה בקול איש
-    15. חשב יהושע וכל-ישׂראל לבוא
-    אל המחנה ההיא.
-    18. אבנים גדולות
-    19. אתים אלי-מקום רץ אחריו
-    20. סרו סרק והבאו אל-הארץ
-    21. אל-המחנה
-    26. ויתרו תמים חלם
-    27. אבנים גדולות
-    28. חרב ואגר-סליה
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,110,640,760">
-    TO ΕΒΡΑΙΚΟΝ
-    Ἑλληνικὸς γράμμα.
-    10.
-    11.
-    12.
-    13.
-    14.
-    15.
-    18.
-    19.
-    20.
-    21.
-    26.
-    27.
-    28.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,110,960,760">
-    ΑΚΥΛΑΣ.
-    10.
-    11. Λιθους μεγάλους.
-    12. Σίλε.
-    13.
-    14.
-    15.
-    18.
-    19. και ὑμεις μὴ στατησθε, δε
-    ὑμεις σταθητε.
-    20.
-    21.
-    26.
-    27.
-    28.
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="40,770,960,980">
-    VERSIO HEBRAICI TEXT.        VULGATA I ATlNA.        AQUILA.
-    
-    10. Bethoron.              10. Bethoron.             10.
-    
-    11. Lapides magnos.       11. Lapides magnos.      11. Lapides magnos.
-    12. Sile.                 12. Ne movearis.         12. Sile.
-    In valle Aialon.         In valle Aialon.
-    
-    13. An non hoc scriptum in Il-  13. Nonne scriptum est hoc in  13.
-    bro recit?                  libro justorum?
-    14. Ad audiendum Dominum in    14. Obediente Domino voci ho- 14.
-    voce viri.                   minis.
-    
-    15. Et reversus est Josue, et  15. Reversusque est Josue cum 15
-    omnis Israel cum eo ad castrana- omni Israel in castrà Galgala.
-    tiónem in Galgal.
-    18. Lapides magnos.         18. Saxa ingentia.         18.
-    
-    19. Et vos ne stétis, persequi- 19. Vos autem nolite stare, sed 19. Et vos ne stétis, persequi-
-    mini post.                   persequamini.             mini post.
-    20. Superfuerunt et eis, et in- 20. Effugere potuerant, ingressi 20.
-    gressi sunt ad civitates.     sunt civitates.
-    
-    21. Ad castrametationem.    21. Ubi tunc erant castra.   21.
-    26. Et occidit eos, et suspendit 26. Et interfecit eos atque sus- 26.
-    eos.                         pendit.
-    27. Lapides magnos.         27. Saxa ingentia.         27.
-    28. Gladii, et regem ejus.   28. Gladii, regesque illius. 28.
-    
-    Digitized by Google
-  </bloco>
-  <notas>Scripts identificados visualmente: hebraico (coluna esquerda superior), grego/latim em cabeçalho; algumas palavras hebraicas parcialmente ilegíveis e marcadas entre colchetes; disposição em três colunas (hebraico, grego translit., Aquila).</notas>
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,100,60">987</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,30,650,60">HEXAPLORUM QUÆ SUPERSUNT.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="900,30,950,60">988</bloco>
+  
+  <bloco tipo="texto_principal" script="misto" bbox="150,70,300,100">TO ΕΒΡΑΙΚΟΝ.</bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="400,70,600,110">TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι.</bloco>
+  <bloco tipo="texto_principal" script="greco" bbox="750,70,850,100">ΑΚΥΛΑΣ.</bloco>
+
+  [!-- Coluna Esquerda Superior (Hebraico) --]
+  <bloco tipo="texto_principal" script="hebraico" bbox="200,110,300,140">בֵּיתחֹרֹן 10</bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="200,150,300,180">אֲבָנִים גְּדֹלֹת 11</bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="250,180,300,210">דֹּמֶם 12</bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="200,210,300,240">בְּעֵמק אַיָּלֹן</bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,250,300,300">13 הֲלֹא־הִיא כְתוּבָה עַל־סֵפֶר הַיָּשָׁר</bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,310,300,340">14 לִשְׁמֹעַ יְהוָה בְּקוֹל אִישׁ</bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,350,300,400">15 וַיָּשָׁב יְהוֹשֻׁעַ וְכָל־יִשְׂרָאֵל עִמּוֹ אֶל־הַמַּחֲנֶה הַגִּלְגָּלָה</bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="200,410,300,440">18 אֲבָנִים גְּדֹלֹת</bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,450,300,480">19 עִמּוֹ אַל־תַּעַמְדוּ רִדְפוּ אַחֲרֵיהֶם</bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,490,300,520">20 וַיָּנֻסוּ מֵהֶם וַיָּבֹאוּ הָעָרִים</bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="200,530,300,560">21 אֶל־הַמַּחֲנֶה</bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="200,570,300,600">26 וַיַּכֵּם וַיְמִיתֵם</bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="200,610,300,640">27 אֲבָנִים גְּדֹלֹת</bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="200,650,300,680">28 חֶרֶב אֶת־מַלְכָּם</bloco>
+
+  [!-- Coluna Central Superior (Transliteração/Números) --]
+  <bloco tipo="texto_principal" script="latino" bbox="400,110,450,140">10.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,150,450,180">11.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,180,450,210">12.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,250,450,280">13.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,310,450,340">14.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,350,450,380">15.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,410,450,440">18.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,450,450,480">19.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,490,450,520">20.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,530,450,560">21.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,570,450,600">26.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,610,450,640">27.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,650,450,680">28.</bloco>
+
+  [!-- Coluna Direita Superior (Aquila Grego) --]
+  <bloco tipo="texto_principal" script="greco" bbox="750,110,800,140">10.</bloco>
+  <bloco tipo="texto_principal" script="greco" bbox="750,150,900,180">11. Λίθους μεγάλους.</bloco>
+  <bloco tipo="texto_principal" script="greco" bbox="750,180,850,210">12. Σιώπα.</bloco>
+  <bloco tipo="texto_principal" script="greco" bbox="750,250,800,280">13.</bloco>
+  <bloco tipo="texto_principal" script="greco" bbox="750,310,800,340">14.</bloco>
+  <bloco tipo="texto_principal" script="greco" bbox="750,350,800,380">15.</bloco>
+  <bloco tipo="texto_principal" script="greco" bbox="750,410,800,440">18.</bloco>
+  <bloco tipo="texto_principal" script="greco" bbox="750,450,900,500">19. καὶ ὑμεῖς μὴ στήκετε, διώ- ξατε ὀπίσω.</bloco>
+  <bloco tipo="texto_principal" script="greco" bbox="750,490,800,520">20.</bloco>
+  <bloco tipo="texto_principal" script="greco" bbox="750,530,800,560">21.</bloco>
+  <bloco tipo="texto_principal" script="greco" bbox="750,570,800,600">26.</bloco>
+  <bloco tipo="texto_principal" script="greco" bbox="750,610,800,640">27.</bloco>
+  <bloco tipo="texto_principal" script="greco" bbox="750,650,800,680">28.</bloco>
+
+  [!-- Cabeçalhos Seção Inferior --]
+  <bloco tipo="cabecalho" script="latino" bbox="100,530,350,560">VERSIO HEBRAICI TEXT.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="400,530,650,560">VULGATA LATINA.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="750,530,850,560">AQUILA.</bloco>
+
+  [!-- Coluna Esquerda Inferior (Versio Hebraici) --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,570,300,600">10. Bethoron.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,610,300,640">11. Lapides magnos.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,640,300,680">12. Sile. In valle Aialon.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,690,350,730">13. An non hoc scriptum in libro recti ?</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,730,350,770">14. Ad audiendum Dominum in voce viri.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,780,350,830">15. Et reversus est Josue, et omnis Israel cum eo ad castrametationem in Galgal.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,840,300,870">18. Lapides magnos.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,880,350,920">19. Et vos ne stetis, persequimini post.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,920,350,960">20. Superfuerunt ex eis, et ingressi sunt ad civitates.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,970,300,1000">21. Ad castrametationem.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,1000,350,1040">26. Et occidit eos, et suspendit eos.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,1040,300,1070">27. Lapides magnos.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,1080,300,1110">28. Gladii, et regem ejus.</bloco>
+
+  [!-- Coluna Central Inferior (Vulgata) --]
+  <bloco tipo="texto_principal" script="latino" bbox="400,570,650,600">10. Bethoron.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,610,650,640">11. Lapides magnos.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,640,650,680">12. Ne movearis. In valle Aialon.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,690,650,730">13. Nonne scriptum est hoc in libro justorum ?</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,730,650,770">14. Obediente Domino voci hominis.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,780,650,820">15. Reversusque est Josue cum omni Israel in castra Galgalæ.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,840,650,870">18. Saxa ingentia.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,880,650,920">19. Vos autem nolite stare, sed persequimini.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,920,650,960">20. Effugere potuerunt, ingressi sunt civitates.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,970,650,1000">21. Ubi tunc erant castra.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,1000,650,1040">26. Et interfecit eos atque suspendit.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,1040,650,1070">27. Saxa ingentia.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,1080,650,1110">28. Gladii, regemque illius.</bloco>
+
+  [!-- Coluna Direita Inferior (Aquila Latim) --]
+  <bloco tipo="texto_principal" script="latino" bbox="750,570,800,600">10.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,610,900,640">11. Lapides magnos.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,640,850,670">12. Sile.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,690,800,720">13.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,730,800,760">14.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,780,800,810">15</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,840,800,870">18.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,880,900,920">19. Et vos ne stetis, persequimini post.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,920,800,950">20.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,970,800,1000">21.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,1000,800,1030">26.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,1040,800,1070">27.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,1080,800,1110">28.</bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="600,950,800,990">Digitized by Google</bloco>
+  
+  <notas>
+    Transcrição de página comparativa da Hexapla (Hexaplorum quæ supersunt).
+    Colunas superiores: Texto Hebraico, Transliteração Grega, Versão de Áquila (Grego).
+    Colunas inferiores: Tradução Latina do Hebraico, Vulgata Latina, Tradução Latina de Áquila.
+    Alguns blocos de texto foram agrupados por versículo para melhor legibilidade, mantendo a ordem visual.
+  </notas>
 </pagina>

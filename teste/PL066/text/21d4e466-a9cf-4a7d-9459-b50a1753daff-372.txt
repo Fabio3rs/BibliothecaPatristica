@@ -1,71 +1,129 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="40,20,960,80">
-    754                                S. P. BENEDICTI                                759
+754                                S. P. BENEDICTI                                759
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,90,490,900">
-    ignorantiam omnem penitus in monasteriis enervasse regulæ vigorem, adeo ut virum [ilegivel]  
-    ipsum observantiæ regularis in scientiam litterarum reformare; qua in re non levem viris sanctissimi-  
-    mis inrumt injuriam, qui ut eversam inter monachos disciplinam redintegrarent, nullum salubrius adhiberi 645  
-    posse remedium existimarunt, quam si monachos sacris litterarum studiis informnarent; id quod feliciter in  
-    Gallis exsecutus est Benedictus abbas Anianensis, et in Anglia Dunstanus, Athelwoldus et Oswaldus pontifi-  
-    ces sanctissimi, illuc ad id advocatis ex alienis regnis et provinciis doctissimis monachis. Porro qui asserunt  
-    octavo nonoque seculo scientias in monasteriis tantum florere coepisse, easque ruinas observantiae regularis,  
-    quæ circa medium saeculum nonum contigunt, causas faciunt, a vero longe aberant. Nam per nonnullas litteras  
-    longe ante saeculum octavum in monasteriis clarissime supra luce demonstratum est. Secundo, nec verum est,  
-    quod lapsum observantiæ ex studiis litterarum provenisse docent; qui si legitimis historiis, non studiis, hujusce  
-    rei causas attribuissent, sed bellis civilibus et incursionibus Normannorum, qui spoliatis incensisque monaste-  
-    riis, monachos omne sparsim eduxerunt, ut vix ullum exstaret in universo Francorum regno, quod eorum potuerit  
-    evadere furorem. Verum equidem hanc causam agnovit Adso Dervensis abbas, qui sæculo x libellum de miraculis et  
-    translatione S. Basoli descripsit, ubi aperte docent quod in S. Basoli cenobio a partim propter incursiones barba-  
-    ricos, partim vero propter frequentes et perpetuos in regno ... [ilegivel] ; et multi ex veteribus instituta traditio  
-    (Cap. 1 sec. iv Bened.). Additque: «Tunc etiam et alia monasteria sunt suo honore privata, nudata rebus ecclesiæ,  
-    et plurimæ subversæ.» Nec magis eis favet quem citant truncatum concilii Vernensis canonem; quem, ut plene in-  
-    telligatur, plenum et integrum hic referre opus est: «In locis sanctis, hoc est monasteriis, alios studio, nonnullos  
-    desidia, multos necessitate victus et vestimentis a sua professione deviare compierimus (Cap. 12).» Hoc in canone  
-    studium opponitur necessitati; necessitas vero non opponitur nisi spontaneæ voluntati; studium igitur hic loci non pro  
-    literario exercitio sumitur, sed pro corrupta animi propensione in malum. Atque eo sensu Vernensis concilii canonem  
-    Gallice reddidit qui super dissertationem de benina viri Benedictini vulgavit, vir doctissimus; ibidem sic loquitur  
-    (In resp. ad object., n. 6): «Le concile de Vernon tenu sous Charles le Chauve temoigne qu'encore de son temps quantité  
-    de moines estoient sortis de leur voye, les uns par dessein, forme, les autres par pure negligence, et la plupart faute  
-    d'avoir seulement le quoy vivre et se vestir.» Nec magis audiendi videntur cum eorum monachorum lapsum qui Origenis  
-    errores secuti, Eutyches haereses amplecti, Adelfii et Euchitæ falsas novitates tulerunt, Nestorius, ac Severi impia dogma-  
-    ta proferunt, aut Anthropomorphitis adhibuerunt, studiis literarum attribuunt. Nam qui id asserunt, ipsi sibi manifeste  
-    contradicent, cum ignota antiquis monachis studia fuisse doceant; melius et veritati magis consentaneum dicerent, si de  
-    monachorum illorum causis, qui tot in Oriente urbes et scandala excitarunt, casum non in studia sed in eorum imperitiam re-  
-    ferre vellent. Unde et magni eunymmi discipuli, qui, ut supra demonstravimus, studijs 646 operam navabant, solis etiam fere ex  
-    omnibus Palæstinæ monachis recte fidem adhaeserunt. Alisi ergo, alibi ut scientiis cerebrorum inundationes imputemus; absit ut pro-  
-    pensiones ad sacras literas, quas summi pontifices et concilia monachis commendabant, recitem in monasteriis esse a dæmone dicamus  
-    ut regularis observantia subversionem. Longe aliter senatibus videratque Adalbero, Augustensis Ecclesiæ episcopus, qui reducis e[ilegivel]mo-  
-    S. Galli, ubi omnes luce scien-
+
+  <bloco tipo="texto_principal" script="latino" bbox="40,90,490,930">
+ignorantiam omnem penitus in monasteriis enervasse regulæ vigorem, adeo ut virum [ilegivel]  
+ipsum observantiæ regularis in scientiam litterarum reformare; qua in re non levem viris sanctissimi-  
+mis inrumt injuriam, qui ut eversam inter monachos disciplinam redintegrarent, nullum salubrius adhiberi  
+posse remedium existimarunt, quam si monachos sacris litterarum studiis informnarent; id quod feliciter in  
+Gallis exsecutus est Benedictus abbas Anianensis, et in Anglia Dunstanus, Athelwoldus et Oswaldus pontifi-  
+ces sanctissimi, illuc ad id advocatis ex alienis regnis et provinciis doctissimis monachis. Porro qui asserunt  
+octavo nonoque seculo scientias in monasteriis tantum florere coepisse, easque ruinas observantiae regularis, quae circa medium saeculum nonum contingunt, causas faciunt, a vero longe aberant. Nam per nonnullas litteras  
+longe ante saeculum octavum in monasteriis clarissime supra luce demonstratum est. Secundo, nec verum est,  
+quod lapsum observantiæ ex studiis litterarum provenisse docent; qui si legitimis historiis, non studiis, hujusce  
+rei causas attribuissent, sed bellis civilibus et incursionibus Normannorum, qui spoliatis incensisque monaste-  
+riis, monachos omne sparsim eduxerunt, ut vix ullum exstaret in universo Francorum regno, quod eorum potuerit  
+evadere furorem. Verum equidem hanc causam agnovit Adso Dervensis abbas, qui sæculo x libellum de miraculis et  
+translatione S. Basoli descripsit, ubi aperte docent quod in S. Basoli cenobio « partim propter incursiones barba-  
+ricos, partim vero propter (requentes et perpetes in regno principum discordias, omnis antiquorum Pat'um deperit instituta traditio(Cap. 1 sec. iv Bened.).» Additque: «Tunc etiam et alia monasteria sunt suo honore privata, nudata rebus ecclesiæ,  
+et plurimæ subversæ.» Nec magis eis favet quem citant trunccatum concilii Vernens:$ canon; quem, ut plene in-  
+telligatur, plenum et integrum hic referre opus est : «In locis sanctis, hoc est monasteriis, alios studio, nonwullos desidia, multos necessitate victus et vestimenti a sua professione deviare compierimus (Cap. 12).» Hoc in canoue studium opponitur necessitati; necessitas vero non opponitur nisi spontaneæ voluntati; studium igitur hic loci non pro  
+literario exercitio sumitur, sed pro corrupta animi propensione in malum. Atque eo sensu Vernensis concilii canonem  
+Gallice reddidit qui super dissertationem de hemina vini. Benedictina vu'gavit, vir doctissimus, ibidem sic loquitur (In resp. ad object., n. 6) : « Le concile de Vernon tenu sous Charles le Chauve témoigne qu'encore de son temps quantité de moines estoient sortis de leur voye, les uns par un da-sein. formé, les autres par pure négligence, et la pluspart. (aute d'avoir seulement de quoy vivre et sevétir. Nec magis audiendi videntur cum eorum monachorum lapsum qui Ürigeuis evrores Seetiti, Eutycheiis hxreses amplexi, Adelfi et Euchitarum falsas novitates tuiti sunt, Nestorii, ac Severi impia dogmata propugnarunt, aut Anthiropomorphitis üdbirserunt, siudiis litterarum attribuunt. Nam qui
+id asserunt, ipsi sibi manifeste contradicunt, cum ignota antiquis monachis studia fuisse doceant; melius et veritati magis consentaneum dicerent, si de  
+monachorum illorum causis, qui tot in Oriente urbes et scandala excitarunt, casum non in studia sed in eorum iinperitiam re-  
+ferre vellent. Unde et magni eunymmi discipuli , qui, ut supra demonstravimus, studijs 646 operam navabant, solis etiam fere ex  
+omnibus Palæstinz monachis recte fidem adhaeserunt. Alisi ergo, alibi ut scientiis cerebrorum inundationes imputemus; absit ut pro-  
+pensiones ad sacras literas, quas summi pontifices et concilia monachis commendabant, recitem in monasteriis esse a dæmone dicamus  
+ut regularis observantia subversionem. Longe aliter senatibus videratque Adalbero, Augustensis Ecclesiæ episcopus, qui reducis e[ilegivel]mo-  
+S. Galli, ubi omnes luce scien-
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,140,530,180">
-    A
+
+  <bloco tipo="texto_principal" script="latino" bbox="510,90,960,930">
+tite vigebant, et quod devotionis gratia visilarat,  
+interrogentes inter cetera aliquando a sui:, inqui  
+Ekkehardus Sauctigallensis monachus (/n V it. Notkeri  
+Balbul.. apud Boll. 6 April.), esset nobiscum, ut  
+fama vulgavit, religio eum doctrina, severitas cum  
+disciplina? Ceteri, inquit, quid sentiant nescio, quod  
+mihi animo est pronuvtio : Unum ego sanctum, et  
+hunc defunctum quasivi; vivos auem, ut vere fraires fatear, sauctissimos inveni. Doctrinam vero illorum et disciplinam in virtutem eorum operibut  
+videre est. Delect4t me ta ium memorari, quos quidem ut iterum videam vix exspecto, &amp; igitur si qui aliquando monachi scientiis dediti prolapsi sunt, id uon scientiis, quibus a crimine deterruri potueran:,  
+ascribendum est; sed perverse cordis. eorum dispositioni. Nequeexistimand:im meliorem futuram fuisse sortem | illorum, si haudquaquaw studuissent; nam  
+etsi ea non perpetrassent crimina quibus. abutentes  
+siudio perierunt, majora forsitan commisissent non  
+studentes, Voluntas quidem | peccati: wutasset oljo-
+c»nt ; qui si legissent bistorias, non studiis, hujusce B ctum, sed non malaw co:dis dispositionem.
+
+1ei cusam attribuissent, sed bellis civilibus et incursionibus Normannorum, qui spoliatis incensi-que  
+monasteriis, monac os omne: sparsim effugarunt, ut  
+vix ullum exstiterit in universo Francorum regno 008»  
+vobium, quod eorum potuerit evadere furorem. Vevam etjunicam han ececcausam agnovit Adso Derveusis  
+abbas, qui szeulo x libellum de miraculis et translatione S. Basoli describehat, ubi aperte docet quod in  
+S. Basoli ceenobio « partim prepter incursus. barbaricos, partim vero propter (requentes et perpetes in
+tegno priucipum discordias, omnis antiquorum Pat'um deperit instituta traditio(Cap. 1 sec. 1v Bened.).»
+Additque : « Tunc etiam et alia monasteria sunt suo
+honore privata, nudatze rebus ecclesie, et. plurimae
+*tübversze. » Nec magis eis favet quem citant trunca-
+1u$ concilii Vernens:$ canon; quem, ut plene intelligatur, plenum et integrum hic referre opus est : « [n
+locis sanctis, hoc e-t monasteriis, alios studio, nonwullos desidia, multos necessitate victus et vestimenti a sua professione deviare compierimus (Cap.
+12). » Hoc in canoue studium opponitur necessitall ;
+necessitas vero non opponitur nisi spontanez volun.
+tati; studium igitur hic loci non. pro litterario exercitio sumitur, sed pro corrunta animi propensione
+in malum. Atque. eo sen-u. Vernensis concilii cauonem Gallice reddidit qui nuper dissertationem de
+hemina vini. Benedictina vu'gavit, vir doct ssimus,
+vbi sic loquitur (In resp. ad object., n. 6) : Le concile
+de Vernon tenu sous Charles le Chauve témoigne qu'encore de son temps quantité de moines estoient sortis de
+leur voye, les uns par un da-sein. formé, les autres par
+pure négligence, et la pluspart. (aute d'avoir seulement
+de quoy vivre et sevétir. Nec magis audiendi videntur
+cnn eorum monachorum lapsum qui Ürigeuis evrores
+Seetiti, Eutycheiis hxreses amplexi, Adelfi et Euchitarum falsas novitates tuiti sunt, Nestorii, ac Severi
+impia dogmata propugnarunt, aut Anthiropomorphitis
+üdbirserunt, siudiis litterarum attribuunt. Nam qui
+
+C
+
+Decimo. Cum omnes jam inonachi ex Ecclesia
+przscripto sacerdotio initientur, δὲ przicipuum iam
+sacerdotum quam monachorum studium, circa sacrzin
+Scripturam versori debeat, ad perfectam ejus intelligentiam consequendam, ne; essarias es- eetiamaliarum
+disciplinarum scienuas asserunt, probantque imprimis
+auctoritate S. Augustini, qui in libris de Doelrma
+Christiana totus in eo versatur. Suppnit enim sancius doc:or duabus ex cau-is soleie non iutelligi Scriptu: as (Lib. n, c. 10), « si aut ignotis, ant. ambiguis
+signis, » id est verbis obteguutur. Deinde, facta dislinclione inter sigua propria et traus!ata seu melaphorica (Cap. 14) : « Contra ignota signa proprio,
+inquit, magnnm remedium est linguarum cognitio. Et
+La'inze quidem lingue homines quos nuuc instraend«s suscepimus, duabus aliis ad Scripturarum diiiusrum coguitionem opus habent, [lebriea scilicet et
+Grieca, ut ad exemplaria przcedentia recurratur, si
+quim dubitationem attulerit. Latinorum ioterpretum
+infinita varietas. » Et postea (Cap. 46) : « In irauslaus vero -ignis, $i qua forte ignota cogunt. barrere
+lectorem, pariim lingnarum notitia, partim rerum,
+investiganda sunt. ». Igitur pr:eter linguarum scientiam ad intelligendas Scripturas ex Augustino neces-ara est eliam cognitio rerum ; « lterum euim
+ignorantia facit obscuras figuratas locut.oves, cun
+ignoramus vel animautium, vel lapidum, vel herbarum naturas, aliarumve rerum, quie pleraque in
+Seripturis similitudinis alicujus gratia ponuutur. »
+Addit S. doctor : « Numerorum etiam imperitia 847
+multa faeit non intel igi, translate ae. mystice posiia
+in Scripiuris. » Et post pauca: «Non pauca etiam claudit
+atque obtegit nonuullaruu rerum musicarum iznurantia. » Deinde ubi nonnulla dixit de iis quz Christiano fugiendze sunt scientiis , de utilibus et necessariis ad intelligendam Scripturam subjungit hoc
+inodo (Cap. 28) : « Quidquid igitur de. ordiue temporum transactorum indicat ca qua appellatur histo-
+ria, plurimum nos adjuvat ad sanctos libros intelli-
+geudos, etiausi przeter Ecclesiam puerili eruditione
+discatur; nam et per olympiadas, et per consulua
+nomina mulia queruutur 2. nobis, et iguorantia conSulatus. quo natus esi Dominus, et quo passus 6
+nonnullos coegit errare, etc. » ἐξ narratis nonnullis
+in gratiam. ei laudem historie : « Est etiam, inquit
+(Cap. 29), narratio demonstrationis similibus, qua uon
+preterita, sed praseniia. indicantur ignaris. In quo
+genere sunt quecunque de locorum situ, natnrisque
+animalium, liguorum, herbarum, lapidum, aliorumque corporum scripta «unt. De quo genere superius
+*gimus, eamque coguilionem. valere ad ἐπὶ φιλιὰ
+Serpturarum — solvenda. » Sequenü capite laudat etiam aitium mechanicarum peritiaui; tutu tr2n$*
+ieus ad liberales arte, seu scientias, quip ad 13007
+uem animi pertinent, laudat in primis dialecticam *
+« Disputationis disciplina, inquit. (Cap. 51), ad 0n
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,90,960,900">
-    tite vigebant, et quod devotionis gratia visitari, interrogantes inter cætera aliquando a suis, inquit  
-    Ekkehardus Sanctigallensis monachus (In Vit. Nulftri Balbul. apud Boll. 6 April.), cessitue [ilegivel] vulgatum, et  
-    fama vulgavit, religio cum doctrina, severitas cum disciplina? Cæteri, inquit, quid sentiunt nescio; quod mihi animo est  
-    pronuntiare: Unum ergo sanctum, et hunc defunctum quaesivi; vivos autem, ut vere fratres fatear, sanctissimos juveni. Doctrinam  
-    vero illorum et disciplinam in virtutem eorum operibus videre est. Delectat me ita tum memorari, quos quidem ut iterum videam  
-    vix exspecto, &amp; igitur si qui aliquando monachi scientiis didici prolapsi sunt, id non scientiis, quibus a crimine deterrerit potuerant,  
-    ascribendum est; sed perversæ cordis eorum dispositioni. Neque existimandum meliorem futuram fuisse sortem illorum, si bandugam studuissent; nam  
-    etsi ea non perpertrassent crimina quibus abuntes studio perierunt, majora forsitan commissionem non studentes. Voluntas quidem peccati mutilasset objec-  
-    tum, sed non valebat corudis dispositionem. Decimo. Cum omnes jam menacli in Ecclesiæ præscripto sacrolohio initientur, et præcipuam quam sacerdotum quam monachorum studium, circa sacrum Scripturarum versari debeat, ad perfectam ipsius intelligentiarn consequendam, necessarias et ætatas aliarum disciplinarum scientias asseverant, prohancque imprimis auctoritate S. Augustini, qui in libris de Doctrina Christiana totius in eo versatur. Supponit enim sanctus doc or duabus ex causis solec non intelligi Scripturas (Lib. II, c. 40), si aut ignotis, aut ambiguis signis, id est verbis obtegarunt. Deinde, facta dis- tinctione inter signa propria et translatæ seu meloporia (Cap. 41): «Contra ignota signa propria, inquit, magnum remedium est linguarum cognitio. Et Latina quidem lingue homines quos nunc instrui- mus susceptibles, duabus aliis ac Scripturarum divi- num cognitionem opes habent, Hebræa scilicet et Graeca, ut ad exemplaria præcedentia recurratur, si qua- rum dubitationem distulerit Latinorum interpretum infirmitas varietas.» Et postea (Cap. 16): «In traduc- tatis vero signis, si quod forte ignota coguntur habere lectorem, parium linguarum notitia, partim rerum investiganda sunt.» Igitur præter linguarum scientiam ad intelligendas Scripturas ex Augustino poscens- ces- ara est etiam cognitio rerum: «Rerum enim ignorantia facit obscuras figuras locutiones, cum ignoramus res rerum, vel lapidum, vel herbarium naturas, aliarumque rerum, quae plerumque in Scripturis similitudinis alicujus gratia ponuntur.» Addit S. doctor: «Numerorum etiam imperitiæ 647 multa facit non intelligi, translate ac mysticæ possiunt in Scripturis.» Et post pauca: «Non paucæ etiam claudunt atque obtegi nonnullarum rerum musicarum interpretaria.» Deinde ubi innuntiato dixit de iis que Christianorum fugiendæ sunt scientiis, de utilibus et necessarijs ad intelligendam Scripturarum subjungit hu- modo (Cap. 28): «Quidquid igitur de ordine temporum transactionum indicat ea que appellantur historia, plurimum nos adjuvat ad sanctos libros intellegendos, cæterius præter Ecclesiam periti eruditione discreditur; nam et per synonymias, et per consuetudina nomina multa queruntur a nobis, et ignorantia consueta quæ natus est Dominus.» et quo passus est honores coegi errare, etc. Et narratis nonnullis in gratia et laudibus historica : «Est etiam, inquit (Cap. 29), narratio demonstrationis similibus, qua non pri- varetur, sed præsentia indicantur ignaris. In quo genere sunt quæcumque de locorum suis, naturisque animalium, lignorum, herbarium, lapidum, aliquorumque corporum scriptæ sunt.» De quo genere superioris regimus, eaque cognitionem valere ad æquiua scripturarum sublevanda. Sequitur capite horas et etiam ad unum mechanicam peritiam, tum trans- iens ad liberalem artes, sen scientificas, quæ ad rumorum animi pertinent, laudat in primis a delectatione. Disputationis disciplina, inquit (Cap. 51), ad om-
+
+  <bloco tipo="nota_marginal" script="latino" bbox="500,140,530,180">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,320,530,360">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,560,530,600">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,760,530,800">D</bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="360,920,860,990">
+Digitized by Google
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,320,530,360">
-    B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,560,530,600">
-    C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,760,530,800">
-    D
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="380,920,760,990">
-    Digitized by Google
-  </bloco>
-  <notas>
-    Texto impresso em latim. Foram mantidas letras e sinais tal como visíveis; usei [ilegivel] para palavras cujo reconhecimento é incerto.
-    Letras A, B, C, D na coluna central marcadas como notas marginais separadas. BBoxes estimadas em escala 0-1000.
-  </notas>
+
+  <notas>Transcrição baseada na página digitalizada (latim). Mantive a segmentação e hifenação de fim de linha tal como aparece na imagem/na leitura fornecida; usei [ilegivel] apenas quando a palavra é incerta.</notas>
 </pagina>

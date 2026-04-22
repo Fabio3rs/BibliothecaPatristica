@@ -1,29 +1,31 @@
-<pagina estado="com_texto">
-  <bloco tipo="nota_marginal" script="latino" bbox="836,23,946,108">
-BR
-60
-.P4
-v.16
-pt.3
+<pagina estado="com_texto" tipo="capa_ou_guarda">
+  <bloco tipo="outro" script="latino" bbox="840,25,960,110">
+    BR
+    60
+    .P4
+    v.16
+    pt.3
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="820,130,900,160">
-pt 3
+  <bloco tipo="outro" script="latino" bbox="820,120,900,150">
+    pt 3
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="265,336,705,382">
-Stanford University Libraries
-Stanford, California
+  <bloco tipo="texto_principal" script="latino" bbox="265,335,675,370">
+    Stanford University Libraries
+    Stanford, California
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="275,415,695,435">
-Return this book on or before date due.
+  <bloco tipo="texto_principal" script="latino" bbox="275,410,625,425">
+    Return this book on or before date due.
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="415,465,515,505">
-DOES NOT
-CIRCULATE
+  <bloco tipo="nota" script="latino" bbox="410,450,510,520">
+    DOES NOT
+    CIRCULATE
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="600,960,850,990">
-Digitized by Google
+  <bloco tipo="rodape" script="latino" bbox="605,960,815,985">
+    Digitized by Google
   </bloco>
   <notas>
-    A página é uma guarda de livro com um bolso de biblioteca colado. O texto principal está no bolso e em uma etiqueta de chamada no canto superior direito. O OCR rascunho capturou bem o texto do bolso, mas omitiu a etiqueta de chamada (call number) e a marca d'água do Google. O llm_ocr apresentou alucinações com símbolos gregos que não existem na imagem. A transcrição foi corrigida para refletir fielmente o conteúdo visual, incluindo a etiqueta "BR 60 .P4 v.16 pt.3" e a anotação manuscrita "pt 3" próxima a ela.
+    Página de guarda com bolso de biblioteca da Stanford University.
+    Há uma tarja preta cobrindo informação no cartão de empréstimo (bbox aprox: 320,705,665,755).
+    Há marcas de tinta preta na página marmoreada perto do canto superior direito.
   </notas>
 </pagina>

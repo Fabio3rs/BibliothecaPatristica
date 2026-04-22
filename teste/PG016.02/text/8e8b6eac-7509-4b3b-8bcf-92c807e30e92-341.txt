@@ -1,56 +1,54 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,80">
-    HESAIÆ CAPUT LVI.
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,50">
+    1929 HESAIÆ CAPUT LVI. 1930
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="40,80,330,960">
+  
+  [!-- Top Section: Greek Text --]
+  <bloco tipo="texto_principal" script="grego" bbox="0,50,330,250">
     ΣΥΜΜΑΧΟΣ.
     4. Μάρτυρα.
-    5. ✠ Ἰδού.
-    Ἐθνος ὃ οὐ γνώσις.
-    Ὅτι ἐποίησάν σε καύχημα.
-    6. Δινεῖτε καὶ καλεῖται αὐτόν.
-    11. Οὐ μὴ ἀποστραφῇ ✠ πρὸς μὲ κενόν.
-    13. Ἄντι στοιπὴς ἀναθήσεται βραχύ, ἀντὶ δὲ χνώδης ἀναθήσεται μυρσίνη.
-    
-    ΣΥΜΜΑΧUS.
+    5. ※ Ἰδού.
+    Ἔθνος  οὐ γνώσης.
+    Ὅτι ἐποίησέν σε καύχημα.
+    6. Αἰνετε καὶ καλέσατε αὐτόν.
+    11. Οὐ μὴ ἀποστραφῇ ※ πρὸς μὲ κενόν.
+    13. Ἀντ στοιβῆς ἀναβήσεται βραθύ, ἀντὶ δὲ κνίδος ἀναβήσεται μυρσίνη.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="330,50,660,250">
+    σ.
+    4. Μαρτύριον.
+    5. Vacat.
+    Ἔθνη ἃ οὐκ οἴδασίν σε.
+    Ὅτι ἐδόξασέ σε.
+    6. Αὐτὸν ἐπικαλέσασθε.
+    11. Οὐ μὴ ἀποστραφῇ.
+    13. Καὶ ἀντὶ τῆς στοιβῆς ἀναβήσεται κυπάρισσος, ἀντὶ δὲ τῆς κονύζης ἀναβήσεται μυρσίνη.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="660,50,1000,250">
+    ΘΕΟΔΟΤΙΩΝ.
+    4.
+    5. ※ Ἰδού.
+    Ἔθνος ὃ οὐ γνώσης.
+    6.
+    11. Οὐ μὴ ἀποστραφῇ ※ πρὸς μὲ κενόν.
+    13. Κονύζης.
+  </bloco>
+
+  [!-- Top Section: Latin Text --]
+  <bloco tipo="texto_principal" script="latino" bbox="0,250,330,400">
+    SYMMACHUS.
     4. Testem.
-    5. ✠ Ecce.
+    5. ※ Ecce.
     Gentem quam nescies.
     Quia fecit te gloriationem.
     6. Laudate et vocate eum.
-    11. Non revertetur ✠ ad me vacuum.
-    13. Pro stœba ascendet brachy, et pro urtica ascendet myrtus.
+    11. Non revertetur ※ ad me vacuum.
+    13. Pro stœba ascendet brathy, et pro urtica ascendet myrtus.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="335,80,650,960">
-    ΘΕΟΔΩΤΙΟΝ.
-    4.
-    5. ✠ Ἰδού.
-    Ἔθνος ὃ οὐ γνώσις.
-    6.
-    11. Οὐ μὴ ἀποστραφῇ ✠ πρὸς μὲ κενόν.
-    13. Κονύζης.
-    
-    THEODOTIO.
-    4.
-    5. ✠ Ecce.
-    Gentem quam nescies.
-    6.
-    11. Non revertetur ✠ ad me vacuum.
-    13. Conyza.
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="40,420,960,620">
-    Notæ et variœ lectiones ad cap. LV Hesaie.
-    V. 6. Σ., αἱνετε και etc. Idem.
-    V. 11. Σ., ϴ., οὐ μὴ ἀποστραφῇ πρὸς μὲ κενόν.
-    Procop. Curter. vero ex ms. Jes., Σ., ϴ., ✠ πρὸς μὲ κενόν: quia hæc desunt in LXX.
-    V. 13. Σ., ἀντὶ στοιπῆς ἀναθ-. Eusebius in Hesaïam et Procopius. ϴ., χνώδης. Ex Hieronymo cujus verba non prætermittenda : « Sed, et στροβῆ quæque et χνώδη, sive salicumcula et urtica, in, aθίθεη veruntur, ac myrtum et cyparissum. »
-    
-    ΣΥΜΜΑΧΟΣ.
-    1.
-    3.
-    4. ✠ Ότι τάδε.
-    5.
-    
+
+  <bloco tipo="texto_principal" script="latino" bbox="330,250,660,400">
     LXX INTERPRETES.
     4. Testimonium.
     5. Vacat.
@@ -58,54 +56,109 @@
     Quia glorificavit te.
     6. Eum invocate.
     11. Non revertetur.
-    13. Et pro stœba ascendat cyparissus, et pro conyza ascendet myrtus.
-    
+    13. Et pro stœba ascendet cyparissus, et pro conyza ascendet myrtus.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="660,250,1000,400">
     THEODOTIO.
-    Στοιχ . juxta Symmachum et LXX in Hebræo scribitur NESUS : quem Aquila et Theodotiο χονύζην interpretati sunt. Est autem χονύζην herba vilissima et amara, odorisque pessimi. Ubi autem Septuaginta transtulerunt χονύζην, quæ in Hebraico dicitur SARPHOD, Symmachus vertit, utricam.» (Pro χονύζης alii habent, ακαλυφης, urticae. Dracn.)
-    Ibid. Hebr., τιππ, secundo. Keri vero, τιππ, et pro. Dracn.
+    4.
+    5. ※ Ecce.
+    Gentem quam nescies.
+    6.
+    11. Non revertetur ※ ad me vacuum.
+    13. Conyza.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,640,960,720">
+
+  [!-- Notes Section --]
+  <bloco tipo="cabecalho" script="latino" bbox="0,400,1000,420">
+    Notæ et variæ lectiones ad cap. LV Hesaiæ.
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="0,420,500,600">
+    V. 6. Σ., αἰνεῖτε καὶ etc. Idem.
+    V. 11. Σ., Θ., οὐ μὴ ἀποστραφῇ πρὸς μὲ κενόν. PROCOР. Curter. vero ex ms. Jes., Σ., Θ., πρὸς μὲ κενόν : quia hæc desunt in LXX.
+    V. 13. Σ., ἀντὶ στοιβῆς ἀναβ-. Eusebius in Hesaiam et Procopius. Ἀ., Θ., κονύζης. Ex Hieronymo cujus verba non prætermittenda : « Sed et στοιβὴ quoque et κονύζη, sive salisuncula et urtica, in abietem vertuntur, ac myrtum et cyparissum.
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="500,420,1000,600">
+    Στοιβὴ juxta Symmachum et LXX in Hebræo scribitur NESUS : quem Aquila et Theodotio κονύζην interpretati sunt. Est autem κονύζη herba vilissima et amara , odorisque pessimi. Ubi autem Septuaginta transtulerunt κονύζη, quæ in Hebraico dicitur SARPHOD, Symmachus vertit, urticam. » [Pro κονύζης alii habent, ἀκαλήφης, urticæ. DRACH.]
+    Ibid. Hebr., ספד, secundo. Keri vero, ספד, et pro. DRACH.
+  </bloco>
+
+  [!-- Bottom Section Header --]
+  <bloco tipo="cabecalho" script="latino" bbox="0,600,1000,650">
     HESAIÆ CAPUT LVI.
+    ΣΥΜΜΑΧΟΣ. σ. ΘΕΟΔΟΤΙΩΝ.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="40,720,500,960">
-    ΣΥΜΜΑΧΟΣ.
+
+  [!-- Bottom Section: Greek Text --]
+  <bloco tipo="texto_principal" script="grego" bbox="0,650,330,800">
     1.
     3.
-    4. ✠ Ὅτι τάδε.
+    4. ※ Ὅτι τάδε.
     5.
-    
-    1. Καὶ τὸ ἔλεός μου. Οἱ λοιποί, καὶ τὴν δικαιοσύνην μὲν.
+    9.
+    10. Οἱ σκοποὶ αὐτο τυφλοί.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="330,650,660,800">
+    1. Καὶ τὸ ἔλεός μου. Οἱ λοιποί, καὶ τὴν δικαιοσύνην μου.
     3. Vacat.
     4. Τάδε λέγει Κύριος.
-    5. Τόπον ὀνομαστον, χαίρειτω υἱῶν καὶ θυγατέρων, Οἱ λοιποί, γέρα καὶ ὄνομα βέλτιον υἱῶν καὶ θυγατέρων.
-    Ὀνομα αἰώνιον δώσω αὐτοῖς, καὶ οὐκ ἐκλείψει. Οἱ λοιποί, ὄνομα αἰώνιον δώσω αὐτῷ ὃ οὐκ ἐξαρθήσεται.
+    5. Τόπον ὀνομαστόν , κρείττω υἱῶν καὶ θυγατέρων, Οἱ λοιποί, χεῖρα καὶ ὄνομα βέλτιον υἱῶν καὶ θυγατέρων.
+    Ὄνομα αἰώνιον δώσω αὐτοῖς, καὶ οὐκ ἐκλείψει. Οἱ λοιποί, ὄνομα αἰώνιον δώσω αὐτ ὃ οὐκ ἐξαρθήσεται.
     9. Πάντα τὰ θηρία.
-    10. Τότε δι ἐκτεκύφωναται.
+    10. Ἴδετε ὅτι ἐκτετύφλωνται.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="505,720,960,960">
-    ΘΕΟΔΩΤΙΟΝ.
+
+  <bloco tipo="texto_principal" script="grego" bbox="660,650,1000,800">
     1.
-    3. ✠ Λέγων, ἀφορισμῷ.
-    4. ✠ Ὅτι τάδε.
+    3. ※ Λέγων, ἀφορισμῷ.
+    4. ※ Ὅτι τάδε.
     5.
-    
+    9.
+    10. Οἱ σκοποὶ αὐτο τυφλοί.
+  </bloco>
+
+  [!-- Bottom Section: Latin Text --]
+  <bloco tipo="texto_principal" script="latino" bbox="0,800,330,950">
+    SYMMACHUS.
+    1.
+    3.
+    4. ※ Quia hæc.
+    5.
+    9.
+    10. Speculatores ejus cæci.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="330,800,660,950">
     LXX INTERPRETES.
     1. Et misericordia mea. Reliqui, et justitiam meam.
     3. Vacat.
     4. Hæc dicit Dominus.
-    5. Locum nominatum meliorem aliis et filiabus. Reliqui, manum et nomen, melius filiis et filiabus.
+    5. Locum nominatum meliorem filiis et filiabus. Reliqui , manum et nomen, melius filiis et filiabus.
     Nomen sempiternum dabo illis, et non deficiet. Reliqui, nomen sempiternum dabo ei, quod non succidetur.
     9. Omnes feræ.
-    10. Vidcte quia exaccati sunt.
-    
-    SYMMACHUS.
-    10. Spectatores ejus cæci.
-    
+    10. Videte quia excæcati sunt.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="660,800,1000,950">
     THEODOTIO.
     1.
-    3. ✠ Dicens : separatione.
-    4. ✠ Quia hæc.
+    3. ※ Dicens : separatione.
+    4. ※ Quia hæc.
     5.
+    9.
+    10. Speculatores ejus cæci.
   </bloco>
-  <notas>Observações: layout em três colunas visuais: coluna esquerda grego/latim (Symmachus), coluna central grego/LXX e aparato, coluna direita Theodotion/Theodotio. Alguns sinais (✠) preservados. Algumas linhas tipográficas latinas mescladas ao grego foram mantidas como no original. Palavras ilegíveis não foram necessárias; acrescentei nenhum marcador [ilegivel].</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="0,950,1000,1000">
+    Digitized by Google
+  </bloco>
+
+  <notas>
+    Símbolo ※ usado para representar a marca crítica (asterisco/obelus) presente no texto.
+    Caracteres hebraicos na seção de notas transcritos como ספד (Samekh, Pe, Dalet) baseados no contexto "SARPHOD".
+    Texto organizado em colunas visuais (Esquerda, Centro, Direita) para cada seção (Grego, Latino, Notas).
+  </notas>
 </pagina>

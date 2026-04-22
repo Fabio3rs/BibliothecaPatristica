@@ -1,38 +1,26 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,80">
-    HEXAPLORUM QUÆ SUPERSUNT.
-    TU EBRAIKON.                      TO EBRAIKON                      ΑΚΥΛΑΣ.
-                                      11.                              11.
+  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,100">
+    1119 HEXAPLORUM QUAE SUPERSUNT. 1120
   </bloco>
-  <bloco tipo="texto_principal" script="hebreu" bbox="30,90,320,420">
-    (hebreu linha 1) 11
-    (hebreu linha 2) 12.
-    (hebreu linha 3) 13.
-    (hebreu linha 4) 16.
-    (hebreu linha 5) 17.
-    (hebreu linha 6) 19.
-    (hebreu linha 7) 20
-    (hebreu linha 8) 21.
-    (hebreu linha 9) 22.
-    (hebreu linha 10) 23.
-    VERSIO HEBRAICI TEXT.
-    11. Ad extremum quintanorum qui in castrametatione.
-    12. Cadentes.
-    13. Proximo suo somnium: et dixit, ecce somnium somniavi.
-    Torta.
-    Se volvans.
-    16. In medio hydriarum.
-    17. In extremum.
-    19. Tantum suscitando suscitaverunt.
-    20. Et apprehenderunt in manu sinistra sua titiones, et in manu dextera suos corneas.
-    21. Vir.
-    Et vociferati sunt.
-    22. Trecenti tubis.
-    Gladium.
-    23. Domum Sitta.
+  <bloco tipo="texto_principal" script="misto" bbox="100,100,900,150">
+    TO EBPAIKON. TO EBPAIKON Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,90,660,420">
-    TO EBRAIKON
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,150,350,500">
+    אֶל־קְצֵה הַמַּחֲנֶה אֲשֶׁר בַּצָּפוֹן 11
+    וַיֹּאמֶר אֲלֵיהם כֹּה תַעֲשׂוּ 12
+    וְרָאִיתֶם את־הַמַּחֲנֶה וְהִנֵּה הָעוֹר 13
+    הַבֹּקֶר
+    צַלְצְלוּ
+    בְּתוֹךְ הַכַּדִּים 16
+    בַּקָּצֶה 17
+    אֶל־הַמָּקוֹם 19
+    וַיִּתְקְעוּ בַּשּׁוֹפָרוֹת וַיִּנְאֲצוּ 20
+    וַיִּקְרְאוּ אִישׁ
+    אִישׁ
+    שְׁלֹשׁ מֵאוֹת
+    בֵּית הַשִּטָּה 23
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,150,450,500">
     11.
     12.
     13.
@@ -42,35 +30,52 @@
     20.
     21.
     22.
-    23.
-    VULGATA LATINA.
-    11. In partem castrorum, ubi erant armatorum vigilæ
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="650,150,850,500">
+    11.
+    12.
+    13.
+    Ἐγκρυφίας
+    16
+    17.
+    19.
+    20.
+    21.
+    22.
+    23. Οἴκου Ἀσεττά.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,520,850,550">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,550,350,900">
+    11. Ad extremum quintanorum qui in castrametatione.
+    12. Cadentes.
+    13. Proximo suo somnium : et dixi, ecce somnium somniavi.
+    Torta.
+    Se volvens.
+    16. In medio hydriarum.
+    17. in extremum.
+    19. Tantum suscitando suscitaverunt.
+    20. Et apprehenderunt in manu sinistra sua titiones, et in manu dextra sua corneas.
+    21. Vir. Et vociferati sunt.
+    22. Trecenti tubis. Gladium.
+    23. Domum Sitta.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,550,620,900">
+    11. In partem castrorum, ubi erant armatorum vigiliae
     12. Fusi jacebant.
-    13. Proximo suo, et in hunc modum referebat quod viderat: Vidi somnium.
+    13. Proximo suo, et in hunc modum referebat quod viderat : Vidi somnium.
     Subcinericius panis.
     Volvi.
     16. In medio lagenarum.
     17. Partem.
-    19. Et custodibus suscitis,
+    19. Et custodibus suscitatis,
     20. tenuerunt sinistris manibus lampades, et dextris sonantes tubas.
-    21. Singuli.
-    Vociferantes ululanterque.
-    22. Trecenti viri buccinīs personantes.
-    Gladium.
-    23. Beihsella.
+    21. Singuli. Vociferantes ululantésque.
+    22. Trecenti viri buccinis personantes. Gladium.
+    23. Bethscita.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="670,90,970,420">
-    ΑΚΥΛΑΣ.
-    11.
-    12.
-    13.
-    16.
-    17.
-    19.
-    20.
-    21.
-    22.
-    23. Οἶκος Ἀσεττὰ.
+  <bloco tipo="texto_principal" script="misto" bbox="650,550,850,900">
     11.
     12.
     13.
@@ -83,9 +88,13 @@
     22.
     23. Domum Asetta.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,430,970,990">
-    41 9                             4190
+  <bloco tipo="rodape" script="latino" bbox="550,950,750,980">
     Digitized by Google
   </bloco>
-  <notas>Transcrição do hebraico indicada por linhas entre parênteses porque a imagem contém texto hebraico parcialmente manchado; preservei números e títulos latinos e gregos conforme visual. Algumas palavras hebraicas estavam ilegíveis; marquei-as como (hebreu linha N) para evitar inserção de texto inventado.</notas>
+  <notas>
+    Documento poliglota (Hexapla) contendo colunas em Hebraico, Grego e Latim.
+    Transcrição do Hebraico baseada na visibilidade dos caracteres e contexto bíblico (Juízes 7).
+    Algumas palavras hebraicas estão parcialmente ilegíveis ou abreviadas na imagem.
+    Coluna do meio superior contém apenas numeração de versículos, apesar do cabeçalho indicar "Hebraico em letras gregas".
+  </notas>
 </pagina>

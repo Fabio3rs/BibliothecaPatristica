@@ -1,74 +1,136 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,120">
-    471                              HEXAPLORUM QUÆ SUPERSUNT.                              472
-    TO EBRAIKON.                         TO ΕΒΡΑΙΚΟΝ                     ΑΚΥΛΑΣ.
-                                         Ἑλληνικοῖς γράμμασι.
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    471 HEXAPLORUM QUÆ SUPERSUNT. 472
   </bloco>
-  <bloco tipo="texto_principal" script="ebraico" bbox="40,120,340,260">
-    יע:ה
-    30 שור ביין 30.
-    תצמ-רחמה מו-דרב
+  <bloco tipo="texto_principal" script="misto" bbox="50,70,950,110">
+    TO EBPAIKON. TO EBPAIKON Ἑλληνικοῖς γράμμασι. AKYΛAΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,120,640,260">
-    VERSIO HEBRAICI TEXT.                 VULGATA LATINA.                  AQUILA.
-    Ululæ.                                Struthionum.
-    30. Denigrata est super me.            30. Denigrata est super me.       30.
-    
-    Et os meum ustulatum est ab          Et ossa mea auruerunt præ cau-
-    æstu.                                 mate.
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,115,350,160">
+    יעה
+    30 שחר בעלי
+    ותצמח-חמה-עורי
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="40,260,960,420">
+  <bloco tipo="texto_principal" script="latino" bbox="380,115,420,140">
+    30.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,115,740,140">
+    30.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,170,350,260">
+    VERSIO HEBRAICI TEXT.
+    Ululæ.
+    30. Denigrata est super me.
+    Et os meum ustulatum est ab æstu.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,170,650,260">
+    VULGATA LATINA.
+    Struthionum.
+    30. Denigrata est super me. 30.
+    Et ossa mea aruerunt præ caumate.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,170,850,190">
+    AQUILA.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="250,270,750,290">
     Notæ et variæ lectiones ad cap. XXX Job.
-    V. 1. 'A., βραχεις etc. Lectiones Symmachi et Theodotionis habent Orat., Reg. unis, Nicetas et Drusius.
-    Ibid. Οἱ λοιοι, μετὰ τῶν γυνῶν etc. Idem.
-    V. 2. Σ., ἀπώλετο αὐτοῖς πάλιν τὸ πρὸς ζῶην. Orat., Reg. alter, Nicetas et Drusius. In editione Latina Hieronymi hæc cum asterisco leguntur, In eis peribat omnis vita. Quæ fortasse pertinent ad versionem Symmachi. Textus τῶν Ο' in Alex. cum aster.
-    V. 3. In editione Latina cum asterisco legitur, In ægestate et fame instabiles. Qui sic vertit legisse videtur ἀστατος, pro ἄγονος, ut hodie habetur in
-    V. 4. κ. 5., ἀποκνίζοντες φλοιους φυτῶν. Sic Regii duo, Orat., Nicetas et Drusius. In edit. Latina cum asterisco legitur, qui rodebant cortices arborum: LXX vero quæ ad Symmachi versionem quadrant: longe diversa exprimentur.
-    Ibid. 2., καὶ ζῆλα ξίλων ἄγριων ὁ στίχους αὐτῶν. Sic omnes præter Drusium, qui habet, στίχων ἄγριων, male.
-    V. 7. Σ., μετὰξῃ φυτῶν ἄγριων ἠχούσης λιμώδης. Sic omnes præter unum Regium, qui habet, λιμώδεσι. Ibi editio Latina cum asterisco, Et inter arbores clamanthant.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="30,420,970,520">
+  <bloco tipo="aparato_critico" script="misto" bbox="50,295,480,430">
+    V. 1. Ἀ., βραχεῖς etc. Lectiones Symmachi et Theodotionis habent Orat., Reg. unus, Nicetas et Drusius.
+    Ibid. Οἱ λοιποί, μετὰ τῶν κυνῶν etc. Iidem.
+    V. 2. Σ., ἀπώλετο αὐτοῖς πᾶν τὸ πρὸς ζωήν. Orat., Reg. alter, Nicetas et Drusius. In editione Latina Hieronymi hæc cum asterisco leguntur, In eis peribat omnis vita. Quæ fortasse pertinent ad versionem Symmachi. Textus τῶν Ο' in Alex. cum aster.
+    V. 3. In editione Latina cum asterisco legitur, In egestate et fame instabiles. Qui sic vertit legisse videtur ἀστατοι, pro ἄγονος, ut hodie habetur in
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="500,295,950,430">
+    τοῖς Ο'.
+    V. 4. Σ., ἀποπνίζοντες φλοιοὺς φυτῶν. Sic Regii duo, Orat., Nicetas et Drusius. In edit. Latina cum asterisco legitur, qui rodebant cortices arborum : quæ ad Symmachi versionem quadrat : LXX vero longe diversa exprimunt.
+    Ibid. Σ., καὶ ῥίζα ξύλων ἀγρίων ἡ σίτησις αὐτῶν. Sic omnes præter Drusium, qui habet, σῖτον ἀγρίων, male.
+    V. 7. Σ., μεταξὺ φυτῶν ἀγρίων ἠχοῦντες λιμάδες. Sic omnes præter unum Regium, qui habet, λιμώδεις. Ibi editio Latina cum asterisco, Et inter arbores clamabant.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="400,440,600,460">
     CAPUT XXXI JOB.
-    TO EBRAIKON.                       TO ΕΒΡΑΙΚΟΝ.                      ΑΚΥΛΑΣ.
-                                        Ἑλληνικοῖς γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="ebraico" bbox="40,520,340,840">
-    בית חנתי רעיוני 1          1.
-    ומה אחבונון על-מילהל 4.
-    
-    והלתי םשד מחמדים : תלאה 2,3   2, 3.
-    ארץ לדד
-    
-    5 אם-שוא 5.
-    שקלני-במאני-צדק 6 6.
-    
-    אם חמה 7 7.
-    תאנסי ישרש 8 8.
-    
-    אמתי 9 9.
-    10 'Ο Εβραιος, αἰσθαι. 10.
-    אמן 13 13.
+  <bloco tipo="texto_principal" script="misto" bbox="50,465,950,500">
+    TO EBPAIKON. TO EBPAIKON Ἑλληνικοῖς γράμμασι. AKYΛAΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,520,640,840">
-    VERSIO HEBRAICI TEXT.               VULGATA LATINA.                  AQUILA.
-    1. Foedus percussi oculis meis.      1. Perpigi foedus cum oculis      1.
-                                         meis.
-    Et quid considerabo super vir-      Ut ne cogitarem quidem de vir-
-    ginem.                                gine.
-    2, 3. Et hæreditas Saddai de         2, 3. Et hæreditatem Omnipo-
-    excelsis, nonne contritio iniquo?     tentis de excelsis? Numquid non
-                                         perditio est iniquo
-    5. Cum mendacio.                     5. In vanitate.                   5.
-    6 Appendit me in bilancibus          6. Appendat me in statera usta.   6. Ponderabit me in statera ju-
-    justitiæ.                                                          sta.
-    7. Si declinavit.                    7. Si declinavit.                 7.
-    8. Et germina mea eradicentur.       8. Et progenies mea eradicetur.   8.
-    9. Insidiatus sum.                   9. Insidiatus sum.                9.
-    10. Molat. Hebraus int. id.          10. Scortum alterius sit.         10.
-    13. Abhorrui.                        13. Contempsi.                    13. Projeci.
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,505,350,690">
+    1 ברית כרתי לעיני
+    ובה אתבונן על-בתולה
+    2, 3 ונחלת שדי מרומים : הלא
+    איד לרשעים
+    5 אם-שוא
+    6 ישקלני במאזני-צדק
+    7 אם-סרה
+    8 ותצמח יבולי
+    9 אם-פתיתי
+    10 תחנת Ὁ Ἑβραῖος, ἀλέσαι.
+    13 אם-אמס
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,860,960,980">
+  <bloco tipo="texto_principal" script="latino" bbox="380,505,450,690">
+    1.
+    2, 3.
+    5.
+    6.
+    7.
+    8.
+    9.
+    10.
+    13.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="700,505,900,690">
+    1.
+    2, 3.
+    5.
+    6. Σταθμίσει με ἐν ζυγῷ δικαίῳ
+    7.
+    8.
+    9. Ἐνήδρευσα
+    10.
+    13. Ἀπέῤῥιψα.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,700,350,920">
+    VERSIO HEBRAICI TEXT.
+    1. Fœdus percussi oculis meis.
+    Et quid considerabo super virginem.
+    2, 3. Et hæreditas Saddai de excelsis, nonne contritio iniquo?
+    5. Cum mendacio.
+    6 Appendit me in bilancibus justitiæ.
+    7. Si declinavit.
+    8. Et germina mea eradicentur.
+    9. Insidiatus sum.
+    10. Molat. Hebræus int. id.
+    13. Abhorrui.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,700,650,920">
+    VULGATA LATINA.
+    1. Pepigi fœdus cum oculis meis.
+    Ut ne cogitarem quidem de virgine.
+    2, 3. Et hæreditatem Omnipotentis de excelsis ? Numquid non perditio est iniquo
+    5. In vanitate.
+    6. Appendat me in statera justa.
+    7. Si declinavit.
+    8. Et progenies mea eradicetur.
+    9. Insidiatus sum.
+    10. Scortum alterius sit.
+    13. Contempsi.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,700,950,920">
+    AQUILA.
+    1.
+    2, 3.
+    5.
+    6. Ponderabit me in statera justa.
+    7.
+    8.
+    9. Insidiatus sum.
+    10.
+    13. Projeci.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="500,950,800,980">
     Digitized by Google
   </bloco>
-  <notas>Scripts detectados: latino e hebraico (ebraico). Algumas linhas hebraicas apresentam ligaduras e abreviaturas; foram transcritas literal contendo pontuação conforme visível. Onde sinais tipográficos greco-latinos misturam-se nas notas foi mantido o grafema original; '[ilegivel]' não foi necessário.</notas>
+  <notas>
+    Transcrição de página da Patrologia Graeca (Hexapla). Contém texto em Hebraico, Grego e Latino.
+    Na coluna hebraica de Job 31:10, há uma nota intercalada 'Ὁ Ἑβραος, ἀλέσαι.'.
+    Ortografia latina arcaica preservada (e.g., fœdus, hæreditas).
+  </notas>
 </pagina>

@@ -1,28 +1,34 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,90">
-    415                             HEXAPLORUM QUAE SUPERUNT.                             416
+  <bloco tipo="cabecalho" script="latino" bbox="100,50,150,70">
+    415
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="40,90,320,760">
-    TO EBPAIKON.
-    ־21 אכן־שריד לאכול
-    23 יהי המלא בטנו
-    ויפטר
-    25 ובכם ימסרתי ילדך עליו
-    26 בטחון לפניהם
-    אש לא־נכח
-    29 רשעי במחלתם
+  <bloco tipo="cabecalho" script="latino" bbox="350,50,650,70">
+    HEXAPLORUM QUÆ SUPERSUNT.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,50,900,70">
+    416
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="misto" bbox="100,80,300,450">
+    TO ΕΒΡΑΙΚΟΝ.
+    אֵין־שׂוֹרֵד לְנִכְלוֹ 21
+    וְהוּא יוֹלִיד לְמַלְכוֹ 23
+    וּגְבוּרוֹ וּבְרָק מִמְּרוֹרָתוֹ יִחְלֹף עֲלֵיו 25
+    כִּבְשׁוֹ לְצָפוֹן 26
+    אֵשׁ לֹא־נֻפַּח רָשָׁע מֵאֱלֹהִים 29
     VERSIO HEBRAICI TEXT.
     21. Non superstes ad comedendum eum.
     23. Fuerit ad replendum ventrem suum.
     Et faciet pluere.
-    25. Et fulgur de selle ejus ibit super eum.
-    26 Absconditae in occultis ejus.
+    25. Et fulgur de felle ejus ibit super eum.
+    26 Absconditæ in occultis ejus.
     Ignis non sufflatus.
     29. Impii a Deo.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,90,660,760">
-    TO EBPAIKON
-    Eλλhnικοῖς γραμμασι.
+
+  <bloco tipo="texto_principal" script="misto" bbox="350,80,600,450">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
     21.
     23.
     25.
@@ -33,82 +39,110 @@
     23. Utinam impleatur venter ejus.
     Pluat.
     25. Et fulgurans in amaritudine sua, vadent et venient super eum.
-    26. Absconditae sunt in occultis ejus.
+    26. Absconditæ sunt in occultis ejus.
     Ignis, qui non succenditur.
     29. Impii a Deo.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="670,90,940,760">
+
+  <bloco tipo="texto_principal" script="misto" bbox="650,80,900,450">
     ΑΚΥΛΑΣ.
     21.
     23.
-    25. Καὶ ἀστραπὴ ἰὰτὸ προσώπου αὐτοῦ πορεύεται ἐπ᾽ αὐτόν.
-    26. Ἀποκρύπτεται τοῖς ἐχχευμένoις αὐτοῦ.
-    Πῦρ μὴ φυσήθη.
+    25. Καὶ ἀστραπὴ ἁπὸ προσώπου αὐτοῦ πορεύσεται ἐπ' αὐτόν.
+    26. Ἀποκέκρυπται τοῖς ἐγκεκρυμμένοις αὐτοῦ. Πῦρ μ φυσθὲν.
     29.
     AQUILA.
     21.
     23.
     25. Et fulgur a facie ejus ibit super eum.
-    26. Absconditum est occulis ejus.
+    26. Absconditum est occultis ejus.
     Ignis non sufflatus.
     29.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="40,760,940,1120">
-    Notae et variae lectiones ad cap. XX Job.
-    V. 3 et 4. Colbertinus, ex Θ. οι γ', id est, hi tres versiculi et Theodotione desumpsti sunt.
-    Παιδειαν εντροπης μου ακούσομαι,
-    Καὶ πνευμα ἐκ τῆς συνθέσεως αποκρίνεται μοι.
-    Μὴ ταῦτα ἔγωγ' ἀπο τοῦ ἐτ, ἀφ' ὑς ἐτέθη ἄνθρωπ.
-    ποιει ἐπὶ τῆς γῆς;
-    Quae item asteriscis notantur in editione Hieronymi, unde Latinam versionem decerpsimus.
-    Ibid. Σ., ατ˙ αἰωνος. Sic Colb., Orat., Nicetas et Drusius.
-    V. 5. Hebraei interpresis et Symmachi versiones exhibent Colbert., Reg. unus, Nicetas et Drusius.
-    Ibid. Χαρμονὴ δὲ παρων, idem. Sed Drusius et Nicetas habent χαρμονὴ. Colbert. et Reg. unus, χαρμονην.
-    V. 6. Α., Σ., Θ., ἐπαραα αυτού. Colbert.
-    Ibid. οι λοιποι, και χαριη αυτού. Colbert.
-    V. 10. Α., επιστρεψουσιν. Σ., επιστρεψιν. Sic omnes.
-    V. 11, 13. Hi quinque versiculi asteriscis notantur in Colbertino et in versione Latina, quam sequimur.
-    Ὡστα αὐτους ἐντελιώθησαν νεωτερως αὐτον,
-    Και μετ' αυτου ἐπὶ γυμνα πονηθισεται.
-    Εἰνι γνακην ἐν τῷ στοματος αὐτοῦ κακία,
-    Κραξένσται αὐτοῦ ὑπὲρ τὴν μόδοσαν αὐτοῦ,
-    Φθισεται αὐτοῦ, καὶ ὀυχ εγκαταλειψει αὐτόν.
-    In editione τῶν Θ' ad postremum versiculum legitur οὐ φελεται, quod emendatum fuerat in hexapliis.
-    Ibid. Σ., παραβάσεις αυτοῦ. ha reddit porh.
-    Ibid. Αλλος, και συνέσε. Sic Colbert.
-    V. 14. Ο 'Εβραιος', και ἐγένετο etc. Sic Colb., Orat., Nicetas et Drusius. In Colbert. ad versionem LXX habetur haec nota Θ. cum asterisco, ut indicetur haec ex Theodotione desumpta esse.
-    V. 15. Colbert. Οι λοιποι, εκ γαστρὸς αὐτοῦ.
-    Itemque Nicetas et Drusius.
+
+  <bloco tipo="texto_principal" script="latino" bbox="300,460,700,480">
+    Notæ et variæ lectiones ad cap. XX Job.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="100,480,450,700">
+    V. 3 et 4. Colbertinus, ἐκ Θ. οἱ γ', id est, hi tres versiculi ex Theodotione desumpti sunt.
+    Παιδείαν ἐντροπῆς μου ἀκούσομαι.
+    Καὶ πνεμα ἐκ τς συνέσεως ἀποκρίνεταί μοι.
+    Μὴ ταῦτα ἔγνως ἀπὸ τοῦ ἔτι, ἀφ' οὗ ἐτέθη ἄνθρωπος ἐπὶ τῆς γῆς;
+    Quæ item asteriscis notantur in editione Hieronymi, unde Latinam versionem decerpsimus.
+    Ibid. Σ., ἀπ' αἰῶνος. Sic Collb., Orat., Nicetas et Drusius.
+    V. 5. Hebræi interpretis et Symmachi versiones exhibent Colbert., Reg. unus, Nicetas et Drusius.
+    Ibid. Χαρμονὴ δὲ παράν. Iidem. Sed Drusius et Nicetas habent χαρμονή. Colbert. et Reg. unus, χαρμοσύνη.
+    V. 6. Ἀ., Σ., Θ., ἕπαρμα αὐτοῦ. Colbert.
+    Ibid. Οἱ λοιποί, καὶ κεφαλὴ αὐτοῦ. Colbert.
+    V. 10. Ἀ., ἐπιστρέψουσιν. Σ., ἐποίσυνιν. Sic omnes.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="500,480,900,700">
+    V. 11, 13. Iii quinque versiculi asteriscis notantur in Colbertino et in versione Latina, quam sequimur.
+    Ὀστᾶ αὐτοῦ ἐνεπλήσθησαν νεότητος αὐτοῦ,
+    Καὶ μετ' αὐτοῦ ἐπὶ χώματος κοιμηθήσεται.
+    Ἐὰν γλυκανθῇ ἐν τῷ στόματι αὐτοῦ κακία,
+    Κρύψει αὐτὴν ὑπὸ τὴν γλῶσσαν αὐτοῦ,
+    Φείσεται αὐτς, καὶ οκ ἐγκαταλείψει αὐτήν.
+    In editione τῶν Ο' ad postremum versiculum legitur οὐ φείσεται, quod emendatum fuerat in Hexaplis.
+    Ibid. Σ., παραβάσεως αὐτοῦ. Ha reddit משׁבתו.
+    Ibid. Ἄλλος, καὶ συνέξει. Sic Colbert.
+    V. 14. Ὁ Ἑβραῖος, καὶ ἐγένετο etc. Sic Colb., Orat., Nicetas et Drusius. In Colbert. ad versionem LXX habetur hæc nota Θ. cum asterisco, ut indicetur hæc ex Theodotione desumpta esse.
+    V. 15. Colbert. Οἱ λοιποί, ἐκ γαστρὸς ατοῦ. Itemque Nicetas et Drusius.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="400,710,600,730">
     CAPUT XXI JOB.
-    TO EBPAIKON.
-    חטאם־זאת חטאם־2
-    2.
-    שאני 3
-    5.
-    ואחר דברי תלאוה
-    4.
-    ואם־מעתה 4
-    5.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="100,730,300,950">
+    TO ΕΒΡΑΙΚΟΝ.
+    וְהוֹתִירוּ אֶת־תּוֹכַחְתִּי 2
+    שָׂאוּנִי 3
+    וְאַחַר דַּבְּרוּ עָלַי לָעֶגְ
+    וְאֶת־מְדוֹנִי 4
+    וְהַשִּׂימוּ 5
     VERSIO HEBRAICI TEXT.
-    2. Et sit hoc consolationes vestrae.
+    2. Et sit hoc consolationes vestræ.
     3. Ferte me
-    Et postea verba mea subsannces.
+    Et postea verba mea subsannes.
     4. Et si cur.
     5. Et obstupescite.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="350,730,600,950">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+    2.
+    3.
+    4.
+    5.
     VULGATA LATINA.
-    2. Et agite paenitentiam.
+    2. Et agite pœnitentiam.
     3. Sustinete.
     Et post mea, si videbitur, verba ridete.
     4. Ut merito.
     5. Obstupescite.
-    AQUILA.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="650,730,900,950">
+    ΑΚΥΛΑΣ
     2.
     3.
     4.
     5. Ἐξαπορήθητε.
-    3. Sustinete.
-    4. Ut merito.
+    AQUILA.
+    2.
+    3.
+    4.
     5. Obstupescite.
   </bloco>
-  <notas>Scriptos mistos: latim, grego e hebraico. BBOXs estimadas em escala 0-1000; duas colunas principais com notas críticas centradas em largura completa. Algumas palavras hebraicas e gregas transliteradas conforme imagem; marcas de asterisco e abreviaturas preservadas. Onde texto ilegível não encontrado, foi evitado uso de [ilegivel].</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="500,960,800,980">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição de página da edição dos Hexapla (Origenis Hexaplorum quæ supersunt). Contém texto hebraico, grego e latino. Algumas palavras hebraicas podem apresentar variações ortográficas específicas da edição.
+  </notas>
 </pagina>

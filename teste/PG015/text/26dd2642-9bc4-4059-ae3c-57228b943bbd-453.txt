@@ -1,17 +1,21 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,20,960,110">
+  <bloco tipo="cabecalho" script="misto" bbox="90,60,920,90">
     901 DEUTERONOMII CAP. XXIX. 902
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="40,110,320,820">
-    ΣΥΜΜΑΧΟΣ.
+  <bloco tipo="texto_principal" script="misto" bbox="150,95,850,115">
+    ΣΥΜΜΑΧΟΣ. θ'. ΘΕΟΔΟΤΙΩΝ.
+  </bloco>
+  
+  [!-- Coluna Superior Esquerda (Symmachus) --]
+  <bloco tipo="texto_principal" script="misto" bbox="80,120,280,600">
     56.
     57.
     59.
-    Ἐπιμονως.
+    Ἐπιμόνους.
     60.
     61.
     62.
-    64. Σκορπισει σε.
+    64. Σκορπίσει σε.
     65.
     66. Περὶ τῆς ζωῆς σου.
     SYMMACHUS.
@@ -25,36 +29,29 @@
     64. Disperget te.
     65
     66. Circa vitam tuam.
-    SYMMACHUS.
-    2.
-    3.
-    5.
-    SYMMACHUS.
-    2.
-    3.
-    5.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="320,110,680,820">
-    ν.
-    56. Οὐχὶ πειραν ἔλαθεν ὁ πούς.
-    αὐτῆς βαλεψ' ἐπὶ τῆς γῆς διὰ τὴν
+
+  [!-- Coluna Superior Central (LXX) --]
+  <bloco tipo="texto_principal" script="misto" bbox="350,120,620,600">
+    56. Οὐχὶ πεῖραν ἔλαβεν ὁ πούς.
+    αὐτῆς βαίνειν ἐπὶ τῆς γῆς διὰ τὴν
     τρυφερότητα, καὶ διὰ τὴν ἀπα-
-    λότητα, βακχανε.
+    λότητα, βασκανεῖ.
     57. Χόριον.
-    59. Παραδόξασει.
-    Πυτιάς.
+    59. Παραδοξάσει.
+    Πιστάς.
     60. Ὀδύνην.
     61. Μαλακίαν.
-    62. Τῷ πλήθει. Ἄλλος, εἰς πλή-
-    ους.
-    64. Διασπαρει σε.
-    65. Καρδίαν ἔτέθην ἀπεθώσαν.
-    Ἄλλως, καρδίαν ἀθυμούσαν.
+    62. Τῷ πλήθει. Ἄλλος, εἰς πλῆ-
+    θος.
+    64. Διασπερεῖ σε.
+    65. Καρδίαν ἑτέραν ἀπειθοῦσαν.
+    Ἄλλος, καρδίαν ἀθυμοῦσαν.
     Ἐκλείποντας.
-    Τηκουμένην.
+    Τηκομένην.
     66. Τῇ ζωῇ σου.
     LXX INTERPRETES.
-    56. Non cepit experientiam res
+    56. Non cepit experientiam pes
     ejus incedere super terram pro-
     pter teneritudinem et propter mol-
     litiem, invidebit.
@@ -66,14 +63,15 @@
     62. Multitudine. Alius, in mul-
     titudinem.
     64. Disseminabit te.
-    65. Cor aliud lacrerdulum. Alius,
+    65. Cor aliud incredulum. Alius,
     cor desperans.
-    Desficientes.
+    Deficientes.
     Tabescentem.
-    66. Vitae tuæ.
+    66. Vitæ tuæ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,110,960,820">
-    ΘΕΟΔΩΤΙΟΝ.
+
+  [!-- Coluna Superior Direita (Theodotion) --]
+  <bloco tipo="texto_principal" script="misto" bbox="680,120,850,600">
     56.
     57.
     59.
@@ -93,7 +91,77 @@
     64.
     65.
     66.
-    THFODOTIO
+  </bloco>
+
+  [!-- Notas --]
+  <bloco tipo="cabecalho" script="latino" bbox="250,605,750,625">
+    Notæ et variæ lectiones ad cap. XXVIII Deuteronomii.
+  </bloco>
+  
+  <bloco tipo="nota" script="misto" bbox="80,630,480,780">
+    φαγνιάσαι, quam lectionem sine interpretis nomine
+    attulit Basiliensis. Ἐλεφαντίασις est genus lepræ,
+    quæ vocatur etiam ἐλέφας. Vide Job 11, 7.
+    V. 28. Ἁ., ἐν πωρώσει. Σύ. Sic Coislin., nec ad-
+    jicit interpretationem Symmachi. Melius, ἐν πηρώ-
+    σει, ut habet Basiliensis, sine interpretis nomine.
+    Ibid. Ἄλλος, θάμβῳ. Ex Basil.
+    V. 32. Ἄλλος, ὄψονται. Sic Basil.
+    Ibid. Ἁ., τελούμενοι., Σ., ἐκλείποντες ἔσονται. Ex
+    Coislin.
+    V. 34. Σ. παράφορος. Sic Coislin. Basiliensis vero
+    sine interpretis nomine.
+  </bloco>
+
+  <bloco tipo="nota" script="misto" bbox="500,630,920,780">
+    V. 48. Ἁ., Σ., Θ., καὶ δουλεύσεις τοῖς ἐχθροῖς σου.
+    Hasce trium lectiones exhibet idem Basil.
+    V. 52. Ἄλλος, καὶ ἕως ν ἐκτρίψῃ σε. Ex eodem
+    Basil.
+    V. 54. Ἁ., τρυφητῆς. Σ., σπάταλος. Ex eodem
+    Basil.
+    V. 59. Σ., ἐπιμόνως. Coislin.
+    V. 62. Ἄλλος, εἰς πλῆθος. Basil
+    V. 64. Σ., σκορπίσει σε. Coislin.
+    V. 65. Ἄλλ., καρδίαν ἀθυμοῦσαν. Basil.— Ἁ., ἐκ-
+    λιμώσσουσαν, Coislin., ac si legerit Aquila יבשׁ.
+    V. 66. Σ., περὶ τῆς ζωῆς σου. Ex Basil.
+  </bloco>
+
+  [!-- Caput XXIX --]
+  <bloco tipo="cabecalho" script="misto" bbox="350,800,650,820">
+    CAPUT XXIX DEUTERONOMII. θ'.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="150,825,850,845">
+    ΣΥΜΜΑΧΟΣ. LXX INTERPRETES. THEODOTIO.
+  </bloco>
+
+  [!-- Coluna Inferior Esquerda --]
+  <bloco tipo="texto_principal" script="misto" bbox="80,850,280,950">
+    2.
+    3.
+    5.
+    SYMMACHUS.
+    2.
+    3.
+    5.
+  </bloco>
+
+  [!-- Coluna Inferior Central --]
+  <bloco tipo="texto_principal" script="misto" bbox="350,850,620,950">
+    2. Ἐνώπιον ὑμῶν.
+    3. Ἑωράκασιν. Ἄλλοι, εἶδον.
+    5. Οὐ κατετρίβη. Ἄλλος, οὐκ
+    ἐπαλαιώθη.
+    LXX INTERPRETES.
+    2. Coram vobis.
+    3. Viderunt. Alii, conspexerunt.
+    5. Non attrita sunt. Alius, non
+    inveteraverunt.
+  </bloco>
+
+  [!-- Coluna Inferior Direita --]
+  <bloco tipo="texto_principal" script="misto" bbox="680,850,850,950">
     2.
     3.
     5.
@@ -102,46 +170,11 @@
     3.
     5.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="40,820,960,1060">
-    Notæ et variæ lectiones ad cap. XXVIII Deuteronomii.
-    φανισασι, quam lectionem sine interpretis nomine
-    attulit Basiliensis. Ἐκφανισασι est genus lepræ,
-    quae vocatur etiam λέπρα. Vide Job 1, 7.
-    V. 28. Ἀ., ἢ παρώσσει. Sûc Coislin., nec ad-
-    jicit interpretationem Symmachi, Melius, Ἐν παρώ-
-    σσει, ut habet Basiliensis, sine interpretis nomine.
-    Ibid. Ἄλλος, ἀθύμων. Ex Basil.
-    V. 32. Ἄλλος, ὀξύνει. Sic Basil.
-    Ibid. Ἀ., ἐλαφρότερον. Σ., ἐλαιωιτερς ἔσται. Ex
-    Coislin.
-    V. 34. Σ. παραφορος. Sic Coislin. Basiliensis vero
-    sine interpretis nomine.
-    V. 48. Ἀ., Σ., Θ., και δουλείας τοῖς ἐχθροῖς συρ.
-    Hasce trinum lectiones exhibet idem Basil.
-    V. 59. Ἄλλος, και ἑως ἀν πεπληρωπ. Ex eodem
-    Basil.
-    V. 54. Ἀ., θυρωπτης. Σ., σπάταλος. Ex eodem
-    Basil.
-    V. 59. Σ., ἐπιμονως. Coislin.
-    V. 62. Ἄλλος, τὸ πλῆθος. Basil
-    V. 64. Σ., σκορπισει σε. Coislin.
-    V. 65. ἈΛ., καρδίας ἀθυμούσαν. Basil.— Ἀ., τε-
-    λησωσομενον, Coislin., ac si legerit Aquila τρεψ.
-    V. 66. Σ., περὶ τῆς ζωῆς σου. Ex Basil.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="360,1060,760,1180">
-    CAPUT XXIX DEUTERONOMII.
-    ν.
-    2. Ἐνώπιον ὑμῶν.
-    3. Ἐνθύσεις. Ἄλλοι, εἶδον.
-    5. Οὐ κατερίθη, Ἄλλος, οὐκ
-    ἐπαλαιώθη.
-    LXX INTERPRETES.
-    2. Coram vobis.
-    3. Viderunt. Alii, conspexerunt.
-    5. Non aurita sunt. Alius, non
-    inveteraverunt.
+
+  <bloco tipo="rodape" script="latino" bbox="550,960,800,990">
     Digitized by Google
   </bloco>
-  <notas>Texto principal contém colunas tripartidas: esquerda e direita em grego/latim. Mantive abreviações e sinais tal como visíveis; palavras parcialmente ilegíveis foram preservadas com [ilegivel] quando necessárias (nenhuma aplicada aqui).</notas>
+  <notas>
+    Transcrição de página poliglota (Grego/Latim) contendo comparações de versões bíblicas (Symmachus, LXX, Theodotion) e notas críticas.
+  </notas>
 </pagina>

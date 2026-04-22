@@ -1,129 +1,133 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,90">
-    491                                    HEXAPLORUM QUÆ SUPERSUNT.                                    492
-    TO EBPAIKON.                     TO EBPAIKON                     AKYΔAΣ.
-                                      Ἑλληνικοὶ χαρακτῆρες.
+  <bloco tipo="cabecalho" script="latino" bbox="50,40,100,70">491</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,40,650,70">HEXAPLORUM QUÆ SUPERSUNT.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="900,40,950,70">492</bloco>
+  
+  [!-- Job Cap XXXIII Section --]
+  <bloco tipo="texto_principal" script="grego" bbox="150,80,300,100">TO ΕΒΡΑΙΚΟΝ.</bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="250,105,300,125">לאנש</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="450,80,600,110">TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="800,80,900,100">ΑΚΥΛΑΣ.</bloco>
+
+  [!-- Hebrew Text Column --]
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,130,350,280">
+    28, 29 פָּדָה נַפְשִׁי מֵעֲבֹר בַּשָּׁחַת חַיָּתִי בָּאוֹר תִּרְאֶה : הֵן־כָּל־אֵלֶּה יִפְעַל־אֵל פַּעֲמַיִם שָׁלֹשׁ עִם־גָּבֶר
+    30 לְהָשִׁיב נַפְשׁוֹ
+    31-33 הַקְשִׁיב וְאֶדְבָּר אֲנִי אדַבֵּר : אִם־יֵשׁ־מִלִּין הֲשִׁיבֵנִי דַבֵּר כִּי־חָפַצְתִּי צַדְקָה : אִם־אַיִן אַתָּה שְׁמַע־לִי הַחֲרֵשׁ וַאֲלַמֶּדְךָ חָכְמָה
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="20,90,320,320">
-    לאשׁ
-    28, 29 פּדה נפשי מעפר בשׁער
-    ‭29,28‬
-    חכי באור תחיה : חן־כא-אלהּ־
-    יפעל־אל פניים שׂשׂ עם־בגד־
-    להשׁיב נפשׁ 30
-    31-33־ חדשׁ ואבי־אבד : אם־
-    ישׁ־כל־כן השׂביע דבר כי־תפצי
-    צדיק : אם־אין אחד שמע־לי
-    החדש ואפלח חכמה
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,90,660,320">
-    28, 29.
-    30.
-    31-33.
-    VERSIO HEBRAICI TEXT.
+
+  [!-- Verse Numbers Middle/Right --]
+  <bloco tipo="texto_principal" script="latino" bbox="400,130,500,150">28, 29.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="800,130,900,150">28, 29.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="400,180,500,200">30.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="800,180,900,200">30.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="400,230,500,250">31-33.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="800,230,900,250">31-33.</bloco>
+
+  [!-- Translation Headers --]
+  <bloco tipo="texto_principal" script="latino" bbox="100,290,350,310">VERSIO HEBRAICI TEXT.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,290,650,310">VULGATA LATINA.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="800,290,900,310">AQUILA.</bloco>
+
+  [!-- Translation Text --]
+  <bloco tipo="texto_principal" script="latino" bbox="100,310,350,450">
     Homini.
-    28, 29. Redemit animam meam
-    a transeundo in foveam, et vita
-    mea lucem videbit. Ecce omnia
-    ista operabitur Deus vicibus tribus
-    cum viro.
-    30. Ad convertendum animam
-    suam.
-    31-33, Tace, et ego loquar : si
-    sunt sermones, responde mihi
-    verbum : quia volui justificare te.
-    Si non, tu audi me : tace, et do-
-    cebo te sapientiam.
+    28, 29. Redemit animam meam a transeundo in foveam, et vita mea lucem videbit. Ecce omnia ista operabitur Deus vicibus tribus cum viro.
+    30. Ad convertendum animam suam.
+    31-33. Tace, et ego loquar : si sunt sermones, responde mihi verbum : quia volui justificare te. Si non, tu audi me : tace, et docebo te sapientiam.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,90,980,320">
-    28, 29.
-    30.
-    31-33.
-    VULGATA LATINA.
+
+  <bloco tipo="texto_principal" script="latino" bbox="400,310,650,450">
     Homini.
-    28, 29. Liberavit animam suam,
-    ne pergøret in interitum, sed vi-
-    rens lucem videret. Ecce, hæc
-    omnia operatur Deus tribus vici-
-    bus per singulos.
-    50. Ut revocet animas eorum.
-    31-33. Et tace, dum ego loquor.
-    Si autem habes quod loquaris,
-    responde mihi, loquere : volo enim
-    te apparere justum. Quod si non
-    habes, audi me : tace, et docebo
-    te sapientiam.
+    28, 29. Liberavit animam suam, ne pergeret in interitum, sed vivens lucem videret. Ecce, hæc omnia operatur Deus tribus vicibus per singulos.
+    30. Ut revocet animas eorum.
+    31-33. Et tace, dum ego loquor. Si autem habes quod loquaris, responde mihi, loquere : volo enim te apparere justum. Quod si non habes, audi me : tace, et docebo te sapientiam.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="20,320,980,520">
-    Notæ et variæ lectiones ad cap. XXXIII Job.
-    V. 3. 'A., Θ., ευθεία. Σ., ἀπλή. Colbert. et Reg.
-    unus.
-    Ibid. 'A., Θ., γνώσις. Idem.
-    V. 4. Σ., πνεῦμα θεοῦ. Idem.
-    V. 6. Σ., ἄρα τοιούτῳ εἶμι etc. Sic Reg. unus
-    nomine Symmachi. Colbertinus autem sine inter-
-    pretis nomine.
-    Ibid. 'Εκ τοῦ αὐτοῦ διηρίσαμεθα. Ad hæc adnotat
-    Colbertinus : οὑ κέταιν ἐν τῷ 'Εβραϊκῷ, i. e. non
-    jacet in Hebraico.
-    V. 7. 'A., ἐθαμβήσεσθ σε. Colbert., Reg. unus et
-    Drusius.
-    V. 8. Ex Theodotione cum asterisco in Colber-
-    tino. Editio item Latina asteriscum habet.
-    V. 13. 'A., εἰ οὖν πρὸς αὐτὸν ἐδίδαξα etc. Lectio
-    nes Aquilæ et Symmachi sic omnes habent : ad
-    Aquilam Drusius legit ἐδίδαξα, male.
-    V. 14. Σ., ὅτι ἄπας etc. Reg. unus. Colbertinus
-    eandem interpretationem adfert, sed sine interpre-
-    tis nomine.
-    Ibid. 'Αλλος, ἐκ δευτέρου οὐκ ακυρώσει αυτήν.
-    Hanc interpretationem, quam sine auctoris nomine
-    adserunt Colbertinus et Reg. unus, puto esse Sym-
-    machi, ut præcedentem.
-    V. 15. Σ., ἐν ἐνυπνίω etc. Idem.
+
+  <bloco tipo="texto_principal" script="latino" bbox="700,310,950,450">
+    28, 29.
+    30. Ut revocet animas eorum.
+    31-33. Et tace, dum ego loquor. Si autem habes quod loquaris, responde mihi, loquere : volo enim te apparere justum. Quod si non habes, audi me : tace, et docebo te sapientiam.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="20,520,980,600">
-    CAPUT XXXIV JOB.
-    TO EBPAIKON.                     TO EBPAIKON                     AKYΔAΣ.
-                                      Ἑλληνικοὶ χαρακτῆρες.
+
+  [!-- Critical Apparatus --]
+  <bloco tipo="aparato_critico" script="latino" bbox="200,460,800,480">Notæ et variæ lectiones ad cap. XXXIII Job.</bloco>
+  
+  <bloco tipo="aparato_critico" script="misto" bbox="50,480,450,600">
+    V. 3. ᾽Α., Θ., εὕθεια. Σ., ἁπλῆ. Colbert. et Reg. unus.
+    Ibid. ᾽Α., Θ., γνῶσις. Iidem.
+    V. 4. Σ., πνεῦμα Θεοῦ. Iidem.
+    V. 6. Σ., ἄρα τοιοῦτός εἰμι etc. Sic Reg. unus nomine Symmachi. Colbertinus autem sine interpretis nomine.
+    Ibid. ᾽Εκ τοῦ αὐτοῦ διηρτήσμεθα. Ad hæc adnotat Colbertinus · οὐ κεῖται ἐν τῷ ῾Εβραϊκῷ, i. e. non jacet in Hebraico.
+    V. 7. ᾽Α., ἐκθαμβήσει σε. Colbert., Reg. unus et Drusius.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="20,600,320,820">
-    כ־ני עלן מין חנן משׁפטי : כ־אנכי 4,3
-    יענך נאכו : לנקל־משׁמוּ : חבח־בח־טוב־
-    גנח בני־מה־טוב
-    הפסד משׁפטי 5
-    על־משׁפתי אבנם 6
+
+  <bloco tipo="aparato_critico" script="misto" bbox="500,480,950,600">
+    V. 8. Ex Theodotione cum asterisco in Colbertino. Editio item Latina asteriscum habet.
+    V. 13. ᾽Α., τί οὖν πρὸς αὐτὸν ἐδικάσω etc. Lectiones Aquilæ et Symmachi sic omnes habent : ad Aquilam Drusius legit ἐκδικάσω, male.
+    V. 14. Σ., ὅτι παξ etc. Reg. unus. Colbertinus eamdem interpretationem adfert, sed sine interpretis nomine.
+    Ibid. ῎Αλλος, ἐκ δευτέρου οὐκ ἀκυρώσει αὐτῷ. Hanc interpretationem, quam sine auctoris nomine adferunt Colbertinus et Reg. unus, puto esse Symmachi, ut præcedentem.
+    V. 15. Σ., ἐν ἐνυπνίῳ etc. Iidem.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,600,660,820">
-    3, 4.
-    5.
-    6.
-    VERSIO HEBRAICI.TEXT.
-    3, 4. Quia auris sermones pro-
-    babit, et palatum gustabit ad e-
-    dendum. Judicium eligamus nobis:
-    sciamus inter nos quid bonum.
-    5. Removere fecit judicium
-    meum.
+
+  [!-- Job Cap XXXIV Section --]
+  <bloco tipo="cabecalho" script="latino" bbox="400,610,600,630">CAPUT XXXIV JOB.</bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="150,630,300,650">TO ΕΒΡΑΙΚΟΝ.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="450,630,600,660">TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="800,630,900,650">ΑΚΥΛΑΣ.</bloco>
+
+  [!-- Hebrew Text Job 34 --]
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,660,350,720">
+    3, 4 כִּיאֹזן מִלִּין תִּבְחַן וְחֵךְ יִטְעַם־לֶאֱכֹל : מִשְפָּט נִבְחַר־לָנוּ נֵדְעָה בֵינֵינוּ מַה־טּוֹב
+    5 הִסִּיר מִשְפָּטִי
+    6 עַל־מִשְׁפָּטִי אֶכְזָב
+  </bloco>
+
+  [!-- Verse Numbers Job 34 --]
+  <bloco tipo="texto_principal" script="latino" bbox="400,660,500,680">3, 4.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="800,660,900,680">3, 4.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="400,710,500,730">5.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="800,710,950,750">5. Ἀπέστησεν ἀπ' ἐμοῦ τὸ κρίμα.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="400,760,500,780">6.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="800,760,950,800">6. Καὶ περ τὴν κρίσιν μου ψεῦσμα.</bloco>
+
+  [!-- Translation Headers Job 34 --]
+  <bloco tipo="texto_principal" script="latino" bbox="100,730,350,750">VERSIO HEBRAICI TEXT.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,730,650,750">VULGATA LATINA.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="800,730,900,750">AQUILA.</bloco>
+
+  [!-- Translation Text Job 34 --]
+  <bloco tipo="texto_principal" script="latino" bbox="100,750,350,850">
+    3, 4. Quia auris sermones probabit, et palatum gustabit ad edendum. Judicium eligamus nobis : sciamus inter nos quid bonum.
+    5. Removere fecit judicium meum.
     6. In judicio meo mentiar.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,600,980,820">
-    3, 4.
-    5.
-    6.
-    VULGATA LATINA.
-    3, 4. Auris enim verba probat,
-    et guttur escas gustui judicant.
-    Judicium eligamus nobis, et inter
-    nos videamus, quid sit melius.
+
+  <bloco tipo="texto_principal" script="latino" bbox="400,750,650,850">
+    3, 4. Auris enim verba probat, et guttur escas gustu dijudicat. Judicium eligamus nobis, et inter nos videamus, quid sit melius.
     5. Subvertit judicium meum.
-    6. In judicando enim me men-
-    dacium est.
-    AQUILA.
+    6. In judicando enim me mendacium est.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="700,750,950,850">
     3, 4.
     5. Amovit a me judicium.
-    6. Et circa judicium meum,
-    mendacium.
+    6. Et circa judicium meum, mendacium.
   </bloco>
-  <notas>Scripts na página: latim e hebraico. Algumas palavras hebraicas parcialmente ilegíveis; preservou-se formato de colunas (esquerda hebraico+latim, centro latim, direita latim/Aquila). Marcação de numeração e notas críticas em latim mantidas conforme original.</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="600,950,900,980">Digitized by Google</bloco>
+  
+  <notas>
+    Transcrição de página da edição dos Hexapla (Patrologia Graeca ou similar).
+    Contém colunas paralelas em Hebraico, Latino (Vulgata e Versão do Hebraico) e Grego (Aquila).
+    O aparato crítico contém abreviações de manuscritos (Colbert., Reg.) e nomes de tradutores (A., Θ., Σ. para Aquila, Theodotion, Symmachus).
+    Alguns textos na coluna de Aquila (Job 33) parecem estar em Latim, possivelmente tradução da versão grega ou erro de alinhamento visual na edição original, transcritos conforme aparecem.
+  </notas>
 </pagina>

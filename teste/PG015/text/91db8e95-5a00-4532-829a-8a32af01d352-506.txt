@@ -1,33 +1,36 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,90">
-    1007                              HEXAPLORUM QUÆ SUPERSUNT.                              1008
-    Notæ et variæ lectiones ad cap. XIV Josue.
-    V. 4. Σ., προσταξα αὐτῶν. Ita Drusius.            V. 7. 'A., O', απεκρίθην αὐτῷ λόγον. Ita Drusius.
-    V. 6. 'Αλλος, Γαιγλιαος. 'Αλλος, Γαιγλδ. Basil.    V. 8. 'Άλλος, διανόησιν. Basil.
+  <bloco tipo="cabecalho" script="latino" bbox="50,40,950,120">
+    1007 HEXAPLORUM QUÆ SUPERSUNT. 1008
+    Notæ et variæ lectiones ad cap. XIV Josuæ.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="150,90,850,150">
+  <bloco tipo="nota" script="misto" bbox="50,130,480,160">
+    V. 4. Σ., πρόσεσμα αὐτν. ita Drusius.
+    V. 6. Ἄλλος, Γαλγάλοις. Ἄλλος, Γαλγάδ. Basil.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="500,130,950,160">
+    V. 7. Ἁ., σ', ἀπεκρίθην αὐτ λόγον. ita Drusius.
+    V. 8. Ἄλλος, διάνοιαν. Basil.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="150,170,850,210">
     CAPUT XV JOSUE.
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="360,150,740,220">
-    ΤΟ ΕΒΡΑΙΚΟΝ
-    Ελληνικαὶ γράμμασι.
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,210,350,550">
+    נגב 1
+    מעלה חדה עבר הקרקר 3
+    עצמנה 4
+    עד שפת הירדן 5
+    בית הערבה 6
+    אבני בן־שמש 7
+    קדמים 8
+    ויצא אל־עיר היערנים 9
+    אכתף הריים 10
+    ימה 11
+    ארבע 13
+    שתיס 14
+    נגב 19
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="60,170,320,520">
-    1. עָזָב
-    3. ויעל אחוזת הכהן והקדש
-    4. [ilegivel] עבודות
-    5. נגב
-    6. לבית המקדש
-    7. [ilegivel]
-    8. קדום
-    9. ויעבר אל-מדבר-הכרם
-    10. אל-מחרות-והריים
-    11. תיבה
-    13. ארבה
-    14. ארשמש
-    19. [ilegivel]
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="360,220,760,520">
+  <bloco tipo="texto_principal" script="latino" bbox="380,210,450,550">
     1.
     3.
     4.
@@ -42,51 +45,74 @@
     14.
     19.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="760,150,980,520">
-    ΑΚΥΛΑΣ.
+  <bloco tipo="texto_principal" script="misto" bbox="600,210,900,550">
     1.
     3.
     4.
     5.
     6.
-    6. Βοθ.
-    7. Πηγή ἡλίου.
+    Boen.
+    7. Πηγὴ ἡλίου.
     8.
-    9. Και διεχέλλει τεὶ κίμωνε
-       βρους Εφρων.
+    9. Καὶ διεκβάλλει ἐπὶ κλίμας ὄρους φρών.
     10.
     11.
     13.
     14.
     19.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,520,980,980">
-    VERSIO HEBRAICI TEXT.            VULGATA LATINA.                 AQUILA.
-    1. Ad meridiem.                 1. Contra meridiem.             1.
-    3. Et ascendet in Adar, et cir-  3. Ascendebat ad Addam, et      3.
-    cuibiti in Carcaha.              circuiens Carcaa.
-    
-    4. Et transibit in Asmon.        4. Atque inde pertransiens in    4.
-                                     Asemona.
-    Meridiei.                       Meridiane plaga.
-    5. Usque ad extremum Jordaniis. 5. Usque ad extrema Jordamis.   5.
-    
-    6. Betharaba.                    6. In Beth Araba.               6.
-    Bohan.                          Boen.                          Boen.
-    7. Ad aquas Heusemes.            7. Aquas quae vocantur fons solis. 7. Fons solis.
-    8. Filii Ennom.                  8. Filii Ennom.                8.
-    9. Et egredietur ad urbes mon-   9. Et pervenit usque ad vicos   9. Et transit ad vicos montis
-       tis Hephron.                    montis Ephron.                  Ephron.
-    
-    10. Ad humerum montis Jae-      10. Juxta latus montis Jarim.   10.
-    rim.                             Thamna.
-    Thimna.                         Thamna.
-    11. Ad mare.                     11. Vacat.                      11.
-    13. Arba.                        13. Arbe.                       13.
-    14. Sesai.                       14. Sesai.                      14.
-    19. Meridiei.                    19. Australcm.                  19.
-    
-                                    Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="100,560,900,600">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
   </bloco>
-  <notas>Scriptos: latim, grego e hebraico presentes. Algumas palavras hebraicas parcialmente ilegíveis; marquei com [ilegivel]. Colunas transcritas esquerda (hebraico), centro (numerações/latim), direita (Aquila/nota grega). Pequenas abreviações e erros tipográficos mantidos conforme original.</notas>
+  <bloco tipo="texto_principal" script="latino" bbox="100,600,350,950">
+    1. Ad meridiem.
+    3. Et ascendet in Adar, et circuibit in Carcaba.
+    4. Et transibit in Asmon. Meridiei.
+    5. Usque ad extremum Jordanis.
+    6. Betharaba. Bohan.
+    7. Ad aquas Heusemes.
+    8. Filii Hennam.
+    9. Et egredietur ad urbes montis Hepron.
+    10. Ad humerum montis Jearim. Thimna.
+    11. Ad mare.
+    13. Arba.
+    14. Sesai.
+    19. Meridlui.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,600,650,950">
+    1. Contra meridiem.
+    3. Ascendebat ad Addam, et circuiens Carcaa.
+    4. Atque inde pertransiens in Asemona. Meridianæ plagæ.
+    5. Usque ad extrema Jordanis.
+    6. In Beth Araba. Boen.
+    7. Aquasquæ vocantur fons solis.
+    8. Filii Ennom.
+    9. Et pervenit usque ad vicos montis Ephron.
+    10. Juxta latus montis Jarim. Thamna.
+    11. Vacat.
+    13. Arbæ.
+    14. Sesai.
+    19. Australem.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="680,600,900,950">
+    1.
+    3.
+    4.
+    5.
+    6. Boen.
+    7. Fons solis.
+    8.
+    9. Et transit ad vicos montis Ephron.
+    10.
+    11.
+    13.
+    14.
+    19.
+  </bloco>
+  <notas>
+    Scripts: Latino, Grego, Hebraico.
+    A página apresenta uma estrutura complexa de tabelas comparativas (Hexapla).
+    Transcrição de "Meridlui" no rodapé esquerdo conforme visível (provável erro tipográfico para Meridiei).
+    Transcrição de "שתיס" na coluna hebraica verso 14 conforme visível.
+  </notas>
 </pagina>

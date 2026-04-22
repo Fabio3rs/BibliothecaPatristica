@@ -1,35 +1,44 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,110">
-    41                                                                 HEXAPLORUM QUÆ SUPERSUNT.                                                                 42
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,60">
+    41 HEXAPLORUM QUÆ SUPERSUNT. 42
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="200,120,800,200">
+  <bloco tipo="texto_principal" script="latino" bbox="350,90,650,120">
     LIBER II REGUM.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="40,200,320,940">
-    TO ΕΒΡΑΙΚΟΝ.
-    (Hebrew column lines)
-    1.  טפט? 1
-    2.  ואדמה על־ראשה 2
-    6.  הנער 6
-    ורדפום
-    7.  ויגד 7
-    9.  השמע? 9
-    10. ההור 10
-    נקצעה
-    13. בג 13
-    15. בג מבעדים ויהו ותמת
-    16. על־ראשו 16
-    18. ללמד בני־יהודה: קשת ה־די
-    כתבה על־ספר הישר
-    19. עזבי ישראל על־במתיך וגדל
-    אין נפל נבורים
-    20. בחוקת
-    בקומותיו:
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="360,200,680,940">
+  <bloco tipo="texto_principal" script="latino" bbox="350,140,650,170">
     CAPUT I LIB. II REGUM.
-    ΤΟ ΕΒΡΑΙΚΟΝ
-    Ἑλληνικὸς γράμμας..
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="100,190,300,210">
+    TO EBPAIKON.|
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="350,190,600,220">
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι..
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="700,190,850,210">
+    AKYΛAΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,220,300,500">
+    1 המכה
+    2 ואחזה על־ראשו
+    6 הנער
+    והביכו
+    7 הנני
+    9 שבעץ
+    10 הנזר
+    ואצעה
+    13 גר
+    15 נש פגע־בו ויהו ומת
+    16 על־ראשך
+    18 ללמד בני־יהודה קשת הנה
+    כתוב על־ספר הישר
+    19 הצבי ישראל על־במותיך חלל
+    איך נפלו גבורים
+    על־במותיך
+    20 בגת
+    באשקלון
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="350,220,500,500">
     1.
     2.
     6.
@@ -43,92 +52,103 @@
     19.
     20.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="700,200,980,940">
-    ΑΚΥΛΑΣ.
-    1. Πλησσων.
+  <bloco tipo="texto_principal" script="grego" bbox="650,220,900,500">
+    1. Πλήσων.
     2.
-    6. Ὁ παῖς.
-    Ἐκάλυσαν.
+    6. Ὁ πας.
+    κόλλησαν.
     7.
-    9. Ὁ συγκιτρ.
-    10. Λάφρισμα.
-    Και κλάνιον.
-    13. Προσηλύσου.
+    9. Ὁ σφιγκτήρ.
+    10. Ἄχρυσμα.
+    Καὶ κλάνιον.
+    13. Προσηλύτου.
     15.
     16.
-    18. Τού διδάξει τοὺς υἱούς Ἰσραὴλ καὶ Ἰούδα τὸν νόμον· Ἰδοὺ γέγραπται ἐπὶ βιβλίῳ τοῦ εὐθους.
-    19. Και εἶπεν, ἀναβλασται Ἰσραὴλ περὶ τῶν ἐνεχυρωμένων σου τραυμάτων. Πῶς ἔπεσον δυναταί;
+    18. Τοῦ διδάξαι τοὺς υἱοὺς Ἰσραὴλ καὶ Ἰούδα τόξον · Ἰδοὺ
+    γέγραπται ἐπὶ βιβλίου τοῦ εθοῦς.
+    19. Καὶ εἰπὼν, ἀκρίβασαι Ἰσραὴλ περὶ τῶν τεθνηκότων σου
+    τραυματιῶν. Πῶς πεσον δυνατοί;
     20.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="40,940,980,1520">
+  <bloco tipo="texto_principal" script="latino" bbox="100,520,300,540">
     VERSIO HEBRAICI TEXT.
-    1. A cadendo.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,520,600,540">
+    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,520,850,540">
+    AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,550,300,900">
+    1. A cædendo.
     2. Et humus super caput ejus.
     6. Puer.
     Persequebantur eum.
-
     7. Ecce ego.
     9. Tremor.
     10. Coronam.
     Et armillam.
     13. Peregrini.
-    15. Accede, occurre in eum: et
-    percusit eum, et mortuus est.
-
+    15. Accede, occurre in eum : et
+    percussit eum, et mortuus est.
     16. Super caput tuum.
-    18. Ut docerent filios Juda arcum. Ecce scriptum super libro Jasar.
-
-    19. O decor Israe, super excelsis tuis vulneratus est. Quomodo ceciderunt potentes?
-
+    18. Ut docerent filios Juda arcum. Ecce scriptum super libro
+    Jasar.
+    19. O decor Isræ, super excelsis tuis vulneratus est. Quomodo
+    ceciderunt potentes ?
     Super excelsis tuis.
     20. In plateis.
     Ne forte exaltent se.
-    
-    VULGATA LATINA.
-    1. A cadde.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,550,600,900">
+    1. A cæde.
     2. Et pulvere conspersus caput.
-    6. Adolessens.
+    6. Adolescens.
     Appropinquabant ei.
-
     7. Adsum.
     9. Angustiæ.
     10. Diadema.
     Armillam.
     13. Advenæ.
-    15. Accedens irrue in eum. Qui
+    15. Accedens irruet in eum. Qui
     percussit illum, et mortuus est.
-
     16. Super caput tuum.
-    18. Ut docerent filios Juda arcum: sicut scriptum est in libro justorum. Et ait: Considera Israel,
+    18. Ut docerent filios Juda arcum : sicut scriptum est in libro
+    justorum. Et ait: Considera Israel,
     pro his qui mortui sunt super excelsa tua vulnerati.
-
     19. Inclyti Israel super montes
-    tuos interfecti sunt: quomodo
-    ceciderunt fortes?
-
+    tuos interfecti sunt : quomodo
+    ceciderunt fortes ?
     Super montes tuos.
     20. In compitis.
     Ne exsultent.
-    
-    AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,550,900,900">
     1. Percutiens.
     2.
     6. Puer.
-    Adhæscrunt.
-
+    Adhæserunt.
     7.
     9. Stringens.
     10. Segregationem.
     Et brachiarium.
     13. Advenæ.
-    15.
-
+    13.
     16.
-    18. Ad docendum filios Israel et Juda arcum: Ecce scriptum est in libro recti.
-
-    19. Et dixit: Sollicite age, Israel, circa mortuos tuos vulneratos. Quomodo ceciderunt potentēs?
-
+    18. Ad docendum filios Israel
+    et Juda arcum ; Ecce scriptum
+    est in libro recti.
+    19. Et dixit : Sollicite age, Israel,
+    circa mortuos tuos vulneratos.
+    Quomodo ceciderunt potentes ?
     20.
   </bloco>
-  <notas>Scripts mixed: left Hebrew column contains Hebrew script; middle column Greek script; right column Latin transliterations and Latin sections. Some Hebrew words partially illegible; marked approximate where uncertain. BBOX coordinates estimated on 0-1000 scale.</notas>
+  <bloco tipo="rodape" script="latino" bbox="600,960,900,990">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição de página da Hexapla (Orígenes) contendo texto hebraico, transliteração grega, versão de Áquila e Vulgata Latina.
+    Na coluna hebraica (verso 15), a palavra inicial parece ser "נש" (Nun-Shin) visualmente, embora o contexto e a tradução latina ("Accede") sugiram "גש" (Gimel-Shin). Transcrito conforme visual.
+    Na coluna latina de Áquila, o número "13." aparece repetido onde se esperaria o verso 15.
+  </notas>
 </pagina>

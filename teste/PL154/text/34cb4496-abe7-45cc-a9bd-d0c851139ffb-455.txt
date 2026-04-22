@@ -1,4 +1,12 @@
 <pagina estado="com_texto">
+  <bloco tipo="outro" script="latino" bbox="30,2,980,28">
+tipo_pagina: texto
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="30,28,980,84">
+901
+CHRONICA. — CHRONICON UNIVERSALE.
+902
+  </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="30,60,480,820">
 inclitus et conjugio Gerberge, Heinrici Transrhe-
 nensis filiae, salis beatus, in nimiam prae insolentia
@@ -15,7 +23,7 @@ mox ad regem per sacramenta redeunt, et contra
 Giselbertum pariter surgunt. Ille vero in oppido
 Harburg, quod hinc Mosa et inde Gullo fluviis val-
 latur, alias autem inmani hiatu multoque horrore
-veprium tutissimum videbatur, cum paucis tunc B
+veprium tutissimum videbatur, cum paucis tunc
 claudebatur. Huc rex cum copiis properat, obsidio-
 nem locat, hinc et inde navalem, alias vero eque-
 strem. Et cum violentius instaret, Giselbertus clam
@@ -44,7 +52,7 @@ plici permovebat suasieone. Heinricus vero cum
 illicita eum suadere adverteret, dictis suadentis
 admodum restitit, et ut a nefar:is quiesceret, cre-
 doro ammonuit. Giselbertus vero cum apud socerum
-non prosliceret nec regnum sibi parare posset, in
+non proficeret nec regnum sibi parare posset, in
 Celticam secedit, et in Neustriam transit, sicque
 cum Ruoperto, Ovionis regis fratre, qui erat dux
 Celtice, de negotio eodem consilium pertractat,
@@ -135,5 +143,5 @@ VARIAE LECTIONES.
   <bloco tipo="rodape" script="latino" bbox="700,970,980,998">
 Digitized by Google
   </bloco>
-  <notas>Transcrição feita literal do impresso. Superscritos e índices de variantes mantidos na posição inline como números arábicos. Letras marginais A-D mapeadas como notas marginais separadas; pequenas inconsistências tipográficas preservadas (ex.: hiatu/hiatu, formas rompidas por hifenização). Nenhuma palavra foi inventada; não houve leitura de escrita não-latina.</notas>
+  <notas>Tipo de página identificado como "texto". Script: latino impresso. Layout: duas colunas; a coluna esquerda foi transcrita por completo antes da coluna direita. Letras marginais A–D mapeadas como blocos nota_marginal (bboxes centradas no entrecolúnio); uma ocorrência da letra marginal (B) aparecia inline no OCR original e foi retirada do texto principal e colocada no bloco nota_marginal correspondente. Foram preservadas hifenizações de linha e índices/superscritos numéricos tal como surgem no impresso. Correções pontuais limitadas a remoção de artefatos óbvios de OCR (letra marginal duplicada inline); nenhum vocábulo legível foi inventado ou traduzido.</notas>
 </pagina>

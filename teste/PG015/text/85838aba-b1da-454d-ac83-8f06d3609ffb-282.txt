@@ -1,59 +1,104 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,90">
-    HENAPLORUM QUÆ SUPERSUNT.
-    CAPVT VI LEVITICI.
-    TO EBRAIKON.        ΤΟ ΕΒΡΑΙΚΟΝ
-    ΤΟ ΕΒΡΑΙΚΟΝ.       Ἑλληνικὸς τῆγραμμα.
-    AKYAAΣ.
-    559                                                                 560
+  <bloco tipo="cabecalho" script="latino" bbox="50,40,950,80">
+    559 HEXAPLORUM QUAE SUPERSUNT. 560
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,100,320,780">
-    (coluna esquerda)
-    [הטקסט העברי נראה בתיבות ובמספרים; שורות מוקפצות וקטועים]
-    תעוה 2    2
-    וגנוץ 7?  ?.
-    בגדל
-    משק אדרמצן?
-    [א]דננין אשר נאש 4.      4.
-    ימדבר 5    5.
-    מ זמרה 10   10.
-    כן וכדומה
-    על-שמד
-    אשדשום
-    איל
-    אט את בגדיו 11.   11.
-    בגדים אחרים
-    ה'שלים 12.   12.
+  <bloco tipo="cabecalho" script="latino" bbox="380,80,620,110">
+    CAPUT VI LEVITICI.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="340,100,960,780">
-    (coluna direita)
-    Ευκοφαντησε τὸν πλησιον αὐτοῦ.
-    4. Συκοφαντίαν ἢν ἑνστοφαγησεν.
+  <bloco tipo="texto_principal" script="misto" bbox="100,110,350,500">
+    TO EBPAIKON.
+    וְכִחֵשׁ בַּעֲמִיתוֹ 2
+    בְּפִקָּדוֹן
+    אוֹ
+    בְּגָזֵל
+    אוֹ עָשַׁק את־רֵעֵהוּ 4
+    אוֹ מָצָא 5
+    אֲבֵדָה וְכִחֶשׁ 10
+    בַּשְּׁבוּעָה
+    עַל־שֶׁקֶר
+    וְהִשִׁיב
+    אֶת־הַגְּזֵלָה 11
+    אֲשֶׁר עָשָׁק
+    אֶת־הַפִּקָּדוֹן 12
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="380,110,600,500">
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
+    2
+    4.
     5.
     10.
     11.
     12.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,800,960,1500">
-    VERSIO HEBRAICI TEXT.          VULGATA LATINA.          AQUILA.
-    2. Prævaricata fuerit prævaricationem in Dominum.    2. Contemptu Dominio.    2.
-    Et mendicus fuerit.                             Negaverit.
-    In positione manus.                              Quod fidel ejus creditum fuerit.
-    In rapina.                                       Vel vi aliquid extorserit.
-    Vi occupavit proximum suum.                      Aut calumniam fecerit.    Calumniatus est proximus suum.
-    4. Usurpationem quam usurpavit.                   4. Quæ per fraudem voluit obtinere.    4. Sycophantiam qua calumniatus est.
-    5. Delicti sui.                                  5. Cui damnum intulisset.    5.
-    10. Indumenta suo lini;                           10. Tunica linea.    10.
-    Et fœminilia suo lini.                           Et feminilibus lineis.
-    Super carnem suam.                               Dedit.
-    Cinerem.                                         Favillam.
-    Appa.                                            Jecta
-    11. Vestes suas.                                 11. Prioribus vestimentis.    11.
-    Vestes aliæ.                                     Alijs (sc. vestimentis.)
-    12. Pacificorum.                                 12. Pacificorum.    12.
+  <bloco tipo="texto_principal" script="grego" bbox="620,110,900,500">
+    ΑΚΥΛΑΣ.
+    2.
+    Ἐσυκοφάντησε τὸν πλησίον αὐτο.
+    4. Συκοφαντίαν ἣν ἐσυκοφάντη-
+    σεν.
+    5.
+    10.
+    11.
+    12.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="420,1490,960,1550">
+  <bloco tipo="cabecalho" script="latino" bbox="100,510,900,540">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,540,350,900">
+    2. Prævaricata fuerit prævari-
+    cationem in Dominum.
+    Et mentitus fuerit.
+    In positione manus.
+    In rapina.
+    Vi occupavit proximum suum.
+    4. Usurpationem quam usurpa-
+    vit.
+    5. Delicti sui
+    10. Indumento' suo lini,'
+    Et feminalia suo lini.
+    Super carnem suam.
+    Cinerem.
+    Apud.
+    11. Vestes suas.
+    Vestes alias.
+    12. Pacificoru~
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,540,600,900">
+    2. Contempto Domino.
+    Negaverit.
+    Quod fidei ejus creditum fuerit.
+    Vel vi aliquid extorserit.
+    Aut calumniam fecerit.
+    4. Quæ per fraudem voluit obti-
+    nere.
+    5. Cui damnum intulerat.
+    10. Tunica linea.
+    Et feminalibus lineis.
+    Deest.
+    Favillam.
+    Juxta
+    11. Prioribus vestimentis.
+    Aliis (sc. vestimentis.)
+    12. Pacificorum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="620,540,900,900">
+    2.
+    Calumniatus est proximum
+    suum.
+    4. Sycophantiam qua calomnia-
+    tus est.
+    5.
+    10.
+    11.
+    12.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="550,950,750,980">
     Digitized by Google
   </bloco>
-  <notas>Scripts presentes: hebraico (coluna sinistra), grego (coluna média/direita superior), latino (cabeçalho, colunas inferiores e rodapé). Algumas linhas hebraicas estão parcialmente ilegíveis; segmentei por palavra e indiquei [א] e [?] onde traço incerto. Mantive ordem: coluna esquerda inteira seguida da direita. Não normalizei ortografia.</notas>
+  <notas>
+    Transcrição de página poliglota (Hexapla) contendo Hebraico, Grego e Latim.
+    O texto hebraico corresponde a Levítico 6:2-4 (numeração hebraica) / 6:9-11 (numeração cristã).
+    A til em "Pacificoru~" indica abreviatura de "Pacificorum".
+  </notas>
 </pagina>

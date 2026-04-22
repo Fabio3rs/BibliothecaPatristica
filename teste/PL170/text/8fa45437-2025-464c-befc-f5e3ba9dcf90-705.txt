@@ -1,15 +1,34 @@
-<pagina estado="com_texto">
-  <bloco tipo="texto_principal" script="latino" bbox="480,0,1000,1000">
-    JEU 1031 [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="texto_principal" script="latino" bbox="40,40,450,940">
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="0,0,480,1000">
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+
+  <bloco tipo="nota_marginal" script="latino" bbox="455,80,545,920">
+A
+B
+C
+D
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="460,100,490,900">
-    A B C D
+
+  <bloco tipo="texto_principal" script="latino" bbox="550,40,980,940">
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="0,960,1000,1000">
-    Digitized by Google
+
+  <bloco tipo="rodape" script="latino" bbox="360,950,690,995">
+Digitized by Google
   </bloco>
-  <notas>Pagina escaneada com rotação; muitas áreas de texto não legíveis na cópia disponível e foram marcadas com [ilegivel] por palavra. Transcrição preserva script latino; colunas transcritas esquerda depois direita conforme imagem.</notas>
+
+  <notas>Página impressa em duas colunas; o arquivo de imagem está rodado 180° no original de digitalização — a transcrição aqui segue a ordem de leitura lógica: coluna esquerda (bbox 40,40,450,940) seguida da coluna direita (bbox 550,40,980,940). As letras centrais A, B, C, D foram isoladas em bloco nota_marginal (bbox 455,80,545,920). Marcadores de rodapé identificados (bbox 360,950,690,995). Muitas palavras aparecem degradadas na imagem; cada palavra não legível foi substituída por [ilegivel] (uso estrito por palavra). BBOX em escala 0-1000 conforme instruído. Não foram feitas normalizações, traduções nem conjecturas além do marcado por [ilegivel].</notas>
 </pagina>

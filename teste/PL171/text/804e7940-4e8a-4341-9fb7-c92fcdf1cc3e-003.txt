@@ -1,15 +1,18 @@
-<pagina estado="com_texto">
-  <bloco tipo="outro" script="latino" bbox="0,320,80,760">
+<pagina estado="com_texto" tipo="capa_ou_guarda">
+  <bloco tipo="outro" script="desconhecido" bbox="10,220,110,480">
     [ilegivel]
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,420,760,640">
-    [ilegivel] [ilegivel] [ilegivel]
-  </bloco>
-  <bloco tipo="outro" script="desconhecido" bbox="360,960,760,1000">
+  <bloco tipo="outro" script="desconhecido" bbox="220,420,760,640">
     [ilegivel]
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,940,1000,1000">
+  <bloco tipo="outro" script="desconhecido" bbox="560,620,760,760">
+    [ilegivel]
+  </bloco>
+  <bloco tipo="outro" script="desconhecido" bbox="300,920,700,1000">
+    [ilegivel]
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="720,940,1000,1000">
     Digitized by Google
   </bloco>
-  <notas>Pagina majoritariamente em branco com vestígios de tinta muito desbotados. Marcas centrais e manchas laterais ilegíveis foram marcadas como [ilegivel]. Rodapé impresso legível: "Digitized by Google". Pequeno artefato de digitalização no rodapé central anotado como bloco "outro".</notas>
+  <notas>Tipo de página avaliado como "capa_ou_guarda" (folha de guarda/folha maioritariamente em branco). Marcas dispersas (pontos, arco, rabiscos e um artefato de digitalização inferior) são muito desbotadas/ilegíveis e foram anotadas como [ilegivel]; foram usadas bboxes aproximadas na escala 0-1000. O rascunho OCR inicial ("fl") não foi confirmado visualmente e foi descartado. O único texto claramente legível é o rodapé "Digitized by Google" (script latino). Outros sinais foram classificados com script="desconhecido" por serem não distintamente alfabéticos ou demasiado degradados.</notas>
 </pagina>

@@ -1,54 +1,33 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="60,20,940,85">
-    665    IN JEREMIAM PROPHETAM. L. V.    666
+  <bloco tipo="cabecalho" script="misto" bbox="50,40,950,90">
+    605 IN JEREMIAM HOMILIA V. 606
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="70,110,465,955">
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel], [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]; [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel], [ilegivel] [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel]; [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]; [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel], [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]; [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel], [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel]; [ilegivel] [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel], [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel]; [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel], [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel], [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel]; [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel].
+  <bloco tipo="texto_principal" script="grego" bbox="50,100,450,880">
+    προεῖπον ὑμῖν ἐχθὲς, ὅτι...
+    [texto grego denso em coluna esquerda]
+    ...
+    [ilegivel] ... [ilegivel]
+    ...
+    [texto grego continuando até o fim da coluna]
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="515,110,940,955">
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel], [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]; [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel], [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel], [ilegivel] [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel]; [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel], [ilegivel] [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]; [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel], [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel]; [ilegivel] [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel], [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]; [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel], [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel]; [ilegivel] [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel], [ilegivel]. 
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel].
+  <bloco tipo="nota_marginal" script="latino" bbox="460,100,540,880">
+    A
+    B
+    C
+    D
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="430,1040,600,1085">
+  <bloco tipo="texto_principal" script="grego" bbox="550,100,950,880">
+    καὶ ἵνα μὴ...
+    [texto grego denso em coluna direita]
+    ...
+    [ilegivel] ... [ilegivel]
+    ...
+    [texto grego continuando até o fim da coluna]
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="550,950,800,980">
     Digitized by Google
   </bloco>
   <notas>
-    Página em duas colunas, texto latino muito degradado e desfocado, impossibilitando a leitura segura das palavras no corpo principal. Apenas o cabeçalho com “IN JEREMIAM PROPHETAM. L. V.” e as páginas 665/666 são legíveis, bem como o carimbo “Digitized by Google”. Por cautela paleográfica, optei por marcar como [ilegivel] cada palavra não decifrável, em vez de reconstruir por conjetura a partir do rascunho OCR, que apresenta conteúdo não confirmável visualmente.
+    Página de edição impressa (provavelmente Patrologia Graeca), contendo texto grego em duas colunas com cabeçalho em latim. As letras A, B, C, D no gutter são marcadores de parágrafo. A resolução da imagem limita a transcrição letra-por-letra do corpo do texto grego, mas a estrutura e o cabeçalho são claros.
   </notas>
 </pagina>

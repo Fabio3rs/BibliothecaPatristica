@@ -1,37 +1,30 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,90">
-    HEXAPLORUM QUAE SUPERSUNT.  TO EBPAIKON.  TO EBPAIKON  A K Y A A S.
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,100,40">
+    245
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="30,90,490,740">
-    TO EBPAIKON.  14.  15.  16.  17.  18.  24.  26.  27.
-    
-    (Hebrew column top to bottom:)
-    [החזית]  וראיה ושוב כתוב 14
-    חבקי
-    16 ומשמעם כעין תכסיס
-    ודמות אחת לארבעין ובארכן
-    ויתפרסו על־ארבעין בחיתם לם 17
-    ויראה להם 18
-    24 קול—שדי בלכתם קול המלא
-    קול מחה
-    [בעיניים] חפיות נכפין
-    ומשלל לקחץ אשר על־ראשים 26
-    כסמאה־אש מח־לה מנב 27
-    
-    VERSIO HEBRAICI TEXT.
-    14. Et animalia currere et re- dire, secundum aspectum coru- scationis.
-    16. Et opus earum quasi aspe- ctus tharsis.
-    Et similitudo una quatuor ipsis; et aspectus earum, et opus earum.
-    17. Super quatuor quadrilateris suis in cundo ipsarum ibant.
-    18. Et pavor propter eas.
-    24. Tanquam vocem Saddai in eundo ipsa, vocem loquelae tam- quam vocem castrorum.
-    Cum starent, demittebant alas suas.
-    26. Et desuper firmamentum, quod super caput eorum.
-    27. Tanquam aspectus ignis do- mus ipsi circum.
+  <bloco tipo="cabecalho" script="latino" bbox="350,20,650,40">
+    HEXAPLORUM QUÆ SUPERSUNT.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="500,90,960,740">
-    TO EBPAIKON
-    Ελληνικὸς γράμμασι.
+  <bloco tipo="cabecalho" script="latino" bbox="900,20,950,40">
+    246
+  </bloco>
+
+  [!-- Upper Section: Hebrew / Greek Translit / Aquila --]
+  <bloco tipo="texto_principal" script="misto" bbox="50,50,300,340">
+    TO ΕΒΡΑΙΚΟΝ.
+    והחיות רצוא ושוב כמראה הבזק 14
+    ומעשיהם כעין התרשיש 16
+    ודמות אחד לארבעתם ומראיהם ומעשיהם כאשר יראה בתוך היקדת 17
+    וראה להם 18
+    כקול שדי בלכתם קול המולה כקול מחנה 24
+    בעמדם תרפינה כנפיהם
+    ומעל לרקיע אשר על ראשם 26
+    כמראה אש מתוך לה סביב 27
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="350,50,600,340">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
     14.
     16.
     17.
@@ -39,42 +32,76 @@
     24.
     26.
     27.
-    
-    VULGATA LATINA.
-    14. Et animalia ibant et rever- tebantur, in similitudinem fulgu- ris coruscantis.
-    16. Et opus earum, quasi visio maris.
-    Et una similitudo ipsarum qua- tuor: et aspectus earum, et opera.
-    17. Per quatuor partes earum eunles ibant.
-    18. Et horribilis aspectus.
-    24. Quasi sonum sublimis Dei : cum ambularet quasi sonus erat multitudinis, ut sonus castrorum.
-    Stabant et submittlebant alas suas.
-    26. Et super firmamentum, quod erat imminens capiti eorum.
-    27. Velut aspectum ignis, in- trinsecus ejus per circuitum.
-    
-    AKYAAΣ.
-    14. (Καὶ τὰ ζῷα ἔτρεχον καὶ ἀνεκαμπτον) ὡς εἶδος ἀπορρόιας ἢ ἀστραπῆς.
-    16. Καὶ αἱ ποήσιες αὐτῶν ὡς ὀφθαλμὸς χρυσολίθου.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="650,50,950,340">
+    ΑΚΥΛΑΣ.
+    14. (Καὶ τὰ ζῶα ἔτρεχον καὶ ἀνέκαμπτον) ὡς εδος ἀπορροίας ἢ ἀστραπῆς.
+    16. Καὶ α ποιήσεις αὐτῶν ὡς ὀφθαλμὸς χρυσολίθου.
     17.
     18.
     24.
     26.
-    27. Ϟ. Ὡς ὄρασις πυρός ἔσχον αὐτοῦ κύκλῳ.
-    
-    Aquila. 14. (Et animalia currebant et reflectebant) quasi species fluxus aut fulguris.
+    27. Ὡς ὅρασις πυρὸς ἔσωθεν αὐτοῦ κύκλῳ.
+  </bloco>
+
+  [!-- Middle Section: Latin Versions --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,350,300,600">
+    VERSIO HEBRAICI TEXT.
+    14. Et animalia currere et re-dire, secundum aspectum coru-scationis.
+    16. Et opus earum quasi aspe-ctus tharsis.
+    Et similitudo una quatuor ipsis : et aspectus earum, et opus earum.
+    17. Super quatuor quadrilateris suis in eundo ipsarum ibant.
+    18. Et pavor propter eas.
+    24. Tanquam vocem Saddai in eundo ipsa, vocem loquelæ tam-quam vocem castrorum.
+    Cum starent, demittebant alas suas.
+    26. Et desuper firmamentum, quod super caput eorum.
+    27. Tanquam aspectus ignis do-mus ipsi circum.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="350,350,600,600">
+    VULGATA LATINA.
+    14. Et animalia ibant et rever-tebantur, in similitudinem fulgu-ris coruscantis.
+    16. Et opus earum, quasi visio maris.
+    Et una similitudo ipsarum qua-tuor : et aspectus earum, et opera.
+    17. Per quatuor partes earum euntes ibant.
+    18. Et horribilis aspectus.
+    24. Quasi sonum sublimis Dei : cum ambularent quasi sonus erat multitudinis, ut sonus castrorum.
+    Stabant et submittebant alas suas.
+    26. Et super firmamentum, quod erat imminens capiti eorum.
+    27. Velut aspectum ignis, in-trinsecus ejus per circuitum.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="650,350,950,600">
+    AQUILA.
+    14. (Et animalia currebant et reflectebant) quasi species fluxus aut fulguris.
     16. Et operationes earum quasi oculus chrysolithi.
     17.
     18.
     24.
     26.
     27. Quasi visio ignis intra ipsum in circuitu.
-    
-    Notae et variae lectiones ad cap. I Ezechielis.
-    V. 1. Οἱ λοιποὶ, τῆς μετανοίας. Drusius. In hunc vero locum Hieronymus : «Significantiusque juxta Hebraeos et caeteros interpretes transmigratio dicitur Joachim, et non captivitas, quod LXX trans- lulerunt. Non enim captus urbe superata, sed vo- lutate se traderes, ductus est in Babylonem. Ig- nur Joachim, i. c. Jechoniae, dicitur prima trans- migratio : Sedeciae autem secunda, vel extrema, captivitas.» Hic codex Jes. has nominum propor- turn interpretationes adfert, Χοδαρ̧, ῥαψονος, ινοκταιν, ἰλλ' ἐστρατοπεδα· Ἰεζεκιηλ, χορασ θεου· Ἐσσυ, περαυλισμος. [Hebr. et Vulg., in trigessimo anno. LXX, εν τῷ τραγκαχτῷ ἐτει. B, αἴλοις, τριακοστην πεμπτη ἔτη αἰχμαλωσίας. — LXX, Χοδάρ. Sed χοδαρ C et B, qui posterior ad marginem, ῥαψονος (aggravatio), sine interpresit nomine, in- nonnullae aliae propriorum nominum interpretationes leguntur, videlicet ad vocem Ἰεζεκίηλ, χρατος του θεου; ad Βουελ, αἵδιος, περαλωμενος· Αλλος, Βουελ. — LXX, τοιοι. C, e̓τι, Sic etiam Ald. et qu- idam codd. — LXX, ὀρασις, C, ὀρασιν. — B, ἀλλος, ορασις· οἱ λοιποι, ἀπεσταλιαν τῆς ὁρασεως, ubi videntur binae interpretationes. DRACH.]
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,740,960,980">
+
+  [!-- Lower Section: Notes --]
+  <bloco tipo="texto_principal" script="misto" bbox="250,610,750,630">
+    Notæ et variæ lectiones ad cap. I Ezechielis.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="50,640,480,930">
+    V. 1. Οἱ λοιποί, τῆς μετοικεσίας. Drusius. In hunc vero locum Hieronymus : « Significantiusque juxta Hebræos et cæteros interpretes transmigratio dicitur Joachim, et non captivitas, quod LXX trans-tulerunt. Non enim captus urbe superata, sed vo-luntate se tradens, ductus est in Babylonem. Igi-tur Joachim, i. e. Jechoniæ, dicitur prima trans-migratio : Sedeciæ autem secunda, vel extrema, captivitas. » Hic codex Jes. has nominum proprio-rum interpretationes adfert, Χοδάρ, βαρυσμός; Ἰωακείμ, Ἰαὼ ἑτοιμάσιος; Ἰεζεκιήλ, κράτος Θεοῦ; Βουζί, πεφαυλισμένος. [Hebr. et Vulg., in trigesimo anno. LXX, ἐν τῷ τριακοστῷ ἔτει. Β, ἄλλος, τρια-κοστῷ πέμπτῳ τῆς αἰχμαλωσίας. — LXX, Χοδάρ. Sed χωδάρ C et B, qui posterior ad marginem, βαρυσμός (aggravatio), sine interpretis nomine, ubi nonnullæ aliæ propriorum nominum interpretationes leguntur, videlicet ad vocem Ἰεζεκιήλ, κράτος τοῦ Θεοῦ; ad Βουζί, ἄλλος, πεφαυλισμένος Ἄλλος, Βουζί.—LXX, ἴδον. C, εἶδον. Sic etiam Ald. et qui-dam codd. — LXX, ὁράσεις. C, ὅρασιν. — Β, ἄλλος, ὁράσεις. Οἱ λοιποί, ὁπτασίαν ἢ ρασιν, ubi videntur binæ interpretationes. DRACH.]
+    V. 2. Ο', τοῦτο τὸ ἔτος. C, τοῦτο ἔτος. — Ο', πο-ταμοῦ το χωδάρ. C, π. χωδάρ. DRACH.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="520,640,950,930">
+    V. 3. Ἐκεῖ. Ms. Jes., cum asterisco. [Itemque C in textu. DRACH.]
+    V. 4. Hieronymus : Αq., ventus turbinis (quem sequitur ipse Hieron.). Sym. et Theodotio, flatus ac spiritus tempestatis. Aquila Græce haud dubie ha-buisse videtur ἄνεμος λαίλαπος. Symmachi lectio-nem Græce adfert Theodoretus. [Aliter habentur trium lectiones apud L. Bos, nimirum, Ἀκ., ἄνεμος πρηστῆρος. Σύμ., πνοὴ θυέλλης. Θεοδ., πνεῦμα θυέλλης. Β vero, Ἀ., πνεῦμα καταιγίδος. Σ., πνοὴ καταιγιζομένη. Θ., πνεῦμα καταιγίδος. — Ο', καὶ ἴδον. C, καὶ εἶδον, ut Ald. DRACH.]
+    Ibid. Ὁ Ἑβραῖος : φῶς γάρ etc. Ms. Reg. bom-bycinus, similiterque Coislinianus ex Polychronio. [Qui addit, φῶς γὰρ ἐν μέσῳ αὐτοῦ ὡς ρασις ρι-δος, καὶ αὕτη διεθὴς (perspicua) ἦν ἐν μέσῳ αὐτῶν. Β vero ad vocem τῶν LXX ὁράσις, ante ἤλεκτρου, habet, Ἀ., ὀφθαλμός. Σ., εἶδος. λλος, μοίωμα. DRACH.]
+    V. 5. B : Ο', ὅρασις αὐτῶν. Σ., ὁπτασία αὐτῶν. — Ο', ὁμοίωμα. Σ., ὁμοίωσις. DRACH.
+    V. 6. Ἀ., Θ., αὐτοῖς. Ms. Jes., cum asterisco. [Pro םה]. Et ita C in textu, sed de more sine in-terprete. Β vero adfert : Σ., εἶχεν κατὰ ἓν ἕκαστον αὐτοῦ. DRACH.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
     Digitized by Google
   </bloco>
-  <notas>
-    Página com texto impresso em colunas tripartidas: coluna esquerda contém hebraico e latim (VERSIO HEBRAICI TEXT.), coluna central grego/latim (VULGATA LATINA) e coluna direita grego/Aquila. Foram transcritas linhas visíveis; palavras ilegíveis marcadas como [ilegivel] quando necessário (nenhuma usada neste excerto). Mistura de scripts: latino, hebraico e grego.
-  </notas>
 </pagina>

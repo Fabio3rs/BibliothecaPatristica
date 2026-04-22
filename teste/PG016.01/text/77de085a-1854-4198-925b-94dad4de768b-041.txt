@@ -1,92 +1,102 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,90">
-    LIB. II REGUM CAPUT XI.            70
-    CAPUT XI LIB. II REGUM.
+  <bloco tipo="cabecalho" script="misto" bbox="50,40,950,80">
+    69 LIB. II REGUM CAPUT XI. 70
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="30,90,330,880">
+  
+  [!-- CAPUT XI - GREEK SECTION --]
+  <bloco tipo="texto_principal" script="grego" bbox="50,90,300,350">
     ΣΥΜΜΑΧΟΣ.
-    3. Περιεγραφάσα.
-    4.
-    Ἀπò μιαισματòυ αὐτῆς.
-    7. Περὶ τῆς σωτηρίας.
+    3. Περιειργάσατο.
+    4. Ἀπὸ μιασμοῦ αὐτῆς.
+    7. Περὶ τς σωτηρίας.
     8.
     11.
     18.
     25.
     27.
-    SYMMACHUS.
-    3. Curiose requisivit.
-    4.
-    A pollutione sua.
-    7. De salute.
-    8
-    41.
-    18.
-    25.
-    27.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="340,90,660,880">
-    Ο'.
+
+  <bloco tipo="texto_principal" script="misto" bbox="350,90,650,350">
+    CAPUT XI LIB. II REGUM.
+    σ'.
     3. Ἐζήτησε.
     4. Ἁγιαζομένη.
-    Ἀπò ἀκαθαρσίας αὐτῆς.
+    Ἀπὸ ἀκαθαρσίας αὐτς.
     7. Καὶ εἰς εἰρήνην τοῦ πολέμου.
-    8. Ἐξ οἴκου τοῦ βασιλέως. Ἄλ-
-    λος, ἐκ προσώπου τοῦ βασιλέως.
-    Ὅπισω αὐτοῦ ἄρσις τοῦ βασι-
-    λέως. Ἄλλος, ὁπίσω αὐτῶν τῶν
+    8. Ἔξ οἴκου το βασιλέως. λλος, ἐκ προσώπου τοῦ βασιλέως.
+    Ὀπίσω αὐτο ἄρσις τοῦ βασιλέως. Ἄλλος, ὀπίσω αὐτῶν τῶν
     παρεστηκότων τῷ βασιλεῖ.
     11. Πῶς; ζῇ ἡ ψυχή σου, εἰ ποι-
-    ήσῃ τὸ ῥῆμα τοῦτο. Ἄλλος, μὰ
-    τὴν ζωήν σου, καὶ μὰ τὴν ζωήν τῆς
-    ψυχῆς σου· οὐ μὴ ποιήσῃ τὸπρά-
+    ήσω τὸ ῥῆμα τοῦτο. λλος, μὰ
+    τὴν ζωήν σου, καὶ μὰ τὴν ζων τῆς
+    ψυχῆς σου· οὐ μὴ ποιήσω τὸ πρ-
     γμα τοῦτο.
     18. Πάντας τοὺς λόγους τοῦ πολέ-
     μου. Ἄλλος, πάντα τὰ ῥήματα τοῦ
     πολέμου.
-    25. Καὶ καταξάπαν αὐτήν. Ἄλ-
-    λος, καταξαψαν αὐτήν.
-    27. Συνήχθησαν αὐτήν. Ἄλλος,
+    25. Καὶ κατάσπασον αὐτήν. Ἄλ-
+    λος, κατάσκαψον αὐτήν.
+    27. Συνήγαγεν αὐτήν. Ἄλλος,
     ἔλαβεν αὐτήν.
-    Καὶ πονηρὸν ἐφάνη τὸ ῥῆμα. Ἀλ-
+    Καὶ πονηρὸν ἐφάνη τὸ ῥῆμα. Ἄλ
     λος, καὶ ἐφάνη πονηρὸν πρᾶγμα.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="700,90,950,350">
+    ΘΕΟΔΟΤΙΟΝ.
+    3.
+    4.
+    Ἀπὸ ἀφέδρου αὐτῆς.
+    7. Εἰ ὑγιαίνει  πόλεμος.
+    8.
+    11.
+    18.
+    25.
+    27.
+  </bloco>
+
+  [!-- CAPUT XI - LATIN SECTION --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,360,300,600">
+    SYMMACHUS.
+    3. Curiose requisivit.
+    4. A polluuone sua.
+    7. De salute.
+    8
+    11.
+    18.
+    25.
+    27.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="350,360,650,600">
     LXX INTERPRETES.
-    3. Quesivit.
+    3. Quæsivit.
     4. Sanctificata.
     Ab immunditia sua.
     7. Et in pacem belli.
     8. E domo regis. Alius, ex facie
     regis.
-    Post eum demensum regis. A-
+    Post eum æmensum regis. A-
     lius, post eos, qui adstabant regi.
     11. Quomodo? vivit anima tua,
     si faciam verbum hoc. Alius, per
-    vitam tuam, et per vitam animae
-    tuae, non faciam rem hanc.
-    18. Omnia verba praelii. Alius,
-    id. aliis verbis.
-    25. Et destruxe eam. Alius, suf-
-    fodio eam.
+    vitam tuam, et per vitam animæ
+    tuæ, non faciam rem hanc.
+    18. Omnia verba prælii. Alius,
+    id, aliis verbis.
+    25. Et destrue eam. Alius, suf-
+    fodito eam.
     27. Conduxit eam. Alius, acce-
     pit eam.
     Et malum apparuit verbum. A-
     lius, et apparuit mala res.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,90,980,880">
-    ΘΕΟΔΟΤΙΟΝ.
-    3.
-    4.
-    Ἀπò ἀφθέρου αὐτῆς.
-    7. Εἰ ὑγιαίνει ὁ πόλεμος.
-    8.
-    11.
-    18.
-    25.
-    27.
+
+  <bloco tipo="texto_principal" script="latino" bbox="700,360,950,600">
     THEODOTIO.
     3.
     4.
-    A mensruo suo.
+    A menstruo suo.
     7. Si bene habet bellum.
     8.
     11.
@@ -94,40 +104,76 @@
     25.
     27.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="30,880,980,1100">
-    Nota et variae lectiones ad cap. XI lib. II Regum
-    Ibid. 'Αλλ., οὕτως αὐτῶν etc. Reg.
-    V. 11. 'Αλλ., μὰ τὴν ζωήν etc. Reg. et ita Compl.
-    V. 18. 'Αλλ., πάντα τὰ ῥήματα etc. Reg.
-    V. 25. 'Αλλ., καταξάψαν αὐτήν. Reg.
-    V. 27. 'Αλλ., ἔλαβεν αὐτήν. Reg.
-    Ibid. 'Αλλ., καὶ ἐφάνη πονηρὸν πρᾶγμα. Reg.
+
+  [!-- NOTES SECTION --]
+  <bloco tipo="aparato_critico" script="misto" bbox="50,610,950,680">
+    Notæ et variæ lectiones ad cap. XI lib. II Regum
+    Ibid. Ἄλλ., πίσω αὐτῶν etc. Reg.
+    V. 11. Ἄλλ., μὰ τὴν ζωὴν etc. Reg. et ita Compl.
+    V. 18. Ἄλλ., πάντα τὰ ῥήματα etc. Reg.
+    V. 25. Ἄλλ., κατάσκαψον αὐτήν. Reg.
+    V. 27. Ἄλλ., ἔλαβεν αὐτήν. Reg.
+    Ibid. Ἄλλ., καὶ ἐφάνη πονηρὸν πρᾶγμα. Reg.
+  </bloco>
+
+  [!-- CAPUT XII - HEADER --]
+  <bloco tipo="cabecalho" script="misto" bbox="350,690,650,720">
     CAPUT XII LIB. II REGUM.
+    ο'.
+  </bloco>
+
+  [!-- CAPUT XII - GREEK SECTION --]
+  <bloco tipo="texto_principal" script="misto" bbox="50,730,300,800">
     ΣΥΜΜΑΧΟΣ.
     3.
-    Ἐλθόντος δὲ ξένου τῷ πλου-
+    4. Ἐλθόντος δὲ ξένου τῷ πλου-
     σίῳ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="350,730,650,800">
+    3. Καὶ ἠδρύνθη. Ἄλλος, καὶ
+    συνετράφη.
+    4. Καὶ ἦλθε πάροδος τῷ ἀνδρὶ τ
+    πλουσί.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="700,730,950,800">
+    ΘΕΟΔΟΤΙΟΝ
+    3.
+    4. Καὶ ἦλθεν ὁδοιπόρος πρὸς τὸν
+    πλούσιον.
+  </bloco>
+
+  [!-- CAPUT XII - LATIN SECTION --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,810,300,900">
     SYMMACHUS.
     3
     4. Veniente autem peregrino,
     diviti.
-    O'.
-    3. Καὶ ἠδρύνθη. 'Ἄλλος , καὶ
-    συνετράφη.
-    4. Καὶ ήλθεν πάροδος τῷ ἀνδρὶ τῷ
-    πλούσιῳ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="350,810,650,900">
     LXX INTERPRETES.
     3. Et creverat. Alius, et nutrita
     fuerat.
     4. Et venit viator viro diviti.
-    ΘΕΟΔΟΤΙΟΝ.
-    3.
-    4. Καὶ ἦλθεν δοϊππορος πρὸς τὸν
-    πλούσιον.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="700,810,950,900">
     THEODOTIO.
     3.
     4. Et venit viator ad divitem.
-    (Digitized by Google)
   </bloco>
-  <notas>Scripts: página contém grego e latim. Pequenas abreviações e sinais editoriais preservados. Algumas linhas fragmentadas em colunas; BBOXs estimados em escala 0-1000 conforme instruções.</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="600,950,900,980">
+    Digitized by Google
+  </bloco>
+
+  <notas>
+    Script: Misto (Grego e Latino).
+    Estrutura: Três colunas paralelas (Symmachus, LXX, Theodotion) para o texto grego e depois para o latino.
+    Notas de rodapé/críticas no centro inferior.
+    Transcrição literal mantendo abreviações visíveis (e.g., Ἄλλ. para Ἄλλος nas notas).
+    O número da seção no Caput XI é 'σ'.' e no Caput XII é 'ο'.'.
+  </notas>
 </pagina>

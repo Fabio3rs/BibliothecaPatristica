@@ -1,20 +1,16 @@
-<pagina estado="com_texto">
-  <bloco tipo="outro" script="latino" bbox="0,0,1000,40">
-tipo_página: texto
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="0,30,1000,120">
-455
-ULFILAS GOTHORUM EPISCOPUS.
-456
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,120,480,430">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,140,70">455</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="860,0,1000,70">456</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="280,10,720,70">ULFILAS GOTHORUM EPISCOPUS.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="40,70,480,430">
 Colossi duo.
-Columnæ cochlidæ duæ.
+Columnae cochlidæ duæ.
 Macella duo.
 Theatra tria.
 Ludi quatuor.
 Naumachiæ quinque.
-Nymphæa quindecim.
+Nymphaea quindecim.
 Equi magni viginti tres.
 Deaurati octoginta.
 Eburnei octoginta quatuor.
@@ -24,7 +20,7 @@ Vici quadringenti viginti quatuor.
 Ædes quadringenta viginti quatuor.
 Vicomagistri sexcenti septuaginta duo.
 Curatores viginti quatuor.
-Insulæ per totam urbem numero quadraginta sex
+Insulæ per totam urbem numero quadraginta sex — 
 millia sexcentæ duæ.
 Domus mille septingentæ octoginta.
 Balnea octingenta quinquaginta sex.
@@ -32,18 +28,16 @@ Lacus mille trecenti quinquaginta duo.
 Pistrina ducenta quinquaginta quatuor.
 Lupanaria quadraginta quinque.
 Latrinæ publicæ quadraginta quatuor.
-Cohortes prætoriæ decem.
+Cohortes praetoriæ decem.
 Urbanæ quatuor.
 Vigilium septem, quarum excubitoria quatuordecim.
 Vexilla communia duo.
-Castra equitum [ilegivel] peregrinorum,
-[ilegivel], lecticariorum, [ilegivel],
-[ilegivel], tabellariorum, victimariorum.
-Mensæ olearie per totam urbem ii. ccc.
+Castra equitum salgamar iorum peregrinorum
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,120,960,430">
-Colossi ii.
-Columnæ cochlides ii.
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,70,960,430">
+A Colossi ii.
+Columnae cochlides ii.
 Theatra iii.
 Ludi iii.
 Naumachiæ v.
@@ -51,13 +45,14 @@ Nymphea xv.
 Equi magni xxii.
 Dei aurei lxxx.
 Eburnei lxxiii.
-Arci marmorei xxxvii.
+Arcus marmorei xxxvii.
 Portæ xxxvii.
 Vici ccccxxiii.
 Ædes ccccxxiii.
 Vicomagistri DCCLXXII.
 Curatores xxviii.
-Insulæ per totam urbem XLVI DCLII.
+B Curatores. xxviii.
+Insulæ per totam urbem XLVI DCLII
 Domus MDCCXC.
 Horrea CCXC.
 Balnea DCCCLVI. (alt. Cod. DCCCLXV.)
@@ -65,49 +60,34 @@ Lacus, quod est putea, MCCCLII.
 Pistrina CCLIIII.
 Lupanariæ XLVI.
 Latrinæ publicæ, quod est sicessos, CXLIII.
-Cohortes prætoriæ x.
+Cohortes praetoriæ x.
 Urbanæ iii.
-Vigilium vii. Quarum excuvitoria xiiii.
+Vigilium vii. Quorum excubitoria xiiii.
 Vexilla communia duo.
 Castra equitum singulariorum, peregrinorum, revennantium, lecticariorum, silagariorum, misnantium, tabellariorum, victimariorum.
-Mensæ olearie per totam urbem II. CCC.
+Mensæ olear iæ per totam urbem II. CCC.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="470,120,520,170">
-A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="470,240,520,300">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="470,320,520,380">
-C
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="40,430,500,480">
-Descriptionis Romæ finis.
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="520,430,960,480">
-Explicit.
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="0,480,1000,510">
----------------------------------------------------------------------------
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="0,510,1000,580">
-EXEUNTE SÆCULO QUARTO.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,560,920,720">
-ULFILAS
 
-MŒSO-GOTHORUM EPISCOPUS.
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="150,720,850,770">
-MONITUM EDITORIS.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,780,950,960">
-Si quis causam sciscietur ob quam tantas Ulfilae edendo moras fecerimus, hoc responsum habeat, nos hujus auctoris opera, multis nominibus commendanda, non exscribere voluisse nisi ex editione optima facilèque omnibus anteponenda, cujus rudimenta tum in Germania elucubrabantur cum ad finem quarti sæculi jam ordine chronologico pervenissemus.
+  <bloco tipo="nota_marginal" script="latino" bbox="450,95,560,160">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="450,235,560,305">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="450,315,560,390">C</bloco>
 
-Hæc autem editio, cui paucis tantum abhinc mensibus ultima manus admota est, tribus partibus coalescit. Prior Ulfilanæ versionis textum exhibet: præeuntibus Prolegomenis, in quibus quidquid sive ad Auctoris vitam sive ad editos manuscriptoque codices pertinet, exploratur; comitantibus vero atque indesinenter subjacentibus interpretatione latina notisque lectionum varietates necnon auctorum conjecturas exponentibus.
+  <bloco tipo="aparato_critico" script="latino" bbox="250,400,520,465">Descriptionis Romae finis.</bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="560,400,920,465">Explicit.</bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="240,500,760,580">EXEUNTE SÆCULO QUARTO.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="140,585,860,760">ULFILAS</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="220,760,820,840">MŒSO-GOTHORUM EPISCOPUS.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="300,860,720,930">MONITUM EDITORIS.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="70,935,950,1215">
+Si quis causam sciscitetur ob quam tantas Ulfiæ edendo munas fecerimus, hoc responsum habeat, nos hujus auctoris opera, multis nominibus commendanda, non exscribere voluisse nisi ex editione optima facilèque omnibus anteponenda, cujus rudimenta tum in Germania elucubrabantur cum ad finem quarti sæculi jam ordine chronologico pervenissemus.
+
+Hæc autem editio, cui paucis tantum abhinc mensibus ultima manus admota est, tribus partibus coalescit. Prior Ulfilanæ versionis textum exhibet: præeuntibus Prolegomenis, in quibus quidquid sive ad Auctoris vitam sive ad editos manuscriptosque codices pertinet, exploratur; comitantibus vero atque indesinenter subjacentibus interpretatione latina notisque lectionum varietates necnon auctorum conjecturas exponenteibus.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="660,960,1000,1000">
-Digitized by Google
-  </bloco>
-  <notas>Pagina impressa em latim, tipografia antiga. Layout em duas colunas: a coluna esquerda contém o texto por extenso (palavras), a coluna direita apresenta as cifras/numerais e variantes. Letras marginais A, B, C foram registadas como blocos nota_marginal (posicionadas ao centro entre colunas). Preservei ligaduras visíveis (æ, œ, Æ, Œ) conforme impresso. Onde o original é ilegível ou fragmentado (principalmente o elenco de tipos de castra na coluna esquerda e algumas formas de palavras compostas), marquei a palavra individual como [ilegivel] em vez de completar ou normalizar. Não foram efectuadas normalizações ortográficas dos numerais romanos (constituições como "CCCCXXIII", "CCLIIII" mantidas tal como no impresso). As coordenadas bbox são aproximações relativas à página (escala 0-1000).</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="660,1380,1000,1470">Digitized by Google</bloco>
+
+  <notas>Transcrição fiel ao impresso. Usei ligaduras/acentos como no original (æ/Æ, Œ) e mantive numeração romana/decimais tal como aparece. Onde a linha está cortada no fim da lista da coluna esquerda, mantive apenas o que é legível (“Castra equitum salgamariorum peregrinorum”). BBOX aproximado em escala 0–1000.</notas>
 </pagina>

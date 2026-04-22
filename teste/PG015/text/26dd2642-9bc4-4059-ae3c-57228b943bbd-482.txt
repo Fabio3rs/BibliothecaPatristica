@@ -1,76 +1,127 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,90">
-    959               HEXAPLORUM QUÆ SUPERSUNT.               960
-    TO ΕΒΡΑΙΚΟN.                  TO ΕΒΡΑΙΚΟN                ΑΚΥΛΑΣ.
-                 Εβραικοις γραμμασι.                 Σαλιγγας αφιστιων.
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,200,50">
+    959
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,100,310,670">
-    תשמורת החצוצרות
-    5  ועל חצוצרות אדניומשקין
-    6 ויאמר אלהים שאו שאר אחי־דתים תשמעו חטאים עורקי שמעי
-    שפתות זבילים לפני ארון יהוה
-    9 חזק והשורת
-    10 תליאנא בפניכם דבר
-    11 הידיעון חקן
-    13 נשמם
-    15 אזרחיע במצפון הזה שבע פעמים רק ביום הוא סבח אחד חזר שבע פעמים
-    16 בששיות
-    אל־העם
-    17 ליהוה
-    כי השמועה התוציהולאים אשד שקדו
+  <bloco tipo="cabecalho" script="latino" bbox="400,20,700,50">
+    HEXAPLORUM QUÆ SUPERSUNT.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,100,660,670">
+  <bloco tipo="cabecalho" script="latino" bbox="900,20,950,50">
+    960
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="misto" bbox="150,60,350,90">
+    TO ΕΒΡΑΙΚΟΝ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="450,60,650,90">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικος γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,60,900,90">
+    ΑΚΥΛΑΣ.
+  </bloco>
+
+  [!-- Coluna Superior Esquerda (Hebraico) --]
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,90,400,500">
+    שֹׁפְרוֹת הַיּוֹבְלִים
+    בַּחֹדֶשׁ הַשְּׁבִיעִי בְּעָשׂוֹר לַחֹדֶשׁ
+    וְהָיָה
+    וְאָמַר אֲלֵיהֶם שְׂאוּ אֶת־אֲרוֹן
+    הַבְּרִית וְשִׁבְעָה כֹהֲנִים יִשְׂאוּ שִׁבְעָה
+    שׁוֹפְרוֹת הַיּוֹבְלִים לִפְנֵי אֲרוֹן יְהוָה
+    
+    9 תִּקְעוּ בַּשּׁוֹפָרוֹת
+    10 וְלֹא־תָרִיעוּ וְלֹא יֵצֵא דָבָר
+    11 וְסַבּוֹתֶם אֶת־הָעִיר
+    13 וְנָשְׂאוּ
+    15 וַיְהִי בַּיּוֹם הַשְּׁבִיעִי וַיַּשְׁכִּימוּ ... הָעִיר שֶׁבַע פְּעָמִים
+    16 וַיְהִי בַּפַּעַם הַשְּׁבִיעִית
+    17 וַיֹּאמֶר אֶל־הָעָם
+    כִּי נָתַן יְהוָה לָכֶם אֶת־הָעִיר
+  </bloco>
+
+  [!-- Coluna Superior Meio (Números / Transliteração vazia) --]
+  <bloco tipo="texto_principal" script="latino" bbox="420,90,500,500">
+    5.
+    
+    6.
+    
+    9.
+    10.
+    11.
+    13.
+    15.
+    16.
+    17.
+  </bloco>
+
+  [!-- Coluna Superior Direita (Aquila Grego) --]
+  <bloco tipo="texto_principal" script="grego" bbox="700,90,900,500">
+    Σάλπιγγας ἀφέσεως.
+    5.
+    
+    6.
+    
+    9.
+    10.
+    11.
+    13.
+    15.
+    16.
+    17.
+  </bloco>
+
+  [!-- Seção Inferior --]
+  <bloco tipo="texto_principal" script="latino" bbox="100,520,400,900">
     VERSIO HEBRAICI TEXT.
-    Tubas ariectum.
-    
-    5. Arictino, in audiendo vos vocem tubae.
-    
+    Tubas arietum.
+    5. Arietino , in audiendo vos vocem tubæ.
     Sub se.
-    6. Et dixit ad eos : Tollite arcam sacerdotis : et septem sacerdotes tollant septem tubas ariectum, ad facies arce Domini.
-    
-    9. clangentes tubis.
-    
+    6. Et dixit ad eos : Tollite arcam fœderis : et septem sacerdotes tollant septem tubas arietum, ad facies arcæ Domini.
+    9. Clangentes tubis.
     10. Et non egredietur de ore vestro verbum.
-    
     11. Civitatem gyrando.
-    
     13. Tollentes.
-    
-    15. Civitatem secundum judicium hoc septem vicibus : tantum in die ipsa circuierunt civitatem septem vicibus.
-    
+    15. Civitatem secundum judicium hoc septem vicibus : tantum in die ipsa circulerunt civitatem septem vicibus.
     16. In tubis.
     Ad populum.
     17. Domino.
-    
     Quia abscondit legatos quos misimus.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,100,980,670">
+
+  <bloco tipo="texto_principal" script="latino" bbox="420,520,700,900">
     VULGATA LATINA.
-    Buccinas, quarum usus est in jubileoo.
-    
-    5. Vox tubae longior atque concisior, et in auribus vestris increpuerit.
-    
+    Buccinas , quarum usus est in jubilæo.
+    5. Vox tubæ longior atque concisior, et in auribus vestris increpuerit.
     Funditus.
-    6. Et dixit ad eos : Tollite arcam sacerdotis : et septem alii sacerdotes tollant septem jubilerorum buccinas, et incedant ante arcam Domini.
-    
-    9. Buccinis omnia cavcrepabant.
-    
+    6. Et dixit ad eos : Tollite arcam fœderis : et septem alii sacerdotes tollant septem jubileorum buccinas, et incedant ante arcam Domini.
+    9. Buccinis omnia concrepabant.
     10. Neque ullus sermo ex ore vestro egredietur.
-    
     11. Civitatem.
-    
     13. Vacat.
-    
-    15. Circuerunt urbem, sicut dispositum erat, septies.
-    
+    15. Circuierunt urbem , sicut dispositum erat, septies.
     16. Buccinis.
     Ad omnem Israel.
     17. Domino.
-    
     Abscondit enim nuntios, quos direximus.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,680,980,980">
+
+  <bloco tipo="texto_principal" script="latino" bbox="720,520,900,900">
+    AQUILA.
+    Tubas remissionis.
+    5.
+    
+    6.
+    
+    9.
+    10.
+    11.
+    13.
+    15.
+    16.
+    17.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="500,950,800,980">
     Digitized by Google
   </bloco>
-  <notas>Scripts presentes: hebraico à esquerda superior e latim em colunas centrais e direitas. Algumas palavras hebraicas difíceis foram transcritas com aproximação; onde ilegibilidade ocorreu foram mantidas as formas aparentes sem usar [ilegivel]. BBox estimadas em escala 0-1000.</notas>
 </pagina>

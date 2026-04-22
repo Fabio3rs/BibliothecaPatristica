@@ -1,24 +1,28 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,90">
-    HEXAPLORUM QUÆ SUPERSUNT.
+  <bloco tipo="cabecalho" script="misto" bbox="100,50,900,80">
+    1435 ΠΕΧΑΠΛΟRUM QUÆ SUPERSUNT. 1436
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,100,320,700">
-    TO ΕΒΡΑΙΚΟΝ.
-    יהודית 14
-    .ו... 15
-    ... ...
-    ... 16
-    ... 17
-    ... 18
-    ... 21
-    ... 22
-    ... 23
-    ... 25
-    ... 26
+  <bloco tipo="texto_principal" script="misto" bbox="150,80,850,110">
+    ΤΟ ΕΒΡΑΙΚΟΝ. ΤΟ ΕΒΡΑΙΚΟΝ Ἑλληνικος γράμμασι. ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="340,100,660,700">
-    'ΤΟ ΕΒΡΑΙΚΟΝ
-    Ἑλληνικὸς γράμματι.
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,110,350,420">
+    לנגב 14
+    תורדי 15
+    הנשאים 16
+    הנגל
+    מכשף 17
+    יצא 18
+    און-צור 21
+    ויש
+    וישאל לו 22
+    ויבלעו
+    הצלו
+    ויגרעו
+    ויהי אד-נידדו כאבן 23
+    וי לחם משפט 24
+    וישאלו לו זקני יהודה לומר 26
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,110,550,420">
     14.
     15.
     16.
@@ -27,71 +31,113 @@
     21.
     22.
     23.
-    25.
+    24.
     26.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,100,960,700">
-    AQUILA.
+  <bloco tipo="texto_principal" script="grego" bbox="650,110,850,420">
     14. Πρὸς νότον.
     15.
+    Εὔζωνον.
     16. Ἐκτεταμένοι.
-    17. Ἀπὸ ἑσπερίας.
+    17. Ἀπὸ συσκοτάσης.
     18.
-    21. Οἱ ἐπαναστᾶντος.
-    22. Καὶ ἀποστῆτες.
-    Τὰ ῥύσῳ ἔ.
-    Καὶ ἰδιατέρως.
+    21. Οἱ ἐπιωματίσθησαν.
+    22. Καὶ ἀποστάτης.
+    Ἐρρύσαμεθα.
+    Καὶ ἐλασόντων.
+    23.
+    24.
     25.
     26.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,720,960,1020">
-    VERSIO HEBRAICI TEXT.        VULGATA LATINA.               AQUILA.
-    14. Et ad meridiem.          14. Ad meridiem.             14. Ad austrum.
-    15. Num descendere facies me? 15. Potes me dicere.         15.
-    Agnos.                      Caucum.                     Accusatum.
-    16. Relicti.                 16. Discumbehant.            16. Extentii.
-    Et triplicates.              Et quasi festum celebrantes
-                                dies.
-    Magnis.                     Vacet.
-    17. A crepusculo.            17. A vespere.               . a nocte illud.
-    18. Et eruit.                18. Erit.                    18.
-    21. Qui pigri fuerant.       21. Qui lassi sublati erant.  21. Qui concederant.
-    Et accessit.                Accedens autem.
-    Et operuit eis.             Salutavit eos.
-    22. Et Seduli.              22. Et iniques.             22. Et apostata.
-    Erimus.                     Erimus.                    Erimus.
-    Et decant.                  Cum acceperint.            Et delectant.
-    23. Et dedit quæva venies.   23. Et dedit latroncelles qui   23.
-                                ruperant.
-    25. In statum, et in judi-    25. Constitutum et presentatum. 25.
-    cium.
-    26. De spolio senioribus Juda 26. De praeda senioribus Juda 26.
-    socio suo.                  proximis suis dicens.
+  <bloco tipo="texto_principal" script="latino" bbox="100,440,350,750">
+    VERSIO HEBRAICI TEXT.
+    14. Et ad meridiem.
+    15. Num descendere facies me?
+    Agmen.
+    16. Relicti.
+    Et tripudiantes.
+    Magnis.
+    17. A crepusculo.
+    18. Et eruit.
+    21. Qui pigri fuerant.
+    Et accessit.
+    Et optavit eis.
+    22. Et Belial.
+    Eruimus.
+    Et ducant.
+    23. Et dedit agmen veniens.
+    25. In statutum, et in judicium.
+    26. De spolio senioribus Juda socio suo.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,1020,960,1400">
-    Noliæ et variæ lectiones ad cap. XXX lib. 1 Regum.
-    V. 1. 'Αλλος, ὁ τῷ παραγενομένῳ λεγ. Ita Reg.  Ibid. 'Α., τρὸς γέγον. v. v. τρὸς μενοπληγιαν. Ex
+  <bloco tipo="texto_principal" script="latino" bbox="380,440,650,750">
+    VULGATA LATINA.
+    14. Ad meridiem.
+    15. Potes me ducere.
+    Cuneum.
+    16. Discumbebant.
+    Et quasi festum celebrantes diem.
+    Vacat.
+    17. A vespere.
+    18. Eruit.
+    21. Qui lassi substiterant.
+    Accedens autem.
+    Salutavit eos.
+    22. Et iniquus.
+    Cum acceperint.
+    23. Et dedit latrunculos qui eruperant.
+    25. Constitutum et præfinitum.
+    26. De præda senioribus Juda proximis suis dicens.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="680,440,850,750">
+    AQUILA.
+    14. Ad austrum.
+    15.
+    Accinctum.
+    16. Extensi.
+    . a nocte illumi.
+    18.
+    21. Qui conciderant.
+    22. Et apostata.
+    Eruimus.
+    Et deducant.
+    23.
+    25.
+    26.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="250,770,750,790">
+    Notæ et variæ lectiones ad cap. XXX lib. I Regum.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="100,790,500,930">
+    V. 1. Ἄλλος, ἐν τῷ παραγενέσθαι Δαυΐδ. Ita Reg.
+    Ibid. Ἀ., πρὸς νότον. Σ., πρὸς μεσημβρίαν. Ex
     Eusebio et Hieronymo De locis Hebraicis, ut supra.
-    V. 3. 'Α., ΔΔ' Ἅσαυ. Codilin. 2.
-    V. 6. 'Α. et 6. lectiones exhibet idem.
-    Ibid. 'Α., τρισους. Idem.
-    V. 7. 'Α., τραβῶν μοι τὴν τραγιλήν. Reg. Duas
-    alias. Aquilae interpretationes et Symmachi inter-
-    pretationem exhibet Codilin. 3. Sed eæquare pri-
-    mam, στῆσον τρὸς μι etc., esse Symmachī tantum;
-    duos vero alias Aquilae, et duabus ejus editionibus
-    desumpta, quod persæpe in libris Regum occurrit.
-    V. 8. 'Α., perta τῶν ἐκλαινων πάντων. Lectores
-    Aquilae sic esset Eusebius De locis Hebraicis, et et
-    Hieronymus ad vocem Τεδεὸν, ubi ad Symmachum
-    legitur ἴδιον pro ἴδιον. Codex vero Regius et Pro-
-    copius lectionem Aquilae sic habent, ἀστικὸν τὸ̣
-    νῶν κακοπαθῶν. Complut. habet παραγω-
-    γὸν, quae lectio non reperitur. Codilin. 'Α., ἀκ-
-    τίνων. Ἐν Ἀγίῳ, v. interpretatur. Illum adjecit
-    Codilianus τ. περσικον et πληθῶν καλεσάντων cl
-    Ἀρχαι. l. c. : μνημον, magis recensere ueriores...
+    V. 2. Ἀ., ἀλλ' ἔλασεν. Coislin. 2.
+    V. 6. Ἀ. et Θ. lectiones exhibet idem.
+    Ibid. Ἀ., ἐνίσχυσεν. Idem.
+    V. 7. Ἀ., ἐγγισόν μοι τὴν ἐπωμίδα. Reg. Duas
+    alias Aquilæ interpretationes et Symmachi inter-
+    pretationem exhibet Coislin. 2. Sed auguror pri-
+    mam, στήσον πρὸς μὲ etc., esse Symmachi tantum :
+    duas vero alias Aquilæ, ex duabus ejus editionibus
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="520,790,900,930">
+    desumptas, quod persæpe in libris Regum occurrit.
+    V. 8. Ἀ., μετὰ τὸν εζωνον τοῦτον. Lectionem
+    Aquilæ sic offert Eusebius De locis Hebraicis, et et
+    Hieronymus ad vocem Γεββούρ, ubi ad Symmachum
+    legitur λόγχη pro λόγχον. Codex vero Regius et Pro-
+    copius lectionem Aquilæ sic habent, ὅπλοις τοῖς πε-
+    νοζίνου συστράμματος. Complut. habet στρατεύμα-
+    τος, quæ lectio non spernenda. Coislin., Ἀ., εὐ-
+    ζώνῳ. Σ., λόγχῳ. Θ., συστράμματος. Ibihiem adjicit
+    Coislinianus 2, μονόζωνοι δὲ μλλον καλονται οἱ
+    λοχαί. L. e. οἱ μονόζωνοι, magis vocantur prædones.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="550,950,800,980">
     Digitized by Google
   </bloco>
-  <notas>Blocos aproximados por OCR; hebraico no canto superior esquerdo parcialmente ilegível; algumas palavras cortadas substituídas por reticências onde não legíveis. Mantida ordem: colunas esquerda (hebraico), centro (grego), direita (aquila/latim).</notas>
+  <notas>
+    A página apresenta uma configuração poliglota complexa (Hexapla). A coluna central superior ("Hebraico em letras gregas") contém apenas os números dos versículos na imagem fornecida, sem o texto transliterado visível ao lado dos números. O texto hebraico na coluna esquerda apresenta algumas variantes ortográficas ou erros de impressão aparentes (ex: "מכשף" em vez de "מהנשף" no v.17). As notas inferiores contêm texto latino misturado com citações em grego.
+  </notas>
 </pagina>

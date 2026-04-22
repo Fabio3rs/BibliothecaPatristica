@@ -41,6 +41,12 @@ from test_limpeza_ocr import (  # type: ignore  # noqa: E402
     clean_summary_page_for_embedding,
 )
 
+# Importa módulo de versionamento OCR (opcional — degrada graciosamente)
+try:
+    import ocr_versions_db as _vdb
+except ImportError:
+    _vdb = None  # type: ignore[assignment]
+
 # ---------------------------------------------------------------------------
 # Constantes
 # ---------------------------------------------------------------------------
@@ -122,6 +128,7 @@ def init_resumo_schema(con: sqlite3.Connection) -> None:
         ("work_detected", "TEXT NOT NULL DEFAULT ''"),
         ("summary_page_clean", "TEXT NOT NULL DEFAULT ''"),
         ("summary_global_clean", "TEXT NOT NULL DEFAULT ''"),
+        ("ocr_result_id", "INTEGER"),
     ]:
         try:
             con.execute(f"ALTER TABLE resumos ADD COLUMN {col} {typedef}")
@@ -209,13 +216,15 @@ def save_resumo(
     work_detected: str,
     summary_page_clean: str,
     summary_global_clean: str,
+    ocr_result_id: Optional[int] = None,
 ) -> None:
     con.execute(
         """INSERT OR REPLACE INTO resumos
            (documento, pagina_num, pagina_file, pagina_texto,
             resumo_pagina, resumo_global, modelo, criado_em,
-            author_detected, work_detected, summary_page_clean, summary_global_clean)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+            author_detected, work_detected, summary_page_clean,
+            summary_global_clean, ocr_result_id)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
         (
             documento,
             pagina_num,
@@ -229,6 +238,7 @@ def save_resumo(
             work_detected,
             summary_page_clean,
             summary_global_clean,
+            ocr_result_id,
         ),
     )
     con.commit()
@@ -769,6 +779,7 @@ def process_volume(
     verbose: bool = False,
     fill_gaps: bool = False,
     fill_gaps_overlap: int = 10,
+    versions_con: Optional[sqlite3.Connection] = None,
 ) -> None:
     """Processa todas as páginas de um volume sequencialmente.
 
@@ -864,6 +875,16 @@ def process_volume(
             log.error("[%s] Erro lendo %s: %s", doc_name, page_path.name, exc)
             continue
 
+        # Tenta obter o ocr_result_id da versão corrente no versions DB
+        ocr_result_id: Optional[int] = None
+        if versions_con is not None and _vdb is not None:
+            try:
+                cur = _vdb.get_current_result(versions_con, doc_name, pnum)
+                if cur is not None:
+                    ocr_result_id = int(cur["id"])
+            except Exception as exc:
+                log.debug("[%s] p%d  ocr_result_id lookup falhou: %s", doc_name, pnum, exc)
+
         if not page_text:
             log.info(
                 "[%s] Página %d vazia, marcando como administrativa e seguindo",
@@ -888,6 +909,7 @@ def process_volume(
                     work_detected=work_ctx,
                     summary_page_clean=summary_page_clean,
                     summary_global_clean=summary_global_clean,
+                    ocr_result_id=ocr_result_id,
                 )
                 if fill_gaps:
                     processed_set.add(pnum)
@@ -1104,6 +1126,7 @@ def process_volume(
                 work_detected=obra_detectada,
                 summary_page_clean=summary_page_clean,
                 summary_global_clean=summary_global_clean,
+                ocr_result_id=ocr_result_id,
             )
             log.info(
                 "[%s] Página %d/%d  (arquivo %s)  ✓",
@@ -1282,6 +1305,20 @@ def main() -> None:
     if args.provider == "openai":
         log.info("Reasoning effort: %s", args.reasoning_effort)
 
+    # Abre conexão read-only com ocr_versions.db (se disponível)
+    versions_con: Optional[sqlite3.Connection] = None
+    if _vdb is not None:
+        versions_db_path = PROJECT_ROOT / "data" / "ocr_versions.db"
+        if versions_db_path.exists():
+            try:
+                versions_con = sqlite3.connect(
+                    f"file:{versions_db_path}?mode=ro", uri=True
+                )
+                versions_con.row_factory = sqlite3.Row
+                log.info("Versions DB (read-only): %s", versions_db_path)
+            except Exception as exc:
+                log.warning("Versions DB indisponível: %s", exc)
+
     # Descobre volumes a processar
     if args.volume_dir:
         volumes = [args.volume_dir.resolve()]
@@ -1317,6 +1354,7 @@ def main() -> None:
                 verbose=args.verbose,
                 fill_gaps=args.fill_gaps,
                 fill_gaps_overlap=args.fill_gaps_overlap,
+                versions_con=versions_con,
             )
         except KeyboardInterrupt:
             log.info("Interrompido pelo usuário. Progresso salvo no DB.")
@@ -1329,6 +1367,8 @@ def main() -> None:
 
     if con is not None:
         con.close()
+    if versions_con is not None:
+        versions_con.close()
     log.info("Fim.")
 
 

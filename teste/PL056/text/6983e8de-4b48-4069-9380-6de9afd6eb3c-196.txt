@@ -1,8 +1,9 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="30,10,970,80">
-    379    APPENDIX AD S. LEONIS MAGNI OPERA.    380
+579    APPENDIX AD S. LEONIS MAGNI OPERA.    580
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,90,490,420">
+
+  <bloco tipo="texto_principal" script="latino" bbox="30,90,490,520">
 Nicetas Flavidis.
 • Eudemon chorepiscopus.
 Paulinus Adanorum.
@@ -19,15 +20,16 @@ f Euritichius Colonitæ.
 36 Timotheus s Cibisrianus.
 Ambrosius h Comanensis.
 Stephanus chorepiscopus.
-[ilegivel] chorepiscopus.
-Gorgonius chorepiscopus i.
+Rhodo chorepiscopus.
+*Gorgonius chorepiscopus !.
 
 Armeniæ Minoris.
 
 j Euladius Sebastiæ.
 Evetius k Satallenus.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,90,970,420">
+
+  <bloco tipo="texto_principal" script="latino" bbox="510,90,970,520">
 A
 Eudromius chorepiscopus.
 Theophanes chorepiscopus.
@@ -44,7 +46,7 @@ Heraclius m Celensis.
 
 n Longius Neocæsariensis.
 Domnus Trapezuntensis.
-Stratophilus o [ilegivel]ensis.
+Stratophilus o Ptionensis.
 
 Paphlagoniæ.
 
@@ -55,48 +57,43 @@ q Eufiscius Amastridenus.
 Galatiæ.
 
 r Pancasius Ancyra.
-Decasius s Tavicæ.
+Decasius s Tavix.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,130,560,200">
-A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,260,560,320">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,470,560,540">
-C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,690,560,740">
-D
-  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,130,560,200">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,260,560,320">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,470,560,540">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,690,560,740">D</bloco>
+
   <bloco tipo="aparato_critico" script="latino" bbox="30,430,490,930">
 a Ita omnes codd., excepto Vat. 1342, in quo Eudor legitur.
-b Quern. Messorum. Praetulimus Maestorum ex tribus codd. Vind., Val. Reg. et Vat. 1342. Harduinus cum nostro Vallic. Mansion. Veron. Isid. cum vulgati et Justello Mopsuestensis vel Mopsuestensis. Hic Macedonius fuit p[ilegivel]scopus Mopsuestie, quæ cum Mopsos etiam dicatur, forte Mops[ilegivel]cum in Graeco legebatur, et vetus interpres pro Mopsclorum vertit Maestorum.
-c Quesn. Eugeus. Vind. ms., secuti sumus. Alii tres codd. Vat. Reg., Val. 1342 et Veron. Isid., Aegilanus. Vallic. Tarcondimantos Egeon.
-d Versiones Irisca et Isid. adiunct. minoris. Vallic. Grecam vocem expressit Miceras.
-e Codd. hujus collectionis, et Isid. cum Vat. Reg. sic præferunt. Vallic. Irenopolius. Alii versiones Priscæ cum Vat. 1342 habent Hierapolitanus. Si de Irenopoli legendum esset, cum Neronis et Irenopolis eadem urbs sit, hic Narcissus idem esset ac Narcissus Neronianus paulo ante descriptus. Num ex variantii lectione hic episcopus repetitus fuit? Huc certe nomen Narcissus de Irenopoli in cod. Vindeb. antiquum manu additum cernitur etiam inter episcopos Phoeniæ. Quidni de simili anteriori adnotatione hoc quoque loco inter Ciliciæ episcopos sus- p'pecimur?
-f Vindel. Eustibirus. Vat. Reg. cum Veron. Isid. et Justello Eustrius. Mox idem Justell. cum Val. 1342 Coloniensis, pro quo Harduin. Coloniensis. Vallic. Erg[ilegivel]os Thieno, Europasos Coloniæ.
-g Vat. Reg. Eubistrianus. Versio Prisca Eubistensis. Vallic. Cibistron.
-h Versiones Priscæ et Isid. cum ms. Vallice. Helpidius. Confer not. 32 in catalogum editionis Priscæ.
-i Codd. Veron., Isid. et Val. 1342 versionis Priscæ cum Justello, qui omittunt duos præcedentes chorepi- scopos Stephanum et Rhodomain, hic addunt alios duos, Eudromium et Theophanem, quos mss. collectionis nostræ cum Vat. Reginæ paulo post recensent in Armeniæ minor. Cod. Vallice. hos omnes in Cappadocia collocant sic: Gorgonins, chorepiscopus, Stephanus chorepiscopus, Eufronius chorep., Rhodon, chorep., Theophanes chorep.
-j Quesn. Hulalius. Conreximus ex omnibus nostris codd., excepto Vallic., in quo Eulogius.
-k Sic cod. Vind. Quenellus Sata[e]tenus. Val. Reg. Satallenius. Vallic. Satalon.
-l Quesnellius sub titulo Armeniae Majoris unicun episcopum posuit sic: Aristecius Diosponti. [ilegivel]
+b Quern. Messorum. Praetulimus Maestorum ex tribus codd. Vind., Val. Reg. et Vat. Heg. et Vat. 4542. Harduinus cum nostro Vallic. Mansion. Veron. Isid. cum vulgati et Justello Mopsuestensis vel Mopsuestensis. Hic Macedonius fuit ep[iscopus Mopsuestim , quæ cum Moysos etiam dicatur, forte Μοψεάτων in Graco legebatur, et vetus interpres pro Mopseatorum vertit Moysorum.
+c Quesn. Eugeus. Vind. ms. secuti sumus. Alii tres codd. Val. Reg., Val. 1342 et Veron. Isid., Ægilanus. Vallic. Tarcondimantos Egeon.
+d Versiones Irisca et Isid. addunt minoris. Vallic. Græcam vocem expressit Micreas.
+e Codd. hujus collectionis, et Isid. cum Vat. Reg. sic pr[a]ferunt. Vallic. Irenopolius. Alii versiones Priscæ cum Vat. 1342 habent Hierapolitanus. Si de Irenopoli legendum esset, cum Neronias et Irenopolis eadem urbs sit, hic Narcissus idem esset ac Narcissus Neronianus paulo ante descriptus. Num ex varianti lectione hic episcopus repetitus fuit? Hoc certe nomen Narcissus de Irenopoli in cod. Vindeb. antiqua manu ad[l]itum cernitur etiam inter episcopos Pheœnicæ. Quidni de simili anteriori additamento hoc quoque loco inter Ciliciæ episcopos suspicamur?
+f Vindeb. Eustibirus. Val. lig. eum Veron. Isid. et Justello Eustrius. Mox idem Justell. cum Vat. 1512 Coloniensis, pro quo Harduin. Colonensis. Vallic. Liryrccos Thiano, Eufrasos Colonias.
+g Vat. Reg. Euvisitritauus. Versio Prisca Eubistensis. Vallic. Cibistron.
+h Versiones Priscæ et Isid. cum ms. Vallic. Helpitius. Confer not. 32 in catalogum editionis Priscæ.
+i Codd. Veron., Isid. et Vat. 1542 versionis Priscæ cum Justello, qui omittunt duos præcedentes choreypiscopos Stephanum et [ilegivel], hic addunt alios duos, Eudromium et Theophanem, quos mss. collectionis nostræ cum Vat. Reginæ paulo. post recensent in Armeniæ minori. Cod. Vallic. hos omnes in Cappadocia collocant sic: Gorgonius, chorepiscopus, Stephanus chorepiscopus, Eufronius, chorep., Rhodon, chorep., Theophanes chorep.
+j Quesn. Hulalius. Correximus ex omnibus nostris cod[d]., excepto Vallic., in quo Eulogius.
+k Sic cod. Vind. Quesnellus Sata[e]tenus. Vat. Reg. Sntalitenus. Vallic. Satalon.
+l Quesnellus sub titulo Armeniæ Majoris unicum episcopum posuit sic: Aristecisus Diosponti ;Eretis.
   </bloco>
+
   <bloco tipo="aparato_critico" script="latino" bbox="510,430,970,930">
-Dein alium titulum Ponti inseruit, et veluti epi- scopum Ponti subjecti: Helenus Ponti. Postea Elpi- dius, etc. Secuti sumus codicem Vind. b., cum quo conciliant lectio ms. Val. Reginæ Aristecius Diosponti, Aristes Helenopont., Melitus tamen in mss. versionum Prisca et Isid. sub Armenia Majori collocantur isti duo episcopi Aris[ilegivel] et Arices Armeni; dein in altero titulos Diosponti, et sub eo describuntur Helpidius et duo alii episcopi. Aliter Vallic. in Armeniæ Majoris hos recinat: Arsafius Sobmon, Aristes Dio- sponii. Eutychius Amasia. Helpidius Edesion. Her- aclius Zelon. Helpidius Cumanus.
-m Codd. Vat. Reg. Zolensis. Justellus cum Val. 1342 versionis Priscæ Zelonensis. Meius Veron. Isid. Zelonensis: est enim Zela civitas Ponti, ex qua cum Zelonensis et Zelensis usurpnum leguntur, in præsentj versione pro Celeni legendum est Zelensis.
-n Codd. versionis Priscæ et Veron. Isd., Longi- nianus.
-o Quesn. Stratophilus Plutonensis. Vindobonensis lectionem recepimus. Stratophilus legitur in nostris mss. Variant in nomine urbis. Vat. Reg. Philotenis. Veron. Isid. Prosthinia. Justell. Phitonensis. Lectio omnium major est in Val. 1342, Philiona; nam in Ponto Philus oppidum a Plinio memoratur. Vallic. hunc episcopum ignorat, sicut et titulum Paphlago- niæ, ex una amanuensis saltem colligimus.
-p Quesn. Neopolitans. Substititimus lectionem ms. Vindel., quippe quæ minus resegit a vera le- ctione Ionopolitans, quæ est in Veron. Isid. C nci- tuit ms. Vallic. Ionopolis.
-q Sic ms. Vindel. Quenellus Eufronius. Vat. Re- ginae Episcius. Vat. 1342 cum Veron. Isid. Eupsicius. Vallic. Eupyrius Amastridens.
-r Quesnellius Macharens. Praefulimus lectionem Vindel. eo quod ms. Reg. ex eodem fonte prodies pauco absimiliier habet Pancratius. Vera tamen le- ctio est in codd. Priscæ et Veron. Isid., ex alio fonte proficiscensibus, Marcellus Anguriatus, quae confir- matur a S. Athanasio Apolog. 2. In Vallic. Pancarius, et Marcus leg. Marcellus. Ancyrauri. Num duo Ancy- rani episcopi? an librarius, vel interpres, ex duplici lectione utrumque compilavit volunt?
-s Quesn. ex ms. Oxon. edidit Peragni. At notavit in marg. cod. Ilman. preferre Tucion. quod et n'stro Vindebon. approbatur. Alii codices versionum Priscæ et Isid. Decasius Tabienis. Vallic. Dicasius Tavre; lege Tabias.
+Dein alium titulum Ponti inseruit, et veluti epi- scopum Ponti subjecti: Helenus Ponti. Postea Elpidius, etc. Secuti sumus codicem Vind. b., cum quo conci nant lectio ms. Val. Reginæ Aristecius Diosponti, Aristes Helenopont., Melitus tamen in mss. versionum Priscæ et Isid. sub Armenia Majori collocantur isti duo episcopi Aris[ilegivel] et Arices Armeni; dein in altero titulo Diosponti, et sub eo describuntur Helpidius et duo alii episcopi. Aliter Vallic. in Armeniæ Majoris hos recenset: Arsafiuá. Sobmon. Aristes Diosponii. Eutychius Amasia. Helpidius Edesion. Her- aclius Zelon. Helpidius Cumanus.
+m Codd. Vat. Reg. Zolensis. Justellus cum Val. 1342 versionis Priscæ Zelonensis. Meius Veron. Isid. Zelonensis: est enim Zela civitas Ponti, ex qua cum Zelonensis et Zelensis usurpnum legatur, in præsentj versione pro Celensi legendum est Zelensis.
+n Codd. versionis Priscæ et Veron. Isid., Longimanus.
+o Quesn. Stratophilus Plutonensis. Vindebonensis lectionem recepimus. Stratophilus legitur in nostris mss. Variant in nomine urbis. Vat. Reg. Pitilonensis. Veron. Isid. Prosthionita. Justell. Tüiytienita. Lectio omnium melior est in Vat. 1542, Pithioni/n/a; nam in Ponto Pithyus oppidum a Plinio memoratur. Vallic. hunc episcopum ignorat, sicut et titulum Paphlago- niæ, ex quo amanuensis saltum coliigiimus.
+p Quesu. Neapolitanus. Substitutus. lectionem ms. Vindeb., quippe quæ minus recedit a vera leciione Ionopolitanus, quæ est in Veron. Isid. C ncinit mis, Vallic. Jouopolis.
+q Sic ms. Vindeb. Quenellus Eufronius. Vat. Re- ginae Episcius. Vat. 1542 cum Veron. Isid. Eupsicius. Vallic. Eupyrius Amastridens.
+r Quesnellius Macharens. Praefulimus lectionem Vindel. eo quod ms. Reg. ex eodem fonte produies pauco absimiliier habet Pancratius. Vera tamen lectio est in codd. Priscæ et Veron. Isid., ex alio fonte proficiscens, Marcellus Anguriatus, quæ confir- matur a S. Athanasio Apolog. 9. In Vallic. Pancarius, et Marcus |lez. Marcellus] Anguri. Num duo Ancy- rani episcopi? an librarius, vel interpres, ex duplici lectione utrumque compilavit volunt?
+s Quesn. ex ms. Oxon. edidit Pergami. At notavit in marg. cod. Ilman. preferre Tucion. quod et n’stro Vindebon. approbatur. Alii codices versionum Priscæ et Isid. Decasius Tabienis. Vallic. Dicasius Taias ; lege Tabias.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,940,980,1000">
-Digitized by Google
-  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="700,940,980,1000">Digitized by Google</bloco>
+
   <notas>
-    Script: latino. Foram mantidos os sinais tipográficos visíveis (■, letras sobrescritas, números); palavras ou grafias não legíveis foram marcadas por [ilegivel] por palavra. As letras A, B, C, D ao longo da coluna central foram identificadas como notas marginais separadas. Várias abreviações e nomes de manuscritos (Vat., Val., Reg., Veron., Justell., Prisc., Isid.) foram transcritos tal como aparecem. Onde a leitura era incerta optei por [ilegivel] em vez de normalizar ou inventar leituras.
+BBOX e transcrição mantidos conforme leitura direta da imagem em prioridade; quando a palavra não pôde ser assegurada, foi preservado [ilegivel].
   </notas>
 </pagina>

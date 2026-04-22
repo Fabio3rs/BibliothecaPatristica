@@ -1,25 +1,31 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,80">
-    HEXAPLORUM QUAE SUPERSUNT.
-    TO EBPAIKON.    TO EBPAIKON    Eλληνικοὶς γράμμασι.    ΑΚΥΛΑΣ.1
+  <bloco tipo="cabecalho" script="latino" bbox="100,30,900,60">
+    1675 HEXAPLORUM QUÆ SUPERSUNT. 1676
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,90,380,650">
-    4 בחי מע שדח אסר
-    וחלת וחזים יפל
-    6 לשרי על
-    7 בים לא מעט
-    10 כאשר ממצא ידי לממלכתו
-    13 בגוה ידי נשתי
-    14 חיי
-    17 וקדוש לדבהו
-    ואכלה שתו ושמירת ביום אחד
-    18 ונגד, יער וימשל] מנפש
-    ועד־בשר יכלה היתה כססון נסס
-    19 ושארי עץ ויער מספרי חיים
-    ועדי ימסמו
-    22 עמך
+  <bloco tipo="cabecalho" script="misto" bbox="150,60,850,100">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ ΑΚΥΛΑΣ.
+    Ελληνικοις γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="400,90,760,660">
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,120,380,490">
+    בלתי יראי חתת אסיר 4
+    וחתת הדגים ויפל
+    אש
+    לשלל שלל 6
+    ימים אל מעט 7
+    כאשר מער ידי לממלכת 10
+    הגליל
+    ידו עשיתי 13
+    ידי 14
+    ואתה פה המצפק
+    וקדשו ללהבה 17
+    ואכלה שיתי ושמריו ביום אחד
+    ויער וכרמלו מנפש 18
+    ועד-בשר יכלה והיה כסס נס
+    יתר מספר יהי 19
+    ונער יכתבם
+    עמך 22
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,120,450,490">
     4.
     6.
     7.
@@ -30,9 +36,23 @@
     18.
     19.
     22.
-    
-    VERSIO HEBRAICI TEXT.        VULGATA LATINA.        AQUILA.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="680,120,900,490">
+    4. . . . αιχμαλωσιαν.
+    6. ☓ Τοῦ : ποιῆσαι σκύλα.
+    7. Ἔθνη οὐκ λίγως.
+    10.
+    13.
+    14. Τῇ χειρὶ ☓ μου.
+    17.
+    18.
+    19. Παῖς.
+    22.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="100,500,900,530">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,550,380,930">
     4. Absque me corruit sub vinculum.
     Et sub interfectis cadent.
     Furor ejus.
@@ -41,42 +61,48 @@
     10. Quemadmodum invenit manus mea ad regna vanitatis.
     13. In fortitudine manus meæ feci.
     14. Manus mea.
-    Et aperients os, et garriens.
+    Et aperiens os, et garriens.
     17. Et sanctus ejus in flammam.
     Et devorabit spinam ejus, et veprem ejus, in die una.
-    18. Et gloria sylvæ ejus et Carmeli ejus, ab anima et usque ad carnem consumet : et erit sicut liquescere vexilliferum.
+    18. Et gloria sylvæ ejus et Carmeli ejus, ab anima et usque ad carnem consumet : et erit sicut languescere vexilliferum.
     19. Et residuum lignum sylvæ ejus, numerus erunt : et puer scribet ea.
     22. Populus tuus.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="780,90,980,660">
-    4. ... aichmalosiain
-    6. ✖ Τού : ποιήσαι σκύλα.
-    7. Έθνη οὐκ ὀλίγως.
-    10.
-    13.
-    14. Τῇ χειρὶ ✖ μου.
-    17.
-    18.
-    19. Παις.
-    22.
-    
+  <bloco tipo="texto_principal" script="latino" bbox="400,550,680,930">
     4. Ne incurvemini sub vinculo.
-    . Et cum interfectis cadatis.
+    Et cum interfectis cadatis.
     Furor ejus.
     6. Ut auferat spolia.
     7. Gentium non paucarum.
     10. Quomodo invenit manus mea regna idoli.
     13. In fortitudine manus meæ feci.
     14. Manus mea.
-    Et aperierit os, et ganniret.
+    Et aperiret os, et ganniret.
     17. Et sanctus ejus in flamma.
     Et devorabitur spina ejus, et vepres ejus, in die una.
-    18. Et gloria saltus ejus et Carmeli ejus ab anima usque ad carnem consumetur ; et erit terrore proflgus.
+    18. Et gloria saltus ejus et Carmeli ejus ab anima usque ad carnem consumetur ; et erit terrore profugus.
     19. Et reliquiæ ligni saltus ejus præ paucitate numerabuntur : et puer scribet eos.
     22. Populus tuus.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="420,680,900,980">
+  <bloco tipo="texto_principal" script="latino" bbox="680,550,900,930">
+    4. ... captivitatem.
+    6. ☓ Ad : faciendum spolia.
+    7. Gentes nou parum.
+    10.
+    13.
+    14. Manu ☓ mea.
+    17.
+    18.
+    19. Puer.
+    22.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,960,800,990">
     Digitized by Google
   </bloco>
-  <notas>Scripts presentes: hebraico na coluna esquerda superior; grego curto e latino nas colunas direitas. Algumas linhas hebraicas parcialmente ilegíveis; transcrição feita literal sem normalização. BBOXs estimadas em escala 0-1000. Símbolos especiais (✖) mantidos conforme aparecem.</notas>
+  <notas>
+    Símbolo ☓ representa o obelo (obelus) presente no texto original.
+    A coluna superior central contém apenas números de versículos, apesar do cabeçalho indicar "Hebraico em letras gregas".
+    Transcrição do hebraico feita literalmente conforme visível (ex: "הדגים" em vez de "הרוגים", "יראי" em vez de "כרעו").
+    Na coluna direita inferior, linha 7, transcrito "nou" conforme visível (possível erro por "non" ou transliteração).
+  </notas>
 </pagina>

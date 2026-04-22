@@ -1,117 +1,93 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,70">
-    1003                               HEXAPLORUM QUÆ SUPERSUNT.                               1004
+  <bloco tipo="cabecalho" script="misto" bbox="100,30,900,60">
+    1003 HEXAPLORUM QUÆ SUPERSUNT. 1004
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,80,300,250">
-    TO ΕΒΡΑΙΚΟΝ.
-    יהוה בקולו 14
-    ידעת בעמים 15
-    קול נתן שָׁמַיִם 18
-    קול רעם 19
+  <bloco tipo="texto_principal" script="misto" bbox="100,70,900,130">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑ Σ.
+    14 14. 14. Ὁ Θεὸς, ἐν ἡγιασμένῃ ἡ ὁδός σου.
+    15 15. 15.
+    18 18. 18.
+    19 19. 19. Φωνὴ βροντῆς σου ἐν τῷ τρο-χῷ.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="320,80,620,250">
-    ΤΟ ΕΒΡΑΙΚΟΝ
-    Ἑλληνικοῖς γράμμασι.
-    14.
-    15.
-    18.
-    19.
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,135,350,200">
+    אלהים בקדש דרכך 14
+    בעמים נודע אל 15
+    קולם נתנו שחקים 18
+    קול רעמך בגלגל 19
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="640,80,960,250">
-    ΑΚΥΛΑΣ.
-    14. Ὁ θεὸς, ἐν ἁγιασμένῳ τῷ ὀδῷ σου.
-    15.
-    18.
-    19. Φωνὴ βροντῆς σου ἐν τῷ χρῷχῷ.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,260,320,420">
-    VERSIO HEBRAICI TEXT.
-    14. Deus, in sanctitate via tua.
+  <bloco tipo="texto_principal" script="latino" bbox="100,220,900,350">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+    14. Deus, in sanctitate via tua. 14. Deus, in sancto via tua. 14. Deus, in sanctificato via tua.
     Hieron., Deus, in sancto via tua.
-    15. Scire fecisti in populis fortitudinem tuam. Hieron., ostendens in populis potentiam tuam.
-    18. Vocem dederunt aetheres. Hieron., vocem dederunt nubes.
-    19. Vox tonitruì tui in rotunditate. Hieron., vox tonitruì tui in rota.
-    Et contremuit. Hieron., et commota est.
+    15. Scire fecisti in populis for- 15. Notam fecisti in populis 15.
+    titudinem tuam. Hieron., osten- virtutem tuam.
+    dens in populis potentiam tuam.
+    18. Vocem dederunt ætheres. 18. Vocem dederunt nubes. 18.
+    Hieron., vocem dederunt nubes.
+    19. Vox tonitrui tui in rotundi- 19. Vox tonitrui tui in rota. 19. Vox tonitrui tui in rota.
+    tate. Hieron., vox tonitrui tui in
+    rota.
+    Et contremuit. Hieron., et com- Et contremuit.
+    mota est.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,260,620,420">
-    VULGATA LATINA.
-    14. Deus, in sancto via tua.
-    15. Notam fecisti in populis virtutem tuam.
-    18. Vocem dederunt nubes.
-    19. Vox tonitruì tui in rota.
-    Et contremuit.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="640,260,960,420">
-    AQUILA.
-    14. Deus, in sanctificato viâ tua.
-    15.
-    18.
-    19. Vox tonitruì tui in rota.
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="60,430,940,620">
+  <bloco tipo="texto_principal" script="latino" bbox="200,370,800,390">
     Notæ et variæ lectiones ad Psalmum LXXVI.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="100,400,490,590">
     V. 1. Tituli lectiones partim ex Eusebio, partim ex mss. mutuamur.
-    V. 2. Σ., φωνὴ μου etc. Sic Eusebius. Lectiones vero alias exhibet Drusius.
-    V. 3. Σ., ἡ χείρ μου νυκτὸς ἐκτέτατο διηγνεκώς. Sic Eusebius. Drusius vero, ἐκτεταμένη. Alius, ἐκτέταται. Theodoretus, ἐκτέταται.
-    Ibid. Σ., οὕς ἐπείθετο etc. Eusebius.
-    V. 4. Σ., δελάλουν ἐν ἐμαυτῷ etc. Sic Eusebius et Regius unus. Drusius legit, διελαλουν ἐμαυτῷ, atque ita etiam Coislinianus unus : quæ lectio non spernenda.
-    V. 5. Α., κατέσχες etc. Sic Drusius. Lectionem vero Symmachi ex Eusebio mutuamur. Drusius alio modo legit sic, ἐκάλυψεν τὰς ἀναβιβάσεις τῶν σφαλμῶν μου. Interpretationem etiam Theodotionis exhibet Drusius.
-    Ibid. Σ., διηπόρων etc. Eusebius.
-    V. 6. T. Σ., ἀνελογίζεσθαι etc. Eusebius.
-    Ibid. Σ., ἀλλὰ φάλαιος etc. Eusebius.
-    Ibid. Α., καὶ ἐκέλευσε etc. Sic mss. et Drusius. Hieronymus vero ad Suniam et Fret. legit, ἐκελευθ. In lectione Symmachi vitia laud dubie fuit Eusebius, qui habet, καὶ ἄνγρ συχὸν τὸ πνεῦμά μου - ex commutatione unius litteræ hæc lectionum
+    V. 2. Σ., φωνῇ μου etc. Sic Eusebius. Lectiones vero alias exhibet Drusius.
+    V. 3. Σ., ἡ χείρ μου νυκτὸς ἐκτετάτω διηνεκῶς. Sic Eusebius. Drusius vero, ἐκτεταμένη. Alius, ἐκ-τέταται. Theodoretus, ἐκτέτακται.
+    Ibid. Σ., οὐκ ἐπείθετο etc. Eusebius.
+    V. 4. Σ., διελάλουν ἐν ἑαυτῷ etc. Sic Eusebius et Regius unus. Drusius legit, διελάλουν ἐμαυτῷ, atque ita etiam Coislinianus unus : quæ lectio non spernenda.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,640,960,700">
-    PSALMUS LXXVII.
+  <bloco tipo="texto_principal" script="misto" bbox="510,400,900,590">
+    V. 5. Ἀ., κατέσχες etc. Sic Drusius. Lectionem vero Symmachi ex Eusebio mutuamur. Drusius alio modo legit sic , ἐκώλυον τὰς ἀναβλέψεις τῶν φθαλμν μου. Interpretationem etiam Theodotionis exhibet Drusius.
+    Ibid. Σ., διηπόρουν etc. Eusebius.
+    V. 6, 7. Σ., ἀνελογιζόμην etc. Eusebius.
+    Ibid. Σ., ἀλλὰ ψαλμούς etc. Eusebius.
+    Ibid. Ἀ., καὶ ἐσκάλευσε etc. Sic mss. et Drusius.
+    Hieronymus vero ad Suniam et Fret. legit , ἔσκελ-λον. In lectione Symmachi vitiatus haud dubie fuit Eusebius, qui habet , καὶ ἄνθρω συνὸν τὸ πνεῦμά μου · ex commutatione unius litteræ hæc lectionum
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,710,300,920">
-    TO_ΕΒΡΑΙΚΟΝ.
-    משלי 2
-    ארבעה חידות - קדם
-    ויקום עמו 5
-    לדברהם 6
-    שד סדור 8
+  <bloco tipo="texto_principal" script="misto" bbox="150,610,850,650">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
+    2 2. 2.
+    5 5. 5.
+    6 6. 6.
+    8 8. 8.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="320,710,620,920">
-    TO ΕΒΡΑΙΚΟΝ
-    Ἑλληνικοῖς γράμμασι.
-    2.
-    2.
-    5.
-    6.
-    8.
+  <bloco tipo="texto_principal" script="hebraico" bbox="200,655,400,720">
+    אמשל בחידה 2
+    אביעה חידותי מני-קדם
+    ויקו וחדו וביעקב 5
+    להעיד לישראל 6
+    דור דור וקמו 8
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="640,710,960,920">
-    ΑΚΥΛΑΣ.
-    2.
-    2.
+  <bloco tipo="texto_principal" script="grego" bbox="650,655,850,720">
+    Ὀμβρήσω αἰνίγματα ἐξ ἀρχῆθεν.
     5. Μαρτύριον ἀνεστήσατο τῷ Ἰακώβ.
-    6. Καὶ διηφήσονται τοῖς υἱοῖς αὐτῶν.
-    8.
+    6. Καὶ διηγήσονται τοῖς υἱοῖς αὐτῶν.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,930,320,1180">
-    VERSIO HEBRAICI TEXT.
-    2. In parabola. Hieron., id.
-    Scalutariam ænigmata a principio. Hieron., loquar ænigmata antiqua.
-    5. Et suscitavit testimonium in Jacob. Hieron., statuit contestationem in Jacob.
-    6. Ad notificandum ea filiis suis. Hieron., ut docerent filios suos.
-    8. Generatio declinans et rebellis. Hieron., generatio declinans et provocans.
+  <bloco tipo="texto_principal" script="latino" bbox="100,730,900,940">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+    2. In parabola. Hieron., id. 2. In parabolis. 2.
+    Scaturiam ænigmata a principio. Loquar propositiones ab initio. Pluam ænigmata ex initio.
+    Hieron., loquar ænigmata antiqua.
+    5. Et suscitavit testimonium in 5. Et suscitavit testimonium in 5. Testimonium suscitavit ipsi
+    Jacob. Hieron., statuit contestatio- Jacob. Jacob.
+    nem in Jacob.
+    6. Ad notificandum ea filiis suis. 6. Nota facere ea filiis suis. 6. Et narrabunt filiis suis.
+    Hieron., ut docerent filios suos.
+    8. Generatio declinans et rebel- 8. Generatio prava et exaspe- 8.
+    lis. Hieron., generatio declinans et rans.
+    porvocans.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,930,620,1180">
-    VULGATA LATINA.
-    2. In parabolis.
-    Loquar propositiones ab initio.
-    5. Et suscitavit testimonium in Jacob.
-    6. Nota facere ea filiis suis.
-    8. Generatio prava et exasperans.
+  <bloco tipo="rodape" script="latino" bbox="500,960,800,990">
+    Digitized by Google
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="640,930,960,1180">
-    AQUILA.
-    2.
-    Pluam ænigmata ex initio.
-    5. Testimonium suscitavit ipsi Jacob.
-    6. Et narrabunt filiis suis.
-    8.
-  </bloco>
-  <notas>Scripts mistos: blocos com hebraico e grego; pequenas manchas e letras parcialmente ilegíveis renderizadas como [ilegivel] quando necessário (nenhum uso aqui). Mantida ortografia e pontuação do original; mapeadas colunas esquerda então direita conforme paginação.</notas>
+  <notas>
+    Transcrição de página da Patrologia Graeca (Hexaplorum quæ supersunt).
+    Texto em colunas paralelas: Hebraico, Transliteração Grega, Aquila (Grego), e versões Latinas.
+    Notas críticas no centro da página.
+    Algumas linhas de texto grego/hebraico estão fragmentadas ou apenas indicadas por números nas colunas centrais.
+  </notas>
 </pagina>

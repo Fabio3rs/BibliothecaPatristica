@@ -1,104 +1,170 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,20,970,120">
-HEXAPLORUM QUAE SUPERSUNT. TO EBRAIKON. TO EBPAIKON Ἑλληνικὸς γράμμασι. AKYLAS.
+  <bloco tipo="cabecalho" script="latino" bbox="350,30,650,50">
+    HEXAPLORUM QUÆ SUPERSUNT.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,120,300,640">
-(coluna esquerda)
-טז
-טז 17
-יט 18
-כח 20
-כב 22
-כח? 23
-כז 24
-כד? 25
-כז 27
-לג 32
-לג? 33
-... [ilegivel] 35
+  <bloco tipo="cabecalho" script="latino" bbox="80,30,110,50">
+    375
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="300,120,660,640">
-(coluna central)
-17.
-18.
-20.
-22.
-23.
-24.
-25.
-27.
-32.
-33.
-33.
-VERSIO HEBRAICA TEXT.
-Nomen meum.
-17. Eterans sc.
-18. Grandinem gravem.
-Fundata est.
-20. Fegere fecit.
-22. In omni terra.
-23. Voces.
-24. Inanisceare sc.
-25. Omnia quae in agro.
-27. Peccavi hac vice.
-32. Spelta.
-33. A Pharao.
-Et expandit uolas suas ad Dominum.
-35. Filios Israel.
+  <bloco tipo="cabecalho" script="latino" bbox="880,30,910,50">
+    376
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="660,120,980,640">
-(coluna direita)
-17. Ἀντιποῖ.
-18. Χαλαζην βαρεῖαν.
-20.
-22.
-23.
-24. Συναναλαμβανόμενον.
-25.
-27.
-32. Ζιᾶ.
-33.
-Καὶ ἐξείπταις τὰς χεῖρας αὐτοῦ πρὸς Κύριον.
-35.
-VULGATA LATINA.
-Nomen meum.
-17. Retines.
-18. Grandinem multam.
-Fundata est.
-20. Fecit consurgere.
-22. In universa terra.
-23. Tonitura.
-24. Grando et ignis mista.
-25. Cuncta quae fuerunt in agro.
-27. Peccavi etiam nunc.
-33. Far.
-33. A Pharaone.
-Tetendit manus.
-35. Filios Israel.
-AQUILA.
-17. Retines.
-18. Grandinem gravem.
-Fundata est.
-20.
-22.
-25.
-21. Comprehensus.
-25.
-27.
-32. Far.
-33.
-Et expandit manus suas ad Dominum.
-35.
+  
+  [!-- Top Table Headers --]
+  <bloco tipo="texto_principal" script="grego" bbox="150,60,280,80">
+    ΤΟ ΕΒΡΑΙΚΟΝ.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,640,980,980">
-Notae et variae lectiones ad cap. IX Exodi.
-V. 2. Σ., ἀπεθείς. Haec lectionem affert Reg. 1871.
-Ibid. Ex Basilien­si unico lectionem Aquilae et Symmachì mutuamur.
-V. 3. 'Α., εν, λοχαδρ βαπse. Sic Basiliensis.
-V. 4. Albor, ... [ilegivel] etc. Ex Coislin.
-V. 9. Sic Basiliensis et editio Romana, ubi περαι-
-... (texto crítico em latim e grego, várias lectiones e notas abreviadas) ...
-Digitized by Google
+  <bloco tipo="texto_principal" script="misto" bbox="400,60,550,90">
+    ΤΟ ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
   </bloco>
-  <notas>Scripts mistos na página: hebraico em coluna esquerda, latim no centro e notas, grego à direita. Algumas palavras fragmentárias foram marcadas [ilegivel] quando não legíveis. BBOX aproximadas em escala 0-1000.</notas>
+  <bloco tipo="texto_principal" script="grego" bbox="720,60,800,80">
+    ΑΚΥΛΑΣ.
+  </bloco>
+
+  [!-- Top Table Content --]
+  <bloco tipo="texto_principal" script="misto" bbox="150,90,320,360">
+    יְהוָה
+    נְשִׂיאִי 17
+    כָּל־אֶרֶץ 18
+    הָיְתָה
+    בְּכָל־אֶרֶץ 20
+    קֹלֹת 22
+    לֹא־הָיָה 23
+    אֶל־כָּל־אֲשֶׁר 24
+    חָטָאתִי הַפַּעַם 25
+    הַכֻּסֶּמֶת 27
+    מִצְרַיִם 32
+    וַיִּפְרֹשׂ כַּפָּיו אֶל־יְהוָה 33
+    אֶת־בְּנֵי יִשְׂרָאֵל 35
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="370,90,420,360">
+    17.
+    18.
+    20.
+    22.
+    23.
+    24.
+    25.
+    27.
+    32.
+    33.
+    35.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,90,850,360">
+    17. Ἀντιποιῇ.
+    18. Χάλαζαν βαρεῖαν.
+    Ἐθεμελιώθη.
+    20.
+    22.
+    23.
+    24. Συναναλαμβανόμενον.
+    25.
+    27.
+    32. Ζέα.
+    33.
+    Καὶ ἐξεπέτασε τὰς χεῖρας αὐτοῦ
+    πρὸς Κύριον.
+    35.
+  </bloco>
+
+  [!-- Middle Table Headers --]
+  <bloco tipo="texto_principal" script="latino" bbox="100,380,330,400">
+    VERSIO HEBRAICI TEXT.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,380,580,400">
+    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="720,380,800,400">
+    AQUILA.
+  </bloco>
+
+  [!-- Middle Table Content --]
+  <bloco tipo="texto_principal" script="latino" bbox="100,410,330,700">
+    Nomen meum.
+    17. Elevans te.
+    18. Grandinem gravem.
+    Fundata est.
+    20. Fugere fecit.
+    22. In omni terra.
+    23. Voces.
+    24. Immiscens se.
+    25. Omnia quæ in agro.
+    27. Peccavi hac vice.
+    32. Spelta.
+    33. A Pharao.
+    Et expandit volas suas ad Dominum.
+    35. Filios Israel.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="370,410,600,700">
+    Nomen meum.
+    17. Retines.
+    18. Grandinem multam.
+    Fundata est.
+    20. Fecit confugere.
+    22. In universa terra.
+    23. Tonitrua.
+    24. Grando et ignis mista.
+    25. Cuncta quæ fuerunt in agro.
+    27. Peccavi etiam nunc.
+    32. Far.
+    33. A Pharaone.
+    Tetendit manus.
+    35. Filios Israel.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="620,410,880,700">
+    17. Retines.
+    18. Grandinem gravem.
+    Fundata est.
+    20.
+    22.
+    23.
+    24. Comprehensus.
+    25.
+    27.
+    32. Far.
+    33.
+    Et expandit manus suas ad Dominum.
+    35.
+  </bloco>
+
+  [!-- Notes Section --]
+  <bloco tipo="cabecalho" script="latino" bbox="290,710,680,730">
+    Notæ et variæ lectiones ad cap. IX Exodi.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="80,740,480,930">
+    V. 2. Σ., ἀπειθεῖς. Hanc lectionem affert Reg.
+    1871.
+    Ibid. Ex Basiliensi unico lectionem Aquilæ et
+    Symmachi mutuamur.
+    V. 5. 'A., Σ., λοιμὸς βαρύς. Sic Basiliensis.
+    V. 4. Ἄλλος, οὐδὲν ὅπον. Ex Coislin.
+    V. 9. Sic Basiliensis et editio Romana, ubi πετα-
+    ζόμεναι vertitur solaticæ; sed melius expansæ:
+    nam πετάζω et πετάννυμι, semper expando et ex-
+    tendo significat. Easdem Aquilæ et Symmachi le-
+    ctiones sine discrimine habent codex Reg. 1838 et
+    Colbertinus unus. — Coislin. Σ., ἐξανθοῦντα. Basi-
+    liensis, Σ., ἐξανθοῦσαι. Id est φλυκτίδες, ut habetur
+    in LXX. Crediderim Coisliniani lectionem sincerio-
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="490,740,900,930">
+    rem esse, Symmachlumque vocem חיטָּה alio no-
+    mine quam LXX in neutro genere vertisse.
+    V. 14. 'A., ἐγὼ ἀποστέλλων etc. Sic Basil
+    V. 15. Lectiones item omnes versuum 15, 16,
+    17, 18 et 22, ex eodem codice Basiliensi pro-
+    deunt.
+    V. 16. Ubi LXX δύναμιν habent, Coislin. ad
+    marg., ἰσχύν.
+    V. 17. Coislin. in textu habet ἐγκρατεῖ; et in
+    marg. ἐμπειρῇ, quæ postrema lectio est in edit.
+    Rom. Aquilæ vero et Symm. lectiones exhibet, ut
+    nos edidimus.
+    V. 20. Σ., διέπεσεν. Ex Coislin.
+    V. 23. Ita codex Colbertinus, qui hæc habet ad
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="550,960,750,990">
+    Digitized by Google
+  </bloco>
 </pagina>

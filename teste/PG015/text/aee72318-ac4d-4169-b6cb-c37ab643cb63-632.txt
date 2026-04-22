@@ -1,24 +1,24 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,90">
-    1220   EXEMPLORUM QUÆ SUPERSUNT.                                                                 1221
-    TO HEPAIKON.                            TO HEPAIKON                       ΑΚΥΛΑΣ.
-    Τὰ δειγματικὰ τῆς γραφῆς.
+  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,100">
+    1250 HEXAPLORUM QUAE SUPERSUNT. 1260
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,100,320,760">
-    15 15.
-    יטו 15
-    תרעה 16
-    טז 16.
-    בזתתת קרצ. תעז 17
-    יז 17.
-    עשרים 18 18.
-    19 19.
-    כח 20 20.
-    כא 21 21.
-    כב 22 22.
-    [איחוד]
+  <bloco tipo="texto_principal" script="misto" bbox="150,100,850,150">
+    TO EBPAIKON. TO EBPAIKON Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,100,660,760">
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,150,400,500">
+    ןלה 15
+    ןלה התבה
+    ובא קרמשו מקרמהו בבא 16
+    וישא עיניו וירא והנה 17
+    עברים 18
+    הנה נא לי ולאמתי ולנער 19
+    וזקן 20
+    ויתן אל החמרים 21
+    והמה עשים טוב 22
+    בטל
+    מעשיהם
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="450,150,550,450">
     15.
     16.
     17.
@@ -27,32 +27,38 @@
     20.
     21.
     22.
-    VERSIO HEBRAICI TEXT.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="700,150,900,500">
+    15.
+    16.
+    17.
+    18.
+    19.
+    20.
+    21.
+    22.
+    Ἀποστασίας.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="150,520,850,560">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA:
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,560,400,900">
     15. Ad pernoctandum.
     In domum ad pernoctandum.
     16. Venit ab opera sua ex agro in vespera.
-    17. Levavitque oculos suos, et vidit virum facientem iter.
-    18. Transcantes.
+    17. Levavitque oculos suos. et vidit virum facientem iter.
+    18. Transeuntes.
     Vadens.
-    19. Ea mihi et ancilla tua, et puer cum servis tuis.
+    19. Est mihi et ancillæ tuæ, et puero cum servis tuis.
     20. Senex.
-    Per noctes.
+    Pernoctes.
     21. Et miscuit asinis.
-    22. Ipsis bonum facientibus (cor = rum).
+    22. Ipsis bonum facientibus (cor suum).
     Absque profectu.
     Pulsantes.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,100,960,760">
-    15.
-    16.
-    17.
-    18.
-    19.
-    20.
-    21.
-    22.
-    VULGATA LATINA.
-    15. Ut manceret.
+  <bloco tipo="texto_principal" script="latino" bbox="450,560,700,900">
+    15. Ut manerent.
     Hospitio.
     16. Revertens de agro et de opere suo vesperi.
     17. Elevatisque oculis vidit senex sedentem hominem.
@@ -61,13 +67,28 @@
     19. In meos et ancillæ tuæ usus, et pueri qui mecum est.
     20. Senex.
     Maneas.
-    21. Asinis prebuis.
-    22. Illis epulantibus, et post laborem itineris, cibo et potu reficiendibus corpora
-    Edidit (id est, absque juro).
-    Pulsare coeperunt.
+    21. Asinis præbuit.
+    22. Illis epulantibus, et post laborem itineris, cibo et potu reficientibus corpora
+    Belial (id est, absque jugo).
+    Pulsare cœperunt.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,760,970,990">
+  <bloco tipo="texto_principal" script="latino" bbox="750,560,850,900">
+    15.
+    16.
+    17.
+    18.
+    19.
+    20.
+    21.
+    22.
+    Defectionis.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="500,950,800,980">
     Digitized by Google
   </bloco>
-  <notas>Scripts: mistura de hebraico (coluna esquerda superior) e latino (colunas centrais e direitas). Algumas linhas hebraicas fragmentárias e manchadas; usei [איחוד] para indicação de palavra ilegível/unida. Mantida ortografia original sempre que possível.</notas>
+  <notas>
+    Texto hebraico apresenta variantes ortográficas ou erros de impressão visíveis (ex: "ןלה" em vez de "לון", "קרמשו" em vez de "מעשהו").
+    Números no início da seção inferior parecem ser "15", embora a tipografia do '1' possa assemelhar-se a '4'.
+    Script misto no cabeçalho inclui Grego e Latino.
+  </notas>
 </pagina>

@@ -1,39 +1,55 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="60,10,940,120">
-    1447                                              HEXAPLORUM QUÆ SUPERSUNT.                                              1448
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,150,50">
+    1447
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="300,20,700,60">
+    HEXAPLORUM QUÆ SUPERSUNT.
     PROVERBIORUM CAPUT XXV.
-    ΤΟ ΕΒΡΑΙΚΟΝ.                                 Ελληνικοὶς γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="hebreu" bbox="40,120,360,820">
-    ןו הבאיקלון· 1 גּ ב־א־ אלה־משלי שׁלומי
-    הּימנו אֲשׁרי · חכּים
-    2 חקר דבר
-    3 וארץ לעמק
-    אין חקּר
-    4 הוּ סגי מסך
-    5־ הנא
-    ויתן
-    6 אל־תעבדר
-    7,8 אין אשר ראו עיניך אל־ח׳א
-    לרב מדה
-    9 ריב רב־אתך־רק
-    10 וזבנת לא תחב
-    11 בשׂהמנות כסף
-    דבר דבר על־אבני
-    12 בם זהב וח׳ל־כתם
-    14 בחנת־שקר
-    15 ולשון רכה
-    17 דק קבל מבית רע
-    18 שנן
+  <bloco tipo="cabecalho" script="latino" bbox="850,20,950,50">
+    1448
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="360,120,640,820">
+  
+  [!-- Upper Section: Ancient Languages --]
+  <bloco tipo="texto_principal" script="grego" bbox="150,70,300,90">
+    ΤΟ ΕΒΡΑΙΚΟΝ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="400,70,600,100">
+    ΤΟ ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,70,900,90">
+    ΑΚΥΛΑΣ.
+  </bloco>
+
+  [!-- Upper Left: Hebrew Text --]
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,100,350,400">
+    אֵלֶּה גַם מִשְׁלֵי שְׁלֹמֹה אשֶׁר הֶעְתִּיקוּ אַנְשֵׁי חִזְקִיָּה 1
+    כְּבֹד אֱלֹהִים הַסְתֵּר דָּבָר 2
+    שָׁמַיִם לְגֹבַהּ וְאֶרֶץ לְעֹמֶק וְלֵב מְלָכִים אֵין חֵקֶר 3
+    הָסֵר סִיגִים מִכָּסֶף 4
+    וְיֵצֵא כלִי לְצוֹרֵף 5
+    אַל-תִּתְהַלֵּל לִפְנֵי-מֶלֶךְ 6
+    כִּי טוֹב אָמֹר לְךָ עֲלֵה-פֹה אַל-תֶּשַׁח בּפְנֵי-נָדִיב 7, 8
+    רִיבְךָ רִיב אֶת-רֵעֶךָ 9
+    וְסֹד אַחֵר אַל-תַּגֵּד 10
+    תַּפּוּחֵי זָהָב בְּמַשְׂכִּיּוֹת כָּסֶף 11
+    דְּבַר-חָכָם עַל-אָזְנֵי שֹׁמְעִים 12
+    נִשְׂבֵּי-רוּחַ וּגְשֶׁם אָיִן 14
+    אִישׁ רֶכֶב בְּאֶרֶךְ אַפַּיִם 15
+    הוֹקַר רַגְלְךָ מִבֵּית רֵעֶךָ 17
+    מַפֶּלֶת 18
+  </bloco>
+
+  [!-- Upper Middle: Numbers (Aligning column) --]
+  <bloco tipo="texto_principal" script="latino" bbox="420,100,480,400">
     1.
     2.
     3.
     4.
     5.
     6.
-    7,8.
+    7, 8.
     9.
     10.
     11.
@@ -43,35 +59,45 @@
     17.
     18.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="640,120,940,820">
-    ΑΚΥΛΑΣ.
-    4. Καὶγε αὐται παραβαλλ ὅ·
-    μετάραν ἀνδρες Ἐζεκίου.
-    2. Ἐξιχνάσει ῥήματα.
-    3. Εἰς βάθος.
-    Ἀνεξέταστος.
+
+  [!-- Upper Right: Aquila (Greek) --]
+  <bloco tipo="texto_principal" script="grego" bbox="650,100,950,400">
+    1. Καίγε αὗται παραβολαὶ ἃς
+    μετῆραν νδρες Ἑζεκίου.
+    2. Ἐξιχνιάσει ῥήματα.
+    3. Εἰς βάθος.
+    Ἀνεξέταστος.
     4.
-    5. Ἀπελασον.
-    Καὶ ἐδρασθησεται.
+    5. Ἀπέλασον.
+    Καὶ ἐδρασθήσεται.
     6. Μὴ ἐπιστῇς.
     7, 8.
-    9. Δικαιων σου δίχαζε ἐν ἐταιρῳ
+    9. Δικασίαν σου δίκαζε ἐν ἑταίρῳ
     σου.
     10.
-    11.
-    Λαλῶν ῥῆμα ἐπὶ ἀρμοσύσαν αὐ-
+    11. Λαλῶν ῥῆμα ἐπὶ ἁρμόζουσιν αὐ-
     τῷ.
     12.
     14.
-    15. Γλῶσα ἁπλὴ (sive, ἀπαλή).
+    15. Γλῶσσα ἁπλῆ (sive, ἁπαλή).
     17.
     18.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,820,940,1500">
+
+  [!-- Lower Section: Latin Versions --]
+  <bloco tipo="texto_principal" script="latino" bbox="100,450,300,480">
     VERSIO HEBRAICI TEXT.
-    1. Etiam hæc parabolae Salomo-
-    nis, quas congessuerunt viri Eze-
-    chiae.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,450,600,480">
+    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,450,900,480">
+    AQUILA.
+  </bloco>
+
+  [!-- Lower Left: Latin Version of Hebrew --]
+  <bloco tipo="texto_principal" script="latino" bbox="100,490,350,900">
+    1. Etiam hæ parabolæ Salomonis, quas congesserunt viri Ezechiæ.
     2. Investigare verbum.
     3. Et terra in profunditate.
     Non investigatio.
@@ -83,29 +109,27 @@
     ne egrediaris ad litigandum cito.
     9. Litigium tuum litiga cum
     amico tuo.
-    10. Et infamia tua non reverta-
-    tur.
+    10. Et infamia tua non revertatur.
     11. In thecis transparentibus
     argenti.
     Verbum dictum super rationibus
     suis.
     12. Inauris auri et ornamentum
-    ochrizi.
+    obrizi.
     14. In dono mendaci.
     15. Et lingua mollis.
     17. Rarum fac pedem tuum a
     domo socii tui.
     18. Acuta.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="360,1500,640,2200">
-    VULGATA LATINA.
-    4. Has quoque parabolae Salo-
-    monis, quas transtulerunt viri Eze-
-    chiae regis.
+
+  [!-- Lower Middle: Vulgate --]
+  <bloco tipo="texto_principal" script="latino" bbox="400,490,650,900">
+    1. Hæ quoque parabolæ Salomonis, quas transtulerunt viri Ezechiæ regis.
     2. Investigare sermonem.
     3. Et terra deorsum.
-    Inscrutable.
-    4. Aufer rubigineum de argento.
+    Inscrutabile.
+    4. Aufer rubiginem de argento.
     5. Aufer.
     Et firmabitur.
     6. Ne steteris.
@@ -119,19 +143,20 @@
     suo.
     12. Inauris aurea et margaritum
     fulgens.
-    14. Et promessa non complens.
+    14. Et promissa non complens.
     15. Lingua mollis.
-    17. Subtrahle pedem tuam de
+    17. Subtrahe pedem tuum de
     domo proximi tui.
     18. Acuta.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="640,1500,940,2200">
-    AQUILA.
-    1. Etiam hæc sunt parabolae,
-    quas transtulerunt viri Ezechiae.
+
+  [!-- Lower Right: Aquila (Latin) --]
+  <bloco tipo="texto_principal" script="latino" bbox="700,490,950,900">
+    1. Etiam hæ sunt parabolæ,
+    quas transtulerunt viri Ezechiæ.
     2. Investigabit verba.
     3. In profundum.
-    Inscrutable.
+    Inscrutabile.
     4.
     5. Remove.
     Et firmabitur.
@@ -140,14 +165,20 @@
     9. Jus tuum discepta cum socio
     tuo.
     10.
-    11.
-    Loquens verbum ad congruen-
-    tes ei.
+    11. Loquens verbum ad congruentes
+    ei.
     12.
     14.
-    15. Lingua simplex (sive, mollis
+    15. Lingua simplex (sive, mollis).
     17.
     18.
   </bloco>
-  <notas>Scripts identificados visualmente: hebraico na coluna esquerda superior; grego na coluna direita superior (Aquila); latim em três colunas inferiores (Hebraici versio, Vulgata, Aquila). Algumas palavras hebraicas danificadas ou abreviadas transcritas conforme visível; usei [ilegivel] somente quando palavra isolada não pôde ser lida (nenhuma aplicada).</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="600,950,900,990">
+    Digitized by Google
+  </bloco>
+  
+  <notas>
+    A página apresenta uma disposição poliglota típica das Hexaplas. Coluna superior esquerda: Texto Hebraico Massorético. Coluna superior central: Números de versículo (a transliteração grega do hebraico parece omitida ou representada apenas pelos números nesta edição específica para alinhamento). Coluna superior direita: Versão de Áquila (Grego). Seção inferior: Traduções Latinas correspondentes (Versão do Texto Hebraico, Vulgata Latina, e Tradução Latina de Áquila).
+  </notas>
 </pagina>

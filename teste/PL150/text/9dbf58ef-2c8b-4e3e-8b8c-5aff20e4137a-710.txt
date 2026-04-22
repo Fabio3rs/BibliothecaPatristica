@@ -1,64 +1,60 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="80,10,920,100">
-1415     J. COTTONIS     1416
-Tipo de página: gravura (diagrama)
+<pagina estado="com_texto" tipo="gravura">
+  <bloco tipo="cabecalho" script="latino" bbox="70,5,930,80">
+    1415     J. COTTONIS     1416
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,100,760,920">
+  <bloco tipo="texto_principal" script="latino" bbox="40,90,740,930">
 DIAPASON.
-P A S O N.
-A P A S O N.
+PASON.
+APASON.
 DIAPASON.
-S U S  I N
-A P A S O N.
-I A P A S O N.
-S U S
-A P A S O N.
+APASON.
 ASCENSUS
-ASCENSUS
-T H E N T I C I   E U T E R I
-A U T H E N T I C I  T E T R A R D I  A S C E N
+PROTI ASCENSUS
+AUTHENTICI [ilegivel] ASCENSUS
 REGULA
-ET  D E
+ET DE
 SCENSUS.
-REGULA AV
-ET  D E S C E N S U S.
-S U S  I N  T O N O.
-G. u. A. re. ? / B.mi c. la.
+REGULA AU
+ET DESCENSUS.
+SUS IN TONO.
+G. u. A. re. [ilegivel] / B.mi c. la.
 I. II. III. IV. V. VI. VII. VIII.
 d. re. fa. mi. sol.
 a. re. b. h. mi. ut.
-P L A G A   P R O
-E T  D E S C E N S U S
-P L A G A  D E U
-E T  D E S C E N
-P L A G A  T R I
-E T  D E S C E N
-P L A G A  T E
-E T  D E S C E N
-S U S
-T I  A S C E N S U S  I N  D I A
-I N  T E T R A C H O R D O
-S A R O N
-S A R O N
-G R A V I O M
+PLAGA PRO
+ET DESCENSUS
+PLAGA DEU
+ET DESCENSUS
+PLAGA TRI
+ET DESCENSUS
+PLAGA TE
+ET DESCENSUS
+SUS
+IN TETRACHORDO
+SARON
+SARON
+GRAVIOM
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="60,180,120,820">
+  <bloco tipo="nota_marginal" script="latino" bbox="120,220,180,840">
 A
 B
 C
 D
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="760,80,980,920">
+  <bloco tipo="nota" script="latino" bbox="420,110,480,160">
+145
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="760,70,980,930">
 Monochordum.
 Enchiridiu[m] Odonis.
 I. II. III. IV. V. VI. VII. VIII.
 a. b. c. d. e. f. g. h.
-T E T .  A R C H .  D E U T .
-R E M .  D E U T .
+TET. ARCH. DEUT.
+REM. DEUT.
 [ilegivel]
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="300,920,700,990">
+  <bloco tipo="rodape" script="latino" bbox="620,955,970,995">
 Digitized by Google
   </bloco>
-  <notas>Pagina tipo: gravura (diagrama musical/teórico). Texto em latim; página maioritariamente composta por quadro-diagrama com legendas em maiúsculas. Partes pouco legíveis marcadas como [ilegivel]. A transcrição respeita a orientação e agrupamento visual: cabeçalho, diagrama principal (coluna esquerda), notas marginais (letras A–D), coluna estreita à direita (tabela) e rodapé.</notas>
+  <notas>Tipo de página: gravura (diagrama musical/teórico). Transcrição feita priorizando a leitura direta da imagem; BBOX aproximados em escala 0-1000. A coluna esquerda (diagrama) foi transcrita antes da coluna direita (quadro vertical). As letras marginais centrais (A, B, C, D) foram colocadas em bloco próprio nota_marginal, não integradas ao texto_principal. Usei [ilegivel] para palavras cuja leitura se mostrou insegura (por exemplo a palavra vertical entre "AUTHENTICI" e "ASCENSUS" e algumas entradas muito condensadas no quadro lateral). Mantive grafia, caixa e pontuação visíveis sem normalização ou tradução.</notas>
 </pagina>

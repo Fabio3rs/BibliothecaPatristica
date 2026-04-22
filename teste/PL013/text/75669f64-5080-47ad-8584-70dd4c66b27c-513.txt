@@ -1,11 +1,11 @@
-<pagina estado="com_texto">
-  <bloco tipo="outro" script="latino" bbox="20,10,980,60">
-    tipo_de_pagina: texto
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="40,0,960,80">
+    1017
+    MORIENDUM ESSE PRO DEI FILIO LIBER.
+    1018
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,60">
-    1017     MORIENDUM ESSE PRO DEI FILIO LIBER.     1018
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,70,490,880">
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,90,480,860">
     retardamur denique ab acie tormentorum metu, sed ipsis magis tuis tormentis ad aciem provocamur.
     Haec ita esse negare non poteris, quando conspicias a pari et simili calore virtutis Christianos toto in
     orbe ad gerendum certamen animatos, quando vi-
@@ -17,7 +17,7 @@
     qui ad beatos apostolos dixerit: Vobiscum sum omni-
     bus diebus usque ad consummationem saeculi (Matth.
     XXVIII, 20). Est ubique praesens, quia omnipo-
-    tens is, Filius [ilegivel] potens, cui cum Patre una sit
+    tens is, Filius totum potens, cui cum Patre una sit
     aeternitas aliqua potestas divina. Sed te quanta cali-
     go obsederit incredulitatis, quantaque tenebrarum
     et errorum nubes tuum pectus obduxerit, dici non
@@ -49,69 +49,43 @@
     tur velocator ille subtilis, pugna, crevit et pugnantium
     gloria; nec retardati estis ab acie tormentorum metu,
     sed ipsis tormentis magis ac magis tuis ad aciem pro-
-    vocati. In textu Luciferi pro ne retardamur edimus ex
+    vocati. In textu Luciferi pro ne retardamur edidimus ex
     Latini correctione, nec retardamur.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="20,880,490,990">
-    c Rursum Cyprianus eodem in loco: Jam com-
-    peri... universos... pari ac simili calore virtutis ad
-    gerendum certamen animatos; ut incorruptam fidei
-    firmitatem non blanditiae decipiant, non minae ter-
-    reant, non cruciatus ac tormenta devincant. Omni-
-    potentis. Vidi.
-    d Haec de libro intelligenda videntur, quem scrip-
-    sit ad Constantium de non parendo in Deum deLin-
-    quentibus.
-    e Dignas ex audiue, a rusticis, etc. Galland.
-    f Item Cyprianus in loco paulo superius laudato:
-    Quam laetus ille Christus fuit... el vici protecor fi-
-    dei... certamini suae adfu[it] praelatores atque asser-
-    tores sui nominis erexit.
-    (parte do rodapé parcialmente [ilegivel] por [ilegivel] do tipo)
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,120,505,150">
-    A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,300,505,330">
-    B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,520,505,550">
-    C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,700,505,730">
-    D
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,70,980,880">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="470,120,530,160">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,290,530,330">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,505,530,545">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,685,530,725">D</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="510,90,980,860">
     circumscriptor innocentium in tua mente sedem sibi
-    collocasset, et arbitraris non te adlue publicatum? adhuc in
-    ovem, cum sis lupus, perfringescis: tu, qui a sanctissimis
-    prophetis bestia nominari, a beatissimis apostolis canis
-    ac lupus rapax, subornatus, cum sis operarius iniquitatis,
-    tamquam minister justitiae: et te esse hominem censes,
-    cum nihil hominis nisi lineamenta ac summam figuram
-    geras? Doles te immanem bestiam dici, nihil te hominis
-    nisi lineamenta ac summam gerere figuram. Dic, quæso,
+    collocasset, et arbitraris non te adlue publicatum? ad-
+    huc in ovem, cum sis lupus, perfringesci[s]: tu, qui a sanctissimis
+    prophetis bestia nominari, a beatissimis apostolis canis ac lupus rapax, subornatus, cum sis
+    operarius iniquitatis, tamquam minister justitiae:
+    et te esse hominem censes, cum nihil hominis nisi lineamenta ac summam figuram geras? Doles te immanem bestiam dici, nihil te hominis
+    nisi lineamenta ac summam gerere figuram. Dic, qu[a]eso,
     an possis, innocentium interemptor, merito dici Chri-
-    stianus, et non potius insanus, hebes, vecorsque, hostis
-    quippe Dei religionis, in qua pietas, humanitas, omnisque
-    justitia versatur, in qua nec malum pro malo discutir
-    redderetur, in qua non occidere, sed occidi propter Dei
-    Filium docemur? Tu sacrilego conatu tuo, contem-
-    ptum vanam dominationem tuam considerans, tormenta
-    almoves; sed est protector et fidei, gubernator salutis,
-    rector animarum, quem nos impellis negare semper,
-    nobiscum semper adest certamini nostro, quia prae-
+    stianus, et non potius insanus, hebes, vecorsque,
+    hostis quippe Dei religionis, in qua pietas, humanitas,
+    omnisque justitia versatur, in qua nec malum pro malo discitur reddere, in qua non occidere,
+    sed occidi propter Dei Filium docemur? Tu sacrile-
+    go conatu tuo, contem[pt]um vanam dominationem
+    tuam considerans, tormenta admoves; sed est pro-
+    tector et fidei, gubernator salutis, rector animarum,
+    quem nos impellis negare semper, nobiscum semper adest certamini nostro, quia prae-
     lares atque assertor es divini sui nominis erigat. Hinc
     est quod servientibus injustitiae suae ac ministris, hoc est
     concarnificibus tuis torquentibus, sternunt fortiores,
-    inanimum aurum tuum unglum artus nostri pulsati ac
-    laniati superent. Quomodo etenim inexpugnabilem fide[m]
+    inanimamur ut tuam ungulam artus nostri pul-
+    sati ac laniati superent. Quomodo etenim inexpug[n]abilem fide[m]
     superare poterit saevins diu plaga repetita, cum omnis
     miles Christi sciat ipsum, pro quo patitur, secum esse
-    praesens, gaudenteque de suorum tolerantia servorum?
+    praesens, gaudente[m]que de suorum tolerantia servorum?
     Stamus &amp; ulique famuli Christi ejus majestati firmati,
     voce libera, mente incorrupta, telis quidem fragilibus
-    tuis, nudi, sed illa induit arma, quae nos ut indurce-
+    tuis, nudi, sed illa induit arma, quae nos ut inducre-
     mentum est deprecatus beatus apostolus dicens: De
     caetero confirmamini in Domino et in potentia virtutis
     ejus (Eph. VI, 10). Et: Induite arma Dei, ut possitis
@@ -124,35 +98,48 @@
     in veritate, induentes loricam iustitiae, et calciati pedes
     in præparatione euangelii pacis.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="510,880,980,990">
-    1 Cum Gallandi0, ubi Tiliana editione habebat serviens,
+
+  <bloco tipo="rodape" script="latino" bbox="50,860,980,995">
+    c Rursum Cyprianus eodem in loco: Jam com- peri... universos... pari ac simili calore virtutis ad
+    gerendum certamen animatos; ut incorruptam fidei
+    firmitatem non blanditiae decipiant, non minae ter-
+    reant, non cruciatus ac tormenta devincant. Omni-
+    potentis. Vidi.
+    d Haec de libro intelligenda videntur, quem scrip-
+    sit ad Constantium de non parendo in Deum delin-
+    quentibus.
+    e Dignas ex audire, a rusticis, etc. Galland.
+    f Item Cyprianus in loco paulo superius laudato:
+    Quam laetus ille Christus fuit... el vici protecor fi-
+    dei... certamini suae adfu[it] praelatores atque asser-
+    tores sui nominis erexit.
+    1 Cum Gallandio, ubi Tiliana editione habebat serviens,
     Latinus et Lugdunenses servientes. Cyprianus in epist.
     laudat: Si erunt torti torquentibus loriores, et pulsantes
-    ac laniantes ungulas pulsatae ac laniata membra vicere- runt.
-    2 Cyprianus ibidem: Vidit admirans praesentium mul- titudo ... selectisse servos (Christi) voce libera, mente in- corrupta, virtute divina, telis quidem saecularibus nudos,
+    ac laniantes ungulas pulsatae ac laniata membra vicere-
+    runt.
+    2 Cyprianus ibidem: Vidit admirans praesentium mul-
+    titudo ... selectisse servos (Christi) voce libera, mente in-
+    corrupta, virtute divina, telis quidem saecularibus nudos,
     sed armis fidei credentes armatos.
     3 Confortamini, et in potentiam. Vers. Ant. Con-
     fortamini, idem Lucifer infra.
     4 Insidia. Ead. Vide notalia in lib. 2 pro S.
     Athan. et Paulo infra.
-    5 Nullus dubito, qui scripserit Lucifer contra princi-
+    5 Nullus dubito, quin scripserit Lucifer contra princi-
     pes, contra potestates. Galland. Et ita quidem legitur in
-    Graeco: sed auctor nostrer probe convenit cum Ver. Ant.
+    Graeco: sed auctor noster probe convenit cum Ver. Ant.
     apud Sabat.; nihil propiore immutan-
     dum est pro arbitrio.
     6 In omnibus operis suis etc. Vers. Ant. Lucifer ad
     Graeci textus assumus. Galland. Sed aliter a versione
     Cypiani tum in lib. 3 Testimon. tum in epist. 58.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="610,960,980,999">
-    Digitized by Google
-  </bloco>
+
+  <bloco tipo="outro" script="latino" bbox="610,960,980,1000">Digitized by Google</bloco>
+
   <notas>
-    - Script: latino para todos os blocos.
-    - Identifiquei o tipo de página como "texto" (bloco inicial).
-    - Letras A, B, C, D (marcadas como nota_marginal) correspondem às marcações marginais visíveis junto à dobra central.
-    - BBOX são aproximações em escala 0-1000 do layout visual (x1,y1,x2,y2).
-    - Onde a leitura é incerta marquei a palavra como [ilegivel]; preservei hífen de separação de linhas quando visível.
-    - Pequenas partes do aparato crítico/rodapé estão parcialmente ilegíveis; usei [ilegivel] quando uma palavra única não pôde ser determinada com segurança.
+    - Transcrição baseada no conteúdo legível da imagem (duas colunas) e das notas inferiores.
+    - Letras A, B, C, D (marcas marginais) em blocos próprios.
   </notas>
 </pagina>

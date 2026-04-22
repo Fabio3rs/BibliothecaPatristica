@@ -1,52 +1,74 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,180">
+  <bloco tipo="cabecalho" script="latino" bbox="360,45,500,75">
     SÆCULUM IV.
   </bloco>
-  <bloco tipo="cabecalho" script="grego" bbox="120,180,880,360">
+  <bloco tipo="texto_principal" script="grego" bbox="140,90,730,145">
     ΕΥΣΕΒΙΟΥ
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="280,160,580,190">
     ΤΟΥ ΠΑΜΦΙΛΟΥ,
-    
-    ΕΠΙΣΚΟΠΟΥ ΤΗΣ ΕΝ ΠΑΛΑΙΣΤΙΝῌ ΚΑΙΣΑΡΕΙΑ͂Σ,
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="110,220,760,245">
+    ΕΠΙΣΚΟΠΟΥ ΤΗΣ ΕΝ ΠΑΛΑΙΣΤΙΝΗ ΚΑΙΣΑΡΕΙΑΣ,
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="145,260,710,290">
     ΤΑ ΕΥΡΙΣΚΟΜΕΝΑ ΠΑΝΤΑ.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="80,380,920,520">
+  <bloco tipo="texto_principal" script="latino" bbox="40,330,850,395">
     EUSEBII PAMPHILI,
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="280,415,580,435">
     CÆSAREÆ PALÆSTINÆ EPISCOPI,
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="135,455,750,485">
     OPERA OMNIA QUÆ EXSTANT,
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,520,880,740">
-    CUBIS VARIORUM, NEMPE :
-    
-    HENRICI VALESII, FRANCISCI VIGERI, BERNARDI MONTFAUCONII, CARD. ANGELO MAII
-    
-    EDITA;
-    
-    COLLEGIT ET DENUO RECOGNOVIT J.-P. MIGNE,
-    
-    BIBLIOTHECAM CLEM. UNIVERSÆ,
-    
-    SIVE
-    
-    CURSUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITOR.
+  <bloco tipo="nota" script="latino" bbox="350,495,520,510">
+    CURIS VARIORUM, NEMPE :
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="180,760,820,840">
+  <bloco tipo="nota" script="latino" bbox="60,515,810,530">
+    HENRICI VALESII, FRANCISCI VIGERI, BERNARDI MONTFAUCONII, CARD. ANGELO MAII
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="430,540,470,550">
+    EDITA;
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="185,560,680,580">
+    COLLEGIT ET DENUO RECOGNOVIT J.-P. MIGNE,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,585,620,600">
+    BIBLIOTHECÆ CLERI UNIVERSÆ,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="435,605,465,615">
+    SIVE
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,620,770,635">
+    CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITOR.
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="260,660,620,670">
+    —
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="330,685,550,705">
     TOMUS TERTIUS.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="200,860,800,930">
-    VENUNT SEX VOLUMINA 60 FRANCIS, GALLICIS.
+  <bloco tipo="outro" script="latino" bbox="260,710,620,720">
+    —
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="80,960,920,1180">
-    EXCŪDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
-    
+  <bloco tipo="rodape" script="latino" bbox="240,745,640,760">
+    VENEUNT SEX VOLUMINA 60 FRANCIS GALLICIS.
+  </bloco>
+  <bloco tipo="rodape" script="misto" bbox="160,830,730,850">
+    EXCUDEBatur ET VENIT APUD J.-P. MIGNE EDITOREM,
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="40,850,830,870">
     IN VIA DICTA D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM,
-    
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="340,870,530,880">
     SEU PETIT-MONTROUGE.
-    
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="420,890,460,910">
     1857
   </bloco>
-  <notas>Página de rosto com textos em grego e latim. Letras capitais e sinais diacríticos mantidos conforme imagem; abreviaturas e espaciamentos preservados. BBOX estimadas proporcionalmente à imagem (escala 0-1000).</notas>
+  <notas>
+    Transcrição de página de rosto (título). O texto "EXCUDEBatur" apresenta mistura de maiúsculas e minúsculas na terminação. Ligaturas Æ preservadas. Texto grego em maiúsculas (unciais).
+  </notas>
 </pagina>

@@ -1,120 +1,209 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,110">
-    HEXAPLORUM QUAE SUPERSUNT.
-    TO EBPAIKON.		TO EBPAIKON		AKVΛAΣ.
-    Ελληνικὸς γράμμασι.
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,100,50">
+    55
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,120,320,420">
-    7.
-    ויקם דוד ויקח לו כלי חיל
-    זהב ומהם
-    ויתנו חלק לשרי
-    יהודה:
-    9. חלב
-    10. לשול
-    11. איש מלכות
-    13, 14. ויהי בּבּו ...
-    46 מְזִמּוֹת
-    17 המֶלֶךְ
-    18 והכהנים והלבנים
+  <bloco tipo="cabecalho" script="latino" bbox="380,30,650,50">
+    HEXAPLORUM QUÆ SUPERSUNT.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,120,660,420">
+  <bloco tipo="cabecalho" script="latino" bbox="900,30,950,50">
+    56
+  </bloco>
+
+  [!-- Coluna Superior Esquerda: Hebraico --]
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,60,300,150">
+    TO ΕΒΡΑΙΚΟΝ.
+    ויקח דוד את מגני הזהב אשר
+    לו על עבדי הדדעזר ויבאם
+    ירושלם
+  </bloco>
+
+  [!-- Coluna Superior Meio: Transliteração (apenas números visíveis) --]
+  <bloco tipo="texto_principal" script="misto" bbox="350,60,550,150">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
     7.
-    7. Cepitque David scuta auri
-    quae erant ad servos Adadezer, et
-    adduxit ea in Jerusalem.
+  </bloco>
+
+  [!-- Coluna Superior Direita: Aquila Grego --]
+  <bloco tipo="texto_principal" script="grego" bbox="600,60,900,150">
+    ΑΚΥΛΑΣ.
+    7. Καὶ ἔλαβε Δαυὶδ τος κλοιοὺς
+    χρυσοῦς. Ἄλλος, βραχιάρια χρυσῖ.
+  </bloco>
+
+  [!-- Continuação Coluna Esquerda (Hebraico) --]
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,180,300,300">
+    סכוים
+    לחל
+    לאשר
+    איש מלחמה
+    בשבע
+    ושבעת אלפים פרשים ושלשים
+    אלף רגלי ויעקר את כל הרכב
+    ויותר ממנו מאת רכב
+  </bloco>
+
+  [!-- Continuação Coluna Meio (Números) --]
+  <bloco tipo="texto_principal" script="latino" bbox="350,180,450,300">
     9.
     10.
     11.
     13, 14.
+  </bloco>
+
+  [!-- Continuação Coluna Direita (Aquila Grego) --]
+  <bloco tipo="texto_principal" script="grego" bbox="600,180,900,300">
+    Πανοπλίας.
+    9. Τὴν ἐπιφάνειαν.
+    10.
+    Πολεμῶν.
+    11. Ὑπέταξεν.
+    13, 14. Ἐν φάραγγι τῶν ἁλῶν.
+  </bloco>
+
+  [!-- Continuação Coluna Esquerda (Hebraico) --]
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,330,300,420">
+    מזכיר
+    ואחימלך
+    ושריה
+    הבנים
+    כהנים
+  </bloco>
+
+  [!-- Continuação Coluna Meio (Números) --]
+  <bloco tipo="texto_principal" script="latino" bbox="350,330,450,420">
+    16.
+    17.
+    18.
+  </bloco>
+
+  [!-- Continuação Coluna Direita (Aquila Grego) --]
+  <bloco tipo="texto_principal" script="grego" bbox="600,330,900,420">
+    16. Ὁ ἀναμιμνήσκων.
+    17. Καὶ Ἀειμελεχ.
+    18.
+    Ἱερες.
+  </bloco>
+
+  [!-- Cabeçalhos Tabela Latina --]
+  <bloco tipo="cabecalho" script="latino" bbox="100,430,300,450">
     VERSIO HEBRAICI TEXT.
-    lvi.
-    7. Cepitque David scuta auri,
-    quae erant ad servos Adadezer, et
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="380,430,580,450">
+    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="750,430,850,450">
+    AQUILA.
+  </bloco>
+
+  [!-- Tabela Latina - Bloco 1 --]
+  <bloco tipo="texto_principal" script="latino" bbox="100,460,300,520">
+    Ivit.
+    7. Cepitque David scuta auri
+    quæ erant ad servos Adadezer, et
     adduxit ea in Jerusalem.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,460,580,520">
+    Profectus est.
+    7. Et tulit David arma aurea,
+    quæ habebant servi Adarezer, et
+    detulit ea in Jerusalem.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="600,460,900,500">
+    7. Cepitque David torques au-
+    reos. Alius, brachiaria aurea.
+  </bloco>
+
+  [!-- Tabela Latina - Bloco 2 --]
+  <bloco tipo="texto_principal" script="latino" bbox="100,540,300,650">
     Scuta auri.
     9. Virtutem.
     10. Ad optandum.
     Vir bellorum.
-    11. Subiegerat.
-    13, 14. A cadendo ipsum Aram
-    in valle salis oclodecim millia. Et
-    posuit in Edom praesides, in omni
-    Edom posuit praesides.
-    46. Commemorans.
-    17. Et Achimelech.
-    Et Saraia.
-    18. Et Corethi et Phelethi.
-    Sacerdotes.
+    11. Subegerat.
+    13, 14. A cædendo ipsum Aram
+    in valle salis octodecim millia. Et
+    posuit in Edom præsides, in omni
+    Edom posuit præsides.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,120,960,420">
-    7.
-    7. Και ελαβε Δαυιδ τους χιλιους
-    χρυσοὺς. Άλλος, βραγχιαρια χρυσα.
-    Πανοπλίας.
-    9. Την ιππέρχειαν.
-    10.
-    11. Υπεταξεν.
-    13, 14. Εν φαραγγι των αλων.
-    16.
-    17. Και 'Αχιμελεχ.
-    18.
-    Ιερεῖς.
-    VULGATA LATINA.
-    Profectus est.
-    7. Et tulit David arma aurea,
-    quae habebant servi Adarezer, et
-    deduxit ea in Jerusalem.
+  <bloco tipo="texto_principal" script="latino" bbox="350,540,580,650">
     9. Robur.
     10. Ut salutaret.
+    Hostis.
     11. Subegerat.
     13, 14. Cum reverteretur capta
-    Syria in valle salinarum, cæsis
+    Syria in valle salinarum , cæsis
     decem et octo millibus. Et posuit
     in Idumæa custodes, statuitque
     præsidium.
-    16. A commentariis.
-    17. Et Achimelech.
-    Et Saraias.
-    18. Et Corethi et Phelethi.
-    Sacerdotes.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,430,960,980">
-    AQUILA.
-    7. Cepitque David torques au-
-    reos. Alius, brachiaria aurea.
-    . Omnes armaturas.
+  <bloco tipo="texto_principal" script="latino" bbox="600,540,800,630">
+    Omnes armaturas.
     9. Apparatum.
     10.
     Bellans.
     11. Subegerat.
     13, 14. In valle salis.
-    Notae et variae lectiones ad cap. VIII lib. II Regum.
-    V. 1. 'A., εκδ. Σ., χαρις. Coislin. 2.
-    Ibid. 'A., τον χαλκον του υδραγωγıου. Reg. Hic
-    vero Coislinianus 2 qui hanc Aquilae lectionem af-
-    fert, alternum ejusdem Aquila exhibet cum versione
-    item Synmachii, ut saepe jam observatum est, et
-    infra occurrerit; scil.: 'A., του χαλκον του πηχυος,
-    ]μουν cubili.
-    V. 2. Σ., και διεφηνησεν etc. Coislin. 2.
-    Ibid. Καὶ τὰ δύο σχοινίσματα εξόργησεν. Coislin.
-    ad marg., και τὸ ἐν ὑπογείῳ ἐξόργησεν. I. e. Et
+  </bloco>
+
+  [!-- Tabela Latina - Bloco 3 --]
+  <bloco tipo="texto_principal" script="latino" bbox="100,670,300,740">
+    16. Commemorans.
+    17. Et Achimelech.
+    Et Saraia.
+    18. Et Cerethi et Phelethi.
+    Sacerdotes.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,670,550,740">
+    16. A commentariis.
+    17. Et Achimelech.
+    Et Saraias.
+    18. Et Cerethi et Phelethi.
+    Sacerdotes.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="600,670,800,740">
+    16. Commemorans.
+    17. Et Aimelech.
+    18.
+    Sacerdotes.
+  </bloco>
+
+  [!-- Notas Críticas --]
+  <bloco tipo="cabecalho" script="latino" bbox="250,750,750,770">
+    Notæ et variæ lectiones ad cap. VIII lib. II Regum.
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="100,780,500,920">
+    V. 1. Ἀ., ἐκδ. Σ., κατήσχ. Coislin. 2.
+    Ibid. Ἀ., τν χαλινὸν τοῦ ὑδραγωγοῦ. Reg. Hic
+    vero Coislinianus 2 qui hanc Aquilæ lectionem af-
+    fert, alteram ejusdem Aquilæ exhibet cum versione
+    item Symmachi, ut sæpe jam observatum est, et
+    infra occurret; scil. : Ἀ., τὸν χαλινὸν τοῦ πήχεος,
+    frænum cubiti.
+    V. 2. Σ., καὶ διεμέτρησεν εἰς. Coislin. 2. ,
+    Ibid. Καὶ τὰ δύο σχοινίσματα ἐζώγρησεν. Coislin.
+    ad marg., καὶ τὸ ἓν σχοίνισμα ἐζώγρησεν. I. e. Et
     unum funiculum vivificavit.
-    Ibid. 'Αλλος, και τὸ σχοινισμα etc. Has duas
+    Ibid. Ἄλλος, καὶ τὸ σχοίνισμα etc. Has duas
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="520,780,900,920">
     versiones sine interpretum nomine affert Reg. qui-
-    bus adnectitur altera Coislinian. 2.
-    Ibid. Σ., 'υπὸ φόρου, quem sequitur vulgata. Ex
+    bus adnectitur altera Coisliniani 2.
+    Ibid. Ἀ., ὑπὸ φόρον, quem sequitur vulgata. Ex
     Coislin. 2.
-    V. 3. Σ., 'ως επροστεσε σπασι τροφοισιν ]εσωσ]
+    V. 3. Σ., ὅτε ἐπορεύετο στῆσαι τρόπαιον ἑαυτοῦ.
     Reg. et Coislin. 2.
-    V. 4. Σ., και συχλεθεν. Reg. et Coislin. 2.
-    Ibid. 'A., εξηρεσεν. Sic Coislin. 2, quae lectio
-    suspensa Σ., ενεργοχρησεν. Reg.
-    V. 5. 'Αλλος, ὁ Σιρος εἰσ Δαμασκου. Reg.
-    V. 6. 'Α., αστοπλημωιμος, Σ., φρουρους. Coisl. 2.
-    Ibid. 'Αλλος, εξηρετο. Reg.
+    V. 4. Σ., καὶ συνέλαβεν. Reg. et Coislin. 2.
+    Ibid. Ἀ., ἐξήρησεν. Sic Coislin. 2, quæ lectio
+    susp. Σ., ἐνευροκόπησε. Rg.
+    V. 5. Ἄλλος, ὁ Σύρος ἐκ Δαμασκοῦ. Reg.
+    V. 6. Ἄλ., ἑστηκόμένους. Σ., φρουρούς. Coisl. 2.
+    Ibid. Ἄλλος, ἐφέρετο. Reg.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="600,960,850,990">
     Digitized by Google
   </bloco>
-  <notas>Scripts presentes: latino e hebraico. Pequenas lacunas e palavras parcialmente ilegíveis no hebraico; indicado conforme transcrição literal sem normalização. BBOX estimadas em escala 0-1000.</notas>
 </pagina>

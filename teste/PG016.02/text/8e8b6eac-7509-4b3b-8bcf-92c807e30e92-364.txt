@@ -1,43 +1,80 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,110">
-    HEXAPLORUM QUÆ SUPERSUNT.
-    HESAIE CAPUT LXV.
-    TO EBPAIKON.  Ἑλληνικοὶ γράμμασι.
+  <bloco tipo="cabecalho" script="misto" bbox="100,20,900,100">
+    1975 HEXAPLORUM QUÆ SUPERSUNT. 1976
+    HESAIÆ CAPUT LXV.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,120,300,780">
-    (coluna esquerda hebraica)
-    [1]  אֶקְה 1
-    [2] הַלֹכִים חוּף לא־טוֹב 2
-    [7] יָד 7
-    [8] כהן 8
-    [11] הַמִזְמָרִים לֵד שׁלוֹם וְהַמִתְפַּלְלִים לְמַעַן מִנֵּי מִסְפָּק 11
-    [15] לְמַעַן 15
-    [16] וְעִבְרִי יִקְרָא שֵׁם אַחַד 16
-    [16] אֲשֶׁר תּוֹלַךְ בְּאַרְצְךָ יִחְיֶה 16
-    [18] אֲשֶׁר אֲנִי בּוֹא 18
-    [20] אֶרֶץ־יְרוּשָׁלִָם 20
-    [20] עַל יָדִים 20
-    [23] בֵּן־מָאוֹת שָׁנָה 23
-    [23] לְהִבָּחֵן 23
+  
+  <bloco tipo="texto_principal" script="misto" bbox="50,100,350,420">
+    TO EBPAIKON.
+    הנני 1
+    ההלכים הדרך לא-טוב 2
+    יחד 7
+    הן ו אמר 8
+    הערכים לגד שולחן מסכאים 11
+    למני ממסך
+    לשבעה 15
+    להידיד יקרא שם אחר
+    אשר יתברך בארץ יתברך 16
+    באמת האלהים
+    אשר אני בראת 18
+    את-ירושלם
+    [ilegivel] 20
+    בן מאה שנה
+    לבהלה 23
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,120,680,780">
-    (coluna central - VERSIO HEBRAICI TEXT. e VULGATA LATINA)
+
+  <bloco tipo="texto_principal" script="misto" bbox="360,100,550,420">
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
+    1.
+    2.
+    7.
+    8.
+    11.
+    15.
+    16.
+    18.
+    20.
+    23.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="600,100,950,420">
+    ΑΚΥΛΑΣ.
+    1.
+    2. . . . ὁδ οὐκ ἀγαθῇ.
+    7.
+    8.
+    11. Κέρασμα.
+    15.
+    Καὶ τοῖς δούλοις αὐτοῦ καλέσει ὄνομα ἕτερον.
+    16. Ὁ εὐλογημένος ἐν τῇ γ εὐλογηθήσεται (ἐν τῷ Θεῷ) πεπιστευμένως.
+    18.
+    Χ Τὴν Ἰερουσαλήμ.
+    20.
+    Ὁ νέος Χ αὐτός :
+    Χ Υἱός :
+    23. Εἰς σπεῦσιν.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,430,350,740">
     VERSIO HEBRAICI TEXT.
     1. Ecce ego.
     2. Ambulantes in via non bona.
     7. Simul.
     8. Sic dixit.
-    11. Parantes Jovi (al. fortunae) mensam, et implentes Meni libamen.
+    11. Parantes Jovi (ad. fortunæ) mensam, et implentes Meni libamen.
     15. In juramentum.
     Et servis suis vocabit nomen aliud.
     16. Qui benedictus in terra benedicetur in Deo veritatis.
-    18. Quæ ego creaͤns.
+    18. Quæ ego creans.
     Ipsam Jerusalem.
     20. Infans dierum.
     Puer.
     Filius centum annorum.
     23. Ad turbationem.
+  </bloco>
 
+  <bloco tipo="texto_principal" script="latino" bbox="360,430,600,740">
     VULGATA LATINA.
     1. Ecce ego.
     2. Qui graditur in via non bona.
@@ -45,7 +82,7 @@
     8. Hæc dicit.
     11. Qui ponitis fortunæ mensam, et libatis super eam.
     15. In juramentum.
-    Et servos suos vocabït nomine alio.
+    Et servos suos vocabit nomine alio.
     16. In quo qui benedictus est super terram, benedicetur in Deo amen.
     18. Quæ ego creo.
     Jerusalem.
@@ -54,26 +91,8 @@
     Centum annorum.
     23. In conturbatione.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="700,120,980,780">
-    (coluna direita grega - AKYΛA / AQUILA)
-    AKΥΛΑΣ.
-    1.
-    2. ... ὅς οὐκ ἀγαθῃ.
-    7.
-    8.
-    11. Κέρασμα.
-    15.
-    Καὶ τοῖς δούλοις αὐτοῦ καλεῖ ὄνομα ἕτερον.
-    16. Ὁ εὐλογημένος ἐν τῇ γῇ ἔσται·
-         ὁ εὐλογηθησεται (ἐν τῷ Θεῷ) πεπυ-
-         στεωμένος.
-    18.
-    ✳ Τὴν· Ἱεροσάλημ.
-    20.
-    Ὁ νέος ✳ αὐτὸς;
-    ✳ Υἱὸς;
-    23. Εἰς σπύσιν.
-    
+
+  <bloco tipo="texto_principal" script="misto" bbox="600,430,950,740">
     AQUILA.
     1.
     2. ... in via non bona.
@@ -84,22 +103,33 @@
     Et servis suis vocabit nomen aliud.
     16. Cui benedictus in terra benedicetur (in Deo), fideliter.
     18.
-    ✳ Ipsam : Jerusalem.
+    Χ Ipsam : Jerusalem.
     20.
-    ✳ Ipse : puer.
-    ✳ Filius :
+    Χ Ipse : puer.
+    Χ Filius :
     23. Ad festinationem.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,790,980,980">
+
+  <bloco tipo="nota" script="misto" bbox="100,750,900,780">
     Notæ et variæ lectiones ad cap. LXV Hesaiæ.
-    V. 1. ✳ Ἰδοὺ σὺν. Sic ad marg. cum asterisco Curter. ex ms. Jes. in cujus textu desideratur; sed in hodiernis exemplaribus legitur. Alii, ἰδοὺ ἐγὼ, habent.
-    V. 2. Curter. ex ms. Jes. ad marg., τοῖς ἔπομέν- νοις οἱ χαῖ, Οἱ Γ', ὅσσῳ οὐκ ἀγαθῃ.
-    V. 7. Θ., κ·, κτλ· το αὐτὸ. Idem.
-    V. 8. Idem ad marg., ✳ etc. Verum mendose, nisi fortasse ? quod respondit τῷ, etc, ex Hebraico textu reciderit.
-    V. 11. Hieronymus : Quodque LXX transtulerunt, dæmoni, in Hebraico habet, MENNI, quod Symmachus interpretatus est, absque me; ut sit sensus : Qui paratis fortunæ mensam, et impletis absque me potionem.
-    Ibid. Omnes, νείρασα. Curter.
-    V. 15. Ol. loϙτ., ἐκ ὅρχων. Procopius atque Hieronymus, qui ait : « Pro saturitate, quæ Hebraice dicitur SABAA , cæteri juramentum interpretati sunt : quod verbum multas habet intelligentias, et pro diversitate accentuum variatur. Inteligitur enim et juramentum, et saturitas, et satietas, et plures, et septem. »
-    Ibid. 'Α, καὶ τοῖς δούλοις etc. Sic Procopius has lectiones adfert pleniiores quam Hieronymus.
   </bloco>
-  <notas>Transcrição mantida em colunas: coluna hebraica à esquerda, latim central, grego/latim à direita. Onde caracteres são incertos usei aproximação literal; marquei palavras ilegíveis com [ilegivel] quando necessário (nenhum bloco totalmente ilegível). Scripts identificados: hebraico, latino, grego.</notas>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="100,780,500,940">
+    V. 1. Χ Ἰδού εἰμι. Sic ad marg. cum asterisco Curter. ex ms. Jes. in cujus textu desideratur; sed in hodiernis exemplaribus legitur. Alii, Ἰδοὺ ἐγώ, habent.
+    V. 2. Curter. ex ms. Jes. ad marg., τοῖς ἑπομένοις ὁδῷ οὐ καλῇ. Οἱ Γ', ὁδῷ οὐκ ἀγαθῇ.
+    V. 7. Θ., Χ ἐπὶ τὸ αὐτό. Idem.
+    V. 8. Idem ad marg., Χ ὅτι. Verum mendose, nisi fortasse לְ כְּ quod respondet τῷ, ὅτι, ex Hebraico textu exciderit.
+    V. 11. Hieronymus : « Quodque LXX transtulerunt, dæmonii, in Hebraico habet, MENNI, quod Symmachus interpretatus est, absque me; ut sit
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="510,780,900,940">
+    sensus : Qui paratis fortunæ mensam, et impletis absque me potionem. »
+    Ibid. Omnes, κέρασμα. Curter.
+    V. 15. Οἱ λοιπ., εἰς ρκον. Procopius atque Hieronymus, qui ait : « Pro saturitate, quæ Hebraice dicitur SABAA, cæteri juramentum interpretati sunt : quod verbum multas habet intelligentias, et pro diversitate accentuum variatur. Intelligitur enim et juramentum, et saturitas, et satietas, et plures, et septem. »
+    Ibid. Ἀ., καὶ τοῖς δούλοις etc. Sic Procopius has lectiones adfert pleniores quam Hieronymus.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="600,960,850,990">
+    Digitized by Google
+  </bloco>
 </pagina>

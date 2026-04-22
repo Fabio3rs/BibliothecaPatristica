@@ -1,56 +1,79 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,90">
-    2255                                                          HEXAPLORUM QUÆ SUPERSUNT.                                                          2256
-    TO EBPAIKON.                                    TO EBPAIKON                            ΑΚΥΛΑΣ.
-    Ἑλληνικοὶς γράμμασι.
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="200,20,800,60">
+    HEXAPLORUM QUÆ SUPERSUNT.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,90,220,420">
-    (hebraic line) 30  ביום 30
-    (hebraic line) 36 חרב אל - בגדיוה
-    (hebraic line) 37 וכל - כל־הערב
-    (hebraic line) 39 ולא־השב עד לנצח
-    (hebraic line) 40 אד־סדם
-    (hebraic line) 44 ממון הירדן
-    (hebraic line) 1 לב קפ 1
-    (hebraic line) 19 ושבטו 19
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,100,50">
+    2255
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="220,90,540,420">
-    TO EBRAIKON.
+  <bloco tipo="cabecalho" script="latino" bbox="900,20,950,50">
+    2256
+  </bloco>
+
+  [!-- Primeira Tabela: Texto Hebraico, Transliteração, Aquila --]
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,300,250">
+    TO ΕΒΡΑΙΚΟΝ.
+    יוֹם הוּא 30
+    חֶרֶב אֶל־גִּבּוֹרִים 36
+    וְחָתוּ
+    וְאֶל־כָּל־הָעָם 37
+    וְלֹא־תֵשֵׁב עוֹד לָנֶצַח 39
+    
+    אֶת־סְדוֹם 40
+    גְּאוֹן הַיַּרְדֵּן 44
+    
+    אֵיתָן
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="350,60,600,250">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
     30.
     36.
     37.
     39.
+    
     40.
     44.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,60,950,250">
+    ΑΚΥΛΑΣ.
+    30.
+    36. Μάχαιραν ἐπὶ τοὺς μαχητάς·
+    ✠ ξαρθήσονται.
+    37.
+    39.
+    
+    40.
+    44. ✠ Ἀπὸ φρυάγματος τοῦ
+    ορδάνου.
+    Στερεάν.
+  </bloco>
+
+  [!-- Segunda Tabela: Versões Latinas --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,260,300,450">
     VERSIO HEBRAICI TEXT.
     30. In die illa.
     36. Gladius ad fortes illius.
     Et consternabuntur.
     37. Et ad omne promiscuum.
-    39. Et non habitabitur ultra in æternum.
+    39. Et non habitabitur ultra in
+    æternum.
     40. Sodomam.
     44. De tumore Jordanis.
     Robustum
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="540,90,950,420">
-    ΤΟ ΕΒΡΑΙΚΟΝ
-    30.
-    36. Μάχαιραν ἐπὶ τοὺς μαχητά-
-    37.
-    39.
-    40.
-    44. Ἀπὸ φρυγίματος : τοῦ
-    Ἰορδάνου.
-    Στερεῶν.
+  <bloco tipo="texto_principal" script="latino" bbox="350,260,600,450">
     VULGATA LATINA.
     30. In die illa.
     36. Gladius ad fortes illius.
     Qui timebunt.
     37. Et ad omne vulgus.
-    39. Et non inhabitabitur ultra usque in sempiternum.
+    39. Et non inhabitabitur ultra
+    usque in sempiternum.
     40. Sodomam.
     44. De superbia Jordanis.
     Robustam.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,260,950,450">
     AQUILA.
     30.
     36. Gladium ad bellatores.
@@ -61,61 +84,120 @@
     44. De fremitu Jordanis.
     Solidam.
   </bloco>
-  <bloco tipo="aparto_critico" script="latino" bbox="30,420,950,780">
-    Notæ et variæ lectiones ad cap. I Jeremiæ.
-    V. 1. 'Α., πρὸς γῆν Χαλδαίων etc. Ms. Jes. [Complut., και επι την Χ. etc. ut Aq. DRACH.]
-    V. 2. 'Εστάρατε etc. Ms. Jes. Drusius vero, ἄρατε. [Complut. et apud Theodoretum, ἀρατε ση-
-    μεῖον, καὶ ἀκ. π. Alius, ἀχοινιάσαι. DRACH.]
-    Ibid. 6., ησυχίαςεν etc. Ms. Jes. [Complut., ησυχίσασαν τὰ γλυπτά αὐτῶν, παρεδόθη τὰ ἔθωλα
-    αὐτῶν. Alius, ησχόνθη εἰς αὐτής, ησχόνθη τὰ βδ. αὐτής. DRACH.]
-    V. 3. 'Α., ἐσασλεύσαν, ἀπῆλθον. Ms. Jes. [Complut., ἐσασλεύσθαι καὶ ἐπεσόησαν. DR.]
-    V. 8. Theodoretus, καὶ γενέσθω ὕστερ ἐφεροι. Ex alia scilicet editione: nam LXX habent, δραχόντες.
-    Notat postea Theodoretus, τοὺς ἐρίους, τράγους ὁ Σύρος ἡρήμενος.
-    Ibid. 5., ἐμπροσωθεν πτωμάτων. Ms. Jes.
-    V. 9. 'Α., τὰ βέλη αὐτῶν etc. Idem. [Aquila legit שׂפדום cum schin dextro ut habent sex codd. a
-    Michaelis inspecti, et Concordantiæ Hebr., secundum massoram. Cf. J. H. Michaelis Biblia Heb., Fuersii
+
+  [!-- Notas --]
+  <bloco tipo="cabecalho" script="latino" bbox="250,460,750,490">
+    Notæ et variæ lectiones ad cap. L Jeremiæ.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="50,490,480,800">
+    V. 1. Ἀ., πρὸς γν Χαλδαίων etc. Ms. Jes.
+    [Complut., καὶ ἐπὶ τὴν Χ. etc. ut Aq. DRACH.]
+    V. 2. ✠ Ἐπάρατε etc. Ms. Jes. Drusius vero,
+    ἄρατε. [Complut. et apud Theodoretum, ἄρατε ση-
+    μεῖον, καὶ ἀκ. π. Alius, ἀκουτίσατε. DRACH.]
+    Ibid. Θ., ἠσχύνθησαν etc. Ms. Jes. [Complut.,
+    ἠσχύνθησαν τὰ γλυπτά αὐτῶν, παρεδόθη τὰ εἴδωλα
+    αὐτν. Alius, σχύνθη εἰδ. αὐτῆς, ἠσχύνθη τὰ βδ.
+    αὐτῆς. DRACH.]
+    V. 3. Ἀ., ἐσαλεύθησαν, ἀπῆλθον. Ms. Jes. [Com-
+    plut., ἐσαλεύθησαν καὶ ἐπορεύθησαν. DR.]
+    V. 8. Theodoretus, καὶ γένεσθε ὥσπερ ἐρίφιοι. Ex
+    alia scilicet editione: nam LXX habent, δράκοντες.
+    Notat postea Theodoretus, τοὺς ἐρίφους, τράγους ὁ
+    Σύρος ἡρμήνευσε.
+    Ibid. Σ., ἔμπροσθεν ποιμνίων. Ms. Jes.
+    V. 9. Ἀ., τὰ βέλη αὐτοῦ etc. Idem. [Aquila legit
+    בְּשִׂנְאוֹ cum schin dextro ut habent sex codd. a
+    Michaeli inspecti, et Concordantiæ Hebr., secundum
+    masoram. (Cf. J. H. Michaelis Biblia Heb., Fuerstii
     Concord. Hebr., necnon De Rossii varias lectiones
-    V. T.] LXX vero et Sym. legerunt cum sinistro, ut habet maxima pars codicum, impressorumque bibliorum. — λεγωσεν, et ascendere faciem.
-    LXX vacat. Alius, και αρχ̓γω, et ascendere faciem. Vulg., et adducam. — τερ, τελα ejus. LXX vacat.
-    Alius, τα βέλη αυτής. Vulg., sagitta ejus. DRACH.]
-    V. 12. ὁ Π., ἐντετραπή etc. Ms. Jes. Haec vero paululum perplexa sunt in schedis nostris : illud-
-    que, μήτην εις αγαθά, vitio inducum videtur. in LXX edit. Rom. legitur, ἐπ' αγαθά. [Theodoretus
-    et quidam codices, ἀνερπται, εὐερα est]. — 'Εκ' αγαθά, notandum obelo, non enim legitur in Hebr.
-    — Perperam adscriptis Montf. lectionem Vulgatæ, confusa est mater vestra, quæ respondet his verbis,
-    ὀΖΩΝ πα ἄν ἄτιον versi cul. DRACH.]
+    V. T.) LXX vero et Sym. legerunt cum sin sini-
+    stro, ut habet maxima pars codicum, impresso-
+    rumque bibliorum. — הִלְּכָו, et ascendere faciens.
+    LXX vacat. Alius, καὶ ἀνάγω, et ascendere facio.
+    Vulg., et adducam. — חִצִּים, tela ejus. LXX vacat.
+    Alius, τὰ βέλη αὐτς. Vulg., sagitta ejus. DRACH.]
+    V. 12. Οἱ Π., ἐνετράπη etc. Ms. Jes. Hæc vero
+    paululum perplexa sunt in schedis nostris : illud-
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="520,490,950,800">
+    que, μήτηρ εἰς ἀγαθά, vitio inductum videtur. in
+    LXX edit. Rom. legitur, ἐπ' ἀγαθᾶ. [Theodoretus
+    et quidam codices, ἀνετράπη, eversa est. — Ἐπ'
+    ἀγαθᾶ, notandum obelo, non enim legitur in Hebr.
+    — Perperam adscripsit Montf. lectionem Vulgatæ,
+    confusa est mater vestra, quæ respondet his verbis,
+    בּוֹשָׁה אִמְּכֶם ab initio versiculi. DRACH.]
+    Ibid. Ἰδοὺ * etc. Ms. Jes., ✠ Ἰδού, et Π. (omnes),
+    ἀνῦδρος, ἄβατος, similiterque ex eod. lectiones ver-
+    sus 14 et 18. [V. 12. Complut., ἔρημος καὶ ἄβατος.
+    DR.]
     V. 14. Π., ὅτι etc. Ita etiam Complut. DRACH.
-    V. 15. Ο', και κατακρατησαται αυτην, et subjicte
-    eam. In Complut. pro his est, sit ut Κυριὺ ψαρ-
-    ετεν (quae refertur etiam a Theodoreto), και κατα-
-    κρατησατε επ' αυτην. Quia Domino peccavit, et
-    plaudite super eam. Ex ed. Rom. IDem.
+    V. 15. Ο', καὶ κατακρατήσατε αὐτήν, et subjicite
+    eam. In Complut. pro his est, ὅτι τῷ Κυρίῳ ἥμαρ-
+    τεν (quæ referuntur etiam a Theodoretulo), καὶ κατα-
+    κρατήσατε ἐπ' αὐτήν. Quia Domino peccavit, et
+    plaudite super eam. Ex ed. Rom. Idem.
     V. 18. Lectionem Aq. et Th. habet Complut. in
-    textu. IDEM.
-    V. 19. Ο', εν τῳ Καρφω. In Complut. et apud
-    Theodoretum additur, και ἐν βασαν. Quod legitur
-    etiam in Hebr. et in Vulg. Lat. IDEM.
-    V. 21. 'Α., ἐπὶ τὴν παρακλιναγων ἀνάβηθῃ.
-    Sic ms. Jes. et alii. [Codex quidam, κατα τὸν ῥι-
-    τὸν παρατ. ἐπιθῆ ἐπ' αὐτὴν πυκνῶς. Polygl.-B.
+    textu. Idem.
+    V. 19. Ο', ἐν τῷ Καρμήλῳ. In Complut. et apud
+    Theodoretum additur, καὶ ἐν Βασάν. Quod legitur
+    etiam in Hebr. et in Vulg. Lat. Idem.
+    V. 21. Ἀ., ἐπὶ τὴν παραπικραινόντων ἀνάβηθι.
+    Sic ms. Jes. et alius. [Codex quidam, ἐπὶ τὴν γῆν
+    τῶν παραπ. ἐπίβηθι ἐπ' αὐτὴν πικρῶς. Polygl.-B.
     Theodoretus autem videtur habuisse, ἐπὶ τῆς γῆς
     παραπ. DRACH.]
-    Ibid. 8., ὅπως αὐτῶν κακά. Ms. Jes., similiter-
-    que lectiones versus 26, 28, 30, 1V. 21. Alius, και
+    Ibid. Θ., ✠ ὀπίσω αὐτν κακά. Ms. Jes., similiter-
+    que lectiones versus 26, 28, 30. [V. 21. Alius, καὶ
+  </bloco>
+
+  [!-- Terceira Tabela: Jeremias 51 --]
+  <bloco tipo="cabecalho" script="latino" bbox="350,810,650,830">
     JEREMIÆ CAPUT LI.
-    TO ΕΒΡΑΙΚΟΝ.                                 TO EBPAIKON                                 ΑΚΥΛΑΣ.
-    'Ελληνικοὶς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,830,300,900">
+    TO ΕΒΡΑΙΚΟΝ.
+    לֵב קוּמִי 1
+    19 שֵׁבֶת נַחֲלָתוֹ
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="350,830,600,900">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+    1.
+    19.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,830,950,900">
+    ΑΚΥΛΑΣ.
+    1. ✠ Καρδίαν ἐπεγειρόντων.
+    19.
+  </bloco>
+
+  [!-- Versões Latinas Inferiores --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,900,300,980">
     VERSIO HEBRAICI TEXT
     1. Cor surgentium in me.
-    19. Et sceptrum hæreditatis ejus.
+    19. Et sceptrum hæreditatis
+    ejus.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,900,600,980">
     VULGATA LATINA.
-    1. Qui cor sublevaverunt contra me.
-    19. Et Israel sceptrum hæreditatis ejus.
+    1. Qui cor sublevaverunt contra
+    me.
+    19. Et Israel sceptrum hæredi-
+    tatis ejus.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,900,950,980">
     AQUILA.
     1. Cor suscitantium.
     19.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,780,950,990">
+  
+  <bloco tipo="rodape" script="latino" bbox="400,970,600,990">
     Digitized by Google
   </bloco>
-  <notas>Scriptos mistos: latino, grego e hebraico. Pequenas manchas e abreviações; partes hebraicas transcritas aqui como indicação linear dos versículos por preservação da literalidade visual; várias abreviaturas latinas mantidas. Alguns sinais tipográficos (asteriscos, obelos) preservados textualmente onde visíveis.</notas>
+  
+  <notas>
+    Transcrição de página da Patrologia Graeca (Hexapla). Contém texto paralelo em Hebraico, Grego (incluindo transliteração e versão de Aquila) e Latim (Vulgata e versões literais). As notas críticas ("Notæ") contêm referências a manuscritos (Ms. Jes.), edições (Complut., Rom.) e autores (Theodoretus, Drusius, etc.). Símbolos críticos como ✠ (asterisco/obelos) foram preservados.
+  </notas>
 </pagina>

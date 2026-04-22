@@ -1,68 +1,149 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,90">
-    HEXAPLORUM QUAE SUPERSUNT.
+  <bloco tipo="cabecalho" script="misto" bbox="50,20,950,60">
+    2043 HEXAPLORUM QUÆ SUPERSUNT. 2044
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="30,90,980,740">
-    TO EBPAIKON.                         TO EBPAIKON                      ΑΚΥΛΑΣ.
-    Ελληνικοὶς γράμμασι.
-    9.  Ἑπτὰ.                        9.  Septem.                      9. Septem.
-    10.  Ἀνδρα ; διακρινόμενον.      10. Et virum contentionis.      10. Virum discordiæ.
-    10.  ⟨Hebrew line⟩                     Non fœneralus eum, nec fœne-    Non fœneravi, nec fœncravit
-    11.  11.                         11. In bonum.                    11. In bonum.
-    12.  12.                         12. Numquid cœderetur ferrum     12.
-    13.  13.                         13. Non in pretio.               13.
-    15.  15.                         15. Tu scis.                     15. Tu nosti.
-    16.  16.                         16. Et comedi eos.               16.
-    20.  20.                         20. Dicit Dominus.               20. Dicit Dominus.
-    21.  21.                         21. Et liberabo te.              21. Et eruam te.
-    VERSIO HEBRAICI TEXT.            VULGATA LATINA.                AQUILA.
-    9.  Septem.                       9.  Septem.                     9. Septem.
-    10. Et virum contentionis.        10. Virum discoriae.            10. Virum dijudicatum.
-    Non fœneralus eum, nec fœnera-    Non fœneravi, nec fœneravit    (text continues in Latin and Greek columns)
-    vit sunt in me. Syrus, non debui. mihi quisquam.
-    11. In bonum.                     11. In bonum.                    11. In bonum.
-    12. Numquid conteret ferrum        12. Numquid fœderabitur ferrum  12.
-    ferrum ab Aquilone, et æs ?       ferro ab Aquilone, et æs ? 
-    13. Non in pretio.                13. Gratis.                      13.
-    15. Tu nosti.                     15. Tu scis.                     15. Tu nosti.
-    Ne in longanimitalé furoris tui   Noli in patientia tua suscipere me.
-    suscipias me.
-    16. Et comedi eos.                16. Et comedi eos.              16.
-    Domine Deus.                     Domine Deus.                    Domine Deus.
-    20. Dixit Dominus.                20. Dicit Dominus.               20. Dicit Dominus.
-    21. Et eruan te.                  21. Et liberabo te.              21. Et eruam te.
-    Notæ et variæ lectiones ad cap. XV Jeremíæ.
-    V. 1. Ἀπό προσ-. Ms. Jes. [Habet Complut. DRACH.]    Ibid. Theod., non debui etc. Hieron ymus. Syri
-    V. 5. Σ., Θ., ἐρωτήσαι. Idem.    versionem adfert Theodoretus.
-    V. 7. Καὶ οὗν ἐπεστράφησαν. Idem.
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,950,100">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ λληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="ebraico" bbox="50,100,300,260">
+    9 ט שבעה
+    10 ואיש מחר
+    לא-נשני-לא-נשי-בי Ὁ Σύρος,
+    οὐκ ὤφλησα.
+    11 למד
+    12 הירע ברזל וברזל יצפן
+    ונחשת
+    13 לא בחור
+    15 אתה ידעת
+    אל-אלך אפי אקח
+    16 ואכלם
+    יהי אלה
+    20 יהי-אם-יהי
+    21 והצלתיך
+  </bloco>
+  <bloco tipo="texto_principal" script="greco" bbox="350,100,550,260">
+    9.
+    10.
+    11.
+    12.
+    13.
+    15.
+    16.
+    20.
+    21.
+  </bloco>
+  <bloco tipo="texto_principal" script="greco" bbox="650,100,950,260">
+    9. Ἑπτά.
+    10. ✠ Ἄνδρα διακρινόμενον.
+    11. ✠ Εἰς ἀγαθόν.
+    12.
+    13.
+    15. ✠ Σὺ γνως.
+    16.
+    20. ✠ Φησὶ Κύριος.
+    21. ✠ Καὶ ῥύσομαί σε.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,260,300,450">
+    VERSIO HEBRAICI TEXT.
+    9. Septem.
+    10. Et virum contentionis.
+    Non fœneratus eum, nec fœnerati sunt in me. Syrus, non debui.
+    11. In bonum.
+    12. Numquid conteret ferrum ferrum ab Aquilone, et æs?
+    13. Non in pretio.
+    15. Tu nosti.
+    Ne in longanimitate furoris tui suscipias me.
+    16. Et comedi eos.
+    Domine Deus.
+    20. Dixit Dominus.
+    21. Et eruam te.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,260,600,450">
+    VULGATA LATINA.
+    9. Septem.
+    10. Virum discordiæ.
+    Non fœneravi, nec fœneravit mihi quisquam.
+    11. In bonum.
+    12. Numquid fœderabitur ferrum ferro ab Aquilone, et æs?
+    13. Gratis.
+    15. Tu scis.
+    Noli in patientia tua suscipere me.
+    16. Et comedi eos.
+    Domine Deus.
+    20. Dicit Dominus.
+    21. Et liberabo te.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,260,950,450">
+    AQUILA.
+    9. Septem.
+    10. Virum dijudicantem.
+    11. In bonum.
+    12.
+    13.
+    15. Tu nosti.
+    16.
+    20. Dicit Dominus.
+    21. Et eruam te.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,450,950,700">
+    Notæ et variæ lectiones ad cap. XV Jeremiæ.
+    V. 1. Ἀπὸ προσ-. Ms. Jes. [ Habet Complut. DRACH.]
+    V. 5. Σ., Θ., ἐρωτῆσαι. Idem.
+    V. 7. Καὶ οὐκ ἐπεστράφησαν. Idem.
     V. 8. Σ., ἐπ' ἐμέ. Idem.
-    Ibid. ᾿Α., Σ., αὐτοὶς. Idem.
-    V. 9. Hieron ymus : Saepè diximus verba   V. 11. ᾿Α., Σ., ἐς ἀγαθὸν. Ms. Jes. [In LXX non'
-    Hebraicum SABA, vel sepeŏn, vel juramentum so-      vacat; sed extra locum positum est in fine comma
-    nare, vel plurimos. Unde et diversa est interpreta-  tis, eis ἄγαθά. DRACH.]
-    tio; Aquila, LXX et Theodotione, septem, trans- 
-    ferentibus; Symmacho, plurimos. Symmachì ger-      V. 12. Symmachì et Theodotionis lectiones adfert
-    manam exhibet lectionem Lamb. Bos., flexitous.    Hieronymus. Varietas autem versionum inde pro-
-    DRACH.]
-    V. 10. ᾿Α., Θ., ✳ ἀνδρα. Ms. Jes.
-    (central dividing rules and column headers continue)
-    JEREMIÆ CAPUT XVI.
-    TO EBPAIKON.                       TO EBPAIKON                      ΑΚΥΛΑΣ.
-    Ελληνικοὶς γράμμασι.
-    1. ✳ Σκαντῷ.                      1.                                  1.
-    5.                                 5.                                 5.
-    6.                                 6.                                 6.
-    VERSIO HEBRAICI TEXT.             VULGATA LATINA.                   AQUILA.
-    1. Non accipias tibi.             1. Non accipies.                  1. Tibimetiψι.
-    5. Misericordiam et miseratio-     5. Misericordiam et miseratio-    5.
-    nes.
-    6. Et morientur magni et parvi    6. Et morientur magni et parvi   6.
-    in terra ista.                    in terra ista.
+    Ibid. Ἀ., Σ., αὐτοῖς. Idem.
+    V. 9. Hieronymus : « Sæpe diximus verbum Hebraicum SABA, vel septem, vel juramentum sonare, vel plurimos. Unde et diversa est interpretatio; Aquila, LXX et Theodotione, septem, transferentibus; Symmacho, plurimos. [Symmachi germanam exhibet lectionem Lamb. Bos, πλείστους. DRACH.]
+    V. 10. Ἀ., Θ., ✠ ἄνδρα. Ms. Jes.
+    Ibid. Theod., non debui etc. Hieronymus. Syri versionem adfert Theodoretus.
+    V. 11. Ἀ., Σ., εἰς ἀγαθόν. Ms. Jes. [In LXX non vacat; sed extra locum positum est in fine commatis. εἰς ἀγαθά. DRACH.]
+    V. 12. Symmachus et Theodotionis lectiones adfert Hieronymus. Varietas autem versionum inde provenit, quod LXX et Theod. legerint יח, Symmachus vero יח. Id vero notat Hieronymus his verbis: Numquid fœderabitur ferrum ferro ab Aquilone, et æs? Symmachus, Numquid nocebit ferrum ferro ab Aquilone, et æs? LXX et Theodotio, si cognoscet ferrum et operimentum æneum. Varietatis causa perspicua est. Verbum enim IARE, quod in præsenti loco scriptum est, pro ambiguitate enuntiatio-
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,740,980,990">
+  <bloco tipo="cabecalho" script="latino" bbox="350,700,650,730">
+    JEREMIÆ CAPUT XVI.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,730,950,760">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="ebraico" bbox="50,760,300,850">
+    1 אל-תקח לך
+    5 את-הדד ואת-הרחמים
+    6 ומתו גדלים וקטנים בארץ הזאת
+  </bloco>
+  <bloco tipo="texto_principal" script="greco" bbox="350,760,550,850">
+    1.
+    5.
+    6.
+  </bloco>
+  <bloco tipo="texto_principal" script="greco" bbox="650,760,950,850">
+    1. ✠ Σεαυτῷ.
+    5.
+    6.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,850,300,950">
+    VERSIO HEBRAICI TEXT.
+    1. Non accipias tibi.
+    5. Misericordiam et miserationes.
+    6. Et morientur magni et parvi in terra ista.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,850,600,950">
+    VULGATA LATINA.
+    1. Non accipies.
+    5. Misericordiam et miserationes.
+    6. Et morientur magni et parvi in terra ista.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,850,950,950">
+    AQUILA.
+    1. Tibimetipsi.
+    5.
+    6.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
     Digitized by Google
   </bloco>
   <notas>
-    Texto em colunas com latim, grego e hebraico; onde o original contém linhas hebraicas e caracteres gregos especiais foram preservados como aparente; várias abreviaturas e sinais críticos (✳, ⟨...⟩) mantidos literais. BBOXs estimadas em escala 0-1000.
+    Transcrição de página poliglota (Hexapla) contendo Hebraico, Grego e Latim.
+    Notas críticas no centro da página misturam Latim, Grego e Hebraico.
+    Alguns caracteres hebraicos podem variar na leitura devido à qualidade da imagem (ex: versos 10 e 12).
+    Símbolo ✠ usado no texto grego para marcar leituras específicas.
   </notas>
 </pagina>

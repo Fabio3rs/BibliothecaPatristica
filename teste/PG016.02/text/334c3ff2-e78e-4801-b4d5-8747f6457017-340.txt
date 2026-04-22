@@ -1,74 +1,145 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,80">
-    1927                       HEXAPLORUM QUÆ SUPERSUNT.                       1928.
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,50">
+    1927 HEXAPLORUM QUÆ SUPERSUNT. 1928
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,80,980,420">
-    .TO ΕΒΡΑΙΚΟΝ.                                        ΤΟ ΕΒΡΑΙΚΟΝ                                        ΑΚΥΛΑΣ.
-    .Ελληνικοί γράμμασι.
-    τυ 4            4.                                                     4. Μάρτυρα.
-    τι 5            5.                                                     5. ✶ Ἰδού.
-    ישע-כי יגע    
-    כי תאמץ
-    תרגם 6        6.                                                     6.
-    אם לא ישוב אלי העם 11.       11.                                      11.
-    חותם והניעה עליו ברוח חתם 13     13.                                   13. Κονύζης.
-    החי עלה חיים
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,950,100">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,420,980,760">
-    VERSIO HEBRAICI TEXT.                           VULGATA LATINA.                               AQUILA.
-    4. Testem.                                     4. Testem.                                    4. Testem.
-    5. Ecce.                                        5. Ecce.                                      5. ✶ Ecce.
-    Gentem non scies.                             Gentem, quam nesciebas.                       
-    Quia decoravit te.                             Quia glorificavit te.
-    6. Invokete eum.                                 6. Invocate eum.                               6.
-    11. Non revertetur ad me v-       11. Non revertetur ad me va-                     11.
-    cuum.
-    13. Pro spina alba ascendet abies,   13. Pro saliunca ascendit abies,               13. Conyza.
-    abies, pro urtica ascendet myr-     et pro urtica crescet myrtus.
-    tus.
-    
-    Notæ et variæ lectiones ad cap. LV Hesaiae.
-    V. 1. Θ., ✶ και πορεύεσθε και ἀγοράσατε. Cur-       Ibid. Ol λοιπ., ἀκούσατε ἀκούοντες. Procopius.
-    ter. ex ms. Jes.
-    Ibid. Α., Σ., ἄνευ αλλ-. Procopius, itemque Cur-     Θ., ✶ δοκην πρός με. Curter. ex ms. Jes.
-    rerius, qui habet, ol Γ', ✶ οἶνον. Fortasse quia     V. 3. Σ., τα ἄλη Δαυίδ. Procopius.
-    cum vox olvon olim in LXX desideraretur, ex tribus   V. 4. Α., Σ., μάρτυρα. Theodoret. et Reg. unus.
-    interpretibus aliûs fuit : nam id significatur hac   V. 5. Ol Γ', ✶ Ἰδού. Curter. ex ms. Jes. [Ἰδού
-    nota, ✶ ol Γ', οἶνον.                               habent Ald. et Complut. edd. DRACH.]
-    V. 2. Σ., διώατα etc. Procopius. Theodotionis     Ibid. Σ., 8., ἐόντος δὲ ὁ γυναικ. Curter. ex ms.
-    vero lectionem habent Curterius et Drusius.       Jes.
-    
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,100,300,190">
+    דע 4
+    הן 5
+    בני לא-ידעו
+    כי פארך
+    קראוך 6
+    לא ישוב אליך רקם 11
+    תחת הברש יעלה ברוש תחת הסרפד יעלה הדס 13
+    והסרף יעלה חיים
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="350,100,600,190">
+    4.
+    5.
+    6.
+    11.
+    13.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,100,900,190">
+    4. Μάρτυρα.
+    5. Ἰδού.
+    6.
+    11.
+    13. Κονύζης.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,200,950,230">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,230,300,330">
+    4. Testem.
+    5. Ecce.
+    Gentem non scies.
+    Quia decoravit te.
+    6. Invocate eum.
+    11. Non revertetur ad me vacuum.
+    13. Pro spina alba ascendet abies, pro urtica ascendet myrtus.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,230,600,330">
+    4. Testem.
+    5. Ecce.
+    Gentem, quam nesciebas.
+    Quia glorificavit te.
+    6. Invocate eum.
+    11. Non revertetur ad me vacuum.
+    13. Pro saliunca ascendet abies, et pro urtica crescent myrtus.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,230,900,330">
+    4. Testem.
+    5. Ecce.
+    6.
+    11.
+    13. Conyza.
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="250,340,750,360">
+    Notæ et variæ lectiones ad cap. LV Hesaiæ.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="50,360,480,460">
+    V. 1. Θ., καὶ πορεύεσθε καὶ ἀγοράσατε. Curter. ex ms. Jes.
+    Ibid. Ἀ., Σ., ἄνευ ἀλλ-. Procopius, itemque Curterius, qui habet, οἱ Γ', οἶνον. Fortasse quia eum vox οἶνον olim in LXX desideraretur, ex tribus Interpretibus addita fuit : nam id significatur hac nota, οἱ Γ', οἶνον.
+    V. 2. Σ., δίψατε etc. Procopius. Theodotionis vero lectionem habent Curterius et Drusius.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="520,360,950,460">
+    Ibid. Οἱ λοιπ., ἀκούσατε ἀκούοντες. Procopius.
+    Θ., ἀκοὴν πρὸς μέ. Curter. ex ms. Jes.
+    V. 3. Σ., τὰ ἐλέη Δαυίδ. Procopius.
+    V. 4. Ἀ., Σ., μάρτυρα. Theodoret. et Reg. unus.
+    V. 5. Οἱ Γ', Ἰδού. Curter. ex ms. Jes. [Ἰδοὺ habent Ald. et Complut. edit. DRACH.]
+    Ibid. Σ., Θ., ἔθνος ὃ οὐ γνώσῃς. Curter. ex ms. Jes.
+    Ibid. Σ., ὅτι ἐποίησεν etc. Procopius.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="400,470,600,490">
     HESAIÆ CAPUT LVI.
-    
-    TO ΕΒΡΑΙΚΟΝ.                                ΤΟ ΕΒΡΑΙΚΟΝ                                ΑΚΥΛΑΣ.
-    'Ελληνικοί γράμμασι.
-    ויקרא 1               1.                                                        1.
-    כי לאמר גדול 3         3.                                                    3.
-    כי כה אמר יהוה 4       4.                                                    4. ✶ 'Οτι τάδε.
-    עד יום טוב מימים ושנים 5 5.                                                 5.
-    
-    שם עולם אמן- ה' אשר לא ישתן
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,760,1320,1400">
-    כל־חנם 9        9.                                                       9. Πάν ζῶον αὐτοῦ.
-    הם ערים 10      10.                                                     10. Σκοπευται αὐτοῦ τυφλοί.
-    
-    VERSIO HEBRAICI TEXT.                                VULGATA LATINA.                                AQUILA.
-    1. Et justitia mea.                                   1. Et justitia mea.                             1.
-    
-    3. Dicendo, separatione.                            3. Dicens : separatione.                         3.
-    4. Quia sic dicit Dominus.                           4. Quia hæc dicit Dominus.                       4. ✶ Quia hæc.
-    5. Manum et nomen melius                             5. Locum et nomen melius a fi-                    5.
-    quam filii et quam filiae.                           liis et filiabus.
-    
-    Nomen sæculi dabo ei, quod                         Nomen sempiternum dabo eis,                      
-    non succidetur.                                     quod non peribit.
-    
-    9. Omnis fera.                                       9. Omnes bestiæ.                                9. Omne animal ejus.
-    10. Speculatores ejus cæci.                         10. Speculatores ejus cæci.                     10. Speculatores ejus cæci.
+  <bloco tipo="texto_principal" script="misto" bbox="50,500,950,540">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="780,1400,980,1480">
-    •digitized by Google
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,540,300,650">
+    וזרחתך 1
+    לאמר הבדל 3
+    כי כה אמר יהוה 4
+    די ושם טוב מבנים ומבנות 5
+    וש שמם עולם אתן לו אשר לא יכרת
+    כל-חיתו 9
+    צפיו עורים 10
   </bloco>
-  <notas>Texto principal em latim com inserções de hebraico e grego. Pequenas manchas e sinais tipográficos podem tornar ilegíveis palavras isoladas; usei [ilegivel] quando estritamente necessário (não aplicável aqui).</notas>
+  <bloco tipo="texto_principal" script="misto" bbox="350,540,600,650">
+    1.
+    3.
+    4.
+    5.
+    9.
+    10.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,540,900,650">
+    1.
+    3.
+    4. Ὅτι τάδε.
+    5.
+    9. Πᾶν ζῷον αὐτοῦ,
+    10. Σκοπευταὶ αὐτοῦ τυφλοί.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,660,950,690">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,690,300,900">
+    1. Et justitia mea.
+    3. Dicendo, separatione.
+    4. Quia sic dicit Dominus.
+    5. Manum et nomen melius quam filii et quam filiæ.
+    Nomen sæculi dabo ei, quod non succidetur.
+    9. Omnis fera.
+    10. Speculatores ejus cæci.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,690,600,900">
+    1. Et justitia mea.
+    3. Dicens : separatione.
+    4. Quia hæc dicit Dominus.
+    5. Locum et nomen melius a filiis et filiabus.
+    Nomen sempiternum dabo eis, quod non peribit.
+    9. Omnes bestiæ.
+    10. Speculatores ejus cæci.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,690,900,900">
+    1.
+    3.
+    4. Quia hæc.
+    5.
+    9. Omne animal ejus.
+    10. Speculatores ejus cæci.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,950,900,990">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição de página da Patrologia Graeca (Hexaplorum quæ supersunt). Contém texto em Hebraico, Grego e Latino.
+    A linha "והסרף יעלה חיים" no bloco superior esquerdo parece ser uma variante ou erro de impressão, pois não corresponde ao versículo 13 de Isaías 55 na Vulgata ("myrtus").
+    A linha "וש שמם עולם אתן לו אשר לא יכרת" no bloco inferior esquerdo corresponde ao final do versículo 5 de Isaías 56.
+  </notas>
 </pagina>

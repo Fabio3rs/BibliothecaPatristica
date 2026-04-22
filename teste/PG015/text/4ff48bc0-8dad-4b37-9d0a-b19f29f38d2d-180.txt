@@ -1,90 +1,106 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,100">
-    PENTAPLORUM QUÆ SUPERSUNT.
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,50">
+    355 HEXAPLORUM QUÆ SUPERSUNT. 356
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,100,980,320">
-    TO EBRAIKON.                       TO EBPAIKON                      AKVILAΣ.
-    ΤΟ ΕΒΡΑΙΚΟΝ.                       Ἑλληνικὸς γράμμασι.
-    [עברית טקסט בשורה אחת בלתי קריאה]       26.                               26. Καὶ εἶπεν, γυνὴ ὀμφαλῶν
-    [עברית שורה נוספת חלקית]             27.                               27.
-                                           28.                               28.
+  
+  [!-- Seção Superior: Êxodo IV (continuação) --]
+  <bloco tipo="texto_principal" script="misto" bbox="50,50,950,240">
+    TO EBPAIKON.           TO EBPAIKON           AKYLAS.
+                           Ἑλληνικοῖς γράμμασι.
+    
+    ויצא לקראתו וישתחו לו ארצה
+    ויאמר חתן דמים למולת 26.   26.                  26. Καὶ εἶπεν, νυμφίον αἱμάτων
+    תלחי םיפת 'O Ἑβρ., ἐπράχισε 26.                  ἔχω εἰς περιτομάς.
+    τὸ αἷμα τῆς περιτομῆς.
+
+    ויפן 27                27.                  27.
+    ותפן 28                28.                  28.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,320,980,540">
-    VERSIO HEBRAICI TEXT.           VULGATA LATINA.                 AQUILA.
-    Et tangere fecit pedes ejus, et  Tetigique pedes ejus, et ait:      *
-    dixit: Quia sponsus sanguinum es  Sponsus sanguinum tu mihi es.     *
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,240,950,360">
+    VERSIO HEBRAICI TEXT.      VULGATA LATINA.          AQUILA.
+    Et tangere fecit pedes     Tetigitque pedes ejus,
+    ejus, et dixit : Quia      et ait : Sponsus
+    sponsus sanguinum es       sanguinum tu mihi es.
     mihi.
-    26. Et recessit ab eo, tunc     26. Et dimisit eum postquam        26. Et dixit, Sponsus sanguis-
-    dixit: Sponsus sanguinis ad cir- dixerat: Sponsus sanguinum ob     num habeo ad circumcisiones.
-    circumcisiones. Hebraeus interpr., circumcisionem.
-    obligavit sanguinem circumcisi-
-    nis.
-    27. Et osculatus est eum.       27. Et osculatus est eum.         27.
-    28. Signa.                      28. Signa.                        28.
+    26. Et recessit ab eo,     26. Et dimisit eum       26. Et dixit, Sponsum sangui-
+    tunc dixit : Sponsus       postquam dixerat :       num habeo ad circumcisiones.
+    sanguinis ad cir-          Sponsus sanguinum ob
+    cumcisiones. Hebræus       circumcisionem.
+    interpr., obsignavit
+    sanguinem circumcisionis.
+    27. Et osculatus est eum.  27. Et osculatus est     27.
+                               eum.
+    28. Signa.                 28. Signa.               28.
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="40,540,980,760">
+
+  [!-- Notas Críticas --]
+  <bloco tipo="cabecalho" script="latino" bbox="250,370,750,390">
     Notæ et variæ lectiones ad cap. IV Exodi.
-    V. 4. 'Αλλος, τῆς σούρας. Ex Coislin.
+  </bloco>
+
+  <bloco tipo="nota" script="misto" bbox="100,390,500,540">
+    V. 4. Ἄλλος, τῆς οὐρᾶς. Ex Coislin.
     V. 6. Ex Codice Basiliensi, ubi ad Symmachum
-    legitur ἱερεψυν ρρο Ἀλεταρρωμν.
-    V. 8. Sic etiam et editio Rom.
+    legitur λεπρωμένη pro λελεπρωμένη.
+    V. 8. Sic catenæ et editio Rom.
     V. 10. Hæc omnia perplexe jacent apud Dru-
     sium, ubi versio quæ Syri est, Symmachi esse di-
-    citur; qua Symmachi, prorsus omittitur. Omnes
-    cœtanea nostræ sic habent ut nos præsensamus.
-    Aquæ etiam versus sequendi. — Coislin. Σ., συχ εἰ-
-    δατος, σψ ἱκνον. A., ουκ ἀνὴρ προϊων. O', οἰκ
-    ἀλιτρος. Sic ille cum edit. Rom. lectissimi, quam
+    citur; quæ Symmachi, prorsus omittitur. Omnes
+    catenæ nostræ sic habent ut nos repræsentamus.
+    Atque etiam versu sequenti. — Coislin. Σ., οὐκ εὐ-
+    λαλὸς, οὐχ κανὸς. Α., οὐκ ἀνὴρ ημάτων. Οʹ., οκ
+    ελογος. Sic ille cum edit. Rom. lectionem, quam
     omnes alii codices Syro tribuunt, Symmacho ad-
-    scribit. Error ex littera Σ., initiali, in nitrogræ ca-
-    dem, evitare potuit. Res in dubio relinquitur. O'..
-    οὐκ ἔλειπε. In editione Romana οὐκ ἔχειν legitur in
+  </bloco>
+
+  <bloco tipo="nota" script="misto" bbox="510,390,900,540">
+    scribit. Error ex litera Σ., initiali, in utroque ea-
+    dem, evenire potuit. Res in dubio relinquitur. Οʹ.,
+    οὐκ εὔλογος. In editione Romana οὐχ ἱκανὸς legitur in
     textu.
-    Ibid. Hæc interpretatio Aquilæ, καὶρὰ ἐνθε τελε κτλ.
-    prodit ex codice Basiliensi.
-    V. 11. A., Σ., O., μογλάδων. Sic mea.
+    Ibid. Hæc interpretatio Aquilæ, καὶγε ἀπὸ τότε etc.
+    prodiit ex codice Basiliensi.
+    V. 11. Α., Σ., Θ., μογιλάλον. Sic mss.
     V. 12. Sic Chronicon Alexandrinum, p. 67.
+    V. 13. Α., Θ., ἐν ἐμοί, Κύριε. Ita codex Basi-
+    liensis.
     V. 15. Has lectiones exhibet Chronicon Alexan-
     drinum, p. 67.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,760,980,840">
+
+  [!-- Seção Inferior: Êxodo V --]
+  <bloco tipo="cabecalho" script="latino" bbox="400,550,600,570">
     CAPUT V EXODI.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,840,128,1140">
-    TO EBRAIKON.
-    [עברית שורות עמוד שמאל על שתי עמודות: משובצות מספרים]
-    3.
-    4.
-    6.
-    7.
+
+  <bloco tipo="texto_principal" script="misto" bbox="50,570,950,740">
+    TO EBPAIKON.           TO EBPAIKON           AKYLAS.
+                           Ἑλληνικοῖς γράμμασι.
+    
+    ויאמרו אלהי העברים 3   3.                   3.
+    נקרא עלינו                                   Λοιμὸς ἢ μάχαιρα.
+    ויאמר 4              4.                   4. Ἀποπτάξετε.
+    לכו לסבלתיכם 6       6.                   6. Τοὺς εἰσπράκτας.
+    ויצו פרעה 7          7.                   7. Κατὰ ἐχθὲς τρίτην, αὐτοὶ πο-
+    לא תאספון                                    ρεύεσθωσαν.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,840,680,1140">
-    TO EBPAIKON
-    Ἑλληνικὸς γράμμασι.
-    3.
-    4.
-    6.
-    7.
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,740,950,900">
+    VERSIO HEBRAICI TEXT.      VULGATA LATINA.          AQUILA.
+    3. Invocatus est super     3. Vocavit nos.          3.
+    nos.
+    Cum pestilentia vel        Pestis aut gladius.      Pestis aut gladius.
+    gladio.
+    4. Cessare facietis.       4. Sollicitatis.         4. Abducitis.
+    6. Exactores.              6. Præfectis operum.     6. Exactors.
+    7. Sicut heri nudius       7. Sicut prius : sed     7. Sicut heri modius tertius ipsi
+    tertius ipsi vadant,       ipsi vadant et           vadant.
+    et colligant sibi          colligant stipulas.
+    paleam.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="700,840,980,1140">
-    AKVILAΣ.
-    3.
-    4.  Ἀποστατέσεις.
-    6.  Τους ἐισπράκτους.
-    7. Κατὰ τώιδες τρίταις, δισοι πα-
-    ρεισάγονται.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,1140,980,1440">
-    VERSIO HEBRAICI TEXT.        VULGATA LATINA.               AQUILA.
-    3. Inconversus est super nos.  3. Vocavit nos.                3.
-    Cum pestilentia vel gladio.   Pestis aut gladius.            Pestis aut gladius.
-    4. Cessare facietis.           4. Sollicitabis.               4. Abducitis.
-    6. ?factores.                  6. Praefectis operum.          6. Exactores.
-    7. Sicut heri nudius tertius ipsi 7. Sicut prius: sed ipsi vadant  7. Sicut heri nudius tertius ipsi
-    vadant, et colligant sibi paleas. et colligant stipulas.             vadant.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="720,1440,980,1520">
+
+  <bloco tipo="rodape" script="latino" bbox="450,950,750,990">
     Digitized by Google
   </bloco>
-  <notas>Transcrição inclui blocos hebraicos parcialmente ilegíveis; usei [עברית ...] para indicar linhas hebraicas danificadas sem normalizar. Alguns sinais tipográficos (negrito/itálico) não foram marcados. Linhas gregas em AKVILAΣ contêm abreviações e lacunas.</notas>
 </pagina>

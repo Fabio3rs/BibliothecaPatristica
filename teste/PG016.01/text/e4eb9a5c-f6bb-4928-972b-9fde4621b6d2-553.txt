@@ -1,91 +1,120 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,90">
-    1065 PSALMUS LXXXVIII. 1068
+  <bloco tipo="cabecalho" script="misto" bbox="0,0,1000,60">
+    1065 PSALMUS LXXXVIII. PSALMUS LXXXVIII. 1066
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="0,90,333,820">
-    ΣΥΜΜΑΧΟC.
+  <bloco tipo="texto_principal" script="grego" bbox="20,60,320,90">
+    ΣΥΜΜΑΧΟΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="330,60,650,90">
+    θ'.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="660,60,980,90">
+    ΘΕΟΔΟΤΙΩΝ.
+  </bloco>
+  
+  [!-- Coluna Grega Esquerda (Symmachus) --]
+  <bloco tipo="texto_principal" script="grego" bbox="20,100,320,400">
     1.
-    2. Τὰ ἔλεη Κυρίου εἰς τὸν αἰῶνα φῶσι.
-    3. Ὅτι εἴπον.
-    Ἐν τοῖς οὐρανοῖς ἐδρασθήσεται ἡ ἀλήθειά σου.
-    4. Συνδήχην.
-    5. Ἔως τοῦ αἰῶνος ἐτοίμασα τὸ σπέρμα σου, καὶ οἰκοδομήσω εἰς ἑκάστην γενεὰν τὸν θρόνον σου.
+    2. Τὰ ἐλέη Κυρίου εἰς τὸν αἰῶνα ᾄσω.
+    3. Ὅτι επον.
+    Ἐν τοῖς ορανοῖς ἐδρασθήσεται ἡ ἀλήθειά σου.
+    4. Συνθήκην.
+    5. Ἕως τοῦ αἰῶνος τοιμάσω τὸ σπέρμα σου, καὶ οἰκοδομήσω εἰς ἑκάστην γενεὰν τὸν θρόνον σου.
     6.
-    7. Τὶς γὰρ ἐν αἰθήρͅ ἀντιπαραθήσεται τῷ Κυρίῳ, ἐξελεύσεται τῷ Κυρίῳ ἐν υἱοῖς Θεοῦ;
-    8. Θεὸς ἔθαπτρε ἐν ὀμιλία ἁγίων πολλῇ, καὶ ἐπιφόδος ἐν πᾶσι τοῖς περισαφῶν.
-    13. Εἰς βοῤῥὰν καὶ δεξιὰν σὺ ἔκτισας.
+    7. Τίς γὰρ ἐν αἰθέρι ἀντιπαρα- θήσει τῷ Κυρίῳ, ἐξισώσει τῷ Κυρί ἐν υἱοῖς Θεοῦ;
+    8. Θεὸς ὁ ἅγιος ἐν ὁμιλίᾳ ἁγίων πολλῇ, καὶ ἐπίφοβος ἐν πᾶσι τοῖς περὶ σεαυτόν.
+    13. Εἰς βορρᾶν καὶ δεξιὰν σὺ ἔκτισας.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="333,90,666,820">
-    PSALMUS LXXXVIII.
-    Ο.
-    1. Αἴθαν τῷ Ἐζρατῖ. Ἄλλως,
-    Αἴθαν τῷ Ἰσραηλιτῇ. Ἄλλως, Αἴ-
-    θαν τῷ Ζαραῖτη.
-    2. Τὰ ἔλεή σου, Κύριε, εἰς τὸν αἰῶνα ἄσoμαι.
-    3. Ὅτι εἶπας. Ε, ὅτι εἶπα.
-    Ἐν τοῖς οὐρανοῖς ἐτοιμασθήσεται ἡ ἀλήθειά σου.
-    4. Διαθήkyn.
-    Τούε ἐκλεκτοίς μου. Οι λοιποί,
-    τῷ ἐπιλέχτω μου.
-    5. Ἔως τοῦ αἰῶνος ἐτοίμασα τὸ σπέρμα σου, καὶ οἰκοδομήσω εἰς γενεὰν καὶ γενεὰν τὸν θρόνον σου.
-    6. Καὶ τὴν ἀλήθειάν σου ἐν Ἐκκλησίᾳ ἁγίων.
-    7. Ὅτι τῖς ἐν νεφέλαις ἰσοιώθησαν τῷ Κυρίῳ, καὶ τὶς ὁμοιωθήσεται τῷ Κυρίῳ ἐν υἱοῖς Θεοῦ;
-    8. Ὁ θεὸς ἐνδοξαζόμενος, ἐν βουλῇ ἁγίων, μέγας καὶ φοβερὸς ἐπὶ πάντας τοὺς περικύκλω αὐτοῦ.
-    13. Τὸν βοῤῥὰν καὶ θάλασσαν σὺ ἔκτισας. Ε', βοῤῥὰν καὶ νότον σὺ ἔκτισας.
+
+  [!-- Coluna Grega Central (LXX) --]
+  <bloco tipo="texto_principal" script="grego" bbox="330,100,650,400">
+    1. Αἰθὰν τῷ Ἐζραΐτῃ. λλως, Αἰθὰμ τῷ Ἰσραηλίτῃ. λλος, Α- θὰν τ Ζαραΐτῃ.
+    2. Τὰ ἐλέη σου, Κύριε, εἰς τὸν αἰῶνα ᾄσομαι.
+    3. Ὅτι εἶπας. Ε', ὅτι επα.
+    ν τοῖς οὐρανοῖς ἑτοιμασθήσεται ἡ ἀλήθειά σου.
+    4. Διαθήκην.
+    Τοῖς ἐκλεκτοῖς μου. Οἱ λοιποί, τῷ ἐπιλέκτῳ μου.
+    5. Ἕως τοῦ αἰῶνος τοιμάσω τὸ σπέρμα σου, καὶ οκοδομήσω εἰς γενεὰν καὶ γενεὰν τὸν θρόνον σου.
+    6. Καὶ τὴν ἀλήθειάν σου ἐν ἐκ- κλησίᾳ ἁγίων.
+    7. Ὅτι τίς ἐν νεφέλαις ἰσωθήσε- ται τῷ Κυρίῳ, καὶ τίς ὁμοιωθήσε- ται τῷ Κυρίῳ ἐν υἱος Θεοῦ;
+    8. Ὁ Θεὸς ἐνδοξαζόμενος ἐν βουλῇ γίων, μέγας καὶ φοβερὸς ἐπὶ πάντας τοὺς περικύκλῳ αὐτοῦ.
+    13. Τὸν βορρᾶν καὶ θάλασσαν σὺ ἔκτισας. Ε', βορρᾶν καὶ νότον σὺ ἔκτισας.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="666,90,1000,820">
-    ΘΕΟΔΩΤΙΟΝ.
+
+  [!-- Coluna Grega Direita (Theodotion) --]
+  <bloco tipo="texto_principal" script="grego" bbox="660,100,980,400">
     1.
-    2. Τὰ ἔλεή σου, Κύριε, εἰς τὸν αἰῶνα ἄσoμαι.
-    3. Ὅτι εἴπον.
+    2. Τὰ ἐλέη σου, Κύριε, εἰς τν αἰνα ᾄσομαι.
+    3. Ὅτι εἶπον.
     4.
     5.
-    6. Καὶγε τὴν πίστιν σου ἐν Ἐκκλησίᾳ ἁγίων.
+    6. Καὶγε τν πίστιν σου ἐν ἐκ- κλησίᾳ γίων.
     7.
     8.
-    13. Βοῤῥὰν καὶ νότον σὺ ἔκτισας.
+    13. Βορρᾶν καὶ νότον σὺ ἔκτισας.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="0,820,333,1900">
+
+  [!-- Cabeçalhos Latinos --]
+  <bloco tipo="texto_principal" script="latino" bbox="20,420,320,450">
     SYMMACHUS.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="330,420,650,450">
+    LXX INTERPRETES.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="660,420,980,450">
+    THEODOTIO.
+  </bloco>
+
+  [!-- Coluna Latina Esquerda (Symmachus) --]
+  <bloco tipo="texto_principal" script="latino" bbox="20,460,320,850">
     1.
-    2. Misericordias Domini in æ-
-    ternum cantabo.
+    2. Misericordias Domini in æ- ternum cantabo.
     3. Quoniam dixi.
     In cœlis fundabitur veritas tua.
     4. Fœdus
-    5. Usque in sæculum præparabo semen tuum : et ædificabo in unamquamque generationem thronum tuum.
+    5. Usque in sæculum præparabo semen tuum : et ædificabo in unamquamque generationem thro- num tuum.
     6.
-    7. Quis enim in æthere æquabit se Domino, æqualis erit Domino in filiis Dei ?
-    8. Deus invicte in colloquio sanctorum multo, et tremende in omnibus quæ circum te sunt.
+    7. Quis enim in æthere æquabit se Domino, æqualis erit Domino in filiis Dei?
+    8. Deus invicte in colloquio san- ctorum multo, et tremende in om- nibus quæ circum te sunt.
     13. In aquilonem et dexteram tu creasti.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="333,820,666,1900">
-    LXX INTERPRETES.
-    1. Æthan Ezraite. Aliter, Æthan Israelite. Alius, Æthan Zaraitæ.
+
+  [!-- Coluna Latina Central (LXX) --]
+  <bloco tipo="texto_principal" script="latino" bbox="330,460,650,850">
+    1. Æthan Ezraitæ. Aliter, Æthan Israelitæ. Alius, Æthan Zaraitæ.
     2. Misericordias tuas, Domine, in æternum cantabo.
     3. Quoniam dixisti. V, quoniam dixi.
     In cœlis præparabitur veritas tua.
     4. Testamentum.
     Electis meis. Reliqui, electo meo.
-    5. Usque in æternum præparabo semen tuum : et ædificabo in generationem et generationem thronum tuum.
+    5. Usque in æternum præpara- bo semen tuum : et ædificabo in generationem et generationem thronum tuum.
     6. Et veritatem tuam in ecclesia sanctorum.
-    7. Quoniam quis in nubibus æquabitur Domino, et quis assimilabitur Domino in filiis Dei ?
-    8. Deus qui glorificatur in consilio sanctorum : magnus et terribilis super omnes qui in circuitu ejus sunt.
-    13. Aquilonem et mare tu creasti. V, aquilonem et austrum tu creasti.
+    7. Quoniam quis in nubibus æ- quabitur Domino, et quis assimi- labitur Domino in filiis Dei?
+    8. Deus qui glorificatur in con- silio sanctorum : magnus et ter- ribilis super omnes qui in circuitu ejus sunt.
+    13. Aquilonem et mare tu crea- sti. V, aquilonem et austrum tu creasti.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="666,820,1000,1900">
-    THEODOTIO.
+
+  [!-- Coluna Latina Direita (Theodotio) --]
+  <bloco tipo="texto_principal" script="latino" bbox="660,460,980,850">
     1.
     2. Misericordias tuas, Domine, in æternum cantabo.
     3. Quoniam dixi.
     4.
     5.
-    6. Etiam fidem tuam in ecclesia sanctorum.
+    6. Etiam fidem tuam in eccle- sia sanctorum.
     7.
     8.
     13. Aquilonem et austrum tu creasti.
-    PATROL. GR. XVI.
-    34
   </bloco>
-  <notas>Scripts: página com colunas mistas — grego nas três colunas superiores e latim nas três colunas inferiores; pequenas lacunas numeradas mantidas; usos de abreviaturas e sinais críticos preservados conforme impresso; algumas linhas e números de folheto no cabeçalho e rodapé transcritos.</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="0,880,1000,950">
+    PATROL. GR. XVI. 34
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição de página comparativa do Salmo 88 (LXX 89) com versões de Symmachus, LXX e Theodotion.
+    O texto grego usa respirações e acentos polifônicos.
+    "V" no texto latino indica variante (Aliter/Vel).
+    Alguns versículos estão em branco em certas colunas (ex: v.1 em Symmachus e Theodotion grego/latino).
+  </notas>
 </pagina>

@@ -1,4 +1,7 @@
 <pagina estado="com_texto">
+  <bloco tipo="outro" script="latino" bbox="30,5,980,40">
+    tipo_pagina: texto
+  </bloco>
   <bloco tipo="cabecalho" script="latino" bbox="30,10,970,70">
 97    HISTORIÆ ECCLESIÆ REMENSIS LIBRI QUATUOR. — LIB. II.    98
   </bloco>
@@ -10,19 +13,19 @@ fuerat, cujus ibi subscriptio meditata tenebatur,
 adfuit, negans se subscribisse. Hæc igitur causa
 primum fallax episcopus repertus esse dicitur. Post
 hæc epistolæ prolatæ sunt, in quibus multa de im-
-propriis Brunchildis tenebantur, quæ ad Chilpe-
+propriis Brunechildis tenebantur, quæ ad Chilpe-
 ricum scriptæ fuerant. Similiter et Chilperici ad
 episcopum delatæ, in quibus inter reliqua habeta-
 tur insertum, quia si radix cujuslibet rei incisa [c.
 excisa] non fuerit, culmus qui terris est editus non
 arrescit. Unde porros manifestum est ideo hæc
 scripta, ut superata Brunechilde filius ejus opprime-
-retur. Item alia nonnulla eidem præfuli objiciun tur,
+retur. Item alia nonnulla eidem præsuli objiciuntur,
 tam de pactionibus regum, quam de perturbatione
 patriæ, quorum quedam negavit, quedam negare
 non potuit. Et dum altercatio diutius traheretur,
 adfuit etiam abbas Epiphanius basilicæ sancti Re-
-migii, licens quod duo millia aureorum, speciesque
+migii, dicens quod duo millia aureorum, speciesque
 multas pro conservanda Chilperici regis amicitia
 idem præfui accepisset; et cum legatis, qui cum
 episcopo missi fuerant ad memoratum regem, pro-
@@ -63,7 +66,7 @@ Hujus Egidii tempore sanctus Domini Basolus, ex
 territorio Lemovicino, regione Armoricana, nobili
 prosapia oriundus, a partibus Aquitaniæ, patrocinia
 beatissimi Remigii desiderabiliter appetens, Re-
-mensem devenit ad urbem. Cui aduenienti [ilegivel]
+mensem devenit ad urbem. Cui advenienti comes
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="510,80,970,880">
 A itineris apparuisse traditur angelus Domini, quem
@@ -130,13 +133,31 @@ adhuc modo servatur, ut promotâ [j, permota] quæ-
 libet venatio, si aggressum in circuitu silvæ ipsius
 prominentem fuerit ingressa, nec canum ullerius
   </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,110,505,150">
+A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,300,505,340">
+B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,470,505,510">
+C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,660,505,700">
+D
+  </bloco>
   <bloco tipo="rodape" script="latino" bbox="300,900,980,990">
 Digitized by Google
   </bloco>
   <notas>
-- Scriptos principalmente latinos; algumas palavras e cortes de linha estavam parcialmente ilegíveis e foram marcadas como [ilegivel].
-- As bboxes são aproximações relativas à imagem (escala 0-1000).
-- Mantive a divisão em duas colunas; transcrevi a coluna esquerda por completo antes da direita.
-- Onde fui inseguro sobre letras (p.ex. "referendarius" vs "referrendarius", "Brunechilde"/"Brunchildis", termos corroídos), optei por transcrever o que se lia claramente; pontos incertos foram marcados [ilegivel].
+- Tipo de página identificado: texto.
+- Script principal: latino.
+- Layout: página em duplo corpo (duas colunas). Mantive a ordem requerida: coluna esquerda inteira seguida da coluna direita.
+- Mapeamento de blocos: incluí cabeçalho superior (números de página e título), duas colunas de texto_principal, notas marginais (letras A–D ao centro), e o rodapé "Digitized by Google".
+- BBOXs são aproximações relativas à imagem (escala 0–1000).
+- Observações paleográficas e decisões:
+  - Preservei grafias e diacríticos visíveis (ex.: æ) conforme aparecem no impresso; não normalizei formas latinas arcaicas.
+  - Corrigi minimamente erros óbvios de OCR quando a leitura visual era clara (p.ex. "Strateburgum" em vez de variantes muito corrompidas). Onde a leitura era incerta no OCR original, mantive a forma que melhor corresponde ao impresso; foram evitadas "correções" que implicassem invenção.
+  - Entradas potencialmente dúbias (ex.: variantes de nomes próprios como Otho/Otto, formas de Brunechilde/Brunechildis, pontuações e algumas quebras de linha) foram mantidas conforme legíveis no documento; marquei apenas quando o OCR prévio indicou [ilegivel].
+- Se for necessária uma diplomática letra-a-letra (preservando punções tipográficas, long-s, abreviações gráficas e abreviações suspensas), posso produzir uma versão mais estrita; nesta transcrição privilegiei legibilidade preservando a literalidade visível.
   </notas>
 </pagina>

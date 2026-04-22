@@ -1,43 +1,40 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,70">
-    HEXAPLORUM QUÆ SUPERSUNT.
+  <bloco tipo="cabecalho" script="misto" bbox="100,20,900,60">
+    291 HEXAPLORUM QUÆ SUPERSUNT. 292
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,70,320,940">
-    TO EBRAIKON.
-    [heb] 4 4.
-    [heb] 5 5.
-    [heb] 6 6.
-    [heb texto hebraico] 8 8.
-    [heb texto hebraico] 9 9.
-    11.אם-לא-עד-כבד ירבק 11.
-    13.אכלים ושמם יין 13.
-    14.ומלך בא אל-איב 14.
-    15. 'O Εβραιος , επεπεσον οι Σαβαϊται.
-    [heb texto] 16 16.
-    VERSIO HEBRAICI TEXT.
-    4. Vit die suo.
-    5. Circueirunt.
-    Forsitan peccaverunt filii mei ,
-    et benedixerunt Deum in corde suo.
-    6. Filii Dei.
-    Et venit etiam Satan in medium eorum.
-    8. Super servum meum.
-    Vir perlectus, et rectus, timens Deum.
-    9. Numquid gratis timet Job Deum ?
-    11. Si non super facies tuas benedixerit tibi.
-    13. Comedentes et bibentes vinum.
-    14. Et nuncius venit ad Job.
-    15. Et delapsus est Saba. Hebr., inciderunt Sabbaita.
-    Et evasi tantum ego, solus ego ad nuntiandum tibi. Hebraeus, salvatus autem sum ad annuntiandum tibi.
-    16. Adhuc illo loquente et hic venit.
-    Ignis Dei cecidit de coelo.
-    Et devoravit eos.
+  
+  <bloco tipo="texto_principal" script="grego" bbox="150,70,300,100">
+    TO EBPAIKON.
   </bloco>
-  <bloco tipo="texto_principal" script="greco" bbox="340,70,660,940">
-    ΤΟ ΕΒΡΑΙΚΟΝ
-    Ελληνικοὶς γράμμασι.
-    4. 4.
-    5. 5.
+  <bloco tipo="texto_principal" script="grego" bbox="400,70,600,100">
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,70,900,100">
+    AKYLAΣ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="80,100,350,480">
+    אִישׁ אֶחָד 4
+    וַיִּקְרְבוּ 5
+    אֻלַי חָטְאוּ בָנַי וּבִרְכוּ אֱלֹהִים
+    בִּלְבָבָם 6
+    וַיֹּאמֶר יְהוָה אֶל-הַשָּׂטָן 8
+    הֲחִנָּם יָרֵא אִיּוֹב אלֹהִים 9
+    אִם-לֹא עַד-פְּנֵיךָ יִבְרֶכְךָ 11
+    וְאֹכְלִים וְשֹׁתִים יָיִן 13
+    וַיָּבֹא אֶל-אִיּוֹב 14
+    עוֹד זֶה מְדַבֵּר וְזֶה בָא 15 Ὁ Ἑβραῖος,
+    ἐπέπεσον οἱ Σαββαῖται.
+    וָאֶמָּלְטָה רַק-אֲנִי לְבַדִּי לְהַגִּיד לָךְ
+    15 Ὁ Ἑβραῖος, ἐσώθην τοῦ ἀπαγγεῖλαί σοι.
+    עוֹד זה מְדַבּר וְזֶה בָא 16
+    אֵשׁ אֱלֹהִים נָפְלָה מִן-הַשָּׁמַיִם
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="380,100,450,480">
+    4.
+    5.
     6.
     8.
     9.
@@ -46,53 +43,116 @@
     14.
     15.
     16.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="650,100,920,480">
+    4.
+    5.
+    Εἴπως ἥμαρτον οἱ υἱοί μου, καὶ
+    ηὐλόγησαν Θεὸν ἐπὶ καρδίας αὐτν
+    6.
+    Καὶγε Σατᾶν ἐν μέσῳ αὐτῶν.
+    8. Ἐπὶ τὸν δοῦλόν μου.
+    Ἀνὴρ ἁπλοῦς κα εὐθὺς καὶ φο-
+    βούμενος τὸν Θεόν.
+    9. [Μὴ δωρεὰν] φοβεῖται τὸν
+    Θεόν;
+    11. Ἢ οὐχ εἰς πρόσωπόν σου εὐ-
+    λογήσει σε.
+    13.
+    14. Καὶ ἰδοὺ ἄγγελος ἦλθε πρὸς
+    Ἰώβ.
+    15. Ἐπέπεσε Σαβά.
+    16. Ἔτι οὗτος ἐλάλει, καὶ οὗτος
+    ἦλθε.
+    Πῦρ θεοῦ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="80,500,350,950">
+    VERSIO HEBRAICI TEXT.
+    4. Vir die suo.
+    5. Circuierunt.
+    Forsitan peccaverunt filii mei,
+    et benedixerunt Deum in corde
+    suo.
+    6. Filii Dei.
+    Et venit etiam Satan in medium
+    eorum.
+    8. Super servum meum.
+    Vir perfectus, et rectus, ti-
+    mens Deum.
+    9. Numquid gratis timet Job
+    Deum?
+    11. Si non super facies tuas
+    benedixerit tibi.
+    13. Comedentes et bibentes vi-
+    num.
+    14. Et nuntius venit ad Job.
+    15. Et delapsus est Saba. Hebr.,
+    inciderunt Sabbaitæ.
+    Et evasi tantum ego, solus ego
+    ad nuntiandum tibi. Hebræus, sal-
+    vatus autem sum ad annuntian-
+    dum tibi.
+    16. Adhuc illo loquente et hic
+    venit.
+    Ignis Dei cecidit de cœlo.
+    Et devoravit eos.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="380,500,650,950">
     VULGATA LATINA.
     4. Unusquisque in die suo.
-    5. In orbem transeunt.
+    5. In orbem transissent.
     Ne forte peccaverint filii mei,
-    et benedixerint Deo in cordibus suis.
+    et benedixerint Deo in cordibus
+    suis.
     6. Filii Dei.
-    Adfuit inter eos etiam Satan.
+    Affuit inter eos etiam Satan.
     8. Servum meum.
-    Homo simplex et rectus, ac timens Deum.
-    9. Nunquid Job frustra timet Deum ?
-    11. Nisi in faciem benedixerit tibi.
-    13. Cum...... comederent et biberent vinum.
+    Homo simplex et rectus, ac ti-
+    mens Deum.
+    9. Numquid Job frustra timet
+    Deum?
+    11. Nisi in faciem benedixerit
+    tibi.
+    13. Cum..... comederent et bi-
+    berent vinum.
     14. Nuntius venit ad Job.
     15. Et irruerunt Sabæi.
-    Et evasi ego solus ut nuntiarem tibi.
-    16. Cumque adhuc ille loqueretur, venit alter.
-    Ignis Dei cecidit de coelo.
+    Et evasi ego solus ut nuntiarem
+    tibi.
+    16. Cumque adhuc ille loque-
+    retur, venit alter.
+    Ignis Dei cecidit de cœlo.
     Consumpsit.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,70,980,940">
-    ΑΚΥΛΑΣ.
-    4. 4.
-    5. 5.
-    Εἴπως ἥμαρτον οἱ υἱοί μου, καὶ ηὐλόγησαν θεὸν ἐπὶ καρδίας αὐτῶν
-    6.
-    Καιγε Σαταν ἐν μέσῳ αὐτῶν.
-    8. Ἐπὶ τὸν δοῦλόν μου.
-    9. [Μη δωρεὰν] φοβεῖται τῷ θεῷ;
-    11. 'Η οὐκ εἰς πρόσωπον σου εἰλογήσει σε.
-    13.
-    14. Καὶ ἰδοὺ ἄγγελος ἦλθε πρὸς Ἰωβ.
-    15. Ἐπέπεσεν Σαβα.
-    16. Ἐπὶ οὕτος ἐλάλει, καὶ ἄλλος ἦλθε.
-    Πῦρ θεοῦ.
+
+  <bloco tipo="texto_principal" script="latino" bbox="680,500,920,950">
     AQUILA.
-    4. 4.
-    5. 5.
-    6. Et etiam Satan in medio eorum.
+    4.
+    5.
+    Si forte peccaverunt filii mei,
+    et benedixerunt Deum in corde
+    suo.
+    6.
+    Et etiam Satan in medio eorum.
     8. Super servum meum.
-    Vir simplex, et rectus, et timens Deum.
-    9. Num gratis timet Deum ?
-    11. Annon in faciem tuam benedicerit te.
+    Vir simplex, et rectus, et ti-
+    mens Deum.
+    9. Num gratis timet Deum?
+    11. Annon in faciem tuam be-
+    nedicet te.
     13.
-    14. Et ecce nuncius venit ad Job.
+    14. Et ecce nuntius venit ad
+    Job.
     15. Incidit Saba.
-    16. Adhuc hic loquebatur, et hic venit.
+    16. Adhuc hic loquebatur, et
+    hic venit.
     Ignis Dei.
   </bloco>
-  <notas>Scripts mistos: páginas contêm hebraico (caracteres hebraicos), grego e latim. Algumas linhas hebraicas e gregas são parcialmente ilegíveis; preservei palavras individuais ilegíveis como [heb texto] ou [Μη δωρεὰν] onde necessário. BBOX estimadas em coordenadas 0-1000 conforme visual.</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="600,960,900,990">
+    Digitized by Google
+  </bloco>
 </pagina>

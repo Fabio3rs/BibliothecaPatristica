@@ -1,33 +1,35 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,80">
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,60">
     1383 HEXAPLORUM QUÆ SUPERSUNT. 1384
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,90,320,720">
-    TO ΕΒΡΑΙΚΟΝ.
-    (hebrew lines)
-    דברי-עצב 1
-    ישנא 2
-    מִלָּה 4
-    לָשׁוֹן 5
-    מוסר
-    7 יזהר זרת
+  <bloco tipo="texto_principal" script="misto" bbox="100,60,900,100">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ ΑΚΥΛΑΣ.
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,100,330,500">
+    דבר - עב
+    2 יביע
+    4 לכפא לשן
+    5 יגאץ
+    מכס
+    7 יזר דעת
     לא-כן
     8 ישרים
-    ...
-    10 משפט רע למען אמון
+    רצונו
+    10 מוסר רע לעזב ארח
     11 נגד יהוה
-    12 לצ
-    14 ירעה אמות
-    15 כל-מה-עי עין רעים - משכנו תמיד
+    12 לץ
+    14 ירעה אותה
+    15 כל-ימי עני רעים וטוב-לב
+    משתה תמיד
     17 ואהבה
-    משנה אבו
-    18 גבה
-    19 דרך על משכת חנף
-    20 בודה
+    משור אבוס
+    18 יגרה
+    19 דרך עצל כמשכת חדק
+    ישרים
+    20 בוזה
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,90,665,720">
-    TO EBRAIKON
-    Ελληνικοῖς γράμμασι.
+  <bloco tipo="texto_principal" script="latino" bbox="350,100,450,500">
     2.
     4.
     5.
@@ -43,11 +45,10 @@
     19.
     20.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="670,90,950,720">
-    ΑΚΡΙΛΑΣ.
-    Λόγος σκλήρος.
+  <bloco tipo="texto_principal" script="grego" bbox="650,100,900,500">
+    Λόγος σκληρός.
     2. Ἀναβλύει.
-    4. Προστήγης γλῶσσα.
+    4. Προσηνὴς γλῶσσα.
     5.
     Ἐλέγχους.
     7.
@@ -59,41 +60,94 @@
     15.
     17.
     18. Ἐρεθίζει.
-    19. Ὅσοι ὀκνηρόν...
-    Εὐθέων.
+    19. Ὁδοὶ ὀκνηρῶν...
+    Εὐθέτων.
     20.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,730,950,1420">
-    VERSIO HEBRAICI TEXT.        VULGATA LATINA.           AQUILA.
-    Et verbum doloris.           Sermo durus.             Sermo durus.
-    2. Eructabit.                2. Ebullit.              2. Scaturit.
-    4. Remissio linguæ.          4. Lingua placabilis.    4. Benigna lingua.
-    5. Respuet.                  5. Irridet.              5.
-    Correctionem.               Disciplinam.            Redargutiones.
-                                Cogitationes autem impiorum
-                                eradicabuntur.
-    7. Spargent scientiam.      7. Disseminabunt scientiam.   7.
-    Non sic.                    Dissimile erit.
-    8. Rectorum.                8. Justorum.             8. Rectorum.
-    Voluptas ejus.              Placabilia.
-    10. Correptio mala relinquenti 10. Doctrina mala deserenti 10.
-    senitam.                    viam.
-    11. Coram Domino.            11. Coram Domino.         11.
-    12. Illusor.                12. Pestilens.            12.
-    14. Pæscetur stultitia.     14. Pæscitur imperitia.  14.
-    15. Omnes dies pauperis, mali: 15. Omnes dies pauperis, mali: 15.
-    et bonus corde convivium juge.  secura mens quasi juge convi-
-                                  vium.
-    17. Et dilectio.            17. Cum charitate.        17.
-    Præ hove saginato.         Quam ad vitulum saginatum.
-    18. Excitabït.              18. Provocat.             18. Irritat.
-    19. Via pigri velut sepes spinæ. 19. Iter pigrrorum quasi sepes 19. Viae pigrrorum...
-                                  spinarum.
-    Rectorum.                  Justorum.               Rectorum
-    20. Despiciens.            20. Despicit.             20.
+  <bloco tipo="texto_principal" script="latino" bbox="50,500,900,530">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="760,1440,950,1500">
+  <bloco tipo="texto_principal" script="latino" bbox="50,530,330,900">
+    Et verbum doloris.
+    2. Eructabit.
+    4. Remissio linguæ.
+    5. Respuet.
+    Correctionem.
+    7. Spargent scientiam.
+    Non sic.
+    8. Rectorum.
+    Voluntas ejus.
+    10. Correctio mala relinquenti semitam.
+    11. Coram Domino.
+    12. Illusor.
+    14. Pascetur stultitia.
+    15. Omnes dies pauperis, mali :
+    et bonus corde convivium juge.
+    17. Et dilectio.
+    Præ bove saginato.
+    18. Excitabit.
+    19. Via pigri velut sepes spinæ.
+    Rectorum.
+    20. Despiciens.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,530,650,900">
+    Sermo durus.
+    2. Ebullit.
+    4. Lingua placabilis.
+    5. Irridet.
+    Disciplinam.
+    Cogitationes autem impiorum
+    eradicabuntur.
+    7. Disseminabunt scientiam.
+    Dissimile erit.
+    8. Justorum.
+    Placabilia.
+    10. Doctrina mala deserenti
+    viam.
+    11. Coram Domino.
+    12. Pestilens.
+    14. Pascitur imperitia.
+    15. Omnes dies pauperis, mali :
+    secura mens quasi juge convi-
+    vium.
+    17. Cum charitate.
+    Quam ad vitulum saginatum.
+    18. Provocat.
+    19. Iter pigrorum quasi sepes
+    spinarum.
+    Justorum.
+    20. Despicit.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,530,900,900">
+    Sermo durus.
+    2. Scaturit.
+    4. Benigna lingua.
+    5.
+    Redargutiones.
+    7.
+    8. Rectorum.
+    10.
+    11.
+    12.
+    14.
+    15.
+    17.
+    18. Irritat.
+    19. Viæ pigrorum...
+    Rectorum
+    20.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,950,850,980">
     Digitized by Google
   </bloco>
-  <notas>Transcrição literal preservada. Hebraico parcialmente ilegível em áreas pequenas indicadas por reticências; usei reconstrução mínima mantendo trechos visíveis. Algumas linhas hebraicas apresentavam espaçamento irregular; mantenho ordem visual de coluna esquerda para direita. Scripts: hebraico, grego e latino.</notas>
+  <notas>
+    A página apresenta uma disposição poliglota complexa (Hexapla).
+    Coluna superior esquerda: Texto Hebraico.
+    Coluna superior central: Números dos versículos (sob o título "Hebraico em caracteres gregos", embora apenas números apareçam).
+    Coluna superior direita: Versão de Áquila em Grego.
+    Coluna inferior esquerda: Versão Latina do Texto Hebraico.
+    Coluna inferior central: Vulgata Latina.
+    Coluna inferior direita: Versão de Áquila em Latim.
+    Alguns caracteres hebraicos podem apresentar variações tipográficas específicas da edição.
+  </notas>
 </pagina>

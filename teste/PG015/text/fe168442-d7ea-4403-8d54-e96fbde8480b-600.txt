@@ -1,28 +1,29 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,80">
-    4195        HEXAPLORUM QUÆ SUPERSUNT.        4196
-    TO ΕΒΡΑΙΚΟΝ.        ΤΟ ΕΒΡΑΙΚΟΝ        ΑΚΥΛΑΣ.
-    Ελληνικὴς γραμμαται.
+  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,90">
+    4195 HEXAPLORUM QUÆ SUPERSUNT. 4196
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,90,340,720">
-    טוּב הֵבָּ״?
-    ישעיה
-    תהלים 4
-    משׁלים בּשׁור
-    5 ויהיו עדינים
-    מצוה 6
-    השׁמעו כמושׁ דברי
-    7 ושׂמחו בנני
-    8 צץ
-    9 וירדו אל־אשׁת
-    מטות
-    רדה הדב
-    10 ישוע 10.
-    11 ויהי בּר־אחד־והוא יקדש
-    שלשים חרותים
-    12 תלתות בּנים
+  <bloco tipo="texto_principal" script="misto" bbox="150,90,850,130">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="360,110,640,720">
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,130,350,550">
+    ויאמר
+    ישראל
+    אתה 4
+    משלים בישראל
+    ויבא ערומים 5
+    חמתו 6
+    וישסעהו כשסע הגדי
+    וישר בעיניו 7
+    עדת 8
+    וירד אל-קציר 9
+    מנחת
+    דהן הבי
+    יעשו 10
+    ויהי כראותם אתו ויקח 11
+    שלשים מרעים
+    חלפות בגדים 12
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="400,130,550,550">
     4.
     5.
     6.
@@ -32,38 +33,9 @@
     10.
     11.
     12.
-    
-    VERSIO HEBRAICI TEXT
-    Et in omni populo meo.
-    
-    Recta.
-    4. Occasiones.
-    Dominantes in Israel.
-    
-    5. Et venerunt usque ad vineas.
-    
-    6. Et propsero egit.
-    Et illit eum ac si fuisset ho-
-    dum.
-    
-    7. Et recta fuit in oculis.
-    
-    8. Convertus.
-    9. Et accepit spem ad volas
-    suas.
-    
-    De corpore.
-    Accipisset mel.
-    
-    10. Facient.
-    11. Et fuit cum viderent ipsi
-    eum, et acceperunt virgilia so-
-    cibus.
-    
-    12. Mutatores vestes
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,110,980,720">
-    4. Πρόφασιν.
+  <bloco tipo="texto_principal" script="grego" bbox="700,130,850,550">
+    4. Πρόφασιν.
     5.
     6.
     7.
@@ -72,39 +44,46 @@
     10.
     11.
     12.
-    
-    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="100,560,850,590">
+    VERSIO HEBRAICI TEXT VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,600,350,950">
     Et in omni populo meo.
-    
+    Recta.
+    4. Occasionem.
+    Dominantes in Israel.
+    5. Et venerunt usque ad vineas.
+    6. Et prospere egit.
+    Et fudit eum ac si fidisset hœdum.
+    7. Et recta fuit in oculis.
+    8. Conventus.
+    9. Et accepit ipsum ad volas suas.
+    De corpore.
+    Accepisset mel.
+    10. Facient.
+    11. Et fuit cum viderent ipsi eum, et acceperunt triginta socios.
+    12. Mutatorias vestes
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,600,650,950">
+    Et in omni populo meo.
     Placuit.
-    4. Occasiones.
+    4. Occasionem.
     Dominabantur Israeli.
-    
     5. Cumque venissent ad vineas.
-    
     6. Irruit.
-    Et dilaceravit leonem quasi ho-
-    dum in frusta discrepans.
-    
+    Et dilaceravit leonem quasi hœdum in frusta discerpens.
     7. Quæ placuerat oculis ejus.
-    
     8. Examen.
-    9. Quem cum sumpisset in
-    manibus.
-    
+    9. Quem cum sumpsisset in manibus.
     De corpore.
     Mel... assumpserat.
-    
     10. Facere consueverant.
-    11. Cum ergo cives loci illius
-    vidissent eum, dederunt ei sodales
-    virgilia.
-    
+    11. Cum ergo cives loci illius vidissent eum, dederunt ei sodales triginta.
     12. Tunicas.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="760,880,980,980">
-    AQUILA.
-    4.
+  <bloco tipo="texto_principal" script="latino" bbox="700,600,850,950">
+    4. Occasionem.
     5.
     6.
     7.
@@ -113,11 +92,11 @@
     10.
     11.
     12.
-    
-    AQUILA.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="550,960,800,990">
+    Digitized by Google
   </bloco>
   <notas>
-    Scriptos identificados: hebraico (coluna esquerda superior) e latino/greco-latino (colunas centrais e direitas).
-    Algumas palavras hebraicas são fragmentarias e parcialmente illegibles; usei trascrição letteral congettural senza normalizzare. BBOX estimadas su scala 0-1000.
+    A página apresenta uma estrutura complexa de Hexapla. A seção superior contém texto Hebraico, transliteração Grega e a versão de Áquila em Grego. A seção inferior contém a Versão do Texto Hebraico (Latim), a Vulgata Latina e a versão de Áquila (Latim). Alguns números nas colunas de Áquila indicam versículos onde o texto pode estar faltando ou é idêntico ao anterior, conforme o padrão de transcrição de Field.
   </notas>
 </pagina>

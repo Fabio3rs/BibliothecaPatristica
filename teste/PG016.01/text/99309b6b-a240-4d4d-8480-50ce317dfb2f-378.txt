@@ -1,20 +1,23 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,90">
-    749                                                   HEXAPLORUM QUAE SUPERSUNT.                                                   750
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    719 HEXAPLORUM QUÆ SUPERSUNT. 730
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="20,100,300,320">
+  
+  [!-- Upper Section: Bible Text --]
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,330,240">
     TO EBPAIKON.
-    נחש 6
+    עשו 6
     כל-צבאם
-    נעם כן מי ית 7
-    יול 8
-    מסדן-שמעי השגית 14
-    היצר יח לבם 15
-    נגר לא-יעגל ברב-כה 16
+    כנס כד מי הים 7
+    יראו 8
+    כמכק-שבת השניה 14
+    היצר יחד לבם 15
+    אין נושע למלך בכח-רב 16
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="320,100,300,320">
+
+  <bloco tipo="texto_principal" script="grego" bbox="350,60,550,240">
     TO EBPAIKON
-    Ελληνικοὶς γράμμασι.
+    Ἑλληνικοῖς γράμμασι.
     6.
     7.
     8.
@@ -22,35 +25,59 @@
     15.
     16.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="640,100,340,320">
+
+  <bloco tipo="texto_principal" script="grego" bbox="580,60,950,240">
     ΑΚΥΛΑΣ.
-    6. Ἐποίθησαν.
+    6. Ἐποιήθησαν.
     Πᾶσα στρατιὰ αὐτῶν.
     7.
-    8. Ὑποσταληφονται.
-    14. Ἀπὸ ἐδρασματος καθάδρας αὐτοῦ.
-    15. Ἄμα.
+    8. Ὑποσταλήσονται.
+    14. Ἀπὸ ἑδράσματος καθέδρας
+    αὐτο.
+    15. Ἅμα.
     16.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,330,980,610">
+
+  [!-- Upper Section: Latin Translations --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,250,330,450">
     VERSIO HEBRAICI TEXT.
-    6. Facti sunt. Hieron., firmati sunt.
-    Omnis exercitus eorum. Hieron., omnius ornatus eorum.
-    7. Congregans sicut acervum aquas maris. Hieron., congregans quasi in utre aquas maris.
-    8. Paveant. Hieron., ipsum formident.
-    14. De habitaculo sedis suae prospexit. Hieron., de firmissimo solio suo respexit.
-    15. Formans pariter cor eorum. Hieron., fingens pariter cor eorum.
-    16. Potens non eruetur in multitudine potentiae. Hieron., nec fortis liberabitur in multitudine virtutis.
-    
+    6. Facti sunt. Hieron., firmati
+    sunt.
+    Omnis exercitus eorum. Hieron.,
+    omnis ornatus eorum.
+    7. Congregans sicut acervum
+    aquas maris. Hieron., congregans
+    quasi in utre aquas maris.
+    8. Paveant. Hieron., ipsum for-
+    mident.
+    4. De habitaculo sedis suæ
+    prospexit. Hieron., de firmissimo
+    solio suo perspexit.
+    15. Formans pariter cor eorum.
+    Hieron., fingens pariter cor eo-
+    rum.
+    16. Potens non eruetur in mul-
+    titudine potentiæ. Hieron., nec
+    fortis liberabitur in multitudine
+    virtutis.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="350,250,550,450">
     VULGATA LATINA.
     6. Firmati sunt.
     Omnis virtus eorum.
-    7. Congregans sicut in utre aquas maris.
+    7. Congregans sicut in utre a-
+    quas maris.
     8. Commoveantur.
-    14. De preparato habituaculo suo respexit.
-    15. Qui finxit sigillatim corda eorum.
-    16. Et gigas non salvabitur in multitudine virtutis suae.
-    
+    14. De præparato habitaculo
+    suo respexit.
+    15. Qui finxit sigillatim corda
+    eorum.
+    16. Et gigas non salvabitur in
+    multitudine virtutis suæ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="580,250,950,450">
     AQUILA.
     6. Facti sunt.
     Omnis exercitus eorum.
@@ -60,57 +87,95 @@
     15. Simul.
     16.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="20,620,980,780">
-    Notae et variae lectiones ad Psalmum XXXII.
-    Eusebius in Psalmos: Κατὰ τὴν Ἐφεσίην ἀναγνωσιν, καὶ κατὰ τοὺς λοιποὺς ἐρμηνευτὰς ἀνεπί-
-    γραφος ἐστιν ὁ ψαλμός. 1. e. Secundum Hebraicam lectionem, et secundum reliquos interpretes, hic psalmus caret inscriptione.
-    V. 1. Regius unus sic habet: πανταχοῦ, ἀραλ-λάδος, ὁ μὲν Ἀχιλάς, ἀλλοιές, ὁ δὲ Σύμμαχος, ῥυ-
-    σμούλας, ἐφημέυσεν.
-    Ibid. 'A., τοῖς εὐθέσιν etc. Drusius et mss.
-    V. 3. Σ., ἐπιμελῶς ἔψαλε etc. Unus codex. Hic Symmachum sequi videtur Hieronymus.
-    V. 6. 'A., ἐποίθησαν etc. Ex Drusio.
-    Ibid. 'A., πᾶσα στρατιὰ etc. Ex mss. et ex Drusio.
-    V. 7. Σ., συνήγαγεν etc. Drusius.
+
+  [!-- Notes Section --]
+  <bloco tipo="nota" script="misto" bbox="50,460,950,600">
+    Notæ et variæ lectiones ad Psalmum XXXII.
+    Eusebius in Psalmos : Κατὰ τὴν Ἑβραϊκὴν ἀνά-
+    γνωσιν, καὶ κατὰ τοὺς λοιποὺς ρμηνευτὰς ἀνεπι-
+    γραφός ἐστιν ὁ ψαλμός. I. e. Secundum Hebraicam
+    lectionem, et secundum reliquos interpretes, hic
+    psalmus caret inscriptione.
+    V. 1. Regius unus sic habet : πανταχοῦ, ἀγαλ-
+    λιάσθε, ὁ μὲν Ἀκύλας, αἰνεῖτε, ὁ δὲ Σύμμαχος, εὐ-
+    φημεῖτε, ρμήνευσεν.
+    Ibid. Ἀ., τοῖς εθέσιν etc. Drusius et mss.
+    V. 3. Σ., ἐπιμελῶς ψάλατε etc. Unus codex. Ilic
+    Symmachum sequi videtur Hieronymus.
+    V. 6. Ἀ., ἐποιήθησαν etc. Ex Drusio.
+    Ibid. Ἀ., πᾶσα στρατιὰ etc. Ex mss. et ex
+    Drusio.
+    V. 7. Σ., συνήγαγεν etc. Drusius.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="20,800,980,860">
+
+  [!-- Lower Section: Psalm 33 --]
+  <bloco tipo="cabecalho" script="latino" bbox="400,610,600,630">
     PSALMUS XXXIII.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="20,880,320,980">
+
+  <bloco tipo="texto_principal" script="misto" bbox="50,630,330,750">
     TO EBPAIKON.
-    לדוד בשר - את שמו-אתי 1
-    אבימלך וינפש יים 1
-    יחיד 4
-    מכל-סורתות נגילי 5
+    לדוד בשנותו את-טעמו לפני 1
+    אבימלך ויגרשהו ויצא
+    יחד 4
+    מכל-מגורותי הצילני 5
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="340,880,320,980">
+
+  <bloco tipo="texto_principal" script="grego" bbox="350,630,550,750">
     TO EBPAIKON
-    Ἑλληνικοὶς γράμμασι.
+    Ἑλληνικοῖς γράμμασι.
     1.
     4.
     5.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="660,880,320,980">
+
+  <bloco tipo="texto_principal" script="grego" bbox="580,630,950,750">
     ΑΚΥΛΑΣ.
-    1. Τοῦ Δαυιδ, ὅτε ἠλλοιωσεν τὸ γύμα αὐτοῦ εἰς πρώτον Ἀβιμέλ̣εχ, καὶ ἐξέβαλεν αὐτὸν, καὶ ἀπηλ-
+    1. Τοῦ Δαυίδ, ὅτε ἠλλοίωσε τὸ
+    γεῦμα αὐτοῦ ες πρόσωπον Ἀβιμέ-
+    λεχ, καὶ ἐξέβαλεν αὐτόν, καὶ ἀπῆλ-
     θεν.
-    4. Ὑποθυραδόν.
-    5. Ἀπὸ πασῶν συντριβῶν μου ἀνεγρύσατο με.
+    4. Ὁμοθυμαδόν.
+    5. Ἀπὸ πασῶν συστροφῶν μου
+    ἀνερρύσατό με.]
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,990,980,1400">
+
+  [!-- Lower Section: Latin Translations --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,760,330,920">
     VERSIO HEBRAICI TEXT.
-    1. Davidi in mutando ipso gustum suum ad facies Abimelech: et expulit eum et abiit. Hie-ron., David. Quando commutavit os suum coram Abimelech, et ejecit eum et abiit.
+    1. Davidi in mutando ipso
+    gustum suum ad facies Abime-
+    lech : et expulit eum et abiit. Hie-
+    ron., David. Quando commutavit
+    os suum coram Abimelech, et
+    ejecit eum et abiit.
     4. Pariter. Hieron., id.
-    5. Ex omnibus timoribus meis eripuit me. Hieron., et de omnibus angustijs meis liberavit me.
-    
-    VULGATA LATINA.
-    4. Davidi, cum immutavit vultum suum coram Abimelech, et dimisit eum, et abiit.
-    4. In idipsum.
-    5. Et ex omnibus tribulationibus meis eripuit me.
-    
-    AQUILA.
-    4. Davidis, quando immutavit gustum suum in facie Abimelech: et expulit eum et abiit.
-    4. Unanimiter.
-    5. Ab omnibus complicationibus meis eripuit me.
+    5. Ex omnibus timoribus meis
+    eripuit me. Hieron., et de omnibus
+    angustiis meis liberavit me.
   </bloco>
-  <notas>Scripts presentes: latim, grego, hebraico. Algumas linhas hebraicas parcialmente danificadas; palavras marcadas literalmente. Não foram normalizadas as formas; mantidas abreviações e pontuações originais.</notas>
+
+  <bloco tipo="texto_principal" script="latino" bbox="350,760,550,920">
+    VULGATA LATINA.
+    1. Davidi, eum immutavit vul-
+    tum suum coram Abimelech, et
+    dimisit eum, et abiit.
+    4. In idipsum.
+    5. Et ex omnibus tribulationibus
+    meis eripuit me.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="580,760,950,920">
+    AQUILA.
+    1. Davidis, quando immutavit
+    gustum suum in facie Abimelech :
+    et expulit eum et abiit.
+    4. Unanimiter.
+    5. Ab omnibus complicationibus
+    meis eripuit me.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="500,950,800,990">
+    Digitized by Google
+  </bloco>
 </pagina>

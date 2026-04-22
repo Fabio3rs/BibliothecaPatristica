@@ -1,88 +1,179 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,80">
-    HEXAPLORUM QUÆ SUPERSUNT.
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    1955 HEXAPLORUM QUÆ SUPERSUNT. 1956
   </bloco>
-  <bloco tipo="texto_principal" script="hebreu" bbox="20,80,330,680">
+  
+  [!-- Upper Section Headers --]
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,300,90">
     TO ΕΒΡΑΙΚΟΝ:
-    8. חָפְתָה מִשְׁכָּבֶךָ וְשִׁלַּחְתָה׃
-    8.
-    אוֹתָם
-    אֶזְרָח מִשְׁכָּב׃
-    9. וַיִּשְׁנְעוּ וְהִתְפַלְּמוּ עַד־מַחֲרוֹת
-    9.
-    וְנִשְׁפְּלוּ עַד־שַׁחַל
-    10. לֹא תִתְחַיֶּה
-    11. לֹא אֲנִי מֻתָּךְ
-    וּבְשָׁלוֹם וּמַחֲזִיקִי לֹא תָחֳרָי
-    12. צַדִּיק
-    לֹא יִשְׁתַּעֵן
-    13. יִמְשַׁח קֶדֶם
-    וְהָיְתָה בּוֹ חָסְדָּה בֵּין יְמִינִי־אֶרֶץ וִירוּשָׁלֵם קָדְשִׁי
-    14. וַיֹּאמֶר סלו־מלו־פני־יוֹם
-    15. כי
-    16. יִסְתָּף
-    17. לְחַיּים
-    20. וְהוּא הַמְשָׁכִים כָּל הַמַּאֲמִין לֹא יָכוֹל לִנְחוֹם מִמָּקוֹם רַע וְשָׁם
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="340,80,660,680">
-    ΤΟ ΕΒΡΑΙΚΟΝ
-    8.
+  <bloco tipo="texto_principal" script="grego" bbox="350,60,600,90">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικος γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,60,900,90">
     ΑΚΥΛΑΣ.
-    9. Καὶ ἐπλήθυνας τὰς συνθήκας
-    σου, ἀπέστειλας.... ἔως εἰς μα-
+  </bloco>
+
+  [!-- Upper Section Content --]
+  [!-- Left Column: Hebrew --]
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,90,300,450">
+    ותרחיבי משכבך ותתני-לך 8
+    קצב
+    אהבה משכבם
+    9 ותצרי ותשלחי ציריך
+    עד-מרחק
+    ותשפילי עד-שאול
+    10 לא חלית
+    11 הלא אני כחשה
+    ובעלתי ואחתי לא יראתי
+    12 צדקך
+    לא יועילך
+    13 צעקך קבצייך
+    חדשה בי יעלז-ארץ ויירשו זה
+    קדשי
+    14 ואמר סלו-סלו פנו-דרך
+    15 כי
+    16 יעסוף
+    17 לבר
+    20 והרשעים כים נגרש כי השקט
+    לא יוכל ויגרשו מימיו רפש וטיט
+  </bloco>
+
+  [!-- Middle Column: Numbers --]
+  <bloco tipo="texto_principal" script="latino" bbox="350,90,450,450">
+    8.
+    9.
+    10.
+    11.
+    12.
+    13.
+    14.
+    15.
+    16.
+    17.
+    20.
+  </bloco>
+
+  [!-- Right Column: Greek Aquila --]
+  <bloco tipo="texto_principal" script="grego" bbox="650,90,950,450">
+    8
+    9. Καὶ ἐπλήθυνας τὰς συνθέσεις
+    σου, ἀπέστειλας. . . . ἕως εἰς μα-
     κράν.
-    Καὶ ἐταπεινώθης ἕως ἔξω.
+    Καὶ ἐταπεινώθης ἕως δου.
     10. Οὐκ ἐλιτάνευσας.
-    11. ......
-    Διέμεινες ἐξ αἰῶνος ἀνόρθος καὶ
-    ἄνευ λάθους.
+    11. . . . . . .
+    Διέμεινες ἐξ αἰῶνος ἄφοβος καὶ
+    ἄνευ λάθης.
     12. Τὴν δικαιοσύνην σου.
     Οὐκ ὠφελήσει σε.
     13.
     14.
-    15. ✳ Ὅτι.
+    15. Χ "Οτι.
     16. Περιελεύσεται.
     17.
-    20. ....... καὶ ἐκβόλασε ὕδατα
-    αὐτής, καταπάτημα καὶ πηλόν.
+    20. . . . . . καὶ ἐκβράσει ὕδατα
+    αὐτῆς, καταπάτημα καὶ πηλόν.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,680,660,980">
-    VERSIO HEBRAICA TEXT.                VULGATA LATINA.                     AQUILA.
-    8. Dilatasti cubile tuum, et ex-    8. Dilatasti cubile tuum, et pe-     8.
-    cidisti tibi ex eis.                pigisti cum eis foedus.
-    Dilexisti cubile eorum.             Dilexisti stratum eorum.
-    
-    9. Et multiplicasti pigmenta tua,   9. Et multiplicasti pigmenta tua.   9. Et multiplicastu syntheses
-    et misisti legatos tuos usque ad    Misisti legatos tuos procul.        tuas, misisti... usque ad longin-
-    longinquum.                         Et humiliata es usque ad in-       quum.
-    Et humiliata es usque ad infe-      feros.                              Et humiliata es usque ad in-
-    ros.                                                                 feros.
-    
-    10. Non aegrotasti.                  10. Non rogas'i.                    10. Non precata es.
-    11. Nonne ego tacere faciens?        11. Quia ego tacens.                 11. Ego sum qui semper tacui.
-    Et a saeculo, et me non timebis.    Et quasi non videns, et mei        Manebas a saeculo sine timore
-                                        oblita es.                         et sine damno.
-    
-    12. Justitiam tuam.                  12. Justitiam tuam.                 12. Justitiam tuam.
-    Non proderunt tibi.                 Non proderunt tibi.                Non proderunt tibi.
-    
-    13. Liberent te congregationes      13. Liberent te congregati tui.     13.
+
+  [!-- Lower Section Headers --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,480,300,510">
+    VERSIO HEBRAICI TEXT.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,480,600,510">
+    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,480,900,510">
+    AQUILA.
+  </bloco>
+
+  [!-- Lower Section Content --]
+  [!-- Left Column: Latin Translation of Hebrew --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,510,300,900">
+    8. Dilatasti cubile tuum, et ex-
+    cidisti tibi ex eis.
+    Dilexisti cubile eorum.
+    9. Et multiplicasti pigmenta tua,
+    et misisti legatos tuos usque ad
+    longinquum.
+    Et humiliata es usque ad infe-
+    ros.
+    10. Non ægrotasti.
+    11. Nonne ego tacere faciens ?
+    Et a sæculo, et me non timebis.
+    12. Justitiam tuam.
+    Non proderunt tibi.
+    13. Liberent te congregationes
     tuæ.
-    
-    Et sperans in me hæreditabit       Qui autem fiduciam habet mei,      Et sperans in me hæreditabit
-    terram, et possidebit montem        hæreditabit terram, et possidebit  terram, et possidebit montem
-    sanctitatis meæ.                    montem sanctum meum.               sanctum meum.
-    
-    14. Et dicet, Munite, munite,       14. Et dicam, Viam facite, præ-    14.
-    complanate viam.                    bete iter, declinate de semitæ.
-    
-    15. Quia.                           15. Quia.                           15. ✳ Quia.
-    16. Involvet se.                    16. Egredietur.                     16. Circumibit.
-    17. Cordis sui.                     17. Cordis sui.                     17.
-    20. Et impii veluti mare impul-     20. Et impii quasi mare fer-        20. .... et ebulliunt aquæ ejus,
-    sum : nam quiescere non poterit:    vens, quod quiescere non potest,   conculcamentum et lutum.
-    et impellent se aquæ ejus cœno et   et redundabit fluctus ejus in con-
-    luto.                               culationem et lutum.
+    Et sperans in me hæreditabit
+    terram, et possidebit montem
+    sanctitatis meæ.
+    14. Et dicet, Munite, munite,
+    complanate viam.
+    15. Quia.
+    16. Involvet se.
+    17. Cordis sui.
+    20. Et impii veluti mare impul-
+    sum : nam quiescere non poterit :
+    et impellent se aquæ ejus cœno et
+    luto.
   </bloco>
-  <notas>Scripts identificados: hebraico (coluna esquerda superior), grego (coluna direita superior), latino (secção inferior). Alguns caracteres hebraicos ilegíveis foram marcados conforme visível; transcrição literal preserva ortografia impressa. BBoxes estimadas proporcionalmente à imagem (escala 0-1000).</notas>
+
+  [!-- Middle Column: Vulgate --]
+  <bloco tipo="texto_principal" script="latino" bbox="350,510,600,900">
+    8. Dilatasti cubile tuum, et pe-
+    pigisti cum eis fœdus.
+    Dilexisti stratum eorum.
+    9. Et multiplicasti pigmenta tua.
+    Misisti legatos tuos procul.
+    Et humiliata es usque ad in-
+    feros.
+    10. Non rogasti.
+    11. Quia ego tacens.
+    Et quasi non videns, et mei
+    oblita es.
+    12. Justitiam tuam.
+    Non proderunt tibi.
+    13. Liberent te congregati tui.
+    Qui autem fiduciam habet mei,
+    hæreditabit terram, et possidebit
+    montem sanctum meum.
+    14. Et dicam, Viam facite, præ-
+    bete iter, declinate de semita.
+    15. Quia.
+    16. Egredietur.
+    17. Cordis sui.
+    20. Et impii quasi mare fer-
+    vens, quod quiescere non potest,
+    et redundabit fluctus ejus in con-
+    culcationem et lutum.
+  </bloco>
+
+  [!-- Right Column: Latin Translation of Aquila --]
+  <bloco tipo="texto_principal" script="latino" bbox="650,510,950,900">
+    8.
+    9. Et multiplicasti syntheses
+    tuas, misisti... usque ad longin-
+    quum.
+    Et humiliata es usque ad in-
+    feros.
+    10. Non precata es.
+    11. Ego eum qui semper tacui.
+    Manebas a sæculo sine timore
+    et sine damno.
+    12. Justitiam tuam.
+    Non proderunt tibi.
+    13.
+    14.
+    15. Χ Quia.
+    16. Circuivit.
+    17.
+    20. .... et ebulliunt aquæ ejus,
+    conculcamentum et lutum.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="600,950,900,990">
+    Digitized by Google
+  </bloco>
 </pagina>

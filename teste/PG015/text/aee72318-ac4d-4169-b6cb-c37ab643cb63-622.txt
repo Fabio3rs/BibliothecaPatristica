@@ -1,54 +1,112 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,962,80">
-    1239                HEXAPLORUM QUÆ SUPERSUNT.                 1240
-    TO EBRAIKON.                       TO EBPAIKON.                       AKYAAΣ.
-                            Ἑλληνικὸς γράμμασι.
+  <bloco tipo="cabecalho" script="misto" bbox="50,30,900,60">
+    1239 HEXAPLORUM QUÆ SUPERSUNT. 1240
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,90,360,460">
-    טו
-    השבעית החמישית 5.        5.
-    השישית 6.                6.
-    השביעית      אשר-יכלוהו
-    השמינית 7               7.
-    אמר-זקנה ישבת
-    לכמה
-    אלפים
-    וכמה ואשרמכם דבר בארץ
-    חמש עצר ודקים וזה מזוזים
-    והרי-אילנות עמוסים
+  <bloco tipo="texto_principal" script="misto" bbox="150,60,850,100">
+    TO EBPAINON. TO EBPAINON Ἑλληνικοῖς γράμμασι. AKYΛAΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="380,90,620,460">
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,100,320,500">
+    הנ
+    5 הצלח דרכך
+    6 לשלם
+    אשר תלך־בה
+    7 ותלך
+    אשר־קרבה ישבה
+    לבטח
+    במשפט
+    ומהו איך־ממלכים דבר מארץ
+    חרש עבר ורחקים המה םינזומ
+    והמה איך־אלה עם־אדם
+
+    8 ואבוא
+    9 ראינו
+    סחים
+    10 תבואו
+    בטח
+    רחבה
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="380,100,450,500">
     5.
     6.
     7.
+
+    8.
+    9.
+    10.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,480,960,780">
-    VERSIO HEBRAICA TEXT.                 VULGATA LATINA.                 AQUILA
-    Hic.                                  Huc.
-    5. An prosperabitur via nostra           5. An prospero itinere perge-
-                                           rent.
-    6. In pace.                             6. In pace.
-    Qua ambulatis in ea.                    Viam vestram, et iter quo per-
-                                           gitis.
-    7. Et abierunt.                         7. Eunates igitur.
-    Qui in interiori ejus, manen-           Habitanten in ea.
+  <bloco tipo="texto_principal" script="grego" bbox="700,100,750,500">
+    5.
+    6.
+    7.
+
+    8.
+    9.
+    10.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,530,350,920">
+    VERSIO HEBRAICI TEXT.
+    Hic.
+    5. An prosperabitur via nostra
+    6. In pace.
+    Qua ambulatis in ea.
+    7. Et abierunt.
+    Qui in interiori ejus, manen-
     tem.
-    Ad judicium.                            Absque ullo timore.
-    Juxta judicium.                         Juxta consuetudinem.
-    Et confidentem, et non calu-            Securum et quietum, nullo ei
-    mians verbum in terra possiden-         penitus resistente, magnarumque
-    tentionem : et lonquiqui ipsi a         opum: et procul a Sidone, atque
-    Sidoniis, et verbum non erat eis         a cunctis hominibus separatum.
+    Ad fiduciam.
+    Juxta judicium.
+    Et confidentem, et non calumnians verbum in terra possidens
+    retentionem : et longinqui ipsi a
+    Sidoniis, et verbum non erat eis
     cum homine.
-    8. Dixeruntque.                         8. Responderunt.                     8.
-    9. Vidimus.                             9. Vidimus.                          9.
-    Tacentes.                              Nolite negligere.
-    10. Intrabitis.                        10. Intrabimus.                      10.
-    Confidentem.                           Ad securas.
-    Laeta.                                  Laetissima.
+    8. Dixeruntque.
+    9. Vidimus.
+    Tacentes.
+    10. Intrabitis.
+    Confidentem.
+    Lata.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="760,920,980,990">
+  <bloco tipo="texto_principal" script="latino" bbox="380,530,620,920">
+    VULGATA LATINA.
+    Huc.
+    5. An prospero itinere perge-
+    rent.
+    6. In pace.
+    Viam vestram, et iter quo per-
+    gitis.
+    7. Euntes igitur.
+    Habitantem in ea.
+    Absque ullo timore.
+    Juxta consuetudinem.
+    Securun et quietum, nullo ei
+    penitus resistente, magnarumque
+    opum : et procul a Sidone, atque
+    a cunctis hominibus separatum.
+    8. Responderunt.
+    9. Vidimus.
+    Nolite negligere.
+    10. Intrabimus.
+    Ad securos.
+    Latissimam.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,530,800,920">
+    AQUILA.
+    5.
+    6.
+    7.
+    8.
+    9.
+    10.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="550,960,800,990">
     Digitized by Google
   </bloco>
-  <notas>Scripts presentes: latino e hebraico. Algumas linhas hebraicas parcialmente ilegíveis; transcrição feita literal onde possível, mantendo divisão em colunas (esquerda hebraico, centro/r. latim). Numerais e notas de página mantidas conforme imagem.</notas>
+  <notas>
+    Transcrição de página poliglota (Hexapla).
+    Coluna hebraica: Texto massorético ou versão próxima.
+    Coluna grega (centro): Transliteração do hebraico em caracteres gregos (apenas números visíveis nesta página).
+    Coluna grega (direita): Versão de Áquila (apenas números visíveis).
+    Colunas latinas inferiores: Versão do texto hebraico, Vulgata e Versão Latina de Áquila.
+    A palavra "Securun" na Vulgata parece ser um erro tipográfico para "Securum".
+    Texto hebraico apresenta algumas formas que requerem atenção paleográfica (e.g., םינזומ).
+  </notas>
 </pagina>

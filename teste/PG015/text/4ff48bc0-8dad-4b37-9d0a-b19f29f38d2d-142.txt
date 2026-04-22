@@ -1,75 +1,90 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="60,10,940,70">
-    HEXAPLORUM QUÆ SUPERSUNT.
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,80">
+    279 HEXAPLORUM QUAE SUPERSUNT. 280
     CAPUT XXXVI GENESIS.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="40,70,320,930">
-    TO ΕΒΡΑΙΚΟΝ.
-    [Hebrew text] 19.
-    [Hebrew text] 20.
-    21.
-    35.
-    36.
-    40.
-    VERSIO HEBRAICI TEXT.
-    19. Isti filii Esau, e isti duces eorum : ipse est Edom.
-    20. Isti filii Seir.
-    24. Hic Anah, qui invenit aquas in deserto, uam pasceret asinos Sebaon patris sui. Syrus ait ipsam venisse formam.
-    35. Qui percussit.
-    36. De Masrecha.
-    40. In nominibus suis.
+  
+  <bloco tipo="texto_principal" script="misto" bbox="50,80,950,430">
+    TO EBPAIKON.           TO EBPAIKON           AKYLAΣ.
+                            Ἑλληνικοῖς γράμμασι.
+    אלה בני עשו הוא אדום 19.                        19.
+    אלה בני שעיר         20.                        20.
+    
+    הוא ענה אשר מצא את הימם במדבר 24.               24. Αὐτὸς Αἰνς ὃς εὗρε σὺν τοὺς
+    ברעתו את החמרים לענה אביו                       Ἰαμεὶμ ἐν τῇ ἐρήμῳ, ἐν τῷ βό-
+    וימצא את הימם                                   σκειν αὐτὸν τὰς ὄνους τοῦ Σεβεγών.
+    Ὁ Σύρος λέγει· πηγὴν αὐτὸν
+    εὑρηκέναι.
+
+    וימת חושם              35.                        35. Ὁ πατάξας.
+    וימלך תחתיו הדד        36.                        36.
+    ואלה שמות אלופי עשו    40.                        40. Ἐν τοῖς ὀνόμασιν αὐτῶν.
+
+    VERSIO HEBRAICI TEXT.  VULGATA LATINA.         AQUILA.
+    19. Isti filii Esau, et isti duces 19. Isti sunt filii Esau, et hi 19.
+    eorum : ipse est Edom.             duces eorum : ipse est Edom.
+    20. Isti filii Seir.   20. Isti sunt filii Seir.  20.
+    24. Hic Anah, qui invenit mu- 24. Iste est Ana, qui invenit 24. Ipse Anas, qui invenit Ia-
+    los in deserto, dum pasceret asi- aquas calidas in solitudine, cum mim in deserto, dum pasceret asi-
+    nos Sebahon patris sui. Syrus ait pasceret asinos Sebeon patris sui. nas Sebegun.
+    ipsum invenisse fontem.
+    35. Qui percussit.     35. Qui percussit.       35. Qui percussit.
+    36. De Masrecha.       36. Masreca.             36.
+    40. In nominibus suis. 40. Et vocabulis suis.   40. In nominibus suis.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="360,70,640,930">
-    TO ΕΒΡΑΙΚΟΝ
-    Ἑλληνικοὶ χαρακτῆρες.
-    19.
-    20.
-    21.
-    35.
-    36.
-    40.
-    VULGATA LATINA.
-    19. Isti sunt filii Esau, e hi duces eorum : ipse est Edom.
-    20. Isti sunt filii Seir.
-    24. Iste est Ana, qui invenit aquas calidas in solitudine, cum pasceret asinos Sebaeon patris sui.
-    35. Qui percussit.
-    36. Masreca.
-    40. Et vocabula suis.
+
+  <bloco tipo="texto_principal" script="misto" bbox="50,430,950,800">
+    Notæ et variæ lectiones ad cap. XXXVI Genesis.
+    V. 19. Sic mss. et editio Romagna.      δῶρον εὗρον ἀντὶ τοῦ δατος· οτε ἀντὶ τῆς πηγῆς
+    V. 24. Hunc locum, cujus antea pauca verba τὸν « Αἰνάν » · κατὰ Θεοδώρητον δὲ, οὐ τὸ Ανάν « πη-
+    exstabant, etiam lacera, apud Drusium et alios, γὴν » δει λέγεσθαι· ἀλλ' ἢ ἄρα τὸ « Ἰαμείν. » Ὁ
+    plenum reperimus secundum omnes editiones, in γὰρ Αἰνὰν εὗρε τὸν Ἰαμείμ, οὐχ ὁ Ἰαμεὶμ τὸν
+    tribus Catenis Regiis et in schedis Combefisianis, Αἰνάν. Id est : Ubique in Hebraico aqua dicitur
+    cum sequentibus notis : prima sic habet : Ὁ Σύρος « αμμαίμ, » fons autem, « μοκώρ : » nam in XXV
+    καὶ ὁ βραος, τὸν Ἰαμεὶμ « ὕδωρ » βούλονται λέ- psalmo, ad illud, « Apud te est fons vitæ, » in He-
+    γειν, ἀντὶ τοῦ, « εὗρε πηγὴν ἐν τῇ ἐρήμῳ. » Οἱ δὲ braico legitur, « mocor aium. » Neque igitur « Iamin »
+    ἑρμηνεύσαντες, αὐτὴν πως τὴν λέξιν τὴν Ἑβραϊκὴν inveni pro aqua ; neque pro fonte « Anan, » secun-
+    τεδείκασι. Id est : Syrus et Hebræus Iamin « aquam » dum Diodorum. Secundum Theodoretum autem, non
+    significare volunt : ac si diceretur : « Invenit fontem Anan fontem dici oportuit, sed potius, Iamin. Si-
+    in deserto. » At interpretes ipsam vocem Hebraicam quidem Anau invenit Iamin, non Iamin Anan.
+    posuerunt. Altera nota, quæ est Diodori, sic habet : Eadem de re audiendus Hieronymus : Multa et
+    Ὁ Σύρος λέγει πηγὴν ατὸν ερηκέναι·  γὰρ πηγ varia apud Hebræos de hoc capitulo disputantur :
+    « Ἀνάν » καλεῖται τῇ Σύρων φωνῇ. Id est : Syrus apud Græcos quippe et nostros super hoc silentium
+    dicit ipsum invenisse fontem : nam fons Syrorum est. Alii putant AIAMIN maria appellata. Iisdem
+    lingua, « Anan » vocatur. Ubi Diodorus inventorius enim litteris scribuntur maria, quibus et nunc hic
+    nomen cum inventæ rei nomine confundit, ut notat sermo descriptus est. Et volunt illum dum pascit
+    sequens scholiastes. Tertia nota hæc est : Παντα- asinos patris sui in deserto, aquarum congregationes
+    χοῦ μὲν τὸ ὕδωρ « ἀρουαίμ » λέγεται ἐν τῷ βραϊκῷ, reperisse : quæ juxta idioma linguæ Hebraicæ maria
+    ἡ δὲ πηγὴ « μωμώχ » : ἐν γὰρ τῇ λε' ψαλμῷ εἰς τὸ, nuncupentur : quod scilicet stagnum reperit, cujus
+    « Παρὰ σοὶ πηγὴ ζωῆς, » ἐν τῷ Ἑβραϊκῷ κεῖται, rei inventio in eremo difficilis est. Nonnulli putant
+    « μωμώχ αἰώμ. » Οὔτε οὖν τὸν « Ἰαμεὶμ » κατὰ Διό- aquas calidas juxta Punicæ linguæ viciniam, quæ
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="660,70,980,930">
-    ΑΚΥΛΑΣ.
-    19.
-    20.
-    21. Αὐτὸς Ἀναχ, ὅς ἐφερε ὑπὸν σὺν τῇ ἐρμηρᾳ, ἤν τῷ ἐπὶ αὐτοῦ τῷ ἔθνει τὸν Σεβεα.
-    35. Ὁ πεππαξ.
-    36.
-    40. Ἐν τοῖς ὀνόμασιν αὐτῶν.
-    AQUILA.
-    19.
-    20.
-    24. Istae Anas, qui invenit fontinas in deserto, iunx pasceret asinos Sebaeon.
-    35. Qui percussit.
-    36.
-    40. In nominibus suis.
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="40,930,980,1350">
-    Notes et varia lectiones ad cap. XXXVI Genesis.
-    V. 19. Sic mass. et cetio Romana.
-    V. 21. Hunc locum, cujus antea pauca verba exstabant, etiam lacerna, apud Drusium et alios, plerumq. reperimus secundum omnes editiones, et in libris Catonis Regiis et in schedis Combefisiansis, cum sequentibus notis : prima sic habet : ὁ Σύρος καὶ ὁ Ἐβραίος, ὁν Ἰακὼβ ἔδειρεν ; ὁ δὲ Στρατηγὸς λέγει, ὅτι οὗτος ὁ σύρος ... [ilegivel] ...
-    V. 24. Hic locus, cuius lectio variantur apud Hebraeos, Syros et alios. Ubi Diodorus invenit nomen cum invenisse rei nomine confundit, ut notat sequens scholias.
+
+  <bloco tipo="texto_principal" script="misto" bbox="50,800,950,950">
     CAPUT XXXVII GENESIS.
-    TO ΕΒΡΑΙΚΟΝ.    TO ΕΒΡΑΙΚΟΝ.    ΑΚΥΛΑΣ.
-    [Hebrew text] 2.
-    2.
-    VERSIO HEBRAICI TEXT.
-    2. Uxorium.
-    Et tradidt Joseph inmania eorum ad patrem eorum. Syrus et Hebræus, desilit.
-    VULGATA LATINA.
-    2. Uxorium.
-    Accessuitque fratres suos apud patrem crimen pessimo.
-    AQUILA.
-    2.
-    Et detulit ?ol denuit antea Ioseph vituperium ipsorum malos ad patrem suum.
+    TO EBPAIKON.           TO EBPAIKON           AKYLAΣ.
+                            Ἑλληνικοῖς γράμμασι.
+    וישב יעקב             2.                        2. Καὶ ἤνεγκε [al. κατήνεγκε]
+    אביהם...               Ἰωσὴφ ψόγον αὐτῶν πονηρὸν πρὸς
+    VERSIO HEBRAICI TEXT.  VULGATA LATINA.         τὸν πατέρα αὐτοῦ.
+    2. Uxorum.             2. Uxorum.              AQUILA.
+    Et retulit Joseph infamiam eo- Accusavitque fratres suos apud 2.
+    rum ad patrem eorum. Syrus et patrem crimine pessimo.        Et detulit [vel detulit autem]
+    Hebræus, detulit.                                       Joseph vituperium ipsorum malum
+                                                            ad patrem suum.
   </bloco>
-  <notas>Scripts mixed: Latin, Greek, Hebrew fragments present. Hebrew lines marked as [Hebrew text] where individual characters were not fully legible in scan; one longer illegible word marked [ilegivel]. BBOX coordinates are approximate percentages mapped to 0-1000 scale of image.</notas>
+  
+  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
+    Digitized by Google
+  </bloco>
+
+  <notas>
+    A página apresenta uma disposição complexa em colunas típica das edições da Hexapla de Orígenes.
+    Coluna 1: Texto Hebraico (TO EBPAIKON) e Versão Latina do Hebraico.
+    Coluna 2: Hebraico transliterado em Grego (TO EBPAIKON Ἑλληνικοῖς γράμμασι) e Vulgata Latina.
+    Coluna 3: Versão de Áquila (AKYLAΣ) em Grego e Latino.
+    Seção central: Notas críticas (Notæ et variæ lectiones) em duas colunas, misturando Latim e Grego.
+    Seção inferior: Início do Capítulo XXXVII de Gênesis com mesma estrutura.
+    Transcrição de caracteres hebraicos e gregos aproximada conforme visibilidade.
+  </notas>
 </pagina>

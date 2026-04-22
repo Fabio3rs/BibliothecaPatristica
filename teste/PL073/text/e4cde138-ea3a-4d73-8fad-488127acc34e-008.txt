@@ -1,20 +1,37 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="60,10,940,70">
-Confina Numidiae.
-25 30 OCCIDENS 35 40 45
+<pagina estado="com_texto" tipo="gravura">
+  <bloco tipo="cabecalho" script="greek" bbox="85,0,290,95">
+ἘΠῚ σα “ὙΠ
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="130,120,330,250">
+  <bloco tipo="cabecalho" script="latino" bbox="250,20,930,105">
+25 30 OCCIDENS 35 40 45
+Confina Numidiae.
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="135,470,165,650">
+A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="170,520,205,690">
+B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="205,590,240,770">
+C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="240,650,270,820">
+D
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="30,210,110,610">
+MERIDIES
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="70,120,385,830">
 CHOROGRAPHIA
 GENERALIS
 MANSIO NVM
 ET
 EXPEDITIONVM
 EREMITICARVM
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="40,80,68,860">
-MERIDIES
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,120,320,700">
+
 AFRICA.
 CYRE-NAICA.
 MARMARICA.
@@ -26,7 +43,8 @@ SINVS MARIS RVBRI
 ARAB.-AEGYPTI
 ARABIA continia
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,100,860,870">
+
+  <bloco tipo="texto_principal" script="latino" bbox="345,115,935,880">
 MARE MEDITERRANEVM
 MARE IONIVM
 MARE AEGEVM
@@ -48,7 +66,8 @@ MEDIA
 ASSYRIA
 BABILONIA
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="880,80,920,860">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="875,55,950,880">
 35
 40
 45
@@ -61,30 +80,28 @@ BABILONIA
 80
 85
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="120,680,370,820">
+
+  <bloco tipo="nota" script="latino" bbox="90,805,420,880">
 Scala miliariorum
 huius chorographiae
 generalis
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="60,880,940,980">
+
+  <bloco tipo="rodape" script="latino" bbox="240,915,560,970">
 25 30 ORIENS 35 40 45
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="360,900,760,960">
-Ex typis MIGNE, au Petit-Montrouge.
+
+  <bloco tipo="rodape" script="latino" bbox="520,910,900,1020">
+Ex typis MIGNE, au Petit-Montronge.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="420,960,600,1000">
+
+  <bloco tipo="rodape" script="latino" bbox="440,955,820,1040">
 Digitized by Google
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="760,920,980,1000">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="830,900,1000,1000">
 [ilegivel]
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="60,900,220,960">
-[ilegivel]
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="820,860,960,940">
-[ilegivel]
-  </bloco>
-  <notas>tipo_pagina: gravura.
-Script principal identificado: latino.
-Observações: bounding boxes aproximadas em escala 0-1000. Muitas inscrições menores e toponímias estão agrupadas nos blocos "texto_principal" (coluna esquerda primeiro, depois coluna/distrito central e direito). Palavras que não puderam ser lidas com segurança foram marcadas como [ilegivel] ao nível de palavra. A linha "Scala miliariorum huius chorographiae generalis" foi legível; a subdivisão e os termos menores no interior da escala não o foram com segurança e portanto não foram transcritos. O selo moderno "Digitized by Google" e anotações manuscritas foram transcritos como rodapé/nota_marginal.</notas>
+
+  <notas>Transcrição em prioridade visual. Muitos topônimos muito pequenos no interior da moldura não foram incluídos por estarem ilegíveis na resolução fornecida; apenas texto grande/legível foi transcrito. Caixas/coordenação em escala 0-1000 aproximadas.</notas>
 </pagina>

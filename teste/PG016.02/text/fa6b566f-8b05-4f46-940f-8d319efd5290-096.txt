@@ -1,29 +1,30 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,70">
-    HEXAPLORUM QUAE SUPERSUNT.
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    1443 HEXAPLORUM QUÆ SUPERSUNT. 1444
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,80,320,760">
-    TO ΕΒΡΑΙΚΟΝ.
-    אל־האב רשע תנה רזק 15
-    אל־נגל לב 17
-    פן־יראה זהוה 18
-    מעידי אס 19
-    אל־חנון במחירים
-    אל־חקנא 20
-    נ ב 20
-    תערב 21
-    הגר 23
-    שמים ישק משיב דברים 26
-    נחים
-    לעבודה משזה 27
-    אל־חיי 28
-    והשבית
-    לקחתי מוסר 32
-    תעמתות 33
+  <bloco tipo="texto_principal" script="misto" bbox="100,60,900,100">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,80,660,760">
-    TO EBPAIKON
-    Ελληνικοις γραμμασι.
+  <bloco tipo="texto_principal" script="hebraico" bbox="80,100,350,430">
+    יֹנֵץ נַפְשֶׁךָ
+    15 אַל-תֶּאֱרֹב רָשָׁע לנְוֵה צַדִּיק
+    17 אַל-יִגַּל לִבְּךָ
+    18 פֶּן-יִרְאֶה יְהוָה
+    וּמֵעָלֶיךָ אַף
+    19 אַל-תִּתְחַר בַּמְּרֵעִים
+    אַל-תְּקַנֵּא
+    בְּנִי 20
+    21 יְרָא אֶת-יְהוָה
+    23 הֵנָּה
+    26 שְׂפָתַיִם ישְׁק מֵשִׁיב דְּבָרִים נְכֹחִים
+    27 הַתְקֵן בַּחוּץ מַלְאכְתֶּךָ
+    28 אַל-תְּהִי עֵד חִנָּם
+    וּפִתִּיתָ
+    32 לְחַמְתִּי מוּסָר
+    33 תַּעֲלֻמּוֹת
+    לְשַׁבֵּךְ
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,100,550,430">
     15.
     17.
     18.
@@ -36,75 +37,65 @@
     28.
     32.
     33.
-    
-    VERSIO HEBRAICI TEXT.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,100,920,430">
+    Διατηρῶν ψυχήν σου.
+    15. . . . εἰς ὡραιότητα δικαίου.
+    17. Μὴ ἀγαλλιάσθω ἡ καρδία σου.
+    18.
+    19. Μὴ διαμάχου ἐν πονηρευομένοις.
+    20. Λύχνος.
+    21.
+    23. Ἐπιγινώσκειν.
+    26.
+    27.
+    28. Μὴ γίνου.
+    32.
+    33.
+    Τοῦ κοιμηθῆναι.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="80,440,920,470">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,470,380,850">
     Et custodiens animam tuam.
     15. Ne insidieris impie habitaculo justi.
     17. Ne exsultet cor tuum.
     18. Ne forte videat Dominus.
-    Desuper coiram suam.
+    Desuper eo iram suam.
     19. Ne succenseas in malignis.
-    
     Ne æmuleris.
     20. Lucerna.
     21. Te misceas.
-    
     23. Cognoscere.
-    26. Labia oculabitur respondens verba recta.
-    27. Et praepara illud in agro.
-    
+    26. Labia osculabitur respondens verba recta.
+    27. Et præpara illud in agro.
     28. Ne sis.
     Et numquid pellicies.
-    
     32. Accepi eruditionem.
-    
-    33. Dormitalionum.
-    
+    33. Dormitationum.
     Ad cubandum.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,80,980,760">
-    AKYΛΑΣ.
-    Διατηρων ψυχην σου.
-    15.... εις ωραιοτητα δικαιω.
-    
-    17. Μη αγαλλιάσθη ή κατακξις σου.
-    18.
-    19. Μη διαμάχου έν πονηροις.
-    
-    20. Λύχνος.
-    21.
-    23. Επιγνώσεις.
-    26.
-    27.
-    28. Μη γίνο.
-    32.
-    33.
-    
-    VULGATA LATINA.
-    Servatorem animae tuae.
-    15. Ne insidieris, et quaeras impietatem in domo iusti.
+  <bloco tipo="texto_principal" script="latino" bbox="400,470,650,850">
+    Servatorem animæ tuæ.
+    15. Ne insidieris, et quæras impietatem in domo justi.
     17. Ne exsultet cor tuum.
     18. Ne forte videat Dominus.
     Ab eo iram suam.
     19. Ne contendas cum pessimis.
-    
     Nec æmuleris.
     20. Lucerna.
     21. Commiscearis.
-    
     23. Cognoscere.
     26. Labia deosculabitur qui recta verba respondet.
     27. Et diligenter exerce agrum tuum.
-    
     28. Ne sis.
     Nec lactes.
-    
     32. Didici disciplinam.
-    33. Dormitalbis.
-    
+    33. Dormitabis.
     Ut quiescas.
-    
-    AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="680,470,920,850">
     Custodiens animam tuam.
     15. ... in speciositatem justi.
     17. Ne exsultet cor tuum.
@@ -118,21 +109,30 @@
     28. Ne fias.
     32.
     33.
-    
     Ad dormiendum.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="50,760,950,990">
-    Notae et variae lectiones ad cap. XXIV Proverbiorum.
-    V.4. 'AΛΛ., και εν γνωσει. Ex editione Romana et
-    Drusio hujus capitis lectiones mutantur, paucis
-    exceptis, quae infra notantur.
-    V.12. 'A., μητι ουχι ό σταβμζων καρδιας αυτος
-    συν̂σει; Sie editio Romana. Regius autem unus ex
-    Procopio hanc lectionem adfert : μητι ό σταθμζων
-    καρδιας, ου γινωσκει;
-    V.21. Hic adfertur in editione Romana sequens
-    - 
+  <bloco tipo="cabecalho" script="latino" bbox="250,860,750,880">
+    Notæ et variæ lectiones ad cap. XXIV Proverbiorum.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="100,880,500,950">
+    V. 4. "Α.Ι.Ι., καὶ ἐν γνώσει. Ex editione Romana et Drusio hujus capitis lectiones mutuamur, paucis exceptis, quæ infra notantur.
+    V. 12. Ἄ., μήτι οὐχὶ ὁ σταθμίζων καρδίας αὐτὸς
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="520,880,920,950">
+    συνήσει; Sic editio Romana. Regius autem unus ex Procopio hanc lectionem adfert : μήτι ὁ σταθμίζων καρδίας, οὐ γνώσει;
+    V. 21. Hic adfertur in editione Romana sequens
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,960,900,990">
     Digitized by Google
   </bloco>
-  <notas>Pagina com colunas: a coluna hebraica à esquerda, colunas latinas/gregas/Greek transliteration à direita. Algumas palavras hebraicas difíceis/fragmentadas foram transcritas tal qual; marcas de elipses mantidas. Não foram normalizados acentos ou formas; mantida ortografia original onde visível.</notas>
+  <notas>
+    A página apresenta uma disposição complexa em colunas comparativas (Hexapla).
+    Coluna 1 (Topo): Texto Hebraico.
+    Coluna 2 (Topo): Transliteração do Hebraico em letras Gregas (apenas números visíveis nesta página).
+    Coluna 3 (Topo): Versão de Áquila (Grego).
+    Coluna 1 (Meio): Versão Latina do Texto Hebraico.
+    Coluna 2 (Meio): Vulgata Latina.
+    Coluna 3 (Meio): Versão Latina de Áquila.
+    Rodapé: Notas críticas em Latim com citações em Grego.
+  </notas>
 </pagina>

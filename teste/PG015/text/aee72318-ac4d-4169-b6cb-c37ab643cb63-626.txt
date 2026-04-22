@@ -1,28 +1,82 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,90">
-    HEXAPLORUM QUAE SUPERSUNT.
-    TO EBPAIKON
-    TO EBPAIKON
-    1247 1213
+  <bloco tipo="cabecalho" script="latino" bbox="100,30,900,60">
+    1247 HEXAPLORUM QUÆ SUPERSUNT. 1248
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,90,360,520">
-    טו הבראיקון
-    במים אשר עבדו אתות מיהק צועק
-    וידבק איש־באר־ירך
-    פרק 23
-    פרק 24
-    הלם
-    פרק 25
-    חקים דמה ססט
-    וין
-    פרק 28 ואין מזיל
-    חרב
-    פרק 29
-    אשר חלל
-    פרק 30 גלות
-    פרק 31
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,950,100">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="370,90,630,520">
+  <bloco tipo="texto_principal" script="ebraico" bbox="100,100,300,400">
+    בְּמִיּוֹם אֲשֶׁר עֲבָדִים מהֶם נתְּנוּ
+    וְדִבְּקוּ אֶת־גְּבִירָם
+    צָעַקְתְּ 23
+    אֶת־אֱלֹהַי אֲשֶׁר־עָשִׂיתִי 24
+    חִלּוּ
+    פְּנֵי 23 [sic,应为25]
+    חֲזָקִים הֵמָּה מִמֶּנּוּ 26
+    וְאֵין מַצִּיל 28
+    רְחוֹב
+    שְׁמוֹ 29
+    גָּלוּ 30
+    וַיָּשִׂימוּ 31
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,100,450,400">
+    23.
+    24.
+    25.
+    26
+    28.
+    29.
+    30.
+    31.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,100,800,400">
+    23.
+    24.
+    23.
+    26.
+    28.
+    29.
+    30.
+    31.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,430,900,470">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,470,350,520">
+    In domibus, qui cum domo Micha acciti sunt, et insecuti sunt filios Dan.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,470,650,520">
+    Qui habitabant in ædibus Michæ, conclamantes secuti sunt.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,530,350,730">
+    23. Accitus es.
+    24. Deos meos quos feci.
+    Et abistis.
+    25. Amari.
+    26. Fortes ipsi præ se.
+    Et vertit se.
+    28. Et non eruens.
+    Rehob.
+    29. In nomine.
+    Qui natus est.
+    30. Tranemigravit..
+    31. Et posuerunt.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,530,650,730">
+    23. Clamas.
+    24. Deos meos quos mihi feci.
+    Vacat.
+    25. Animo concitati.
+    26. Fortiores se essent.
+    Reversus est.
+    28. Nullo penitus ferente præsidium.
+    Rohob.
+    29. Juxta vocabulum.
+    Quem generat.
+    30. Captivitatis.
+    31. Mansitque apud eos.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,530,800,730">
     23.
     24.
     25.
@@ -32,66 +86,30 @@
     30.
     31.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="640,90,970,520">
-    AKVILAΣ
-    23.
-    24.
-    25.
-    26.
-    28.
-    29.
-    30.
-    31.
+  <bloco tipo="nota" script="misto" bbox="100,750,900,950">
+    Notæ et variæ lectiones ad cap. XVIII Judicum.
+    V. 2. "Ἄλλος, ἐκ τῶν συγγενειῶν. Basil. et Alex.
+    Ibid. "Ἄλλος, ἀπὸ μέρους αὐτῶν. Basil. et Alex.
+    Ibid. Basil., ἐρευνήσατε. Alex., ἐξερευνήσατε.
+    Ibid. "Ἄλλος, πορευέοντο εἰς ρος. Basil. et Alex.
+    Ibid. "Ἄλλος, κατέπαυσαν ἐκεῖ etc. Basil. et Alex.
+    qui postremus habet, παρὰ τῷ οἴκ.
+    V. 3. "Ἄλλος, παιδαρίου. Basil. et Alex.
+    Ibid. "Ἄλλος, ἐνταῦθα. Basil. et Alex.
+    V. 5. "Ἄλλος, ἡ κατειωθεῖ τὴν δὸν μῶν. Basil.
+    et Alex. Sed hic habet, ἡ ὁδὸς ἡμῶν.
+    V. 6. "Ἄλλος, εἰς εἰρήνην. Basil. et Alex.
+    Ibid. Basil. et Alex., καθ' ἣν πορεύεσθε. Postremus, καθ' ἣν ὑμεῖς πορεύεσθε.
+    V. 7. "Ἄλλος, καὶ παρεγένοντο. Basil. et Alex
+    Ibid. "Ἄλλος, ἐν αὐτῇ κατοικοῦντα. Basil. et Alex.
+    Ibid. Σ., ἀμερίμνως. Basil.
+    Ibid. "Ἄλλος, κατὰ τὴν σύγκρισιν. Basil. et Alex.
+    "Ἄλλος, κατὰ τὸ ἔθος. Basil.
+    Ibid. Σ., ἐν ἡσυχίᾳ etc. Has lectiones Symmachus et editionis τῶν Ο' a Romana diversas, mutua-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,520,970,800">
-    VERSIO HEBRAICI TEXT.                         VULGATA LATINA.                         AQUILA.
-    In domibus, qui cum domo Mi-               Qui habitabant in aedibus Mi-            [ilegivel]
-    cha acciti sunt, et insecuti sunt fi-       chae, conclamantes secuti sunt.        [ilegivel]
-    lios Dan.
-    
-    23. Accitus es.                            23. Clamas.                             23.
-    
-    24. Deos meos quos feci.                  24. Deos meos quos mihi feci.           24.
-    
-    Et abiistis.                               Vacat.
-    25. Amari.                                 25. Animo concitati.                     25.
-    26. Fortes ipsi pra se.                    26. Fortiores se essent.                 26.
-    Et vertit se.                              Reversus est.
-    28. Et non erueus.                          28. Nullo penitus ferente pra-          28.
-                                               sidium.
-    Rehob.                                     Rohob.
-    29. In nomine.                             29. Juxta vocabulam.                     29.
-    
-    Qui natus est.                             Quem genuerat.
-    
-    30. Transmigratio.                         30. Captivitatis.                        30.
-    
-    31. Et posuerunt.                          31. Mansitque apud eos.                 31.
-    
-    Notae et variae lectiones ad cap. XVIII Judicum.
-    V. 2. 'Αλλος, εκ των συγγενων. Basil. et Alex.
-    Ibid. 'Αλλος, αὐτος προσις αυτων. Basil. et Alex.
-    Ibid. Basil., ἐπερυνωσεν. Alex., ἐξερευνησα.
-    Ibid. 'Αλλος, παραγιγνομενο εἰς; ἔπος. Basil. et Alex.
-    Ibid. 'Αλλος, καταφανουσιν τεκνει etc. Basil. et Alex.
-    qui postremus habet, παρὰ τῷ αυτω.
-    V. 3. 'Αλλος, παρεδεξιν. Basil. et Alex.
-    Ibid. 'Αλλος, ἐπαινουσα. Basil. et Alex.
-    V. 5. 'Αλλος, ἑ κατευξατο την ὀδον ἡμων. Basil.
-    et Alex. Sed hic habet, η ὀδος ἡμων.
-    V. 6. 'Αλλος, εις σιφωνην. Basil. et Alex.
-    Ibid. Basil. et Alex., χαδ' τη παρουσθον. Poste-
-    rius, χαδ' ἡν ὑμεις προσεισθε.
-    V. 7. 'Αλλος, και παραγινομε. Basil. et Alex.
-    Ibid. 'Αλλος, εν αυτη κατοικουντα. Basil. et Alex.
-    Ibid. 2, ἀμεριμνησις. Basil.
-    Ibid. 'Αλλος, κατα την συγχρον. Basil. et Alex.
-    'Αλλος, κατα το ἑτος. Basil.
-    Ibid. Σ., εν τρηψιγ ειτ. Has lectiones Symma-
-    chi et editionis τῶν ῾Ρωμαια διαφερνα, mutua-
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,800,970,980">
-    Digitized by Google
-  </bloco>
-  <notas>Scripts identificados: hebraico (coluna sinoptica a esquerda superior), grego presente em notas críticas; latim no corpo principal e cabeçalho. Algumas palavras hebraicas e gregas são parcialmente ilegíveis; conservei [ilegivel] onde leitura incerta única ocorrência de palavra não recuperável no corpo superior direito.</notas>
+  <notas>
+    A página apresenta uma estrutura complexa de Hexapla, com colunas para o texto Hebraico, transliteração Grega (apenas números visíveis nesta seção), e versões (Versio Hebraici, Vulgata, Aquila).
+    Na coluna direita superior, o número '23.' aparece novamente onde se esperaria '25.', possivelmente um erro de impressão ou alinhamento.
+    O rodapé contém notas críticas em Latim e Grego.
+  </notas>
 </pagina>

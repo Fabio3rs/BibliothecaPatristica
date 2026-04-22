@@ -1,10 +1,11 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,20,960,120">
+<pagina estado="com_texto" tipo="texto" >
+  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,120">
 269
 DE ANTIQ. COLLECTION. ET COLLECTOR. CANONUM. PARS li.
 270
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,120,495,840">
+
+  <bloco tipo="texto_principal" script="latino" bbox="40,120,495,860">
 sunt, quia non puram et perfectam collectionem Isi-
 dori, sed imperfectam et mixtam continet, in qua
 scilicet peculiari librarii arbitrio alia per saltum
@@ -18,7 +19,7 @@ codices descripsimus capite sexto num. 28 et sequen-
 tibus, qui cum alia omittant, alia addant præter si-
 ciorum et restitutionum Isidori exemplarium fidem,
 si quis se puram et integram ejus collectionem in
-ipsis nostris arbitraret, nimium aberrarct. Aliquot
+ipsis nostris arbitraretur, nimium aberrarct. Aliquot
 præterea alios codices in bibliotheca Vaticana inve-
 nimus, in quibus quædam tantum documenta libra-
 rorum arbitrio ex Isidore excerpta, et una cum aliis
@@ -34,7 +35,8 @@ antiqua Orientis, ibidem n. 70 et 71, et Epistola ca-
 nonica n. 72. Inseritur ex alio ignoto fonte Decretum
 Silvestri papæ, cujus initium: Si quis episcopus nulla
 ecclesiastica rationis necessitate, quod in capitulis
-Martini [ilegivel] Bracarensis est caput 14. Rediunt
+Martini [ilegivel] Bracarensis est caput 14. Redi-
+unt
 documenta ex Additionibus Dionysianis; S. Leonis
 epistola ad Theodorum Forojulensem, ibidem num.
 409; ejusdem epistola ad Siculos n. 410; alia ad
@@ -66,19 +68,13 @@ Vallicellano D 38, de quo diximus c. 6 n. 29.
 
 5. Dein affertur epistola Leonis ad Dioscorum, quæ
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,140,520,200">
-A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,300,520,360">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,480,520,540">
-C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,660,520,720">
-D
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="505,120,960,840">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="480,140,520,200">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,300,520,360">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,480,520,540">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,660,520,720">D</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="505,120,960,860">
 Ac in sequentibus ex aliis collectionibus derivata
 sunt. Postea epistola S. Gregorii ad Serenum epi-
 scopum Massiliensim, Zachariæ papæ synodus, et
@@ -94,8 +90,8 @@ episcopos per universas provincias de lapsis: Ecce
 manifestissime constat, etc., ubi legitur in fine tituli-
 rum qui subjecti sunt epistolæ sextæ Joannis II ad
 Cæsarium Arelatensem tom. V Concil. col. 603. Huic
-fragmentum nomine perperam in scriptum
-recitatur a Gratiano dist. 50 c. 29, et ab aliis etiam
+fragmentum nomine perperam in scriptum recitatur a
+Gratiano dist. 50 c. 29, et ab aliis etiam
 antiquioribus. Vide quæ dicemus part. iv. c. 7, § 2
 n. 7. Epistola S. Gregorii ad Etherium episcopum
 Lugdunensem, qua in editione Maurina est epist. 106
@@ -109,7 +105,7 @@ Ecclesiæ archipresbiterali A. divino respectu Papinensi
 episcopatus pontifex debita venerationi devotus in
 Christo famulantum. Solertia nostra nulla ambigui-
 tatem [ilegivel], quia parati quotidie sumus obsequi vobis in
-omnia illas quæ possibilitas subministratur et ecclesiastica
+omnibus illas quæ possibilitas subministratur et ecclesiastica
 censura monendo confirmat. Concedimus ergo vestræ
 Ecclesiæ illi quæ in petitione vestri episcopatus ministrum,
 ita ut ea lege episcopatus vester subdatur cui episcop.
@@ -121,8 +117,8 @@ anni nonam. Plures sunt archiepiscopi Mediolanenses
 qui incipiunt a litera A et cum indictione nonæ con-
 currunt. Tabulæ vero vulgatæ episcoporum Papiensium
 pluribus lacunis laborant. Qui alia documenta
-Ticinensis hujus temporis præsso habent, invenient
-forsans episcopum Papiensium incipientem a littera
+Ticinensis hujus temporis præsto habent, invenient
+forsan episcopum Papiensium incipientem a littera
 A, ex quo aliquid certius elicere licebit.
 
 6. Codex Vat. 1434 pergamenus in-folio saeculi
@@ -158,8 +154,10 @@ Lugdunensem, quæ in priore quoque codice descripta
 vidimus; item alia ad Brunichildem reginam, quæ in
 editione Maurina
   </bloco>
+
   <bloco tipo="rodape" script="latino" bbox="680,920,980,990">
 Digitized by Google
   </bloco>
-  <notas>Script: latino impresso. Foram mantidos hifenos e divisões de linha conforme a página. Usei [ilegivel] para palavras ou nomes cuja leitura é incerta (p.ex. nomes próprios, numerais romanos imperfectos, ou seqüências tipográficas danificadas). As letras A, B, C, D na margem central foram transcritas como notas marginais separadas com suas posições approximadas. BBOX são estimativas normalizadas (0-1000).</notas>
+
+  <notas>Transcrição fiel ao impresso na imagem; mantidos hífens de divisão de linha. Usados [ilegivel] apenas onde a palavra/segmento é incerto. BBOX e posições das notas marginais A,B,C,D estimadas conforme a disposição visual no filete central.</notas>
 </pagina>

@@ -1,127 +1,211 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,90">
-    HEXAPLORUM QUE. SUPERSUNT.
+  <bloco tipo="cabecalho" script="latino" bbox="480,50,680,70">
+    HEXAPLORUM QUÆ SUPERSUNT.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,90,320,760">
-    TO ΕΒΡΑΙΚΟΝ.
-    טו 16
-    וטו 21
-    והו 22
-    ממנו
-    ידעת אודאבר 25
-    וזא 26
-
-    מבור וסדה
-
-    וזוט 27
-    חשמו
-    נענו 28
-    יהל׳ 29
-    31
-    בכלא
-    וסור
-
-    הדגר 30
-    והמנות נעל 33
-
-    נכל 34
-    ויבנו
-
-    לבבות 35
-    בעיני בחיים טוב 36
-
-    חד ומשח 39
+  <bloco tipo="texto_principal" script="latino" bbox="100,50,130,70">
+    27
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="330,90,650,760">
-    TO EBPAIKON
-    Ελληνικος γραμμασι.
-    46.
+  <bloco tipo="texto_principal" script="latino" bbox="900,50,930,70">
+    28
+  </bloco>
+  
+  [!-- Top Section Headers --]
+  <bloco tipo="texto_principal" script="grego" bbox="150,80,300,100">
+    ΤΟ ΕΒΡΑΙΚΟΝ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="400,80,600,110">
+    ΤΟ ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,80,850,100">
+    ΑΚΥΛΑΣ.
+  </bloco>
+
+  [!-- Top Section Content - Column 1 (Hebrew) --]
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,110,350,450">
+    וילך 16
+    ויכרת 21
+    והנה 22
+    מהדוד
+    דעת את־אבנר 25
+    ויצא 26
+    
+    מבור הסרה
+    ויסרה 27
+    חשבת
+    נקי 28
+    ונלי 29
+    נב
+    בפלך
+    והסר
+    הרגו 30
+    המות במל 33
+    כנפל 34
+    ויוסף
+    לבדות 35
+    בעיני כל־העם טוב 36
+    וך ומשח 39
+  </bloco>
+
+  [!-- Top Section Content - Column 2 (Transliteration Numbers) --]
+  <bloco tipo="texto_principal" script="latino" bbox="420,110,480,450">
+    16.
     21.
     22.
     25.
     26.
-
+    
     27.
     28.
     29.
-    31.
-
+    
     30.
     33.
     34.
-
+    
     35.
     36.
-
     39.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,90,960,760">
-    AKVILAΣ.
 
-    46.
+  [!-- Top Section Content - Column 3 (Aquila Greek) --]
+  <bloco tipo="texto_principal" script="grego" bbox="700,110,900,450">
+    16.
     21.
     22.
-    23. 'Απὸ τοῦ Γεδδοὺρ μονοκώνου.1
-    25.
+    Ἀπὸ τοῦ Γεδδοὺρ μονοζώνου.
+    23.
     26.
-
-    'Απὸ τοῦ λάκκου τῆς ἀποστάσεως.
+    Ἀπὸ τοῦ λάκκου τῆς ἀποστά-
+    σεως.
     27.
-    Εἰς τὸν ἐνοπλίσμω.
+    Εἰς τὸν ἐνοπλισμόν.
     28.
     29.
-    Τυφλός.
-    Ἄραχνον.
-
-    50. 'Αλείπεται.
-    53.
-    51.
-
+    Τυφλός.
+    Ἄπρακτον.
+    30. Ἀπέκτειναν.
+    33.
+    34.
     35.
-    36. ✠ 'Αγαθόν.
-    59. 'Απαλὸς καὶ χερισμένος.
+    36. ✗ Ἀγαθόν.
+    39. Ἁπαλς καὶ κεχρισμένος.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,760,960,1160">
-    VERSIO HEBRAICI TEXT.        VULGATA LATINA.            AQUILA.
 
-    16. Abiït.               16. Seque batur.          16.
-    21. Et percutient.      21. Incam.                21.
-    22. Et ecce.            22. Statim.               22.
-    Ex agmine.             Cassis latronibus.      A Geddur expedito.
-    25. Nosti Abner.        25. Ignoras Abner.       25.
-    26. Et egressus est.    26. Egressus itaque.     26.
-    A cisterna Sira.       A cisterna Sira.        A lacu deflectionis.
-    27. Et divertere fecit eum. 27. Scorsum adduxit. 27.
-    In costa quintâ.       In inguine.             In armaturam.
-    28. Innocens.           28. Mundus.              28.
-    29. Mancant.            29. Et veniat.           29.
-    Fluens.                Fluxum seminis sustinens. Cascus.
-    In scandiconem.        Fusum.                  Fusum.
-    Et indigens.           Et indigens.
-    30. Interfecerunt.     50. Interfecerunt.       30. Interfecerunt.
-    33. Num secundum mortem vilis? 35. Nequaquam ut mori solent 33.
-    31. Ut cadere.          34. Cadere.              34.
-    Et addiderunt.         Congeminansque.
-
-    35. Ad cibandum.        35. Cibum capere.        35.
-    36. In oculis omnis populi bonum. 36. In conspectu totius populi. 36. ✠ Bonum.
-    39. Tener et unctus.    39. Delicatus et unctus. 39. Tener et unctus.
-
-    Notae et variae lectiones ad cap. III lib. II Regum.
-
-    V. 1. Σ., μακρός. Coislin. 2.
-    Ibid. 'Α., και ἀφαπόψιμες etc. Idem.
-    V. 3. Οἱ λοιποι, 'Αβδι. Idem. Neutra lectio Graeca cum Hebraeo consonat.
-    V. 4. Α., Σ., 'Αδινός. Reg. et Coislin. 2. LXX legerunt תרה qui scribunt 'Όρλα.
-
-    V. 6. 'Α., ενισχύων. Σ., χρηασμένων. Coisl. 2.
-    V. 7. Λουσι, και ὄνομα αὐτῆ, cum asterisco.
-    V. 8. Οἱ λοιποι, 'Ιεσχαί. Reg.
-    Ibid. Σ., μη χνοχώριος. Reg. et Coislin. 2.
-    Ibid. 'Αλλος, πρὸς τοὺς ἀδελφός etc. Coislin. 2.
+  [!-- Middle Section Headers --]
+  <bloco tipo="texto_principal" script="latino" bbox="150,460,350,480">
+    VERSIO HEBRAICI TEXT.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="740,1160,960,1240">
+  <bloco tipo="texto_principal" script="latino" bbox="450,460,650,480">
+    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,460,850,480">
+    AQUILA:
+  </bloco>
+
+  [!-- Middle Section Content - Column 1 (Latin Versio) --]
+  <bloco tipo="texto_principal" script="latino" bbox="150,490,350,800">
+    16. Abiit.
+    21. Et percutient.
+    22. Et ecce.
+    Ex agmine.
+    25. Nosti Abner.
+    26. Et egressus est.
+    A cisterna Sira.
+    27. Et divertere fecit eum.
+    In costa quinta.
+    28. Innocens.
+    29. Mancant.
+    Fluens.
+    In scipionem.
+    Et indigens.
+    30. Interfecerunt.
+    33. Num secundum mortem vi-
+    lis?
+    34. Ut cadere.
+    Et addiderunt.
+    35. Ad cibandum.
+    36. In oculis omnis populi bo-
+    num.
+    39. Tener et unctus.
+  </bloco>
+
+  [!-- Middle Section Content - Column 2 (Vulgata) --]
+  <bloco tipo="texto_principal" script="latino" bbox="420,490,650,800">
+    16. Sequebatur.
+    21. Incam.
+    22. Statim.
+    Casis latronibus.
+    25. Ignoras Abner.
+    26. Egressus itaque.
+    A cisterna Sira.
+    27. Seorsum adduxit.
+    In inguine.
+    28. Mundus.
+    29. Et veniat.
+    Fluxum seminis sustinens.
+    Fusum.
+    Et indigens.
+    30. Interfecerunt.
+    33. Nequaquam ut mori solent
+    ignavi.
+    34. Cadere.
+    Congeminansque.
+    35. Cibum capere.
+    36. In conspectu totius populi.
+    39. Delicatus et unctus.
+  </bloco>
+
+  [!-- Middle Section Content - Column 3 (Aquila Latin) --]
+  <bloco tipo="texto_principal" script="latino" bbox="700,490,900,800">
+    16.
+    21.
+    22.
+    A Geddur expedito.
+    25.
+    26.
+    A lacu defectionis.
+    27.
+    In armaturam.
+    28.
+    29.
+    Cæcus.
+    Fusum.
+    30. Interfecerunt.
+    33.
+    34.
+    35.
+    36. ✗ Bonum.
+    39. Tener et unctus.
+  </bloco>
+
+  [!-- Bottom Notes Header --]
+  <bloco tipo="texto_principal" script="latino" bbox="300,810,700,830">
+    Notæ et variæ lectiones ad cap. III lib. II Regum.
+  </bloco>
+
+  [!-- Bottom Notes Left Column --]
+  <bloco tipo="aparato_critico" script="misto" bbox="150,835,450,930">
+    V. 1. Σ., μακρός. Coislin. 2.
+    Ibid. Ἀ., καὶ ἀραιούμενος etc. Idem.
+    V. 3. Οἱ λοιποί, Ἀδιδ. Idem. Neutra lectio
+    Græca cum Hebræo consonat.
+    V. 4. Ἀ., Σ., Ἀδωνίας. Reg. et Coislin. 2. LXX
+    legerunt וקראו qui scribunt Ὀρνία.
+  </bloco>
+
+  [!-- Bottom Notes Right Column --]
+  <bloco tipo="aparato_critico" script="misto" bbox="550,835,850,930">
+    V. 6. Ἀ., ἐνισχύων. Σ., κραταιούμενος. Coisl. 2.
+    V. 7. Λοιποί, καὶ ὄνομα αὐτῇ, cum asterisco.
+    Coislin. 2.
+    V. 8. Οἱ λοιποί, Ἰεσβαλ. Reg.
+    Ibid. Σ., μὴ κυνοκέφαλος. Reg. et Coislin. 2.
+    Ibid. Ἄλλος, πρὸς τος ἀδελφοὺς etc. Coislin. 2.
+  </bloco>
+
+  [!-- Footer --]
+  <bloco tipo="rodape" script="latino" bbox="500,960,800,990">
     Digitized by Google
   </bloco>
-  <notas>Scriptos mistos: blocos incluem hebraico, grego e latino. Pequenas palavras ilegíveis preservadas como transcrição aproximada; marcas e símbolos (✠, 1) mantidas.</notas>
 </pagina>

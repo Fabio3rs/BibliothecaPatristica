@@ -1,20 +1,58 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,20,980,120">
-    541 LEVITICI CAP. IV. 543
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="20,120,340,820">
-    ΣΥΜΜΑΧΟΣ.
-    6. Eἰς θυσίαν εἰρηνικῶν.
-    7. Προβάτων.
+  <bloco tipo="cabecalho" script="latino" bbox="50,40,100,60">541</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="380,40,620,60">LEVITICI CAP. IV.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,40,900,60">542</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="150,65,250,85">ΣΥΜΜΑΧΟΣ.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="480,65,500,85">Ο'.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="700,65,800,85">ΘΕΟΔΟΤΙΩΝ.</bloco>
+
+  [!-- Coluna Grega Esquerda --]
+  <bloco tipo="texto_principal" script="grego" bbox="50,90,280,350">
+    6. Εἰς θυσίαν εἰρηνικῶν.
+    7. Πρόβατον.
     8.
     9.
     10.
     11.
     12.
-    13.
     14.
-    15.
-    SYMMACHUS.
+    16.
+  </bloco>
+
+  [!-- Coluna Grega Centro --]
+  <bloco tipo="texto_principal" script="grego" bbox="320,90,600,350">
+    6. Θυσία σωτηρίου.
+    7. Ἄρνα.
+    8. Παρὰ τὰς θύρας. "Ἀλλ., κατὰ πρόσωπον.
+    9. Ἀπὸ τῆς θυσίας τοῦ σωτηρίου κάρπωμα. Οἱ λοιποί, ἀπὸ τῆς θυσίας τῶν εἰρηνικῶν πύρρον.
+    10. Καὶ τὴν ὀσφύν. "Ἄλλος, καὶ τὸ κέρκον. Ἀμφοτέρους. "Ἄλλος, τοὺς δύο. Μηρίων. "Ἄλλος, ὀσφύων.
+    11. Κάρπωμα. "Ἄλλοι, ἄρτον πύρρον.
+    12. Ἔναντι. "Ἄλλος, κατὰ πρόσωπον.
+    14. Ἀνοίσει. "Ἀλλ., προσθήσει. Κάρπωμα. "Ἄλλοι, πύρρον.
+    16. Κάρπωμα. "Ἄλλοι, ἄρτον πύρρον. Ὀσμή. "Ἀλλ., ὀσφύν.
+  </bloco>
+
+  [!-- Coluna Grega Direita --]
+  <bloco tipo="texto_principal" script="grego" bbox="620,90,850,350">
+    6. Εἰς θυσίαν εἰρηνικῶν.
+    7.
+    8.
+    9.
+    10.
+    11.
+    12.
+    14.
+    16.
+  </bloco>
+
+  [!-- Cabeçalhos Latinos --]
+  <bloco tipo="texto_principal" script="latino" bbox="150,360,250,380">SYMMACHUS.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,360,550,380">LXX INTERPRETES.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="680,360,780,380">THEODOTIO.</bloco>
+
+  [!-- Coluna Latina Esquerda --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,390,280,600">
     6. In hostiam pacificorum.
     7. Ovem.
     8.
@@ -22,50 +60,25 @@
     10.
     11.
     12.
-    13.
     14.
-    15.
+    16.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="340,120,660,820">
-    O.
-    6. Θυσία σωτηρίου.
-    7. Ἄρνα.
-    8. Παρὰ τὰς θύρας. Ἄλλ., κατὰ πρόσωπον.
-    9. Ἀπὸ τῆς θυσίας τοῦ σωτηρίου κάρπωμα. Οἱ λοιποὶ, ἀπὸ τῆς θυσίας τῶν εἰρηνικῶν πυρῷ.
-    10. Καὶ τὴν δούην. Ἄλλος, καὶ τὸ χέριον.
-    11. Ἀμφοτέρους. Ἄλλος, τοὺς δύο. Μηρίων. Ἄλλος, σφάγη.
-    12. Κάρπημα. Ἄλλοι, ἄρτον πυρῷ.
-    13. Ἐννέα. Ἄλλος, κατὰ προσώπον.
-    14. Ἀνοίσει. Ἄλλ., προσάξει. Κάρπημα. Ἄλλοι, πῦρῳ.
-    15. Κάρπημα. Ἄλλοι, ἄρτον πῦρῳ.
-    16. Ὑψηρ. Ἄλλ., δομήν.
-    LXX INTERPRETES.
+
+  [!-- Coluna Latina Centro --]
+  <bloco tipo="texto_principal" script="latino" bbox="320,390,600,620">
     6. Sacrificium salutaris.
     7. Agnum.
     8. Apud januas. Alius, ad faciem.
-    9. De sacrificio salutaris oblationem. Reliqui, de sacrificio pacificorum ignium.
-    Et lumbum. Alius, et caudam.
-    10. Utrosque (renes). Alius, duos (renes)
-    Femora. Alius, lumbos.
+    9. De sacrificio salutaris oblationem. Reliqui, de sacrificio pacificorum ignitum. Et lumbum. Alius, et caudam.
+    10. Utrasque (renes). Alius, duos (renes) Femora. Alius, lumbos.
     11. Oblationem. Alii, panem ignitum.
     12. Ante. Alii, ad faciem.
-    13. Ἀπ. Ὀστ.
     14. Offeret. Alius, adducet. Oblationem. Alii, ignitum.
-    16. Oblationem. Alii, panem ignitum.
-    Olor. Alius, odorem.
+    16. Oblationem. Alii, panem ignitum. Odor. Alius, odorem.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,120,980,820">
-    ΘΕΟΔΩΤΙΟΝ.
-    6. Εἰς θυσίαν εἰρηνικῶν.
-    7.
-    8.
-    9.
-    10.
-    11.
-    12.
-    13.
-    14.
-    THEODOTIO.
+
+  [!-- Coluna Latina Direita --]
+  <bloco tipo="texto_principal" script="latino" bbox="620,390,850,600">
     6. In hostiam pacificorum.
     7.
     8.
@@ -73,24 +86,36 @@
     10.
     11.
     12.
-    13.
     14.
+    16.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="20,820,980,1180">
-    Notae et variae lectiones ad cap. III Levitici.
-    αἱρετικῶν, ubi eadem vor Hebraica. Eodem versus 9. ubi LXX habeat συν καλός, Coislm. in marg. habet, τὺ λοιπὲν τῶν φύλων.
-    V. 6. Ex Basilienis.
-    V. 9. Ex Basilienis.
-    Ibid. Ἄλλος, τὸ χέριον. Idem Basilienis, tacto interprete. Sed infra idem Basilienis habet, αἱ δοσεῖ, τὸ χέριον. Levit. vii, 5.
-    V. 10. Ex Basilienis, ut et sequentes versiculi.
-    V. 16. O, κάρπημα. Coislm. in margine, ἄρτοι μέσῳ et ἄρτοι προσορθοι. Idemque vers. 3, supra, legi πύρῳ, ubi alii πύρῳ.
+
+  [!-- Notas --]
+  <bloco tipo="nota" script="misto" bbox="280,640,720,660">Notæ et variæ lectiones ad cap. III Levitici.</bloco>
+  
+  <bloco tipo="aparato_critico" script="misto" bbox="50,670,450,740">
+    εἰρηνικῶν, ubi eadem vox Hebraica. Eodem versu 9. ubi LXX habent σὺν ταῖς ὑάσι, Coislin. in marg. habet, ἐν ἰότητι τῶν ὑῶν.
+    V. 6. Ex Basiliensi.
+    V. 9. Ex Basiliensi.
+    Ibid. "Ἄλλος, τὸ κέρκον. Idem Basiliensis, tacito
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,1180,980,2000">
-    CAPUT IV LEVITICI.
-    σχ χέρα αὐτοῦ ἕως τὴν κεφαλὴν τοῦ μόσχου + ἔναντι Κυρίου : καὶ σφάξει τὸν μόσχον ἐπίπροσθέν Κυρίου. 5. Καὶ λαβὼν ὁ ἱερεὺς τὰ χερίστας + ὁ τεταρτωμένος τὰς χείρας : ἀπὸ τοῦ αἵματος τοῦ μόσχου, καὶ εἰσάγει αὐτός ἐπὶ τὴν κάνηγνου του μαρτυρίου. 6. Καὶ βάψας ὁ ἱερις τὸν δάκτυλον αὐτοῦ ἐἰς τὸ αἷμα, καὶ προσψαψει ἀπὸ τοῦ αἵματος ἐπάκας τῷ δάκτυλῳ ἐνών Κυρίου κατὰ τὸ κατατεταγμένα τὸ ἅγιον. 7. Καὶ ἔλθῃ ὁ ἱερεὺς ἀπὸ τοῦ αἱματός + τοῦ μόσχου : ὁ τὸ μόσχον : καὶ τὰ χείρας τοῦ διασωστηρίου του θυμιατηρίου τῆς
-    suam super caput vituli + ante Dominum : et jugulabit vitulum coram Domino. 5. Et accipiens sacerdos, qui unctus est + qui initiatus est manibus : de sanguine vituli, et inseret illam in tabernaculum testimonii. 6. Et tinget sacerdos digitum suum in sanguinem, et asperget de sanguine septies digito ante Dominum contra velum sanctum.
-    7. Et imponet sacerdos de sanguine + vituli : super cornu altaris thymiammatis compositionis ante Dominum, quod est in tabernaculo testimonii. Et
-    Digitized by Google
+
+  <bloco tipo="aparato_critico" script="misto" bbox="460,670,880,740">
+    interprete. Sed infra idem Basiliensis habet, οἱ λοιποί, τὸ κέρκον. Levit. VII, 3.
+    V. 10. Ex Basiliensi, ut et sequentes versiculi.
+    V. 16. O'. κάρπωμα. Coislin. in margine, ἄρτον πύρον et ἄρτον προσφοράν. Idemque vers. 3, supra, legit πύρον, ubi alii πύρρον.
   </bloco>
-  <notas>Scripts mistos: grego e latino. Algumas linhas danificadas/ilegíveis; usei [ilegivel] quando palavra isolada não foi possível, mas na página há maioria legível. BBOXs aproximados em escala 0-1000.</notas>
+
+  [!-- Caput IV --]
+  <bloco tipo="cabecalho" script="latino" bbox="380,760,620,780">CAPUT IV LEVITICI.</bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="50,790,480,950">
+    τὴν χεῖρα αὐτοῦ ἐπὶ τὴν κεφαλὴν τοῦ μόσχου + ἔναντι Κυρίου · καὶ σφάξει τὸν μόσχον ἐνώπιον Κυρίου. 5. Καὶ λαβὼν ὁ ἱερεὺς ὁ χριστὸς + ὁ τετελειωμένος τὰς χεῖρας · ἀπὸ τοῦ αἵματος τοῦ μόσχου, καὶ εἰσοίσει αὐτὸ εἰς τὴν σκηνὴν το μαρτυρίου. 6. Καὶ βάψει ὁ ἱερεὺς τὸν δάκτυλον αὐτο εἰς τ αἷμα, καὶ ῥανιε ἀπὸ το αματος ἑπτάκις τῷ δακτύλῳ ἔναντι Κυρίου κατὰ τὸ καταπέτασμα τὸ ἅγιον. 7. Καὶ ἐπιθήσει ὁ ἱερεὺς ἀπὸ τοῦ αἵματος + τοῦ μόσχου · ἐπὶ τὰ κέρατα τοῦ θυσιαστηρίου τοῦ θυμιάματος τῆς
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="490,790,920,950">
+    suam super caput vituli + ante Dominum : et jugulabit vitulum coram Domino. 5. Et accipiens sacerdos, qui unctus est + qui initiatus est manibus : de sanguine vituli, et inferet illum in tabernaculum testimonii. 6. Et intinget sacerdos digitum suum in sanguinem, et asperget de sanguine septies digito ante Dominum contra velum sanctum. 7. Et imponet sacerdos de sanguine + vituli : super cornua altaris thymiamatis compositionis ante Dominum, quod est in tabernaculo testimonii. Et
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="550,960,800,990">Digitized by Google</bloco>
 </pagina>

@@ -1,10 +1,10 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,90">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="40,20,960,120">
 37
 PROLEGOMENA.
 38
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,90,490,300">
+  <bloco tipo="texto_principal" script="latino" bbox="40,120,490,420">
 Opus jam vivente auctore plurimum lectum, a
 Radulfo de Diceto, Rogero de Wendower a. 1235,
 Nicolao Trivet a. 1307, Matthæo Westmonasteriensi,
@@ -13,45 +13,47 @@ cerptum, sub manibus scribarum non sine mutatio-
 nibus permansit. Verba ipsa mutavit unus tantum
 monachus SAVIGNACENSIS (E2), plurima etiam omit-
 tens, alia addens de suo maxime monasterio. GEM-
-METICENSIS (E4) atque LIRENSIS (E7b) sermonis ha-
+METICENSIS (E4) atque LIRENSIS (F7b) sermonis ha-
 bitum intactum relinquentes, addendo tantum et
-omittendo sua quisque ratione lectum integrum
+omittendo sua quisque ratione textum integrum
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,90,960,300">
+  <bloco tipo="texto_principal" script="latino" bbox="510,120,960,420">
 A mutaverunt. Alius quidam Robertum secundae re-
-censionis usque ad verba a. 1169 in cui perierunt
+censionis usque ad verba a. 1169 in ea perierunt
 describens, nec auxit nec mutavit, sed omisit ea
 maxime, quæ ad monasteria singulorumque homi-
 num historiam spectant, ita præ ceteris annos 1162-
 1168 decurtans. Hunc descripserunt E8a—h, et qui-
 dem 8a et secunda manus in 8d purum: 8b addidit
-brevem continuationem (135): 8c 8e et tertia ma-
+brevem continuationem (135) : 8c 8e et tertia ma-
 nus in 8d adjecerunt Roberti opus integrum a.1169-
-1182. Monachus denique S. MARIE DE VOTO (136)
+1182. Monachus denique S. MARIAE DE VOTO (136)
 (E8b) hanc continuationem cum Ursicampina ita
   </bloco>
-  <bloco tipo="aparatocritico" script="latino" bbox="40,300,490,420">
+  <bloco tipo="aparato_critico" script="latino" bbox="40,420,560,500">
 NOTÆ.
+
 (134) Annorum 1087-1239 in E8b, unde initium
 et finem edidit Bouq. XII, 786, XVIII, 343.
+
 (135) A. 1169-1239, quam edidit Duchesne SS.
 Norm. 977; Bouq. XII, 788, XVIII. 345.
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="500,300,960,420">
-(136) Seu Vallis-Asci, dioecesis Ratomagensis,
+  <bloco tipo="nota" script="latino" bbox="565,420,960,500">
+(136) Seu Vallis-Asci, dioecesis Rothomagensis,
 ordinis Cisterciensis, fundatum a. 1157 ex Mortuo
 mari.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="40,420,960,950">
-[Abaixo gráfico-timeline com rótulos; transcrição literal dos rótulos visíveis, linhas separadas como no original gráfico:]
-Aquicens[is].  —1158. —1153-1163-1167
-Arb[?]. —1127...
-Bellow. —1147-1163.
-Burb. —1164.
-Tron. —1149-1154.
-Laud. —1143.
-[ilegivel] —1155.
-Morlrium —1135-1234.
+  <bloco tipo="rodape" script="latino" bbox="20,500,980,940">
+Em. H. P.
+Aquicensis. —1158. —1153-1163-1167
+[ilegivel]. —1127
+Bellow. —1147-1163
+Burb. —1164
+Tron. —1149-1154
+Laud. —1143
+[ilegivel] —1155
+Morltrium —1135-1234
 Ursicamp. (v. supra) —1153-1253
 Rob. —1186. Gemmet. —1210.
 Rob. —1186 cont. 1168.
@@ -62,10 +64,21 @@ Rob. —1186 cont. 1168.
 1179.
 1138.
 1154.
-[Aparecem numerosas barras verticais com anos e nomes parciais; muitos rótulos parcialmente ilegíveis e marcados aqui como [ilegivel].]
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="350,950,960,990">
+  <bloco tipo="rodape" script="latino" bbox="380,940,620,990">
 Digitized by Google
   </bloco>
-  <notas>O bloco gráfico inferior está impresso em orientação rotacionada e contém muitas legendas curtas (nomes de mosteiros/oblatos e intervalos de anos). Parte dos rótulos é parcialmente ilegível na digitalização; nesses casos foram assinalados como [ilegivel]. A transcrição dos dois colúmnas de texto superior segue a ordem visual: coluna esquerda inteira primeiro, depois coluna direita. Correções ortográficas não foram efetuadas; transcrição literal mantida.</notas>
+  <bloco tipo="nota_marginal" script="latino" bbox="300,740,360,820">
+A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="380,740,440,820">
+B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,740,520,820">
+C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="540,740,600,820">
+D
+  </bloco>
+  <notas>Transcrição fiel à imagem; zonas ilegíveis marcadas como [ilegivel]. Ordem de leitura: coluna esquerda, depois coluna direita. BBOX estimados em escala 0-1000. A zona inferior é um quadro cronológico impresso verticalmente; transcrevi o conteúdo conforme visível e marquei trechos incertos. Siglas/identificadores centrais A, B, C, D colocados em blocos nota_marginal separados.</notas>
 </pagina>

@@ -1,32 +1,43 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,90">
-    H E X A P L O R U M Q V Æ S V P E R S V N T.                1 3 5 9                              1 3 6 0
+  <bloco tipo="cabecalho" script="misto" bbox="50,40,950,90">
+    1359 HEXAPLORUM QUAE SUPERSUNT. 1360
     ECCLESIASTÆ CAPUT XI.
-    TO EBRAIKON.                          ΤΟ ΕΒΡΑΙΚΟΝ                        AKΥΛΑΣ.
-    Ελληνικοῖς γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="ebraico" bbox="30,90,300,460">
-    (coluna esquerda)
-    טיקים 3
-    עץ
-    שם יהוא
-    5 כאשר אין יודע מהדברך ורוח
-    6 בבקר
-    ולעב אל-תנח יד
-    וכשר
-    8 כי אם-שנים הרבה יהוה והארץ
-    בכלם ישחוט ויזיר את-ימי חשן:
-    כי-הרבה יהיו כל-שבוע הכל
+  <bloco tipo="texto_principal" script="misto" bbox="50,100,950,140">
+    TO EBPAIKON. TO EBPAIKON AKYΛAΣ.
+    Ἑλληνικοῖς γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,90,660,460">
-    (coluna central)
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,140,300,300">
+    3 וְרִיקָן
+    עַל
+    5 כַּאֲשֶׁר אֵינֶךָּ יוֹדֵעַ מַה־דֶּרֶךְ רוּחַ
+    6 בַּבֹּקר
+    לְעַרֵב אַל־תַּנַּח יָדֶךָ
+    כִּי־טוֹב
+    8 כִּי אִם־שָׁנִים רַבּוֹת יִחְיֶה הָאָדָם
+    בְּכֻלָּם יִשְמַח וְיִזְכֹּר אֶת־יְמֵי הַחֹשֶׁךְ
+    כִּי־רַבָּה יִהְיוּ כָל־שֶׁבָּא הֶבֶל
+    9 וְרֵיקָן
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,140,450,300">
     3.
     5.
     6.
     8.
     9.
-    VERSIO HEBRAICI TEXT.
-    3. Evacuabunt.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,140,950,300">
+    3. Ἐκκενώσουσιν.
+    5. Ἐν ᾧ οὐκ εἰ σὺ εἰδς . . .
+    6.
+    Εὐθετήσει.
+    8. . . . μεμνήσθω τῶν ἡμερῶν...
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,310,950,340">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,340,300,500">
+    5. Evacuabunt.
     Lignum.
     Ibi erit.
     5. Quemadmodum non tu sciens
@@ -36,20 +47,13 @@
     manum tuam.
     Rectum erit.
     8. Quia si annis multis vixerit
-    homo, in his omnibus latatus
-    fuerit, et recorderit dierum tenebrositas, quia multum erunt :
-    quidquid evenit vanitas.
+    homo, in his omnibus lætatus
+    fuerit, et recordetur dierum tene-
+    brositatis, quia multum erunt :
+    qui,quid evenit vanitas.
     9. Et bonum sit tibi.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="680,90,980,460">
-    (coluna direita)
-    3. Ἐκκενώσουσιν.
-    5. Ἐν ᾧ οὐχ εἶ σὺ εἰδώς ...
-    6.
-    Εὐθετήσεται.
-    8. ... μεμνήσθω τῶν ἡμερῶν...
-    9.
-    VULGATA LATINA.
+  <bloco tipo="texto_principal" script="latino" bbox="350,340,600,500">
     3. Effundunt.
     Lignum.
     Ibi erit.
@@ -59,13 +63,15 @@
     Et vespere ne cesset manus
     tua.
     Magis oriatur.
-    8 Si annis multis vixerit homo,
-    et in his omnibus latatus fuerit,
-    memorinsse debet tenebrosi temporis, et dierum multorum, qui cum
-    venerint, vanitatis arguuntur prævē-
-    rita.
+    8. Si annis multis vixerit homo,
+    et in his omnibus lætatus fuerit,
+    meminisse debet tenebrosi tempo-
+    ris, et dierum multorum, qui cum
+    venerint, vanitatis arguentur præ-
+    terita.
     9. Et in bono sit.
-    AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,340,950,500">
     3. Evacuabunt
     5. In quo non es tu sciens....
     6.
@@ -73,48 +79,55 @@
     8. ... memor sit dierum....
     9.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,460,980,610">
+  <bloco tipo="aparato_critico" script="misto" bbox="50,510,950,580">
     Notæ et variæ lectiones ad cap. XI Ecclesiastæ.
-    V. 3. A., ἐκκενώσουσιν. Drusius et editio Rom.
-    Ibid. Σ., δεῖρα. Idem.
-    Ibid. Σ., exit. Idem.
-    V. 5. A., ἐν ᾧ οὐκ etc. Idem.
-    V. 6. Σ., τρέμψον. Idem.
-    Ibid. Σ., ἁλλά καὶ etc. Idem.
+    V. 3. Ἀ., ἐκκενώσουσιν. Drusius et editio Rom.
+    Ibid. Σ., δένδρα. Iidem.
+    Ibid. Σ., ἐκεῖ. Iidem.
+    V. 5. Ἀ., ἐν ᾧ οὐκ etc. Iidem.
+    V. 6. Σ., πρώϊμον. Iidem.
+    Ibid. Σ., ἀλλὰ καὶ etc. Iidem.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,610,960,680">
+  <bloco tipo="cabecalho" script="latino" bbox="350,600,650,630">
     ECCLESIASTÆ CAPUT XII.
-    TO EBRAIKON.                          ΤΟ ΕΒΡΑΙΚΟΝ                        AKΥΛΑΣ.
-    Ελληνικοῖς γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="ebraico" bbox="30,680,360,920">
-    (coluna esquerda)
-    עד אשר לא-יבאו ימי ודעת
-    1
-    עד אשר לא
-    2
-    ולתעשו אנשי חחל
-    3
-    ובכלו הרוחות
-    תימות בארבות
-    בקשק קול
-    4
+  <bloco tipo="texto_principal" script="misto" bbox="50,630,950,660">
+    TO EBPAIKON. TO EBPAIKON AKYΛAΣ
+    Ἑλληνικοῖς γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="380,680,720,920">
-    (coluna central)
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,660,300,750">
+    1 עַד אֲשֶׁר לֹא־יָבֹאוּ יְמֵי הָרָעָה
+    2 עַד אֲשֶׁר לֹא
+    3 הַתְּעוּדוֹת אַנְשֵׁי הֶחָיִל
+    וּבַטְּלוּ הַטֹּחֲנוֹת
+    הָרְאוּת בָּאֲרֻבּוֹת
+    4 וְסֻגַּר קוֹל
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="350,660,450,750">
     1.
     2.
     3.
     4.
-    VERSIO HEBRAICI TEXT.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,660,950,750">
+    1.
+    2.
+    3. [Πανηθήσονται.]
+    4.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,760,950,780">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,780,300,900">
     1. Usquequo non veniant dies
     mali.
     2. Usquequo non.
-    3. Et perverternur viri virtutis.
+    3. Et pervertentur viri virtutis.
     Et cessabunt molares.
-    Videntes in fenestras.
+    Videntes in fenestris.
     4. In humilitate vocis.
-    VULGATA LATINA
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,780,600,900">
     1. Antequam veniat tempus af-
     flictionis.
     2. Antequam.
@@ -123,17 +136,19 @@
     Videntes per foramina.
     4. In humilitate vocis.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="740,680,980,920">
-    (coluna direita)
-    1.
-    2.
-    3. [Πλανηθήσονται.]
-    4.
-    AQUILA.
+  <bloco tipo="texto_principal" script="latino" bbox="650,780,950,900">
     1.
     2.
     3. Errabunt.
     4.
   </bloco>
-  <notas>Transcrições mantiveram divisão em três colunas visualmente; palavras completamente illegíveis marcadas quando necessário. Scripts identificados: ebraico, latino, grego. Pequenas lacunas e truncamentos indicados por reticências come from source scan.</notas>
+  <bloco tipo="rodape" script="latino" bbox="600,950,900,980">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição de página poliglota (Hebraico, Grego, Latim).
+    Alguns blocos de texto original (coluna central "Hebraico em letras gregas") apresentam apenas numeração de versículos sem texto correspondente visível, exceto no cap. XII v.3 onde há nota grega na coluna da direita (Aquila).
+    No cap. XI, verso 9 em Hebraico aparece "וְרֵיקָן" (e vazio?), correspondendo à tradução latina "Et bonum sit tibi" na coluna de versão hebraica, sugerindo variante ou fragmento.
+    Ortografia latina histórica mantida (ex: æ, ſ).
+  </notas>
 </pagina>

@@ -1,58 +1,121 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,20,970,120">
-    HEXAPLORUM QUAE SUPERSUNT.
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,60">
+    225 HEXAPLORUM QUÆ SUPERSUNT. 226
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="30,120,970,560">
-    TO EBRAIKON.                         ΤΟ ΕΒΡΑΙΚΟΝ                      ΑΚΥΛΑΣ.
-    Ελληνικος γραμμας.
-    3. 3. Χιτωνα αστεργαλέων.
-    9. 9.
-    14. 14.
-    18. 18.
-    25. 25. Και αι χάμηλοι αὐτῶν ἔφε-    25.
-    26. 26.
-    27. 27.
-    28. 28.
-    36. 36. Φουσιφαρ.
-    
-    VERSIO HEBRAICI TEXT.            VULGATA LATINA.                 AQUILA.
-    3. Tunicam sericorum.            3. Tunicam polynitam.           3. Tunicam ualarem.
-    9. Somniavi.                     9. Vidi per somnium.            9.
-    
-    14. Pacem fratrum tuorum et      14. Si cuncta prospera sint erga   14.
-    facem gregis.                    fratres suos et pecora.
-    
-    18. Et machinati sunt.           18. Cogitaverunt eum occidere.   18.
-    
-    25. Et cameli eorum ferentes     25. Et camelos eorum portantes   25. Et cameli eorum oueuf
-    aromata.                         aromata.                        erant syriace.
-    26. Quae utilitas?               26. Quid nobis prodest?          26. Quod emolumentum?
-    27. Et audierunt.                27. Acquieverunt.                27.
-    28. Madianai.                    28. Madianitae.                  28.
-    36. Phuiphar.                    36. Puiiphar.                    36. Phuiphar.
-    
-    Notae et variae lectiones ad cap. XXXVII Genesis.
-    V. 2. Alloc, των χαλασμων, pellicus. Hæc le-...
-    (texto corrido de notas críticas em latino e grego, parcialmente ilegível em áreas centrais)...
-    V. 5. A., Χιτωνα, etc. Hieronymus in Quaesl.; 
-    Pro varia unice, i Aquila interpretationes est uari-...
-    (restante do apparatus crítico muito denso e em colunas, não transcrito palabra por palabra por legibilidade limitada na imagem)
+  <bloco tipo="texto_principal" script="misto" bbox="100,60,900,100">
+    TO EBPAIKON. TO EBPAIKON AKYΛAΣ.
+    Ἑλληνικοῖς γράμμασι.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="30,560,970,640">
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,100,300,350">
+    3 כְּתֹנֶת פַּסִּים
+    9 וַיַּחֲלֹם
+    14 אֶת־שְׁלוֹם אַחֶיךָ וְאֶת־שְׁלוֹם הַצֹּאן
+    18 וַיִּתְנַכְּלוּ
+    25 וְהִנֵּה אֹרְחַת יִשְׁמְעֵאלִים
+    26 מַה־בֶּצַע
+    27 וַיִּשְׁמְעוּ
+    28 וּמִדְיָנִים
+    36 לְפוֹטִיפַר
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="350,100,550,350">
+    3.
+    9.
+    14.
+    ιαωθ
+    18.
+    25.
+    26.
+    27.
+    28.
+    36.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="600,100,900,350">
+    3. Χιτῶνα ἀστραγάλειον.
+    9.
+    14.
+    18.
+    25. Καὶ αἱ κάμηλοι αὐτῶν ἔγε-
+    μον στύρακος.
+    26. Τί πλεονέκτημα;
+    27.
+    28.
+    36. Φουτιφάρ.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,350,900,550">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+    3. Tunicam sericorum. 3. Tunicam polymitam. 3. Tunicam talarem.
+    9. Somniavi. 9. Vidi per somnium. 9.
+    14. Pacem fratrum tuorum et 14. Si cuncta prospera sint erga 14.
+    pacem gregis. fratres tuos et decora.
+    18. Et machinati sunt. 18. Cogitaverunt eum occidere. 18.
+    25. Et cameli eorum ferentes 25. Et camelos eorum portantes 25. Et cameli eorum onusti
+    aromata. aromata. erant styrace.
+    26. Quæ utilitas? 26. Quid nobis prodest? 26. Quod emolumentum?
+    27. Et audierunt. 27. Acquieverunt. 27.
+    28. Madianæi. 28. Madianitæ. 28.
+    36. Phutiphar. 36. Putiphari. 36. Phutiphar.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,550,750,580">
+    Notæ et variæ lectiones ad cap. XXXVII Genesis.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="100,580,500,750">
+    V. 2. Ἄλλος, τῶν παλλακῶν, pellicum. Hæc le-
+    ctio prodit ex codice Reg. 1871, sine nomine inter-
+    pretis, qui pellices vocavit concubinas, ut distin-
+    gueret ab uxoribus Lia et Rachele.
+    Ibid. Ἄ., καὶ ἤνεγκε, etc. Sic mss. nostri et editio
+    Romana. Codex unus in lectione Aquilæ habet κατ-
+    ήνεγκεν pro καὶ ἤνεγκεν. In hæc verba Diodorus in
+    Catenis mss. Ἀκύλας καὶ Σύμμαχος, ἔτι δὲ καὶ ὁ
+    Σύρος, ἀντὶ τοῦ « κατήνεγκαν, » κατήνεγκεν ἔχει.
+    Τοῦτ᾽ ἔστιν· Ὁ Ἰωσὴφ διέβαλε τοὺς ἀδελφοὺς τῷ πα-
+    τρὶ, ς οὐκ ετάκτους ὄντας· ὅθεν κα ἐμισήθη παρ
+    αὐτῶν. Id est : Aquila et Symmachus itemque Syrus,
+    pro illo « detulerunt, » habent, detulit.. Id est : Jo-
+    seph criminatus est fratres suos apud patrem, ut qui
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="520,580,900,750">
+    non probe se gererent : unde invisus fuit illis.
+    V. 3. Ἄ., χιτῶνα, etc. Hieronymus in Quæst. :
+    Pro « varia tunica, » Aquila interpretatus est « tuni-
+    cam » ἀστραγάλειον, id est tunicam talarem. Sym-
+    machus, « tunicam manicatam, » sive quod ad talos
+    usque descenderet, et manibus artificis mira esset va-
+    rietate distincta, sive quod haberet manicas. Antiqui
+    enim magis colobiis utebantur. II Reg. XIII, 18, eam-
+    dem Hebraicam vocem vertit A., cum LXX, καρπω-
+    τόν, Symmachus χειριδωτόν, alius, ἀστραγαλετόν.
+    V. 9. Ἄλλος, ἐνυπνιάσθην. Sic mss. Reg. 1871.
+    V. 14. Ἄλλος, « τὴν εἰρήνην τῶν ἀδελφῶν σου, καὶ
+    τὴν ερήνην τν βοσκημάτων. Unus Regius pro hac
+    postrema voce habet προβάτων. Hanc autem lectio-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,750,650,780">
     CAPUT XXXVIII GENESIS.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="30,640,1000,980">
-    TO EBRAIKON.                       ΤΟ ΕΒΡΑΙΚΟΝ                      ΑΚΥΛΑΣ.
-    5. 5...... 
-    9. 9.                                9.
-    14. 14.                              14.
-    
-    VERSIO HEBRAICI TEXT.             VULGATA LATINA.                 AQUILA.
-    5. Et vocavit nomen ejus Selah,   5. Quem appellavit Sela: quo      5. Et vocauit nomen ejus Selom.
-    et erat in Chezib, dum pareret     malo parere ultra cessavit.      Et factum est ut menstruetur in
-    eam.                                                              parte postquam genuit eum.
-    9. Corrompebat.                    9. Semen fundebat.               9.
-    14. In velamine.                   14. Theriostrum.                 14.
+  <bloco tipo="texto_principal" script="misto" bbox="100,780,900,850">
+    TO EBPAIKON. TO EBPAIKON AKYΛAΣ.
+    Ἑλληνικοῖς γράμμασι.
+    5 וַיִּקְרָא אֶת־שְׁמוֹ שֵׁלָה 5. 5......
+    וַיְהִי בִכְזִיב בְּלִדְתָּהּ אֹתוֹ
+    9 וַיְשַׁחֵת 9. 9.
+    14 בַּצָּעִיף 14. 14.
   </bloco>
-  <notas>Scriptos mistos: colunas com hebraico à esquerda e grego/latim centradas/direita. Partes do apparatus crítico apresentam texto denso e parcialmente ilegível; preservei linhas legíveis e marquei trechos densos como resumo devido à imagem de baixa resolução. Mantive formatação de colunas: primeira coluna hebraica, segunda grega/latina, terceira Aquila.</notas>
+  <bloco tipo="texto_principal" script="latino" bbox="100,850,900,950">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+    5. Et vocavit nomen ejus Selah, 5. Quem appellavit Sela : quo 5. Et vocavit nomen ejus Selom.
+    et erat in Chezib, dum pareret nato parere ultra cessavit. Et factum est ut mentiretur in
+    eam. partu postquam genuit eam.
+    9. Corrumpebat. 9. Semen fundebat. 9.
+    14. In velamine. 14. Theristrum. 14
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="500,950,800,980">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição de página da Patrologia Graeca contendo textos bíblicos em Hebraico, Grego e Latim (Hexapla).
+    A coluna do meio na parte superior (Hebraico em letras gregas) contém principalmente números, exceto na linha 14 onde há um vestígio de texto grego (ιαωθ?).
+    As notas (Notæ) estão em duas colunas densas com mistura de Latim, Grego e Hebraico.
+    A parte inferior repete a estrutura para o Capítulo 38 de Gênesis.
+  </notas>
 </pagina>

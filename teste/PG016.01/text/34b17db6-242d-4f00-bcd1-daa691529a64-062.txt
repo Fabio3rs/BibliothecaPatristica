@@ -1,78 +1,120 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,90">
-    HEXAPLORUM QUÆ SUPERSUNT.
+  <bloco tipo="cabecalho" script="latino" bbox="100,40,900,60">
+    414 HEXAPLORUM QUÆ SUPERSUNT. 412
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="50,90,320,430">
-    TO EBPAIKON.
-    זרחמה 23
-    וידיהם 23
-    דך הכבר ועמר אחטשם
-    ראית התגבן הגדול לשח את
-    עבד המלך זאב ואת־עבדך לא
-    ידעת\ מה
-    חטיוב 30
-    הקסים עליך 31
-    השמים לנגד 32
-    ויגר ונטב 33
+  
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,950,400">
+    [coluna_esq]
+      TO EBPAIKON.
+      ויחרם ארץ 23
+      ודרך הככר ויעבר את-הכושי
+      ראית הכבן הגדל לשלח אתך 29
+      עד הפלך יואב ואת-עבדך לא
+      ידעתי מה
+      התיצב 30
+      הקמים עליך 31
+      השלום לנער 32
+      וירגזו 33
+      בלכת
+    [/coluna_esq]
+    [coluna_mid]
+      TO EBPAIKON
+      Ἑλληνικοῖς γράμμασι.
+      23.
+      29.
+      30.
+      31.
+      32.
+      33.
+    [/coluna_mid]
+    [coluna_dir]
+      ΑΚΥΛΑΣ.
+      23.
+      Τὴν διατέμνουσαν.
+      29.
+      30.
+      31.
+      32.
+      33. Καὶ ἐκλονήθη.
+    [/coluna_dir]
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="360,90,640,430">
-    TO EBPAIKON
-    Ἑλληνικοὶς γράμμασι.
-    23.
-    29.
-    30.
-    31.
-    32.
-    33.
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,400,950,600">
+    [coluna_esq]
+      VERSIO HEBRAICI TEXT.
+      23. Et sit quidquid, curram.
+      Via planiciei, et transivit ipsum Chusi.
+      29. Vidi tumultum magnum in mittendo servam regis Joab, et servum tuum : et non novi aliquid.
+      30. Sta.
+      31. Insurgentium super te.
+      32. Num pax puero.
+      33. Et conturbatus est. In eundo ipsum.
+    [/coluna_esq]
+    [coluna_mid]
+      VULGATA LATINA.
+      23. Quid enim si cucurrero ?
+      Per viam compendii, transivit Chusi.
+      29. Vidi tumultum magnum, cum mitteret Joab servus tuus, o rex, me servum tuum : nescio aliud.
+      30. Sta.
+      31. Qui surrexerunt contra te.
+      32. Estne pax puero ?
+      33. Contristatus itaque. Vadens.
+    [/coluna_mid]
+    [coluna_dir]
+      AQUILA.
+      23.
+      Dividentem, vel compendiosam.
+      29.
+      30.
+      31.
+      32.
+      33. Et commotus est.
+    [/coluna_dir]
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,90,950,430">
-    AKYLAS.
-    25.
-    Τὴν διατέμνουσαν.
-    29.
-    30.
-    31.
-    32.
-    33. Και ἐκλογήθη.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,430,950,820">
-    VERSIO HEBRAICI TEXT.          VULGATA LATINA.             AQUILA.
-    23. Et sit quidquid, curram.    23. Quid enim si cucurrero?   23.
-    Via planiciei, et transivit ipsum Per viam compendii, transivit Dividentem, vel compendiosam.
-    Clhusi.                       Chusi.
-    29. Vidi tumultum magnum in   29. Vidi tumultum magnum,     29.
-    militieno servum regis Ioab, et cum militeret Ioab servus tuus, o
-    servum tuum: et non novi aliquid. rex, me servum tuum: nescio
-    aliud.
-    30. Sta.                       30. Sta.                      30.
-    31. Insurgentium super te.    31. Qui surrexerunt contra te.31.
-    32. Num pax puero.            32. Estne pax puero?          32.
-    33. Et conturbatus est.       33. Contristatus itaque.     33. Et commotus est.
-    In eundo ipsum.               Vadeus.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="50,820,950,1100">
+
+  <bloco tipo="nota" script="misto" bbox="100,610,900,800">
     Notæ et variæ lectiones ad cap. XVIII lib. II Regum.
-    V. 2. 'Αλλος, και ἐτερισεσεν. Reg.
-    V. 3. 'Αλλος, οι στηρεται εν ἡμιν καρδια. Reg.
-    Ibid. Σ., και συ ὡς ἡμεις δεκα χιλιασιν. S. c ex
-    Theodoretο Drusius. Θ., και νυν ἀναρθεσεται etc.
-    Ita Coislin. Regius autem sine interpretis nomine.
-    Ibid. 'Α., ὁτι νυν etc. Coislin. 2 qui hanc alteram
-    Symmachi adfert lectionem: Σι γαρ χιλιοπλασιον
-    ημιν. Tu enim millies potior es nobis.
-    Ibid. 'Αλλος, και νυν χαλον etc. Reg.
-    V. 6. 'Αλλος, εις το πεδιον. Reg.
-    V. 7. 'Α., ἐθραυσιν. Coislin. 2.
-    Ibid. 'Αλλος, πλευρ. Reg.
-    V. 8. 'Αλλος, ρουμαλια. Reg.
-    V. 10. 'Αλλος, και ἀνεχρεμεσθη εν τῷ δένδρῳ.
-    Reg. V. 13. 'Αλλος, και πῶς ποιησω ἐν τῇ ψυχῇ μου
-    CAPUT XIX LIB. II REGUM.
-    TO EBPAIKON.             TO EBPAIKON             AKYLAS.
-    Ἑλληνικοὶς γράμμασι.
-    זרחמי 3       3.       3.
-    VERSIO HEBRAICI TEXT.   VULGATA LATINA.        AQUILA.
-    3. Et furatus est.       3. Et declinavit.      3.
+    [coluna_esq]
+      V. 2. Ἄλλος, καὶ ἐτρίστευσεν. Reg.
+      V. 3. Ἄλλος, οὐ στήσεται ἐν ἡμν καρδία. Reg.
+      Ibid. Σ., καὶ σὺ ὡς ἡμεῖς δέκα χιλιάσιν. S.c ex Theodoretο Drusius. Θ., καὶ νν ἀφαιρεθήσεται etc. Ita Coislin. Regius autem sine interpretis nomine.
+      Ibid. Ἄ., τι νῦν etc. Coislin. 2 qui hanc alteram Symmachi adfert lectionem : Σὺ γὰρ χιλιοπλασίων ἡμῶν. Tu enim millies potior es nobis.
+    [/coluna_esq]
+    [coluna_dir]
+      Ibid. Ἄλλος, καὶ νῦν καλόν etc. Reg.
+      V. 6. Ἄλλος, εἰς τὸ πεδίον. Reg.
+      V. 7. Ἄ., εὐραύστη. Coislin. 2.
+      Ibid. Ἄλλος, πληγή. Reg.
+      V. 8. Ἄλλος, ῥομφαία. Reg.
+      V. 10. Ἄλλος, καὶ ἀνεκρεμάσθη ἐν τῷ δένδρῳ. Reg.
+      V. 13. Ἄλλος, καὶ πῶς ποιήσω ἐν τῇ ψυχῇ μου
+    [/coluna_dir]
   </bloco>
-  <notas>Scripts presentes: latino, hebraico, grego. Algumas linhas hebraicas com abreviações e possíveis lacunas; inseri [ilegivel] não foi necessário. BBOX estimadas em escala 0-1000 conforme imagem; em duas colunas o hebraico (esquerda) transcrito antes do grego/latim (direita).</notas>
+
+  <bloco tipo="texto_principal" script="misto" bbox="100,810,900,950">
+    CAPUT XIX LIB. II REGUM.
+    [coluna_esq]
+      TO EBPAIKON.
+      ונתן 3
+      VERSIO HEBRAICI TEXT.
+      3. Et furatus est.
+    [/coluna_esq]
+    [coluna_mid]
+      TO EBPAIKON
+      Ἑλληνικος γράμμασι.
+      3.
+      VULGATA LATINA.
+      3. Et declinavit.
+    [/coluna_mid]
+    [coluna_dir]
+      ΑΚΥΛΑΣ.
+      3.
+      AQUILA.
+      3.
+    [/coluna_dir]
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="500,960,800,990">
+    Digitized by Google
+  </bloco>
 </pagina>

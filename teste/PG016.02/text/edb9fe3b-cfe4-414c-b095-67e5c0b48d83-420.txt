@@ -1,30 +1,36 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,120">
-    HEXAPLORUM QUAE SUPERSUNT.
-    TO EBRAIKON.	TU EBPAIKON	ΑΚΥΛΑΣ.
-    Ελληνικὸς γράμμασι.
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,200,60">2087</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="380,30,650,60">HEXAPLORUM QUÆ SUPERSUNT.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,30,950,60">2088</bloco>
+  
+  <bloco tipo="texto_principal" script="misto" bbox="50,70,330,90">TO EBPAIKON.</bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="350,70,630,110">TO EBPAIKON[br/]'Ellhnikois grammais.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,70,850,90">AKYΛAΣ.</bloco>
+
+  [!-- Coluna Hebraico --]
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,100,330,430">
+    וירמיהו הנביא 2
+    היה דבר־יהוה אלי 3
+    לא שמעתם
+    את־אזנכם לשמוע 4
+    נאם־יהוה 7
+    יהוה צבאות 8
+    את־כל־משפחת צפון 9
+    נאם־יהוה ואל־נבוכדראצר מלך־בבל עבדי
+    קול רחים 10
+    הארץ הזאת לשמה 11
+    הגוים האלה את־מלך בבל
+    ופקדתי על־מלך־בבל ועל 12
+    הגוי ההוא
+    את כל־הכתב 13
+    כי עבדו־בם גם־המה בנים 14
+    רבים ומלכים גדולים ושלמתי להם
+    להם כפעלם וכמעשה ידיהם
+    והשקיתי אתם את־כל־הגוים 15
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,120,320,900">
-    1. יתנחוה תבוא? 2
-    3. •־יהיה דבר־יהוה אלי
-    4. ולא שמעתם
-    7. נאם־יהוה
-    8. יהוה צבאות
-    9. את־כל־משפחות צפון
-    נאם־יהוה ואל־נבוכדנצר־מלך
-    בכל־עבד
-    10 כל־חיים
-    11 הארץ הזאת תדבר
-    גוים האלה את־כן־מלך בבל
-    12 אקם על־מך־מלך־נבל־הכ?
-    דברי הוה
-    13 את כל־הסוד
-    14 כי יעבדו־לם גם־מהם הימים
-    רבים וחללים גדולים שמולחם להם
-    בצלם ובמשפטי־הים
-    15 ויצאו אחד־אם־כל־הגוים
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,120,640,900">
+
+  [!-- Coluna Transliteração (apenas números visíveis) --]
+  <bloco tipo="texto_principal" script="grego" bbox="380,100,450,430">
     2.
     3.
     4.
@@ -37,58 +43,84 @@
     13.
     14.
     15.
-    
-    VERSIO IEBRAICI TEXT.
-    2. Ierimiau propheta.
-    3. Fuit verbum Domini ad me.
-    Et non audistis.
-    4. Auron vestram ad audiendum.
-    7. Dixit Dominus.
-    8. Dominus exercituum.
-    9. Omnes familiae Aquilonis.
-    Dixit Dominus, et ad Nabucodretar regem Babel servum meum.
-    10. Vocem molarum.
-    11. Terra haec in solitudinem.
-    Gentes istae regi Babylonis.
-    12. Visitabo super regem Babel et super gentem illam.
-    13. Omne scriptum.
-    14. Quia servierunt in eis etiam ipsi, gentes multae et reges magni, et reddam eis secundum opus eorum, et secundum opus manuum eorum.
-    15. Et propinare facies illum omnibus gentibus.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="640,120,960,900">
+
+  [!-- Coluna Aquila Grego --]
+  <bloco tipo="texto_principal" script="grego" bbox="600,100,950,430">
     2.
-    3. ✶ Εγενηθη λογος Κυριου προς με.
+    3. * Εγενηθη λογος Κυριου προς με.
     Και ουκ ηκουσατε.
-    4. Ασυ ὑμων ✶ ακουσαι.
-    7. ✶ Φησι Κυριος.
-    8. ✶ Των δυναμεων.
+    4. * Ωσιν υμων * ακουσαι.
+    7. * Φησι Κυριος.
+    8. * Των δυναμεων.
     9.
     10.
-    11. Ηγη ✶ αυται εις ερημοσιν.
-    12. ✶ Επι τον βασιλεα Βαβυλωνος, και επι το εθνος εκεινον.
-    13. ✶ Συν : παντα τα γεγραμ-
-    μα.
-    14. ✶ Οτι δουλευσαν εν αυτοις και εαυτοις εθναι πολλα και βασιλεις μεγαλοι, και ανταποδωσω αυτοις κατα την εργασιαν αυτων, και κατα τα εργα των χειρων αυτων.
-    15. Ποτισε✶ ἐαυτους σὺν : πάντα τα εθνη.
+    11. * Η γη * αυτη εις ερημωσιν.
+    12. * Επι τον βασιλεα Βαβυ-λωνος, και επι * το εθνος εκεινο.
+    13. * Συν * παντα τα γεγραμ-μενα.
+    14. * * Οτι εδουλευσαν εν αυτοις καιγε αυτοις εθνη πολλα και βα-σιλεις μεγαλοι, και ανταποδωσω αυτοις κατα την εργασιαν αυτων, και κατα τα εργα των χειρων αυτων.
+    15. Ποτιεις * αυτους συν * παν-τα τα εθνη.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,900,960,990">
-    VULGATA LATINA.	VULGATA LATINA.	AQUILA.
-    2. Ieremias propheta.	2.
-    3. Factum est verbum Domini ad me.	3. Factum est verbum Domini ad me.
-    Et non audistis.	Et non audistis.	Et non audistis.
-    4. Aures vestras ut audiretis.	4. Auribus vestris ad audicendum.
-    7. Dicit Dominus.	7. Dicit Dominus.	7. Dicit Dominus.
-    8. Dominus exercituum.	8. Virtutum.
-    9. Universas cognationes Aquilonis.	9.
-    Ait Dominus, et Nabuchodonosor regem Babylonis servum meum.	Ait Dominus, et Nabuchodonosor regem Babylonis servum meum.
-    10. Vocem molae.	10.
-    11. Terra haec in solitudinem.	11. Terra haec in desolationem.
-    Omnes gentes istae regi Babylonis.
-    12. Visitabo super regem Babylonis, et super gentem illam.	12. Super regem Babylonis, et super gentem illam.
-    13. Omne quod scriptum est.	13. Omnia quae scripta sunt.
-    14. Quia servierunt eis, cum essent gentes multae, et reges magni : et reddam eis secundum opera eorum, et secundum facta manuum suarum.	14. Quia servierunt in eis, utque ipsis gentes multae et reges magni, et retribuam eis secundum operationem eorum, et secundum opera manuum eorum.
-    15. Et propinabis de illo cunctis gentibus.	15. Potabis illos omnes gentes.
-    Digitized by Google
+
+  [!-- Cabeçalhos Inferiores --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,450,330,480">VERSIO HEBRAICI TEXT.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,450,600,480">VULGATA LATINA.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,450,850,480">AQUILA.</bloco>
+
+  [!-- Coluna Versio Hebraici --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,490,330,900">
+    2. Irmiahu propheta.
+    3. Fuit verbum Domini ad me.
+    Et non audistis.
+    4. Aurem vestram ad audien-dum.
+    7. Dixit Dominus.
+    8. Dominus exercituum.
+    9. Omnes familias Aquilonis.
+    Dixit Dominus, et ad Nabuca-dretsar regem Babel servum meum.
+    10. Vocem molarum.
+    11. Terra hæc in solitudinem.
+    Gentes istæ regi Babylonis.
+    12. Visitabo super regem Babel et super gentem illam.
+    13. Omne scriptum.
+    14. Quia servierunt in eis etiam ipsi, gentes multæ et reges magni, et reddam eis secundum opus eorum, et secundum opus manuum eorum.
+    15. Et propinare facies illum omnibus gentibus.
   </bloco>
-  <notas>Scripts presentes: hebraico, latino, greco. Pequenas palavras hebraicas parcialmente ilegíveis; usei [ilegivel] não foi necessário. Mantive ordem das colunas: hebraico (esq), latino central, grego dir.</notas>
+
+  [!-- Coluna Vulgata --]
+  <bloco tipo="texto_principal" script="latino" bbox="350,490,630,900">
+    2. Jeremias propheta.
+    3. Factum est verbum Domini ad me.
+    Et non audistis.
+    4. Aures vestras ut audiretis.
+    7. Dicit Dominus.
+    8. Dominus exercituum.
+    9. Universas cognationes Aqui-lonis.
+    Ait Dominus, et Nabuchodono-sor regem Babylonis servum meum.
+    10. Vocem molæ.
+    11. Terra hæc in solitudinem.
+    Omnes gentes istæ regi Baby-lonis.
+    12. Visitabo super regem Baby-lonis, et super gentem illam.
+    13. Omne quod scriptum est.
+    14. Quia servierunt eis, cum essent gentes multæ, et reges magni : et reddam eis secundum opera eorum, et secundum facta manuum suarum.
+    15. Et propinabis de illo cun-ctis gentibus.
+  </bloco>
+
+  [!-- Coluna Aquila Latina --]
+  <bloco tipo="texto_principal" script="latino" bbox="650,490,950,900">
+    2.
+    3. Factum est verbum Domini ad me.
+    Et non audistis.
+    4. Auribus vestris ad audien-dum.
+    7. Dicit Dominus.
+    8. Virtutum.
+    9.
+    10.
+    11. Terra hæc in desolationem.
+    12. Super regem Babylonis, et super gentem illam.
+    13. Omnia quæ scripta sunt.
+    14. Quia servierunt in eis, ui-que ipsis gentes multæ et reges magni, et retribuam eis secundum operationem eorum, et secundum opera manuum eorum.
+    15. Potabis illos omnes gentes.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="600,950,800,990">Digitized by Google</bloco>
 </pagina>

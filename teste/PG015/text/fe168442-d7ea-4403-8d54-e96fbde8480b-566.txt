@@ -1,29 +1,30 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,80">
-    HEXAPLORUM QUAE SUPERSVNT. 1127 1128
+  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,80">
+    1127 HEXAPLORUM QUAE SUPERSENT. 1128
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,90,320,560">
-    ה7 נשא
-    זשח
-    ואדונימ
-    נאט 8
-    לאמנ 9
-    נשבי
-    ה10 הנדירים בכל מדנה
-    בניקוס
-    השנני 11
-    לבנב ונגבעה
-    פרדסלותה 13
-    מלתאלה העם
-    ולא וכתב אלי 14
-    ארכנש כסג וארדכנא
-    השכים 15
-    ואריקטי 16
-    ידי
+  <bloco tipo="texto_principal" script="misto" bbox="100,90,900,120">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,90,660,560">
-    TO EBRAICON
-    TO EBPAIKON
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,120,350,500">
+    7 טרשׁוּ לך
+    דוּשִׁי
+    וְאֶת־הכּרכּוֹת
+    8 כּזאת
+    9 לָאנשׁים
+    בּשׁוּבִי
+    10 הַיּתִירים בּכָל מַחֲנֵה
+    בְּנֵי־קֶדֶם
+    11 הַיּשְׁבִים
+    לְנבֹה וְיָגְבְּהָה
+    13 מִן־הַמִּלְחָמָה
+    מִלִּפְנֵי הַדֶּשׁך
+    14 וַיִּכְתֹּב אֵלֶיך
+    אֶת־שָׂרֵי סֻכּוֹת וְאֶת־זְקֵנֶיהָ
+    15 הַיְעִיפים
+    16 וְאֶת־קוֹצֵי
+    וַיְדַע
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,120,450,500">
     7.
     8.
     9.
@@ -33,38 +34,43 @@
     14.
     15.
     16.
-    VERSIO HEBRAICI TEXT.
-    7. Geleon, idcirco.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,120,850,500">
+    7.
+    Ἐν ταῖς τραγασκάνθαις.
+    8.
+    9.
+    10.
+    11.
+    13.
+    Ἀναβάσεως [ἀλσῶν].
+    14.
+    15.
+    16.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,530,900,560">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,570,350,900">
+    7. Gedeon, idcirco.
     Triturabo.
-    Et cum tribunis.
+    Et cum tribulis.
     8. Secundum hoc.
     9. Hominibus.
     In revertendo me.
-    10. Residui ex omni castramentatione.
+    10. Residui ex omni castrametatione.
     Filiorum Orientis.
     11. Habitantium.
-    Ipsius Nolah, et Jogbaa.
+    Ipsius Nobah, et Jogbaa.
     13. De bello.
     Desuper sole.
-    11. Et scripsit ei.
-    Principes Soccolh et seniores.
+    14. Et scripsit ei.
+    Principes Soccoth et seniores.
     15. Lassis.
     16. Et spinas.
-    Et erudivit.
+    Et erodivit.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="670,90,960,560">
-    AKYLAS.
-    7.
-    Εν ταῖς στραγακνθαις.
-    8.
-    9.
-    10.
-    11.
-    13.
-    14.
-    15.
-    16.
-    VULGATA LATINA.
+  <bloco tipo="texto_principal" script="latino" bbox="380,570,650,900">
     7. Quibus ille ait, cum ergo.
     Conteram.
     Tribulisque.
@@ -75,29 +81,31 @@
     Orientalium populorum.
     11. Qui in tabernaculis morabantur.
     Nobe et Jegbaa.
-    13. De cœlo.
+    13. De bello.
     Ante solis ortum.
     14. Et descripsit.
-    Principum Soccolh et seniorum.
+    Principum Soccoth et seniorum.
     15. Qui lassi sunt et defecerunt.
     16. Et spinas.
     Contrivit.
-    AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="680,570,850,900">
     7.
+    In sentibus.
     8.
     9.
     10.
     11.
     13.
+    Ascensus saltuum.
     14.
     15.
     16.
-    In sentibus.
-    Αναβασις: [ἀναβ].
-    Ascensus saluum.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="300,560,700,980">
+  <bloco tipo="rodape" script="latino" bbox="550,950,800,980">
     Digitized by Google
   </bloco>
-  <notas>Scripts identificados: hebraico (coluna esquerda superior), latino (coluna central e rodapé), grego (coluna direita). Algumas palavras hebraicas fragmentárias transcritas talqual; onde ilegível foi evitado uso extensivo de [ilegivel] conforme instruções.</notas>
+  <notas>
+    A página apresenta uma disposição poliglota complexa (Hexapla). A coluna superior esquerda contém texto hebraico, a central números de versículos, e a direita texto grego (Aquila). A seção inferior contém traduções latinas correspondentes em três colunas. A palavra "erodivit" na última linha da coluna inferior esquerda foi transcrita literalmente conforme aparece na imagem, embora possa ser uma variante ou erro tipográfico para "erudivit" ou "subversit".
+  </notas>
 </pagina>

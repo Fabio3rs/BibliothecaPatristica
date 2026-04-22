@@ -1,17 +1,27 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,70">
-403   AURELII PRUDENTII CARMINA.   404
+403
+AURELII PRUDENTII CARMINA.
+404
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,70,480,380">
-435 · Mansuescit, et clementia
+
+  <bloco tipo="nota_marginal" script="latino" bbox="430,85,570,140">
+A 455
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="430,235,570,290">
+B 470
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="20,70,480,410">
+435 Mansuescit, et clementia
 Corvos voraces mitigat,
 Mergam cadaver fluctibus :
 Insana nunquam naufragis
 Ignoscit unda, et spumeum
 Nescit profundum parcere.
 440 Aut semper illic mobilis
-incerta per ludibria
-Vagis feretur fluctibus,
+Incierta per ludibria
+Vagis feretur flatibus,
 Squamosa pascens agmina :
 445 Aut sub fragosis rupibus
 Scabri petrarum murices
@@ -20,20 +30,21 @@ Discissa rumpent viscera.
 Ecquis virorum strenue
 450 Cymbam peritus pellere
 Remo, rudente, et carbasa,
-[ilegivel] qui pontum queas ?
+S-care qui pontum queas ?
 Rapus palustri e cespite
 Corpus, quod intactum jacet,
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,70,980,380">
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,70,980,420">
 Levique vectum lembulo
 Amplum per æquor austras.
-Sed complicatum spartus
-Claudat cadaver culleus.
-Quem fune connexus [ilegivel]
-460 Præceps in altum deprimat.
-Al tu per undas emices
+Sed complicatum sparteus
+Claudat cadaver culleus .
+Quem fune connexus in pis
+Prae ceps in altum deprimat.
+At tu per undas emices
 Rorante præpes palmula,
-1017 Donec relictum longior
+1017 Donec relictam longior
 Abscondat aspectus solum.
 465 Hæc jussa quidam militum
 (Eumorphio nomen fuit),
@@ -46,66 +57,80 @@ Inter procellas excutit.
 O præpotens virtus Dei,
 Virtus creatrix omnium :
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,90,550,130">
-A 455
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,220,550,260">
-B 470
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="100,380,900,430">
+
+  <bloco tipo="cabecalho" script="latino" bbox="240,405,760,445">
 GLOSSÆ VETERES.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="20,430,480,600">
-439. Ignoscit, mitescit, parcit, l.
-446. Scabri, saev. — Murices, Petrarum summitates, l. — Murices sunt summitates altissimae petrae; aliter murex ponitur pro purpura, Vat. A.
-447. Recessus, secreta. — Scrupeos, asperos, id est rupideos, l.
+
+  <bloco tipo="aparato_critico" script="latino" bbox="20,445,480,700">
+439. Ignoscit, mutescit, parcit, l.
+446. Scabri, sevi. — Murices , Petrarum summitates, l. — Murices sunt summitates altissimae petrae ;
+aliter murex ponitur pro purpura, Vat. Δ.
+447. Recessus , secreti. — Scrupeos, asperos, id est lapideos, l.
 450. Cymbam, navis, l.
-455. Lembulo : lembus naricula piratica, vel exi­rema pars innatare vestis, l.
-457. Spartæus, spartus est frutex spinosus, vel juncus, Mar. De sparte foliis, id est de palma; unde et spartulana : et Romani parricidas cum gallo, et simia, et serpente in culleum, id est in tergum bovis undique.
+455. Lembulo : lembus naricula piratica, vel exirema pars inauratae vestis, l.
+457. Sparteus, spartus est frutex spinosus, vel juncus, Mar. De spario foliis, id est de palma; unde et
+spartulana : et Romani parricidas cum gallo, et simia,
+et serpente in culleum, id est in tergum bovis undique
+consutum in mare praecipitabant, V.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="520,430,980,600">
-consultum in mare præcipitabant, l.
-458. Culleus, fasciola assuta intrinsecus, culleus tunica ex sparto : spartus est frutex sive frutex sive folius, ab aspero tale vocatus; culleus saccus in quo rei inclusi mittuntur in mare, l. Culleus est corbis et viminibus coniecta, sive solis ex corio factus, Mar.
-461. Emices, vadas, exilius, l.
-462. Præpes, velox. — Palmula, remo, l.
-466. Nomen, scilicet cui, l.
+
+  <bloco tipo="aparato_critico" script="latino" bbox="520,445,980,700">
+458. Culleus, fasciola assuta intrinsecus, culleus tunica ex sparto : spartus est frutex sine foliis ab asperte
+tali, nec in mare venire nisi una rem guida mic?; unde et Romani parricidas in culleum in mare praecipitabant, l.
+461. Emices, vadas, exilias, l.
+462. Prae pes , velox. — Palmula, remo, l.
+466. Nomen, scilicet cui , l.
 467. Barbarus, rusticus, l.
 469. Funale, funerale, l.
 471. Emensus, navigans, l.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="100,600,900,650">
+
+  <bloco tipo="cabecalho" script="latino" bbox="310,695,790,735">
 COMMENTARIUS.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="20,650,940,940">
-457. Ammianus, lib. xxii, de Georgio et sociis sub C. Juliano: Quod non contenta multitudo immani dilaniatione cadavera peremptorum camelis imposita vestibus ad lacum iusdemque subito igne crematis, cineres proiecti in mare; id metuens, ut clamabat, ne collectis supremis reliquiae qui deviare a religione compulsi, pertuler e cruciabili poenas adque gloriosam mortem intemerata fide progressi, et nunc martyres appellantur. Rithreßusius in comment. ad epist. Plini de Christianis legi texti ad illus, et sub dio igne. Epiphanius haresis 76 cineres Georgii in ventos dispersos narrat: nequa tamen inter martires recipi deberet, quia non ob Christiani nominis professionem, sed ob violentiam qua civitatem et populum oppresserat, a gentibus fuerat peremptus. Erat autem Georgius episcopus Arianus intrusus, exurbato Athanasio.
-441. Halsbr., mobile, non male.
+
+  <bloco tipo="aparato_critico" script="latino" bbox="20,735,480,995">
+457. Ammianus, lib. xxii, de Georgio et sociis sub C. Eadem varietas alibi occurrit.
+Juliano : Quo non contenta multitud o immanis dilaniatu cadavera peremptorum camelis imposita vexit ad lacum iusdemque subito igne crematis, cineres projecit in
+mare, id metuens , ut clamabat, ne collectis supremis ,
+« des illis exstrueretur , ut reliquiae qui, deviare a religione compulsi, pertulere cruciabiles panas adusque gloriosam mortem intemerata fide progressi, et nunc martyres appellantur. Rursus usus in comment. ad epist. Plinii de Christianis legit ad illus, et subdio igne. Epiphanius hæresis 76 cineres Georgii in ventos dispersos narrat : nequa tamen inter martyres recipi debere, quia non ob Christiaui nominis professionem, sed ob violentiam qua civitatem et populum oppresserat, a gentilibus fuerat peremptus. Erat autem Georgius episcopus Arianus intrusus , exturbato Athanasio.
+444. Hailsbr., mobile, non male.
 442. De motu in aqua Virgilius, lib. I Georg. vers.
-349, Aut summa nautes in aqua collocare plumas.
-Sed Virgilus de agitatione ventorum lib. VI Æneid.
-Folios in carinae, etc. Ne turbata volent rapidis ludibria ventis. Horatius, de Nadi lib. I oda 14, Ventis Debes ludibrium.
-443. Ald., Tornæs. et nonnulli vulg., Austri se-
-retur flatibus, ex quo concipiebat Cauchius Austri fer- retur plantibus, vel Austri fertur heliabus. Plerique,
-Vagis feretur flatu, nisi quid in Thuan, Gis. ad
+349, Aut summa nautes in aqua colludere plumas.
+Idem Virgil ius de agitatione ventorum lib. vi /En., Foliis ne carmina manda, Ne turbata volent rapidis ludibria ventis. Horatius, de Navi lib. I oda 14, Ventis
+Debes ludibrium.
+443. Ald., Tornæs. , et nonnulli vulg., Austris feretur flatibus, ex quo conjiciebat Cauchius Austris feretur (lantibus, vel. Austri. feretur. flatibus. Plerique ,
+Vagis feretur. flatibus , nisi quod in Thuan., Gis. ad
 oram, et Fabr. est fluctibus pro flatibus.
-445. Widm. vittose, aut suffragio.
-447. Virgilius lib. VI, Spelunca alta fuit, rastoque dominans hiatu Scupea.
+445. Widm. vitiose, aut suffragosis.
+441. Virgi lius lib. vi, Spelunca alta fuit, vastoque finmauis hiatu Scupea,
 449. Ald., Mar. a prima manu, Weitz., et quis.
-450. Mar., paratus, et loco glossæ, peritus. Pleni qui scribunt cumbam. Equidem nescio quo pacto scripserit Prudentius, et communior est scriptura cumba.
-453. Widm., Mar., palustri cœpæ.
-458. Uxoricidæ in Hispania post strangulationem, in vase ligneo cum gallo, anguæ, cane, felle inclusi in funere projiciuntur, idque Hispanicè dicitur excubare. Confer Hirtandum de Martyr. res. 35, digr. 2, qui ita refert; sed, ut addo, gallus, anguis, canis, feles non vivi cum occisi rei corpore includuntur, sed solum supra culleum, sive dolium humanitatis simul, et infamæ causa depinguntur. Fortasse temporum et locorum varia fuit, et est consuetudo. In Actis: Insular, inquit, complicium cadaver in culleo parricidæ, 459. Weitz. cum Widm. et Halsbr. scribere vo-
-lut connexus.
-461. Virgilius lib. VI Æn., Juvenum manus emicat ardeum.
-462. Giselinus indicat rotante lanquam diversas lectionem pro ferante. Vat. A pro div. script. præcep.
-pro præcep. Heinsius prætulit præsens cæu Aor.
-Thuan., Root., tribus Torr., præsertim cum paulo ante præceps præcesserit. Certe sententiam magis con-
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="520,735,980,995">
+450. Mar., paratus, et loco glossæ, peritus. Plen i
+que scribunt cumbam. Equidem nescio quo pacto scripserit Prudentius, et communior est scriptura cumba.
+453. Widm., Mar., palustri cespite.
+458. Uxoricidae in Hispania post strangulationem,
+in vase ligneo cum gallo, anguæ, cane, fele inclusi in funere projiciuntur, idque Hispanice dicitur encubar.
+Confer Hirtandum de Martyr. res. 35, digr. 2, qui ita refert ; sed, ut audio, gallus, anguis, canis, felis non vivi cum occisi rei corpore includuntur, sed solum supra culleum, sive dolium humanitatis simul , et infamiae causa depinguntur. Fortasse tempora rum et locorum varia fuit, et est consuetudo. In Actis : Insular, inquit, complicium cadaver in culleo párricide,
+459. Weitz. cum Widm. et Hailsbr. scribere vo-
+luit conexus.
+461. Virgilius lib. vi /En., Juvenum manus emicat ardeum,
+462. Giselinus indicat rotante tanquam diversam lectionem pro rorante. Vat. A pro div. script. præpes
+pro præcep. Heinsius praetulit praepes cum Ainbr.,
+Thuan., Root., tribus Torr., pr aesertim cum paulo ante
+praeceps processerit. Certe sententiae magis con-
 venit præpes.
-469. Mar., funalem, recep supra correctionem per lu-
-minale. Glossa loquitur ridicula est, quasi funalis sit
-a funere, et non potius a fune. De lecto substantive vide exemplar apud Gifanuum, et comment. ad vers. 16 hymni 100 Cathemerinon.
-470. Vat. A, suto, cum aliis, sed supra pro div. lect., sanito. Prag., crudo, male.
+469. Mar., funalem, recie supra correctum per l u-
+minale. Glossa loquitur ridicula est, quasi funalis sit a
+funere, et non potius a fune. De tertio substantivo vide
+exempl a apud Gifanium, et comment. ad vers. 16
+hymni 10 Cathemerinon.
+470. Vat. A, suto, cum aliis, sed supra pro div. lect.,
+sanito. Prag., crudo, male.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="350,940,650,995">
-Digitized by Google
-  </bloco>
-  <notas>Script: latino. Foram marcadas palavras pouco legíveis com [ilegivel]. As letras A 455 e B 470, visíveis na coluna central, foram transcritas como notas marginais separadas. Algumas abreviações e lacunas no aparato crítico e no commentary foram mantidas tal como aparecem; palavras que não puderam ser lidas com segurança foram substituídas por [ilegivel] a nível de palavra, seguindo as instruções.</notas>
+
+  <notas>Script: latino. Transcrição feita diretamente a partir da imagem. As marcas “A 455” e “B 470” foram mantidas em blocos separados do texto principal, conforme instruções. Sedações e aspectos paleográficos mantidos (incl. caracteres como æ e sinais de pontuação). Onde a leitura ficou incerta, a forma foi mantida conforme aparece na imagem, sem normalização; não foram introduzidos [ilegivel] por palavra.</notas>
 </pagina>

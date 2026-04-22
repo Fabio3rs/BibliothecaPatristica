@@ -1,48 +1,39 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,80">
-    407                                HEXAPLORUM QUÆ SUPERSUNT.                                  408
+  <bloco tipo="cabecalho" script="latino" bbox="50,40,100,60">
+    467
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,80,320,360">
-    ΤΟ ΕΒΡΑΙΚΟΝ.
-    חננ 21          21.
-    בעט-ברהל 24    24.
-    לעל בצור יחננ
-    גאלי חי ואחני על-עמי יכמ 25  25.
-    כל יליתי בחקי 27  27.
-    כי תאחד מהדרתך אל-שרש 28  28.
-    דברי 'Ο 'Εβραίος, ....
-    και αμάρθημα λόγου.
-    גנד לכם : מפני-חרב 29  29.
-    למען חטאין שדן
+  <bloco tipo="cabecalho" script="latino" bbox="350,40,650,60">
+    HEXAPLORUM QUÆ SUPERSUNT.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,80,680,360">
-    TO EBRAICON
-    Ἑλληνικοί; γράμματι.
+  <bloco tipo="cabecalho" script="latino" bbox="900,40,950,60">
+    468
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="misto" bbox="50,70,330,300">
+    TO EBPAIKON.
+    יחנני 21
+    לעד בצור יחקק 24
+    ולי אני ידעתי גואלי 25
+    אשר בכלותי עורי 27
+    כי תרדפוני עד־נפש ואמרתם מה־נרדף־לו ושורש 28
+    דבר נמצא־בי Ὁ βραῖος, .....
+    καὶ ἁμάρτημα λόγου.
+    מגורו לכם מפני־חרב 29
+    למען תדעון שדין
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="350,70,600,300">
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
     21.
     24.
     25.
     27.
     28.
     29.
-    VERSIO HEBRAICI TEXT.
-    21. Miseremini mei.
-    24. In stylo ferreo.
-    In perpetuum in petra sculpe-
-    ntur.
-    25. Redemptor meus vivit, et
-    novissime super pulverem statu-
-    rus.
-    27. Defecerunt renes mei in
-    sinu meo.
-    28. Quia dicitis, Cur persequi-
-    mur eum, et radix verbi inventa
-    est in me? Hebræus,... et peccat-
-    tum verbi.
-    29. Timete vobis a faciebus gla-
-    dii.
-    Ut sciatis quod judicium.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,80,970,360">
+
+  <bloco tipo="texto_principal" script="grego" bbox="650,70,950,300">
     ΑΚΥΛΑΣ.
     21.
     24.
@@ -50,12 +41,35 @@
     27.
     28.
     29.
-    'Οπως γνωτε ✠ ότι εστι χρι-
-    σίς.
+    Ὅπως γνῶτε ✕ ὅτι ἐστὶ κρί-
+    σις.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,310,330,540">
+    VERSIO HEBRAICI TEXT.
+    21. Miseremini mei.
+    24. In stylo ferreo.
+    In perpetuum in petra sculpe-
+    rentur.
+    25. Redemptor meus vivit, et
+    novissime super pulverem statu-
+    rus.
+    27. Defecerunt renes mei in
+    sinu meo.
+    28. Quia dicitis, Cur persequi-
+    mur eum, et radix verbi inventa
+    est in me? Hebræus,... et pecca-
+    tum verbi.
+    29. Timete vobis a faciebus gla-
+    dii.
+    Ut sciatis quod judicium.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="350,310,600,540">
     VULGATA LATINA.
     21. Miseremini mei.
     24. In stylo ferreo.
-    Vel celte sculptantur in silice.
+    Vel celte sculpantur in silice.
     25. Redemptor meus vivit, et in
     novissimo die de terra surrectu-
     rus sum.
@@ -66,6 +80,9 @@
     verbi inveniamus contra eum?
     29. Fugite ergo a facie gladii.
     Et scitote esse judicium.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="650,310,950,540">
     AQUILA.
     21.
     24.
@@ -73,50 +90,87 @@
     27.
     28.
     29.
-    Ut scatis ✠ quia est judicium.
+    Ut sciatis ✕ quia est judicium.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="30,360,970,700">
-    Notæ et variæ lectiones ad cap. XIX JOB.
-    V. 1. Σ., Θ., τοῦτο δείκνυ καταρτισάντε με. Reg.
+
+  <bloco tipo="aparato_critico" script="misto" bbox="50,550,500,750">
+    Notæ et variæ lectiones ad cap. XIX Job.
+    V. 1. Σ., Θ., τοῦτο δέκατον κατηγόυνάτέ με. Reg.
     unus et Nicetas, melius quam cæteri et Drusius qui
     habent, μοι.
-    V. 4. Οἱ λοιστοι, ἀγόνημα. Sic Reg. unus, Nicetas
+    V. 4. Οἱ λοιποί, ἀγνόημα. Sic Reg. unus, Nicetas
     et Drusius.
-    V. 5. Ἀ., Θ., καὶ ἐλέχγετε etc. Sic duo mss. et
-    Drusius. Colbertinus vero, καὶ ἐλέγχεται: ἐπ' ἐμέ
-    ὀνισιδρῷ.
-    V. 6. 'Ο 'Εβραίος, ἐπαΐζε. Sic Orator., sic item
-    Colbert. ex Pulchironio, Nicetas et Olympiodoro,
+    V. 5. Ἀ., Θ., καὶ ἐλέγχετε etc. Sic duo mss. et
+    Drusius. Colbertinus verò, καὶ ἐλέγχεται· ἐπ' ἐμὲ
+    νειδισμ.
+    V. 6. Ὁ Ἑβραῖος, ἐπῆλξε. Sic Orator, sic item
+    Colbert. ex Polychronio, Nicetas ex Olympiodoro,
     Drusius ex Origene.
-    V. 7. Σ., ἐὰν κραχάσω etc. Sic Colbert., Reg.
-    unus, Nicetas et Drusius; sed Colbert., ἐπακουσθῆ-
-    σεται.
-    V. 8. ✠ χύλα περικαθ- etc. Hæc notantur
+    V. 7. Σ., ἐὰν κραυγάσω etc. Sic Colbert., Reg.
+    unus, Nicetas et Drusius; sed Colbert., ἐπακουσθή-
+    σομαι.
+    V. 8. ✕ κύκλῳ περιηκοδ- etc. Hæc notantur
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="520,550,950,750">
     asterisco in edit. Latina.
-    Ibid. Colbertinus, Χ', ἐπὶ δὲ ἀτραπούς μου, super
+    Ibid. Colbertinus, Δ*, ἐπὶ δὲ ἀτραπούς μου, super
     semitas autem meas. Reliqui autem mss. et editi,
-    οἱ ἄλλοι, ἐπὶ δὲ ἀπρ-.
-    V. 12. Σ., λόγοι αὐτοῦ. Θ., μονόφωνοι αὐτοῖ.
+    οἱ ἄλλοι, ἐπὶ δὲ ἀτρ-.
+    V. 12. Σ., λόγοι αὐτοῦ. Θ., μονόζωνοι αὐτοῦ.
     Omnes.
     Ibid. Hæc, Et fecerunt per me viam suam, et cir-
-    cumdederunt tabernaculum meum, in Latina Hiero-
+    cumdederunt tabernaculum meum, in Latina Hiera-
     nymi editione cum asteriscis jacent, quia nempe in
-    editionem τῶν Ο' Hexaplarum inveca fuerant. Ho-
+    editionem τῶν Ο' Hexaplarem invecta fuerant. Ho-
     die in textu τῶν Ο' non leguntur. Ex Latinis porro
     non dubia conjectura Græca concinnavimus, qualia
     erant apud Theodotionem, vel Aquilam, vel apud
     utrumque.
-    V. 15. 'Α., Θ., ξένας. Colbert. et Reg. unus.
+    V. 15. Ἀ., Θ., ξένος. Colbert. et Reg. unus.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="50,760,330,850">
     CAPUT XX JOB.
-    ΤΟ ΕΒΡΑΙΚΟΝ.
-    מתי ישבנו שדי כמלחש 4, 3
-    כי-מי-או-י
-    פניי שראו חכמי-ארץ
+    TO EBPAIKON.
+    כי־אני שמעתי גערת חרפתי 3, 4
+    ורוח מבינתי תענני
     VERSIO HEBRAICI TEXT.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="350,760,600,850">
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
+    3, 4.
+    VULGATA LATINA.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="650,760,950,850">
+    ΑΚΥΛΑΣ.
+    3, 4.
+    AQUILA.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,860,330,950">
     3, 4. Correctionem ignominiæ
     meæ audiam, et spiritus intelli-
-    gentiae meæ respondebit mihi. Non-
+    gentiæ meæ respondebit mihi. Non-
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="350,860,600,950">
+    3, 4. Doctrinam, quæ me arguis,
+    audiam, et spiritus intelligentiæ
+    meæ respondebit mihi. Hoc scio a
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="650,860,950,950">
+    3, 4.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="500,960,800,990">
     Digitized by Google
   </bloco>
-  <notas>Layout with three main columns: left column contains Hebrew and Latin heading; middle column Latin hexaplar and critical apparatus; right column contains Aquila and Greek notes. Some Hebrew letters unclear—transcribed to closest visible graphemes. BBOX coordinates are approximate relative to image (0-1000 scale).</notas>
+  <notas>
+    A página contém uma edição poliglota (Hexapla) com colunas em Hebraico, Grego e Latim. O aparato crítico no meio da página também mistura Grego e Latim.
+  </notas>
 </pagina>

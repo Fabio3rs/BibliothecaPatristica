@@ -1,117 +1,195 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,110">
-    863                                  HEXAPLORUM QUIAE SUPERSUNT.                                   864
-    TO EBPAIKON                       .TO EBPAIKON                         AKYLAS.
-                                     'Eλληνικο'ς  γράμμασι.
+  <bloco tipo="cabecalho" script="latino" bbox="350,40,650,70">
+    HEXAPLORUM QUÆ SUPERSUNT.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,110,300,300">
-    (Hebr. column:)
-    10 עבדיך
-    10.
-    מעבדים
-    תשובתי
-    11 ויאמר אב
-    11.
-    ויענה
-    20 יהי
-    20.
+  <bloco tipo="cabecalho" script="latino" bbox="80,50,120,70">
+    363
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="300,110,620,300">
+  <bloco tipo="cabecalho" script="latino" bbox="880,50,920,70">
+    364
+  </bloco>
+  
+  [!-- Upper Section --]
+  <bloco tipo="texto_principal" script="grego" bbox="150,80,300,100">
+    TO ΕΒΡΑΙΚΟΝ
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="350,80,600,110">
+    :TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,80,850,100">
+    ΑΚΥΛΑΣ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="100,100,330,320">
+    10 כעבר
+    כונן
+    ותשאו
+    11 אשר יאבה
+    וידעני
+    20 זיד
     VERSIO HEBRAICI TEXT.
     10. Transire faciens.
-    Prestigiator.
+    Præstigiator.
     Et augur.
     11. Et interrogans pythonem.
     Et divinus.
-    
     20. Superbe egerit.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="620,110,960,300">
+
+  <bloco tipo="texto_principal" script="latino" bbox="380,100,620,320">
+    10.
+    11.
+    20.
     VULGATA LATINA.
     10. Qui lustret.
     Observet somnia.
     Observet auguria.
     11. Qui pythonem consulat.
     Nec divinos.
-    
-    20. Arrogantia depravatus vo
-    uerít.
+    20. Arrogantia depravatus voluerit.
   </bloco>
-  <bloco tipo="cabecalho" script="grego" bbox="40,300,960,360">
-    AKYLAS.
-    10. Διάξων.
-    'Επαρωτών μάγων.
-    41. 'Επαρωτών μάγον.
-    Γνωστής.
-    
-    20. 'Υπηρξανείνται.
+
+  <bloco tipo="texto_principal" script="misto" bbox="650,100,900,320">
+    10. Διάγων.
+    Ἐπαρωτῶν μάγον.
+    11. Ἐπαρωτῶν μάγον.
+    Γνωοίστης.
+    20. Ὑπερηφανεύσηται.
+    AQUILA.
+    10. Traducens.
+    Interrogans magum.
+    11. Interrogans magum.
+    Divinus.
+    20. Superbe egerit.
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="40,360,960,480">
-    Notae et variae lectiones ad cap. XVIII Deuteronomii.
-    Lectiones Aquilae versuum 1, 10, 11, 20 ex Coisl.                 V. 8. 'Α., των πράξεων, etc. Has Aquilae et Sym-
-    produeunt.                                                      machi lectiones ex Basilensi mutuamur. Illud vi-
-    V. 3. ' Αλλος, δυσιας. Sic Basilien sis. Ita etiam           detur subaudien dum ad singulos.
-    habent editiones Aldina et Complutensis.
-    V. 10. Z., σημειωκοτομμενος. Θ., θαλητης. Coisl.
+
+  [!-- Middle Notes --]
+  <bloco tipo="aparato_critico" script="latino" bbox="250,330,750,350">
+    Notæ et variæ lectiones ad cap. XVIII Deuteronomii.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,480,960,540">
-    CAPUT XIX. DEUTERONOMII.
-    TO EBPAIKON                         TO EBPAIKON                       AKYLAS.
-    'Eλληνικο'ς  γράμμασι.
+  <bloco tipo="aparato_critico" script="misto" bbox="100,350,500,410">
+    Lectiones Aquilæ versuum 1, 10, 11, 20 ex Coisl. prodeunt.
+    V. 3. Ἄλλος, θυσίας. Sic Basiliensis. Ita etiam habent editiones Aldina et Complutensis.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,540,300,820">
-    (left column Hebrew items)
-    1. אשהׁר איש
-    1.
-    אשתו
-    
-    2.
-    ילדם 2
-    2.
-    נון 3
-    3.
-    דבר 4
-    4.
-    לחם 5
-    5.
-    ואחריו
-    בחורי לבבת
+  <bloco tipo="aparato_critico" script="misto" bbox="520,350,900,410">
+    V. 8. Ἀ., τῶν πράσων, etc. Ilas Aquilæ et Symmachi lectiones ex Basiliensi mutuamur. Πλὴν videtur subaudiendum ad singulos.
+    V. 10. Σ., σημειοσκοπούμενος. Θ., θελητής. Coisl.
+  </bloco>
+
+  [!-- Lower Section Header --]
+  <bloco tipo="cabecalho" script="latino" bbox="350,420,650,450">
+    CAPUT XIX DEUTERONOMII.
+  </bloco>
+
+  [!-- Lower Section Columns --]
+  <bloco tipo="texto_principal" script="grego" bbox="150,450,300,470">
+    TO ΕΒΡΑΙΚΟΝ.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="380,450,600,480">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,450,850,470">
+    ΑΚΥΛΑΣ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="100,470,330,850">
+    1 אשר יתן
+    ירשהו
+    ישבת
+    2 תחבל
+    3 תכן
+    4 דבר
+    5 לחטב
+    וכחת
+    בברזל לכת
     10 נקי
+    14 נגלו
+    15 ספם
+    19 סמם
+    VERSIO HEBRAICI TEXT.
+    1. Quarum Dominus.
+    Possederis eas.
+    Et habitaveris.
+    2. Separabis.
+    3. Parabis.
+    4. Verbum.
+    5. Ad cædendum.
+    Et impulerit.
+    In securi ad cædendum.
+    10. Innocens.
+    11. Terminaverunt.
+    15. Surget.
+    19. Præsumpsit.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="380,470,620,850">
+    1.
+    2.
+    3.
+    4.
+    5.
     10.
-    גדלא 14
     14.
-    מים 15
     15.
-    בם 19
     19.
+    VULGATA LATINA.
+    1. Quarum tibi traditurus est.
+    Possederis eam.
+    Habitaverisque.
+    2. Separabis.
+    3. Sternens diligenter.
+    4. Lex.
+    5. Ad cædenda.
+    Fugerit.
+    In succisione lignorum securis fugerit.
+    10. Innocens.
+    14. Fixerunt.
+    15. Stabit.
+    19. Cogitavit.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="300,540,620,820">
-    VERSIO HEBRAICI TEXT.                       VULGATA LATINA.                          AQUILA.
-    1. Quarum Dominus.                          1. Quarum ubi traditurus est.             1.
-    
-    Possederis eas.                             Possederis eam.
-    
-    Et habitaveris.                             Habitaverisque.
-    2. Separabis.                               2. Separabis.                              2. Separabis.
-    3. Parabis.                                 3. Sternens diligenter.                    3. Parabis.
-    4. Verbum.                                   4. Lex.                                   4.
-    5. Ad cadendum.                              5. Ad caedenda.                            5. Ad caedendum.
-    Et impulserit.                              Fugerit.                                  Expulsa fuerit.
-    In securi ad caedendum.                      In successione lignorum securis          In securi ad caedendum.
-                                                sugerit.
-    
-    10. Innocens.                                10. Innocuus.                             10. Innocens.
-    14. Terminaverunt.                           14. Fixerunt.                              14. Terminaverunt.
-    15. Surget.                                  15. Stabit.                                15. Surget.
-    19. Praesumpsit.                             19. Cogitavit.                             19. Cogitavit.
+
+  <bloco tipo="texto_principal" script="misto" bbox="650,470,900,850">
+    1.
+    2. Χωρίσεις.
+    3. Ἑτοιμάσεις.
+    4.
+    5. Ἐκκόψαι.
+    Ἐξώσθη.
+    Ἐν πέλυκι τοῦ ξύλου.
+    10. Ἄθωον.
+    14. Ὀριοθέτησαν.
+    15. Ἀναστήσεται.
+    19. Ἐνενοήθη.
+    AQUILA.
+    2. Separabis.
+    3. Parabis.
+    4.
+    5. Ad cædendum.
+    Expulsa fuerit.
+    In securi ad cædendum.
+    10. Innocens.
+    14. Terminaverunt.
+    15. Surget.
+    19. Cogitavit.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,820,960,980">
-    Notae et variae lectiones ad cap. XIX Deuteronomii.
-    
-    V 1. Lectiones ex Basilensi mutuamur, praeter illas Aquilae versuum 2, 3, 5, 10, 14, 15, 19, quas ex
-    Coislín. deprompsimus.
-    
+
+  [!-- Bottom Notes --]
+  <bloco tipo="aparato_critico" script="latino" bbox="250,860,750,880">
+    Notæ et variæ lectiones ad cap. XIX Deuteronomii.
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="100,880,900,920">
+    V 1. Lectiones ex Basiliensi mutuamur, præter illas Aquilæ versuum 2, 3, 5, 10, 14, 15, 19, quas ex Coislin. deprompsimus.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="500,950,750,980">
     Digitized by Google
   </bloco>
-  <notas>Transcrição respeita colunas: coluna hebraica à esquerda, latim e grego no corpo central e à direita. Algumas palavras hebraicas e gregas apresentavam letras pouco nítidas; preserveis sem normalização. Símbolos tipográficos modernos (pontos e números de versículo) mantidos conforme imagem.</notas>
+  
+  <notas>
+    Transcrição de página poliglota contendo Hebraico, Grego e Latino.
+    Na coluna inferior esquerda, o número "11." antes de "Terminaverunt" parece ser um erro de impressão no original (deveria ser 14, conforme colunas adjacentes e texto hebraico), mas foi transcrito fielmente como aparece.
+    Na coluna inferior central, "In succisione" foi transcrito conforme visível.
+  </notas>
 </pagina>

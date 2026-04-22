@@ -1,27 +1,29 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,70">
-    630                      HEXAPLORUM QUÆ SUPERSUNT.                      636
+  <bloco tipo="cabecalho" script="misto" bbox="0,20,1000,60">
+    635 HEXAPLORUM QUÆ SUPERSUNT. 636
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,80,320,880">
-    TO EBRAIKON.
-    [הרגיל?] 4
-    [לא קריא] 5
-    [לא קריא] 6
-    [מֹשֶׁה בֵּן אוֹ מֹשֶׁה חַטָּא?] 9
-    [טקסט עברי לא קריא] 12
-    [טקסט עברי לא קריא] 15
-    [טקסט עברי לא קריא] 17
-    [טקסט עברי לא קריא] 19
-    [טקסט עברי לא קריא] 21
-    [טקסט עברי לא קריא] 23
-    [טקסט עברי לא קריא] 25
-    [טקסט עברי לא קריא] 26
-    [טקסט עברי לא קריא] 28
-    [סוף העמוד עברי]
+  <bloco tipo="texto_principal" script="misto" bbox="50,70,950,110">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,80,660,880">
-    TO EBRAIKON
-    Æλληνικοὶ χαρακτῆρες.
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,110,330,500">
+    מִשְׁפָּטַי 4.
+    וּמִצְוֹתַי 5
+    אִישׁ אִישׁ אֶל־כׇּל־שְׁאֵר 6
+    עֶרְוַת אֲחֹתְךָ בַּת־אָבִיךָ אוֹ בַת־אִמֶּךָ 9
+    שְׁאר בְּשָׂרְךָ הִוא 12
+    עֶרְוַת כַּלָּתְךָ לֹא תְגַלֵּה 15
+    עֶרְוַת אִשָּׁה וּבִתָּהּ 17
+    בִּנִּתָּהּ 19
+    וּמִזַּרְעֲךָ לֹא־תִתֵּן לְהַעֲביר לַמּלֶךְ 21
+    וְאֶל־כׇּל־בְּהֵמָה לֹא־תִתֵּן שָׁכְבְּךָ 23
+    לְטַמֵּא 25.
+    בָּהּ
+    וַתִּטְמָא הָאָרֶץ וָאֶפְקֹד עֲוֹנָהּ עָלֶיהָ
+    מִשְׁפָּטַי 26
+    וְאֶת־חֻקֹּתַי 28
+    קָאָה
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,110,630,500">
     4.
     5.
     6.
@@ -31,54 +33,94 @@
     17.
     19.
     21.
-    23.
     25.
     26.
     28.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,80,980,880">
-    AKYLAS.
+  <bloco tipo="texto_principal" script="grego" bbox="650,110,950,500">
     4.
     5.
     6.
     9.
     12.
     15.
-    17. Μίσως λίμμα αὐτῆς ἔστιν.
+    17. Μύσος λίμμα αὐτῆς ἐστιν.
     19.
-    21. Παραβάδοται τῷ Μολὼχ.
-    23.
-    25. Ἀπειρημένον.
+    21. Παραβιβάσαι τῷ Μολόχ.
+    23
+    25. Ἀπιρημένον.
+    25.
     26.
     28.
-    ἐξήρασεν.
+    Ἐξήρασεν.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="30,900,980,980">
-    VERSIO HEBRAICI TEXT.        VULGATA LATINA.           AQUILA.
+  <bloco tipo="texto_principal" script="latino" bbox="50,510,950,550">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,980,980,1700">
-    4. Statuta mea.                    4. Præcepta.                       4.
-    5. Judicia mea.                    5. Judicia mea.                    5.
-    6. Vir, vir ad omnes reliquias.    6. Omnis homo ad proximum          6.
-                                       sanguinis sui.
-    9. Genitæ domi vel genitæ foris.  9. Quæ domi vel foris genita        9.
-                                       est.
-    12. Caro patris tui ipsa.         12. Quia caro est patris tui.      12.
-    15. Uxor filii tui ipsa.          15. Quia uxor filii tui est.      15.
-    17. Nefas ipsum.                  17. Incestus est.                  17. Abominatio, reliquum ejus est.
-    19. In separatione.               19. Quæ patitur monstra.          19.
-    21. Ad transire faciendum Mo-     21. Ut consecretur idolo Mo-       21. Ad admovendum Moloch.
-        loch.                             loch.
-    23. Non stabit ad facies anima-   23. Non succumbet jumento.        23.
-        lis.
-    Confusio.                         Scelus.                           Prohibitum.
-    25. Visitari.                     25. Visitabo.                      25.
-    Evomuit terra habitantes suos.   Ut evomat habitatores suos.
-    26. Statuta mea.                  26. Legitima.                      26.
-    28. Et non evomat.                28. Ne evomat.                     28.
-    Evomuit.                          Evomuit.                          Evomuit.
+  <bloco tipo="texto_principal" script="latino" bbox="50,550,330,950">
+    4. Statuta mea.
+    5. Judicia mea.
+    6. Vir, vir ad omnes reliquias.
+    9. Genitæ domi vel genitæ foris.
+    12. Caro patris tui ipsa.
+    15. Uxor filii tui ipsa.
+    17. Nefas ipsum.
+    19. In separatione.
+    21. Ad transire faciendum Moloch.
+    23. Non stabit ad facies animalis.
+    Confusio.
+    25. Visitavi.
+    Evomuit terra habitatores suos.
+    26. Statuta mea.
+    28. Et non evomat.
+    Evomuit.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,550,630,950">
+    4. Præcepta.
+    5. Judicia mea.
+    6. Omnis homo ad proximam sanguinis sui.
+    9. Quæ domi vel foris genita est.
+    12. Quia caro est patris tui.
+    15. Quia uxor filii tui est.
+    17. Incestus est.
+    19. Quæ patitur menstrua.
+    21. Ut consecretur idolo Moloch.
+    23. Non succumbet jumento.
+    Scelus.
+    25. Visitabo.
+    Ut evomat habitatores suos.
+    26. Legitima.
+    28. Ne evomat.
+    Evomuit.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,550,950,950">
+    4.
+    5.
+    6.
+    9.
+    12.
+    15.
+    17. Abominatio, reliquum ejus est.
+    19.
+    21. Ad admovendum Moloch.
+    23.
+    Prohibitum.
+    25.
+    26.
+    28.
+    Evomuit.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="0,960,1000,1000">
+    Digitized by Google
   </bloco>
   <notas>
-    Texto dividido em três colunas no terço superior (hebraico, grego transl., Akylas). Algumas palavras hebraicas estavam desbotadas/ilegíveis; marquei essas ocorrências com [לא קריא] ou aproximações entre colchetes. Mantive a sequência textual e os números de verso conforme visual.
+    A página apresenta uma disposição em colunas comparando textos bíblicos (Hexapla).
+    Coluna superior esquerda: Texto Hebraico.
+    Coluna superior central: Números de versículos (título indica "Hebraico em letras gregas", mas apenas números aparecem).
+    Coluna superior direita: Versão de Áquila (Grego).
+    Coluna inferior esquerda: Versão Latina do Texto Hebraico.
+    Coluna inferior central: Vulgata Latina.
+    Coluna inferior direita: Versão Latina de Áquila.
+    Alguns versículos estão em branco nas colunas de Áquila.
   </notas>
 </pagina>

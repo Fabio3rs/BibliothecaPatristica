@@ -1,40 +1,32 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,80">
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,70">
     331 HEXAPLORUM QUÆ SUPERSUNT 332
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,90,320,730">
-    TO EBPAIKON.
-    קל מני - אתך
-    ויכל באפס תקוה
-    8 לא-תשטרני עין רעי
-    8.
-    עיניך בי ואינני
-    9 כלה עין הולך
-    9.
-    11 גם
-    אשיחד במר נפשי
-    11.
-    12 אם - תגעי
-    12.
-    13 משמר 'Ο Εβραιος, πονος.
-    13.
-    ישא בשיחי משכבי
-    15.
-    15 ותהיה מחקק נפשי
+  <bloco tipo="texto_principal" script="misto" bbox="50,80,330,500">
+    TO ΕΒΡΑΙΚΟΝ.
+    כל ימי - ארץ
+    ויכלו בתקוה
+    8 לא תשורני עין ראי
+    עני כי ואינני
+    9 ענן כלה וילך
+    11 גם אני
+    אשיחה במר נפשי
+    12 אם תנין
+    משמר Ὁ Ἑβραῖος, πόνους.
+    13 תחנניני
+    ישא בשחו משכבי
+    15 תבחר מחנק נפשי
     מות מעצמותי
-    16 במאסתי
+    16 מאסתי
     כי הכל ימי
-    16.
-    18 והפקיד לבקיים
-    18.
-    לרעמים תתנבחו
-    20 מה אצאל
-    20 'Ο Εβραιος, τι
-    σε εβλαψα;
+    18 ותפקדנו לבקרים
+    לרגעים תבחננו
+    20 מה אפעל Ὁ Ἑβραῖος, τί
+    se ἐβλαψα ;
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,90,660,730">
-    TU EBPAIKON.
-    'Ελληνικοὶς γράμμασι.
+  <bloco tipo="texto_principal" script="grego" bbox="350,80,600,500">
+    ΤΟ ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
     8.
     9.
     11.
@@ -42,15 +34,35 @@
     13.
     15.
     16.
+    18.
+    20. Ὁ Ἑβραῖος, τί
+    σε ἐβλαψα ;
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="620,80,950,500">
+    ΑΚΥΛΑΣ.
+    8. ※ Ou περιβλέψεται ὁ ὀφθαλ-
+    ※ μὸς ὁρντός με;
+    9.
+    11. Τοιγαροῦν.
+    12.
+    13.
+    15. Καὶ αἱρεῖται ἀγχόνην ἡ ψυχή
+    μου.
+    16.
+    Ὅτι ματαιότης αἱ ἡμέραι μου.
     18.
     20.
-    VERSIO HEBRAICI TEXT.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="50,510,950,540">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,550,330,950">
     Fuerunt veloces præ radio te-
     xentis.
-    Et defecerunt in sine expecta-
+    Et defecerunt in fine expecta-
     tionis.
     8. Non intuebitur me oculus
-    vldentis me.
+    videntis me.
     Oculi tui in me, et non ego.
     9. Defecit nubes et abiit.
     11. Etiam.
@@ -63,28 +75,15 @@
     cubile.
     15. Et elegit strangulationem
     anima mea.
-    Mortem ah ossibus meis.
+    Mortem ab ossibus meis.
     16. Recusavi.
     Quia vanitas dies mei
     18. Et visites eum in matutinis.
     Ad momenta probabis eum.
     20. Quid faciam? Hebræus, quid
-    te lesi?
+    te læsi ?
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,90,980,730">
-    AKVΛAΣ.
-    8. ✳ Οὐ περιβέλεται ὁ ὀφθαλ-
-    μὸς θρονής με;
-    9.
-    11. Τογαροῦν.
-    12.
-    13.
-    15. Καὶ αἱρεῖται ἀγχόνην ἡ ψυχή
-    μου.
-    16.
-    18.
-    20.
-    VULGATA LATINA.
+  <bloco tipo="texto_principal" script="latino" bbox="350,550,600,950">
     Velocius transierunt, quam a
     texente tela succiditur.
     Et consumpti sunt absque ulla
@@ -92,7 +91,7 @@
     8. Nec aspiciet me visus homi-
     nis.
     Oculi tui in me , et non subsi-
-    stant.
+    stam.
     9. Sicut consumitur nubes et
     pertransit.
     11. Quapropter.
@@ -109,11 +108,12 @@
     16. Desperavi.
     Nihil enim sunt dies mei.
     18. Visitas eum diluculo.
-    Subito prodas illum.
-    20. Quid faciam?
-    AQUILA.
-    8. ✳ Nonne cognoscit oculus vi
-    ✳ dentis me?
+    Subito pronas illum.
+    20. Quid faciam ?
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="620,550,950,950">
+    8. ※ Nonne cognoscit oculus vi
+    ※ dentis me ?
     9.
     11. Quapropter.
     12.
@@ -121,8 +121,14 @@
     15. Et eligit laqueum anima
     mea.
     16.
+    Quia vanitas dies mei.
     18.
     20.
   </bloco>
-  <notas>Scripts presentes: hebraico (coluna esquerda superior), grego (cabecalho central small), latino (colunas central e direita). Pequenas lacunas e caracteres de impressum renderizados; usei pontos e quebras conforme linhas visíveis. Marcas de cruz (✳) mantidas como no original. BBOX estimadas em escala 0-1000.</notas>
+  <bloco tipo="rodape" script="latino" bbox="600,960,900,990">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Texto crítico da Hexapla de Orígenes. Coluna esquerda superior contém texto hebraico com variantes e interpolações em grego. Coluna central superior (Hebraico em letras gregas) está majoritariamente em branco, exceto versos 12 e 20. Símbolo ※ representa o obelo crítico presente no manuscrito.
+  </notas>
 </pagina>

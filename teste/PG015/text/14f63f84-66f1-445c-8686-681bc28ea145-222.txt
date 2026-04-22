@@ -1,33 +1,63 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,80">
-    439                                 PEХAPLORUM QUAE SUPERSVNT.                                  440
-    TO EBPAIKON.                       T0 EBPΛIKON                      AKΓΛAS.
-                                       Ελληνικοὶς γράμμασι.
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,60">
+    439 HEXAPLORUM QUÆ SUPERSUNT. 440
   </bloco>
-  <bloco tipo="texto_principal" script="ebraico" bbox="40,90,330,920">
-    4.  דבולת שׁני
-    5.  ועיר אתים מאמידים
-    7.  ועירת חטפים
-        אנבנים
-        סלאם
-        לאש
-        חלשים
-    8.  ושכני
-    10. גראן
-    11. רבני
-    12. דמצירים
-    13. עצי שוים
-    17. זהב מחור
-    18. מצות
-    20. פרשיי
-    22. סבבים
-    22. ועזותיי
-    24. דוד זהב
-    30. לחם פנים
-    31. ריסי
-    33. סמרזים
+  <bloco tipo="texto_principal" script="misto" bbox="20,60,320,1300">
+    TO ΕΒΡΑΙΚΟΝ.
+    4 וְתוֹלַעַת שָׁנִי
+    5 וְעוֹרֹת אילִם מְאָדָּמִים
+    וְעֹרֹת תְּחָשִׁים
+    אַבְנֵי־שֹׁהַם
+    7 וְאַבְנֵי מִלֻּאים
+    לָאפֹד
+    וְלַחֹשֶׁן
+    8 וְשַׂמְתָּ
+    10 אֲרֹן
+    וְהַבַּד
+    11 הַבַּד
+    12 בְּצַעְתָּ
+    13 וּשְׁנֵי מזְבְּחֹת
+    17 אֶבֶן סַפִּיר
+    18 בְּצַעְתָּ
+    20 פְּרָשִׂים
+    וּבַכֹּסִים
+    22 וְנוֹעַדְתִּי
+    24 זֵר זָהָב
+    30 לֶחֶם פָּנִים
+    31 יְרֵכָהּ
+    וּבִצְעָהּ
+    וּפְרָחֶיהָ
+    33 מִשְׁקָדִים
+
+    VERSIO HEBRAICI TEXT.
+    4. Vermiculum cocci.
+    5. Pelles arietum rubricatas.
+    Et pelles taxorum.
+    7. Lapides onychis.
+    Plenitudinum.
+    Ephod.
+    Et pectorali.
+    8. Et habitabo.
+    10. Arcam.
+    Latitudo ejus.
+    11. Coronam.
+    12. Angulos ejus.
+    13. Lignorum Sitim.
+    17. Auri puri.
+    18. Extremitatibus.
+    20. Expandentes.
+    Tegentes.
+    22. Conveniam.
+    24. Coronam auri.
+    30. Panem facierum.
+    31. Femur ejus.
+    Calices ejus.
+    Et flores ejus.
+    33. Amygdalati.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,90,660,920">
+  <bloco tipo="texto_principal" script="misto" bbox="340,60,660,1300">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικος γράμμασι.
     4.
     5.
     7.
@@ -44,17 +74,44 @@
     30.
     31.
     33.
+
+    VULGATA LATINA.
+    4. Coccumque bis tinctum.
+    5. Pelles arietum rubricatas.
+    Pelles ianthinas
+    7. Lapides onychinos.
+    Ad ornandum.
+    Ephod.
+    Rationale.
+    8. Habitabo
+    10. Arcam.
+    Latitudo.
+    11. Coronam.
+    12. Angulos.
+    13. De lignis Setim.
+    17. De auro mundissimo.
+    18. Parte.
+    20. Expandentes.
+    Operientes.
+    22. Præcipiam.
+    24. Labium aureum.
+    30. Panes propositionis.
+    31. Hastile ejus.
+    Scyphos.
+    Lilia.
+    33. Quasi a nucis modum.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="670,90,980,920">
-    4. Σκίαλλχος διάφορον
-    5. Δέρματα χρῶν πεπυρωμένα
+  <bloco tipo="texto_principal" script="misto" bbox="680,60,980,1300">
+    ΑΚΥΛΑΣ.
+    4. Σκώληκος διάφορον
+    5. Δέρματα κριῶν πεπυρωμένα
     Δέρματα ἰάνθινα.
-    7. Λίθους ὀνυχος.
-    Πληρώσεις.
+    7. Λίθους ὄνυχος.
+    Πληρώσεως.
     Ἐπένδυμα.
-    Εἱς τὸ λόγιον.
-    8. Σηγώσιον.
-    10. Γλωσσόκομον.
+    Εἰς τὸ λόγιον.
+    8. Σκηνώσω.
+    10. Γλωσσοκόμον.
     11.
     12.
     13.
@@ -62,41 +119,43 @@
     18.
     20. Ἐκπετάζοντες.
     Σκεπάζοντες.
-    22. Συνάξομαι.
+    22. Συντάξομαι.
     24.
     30. Ἄρτους προσώπων.
-    31. Ὁ μήρος αὐτῆς.
+    31. Ὁ μρος αὐτῆς.
     Σκύφοι.
-    Βιαστοί.
-    33. Ἐξημηγδαλειμένοι.
+    Βλαστοί.
+    33. Ἐξημυγδαλισμένοι.
+
+    AQUILA.
+    4. Vermiculi varium.
+    5. Pelles arietum ignei coloris.
+    Pelles ianthinas.
+    7. Lapides onychis.
+    Plenitudinis.
+    Superindumentum.
+    In rationale.
+    8. Habitabo.
+    10. Scrinium.
+    11.
+    12.
+    13.
+    17.
+    18.
+    20. Expandentes.
+    Tegentes.
+    22. Constituam.
+    24.
+    30. Panes facierum.
+    31. Femur ejus.
+    Scyphi.
+    Ramuli.
+    33. Amygdalatu.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,760,980,1000">
-    VERSIO HEBRAICI TEXT.        VULGATA LATINA.                    AQUILA.
-    4. Vermiculum cocci.         4. Coccumque bis tinctum.          4. Vermiculi varium.
-    5. Pelles arietum rubricatas. 5. Pelles arietum rubricatas.     5. Pelles arietum ignei coloris.
-    Et pelles taxorum.         Pelles ianthinas.                 Pelles ianthinas.
-    7. Lapides onychis.         7. Lapides onychinos.              7. Lapides onychis.
-    Plenitudinum.              Ad ornaudum.                      Plenitudinis.
-    Ephod.                     Ephod.                             Superindumentum.
-    Et pectorali.              Rationale.                         In rationale.
-    8. Et habitabo.             8. Habitabo                        8. Habitabo.
-    10. Arcam.                  10. Arcam.                          10. Scrinium.
-    Latitudo ejus.             Latitudo.                          Latitudo.
-    11. Coronam.               11. Coronam.                         11.
-    12. Angulos ejus.          12. Angulos.                        12.
-    13. Ligorum Sitim.         13. De lignis Setim.                13.
-    17. Auri puri.             17. De auro mundissimo.             17.
-    18. Extremitatibus.        18. Parte.                          18.
-    20. Expandentes.          20. Expandentes.                    20. Expandentes.
-    Tegentes.                  Operientes.                        Tegentes.
-    22. Conveniam.             22. Praecipiam.                     22. Constituam.
-    24. Coronam auri.          24. Labium aureum.                  24.
-    30. Panem facerum.         30. Panes propositionis.            30. Panes facerum.
-    31. Femur ejus.            31. Hastile ejus.                   31. Femur ejus.
-    Calices ejus.              Scyphos.                           Scyphi.
-    Et flores ejus.            Lilia.                             Ramuli.
-    33. Amygdalatu.            33. Quasi a nucis modum.           33. Amygdala.
+  <bloco tipo="rodape" script="latino" bbox="0,1300,1000,1400">
     Digitized by Google
   </bloco>
-  <notas>Pagina com três colunas: esquerda em hebraico, centro numerais/latim curta, direita em grego; mantive lineação e numeração; muitas palavras hebraicas parcialmente ilegíveis – marquei sem usar [ilegivel] por bloco, apenas onde foi necessário por palavra (nenhuma substituída).</notas>
+  <notas>
+    A página apresenta uma disposição poliglota complexa (Hexapla). A coluna central superior contém apenas números de versículos, apesar do título "Hebraico em letras gregas", indicando ausência de texto transliterado para estes versículos nesta edição. As colunas inferiores contêm versões latinas correspondentes.
+  </notas>
 </pagina>

@@ -1,91 +1,125 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,80">
-    383                                                        ΠΕΧΑΡΛΟΓΥΜ QΨΕ ΣΥΠΕΡΣΥΝΤ.                                                   384
-    ΤΟ ΕΒΡΑΙΚΟΝ.                              ΤΟ ΕΒΡΑΙΚΟΝ                            ΑΚΥΛΑΣ.
-                                               Ἑλληνικοὶς γράμμασι.
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    383 HEXAPLORUM QUÆ SUPERSUNT. 384
   </bloco>
-  <bloco tipo="texto_principal" script="ebraico" bbox="40,90,380,420">
-    וכסבר שנים ננחש לעירין
-    שׁוּד 21 'Ο Εβραίος, σκίλευσις.
-    22 ויצא רוג הוא-חכ?
-    25 יוחבד
-    26 בעיגי גבי מנגבי
-    27 כי-כסד פני בחלם ועיני
-    0-20 פמיו 'Ο Εβραίος, την
-    κριδίαν αυτού . . . πειμελην και
-    διπλοϊδα.
-    32 לא תעננה
-    34 כי-עזר חף גלהוד
-    35 דריה אשל ויד דכן
+  <bloco tipo="cabecalho" script="misto" bbox="50,60,950,100">
+    TO EBPAIKON. TO EBPAIKON AKYΛAS.
+    'Ellhnikois grammassi.
   </bloco>
-  <bloco tipo="texto_principal" script="greco" bbox="400,90,960,420">
-    21.                                                    21.
-    22.                                                    22.
-    25.                                                    25.
-    26.                                                    26.
-    27.                                                    27.
-    52.                                                    52.
-    54.                                                    31. 'Οτι συναγωγή ὑποκριτῶ
-                                                           ἄκαρπος.
-    55.                                                    55. Συνέλαβε (πόνου), και ἔτεκε
-                                                           ἀνωφελὲς.
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,100,320,350">
+    וכסד-שנים נצפנו לרשע
+    21 קול בהלות באזניו
+    22 ברב-אליו יבא
+    25 יתגבר
+    26 בעיו גבי מגניו
+    27 כי-כסד פניו בחלב ויעש
+    32 לא ירענן
+    34 כי-עדת חנף גלמוד
+    35 הרו עמל וילד און
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,430,960,820">
-    VERSIO HEBRAICI TEXT.                         VULGATA LATINA.                                AQUILA.
-    Et numerus annorum absconditi               Et numerus annorum incertus                   ...
-    sunt ad timendum.                            est tyrannidis ejus.
-    
-    21. Vastator. Hebræus, spoliatio.           21. Insidias.                                  21.
-    22. Et conspuctus ipse ad gla-               22. Circumspectans undique                      22.
-    dium.                                        gladium.
-    25. Se roborabit.                           25. Roboratus est.                               25.
-    26. In densitate umbunon scu-                26. Et pingui cervice armatus                   26.
-    torum ejus.                                  est.
-    
-    27. Quia operuit facies suas in              27. Operuit faciem ejus crassi-                 27.
-    adipe suo et fecit lubricum super           tudo, et de lateribus ejus arvina
-    inguine. Hebræus, cor suum...               dependet.
-    ..arvinam et diploidem.
-    
-    32. Non viruit.                             32. Arscent.                                     32.
-    34. Quia comitum hypocritæ                    34. Congregatio enim hypocritæ              34. Quia synagoga hypocrita
-    solitariium.                                sterilis.                                     infructuosa.
-    35. Concipere laborem, et pa-                55. Concepit dolorem, et peperit              35. Concepit laborem et peperit
-    rere mendacium.                              iniquitatem.                                  inutile.
-    
+  <bloco tipo="texto_principal" script="grego" bbox="330,100,600,350">
+    21. 'O Ebraios, skuleusis.
+    22.
+    25.
+    26.
+    27.
+    27. 'O Ebraios, tèn kardian autou... pimelèn kai diploida.
+    32.
+    34.
+    35.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,100,950,350">
+    21.
+    22.
+    25.
+    26.
+    27.
+    32.
+    34. Ὅτι συναγωγὴ ὑποκριτοῦ ἄκαρπος.
+    35. Συνέλαβε (πόνον), καὶ ἔτεκε ἀνωφελές.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="50,360,950,400">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,400,320,640">
+    Et numerus annorum absconditi sunt ad timendum.
+    21. Vastator. Hebræus, spoliatio.
+    22. Et conspectus ipse ad gladium.
+    25. Se roborabit.
+    26. In densitate umbonum scutorum ejus.
+    27. Quia operuit facies suas in adipe suo et fecit lubricum super inguine. Hebræus, cor suum.... arvinam et diploiden.
+    32. Non viruit.
+    34. Quia comitum hypocritæ solitarium.
+    35. Concipere laborem, et parere mendacium.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="330,400,600,640">
+    Et numerus annorum incertus est tyrannidis ejus.
+    21. Insidias.
+    22. Circumspectans undique gladium.
+    25. Roboratus est.
+    26. Et pingui cervice armatus est.
+    27. Operuit faciem ejus crassitudo, et de lateribus ejus arvina dependet.
+    32. Arescent.
+    34. Congregatio enim hypocritæ sterilis.
+    35. Concepit dolorem, et peperit iniquitatem.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,400,950,640">
+    21.
+    22.
+    25.
+    26.
+    27.
+    32.
+    34. Quia synagoga hypocritæ infructuosa.
+    35. Concepit laborem et peperit inutile.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="50,650,950,670">
     Notæ et variæ lectiones ad cap. XV Job.
-    
-    V. 2. Σ., περι γνώσεως πνεύματος. Colbert.
-    V. 4. θ., ου γαρ ου παρσ. Colbert., Regii duo, Ni-
-    cteras et Drusius.
-    Ibid. S., και αναλογην etc. Sic omnes mss. et editi.
-    Oratoriensis tamen, Regius unus et editio Rom.
-    talem ανέθν. Nicetas et Colbertinus, αναλογην,
-    Drusius item habet αναλογην, quia in exemplari suo
-    pil. Romanae in emendatum codano fuerat, in
-    ilostro item ita correctum est. Utraque lectio qua-
-    drare potest.
-    V. 5. θ., και εξελξειω etc. Colbert., Reg. unus.
-    V. 7. 'Ο Εβραίος, συνελθήσας. Sic omnes mss.
-    et Nicetas. Drusius vero id quasi scholion adfert.
-    V. 8. Α., απορηθεται etc. Has lectiones eodem
-    modo omnes referunt.
-    Ibid. 'Αλλος, ἡ συμβουλια etc. Colbert. Est for-
-    tusse scholion, nisi sit Hebraei interpres, qui lib-
-    iriori modo vertere solet.
-    
-    CAPUT XVI JOB.
-    ΤΟ ΕΒΡΑΙΚΟΝ                                ΤΟ ΕΒΡΑΙΚΟΝ                               ΑΚΥΛΑΣ.
-    'Ελληνικοὶς γράμμασι.
-    
-    [עברית טקסט קטן] 2                          2.                                           2. Παράκλησις πόνων.
-    
-    VERSIO HEBRAICI TEXT.                        VULGATA LATINA.                             AQUILA.
-    2 Consolatores laboris omnes                 2. Consolatores onerosi omnes                 2. Consolatores laborum.
-    vos.                                         vos estis.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="750,900,980,980">
+  <bloco tipo="nota" script="misto" bbox="50,670,480,840">
+    V. 2. Σ., περὶ γνώσεως πνεύματος. Colbert.
+    V. 4. Θ., οὐ γὰρ σὺ παρ-. Colbert., Regii duo, Nicetas et Drusius.
+    Ibid. Σ., καὶ ἀναίσχην etc. Sic omnes mss. et editi. Oratoriensis tamen, Regius unus et editio Rom. habent ἀνόητην. Nicetas et Colbertinus, ἀναίσχην. Drusius item habet ἀναίσχην, quia in exemplari suo e. it. Romanæ ita emendatum calamo fuerat, in nostro item ita correctum est. Utraque lectio quadrare potest.
+    V. 5. Θ., καὶ ἐξελέξω etc. Colbert., Reg. unus.
+    V. 7. Ὁ Ἑβραῖος, συνελέχθη. Sic omnes mss. et Nicetas. Drusius vero id quasi scholion adfert.
+    V. 8. Ἀ., ἀπόῤητα etc. Has lectiones eodem modo omnes referunt.
+    Ibid. Ἄλλος, ἢ συμβούλῳ etc. Colbert. Est fortasse scholion, nisi sit Hebræi interpretis, qui liberiori modo vertere solet.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="520,670,950,840">
+    V. 10. Colbertinus, ἐκ Θ. οι β'. 1. e. Ex Theodotione duo versiculi. Sunt autem hi versiculi, Καί γε πρεσβύτης, καί γε παλαιὸς ἐν ἡμν, Βαρύτερος τοῦ πατρὸς σου ἡμέραις. Versionem excrpsimus ex edit. Latina Hieronym., ubi hæc asteriscis notantur.
+    Ibid. Σ., πολυχρονιώτερος. Sic omnes.
+    V. 12. Σ., Θ., τί ὅτι ἐπῆρέ σε etc. Hunc locum Nicetas et Drusius uni Symmacho tribuunt; Colb. et alter codex Theodotioni et Symmacho.
+    Ibi 1. Ἄλλος, ἢ τί ἀνέβλεψαν etc. Sic unus codex.
+    V. 14. Θ., τί ἐστιν ἄνθρωπος; Colbert., Reg. unus et Drusius.
+    Ibid. Lectiones Hebræi, Aquilæ et Theodotionis habent omnes mss.
+    V. 15. Σ., ἰδοὺ ἐν ἁγίοις etc. Sic omnes mss. et Drusius. Illud vero, πόσῳ μλλον ἄνθρωπος, habet Drusius tantum, videturque scholion esse; nam
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="50,850,950,880">
+    CAPUT XVI JOB.
+  </bloco>
+  <bloco tipo="cabecalho" script="misto" bbox="50,880,950,910">
+    TO EBPAIKON. TO EBPAIKON AKYΛAS.
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,910,320,960">
+    2 ענתו לכל אבל
+    VERSIO HEBRAICI TEXT.
+    2 Consolatores laboris omnes vos.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="330,910,600,960">
+    2.
+    VULGATA LATINA.
+    2. Consolatores onerosi omnes vos estis.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,910,950,960">
+    2. Παράκλητοι πόνων.
+    AQUILA.
+    2. Consolatores laborum.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="350,960,650,990">
     Digitized by Google
   </bloco>
-  <notas>Layout: três colunas visuais (esquerda hebraico/latim, centro latim/grego, direita aquila). Algumas linhas hebraicas pequenas e fragmentárias; onde leitura incerta foi preservada literal com puntiatura originale. Marcas diacriticas e accenti grecos mantenuti come nell'immagine.</notas>
+  <notas>
+    Transcrição de página da Hexapla de Orígenes (Livro de Jó). Contém colunas paralelas em Hebraico, Grego (transliteração e versões de Áquila) e Latim (Vulgata e outras versões). A seção de notas críticas ("Notæ") está em duas colunas na parte inferior.
+  </notas>
 </pagina>

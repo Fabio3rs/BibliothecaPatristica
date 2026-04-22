@@ -1,31 +1,49 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,90">
-    1679                                   HEXAPLORUM QUÆ SUPERSUNT.                                   1680
+  <bloco tipo="cabecalho" script="latino" bbox="100,30,900,60">
+    1679 HEXAPLORUM QUÆ SUPERSUNT. 1680
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="20,90,330,840">
-    TO EBPAIKON.
-    אֲדֹנִי יְהוָה צְבָאוֹת 23
+  <bloco tipo="texto_principal" script="misto" bbox="100,60,900,100">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,100,300,350">
+    כִּי־אָדָן יְהוָה צְבָאוֹת 23
+    לָכֵן כֹּה־אָמַר אֲדֹנָי יְהוִה צְבָאוֹת 24
+    עַל־כֵּן יְגוֹרֵר הָעָם 26
+    בְּצֵאת עַמְּךָ מִמִּצְרַיִם 27
+    בָּא בְעַיָּת 28
+    עָבְרוּ מַעֲבָרָה 29
+    צַהֲלִי קוֹלֵךְ 30
+    לִישָׁה
+    עֲנִיָּה עֲנָתוֹת 33
+    הִנֵּה הָאָדוֹן
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="350,100,550,350">
     23.
-    בקרב כל־הארץ
-    24. בשבט יכה ומטוטא יִשָּׁא-
-    עליך בדרך מצרים
     24.
-    26. במוצא ערב
     26.
-    27. ותהם על
     27.
-    28. במצרין
     28.
-    29. מלון
     29.
-    30. צדקת כלך.
     30.
-    לשׁה
-    33. פארה
-    53.
-    ה' הגדולים ישׁללו
-    VERSIO HEBRAICA TEXT.
-    25. Dominus, Dominus exercituum.
+    33.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,100,900,350">
+    23. Κύριος ὁ Θεὸς στρατευῶν.
+    24. Ἀρεῖ.
+    26. Ἐν πέτρᾳ ρήβ.
+    27.
+    28. Μαγρών.
+    29. Αὐλιστήριον.
+    30.
+    Ἐν Λαΐς.
+    33. Κεραμεῖον.
+    Καλοὶ μετέωροι ταπεινωθήσονται.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,350,900,380">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,380,300,550">
+    23. Dominus, Dominus exercituum.
     In medio universæ terræ.
     24. In virga percutiet te, et baculum suum levabit super te in via Ægypti.
     26. In petra Oreb.
@@ -37,19 +55,7 @@
     33. Ramum.
     Et sublimes humiliabuntur.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,90,660,840">
-    TO EBPAIKON
-    Ἑλληνικοὶ γράμμασι.
-    23.
-    24.
-    26.
-    27.
-    28.
-    29.
-    30.
-    50.
-    53.
-    VULGATA LATINA.
+  <bloco tipo="texto_principal" script="latino" bbox="350,380,600,550">
     23. Dominus Deus exercituum.
     In medio universæ terræ.
     24. In virga percutiet te, et baculum suum levabit super te in via Ægypti.
@@ -57,23 +63,12 @@
     27. Et computrescet jugum.
     28. Magron.
     29. Sedes.
-    30. Hinni voce tua.
+    30. Illini voce tua.
     Laisa.
     33. Lagunculam.
     Et sublimes humiliabuntur.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="670,90,980,840">
-    ΑΚΥΛΑΣ.
-    23. Κύριος ὁ θεὸς στρατειῶν.
-    24. Ἀρεἰ.
-    26. Ἐν πέτρα Ῥοβὴ.
-    27.
-    28. Μαργών.
-    29. Διληστηριον.
-    30.
-    33. Κεραμεῖον.
-    Καὶ οἱ μετεωροὶ ταπεινωθησονται.
-    AQUILA.
+  <bloco tipo="texto_principal" script="latino" bbox="650,380,900,550">
     23. Dominus Deus exercituum.
     24. Elevabit.
     26. In petra Oreb.
@@ -83,36 +78,75 @@
     30.
     In Lais.
     33. Figlinam.
-    Et sublimeb humiliabuntur.
+    Et sublimes humiliabuntur.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="20,840,980,1380">
+  <bloco tipo="nota" script="misto" bbox="250,550,750,580">
     Notæ et variæ lectiones ad cap. X Hesaiæ.
-    V. 2. Ἄλλος, διασπέροντες τὸ δίκαιον χρῆμα etc.
-    Ex ms. quodam Basilii in Isaiam.
-    Ibid. Curterius ad vocem ἀπνάζοντες ex ms. Jes. notat ad marg. cum asterisco, ol Γ', καὶ. Ibid. pro χρῆμα πεπηνόν, in textu legitur χρήματα πεντήκον.
-    Ad marg. vero, ol Γ', χρίσιν.
-    V. 4. Ἀ., Σ., ἀγιαλωλῶν. Theodoretus, qui sic habet: ἀπαγωγὴν ἐκλάσετ ἢν αἰχμαλωσιὰν· οὕπω γὰρ ὁ Σύμμαχος ὑφῆγετο, καὶ οἱ λοιποὶ ὀλολῶν.
-    Curterius ex ms. Jes. notat ibidem, Ο, τοῦ μὴ χαφαι etc., ut supra.
-    Ibid. 8. cum asterisco, καὶ ὑποκάτω etc. Curterius. [Prorsus nihil de hoc in cod. Jesuit., si Lamberto 'Bos lides adhibenda. Eamdem lectionem habent in textu Alex., Ald. et Complut. hoc modo: καὶ ὑπ. (Alex. τήν) ἀν. res., et apud Proc. margini
-    adscripta est sub asterisco. DRACH.]
-    Ibid. Curterius in textu, θυμός: ad marginem verò, ol Ο', ὁ ὄργη.
-    V. 6. Ἀ., Θ., οὗ. Curterius, præmisso asterisco.
-    Illud, ποιῆσαι, non puto esse Aquilæ.
-    V. 7. In cod. Jes. sic legitur, 'Α., ἔθην οὗ ὀλίγως.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="100,580,480,820">
+    V. 2. Ἄλλος, διαστρέφοντες τὸ δίκαιον κρίμα etc. Ex ms. quodam Basilii in Isaiam.
+    Ibid. Curterius ad vocem ἁρπάζοντες ex ms. Jes. notat ad marg. cum asterisco, οἱ Γ', καί. Ibid. pro κρίμα πενήτων, in textu legitur χρήματα πενήτων. Ad marg. vero, οἱ Γ', κρίσιν.
+    V. 4. Ἀ., Σ., αἰχμαλωσίαν. Theodoretus, qui sic habet : ἀπαγωγὴν ἐκάλεσε τὴν αἰχμαλωσίαν· οὕτω γὰρ ὁ Σύμμαχος ἡρμήνευσε , καὶ οἱ λοιποὶ ὁμοίως. Curterius ex ms. Jes. notat ibidem, Ο', τοῦ μὴ κάμψαι etc., ut supra.
+    Ibid. Θ. cum asterisco, καὶ ὑποκάτω etc. Curterius. [Prorsus nihil de hoc in cod. Jesuit., si Lamberto Bos fides adhibenda. Eamdem lectionem habent in textu Alex., Ald. et Complut. hoc modo : καὶ ὑπ. (Alex. τῶν) ἀν. πεσ., et apud Proc. margini adscripta est sub asterisco. DRACH.]
+    Ibid. Curterius in textu , θυμός : ad marginem vero, οἱ Ο', ἡ ὀργή.
+    V. 6. Ἀ., Θ., τοῦ. Curterius, præmisso asterisco. Illud, ποιῆσαι, non puto esse Aquilæ.
+    V. 7. In cod. Jes. sic legitur, Ἀ., θνη οὐκ ὀλίγως.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="500,580,900,820">
+    Θ., Σ. ὁμοίως τοῖς Ο'. Curterius vero male, Ἀ., Σ., Θ. ὅμως τε Ο', ἔθνη οὐκ ὀλίγως.
+    V. 10. Θ., καθάπερ εὗρεν etc. Curterius. In ms. Jes., in textu τῶν Ο' habetur χώρας, ad marg. vero, ἀρχάς.
+    V. 13. Σ., ἐν τῇ δυνάμει etc. Euseb. in Hesaiam.
+    V. 14. Curterius ex ms. Jes., Π., μου, cum asterisco ante μου.
+    Ibid. Θ., καὶ ἀνοίγων etc., præmisso asterisco. Idem.
+    V. 17. Σ., καὶ ὁ γιος etc. Procopius, et Euseb. in Hesaiam.
+    Ibid. Σ., καὶ καταφάγετι etc. Idem Procopius.
+    V. 18. Σ., καὶ ἡ δόξα τοῦ δρυμοῦ etc. Idem.
+    V. 19. Σ., τὰ δὲ ἐπίλοιπα etc. Idem. Curter. vero ex ms. Jes. notat, Σ., παιδίον. Θ., παιδάριον. Ἀ., πας.
+    V. 22. Curterius, Θ., Ο', λαός σου.
+    V. 23. Cod. Jes., Ἀ., στρατευῶν. Θ., Σ. ὁμοίως τοῖς Ο', Κύριος τῶν δυνάμεων. Curterius male, Θ., Σ. ὅμως τε οἱ Ο'.
+    Ibid. Σ., Θ., ἐν μέσῳ πάσης τῆς γῆς. Sic unus codex.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,820,650,840">
     CAPUT XI HESAIÆ.
-    TO EBPAIKON.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="100,840,900,870">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικος γράμμασι. ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,870,300,900">
+    וְיָצָא חֹטֶר 1
+    מִגֶּזַע
+    יִשָׁי
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="350,870,550,900">
     1.
-    חטר 1
-    ברם
-    וזכר
-    VERSIO HEBRAICA TEXT.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,870,900,900">
+    1. Ῥαβδίον.
+    Ἀπὸ κορμοῦ.
+    (Ἀκρέμονα.)
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,900,900,930">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,930,300,980">
     1. Virga.
     De stirpe.
     Et surculus.
-    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,930,550,980">
     1. Virga.
     De radice.
     Et flos.
   </bloco>
-  <notas>Scripts presentes: latino, hebraico, grego. Margens contêm abreviaturas e sinais críticos; alguns hebraico e grego fragmentários foram transcritos conforme visível. Onde a leitura era incerta foram mantidas quebras de linha e pontuações originais; nenhuma normalização aplicada.</notas>
+  <bloco tipo="texto_principal" script="latino" bbox="650,930,900,980">
+    1. Virgula.
+    De trunco.
+    (Virgultum.)
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,980,900,1000">
+    Digitized by Google
+  </bloco>
+  <notas>
+    A página apresenta uma estrutura poliglota complexa (Hexapla), com colunas de texto em Hebraico, Grego (transliteração e versão de Áquila) e Latim (Vulgata e traduções). As notas críticas no centro misturam Latim e Grego. A transcrição do Hebraico segue a ordem visual da direita para a esquerda dentro do bloco, mas o bloco em si está posicionado à esquerda da página.
+  </notas>
 </pagina>

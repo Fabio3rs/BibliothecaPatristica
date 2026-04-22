@@ -1,33 +1,33 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="120,10,880,90">
-    HEXAPLORUM QUÆ SUPERSUNT.
-    CAPUT XV JOB.
+  <bloco tipo="cabecalho" script="misto" bbox="50,40,950,100">
+    579 HEXAPLORUM QUÆ SUPERSUNT. CAPUT XV JOB. 580
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="20,100,320,780">
-    TO EBRAIKON.
-    2 דּוּמָה־רוּחַ
-    4 אַף אִישׁ חָפֵץ יֹאכַל
-    וְהָיָה שִׂיחַ לְפָנָיו
-    5 וְתָמַד לְשׂוֹן עִירוֹתָיו
-    7 'Ο 'Εβραῖος, συνε-
+  <bloco tipo="texto_principal" script="misto" bbox="150,105,850,140">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ελληνικοις γραμμασι. ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,145,350,500">
+    דעת-רוח 2
+    אף אתה תפיר יראה 4
+    והגרע שחוק לפני-אל
+    ותבחר לשון ערומים 5
+    הלולת 7 'O Εβραιος, συνε-
     λήφθης.
-    8 הַבֶּטֶן אֵלּוּ הָסְתֻרִים
-    10 גַּם־שָׁב גַּם־יָשׁוּב בָּנִים
-    מִבֵּית יָמִים
-    12 מָה־יִקַּח לְךָ
-    וּמָה־יִרְאֶה עֵינֶיךָ
-    14 מָה־אִישׁ
-    וַיֹּאמֶר 'Ο 'Εβραῖος,
-    καὶ πῶς δικαιώθησεται γέννημα
-    γυναικός;
-    15 הֶן בַּקָּשׁ לֹא יָאֲמִינוּ
-    לָ־אֵל בְּעֵינָם
-    16 אַחַר־כֵּן
-    18 לֹא תָּדוּן אֲבוֹתָם
-    20 יִתְעַנּוּ
+    הבגד אלוה תשמע 8
+    וב-ישב גם-וישיש בני בכור 10
+    מאבין ימים
+    מה-יקח לבך 12
+    ומה-ירמו עיניך
+    מה-אנוש 14
+    כי יזכה ילוד אשה 'O Εβραιος,
+    καὶ πῶς δικαιωθήσεται γέννημα
+    γυναικός;
+    הן בקדשיו לא יאמין ושמים 15
+    לא-זכו בעיניו
+    אף-כי 16
+    לא חסד מאובתם 18
+    מתחלל 20
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,100,760,780">
-    TO EBPAIKON
+  <bloco tipo="texto_principal" script="grego" bbox="380,145,600,500">
     2.
     4.
     5.
@@ -40,10 +40,29 @@
     16.
     18.
     20.
-    VERSIO HEBRAICI TEXT.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,145,950,500">
+    2.
+    4.
+    5.
+    7.
+    8. Ἀπόρρητα.
+    10.
+    12.
+    14. Καὶ ὅτι δικαιωθήσεται;
+    15.
+    16.
+    18.
+    20. Ἐν δύνῃ.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,505,850,535">
+    VERSIO HeBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,540,350,900">
     2. Scientiam venti.
     4. Etiam tu dissipabis timorem.
-    Et imminues loquelam ad facies Dei.
+    Et imminues loquelam ad facies
+    Dei.
     5. Et eliges linguam versuto-
     rum.
     7. Es formatus. Hebræus, con-
@@ -52,36 +71,21 @@
     10. Etiam canus, etiam decre-
     pitus inter nos, provectus præ
     patre tuo diebus.
-    12. Quid capiet te cor tuum?
-    Et quid convinent oculi tui?
-    14. Quid homo?
+    12. Quid capiet te cor tuum ?
+    Et quid connivent oculi tui ?
+    14. Quid homo ?
     Et quod justificet se natus mu-
     lieris? Hebræus, et quomodo justi-
     ficabitur proles mulieris?
     15. Ecce in sanctis suis non
-    credit, et cœli non fuerunt mundi
+    credet, et cæli non fuerunt mundi
     in oculis ejus.
     16. Etiam quia.
-    18. Et non cœlarunt a patribus
+    18. Et non celarunt a patribus
     suis.
     20. Excrucians se.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="760,100,980,780">
-    ΑΚΥΛΑΣ.
-    2.
-    4.
-    5.
-    7.
-    8. Ἀπόρρητα.
-    10.
-    12.
-    14. 
-    Και ὅτι δικαιωθήσεται;
-    15.
-    16.
-    18.
-    20. Ἐν ὀδύνῃ.
-    VULGATA LATINA.
+  <bloco tipo="texto_principal" script="latino" bbox="380,540,650,900">
     2. Quasi in ventum loquens.
     4. Quantum in te est, evacuasti
     timorem.
@@ -90,24 +94,25 @@
     mantium.
     7. Formatus.
     8. Numquid consilium Dei au-
-    dudisti?
+    disti ?
     10. Et senes et antiqui sunt in
     nobis, multo vetustiores quam
     patres tui.
-    12. Quid te elevat cor tuum?
-    Et quasi magna cogitas, alto-
+    12. Quid te elevat cor tuum ?
+    Et quasi magna cogitans, atto-
     nitos habes oculos.
-    14. Quid est homo?
+    14. Quid est homo ?
     Et ut justus appareat natus de
-    muliere?
+    muliere ?
     15. Ecce inter sanctos ejus
-    nemo immutabillis, et cœli non
+    nemo immutabilis, et cæli non
     sunt mundi in conspectu ejus.
     16. Quanto magis.
     18. Et non abscondunt patres
     suos.
     20. Superbit.
-    AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="680,540,950,900">
     2.
     4.
     5.
@@ -115,14 +120,18 @@
     8. Secreta.
     10.
     12.
-    14. Et quod justificabitur?
+    14. Et quod justificabitur ?
     15.
     16.
     18.
     20. In dolore.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="600,820,980,980">
+  <bloco tipo="rodape" script="latino" bbox="600,950,900,990">
     Digitized by Google
   </bloco>
-  <notas>Transcrição feita literalmente de linhas impressas; combinações de hebraico e grego estão presentes. Algumas linhas numeradas no centro da página repetem-se como rubricas de versículos; mantive a ordem visual: coluna esquerda (hebraico), coluna central (latim/grego cabeçalhos) e coluna direita (Aquila/ grego). Usei [ilegivel] apenas onde não foi necessário; pequenas lacunas ou caracteres tipográficos preservados sem normalização.</notas>
+  <notas>
+    Página de edição poliglota (Hexapla) contendo Hebraico, Grego (transliteração e versão de Áquila) e Latim (Versão do Texto Hebraico, Vulgata e Versão de Áquila).
+    Transcrição fiel dos caracteres visíveis, incluindo inserções de texto grego dentro da coluna hebraica (v. 7, 14).
+    Coluna do meio superior contém apenas numeração de versículos.
+  </notas>
 </pagina>

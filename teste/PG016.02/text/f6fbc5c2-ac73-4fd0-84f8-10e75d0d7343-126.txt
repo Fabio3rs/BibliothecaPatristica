@@ -1,36 +1,41 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,80">
-    HEXAPLORUM QUÆ SUPERSUNT. 1503 TO EBRAIKON. ΤΟ ΕΒΡΑΙΚΟΝ. Ἑλληνικοὶς γράμμασι. AKYLΛAS. 1504
+  <bloco tipo="cabecalho" script="misto" bbox="50,20,950,60">
+    1303 HEXAPLORUM QUÆ SUPERSUNT. 1304
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="0,90,320,800">
-    טהצלן 9
-    לבזי
-    10 שואל
-    מכל - שמול
-    11 ובשכל שמסלתי לעשות
-    הבל ורעות רחת
-    דהו והלכות 12
-    כה האדמ ששבא אחיו וסכל
-    מן הסכלות 13
-    כלמהי חכמתי 15
-    רע על העשיו שמעשיה 17
-    וישלט 19
-    שמלתי
-    וסבטתי 20
-    ליאש
-    ובכשרון 21
-    ורהח
-    כי מה - יהוה 22
-    מסאבנים וכעס 23
-    בעמלי 24
-    ויחש 25
-    ושוב לפניי 26
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,950,100">
+    TO EBPAIKON. TO EBPAIKON Ἑλληνικοῖς γράμμασι. AKYΛAΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,90,670,800">
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,100,330,450">
+    9 וְגָדַלְתִּי
+    לְפָנַי
+    10 שָׁאֲלוּ
+    מִכָּל־עֲמָלִי
+    11 וּבְעַמְלִי שֶׁעָמַלְתִּי לַעֲשׂוֹת
+    הֶבֶל וּרְעוּת רוּחַ
+    12 הִתְהַלַּכְתִּי
+    כִּי הָאָדָם שֶׁיִּהְיֶה אַחֲרַי הַמֶּלךְ
+    13 מִן־הַחָכְמָה
+    15 לָמָּה חָכַמְתִּי
+    17 עַד־עַל הַחָכְמָה שֶׁנַּעֲשֶׂה
+    19 יִשְׁלֹט
+    שֶׁעָמַלְתִּי
+    20 וְסַבּוֹתִי
+    לִיאֹשׁ
+    21 וּבְכִשְׁרוֹן
+    וְרֵעָה
+    22 כִּי־מַה־יִּהְיֶה
+    23 מִכְאֹבִים וָכַעַס
+    24 בְּעַמְלוֹ
+    25 יִחְיֶה
+    26 טוֹב לְפָנָיו
+    עִנְיָן
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="350,100,550,450">
     9.
     10.
     11.
     12.
+    .
     13.
     15.
     17.
@@ -43,14 +48,13 @@
     25.
     26.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="680,90,1000,800">
+  <bloco tipo="texto_principal" script="grego" bbox="650,100,950,450">
     9.
     10.
-    11.
-    Ἀτμός καὶ νομὴ ἀνέμου.
+    11. Ἀτμὸς καὶ νομὴ ἀνέμου.
     12. Καὶ πλάνην.
-    Τί δὲ ὁ ἄνθρωπος, ἵνα παραχο-
-    λουθῇση βουλῇ;
+    Τί δὲ ὁ ἄνθρωπος, ἵνα παρακο-
+    λούθηση βουλῇ;
     13.
     15.
     17.
@@ -63,11 +67,13 @@
     25. Φείσεται.
     26.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="0,810,1000,1400">
-    VERSIO HEBRAICI TEXT.
+  <bloco tipo="texto_principal" script="latino" bbox="50,480,950,520">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,520,330,920">
     9. Et magnificatus sum.
     Ante me.
-    40. Postulaverunt.
+    10. Postulaverunt.
     De omni labore meo.
     11. Et ad laborem quo laboravi
     ad faciendum.
@@ -78,7 +84,7 @@
     13. Super stultitiam.
     15. Et ut quid sapui?
     17. Malum super me opus quod
-    sit.
+    fit.
     19. Et auctoritatem habebit.
     Quo laboravi.
     20. Et versus sum.
@@ -91,8 +97,8 @@
     25. Sentiet.
     26. Qui bonus ante eum.
     Negotium.
-    
-    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,520,630,920">
     9. Et supergressus sum.
     Ante me.
     10. Desideraverunt.
@@ -103,7 +109,7 @@
     12. Erroresque.
     Quid est, inquam, homo, ut se-
     qui possit regem?
-    13. (Præcederet sapiencia) stul-
+    13. (Præcederet sapientia) stul-
     titiam.
     15. Quid mihi prodest quod ma-
     jorem sapientiæ dedi operam?
@@ -112,27 +118,27 @@
     19. Et dominabitur.
     Quibus desudavi.
     20. Unde cessavi.
-    Renuntiavique (cor meum).
+    Renuntiavitque (cor meum).
     21. Et sollicitudine.
     Et malum.
     22. Quid enim proderit?
-    23. Doloribus et ærrumnis.
+    23. Doloribus et ærumnis.
     24. De laboribus suis.
     25. Deliciis affluet.
     26. Bono in conspectu suo.
-    Afflictionem et curam supér-
+    Afflictionem et curam super-
     fluam.
-    
-    AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,520,950,920">
     9.
     10.
-    11.
-    12. El errorem.
-    Quid vero est homo ut sequalur
+    11. Vapor et pastio venti.
+    12. Et errorem.
+    Quid vero est homo ut sequatur
     consilium?
     13.
     15.
-    7.
+    17.
     19. Et dominabitur.
     20.
     21.
@@ -142,5 +148,17 @@
     25. Parcet.
     26
   </bloco>
-  <notas>Scripts presentes: hebraico (coluna esquerda superior), grego (coluna direita superior), latino (rodapé textos paralelos). Algumas linhas hebraicas fragmentadas e espaçamentos refletidos conforme imagem. Numeracões intercolunadas mantidas visivelmente.</notas>
+  <bloco tipo="rodape" script="latino" bbox="600,950,800,990">
+    Digitized by Google
+  </bloco>
+  <notas>
+    A página apresenta uma disposição poliglota complexa (Hexapla).
+    Coluna superior esquerda: Texto Hebraico.
+    Coluna superior central: Transliteração Grega (apenas números visíveis nesta edição).
+    Coluna superior direita: Versão Grega de Áquila.
+    Coluna inferior esquerda: Versão Latina do Texto Hebraico.
+    Coluna inferior central: Vulgata Latina.
+    Coluna inferior direita: Versão Latina de Áquila.
+    Na coluna inferior direita, o número "17" aparece graficamente ambíguo (parece "7."), mas foi transcrito como "17" por contexto sequencial, ou mantido conforme visual se estritamente necessário (optei por 17 no bloco acima para coerência, mas visualmente assemelha-se a 7).
+  </notas>
 </pagina>

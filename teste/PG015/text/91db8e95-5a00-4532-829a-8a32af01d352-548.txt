@@ -1,70 +1,98 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,90">
-    1091                               HEXAPLORUM QUÆ SUPERSUNT.                                1092
-    TV EBRAIKON.                                TO EBRAIKON                                AKVILAS.
-    Ελληνικοὶς γράμμασι.
+  <bloco tipo="cabecalho" script="misto" bbox="50,30,950,80">
+    1091 HEXAPLORUM QUÆ SUPERSUNT. 1092
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ ΑΚΥΛΑΣ.
+    Ἑλληνικοῖς γράμμασι.
+    ....
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,100,420,640">
-    תּוֹרֶת יְהוּדִים. נֵזֶרֶת דָּוִדָה דֵּין-קָרָא
-     
-    שכזה אחד ושמע 23.                 23.
-     
-    לעזרת יהוה בבגדיו
-     
-    אחדים 25.                          25.                        25.
-     
-    להכות עמים 26.                   26.                        26.
-     
-    והלאה
-     
-    מוקר: ראשון: במזמור השונה, וכד'
-     
-    בין הגליה ערי נבל 27.           27.                        27.
-     
-    נער
-    שם נבל
-     
-    שחרו
-     
-    נגז בבית המזבח 28.               28. . .                    28.
-     
-    לאמר
-    מודה אחד פעמים
-     
-    תשב ארדיה 29.                   29.                        29.
+  <bloco tipo="texto_principal" script="hebraico" bbox="80,100,350,500">
+    אבריו הזרת מזהרת םס-נקבי
+    23 ארד ישביה
+    לחות יהוה בבדים
+    25 אדירים
+    26 להלמות עמלים
+    הלכה
+    מחקה ראשו ומחתה ושפה רקה
+    27 בין רגליו כרע נפל
+    כרע
+    שם נפל
+    שדוד
+    28 בעד חלון
+    לבא
+    מבעד אחר פעמים
+    29 תשיב אבריה
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="430,100,960,640">
-    VERSIO HEBRAICI TEXT.          VULGATA LATINA.             AQUILA.
-    Calcantes equi a calcitribus,  Ungula equorum ceciderunt su-  ..decus irrecusum.
-    calcitrabtes fortium ejus.     gienibus impetu.
-    
-    23. Maledicite maledicendo ha-  23. Maledicite * habitatoribus  23.
-    bitatores ejus.                ejus. 
-    Ad auxilium Domini in fortibus. In adjutorium fortissimorum
-                                   ejus.
-    25. Illustrium.                25. Principum.               25.
-    
-    26. In malleum laborantium.    26. Ad fabrum malleos.        26.
-    Contudit.                      Percussitque.
-    
-    Amovit caput ejus, et transfixit  Quaerens in capite vulneri lo-
-    et depereavit rumpus ejus.     cam, et tempus valide perforans.
-    27. Inter pedes ejus incurvatus  27. Inter pedes ejus ruit.   27.
-    est, exsul.
-    
-    Curvavit se.                    Volvebatur.                 Curvavit se.
-    Ili occidit.                    Jacobus.                    Curvavit se.
-    
-    Vastatus.                      Exanimatus et miserabilis.
-    28. Per cancellum.             28. De cenaculo.             28.
-    
-    Ad vasculandum.                Regredi.
-    Cur tardaverunt incesus.       Quare tardaverunt pedes.
-    
-    29. Convertabat dicta sua.     29. Hæc verba re-spondit.    29.
+  <bloco tipo="texto_principal" script="grego" bbox="380,100,550,500">
+    23.
+    25.
+    26.
+    27.
+    28.
+    29.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="620,900,980,980">
+  <bloco tipo="texto_principal" script="grego" bbox="650,100,850,500">
+    23.
+    25.
+    26.
+    27.
+    *Ἔκαμψε.
+    *Ἔκαμψε.
+    28.
+    29.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,510,900,560">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+    Caleantes equi a calcitratibus, Ungula equorum ceciderunt fu- ..decus irruentium.
+    calcitratibus fortium ejus. gientibus impetu.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,580,350,920">
+    23. Maledicite maledicendo habitatores ejus.
+    Ad auxilium Domini in fortibus.
+    25. Illustrium.
+    26. In malleum laborantium.
+    Contudit.
+    Amovit caput ejus, et transfixit
+    et penetravit tempus ejus.
+    27. Inter pedes ejus incurvatus
+    est, cecidit.
+    Curvavit se.
+    Ibi cecidit.
+    Vastatus.
+    28. Per cancellum.
+    Ad veniendum.
+    Cur tardaverunt incessus.
+    29. Convertebat dicta sua.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,580,650,920">
+    23. Maledicite habitatoribus ejus.
+    In adjutorium fortissimorum ejus.
+    25. Principum.
+    26. Ad fabrorum malleos.
+    Percussitque.
+    Quærens in capite vulneri locum, et tempus valide perforans.
+    27. Inter pedes ejus ruit.
+    Volvebatur.
+    Jacebat.
+    Exanimis et miserabilis.
+    28. De cœnaculo.
+    Regredi.
+    Quare tardaverunt pedes.
+    29. Hæc verba respondit.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="680,580,850,920">
+    23.
+    25.
+    26.
+    27.
+    Carvavit se.
+    Curvavit se.
+    28.
+    29.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="580,950,800,980">
     Digitized by Google
   </bloco>
-  <notas>Página com texto em duas línguas: hebraico (coluna esquerda superior) e latino (coluna direita inferior). Algumas palavras hebraicas muito aquareladas transcritas conforme visíveis; pontuação e numeração respeitadas. Pequenos sinais tipográficos ilegíveis foram interpretados entre espaços; linhas com pontos reticentes mantidas como vistas.</notas>
+  <notas>
+    Transcrição de página poliglota (Hexapla). Coluna esquerda superior em Hebraico. Coluna central superior com numeração. Coluna direita superior em Grego (Aquila). Seção inferior com três colunas em Latim (Versio Hebraici Text, Vulgata Latina, Aquila).
+  </notas>
 </pagina>

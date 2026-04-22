@@ -1,33 +1,31 @@
-<pagina estado="com_texto">
-  <bloco tipo="outro" script="latino" bbox="20,5,980,60">
-    tipo_pagina: texto
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="120,0,900,90">
+479     TABULÆ DONARIORVM MARMOREÆ.     480
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,60">
-    479     TABULAE DONARIORUM MARMORE.E.     480
+
+  <bloco tipo="nota_marginal" script="latino" bbox="0,80,170,870">
+PER MARMOREA AD PORTICVM S. PETRI PARIETI AFFIXA.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="20,120,160,880">
-    TABULA MARMOREA AD PORTICVM S. PETRI PARIETI AFFIXA.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="160,120,480,920">
-* DOMINIS SUIS AC BEATISS PETRO ET PAVLO APOSTOLORUM PRINCIPIBVS *
+
+  <bloco tipo="texto_principal" script="latino" bbox="170,120,520,860">
+* DOMINIS SVIS AC BEATISS PETRO ET PAVLO APOSTOLORVM PRINCIPIBVS *
 GLORIVS INDIGNVS SERVVS *
 [ilegivel] SVIS VESTRA VOBIS [ilegivel] NON NOSTRA LARGIMVR
-[ilegivel] REDDERI VOBIS [ilegivel] VOTO PROPRIE [ilegivel] DA[ilegivel] EMBIBUS
-SERIBUS REDONANTES [ilegivel] ET [ilegivel] DA BENEMERITIS
-[ilegivel] NOSTRI MATRIS MVNDI [ilegivel] PROVECTA ET DIGNATI DEQVE
+[ilegivel] REDDERI VOBIS [ilegivel] VOTO PROPRIE [ilegivel]
+[ilegivel] ET [ilegivel] DA BENEMERITIS [ilegivel]
+[ilegivel] PROVECTA ET DIGNATI DEQVE
 PER SINGVLOS [ilegivel] MVNIFERIMI ASSERVI PROCVRE ESTIS DIGNATI [ilegivel]
 HOC PRIVILEGIO VSVM PRO DIE [ilegivel] [ilegivel] PROVIDENTIAE
 SERVANDVM IN REPARATIONE CONSTRVCTIONE ET RESTITVTIONE
-[ilegivel] [ilegivel] QUISQUE PREBAM QVINCTIS SVCCESSORIBVS
-QVOS QVAM SENSIBVS AGOR[S] [ilegivel] DETERMINANTVR VESTRA VOBIS [ilegivel]
-[ilegivel] IN FVND. [ilegivel] IN FVND. [ilegivel] IN FVND. [ilegivel]
-[ilegivel] IN FVND. [ilegivel] IN FVND. [ilegivel] IN FVND. [ilegivel]
+[ilegivel] [ilegivel] QVISQVE PREBAM QVINCTIS SVCCESSORIBVS
+QVOS QVAM SENSIBVS [ilegivel] [ilegivel] DETERMINANTVR VESTRA VOBIS [ilegivel]
+[ilegivel] IN FVND. [ilegivel] IN FVND. [ilegivel] IN FVND. [ilegivel] IN FVND. [ilegivel] IN FVND.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,120,900,920">
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,120,980,860">
 OLIBET. IN FVND. VIVIANO VT SVP.
-OLIBET. OLIBET. IN FVND. PALMIS VT SVP.
-OLIBET. IN FVND. OLIBET. IN FVND. SAGARIS VT SVP.
-OLIBET. IN FVND. IULIANO VT SVP.
+OLIBET. IN FVND. PALMIS VT SVP. OLIBET. IN FVND. SAGARIS VT SVP.
+OLIBET. IN FVND. IVLIANO VT SVP.
 OLIBET. IN FVND. SATVRIANO VT SVP.
 OLIBET. IN FVND. FLORIANO VT SVP.
 OLIBET. IN FVND. OLIBET. IN FVND.
@@ -49,8 +47,10 @@ OLIBET. [ilegivel] INTEGRIO *
 [ilegivel] OLIBET. QVIBET. QVI EST AD TV FVND. VRSANO VT SVP.
 [ilegivel] OLIBET. VSNAM VT SP. ALQRIO *
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="360,960,640,995">
+
+  <bloco tipo="rodape" script="latino" bbox="550,900,980,1000">
 Digitized by Google
   </bloco>
-  <notas>Pagina em latim (impresso, capitulares). Identifiquei: cabeçalho com numeração 479/480 e título; etiqueta marginal vertical à esquerda ("TABULA MARMOREA AD PORTICVM S. PETRI PARIETI AFFIXA."); duas colunas principais de texto. Usei [ilegivel] por palavras isoladas que não puderam ser lidas com segurança (respeitei a regra de não inventar palavras nem normalizar abreviaturas). As bboxes são estimativas em escala 0-1000. Script: latino. Correções/observações: a página está rodada no impresso (texto disposto em duas colunas); repetições frequentes de fórmulas abreviadas ("OLIBET.", "IN FVND.", "VT SP.") preservadas tal como no original.</notas>
+
+  <notas>Transcrição da página impressa com texto vertical em duas colunas. BBOX em escala 0-1000 estimadas. Palavras não legíveis mantidas como [ilegivel].</notas>
 </pagina>

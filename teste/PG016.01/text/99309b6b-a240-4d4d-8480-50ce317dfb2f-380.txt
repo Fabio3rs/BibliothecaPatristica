@@ -1,87 +1,158 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,120">
-HEXAPLORUM QUAE SUPERSUNT. 
-TO EBPAIKON.		TO EBPAIKON			AKYΛAΣ.
-		'Eλλhnικοῖς γράμμασι.
-		6. Ἀποδέλκεται.
-		6. 6
-		23.	23.	23. Ἐν αὐτῷ.
-VERSIO HEBRAICI TEXT.	VULGATA LATINA.	AQUILA.
-6. Aspexerunt. Hieron., aspicite.	6. Accedite.	6. Aspicite.
-23. In eo. Hieron., id.	23. In eo.	23. In eo.
-  Notae et variae lectiones ad Psalmum XXXIII.
-In primum versum vide Eusebium in Psalmos, qui hæc de re fusse et erudite disseruit, et Aquilæ atque Symmachi lectiones adfert.
-  PSALMUS XXXIV.
-TO EBPAIKON.		TO EBPAIKON		AKYΛAΣ.
-		'Eλλhnικοῖς γράμμασι.
-</bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="20,120,320,760">
-(hebraico, coluna esquerda)
-לחה 1
-זרק חנית ויכו למות 3
-חנם מתני-לי שחת שחת 7
-חנם חפצי לנפש
-8 לא ידע
-12 חנות מבטח
-שלל לנפשי
-13 אני וביתו בחומת למען שמר
-- חשב
-14 כרא מאי לי התחלתי
-VERSIO HEBRAICI TEXT.
-1. Davidi. Hieron., David.
-3. Et nuda lanceam, et claude in occursum persecutantium me. Hieron., evagina gladium, et praecipuca ex adverso persequentem me.
-7. Quoniam gratis absconderunt mihi foveam retis sui. Hieron., quoniam frustra absconderunt mihi iustidias retis sui.
-Gratis foderunt animæ meæ. Hieron., sine causa foderunt animæ meæ.
-8. Non cognoscet. Hieron., quam ignorat.
-12. Pro bono. Hieron., id.
-Orbitalem animæ meæ. Hieron., sterilitaten animæ meæ.
-13. At egocum ipsi ægrotarent, vestis mea saccus. Hieron., ego autem cum infirmarer ab eis, induar cilicio.
-Revertebatur. Hieron., revertetur.
-14. Ac si socius, ac si frater meus, ambulabam. Hieron., quasi ad amicum, quasi ad fratrem meum, sic ambulabam.
-</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,120,660,760">
-(centro, Vulgata)
-1 1.
-3. 3.
-7. 7.
-8. 8.
-12. 12.
-13. 13.
-14. 14.
-
-VULGATA LATINA.
-1. Ipsi David.
-3. Effunde frameam, et conclude adversus eos qui persequuntur me
-7. Quoniam gratis absconderunt mihi interitum laquei sui.
-Supervacue exprobraverunt animam meam.
-8. Quem ignorat.
-12. Pro bonis.
-Sterilitatem animæ meæ.
-13. Ego autem cum mihi molesi essent, induebar cilicio.
-Convertertur.
-14. Quasi proximus et quasi fratrem nostrum, sic complacebam.
-</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="670,120,980,760">
-(coluna direita, grego/Aquila)
-1. Τοῦ Δαυὶδ.
-3. Καὶ γυμνώσον λόγχη̋, καὶ περιφραξεων ἐξ ἐναντίας τῶν καταδιωκόντων με.
-7. 7
-Ἀνατίνας θλεβήσεν τὴν ψυχήν μου.
-8. Οὐ γινώσκουσι.
-12. Ἀπὲ ἀναβαθμής.
-Ἀτέκνων τῆς ψυχῆς μου.
-13. Καὶ ἐγὼ ἐν ἀφροστίᾳ αὐτῶν, ἔνδυσις μου σάκχος.
-14. 14.
-AQUILA.
-4. Ipsius David.
-3. Et nuda lanceam, et circumvalla ex adverso persecutorium me.
-7. 7.
-Sine causa discerpserunt animam meam.
-8. Non cognoscenti.
-12. Pro bonitate.
-Orbitalem animæ meæ.
-13. Mihi autem in infirmitate eorum saccus erat indumentum.
-14.
-</bloco>
-  <notas>Transcrição preservou colunas: esquerda hebraico, centro latim (Vulgata), direita grego/Aquila. Algumas palavras hebraicas e gregas foram transcritas conforme visível; onde ilegível, assinalado por [ilegivel] (nenhum caso amplo encontrado). BBOX aproximadas em escala 0-1000.</notas>
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    723 HEXAPLORUM QUÆ SUPERSUNT. 724
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,350,200">
+    TO ΕΒΡΑΙΚΟΝ.
+    בחסד 6
+    ב 23
+    VERSIO HEBRAICI TEXT.
+    6. Asperuerunt. Hieron., aspi-
+    cite.
+    23. In eo. Hieron., id.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="360,60,650,200">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+    6. ]
+    23.
+    VULGATA LATINA.
+    6. Accedite.
+    23. In eo.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="660,60,950,200">
+    ΑΚΥΛΑΣ.
+    6. Αποβλέψατε.
+    23. Ἐν αὐτῷ.
+    AQUILA.
+    6. Aspicite.
+    23. In eo.
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="150,210,850,260">
+    Notæ et variæ lectiones ad Psalmum XXXIII.
+    In primum versum vide Eusebium in Psalmos,
+    qui hac de re fuse et erudite disserit, et Aquilæ at-
+    que Symmachi lectiones adfert.
+    V. 4. 'A., ὁμοθυμαδόν. Drusius.
+    V. 5. 'A., ἀπὸ πασῶν συστροφῶν etc. Sic unus
+    codex. Symmachi vero lectionem adferunt alter co-
+    dex.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="400,270,600,290">
+    PSALMUS XXXIV.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,290,350,550">
+    TO ΕΒΡΑΙΚΟΝ.
+    לדוד 1
+    הרה חנית וסגר לקראת רדפי 3
+    כי - חנם טמנו - לי שחת רשתם 7
+    חנם הפדי לנפשי
+    ודעו אל 8
+    טובה תחת טובה 12
+    שברו לנפש
+    ואני ובהלותי לבושי שק 13
+    תשוב
+    כעני לי התהלכתי 14
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="360,290,650,550">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+    1
+    3.
+    7.
+    8.
+    12.
+    13.
+    14.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="660,290,950,550">
+    ΑΚΥΛΑΣ.
+    1. Τοῦ Δαυΐδ.
+    3. Καὶ γύμνωσον λόγχην, καὶ πε-
+    φραξον ἐξ ἐναντίας τῶν καταδιω-
+    κόντων με.
+    7
+    Ἀναιτίως διέρρηξαν τὴν ψυχήν
+    μου.
+    8. Οὐ γινώσκοντι.
+    12. Ἀντὶ ἀγαθοσύνης.
+    Ἀτέκνωσιν τῇ ψυχῇ μου.
+    13. Καὶ ἐγὼ ἐν ἀῤωστίᾳ αὐ-
+    τῶν, νδυσις μου σάκκος.
+    14.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,560,350,950">
+    VERSIO HEBRAICI TEXT.
+    1. Davidi. Hieron., David.
+    3. Et nuda lanceam, et claude
+    in occursum persequentium me.
+    Hieron., evagina gladium, et præ-
+    occupa ex adverso persequentem
+    me.
+    7. Quoniam gratis absconderunt
+    mihi foveam retis sui. Hieron.,
+    quoniam frustra absconderunt mihi
+    insidias retis sui.
+    Gratis foderunt animæ meæ.
+    Hieron., sine causa foderunt ani-
+    mæ meæ.
+    8. Non cognoscet. Hieron., quam
+    ignorat.
+    12. Pro bono. Hieron., id.
+    Orbitatem animæ meæ. Hieron.,
+    sterilitatem animæ meæ.
+    13. At ego cum ipsi ægrotarent,
+    vestis mea saccus. Hieron., ego
+    autem cum infirmarer ab eis, in-
+    duebar cilicio.
+    Revertebatur. Hieron., reverte-
+    tur.
+    14. Ac si socius, ac si frater
+    meus, ambulabam. Hieron., quasi
+    ad amicum, quasi ad fratrem
+    meum, sic ambulabam.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="360,560,650,950">
+    VULGATA LATINA.
+    1. Ipsi David.
+    3. Effunde frameam, et conclu-
+    de adversus eos qui persequuntur
+    me
+    7. Quoniam gratis absconderunt
+    mihi interitum laquei sui.
+    Supervacue exprobraverunt ani-
+    mam meam.
+    8. Quem ignorat.
+    12. Pro bonis.
+    Sterilitatem animæ meæ.
+    13. Ego autem cum mihi mole-
+    sti essent, induebar cilicio.
+    Converteretur.
+    14. Quasi proximum et quasi
+    fratrem nostrum, sic complace-
+    bam.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="660,560,950,950">
+    AQUILA.
+    1. Ipsius David.
+    3. Et nuda lanceam, et circum-
+    valla ex adverso persequentium
+    me.
+    7. Sine causa discerpserunt ani-
+    mam meam.
+    8. Non cognoscenti.
+    12. Pro bonitate.
+    Orbitatem animæ meæ.
+    13. Mihi autem in infirmitate
+    eorum saccus erat indumentum.
+    14.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,960,900,990">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição de página poliglota (Hexapla) contendo Hebraico, Grego e Latino.
+    Algumas palavras em Hebraico estão parcialmente ilegíveis ou abreviadas, transcritas conforme visualização (ex: 'הפדי' no Salmo 34).
+    Layout em três colunas principais para os textos originais e três colunas para as versões latinas.
+  </notas>
 </pagina>

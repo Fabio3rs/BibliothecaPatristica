@@ -1,24 +1,59 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,90">
-    MEXAPLorUM QVÆ SVPERSVNT.
+  <bloco tipo="cabecalho" script="latino" bbox="100,30,200,60">
+    735
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,100,320,360">
-    TO ΕΒΡΑΙΚΟΝ.
-    8 מד-יקר חסד
-    ובני אדם בכל נפשם חסין
-    9 חשכם
-    11 וצדקך ישרי-לב
-    13 שם נפל כלו אין זר חז-לא-
-    וכל כן
+  <bloco tipo="cabecalho" script="latino" bbox="350,30,650,60">
+    HEXAPLORUM QUÆ SUPERSUNT.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,100,640,360">
+  <bloco tipo="cabecalho" script="latino" bbox="850,30,950,60">
+    736
+  </bloco>
+
+  [!-- Psalm 35 Section Top --]
+  <bloco tipo="texto_principal" script="grego" bbox="150,60,300,90">
     TO EBPAIKON.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="400,60,600,100">
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,60,900,90">
+    ΑΚΥΛΑΣ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,90,350,200">
+    מַה-יָּקָר חַסְדְּךָ אֱלֹהִים 8
+    וּבְנֵי אָדָם בְּצֵל כְּנָפֶיךָ יֶחֱסָיוּן
+    יִרְוְיֻן מדֶּשֶׁן בֵּיתֶךָ 9
+    וְצִדְקָתְךָ לְיִשְׁרֵי-לֵב 11
+    כִּי שָׁם נָפְלוּ פֹעֲלֵי אָוֶן 13
+    דְּחֻי וְלֹא יָכְלוּ קוּם
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,90,500,200">
     8.
     9.
     11.
     13.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,90,900,200">
+    8.
+    9. Ποτιεις αὐτούς.
+    11.
+    13.
+  </bloco>
+
+  [!-- Psalm 35 Latin Section --]
+  <bloco tipo="texto_principal" script="latino" bbox="100,210,350,240">
     VERSIO HEBRAICI TEXT.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,210,600,240">
+    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,210,900,240">
+    AQUILA.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,240,350,400">
     8. Quam pretiosa est misericor-
     dia tua. Hieron., id.
     Et filii hominum in umbra ala-
@@ -30,21 +65,13 @@
     corde. Hieron., et justitiam tuam
     rectis corde.
     13. Ibi ceciderunt operarii ini-
-    quitatis : expuls i sunt et non po-
+    quitatis : expulsi sunt et non po-
     tuerunt surgere. Hieron., ibi ce-
     ciderunt operantes iniquitatem :
-    expuls i sunt, et non potuerunt
+    expulsi sunt, et non potuerunt
     surgere.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,100,970,360">
-    TO EBPAIKON
-    'Ελληνικοις γραμμασι.
-    8.
-    9.
-    11.
-    13.
-    
-    VULGATA LATINA.
+  <bloco tipo="texto_principal" script="latino" bbox="400,240,650,400">
     8. Quemadmodum multiplicasti
     misericordiam tuam.
     Filii autem hominum in tegmine
@@ -53,88 +80,119 @@
     11. Et justitiam tuam his qui
     recto sunt corde.
     13. Ibi ceciderunt qui operan-
-    tur iniquitatem : expuls i sunt, uec
+    tur iniquitatem : expulsi sunt, nec
     potuerunt stare.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="30,360,970,490">
+  <bloco tipo="texto_principal" script="latino" bbox="650,240,900,400">
+    8.
+    9. Potabis eos.
+    11.
+    13.
+  </bloco>
+
+  [!-- Notes Section --]
+  <bloco tipo="texto_principal" script="latino" bbox="250,410,750,440">
     Notæ et variæ lectiones ad Psalmum XXXV.
-    V. 1. Eusebii nota : Ούτε ψαλμούς, οὔτε ᾠδή, οὔτε
-    τι τοιούτον ἐτιγράφητα. I. e. Neque psalmus, ne-
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="100,440,500,550">
+    V. 1. Eusebii nota : Οὔτε ψαλμός, οὔτε ᾠδή, οὔτε
+    τι τοιοῦτον ἐπιγέγραπται. I. e. Neque psalmus, ne-
     que canticum, neque quidpiam simile inscribitur.
     V. 2 et 3. Lectionem Hebraici adfert Eusebius.
     Lectionem Symmachi Eusebius ac Drusius : in
-    cujus fine Eusebius et, Colbertinus unus legunt,
-    ἀς τὸ μισηθῆν. Drusius vero, τοῦ μισηθῆν.
-    V. 4. Σ., ἀπελήξετε etc. Sic Colbertinus συγγρα-
+    cujus fine Eusebius et. Colbertinus unus legunt,
+    εἰς τὸ μισηθῆναι. Drusius vero, τοῦ μισηθῆναι.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="550,440,900,550">
+    V. 4. Σ., ἀπείχετο etc. Sic Colbertinus στιχηρῶς
     scriptus.
-    V. 5. Has omnes lectiones adferunt quibusdam mss.
-    et Drusius. Regius autem unus pro ἀποδοκιμασίαι
-    habet ἀποδοκιμασίαι.
-    V. 6. Σ., τὸ βεβαιῶς σου μέχρι τῶν αἰδέφων. Sic
+    V. 5. Has omnes lectiones adferunt quidam mss.
+    et Drusius. Regius autem unus pro ἀποδοκιμάσαι
+    habet ἀπεδοκιμάσθαι.
+    V. 6. Σ., ἡ βεβαιότης σου μέχρι τῶν αθέρων. Sic
     Regius unus, Colbertinus unus et Eusebius. Dru-
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="50,500,950,560">
+
+  [!-- Psalm 36 Section Top --]
+  <bloco tipo="texto_principal" script="latino" bbox="400,560,600,580">
     PSALMUS XXXVI.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,560,320,860">
-    TO ΕΒΡΑΙΚΟΝ.
-    תח 1
-    אל-תחנן במעשים
-    2 כי מי חטיאו
-    3 רעתו אמונה
-    5 כל
-    7 חי לילה ולילה התחליל לו
+
+  <bloco tipo="texto_principal" script="grego" bbox="150,580,300,610">
+    TO EBPAIKON.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,560,640,860">
+  <bloco tipo="texto_principal" script="grego" bbox="400,580,600,620">
     TO EBPAIKON
-    'Ελληνικοὶ γράμμασι.
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,580,900,610">
+    ΑΚΥΛΑΣ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,610,350,720">
+    לְדָוִד 1
+    אֵל-תִּתְחַר בְּמְרֵעִים
+    כִּי כֶחָצִיר 2
+    וּרְעֵה אמוּנָה 3
+    גַּל 5
+    עַל יְהוָה דַּרְכֶּךָ
+    דֹּם לַיהוָה וְהִתְחוֹלֵל לוֹ 7
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,610,500,720">
     1.
     2.
     3.
     5.
-    .
-    
-    VERSIO HEBRAICI TEXT.
-    1. Davidi. Hieron., David.
-    Ne succenseas in malignis. Hie-
-    ron., noli contendere cum mali-
-    gnis.
-    2. Quoniam sicut herba. Hie-
-    ron., id.
-    3. Et pasce veritatem. Hieron.,
-    et pascere fide.
-    5. Devolve. Hieron., volve.
-    7 Tace Domino, et exspecta
-    eum. Hieron., id.
+    7.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,560,970,860">
-    AKYΛΑΣ.
+  <bloco tipo="texto_principal" script="grego" bbox="650,610,900,720">
     1.
-    Μὴ διαμάχου ἐν πονηροκερδέως
-    1.
+    Μὴ διαμάχου ἐν πονηρευομένοις
     2.
     3. Καὶ νέμου πίστιν.
-    5. Κύριε.
-    7. Σύγχωρ τῷ Κυρίῳ καὶ ἀπο-
-    χαράσκει αὐτόν.
-    
+    5. Κύλιε.
+    7. Σίγησον τῷ Κυρίῳ καὶ ἀπο-
+    καραδόκει αὐτόν.
+  </bloco>
+
+  [!-- Psalm 36 Latin Section --]
+  <bloco tipo="texto_principal" script="latino" bbox="100,730,350,760">
+    VERSIO HEBRAICI TEXT.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,730,600,760">
     VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,730,900,760">
+    AQUILA.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,760,350,920">
+    1. Davidi. Hieron., David.
+    Ne succenseas in malignis. Hieron., noli contendere cum malignis.
+    2. Quoniam sicut herba. Hiero., id.
+    3. Et pasce veritatem. Hieron., et pascere fide.
+    5. Devolve. Hieron., volve.
+    7 Tace Domino, et exspecta eum. Hieron., id.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,760,650,920">
     1. Psalmus ipsi David.
-    Noli æmulári in malignantibus.
+    Noli æmulari in malignantibus.
     2. Quoniam tamquam fœnum.
     3. Et pasceris in divitiis ejus.
     5. Revela.
-    7. Subditus esto Domino, et ora
-    eum.
-    
-    AQUILA.
+    7. Subditus esto Domino, et ora eum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,760,900,920">
     1.
-    Ne dimica in malignatibus.
+    Ne dimica in malignantibus.
     2.
     3. Et pasce fidem.
     5. Volve.
-    7. Tace Domino, et excpscta
-    eum.
+    7. Tace Domino, et exspecta eum.
   </bloco>
-  <notas>Scripts presentes: latino, hebraico, grego. Mantive interlineados e abreviações comezinhos no impresso; algumas palavras hebraicas com caracteres parcialmente degradados transcritas o mais literal possível; usei pontos para lacunas visuais. Não foram feitas normalizações ortográficas.</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="500,950,800,990">
+    Digitized by Google
+  </bloco>
 </pagina>

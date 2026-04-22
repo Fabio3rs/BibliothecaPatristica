@@ -1,74 +1,148 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,120">
-    HEXAPLORUM QUÆ SUPERSUNT.
+  <bloco tipo="cabecalho" script="latino" bbox="50,40,950,90">
+    531 HEXAPLORUM QUÆ SUPERSUNT. 532
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="30,120,970,760">
-    TO EBRAIKON.                      TO EBRAIKON                      AKYLAS.
-    Έλληνικοῖς γράμμασι.
-    [עברים] 29                          29. Πάγος.
-    [ט]ו[ם] 30  'Ο 'Ερ                30.
-    προσώπων δε άβύσσου πέπνυται.      30.
-    
-    [מספרים ומילים בעברית עמוד שמאל עליון עד אמצע] 31.    31. 'Η συνέχειες μάρια Πλειάδος;
-    [..] 32                        32.
-    
-    [קטע עברי מרכזי]                33. Καθοδηγήσεις;
-                                     33. 'Αχρίβείας.
-                                     34. Καί όρμη ύδάτων.
-                                     35.
-                                     Ἰδού ἡμεῖς.
-                                     36.
-                                     37.
-                                     39.
-                                     40.
-    
-    VERSIO HEBRAICI TEXT.            VULGATA LATINA.                AQUILA.
-    29. Gelu.                        29. Glacies.                    29. Gelu.
-    30. Et facies abyssi capientur.  30. Et superficies abyssi con-    30.
-    Hebraeus int., facies autem abyssi fringitur.
-    condensa tur.
-    
-    31. Numquid ligabis delicias     31. Numquid conjungere valebis    31. An conjunges partes Plei-
-    Clima?                           micantes stellas Pleiadis?       adis?
-    32. Numquid exire facies signa   32. Numquid producís Lucife-      32.
-    coelestia in tempore suo?        rum in tempore suo?
-    Duces ea?                        Consurgere facis?
-    33. Statuta.                      33. Ordinem.                     33. Deduce s?
-    34. Et redundantia aquarum,      34. Et impetus aquarum.           34. Et impetus aquarum.
-    35. Fulgura.                     35. Fulgura.                     35.
-    Ecce nos.                        Adsumus.                        Ecce nos.
-    36. Aut quis dedit contempla-     36. Aut quis dedit gallo intelli- 36.
-    tionis intelligentiam?           gentiam?
-    37. Aut defluxus cœlorum quis     37. Et concentum cœli quis dar- 37.
-    quiescere faciet?                mire faciet?
-    
-    39. Prædam.                      39. Prædam.                      39.
-    40. Cum incurvant se.            40. Quando cubant.               40.
-    
-    In umbraculo,                     In antris.
-    
+  
+  [!-- Coluna Superior Esquerda: Hebraico --]
+  <bloco tipo="texto_principal" script="misto" bbox="50,90,300,500">
+    TO ΕΒΡΑΙΚΟΝ.
+    [Hebrew text] 29
+    [Hebrew text] 30 Ὁ Ἑβρ πρόσωπον δὲ ἀβύσσου πήγνυται.
+    [Hebrew text] 31
+    [Hebrew text] 32
+    [Hebrew text]
+    [Hebrew text] 33
+    [Hebrew text] 34
+    [Hebrew text] 35
+    [Hebrew text]
+    [Hebrew text] 36
+    [Hebrew text] 37
+    [Hebrew text]
+    [Hebrew text] 39
+    [Hebrew text] 40
+    [Hebrew text]
+  </bloco>
+
+  [!-- Coluna Superior Central: Hebraico em letras gregas --]
+  <bloco tipo="texto_principal" script="grego" bbox="350,90,600,500">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικος γράμμασι.
+    29.
+    30.
+    31.
+    32.
+    33.
+    34.
+    35.
+    36.
+    37.
+    39.
+    40.
+  </bloco>
+
+  [!-- Coluna Superior Direita: Aquila (Grego) --]
+  <bloco tipo="texto_principal" script="grego" bbox="650,90,950,500">
+    ΑΚΥΛΑΣ.
+    29. Πάγος.
+    30.
+    31. Ἡ συνάψεις μόρια Πλειάδος;
+    32.
+    Καθοδηγήσεις;
+    33. Ἀκριβείας.
+    34. Καὶ ὁρμὴ ὑδάτων.
+    35.
+    Ἰδο ἡμεῖς.
+    36.
+    37.
+    39.
+    40.
+  </bloco>
+
+  [!-- Coluna Inferior Esquerda: Versão do Texto Hebraico (Latim) --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,500,300,800">
+    VERSIO HEBRAICI TEXT.
+    29. Gelu.
+    30. Et facies abyssi capientur. Hebræus int., facies autem abyssi eondensatur.
+    31. Numquid ligabis delicias Clima?
+    32. Numquid exire facies signa cœlestia in tempore suo? Duces ea?
+    33. Statuta.
+    34. Et redundantia aquarum.
+    35. Fulgura. Ecce nos.
+    36. Aut quis dedit contemplationi intelligentiam?
+    37. Aut defluxus cœlorum quis quiescere faciet?
+    39. Prædam.
+    40. Cum incurvant se.
+    In umbraculo.
+  </bloco>
+
+  [!-- Coluna Inferior Central: Vulgata Latina --]
+  <bloco tipo="texto_principal" script="latino" bbox="350,500,600,800">
+    VULGATA LATINA.
+    29. Glacies.
+    30. Et superficies abyssi constringitur.
+    31. Numquid conjungere valebis micantes stellas Pleiadis?
+    32. Numquid producis Luciferum in tempore suo? Consurgere facis?
+    33. Ordinem.
+    34. Et impetus aquarum.
+    35. Fulgura. Adsumus.
+    36. Aut quis dedit gallo intelligentiam?
+    37. Et concentum cœli quis dormire faciet?
+    39. Prædam.
+    40. Quando cubant.
+    In antris.
+  </bloco>
+
+  [!-- Coluna Inferior Direita: Aquila (Latim) --]
+  <bloco tipo="texto_principal" script="latino" bbox="650,500,950,800">
+    AQUILA.
+    29. Gelu.
+    30.
+    31. An conjunges partes Pleiadis?
+    32. Deduces?
+    33. Accurate statuta.
+    34. Et impetus aquarum.
+    35. Ecce nos.
+    36.
+    37.
+    39.
+    40.
+  </bloco>
+
+  [!-- Título do Aparato Crítico --]
+  <bloco tipo="cabecalho" script="latino" bbox="250,800,750,820">
     Notæ et variæ lectiones ad cap. XXXVIII Job.
-    V. 2. Σ., σκότεινος γνώμη. Sic omnes, præter tera Symmachi.
-    Regium unum, qui habet, Σ., σκότεινος ἐν χαρίδι.
-    V. 4. Σ., μὴ συμπαθῆς etc. Sic Oratoriensis et Regius unus.
-    V. 5. 'A., κανὼνα. Σ., σχοινίον μέτρον. Omnes.
-    V. 6. 'A., Θ., αἱ βάσεις αὐτοῦ. Σ., οι καταπτώσεις. Sic omnes mss. Drusius vero habet, οι ἄλλοι, αι βάσεις, οι καταπτήξεις.
-    V. 7. 'A., Θ., ἄμα υἱοί θεοῦ. Sic omnes mss. Drusius, οι ἄλλοι, ἄμα υἱοί θεοῦ.
-    V. 8. 'A., ὁ τῷ πλάτειν. Drusius. 'Αλλος, ὅτε ἔπλαυτο. Codex unus et Nicetas.
-    V. 9. 'A., περιεπίλασμα. Sic unus. Σ., ὡς νεφέλη πεπειλησάσα αὐτήν. Drusius et Nicetas. Sed Colberti-
-    nus, Σ., ὡς νεφέλη περιελίψασα αὐτήν, quasi nubem circumscripsit ipsi. Forte altera lectio est Aquilæ, al-
-    V. 11. Σ., ἕως ὧδε etc. Omnes.
-    V. 12. 'A., Θ., εγνώρισας etc. Sic Colbertinus. Drusius sine interpretum nomine habet, οι λοιποι.
-    V. 15. Σ., περιεβρέθηκε. Reg. unus.
-    Ibid. 'A., Σ., συνετέλεσεν. Hanc versionem Reg. unus Symmacho, Colbertinus Aquilæ attribuit.
-    V. 16. Σ., ἑως σονγχῆς πηγῆς. Colbert. et Reg. unus.
-    Ibid. 'A., ἑν ἐξεκκαψιχὴς ἀβύσσου. Idem.
-    V. 18. 'A., μὴ κατειθώςας etc. Hæ trium lectiones ex iisdem codid. prodeunt. Drusius habet, 'A., μη συνήχας tantum.
-    V. 19. Σ., σχοινί. Θ., ἡρεμέι. Sic omnes mss. Drusius, οι ἄλλοι, σχοινί, ἡρεμέι.
-    V. 20. Σ., στρατηγοὶ ὀλεήσεισς. Omnes mss. ei
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,760,970,990">
+
+  [!-- Aparato Crítico - Coluna Esquerda --]
+  <bloco tipo="aparato_critico" script="misto" bbox="50,820,480,950">
+    V. 2. Σ., σκοτεινὸς γνώμῃ. Sic omnes, præter Regium unum, qui habet, Σ., σκοτεινὸς ἐν καρδίᾳ.
+    V. 4. Σ., μὴ συμπαρῇς etc. Sic Oratoriensis et Regius unus.
+    V. 5. Ἀ., κανόνα. Σ., σχοινίον μέτρου. Omnes.
+    V. 6. Ἀ., Θ., αἱ βάσεις αὐτοῦ. Σ., οἱ κατάπηγες. Sic omnes mss. Drusius vero habet, οἱ ἄλλοι, αἱ βάσεις, οἱ κατάπηγες.
+    V. 7. Ἀ., Θ., ἅμα υἱο Θεοῦ. Sic omnes mss. Drusius, οἱ λλοι, ἅμα υἱοὶ Θεοῦ.
+    V. 8. Ἀ., ἐν τῷ παλαίειν. Drusius. Ἄλλος, ὅτε ἐμαιοῦτο. Codex unus et Nicetas.
+    V. 9. Ἀ., περιείλησα. Sic unus. Σ., ὡς νεφέλῃ περιείλησα αὐτήν. Drusius et Nicetas. Sed Colbertinus, Σ., ὡς νεφέλῃ περιείλησα αὐτ, quasi nubem circumvolvi ipsi. Forte altera lectio est Aquilæ, al-
+  </bloco>
+
+  [!-- Aparato Crítico - Coluna Direita --]
+  <bloco tipo="aparato_critico" script="misto" bbox="500,820,950,950">
+    tera Symmachi.
+    V. 11. Σ., ἕως ὧδε etc. Omnes.
+    V. 12. Ἀ., ἐγνώρισας etc. Sic Colbertinus. Drusius sine interpletum nomine habet, οἱ λοιποί.
+    V. 15. Σ., περιαιρεθήσεται. Reg. unus.
+    Ibid. Ἀ., Σ., συντρίψεις. Hanc versionem Reg. unus Symmacho, Colbertinus Aquilæ tribuit.
+    V. 16. Σ., ἕως συνοχῆς πηγῆς. Colbert. et Reg. unus.
+    Ibid. Ἀ., ἐν ἐξιχνιασμῷ ἀβύσσου. Iidem.
+    V. 18. Ἀ., μ κατενόησας etc. Hæ trium lectiones ex iisdem codd. prodeunt. Drusius habet, Ἀ., μὴ συνῆκας tantum.
+    V. 19. Ἀ., σκηνοῖ. Θ., ἠρεμε. Sic omnes mss. Drusius, οἱ ἄλλοι, σκηνοῖ, ρεμεῖ.
+    V. 20. Σ., ἀτραποὺς οἰκήσεως. Omnes mss. et
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="600,960,900,990">
     Digitized by Google
   </bloco>
-  <notas>Página contém textos em latim, grego e hebraico. Algumas palavras hebraicas e gregas são parcialmente ilegíveis; usei [..] onde fragmentos não são claramente distinguíveis. BBOXs estimadas proporcionalmente à imagem (escala 0-1000). Em áreas com colunas laterais, a coluna esquerda foi transcrita antes da direita conforme instruções.</notas>
+  
+  <notas>
+    A página apresenta uma estrutura complexa de Hexapla com 3 colunas superiores (Hebraico, Transliteração Grega, Aquila Grego) e 3 colunas inferiores (Versão Latina do Hebraico, Vulgata, Versão Latina de Aquila). O aparato crítico na parte inferior flui da coluna esquerda para a direita (palavra "altera" dividida como "al-" e "tera").
+  </notas>
 </pagina>

@@ -1,72 +1,126 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,120">
-    2071                      HEXAPLORUM QUÆ SUPERSUNT.                     2072
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    2071 HEXAPLORUM QUÆ SUPERSUNT. 2072
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="30,120,970,540">
-    TO EBRAIKON.                    ΤΟ ΕΒΡΑΙΚΟΝ             ΑΚΥΛΑΣ.
-    ׃ח 18                            18.                      18.
-    טרד 19                           19.                      19.
-    מעברים 20                        20.                      20.
-    כי 21                             21.                      21.
-    כי 22                             22.                      22.
-    (prius) כי 24                     24.                      24. ✖ Ότι.
-    חדם
-    
-    ועז גזראכארס חון-בבל 23      25.                      25. ✖ Και ἐν χειρὶ Ναβουχοδ-
-                                    ὁσορ βασιλεὺς Βαβυλῶνος.
-    על הארץ אחדה 26                 26.                      26. Εἰς γῆν ✖ ἑτέραν.
-    לשוב 27                          27.                      27. ✖ Τοῦ ἐπιστρέψαι.
-    ותנבדה נפץ האיש הזה 28         28.                      28. Τὸ στόμα ἐξουδενωμένον, ἐκ-
-                                                           τετιναγμένον ὁ ἀνήρ οὗτος.
-    
-    ודא וזשש
-    כה? אבר יהדה 50                30.                      30. ✖ Τάδε λέγει Κύριος.
-    עירדי                             . . . . 2.  Ἀναστήθῳ.
-    גבר לא-יבלה ביבשה
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,950,100">
+    TO EBPAIKON. TO EBPAIKON Ἑλληνικοῖς γράμμασι. AKYΛAΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,540,970,900">
-    VERSIO HEBRAICI TEXT.           VULGATA LATINA.           AQUILA.
-    18. Frater mi.                  18. Frater.               18.
-    19. Trahendo.                   19. Putrefactus.          19.
-    
-    20. E transitibus.              20. Ad transeuntes.       20.
-    21. Quia.                       21. Quia.                 21.
-    22. Quia.                       22. . . . et.             22.
-    24. Quia.                       24. Quia.                 24. Quia.
-    Annulus.                       Annulus.
-    25. Et in manum Nabuchadre-     25. Et in manu Nabuchodo- 25. Et in manu Nabuchodo-
-    tsar regis Babel.               nosor regis Babylonis.   nosor regis Babylonis.
-    26. In terram alienam.          26. In terram alienam.    26. In terram aliam.
-    27. Ad reverendum               27. Ut revertantur.       27. Ad reverendum.
-    28. Num dolor vilis minium     28. Numquid vas fictile atque 28. Os despectum, abjectum vir
-    dispersus est vir iste?         contritum vir iste?       hic.
-    
-    Ipse et semen ejus.             Ipse et semen ejus.      Ipse et semen ejus.
-    30. Sic dicit Dominus.          30. Hæc dicit Dominus.    30. Hæc dicit Dominus.
-    Orbum.                         Sterilem.                1. Sterilem. 2. Non agendum
-                                                          (prole).
-    
-    Virum (qui) non prosperabitur  Virum qui in diebus suis non  Virum qui in diebus suis non
-    in diebus suis.                prosperabitur.               prosperabitur.
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,100,300,380">
+    אחי 18
+    בחד 19
+    מעברים 20
+    כי 21
+    כי 22
+    (prius) כי 24
+    חתת
+    ובני נכריו יאכלו חיל-בלו 23
+    על הארץ אחרת 26
+    לשוב 27
+    העצב בה נפני האיש הזה 28
+    הוא וזרעו
+    הנה ו אכר יהוה 30
+    ערירי
+    נבר לא-ינחל ביניו
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,900,960,1000">
+  <bloco tipo="texto_principal" script="grego" bbox="350,100,550,380">
+    18.
+    19.
+    20.
+    21.
+    22.
+    24.
+    25.
+    26.
+    27.
+    28.
+    30.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="600,100,950,380">
+    18.
+    19.
+    20.
+    21.
+    22.
+    24. ✗ Ὅτι.
+    25. ✗ Καὶ ἐν χειρὶ Ναβουχοδονόσορ βασιλέως Βαβυλῶνος.
+    26. Εἰς γῆν ✗ ἑτέραν.
+    27. ✗ Τοῦ ἐπιστρέψαι.
+    28. Τὸ στῶμα ἐξουδενωμένον, ἐκτετιναγμένον ὁ ἀνὴρ οὗτος.
+    30. ✗ Τάδε λέγει Κύριος.
+    1. . . . . 2. Ἀναύξητον.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,390,950,420">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,420,300,700">
+    18. Frater mi.
+    19. Trahendo.
+    20. E transitibus.
+    21. Quia.
+    22. Quia.
+    24. Quia.
+    Annulus.
+    25. Et in manum Nabuchadretsar regis Babel.
+    26. In terram alienam.
+    27. Ad revertendum
+    28. Num dolor vilis minutim dispersus est vir iste?
+    Ipse et semen ejus.
+    30. Sic dicit Dominus.
+    Orbum.
+    Virum (qui) non prosperabitur in diebus suis.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,420,600,700">
+    18. Frater.
+    19. Putrefactus.
+    20. Ad transeuntes.
+    21. Quia.
+    22. . . . et.
+    24. Quia.
+    Annulus.
+    25. Et in manu Nabuchodonosor regis Babylonis.
+    26. In terram alienam.
+    27. Ut revertantur.
+    28. Numquid vas fictile atque contritum vir iste?
+    Ipse et semen ejus.
+    30. Hæc dicit Dominus.
+    Sterilem.
+    Virum qui in diebus suis non prosperabitur.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,420,950,700">
+    18.
+    19.
+    20.
+    21.
+    22.
+    24. Quia.
+    25. Et in manu Nabuchodonosor regis Babylonis.
+    26. In terram aliam.
+    27. Ad revertendum.
+    28. Os despectum, abjectum vir hic.
+    30. Hæc dicit Dominus.
+    1. Sterilem. 2. Non augendum (prole).
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,710,950,740">
     Notæ et variæ lectiones ad cap. XXII.
-    V. 1. 'Α., ✖ σὺν; de more ms. Jes., ut et v. 5,
-    quæ particula, sime supervacanea, ex Aquila in
-    editionem τὸν ὧν Hexaplarem inducta fuerat. [Sane
-    supervacanea.] Lege, amabo, minime supervacanea.
-    Hebraicum enim idioma separat particulam quæ
-    casum denotat accusativum, הָא, ab articulo ה (pro
-    ה), non confundit ut Græcum. Ergo, σὺν respondent
-    τῷ הָא, τὸν autem τῷ ה, et σὺν signatur asterisco,
-    quia reipsa habetur in Hebraico. Cf. quæ anota-
-    vimus ad Gen. 1,4, et passim præsentia in libro. DracH.]
-    V. 14. 'Α., Σ., Θ., ✖ ὁ λέγων. Ms. Jes.
-    V. 15. 'Α., μὴ βασιλεύσεις etc. Ex Drusio et ex
-    Theodoretο. In huic vero locum hæc notat Hiero-
-    nymus: & Juxta LXX vero, quem sensum habeant
-    intelligere non possum. Cum enim cætera sibi alia
-    qua ex parte consentiant, illud quod infertur :
   </bloco>
-  <notas>Layout: página em três colunas visuais (hebraico à esquerda, grego/latim central, grego à direita). Texto central e colunas contêm elementos hebraicos, gregos e latinos misturados. Uso de sinais diacríticos e asteriscos no original. Algumas palavras hebraicas transcritas conforme visível; '[ilegivel]' não foi necessário.</notas>
+  <bloco tipo="texto_principal" script="misto" bbox="50,740,480,950">
+    V. 1. Ἀ., ✗ σύν· de more ms. Jes., ut et v. 5, quæ particula, sane supervacanea, ex Aquila in editionem τῶν Hexaplarem inducta fuerat. [«Sane supervacanea.» Lege, amabo, minime supervacanea. Hebraicum enim idioma separat particulam quæ casum dénotat accusativum, את, ab articulo ה (pro ל), non confundit ut Græcum. Ergo, σύν respondet τῷ את, τόν autem τῷ ה, et σύν signatur asterisco, quia reipsa habetur in Hebraico. Cf. quæ adnotavimus ad Gen. 1, 1, et passim præsenti in libro. DRACH.]
+    V. 14. Ἀ., Σ., Θ., ✗ ὁ λέγων. Ms. Jes.
+    V. 15. Ἀ., μὴ βασιλεύσεις etc. Ex Drusio et ex Theodoretο. In hunc vero locum hæc notat Hieronymus : « Juxta LXX vero, quem sensum habeant intelligere non possum. Cum enim cætera sibi aliqua ex parte consentiant, illud quod infertur :
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="520,740,950,950">
+    Numquid regnabis quoniam tu contendis in Achaz patre tuo? pro quo in Hebræo scriptum est ARAZ; et hic sermo cedrum significet, manifestum est quod nullum sensum habeat. Illud quoque quod sequitur : Non comedent et non bibent, et cætera, quæ ita inter se dissipata sunt, atque confusa, ut absque veritate Hebraicæ lectionis, nullum sensum habeant. » [Scholion Græcum : ἐν Ἁχαζ τῷ πατρί σου ἔστι ψεῦδος, ὡς ἐκ τῶν ἄλλων ἑρμηνευτῶν δῆλον. I. e., ἐν etc. est spurium, ut ex aliis interpretibus manifestum. DRACH.]
+    Ibid. Ἀ., Θ., ✗ τότε ἀγαθὸν αὐτῷ. Ms. Jes.
+    V. 18. Ἄλλος, ἀγαπητέ. Idem.
+    V. 19. Σ., ὡς κέπριον συλληφθείς. Drusius ex editione Romana. Ms. vero Jes., ὡς κοπρία, sine interpretis nomine.
+    V. 20. Hieronymus : « Quod autem nos diximus.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="500,960,800,990">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição de página poliglota (Hebraico, Grego, Latim).
+    Na coluna hebraica, linha 15, a palavra inicial parece ser נבר (Nabar) visualmente, embora o contexto sugira גבר (Gever). Mantida a leitura visual.
+    Símbolo ✗ (asterisco/obelus) usado no texto grego e nas notas.
+  </notas>
 </pagina>

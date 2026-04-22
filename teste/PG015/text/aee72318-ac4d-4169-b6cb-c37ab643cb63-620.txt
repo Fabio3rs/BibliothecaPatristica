@@ -1,58 +1,53 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,110">
-    1235                           HEXAPLORUM QUÆ SUPERSUNT.                             1236
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    1235 HEXAPLORUM QUÆ SUPERSUNT. 1236
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,110,960,160">
-    TO. ΕΒΡΑΙΚΟΝ.                        ΤΟ ΕΒΡΑΙΚΟΝ                        ΑΚΥΛΑΣ.
-                                        Ἑλληνικοῖς γράμμασι.
+  <bloco tipo="texto_principal" script="misto" bbox="150,60,850,100">
+    TO EBPAIKON. TO EBPAIKON Ἑλληνικος γράμμασι. ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="ebraico" bbox="40,160,300,420">
-    ךתנ 9
-    תישארב 10
-    תישאר 11
-    כסמול 12
-    ויהי בבית מיכה
-    13 ויטב יהוה לי
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,100,350,230">
+    לָגוּר בַּאֲשֶׁר מצְא 9
+    וְסֵדר 10
+    הַקֹּצֵר 11
+    וַיְמַלֵּא אֶת־יַד 12
+    וַיְהִי בּית מִיכָה
+    יֵיטיב יְהוָה לִי 13
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="310,160,640,420">
+  <bloco tipo="texto_principal" script="grego" bbox="380,100,550,230">
     9.
     10.
     11.
     12.
     13.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,160,940,420">
+  <bloco tipo="texto_principal" script="grego" bbox="650,100,850,230">
     9.
-    10. Ζεύγος.
+    10. Ζεῦγος.
     11.
     12.
     13.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,430,320,740">
+  <bloco tipo="texto_principal" script="latino" bbox="100,240,380,380">
     VERSIO HEBRAICI TEXT.
-    9. Ad peregrinandum ubicumque invenero.
-    
+    9. Ad peregrinandum ubicum-
+    que invenero.
     10. Et ordinem.
     11. Puer.
-    
     12. Et implevit Micha.
     Et fuit in domo Micha.
-    
     13. Faciet bene Dominus mihi.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,430,640,740">
+  <bloco tipo="texto_principal" script="latino" bbox="400,240,650,380">
     VULGATA LATINA.
-    9. Ut habitem ubi potuero, et utile mihi esse perspexero.
-    
+    9. Ut habitem ubi potuero, et
+    utile mihi esse perspexero.
     10. Vestem duplicem.
     11. Vacat.
-    
-    12. Implevitque Micha.
+    12. Implevitque Michas.
     Apud se.
-    
     13. Benefaciet mihi Deus.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,430,940,740">
+  <bloco tipo="texto_principal" script="latino" bbox="700,240,850,380">
     AQUILA.
     9.
     10. Jugum.
@@ -60,79 +55,75 @@
     12.
     13.
   </bloco>
-  <bloco tipo="aparto_critico" script="latino" bbox="40,740,940,910">
+  <bloco tipo="aparato_critico" script="misto" bbox="100,390,900,480">
     Notæ et variæ lectiones ad cap. XVII Judicum.
-    V. 1. Ἄλλος, μιχά. Basil. et Alex.
-    V. 2. Ἄλλος, χίλοις. Basil. et Alex.
-    Ibid. 2., οὕς ἐξελθόντος εἶχε, Basil. Ἄλλ., τοὺς ληφθέντας οὖν. Basil.
-    Ibid. Ἄλλος, καί ἐξήρχισας καὶ ἔπασ. Basil.
-    V. 3. Ἄλλος, ἀγιασμον ἠγάσα. Basil. et Alex.
-    Ibid. Ἄλλος, ἐπισφαλή, Basil. et Alex.
-    V. 4. Ἄλλος, τῷ χωνευτῇ; Basil. et Alex.
-    V. 5. Ἀ., ταυτάδε etc. Ex Basil.
+    V. 1. "Ἄλλος, Μυᾶ. Basil. et Alex.
+    V. 2. "Ἄλλος, χιλίους. Basil. et Alex.
+    Ibid. Σ., οὓς ἐξαιρέτους εἶχες. Basil. "Ἀλλ., τοὺς
+    ληφθέντας σοι. Basil.
+    Ibid. "Ἄλλος, καὶ ἐξώρκισας καὶ εἶπας. Basil.
+    V. 3. "Ἄλλως, ἁγιασμῷ ἡγίασα. Basil. et Alex.
+    Ibid. "Ἄλλος, ἐπιστρέφω. Basil. et Alex.
+    V. 4. "Ἄλλος, τῷ χωνευτῇ. Basil. et Alex.
+    V. 5. Ἀ., τποιμώα etc. Ex Basil.
     Ibid. Ἀ., μορφώματα etc. Basil.
-    V. 7. Οὔ, θ., καὶ ἐγένετο παῖδαρον. Basil.
-    Ibid. ὁ ἄλλως, θ., ἓν τῆς πόλεως etc. Basil.
+    V. 7. Οʹ, Θ., καὶ ἐγένετο παιδάριον. Basil.
+    Ibid. Οʹ ἄλλως, Θ., ἐκ τῆς πόλεως etc. Basil.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,920,960,1000">
+  <bloco tipo="cabecalho" script="latino" bbox="350,490,650,520">
     CAPUT XVIII JUDICUM.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,1000,320,1060">
-    TO ΕΒΡΑΙΚΟΝ.
+  <bloco tipo="texto_principal" script="misto" bbox="150,520,850,560">
+    TO EBPAIKON. TO EBPAIKON Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="330,1000,640,1060">
-    ΤΟ ΕΒΡΑΙΚΟΝ.
-    Ἑλληνικοῖς γράμμασι.
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,560,350,700">
+    מִמִּשְׁפַּחְתּוֹ 2
+    מִזַּרְעוֹ
+    לֶךְ
+    לַעֲבֹר
+    עַד־בֵּית מִיכָה וַיָּלִינוּ שָׁם
+    הַנַּעַר 3
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="650,1000,940,1060">
-    ΑΚΥΛΑΣ.
-  </bloco>
-  <bloco tipo="texto_principal" script="ebraico" bbox="40,1060,320,1360">
-    שמשפח 2
-    מקורם
-    חקר
-    דמתי הו
-    שדבית מיכה ולינו שם
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,1060,640,1360">
+  <bloco tipo="texto_principal" script="grego" bbox="380,560,550,700">
     2.
     3.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,1060,940,1360">
+  <bloco tipo="texto_principal" script="grego" bbox="650,560,850,700">
     2.
     3.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,1360,320,1900">
+  <bloco tipo="texto_principal" script="latino" bbox="100,710,380,900">
     VERSIO HEBRAICI TEXT.
     2. De familia sua.
-    
     De finibus suis.
     Explorate.
     Et venerunt in montem.
-    
-    Usque ad domum Micha: et pernoctaverunt ibi.
-    
+    Usque ad domum Micha : et
+    pernoctaverunt ibi.
     3. Pueri.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,1360,640,1900">
+  <bloco tipo="texto_principal" script="latino" bbox="400,710,650,900">
     VULGATA LATINA.
     2. Stirpis et familiæ suæ.
-    
     Vacat.
     Considerate.
-    Qui cum pergentes venissent in montem.
-    
-    Et intrassent domum Michæ, requieverunt ibi.
-    
-    5. Adolescentis.
+    Qui cum pergentes venissent in
+    montem.
+    Et intrassent domum Michæ,
+    requieverunt ibi.
+    3. Adolescentis.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,1360,940,1900">
+  <bloco tipo="texto_principal" script="latino" bbox="700,710,850,900">
     AQUILA.
     2.
     3.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="780,1880,960,1980">
+  <bloco tipo="rodape" script="latino" bbox="550,950,800,990">
     Digitized by Google
   </bloco>
-  <notas>Transcrição tentou respetar colocação em colunas: colunas hebraicas lidas direita-para-esquerda e mantidas tal como visíveis. Algumas palavras hebraicas podem ter letras pouco legíveis; marcas [ilegivel] não foram necessárias. Correções mínimas de espaçamento realizadas para legibilidade.</notas>
+  <notas>
+    Transcrição de página poliglota (Hexapla). Scripts mistos: Latino, Grego, Hebraico.
+    Alguns caracteres hebraicos podem apresentar variações tipográficas específicas da edição (ex: v. 11 col. hebraica).
+    Notas críticas contêm abreviações patrísticas (Basil., Alex., etc.).
+  </notas>
 </pagina>

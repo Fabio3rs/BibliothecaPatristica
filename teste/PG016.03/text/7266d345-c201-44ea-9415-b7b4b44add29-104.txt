@@ -1,27 +1,30 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,120">
-    HEXAPLORUM QUÆ SUPERSUNT.
+  <bloco tipo="cabecalho" script="latino" bbox="120,20,880,80">
+    2585 HEXAPLORUM QUÆ SUPERSUNT. 2581
     EZECHIELIS CAPUT XXX.
-    TO ΕΒΡΑΙΚΟΝ.    ΤΟ ΕΒΡΑΙΚΟΝ    ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,120,320,700">
-    ה ילילו 2
-    יום ענ 3
-    עת ימים יהי 3
-    תי רו ח 4
-    וכל-הערב 5
-    פלמני 9
+  
+  <bloco tipo="texto_principal" script="misto" bbox="100,85,350,400">
+    TO ΕΒΡΑΙΚΟΝ.
+    2 היליל
+    3 יום ענן עת גוים יהיה
+    4 חרב תבוא במצרים
+    5 וכוש ופוט ולוד
+    9 מלכני
     בצים
-    בכח
-    ומכתי אח־רא־ץ־י־ן בדרדם. 12
-    והבעתי גללים השׁבהתי 13
-    נבא 14
-    ופי צירי ימים 16
-    לא־אכלה 21
-    לחמשה לחקה
-    אלה־חמשה 22
+    בחם
+    12 ונתתי את-ארץ מצרים בדדעים
+    13 והאבדתי את-גלוליה מנף
+    14 בנא
+    16 תקף עצי יסמה
+    21 לא-חבשה
+    לחבש להחיק
+    22 את-זרעתיה ואת-זרועתיה
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,120,660,700">
+
+  <bloco tipo="texto_principal" script="grego" bbox="380,85,550,400">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασιν.
     2.
     3.
     4.
@@ -34,25 +37,27 @@
     21.
     22.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="660,120,960,700">
+
+  <bloco tipo="texto_principal" script="grego" bbox="650,85,920,400">
+    ΑΚΥΛΑΣ.
     2.
     3.
     4.
     5.
     9.
-    ʼΕν Σε¬ιμ.
-    Την πεποιθάναν.
-    12. Ϟ Και απώθώμεθα την γῆν εν χειρῇ πονηρῶν.
+    Ἐν Σείμ.
+    Τὴν πεποιθυῖαν.
+    12. ⠑ Καὶ ἀποδώσομαι τὴν γῆν
+    ἐν χειρὶ πονηρῶν.
     13.
-    14. ʼΕν Νώ.
+    14. Ἐν Νώ.
     16.
-    21. Οὐκ ἐμοιώθη.
-    22. Τὸν ἰσχυρόν καὶ ὑψηλὸν.
+    21. Οὐκ ἐμιστώθη.
+    22. Τὸν ἰσχυρὸν καὶ ὑψηλόν.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="50,700,960,820">
-    VERSIO HEBRAICI TEXT.    VULGATA LATINA.    AQUILA.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,820,520,1200">
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,410,350,700">
+    VERSIO HEBRAICI TEXT.
     2. Ululate.
     3. Dies nubis.
     Tempus gentium erit.
@@ -61,36 +66,94 @@
     9. A facie mea.
     In navibus.
     Confidenter.
-    12. Et vendam terram in manuum malignorum.
+    12. Et vendam terram in manum malignorum.
     13 Et perdam simulacra, et cessare faciam.
     14. In No.
-    16. Et ipsi Noph termina interdiu.
+    16. Et ipsi Noph tormenta interdiu.
     21. Non est alligatum.
     Ad alligandum ad roborandum illud.
     22. Fortem et fractum.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,820,960,1200">
+
+  <bloco tipo="texto_principal" script="latino" bbox="380,410,620,700">
+    VULGATA LATINA.
     2. Ululate.
     3. Dies nubis.
     Tempus gentium erit.
-    4. Et ablata fuerit multitudo illius.
+    4. Et ablatæ fuerit multitudo illius.
     5. Et omne reliquum vulgus.
     9. A facie mea.
     In trieribus.
     Confidentiam.
-    12. Et tradam terram in manus pessimumorum.
+    12. Et tradam terram in manus pessimorum.
     13. Et disperdam simulacra, et cessare faciam.
     14. In Alexandria.
-    16. Et in Memphis angustiae quotidianae.
+    16. Et in Memphis angustiæ quotidianæ.
     21. Non est obvolutum.
-    Ut fasciaretur linteolis, ut recepto roborare.
+    Ut fasciaretur linteolis, ut recepto robore.
     22. Forte sed confractum.
   </bloco>
-  <bloco tipo="aparatocrítico" script="latino" bbox="50,1200,960,1680">
-    Notæ et variæ lectiones ad cap. XXX Ezechielis.
-    V. 2. ͵Αλλος, ολλοϊζων. Drusius ex Complutensi edit. ut et alii. [Ilia et Theodoretum. B : Σ., Θ., ολλοϊζετε. Supra jam monuimus plerasque Drusiı lectiones prodiire ex edd. Rom. — C., ʼΑσαωατ Κῦ?̣?̣?, Drach.
-    V. 3. Οἱ Τ, Χ ἡμέραι νεφελῆς. Et sic ϴ hodie, quia multa ex edit. hexaplari in xxviij remanserunt. [Cita : ὅτι ἐγγὺς ἡμέρα, και τῆς ἡμέρᾳ του Κυριου, ἡμέρᾳ νεφελῆς.] Apud S. Hier., quoniam juxta est dies, et juxta via Domini, dies nubis. Hebr., quia propinqua est dies, et propinqua dies Jehovae, dies nubis. B : ʼΑ., Ω, Θ, etc. ὅτι ἐγγὺς ἡμέρα. Σ. (ad hanc addit), και τῆς̣ τὴν̣ ἡμέρα. Quod parieteradditur apud Theodoretum, hoc modo, και ἐγγὺς τ᾽ ἡμέρα νεφίλης. Dr.
-    Ibid. ͵Αλλος, καὶρος; ἔ́νων ἔκτα. Drusius. [Ita et
+
+  <bloco tipo="texto_principal" script="latino" bbox="650,410,920,700">
+    AQUILA.
+    2.
+    3.
+    4.
+    5.
+    9.
+    In Sim.
+    Confidentem.
+    12. Et tradam terram in manum malignorum.
+    13.
+    14. In No.
+    16.
+    21. Non est curatum.
+    22. Robustum et excelsum.
   </bloco>
-  <notas>Transcrição inclui múltiplos scripts: hebraico, grego e latino. Algumas palavras e siglas na parte do aparato crítico estão parcialmente abreviadas e sinais editoriais foram mantidos conforme imagem. Onde ligaduras ou caracteres fragmentados ocorriam, foi transcrito literalmente; marcas como '͵' e abreviações reproduzidas. Colunas centrais e margens mapeadas conforme visual.</notas>
+
+  <bloco tipo="cabecalho" script="latino" bbox="300,710,700,730">
+    Notæ et variæ lectiones ad cap. XXX Ezechielis.
+  </bloco>
+
+  <bloco tipo="nota" script="misto" bbox="120,730,500,950">
+    V. 2. Ἄλλος, ὀλολύξατε. Drusius ex Complutensi
+    edit. ut et alia. [Ita et apud Theodoretum. B : Σ.,
+    Θ., ὀλολύξετε. Supra jam monuimus plerasque Drusii
+    lectiones prodire ex ed. Rom. — C, Ἄδωναϊ Κύ-
+    ριος. DRACH.]
+    V. 3. Οἱ Γ', ⠑ ἡμέρα νεφέλης. Et sic O' hodie,
+    quia multa ex edit. Hexaplari in κοινῇ remanse-
+    runt. [C ita : ὅτι ἐγγὺς ἡμέρα, καὶ ἐγγὺς ἡμέρα τοῦ
+    Κυρίου, ἡμέρα ⠑ νεφέλης : Apud S. Hier., quoniam
+    juxta est dies, et juxta via Domini, dies nubis.
+    Hebr., quia propinqua est dies, et propinqua dies
+    Jehovæ, dies nubis. B : 'A., O', Θ., ⠑ ὅτι ἐγγὺς
+    ἡμέρα. Σ. (ad hæc addit), ⠑ κα ἐγγίζει ἡμέρα.
+    Quod pariter additur apud Theodoretum, hoc modo,
+    καὶ ἐγγίζει ἡ ἡμέρα νεφέλης. DR.]
+    Ibid. Ἄλλος, καιρὸς ἐθνῶν ται. Drusius. [Ita et
+  </bloco>
+
+  <bloco tipo="nota" script="misto" bbox="520,730,920,950">
+    apud Theodoretum. In VM deest vox νεφέλης. DR.
+    V. 4. Ἄλλος, καὶ λήψονται etc. Idem. [C, ⠑ καὶ
+    λήψονται τὸ πλῆθος ⠑ αὐτῆς. : Et ita apud Theo-
+    doretum. Al., ληφθήσεται. Al., αὐτῶν. Ex ed. Rom.
+    Apud S. Hier., et auferent multitudinem ejus. — C
+    præterea : καὶ ἔσται ταραχὴ ἐν Αἰθιοπίᾳ (absque γῆ,
+    quod deest in Hebr.), καὶ πεσοῦνται. DRACH.]
+    V. 5. Σ., καὶ πᾶσα  Ἀραβία. Idem. Hic autem
+    Hieronymus, cum ait : « In commune de variis po-
+    pulis et Chuit, quod Symmachus vertit in Arabiam ; »
+    labi sane videtur : nam Arabia hic haud dubie re-
+    spondet voci Hebraicæ כוש, non autem voci proximæ
+    antecedenti שיח vel subsequenti רח. Hoc autem non
+    Librarii mendo scriptum est : nam multis interpo-
+    sitis Hieronymus ait, « et Chub, i. e. Arabes. »
+    [Montf. male excrpsit Chuit, et is post eum edi-
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="550,960,850,990">
+    Digitized by Google
+  </bloco>
 </pagina>

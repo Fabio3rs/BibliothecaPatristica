@@ -1,69 +1,78 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,80">
-    HEXAPLORUM QUE SUPERSUNT.
+  <bloco tipo="cabecalho" script="latino" bbox="70,30,920,60">
+    755 HEXAPLORUM QUÆ SUPERSUNT. 756
   </bloco>
-  <bloco tipo="texto_principal" script="mistо" bbox="40,80,960,720">
-    TO ΕΒΡΑΙΚΟΝ.                TO ΕΒΡΑΙΚΟΝ                ΑΚΥΛΑΣ.
-    Ελληνικοῖς γράμμασι.
-    [יהוה יהוה] 5.              5.                       5.
-    [שפני עוה] 7.              7.                       7.
-    [ואמר יהוה אל-מוס. το Σα-  .                          .
-    μαρ. και δώσω δώσω τας ιερ. 
-    τείας υμων.]                 9.                       9.
-    
-    VERSIO HEBRAICI TEXT.       VULGATA LATINA.          AQUILA.
-    5. Super filios Israel.      5. Super filios Israel.   5
-    7. Servitium doni.          7. Per sacerdotes adminis- 7
-                               trabuntur.
-    Servitium doni dabo sacerdo- Per sacerdotes administrabun-
-    tum vestrum. Samar., dona dabo tur.
-    sacerdotia vestra.
+  <bloco tipo="texto_principal" script="misto" bbox="100,70,900,130">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ ΑΚΥΛΑΣ.
+    Ἑλληνικοῖς γράμμασι.
+    [Hebrew: על בני ישראל] 5 5. 5.
+    [Hebrew: משמרת מתנה] 7 7. 7.
+    [Hebrew: ושמרתם את משמרת] τὸ Σαμαρ. καὶ δώματα δώσω τῆς ἱερατείας ὑμῶν.
+    [Hebrew: קדש הקדשים] 9 9. 9.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,180,900,310">
+    VERSIO HEBRAICI TEXT, VULGATA LATINA. AQUILA.
+    5. Super filios Israel. 5. Super filios Israel. 5
+    7. Servitium doni. 7. Per sacerdotes administrabuntur. 7
+    Servitium doni dabo sacerdotium vestrum. Samar., dona dabo sacerdotia vestra. Per sacerdotes administrabuntur.
     9. De sanctitate sanctitatum. 9. De iis qui sanctificantur. 9.
-    
-    Notæ et variæ lectiones ad cap. XVIII Numerorum.
-    V. 1. [ιτπιτι]. Ubi edit. Rom. habet ἀπαρεῖς, Coisl.
-    παραγγεῖς in textu, ἀπαρεῖς in margine exhibet cum
-    hac nota, Tovestem ται APENATA, ἰξ τῶν ἱερῶν
-    καταργθεῖσαν, ἡς τοις κεφαλαίοις τοῦ Λευιτικού. Quid
-    ubi velint approxare proxus ignoro.
-    V. 2. 'Allos, και ὑπομετρησονος' cou. Ex Basil
-    V. 5. 'Allos, ἱκαι τοῦτο ὑλιὸς' Isapata. Ex Basil
-    V. 7. 'Allos, λεπτοφυλαξ ἑτέρων.' Ideo.
-    Ibid. Το Σαμαρ., και δώσεται δώσω τας ιερειας
-    ὑμῶν. Sic tres Regii, quorum unus habet δώσεται.
-    
-    — 
-    CAPUT XIX NUMERORUM.
-    TO ΕΒΡΑΙΚΟΝ.              TO ΕΒΡΑΙΚΟΝ            ΑΚΥΛΑΣ.
-    Ελληνικοῖς γράμμασι.
-    [והיה שם] 10.            10.                    10.
-    [לא יתן] 12.             12.                    12.
-    [יחטא] 18.               18.                    18.
-    
-    VERSIO HEBRAICI TEXT.     VULGATA LATINA.        AQUILA.
-    10. Et peregrinus peregrinanti in 10. Et advener, qui habitant in- 10.
-    medio vestrum.               ter eos.
-    12. Non nuncales erit.     12. Non poterint emundari. 12.
-    18. Et sparget.            18. Sparget.             18.
-    
-    Notæ et variæ lectiones ad cap. XIX Numerorum.
-    V. 10. Ex duobus ms.       V. 12. Ita Basilienis.
-    
-    —
-    CAPUT XX NUMERORUM.
-    ΤΟ ΕΒΡΑΙΚΟΝ.             TO ΕΒΡΑΙΚΟΝ            ΑΚΥΛΑΣ.
-    Ελληνικοῖς γράμμασι.
-    [שמו פי] 3              3.                     3.
-    [וראית] 4               4.                     4.
-    [כג] 6                   6.                     6.
-    
-    VERSIO HEBRAICI TEXT      VULGATA LATINA.        AQUILA
-    3. Uniam oblisceamus.    3. Uniam perilisceamus. 3.
-    4. Et jumenta nostra.    4. Et nostra jumenta.   4.
-    6. Veni.                 6. Ingressus est.        6.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="380,720,760,980">
+  <bloco tipo="texto_principal" script="latino" bbox="250,330,750,350">
+    Notæ et variæ lectiones ad cap. XVIII Numerorum.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="100,350,480,430">
+    V. 1. [Hebrew: חטאת]. Ubi edit. Rom. habet ἁμαρτίας, Coisl. ἀπαρχὰς in textu, ἁμαρτίας in margine exhibet cum hac nota, Τοῦτέστι τὰ ΑΡΕΝΑΤΑ, ἐκ τῶν ἱερέων ἐπαγόμενα, ὡς τὸ ια' κεφάλαιον τοῦ Λευιτικοῦ. Quid sibi velint ἀρένατα prorsus ignoro.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="500,350,900,430">
+    V. 2. Ἄλλος, καὶ ὑπουργείτωσάν σοι. Ex Basil. V. 5. Ἄλλος, ἐπὶ τοὺς υἱοὺς Ἰσραήλ. Ex Basil. V. 7. Ἄλλος, λειτουργίαν δώματος. Idem. Ibid. Τὸ Σαμαρ., καὶ δώματα δώσω τῆς ἱερατείας ὑμῶν. Sic tres Regii, quorum unus habet δώματι ὑμν.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,460,650,480">
+    CAPUT XIX NUMERORUM.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="100,490,900,590">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ ΑΚΥΛΑΣ.
+    Ἑλληνικος γράμμασι.
+    [Hebrew: ולגר הגר בתוככם] 10 10. 10.
+    [Hebrew: לא יטהר] 12 12. 12.
+    [Hebrew: והזה] 18 18. 18.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,600,900,700">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+    10. Et peregrino peregrinanti in medio vestrum. 10. Et advenæ, qui habitant inter eos. 10.
+    12. Non mundus erit. 12. Non poterit emundari. 12.
+    18. Et sparget. 18. Sparget. 18.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,710,750,730">
+    Notæ et variæ lectiones ad cap. XIX Numerorum.
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="100,730,480,750">
+    V. 10. Ex duobus mss.
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="500,730,900,750">
+    V. 12. Ita Basiliensis.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,780,650,800">
+    CAPUT XX NUMERORUM.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="100,810,900,910">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ ΑΚΥΛΑΣ.
+    Ἑλληνικοῖς γράμμασι.
+    [Hebrew: לו מתנו] 3 3. 3.
+    [Hebrew: ומקננו] 4 4. 4.
+    [Hebrew: ויבא] 6 6. 6.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,920,900,970">
+    VERSIO HEBRAICI TEXT VULGATA LATINA. AQUILA
+    3. Utinam oblissemus. 3. Utinam periissemus. 3.
+    4. Et jumenta nostra. 4. Et nostra jumenta. 4.
+    6. Venit. 6. Ingressus est. 6.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="500,970,800,990">
     Digitized by Google
   </bloco>
-  <notas>Scriptos mistos: latim e grego e hebraico presentes. Algumas palavras hebraicas estão ilegíveis/fragmentadas; mantive colchetes onde leitura incerta. BBOX estimadas em escala 0-1000.</notas>
+  <notas>
+    Transcrição de página poliglota (Hebraico, Grego, Latim).
+    Textos hebraicos foram transcritos conforme visível, correspondendo a versículos de Números (Bamidbar).
+    Notas críticas contêm misto de Latim e Grego.
+  </notas>
 </pagina>

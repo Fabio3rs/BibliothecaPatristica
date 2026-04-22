@@ -27,6 +27,7 @@ def init_eval_schema(con: sqlite3.Connection) -> None:
             page_num INTEGER,
             image_path TEXT NOT NULL,
             text_path TEXT,
+            ocr_result_id INTEGER,
             provider TEXT,
             model TEXT,
             prompt_version TEXT,
@@ -45,6 +46,12 @@ def init_eval_schema(con: sqlite3.Connection) -> None:
         CREATE INDEX IF NOT EXISTS idx_eval_created_at ON evaluations(created_at);
         """
     )
+    # Migração: adiciona coluna ocr_result_id se não existir (retrocompatível)
+    try:
+        con.execute("ALTER TABLE evaluations ADD COLUMN ocr_result_id INTEGER")
+    except sqlite3.OperationalError:
+        # coluna já existe
+        pass
     con.commit()
 
 
@@ -106,6 +113,7 @@ def record_evaluation(
     page_num: Optional[int],
     image_path: Path,
     text_path: Optional[Path],
+    ocr_result_id: Optional[int] = None,
     provider: Optional[str],
     model: Optional[str],
     prompt_version: str,
@@ -124,7 +132,7 @@ def record_evaluation(
         """
         INSERT INTO evaluations (
             volume_id, page_num, image_path, text_path,
-            provider, model, prompt_version,
+            ocr_result_id, provider, model, prompt_version,
             decision, deterministic_reason,
             fidelidade, usabilidade, idiomas_json, comentario,
             xml_raw, duration_ms, status
@@ -135,6 +143,7 @@ def record_evaluation(
             page_num,
             str(image_path),
             str(text_path) if text_path else None,
+            ocr_result_id,
             provider,
             model,
             prompt_version,

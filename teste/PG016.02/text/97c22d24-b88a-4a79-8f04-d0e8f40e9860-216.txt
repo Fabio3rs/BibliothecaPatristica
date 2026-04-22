@@ -1,77 +1,253 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,80">
-    1683                           HEXAPLORUM QUÆ SUPERSUNT.                           1684
-    TO EBRAIKON.                       ΤΟ ΕΒΡΑΙΚΟΝ                   ΑΚΥΛΛΑΣ.
-    - ואל-למרות עניי כשמש ולא   Ελληνικοί· γράμματα.
+  <bloco tipo="cabecalho" script="latino" bbox="90,30,900,60">
+    1683 HEXAPLORUM QUÆ SUPERSUNT. 1684
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="0,80,320,760">
-    3  - ולא-למרות עניי כשמש ולא  לממשל אני יודע
-    4  והזכיר במשור-לארץ
-    5  והיה צדק אחת מבני והאמונה  אחד הצליח
-    7  ותהיה חוה חר רעינה יחדי ויבם  וידרון
-    כבוד
-    10 אשר עבדו להם עמים
-    מחרת
-    11 והיה ביום ההוא ויוסף אדני  שנת חן לקחת את-שאר עמו  אבי-שאר מאשור
-    14 אדם ובואמשלוחי חם
-    15 והירים יהוה את לשון יכ-  מרים
+  <bloco tipo="texto_principal" script="misto" bbox="150,70,300,90">
+    TO ΕΒΡΑΙΚΟΝ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,80,670,760">
-    ΤΟ ΕΒΡΑΙΚΟΝ
-    Ελληνικοί· γράμματα.
+  <bloco tipo="texto_principal" script="misto" bbox="400,70,600,90">
+    TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασιν.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,70,850,90">
+    ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="80,95,350,125">
+    3 וְשָׁפַט בְּצֶדֶק עֲנִיִּים וְהוֹכִיחַ בְּמִישׁוֹר לְעַנְוֵי־אָרֶץ
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="390,95,420,110">
     3.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="670,95,700,110">
+    3.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,130,350,155">
+    4 וְהִכָּה־אֶרֶץ בְּשֵׁבֶט פּיו וּבְרוּחַ שְׂפָתָיו יָמִית רָשָׁע
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="390,130,420,145">
     4.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="670,130,940,155">
+    4. Καὶ ἐλέγξει ἐν εὐθύτητι τῇ.
+    πράσει τῆς γῆς.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="90,160,350,195">
+    5 וְהָיָה צֶדֶק אֵזוֹר מָתְנָיו וְהָאֱמוּנָה אֵזוֹר חֲלָצָיו
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="390,160,420,175">
     5.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="670,160,700,175">
+    5.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="90,200,350,235">
+    7. וְגָר זְאֵב עִם־כֶּבֶשׂ וְנָמֵר עִם־גְּדִי יִרְבָּץ
+    וְעֵגֶל וּכְפִיר וּמְרִיא יַחְדָּו וְנַעַר קָטֹן נהֵג בָּם
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="390,200,420,215">
     7.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="670,200,940,245">
+    7. Καὶ δάμαλις καὶ ἄρκτος νεμε-
+    θήσονται ὅμως, κατακλεισθήσονται
+    παιδία αὐτῶν.
+    Ὡς βουκόλιον.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="130,250,350,275">
+    10 וְהָיָה בַּיּוֹם הַהוּא שֹׁרֶשׁ יִשַׁי אֲשֶׁר עֹמֵד לְנֵס עַמִּים
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="390,250,420,265">
     10.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="670,250,940,275">
+    10. Ὃς ἀνίσταται εἰς σύσσημον
+    λαῶν.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="280,280,350,295">
+    אֵלָיו גּוֹיִם יִדְרֹשׁוּ וְהָיְתָה מְנֻחָתוֹ כָּבוֹד
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="670,280,850,295">
+    Ἡ ἀνάπαυσις αὐτο.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="670,300,720,315">
+    Δόξα.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="80,320,350,365">
+    11 וְהָיָה בַּיּוֹם הַהוּא יוֹסִיף אֲדֹנָי שֵׁנִית יָדוֹ לִקְנוֹת את־שְׁאָר עַמּוֹ
+    אֲשֶׁר יִשָּׁאֵר מֵאַשּׁוּר וּמִמִּצְרַיִם וּמִפַּתְרוֹס וּמִכּוּשׁ וּמֵעֵילָם
+    וּמִשִּׁנְעָר וּמֵחֲמָת וּמֵאִיֵּי הַיָּם
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="390,320,420,335">
     11.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="670,320,940,375">
+    11. Καὶ ἔσται ἐν τῇ ἡμέρᾳ ἐκεί-
+    νῃ προσθήσει Κύριος δεύτερον τὴν
+    χεῖρα αὐτοῦ, τοῦ κτήσασθαι ὑπό-
+    λειμμα τοῦ λαο αὐτο, ὃ πολει-
+    φθήσεται ἀπὸ τῶν Ἀσσυρίων
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="120,380,350,400">
+    14 וְעָפוּ בְכָתֵף פְּלִשְׁתִּים יָמָּה יַחְדָּו יָבֹזּוּ אֶת־בְּנֵי־קֶדם
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="390,380,420,395">
     14.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="670,380,940,405">
+    14. Ἰδουμαία καὶ Μωὰβ ἀποστο-
+    λὴ χειρὸς αὐτῶν.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="90,405,350,430">
+    15 וְהֶחֱרִים יְהוָה אֶת לְשׁוֹן יָם־מִצְרַיִם וְהֵנִיף יָדוֹ עַל־הַנָּהָר
+    בְּעֹי רוּחוֹ וְהִכָּהוּ לְשִׁבְעָה נְחָלִים וְהִדְרִיךְ בַּנְּעָלִים
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="390,405,420,420">
     15.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="670,405,940,430">
+    15. Καὶ ἀναθεματίσει Κύριος τὴν
+    γλῶσσαν θαλάσσης Αἰγύπτου.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,440,330,460">
     VERSIO HEBRAICI TEXT.
-    3. Nec ad visionem oculorum   suorum judicabit, neque ad audi- tum aurium suarum arguet.
-    4. Et arguet in rectitudine man- suetus terræ.
-    5. Et erit justitia cingulum lum- borum ejus, et fides cingulum re- num ejus.
-    7. Et vacca et ursa pascentur  simul, accubabunt nati earum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="420,440,580,460">
+    VULGATA LATINA
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="760,440,850,460">
+    AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,465,360,565">
+    3. Nec ad visionem oculorum
+    suorum judicabit, neque ad audi-
+    tum aurium suarum arguet.
+    4. Et arguet in rectitudine man-
+    suetis terræ.
+    5. Et erit justitia cingulum lum-
+    borum ejus, et fides cingulum re-
+    num ejus.
+    7. Et vacca et ursa pascentur
+    simul, accubabunt nati earum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="370,465,650,565">
+    3. Non secundum visionem ocu-
+    lorum judicabit, neque secundum
+    auditum aurium arguet.
+    4. Et arguet in æquitate pro
+    mansuetis terræ.
+    5. Et erit justitia cingulum
+    lumborum ejus, et fides cincto-
+    rium renum ejus.
+    7. Vitulus et ursus pascentur :
+    simul requiescent catuli eorum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="660,465,940,565">
+    3.
+    4. Et arguet in rectitudine man-
+    suetis terræ.
+    5.
+    7. Et vacca et ursa pascentur
+    simul, claudentur parvuli eorum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,570,200,585">
     Quasi bos.
-    10. Quæ stans in vexillum po- pulorum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="390,570,490,585">
+    Quasi bos.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="670,570,790,585">
+    Quasi bucolium.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,590,360,640">
+    10. Quæ stans in vexillum po-
+    pulorum.
     Requies ejus.
     Gloria.
-    11. Et erit in die illo : adjiciet Dominus secundo manum suam ad possidendum residuum populi sui, quod relinquebit ab Assur.
-    14. Edom et Moab missio ma- nus eorum.
-    15. Et feriet anatheme Dom- nus linguam maris Ægypti.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="680,80,1000,760">
-    ΑΚΥΛΛΑΣ.
-    3.
-    4. Και ελεχξει εν εὐθίνι τῇ  πραξει τῆς γῆς.
-    5.
-    7. Και δάμαλις και αρχὸς γεμε- θήσονται ὅμως, κατακλεισθήσονται  παιδία αὐτῶν.
-    Ὡς βουκολιον.
-    10. Ὁς ἀνίσταται εἰς σύστημα  λαῶν.
-    Ἡ ἀνάπαυσις αὐτοῦ.
-    Δόξα.
-    11. Και ἔσται ἐν τῇ ἡμέρᾳ ἐκεί- νη προσθήσει Κύριος δεύτερον τὴν χεῖρα αὐτοῦ, τοῦ κτασθαι· ὑπο- λειμμα τοῦ λαοῦ αὐτοῦ, ὃ ὑπολει- φθήσεται ἀπὸ τῶν Ἀσσυρίων
-    14. Ἰδουμαῖα και Μωαβ αποστο- λη χειρός αὐτῶν.
-    15. Και αναθεματισει Κύριος τὴν γλῶσσαν θαλάσσης Αἰγύπτου.
-    AQUILA.
-    3.
-    4. Et arguet in rectitudine man- suetus terræ.
-    5.
-    7. Et vacca et ursa pascentur  simul, claudentur parvuli eorum.
-    Quasi bucolium.
-    10. Qui consurgit in signum po- pulorum.
+  <bloco tipo="texto_principal" script="latino" bbox="370,590,650,640">
+    10. Qui stat in signum populo-
+    rum.
+    Sepulcrum ejus.
+    Gloriosum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="660,590,940,640">
+    10. Qui consurgit in signum po-
+    pulorum.
     Requies ejus.
     Gloria
-    11. Et erit in die illa adjicet Dominus secundo manum suam, ad possidendum residuum populi sui, quod relinquetur ab Assyriis.
-    14. Idumæa et Moab missio manus eorum.
-    15. Et anathematizabit Domi- nus linguam maris Ægypti.
-    Notæ et variæ lectiones ad cap. XI Hesaiæ.
-    V. 1. Α., Ῥαβδιων. Procopius.
-    Ibid. Α., Σ., Θ., ανα χοροιμ. Sic Eusebius in Hesaiam, et Hieronymus, qui interpretationem La- tinam sic offert, ex trunco.
-    Ibid. Hieronymus : « Pro flore, qui Hebraice di- citur NESER, Aquila, Symmachus et Theodotio germen transulerunt. » Idem porro Hieronymus Hesaiæ xiv, 19. « NESER proprie virgultum appel- latur, quod ad radices arborum nascitur, et quasi inutile ad agricolas amputatur. » Drusius qui hæc loca adfert , adjicit : « In schedis meis ע-א, αρχέ- 
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="0,760,1000,1000">
+  <bloco tipo="texto_principal" script="latino" bbox="80,645,360,695">
+    11. Et erit in die illo : adjiciet
+    Dominus secundo manum suam ad
+    possidendum residuum populi sui,
+    quod remanebit ab Assur.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="370,645,650,695">
+    11. Eterit in die illa : adjiciet Do-
+    minus secundo manum suam ad
+    possidendum residuum populi sui,
+    quod relinquetur ab Assyriis.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="660,645,940,695">
+    11. Et erit in die illa adjiciet
+    Dominus secundo manum suam,
+    ad possidendum residuum populi
+    sui, quod relinquetur ab Assy-
+    riis.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,700,360,730">
+    14. Edom et Moab missio ma-
+    nus eorum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="370,700,650,730">
+    14. Idumæa et Moab præceptum
+    manus eorum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="660,700,940,730">
+    14. Idumæa et Moab missio
+    manus eorum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,735,360,765">
+    15. Et feriet anathemate Domi-
+    nus linguam maris Ægypti.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="370,735,650,765">
+    15. Et desolabit Dominus lin-
+    guam maris Ægypti.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="660,735,940,765">
+    15. Et anathematizabit Domi-
+    nus linguam maris Ægypti.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="300,770,700,790">
+    Notæ et variæ lectiones ad cap. XI Hesaiæ.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="80,795,500,930">
+    V. 1. Ἀ., ῥαβδίον. Procopius.
+    Ibid. Ἀ., Σ., Θ., ἀπὸ κορμοῦ. Sic Eusebius in
+    Hesaiam, et Hieronymus, qui interpretationem La-
+    tinam sic effert, ex trunco.
+    Ibid. Hieronymus : « Pro flore, qui Hebraice di-
+    citur NESER, Aquila, Symmachus et Theodotio
+    germen transtulerunt. » Idem porro Hieronymus
+    Hesaiæ xiv, 19. « NESER proprie virgultum appel-
+    latur, quod ad radices arborum nascitur, et quasi
+    inutile ad agricolas amputatur. » Drusius qui hæc
+    loca adfert, adjicit : « In schedis meis ינצא Α., ἀπέ-
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="510,795,940,930">
+    μονα, virgultum, Th., βλαστόν. » Hoc autem acce-
+    pit ex Hieronymo, libro vi, in cap. 14 Hesaiæ, ubi
+    legitur : « Theodotio, germen : Aquila, ἀπέμονα.»
+    V. 3.12., οὐ τ ὁράσει etc. Procopius.
+    V. 4. Ἀ., καὶ ἐλέγξει etc. Procopius et Drusius.
+    [Ad Symmachum, Drusius ex Procopio, et ex Dru-
+    sio Montfauconius, habet, καὶ ἐλέγξει. Ipse autem
+    Procopius non ita, sed, ἀλλὰ κρίνει. Cf. L. Bos
+    notam ad h. l. DRACA.]
+    V. 5. Σ., καὶ ἔσται δικαιοσύνη etc. Procopius.
+    V. 7. Ἀ., Θ., καὶ δάμαλις καὶ ἄρκτος νεμεθήσον-
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,950,800,980">
     Digitized by Google
   </bloco>
-  <notas>Pagina em três colunas: coluna esquerda em hebraico, coluna central em latim (títulos e versão hebraica/latina) e coluna direita em grego com inserções latinas. Pequenas lacunas e sinais tipográficos mantidos; [ilegivel] não foi necessário salvo onde texto termina abruptamente no fim da coluna direita.</notas>
 </pagina>

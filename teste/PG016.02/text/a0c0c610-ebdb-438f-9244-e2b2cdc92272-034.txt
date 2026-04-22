@@ -1,35 +1,34 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,90">
-    1319                                              ΠΕΧΑΛΟΡUM QUÆ SUPERSVNT.                                             1320
+  <bloco tipo="cabecalho" script="misto" bbox="100,40,900,80">
+    1319 HEXAPLORUM QUÆ SUPERSUNT. 1320
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,90,320,820">
+  <bloco tipo="texto_principal" script="hebrew" bbox="100,90,320,540">
     TO ΕΒΡΑΙΚΟΝ.
-    טנעמ 15
-    נטו 16
-    ושב תעומת נפש
+    פתאם 15
+    זהה 16
+    ושבע תועבת נפשו
     רמות 17
     נקי
-    ממדחות רחן לידה 18
-    יפה 19
-    מדנים
-    קרשים 21
-    על-לב
-    עדים
-    הנהזה אוחך 22
-    והקיות
-    וטוהדה אור 23
-    תהדות מוסר
-    י מאות רע 24
-    מלקת לשן נגדה
-    אל-חמר יפה בלבב 25
-    וא-תדף
-    היטחתא איש 27
-    ולא-אשת רע 29
-    לא-ימוד לנגב 30
+    מכורות ודך לרעה 18
+    יפיח 19
+    מזנים
+    קשרם 21
+    על-לבך
+    עדם
+    תחת אזנק 22
+    הקיצות
+    אור תורהו 23
+    מוסר התחת
+    רע מאשת 24
+    מחלקת לשון נכריה
+    אל-תחמוד יפיה בלבך 25
+    ואל-תקחך
+    היתחה איש 27
+    ואל-אשת רעך 29
+    לא-יבזו לגנב 30
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,90,660,820">
-    TO EBRAIKON
-    Ἑλληνικοὶς γράμμασι.
+  <bloco tipo="texto_principal" script="greek" bbox="350,90,550,540">
+    TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι.
     15.
     16.
     17.
@@ -43,6 +42,26 @@
     27.
     29.
     30.
+  </bloco>
+  <bloco tipo="texto_principal" script="greek" bbox="650,90,950,540">
+    ΑΚΥΛΑΣ.
+    15. Παραχρῆμα.
+    16. Καὶ ἑπτὰ βδελύγματα ψυχῆς αὐτοῦ.
+    17. Ὑψηλός.
+    Ἀθῷον.
+    18. Ταχύνοντες δραμεῖν εἰς κακίαν.
+    19
+    21. Σύνδησον αὐτούς.
+    22. Ὁδηγεῖτω σε.
+    23. Καὶ νόμος φῶς.
+    Ἔλεγχοι παιδείας.
+    24. [Γυναικὸς] ἑταίρου σου.
+    25. Μὴ ἐπιθυμήσῃς κάλλους αὐτῆς ἐν καρδίᾳ σου.
+    27. Μὴ ὑποθύψει ἀνήρ;
+    29. [Γυναῖκα] ἑταίρου αὐτοῦ.
+    30. Οὐκ ἐξουδενώσουσι τὸν κλέπτην.
+  </bloco>
+  <bloco tipo="texto_principal" script="latin" bbox="100,560,320,950">
     VERSIO HEBRAICI TEXT.
     15. Extemplo.
     16. Dominus.
@@ -50,44 +69,24 @@
     17. Sublimes.
     Innocentis.
     18. Festinantes currere ad malum.
-    19. Effabit.
+    19. Efflabit.
     Dissidia.
     21. Liga ea.
     In corde tuo.
     Vinci ea.
     22. Deducet te.
     Et expergefactus fueris.
-    25. Et lex lux.
+    23. Et lex lux.
     Increpationes eruditionis.
     24. A muliere mala.
-    A lenitate linguæ extranææ.
+    A lenitate linguæ extraneæ.
     25. Ne concupiscas pulcritudinem ejus in corde tuo.
     Et non capiat te.
     27. Numquid accipiet vir?
     29. Et ad uxorem socii sui.
-    30. Non spercent furem.
+    30. Non spernent furem.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,90,975,820">
-    ΑΚΥΛΑΣ.
-    15. Παραχρήμα.
-    16.
-    Και επτα βδελύγματα ψυχῆς αὐ-
-    τοῦ.
-    17. Ψηλός.
-    Ἀθλων.
-    18. Ταχύνοντες δραμεῖν εἰς κα-
-    χιλαν.
-    19
-    21. Συνδήρων αὐτούς.
-    22. Ὑδηγεῖτω σε.
-    23. Και νόμος φῶς.
-    Ἔλεγχοι παιδείας.
-    24. [Γυναικος] ἑταίρου σου.
-    25. Μὴ ἐπιθυμήσης κάλλους αὐ-
-    τῆς ἐν καρδίᾳ σου.
-    27. Μὴ ὑποδύψῃ ἀνήρ;
-    29. [Γυναῖκα] ἑταίρου αὐτοῦ.
-    30. Οὐχ ἐξουθενώσουσι τὸν κλέπτην.
+  <bloco tipo="texto_principal" script="latin" bbox="350,560,600,950">
     VULGATA LATINA.
     15. Extemplo.
     16. Dominus.
@@ -102,19 +101,21 @@
     Circumda.
     22. Gradiantur tecum.
     Et evigilans.
-    25. Et lex lux.
+    23. Et lex lux.
     Increpatio disciplinæ.
     24. A muliere mala.
-    Et a blanda lingua extranææ.
+    Et a blanda lingua extraneæ.
     25. Non concupiscat pulcritudinem ejus cor tuum.
     Nec capiaris.
     27. Numquid potest homo abscondere?
     29. Ad mulierem proximi.
     30. Non grandis est culpa, cum quis furatus fuerit.
+  </bloco>
+  <bloco tipo="texto_principal" script="latin" bbox="650,560,950,950">
     AQUILA.
     15. Statim.
     16.
-    Et septem abominationes animi ejus.
+    Et septem abominationes animæ ejus.
     17. Excelsus.
     Innocentem.
     18. Festinantes currere ad malitiam.
@@ -123,14 +124,20 @@
     22. Ducat te.
     23. Et lex lux.
     Redargutiones disciplinæ.
-    24. Muliere sodalis sui.
+    24. Muliere sodalis tui.
     25. Ne concupiscas pulcritudinem ejus in corde tuo.
-    27. Numquid accendet vir?
+    27. Numquid accendet vir ?
     29. Ad uxorem socii sui.
     30. Non spernent furem.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,820,975,980">
+  <bloco tipo="rodape" script="latin" bbox="500,960,800,990">
     Digitized by Google
   </bloco>
-  <notas>Transcrição preserva linhas e divisão em colunas. Algumas palavras hebraicas e sinais podem estar parcialmente ilegíveis; usei correspondência directa dos traços visíveis. Colunas transcritas: esquerda = hebraico, centro = grego/latim cabeçalho e versio hebraici, direita = Aquila/latim. Mantive números e pontuações conforme imagem.</notas>
+  <notas>
+    A página apresenta uma disposição em três colunas principais comparando textos bíblicos (Provérbios 6).
+    Coluna 1: Texto Hebraico (TO ΕΒΡΑΙΚΟΝ) e sua tradução latina (VERSIO HEBRAICI TEXT).
+    Coluna 2: Título "Hebraico em letras gregas" (TO ΕΒΡΑΙΚΟΝ Ἑλληνικος γράμμασι), mas apenas os números dos versículos aparecem na parte superior; abaixo está a Vulgata Latina.
+    Coluna 3: Versão de Áquila em Grego (ΑΚΥΛΑΣ) e sua tradução latina (AQUILA).
+    Alguns caracteres hebraicos podem apresentar variantes ortográficas específicas desta edição (ex: v16 "זהה", v18 "מכורות ודך").
+  </notas>
 </pagina>

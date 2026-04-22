@@ -193,7 +193,7 @@ def backfill_keywords_scripture_flag(
 def main():
     conn = connect_db(Path("data/patristica_keywords.db"))
     ensure_fields_tables(conn)
-    # backfill_keywords_scripture_flag(conn, dry_run=True)
+    backfill_keywords_scripture_flag(conn, dry_run=True)
 
 
     # Comando abaixo não deve ser rodado em modo DRY

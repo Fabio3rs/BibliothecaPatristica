@@ -1,41 +1,43 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,90">
-    HEXAPLORUM QUÆ SUPERSUNT.
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    1075 HEXAPLORUM QUÆ SUPERSUNT. 1076
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,90,320,820">
-    (Hebrew column lines:)
-    [אלף] [שלום]
-    [שומר]
-    [שומרי]
-    [משמר 19]
-    [משמר 20]
-    [כה]
-    [שלעט 21]
-    [ומק] 
-    [שקד]
-    [ומתנה]
-    [והעצמים וחין רמה]
-    [ומשמר 22]
-    [ומשמר 23]
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,330,440">
+    TO ΕΒΡΑΙΚΟΝ.
+    יאמר אליה
+    סורי
+    ותסורי
+    בשמיה
+    ותכסהו 19
+    פתח 20
+    שמה 21
+    ותתקע
+    ברקתו
+    ותצנח
+    הארצה ויעף וימת
+    הנה ברק 22
+    ונפל
+    ויכנע 23
+    לפני
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="350,90,640,820">
-    TO EBRAIKON
-    Ελληνικά γράμματα.
+  <bloco tipo="texto_principal" script="greco" bbox="340,60,600,440">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
     19.
     20.
     21.
     22.
     23.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,90,960,820">
-    AKYLAS.
+  <bloco tipo="texto_principal" script="greco" bbox="610,60,900,440">
+    ΑΚΥΛΑΣ.
     19.
     20.
     21.
     22.
     23.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,820,960,1300">
+  <bloco tipo="texto_principal" script="latino" bbox="50,450,330,750">
     VERSIO HEBRAICI TEXT.
     Dixit ad eum.
     Declina.
@@ -45,7 +47,7 @@
     20. Ostium.
     Hic.
     21. In silentio.
-    Et insisit.
+    Et infixit.
     In tempus ejus.
     Et fixit se.
     Et ipse soporatus erat, et lassatus, et mortuus est.
@@ -53,41 +55,59 @@
     Cadens.
     23. Et humiliavit.
     Ad facies.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="340,450,600,750">
     VULGATA LATINA.
     Dixit ad eum.
     Intra.
-    Et operitus ab ea.
+    Et opertus ab ea.
     Pallio.
     19. Et operuit eum.
     20. Ante ostium.
     Hic.
-    21. Abscodite.
+    21. Abscondite.
     Et posuit.
     Supra tempus.
     Defixit.
-    Qui soporem morti conscians defecit et mortuus est.
+    Qui soporem morti consocians defecit et mortuus est.
     22. Et ecce Barac.
     Jacentem.
     23. Humiliavit ergo.
     Coram.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,1300,960,1950">
-    Notæ et variæ lectiones ad cap. IV Judicum.
-    V. 1. 'Αλλος, τερπν́. Basil.
-    V. 1. 'Αλλος, 'Αδελφο. Basil.
-    V. 5. Ad vocem, της Βαθθλ̣, in Basilicensi legitur ad marginem.
-    0 0 0
-    il est, 0', 0'. Hic notare videtur duas ignotas nobis τῶν 0' editiones, quæ omnes, sic, habebant.
-    Postea vero, V, G., κτλ̓, editionem quandam Υ, 0 notare videtur, sive LXX interpretum, et Theodotionis, quam frequenter memorat infra. Sed hæc admodum obscura sunt.
-    
-    Ibid. 'Αλλος, τοῦ χριστου. Basil.
-    V. 6. Ex τῶν ὑἱῶν Nepr. Basil. ad marg., &c.
-    V. 7. Υ, ἐταξε πριν, cf. Coislin. In textu, ἀνεβη προς αυ, ad marg., 'Α, λιπ̓τω προς στ. Στ. ἀποστερει, dubium. Hebraicum est המת עלמו.
-    Ibid. 0', G., iv ψι γεγραψεν. Basil. hicum aucem versus sequenti in hæc verba τῶν 0', hær' spoli, hæc nota1, 0', VS, 0v.
-    Et v. 5. ad corundem vocem, περινουμ̓,
-    παν γε
-    ὁπωσ' ου
+  <bloco tipo="texto_principal" script="latino" bbox="610,450,900,750">
+    AQUILA.
+    19.
+    20.
+    21.
+    22.
+    23.
   </bloco>
-  <notas>Scripts present: latin, hebrew, greek. Hebrew column contains many partially illegible words; bracketed line "(Hebrew column lines:)" added to indicate transliteration placeholder where exact letters uncertain. BBOX coordinates estimated on 0-1000 scale. Two-column layout: left Hebrew, center Greek, right Akylas/Latin headings; main Latin text spans full width below columns. Some Hebrew words unreadable and transcribed conservatively; no normalization performed.</notas>
+  <bloco tipo="nota" script="latino" bbox="250,760,750,780">
+    Notæ et variæ lectiones ad cap. IV Judicum.
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="50,780,480,940">
+    V. 1. Ἄλλος, ἐναντίον. Basil.
+    V. 2. Ἄλλος, Ἀβενώθ. Basil.
+    V. 5. Ad vocem, τῆς Βαυθήλ, in Basileensi legitur ad marginem,
+    O O ου
+    O Θ γω
+    id est, Ο', Ο'. Hic notare videtur duas ignotas nobis τῶν Ο' editiones, quæ οὕτως, sic, habebant. Postea vero, Ο', Θ., χωρίς, editionem quamdam Ο', Θ notare videtur, sive LXX Interpretum, et Theodotionis, quam frequenter memorat infra. Sed hæc admodum obscura sunt.
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="490,780,950,940">
+    Ibid. Ἄλλος, τοῦ κρίνεσθαι. Basil.
+    V. 6. Ἐκ τν υῶν Νεφθ. Basil. ad marg., ἀπό.
+    V. 7. Ο', ἀπάξω πρὸς σέ. Coislin. in textu, ἀπάξω πρὸς σέ, ad marg., Ἀ., ἐλκύσω πρὸς σέ. Σ., ἀφύσσω, dubium. Hebraicum est דברי...
+    Ibid. Ο', Θ., ἐν τῇ χειρί σου. Basil. hicem autem versu sequenti in hæc verba τῶν Ο', μετ' ἐμοῦ, hæc notat. Ο', χω, Θ., ου.
+    Et v. 5. ad eorumdem vocem, πορευομένη,
+    τ
+    παν γω
+    διωρτ' ου
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="550,960,850,990">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição de página da Patrologia Graeca (Hexapla). Contém colunas em Hebraico, Grego e Latino. Alguns caracteres hebraicos no bloco 2 podem variar ligeiramente devido à qualidade da imagem (ex: בשמיה vs בשמריך). No bloco 16 (notas), o texto hebraico após "Hebraicum est" está parcialmente ilegível/cortado.
+  </notas>
 </pagina>

@@ -1,31 +1,28 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,90">
-    55                                HEXAPLORUM QUÆ SUPERSUNT.                                   56
-    TO EBPAIKON.                             TO EBPAIKON                              AKILAS.
-                                             Ἑλληνικοῖς γράμμασι.
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,50">
+    35 HEXAPLORUM QUÆ SUPERSUNT. 36
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,90,330,520">
-    7 את מצדה
-    8 כל־הכה: ונסי ויגע בצרת
-    אל־הבית
-    9 וישב זר במצודה וקראלה
-    עיר דוד
-    פירסמיא וביתה
-    10 וגדל
-    צבאות
-    12 וגבר
-    15, 16 ויבחר יהבוה ואולשה ועובד ויפץ
-    ואלישמע; ואלעד ואילפלם
-    17 אל־מצודה
-    18 ראשם
-    20 במעל־פי גוים
-    21 עבדתם
-    22 ובוששו
-    23 רבאים
-    , בלבב אלה־אדם
-    כמול באים
+  
+  [!-- Coluna Superior Esquerda: Hebraico --]
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,60,300,450">
+    TO EBPAIKON.
+    אֶת־מְצֻדַת 7
+    כָּל־מַכֵּה בְיִסֵי וּבַצַּר 8
+    אֱלֹהֵי־בֵית
+    וְיוֹשֵׁב דּוֹד בַּמְּצֻדָה וַיִּקְרָא־לָהּ 9
+    עִיר דּוֹד
+    מִן־הַמִּלּוֹא וָבָיְתָה
+    וְהוֹלֵךְ הוֹלֵךְ וְגָדוֹל 10
+    צְבָאוֹת
+    וַיִּבן 12
+    וְאֶלְיָדָע וְאֱלִיפלֶט 15. 16
+    וּבְנֵי אלִישָׁמָע וְנֶפֶג וְיַפְיָע
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="340,90,660,520">
+
+  [!-- Coluna Superior Central: Grego (Transliteração) --]
+  <bloco tipo="texto_principal" script="grego" bbox="350,60,550,450">
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
     7.
     8.
     9.
@@ -39,62 +36,76 @@
     22.
     23.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="670,90,960,520">
-    7. Τὸ ὄχυρωμα.
-    8. Πᾶς πατισάων Τεβουσαεὼ καὶ ἀμεται ἐν κρουπιμῷ.
+
+  [!-- Coluna Superior Direita: Aquila (Grego) --]
+  <bloco tipo="texto_principal" script="grego" bbox="600,60,950,450">
+    AKYΛAΣ.
+    7. Τὸ ὀχύρωμα.
+    8. Πᾶς πατάσσων Ἰεβουσαῖον
+    καὶ ἅψεται ἐν κρουνισμῷ.
     9.
     Ἀπὸ πληρώματος.
-    10. Ἐπὶ τὸ μείζον.
+    10. Ἐπὶ τὸ μεῖζον.
     Στρατιῶν.
     12.
     15, 16.
-    17. Εἰς τὸ ὄχυρωμα.
-    18. Ῥαφαιμ.
-    20. Ἔχον διασποράς.
-    21. Τὰ διαστρῶματα αὐτῶν.
-    22. Καὶ ἐπήλθον.
-    Ῥαφαειμ.
+    17. Εἰς τὸ ὀχύρωμα.
+    18. Ῥαφαείμ.
+    20. Ἔχων διανοπάς.
+    21. Τὰ διαπονήματα αὐτῶν.
+    22. Καὶ ἐπῆλθον.
+    Ῥαφαείμ.
     23.
-    Ἐξεναγῶντας τῶν ἄπλων.
+    Ἐξεναντίας τῶν ἀπίων.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,520,330,920">
-    VERSIO HEBRAICI TEXT.
+
+  [!-- Cabeçalhos Seção Inferior --]
+  <bloco tipo="cabecalho" script="latino" bbox="50,480,950,510">
+    VERSIO HEBRAICI TEXT.        VULGATA LATINA.        AQUILA.
+  </bloco>
+
+  [!-- Coluna Inferior Esquerda: Versão Hebraica (Latim) --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,520,300,900">
     7. Munitionem.
-    8. Omnis percutiens Jebusaeum,
+    8. Omnis percutiens Jebusæum,
     et attinget in fistulam.
     In domum.
-    9. Et habitavit David in munitione, vocavitque eam , civitatem
+    9. Et habitavit David in muni-
+    tione, vocavitque eam, civitatem
     David.
     A Mello et intra domum.
     10. Et grandis evadendo.
-    Exercitum.
+    Exercituum.
     12. Confirmasset eum.
     15, 16. Et Jebaar, et Elisue, et
-    Nephleg, et Jephia, et Elisama, et
+    Nepheg, et Jephia, et Elisama, et
     Eliada, et Eliphalath.
     17. In munitionem.
     18. Raphaim.
-    20. In Baal–Pherasim.
+    20. In Baal-Pherasim.
     21. Dolores suos.
     22. Et diffuderunt se.
     Raphaim.
     23. Gyra post tergum eorum.
     Ex adverso mororum.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,520,660,920">
-    VULGATA LATINA.
+
+  [!-- Coluna Inferior Central: Vulgata --]
+  <bloco tipo="texto_principal" script="latino" bbox="350,520,600,900">
     7. Arcem.
-    8. Qui percusisset Jebusaeum ,
+    8. Qui percussisset Jebusæum,
     et tetigisset domatum fistulas.
     In templum.
-    9. Habitavit autem David in arce, et vocavit eam, civitatem David.
+    9. Habitavit autem David in ar-
+    ce, et vocavit eam, civitatem Da-
+    vid.
     A Mello et intrinsecus.
     10. Atque succrescens.
-    Exercitum.
+    Exercituum.
     12. Confirmasset eum.
-    15, 16. Et Jebahar, et Elisna,
-    et Nephleg, et Japhia, et Elisama,
-    et Elioda, et Eliphaleth.
+    15, 16. Et Jebahar, et Elisua,
+    et Nepheg, et Japhia, et Elisama,
+    et Elioda, et Eliphalet.
     17. In præsidium.
     18. Raphaim.
     20. Baal Pharasim.
@@ -104,18 +115,19 @@
     23. Gyra post tergum eorum.
     Ex adverso pyrorum.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,520,960,920">
-    AQUILA.
+
+  [!-- Coluna Inferior Direita: Aquila (Latim) --]
+  <bloco tipo="texto_principal" script="latino" bbox="650,520,950,900">
     7. Munimentum.
-    8. Omnis percutiens Jebusaæm,
+    8. Omnis percutiens Jebusæum,
     et attinget in scalebram.
     9.
-    'A plenitudine.'
+    A plenitudine.
     10. In melius.
-    Exercitum.
+    Exercituum.
     12.
     15, 16.
-    17. In munimentum,
+    17. In monumentum.
     18. Raphaim.
     20. Habens diruptiones.
     21. Labores suos.
@@ -124,5 +136,8 @@
     23.
     Ex adverso pyrorum.
   </bloco>
-  <notas>Scripts presentes: hebraico, grego, latino. Retido uso de pontuação conforme original; várias linhas e números são alinhamentos de colunas. Algumas palavras hebraicas e gregas não integram diacríticos claros; preservei '[ilegivel]' não sendo necessário. BBOX são estimativas proporcionais em escala 0-1000.</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="500,950,800,980">
+    Digitized by Google
+  </bloco>
 </pagina>

@@ -1,7 +1,8 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="50,10,950,80">
     225   S. FULGENTII·EPISCOPI RUSPENSIS   226
   </bloco>
+
   <bloco tipo="texto_principal" script="latino" bbox="50,100,480,860">
     [ilegivel] vindicare. Iuventus es qui te ipso potior
     [ilegivel] exstitisset, dum sic Africano praeside moderando subrepisse, dum magnum
@@ -40,7 +41,7 @@
     compositioni subjacet; nec rationalis intelligentia
     cultu diversitatis ullatenus egeat, quæ unius tantum
     simplicis sempiternaque naturæ fidem ad salutis suæ
-    plenitudinem sat esse cognoscat, ut pote qua non
+    plenitudinem sat esse cognoscat, ut pote quæ» non
     ignoret ipsum Deum sibi coelestibus oraculis intonare:
     Audi, Israel, Dominus Deus tuus, Dominus (al. Deus)
     unus est (Deut. vi, 4). Et Dominum Deum tuum ado-
@@ -52,16 +53,18 @@
     substantiam, vel localis, motionis, vel cujusquam
     mutabilitatis non metuat impiis mortiferisque
     contumeliam cogitationibus vel sermonibus irresponde;
-    unde non immerito Davidici carminis illo a sit condem-
+    unde non inmerito Davidici carminis illo a sit condem-
     nandus eloquio: Dixit insipiens in corde suo, Non est
     Deus (Psalm. xiii, 1). Quia revera, si localis, non
     immensus; si mutabilis, non est Deus.
   </bloco>
+
   <bloco tipo="nota_marginal" script="latino" bbox="490,120,530,740">
     A
     B
     C
   </bloco>
+
   <bloco tipo="texto_principal" script="latino" bbox="520,100,950,860">
     tica pravitatis errores hinc quibusdam multipliciter
     subrepsisse, dum magnum pietatis sacramentum, quod
@@ -79,14 +82,14 @@
     senilibus (Luc. ii, 28), et figuram gerens præsentis
     ævi, carnali senio jam defessi, novum velut homi-
     nem sumeret, eum scilicet qui solus posset ex pec-
-    catoribus (longavo dicenti: Tu es Deus salvator meus,
-    et te exspectavi tota (al. toto) die (Psal. xl, 5)) non
-    solum inolitum vetustatem demere, quin etiam
-    juventutem, sicut aquilae, renovare (ut pote cui etiam
-    apostolica tuba foret veraciter canitura: Sicuti est veritas
-    in Jesu; deponere vos secundum (al. sicuti)
-    pristinam conversationem veterem hominem, qui cor-
-    ruptum secundum desidiae errores; renovamini antem
+    catoribus (longævo dicenti: Tu es Deus salvator
+    meus, et te exspectavi tota (al. toto) die (Psal. xlviii,
+    5)) non solum inolitam vetustatem demere, quin etiam
+    juventutem, sicut aquile, renovare (ut pote cui
+    etiam apostolica tuba foret veraciter canitura: Sicuti
+    es veritas in Jesu; deponere vos secundum (al. sicui)
+    pristinam conversationem veterem hominem, qui corr-
+    uptum secundum desidiae errores; renovamini antem
     spiritu mentis vestræ, et induite novum hominem,
     qui secundum Deum creatus est in justitia et sacri-
     tatis veritate (Eph. iv, 24); ille igitur Simeon, mundana
@@ -105,34 +108,30 @@
     In uno eodemque Christo, vero Dei veroque hominis
     filio, minus perspicientium tenebatur hactenus [ilegivel],
     in quo illuminatis veri luminis claret manifesta
-    cognitio. Inde est quod Judæus hominem Christum
-    cæcus vidit, et cecidit, cui jam pridem Isaias non
-    destitit prædicare: Aure audietis, et non intellegi-
+    cognitio. Inde est quod Judæus hominem Christum cæcus vidit, et cecidit, cui jam pridem
+    Isaias non destitit prædicare: Aure audietis, et non intellegi-
     tis, et videntes videntis, et non videbitis (Isai. ix, 6).
     Quid vero essent non visuri videntes, subsecutus
     ostendit, dum Deum ex Virgine nasciturum evidenti
-    vaticinatione testatur: Ecce, inquimus, virgo in utero
+    valicinatione testatur: Écce, inquimus, virgo in utero
     concipiet, et pariet filium, et vocabitur nomen ejus
     Emmanuel (Isai. vii, 14), quod interpretatur eva-
     gelista, dicens: Nobiscum Deus (Matth. i, 25). Audiens
     ergo Judæus, remansit surdus, et videns, magis factus
     est cæcus; a quo nec veri Patris sempiternus atque
-    unigenitus Filius creditur, et in corruptæ virginitatis
-    fecunditas abnegatur.
+    unigenitus Filius creditur, ct incorrupt virginitatis feounditas abnegatur.
   </bloco>
+
   <bloco tipo="rodape" script="latino" bbox="50,880,940,960">
     a Ita ms. Corb.; at editi habent, illos ita condemnatos
     eoquium.
     b Ms. Corb., aut sicut est credunt, aut, etc.
     c Abest a ms. Corb. ante fuciem.
   </bloco>
+
   <bloco tipo="rodape" script="latino" bbox="420,960,880,995">
     Digitized by Google
   </bloco>
-  <notas>
-    Página impressa em latino (tipografia romana). Letras marginais "A", "B", "C"
-    na coluna central indicam sinais de parágrafo; foram mantidas como nota_marginal.
-    Muitas palavras pequenas ou parcialmente degradadas foram marcadas como [ilegivel]
-    palavra por palavra conforme visibilidade; não se fez normalização nem tradução.
-  </notas>
+
+  <notas>Transcrição em latim conforme a página impressa; caixas de coordenadas (bbox) aproximadas na escala 0-1000. Letras marginais “A”, “B”, “C” mantidas em bloco próprio como nota_marginal. Palavras não legíveis foram mantidas como “[ilegivel]”.</notas>
 </pagina>

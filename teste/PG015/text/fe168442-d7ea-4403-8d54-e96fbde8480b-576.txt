@@ -1,99 +1,124 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,110">
-    1447                     HEXAPLORUM QUÆ SUPERSUNT.                      1149
-    TO EBRAIKON.                      TO EPRAIKON                   ΑΚΥΛΑΣ.
-                                    Ελληνικοις γραμμασι.
+  <bloco tipo="cabecalho" script="latino" bbox="100,40,900,80">
+    1147 HEXAPLORUM QUÆ SUPERSUNT. 1149
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="60,120,320,720">
-    34. שׁכּם
-    ארבעה ראשׁים
-
-    35. מִזֵּמָה
-
-    36. רָאשִׁים
-
-    37. וַיֵּצֵא אישׁ אֶחָד בִּמְצַד אֶלּוּ
-    מעזבים
-
-    38. ולא
-    והלום בּ
-    39. לפי במל שׂם
-
-    41. ויאב
-    לבשם
-
-    42. השדה
-
-    44. והיזמים
-
-    פסחׁר
-    פשׁרו
-
-    45. לחם
-
-    46. מגדל שׁם:
-
-    אל־לעירית בית אל בית
+  <bloco tipo="texto_principal" script="misto" bbox="80,90,350,500">
+    TO ΕΒΡΑΙΚΟΝ.
+    שכם 34
+    ארבעה ראשי 35
+    מראשי 36
+    אחד ראש אחד בא מצד אליו 37
+    מעינים
+    אלא 38
+    שלו חלה בו
+    לפני בעלי שכם 39
+    ישב 41
+    בשם
+    השדה 42
+    הראשים 44
+    מגדל
+    נלחם 45
+    מגדל שכם 46
+    אל-ברית בית אל בית
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="360,120,640,720">
-    31. 31.
-
-    35. 35.
-
-    36. 36.
-
-    37. 37.
-
-    38. 38.
-
-    39. 39.
-
-    41. 41.
-
-    42. 42.
-
-    44. 44.
-
-    45. 45.
-
-    46. 46.
-  </bloco>
-  <bloco tipo="nota_marginal" script="grego" bbox="660,120,920,300">
-    37. Ἀρχὴ μιᾶς παρενένεκεν ἐκὰ
-    ἢδου̣̣ θρῴς ἀποβλήνωται.
+  <bloco tipo="texto_principal" script="misto" bbox="380,90,620,500">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+    31.
+    35.
+    36.
+    37.
     38.
+    39.
+    41.
+    42.
+    44.
+    45.
+    46.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,740,940,1780">
-    VERSIO HEBRAICI TEXT.           VULGATA LATINA.                  AQUILA.
-
-    34. Sechem.                     34. Sichem.                      34.
-    Quatuor capita.                 In quatuor locis.
-
-    35. De insidiis.                35. De insidiarum loco.           35.
-
-    36. De capitibus.               36. De montibus.                  36.
-
-    37. Et caput unius veniens de via  37. Et unus cauena venit per     37. Principium unum advenis de
-    quercus Melonecum.               viam quæ respicit quercum.        via quercas respiciatium.
-    38. Nonne.                       38 Nonne.
-    Et puga in eum.                 Et pugna contra eum.             38.
-
-    39. Ad facies dominorum Se-     39. Spectante Siciliuorum po-     39.
-    chem.                           pulu.
-
-    41. Et mansit.                  41. Sedit.                        41.
-    In Sechem.                      In ea.
-    42. In agrum.                   42. In campum.                    42.
-
-    44. Et capite.                  44. Cum cuneo suo.                44.
-    Vastaverunt.                    Oppugnans.
-    Vastaverunt.                    Palantes.
-
-    45. pugnavit.                   45. Oppugnabat.                   45.
-
-    46. Turris Sechem.              46. In turre Sichimorum.          46.
-
-    Ad arcem Bethelberith.          Fanum Dei sui Berith.
+  <bloco tipo="texto_principal" script="grego" bbox="650,90,920,500">
+    ΑΚΥΛΑΣ.
+    34
+    35.
+    36.
+    37. Ἀρχὴ μία παραγίνεται ἀπὸ
+    ὁδοῦ δρυὸς ἀποβλεπόντων.
+    38.
+    39.
+    41.
+    42.
+    44.
+    45.
+    46.
   </bloco>
-  <notas>Scripts presentes: hebraico, latino, greco. Hebraico pouco nítido em algumas palavras; usei [ilegivel] não foi necessário. Mapeados cabeçalho, colunas (esquerda hebraico, centro numerais latinos), nota marginal grega e texto latino inferior.</notas>
+  <bloco tipo="texto_principal" script="latino" bbox="80,520,350,920">
+    VERSIO HEBRAICI TEXT.
+    34. Sechem.
+    Quatuor capita.
+    35. De insidiis.
+    36. De capitibus.
+    37. Et caput unum veniens de via
+    quercus Mohoncuim.
+    38. Nonne.
+    Et pugna in eum.
+    39. Ad facies dominorum Se-
+    chem.
+    41. Et mansit.
+    In Sechem.
+    42. In agrum.
+    44. Et capita.
+    Vastaverunt.
+    Vastaverunt.
+    45. Pugnavit.
+    46. Turris Sechem.
+    Ad arcem Bethelberith.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,520,650,920">
+    VULGATA LATINA.
+    34. Sichem.
+    In quatuor locis.
+    35. De insidiarum loco.
+    36. De montibus.
+    37. Et unus cuneus venit per
+    viam quæ respicit quercum.
+    38 Nonne.
+    Et pugna contra eum.
+    39. Spectante Siclimorum po-
+    pulo.
+    41. Sedit.
+    In ea.
+    42. In campum.
+    44. Cum cuneo suo.
+    Oppugnans.
+    Palantes.
+    45. Oppugnabat.
+    46. In turre Sichimorum.
+    Fanum Dei sui Berith.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="680,520,920,920">
+    AQUILA.
+    34.
+    35.
+    36.
+    37. Principium unum advenit de
+    via quercus respicientium.
+    38.
+    39.
+    41.
+    42.
+    44.
+    45.
+    46.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="550,950,850,980">
+    Digitized by Google
+  </bloco>
+  <notas>
+    A página apresenta uma disposição complexa em três colunas principais, divididas em duas seções (superior e inferior).
+    Seção superior: Texto Hebraico (direita visualmente, mas coluna esquerda), Transliteração Grega do Hebraico (centro), Versão de Áquila em Grego (direita).
+    Seção inferior: Versão Latina do Texto Hebraico (esquerda), Vulgata Latina (centro), Versão Latina de Áquila (direita).
+    Os números dos versículos estão presentes em todas as colunas.
+    Na coluna superior esquerda (Hebraico), os números dos versículos aparecem visualmente à esquerda do texto (fim da linha em RTL).
+    Na coluna superior central, o primeiro número é "31.", possivelmente um erro de impressão para "34." dado o contexto das outras colunas.
+  </notas>
 </pagina>

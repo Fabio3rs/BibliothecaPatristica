@@ -1,8 +1,8 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="80,20,920,80">
-HISTORIA ECCLESIASTICA. — PARS I. — LIB. I.,
+HISTORIA ECCLESIASTICA. — PARS I. — LIB. I.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,90,920,360">
+  <bloco tipo="texto_principal" script="latino" bbox="80,80,920,330">
 ORDERICI VITALIS
 
 ANGLIGENÆ
@@ -11,13 +11,18 @@ CŒNOBII UTICENSIS. MONACHI
 
 ECCLESIASTICÆ HISTORIÆ
 
-PARS ·PRIMA
-
+PARS · PRIMA
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,330,880,400">
 In qua res ab Incarnatione Salvatoris usque ad annum 1140 gestæ, per seriem imperatorum, regum atque pontificum Romanorum breviter describuntur.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,370,940,760">
+  <bloco tipo="nota" script="latino" bbox="80,400,920,420">
+—
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="200,420,800,480">
 SUMMARIUM LIBRI PRIMI.
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="60,480,940,770">
 I. Natale Domini nostri Jesu Christi.
 II. Vita ejus.
 III. Miracula et prodigia ejus.
@@ -40,29 +45,31 @@ XIX. Successio imperatorum Romanorum.
 XX. Imperatores Romani. Persecutiones in Christianos. Constantini conversio.
 XXI. Imperatores Romani. Invasiones Anglorum, Saxonum Francorumque. Origo Francorum regni.
 XXII. Clodoveus rex Francorum baptizatur. Reges Francorum. Reges Anglorum. Imperatores Romani.
-XXIII. Conatus ad uniendas Orientalem et Occidentalem ecclesias. Constantinopolitanum concilium. Edilhrida Incæ filia. Cuthbertius episcopus.
+XXIII. Conatus ad uniendas Orientalem et Occidentalem ecclesias. Constantinopolitanum concilium. Edilthrida Inæ filia. Cuthbertus episcopus.
 XXIV. Aquileiensis synodus. Imperatores Romani. Carolus Martellus.
 XXV. Imperatores Romani. Pippinus. Carolus Magnus. Imperatores Constantinopolitani.
-XXVI. Lotharius rex. Carolus rex. Extinctio Caroli Magni dynastiæ.
+XXVI. Lotharius rex. Carolus rex. Exstinctio Caroli Magni dynastiæ.
 XXVII. Hugo rex. Remense concilium. Gerbertus papa.
-XXVIII. Otho imperator. Edeleerus Anglorum rex. Eventus varii in Anglia, Normannia et Burgundia.
-XXIX. Vicenses cenobii restauratio. Francos et Normannos inter simulatates. Claramontense concilium. Eventus varii usque ad annum 1135.
+XXVIII. Otho imperator. Edelredus Anglorum rex. Eventus varii in Anglia, Normannia et Burgundia.
+XXIX. Uticensis cenobii restauratio. Francos et Normannos inter simulitates. Claromontense concilium. Eventus varii usque ad annum 1138.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,780,920,840">
+  <bloco tipo="nota" script="latino" bbox="80,770,920,790">
+—
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,790,920,840">
 LIBER PRIMUS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,860,500,980">
+  <bloco tipo="nota" script="latino" bbox="60,840,500,880">
 I. Natale D. N. Jesu Christi.
-
-Omnipotens Verbum per quod Deus Pater omnia condidit, vitis vera, summusque paterfamilias, qui vineam plantavit, et a mane usque ad undecimam horam intromissis operariis excolit, ut uberem fructum ex eadem colligere possit, eandem vineam,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="60,860,500,980">
+Omnipotens Verbum per quod Deus Pater omnia condidit, vitis vera, summusque paterfamilias, qui vineam plantavit, et a mane usque ad undecimam horam intromissis operariis excolit, ut uberem fructum ex eadem colligere possit, eamdem vineam,
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="500,860,940,980">
-A id est sanctam Ecclesiam, nullo tempore desisit colere ejusque palmites per omnia mundi climata nobiliter propagare. Ipse nimirum, qui est omnium verus rex sæculorum, et verus pontifex futurorum bonorum, verusque propheta, hominumque dominus et angelorum, oleo lætitiæ præ participibus suis
+A id est sanctam Ecclesiam, nullo tempore desistit colere ejusque palmites per omnia mundi climata nobiliter propagare. Ipse nimirum, qui est omnium verus rex sæculorum, et verus pontifex futurorum bonorum, verusque propheta, hominumque dominus et angelorum, oleo lætitiæ præ participibus suis
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="760,980,940,998">
+  <bloco tipo="rodape" script="latino" bbox="700,980,980,998">
 Digitized by Google
   </bloco>
-  <notas>
-Transcrição realizada a partir de página tipográfica em latim. Pequumas formas antigas (ex.: ligatura CŒ) mantidas conforme impresso. Pequenos danos de impressão interpretados conforme contexto; nenhuma palavra substituída por [ilegivel].
-  </notas>
+  <notas>Transcrição fiel à página digitalizada, priorizando a leitura direta da imagem. Estado: com_texto. Script identificado: latino (impressão tipográfica); ligaturas preservadas (CŒ, Æ/æ, Œ/œ, sæculorum, lætitiæ). Layout mapeado em blocos: cabecalho (linha superior), bloco de título central (ORDERICI VITALIS … PARS · PRIMA), frase descritiva abaixo do título, sumário como bloco único central, e duas colunas de texto inferior (fluxo: coluna esquerda seguida da direita). Conforme instrução, a identificação da seção "I. Natale D. N. Jesu Christi." foi colocada em bloco próprio do tipo nota (não inclusa no corpo da coluna). BBOXs são aproximações visuais em escala 0–1000. Não foram usadas substituições por [ilegivel]; ausência de leitura clara assinalada aqui: leitura de formas como "Exstinctio/Extinctio", "Edelredus" (possível variante de nomes históricos) e a grafia final do sumário (ano 1138/1158) foi tomada conforme legibilidade na imagem — transcrito aqui como 1138. Não se efetuaram traduções ou normalizações ortográficas.</notas>
 </pagina>

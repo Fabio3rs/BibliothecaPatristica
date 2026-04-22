@@ -1,158 +1,146 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,90">
-    359                            HEXAPLORUM QUÆ SUPERSUNT.                             370
-  </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,90,320,420">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,100,40">359</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="380,20,680,40">HEXAPLORUM QUÆ SUPERSUNT.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="900,20,950,40">360</bloco>
+  
+  [!-- Top Section: Job XI --]
+  <bloco tipo="texto_principal" script="misto" bbox="50,50,320,240">
     TO ΕΒΡΑΙΚΟΝ.
-    ואל-חשק באחרי עזה 14
-    ולמש לבנא תחשב 18
-    ובני רשעים תלונה 20
-
+    וְאַל־תִּשְׁכֹּן בְּאָהֳלֶיךָ עַוְלָה 14
+    לְבֹטַח תִּשְׁכָּב 18
+    וְעֵיני רְשָׁעִים תִּכְלֶינָה 20
+    וְתִקְוָתָם נֶפֶשׁ־נָפַשׁ
     VERSIO HEBRAICI TEXT.
-
     14. Et ne habitare facias in tentoriis tuis iniquitatem.
-    18. In fiducia jaciebis.
+    18. In fiducia jacebis.
     20. Et oculi impiorum deficient.
-
     Et spes eorum exhalatio animæ.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="340,90,660,420">
+  
+  <bloco tipo="texto_principal" script="misto" bbox="350,50,620,240">
     TO ΕΒΡΑΙΚΟΝ
-    Ἑλληνικοὶς γράμμασι.
+    Ἑλληνικοῖς γράμμασι.
     14.
     18.
     20.
-
     VULGATA LATINA.
-
     14. Et non manserit in tabernaculo tuo injustitia.
     18. Securus dormies.
-    20. Oculi autem impiorum deficiunt.
-
+    20. Oculi autem impiorum deficient.
     Et spes illorum abominatio.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,90,970,420">
+  
+  <bloco tipo="texto_principal" script="misto" bbox="650,50,950,240">
     ΑΚΥΛΑΣ.
-    14. Μὴ σχηνωσάτω ἐν σκήπῳ σου παρανομία.
+    14. Μὴ σκηνωσάτω ἐν σκήνῃ σου παρανομία.
     18. Ἐν ἐλπίδι κοιμηθήσῃ.
     20.
-
-    ✖ Ἡ γὰρ ἐλπὶς αὐτῶν ἀπώλεια.
+    ✠ Ἡ γὰρ ἐλπὶς αὐτῶν ἀπώλεια.
     AQUILA.
-
     14. Ne habitet in tentorio tuo iniquitas.
-    18. Ia spe dormies.
+    18. In spe dormies.
     20.
-
-    ✖ Spes enim eorum perditio.
+    ✠ Spes enim eorum perditio.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="30,420,970,690">
-    Notæ et variæ lectiones ad cap. XI Job.
 
-    V. 2. Σ., μὴ ὁ πολυλλὰς etc. Sic omnes mss.
-    præter Colbertinum, qui deficit, ut diximus. Sic item Nicetas et Drusius.
-
-    V. 3. Ἀ., καὶ οὐκ ἔστιν etc. Sic Reg. unus.
-
-    V. 4. Editio Latina Hieronymi hæc cum asterisco habet, fai ante eam.
-
-    V. 5. Ἀλλος, ἀλλʼ ἔτι ἦν ὅπως ἄν. Drusius.
-    Ibid. Καὶ ἀνοίξει χεῖλʼ αὐτοῦ μετὰ σοῦ. Hujus loci versionem cum asterisco habet editio Latina supra memorata.
-
-    V. 6. Ἀ., ἀπρόφθογγος σοφίας. Drusius. Σ., ἀπορρήτου σοφίας. Reg. unus.
-
-    (*) Hic Symmachi locus respicit priorem præcedentis commatis partem, γνωστὸν τῆς φωνῆς, num pervestigationem Dei assequeris? Sic vero restituitur dum docet Schleusnerus : πορείας θεοῦ πῶς ἂν ἐφθίχθη ; Drusi.
+  [!-- Notes Section --]
+  <bloco tipo="cabecalho" script="latino" bbox="350,245,650,260">Notæ et variæ lectiones ad cap. XI Job.</bloco>
+  
+  <bloco tipo="nota" script="misto" bbox="50,260,480,380">
+    V. 2. Σ., μὴ ὁ πολυλάλος etc. Sic omnes mss. præter Colbertinum, qui deficit, ut diximus. Sic item Nicetas et Drusius.
+    V. 3. Ἀ., κα οὐκ στιν etc. Sic Reg. unus.
+    V. 4. Editio Latina Hieronymi hæc cum asterisco habet, fuit ante eum.
+    V. 5. Ἄλλος, ἀλλ' εἴθε ν ὅπως ν. Drusius.
+    Ibid. Καὶ ἀνοίξει χείλη αὐτοῦ μετὰ σοῦ. Hujus loci versionem cum asterisco habet editio Latina supra memorata.
+    V. 6. Ἀ., ἀπορρήτους σοφίας. Drusius. Σ., ἀπορρήτου σοφίας. Reg. unus.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="30,690,970,760">
-    CAPUT XII JOB.
+  
+  <bloco tipo="nota" script="misto" bbox="500,260,950,380">
+    Ibid. Ἄλλος, παρεισφαρμένα. Drusius, qui hanc vocem ut scholion adfert.
+    V. 7. Ἀ., μήτε ἐξιχνιασμὸν Θεοῦ; Reg. unus.
+    V. 8. Ἄλλος, μετεωρότητας etc. Drusius, qui hæc ut scholion adfert. Sed est revera alicujus interpretis. Symmachi autem versio an huc pertineat, ignoramus. (*)
+    V. 10. Editio Latina Hieronymi cum asterisco habet illud, et congregaverit, quod in LXX prætermittitur.
+    V. 12. Σ., διακενὴς θρασύνεται. Sic Colbertinus. Drusius vero θρασύνεται solum habet.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,760,360,980">
-    ΤΟ ΕΒΡΑΙΚΟΝ.
-    וחכמה תמות 2
-    ותנח 7
-    אם ישׁע לארץ 8
-    ויספר לך דגי הים
-    מי לא ידע בכול הנעשה כי יד יי עשה זאת 9
+  
+  <bloco tipo="nota" script="misto" bbox="50,380,950,410">
+    (*) Hic Symmachi locus respicit priorem præcedentis commatis partem, אָבְנֵי נַחַל חֲלָקִים, num pervestigationem Dei assequeris? Sic vero restituendum docet Schleusnerus : πορείας Θεοῦ πς ἂν ἐφίκοιο ; DRACI.
+  </bloco>
 
-    10 בשר
-    12 בישׁתים חכמה
-    14 על-אישׁ
-    16 וחכמה
-    17 מוּלדי יועצים שלול
+  [!-- Bottom Section: Job XII --]
+  <bloco tipo="cabecalho" script="latino" bbox="400,420,600,440">CAPUT XII JOB.</bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="50,440,320,900">
+    TO ΕΒΡΑΙΚΟΝ.
+    וְעִמָּכֶם תָּמוּת חָכְמָה 2
+    וְאוּלָם 7
+    אִם־אֶשְׁאָל לָאָרֶץ וְתַגֵּד לָךְ 8
+    וְיֹאמְרוּ לְךָ מִי־זֶה כָּאֵלֶּה יָדְעָה כִּי יַד־יְהוָה עָשְׂתָה זֹּאת 9
+    בָּשָׂר 10
+    בִּישִׁישִׁים חָכְמָה 12
+    עַל־אִישׁ 14
+    וְתוּשִׁיָּה 16
+    מוֹלִיךְ יוֹעֲצִים שְׁלוֹל 17
+    VERSIO HEBRAICI TEXT.
+    2. Et vobiscum morietur sapientia.
+    7. Et docebit te.
+    8. Vel loquere terræ, et docebit te.
+    Et narrabunt tibi pisces maris.
+    9. Quis non scit in omnibus his, quia manus Domini fecit hæc?
+    10. Carnis.
+    12. In decrepitis sapientia.
+    14. Super virum.
+    16. Et persistentia.
+    17. Abducens consiliarios manubias.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="380,760,660,980">
-    ΤΟ ΕΒΡΑΙΚΟΝ.
+
+  <bloco tipo="texto_principal" script="misto" bbox="350,440,620,900">
+    TO ΕΒΡΑΙΚΟΝ.
+    Ἑλληνικοῖς γράμμασι.
     2.
     7.
     8.
     9.
-
     10.
     12.
     14.
     16.
     17.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,760,970,980">
-    ΑΚΥΛΑΣ.
-    2. Καὶ συν ὑμῖν τελειώματα σοφίας.
-    7. Καὶ φωτίσει σοι.
-    8.
-    9.
-
-    10. ✖ Κρεως.
-    12. Ἐν παλαιοῖς σοφία.
-    14. Ἐπʼ ἀνδρα.
-    16.
-    17. Ἀπάγων συμβούλους λαφυρα.
-
-    VERSIO HEBRAICI TEXT.
-
-    2. Et vobiscum morietur sapientia.
-    7. Et docebit te.
-    8. Vel loqueretur terræ, et docebit te.
-
-    Et narrabunt tibi pisces maris.
-    9. Quis non scit in omnibus his, quia manus Domini fecit hæc?
-
-    10. Carnis.
-    12. In decrepitis sapientia.
-    14. Super virum.
-
-    16. Et persilsentia.
-    17. Abducens consiliarios manubias.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,980,970,1310">
     VULGATA LATINA.
-
     2. Et vobiscum morietur sapientia.
-    7. Et docebunt te.
+    7. Et docehunt te.
     8. Loquere terræ, et respondebit tibi.
-
     Et narrabunt pisces maris.
-    9. Quis ignorat quod omnia hæc manus Domini fecerit?
-
+    9. Quis ignorat quod omnia hæc manus Domini fecerit ?
     10. Carnis.
     12. In antiquis est sapientia.
     14. Hominem.
-
     16. Et sapientia.
     17. Adducit consiliarios in stultum finem.
+  </bloco>
 
-    AQUILA.
-
-    2. Et vobiscum perfectiones sapientiæ.
-    7. Et illumiet tibi.
+  <bloco tipo="texto_principal" script="misto" bbox="650,440,950,900">
+    ΑΚΥΛΑΣ.
+    2. Καὶ σὺν ὑμῖν τελευτήματα σοφίας;
+    7. Καὶ φωτίσῃ σοι.
     8.
-
     9.
-
-    10. ✖ Carnis.
+    10. ✠ Κρέως.
+    12. Ἐν παλαιοῖς σοφία.
+    14. Ἐπ' ἄνδρα.
+    16.
+    17. Ἀπάγων συμβούλους λάφυρα.
+    AQUILA.
+    2. Et vobiscum perfectiones sapientiæ.
+    7. Et illuminet tibi.
+    8.
+    9.
+    10. ✠ Carnis.
     12. In antiquis sapientia.
     14. Super virum.
-
     16.
-    17. Adducens consiliarios manubias.
+    17. Aoducens consiliarios manubias.
   </bloco>
-  <notas>Scripts presentes: hebraico, grego, latino. Algumas palavras hebraicas parcialmente danificadas; transcrição respeita linhas e sinais tal como visíveis. Usei [ilegivel] somente quando necessário (nenhuma ocorrência necessária neste excerto).</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="550,960,850,990">Digitized by Google</bloco>
 </pagina>

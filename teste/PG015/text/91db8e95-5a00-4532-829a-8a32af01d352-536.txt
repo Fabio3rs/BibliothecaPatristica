@@ -1,28 +1,24 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,110">
-    4067                                        HEXAPLORUM QUÆ SUPERSUNT.                                        4068
-    TO EBPAIKON.                              TO EBPAIKON                             AKΥΛΑΣ.
-                                             Ἑλληνικοῖς γράμμασι.
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,80">
+    1067 HEXAPLORUM QUÆ SUPERSUNT. 1068
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,110,360,760">
-    (Hebrew column, right-to-left)
-    יוֹסֶף וְאֵין אֵלָיו וְנִכְתַּב 20
-    בְּעֵת
-    21 בָּמָּוֶת
-    22 וַיָּבֹא
-    הלב
-    אחד 23
-    הַסְתּוֹרִין
-    24 נעל׃
-    איך מסדה ואל אוזדהדל?
-    ויחלו עשרים 25
-    בשת הוא 29
-    ותבצע 30
-    עשר 31
-    בסוף המבדק
+  <bloco tipo="texto_principal" script="misto" bbox="100,80,900,130">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικος γράμμασι. ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="360,110,640,760">
-    (Latin middle column)
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,130,350,500">
+    20 ויאחד ו בו אלי והוא ישב בעלית
+    21 במסגרות
+    22 ויצא
+    23 הדלת ויאחד
+    24 המסגרות נעל.
+    וי סגר את בעד רגליו
+    25 ויחלו עד בוש
+    29 ב עת ההיא
+    30 ותבצע
+    31 ענת
+    במלמד הבקר
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,130,450,500">
     20.
     21.
     22.
@@ -33,45 +29,82 @@
     30.
     31.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="640,110,760,760">
-    (Greek/Latin right column)
+  <bloco tipo="texto_principal" script="grego" bbox="650,130,850,500">
     20.
     21.
     22.
     23.
-    Παρασταθείσα.
+    Παραστάδα.
     24.
     25.
     29.
     30.
     31.
-    Εν διαστήματι.
+    Ἐν διδακτήρι.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,760,760,1060">
-    VERSIO HEBRAICI TEXT.                      VULGATA LATINA.                              AQUILA.
-    20. Et Ehud ingressus est ad                 20. ingressus est Aod ad eum :             20.
-    eam, et ipse sedebat in conclubio.          sedebat autem in æstivo conclucio.
-    21. In ventrem ejus.                         21. In ventre eius.                          21.
-    22. Et ingressus est.                        22. Vacat.                                   22.
-    Laminam.                                    Ferrum.
-    23. Ehud.                                   23. Aod.                                     23.
-    Per vestibulum.                             Per porticum.                               Per porticum.
-    24. Obserat.                                 24. Clausus.                                24.
-    Certe tegens ipse pedes suos.                Forsitan purgat alveum.
-    25. Et exspicaverunt donec pu-              25. Exspectaveruntque diu donec              25.
-    delescerunt.                                 oruescerent.
-    29. In tempore illo.                         29. In tempore illo.                        29.
-    30. Et humiliatus est.                       30. Et humiliatus est.                      30.
-    31. Anath.                                   31. Anath.                                  31.
-    In documento bovis.                          Vomere.                                    In stimulo.
+  <bloco tipo="texto_principal" script="latino" bbox="100,500,900,550">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,1060,760,1280">
-    Notœ et variæ lectiones ad cap. III Judicum.
-    V. 1. Σ., ἀσάγει. Drusius.                   Ibid. 'A., εἰσόδος; Εμᾶθ. Sic Eusebius De locis
-    V. 2. 'Ἄλλος, παντελῶς' γάρ etc. Sic Basil.,    Hebraicis apud Hieronymum, in Assemd. p. 359.
-    sine interpretis nomine.                      -Coislin. ad marg. A., Σ., τίζοσ. Scrd Eusebius,
-    V. 3. Ο', Θ., φυλαιτεῖν. Sic Basil.           l. c., uni tribuit Aquilæ.
+  <bloco tipo="texto_principal" script="latino" bbox="50,550,350,900">
+    20. Et Ehud ingressus est ad eum, et ipse sedebat in cœnaculo.
+    21. In ventrem ejus.
+    22. Et ingressus est.
+    Laminam.
+    23. Ehud.
+    Per vestibulum.
+    24. Obseratæ.
+    Certe tegens ipse pedes suos.
+    25. Et exspectaverunt donec puderent.
+    29. In tempore illo.
+    30. Et humiliatus est.
+    31. Anath.
+    In documento bovis.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,550,600,900">
+    20. ingressus est Aod ad eum : sedebat autem in æstivo cœnaculo.
+    21. In ventre ejus.
+    22. Vacat.
+    Ferrum.
+    23. Aod.
+    Per porticum.
+    24. Clausas.
+    Forsitan purgat alvum.
+    25. Exspectantesque diu donec erubescerent.
+    29. In tempore illo.
+    30. Et humiliatus est.
+    31. Anath.
+    Vomere.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="600,550,850,900">
+    20.
+    21.
+    22.
+    23.
+    Per porticum.
+    24.
+    25.
+    29.
+    30.
+    31.
+    In stimulo.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="0,900,1000,980">
+    Notæ et variæ lectiones ad cap. III Judicum.
+    V. 1. Σ., ἀσκήσει. Drusius.
+    V. 2. Ἄλλος, παντελῶς γὰρ etc. Sic Basil., sine interpretis nomine.
+    V. 3. Ο', Θ., Φυλακτείᾳ. Sic Basil.
+    Ibid. Ἀ., εἴσοδος μάθ. Sic Eusebius De locis Hebraicis apud Hieronymum, in Ἀζεθθαμώθ, p. 459.
+    —Coislin. ad marg. Α., Σ., εἴσοδον. Sed Eusebius, l. c., uni tribuit Aquilæ.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="500,980,800,1000">
     Digitized by Google
   </bloco>
-  <notas>Scriptos identificados: hebraico (coluna esquerda), latino e grego (colunas médias e direita). Algumas palavras hebraicas parcialmente illegíveis foram transcritas as approximativamente; marcas parentéticas indicam área de leitura e aproximações. BBOX estimadas em escala 0-1000.</notas>
+  <notas>
+    Transcrição de página da Patrologia Graeca (Hexaplorum quæ supersunt).
+    Coluna 1: Texto Hebraico (Torá/Profetas).
+    Coluna 2: Numeração de versículos (a coluna de transliteração grega do hebraico parece conter apenas os números nesta página ou está omitida).
+    Coluna 3: Versão de Áquila (Grego).
+    Seção inferior: Traduções Latinas correspondentes (Versão do Texto Hebraico, Vulgata, Áquila em Latim).
+    Rodapé: Notas críticas (Notæ et variæ lectiones).
+  </notas>
 </pagina>

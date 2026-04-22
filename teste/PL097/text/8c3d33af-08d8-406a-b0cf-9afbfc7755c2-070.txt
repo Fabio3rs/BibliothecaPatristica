@@ -1,8 +1,11 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="10,10,990,80">
-151    B. CAROLI M. OPP. PARS I. SECTIO PRIMA.    152
+  <bloco tipo="outro" script="latino" bbox="10,10,90,50">
+    tipo_pagina: texto
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="10,90,490,760">
+  <bloco tipo="cabecalho" script="latino" bbox="10,50,990,120">
+    151    B. CAROLI M. OPP. PARS I. SECTIO PRIMA.    152
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="10,120,490,760">
 CAPITULARE FRANCICUM.
 
 pergunt, ut eos cum collecta nemo sit ausus adsa-
@@ -15,12 +18,12 @@ emendet.
 runt, nemo tollat nisi ibi ubi antiqu0 tempore fue-
 runt.
 
-- [18 bis s. Item placuit de sanctimonialibus mulie-
+- 18 bis s. Item placuit de sanctimonialibus mulie-
 ribus qui se copulaverunt viris aut adulterio se pol-
 luerunt, ut disiungantur, et intrent in monasteria,
 tam viri quamque et feminae, cum rebus suis et cum
 illa compositione quam in publico dare debuerunt
-vel mundaldo eius. De illis vero viris paupertinis B
+vel mundoaldo eius. De illis vero viris paupertinis
 qui nihil habent, ut supra et ipsi disiungantur, et si
 res non habent qualiter in monasterio vivant, pa-
 rentes proximi eos nutriant, et caveant iterum non
@@ -35,8 +38,8 @@ sol. 1.]
 
 19. De mancipia quae vendunt, ut in praesentia
 episcopi vel comitis sit, aut in praesentia archidia-
-coni, aut centenarii 8, aut in praesentia vicedomini ,
-aut iudicis comitis b, aut ante bene nota testimonia. C
+coni, aut centenarii 8, aut in praesentia vicedomini,
+aut iudicis comitis b, aut ante bene nota testimonia.
 Et foras marca nemo mancipium vendat. Et qui
 hoc fecerit, tantas vices bannos solvat 4 quanta man-
 cipias vendidit. Et si non habet pretium, in vadio
@@ -53,7 +56,7 @@ vassus noster iustitiam non fecerit, tunc et comis
 et missus ad ipsius casa sedcant, et de suo vivant
 quousque iustitiam faciat.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="10,760,490,980">
+  <bloco tipo="aparato_critico" script="latino" bbox="10,760,490,980">
 VARIANTES LECTIONES.
 
 1 toloneis 1. et Langob. 5 firmannti 7. 3 ex
@@ -66,16 +69,25 @@ a Hiec aliud caput incipit in 1, 4, 7, et Gold.
 b Id est sculdahis. Glossa Lond.
 c Sic codex Albinensis legit. Amerbachius et He-
 roldus ediderunt pruiuas, quod idem est. In aliis ve-
-stustis exemplaribus scriptum vid i: De brunias ut
+stustis exemplaribus scriptum vidi: De brunias ut
 nullus foras nostro regno vendere non praesumat.
 Baluez.
 d Hiec est lectio libri Thuani. Amerbachius et He-
 roldus ediderunt Missum nostrum. Codices Palatinus
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,90,990,760">
-A    CAPITULARE LANGOBARDICUM.
+  <bloco tipo="nota_marginal" script="latino" bbox="490,90,510,130">
+A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,300,510,340">
+B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,520,510,560">
+C
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="510,120,990,760">
+CAPITULARE LANGOBARDICUM.
 
-mus : si ille homo cujus causa jurata fuerit, discere
+mus : si ille homo cujus causa iurata fuerit, discere
 voluerit, quod ille, qui iuravit, se sciens periurasset 1
 stent ad crucem. Et si ihe, qui iuravit 2, victus fue-
 rit, quod se sciens 3 periurasset, suprascripta sen-
@@ -121,7 +133,7 @@ tas. Et si inde usque nunc ad partem aecclesiae deci-
 mus et nona exivit, et nunc in antea faciat; et insuper
 ad illas aecclesias de 50 casatos solido uno reddat;
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="510,760,990,980">
+  <bloco tipo="aparato_critico" script="latino" bbox="510,760,990,980">
 VARIANTES LECTIONES.
 
 a P. componat aut in cruce contendant A. campo
@@ -145,8 +157,9 @@ Nam vocem istam explicare videtur princeps in
 postrema parte istius capitis. Id.
 f Id est sematione membrorum. L.
 8 Id est morte. L.
-
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="10,980,990,1000">
 Digitized by Google
   </bloco>
-  <notas>Transcrição feita a partir de um fac-símile tipográfico; mantive grafia, hifenizações e numeração de notas tal como aparecem no original. Pequumas palavras parcialmente ilegíveis foram estimadas pelo contexto (marcadas conforme aparecem); todas as siglas e sinais editoriais preservadas.</notas>
+  <notas>Identifiquei a página como "texto". Mantive a grafia, hifenizações e sinais tal como no impresso; não normalizei palavras nem corrigi o latim. Removi das colunas principais as letras marginais maiúsculas (A, B, C) e as tratei como blocos tipo="nota_marginal" com posições aproximadas. Mantive os indicadores de aparato (números e letras a, b, c etc.) inline. Há palavras/locuções tipograficamente corrompidas ou pouco nítidas no original (ex.: "erbam", "pergendum", "forbannti", "antiqu0", "mundoaldo", "postmodum"/"postmodum" variantes, "senetipsum", "venderre", "nissos", "soniare", "disfecert", "volunus"); transcrevi-as conforme aparecem na imagem. BBOX são aproximações em escala 0–1000; a leitura segue a ordem pedida: coluna esquerda inteira, depois a direita. </notas>
 </pagina>

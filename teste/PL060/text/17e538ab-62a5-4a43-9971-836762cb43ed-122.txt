@@ -1,38 +1,82 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,70">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,90">
 223     AURELII PRUDENTII CARMINA.     221
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="20,80,480,420">
+  [!-- coluna esquerda --]
+  <bloco tipo="texto_principal" script="latino" bbox="0,90,490,460">
 Sed dictis, legisse deos, ubi sanctior usus .
 546 Templorum cultu celebri sine fine maneret,
-Aeneadumque [ilegivel] victricia signa virorum
+Aeneadumque nitro victricia signa virorum
 Regis amore Numae, nullo cogente, secuto-
-[ilegivel] Diomedis item tentoria, et acris Ulyssi
-Castra volens Pallas, caesis custodibus arcis,
-545 Legit, ubi humenti sudaret moesta sigillo ?
+Num Diomedis item tentoria, et acris Ulyssi
+Castra volens Pallas, caesis custodibus arcis ,
+Legit, ubi humenti sudaret moesta sigillo ?
+545
 811 Aut quotiens ductor Macedum fortissimus
 [altos]
 Templorum cineres victis cumulavit Amyclis :
-Optarunt [ilegivel] domini se numina capta
-Miscerri, Assyriaque [ilegivel] Babylonis ad arcem?
+Optarunt praedis domini se numina capta
+Miscerri, Assyriaeq[ue] vehi Babylonis ad arcem?
 550 Non fero, Romanum nomen, sudataque bella,
 Et titulos, tanto quaesitos sanguine, carpi.
+
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="490,100,510,140">
+  <bloco tipo="aparato_critico" script="latino" bbox="320,460,680,520">
+GLOSSÆ VETERES.
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="0,520,490,665">
+539. D:cis, o Symmache, 1.
+540. Celebri, venerabili, 1.
+541. Numæ, imperator fuit Romanorum, qui primum
+culturam deorum invenit, ut populum revocaret ab
+amore belli, 1.
+543. Diomedis, fabula nota est in Virgilio; cum
+Diomedes et Ulysses rapuerunt Palladium, ascendentes
+murum per funiculos, et detulerunt id in castris suis ,
+ubi gutta sanguinis sudabat ; quod erat signum tristitiæ, Iso.
+515. Legit, elgit.—Sigillo, simulacro, 1.
+546. Ductor, Alexander.—Macedum, pro Macedonam, T.
+548. Optarunt, obtulerunt, elegerunt, 1.
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="480,455,520,485">
+C
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="0,665,490,1000">
+COMMENTARIUS.
+540. Rat., Fabr., cultu celebris.
+544. Jureti codex, Ald., Vat. A, Alex., Urb., Cauch., Heinsiani plerique, Pal., custodibus arcis.
+Rat., custodibus ultro: Legit. Gis., Weitz., alter Rott., et Bolier. casis custodibus, ultro Legit. Primam lectionem confirmat locus, et versus Virgilii, quem Prudentius imitatur, lib. I Æneid., Palladium caesis summæ custodibus arcis.
+545. All., Fab., Thuan. et vetustiores Heinsii, Alex., Urb., Vat. A, legi, ubi. Sich., Gis. ad oram 1a ed., Rat., Weitz. cum suis legi; ut Vat. A, vitiose, sugillo pro sigillo. Prudentius alibi etiam sigillo pro statua usus est; hic autem omnino proprie pro simulacro, de quo Apollodorus Biblioth. lib. π narrat . Erat autem propter magnitudine tricubitalis, habi'u quasi ingre-dientis, dextra hastam sublatam præferebat, sinistra tusum et coluin. cujus historiæ fuse narrat Apollodorus. Prudentius respicit Virgilii locum cit.: Vic positum castris simulacrum, arserè coruscæ Luminibus flamme arrectis, salsusque per artus Sudor iit.
+546. Vat. A, altus, non hene, pro altos. Vetustiores lleinsiani eum Oxon., Rott. priore, ductor Macedum, quod tenent recentiores, non male, quandoquidem AMacedo et Maceta eadem gens est.
+547. Sich., Gis. ad marg., Fabr., Bong., Cnauch., cumulavit ab Indis. Heinsius suspicabatur Amyclicis, quæ Lacedæmoniæ ditionis; agit enim de Her lo quod Alexander Magnus eum Lacedæmoniis gessit. Agnovit autem, sic. etiam Amyclis esse locum. It e vera ita plerique legunt, et, ut Lacedæmon urbs est Peloponnesi regia Menelai, ita Amyclæ urbs etiam Pelopnesi. Tindari regia, Castoris et Pollucis patria. Amphidnarum obscurius apud veteres scriptores est nomen.
+548. Egm., dominis, non ita bene.
+549. Fabr., Gis. ad margs., Assyriaeq[ue] vehi Babylonis ab arce. Bong., Assyrieque vehi Babylonis ab arce. Mel i us ad arcem. Babylonexstinctus est Alexander,
+550. De hae phrasi sudat-que. bella vide hymn. 2 Cath, vers. 76.
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="480,200,520,230">
 A
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="490,230,510,270">
+  <bloco tipo="nota_marginal" script="latino" bbox="480,340,520,370">
 B
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="520,80,980,420">
-Detrahit invictis legionibus, et sua Romae
-Præmia diminuit, qui, quidquid fortiter actum est,
+  <bloco tipo="nota_marginal" script="latino" bbox="480,610,520,640">
+D
+  </bloco>
+
+  [!-- coluna direita --]
+  <bloco tipo="texto_principal" script="latino" bbox="510,90,1000,485">
+De trahit invictis legionibus, et sua Romae
+Praemia diminuit, qui, quidquid fortiter actum est,
 Ascribit Veneri: palmam victoribus aufert.
-555 Frustra igitur currus summo miramur in arce
+555 Frustra igitur currus summo miramur in arcu
 812 Quadrijugos, stantesque duces in curri-
 [bus altis,]
 Fabricios, Curios, hinc Drusos, inde Camillos,
@@ -45,66 +89,56 @@ Si Brennum, Antiochum, Persen, Pyrrhum,
 Flora, Ceres, Matuta et Larentina subegit.
   </bloco>
 
-  <bloco tipo="aparato_critico" script="latino" bbox="20,420,980,480">
-GLOSSÆ VETERES.
+  <bloco tipo="aparato_critico" script="latino" bbox="510,485,1000,640">
+CLOSSÆ VETERES.
+550. Non fero, non sustineo, non patior.—Sudata,
+elaborata,1.
+551. Titulos, honores.—Carpi, vituperari, 1.
+552. Detrahit, o Symmache.—Legionibus, Roma-
+norum, 1.
+553. Diminuit, scilicet qui talia dicit, 1.
+555. In arcu, in fornice, in cujus summitate quadrijugos currus sculpebant, 1.
+557. Fabricios, duces Romanorum nobilissimos
+memor’at hic, 1.
+561. Brennum, ducem Gallorum.—Antiochum, regem
+Syriae.— Persen, regem Macedonum.—Pyrrhum,
+regem Epiri.—Mithridatem, regem Ponti, 1.
+562. Flora, dea, 1.
   </bloco>
 
-  <bloco tipo="aparato_critico" script="latino" bbox="20,480,490,820">
-539. D:cis, o Symmache, l.
-540. Celebri, venerabili, l.
-541. Numen, imperator fuit Romanorum, qui primus cultum deorum invenit, ut populum revocaret ab amore belli, l.
-513. Diomedis, fabula nota est in Virgilio; cum Diomedes et Ulysses rapuerunt Palladium, ascendentes murum per funiculos, et detulerunt id in castris suis, ubi gutta sanguinis sudabat; quod erat signum tristitiae, Iso.
-515. Legit, elgit.—Sigillo, simulacro, l.
-546. Ductor, Alexander.—Macedum, pro Macedone, l.
-548. Optarunt, obtulerunt, elegerunt, l.
-545. All., Fab., Thuan. et vetustiores Heinsii, Alex., Urb., Vat. A, legit, ubi. Sich., Gis. ad oram 1a ed., Rat., Weitz. cum suis legi, ut Vat. A, vitiose, sugillo pro sigillo. Prudentius alibi etiam sigillo pro statua usus est; hic autem omnino proprie pro simulacro, de quo Apollodorus Biblioth. lib. π narrat. (passages parcialmente ilegíveis no exemplar digital).
-547. Sich., Gis. ad marg., Assyriaque vehi Babylonis ab arce. (variante e leitura complexa; abridido)
-515. Legit, eligit.—Sigillo, simulacro, l.
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,430,510,470">
-C
-  </bloco>
-
-  <bloco tipo="aparato_critico" script="latino" bbox="520,480,980,820">
-B 550. Non fero, non sustineo, non patior.—Sudata, elaborata, l.
-551. Titulos, honores.—Carpi, vituperari, l.
-552. Detrahit, o Symmache.—Legionibus, Romanorum, l.
-553. Diminuit, scilicet qui talia dicit, l.
-555. In arcu, in fornice, in cujus summitate quadrijugos currus sculpebant, l.
-557. Fabricios, duces Romanorum nobilissimos commemorat hic, l.
-561. Brennum, ducem Gallorum.—Antiochum, regem Syriæ.—Persen, regem Macedonum.—Pyrrhum, regem Epiri.—Mithridatem, regem Ponti, l.
-562. Flora, dea, l.
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,620,510,660">
-D
-  </bloco>
-
-  <bloco tipo="aparato_critico" script="latino" bbox="20,820,490,960">
+  <bloco tipo="aparato_critico" script="latino" bbox="420,640,620,720">
 COMMENTARIUS.
-540. Rat., Fabr., cultu celebris.
-544. Jureti codex, Ald., Vat. A, Alex., Urb., Cauch., Heinsiani plerique, Pal., custodibus arcis. Rat., custodibus vero: Legit. Gis., Weitz., alter Rott., et Bolier. casis custodibus, ultro Legit. Primum lectionem confirmat locus, et versus Virgilii, quem Prudentius imitatur, lib. II Æneid., Palladium cæris summæ custodibus arcis.
-545. All., Fab., Thuan. et vetustiores Heinsii, Alex., Urb., Vat. A, legi, ubi. Sich., Gis. ad oram 1a ed., Rat., Weitz. cum suis legi; ut Vat. A, vitiose, sugillo pro sigillo. Prudentius alibi etiam sigillo pro statua usus est; hic autem omnino proprie pro simulacro, de quo Apollodorus Biblioth. lib. π narrat. (passages longæ et parum legibiles condensatae).
   </bloco>
 
-  <bloco tipo="aparato_critico" script="latino" bbox="520,820,980,960">
-553. Alii deminuunt, alii diminuunt scribunt. Quaeritur aliquis annon eadem ratione præmia diminuant, qui, quidquid fortiter actum est a Christianis militibus, ascribunt peculiari auxilio Dei. Verum Christiani, qui ultro fatentur nihil se habere quod a Deo non acceperint, multo magis ejusdem beneficentiae libenter attribuunt quidquid peculiari ejus auxilio factum esse constiterit. Neque tamen idcirco bona hominum opera, quæ libere ab ipsis efficiuntur, gloria ac præmio carent.
-555. Quod ait de Venere, de aliis quoque diis intellegit: quanquam Veneris victricis templum Romanæ a Pompeio dedicatum fuit, et imperatores Veneri victrici suas victorias passim ascribebant, cujus rei memoria exstat in nummis veteribus.
-(continuitur apparatus et notas; algumas linhas e variantes pouco legíveis na digitalização)
+  <bloco tipo="aparato_critico" script="latino" bbox="510,640,1000,1000">
+553. Alii deminuit, alii diminuunt scribunt. Quaeritur aliquis annon eadem ratione præmia diminuant, qui, quidquid fortiter actum est a Christianis militibus, ascribunt peculiari auxilio Dei. Verum Christiani,
+qui ultro fatentur nihil se habere quod a Deo non acceperint, multo magis ejusdem beneficentiae libenter attribuunt quidquid peculiari ejus auxilio factum est constiterit. Neque tamen idcirco bona hominum opera, quæ libere ab ipsis efficiuntur, gloria ac præmio carent.
+
+555. Quod ait de Venere, de aliis quoque diis intellige : quanquam Veneris viciricis templum Romanæ a Pompeio dedicatum fuit, οἱ imperatores Veneri victrici suas victorias passim ascribebant, cujus rei memoria exstat in nummis veteribus.
+
+555. Rat., alter Rott., Weitz., summa miramur in arce. Plerique, summo miramur in arcu. Jureti codex, mirantur. Heinsius ait arce dé Capitolio possosi intelligi, arcw arcus triumphates designare. Vide etiam qui: de arcu et arce notavi ad vers. 525
+556. Pal., Egm., quadrijugo, mendose. Juvenalis
+Sat. 8, vers. ὅ : Et stantes in curribus /Emilianes.
+
+558. Statuæ triumphales fingebantur, hostibus ad pedes jacentibus, et prostratis, ut adhuc cernere l.eet, Stitius in Equo*Maximo : Vacte pro cespite terre /Enea captivi crinem terit ungula lˈheni. l’ropertius lib. iv, eleg. ultiraa: Sub quorum titulis, Africa tonsa, jaces. Tituli sunt inscriptiones basis.
+
+559. Jurcti codex, depressis, minus bene.
+
+560. Tropæa proprie erant corpora trunca cum spoliis, qualia hodieque exstant Romae ante Capitolium, et Mario erecta dicuntur. Turres etiam,
+aras et columnas pro tropæis antiqui adhibebant, imo truncos rudes arborum, quibus spolia suspendebant :
+que omnia fuse explicata vide in notis Ouzehi. ad Minucium, pag. 229, ubi explicat Minucii verba : Tot de diis spolia, quot de gentibus et tropæa.
+
+563. Vat. A, Flora, Ceres, Matuta,. Ali, Flora,
+Matuta, Ceres. Egm., Alex. ἃ prima manu, Larentina, quod melius Heinsio videtur quam Laurentina.
+Weitzius Egmendano imputat Larventina ; rectius
   </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="300,960,700,995">
+  <bloco tipo="rodape" script="latino" bbox="780,985,1000,1040">
 Digitized by Google
   </bloco>
 
   <notas>
-- Tipo de página: texto (página impressa, duas colunas).
-- Script principal: latino.
-- Organização: transcrita a coluna esquerda por completo e depois a coluna direita, conforme orientação. Cabeçalhos e o título do aparato ("GLOSSÆ VETERES.", "COMMENTARIUS.") mantidos na posição visual em que aparecem.
-- Notas marginais A, B, C, D (letras verticais no entrecolunas) mapeadas como blocos tipo="nota_marginal".
-- Usei [ilegivel] por palavras cujo grafismo na digitalização se mostrou incerto; onde o texto é claramente legível transcrevi tal como impresso, sem normalizar ortografia antiga nem emendar abreviaturas.
-- As bboxes são aproximações em escala 0–1000, representando a posição visual dos blocos na página.
-- Partes do aparato crítico e do comentário apresentam abreviações, variantes de códices e passagens pouco nítidas na digitalização; marquei essas passagens como [ilegivel] ou indiquei que o texto foi condensado quando necessário para manter a integridade estrutural do aparato.
+As transcrições foram feitas conforme o impresso na imagem; quando algum trecho não estava seguramente legível, não foi normalizado nem emendado.
+B e C foram incluídos como blocos separados exatamente contendo apenas a letra centralizada visível no entrecolunas.
   </notas>
 </pagina>

@@ -1,45 +1,165 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,80">
-    HEXAPLORUM QUÆ SUPERSUNT.
+  <bloco tipo="cabecalho" script="misto" bbox="50,20,950,60">
+    1899 HEXAPLORUM QUÆ SUPERSUNT. 1800
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,80,980,320">
-    TO EBRAIKON.             TO EBRAIKON         ΑΚΥΛΑΣ.]
-    (Ελληνικοί γράμμασι.)
-    VERSIO HEBRAICI TEXT.   VULGATA LATINA.      AQUILA.
-    4. Ad sciendum loqui opportune.    4. Ut sciam sustentare.    4. Ad sciendum fulcire.
-    In mane excitabit mihi aurem ad audiendum.    Mane erigiti mihi aurem ut audiam.    In mane excitabit mihi aurem ad audiendum.
-    9. Auxiliabitur mihi.    9. Auxiliator meus.    9. Auxiliatur mihi.
-    Tinea comedet eos.    Tinea comedet eos.    Tinea (seu vermis)...
-    11. In dolore jacebitis.    11. In doloribus dormietis.    11. In labore...
+  
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,320,380">
+    TO EBPAIKON.
+    לְעוֹר לָנּוּ 4
+    בְּקֶר יָעִיר לי אֹזן לִשְמֹעַ
+    יְהוִה-לִי 9
+    עֹזְרָנִי
+    עָשׁ יַאֲכִלֵם 11
+    VERSIO HEBRAICI TEXT.
+    4. Ad sciendum loqui opportune.
+    In mane excitabit mihi aurem
+    ad audiendum.
+    9. Auxiliabitur mihi.
+    Tinea comedet eos.
+    11. In dolore jacebitis.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="20,320,980,580">
+
+  <bloco tipo="texto_principal" script="misto" bbox="350,60,620,380">
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
+    4.
+    9.
+    11.
+    VULGATA LATINA.
+    4. Ut sciam sustentare.
+    Mane erigit mihi aurem ut audiam.
+    9. Auxiliator meus.
+    Tinea comedet eos.
+    11. In doloribus dormietis.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="650,60,950,380">
+    ΑΚΥΛΑΣ.]
+    4. Τοῦ γνῶναι τοῦ ὑποστηρίξαι.
+    Ἐν πρωῒ ἐξεγερεῖ μοι ὠτίον τοῦ
+    ἀκούειν.
+    9. Βοήθει μοι.
+    Βοήθη. . . .
+    11. Εἰς διαπόνησιν. . . .
+    AQUILA.
+    4. Ad sciendum fulcire.
+    In mane excitabit mihi aurem
+    ad audiendum.
+    9. Auxiliatur mihi.
+    Tinea (seu vermis)...
+    11. In labore...
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="150,390,950,580">
     Notæ et variæ lectiones ad cap. L Hesaiæ.
-    V. 1. Curter. ex ms. Jes., Σ., ποῖον τὸ βιβλίον. 'Α., Θ. ὁμῶς τοῖς Θ', ποῖον τοῦτο βιβλίον. Et vere in textu τῶν O' ms. Jes. legitur, ποῖον τοῦτο βιβλῖον. Σλον. In editione autem Romana, ποῖον τὸ βιβλίον.
-    Ibid. Θ., κτὼ παρασότων με, φ Curter. ex ms. Jes.
-    Ibid. Θ., κ' αὐτῷ. Idem. Nimirum hæc vox ex Theodotione in LXX editionem Hexapla rem inducta fuerat, quia est in Hebræo. [Habebique Complut. DRACH.]
-    V. 2. OI D., δότι ἦλθον. 'Α., Σ. ὁμῶς τοῖς Θ', Θ., τε ὅτι ἦλθον. Ms. Jes. Lectio autem Theodoti-
-    nis in edit. τῶν O' Romana habetur. Vulgatus Interpres Camarini et Symmachum secutus, vertit, quia veni. [Sic LXX apud S. Hier., quia veni. Dn.]
-    Ibid. Σ., ἴσως ὅτι ἐπιστρέψει ecc. Procopius. LXX vero in textu ms. Jes. habent, ἴσως τῆ ἀπειλῆς, ecce comminatione.
-    V. 4. 'Α., τοῦ γνώαι etc. Curter. ex ms. Jes.
-    Ibid. 'Α., ἐν πρωῳ etc. Totum hoc comma aliter disponere debuimus quam Montf., qui omnia invertit et confundit, quia male legerat Procopium, ita ut merito vapuleat a Schleusero. Hic etenim.
+    V. 1. Curter. ex ms. Jes., Σ., ποῖον τὸ βιβλίον.
+    Ἀ., Θ. ὁμοίως τοῖς Ο', ποῖον τοῦτο βιβλίον. Et vere
+    in textu τῶν Ο' ms. Jes. legitur, ποῖον τοῦτο βιβλίον. In editione autem Romana, ποῖον τὸ βιβλίον.
+    Ibid. Θ., ✠ τῶν πρασσόντων με, ὦ. Curter. ex
+    ms. Jes.
+    Ibid. Θ., ✠ αὐτῷ. Idem. Nimirum hæc vox ex
+    Theodotione in LXX editionem Hexaplarem in-
+    ducta fuerat, quia est in Hebræo. [Habetque Com-
+    plut. DRACH.]
+    V. 2. Οι Γ', διότι ἦλθον. Ἀ., Σ. ὁμοίως τοῖς Ο'.
+    Θ., τί ὅτι ἦλθον. Ms. Jes. Lectio autem Theodotio-
+    nis in edit. τῶν Ο' Romana habetur. Vulgatus In-
+    terpres Aquilam et Symmachum secutus, vertit.
+    quia veni. [Sic LXX apud S. Hier., quia veni. Dn.]
+    Ibid. Σ., ἰδο τῇ ἐπιτιμήσει etc. Procopius. LXX
+    vero in textu ms. Jes. habent, ἰδο τῇ ἀπειλῇ, ecce
+    comminatione.
+    V. 4. Ἀ., τοῦ γνῶναι etc. Curter. ex ms. Jes.
+    Ibid. Ἀ., ἐν πρωῒ etc. Totum hoc comma aliter
+    disponere debuimus quam Montf., qui omnia in-
+    vertit et confudit, quia male legerat Procopium,
+    ita ut merito vapulet a Schleusnero. Hic etenim.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,580,980,900">
+
+  <bloco tipo="cabecalho" script="latino" bbox="400,590,600,610">
     HESAIÆ CAPUT LI.
-    TO EBRAIKON.         TO EBRAIKON          ΑΚΥΛΑΣ.
-    (Ἑλληνικοὶ γράμμασι.)
-    VERSIO HEBRAICI TEXT.    VULGATA LATINA.    AQUILA.
-    1. Excisi estis.         1. Unde excisi estis.    1.
-    Et ad perforationem cisternæ eruti estis.    Et ad cavernam laci, de qua præcisi estis.    Et ad excisionem lacus, unde excisi estis.
-    4. Et populus meus.     4. Et tribus mea.     4.
-    6. Consumi sunt.        6. Liquescent.       6. Comminuti sunt.
-    9. Suscita te, suscita te, indue fortitudinem, brachium Domini.    9. Consurge, consurge, induere fortitudinem, brachium Domini.    9.
-    Nonne tu ipsum excidens superbum, vulnerans draconem?
-    Numquid non tu percussisti superbum, vulnerasti draconem?
-    12. Ipse.                12. Ipse.             12.
-    Quæ tu?                Quis tu?             Quæ tu?
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="720,900,980,990">
+
+  <bloco tipo="texto_principal" script="misto" bbox="50,620,320,900">
+    TO EBPAIKON.
+    סְגוּפִים 1
+    וְאֶל-מְקוֹר בּוֹר נִקַּרְתֶּם
+    עַמִּי 4
+    נִכְלֹו 6
+    עוּרִי עוּרִי לִבְשִׁי-עֹז זְרוֹעַ יְהוָה 9
+    הֲלוֹא אַתְּ-הִיא הַמַּחְצֶבֶת רַהַב
+    מְחוֹלֶלֶת תַּנִּין
+    12
+    אֶת מִי
+    VERSIO HEBRAICI TEXT.
+    1. Excisi estis.
+    Et ad perforationem cisternæ
+    eruți estis.
+    4. Et populus meus.
+    6. Consumti sunt.
+    9. Suscita te, suscita te, indue
+    fortitudinem, brachium Domini.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="350,620,620,900">
+    TO EBPAIKON
+    Ἑλληνικος γράμμασι.
+    1.
+    4.
+    6.
+    9.
+    VULGATA LATINA
+    1. Unde excisi estis.
+    Et ad cavernam laci, de qua
+    præcisi estis.
+    4. Et tribus mea.
+    6. Liquescent.
+    9. Consurge, consurge, induere
+    fortitudinem, brachium Domini.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="650,620,950,900">
+    ΑΚΥΛΑΣ.
+    1.
+    Καὶ πρὸς ἐκκοπὴν τοῦ λάκκου.
+    ὅθεν ἐξεκόπητε.
+    4.
+    6. Ἠλώθησαν.
+    9.
+    AQUILA.
+    1.
+    Et ad excisionem lacus, unde
+    excisi estis.
+    4.
+    6. Comminuti sunt.
+    9.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="50,910,320,960">
+    Nonne tu ipsum excidens super-
+    bum, vulnerans draconem ?
+    12. Ipse.
+    Quæ tu ?
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="350,910,620,960">
+    Numquid non tu percussisti su-
+    perbum, vulnerasti draconem ?
+    12. Ipse.
+    Quis tu ?
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="650,910,950,960">
+    12.
+    Quæ tu ?
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="600,970,850,990">
     Digitized by Google
   </bloco>
-  <notas>Scriptos hebraicos e graecos aparecem em áreas do texto; devido à resolução e sobreposição tipográfica algumas palavras hebraicas e gregas foram transliteradas ou colocadas conforme visíveis. Foram preservadas linhas e divisão em colunas: coluna esquerda transcrita antes da direita quando aplicável.</notas>
+  <notas>
+    Transcrição de página poliglota (Hexapla) contendo Hebraico, Grego e Latim.
+    A coluna do meio no topo e em baixo ("TO EBPAIKON Ἑλληνικοῖς γράμμασι") apresenta apenas os números dos versículos na maior parte, sem o texto de transliteração visível ou impresso nestas secções específicas, exceto pelos cabeçalhos.
+    Texto Hebraico transcrito conforme visível, com pontuação massorética aproximada.
+  </notas>
 </pagina>

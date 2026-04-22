@@ -1,88 +1,253 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,80">
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,70">
 739
 INDEX RERUM ET SENTENTIARUM.
 740
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,90,480,880">
-Etesii venti, 551.
+
+  <bloco tipo="nota_marginal" script="latino" bbox="470,70,530,160">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,160,530,270">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,270,530,410">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,410,530,560">D</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="25,80,485,870">
+Etesii venti, ὅδ]. .
+
 Eubulus scripsit historiam Mithrae, 344.
-Eucharistiae Corpus Domini in Ecclesia, 191. Illud [ilegivel] episcopi, 173. Ministrabatur populo de sublimi loco, ibid. Sumptio corporis Christi, 800. Mundi debent sumere, 269. Illud aequaliter accipimus, licet pro meritis accipientium diversum sit, 364. Prima communione Corporis Christi post baptismum, 800. Eucharistia Domini cum cautione sumenda, 734.
-Eunomius, 508. Auctor est haeresis contra reliquias, 395. Ejus sectatores Basilicas Apostolorum et Martyrum non ingrediuntur, et libros illius majoris auctoritatis arbitrantur, quam evangelia, 395. Dogma Eunomii de Christo, 512. Dogma ejusdem, 507. Eunomii aliae haereses, 416.
-Eunomiorum et Arianorum haeresis totum Orientem possedit, 411.
-Eunuchii illi placent, quos castravit non necessitas, sed voluntas, 257. Typus eunuchorum voluntate, qui? ibid.
-Eunuchus reginae Candaci ob rubor fidei, vir non obtinuit, ibid.
-Euphoranus renatus esse perhibetur, 387.
-Euphorbii?, 911.
-Eupolemus Judaeus quid scripsit? 879.
-Euripides quid refert? 344. Euripidis Tragoediae, in mulieres sunt maledictae, 317.
-Europa et Asia decennali bello confligunt, ibid.
-Eusebius consul, 188.
-Eusebius episcopus Nicomedienis, 192.
-Eusebius episcopus Caesareae Palaestinae, 192. Princeps eorum dicitur, 505. Ostendit Origenem Arianum perfidiae fuisse, ibid. Sex libros scripsit pro Origene, 464, 541. Scripsit vitam Pamphili martyris, 465. Explanat et edidit translationem Judaeorum, 398. Scripsit adversus Porphyrium, 527. Libri Eusebii praefrentes epistulam blasphemiam de Filio et Spiritu sancto, 418. Quid dicebat, ut approbaret quod legerat, 469. Scripsit pro Origene, 903. In ejus scripta consistunt, 505. Lucius quos codices Origeni tribuit, 325. Quid Eusebius objiciebat Methodio martyrio, 466. Ubi disputationem Petri et Apollionis corrupit, 833. Eusebius ab Hieronymo laudatus, et Opuscula ejusdem translata, 468. Decem libri ecclesiasticae Historiae Eusebii Pamphili adjumenta fuerunt Hieronymo, 821.
-Eusebius Cremonensis, 354, 361. Mittitur in Occidentem, 354. Epistola Eusebii quid habet, 418. De cubiculo Eusebii monachus furatus est epistolae, 534. Defenditur idem Eusebius, ibid.
-Eusebius Vercellensis de exsilio in Italiam redit, 191. Eusebius Vercellensis, 194.
-Eusebius Eniseus, 377.
-Eustathius falso imputantur filii, 569. Ubi exsul fuit ille, et sepultus, 925.
-Eustathius Sebastenus, 927.
-Euchychius, 411.
-Euzoius diaconus, et postea sub Theodosio Antiochenus episcopus, 192.
-Eva, typus Ecclesiae, 427.
-Evangelii Iberiae sententia impia, 693.
-Evangelium non est ante crucem Christi, 277. Passione ejus et sanguine dedicatur, ibid. Legi praeferetur, 283. Ut praeteretur, quare? 729. Gratia Evangelii successit, quia in lege nemo potuit justificari, 797. Aliud est in lege versari, aliud in Evangelio, 274. Umbra in lege, veritas in Evangelio, 728. In lege sapientia carnis, in Evangelio sapientia spiritus, 283. Servimus in legem Adami, serviamus in Evangelio Christo, 298. Si damnatus est lege ignoratus, quanto auge[ilegivel] in Evangelio conscientia, 734. Haeretic qui Evangelia laniaverunt, 197. Explicantur haec verba Evangelii, [ilegivel] consuetudine, 705. In Codicibus Graecis in fine Evangelii juxta Marcum quid scribitur? 758. In Graecis et Latinis secundum Lucam quid reperitur? 760. Evangelium juxta Hebraeos, Chaldaice, Syriace sermone, sed Hebraicis litteris scriptum, 783. Nazaraei et or utuntur et nonnulla ejusdem referuntur, ibid. Habentur in Caesariensis bibliotheca, ibid. Evangelium Hebraeum in Graecum et Latinum vertit Hieronymus, 831. Origenes suasit utiliter illud, ibid. Quorum hujus locus citatur, ibid. Quatuor animalia quare Evangelistae tribuuntur, 280.
-Excellentia in singulis in quibusdam necesse est, 714.
-Exemplaria habere omnes Scripturarum, passim, et infinita difficultas, 324. Totus orbis inter se trahitur exemplaria Scripturarum varietate comparantur, ibid.
-Exercitus quibus consistit, 291, 293.
-Expositorum nomina verecunde non posita, 460.
-Ezechias Dux Dei appellatur, 786. Accusatur infidelitatis, ibid. Inde [ilegivel].
+
+Evcharistie Corpus Domini in Ecclesia, 191. Πα attreetabant episcopi, 173. Ministrabatur populo de sublimi
+loco , ibid Sumptio corporis Christi, 800. Mundi debent
+sumere, 269. Illud «qualiter accipimus, licet pro meritis
+acciyientium diversum sit, 564. Prima communio Corporis
+Christi post baptisinum , 800. Eucharisia Domini cuim
+cautione sumenda, 794. . D.
+
+Eunomius , $08. Auctor est. h:ercseos contra reliquias,
+$95. Ejus sectatores Dasilicas. Apostolorum et Martyruu
+non ingrediuntur, et libros illius majoris auctorktatis arbi-
+antur, quam evangelia, 595. Dogma Eunomii de Christo,
+bis. Dogta cjusdem, 507. Eunorni ài» hiecesis, 410.
+
+Eunomiauorum et Arianorum hzresis totum Orientem
+possedit, 411.
+
+Euuuchi illi placent , quos castravit non necessitas , sed
+voluntas, 257, Typus eunuchorum volauate , qui? ibid.
+Eunuchus reginz Candacis ob robor (iJei, viri nomcn obtinuit, ibid.
+
+Euphorbus renatus esse perbibetur, 387.
+
+Eupbranor, 911.
+
+Eupolemus Judzus quid scripsit? 879. .
+
+Euripides quid referi? 514. Euripidis Trageediz, in
+mulieres sunt maledicta, 317. a.
+
+Eurojà et Asia decennali bello confligunt, ibid.
+
+Eusebius €onsul , 188.
+
+Eusebius episcoyus Nicomediensis, 192.
+
+Euseblus episcopus Czesarez Palestinze, 192. Princeps
+eoruin dicitur, 505. Ostendit Origenem Arianz perfidis
+fuisse, ibid. Sex libros scripsit pro Origene, 461, 341.
+Scripsit. vitam Pampbili mortyris, 465. Explanat οἱ edisserit trauslationem Judzorum , $33. Scripsit adversus
+Porphyrium, 527. Libri Eusebii preferentes apertam blaSphemiam de Filio et Syiritu sancto, 418. Quid dicebat, ut
+approbaret quod legerat, 469. Scripsit pro Origene, 903. Iu
+ejus scita concedit , 508. Eusebius quos codices Origeni
+pa , 925. Quid Eusebius objiciebat Methodio marti ,
+
+5. Ubi disputationem Petri et Apionis coargult , 853
+Eusebius ab Hierouywo laudatus, et Opuscula ejusdem
+
+ranslata, 466. Decet libri ecclesiasticse Historize Eusebii
+Pamphili adjumento fuerunt Hieronymo, 821.
+
+Eusebius Cremonensis, 554, 561. Mittitur in Occidentem , 554. Epistola Eusebii quid habet , 418. De cubiculo
+Kusebii monacbus furatus est epistolam, $54. Defeuditur
+Ídem Eusebius, ibid. ME .
+
+Eusebius Vercellensis de exsilio in ltaliam redit, 191.
+Eusebius Vercellensis, 194.
+
+Eusebius Emiseuus, 927.
+
+Eustathio falso imputantur filii, $69. Ubi exsul fuit ille,
+et sepultus, 925.
+
+Eustaihius Sebagtenus, 927.
+
+Euiychius, 411. . .
+
+Euzoius diaconus, et postea sub Theodosio Antiochenus
+episcopus, 192. .
+
+Eva, typus Ecclesie, 427.
+
+Fvagril Iberitz sententia impia , 695.
+
+Evangelium nou est aute crucem Christi, 277. Passione
+ejus et sanguine dedicatur , ibid. Let praefertur, 285. Ft
+preeferendum , quare? 729. Gratia Evangelii successit ,
+Quia in lege nemo potuit justificari , 797. Aliud esL in lege
+versari, aliud in Evangelio, 374. Umbra in lege , veritas
+in Evasgelio, 728. In Lege sapientia carnis, in Evangelio
+Sapientia spiritus, 285. bervivinus in legem Ada , serviamus in. Kvangelio Christo, 298. Si damauatur in lege
+
+ROraDUa, quanto wagié in Kvangelio conscientia , 754.
+
+zretici qui Evangelia lamaeuot, 197. Explicantur baec
+verba Essugelü, Facilius est n per foramen acus,
+elc., 105. In Codicibus Gesxis in lue Evangelii justa Mar-
+€um quid scribitur? T58. Tn Graecis et. Latinis secundum
+Lucam quid reperitur? 709. Exangelium juxta Hebrzos ,
+Chaldaico Syroque sermone, sed Hebraicis litteris scriptum, 783. Nazareni eo utuntur et nonnolla ejusdem referuntur, ibid. Habetur in Cesariensi bibliotheca , ibsd.
+Evangelium Hebreum in Grxcum et Latinum vertit Hieronymus , 851. Origemes sipius utitur illo, ibid. Quadam
+bujus loea citantur, ibid. Quawor auimalia quare E.vangelistis tribuuntar, 289.
+
+Excellant ut singuli. in quibusdam necesse est, 714.
+
+Exemplaria habere omofa Scripturarum magnorum sum-
+
+^ e infinite difücakatis , 524. 'Fotus orbis inter
+ra ürifaria exemplariugs Scriptura varietaué compugoat ,
+
+Exercitus quibus eoustat, 204, 395.
+
+Expositorum nomina verecunde uog pesita, 460.
+
+Ezechias Dux Dei appellatur, 755. Accusatur infidelitatis,
+ibid. Unde -ocabohrs sti possedit, ibid.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,90,515,155">
-A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,200,510,260">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,340,510,400">
-C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,480,510,540">
-D
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,90,980,880">
-Fabianus urbis Romae episcopus, occubuit in persecutione Decii, 895.
+
+  <bloco tipo="texto_principal" script="latino" bbox="490,80,980,870">
+Fabianus urbis Rom: episcopus, occubwit jn. persecutione Decií, 895.
+
 Fabiola, 554.
-Fabius Antiochenae ecclesiae episcopus, 985.
-Fabricii continentia, 341.
-Facidia, viculus urbis Rhinocorurae, 20.
-Fecisse semel quod bonum est, non potest malum esse, si frequentius fiat, 398. Unusquisque suo periculo facit, quod sibi videtur, 546.
-Falsum quidquid est, numquam beatus potest, 721.
-Fauni, 7.
-Felix episcopus Romae constituitur in hac sede? 931. Virtus feminae captivae, 45.
-Festus Judaeorum rex, 831. Successit Felici, 873.
-Fides Ecclesiae, 429. Proprie Christianorum [ilegivel], 254. Si opera non habuerit, mortua est, ibid. Perfecta fides qua? 180. Perfecta est Deum de Deo credere, 180. Zelus fidei quis debet esse? 415. Fides Romana praestigiis non recedit, 542. Non potest mutari, ibid. Catholicon est, 46. Veritas illius non potest subverti; baptismis autem, 732. Pura morum non patiur, 145. Nihil majus est quam sacramenti fides, et puritas animae, 187. Fides perfecta est, et quae difficile invenitur etiam apud eos qui bene credunt, 187. Indubitanter ad Deum ardua reperitur, ibid. Si in Petro modica fides est, in quo magna sit ignoratur, 188. Perfecta qua? scit in oratione? 189. Fidei scrupulositas, 441. Libera confessio eiusdem, 488. Spiritus sanctus non efficit habitator hunc templi, quid Aristotilis non habet veram illam? 181. Fides et devotio simplicium habent mercedem, 394. Multa proponuntur credenda sub pena amissionis, 190.
-Filii et haeredes quomodo patribus causa sunt tristitiae, 545.
-Firmillianus Caesareae episcopus sit Origenis discipulus, 895.
-Filii in cursu est minor, et eo qui ad finem pervenit, 797.
-Flacci Epistola ad Florum, 459. Pauca refertur et illa, ibid.
-Qui minas injuriam, paupertatem ferre non possumus, quomodo Flamma Babylonis vincemus? 696.
+
+Fabius Ántiochenz Kcelesim episcopus, 905.
+
+Fabricii contineptia, 5344.
+
+Facidia, viculus urbis Rhinocorors, 90.
+
+, Fecisse semel quod bonum est, non potest malum est,
+si [requentius fiat, 596. Unusquisque suo periculo facil,
+quod sibi videtur, 546.
+
+Falsum quidquid est, numquam fleri potest, T21.
+auni, 7.
+Felix episcopus Rom: constituitur in lecum Liberi
+931. Virtus femin:e captive, 45.
+Festus Judaam rexit, 851. Suecessit Feliei, 835.
+Fides Ecclesi, 429. Proprie Christianorum es, 54. Si
+opera non habuerit, mortua est, ibid. Perfecta fldes que?
+
+189. Perfecta est Deum de Deo credere, ibid. Zelus fidel
+quis debeat esse? 415. Fides Romana {προ ϊεῖαα BOR Γροὶp » $42. Non potest mutari, ibid. Catholicorum est, 461.
+
+eritas illius non potest subverti argumentationibus vanis,
+
+792. Pura moram non patitur, 415. Nihil majus est quam
+sacramenti Bdes, et puritas anie, 187. Certa fidei domus,
+436. Fides perfecia, et quz dilficile invenitur etiam apu
+eos qui bene credunt, 187. Indubitata ad Deum, anlue
+reperitur, ibid. Si iu Petro modica fides est, in quo mogni
+Sit ignoratur, 188. Perfecta quid facit ia orante? 189. Εν
+dei serupulositos, &amp;&amp;&amp;. Libera confe-sio ejusdem, 128. Spiritus sanctus non efticitur. habitator hujus templi, quod
+Antistitem non habel veram fidem, 181. Fides eros, id
+est, non sana, neue integra, 415. Nomiue unatis, el
+fidei , iufidelitas scrijta , 188. Arro;antia est, non respadere iuterrogantibus de flde, 410. Sacerdote fidem veram
+
+"Pdiexnte, ex. omuium corde teneErz discutuntur, L3.
+idiculum est guempiam ante de fke dispulate , qui"
+credere, 184. Fides οἱ devotio simplicium habet mercedem, 394. Muita proponuntur credenda sub pna atalbematis, 190.
+Uh et hzeredes quomodo patribus causa supt tristitiz,
+
+οὗ irmilianus Caesarea: episcopus fit Origenis discipulos,
+
+Qoi in cursu est, minor est eo, qui ad Finem pervetit,
+
+C Flac Epistola ad Florum, 459. Pauca ref-runur ei
+illa, ibid.
+
+Qui minas , injuriam , paupertatem ferre non posstms,
+quomodo Flammas Babylonis vincemus? 696.
+
 Flavius Grammaticus scripsit de medicinalibus, 919.
-Flavius versibus scripsit, 332.
-Florius, 873.
-Formica sex pedes habet, 557. Formicarum labores, 4.
-Fortunatianus in quo detestabilis, 931.
-Fratres in Scripturis quatuor modis dicuntur, 200 et seqq. Omnes sumus fratres duplici modo, 222.
-Nihil a se repellentem est, quantum accusatio Francis et insistentiae, 360.
-Fronto orator, praeceptor Antonini Veri, 865.
-Frugali multorum laudata, 342 et seqq.
-Agricolarum artes ut frumentum ab arvis serventur, 196.
-Fugere quid jubemur? 255.
-Fulvia quid fecit in Ciceronem, 369.
-Futura lucra sunt omnia, maxime ea quae numerantur facta sunt, 702. Una est scientia futuri, 411. Qui futura praedicti non interest usque post decem annos, aut post censum futura pronuntiat, ibid.
-Gaza interpres? ... [ilegivel] (segue pagina)
+
+Flavius versibus scripsit, 352.
+
+Florinus, 873.
+
+Formica sex pedes habet, 557. Formicarum labores, &amp;.
+
+Fortunatianus in quo detestabilis, 951.
+
+Fratres in Scripturis quatuor. modis dicuntur, 220 €
+M Omnes sumus fratres duplici modo , 229.
+
+ibil a se ita repcllendum est, quam accasstio Fraviit
+
+et infidelitatis , 560.
+
+Fronto orator, preceptor Antonini Veri , 865.
+
+Frugalitas multorum laudata, 542 et scq.
+ι gdgricolarum artes ut Frumentum ab avibus seen.
+
+Fugere quid jubemur? 259.
+
+Fulvia quid fecit in Ciceronem, 589,
+
+Futura incerta sunt omnia, maxiue ea qui üumqu?
+facta sunt, 102. Una est scientia futurorum, £A. Qui fur:
+pridiclt non interest utrum post decem annos, aut pot
+
+D centum futura pronuntiet, ibtd.
+
+G
+
+Gaas interpretatur comntotio, $72, Lt
+
+Galenus Hippocratis interpres quid dicit de Afhielis!
+$40. ἐν ἀκλοῖς quid docet? 251.
+
+Galgala interpretatur revelatio , $70.
+
+Gallica: vestes, et Gallicarti, 5$.
+
+Gallienus, 907.
+d Gaia 2 puris fortibus, et eloquenLissimis samyer aur
+av .
+
+Gallorum impetus, 308.
+
+Ganges fluvius, 5&amp;1.
+
+Gaza urbs Gentilium , ubi Marnas colitur, (9. Gszeiset
+2dverssrii Dei, 24,
+
+Gazaunus Siscipulus Milarionis, 35.
+
+Gazanus Majomites paralytirus curatur, 38.
+
+Gelieunz ignibus qui delegantur 755.
+
+Gelasius celabat opera sua, 951. :
+
+Generationis hum4mnm quadruplex assignatur genui
+
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="0,880,1000,1000">
-Digitized by Google
-  </bloco>
-  <notas>tipo_pagina: texto.
-Transcrição feita em script latino. Os blocos foram separados em cabeçalho, colunas esquerda e direita, notas marginais (letras centrais A–D) e rodapé. Várias palavras/trechos estavam pouco legíveis no original digitalizado; nesses casos foi inserido o token [ilegivel] por palavra. As bboxes são estimativas em escala 0–1000. Mantiveram-se hifenizações visíveis quando presentes.</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="0,880,1000,1000">Digitized by Google</bloco>
+
+  <notas>
+Transcrição paleográfica priorizando a leitura da imagem. BBOX estimativas em escala 0–1000.
+Quando o original não foi decifrável com segurança, usei [ilegivel]. Mantive abreviações, sinais e hifenizações tal como aparecem.
+Alguns trechos incluem caracteres gregos (p.ex. ὅδ] e ἐν ἀκλοῖς); mantive-os na transcrição literal.
+O recorte não mostra o texto completo das entradas nos limites inferior/superior da página.
+  </notas>
 </pagina>

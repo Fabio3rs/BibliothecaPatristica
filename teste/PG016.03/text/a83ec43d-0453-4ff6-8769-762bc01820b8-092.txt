@@ -1,39 +1,46 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,120">
+  <bloco tipo="cabecalho" script="latino" bbox="350,50,650,80">
     HEXAPLORUM QUÆ SUPERSUNT.
     EZECHIELIS CAPUT XXVII.
-    TO EBPAIKON.		ΤΟ ΕΒΡΑΙΚΟΝ.		ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="20,120,320,720">
-    לתוך חבל ימי גבוליך נב 4
-    יקד
-    קדש 6
-    בית־אשריים
-    8 'Ο 'Εφρ. και Συρος, οι
-    γειτονες σου.
-    צבי 11 על חטאוני
-    אבתן12 'Ο Συρος και 'Εφρ.,
-    בחרים.
-    חתים 14
-    בני 15
-    ארם 16
-    בבכנ
-    ארדון
-    וכנ
-    השות
-    וסם
-    חג 17
-    בין חלם 18
-    חמר נהר
-    חרן 19 ואון מאול במדנך
-    שבא אשר 23
+  <bloco tipo="outro" script="latino" bbox="100,50,150,70">
+    2559
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,120,660,720">
+  <bloco tipo="outro" script="latino" bbox="850,50,900,70">
+    2560
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="100,90,300,120">
+    TO EBPAIKON.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="350,90,650,120">
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,90,850,110">
+    ΑΚΥΛΑΣ,
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,120,300,500">
+    4 לִבֵּךְ יָמִים גְּבֻלֹתַיִךְ
+    6 קֶרֶשׁ
+    8 וְיֹשְׁבֵי
+    11 עַל־חוֹמֹתַיִךְ
+    12 תַּרְשִׁישׁ
+    14 וּפְדָנִים
+    15 בְּנֵי־דְדָן
+    16 אָרָם
+    17 צֳרִי
+    18 יַיִן חֶלְבּוֹן
+    19 דָּן וְיָוָן
+    23 שְׁבָא וְאַשּׁוּר
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="350,120,500,500">
     4.
     6.
-    8.
+    8. Ὁ Ἑβρ. καὶ Σύρος, οἱ
+    γείτονές σου.
     11.
-    12.
+    12. Ὁ Σύρος καὶ Ἑβρ.,
+    Θαρσεῖς.
     14.
     15.
     16.
@@ -41,16 +48,46 @@
     18.
     19.
     23.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="700,120,900,500">
+    4.
+    6.
+    8. Σανίσι κεκαλυμμένας.
+    11.
+    1. Καὶ πυγμαῖοι.
+    12. Θαρσεῖς.
+    14.
+    15. Υἱο Δαδάν.
+    16.
+    Συναλλαγή σου.
+    .......
+    17. Καὶ φανάγ.
+    18. ......
+    (Καὶ ἐρίοις Σοόρ.)
+    19. ......
+    23.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,520,300,550">
     VERSIO HEBRAICI TEXT.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,520,600,550">
+    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,520,850,540">
+    AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,550,350,920">
     4. In corde marium termini tui.
     Ædificatores tui perfecerunt decorem tuum.
     6. Tabulatum tuum.
-    Filia Assurim.
-    8. Habitatores. Hebr. et Syrus int., vicini tui.
+    Filia Assurimo.
+    8. Habitatores. Hebr. et Syrus
+    int., vicini tui.
     11. Super muros tuos in circuitu.
-    El pygmaei.
-    12. Tharsis. Syrus et Hebrews int., idem.
-    14. Et mules.
+    Et pygmæi.
+    12. Tharsis. Syrus et Hebræus
+    int., idem.
+    14. Et mulos.
     15. Filii Dedan.
     16. Aram.
     In carbunculo.
@@ -61,63 +98,58 @@
     17. Et phannag.
     18. In vino Chelbon.
     Et lana alba.
-    19. Et Dan, et Javan vagus in nundinis tuis.
+    19. Et Dan, et Javan vagus in
+    nundinis tuis.
     23. Saba, Assur.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,120,980,720">
-    4.
-    6.
-    8.
-    11.
-    1. Kai pygmacoi.
-    12. Tharasis.
-    14.
-    15. Yiol Dadim.
-    16.
-    Συναλλαγη σου.
-    ......
-    17. Kai φαργαι.
-    18. .....
-    (Kai ιριοις Σοδα.)
-    19. .....
-    23.
-    VULGATA LATINA.
+  <bloco tipo="texto_principal" script="latino" bbox="380,550,650,920">
     4. Finitimi tui, qui te ædificaverunt, impleverunt decorem tuum.
-    6. Transtria tua.
+    6. Transtra tua.
     (Ex ebore) indico.
     8. Habitatores.
     11. Super muros tuos in circuitu.
-    Et pygmaei.
+    Et pygmæi.
     12. Carthaginenses.
-    14. Et mules.
+    14. Et mulos.
     15. Filii Dedan.
     16. Homines.
     Gemmam.
     Purpuram.
     Et byssum.
     Et sericum.
-    Et Chodechod.
+    Et Chodchod.
     17. Balsamum.
     18. In vino pingui.
     In lanis coloris optimi.
-    19. Dan, et Gracia, et Mosel, in nundinis tuis.
+    19. Dan, et Græcia, et Mosel,
+    in nundinis tuis.
     23. Saba, Assur.
-    AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,550,900,920">
     4.
-    6.
+    6. Tabulis contectas.
     8.
     11.
-    1. Et pygmaei.
+    1. Et pygmæi.
     12. Tharsis.
     14.
     15. Filii Dadan.
     16.
     Commutatio tua.
+    Et sorica vel subtilia.
     17. Et phanag.
     18. Vinum de Helbon.
     (Et lanis Suor.)
     19. De Uzal.
     23.
   </bloco>
-  <notas>Mapeamento em três colunas: coluna esquerda em hebraico, coluna central em latim (versio hebraici e vulgata) e coluna direita com aquila/grego. Algumas palavras hebraicas fragmentárias transcritas tal como visíveis; [ilegivel] não foi necessário. BBOX aproximadas em escala 0-1000.</notas>
+  <bloco tipo="rodape" script="latino" bbox="550,950,800,980">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Scripts: Latino, Grego, Hebraico.
+    A página apresenta uma disposição em três colunas principais na parte superior (Hebraico, Transliteração/Notas Gregas, Aquila Grego) e três colunas na parte inferior (Versão Latina do Hebraico, Vulgata, Versão Latina de Aquila).
+    Alguns números de versículos na coluna do meio superior parecem estar ausentes ou substituídos por notas.
+    Na coluna direita superior, há pontos indicando texto omitido ou lacuna.
+  </notas>
 </pagina>

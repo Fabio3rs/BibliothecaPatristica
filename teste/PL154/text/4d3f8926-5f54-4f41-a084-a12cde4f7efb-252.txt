@@ -1,57 +1,59 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="200,40,800,120">
-EKKEHARDI URAUGIENSIS
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="120,25,180,70">
+    495
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="20,30,80,80">
-495
+  <bloco tipo="cabecalho" script="latino" bbox="300,20,700,70">
+    EKKEHARDI URAUGIENSIS
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="920,30,980,80">
-19.
+  <bloco tipo="cabecalho" script="latino" bbox="900,25,980,70">
+    19.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="0,150,120,900">
-Hic duo subjicienda, coae. Treverensis N. 1709 (LXXXY) obi? P[.] 75 descriptio, quae tum eum vis a Ekkehardi recenit
-quam cum aliis et cod. Seintenac; supra SS. i, p. 215; eidem quam maxime conveniunt.
+  <bloco tipo="nota_marginal" script="latino" bbox="85,130,230,840">
+    Hic duo subjicienda dati [ilegivel], e cod. Treverensis N. 1709 ([ilegivel]) [ilegivel], quae tam cum iis quae Ekkehardi recensit quam cum aliis et cod. Seintenac; supra SS. i, p. 215; eidem quam maxime conveniunt.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,150,480,900">
+  <bloco tipo="texto_principal" script="latino" bbox="250,150,560,860">
+1.
 Domnus Arnolfus Menesius episcopus. Cujus pater Bogisius fuit vir illustris.
-Pippinus princeps filius ejus.
-Pippinus rex Francorum et Langobardorum, ac patricius romanorum.
-Pippinus rex Francorum.
+Ansigisus filius ejus.
+Pippinus princeps et major regiae domus.
+Karolus cognomento forissimus.
+Pippinus cognomento Pius.
+Domnus Karolus rex Francorum et Langobardorum ac patricius Romanorum.
+Hlodovicus rex cognomento Pius.
 Karolus rex Franciae.
-Karolomannus rex [ilegivel].
-Ludovicus rex Germaniae.
-Ludovicus Karolomannus Karolus [ilegivel].
 Hlodovicus rex Franciae.
+Hugo filius ejus.
+Hlodovicus rex [ilegivel].
 Arnolfus rex [ilegivel].
-Zwendo[u?]l[?]us rex Ostrofranciae.
+[ilegivel] rex Ostrofranciae.
 Hlodherius rex Franciae.
 Irmintrudt.
 Irminfrudt.
-Imnd?rex [ilegivel].
 Sigefridus comes.
-Cunegeun imperatrix.
+Cungeunt imperatrix.
 Hugoz rex Italiae.
 Hugoz marchisius.
-Hugoz marachisius.
+Hugoz marchisius.
 Berhta.
 Rivus.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,150,880,900">
-Liudolfus dux Saxonie.
+  <bloco tipo="texto_principal" script="latino" bbox="560,150,880,860">
+2.
+Liudolfus dux Saxoniae.
 Bruno dux.
 Heinricus rex primus.
 Heinricus rex secundus.
 Theodericus pater Mathildis reginae.
-Theodericus, Witikind magnus dux Saxoniae.
+Theodericus, Wittekind magnus dux Saxoniae.
 Heinricus imperator primus.
 Otto imperator.
 Otto secundus.
 Otto tertius.
 Otto dux.
-Otto dux - Heinricus [ilegivel].
+Otto dux — Heinricus [ilegivel].
 Gerburg.
 Hadewig.
-Hugoz er Beatrix.
+Hugoz et Beatrix.
 Hubarthus Karolus dux.
 Rudolodus rex. Bertha. Geva.
 Mathildis. Gisia. Agnes.
@@ -61,8 +63,11 @@ Hermanus dux.
 Cuonradus [ilegivel] archiepiscopus.
 Otto dux.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,940,980,990">
+  <bloco tipo="aparato_critico" script="latino" bbox="880,160,980,860">
+VARIAE LECTIONES
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="650,940,980,990">
 Digitized by Google
   </bloco>
-  <notas>Orientação do documento: texto impresso em latim, página escaneada rotacionada. Muitos nomes próprios e abreviações parcialmente ilegíveis; palavras incertas marcadas como [ilegivel]. Foram mapeados cabeçalho, numeração de página, nota marginal à esquerda, duas colunas de texto principal e rodapé com marca de digitalização.</notas>
+  <notas>Transcrição realizada priorizando leitura visual da imagem; a página está rotacionada na fonte e os bbox estão em escala 0-1000, valores aproximados. Mantive a ordem de leitura: coluna esquerda (bloco "texto_principal" primeiro) seguida da coluna direita. Usei [ilegivel] por palavra onde o traço é incerto. A nota vertical à esquerda foi colocada como nota_marginal; a coluna estreita à direita como aparato_critico. Pequenas variações ortográficas do OCR original foram corrigidas apenas quando evidentes visualmente; não foi feita normalização linguística.</notas>
 </pagina>

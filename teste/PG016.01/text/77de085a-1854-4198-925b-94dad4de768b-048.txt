@@ -1,73 +1,169 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,90">
-    83 IIEXAPLORUM QUAE SUPERSVNT. 84
+  <bloco tipo="cabecalho" script="latino" bbox="10,10,50,40">
+    83
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="30,90,970,150">
-    TO EBPAIKON. TO EBPAIKON Ἑλληνικοὶ γράμμασι. AKYLAS.
+  <bloco tipo="cabecalho" script="latino" bbox="350,10,650,40">
+    HEXAPLORUM QUÆ SUPERSUNT.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,150,300,330">
-    ויושב ירושלם 31
-    ודמים כן אמנון 32
-    וכי-עליו אבשלום היה שמח יומם
-    על-אבנון כר-מת 39
+  <bloco tipo="cabecalho" script="latino" bbox="950,10,990,40">
+    84
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="320,150,640,330">
+
+  [!-- Top Section: Hebrew / Greek Translit / Aquila --]
+  <bloco tipo="texto_principal" script="misto" bbox="50,50,300,200">
+    TO ΕΒΡΑΙΚΟΝ.
+    וישכב ארצה 31
+    ויכו כי אמן 32
+    כי־לפי אבשלום היתה שמה
+    מים
+    על־פניו כי־מת 39
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="350,50,600,200">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
     31.
     32.
     39.
-    Ἴτι ἐν ὀργῇ ἦν αὐτῷ Αβεσσαλώμ ἀπὸ τῆς ἡμέρας.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,50,900,200">
+    ΑΚΥΛΑΣ.
+    31.]
+    32.
+    Ὅτι ἐν ὀργ ἦν αὐτῷ Αβεσσα-
+    λὼμ ἀπὸ τῆς μέρας.
     39.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,150,970,330">
-    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
-    31. Et jacuït in terra. 31. Et cecidit super terram. 31.
-    32. Interemerunt, sed Amnon. 32. Occisi sint : Amnon solus. 32.
-    Quia super os Absalom erat positum a die. Quoniam in ore Absalom erat positus ex die. Quia in ira erat ipsi Abessalom a die
-    39. Super Amnon, quod mortuus esset. 39. Super Amnon interiit. 39.
+
+  [!-- Middle Section: Latin Versions --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,220,300,350">
+    VERSIO HEBRAICI TEXT.
+    31. Et jacuit in terra.
+    32. Interemerunt, sed Amnon.
+    Quia super os Absalom erat po-
+    situm a die.
+    39. Super Amnon, quod mor-
+    tuus esset.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="30,330,970,530">
+  <bloco tipo="texto_principal" script="latino" bbox="350,220,600,350">
+    VULGATA LATINA.
+    31. Et cecidit super terram.
+    32. Occisi sint : Amnon solus.
+    Quoniam in ore Absalom erat
+    positus ex die.
+    39. Super Amnon interitu.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,220,900,350">
+    AQUILA.
+    31.
+    32.
+    Quia in ira erat ipsi Abessalom
+    a die
+    39.
+  </bloco>
+
+  [!-- Notes Section --]
+  <bloco tipo="nota" script="misto" bbox="50,360,900,500">
     Notæ et variæ lectiones ad cap. XIII lib. II Regum.
-    V. 2. 'Αλλ. και ἠδυνήθη etc. Reg.
-    V. 3. 'Αλλ., φρονίμως. Reg.
-    V. 4. 'Αλλ., ὅτι συντέτηκε. Reg.
-    V. 5. 'Αλλ., προσποιου γενομένηςδα. Idem.
-    V. 7. 'Αλλ., ἀείνων. Sic quædam exemplaria.
-    V. 8. 'Αλλ., ἐκλελλευεν. Reg.
-    Ibid. 'Αλλ., στέαρ. Reg.
-    V. 15, 16. 'Αλλ., και ἐπεν Ἀμωνιν etc. Sic Reg., tactio interprete, cujus versio plenior et sincerior est, quam ea quæ LXX interpretum fertur.
-    V. 18, 19. Horum versuum lectiones ad fidem Regii codicis Theodori et Procopii restituitimus. Reg. et Procop. vero hanc notam habent: Χιτῶν ἀστραγαλῶτός. Συμμ., χειροἰνοῦ, Ἀχύλας, χαροποικ, ἀντ' τοῦ καρπὸς ἐνυσσαμένον ἔχων. Οἱ νῦν δὲ αὐτῶν καλοῖσι παπυρικὰ. Ὁ δε Ἰώσηπος, τὸν μέχρι τῶν ἀστραγαλῶν διηκόντας. I. e. Tunica talaris. Symmachus, manicalia : Aquila, χιρωνίσκος, ac si diceret, frucitus inextos habens. Hodie plumariocon appellamt. Josephus, ad talos usque densissima
+    V. 2. Ἄλλ., καὶ ἠδυνάτει etc. Reg.
+    V. 3. Ἄλλ., φρόνιμος. Reg.
+    V. 4. Ἄλλ., ὅτι συνέτηκας. Reg.
+    V. 5. Ἄλλ., προσποιοῦ ἐνοχλεῖσθαι. Idem.
+    V. 7. Ἄλλ., δεῖπνον. Sic quædam exemplaria.
+    V. 8. Ἄλλ., ἐκάθευδεν. Reg.
+    Ibid. Ἄλλ., στέαρ. Reg. .
+    V. 15. 16. Ἄλλ., καὶ εἶπεν Ἀμνν etc. Sic Reg.,
+    tacito interprete, cujus versio plenior et sincerior
+    est, quam ea quæ LXX Interpretum fertur.
+    V. 18, 19. Horum versuum lectiones ad fidem
+    Regii codicis TheodoretI et Procopii restituimus.
+    Reg. et Procop. vero hanc notam habent : Χιτὼν
+    ἀστραγαλωτός. Σύμμ., χειριδωτός, Ἀκύλας, καρ-
+    πωτός, ἀντὶ τοῦ, καρποὺς ἐνυφασμένους ἔχων. Οἱ
+    νῦν δὲ αὐτὸν καλοῦσι πλουμαρικόν. Ὁ δὲ Ἰώσηπος,
+    τὸν μέχρι τῶν ἀστραγάλων δίχοντα. I. e. « Tunica
+    talaris. Symmachus, manicata : Aquila, καρπωτός,
+    ac si diceret, fructus intextos habens. Hodie pluma-
+    ricon appellant. Josephus, ad talos usque demissam
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="30,530,970,590">
+
+  [!-- Bottom Section: Caput XIV --]
+  <bloco tipo="cabecalho" script="latino" bbox="350,510,650,530">
     CAPUT XIV LIB. II REGUM
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,590,330,760">
-    TO EBPAIKON.
-    2. 5. 6.
+
+  <bloco tipo="texto_principal" script="misto" bbox="50,530,300,700">
+    TO ΕΒΡΑΙΚΟΝ.
+    חכמה 2
+    אבל 5
+    ויכו 6
+    וקבר את־נחלתי אשר נשא־ה 7
+    לביתי שוב־לא איש שם שארית על־
+    פני האדמה
+    הדברת מלך דברנו אלי 10
+    לא־יוסף עוד לנגע בך
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="350,530,600,700">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικος γράμμασι.
+    2.
+    5.
+    6.
+    7.
+    10.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,530,900,700">
+    ΑΚΥΛΑΣ.
+    2.
+    5.
+    6.
+    7.
+    10.
+  </bloco>
+
+  [!-- Bottom Latin Section --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,720,300,900">
     VERSIO HEBRAICI TEXT.
     2. Sapientem.
     5. Profecto.
     6. Et percussit.
-    7. Et extinguet prunam meam quæ relicta est, ut non ponatur viro meo nomen, et residuum super facies terræ.
-    10. Loquentem ad te, et adduc eum ad me, et non addet ultra tangere in te.
+    7. Et extinguent prunam meam
+    quæ relicta est, ut non ponatur
+    viro meo nomen, et residuum su-
+    per facies terræ.
+    10. Loquentem ad te, et adduc
+    eum ad me, et non addet ultra
+    tangere in te.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="330,590,640,820">
-    סכנה 2
-    אבל 5
-    ויקר 6
-    וכבנו אכתוב נשא-7 ולבהי שמ ושהירות על פני הארץ
-    ... [ilegivel]
-    10. אלי הבאהו אלי ולא-יסף עוד לגעת בך
+  <bloco tipo="texto_principal" script="latino" bbox="350,720,600,900">
+    VULGATA LATINA.
+    2. Sapientem.
+    5. Heu.
+    6. Et percussit.
+    7. Et quærunt extinguere scin-
+    tillam meam, quæ relicta est, ut
+    non supersit viro meo nomen et
+    reliquiæ super terram.
+    10. Qui contradixerit tibi, ad-
+    duc eum ad me, et ultra non ad-
+    det ut tangat te.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,590,970,820">
-    TO EBPAIKON Ἑλληνικοὶ γράμμασι. AKYLAS.
-    2. Sapientem. 2. Sapientem. 2.
-    5. Heu. 5.
-    6. Et percussit. 6.
-    7. Et quærunt extinguere scintillam meam, quæ relicta est, ut non supersit viro meo nomen et reliquiæ super terram. 7.
-    10. Qui contradixerit tibi, adduci eum ad me, et ultra non addet ut langat te. 10.
+  <bloco tipo="texto_principal" script="latino" bbox="650,720,900,900">
+    AQUILA.
+    2.
+    5.
+    6.
+    7.
+    10.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,900,970,980">
+
+  <bloco tipo="rodape" script="latino" bbox="550,950,850,990">
     Digitized by Google
   </bloco>
-  <notas>Identifiquei blocos em latim, hebraico e grego. Pequenas áreas com manchas foram marcadas como [ilegivel] onde palavra isolada não se logra ler. BBOXs aproximadas em escala 0-1000.</notas>
+  
+  <notas>
+    Scripts: Latino, Grego, Hebraico.
+    A página contém uma edição poliglota (Hexapla) com colunas paralelas.
+    Transcrição literal dos caracteres visíveis, incluindo abreviações (ex: "Ἄλλ.", "Reg.", "Ibid.").
+    O texto hebraico em 2 Samuel 13:39 apresenta uma variante visual ("מים") que difere do texto massorético padrão.
+  </notas>
 </pagina>

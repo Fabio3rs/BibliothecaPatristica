@@ -1,23 +1,9 @@
-<pagina estado="com_texto">
-  <bloco tipo="outro" script="latin" bbox="0,0,1000,120">
-    tipo_página: guarda
+<pagina estado="com_texto" tipo="capa_ou_guarda">
+  <bloco tipo="nota_marginal" script="latino" bbox="290,410,710,590">
+    THE UNIVERSITY OF MICHIGAN · LIBRARIES ·
   </bloco>
-  <bloco tipo="nota_marginal" script="desconhecido" bbox="20,320,120,680">
-    mancha retangular preta junto à margem esquerda
-  </bloco>
-  <bloco tipo="texto_principal" script="latin" bbox="320,360,680,640">
-    THE UNIVERSITY OF MICHIGAN · LIBRARIES
-  </bloco>
-  <bloco tipo="nota_marginal" script="desconhecido" bbox="0,920,80,980">
-    pequena marca preta arredondada no canto inferior esquerdo / selo parcialmente cortado
-  </bloco>
-  <bloco tipo="nota_marginal" script="desconhecido" bbox="560,860,980,980">
-    retângulo cinzento sobreposto no rodapé (artefato de digitalização)
-  </bloco>
-  <bloco tipo="rodape" script="latin" bbox="520,930,980,1000">
+  <bloco tipo="rodape" script="latino" bbox="615,935,835,975">
     Digitized by Google
   </bloco>
-  <notas>
-    Página identificada visualmente como folha de guarda (guarda interna). O elemento textual principal é um selo circular da biblioteca no terço inferior da página, transcrito linearmente como "THE UNIVERSITY OF MICHIGAN · LIBRARIES" correspondendo à melhor leitura visual possível apesar de áreas desbotadas/fragmentadas do carimbo. As manchas/objetos escuros (mancha retangular vertical à esquerda; pequena marca no canto inferior esquerdo; retângulo cinzento no rodapé) são não-textuais e foram anotados como notas marginais com script="desconhecido". O texto "Digitized by Google" no rodapé foi transcrito tal como aparece. BBOXs são estimativas na escala 0-1000, com 0=topo da página e 1000=base; foram definidas para englobar visualmente os elementos identificados. Nenhuma palavra foi marcada com [ilegivel], embora algumas letras do selo estejam parcialmente apagadas; a transcrição do selo é uma normalização mínima/linearização da inscrição circular para fins de leitura.
-  </notas>
+  <notas>Página de guarda (flyleaf) sem texto principal do códice. Presente carimbo circular de biblioteca no centro da página e marca de digitalização no canto inferior direito. Manchas de tinta/margem à esquerda não constituem texto legível e foram omitidas.</notas>
 </pagina>

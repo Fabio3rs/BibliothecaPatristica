@@ -1,92 +1,164 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,80">
-    1743 HEXAPLORUM QUAE SUPERSUNT. 1741
+  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,50">
+    1743 HEXAPLORUM QUÆ SUPERSUNT. 1744
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="20,90,320,720">
-    TO ΕΒΡΑΙΚΟΝ.
-    כנשה כאשר נשא
-    3 את-הדבר הזה
-    4 נפלה
-    נפלה
-    5 והארץ תחת הישבה
-    5.
-    עבד
-    הטר
-    6 על-ק חד
-    ונשא ראש יעדר
-    6.
-    7 אכל הדורש
-    11 גלה ממנש
-    13 מעלות אם כה בצד
-    14 והיה ישא כלם
-    14.
-    זחל ים
-    16 מנין הארץ זרמת שמים
-    16.
-    ואמר חיי-לי חי-לי
-    אין לי בגדם בגד
+  
+  [!-- Coluna Superior Esquerda: Hebraico --]
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,50,330,460">
+    TO EBPAIKON.
+    כנשש כאשר ישא בר
+    3 את - דבר הזה
+    4 נבלה
+    נבלה
+    5 והארץ חנה תחת ישביה
+    עבר
+    הפר
+    6 על - כן יהי
+    ונשאר אנוש מזער
+    7 אבל תירוש
+    11 הללה משוש
+    13 כי כוללת אם מה בציר
+    14 המה ישאו קולם
+    יצלו מים
+    16 מכנף הארץ זמרת שמענו
+    ואומר רזי - לי רזי - לי
+    אוי לי בגדים בגדו
     ובגד בגדים
-    19 וראה הרצעה הארץ שד
-    החדשה: ארץ
+    19 רעה התרעעה הארץ פד
+    התחרדה הארץ
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="340,90,660,720">
-    TO ΕΒΡΑΙΚΟΝ
+
+  [!-- Coluna Superior Central: Transliteração Grega --]
+  <bloco tipo="texto_principal" script="grego" bbox="340,50,550,460">
+    TO EBPAIKON
     Ἑλληνικοῖς γράμμασι.
     3.
     4.
     5.
-    Ἠχώρυσαν.
     6.
-    Και ὑπολειφθήσεται ἄνθρωπος
+    7.
+    11.
+    13.
+    14.
+    16.
+    19.
+  </bloco>
+
+  [!-- Coluna Superior Direita: Aquila Grego --]
+  <bloco tipo="texto_principal" script="grego" bbox="600,50,950,460">
+    AKYΛAΣ
+    3.
+    4.
+    5.
+    Ἠχύρωσαν.
+    6.
+    Καὶ ὑπολειφθήσεται ἄνθρωπος
     ἐλάχιστος.
-    7. Ἐπένθησεν ὁ παρωρμησας.
+    7. Ἐπένθησεν ὁ παρωρισμός..
     11.
     13
     14.
     16. Ἀπὸ τῶν πτερύγων τῆς γῆς
     μελῳδίας ἠκούσαμεν.
-    Καὶ εἶπ', Τὸ μυστήριόν μου ἔμοι,
-    τὸ μυστήριόν μου ἐμοί.
-    Ἀ ὅμιοι, ἀθετοῦντες ἠθέτησαν.
+    Καὶ ἐρεῖ, Τὸ μυστήριόν μου ἐμοί,
+    τὸ μυστήριόν μου ἐμοί.
+    Ὦ οἴμοι, ἀθετοῦντες θέτησαν.
     19.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,740,660,980">
-    VERSIO HEBRAICI TEXT.       VULGATA LATINA.          AQUILA.
-    Ut foenerator, sic foenus ferens ab eo.
-    Sicut qui repetit, sic qui debet.
-    3. Verbum hoc.            3. Verbum hoc.          3.
-    4. Defluxit.             4. Defluxit.           4.
-    Defluxit.                Defluxit.
-    5. Et terra hypocrisi est usa sub incolis suis.
-                             5. Et terra infecta est ab habitatoribus suis.
-    Transgressi sunt.        Transgressi sunt.
-    Dissipaverunt.          Dissipaverunt.         Iruitum fecerunt.
-    6. Ideo combusti sunt.   6. Ideoque insaniient.  6.
-    Et remanebit hominis pusillum. Et relinquuntur homines pauci. Et relinquetur homo minimus.
-    7. Luxit mustum.         7. Luxit vindemia.     7. Luxit intempestivitas.
-    11. Migravit gaudium.   11. Translatum est gaudium. 11.
-    13. Sicut racemi si consummata fuerit vindemia.
-                           13. Et racemi, cum fuerit finita vindemia.
+
+  [!-- Coluna Inferior Esquerda: Versão Hebraica (Latim) --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,480,330,950">
+    VERSIO HEBRAICI TEXT.
+    Ut fœnerator, sic fœnus ferens
+    ab eo.
+    3. Verbum hoc.
+    4. Defluxit.
+    Defluxit.
+    5. Et terra hypocrisis est usa sub
+    incolis suis.
+    Transgressi sunt.
+    Dissipaverunt.
+    6. Ideo combusti sunt.
+    Et remanebit hominis pusillum.
+    7. Luxit mustum.
+    11. Migravit gaudium.
+    13. Sicut racemi si consummata
+    fuerit vindemia.
     14. Hi elevabunt vocem suam.
-    Vocem efferent a mari.  14. Hi elevabunt vocem suam. 14.
-                           Hinniuent de mari.
-    16. Ab ala terrae cantus audivimus.
-    16. A finibus terrae laudes audivimus.
-    16. Ab alis terrae melodias audivimus.
-    Et dixi : Secretum meum mihi, secretum meum mihi.
-    Et dixi : Secretum meum mihi, secretum meum mihi.
-    Et dicet, Mysterium meum mihi, mysterium mihi.
-    Vae mihi, praevaricantes praevaricati sunt.
-    Vae mihi, praevaricantes praevaricati sunt.
-    Heu, vae mihi, praevaricantes praevaricati sunt.
-    Et praevaricatione praevaricantium.
-    Et praevaricatione transgressorum.
-    19. Confringendo confregerit se terra, dissipando dissipavit se terra.
-    19. Confractio constringetur terra, contritio contercetar terra.
+    Vocem efferent a mari.
+    16. Ab ala terræ cantus audivi-
+    mus.
+    Et dixi : Secretum meum mihi,
+    secretum meum mihi.
+    Væ mihi, prævaricantes præva-
+    ricati sunt.
+    Et prævaricatione prævarican-
+    tium.
+    19. Confringendo confregit se
+    terra, dissipando dissipavit se
+    terra.
+  </bloco>
+
+  [!-- Coluna Inferior Central: Vulgata Latina --]
+  <bloco tipo="texto_principal" script="latino" bbox="340,480,650,950">
+    VULGATA LATINA.
+    Sicut qui repetit, sic qui debet.
+    3. Verbum hoc.
+    4. Defluxit.
+    Defluxit.
+    5. Et terra infecta est ab habi-
+    tatoribus suis.
+    Transgressi sunt.
+    Dissipaverunt.
+    6. Ideoque insanient.
+    Et relinquentur homines pauci.
+    7. Luxit vindemia.
+    11. Translatum est gaudium.
+    13. Et racemi, cum fuerit finita
+    vindemia.
+    14. Hi elevabunt vocem suam.
+    Hinnient de mari.
+    16. A finibus terræ laudes audi-
+    vimus.
+    Et dixi : Secretum meum mihi,
+    secretum meum mihi.
+    Væ mihi, prævaricantes præva-
+    ricati sunt.
+    Et prævaricatione transgresso-
+    rum.
+    19. Confractione confringetur
+    terra, contritione conteretur terra.
+  </bloco>
+
+  [!-- Coluna Inferior Direita: Aquila Latim --]
+  <bloco tipo="texto_principal" script="latino" bbox="700,480,950,950">
+    AQUILA.
+    3.
+    4.
+    5.
+    Irritum fecerunt.
+    6.
+    Et relinquetur homo minimus.
+    7. Luxit intempestivitas.
+    11.
+    13.
+    14.
+    16. Ab alis terræ melodias au-
+    divimus.
+    Et dicet, Mysterium meum mihi,
+    mysterium meum mihi.
+    Heu, væ mihi, prævaricantes
+    prævaricati sunt.
     19.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,920,960,980">
+
+  <bloco tipo="rodape" script="latino" bbox="600,960,900,990">
     Digitized by Google
   </bloco>
-  <notas>Page contains Hebrew, Greek and Latin scripts in multiple columns; columns transcribed left-to-right: Hebrew column, Greek column, then Latin main body spanning lower area. Some characters and diacritics approximated; unreadable spots rendered as is without using [ilegivel] since most text legible.</notas>
+  
+  <notas>
+    Página contendo texto poliglota (Hebraico, Grego, Latim) comparativo da Hexapla.
+    Transcrição de caracteres hebraicos e gregos realizada conforme visibilidade.
+    Algumas linhas de numeração de versículos estão alinhadas verticalmente entre as colunas.
+  </notas>
 </pagina>

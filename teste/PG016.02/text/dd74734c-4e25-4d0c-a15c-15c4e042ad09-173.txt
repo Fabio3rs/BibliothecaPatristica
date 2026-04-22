@@ -1,157 +1,189 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,70">
-    1597                      CANTICI CANTICORUM CAPUT VI.                         1598
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,150,50">
+    1597
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="40,80,360,125">
+  <bloco tipo="cabecalho" script="latino" bbox="350,20,650,50">
+    CANTICI CANTICORUM CAPUT VI.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,20,950,50">
+    1598
+  </bloco>
+  
+  [!-- Greek Section Headers --]
+  <bloco tipo="texto_principal" script="grego" bbox="50,60,300,90">
     ΣΥΜΜΑΧΟΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="380,80,640,125">
-    ΘΕΟΔΟΤΙΟΝ.
+  <bloco tipo="texto_principal" script="grego" bbox="450,60,550,90">
+    θ'.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="40,120,360,820">
-    2.  Ὁ ποιμαίνων ἄνθη.
-    
-    3.  Εὐδοκητή.
-    Ἐπιφορος ὡς τάγματα παρεμβολῆς.
+  <bloco tipo="texto_principal" script="grego" bbox="750,60,950,90">
+    ΘΕΟΔΟΤΙΩΝ.
+  </bloco>
+
+  [!-- Greek Left Column (Symmachus) --]
+  <bloco tipo="texto_principal" script="grego" bbox="50,100,300,450">
+    2. Ὁ ποιμαίνων ἄνθη.
+    3. Εὐδοκητή.
+    Ἐπίφοβος ὡς τάγματα παρεμβο-
+    λῆς.
     4.
-    
-    5.  Ὁδόντες σου ὡς ἀγγελοι τῶν ῥημάτων.
-    6.  Σκεπόμεναι καλύμματι.
-    8. Καὶ ἐπήνεσαν.
+    5. Ὀδόντες σου ὡς ἀγέλαι τῶν
+    ἀμνάδων.
+    6. Σκεπόμενοι καλύμματι.
+    8. Καὶ ἐπῄνεσαν.
     9.
-    Ἐπίσκοπος μετὰ στίχους.
-    
-    10. Κατέθη καταμαθεῖν τὰς ὀπίσας τῆς φάραγγος.
-    
-    11. Οὐκ οἶδα, ἡ ψυχή μου ἡπώ-
-    ρησέ με.
-    .  Ἀρματᾳ λαοῦ τοῦ ἠγουμένου.
-    
-    12. . . . ἡ ἐσκυλευμένη.
-    
-    SYMMACHIUS.
-    
-    2. Pascens flores.
-    
-    3. Beneplacens.
-    
-    Terribilis ut legiones castrorum.
-    
+    Ἐπίφοβος μετὰ στίφους.
+    10. Κατέβη καταμαθεῖν τὰς ὀπώ-
+    ρας τῆς φάραγγος.
+    11. Οὐκ οἶδα, ἡ ψυχή μου ἐπό-
+    ρησέ με.
+    .. Ἅρμασι λαοῦ το ἡγουμένου.
+    12. . . . ἡ ἐσκυλευμένη.
+  </bloco>
+
+  [!-- Greek Middle Column (Theta/LXX) --]
+  <bloco tipo="texto_principal" script="grego" bbox="350,100,650,450">
+    2. Ὁ ποιμαίνων ἐν τοῖς κρίνοις.
+    ς', τῷ νεμομένῳ ἐν τοῖς κρίνοις.
+    3. Ὡς εὐδοκία. Ε', ἕως εὐδοκῶ.
+    Θάμβος ὡς τεταγμέναι. Ἄλλος,
+    θάμβος ὡς τεταγμέναι παρατάξεις.
+    4. Ἀπέναντίον μου.
+    Αἱ ἀνεφάνησαν. Ἄλλος, αἱ ἀνέ-
+    βησαν.
+    5. Ὀδόντες σου ὡς ἀγέλαι τῶν
+    κεκαρμένων.
+    6. Ἐκτς τῆς σιωπήσεώς σου.
+    8. Καὶ μακαριοῦσι αὐτήν.
+    9. Ἐκκύπτουσα. Ἄλλος, ἀνα-
+    βαίνουσα.
+    Θάμβος ὡς τεταγμέναι. Ἄλλος,
+    ὡς ἐπιφάνεια. Ε', ἐπιφανὴς ς με-
+    γαλυνόµεναι. ς', καταπληκτικὴ ἐν
+    μεμεγαλυμμέναις.
+    10. Κατέβην ἰδεν ἐν γενήμασι
+    τοῦ χειμάρρου. Ἄλλος, ... ἰδεῖν τὸν
+    καρπὸν τῶν χειμάρρων.
+    11. Οὐκ ἔγνω ἡ ψυχή μου· ἔθετό
+    με.
+    Ἅρματα μιναδάβ. Ε', ἔθου με
+    εἰς ρμα λαο ἡγουμένου.
+    12. Ἐπίστρεφε, ἐπίστρεφε, ἡ
+    Σουναμῖτις. Ε', . . . . εἰρηνεύουσα.
+    Καὶ ὄψόμεθα. Ἄλλος, καὶ δρα-
+    ματισθησόμεθα.
+  </bloco>
+
+  [!-- Greek Right Column (Theodotion) --]
+  <bloco tipo="texto_principal" script="grego" bbox="750,100,950,450">
+    2.
+    3.
     4.
-    
+    5.
+    6.
+    8.
+    9.
+    10.
+    11.
+    12.
+  </bloco>
+
+  [!-- Latin Section Headers --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,460,300,490">
+    SYMMACHIUS.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,460,650,490">
+    LXX INTERPRETES.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,460,950,490">
+    THEODOTIO.
+  </bloco>
+
+  [!-- Latin Left Column (Symmachus) --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,500,300,850">
+    2. Pascens flores.
+    3. Beneplacens.
+    Terribilis ut legiones castro-
+    rum.
+    4.
     5. Dentes tui sicut greges agna-
     rum.
-    
     6. Tectæ operimento.
     8. Et laudaverunt.
-    
     9.
-    
     Terribilis cum turma.
-    
-    10. Descendit ad descendum au-
+    10. Descendit ad discendum au-
     tumnales fructus vallis.
-    
     11. Non novi, anima mea du-
     bium fecit me.
-    
     Curribus populi ductoris.
-    
     12. (Revertere, revertere) spo-
-    lenta.
+    liata.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="380,120,760,820">
-    2.  Ὁ ποιμαίνων ἐν τοῖς χρίνοις.
-    Γ', τῷ μεμένην ἐν τοῖς χρίνοις.
-    
-    3.  ᾿Ως εὐδοχία. Ε', ἕως εὐδόχῳ.
-    Θάμβος ὡς τεταγμέναι. Ἄλλος,
-    θάμβος ὡς τεταγμέναι παρατάξεις.
-    
-    4.  Ἀπεναντίον μου.
-    Αἱ ἀνεχάθησαν. Ἄλλος, αἱ ἀνέ-
-    ησαν.
-    
-    5.  Ὑδόντες σου ὡς ἀγέλαι τῶν
-    κεχαρίσμενων.
-    
-    6.  Ἔκτης τῆς σωτηρίσεως σου.
-    8. Καὶ μακαριοῦσί αὐτήν.
-    
-    9.  Ἐκχύπονσα. Ἄλλος, ἀνα-
-    δήμουσα.
-    
-    Θάμβος ὡς τεταγμέναι. Ἄλλος,
-    ὡς ἐπιφάνεια. Ε', ἐπιφανὴς ὡς με-
-    γαλυνόμεναι. Γ', καταπληκτικὴ ἐν
-    μεμεγαλυμμενάς.
-    
-    10. Κατέθην ἴδῃ ἐν γενήμασι
-    τοῦ χειμάρου. Ἄλλος,...ἰδεῖν τὸν
-    καρπὸν τῶν χειμάρων.
-    
-    11. Οὐκ ἔγνω ἡ ψυχὴ μου· ἔθετέ
-    με.
-    
-    Ἄρματα Ἀμινάδαβ. Ε', ἔθου με
-    εἰς ἄρμα λαοῦ ἠγουμένου.
-    
-    12.  Ἐπίστρεφε, ἐπίστρεφε, ἡ
-    Συναγμίτις. Ε', . . . εἰρηνεύουσα.
-    
-    Καὶ ὀψιμεθα. Ἄλλος, καὶ δρα-
-    ματισθησόμεθα.
-    
-    LXX INTERPRETES.
-    
+
+  [!-- Latin Middle Column (LXX) --]
+  <bloco tipo="texto_principal" script="latino" bbox="350,500,650,850">
     2. Qui pascit in liliis. VI, pasceu-
     ti in liliis.
-    
-    3. Si;ut beneplacitum. V, donec
+    3. Sicut beneplacitum. V, donec
     placuerit.
-    
-    Pavor ut ordinatae. Alius, pavor
+    Pavor ut ordinatæ. Alius, pavor
     ut ordinatæ acies.
-    
     4. E regione mei.
-    
     Quæ apparuerunt. Alius, quæ
     ascenderunt.
-    
     5. Dentes tui sicut greges ton-
     sarum.
-    
     6. Extra taciturnitatem tuam.
     8. Et beatificabunt eam.
-    
     9. Quæ progreditur. Alius,
     ascendens.
-    
     Pavor ut ordinatæ. Alius, ut
-    apparitio. V, illustris ut magni-
-    ficatæ. VI, terrorem afferens in ma-
+    apparitio. V, illustris ut magnifi-
+    catæ. VI, terrorem afferens in ma-
     gnificatis.
-    
-    10. Descendi videre in gemini-
-    na torrentis. Alius,... videre fru-
+    10. Descendi videre in genimi-
+    na torrentis. Alius, ... videre fru-
     ctum torrentium.
-    
-    11. Non novit anima mea: po-
+    11. Non novit anima mea : po-
     suit me.
-    
     Currus Aminadab. V, posuisti
     me in currum populi ductoris.
-    
     12. Convertere, convertere, Su-
-    namitis. V, ... pacifica.
-    
+    namitis. V, . . . pacifica.
     Et videbimus. Alius, et visionem
     habebimus.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="50,840,760,980">
-    PATROL. GA. XVI.                                                         31
+
+  [!-- Latin Right Column (Theodotion) --]
+  <bloco tipo="texto_principal" script="latino" bbox="750,500,950,850">
+    2.
+    3.
+    4.
+    5.
+    6.
+    8.
+    9.
+    10.
+    11.
+    12.
   </bloco>
+
+  [!-- Footer --]
+  <bloco tipo="rodape" script="latino" bbox="50,900,300,930">
+    PATROL. GR. XVI.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="750,900,800,930">
+    31
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,950,950,990">
+    Digitized by Google
+  </bloco>
+
   <notas>
-    A página contém três colunas visuais: coluna esquerda em grego/latim intercalado, coluna central mista grego/latim e coluna direita com título/numeração. Transcrevi os números e quebras de linha conforme o original; usei [ilegivel] não foi necessário.
+    A página apresenta uma comparação poliglota (Grego e Latim) do Cântico dos Cânticos, Capítulo VI.
+    Colunas: Esquerda (Símaco), Centro (LXX/Teodócion - marcado como θ' no grego e LXX no latim), Direita (Teodócion - apenas numeração de versículos, indicando concordância com a coluna central).
+    Símbolos: ς' (Sexta), Ε' (Quinta/Símaco), VI (Sexta), V (Quinta).
+    A transcrição segue a disposição visual, coluna por coluna.
   </notas>
 </pagina>

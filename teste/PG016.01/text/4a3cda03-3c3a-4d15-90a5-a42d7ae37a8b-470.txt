@@ -1,31 +1,40 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,90">
-    899                                                                                 HEXAPLORUM QUAE SUPERSUNT.                                                                                 900
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,100,40">
+    899
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="20,90,300,520">
-    TO ΕΒΡΑΙΚΟΝ.
-    
-    (Hebrew column lines)
-    
-    עד־מתי תתעה ותחטא | עד־אנא 4
-    אי 5
-    כזב
-    לא־אמן 7
-    על־אדני ישוע וכבד־צדק 8
-    עוז מושע באלוהים
-    9 בטחו בו בל־עתה ו
-    10 הלא כל־בני־אדם כבני־איש במעשיהם
-    ומה יגמל יחד
-    ובכל־אל־תבל 11
-    הול ו כי־יעב אל־המשפט לב
-    12, 13 דבר אלהים שומע
-    ז שמעתם כל עד לאלהים חלקי־אדני
-    חסד כי־אחד חושים לאיש במעשיו
+  <bloco tipo="cabecalho" script="latino" bbox="350,20,650,40">
+    HEXAPLORUM QUÆ SUPERSUNT.
   </bloco>
-  <bloco tipo="texto_principal" script="greco" bbox="320,90,640,520">
-    ΤΟ ΕΒΡΑΙΚΟΝ
-    Ελληνικοί χαρακτῆρες.
-    
+  <bloco tipo="cabecalho" script="latino" bbox="900,20,950,40">
+    900
+  </bloco>
+
+  [!-- Coluna Superior Esquerda: Hebraico --]
+  <bloco tipo="texto_principal" script="misto" bbox="50,50,330,80">
+    TO EBPAlKON.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,80,330,400">
+    עַד־מָה כְּבוֹדִי לִקְלוֹן תֵּהָבוּן סֶלָה׃ 4
+    אַךְ 5
+    כָּזָב
+    לֹא אֶמּוֹט 7
+    עַל־אֱלֹהִים יְשׁוּעָתִי וּכְבוֹדִי צוּר־עֻזִּי מַחְסִי בֵאלֹהִים 8
+    בִּטְחוּ־בוֹ בְּכָל־עֵת עָם 9
+    אַךְ הֶבֶל בְּנֵי־אָדָם כָּזָב בְּנֵי־אִישׁ בְּמֹאזְנַיִם 10
+    אִישׁ בְּמֹאזְנַיִם
+    וּבְגוֹל אַל־תִּהְבָּלוּ 11
+    חַיִל וְכִי־יָנוּב אַל־תִּשְׁתּוּ בוֹ
+    אַחַת דִּבֶּר אֱלֹהִים שְׁתַּיִם־זֹאת שָׁמָעְתִּי 12, 13
+    כִּי עֹז לֵאלֹהִים׃ וּלְךָ אֲדֹנָי חָסֶד
+    כִּי־אַתָּה תְּשַׁלֵּם לְאִישׁ כְּמַעֲשֵׂהוּ׃
+  </bloco>
+
+  [!-- Coluna Superior Meio: Transliteração (apenas números visíveis) --]
+  <bloco tipo="texto_principal" script="misto" bbox="350,50,600,80">
+    TO EBPAlKON
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,80,600,400">
     4.
     5.
     7.
@@ -35,62 +44,134 @@
     11.
     12, 13.
   </bloco>
-  <bloco tipo="texto_principal" script="greco" bbox="660,90,980,520">
-    ΑΚΥΛΑΣ.
-    
-    4. Εως τίνος ἐπεβουλεύε; 
+
+  [!-- Coluna Superior Direita: Aquila Grego --]
+  <bloco tipo="texto_principal" script="grego" bbox="650,50,950,80">
+    AKYLAΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,80,950,400">
+    4. Ἕως τίνος ἐπιβουλεύετε;
     5.
-    7. Οὐ σφαλῶμαι.
-    8. Ἐπὶ θεῷ σωτήριόν μοι κὶ δόξα μου· στερὲς κράτος μου, ἐλπὶς μου ἐν θεῷ.
-    9. Ἀμερμηνεῖτε ἐν αὐτῷ, ἐν παντί καιρῷ λαός.
+    Ἐν διαψεύσματι.
+    7. Οὐ σφαλήσομαι.
+    8. Ἐπὶ Θεῷ σωτήριόν μου καὶ
+    δόξα μου· στερεὸς κράτους μου,
+    ἐλπίς μου ἐν Θεῷ.
+    9. Ἀμεριμνεῖτε ἐν αὐτῷ, ἐν παντὶ
+    καιρῷ λαός.
     10
-    11. Καὶ ἐν βία μὴ ματαιουθηθε.
-    12, 13. Ἐλάλησεν ὁ Θεὸς, καὶ δεύτερον ἐπήκουσα· ὅτι ἡ ἰσχὺς τοῦ θεοῦ, καὶ σοι, Δέσποτα, τὸ ἔλεος. Σὺ δὲ ἀπόδος κατὰ ἄνδρα ἑκάστου καὶ τὰ ἔργα αὐτοῦ.
+    11. Καὶ ἐν βίῳ μὴ ματαιοῦσθε.
+    12, 13. Ἐλάλησεν ὁ Θεός, καὶ
+    δεύτερον ἐπήκουσα· ὅτι ἡ ἰσχὺς τοῦ
+    Θεοῦ, καὶ σοί, Δέσποτα, τὸ ἔλεος. Σὺ
+    δὲ ἀποδοὺς κατὰ ἄνδρα ἑκάστῳ κατὰ
+    τὰ ἔργα αὐτοῦ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,520,320,980">
+
+  [!-- Cabeçalhos Inferiores --]
+  <bloco tipo="cabecalho" script="latino" bbox="50,410,300,430">
     VERSIO HEBRAICI TEXT.
-    
-    4. Usquequo detrahetis super virum? Hieron., usquequo insidiamini contra virum?
-    5. Verumtamen. Hieron., id. Mendacium. Hieron., in mendacio.
-    7. Non nutabo. Hieron., non timebo.
-    8. Super Deo salus mea et gloria mea : petra fortitudinis meae : spes mea in Deo. Hieron., in Deo salutare meum et gloria mea : robur fortitudinis meae et salus mea in Deo.
-    9. Sperate in eo in omni tempore populus. Hieron., sperate in eo in omni tempore, populi.
-    10. Tantum vanitas filii hominum, mendacium filii viri, in bilance. Hieron., verumtamen vanitas filii Adam, mendacium filii viri in stateris.
-    Ipsi a vanitate pariter. Hieron., fraudulenter agunt simul.
-    11. Et in rapina ne evanescatis. Hieron., et in rapina ne frustramini.
-    Facultas cum pullulaverit, ne ponatis cor. Hieron., divitiae si affluerint, nolite cor apponere.
-    12, 13. Semel locutus est Deus, bis hoc audivi, quia fortitudo Deo, et tibi, Domine, misericordia, quia tu reddes viro secundum opus suum. Hieron., unum locutus est Deus : duo haec audivi : quia imperium Dei est, et tibi, Domine, misericordia, quia tu reddes unicuique secundum opus suum.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,520,660,980">
+  <bloco tipo="cabecalho" script="latino" bbox="350,410,600,430">
     VULGATA LATINA.
-    
-    4. Quousque irruitis in hominem?
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="650,410,900,430">
+    AQUILA.
+  </bloco>
+
+  [!-- Coluna Inferior Esquerda: Versio Hebraici --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,430,330,900">
+    4. Usquequo detrahetis super
+    virum? Hieron., usquequo insidia-
+    mini contra virum?
+    5. Verumtamen. Hieron., id.
+    Mendacium. Hieron., in menda-
+    cio.
+    7. Non nutabo. Hieron., non ti-
+    mebo.
+    8. Super Deo salus mea et
+    gloria mea: petra fortitudinis
+    meæ: spes mea in Deo. Hieron.,
+    in Deo salutare meum et gloria
+    mea: robur fortitudinis meæ et
+    salus mea in Deo.
+    9. Sperate in eo in omni tem-
+    pore populus. Hieron., sperate in
+    eo in omni tempore, populi.
+    10. Tantum vanitas filii homi-
+    num, mendacium filii viri, in bi-
+    lance. Hieron., verumtamen va-
+    nitas filii Adam, mendacium filii
+    viri in stateris.
+    Ipsi a vanitate pariter. Hieron.,
+    fraudulenter agunt simul.
+    11. Et in rapina ne evanescatis.
+    Hieron., et in rapina ne frustremi-
+    ni.
+    Facultas cum pullulaverit, ne
+    ponatis cor. Hieron., divitiæ si
+    affluxerint, nolite cor apponere.
+    12, 13. Semel locutus est Deus,
+    bis hoc audivi, quia fortitudo Deo,
+    et tibi, Domine, misericordia,
+    quia tu reddes viro secundum o-
+    pus suum. Hieron., unum locutus
+    est Deus: duo hæc audivi: quia
+    imperium Dei est, et tibi, Domine,
+    misericordia, quia tu reddes uni-
+    cuique secundum opus suum.
+  </bloco>
+
+  [!-- Coluna Inferior Meio: Vulgata --]
+  <bloco tipo="texto_principal" script="latino" bbox="350,430,630,900">
+    4. Quousque irruitis in homi-
+    nem?
     5. Verumtamen.
     In siti.
-    7. Non emigrobo.
-    8. In Deo salutare meum et gloria mea, Deus auxilia mei, et spes mea in Deo est.
-    9. Sperate in eo, omnis congregatio populi.
-    10. Verumtamen vani filii hominum, mendaces filii hominum in staleris.
-    Ut decipiant ipsi de vanitate in idipsum.
-    11. Et rapinas nolite concupiscere.
-    Divitiae si affluant, nolite cor apponere.
-    12, 15. Semel locutus est Deus, duo haec audivi, quia potestas Dei est, et tibi, Domine, misericordia, quia tu reddes unicuique secundum opera sua.
+    7. Non emigrabo.
+    8. In Deo salutare meum et glo-
+    ria mea, Deus auxilii mei, et spes
+    mea in Deo est.
+    9. Sperate in eo, omnis congre-
+    gatio populi.
+    10. Verumtamen vani filii ho-
+    minum, mendaces filii hominum
+    in stateris.
+    Ut decipiant ipsi de vanitate in
+    idipsum.
+    11. Et rapinas nolite concupi-
+    scere.
+    Divitiæ si affluant, nolite cor
+    apponere.
+    12, 13. Semel locutus est Deus,
+    duo hæc audivi, quia potestas Dei
+    est, et tibi, Domine, misericordia,
+    quia tu reddes unicuique secun-
+    dum opera sua.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,520,980,980">
-    AQUILA.
-    
+
+  [!-- Coluna Inferior Direita: Aquila Latim --]
+  <bloco tipo="texto_principal" script="latino" bbox="650,430,950,900">
     4. Usquequo insidiamini?
     5.
     In mendacio.
     7. Non labar.
-    8. In Deo salutare meum et gloria mea : solius fortitudinis mea, spes mea in Deo.
-    9. Solicitudinem ponite in eo, in omni tempore populus.
+    8. In Deo salutare meum et glo-
+    ria mea: solidus fortitudinis meæ,
+    spes mea in Deo.
+    9. Sollicitudinem ponite in eo,
+    in omni tempore populus.
     10.
-    11. Et in violentia ne vadi evadatis.
-    12, 13. Locutus est Deus, et his audivi, quia fortitudo Dei, et tibi, Domine, misericordia : tu vero redde per virum unicuique secundum opera sua.
+    11. Et in violentia ne vani eva-
+    datis.
+    12, 13. Locutus est Deus, et bis
+    audivi, quia fortitudo Dei, et tibi,
+    Domine, misericordia: tu vero
+    reddes per virum unicuique secun-
+    dum opera sua.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="420,980,860,995">
+
+  <bloco tipo="rodape" script="latino" bbox="550,950,800,980">
     Digitized by Google
   </bloco>
-  <notas>Página com três colunas superiores: hebraico (esq), grego transliteração (centro), grego (direita). A parte hebraica contém abreviações e pontuação massorética; algumas palavras pequenas parcialmente ilegíveis foram transcritas com aproximação conforme visível. BBOX estimadas em escala 0-1000.</notas>
 </pagina>

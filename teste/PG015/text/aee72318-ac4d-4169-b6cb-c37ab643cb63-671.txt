@@ -1,22 +1,15 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,70">
-    1333          LIB. I REGUM CAPUT XIV.                                   1334
+  <bloco tipo="cabecalho" script="misto" bbox="50,30,950,60">
+    1333 LIB. I REGUM CAPUT XIV. 1334
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="40,70,320,820">
-    ΣΥΜΜΑΧΟΣ.
+  <bloco tipo="cabecalho" script="grego" bbox="150,70,850,90">
+    ΣΥΜΜΑΧΟΣ. Ο'. ΘΕΟΔΟΤΙΩΝ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,100,300,380">
     36.
-    38. Τοὺς μεγάλους.
-    Και γνῶτε ἐν τίνι γέγονεν ἡ ἁμαρτία σήμερον.
-    41.
-    45.
-    47.
-    48.
-    50.
-    52.
-    SYMMACHUS.
-    36.
-    38. Magos.
-    Et cognoscite in quo factum sit peccatum hodie.
+    38. Τους μεγαλους.
+    Και γνωτε εν τινι γεγονεν η
+    αμαρτια σημερον.
     41.
     45.
     47.
@@ -24,35 +17,32 @@
     50.
     52.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="320,70,640,820">
-    O.
-    36. Τὸ ἀγαθὸν. Ἄλλος, τὸ ἀρε-
-    στὸν.
-    38. Τὰς γωνίας τοῦ Ισραηλ.
-    Ἄλλος, τὰς φυλὰς τοῦ λαοῦ.
-    Και γνῶτε καὶ ἴδετε ἐν τίνι γέ-
-    γονεν ἡ ἁμαρτία αὕτη σήμερον.
-    41. Διὸς δήλοσ. Ἄλλος, ἐκδή-
+  <bloco tipo="texto_principal" script="grego" bbox="350,100,650,380">
+    36. Το αγαθον. Ἄλλος, το αρε-
+    στόν.
+    38. Τας γωνιας του Ἰσραηλ.
+    Ἄλλος, τας φυλας του λαου.
+    Και γνωτε και ιδετε εν τινι γε-
+    γονεν η αμαρτια αυτη σημερον.
+    41. Δος δηλους. Ἄλλος, δος δη-
     λωσιν.
-    45. Ὅτι ὁ λαὸς τοῦ θεοῦ ἐποίησε
-    τὴν ἡμέραν ταύτην. Ἄλλος, Ἔλεος
-    τοῦ θεοῦ ἐποίησε ἐν τῇ ἡμέρᾳ
-    ταύτῃ.
-    47. Καὶ Σαουλ ἔλαχε τοῦ βασι-
-    λέιν, καταληφθῆναι ἔργον. Ἄλ-
-    λος, καὶ Σαουλ καταληφθῆναι τὸ
-    ἔργον τοῦ βασιλεῖν.
-    Οὐκ ἂν τετραφή, ἑωυτῷ. Ἄλλος,
-    ὅ ἂν ἐπελθῇ, ἰσχυζε.
-    48. Δύναμιν. Ἄλλος, δύναμιν
-    ἀναντ. Ἄλλος, δύναμιν μεγάλην.
-    50. Οἰκειου. Ἄλλος, πατραδῆ-
-    σου.
-    52. Δυνάμεως. Ἄλλος, εὔπο-
-    ρίας.
+    45. Ὅτι ο λαος του Θεου εποιησε
+    την ημεραν ταυτην. Ἄλλος, ελεος
+    του Θεου εποιησεν εν τη ημερα
+    ταυτη.
+    47. Και Σαουλ ελαχε του βασι-
+    λευειν, κατακληρουται εργον. Ἄλ-
+    λος, και Σαουλ κατακληρουται το
+    εργον του βασιλευειν.
+    Οὐ αν εστραφη, εσωζετο. Ἄλλος,
+    ου αν επιβλεψεν, εσωζεν.
+    48. Δυναμιν. Ἄλλος, δυναμιν
+    ατναιν. Ἄλλος, δυναμιν μεγαλην.
+    50. Οικειου. Ἄλλος, πατραβόλου.
+    52. Δυναμεως. Ἄλλος, ευπο-
+    ριας.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="640,70,960,820">
-    ΘΕΟΥΔΟΤΙΟΝ.
+  <bloco tipo="texto_principal" script="grego" bbox="700,100,950,380">
     36.
     38.
     41.
@@ -61,6 +51,21 @@
     48.
     50.
     52.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,400,300,650">
+    SYMMACHUS.
+    36.
+    38. Magnos.
+    Et cognoscite in quo factum
+    sit peccatum hodie.
+    41.
+    45.
+    47.
+    48.
+    50.
+    52.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,400,650,650">
     LXX INTERPRETES.
     36. Bonum. Alius, placitum.
     38. Angulos Israel. Alius, tri-
@@ -72,33 +77,65 @@
     45. Quoniam populus Dei fecit
     diem hanc. Alius, misericordia Dei
     fecit in die hac.
-    47. Et Saul sorte cepit regnare,
+    47. Et Saul sorte cepit regnare.
     sorte cepit opus. Alius, et Saul
     sorte cepit opus regnandi.
-    Quocumque se verterbat, salva-
+    Quocumque se vertebat, salvaba-
     tur. Alius, quocumque respicie-
     bat, salvabat.
     48. Virtutem. Aliter, virtutem
-    atain. Alius, virtutem magnum.
+    alnain. Alius, virtutem magnam.
     50. Propinqui. Alius, patrui.
-    52. Virtutis. Alius, abundantiae.
+    52. Virtutis. Alius, abundantiæ.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,820,960,980">
-    Notae et variae lectiones ad cap. XIV lib. I Regum.
-    V. 31. Ἄλλος, τε τῶν ἀλλοφύλων etc. Reg.
-    V. 32. Σ., τέρτιμ τὸ ὑπὲρἀπαν. Ἄλλος, ὑπ- μνειv etc. Reg.
-    V. 34. Ἄλλος, τὴν νύκτα. Reg. In edit. Romana omittitur.
-    V. 36. Ἄλλος, τὸ ἀρεστόν. Reg.
-    V. 38. In Regio, 'Α., sic τὰς γωνίας το κλῆρος in angulos multitud. Κλῆρος, multitudinem interdum, itemque gloriam sive decus significat. Σ., τοὺς μεγάλους, supplé tov λαοῦ, i. e. magnates populi. Ἄλλος, τὰς φυλὰς τοῦ λαοῦ. Reg.
-    Ibid. Σ., καὶ γνῶτε ἐν τίνι etc. Reg.
-    V. 41. Ἄλλος, ὅς δηλώσει. Reg.
-    V. 45. Ἄλλος, Ἔλεος τοῦ θεοῦ etc., erratum vi- detur pro ὁ λαὸς τοῦ θεοῦ. LXX. suv. populares, ver- terunt. Vulgata melius EY, cum, literae ecedunt in utraque, significatione diversa.
-    V. 47. Ἄλλος, καὶ Σαουλ καταληφθῆναι etc. Reg.
-    Ibid. Ἄλλος, οὐ ἂν ἐπελθῇ, ἰσχυζε. Reg.
-    V. 48. Ἄλλος, δύναμιν ἀναντ. Mira depravatio. Ἄλλος, δύναμιν μεγάλην. Utraque lectio in Reg.
-    V. 50. Ἄλλος, πατραδῆφος. Reg. et Cousin. alter. Videtur omnino esse Aquila qui ita vertit supra, x. 14, et passim in Canticis.
-    V. 52. Ἄλλος, εὐπολας. Cousin. alter.
+  <bloco tipo="texto_principal" script="latino" bbox="700,400,950,650">
+    THEODOTIO.
+    36.
+    38.
+    41.
+    45.
+    47.
+    48.
+    50.
+    52.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="250,680,750,700">
+    Notæ et variæ lectiones ad cap. XIV lib. I Regum.
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="50,710,450,900">
+    V. 31. Ἄλλος, εκ των αλλοφυλων εις. Reg.
+    V. 32. Σ., ετραπη του αρπαζειν. Ἄλλος, ωρ-
+    μησεν etc. Reg.
+    V. 34. Ἄλλος, την νυκτα. Reg. In edit. Romana
+    omittitur.
+    V. 36. Ἄλλος, το αρεστον. Reg.
+    V. 38. In Regio, Ἄ., εις τας γωνιας το κλητος ·
+    in angulos multitudo. Κλητος, multitudinem inter-
+    dum, itemque gloriam sive decus significat. Σ., τους
+    μεγαλους, supple του λαου, i. e. magnates populi.
+    Ἄλλος, τας φυλας του λαου. Reg.
+    Ibid. Σ., και γνωτε εν τινι etc. Reg.
+    V. 41. Ἄλλος, δις δηλωσιν. Reg.
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="500,710,950,900">
+    V. 45. Ἄλλος, ελεος του Θεου etc., erratum vi-
+    detur pro ο λαος του Θεου. LXX, ογ, populus. ver-
+    terunt. Vulgata melius ΘΥ, cum, literæ eædem in
+    utroque, significatio diversa.
+    V. 47. Ἄλλ., και Σαουλ κατακληρουται etc. Reg.
+    Ibid. Ἄλλος, ου αν επιβλεψεν, εσωζεν. Reg.
+    V. 48. Ἄλλως, δυναμιν ατναιν. Mira depravatio.
+    Ἄλλος, δυναμιν μεγαλην. Utraque lectio in Reg.
+    V. 50. Ἄλλος, παραβόλου. Reg. et Coislin.
+    alter. Videtur omnino esse Aquilæ qui ita vertit
+    supra, x, 14, et passim in Canticis.
+    V. 52. Ἄλλος, ευποιας. Coislin. alter.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,950,800,980">
     Digitized by Google
   </bloco>
-  <notas>Página com três colunas: esquerda em grego e latim (SYM MACHUS), central grego (O.) com correspondência latina LXX INTERPRETES mais abaixo; direita latim (THEODOTIO) e números marginais. Algumas abreviações e caracteres diacríticos foram preservados conforme visíveis; palavras muito escuras foram transcritas literalmente ou marcadas [ilegivel] quando necessário (nenhuma usada aqui).</notas>
+  <notas>
+    Transcrição fiel incluindo abreviações e variações ortográficas presentes no original (ex: "πατραβόλου" no texto principal vs "παραβόλου" nas notas; "ατναιν" mantido conforme impressão).
+    Símbolo "Ο'" no cabeçalho central representa a Septuaginta.
+  </notas>
 </pagina>

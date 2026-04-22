@@ -1,80 +1,116 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,90">
-    1047                         HEXAPLORUM QUÆ SUPERSUNT.                          1048
+  <bloco tipo="cabecalho" script="latino" bbox="100,30,900,60">
+    1047 HEXAPLORUM QUÆ SUPERSUNT. 1048
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,90,320,640">
-    TO ΕΒΡΑΙΚΟΝ.
-    [hebraico] 10
-    [hebraico] 11
-    [hebraico] 13
-    [hebraico] 14
-    [hebraico] 15.
-    [hebraico] 16
-    [hebraico] 17
-    [hebraico] 18.
-    19
-    [hebraico]
+  <bloco tipo="texto_principal" script="misto" bbox="100,60,900,90">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ ΑΚΥΛΑΣ.
+    Ελληνικοις γραμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="330,90,650,640">
-    TO ΕΒΡΑΙΚΟΝ
-    Ἑλληνικοῖς γράμμασι.
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,90,350,480">
+    םיִמ 10
+    ךְל 11
+    םיִבַּר־ם 13
+    הָעִיר 14
+    הָרֹכֵב
+    םיִמ תַּלְגּ 15
+    תַּחְתִּית תַּחְתִּית עֶלְיוֹן עֶלְיוֹן
+    16
+    חֹתֵן
+    יְהוּדָה וּבָנָיו
+    ךְל
+    הָרְמָה וּמִדְרָה 17
+    הָבְּחֹר
+    הַגְּבוּל 18
+    שִׁיחַ לֹא יִכ 19
+    כִּי רֶכב בַּרְזֶל לָהֶם
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,90,450,480">
     10.
     11.
     13.
     14.
     15.
     16.
-    17.
+    17
     18.
     19.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,90,970,640">
-    ΑΚΥΛΑΣ.
+  <bloco tipo="texto_principal" script="grego" bbox="650,90,900,480">
     10.
     11.
     13.
     14.
     15.
-    Τὴν Γολγοθᾶ ἄνω, και τὴν Γαλ-
-    γαβα̑ κ́ατω.
+    Τὴν Γολγὼθ ἄνω, καὶ τὴν Γολ-
+    γὼθ κάτω.
     16.
-    17. Καὶ ἀνεβλέψασαν αὐτοί.
+    17. Καὶ ἀνεθεμάτισαν αὐτήν.
     18.
     19.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,640,970,1290">
-    VERSIO HEBRAICI TEXT.            VULGATA LATINA.                      AQUILA.
-    10. Ante.                         10. Antiquitus.                      10.
-    11. Et ivit.                      11. Atque inde profectus abiit.       11.
-    
-    Cariath Sephcr.                  Cariath Sepher.
-    
-    13. Ab eo.                        13. Vacat.                           13.
-    14. In intrando ipsam.            14. Pergentem in itinere.            14.
-    
-    Desuper asino.                   In asino.
-    
-    15. Scaturigines aquarum.        15. Irriguam aquis.                  15.
-    Scaturigines superioris partis,   Irriguum superius, et irriguum     Golgoth superiorem, et Golgoth
-    et scaturigines inferioris partis. inferius.                          inferiorem.
-    
-    16.                               16.                                 16
-    Soceri.                          Cognati.                           Soceri.
-    Cum filiis Juda.                 Cum filiis Juda.                    Cum filiis Juda.
-    
-    Et ivit.                         Vacat.                              Et ivit.
-    17. Et deleverunt eam.            17. Et interfecerunt eam.            17. Et deleverunt eam
-    
-    Horma.                           Horma, id est, anathema.
-    
-    18. Et terminum ejus.            18. Cum finibus suis.                18
-    19. Quia non ad expellendum.     19. Nec potuit delere.               19.
-    
-    Quia currus ferrei ipsis.        Quia falcatis curribus abunda-
-                                     bant.
+  <bloco tipo="texto_principal" script="latino" bbox="100,490,350,920">
+    VERSIO HEBRAICI TEXT.
+    10. Ante.
+    11. Et ivit.
+    Cariath Sepher.
+    13. Ab eo.
+    14. In intrando ipsam.
+    Desuper asino.
+    15. Scaturigines aquarum.
+    Scaturigines superioris partis,
+    et scaturigines inferioris partis.
+    16.
+    Soceri.
+    Cum filiis Juda.
+    Et ivit.
+    17. Et deleverunt eam.
+    Horma.
+    18. Et terminum ejus.
+    19. Quia non ad expellendum.
+    Quia currus ferrei ipsis.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="720,1260,970,1330">
+  <bloco tipo="texto_principal" script="latino" bbox="380,490,650,920">
+    VULGATA LATINA.
+    10. Antiquitus.
+    11. Atque inde profectus abiit.
+    Cariath Sepher.
+    13. Vacat.
+    14. Pergentem in itinere.
+    In asino.
+    15. Irriguam aquis.
+    Irriguum superius, et irriguum
+    inferius.
+    16.
+    Cognati.
+    Cum filiis Juda.
+    Vacat.
+    17. Et interfecerunt eum.
+    Horma, id est, anathema.
+    18. Cum finibus suis.
+    19. Nec potuit delere.
+    Quia falcatis curribus abunda-
+    bant.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,490,900,920">
+    AQUILA.
+    10.
+    11.
+    13.
+    14.
+    15.
+    Golgoth superiorem, et Golgoth
+    inferiorem.
+    16
+    17. Et deleverunt eam
+    18
+    19.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="550,950,800,980">
     Digitized by Google
   </bloco>
-  <notas>Scripts presentes: hebraico (coluna esquerda superior), grego (coluna central superior), latino (coluna direita superior e restante texto). Algumas linhas hebraicas sono parzialmente illeggibili: marcate come [hebraico]. Preservata la disposizione em duas colunas conforme original; transcrição não normalizada.</notas>
+  <notas>
+    Transcrição de página da Hexapla (Hexaplorum quæ supersunt).
+    A coluna do meio na parte superior contém apenas numeração de versículos, indicando que o texto hebraico transliterado em grego pode estar ausente ou representado apenas pelos números nesta edição fragmentária.
+    O texto hebraico contém algumas abreviações ou formas fragmentárias típicas de edições críticas antigas.
+  </notas>
 </pagina>

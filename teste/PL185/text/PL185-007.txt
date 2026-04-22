@@ -1,7 +1,10 @@
-<pagina estado="com_texto">
-  <bloco tipo="texto_principal" script="latino" bbox="40,40,920,660">
-+ INNOMINE:SCE:ET:INDIVIDUE:TRINITATIS:
-Ego Bernardus dti gra davislenis abbas novarual? omnib[us] sc[e]e
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="40,40,960,140">
++ INNOMINE:SCE:ET:INDIVIDVAE:TRINITATIS:
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="40,140,740,700">
+Ego Bernardus dti gra davislenis abbas novarual? omnib[us] sc[e]
 eccl[es]ie subin perpetua in tno ?bu xp o lalure: notu est volun[tas] ratui
 un[us]q[ue] plenib[us] di?consiore vtr[um] abbate nunueniens? &amp; presentem pro
 cita. de lude kerke salut in perpetua vita cora religiosor[um] p[er]or[am] dei,
@@ -21,7 +24,21 @@ abbas deca Tellone S: Gorunum abbas de truncuit S: Everardus
 oj, Berdo g; Geraldi g; Galfrid i.
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="940,60,990,660">
+  [!-- Letras identificatórias centrais (devem estar fora do corpo do texto) --]
+  <bloco tipo="nota_marginal" script="latino" bbox="880,160,960,220">
+A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="880,260,960,320">
+B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="880,360,960,420">
+C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="880,460,960,520">
+D
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="740,140,980,700">
 [ilegivel]
 [ilegivel]
 [ilegivel]
@@ -35,31 +52,37 @@ oj, Berdo g; Geraldi g; Galfrid i.
 [ilegivel]
   </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="70,720,520,900">
+  <bloco tipo="rodape" script="latino" bbox="60,720,480,920">
 Specimen chartæ quæ S. Bernardus
 dissensionem Ninovensem inter et
 Jellensem abbatem exortam compo-
 nit.
 
 (Ex originali in archivo Gandavensi
-asservato. — Vide hujus volumi-
+asservato. — Vide hujus volum-
 nis col. 1826.
   </bloco>
 
-  <bloco tipo="outro" script="desconhecido" bbox="540,720,760,980">
+  <bloco tipo="aparato_critico" script="latino" bbox="480,720,720,940">
 [desenho de selo com legenda parcialmente ilegível]
   </bloco>
 
-  <bloco tipo="outro" script="latino" bbox="760,730,980,1000">
+  <bloco tipo="aparato_critico" script="latino" bbox="720,720,980,940">
 Dender leuwe
 Liede kercke
   </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="760,1010,980,1060">
+  <bloco tipo="rodape" script="latino" bbox="760,940,980,1000">
 Digitized by Google
   </bloco>
 
   <notas>
-Manuscrito latino medieval com numerosas abreviações e contracções; partes muito gastas e letra abreviada geraram vários termos marcados como [ilegivel]. A coluna marginal direita é constituída por sinais/insígnias marginais (transcritas aqui como linhas [ilegivel] por impossibilidade de leitura segura); desenhos do selo e do mapa no rodapé transcritos como blocos separados (conteúdo gráfico não transcrito literariamente). Transcrição aposta em leitura paleográfica direta, sem normalização; onde a leitura é insegura, aplicou-se a marca [ilegivel] por palavra.
+Transcrição paleográfica baseada prioritariamente na leitura visual da imagem; o rascunho OCR serviu apenas de apoio. Mantive formas abreviadas e sinais tal como aparecem no exemplar (onde o OCR sugeriu expansões editoriais entre colchetes, preservei os colchetes quando a leitura directa não era inequívoca). Usei [ilegivel] por palavra cujo grafema não pôde ser determinado com segurança na reprodução. 
+Observações técnicas:
+- Estado: "com_texto" (há tinta em toda a página).
+- Script principal: latino, com abreviaturas medievais (sinais tironianos, abreviações suspensionis e contractionis).
+- Fluxo: coluna esquerda (texto_principal) transcrita antes das anotações marginais (nota_marginal). As quatro letras centrais identificatórias A,B,C,D foram colocadas em blocos próprios de nota_marginal, conforme solicitado, e não inseridas no corpo do texto.
+- Aparato crítico: os elementos gráficos do selo e do mapa foram assinalados como "aparato_critico" e descritos sumariamente quando a legenda é parcial/ilegível.
+- Correções: palavras entre colchetes reflectem leituras inseguras ou ampliações editoriais visíveis no OCR; quando a palavra não pôde ser lida, marquei-a como [ilegivel]. Não procedi a normalizações ortográficas nem traduções.
   </notas>
 </pagina>

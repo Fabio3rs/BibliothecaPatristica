@@ -1,33 +1,67 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,95">
-    615                                          HEXAPLORUM QUÆ SUPERSUNT.                                          616
-    CAPUT XV. LEVITICI.
-    TO EBRAIKON.                    TO EBRAIKON                     ΑΚΥΛΑΣ
-                                     Ἑλληνικοὶ γράμμασι.
+  <bloco tipo="cabecalho" script="latino" bbox="120,30,880,60">
+    615 HEXAPLORUM QUÆ SUPERSUNT. 616
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,100,320,640">
-    ת א י־כ ה שׁ קי ל דשמ י?    2.
-    אלם
-    כו ידח 21
-    3 הדם 3
-    4 ו 6 א 4
-    בשער 7
-    ברחלם 8
-    בשד חם 13
-    בזדה 19
-    בקדה 20
-    בחדה 24
-    בטדה 25
-    בדו 27
-    בשה 33
-    תוו
-    VERSIO HEBRAICI TEXT.
+  <bloco tipo="texto_principal" script="latino" bbox="400,65,600,90">
+    CAPUT XV. LEVITICI.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="150,90,850,120">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,120,350,450">
+    וְאֶל־בְּנֵי יִשְׂרָאֵל תְּדַבֵּר לֵאמר 2
+    אלֹהִים
+    כִּי אִישׁ כִּי יִהְיֶה זָב
+    הַזָּב
+    בִּשְׂרוֹ 7
+    וְרִיקוֹ 8
+    בְּשָׂרוֹ מִזּוֹבוֹ חִיּוֹ 13
+    בְּנִדָּתָהּ 19
+    בְּמִשְׁכָּבָהּ 20
+    בְּנִדָּתָהּ 24
+    יָמִים רַבִּים 25
+    כָּל־הַנֹּגֵעַ 27
+    הַדָּבָה 33
+    הַזָּב
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="380,120,500,450">
+    2.
+    3.
+    4 et 6.
+    7.
+    8.
+    13
+    19.
+    20.
+    24.
+    25.
+    27.
+    33.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,120,850,450">
+    2.
+    3. Ἐσφραγίσθη.
+    4 et 6.
+    7.
+    8. [Ἐὰν ἐπιπτύσῃ.]
+    13.
+    19.
+    20.
+    24.
+    25.
+    27.
+    33.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,460,850,490">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,490,350,840">
     2. Loquimini ad filios Israel, et dicetis ad eos.
     Cum fluens fuerit.
     3. Claudere fecit.
     4 et 6. Fluens.
     7. In carnem.
-    8. Et cum superit.
+    8. Et cum spuerit.
     13. Carnem suam in aquis vivis.
     19. Separatione sua.
     20. Separatione sua.
@@ -35,56 +69,30 @@
     25. Separationis suæ.
     27. Ea.
     33. Dolentis.
-    Fluenti s.
+    Fluentis.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,100,660,640">
-    2.
-    3.                  3.
-    4 et 6.             4 et 6.
-    7.                  7.
-    8                   8.
-    13                  13.
-    19.                 19.
-    20.                 20.
-    24.                 24.
-    25.                 25.
-    27.                 27.
-    33.                 33.
-    VULGATA LATINA.
+  <bloco tipo="texto_principal" script="latino" bbox="380,490,650,840">
     2. Loquimini filiis Israel, et dicetis eis.
     Fluxum seminis.
     3. Concretus est.
     4 et 6. Vacat.
     7. Carnem.
     8. Si salivam jecerit.
-    13. (Lotis vestibus,) et loto corpore in aquis viventibus.
+    13. (Lotis vestibus,) et toto corpore in aquis viventibus.
     19. Separabitur.
     20. Vacat.
-    24. Tempore sanguinis menstrualis.
-    25. Menstruall.
+    24. Tempore sanguinis menstrua-lis.
+    25. Menstruali.
     27. Quicunque tetigerit ea.
     33. Quæ menstruis temporibus separatur.
     Vacat.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,100,980,640">
+  <bloco tipo="texto_principal" script="latino" bbox="650,490,850,840">
     2.
-    3. Σεφασίσθη.        3.
+    3. Obsignatus est.
     4 et 6.
     7.
-    8. [Ἐν ἱπαστίᾳ.]
-    13.
-    19.
-    20.
-    24.
-    25.
-    27.
-    33.
-    AQUILA.
-    2.
-    3. Obstipatur est.
-    4 et 6.
-    7.
-    8. Si superexuperit.
+    8. Si superexpuerit.
     13.
     19.
     20.
@@ -93,10 +101,19 @@
     27.
     33.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,650,960,985">
+  <bloco tipo="rodape" script="latino" bbox="300,850,700,870">
     Notæ et variæ lectiones ad cap. XV Levitici.
-    Ex eodem codice Cölhertino 3084 posteram capitulis xv partem damus secundum versionem LXX interpretum, prout in Hexaplis erat, ab hodierno τῶν ὀ̣̣ textu in multis discrepantem. Cætera vero a principio usque ad partem versus 24 desiderantur.
-    V. 2. Ol ὀ̣̣ xal ol ιουσι, λαβοισα, etc. Sic Baselienfis, qui restituerunt versionem LXX Interpretum, ut in Hexaplis erat, cum aliis interpretibus concordare ; quia videlicet ex aliis versionibus emendata fuerat, ut cum Hebraico quadrat. S•
   </bloco>
-  <notas>Scripts mistos na página: hebraico, grego e latino. Algumas palavras parcialmente ilegíveis marcadas conforme contexto; colunas transcritas esquerda para direita. Pequenas lacunas indicadas como caracteres omissos mantidos tal como na imagem.</notas>
+  <bloco tipo="rodape" script="misto" bbox="100,870,500,940">
+    Ex eodem codice Colbertino 3084 postremam capitis xv partem damus secundum versionem LXX interpretum, prout in Hexaplis erat, ab hodierno τῶν Ο' textu in multis discrepantem. Cætera vero a principio usque ad partem versus 24 desiderantur.
+  </bloco>
+  <bloco tipo="rodape" script="misto" bbox="520,870,900,940">
+    V. 2. Οἱ Ο' καὶ οἱ λοιποί, λαλήσατε, etc. Sic Basiliensis, qui testificatur versionem LXX Interpretum, ut in Hexaplis erat, cum aliis interpretibus concordare : quia videlicet ex aliis versionibus emendata fuerat, ut cum Hebraico quadraret. S:-
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="550,960,750,990">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Documento apresenta estrutura complexa de Hexapla com colunas paralelas em Hebraico, Grego e Latino. Transcrição realizada coluna por coluna conforme layout visual. Algumas abreviações latinas (et, cætera) mantidas. Caracteres gregos e hebraicos transcritos literalmente.
+  </notas>
 </pagina>

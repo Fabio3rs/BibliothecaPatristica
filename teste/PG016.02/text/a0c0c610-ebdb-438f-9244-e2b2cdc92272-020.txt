@@ -1,33 +1,46 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="120,10,890,90">
-    HEXAPLÓRUM QUÆ SUPERSUNT.
-    PROVERBIORUM. CAPUT II.
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,150,50">
+    291
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="20,90,320,960">
-    TO EBPAIKON.
-    [ebraico text] 2
-    [ebraico] 3
-    [ebraico] 4
-    [ebraico] 6
-    [ebraico] 8
-    [ebraico] 9
-    [ebraico] 10
-    [ebraico]
-    [ebraico] 11
-    [ebraico] 15
-    [ebraico]
-    [ebraico] 16
-    [ebraico] 17
-    [ebraico] 18
-    [ebraico]
-    [ebraico] 19
-    [ebraico] 20
-    [ebraico] 21
-    [ebraico] 22
+  <bloco tipo="cabecalho" script="latino" bbox="350,20,650,60">
+    HEXAPLORUM QUÆ SUPERSUNT.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="320,90,620,960">
-    TO EBPAIKON
-    Ελληνικοί χαρακτήρες.
+  <bloco tipo="cabecalho" script="latino" bbox="850,20,950,50">
+    292
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,60,650,90">
+    PROVERBIORUM, CAPUT II.
+  </bloco>
+  
+  [!-- Upper Section: Three Columns --]
+  <bloco tipo="texto_principal" script="misto" bbox="100,90,350,450">
+    TO ΕΒΡΑΙΚΟΝ.
+    2 לְהַקְשִׁיב לְחָכְמָה
+    הַקְשִׁיב
+    3 לְבִינָה
+    4 וּכְמַתְּמֹנִים
+    6 מִפִּי
+    8 חֶדֶק
+    9 מַעְגָּל
+    10 לְבָךְ
+    יִצֶּר
+    11 תִּצֶּר
+    15 עַקְשׁוּת
+    וּנְלוֹזִים בְּמַעְגְּלוֹתָם
+    16 לְהַצִּילֵךְ מֵאִשָּׁה זָרָה
+    מֵרֵעָהּ
+    17 אַלּוּף
+    18 כִּי שָׁחָה אֶל־מָוֶת בּיתָהּ
+    מַעְגְּלוֹתֶיהָ
+    19 לֹא יְשׁוּבוּן
+    20 אֹרְחוֹת צַדִּיקִים
+    21 יִשְכְּנוּ
+    22 וּרְשָׁעִים
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="380,90,550,450">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
     2.
     3.
     4.
@@ -40,63 +53,110 @@
     16.
     17.
     18.
-    19.
-    20.
-    21.
-    22.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="620,90,980,960">
-    AKYLAΣ.
-    2. Τοῦ προσέχειν τῇ σοφίᾳ·
-    3..
+
+  <bloco tipo="texto_principal" script="grego" bbox="650,90,950,450">
+    ΑΚΥΛΑΣ.
+    2. Τοῦ προσέχειν τῇ σοφίᾳ.
+    Ἀνακλινεῖς.
+    3.
     4.
-    6. Ἀπὸ στομάτος αὐτοῦ.
+    6. Ἀπὸ στόματος αὐτοῦ.
     8.
     9. Καμπτούς.
-    10. Εἰς καρδῖαν σου.
-    Εὐπρεπήσεται.
+    10. Εἰς καρδίαν σου.
+    Εὐπρεπήσει.
     11. Φρόνησις.
     15.
-    Καὶ δούλουσιν ἐν καμπταῖς αὐ-
-    τῶν.
+    Καὶ θοολύσιν ἐν καμπαῖς αὐτῶν.
     16.
-    17. Ἡγεμονᾶ.
-    Καὶ [συνέθηκεν] θεῷ.
+    17. Ἡγεμόνα.
+    Καὶ [συνθήκην] Θεοῦ.
     18.
-    Καμπάς αὕτης.
+    Καμπάς αὐτς.
     19. Οὐκ ἐπιστρέψουσιν.
     20.
     21.
     22. Ἀσεβεῖς.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="20,660,980,900">
-    VERSIO HEBRACI TEXT.                VULGATA LATINA.                AQUILA.
-    2. Ad attendendum ad sapio-     2. Ut audiat sapientiam.        2. Ad attendendum sapientiæ:
-    tiam.                           Inclines.                      Reclinabis.
-    3. Ad intelligentiam.           Inclina.                        3°
-    4. Et sicut thesauros.          4. Et sicut thesauros.           4.
-    6. Ex ore ejus.                 6. Ex ore ejus.                  6. Ab ore ejus.
-    8. Et viam.                     8. Vias.                         8.
-    9. Orbitam.                     9. Semitam.                      9. Flexiles.
-    10. In cor tuum.                10. Cor tuum.                    10. In cor tuum.
-    Jacunda fuerit.                Placuerit.                      Decora erit.
-    11. Intelligentia.              11. Prudentia.                   11. Prudentia.
-    15. Obliquæ.                   15. Perversæ.                    15.
-    Et recedentes in orbitis eorum.Et infames gressus eorum.        Et susurrant in flexibus eorum.
-    16. A muliere extranea, ab      16. A muliere aliena, et ab ex-   16.
-    aliena, eloquia sua lenificat. tranea, quæ mollit sermones suos.
-    17. Ducem.                      17. Ducem.                       17. Ducem.
-    Et pacti Dei sui.              Et pacti Dei sui.               Et foedus Dei.
-    18. Quia incurvata est ad mor-   18. Inclinata est enim ad mor-    18.
-    tem domus ejus.                 tem domus ejus.
-    Orbitae ejus.                  Semitae ipsius.                 Flexuras ejus.
-    19. Non revertertur.            19. Non revertertur.             19. Non convertentur.
-    20. Semitas justorum.           20. Calles justorum.             20.
-    21. Habitabunt.                 21. Habitabunt.                  21.
-    22. Impii autem.                22. Impii.                       22. Impii.
+
+  [!-- Lower Section: Three Columns (Latin) --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,460,350,880">
+    VERSIO HEBRAICI TEXT.
+    2. Ad attendendum ad sapientiam.
+    Inclines.
+    3. Ad intelligentiam.
+    4. Et sicut thesauros.
+    6. Ex ore ejus.
+    8. Et viam.
+    9. Orbitam.
+    10. In cor tuum.
+    Jacunda fuerit.
+    11. Intelligentia.
+    15. Obliquæ.
+    Et recedentes in orbitis eorum.
+    16. A muliere extranea, ab aliena, eloquia sua lenificavit.
+    17. Ducem.
+    Et pacti Dei sui.
+    18. Quia incurvata est ad mortem domus ejus.
+    Orbitæ ejus.
+    19. Non revertentur.
+    20. Semitas justorum.
+    21. Habitabunt.
+    22. Impii autem.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,940,980,995">
+
+  <bloco tipo="texto_principal" script="latino" bbox="360,460,650,880">
+    VULGATA LATINA.
+    2. Ut audiat sapientiam.
+    Inclina.
+    3. Sapientiam.
+    4. Et sicut thesauros.
+    6. Ex ore ejus.
+    8. Vias.
+    9. Semitam.
+    10. Cor tuum.
+    Placuerit.
+    11. Prudentia.
+    15. Perversæ.
+    Et infames gressus eorum.
+    16. A muliere aliena, et ab extranea, quæ mollit sermones suos.
+    17. Ducem.
+    Et pacti Dei sui.
+    18. Inclinata est enim ad mortem domus ejus.
+    Semitæ ipsius.
+    19. Non revertentur.
+    20. Calles justorum.
+    21. Habitabunt.
+    22. Impii.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="660,460,950,880">
+    AQUILA.
+    2. Ad attendendum sapientiæ.
+    Reclinabis.
+    3.
+    4.
+    6. Ab ore ejus.
+    8.
+    9. Flexiles.
+    10. In cor tuum.
+    Decora erit.
+    11. Prudentia.
+    15.
+    Et susurrant in flexibus eorum.
+    16.
+    17. Ducem.
+    Et fœdus Dei.
+    18.
+    Flexuras ejus.
+    19. Non convertentur.
+    20.
+    21.
+    22. Impii.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="600,950,900,980">
     Digitized by Google
   </bloco>
-  <notas>Documento impresso com colunas trinas: coluna esquerda contém hebraico, coluna central grego, coluna direita grego/latim. Hebraico parcialmente ilegível em reprodução; sinais [ebraico] usados para marcas de linhas hebraicas quando caracteres não distinguíveis. Palavra editorial [συνέθηκεν] em col. direita indicada entre colchetes por leitura incerta.</notas>
 </pagina>

@@ -1,35 +1,55 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,60">
-S. EUSTATHIUS ANTIOCHENUS EPISCOPUS.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,70,490,950">
-tunt. Aquaticae, veluti anates et cygni, et his similes, divisos pedes non habent, sed latos, et membrana conjunetos, ut facilius in aquis natare possint, membranis pedum quasi remis aquarum vim pellentes.
-Cygnus collum pedibus longius protendit, quo pisces e fundo arripit plures.
-Avium multae tempore anni mutant et colorem et vocem. Merula namque ex nigra rufescit, et ex canora balbutit. Lusciniae item vox et color solstitio mutantur, et in somnis modulaturn edit sonum.
+  <bloco tipo="cabecalho" script="latino" bbox="100,30,150,60">735</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="300,30,700,60">S. EUSTATHIUS ANTIOCHENUS EPISCOPUS.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,30,900,60">736</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="80,80,480,150">tunt. Aquaticæ, veluti anates et cygni, et his similes, divisos pedes non habent, sed latos, et membrana conjunctos, ut facilius in aquis natare possint, membranis pedum quasi remis aquarum vim pellentes.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="80,155,480,190">Cygnus collum pedibus longius protendit, quo pisces e fundo arripit plures.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="80,195,480,250">Avium multæ tempore anni mutant et colorem et vocem. Merula namque ex nigra rufescit, et ex canora balbutit. Lusciniae item vox et color solstitio mutantur, et in somnis modulatum edit sonum.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="490,260,510,280">B</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,260,480,340">Quædam etiam aves bruma non esuriunt, aere solo, et eo rore qui herbas rigat, illis famem pellente; sed et ventris voluptatibus dominantur. Quibusdam enim vere, et autumno æquinoctio ipso, quibusdam semel per tempora anni stati concubitus. Aves fæminæ quousque conceperint, marem admittunt, postquam conceperint, aversantur.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="490,350,510,370">C</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,350,480,650">Scarabæi rosaceo illiti repente exanimantur. Apes et vespæ oleo madefactæ, meatibus occlusis consumuntur; quæ si aceto aspergantur, vitam recuperant, et respirandi facultate privatæ ære nutriuntur. Apes regem habent, et communem volatum, communemque servant domum; neque ulla exitum tentat, antequam rex ipse volatum incœperit; qui non ab illis eligitur, sed natura omnium tenet principatum, cæteris major, forma morumque lenitate illas vincens; habet enim aculeum, quo tamen ad ulciscendum non utitur. Ceras ex arborum satorumque floribus confingunt, et aquam guttasque instar roris floribus diffusam, ore convehentes, cerarum alveolis exonerant; hinc principio humidum est, sed tempore hominibus usu efficaci, maturatum dulcescit. Mellis item summa prudentia studioque receptacula condunt, ceram in subtilissimam membranam extendentes; crebras et continuas favorum structuras conficiunt, ut simul lateribus affixæ hæreat.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="80,655,480,690">πυκνὰς καὶ συνεχεῖς ἀλλήλαις τοὺς σίμβλους οἰκοδομοῦσιν, ὡς τὸ μικρὸν τῆς τῶν μικροτάτων πρὸς ἄλληλα θέσεως ἑδράζεται.</bloco>
 
-Quaedam etiam aves bruma non esuriunt, aere solo, et eo rore qui herbas rigat, illis famem pellente; sed et ventris voluptatibus dominantur. Quibusdam enim vere, et autumno aequinoctio ipso, quibusdam semel per tempora anni stati concubitus. Aves feminae quousque conceperint, marem admittunt, postquam conceperint, aversantur.
+  <bloco tipo="nota_marginal" script="latino" bbox="490,700,510,720">D</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,700,480,790">Locustæ uno consensu sublatæ, terras per latitudinem infestant, procedentes campos alios fructibus onustos conspiciunt, nec tangunt exitiose, sed ad præscripta illis loca summo nexu contendunt, quasi divinis jussibus pulsæ, neque antequam illis detur facultas, messes fructusque erodentes vastant. Eas saleucis avis insatiabili voracitate insecta, omnes absumit.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="80,800,480,840">Noctuæ, ut ferunt, oculis interdiu caligo offenditur, noctu eam visu valere.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="80,845,480,910">Cum vespertiliones cubitum eunt, mutuo complexu suspenduntur, et si quem ab eo ordine divelli contigerit, reliqui clamitant; eadem sola volucrum quadrupes est et dentibus fulcitur.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="80,920,480,960">Cicadæ imbre generantur, et obmutescunt, quan-</bloco>
 
-Scarabaei rosaceo illiti repente exanimantur. Apes et vespae oleo madefascae, meatibus occlusis consumuntur; quae si aceto aspergantur, vitam recuperant, et respirandi facultate privata aere nutriuntur. Apes regem habent, et communem volatum, communemque servant domum; neque ulla exitum tentat, antequam rex ipse volatum inceperit; qui non ab illis eligitur, sed natura omnium tenet principatum, ceteris major, forma morumque lenitate illas vincens; habet enim aculeum, quo tamen ad ulciscendum non utitur. Ceras ex arborum satorumque floribus confingunt, et aquam guttasque instar roris floribus diffusam, or convenienties, cerarum alveolis exonerant; hinc principio humidum est, sed tempore hominibus usu efficaci, maturatum dulcescit. Mellis item summa prudentia studioque receptacula condunt, ceram in subtilissimum membranam extendentes; crebras et continuas favorum structuras consiliunt, ut simul lateribus affixae haerent. πανχάς καὶ συνεχὲς ἀλλήλας τοῖς σιγήλοις ἀλικεωμένοις, ἵνα δείσω ἐσβρώσκεται.
+  <bloco tipo="nota_marginal" script="latino" bbox="490,80,510,100">A</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,80,920,150">συνουσιαστικὸν ἔχουσιν. Τὰ δὲ φιλύδρα, οἷον νῆσσαι, καὶ κύκνοι, καὶ τὰ ὅμοια αὐτοῖς, τοὺς πόδας ἐσχισμένους οὐκ ἔχουσιν, ἀλλὰ πλατεῖς, ὑμενώδεις πρὸς τὸ εὐμαρῶς τοῖς ὕδασι νήχεσθαι, οἷονεί κώπαις τισὶ τοῖς ὑμέσι τῶν ποδῶν τὸ ὑγρὸν διωθούμενα.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="520,155,920,190">Ὁ δὲ κύκνος μακρότερον τῶν ποδῶν ἔχει τὸν τράχηλον, πρὸς τ ἐκ τοῦ βάθους ἀνασπᾶν τοὺς ἰχθύας.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="520,195,920,250">Τῶν δὲ ὀρνέων πολλὰ κατ' ἔτος μεταβάλλει τὴν φωνὴν καὶ τὴν χρόαν. Ὁ γὰρ κόττυφος ἐκ μέλανος ξανθὸς καθίσταται, καὶ ἐξ ᾠδικοῦ κρακτικός. Ἡ δὲ ἀηδὼν τὸ χρῶμα καὶ τὴν φωνὴν μεταβάλλει ταῖς τροπαῖς· καὶ ἔστιν ἄγρυπνον τῇ μελδί σχολάζουσα.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="520,260,920,340">Ἔνια δὲ τῶν ὀρνέων τὰς χειμερινὰς οὐ πενῶσι τροπάς, τῷ ἀέρι μόνῳ τρεφόμενα καὶ τῇ κατὰ τὰς χλοηρασίας ἐπιπαρχούσῃ νοτίδι, ἀλλὰ καὶ τὰς ὑπογαστρίους κρατοῦσι ἡδονάς. Ἔνια μὲν γὰρ ἔαρι, καὶ μεσοπώρῳ κατὰ τὰς ἰσημερίας, ἔνια δὲ ἅπαξ τοῦ ἔτους ἐπιβαίνει. Αἱ δ θήλειαι ὄρνεις μέχρι συλλήψεως τῇ ὀχείᾳ ἔχονται, καὶ εὐθὺς τοὺς ἄρρενας ἀποτρέφονται.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="520,350,920,650">Οἱ δὲ κάνθαροι, ἐὰν ῥοδίνῳ χρισθῶσιν, εὐθὺς ἀποθνήσκουσιν. Αἱ δὲ μέλισσαι καὶ σφῆκες, ἐλαίῳ καταβρεχθεῖσαι φθείρονται, τῶν πόρων ἀποφραγέντων. Ὄζει οὖν ἀναδύσιον βρεγόμεναι· τρέφονται δὲ τ ἀέρι ἀναπνοὴν οὐκ ἔχουσαι. Ἔχουσι δὲ βασιλέα αἱ μέλισσαι, καὶ κοινὴν μὲν ποιοῦνται τὴν πτῆσιν, κοινὴν δὲ τὴν οἴκησιν· καὶ οὐδεμία προχείρως ἕξεισι πρὶν ἢ τὸν βασιλέα τῆς πτήσεως κατάσχεσθαι. Ἔστι δ αὐταῖς ὁ τοῦ ἀχειροτονήτου ἐκ φύσεως ἔχων τὴν κατὰ πάντων ἀρχήν, μεγέθει, καὶ σχήματι, καὶ τ τοῦ ἤθους πραότητι διαφέρων αὐτῶν· ἔστι μὲν γὰρ κέντρον αὐτῷ, ἀλλ' οὐ χρῆσαι τοῦτο πρὸς ἄμυναν. Συνάγουσι δὲ ἐκ τῶν ἀνθῶν τν κηρὸν αἱ μέλισσαι, καὶ τὴν δροσοειδῶς ἐνεσπασμένην νοτίδα τοῖς ἄνθεσιν τῷ στόματι ἐπισπασάμεναι, ταῖς κοιλότησι τῶν κηρῶν αὐτὴν ἐπιτιθέασιν· ὅθεν καὶ ὑγρόν ἐστι τὴν ἀρχήν, εἶτα τῷ χρόνῳ καταπεφθέν, ἡδ γίνεται, καὶ εχρηστον τος ἀνθρώποις. Σοφῶς δὲ καὶ τὰς ἀποθήκας φιλοτεχνοῦσι τοῦ μέλιτος· εἰς λεπτὸν ὑμένα τν κηρὸν διατείνουσαι,</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="520,700,920,790">Αἱ δὲ ἀκρίδες ἑν συνθήματι κατὰ τὸ πλάτος τῆς χώρας στρατοπεδεύουσι. Περιιούσαι δὲ ὁρῶσιν ἕτερα λια τῷ καρπῷ βρίθοντα, καὶ οὐκ ἐφάπτονται, ἀλλ' ἐπὶ τὸν ὡρισμένον αὐταῖς τόπον σπουδάζουσιν, ὥσπερ ἐκ θείου προστάγματος ἐπειγόμεναι. Καὶ οὐ πρότερον τοῦ καρποῦ ἅπτονται, πρὶν ἢ δοθῆναι αὐταῖς τὴν συγχώρησιν. Μετέπειτα δὲ αὐταῖς σελευκὶς ἐπιστέλλεται, καὶ πάσας κατεσθίει αὐτάς, ἄκριτον τὴν φύσιν ἔχουσα.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="520,800,920,840">Τὴν γλαῦκά φασι τὴν ἡμέραν ἀμαυροῦσθαι τὴν ὄψιν, τὴν δ νύκτα ῥώννυσθαι.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="520,845,920,910">Ἡνίκα δ' αἱ νυκτερίδες καθεύδουσιν, ἐξ ἀλλήλων ἀπήρτηνται· καὶ εἰ μίαν συμβῇ τοῦ ὁρμαθοῦ ἀποσπασθῆναι αὐτῶν, αἱ λοιπα καταβοῶσιν. Μόνον δὲ τῶν πετεινῶν τετρασκελὲς ὑπάρχει, καὶ ὀδοσι κατακεκόσμηται.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="520,920,920,960">Οἱ δὲ τέττιγες ἐν ἐπομβρίᾳ γίνονται, τρυγάζουσι δὲ</bloco>
 
-Locustae uno consensu sublatae, terras per latitudinem infestant, procedentes campos alios fructibus onustos conspiciunt, nec tangunt exitiose, sed ad prae scripta illis loca summo necu contendunt, quasi divinis iussibus pulsse, neque antequam illis detur facultas, messes fructusque erodentes vastant. Eas seleucis avis insatiabili voracitate insecruta, omnes absumit.
-
-Noctuae, ut ferunt, oculis interdiu caligo offendiunt, noctu eam visu valere.
-Cum vespertiliones cubitum eunt, mutuo complexu suspenduntur, et si quem ab eo ordine divelli contigerit, reliqui clamitant; eadem sola volucrum quadrupes est et dentibus fulcitur.
-
-Cicadae inbre generantur, et obnuntescunt, quan-
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="510,70,970,950">
-ἀσύντοχοις ἔχουσιν. Τὰ δὲ φτερῶν, ὅσοι νῆσσαι, καὶ κύκναι, καὶ τὰ ὅμοια αὐτοῖς, τοῦς πόδας ἔχουσιν μόνους οὐκ ἔχουσιν, αλ̀λα πλατεῖς, ὑμενῶδεις πρὸς τῷ ἐμαρμῷ τοῖς ὕδασι νῆχεσθαι, οἷοι νάπαις τοῖς ποσὶν τὸ ὕγρον ὀβολοῦσιν.
-
-Ὁ δὲ κύκνος, μακρότερον τῶν ποδῶν ἔχει τὸν τράχλον, πρὸς τὸ δὲ τοῦ βάθους ἀνασπάν τους ἰχθύας.
-Τῶν δὲ ὀρνέων πολλὰ καὶ· ἓτος μεταβάλλει τὴν φωνὴν καὶ την̀ χρῶαν. Ὁ γὰρ κὀκκυφος ἐκ μελανὸς ξανθὸς καθισταται, καὶ ἐξ ῥυθμοὺ χρακτήρος. Ἡ δὲ αηδὸν τὸ χρῶμα καὶ τήν φωνὴν μεταβαλλει ταῖς τροπαῖς· καὶ ἐστιν ἀργυρων ᾢ μελωδία φηλαζουσα.
-
-Ἐνιὰ δὲ τῶν ὀρνέων τὰς χειμερινἀς οὐ πεινων τρῶσι, τῷ ἀέρι μόνῳ θερμονέροισι καὶ τῆ καρδιᾶς ἡ δεσποταριὰ ἐνυπναρουσιν νοτιοῖ, ἀλλὰ καὶ τὰ στοματα γαστριοὺς κρατοῦσιν ἴδουσιν. Ἐνιὰ μὲν γὰρ ἐαρ, καὶ μεταπόρῳ κατὰ τὰς ἱσημεριδας, ἑνὰ δὲ ἀπὸ τοὺς ἐτους ἐπιβάνει. Αὶ δὲ ὀθλιαι ὀρνέες μέχρι σωζεῖν τῆς θ̔ηλεας ἔχουσι, καὶ εὐθὺς τοὺς ἀρρενας ἀποστρέφονται.
-
-Οἱ δὲ χανδαροι, ἐαν ῥοδῑνοι χρώασθωσι, εὐθε͂ς ἀποθν̔ησκουσιν. Αἱ δὲ μελίσσαι καὶ σφῆκες, ἐλάμ πο μολιβρ βρεχθεισαι φθειρόνται, τῶν ἁρμον απογαγέντων. Ὅσοι ὃν αναβιῶσι βρέχομενοι· τέφροισι δὲ τῷ ἄερ ἀναπνὀντα οὐκ ἔχουσι. Ἐχουσι δὲ βασιλεὰ αἱ μελισσαι, καὶ κοινὸν μὲν προιονται την̀ πτησιν, κοινὴ δὲ ἀ̓πὸ σκληρίας· καὶ ουδεμία προχειρουγέσθαι ἔξει τὰν ἐκ βασιλεύς της πτησηεως καταρχέσθαι. Ἐστι δὲ αὐταις καὶ ἄλλοις ἑκαστοῖς τὰς φυλέας ἔχων τὴν κατὰ ἔθνος ἀρχην, μεγάθη, καὶ σχηματι, και τὰ τοῖς ἔθνεσι πράττει διαφερο͂ν αὐτων· Ἑστι μὲν γὰρ κὀσμος αὐτων, ἀλλὰ οὐ χρήμα τοὐτοῑς προς ἄμυναν. Συνάγουσι δὲ ἐκ τῶν ἀλλων τὸν γήρονα αἱ μελίσσαι, καὶ τὴν βουκελῷ· ἐνεσπαραμμένη νοτιδα τοῖς ἀνεμοῖς τῆς σπλαγχνης επιστάσεσθαι, τοις κοιλότης τῶν κράνων αὐτῆς ὑπέρβα· ὀδὲν καὶ ὕγρον εἰς τὴν ἀρχὴν, ἱτὰ ὓ ῥοην καταπεφθι, ἧ γίνεται, καὶ ἐκχυσιμον τοῖς ἀνθρωποις. Σορός δὲ καὶ τὰς αποθηκας φιλοχρησιαν τῶν μελίσων· εἰς λεπτον ὑμένα τον̀ χυμον διατείνουσιν, ὅς το μειζόν της των μικροτατων τρις δι-
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,955,970,990">
-Digitized by Google
-  </bloco>
-  <notas>Página em duas colunas; colunas transcritas esquerda (latim) e direita (grego). Texto grego inclui ligaduras e diacríticos; mantida transliteração original conforme impresso. Algumas palavras interrompidas no fim de linhas mantidas com hífen conforme original; ocorrências de [ilegivel] não foram necessárias.</notas>
+  <bloco tipo="rodape" script="latino" bbox="400,970,600,990">Digitized by Google</bloco>
+  
+  <notas>
+    Página dupla 735-736 da Patrologia Graeca. Texto em duas colunas: Latina à esquerda, Grega à direita.
+    Letras marginais A, B, C, D indicam seções.
+    Há um bloco de texto em grego inserido no final do parágrafo latino sobre as abelhas ("Scarabæi...").
+  </notas>
 </pagina>

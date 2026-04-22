@@ -1,58 +1,147 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,80">
-    1879                       HEXAPLORUM QUÆ SUPERSUNT.                        1880
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,200,50">1879</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,20,650,50">HEXAPLORUM QUÆ SUPERSUNT.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="800,20,900,50">1880</bloco>
+  
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,300,100">
+    TO EBPAIKON.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="30,80,970,380">
-    TO EBPAIKON.                      TO EBPAIKON                  AKYILAΣ.
-    'Ελληνικοὶς γράμμασι.
-    
-    20.                                20.                          20.
-    (Hebrew line)                      20.                         23. Ei μὴ ἐξελεύσεται.
-    (Hebrew) 23                         23.                         24.
-    (Hebrew) 24                         24.
-    
-    VERSIO HEBRAICI TEXT.             VULGATA LATINA.             AQUILA.
-    
-    20. Accedite simul, liberati gen-  20. Et accedite simul, qui salvati 20.
-    tium.                              estis ex gentibus.
-    23. Exiit.                         23. Egredietur.             23. Si non egredietur.
-    24 Et fortitudo.                   24. Et imperium.            24.
-    
-    Notæ et variæ lectiones ad cap. XLV Hesaiæ.
-    
-    V. 1. Hebr. et Vulg., et portæ. O', και πόλεις, sed in plerisque ll., πόλεις. DRACH.
-    V. 2. Hebr., concidam. O', συγχλάσω. Marchal. aliique codd. et Aldina, συνθλάσω. IDEM.
-    V. 4. Α., Σ., Θ., συ. Et sic habent etiam hucile ol O'. Sed in textu ms. Jes. legitur μοι. [Et addit, oi Γ', σο̣υ. DRACH.]
-    V. 5. Θ., χείλ[υσ]ας. Curter. ex ms. Jes.
-    V. 6. Σ., Θ., κ' αὐτοῦ. Idem. Sed non video quid hic faciat asteriscus et vox αὐτοῦ, nisi fortasse Symmachus et Theodotion legierunt הוּא.
-    V. 9. Α., μὴ διαχλεύσ[ο]μενος etc. Idem. Drusius suspicatur illud μὴ, in versione Aquilæ vilatum esse. Hieronymus Theodotionis lectionem sic exhibet: Væ ei qui contendit contra faciem suam, arans arantes terras. In editionibus Hieronymi legitur, arantis: sed arantes legendum esse probat tum ipsa series, tum vox Græca ἀροτριῶντες, ut habetur apud Procopium. Hanc lectionem confirmant etiam textus Hebraicus, et antiquissimus codex noster Hieronymi in Hesaiam, qui habet, arans arantes. [Textus τῶν Ο', quem hic adscirpsit Montf., mera additio est cod. Vatic., in fine commatis post vocem χείρας, de qua ne grey quidem in Hebr., deestque in
+  <bloco tipo="texto_principal" script="misto" bbox="350,60,600,100">
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,380,970,520">
-    Hesaiæ CAPUT XLVI.
-    
-    TO EBPAIKON.                        TO EBPAIKON                  AKYIΛΑΣ
-    'Ελληνικοὶς γράμμασι.
-    
-    (Hebrew lines)                      1.                         1. Ναθώ.
-    (Hebrew) 6                           6.                        6. Ἰσχυρόν.
-    (Hebrew) 11                          11.                       11.
-    (Hebrew) 12                          12.                       12.
-    
-    VERSIO HEBRAICI TEXT.             VULGATA LATINA.             AQUILA.
-    
-    1. Nabo.                          1. Nabo.                    1. Nabo.
-    Fuerunt simulacra eorum be-      Facta sunt simulacra eorum  -
-    stiæ.                              bestiis.
-    
-    6. Deum.                          6. Deum.                    6. Fortem.
-    11. Vocans ab Oriente volu-       11. Vocans ab Oriente avem, et 11.
-    crem: de terra longinqua virum   de terra longinqua virum volunta-
-    consilii sui.                    tis meæ.
-    
-    Etiam locutus sum.               Et locutus sum,              -
-    12. Audite ad me fortes corde.   12. Audite me duro corde.    12.
-    
-    (Digitized by Google)
+  <bloco tipo="texto_principal" script="grego" bbox="750,60,900,90">
+    AKYΛAΣ.
   </bloco>
-  <notas>Scripts presentes: latino, greco e hebraico. Algumas palavras hebraicas e gregas pequenas foram marcadas como (Hebrew line) ou parenteses quando ilegíveis em detalhe; mantive a literalidade latina e as abreviações conforme imagem. Correções e editoriais dentro de colchetes reproduzem notas visíveis na página.</notas>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="80,100,300,130">
+    עוּצוּ הִתְיַעֲצוּ וְתֻפָּר 20
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,100,420,120">20.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="780,100,820,120">20.</bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="200,130,300,150">
+    קוּ 23
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,130,420,150">23.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,130,920,150">
+    23. Εἰ μ ἐξελεύσεται.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="200,150,300,170">
+    תוּ 24
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,150,420,170">24.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="780,150,820,170">24.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,180,300,200">VERSIO HEBRAICI TEXT.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,180,600,200">VULGATA LATINA.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,180,900,200">AQUILA.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,200,300,240">
+    20. Accedite simul, liberati gentium.
+    23. Exiit.
+    24 Et fortitudo.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,200,600,240">
+    20. Et acredite simul, qui salvati estis ex gentibus.
+    23. Egredietur.
+    24. Et imperium.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,200,900,240">
+    20.
+    23. Si non egredietur.
+    24.
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="300,250,700,270">Notæ et variæ lectiones ad cap. XLV Hesaiæ.</bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="50,280,480,500">
+    V. 1. Hebr. et Vulg., et portæ. O', καὶ πόλεις, sed in plerisque ll., πύλας. DRACH.
+    V. 2. Hebr., concidam. O', συγχλάσω. Marchal. aliiqqe codd. et Aldina, συνθλάσω. IDEM.
+    V. 4. 'A., Σ., Θ., σου. Et sic habent etiam hodie et O'. Sed in textu ms. Jes. legitur μου. [Et addit, et Γ', σου. DRACH.]
+    V. 5. Θ., X ἐνίσχυσας. Curter. ex ms. Jes.
+    V. 6. Σ., Θ., X αὐτοῦ. Idem. Sed non video quid hic faciat asteriscus et vox αὐτοῦ, nisi fortasse Symmachus et Theodotio legerint [ilegivel].
+    V. 9. 'A., μὴ δικαζόμενος etc. Idem. Drusius suspicatur illud μή, in versione Aquilæ vitiatum esse. Hieronymus Theodotionis lectionem sic exhibet : Væ ei qui contendit contra factorem suum, arans arantes terram. In editionibus Hieronymi legitur, arantis : sed arantes legendum esse probat tum ipsa series, tum vox Græca ἀροτριῶντας, ut habetur apud Procopium. Hanc lectionem confirmant etiam textus Hebraicus, et antiquissimus codex noster Hieronymi in Hesaiam, qui habet, arans arantes. [Textus τῶν O', quem hic adscripsit Montf., mera additio est cod. Vatic., in fine commatis post vocem χεῖρας, de qua ne gry quidem in Hebr., deestque in
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="500,280,950,500">
+    Alex. et Complut. Textus Hebraici hic adscripti, sed cui in fine addendum שְׂפָתַי, senum versio sic est : ποῖον βέλτιον κατεσκεύασα ὡς πηλὸν κεραμέως ; pro qua versione Sym. aliter, et ad verbum, absque שְׂפָתַי, quod secundum accentum tonicam ad sequentem pertinet phrasim. Ita explicite docent Procop., ἀντὶ δὲ το, ποῖον βέλτιον etc., Σύμμ. ἔφησεν· οὐαὶ ὁ ἀντιλέγων etc., et S. Hieron. qui : « Quid sibi autem velint Septuaginta, qui transtulerunt : Quid melius feci quam lutum figuli ? etc. scire non valeo : nisi forte Theodotionis sequar editionem, qui pro hoc posuit : Væ ei qui contendit contra factorem suum. » — Cyrillus, Procopius, atque plures codd. habent, ποιῶν βελτίω, faciens meliorem, aut meliora. In aliquo etiam est, ποιῶν βέλτιον κατεσκεύασά σε, faciens melius composui te. Ex ed. Rom. DRACH.]
+    V. 10. Σ., τί ἐγέννησας. Procopius.
+    V. 11. Θ., καὶ περ τῆς ἐργασίας. Curter. ex ms. Jes.
+    V. 13. Σ., καὶ πάσας τὰς etc. Sic Regius unus codex.
+    V. 14. Sic habet codex unus, ἀντὶ τοῦ, ἐσκοτίασεν Αἴγυπτος, τὸ Ἑβραϊκὸν καὶ οἱ λοιπο πάντες
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="350,520,650,540">HESAIÆ CAPUT XLVI.</bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="50,550,300,580">TO EBPAIKON.</bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="350,550,600,580">TO EBPAIKON Ἑλληνικοῖς γράμμασι.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,550,900,570">AKYΛAΣ</bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,580,300,610">
+    כָּרַע בֵּל קָרַס נְבוֹ 1
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,580,400,600">1.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,580,850,600">1. Ναβώ.</bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="200,610,300,640">
+    לְחַיָּה 6
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,610,400,630">6.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,610,850,630">6. Ἰσχυρόν.</bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,640,300,670">
+    שָׂא אֶת מוֹרַשֵׁיכֶם עַל כָּתֵף 11
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,640,410,660">11.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,640,780,660">11.</bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,670,300,690">
+    קֹרֵא מִמִּזְרָח עַיִט
+  </bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,700,300,730">
+    שִׁמְעוּ אֵלַי אַבִּירֵי לֵב 12
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,720,410,740">12.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,720,780,740">12.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,750,300,770">VERSIO HEBRAICI TEXT.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,750,600,770">VULGATA LATINA.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,750,900,770">AQUILA.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,770,300,850">
+    1. Nabo.
+    Fuerunt simulacra eorum bestiæ.
+    6. Deum.
+    11. Vocans ab Oriente volucrem : de terra longinqua virum consilii sui.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,770,600,850">
+    1. Nabo.
+    Facta sunt simulacra eorum bestiis.
+    6. Deum.
+    11. Vocans ab Oriente avem, et de terra longinqua virum voluntatis meæ.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,770,900,850">
+    1. Nabo.
+    6. Fortem.
+    11.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,880,250,900">Etiam locutus sum.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,880,500,900">Et locutus sum,</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,900,300,920">12. Audite ad me fortes corde.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,900,600,920">12. Audite me duro corde.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,900,780,920">12.</bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="600,950,900,980">Digitized by Google</bloco>
+  
+  <notas>
+    Transcrição de página da Patrologia Graeca (Hexaplorum quæ supersunt).
+    Contém texto em Hebraico, Grego e Latino.
+    A seção de notas (Notæ) está dividida em duas colunas.
+    Alguns caracteres hebraicos podem estar fragmentados devido à qualidade da impressão original.
+  </notas>
 </pagina>

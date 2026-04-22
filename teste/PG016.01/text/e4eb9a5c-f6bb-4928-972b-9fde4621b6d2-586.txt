@@ -1,23 +1,27 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="60,10,940,90">
-    IIEXAPLORUM QUAE SUPERSUNT.
-    PSALMUS CVI.
+  <bloco tipo="cabecalho" script="misto" bbox="50,20,950,60">
+    4131 HEXAPLORUM QUÆ SUPERSUNT. 4132
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,90,340,860">
-    TO EBRAIKON.
-    וּתְהִלֹּתָיו לְבָנִים 8
-    וַיִּבְחַר זְמַן חַנָּה 22
-    יָמִים סוֹעָה לְנַחֲמָה 29
-    עִיר מִשְׁכָּב 36
-    לֹא יְעַמּוּ 38
-    וְשָׁמְעוּ וּשְׁמָעוּ מֵעֵינָם 39
-    וְהָיָה בְּחָדָשׁ לֹא־יָדַע 40
-    יָשָׁב אַבְנֵי מִסְפָּרִי 41
-    רָשָׁם כָּאן מִשְׁתָּדֵל
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,90,660,860">
+  
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,950,100">
     PSALMUS CVI.
-    TO EBPAIKON
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ ΑΚΥΛΑΣ.
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,100,300,450">
+    8 וְנֹורְאוֹתָיו לִבְנֵי אָדָם
+    22 וְזִבְחֵי תוֹדָה
+    29 יַעֲמֵד סוּפָה לִדְמָמָה
+    36 עִיר מִבְצָר
+    38 לֹא יִמְעָטוּ
+    39 וַיִּמְעָטוּ וַיִּשְׁחוּ מֵעֹצֶר רָעָה וְיָגוֹן
+    40 וַיִּתְעוּ בַּתֹּהוּ לֹא־דָרֶךְ
+    41 וַיֹּשֶׁב אבְיוֹן מֵעֹנִי
+    וַיָּשֶׂם כָּנֶן מִשְׁפְּחוֹת
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="350,100,450,450">
     8.
     22.
     29.
@@ -26,86 +30,145 @@
     39.
     40.
     41.
-    VERSIO HEBRAICI TEXT.
-    8. Et mirabilia ejus filiis hominum. Hieron., et prodigia ejus in filios hominum.
-    22. Et sacrificent sacrificia laudis. Hieron., et immolent hostias gratiarum.
-    29. Stare fecit turbinen in silentium. Hieron., staluet turbinem in tranquillitatem.
-    36. Civitatem habitationis. Hieron., ad habitadum.
-    38. Non minuet. Hieron., id.
-    39. Et diminuti sunt et humiliati sunt a tyrannide mala et anxietate. Hieron., imminuta sunt autem et afflicta propter angustiam mali et doloris.
-    40. Et errare fecit eos in inani absque via. Hieron., et errare eos faciet in solitudine de via.
-    41. Et sublevavit egenum ab afflictione. Hieron., et sublevabit pauperem de inopia.
-    Et posuit sicut pecus familias. Hieron., et ponet quasi gregem familias.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="660,90,960,860">
-    ΑΚΥΛΑΣ.
+
+  <bloco tipo="texto_principal" script="grego" bbox="650,100,950,450">
     8.
-    22. Και θυσάνωσαν θυσίαν ευχαριστιας.
-    29. Αναστησει λαλατα εις αυ-
-    ταν.
-    36. Πόλιν κατοικεσιας.
-    38. Οὐκ ελιγώσει.
+    22. Καὶ θυσιάτωσαν θυσίαν εὐχα-
+    ριστίας.
+    29. Ἀναστήσει λαῖλαπα εἰς αὔ-
+    ραν.
+    36. Πόλιν κατοικεσίας.
+    38. Οὐκ ὀλιγώσει.
     39.
-    40. Και πλανησει αυτοῦς....
-    41. Και υπεραρει πτωχον εκ α- vorias.
-    Και θησει ως παίμνον συγγε νειας.
-    VULGATA LATINA.
-    8. Et mirabilia ejus filiis hominum.
-    22. Et sacrificent sacrificium laudis.
-    29. Et statuit procellam ejus in auram.
+    40. Καὶ πλανήσει αὐτούς....
+    41. Καὶ ὑπεραίρει πτωχὸν ἐκ πε-
+    νίας.
+    Καὶ θήσει ὡς ποίμνιον συγγε-
+    νείας.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,450,950,480">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,480,300,750">
+    8. Et mirabilia ejus filiis homi-
+    minum. Hieron., et prodigia ejus
+    in filios hominum.
+    22. Et sacrificent sacrificia lau-
+    dis. Hieron., et immolent hostias
+    gratiarum.
+    29. Stare fecit turbinem in si-
+    lentium. Hieron., statuet turbinem
+    in tranquillitatem.
+    36. Civitatem habitationis. Hie-
+    ron., ad habitandum.
+    38. Non minuet. Hieron., id.
+    39. Et diminuti sunt et humi-
+    liati sunt a tyrannide mala et an-
+    xietate. Hieron., imminuta sunt
+    autem et afflictæ propter angu-
+    stiam mali et doloris.
+    40. Et errare fecit eos in inani
+    absque via. Hieron., et errare eos
+    faciet in solitudine de via.
+    41. Et sublevavit egenum ab af-
+    flictione. Hieron., et sublevabit
+    pauperem de inopia.
+    Et posuit sicut pecus familias.
+    Hieron., et ponet quasi gregem
+    familias.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="350,480,600,750">
+    8. Et mirabilia ejus filiis homi-
+    num.
+    22. Et sacrificent sacrificium
+    laudis.
+    29. Et statuit procellam ejus in
+    auram.
     36. Civitatem habitationis.
-    38. Non minorauit.
-    39. Et pauci facti sunt et vexati sunt a tribulatione malorum et dolore.
-    40. Et errare fecit eos in in via, et non in via.
-    41. Et adjuvit pauperem de inopia.
+    38. Non minoravit.
+    39. Et pauci facti sunt et vexati
+    sunt a tribulatione malorum et
+    dolore.
+    40. Et errare fecit eos in invio,
+    et non in via.
+    41. Et adjuvit pauperem de
+    inopia.
     Et posuit sicut oves familias.
-    AQUILA.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="650,480,950,750">
     8.
-    22. Et sacrificent sacrificium gratiarum actionis.
-    29. Excitabit turbinen in auram.
+    22. Et sacrificent sacrificium
+    gratiarum actionis.
+    29. Excitabit turbinem in au-
+    ram.
     36. Civitatem habitationis.
     38. Non minorabit.
     39.
     40. Et errare faciet eos...
-    41. Et sublevat inopem ex paupertate.
+    41. Et sublevat inopem ex pau-
+    pertate.
     Et ponet sicut gregem cognationes.
   </bloco>
-  <bloco tipo="aparatocritico" script="latino" bbox="40,860,960,1040">
+
+  <bloco tipo="nota" script="misto" bbox="50,750,950,850">
     Notæ et variæ lectiones ad Psalmum CVI.
-    V. 8. E., και τα τερατα etc. Regius unus et Theodoretus.
-    V. 22. A., και θυσάνωσαν etc. Idem. Regius auem ex Didymo accepit.
-    V. 29. A., αναστησει etc. Has lectiones exhibet Drusius.
-    V. 36. A., Σ., πολιν κατοικεσιας. Drusius.
-    V. 38. A., ουκ ελιγώσει etc. Idem.
+    V. 8. Σ., καὶ τὰ τεράστια etc. Regius unus et
+    Theodoretus.
+    V. 22. 'Α., καὶ θυσιάτωσαν etc. Iidem. Regius au-
+    tem ex Didymo accepit.
+    V. 29. 'Α., ἀναστήσει etc. Has lectiones exhibet
+    Drusius.
+    V. 36. 'Α., Σ., πόλιν κατοικεσίας. Drusius.
+    V. 38. 'Α., οὐκ ὀλιγώσει etc. Idem.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="60,1040,940,1110">
+
+  <bloco tipo="texto_principal" script="misto" bbox="50,860,950,900">
     PSALMUS CVII.
-    TO EBPAIKON
-    Ελληνικοὶς γράμμασι.
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ ΑΚΥΛΑΣ.
+    Ἑλληνικοῖς γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,1110,340,1370">
-    TO EBRAIKON.
-    מוֹאָב סירי 1 מָזָם 10
-    עלי שלשׁת אדונתי
-    VERSIO HEBRAICI TEXT.
-    10. Moab olla lotionis meæ. Hieron., Moab lebes pelvis meæ.
-    Super Peleseth tarantataribao. Hieron., cum Philisthim foederabor.
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="50,900,300,940">
+    10 מוֹאָב סִיר רַחְצִי
+    עָלַי פְּלֶשֶׁת אתְרוֹעָע
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,1110,660,1370">
+
+  <bloco tipo="texto_principal" script="latino" bbox="350,900,450,940">
     10.
-    VULGATA LATINA.
-    10. Moab lebes spei meæ.
-    Mihi alienigenae subditi sunt.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="660,1110,960,1370">
-    ΑΚΥΛΑΣ.
-    10. Μωαβ λεβης τουλ λουτρου
+
+  <bloco tipo="texto_principal" script="grego" bbox="650,900,950,960">
+    10. Μωὰβ λέβης τοῦ λουτροῦ
     μου.
-    Επι Φυλιστιαιους συνεταιρισθη σομαι.
-    AQUILA.
-    10. Moab lebes lavacri mei.
-    Cum Phylistieis amicitiam inibo.
+    Ἐπὶ Φυλιστιεὶμ συνεταιρισθή-
+    σομαι.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,950,950,1000">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+    10. Moab olla lotionis meæ. 10. Moab lebes spei meæ. 10. Moab lebes lavacri mei.
+    Hieron., Moab lebes pelvis meæ.
+    Super Pælesth tarantantizabo. Mihi alienigenæ subditi sunt. Cum Phylistæis amicitiam in-
+    Hieron., cum Philisthiim fœdera- ibo.
+    bor.
+  </bloco>
+  
+  <bloco tipo="rodape" script="latino" bbox="550,970,850,1000">
     Digitized by Google
   </bloco>
-  <notas>Scripts presentes: latino, grego, hebraico. Hebraico transcrito conforme impresso; algumas linhas hebraicas têm ligaduras e abreviações; foram mantidas as grafias tal como aparecem; bbox estimadas em escala 0-1000.</notas>
+
+  <notas>
+    A página apresenta uma disposição poliglota complexa (Hexapla).
+    Coluna 1: Texto Hebraico (Torá/Salmos).
+    Coluna 2: Transliteração do Hebraico em caracteres Gregos (nesta página específica, aparecem apenas os números dos versículos na seção superior, e o cabeçalho na inferior).
+    Coluna 3: Versão Grega de Áquila.
+    Seção Média: Traduções Latinas correspondentes (Versio Hebraici Text [Jerônimo], Vulgata Latina, Tradução Latina de Áquila).
+    Seção Inferior: Notas críticas (Notæ) e início do Salmo CVII.
+    A transcrição segue a ordem visual de blocos.
+  </notas>
 </pagina>

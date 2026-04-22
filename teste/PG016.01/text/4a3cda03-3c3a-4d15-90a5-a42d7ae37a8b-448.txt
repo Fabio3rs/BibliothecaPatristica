@@ -1,33 +1,25 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,90">
-    859                      HEXAPLORUM QUÆ SUPERSUNT.                                  860
+  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,80">
+    359 HEXAPLORUM QUÆ SUPERSUNT. 360
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="30,90,330,170">
+  
+  [!-- Coluna Esquerda: Hebraico --]
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,90,350,560">
     TO EBPAIKON.
+    17 אני אל-אלהים אקרא ויהוה יושיעני
+    19, 20 כי-רבים הם עמדי : ישמע אל ויענם ושב קדם
+    אין חליפות למו ולא יראו אלהים
+    21 שלח ידיו בשלמיו חלל בריתו
+    22 חלקו מחמאת פיו וקרבו רכז דבריו משכו שמנו פתחת
+    23 והשלך על-יהוה דרכך
+    לא-יתן לעולם מוט לצדיק
+    24 ואתה אלהים תורידם לבאר שחת
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="340,90,660,170">
+
+  [!-- Coluna do Meio: Hebraico em Letras Gregas --]
+  <bloco tipo="texto_principal" script="grego" bbox="380,90,550,560">
     TO EBPAIKON
-    Ἑλληνικὸς γράμμασι.
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="670,90,970,170">
-    (ΑΚΥΛΑΣ.
-  </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="30,170,330,720">
-    17 אני אל־אלהי אקרא 17
-    19, 20 כי־רבים היו עמי׃
-    19, 20 ושמע אל־ויאנח וישב קדם
-    אין חליפות eis לא ויהי אלהים
-    21 שלח ידו בשלמיו חלל בעיתו 21
-    22 בלתי מרחמת פני וקראתם
-    רט ודבר אחרי שמתי וידמו שדתי
-    23 יהלך
-    לא־יחן לעולם ממי לעזאזל
-    24 ואמה אדומים וחרדם למאר
-    שוה
-    אנש דמים תמחנה לא־יחתו
-    ימיהם
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,170,660,720">
+    Ἑλληνικοῖς γράμμασι.
     17.
     19, 20.
     21.
@@ -35,22 +27,27 @@
     23.
     24.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="670,170,970,720">
-    7. Ἐγὼ πρὸς τὸν Θεὸν κέλειμαι,
-    καὶ Κύριος σώσει με.
+
+  [!-- Coluna Direita: Aquila (Grego) --]
+  <bloco tipo="texto_principal" script="grego" bbox="600,90,900,560">
+    ΑΚΥΛΑΣ.
+    7. Ἐγὼ πρὸς τὸν Θεὸν καλέσω,
+    καὶ Κύριος σώσει με.
     19, 20.
-    Οἱ οὖχ εἰσιν ἀλλαγαὶ αὐτῶν,
-    καὶ οὐκ ἐφοβήθησαν τὸν θεὸν.
-    21. Ἀπέστειλε χεῖρα αὐτοῦ ἐν
+    Οἷς οὐκ εἰσὶν ἀλλαγαὶ αὐταῖς,
+    καὶ οὐκ ἐφοβήθησαν τὸν Θεόν.
+    21. Ἀπέστειλε χεῖρα αὐτοῦ ἐν
     εἰρηνικοῖς αὐτοῦ.
-    22. Λόγχαι.
-    23. Ἀγαπήσει σε.
+    22. Λόγχαι.
+    23. Ἀγαπήσει σε.
     24.
-    Ἄνδρες αἱμάτων καὶ ἐκπλήξεως
-    οἳ μὴ ἡμείσουσιν τὰς ἡμέρας αὐ-
+    Ἄνδρες αἱμάτων καὶ ἐπιθέσεις
+    οὐ μὴ ἡμισεύσουσι τὰς ἡμέρας αὐ-
     τῶν.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,720,330,2000">
+
+  [!-- Coluna Esquerda: Versio Hebraici Text --]
+  <bloco tipo="texto_principal" script="latino" bbox="100,570,350,930">
     VERSIO HEBRAICI TEXT.
     17. Ego ad Deum clamabo, et
     Dominus servabit me. Hieron., ego
@@ -61,24 +58,24 @@
     miliabit eos, et sedens quondam.
     Hieron., multi enim fuerunt ad-
     versum me. Exaudiet Deus et hu-
-    miliabit eos, qui judex est ab ini-
+    miliabit eos, qui Judex est ab ini-
     tio.
     Non mutationes eis, et non ti-
     muerunt Deum. Hieron., non enim
     mutantur, neque timent Deum.
     21. Misit manus suas in pacifi-
-    cos ejus, polluit pacum ejus. Hie-
+    cos ejus, polluit pactum ejus. Hie-
     ron., extendit manum suam ad
     pacifica: contaminabit pactum
     suum.
     22. Lenierunt præ butyris os
     suum, et appropinquans cor ejus.
-    Mollia fuerunt verba ejus prae
+    Mollia fuerunt verba ejus præ
     oleo, et ipsa gladii stricti. Hieron.,
-    nitidus butyro os ejus : pugnat
-    autem cor illius ; molliores ser-
+    nitidius butyro os ejus: pugnat
+    autem cor illius; molliores ser-
     mones ejus oleo, cum sint lan-
-    cæ.
+    ceæ.
     23. Educabit te. Hieron., enu-
     triet.
     Non dabit in sæculum nutatio-
@@ -88,28 +85,30 @@
     cies eos in puteum foveæ. Hieron.,
     tu autem, Deus, deduces eos in
     puteum interitus.
-    Viri sanguinum et dolosi non di-
+    Viri sanguinum et doli non di-
     midiabunt dies suos. Hieron., viri
     sanguinum et dolosi non dimidia-
     bunt dies suos.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,720,660,2000">
+
+  [!-- Coluna do Meio: Vulgata Latina --]
+  <bloco tipo="texto_principal" script="latino" bbox="380,570,600,930">
     VULGATA LATINA.
     17. Ego autem ad Deum clama-
     vi, et Dominus salvabit me.
-    19, 20. Quoniam, inter multos
+    19, 20. Quoniam inter multos
     erant mecum. Exaudiet Deus et
     humiliabit illos, qui est ante sæ-
     cula.
     Non enim est illis commutatio,
-    et non timu erunt Deum.
+    et non timuerunt Deum.
     21. Extendit manum suam in
-    retribuendo : contaminaverunt te-
+    retribuendo: contaminaverunt te-
     stamentum ejus.
     22. Divisi sunt ab ira vultus
-    ejus : et appropinquavit cor illius.
+    ejus: et appropinquavit cor illius.
     Molliti sunt sermones ejus super
-    oleum : et ipsi sunt jacula.
+    oleum: et ipsi sunt jacula.
     23. Enutriet.
     Non dabit in æternum fluctua-
     tionem justo.
@@ -118,21 +117,33 @@
     Viri sanguinum et dolosi non
     dimidiabunt dies suos.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,720,970,2000">
+
+  [!-- Coluna Direita: Aquila (Latim) --]
+  <bloco tipo="texto_principal" script="latino" bbox="620,570,900,930">
     AQUILA.
     17. Ego ad Deum clamabo, et
     Dominus salvabit me.
     19, 20.
-    22. Lanceæ.
+    Quibus non sunt mutationes, et
+    non timuerunt Deum.
     21. Misit manum suam in paci-
-    cos ejus.
+    ficos ejus.
+    22. Lanceæ.
     23. Diliget te.
     24
     Viri sanguinum et doli non di-
     midiabunt dies suos.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,2000,970,2050">
+
+  <bloco tipo="rodape" script="latino" bbox="550,950,850,980">
     Digitized by Google
   </bloco>
-  <notas>Página com três colunas principais: coluna esquerda em hebraico e versão latina do hebraico; coluna central com numeração e Vulgata latina; coluna direita com grego (Aquila). Foram mantidas quebras de linha e sinais tal como no original; palavras ilegíveis não foram identificadas visualmente neste exemplar. Scripts presentes: hebraico, latino, grego.</notas>
+  
+  <notas>
+    A página apresenta uma configuração poliglota complexa (Hexapla).
+    Coluna 1: Texto Hebraico (TO EBPAIKON) e sua tradução latina (VERSIO HEBRAICI TEXT).
+    Coluna 2: Título "Hebraico em letras gregas" (TO EBPAIKON Ellhnikois grammassi), mas apenas os números dos versículos aparecem na parte superior; abaixo está a Vulgata Latina.
+    Coluna 3: Versão de Áquila em Grego (AKYLAS) e sua tradução latina (AQUILA).
+    O texto hebraico visível para o versículo 23 parece ser "והשלך על-יהוה דרכך", embora a tradução latina ao lado diga "Educabit te" (que corresponderia a "yechalklecha"). Transcrevi o visível.
+  </notas>
 </pagina>

@@ -1,74 +1,170 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,20,960,140">
-    835                              HEXAPI.ORUM QUAE SUPERSUNT.                               836
-    TO EBPAIKON.                         TO EBPAIKON                         AKYAL.
-                                         Ελληνικὸς γράμμασι.
+  <bloco tipo="cabecalho" script="latino" bbox="50,40,950,80">
+    835 HEXAPLORUM QUÆ SUPERSUNT. 836
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,140,300,420">
-    תשרי ב
-    הגדה 8
-    תשרי 10
-    ויאמר אליהם בני-אדם 11
-    עשה את עלות לבניך 16
-    וכן 17
-    שקד
-    והוריד 21
-    המצות האלה
+  <bloco tipo="texto_principal" script="misto" bbox="100,80,900,120">
+    TO EBPAIKON.
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
+    ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="300,140,680,420">
-    VERSIO HEBRAICI TEXT.               VULGATA LATINA.                       AQUILA.
-    In die congregationis.              Quando populas congregatus            .
-    
-    8. Separavit.                       8. Separavit.                         8. Separavit.
-    
-    Et ad benedicendam.                 Ut benediceret.                       Benedicere.
-    10. Corrumpe te.                    10. Te perdere.                        10.
-    
-    11. Surge, vade, proficisccndo       11. Vade, et praecede populum.         11. Surge ubimetipsi in profe-
-    ad facies populi.                                                           ctionem ante populum.
-    16. Praputium cordis vestri.        16. Praeputium cordis vestri.         16. Praeputium cordis.
-    17. Tollet.                         17. Accipit.                           17. Tollet.
-    Munera.                             Munera.                               Dona.
-    21. Laus tua.                       21. Laus tua.                          21. Laudatio.
-    Et terriblia.                       Et terribilia.                        Terribilia.
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,120,300,300">
+    ביום הקהל
+    הבדיל 8
+    ואתחנן 10
+    קום לך מסע לפני העם 11
+    ואתם ערלתם לבבכם 16
+    אשר 17
+    תהלתך 21
+    והנורא
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="40,420,960,560">
-    Notae et variae lectiones ad cap. X Deuteronomii.
-    V. 2. 'Αλλοι, και γράφειν ἐν ταῖς δύο πλάταις. Hae cod. Cosilii. produnt.
-    lectionem in textu habet Basilienis, ut et alia quaedam exemplaria. Prior est editionis Romanae.
-    V. 4. 'Αλλοι, εν τῳ̑ τύπῳ της αναγγελίας, &c. Sic quedam exemplaria. Hae vero desunt in edi-
-    Aquila lectiones versuum 3, 4, 8, 16, 17, 21, ex
+  <bloco tipo="texto_principal" script="latino" bbox="350,120,450,300">
+    8.
+    10.
+    11.
+    16.
+    17.
+    21.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,560,960,640">
+  <bloco tipo="texto_principal" script="grego" bbox="600,120,900,300">
+    8. Ἐχώρισε.
+    Εὐλογεῖν.
+    10
+    11. Ἀνάστηθι σεαυτῷ ες πορ-
+    εἰαν ναντι τοῦ λαοῦ.
+    16. Ἀκροβυστίαν καρδίας.
+    17. Ἀρεῖ.
+    Δωροληψίαν.
+    21. Ὕμνησις.
+    Ἐπίφοβα.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,300,900,330">
+    VERSIO HEBRAICI TEXT.
+    VULGATA LATINA.
+    AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,330,300,530">
+    In die congregationis.
+    8. Separavit.
+    Et ad benedicendum.
+    10. Corrumpere te.
+    11. Surge, vade, proficiscendo
+    ad facies populi.
+    16. Præputium cordis vestri.
+    17. Tollet.
+    Munus.
+    21. Laus tua.
+    Et terribilia.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,330,550,530">
+    Quando populus congregatus
+    est
+    8. Separavit.
+    Ut benediceret.
+    10. Te perécre.
+    11. Vade, et præcede populum.
+    16. Præputium cordis vestri.
+    17. Accipit.
+    Munera.
+    21. Laus tua.
+    Et terribilia.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="600,330,900,530">
+    8. Separavit.
+    Benedicere.
+    10.
+    11. Surge tibimetipsi in profe-
+    ctionem ante populum.
+    16. Præputium cordis.
+    17. Tollet.
+    Dona.
+    21. Laudatio.
+    Terribilia.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="250,530,750,550">
+    Notæ et variæ lectiones ad cap. X Deuteronomii.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="100,550,480,600">
+    V. 2. Ἄλλος, καὶ γράψω ἐπὶ τὰς δύο πλάκας. Hanc
+    lectionem in textu habet Basiliensis, ut et alia quæ-
+    dam exemplaria. Prior est editionis Romanæ.
+    Aquilæ lectiones versuum 3, 4, 8, 16, 17, 21, ex
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="500,550,900,600">
+    cod. Coislin. prodeunt.
+    V. 4. Ἄλλος, ἐν τῇ μέρ τῆς συναγωγῆς, etc.
+    Sic quædam exemplaria. Hæc vero desunt in edi-
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,600,650,630">
     CAPUT XI DEUTERONOMII.
-    TO EBPAIKON.                         TO EBPAIKON                         AKYAL.
-                                         Ελληνικὸς γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,640,320,920">
-    תשרי 4
+  <bloco tipo="texto_principal" script="misto" bbox="100,630,900,660">
+    TO EBPAIKON.
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
+    ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,660,300,780">
+    הארץ 4
+    הארץ אשר אתם עברים שמה לרשתה 11
+    ועתה ישראל 12
+    תמיד
+    השמים והארץ 14
+    בעתו
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,660,450,780">
     4.
-    
-    תשרי 11
-    אמר להם אבי אודון 11
-    ויעברו השדה 12
-    שוב 12
-    תשרי 14
-    תוכל
+    11.
+    12.
+    14.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,640,680,920">
-    VERSIO HEBRAICI TEXT.               VULGATA LATINA.                       AQUILA.
-    4. Emergente fecit.                 4. Operuerunt eos.                     4.
-    Maris Sulp.                         Maris Rubri.
-    
-    11. Ad terru, quam vos transeuntes  11. Terra enim ad quam ingredieris     11. Et terra, quam vos per-
-    illuc, ad possidei dam eam.          perieris possidei dam.                 transitis illuc.
-    12. Quaerens.                        12. Visitat.                           12. Exaquis.
-    Semper                              Semper                                Perpetuo.
-    14. Et colliges.                     14. Ut colligas.                       14. In tempore.
-    In tempore sto.                      Vacat.
+  <bloco tipo="texto_principal" script="grego" bbox="600,660,900,780">
+    4.
+    11. Καὶ ἡ γῆ, ἣν ὑμεῖς διάρχεσθε
+    ἐκεῖσε.
+    12. Ἐκζητεῖ.
+    Ἐνδελεχῶς.
+    14. Ἐν καιρῷ.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="680,920,960,980">
+  <bloco tipo="texto_principal" script="latino" bbox="100,780,900,800">
+    VERSIO HEBRAICI TEXT.
+    VULGATA LATINA.
+    AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,800,300,930">
+    4. Emergere fecit.
+    Maris Suph.
+    11. At terra, quam vos trans-
+    euntes illuc, ad possidendum eam.
+    12. Quærens.
+    Semper
+    14. Et colliges.
+    In tempore suo.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,800,550,930">
+    4. Operuerunt eos.
+    Maris Rubri.
+    11. Terra enim ad quam ingre-
+    dieris possidendam.
+    12. Visitat.
+    Semper.
+    14. Ut colligas.
+    Vacat.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="600,800,900,930">
+    4.
+    11. Et terra, quam vos per-
+    transitis illuc.
+    12. Exquirit.
+    Perpetuo.
+    14. In tempore.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="500,950,800,980">
     Digitized by Google
   </bloco>
-  <notas>Transcrição feita visualmente; hebraico contém abreviações e possíveis ligaduras; algumas palavras hebraicas e latinas apresentam desgaste tornando letras individuais parcialmente ilegíveis, marcadas conforme texto literal sem normalização.</notas>
+  <notas>
+    Transcrição de página poliglota (Hexapla). Textos em Hebraico, Grego e Latim.
+    Algumas abreviações latinas foram expandidas visualmente (ex: quædam).
+    A coluna do meio na seção superior contém apenas números de versículos sob o título "TO EBPAIKON Ελληνικοις γραμμασι", sugerindo ausência de texto transliterado nessa linha específica ou falha na impressão original.
+  </notas>
 </pagina>

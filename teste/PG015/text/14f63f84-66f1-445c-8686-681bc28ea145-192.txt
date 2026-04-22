@@ -1,28 +1,43 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,90">
-    PENTATEUCHI QUE SUPERSUNT.
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,60">
+    379 HEXAPLORUM QUAE SUPERSUNT. 380
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="450,80,600,110">
     CAPUT X EXODI.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,100,320,760">
-    TO EBRAIKON.
-    (hebraico: linhas com numerações e versos hebreus)
-    1.
-    5.
-    6.
-    7.
-    8
-    9
-    10
-    11
-    13
-    14
-    15
-    16
-    22
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="360,100,640,760">
+  
+  [!-- Top Section Headers --]
+  <bloco tipo="texto_principal" script="grego" bbox="150,120,300,145">
     TO EBPAIKON.
-    Ελληνικοίς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="420,120,620,155">
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="780,120,860,145">
+    AKYLAΣ.
+  </bloco>
+
+  [!-- Top Section Content --]
+  <bloco tipo="texto_principal" script="misto" bbox="50,150,350,480">
+    1
+    שארת 5
+    ויפן ויצא 6
+    Tò Samar..e`~ e~tax. למשא 7
+    ויעבדו את יהוה אלהיהם
+    Tò Sam.. הטרם תדע כי אבדה מצרים
+    πρὶν γνῶναι ὅτι ἀπόλωλεται Αἴγυπτος.
+    לפרעה 8
+    ובבקרנו נלך 9
+    ואת טפכם 10
+    לכו נא עבדו את יהוה 11
+    קדים 13
+    וינח 14
+    ויכס 15
+    לקרא 16
+    חשך אפלה 22
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,150,550,480">
     1.
     5.
     6.
@@ -35,42 +50,105 @@
     14.
     15.
     16.
-    22.
+    22
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,100,980,760">
-    AQUILAS.
-    4.
-    5. Αείπων.
-    6. Και εκκλησιας εξηλθον.
-    7. Πλεσπασίσμα.
+  <bloco tipo="texto_principal" script="grego" bbox="650,150,900,480">
+    1.
+    5. Λεῖπον.
+    6. Καὶ ἐκκλίνας ἐξῆλθεν.
+    7. Πλόπτισμα.
+    Ἄρα οὕτω οἶδας...
     8.
     9.
-    10. Τα νηπιὰ ημω̂ν.
+    10. Τὰ νήπια ὑμῶν.
     11.
-    13. Καίσωνa.
-    14. Ο κάιδων.
-    15. Ανέπασεν.
-    16. Εσκοπάθη.
+    13. Καύσωμα.
+    Ὁ καύσων.
+    14. Ἀνέπαυσεν.
+    15. Ἐσκοτάσθη.
+    16.
     22.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="40,760,980,980">
-    VERSIO HEBRACI TEXT.       VULGATA LATINA.       AQUILA.
-    1. Aggravare feci.      1. Induravi.      1.
-    5. Residuum.            5. Quod residuum fuerit.    5. Residuum.
-    6. Et avertit se, et egressus est.   6. Avertitque se, et egressus est.   6. Et avertens se exiit.
-    7. In scandalum. Samar., in nancs.   7. Scandalum.    7. In scandalum.
-    Et serviet Domino Deo suo.  Ut sacrificet Domino Deo suo.  (linha correspondente)
-    Num ante aevis quod periit Aegyptus? Samar.. antequam no- scas quod periit Aegyptus.   Nonne vides quod perierit Aegyptus?   Au nondum nobis...
-    8. Ad Pharao.    8. Ad Pharaonem.    8.
-    9. Et in bobus nostris ibimus.    9. Et armentis.    9.
-    10. Infantes vestros.    10. Parvulos vestros.    10. Iufantes vestros.
-    11. Ite nunc, viri, et servite Domino.    11. Sedi ite tantum, viri, et sacri- ficato Domino.    11.
-    13. Orientales.    13. Ventum urentem.    13. Ventum urentem.
-    14. Et requievit.   14. Et sedervnt.   14. Et requievit.
-    15. Operuit.    15. Opereruuntque.    15. Obscurata est.
-    16. Ad vocandum. 16. Vocavit. 16.
-    Peccavi.    Peccavi.    (linha)
-    22. Obscuritas caliginis.   22. Tenebrae horribiles.   22.
+
+  [!-- Bottom Section Headers --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,500,350,525">
+    VERSIO HEBRAICI TEXT.
   </bloco>
-  <notas>Transcrição feita de página impressa com colunas trilingues. Bloco hebraico contém tipos hebraicos e alguns trechos ilegíveis por baixa resolução; mantive números de versículos conforme layout. Usei [ilegivel] somente quando palavra isolada não podia ser lida — no entanto, nesta página a maioria dos itens são numerais e frases curtas legíveis.</notas>
+  <bloco tipo="texto_principal" script="latino" bbox="450,500,620,525">
+    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="780,500,860,525">
+    AQUILA.
+  </bloco>
+
+  [!-- Bottom Section Content --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,530,350,900">
+    1. Aggravare feci.
+    5. Residuum.
+    6. Et avertit se, et egressus est.
+    7. In scandalum. Samar., in noxas.
+    Et servient Domino Deo suo.
+    Num ante scis quod perierit Ægyptus? Samar.. antequam noscas quod perierit Ægyptus.
+    8. Ad Pharao.
+    9. Et in bobus nostris ibimus.
+    10. Infantes vestros.
+    11. Ite nunc, viri, et servite Domino.
+    13. Orientalem.
+    Orientalis.
+    14. Et requievit.
+    15. Operuit.
+    16. Ad vocandum.
+    Peccavi.
+    22. Obscuritas caliginis.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,530,620,900">
+    1. Induravi.
+    5. Quod residuum fuerit.
+    6. Avertitque se, et egressus est.
+    7. Scandalum.
+    Ut sacrificent Domino Deo suo.
+    Nonne vides quod perierit Ægyptus?
+    8. Ad Pharaonem.
+    9. Et armentis.
+    10. Parvulos vestros.
+    11. Sedite tantum, viri, et sacrificate Domino.
+    13. Ventum urentem.
+    Ventus urens.
+    14. Et sederunt.
+    15. Operueruntque.
+    16. Vocavit.
+    Peccavi.
+    22. Tenebræ horribiles.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,530,900,900">
+    1.
+    5. Residuum.
+    6. Et avertens se exiit.
+    7. In scandalum.
+    An nondum nosti...
+    8.
+    9.
+    10. Infantes vestros.
+    11.
+    13. Ventum urentem.
+    Ventus urens.
+    14. Et requievit.
+    15. Obscurata est.
+    16.
+    22.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="550,950,800,980">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição de página da Hexapla de Orígenes (Êxodo 10).
+    Coluna superior esquerda: Texto Hebraico Massorético com notas Samaritanas.
+    Coluna superior central: Transliteração do Hebraico em caracteres gregos (apenas numeração visível nesta edição).
+    Coluna superior direita: Versão de Áquila em Grego.
+    Coluna inferior esquerda: Tradução Latina do Texto Hebraico.
+    Coluna inferior central: Vulgata Latina.
+    Coluna inferior direita: Tradução Latina da versão de Áquila.
+    Termos gregos politônicos transliterados com convenções ASCII aproximadas onde necessário (ex: ~ para circumflexo/perispomeni).
+  </notas>
 </pagina>

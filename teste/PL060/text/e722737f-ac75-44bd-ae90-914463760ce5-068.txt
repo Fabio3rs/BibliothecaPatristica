@@ -1,13 +1,9 @@
-<pagina estado="com_texto">
-  <bloco tipo="outro" script="latino" bbox="0,0,1000,40">
-    tipo_pagina: texto
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,80">
+115   AURELII PRUDENTII CARMINA.   116
   </bloco>
 
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,95">
-    115   AURELII PRUDENTII CARMINA.   116
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="40,100,480,380">
+  <bloco tipo="texto_principal" script="latino" bbox="40,85,480,420">
 Cum sub sacricolis territa regibus,
 Vix panso poterat currere carbaso,
 Afflictosque suos turbine saeculi
@@ -17,7 +13,7 @@ Occultabat enim se prius abditum
 693 Virus, nec gravidum protulerat caput,
 Contentum involucris, atque cubilibus
 55 Subter comprimere clausa silentia.
-Sed dum forte [ilegivel] impietas riget,
+Sed dum forte laters impietas riget,
 Dextram justitiae pigra momorderat,
 Succensi stomacho fellis inzestuaus.
 Ille, quam catholicam nil prope profuit
@@ -29,44 +25,39 @@ Vix astricta suis jam retinaculis
 65 Vectoris stabili condiderat solo :
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="475,120,515,170">
-A
-  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="465,150,540,215">A</bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="520,100,960,380">
+  <bloco tipo="texto_principal" script="latino" bbox="520,85,960,420">
 Erumpit subito triste periculum.
 Nam, dum praecalidos igniculos sibi
 Solvendis adolent et senio, et gelu,
 694 Dum virgas steriles, atque superfluas
 70 Flammis de fidei palmite concernunt,
 Ut concreta vagis vinea crinibus
-Silvosi illuviem poneret idoli,
+Silvosi illuvium poneret idoli,
 Palpavit nimium perniciem tepor.
-Seps insueta subit serpere dexibus,
+Seps insueta subit serpere (dexibus,
 75 Et vibrare sagax eloquii caput.
 Sed dextra impatiens vulneris irritos
 Oris rhetorici depulit halitus,
 Effusum ingenii virus inaniter
-Summa Christicolis in cute subsistit.
-80 Salvator generis Romulei, [ilegivel]
+Summa Christicolis in cute substitit.
+80 Salvator generis Romulei, | recor,
 Qui cunctis veniam das pereuntibus,
 Qui nullum statuis non operis tui
 Mortalem, facili quem releves manu,
 Hujus, si potis est, jam miserescito
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="475,200,515,260">
-B
-  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="465,215,540,285">B</bloco>
 
-  <bloco tipo="cabecalho" script="latino" bbox="200,370,800,420">
-GLOSSAE VETERES.
-  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="300,420,700,470">GLOSS.E VETERES.</bloco>
 
-  <bloco tipo="aparato_critico" script="latino" bbox="40,420,480,590">
+  <bloco tipo="aparato_critico" script="latino" bbox="55,475,470,670">
 47. Sacricolis, sacrilegis, l.
-48. Carbaso, doctrina apostolorum, l.
-51. Morsum, haereticam doctrinam. — Pia, Christina. — Pertulit, passa est, l.
+48. Carbaso, doctrina apostolorum , l.
+51. Mursum, haereticam doctrinam. — Pia, Chri-
+stiana, — Pertulit, passa est , l.
 52. Abditum, sub Constantino, l.
 54. Involucris, involutionibus, l.
 56. Impietas, quae intelligitur per viperam, l.
@@ -74,66 +65,81 @@ GLOSSAE VETERES.
 60. Nasse, natasse. — Styli, sacre praedicationis, l.
 61. Edidit, scripsit, l.
 62. Tuta, puppis, l.
-63. Condiderat, commendaverat. — Solo, firme fidei, lso.
+63. Condiderat, commendaverat. — Solo, firme
+fidei, lso.
 67. Igniculos, caritatis, l.
 68. Adolent, incendunt. — Senio, mundi, id est
   </bloco>
 
-  <bloco tipo="aparato_critico" script="latino" bbox="520,420,960,590">
-69. Idolorum. — Gelu, sine caritatis ardore, l.
+  <bloco tipo="aparato_critico" script="latino" bbox="500,475,960,670">
+idolorum. — Gelu, sine caritatis ardore, l.
 69. Superfluas, frigore infidelitatis, lso.
 71. Concreta, nata. — Crinibus, virgis, l.
-72. Poneret, deponeret, l. — Idoli, pro idolis, Mar-
-73. Palpavit, invenit. — Pernicieii, errorem. — Tepor, calor, vel negligentia, l.
+72. Poneret, deponeret, l. — Idoli, pro idoli, Mar-
+73. Palpavit, invenit. — Pernicieii, errorem. —
+Tepor, calor, vel negligentia, l.
 74. Serpere, cepit, l.
 75. Eloquii, haereticorum, l.
 76. Dextra, justitia. — Irritos, vacuos, l.
 77. Rhetorici, eloquentis, l.
-82. Qui nullum, qui nullum fecisti, qui non egeat tua gratia, l.
+82. Qui nullum, qui nullum fecisti, qui non egeat
+tua gratia, l.
 83. Releves, a peccatis, l.
-84. Hujus, Symmachi, si est praedestinatus ad vitam, Vat. A. — Si potis, si possit; est, l.
+84. Hujus, Symmachi, si est praedestinatus ad vitam,
+Vat. A. — Si potis, si possit; est, l.
   </bloco>
 
-  <bloco tipo="cabecalho" script="latino" bbox="200,590,800,640">
-COMMENTARIUS.
-  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="360,670,650,725">COMMENTARIUS.</bloco>
 
-  <bloco tipo="aparato_critico" script="latino" bbox="40,640,480,940">
-47. Juretus in suo cod. reperit sacricolis, sed addit, C — d. lenli posse, quod in quibusdam vulg. est sacrilegus.
-48. In nonnullis vulg., vix passa, quod non est ubique rejiciendum. Gifanius contra A. Gellium verbo disputans contendit, a pando non semper dici passum, sed vel id, vel passum.
-50. Mar. et Rat. pro div. script., minus bene, verarat pro vectarat. Prag., Rat., Mar., Weitz., Fabr., Widm., Gis., rapidis; melius videtur rabidis, quod habent alii.
-52. Ait Prudentius fidem Christianam sub imperatoribus ethnicis jactatam, et territam fuisse, et post illam tempestatem pertulisse morsum vulnificum. Etsi enim occultabat se virus abditum idololatriae sub principibus Christianis, tamen erupit iterum, videlicet in oratione Symmachi. In R. t. abrasis prioribus, hic est sermo, versus ita legebantur, se prius abdita. Viro nec gravidum protulerat caput, quod totum ineptum est.
-54. Vat. A erasis quæ prius fuerant, Contentum implicitus vipera nexibus. Id eodem factum, ne tertia in involucris corripiatur: de quo vide proleg. Alex. a secunda manu involucris.
-55. Mar., Rat., Ald., Tornaes., Widm. supra, quo premeret: Palat., cum premeret. Alii, subter comprimere, stylo Prudentiano; Heinsius, scilicet producto e postremo in comprimere ratione cessare.
-59. Vat. A, catholica, male; Eg., quam propero fuit. Pal., quam properum fuit.
-60. Alii puppem, alii pupin scribunt. Gis., enasse; Widm. suspicatur innasse.
+  <bloco tipo="nota" script="latino" bbox="40,720,480,950">
+47. Juretus in suo cod. reperit sacricolis, sed addit, C
+d. lenli posse, quod in quibusdam vulg. est sacrilegus.
+48. In nonnullis vulg., vix passa, quod non est ubique rejiciendum. Gifanius contra A. Gellium verbo
+DISPAN-US contendit, a pando non semper dici passum,
+sed vel id, vel passum.
+50. Mar. et Rat. pro div. script., minus bene, verarat pro vectarat. Prag., Rat., Mar., Weitz., Fabr.,
+Widm., Gis., rapidis; melius videtur rabidis, quod
+habent alii.
+52. Ait Prudentius fidem Christianam sub imperatoribus ethnicis jactatam, et territam fuisse, et post
+illam tempestatem pertulisse morsum vulnificum.
+Etsi enim occultabat se virus abditum idololatriae sub
+principibus Christianis tamen erupit iterum , videlicet in oratione Symmachi. In Rt. a abrasis prioribus,
+hic est sermo, versus ita legebantur, se prius abdita. Viro nec nec gravidum protulerat caput, quod totum ineptum est.
+54. Vat. A erasis quae prius fuerant, Contentum implicitus vipera nexibus. Id eodem factum, ne tertia in
+involucris corripiatur: de quo vide proleg. Alex. a
+secunda manu involucris.
+55. Mar., Rat., Ald., Tornäes., Widm. supra, quo
+premeteret : Palat., cum premeret, Alii, subter comprimere, stylo Prudentiano; ait Heinsius, scilicet producto e postremo in comprimere ratione cessare.
+59. Vat. A, catholica, male; Eg., quam propero
+fui. Pal., quam properum fuit.
+60. Alii puppem, alii pupin scribunt. Gis., enasse; Heins. suspicatur innasse.
 61. Rat. a prima manu quam, minus bene.
   </bloco>
 
-  <bloco tipo="aparato_critico" script="latino" bbox="520,640,960,940">
-63. Rat., laboribus; eadem manu pro div. lect., furoribus. Mar., male, donatis. Fortassis legendum et donitis.
+  <bloco tipo="nota" script="latino" bbox="520,720,960,950">
+63. Rat., laboribus; eadem manu pro div. lect.,
+ioribus. Mar., male, domitis. Furtase legendum et domitis.
 64. Retinacula pro funes navis Propertius, Virgilius et alii.
-65. Vector dicitur tam qui vehit quam qui vehitur. Heins. conjicit crediderit. solo.
+65. Vector dicitur tam qui vehit quam qui vehitur. Heins. conjicit crediderit solo.
 66. Ald. erupit subito.
 69. Vat. A, cum virgas.
-70. Joann., cap. xv, de palmite qui non manet in vite, et in ignem mittitur.
+70. Joann., cap. xv, de palmite qui non manet in
+vite, et in ignem mittitur.
 71. Crines, ut coma de vineis poetice. Vat. A, male, et concreta.
-72. In Rat. audax corrector, abrasis prioribus, id est illuvien poneret impii.
+72. In Rat. audax corrector, abra-is prioribus,
+id est illuvien poneret impii.
 73. Rat., Weitz. scribunt perniciem.
-74. De emendatione hujus versus scilicet seps pro seps multa a nobis dicta sunt cap. 22 proleg. Chamillardus interpretatur seps insueta sepes nova. Cellarius exscribit Isensis glossam serpere caput. Puto intelligi posse insueta pro assueta: nam Prudentius non semel usurpavit insuescere pro assuescere.
-84. Heinsius edidit si potis est, sed magis probare videtur si potis est, quod vidit in altero Rott., et exstat etiam in Vat. A. Sed plerique habent si potis est, quod defendit Gifanius in Ind. Lucr. verbo viribus, et intelligi potest, si potis est Symmachus relevaverit, &amp; misericordiam consequi. Gifanius explicat si potis est, ut in Terentio et antiquis, si potest, si poterit pro si fieri potest. Heinsius putat lunc. dicendum si potes est, non si potis est. At prosc etiam dicunt si potis est pro si fieri potest, ostendit Forcellinus in Dict.
+74. De emendatione hujus versus scilicet seps pro
+seps multa a nobis dicta sunt. cap. 22 proleg. Chamillardus interpretatur seps insueta sepes nova. Cellarius exscribit Isensis glossam serpere caput. Puto
+intelligi posse insueta pro assueta: nam Prudentius non semel usurpavit insuescere pro assuescere.
+84. Heinsius edidit si potis est, sed magis probare videtur si potis es, quod vidit in altero Rott., et exstat etiam in Vat. A. Sed plerique habent δè potis es!, quod defendit Gifanius in Ind. Lucr. verbo VIRINAXNs, et intelligi potest, si potis est Symmachus relevaverit, &amp; misericordiam consequi. Gifanius explicat si potis est, ut in Terentio et antiquis, si potest, si poterit pro si fieri potest. Heinsius putat lunc. dicendum si potes est, non si potis est. At prosc etiam dicunt si potis est pro si fieri potest, ostendit Forcellinus in Dict.
   </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="380,950,620,980">
-Digitized by Google
-  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="360,950,640,1000">Digitized by Google</bloco>
 
   <notas>
-    - Tipo de página: texto impresso em latim, duas colunas principais, aparato crítico e comentário em duas colunas abaixo; letras marginais A e B entre as colunas.
-    - Script principal: latino.
-    - Os bbox são aproximados em escala 0-1000.
-    - Usei [ilegivel] por palavras cujo traçado na imagem é incerto (ex.: palavra do verso "Sed dum forte [ilegivel] impietas riget", o vocábulo entre "forte" e "impietas" não está certo; idem em alguns vocábulos do final do canto direito: "Salvator generis Romulei, [ilegivel]"). Preservei números de versos e sinais/quebras tal como aparecem.
-    - As seções do aparato crítico e do commentarius foram transcritas cuidando de não normalizar formas (onde o original é visivelmente corrompido ou abreviado deixei tal forma ou inseri [ilegivel]). Onde o OCR dos rascunhos divergiu ou estava duvidoso confirmei visualmente quando legível; mantive variantes e abreviações visíveis (ex.: "l.", "Vat. A.", abreviações de editores).
-    - Observações paleográficas: há formas abreviadas e freqüentes abreviações de editores (Vat., Rat., Mar., etc.), hifenizações e quebras de linha; não normalizei grafias históricas (ex.: involucris / involucris, nasse / natasse, vectoris / vector:s) exceto onde claramente ilegível.
+    - Transcrição baseada na imagem (impressão tipográfica); mantive quebras de verso e numeração marginal (115/116; 50/55/60/65; 693/694; 70/75/80).
+    - Letras centrais entre colunas registradas em blocos separados como nota_marginal: A e B.
+    - Ajustes para XML: o caractere “&amp;” foi mantido como entidade (&amp;) onde necessário.
   </notas>
 </pagina>

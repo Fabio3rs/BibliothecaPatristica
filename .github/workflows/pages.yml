@@ -37,6 +37,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Build Pagefind index from shards
+        # Run the indexing script to populate web/public/pagefind before the site build
+        run: node ../tools/build_pagefind_from_shards.mjs --public ./public --out ./public/pagefind --base /BibliothecaPatristica
+
       - name: Build
         run: npm run build
 

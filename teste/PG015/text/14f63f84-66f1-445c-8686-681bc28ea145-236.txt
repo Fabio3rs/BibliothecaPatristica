@@ -1,65 +1,80 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,90">
-    HEXAPLORUM QUÆ SUPERSUNT.
+  <bloco tipo="cabecalho" script="latino" bbox="100,40,900,80">
+    467 HEXAPLORUM QUÆ SUPERSUNT. 463
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,90,320,560">
-    TO EBRAIKON.
-    50.
-    [עברי]ת
-    32.
-    33.
-    35.
-    36.
-    37.
-    39.
-    43.
+  <bloco tipo="texto_principal" script="grego" bbox="150,90,350,110">
+    TO ΕΒΡΑΙΚΟΝ.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="330,90,660,560">
-    ΤΟ ΕΒΡΑΙΚΟΝ
-    Ἑλληνικὸν γράμμα.
-    50.
-    32.
-    33.
-    35.
-    36.
-    37.
-    39.
-    43.
+  <bloco tipo="texto_principal" script="grego" bbox="400,90,600,120">
+    TO ΕΒΡΑΙΚΟΝ
+    Ελληνικοις γραμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,90,960,560">
-    AKYΛAΣ.
+  <bloco tipo="texto_principal" script="grego" bbox="750,90,850,110">
+    ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,130,350,400">
+    םימת ואורים 30
+    על-לב
+    חשן משפט 32
+    כפי חדותו
+    על-שליו 33
+    על-ידיו
+    על-אהרן 35
+    קדש ליהוה 36
+    על-המצנפת 37
+    והאבנט 39
+    מצנפת
+    או בגשתם 43
+    עלם
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="400,130,500,400">
     30.
     32.
-    Προσεσλήν.
-    33. Ἀναλυγμα.
-    35. Ἐπὶ τοῦ Λαριών.
+    33.
+    35.
     36.
-    37. Ἐπὶ τῆς κάδρου.
-    39. Αἱ συνφέσεις.
-    Κίθαραι.
-    45.
+    37.
+    39.
+    43.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,560,320,900">
+  <bloco tipo="texto_principal" script="grego" bbox="650,190,850,400">
+    Προσκοπην.
+    33. Ἀπόληγμα.
+    35. Ἐπ τοῦ Ἀαρών.
+    36.
+    37. Ἐπ τῆς κιδάρεως.
+    39. Αἱ συσφίγξεις.
+    Κίδαριν.
+    43.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,420,350,440">
     VERSIO HEBRAICI TEXT.
-    50. Urim et Thummim.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,420,600,440">
+    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,420,850,440">
+    AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,450,350,750">
+    30. Urim et Tummim.
     Super cor suum.
-    32. Os capitis ejus in medio ejus.
-    Sicut os lorica.
-    33. Super umbriis ejus.
-    Super umbriis ejus.
+    32. Os capita ejus in medio ejus.
+    Sicut os loricæ.
+    33. Super fimbriis ejus.
+    Super fimbriis ejus.
     35. Super Aaronem.
     36. Sanctitas Domino.
     37. Super cidarim.
     39. Et stringes.
     Cidarim.
     43. Aut in accedendo ipsos.
-    Saeculi.
+    Sæculi.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,560,660,900">
-    VULGATA LATINA.
-    50. Doctrinae et veritatis.
+  <bloco tipo="texto_principal" script="latino" bbox="400,450,650,750">
+    30. Doctrinam et veritatem.
     In pectore.
-    52. In cujus medio supra erit capitiu m.
+    32. In cujus medio supra erit capitium.
     Sicut fieri solet in extremis vestium partibus.
     33. Ad pedes ejus.
     35. Aaron.
@@ -70,12 +85,11 @@
     43. Vel quando appropinquant.
     Sempiternum.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,560,960,900">
-    AQUILA.
+  <bloco tipo="texto_principal" script="latino" bbox="650,450,850,750">
     30.
     32.
     Complexum.
-    33. (Ad) terminaum.
+    33. (Ad) terminum.
     35. Super Aaronem.
     36.
     37. Super cidarim.
@@ -83,11 +97,26 @@
     Cidarim.
     43.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,900,960,980">
+  <bloco tipo="nota" script="latino" bbox="250,770,750,790">
     Notæ et variæ lectiones ad cap. XXVIII Exodi.
-    V. 1. Versus primi lectiones omnium interpretum prodeunt ex saepius memorato codice Basil.ensis.
-    V. 4. 'Αλλος, το λόγον. ita Basilien sis. 'Αλλος, κῆδιβαλον. Sic quidam mss. et schedæ Combel lianæ, ubi sic legitur: 'Αλλος φησὶ περιβόλαιον το περιφιλιον. Id est: a Pectorale alius vocat ami culum. Αἱ αἰτιαι est Aquila et Symmachii supra, Exod. xxv, 7. - γερρη A., Σ., συσφηνων. 0., κοσμ-
-    haec porro desumpta fuisse videntur ab aliquo codice Hexaplorum. Qua de re, necnon de aliis quæplurimis in Praef.
   </bloco>
-  <notas>Scriptos identificados: hebraico em bloco esquerdo superior; grego em coluna central superior; latino em várias colunas e rodapé. Partes hebraicas parcialmente ilegíveis; usei [עברי] como indicação de trecho fragmentário em hebraico. BBOX estimadas em escala 0-1000.</notas>
+  <bloco tipo="aparato_critico" script="misto" bbox="100,790,480,920">
+    V. 1. Versus primi lectiones omnium interpretum prodeunt ex sæpius memorato codice Basiliensi.
+    V. 4. Ἄλλος, τὸ λόγιον. ita Basiliensis. Ἄλλος, περιβόλαιον. Sic quidam mss. et schedæ Combeisianæ, ubi sic legitur : Ἄλλος φησι περιβόλαιον τὸ περιστήθιον. Id est : « Pectorale alius vocat amictum. » Λόγιον est Aquilæ et Symmachi supra, Exod. xxv, 7. — ץפשח A., Σ., σύσφιγκτον. Θ., κοσμη-
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="500,790,900,920">
+    βατόν. — Hebr. oculatam. A., S., constrictam. LXX. cosymbotam. Vulg., strictam.
+    Ibid. sic habet editio Romana, κατὰ τὸ Σαμαρειτικὸν, πήλιον, ἤτοι καθ᾽ ἑτέραν γραφήν, μίτραν. Id est : Secundum Samaritanum, « pileum, » sive secundum aliam scripturam, « mitram. » Fortasse legendum πῖλον, nam hac voce utitur Plutarchus in « Solone » pro « pileo » sive « galero. » In hunc locum hæc notat Drusius : « Vel secundum aliam
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="100,930,900,960">
+    Hæc porro desumpta fuisse videntur ab aliquo codice Hexaplorum. Qua de re, necnon de aliis quamplurimis in Præliminaribus pluribus agitur.
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="450,970,750,990">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição de página poliglota (Hexapla). Contém hebraico, grego e latim.
+    No aparato crítico, a palavra hebraica `ץפשח` aparece visualmente assim, embora possa ser uma referência a `חשן` (Choshen) ou `אבנט` (Avnet) com tipografia complexa ou erro.
+    Números de versículos (30, 32, 33, etc.) alinhados com as colunas.
+  </notas>
 </pagina>

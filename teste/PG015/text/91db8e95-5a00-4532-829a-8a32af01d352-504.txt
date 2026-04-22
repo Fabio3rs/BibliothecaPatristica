@@ -1,142 +1,74 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,90">
-    1005                        HEXAPLORUM QUÆ SUPERSUNT.                         1004
-    TO EBRAIKON.                    ΤΟ ΕΒΡΑΙΚΟΝ                    ΑΚΥΛΑΣ.
+  <bloco tipo="cabecalho" script="misto" bbox="50,20,950,60">
+    1005 HEXAPLORUM QUAE SUPERSUNT. 1004
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,90,320,300">
-    תשריא 23
-    תשרי 25
-    רמץ
-    ממראם 26
-    לדב
-    חמרא 27
-    בית דרים
-    ובית מחד
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,950,230">
+    TO EBPAIKON. TO EBPAIKON AKYLAΣ.
+    Ἑλληνικοῖς γράμμασι.
+    קִרְיַת 23 23. 23.
+    עֲרעֵר 25 25. 25.
+    רַבָּה
+    וּמַחֲנֵי 26 26. 26.
+    דְּבִר
+    וּבְגֵיא 27 27. 27. Ἐν τῇ κοιλάδι.
+    בֵּית הָרָם
+    וּבֵית נִמְרָה
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="330,90,660,300">
-    ΤΟΥ ΕΒΡΑΙΚΟΝ
-    Ελληνικοὶς γράμμασι.
-    23.
-    25.
-    26.
-    27.
+  <bloco tipo="texto_principal" script="latino" bbox="50,240,950,400">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+    23. Et villæ earum. 23. Viculos. 23.
+    25. Haroer. 25. Aroer. 25.
+    Rabba. Rabba.
+    26. Et a castris. 26. Manaim. 26.
+    Debir. Dabir.
+    27. Et in valle. 27. In valle. 27. In valle.
+    Betharam. Betharan.
+    Et Bethnemra. Bethnemra.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,90,960,300">
-    23.
-    25.
-    26.
-    27. Ἐν τῇ κοιλᾷ.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,300,320,470">
-    VERSIO HEBRAICI TEXT.
-    25. Et villæ earum.
-    25. Harover.
-    Rabba.
-    26. Et a castris.
-    
-    Debir.
-    27. Et in valle.
-    Betharam.
-    
-    Et Bethsema.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,300,660,470">
-    VULGATA LATINA.
-    23. Viculos.
-    25. Arcer.
-    Rabba.
-    26. Manaim.
-    
-    Dabir.
-    27. In valle.
-    Betharam.
-    
-    Bethsema.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,300,960,470">
-    AQUILA.
-    23.
-    25.
-    26.
-    27. In valle.
-  </bloco>
-  <bloco tipo="nota" script="latino" bbox="40,470,960,700">
+  <bloco tipo="nota" script="misto" bbox="50,410,950,600">
     Notæ et variæ lectiones ad cap. XIII Josue.
-    
-    V. 3. 'Αλλ., Eusth. Basil.
-    V. 5. 'Αλλ., Γαλιλ. 'Αλλ., Γαβλ. Basil. Postrema lectio cum Hebreo consonat.
-    Ibid. 'A., Βασιγ. Σ., Ο', Θ., Βασιγ. Basil. qui de editione suâ V. Hexaplarî intelligendus est, ubi vetusta lectio secundum Symmachum, et Theodotionem emendata fuerat. In Rossana editione legitur, Γαβρ. Masius et Grabe posuerunt Βαλεβρ.
-    V. 9. Α., Σ., τῆς σχαλῆς. Sic Eusebii De locis Hebraicis, Ἀιῶπ., Α., Σ., τῆς σχαλῆς. Ubi Hieron.,
-    
-    V. 11. 'Αλλ., vertit, bœmilon.
-    Ibid. 'Αλλ., Μαλαθάθ. Basil.
-    V. 11. 'Αλλ., Γερονύμου. Idem.
-    V. 12. 'Αλλ., ἀπὸ τοῦ λεπτῶματος τῶν γιγνυμένων. Basil.
-    V. 16. 'Α., Σ., τῆς σχαλῆς. Vide supra, v. 9.
-    'Αλλ., τῆς τῆν σχαλῆν Μεσίουρ. Basilianus in textu. Hæc autem interpretatio ex dubiis facta videtur.
-    V. 19. Οἱ λοιποί, τῆς κοιλᾶδος. Basil. V., Tznek.
+    V. 3. Ἄλλ., Εὐάν. Basil. ὁμαλήν, vertit, humilem.
+    V. 5. Ἄλλ., Γαλλαάθ. Ἄλλ., Γαθλί. Basil. Post- Ibid. Ἄλλως, Μαιδαβάν. Basil.
+    rema lectio cum Hebræo consonat. V. 11. Ἄλλ., Γεσουρίτου. Idem.
+    Ibid. Ἀ., Βαγγά. Σ., Θ., Βαλγά. Basil. qui V. 12. Ἄλλ., ἀπὸ τοῦ λείμματος τῶν γιγάντων.
+    de editione τῶν ' Hexaplari intelligendus est, ubi Basil.
+    vetusta lectio secundum Symmachum, et Theodo- V. 16. Ἀ., Σ., τὴν ὁμαλήν. Vide supra, v. 9.
+    tionem emendata fuerat. In Romana editione legi- Ἄλλ. , τὴν γν ὁμαλὴν Μεισώρ. Basiliensis in
+    tur, Γαλγάλ. Masius et Grabe posuerunt Βαλγάδ. textu. Hæc autem interpretatio ex duabus facta
+    V. 9. Ἀ., Σ., τὴν ὁμαλήν. Sic Eusebius De locis videtur.
+    Hebraicis, Μισώρ. Ἀ., Σ., τὴν ὁμαλήν. Ubi Hieron., V. 19. Οἱ λοιποί, τῆς κοιλάδος. Basil. Ϛ', Ἐνάχ.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,700,960,780">
+  <bloco tipo="cabecalho" script="latino" bbox="50,610,950,650">
     CAPUT XIV JOSUE.
-    TO EBRAIKON.                    ΤΟ ΕΒΡΑΙΚΟΝ                    ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="40,780,320,920">
-    לחמששים 4
-    ובנלא 6
-    דת של יחמד 7
-    אלחין 8
-    מלבח 9
-    שעמון 13
+  <bloco tipo="texto_principal" script="misto" bbox="50,650,950,750">
+    TO EBPAIKON. TO EBPAIKON AKYLAΣ.
+    Ἑλληνικος γράμμασι.
+    וְאֶת־עָרֶיהָ 4 4. 4.
+    בְּגִלְגָּל 6 6. 6.
+    וָאָשִׁב אֵלָיו 7 7. 7. Ἀπεκρίθην αὐτῷ λόγον.
+    אֶת־לִבִּי 8 8. 8.
+    מִלְּאֹתוֹ
+    לְבָנֶיךָ 9 9. 9.
+    יְהוֹשֻׁעַ 13 13. 13.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="330,780,660,920">
-    4.
-    6.
-    7.
-    8.
-    9.
-    13.
+  <bloco tipo="texto_principal" script="latino" bbox="50,760,950,920">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+    4. Et suburbana earum. 4. Suburbana earum. 4
+    6. In Galgal. 6. In Galgala. 6.
+    7. Et retuli ei verbum. 7. Nuntiavique ei. 7. Respondi ei verbum.
+    8. Cor. 8. Cor. 8.
+    Complevi. Secutus sum.
+    9. Et filiis tuis. 9. Filiorum tuorum. 9.
+    13. Jehosua. 13. Josue. 13.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="670,780,960,920">
-    4.
-    6.
-    7. Ἀπεκρίθη αὐτῷ λόγον.
-    8.
-    9.
-    13.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,920,320,1200">
-    VERSIO HEBRAICI TEXT.
-    4. Et suburbana earum.
-    6. In Galgal.
-    
-    7. Et retuli ei verbum.
-    8. Cor.
-    Complevi.
-    9. Et illis tuis.
-    13. Jehosua.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,920,660,1200">
-    VULGATA LATINA.
-    4. Suburbana earum.
-    6. In Galgala.
-    
-    7. Nuntiavique ei.
-    8. Cor.
-    Secatus sum.
-    9. Filiorum tuorum.
-    13. Josue.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,920,960,1200">
-    AQUILA.
-    4
-    6.
-    7. Respondi ei verbum.
-    8.
-    9.
-    13.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,1200,960,1260">
+  <bloco tipo="rodape" script="latino" bbox="450,950,850,990">
     Digitized by Google
   </bloco>
-  <notas>Scripts presentes: latino, greco (greek), hebraico. Algumas palavras hebraicas parcialmente ilegíveis; mantidas tal como visíveis. Mantida capitalização e pontuação originais; empreguei quebras de linha conforme colunas visíveis.</notas>
+  <notas>
+    Transcrição de página da Patrologia Graeca (Hexaplorum quae supersunt).
+    Scripts: Latino, Grego (poliônico), Hebraico.
+    A numeração no cabeçalho (1005 e 1004) refere-se às colunas da edição de Migne.
+    Texto crítico com abreviações patrísticas (Basil., Hieron., etc.).
+  </notas>
 </pagina>

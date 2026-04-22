@@ -1,66 +1,163 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,90">
-HEXAPLORUM QUAE SUPERSUNT
-CAPUT XXIII GENERIS.
-TO EBPAIKON.		TO EBPAIKON		AKYLAS.
-Ελληνικὸς γραμμας.
-</bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="50,90,300,360">
-9  וּשְׁמָם 9
-11  וַיֹּאמֶר 11
-13  13
-15  15
-17  17
-</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="300,90,360,360">
-VERSIO HEBRAICI TEXT	;	VULGATA LATINA	;	AQUILA.
-</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="360,90,950,360">
-9. In medio vestrum.		9. Coram vobis		9. Εν μεσω ὑμῶν.
-11. Non, Domine mi.		11. Nequaquam ita fiat, Domine mi.	11. Οὐχι Κυριε μοι.
-13. A me.			13. 13.
-15. Siclorum.		15. 15.
-17. Et stetit.		17. Confirmatusque est.	17. Και ισχυρώθη.
-Noteæ et variae lectiones ad cap. XXIII Genesis.
-V. 13. Sic mss. utrum autem παρ' ἡμῖν sit varia lectio; an alicujus interprets venio, incertum.
-V. 15. Nota in omnibus ferme codicibus talis ha-
-</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="50,360,950,430">
-CAPUT XXIV GENESIS.
-TO EBRAIKON.		TO EBPAIKON		AKYLAS.
-Ελληνικὸς γραμμας.
-</bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="50,430,300,920">
-שְׁמוֹת יָרָן 2
-11  11
-14  14
-15  15
-17  17
-22  22
-31  31
-32  32
-45  45
-47  47
-50  50
-</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="300,430,360,920">
-VERSIO HEBRAICI TEXT.		VULGATA LATINA.		AQUILA.
-</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="360,430,950,920">
-2. Pone, quezo, manum tuam sub femore meo.	2. Pone manum tuam super femur meum.	2.
-11. Et flectere genu fecit.	11. Cumque camelus fecisset succumbere.	11. Et in genu procumbere fecit.
-14. Arguiti.		14. Preparasti.	14. Arguiti.
-15. Loqui.		15. Reddum intra se verba compleverat.	15.
-17. Refrigeras me.	17. Pascillam aquae mihi ad bibendum praebe.	17. Sorbere me fac.
-22. Dimidium sicli.	22. Siclos duos.	22.
-31. Benedicite Domini.	31. Benedicite Domini.	31.
-32. Solvit.	32. Destravit.	32.
-45. Puella.	45. Virgo.	45. Abscondita.
-47. Super faciem ejus.	47. Ad ornandam faciem ejus.	47. Supra nares ejus.
-50. Non poterimus dicere ad te aut bonum aut malum. Syrus, non poterimus dicere aut malum aut bonum.	50. Non possumus extra placitum ejus quidquam aliud loqui tibi.	50.
-</bloco>
-  <bloco tipo="rodape" script="latino" bbox="50,920,950,990">
-Digitized by Google
-</bloco>
-  <notas>Transcrição preserva grafia original; colunas transcritas da esquerda para a direita. Algumas palavras hebraicas fragmentárias foram transcritas conforme visíveis; marcas de abreviação latinas mantidas. Onde linha interrompeu, continuou-se conforme disposição visual.</notas>
+  <bloco tipo="cabecalho" script="misto" bbox="100,50,900,90">
+    239 HEXAPLORUM QUÆ SUPERSUNT 240
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="150,95,850,130">
+    CAPUT XXIII GENESIS.
+    TO EBPAIKON. TO EBPAIKON ΑΚΥΛΑΣ.
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,130,350,200">
+    בְּתוֹכְכֶם 9
+    לֹא־אֲדֹנִי 11
+    מִמֶּנִּי 13
+    שֶׁקֶל 15.
+    וַיָּקָם 17
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,205,350,290">
+    VERSIO HEBRAICI TEXT
+    9. In medio vestrum.
+    11. Non, Domine mi.
+    13. A me.
+    15. Siclorum.
+    17. Et stetit.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,130,550,200">
+    9.
+    11.
+    13.
+    15.
+    17.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,205,650,290">
+    VULGATA LATINA
+    9. Coram vobis
+    11. Nequaquam ita fiat, Domine mi.
+    13. Vacat.
+    15. Siclis.
+    17. Confirmatusque est.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="700,130,850,200">
+    9. Ἐν μέσῳ ὑμν.
+    11. Οὐχὶ Κύριέ μου.
+    13.
+    15.
+    17. Καὶ ἐκυρώθη.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,205,850,290">
+    AQUILA.
+    9. In medio vestrum.
+    11. Non, Domine mi.
+    13.
+    15.
+    17. Confirmatusque est.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="150,295,850,360">
+    Notæ et variæ lectiones ad cap. XXIII Genesis.
+    V. 13. Sic mss. utrum autem παρ' ἐμοὶ sit varia lectio; an alicujus interpretis versio, incertum.
+    V. 15. Nota in omnibus ferme codicibus talis habetur, στατήρ ἐστιν, ὡς φησιν Ὠριγένης, τὸ ἥμισυ τῆς οὐγγίας, ἔχει δ δραχμὰς δύο. Id est : Sicut ait Origenes, dimidium unciæ, habet autem drachmas duas.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="150,370,850,410">
+    CAPUT XXIV GENESIS.
+    TO EBPAIKON. TO EBPAIKON ΑΚΥΛΑΣ.
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,410,380,620">
+    שִׂים־נָא יָדְךָ תַּחַת יְרֵכִי 2
+    וַיַּבְרֵךְ 11
+    הַגִּידִי 14
+    לְבָנָהּ 15
+    וָאֶשְתֶּה 17
+    כָּבֵד 22
+    בָּרוּךְ יְהוָה 31
+    וַיְפַתַּח 32
+    הַלָּבָן 43
+    עַל־אַפָּהּ 47
+    לֹא נוּכַל דַּבֵּר אִתְּךָ רַע אוֹ־טוֹב 50
+    Ὁ Σύρος, οὐ δυνησόμεθα εἰπεῖν τὸ ἢ καλὸν ἢ κακόν.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,625,380,680">
+    VERSIO HEBRAICI TEXT.
+    2. Pone, quæso, manum tuam sub femore meo.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,710,380,930">
+    11. Et flectere genu fecit.
+    14. Arguisti.
+    15. Loqui.
+    17. Refrigera me.
+    22. Dimidium sicli.
+    31. Benedicte Domini.
+    32. Solvit.
+    43. Puella.
+    47. Super faciem ejus.
+    50. Non poterimus dicere ad te aut bonum aut malum. Syrus, non poterimus dicere aut malum aut bonum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,410,550,620">
+    2.
+    11.
+    14.
+    15.
+    17.
+    22.
+    31.
+    32.
+    43.
+    47.
+    50.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,625,650,680">
+    VULGATA LATINA.
+    2. Pone manum tuam super femur meum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,710,650,930">
+    11. Cumque camelos fecisset accumbere.
+    14. Præparasti.
+    15. Necdum intra se verba compleverat.
+    17. Pauxillum aquæ mihi ad bibendum præbe.
+    22. Siclos duos.
+    31. Benedicte Domini.
+    32. Destravit.
+    43. Virgo.
+    47. Ad ornandam faciem ejus.
+    50. Non possumus extra placitum ejus quidquam aliud loqui tibi.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="700,410,850,620">
+    2.
+    11. Ἐγονάτισε.
+    14. Ἔλεγξας.
+    15.
+    17. Βρόχισόν με.
+    22.
+    31. Εὐλογημένος Κύριος.
+    32.
+    43. Ἀπόκρυφος.
+    47. Ἐπὶ μυκτῆρας αὐτῆς.
+    50.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,625,850,680">
+    AQUILA.
+    2.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,710,900,930">
+    11. Et in genu procumbere fecit.
+    14. Arguisti.
+    15.
+    17. Sorbere me fac.
+    22.
+    31. Benedictus Dominus.
+    32.
+    43. Abscondita.
+    47. Supra nares ejus.
+    50.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="500,960,800,990">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição de página da Hexapla de Orígenes (Gênesis 23 e 24).
+    Coluna 1: Texto Hebraico e Versão Latina do Hebraico.
+    Coluna 2: Hebraico em letras gregas (apenas números de versículo visíveis nesta edição) e Vulgata Latina.
+    Coluna 3: Versão de Áquila (Grego) e Versão Latina de Áquila.
+    Notas críticas no centro da página.
+  </notas>
 </pagina>

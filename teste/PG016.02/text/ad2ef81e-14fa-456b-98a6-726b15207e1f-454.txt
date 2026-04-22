@@ -1,73 +1,179 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,90">
-    2155                            HEXAPLORUM QUÆ SUPERSUNT.                              2156
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    2155 HEXAPLORUM QUÆ SUPERSUNT. 2156
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,90,960,360">
-    TO EBRAIKON.                      TO EBRAIKON                      ΑΚΥΛΑΣ.
-                                     Ἑλληνικοῖς γράμμασι. 
-    32.                                32.                                32.
-    (Hebrew)                             32.                               32.
-    (Hebrew) 35                         35.                               35. Τοῦ παράγειν.
-    (Hebrew) 36                         36.                               36. ✱ Ταύτην.
-    (Hebrew) 40                         40.                               40.
-    
-    VERSIO HEBRAICI TEXT.             VULGATA LATINA.                   AQUILA.
-    32. Filiorum Israel et filiorum   32. Filiorum Israel et filiorum   32.
-    Juda.                              Juda.                             
-    35. Ad transire faciendum.         35. Ut initiarent.                 35. Ut transducerent.
-    36. Civitatem hanc.                36. Civitatem hanc.                36. Hanc.
-    40. A posterioribus eorum ad       40. Et non desinam eis benefa-     40.
-    benefaciendum me eis.              cere.
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,330,160">
+    TO EBPAIKON.
+    [Hebrew Text] 32
+    [Hebrew Text] 35
+    [Hebrew Text] 36
+    [Hebrew Text] 40
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="40,360,960,950">
+  <bloco tipo="texto_principal" script="grego" bbox="350,60,550,160">
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
+    32.
+    33.
+    36.
+    40.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,60,950,160">
+    AKYLAΣ.
+    32.
+    35. Τοῦ παράγειν.
+    36. ☦ Ταύτην.
+    40.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,165,330,250">
+    VERSIO HEBRAICI TEXT.
+    32. Filiorum Israel et filiorum
+    Juda.
+    35. Ad transire faciendum.
+    36. Civitatem hanc.
+    40. A posterioribus eorum ad
+    benefaciendum me eis.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,165,650,250">
+    VULGATA LATINA.
+    32. Filiorum Israel et filiorum
+    Juda.
+    35. Ut initiarent.
+    36. Civitatem hanc.
+    40. Et non desinam eis benefa-
+    cere.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,165,950,250">
+    AQUILA.
+    32.
+    35. Ut transducerent.
+    36. Hanc.
+    40.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="250,255,750,275">
     Notæ et variæ lectiones ad cap. XXXII Jeremiæ.
-    V. 2. ✱ τόδε. Ms. Jes. itemque sequentes lectio-     gravibus his verbis: « Non animadvertit LXX sen-
-    nes vers. 3 et 4 cum asteriscis.                      sum h. l. liberius quidem nec tamen male expres-
-    V. 5. θ., ἐως ὅτ etc. Drusius hunc locum, qui in     sisse, exemplum enim instrumenti aperti, legere ac
-    LXX desideratur, sic adfert ex Complutensi : ἕως      enitionis conditiones cognoscere cupientibus desi-
-    οὗ σκεψάμεν ἀυτόν, λέγει Κύριος· ἐὰν δε πολεμή-     natum erat, et το ἀνεγνωσμένον h. non tam si-
-    σεται κατά των Χαλδαίων, οὗκ εὐοδοθήσεσθε. Hiero-   gnificat, quod legitur, sive legebatur, quam quod
-    nymus vero : « Quodque sequitur, donec visitem      legi et inspici poterat. » IDEM.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,280,480,600">
+    V. 2. ☦ τότε. Ms. Jes. itemque sequentes lectio-
+    nes vers. 3 et 4 cum asteriscis.
+    V. 5. Θ., ἕως οὗ etc. Drusius hunc locum, qui in
+    LXX desideratur, sic adfert ex Complutensi : ἕως
+    οὦ σκέψομαι αὐτόν, λέγει Κύριος· ἐὰν δὲ πολεμή-
+    σετε κατὰ τῶν Χαλδαίων, οὐκ εὐοδωθήσεσθε. Hiero-
+    nymus vero : « Quodque sequitur, donec visiten
     eum, dicit Dominus, et si pugnaveritis adversus
-    Chaldaeos, nihil prosperum habebitis, in LXX non
-    habetur. [Alii, ὅτι πολεμήσετε τοὺς Χ., εἰς οὕς μὴ
-    κατευθυνθῆτε. Alii, εἰς οὕς οὗ μὴ κατευθύνησεν. Alii,
-    ...πολεμήσῃ τοὺς Χ. οὓ μὴ κατεθύνησθε. Ex
+    Chaldæos, nihil prosperum habebitis, in LXX non
+    habetur.» [Alii, ὅτι πολεμεῖτε τοὺς Χ., εἰς οὓς μὴ
+    κατευθύνητε. Alii, εἰς οὓς οὐ μὴ κατευθύνητε. Alii,
+    ...πολεμῇ τοὺς Χ. εἰς οὓς οὐ μὴ κατευθύνηται. Alii,
+    ...ὅτι ἂν πολεμῆτε τοὺς Χ. οὐ μὴ κατευθύνητε. Ex
     Polygl.-Bibel. DRACH.]
-    V. 6. ✱ Εἰς Ἱερεμίας etc., quæ asteriscis ne-
-    nantur usque ad versum 20 ex eodem ms. Jes.
-    V. 7. Ed. Rom., ὅτι σοὶ χρίσις παραλαβειν, quia     <continues with critical apparatus in Latin and Greek>
-    tibi jnd. accipere. Sic etiam Alex., sed χρίμα. DRACH.
-    V. 8. ✱ ὅτι. Alex., σεντυπ. IDEM.
-    V. 11. ἤπην; Alex., ἀνεγνωσμένον, lectum. Et
+    V. 6. ☦ εἶπε Ἱερεμίας etc., quæ asteriscis no-
+    tantur usque ad versum 20 ex eodem ms. Jes.
+    V. 7. Ed. Rom., ὅτι σοὶ κρίσις παραλαβεῖν, quia
+    tibi jud. accipere. Sic etiam Alex., sed κρίμα. DRACH.
+    V. 8. ☦ δή. Alex., σεαυτῷ. IDEM.
+    V. 11. ילכת. Alex., ἀνεγνωσμένον, lectum. Et
     sic etiam ipsa Rom. ed. mox v. 14, ubi Lud. Cap-
     pellus, in notis criticis, rescribendum suspicatur
-    ἀνεγνώσθην, ut respondeat voci Hebraicæ. Sed in-
-    sensuose desendit Schleusnerus receptam lectionem
-    ... (text continues with numerous critical notes, variant readings, references to ms. Jes., Complut., Ald., Drach., Hieronymus, etc.)
-    
-    JEREMIÆ CAPUT XXXIII.
-    
-    TO EBRAIKON.                      TO EBRAIKON                      ΑΚΥΛΑΣ.
-                                     Ἑλληνικοῖς γράμμασι.
-    (Hebrew) 2                         2.                                2.
-    (Hebrew) 4                         4.                                4.
-    (Hebrew) 9                         9. ✱ Αὐτός.
-    (Hebrew) 11                        11.                               11.
-    (Hebrew) 12                        12.                               12.
-    (Hebrew) 14                        14.                               14.
-    
-    VERSIO HEBRAICI TEXT.             VULGATA LATINA.                   AQUILA.
-    2. Ad stabilitendum illud.         2. Et parafurus.                  2.
-    4. Super domos.                    4. Ad domos.                      4.
-    9. Quæ ego faciens eis.            9. Quæ ego facturus sum eis.      9. Eis.
-    11. Adducentium confessionem.      11. Et portantium vota.           11.
-    12. Absque homine.                 12. Absque homine.                12.
-    14. Ecce dies veniunt, dicit Do-    14. Ecce dies veniunt, dicit Do-   14.
-    minus, et confirmabo verbum bo-    minus, et suscitabo verbum bo-
+    ἀνεῳγμένον, ut respondeat voci Hebraicæ. Sed in-
+    geniose defendit Schleusnerus receptam lectionem
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,950,960,1000">
+  <bloco tipo="texto_principal" script="misto" bbox="500,280,950,600">
+    gravibus his verbis : « Non animadvertit LXX sen-
+    sum h. l. liberius quidem nec tamen male expres-
+    sisse, exemplum enim instrumenti aperti, legere ac
+    emtionis conditiones cognoscere cupientibus desti-
+    natum erat, et τὸ ἀνεγνωσμένον h. l. non tam si-
+    gnificat, quod legitur, sive legebatur, quam quod
+    legi et inspici poterat. » IDEM.
+    V. 19. Π., πάσας. Sic etiam Complut. IDEM.
+    Ibid. Θ., καὶ κατὰ etc. Complut., καὶ χ. τὸν καρ-
+    πὸν τ. ἰ. α. IDEM.
+    V. 20. Οἱ λοιποί, ἐν τοῖς ἀνθρώποις. Ms. Jes.
+    V. 23. Π., ☦ ποιεῖν. Idem usque ad versum 29.
+    V. 24. Π., ☦ καὶ τοῦ θανάτου. Ms. Jes. ubi ait
+    Drusius : alibi καὶ τοῦ λοιμοῦ legi, alibi vero, καὶ
+    τοῦ θανάτου. [ Ald., λοιμοῦ. Complut., λιμοῦ καὶ
+    λοιμοῦ. DRACH.]
+    Ibid. Π., καὶ ἰδοὺ etc. Complut., καὶ ἰδο οὐ βλέ-
+    πεις. DRACH.
+    V. 29. Hieronymus : « Melius Aquila, qui pro eo
+    quod scriptum est renient, transtulit εἰσελεύσονται,
+    hoc est, ingredientur civitatem. Neque enim absen-
+    tes erant, ut venirent : quippe qui circumdederant
+    Jerusalem, sicut Scriptura testatur. » Et infra :
+    « Verbum enim BAU, ambiguitate sui, et venient,
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,610,650,630">
+    JEREMIÆ CAPUT XXXIII.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,635,330,780">
+    TO EBPAIKON.
+    [Hebrew Text] 2
+    [Hebrew Text] 4
+    [Hebrew Text] 9
+    [Hebrew Text] 11
+    [Hebrew Text] 12
+    [Hebrew Text] 14
+    [Hebrew Text]
+    [Hebrew Text]
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="350,635,550,780">
+    TO EBPAIKON
+    Ἑλληνικοῖς γράμμασι.
+    2.
+    4.
+    9.
+    11.
+    12.
+    14.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,635,950,780">
+    AKYLAΣ.
+    2.
+    4.
+    9. ☦ Αὐτοῖς.
+    11.
+    12.
+    14.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,785,330,950">
+    VERSIO HEBRAICI TEXT.
+    2. Ad stabiliendum illud.
+    4. Super domos.
+    9. Quæ ego faciens eis.
+    11. Adducentium confessionem.
+    12. Absque homine.
+    14. Ecce dies veniunt, dicit Do-
+    minus, et confirmabo verbum bo-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,785,650,950">
+    VULGATA LATINA.
+    2. Et paraturus.
+    4. Ad domos.
+    9. Quæ ego facturus sum eis.
+    11. Et portantium vota.
+    12. Absque homine.
+    14. Ecce dies veniunt, dicit Do-
+    minus, et suscitabo verbum bo-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,785,950,950">
+    AQUILA.
+    2.
+    4.
+    9. Eis.
+    11.
+    12.
+    14.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,960,900,990">
     Digitized by Google
   </bloco>
-  <notas>Pagina apresenta textos em latino e grego e excertos em hebraico. Hebraico representado aqui entre parênteses por limitar a transcrição literária neste documento; no original há palavras hebraicas e sinais asteriscais. Algumas linhas do aparato crítico foram abreviadas com indicação "<continues>" por extenso volume; mantida literalidade das palavras transcritas; onde caracteres hebraicos/gregos complexos foram representados por marcações parentéticas para preservar fidelidade.</notas>
+  <notas>
+    Transcrição de página da Patrologia Graeca (Hexaplorum quæ supersunt).
+    O texto contém colunas paralelas em Hebraico, Grego e Latim.
+    Símbolos críticos como ☦ (Chi) e referências a manuscritos (Ms. Jes., Complut., Ald.) foram mantidos.
+    As abreviações "Θ." (Theta) e "Π." (Pi) nas notas referem-se provavelmente a versões ou símbolos da Hexapla.
+    O texto hebraico foi indicado como [Hebrew Text] devido à complexidade de transcrição字符 por字符 neste formato, mas a estrutura foi preservada.
+  </notas>
 </pagina>

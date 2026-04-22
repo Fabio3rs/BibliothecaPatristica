@@ -1,5 +1,11 @@
 <pagina estado="com_texto">
-  <bloco tipo="texto_principal" script="latino" bbox="40,30,500,320">
+  <bloco tipo="outro" script="latino" bbox="40,5,960,60">
+tipo_pagina: texto
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="20,40,980,120">
+1291 APPEND. AD SÆC. X. — MONUMENTA LITURG. 1293
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="40,120,500,320">
 E xvi. Chal.
 F xv. Chal.
 C xiiii. Chal. S. Fridriani Epis. **
@@ -11,11 +17,11 @@ E ix. Chal. Clementis pp. S. Columbani.
 F viii. Chal. Crisogoni.
 G vii. Chal. S. Prosperi Episcopi.
 A vi. Chal. Gaudentii Episc.
-B v. Chal. Jacobi intercis.
+B v. Chal. Jacobi intercis i.
 C iiii. Chal.
 D iii. Chal. Vig. S. Andreæ, S. Antonini.
 E ii. Chal. S. Andreæ Apostoli.
-Quinta November atque jus tertia mansit in urna. B A
+Quinta November atque jus tertia mansit in urna.
 Dec. habet dies xxxi, luna xxix.
 F Dec.
 G iiii. Non.
@@ -24,10 +30,10 @@ B ii. Non.
 C Non.
 D viii. Id. S. Nicholai Episcopi.
 E vii. Id. Ordinatio S. Ambrosii.
-F vi. Id. S. Xenonis Episcopi.
+F vi. Id. S. Zenonis Episcopi.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,30,960,320">
-A G v. Id. Syri Episcopi.
+  <bloco tipo="texto_principal" script="latino" bbox="500,120,960,320">
+AG v. Id. Syri Episcopi.
 A iiii Id.
 B iii Id.
 C ii Id.
@@ -56,10 +62,22 @@ Dat duodena cohors septem in decemque De-
   <bloco tipo="cabecalho" script="latino" bbox="40,340,960,400">
 LUCENSIS KALENDARII FRAGMENTUM.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,410,500,980">
-November habet dies xxx, luna vero xxx. Nox habet C horas xvi, dies viii.
+  <bloco tipo="nota_marginal" script="latino" bbox="470,180,500,205">
+A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,205,500,230">
+B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,300,500,325">
+C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,380,500,405">
+D
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="40,410,500,960">
+November habet dies xxx, luna vero xxx. Nox habet C horas xvi, dies vii.
 
-Kal. Nov. Festivitas omnium Sanctorum, et Sancti Cesarij martyris.
+Kal. Nov. Festivitas omnium Sanctorum, et Sancti Cesarii martyris.
 
 iv Non. Sancte Eustachie virg.
 iiij Non. Sancti Eufrosine.
@@ -68,43 +86,45 @@ Nonas. Sanctorum mm. Vitalis et Agricole.
 viij Idus.
 vij Idus.
 vj Idus. Sanctorum martyrum quatuor Coronatorum.
-v Idus. Basilica Sancti Salvatoris, el S. Theodori m.
+v Idus. Basilica Sancti Salvatoris, et S. Theodori m.
 iv Idus. Sanctorum martyrum Respitii, et Nimphe, et Triphonis.
 iij Idus. S. Martini Epis. et Conf. et S. Mene m.
 ij Idus. S. Martini Pape et m.
-Idibus. S. Bricci Epis. et Conf.
+Idibus. S. Bricci Episc. et Conf.
 xvij Chal. dec.
 xvij Chal.
 xvj Chal.
 xv Chal. S. Ergenii Conf. Sol in Sagittario.
-xiv Chal. S. Fridiani Ep. et Conf. ** et dedicatio Basilice Apostolorum Petri et Pauli, duplex minus.
-xiii Chal. S. Pontiani pp. et m. ** et sanctæ Ilesabeth.
+xiv Chal. S. Fridiani Ep. et Conf. ** et dedicatio Basilicæ Apostolorum Petri et Pauli, duplex minus.
+xiii Chal. S. Pontiani pp. et m. ** et sanctæ Elisabeth.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,410,960,980">
-xij Chal.
-xj Chal. S. Columbani Abbatis ** et presentatio S. Menne, duplex majus.
-x Chal. S. Cecilie v. et m.
+  <bloco tipo="texto_principal" script="latino" bbox="500,410,960,960">
+xiiij Chal.
+xiii Chal. S. Columbani Abbatis ** et presentatio S. Menne, duplex majus.
+x Chal. S. Ceciliæ v. et m.
 ix Chal. S. Clementis Pape et m.
 viii Chal. S. Grisogoni m.
 vij Chal. S. Caterine v. et m. et sancti Prosperi Epis. et Conf.
 vj Chal. S. Gaudentii Conf. ** et S. Petri Alexandrini Episcopi, et martyris.
 v Chal. S. Jacobi intercis m.
 iv Chal.
-iiij Chal. Vig. Apostoli, et S. Saturnini m.
+iij Chal. Vig. Apostoli, et S. Saturnini m.
 ij Chal. Sancti Apostoli Andreæ: Duplex.
-December habet dies xxxi, luna vero xxviii. Nox habet horas xvii, dies vero xii.
-D iv Non. Sanctorum MM. Grisanti, et Dariae, et S. Sabbae Abbatiss ** et S. Anasii m.
-iij Non. S. Sabinae v. et m.
+
+December habet dies xxxi, luna vero xxviii. Nox habet horas xvii, dies vero vi.
+
+D iv Non. Sanctorum MM. Grisanti, et Dariae, et S. Sabbæ Abbatissæ et S. Anasii m.
+iij Non. S. Sabinæ v. et m.
 ij Non. S. Barbaræ v. et m.
-i Non. S. Dalmatii Epis. et m. ** et S. Sabbæ Abbat.
+i Non. S. Dalmatii Episc. et m. et S. Sabbæ Abbat.
 vij Idus. S. Nicolai Episc. et Conf.
 vij Idus. S. Ambrosii Episc. Duplex.
 vj Idus. Conceptio M. V.
 v Idus. S. Siri Ep. et Conf.
-iv Idus. S. Eulaliæ v., ** et Sancti Melchidis pp. et m.
+iv Idus. S. Eulaliæ v., et Sancti Melchidis pp. et m.
   </bloco>
   <bloco tipo="rodape" script="latino" bbox="700,960,980,995">
 Digitized by Google
   </bloco>
-  <notas>Script: latino. Asteriscos/crosses in original rendered here as "**". Algumas abreviações e grafias (ex.: "Chal.", "Non.", "Idus.", siglas de santos e títulos) mantidas literalmente. Partes de palavra no final do bloco superior direito estão fragmentadas ("De-[", "[ecumber.") e transcritas tal como visíveis. Onde a leitura era incerta, manteve-se a forma mais provável sem normalização; não se substituiu texto ilegível por [ilegivel] exceto quando explicitamente ilegível (nenhum termo isolado marcado assim nesta transcrição).</notas>
+  <notas>Script principal: latino. Foram mantidas as abreviaturas e grafias tal como aparecem no impresso (ex.: "Chal.", "Non.", "Idus.", formas com ij/iiij etc.). As letras A, B, C, D na coluna central foram transcritas como notas marginais (estão impressas verticalmente e marcam seções). A palavra fragmentada no topo direito aparece como "De-" seguida de "[ecumber."; preservada tal como visível. Asteriscos/crosses junto a nomes de santos foram mantidos como "**". Onde a leitura era incerta procurei preservar a forma mais próxima do impresso sem normalizar; não se usou [ilegivel] salvo quando necessário (nenhum termo isolado foi marcado assim nesta transcrição).</notas>
 </pagina>

@@ -1,9 +1,13 @@
-<pagina estado="com_texto">
-  <bloco tipo="outro" script="latino" bbox="0,0,1000,180">
-    capa_ou_guarda
+<pagina estado="com_texto" tipo="capa_ou_guarda">
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,70">
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="680,880,980,995">
+  <bloco tipo="texto_principal" script="latino" bbox="0,70,1000,940">
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="560,940,990,997">
     Digitized by Google
   </bloco>
-  <notas>Página de guarda/capa com superfície escura; única inscrição legível no verso inferior direito: "Digitized by Google". Nenhum outro texto, notas marginais ou apparatus crítico visíveis.</notas>
+  <notas>Tipo de página classificada como capa_ou_guarda. Página predominantemente escura/sem texto impresso manuscrito além da marca d'água no rodapé. Transcrição baseada na observação direta da imagem, priorizando-a sobre rascunhos OCR (Tesseract/LLM). 
+Marcas no bordo superior (faixa/calibração) detectadas visualmente, não alfabéticas e portanto não transcritas. 
+Não há texto_principal legível; blocos centrais deixados vazios por ausência de tinta legível. 
+BBOXs estimadas em escala 0-1000. Não foram identificadas notas marginais (A, B, C, D) nem aparato crítico.</notas>
 </pagina>

@@ -1,20 +1,35 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latin" bbox="20,10,980,90">
-    215                                                                   216
+  <bloco tipo="cabecalho" script="latino" bbox="100,40,150,60">
+    215
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,40,650,60">
     HEXAPLORUM QUÆ SUPERSUNT.
-    TO EBRAIKON.                        TO ΕΒΡΑΙΚΟΝ                      ΑΚΥΛΑΣ.
-    Ελληνικοὶς γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="20,90,320,380">
-    תּשׁעה - א' וכן 8
-    ? - התות ואת - התות 10
-    ? - ?ת - את - ?ת 12
-    ? ?שר 14
-    15 לשדות
-    16 ? - ?מא הוספים
-    17 ?ברת
+  <bloco tipo="cabecalho" script="latino" bbox="850,40,900,60">
+    216
   </bloco>
-  <bloco tipo="texto_principal" script="latin" bbox="320,90,660,380">
+
+  <bloco tipo="texto_principal" script="misto" bbox="150,80,300,110">
+    TO ΕΒΡΑΙΚΟΝ.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="400,80,550,110">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,80,850,100">
+    ΑΚΥΛΑΣ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,120,350,250">
+    וּבָא אֶל־הַמּוֹסֵד 8
+    אֶת־הַחֲנִית וְאֶת־הַמָּגִנִּים 10
+    אֶת־הַנֵּזֶר וְאֶת־הַעֲדֻת 12
+    קֶשֶׁר קָשַׁר 14
+    לְשִׁתֹּת 15
+    דֶּרֶךְ מְבוֹא הַסּוּסִים 16
+    הַבְּרִית 17
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="420,120,450,250">
     8.
     10.
     12.
@@ -22,73 +37,169 @@
     15.
     16.
     17.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,120,900,250">
+    8. Καὶ ὁ εσερχόμενος πρὸς τοὺς
+    περιβόλους.
+    10.
+    12. Τὸν ἀφορισμὸν καὶ τὴν μαρ-
+    τυρίαν.
+    14.
+    15.
+    16.
+    17.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="150,270,350,290">
     VERSIO HEBRAICI TEXT.
-    8. Et venienus ad ordines.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,270,550,290">
+    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,270,850,290">
+    AQUILA.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="150,300,350,450">
+    8. Et veniens ad ordines.
     10. Lanceam et clypeos.
-    
     12. Diadema et testimonium.
-    
     14. Colligatio, colligatio.
-    
     15. Ad ordines.
     16. Via introitus equorum.
-    
     17. Fœdus.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="660,90,980,380">
-    8. Καὶ ὁ εἰσερχόμενος πρὸς τοὺς περιβόλους.
-    10.
-    12. Τὸν ἀφορισμὸν καὶ τὴν μαρτυρίαν.
-    14.
-    15.
-    16.
-    17.
-    
-    AKVILA.
+  <bloco tipo="texto_principal" script="latino" bbox="400,300,600,450">
+    8. Si quis autem ingressus fue-
+    rit septum templi.
+    10. Hastas et arma.
+    12. Diadema et testimonium.
+    14. Conjuratio, conjuratio.
+    15. Septa templi.
+    16. Per viam introitus equo-
+    rum.
+    17. Fœdus.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,300,900,450">
     8. Et ingrediens ad septa.
     10.
-    12. Separationem et testimonium.
+    12. Separationem et testimo-
+    nium.
     14.
     15.
     16.
     17.
   </bloco>
-  <bloco tipo="aparatocrítico" script="latin" bbox="20,380,980,720">
+
+  <bloco tipo="nota" script="misto" bbox="250,460,750,480">
     Notæ et variæ lectiones ad cap. XI lib. IV Regum.
-    
-    V. 4. Ἀ., καὶ Ἑλαβε etc. Hæc omnia exhibet Cuislin. 2. Ὁ edit. Rom., καὶ ἐν τῷ ἑτί τῷ ἐνόδῳ ἀπεστελλεν Ἰουδα, και Ελαβε τους ἑκατονταρχους των Χορι και των Ῥασιμ, και ἀναγαγεν αὐτους προς αὐτον εἰς οἶκον Κυριου. Et in anno septimo misit Jodae, et accepit centuriones ipsorum Chorri et Rasim, et abduxit eos ad se in domum Domini.
-    
-    V. 6. Οἱ λοιπ., ἀπὸ τῆς διαφορᾶς etc. Cod. Reg. et Drus. ex Theodoretō, qui sic habet, το μεσαι οἱπολ ερημωθεῖνταπλὴ τῆς διαφορᾶς ἐφησυχασίᾳ τουτ- εστι, μετὰ πάσης φυλακῆς, ὥστε μηδενὶ γενέσθαι βλάβην ἐν τῷ οἴκῳ τῷ Θεῷ. I. e. « Mœsae reliqui interpretes, a corruptione, venterunt; hoc est, cum omni custodia; ita ut nullum detrimentum in domo Dei accideret. » In Coislin. vero 2 ita legitur, ὅστε τὸ μυστικὸν, ὅτε τὸ, ἀπὸ διαφορᾶς (sic) κεῖμενον εὑρεν τῷ Ἑζεκιήλ, παρὰ δὲ Ἀχύλα μόνον, ἐν τῷ οἴκῳ Μεσσαε, ἐν δὲ τῷ Ἐβραϊκῷ, ἀμφέλκη· sic). I. e. « Neque Mœsae, neque a differentia, positum inveni in Hexaplo; sed apud Aquilam tantum, in domo Messae, in Hebræo autem ammelech. » Quod postremum, Hebraei videlicet lectio, alio haud dubie pertinet.
-    
-    V. 8. Ἀ., καὶ ὁ εἰσερχ. Coisl. 2. Ἀλλ., καὶ ὁ εἰσπορευόμενος εἰς τὰ περιβόλ. Θ., πρὸς τοὺς περιβόλους. Reg. Θεοδοσιων, πρὸς τοὺς περιβόλους. Οὕτως ἐν τοῖς Παραλειπομένοις φησὶν· Καὶ ὁ εἰσερχόμενος εἰς τὸν οἶκον ἀποθαύσεται, και Ἰάσιππος
   </bloco>
-  <bloco tipo="cabecalho" script="latin" bbox="20,720,980,820">
+
+  <bloco tipo="nota" script="misto" bbox="100,480,480,650">
+    V. 4. Ἀ., καὶ ἔλαβε etc. Hæc omnia exhibet
+    Cuisin. 2. O' edit. Rom., καὶ ἐν τῷ ἔτει τῷ ἑβδόμῳ
+    ἀπέστειλεν Ἰωδάε, καὶ ἔλαβε τοὺς κατοντάρχους
+    τῶν Χοῤῥὶ καὶ τῶν ασίμ, κα ἀπῆγαγεν αὐτοὺς
+    πρὸς ατὸν ες οἶκον Κυρίου. Et in anno septimo
+    misit Jodae, et accepit centuriones ipsorum Chorri
+    et Rasim, et abduxit eos ad se in domum Domini.
+    V. 6. Οἱ λοιποί, ἀπὸ τς διαφθορς etc. Cod. Reg.
+    et Drus. ex Theodoreto, qui sic habet, τὸ μεταξὺ οἱ
+    λοιποὶ ἑρμηνευταὶ ἀπὸ τῆς διαφθορᾶς εἰρήκασι· τουτ-
+    έστι, μετὰ πάσης φυλακῆς, στε μηδεμίαν γενέσθαι
+    βλάβην ἐν τῷ οἴκῳ τῷ θείῳ. I. e. « Mesæ reliqui
+    interpretes, a corruptione, verterunt; hoc est, cum
+    omni custodia; ita ut nullum detrimentum in domo
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="500,480,900,650">
+    Dei accideret. » In Coislin. vero 2 ita legitur, οὔτε τ
+    μεσσαέ, οὔτε τ, ἀπὸ διαφορᾶς (sic) κείμενον εὗρον ἐν
+    τῷ ξαπλῷ, παρὰ δὲ Ἀκύλᾳ μόν, ἐν τ οἴκῳ Μεσ-
+    σαέ, ἐν δὲ τῷ Ἑβραίῳ, ἀμμελέχ (sic). I. e. « Neque
+    Mesæ, neque a differentia, positum inveni in Hexa-
+    plo; sed apud Aquilam tantum, in domo Messæ, in
+    Hebræo autem ammelech. » Quod postremum, He-
+    bræi videlicet lectio, alio haud dubie pertinet.
+    V. 8. Ἀ., καὶ ὁ εἰσερχ- Coisl. 2. Ἀλλ., καὶ ὁ
+    εἰσπορευόμενος εἰς τὰ σιδηρῶ. Θ., πρὸς τοὺς περι-
+    βόλους. Reg. Θεοδοτίων, πρὸς τος περιβόλους.
+    Οὕτως ἐν τοῖς Παραλειπομένοις φησίν· Καὶ ὁ εἰσερ-
+    χόμενος εἰς τὸν οἶκον ἀποθανεῖται, καὶ Ἰώσηπος
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="350,670,650,690">
     CAPUT XII LIB. IV REGUM.
-    TO EBRAIKON.                         TO ΕΒΡΑΙΚΟΝ                      ΑΚΥΛΑΣ.
-    Ελληνικοὶς γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="20,820,360,980">
-    ום חטא חזקי את - בק בית 5
-    אשר ימצא שם בק
+
+  <bloco tipo="texto_principal" script="misto" bbox="150,690,300,710">
+    TO ΕΒΡΑΙΚΟΝ.
   </bloco>
-  <bloco tipo="texto_principal" script="latin" bbox="360,820,660,980">
+  <bloco tipo="texto_principal" script="misto" bbox="400,690,550,720">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικος γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,690,850,710">
+    ΑΚΥΛΑΣ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,720,350,760">
+    הֵם יְחַזְּקוּ אֶת־בֶּדֶק הַבַּיִת לְכֹל 5
+    אֲשֶׁר יִמָּצֵא שָׁם בּדֶק
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="420,720,450,740">
     5.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,720,780,740">
+    5.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="150,770,350,790">
     VERSIO HEBRAICI TEXT.
-    5. Et ipsi reparabunt rupturam domus ad omnem quæ invenietur ibi rupturam.
   </bloco>
-  <bloco tipo="texto_principal" script="latin" bbox="660,820,980,980">
+  <bloco tipo="texto_principal" script="latino" bbox="400,770,550,790">
     VULGATA LATINA.
-    5. Et instaurent sarta tecta domus, si quid necessarium viderint instauracione.
-    
-    AQUILA.
-    5.
-    
-    Nota.
-    
-    V. 5. Σ., καὶ αὐτοὶ ἐπισκευασάσασι etc. Alia sumptas, nisi fortasse vitio librarii littera Σ. pro existit ejusdem interpretatio, scilicet: και αὐτοι ενισχυσωσι την επισκεψιν του οικου εις παν ὃ ευρεθησεται εἰς ἐκεῖ επισκευασθωσιν. Et ipsi roborabunt apparatus domus, in omne quod inventum fuerit ibi egens preparatione. Duas hic vides Symmachi interpretationes, ex duabus ejus editionibus de-
   </bloco>
-  <notas>Scriptos mistos: Latim e Grego e Hebraico. Pequenas áreas ilegíveis marcadas como [?] dentro de palavras hebraicas quando incertas. Mantida a linhação e pontuação original sem normalização.</notas>
+  <bloco tipo="texto_principal" script="latino" bbox="750,770,850,790">
+    AQUILA.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="150,800,350,840">
+    5. Et ipsi reparabunt rupturam
+    domus ad omnem quæ invenietur
+    ibi rupturam.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,800,600,840">
+    5. Et instaurent sarta tecta do-
+    mus, si quid necessarium vide-
+    rint instauratione.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,800,780,820">
+    5.
+  </bloco>
+
+  <bloco tipo="nota" script="latino" bbox="450,850,550,865">
+    Nota.
+  </bloco>
+
+  <bloco tipo="nota" script="misto" bbox="100,870,480,950">
+    V. 5. Σ., καὶ αὐτοὶ ἐπισκευασάτωσαν etc. Alia
+    existit ejusdem interpretatio, scilicet : καὶ αὐτοὶ
+    ἐνισχύσουσι τὴν ἐπισκευὴν τοῦ οκου εἰς πᾶν ὃ εὑρε-
+    θήσεται ἐκεῖ ἐπισκευασθῆναι. « Et ipsi roborabunt ap-
+    paratum domus, in omne quod inventum fuerit ibi
+    egens præparatione. » Duas hic vides Symmachi in-
+    terpretationes, ex duabus ejus editionibus de-
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="500,870,900,950">
+    sumptas, nisi fortasse vitio librarii littera Σ. pro
+    Α. aut Θ. substituta fuerit. In vocem autem בֶּדֶק
+    hæc notat Drusius : « Hieron., sarta tecta domus.
+    Theodoretus, Βεδὲκ καλεῖται τῶν ἐφθαρμένων ξύλων
+    ἢ λίθων ἡ θεραπεία. Ἢ δὲ τῶν Παραλειπομένων βί-
+    βλος ἀντὶ τοῦ, ποιῆσαι τὸ Βεδὲκ, ἐπισκευάσαι τὸν
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
+    Digitized by Google
+  </bloco>
 </pagina>

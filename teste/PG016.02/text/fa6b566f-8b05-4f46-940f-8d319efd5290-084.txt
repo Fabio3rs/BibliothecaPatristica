@@ -1,54 +1,55 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,90">
-    4419                                HEXAPLORUM QUÆ SUPERSUNT.                                1420
-    TO EBRAIKON.                        ΤΟ ΕΒΡΑΙΚΟΝ                        ΑΚΥΛΑΣ.
-    'Ελληνικοῖς γράμμασι.
+  <bloco tipo="cabecalho" script="misto" bbox="50,20,950,60">
+    4419 HEXAPLORUM QUÆ SUPERSUNT. 1420
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="50,90,490,860">
-    TO EBRAIKON
-    4.
-    6.
-    8.
-    9.
-    11.
-    13.
-    15.
-    20.
-    21.
-    25.
-    27.
-    28.
-    29.
-    30.
+  
+  [!-- Coluna Esquerda: Hebraico e Versão Latina --]
+  <bloco tipo="texto_principal" script="grego" bbox="100,60,300,90">
+    TO ΕΒΡΑΙΚΟΝ.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="80,90,320,400">
+    4 מִחֹרֶף עָצֵל לֹא יַחֲרֹשׁ וְשָׁאַל בַּקָּצִיר וָאָיִן
+    6 וְאִישׁ אֱמוּנִים רַב־בְּרָכוֹת
+    8 מִזְרֶה
+    9 מִי־יֹאמַר זִכִּיתִי לִבִּי טָהַרְתִּי מֵחַטָּאתִי
+    11 יִתְנַכֵּר־גַּם־בְּעַלִּילֹתָיו
+    13 אַל־תֹּאמַר אֲשֶׁלֵּם רָע
+    15 שֵׂאֵף פּן־תִּרְדָּם
+    20 בַּאֲשִׁינָיו
+    21 נַחֲלָה מְבֹהֶלֶת
+    25 מוֹקֵשׁ אָדָם יִלַּע קֹדֶשׁ
+    27 נֵר
+    נִשְׁמַת
+    28 יִצְרִי
+    29 חֶסֶד
+    הֹד
+    שֵׂיבָה
+    30 חַבּוּרַת פֶּצַע
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,400,320,800">
     VERSIO HEBRAICI TEXT.
-    4. Propter hiemem piger uon
-    arabit : postulabit in messe, et
-    non.
-    6. Et virum veritatum quis in-
-    veniet ?
+    4. Propter hiemem piger non arabit : postulabit in messe , et non.
+    6. Et virum veritatum quis inveniet ?
     8. Dispergens.
-    9. Quis dicet : Mundavi cor
-    meum , mundus sum a peccato
-    mco?
-    11. Cognoscelur puer.
-    Utrum mundum, et utrum re-
-    clum opus ejus.
-    13. Somnum , ne forte pauper
-    efficiaris.
+    9. Quis dicet : Mundavi cor meum , mundus sum a peccato meo ?
+    11. Cognoscetur puer.
+    Utrum mundum, et utrum rectum opus ejus.
+    13. Somnum , ne forte pauper efficiaris.
     20. In nigrore.
-    21. Haereditas. festinans.
-    25. Laqueus hominis devorabit
-    sanctitatem.
-    27. Lucerna.
-    Spiritus.
+    21. Hæreditas festinans.
+    25. Laqueus hominis devorabit sanctitatem.
+    27. Lucerna. Spiritus.
     28. Custodient.
-    29. Fortitudo eorum.
-    Et decor.
-    Canities.
+    29. Fortitudo eorum. Et decor. Canities.
     30. Livores vulneris.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="495,90,950,860">
-    TO EBPAIKON
+
+  [!-- Coluna Central: Hebraico em Grego e Vulgata --]
+  <bloco tipo="texto_principal" script="grego" bbox="350,60,550,100">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,100,500,400">
     4.
     6.
     8.
@@ -62,77 +63,108 @@
     28.
     29.
     30.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,400,550,800">
     VULGATA LATINA.
-    4. Propter trigus piger araræ
-    noluit : mendicabit ergo æstate, et
-    non dabitur illi.
-    6. Virum autem fidelcm quis
-    inueni et ?
+    4. Propter frigus piger arare noluit : mendicabit ergo æstate, et non dabitur illi.
+    6. Virum autem fidelem quis inveniet ?
     8. Dissipat.
-    9. Quis potest dicere : Munulum
-    est cor meum, purus sum a pec-
-    cato ?
+    9. Quis potest dicere : Mundum est cor meum , purus sum a peccato ?
     11. Intelligitur puer.
-    Si munda et recta sint opera
-    ejus.
-    13. Somnum, ne te egestas op-
-    primat.
+    Si munda et recta sint opera ejus.
+    13. Somnum, ne te egestas opprimat.
     20. In mediis tenebris.
-    21. Haereditas, ad quam festina-
-    tur.
-    25. Ruina est homini devorare
-    sanctos.
-    27. Lucerna.
-    Spiraculum.
+    21. Hæreditas, ad quam festinatur.
+    25. Ruina est homini devorare sanctos.
+    27. Lucerna. Spiraculum.
     28. Custodiunt.
-    29. Fortitudo eorum.
-    Et dignitas.
-    Canities.
+    29. Fortitudo eorum. Et dignitas. Canities.
     30. Livor vulneris.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="495,200,950,560">
-    AKVLA.
+
+  [!-- Coluna Direita: Aquila --]
+  <bloco tipo="texto_principal" script="grego" bbox="750,60,850,90">
+    ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,100,900,400">
     4.
-    6. 'Ανδρα δε πιστόν τις εύρήσει;
+    6. Ἄνδρα δὲ πιστὸν τίς εὑρήσει;
     8.
     9.
     11.
     13.
     20.
     21.
-    25. Σκώλον ἀνθρώπου καταπιε-
-    ταὶ ἡγιασμένος.
-    27. Λύχνος.
+    25. Σκῶλον ἀνθρώπου καταπίεται ἡγιασμένος.
+    27. Λύχνος.
     28. Διατηρήσουσι.
-    29. Ἰσχυς αὐτῶν.
-    Πολλά.
+    29. Ἰσχὺς αὐτῶν.
+    Πολιά.
     30. Μώλωπες τραυμάτων.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,400,900,800">
     AQUILA.
-    6. Virum autem fidelem quis in-
-    veniet ?
+    4.
+    6. Virum autem fidelem quis inveniet ?
     8.
     9.
     11.
     13.
     20.
     21.
-    25. Offendiculum hominis ab-
-    sorbet sanctificatus.
+    25. Offendiculum hominis absorbet sanctificatus.
     27. Lucerna.
     28. Servabunt.
     29. Fortitudo eorum.
     Canities.
     30. Vibices vulnerum.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="50,860,950,980">
+
+  [!-- Notas de Rodapé --]
+  <bloco tipo="nota" script="misto" bbox="200,810,800,850">
     Notæ et variæ lectiones ad cap. XX Proverbiorum.
-    V. 1. 'A., Θ., χλευσατης οινος etc. Edit. Romana et Drusius, ut et sequentes hujus capitis.
+    V. 1. Ἁ., Θ., χλευαστὴς οἶνος etc. Edit. Romana et Drusius, ut et sequentes hujus capitis.
+  </bloco>
+
+  [!-- Início do Capítulo XXI --]
+  <bloco tipo="cabecalho" script="latino" bbox="350,860,650,890">
     PROVERBIORUM CAPUT XXI.
-    TO EBPAIKON,    TO EBPAIKON    ΑΚΥΛΑΣ.
-    'Ελληνικοῖς γράμμασι.
-    VERSIO HEBRAICI TEXT.    VULGATA LATINA.    AQUILA.
-    2. Et ponderans.    2. Appendit.    2.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="150,890,300,910">
+    TO ΕΒΡΑΙΚΟΝ,
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="250,910,350,930">
+    2 מוֹזֵן ב
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,930,350,960">
+    VERSIO HEBRAICI TEXT.
+    2. Et ponderans.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="400,890,600,910">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικος γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="450,910,550,930">
+    2.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,930,600,960">
+    VULGATA LATINA.
+    2. Appendit.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="750,890,850,910">
+    ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,910,850,930">
+    2.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,930,850,960">
+    AQUILA.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="500,970,800,990">
     Digitized by Google
   </bloco>
-  <notas>Pagina com texto em múltiplos scripts: latino e grego; pequenas áreas hebraicas na coluna esquerda superior (transcrição parcial no bloco esquerdo como "TO EBRAIKON" e entradas numeradas). Algumas palavras gastas/ilegíveis tratadas com aproximação; não foram inseridos marcadores [ilegivel] por palavra específica porque os traços permanecem legíveis em contexto.</notas>
 </pagina>

@@ -1,64 +1,91 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="140,20,860,150">
+<pagina estado="com_texto" tipo="gravura">
+  <bloco tipo="cabecalho" script="latino" bbox="150,45,790,140">
 HUNC LIBRUM REGI [ilegivel]
-[ilegivel] [ilegivel] [ilegivel]
+[ilegivel] [ilegivel] [ilegivel] [ilegivel] NUS
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="20,80,220,660">
-A A A
-B C C C
-D D, E E E
+  <bloco tipo="nota_marginal" script="latino" bbox="85,100,125,140">
+A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="85,140,125,180">
+B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="85,180,125,220">
+C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="85,220,125,260">
+D
+  </bloco>
+  <bloco tipo="nota_marginal" script="misto" bbox="45,95,255,445">
+[ilegivel]
+O, E E E
 E / G
-H H, I J A
-L L, M M
+h H, I J H
+L L, M M M
 M M M
 N N, O P
-P, Q R R
-S, T T U
+p, q R R
+S, T, T U
 a v x y
 z.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,120,780,560">
-[Figura central: rei sentado à direita com cetro e figura ofertante à esquerda segurando um livro]
+  <bloco tipo="nota" script="latino" bbox="70,455,295,610">
+fig.7
+Otto I [ilegivel]
+fig.8
+corona congol.
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="90,650,250,760">
+Otto I
+fig. [ilegivel]
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="70,760,340,930">
+ay [ilegivel]
+q. [ilegivel]
+q. [ilegivel]
+ma. [ilegivel]
+h. [ilegivel]
+na. [ilegivel]
+[ilegivel]
+cz. [ilegivel]
+ft. [ilegivel]
+tt. [ilegivel]
+rr.
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="45,420,360,880">
+fig.9
+corona [ilegivel].
+Otto I fig. [ilegivel]
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="260,150,660,760">
 fig.3
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="780,80,980,660">
+  <bloco tipo="nota_marginal" script="latino" bbox="720,45,775,95">
+NI
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="728,95,917,400">
 a,b,c,d
 e,f,g,h
-i,k,l
-m,m,n
-o,p,q
-r,s,t
+h,i,k,l
+m,m,n,
+o,p,q,
+r,s,t,
 v,u,x
 y,z
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="20,560,240,920">
-fig.7
-otto I Domeniquio? [ilegivel]
-fig.8
-corona congol.
-fig.9
-[ilegivel] Otto I fig
-[ilegivel] .970.
-[ilegivel] fig.12
-[ilegivel]
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="240,560,620,920">
-fig.3
-[ornamento entrelaçado grande, sem legenda textual legível]
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="620,560,980,920">
+  <bloco tipo="nota" script="latino" bbox="735,420,935,875">
 fig.11
 Otto II fig 963.
 fig.10
 Otto II fig 974
 fig.13
+Otto II
 fig.15
 Otto II sign. [ilegivel]
-Blandinus? fig.4
+[ilegivel] fig.4
 Otto III fig 995.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="420,960,780,998">
+  <bloco tipo="rodape" script="latino" bbox="720,955,910,990">
 Digitized by Google
   </bloco>
-  <notas>Pagina com imagem e numerosas legendas marginais. Script principal latino; muitas legendas e listas de letras alfabéticas marginais parcialmente danificadas/ilegíveis — usei a marca [ilegivel] por palavras cuja leitura não pôde ser determinada com segurança. As caixas bbox foram estimadas proporcionalmente à imagem (escala 0-1000).</notas>
+  <notas>Tipo de página: gravura. Script predominante: latino (algumas notações mistas). BBOX estimadas na escala 0-1000. Marcas [ilegivel] indicam palavras totalmente ilegíveis na imagem. As letras identificadoras centrais A, B, C, D foram extraídas para blocos próprios e tratadas separadamente; quando apareciam como identificadores de seção foram removidas do bloco marginal esquerdo para evitar incorporação ao fluxo da coluna. A transcrição priorizou a leitura direta da imagem sobre os rascunhos OCR; trechos de leitura incerta foram marcados com [ilegivel].</notas>
 </pagina>

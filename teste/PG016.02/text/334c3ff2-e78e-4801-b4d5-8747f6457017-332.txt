@@ -1,107 +1,195 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,120">
-    1911                HEXAPLORUM QUÆ SUPERSUNT.                 1912
-    TO ΕΒΡΑΙΚΟΝ.                       TO ΕΒΡΑΙΚΟΝ                 ΑΚΥΛΑΣ.
-                                       Ἑλληνικοὶς γράμμασι.
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,150,50">
+    1911
   </bloco>
-  <bloco tipo="texto_principal" script="hebreu" bbox="50,120,320,320">
-    עפּו 10
-    תּלפּ 12
-    הנה ישׁקל עבדי 13
-    הגבּה
-    מאשר לצם 14
+  <bloco tipo="cabecalho" script="latino" bbox="350,20,650,50">
+    HEXAPLORUM QUÆ SUPERSUNT.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,120,760,320">
-    10. 10.
-    12. 12.
-    13. 13.
-    14.
-    VERSIO HEBRAICI TEXT.
-    10. Denudavit.
-    12. Ambulabitis.
-    13. Ecce prudenter aget servus meus.
-    Et sublimis erit.
-    14. Quemadmodum obstupuerunt.
-    TO ΕΒΡΑΙΚΟΝ
-    Ἑλληνικοὶς γράμμασι.
+  <bloco tipo="cabecalho" script="latino" bbox="850,20,950,50">
+    1912
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="100,60,300,90">
+    ΤΟ ΕΒΡΑΙΚΟΝ.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="350,60,600,90">
+    ΤΟ ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,60,900,90">
+    ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,90,300,200">
+    10 ושח
+    12 חלק
+    13 הנה ישכיל עבדי
+    ובה
+    14 כאשר שמו
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,90,450,200">
     10.
     12.
     13.
     14.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,90,900,200">
+    10.
+    12. Πορεύεσθε.
+    13. Ἰδο ἐπιστημονισθήσεται
+    δοῦλός μου.
+    ⚓ Καὶ μετεωρισθήσεται.
+    14.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,200,300,220">
+    VERSIO HEBRAICI TEXT.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,200,600,220">
     VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,200,900,220">
+    AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,220,300,300">
+    10. Denudavit.
+    12. Ambulabitis.
+    13. Ecce prudenter aget servus
+    meus.
+    Et sublimis erit.
+    14. Quemadmodum obstupue-
+    runt.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,220,600,300">
     10. Paravit.
     12. Properabitis.
     13. Ecce intelliget servus meus.
     Et sublimis erit.
-    14. Sicut obstuperunt.
+    14. Sicut obstupuerunt.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="760,120,950,320">
-    10.
-    12. Πορεύεσθε.
-    13. Ἶδου ἐπιστημοσθήσεται δοῦλος μου.
-    ✶ Και μετεωρισθήσεται.
-    14.
-    AQUILA.
+  <bloco tipo="texto_principal" script="latino" bbox="650,220,900,300">
     10.
     12. Itis.
     13. Ecce docebitur servus meus.
-    ✶ Et sublimis erit.
+    ⚓ Et sublimis erit.
     14.
   </bloco>
-  <bloco tipo="aparatocritico" script="latino" bbox="50,320,950,540">
+  <bloco tipo="texto_principal" script="latino" bbox="250,320,750,340">
     Notæ et variæ lectiones ad cap. LII Hesaiæ.
-    
-    V. 1. 'Α., περιλυσαι etc. Curter. ex ms. Jes.
-    V. 4. ΟΙ Γ., κὼς ὁ θεός σου. Idem.
-    V. 5. 'Α., και νυν τε etc. Idem.
-    Ibid. 'Α., οι δεουσαζοντες ειπ. Ex Procopio, itemque ex Hieronymo, qui ait, Aquilam vertisse, flebunt; Symmachum vero et Theodotionem, adlabrunt.
-    Ibid. Hebr. שׁוּל, dominator ejus. Keri autem שׁוּל, in plur. num. ut veterunt OI Γ' et Vulg. Lull. DRACH.
-    Ibid. Σ., δὲ παντὸς etc. Totum hunc stichum addidimus ex Procopio, quem Monft. evidenter legetit ut canis Nilum. Ecce locus Procopii a Monft.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="50,540,950,660">
+  <bloco tipo="nota" script="misto" bbox="100,350,480,500">
+    V. 1. Ἀ., περιλυσαι etc. Curter. ex ms. Jes.
+    V. 4. Οἱ Γ, ⚓  Θεός σου. Idem.
+    V. 5. Ἀ., κα νῦν τί etc. Idem.
+    Ibid. Ἀ., οἱ ἐξουσιάζοντες etc. Ex Procopio,
+    itemque ex Hieronymo, qui ait, Aquilam vertisse,
+    flebunt; Symmachum vero et Theodotionem, ulu-
+    labunt.
+    Ibid. Hebr. משול, dominator ejus. Keri autem
+    משל, in plur. num. ut verterunt Οἱ Γ' et Vulg.
+    Lat. DRACH.
+    Ibid. Σ., διὰ παντὸς etc. Totum hunc stichum
+    addidimus ex Procopio, quem Montf. evidenter te-
+    git ut canis Nilum. Ecce locus Procopii a Montf.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="520,350,900,500">
+    non observatus : Κατὰ τοὺς λοιποὺς ο προσκεῖται
+    τῷ, τὸ ὄνομά μου βλ., τὸ, ἐν ἔθνεσιν. Τοιγαροῦν
+    ὁ Σύμμ. φησιν· διὰ παντὸς  τ. τ. . τ. δ. μ. βλ.
+    Idem.
+    V. 6. Οἱ Γ, ⚓ διὰ τοῦτο. Curter. ex ms. Jes.,
+    quia ex tribus interpretibus in LXX inductum fuit,
+    ubi hodie legitur.
+    V. 7. Ἀ., τί ὠραιώθησαν etc. Hæ interpretationes
+    partim habentur apud Curterium; sed pleniores in
+    Demonstr. evang. Eusebii. [In Aquilæ lectione re-
+    stituimus τῇ Σιών, ut habetur apud Euseb. — In
+    Symmachi loco, προ πόδες εὐαγγελιζομένου, ἀκου-
+    οστήν ποιοῦντος εἰρήνην, Procopius habet, π. εὐαγγ.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,520,650,540">
     HESAIÆ CAPUT LIII.
-    TO ΕΒΡΑΙΚΟΝ
-    Ἑλληνικοὶς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="150,550,300,570">
+    ΤΟ ΕΒΡΑΙΚΟΝ.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="380,550,600,580">
+    ΤΟ ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,550,900,570">
     ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="hebreu" bbox="50,660,320,860">
-    על-מי 1
-    מי יידע רב און לפני ומתי 2
-    צני
-    לא-האר לי ולא היה תודעתי
-    ויא-פרחה כבסו ותמחה
-    ובכהו חזק איש מאבינו 3
-    וידוע חל
-    וכמסרי פני מנבו
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,580,300,720">
+    1 לע-מי
+    2 ויעל כיונק לפניו וכשרש מארץ ציה
+    לא-תאר לו ולא הדר ונראהו
+    ולא-מראה ונבזהו
+    נבזה חלל אישים איש מכאבות
+    3 וידוע חלי
+    וכמסתר פנים ממנו
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,660,760,860">
-    1. 1.
-    2. 2.
-    3. 3.
+  <bloco tipo="texto_principal" script="latino" bbox="380,580,450,650">
+    1.
+    2.
+    3.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,580,900,720">
+    1. ⚓ Ἐπὶ * τίνι;
+    2. Καὶ ἀναβήσεται ὡς πιθνιζό-
+    μενον (al. τιθαζόμενον) εἰς πρό-
+    σωπον αὐτοῦ, καὶ ὡς ίζα ἀπὸ γῆς
+    ἀνάτου.
+    3.
+    Ὡς ἀποκεκρυμμένον τὸ πρόσω-
+    πον αὐτοῦ.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,730,300,750">
     VERSIO HEBRAICI TEXT.
-    1. Super quem ?
-    2. Et ascendit ut tener ramus coram eo, et sicut radix de terra siccitatis.
-    Non forma ei neque decor : et vidimus eum, et non aspectus ut desideraremus eum.
-    3. Despectus est, et desiit viris, vir dolorum, et notus ægritudine.
-    Et quasi abscondens faciem ab eo.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="760,660,950,860">
-    TO ΕΒΡΑΙΚΟΝ
-    ΑΚΥΛΑΣ.
-    1. ✶ Ἐπὶ : τινι;
-    2. Καὶ ἀναβάςας ὡς τιθηνός-μενον (al. τειθήμενον) εἰς πρόσωπον αὐτοῦ, καὶ ὡς ῥίζα ἀπὸ γῆς ἀδάτου.
-    3.
+  <bloco tipo="texto_principal" script="latino" bbox="400,730,600,750">
     VULGATA LATINA.
-    1. Cui?
-    2. Et ascendit sicut virgultum coram eo, et sicut radix de terra sitienti.
-    Non est species et neque decor : et vidimus eum, et non erat aspectus, et desideravimus eum.
-    3. Despectum et novissimum virorum, virum dolorum, et scientem infirmitatem.
-    Quasi absconditus vultus ejus.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,730,900,750">
     AQUILA.
-    1. ✶ Super : quem ?
-    2. Et ascendit sicut lactens in faciem ejus, et sicut radix de terra invia.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,750,300,900">
+    1. Super quem?
+    2. Et ascendit ut tener ramus
+    coram eo, et sicut radix de terra
+    siccitatis.
+    Non forma ei neque decor : et
+    vidimus eum, et non aspectus ut
+    desideraremus eum.
+    3. Despectus est, et desiit viris,
+    vir dolorum, et notus ægritudine.
+    Et quasi abscondens faciem ab
+    eo.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,750,600,900">
+    1. Cui?
+    2. Et ascendet sicut virgultum
+    coram eo, et sicut radix de terra
+    sitienti.
+    Non est species ei neque decor :
+    et vidimus eum, et non erat
+    aspectus, et desideravimus eum.
+    3. Despectum et novissimum vi-
+    rorum, virum dolorum, et scien-
+    tem infirmitatem.
+    Quasi absconditus vultus ejus.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,750,900,900">
+    1. ⚓ Super * quem?
+    2. Et ascendet sicut lactens in
+    faciem ejus, et sicut radix de terra
+    invia.
     3.
     Quasi absconditus vultus ejus.
   </bloco>
-  <notas>Pagina com colunas; hebraico à esquerda, latim/ Grego/ críticas à direita. Algumas palavras hebraicas parcialmente ilegíveis; usei transcrição literal visível. Marcas tipográficas (✶) mantidas.</notas>
+  <bloco tipo="rodape" script="latino" bbox="500,950,800,990">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Símbolo ⚓ usado como marca crítica (obelus/asteriscus variant).
+    Texto em múltiplos scripts: Hebraico, Grego, Latino.
+    Layout poliglota complexo com 3 colunas principais.
+  </notas>
 </pagina>

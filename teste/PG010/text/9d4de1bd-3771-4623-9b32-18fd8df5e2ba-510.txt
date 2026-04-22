@@ -1,37 +1,50 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,20,980,120">
-S. GREGORII THAUMATURGI
-</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,120,960,220">
-S. GREGORII OPERUM PARS I.
-</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,220,920,300">
-SCRIPTA OMNIBUS COMPROBATA.
-</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="120,340,880,470">
-ΤΟΥ ΕΝ ΑΓΙΟΙΣ ΠΑΤΡΟΣ ΗΜΩΝ
-ΓΡΗΓΟΡΙΟΥ
-ΕΠΙΣΚΟΠΟΥ ΝΕΟΚΑΙΣΑΡΕΙΑΣ ΠΟΝΤΟΥ, ΘΑΥΜΑΤΟΥΡΓΟΥ.
-ΕΚΘΕΣΙΣ ΤΗΣ ΠΙΣΤΕΩΣ
-ΕΝ ΑΙ' ΑΠΟΚΑΛΥΨΕΩΣ ΠΑΡΑ ΤΟΥ ΜΑΚΑΡΙΟΥ ΤΟΥ ΙΩΑΝΝΟΥ· ΕΥΑΓΓΕΛΙΣΤΟΥ, ΜΕΣΙΤΕΥΤΡΙΑΣ
-ΤΗΣ ΘΕΟΓΕΝΗΤΡΙΑΣ ΤΗΣ ΠΑΡΘΕΝΟΥ ΜΑΡΙΑΣ, ΕΣΧΕΝ.
-</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,500,880,680">
-SANCTI PATRIS NOSTRI
-GREGORII
-EPISCOPI NEOCÆSAREÆ PONTI, THAUMATURGI
-EXPOSITIO FIDEI
-Quam per revelationem a beato Joanne evangelista, mediante Dei Genitrice Maria
-Virgine, accepit.
-INTERPRETE RUFINO.
-(GALLAND., Veterum Patrum Biblioth., Venetiis, 1766, in-fol., p. 385.)
-</bloco>
-  <bloco tipo="rodape" script="latino" bbox="60,700,940,920">
-Unus Deus (67) Pater Verbi viventis, sapientiæ subsistens, et virtutis suæ et figuræ : perfectus perfecti genitor, Pater Filii unigeniti. Unus Dominus.
-Gerardi Vossii interpretatio.
-Unus Deus, Pater Verbi viventis, sapientiæ subsistens, et potentiæ ac characteris sempiterni : perfectus perfecti genitor, Pater Filii unigeniti. Unus Dominus, solus ex solo, Deus ex Deo: character et imago
-(66) 'Εστι Ιουλιανου. Legendum ἐστὶ Αὐρηλιανοῦ ex antiquiioribus monumentis.
-(67) Unus Deus, etc. Lambecius Comment. bibl. Cæsar. lib. II, cap. 5. pagg. 264 seqq., Psalterium
-</bloco>
-  <notas>Scriptos principais em latim e grego. Manteve-se ortografia e sinais tal como na impressão; pequenas abreviaturas e pontuação originais preservadas. BBOXs estimados em escala 0-1000 conforme instruções; a página apresenta colunamento visual único com blocos separados para cabeçalho, título grego, título latino e rodapé.</notas>
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,50">
+    283 S. GREGORII THAUMATURGI 284
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,80,900,180">
+    S. GREGORII OPERUM PARS I.
+    SCRIPTA OMNIBUS COMPROBATA.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="150,220,850,460">
+    ΤΟΥ ΕΝ ΑΓΙΟΙΣ ΠΑΤΡΟΣ ΗΜΩΝ
+    ΓΡΗΓΟΡΙΟΥ
+    ΕΠΙΣΚΟΠΟΥ ΝΕΟΚΑΙΣΑΡΕΙΑΣ ΠΟΝΤΟΥ, ΘΑΥΜΑΤΟΥΡΓΟΥ,
+    ΕΚΘΕΣΙΣ ΤΗΣ ΠΙΣΤΕΩΣ
+    ΗΝ ΔΙ' ΑΠΟΚΑΛΥΨΕΩΣ ΠΑΡΑ ΤΟΥ ΜΑΚΑΡΙΟΥ ΤΟΥ ΙΩΑΝΝΟΥ ΕΥΑΓΓΕΛΙΣΤΟΥ, ΜΕΣΙΤΕΥΟΥΣΗΣ
+    ΤΗΣ ΘΕΟΓΕΝΝΗΤΡΙΑΣ ΤΗΣ ΠΑΡΘΕΝΟΥ ΜΑΡΙΑΣ, ΕΣΧΕΝ.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,480,850,700">
+    SANCTI PATRIS NOSTRI
+    GREGORII
+    EPISCOPI NEOCÆSAREÆ PONTI, THAUMATURGI
+    EXPOSITIO FIDEI
+    Quam per revelationem a beato Joanne evangelista, mediante Dei Genitrice Maria Virgine, accepit.
+    INTERPRETE RUFINO.
+    (GALLAND., Veterum Patrum Biblioth., Venetiis, 1766, in-fol., p. 385.)
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,720,480,780">
+    Unus Deus (67) Pater Verbi viventis, sapientiæ subsistentis, et virtutis suæ et figuræ : perfectus perfecti genitor, Pater Filii unigeniti. Unus Domi-
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,720,900,780">
+    Εἷς Θεός, Πατὴρ Λόγου ζῶντος, σοφίας ὑφεστώ-σης, καὶ δυνάμεως, καὶ χαρακτῆρος ἀϊδίου. Τέλειος τελείου γεννήτωρ, Πατὴρ Υἱο μονογενοῦς. Εἷς Κύ-
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="300,790,700,810">
+    Gerardi Vossii interpretatio.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,810,480,880">
+    Unus Deus, Pater Verbi viventis, sapientiæ subsistentis, et potentiæ ac characteris sempiterni : perfectus perfecti genitor, Pater Filii unigeniti. Unus Dominus, solus ex solo, Deus ex Deo : character et imago
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="100,890,480,940">
+    (66) Ἐπὶ Ἰουλιανοῦ. Legendum ἐπὶ Αὐρηλιανοῦ ex antiquioribus monumentis.
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="520,890,900,940">
+    (67) Unus Deus, etc. Lambecius Comment. bibl. Cæsar. lib. II, cap. 5. pagg. 264 seqq., Psalterium
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Página de título/seção da Patrologia Graeca (S. Gregorii Thaumaturgi). Contém títulos em Latim e Grego, seguidos de texto paralelo (Latim de Rufino e Grego original) e uma tradução/interpretação de Gerardo Vossio. Notas de rodapé mistas (Grego/Latim).
+  </notas>
 </pagina>
