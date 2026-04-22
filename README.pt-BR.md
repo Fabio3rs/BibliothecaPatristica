@@ -19,6 +19,10 @@ Digitalização e processamento das coleções *Patrologia Graeca*, *Latina* e *
 - Resumo: `python resumo_serial.py --volume-dir teste/PL001` (Ollama). Para OpenAI: `--provider openai --model gpt-5-mini`.
 - Download: siga o guia em `download/README.md`.
 
+## Documentação relacionada
+- Paper: "Unificação Semântica para Saídas de LLMs" (Português): `docs/LLM_unification_paper.md`
+- English version: `docs/LLM_unification_paper_en.md`
+
 ## Pré-requisitos rápidos
 - Python 3.10+, Tesseract (lat/grc) e Poppler (`pdftocairo`).
 - `pip install -r requirements.txt`.

@@ -19,6 +19,10 @@ Digitizing and processing the *Patrologia Graeca*, *Latina*, and *Orientalis* co
 - Summaries: `python resumo_serial.py --volume-dir teste/PL001` (Ollama). OpenAI: `--provider openai --model gpt-5-mini`.
 - Download: follow `download/README.md`.
 
+## Related documentation
+- Semantic unification paper (English): `docs/LLM_unification_paper_en.md`
+- Versão em Português / Portuguese version: `docs/LLM_unification_paper.md`
+
 ## Prereqs
 - Python 3.10+, Tesseract (lat/grc), Poppler (`pdftocairo`).
 - `pip install -r requirements.txt`.
