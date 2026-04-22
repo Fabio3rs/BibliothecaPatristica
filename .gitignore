@@ -7,4 +7,60 @@ __pycache__
 data/*.db
 data/cache/*.db
 *.parquet
+.venv
+
+# byte-compiled / caches
+*.py[cod]
+*$py.class
+
+# pytest / coverage / mypy
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.mypy_cache/
+
+# wheel / build artifacts
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# packaging
+.eggs/
+*.egg
+
+# virtualenvs (already have .venv)
+env/
+venv/
+ENV/
+.venv/
+
+# tooling / caches
+.cache/
+__pypackages__/
+
+# editor / ide
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS
+.DS_Store
+Thumbs.db
+
+# environment files / secrets
+.env
+.env.* 
+.secret
+secrets.json
+
+# Jupyter
+.ipynb_checkpoints
+
+# logs and temporary files
+*.log
+logs/
+tmp/
 

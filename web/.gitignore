@@ -10,10 +10,12 @@ dist/
 .dist/
 .astro/
 
-# Pagefind CLI artifacts (only in dist, not in public/)
+# Pagefind CLI artifacts
 dist/pagefind/
 pagefind.json
 pagefind.log
+
+public/pagefind/
 
 # env and local config
 .env
