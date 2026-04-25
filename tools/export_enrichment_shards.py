@@ -84,6 +84,14 @@ def normalize_keywords(raw: str) -> list:
         pass
     return []
 
+def filtra_duplicado_resumos(text : str, author : str , work : str) -> str:
+    # Remove informações duplicadas do resumo
+    if not text:
+        return ""
+    text = text.replace(author, "").replace(work, "").strip()
+    text = text.replace("Autor:", "").replace("Livro/obra identificada:", "").strip()
+    return text
+
 
 def export_doc(
     doc: str,
@@ -103,13 +111,15 @@ def export_doc(
                     "doc": r["documento"],
                     "page": r["pagina_num"],
                     "file": r["pagina_file"],
-                    "summary_page": r["resumo_pagina"],
-                    "summary_global": r["resumo_global"],
+                    "summary_page": filtra_duplicado_resumos(r["resumo_pagina"], r["author_detected"], r["work_detected"]),
+                    "summary_global": filtra_duplicado_resumos(r["resumo_global"], r["author_detected"], r["work_detected"]),
                     "keywords": normalize_keywords(r["keywords_json"]),
                     "keywords_source": r["keywords_source"],
                     "keywords_model": r["keywords_modelo"],
                     "model": r["modelo"],
                     "created_at": r["criado_em"],
+                    "author": r["author_detected"],
+                    "work": r["work_detected"],
                 }
                 if include_text:
                     rec["text"] = r["pagina_texto"]

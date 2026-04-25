@@ -19,6 +19,7 @@ function parseArgs() {
     outDir: 'web/public/pagefind',
     base: '/BibliothecaPatristica',
     minCount: 1,
+    emitHtmlDir: null,
   };
   for (let i = 0; i < args.length; i++) {
     const a = args[i];
@@ -26,8 +27,71 @@ function parseArgs() {
     else if (a === '--out') params.outDir = args[++i];
     else if (a === '--base') params.base = args[++i];
     else if (a === '--min-count') params.minCount = parseInt(args[++i], 10) || 1;
+    else if (a === '--emit-html-dir') params.emitHtmlDir = args[++i];
   }
   return params;
+}
+
+function escapeHtml(s) {
+  if (!s && s !== 0) return '';
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+async function writeRecordHtml(dir, name, url, meta, filters, bodyContent) {
+  try {
+    const parts = [];
+    parts.push('<!DOCTYPE html>');
+    parts.push('<html lang="pt-BR">');
+    parts.push('<head>');
+    parts.push('  <meta charset="utf-8">');
+    if (meta && meta.title) parts.push(`  <title>${escapeHtml(meta.title) + escapeHtml(meta.work ? ' - ' + meta.work : '')}</title>`);
+    // write meta tags in the Pagefind format
+    if (meta) {
+      for (const [k, v] of Object.entries(meta)) {
+        if (k === 'title') continue;
+        parts.push(`  <meta data-pagefind-meta="${escapeHtml(k)}" content="${escapeHtml(v)}">`);
+      }
+    }
+    if (filters) {
+      for (const [fk, fv] of Object.entries(filters)) {
+        // filters are arrays
+        if (Array.isArray(fv)) {
+          for (const item of fv) {
+            parts.push(`  <meta data-pagefind-meta="filter:${escapeHtml(fk)}" content="${escapeHtml(item)}">`);
+          }
+        }
+      }
+    }
+
+    if (meta.author) {
+      parts.push(`  <meta data-pagefind-meta="author" content="${escapeHtml(meta.author)}">`);
+    }
+
+    if (meta.work) {
+      parts.push(`  <meta data-pagefind-meta="title" content="${escapeHtml(meta.work)}">`);
+    }
+
+    parts.push(`  <meta data-pagefind-meta="url" content="${url}">`);
+    parts.push('</head>');
+    parts.push('<body>');
+    parts.push('  <main data-pagefind-body>');
+    // bodyContent is plain text; keep simple paragraphs
+    parts.push(`    <p>${escapeHtml(bodyContent)}</p>`);
+    parts.push('  </main>');
+    parts.push('</body>');
+    parts.push('</html>');
+
+    const full = parts.join('\n');
+    const outPath = path.join(dir, name);
+    await fs.promises.writeFile(outPath, full, 'utf-8');
+  } catch (e) {
+    console.error('Erro ao escrever HTML de record:', e.message);
+  }
 }
 
 function resolvePagefindModule(publicDir) {
@@ -152,18 +216,32 @@ async function main() {
           volume: vid,
           page: String(p.page),
           collection: vol.collection_id,
+          author: p.author,
+          work: p.work,
         };
         if (bookNames.length) {
           metaObj.books = bookNames.join(' • ');
         }
 
-        await index.addCustomRecord({
-          url: `${base}/viewer?doc=${vid}&page=${p.page}`,
-          content,
-          meta: metaObj,
-          filters,
-          language: 'pt',
-        });
+        // optionally emit a standalone HTML file per record for testing
+        /*if (params.emitHtmlDir) {
+          try {
+            ensureDir(params.emitHtmlDir);
+            const filename = `${vid.replace(/[^a-zA-Z0-9_-]/g, '_')}_p${p.page}.html`;
+            const recUrl = `${base}/viewer?doc=${vid}&page=${p.page}`;
+            await writeRecordHtml(params.emitHtmlDir, filename, recUrl, metaObj, filters, p.summary_page || content || '');
+          } catch (e) {
+            console.error('Falha emitindo HTML de teste:', e.message);
+          }
+        } else*/ {
+          await index.addCustomRecord({
+            url: `${base}/viewer?doc=${vid}&page=${p.page}`,
+            content,
+            meta: metaObj,
+            filters,
+            language: 'pt',
+          });
+        }
 
         totalRecords++;
         if (totalRecords % reportEvery === 0) {

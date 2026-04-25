@@ -176,7 +176,15 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
             text: (b.textContent || '').trim(),
           };
         }).filter((b) => b.text.length > 0);
-        return { estado, blocos };
+        let width = 0;
+        let height = 0;
+        blocos.forEach((b) => {
+          if (b.bbox) {
+            width = Math.max(width, b.bbox[2]);
+            height = Math.max(height, b.bbox[3]);
+          }
+        });
+        return { estado, blocos, width, height };
       } catch (e) {
         console.warn('OCR XML parse error:', e);
         return null;
@@ -264,7 +272,8 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       ocrData.blocos.forEach((bloco) => {
         const el = document.createElement('div');
         const tipoNorm = bloco.tipo.toLowerCase().replace(/[^a-z0-9]/g, '_');
-        el.className = `ocr-block ${tipoNorm}`;
+        const scriptNorm = (bloco.script || '').toLowerCase().replace(/[^a-z0-9]/g, '_');
+        el.className = `ocr-block type-${tipoNorm} script-${scriptNorm}`;
 
         // Apenas mostrar meta para tipos não-comuns ou scripts não-latinos
         const isCommon = ['corpo', 'texto', 'paragrafo', 'outro'].includes(tipoNorm);
@@ -316,8 +325,54 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       container.appendChild(wrap);
     }
 
+    function renderOcrVisual(container, ocrData) {
+      container.innerHTML = '';
+      if (!ocrData || !ocrData.blocos.length) {
+        container.innerHTML = `<p style="color:var(--color-muted);margin:0;">${s.viewerOcrNoBlocks}</p>`;
+        return;
+      }
+      const { width, height, blocos } = ocrData;
+      if (!width || !height) {
+        renderOcrStructured(container, ocrData);
+        return;
+      }
+      const wrap = document.createElement('div');
+      wrap.className = 'viewer-ocr-visual';
+      const aspect = (height / width) * 100;
+      const spacer = document.createElement('div');
+      spacer.style.paddingTop = aspect + '%';
+      wrap.appendChild(spacer);
+      blocos.forEach((bloco, idx) => {
+        if (!bloco.bbox) return;
+        const [x1, y1, x2, y2] = bloco.bbox;
+        const el = document.createElement('div');
+        const tipoNorm = bloco.tipo.toLowerCase().replace(/[^a-z0-9]/g, '_');
+        const scriptNorm = (bloco.script || '').toLowerCase().replace(/[^a-z0-9]/g, '_');
+        el.className = `ocr-block type-${tipoNorm} script-${scriptNorm}`;
+        el.style.position = 'absolute';
+        el.style.left = (x1 / width * 100) + '%';
+        el.style.top = (y1 / height * 100) + '%';
+        el.style.width = ((x2 - x1) / width * 100) + '%';
+        el.style.height = ((y2 - y1) / height * 100) + '%';
+        el.style.overflow = 'hidden';
+        el.style.fontSize = `clamp(0.45rem, ${((y2 - y1) / height * 100) / 4}vw, 0.9rem)`;
+        el.style.padding = '2px 4px';
+        el.style.boxSizing = 'border-box';
+        el.style.zIndex = String(idx);
+        const text = document.createElement('span');
+        text.textContent = bloco.text;
+        text.style.wordBreak = 'break-word';
+        text.style.lineHeight = '1.15';
+        el.appendChild(text);
+        el.title = `${typeLabel(bloco.tipo)} · ${scriptLabel(bloco.script)}\n${bloco.text}`;
+        wrap.appendChild(el);
+      });
+      container.appendChild(wrap);
+    }
+
     async function load() {
       try {
+        document.body.classList.add('viewer-active');
         const url = new URL(window.location.href);
         const doc = url.searchParams.get('doc') || 'PG144';
         const pageNumber = Number(url.searchParams.get('page') || 396);
@@ -443,6 +498,17 @@ viewerRoot.innerHTML = '';
             .viewer-search-local input:focus { outline: 2px solid var(--color-accent); outline-offset: 2px; }
             .viewer-sidebar-section { margin-bottom: var(--space-4); }
             .viewer-sidebar-section h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-muted); margin: 0 0 0.75rem; }
+            /* Layout wide no viewer */
+            body.viewer-active .wrapper { max-width: 1400px; }
+            @media (min-width: 1600px) { body.viewer-active .wrapper { max-width: 1600px; } }
+            /* OCR visual layout */
+            .viewer-ocr-visual { position: relative; width: 100%; background: var(--color-surface-2); border: 1px solid var(--color-border); border-radius: var(--radius-s); overflow: auto; min-height: 65vh; }
+            .viewer-ocr-visual .ocr-block { position: absolute; margin-bottom: 0; border-radius: 2px; min-height: 1.6em; min-width: 3ch; overflow: hidden; }
+            .viewer-ocr-visual .ocr-block.type-cabecalho { text-align: center; }
+            .viewer-ocr-visual .ocr-block:hover { z-index: 999 !important; box-shadow: 0 0 0 2px var(--color-accent); overflow: visible; background: var(--color-surface); }
+            .viewer-segments-index a.segment-active { border-color: var(--color-accent); background: var(--color-surface-2); }
+            .viewer-segments-index a.segment-active span:first-child { color: var(--color-accent); }
+
           `;
           document.head.appendChild(styleTag);
         }
@@ -755,43 +821,40 @@ viewerRoot.innerHTML = '';
         if (!page.excerpt) trechoRes.wrap.style.display = 'none';
         mainContent.appendChild(trechoRes.wrap);
 
-        // Bloco OCR Original inline (expansível)
+        // Bloco OCR Original (sempre visível)
         const rawHref = safeUrl(page.raw?.url);
         if (rawHref !== '#') {
-          const details = document.createElement('details');
-          details.style.cssText = 'margin-top:var(--space-5); border-top:1px solid var(--color-border); padding-top:var(--space-4);';
+          const ocrSection = document.createElement('div');
+          ocrSection.style.cssText = 'margin-top:var(--space-5); border-top:1px solid var(--color-border); padding-top:var(--space-4);';
 
-          const summary = document.createElement('summary');
-          summary.style.cssText = 'cursor:pointer; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--color-muted); user-select:none; list-style:none; display:flex; align-items:center; gap:var(--space-2);';
-          summary.innerHTML = `<span class="ocr-arrow" style="display:inline-block;transition:transform 0.2s;">▶</span> ${s.viewerOcrTitle}`;
+          const ocrHeader = document.createElement('div');
+          ocrHeader.style.cssText = 'display:flex; align-items:center; gap:var(--space-2); margin-bottom:var(--space-3); flex-wrap:wrap;';
+          const ocrTitle = document.createElement('span');
+          ocrTitle.style.cssText = 'font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--color-muted);';
+          ocrTitle.textContent = s.viewerOcrTitle;
+          ocrHeader.appendChild(ocrTitle);
 
           const extLink = document.createElement('a');
           extLink.href = rawHref;
           extLink.target = '_blank';
           extLink.rel = 'noreferrer';
-          extLink.style.cssText = 'font-size:0.75rem; margin-left:auto; color:var(--color-muted);';
+          extLink.style.cssText = 'font-size:0.75rem; color:var(--color-muted); margin-left:auto;';
           extLink.textContent = s.viewerOcrOpen;
-          summary.appendChild(extLink);
+          ocrHeader.appendChild(extLink);
+          ocrSection.appendChild(ocrHeader);
 
           const bodyWrap = document.createElement('div');
-          bodyWrap.style.cssText = 'margin:var(--space-4) 0 0;';
 
-                const pre = document.createElement('pre');
-                pre.className = 'viewer-ocr-xml';
-                pre.style.cssText = 'max-height:60vh; overflow-y:auto;';
-                pre.textContent = s.viewerOcrLoading;
+          const pre = document.createElement('pre');
+          pre.className = 'viewer-ocr-xml';
+          pre.style.cssText = 'max-height:60vh; overflow-y:auto;';
+          pre.textContent = s.viewerOcrLoading;
 
           bodyWrap.appendChild(pre);
-          details.appendChild(summary);
-          details.appendChild(bodyWrap);
-          mainContent.appendChild(details);
+          ocrSection.appendChild(bodyWrap);
+          mainContent.appendChild(ocrSection);
 
-          let loaded = false;
-          details.addEventListener('toggle', async () => {
-            const arrow = details.querySelector('.ocr-arrow');
-            if (arrow) arrow.style.transform = details.open ? 'rotate(90deg)' : '';
-            if (!details.open || loaded) return;
-            loaded = true;
+          (async () => {
             try {
               const res = await fetch(rawHref);
               if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -799,9 +862,7 @@ viewerRoot.innerHTML = '';
 
               const ocrData = parseOcrXml(txt);
               if (ocrData && ocrData.blocos.length > 0) {
-                // mostrar XML colorido no <pre>
                 pre.innerHTML = highlightXml(txt);
-                // armazenar raw para busca/highlight de termos
                 pre.dataset.raw = txt;
                 if (highlight) applyHighlight(pre, highlight);
 
@@ -818,32 +879,57 @@ viewerRoot.innerHTML = '';
                 btnStruct.style.fontSize = '0.8rem';
                 btnStruct.textContent = s.viewerOcrStructured;
 
+                const btnVisual = document.createElement('button');
+                btnVisual.className = 'button secondary';
+                btnVisual.style.fontSize = '0.8rem';
+                btnVisual.textContent = s.viewerOcrVisual;
+
                 const structContainer = document.createElement('div');
                 structContainer.style.cssText = 'max-height:60vh; overflow-y:auto;';
                 renderOcrStructured(structContainer, ocrData);
                 structContainer.style.display = 'none';
 
+                const visualContainer = document.createElement('div');
+                visualContainer.style.cssText = 'max-height:60vh; overflow-y:auto;';
+                renderOcrVisual(visualContainer, ocrData);
+                visualContainer.style.display = 'none';
+
+                function setActiveBtn(active) {
+                  [btnPlain, btnStruct, btnVisual].forEach((btn) => {
+                    btn.className = btn === active ? 'button' : 'button secondary';
+                  });
+                }
                 function showPlain() {
                   pre.style.display = '';
                   structContainer.style.display = 'none';
-                  btnPlain.className = 'button';
-                  btnStruct.className = 'button secondary';
+                  visualContainer.style.display = 'none';
+                  setActiveBtn(btnPlain);
                 }
                 function showStruct() {
                   pre.style.display = 'none';
                   structContainer.style.display = '';
-                  btnStruct.className = 'button';
-                  btnPlain.className = 'button secondary';
+                  visualContainer.style.display = 'none';
+                  setActiveBtn(btnStruct);
+                }
+                function showVisual() {
+                  pre.style.display = 'none';
+                  structContainer.style.display = 'none';
+                  visualContainer.style.display = '';
+                  setActiveBtn(btnVisual);
                 }
 
                 btnPlain.addEventListener('click', () => { localStorage.setItem('viewerOcrMode', 'plain'); showPlain(); });
                 btnStruct.addEventListener('click', () => { localStorage.setItem('viewerOcrMode', 'struct'); showStruct(); });
+                btnVisual.addEventListener('click', () => { localStorage.setItem('viewerOcrMode', 'visual'); showVisual(); });
                 toggleWrap.appendChild(btnPlain);
                 toggleWrap.appendChild(btnStruct);
+                toggleWrap.appendChild(btnVisual);
                 bodyWrap.insertBefore(toggleWrap, pre);
                 bodyWrap.appendChild(structContainer);
+                bodyWrap.appendChild(visualContainer);
                 const savedOcrMode = localStorage.getItem('viewerOcrMode');
                 if (savedOcrMode === 'struct') showStruct();
+                else if (savedOcrMode === 'visual') showVisual();
                 else showPlain();
               } else {
                 pre.textContent = txt;
@@ -852,7 +938,7 @@ viewerRoot.innerHTML = '';
             } catch (e) {
               pre.textContent = s.viewerOcrError(e.message);
             }
-          });
+          })();
         }
 
         // Sidebar Metadados
@@ -885,14 +971,56 @@ viewerRoot.innerHTML = '';
           return block;
         }
 
+        // Índice de segmentos do volume (sidebar)
+        if (segments && segments.length) {
+          const segIndexBlock = document.createElement('div');
+          segIndexBlock.className = 'meta-block viewer-segments-index';
+          const segH4 = document.createElement('h4');
+          segH4.style.cssText = 'font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--color-muted); margin:0 0 0.75rem;';
+          segH4.textContent = s.viewerMetaSegments;
+          segIndexBlock.appendChild(segH4);
+
+          const segList = document.createElement('ul');
+          segList.style.cssText = 'list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:var(--space-2);';
+
+          segments.forEach((seg) => {
+            const isActive = pageNumber >= seg.page_first && pageNumber <= seg.page_last;
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = buildNavUrl(seg.page_first);
+            a.style.cssText = 'display:block; padding:var(--space-2) var(--space-3); border-radius:var(--radius); background:var(--color-surface); border:1px solid var(--color-border); text-decoration:none; color:inherit; font-size:0.8rem; transition: border-color 0.15s;';
+            if (isActive) {
+              a.className = 'segment-active';
+              a.style.borderColor = 'var(--color-accent)';
+              a.style.background = 'var(--color-surface-2)';
+            }
+            a.addEventListener('mouseenter', () => { if (!isActive) a.style.borderColor = 'var(--color-accent)'; });
+            a.addEventListener('mouseleave', () => { if (!isActive) a.style.borderColor = 'var(--color-border)'; });
+
+            const labelSpan = document.createElement('span');
+            labelSpan.style.cssText = 'font-weight:600; display:block; margin-bottom:2px;';
+            labelSpan.textContent = seg.label;
+
+            const rangeSpan = document.createElement('span');
+            rangeSpan.style.cssText = 'font-size:0.72rem; color:var(--color-muted);';
+            rangeSpan.textContent = `${isEn ? 'p.' : 'pág.'} ${seg.page_first}${seg.page_last !== seg.page_first ? '–' + seg.page_last : ''}`;
+
+            a.appendChild(labelSpan);
+            a.appendChild(rangeSpan);
+            li.appendChild(a);
+            segList.appendChild(li);
+          });
+
+          segIndexBlock.appendChild(segList);
+          sidebar.appendChild(segIndexBlock);
+        }
+
         const kwBlock = addMetaBlock(s.viewerMetaKeywords, keywordsLabels, true);
         if (kwBlock) sidebar.appendChild(kwBlock);
 
         const entBlock = addMetaBlock(s.viewerMetaEntities, entitiesLabels);
         if (entBlock) sidebar.appendChild(entBlock);
 
-        const segBlock = addMetaBlock(s.viewerMetaSegments, segmentLabels);
-        if (segBlock) sidebar.appendChild(segBlock);
 
         const snapBlock = addMetaBlock(s.viewerMetaSnapshots, snapshotLabels);
         if (snapBlock) sidebar.appendChild(snapBlock);
@@ -987,3 +1115,4 @@ viewerRoot.innerHTML = '';
     load();
   </script>
 </Layout>
+        el.style.overflow = 'hidden';

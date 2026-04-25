@@ -33,7 +33,7 @@ export const en: Translations = {
   disclaimerAriaLabel: 'Notice about AI-generated content',
 
   // ─── Footer ────────────────────────────────────────────────────────────────
-  footerLeft: 'Collaborative project • open source',
+  footerLeft: 'Collaborative project • <a href="https://github.com/Fabio3rs/BibliothecaPatristica" target="_blank" rel="noopener noreferrer">open source</a>',
   footerRight: 'GitHub Pages',
 
   // ─── Home page (index) ─────────────────────────────────────────────────────
@@ -42,6 +42,16 @@ export const en: Translations = {
     'A research and exploration interface for J.P. Migne\'s <strong>Patrologia Graeca (PG)</strong>, <strong>Latina (PL)</strong> and <strong>Orientalis (PO)</strong> collections. Browse one of the largest repositories of early Christian literature through a powerful full-text search and AI-enriched metadata.',
   homeCtaSearch: 'Start Research',
   homeCtaExample: 'View Example Page (Chrysostom)',
+
+  // ─── About (about section) ─────────────────────────────────────────────────
+  aboutTitle: 'What is Bibliotheca Patristica?',
+  aboutP1: 'For those who wish to deepen their understanding of the Christian faith, entering the world of Patristics and Patrology is like discovering the deep roots of the tree that nourishes us today with the fruits of Christian doctrine. The <strong>Bibliotheca Patristica</strong> project was born with the aim of facilitating this historical, intellectual, and spiritual recovery, making the treasure of Tradition more accessible.',
+  aboutP2: 'Although the terms are often used synonymously, there is an important technical distinction between these two areas of study. <strong>Patristics</strong> is dedicated to the thought and theology of the Church Fathers, focusing on the rich doctrinal and philosophical content they produced. <strong>Patrology</strong>, on the other hand, focuses on the history and literature of these authors, investigating their biographies, the historical context in which they lived, and the authenticity of their writings.',
+  aboutP3: 'But who are the "Church Fathers"? They are the great Christian leaders, pastors, and theologians who lived between the 1st and 8th centuries AD. For an author to receive this title, they must fulfill four fundamental criteria: <em>antiquity</em> (having lived in the era of the early Church), <em>holiness of life</em> (an exemplary testimony according to the Gospel), <em>orthodoxy</em> (having taught in full communion with the faith), and finally, <em>ecclesiastical approval</em> (official recognition of their legacy).',
+  aboutP4: 'The study of these works goes far beyond historical curiosity; it is a necessity for the solidity of faith. It was precisely during this formative period that central Christian doctrines, such as the mystery of the Holy Trinity and the divinity of Christ, were defined and defended against the heresies of the time. Furthermore, the first Fathers — known as "Apostolic Fathers" — were direct disciples of the Apostles or lived close to them. Drinking from this source is as close as we can get to the purity and fervor of early Christianity.',
+  aboutP5: 'These first masters also left us the key to the correct interpretation of the Bible, teaching us to read the Holy Scriptures not in isolation, but always illuminated by Tradition. Surprisingly, many of the challenges we face in the modern world — from crises of faith to attacks on morality — were already answered with brilliance by these authors centuries ago.',
+  aboutP6: 'In this library, the reader is invited to connect with giants of the faith. You will find echoes of minds such as Saint Augustine, the "Doctor of Grace," whose work is essential for understanding original sin and the love of God; Saint Irenaeus of Lyons, a tireless defender of the unity of faith against Gnosticism; Saint Ignatius of Antioch, a student of the Apostle Saint John, whose letters reveal the structure of the Church as early as the 2nd century; and Saint Jerome, the monumental translator of the Bible into Latin (the Vulgate).',
+  aboutP7: '<strong>Bibliotheca Patristica</strong> is an <strong>open-source</strong> project, the result of a collaborative effort to preserve and disseminate this legacy. You can access the source code, report issues, or contribute to its development in our repository on <a href="https://github.com/Fabio3rs/BibliothecaPatristica" target="_blank" rel="noopener noreferrer">GitHub</a>.',
 
   statVolumes: 'Volumes Covered',
   statSeries: '3 Series',
@@ -146,6 +156,7 @@ export const en: Translations = {
   viewerOcrOpen: '↗ open file',
   viewerOcrStructured: 'Structured view',
   viewerOcrPlain: 'Plain text',
+  viewerOcrVisual: 'Visual layout',
   viewerOcrBlockType: 'Type',
   viewerOcrBlockScript: 'Script',
   viewerOcrNoBlocks: 'No structured blocks found.',

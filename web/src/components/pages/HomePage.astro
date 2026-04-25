@@ -11,15 +11,15 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
 const startPoints = {
   "Autores Notáveis": [
-    { label: "Agostinho de Hipona", term: "Augustinus Hipponensis" },
-    { label: "Orígenes de Alexandria", term: "Origenes" },
-    { label: "João Crisóstomo", term: "Joannes Chrysostomus" },
-    { label: "Jerônimo", term: "Hieronymus" },
+    { label: "Agostinho de Hipona", term: "Agostinho de Hipona" },
+    { label: "Orígenes de Alexandria", term: "Orígenes de Alexandria" },
+    { label: "João Crisóstomo", term: "João Crisóstomo" },
+    { label: "Jerônimo", term: "Jerônimo de Estridão" },
   ],
   "Temas Centrais": [
-    { label: "Trindade", term: "Trinitas" },
-    { label: "Cristologia", term: "Christologia" },
-    { label: "Eucaristia", term: "Eucharistia" },
+    { label: "Trindade", term: "Trindade" },
+    { label: "Cristologia", term: "Cristologia" },
+    { label: "Eucaristia", term: "Eucaristia" },
     { label: "Gnose", term: "Gnosis" },
   ]
 };
@@ -30,7 +30,7 @@ const personas = [
     title: t.personaDevotoTitle,
     desc: t.personaDevotoDesc,
     cta: t.personaDevotoCta,
-    href: `${baseWithSlash}search?term=${encodeURIComponent('Joannes Chrysostomus')}`,
+    href: `${baseWithSlash}search?term=${encodeURIComponent('João Crisóstomo')}`,
   },
   {
     icon: '📖',
@@ -44,7 +44,7 @@ const personas = [
     title: t.personaResearcherTitle,
     desc: t.personaResearcherDesc,
     cta: t.personaResearcherCta,
-    href: `${baseWithSlash}search?term=${encodeURIComponent('Trinitas')}`,
+    href: `${baseWithSlash}search?term=${encodeURIComponent('Trindade')}`,
   },
 ];
 ---
@@ -201,6 +201,20 @@ const personas = [
       <div class="stat-item"><h3>{t.statSeries}</h3><p>{t.statSeriesLabel}</p></div>
       <div class="stat-item"><h3>…</h3><p>{t.statPages}</p></div>
       <div class="stat-item"><h3>{t.statTokens}</h3><p>{t.statTokensLabel}</p></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="card" style="margin-top:var(--space-5);">
+    <h2 style="margin-top:0;font-family:var(--font-serif);">{t.aboutTitle}</h2>
+    <div style="display:flex; flex-direction:column; gap:var(--space-4); color:var(--color-ink); line-height:1.6; max-width:80ch;">
+      <p set:html={t.aboutP1}></p>
+      <p set:html={t.aboutP2}></p>
+      <p set:html={t.aboutP3}></p>
+      <p set:html={t.aboutP4}></p>
+      <p set:html={t.aboutP5}></p>
+      <p set:html={t.aboutP6}></p>
+      <p set:html={t.aboutP7}></p>
     </div>
   </section>
 
