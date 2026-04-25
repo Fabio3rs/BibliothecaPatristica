@@ -33,7 +33,7 @@ export const ptBR: Record<string, any> = {
   disclaimerAriaLabel: 'Aviso sobre o conteúdo gerado por IA',
 
   // ─── Footer ────────────────────────────────────────────────────────────────
-  footerLeft: 'Projeto colaborativo • código aberto',
+  footerLeft: 'Projeto colaborativo • <a href="https://github.com/Fabio3rs/BibliothecaPatristica" target="_blank" rel="noopener noreferrer">código aberto</a>',
   footerRight: 'GitHub Pages',
 
   // ─── Página inicial (index) ────────────────────────────────────────────────
@@ -42,6 +42,16 @@ export const ptBR: Record<string, any> = {
     'Uma interface de pesquisa e exploração para as coleções da <strong>Patrologia Graeca (PG)</strong>, <strong>Latina (PL)</strong> e <strong>Orientalis (PO)</strong> de J.P. Migne. Navegue por um dos maiores acervos da literatura cristã antiga através de uma busca textual poderosa e metadados enriquecidos por IA.',
   homeCtaSearch: 'Iniciar Pesquisa',
   homeCtaExample: 'Ver Página de Exemplo (Crisóstomo)',
+
+  // ─── Sobre (about section) ────────────────────────────────────────────────
+  aboutTitle: 'O que é a Bibliotheca Patristica?',
+  aboutP1: 'Para os católicos e estudiosos que desejam aprofundar sua fé, adentrar o universo da Patrística e da Patrologia é como descobrir as raízes profundas da árvore que hoje nos nutre com os frutos da doutrina cristã. O projeto <strong>Bibliotheca Patristica</strong> nasce com o intuito de facilitar esse resgate histórico, intelectual e espiritual, tornando o tesouro da Tradição mais acessível.',
+  aboutP2: 'Embora os termos sejam frequentemente usados como sinônimos no dia a dia, existe uma distinção técnica importante entre essas duas áreas de estudo. A <strong>Patrística</strong> dedica-se ao pensamento e à teologia dos Padres da Igreja, debruçando-se sobre o riquíssimo conteúdo doutrinal e filosófico que eles produziram. Já a <strong>Patrologia</strong> volta-se para a história e a literatura desses autores, investigando suas biografias, o contexto histórico em que viveram e a autenticidade de seus preciosos escritos.',
+  aboutP3: 'Mas, afinal, quem são os chamados "Padres da Igreja"? Trata-se dos grandes líderes, pastores e teólogos cristãos que viveram entre os séculos I e VIII d.C. Para que um autor receba esse título pela Igreja, ele deve preencher quatro critérios fundamentais: a <em>antiguidade</em> (ter vivido na era da Igreja primitiva), a <em>santidade de vida</em> (um testemunho exemplar segundo o Evangelho), a <em>ortodoxia</em> (ter ensinado em plena comunhão com a fé católica) e, por fim, a <em>aprovação eclesiástica</em> (o reconhecimento oficial de seu legado).',
+  aboutP4: 'O estudo dessas obras vai muito além da curiosidade histórica; é uma necessidade para a solidez da fé. Foi exatamente nesse período formativo que doutrinas centrais do cristianismo, como o mistério da Santíssima Trindade e a divindade de Cristo, foram definidas e arduamente defendidas contra as heresias da época. Além disso, os primeiros Padres — conhecidos como "Apostólicos" — foram discípulos diretos dos Apóstolos ou conviveram com pessoas próximas a eles. Beber dessa fonte é o mais perto que podemos chegar da pureza e do fervor do cristianismo em seus primórdios.',
+  aboutP5: 'Esses primeiros mestres também nos legaram a chave para a correta interpretação da Bíblia, ensinando-nos a ler as Sagradas Escrituras não de maneira isolada, mas sempre iluminadas pela Tradição. Surpreendentemente, muitos dos desafios que enfrentamos no mundo moderno — desde crises de fé até ataques à moralidade — já foram respondidos com brilhantismo por esses autores há séculos.',
+  aboutP6: 'Nesta biblioteca, o leitor é convidado a ter contato com gigantes da nossa fé. Encontrará ecos de mentes como Santo Agostinho, o "Doutor da Graça", cuja obra é essencial para compreender o pecado original e o amor de Deus; Santo Irineu de Lião, um incansável defensor da unidade da fé contra o gnosticismo; Santo Inácio de Antioquia, aluno do apóstolo São João, cujas cartas revelam a estrutura da Igreja já no século II; e São Jerônimo, o monumental tradutor da Bíblia para o latim (a Vulgata).',
+  aboutP7: 'A <strong>Bibliotheca Patristica</strong> é um projeto de <strong>código aberto</strong>, fruto de um esforço colaborativo para preservar e difundir este legado. Você pode acessar o código-fonte, reportar problemas ou contribuir para o seu desenvolvimento em nosso repositório no <a href="https://github.com/Fabio3rs/BibliothecaPatristica" target="_blank" rel="noopener noreferrer">GitHub</a>.',
 
   statVolumes: 'Volumes Cobertos',
   statSeries: '3 Séries',
@@ -146,6 +156,7 @@ export const ptBR: Record<string, any> = {
   viewerOcrOpen: '↗ abrir arquivo',
   viewerOcrStructured: 'Visualização estruturada',
   viewerOcrPlain: 'Texto bruto',
+  viewerOcrVisual: 'Layout visual',
   viewerOcrBlockType: 'Tipo',
   viewerOcrBlockScript: 'Script',
   viewerOcrNoBlocks: 'Nenhum bloco estruturado encontrado.',

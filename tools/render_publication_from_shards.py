@@ -9,6 +9,7 @@ Uso:
         --out web/public \
         --db data/patristica_keywords.db \
         --keywords-json web/public/dict/keywords.json \
+        --export-authors-json web/public/dict/authors.json \
         --page-block-size 100 \
         --raw-base-url "https://raw.githubusercontent.com/Fabio3rs/BibliothecaPatristica/refs/heads/codex/teste"
 
@@ -47,6 +48,8 @@ class PageRecord:
     file: str
     summary_page: str
     summary_global: str
+    author: str
+    work: str
     keywords: List[str]
     keyword_categories: Dict[str, List[str]]
     created_at: str
@@ -62,6 +65,11 @@ def load_index(path: Path) -> dict:
 
 DEFAULT_DB = Path("data/patristica_keywords.db")
 DEFAULT_KEYWORDS_JSON = Path("web/public/dict/keywords.json")
+
+
+authors_global_lookup: set[str] = (
+    set()
+)  # Para coletar autores detectados e exportar authors.json
 
 
 def load_shard(shard_path: Path) -> List[PageRecord]:
@@ -82,6 +90,8 @@ def load_shard(shard_path: Path) -> List[PageRecord]:
                 if clean:
                     kw_cats_norm[str(cat).strip()] = clean
 
+            author_clean = r.get("author", "").split("(")[0].split(".")[0].strip()
+
             recs.append(
                 PageRecord(
                     doc=r["doc"],
@@ -89,11 +99,16 @@ def load_shard(shard_path: Path) -> List[PageRecord]:
                     file=r.get("file", ""),
                     summary_page=r.get("summary_page", ""),
                     summary_global=r.get("summary_global", ""),
+                    author=author_clean,
+                    work=r.get("work", ""),
                     keywords=r.get("keywords") or [],
                     keyword_categories=kw_cats_norm,
                     created_at=r.get("created_at", ""),
                 )
             )
+
+            if len(author_clean) > 2:
+                authors_global_lookup.add(author_clean[:100])  # Limita tamanho para evitar lixo
     return recs
 
 
@@ -389,6 +404,8 @@ def page_blocks(
                 "label": str(r.page),
                 "summary_page": r.summary_page,
                 "summary_global": r.summary_global,
+                "author": r.author,
+                "work": r.work,
                 "created_at": r.created_at,
                 "keyword_ids": kws,
                 "keyword_categories": kw_cats_ids,
@@ -435,6 +452,11 @@ def write_json(path: Path, obj: dict) -> None:
         json.dumps(obj, ensure_ascii=False, separators=(",", ":")),
         encoding="utf-8",
     )
+
+
+def dump_authors_lookup(path: Path) -> None:
+    authors = sorted(authors_global_lookup)
+    write_json(path, authors)
 
 
 def main():
@@ -504,6 +526,13 @@ def main():
             "Passe string vazia para omitir a URL (raw.file ainda será salvo)."
         ),
     )
+    ap.add_argument(
+        "--export-authors-json",
+        type=Path,
+        default=Path("web/public/dict/authors.json"),
+        help="Caminho para o arquivo JSON de saída com o dicionário de autores.",
+    )
+
     args = ap.parse_args()
 
     ensure_dirs(args.out)
@@ -538,6 +567,8 @@ def main():
     log(f"Construindo lookup de keywords via {args.db} + {args.keywords_json} ...")
     kw_map = build_keyword_lookup(args.db, args.keywords_json)
     log(f"Lookup pronto: {len(kw_map)} entradas.")
+
+    dump_authors_lookup(args.export_authors_json)
 
     volumes_out = []
     for vol in idx.get("volumes", []):

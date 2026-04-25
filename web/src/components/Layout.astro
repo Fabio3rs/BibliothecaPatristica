@@ -123,7 +123,7 @@ const switchUrl = getLocaleSwitchUrl(
       <footer class="footer">
         <div class="wrapper" style="padding:0;">
           <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-3);">
-            <span>{t.footerLeft}</span>
+            <span set:html={t.footerLeft}></span>
             <span style="color:var(--color-muted);">{t.footerRight}</span>
           </div>
         </div>

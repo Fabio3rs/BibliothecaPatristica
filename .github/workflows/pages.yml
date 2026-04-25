@@ -39,7 +39,12 @@ jobs:
 
       - name: Build Pagefind index from shards
         # Run the indexing script to populate web/public/pagefind before the site build
-        run: node ../tools/build_pagefind_from_shards.mjs --public ./public --out ./public/pagefind --base /BibliothecaPatristica
+        run: |
+          # mkdir -p tmp/build
+          # export THREADS=$(nproc)
+          node ../tools/build_pagefind_from_shards.mjs --public ./public --out ./public/pagefind --base /BibliothecaPatristica --emit-html-dir tmp/build
+          # npx pagefind --site tmp/build/ --output-path "public/pagefind"
+          # rm -rf tmp/build
 
       - name: Build
         run: npm run build

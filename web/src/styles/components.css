@@ -138,6 +138,12 @@ ul.chips li[style*="cursor"]:hover { background: color-mix(in srgb, var(--color-
 }
 
 /* Responsividade para metadados no viewer */
+/* XML syntax highlighting (raw OCR) */
+.xml-comment { color: #6a9955; }
+.xml-name   { color: #569cd6; }
+.xml-attr   { color: #9cdcfe; }
+.xml-value  { color: #ce9178; }
+
 @media (max-width: 720px) {
   .meta-grid { grid-template-columns: 1fr; }
   .result-title { font-size: 1rem; }
@@ -274,6 +280,12 @@ ul.chips li[style*="cursor"]:hover { background: color-mix(in srgb, var(--color-
   color: var(--color-ink);
   overflow-x: auto;
 }
+
+/* XML syntax highlighting (raw OCR) */
+.xml-comment { color: #6a9955; }
+.xml-name   { color: #569cd6; }
+.xml-attr   { color: #9cdcfe; }
+.xml-value  { color: #ce9178; }
 
 @media (max-width: 720px) {
   .ocr-view-toggle { margin-left: 0 !important; margin-top: var(--space-2); width: 100%; }
