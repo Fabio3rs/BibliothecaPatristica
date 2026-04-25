@@ -39,7 +39,7 @@ export const en: Translations = {
   // ─── Home page (index) ─────────────────────────────────────────────────────
   homeTitle: 'Bibliotheca Patristica Digital',
   homeSubtitle:
-    'A research and exploration interface for J.P. Migne\'s <strong>Patrologia Graeca (PG)</strong>, <strong>Latina (PL)</strong> and <strong>Orientalis (PO)</strong> collections. Browse one of the largest repositories of early Christian literature through a powerful full-text search and AI-enriched metadata.',
+    'A research and exploration interface for J.P. Migne\'s <strong>Patrologia Graeca (PG)</strong>, <strong>Latina (PL)</strong> and <strong>Orientalis (PO)</strong> collections. The original texts remain in Greek, Latin and other eastern languages; what we provide are <strong>AI-generated summaries, keywords and metadata in Brazilian Portuguese</strong> to help locate and understand the corpus.',
   homeCtaSearch: 'Start Research',
   homeCtaExample: 'View Example Page (Chrysostom)',
 
@@ -73,6 +73,9 @@ export const en: Translations = {
   statsLoadError: 'Stats not loaded:',
 
   // ─── Personas ──────────────────────────────────────────────────────────────
+  aboutP8:
+    'Important: most of the corpus remains in its original languages — Greek, Latin, Syriac, Coptic and other eastern languages. What you find on this platform are <strong>summaries, keywords and metadata automatically extracted</strong> through text processing and artificial intelligence, serving as bridges to navigate and understand the corpus.',
+
   personasTitle: 'Who is this corpus for?',
   personasDesc: 'Choose your profile and discover how Bibliotheca Patristica can help.',
   personaDevotoTitle: 'I am a devotee',
