@@ -39,7 +39,7 @@ export const ptBR: Record<string, any> = {
   // ─── Página inicial (index) ────────────────────────────────────────────────
   homeTitle: 'Bibliotheca Patristica Digital',
   homeSubtitle:
-    'Uma interface de pesquisa e exploração para as coleções da <strong>Patrologia Graeca (PG)</strong>, <strong>Latina (PL)</strong> e <strong>Orientalis (PO)</strong> de J.P. Migne. Navegue por um dos maiores acervos da literatura cristã antiga através de uma busca textual poderosa e metadados enriquecidos por IA.',
+    'Uma interface de pesquisa e exploração para as coleções da <strong>Patrologia Graeca (PG)</strong>, <strong>Latina (PL)</strong> e <strong>Orientalis (PO)</strong> de J.P. Migne. Os textos originais estão em grego, latim e outras línguas orientais; o que oferecemos em português são <strong>resumos, palavras-chave e metadados enriquecidos por computação de texto</strong>, para ajudá-lo a localizar e compreender o acervo.',
   homeCtaSearch: 'Iniciar Pesquisa',
   homeCtaExample: 'Ver Página de Exemplo (Crisóstomo)',
 
@@ -73,6 +73,9 @@ export const ptBR: Record<string, any> = {
   statsLoadError: 'Stats não carregadas:',
 
   // ─── Personas ──────────────────────────────────────────────────────────────
+  aboutP8:
+    'Importante: a maior parte do acervo está em seus idiomas originais — grego, latim, siríaco, copta e outras línguas orientais. O que você encontra em português nesta plataforma são <strong>resumos, palavras-chave e metadados extraídos automaticamente</strong> por meio de processamento de texto e inteligência artificial, que servem como pontes para navegar e compreender o corpus.',
+
   personasTitle: 'Para quem é este acervo?',
   personasDesc: 'Escolha o seu perfil e descubra como a Bibliotheca Patristica pode ajudar.',
   personaDevotoTitle: 'Sou devoto',
