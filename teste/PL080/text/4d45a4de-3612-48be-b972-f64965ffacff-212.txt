@@ -1,103 +1,145 @@
-<pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,120">413
-LITURGIA
-415</bloco>
-
-  [!-- Coluna esquerda --]
-  <bloco tipo="texto_principal" script="latino" bbox="40,120,500,900">D. u Non. Octava sanctorum Innocentium.
-E. Non. Vigilia Epiphaniae.
-F. vi Id. Epiphania Domini.
-G. vii Id.
-A. vi II.
-B. v Id.
-C. iii Id. Pauli Heren i:e.
-D. iii Id.
-E. ii Id.
-F. Id. Octava Epiphaniae. S. Marrini Pictaviensis.
-G. xix Kal. Febr. Sancti confessoris. Sancti Mauri abbatis.
-
-A. xviii Kal.
-B. xvii Kal. Romæ, Marcelli papæ, cujus corpus
-Cluniaco requiescit.
-C. xvi Kal. Lingonis, sanctorum Geminorum.
-D. xv. Kal. Priscae virginis. In territorio Bisuntino,
-sancti Deicoli abbatis.
-E. xiii Kal.
-F. xii Kal. Romæ, SS. Sebastiani et Fabiani mart.
-G. xii Kal. Romæ, Agnetis virginis.
-A. xi Kal. Castris monasterio, S. Vincentii mart.
-In territorio Bisuntino, S. Mainbodi
-mart. Romæ, S. Anastasi(i) mart.
-
-B. x Kal. Sanctæ Emerentianæ. Commem. Main-
-bodi.
-C. ix Kal.
-D. viii Kal. Conversio sancti Pauli apostoli, et san-
-cti Projecti martyris.
-E. vii Policarp(i) episcopi, discipuli sancti Joan-
-nis evangelistæ.
-F. vi Constantinopoli S. Joann. Chrysostomi.
-G. v Octava sanctæ Agnetis. Karoli Magni im-
-peratoris O.
-A. iii. Octava sancti Vincentii.
-B. iii.
-C. ii.
-
-Mensis Januar. habet dies xxxi, l. xxx.
-Nox horarum xiv, dies horarum vii.
-
-FEBRUARIUS.
-Mense Numae medio sol distat sydus Aquarii.
-Ast Februi quarta est, praecedit tertia finem.
-
-D. Kal. Febr. In Scotia, sanctæ Brigide virginis.
-E. Purificatio sanctæ Mariæ Virginis.
-F. Salinis, depositio sancti Anatolii Conf.
-G. Sancti B'asii mart.
-A. Sanctæ Agathæ virginis.
-B.
-C.
-D. Apud Vesunt., S. Nicetii ejusd. civit.
-archiepisc.
-E.
-F. Sanctæ Scholasticæ virg., Bisunt., sancti
-Prothadii ejusd. civitatis archiepisc.
-G.</bloco>
-
-  [!-- Coluna direita --]
-  <bloco tipo="texto_principal" script="latino" bbox="520,120,990,900">Romæ, sancti Valentini martyris.
-
-Cathedra sancti Petri apostoli.
-
-Festivitas sancti Mathiæ apostoli.
-
-In territorio Bisuntino, S. Romuini abbatis.
-Mensis Febr. habet dies xxviii, l. xxix.
-Nox horas xvi, dies horas viii.
-
-MARTIUS.
-Procedunt duplices in Martia tempora Pisces.
-Martis prima necat, cujus si cuspide quarta est.
-Kal. Mart. Andegavis, sancti Albini episc. et c.
-
-Mengardis abbatissa Palmensis. O.
-Depositio S. Benedicti abb. In territorio Bisuntino, sancti Lupicini abb.
-Froddo. O.
-Annunciatio sanctæ Mariæ Virginis.
-
-Mensis Martii habet dies xxxi, l. xxx.
-Nox horas xiv, dies x.
-
-APRILIS.
-Respiciis Aprilis, Aries [ilegivel], Kalendas.
-Aprilis decima est, undeno a fine timetur.
-Kal. April.</bloco>
-
-  [!-- Notas marginais (gutter central A,B,C,D) --]
-  <bloco tipo="nota_marginal" script="latino" bbox="460,120,560,900">A</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="460,120,560,900">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="460,120,560,900">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="460,120,560,900">D</bloco>
-
-  <notas>Transcrição feita priorizando o aspecto visual. Onde a leitura não é segura, mantive apenas [ilegivel] (ex.: “Respiciis Aprilis, Aries [ilegivel], Kalendas.”). BBOX estimados em escala 0-1000; a área do gutter central contém letras A-D repetidas ao longo da coluna.</notas>
+<pagina estado="com_texto">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    413 LITURGIA 114
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,60,450,900">
+    D. u Non. Octava sanctorum Innocentium.
+    E. Non. Vigilia Epiphaniæ.
+    F. viii Id. Epiphania Domini.
+    G. vii Id.
+    A. vi Id.
+    B. v Id.
+    C. iii Id. Pauli Herenitæ.
+    D. iii Id.
+    E. ii Id.
+    F. Id. Octava Epiphaniæ. S. Hilarii Pictaviensis.
+    G. xix Kal. Febr. Sancti Felicis confessoris. Sancti Mauri abbatis.
+    A. xviii Kal.
+    B. xvii Kal. Romæ, Marcelli papæ, cujus corpus Cluniaco requiescit.
+    C. xvi Kal. Lingonis, sanctorum Geminorum.
+    D. xv Kal. Priscæ virginis. In territorio Bisuntino, sancti Deicoli abbatis.
+    E. xiiii Kal.
+    F. xiii Kal. Romæ, SS. Sebastiani et Fabiani mart.
+    G. xii Kal. Romæ, Agnetis virginis.
+    A. xi Kal. Castris monasterio, S. Vincentii mart. In territorio Bisuntino, S. Mainbodi mart. Romæ, S. Anastasii mart.
+    B. x Kal. Sanctæ Emerentianæ. Commem. Mainbodi.
+    C. ix Kal.
+    D. viii Kal. Conversio sancti Pauli apostoli, et sancti Projecti martyris.
+    E. vii Policarpi episcopi, discipuli sancti Joannis evangelistæ.
+    F. vi Constantinopoli S. Joann. Chrisostomi.
+    G. v Octava sanctæ Agnetis. Karoli Magni imperatoris O.
+    A. iii. Octava sancti Vincentii.
+    B. iii.
+    C. ii.
+    Mensis Januar. habet dies xxxi, l. xxx.
+    Nox horarum xvii, dies horarum vii.
+    FEBRUARIUS.
+    Mense Numæ medio sol distat sydus Aquarii.
+    Ast Februi quarta est, præcedit tertia finem.
+    D. Kal. Febr. In Scotia, sanctæ Brigidæ virginis.
+    E. Purificatio sanctæ Mariæ Virginis.
+    F. Salinis, depositio sancti Anatholii Conf.
+    Sancti Basii mart.
+    G.
+    A. Sanctæ Agathæ virginis.
+    B.
+    C.
+    D. Apud Vesunt., S. Nicetii ejusd. civit. archiepisc.
+    E.
+    F. Sanctæ Scholasticæ virg. Bisunt., sancti Prothadii ejusd. civitatis archiepisc.
+    G.
+    A.
+    B.
+    C.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,60,540,900">
+    A D.
+    E.
+    F.
+    G.
+    A.
+    B.
+    C.
+    D.
+    E.
+    F.
+    G.
+    A.
+    B.
+    C.
+    D.
+    E.
+    F.
+    G.
+    A.
+    B.
+    C.
+    D.
+    E.
+    F.
+    G.
+    A.
+    B.
+    C.
+    D.
+    E.
+    F.
+    G.
+    A.
+    B.
+    C.
+    D.
+    E.
+    F.
+    G.
+    A.
+    B.
+    C.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,60,950,900">
+    Romæ, sancti Valentini martyris.
+    Cathedra sancti Petri apostoli.
+    Festivitas sancti Mathiæ apostoli.
+    In territorio Bisunt. S. Romani abbatis.
+    Mensis Febr. habet dies xxviii, l. xxix.
+    Nox horas xvi, dies horas viii.
+    MARTIUS.
+    Procedunt duplices in Martia tempora Pisces.
+    Murtis prima necat, cujus si cuspide quarta est.
+    D. Kal. Mart. Andegavis, sancti Albini episc. et c.
+    E.
+    F.
+    G.
+    A.
+    B.
+    C.
+    D. Ermengardis abbatissa Palmensis. O.
+    E. Depositio S. Benedicti abb. In territorio Bisuntino, sancti Lupicini abb.
+    F. Froddo. O.
+    G. Annunciatio sanctæ Mariæ Virginis.
+    A.
+    B.
+    C.
+    D.
+    E.
+    F.
+    Mensis Mart. habet dies xxxi, l. xxx.
+    Nox horas xiv, dies x.
+    APRILIS.
+    Respice Aprilis, Aries frixæ, Kalendas.
+    Aprilis decima est, undeno a fine timetur.
+    G. Kal. April.
+    A.
+    B.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="550,950,850,980">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição de calendário litúrgico em latim.
+    Coluna central de letras (A, B, C...) tratada como nota_marginal conforme instrução.
+    Letras à esquerda das colunas de texto (D, E, F...) fazem parte das linhas de datação.
+    "Herenitæ" transcrito literalmente (pode ser Eremitæ).
+    "frixæ" transcrito literalmente.
+  </notas>
 </pagina>

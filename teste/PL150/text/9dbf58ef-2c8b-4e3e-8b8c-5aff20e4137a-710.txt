@@ -1,60 +1,90 @@
-<pagina estado="com_texto" tipo="gravura">
-  <bloco tipo="cabecalho" script="latino" bbox="70,5,930,80">
-    1415     J. COTTONIS     1416
+<pagina estado="com_texto">
+  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,150">
+    1115 J. COTTONIS 1116
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,90,740,930">
-DIAPASON.
-PASON.
-APASON.
-DIAPASON.
-APASON.
-ASCENSUS
-PROTI ASCENSUS
-AUTHENTICI [ilegivel] ASCENSUS
-REGULA
-ET DE
-SCENSUS.
-REGULA AU
-ET DESCENSUS.
-SUS IN TONO.
-G. u. A. re. [ilegivel] / B.mi c. la.
-I. II. III. IV. V. VI. VII. VIII.
-d. re. fa. mi. sol.
-a. re. b. h. mi. ut.
-PLAGA PRO
-ET DESCENSUS
-PLAGA DEU
-ET DESCENSUS
-PLAGA TRI
-ET DESCENSUS
-PLAGA TE
-ET DESCENSUS
-SUS
-IN TETRACHORDO
-SARON
-SARON
-GRAVIOM
+  <bloco tipo="texto_principal" script="latino" bbox="50,150,550,1300">
+    REGULA AUTHENTI
+    ET DESCEN
+    SUS IN TONO.
+    DESCENSUS.
+    REGULA AUTHENTI
+    DESCENSUS.
+    REGULA AU
+    DESCENSUS.
+    REGULA
+    SCENSUS.
+    AUTHENTICI TETRARDI ASCEN
+    AUTHENTICI TRITI ASCENSUS
+    AUTHENTICI DEUTERI ASCENSUS
+    PROTI ASCENSUS IN
+    DIAPASON.
+    DIA
+    PASON.
+    DIA
+    IN
+    SUS
+    DIAPASON.
+    IN
+    IN
+    APASON.
+    DIA
+    PASON.
+    I. II. III. IV. V. VI. VII. VIII.
+    G. ut. A. re. B. mi. C. fa. D. sol. E. la. F. fa. G. sol. a. la. b. mi. c. fa. d. sol. e. la. f. fa. g. sol. aa.
+    re. sol. mi. fa. fa. sol. sol. la. la. mi. mi. re. re. fa. fa. mi. sol. re. la. sol. mi. la. fa. fa. sol. sol. la. la. mi. mi. re. re.
+    GRAVIUM.
+    IN DIATIS
+    TES
+    SARON.
+    SARON.
+    PLAGA PRO
+    ET DESCENSUS
+    PLAGA DEU
+    ET DESCEN
+    PLAGA TRI
+    ET DESCEN
+    PLAGA TE
+    ET DESCEN
+    SUS
+    TI ASCENSUS IN
+    TERI ASCENSUS IN DIA
+    PENTE.
+    DIA
+    IN
+    PENTE.
+    EN
+    DIA
+    DI ASC
+    PENTE.
+    us in DIA
+    PENTE.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="120,220,180,840">
-A
-B
-C
-D
+  <bloco tipo="texto_principal" script="latino" bbox="560,150,950,1300">
+    Monochordum
+    Enchiriadis
+    Odonis.
+    I. q. N. y. P. f. J. J. E. b. X. k.
+    ARCHIOS. GR A. I.
+    DEUTEROS. A V B. II.
+    TRITUS. E S. C. III.
+    TETRARDOS. ARCHOS. P I N A D. IV.
+    ARCHOS. DEUT. ERI O a. b. V.
+    TETRARD. S U P g. III.
+    TRITOB. E S. F. III.
+    DEUT. O h. III.
+    ARCH. ERI a. b. I.
+    TET. EXCE d. III.
+    TR. T. RE. ES. g. III.
+    DE. ENT f. II.
+    ARCH. LL e. I.
+    TE. RRE a. III.
+    AR. MRE b. III.
+    DEUT. MAMENTES. c. I.
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="420,110,480,160">
-145
+  <bloco tipo="rodape" script="latino" bbox="300,1350,700,1400">
+    Digitized by Google
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="760,70,980,930">
-Monochordum.
-Enchiridiu[m] Odonis.
-I. II. III. IV. V. VI. VII. VIII.
-a. b. c. d. e. f. g. h.
-TET. ARCH. DEUT.
-REM. DEUT.
-[ilegivel]
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="620,955,970,995">
-Digitized by Google
-  </bloco>
-  <notas>Tipo de página: gravura (diagrama musical/teórico). Transcrição feita priorizando a leitura direta da imagem; BBOX aproximados em escala 0-1000. A coluna esquerda (diagrama) foi transcrita antes da coluna direita (quadro vertical). As letras marginais centrais (A, B, C, D) foram colocadas em bloco próprio nota_marginal, não integradas ao texto_principal. Usei [ilegivel] para palavras cuja leitura se mostrou insegura (por exemplo a palavra vertical entre "AUTHENTICI" e "ASCENSUS" e algumas entradas muito condensadas no quadro lateral). Mantive grafia, caixa e pontuação visíveis sem normalização ou tradução.</notas>
+  <notas>
+    A página contém um diagrama musical complexo (escalas e modos) impresso na orientação paisagem (rotacionado 90 graus em relação ao cabeçalho). A transcrição segue a ordem lógica de leitura do diagrama (de cima para baixo na orientação paisagem). O texto "J. COTTONIS" refere-se a Johannes Cottonius. O diagrama da direita é o "Monochordum Enchiriadis Odonis".
+  </notas>
 </pagina>

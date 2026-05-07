@@ -1,8 +1,8 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,10,1000,70">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
     963               S. ODILONIS CLUNIACENSIS ABBATIS V               964
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,80,475,560">
+  <bloco tipo="texto_principal" script="latino" bbox="50,70,450,650">
     Factus est pater inclytus
     Ipse vir apostolicus.
     Cujus clara confessio
@@ -29,29 +29,29 @@
     Magni Maioli populo fideli
     Gaudia pacis
     Mitte de cœlis, veniamque nostris
-    Largire culpis........
+    Largire culpis. . . . . . .
     Adsit et nobis gratia perennis
     Spiritus almi.
-    Cujus [ilegivel] munere potenti,
+    Cujus protecti munere potenti,
     Patrum exemplis meritisque celsis,
     Pariter arctum mereamur altum
     Scandere regnum.
     Gloria Patri, genitæque Proli,
-    Et ubi compar utriusque semper,
+    Et tibi compar utriusque semper,
     Spiritus alme, Deus unus omni
     Tempore sæcli. Amen.
 
     In Laudibus. Hymnus.
 
-    Maiolo, consors procerum
+    Maiole, consors procerum
     Regum Regi placentium
-    Inter cælestes aulicos
+    Inter cœlestes aulicos
     Divinitatis conscios,
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,90,520,140">
+  <bloco tipo="nota_marginal" script="latino" bbox="480,80,520,120">
     A
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="525,80,960,560">
+  <bloco tipo="texto_principal" script="latino" bbox="550,70,950,650">
     Honoris privilegio
     Cœtu junctus monastico :
     Sed et choris angelicis
@@ -83,7 +83,7 @@
     Gaudiis nos perpetuis et amplis
     Pro reis gestis merito carere
     Ut nequeamus.
-    Quesumus, Rector, pietatis auctor,
+    Quæsumus, Rector, pietatis auctor,
     Noster hic pastor tibi sit precator,
     Quo tua nobis pietate cunctis
     Crimina dones.
@@ -96,32 +96,38 @@
     Qui regis tanta bonitate cuncta
     Omne per ævum. Amen.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,290,520,350">
+  <bloco tipo="nota_marginal" script="latino" bbox="480,350,520,390">
     B
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,420,520,480">
+  <bloco tipo="nota_marginal" script="latino" bbox="480,500,520,540">
     C
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="60,580,940,740">
-    EPITAPHIUM ADALEHEIDE IMPERATRICIS
+  <bloco tipo="cabecalho" script="latino" bbox="100,680,900,800">
+    EPITAPHIUM ADALHEIDE IMPERATRICIS
 
     AUCTORE S. ODILONE
 
-    (Apud D. Pertz, Monumenta Germaniæ historica, Script. tom. IV, pag. 633.)
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,760,800,920">
-    MONITUM.
+    (Apud D. Pertz, Monumenta Germaniæ historica, Script. tom. IV, pag. 653.)
 
-    S. Odilo, quintus Cluniacensium abbas, celeber[ilegivel] regimine cænobii Cluniacensis successit, et plurima[ilegivel] rimus monasticorum sui temporis reformator, memoria dignis peractis, an. 1049 obiit.
-    Arvernis circa an. 962, natus, an. 993 Maiolo in Litteris sacris bene eruditus et assiduus librorum
+    MONITUM.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="760,960,980,995">
+  <bloco tipo="texto_principal" script="latino" bbox="50,820,450,920">
+    S. Odilo, quintus Cluniacensium abbas, celeberrimus monasteriorum sui temporis reformator, Arvernis circa an. 962, natus, an. 993 Maiolo in
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,830,540,860">
+    D
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,820,950,920">
+    regime cœnobii Cluniacensis successit, et plurimis memoria dignis peractis, an. 1049 obiit.
+    Litteris sacris bene eruditus et assiduus librorum
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,950,900,990">
     Digitized by Google
   </bloco>
   <notas>
-    - Página com duas colunas; a coluna esquerda foi transcrita antes da direita conforme instruções.
-    - Letras A, B, C na coluna central foram marcadas como notas marginais.
-    - Foram marcadas como [ilegivel] palavras cujo grafismo na imagem não pôde ser lido com segurança: uma na primeira estrofe do Hymnus in Nocturnis ("Cujus [ilegivel] munere potenti") e duas no parágrafo final do MONITUM onde há quebras e tipos borrados. Não se fizeram outras emendas nem normalizações.
-    - Scripts identificados: latino.
+    - Transcrição literal mantendo ortografia original (ex: Cœlestis, æthera, sæcula).
+    - Letras A, B, C no gutter entre colunas superiores e D no início da coluna inferior direita tratadas como nota_marginal.
+    - Pontos de elisão em "Largire culpis. . . . . . ." preservados.
+    - Texto inferior "MONITUM" dividido em duas colunas de texto principal.
   </notas>
 </pagina>

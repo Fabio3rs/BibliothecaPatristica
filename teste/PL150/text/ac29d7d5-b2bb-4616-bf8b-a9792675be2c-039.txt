@@ -1,54 +1,206 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,200,60">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,100,60">
     60
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="200,10,800,60">
-    DOM. LUCAE DACHERI NOTAE ET OBSERVATIONES.
+  <bloco tipo="cabecalho" script="latino" bbox="250,20,750,60">
+    DOM. LUCÆ DACHERII NOTÆ ET OBSERVATIONES.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="800,10,960,60">
+  <bloco tipo="cabecalho" script="latino" bbox="900,20,950,60">
     70
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,70,500,920">
-    monachum memoratur, ubi inter alia sic de Ascelino effatur: : Propter Ascelinum dico, qui B. Augustini verbo ad parvitatem sui erroris detorquere non timuit, sicut quidam compatriota illius, qui apud Pluvium inter discentes B. Augustini sententiam, etc. Haec ex ms. Bibliothecæ Regiæ. Quibus verbis non ha obscure Ascelinum, opinor, Pictaviensem notat. De Guillelmo autem nihil est quod ausim asserere; verum, si conjici liceat, dicam illum ipsum Guillelmum esse, qui et abbas Cornelensis postea fuit, cujus B. Lanfrancus meminit supra et ad quem scribit epistolam 57.
-
-    (*) Quod antiquitas Cadomum nuncupabat. Cadomum, gallice Caen, urbs est ampla; atque litterarum academiis celebris, in Normannia inferiori sita. Emendationis expressiusque dicit Campidomum Ceniensis lib. 1, de re Gallice, periocha 4 demonstrat. Scriptorum tamen auctoritas necnon vulgi usus invaluit ut concisus Cadomum dicatur.
-
-    Porro hucusque urbis nobilissimæ elegantiam ex devotissimo Papirio Massone in summum Galliæ descriptionum subjicimus. Argentam urbem, inquit, quippe leuis remotam petens, quæ in eodem loco sita, declivis tamen et qua parte in Olenam descenditur, qui continuo cursus Cadomum præcedens urbem Bajocassinam dioceses interliit, punctaque jungitur e tribus forniculis composito. De qua Arnorius, Philippius libro octavo:
-
-    Villa potens, opulenta, situs spatiosa, decora
-    Fluminibus, pratis et agrorum fertilitate,
-    Merciferasque radias portu capiente marino,
-    Seque tot ecclesiis, domibus et civibus ornans.
-    Et se Parisio rit paruas esse minorem.
-
-    Qui vero situm Cadomi bene excusserit, illam judicabit et pulchram et amoenam ob Olenam flumen, qui bis abundant ex ob fluminum et refluunt Oceani laudatur. In quam urbem fluvii quique alius [ilegivel] nomine Loci sit, atque in Olenam labitur. Luge si haec notis ad epistolam 2, Chron. Be cense, an. annorum 1063, pag. 5.
-
-    (2) Dux non monachorum. Celebris illius monasterii S. Stephani nihil plane supersit antiquitatis. Hucus... [ilegivel] plures notæ et citationes sequuntur; quibus exponentur privilegia et cartaæ, scilicet referuntur concessiones a Guillelmo Conquestore et aliis. (segue textus longiorum et excerpta chartarum hic incipient)
+  <bloco tipo="texto_principal" script="latino" bbox="50,70,480,200">
+    monachum memoratur, ubi inter alia sic de Ascelino
+    effatur : « Propter Ascelinum dico, qui B. Augustini
+    verba ad pravitatem sui erroris detorquere non
+    timuit, sicut quidam compatriota illius, qui apud
+    Pictavam inter discentes B. Augustini sententiam,
+    etc. » Hæc ex ms. Bibliothecæ Regiæ. Quibus verbis
+    non ita obscure Ascelinum, opinor, Pictaviensem
+    notat. De Guillelmo autem nihil est quod ausim
+    asserere; verum, si conjici liceat, dicam illum
+    ipsum Guillelmum esse, qui et abbas Cormeliensis
+    postea fuit, cujus B. Lanfrancus meminit supra et
+    ad quem scribit epistolam 57.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,140,520,200">
+  <bloco tipo="texto_principal" script="latino" bbox="50,200,480,320">
+    (*) Quod antiquitas Cadomum nuncupabat. Cado-
+    mum, gallice Caen, urbs est ampla, atque litterarum
+    academia celebris, in Normannia inferiori sita.
+    Emendatius expressiusque dici Campidomum Cena-
+    lis lib. v, De re Gallica, perioche 4 demonstrat.
+    Scriptorum tamen auctoritas necnon vulgi usus in-
+    valuit ut concisius Cadomum dicatur.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,320,480,450">
+    Porro hujusce urbis nobilissimæ elegantiam ex
+    doctissimo Papirio Massone in fluminum Galliæ
+    descriptione subjiciemus. « Argentam urbem, inquit,
+    quinque leucis remotam petens, quæ in edito
+    quidem loco sita, declivis tamen est qua parte in
+    Olenam descenditur, qui continuato cursu Cadomum
+    præclaram urbem Bajocassinæ diœceseos interluit,
+    ponteque jungitur e tribus fornicibus composito. De
+    qua Armoricus, Philippidos libro octavo :
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="70,450,460,530">
+    Villa potens, opulenta, situ spatiosa, decora
+    Fluminibus, pratis et agrorum fertilitate,
+    Merciferusque rates portu capiente marino,
+    Seque tot ecclesiis, domibus et civibus ornans.
+    Ut sc Parisio vix annuat esse minorem.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,530,480,620">
+    « Qui vero situm Cadomi bene excusserit, illam
+    judicabit et pulchram et amœnam ob Olenam flumen,
+    qui bis quolibet die ob fluxum et refluxum Oceani
+    intumescit. In quam urbem fluvius quoque alius no-
+    mine Udo fluit, atque in Olenam labitur. » Lege si
+    placet notas ad epistolam 2, Chron.c. Becense,
+    ante annum 1063, pag. 5.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,620,480,750">
+    (**) Dux unum monachorum. Celebris illius monas-
+    terii S. Stephani nihil plane superest antiquitatis.
+    Meus furor petulantissimorum, sceleratissimorumque
+    Calvinistarum omnia plane ædificia susquedeque
+    evertit, et chartas pene universas dilaceravit, igneve
+    consumpsit. Verum religiosissimi ac non mediocriter
+    eruditi viri D. de Renchi cellerarii ejusdem cœnobii,
+    ac S. T. doctoris studio atque industria tandem
+    reperta sunt tabulæ fundationis, privilegia summorum
+    pontificum Alexandri II, Honorii III et Clementis
+    III, necnon et Rotradi archiepiscopi Rothoma-
+    gensis, et Henrici Bajocensis episcopi; quæ integra,
+    ne disperdantur, describemus. Hæc vero sunt apo-
+    grapha.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,750,480,800">
+    CHARTA FUNDATIONIS ABBATIÆ SANCTI STEPHANI
+    CADOMENSIS,
+    a Guillelmo Conquestore facta.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,800,480,950">
+    Quisquis Deo, seu pro Deo, aliquid præstat,
+    non ipsum a se alienat, sed potius in futurum eum
+    spe vitæ æternæ multiplicandum conservat; hoc
+    agit pia Creatoris largitas, et larga ejus circa crea-
+    ta pietas. Qui cum bonorum nostrorum non egeat,
+    suus est enim orbis terræ et plenitudo ejus, hono-
+    rari tamen de nostra substantia, immolarique sibi
+    sacrificium laudis pro nostra salute desiderat. Hor-
+    tatur nos ut ei serviamus, tribuit quod pro collatis
+    beneficiis suis ei retribuamus; quod tamen miseri
+    cors Pater quasi alienum suscipit, quasi nostrum
+    rependit; in hoc sæculo peccata remittens, in futuro
+    centuplum accepturis, seipsum, et regnum cœleste
+    promittens. Qua spe ductus ego Willelmus An-
+    glorum rex, Normannorum et Cenomannorum prin-
+    ceps, cœnobium in honorem Dei, ac beatissimi pro-
+    tomartyris Stephani intra burgum, quem vulgari
+    nomine vocant Cadomum, pro salute animæ meæ,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,70,950,550">
+    uxoris, filiorum, ac parentum meorum disposui
+    construendum. Cui loco, ne divinæ Religionis cul-
+    tura aliquando propter inopiam desit, hoc modo
+    ipsi inposterum mea sollicitudo prospexit. Trado
+    igitur præfato cœnobio villas juris mei censum,
+    Roz, Alomanniam, Pontem-Divæ, Catiburgum cum
+    colonis et conditionariis, seu liberis hominibus,
+    cum molendinis, aquis, pratis, pascuis, silvis, seu
+    omnibus redditibus, et consuetudinibus ad eas per-
+    tinentibus, sicut in meo dominio hactenus habui, et
+    antecessores mei; et homines quidem duarum præ-
+    missarum villarum, videlicet censu, et Roz, qui
+    Francaram terram non tenent, ad servitium ecclesiæ,
+    et monachorum ita liberos, et omnino quietos con-
+    cedo, ut nunquam pro aliqua submonitione expedi-
+    tionis vel alterius cujuslibet rei ipsum servitium in-
+    termittant, nisi ego ipse, per me, vel per brevem
+    meum, abbatem submoneam quatenus eos nomina-
+    tim mihi mittat; et hoc intra fines Normanniæ
+    tantum, et nominatim tantummodo pro necessitate
+    belli ab extranea gente imminentis. Partem quoque
+    burgi trado, in qua præfatum monasterium constru-
+    ctum est, a muro in directum occidentem versus,
+    sicut via protenditur, qua a veteri beati Stephani
+    monasterio, ad urbem Bajocensem itur; et ea quo-
+    que via qua itur ad Brithu villam sancti Michaelis,
+    cum terris et omnibus consuetudinibus de eodem
+    burgo ad me pertinentibus, excepto quod extranei
+    mercatores de omnibus qui secunda feria ibi ement,
+    et venundabunt, tandiu quandiu telonearius ad sta-
+    tionem suam sedebit, et mercatores in communi
+    mercato erunt, teloneum ministris, qui Majori burgo
+    præerant, apportabunt de singulis plaustris, et asi-
+    nis, quo [f., quæ] venalia ligna ferent, lignum unum,
+    villarium cum omni territorio suo, et de eodem
+    hominum servitia, ut servientes mei, qui ibi ma-
+    nent, mihi servient [f. serviunt], et propter servitium
+    meum non remaneant. In magno quoque burgo do-
+    mum Turstini Legrini; et domum molendini de
+    Darnesteil cum ipso molendino, et molendinum quod
+    fuit Ramardi.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,550,950,950">
+    Hæc omnia quieta ab omni consuetudine, de pra-
+    tis juris mei tria jugera ad ulum pratum Brendac,
+    præterea quæ ad supradictas villas pertinebant [f.,
+    pertinebant] alveum Veteris Uldun, a villa Venin-
+    tro usque in Olæam fluvium, cum tribus molendi-
+    nis in eodem factis. Terram Willelmi Pavolh,
+    quam de me tenet Cadoni et Cluliæ. In territorio
+    Brithuville allodium, quem Rogerius calvus ibi
+    tenet. In territorio Bracii terram Willelmi Des-
+    landa; Allodium quoque quod Lupus tenet in Be-
+    neto et Walmereto, cum parte ecclesiæ ad eum per-
+    tinente. In territorio Curlei terram Willelmi came-
+    rarii. In territorio Balduenti vineam, cum dono
+    vinitoris, quam Hubertus Dapifer de me habuit. In
+    Barbefloth duas mensuras terræ. In territorio de
+    Boscval allodium Rodulphi filii Anseredi; in villeriis
+    et in mara terram quam ibi tenet Willelmus Crassus.
+    Terram quoque quam habuit Hugo de Rozel. In
+    Graymulla silvam de Malo Pertuoso, et de Torta-
+    valle, et de Folonia, et de Caisneto cum aquis et
+    terris, seu omnibus ad eas pertinentibus, hac con-
+    ditione servata ut monachi ipsius cœnobii ipsas sil-
+    vas nullo tempore destruant, vel destrui jubeant,
+    propter ipsam terram colendam, sive inhabitandam,
+    retentis in meo dominio cervis, capreolis et apris
+    silvestribus. Decimam de Fredetnaco. Servitium de
+    terra, quam Boselinus de Diva tenet in villeriis, et
+    Guarinuilla. Concedo quoque fieri ad opus præfati
+    monasterii mercatum in villa, cui Balte nomen est.
+    In territorio Cadomi feriam trium dierum, ita ut
+    quoties quilibet horum trium dierum in secunda feria
+    emerit [f., venerit], totum mercatum magni burgi
+    sit Sancti Stephani. In civitate Rothomagi concedi
+    fieri cellarium unum super Sequanam quietum ab
+    omni consuetudine, et habitantes in eo quietos, tam
+    in terra quam in aqua, per totam terram meam.
+    Concedo quoque domum, cum viridario, quam dedit
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,80,510,100">
     A
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,330,520,380">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,330,510,350">
     B
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,520,520,580">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,630,510,650">
     C
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,710,520,770">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,760,510,780">
     D
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,70,960,920">
-    uxorís, filiorum, ac parentum morum dispositi constringendum. Cui loco, ne divina Religionis cultura aliquando propter inopiam desit, hoc modo ipsi impositum mea sollicitudo prospexit. Trado igitur præfato coenobio villas juris mei censusm, Roz, Alouamiam, Pontem-Dive, Cathburgum cum colonis et conditionariis, seu liberis hominibus, cum molendis, aquis, pratis, pascuis, silvis, seu omnibus redditibus, et consuetudinibus ad eas pertinentibus, sicut in meo dominio hactenus habui, et antecessores mei; et homines quidem harum præmissarum villarum, videlicet censu, et Roz, qui Francicam terram non tenent, ad servitium ecclesiæ, et monachorum ita liberos, et omnino quietos concedo, ut numquam pro aliqua submonitione expedi[ent]ius vel alterius cujuslibet rei ipsum servitium intermittant, nisi ego ipse, per me, vel per brevem meam, abbatem subnomino quatenus eos nominatim mihi mittat; et hoc infra lines Normanniæ cunctum, et nominatim tantummodo pro necessitate belli ac extraneæ gentis imminentis. Partem quoque burgi trado, in qua præfatum monasterium constructum est, a muro in directione occidentem versus, sicut via proceditur, qua a veteri beati Stephani monasterio ad urbem Bajocensium itur; et ea quæ via qua itur ad Brihtui villam sancti Michaelis, cum terris et omnium consuetudinibus de eodem burgo ad me pertinentibus, excepto quod extranei mercatores de omnibus quæ secunda feria ibi erunt, et vendabuntur, tandiu quando telonearius ad stationem suam seclent, et mercatores in communi mercato erunt, teloneum mini[s]tris, qui Majoris burgi præerant, apportabunt de singulis pannis, et asin[is], quo [ilegivel] qualis venalit. Iam pernum, ligum unum, villarum cum omni territorio suo, et de eodem hominum servitia, et servientes vici, qui ibi man[ser]unt, mihi servient [s. serv.unt], et propter servitium meum non remanecant. In magno quoque burgo domino Turstino Legrini; et domum molendini de Darnesteli cum ipso molendino, et molendinum quod fuit Ramardi.
-
-    Huc omnia quieta ab omni consuetudine, de pratis juris mei tria jugera ad unum pratrum Bruciac, præter ea quæ ad supradictas villas pertinerebant [s. pertinebant] alveum veteris Udonæ, a villa Venun[?]tro usque in Olenam fluviurn, cum tribus molendinis in eodem factis. Terram Willelmi Paroli, quam de me tenet Cadoni et Cluilac; in territorio Br. Wilhallæ allodium, quern Rogerus calvus ibi tenet. In territorio Bracii terram Willelmi Desland; Allodium quoque quod Lupus tenet in Belno et Walnereto, cum parte ecclesiæ ad eum pertinent. In territorio Curlei terram Willelmi canerarii. In territorio Baldewini vineam, cum dono vinitoris, quam Hubertus Papiser de me habuit. In territorio de Boseld allodium Rodulphi filii Anserici; in villenis et in mare terram quam ibi tenet Willelmus Crassus. Terram quoque quam habuit Hugo de Rozel. In Grayvilla silvam de Salo Pertiuoso, et de Tortuavalle, et de Folonia, et de Casineto cum aquis et terris, seu omnibus ad eas pertinentibus, hic conditione servata ut monachi ipsius conventus ipsas silvas nullo tempore destruant, vel decidant, jucunda, propter ipsam terram cœnamam sive in habitationem, remanens in meo dominio cervis, capreolis et apris silvestribus. Decimam de redditio. Servitium de terra, quam Boselinus de Diva tenet in villeris, et Guarmilla. Concedo quoque fieri ad opus præfati monasterii mercatum in villa, cui Batte nonum est, in territorio Cadomi feriam trium dierum, ita ut quovis quilibet horum trium dierum in secunda feria emerit [s. emerint], totum mercatum magnum burgi si Sancti Stephani. In civitate Rothomagii concedi fieri cellarium unum super Sequanam quicumque alii omni consuetudine, et habitantes in eo quietos, tam in terra quam in aqua, per totam terram meam. Concedo quoque domum, cum viridario, quam dedit
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="420,940,740,995">
+  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
     Digitized by Google
   </bloco>
   <notas>
-    - Scriptura: latino. 
-    - Foram identificados cabeçalho (título e numeração), duas colunas de texto principal, quatro notas marginais identificadoras (A–D) na linha central, e rodapé moderno "Digitized by Google".
-    - Onde o traço tipográfico ou letra é pouco legível, foi indicado [ilegivel] por palavra conforme instruído.
-    - As bboxes são aproximadas em escala 0-1000.
+    - Transcrição fiel da imagem, corrigindo erros do OCR (ex: Pictavam, Cenalis, Olenam).
+    - Preservadas abreviaturas editoriais entre colchetes [f., ...] conforme impresso.
+    - Layout de duas colunas respeitado.
+    - Notas marginais A, B, C, D identificadas no gutter.
+    - Verso latino mantido com quebras de linha.
   </notas>
 </pagina>

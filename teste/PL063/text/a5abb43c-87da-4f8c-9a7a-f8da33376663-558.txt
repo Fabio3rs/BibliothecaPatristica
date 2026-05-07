@@ -1,115 +1,204 @@
 <pagina estado="com_texto">
-  <bloco tipo="outro" script="latino" bbox="40,10,960,50">
-    tipo_pagina: texto
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,50">
+    1111 AN. MANL. SEV. BOETII 1113
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,50,960,100">
-    1114     AN. MANL. SEV. BOETHI     1115
+  <bloco tipo="texto_principal" script="latino" bbox="80,60,480,90">
+    nes formas numeri multiplices explicabit. Jaceant
+    ig tur 3 termini æquales.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,100,480,920">
-    nes formas numeri multiplices explicabit. Jaceant igitur 3 termini aequales.
-
-    Ponatur itaque primo primus aequalis, id est unus.
-    Secundus vero, primo et secundo, id est 2; tertius vero primo, duobus secundis et tertio par sit, id est uni et duobus unius et uni, qui sunt 4, ut est descriptio:
-
-    |  |  |  |  |
-    | 1| 1| 1| 1|
-    |  | 1| 2| 4|
-
-    Videsne ut duplici proportione sequens ordo texatur. Fac rursus idem de duplicibus, ut sit primus primo aequalis, id est uni; secundus primo et secundo, id est uni et duobus, qui sunt 3; tertius primo, id est uni, duobus secundis, id est 4, et tertio, id est quatuor, qui simul 9 sunt, et venit haec forma:
-
-    | 1| 1| 1| 1|
-    | 1| 2| 3| 9|
-    | 1| 4|16|
-
-    Rursus, si de triplicibus idem feceris, continuus quadrupius procreabitur. Sit enim primus primo aequus, id est unus; sit secundus primo et secundo aequalis, id est 4; sit tertius primo, duobus secundis et tertio aeq ualis, id est 16.
-
-    | 1| 1| 1| 1|
-    | 1| 2| 4|16|
-
-    Et in caeteris quidem ad hanc formam, tribus his praeceptis utemur. Si vero qui ex aequalibus nati sunt multiplices, eos disponamus, et secundum haec praecepta vertamus, ita ut converso sint ordine, sesquialter ex duplici procreabitur, sesquiterius ex triplici, sesquiquartus ex quadrupio. Sint enim 3 duplices termini, qui ex aequalibus creati sunt, et qui ultimus est, primus ponatur hujusmodi:
-
-    | 1| 4| 2| 1|
-
-    Et constituatur primo in hoc ordine, primus par, id est 4, secundus vero primo et secundo par, id est 6, tertius vero primo, duobus secundis et tertio, id est 9.
-
-    | 4| 2| 1|
-    | 4| 6| 9|
-
-    Ecce tibi illa sesquialtera quantitas ex termino duplicitatis exoritur. Videamus nunc ad eundem modum ex triplici qui nascatur; disponantur enim triplices superiores, converso scilicet ordine sicut duplex, sicut est quoque ordo dispositus:
-
-    | 9| 3| 1|
-
-    Ponatur ergo primus primo aequus, id est 9; secundus primo et secundo, id est 12; tertius primo, duobus secundis et tertio aequalis, id est 16.
-
-    | 9| 3| 1|
-    | 9|12|16|
-
-    Ponatur ergo primus primo aequus, id est 9; secundus primo et secundo, id est 12; tertius primo, duobus secundis et tertio aequalis, id est 16.
-
-    | 9| 3| 1|
-    | 9|12|16|
-
+  <bloco tipo="texto_principal" script="latino" bbox="80,95,480,115">
+    | 1 | 1 | 1 |
+    | 1 | 1 | 1 |
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="485,190,515,230">
-    A
+  <bloco tipo="texto_principal" script="latino" bbox="80,120,480,180">
+    Ponatur itaque primo primus æqualis, id est unus.
+    Secundus vero, primo et secundo, id est 2; tertius
+    vero primo, duobus secundis et tertio par sit, id est
+    uni et duobus unis et uni, qui sunt 4, ut est de-
+    scriptio :
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,360,515,400">
+  <bloco tipo="texto_principal" script="latino" bbox="80,185,480,215">
+    | 1 | 1 | 1 |
+    | 1 | 2 | 4 |
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,220,480,310">
+    Videsne ut duplici proportione sequens ordo texa-
+    tur. Fac rursus idem de duplicibus, ut sit primus
+    primo æqualis, id est uni; secundus primo et se-
+    cundo, id est uni et duobus, qui sunt 3; tertius
+    primo, id est uni, duobus secundis, id est 4, et ter-
+    tio, id est quatuor, qui simul 9 fiunt, et venit hæc
+    forma :
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,260,510,280">
     B
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,520,515,560">
-    C
+  <bloco tipo="texto_principal" script="latino" bbox="80,315,480,365">
+    | 1 | 1 | 1 |
+    | 1 | 2 | 4 |
+    | 1 | 3 | 9 |
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,700,515,740">
+  <bloco tipo="texto_principal" script="latino" bbox="80,370,480,420">
+    Rursus, si de triplicibus idem feceris, continuus qua-
+    druplus procreabitur. Sit enim primus primo æquus,
+    id est unus; sit secundus primo et secundo æqualis,
+    id est 4; sit tertius primo, duobus secundis et tertio
+    æqualis, id est 16.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,425,480,465">
+    | 1 | 1 | 1 |
+    | 1 | 2 | 4 |
+    | 1 | 3 | 9 |
+    | 1 | 4 | 16 |
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,470,480,550">
+    Et in cæteris quidem ad hanc formam, tribus his
+    præceptis utemur. Si vero qui ex æqualibus nati
+    sunt multiplices, eos di-ponamus, et secundum hæc
+    præcepta vertamus, ita ut converso sint ordine, ses-
+    quialter ex duplici procreabitur, sesquitertius ex tri-
+    plici, sesquiquartus ex quadruplo. Sint enim 3 du-
+    plices termini, qui ex æqualibus creati sunt, et qui
+    u'timus est, primus ponatur hujusmodi :
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,555,480,595">
+    | 4 | 2 | 1 |
+    | 4 | 6 | 9 |
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,600,480,640">
+    Et constituatur primo in hoc ordine, primus par, id
+    est 4, secundus vero primo et secundo par, id est
+    6, tertius vero primo, duobus se-undis et tertio,
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,630,510,650">
     D
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="520,100,960,920">
-    Rursus secunda species superparticularis numeri, id est sesquitertius procreatus est. Quod si idem de quadruplo quis facere velit, sesquiquartus continuo nascetur, ut monstrabit subjecta descriptio:
-
-    | 16| 4| 1|
-    | 16|20|25|
-
-    Ac si quis idem de cunctis in infinitum paribus multiplicatis faciat, convenienter ordinem superparticularitalis inveniet. Quod si conversos superparticulares aliquis secundum haec praecepta converat, continuo videat superpartientes accrescere, et ex sesquialtero quidem superpartientis, ex sesquilterio supertripartientis procreabitur, et ceteri secundum communes denominationis species, sine ulla ordinis interpolatione nascetur. Disponantur igitur sic:
-
-    | 9| 6| 4| 1|
-
-    Superioris igitur descriptionis, primo primus aequus numerus ascribatur, id est 9, secundus vero primo et secundo, id est 15, tertius vero primo, duobus secundis et tertio, id est 25.
-
-    | 9| 6| 4| 1|
-    | 9|15|25|
-
-    Si ergo sesquiterium eodem modo vertamus, ordo supertripartiens invenietur. Si enim prima propositio sequi tertii.
-
-    |16|12| 9|
-
-    Ponatur secundum priorem modum, primo par primus, id est 16; secundus primo et secundo, id est 28; tertius primo, duobus secundis et tertio, id est 49. Omnis ergo summa disposita supertripartientes efficiet.
-
-    |16|12| 9|
-    |16|28|49|
-
-    Rursus si sesquiquartum eodem modo verteris, superquadripartiens statim quantitas procreabitur, ut est forma quam supponam vides.
-
-    |25|20|16|
-    |25|45|48|
-
-    Restat quemadmodum ex superparticularibus et superpartientibus multiplices superparticulares et multiplices superpartientes nascantur, ostendere. Quorum binas tantum faciam descriptiones, namque si rectum et non conversum sesquialterum ponimus, duplex superparticularis excrescit; si enim hoc modo:
-
-    | 4| 6| 9|
-
-    Ponatur secundum superiorem modum primo, primus aequalis, id est 4; secundus primo et secundo, id est 10; tertius primo, duobus secundis et tertio aequalis, id est 25.
-
-    | 4| 6| 9|
-    |10|25|
-
-    Aliquae haec quidem duplex sesquialtera summa producta est. Si vero sesquiterium non conversum ponamus, duplex sesquitertius invenietur, ut subjecta descriptio docet.
+  <bloco tipo="texto_principal" script="latino" bbox="80,640,480,660">
+    id est 9.
   </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="40,920,960,990">
+  <bloco tipo="texto_principal" script="latino" bbox="80,665,480,695">
+    | 4 | 2 | 1 |
+    | 4 | 6 | 9 |
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,700,480,760">
+    Ecce tibi illa sesquialtera quantitas ex termino du-
+    plicitatis exoritur. Videamus nunc ad eumdem mo-
+    dum ex triplici qui nascatur; disponantur enim tri-
+    plices superiores, converso scilicet ordine sicut du-
+    plex, hic est quoque ordo dispositus :
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,765,480,795">
+    | 9 | 3 | 1 |
+    | 9 | 12 | 16 |
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,800,480,840">
+    Ponatur ergo primus primo æquus, id est 9; secun-
+    dus primo et secundo, id est 12; tertius primo, duo-
+    bus secundis et tertio æquus, id est 16.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,845,480,875">
+    | 9 | 3 | 1 |
+    | 9 | 12 | 16 |
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,60,920,130">
+    A Rursus secunda species superparticularis numeri, id
+    est sesquitertius procreatus est. Quod si idem de
+    quadruplo quis facere velit, sesqui-quartus continuo
+    nascetur, ut monstrabit subjecta descriptio :
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,135,920,165">
+    | 16 | 4 | 1 |
+    | 16 | 20 | 25 |
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,170,920,260">
+    Ac si quis idem de cunctis in infinitum par ibus mul-
+    tiplicatis faciat, convenienter ordinem superparticula-
+    ritatis inveniet. Quod si conversos superparticulares
+    aliquis secundum hæc præcepta convertat, continuo
+    videat superpartientes accrescere, et ex sesquialtero
+    quidem superbipartiens, ex sesquitertio supertripar-
+    tiens procreatur, et cæteri secundum communes de-
+    nominationis species, sine ulla ordinis interpolatione
+    nascentur. Disponantur igitur sic :
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,265,920,285">
+    | 9 | 6 | 4 |
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,290,920,330">
+    Superioris igitur descriptionis, primo primus æquus
+    numerus ascribatur, id est 9, secundus vero primo
+    et secundo, id est 15, tertius vero primo, duobus se-
+    cund s et tertio, id est 25.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,335,920,365">
+    | 9 | 6 | 4 |
+    | 9 | 15 | 25 |
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,370,920,410">
+    Si ergo sesquitertium eodem modo vertamus, ordo
+    supertripartientis invenitur. Sit enim prima propositio
+    sesquitertii.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,415,920,435">
+    | 16 | 12 | 9 |
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,440,520,460">
+    C
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,440,920,490">
+    Ponatur secundum priorem modum, primo par pri-
+    mus, id est 16; secundus primo et secundo, id est 28;
+    tertius primo, duobus secundis et tertio, id est 49.
+    Omnis ergo summa disposita supertripartientes effi-
+    ciet.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,495,920,525">
+    | 16 | 12 | 9 |
+    | 16 | 28 | 49 |
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,530,920,570">
+    Rursus si sesquiquartum eodem modo verteris, su-
+    perquadripartiens statim quantitas procreabitur, ut
+    est ea forma quam suppositam vides.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,575,920,605">
+    | 25 | 20 | 16 |
+    | 25 | 45 | 81 |
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,610,920,680">
+    Restat quemadmodum ex superparticularibus et su-
+    perpartientibus multiplices superparticulares et multi-
+    plices superpartientes nascantur, ostendere. Quorum
+    binas tantum faciam descriptiones, namque si rectum
+    et non conversum sesquialterum ponimus, duplex
+    superparticularis excrescit; fit enim hoc modo :
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,685,920,705">
+    | 4 | 6 | 9 |
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,710,920,760">
+    Ponatur secundum superiorem modum primo, pri-
+    mus æqualis, id est 4; secundus primo et secundo,
+    id est 10; tertius primo, duobus secundis et tertio
+    æqualis, id est 25.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,765,920,795">
+    | 4 | 6 | 9 |
+    | 4 | 10 | 25 |
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,800,920,860">
+    Atque hæc quidem duplex sesquialtera summa pro-
+    ducta est. Si vero sesquitertium non conversum po-
+    namus, duplus sesquitertius invenitur, ut subjecta
+    descriptio docet.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="500,950,800,980">
     Digitized by Google
   </bloco>
-
   <notas>
-    Script: latino. Usei [ilegivel] em nenhuma palavra isolada; onde a leitura era insegura optei por transcrever a forma mais visivel. As tabelas foram representadas com barras e espaços para preservar a ordenação dos números. As letras centrais A,B,C,D (nota marginal de parágrafo) foram registadas com bbox aproximadas. BBOX valores são estimativas relativas (escala 0-1000).
+    Transcrição de página de Boethius, De Institutione Arithmetica.
+    Letras A, B, C, D identificadas como notas marginais de seção.
+    Tabelas numéricas transcritas com separadores |.
+    Algumas palavras divididas por hífen no final da linha foram mantidas conforme o original (ex: "se-undis", "par ibus").
   </notas>
 </pagina>

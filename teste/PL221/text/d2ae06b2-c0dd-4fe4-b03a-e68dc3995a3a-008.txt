@@ -1,31 +1,20 @@
-<pagina estado="com_texto" tipo="capa_ou_guarda">
-  <bloco tipo="cabecalho" script="latino" bbox="80,20,920,140">
-    [ilegivel] [ilegivel]
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,140,760,900">
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-  </bloco>
-  <bloco tipo="nota" script="latino" bbox="740,320,860,420">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="150,50,850,150">
     [ilegivel]
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="880,240,980,640">
+  <bloco tipo="texto_principal" script="latino" bbox="100,150,850,850">
+    [ilegivel]
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="920,780,980,820">
     SEX
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="840,760,980,920">
+  <bloco tipo="nota_marginal" script="latino" bbox="900,900,960,930">
     N VI
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="360,960,980,995">
+  <bloco tipo="rodape" script="latino" bbox="600,960,850,990">
     Digitized by Google
   </bloco>
   <notas>
-    Página identificada como "capa/guarda" (folha de guarda com forte sangramento/verso visível). A maior parte do texto principal é apenas transparência do verso e manchas; por isso cada palavra ilegível foi marcada com [ilegivel] (marca por palavra, conforme instrução). Inscrições marginais legíveis: "SEX" (margem direita, orientação vertical) e "N VI" (margem inferior-direita). Pequena anotação/caroço no centro-direito não legível transcrita como [ilegivel]. Bounding boxes estimadas visualmente e expressas na escala 0-1000. Script predominante: latino.
+    Página identificada como verso de folha de guarda ou título, com forte sangramento (bleed-through) do texto do verso ("D. THEODORETI" reverso no topo), tornando o corpo principal ilegível para esta face. Texto transcrito como [ilegivel] para representar o fantasma do texto. Fragmentos marginais à direita pertencem à página seguinte ("SEX", "N VI"). Carimbo moderno no rodapé.
   </notas>
 </pagina>

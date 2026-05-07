@@ -1,40 +1,29 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,70">
-    973          MUSICA ENCHIRIADIS.          974
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,60">
+    973 MUSICA ENCHIRIADIS. 974
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="40,80,490,170">
+  <bloco tipo="texto_principal" script="latino" bbox="40,60,480,150">
     manere possit, si ab aliis ad alios sonos transpo-
     natur, hoc et in superioribus aliquantulum tetigimus,
-    et nunc iteratis exemplis plenius repetendum. Sternatur ut prius veluti disposita tetrachordorum
+    et nunc iteratis exemplis plenius repetendum. Sternatur
+    ut prius veluti disposita tetrachordorum
     series, et idem melos, quod nunc in diapente sym-
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="500,80,960,170">
-    phonia designatum est, quaternis vel quinis colorum
-    descriptionibus exprimatur, videbisque eamdem me-
-    lodiæ formam in transpositione sua manere non
-    posse, sed per epogdoi vel semitonii distantiam mo-
-    dum unumquemque in alium transmutari ita :
+  <bloco tipo="texto_principal" script="misto" bbox="40,150,480,250">
+    T [neume] tris sempiternus / es \
+    T [neume] pa/ tris sempiternus / es \ fi\
+    S [neume] /pa/ tris sempiternus / es \ fi\ li\
+    T [neume] Tu/ /pa/ tris sempiternus / es \ fi\ li\ us.
+    T [neume] Tu/ /pa/ tris sempiternus / \ fi\ li\ us.
+    T [neume] Tu/ /pa/ \ fi\ li\ us.
+    S [neume] Tu/ / \ li\ us.
+    T P [neume] Tu/ \ us.
   </bloco>
-
-  <bloco tipo="outro" script="misto" bbox="90,165,930,300">
-    es
-
-    T [ilegivel] tris sempiternus / es \
-    T [ilegivel] pa/ tris sempiternus / es \ [ilegivel]
-    S [ilegivel] /pa/ tris sempiternus / es \ [ilegivel] li\
-    T [ilegivel] Tu/ /pa/ tris sempiternus / es \ [ilegivel] li\ us.
-    T [ilegivel] Tu/ /pa/ tris sempiternus / \ [ilegivel] li\ us.
-    T [ilegivel] Tu/ /pa/ \ [ilegivel] li\ us.
-    S [ilegivel] Tu/ / [ilegivel] li\ us.
-    TP Tu/ us.
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="40,300,490,495">
-    Primam namque descriptionem, quæ a sono f B tinuit. Ac inprimis per diatessaron organici meli
+  <bloco tipo="texto_principal" script="latino" bbox="40,250,480,400">
+    Primam namque descriptionem, quæ a sono F
     inchoat et finitur, primoque deputatur modo, si toto
-    ductu vel spatio uno feceris altiorem, ut inter chordam paginula interjecta designat, mox in modum
+    ductu vel spatio uno feceris altiorem, ut inter chordam
+    paginula interjecta designat, mox in modum
     mutatur deuterum, qui a sono f incipit, ac desinit
     in eundem. Fac duobus acutiorem a sono / incipiens,
     et tritus modus erit; si tribus, modus nascetur
@@ -42,56 +31,70 @@
     quinta regione denuo primus; similiter et in cæteris
     a quinto prior ordo redit.
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="285,490,480,560">
+  <bloco tipo="texto_principal" script="latino" bbox="40,400,480,450">
     CAPUT XIII.
-
     De proprietate symphoniarum (694).
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="40,560,490,800">
+  <bloco tipo="texto_principal" script="latino" bbox="40,450,480,700">
     Monstratum est nunc, qualiter unusquisque sonus
     in tetrachordo propria sit conditione dispar ab
     altero, ex eorumque concordi diversitate diversæ
     prodeant modorum seu troporum species. Dictum
-    quoque, quolis locis voces ab invicem distantes
+    quoque, quotis locis voces ab invicem distantes
     singulas consequenter symphonias reddant. Nunc
     id, quo proprie symphoniæ dicuntur et sunt, id est,
-    qualiter eadem voces sese invicem canendo hab-
-    eant, prosequamur. Hæc namque est, quam Diaphoniam cantilenam, vel assuete, organum, vocamus. Dicta autem Diaphonia, quod non uniformi
+    qualiter eædem voces sese invicem canendo ha-
+    beant, prosequamur. Hæc namque est, quam Dia-
+    phoniam cantilenam, vel assuete, organum, voca-
+    mus. Dicta autem Diaphonia, quod non uniformi
     canore constet, sed concentu concorditer dissono.
     Quod licet omnium symphoniarum sit commune,
     in diatessaron tamen ac diapente hoc nomen ob-
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="500,430,960,525">
-    Diaphoniæ exemplum est, utpote si ad subjectam describ-
+  <bloco tipo="nota_marginal" script="latino" bbox="30,550,50,580">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,60,520,80">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="520,60,960,150">
+    phonia designatum est, quaternis vel quinis colorum
+    descriptionibus exprimatur, videbisque eamdem me-
+    lodiæ formam in transpositione sua manere non
+    posse, sed per epogdoi vel semitonii distantiam mo-
+    dum unumquemque in alium transmutari ita :
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,250,520,270">
+    B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,250,960,350">
+    tinuit. Ac inprimis per diatessaron organici meli
+    ponatur exemplum, utpote si ad subjectam descri-
     ptionem duobus sonis interpositis, quarto loco, in
     unum canendo, vox voci respondeat ita :
   </bloco>
-
-  <bloco tipo="outro" script="misto" bbox="505,525,955,660">
-    J [ilegivel] es
-    T f tris sempiternus/
-    T / pa/ [ilegivel]
-    S f / pa/ es. \ li\
+  <bloco tipo="texto_principal" script="misto" bbox="520,350,960,450">
+    [neume] es
+    T f tris sempiternus/ \
+    T / pa/ fi\
+    S f / es. li\
     T f Tu tris sempiternus/ \ us.
-    T f pa/ [ilegivel]
-    S f Tu / \ li\
-    T f Tu us.
+    T / pa/ fi\
+    T / / li\
+    S f Tu us.
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="500,650,960,845">
-    Sic enim duobus aut pluribus in unum canende
+  <bloco tipo="texto_principal" script="latino" bbox="520,450,960,550">
+    Sic enim duobus aut pluribus in unum canendæ
     modesta duntaxat et concordi morositate, quod
     suum est hujus meli, videbis nasci suavem ex hac
     sonorum commistione concentum.
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,550,960,600">
     CAPUT XIV.
-
     De acutiore diaphonia per diatessaron, ejusque de-
     scriptio.
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,600,960,700">
     Nec solum hac collatione vox simplex si simplici
     conferatur, sed et simplex organum respondeat
     duplæ, aut dupla simplici, vel si ambas per diapason
@@ -99,31 +102,31 @@
     suaviter ad invicem resonare, ad subjectam descri-
     ptionem.
   </bloco>
-
-  <bloco tipo="outro" script="misto" bbox="40,845,960,965">
-    Organ. T [ilegivel] es
-    S [ilegivel] tris sempiternus/
-    T [ilegivel] pa/ [ilegivel]
-    T [ilegivel] / li\
-    Organ. T [ilegivel] Tu/ es us.
-
-    Princ. T [ilegivel] Tu tris sempiternus/ \ us.
-    S [ilegivel] / pa/ [ilegivel]
-    T [ilegivel] / li\
-
-    Organ. T [ilegivel] Tu es us.
-    T [ilegivel] tris sempiternus/
-    S [ilegivel] pa/ [ilegivel]
-    T [ilegivel] / li\
-
-    Princ. T [ilegivel] Tu us.
+  <bloco tipo="texto_principal" script="misto" bbox="40,700,960,900">
+    T [neume] es
+    S X tris sempiternus/ \
+    T [neume] pa/ fi\
+    T [neume] / li\
+    Organ. T [neume] Tu/ es us.
+    S [neume] tris sempiternus/ \
+    T [neume] pa/ fi\
+    T [neume] / es li\
+    Princ. T [neume] Tu tris sempiternus/ \ us.
+    S / pa/ fi\
+    T / / li\
+    Organ. T [neume] Tu es us.
+    T [neume] tris sempiternus/ \
+    S [neume] pa/ fi\
+    T [neume] / li\
+    Princ. T [neume] Tu us.
   </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="40,965,960,1000">
-    (694.) Abhinc multum variat Codex Paris. Biblioth. Reg. deque diaphonia seu organo regulas alias suc-
-
+  <bloco tipo="rodape" script="latino" bbox="40,900,960,950">
+    (694) Abhinc multum variat Codex Paris. Biblioth. Reg. deque diaphonia seu organo regulas alias suc-
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="400,950,600,990">
     Digitized by Google
   </bloco>
-
-  <notas>Página de texto em duas colunas, com exemplos musicais/tabelas transcritos conservadoramente em bloco próprio. Trechos de notação e alguns termos foram marcados com [ilegivel] quando a leitura não foi segura. Não houve normalização ou tradução.</notas>
+  <notas>
+    Transcrição fiel da página 973-974 da Musica Enchiriadis. As letras A, B e C foram tratadas como notas marginais conforme diretriz, embora A e B iniciem parágrafos na coluna direita. Símbolos musicais (neumas) representados por [neume]. Texto em latim com termos técnicos de teoria musical.
+  </notas>
 </pagina>

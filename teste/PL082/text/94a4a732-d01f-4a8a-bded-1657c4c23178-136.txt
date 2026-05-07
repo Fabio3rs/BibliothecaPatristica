@@ -1,97 +1,86 @@
-<pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="80,20,920,90">
-S. ISIDORI HISPALENSIS EPISCOPI
+<pagina estado="com_texto">
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,50">
+    259 S. ISIDORI HISPALNENSIS EPISCOPI 260
+  </bloco>
+  
+  <!-- Top Section Left Column -->
+  <bloco tipo="texto_principal" script="latino" bbox="80,50,480,380">
+    quando primum a gentililate convertimur, ita reconciliamur, quando post peccatum pœnitendo regredimur.
+    75. Exomologesis Græco vocabulo dicitur, quod Latine confessio interpretatur, cujus nominis duplex significatio est. Aut enim in laude intelligitur confessio, sicut est : Confiteor tibi, Pater, Domine cæli, et terræ. Aut dum quisque confitetur sua peccata ab eo indulgenda, cujus indeficiens est misericordia.
+    76. Ex hoc igitur Græco vocabulo exprimitur et frequentatur exomologesis, qua delictum nostrum Domino confitemur, non quidem ut ignaro, cujus cogitationi nihil occultum est, sed confessio est rei scilicet, ejus quæ ignoratur professio cognitioni.
+    77. Utile enim sibi ac jucundum quisquam esse existimaverat, rapere, adulterari, furari; sed ubi hæc æternæ damnationi obnoxia esse cognovit, cognitio lis, confitetur errorem.
+    78. Confessio autem erroris professio est desinendi; desinendum ergo a peccatis, dum confessio est. Confessio autem antecedit, remissio sequitur; cæterum extra veniam est, qui peccatum cognoscit, nec cognitum confitetur.
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="490,120,530,170">A</bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="40,90,480,450">
-quando primum a gentilitate convertimur, ita recognoscitur, quando post peccatum paenitendo regredimur.
-
-75. Exomologesis Graeco vocabulo dicitur, quod Latine confessio interpretatur, cujus nominis duplex significatio est. Aut enim in laude intelligitur confessio, si est: Confiteor tibi, Pater, Domine celi, et terrae. Aut dum quisque confitetur sua peccata ab eo indulgens, cujus indeficiens est misericordia.
-
-76. Ex hoc igitur Graeco vocabulo exprimuntur et frequentantur exomologesis, qua delictum nostrum Domino confitemur, non quidem ut ignaro, cujus cognitioni nihil occultum est, sed confessio est rei scilicet, ejus quae ignoratur profess[a] cognitio.
-
-77. Utile enim sibi ac jucundum quisquam esse existimaverat, rapere, adulterari, furari; sed ubi haec aeternae damnationi obnoxia esse cognovit, cogitavit sese confiteri errorem.
-
-78. Confessio autem erroris professio est desip[endi], desinendum ergo a peccatis, dum confessio est. Confessio autem ad veritatem repositio sequitur; caeterum extra veniam est qui peccatum cognoscit, nec cognitum confitetur.
+  <!-- Top Section Right Column -->
+  <bloco tipo="texto_principal" script="latino" bbox="520,50,920,380">
+    79. b Itaque exomologesis prosternendi et humiliandi hominis disciplina est, habitu atque victu, sacco et cineri incubare, corpus sordibus obscurare, animum mœroribus dejicere, illa quæ peccavit tristi tractatione mutare.
+    80. Litaniæ autem Græco nomine appellantur, quæ Latine 293 dicuntur rogationes. Inter litaniam vero et exomologesin hoc differt, quod exomologeses pro sola confessione peccatorum aguntur; litaniae vero indicuntur propter rogandum Dominum, et impetrandum in aliquo misericordiam ejus.
+    81. c Sed nunc jam utrumque vocabulum sub una designatione habetur, nec distat vulgo utrum litaniae an exomologeses dicantur. Supplicationis autem nomen quodammodo nunc ex gentilitate retinetur.
+    82. d Nam feriæ, aut legitimæ erant apud eos, aut indictæ. Indictæ autem, quia paupertas antiqua Romanorum ex collatione sacrificabat, aut certe de bonis damnatorum. Unde supplicia dicuntur supplicationes, quæ fiebant de bonis passorum supplicia. Sacra enim res de rebus execrandorum fiebant.
   </bloco>
 
-  <bloco tipo="aparato_critico" script="misto" bbox="240,300,760,450">
-* Ks hoc ergo Graeco vocab. Tertull., lib de Panit. : [6 ϱptu&amp;, qui. Θτῷξῳ ὃ is expri-mitur, et frequentatur, exomologesis est, qua delictu-Domino nostro confitemur, non quidem ut ignaro, se
-quatenus adt(eactio con[essious dep[onimr,
-aygnitendis, Dass witigaiur-pros qru. et humilif. h. d. esty cen(essionis
-b It t
-verba Peru d
-ἢ VPé τό —à δν ἐποφεββάλει, CRI CATER BS αέὰ φασι en a^. v9 9 φδρα c rt 7
-Verba Tertull. ibd.
+  <!-- Marginal Notes Top Section -->
+  <bloco tipo="nota_marginal" script="latino" bbox="490,50,510,70">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,250,510,270">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,280,520,300">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,350,520,370">D</bloco>
+
+  <!-- Top Section Footnotes -->
+  <bloco tipo="nota" script="latino" bbox="80,390,480,460">
+    a Ex hoc ergo Græco vocab. Tertull., lib de Pœnit. : Is actus, qui Græce vocabulo magis exprimitur, et frequentatur, exomologesis est, qua delictum Domino nostro confitemur, non quidem ut ignaro, sed quatenus satisfactio confessione disponitur, confessionis pœnitentia Deus mitigatur.
+    b Itaque exomolog. prostern. et humilif. h. d. est. Verba Tertull. ibid.
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="520,390,920,460">
+    c Sed nunc jam utrumque vocab. Id unde natum sit ex Concil. Agathen. const. Sic in Concil. Tolet. 17. cap. 6 cum titulus sit de diebus litaniarum per totos XII menses celebrandis in canone tamen dicitur, ut exomologesis vuiis discentibus celebretur.
+    d Nam feriæ, aut legitimæ. Verba sunt Servii, Æn. 1, ad vers. Templis indicti honorem.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="520,80,960,450">
-79. Haec exomologesis prosternendi et humiliandi hominis disciplina est, habitu atque victu, saccos et cinere inculcare, corpus sordibus obscurare, ipsumque operibus dejicere, illa quae peccavit tristi exactaque mutare.
-
-80. Litaniae autem Graeco nomine appellantur, quae Latine 293 dicuntur rogationes. Inter litan[iam] vero et exomologesip hoc differt, quod exomologesip pro sola confessione peccatorum aguntur; litanuz vero indicantur propter orandum Dominum, et impetrandum in aliquo misericordiam ejus.
-
-81. Sed nunc jam utrumque vocabulum sub una designatione habetur, nec distincte vulgo utrum litaniae an exomologeses dicantur. Supplicationis autem nomen quomodo, nunc et sempiternum retinetur.
-
-82. Nam feri, aut legitima erant apud eos, aut imp[ieta?]. Iudic(e) autem, quia paupertas antiqua Romanorum ex collatione sacrificabat, aut certe de bonis damnatorum. Unde supplicia dicuntur supplicationes, quae fiebant de bonis passorum sive supplicia. Sacrae enim res de rebus exsercandorum fiebant.
+  <!-- Middle Title -->
+  <bloco tipo="cabecalho" script="latino" bbox="200,480,800,540">
+    LIBER SEPTIMUS.
+    DE DEO, ANGELIS, ET FIDELIUM ORDINIBUS.
   </bloco>
 
-  <bloco tipo="aparato_critico" script="latino" bbox="510,310,970,450">
-c Sed nunc jam utrumque vocabulum sub una designatione habetur, nec distincte vulgo utrum litaniae an
-exomologesis dicantur. Supplicationis autem nomen quomodo, nunc et sempiternum retinetur.
-
-d Nam feri, aut legitima erant apud eos, aut
-imped[ta?]. Indice autem, quia paupertas antiqua Romanorum ex collatione sacrificabatur, aut certe de bonis damnatorum. Unde supplicia dicuntur supplicationes, quae fiebant
-de bonis passorum, supplicia, Sacrae
-enim res de rebus exsecrandorum fiebant.
+  <!-- Bottom Section Left Column -->
+  <bloco tipo="texto_principal" script="latino" bbox="80,550,480,880">
+    CAPUT PRIMUM.
+    De Deo.
+    1. Beatissimus Hieronymus, vir eruditissimus et linguarum multarum peritus, Hebræorum nominum interpretationem primus in 294 Latinam linguam convertit. Ex quibus, pro brevitate, prætermissis multis, quædam huic operi, adjectis interpretationibus, interponenda studui.
+    2. Vocabulorum enim expositio satis indicat quid velint intelligi. Habent enim quædam ex propriis causis nominum rationem. In principio autem decem nomina ponimus, quibus apud Hebræos Deus vocatur.
+    3. a Primum apud Hebræos Dei nomen יהוה El dicitur, quod alii Deum, alii etymologiam ejus exprimentes ισχυρον, id est, fortem, interpretati sunt, ideo quod nulla infirmitate opprimitur, sed fortis est, et sufficiens ad omnia perpetranda.
+    4. Secundum nomen אלהים Eloim.
+    5. Tertium יהוה Eloa, quod utrumque in Latinum Deus dicitur. Est autem nomen in Latinum ex Græca appellatione translatum. Nam Deus Græce θεος dicitur.
   </bloco>
 
-  <bloco tipo="cabecalho" script="latino" bbox="180,450,820,540">
-LIBER SEPTIMUS.
-DE DEO, ANGELIS ET FIDELIUM ORDINIBUS.
+  <!-- Bottom Section Right Column -->
+  <bloco tipo="texto_principal" script="latino" bbox="520,550,920,880">
+    citur, quasi θεος, id est, timor; unde tractum est nomen Deus, quod eum colentibus sit timori.
+    6. d Deus autem proprie nomen est Trinitatis pertinens ad Patrem, et Filium, et Spiritum sanctum. Ad quam Trinitatem etiam reliqua quæ in Deo infra sunt posita vocabula referuntur.
+    7. Quartum nomen Dei dicitur צבאות Sabaoth, quod vertitur in Latinum, exercituum, sive virtutum, de quo in psalmo ab angelis dicitur : Quis est iste Rex gloriæ? Dominus virtutum.
+    8. Sunt enim in hujusmodi ordinatione virtutes multæ, ut angeli, archangeli, principatus et potestates, cunctique cœlestis militiæ ordines, quorum tamen ille Dominus est. Omnes enim sub ipso sunt, ejusque dominatui subjacent.
+    9. e Quintum עליון Elion, quod interpretatur in Latinum excelsus, 295 quia supra cœlos est, sicut scriptum est de eo : Excelsus Dominus, supra, cœlos gloria ejus. Excelsus autem dictus, pro valde celsus. Es enim pro valde ponitur, sicut eximius, quasi valde eminens.
+  </bloco>
+  
+  <!-- Marginal Notes Bottom Section -->
+  <bloco tipo="nota_marginal" script="latino" bbox="490,750,510,770">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,800,510,820">D</bloco>
+
+  <!-- Bottom Section Footnotes -->
+  <bloco tipo="nota" script="latino" bbox="80,890,480,960">
+    Cap. I. — a Primum apud Heb. Ex Hieron. ep. 136.
+    b Opprimitur. Al., premitur.
+    c Quasi deus. E. Serv., Æn. XII, ad vers. Diva deam.
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="520,890,920,960">
+    d Deus autem prop. e. n. T. Ex Hieron., epist. ad Amand. 147.
+    e Quintum HELION. Unde quidam Græcos Διος id esse putant.
   </bloco>
 
-  <bloco tipo="cabecalho" script="latino" bbox="40,540,480,600">
-CAPUT PRIMUM.
-De Deo.
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,540,530,580">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,620,530,660">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,700,530,740">D</bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="40,600,480,940">
-1. Beatissimus Hieronymus, vir eruditissimus et linguarum multarum peritus, Hebraeorum nominum interpretationem primus in Latinam linguam converterit, Ex quibus, pro brevitate, praetermissis multis, quaedam huic operi, adjectis interpretationibus, interponenda studui.
-
-2. Vocabulorum enim expositio satis indicat quid velint intelligi. Habent enim quaedam ex propriis causis nominum rationem. In principio autem decem nomina divinorum, quibus apud Hebraeos Deus vocatur.
-
-3. Primum apud Hebraeos, Dei nomen est El, dicitur quod alii Deum, alii etymologiam ejus exprimunt, id est, fortem, interpretantur; sed quod nulla insupriritur, sed fortis est, et sufficiens ad omnia perpetranda.
-
-4. Secundum nomen est Eloim.
-
-5. Tertium item Eloa, quod utrumque in Latino Deus dicitur. Est autem nomen in Latino et Graeco appellatione translatus. Nam Deus Graece διὸος dicitur, quasi deus, id est, timor; unde tractatus est nomen Deus, quod eum colentibus sic timor.
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="520,590,960,940">
-6. Deus autem proprie nomen est Trinitatis pertinens ad Patrem, et Filium, et Spiritum sanctum. Ad quam Trinitatem etiam reliqua quae in Deo infra sunt posita vocabula referuntur.
-
-7. Quartum nomen Dei dicitur ΤΣ Sabaeth, quod vertitur in Latinum, exercituum, sive virum, de quo in psalmo ab angelis dicitur: Quis est iste Rex gloriae? Dominus virtutum.
-
-8. Sunt enim in hujusmodi ordinatione virtut[es] multae, ut angeli, archangeli, principatus et potestates, cunctique caelestis militiae ordines, quorum tamen ille Dominus est. Omnes enim sub ipso sunt, ejusque dominatui subjacent.
-
-9. e Quintum τοῦ» Elion, quod interpretatur in Latinum excelsus, 295 quia supra coelestias, sicut eg! 905,»pium est de eo : Ecalaus Doy, sugr&amp; «qo gloria ejus. Excelseus autem dictus, pro ualde excelseus. Est enim pro valde ponitur, sicut eximius, quas vald miens.
-  </bloco>
-
-  <bloco tipo="aparato_critico" script="latino" bbox="40,940,960,990">
-a Capit. 1. — a Primum apud Hebr. Ex Hieronym. ep. 175. b Oprimuntur. Al., premitur. c Quasi dic. E. Serv., fol. xii, ad vers. Divi[legivel].
-
-d Deus autem prop. e. n. T. Ex Hieronym., epist. ad Amand. 147.
-e Quintum HELlON. Unde quidam €rmo95 ἥλιον ἴθ»
-eisse putant.
-  </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="380,970,980,1005">Digitized by Google</bloco>
-
-  <notas>Transcrição fiel ao impresso na imagem. Quando não foi possível ler com segurança, mantive [ilegivel] no texto. Página em duas colunas: coluna esquerda primeiro, depois a direita. As letras A, B, C, D aparecem em blocos próprios como nota_marginal.</notas>
+  <notas>
+    Transcrição de texto latino com inserções de termos em grego (θεος, Διος, ισχυρον) e hebraico (יהוה, אלהים, צבאות, עליון).
+    As letras A, B, C, D nas margens indicam seções.
+    Números de página 259 e 260 no cabeçalho.
+    Texto contém abreviações comuns (Græco, quæ, etc.) transcritas conforme visualizado.
+  </notas>
 </pagina>

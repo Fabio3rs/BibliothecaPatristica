@@ -1,48 +1,127 @@
 <pagina estado="com_texto">
-  <bloco tipo="gravura" script="latino" bbox="20,60,360,920">
-Nete hyperboleon
-Paranete hyperboleon
-Trite hyperboleon
-Nete diezeugmenon
-Paramete diezeugmenon
-Trite diezeugmenon
-Paramese
-Mese
-Lychanos meson
-Parhypate meson
-Hypate meson
-Lychanos hypaton
-Parhypate hypaton
-Hypate hypaton
-Proslamhanomenon
+  <bloco tipo="cabecalho" script="latino" bbox="100,50,200,80">
+    1291
   </bloco>
-  <bloco tipo="gravura" script="latino" bbox="20,20,360,300">
-Nete hyperboleon
-Nete diezeugmenon
-Paramese
-Mese
-Hypale meson
-Hypate hypaton
+  <bloco tipo="cabecalho" script="latino" bbox="400,50,600,80">
+    AN. MANL. SEV. BOETII
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="380,920,980,980">
-AN. MANL. SEV. BOETII
+  <bloco tipo="cabecalho" script="latino" bbox="800,50,900,80">
+    1292
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="380,560,980,920">
-A in multiplici superpartiente constituta. Estque ea proportio dupla superpartiens, ut octo ad tres; habent enim ternarium octo bis, duasque ejus partes, id est duas unitates.
+  
+  <!-- Coluna Esquerda: Diagramas e Caput IX -->
+  <bloco tipo="texto_principal" script="latino" bbox="50,100,450,350">
+    Disdiapason systema immobile
+    [Diagrama musical com curvas e labels: Diapason, Diapente, Diatessaron]
+    Nete hyperboleon
+    Paranete hyperboleon
+    Trite hyperboleon
+    Nete diezeugmenon
+    Paranete diezeugmenon
+    Trite diezeugmenon
+    Paramese
+    Mese
+    Lychanos meson
+    Parhypate meson
+    Hypate meson
+    Lychanos hypaton
+    Parhypate hypaton
+    Hypate hypaton
+    Proslambanomenon
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,360,450,480">
+    [Diagrama de pauta musical]
+    Nete hyperboleon
+    Nete diezeugmenon
+    Paramese
+    Mese
+    Hypate meson
+    Hypate hypaton
+  </bloco>
 
-CAPUT X.
-Quibus modis Ptolemaeus consonantias statuat.
-Et de Pythagoricorum quidem opinione Ptolemaeus ita dijudicat: quibus vero modis ipse consonantiarum proportiones numerosoque vesti[git], hinc ordinum est. Voces, inquit, inter se vel unisonae sunt, vel non unisonae. Non unisonarum autem vocum alia quidem sunt aequisonae, e aliae emmelis, aliae dissonae, aliae emmelis. Et unisonae quidem sunt quae unum atque eundem signillatim pulsse reddunt sonum.
+  <bloco tipo="texto_principal" script="latino" bbox="50,490,450,580">
+    [Diagrama de pauta musical com notas]
+  </bloco>
 
-Aequisonae vero quae simul pulsse unum ex duobus atque simplicem quodammodo efficiunt sonum, ut et diapason, eaque duplicata quae est bis diapason. Consonae autem sunt quae compositum permixtumque suavem tamen efficiunt sonum, ut diapente ac diatessaron. Emmelis autem sunt quaecunque quidem consonae non sunt, possunt aptari tamen recte ad melos, ut sunt hae quae consonantias jungunt. Dissonae vero sunt quae non permittent sonos, atque insuaviter feriunt sensum. Ecnelis vero quae non recipiuntur in consonantiarum conjunctione, de quibus paulo posterius in divisione tetrachordorum dicemus. Quoniam igitur univocis quidem comparationibus proxime sunt aequivocae, necessarie est ut aequis numeris ea numerorum inaequalitas adjungatur, que est proxima aequis. Est autem juxta aequalitatem numerorum ea quae est dupla. Nam et prima multiplicitatis species est, et major numerus cum minore numerum supervenit, aequo cum ipsi minori transcenderit, ut duo unum uno transgrediatur, qui eidem unitati aequalis est; jure igitur duplex proportio aequisonis aptatur, id est diapason. Bis diapason vero bis duplici, id est quadruplo. Quae autem proportiones dividunt duplicem proportionem primae ac maximae, his aptandae sunt consonantiis quae dividunt diapason aequiconsonantiam. Unde fit ut diapente quidem sesquialtera, diatessaron vero sesquitertia comparationi copulentur. Juncte vero consonantiae cum aequisonis alias efficiunt consonantias, ut diapente ac diapason in triplo, diatessaron ac diapason in ea proportione quae est octo ad tres. Emmelis autem sunt quae diapente ac diatessaron dividunt, ut tonus caeteraquee proportiones, de quibus paulo posterius in divisione tetrachordorum loquemur, simplices earum scilicet partes.
+  <bloco tipo="texto_principal" script="latino" bbox="150,590,350,620">
+    CAPUT IX.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="380,280,980,560">
-CAPUT IX.
-Que sit properties diapason consonantiae.
-Iloc vero idcirco evenire contendit, quoniam diapason pene una voxula est, talisque consonantia est, ut unum quodammodo efficiat sonum, et sicut denario numero, qui fuerit additus intra eum positus integer a inviolat us servatur; cum in ceteris ad ita minime eveniat, ita etiam in hac consonantia. Nam si duo tribus adjicias, quinque continuo reddis, et numeri specier immutata est. Si vero eosdem denario addas, duodecim feceris, et binarius junctus denario conservatus est. Item ternarius caeterique eodem modo: ita igitur symphonia diapason quamcunque aliam susceperit consonantiam servat, nec immutat, nec ex conson a dissonam reddit. Nam sicut di-pente symphonia juncta diapason consonantie in tripla scilicet proportione diapason ac diapente consonantiam servat, ita etiam diates: ar.n cum sit consonantia juncta cum diapason, aliam consonantiam reddit, et fit secundum Ptolemeum alterius consonantiae additio; ejusque est diapason ac diatessaron
+  
+  <bloco tipo="texto_principal" script="latino" bbox="100,620,450,640">
+    Quæ sit proprietate diapason consonantiæ.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="380,20,980,280">
-a Inviolatusque. b Ejus que. c Aliae consonae. d Minore. e Equisonantium. f Consonoe.
+
+  <bloco tipo="texto_principal" script="latino" bbox="80,640,480,900">
+    Hoc vero idcirco evenire contendit, quoniam diapason pene una vocula est, talisque consonantia est, ut unum quodammodo effingat sonum, et sicut denario numero, qui fuerit additus intra eum positus integer a inviolatus servatur ; cum in cæteris ad ita minime eveniat, ita etiam in hac consonantia. Nam si duo tribus adjicias, quinque continuo reddis, et numeri species immutata est. Si vero eosdem denario addas, duodecim feceris, et binarius junctus denario conservatus est. Item ternarius cæterique eodem modo : ita igitur symphonia diapason quamcunque aliam susceperit consonantiam servat, nec immutat, nec ex consona dissonam reddit. Nam sicut diapente symphonia juncta diapason consonantiæ in tripla scilicet proportione diapason ac diapente consonantiam servat, ita etiam diatessaron cum sit consonantia juncta cum diapason, aliam consonantiam reddit, et fit secundum Ptolemæum alterius consonantiæ additio b ejusque est diapason ac diatessaron
   </bloco>
-  <notas>Transcrição feita mantendo ortografia e abreviações conforme imagem; algumas palavras densas compactas foram separadas conforme melhor leitura; pequenas lacunas possíveis indicadas pelo contexto, sem usar [ilegivel] pois traços legíveis permitiram leitura.</notas>
+
+  <!-- Coluna Direita: Texto Continuo e Caput X, XI -->
+  <bloco tipo="nota_marginal" script="latino" bbox="510,90,530,110">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="540,90,950,150">
+    in multiplici superpartiente constituta. Estque ea proportio dupla superbipartiens, ut octo ad tres ; habent enim ternarium octo bis, duasque ejus partes, id est duas unitates.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="650,150,800,170">
+    CAPUT X.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="580,170,900,190">
+    Quibus modis Ptolemæus consonantias statuat.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="540,190,950,300">
+    Et de Pythagoricorum quidem opinione Ptolemæus ita dijudicat : quibus vero modis ipse consonantiarum proportiones numerosoq vestiget, hinc ordiendum est. Voces, inquit, inter se vel unisonæ sun', vel non unisonæ. Non unisonarum autem vocum aliæ quidem sunt æquisonæ, c aliæ emmelis, aliæ dissonæ, aliæ ecmelis. Et unisonæ quidem sunt quæ unum atque eundem sigillatim pulsæ reddunt sonum. Æquisonæ vero quæ simul pulsæ unum ex duobus
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="510,300,530,320">
+    B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="540,300,950,480">
+    atque simplicem quodammodo efficiunt sonum, ut est diapason, eaque duplicata quæ est bis diapason. Consonæ autem sunt quæ compositum permixtumque suavem tamen efficiunt sonum, ut diapente ac diatessaron. Emmelis autem sunt quæcunque quidem consonæ non sunt, possunt aptari tamen recte ad melos, ut sunt hæ quæ consonantias jungunt. Dissonæ vero sunt quæ non permiscent sonos, atque insuaviter feriunt sensum. Ecmelis vero quæ non recipiuntur in consonantiarum conjunctione, de quibus paulo posterius in divisione tetrachordorum dicemus. Quoniam igitur univocis quidem comparationibus proximæ sunt æquivocæ, necessarie est ut æquis numeris ea numerorum inæqualitas adjungatur, quæ est proxima æquis. Est autem ju ta æqualitatem nu-
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="510,480,530,500">
+    C
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="540,480,950,720">
+    merorum ea quæ est dupla. Nam et prima multiplicitatis species est, et major numerus cum d minorem numerum supervenit, æquo cum ipsi minori transcendit, ut duo unum non transgrediuntur, qui eidem unitati æqualis est ; jure igitur duplex proportio æquisonis aptatur, id est diapason. Bis diapason vero bis duplici, id est quadruplo. Quæ autem proportiones dividunt duplicem proportionem primæ ac maximæ, his aptandæ sunt consonantiis quæ dividunt diapason e æquiconsonantiam. Unde fit ut diapente quidem sesquialteræ, diatessaron vero sesquitertia comparationi copulentur. Junctæ vero f consonantiæ cum æquisonis alias efficiunt consonantias, ut diapente ac diapason in triplo, diatessaron ac diapason in ea proportione quæ est octo ad tres. Emmelis
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="510,720,530,740">
+    D
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="540,720,950,820">
+    autem sunt quæ diapente ac diatessaron dividunt, ut tonus cæteræque proportiones, de quibus paulo posterius in divisione tetrachordorum loquemur, simplices earum scilicet partes.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="650,820,800,840">
+    CAPUT XI.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="540,840,900,860">
+    Quæ sunt æquisonæ, vel quæ consonæ, vel quæ emmelis.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="540,860,950,930">
+    Igitur æquisonæ quidem sunt diapason ac bis diapason, quoniam earum temperamento mixturæque unus atque simplex quodammodo efficitur sonus. Consonantiæ autem sunt, primæ quidem insuper particularibus sesquialtera et sesquitertia, id est diapente ac diatessaron, et diapason ac diapente, et
+  </bloco>
+
+  <!-- Rodapé / Aparato Crítico -->
+  <bloco tipo="aparato_critico" script="latino" bbox="100,940,900,970">
+    a Inviolatusque. b Ejus quæ. c Aliæ consonæ. d Minore. e Æquisonantiam. f Consonæ.
+  </bloco>
+  
+  <bloco tipo="rodape" script="latino" bbox="400,970,600,990">
+    Digitized by Google
+  </bloco>
+
+  <notas>
+    Transcrição de página dupla (1291-1292) com layout de duas colunas visuais.
+    Diagramas musicais à esquerda foram descritos textualmente onde possível (listas de notas).
+    Letras marginais A, B, C, D identificadas como notas marginais de seção.
+    Texto latino com abreviações e ortografia antiga preservadas (ex: 'q' por 'que', 'sun' por 'sunt').
+  </notas>
 </pagina>

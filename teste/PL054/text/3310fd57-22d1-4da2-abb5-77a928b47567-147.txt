@@ -1,8 +1,8 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,20,980,60">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
     284 SERMO XLIII. 285
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,60,480,600">
+  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,200">
     tineamus : a auxiliante nobis per omnia Deo b om-
     nipotente, cui cum Filio et Spiritu sancto una est
     Deitas, una majestas in sæcula sæculorum. Amen.
@@ -16,12 +16,18 @@
     prospera non inflent. — 163 III. Omnibus necessi-
     tatem pœnitendi incumbere. — IV. Maxime operibus
     misericordiæ deleri peccata.
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,200,480,400">
     CAP. I. — Apostolica, dilectissimi, d doctrina nos
     admonet, ut deponentes veterem hominem cum actibus
     suis (Ephes. iv, 22; Coloss. iii, 9), de die in diem
     sancta conversatione renovemur. Si enim templum
-    Dei sumus, et mentium nostrarum Spiritus sanctus B
+    Dei sumus, et mentium nostrarum Spiritus sanctus
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,380,480,400">
+    B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,400,480,550">
     habitator est, dicente Apostolo : Vos estis templum
     Dei vivi (I Cor. vi, 16), multa nobis vigilantia labo-
     randum est ut cordis nostri receptaculum tanto ho-
@@ -36,18 +42,26 @@
     stra possit esse incolumis, nisi ei protectio præfuerit
     conditoris, tamen quia rationabiles lapides sumus et
     viva materies, sic nos auctoris nostri g exstruxit ma-
-    nus, ut cum opifice suo etiam is qui reparatur, ope- C
+    nus, ut cum opifice suo etiam is qui reparatur, ope-
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,540,480,560">
+    C
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,560,480,600">
     retur. Gratiæ igitur Dei obedientia se humana non
     subtrahat, nec ab illo bono, sine quo non potest bona
     esse, deficiat : h ac si quid sibi impossibile aut ar-
     duum in mandatorum effectibus experitur, non in se
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,60,980,600">
-    A remaneat, sed ad jubentem recurrat : qui ideo dat
+  <bloco tipo="nota_marginal" script="latino" bbox="520,60,540,80">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,80,950,350">
+    remaneat, sed ad jubentem recurrat : qui ideo dat
     præceptum, ut excitet desiderium et præstet auxi-
     lium, dicente propheta : Jacta in Deum i cogitationem
-    tuam, et ipse te enutriet (Ps. LIV, 23). An forte quis-
-    quam ita insolenter superbit, i et ita se illæsum, ita
+    tuam, et ipse te enutriet (Ps. LIV, 22). An forte quis-
+    quam ita insolenter superbit, j et ita se illæsum, ita
     immaculatum esse præsumit, ut nullius jam renova-
     tionis indigeat? Fallitur prorsus ista persuasio, et
     nimia vanitate veterascit quicumque inter tentatio-
@@ -58,7 +72,8 @@
     nec semper veracia sunt ora k laudantium. Inde sæ-
     vit odium, hinc decipit l mendax officium : ut faci-
     lius sit vitare discordem, quam declinare fallacem.
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,350,950,600">
     CAP. II. — In ipsis autem virtutibus obtinendis
     tam 164 dubius modus et tam incerta discretio m
     est, ut si quisquam inter bonorum malorumque con-
@@ -77,10 +92,10 @@
     pendere proventus, sed æquissimo et clementissimo
     summi Regis arbitrio cuncta disponi : o quoniam,
     sicut scriptum est, Universæ viæ Domini misericordia
-    et veritas (Ps. XXIV, 10), tamen cum quædam non se-
+    et veritas (Ps. xxiv, 10), tamen cum quædam non se-
     cundum desideria nostra procedunt, et sub humani
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="20,600,480,950">
+  <bloco tipo="aparato_critico" script="latino" bbox="50,600,480,950">
     a Post verba, ab omni malitia contineamus, legun-
     tur in aliis editionibus viginti fere lineolæ, in quibus
     hæc verba : Secunda igitur et quarta et sexta feria je-
@@ -92,14 +107,19 @@
     penduntur. Quæ N. — Nos in solis mss. posteriorum
     collectionum 3, 4 et 5, eas lineolas reperimus, non
     vero in mss. collect. 1 et 2, nec in Lectionariis S.
-    Petri, Venet., Patav., Vallicell., Patavinon., etc.
-    D Verba autem expuncta hæc sunt : Cum inimicis autem
+    Petri, Venet., Patav., Vallicell., Patinon., etc.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="50,750,70,770">
+    D
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="70,770,480,900">
+    Verba autem expuncta hæc sunt : Cum inimicis autem
     cruci Christi nulla consensione jungamur, ne impiorum
     consortio sanctitas fidelium polluatur. Lux separatur a
     tenebris, et fugiunt filios diaboli filii veritatis. In tem-
     plum autem Domini, quod est ecclesia Christi, nihil
     contaminatum in erri, nihil profanum oportet admitti :
-    ut omni mundi.tia a penetrulibus cordis exclusa, san-
+    ut omni munditia a penetrulibus cordis exclusa, san-
     ctificetur jejunium nostrum, et simus æternum ha-
     bitaculum sancti Spiritus, qui nos a peccatorum sordibus
     emundatos et possidere semper dignetur et regere. Se-
@@ -108,9 +128,12 @@
     bremus, qui commendati sibi gregis curam habere non
     desinens, custodiam nobis de suis precibus obtinebit.
     Auxiliante nobis per omnia, etc.
+    b Cod. Venet. addit Patre.
+    c Hic sermo insertus invenitur appendici sermo-
+    num S. Augustini, cui in aliquibus mss. perperam
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="520,600,980,950">
-    a scribitur. Est ibidem serm. 148, al. 56 olim de
+  <bloco tipo="aparato_critico" script="latino" bbox="520,600,950,950">
+    ascribitur. Est ibidem serm. 148, al. 56 olim de
     Tempore 73.
     d Exemplar Pauli Diac., sententia. Dein prima edi-
     tio, ut deponamus... et de die in diem..... renovemur.
@@ -140,10 +163,10 @@
     n Duo codd. S. Petri, omnia
     o Prima editio omittit quoniam.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="600,950,980,990">
+  <bloco tipo="rodape" script="latino" bbox="600,960,950,990">
     Digitized by Google
   </bloco>
   <notas>
-    Transcrição fiel à imagem. As letras A, B, C, D funcionam como marcadores de coluna/seção na Patrologia Latina e aparecem integradas ao fluxo do texto (inline), sendo transcritas nos respectivos blocos de texto para manter a integridade da leitura, embora a diretriz geral as classifique como nota_marginal. Números de página originais (163, 164) mantidos no corpo do texto. Abreviaturas e ligaduras (æ, œ) preservadas.
+    Transcrição fiel à imagem. Letras A, B, C, D tratadas como nota_marginal conforme diretriz. Números de página originais (163, 164) mantidos no corpo do texto. Abreviaturas e ligaduras (æ, œ) preservadas.
   </notas>
 </pagina>

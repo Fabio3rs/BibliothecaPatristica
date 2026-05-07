@@ -1,37 +1,48 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="120,30,880,140">
+  <bloco tipo="cabecalho" script="latino" bbox="390,50,610,90">
     ELENCHUS
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,140,920,820">
+  <bloco tipo="texto_principal" script="latino" bbox="120,105,880,130">
     AUCTORUM ET OPERUM QUI IN HOC TOMO CXL CONTINENTUR.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,185,850,245">
     SANCTUS HENRICUS IMPERATOR.
     Leges et Constitutiones. Col. 233
     Diplomata ecclesiastica. 237
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,250,850,290">
     THANGMARUS PRESBYTER HILDESHEIMENSIS.
     Vita sancti Bernwardi. 385
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,295,850,365">
     ALPERTUS S. SYMPHORIANI METENSIS MONACHUS.
     Libellus de episcopis Metensibus. 445
     De diversitate temporum libri duo. 453
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,370,850,430">
     BURCHARDUS VORMATIENSIS ECCLESIÆ EPISCOPUS
-    Epistola ad Alpertum. 535
+    Epistola ao'Alpertum. 535
     Decretorum liber. 537
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,435,850,535">
     ADELBOLDUS TRAJECTENSIS EPISCOPUS.
     Vita S. Henrici imperatoris. 1091
-    Vita sanctæ Walpurgis. 1091
-    Libellus de crassitudine sphericæ 1103
+    Vita sanctæ Walpurgis. 1097
+    Libellus de crassitudine sphæræ 1103
     Charta de vassis ecclesiæ Trajectensis. 1107
     Musica. 1109
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,540,880,580">
     SANCTUS ROMUALDUS ABBAS, ORDINIS CAMALDULENSIS INSTITUTOR.
     Fragmentum expositionis psalmi LXVIII. 1126
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="560,1720,920,1820">
-    imprimerie MIGNE, au Petit-Montrouge.
+  <bloco tipo="rodape" script="latino" bbox="560,850,840,870">
+    Imprimerie MIGNE, au Petit-Montrouge.
   </bloco>
-  <notas>Texto em latim impresso. Pequenas manchas e ornamento central entre as colunas/espacos; transcrição respeita maiúsculas, abreviações e sinais tal como visíveis. Alguma pontuação e espaçamento normalizados apenas para legibilidade; nenhuma palavra foi inventada. Onde a leitura é incerta, não se usou [ilegivel] porque os elementos são legíveis.</notas>
+  <bloco tipo="outro" script="latino" bbox="570,940,780,970">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição literal mantendo abreviações visuais como "ao'Alpertum" (provavelmente "ad Alpertum") e ligaturas "æ".
+  </notas>
 </pagina>

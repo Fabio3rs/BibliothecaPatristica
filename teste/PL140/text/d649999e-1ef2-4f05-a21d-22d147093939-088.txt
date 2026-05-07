@@ -1,22 +1,127 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,80">
-167
-S. HENRICI IMPERATORIS
-168
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,150,40">
+    167
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="40,120,220,360">
-[ilegivel]
+  <bloco tipo="cabecalho" script="latino" bbox="400,20,600,40">
+    S. HENRICI IMPERATORIS
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="120,100,900,760">
-[ilegivel] [ilegivel] CVNVDVS [ilegivel] +IBV XPE [ilegivel]
+  <bloco tipo="cabecalho" script="latino" bbox="850,20,900,40">
+    168
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="140,420,860,920">
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+  
+  <bloco tipo="gravura" script="latino" bbox="350,60,900,350">
+    [Ilustração de um relicário/shrine com inscrições]
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="720,920,1000,1000">
-Digitized by Google
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="360,70,680,90">
+    HIC IVS BOALRICAS COR REGIS SIGNIET ACTAS
   </bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="690,70,710,340">
+    FERTUR ENIM HIC ... HABERI
+  </bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="360,330,680,350">
+    EMITTE AMICIS ET FAC EAS SOLAMEN IN ACTU
+  </bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="340,70,360,340">
+    NATUR ... BEAT
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="450,150,600,170">
+    HEINRICUS PACIFICUS M...
+  </bloco>
+
+  <bloco tipo="gravura" script="latino" bbox="150,180,320,250">
+    [Inset imagem de figura]
+  </bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="280,180,310,250">
+    HENRICUS
+  </bloco>
+
+  <bloco tipo="gravura" script="latino" bbox="120,360,920,550">
+    [Ilustração de cetro/bastão]
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="500,360,850,400">
+    C V N D V S
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="450,510,850,540">
+    + I h V X P E
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="grego" bbox="800,420,880,480">
+    A W
+  </bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="800,400,850,420">
+    R AN
+  </bloco>
+
+  <bloco tipo="gravura" script="latino" bbox="150,560,900,880">
+    [Diagrama de selos/medalhões]
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="450,600,480,800">
+    SIGILLUM HENRICI ROMANORUM IMPERATORIS AUGUSTI
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="480,570,550,600">
+    Matthaeus
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="580,570,650,600">
+    Marcus
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="680,570,750,600">
+    Lucas
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="780,570,850,600">
+    Johannes
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="800,620,850,660">
+    Matris
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="800,680,850,720">
+    Christus
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="800,740,850,780">
+    Sibilla
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="780,800,850,830">
+    Prophetae
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="480,810,780,830">
+    CALAMIA QUI SORTIETUR QUASI VERAX
+  </bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="480,570,550,600">
+    [Símbolos dos Evangelistas]
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="grego" bbox="200,680,250,720">
+    IC XC NI KA
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="180,650,280,750">
+    [Retrato em medalhão]
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="580,950,800,980">
+    Digitized by Google
+  </bloco>
+
   <notas>
-script principal: latino. Página dominada por gravura/placa ilustrativa contendo numerosas legendas pequenas em letra de caixa; muitas inscrições são ilegíveis em reprodução — marquei como [ilegivel] por palavra onde a leitura não é certa. A imagem está rotacionada no original scan; bboxes estimadas em escala 0-1000.
+    A página é uma placa ilustrativa (gravura) entre as páginas 167 e 168. Contém representações de um relicário, um cetro e selos imperiais. O texto nas ilustrações está em Latim e Grego. Algumas inscrições nas bordas do relicário estão parcialmente ilegíveis ou abreviadas. A orientação dos objetos varia na página (o cetro está deitado, o diagrama de selos tem texto vertical).
   </notas>
 </pagina>

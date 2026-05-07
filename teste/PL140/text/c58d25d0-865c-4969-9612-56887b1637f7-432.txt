@@ -1,19 +1,28 @@
 <pagina estado="com_texto">
-  <bloco tipo="texto_principal" script="latino" bbox="20,20,980,280">
+  <bloco tipo="cabecalho" script="latino" bbox="100,50,150,70">
+    355
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,50,650,70">
+    BURCHARDI WORMACIENSIS EPISCOPI
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,50,900,70">
+    356
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,90,480,430">
     44. De eadem re.
     45. De illis qui ex alia parochia sunt, et deprædatio-
     nes faciunt.
     46. De illis qui defendunt delinquentes.
-    47. De illis qui intra annum causam suam tracters
+    47. De illis qui intra annum causam sua m tracare
     neglexerint.
     48. De eadem re.
     49. Ut notentur excommunicatorum nomina, et in
-    foribus Ecclesiæ præsignentur.
+    foribus Ecclesiæ præfigantur.
     50. De episcopo qui ante damnati absolutionem ob-
     ierit.
     51. De illis qui excommunicati moriuntur.
     52. De eadem re.
-    53. De furibus et furteis.
+    53. De furibus et furtis.
     54. De eadem re.
     55. De eadem re.
     56. De eadem re.
@@ -22,19 +31,22 @@
     59. De eadem re.
     60. De eadem re.
     61. De eadem re.
-    62. De servo, qui fugerit dominum suum.
-    63. De clericis, si in demolindis sepulcris com-
+    62. De servo qui fugerit dominum suum.
+    63. De clericis, si in demoliendis sepulcris com-
     prehensi fuerint.
     64. De clericis aut monachis, si furtum fecerint.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,20,980,280">
+  <bloco tipo="nota_marginal" script="latino" bbox="520,90,540,110">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,90,900,430">
     65. De illis qui de ministerio Ecclesiæ aliquid furati
     fuerint.
     66. De monachis, si de furto infamati fuerint, quo-
     modo se expurgare debeant.
-    67. De illis qui colonorum flagella defensorit.
+    67. De illis qui colonorum flagella defendunt.
     68. De episcopis qui apud Romanam sedem accu-
-    sati, fuerint quod cum excommunicalis communi-
+    sati fuerint quod cum excommunicatis communi-
     carent.
     69. De episcopis qui sibi subjectos seducunt, com-
     municantes cum excommunicatis.
@@ -43,11 +55,16 @@
     pulo.
     72. De correctione episcoporum qui cum excommu-
     nicatis communicaverunt.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="520,240,540,260">
+    B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,240,900,430">
     73. De his qui contemnu:t bannum ab episcopis
     impositum.
     74. De eo pro quibus causis quemlibet hominem
-    anathemais vinculo ligari oporteat.
-    75. De illis qui furtum et rapinam exercerent.
+    anathematis vinculo ligari oporteat.
+    75. De illis qui furtum et rapinam exercuerint.
     76. De illis qui in patibulis suspenduntur.
     77. De episcopis qui cum excommunicatis commu-
     nicaverint.
@@ -55,62 +72,71 @@
     servis qui dominos proprios fugerint.
     Indicis Capitulorum finis.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="120,300,880,380">
-    BURCHARDI WORMACIENSIS EPISCOPI
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,390,880,580">
+  <bloco tipo="texto_principal" script="latino" bbox="300,500,700,650">
     BURCHARDI
-    
     ECCLESIÆ WORMATIENSIS EPISCOPI
-    
     DECRETORUM LIBER UNDECIMUS.
-    
     DE EXCOMMUNICATIONE.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,600,960,980">
+  <bloco tipo="texto_principal" script="latino" bbox="100,680,480,900">
     ARGUMENTUM LIBRI.
     Libro hoc de excommunicatione, ejusque neglectu
     et contemptu, de furibus et prædonibus, deque sa-
-    crarum rerum insensoribus, ac deprædaloribus,
+    crarum ædium insensoribus, ac deprædatoribus,
     agitur.
     CAP. 1. — De sede episcoporum, cur in ecclesia altius
-    ceteris sedere debeant.
-    
-    (Ex epist. Urbanï papæ.) Quod autem sedes epi-
-    scoporum in ecclesia excelsæ constituæ, et præpa-
-    ratae inveniuntur in throno, speculationem, et po-
+    cæteris sedere debeant.
+    (Ex epist. Urbani papæ.) Quod autem sedes epi-
+    scoporum in ecclesia excelsa constitutæ, et præpa-
+    ratæ inveniuntur in throno, speculationem, et po-
     testatem judicandi, et solvendi, atque ligandi a Do-
-    mino sibi datum materie docent. Unde ipse Salvator
-    in Evangeliò ait : Quæcunque ligaveritis super ter-
+    mino sibi datam materiæ docent. Unde ipse Salvator
+    in Evangelio ait : Quæcunque ligaveritis super ter-
     ram, erunt ligata et in cœlo. Et alibi : Accipite
     Spiritum sanctum, quorum remiseritis peccata, re-
     mittuntur eis : et quorum retinueritis, retenta
-    erunt. Ideo ista prætulimus, charissimi, ut intelligas
-    lis potestatem episcoporum vestrorum, in ejusque
-    Dominum veneremini, et eos ut animas vestras dii-
+    erunt. Ideo ista prætulimus, charissimi, ut intelliga-
+    tis potestatem episcoporum vestrorum, in eisque
+    Dominum veneremini, et eos ut animas vestras dili-
     gatis, et quibus illi non communicant non commu-
-    nicentis, et quos episcopini non recipiantis. Valde enim,
-    limenda est sententia episcopi, licet injuste liget,
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,680,520,700">
+    C
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="530,680,900,900">
+    niretis. et quos ejecerint non recipiatis. Valde enim
+    timenda est sententia episcopi, licet injuste liget,
     quod tamen summopere prævidere debet.
-    
     CAP. 2. — Episcopus cum excommunicare vel ana-
-    thematizare aliquem pro certis et manifestis sceleris-
+    thematizare aliquem pro certis et manifestis sceleri-
     bus dispositum habet, post lectionem Evangelii, cle-
-    rum et plebem ita dicet alioqui.
-    
+    rum et plebem ita debet alloqui.
     (Ex concilio Rhotomag., capite 5.) Noverit chari-
     tas vestra, fratres mei, quod quidam vir nomine
     N. diabolo suadente postponens Christianam promis-
-    sionem quam in baptismo professus est, est apo-
-    stasiam conversus post Satanam, cui abrenunciavit, et
+    sionem quam in baptismo professus est, per aposta-
+    siam conversus post Satanam, cui abrenunciavit, et
     omnibus operibus ejus, vineam Christi, id est Ec-
-    clesiam ejus, devastaret deprædari non pertimescit :
-    pauperes Christi, suos preciosos sanguine suo redemit,
-    violentor opprimens et interficiens, et bona eorum di-
-    ripiens. Unde, quia filius hujus nostræ Ecclesiæ (cui
-    Deo auctore præsidemus) deberat esse : quia in ea,
-    per aquam et Spiritum sanctum renatus est, et inter
-    adoptivos filios Dei adnumeratus, quamvis malo.
+    clesiam ejus, devastaret et deprædari non pertimescit :
+    pauperes Christi, quos pretioso sanguine suo redemit,
+    violenter opprimens et interficiens, et bona eorum di-
   </bloco>
-  <notas>Texto em duas colunas na parte superior; transcrição feita mantendo linhas e quebras visíveis. Pequenas abreviações e sinais editoriais preservados conforme original; palavras parcialmente cortadas transcritas com hífen no final da linha. Onde a leitura era incerta foram mantidas grafias conforme imagem; não foi utilizado [ilegivel] neste excerto pois todas as palavras são discerníveis.</notas>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,820,520,840">
+    D
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="530,820,900,900">
+    ripiens. Unde, quia filius hujus nostræ Ecclesiæ (cul-
+    Deo auctore præsidemus) debuerat esse : quia in ea
+    per aquam et Spiritum sanctum renatus est, et inter
+    adoptivos filios Dei annumeratus, quamvis me lo.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="550,950,800,980">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição de página de índice e início de livro (Liber Undecimus) da obra de Burchardus Wormaciensis.
+    Letras A, B, C, D identificadas como notas marginais de seção.
+    Texto dividido em colunas superiores (índice) e inferiores (texto principal).
+    Ortografia original preservada (ex: "tracare", "contemnu:t", "sua m").
+  </notas>
 </pagina>

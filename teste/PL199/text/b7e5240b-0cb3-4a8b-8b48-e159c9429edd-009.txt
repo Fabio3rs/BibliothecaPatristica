@@ -1,52 +1,65 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="200,20,800,100">
-SÆCULUM XII
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="380,40,620,80">
+    SÆCULUM XII
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="100,100,900,300">
-JOANNIS
+  <bloco tipo="cabecalho" script="latino" bbox="260,100,740,180">
+    JOANNIS
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="760,140,940,220">
-[ilegivel]
+  <bloco tipo="nota_marginal" script="latino" bbox="650,160,850,220">
+    [manuscrito ilegível]
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="360,300,640,360">
-COGNOMINE
+  <bloco tipo="cabecalho" script="latino" bbox="450,190,550,210">
+    COGNOMINE
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="80,360,920,480">
-SARESBERIENSIS
+  <bloco tipo="cabecalho" script="latino" bbox="100,220,900,280">
+    SARESBERIENSIS
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="260,480,740,540">
-CARNOTENSIS EPISCOPI
+  <bloco tipo="texto_principal" script="latino" bbox="340,300,660,330">
+    CARNOTENSIS EPISCOPI
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,540,880,680">
-OPERA OMNIA
+  <bloco tipo="texto_principal" script="latino" bbox="200,360,800,430">
+    OPERA OMNIA
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,680,900,740">
-JUXTA EDITIONEM OXONIENSEM, QUAM NUPER AD FIDEM CODICUM MSS. EXEGIT D' J. A. GILES.
+  <bloco tipo="texto_principal" script="latino" bbox="100,460,900,490">
+    JUXTA EDITIONEM OXONIENSEM QUAM NUPER AD FIDEM CODICUM MSS. EXEGIT D' J. A. GILES.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="220,740,780,780">
-ACCEDUNT
+  <bloco tipo="texto_principal" script="latino" bbox="450,510,550,530">
+    ACCEDUNT
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,780,940,900">
-PETRI S. R. E. CARDINALIS TITULI S. CHRYSOGONI, GUICHARDI LUGDUNENSIS ARCHIEPISCOPI, GUALTERI PRIORIS S.; VICTORIS PARISIENSIS, ROGERI ABBATIS S. [ilegivel] AURELIANENSIS, JOANNIS CORNUBIENSIS
+  <bloco tipo="texto_principal" script="latino" bbox="100,550,900,620">
+    PETRI S. R. E. CARDINALIS TITULI S. CHRYSOGONI, GUICHARDI LUGDUNENSIS ARCHIEPISCOPI, GUALTERI PRIORIS S. VICTORIS PARISIENSIS, ROGERI ABBATIS S. EVURTII AURELIANENSIS, JOANNIS CORNUBIENSIS
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,900,940,980">
-OPUSCULA, DIPLOMATA, EPISTOLÆ
+  <bloco tipo="texto_principal" script="latino" bbox="100,640,900,690">
+    OPUSCULA, DIPLOMATA, EPISTOLÆ
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,900,880,1000">
-ACCURANTE J.-P. MIGNE
-BIBLIOTHECÆ CLERI UNIVERSI
-SIVE
-CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORES
---- 
-TOMUS UNICUS
-VENDIT 7 FRANCIS GALLICIS
-EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM
-IN VIA DICTA D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM, VULGO D'ENFER NOMINATAM
-SEU PETIT-MONTRouge
-1855
+  <bloco tipo="texto_principal" script="latino" bbox="320,710,680,740">
+    ACCURANTE J.-P. MIGNE
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,980,980,995">
-Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="250,750,750,780">
+    BIBLIOTHECÆ CLERI UNIVERSI
   </bloco>
-  <notas>Script: latino. Foi transcrito literalmente; palavras e abreviações pouco legíveis foram marcadas como [ilegivel]. A nota marginal manuscrita ao lado de "JOANNIS" foi transcrita como [ilegivel]. Algumas linhas tipográficas muito desbotadas (p.ex. nomes episcopais na lista e a linha editorial final) foram transcritas segundo melhor leitura possível; onde a leitura era incerta, um token [ilegivel] foi usado para um único termo.</notas>
+  <bloco tipo="texto_principal" script="latino" bbox="480,785,520,800">
+    SIVE
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,805,850,820">
+    CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORES
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,840,600,870">
+    TOMUS UNICUS
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,890,620,910">
+    VENIT 7 FRANCIS GALLICIS
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,930,900,970">
+    EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM
+    IN VIA DICTA D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM
+    SEU PETIT-MONTROUGE
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="470,980,530,990">
+    1855
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,990,800,1000">
+    Digitized by Google
+  </bloco>
+  <notas>Transcrição literal da página de título. A nota manuscrita à direita de "COGNOMINE" foi identificada como nota_marginal mas está ilegível. A grafia "SARESBERIENSIS" e "EVURTII" foram mantidas conforme a imagem, corrigindo erros comuns de OCR. O layout segue a hierarquia visual dos títulos.</notas>
 </pagina>

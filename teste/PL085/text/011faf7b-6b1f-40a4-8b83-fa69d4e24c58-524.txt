@@ -1,13 +1,13 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,160">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,150">
     TABULA
     AD INVENIENDUM QUE CONTINENTUR IN ISTO MISSALI :
     ET PRIMO TABELLA DOMINICARUM CUM SINGULIS FERIIS SEQUENTIBUS.
-    Numeri respicient hos qui crassiori typo representati in textu inseruntur.
+    Numeri respicient hos qui crassiori typo repræsentati in textu inseruntur.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,160,490,930">
+  <bloco tipo="texto_principal" script="latino" bbox="50,160,480,1300">
     Kalendarium.
-    Benedictio aquae.
+    Benedictio aquæ.
     Dominica prima Adventus Domini, 1.
     Dominica II. Adventus Domini, 7.
     Dominica III. Adventus Domini, 10.
@@ -18,16 +18,16 @@
     Saturnini Episcopi et Martyris, 23.
     Andree Apostoli, 26.
     Eulalie Virginis, 29.
-    Annunciacio Beate Marie Virginis que dicitur de la O, 32.
+    Annunciatio Beate Marie Virginis que dicitur de la O, 32.
     Thome Apostoli, 35.
     In Nativitate Domini, 37.
-    Stephani Levite Protomartiris, 41.
-    Iohannis Apostoli, et Evangeliste, 44.
+    Stephani Levite Prothomartiris, 41.
+    Johannis Apostoli, et Evangeliste, 44.
     Sanctorum Innocentium, 48.
-    In Translatione Jacobi Zebedei, 50.
+    In Translatione Jacobi Z-bedei, 50.
     In Circumcisione Domini, 52.
     Dominica ante Epiphaniam, 55.
-    In jejunio Epiphaniae, 58.
+    In jejunio Epiphanie, 58.
     In Epiphania Domini, 59.
     Dominica I. post Octavas Epiphanie, 64.
     Dominica II. post Octavas Epiphanie, 67.
@@ -44,21 +44,21 @@
     Feria VI. prime hebdomade. Quadr., 100.
     Dominica II. in Quadragesima, 104.
     Feria IV. secunde Dominice. Quadr., 109.
-    Feria VI. secunde Dominice. Quadr., 142.
+    Feria VI. secunde Dominice. Quadr., 112.
     Dominica III. in Quadragesima, 115.
     Feria IV. Dominice III. in Quadragesima, 127.
-    Feria VI. Dominice III. in Quadragesima, 123.
+    Feria VI. Dominice III. in Quadragesima, 125.
     Dominica IV. in Quadragesima, 127.
     Feria V. Dominice IV. Quadr., 131.
     Feria VI. Dominice IV. Quadr., 134.
-    Dominica V. in Quadragesima, 135.
+    Dominica V. in Quadragesima, 138.
     Feria IV. Dominice V. Quadr., 142.
-    Feria IV. Dominice VI. in Quadragesima, 146.
+    Feria VI. Dominice V. in Quadragesima, 146.
     Dominica in Ramis Palmarum, 148.
     Feria IV. post Ramos Palmarum, 154.
     Feria V. in Cena Domini, 157.
     Feria VI. in Parasceve, 167.
-    In Sabbato Sancto Paschae, 174.
+    In Sabbato Sancto Pasche, 174.
     In die Resurrectionis Domini, 194.
     Feria II. post Resurrectionem, 198.
     Feria III. post Resurrectionem, 201.
@@ -67,23 +67,25 @@
     Feria VI. post Resurrectionem, 210.
     Sabbato post Pascha, 214.
     Regula ad preparandum se Sacerdos ad Missam celebrandam, 217.
-    Omnium Offertorium in quo fit festum Jacobi Zebedei, 220.
-    Hymnus Angelorum: hoc est: Gloria in excelsis Deo, 221.
+    Omnium Offerentium in quo fit festum Jacobi Zebedei, 220.
+    Hymnus Angelorum : hoc est : Gloria in excelsis Deo, 221.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,160,950,930">
+  <bloco tipo="nota_marginal" script="latino" bbox="500,160,515,180">
     A
-    Verba consecracionis, 230.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="530,160,950,640">
+    Verba consecrationis, 230.
     Simbolum Bini, id est, Credimus, 230.
     Oratio Dominicalis, id est, Pater noster, 231.
     Dominica in Octava Pasche, 231.
     Dominica III. post Pascha, 237.
     Dominica IV. post Pascha, 240.
-    Dominica V. post Pascha, 245.
+    Dominica V. post Pascha, 243.
     Dominica VI. post Pascha, 246.
     In Ascensione Domini, 249.
     Dominica post Ascensionem Domini, 254.
     In vigilia Pentecostes, 256.
-    In die Sancti Pentecostes, 258.
+    In die Sancto Pentecostes, 258.
     Dominica prima post Pentecosten, 263.
     In festo Corporis Christi, 263.
     Dominica II. post Pentecosten, 267.
@@ -91,55 +93,50 @@
     Dominica IV. post Pentecosten, 271.
     Dominica V. post Pentecosten, 273.
     Dominica VI. post Pentecosten, 275.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,650,515,670">
+    B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="530,650,950,740">
     Dominica VII. post Pentecosten, 276.
     Dominica ante jejunium Kalendar. Novemb., 279.
-    In jejunio Kalendarum Novembris, 281.
-
-    FESTA MENSIS IANVARII.
+    In jejunio Kalendarum Novembrium, 281.
+    FESTA MENSIS JANUARII.
     Juliani et Basilisse, 284.
-    Luciani Presbyteri. Pauli primi [ilegivel]. Quadraginta Martyrum. Octava Epiphanie. Hilarii Episcopi. Felicis in Pincis Martyris. Mauri Abbatis.
-    Marcelli Pape et Martyris. Antonii Abbatis, 287.
-    Priscae Virginis et Martyris. Juliani Episcopi et Confessoris. Fabiani et Sebastiani et ejus comitum, 288.
+    Luciani Presbyteri. Pauli primi Heremite. Quadraginta Martyrum. Octava Epiphanie. Hilarii Episcopi. Felicis in Pincis Martyris. Mauri Abbatis. Marcelli Pape et Martyris. Antonii Abbatis, 287.
+    Prisce Virginis et Martyris. Juliani Episcopi et Confessoris. Fabiani : et Sebastiani et ejus comitum, 288.
     Luciani Presbyteri et Martyris, 289.
     Agnetis Virginis et Martyris, 290.
     Vincentii Martyris, 291.
-    Ildefonsi Archiepiscopi Toletani. Sancte Marie de Pace. [ilegivel] Episcopi et Martyris : et trium puerorum, 296.
-    Timothei Episcopi et Martyris. Discipuli Pauli. Conversio S. Pauli. Projecti Martyris. [ilegivel] Martyris, 298.
-
+    Ildefonsi Archiepiscopi Toletani. Sancte Marie de Pace. Babile Episcopi et Martyris : et trium puerorum, 296.
+    Timothei Episcopi Discipuli Pauli. Conversio S. Pauli. Projecti Martyris. Tirsi Martyris. fol. 298.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,750,515,770">
     C
-    [ilegivel] Episcopi et Martyris. Johannis Chrysostomi Episcopi. Agnesis secundo. Valerii Episcopi et Martyris. Octava Sancti [ilegivel]. Bathilidis Regine. Ciri et Johannis Martyrum, 300.
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="530,750,950,1040">
+    Poliearpi Episcopi et Martyris. Johannis Chrysostomi Episcopi. Agnetis secundo. Valerii Episcopi et Martyris. Octava Sancti Ildefonsi. Batildis Regine. Ciri et Johannis Martyrum, 300.
     FESTA MENSIS FEBRUARII.
-    Ignatii Episcopi et Martyris. Brigide Virginis.
-    Purificacionis Beate Marie Virginis, 300.
-    Blasii Episcopi et Martyris. Giliberti Confessoris.
-    Agate Virginis et Martyris, 305.
-    Vedasti et Anandi Episcoporum. Dorothee Virginis, 306.
-    Apolonii Virginis et Martyris. Scholasticae Virginis. Eulalie Virginis et Martyris Barchinonensis, 308.
-    Fructuosi: Augurii : et Eulogii Martyrum : et ejus comitum, 310.
-    Valentini Martyris. Juliane Virginis. Pantaleonis Martyris. Columani Abbatis. Cathedra sancti Petri, 312.
-
+    Ignatii Episcopi et Martyris. Brigide Virginis. Purificacionis Beate Marie Virginis, 300.
+    Blasii Episcopi et Martyris. Giliberti Confessoris. Agate Virginis et Martyris, 305.
+    Vedasti et Amandi Episcoporum. Dorothee Virginis, 306.
+    Apolonie Virginis et Martyris. Scholastice Virginis. Eulalie Virginis et Martyris Barchinonensis, 308.
+    Fructuosi : Augurii : et Eulogii Martyrum : et ejus comitum, 310.
+    Valentini Martyris. Juliane Virginis. Pantaleonis Martyris. Columbani Abbatis. Cathedra sancti Petri, 312.
+    Mathie Apostoli, 315.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,1050,515,1070">
     D
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="530,1050,950,1300">
     FESTA MENSIS MARTII.
-    Adriani Martyris. Donati Martyris. Eusefii : et Celidoni, 317.
-    Thome de Aquino. Perpetue et Felicitatis Martyrum. Apolonio Virginis et Martyris. Facundi : et Primitivi Martyrum. Gregorii Pape. Leandri Episcopi et Confessoris. Leonis Pape et Martyris. Patricii Episcopi. Gabrielis Archangeli. Eduardi Regis et
+    Adriani Martyris. Donati Martyris. Emeterii : et Celidonii, 317.
+    Thome de Aquino. Perpetue et Felicitatis Martyrum. Apolonie Virginis et Martyris. Facundi : et Primitivi Martyrum. Gregorii Pape. Leandri Episcopi et Confessoris. Leonis Pape et Martyris. Patricii Episcopi. Gabrielis Archangeli. Eduardi Regis et
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,200,510,260">
-    A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,420,510,480">
-    B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,580,510,640">
-    C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,780,510,840">
-    D
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,940,980,1000">
+  <bloco tipo="rodape" script="latino" bbox="600,1350,900,1400">
     Digitized by Google
   </bloco>
   <notas>
-    Script complex: latino impresso. Palavras ou abreviações parcialmente ilegíveis foram marcadas como [ilegivel] por palavra única conforme instruções. Letras marginais A, B, C, D transcritas separadamente como notas marginais.
+    Transcrição fiel à imagem. "Bini" mantido conforme impresso (provável erro por "Dei"). "Z-bedei" e "Zebedei" conforme aparecem em locais distintos. "Tirsi" transcrito conforme visual (variação de Ursi). Números de página conferidos visualmente (ex: 112, 125, 138). Ligadura æ em "repræsentati" e "aquæ".
   </notas>
 </pagina>

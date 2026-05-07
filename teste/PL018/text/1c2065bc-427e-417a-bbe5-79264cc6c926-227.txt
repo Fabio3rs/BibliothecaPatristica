@@ -1,24 +1,37 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,20,960,140">
-    437.                              DESCRIPTIO URBIS ROMÆ.                              438
+  <bloco tipo="cabecalho" script="latino" bbox="10,20,990,50">
+    437 DESCRIPTIO URBIS ROMÆ. 438
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="120,140,880,240">
+  <bloco tipo="texto_principal" script="latino" bbox="200,60,800,130">
     DESCRIPTIO
     URBIS ROMÆ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,240,500,380">
+  <bloco tipo="texto_principal" script="latino" bbox="50,140,450,170">
     Ex editione P. Philippi Labbe soc. Jesu
     anno 1651.
-    
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,145,510,165">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,140,950,170">
+    Ex codice Vaticano mactali millenariæ antiquitatis
+    num. 3321 et collato cum altero num. 1984.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,180,450,210">
     DESCRIPTIO URBIS ROMÆ, QUÆ ALIQUANDO DESOLATA, NUNC
-    GLORIOSIOR PIISSIMO IMPERIO RESTAURATA. INCERTO
+    GLORIOSIOR PISSIMO IMPERIO RESTAURATA. INCERTO
     AUCTORE, QUI VIXIT SUB HONORIO, AUT VALENTINIANO III.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,180,950,200">
+    INCIPIT CURIOSUM URBIS ROMÆ REGIONUM XIV CUM
+    BREBIARIIS (BREVIARIIS) SUIS.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,220,450,240">
     REGIO I.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,240,450,540">
     Porta Capena. Continet ædem Honoris, et Virtutis.
     Camenas, et lacum Promethei.
-    
     Balneum Torquati, et Vespasiani.
     Thermas Severianas, et Commodianas.
     Aream Apollinis, et Spei, et Galli.
@@ -26,25 +39,67 @@
     Aream Panariam.
     Mutatorium Cæsaris.
     Balneum Bolani, et Mamertini.
-    Aream Carsuræ.
+    Aream Cursuræ.
     Balneum Abascanti, et Antiochiani.
-    Aedem Martis, et Minervæ, et Tempestatis.
+    Ædem Martis, et Minervæ, et Tempestatis.
     Flumen Almonis.
-    Arcam divi Veri Parthici, et D. Trajani, et Drusi.
+    Arcum divi Veri Parthici, et D. Trajani, et Drusi.
     Vici decem.
     Ædiculæ decem.
     Vicomagistri quadraginta octo.
     Curatores duo.
     Insulæ tria millia ducentæ quinquaginta.
-    
     Horrea tredecim.
-    Balneâ octoginta sex.
+    Balnea octoginta sex.
     Lacus octoginta quatuor.
     Pistrina viginti.
-    Continet pedes duodecim millia ducentos, et novemdecim.
-    
+    Continet pedes duodecim millia ducentos, et novem-
+    decim.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,220,950,240">
+    REGIO I.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,240,950,420">
+    Porta Capena. Continet ædem Honoris, et Virtutis.
+    Camenas.
+    Lacum Promethei.
+    Balneum Torquati.
+    Thermas Severianas, et Commodianas.
+    Aream Apollinis, et Splenis.
+    Vicum Vitriarium.
+    Aream Pannariam.
+    Mutatorium Cæsaris.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,425,510,445">
+    B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,420,950,520">
+    Balneum Abascanti, et Mamertini.
+    Aream Carrucæ.
+    Ædem Martis.
+    Flumen Almonis.
+    Arcum divi Veri, et Trajani, et Drusi.
+    Vici x.
+    Æd. (ædes) x.
+    Vicomag. XLVIII.
+    Curæ II.
+    Insulæ IIICCL.
+    Domus CXX.
+    Horrea XVI.
+    Balnea LXXXVI.
+    Lacos LXXXI.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,525,510,545">
+    C
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,520,950,560">
+    Pistrina xx.
+    Continet pedes XII. CG. XI.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,550,450,570">
     REGIO II.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,570,450,880">
     Cælimontium. Continet templum Claudii.
     Macellum magnum.
     Luparios.
@@ -65,68 +120,43 @@
     Curatores duo.
     Insulæ tria millia et sexcenta.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,240,960,380">
-    A   Ex codice Vaticano uncialii millenariæ antiquitatis
-    num. 3321 et collato cum altero num. 1984.
-    
-    INCIPIT CURIOSIORUM URBIS ROMÆ REGIORUM XIV CUM
-    BREVIARIIS (BREVIARIIS) SUIS.
-    
-    REGIO I.
-    
-    Porta Capena. Continet ædem Honoris, et Virtutis.
-    Camenas.
-    
-    Lacum Promethei.
-    
-    Balneum Torquati.
-    Thermas Severianas, et Commodianas.
-    Aream Apollinis, et Splenis.
-    Vicum Vitriarium.
-    Aream Pannarim.
-    Mutatorium Cæsaris.
-    B Balneum Abascanti, et Mamertini.
-    Aream Carrucæ.
-    
-    Ædem Martis.
-    Flumen Almonis.
-    Arcam divi Veri, et Trajani, et Drusi.
-    Vici x.
-    Æd. (ædes) x.
-    Vicomag. xlviii.
-    Curiæ ii.
-    Insulæ iiiccl.
-    Domus cxx.
-    Horrea xvi.
-    Balnea lxxxvi.
-    Lacos lxxxi.
-    G Pistrina xx.
-    Continet pedes xii. cc. xi.
-    
+  <bloco tipo="texto_principal" script="latino" bbox="550,570,950,590">
     REGIO II.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,590,950,820">
     Cælimontium. Continet Claudium.
     Macellum magnum.
     Luparios (cod. alt. lupanarios).
     Atrium Cyclopis.
     Cohortes V. Vigilum.
-    Caput Africes.
+    Caput Afriecs.
     Arborem sanctam.
     Castra peregrina.
     Domum Philippi, Victiliana.
-    Ludum Matutinum, et Dacicum.
+    Ludum Maṭutinum, et Dacicum.
     Spoliarium.
-    D Saniarium.
-    
-    Micam auream.
-    Vici vii.
-    Ædes vii.
-    Vicomag. xlviii.
-    Curat. (alt. cod. Curatoria) ii.
-    Insulæ iii. dc. (alt. cod. iii. mc )
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="720,920,960,980">
+  <bloco tipo="nota_marginal" script="latino" bbox="480,825,510,845">
+    D
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,820,950,890">
+    Saniarium.
+    Micam auream.
+    Vici VII.
+    Ædes VII.
+    Vicomag. XLVIII.
+    Curat. (alt. cod. Curatoria) II.
+    Insulæ ⱵIII. DC. (alt. cod. III. DC )
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,950,900,980">
     Digitized by Google
   </bloco>
-  <notas>Transcrição realizada em latino moderno impresso. Pequenas abreviações numéricas e variantes editoriais mantidas conforme visível ("cc", "iiiccl", "G", "B", "D", notas em parênteses). Onde leitura incerta respeitou-se exatamente o que aparece; nenhuma palavra substituída por [ilegivel] foi necessária.</notas>
+  <notas>
+    - A letra 'D' marginal está alinhada com 'Saniarium' na coluna direita.
+    - Em 'Insulæ ⱵIII. DC.', o símbolo antes de III parece ser uma abreviatura de milhar ou um glyph específico.
+    - 'Maṭutinum' na coluna direita possui um ponto abaixo do 't'.
+    - 'Lacos' na coluna direita (em vez de Lacus).
+    - 'Caput Afriecs' na coluna direita (possível erro de impressão por Africae).
+    - 'CG' em 'XII. CG. XI.' na coluna direita.
+  </notas>
 </pagina>

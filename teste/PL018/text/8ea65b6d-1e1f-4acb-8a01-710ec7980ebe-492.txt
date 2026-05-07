@@ -1,51 +1,67 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,80">
-    GRAMMATICA GOTHICÆ LINGUÆ.
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,60">
+    963 GRAMMATICA GOTHICÆ LINGUÆ. 964
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,80,500,960">
+  <bloco tipo="texto_principal" script="misto" bbox="50,60,480,200">
     MANNA, tum ex radice MAN efformat, sequenti modo :
-    Sing. Plur.
-    Nom. manna homo mans, mannans homines
-    Voc. manna homo (mans) homines
-    Acc. mannan hominem mans, mannans homines
-    Dat. main homini mannam hominibus
-    Gen. manȝ hominis manne hominum
-    2) Eodem modo son, neutr. ignis, in singulari tantum occurrens, suos casus; a radicibus FONA et FUNAN :
-    Nop. son ignus
-    Acc. son ignem
-    Dat. sunin igni
-    Gen. sunins ignis
-    3) Fadrein, quod, licet juxta formam, neutrum sit singulare, in nominativo et accusativo ut-masculinum plurale usurpatur, ex. gr. : þai padrein Joan.
-    IX, 20, þans padrein ix, 18. Loco cæterorum casuum regularis plur. padreina (Cor. II, XII, 14) communius adhiberi videtur, ex. gr. : padreinan Col. III, 20; Tim. II, 11, 2. Unde quaeri potest, utrum padrein, ut in glossario scribitur, proprie indeclinabile, an potius tanquam defectivum habendum sit.
+    Sing.                 Plur.
+    Nom. manna  homo      mans, mannans homines
+    Voc. manna  homo      (mans)      homines
+    Acc. mannan hominem   mans, mannans homines
+    Dat. mann   homini    mannam      hominibus
+    Gen. mans   hominis   manne       hominum
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,200,480,330">
+    2) Eodem modo fon, neutr. ignis, in singulari tantum occurrens, suos casus a radicibus FONA et FUNAN :
+    Nom. fon    ignis
+    Acc. fon    ignem
+    Dat. funin  igni
+    Gen. funins ignis
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,330,480,500">
+    3) Fadrein, quod, licet juxta formam, neutrum sit singulare, in nominativo et accusativo ut-masculinum plurale usurpatur, ex. gr. : þai fadrein Joan. ix, 20, þans fadrein ix, 18. Loco cæterorum casuum regularis plur. fadreina (Cor. II, xii, 14) communius adhiberi videtur, ex. gr. : fadreinaim Col. iii, 20; Tim. II, iii, 2. Unde quæri potest, utrum fadrein, ut in glossario scribitur, proprie indeclinabile, an potius tanquam defectivum habendum sit.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,500,480,600">
     DECLINATIO NOMINUM PROPRIORUM ET PEREGRINORUM.
-    § 94. Horum nominum et vocabulorum declinatio peculiarie requirit examen. Quamvis enim gothus peregrinarum græcorum vocabulorum formam quandoque intactam retinuerit, ea tamen quandoque etiam gothicorum vocabulorum ad instar flectere conatus est : hinc eorum delectionem ab assueta forma prætermittere nefas. Jam vero juxta gothicas declinationes ordinantur, ut sequitur.
+    § 94. Horum nominum et vocabulorum declinatio peculiare requirit examen. Quamvis enim gothus peregrinam græcorum vocabulorum formam quandoque intactam retinuerit, ea tamen quandoque etiam gothicorum vocabulorum ad instar flectere conatus est : hinc eorum deflexionem ab assueta forma prætermittere nefas. Jam vero juxta gothicas declinationes ordinantur, ut sequitur.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="50,600,480,900">
     A. VOCALIA DECLINATIO.
     1. Radic. vocalis a.
     a. Masculinum.
-    a. Forma radicalis -a :
-    Hanc formam sequuntur peregrina vocabula numero plurima, ut : abjaþar, abaíar, abraham, adam, bailiam, bauuas, davied, ȝakob, īsak, īsrael, īosef, kaiar, lod, moses, saulamom, seimon, siloam, samuel, etc., eo tamen discrimine, quod ad nominativum non adjiciant. Idem dicendum est de gothico nomine viljarþi in documento neapolitano.
-    þ. Forma radicalis -ja :
-    Laiveis, liþdomœis, (malkieis, Luc. III, 24), naito-fateis, praizþyaires, saudauweis
-    b. Fœmininum.
-    Eo modo declinantur non pauca nomina et vocabula peregrina, ut akaiþ, anliauika, apia, galatia, dalmatia, fairusalynna, bileisia, laudja, makidona vel makidionja, naudruþa, seidona, syris, trauada, lyra, filippa, etc.; quæ tamen in genitivo terminationem -as loco -os recipiunt, ex. gr. : asiais Cor. I, xvi, 19, kileisiais Gal. I, 21. Regularius fairusalynas apud Luc. II, 38 occurrit. Synagogae e contrario, quod alias consonanter flectitur, genitivum synagogois apud Luc. VIII, 41
+    α. Forma radicalis -a :
+    Hanc formam sequuntur peregrina vocabula numero plurima, ut : abjabar, aibair, abraham, adam, bailiam, bauaus, daveid, iakob, isak, israel, iosef, kaisar, lod, moses, saulaumon, seimon, siloam, fannuel, etc., eo tamen discrimine, quod ad nominativum s non adjiciunt. Idem dicendum est de gothico nomine viljariþ in documento neapolitano.
+    β. Forma radicalis -ja :
+    Laivveis, lyddomæis, (naiteikeis, Luc. iii, 24), naitofaleis, praizbytaireis, saudäumeis
+    b. Femininum.
+    Eo modo declinantur non pauca nomina et vocabula peregrina, ut akaja, antiaukia, asia, galatia, dalmatia, iairusaulyma, kileikia, laudija, makidona vel makidonja, paurpura, seidona, syria, irauda, lyra, filippa, etc.; quæ tamen in genitivo terminationem -ais loco -os, recipiunt, ex. gr. : asiais Cor. I, xvi, 19, kileikiais Gal. i, 21. Regularius iairusaulymos apud Luc. ii, 38 occurrit. Synagoge e contrario, quod alias consonanter flectitur, genitivum synagogais apud Luc. viii, 41
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,80,960,960">
-    et Joan. ix, 21 habet; dativus autem laudija Tim. II, 1, 5 mendum est librarii pro laudijai.
+  <bloco tipo="texto_principal" script="misto" bbox="520,60,950,100">
+    et Joan. ix, 21 habet; dativus autem (laudija Tim. II, i, 5 mendum est librarii pro laudijai.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="520,100,950,230">
     2. Radic. vocalis i.
     Masculinum.
-    Eo modo tantum flectuntur nomina gentilia, ut saur Syrus, dat. plur. saurim Luc. II, 2, præsertim in plurali : makidoneis, rumoneis, seidoneis, saudauweis (Luc. XVII, 29), galeatis, fairusalynneis. Nonnulla etiam in nominativo sing. græcam terminationem habent : israelites, samareites, fairusalymites.
+    Eo modo tantum flectuntur nomina gentilitia, ut saur Syrus, dat. plur. saurim Luc. ii, 2, præsertim in plurali : makidoneis, rumoneis, seidoneis, saudäumeis (Luc. xvii, 29), galateis, iairusaulymeis. Nonnulla etiam in nominativo sing. græcam terminationem habent : israeleites, samareites, iairusaulymeites.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="520,230,950,650">
     3. Radic. vocalis u.
     Masculinum.
-    Huc referrenda; sunt vocabula numero plurima, ut aggilus, aipiskaupus, aifisius, akajus, afsaius, aphaus, barþaulaumais, gaddarenas, gairsaius, galaitus, galeitais, zaibaidanis, zakkaius, laibrun, lakobus, laurdanus, iudaius, kaurinþius, nikandæus, paitrus, pavlus, pelatus, saddakauis, seimonus, teiliruis, leimaupirius, teitus, faresiaus, filippiusius, etc. Hoc tamen est animadverterendum, quod nominativum plur. iu -eis, genitivum plur. iu -e efformant, ex. gr. : apaustauleis, apaustauleis, iuadaeis, iudaeis, bis tantum exceptis, quæ in singulari in -ius desinunt, ut aifisius, kaurinþius, filippiusius, quæque in nominativo plur. eodem hoc modo sonant. Datur etiam nominativus plur. aggiljus Mc. XII, 25 ; Luc. II, 15; Rom. VIII, 38 cum aggailes Mc. I, 13. Quædam in nominativo sing. es quoque loco ex accipiunt, ut præsertim Mc VI, 15; XI, 22, iskariotes Joan. XII, 4, qua noua terminatione ad supra memorata israelites, samareites, fairusalymites accedunt. Dativus iohannes Luc. II, 9 a iohannes pariter efficitur
-    « Anomalio. — Ad vocalicam declinationem pertinent, licet nulli peculiari formæ subiiciantur, septenia : ano, gen. anos; helei, gen. heleis; naggai, gen. naggais; herodes, dat. heroda, gen. herodes vel herodis; iohannes, acc. iohannen (iohanna Mc. I, 19), dat. iohanne, iohannen et iohanna Luc. IX, 9, gen. iohannes vel iohannis. Probabiliter laulrarides, janus, mannæus, airmogainæis simili modo sunt flectenda.
+    Huc referenda sunt vocabula numero plurima, ut aggilus, aipiskaupus, aifaisius, akajus, alfaus, apostaulus, barþaulaumaius, gaddarneus, gairgaisenus, galaius, galeilaius, zaibaidaius, zakkaius, kaibran, iakobus, iaurdanus, iudaius, kaurinjaius, nikodemus, paitrus, paulus, pelatus, saddukaius, seimonus, lebai-rius, teimauþaius, teitus, fareisaius, filippius, etc. Hoc tamen est animadvertendum, quod nominativum plur. iu -eis, genitivum plur. iu -e efformant, ex. gr.: apaustauleis, apaustaule, iudaiéis, iudadé, his tantum exceptis, quæ in singulari in -ius desinunt, ut aifaisius, kaurinjaius, filippius, quæque in nominativo plur. eodem hoc modo sonant. Datur etiam nominativus plur. aggiljus Mc. xii, 25 ; Luc. ii, 15; Rom. viii, 38 cum aggileis Mc. i. 13. Quædam in nominativo sing. es quoque loco us accipiunt, ut prafetes Mc vi, 15; xi, 52, iskariotes Joan. xii, 4, qua nova terminatione ad supra memorata israeleites, samareites, iairusaulymeites accedunt. Dativus iohannau Luc. ii, 9 a iohannes pariter efficitur
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="520,650,950,750">
+    Annotatio. — Ad vocalem declinationem pertinent, licet nulli peculiari formæ subjiciantur, sequentia : ano, gen. anos; keleí, gen. keleis; naggai, gen. naggais; herodes, dat. heroda, gen. herodes vel herdis; iohannes, acc. iohannen (iohanna Mc. i, 19), dat. iohanne, iohannen et iohannau Luc. ix, 9, gen. iohannes vel iohannis. Probabiliter taitarkes, jannes, mambres, sirmogaineis simili modo sunt flectenda.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="520,750,950,900">
     B. CONSONANTICA DECLINATIO.
     a. Masculinum.
-    § 95. Quæ huc arreccenda sunt atbia, aimmir, barakies, hela, Þymiama, kajusa, knusa, papa, nan, satana, etc., plane regulariter declinantur, hoc tantum excepto, quod pluræ græcorum ad iisdem in nominativo sing. accipiunt, ut gipares, andreas, annæ, barnabas, esaieas, zakarias, helias, þomas, iairnnaeus, iudas, lukas, tobias, satanas, etc. Sic se habet etiam nomen gobicum synaþisþins.
-    Juxtha hæc quoque declinationem plurima secuntur feminia, ut alodia, beþania, gaiania, maris, uxor, samaria, aura, et probabiliter alia plura, utalena, yriska, priska, susanna, audama, etc. Parii occurrit accusativus plur. aipisulaus Neb. VI, 17, 19 ab episculus. Ex dativo herodidein (pro herodidian?) Luc. III, 19 et genitivo herodidianus Mc. v, 17, 28 conjicerelicet quod
+    § 95. Quæ huc accensenda sunt abia, aimmare, barakeia, helia, þyumana, kajufa, kusa, papa, ran, satana, etc., plane regulariter declinantur, hoc unum excepto, quod plura græcorum ad instar in nominativo sing. s accipiunt, ut aipafas, andrais, annas, barnabas, esacias, zakarias, helias, þomas, iasminias, iudas, lukas, tobeias, satanas, etc. Sic go habet etiam nomen gothicum sunjai-friþus.
+    Juxta hanc quoque declinationem plerumque flectuntur feminina, ut aiodie, beþania, gaiainna, maria, marþa, samaria, sarra, et probabiliter alia plura, ut aivea, reibekka, priska, susanna, saudæuma, etc. Pariter occurrit accusativus plur. aipistulans Neh. vi, 17, 19 ab aipistule. Ex dativo herodiadein (pro herodiadin ?) Luc. iii, 19 et genitivo herodiadins Mc. vi, 17, 22 conjicere licet semi
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="200,950,800,990">
     Digitized by Google
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,960,960,990">
-    Digitized by Google
-  </bloco>
-  <notas>Script predominantemente latino. Texto em duas colunas; transcrição segue ordem esquerda depois direita. Algumas letras góticas e ligaduras foram renderizadas conforme aparência; usei caracteres modernos para ȝ (yogh) e þ (thorn) onde visível. Pequenos sinais tipográficos e itálicos não foram marcados. Palavras parcialmente ilegíveis foram preservadas; no corpo usei [ilegivel] apenas quando necessário (nenhum caso aplicado).</notas>
+  <notas>
+    Transcrição de página de gramática gótica (séc. XIX). Uso de caracteres especiais como þ (thorn), æ (ash), e mistura de latim com termos góticos e gregos transliterados.
+  </notas>
 </pagina>

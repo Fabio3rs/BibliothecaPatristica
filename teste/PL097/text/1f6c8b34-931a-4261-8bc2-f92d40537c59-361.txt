@@ -1,43 +1,176 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,70">
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,60">
     713 COD. DIPLOM. — BENEDICTI CAPITULARIUM COLLECTIO. — LIB. I. 714
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,70,500,930">
-    Item eiusdem, ut si quis sacerdotum contra constituta decretalim praesumptiose egerit et corrigi noluerit, ab officio suo submoveatur.
-    86. De fide presbiterorum ab episcopis discutienda.
-    Ut episcopi diligenter discutian per suas parrochias presbiterorum fidem et baptisma catholicum et missarum celebrationes, ut fidem rectam teneant et baptisma catholicum observent et missarum praeces bene intellegant, et ut psalmi digne secundum divisionis versuum modulentiur, et dominicam orationem ipsi intellegant et omnibus praedicent intellegeniam, ut quisque sciat quid petat a Deo. Et ut Gloria Patri cum omni honore apud omnes 1 cante- tur, et ipse sacerdos cum sanctis angelis et populo Dei communi voce Sanctus, Sanctus, Sanctus decantet. Et omnimodis dicendum est presbiteris et diaconibus, ut arma non portent, sed magis confidant in defensione Dei, quam in armis.
-    87. De presbiteris in ecclesiis constituendis ab episcopis et non ab aliis. Statutum est, ut sine auctoritate vel consensu episcoporum presbiteri in quibuslibet ecclesiis nec constituantur nec expellantur. Et si laici clericos probabilis vitae et doctrinae episcopis conserandos suisque in ecclesiis constituendos obtulerint, nulla qualibet occasione eos recipiant.
-    88. De villis novis et ecclesiis in eis noviter constitutis. Sanctum est de villis novis et ecclesiis in eis noviter constitutis, ut decimae de ipsis villis ad easdem ecclesias conferantur.
-    89. De presbiteris, qui feminas in domibus habent. Sanctum est ab episcopis de presbiteris, qui feminis secum indiscrete habitare permittunt et propter hoc malae opinioniis suspicione denotantur, ut si coeniceps admoniti non se corrxerint, velut contemptores sacrorum canonum canonica inveccione feriantur.
-    90. De scriptoribus. Ut scribae vitiose non scribant.
-    91. De incestuosīs. De incestuosis, ut canonice examinetrur et nec propter alicuius avariciam quisquam remittatur, quidam vero consringantur.
-    92. De communicatione fidelium. Ut omnes fideles communicent et ad missas perseptent 2 sine aliqua occasione 3.
-    93. De confundig ad ecclesiam. Si quis ad ecclesiam confugiurn fecerit, in atrio ipsius ecclesiae pacem habeat, nec sit ei necesse ecclesiam ingredi; et nullus eum inde per vim abstrahere praesumat, sed liceat confiteri quod fecit, et inde per manus bonorum hominum ad discussionem in publico perducatur.
-    94. De admonitione sacerdotum. Ut sacerdotes admonent populum, ut elemosinam dent et orationes faciant pro diversis plagis, quas assidue pro peccatis nostris patiuntur.
-    95. De praedicatione ad plebem. Ut ipsi sacerdotes unusquisque secundum ordinem suum praedicare et docere studeat plebem sibi commissam.
-    96. De eruditione filiorum a parentibus et patrinis. Ut parentes filios suos, et patrini eos quos de fonte lavacri suscipiunt, erudire sumponere studeant; illos, quia eos genuerunt et eis a Domino dati sunt; et istos, quia pro eis fidelissimos existunt.
-    97. De ecclesiis antiquitus constitutis. Ut ecclesiae antiquitus constitutae nec decimis nec ullia possessione priventur.
-    98. De his, qui sine consensu episcopi presbiteros in ecclesiis constituunt vel de ecclesiis eisciunt. De his, qui sine consensu episcopi presbiteros in ecclesiis suis constituunt vel de ecclesiis eiciunt, et ab episcopo vel a quolibet misso dominico admoniti obedire noluerint, ut bannum nostrum reuadiate cogan-
+  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,850">
+    Item eiusdem, ut si quis sacerdotum contra consti-
+    tuta decretalium praesumptuose egerit et corrigi no-
+    luerit, ab officio suo submoveatur.
+    86. De fide presbiterorum ab episcopis discucienda.
+    Ut episcopi diligenter discutiant per suas parroe-
+    chias presbiterorum fidem et baptismu catholicum et
+    missarum celebrationes, ut fidem rectam teneant et
+    baptismu catholicum observent et missarum praeces
+    bene intellegant, et ut psalmi digne secundum divi-
+    siones versuum modulentur, et dominicam oratio-
+    nem ipsi intellegant et omnibus praedicent intelli-
+    gen tam, ut quisque sciat quid petat a Deo. Et ut Glo-
+    ria Patri cum omni honore apud omnes 1 cantetur,
+    et ipse sacerdos cum sanctis angelis et populo
+    Dei communi voce Sanctus, Sanctus, Sanctus decan-
+    tet. Et omnimodis dicendum est presbiteris et dia-
+    conibus, ut arma non portent, sed magis confidant
+    in defensione Dei, quam in armis.
+    87. De presbiteris in ecclesiis constituendis ab epi-
+    scopis et non ab aliis. Statutum est, ut sine auctori-
+    tate vel consensu episcoporum presbiteri in quibus-
+    libet ecclesiis nec constituantur nec expellantur. Et
+    si laici clericos probabilis vitae et doctrinae episco-
+    pis conserandos suisque in ecclesiis constituendos
+    obtulerint, nulla qualibet occasione eos reiciant.
+    88. De villis novis et ecclesiis in eis noviter consti-
+    tutis. Sanctum est de villis novis et ecclesiis in eis
+    noviter constitutis, ut decimae de ipsis villis ad eas-
+    dem ecclesias conferantur.
+    89. De presbiteris, qui feminas in domibus habent.
+    Sanctum est ab episcopis de presbiteris, qui femi-
+    nas secum indiscerete habitare permittunt et propter
+    hoc malae opinionis suspicione denotantur, ut si de-
+    inceps admoniti non se correxerint, velut contem-
+    ptores sacrorum canonum canonica invectio ne fe-
+    riantur.
+    90. De scriptoribus. Ut scribae vitiose non scri-
+    bant.
+    91. De incestuosis. De incestuosis, ut canonice
+    examinentur et nec propter alicuius amicitiam qui-
+    dam relaxentur, quidam vero constringantur.
+    92. De communicatione fidelium. Ut omnes fide-
+    les communicent et ad missas perspectent 2 sine
+    aliqua occasione 3.
+    93. De confugio ad ecclesiam. Si quis ad eccle-
+    siam confugium fecerit, in atrio ipsius ecclesiae pa-
+    cem habeat, nec sit ei necesse ecclesiam ingredi;
+    et nullus eum inde per vim abstrahere praesumat,
+    sed liceat confiteri quod fecit, et inde per manus
+    bonorum hominum ad discussionem in publico per-
+    ducatur.
+    94. De admonitione sacerdotum. Ut sacerdotes
+    admoneant populum, ut elimosinam dent et oratio-
+    nes faciant pro diversis plagis, quas assidue pro pec-
+    culis nostris patimur.
+    95. De praedicatione ad plebem. Ut ipsi sacerdo-
+    tes unusquisque secundum ordinem suum praedi-
+    care et docere studeat plebem sibi commissam.
+    96. De eruditione filiorum a parentibus et patrinis.
+    Ut parentes filios suos, et patrini eos quos de fonte
+    lavacri suscipiunt, erudire summopere studeant;
+    illos, quia eos genuerunt et eis a Domino dati sunt;
+    et istos, quia pro eis fideiussors existunt.
+    97. De ecclesiis antiquitus constitutis. Ut ecclesiae
+    antiquitus constitutae nec decimis nec ulla posses-
+    sione priventur.
+    98. De his, qui sine consensu episcopi presbiteros
+    in ecclesiis constituunt vel de ecclesiis eiciunt. De his,
+    qui sine consensu episcopi presbiteros in ecclesiis
+    suis constituunt vel de ecclesiis eiciunt, et ab epi-
+    scopo vel a quolibet misso dominico admoniti obe-
+    dire noluerint, ut bannum nostrum rewadiare cogan-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,70,980,930">
-    tur et per subinssores ad palatium nostrum venire iubebantur; et tunc nos decernamus, utrum nobis placeat ut aut illum bannum persolvant 4, aut aliam banniscarum sustineant 5.
-    99. De ecclesiis inter coheredes divisas. De ecclesiis, quae inter coheredes divisase sunt, consideratum est, quatinus si 6 secundum providentiam et admonitionem episcopi ipsi coheredes eas voluerint tenere et honorare, faciant. Si autem hoc contradixerint, ut in episcopi potestale maneant, utrum eas ita consistere permittat aut reliquias exinde auferat. Et ubi ad nostrum beneficium ecclesiae pertinentes ita divisase inventae fuerint, ut describantur et nobis renuntientur.
-    100. De manso ad ecclesiam dato. De uno manso ad ecclesiam dato, de quo aliqui homines contra suautas sibi servitutium exigunt, quicunque pro hac causa accusatus fuerit, comes vel missi hoc, quod inle subtractum est, presbiteris cum sua lege restituere faciant.
-    101. De his, qui decimas dare nolunt, nisi a se redimanitur. De decimis, quas populus dare non vult, nisi quolibet modo ab eo redimanitur, ab episcopis prohibendum est ne fiat. Et si quis contemptor inventus fuerit et nec episcopum nec comitem audire voluerit, si noster homo fuerit, ad praesentiam nostram venire compellatur. Caeteri vero distringantur, ut inviti ecclesiae restituant, quod 7 voluntarie dare neglexerunt.
-    102. De testibus ad rem quamlibet discutiendam. Ut quandomunque testes ad rem quamlibet discutiendam quaerendi atque cligendi sunt, a misso nostro et comite, in cuius ministerio de re qualicunque agendum est, tales eligantur, quales optimi in ipso pago inveniri possint. Et non liceat litigatoribus per praemia falsos testes adducere, sicut actenus fieri solebat.
-    103. De causa ebrii hominis 8, et de eius testimonio, et de placito comitis. Ut nullus ebrius suam causam in malo possit conquirere nec testimonium dicere. Nec placitum comes habeat, nisi licemus.
-    104. De hoc si presbiteri sanctum crisma dederint ad iudicium subverterendum. Ut presbiter, qui sanctum chrisma donaverit ad iudicium subvertendum, postquam de gradu suo depositus fuerit, manum amittat.
-    105. De placito centenarii. Ut nullus homo in placito centenarii neque ad mortem, nec ad libertatem suam amittendam aut ad res reddendas vel mancipia iudicetur; sed ista 9 aut in praesentia comitis vel missorum nostrorum iudicentur.
-    106. De raptu viduarum. Qui viduam intra primos triginta dies vidualitis vel invitam vel volentem sibi copulaverit, bannum nostrum, id est sexaginta solidos, in triplo componat. Et 10 si invitam eam duxit, legem suam ei componat, illam vero ulterius non attingat.
-    107. De homine publicam poenitentiam agente interfecto. Qui hominem publicam poenitentiam agentem interficeret, bannum nostrum in triplo compo- net et virgildum proximis suis 11 persolvat.
-    108. De observatione praeceptorum dominicorum. De observatione praeceptorum nostrorum et immunitatum 12 praecipimus, ut ita observentur, sicut a nobis et ab antecessoribus nostris constitutum est.
-    109. De locis iamdudum sacris et nunc spurcitia foedatis. De locis iam d'um sacris et nunc spurcitia foedatis, ut iuxta possibilitatem in antiquum statum reformetur.
-    110. De commutationibus utilibus permanendis inutilibusque delendis. Ubique commutationes tam tempore nostro quamque genitoris nostri legi-
+  <bloco tipo="nota_marginal" script="latino" bbox="485,60,515,100">
+    A
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="20,930,980,990">
+  <bloco tipo="nota_marginal" script="latino" bbox="485,250,515,290">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,480,515,520">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,700,515,740">
+    D
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,60,950,850">
+    tur et per fideiussores ad palatium nostrum venire
+    iubeantur; et tunc nos decernamus, utrum nobis
+    placeat ut aut illum bannum persolvant 4, aut aliam
+    harniscaram sustineant 5.
+    99. De ecclesiis inter coheredes divisus. De eccle-
+    siis, quae inter coheredes divisae sunt, considera-
+    tum est, quatinus si 6 secundum providentiam et
+    admonitionem episcopi ipsi coheredes eas voluerint
+    tenere et honorare, faciant. Si autem hoc contra-
+    dixerint, ut in episcopi potestate maneat, utrum eas
+    ita consistere permittat aut reliquias exinde auferat.
+    Et ubi ad nostrum beneficium ecclesiae pertinentes
+    ita divisae inventae fuerint, ut describantur et nobis
+    renuntietur.
+    100. De manso ad ecclesiam dato. De uno manso
+    ad ecclesiam dato, de quo aliqui homines contra sta-
+    tuta sibi servitium exigunt, quicunque pro hac cau-
+    sa accusatus fuerit, comes vel missi hoc, quod inde
+    subtractum est, presbiteris cum sua lege restituere
+    faciant.
+    101. De his, qui decimas dare nolunt, nisi a se
+    redimantur. De decimis, quas populus dare non vult,
+    nisi quolibet modo ab eo redimantur, ab episcopis
+    prohibendum est ne fiat. Et si quis contemptor in-
+    ventus fuerit et nec episcopum nec comitem audire
+    voluerit, si noster homo fuerit, ad praesentiam no-
+    stram venire compellatur. Caeteri vero distringantur,
+    ut inviti ecclesiae restituant, quod 7 voluntarie dare
+    neglexerunt.
+    102. De testibus ad rem quamlibet discutiendam.
+    Ut quandocunque testes ad rem quamlibet discu-
+    tiendam quaerendi atque elegendi sunt, a misso no-
+    stro et comite, in cuius ministerio de re qualicunque
+    agendum est, tales eligantur, quales optimi in ipso
+    pago inveniri possint. Et non liceat litigatoribus per
+    praemia falsos testes adducere, sicut actenus fieri
+    solebat.
+    103. De causa ebrii hominis 8, et de eius testimo-
+    nio, et de placito comitis. Ut nullus ebrius suam
+    causam in mallo possit conquirere nec testimonium
+    dicere. Nec placitum comes habeat, nisi ieiunus.
+    104. De hoc si presbiteri sanctum chrisma dederint
+    ad iudicium subvertendum. Ut presbiter, qui san-
+    ctum chrisma donaverit ad iudicium subvertendum,
+    postquam de gradu suo depositus fuerit, manum
+    amittat.
+    105. De placito centenarii. Ut nullus homo in
+    placito centenarii neque ad mortem, nec ad liber-
+    tatem suam amittendam aut ad res reddendas vel
+    mancipia iudicetur; sed ista 9 aut in praesentia co-
+    mitis vel missorum nostrorum iudicentur.
+    106. De raptu viduarum. Qui viduam intra pri-
+    mos triginta dies viduitatis vel invitam volentem
+    sibi copulaverit, bannum nostrum, id est sexaginta
+    solidos, in triplo componat. Et 10 si invitam eam du-
+    xit, legem suam ei componat, illam vero ulterius
+    non attingat.
+    107. De homine publicam poenitentiam agente in-
+    terfecto. Qui hominem publicam poenitentiam agen-
+    tem interfecerit, bannum nostrum in triplo compo-
+    nat et wirgildum proximis suis 11 persolvat.
+    108. De observatione praeceptorum dominicorum.
+    De observatione praeceptorum nostrorum et immuni-
+    tatum 12 praecipimus, ut ita observentur, sicut a no-
+    bis et ab antecessoribus nostris constitutum est.
+    109. De locis iamdudum sacris et nunc spurcitiis
+    foedatis. De locis iamdudum sacris et nunc spurci-
+    tiis foedatis, ut iuxta possibilitatem in antiquum
+    statum reformentur.
+    110. De commutationibus utilibus permanendis
+    inutilibusque delendis. Ubicunque commutationes
+    tam tempore nostro quamque genitoris nostri legi-
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="50,860,950,950">
     VARIANTES LECTIONES.
-    1 homines G. 2 perrespectent l, 132. 3 deprecatcione l, 132. 4 persolvant G. 5 sustineant G. 6 decis? G. qui superrepicto vel quod G. 8 nominis G. 9 isti Bal. 10 vel Bal. 11 eius Bal. 12 immunta? Bal.
-    PATROL. XCVII. Digitized by Google23
+    1 homines G. 2 perexpectent I, 132. 3 deprecatione I. 132. 4 persolvat G. 5 sustineat G. 6 deest G.
+    qui superscripto vel quod G. 7 nominis G. 8 isti Bal. 9 vel Bal. 10 vel Bal. 11 eius Bal. 12 immunitate Bal.
   </bloco>
-  <notas>Transcrição mantida fiel ao impresso; usei [ilegivel] não foi necessário. Pequenas palavras cortadas ao final da coluna esquerda (ligadas por hífen) foram transcritas tal qual ("cogan-") para preservar literalidade.</notas>
+  <bloco tipo="rodape" script="latino" bbox="0,950,1000,1000">
+    PATROL. XCVII. Digitized by Google 23
+  </bloco>
+  <notas>
+    Transcrição de página de capitularia. Texto em duas colunas com fluxo contínuo da esquerda para a direita (palavra "cogan-" continua com "tur"). Letras A, B, C, D no gutter são marcadores marginais. Ortografia original preservada (ex: "presbiterorum", "baptismu", "conserandos", "indiscerete", "fideiussors", "wirgildum").
+  </notas>
 </pagina>

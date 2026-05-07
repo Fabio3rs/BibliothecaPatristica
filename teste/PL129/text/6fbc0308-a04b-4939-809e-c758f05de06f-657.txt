@@ -1,13 +1,24 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,70">
-    1305 LIBER DE COMPUTO. 1306
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,200,60">
+    1305
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,70,490,970">
-    superius memoratos, et 5 qui ad mensem solarem A
-    adduntur supra 30 dies. Et cum ergo lunae 13 mense,
+  <bloco tipo="cabecalho" script="latino" bbox="350,30,650,60">
+    LIBER DE COMPUTO.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="800,30,950,60">
+    1306
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,90">
+    superius memoratos, et 5 qui ad mensem solarem
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,60,480,80">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,90,480,350">
+    adduntur supra 30 dies. Et cum ergo lunæ 15 mense,
     id est dies 11 ad annos solares implendos fuerint
-    adjuncti, restant de eodem mense lunae dies 19. Et
-    hinc emolismorum ratio probatur existere, quod
+    adjuncti, restant de eodem mense lunæ dies 19. Et
+    hinc embolismorum ratio probatur existere, quod
     communium annorum videtur damna supplere, usque
     expleto decemnovennali cursu conveniunt in unum.
     Hoc quoque non est admittendum, quod in illo solari,
@@ -17,27 +28,44 @@
     Aug. fuerit 29, quod ceteris rationibus intermisso
     die noscitur addere, vel minuere. Ipsum quoque nu-
     merum clare noscitur, quibus mensibus 31 dies habere
-    dicitur. Scilicet Ian., et Mart., Mai., Jul., Octob.,
-    ceteri vero iv Non. et cuncti vii Id.
-    Item de mensibus quot horas habeant in die et nocte.
+    dicitur. Scilicet Jan., et Mart., Mai., Jul., Octob.,
+    ceteri vero iv Non. et cuncti viii Id.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,350,480,370">
+    Item de mensibus quot horas habent in die et nocte.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,370,480,460">
     LXIII. Aprilis et Sept. habent horas in nocte 12,
     in die 12. Maius et Augustus horas in nocte 11, in
     die 13. Junius et Julius horas in nocte 9, in die 15.
     October et Martius horas in nocte 13, in die 11.
     November et Febr. horas in nocte 14, in die 10.
-    Decemb. et Jan. horas in nocte 15, in die 9.
+    Decemb. et Jan. horas in nocte 15, et in die 9.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,460,350,480">
     Item de mensibus.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,480,480,630">
     LXIV. Januar. iv Non. xix, dies 31, luna 30.
-    Feebr. iv Non. xvi, dies 28, luna 29. Mart. vi Non.
+    Febr. iv Non. xvi, dies 28, luna 29. Mart. vi Non.
     xvii, dies 31, luna 30. April. iv Non. xviii, dies 30,
     luna 29. Maius vi Non. xvii, dies 31, luna 30. Iunius
-    iv Non. xviii, dies 30, luna 29. Julius vi Non. xvii,
+    iv Non. xviii, dies 30, luna 29. Jylius vi Non. xvii,
     dies 31, luna 30. Augustus iv Non. xix, dies 31,
-    luna 29. September iv Non. xix, dies 30, luna 30. C
+    luna 29. September iv Non. xix, dies 30, luna 30.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,580,480,600">
+    C
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,630,480,670">
     October vi Non. xvii, dies 31, luna 29. November iv
     Non. xviii, dies 30, luna 30. December iv Non. xix,
-    dies [31], luna 29.
-    De punctis lunae.
+    dies 31, luna 29.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,670,350,690">
+    De punctis lunæ.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,690,480,950">
     LXV. Luna prima, 4 punctis lucet, id est 40 mo-
     mentis. Luna 2, 1 hora et 3 punct. Luna 3, 2 horis
     et 2 punct. Luna 4, 3 horis et 1 punct. Luna 5, 4
@@ -47,72 +75,107 @@
     8 hor. et 4 punct. Luna 12, 9 hor. et 3 punct.
     Luna 13, 10 hor. et 2 punct. Luna 14, 11 hor. et 1
     punct. Luna 15, 60 puncta, id est 12 horas. Luna
-    16, 11 hor. et 4 punct. Luna 17, 10 hor. et 2 punct.
+    16, 11 hor. et 1 punct. Luna 17, 10 hor. et 2 punct.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,830,480,850">
+    D
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,850,480,950">
     Luna 18, 9 hor. et 2 punct. Luna 19, 8 hor. et 4
     punct. Luna 20, 8 hor. lucet. Luna 21, 7 hor. et 1
     punct. Luna 22, 6 hor. et 2 punct. Luna 23, 5 hor.
     et 3 punct. Luna 24, 4 hor. et 4 punct. Luna 25,
     4 hor. lucet. Luna 26, 3 hor. et 1 punct. Luna 27,
-    2 hor. et 2 punct. Luna 28, 1 hor. et 3 punct.
+    2 hor. et 2. punct. Luna 28, 1 hor. et 3 punct.
     Luna 29, 4 punct. habet. Luna 30, 2 punctis crescit,
     et 2 decrescit.
-    - Dic mili quot horas lucet luna, vel quot punctos
-    habet luna, caetera percolimur hic. -
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,70,970,970">
+  <bloco tipo="texto_principal" script="latino" bbox="50,950,480,990">
+    Dic mihi quot horas lucet luna, vel quot punctos
+    habet luna...
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="650,60,800,80">
     De numeris.
-    LXVI. Numerus apud Hebraeos, Chaldaeos et
-    Syros nunia dicitur, cum Graecis arithmus nuncupa-
-    tur, apud Aegyptios laterculus, penes Macedones
-    calculus, cum Latinis computus, ema cum Hebraeis,
-    apud Graecos emera, penes Latinos dies. Libia in
-    Hebrae, dicta in Graeco, non apud Latinos. Primus
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,80,950,260">
+    LXVI. Numerus apud Hebræos, Chaldæos et
+    Syros mina dicitur, cum Græcis arithmus nuncupa-
+    batur, apud Ægyptios laterculus, penes Macedones
+    calculus, cum Latinis computus, ema cum Hebræis,
+    apud Græcos emera, penes Latinos dies. Libia in
+    Hebræo, nicta in Græco, nox apud Latinos. Primus
     apud gentiles dies nominatur a sole, secundus a
     luna, tertius a Marte, quartus a Mercurio, quin-
     tus a Jove, sextus a Venere, septimus a Sa-
     turno.
-    De annis naturalibus, et magnis seu solstitialibus.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,260,950,280">
+    De annis naturalibus, et magnis seu solstitianibus.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,280,950,350">
     LXVII. Annus naturalis est, ut cum se soli luna
     subponit, ut inter orbem solis et oculos nostros
-    media facta tenebras totius orbis efficit, quod dici-
+    media facta tenebras totius orbis efficiat, quod dici-
     tur eclipsis.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,340,480,360">
+    B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,350,950,420">
     Annus magnus dicitur, quando omnia sidera cer-
     tis temporibus, numerisque completis ad suum locum,
     vel ordinem revertuntur, quem annum antiqui finire,
     vel adimplere dixerunt.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,420,950,480">
     Annus solstitialis est cum sol expleto per omnia
     signa circuitu in id, unde principium cursus sui
     sumpsit, recurrit. Ipse est solaris annus, vel civilis,
     qui diebus 365 peragitur.
-    De incendio lunae.
-    LXVIII. Incendium lunae 225 certis computatis
-    minutis, id est 10 pene minuta in unaquaque
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,480,850,500">
+    De incendio lunæ.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,500,950,580">
+    LXVIII. Incenduntur lunæ 225 certis computatis
+    minutis, id est 10 pæne minuta in unaquaque
     hora per singula continent momenta 10. Ita dies
     et nox raro diminuitur, donec in fine anni 14 id
-    efficiunt. Sic mutatio lunae intelligitur per 19 annos.
+    efficiunt. Sic mutatio lunæ intelligitur per 19 annos.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,580,850,600">
     De die solis orientis.
-    LXIX. Dies est solis orientis praesentia, quousque
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,600,950,980">
+    LXIX. Dies est solis orientis præsentiæ, quousque
     ad occasum perveniat. Dies autem geminatur ap-
     pellari solet proprie a solis ortu usque quo veniat
-    ad occasum, spatio, 'die duo sunt inter diurnum et
-    nocturnum, et est dies horarum 12. Partes albiviae
+    ad occasum, spatie, die duo sunt inter diurnum et
+    nocturnum, et est dies horarum 12. Partes abusivæ
     diei 3 sunt, mane, meridies, et suprema. Initia diei
     alii a solis ortu putant, ab occasu, alii a media
-    nocte. Nam Chaldaei a solis ortu diei initium faciunt,
-    totum id spatium hi diem appellantas. Aegyptii
-    autem ex initio noctis sequentes diei originem tra-
-    hunnt. Romani autem a medio noctis initium oriri
-    dicci volunt, et in medio noctis finiri. Fasti dies sunt,
-    quibus satur, id est dicitur, ut nefasti quibus non
-    dicitur. Feriali dies, in quibus res divina fit, et
-    abstinere homines a libibus oportet. Profesti dies
+    nocte. Nam Chaldæi a solis ortu diei initium faciunt,
+    totum id spatium hi diem appellantes. Ægyptii
+    autem ex initio noctis sequentis diei originem tra-
+    hunt. Romani autem a medio noctis initium oriri
+    dici volunt, et in medio noctis finiri. Fasti dies sunt,
+    quibus fatur, id est dicitur, ut nefasti quibus non
+    dicitur. Feriati dies, in quibus res divina fit, et
+    abstinere homines a litibus oportet. Profesti dies
     festis contrarii, id est sine religione. Atri dies sunt,
     qui et communes vocantur. Siderales, in quibus si-
     dera moventur, et homines a navigationibus exclu-
-    duntur, isti continunt 30. Praeliales, quibus fas est
+    duntur, isti continuo 30. Præliares, quibus fas est
     hostem bello lacessere. Intercalares dies sunt 5, qui
-    juxta Aegyptios supersunt 12 mensibus, et incipiunt
-    ix Kal. Sept. et v Kal. memoratur. - (ultima linha cortada)
+    juxta Ægyptios supersunt 12 mensibus, et incipiunt
+    ix Kal. Sept. et v Kal. memoratarum finiuntur. Dies
+    epactarum sunt...
   </bloco>
-  <notas>Texto em latim impresso; duas colunas; pequenas lacunas e corte no canto inferior direito da segunda coluna onde última linha está incompleta. Usei [31] e [ilegivel] apenas onde indicado pelo editorial; sem outras emendas.</notas>
+  <notas>
+    Transcrição de página impressa em latim (Patrologia Latina).
+    Layout em duas colunas.
+    Letras A, B, C, D identificadas como notas marginais de seção no gutter/central.
+    Texto cortado na parte inferior devido à marca d'água "Google" e limite da imagem.
+    Ortografia original mantida (ex: lunæ, Chaldæos, Ægyptios).
+  </notas>
 </pagina>

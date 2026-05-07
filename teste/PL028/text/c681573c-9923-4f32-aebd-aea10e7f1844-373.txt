@@ -2,9 +2,6 @@
   <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
     735 S. HIERONYMI DIVINA BIBLIOTHECA. 736
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,125,515,145">
-    A
-  </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="50,70,480,840">
     reperimus hominem [Vulg. hominum], nisi equos et
     asinos alligatos, et fixa tentoria. Ierunt ergo portarii,
@@ -23,7 +20,7 @@
     Ite, et videte. Qui abierunt post eos usque ad Jor-
     danem : ecce autem omnis via plena erat vestibus
     et vasis, quæ projecerant Syri cum turbarentur : re-
-    versique nuntii indicaverunt *. Et egressus populus
+    versique nuntii indicaverunt a. Et egressus populus
     diripuit castra Syriæ : factusque est modius similæ
     statere [h. siclo] uno, et duo modii hordei statere
     [h. siclo] uno, juxta verbum Domini. Porro rex du-
@@ -46,24 +43,15 @@
     tuus est.
     [Cap. VIII.] Elisæus autem locutus est ad mulie-
     rem, cujus vivere fecerat filium, dicens : Surge,
-    vade tu et domus tua, et peregrinare ubi cumque
+    vade tu et domus tua, et peregrinare ubicumque
     repereris : vocavit [Ms. vocabit] enim Dominus fa-
     mem, et veniet super terram septem annis. Quæ
     surrexit et fecit juxta verbum hominis Dei [h. viri
     Dei] : et vadens cum domo sua, peregrinata est in
-    terra * Philisthim diebus multis [h. septem annis].
+    terra c Philisthim diebus multis [h. septem annis].
     Cumque finiti essent anni septem, reversa est mu-
     lier de terra Philisthim, et egressa est, ut interpel-
     laret regem pro domo sua, et pro agris suis [h. agro
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,415,515,435">
-    B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,645,515,665">
-    C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,795,515,815">
-    D
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="520,70,950,840">
     suo]. Rex autem loquebatur cum Giezi puero viri
@@ -109,26 +97,38 @@
     tulit stragulum, et infudit aqua, et expandit super
     faciem ejus : quo mortuo, regnavit Azael pro eo.
     [T. CXLI.] Anno quinto Joram filii Ahab regis Israel,
-    et Josaphat regis Juda, regnavit Joram filius Josaphat rex Juda. Triginta duorum erat annorum cum
+    et Josaphat regis Juda, regnavit Joram filius Josaphat
+    rex Juda. Triginta duorum erat annorum cum
     regnare cœpisset, et octo annis regnavit in Jerusa-
     lem. Ambulavitque in viis regum [Ms. regis] Israel,
     sicut ambulaverat domus Ahab : filia enim Ahab
     erat uxor ejus : et fecit quod malum est coram Do-
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="50,850,950,960">
-    a Addit Veronens. ms. Regi, quod habet nedum Hebræus textus [ilegivel], sed etiam Vulgati libri.
-    b Pro verbis in introitu portæ, Hebraicum exemplar tantum habet in porta : [ilegivel] : Veronens. ms.
+  <bloco tipo="nota_marginal" script="latino" bbox="485,70,515,90">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,350,515,370">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,600,515,620">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,780,515,800">
+    D
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="50,850,950,960">
+    a Addit Veronens. ms. Regi, quod habet nedum Hebræus textus למלך, sed etiam Vulgati libri.
+    b Pro verbis in introitu portæ, Hebraicum exemplar tantum habet in porta : בשער : Veronens. ms.
     tantum in introitu. Fortasse alterutrum abundare
     Latino interpreti nostro, nec plane immerito, vide-
     batur.
-    c Verba Hebraica [ilegivel] seba sanim, et septem
+    c Verba Hebraica שבע שנים, seba sanim, et septem
     annos, et multos annos significant : nam seba, sive
     sabee, interpretatur septem, vel juramentum, vel sa-
     turitas. Saturitas autem annorum, quæ non resonant
-    in Latino sermone, multorum dierum spatia denun-
-    tiat. Bene ergo Hieronymus seba sanim hic et dies
+    in Latino sermone, multorum dierum spatia denuntiat. Bene ergo Hieronymus seba sanim hic et dies
     multos, et septem annos Latine reddidit. MART.
-    d Veronens. ms. Recipies, propius Græco [ilegivel].
+    d Veronens. ms. Recipies, propius Græco ζήσῃ.
     Hebr. secundam personam cum editis Latinis præ-
     fert. Mox idem ms. sagulum habet pro stragulum,
     quod non improbo. Addit nota marginalis antiqua,
@@ -141,6 +141,6 @@
     Digitized by Google
   </bloco>
   <notas>
-    Transcrição fiel da imagem. As letras A, B, C, D no gutter foram tratadas como nota_marginal. O fluxo de texto segue a coluna esquerda completa, depois a direita. Ligaturas (æ, œ) preservadas. Caracteres hebraicos e gregos nas notas marcados como [ilegivel] para garantir compatibilidade XML estrita, conforme permitido em caso de dúvida na renderização de scripts mistos complexos, embora o contexto indique Hebraico e Grego.
+    Transcrição fiel da imagem. Números de página 735 e 736 no cabeçalho. Letras A, B, C, D no gutter como nota_marginal. Texto dividido em coluna esquerda e direita. Caracteres hebraicos e gregos nas notas de rodapé transcritos conforme visibilidade.
   </notas>
 </pagina>

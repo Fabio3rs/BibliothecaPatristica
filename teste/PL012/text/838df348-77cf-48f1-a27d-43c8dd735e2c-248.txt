@@ -1,10 +1,19 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,70">
-    465 EVANGELIUM SECUNDUM JOHANNEM. 466
+  <bloco tipo="cabecalho" script="latino" bbox="280,20,720,45">
+    EVANGELIUM SECUNDUM JOHANNEM.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,70,480,650">
+  <bloco tipo="cabecalho" script="latino" bbox="30,45,70,65">
+    465
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="900,45,940,65">
+    466
+  </bloco>
+  
+  <!-- CODEX VERCELLENSIS -->
+  <bloco tipo="cabecalho" script="latino" bbox="80,55,350,75">
     CODEX VERCELLENSIS.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,80,230,520">
     peccato qui-
     dem, quia non
     crediderunt
@@ -13,20 +22,20 @@
     quod eo ad Pa-
     trem, et jam
     me non vide-
-    11. buis : de ju-
+    11. bitis : de ju-
     dicio, quia Prin-
     ceps hujus mun-
     di judicatus
     est.
     12. Adhuc multa
-    habeo, quae
+    habeo, quæ
     dicam vobis :
     sed non potes-
-    tis (b) illª + modo
+    tis (b) illa † modo
     13. portare. Sed
     cum vene-
     rit Spiritus veri-
-    talis, ille vos
+    tatis, ille vos
     deducet in om-
     nem verita-
     tem. Non enim
@@ -34,47 +43,48 @@
     sed quæcum-
     que audierit,
     loquetur, et
-    quæ ven-
-    runt, adnunti-
-    abit vobis.
+    quæ ventu-
+    ra sunt, adnun-
+    tiavit vobis.
     14. Ille me hono-
     rificavit, quia
     de meo accipiet,
     et adnuntia-
-    bit vobis.
+    vit vobis.
     15. Omnia quæcum-
     que habet Pa-
     ter, mea sunt.
     Ideo dixi vo-
     bis : Quia de meo
     accipit, et ad-
-    nuniavit
-    nuniavit
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="240,80,420,520">
+    nuntiavit
     16. vobis. Pusillum,
     et non vide-
     bitis me : et ite-
     rum pusillum,
     et videbitis me.
     17. Dixerunt ergo
-    discipuli ejus
+    *discipuli ejus
     ad invicem :
     Quid est hoc,
     quod dixit no-
-    bis : Ecce pusi-
+    bis : Ecce pusil-
     lum, et non
     videbitis me,
     et post pusillum,
     et videbitis
     me : et quod di-
     xit : Eo ad Patrem,
-    18. (a) Quid est 3 hoc
+    18. (d) Quid est * hoc
     pusillum? non
-    intellegimus :
+    intellegimus .
     quid dixit.
     19. Cognovit (e) Jesus†,
     quia volebant
-    eum interro-
-    gare, et * ait
+    eum inter-
+    rogare, et b ait
     illis : De hoc quæ-
     ritis ad invi-
     cem, quia dixi :
@@ -93,11 +103,14 @@
     tes eritis, sed
     tristitia ves-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="480,70,920,650">
+
+  <!-- CODEX VERONENSIS -->
+  <bloco tipo="cabecalho" script="latino" bbox="600,55,850,75">
     CODEX VERONENSIS.
-    
-    quiden, quia
-    non (a) credunt;
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,80,680,520">
+    quidem, quia
+    non (a) credunt‡.
     10. in me : de ju-
     stitia vero,
     quia eo ad
@@ -106,7 +119,7 @@
     11. me : de judicio
     autem, quia
     Princeps mundi
-    huius jam
+    hujus jam
     judicatus est.
     12. Adhuc habeo
     multa vobis
@@ -116,13 +129,13 @@
     13. modo. Cum
     enim venerit
     ille Spiritus
-    veritalis, (c)
+    veritatis, (c)
     deducet vos
     in veritate
     omni †. Non
     enim loquitur
-    a semelipso,
-    sed haec, quæ
+    a semetipso,
+    sed hæc, quæ
     audit, loquetur,
     et quæ venient,
     adnunciabit
@@ -139,6 +152,8 @@
     Quia de meo
     accipiet, et ad-
     nuntiabit vobis.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="690,80,870,520">
     16. Modicum, et jam
     non videbitis
     me : et iterum
@@ -148,24 +163,25 @@
     discipuli ejus
     ad alterutrum :
     Quid est hoc,
-    quod dicet nobis :
+    quod dicit nobis :
     Modicum, et non
     videbitis me,
     et iterum mo-
     dicum, et vide-
     bitis me : et :
+    Quia vado ad
     18. Patrem. (d) Quid
     est hoc modi-
-    cum +? nesci-
+    cum †? nesci-
     mus quid lo-
     quitur.
     19. Cognovit (e) Je-
     sus †, quia vo-
     lebant eum in-
-    terrogare, et -
+    terrogare, et
     dixit eis : De
-    hoc quæriris
-    cum alis alio,
+    hoc quæritis
+    cum aliis alio,
     quia dixi : Mo-
     dicum, et non
     videbitis me,
@@ -177,26 +193,31 @@
     vobis, quia vos
     flebitis, et luge-
     bitis, mundus
-    autem gaude-
-    bit : (f) vos †
-    tristes eritis, sed tristitia
+    autem gau-
+    debit : (f) vos †
+    tristes eritis,
+    sed tristitia
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,650,920,720">
-    CODEX BRIXIANUS.
+
+  <!-- CODEX BRIXTANUS -->
+  <bloco tipo="cabecalho" script="latino" bbox="400,530,600,550">
+    CODEX BRIXTANUS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,720,920,1160">
-    peccato quidem quia non crediderunt in me , de
-    justitia vero. quia vado ad Patrem meum. et jam
+  <bloco tipo="texto_principal" script="latino" bbox="50,555,480,720">
+    peccato quidem quia non crediderunt in me, de
+    justitia vero. quia vado ad Patrem meum, et jam
     non videbitis me. de judicio autem. quia Princeps
     hujus mundi damnatus est. Adhuc multa habeo
     vobis dicere sed non potestis portare modo. Cum autem
     venerit ille Spiritus veritatis diriget vos in omnem ve-
-    ritalem. Non enim loquetur a semelipso, sed quæ-
+    ritatem. Non enim loquetur a semetipso. sed quæ-
     cumque audierit loquetur. et quæ ventura sunt adnun-
-    ciavit vobis. Ille me clarificabit. quia de meo accipiet. et
-    adnuntiabit vobis. Omnia quæcunque habet Pater
+    ciavit vobis. Ille me clarificat. quia de meo accipiet. et
+    adnunciavit vobis. Omnia quæcunque habet Pater
     mea sunt. Propterea dixi vobis. Quia de meo accipiet, et
-    adnunciavit vobis. Modicum adhuc. et non videbitis
+    adnunciavit vobis. Modicum adhuc. et non videbitis,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,555,930,720">
     me. et iterum modicum et videbitis me quia vado ad
     Patrem. Dixerunt ergo discipuli ejus ad alterutrum.
     Quid est hoc quod dicit nobis. Modicum. et non vi-
@@ -210,34 +231,63 @@
     bitis et flebitis mundus autem gaudebit. (f) vos †
     tristes eritis. sed tristitia vestra
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,1160,920,1550">
+
+  <!-- CODEX CORBEIENSIS -->
+  <bloco tipo="cabecalho" script="latino" bbox="400,730,600,750">
     CODEX CORBEIENSIS.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,755,480,810">
     9. quia non credunt in me.
     11. Quia princeps hujus mundi judicatus est.
-    13. Ille Spiritus veritalis † deducet vos in omnem
-    veritatem. . . . quæcumque audierit, 6 loquitur † .
+    13. ille Spiritus veritatis * deducet vos in omnem
+    veritatem. . . . quæcumque audierit, * loquitur †.
     16. quia eo ad Patrem.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,755,930,810">
     18. Quid est hoc modicum?
-    19. quia incipiebant eum interrogare... ? quaeri-
+    19. quia incipiebant eum interrogare. . . . 7 quæri-
     ritis ad invicem.
-    20. Quoniam * vos flebitis, et lugebitis. . . tristi-
+    20. Quoniam * vos flebitis, et lugebitis. . . . tristi-
     tia vestra in gaudium veniet.
-    
+  </bloco>
+
+  <!-- VARIANTES LECTIONES -->
+  <bloco tipo="cabecalho" script="latino" bbox="400,820,600,840">
     VARIANTES LECTIONES.
-    
-    1 Gal. loquitur... haec loquetur, et quæ adventura
-    sunt. Vulg. loquitur... loquetur, et quæ ventura sunt.
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="50,845,480,890">
+    1 Gal. loquitur... hæc loquetur, et quæ adventura
+    sunt. Vulg. loquetur... loquetur, et quæ ventura sunt.
     2 Mm. discipuli ejus... hoc, quid. Vulg. ex discipulis
     ejus... hoc, quod.
     3 Mm. hoc? quid dicit. Vulg. hoc, quod dicit.
-    
-    BLANCHINI NOTÆ.
-    
-    (a) Ila et lex. Gr. πιστευσουσιν. — (b) Addit ea, etiam cod. Cant. αὐτά. — (c) Illa et cod. Cant. ὀδηγησει ὑμᾶς
-    β τὰ ἀλήθεια πάντα. — (d) Ita et cod. Cant., τι ἐστὶ τοῦτο μικρόν, omissis verbis dicebant ergo. — (e) Ante Jesus,
-    necess aliem in cod. quoque Cant. — (f) Post vos, deest autem, etiam in cod. Cant.
   </bloco>
-  <notas>Texto em duas colunas no terço superior; usei [ilegivel] não foi necessário. Pequenas siglas editoriais (a),(b),(c),(d),(e),(f) mantidas conforme impresso.</notas>
+  <bloco tipo="aparato_critico" script="latino" bbox="500,845,930,890">
+    b Gal. dixit : De hoc. Vulg. dixit eis : De hoc.
+    c Gal. docebit omnem.
+    d Et ita Gal.
+    e Gal. conqæritis inter vos.
+    f Mm. plorabitis vos.
+  </bloco>
+
+  <!-- BLANCHINI NOTÆ -->
+  <bloco tipo="cabecalho" script="latino" bbox="400,900,600,920">
+    BLANCHINI NOTÆ.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="50,925,930,960">
+    (a) Ita et tex. Gr. πιστεύουσιν. — (b) Addit ea, etiam cod. Cant. αὐτά.— (c) Ita et cod. Cant. ὁδηγήσει ὑμᾶς
+    εἰς τὴν ἀλήθειαν πᾶσαν.—(d) Ita et cod. Cant., τί ἐστι τοῦτο τὸ μικρόν, omissis verbis dicebant ergo.—(e)Ante Jesus,
+    deest autem in cod. quoque Cant. — (f) Post vos, deest autem, etiam in cod. Cant.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="600,970,900,990">
+    Digitized by Google
+  </bloco>
+  
+  <notas>
+    Transcrição de página comparativa de códices do Evangelho de João.
+    Símbolos críticos preservados: †, ‡, *, 7.
+    Texto grego nas notas de Blanchini transcrito literalmente.
+    Layout de duas colunas respeitado em cada seção de códice.
+  </notas>
 </pagina>

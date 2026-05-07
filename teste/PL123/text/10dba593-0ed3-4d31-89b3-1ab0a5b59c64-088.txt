@@ -1,87 +1,109 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="60,10,940,90">
-S. ADONIS ARCHIEPISC. VIENNENSIS
+  <bloco tipo="cabecalho" script="latino" bbox="100,30,900,80">
+    167 S. ADONIS ARCHIEPISC. VIENNENSIS 168
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,90,960,630">
-467
-
-Et Porphyrii hominis Dei.
-
-21. II Q XII Kal. Salonæ, Anastatii martyris.
-22. III R XI Kal. Romæ via Ostiensì, Tinothæi martyris.
-Et Antonii martyris.
-Et peregrinorum martyrum Martialis, Ediceti. Saturinoi cum sociis eorum.
-
-23. IV S X Kal. Romæ, Hippolyti, Quiriaci et Archillai.
-Zachæi episcopi.
-Theonæ episcopi.
-
-24. V T IX Kal. Bartholomæi apostoli et martyris.
-Massæ Candide, Carthagini.
-
-25. VI A VIII Kal. Romæ, Genesii martyris, mimi. Thymeliææ artis magister fuit.
-Et sancti Genesii Arèlætensis.
-Romæ, quatuor martyrum Eusebii, Pontiani, Peregrini et Vincentii.
-
-26. VII B VII Kal. Zephyrini papæ.
-Irenæi, Abundii.
-Bergamis, Alexandri.
-Apud Victimilium, Secundi martyris.
-
-27. I C VI Kal. Capuæ, Rufi martyris, Apollinaris discipuli.
-Tomis, Marcellini et Manneæ.
-
-28. II D V Kal. Romæ, Hermetis martyris.
-In Africa, Augustini episcopi.
-Constantinopoli, sancti Alexandri episcopi.
-
-29. III E IV Kal. Romæ ad Arcum Faustini, Sabinæ martyris.
-Eo die veneratur decollatio S. Joannis Baptistæ.
-
-30. IV F III Kal. Via Ostiensi, Felicis et † Audacti martyrum.
-
-31. V G II Kal. Apud Athenas, Aristidis, qui Adriano Principi de religione Christiana libros obtulit.
+  
+  <!-- Coluna de Letras Dominicalis (Marginalia) - Parte Superior -->
+  <bloco tipo="nota_marginal" script="latino" bbox="180,90,220,460">
+    Q
+    R
+    S
+    T
+    A
+    B
+    C
+    D
+    E
+    F
+    G
   </bloco>
-  <bloco tipo="separador" script="latino" bbox="40,630,960,650">
----------------------------------------------------------------------------
+
+  <!-- Texto Principal - Agosto (continuação) -->
+  <bloco tipo="texto_principal" script="latino" bbox="50,90,950,470">
+    21. II       XII Kal. Salonæ, Anastasii martyris.
+    22. III      XI Kal.  Romæ via Ostiensi, Timothei martyris.
+                 Et Antonii martyris.
+                 Et peregrinorum martyrum Martialis, Ericteti, Saturnini cum sociis
+                 eorum.
+    23. IV       X Kal.   Romæ, Hippolyti, Quiriaci et Archillai.
+                 Zachæi episcopi.
+                 Theonæ episcopi.
+    24. V        IX Kal.  Bartholomæi apostoli et martyris.
+                 Massæ Candidæ, Carthagini.
+    25. VI       VIII Ka.. Romæ, Genesii martyris, mimi. Thymelicæ artis magister fuit.
+                 Et sancti Genesii Arelatensis.
+                 Romæ, quatuor martyrum Eusebii, Pontiani, Peregrini et Vincentii.
+    26. VII      VII Kal. Zephyrini papæ.
+                 Irenæi, Abundii.
+                 Bergamis, Alexandri.
+                 Apud Victimilium, Secundi martyris.
+    .. I         VI Kal.  Capuæ, Rufi martyris, Apollinaris discipuli.
+                 Tomis, Marcellini et Mannæ.
+    28. II       V Kal.   Romæ, Hermetis martyris.
+                 In Africa, Augustini episcopi.
+                 Constantinopoli, sancti Alexandri episcopi.
+    29. III      IV Kal.  Romæ ad Arcum Faustini, Sabinæ martyris.
+                 Eo die veneratur decollatio S. Joannis Baptistæ.
+    30. IV       III Kal. Via Ostiensi, Felicis et † Audacti martyrum.
+    31. V        II Kal.  Apud Athenas, Aristidis, qui Adriano Principi de religione Christiana
+                 libros obtulit.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="320,660,660,720">
-MENSIS SEPTEMBRIS
+
+  <!-- Separador e Título do Mês -->
+  <bloco tipo="cabecalho" script="latino" bbox="50,480,950,560">
+    MENSIS SEPTEMBRIS
+    HABET DIES XXX, LUNA XXX.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,720,960,1470">
-HABET DIES XXX, LUNA XXX.
 
-1. VI H Kal. Sept. Jesu Nave et Gedeon prophetarum.
-Capuæ, Prisci martyris, de illis antiquis Christi discipulis.
-Apud Cæsaream Cappadociæ, Longini militis et martyris, qui latus Domini in cruce aperuit.
-
-2. VII I IV Non. Apud Apamiam, Antonini martyris
-
-3. I K III Non. Romæ, Seraphiæ virginis, IV Kal. Augusti passæ, II. Kal. sepultæ;
-III Non. Septembris memoria passionis ejus celebrior.
-
-4. II L II Non. Moysis prophete.
-Aucyræ, martyrum trium puerorum, Rufini, Silvani, Vitalicæ.
-
-5. III M Nonæ. Romæ, Victorini martyris, fratris Severini, qui post miram pœnitumdem Amiternæ urbis episcopus et martyr factus est.
-Romæ, Herconi.
-
-6. IV N VIII Id. Zachariæ prophetæ.
-Et Onesiphori Pauli discipuli.
-Et confessorum Donatiani et cæterorum.
-
-7. V J O VII Id. Joannis martyris, qui Nicomediae sub Diocletiano librum iniquæ legis minutatim discersit.
-
-8. VI P VI Id. Nativitas Dei Genitricis Mariæ
-Et Adriani martyris cum XXIII martyribus.
-Et Natalice.
-
-9. VII Q V Id. Nicomedie, Dorothei et Gorgonii martyrum quorum unus, Gorgonius,
-Romam transfertur.
-In Sabinis, Hyacinthi, Alexandri Tiburtii.
+  <!-- Coluna de Letras Dominicalis (Marginalia) - Parte Inferior -->
+  <bloco tipo="nota_marginal" script="latino" bbox="180,570,220,900">
+    H
+    I
+    K
+    L
+    M
+    N
+    O
+    P
+    Q
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,1480,960,1530">
-Digitized by Google
+
+  <!-- Texto Principal - Setembro -->
+  <bloco tipo="texto_principal" script="latino" bbox="50,570,950,920">
+    1. VI        Kal. Sept. Jesu Nave et Gedeon prophetarum.
+                 Capuæ, Prisci martyris, de illis antiquis Christi discipulis.
+                 Apud Cæsaream Cappadociæ, Longini militis et martyris, qui latus Do-
+                 mini in cruce aperuit.
+    2. VII       IV Non.  Apud Apamiam, Antonini martyris
+    3. I         III Non. Romæ, Seraphiæ virginis, IV Kal. Augusti passæ, II. Kal. sepultæ
+                 III Non. Septembris memoria passionis ejus celebrior.
+    4. II        II Non.  Moysis prophetæ.
+                 Ancyra, martyrum trium puerorum, Rufini, Silvani, Vitalicæ.
+    5. III       Nonæ.    Romæ, Victorini martyris, fratris Severini, qui post miram pœnitudinem
+                 Amiternæ urbis episcopus et martyr factus est.
+                 Romæ, Herconi.
+    6. IV        VIII d.  Zachariæ prophetæ.
+                 Et Onesiphori Pauli discipuli.
+                 Et confessorum Donatiani et cæterorum.
+    7. V         VII Id.  Joannis martyris, qui Nicomediæ sub Diocletiano librum iniquæ legis
+                 minutatim discerpsit.
+    8. VI        VI Id.   Nativitas Dei Genitricis MARIÆ
+                 Et Adriani martyris cum XXIII martyribus.
+                 Et Nataliæ.
+    9. VII       V Id.    Nicomediæ, Dorothæi et Gorgonii martyrum quorum unus, Gorgonius,
+                 Romam transfertur.
+                 In Sabinis, Hyacinthi, Alexandri Tiburtii.
   </bloco>
-  <notas>Texto em latim; algumas abreviações e sinais eclesiásticos preservados (Kal., Non., Id., †). Usei [ilegivel] nenhuma vez porque o folio é legível; preservei sinais como † e abreviaturas tal como aparecem.</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="400,950,600,990">
+    Digitized by Google
+  </bloco>
+
+  <notas>
+    Transcrição de calendário/martirologio latino.
+    A coluna de letras (Q, R, S...) foi tratada como nota_marginal conforme instrução para letras de seção.
+    O símbolo † antes de Audacti foi mantido.
+    A data "27" aparece como ".. I" devido à desbotamento.
+    "VIII d." transcrito literalmente na linha 6 de Setembro (provavelmente VIII Idus).
+  </notas>
 </pagina>

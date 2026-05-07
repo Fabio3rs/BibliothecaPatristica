@@ -1,9 +1,11 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,25,90,65">505</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="360,25,660,70">APOLOGETICUS.</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="900,25,960,65">506</bloco>
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="40,20,100,50">305</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="380,20,600,50">APOLOGETICUS.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="890,20,950,50">506</bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="35,80,500,560">
+  <bloco tipo="nota_marginal" script="latino" bbox="960,60,980,80">A</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="40,60,490,300">
 auctoritate non modo urbe, sed universa Italia elimi-
 verant. Serapidem et Isidem et Harpocratem (a) cum
 suo Cynocephalo (b), Capitolio prohibitos (c) [inferri],
@@ -14,19 +16,19 @@ vitia cohibentes. His vos restitutis (e) summam
 majestatem contulistis. Ubi religio, ubi veneratio
 majoribus debita a vobis? Habitu, victu, instructu
 (f), sensu (1), ipso denique sermone proavis
-renuntiastis. Laudatis semper antiquitatem, et (2)
+renuntiastis Laudatis semper antiquitatem, et (2)
 nove de die vivitis. Per quod ostenditur, dum a bo-
 nis majorum institutis deceditis, ea vos retinere et
-custodire, quae non debuistis, cum quae debuistis non
-custodistis (3). Ipsum adhuc quod videmini fidelis-
-sime tueri a patribus traditum, in quo principaliter
+custodire, quæ non debuistis, cum quæ debuistis non
+custodistis (3). Ipsum adhuc quod videmini fide-
+lissime tueri a patribus traditum, in quo principaliter
 reos transgressionis Christianos destinatis, studium
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="470,530,510,575">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="495,280,515,300">B</bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="520,80,980,590">
-At dico deorum colendorum, de quo maxime erravit
+  <bloco tipo="texto_principal" script="latino" bbox="510,60,960,300">
+dico deorum colendorum, de quo maxime erravit
 (4) antiquitas, licet Serapidi (g) jam-Romano aras
 restruxeritis, licet Baccho jam-Italico furias vestras
 immolaritis, suo loco ostendam proinde despici
@@ -36,16 +38,24 @@ norum infamiam respondebo, ut viam mihi ad mani-
 festiora purgem (6).
   </bloco>
 
-  <bloco tipo="cabecalho" script="latino" bbox="405,600,610,645">CAPUT VII.</bloco>
-  <bloco tipo="outro" script="latino" bbox="45,650,975,720">ARGUMENTUM. — Itaque provocat illos, ut quos gravissimorum criminum reos putant, infanticidas, puerorum voratores, incestos denique, probent, neque fama, cujus origo sepe mendax, et rumor incertus, amplius inconsiderate credant,</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="420,310,580,335">CAPUT VII.</bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="35,720,500,790">
-Dicimur sceleratissimi de sacramento infanticidii, et pabulo (7) inde (8) (h), et post convivium
+  <bloco tipo="nota" script="latino" bbox="40,340,960,390">
+ARGUMENTUM. — Itaque provocat illos, ut quos gravis-
+simorum criminum reos putant, infanticidas, puero-
+rum voratores, incestos denique, probent, neque famæ,
+cujus origo sæpe mendax, et rumor incertus, am-
+plius inconsidérate credant.
   </bloco>
 
-  <bloco tipo="cabecalho" script="latino" bbox="260,800,760,840">LECTIONES VARIANTES.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="40,395,960,430">
+Dicimur sceleratissimi de sacramento infantici-
+dii, et pabulo (7) inde (8) (h), et post convivium
+  </bloco>
 
-  <bloco tipo="aparato_critico" script="latino" bbox="35,845,495,990">
+  <bloco tipo="cabecalho" script="latino" bbox="380,440,620,460">LECTIONES VARIANTES.</bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="40,465,490,540">
 (1) Sic libri mss. omnes, Rig. : censu; et addit Pa-
 ris.
 (2) Antiquos, sed Rig.
@@ -54,128 +64,114 @@ ris.
 (5) Perinde Paris.
   </bloco>
 
-  <bloco tipo="aparato_critico" script="latino" bbox="520,845,980,1000">
+  <bloco tipo="aparato_critico" script="latino" bbox="510,465,960,540">
 (6) Ut viam mihi ad manifestiora purgem Jun. ex MS.
 Haverc. — Ita e codd. locum restituerunt Herald., Rig.,
-Hav. all. Edd. vet. : ut jam inde ad manifestiora pergam.
+Hav. all. Edd. vett. : ut jam inde ad manifestiora pergam.
 (7) De Jun.
 (8) Rhen. : pabulo crude.
   </bloco>
 
-  <bloco tipo="cabecalho" script="latino" bbox="330,1010,700,1050">COMMENTARIUS.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="400,550,600,570">COMMENTARIUS.</bloco>
 
-  <bloco tipo="nota" script="misto" bbox="35,1060,500,1440">
+  <bloco tipo="nota_marginal" script="latino" bbox="495,650,515,670">C</bloco>
+
+  <bloco tipo="nota" script="misto" bbox="40,580,490,940">
 ut est apud Martial. vi, 2. At ut vere aureus noster
 Publius versu 425.
-Mulier quae nullis nubit, multis non placet:
-
+Mulier quæ multis nubit, multis non placet:
 (a) Serapidem et Isidem et Harpocratem. Prius illud
-et deletum MS. Fuld. et editio Barraei. Hic peregrina
+et deleet MS. Fuld. et editio Barræi. Hæc peregrina
 numina conjuncta hoc modo apparent in gemmis apud
-Gorlæum tom. II. num. 468, et 470. Et duo priora
+Gorlæum tom. ii. num. 468, et 470. Et duo priora
 ibidem num. 466.
-
-(b) Cynocephalo. Qui passim in gemmis, marmoribus
-et numismis adjungitur Isidi.
-
+(b) Cynocephalo. Qui passim in gemmis, marmori-
+bus et nummis adjungitur Isidi.
 (c) Capitolio prohibitos inferri. Templis extra po-
-meria positis. Dio Cassius lib. XL. καὶ ὅτε, etc., i. e.
+mœria positis. Dio Cassius lib. XL. καὶ ὅτε γε, etc., i. e.
 Ubi ea sententia obtinuit, ut publice jam coli inciperent,
-extra pomerium eos deos collocaverunt. Unde de Se-
-rapide apud Macrobium lib. I. c. p. 7. egre a nobis
-admissam audio. Inferri vero deest in lib. Ad
-Nat. I. 10. ut et hic in MS. Fuld. et abesse potest.
+extra pomœrium eos deos collocaverunt. Unde de Se-
+rapide apud Macrobium lib. i. cap. 7. agre a
+nobis admissam audio. Inferri vero deest in lib. Ad
+Nat. i. 10. ut et hic in MS. Fuld. et abesse potest.
 Omnino vide hic Gothofredi notam ad lib. Ad Na-
 tiones.
-
 (d) Eversis etiam aris eorum. Quod plus semel acci-
 dit. Dio Cassius loco memorato: τοὺς γὰρ ναοὺς αὐτῶν,
-etc., i. e. Eorum dirorum fana, quae privatim nonnulli
+etc., i. e. Eorum dirorum fana, quæ privatim nonnulli
 exstruxerant, senatus demoliri jussit, quod eos non ma-
-gopere inter numina numerabat. Idem lib. XLI. ἔδοξε
-Ῥώμῃ, οἷσι, i. e. Itaque haruspices omnia templa Isidis
-Serapidisque demoliri jusserunt. Valerius Max. I. 1. 3.
-L. Aemilius Paulus Consul, cum Senatus Isidis et Se-
+gnopere inter numina numerabat. Idem lib. XLI. ἔδοξε
+Ῥώμ, οἷσι, i. e. Itaque haruspices omnia templa Isidis
+Serapidisque demoliri jusserunt. Valerius Max. i. 1. 3.
+L. Æmilius Paulus Consul, cum Senatus Isidis et Se-
 rapidis fana diruenda censuisset, eaque nemo opificum
-attingere auderet: posita praetexta securim arripuit,
-stravitque ejus foribus affixit.
-
-(e) His vos restitutis. Memini Augustin. de Civ. Dei
-II, 14. Certe vel Priapo vel alicui Cynocephalo: po-
-stremo et Febri, quae Romani numina partim peregri-
-na receperunt, partim sua propria sacraverunt. Facinus id
-temporibus Caesaris, ut suo lib. XLVIII. καὶ νεὼ τῷ τε Σεραπιδι,
-καὶ τῇ Ἰσιδί ἐψηφίσαντο; i. e. templum
+attingere auderet: posita prætexta securim arripuit,
+templique ejus foribus affixit.
+(e) His vos restitutis. Meminit Augustin. de Civ. Dei
+ii, 14. Certe vel Priapo vel alicui Cynocephalo: pos-
+tremo vel Febri, quæ Romani numina partim peregri-
+na receperunt, partim sua propria sacraverunt. Factum id
+temporibus Cæsaris, ut notat Dio lib. XLVII. καὶ νεὼ
+τῷ τε Σεράπιδι, καὶ τῇ σιδί ἐψηφίσαντο; i. e. templum
 Serapidi Isidique decreverunt. Multa ibi nefaria Ovid.
-de Arte I. 17.
-
-Nec fuga Niliacæ Memphitica sacra juvencæ,
+de Arte i. 77.
+Nec fuge Niliacæ Memphitica sacra juvencæ,
 Multas illa facit, quod fuit ipsa Jovi.
-Et ib. 635.
-Cum sedeat Pharia sistra operata juvenca,
+Et iii. 635.
+Cum sedeat Phariæ sistris operata Juwencæ,
 Quoque sui comites ire vetentur, eat.
-
 Indignabundus itaque Lucanus vii. 83. ad Ægyptum :
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="435,1430,470,1470">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="495,780,515,800">D</bloco>
 
-  <bloco tipo="nota" script="latino" bbox="520,1060,980,1460">
+  <bloco tipo="nota" script="latino" bbox="510,580,960,940">
 Nos in templa tuam Romana recepimus Isim :
-Semideosque canes, et sistra jubila luctus :
-Et quem tu plangas hominem testaris Osirim.
-ubi secundo verso potius legerim, semicanesque deos.
+Semideosque canes, et sistra jubentia luctus :
+Et quem tu plangeas hominem testaris Osirim.
+ubi secundo versu potius legerim, semicanesque deos.
 Nescio an Ovidius de Pane,
-
-Semideusque caper, semicapere Deus.
+Semideusque caper, semicaperque Deus.
 De Minotauro certe ii. de Arte Amandi, 24.
-Daedalus ut clausi conceptum crimine matris
+Dædalus ut clausit conceptum crimine matris
 Semibovemque virum, semivirumque bovem.
-
-(f) Instructu. Intellegit splendidum apparatum et in-
+(f) Instructu. Intelligit splendidum apparatum et in-
 strumentum domesticum invidiosum. Isidorus Orig.
-v. 25. Instructum, quod per instrumentum efficitur: ut
-baculus, codex, tabula. Barraeus et Rhen. et instru-
-ment.
-
-(g) Serapidi jam-Romano. Ita restituendus est nativus
-antiquitatis splendor Auctori nostro, quod et
-supra docui: lege mox, ut editum, jam-Italico. Ele-
-ganter Lucanus lib. I. 63. ad Neronem :
+v. 25. Instructum, quod per instrumentum efficitur : ut
+baculus, codex, tabula. Barræus et Rhen. et instructu.
+(g) Serapidi jam-Romano. Ita restituendus est nati-
+vus antiquitatis splendor Auctori nostro, quod et
+supra docui : lege mox, ut editum, jam-Italico. Ele-
+ganter Lucanus lib. i. 63. ad Neronem :
 Sed mihi jam-Numen :
-et lib. ix. 158. ferox Pompeius patrios ulturus cineres,
-minatur in haec verba :
+et lib. ix. 158. ferox Pompeius patrios ulturus cine-
+res, minatur in hæc verba :
 Evolvam busto Numen-jam Gentibus Isim;
 ita enim hi loci sunt corrigendi et passim multi alii
 eodem modo apud omnes veteres scriptores. Seneca
-quoque Tragicus in Hercule furente versu 2. semper
+quoque Tragicus in Hercule furente versu 2. semper-
 alienum Jovem. Huc spectat, quod de Adriano refert
 in Vita ejus Spartianus : sacra Romana diligentissime
-curavit : peregrina contempsit. Contra ac idem de Bas-
+curavit : peregrina contempsit. Contrà ac idem de Bas-
 siano Caracallo, in Vita ejus : Sacra Isidis Romam de-
 portavit, et templa ubique magnifica eidem deo fecit.
-Sacra etiam majore reverentia celebravit, quam ante
-celebrabantur. In quo quidem mihi mirum videtur, quem
-admodum sacra Isidis primum per hunc Romam venisse di-
-cantur, cum Antoninus Commodus ita ea cele-
-braverit, ut et Anubim portaret, et pausa cederet: nisi
+Sacra etiam majore reverentia celebravit, quam ante ce-
+lebrabantur. In quo quidem mihi mirum videtur, quem
+admodum sacra Isidis primum per hunc Romam ve-
+nisse dicantur, cum Antoninus Commodus ita ea cele-
+braverit, ut et Anubim portaret, et pausa cederet : nisi
 forte iste addidit celebritati, non eam primus invexit. Et
-Lampridius item de Alexandro Severo: Isim et Sera-
-pin decenter ornavit additis signis et deliciis, et omni-
+Lampridius item de Alexandro Severo : Isim et Sera-
+pim decenter ornavit additis signis et deliciis, et omni-
 bus mysticis.
+CAP. VII. — (h) Et pabulo inde. In quibusdam libris
+tegitur, Et pabulo crude, quasi objectum fuerit christia-
+nis, crudas infantis jugulati carnes pabulo fuisse, quod
+quidem significare videtur ipse Tertullianus lib. I. ad
+Nationes, cum ait : Quis unquam tamen semeso puero au
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="480,1210,515,1250">D</bloco>
+  <bloco tipo="rodape" script="latino" bbox="350,950,650,990">Digitized by Google</bloco>
 
-  <bloco tipo="nota" script="latino" bbox="520,1460,980,1540">
-CAP. VIII.— (1) Et pabulo inde. In quibusdam libris
-legitur, Et pabulo crude, quasi objectum fuerit chri-
-stianis, crudis infans jugulatis carnes pabulo fuisse, quod
-quidem significare videtur ipse Tertullianus lib. I.
-ad Nationes, cum ait : Quis enim [ilegivel]
-  </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="410,965,650,995">Digitized by Google</bloco>
-
-  <notas>Leitura em duas colunas respeitando a sequência visual; letras centrais B, C e D transcritas como nota_marginal; trechos gregos marcados em script="misto"; rasuras/trechos não legíveis assinalados apenas quando necessário.</notas>
+  <notas>Transcrição fiel à imagem. Correção de "505" para "305" no cabeçalho. Textos gregos no comentário mantidos. Letras marginais A, B, C, D separadas em blocos próprios.</notas>
 </pagina>

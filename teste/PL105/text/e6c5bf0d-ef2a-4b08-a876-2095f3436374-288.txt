@@ -1,64 +1,66 @@
-<pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,20,120,70">
-567
+<pagina estado="com_texto">
+  <bloco tipo="cabecalho" script="latino" bbox="50,50,150,80">
+    567
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="420,20,580,70">
-ERMOLDI NIGELLI
+  <bloco tipo="cabecalho" script="latino" bbox="400,50,600,80">
+    ERMOLDI NIGELLI
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="880,20,970,70">
-583
+  <bloco tipo="cabecalho" script="latino" bbox="850,50,950,80">
+    568
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="70,90,930,260">
-SPECIMEN CHARACTERUM
-POËMATIS ERMOLDI NIGELLI
-ex Codice antiquo pergameno
-BIBLIOTHECÆ CÆSAREÆ VINDOBONENSIS.
+  <bloco tipo="texto_principal" script="latino" bbox="150,120,850,240">
+    SPECIMEN CHARACTERUM
+    POËMATIS ERMOLDI NIGELLI
+    ex Codice antiquo pergameno
+    BIBLIOTHECÆ CÆSAREÆ VINDOBONENSIS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="220,270,780,430">
-IN HONOREM [ilegivel] XPIANISSI
-MI CAESARIS AVGVSTI ERMOLDI NI
-GELLI EXVLLIS ELEGIACI CARMINIS
-LIBER INCIPIT PRIMVS
+  <bloco tipo="texto_principal" script="latino" bbox="200,260,800,380">
+    IN HONOREM HLUDOVICI XPIANISSI
+    MI CÆSARIS AUGUSTI ERMOLDI NI
+    GELLI EXULIS ELEGIA CI CARMINIS
+    LIBER INCIPIT PRIMUS
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="360,450,640,510">
-[ilegivel] Ermoldi
+  <bloco tipo="nota_marginal" script="latino" bbox="350,410,650,450">
+    Acrostichon Ermoldi
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,520,760,920">
-Editoretherea splend[ilegivel] ...
-Regnator mundi fautor q redemptor &amp; auctor
-[ilegivel] [ilegivel] dignis [ilegivel] q uregna poloru
-[ilegivel] concluso [ilegivel] culpa parenta sauern
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] xpetribuna
-David psalmicanus presaga carminis illu
-[ilegivel] pius modulans [ilegivel] miranda relata
-Sacra [ilegivel] q [ilegivel] dogmata vate
-Confer [ilegivel] quo [ilegivel] [ilegivel]
-[ilegivel] modulanter [ilegivel] posato [ilegivel]
-Carmine [ilegivel] loqui [ilegivel]
-Inani quondam [ilegivel] fecere perit
-Nec rogo [ilegivel] phoebi [ilegivel] lymen
-Ingredi [ilegivel] nec apollinis almi
-Talia cui facerent [ilegivel] perthelof
+  <bloco tipo="texto_principal" script="latino" bbox="200,470,820,880">
+    Ednoretherea splendes qui patriina ...
+    Regnator mundi fautor q redemptor & auctor
+    Militib dignis stellas q regna poloru
+    Oli concludos culpa parentis auern
+    Luminis eterni reuelabis qui xpe tribuna
+    Dauid psalmicanus presaga carminis illu
+    Voce pius modulans studii miranda relar
+    Sacra futuroru q prmpsīt dogmata uate
+    Confer rusticulo quo possim cæsaris inbo
+    Eximio auguo modulanter pficto ret
+    Carmine gesta loquuntur nra phas inde porstu
+    Insonu quondā ut prsca fecere perit
+    Nec rogo pierides nec phœbi tramite lymē
+    Ingrediare captus ope nec apollinis alm
+    Talia cū facerent q foueana pertra lusi
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="790,520,840,920">
-E
-R
-M
-O
-L
-D
-I
-S
-C
-E
-C
-I
-I
-I
-T
+  <bloco tipo="nota_marginal" script="latino" bbox="850,470,950,880">
+    F
+    R
+    M
+    O
+    L
+    D
+    q
+    S
+    C
+    t
+    C
+    I
+    N
+    I
+    T
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="680,940,980,990">
-Digitized by Google
+  <bloco tipo="rodape" script="latino" bbox="600,950,900,980">
+    Digitized by Google
   </bloco>
-  <notas>Transcrição baseada diretamente na imagem; palavras incertas marcadas como [ilegivel]. Preservadas maiúsculas e grafemas paleográficos aparentes (ex.: V para U, ligaduras Æ). BBOX são aproximações relativas em escala 0–1000. Página de texto único; coluna marginal direita (letras verticais/acróstico) transcrita em bloco nota_marginal. Não foram feitas normalizações linguísticas.</notas>
+  <notas>
+    Transcrição literal dos caracteres visíveis. Abreviações como 'q' (qui), 'xpe' (Christe), 'cū' (cum), 'nra' (nostra), 'prsca' (prisca), 'quondā' (quondam), 'lymē' (lymen), 'pficto' (perfecto), 'prmpsīt' (prompsit) foram mantidas conforme aparência gráfica ou com símbolos de abreviatura visíveis. As letras marginais à direita (F, R, M, O, L, D, q, S, C, t, C, I, N, I, T) formam um telestico (ou parte do acróstico/telestico) e foram mapeadas em bloco separado de nota_marginal à direita. A primeira letra do poema é um 'E' capitular.
+  </notas>
 </pagina>

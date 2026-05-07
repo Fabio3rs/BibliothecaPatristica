@@ -1,26 +1,34 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="120,880,880,980">
-ELENCHUS
-AUCTORUM ET OPERUM QUI IN HOC VOLUMINE CONTINENTUR.
+  <bloco tipo="cabecalho" script="latino" bbox="100,880,900,960">
+    ELENCHUS
+    AUCTORUM ET OPERUM QUI IN HOCCE VOLUMINE CONTINENTUR.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,220,920,860">
---oo--
-
-JOANNES MOLANUS.
-De Historia SS. Imaginum et Picturarum pro vero earum usu contra abusus. ........................ col. 5   4:25
-
-ZACCHARIA.
-Oratio de Agnis Dei. ........................
-
-Antifonins vindictais, seu de suprema potestate romana pontificis adversus reformationum, disquse vindicem Theologorum a publico.
-
-551
+  <bloco tipo="texto_principal" script="latino" bbox="400,820,600,850">
+    --oo--
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="20,20,420,100">
-Ex Vifs MENCE. au Petit-Montrouge.
+  <bloco tipo="texto_principal" script="latino" bbox="350,720,650,760">
+    JOANNES MOLANUS.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="720,960,980,999">
-Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="150,640,850,720">
+    De Historia SS. Imaginum et Picturarum pro vero earum
+    usu contra abusus. . . . . . . . . . . . . . . col. 5
   </bloco>
-  <notas>Script: latino. A folha na imagem aparece girada 180°; a transcrição foi feita lendo o texto impresso na orientação natural. BBOX aproximadas em escala 0-1000. Mantiveram-se leituras literais sem normalização. Trechos incertos ou possivelmente corrompidos (mantidos conforme visual): "AUCTORUM/ACTORUM" (cabeçalho), "col. 5   4:25", "Antifonins vindictais", "disquse". Nenhuma palavra foi substituída por [ilegivel].</notas>
+  <bloco tipo="texto_principal" script="latino" bbox="150,590,850,640">
+    Oratio de Agnis Dei. . . . . . . . . . . . . . . 425
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,550,600,590">
+    ZACCHARIA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,440,850,550">
+    Antifebronius vindicatus, seu de Suprema Potestate romani
+    pontificis adversus Febronium, ejusque vindicem Theo-
+    dorum a Palude. . . . . . . . . . . . . . . 461
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="50,30,400,80">
+    Ex typis MIGNE, au Petit-Montrouge.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="600,950,900,990">
+    Digitized by Google
+  </bloco>
+  <notas>Página orientada de cabeça para baixo na imagem. Transcrição realizada na ordem lógica de leitura (do título "ELENCHUS" ao rodapé "Ex typis"), mas com coordenadas BBOX mapeadas para a posição visual na imagem fornecida (onde o cabeçalho lógico está na parte inferior da imagem, y~900, e o rodapé lógico na parte superior, y~50). Script latino impresso (século XIX, tipografia Migne).</notas>
 </pagina>

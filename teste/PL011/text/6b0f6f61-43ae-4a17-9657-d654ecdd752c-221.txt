@@ -1,13 +1,13 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,70">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
     433 LIBER II. TRACTATUS XIV. 434
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,70,490,960">
-    rediguntur in summam, quoniam universa quamvis a
+  <bloco tipo="texto_principal" script="latino" bbox="50,70,480,550">
+    rediguntur in summam, quoniam universa quamvis
     gemina esse noscantur, tamen una de radice fun-
     duntur. Testamenta sunt duo, sed testator est unus.
-    Ei scribens (25) canna divisa est, sed unus calamus.
-    Et forfex in duos producitur cultros, sed corum unus
+    Et scribens (25) canna divisa est, sed unus calamus.
+    Et forfex in duos producitur cultros, sed eorum unus
     est morsus. Et gladius duas acies gerit, sed sunt
     unius corporis latera. Et denarii sunt duo, sed
     (26) una moneta signati. Et scala duos (27) scapos ha-
@@ -15,154 +15,159 @@
     Gradus autem ejus, fratres dilectissimi, si vultis scire,
     quid vocentur, audite. Conversio, audientia, intellec-
     tus, credulitas, timor, sapientia, sobrietas, mansue-
-    tudo, temperantia, casitas, pietas, charitas, fides,
+    tudo, temperantia, castitas, pietas, charitas, fides,
     veritas, humilitas, gratia, honestas, verecundia, pa-
     tientia, perseverantia, consummatio. Scaporum no-
-    mina duo Testamento. Scala autem proprio nomine
+    mina duo Testamenta. Scala autem proprio nomine
     crux vocatur, quia per ipsam Dominus Jesus Chri-
-    stus 192 (28) mysteria universa consciencies et con-
-    cludens, Patri et Adam reportavit, et iter ad coelum
+    stus 192 (28) mysteria universa conficiens et con-
+    cludens, Patri et Adam reportavit, et iter ad cœlum
     omnibus se sequentibus patefecit.
-    
-    greco-latinae explicant. Haec vox apud Diomedem, et
+  </bloco>
+  <nota_marginal script="latino" bbox="460,80,480,100">
+    A
+  </nota_marginal>
+  <nota_marginal script="latino" bbox="460,530,480,550">
+    B
+  </nota_marginal>
+  <bloco tipo="aparato_critico" script="latino" bbox="50,560,480,600">
+    græco-latinæ explicant. Hæc vox apud Diomedem, et
     combinans apud Sidonium Apollinarem, lib. ix, ep.
     vii, invenire licet.
-    
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="50,610,480,750">
     (25) Calami ad scribendum ex arundinibus seu
-    cannis maxime Aegyptiis flebant, ut ex Plinio disci-
-    mus, lib. xxiv, c. 37 : Charis serviunt calami, Aegy-
-    pti maxime cognatione quadam papyri. Et Persius de
-    cannis saperius, Sat. iii, vers. 41 :
-    
-    Iuuque manus chartae, nodosque veni arundo;
-    Tum quaeritur crassus calamo quod pendeat humor.
-    
+    cannis maxime Ægyptiis fiebant, ut ex Plinio disci-
+    mus, lib. xvi, c. 37 : Chartis serviunt calami, Ægy-
+    ptii maxime cognatione quadam papyri. Et Persius de
+    cannis apertius, Sat. iii, vers. 41 :
+    Inque manus chartæ, nodosaque venit arundo,
+    Tum quæritur crassus calamo quod pendeat humor.
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="50,750,480,900">
     (26) Moneta proprie apud Romanos Junonis cogno-
-    men erat a movendo inditum, ut mythologi probant.
-    Inde translatiium ad numismata, sive quod in Junonis
-    aede Capitolina cuderentur, ut aliqui existimant, sive
+    men erat a monendo inditum, ut mythologi probant.
+    Inde translatum ad numismata, sive quod in Junonis
+    æde Capitolina cuderentur, ut aliqui existimant, sive
     potius quod numismata nos et auctoris et pretii mo-
     neant : notas enim nummis impressas monetam esse
     ex hoc Zenonis loco Basilius Faber collegit, ita ut
     duo denarii una moneta signati nihil sint aliud quam
-    duo denarii eiusdem et signis et notis cusi; quod con-
-    firnari potest ex Prudentio, qui similiter numisma
-    pro figura nummis impresa posuit.
-    
-    En Caesar agnosci suum
-    Numisma nummis induitum.
-    
-    Verum enimvero cum unum statuerem, cujus apud
-    Matthenum est mention, huic S. Zeno respicit, ut
-    pateat ex adnot. 40, profecto unum nummum, qui
-    duobus denariis pendecler, significare probabilitus
-    voluit, id est duo didrachmata, quanti quidem unius
-    stater aestimabatur, quod ex eadem adnotatione ma-
-    nifestum licet. Lampridius in Alexandro Sev. p. 127,
+    duo denarii eisdem et signis et notis cusi; quod con-
+    firmari potest ex Prudentio, qui similiter numisma
+    pro figura nummis impressa posuit.
+    En Cæsar agnoscit suum
+    Numisma nummis inditum.
+    Verum enimvero cum unum staterem, cujus apud
+    Matthæum est mentio, heic S. Zeno respiciat, ut
+    patet ex adnot. 10, profecto unum nummum, qui
+    duobus denariis penderetur, significare probabilius
+    voluit, id est duo didrachmata, quanti quidem unicus
+    stater æstimabatur, quod ex eadem adnotatione ma-
+    nifestum fiet. Lampridius in Alexandro Sev. p. 127,
     formas binarias, ternarias, quaternarias, etc. com-
-    memorat, ut indicaret nummos, qui Sallunio inter-
+    memorat, ut indicaret nummos, qui Salmasio inter-
     prete, pag. 218, binis, tribus, vel quatuor aureis
-    valerent, hic igitur, de qua Zeno loquitur, moneta
-    quadam modo binariae formae fuit, quae scilicet duo-
-    bus denariis seu didrachmatis aestimabatur, ut ex
+    valerent. Hæc igitur, de qua Zeno loquitur, moneta
+    quodam modo binariæ formæ fuit, quæ scilicet duo-
+    bus denariis seu didrachmatis æstimabatur, ut ex
     adnot. allegata cognosces.
-    
+  </bloco>
+  <nota_marginal script="latino" bbox="460,780,480,800">
+    C
+  </nota_marginal>
+  <nota_marginal script="latino" bbox="460,880,480,900">
+    D
+  </nota_marginal>
+  <bloco tipo="aparato_critico" script="latino" bbox="50,900,480,980">
     (27) Scapos scalarum dixit etiam Vitruvius lib. ix,
     cap. 2, et sunt duo illi asseres, qui scalarum gradus
-    susinent, ut ex hoc Zenoniano testimonio collegit
-    Casalbuonus in Trebellium Pollionem pag. 240, ubi
-    solum in eo errat, quod pro seminore de Somnio Ja-
-    colus sermone M. de Abraham memory lapsu alle-
-    gat. Scapos scribitur in ms. Pomp. et Zen. et in-
-    ferius scaporum legitur cum iisdem in codicibus,
+    sustinent, ut ex hoc Zenoniano testimonio collegit
+    Casaubonus in Trebellium Pollionem pag. 210, ubi
+    solum in eo errat, quod pro sermone de Somnio Ja-
+    cob sermonem 3 de Abraham memoriæ lapsu alle-
+    gat. Scaphos scribitur in mss. Pomp. et Zen. et in-
+    ferius scaphorum legitur cum iisdem in codicibus,
     tum vero etiam in Rem. et edit. Ven., sed perperam;
     nam scaphus vasis, aut alterius rei cavitas est Vitru-
-    vio teste, quae in sententiam praesentem non cadit.
+    vio teste, quæ in sententiam præsentem non cadit.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,70,980,960">
+  <bloco tipo="texto_principal" script="latino" bbox="520,70,950,450">
     TRACTATUS XIV.
-    
     (1) De Juda.
-    
     I. Judas tres liberos habuit, Her, (2) Aunan, Se-
     lon (Gen. xxxviii). Hic mulierem, cujus nomen est
-    Thamar, accepit uxorem maiori filio suo. Qui
+    Thamar, accepit uxorem majori filio suo. Qui
     filius cum maligne Domini ante faciem versaretur,
     Scriptura teste, a Deo perhibetur occisus. Secundo
-    inperat, ut intret ad (3) fratris uxorem, ac semen
-    excitet fratris, qui ingressus semen suum fudid in
+    imperat, ut intret ad (3) fratris uxorem, ac semen
+    excitet fratris, qui ingressus semen suum fudit in
     terram. Quod cum Deo malignum quoque videretur,
     pari cum morte damnavit. Conjunctionem autem
-    lירטl filii apud iurum per aetatem excusat, (4) de-
-    territis, ne etiam ipse similiter moreretur, praece-
-    piaque mulieri, ut in domo patris suis vidua perma-
+    tertii filii apud nurum per ætatem excusat, (4) de-
+    territus, ne etiam ipse similiter moreretur, præce-
+    pitque mulieri, ut in domo patris suis vidua perma-
     nens, nuptias maturas 193 exspectet. Cum res sic
-    
-    B se haberet, ejus uxor moritur. Qui consolatus cum
-    ad oves condendas pergeret suas, atque (5) hoc Tha-
-    mari nuntiaretur, quae (6) Selon viderat naturum, ei
-    nec tamen nupseral, vestem vidualis (7) exponit,
-    (8) vestivalia induit, semet decore componit, loco-
-    
-    (2) Edit. Ven., ministeria; et infra pro concludens
-    scribit conducens, malc. Mysteria autem omnia in
-    cruce perfecta atque conclusa aeternus intelliguntur,
-    quatenus iubilem omnia, quae de Christo praesiguli-
-    cata et praeunita fuerant, consummata sunt.
-    
-    TRACT. XIV.—(1) Hic tractatus quater citatur Rahe-
+    se haberet, ejus uxor moritur. Qui consolatus cum
+    ad oves tondendas pergeret suas, atque (5) hoc Tha-
+    mari nuntiaretur, quæ (6) Selon viderat maturum, ei
+    nec tamen nupserat, vestem viduitatis (7) exponit,
+    (8) æstivalia induit, semet decore componit, loco-
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="520,460,950,560">
+    (24) Edit. Ven., ministeria; et infra pro concludens
+    scribit conducens, male. Mysteria autem omnia in
+    cruce perfecta atque conclusa eatenus intelliguntur,
+    quatenus ibidem omnia, quæ de Christo præsignifi-
+    cata et pronuntiata fuerant, consummata sunt.
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="520,560,950,980">
+    TRACT. XIV.—(1) Hic tractatus quater citatur Rathe-
     rio, episcopo Veronensi, et S. Zenoni quidem anteces-
-    sori seu exploratore tribuitur, ut ex adnot. 32 constabit.
-    In edit. Ven. haec titulus praefigitur : De Juda Pa-
+    sori explorare tribuitur, ut ex adnot. 32 constabit.
+    In edit. Ven. hæc titulus præfigitur : De Juda Pa-
     triarcha filio Jacob et Thamar. In inscriptione autem
-    ms. Urbinatis hae leguntur : Dominica iii in Quadra-
-    gesima lectio 1, 2 et 3, Tract. de Juda L. xii,
-    est minimum in ordine tractatum ejus ex codicis tract.
-    13 libri t. C. porro littera capitulum significat; ita
-    enim libri tractatum duo pro numero tractatuum
-    ibidem in capitula lotidem dividuntur. Ex hoc au-
-    tem tractatu de Juda tres simulsebunt lectiones, quae
-    Dominica tertia Quadragesimae inter Ecclesiastica of-
-    ficia in Veronensi uiique Ecclesia recitabantur.
-    
-    (2) Lectionum colicum et edit. Ven. restitimus,
-    pro qua scriptum erat Onan , Sela. Zenoniana scrip-
-    tio ex LXX Interpretibus fuit, qui secundum Judae-
-    filium Hebraice dictum Onan, Graece scripserunt
-    Aouan, Aunan; quam vocem Philoni item restituen-
+    ms. Urbinatis hæc leguntur : Dominicam in Quadra-
+    gesima lectio 1, 2 et 3, Tract. de Juda C. xiii,
+    est nimirum in ordine tractatum ejus codicis tract.
+    13 libri 1. C. porro littera capitulum significat; ita
+    enim libri tractatuum duo pro numero tractatuum
+    ibidem in capitula totidem dividuntur. Ex hoc au-
+    tem tractatu de Juda tres sumebantur lectiones, quæ
+    Dominica tertia Quadragesimæ inter Ecclesiastica of-
+    ficia in Veronensi utique Ecclesia recitabantur.
+    (2) Lectionum codicum et edit. Ven. restituimus,
+    pro qua scriptum erat Onan, Sela. Zenoniana scrip-
+    tio ex LXX Interpretibus fluit, qui secundum Judæ
+    filium Hebraice dictum Onan, Græce scripserunt
+    Αὐνὰν, Aunan; quam vocem Philoni item restituen-
     dam in libro, quod Deus sit immutabilis paulo post
-    initium, ubi "Avos" corrumpte impressum est. recte
-    monuit Coletlerius num. 17 in epistolam Barnabae
+    initium, ubi Ἄνναν corrupte impressum est. recte
+    monuit Cotellerius num. 17 in epistolam Barnabæ
     Apostoli.
-    
     (3) Ms. Rem., patris, male.
-    
-    (4) Sic ex mss. Vat. et Urb. quibus favet Vol. co-
-    dicis lectio deterritur, a mutato in r. Editi cum ali-
-    quod mss. deterretur.
-    
-    (5) Hoc abeat a mss. Rem.
-    
+    (4) Sic ex mss. Vat. et Urb. quibus favet Tol. co-
+    dicis lectio deterritur, s mutato in r. Editi cum ali-
+    quot mss. deterretur.
+    (5) Hoc abest a ms. Rem.
     (6) Sic mss. cum edit. Ven. pro Sela.
-    
-    (7) Expono pro depono et abjicio hic sumitur, cum
-    Gen. cap. xxxviii, vers. 14, deposite vidualiter ves-
-    tes tradantur. Plautus et Terentius apponere codem
-    sensu usurparunt, quorum ille Poen. 4, 2, 35, onus
-    appone, hic autem Menut. 1, 4, 36, resor appone,
-    idest deponere scripserunt : pro quo recentiores scrip-
-    tores diversas frequentius exponere, ut exponere pon-
-    ders Cyprianus de Lapsis, num. 28, pag. 38 (col.
-    488 nostrae editionis), exponere episcopos in interpre-
-    tatione pseudo synodi Sardicensis, apud Hilarum
-    tom. ii., exponere vigorem Arnobius, et alii de aliis
+    (7) Expono pro depono et abjicio heic sumitur, cum
+    Gen. cap. xxxviii, vers. 14, depositæ viduitatis ves-
+    tes tradantur. Plautus et Terentius apponere eodem
+    sensu usurpant, quorum ille Pœn. 4, 2, 35, onus
+    appone, hic autem Heaut. 1, 1, 36, rastros appone,
+    idest depone scripserunt : pro quo recentiores scrip-
+    tores dixerunt frequentius exponere, ut exponere pon-
+    dus Cyprianus de Lapsis, num. 28, pag. 38 (col.
+    488 nostræ editionis), exponere episcopos in interpre-
+    tatione pseudosynodi Sardicensis, apud Hilarium
+    tom. ii, exponere vigorem Arnobius, et alii de aliis
     similiter.
-    
-    (8) Theristrum vulgatiss Interpreter possit, quod a
-    voce Greca estiop, aestivam mulierum vestem sig-
-    nificat, ut docet Hieronymus in cap. ini l. iara, ac ex
+    (8) Theristrum vulgatus Interpres posuit, quod a
+    voce Græca σθέρος æstivam mulierum vestem signi-
+    ficat, ut docet Hieronymus in cap. i Fais, ac ex
   </bloco>
   <notas>
-    Texto impresso latino. Dois blocos de coluna esquerda e direita. Pequenas palavras ilegíveis não identificadas; usei [ilegivel] apenas quando necessário (nenhum usado). BBOX estimadas em escala 0-1000 conforme página.
+    Transcrição fiel da imagem. Letras A, B, C, D identificadas como nota_marginal nas extremidades das colunas de texto/notas. Textos em grego transcritos conforme visível (Αὐνὰν, Ἄνναν, σθέρος). Números de página 433 e 434 no cabeçalho. Notas de rodapé organizadas por coluna.
   </notas>
 </pagina>
