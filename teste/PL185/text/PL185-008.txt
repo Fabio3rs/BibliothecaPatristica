@@ -1,55 +1,77 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="180,20,820,100">
-    SAECULUM XII, ANNUS 1153.
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="320,25,680,55">
+    SÆCULUM XII, ANNUS 1153.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,100,960,560">
+  <bloco tipo="texto_principal" script="latino" bbox="80,70,920,145">
     S. BERNARDI,
-    ABBATIS PRIMI CLARAE-VALLENSIS,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="140,155,860,195">
+    ABBATIS PRIMI CLARÆ-VALLENSIS,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="180,210,820,265">
     OPERA OMNIA
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="240,280,760,305">
     SEX TOMIS IN QUADRUPLICI VOLUMINE COMPREHENSA
-
-    POST [ilegivel] DENUO RECOGNITA, AUCTA ET IN MELIOREM DIGESTA
-    ORDINEM, NECNON NOVIS PRAEFATIONIBUS, ADMONITIONIBUS, NOTIS ET
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="60,315,940,365">
+    POST HORSTIUM DENUO RECOGNITA, AUCTA ET IN MELIOREM DIGESTA
+    ORDINEM, NECNON NOVIS PRÆFATIONIBUS, ADMONITIONIBUS, NOTIS ET
     OBSERVATIONIBUS INDICIBUSQUE COPIOSISSIMIS LOCUPLETATA
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="420,375,580,395">
     TERTIIS CURIS
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="220,405,780,445">
     D. JOANNIS MABILLON,
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="180,455,820,480">
     PRESBYTERI ET MONACHI BENEDICTINI E CONGREGATIONE S. MAURI;
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,495,600,520">
     EDITIO NOVA,
-
-    ACCESSERE APPENDICES AMPLISSIMAE VITAM SANCTI DOCTORIS ET EJUS AETATEM ILLUSTRANTES.
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,535,920,555">
+    ACCESSERE APPENDICES AMPLISSIMÆ VITAM SANCTI DOCTORIS ET EJUS ÆTATEM ILLUSTRANTES.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="300,570,700,595">
     ACCURANTE J.-P. MIGNE
-    BIBLIOTHECAE [ilegivel] UNIVERSAE
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="240,600,760,620">
+    BIBLIOTHECÆ CLERI UNIVERSÆ
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,625,520,640">
     SIVE
-    CURSUM COMPLETORUM IN SINGULOS SCIENTIAE ECCLESIASTICAE RAMOS EDITORE
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="140,560,860,740">
-    ----------------------------
+  <bloco tipo="texto_principal" script="latino" bbox="120,645,880,665">
+    CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="360,690,640,715">
     VOLUMEN QUARTUM
-    S. BERNARDI OPERUM TOMUM VI COMPLECTENS.
-    ----------------------------
-
-    VENERUNT A VOLUMINA 28 FRANCIS GALLICE.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,740,960,980">
+  <bloco tipo="texto_principal" script="latino" bbox="240,720,760,745">
+    S. BERNARDI OPERUM TOMUM VI COMPLECTENS.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="280,775,720,795">
+    VENEUNT 4 VOLUMINA 28 FRANCIS GALLICIS.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="60,830,940,895">
     EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
-    IN VIA DICTA D'AMBOISE, OLIM PROPE PORTAM LUTETIAE PARISIORUM VULGO D'ENFER
+    IN VIA DICTA D'AMBOISE, OLIM PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER
     NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MOENIA PARISINA.
-
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="460,905,540,925">
     1860
-
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="800,780,980,900">
+    BIBLIOTHECA
+    [carimbo circular - texto parcial]
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="580,950,920,980">
     Digitized by Google
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="720,760,980,960">
-    BIBLIOTHECA [ilegivel]
-  </bloco>
   <notas>
-    tipo_pagina: capa/guarda (folha de rosto).
-    Observações de paleografia/correções: palavras marcadas como [ilegivel] correspondem a termos cujo traçado no exemplar digitalizado está pouco legível ("POST [ilegivel]" — provável palavra editorial/latina incerta; "BIBLIOTHECAE [ilegivel]" — parte da rubrica editorial pouco nítida). Mantive maiúsculas e pontuação tal como no original; linhas separadas preservam o layout visual. Script predominante: latino.
+    tipo_pagina: folha de rosto (título).
+    Observações de paleografia/correções: Texto em latim com tipografia do século XIX. Carimbo da biblioteca no canto inferior direito (parcialmente legível). Ortografia latina preservada incluindo ligaduras (Æ, Œ). BBOX em escala 0-1000. Layout centralizado, sem colunas. Script: latino.
   </notas>
 </pagina>

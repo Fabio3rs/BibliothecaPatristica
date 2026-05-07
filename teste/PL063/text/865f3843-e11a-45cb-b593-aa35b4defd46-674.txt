@@ -1,86 +1,83 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,90">
-    L.45   AN. MANL. SEV. BOETIUS.   1344
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,200,50">
+    1343
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="30,100,490,760">
-De amblygono rubrica.
-
-Quintus in ordine triangulorum amblygoniis ab Euclide insertus obtusum angulum habens dictus est, quem nos succinte aperteque explicando aggrediemur. Nam si diligens lector superioris nostri documenti praeceptis et formulis instructus accesserit, minime in hoc lababit. Constituitur modo amblygonius cujus B basis 48 numero, hypothenise autem major 40, minor vero 9, inscribam, cathecus autem 4 summa insigniatur.
-
-Ducatur ergo basis per catheci dimidium, hoc est 18, per binarium, et 36 prodeunt, quæ summa embadalis spatii planitudinem adimplet. Sed Architas in cunctis utens ratione, alio modo hujus amblygoni aream reperiri constituit; non hanc sumpta est summam in hac areæ planitudine, sed minorem posse contineri existimans, asstruxit enim callicem per se et per binarium, vel per se et octonarium, duplo se superantes multiplicari oportere. Et quantitatem quæ hac ex multiplicatione proveniret aream constituere, non ut 36, sed 32 in se colligeret arealis illa contemplatio. Quisquis autem hujus amblygoni trigoni formas C in plano designare disponat, a basis quantitate hujusmodi rem ingrediatur, tali ratione ut terminus minoris ac majoris hypothenuse copulatus, parvo vincat terminum basis, hoc est, si basis 20 mensuretur pedibus, major hypothenusa 11, minor autem 10 insigniatur. Sed melius hoc quod numeris duximus ostendemus, si alicujus exempli formam subjiciemus.
-
-[figura trianguli - inscripta supra; legenda transcripta em blocos proprio]
-
-De oxygonio rubrica.
-
-Restat ut decamus de oxygonii speculatione, qui sextus in trigonorum descriptione ab Euclide non sequi geometra ponitur acuti angulus determinatus. Esto igitur oxygonus, cujus minoris lateris terminus, id est minor hypothenusa 13 pedibus terminetur, major autem 15 et basis 14 mensuretur, cujus catheci et embad summa si signatur, tali ratione colligetur.
-
-Ducatur ergo lateris minoris quantitas per se, 169 reducatur; basis item terminus si per se exerceretur, 196 nascentur; quæ videlicet summas si junxeris, 365 efficies. Quo facto multiplicetur etiam terminus hypothenusealis per se, et exsurget 225 numerus; quem si de superioris copulata summa secrevero, fiunt [ilegivel] .
+  <bloco tipo="cabecalho" script="latino" bbox="350,20,650,50">
+    AN. MANL. SEV. BOETIUS.
   </bloco>
-
-  <bloco tipo="outro" script="latino" bbox="30,90,480,240">
-    Figura (triangulus obliquus, seu amblygonius):
-    - marca interior: s (lettera in circulo)
-    - legenda numerica: 15 (super latus obliquum), 12 (in basi)
+  <bloco tipo="cabecalho" script="latino" bbox="800,20,900,50">
+    1344
   </bloco>
-
-  <bloco tipo="outro" script="latino" bbox="40,720,480,860">
-    Figura (triangulus, legenda): 36 (in area), 18 (in basi), numeri 10 (in angulis ad summitatem)
+  
+  <!-- Coluna Esquerda -->
+  <bloco tipo="outro" script="latino" bbox="100,60,400,180">
+    [Diagrama: Triângulo retângulo com círculo inscrito. Números: 8 (lado vertical), 15 (hipotenusa), 12 (base), 5 (dentro do círculo)]
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="480,150,520,190">
-    A
+  <bloco tipo="texto_principal" script="latino" bbox="150,185,350,210">
+    De amblygonio rubrica.
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="480,320,520,360">
+  <bloco tipo="nota_marginal" script="latino" bbox="420,260,440,280">
     B
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="510,100,970,760">
-residui 140; horum medietas 70 esse pernotatur, quod per basim dispersum quinque ipsam in se retinet. Dominionis vero hujus summam minor obtinet praecisura, quæ per se adaucta 25 constituit. Hios si de minoris lateris summa per se multiplicata abstuleris, 144 supersunt, quorum tetragonal latus, quod 12 est, catheci summam explebit. Areæ conclusionem hoc modo investigare curato, basis medium ducito per cathecum, id est 7 per 12, et provenient 84. Hanc summam complere areale hujus trigoni pavimentum non ignora, describatur ergo hujusmodi de hoc figura.
-
-Sed quia de trigonorum podismali consideratione in superioribus diligentium lectorum indagini explanavimus, superest ut ad tetragonorum speculatio nem transitum faciamus succinctum, de his habituri tractatum.
-
-Quadratorum enim cæteris facilius est collectio, et primùs quidem de normali tetragono tali modo ordinemur. Omnis igitur tetragonus normaliter constituitur, latitudine longitudine multiplicante arealem seu planitudinem, et podismum sive dubio absolvit. Ponatur modo tetragonus pari numero consignatus, id est 8, quos per se latitudinem per longitudinem multiplicans, 64 efficiam, embadum videlicet subtus descripti tetragoni.
-
-Idem vero si per imparem numerum feceris, attenuato obstaculo ea lem ratio constabit, qui normalis tetragonus ab Euclide aequilaterus atque rectangulus nominatur, a Nicomacho autem in arithmetica similiter appellatur.
-
-De parte altera longiori rubrica.
-
-Tetragonus autem parte altera longiori ab Euclide quidem rectangulum. Sed non aequilaterum definitur, a Nicomacho autem heterometres dicitur. Cujus quidem longitudis latitudinem multiplicans embadalis summam pedaturum, sive sint pares seu impares termini, demonstrat, sit modo parte altera longior ...
+  <bloco tipo="texto_principal" script="latino" bbox="100,215,450,350">
+    Quintus in ordine triangulorum amblygonius ab Euclide insertus obtusum angulum habens dictus est, quem nos succincte aperteque explicando aggredimur. Nam si diligens lector superioris nostri documenti præceptis et formulis instructus accesserit, minime in hoc lababit. Constituatur modo amb'ygonius cujus basis 18 numero, hypothenisæ autem major 10, minor vero 9, inscribam, cathecus autem 4 summa insigniatur.
   </bloco>
-
-  <bloco tipo="outro" script="latino" bbox="600,150,960,420">
-    Figura (triangulus, legenda):
-    - interior: 84 (numerus areae)
-    - latus obliquum: 15
-    - basis: 14
-    - perpendiculum interior: 5
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="480,470,520,510">
+  <bloco tipo="nota_marginal" script="latino" bbox="420,430,440,450">
     C
   </bloco>
-
-  <bloco tipo="outro" script="latino" bbox="680,680,940,860">
-    Figura (quadratum):
-    - latus: 8 (superiore et inferiore)
-    - area interior: 64
+  <bloco tipo="texto_principal" script="latino" bbox="100,355,450,560">
+    Ducatur ergo basis per catheci dimidium, hoc est 18, per binarium, et 36 prodeunt, quæ summa embadalis spatii planitudinem adimplet. Sed Architas in cunctis utens ratione, alio modo hujus amblygonii aream reperiri constituit, non hanc sumpta est summam in hac areæ planitudine, sed minorem posse contineri existimans, astruxit enim cathecum per se et per binarium, vel per se et octonarium, duplo se superantes multiplicari oportere. Et quantitate quæ hac ex multiplicatione proveniret aream constituere; non ut 36, sed 32 in se colligeret arealis illa contemplatio. Quisquis autem hujus jam dicti trigoni formas in plano designare disponat, a basis quantitate hujusmodi rem ingrediatur, tali ratione ut terminus minoris ac majoris hypothenisæ copulatus, parvo vincat terminum basis, hoc est, si basis 20 mensuretur pedibus, major hypothenisa 11, minor autem 10 insigniatur. Sed melius hoc quod numeris duximus ostendemus, si alicujus exempli formam subjiciemus.
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="480,680,520,740">
+  <bloco tipo="outro" script="latino" bbox="120,570,380,660">
+    [Diagrama: Triângulo. Números: 9 (lado esq), 10 (lado dir), 11 (altura), 56 (área), 18 (base)]
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,665,350,690">
+    De oxygonio rubrica.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="420,690,440,710">
     D
   </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="300,920,700,990">
-    Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="100,695,450,800">
+    Restat ut dicamus de oxygonii speculatione, qui sextus in trigonorum descriptione ab Euclide non segni geometra ponitur acuti angulus determinatus. Esto igitur oxygonius, cujus minoris lateris terminus, id est minor hypothenisa 13 pedibus terminetur, major autem 15 et basis 14 mensuretur, cujus catheci et embadi summa si ignoretur, tali ratione colligetur.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,805,450,950">
+    Ducatur ergo lateris minoris quantitas per se, 169 redundat; basis item terminus si per se excreverit, 196 nascentur; quas videlicet summas si junxeris, 365 efficies. Quo facto multiplicetur etiam terminus hypothenisalis per se, et exsurget 225 numerus; quem si de superius copulata summa screvero, fiunt
   </bloco>
 
+  <!-- Coluna Direita -->
+  <bloco tipo="texto_principal" script="latino" bbox="500,60,900,200">
+    A residui 140; horum medietas 70 esse pernotatur, quod per basim dispersum quinquiens ipsam in se retinet. Dominationis vero hujus summam minor obtinet præcisura, quæ per se aducta 25 constituit. Hos si de minoris lateris summa per se multiplicata abstuleris, 144 supersunt, quorum tetragonale latus, quod 12 est, catheci summam explebit. Areæ conclusionem hoc modo investigare curato, basis medium ducito per cathecum, id est 7 per 12, et provenient 84: Hanc summam complere areale hujus trigoni pavimentum non ignora, describatur ergo hujusmodi de hoc figura.
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="550,210,850,380">
+    [Diagrama: Triângulo. Números: 15 (lado dir), 14 (base), 5 (segmento base), 84 (área)]
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,390,900,450">
+    Sed quia de trigonorum podismali consideratione in superioribus diligentium lectorum indagini explanavimus, superest ut ad tetragonorum speculationem transitum faciamus succinctum, de his habituri tractatum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,455,900,550">
+    Quadratorum enim cæteris facilior est collectio, et prius quidem de normali tetragono tali modo ordinatur. Omnis igitur tetragonus normaliter constitutus latitudinem longitudine multiplicante arealem constituit planitudinem, et podismum sine dubio absolvit. Ponatur modo tetragonus pari numero consignatus, id est 8, quos per se latitudinem per longitudinem multiplicans, 64 efficiam, embadum videlicet subtus descripti tetragoni.
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="550,560,800,660">
+    [Diagrama: Quadrado. Números: 8 (topo), 8 (base), 64 (centro), x/lados]
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,670,900,760">
+    Idem vero si per imparem numerum feceris, attenta obstaculo ea lem ratio constabit, qui normalis tetragonus ab Euclide æquilaterus atque rectiangulus nominatur, a Nicomacho autem in arithmeticis similiter appellatur.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,765,850,790">
+    De parte altera longiori rubrica.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,795,900,920">
+    Tetragonus autem parte altera longior ab Euclide quidem rectiangulum. Sed non æquilaterum definitur, a Nicomacho autem heteromeres dicitur. Cujus quidem longitudino latitudinem multiplicans embadalis summæ pedaturam, sive sint pares seu impares termini, demonstrat, sit modo parte altera longior tetra-
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="400,950,600,980">
+    Digitized by Google
+  </bloco>
+  
   <notas>
-    - Script: latino. Transcrição feita visualmente a partir da digitalização; muitas palavras e formas tipográficas (p. ex. "amblygono", formas de "hypothenusa", e abreviações) estão parcialmente ilegíveis ou incertas e foram marcadas conforme possível sem inventar termos.
-    - Usei [ilegivel] quando uma palavra única não foi identificável; não foram substituídas frases inteiras.
-    - As figuras foram transcritas de forma sumarizada indicando apenas as legendas numéricas e letras visíveis (números de lados, área, letras internas).
-    - Letras marginais A, B, C, D foram mapeadas como nota_marginal conforme posição vertical central.
+    Transcrição de página dupla (1343-1344) da Patrologia Latina (Boethius).
+    Letras A, B, C, D identificadas como marcadores de seção. 'A' inicia o texto da coluna direita, 'B', 'C', 'D' estão na margem esquerda entre colunas ou na margem interna.
+    Abreviações mantidas (q̃, p, etc. expandidas ou mantidas conforme visual, aqui transcritas literalmente onde possível, ex: "amb'ygonius").
+    Números nos diagramas transcritos na descrição do bloco "outro".
   </notas>
 </pagina>

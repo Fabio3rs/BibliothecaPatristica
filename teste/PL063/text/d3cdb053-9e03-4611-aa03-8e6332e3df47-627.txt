@@ -1,70 +1,117 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,80">
-    1249 DE MUSICA LIB: IV: 1250
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,150,60">
+    1249
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,90,490,930">
-    ejus quod est C multiplex. Dico quoniam nec B ejus A
+  <bloco tipo="cabecalho" script="latino" bbox="350,30,600,60">
+    DE MUSICA LIB. IV.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,30,950,60">
+    1250
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,60,450,130">
+    ejus quod est C multiplex. Dico quoniam nec B ejus
     quod est C erit multiplex. Si enim est et D ejus quod
     est C, est multiplex. At non est, non erit igitur B
     ejus quod est C multiplex.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="430,60,450,80">
+    A
+  </bloco>
 
-    [illegible diagram]
+  <bloco tipo="outro" script="latino" bbox="60,140,400,260">
+    Non multiplex
+    4   6   9
+    C   B   D
+    Non multiplex   Non multiplex
+  </bloco>
 
-    Duplex intervallum er duobus maximis superparti-
-    cularibus, conjugantur sesquialtero et sesquitertio.
+  <bloco tipo="texto_principal" script="latino" bbox="50,270,450,510">
+    Duplex intervallum ex duobus maximis superparti-
+    cularibus, conjungitur sesquialtero et sesquitertio.
     Sit enim A quidem ejus quod est B sesquialter, B vero
-    ejus quod est C sesquierterius. Dico quoniam A ejus
-    quod est C duplex est. Quoniam igitur sesquialter est.
+    ejus quod est C sesquitertius. Dico quoniam A ejus
+    quod est C duplex est. Quoniam igitur sesquialter est
     A ejus quod est B, igitur A habet in se totum B ejus-
-    que dimidium. Duo igitur A aequi sunt tribus B. Rur-
-    sus quoniam B ejus quod est C sesquielterius est, a B
+    que dimidium. Duo igitur A æqui sunt tribus B. Rur-
+    sus quoniam B ejus quod est C sesquitertius est, * B
     igitur habet C, et ejus tertiam partem. Tres igitur B
-    aequi sunt ad quatuor C. Tres autem B aequi erant
-    duobus A. Duo igitur A aequi sunt ad quatuor C; unus
-    igitur A aequus est duobus CC. Duplex erat igitur A
+    æqui sunt ad quatuor C. Tres autem B æqui erant
+    duobus A. Duo igitur A æqui sunt ad quatuor C; unus
+    igitur A æquus est duobus CC. Duplex erit igitur A
     ejus qui est C, et in numeris. Sit enim sesquialter
-    12 ad 8, sesquilterius vero 8 ad 6 : ergo 12 ad 6 du-
+    12 ad 8, sesquitertius vero 8 ad 6 : ergo 12 ad 6 du-
     plices sunt.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="430,480,450,500">
+    C
+  </bloco>
 
+  <bloco tipo="outro" script="latino" bbox="60,520,400,670">
+    Duplex
+    12   8   6
+    A    B   C
+    Sesquialter.   Sesquiter.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,680,450,880">
     Ex duplici intervallo a'que sesquialtero triplex na-
-    scitur intervallum. Sit enim A ejus quod est Bduplex,
+    scitur intervallum. Sit enim A ejus quod est B duplex,
     B autem ejus quod est C sesquialter. Dico quoniam
     A ejus quod est C triplex est. Nam quoniam A ejus
-    quod est B duplex est, A igitur aequus est duobus B.
-    Rursus quoniam B ,ejus quod est C sesquialter est,
-    Ii igitur habet in se totum C et ejus dimidiam partem.
-    Duo igitur B aequi sunt tribus C. Sed duo B erqi
-    erant uni A, et unus igitur A aequus est tribus C; igi-
+    quod est B duplex est, A igitur æquus est duobus B.
+    Rursus quoniam B, ejus quod est C sesquialter est,
+    B igitur habet in se totam C et ejus dimidiam partem.
+    Duo igitur B æqui sunt tribus C. Sed duo B æqui
+    erant uni A, et unus igitur A æquus est tribus C; igi-
     tur A uno C triplex est. Et in numeris sit duplex
-    quidem senarius ternario, sesquialter vero ternarius,
+    quidem senarius terna Io, sesquialter vero ternarius,
     binario. Senarius igitur triplex est binario.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,90,980,930">
+  <bloco tipo="nota_marginal" script="latino" bbox="430,720,450,740">
+    D
+  </bloco>
+
+  <bloco tipo="outro" script="latino" bbox="550,80,900,230">
     Triplex
+    6   3   2
+    A   B   C
+    Duplex   Sesquialter
+  </bloco>
 
-    Si sesquiltero intervallo sesquiterium demptum
-    fuerit intervallum, erit quod relinquitur sesquiceta-
+  <bloco tipo="nota_marginal" script="latino" bbox="430,280,450,300">
+    B
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="550,240,950,490">
+    Si sesquialtero intervallo sesquitertium demptum
+    fuerit intervallum, erit quod relinquitur sesquiocta-
     vum. Sit enim A quidem ejus quod est B sesquialter,
-    B at vero C ejus quod est B sesquierterius: dico quo-
-    tiam A ejus quod est C sesquioctuavus est. Quoniam
+    at vero C ejus quod est B sesquitertius : dico quo-
+    niam A ejus quod est C sesquioctavus est. Quoniam
     enim A ejus quod est B sesquialter est, A igitur habet
-    in se B et ejus dimidiam partem. Octo igitur A aequi
+    in se B et ejus dimidiam partem. Octo igitur A æqui
     sunt ad duodecim B. Rursus quoniam C ejus quod
-    est B sesquiertius est, C igitur habet in se B et ter-
-    tiam ejus partem. Novem igitur C aequi sunt ad duo-
-    decim B. Duodecim B aequi erant ad octo A; et octo
-    igitur A aequi sunt ad novem C. Igitur A aequus est ei
-    quod est C, et octavae ejus parti. A igitur ejus quod
-    est C sesquioctuavus est. Et in numeris sesquialterum
+    est B sesquitertius est, C igitur habet in se B et ter-
+    tiam ejus partem. Novem igitur C æqui sunt ad duo-
+    decim B. Duodecim B æqui erant ad octo A; et octo
+    igitur A æqui sunt ad novem C. Igitur A æquus est ei
+    quod est C, et octavæ ejus parti. A igitur ejus quod
+    est C sesquioctavus est. Et in numeris sesquialterorum
     quidem intervallum sit novenarius ad senarium, ses-
-    quiterrium vero octonarius ad senarium. Novem igitur
+    quitertium vero octonarius ad senarium. Novem igitur
     ad octo sesquioctava proportio est.
+  </bloco>
 
-    [illegible diagram]
-
+  <bloco tipo="outro" script="latino" bbox="550,500,900,650">
     Sesquialter
+    9   8   6
+    A   C   B
+    Sesquioct.   Sesquiter.
+  </bloco>
 
-    Sex proportiones ses quioctavae majores sunt uno du-
+  <bloco tipo="texto_principal" script="latino" bbox="550,660,950,880">
+    Sex proportiones sesquioctavæ majores sunt uno du-
     plici intervallo. Sit enim quidem numerus A, hujus
     autem sit sesquioctavus B, b hujus sesquioctavus C,
     et hujus sesquioctavus D, et hujus sesquioctavus F,
@@ -73,17 +120,27 @@
     modum, et sint numeri A B C D F G K, et sit A
     262144, hujus autem sesquioctavus qui est B 294912,
     hujus autem sesquioctavus qui est C 331776, hujus
-    autem se-quioctavus qui est D 373248, hujus autem
+    autem sesquioctavus qui est D 373248, hujus autem
     sesquioctavus qui est F 419904, hujus autem sesqui-
-    octavus qui est G 472992, hujus autem sesquioctavus
+    octavus qui est G 472392, hujus autem sesquioctavus
     qui est K 531441. Et sunt 531441 quod est K, plus
-    quam duplices e ad ducenta 60 duo millia 144 quod
-    est A. Sex igitur sesquioctavae proportiones ampliores
+    quam duplices c ad ducenta 60 duo millia 144 quod
+    est A. Sex igitur sesquioctavæ proportiones ampliores
     sunt uno duplici intervallo.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,930,980,994">
-    * B igitur habet in se totum. b Hujus auctor. c A ducentis sexaginta duobus millibus 144. Sed haec lectio
-    non placet Glareano. Digitized by Google
+
+  <bloco tipo="aparato_critico" script="latino" bbox="50,890,950,940">
+    * B igitur habet in se totum.   b Hujus autem.   c A ducentis sexaginta duobus millibus 144. Sed hæc lectio
+    non placet Glareano.
   </bloco>
-  <notas>Mapeamento dos diagramas indicados como [illegible diagram] porque contêm formas gráficas com letras dentro; preservei a ortografia original e usei [illegible] por palavra somente onde o conteúdo gráfico impede transcrição literal. Pequenas lacunas e manchas interpretadas como separadores ou arte gráfica não foram marcadas com [ilegivel].</notas>
+  
+  <bloco tipo="rodape" script="latino" bbox="450,950,750,990">
+    Digitized by Google
+  </bloco>
+
+  <notas>
+    Transcrição de página de tratado musical (Boécio?). Diagramas geométricos com proporções musicais. Letras A, B, C, D identificadas como notas marginais de seção.
+    Na coluna esquerda, último parágrafo: "terna Io" (pode ser erro de impressão para ternario ou numeral).
+    Números grandes na coluna direita transcritos conforme visível.
+  </notas>
 </pagina>

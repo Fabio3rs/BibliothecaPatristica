@@ -1,39 +1,25 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,20,90,70">
-    645
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="300,20,700,70">
-    ANASTASII BIBLIOTHECARI
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="920,20,980,70">
-    iii
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="50,90,950,820">
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="140,300,200,420">
-    A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="260,360,320,420">
-    B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="140,460,200,520">
-    C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="260,480,320,560">
-    D
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="780,120,980,780">
-    S. LAURENTIVS
-    S. PETRVS
-    SPAVLVS
-    S. STEPHANVS
-    SCS [ilegivel]
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,920,980,990">
-    Digitized by Google
-  </bloco>
+<pagina estado="com_texto" tipo="gravura">
+  <bloco tipo="cabecalho" script="latino" bbox="120,55,160,80">645</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="450,50,750,85">ANASTASII BIBLIOTHECARI</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="920,55,950,80">646</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="250,120,650,850">MARTYRII S. LAURENTII SUBIICI DIVINAE VISITATIONI ET VISIONI BEATI...</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="860,160,890,210">PELAGIUS EPISC</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="860,220,890,290">S. LAURENTIUS</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="860,310,890,360">S. PETRUS</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="860,510,890,560">S. PAULUS</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="860,610,890,680">S. STEPHANUS</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="860,710,890,780">S.C. YPP LIT</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="350,360,370,380">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,410,500,430">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,510,500,530">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="350,510,370,530">D</bloco>
+  
+  <bloco tipo="rodape" script="latino" bbox="620,950,800,980">Digitized by Google</bloco>
+  
   <notas>
-    Página com gravura contendo várias legendas latinas. Texto principal na gravura estava em parte ilegível; palavras não identificáveis foram marcadas como [ilegivel] por palavra. Todos os elementos marginais visíveis (A, B, C, D e legendas dos santos) foram mapeados. Script predominante: latino. Imagem apresentada rotacionada na origem; bboxes dadas segundo a orientação da imagem fornecida.
+    A página é uma gravura (prancha) inserida no volume. O texto principal da gravura segue a curvatura de um arco/rolo. As legendas das figuras (Pelagius, Laurentius, etc.) estão dispostas verticalmente à direita da composição. As letras A, B, C, D identificam vinhetas menores no interior do arco. O final do texto do arco está parcialmente obscurecido/desbotado ("...BEATI...").
   </notas>
 </pagina>

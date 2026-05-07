@@ -1,126 +1,209 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,70">
-    LIBER II CONTRA SYMMACHUM.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,70,480,940">
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,100,50">
     233
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,30,650,50">
+    LIBER II CONTRA SYMMACHUM:
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="900,30,950,50">
+    234
+  </bloco>
+  
+  <!-- Poetry Section Left Column -->
+  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,320">
     Viro pie vobis auctoribus, impia pridem
     Arte Jovis fateor : quid enim non ille cruentum
-    680 Tradidit, aut quid mitte sibi, placidumve po-
-    [poscit ?]
-    Qui, dum praemuit cultus inolescre Christi,
-    Saeviti, ac miserum foedavit sanguine saeculum.
+    680 Tradidit, aut quid mite sibi, placidumve po-
+    [poscit ?
+    Qui, dum præmetuit cultus inolescere Christi,
+    Sæviit, ac miserum fœdavit sanguine sæclum.
     Et sunt, qui nobis bella exprobrare sinistra
     Non dubitent, postquam templorum sprevimus
-    [aras.
-    685 Afrismente Libyn Collinæ a cardine portæ
-    Annibalem Jovis imperio, Martisque repulsum:
+    [aras,
+    685 Affirmentque Libyn Collinæ a cardine portæ
+    Annibalem Jovis imperio, Martisque repulsum :
     822 Victores Senonas Capitoli ex arce fuga-
     [los,
-    - Cum super excels0 pugnarent numina saxo?
+    Cum super excelso pugnarent numina saxo ?
     Qui mihi præteritam cladem veteresque dolores
-    690 Inculcant iterum, videant, me tempore vestro B
+    690 Inculcant iterum, videant, me tempore vestro
     Jam nil tale pati : nullus mea barbarus hostis
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="20,940,480,990">
-    GLOSSÆ VETERES.
-    680. Tradidit, docuit, l.
-    681. Inolescere, crescere dies festos, l.
-    683. Libyn, Africanum, l.
-    688. Saxo, in Capitolio, l.
-    690. Inculcant, imputant, l.
-    695. Geticus, Radagasius, vel Alaricus, l.
-    698. Istro, Danubio, l.
-    698. Mastrugis, mastruga quasi monstrosa vestis,
+
+  <!-- Marginal Letters Poetry -->
+  <bloco tipo="nota_marginal" script="latino" bbox="490,60,510,80">
+    A
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,70,980,940">
-    234
-    A Cuspide claustra quatit : non armis, veste, co-
-    [minusque
+  <bloco tipo="nota_marginal" script="latino" bbox="490,260,510,280">
+    B
+  </bloco>
+
+  <!-- Poetry Section Right Column -->
+  <bloco tipo="texto_principal" script="latino" bbox="520,60,950,320">
+    Cuspide claustra quatit : non armis, veste, co-
+    [misque
     Ignotus capta passim vagus errat in urbe,
-    Transalpina meam rapiens in vincula pubea.
-    695 Tentavit Geticus nuper delere tyrannus
+    Transalpina meam rapiens in vincula pubem.
+    695 Tentavit Geticus nuper deletæ tyrannus
     Italiam, patrio veniens juratus ab Istro,
-    Illas arces æquare solo, tecta aurea flammis
+    Ilas arces æquare solo, tecta aurea flammis
     Solvere, mastrucis proceres vestire togatos.
     823 Jamque ruens, Venetos turmis protriverat
     [agros,
     700 Et Ligurum vastarat opes, et amœna profundi
-    Rura Padi, Tuscnmque solum victo animæ pre-
+    Rura Padi, Tuscumque solum victo amne pre-
     [mebat.
-    Depulit hos equitum nimbos non pervigili an:er,
+    Depulit hos equitum nimbos non pervigil an-er,
     Proditor occulti tenebrosa nocte pericli :
     Sed vis cruda virum, præfractaque congre-
     [dientum
-    GLOSSÆ VETERES.
-    de pellibus facta : rocamus etiam mastrugas renones,
-    quæ rustice crotina vocantur, l.
-    699. Venetos, Venetiæ, l.
-    700. Ligurum, Liguria regio maritima et amœna, l.
-    701. Victo annne, transito Tiberi, l.
-    704. Cruda, fortis. — Congredientum , pugnan-
-    ium, l.
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="20,990,980,1400">
+
+  <!-- Glosses Header -->
+  <bloco tipo="cabecalho" script="latino" bbox="350,330,650,350">
+    GLOSSÆ VETERES.
+  </bloco>
+
+  <!-- Glosses Left Column -->
+  <bloco tipo="aparato_critico" script="latino" bbox="50,360,480,500">
+    680. Tradidit, docuit, I.
+    681. Inolescere, crescere dies festos, I.
+    685. Libyn, Africanum, I.
+    683. Saxo, in Capitolio, I.
+    690. Inculcant, impuunt, I.
+    695. Geticus, Radagisus, vel Alaricus, I.
+    696. Istro, Danubio, I.
+    698. Mastrugis, mastruga quasi monstuosa vestis,
+  </bloco>
+
+  <!-- Glosses Right Column -->
+  <bloco tipo="aparato_critico" script="latino" bbox="520,360,950,500">
+    de pellibus facta : vocamus etiam miastrugas renones,
+    quæ rustice crotina vocantur, I.
+    699. Venetos, Venetiæ, I.
+    700. Ligurum, Liguria regio maritima et amœna, I.
+    701. Victo amne, transito Tiberi, I.
+    704. Cruda , fortis. — Congredientum , pugnan-
+    tium, I.
+  </bloco>
+
+  <!-- Commentary Header -->
+  <bloco tipo="cabecalho" script="latino" bbox="350,510,650,530">
     COMMENTARIUS.
-    678. Vat. A, Pal., Egm. vitiose , robis aucia mihi
+  </bloco>
+
+  <!-- Commentary Left Column -->
+  <bloco tipo="texto_principal" script="latino" bbox="50,540,480,920">
+    678. Vat. A, Pal., Egm. vitiose , vobis aucta mihi
     impia.
-    682. Vat. A, sacri ; lege seviri.
-    683. Ald., qui vobis. Hæc velus fuit ethincorum
+    682. Vat. A, sævit; lege sæviit.
+    685. Ald., qui vobis. Hæc vetus fuit ethnicorum
     querela adversus Christianos. Arnobius, lib. 1 : Nam
-    quod nobis objectare consueuis bellorum frequentiam,
-    canas, vastaciones urbium, Germanorum et Scythicæs
+    quod nobis objectare consuestis bellorum frequentiam ,
+    causas, vastationes urbium , Germanorum et Scythicas
     irruptiones, cum pace hoc vestra et cum bona venia
-    dixerim, quale sit illud quod dicitis, calumniarum libi-
-    dine non videbis. Etiam cum nulla jam ipsis superaret
+    dixerim, quale sit istud quod dicitis, calumniarum libi-
+    dine non videtis. Etiam cum nulla jam ipsis supererat
     spes veterem idolorum cultum recuperandi, hujus-
-    modi querimonias instaurabant, quas ut retunderet,
+    modi quærimonias instaurabant, quas ut retunderet,
     S. Augustinus libros de Civit. Dei scripsit, Orosioque
-    auctor fuit, ut libros historiamon conferret, et cala-
-    mitates quæ ante Christianismum obvencrant, singu-
-    latim mostrarent.
+    auctor fuit, ut libros historiarum conficeret, et cala-
+    mitates quæ ante Christianismum obvenerant, singil-
+    latim notaret.
     686. Prudentius Symmachi verba refellit, Anniba-
-    lem faminibus desertum, cum Romanm oppignerat,
-    traditum est. Seu caelum, seu Roma tonat, ait Clau-
+    lem fulminibus deterritum, cum Romam oppugnaret,
+    traditum est. Seu cælum, seu Roma tonat, ait Clau-
     dianus de Bello Getico.
-    688. Urb., Egm., Widm., Bong., scribunt eccleo,
-    quod expressit Weitzus. Heinsius ait in scriptis esse
-    e cclso. At Alex., Rat., excelsa, cum Ald., Gis. et
-    aliis, et hoc ipsum puto esse eccleo, quamvis etiam
-    possit dividi e cclso. Virgilius lib. ix Æn., Dum do-
-    mus Ænee Capitoli immobile saxum Accolel.
-    691. Vat. A, nullis; emenda nullius.
-    692. Virgilius et Juvenalis clausura portarum di-
+    688. Urb., Egm., Widm., Bong., scribunt excelso,
+    quod expressit Weitzius. Heinsius ait in scriptis esse
+    e celso. At Alex., Rat., excelso, cum Ald., Gis. et
+    aliis, et hoc ipsum puto esse excelso, quamvis etiam
+    possit dividi e celso. Virgilius lib. IX Æn., Dum do-
+    mus Æneæ Capitoli immobile saxum Accolet.
+    691. Vat. A, nullis; emenda nullus.
+    692. Virgilius et Juvenalis claustra portarum di-
     cunt : ac fere simili modo Catullus, Ovidius, Seneca.
-    Saviard ad epist. 2, lib. 1 Sidoni de Gothis hunc lo-
-    cum interpretatur. Grangious ait pro certo debere in-
-    telligi de Gallis, qui armis, veste com' squee erant Ro-
-    manis dissimiles, scilicet, nullus barbarus hostis, ut
+    Savaro ad epist. 2, lib. I Sidonii de Gothis hunc lo-
+    cum interpretatur. Grangæus ait pro certo debere in-
+    telligi de Gallis, qui armis, veste com aque erant Ro-
+    manis dissimiles, scilicet, Nullus barbarus hostis, ut
     Annibal cuspide claustra mea quatit; nullus armis,
-    veste consique ignotus, ut Brenni miles et Sconnum
-    exercitus, capta erat in urbe. Id magis prono.
-    695. Gelicus tyranus est Alaricus. Gothi Getæ di-
+    veste comisque ignotus, ut Brenni miles et Senonum
+    exercitus, capta errat in urbe. Id magis probo.
+    695. Geticus tyrannus est Alaricus. Gothi Getæ di-
     cebantur. Inscriptio poematis Claudiani est : De Bello
-    Getico, vel Pollentiaco
-    696. Est Gothi e septentrione venerant, tamen
-    diu apud Istum considerant : hinc patrium Istum
-    vocat. Innuit autem moem barbarorum, qui flumina
-    jurabant. De eodem Ala loco Claudianus carm. de
-    Bello Getico : Patri numen juraverat Istri. Fluvii
-    PATROL. LX.
-    699. Rat., Weitz., Bong., Widm., prostaeverat.
-    Alii, etiam Widm. supra, projtruerat.
-    701. Iso Tiberim annem intelligit : an recte, vide
+    Getico, vel Polentiaco.
+    696. Etsi Gothi e septentrione venerant, tamen
+    diu apud Istrum consederant : hinc patrium Istrum
+    vocat. Innuit autem morem barbarorum, qui flumina
+    jurabant. De eodem Ala ico Claudianus carm. de
+    Bello Getico : Patrii numen juraverat Istri. Fluviis
+  </bloco>
+
+  <!-- Marginal Letters Commentary -->
+  <bloco tipo="nota_marginal" script="latino" bbox="490,580,510,600">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,780,510,800">
+    D
+  </bloco>
+
+  <!-- Commentary Right Column -->
+  <bloco tipo="texto_principal" script="latino" bbox="520,540,950,920">
+    numen aliquod inesse Romani etiam ac Græci in fa-
+    bulis tradunt.
+    698. Alex., astrucis; supra , mastrucis. Rat., ma-
+    strugis, quod tenuit Weitzius; alii scribunt mastru-
+    cis, seu mastrycis. Mastruca vestis erat e pellibus fe-
+    rarum, quam Sardis tribuit Cicero. Quintilianus lib. I,
+    cap. 5 : Mastruca, quod Sardum est, illudens Cicero
+    ex industria dixit. Ciceronis verba conservavit Isido-
+    rus. Hieronymus dialog. I contra Luciferian. : De-
+    fendebat, non sine causa Christum mortuum fuisse, nee
+    ob Sardorum tantum mastrucam Dei Filium descen-
+    disse. Gothi hujusmodi vestibus induebantur, qui
+    propterea pelliti appellabantur a Rutilio et a S. Hiero-
+    nymo. Turnebus, num. 312 Advers., ait mastrugam
+    esse vestem scorteam gravissime et pessime olen-
+    tem. Glossæ verbum huc trahi potest crotina. Rheno-
+    nes in eadem glossa sunt vestis Germanorum pro-
+    pria, ut patet ex S. Isidoro, lib. XIX Etymol., cap. 25.
+    Quamvis autem mastruca dicatur vestis propria Sar-
+    dorum, rhenones sive renones Germanorum, tamen
+    cum utraque sit e pellibus, recte hoc loco a Pruden-
+    tio mastruca usurpatur. Apud S. Isidorum nonnulli
+    legunt Mastruca vestis Germanica; sed non est du-
+    bium quin sit legendum vestis Sarda, ut arguitur ex
+    verbis subjunctis Ciceronis, et numero 1 cap. cit. Ut
+    autem glossa Isonis intelligatur, addam etymologiam
+    mastrucæ ex Isidoro : Mastruca autem dicta, quasi
+    monstruosa. De vestibus pellitis S. Paulinus carm. de
+    Reditu Nicetæ : Et Getæ currunt, et uterque Dacus :
+    Qui colit terræ medio, vel ille Divitis multo bove pellea-
+    tus Accola ripæ. Ubi in notis multa Rosweydus affert
+    de hoc vetustissimo habitu primorum populorum.
+    699. Rat., Weitz., Bong., Widm., prostraverat.
+    Alii, etiam Widm. supra, protriverat.
+    701. Iso Tiberim amnem intelligit : an recte, vide
     comment. ad vers. 719.
     702. Ald., male, hos equitum nimbus. Alii, hos nim-
-    bos equitum. Claudianus in prim. consul. Silicinius
-    vers. 352 : Sed didicit... non fusum crebris hastilibus
-    imberem, Non equitum nimbos latos obsistere pilis. De
-    ansere pervigii, cujus clangore excitati Romani Gal-
-    los, nocte subeunte, juocercunt, agunt fere omnes
-    poetas historicque Romani.
-    704. Ald., scripsi Heinsiani, Alex., Urb., Egm.,
+    bos equitum. Claudianus in prim. consul. Stiliconis
+    vers. 552 : Sed didicit... non fusum crebris hastilibus
+    imbrem, Non equitum nimbos latiis obsistere pilis. De
+    ansere pervigili, cujus clangore excitati Romani Gal-
+    los, nocte subeuntes, dejecerunt, agunt fere omnes
+    poetæ historicique Romani.
+    704. Ald., scripti Heinsiani, Alex., Urb., Egm.,
+  </bloco>
+
+  <!-- Footer -->
+  <bloco tipo="rodape" script="latino" bbox="50,930,200,950">
+    PATROL. LX.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="900,930,920,950">
     8
   </bloco>
-  <notas>Transcrição feita a partir de uma página impressa em Latin com numerais marginais. Pequenas lacunas onde a tinta está muito fraca foram marcadas com [ilegivel] ou com colchetes conforme leitura incerta; palavras longas divididas por hífen foram mantidas conforme impressão. Duas colunas, transcritas esquerda então direita; glossae e comentário aparecem como rodapé/nota final.</notas>
+  <bloco tipo="outro" script="latino" bbox="400,960,600,990">
+    Digitized by Google
+  </bloco>
 </pagina>

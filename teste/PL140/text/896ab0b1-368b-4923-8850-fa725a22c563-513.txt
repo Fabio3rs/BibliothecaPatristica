@@ -1,55 +1,80 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,160">
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,50">
     1017 DECRETORUM LIBRI XX. — LIBER VICESIMUS. 1018
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="30,160,490,360">
+  
+  <!-- Índice Superior -->
+  <bloco tipo="texto_principal" script="latino" bbox="60,60,480,300">
     96. Item de Antichristo.
-    97. Quod in novissimis omnes Israelitæ per prœdicationem Heliæ converti debeant.
-    98. De hoe cur in hac vita sæpius bonis male sit, et malis bene.
+    97. Quod in novissimis omnes Israelitæ per prædicationem Heliæ converti debeant.
+    98. De hoc cur in hac vita sæpius bonis male sit, et malis bene.
     99. Quod etiam omnes infideles resurgere debeant ad tormenta, non ad judicium.
     100. Quod omnes homines resurgere debeant.
     101. De eadem re.
-    102. Quod angeli apostatæ, et impii homines post tormenta quasi suppliciis expurgati, non justorum societati donetur.
-    103. Quod resurrectio fieri debeat in ætate perfectæ juvenilis, quæ profectò non indulgat.
-    104. Quod discretius judex ad judicium veniciens peccatorem videat, ut feriat, non ut salvet.
+    102. Quod angeli apostatæ, et impii homines post tormenta quasi suppliciis expurgati, non justorum societati donentur.
+    103. Quod resurrectio fieri debeat in ætate perfectæ juventutis, quæ profectu non indigeat.
+    104. Quod districtus judex ad judicium veniens peccatorem videat, ut feriat, non ut salvet.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="500,160,970,360">
-    A 105. Quod Deus ad judicium veniat ad serviendum videns, et ad salvandum non videns.
+
+  <bloco tipo="nota_marginal" script="latino" bbox="510,60,530,75">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="540,60,940,300">
+    105. Quod Deus ad judicium veniat ad feriendum videns, et ad salvandum non videns.
     106. Quod in die judicii duo ordines in quatuor dividantur.
-    107. Quod liber vitæ sit ipsa visio advenientis judicis: quia quicquid quis fecerat, ipso viso statim intellegit.
+    107. Quod liber vitæ sit ipsa visio advenientis judicis : quia quicquid quis fecerat, ipso viso statim intelliget.
     108. De gloria sanctorum post judicium.
     109. Quod finito judicio incipiat esse sæculum novum, etc.
     110. Contra eos qui dicunt, si post factum judicium erit conflagratio mundi, ubi tunc esse potuerint sancti, qui non contingantur flamma incendii.
     
     Indicis capitulorum finis.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,380,940,860">
+
+  <!-- Título Principal -->
+  <bloco tipo="cabecalho" script="latino" bbox="200,320,800,480">
     BURCHARDI
-
     ECCLESIÆ WORMACIENSIS EPISCOPI
-
     DECRETORUM LIBER VICESIMUS
-
     DE CONTEMPLATIONE.
-
-    ARGUMENTUM LIBRI.
-    Liber hic Speculator vocatur. Speculator enim de providentia et prædestinatione divina. et de adventu Antichristi, de ejus operibus, de resurrectione, de die judicii, de infernalibus poenis, de felicitate perpetuæ vitæ.
-    CAP. 1. — Quod animæ humanæ inter cæteras creaturas ab initio non sint creatæ.
-    (August. dicit.) Animas hominum non esse dicimus ad initio inter cæteras intellectuales naturas, nec semel creatas, ut Origenes fingit: neque cum corporibus per coitum seminari, sicut Luciferiani et Cyprillus, et aliqui Latinorum præsummentes affirmant, quasi naturæ consequentia serviente: sed dicimus corpus tantum per conjugii copulam seminari, Dei vero judicio cogulari in vulva, et fingí, atque formari. Formato jam corpore, animam creari, et infundi, ut vivat in utero homo ex anima constans, et corpore, egrediaturque vivus ex utero, plenus substantia. Creationem vero animæ, solum creatorem omnium nosse.
-    CAP. 2. — Quod duæ animæ non sint in uno homine, ut quidam, dicunt sed una tantum.
-    (August.) Non duas animas esse dicimus in uno homine, sicut quislan Jacob, et alii Syrorum disputatores scribunt, ut una anima sit de qua animetur corpus, et similia sit sanguini, et altera spiritalis, quæ rationem ministrat: sed dicimus unam esse eundemque animam in homine, quæ et corpus sua societate vivificet, et semetipsam sua ratione
-    B disponat, habens in se libertatem arbitrii, ut in sua substantia eligat cogitationem quam vult.
-    CAP. 3. — Quod solus homo habeat animam substantiam.
-    (Idem.) Solum hominem credimus habere animam substantivam, ex qua corpus vivit, et rationem suam, et ingenia vivaciter tenet. Neque cum corpore moritur, sicut Arabs asserit, neque post mortalium intervallum, sicut Zenon: quia substantialiter vivit.
-    CAP. 4. — Ut peccatum animæ cum carnæ morte finiatur.
-    (Idem.) Peccatum animæ non sunt substantive sed cum ipsa carnis vivacitate nascuntur, et cum carnis morte finiuntur. Et ideo nec ratione reguntur, sicut Plato et Alexander putant: sed ad omnia naturæ inclinationem ducuntur.
-    CAP. 5 — Quod anima humana non cum carne moriatur.
-    (Idem.) Anima humana non cum carne moritur: quia non carnis, ut superius diximus, semen est, sed formato inventorís Dei judicio corpore, dicimus eam creari, et infundi, ut vivat homo intus in utero, et sic nativitate procedat in mundo.
-    CAP. 6. — Quod homo constet duabus substantiis.
-    (Idem.) Duabus substantiis constat homo, anima tantum et carne. Anima cum ratione sua, et carne cum sensibus suis, id est, visu, auditu, gustu, odoratu et tactu. Quos tamen sensus absque anima societate non movet caro: anima vero et sine carne rationem suam integram tenet.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="380,860,640,980">
+
+  <!-- Texto Inferior Esquerda -->
+  <bloco tipo="texto_principal" script="latino" bbox="60,500,480,950">
+    ARGUMENTUM LIBRI.
+    Liber hic Speculator vocatur. Speculator enim de providentia et prædestinatione divina, et de adventu Antichristi, de ejus operibus, de resurrectione, de die judicii, de infernalibus pœnis, de felicitate perpetuæ vitæ.
+    CAP. 1. — Quod animæ humanæ inter cæteras creaturas ab initio non sint creatæ.
+    (August. dicit.) Animas hominum non esse dicimus ad initio inter cæteras intellectuales naturas, nec semel creatas, ut Origenes fingit : neque cum corporibus per coitum seminari, sicut Luciferiani et Cyrillus, et aliqui Latinorum præsumentes affirmant, quasi naturæ consequentia serviente : sed dicimus corpus tantum per conjugii copulam seminari, Dei vero judicio coagulari in vulva, et fingi, atque formari. Formato jam corpore, animam creari, et infundi, ut vivat in utero homo ex anima constans, et corpore, egrediaturque vivus ex utero, plenus substantia. Creationem vero animæ, solum creatorem omnium nosse.
+    CAP. 2. — Quod duæ animæ non sint in uno homine, ut quidam, dicunt sed una tantum.
+    (August.) Non duas animas esse dicimus in uno homine, sicut quidam Jacob, et alii Syrorum disputatores scribunt, ut una anima sit de qua animetur corpus, et immixta sit sanguini, et altera spiritualis, quæ rationem ministret : sed dicimus unam esse eamdemque animam in homine, quæ et corpus sua societate vivificet, et semetipsam sua ratione
+  </bloco>
+
+  <!-- Texto Inferior Direita -->
+  <bloco tipo="nota_marginal" script="latino" bbox="510,500,530,515">
+    B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="540,500,940,680">
+    disponat, habens in se libertatem arbitrii, ut in sua substantia eligat cogitationem quam vult.
+    CAP. 3. — Quod solus homo habeat animam substantivam.
+    (Idem.) Solum hominem credimus habere animam substantivam, ex qua corpus vivit, et rationem suam, et ingenia vivaciter tenet. Neque cum corpore moritur, sicut Arabs asserit, neque post modicum intervallum, sicut Zenon : quia substantialiter vivit.
+    CAP. 4. — Ut pecudum animæ cum carnis morte finiantur.
+    (Idem.) Pecudum animæ non sunt substantive sed cum ipsa carnis vivacitate nascuntur, et cum carnis morte finiuntur. Et ideo nec ratione reguntur, sicut Plato et Alexander putant : sed ad omnia naturæ incitamenta ducuntur.
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,740,510,760">
+    C
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="540,740,940,950">
+    CAP. 5 — Quod anima humana non cum carne moriatur.
+    (Idem.) Anima humana non cum carne moritur : quia non carnis, ut superius diximus, semen est, sed formato inventor is Dei judicio corpore, dicimus eam creari, et infundi, ut vivat homo intus in utero, et sic nativitate procedat in mundo.
+    CAP. 6. — Quod homo constet duabus substantiis.
+    (Idem.) Duabus substantiis constat homo, anima tantum et carne. Anima cum ratione sua, et carne cum sensibus suis, id est, visu, auditu, gustu, odoratu et tactu. Quos tamen sensus absque animæ societate non movet caro : anima vero et sine carne rationem suam integram tenet.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="550,960,850,990">
     Digitized by Google
   </bloco>
-  <notas>Texto impresso latino. Pequenas lacunas e palavras truncadas preservadas como no original; algumas linhas de cabeçalho em duas colunas foram transcritas sequencialmente (esquerda depois direita). Usei [ilegivel] quando necessário (não aplicável nesta página).</notas>
+
+  <notas>
+    Transcrição de página impressa (Patrologia Latina). Layout em duas colunas tanto no índice superior quanto no texto inferior. As letras A, B, C foram identificadas como notas marginais de seção conforme instrução.
+  </notas>
 </pagina>

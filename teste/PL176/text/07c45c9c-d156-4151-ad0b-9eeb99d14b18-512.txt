@@ -1,88 +1,86 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,110">
-    NOVUS   ADAM:
+  <bloco tipo="cabecalho" script="latino" bbox="290,45,710,75">
+    NOVUS ADAM:
   </bloco>
-  <bloco tipo="gravura" script="latino" bbox="40,120,960,900">
-    [!-- Coluna esquerda (transcrever inteira antes da direita) --]
+  <bloco tipo="texto_principal" script="latino" bbox="80,80,450,210">
+    liberalitas. pietas.
+    concordia. compassio. gratia.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="420,90,580,140">
     CHARITAS.
-    liberalitas.
-    pietas.
-    concordia.
-    compassio.
-    gratia.
-    Fructus
-    FIDES.
-    obedientia.
-    reverentia.
-    castitas.
-    continentia.
-    religio sancta.
-    affectus.
-    munditia.
-    Hiero-
-    TEMPERANTIA.
-    jejunium.
-    sobrietas.
-    taciturnitas.
-    carnis afflictus.
-    morigeratio.
-    contemptus saeculi.
-    discretio.
-    Dex-
-    PRUDENTIA.
-    intelligentia.
-    providentia.
-    deliberatio.
-    memoria.
-    alacritas.
-    timor Domini.
-    [ilegivel]
-    [!-- Coluna direita --]
-    misericordia.
-    mansuetudo
-    pax.
-    indulgentia.
-    benignitas.
-    [ilegivel] 
-    SPES.
-    contemplatio.
-    compunctio.
-    patientia.
-    confessio.
-    longam- nitias.
-    modestia.
-    gaudium.
-    solyma
-    FORTITUDO.
-    constantia.
-    tolerantia.
-    fiducia.
-    stabilitas.
-    requies.
-    magnanimitas.
-    perseveran- tia.
-    tera.
-    JUSTITIA.
-    correctio.
-    severitas.
-    veritas.
-    lex.
-    aequitas.
-    jurisjurandi observatio.
-    judicium.
-    HUMILITAS
-    RADIX VIRTUTUM.
-    ARBOR
-    VIRTUTUM.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="600,900,980,990">
+  <bloco tipo="texto_principal" script="latino" bbox="550,80,920,210">
+    misericor- dia. mansuetudo
+    pax. indulgentia. benignitas.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="380,235,480,255">
+    Fructus
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="510,235,610,255">
+    Soiritus
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="60,250,450,440">
+    obedientia. reverentia.
+    castitas. FIDES. continentia.
+    religio sancta. affectus.
+    munditia.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,250,890,440">
+    contemplatio. compunctio.
+    patientia. SPES. confessio.
+    longani- mitas. modestia.
+    gaudium.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="390,460,460,480">
+    Hiero-
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="520,460,600,480">
+    solyma
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="60,480,450,670">
+    jejunium. sobrietas.
+    taciturnitas. TEMPERANTIA. carnis afflictus.
+    morigeratio. contemptus sæculi.
+    discretio.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,480,890,670">
+    constantia. tolerantia.
+    stabilitas. FORTITUDO. fiducia.
+    requies. magnani- mitas.
+    perseveran- tia.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="400,690,450,710">
+    Dex-
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="520,690,570,710">
+    tera.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="60,710,450,900">
+    intelligentia. providentia.
+    memoria. PRUDENTIA. deliberatio.
+    timor Domini. alacritas.
+    consultu".
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,710,890,900">
+    correctio. severitas.
+    jurisjurandi observatio. JUSTITIA. veritas.
+    judicium. lex.
+    æquitas.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="410,910,590,945">
+    HUMILITAS RADIX VIRTUTUM.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="260,950,740,970">
+    ARBOR VIRTUTUM.
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="600,975,900,995">
     Digitized by Google
   </bloco>
   <notas>
-    - Script principal: latino.
-    - A página é uma gravura-diagrama em duas colunas; mantida ordem: coluna esquerda inteira seguida da direita.
-    - Conservadas hifenizações e pontuações visíveis (ex.: "longam- nitias.", "perseveran- tia.", "Hiero-"/"solyma", "Dex-"/"tera.").
-    - Foram marcadas como [ilegivel] palavras cujo traçado é incerto no original (uma legenda central direita abaixo de CHARITAS e um termo junto a "timor Domini" / "consilium" inferior esquerdo).
-    - Não foram normalizados termos latinos; transcrição literal conforme impresso.
+    Transcrição literal de diagrama "Arbor Virtutum".
+    "Soiritus" transcrito literalmente (provável erro tipográfico para Spiritus).
+    "consultu"" mantém aspas/abreviatura original.
+    Palavras divididas por hífen mantidas (misericor-dia, longani-mitas, etc.).
+    Labels marginais "Hiero-/solyma" e "Dex-/tera." formam palavras compostas através do gutter.
   </notas>
 </pagina>

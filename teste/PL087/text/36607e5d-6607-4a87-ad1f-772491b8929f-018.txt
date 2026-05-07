@@ -1,100 +1,186 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,80">
-    27 APPENDIX AD S. GALLI SCRIPTA. 28
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,80,490,950">
-    monasterii, 'n secunda abates compendio describit
-    ex variis auctoribus, nec nou ex ms. antiquis monu-
-    mentis, cujus libelli beneficio usi, hinc inde quaedam
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,100,50">27</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,20,650,50">APPENDIX AD S. GALLI SCRIPTA.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="900,20,950,50">28</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,160">
+    monasterii, in secunda abbates compendio describit
+    ex variis auctoribus, nec non ex ms. antiquis monu-
+    mentis, cujus libelli beneficio usi, hinc inde quædam
     excerpsimus, et addidimus, ut quis quisque fuerit,
     facilius pateret. Tertia vero pars continet sacra car-
-    mina, quae quanta fide ex ms. Codicibus desumptus
-    erit, palet ex praefatione illius, quam praemisit, ideo-
-    que lic eam subjunximus :
-    
-    IN HYMNOS SACROS DIVI GALLI PATRUM PRAEFATIO
-    JOHOCI METZLERI.
-    
-    Humuinam hanc et veluti extremam partem, hymnos
+    mina, quæ quanta fide ex ms. Codicibus deprompse-
+    rit, patet ex præfatione illius, quam præmisit, ideo-
+    que hic eam subjunximus :
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,165,480,380">
+    IN HYMNOS SACROS DIVI CALLI PATRUM PRÆFATIO
+    JODOCI METZLERI.
+    Maximam hanc et veluti extremam partem, hymnos
     videlicet sacros, ex innumeris quæ antiqui Patres
-    Sancti Galli monachi sapienter dixerunt, et suauiter
-    decantauerunt, vel ideo descripsi, ut el mihi memo-
-    synon aliquod conferrem, et ut que ob eamcem tem-
+    Sancti Galli monachi sapienter dixerunt, et suaviter
+    decantaverunt, vel ideo descripsi, ut et mihi mnemo-
+    synon aliquod conficerem, et ut quæ ab edacem tem-
     poris injuriam saltem secundum aliquam sui partem
-    videbantur breui quasi perlutura, ea hac opera mea vel
-    aliqualitier seruarerim ; et demum ut quæ adeo erant
+    videbantur brevi quasi peritura, ea hac opera mea vel
+    aliquo diutius servarem; et demum ut quæ adeo erant
     disjecta et dispersa, in unum quasi corpus redigerem,
     atque adeo hunc libellum tertium veluti in exemplum
     statuerem eorum quorum superioribus duobus sæpius
-    memineram. Unde nihil penitus huc intromisam est,
+    memineram. Unde nihil penitus huc intromissum est,
     quod non esset jam olim venerationis titulos consecu-
-    tum, vel ex auctoribus suis fama, vel ex bonitate et anti-
+    tum, vel ex auctoris sui fama, vel ex bonitate et anti-
     quitate sua. Certe ipsos Codices, ex quibus descripta
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,80,970,950">
-    sunt ista, ante annos 500, 600, 700 et 800: esse
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,60,510,80">A</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,60,950,190">
+    sunt ista, ante annos 500, 600, 700 et 800 : esse
     descriptos scimus, et ex ipsis Codicibus, et ex anti-
     quissimis librorum indicibus seu (ut appellant) re-
-    gistris, quibus certissimum testimonium tulit magnus
-    ille Tergesiinus praesul Æneas Sylvius, qui postea
+    gestis, quibus certissimum testimonium tulit magnus
+    ille Tergestinus præsul Æneas Sylvius, qui postea
     pontifex maximus renuntiatus, nominatus est Pius II,
-    dum ad Greg. Hamburyensem jurisconsultum episto-
-    lam 120, lib. 1. sic scribit : Inveni apud Sanctum
+    dum ad Greg. Hamburgensem jurisconsultum episto-
+    lam 120, lib. I, sic scribit : Inveni apud Sanctum
     Gallum, quod Suevorum est oppidum, in veteri mo-
-    nastario bibliothecam pervetustam, ubi et libros reperi
-    ornatissime conscripos, quorum auctores fuerunt
-    Theotones. Hæc igitur cum ita sint, non offendetur
-    lector quædam minus subtilitate leuia, cum conspic
-    terum ponderc esse gravia ea ipsa tam æquae ; mira-
-    bitur vero aliquos saltem ex illis in celate tam barbari
-    lam bene lusisse et tam Latine, et ubique meminerit
-    idem lector, cum omnia ista ad cultum divinum suem
-    a Patribus dictata, magis speciali res quam verba,
-    tanlum musicam quantum prosodiam. Etsi vero integra
-    scripserunt aliqui hujus generis volumina, et aduiri
+    nasterio bibliothecam pervetustam, ubi et libros reperi
+    ornatissime conscriptos, quorum auctores fuerunt
+    Theodones. Hæc igitur cum ita sint, non offendetur
+    lector quædam minus subtilitate levia, cum conspicit
+    rerum pondere esse gravia ex ipsa tam ubique; mira-
+    bitur vero aliquos saltem ex illis in ætate tam barbara
+    tam bene lusisse et tam Latine, et ubique meminerit
+    idem lector, cum omnia ista ad cultum divinum fuerint
+    a Patribus dictata, magis spectari res quam verba,
+    tantum musicam quantum prosodiam. Etsi vero integra
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,260,510,280">B</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,260,950,380">
+    scripserunt aliqui hujus generis volumina, et adunt
     seorsim etiam multi alii et hymni, et epigrammata, illa
-    tamen describere non statui ; hæc autem, quod nec
-    severim suisserve auctores ipsorum monachi Sancti
-    Galli nec ne, huic opusculo inserre nolui. Et Sancto
+    tamen describere non statui; hæc autem, quod nec
+    scirem fuisse unæ auctores ipsorum monachi Sancti
+    Galli nec ne, huic opusculo inferre nolui. Ex Sancto
     Gallo 1600, die 4 Aug.
-    
     Hæc Metzlerus.
-    
-    BASNAGII DE HIS CARMINIBUS OBSERVATIO.
-    
-    Ilæc poemata varios habent autores: priore
-    sunt Hartramanni. Reprehendit Canisium vir eruditus
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="250,390,750,420">BASNAGII DE HIS CARMINIBUS OBSERVATIO.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,430,480,920">
+    Hæc poemata varios habent auctores : priora
+    sunt Hartmanni. Reprehendit Canisium vir eruditus
     inter Anglos, quod illum Hartmannum, non Hart-
-    munum appellauerit, qui fuit Rodulphi Burgundionum
-    regis cognoscenius, abbas Sangallensis post Gri-
-    moaldum anno 872 electus, quinque post undecim
-    annos munere sece abdicauit. Notat vir eruditus non
-    modo carmina quedam edidisse, sed et Vitam Vibo-
-    rææ sub ejusdem nomine haberi sæculo Benedictino
+    mutum appellaverit, qui fuit Rodulfi Burgundionum
+    regis consanguineus, abbas Sangallensis post Gri-
+    moaldum anno 872 electus, quique post undecim
+    annos munere sese abdicavit. Notat vir eruditus non
+    modo carmina quædam edidisse, sed et Vitam Vibo-
+    radæ sub ejusdem nomine haberi sæculo Benedictino
     quinto. Sed an hæc vera sint dubito.
-    
-    Primo distinguit debet Hartmannus ab Hart-
-    manno monacho. Sic enim Eckehardus in Vita Not-
+    Primo distingui debet Hartunus abbas ab Hart-
+    manno monacho. Sic enim Eckardus in Vita Not-
     keri (Cap. 15) : Temporibus Grimaldi canonici abbatis
-    et Hartmoti conababilis ejus. Hic habes Hartmannum
-    jam conabralbem Grimaldi, post cujus obitum factus
-    est abbas sæcularis, ut fuerat ipse Grimaldus archi-
+    et Hartmoti conabbatis ejus. Hic habes Hartunum
+    jam conabbatem Grimaldi, post cujus obitum factus
+    est abbas sæcularis, ut fuit ipse Grimaldus archi-
     capellanus Ludovici Pii. Ab eo dis inguuntur eodem
     capite bini Hartmanni, quorum prior consilio magnus
-    Littanius sanctus humili prece texuit el Melodiam se-
-    ceral. Hic commonantus Notkeri ab abbate interro-
-    gatus circa Salomonem episcopum, qui capam
-    monachilem inducere volebat quam ad fores claustri
-    deponeret, responsum fecit: Regula nostra non
-    similiudinem monachi, sed monachum querit. Is fuit
-    prio-abbas et tandem abbas post Salomonem. Alter
+    Litamiam sanctus humili prece texuit et Melodiam fe-
+    cerat. Illic commonachus Notkeri ab abbate interro-
+    gatus circa Salomonem episcopum, qui cappam
+    monachalem inducere volebat quam ad fores claustri
+    deponeret, responsum fecit : Regula nostra non
+    similitudinem monachi, sed monachum quærit. Is fuit
+    pro-abbas et tandem abbas post Salomonem. Alter
     Hartmannus Junior fuit poeta, operaque ediderat in
-    Ecclesia sui solita. Versus qui hic colliguntur sunt
+    Ecclesia cani solita. Versus qui hic colliguntur sunt
     Hartmanni Senioris, quanquam et aliqua Hartmanni
     Junioris potuerint cæteris inseri.
+    Secundo nec Hartmus nec Hartmannus ille, de
+    quo nunc agimus, Vitam Wiboradæ virginis scripsit.
+    Tertius fuit Hartmannus, sæculo decimo desinente
+    vel undecimo scriptor. Facile probatur ex ipsa Wi-
+    boradæ Vita (Sæc. Ben. v, p. 60). Eckerhardus ab
+    Udalrico Augustano præsule impulsus, multa quæ
+    de Wiborada audierat scribere inchoavit senio jam
+    confectus et gutta, ut loquuntur, hoc est, podagra
+    miris modis vexatus. Illius Eckerhardi qui obiit
+    an. 978 opus confecit aut descripsit Hartmannus.
+    Vixit igitur tertius ille Hartmannus post Eckerhar-
+    dum, undecimo sæculo, a geminis Hartmannis qui
+    sæculo nono poetice cœlebant plane diversus.
+    Quidquid sit, fuere in monasterio Sangallensi duo
+    Hartmanni sæculo nono poetæ, qui præcipue hymnis
+    et litaniis exarandis studebant; senior Hartmannus
+    ob eam rem præcipue laudatur.
+    II. Secundus inter poetas Sangallenses recenseri
+    debet Rapertus, quem nescio qua ratione omiserunt
+    liberarii omnes qui Bibliothecas Ecclesiasticas his
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,950,970,990">
-    Digitized by Google
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,530,510,550">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,730,510,750">D</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,430,950,920">
+    temporibus ediderunt. Præfuerat ab adolescentia
+    scholis Sangallensibus ita studiosus, ut missas et
+    cursum sæpius omitteret, quippe bonas ac missas
+    audire dicebat, cum eas agere doceret (Eckhardus,
+    de Vita Notkeri, c. 21). Languidus circa claustra
+    ibat, nec tamen docere desinebat, inquit Eckerhar-
+    dus, a quo Ratpertus appellatur; nunquam ad capi-
+    tulum nisi vocatus venit; cum puniendi munus ipsi
+    demandatum est, impunitatem labem monasterii
+    nominans, scripsit librum de casibus monasterii
+    Sangallensis a temporibus Columbani ad Salomonem
+    usque, de quo inferius. Dictaverat litanias pluri-
+    mas, quæ canebantur diebus Rogationum; inter eas
+    autem principem locum obtinebat illa sæpius lau-
+    data : Ardua spes mundi, quæ hic apud Canisium
+    cum cæteris legitur. Ubi mortem instare sensit,
+    commisit animam quadraginta discipulis, qui tunc
+    presbyteri ad monasterium festi causa advenerant :
+    unusquisque ipsi triginta missas pollicitus est, et
+    latus obiit.
+    III. De Notkero cum superius egerimus, nihil hic
+    dicendum sese offert. Distingui debent solummodo
+    gemini Notkeri, quorum alter Balbulus, alter vero
+    Medicus dicitur; amborum enim versus in hac col-
+    lectione occurrunt.
+    IV. Poetas Sangallenses enumeramus non secun-
+    dum temporum seriem, sed eo ordine quo dispositi
+    sunt ipsorum versus in collectione Canisiana. Quin-
+    tus igitur censeri debet Waldrammus. Litteris eru-
+    ditus et egregius Prædicator dicebatur; quin imo
+    poeseos et Melodiæ studiosus varia confecit carmina.
+    Ipsi tribuebantur in Codice ms. versus Salomonis
+    episcopi; errorem deprehendit Canisius, et accurate
+    geminos Salomonis fetus a versibus Valdranni
+    distinxit. Litanias etiam edidit, quæ hic leguntur.
+    Dum versaretur in monasterio Sangallensi Wiboradæ
+    virgini fuit amicissimus ipsique benedictionem per
+    servulum sæpius transmittere consueverat (Vita
+    Wiboradæ, c. 39, p. 51). Hoc muneris compensavit
+    virgo cum benedictum panem servo ministrans, tum
+    ipsum ex ægritudine sanans. Waldrammo vero ad-
+    ventum Hungarorum ante annum revelaverat (Vita
+    Notkeri, c. 20). Dum decanatu fungebatur in mo-
+    nasterio Sangallensi, Epistolas canonicas Græcas, a
+    Litwardo Vercellensi sibi præstitas, multo labore
+    descripserat; sed nactus Codicem Syndulphus ipse
+    etiam decanus, quem regulari disciplinæ subjecerat,
+    singulas quaternionum cultro excisas discepsit.
+    Translitterat etiam Waldramnus Psalterium ex lin-
   </bloco>
-  <notas>Página em duas colunas; transcrição preserva ortografia original do impresso. Algumas letras muito pequenas foram lidas com suposição contextual; usei [ilegivel] apenas quando estritamente necessário (não aplicável aqui).</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="350,950,650,990">Digitized by Google</bloco>
+  
+  <notas>
+    Transcrição de página dupla (pág. 27 e 28) da Patrologia Latina ou similar.
+    Layout em duas colunas com cabeçalhos e notas marginais (A, B, C, D) no gutter central.
+    Texto em latim.
+  </notas>
 </pagina>

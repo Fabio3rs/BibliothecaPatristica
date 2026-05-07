@@ -1,63 +1,69 @@
 <pagina estado="com_texto">
-  <bloco tipo="outro" script="latino" bbox="0,0,1000,40">
-    tipo_pagina: texto
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,150,60">
+    321
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="0,40,1000,110">
-    521    SERMO LV.    522
+  <bloco tipo="cabecalho" script="latino" bbox="400,30,600,60">
+    SERMO LV.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,110,490,780">
-    [ilegivel] peccabat. In nobis ergo Dominus a nostro pavore trepidabat, ut susceptionem nostrae infirmitatis induceret, et nostram inconstantiam suae virtutis soliditate restiteret. Venerat enim in hunc mundum dives atque misericors negotiator b e caelis, et commutatione mirabili inierat commercium salutare, nostra accipiens, et sua tribuens, pro contumeliis c honorum, pro doloribus salutem, pro morte dans vitam; et cui ad exterminationem persequentium poterant plusquam d duodecim millia angelicarum servire legionarum (Matth. xxvi, 55), malebat nostram recipere formidinem quam suam exercere potestatem.
-
-    CAP. V. — Quantum autem universis fidelibus haec humiliata collatum est, primus beatissimus a- postolus Petrus expertus est (Ibid.), qui, cum illum instans sevitiæ vehementior procella turbasset, ad reparationem vigoris celeri mutatione conversus est, somens de exemplo remedium, ut remefactum repente membrum rediret ad sui capitis firmitatem. Non enim posset domino servus, et magistro major esse discipulus (Matth. x, 24; Joan. xv, 20), qui humanae fragilitatis trepidationem non vinceret, nisi victor mortis ante finisset.
-
-    Respexit ergo Dominus Petrum (Luc. xxii, 61), et 1 inter calumnias sacerdotum, inter falsitates testium, inter caedentium et conspectuum injurias constitutus, illis turbam discipulorum convenit oculis, quibus eum praeviderat esse turbam: et in illum s ingressa est veritatis inspectio, ubi erat cordis faci- enda correctio; quasi quaedam b illic vox Domini insonaret ac diceret: "Quo abis, Petre? quid in tua recedis? ad me convertere, in me confide, me sequi: mea passionis hoc tempus est, hodum tibi venit hora supplicii. Quid metuis, quod etiam ipse superabis? Non te confundat infirmitas, 207 quam recepi. Ego de tuo fui trepidus, tu de meo esto securus."
-
-    Mane autem facio, consilium inierunt omnes principes sacerdotum et seniores populi adversum Jesum, ut eum morti traderent (Matth. xxvii, 1). Hoc mane Judaei, non ortus vobis lucis contigit, sed occasus, nec ...
+  <bloco tipo="cabecalho" script="latino" bbox="850,30,950,60">
+    322
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,110,510,780">
+  <bloco tipo="texto_principal" script="latino" bbox="50,70,480,600">
+    subeundo pernebat. In nobis ergo Dominus <sup>a</sup> nostro
+    pavore trepidabat, ut susceptionem nostræ infirmitatis indueret, et nostram inconstantiam suæ virtutis soliditate vestiret. Venerat enim in hunc mundum dives atque misericors negotiator <sup>b</sup> e cælis, et commutatione mirabili inierat commercium salutare, nostra accipiens, et sua tribuens, pro contumeliis <sup>c</sup> honorem, pro doloribus salutem, pro morte dans vitam; et cui ad exterminationem persequentium poterant plusquam <sup>d</sup> duodecim millia angelicarum servire legionum (Matth. xxvi, 53), malebat nostram recipere formidinem quam suam exercere potestatem.
+    
+    CAP. V. — Quantum autem universis fidelibus hac humilitate collatum sit, primus beatissimus <sup>e</sup> apostolus Petrus expertus est (Ibid.), qui, cum illum instantis sævitiæ vehementior procella turbasset, ad reparationem vigoros celeri mutatione conversus est, sumens de exemplo remedium, ut tremefactum repente membrum rediret ad sui capitis firmitatem. Non enim posset domino servus, et magistro major esse discipulus (Matth. x, 24; Joan. xv, 20), qui humanæ fragilitatis trepidationem non vinceret, nisi victor mortis ante timuisset. Respexit ergo Dominus Petrum (Luc. xxii, 61), et <sup>f</sup> inter calumnias sacerdotum, inter falsitates testium, inter cædentium et conspuentium injurias constitutus, illis turbatum discipulum convenit oculis, quibus eum præviderat esse turbandum: et in illum <sup>g</sup> ingressa est veritatis inspectio, ubi erat cordis facienda correctio; quasi quædam <sup>h</sup> illic vox Domini insonaret ac diceret: <sup>C</sup> Quo abis, Petre? quid in tua recedis? ad me convertere, in me confide, me sequere: meæ passionis hoc tempus est, nondum tui venit hora supplicii. Quid metuis, quod etiam ipse superabis? Non te confundat infirmitas, <sup>207</sup> quam recepi. Ego de tuo fui trepidus, tu de meo esto securus.
+    
+    Mane autem facto, consilium inierunt omnes principes sacerdotum et seniores populi adversum Jesum, ut eum morti traderent (Matth. xxvii, 1). Hoc mane, Judæi, non ortus vobis lucis contigit, sed occasus, nec
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,80,515,100">
     A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,280,515,300">
     B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,480,515,500">
     C
-    D
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,110,960,780">
-    vestris oculis solitus dies prodiit, sed impiis mentibus nox tenebrarum caecitatis incubuit. Hoc mane vobis templum et altaria diruit, legem et prophetas ademit, regnum et sacerdotium sustulit, in luctum aeternum omnia j vobis festa convertit. Insitus enim insanum cruentumque consilium, tauri pingues, vituli multi, frementes bestiae, canes rabidi, ut mortis ancoram vitae et Dominum gloria traderetis: et tamquam extenuanda esset furoris vestri immanitas, si ejus sententia qui provinciae vestrae praesidebat, utremini, vinctum Jesum ad Pilati judicium deduxistis; ut clamoribus improbis trepido cognitore superato, interfectorem b hominum eligeretis ad veniam, et Salvatorem mundi peteretis ad poenam.
-
-    Post hanc damnationem Christi, 1 quæ exsecuta est Pilati præsidis magis ignavia quam potestas, qui lotis manibus et ore polluto, iisdem labiis Jesum misit ad crucem, quibus eum m pronuntiaverat innocentem, multas illusiones Domino, sacerdotalibus serviens oculis, licentia popularis ingessit: et in mansuetudinem ejus qui hæc sponte tolerabat, furens turba saevivit. Sed quia multum est, dilectissimi, ut omnia hodiernus sermo percurrat, in quartam feriam, qua lectio Dominica Passionis iterabitur, residua differamur. Præstabit enim Dominus, orantibus vobis, ut ipsius dono, quod promittimus impleamus: per Dominum nostrum Jesum Christum, qui vivit et regnat in sæcula sæculorum. Amen.
-
-    208 SERM O LV [Al. LIII].
-
+  <bloco tipo="texto_principal" script="latino" bbox="520,70,950,450">
+    vestris oculis solitus dies prodiit, sed impiis mentibus nox terræ cæcitatis incubuit. Hoc mane vobis templum et altaria diruit, legem et prophetas ademit, regnum et sacerdotium sustulit, in luctum æternum omnia <sup>j</sup> vobis festa convertit. Inistis enim insanum cruentumque consilium, tauri pingues, vituli multi, frementes bestiæ, canes rabidi, ut morti auctorem vitæ et Dominum gloriæ traderetis: et tamquam extenuanda esset furoris vestri immanitas, si ejus sententia qui provinciæ vestræ præsidebat, uteremini, vinctum Jesum ad Pilati judicium deduxistis; ut clamoribus improbis trepido cognitore superato, interfectorem <sup>k</sup> hominum eligeretis ad veniam, et Salvatorem mundi peteretis ad pœnam. Post hanc damnationem Christi, <sup>l</sup> quam executa est Pilati præsidis magis ignavia quam potestas, qui lotis manibus et ore polluto, iisdem labiis Jesum misit ad crucem, quibus eum <sup>m</sup> pronuntiaverat innocentem, multas illusiones Domino, sacerdotalibus serviens oculis, licentia popularis ingessit: et in mansuetudinem ejus qui hæc sponte tolerabat, furens turba sæviit. Sed quia multum est, dilectissimi, ut omnia hodiernus sermo percurrat, in quartam feriam, qua lectio Dominicæ Passionis iterabitur, residua differantur. Præstabat enim Dominus, orantibus vobis, ut ipsius dono, quod promisimus impleamus: <sup>n</sup> per Dominum nostrum Jesum Christum, qui vivit et regnat in sæcula sæculorum. Amen.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,460,950,600">
+    <sup>208</sup> SERMO LV [Al. LIII].
     De Passione Domini IV. Feria quarta.
-
-    SYNOPSIS. — I. De crucifixione Christi, in qua per latrones electorum et reproborum discretio figuratur. — II. Imperitas esse Judæorum in Christum blasphemiæ, cum prædictum esset, non eum descenderum, sed regnare in ligno. — III. In cruce, quæ vera altaris sacramentum est, sanguine Christi chirographum peccati esse deletum, et latronem mirabiliter conversum. — IV. De cæsto degustato, verbo Consummatum est, inclinatione capitis et morte Christi. — V. Charitate et privata parum corda ad paschale festum celebrandum.
-
-    CAP. I. — Expectationi vestræ, dilectissimi, quod ad marginem allegavit. Prima editio egressa est. Aliæ editiones cum mss. collect. A conservat est.
+    SYNOPSIS.—I. De crucifixione Christi, in qua per latrones electorum et reproborum discretio figuratur. — II. Imperitas esse Judæorum in Christum blasphemias, cum prædictum esset, non eum descensurum, sed regnaturum a ligno. — III. In cruce, quæ veri altaris sacramentum est, sanguine Christi chirographum peccati esse deletum, et latronem mirabiliter conversum.—IV. De aceto degustato, verbo Consummatum est, inclinatione capitis et morte Christi. — V. Charitate et puritate parari corda ad paschale festum celebrandum.
+    CAP. I.—Expectationi vestrae, dilectissimi, quod ad marginem allegavit.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="40,780,510,940">
-    a Cod. S. Petri, nostro pallore trepidabat, et susceptionem nostræ infirmitatis induceret, ut nostram, etc.
-    b Editi, cæli. Emendavimus ex mss. antiquissimo Vat. et S. Petri. Prima editio, et cæli commutatio. Post pauca sua tribues scripsimus cum vetustioribus editionibus ac duobus laudatis codd. Quesnellii, sua refereb.
-    c Idem antiquis. Vat., honores, et dein sanitas pro salutem.
-    d Respiciuntur loci apud Matth. xxvi, 55, in quo licet nunc non legatur milia, sic tamen olim in nonnullis exemplaribus legabatur; videlicet in antiquissimis Evangelariis Veronensi, Brixiano et Forojuliensi a P. Blanchinio editis; unde etiam Augustinus in libro de Spiritu et Litera, c. 1 et 35, et Hilarius in psal. lxxii, num. 1, in psal. lxv, n. 6, et lib. x de Trin. num. 42, similiter in suis codicibus legerunt.
-    e Sic nostri codd. et editi ante Quesnellum, apud quem Apostolus ceterus est, cui cum Antiquissimus prafert vocem Petrus, sed delet Apostolus.
-    f Cod. S. Petri inter saniores calumnias.
+  <bloco tipo="aparato_critico" script="latino" bbox="50,610,480,950">
+    <sup>a</sup> Cod. S. Petri, nostro pallore trepidabat, et susceptione nostræ infirmitatis induerat, ut nostram, etc.
+    <sup>b</sup> Editi, cæli. Emendavimus ex mss. antiquissimo Vat. et S. Petri. Prima editio, et cæli commutatione. Post pauca sua tribuens scripsimus cum vetustioribus rationibus ac duobus laudatis codd. Quesnellus, sua retribuens.
+    <sup>c</sup> Idem antiquis. Vat., honores, et dein sanitates pro salutem.
+    <sup>d</sup> Respiciitur locus apud Matth. xxvi, 53, in quo licet nunc non legatur millia, sic tamen olim in nonnullis exemplaribus legebatur, uti videre est in antiquissimis Evangeliariis Veronensi, Brixiano et Forojuliensi a P. Bianchinio editis: unde etiam Augustinus in libro de Spiritu et Littera, c. 1 et 35, et lib. x de Trin. num. 42, similiter in suis codicibus legerunt.
+    <sup>e</sup> Sic nostri codd. et editi ante Quesnellum, apud quem, Apostolus expertus est, cui cum. Antiquissimus Vat. præfert vocem Petrus, sed delet Apostolus.
+    <sup>f</sup> Cod. S. Petri, inter seniorum calumnias.
+    <sup>g</sup> Sic antiquissimus Vat., codd. S. Petri et duo alii nostri codices Vatt. cum ms. Victorino, quem Quesn.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="510,780,960,940">
-    a Ad marginem allegavit. Prima editio egressa est. Aliae editiones cum mss. collect. A conseruat est.
-    b Editi, illi. Correximus ex vetutissimo Vat. et cod. S. Petri.
-    c Præludiemus lectionem antiquissimi Vat. Al., Quid habes, Petre? Quid in tuam conscientiam recedis? Codex S. Petri, quid intus recedis, ubi intus pro in tua.
-    d Addidimus vobis ex antiquisissimo Vat. et ms. S. Petri.
-    e Sic quidam nostri codices Vat. ut Quesnellus coniecerit notatone ad marginem, non ausus immulare lectionem vulgatam hominem.
-    f Ita correximus ex mss. S. Petri et alio Lectionar. Vat. Accedit etiam antiquissimus Vat. 3835, in quo item legitur quam.
-    g Antiquissimus Vat., Per eundem Dominum nostram Jesum Christum, cui sit honor et gloria in sæcula sæculorum. Amen.
+  <bloco tipo="aparato_critico" script="latino" bbox="520,610,950,950">
+    ad marginem allegavit. Prima editio egressa est. Alias editiones cum mss. collect. 4, conversa est.
+    <sup>b</sup> Editi, illi. Correximus ex vetustissimo Vat. et cod. S. Petri.
+    <sup>c</sup> Pretiumus lectionem antiquissimi Vat. Al., Quid habes, Petre? Quid in tuam conscientiam recedis?
+    <sup>d</sup> Codex S. Petri, quid intus recedis, ubi intus pro in tua librarii lapsu scriptum videtur. Mox reverttere pro convertere in mss. Vatt. collect. 4 et 5. Reconvertere autem in alio Vat.
+    <sup>e</sup> Idem antiquis. Vat., honores, et dein sanitates pro salutem.
+    <sup>j</sup> Addidimus vobis ex antiquissimo Vat. et ms. S. Petri.
+    <sup>k</sup> Sic quidam nostri codices Vatt. ut Quesnellus conjecit notatione ad marginem, non ausus immutare lectionem vulgatam hominem.
+    <sup>l</sup> Ita correximus ex mss. S. Petri et alio Lectionar. Vat. Accedit etiam antiquissimus Vat. 3835, in quo item legitur quam. Al., quæ excusata est Pilati præsidis ignavia magis quam potestas.
+    <sup>m</sup> Aliqui mss. et prima editio, pronuntiaverat.
+    <sup>n</sup> Antiquissimus Vat., Per eumdem Dominum nostrum Jesum Christum, cui est honor et gloria in sæcula sæculorum. Amen.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="0,940,1000,1000">
+  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
     Digitized by Google
   </bloco>
   <notas>
-    - Página identificada como "texto" no primeiro bloco.
-    - Letras marginais (A, B, C, D) junto ao corredor central transcritas no bloco nota_marginal.
-    - Usei [ilegivel] para palavras cuja leitura na imagem era incerta; outras intervenções conservam ortografia impressa (após semicolchetes, sinais de referência a notas de rodapé representados por letras a, b, c, d, e, f conforme apareciam).
-    - BBOX são estimativas em escala 0-1000.
-    - Aparato crítico (notas rodapé) transcrito mantendo abreviações e referências a códices (Vat., S. Petri, Quesnell.), com algumas palavras incertas marcadas no texto principal; varias linhas do aparato foram parcialmente reconstruídas onde a imagem era muito densa.
+    A pagina contém texto em latim da Patrologia Latina (Sermones).
+    As letras A, B, C no gutter são marcadores marginais.
+    O texto "208 SERMO LV" indica o início de um novo sermão na coluna direita.
+    O aparato crítico (notas de rodapé) está dividido em duas colunas na parte inferior.
+    Na coluna direita das notas, há uma mistura de notas para o Sermo LV (letras j-n) e para o Sermo LV [Al. LIII] (letras a-e). A ordem visual foi respeitada.
+    O número 207 e 208 no texto são números de página/seção em negrito.
   </notas>
 </pagina>

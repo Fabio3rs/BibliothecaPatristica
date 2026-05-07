@@ -1,113 +1,131 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,70">
-1207
-M. AURELII CASSIODORI
-1208
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,60">
+    1207 M. AURELII CASSIODORI 1208
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,90,480,900">
-aut media, aut tertia, aut quarta, aut quinta, ut, verbi A
-gratia, 2 ad 3, 4 ad 5, et ceteri.
-
-Superpartiens numerus est qui in se inferiorem
-numerum totum continet, et super hoc alteras partes
-ejus 2, aut 3, aut 4, aut 5, aut alias, ut, verbi gratia,
-5 ad 3, dum comparati fuerint, habet in se quinarius
-numerus trinarum numerum, et insuper alias duas
-partes ejus. 7 ad 4, dum comparati fuerint, habent
-in se 4 et alias tres partes ejus.
-
-Subsuperpartiens numerus est qui continetur in
-numero superparienti cum aliquibus partibus suis
-duabus, aut tribus, aut pluribus, ut, verbi gratia, 5
-continetur a 5 cum aliis duabus partibus suis; 4 a
-7 cum tribus partibus suis; 5 a 9 cum quatuor parti-
-bus suis.
-
-586 Multiplex superparticularis numerus est qui,
-dum comparatus ad inferiorem sibi numerum fuerit,
-continet in se totum inferiorem numerum multipliciter
-cum aliqua parte ejus, ut, verbi gratia, quinque
-ad duos dum comparati fuerint, continent bis binos
-et unam partem ejus. Novem ad quatuor similiter, et
-caeteri tales.
-
-Submultiplex superparticularis numerus est qui, dum
-ad fortiorem sibi numerum comparatus fuerit, continetur
-a fortiore sibi multipliciter cum aliqua una parte
-sua, ut, verbi gratia, 2 ad 5 dum comparati fuerint,
-continentur ab eo bis cum una parte sua.
-
-Multiplex superpartiens numerus est qui, dum
-comparatus ad inferiorem sibi numerum fuerit, continet
-eum multipliciter cum aliis partibus ejus, ut, verbi
-gratia, 8 ad 3 comparati, continent in se bis ternos
-cum duabus partibus ejus. 4 ad 6 comparati continent
-in se bis senos et quatuor partes ejus.
-
-Submultiplex superpartiens numerus est qui, dum
-ad fortiorem sibi comparatus fuerit, continetur ab eo
-multipliciter cum aliquibus partibus suis, ut, verbi
-gratia, 3 ad 8 continentur bis cum duabus partibus
-suis; 4 ad 15 continentur tertio cum tribus partibus
-suis.
-
-Sequitur quarta divisio totius numeri.
-
-Numeri aut discreti sunt,
-aut continentes: qui sunt
-Lineales,
-Superficiales,
-Solidi.
-
-Discretus numerus est qui a discretis monadibus
-continentur, ut, verbi gratia, 3 a 4, 5 a 6, et reliqui.
-
-Continens numerus est qui a conjunctis monadibus
-continentur, ut, verbi gratia, ternarius numerus, si in
-magnitudine intelligatur, id est in linea, aut spatium,
-aut solidum, dicitur continens. Similiter quaternarius
-et quinarius numeri.
-
-Linealis numerus est qui inchoans a monade localiter
-scribitur usque ad infinitum. Unde alpha ponitur
-pro designatione linearum, quoniam haec littera
-unum significat apud Graecos.
-
-Superficialis numerus est qui non solum longitu-
-dine, sed et latitudine continetur: ut trigonus nu-
-merus, quadratus numerus, quinqueangulus numerus,
-circularis numerus, et caeteri qui semper in superficie
-continentur.
+  <bloco tipo="texto_principal" script="latino" bbox="50,70,480,900">
+    aut media, aut tertia, aut quarta, aut quinta, ut, verbi
+    gratia, 2 ad 3, 4 ad 5, et cæteri.
+    Superpartiens numerus est qui in se inferiorem
+    numerum totum continet, et super hoc alteras partes
+    ejus 2, aut 3, aut 4, aut 5, aut alias, ut, verbi gratia,
+    5 ad 3, dum comparati fuerint, habet in se quinarius
+    numerus trinarium numerum, et insuper alias duas
+    partes ejus. 7 ad 4, dum comparati fuerint, habent
+    in se 4 et alias tres partes ejus.
+    Subsuperpartiens numerus est qui continetur in
+    numero superpartienti cum aliquibus partibus suis
+    duabus, aut tribus, aut pluribus, ut, verbi gratia, 5
+    continentur a 5 cum aliis duabus partibus suis; 4 a
+    7 cum tribus partibus suis; 5 a 9 cum quatuor partibus suis.
+    586 Multiplex superparticularis numerus est qui,
+    dum comparatus ad inferiorem sibi numerum fuerit,
+    continet in se totum inferiorem numerum multipliciter cum aliqua parte ejus, ut, verbi gratia, quinque
+    ad duos dum comparati fuerint, continent bis binos
+    et unam partem ejus. Novem ad quatuor similiter, et
+    cæteri tales.
+    Submultiplex superparticularis numerus est qui,
+    dum ad fortiorem sibi numerum comparatus fuerit,
+    continetur a fortiore sibi multipliciter cum alia una
+    parte sua, ut, verbi gratia, 2 ad 5 dum comparati
+    fuerint, continentur ab eo bis cum una parte sua.
+    Multiplex superpariens numerus est qui, dum
+    comparatus ad inferiorem sibi numerum fuerit, continet eum multipliciter cum aliis partibus ejus, ut,
+    verbi gratia, 8 ad 3 comparati, continent in se bis
+    ternos cum duabus partibus ejus. 16 ad 6 comparati
+    continent in se bis senos et quatuor partes ejus.
+    Submultiplex superpartiens numerus est qui, dum
+    ad fortiorem sibi comparatus fuerit, continetur ab eo
+    multipliciter cum aliquibus partibus suis, ut, verbi
+    gratia, 3 ad 8 continentur bis cum duabus partibus
+    suis; 4 ad 15 continentur tertio cum tribus partibus
+    suis.
+    Sequitur quarta divisio totius numeri.
+    Numeri { aut discreti sunt,
+           { aut continentes : qui sunt { Lineales,
+                                        { Superficiales,
+                                        { Solidi.
+    Discretus numerus est qui a discretis monadibus
+    continetur, ut, verbi gratia, 3 a 4, 5 a 6, et reliqui.
+    Continens numerus est qui a conjunctis monadibus
+    continetur, ut, verbi gratia, ternarius numerus, si in
+    magnitudine intelligatur, id est in linea, aut spatium,
+    aut solidum, dicitur continens. Similiter quaternarius et quinarius numeri.
+    Linealis numerus est qui inchoans a monade linealiter scribitur usque ad infinitum. Unde alpha
+    ponitur pro designatione linearum, quoniam hæc
+    littera unum significat apud Græcos.
+    Superficialis numerus est qui non solum longitudine, sed et latitudine continetur : ut trigonus numerus, quadratus numerus, quinqueangulus numerus,
+    circularis numerus, et cæteri qui semper in superficie
+    continentur.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="470,120,520,820">
-A
-B
-C
+  <bloco tipo="texto_principal" script="latino" bbox="520,70,950,900">
+    Circularis numerus est qui dum similiter multiplicatus fuerit, a se inchoans ad se convertitur, ut,
+    verbi gratia, quinquies quini, vicies quinque.
+    Solidus numerus est qui longitudine, et latitudine,
+    vel altitudine continetur, ut sunt pyramides, quæ in
+    modum flammæ consurgunt : cubi, ut sunt tesseræ;
+    sphæræ, quibus est æqualis undique rotunditas.
+    Sphæricus autem numerus est qui a circulato numero multiplicatus, a se inchoans ad se convertitur,
+    ut, verbi gratia, quinquies quini, viginti quinque.
+    Hinc circulus, dum in se ipsum multiplicatus fuerit,
+    facit sphæram, id est quinquies 25, 125.
+    His igitur rebus sollicita mente tractatis, memento
+    quod hæc disciplina ideo cæteris anteferatur, quoniam
+    ipsa, sicut superius dictum est, ut sit, nullius alterius
+    indiget disciplinæ. Reliquæ vero quæ sequuntur,
+    sicut ejus jam qualitas virtutis ostendit, ut sint atque
+    subsistant, indigent arithmetica disciplina, quam
+    apud Græcos Nicomachus diligenter exposuit. Hanc
+    primum Madaurensis Apuleius, deinde magnificus vir
+    Boetius Latino sermone translatum Romanis contulit
+    lectitandum. Quibus, ut aiunt, si quis sæpius utitur,
+    quantum hominibus fas est, lucidissima procul dubio
+    ratione perfunditur.
+    Datum est etiam nobis ex magna parte sub ipsa
+    vivere disciplina, quando horas discimus, quando
+    mensium curricula supputamus, quando spatium
+    anni redeuntis agnoscimus. Per numerum siquidem,
+    ne confundamur, instruimur. Tolle sæculo computum, et omnia ignorantia cæca complectitur. Nec
+    differre potest a cæteris animalibus, qui calculi non
+    intelligit quantitatem; et ideo tam gloriosa res est,
+    quantum vitæ nostræ necessaria comprobatur : quoniam per ipsam et substantia nostra certissime discitur, et expensarum modus librata supputatione erogatur. Numerus est qui cuncta disponit. Per ipsum
+    discimus quid primo, quid secundo facere debeamus.
+    Nunc veniamus ad musicam, quæ ipso nomine et
+    propria virtute suavis est.
+    CAPUT QUINTUM.
+    DE MUSICA.
+    Gaudentius quidam, de musica scribens, Pythagoram dicit hujus rei invenisse primordia ex malleorum sonitu et chordarum extensione percussa. Quam
+    amicus noster vir disertissimus Mutianus transtulit
+    in Latinum, ut ingenium ejus assumpti operis qualitas indicaret. Clemens vero Alexandrinus presbyter
+    in libro quem contra paganos edidit, musicam ex
+    musis dicit sumpsisse principium; musasque ipsas,
+    quæ de causa inventæ fuerint, diligenter exponit. Quæ
+    musæ ipsæ appellatæ sunt ἀπὸ τοῦ μασσεύειν, id est
+    a quærendo, quod per ipsas, sicut antiqui voluerunt,
+    vis carminum et vocis modulatio quæreretur. Invenimus etiam Censorinum, qui ad Q. Cerellium scripsit de natali ejus die, ubi de musica disciplina, vel
+    de alia parte mathesis non negligenda disseruit :
+    quoniam non inutiliter legitur, ut res ipsæ penetrabilius animo frequenti meditatione condantur.
+    Musica ergo disciplina per omnes actus vitæ no-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,90,980,900">
-Circularis numerus est qui dum simuliter multiplicatus fuerit, a se inchoans ad se convertitur, ut, verbi gratia, quinquies [ilegivel], vices quinque.
-
-Solidus numerus est qui longitudine, et latitudine, vel altitudine continetur, ut sunt pyramides, quae in modum flammae convergunt: cubi, ut sunt tesserae; sphaerae, quibus est aequalis undique rotunditas.
-
-Sphaericus autem numerus est qui a circulo numero multiplicatus, a se inchoans ad se convertitur, ut, verbi gratia, quinquies [ilegivel], viginti quinque. Hinc circulus, dum in se ipsum multiplicatus fuerit, facit sphaeram, id est quinquies 25, 125.
-
-His igitur rebus sollicita mente tractatis, memento quod haec disciplina ideo ceteris anteferetur, quoniam ipsa, sicut superius dictum est, ut sit, nullius alterius indiget disciplinae. Reliquae vero quae sequuntur, sicut ejus jam qualitas virtutis ostendit, ut sint aliquae subsistant, indigent arithmetica disciplina, quam apud Graecos Nicomachus diligenter exposuit. Ipse primum Madaurensis Apuleius, deinde magnificus vir Boetius Latino sermone translatus Romanis [ilegivel] lectitandum. Quibus, ut aiunt, si quis saepius utitur, quantum hominibus fas est, lucidi[s]-ima procul dubio ratione perfunditur.
-
-Datum est etiam nobis ex magna parte sub ipsa vivere disciplina, quando horas discimus, quando mensium curricula supputamus, quando spatium anni redeuntis agnoscimus. Per numerum siquidem, ne confundamur, instruimur. Tolle saeculo [ilegivel] et omnia ignorantia ceca complectitur. Nec differre potest a ceteris animalibus, qui calculo non intelligit quantitatem; et ideo iam gloriosa res est, quantum vitae nostrae necessaria comprobatur: quoniam per ipsam et substantia nostra certissime dicitur, et expersarum modus librata supputatione erogatur. Numerus est qui cuncta disponit. Per ipsum discimus quid primo, quid secundo facere debeamus. Nunc veniamus ad musicam, quæ ipso nomine et propria virtute suavis est.
-
-CAPUT QUINTUM.
-DE MUSICA.
-
-Gaudentius quidam, de musica scribens, Pythagoram dicit hujus rei invenisse primordia et in sonitu et chordarum extensione percussa. Quodam nostrum vir disertissimus Mutianus [ilegivel] in Latinum transtulit, ut ingenium ejus assumpti operis qualitas indicaret. Clemens vero Alexandrinus presbyter in libro quem contra paganos edidit, musicam ex musis dicit sumpsisse principium; musaque ipsas, quae de causa inventae fuerint, diligenter exponit. (Trechos seguintes com leitura parcialmente ilegível.)
+  <bloco tipo="nota_marginal" script="latino" bbox="460,75,490,95">
+    A
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="620,940,980,995">
-Digitized by Google
+  <bloco tipo="nota_marginal" script="latino" bbox="460,300,490,320">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,500,490,520">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,700,490,720">
+    D
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,950,900,990">
+    Digitized by Google
   </bloco>
   <notas>
-- Página em latim, impressão tipográfica; texto em duas colunas com cabeçalho e rodapé.
-- Letras marginais verticais (A, B, C) transcritas em bloco nota_marginal.
-- Marquei como [ilegivel] palavras ou grafias cuja leitura ficou incerta na image (ex.: ocorrências de "quini"/"quin(i)" na seção sobre numeros, nome próprio e locuções próximas a Apuleius/Boetius, e algumas palavras no final do caput de musica).
-- Preservei quebras e hífenes visíveis; não foram feitas normalizações ortográficas (mantive formas latinas tal como aparecem quando legíveis).
-- Script principal identificado como "latino"; há possíveis termos gregos ou citações breves indicadas no corpo do texto e notadas em comentários.
+    - Transcrição fiel da imagem, corrigindo erros dos OCRs anteriores (ex: "trinarium numerum", "fuerint", "suis", "cæteri", "Græcos", "Madaurensis", "Boetius", "lucidissima", "sæculo", "computum", "vitæ", "malleorum", "percussa", "musasque", "appellatæ sunt", "ἀπὸ τοῦ μασσεύειν", "quærendo", "voluerunt", "Censorinum", "scripsit", "penetrabilius").
+    - Letras marginais A, B, C, D separadas em blocos `nota_marginal` conforme diretriz.
+    - Texto em duas colunas, fluxo esquerda depois direita.
+    - Script misto: latino predominante, com termos gregos ("ἀπὸ το μασσεύειν").
+    - Ortografia latina preservada (ex: æ, œ, u/v onde aplicável na impressão).
   </notas>
 </pagina>

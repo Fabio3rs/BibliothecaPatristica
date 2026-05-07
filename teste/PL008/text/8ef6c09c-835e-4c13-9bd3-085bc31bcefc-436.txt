@@ -1,39 +1,87 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="25,10,975,105">
-    851 EPISTOLA S. ATHANASII AD MARCUM. 852
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,200,50">851</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,20,650,50">EPISTOLA S. ATHANASII AD MARCUM.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="800,20,900,50">852</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="520,55,540,75">A</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,55,480,280">
+    argenteas duas, pensantes singulas libras viginti; scyphum argenteum unum, pensantem libras decem; calices ministeriales argenteos tres, pensantes singulos libras duas; coronam argenteam pensantem libras decem; fundum Antonianum via Clodia, præstantem solidos triginta; fundum Bacanas (al. Vaccanas) via Appia, præstantem solidos quadraginta et tremisses (al. trimisios) duos; fundum Morrea (al. Orrea) via Ardeatina, præstantem solidos quinquaginta quinque et tremissem (al. trimisium unum). Hic fecit ordinationes duas in urbe Roma per mensem decembrem, presbyteros viginti quinque, diaconos sex, episcopos per diversa loca viginti septem. Qui etiam sepultus est in cœmeterio Balbinæ, via Ardeatina, quod ipse constituens fecit pridie
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="25,105,495,855">
-    argenteas duas, pensantes singulas libras viginti; A Constantini scyphum argenteum unum, pensantem libras decem; calices ministeriales argenteos tres, pensantles singulos libras duas; coronam argenteam pensantem libras decem; fundum Antonianum via Clodia, præsantem solidos triginta; fundum Baccanas (al. Vaccanas) via Appia, præstantem solidos quadraginta et tremisses (al. trimissos) duos; fundum Morrea (al. Orrea) via Ardeatina, præstantem solidos quinquaginta quinque et tremissem (al. trimissium unum). Hic fecit ordinationes duas in urbe Roma per mensem decembrem, presbyteros viginti quinque, diaconos sex, episcopos per diversa loca viginti septem. Qui etiam sepultus est in cœmeterio Balbi¬nae, via Ardeatina, quod ipse constituius fecit pridie Nonas (al. secundo Nonas) octobris, et cessavit episcopatus dies viginti.
-    
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="520,240,540,260">B</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,280,480,300">
+    Nonas (al. secundo Nonas) octobris, et cessavit episcopatus die viginti.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="100,305,480,325">
     § II. — QUANDO ET QUAMDIU SEDERIT.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,325,400,340">
     (Ex D. Constant.)
-    
-    Hujus pape initia ac mors in Bucheriano catalogo sic designantur: : Marcus mense 8, dies 20. Et hic fuit temporibus Constantini, Nepotiano et Facundo consuliibus, ex die 25 kalendas februarias, usque in die nongarum octobrium consulus suscrapitris, hoc est anno 336, Januarii 18 die, quæ Dominica erat, pontiﬁcatum initit, et eodem anno, Octobris 7 die, quo etiamnum memoria ejus in Ecclesia recolitur, ad superos abiit. Hic fidem suam libri pontificalis artifex manifeste prodidit, cum Bucheriano catalogum negligenter escrebens in hunc modum, Fuit temporibus
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="505,105,975,855">
-    Constantini Augusti, et Nepotiani ac Secundi consulum, ac die kalendarum februariarum usque in diem kalendarum octobris, Marci pontiﬁcatum ad nullum mensem decembrem pervenisse ponit; ac nihilominus eum subjicere non puduit: Hic feci ordinationes duas per mensem decembrem, presbyteros 25, diaconos 6, episcopos per diversa loca 27.
-    
-    § III. — DE DECRETO IPSA ATTRIBUTO.
-    
+  <bloco tipo="texto_principal" script="latino" bbox="100,340,480,510">
+    Hujus papæ initia ac mors in Bucheriano catalogo sic designantur : Marcus menses 8, dies 20. Et hic fuit temporibus Constantini, Nepotiano et Facundo consulibus, ex die 25 kalendas februarias, usque in die nonarum octobrium consulibus suprascriptis, hoc est anno 336, Januarii 18 die, quæ Dominica erat, pontificatum iniit, et eodem anno, Octobris 7 die, quo etiamnum memoria ejus in Ecclesia recolitur, ad superos abiit. Illic fidem suam libri pontificalis artifex manifeste prodit, cum Bucherianum catalogum negligenter exscribens in hunc modum, Fuit temporibus
+  </bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="520,490,540,510">C</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="550,55,900,160">
+    Constantini Augusti, et Nepotiani ac Secundi consulibus, ex die kalendarum februariarum usque in diem kalendarum octobris, Marci pontificatum ad nullum mensem decembrem pervenisse ponit; ac nihilominus eum subjicere non puduit : Hic fecit ordinationes duas per mensem decembrem, presbyteros 25, diaconos 6, episcopos per diversa loca 27.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="550,165,900,185">
+    § III. — DE DECRETO IPSI ATTRIBUTO.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,185,750,200">
     (Indidem).
-    
-    Marci nulla, nisi quæ Isidorus Mercator commentatus est, scripta nominat; alii tomo servanda. Si secundus libro pontificali habenda fides, constituit ut episcopus Ostiensis, qui consecrat episcopum Urbis, tum pallio uteretur, el ab eodem episcopus urbis Romæ consecraretur. Ostiensis quidem episcopi privilegia, quo Romanum pontificem consecrai, antiquum esse, textus est Augustinus in Brevibulo Collat. cum Donal., n. 29, ubi memoratur consuetudo, ut non Numidiæ, sed propinquiiores episcopi episcopum ecclesiæ Carthaginensis ordinent, sicut nec Romanæ ecclesiæ ordinarì aliquis episcopus metropolitanus, sed de proximo Ostiensis episcopus. Verum cum pallii eo intellectu, quo hic usurpatur, nulla in sinceris monumentis ante Symmachum papam mentio occurrat, hoc decretum jure suspectum, immo et suppositiuum videatur. Quamvis enim ornamentû hujus usum Symmacho papæ primum attributare nolim, aliam tamen de illo in tot decerpis scriptis silentium maximo argumento est, non longe antea nonnullis episcopis singulari quodam privilegio concessi asepisse.
-    
-    NOTAE SEVERINI BINI.
-    
-    quo summus honor et plena ejus potestas significatur: quodque ab eodem metropolitanis epi-copis aliquando ab causis arduis et rationabilies imparliri solitum fuit. Hoc alias appellatur Phrygium, fortasse ideo, quod Phrygorum opere crucibus conti soleret. Baron., anno 336, num. 63, Phrygium Cyrillo Alexandrino, cuius pontificis in concilio Ephesino sussineret, a Cælesino pontifice Romano collatum fuisse, ipsumque illud in concilio Ephesino et in sacris solennilibus more Romani pontificis usurpassse scribunt Theodorus Balsamon in Nomocanone, Photius; tit. 8, c. 1; Baron. anno 450, num. 26. Quod asserit Hieronynu¬mus Rubens. Joanni ejusque successoribus Ravenna¬tis ecclesiæ archiepiscopis, privilegio Valentiniani imperatoris usum pallii concessum fuisse, ipsorum archiepiscoporum confessione, apud Greg., lib. ii, epist. 34, existante, diluitur, qua usum pallii non
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="25,855,975,970">
-    SCRIPTA DUBIÆ AUCTORITATIS.
-    
-    EPISTOLA (1) SANCTI ATHANASII ET ÆGYPTIORUM EPISCOPORUM AD MARCUM PAPAM.
-    
-    (Conc. l. ii, col. 466, ad. Labbe.).
-    
-    De numero canonum Nicaenorum pro exemplaribus Nicæni concilii, quia Ariani eorum exemplaria incendearunt. Domino sancto et apostolici culmini venerando sanctæ Romanæ et apostolicæ sedis atque universalis ecclesiæ papae, Athanasio et universis Ægyptiorum episcopis. Ad vos pervenisse non dubitamus, quanta et qua-
-    
-    Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="550,200,900,510">
+    Marci nulla, nisi quæ Isidorus Mercator commentus est, scripta novimus; alii tomo servanda. Si tamen libro pontificali habenda fides, constituit ut episcopus Ostiensis, qui consecrat episcopum Urbis, tum pallio uteretur, et ab eodem episcopus urbis Romæ consecraretur. Ostiensis quidem episcopi privilegium, quo Romanum pontificem consecrat, antiquum esse, testis est Augustinus in Breviculo Collat. cum Donat., n. 29, ubi memoratur consuetudo, ut non Numidiæ, sed propinquiores episcopi episcopum ecclesiæ Carthaginensis ordinent, sicut nec Romanæ ecclesiæ ordinat aliquis episcopus metropolitanus, sed de proximo Ostiensis episcopus. Verum cum pallii eo intellectu, quo hic usurpatur, nulla in sinceris monumentis ante Symmachum papam mentio occurrat, hoc decretum jure suspectum, immo et supposititium videatur. Quamvis enim ornamenti hujus usum Symmacho papæ primum attribuere nolim, altum tamen de illo in tot decessorum scriptis silentium maximo argumento est, non longe antea nonnullis episcopis singulari quodam privilegio concedi cæpisse.
   </bloco>
-  <notas>Scriptura latina impresso tipografico. Alcune parole spezzate con trattino sono state trascritte come appaiono; parole parzialmente illeggibili segnate con [ilegivel] non sono necessarie qui. Nessuna correzione di contenuto effettuata.</notas>
+
+  <bloco tipo="cabecalho" script="latino" bbox="450,515,550,535">NOTÆ SEVERINI BINII.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,540,480,710">
+    quo summus honor et plena ejus potestas significatur: quodque ab eodem metropolitanis episcopis aliquando ob causas arduas et rationabiles impartiri solitum fuit. Hoc alias appellatur Phrygium, fortasse ideo, quod Phrygiorum opere crucibus contexti soleret. Baron., anno 336, num. 63, Phrygium Cyrillo Alexandrino, cumjvices pontificis in concilio Ephesino sustineret, a Cœlestino pontifice Romano collatum fuisse, ipsumque illud in concilio Ephesino et in sacris solemniis more Romani pontificis usurpasse scribunt Theodorus Balsamon in Nomocanonem, Photius; tit. 8, c. 1; Baron. anno 430, num. 26. Quod asserit Hieronymus Rubeus, Joanni ejusque successoribus Ravennatis ecclesiæ archiepiscopis, privilegio Valentiniani imperatoris usum pallii concessum fuisse, ipsorum archiepiscoporum confessione, apud Greg., lib. II, epist. 54, extante, diluitur, qua usum pallii non
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="550,540,900,680">
+    imperatorii, sed Romano pontifici acceptum referunt. Edictum quod Hieronymus prætextit, commentitium esse et a schismaticis confictum ostendit Baronius anno 432, num. 92, 93, 94 et 95.
+    Tempore jejunii usus pallii prohibitus fuisse videtur ex epist. 54, lib. II, Gregorii papæ, qui adversus Joannem Ravennatem jure expostulat, quod tempore jejunii per plateas et vias pallium gestaret. Baronius, anno 451, num. 63. Adde pallii nomine omne ornamentum in rebus sacris significatum fuisse, ut lib. II, epigr. 3, declarat Venantius Fortunatus, ubi vela oblata sanctæ cruci pallia nominat. Vide Baronium anno 336, num. 64.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="550,685,900,710">
+    Hic fecit ordinationes duas per mensem Decembrem. Hæc qua fide auctoris scripta sint, patet ex præcedentibus.
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="300,730,700,760">SCRIPTA DUBIÆ AUCTORITATIS.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,765,480,800">
+    EPISTOLA (1) SANCTI ATHANASII ET ÆGYPTIORUM EPISCOPORUM AD MARCUM PAPAM. (Conc. t. II, col. 466, ad Labb.).
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="100,805,480,880">
+    De numero canonum Nicænorum pro exemplaribus Nicæni concilii, quia Ariani eorum exemplaria incenderant. Domino sancto et apostolicæ culminis venerando sanctæ Romanæ et apostolicæ sedis atque universalis ecclesiæ papæ, Athanasius et universi Ægyptiorum episcopi. Ad vos pervenisse non dubitamus, quanta et qua-
+  </bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="100,885,480,930">
+    (1) Hæc Mercatoris merces Bar. Bell. aliisque peritis catholicis merito suspectæ et suppositæ visæ sunt. nec Bisnio ipse diffitetur, Baronianis rationibus oppressus.
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="520,765,540,785">D</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,765,900,900">
+    lia ab hæreticis, et maxime ab Arianis quotidie patimur: quoniam instantum ab eis persequimur, ut etiam vivere jam nos tædeat. Nam instanti tempore subito et insperate in nos irruentes, nosque juxta præceptum Domini qui ait : Si vos persecuti fuerint in una civitate, fugite in aliam (Matth., x), fugiendo propter cladem populi eos declinantes, nos comprehendere non valuerunt, sed omnia depopulati sunt. In tantum enim nostra vastaverunt (1), ut nec libros, nec vestimenta ecclesiastica, aliaque ornamenta, nec reliqua
+  </bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="550,905,850,925">
+    (1) Contigerunt ista sub Liberio, an. 355.
+  </bloco>
+  
+  <bloco tipo="rodape" script="latino" bbox="350,960,650,990">Digitized by Google</bloco>
+  
+  <notas>
+    Transcrição de página dupla (851-852) da Patrologia Latina.
+    As letras A, B, C, D foram identificadas como notas marginais de seção.
+    O texto "lia" na coluna inferior direita é continuação de "qua-" da coluna esquerda ("qualia").
+  </notas>
 </pagina>

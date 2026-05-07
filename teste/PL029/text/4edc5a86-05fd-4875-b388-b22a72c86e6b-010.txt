@@ -1,53 +1,81 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="80,10,920,120">
-ELENCHUS OPERUM
-QUÆ IN HOC TOMO CONTINENTUR.
+  <bloco tipo="cabecalho" script="latino" bbox="250 40 750 80">
+    ELENCHUS OPERUM
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="80,120,920,240">
-S. HIERONYMI DIVINÆ BIBLIOTHECÆ PARS SECUNDA.
+  <bloco tipo="texto_principal" script="latino" bbox="350 90 650 110">
+    QUÆ IN HOC TOMO CONTINENTUR.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,240,940,480">
-Liber Tobiæ. ............................................... 25
-Liber Judith. ............................................. 41
-Liber Job (altera versio). ................................. 61
-Liber Psalmorum (altera versio). .......................... 119
-
-APPENDIX.
-
-Liber Sapientiæ. ......................................... 505
-Liber Ecclesiastici. ..................................... 423
-Libri Machabæorum. ...................................... 469
+  <bloco tipo="texto_principal" script="latino" bbox="250 170 750 190">
+    S. HIERONYMI DIVINÆ BIBLIOTHECÆ PARS SECUNDA.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,480,940,840">
-S. HIERONYMI DIVINÆ BIBLIOTHECÆ PARS TERTIA.
-
-Evangelium secundum Matthæum. .......................... 541
-Evangelium secundum Marcum ............................... 583
-Evangelium secundum Lucam. ............................... 607
-Evangelium secundum Joannem. ............................ 653
-Actus apostolorum. ...................................... 687
-Epistolæ XII Pauli apostoli ............................. 727-822
-Epistolæ VII Catholicæ. ................................. 823-850
-Apocalypsis Joannis. .................................... 851
-
-APPENDIX.
-
-Abbreviatio Chronica. ................................... 871
-Variantes Lectiones. .................................... 879
+  <bloco tipo="texto_principal" script="latino" bbox="120 220 880 240">
+    Liber Tobæ. 25
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="120,980,920,1230">
-— — — — — — — — — — — — — — — — — — —
-
-Imprimerie de [ilegivel] de [ilegivel] et Cie,
-rue de Sèvres, 57, à Paris.
+  <bloco tipo="texto_principal" script="latino" bbox="120 240 880 260">
+    Liber Judith. 41
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="360,1230,640,1290">
-Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="120 260 880 280">
+    Liber Job (altera versio). 61
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120 280 880 300">
+    Liber Psalmorum (altera versio). 119
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="450 310 550 330">
+    APPENDIX.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120 340 880 360">
+    Liber Sapientiæ. 505
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120 360 880 380">
+    Liber Ecclesiastici. 423
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120 380 880 400">
+    Libri Machabæorum. 469
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250 410 750 430">
+    S. HIERONYMI DIVINÆ BIBLIOTHECÆ PARS TERTIA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120 440 880 460">
+    Evangelium secundum Matthæum. 541
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120 460 880 480">
+    Evangelium secundum Marcum 583
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120 480 880 500">
+    Evangelium secundum Lucam. 607
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120 500 880 520">
+    Evangelium secundum Joannem. 653
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120 520 880 540">
+    Actus apostolorum. 687
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120 540 880 560">
+    Epistolæ XII Pauli apostoli 727-822
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120 560 880 580">
+    Epistolæ VII Catholicæ. 823-850
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120 580 880 600">
+    Apocalypse Joannis. 851
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="450 610 550 630">
+    APPENDIX.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120 640 880 660">
+    Abbreviatio Chronicæ. 871
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120 660 880 680">
+    Variantes Lectiones. 879
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="650 880 900 920">
+    Imprimerie de VRAYET DE SURCY et Cie,
+    rue de Sèvres, 57, à Paris.
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="500 950 800 980">
+    Digitized by Google
   </bloco>
   <notas>
-- Identifiquei e transcrevi texto latino impresso; usei a grafia com ligadura "æ" quando visível (ex.: Tobiæ, Sapientiæ, Machabæorum, Matthæum, Epistolæ, Catholicæ).
-- Corrigi erros grosseiros do rascunho OCR (p.ex. transformações estranhas na linha de impressora e no cabeçalho) e segui estritamente o que é legível na imagem.
-- A linha tipográfica do rodapé (nome da tipografia/impressor) está parcialmente ilegível; em vez de "adivinhar" o nome, marquei as palavras incertas como [ilegivel].
-- Mantive a ordem visual de cima para baixo. BBOXs são aproximações (escala 0-1000) alinhadas à disposição visual da página.
+    Transcrição de página de índice (Elenchus Operum). Ligaturas Æ/æ preservadas. Números de página alinhados à direita.
   </notas>
 </pagina>

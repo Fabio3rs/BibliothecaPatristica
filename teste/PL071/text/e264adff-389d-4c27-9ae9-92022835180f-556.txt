@@ -1,8 +1,5 @@
-<pagina estado="com_texto">
-  <bloco tipo="outro" script="latino" bbox="50,0,950,60">
-    tipo_pagina: texto
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="60,60,940,180">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,180">
 SANCTI GREGORII EPISCOPI TURONENSIS
 
 LIBER DE PASSIONE, VIRTUTIBUS ET GLORIA
@@ -11,43 +8,45 @@ SANCTI JULIANI MARTYRIS.
 
 (Ex Codicibus mss.)
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,190,490,760">
-Incipit praefatio Gregorii episcopi Turonici in passione sancti Juliani martyris.
-
-1265. Magnum in nobis, etc., ut supra. col. 847, audirentur. Sic et inclytus martyr Julianus, qui Viennensi ortus urbe Arvernis datus est martyr, ab hoc igne succensus, haec concupivit ac mente tota desideravit. De cujus gestis et miraculis pauca iuvat historico explicare stylo. Sed dum copiosum egregii certaminis opus sermo succinctus aggreditur, pauca, ut dixi, [ilegivel] deprecor veniam condonari, quod me minus vel idoneum, vel peritum ad haec narranda cognosco, nec imbutum grammaticis artibus, nec litteris liberalibus eruditum. Sed quid? facio quod * impellit me amor patroni, ut nequeam haec silere? Aggrediar ergo ut possum, quia apud Deum non reor de sanctorum agonibus requiri amplius quam vicisse; nec cucurrisse plurimum, sed cursum consummasse propositum. Ipse enim, licet perseverantium pugnas et victorias ad suam recognoscat pertinere laudem, similes tamen sive brevi sive longo praelio vincentibus parat coronas. Quare nihil aliter quibus monumentis fortia triumphatorum facta pandantur, vel venerabilium rerum ordo memoriae mandetur, dummodo constet ut sicut praedicandum coelestis athletae conflictum sub divini remuneratoris obtutu perpetuis litteris superna depingit historia, ita posteritati imitationis causa ad sequendam Christianae religionis fidem, sermo fidelis eundem conflictum percurrat b.
+  <bloco tipo="texto_principal" script="latino" bbox="100,190,900,220">
+Incipit præfatio Gregorii episcopi Turonici in passione sancti Juliani martyris.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,230,480,750">
+1265. Magnum in nobis, etc., ut supra. col. 847, audirentur. Sic et inclytus martyr Julianus, qui Viennensi ortus urbe Arvernis datus est martyr, ab hoc igne succensus, hæc concupivit ac mente tota desideravit. De cujus gestis et miraculis pauca juvat historico explicare stylo. Sed dum copiosum egregii certaminis opus sermo succinctus aggreditur, pauca, ut dixi, perstringenti deprecor veniam condonari, quod me minus vel idoneum, vel peritum ad hæc narranda cognosco, nec imbutum grammaticis artibus, nec litteris liberalibus eruditum. Sed quid? facio quod * impellit me amor patroni, ut nequeam hæc silere? Aggrediar ergo ut possum, quia apud Deum non reor de sanctorum agonibus requiri amplius quam vicisse; nec cucurrisse plurimum, sed cursum consummasse propositum. Ipse enim licet perseverantium pugnas et victorias ad suam recognoscat pertinere laudem, similes tamen sive brevi sive longo prælio vincentibus parat coronas. Quare nihil differt quibus monimentis fortia triumphatorum facta pandantur, vel venerabilium rerum ordo memoriæ mandetur, dummodo constet ut sicut prædicandum cœlestis athletæ conflictum sub divini remuneratoris obtutu perpetuis litteris superna depingit historia, ita posteritati imitationis causa ad sequendam Christianæ religionis fidem, sermo fidelis eumdem conflictum percurrat b.
 
 INCIPIT PASSIO SANCTI JULIANI MARTYRIS.
 
-1266. Sanctus igitur Julianus Viennensi ortus urbe, Arvernis datus est martyr: prosapia quidem illustris, ac morum probitate non mediocriter ornatus, sed, quod majus est, igne superni amoris vehementer succensus. Beatus vero Ferreolus tempore Crispini consularis jam Christi miles, ut nec dum proditus, officio tribunitiæ potestatis, habitu non corde, specie non affectu, apud præfatam urbem fungebatur. Cui videlicet sanctus Julianus, ætate jam adultus, collega mox futurus in cœlo, providentia divina solatium præbebat in sæculo. Se enim invicem in contubernio militiae temporalis constituti, plus fidei studio quam militari diligebant amplexu, et inter labores publicos Sanctorum societatem fidelibus vinculis sacra dilectio nexuerat. Cum præterea assiduis
+1266. Sanctus igitur Julianus Viennensi ortus urbe, Arvernis datus est martyr : prosapia quidem illustris, ac morum probitate non mediocriter ornatus, sed, quod majus est, igne superni amoris vehementer succensus. Beatus vero Ferreolus tempore Crispini consularis jam Christi miles, ut necdum proditus, officio tribunitiæ potestatis, habitu non corde, specie non affectu, apud præfatam urbem fungebatur. Cui videlicet sanctus Julianus, ætate jam adultus, collega mox futurus in cœlo, providentia divina solatium præbebat in sæculo. Se enim invicem in contubernio militiæ temporalis constituti, plus fidei studio quam militari diligebant amplexu, et inter labores publicos Sanctorum societatem fidelibus vinculis sacra dilectio nexuerat. Cum præterea assiduis
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,230,520,270">
+  <bloco tipo="texto_principal" script="latino" bbox="510,230,950,750">
+persecutionibus se immitis gentilium furor contra Christianorum genus Deo charum armasset, et immortali agricolæ renitens pullulantem novellæ plantationis vineam radicitus evellere manu inimica contenderet ; sicut impiorum rabies per diversas mundi partes callido inexsaturabilis sævitiæ gladio discurrebat, urbi nihilominus Viennensi proximare, fama vulgante, nuntiatur.
+
+Itaque cum dubium non haberetur quin eximius Christicola Julianus, martyrii amore flagrans, nullatenus occultari se pateretur ; cœpit sanctus Ferreolus omnimodis c agere, quatenus antequam rabies persecutorum illo 1267 pertenderet, prædictus vir Dei occulte discederet, et ad superstitum Christianorum solamen ipse superstes, vesani furoris impetum paulisper evitaret. Hoc ergo consiliis suadet, hoc precibus exorat. Ille vero, quia virtute temperantiæ præditus erat, quamvis certamen martyrii toto cordis affectu jam dudum sitiret, tamen amicabilibus monitis parere non distulit. Videbat enim quia nec hoc sine divino mandato peregisset, quandoquidem tunc persecutio in Viennensi urbe ferveret. Legerat nam que Dominum præcepisse : Si vos persecuti fuerint in ista civitate, fugite in aliam (Matth. x, 23). Metuebat enim ne ei parentes essent obvii, si inter eos hoc certamen inisset ; et perderet miles Christi coronam gloriæ, si legitime non certasset. His vero omnibus apud se collatis, propria quæque relinquens, et carnales affectus solius Christi succensus amore parvipendens, juxta beati Ferreoli consilium clam discessit, et in Arvernæ urbis territorio divertens, non alicubi nisi ad Brivatensem vicum, in quo fanatici erroris neniæ colebantur, latitare disposuit. Unde manifestum est quia non metu mortis ab urbe Viennensi subterfugerat, sed ob hoc potius, ut Christi præceptum de civitate in civitatem fugiendo complesset, et suis nihilominus vel rebus vel parentibus spretis, optati stadium certaminis liberius cucurrisset.
+
+Porro Crispinus consularis comperto quod vir sanctus, clandestino discessu fugiens, in Arvernæ urbis territorio latitaret, ad hoc statim exitiale dedit præceptum, ut ubi d reperiretur, insequens eum persecutor extingueret. Et quidem ille, juxta mi
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,235,505,255">
 A
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,330,520,370">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,435,505,455">
 B
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,490,520,530">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,635,505,655">
 C
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,640,520,700">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,835,505,855">
 D
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,190,940,760">
-persecutionibus se immittis gentilium furor contra Christianorum genus Deo charum armasset, et immortali agricolae renitens pullulantem [ilegivel] plantationis vineam radicitus evellere manu inimica contenderet; sicut impiorum rabies per diversas mundi partes callido inexsaturabilis saevitia gladio discurrebant, urbi nihilominus Viennensi proximare, [ilegivel], nuntiatur.
-
-Itaque cum dubium non haberetur quin eximius Christicola Julianus, martyrii amore flagrans, non latenus occultari se pateretur; coepit sanctus Ferreolus omnimodis agere, quatenus antequam rabies persecutorum illo 1267 pertenderet, praedictus vir Dei occulte discederet, et ad superstitium Christianorum solamen ipse superstes, vesani furoris impetus paulisper eviteret. Hoc ergo consiliis suadet, hoc precibus exorat. Ille vero, quia virtute temperantia praeditus erat, quamvis certamen martyrii toto cordis affectu jam dudum sitiret, tamen amicabilibus moribus parere non distulit. Videbat enim quia nec hoc sine divino mandato pergressisset, quandoquidem [ilegivel] persecutio in Viennensi urbe fereveret. Legerat jam quia Dominum praecepisse: Si vos persecuti estis in ista civitate, fugite in aliam (Matth. x, 23). [ilegivel] enim ne ei parentes essent obvii, si inter eos hoc certamen inisset; et perderet miles Christi nonnam gloriam, si legitime non cerasset. His vero omnibus apud se collatis, propria quaecque reliquens, et carnales affectus solius Christi successus amore parvipendens, juxta beati Ferreoli consilium discessit, et in Arverne urbis territorio divertens non alicubi nisi ad Brivanensem vicum, in quo fanatici erroris nempe colebantur, latitare disposuit. Inde manifestum est quia non metu mortis ab urbe Viennensi subfugeret, sed ob hoc potius, ut Christi praeceptum de civitate in civitatem fugiendo [ilegivel], et suis nihilominus vel rebus vel parentibus [ilegivel], optatum stadium certaminis liberius currisset.
-
-Porro Crispinus consularis comperto quod vir sanctus, clandestino discessu fugiens, in Arverne urbis territorio latitaret, ad hoc statim exitale praeceptum, ut ubi de reperiunter, insequens persecutor extingueret. Et quidem ille, juxta [ilegivel]
+  <bloco tipo="aparato_critico" script="latino" bbox="50,760,480,950">
+a Maj. m. duo, quo impellit me.
+b In Gem. hic habetur, explicit præfatio, tum capitulorum index, post quem : Incipit passio sancti Juliani egregii martyris. Cap 1 : Sanctus, etc.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="60,760,490,980">
-a Maj. m. duo, quo impelli me.
-
-b In Gem. hic habetur, explicit praefatio, tum capitulorum index, post quem: Incipit passio sancti Juliani egregii martyris. Cap. 1 : Sanctus, etc.
+  <bloco tipo="aparato_critico" script="latino" bbox="510,760,950,950">
+c Aliquot Scripti, omni instantia.
+d Maj. m. duo, Gem. et Germ. u. ubi ubi, id est ubicunque, ut habet Germ. c. Vide reg. sancti Benedicti cap. 46. Aliquot Codd., reperiret.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="510,760,940,980">
-c Aliquot Scripsit, omni instantia. a Maj. m. duo, Gem. et Germ. u. ubique, ut habet Germ. c. Vide reg. sancti Benedicti cap. 46. Aliquot Cod. [ilegivel], reperiebat.
-
+  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
 Digitized by Google
   </bloco>
-  <notas>Tipo de página: texto. Script identificado: latino. Página em duas colunas — coluna esquerda transcrita primeiro (bbox 60,190,490,760), depois a coluna direita (bbox 510,190,940,760). Letras A, B, C, D no eixo central transcritas como notas marginais individuais (bbox aproximadas). Rodapés com notas a, b, c transcritas em dois blocos de rodapé (esquerdo e direito). Uso de [ilegivel] aplicado por palavra quando a leitura é incerta (mantive todas as palavras legíveis sem normalização). BBOX estimadas visualmente na escala 0-1000. Sinais editoriais preservados: asterisco "*" no corpo do texto e referências de rodapé. Abreviaturas, formas latinas antigas e possíveis variantes paleográficas preservadas; palavras cuja leitura não pôde ser confirmada foram marcadas como [ilegivel].</notas>
+  <notas>Transcrição fiel da imagem. Coluna esquerda primeiro, depois direita. Notas marginais A, B, C, D mapeadas no gutter. Texto em latim. Números 1265, 1266, 1267 preservados. Abreviaturas como 'm.' (manus), 'Codd.' (codices) mantidas. Ligaduras tipográficas (æ, œ) representadas conforme visualização ou padrão latino (ae, oe) dependendo da clareza, aqui mantidas como æ/œ onde visíveis ou padrão editorial. Nota 'd' no texto "ubi d reperiretur" refere-se ao aparato.</notas>
 </pagina>

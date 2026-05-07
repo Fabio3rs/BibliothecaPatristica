@@ -1,58 +1,131 @@
-<pagina estado="com_texto">
-  <bloco tipo="outro" script="latino" bbox="20,20,980,60">
-    tipo_pagina: texto
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="10,5,90,65">
-    355
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="160,5,840,65">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="150,20,850,60">
     AD OMNIA VENERABILIS BEDÆ OPERA
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="920,5,990,65">
+  <bloco tipo="nota_marginal" script="latino" bbox="50,20,100,50">
+    355
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="900,20,950,50">
     356
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,80,490,870">
-sibi vendicaturam esse [ilegivel]. Nam ex [ilegivel] a monachorum ejus ad pristinam sedem redierunt.
-
-constat evitatulam haec his temporibus fuisse desolatam (Hist. eccl. iv, 17). Haec certissimam videtur, deficientie illa vel potius sedem suam aliquando [ilegivel], Cantabrigiam ex ruinis ejus exarsisse. Praeterea dubio Aluredi temporibus Cantabrigia villa fuit florentissima, ut pater ex Asserio et Chronico Saxonico (An. 875). Ibi enim legimus eam satis amplam fuisse, in qua magnus Dacorum exercitus biennis fuit. Ea quidem fieri vix potuit, ut ex nihilo tantum oppidum, quod nomen universae provinciae, subito nasceretur. Illis autem temporibus urbe illa a Dacis devastata, si Johanni Rosso credamus, rex Edwardus dictus Senior ad ceremoniam augmentandam, sicut pater suus Oxonium, sic ipse Cantabrigiam ab antiquo cum caeteris studiis generaliter despectam, iam desolatam et destructam, iterum ad primas gloriam erexit (Hist. reg. Angl., p. 96). Si autem haec vera sint, quis, quæque, alius ante Sigberctum nominari potest, qui scholam his in regionibus instituerit? Necesse est vero Oxonienses fallant auctoritate Rossi, academia Oxoniensis aliorum, et ejus antiquitatis auctores; propugnatores, hac in re quam plurimum valere, præcipue apud ipsos qui maxime hujus sententiæ freti aiunt Aluredum scholam suam restituisse, itea Aulas subidasse, ibique doctores in artibus prælegisse. Si enim sequantur Edwardi gloriam Cantabrigiensium reparandi, pari jure Cantabrigienses illam Rossi historicam partem veram esse negare possunt, ubi de Alfredo Universitatis Oxoniensis restitutione verba facit.
-
-Verum argumentum illud non infirmum est Sigberctus Cantabrigiae scholam non instituisse, quod, scilicet, Malmsburiensis et alii eum scholas litterarum per loca instituisse tradiderint. Sed objectionis hujus vix penitus franget auctoritas Baedæ, qui scholas solummodo mentionem fecit. Eos autem nihil moror, qui in quodam Baedæ codice manuscripto scholam legunt. In omnibus enim, quos ego vidi, manuscriptis vox illa scholam clare exhibetur.
-
-Hactenus satis feliciter ostensum est Cantabrigiam fuisse locum in qua Sigberctus scholam posuerit. Est vero alia objectio validissima, quæ vix, ut arbitror, responsioni cedet. Petrus Blesensis, in sua [ilegivel] constitutione, tradit Joffridum abbatem Croylandiensem, Henrici II temporibus, transmisse ad manerium suum de [ilegivel], juxta Cantabrigiam, totos quosdam suos philosophicis theorematibus et aliis scientiis instructissimos, qui quotidie Cantabrigiam educutores et conducto humero publico suas scientias proferentes, in brevi temporis excursu graduum discipulorum numerum contraxerunt; qui in eo adeo accrevit, ut nec horreum, nec ulla ecclesia eorum receptaculo sufficeret. Et ita isto fonte, ut pergit Blesensis, parvo qui crevit in fluvium jam magnum, videmus nunc fertilitatem civitatis Dei, et totam Angliam factam frugiferam per plurimos magistris et doctores de Cantabrigia exeuntes ad [ilegivel] sanctissimum paradisum. Hic autem fateendum est nihil omnino habiturus quod respondeant Cantabrienses, nisi Oxonienses ipsi viam monstrarent. Cum enim his objectis, ideo Oxoniis ante Aluredum artium non fuisse domicilium, quod rex ipse nos elocet sub initia regni sui perpaucos eis Humberum viri Latinam epistolam vernacule scire reddere, mox respondent scholæ Davorum injuriis Uxoniis tunc fuisse expulsos, et ideo academiam illam doctis viris prius Aluredi annis non floruisse. Hac vero ipsa repositone uti Cantabrigienenses possunt. Nam post restitutam ab Edwardo seniore academiam, Chronicon Saxonicum nos docet Danos anno 1010 Orientalem Angliam occupasse, ibique per tres menses obvia quæque contrivisse, praedas egisse, villas cremasse, inter quas Cantabrigiam civitatem victores incenderrunt. Hinc factum est ut Sigberctina scholia a Musis fuerit deserta, donec, Henrico II imperante, sub auspiciis Joffridi abbatis et [ilegivel] ...
+  <bloco tipo="texto_principal" script="latino" bbox="50,80,480,880">
+    sibi vendicaturam esse Grantcestriam. Nam ex Bæda
+    constat civitatulam illam his temporibus fuisse desolatam (Hist. eccl. IV, 17). Et certissimum videtur,
+    deficiente illa vel potius sedem suam aliquatenus
+    mutatæ, Cantabrigiam ex ruinis ejus emersisse.
+    Procul dubio Aluredi temporibus Cantabrigia villa
+    fuit florentissima, ut patet ex Asserio et Chronico
+    Saxonico (An. 875). Ibi enim legimus eam satis amplam
+    fuisse, in qua magnus Dacorum exercitus biennis
+    fuit. Et quidem fieri vix potuit, ut ex nihilo tantum oppidum, quod nomen universæ provinciæ daret,
+    subito nasceretur. Illis autem temporibus urbe
+    illa a Dacis devastata, si Johanni Rosso credamus,
+    rex Edwardus dictus Senior ad clerimoniam augmentandam, sicut pater suus Oxoniam, sic ipse Cantabrigiam ab antiquo cum cæteris studiis generaliter
+    spernam, desolatam et destructam, iterum ad primam gloriam erexit (Hist. reg. Angl., p. 96). Si
+    autem hæc vera sint, quis, quæso, alius ante Sigberctum nominari potest, qui scholam his in regionibus
+    instituerit? Necesse est vero Oxonienses fateantur
+    auctoritate Rossi, academiæ Oxoniensis
+    alumni, et ejus antiquitatis strenui propugnatoris,
+    hac in re quamplurimum valere, præcipue apud ipsos
+    qui maxime hujus sententiæ freti aiunt Aluredum
+    scholam suam restituisse, tres Aulas fundasse, ibique
+    doctores in artibus prælegisse. Si enim negant
+    Edwardo gloriam Cantabrigiam reparandi, pari jure
+    Cantabrigienses istam Rossi historicam partem veram
+    esse negare possunt, ubi de Alfredo Universitatem
+    Oxoniis restituentem verba facit.
+    Verum argumentum illud non infirmum est Sigberctum Cantabrigiæ scholam non instituisse, quod,
+    scilicet, Malmsburiensis et alii eum scholas litterarum per loca instituisse tradiderint. Sed objectionis
+    hujus vim penitus franget auctoritas Bædæ, qui
+    scholæ solummodo mentionem fecerit. Eos autem
+    nihil moror, qui in quodam Bædæ Codice manuscripto scholas legunt. In omnibus enim, quos ego vidi,
+    manuscriptis vox illa scholam clare exhibetur.
+    Hactenus satis feliciter ostendi Cantabrigiam fuisse
+    locum in qua Sigberctus scholam posuerit. Est vero
+    alia objectio validissima, quæ vix, ut arbitror, responsioni cedet. Petrus Blesensis, in sua Ingulphi
+    Continuatione, tradit Joffridum abbatem Croylandiensem, Henrici II temporibus, transmisisse ad Manerium suum de Cotenham, juxta Cantabrigiam, monachos quosdam suos philosophicis theorematis et
+    aliis scientiis instructissimos, qui quotidie Cantabrigiam adeuntes, et conducto horreo publico suas
+    scientias profitentes, in brevi temporis excursu grandem discipulorum numerum contraxerunt; qui mox
+    adeo accrevit, ut nec horreum, nec ulla ecclesia eorum receptaculo sufficeret. « Ex isto fonte, ut pergit
+    Blesensis, parvo qui crevit in fluvium jam magnum,
+    videmus nunc lætificatam civitatem Dei, et totam
+    Angliam factam frugiferam per plurimos magistros
+    et doctores de Cantabrigia exeuntes ad amœnissimam
+    sanctissimi paradisi. » Hic autem fatendum est
+    nihil omnino habituros quod respondeant Cantabrigienses, nisi Oxonienses ipsi viam monstrarent. Cum
+    enim iis objicitur ideo Oxoniis ante Aluredum artium non fuisse domicilium, quod rex ipse nos elocet sub initia regni sui perpaucos cis Humbrum
+    fuisse qui Latinam epistolam vernacule scirent reddere, mox respondent scholares Danorum injuriis
+    Oxoniis tunc fuisse expulsos, et idcirco academiam
+    illam doctis viris primis Aluredi annis non floruisse.
+    Hac vero ipsa repensione uti Cantabrigienses possunt. Nam post restitutam ab Edwardo seniore academiam, Chronicon Saxonicum nos docet Danos
+    anno 1010 Orientalem Angliam occupasse, ibique
+    per tres menses obvia quæque contrivisse, prædas
+    egisse, villas cremasse, inter quas Cantabrigiam civitatem victores incenderunt. Hinc factum est ut Sigberctina schola a Musis fuerit deserta, donec, Henrico II imperante, sub auspiciis Joffridi abbatis et
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="492,120,508,160">
-A
+  <bloco tipo="texto_principal" script="latino" bbox="520,80,950,880">
+    monachorum ejus ad pristinam sedem redierunt.
+    Tota igitur hac de academiarum antiquitate controversia pertractata, si non ostendi Sigbercti scholam fuisse Cantabrigiæ, hoc saltem satis constabit,
+    vel omnes illas fabulas ab Higdeno, Rosso, aliisque
+    de academia Oxoniensi ab Aluredo fundata confictas
+    penitus esse rejiciendas; vel Oxoniensibus fatendum esse, invitis, licet, Cantabrigiam, regnante Sigbercto, artibus et scientiis fuisse vel florentissimam.
+    Utrum horum malint accipiant. Ego quidem de
+    utraque partibus vehementer expeto, ut ea omnia,
+    quæ vel nullius vel dubiæ auctoritatis sunt, missa
+    fierent, neque sit inter doctos viros de fabulis aut
+    saltem incertis narrationibus tam gravis et acerba
+    contentio. Utraque autem academia gloriam summam, celebritatem maximam, semper habebunt, licet nec hanc Aluredus, nec illam Sigberctus instituerit. Et quidem in ea saltem sententia Oxoniensis satis
+    antiqua erit, si paulo ante Ingulphi tempora, qui illi
+    studio traditus est docendus, nata esse dicatur; et
+    ne magna quidem honoris parte Cantabrigiensis spoliabitur, si eam ante Joffridum abbatem institutam
+    non fuisse statuatur. Nihil autem liquidius constat,
+    quam quod ea quæ ab historicis de academiis ante
+    hæc tempora traduntur, vel plane falsa esse, vel saltem dubiæ incertæque fidei.
+    Denique si schola Sigberctina Grantæ non est instituta, verisimillimum est eam positam fuisse vel in
+    civitate Dunmoc, in qua Felix sedem episcopatus acceperat; vel apud Seham, ubi, ecclesia constructa
+    et dedicata (Hist. Rames. Galei Edit., p. 82), centum non minimum monachorum aggregarat. Supra
+    enim abunde comprobatur scholas præcipue in episcopiis et monasteriis fuisse erectas.
+    NUM. XI (Suita, XV).
+    Index reliquiarum Ecclesiæ Dunelmensis; ex libro antiquo plurimis in locis adeo vitiato, ut nullo modo
+    legi possit.
+    Anno Domini M° ccc° lxxii° ..... Liber iste ..... titus est de reliquiis in fera ..... sancti ..... per Dominum ..... Segbruk Line Feretrarium ad dictam ..... reliquiæ et quales hab ..... qua
+    parte aut in quo gradu .....
+    In primis in primo et supremo gradu .....
+    Australi ymago beatæ Mariæ virginis argentea et
+    deaurata. Item ymago ..... argentea et deaurata
+    cum costa ejusdem inclusa in pectore ymaginis.
+    Item una crux nigra quæ vocatur Blak rode of Scotland. Item alia crux cristallina in custodia sacristæ.
+    Item una crux aurea cum lapidibus et pede argenti
+    deaurato. Item una crux quæ vocatur sanctæ Margaretæ
+    reginæ Scotiæ. Item una cuppa argentea deaurata ex
+    dono comitissæ Canciæ cum vexillo sancti Cuthberti.
+    Item unum brachium argentatum cum osse sanctæ
+    Luciæ virginis. Item ymago beati Cuthberti argentea
+    ex dono domini Wilelmi episcopi. Item crux cum
+    pede ex dono domini Thomæ Langley episcopi Dunelmi.
+    Item in gradu sub primo, unus textus Evangeliorum ornatus cum argento et auro cum ymagine Trinitatis in una parte. Item unus cervus ..... deauratus cum vestimento sancti Johannis Baptistæ incluso. Item in altera parte crux sancti Johannis Baptistæ cristallina cum imagine crucifixi. Item cophinus radice et glauci coloris in cistula viridi, qui jacebat super loculum sancti Cuthberti infra feretrum
+    per cc. annos et amplius.
+    Item in gradu tertio et supremo in cistula annulata, capa sancti Cuthberti in qua jacebat in terra
+    per xl annos. Item cophinus eburneus cum vestimento sancti Johannis Baptistæ. Item liber sancti
+    Boysili magistri sancti Cuthberti. Item una cistula
+    eburnea cum vestimento sancti Cuthberti tassillato.
+    Item sceptrum sancti Oswaldi eburneum. Item duo
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="492,260,508,320">
-B
+  <bloco tipo="nota_marginal" script="latino" bbox="490,80,510,110">
+    A
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,80,980,870">
-[Tota] igitur hac de academiarum antiquitate controversia pertractata, si non ostendit Sigbercti scholam fuisse Cantabrigiae, hoc saltem satis constat, vel omnes illas fabulas ab Higdeno, Rosso, aliisque de academia Oxoniensi ab Aluredo fundata coniectas penitus esse rejiciendas; vel Oxoniensibus fatendum esse, invitis, licet, Cantabrigiam, regnante Sigbercto, artibus et scientiis fuisse vel florentissimam. Utrum horum malunt accipiant. Ego quidem de utrisque partibus vehementer expeto, ut ea omnia, quæ vel nullius vel dubiæ auctoritatis sunt, missa ferent, neque sit inter doctos viros de fabulis aut saltem incertis narrationibus tam gravis et acerba contentio. Utraque autem academiæ gloriam summam, celebritatem maximam, semper habebunt, licet hæc Aluredus, nec illam Sigberctus instituerit. Et quarum una saltem sententia Oxoniensis satis antiqua erit, si paulo ante Ingulphi tempora, qui illis studiis traditus est docendus, nata esse dicatur; et ne magna quidem honoris parte Cantabrigieneses spoliabuntur, si eam ante Joffridum abbatem institutionem non fuisse statuatur. Nihil autem liquidius constat, quam quod ea quæ ab historicis de academiis ante hoc tempora traduntur, vel plane falsa esse, vel saltem dubiæ incertæque sint.
-
-Deusque si schola Sigberctina Grantae non est instituta, verisimillimum est eam positam fuisse vel in civitate Dunsmue, in qua Felix sedem episcopatus acceperat; vel apud Seahun, ubi ecclesia constituta et dedicata (Hist. Rames. Gatei Edit., p. 82), centum non minimorum monachorum aggregarat. Supra enim abunde comprobatur scholas præcipue in episcopiis et monasteriis fuisse erectas.
-
-NUM. XI [ilegivel].
-
-Index reliquiarum Ecclesiæ Dunelmensis; ex libro antiquo plurimis in locis adeo vitiato, ut nullo modo legi possit.
-
-Anno Domini M° ccc° lxxxi..... Liber iste ..... titus est de reliquiis in sero..... sancti...... per Dominum ..... Segburk line Feretrarium ad dictum ..... reliquiæ et quales habent ..... qua parte aut in quo gradu...
-
-In primis in primo et supremo gradu...... Australi ymago beate Mariæ virginis argentea et deaurata. Item ymago ...... argentea et deaurata cum costa ejusdem inclusa in pectore imaginis. Item una crux nigra quæ vocatur Blak rode of Scotland. Item alia crux cristallina in custodia sacristiæ. Item una crux aurea cum lapidibus et pede argenti deaurato. Item una crux quæ vocatur sanctæ Margarætæ reginæ Scotiæ. Item una cuppa argentea deaurata ex dono comitisse Canice cum vexillo sancti Cuthberti. Item unum brachium argentatum cum osse sanctæ Luciæ virginis. Item ymago beati Cuthberti argentea ex dono domini Willelmi episcopi. Item crux cum pede ex dono domini Thome Langley episcopi Dunelmi.
-
-Item in gradu sub primo, unus textus Evangeliorum ornatus cum argento et auro cum imagin[e] Trinitatis in una parte. Item unus cervus ... deauratus cum vestimento sancti Johannis Baptistæ inclusò. Item in altera parte crux sancti Johannis Baptistæ cristallina cum imagine crucifixi. Item cophinus radice et glauci coloris in cistula viridi, qui jacebat super locutum sancti Cuthberti infra feretrum per cc. annos et amplius.
-
-Item in gradu tertio, et supremo in cistula anamulata, capa sancti Cuthberti in qua jacebat in terra per xl annos. Item cophinus eburineus cum vestimento sancti Johannis Baptistæ. Item liber sancti Boysili magistri sancti Cuthberti. Item una cistula eburnea cum vestimento sancti Cuthberti tassillato. Item sceptrum sancti Oswaldi ebureneum.
+  <bloco tipo="nota_marginal" script="latino" bbox="490,300,510,330">
+    B
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="520,340,600,420">
-C
+  <bloco tipo="nota_marginal" script="latino" bbox="490,650,510,680">
+    C
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="492,460,508,520">
-D
+  <bloco tipo="nota_marginal" script="latino" bbox="490,750,510,780">
+    D
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="360,900,640,995">
-Digitized by Google
+  <bloco tipo="rodape" script="latino" bbox="350,950,650,990">
+    Digitized by Google
   </bloco>
   <notas>
-    scriptum principale: latino. Página em duas colunas; transcrição feita preservando palavras ilegíveis como [ilegivel] por palavra. Foram mapeados cabeçalho, números de página, colunas, marginais (A, B, C, D) e rodapé. Onde a leitura se mostrou incerta ou danificada usei [ilegivel] por palavra; não foram normalizadas nem traduzidas as formas latinas. Algumas abreviações e algarismos (datas) permanecem marcados como [ilegivel] quando inseguros.
+    Transcrição fiel da página 355-356 da Patrologia Latina (Opera Bedæ). O texto flui da coluna esquerda para a direita (frase "Joffridi abbatis et monachorum ejus"). As letras A, B, C, D são notas marginais localizadas no gutter central. Algumas lacunas no texto do inventário de relíquias foram mantidas com ".....".
   </notas>
 </pagina>

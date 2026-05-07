@@ -1,42 +1,65 @@
-<pagina estado="com_texto" tipo="texto">
-  <bloco tipo="nota_marginal" script="latino" bbox="80,105,170,270">D</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,35,450,565">Incipit proemii aurelii
-Liber catemerinon incipit;
-
-Per quinque iam decem
-[ilegivel] [ilegivel] [ilegivel]
-[ilegivel] [ilegivel] [ilegivel]
-
-INCIPIT YMNVS IN HONORE SCORV
-CVII MARTYRVM CAESAR AVGVST
-TANORVM
-
-[ilegivel] [ilegivel] [ilegivel]
-Caesara augusta vota muta verbum restituunt;
-
-INCIPIT PASSIO SCI LAVRENTII
-[ilegivel]</bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="95,320,185,510">A</bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="470,35,930,565">AVR. PRV DEN TII.
-CLEMENTIS·V·C·
-
-FINIT CONTRA
-SYMMACH. LIB. II.
-
-INCIPIT EIUSDEM
-ROMANVS CONTRA
-GENTILES:</bloco>
-
-  <bloco tipo="gravura" script="desconhecido" bbox="70,630,468,910">[gravura]
-</bloco>
-  <bloco tipo="gravura" script="desconhecido" bbox="495,630,920,910">[gravura]
-</bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="145,858,460,920">Lucerna fictilis veterum Christianorum ex [ilegivel] museo. F. B. Passeri.</bloco>
-  <bloco tipo="rodape" script="latino" bbox="520,858,915,920">Prototypon vetustum SS. septem dormientium. i</bloco>
-  <bloco tipo="rodape" script="latino" bbox="540,960,900,995">Digitized by Google</bloco>
-
-  <notas>Transcrição fiel ao que é legível na imagem. Onde a leitura não foi segura, usei [ilegivel]. Separação do “D” e do “A” iniciais (letras centrais) em blocos do tipo nota_marginal, sem inseri-los dentro do texto das colunas.</notas>
+<pagina estado="com_texto">
+  <bloco tipo="cabecalho" script="latino" bbox="100,60,480,110">
+    I. incipit prooemiu Aurelii Prudentij
+    Liber cathemerinon incipit
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,110,480,210">
+    Liber cathemerinon non incipit
+    P er quinquennia iam decem
+    ni fallor fuimus: septem insuper
+    annis candor atatis diu frugum tole uoluitur
+    ... t nte tmu &amp; diem aduexit adpont.
+    Vicinu senio ta dr applicat
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,210,480,340">
+    D INCIPIT HYMNUS IN HONORE SANCTORUM
+    XVIII MARTYRUM CAESAR AUGUS
+    TANORUM
+    IAM NOUE NR POPULUS SUB UNO
+    Martyrum seruat cineres sepul chro
+    Caesar augusta uocata murvrbem...
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,340,480,410">
+    A INCIPIT PASSIO SCL LAURENTII
+    Antiqua sanctorum parentum romana
+    urbe edita
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="550,60,850,280">
+    AUR. PRUDENTII
+    CLEMENTIS V.C.
+    FINIT CONTRA
+    SYMMACHUM LIB. II.
+    INCIPIT EIUSDEM
+    ROMANUS CONTRA
+    GENTILES:
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,280,850,410">
+    R IAMBICO
+    METRO
+    Romane septiformis Asonandi
+    Lingua foris organis Aurea moues
+    ... Labore coeptu carmin in statissimo
+  </bloco>
+  <bloco tipo="outro" script="desconhecido" bbox="100,460,480,820">
+    [Imagem: Lucerna fictilis com figuras e símbolos cristãos]
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="100,820,480,860">
+    Lucerna fictilis veterum Christianorum ex museo
+    F. B. Passeri.
+  </bloco>
+  <bloco tipo="outro" script="desconhecido" bbox="550,460,850,820">
+    [Imagem: Prototypon vetustum SS. septem dormientium]
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="550,820,850,850">
+    Prototypon vetustum SS. septem dormientium.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,950,800,980">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição de página com layout em duas colunas superiores e duas gravuras inferiores.
+    As letras P, D, A, R são iniciais ornamentadas.
+    Texto em fonte que imita unciais/semi-unciais.
+    Algumas abreviações presentes (ex: "prooemiu", "Prudentij", "Scl").
+  </notas>
 </pagina>

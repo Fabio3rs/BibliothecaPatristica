@@ -1,188 +1,183 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,80">
+  <bloco tipo="cabecalho" script="latino" bbox="100,10,900,40">
     1207 APPENDIX AD OPERA S. AMBROSII. 1208
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,80,480,610">
+  
+  <!-- Coluna Esquerda Superior: Hino Principal -->
+  <bloco tipo="texto_principal" script="latino" bbox="50,50,320,280">
     Nascente mundi qui faber
     Imaginem vultus tui
     Tradens Adamo nobilem
     Limo jugasti spiritum.
+
     Cum livor et fraus dæmonis
-    Foedasset humanum genus,
-    Tu carne amictus perdidisti
-    Formam reformes artifex.
+    Fœdasset humanum genus,
+    Tu carne amictus perditam
+    Formam reformas artifex.
+
     Qui natus olim ex virgine
     Nunc e sepulcro nasceris,
     Tecumque nos a mortuis
     Jubes sepultos surgere.
+
     Qui pastor æternus gregem
     Aqua lavas baptismatis,
     Hæc est lavacrum mentium,
-    Hæc est sepulcrum criminum.
+    Hæc est sepulcrum criminum. 20
+
     Nobis diu qui debitæ
     Redemptor affixus cruci,
     Nostræ dedisti prodigus
     Pretium salutis sanguinem.
-    
-    LXII.
-    Hymnus paschalis.
-    (Ex libr. vet.)
-    
-    Ad coenam Agni providi
-    Et stolis albis candidi,
-    Post transitum maris Rubri
-    Christo canamus principi.
-    Cujus corpus sanctissimum
-    In ara crucis torridum,
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="480,80,980,610">
+
+  <!-- Coluna Central Superior: Hino Principal -->
+  <bloco tipo="texto_principal" script="latino" bbox="340,50,620,280">
     5 Cruore ejus roseo
-    Custando vivimus Deo.
+    Gustando vivimus Deo.
     Protecti paschæ vespere
     A devastante angelo,
-    Erepte de durissimo
-    Pharaonis imperio.
+    Erepti de durissimo
+    10 Pharaonis imperio.
+
     Jam pascha nostrum Christus est,
     Qui immolatus agnus est,
     Sinceritatis azyma
-    Caro ejus oblaia est.
-    15 O vere digna hostia,
+    Caro ejus oblata est.
+    15
+
+    O vere digna hostia,
     Per quam fracta sunt tartara,
     Redempta plebs captivata,
-    Reddita vitæ præmia !
-    Cum surgit Christus tunulo,
-    Victor redit de barathro,
+    Reddita vitæ præmia!
+    Cum surgit Christus tumulo,
+    20 Victor redit de barathro,
     Tyrannum trudens vinculo
     Et reserans paradisum.
-    
-    Quaesumus, auctor omnium,
+
+    Quæsumus, auctor omnium,
     In hoc paschali gaudio :
-    Ab omni mortis impetu
+    25 Ab omni mortis impetu
     Tuum defende populum.
-    
+  </bloco>
+
+  <!-- Coluna Direita Superior: Hino Principal -->
+  <bloco tipo="texto_principal" script="latino" bbox="640,50,950,280">
+    Almique membra corporis
+    Amor sacerdos immolat.
+    Sparsum cruorem postibus
+    10 Vastator horret angelus,
+    Fugitque divisum mare,
+    Merguntur hostes fluctibus.
+
+    Jam pascha nostrum Christus est
+    Paschalis idem victima,
+    15 Et puris puris mentibus
+    Sinceritatis azyma.
+
+    O vera cœli victima,
+    Subjecta cui sunt tartara,
+    Soluta mortis vincula,
+    20 Recepta vitæ præmia!
+
+    Victor subactis inferis
+    Tropæa Christus explicat
+    Cœloque aperte subditum
+    Regem tenebrarum trahit.
+
+    25 Ut sis perenne mentibus
+    Paschale Jesu gaudium,
+    A morte dira criminum
+    Vitæ renatos libera.
+  </bloco>
+
+  <!-- Subtítulos e Hinos Menores (Esquerda) -->
+  <bloco tipo="texto_principal" script="latino" bbox="50,290,320,400">
+    LXII.
+    Hymnus paschalis.
+    (Ex libr. vet.)
+
+    Ad cœnam Agni providi
+    Et stolis albis candidi,
+    Post transitum maris Rubri
+    Christo canamus principi.
+
+    Cujus corpus sanctissimum
+    In ara crucis torridum,
+  </bloco>
+
+  <!-- Subtítulos e Hinos Menores (Centro) -->
+  <bloco tipo="texto_principal" script="latino" bbox="340,290,620,400">
     Ejusdem hymni alia lectio.
     (Ex Brev. Rom.)
-    
-    Ad regias Agni dapes ,
-    Stolis almis candidis,
-    Post transitum maris Rubri ,
+
+    Ad regias Agni dapes,
+    Stolis amicti candidis,
+    Post transitum maris Rubri,
     Christo canamus principi.
+
     5 Divina cujus charitas
     Sacrum propinat sanguinem,
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="480,610,980,720">
-    Almique membra corporis. Amor sacerdos immolat.
-    Sparsum cruorem postibus
-    Vastator horret angelus,
-    Fugique divisum mare,
-    Merguntur hostes fluctibus.
-    Jam pascha nostrum Christus est
-    Paschalis idem victima,
-    Et pura puris mentibus
-    Sinceritatis azyma.
-    10 15 20 25
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,610,980,1160">
+
+  <!-- Subtítulos e Hinos Menores (Direita) -->
+  <bloco tipo="texto_principal" script="latino" bbox="640,290,950,400">
     LXIII.
     De S. Stephano.
-    (Cassander Becelius, Clichtoveus.)
-    
+    (Cassander Bebelius, Clichtovæus.)
+
     Stephano primo martyri
     Cantemus canticum novum,
-    Quod dulce sit psallentibus,
+    5 Quod dulce sit psallentibus,
     Opem ferat credentibus.
-    
-    LXII. — Fere ubique in Breviariis tempore pas-
-    chali. Idem præcipit Brev. Rom. (ad Vesperas usque
-    ad Vigiliam Ascensionis) quod tamen non solum
-    vetustatis rubiginem ex more detersit, sed in hoc
-    carmine rerum novarum, opinor, nimis fuit studio-
-    sum. Hilarius : " Materia hujus hymni est, quod nos
-    invocat auctor ad coenam Agni illius qui tollit pec-
-    cala mundi, scilicet ad accipiendum corpus et san-
-    guinem Domini, de quo dictum est : Qui sumit cor-
-    pus Christi indigne, judicium sibi manducat et bibit,
-    qui vero digne, habet vitam æternam : ... nos vero
-    positi ad coenam Agni providi." Quae cum a vero
-    haud longe abesse videantur, ego audacius quid pro-
-    feram, hymnum Ad coenam Agni in antiqua Ecclesia
-    cantari solitum esse, dum catechumeni baptizati
-    corpore et sanguine Domini rite munirentur. Omnia
-    sane optime censeo sacrae conveniunt, neque id præ-
-    termittas, ab aliis poetis hanc sentiam disserius
-    esse expressam. Ut in cantico paschali sc. 14. apud
-    Hoffmann, p. 69:
-    
-    Ir sult sich mit dem osterlembin sipsen
-    und nemt sin heilic fleisch und blut.
-    ot sathanas, di schüzlicher scherge
-    Christus gezamet hat din erge,
-    do dir din nacht roup grözen nam.
-    Dia nacht erschein dem küng Pharaonem,
-    do in verslant das rote, mer, etc.
-    
-    1. Apoc.: xix, 9 ; Beati qui ad coenam nuptiarum
-    Agni vocati sunt. — 2. O., stolis in albis; Fabr., stol.
-    et albis. Candida veste inducebantur baptizati omnes.
-    Hinc Paulinus Ep. 12, ad Sever. : Inde pares sa-
-    crro ducti de fonte sacerdos infantas niveas, cor-
-    pore, corde, habitu. — 3. Baptismi typus fuit trans-
-    lus, Israelitarum per mare Rubrum, I Cor. x, 1 sqq.
-    Arator Hist. Ap. 11, 84 sq.; Avitus I. V. (de Transitu
-    maris Rubri); Sedul. Op. pasch. I, 120. Caeterum
-    Pharao rex sæpissime typice refertur ad diabolum.
-    
-    —5. O., sacrum corpusculum. — 5, 6. Corn. : " Assa-
-    tum et refactum in cruce ingre ire Dei, ut ipse ait :
-    Anuit sicuti ; testa virtus mea. Accedit quod compara
-    tur cum agno paschali assaulo. Quae imago, a Brev.
-    Rom. in textu correcto non recepta, quam ut inepta
-    A et potius fastidium quam devotionem movens, nemo
-    non nobis concedet. Tamen mire in ipsa acquierunt
-    run poetæ nostræ Ecclesiæ v. c. Lutherus (Christi
-    lag in Todesbanden) : " Hic ist das rechte Oster-
-    lamm, Davon Gott hat geboten, Das ist an des Kreu-
-    zes Stamm in heisser Lieb' gebroten." — 7. Læss.,
-    rosido. — 9. O., vesperum. — 13 sq. 1 Cor. v, 78. Pas-
-    cha nostrum immolatus est Christus : epulum est in
-    azymis sinceritatis. — 17. Cass.: Al., o vera et digna.
-    — 20. A nobis tant O., E., W. 2, Md., Pd., Thom.;
-    reliqui, redi ad. Sed continet ex mea sententia ver-
-    sus iria asynda, quæ procedunt a minori ad ma-
-    juns. Non solum fracta sunt tartara, sed etiam plebs
-    in vincula conjecta liberatur, accedit tertium : red-
-    duntur ipsi vitæ lætæ dona. locus est palmaris de
-    descensu glorioso ad inferos. — 21. Cass., Lg., Cæs.,
-    Thom., Beb., Torr., consurgit; Fr., dum surgit. — 22.
-    O., per exegesin, tartaro. — 23. O., tradens; Fabr.,
-    tyranni tr. v.; Lud.: Al. tyrannum tradens vinculo.
-    Cf. jubilum paschaleum. Also heiligt die Tag, da
-    die Holle uberwandt und den Leidigen Teufel darinne
-    band. — 25-28. Om., Fabr. Ut clausula annexiar
-    strophæ plurimis hymnis paschalibus. 28. O., Md.,
-    defensas.
-    
-    LXIII. — In Breviariis non reperi hymnum
-    (excepto Cs.), quamquam ad investigandum magnam
-    diligentiam adhibui. Illud enim permirum accidit
-    apud tres autores diversò modo esse pronuntiatum :
-    præter nos enim quos novimus, Cassandrum (Bece-
-    lium et Clichtovæum) et S. Benedicti, Theo-
-    masinis ita carmen exhibet: 1-4, cons. cum Cass.;
-    5-8, Psalmus hoic discipuli, Laudem dicamus ver-
-    giri, Qui primus post redemptorem, Christi seculis ad
-    crucem; 9-16, ut apud Cass.; 17-20, Ipse martyr
-    egregius, Amore Christi prædicans, sacro velatus
-    Spiritu; Viretum gerens angelicum; 21-28, ut apud
-    Cass.; 17-24; 29-32, Ille paralus vertice, Gaudens
-    suscepit lapides, Rogans pro eis Dominum, Gaudens
-    tradidit Spiritum. Versus Cassandri 25-36 deside-
-    rantur. Quo in librorum dissidio ca multi præjacit
-    optimo duos a S. Stephano cantilenas a librariis
-    confusas esse atque permixas : nam alias quoqne
-    hæc est hymnographorum consuetudo, ut sente-
   </bloco>
+
+  <!-- Comentário Coluna Esquerda -->
+  <bloco tipo="texto_principal" script="latino" bbox="50,410,480,700">
+    LXII. — Fere ubique in Breviariis tempore paschali. Idem præcipit Brev. Rom. (ad Vesperas usque ad Vigiliam Ascensionis) quod tamen non solum vetustatis rubiginem ex more detersit, sed in hoc carmine rerum novarum, opinor, nimis fuit studiosum. Hilarius : « Materia hujus hymni est, quod nos invocat auctor ad cœnam Agni illius qui tollit peccata mundi, scilicet ad accipiendum corpus et sanguinem Domini, de quo dictum est : Qui sumit corpus Christi indigne, judicium sibi manducat et bibit, qui vero digne, habet vitam æternam :..... nos vero positi ad cœnam Agni providi. » Quæ cum a vero haud longe abesse videantur, ego audacius quid proferam, hymnum Ad cœnam Agni in antiqua Ecclesia cantari solitum esse, dum catechumeni baptizati corpore et sanguine Domini rite munirentur. Omnia sane optimæ cœnæ sacræ conveniunt, neque id prætermissa, ab aliis poetis hanc sententiam disertius esse expressam. Ut in cantico paschali sc. 14. apud Hoffmann, p. 69 :
+
+    Ir sult iuch mit dem osterlemblin spisen
+    und nemt sin heilic fleisch und blut.
+    o Sâthanas, dû schiuclicher echerge
+    Christus gezâmet hât din erge,
+    dô dir din nacht roup grôzen nam.
+    Dia nacht erschein dem künig Pharaônem,
+    do in verslant daz rôle mer, etc.
+  </bloco>
+
+  <!-- Comentário Coluna Direita -->
+  <bloco tipo="texto_principal" script="latino" bbox="500,410,950,700">
+    A et potius fastidium quam devotionem movens, nemo non nobis concedet. Tamen mire in ipsa acquieverunt poetæ nostræ Ecclesiæ v. c. Lutherus (Christ lag in Todesbanden) : « Hic ist das rechte Osterlamm, Davon Gott hat geboten, Das ist an des Kreuzes Stamm In heisser Lieb' gebroten. » — 7. Loss., rosido.—9. O., vesperum.—13 sq. I Cor, v, 78, Pascha nostrum immolatus est Christus : epulemur in azymis sinceritatis.—17. Cass.: Al., o vera et digna. —20. A nobis stant O., E., W. 2, Md., Pd., Thom.; reliqui, redit ad. Sed continet ex mea sententia versus tria asyndeta, quæ procedunt a minori ad majus. Non solum fracta sunt tartara, sed etiam plebs in vincula conjecta liberatur, accedit tertium : redduntur ipsi vitæ beatæ dona. Locus est palmaris de descensu glorioso ad inferos. — 21. Cass., Lg., Cs., Thom., Beb., Torr., consurgit; Fr., dum surgit.—22. O., per epexegesin, tartaro.—23. O., tradens; Fabr., tyranni tr. v.; Lud.: Al. tyrannum trahens vinculo. Cf. jubilum paschalem, Also heilig ist der Tag, der die Holle überwandt und den leidigen Teufel darinne band. — 25-28. Om., Fabr. Ut clausula annectitur stropha plurimis hymnis paschalibus. 28. O., Md., defendas.
+  </bloco>
+
+  <!-- Notas Marginais (Letras no Gutter) -->
+  <bloco tipo="nota_marginal" script="latino" bbox="485,410,510,430">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,600,510,620">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,850,510,870">
+    C
+  </bloco>
+
+  <!-- Aparato Crítico / Rodapé Esquerda -->
+  <bloco tipo="aparato_critico" script="latino" bbox="50,710,480,950">
+    — 1. Apoc. xix, 9 : Beati qui ad cœnam nuptiarum Agni vocati sunt.—2. O., stolis in albis; Fabr., stol. et albis. Candida veste induebantur baptizati omnes. Hinc Paulinus Ep. 12, ad Sever. : « Inde parens sacro ducit de fonte sacerdos Infantes niveas, corpore, corde, habitu.»—3. Baptismi typus fuit transitus; Israelitarum per mare Rubrum, I Cor. x, 1 sqq. Arator Hist. Ap. 11, 81 sq.; Avitus l. v. (de Transitu maris Rubri); Sedul. Op. pasch. 1, 120. Cæterum Pharao rex sæpissime typice refertur ad diabolum. —5. O., sacrum corpusculum.—5, 6. Corn. : « Assatum et arefactum in cruce igne iræ Dei, ut ipse ait: Aruit sicut testa virtus mea. » Accedit quod comparatur cum agno paschali assato. Quæ imago, a Brev. Rom. in texto correcto non recepta, quam sit inepta
+  </bloco>
+
+  <!-- Aparato Crítico / Rodapé Direita -->
+  <bloco tipo="aparato_critico" script="latino" bbox="500,710,950,950">
+    LXIII. — In Breviariis non reperi hymnum (excepto Cs.), quamquam ad investigandum magnam diligentiam adhibui. Illud enim permirum accidit apud tres auctores diverso modo esse pronuntiatum : præter nos enim quos novimus, Cassandrum (Bebelium et Clichtovæum) et librum S. Benedicti. Thomasius ita carmen exhibet : 1-4, cons. cum Cass.; 5-8, Psallamus hoc discipuli, Laudem dicamus martyri, Qui primus post redemptorem, Christi secutus est crucem; 9-16, ut apud Cass.; 17-20, Ipse martyr egregius, Amore Christi prædicans, sancto repletur Spiritu, Viretum gerens angelicum; 21-28, ut apud Cass.; 17-24; 29-32, Iste paratus vertice, Gaudens suscepit lapides, Rogans pro eis Dominum. Gaudens tradidit Spiritum. Versus Cassandri 25-36 desiderantur. Quo in librorum dissidio ea mihi perplacuit opinio duas de S. Stephano cantilenas a librariis confusas esse atque permixtas : nam alias quoque hæc est hymnographorum consuetudo, ut senten-
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="350,960,650,990">
+    Digitized by Google
+  </bloco>
+
   <notas>
-    Página em latim impresso. Disposição em duas colunas; blocos mapeados seguindo ordem esquerda então direita; números de linhas e algarismos de paginação mantidos em transcrição quando visíveis. Algumas abreviações tipográficas mantidas literalmente. Usei "[ilegivel]" nenhuma vez pois todo o texto é legível na imagem.
+    A página contém texto em latim com citações em alemão antigo/médio no bloco de comentário esquerdo.
+    As letras A, B, C são marcas de seção marginais.
+    Layout complexo com múltiplas colunas na parte superior (3 colunas) e inferior (2 colunas).
   </notas>
 </pagina>

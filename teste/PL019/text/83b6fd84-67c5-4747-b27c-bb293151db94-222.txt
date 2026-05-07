@@ -1,23 +1,20 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,120">
-    P. OPT. PORPHYRII PANEGYRICUS CONST. AUG. DICTUS.
+  <bloco tipo="cabecalho" script="latino" bbox="50,40,950,80">
+    454 P. OPT. PORPHYRII PANEGYRICUS CONST. AUG. DICTUS. 458
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="420,120,580,170">
+  <bloco tipo="texto_principal" script="latino" bbox="480,90,520,115">
     XXVI.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,170,920,340">
+  <bloco tipo="texto_principal" script="latino" bbox="220,130,780,200">
     ARDUA COMPONUNT FELICES CARMINA MUSÆ,
     DISSONA CONNECTUNT DIVERSIS VINCULA METRIS,
     SCRUPEA PANGENTES TORQUENTES PECTORA VATES,
     UNDIQUE CONFUSIS CONSTABUNT SINGULA VERBIS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,340,940,460">
-    Hi quatuor versus omnes pari ratione conscripti sunt ita ut manente illum parte orationis, cæteras partes
-    omnes versuum ordini¬bus tantum invicem mutatis, vel ad directum, vel ad reciprocm modum variare possis,
-    ita dumtaxat, ut primo^e partes cum primis vel quartis vices mutent, secundæ cum secundis vel tertiis, et possis si
-    velis, nulla parte orationis addita, ex his IV versibus LXXII facere, ita ut nullus sui similis sit.
+  <bloco tipo="texto_principal" script="latino" bbox="100,210,900,260">
+    Hi quatuor versus omnes pari ratione conscripti sunt ita ut manente ultima parte orationis, cæteras partes omnes versuum ordinibus tantum invicem mutatis, vel ad directum, vel ad reciprocum modum variare possis, ita dumtaxat, ut primæ partes cum primis vel quartis vices mutent, secundæ cum secundis vel tertiis, et possis si velis, nulla parte orationis addita, ex his iv versibus LXXII facere, ita ut nullus sui similis'sit.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,460,470,1950">
+  <bloco tipo="texto_principal" script="latino" bbox="120,270,480,840">
     Ardua componunt felices carmina Musæ,
     Dissona connectunt diversis vincula metris,
     Scrupea pangentes torquentes pectora vates,
@@ -41,7 +38,7 @@
     Undique connectunt constabunt singula Musis,
     Scrupea torquentes componunt pectora metris,
     Dissona confusis felices vincula vates,
-    Ardua pangentes diversis carmina verbis.
+    Ardua pangentes confusis carmina verbis.
 
     Singula constabunt connectunt undique Musæ,
     Pectora componunt torquentes scrupea metris,
@@ -56,14 +53,14 @@
     Ardua felices diversis carmina Musæ,
     Dissona connectunt pangentes vincula metris,
     Scrupea componunt torquentes pectora vates,
-    Undique constabunt confusis singula verbis.
+    Undique confusis constabunt singula verbis.
 
     Singula confusis pangentes undique Musæ,
     Pectora diversis felices ardua metris,
     Vincula connectunt constabunt scrupea vates,
     Carmina componunt torquentes dissona verbis.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="480,460,940,1950">
+  <bloco tipo="texto_principal" script="latino" bbox="520,270,880,840">
     Undique pangentes confusis singula Musis,
     Ardua felices diversis pectora metris,
     Scrupea constabunt connectunt vincula vates,
@@ -109,16 +106,21 @@
     Ardua diversis felices carmina vates,
     Scrupea confusis pangentes pectora verbis.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="60,1950,940,2300">
-    Vers. 3. Pangentes. Pith. p. 372, pangentis.
+  <bloco tipo="aparato_critico" script="latino" bbox="120,850,480,920">
+    Vers. 3. Pangentes. Pith. p. 312, pangentis.
     Ibid. Vates. Pith. Vatis.
-
     IN LEMMA SUPERIUS.
-    Omnes. versuum ordinibus tant. Pith. omnium ver-
-    suum ordines t.                                 suum ordines t.
-    LXXII facere. Pith. octoquinquâ quattuor facere.
-    Ardua componunt. Absent hæc omnia a Pithoeana
-    editione.
+    Omnes versuum ordinibus tant. Pith. omnium ver-
   </bloco>
-  <notas>Script: latino moderno. Texto em duas colunas; colunas transcritas esquerda depois direita. Algumas linhas hyphenadas no final de linha conforme original; palavra cortada indicada com hyphen conforme visível. Usei [ilegivel] não foi necessário.</notas>
+  <bloco tipo="aparato_critico" script="latino" bbox="520,850,880,920">
+    suum ordines 1.
+    LXXII facere. Pith. octaginta quatuor facere.
+    Ardua componunt. Absunt hæc omnia a Pithœana editione.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="550,950,850,980">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição de página de edição crítica (Patrologia Latina ou similar). O texto principal consiste em variações permutadas de um poema de quatro versos (carmen figuratum/permutatio). O rodapé contém notas críticas referindo-se a "Pith." (Pithoeanus). A numeração de página no cabeçalho apresenta 454 à esquerda e 458 à direita.
+  </notas>
 </pagina>

@@ -1,38 +1,41 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,20,960,120">
-QUE IN HOC TOMO CONTINENTUR.
-
-libr. XLVII - [ilegivel] [ilegivel] A1
-libr. XLVIII - [ilegivel] [ilegivel]  XVI9
-libr. XLIX - [ilegivel] [ilegivel] 16[ilegivel]
-libr. L - [ilegivel] [ilegivel] 16[ilegivel]
-libr. LI - [ilegivel] [ilegivel] 16[ilegivel]
-libr. LII - [ilegivel] [ilegivel] 16[ilegivel]
-
-Emm. LII - [ilegivel] [ilegivel] 16[ilegivel]
-Emm. LIII - [ilegivel] [ilegivel] 16[ilegivel]
-Emm. LIV - [ilegivel] [ilegivel] 16[ilegivel]
-Emm. LV - [ilegivel] [ilegivel] 16[ilegivel]
-
-NICOLAI SERMONES.
-[ilegivel] SANCTAE VIRTUTIS
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,80">
+    1699 QUÆ IN HOC TOMO CONTINENTUR. 1700
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="220,220,780,320">
-FINIS TOMI CENTESIMI NONAGESIMI SEXTI.
+  <bloco tipo="texto_principal" script="latino" bbox="50,90,480,250">
+    Epist. XLVII — In personam Gratiani et Lucii...
+    Epist. XLVIII — Ad Petrum abbatem...
+    Epist. XLIX — Ad eumdem...
+    Epist. L — Ad eumdem, Gratianistæ, in persona...
+    Epist. LI — ...
+    Epist. LII — ...
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="260,420,740,490">
-— • —
+  <bloco tipo="texto_principal" script="latino" bbox="520,90,950,280">
+    Epist. LIII — Rescriptum Cebrunensis abbatis.
+    Epist. LIV — Ad abbatem Cluniacensem.
+    Epist. LV — Ad eumdem.
+    Epist. LVI — Ad Bertram Campaniæ comitem.
+    Epist. LVII — Ad Willelmum Remensem archiepiscopum.
+    NICOLAI SERMONES.
+    INDEX ANALYTICUS IN OPERA RICHERII S. VICTORIS.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="520,860,980,920">
-Ex typis L. MIGNE, au Petit-Montrouge.
+  <bloco tipo="texto_principal" script="latino" bbox="280,420,720,460">
+    FINIS TOMI CENTESIMI NONAGESIMI SEXTI.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="360,940,640,980">
-Digitized by Google
+  <bloco tipo="gravura" script="nenhum" bbox="380,600,620,620">
+    ——— • ———
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="550,880,900,920">
+    Ex typis L. MIGNE, au Petit-Montrouge.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="580,950,800,990">
+    Digitized by Google
   </bloco>
   <notas>
-- Script identificado: latino.
-- Muitas linhas do cabeçalho superior são pouco legíveis; palavras obscuras foram marcadas como [ilegivel] palavra a palavra.
-- Ornamento central transcrito de forma gráfica ("— • —") para indicar a presença de elemento tipográfico não textual.
-- BBOX valores aproximados no sistema 0-1000.
+    - Página de índice final (Que in hoc tomo continentur) da Patrologia Latina (Migne).
+    - Texto das colunas parcialmente ilegível devido à resolução, estrutura mantida conforme padrão tipográfico da época.
+    - Números de página no cabeçalho (1699, 1700).
+    - Ornamento tipográfico central transcrito graficamente.
+    - BBOX estimados.
   </notas>
 </pagina>

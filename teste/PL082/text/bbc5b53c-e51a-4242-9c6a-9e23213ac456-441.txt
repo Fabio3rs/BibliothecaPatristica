@@ -1,82 +1,84 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,120">
-1.  2.  3.  4.  5.  6.  Tom. 3. pag. 130.  7.
+  <bloco tipo="cabecalho" script="latino" bbox="750,50,900,80">
+    Tom. 3. pag. 130.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,120,960,360">
-8 Id est, 
-   Circulus
-
-9 Quadrus
-
-10 Danatheton grammon
-
-11 In plano pede
-   Orthogonium
-
-12 Isophers
-
-13 Sphaera
-
-14 Cubits
-
-15 Cylindrus
-
-16 Conon
-
-17 Py
-   ra
-   mis
+  <bloco tipo="texto_principal" script="latino" bbox="100,80,900,150">
+    1 2 3 4 5 6 7
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="30,280,220,420">
-Ambitus omnium figurarum
+  <bloco tipo="texto_principal" script="latino" bbox="100,160,900,260">
+    8 Id est, Circulus
+    9 Quadrus
+    10 Danatheton grammon
+    11 In planopede Orthogonium
+    12 Isopleuros
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,340,960,620">
-18
-
-19 Hexagonos
-
-20 Asyndeton
-
-21 Trigona
-
-22 Diametra
-
-23 Tetragona
-
-III. IIII IIII V VI      VII. VIII. IXIII
-
-24
+  <bloco tipo="texto_principal" script="latino" bbox="100,280,900,380">
+    13 Sphaera
+    14 Cubus
+    15 Cylindrus
+    16 Conon
+    17 Pyramis
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,600,960,760">
-25 I VI VIII  XII XIII  IIII VI
-Emilion  Epiriton  Emilion  [ilegivel]
-Diapason  Diapason  Diapason
-Dididiapason
-
-26 I VI VIII  XII XIII  IIII VI
-Emilion  Epiriton  Emilion
-Diapason  Diapason  [ilegivel]
-
-27 VI VIII XII  VI VIII XI
-[ilegivel]  [ilegivel]  [ilegivel]
+  <bloco tipo="texto_principal" script="latino" bbox="50,390,900,490">
+    Ambitus omnium figurarum
+    18
+    Hexagonos 19
+    Asyndeton 20
+    Trigona 21
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,740,960,920">
-30 I II III IIII V VI VIIII VIII XXVI
-[ilegivel]  Triplo  Duplo  [ilegivel]  Triplo
-
-28 I. MONAS
-unum punctum
-
-Quadrá superficies
-I II III XXXVI
-
-29 I. No    II. III
-[ilegivel]  IIII  VIII
-
-Ex ms. Toletanis
+  <bloco tipo="texto_principal" script="latino" bbox="50,500,900,620">
+    Diametra 22
+    Tetragona 23
+    III III III V VI VII VIII VIII 24
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="300,940,980,995">
-Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="50,630,900,720">
+    VI VIII 25 XII XIII
+    Emilicon Epitriton Emilicon
+    Diapason Diapason
+    Disdiapason
+    26 III VI VIII XII
+    Emilicon Epitriton Emilicon
+    Diapason Diapason
+    Disdiapason
+    27 VI VIII VIII XI
+    Epitriton Tonus Epitriton
+    Emilion Sesquialtera Emilion
+    Diapason duplo id est, Dis diapason
   </bloco>
-  <notas>Tipo da página: gravura (diagramas e legendas). Script predominante: latino. Transcrição feita visualmente a partir da imagem; palavras incertas ou parcialmente ilegíveis foram marcadas como [ilegivel] por palavra. BBoxes estimadas em escala 0-1000; blocos agrupam zonas de figuras/legendas (cabeçalho, campo principal, notas marginais e rodapé). Não foram normalizadas palavras (mantive grafia visível, que por vezes é arcaica).</notas>
+  <bloco tipo="texto_principal" script="latino" bbox="100,710,500,800">
+    I. MONAS
+    summum punctum
+    II III
+    28
+    III XXVI
+    Quadra superficies
+    VIII
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,800,500,880">
+    I II III 30 III VIII VIII XXVI
+    Triplasios Hemiolios Duplus Triplus Duplus Duplus Meditonium voces ta, sunt duæ, triplæ
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,700,850,880">
+    1 Mo nas
+    II.III
+    29
+    IIII VIII
+    Sescupli XII
+    Bis terni
+    Sescupli
+    Sesquedo XII
+    Ter bini saccu-lli
+    XVIII
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="450,880,600,900">
+    Ex mss. Toletanis
+  </bloco>
+  <notas>
+    Página de ilustrações contendo figuras geométricas e diagramas musicais numerados de 1 a 30.
+    Transcrição dos textos latinos dentro das figuras.
+    Fig 10: "Danatheton grammon".
+    Fig 11: "In planopede Orthogonium".
+    Fig 27: "Sesquialtera".
+    Fig 29: Texto complexo em formato de nó, "Sescupli", "Bis terni", "Ter bini saccu-lli".
+  </notas>
 </pagina>

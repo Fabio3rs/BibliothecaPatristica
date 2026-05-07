@@ -1,155 +1,89 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="25,10,975,120">
-    1203 AD TOMUM III OPERUM S. HIERONYMI APPENDIX: 1201
+  <bloco tipo="cabecalho" script="latino" bbox="100,30,900,60">
+    1203 AD TOMUM III OPERUM S. HIERONYMI APPENDIX. 1204
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="100,120,900,200">
+  <bloco tipo="texto_principal" script="latino" bbox="150,80,850,150">
     ORIGENIANUM LEXICON
     NOMINUM HEBRAICORUM
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,150,850,200">
     Primum ex Cod. Regio 772, vel 2282, editum, Ex Vaticano 1456, multo accuratius,
     LATINE REDDITUM,
-    ET CUM HIERONYMlANA INTERPRETATIONE COMPARATUM.
+    ET CUM HIERONYMIANA INTERPRETATIONE COMPARATUM.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="60,200,940,240">
+  <bloco tipo="texto_principal" script="misto" bbox="100,210,900,250">
     Interpretatio Latina. Codex Vaticanus. Hieronymus.
+    DICTIONARIUM. ΛΕΞΙΚΟΝ. LIBER NOMINUM.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,240,320,960">
-    DICTIONARIUM.
+  <bloco tipo="texto_principal" script="latino" bbox="100,260,320,580">
     A
-    Adam, terrenus, homo, terra ru-
-    bra, vel terra caro facta, aut
-    terra veniciens, vel testificatio.
-    Adama, terra virgo, vel terra san-
-    guinolenta.
-    Abel, a Deo, vel offerens ad Deum,
-    aut vapor, vel luctus.
-    Abraam, pater excelsi, aut pater
-    alii.
-    Aaron, arc., aut videns; visiones,
-    vel seruus, vel sublimitas, aut
-    potens, aut spiritus.
-    Abdia, seruus meus, constiena.
-    Abenezer, populus adjutor, vel la-
-    pis adjutorius.
-    Abessalom, patris pacis super ip-
-    sos.
-    Aminadab, patris mei benepla-
-    citum, vel populus desiderabi-
-    lis.
-    Abigael, patris mei revelatio,
-    sive ros.
+    Adam, terrenus, homo, terra rubra, vel terra caro facta, aut terra veniens, vel testificatio.
+    Adama, terræ virgo, vel terra sanguinolenta.
+    Abel, a Deo, vel offerens ad Deum, aut vapor, vel luctus.
+    Abraam, pater excelsi, aut pater filii.
+    Aaron, arca, aut videns visiones, vel sermo, vel sublimitas, aut potens, aut spiritus.
+    Abdias, servus meus, confitens.
+    Abenezer, populus adjutor, vel lapis adjutorii.
+    Abessalom, patris pacis super ipsos.
+    Aminadab, patris mei beneplacitum, vel populus desiderabilis.
+    Abigaen, patris mei revelatio, sive ros.
     Appho, nunc, modo. Sic inveni.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="330,240,660,960">
-    ΑΞΕΙΚΟΝ.
-    Α
-    Ἀδὰμ, γηπενὶς, ἄνθρωπος, ἤ ἡ ἐρ-
-    ρά, ἡ γῆ σαρκούνται, ἢ ἡ ἔρχε-
-    ται, ἡ μαρτυρία.
-    Ἀδὰμ, ἡ παρθενὸς, ἡ γῆ αἱματό-
-    δοξ.
-    Ἄβελ, ἀπὸ θεοῦ, ἡ ἀναφέρον ἐπὶ
-    θεῶν, ἡ ἀτμὶς, ἡ πένθος.
-    Ἀβραὰμ, πατὴρ ὑψίστου, ἢ πατὴρ
-    ἄλλων.
-    Ἀαρὼν, κερβώτος, ἢ ὁρῶν ὄρασις, ἢ
-    λόγος, ὁ ὑψος, ὁ δυνατὸς, ὁ πνεῦ-
-    μα.
-    Ἀβδία, δοῦλος ἡ μου, ἡσυχοπροτὴς.
-    Ἀβενεζέρ, λαὸς βοηθός, ἡ λίθος τοῦ
-    βοηθοῦ.
-    Ἀβεσσαλὼμ, πατρὸς εἰρήνης ἐπʼ αὐτοὺς.
-    Ἀμιναδαβ, ὁ πατὴρ μου πεπόθνω, ἢ
-    ἔθνος ἐπιθυμητὸν.
-    Ἀβιγαῖλ, πατρὸς μου ἀποκάλυψις,
-    ἢ ῥόδος.
-    Ἀπφω, ταχὺν, ἄρτιως· οὕτως ἔτιρων.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,240,960,960">
-    LIBER NOMINUM.
+  <bloco tipo="texto_principal" script="grego" bbox="340,260,560,580">
     A
-    Adam, homo, sive terrenus, aut
-    indigena, vel terra rubra.
+    Ἀδάμ, γηγενής, ἄνθρωπος, ἡ ἐρυθρά, ἡ γῆ σαρκουμένη, ἡ γῆ ἐρχομένη, ἡ μαρτυρία.
+    Ἀδάμ, γῆ παρθένος, ἡ γῆ αἱματώδης.
+    Ἄβελ, ἀπὸ θεο, ἡ ἀναφέρων ἐπὶ θεόν, ἡ ἀτμίς, ἡ πένθος.
+    Ἀβραάμ, πατὴρ ὑψίστου, ἡ πατὴρ ἠχοῦ.
+    Ἀαρών, κιβωτός, ἡ ρῶν ράσεις, ἡ λόγος, ἡ ψος, ἡ δυνατός, ἡ πνεμα.
+    βδιοῦ, δοῦλός μου, ὁ ἐξομολογητός.
+    Ἀβενέζερ, λαὸς βοηθός, ἡ λίθος τοῦ βοηθοῦ.
+    Ἀβεσσαλώμ, πατρὸς εἰρήνης ἐπ' αὐτούς.
+    Ἀμιναδάβ, ὁ πατρός μου εὐδοκία, ἡ ἔθνος ἐπιθυμητόν.
+    Ἀβιγαήλ, πατρός μου ἀποκάλυψις, ἡ δρόσος.
+    Ἀπφώ, ταύτην, ἀρτίως· οὕτως εὗρον.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="580,260,900,580">
+    A
+    Adam, homo, sive terrenus, aut indigena, vel terra rubra.
     Ada, testimonium.
-    Adama, humus, vel terra, sive
-    terrena.
-    Abel, luctus, sive vanitas, vel va-
-    por, vel miserabilis.
-    Abram, pater excel-sus.
-    Aaron, mons fortitudinis, sive
-    mons fortis, vel mons eorum.
+    Adama, humus, vel terra, sive terrena.
+    Abel, luctus, sive vanitas, vel vapor, vel miserabilis.
+    Abram, pater excelsus.
+    Aaron, mons fortitudinis, sive mons fortis, vel mons eorum.
     Abdias, servus domini.
-    Abenezer, lapis adjutori.
+    Abenezer, lapis adjutorii.
     Abessalom, pater pacis.
-    Abinadab, pater meus spontanecus,
-    vel urbanus.
-    Abigail, pater exsultationis, sive
-    pater roris, vel pater meus ros.
-    Apphe, etiam nunc?
+    Abinadab, pater meus spontaneus, vel urbanus.
+    Abigil, pater exsultationis, sive pater roris, vel pater meus ros.
+    Appho, etiam nunc?
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="40,960,960,1450">
-    * Unissa est ροχ γη in manuscripto, quam sup-
-    plet superius Fragmentum Graecum libri nominum
-    Hebraicorum. Praeterea consuldit Philo, vel Orig-
-    enes Hebraicum בֵּית Adam, cum אדה Ada, et אדה Udl,
-    unde elicant etymologias, venustae, sive venientes et
-    testificationis. Non sic doctus Hieronymus, qui no-
-    men Ada ex Hebraeo את Udl interpretatur testimo-
-    nium; Adam vero terram rubram ex themate אתנ
-    Adam, cum Aleph, quod significat rubere, et rufum
-    esse.
-    * De interpretatione hoc Graeca nominis Abel
-    plura diximus in primo superiori Fragmento. Con-
-    sule scholia nostra.
-    * Violenter omnino interpretantur Graeci nomen
-    Aaron, quod proprie montanum sonat, sive montem
-    fortitudinis.
-    * In voce Abdia etymologiam consentius inve-
-    nient interpretes Graecorum, quia apud ipsos ex-
-    prius Ἀβδὰς pro Ἀβδας, et Ἀβαδὶς pro Abdia corrupte
-    legendatur. Unde suspicabarur hoc nomen formatum
-    ex פ jada, confessus est.
-    * De nomine Aminadab, pro Abinadab diximus
-    in scholiis nostris. Sed hic observandum. Graecos
-    interpretari illud vocabulum sub utraque forma
-    corrupta et integra; Aminadab enim dicitur populus
-    .
-    * Rescribendum 'Αδὰμ, nullus dubito. Conci-
-    nii porro Josephus Ant. c. I, et Hesychius, qui
-    παράδοσις, originalem interpretatur, Plinius terram
-    virgineam ab Esuopoe inventor narrat lib. xxxiii, 3;
-    scholiaste Apollonii ad n. 874, Sumenan insularum
-    Περῥαναυ vocat.
-    * Hieron. legisse videtur θεὸν, Dei, sive Domini;
-    A desiderabilis; et Abinadab, patris mei beneplacitum, id
-    est, propensa voluntas.
-    * Ex etymologia subjice facile intelligitur scio-
-    plorem Graecum pro Abigal, aut Abigail, legisse
-    Abigaen.
-    * Hoc nomen legitur apud LXX, iv Reg. ii, 14,
-    πῶς ὁ θεὸς Ἑλλοι Ἀπφω; Ubi Deus Elias Apph?
-    Quod Hieronymus Latine reddidit ex Heb. אִפְּחוּ
-    aph-hu, vel, aph-o, etiamnum? vel forte ex את
-    apfho, quod LXX et Hieronymus legisse videntur
-    in Hebracorum exemplaribus. Occurrit ceterum illud
-    adverbium εἰαὶν cum in hȳ sine, ut Gen. xxxvi, 33,
-    מִי אִפְּחוּ, id est, quis nunc il-
-    le pro אִפְּחוּ aph-hu hodierno. Itaque suspicari
-    possumus lectum fuisse antiquitus, in aliquot
-    saltem codicibus, nomen אִפְּחוּ, sive אפח, in
-    Graeco Origeniano Lexico etiamnum supereſt.
-    Cuius annotanda scribenda sit sequens annotatiuncula,
-    aiorum ἐννοι, sic inveni, an Origeni adnotat inopi-
-    tori, qui indicare voluerit etymologiam nominis
-    non a seipso consciscam, sed ab alio accepisse de-
-    scripitam ac describendam. Lectori judicandum per-
-    milito.
-    certe longe rectius.
-    e Ipsa hujus nominis prior expositio rescriben-
-    dum persuadet 'Αδὰςδε; nonumque praeterea est
-    passim in Graecis mss. Ϛ et ϛ confundi. Vatic. etiam
-    in posteriorum p peccat, legens 'Αμιναδαβ, quod et
-    subsequenti 'Αβιγαΐ postponit.
-    d Vatic. duobus verbis τα νιν. Sunt porro qui
+  <bloco tipo="aparato_critico" script="misto" bbox="100,590,480,950">
+    a Omissa est vox γῆ in manuscripto, quam supplet superius Fragmentum Græcum libri nominum Hebraicorum. Præterea confundit Philo, vel Origenes Hebraicum דָּמָה Adam, cum דָּם Ada, et דָּם Ud, unde eliciunt etymologias, venturæ, sive venientes et testificationis. Non sic doctus Hieronymus, qui nomen Ada ex Hebræo דָּעַת Ud interpretatur testimonium; Adam vero terram rubram ex themate דָּם Adam, cum Aleph, quod significat rubere, et rufum esse.
+    b De interpretatione hac Græca nominis Abel plura diximus in primo superiori Fragmento. Consule scholia nostra.
+    c Violenter omnino interpretantur Græci nomen Aaron, quod proprie montanum sonat, sive montem fortitudinis.
+    d In voce Abdiou etymologiam confidentius inveniunt interpretes Græcorum, quia apud ipsos sæpius Ἀβδιοῦ pro Ἀβία, et Ἀβδιὼδ pro Ἀβδία corrupte legebatur. Unde suspicabantur hoc nomen formatum ex יָדָה jada, confessus est.
+    e De nomine Aminadab, pro Abinadab diximus in scholiis nostris. Sed hic observandum, Græcos interpretari illud vocabulum sub utraque forma corrupta et integra; Aminadab enim dicitur populus
+    f Rescribendum Ἀδάμα, nullus dubito. Concinit porro Josephus Ant. c. I, et Hesychius, qui παρθενικὴν, virginalem interpretatur. Plinius terram virginem ab Esubope inventam narrat lib. XXXII, 3; Scholiastes Apollonii ad II, 874, Samum insulam Παρθένιον vocat.
+    g Hieron. legisse videtur Θεοῦ, Dei, sive Domini :
   </bloco>
-  <notas>Transcrição feita sem normalizar abreviações; colunas transcritas esquerda-lado (latim), centro (grego), direita (latim). Alguns sinais tipográficos como pontos e apóstrofos mantidos conforme visível. Palavras parcialmente ilegíveis marcadas por hífen no final de linha conforme original; não usado [ilegivel] pois texto legível.</notas>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,590,520,610">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,750,520,770">
+    B
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="500,590,900,950">
+    A desiderabilis; et Abinadab, patris mei beneplacitum, id est, propensa voluntas.
+    b Ex etymologia subjecta facile intelligitur scriptorem Græcum pro Abigail, aut Abigails, legisse Abignen.
+    c Hoc nomen legitur apud LXX, IV Reg. 11, 14, Που ὁ Θεὸς Ἠλιο Ἀπφώ; Ubi Deus Eliu Appho? Quod Hieronymus Latine reddidit ex Heb. אִי־אֱפֹה aph-hu, vel, aph-o, etiamnunc? vel forte ex Ἔϕα aphpho, quod LXX et Hieronymus legisse videntur in Hebræorum exemplaribus. Occurrit enim illud adverbium etiam cum מ in fine, ut Gen. XXVII, 33, מִי אָפָה יִם, mi appho hu, id est, quis nunc ille pro אִי־אֱפֹה aph-hu hodierno. Itaque suspicari possumus lectum fuisse antiquitus, in aliquot saltem codicibus, nomen אֱפֹה aphpho, sive ἀπφώ, in Græco Origeniano Lexico etiamnum supersites. Cui autem ascribenda sit sequens annotatiuncula, οὕτως εὗρον, sic inveni, an Origeni admonenti ἄκρ
+    se invenisse scriptum in Hebræo, an Græco scriptori, qui indicare voluerit etymologiam nominis non a seipso confictam, sed ab alio accepisse descriptam ac describendam, Lectori judicandum permitto.
+    e Ipsa hujus nominis prior expositio scribendam persuadet Ἀβιναδάβ; notumque præterea est passim in Græcis mss. β et μ confundi. Vatic. etiam in postremo β peccat, legens Ἀμιναδάμ, quod et subsequenti Ἀβεγὰν postponit.
+    d Vatic. duobus verbis τὰ νῦν. Sunt porro qui certe longe rectius.
+  </bloco>
+  <notas>
+    Transcrição de página de léxico comparativo (Latim, Grego, Hebraico).
+    As letras A e B no bloco inferior direito foram tratadas como nota_marginal conforme instrução, embora façam parte da estrutura do texto das notas.
+    Caracteres hebraicos e gregos transcritos literalmente.
+  </notas>
 </pagina>

@@ -1,78 +1,107 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,20,960,120">
-    543 BIBLIORUM ULFILANA VERSIO 541
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,60">
+    543 BIBLIORUM ULFILANA VERSIO 511
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,120,960,620">
-    managaim lekjam jah fragimandei allamma seinamma jah ni vailtai botida ak nais vairs habaiþa. 
-    27, 28 gahausjandei bi iesu aþgaggandei in managein aflana alla þoik vasisjai is. unte qaþ þatei jabai vastjona
-    29 is alþte. ganisa. jah sunsaiv gabaursonda sa brunna blopis izos jah ufkunþa ana leika þatei gahail-
-    30 noda af þamma slaha. jah sunsaiv iesus ufkunþa in sis silbiu þo us sis maht usgaggandein. gavand-
-    31 jands sik in managein qap. was mis taitok vastjom. jah qepmun du imma siponjos is. saiwis þo ma-
-    32, 33 nagein breihandein þuk jah qiþis. was mis laiouk. jah vailtoda saiwan þo þata taujandein. ip so
-    qino ogandei jah reirandei. vitandei þatei varþ bi ija qam jah drauis du imma jah gap itmma alla þo
-    34 sunja. ip is qap du izai. dauhtar. galaubeins þeina ganasida þuk. gagg in gavairþi jah sjiais bailsa al
-    35 þamma slaha peinamna. naulþanuh imma rojdandin gemun fram þamma synagogafada qipandas
-    36 þatei dauhtar þeina gasvalt. wa panamais draibeis þana laisari. ip ierus sunsaiv gahausjands pata
-    37 vaurd rodþi qap du þamma synagogaƒada. ni faudheit. þatainei galaubei. jah ni fralaitol ainahun iz
-    38 mip sis afargaggan nibai paitru jah iakobu jah iohannen broþar iakobis. jah galaip in g:r:d þs syn-
-    39 gogafadis jah gasaw auhjoþdu jal gretandans jah vaifairwjandans tilu. jah iunatgagands qap du in.
-    40 wa auhjoþ jah gretlip. þata barn ni gadauþnoda ak slepiþ. jah bihlohun ina. ip is usvairpands allai
-    41 ganiinþi attan þis barnis jah aiþein jal þans mip sis jah galaip inn. þarei vas þata barn ligando. jah
-    fairgraip bi handau þata barn gabuh du izai. taleiba kumei. þatei is gaskeriþ. mavilo. du þas qipa.
-    42 urreis. jah suns urrais so mavi jah iddja. vas auk jere twalibe. jah ugsineodedun faurhtlein miklai.
-    43, v1, 1 jah anabaup im filu ei manna ni funþi þata jah haihait izai gibain ma j . n. jah usstoþ jainþro jah ama
-    2 in landa seinamma. jah laistidedun sfar imma siponjos is. jah biþe varþ sabbato. diganin in syna gre
-    laisjan. jah managai hausjandans sIlaldeikidendan qipandans. wapro þamma þata jah wo so handu-
-    3 geino so gibano iimma ei mahteis svaleikos þairh handuns is vairþand. niu þata ist sa timrja sa suans
-    marjins ip broþar iakoba jah iuse jah iudins jah seinonis. jah niu sind svisrjus is her at unais. jah
-    4 gamarzidaï vaurpun in þamma. qap þan iim iesus þatei nisi prauteius unsvers niba in gabeurþai sei-
-    5 nai jah in ganipjam jah in garda seinamma. jah ai mahta jainar ainomha mahte gatauja in niba tavla
-    6 siukaim handuns g.alagjands galailida. jah sildaleikida (Vide paginam sequentem.)
+  <bloco tipo="texto_principal" script="latino" bbox="0,60,1000,420">
+    managaim leikjam fah fraqimandei allamma seinamma jah ni vailhtai botida ak mais vairs habaida.
+    27, 28 gahausjandei bi iesu atgaggandei in managein aftana attaitok vastjai is. unte qab þatei jabai vastjom
+    29 is att'ka. ganisa. jah sunsaiþ gaþaursnoda sa brunna bloþis izos jah ufkunþa ana leika þatei gahail-
+    30 noþa af þamma slaha. jah sunsaiþ iesus ufkunþa in sis silbin þo us eis maht usgaggandein. gavand-
+    31 jands sik in managein qab. was mis taitok vastjom. jah qeþun du imma siponjos is. saiwis þu ma-
+    52, 53 nagein þreihandein þuk jah qiþis. was mis taitok. jah vlaitoda saiwan þo þata taujandein. iþ so
+    qino ogandei jah reirandei. vitandei þatei varþ bi ija qam jah draus du imma jah qab imma alla þo
+    34 sunja. iþ is qab du izai. dauhtar. galaubeins þeina ganasida þuk. gagg in gavairþi jah sijais hails af
+    35 þamma slaha þeinamma. nauhþanuh imma rodjandin qemun fram þamma synagogafada qiþandans
+    36 þatei dauhtar þeina gasvalt. wa þanamais draibeis þana laisari. iþ iesus sunsaiþ gahausjands þata
+    37 vaurd rodiþ qab du þamma synagogafada. ni faurhtei. þatainei galaubei. jah ni frailaiþ ainohun ize
+    38 miþ sis afargaggan nibai paitru jah iakobu jah iohannen broþar iakobis. jah galaiþ in gard þis syna-
+    39 gogafadis jah gasaw auhjodu jah gretandans jah vaifairwjandans filu. jah innatgaggands qab du im.
+    40 wa auhjop jah gretiþ. þata barn ni gadaupnoda ak slepiþ. jah bihlohun ina. iþ is usvairpands allaim
+    41 ganimiþ atain þis barnis jah aiþein jah þans miþ sis jah galaiþ inn. þarei vas þata barn ligando. jah
+    fairgraip bi handau þata barn qabuþ du izai. taleiþa kumei. þatei ist gaskeiriþ. mavilo. du þus qiþa.
+    42 urreis. jah suns urrais so mavi jah iiddja. vas auk jere tvalibe. jah usgeisnodedun faurhtein mikilu.
+    43, VI, 1 jah anabauþ im þlu ei manna ni funbi þata jah haitait izai giban maþ : n. jah usstoþ þainpro jah -an
+    2 in landa seinamma. jah laistidedun afar imma siponjos is. jah biþe varþ sabbato. dugann in synagoge
+    laisjan. jah managai hausjandans sildaleikidedun qiþandans. waþro þamma þata jah wo so handu-
+    3 geino so gibano imma ei mahteis svaleikos þairh handuns is vairþand. niu þata ist sa timrja sa sunus
+    marjins iþ broþar iakoba jah iuse jah iudins jah seimonis. jah niu sind swistrjus is her at unsis. jah
+    4 gamarzidai vaurþun in þamma. qab þan im iesus þatei nist praufetus unsvens niþa in gabaurþai sei-
+    5 nai jah in ganiþjam jah in garda seinamma. jah ni mahta þainar ainohun mahte gataujan niþa favaim
+    6 sinkaim handuns galagjands gahailida. jah sildaleikida (Vide paginam sequentem.)
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,620,960,700">
+  <bloco tipo="texto_principal" script="latino" bbox="0,420,1000,720">
     INTERPRETATIO.
+    multis medicis et amittens omne suum et non quoquam sanata, sed potius pejus habens. 27. audiens de I su,
+    accedens in turba retro attigit vestem ejus. 28. Nam dixit, quod si vestes ejus attingo, valeo. 29. Et statim
+    exaruit hic fons sanguinis ejus et sensit in corpore, quod sanata-est ab hac plaga. 30. Et statim Iesus sensit
+    in se ipso hanc ex se potentiam exiuntem, conversus se in turba dixit : quis mihi tetigit vestes? 31. Et di-
+    xerunt ad eum discipuli ejus : vides hanc turbam torquentem te et dicis, quis me tetigit? 32. Et circum-
+    spexit videre hanc hoc facientem. 33. Verum hæc mulier timens et tremens, sciens quod factum-e t de,
+    venit et cecidit ad eum et dixit ei omnem hanc veritatem. 34. Verum is dixit ad eam : filia, fides tua sal-
+    vit te ; vade in pacem et sis sana ab hac plaga tua. 35. Adhuc eo loquente venerunt ab hoc synagogæ- præ-
+    fecto dicentes, quod filia tua obiit ; quid adhuc vexas hunc doctorem? 36. Verum Iesus statim audiens hoc
+    verbum dictum dixit ad hunc synagogæ-præfectum : ne time, tantummodo crede! 37. Et non permisit unum
+    eorum cum se sequi, nisi Petrum et Iacobum et Iohannem, fratrem Iacobi. 38. Et ivit in domum hujus sy-
+    nagogæ-præfecti et vidit tumultum et flentes et ejulantes multum. 39. Et ingrediens dixit ad eos : quid tu-
+    multuamini et fletis? hæc puella non obiit, sed dormit. 40. Et deriserunt eum, verum is eiciens omnes
+    assumit patrem hujus puellæ et matrem et hos cum se et ivit intro, ubi fuit hæc puella jacens. 41. Et prehen-
+    dit apud manum hanc puellam dixitque ad eam : talitha kumi, quod est explicatum : puella, ad te dico, surge!
+    42. Et statim surrexit hæc puella et ivit : fuit enim annorum duodecim ; et obstupuerunt timore magno.
+    43. Et præcepit iis multum, ut homo non sciret hoc et jussit ei dare edere. VI, 1. Et surrexit illinc et venit
+    in regionem suam, et secuti-sunt post eum discipuli ejus. 2. Et cum fieret sabbatum, cœpit in synagoga
+    docere, et multi audien es mirati-sunt dicentes : unde huic hoc et quæ hæc sapientiarum hæc data ei, quod
+    virtutes tales per manus ejus fiunt? 3. Nonne hoc est hic faber-lignarius, hic filius Mariæ, verum frater
+    Iacobi et Iusi et Judæ et Simonis, et nonne sunt sorores ejus hic apud nos? et scandalizati fuerunt in hoc.
+    4. Dixit autem iis Iesus, quod non-est profeta inhonoratus, nisi in patria sua et in cognatis et in domo sua.
+    5. Et non potuit illic unam virtutum facere, nisi paucis ægrotis manus imponens sanavit. 6. et miratus est
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,700,960,1120">
-    multis medicis et amittens omne suum et non quoquam sanata, sed potius pejus labens, 27. audiens de l so,
-    accedens in turba retro atitgit vestren ejus. 28. Nam dixit, quod si vestes ejus attingo, valeo. 29. Et stetit
-    exauruit hic fons sanguinis ejus et seisit in corpore, quod sanata-est ab hac plaga. 30. Et stalim Iesus seisi
-    in se ipso hanc ex se potentiam excumentem, converteres se in turba dixit: quis mihi tetigit vestes? 31. Et di-
-    xerunt ad eum discipuli ejus: vides hanc turbam torquentem te et dicis, quis me tetigit? 32. Et circum-
-    spexit videre hanc hunc facientem. 33. Verum haec mulier timens et tremens, sciens quod factum-c te ve
-    nit et cecidit ad eum et dixit ei omnem hanc veritatem. 34. Verum is dixit ad eam: filia, fides tua sa-
-    vit te; vade in pacem et sis sana ab hac plaga tua. 35. Adhuc eo loquente venerunt ad hunc synagoga-pre- 
-    feco o dicentes, quod filia tua obiit; quid adhuc vexas hu-oc doctorem? 36. Verum Iesus statim audiens hoc
-    verbum dictum dixit ad hunc synagoge-praefectum: ne time, tantummodo crede! 37. Et non pernisit una
-    eorum cum se sequi, nisi Petrum et Iacobum et Iohannem, fratres Iacobi. 38. Et ivit in domum hujus syn-
-    agogae-praefeci et vidit tumultum et fletus et ejuslantes multum. 39. Et ingrediens dixit ad eos: quid tu-
-    mulumamini et fletis? haec puella non obiit, sed dormit. 40. Et deriserunt eum, verum is ejiciens omnes
-    assumit patrem hujus puellae et matrem et hos cum se et ivit intro, ibi fuit haec puella jacens. 41. Et prohace
-    dit apud manum hanc puellam dixitque ad eam: talitha kumi, quod est explicatum: puella, a te dico, surge!
-    42. Et statim surrexit haec puella et ivit; fuit enim annorum duodecim; et obstuperunt timore magna.
-    43. Et praecepit iis mulum, ut homo non sciret hoc et jussit ei dare edere. vi, 1. Et surrexit illinc et venit
-    in regionem suam, et secuti-sunt post eum discipuli ejus. 2. Et cum fieret sabbatum, cepit in syna gogo
-    docere, et multi audier enes miraculi-sunt dicentes: unde huic hoc et quae haec sapientiarum haec data ei, quod
-    virtutes tales per manus ejus fiunt? 3. Nonne hoc est hic faber-lignarius, hic filius Mariae, verum frater
-    Iacobi et Iusi et Iudae et Simonis, et nonne sunt sorores ejus hic apud nos? 4. Et scandalizati fuerunt in hoc.
-    4. Dixit autem iis Iesus, quod non-est profeta inhonoratus, nisi in patria sua et in cognatis: et in domo sua.
-    5. Et non potuit illic unam virtutum facere, nisi paucis aegrotis manus imponens sanavit. 6. et ivit a cf
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,1120,960,1300">
+  <bloco tipo="cabecalho" script="latino" bbox="0,720,1000,750">
     ANNOTATIONES.
-    v, 26. allamma seinamma] ( gr. omm. — botida — hebraida) errant St. B. Z. has formas pro verbis finitis
-    habentes, sunt autem participia graecis ὑπελθόντα εἰς et
-    27, 29. sunsaiv] St. ✠ sunsaiv.
-    v. 31. þuk] J. St. ✠ þus.
-    v. 34. slaha] St. ✠ slaha.
-    v. 35. nauh þanuh] J. St. ✠ div.
-    v. 37. ise mþis] sejorum cum se; in goth. versione
-    duas lectiones grecorum (αὐτὸν et αὐτὸν) conflate
-    esse videntur.
-    v. 38. vafairwjandans] St. ✠ faisarwjandans.
-    v. 39. slepiþ] cod. Arg. ex ✠ correctura manus se-
-    cun i v. sa uip, v.d. ad M. ix, 24.
-    v. 40. ligando] i cens. ✠ gr.
-    v. 42. faurhtlein] J S. ✠ (faurhtein), quod e B. sen-
   </bloco>
-  <notas>Transcrição feita mantendo grafia original do impresso; sinais tipográficos modernos (✠, parentêses, abreviações) preservados quando visíveis; deteções de caracteres incertos marcadas como [ilegivel] quando necessário (nenhum emprego nesta página).</notas>
+  <bloco tipo="aparato_critico" script="misto" bbox="0,750,500,950">
+    v. 26. allamma seinamma] ¶ gr. omn. — botida
+    habaida] errant St. B. Z. has formas pro verbis finitis
+    habentes, sunt autem participia græcis ὠφελήθεισα et
+    ὤφθησαν respondentia.
+    v. 29. sunsaiþ] St. X sunsajo.
+    v. 31. þuk] J. St. X þus.
+    v. 34. slaha] St. X ssaha.
+    v. 35. nauh þanuh] J. St. X div.
+    v. 37. ise miþ sis] eorum cum se; in goth. versione
+    duæ lectiones græcorum (αὐτῷ et αὐτῶν) conflatæ
+    esse videntur.
+    v. 38. vaifairwjandans] St. X vaifauwjandans.
+    v. 39. slepiþ] cod. Arg. ex correctura manus se-
+    cunᵈᵉ X sa uiþ, v.d. ad M. IX, 24.
+    v. 40. ligando] cens. ° gr.
+    v. 42. [faurhtein] J S. X [faurhteini, quod e B. sen-
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="500,750,1000,950">
+    tentia librarii erratum est; Ih. tacet de h. 1., neque
+    num in cod. Arg. vere sic scriptum fuerit, hodie dici
+    potest, quia plagulæ textum v, 42 — VII, 26 conti-
+    nentes hunc desiderantur.
+    v. 43. izai giban] ¶ gr. omn.
+    VI, 2. wo so] cod. Arg. (uti dicitur, cf. ad v, 42) et
+    editi. X wono, quæ forma non gothica est (cf. Grim.
+    I, 798); quam lectionem in textu posuimus, ea proba-
+    tur loco I, 27 wo so laiseino (quæ hæc doctrinarum),
+    vid. Ih. Ulfil. illustrat. p. 227, 4; Grim. I, 605. 2. De
+    permutatione litterarum n et s diximus ad M. VII, 23.
+    — ei] quod, gr. καί.
+    VI, 3. þata] hoc, gr. οὗτος; exemplum constructio-
+    nis germanicarum linguarum propriæ.
+    VI, 5. handuns galagjands] ¶ gr. omn.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="0,950,1000,1000">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição de documento contendo texto em Gótico (Ulfilas), Latim e Grego.
+    O bloco superior é a versão Gótica da Bíblia.
+    O bloco central é a interpretação em Latim.
+    O bloco inferior são anotações críticas em Latim com citações em Grego, dispostas em duas colunas.
+    A palavra "sen-" no final da coluna esquerda de anotações continua como "tentia" na coluna direita.
+    Caracteres especiais como þ (thorn) e abreviaturas foram transcritos literalmente quando possíveis.
+  </notas>
 </pagina>

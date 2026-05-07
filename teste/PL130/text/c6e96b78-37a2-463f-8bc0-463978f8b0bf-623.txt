@@ -1,26 +1,34 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,20,960,90">
+  <bloco tipo="cabecalho" script="latino" bbox="200,40,800,80">
     APPEND. AD SÆC. IX. — M. V. PROBI GRAMMATICI
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,90,500,960">
+  <bloco tipo="outro" script="latino" bbox="50,40,100,70">
+    1187
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="900,40,950,70">
+    1188
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,80,480,280">
     I.FO.TR. in foro Trajani.
     I.FO.IV. vel I. in foro Julii, vel Lucii, vel Livii.
     I.R. jure rogavit vel jure Romano.
-    I.FO.FLAM. in foro Flaminij vel Flaminis.
+    I.FO.FLAM. in foro Flaminii vel Flaminis.
     I.FO.POP. in foro Pompilii.
-    VI vel IIIII. VIR. sextumvir vel sexium.
+    VI vel IIII.VIR. sextumvir vel sexium.
     I.FO.P.R. in foro pro rostris.
-    I.N.Q. injustis nuptiis quaesitus.
-    I.D.P. juri dicundo præcerit.
-    IIII.VIR. quantumvir.
+    I.N.Q. injustis nuptiis quæsitus.
+    I.D.P. juri dicundo præerit.
+    IIII.VIR. quartumvir.
     II.VIR. duumvir.
     I.D.C. juris dicendi causa.
     I.C.E.V. justa causa esse videtur.
     I.O.M.S. Jovi optimo maximo sacrum.
     I.D. inferis diis.
-    I.N.A.P.X. in agro pedum decem.
-    IVNON. ET PROSERRP. Junoni et Proserpinæ.
+    IN.A.P.X. in agro pedum decem.
+    IVNON. ET PROSERP. Junoni et Proserpinæ.
     Additio.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,280,480,580">
     I.A. interea.
     I.C. Julius Cæsar vel intra circulum.
     I.T. intra tempus.
@@ -31,7 +39,7 @@
     I.L. jure legis vel justa lege.
     IAN. Januarius.
     III.V. triumviri.
-    XV. decemviri.
+    X.V. decemviri.
     IVR.D. jurisdictio.
     I.P. justa persona.
     I.O.M.IM. Jovi optimo maximo immortali.
@@ -46,10 +54,14 @@
     II.V. duumviri.
     I.P. jus pontificum.
     I.D. judicatum solvi.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="250,580,280,600">
     K
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,600,480,900">
     K.,KL. Kalendæ.
-    K.O Kalendæ quintiles.
-    K l vel IAN. Kalendæ Januarii.
+    K.Q Kalendæ quintiles.
+    K I vel IAN. Kalendæ Januarii.
     K.S. Kalendæ sextiles.
     K.D. capite diminutus.
     K.C. capite census, vel censuum, vel Carthago civitas.
@@ -62,24 +74,34 @@
     K.P. castra ponit.
     K.DD. castra dedicamus.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,90,980,960">
+  <bloco tipo="nota_marginal" script="latino" bbox="500,80,520,100">
     A
-    K.M. carissima.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,80,950,140">
+    K. carissima.
     K. caput.
     K.K. calumniæ causa.
     K. cardo.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="750,140,780,160">
     L
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,160,950,280">
     L. Lucius vel Lælius.
     L.C. Lucius Catius.
     L.M. Lucius Murena.
-    L.C.S. lucrum sacrum.
-    L.C.D. lucrum divinum.
-    L.D. locum deditum.
-    L.EM. locns empus.
+    LC.S. lucrum sacrum.
+    LC.D. lucrum divinum.
+    LD. locum deditum.
+    L.EM. locus emptus.
     L.P. locus propitius, vel proprius.
     LQ.S. locus quo supra.
-    L.A.C. Latini coloni.
+    LA.C. Latini coloni.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,280,520,300">
     B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,300,950,480">
     L.S. Laribus sacrum.
     L.P.S.R. Latini prisci cives Romani.
     L.D.D.D. locum diis dedicavit, vel locus datus decreto decurionum.
@@ -87,21 +109,27 @@
     L.D.A.B.M. locum dedit Aulus bene merenti.
     L.AG. lex agraria.
     L.IV. lex Julia.
-    L.VOC. lex Voconia
+    L.VOC. lex Voconia.
     L.CIN. lex Cinthia.
     LIB. libertas.
     L.L. Lucii liberti.
     LEG.X. legio decima.
     L.PVB. loco publico.
     L.PR. loco privato.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,480,520,500">
     C
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,500,950,580">
     L.H. locum hunc.
     L.F. Lucii filius.
     L.D. locum dedit.
     L.L.Q.F. Lucium Luceium Quinti filium.
     L.L.L. Lucii liberti locus.
     Additio.
-    L.V.G.P. Lucius vetus, vel Verus, Galliae procurator.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,580,950,720">
+    L.V.G.P. Lucius vetus, vel Verus, Galliæ procurator.
     LG. legavit vel legatum.
     L.A.P. ludi Apollinis vel Apollinaris.
     L.P.D. locus publice datus.
@@ -109,12 +137,16 @@
     L. S. liberto suo.
     LL.SS vel L.SS. libertis suis.
     L.M. locus monumenti.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,720,520,740">
     D
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,740,950,900">
     L.P. lege punitus.
-    L.Q.S. locus quaesitus senatui.
+    L.Q.S. locus quæsitus senatui.
     L.F. Lucius Flavius, vel Flaminius, vel Lucii filius.
     L.A.N. Lucius Annius, vel quinquaginta annis.
-    L.L.L.M.M. lacerat, lacerum Largii, mordax, Memmius.
+    L.L.L.M.M. lacerat, lacertum Largii, mordax, Memmius.
     LAD. locus alteri datus.
     L.B.M.D. locum bene merenti dedit vel donavit.
     L.E.D. lex ejus damnatus.
@@ -123,8 +155,14 @@
     L.F. Lucii filius.
     L. quinquaginta.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="720,960,980,1000">
+  <bloco tipo="rodape" script="latino" bbox="400,950,600,980">
     Digitized by Google
   </bloco>
-  <notas>Transcrição feita em caracteres latinos modernos; pequenas abreviações e pontuações respeitadas. Alguns sinais tipográficos (por ex. ligaturas) foram normalizados para legibilidade. Palavra "[ilegivel]" não foi necessária.</notas>
+  <notas>
+    Transcrição de página de glossário de abreviações latinas.
+    Símbolos de seção A, B, C, D mapeados como nota_marginal no gutter central.
+    Cabeçalhos de seção K e L mapeados como cabecalho dentro do fluxo de texto.
+    Ligaduras æ transcritas como tal (ex: SÆC., quæsitus).
+    Hifenização no final de linha preservada onde visível (ex: proæu- rator, fi- lius, ci- vitas). Nota: "proæu-" parece ser uma variante tipográfica ou erro por "procurator", mantido fiel à imagem.
+  </notas>
 </pagina>

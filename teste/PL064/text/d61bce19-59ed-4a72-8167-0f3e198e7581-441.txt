@@ -1,32 +1,147 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,70">
-    873 DE SYLLOGISMO HYPOTHETICO. 874
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    373 DE SYLLOGISMO HYPOTHETICO. 374
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,70,500,930">
-    duodecima, si cum non sit a, est b, cum non sit c, non est d, cum igitur non sit a, est e; vel ita, non est d, atqui cum non sit a, est b, cum igitur non sit a, non est d; vel ita, atqui cum non sit c, est d, cum igitur non sit a, non est b. Ex tertia decima, quæ quatuor colligit syllogismos hoc modo : si cum non est a, non est b, cum sit c, est d. Atqui cum non sit a, non est b, cum sit c, est d; vel ita, atqui cum non sit a, est b, cum igitur sit c, non est d; vel ita, atqui cum sit c, est d, cum igitur non sit a, non est b; vel ita, atqui cum sit c, non est d, cum igitur non sit a, est b. Item ex quarta decima, si cum non est a, non est b, cum sit c, non est d. Atqui cum non est a, non est b, cum igitur sit c, non est d; vel ita, atqui cum sit c, est d, cum igitur non sit a, est b. Quinta decima rursus quatuor colligit syllogismos, hoc modo : si cum non est a, non est b, cum non sit c, est d. Atqui cum non sit a, non est b, cum igitur sit c, non est d; vel ita, atqui cum non sit c, est d, cum igitur non sit a, est b.
-    
+  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,400">
+    duodecima, si cum non sit a, est b, cum non sit c,
+    non est d, atqui cum non sit a, est b, cum igitur non
+    sit c, non est d; vel ita, atqui cum non sit c, est d,
+    cum igitur non sit a, non est b. Ex tertia decima,
+    quæ quatuor colligit syllogismos hoc modo : si cum
+    non est a, non est b, cum sit c, est d. Atqui cum
+    non sit a, non est b, cum sit c, est d; vel ita, atqui
+    cum non sit a, est b, cum igitur sit c, non est d; vel
+    ita, atqui cum sit c, est d, cum igitur non sit a, non
+    est b; vel ita, atqui cum sit c, non est d, cum igitur
+    non sit a, est b. Item ex quarta decima, si cum non
+    est a, non est b, cum sit c, non est d. Atqui cum
+    non est a, non est b, cum igitur sit c, non est d; vel
+    ita, atqui cum sit c, est d, cum igitur non sit a, est b.
+    Quinta decima rursus quatuor colligit syllogismos,
+    hoc modo : si cum non est a, non est b, cum non sit
+    c, est d. Atqui cum non sit a, non est b, cum igitur
+    non sit c, est d; vel ita, atqui cum non sit a, est b,
+    cum igitur non sit c, est d; vel ita, atqui cum non sit
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,60,510,80">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,60,950,200">
+    c, non est d, cum igitur non sit a, est e; vel ita,
+    atqui cum non sit c, est d, cum igitur non sit a, non
+    est b. Ex sexta decima propositione : si cum non sit
+    a, non est b, cum non sit c, non est d. Atqui cum non
+    sit a, non est b, cum igitur non sit c, non est d; vel
+    ita, atqui cum non sit c, est d. Cum igitur non sit a,
+    est b. Ex quibus omnibus quadraginta conclusiones
+    fiunt. Sedecim quidem assumpta prima conditione,
+    ita ut in prima propositione est posita. Sedecim vero
+    assumpta secunda conditione contrario modo atque
+    in propositione est collocata. Octo vero ex quinta,
+    septima, tertia decima et quinta decima propositio-
+    nibus fiunt assumptis primis quidem conditionibus
+    contrario modo, atque in propositione proferebantur,
+    secundis vero conditionibus eodem modo assumptis,
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="520,200,540,220">
+    B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,200,950,280">
+    ut in propositione fuerant collocatæ. Ut igitur om-
+    nium propositionum conclusionumque ratio clarescat,
+    omnes hujusmodi enuntiationes cum propriis propo-
+    suimus exemplis.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,400,950,600">
     Si cum sit a homo, est b medicus, cum sit c animatum, est d artifex.
-    Si cum sit a homo, est b niger, cum sit c animatus, non est d alius.
+    Si cum sit a homo, est b niger, cum sit c animatus, non est d albus.
     Si cum sit a animatum, est b medicus, cum non sit c inanimatum, est d artifex.
-    Si cum sit a homo, est b niger, cum non sit c inanimatus, non est d alius.
+    Si cum sit a homo, est b niger, cum non sit c inanimatus, non est d albus.
     Si cum sit a homo, non est b æger, cum sit c animatus, est d sanus.
-    Si cum sit a homo, non est b artifex, cum sit c animatus, non est d medicos.
+    Si cum sit a homo, non est b artifex, cum sit c animatus, non est d medicus.
     Si cum sit a animal, non est b sanus, cum non sit c inanimatum, est d ægrum.
     Si cum sit a animatum, non est b artifex, cum non sit c inanimatum, non est d medicus.
     Si cum non sit a inanimatum, est b medicus, cum sit c animatum, est d artifex.
     Si cum non sit a inanimatum, est b niger, cum sit c inanimatum, non est d album.
-    Si cum non sit a inanimatum, est b medicus, cum non sit c invitale, est d artifex.
-    Si cum non sit a inanimatum, est b album, cum non sit c invitale, non est d nigrum.
-    Si cum non sit a irrationalæ, non est b ægrum, cum sit c rationale, est d sanum.
-    Si cum non sit a inanimatum, non est b artifex, cum sit c animatum, non est d medicos.
-    Si cum non sit a irrationalæ, non est b sanum, cum non sit c inanimatum, est d ægrum.
-    Si cum non sit a inanimatum, non est b artifex, cum non sit c invitale, non est d medicos.
+    Si cum non sit a inanimatum, est b medicus, cum non sit c invitate, est d artifex.
+    Si cum non sit a inanimatum, est b album, cum non sit c invitate, non est d nigrum.
+    Si cum non sit a irrationale, non est b ægrum, cum sit c rationale, est d sanum.
+    Si cum non sit a inanimatum, non est b artifex, cum sit c animatum, non est d medicus.
+    Si cum non sit a irrationale, non est b sanum, cum non sit c inanimatum, est d ægrum.
+    Si cum non sit a inanimatum, non est b artifex, cum non sit c invitate, non est d medicus.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,70,960,930">
-    Ac de his quidem qui per connexionem fiunt hæc dicta sunt. Hi vero qui in disjunctione sunt positi illis videntur adjungi, eorumque modus formasque suscipiunt, quos superius in connexione positos ex his propositionibus fieri diximus quæ duabus simplicibus jungerentur. Si igitur in disjunctione propositarum propositionum ad causarum similitudinem monstravero quæ in connexione posita ex simplicibus copulatæ sunt, quot modi, qualescunque conclusiones sunt in unaquaque illarum, quæ per connexionem fiunt propositionum, tot etiam in his esse necesse est quæ per disjunctionem pronunciariæ eandem vim connexions habere monstrantur. Quatuor igitur superius differentias per connexionem enuntiarum propositionum esse diximus, si ex simplicibus propositionibus copularentur, hoc modo : si est a, est b; si non est a, non est b; si est a, non est b; si non est a, est b. Per disjunctionem quoque propositiones quatuor tenent differentias hoc modo : aut est a, aut est b; aut non est a, aut non est b; aut est a, aut non est b; aut non est a, aut est b. Quarum quidem ea quæ prima est et proponit, aut est a, aut est b. In his tantum dici potest in quibus alterum eorum esse necesse est, velut in contrariis mediate carentibus, similiusque est ei propositioni quæ dicit : si non est a, est b. Quaenim proponit aut est a, aut est b, id intelligit, neque simul utraque esse posse, et si unum non fuerit, consequitur ut sit alterum. Itaque si non sit a, erit b, sed hæc una est earum propositionum quas in his quæ per connexionem sunt superius numeravimus. Quicunque igitur syllogismi in ea propositione fiunt, quæ est, si non est a, est b, hi etiam in ea faciendi sunt quæ per disjunctionem proponuntur, ut cum dicimus, aut est a, aut est b. Fiunt igitur in superiore quatuor modis. Quianibidem enim partem propositionis assumpseris, sive præcedentem, sive etiam consequentem, sive negativo modo, sive affirmativo, faciet syllogismum. Nam si hæc propositio sit, si non est a, est b, sive non sit a, erit b; sive sit a, non erit b; sive non sit b, erit a; sive sit b, non erit a. In propositione quoque disjunctiva idem est. Nam cum dicitur, aut est a, aut est b, siquidem fuerit, b non erit; quod si a non fuerit, erit b; et si b non sit, erit a; si b non fuerit, non erit a. Id quoque tali declaratur exemplo; nam si sit proposuitio, aut æger est, aut sanus, quidquid horum in assumptione assumpsum fuerit, vel negatum, altera pars vel affirmabitur, vel
+  <bloco tipo="nota_marginal" script="latino" bbox="50,600,70,620">
+    C
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,930,960,1000">
-    PATRON. LXIV. 28 Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="50,600,480,900">
+    Ac de his quidem qui per connexionem fiunt hæc
+    dicta sint. Ili vero qui in disjuncione sunt positi
+    illis videntur adjungi, eorumque modus formasque
+    suscipiunt, quos superius in connexione positos ex
+    his propositionibus fieri diximus quæ duabus sim-
+    plicibus jungerentur. Si igitur in disjunctione propo-
+    sitarum propositionum ad causarum similitudinem
+    monstravero quæ in connexione positæ ex simpli-
+    cibus copulatæ sunt, quot modi, qualescunque con-
+    clusiones sunt in unaquaque illarum, quæ per con-
+    nexionem fiunt propositionum, tot etiam in his esse
+    necesse est quæ per disjunctionem pronuntiatæ
+    eamdem vim connexionis habere monstrantur. Qua-
+    tuor igitur superius differentias per connexionem
+    enuntiarum propositionum esse diximus, si ex
   </bloco>
-  <notas>Transcrição feita mantendo abreviações e pontuações visíveis; pequenas manchas e caracteres ralos transcritos como [ilegivel] não foram necessários. Cabeçalho contém numeração de páginas conforme imagem.</notas>
+  <bloco tipo="nota_marginal" script="latino" bbox="50,750,70,770">
+    D
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,750,480,900">
+    simplicibus propositionibus copularentur, hoc modo :
+    si est a, est b; si non est a, non est b; si est
+    a, non est b; si non est a, est b. Per disjunctionem
+    quoque propositiones quatuor tenent differentias
+    hoc modo : aut est a, aut est b; aut non est a,
+    aut non est b; aut est a, aut non est b; aut non est
+    a, aut est b. Quarum quidem ea quæ prima est et
+    proponit, aut est a, aut est b. In his tantum dici po-
+    test in quibus alterutrum eorum esse necesse est, velut
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,600,950,900">
+    in contrariis medietate carentibus, similisque est ei
+    propositioni quæ dicit : si non est a, est b. Quæ
+    enim proponit aut est a, aut est b, id intelligit,
+    neque simul utraque esse posse, et si unum non fue-
+    rit, consequi ut sit alterum. Itaque si non sit a, erit
+    b, sed hæc una est earum propositionum quas in his
+    quæ per connexionem fiunt superius numeravimus.
+    Quicunque igitur syllogismi in ea propositione fiunt,
+    quæ est, si non est a, est b, hi etiam in ea faciendi
+    sunt quæ per disjunctionem proponetur, ut cum
+    dicimus, aut est a, aut est b. Fiunt igitur in supe-
+    riore quatuor modis. Quamlibet enim partem propo-
+    sitionis assumpseris, sive præcedentem, sive etiam
+    consequentem, sive negativo modo, sive affirmativo,
+    faciet syllogismum. Nam si hæc propositio est, si non
+    est a, est b, sive non sit a, erit b; sive sit a, non erit
+    b; sive non sit b, erit a; sive sit b, non erit a. In
+    propositione quoque disjunctiva idem est. Nam cum
+    dicitur, aut est a, aut est b, siquidem a fuerit, b non
+    erit; quod si a non fuerit, erit b; et si b non sit, erit
+    a; si b non fuerit, non erit a. Id quoque tali declara-
+    tur exemplo; nam si sit propositio, aut æger est, aut
+    sanus, quidquid horum in assumptione assumptum
+    fuerit, vel negatum, altera pars vel affirmabitur, vel
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="50,900,480,950">
+    PATROL. LXIV.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="520,900,950,950">
+    23
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="600,950,950,990">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Layout complexo com fluxo de texto que alterna entre colunas e bloco central.
+    Marginalia A, B, C, D identificadas como notas de seção.
+    Texto em latim.
+  </notas>
 </pagina>

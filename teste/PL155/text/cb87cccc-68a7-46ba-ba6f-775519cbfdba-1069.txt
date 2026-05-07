@@ -1,65 +1,58 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,980,70">
-2131 ORDO RERUM QUÆ IN HOC TOMO CONTINENTUR. 132
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,60">
+    2131 ORDO RERUM QUÆ IN HOC TOMO CONTINENTUR. 2132
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,70,490,210">
-ALBERICUS OSTIENSIS EPISCOPUS.
-EPISTOLA AD MONACHOS S. ORIENTI AUXITA-
-NENSIS. — De concordia inter archiepiscopum Auxita-
-nensis ecclesiæ et S. Orienti monasterium. 1651
-
-FULCARDUS WESTMONASTERIENSIS MONA-
-CHUS.
-
-Notitia. 1633
-LIBELLUS DE FUNDATIONE ABBATIE WESTMO-
-NASTERIENSIS. 1635
-
-AMATUS BURDEGALENSIS EPISCOPUS.
-
-Notitia. 1637
-EPISTOLÆ.
-I. — Ad Radulfum Turonensem archiepiscopum. — Ut
-concilio Burdigalensi intersit, et de Gervasio S. Salvini
-abbate. 1641
-II. — Ad Goffridum abbatem Vindocinensem. — Sig-
-nat restitutam monasterio illius ecclesiam Olerunensem. 1642
+  <bloco tipo="texto_principal" script="latino" bbox="150,60,480,400">
+    ALBERICUS OSTIENSIS EPISCOPUS.
+    EPISTOLA AD MONACHOS S. ORIENTII AUXITA-
+    NENSIS. — De concordia inter archiepiscopum Auxita-
+    nensis ecclesiæ et S. Orientii monasterium. 1631
+    FULCARDUS WESTMONASTERIENSIS MONA-
+    CHUS.
+    Notitia. 1633
+    LIBELLUS DE FUNDATIONE ABBATIÆ WESTMO-
+    NASTERIENSIS. 1633
+    AMATUS BURDEGALENSIS EPISCOPUS.
+    Notitia. 1637
+    EPISTOLÆ. 1637
+    I. — Ad Radulfum Turonensem archiepiscopum. — Ut
+    concilio Burdigalensi intersit, et de Gervasio S. Salvini
+    abbate. 1641
+    II. — Ad Goffridum abbatem Vindocinensem. — Signi-
+    ficat restitutum monasterio illius ecclesiam Oloronensem.
+    1643
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="490,70,980,210">
-SYNODUS GERUNDENSIS celebrata temporibus Ger-
-darii papae, instante episcopo Amato ejus legato. 1078.
-SYNODUS BURDEGALENSIS, Amati apostolicæ sedis
-legato præside, anno 1050 habita. 1641
-DIPLOMATA.
-I. — Judicium Amati, archiepiscopi Burdegalensis et
-apostolicæ sedis legati, in gratiam monasterii Sanctæ Cru-
-cis. 1617
-II. — Amatus archiepiscop. Burdegalens. dat Silve-
-heri ecclesiam S. Lupi. 1648
-III. — Quædam acta ad Amatum Burdegalensem spe-
-ciantia. 1649
-
-POPPO METENSIS EPISCOPUS.
-
-Notitia. 1659
-DIPLOMATA.
-I. — Integrum centenam S. Juliani abbatis S. Vincen-
-tii concedit, et omnia bona ejus confirmat. 1651
-II. — Jura advocatorum Amellis ordinat. 1652
+  <bloco tipo="texto_principal" script="latino" bbox="520,60,950,400">
+    SYNODUS GERUNDENSIS celebrata temporibus Gre-
+    gorii papæ, instante episcopo Amato ejus legato anno
+    1078. 1645
+    SYNODUS BURDEGALENSIS, Amato apostolicæ sedis
+    legato præside, anno 1060 habita. 1645
+    DIPLOMATA. 1647
+    I. — Judicium Amati, archiepiscopi Burdegalensis et
+    apostolicæ sedis legati, in gratiam monasterii Sanctæ Cru-
+    cis. 1647
+    II. — Amatus archiepiscop. Burdegalens. dat Silvæ-Ma-
+    jori ecclesiam S. Lupi. 1648
+    III. — Quædam acta ad Amatum Burdegalensem spec-
+    tantia. 1649
+    POPPO METENSIS EPISCOPUS.
+    Notitia. 1649
+    DIPLOMATA. 1651
+    I. — Integram centenam S. Juliani abbatissæ S. Vincen-
+    tii concedit, et omnia bona ejus confirmat. 1651
+    II. — Jura advocatorum Amellæ ordinat. 165
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,420,800,520">
-FINIS TOMI CENTESIMI QUINQUAGESIMI QUINTI.
+  <bloco tipo="rodape" script="latino" bbox="300,550,700,580">
+    FINIS TOMI CENTESIMI QUINQUAGESIMI QUINTI.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="420,920,880,980">
-Ex typis L. MIGNE, au Petit-Montrouge.
+  <bloco tipo="rodape" script="latino" bbox="600,900,950,930">
+    Ex typis L. MIGNE, au Petit-Montrouge.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="760,980,980,1000">
-Digitized by Google
+  <bloco tipo="outro" script="latino" bbox="650,960,900,990">
+    Digitized by Google
   </bloco>
   <notas>
-- Script predominantemente latino.
-- Página em duas colunas no topo: transcrito primeiro o cabeçalho (spans completo), depois a coluna esquerda e a direita, conforme a posição visual.
-- Hyphenation (quebra de linha com hífen) foi mantida conforme aparece no original (ex.: AUXITA- / NENSIS; WESTMO- / NASTERIENSIS).
-- Onde a leitura era insegura, evitei inserir palavras não visíveis; usei somente formas legíveis e deixei [ilegivel] não necessário.
-</notas>
+    Transcrição fiel incluindo hifens de fim de linha (ex: AUXITA-NENSIS, WESTMO-NASTERIENSIS, MONA-CHUS, Silvæ-Ma-jori, Vincen-tii, ordinat.). O número final da coluna direita está cortado ("165"). Ligaturas "æ" preservadas.
+  </notas>
 </pagina>

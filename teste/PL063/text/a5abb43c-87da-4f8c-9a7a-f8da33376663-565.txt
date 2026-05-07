@@ -1,94 +1,169 @@
 <pagina estado="com_texto">
-  <bloco tipo="outro" script="latino" bbox="20,10,980,70">
-    1125        DE ARITHMETICA LIB. II.        1126
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,50">
+    1125 DE ARITHMETICA LIB. II. 1126
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,80,480,160">
-    latitudinem secundum unitatem descriptis quinque angulis continetur, cunctis scilicet lateribus æquali dimensione dispositis. Sunt autem hi:
-    [ 1 | 5 | 12 | 22 | 35 | 51 | 70 ]
+  <bloco tipo="texto_principal" script="latino" bbox="60,60,480,100">
+    latitudinem secundum unitatem descriptis quinque
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,160,480,320">
-    Eodem quoque modo eorum latera succrescunt. Nam primi potestate pentagoni, id est unius, idem unus spatium lateris tenet. Secundi vero quinarii, qui est actu ipso aliquo opere primus pentagonus, binai per latera fixi sunt. Tertius vero, id est 12, tribus in latus auctus est. Quartus 22, 4 numerorum in latere quantitate distenditur. Alique idem in ceteris secundum unitatis progressionem, in naturali scilicet numero, secundum superiorem figurarum incrementa accidunt.
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="40,320,480,480">
-    [figura: tres pentagonae schematicae]
-    22    35    51
-    4 basis   5 basis   6 basis
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,480,480,520">
-    CAPUT XIV.
-    De generatione pentagonorum.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,520,480,800">
-    Nascantur autem hi numeri qui extensi in latitudinem, quinque angulos pandunt, ab eadem naturalis numeri quantitate in sese coacervati, ita ut duobus semper interjectis numeris superiori vel inferioribus, vincens ternario eum cui jungendus est aggregetur. Namque unitati, intermisis duobus et tribus, si qualor jungas, qui tribus ipsam superent unitatem, quinarius pentagonus procreabitur. Post 4 vero si, intermisso quinario et scenario, 7 aggreges, duodenarium pentagonum procreabis. Namque 1 et 4 et 7 numeri 13 explebunt. Hoc etiam in aliis fit. Nam si 10, vel 13, vel 16, vel 19, vel 22, vel 25 superiores cunctis adjunxeris, eodem quoque superius modo pentagoni fiunt, secundum superiorem descriptionem.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,800,480,880">
-    [ 1 | 22 | 35 | 51 | 70 | 92 | 117 ]
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,880,480,940">
-    CAPUT XV.
-    De hexagonis eorumque generationibus.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,940,480,1180">
-    Hexagoni autem, qui sex angulis, et heptagoni, qui 7 rursus lateribus continentur, secundum hunc modum eorum laterum augmenta succrescunt. Namque in trianguli numeri natura procreatione ipsos numeros jungebamus, qui sese in naturali dispositione sequenterunt, et se tantum unitate transire; quadrati vero numeri, id est tetragoni procreatio, teneret ex numeris qui uno intermisto copulabantur, cum se binario superaverant; pentagoni vero natura fuit ex duobus interpositis relicisque qui se ternario vincerent.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,120,520,150">
+  <bloco tipo="nota_marginal" script="latino" bbox="460,60,480,80">
     A
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,80,960,220">
-    Secundum quoque talia augmenta hexagonorum, vel octogonorum, vel 9 laterum figura, vel 10, vel quolibet aliorum, competentis progressione conficitur. Ut enim in pentagono, duobus intermissis eos jungebamus qui se ternario superarent, ita nunc in hexagono, tribus intermisis eos jungemus qui se quaternario transeant, et erunt quidem eorum radices et fundamenta, ex quibus junctis omnes hexagoni nascuntur.
+  <bloco tipo="texto_principal" script="latino" bbox="60,80,480,110">
+    angulis continetur, cunctis scilicet lateribus æquali
+    dimensione dispositis. Sunt autem hi :
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,220,760,300">
-    [ 1 | 1 | 5 | 9 | 13 | 17 | 21 ]
+  <bloco tipo="outro" script="latino" bbox="60,115,480,140">
+    1 | 5 | 12 | 22 | 35 | 51 | 70
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,300,960,380">
-    Et ad eundem ordinem consequentes, atque ab his sexangulorum formae nascuntur.
+  <bloco tipo="texto_principal" script="latino" bbox="60,145,480,280">
+    Eodem quoque modo eorum latera succrescunt. Nam
+    primi potestate pentagoni, id est unius, idem unus
+    spatium lateris tenet. Secundi vero quinarii, qui est
+    actu ipso atque opere primus pentagonus, bini per
+    latera fixi sunt. Tertius vero, id est 12, tribus in
+    latus auctus est. Quartus 22, 4 numerorum in latere
+    quantitate distenditur. Atque idem in cæteris se-
+    cundum unitatis progressionem, in naturali scilicet
+    numero, secundum superiorem figurarum incrementa
+    uenduntur.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,240,520,270">
+  <bloco tipo="outro" script="latino" bbox="80,290,460,460">
+    [Figurae pentagonorum cum punctis]
+    4 basis 5 basis 6 basis
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="180,470,360,490">
+    CAPUT XIV.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,495,390,515">
+    De generatione pentagonorum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="60,520,480,710">
+    Nascentur autem hi numeri qui extensi in latitu-
+    dinem, quinque angulos pandunt, ab eadem natura-
+    lis numeri quantitate in sese coacervata, ita ut duo-
+    bus semper interjectis numeris superiori vel supe-
+    rioribus, vincens ternario eam cui jungendus est
+    aggregetur. Namque unitati, intermissis duobus et
+    tribus, si quatuor jungas, qui tribus ipsam superent
+    unitatem, quinarius pentagonus procreabitur. Post
+    6 vero si, intermisso quinario et senario, 7 aggreger,
+    duodenarium pentagonum procreabis. Namque 1 et
+    4 et 7 numeri 13 explebunt. Hoc etiam in aliis fiet.
+    Nam si 10, vel 13, vel 16, vel 19, vel 22, vel 25 su-
+    perioribus cunctis adjunxeris, eodem quo superius
+    modo pentagoni fient, secundum superiorem de-
+    scriptionem.
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="60,715,480,740">
+    | 22 | 35 | 51 | 70 | 92 | 117 |
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="180,745,360,765">
+    CAPUT XV.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="130,770,410,790">
+    De hexagonis eorumque generationibus.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="60,795,480,930">
+    Hexagoni autem, qui sex angulis, et heptagoni,
+    qui 7 rursus lateribus continentur, secundum hunc
+    modum eorum laterum augmenta succrescunt. Nam-
+    que in trianguli numeri natura procreationeque ipsos
+    numeros jungebamus, qui sese in naturali disposi-
+    tione sequerentur, et se tantum unitate transirent;
+    quadra i vero numeri, id est tetragoni procreatio,
+    fiebat ex numeris qui uno intermisso copulabantur,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,60,940,200">
+    cum se binario superarent; pentagoni vero natura
+    fuit ex duobus interpositis relictisque qui se ternario
+    vincerent. Secundum quoque talia augmenta hexa-
+    gonorum, vel octogonorum, vel 9 laterum figura,
+    vel 10, vel quotlibet aliorum, competenti progres-
+    sione conficitur. Ut enim in pentagono, duobus in-
+    termissis eos jungebamus qui se ternario superarent,
+    ita nunc in hexagono, tribus intermissis eos junge-
+    mus qui se quaternario transeant, et erunt quidem
+    eorum radices et fundamenta, ex quibus junctis om-
+    nes hexagoni nascuntur.
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="520,205,940,230">
+    | 1 | 5 | 9 | 13 | 17 | 21 |
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,235,940,270">
+    Et ad eundem ordinem consequentes, atque ab his
+    sexangulorum formæ nascuntur.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,275,520,295">
     B
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,380,960,460">
-    [ 1 | 1 | 6 | 13 | 28 | 45 | 66 ]
+  <bloco tipo="outro" script="latino" bbox="520,275,940,300">
+    | 1 | 6 | 15 | 28 | 45 | 66 |
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,460,960,560">
-    Quos ad superiorem modum, scilicet descriptos, in propriis ordinibus pernotabis.
+  <bloco tipo="texto_principal" script="latino" bbox="520,305,940,340">
+    Quos ad superiorem modum, scilicet descriptos, in
+    propriis ordinibus pernolabis.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="520,560,960,620">
+  <bloco tipo="cabecalho" script="latino" bbox="650,345,810,365">
     CAPUT XVI.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,620,960,980">
-    De heptagonis eorumque generationibus, et communia omnium figurarum inveniendae generationis regula, descriptionisque.
-    
-    Septem vero angulorum figura est, cum ad eundem ordinem progressionis uno plus quam in sexangulorum figura numero intermissa superiori conjungeris. Nam si quattuor interpositis, qui sexe quinario vincant, aggregaveris, heptagoni continuo figura nascetur, ut hi numeri sint eorum radices, et (ut superius dictum est) fundamenta.
+  <bloco tipo="texto_principal" script="latino" bbox="520,370,940,410">
+    De heptagonis eorumque generationibus, et communis
+    omnium figurarum inveniendæ generationis regula,
+    descriptionisque.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,980,760,1040">
-    [ 1 | 1 | 6 | 11 | 16 | 21 ]
+  <bloco tipo="texto_principal" script="latino" bbox="520,415,940,510">
+    Septem vero angulorum figura est, cum ad eum-
+    dem ordinem progressionis uno plus quam in sexan-
+    gulorum figura numero intermisso superiori conjun-
+    xeris. Nam si quatuor interpositis, qui sese quinario
+    vincant, aggregaveris, heptagoni continuo figura
+    nascetur, ut hi numeri sint eorum radices, et (ut su-
+    perius dictum est) fundamenta.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,1040,960,1180">
-    Qui vero ex his constanti hi sunt.
-    
-    [ 1 | 1 | 7 | 13 | 24 | 35 ]
-    
-    Novem vero angulorum secundum eundem ordinem forma procreatur, ita ut secundum æqualem progressionem primi quoque eorum numeri distent. Nam in triangulo qui sunt numeri, quae prima superficiis figura est, uno sese tantum numeri præcedunt, qui scilicet eorum naturam descriptionemque perficiunt. In tetragono vero qui secundus est, duobus sese juncti numeri vincunt, et in pentagono 3, et in hexagono 4, et in heptagono 5, hujusque rei nullus est modus. Hoc autem nos subjectarum formarum descriptiones docebunt.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,480,520,510">
+  <bloco tipo="nota_marginal" script="latino" bbox="500,515,520,535">
     C
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,760,520,790">
+  <bloco tipo="outro" script="latino" bbox="520,515,940,540">
+    | 1 | 6 | 11 | 16 | 21 |
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,545,940,565">
+    Qui vero ex his constant hi sunt.
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="520,570,940,595">
+    | 1 | 7 | 18 | 34 | 55 |
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,600,940,710">
+    Novem vero angulorum secundum eundem ordinem
+    forma procreatur, ita ut secundum æqualem pro-
+    gressionem primi quoque eorum numeri distent.
+    Nam in triangulo qui sunt numeri, quæ prima su-
+    perficiei figura est, uno sese tantum numeri præce-
+    dunt, qui scilicet eorum naturam descriptionemque
+    perficiunt. In tetragono vero qui secundus est, duo-
+    bus sese juncti numeri vincunt, et in pentagono
+    3, et in hexagono 4, et in heptagono 5, hujusque rei
+    nullus est modus. Hoc autem nos subjectarum for-
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,715,520,735">
     D
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="520,1180,960,1500">
-    [figura: triangula et tabulae numerorum]
-    1.2.      1.2.3.      1.2.3.4.
-    (triangula punctata et sub iis series quadratorum)
-    [pequena tabula cum cellis innumeratis, numeri '1' repetiuntur]
+  <bloco tipo="texto_principal" script="latino" bbox="520,715,940,735">
+    marum descriptiones docebunt.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="360,1500,640,1560">
+  <bloco tipo="outro" script="latino" bbox="520,740,940,930">
+    [Figurae triangulorum et quadratorum cum punctis]
+    1. 2. 1. 2. 3. 1. 2. 3. 4.
+    2 3 6 10
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
     Digitized by Google
   </bloco>
   <notas>
-    - Scriptum principale: latino.
-    - Letras A, B, C, D à vertical central transcritas como notas marginais separadas.
-    - Figuras transcritas de forma descritiva; interiores das figurarum (pontos e traços) não são reproduzidos graficamente, apenas os rótulos numéricos e legendas (ex.: "4 basis", "5 basis", "6 basis", numerationes tabularum) foram transcritos.
-    - Onde o traçado tipográfico era pouco nítido ou incerto, foram evitadas emendas; termos razoavelmente legíveis foram transcritos. Se alguma palavra ficou incerta no original, optou-se por conservar a forma que melhor corresponde ao impresso; marquei palavras totalmente ilegíveis com [ilegivel] quando necessário (nenhuma ocorrência exigiu marcação por palavra inteira nesta página).
+    Transcrição de página de tratado de aritmética (Boethius?).
+    Ligaduras 'æ' transcritas como 'æ'.
+    'uenduntur' no final do primeiro parágrafo da coluna esquerda (visualmente 'u', contexto 'tenduntur').
+    'quadra i' na linha "quadra i vero numeri" (espaçamento estranho ou erro de impressão).
+    Marginalia A, B, C, D identificadas como notas marginais.
+    Tabelas numéricas e figuras geométricas representadas como blocos 'outro' com descrição textual dos números visíveis.
   </notas>
 </pagina>

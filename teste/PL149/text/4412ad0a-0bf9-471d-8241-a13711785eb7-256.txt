@@ -1,27 +1,33 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,80">
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,60">
     503 S. ANSELMI LUCENSIS EPISCOPI 504
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,80,500,900">
+  
+  <bloco tipo="texto_principal" script="latino" bbox="80,70,480,600">
     48. Quod ministeria ecclesiæ pro captivorum redemptione vendenda sunt.
-    49. Ut decima a laicis non possideantur.
+    49. Ut decimæ a laicis non possideantur.
     50. Quod res sacræ nullius sunt, nec alienari debent nisi pro captivis.
     51. Ut qui converti voluerit, medietatem rerum suarum ecclesiæ cui subjectus est, dimittat, et sic ad monasterium vadat.
-    52. Ut nullus abbas decimas vel primitiias teneat sine auctoritate apostolica vel episcopi propriï.
+    52. Ut nullus abbas decimas vel primitias teneat sine auctoritate apostolica vel episcopi proprii.
     53. De quodam abbate constituto a papa Gregorio.
     54. Ut nullum constituatur monasterium sine conscientia episcopi sui, et ut omnes monachi episcopo subjecti sint.
     55. Quod non liceat monasteria quæ sacrata sunt, diversoria sæcularia fieri.
-    56. Ut irritum habeatur si quis res ecclesiæ a regibus exspetit, et ipse communione privetur.
-    57. Si quis ecclesiarum vel xenodochiorum facultates absulerit, ut necnon pauperum excommunicetur.
+    56. Ut irritum habeatur si quis res ecclesiæ a regibus expetit, et ipse communione privetur.
+    57. Si quis ecclesiarum vel xenodochiorum facultates abstulerit, ut necator pauperum excommunicetur.
     58. De libertate monachorum et monasteriorum.
-    59. Ut monasteria releventur a gravaminibus clericorum.
+    59. Ut monasteria releventur a gravamine clericorum.
     60. Quod clerici non debent monasteriis præponi.
-    61. Ut monasterium nullam patiatur calumniam in iis rebus quas quadraginta annos possedit.
-    62. Ut episcopi vel œconomi vel orphanotrophi vel xenodochi nihil hereditario possideant, nisi quod ante ordinationis horam possederunt.
-    63. Qui contra pacem ecclesiæ sunt, aut rebus suis expolientur, aut verberibus casi exsilio deputentur.
+    61. Ut monasterium nullam patiatur calumniam in his rebus quas quadraginta annos possedit.
+    62. Ut episcopi vel œconomi vel orphanotrophi vel xenodochi nihil hæreditarie possideant, nisi quod ante ordinationis horam possederunt.
+    63. Qui contra pacem ecclesiæ sunt, aut rebus suis exspolientur, aut verberibus cæsi exsilio deputentur.
     64. Ut de rebus Ecclesiæ quatuor portiones fiant,
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,80,970,900">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="500,70,520,90">
+    A
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,70,920,600">
     una episcopo, altera clericis, tertia pauperibus quarta restituendis ecclesiis.
     65. De eadem re.
     66. Item de eadem re.
@@ -29,43 +35,68 @@
     68. De eadem re.
     69. Ut res ecclesiæ non donentur, non commutentur, non vendantur, nisi meliorationis prospectu.
     70. Ut monasterium nec commutari possit cum alio monasterio.
-    71. Quid episcopo agendum sit, si plures hæredes contenderint de una ecclesia.
+    71. Quid episcopo agendum sit, si plures hæredes contendant de una ecclesia.
     72. De eadem re.
-    73. Quod monasteriorum constructoribus jovitæ non auferatur.
+    73. Quod monasterium constructoribus invite non auferatur.
     74. Quod liceat in monasterio missam cantari et mortuos sepeliri.
     75. Ut ecclesia non consecretur, si corpus in ea humatum esse constiterit.
     76. De his qui documenta ecclesiarum supprimunt aut negant.
     77. De traditionibus ecclesiasticis observandis quæ fidei non officiunt.
-    78. Ut de redditibus ecclesiæ et antiquis et viverter acquisitis quarte dentur.
+    78. Ut de redditibus ecclesiæ et antiquis et noviter acquisitis quartæ dentur.
     79. De diei Dominici observatione.
     80. De eadem re.
     81. De panibus et aliis rebus quæ sacris altaribus offeruntur.
     82. De eadem re.
     83. De constitutis ecclesiasticis temporis qualitate moderandis.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="200,900,800,980">
-    CAPITULA LIBRI SIXTI,
+
+  <bloco tipo="nota_marginal" script="latino" bbox="500,260,520,280">
+    B
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,980,970,1600">
-    Qui est de electione et ordinatione et de omni potestale sive statû episcoporum.
-    1. Ut papa incolumis nullus ambiat papatum; et de electione alterius, si ipse adhuc vivens nihil inde disposuerit.
+
+  <bloco tipo="nota_marginal" script="latino" bbox="500,480,520,500">
+    C
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="300,620,700,680">
+    CAPITULA LIBRI SEXTI,
+    Qui est de electione et ordinatione et de omni potestate sive statu episcoporum.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="80,690,480,930">
+    1. Ut papa incolumi nullus ambiat papatum; et de electione alterius, si ipse adhuc vivens nihil inde disposuerit.
     2. Ut sanctum esse nemo dubitet quem apostolicæ dignitatis apex juste attollit.
-    3. Item de eligendis episcopis, ut puris mentibus sint, et nullum pretium interveniat.
+    3. Item de eligendis episcopis, ut puris mentibus fiat, et nullum pretium interveniat.
     4. Ut in electione Romani pontificis nullus impedimentum aliquod faciat.
     5. Ut irrita sit omnis electio episcopi vel presbyteri vel diaconi quæ a principibus fit.
     6. De his qui se a populo electos asseverant.
     7. Ut extranei non præponantur his qui bene servierunt in ecclesiis suis.
     8. Quod non licet populo electionem facere episcoporum.
     9. Quod episcoporum electio non ex favore debet esse, sed ex judicio cautissimi examinis.
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="500,780,520,800">
+    D
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,690,920,930">
     10. De quodam electo in episcopum quem beatus papa Gregorius reprobavit, et alium fecit eligi atque consecravit.
-    11. Quod vivente Romano vel alio pontifice nullus electionem presumat facere.
+    11. Quod vivente Romano vel alio pontifice nullus electionem præsumat facere.
     12. De electione pontificis.
     13. Quod invasorem apostolicæ sedis liceat cardinalibus excommunicare et expellere.
     14. Ut ab ambitione omnes cessent, et ille papa permaneat quem clerus cum consensu populi elegerit.
     15. Qui eligendus est episcopus, non sit laicus, non neophytus, non secundæ conjugis aut viduæ maritus.
-    16. Ut ad electionem metropolitanì episcopi omnes provinciales episcopi conveniant: quod si in duos se dividerint, ille præponatur qui melioribus meritis juvatur.
+    16. Ut ad electionem metropolitani episcopi omnes provinciales episcopi conveniant: quod si in duas se diviserint, ille præponatur qui melioribus meritis juvatur.
   </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="550,960,850,990">
+    Digitized by Google
+  </bloco>
+
   <notas>
-    Texto em latim impresso. Duas colunas; transcrição seguiu ordem esquerda depois direita. Pequenas palavras parcialmente cortadas foram completadas conforme o contexto impresso; qualquer lacuna ilegível indicada com [ilegivel] — não foram necessárias nesta página.
+    Transcrição de página da Patrologia Latina (S. Anselmi Lucensis Episcopi).
+    As letras A, B, C, D foram identificadas como notas marginais de seção e separadas do fluxo principal do texto.
+    A letra 'A' no início da coluna superior direita foi movida para nota_marginal, pois o texto continua "una episcopo...".
+    Ligaturas como æ e œ foram mantidas conforme o original.
   </notas>
 </pagina>

@@ -1,137 +1,189 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,20,960,180">
-ANNO DOMINI DXL.
-
-DIONYSIUS EXIGUUS.
-
-NOTITIA (ex Cave).
+  <bloco tipo="cabecalho" script="latino" bbox="400,30,600,50">
+    ANNO DOMINI DXL.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,180,480,600">
-Dionysius Exiguus, natione Scytha, professione A
-monachus, et abbas Romanus, Cassiodori familiaris
-ejusque in dialectica addiscenda condiscipulus. Claruit
-anno 53. Obiit ante annum 556, quo Cassiodorus
-librum de Divinis Lectionibus scripsit : ac in eo Dio-
-nysium jamjam, uti ait, defunctum impense laudat.
-Generat hodieque, inquit (Cap. 23), Ecclesia catholica
-viros illustres probabilium dogmatum decore fulgentes.
-Fuit enim nostris temporibus et Dionysius monachus,
-— in utraque lingua valde doctissimus, reddens actioni-
-bus suis, quam in libris Domini legerat, aequitatem :
-qui Scripturas divinas tanta curiositate disseruerat atque
-intelllexerat, ut ... Fuit in illo cum sapientia magna
-simplicitas, cum doctrina humilitas, cum facundia lo-
-quendi parcitas. Totus catholicus, totus paternis
-regulis perseveranter adjunctus ; et quidquid possunt
-legentes per diversos quaerere, in illius scientia cogno-
-scebatur posse fulgere.
-
-OPERA.
-
-Collectio sive Codex canonum ecclesiasticorum, a
-Dionysio ; rogante Stephano episcopo Salonitano,
-Latine versus et compaginatus, constans canonibus
-apostolicis prioribus 50 et canonibus conciliorum Ni-
-ceni, Constantinopolitani, Chalcedonensis, Sardicen-
-sis, et Africanorum quorundam. Exstat in omnibus
-conciliorum collectionibus, et a Justello editus Paris.
-1628, in-8°, et in Bibliotheca Juris Canon. tom. I,
-p. 97.
-
-Collectio decretorum pontificum Romanorum a Siri-
-cio ad Anastassium II, quoquo reperiri poterant, una
-cum epistola nuncupatoria ad Julianum presbyterum
-Romanum, qui synodos Romae an. 488 et 499 habuit
-subscripsit. Exstat in unaquaque Conciliorum editione,
-et a Justello una cum Codice canonum edita Paris.
-1628, in-8°, et in Bibliotheca Juris Canon. tom. I,
-p. 181.
+  <bloco tipo="cabecalho" script="latino" bbox="150,70,850,130">
+    DIONYSIUS EXIGUUS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,180,960,600">
-Epistola synodica S. Cyrilli et concilii Alexandrini,
-adversus Nestorium, Latine versa. Exstat tum alibi,
-tum a Justello edita cum prioribus Opusculis.
-
-Epistola Paschalis Proterii ad Leonem, Latine versa,
-una cum Epistolis duabus ipsius Exigui pascha-
-libus ad Petronium et Bonifacium ; habetur in Appen-
-dice Petaviani operis de Doctrin. Temp.
-
-Vita S. Pachomii abbatis, Latine versa, et inter
-Vitas Patrum ab Heriberto Rosweydo edita Antverp.
-1615, 1628, in-folio.
-
-Oratio Procli de laudibus Deiparae (quam tamen non
-ab Exiguo, sed a Mario Mercatore, versam esse con-
-tendit Garnerius : ac proinde versionem ulterioris il-
-lius opera adjuncto textu Graeco edidit part. II, pag.
-49). Epistola ejusdem de Fide ad Armenos, et altera
-ad Domnum pro Athanasio Perrhenorum episcopo,
-Latine versa ; habentur in editione Procli operum a
-Vinc. Riccardo adornata Romae 1630, in-4°.
-
-Gregori Nysseni de Opificio hominis liber in duas di-
-viæ homilias, Latine versus. Exstat versio Basil. 1562.
-Colon. 1573, sed sine epistola Dionysii nunc cupatoria
-ad Eugippium presbyterum, et versione præfationis
-Nysseni : quas primus in lucem edidit Mabillonii
-Analec. tom. II, p. 1.
-
-Historia inventionis capitis S. Joannis Baptistæ, a Mar-
-cello abbate Graecè conscripta, et ab Exiguo Latine
-versa ; edita est a Cl. Du Fresne ad calcem historici
-tractatus de Capite S. Joannis Bapt. Paris. 1665,
-in-4°.
-
-Cyclas Paschalia annorum XCVII, ab anno 527 inicium
-ducens : cujus fragmentum habes in Mariani Scoti
-Chronico ad ann. 527. In hoc cyclo annos a Christi
-Incarnatione numeravit Dionysius : atque istam iterum
-primus omnium annis supplantandis adhibuit.
+  <bloco tipo="cabecalho" script="latino" bbox="400,140,600,160">
+    NOTITIA (ex Cave).
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,220,515,250">
-A
+  
+  <!-- Coluna Esquerda -->
+  <bloco tipo="texto_principal" script="latino" bbox="50,170,480,420">
+    Dionysius Exiguus, natione Scytha, professione
+    monachus, et abbas Romanus, Cassiodori familiaris
+    ejusque in dialectica addiscenda condiscipulus. Claruit
+    anno 5 3. Obiit ante annum 556, quo Cassiodorus
+    librum de Divinis Lectionibus scripsit : ac in eo Dio-
+    nysium jamjam, uti ait, defunctum impense laudat.
+    Generat hodieque, inquit (Cap. 25), Ecclesia catholica
+    viros illustres probabilium dogmatum decore fulgentes.
+    Fuit enim nostris temporibus et Dionysius monachus,
+    — in utraque lingua valde doctissimus, reddens actio-
+    nibus suis, quam in libris Domini legerat, æquitatem :
+    qui Scripturas divinas tanta curiositate discusserat at-
+    que intellexerat, ut... Fuit in illo cum sapientia magna
+    simplicitas, cum doctrina humilitas, cum facundia lo-
+    quendi parcitas. Totus catholicus, totus paternis regulis
+    perseveranter adjunctus; et quidquid possunt legentes
+    per diversos quærere, in illius scientia cognoscebatur
+    posse fulgere.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,360,515,395">
-B
+  
+  <bloco tipo="texto_principal" script="latino" bbox="200,430,300,450">
+    OPERA.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,500,515,535">
-C
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,450,480,570">
+    Collectio sive Codex canonum ecclesiasticorum, a
+    Dionysio; rogante Stephano episcopo Salonitano,
+    Latine versus et compaginatus, constans canonibus
+    apostolicis prioribus 50 et canonibus conciliorum Ni-
+    cæni, Constantinopolitani, Chalcedonensis, Sardicen-
+    sis, et Africanorum quorundam. Exstat in omnibus
+    conciliorum collectionibus, et a Justello editus Paris.
+    1628, in-8°, et in Bibliotheca Juris Canon. tom. I,
+    p. 97.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="40,610,960,745">
-PARS PRIMA OPERUM.
 
-OPERA DOGMATICA ET CANONICA.
-
-EPISTOLA SYNODICA
-
-S. CYRILLI ET CONCILII ALEXANDRINI
-
-CONTRA NESTORIUM
-
-▲ DIONYSIO EXIGUO LATINE TRANSLATA.
+  <bloco tipo="texto_principal" script="latino" bbox="50,580,480,700">
+    Collectio decretorum pontificum Romanorum a Siri-
+    cio ad Anastasium II, quoquot reperiri poterant, una
+    cun epistola nuncupatoria ad Julianum presbyterum
+    Romanum, qui synodis Romæ an. 488 et 499 habitis
+    subscripsit. Exstat in unaquaque Conciliorum edi-
+    tione, et a Justello una cum Codice canonum edita
+    Paris. 1628, in-8°, et in Bibliotheca Juris Canon. tom.
+    I, p. 181.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,745,480,900">
-PRAEFATIO EPISTOLÆ
 
-S. CIRILLI ALEXANDRINI EPISCOPI.
+  <!-- Coluna Direita -->
+  <bloco tipo="texto_principal" script="latino" bbox="510,170,950,230">
+    Epistola synodica S. Cyrilli et concilii Alexandrini,
+    adversus Nestorium, Latine versa. Exstat tum alibi,
+    tum a Justello edita cum prioribus Opusculis.
+  </bloco>
 
-Domino beatissimo Patri Petro episcopo Dionysius
-Exiguus in Domino salutem.
+  <bloco tipo="texto_principal" script="latino" bbox="510,230,950,300">
+    Epistola Paschalis Proterii ad Leonem, Latine
+    versa, una cum Epistolis duabus ipsins Exigui pascha-
+    libus ad Petronium et Bonifacium; habetur in Appen-
+    dice Petaviani operis de Doctrin. Temp.
+  </bloco>
 
-PATR. [ilegivel]
+  <bloco tipo="texto_principal" script="latino" bbox="510,300,950,350">
+    Vita S. Pachomii abbatis, Latine versa, et inter
+    Vitas Patrum ab Heriberto Rosveydo edita Antverp.
+    1615, 1628, in-folio.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,745,960,900">
-Beneficiorum vestrorum memor, venerabilis Pater,
-et antistitum Christi decus egregium, semperque ante
-oculos mentis apponens sancta nutrimenta vestrorum
-studia a parvulo mihi deposita, quæ nulla...
+
+  <bloco tipo="texto_principal" script="latino" bbox="510,350,950,430">
+    Oratio Procli de laudibus Deiparæ (quam tamen
+    non ab Exiguo, sed a Mario Mercatore, versam esse
+    contendit Garnerius : ac proinde versionem inter
+    istius opera adjuncto texto Græco edidit part. II, pag.
+    19).
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="360,900,700,980">
-248730
-Digitized by Google
+
+  <bloco tipo="texto_principal" script="latino" bbox="510,430,950,460">
+    Epistola ejusdem de Fide ad Armenos, et altera
   </bloco>
-  <notas>
-Transcrição em caracteres latinos. Hyphenation (quebras de linha) reproduzida conforme impresso. Marcas marginais A, B, C transcritas como notas_marginal. Palavra ilegível no fecho da pré-fácie marcada como [ilegivel]. Alguns abreviativos e grafias antigas mantidos tal quais no original.
-  </notas>
+
+  <bloco tipo="texto_principal" script="latino" bbox="510,460,950,510">
+    ad Domnum pro Athanasio Perrhenorum episcopo,
+    Latine versæ; habentur in editione Procli operum a
+    Vinc. Riccardo adornata Romæ 1630, in-4°.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="510,510,950,560">
+    Gregorii Nysseni de Opificio hominis liber in duas
+    divisus homilias, Latine versus. Exstat versio Basil.
+    1562, Colon. 1573, sed sine epistola Dionysii nun-
+    cupatoria ad Ægyptium presbyterum, et versione
+    præfationis Nysseni : quas primus in lucem edidit
+    Mabillonius Analect. tom. II, p. 1.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="510,560,950,630">
+    Historia inventionis capitis S. Joannis Baptistæ, a
+    Marcello abbate Græce conscripta, et ab Exiguo Latine
+    versa; edita est a CL. Du Fresne ad calcem historici
+    tractatus de Capite S. Joannis Bapt. Paris. 1665,
+    in-4°..
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="510,630,950,700">
+    Cyclus Paschalis annorum XCVII, ab anno 527 ini-
+    tium ducens : cujus fragmentum habes in Mariani
+    Scoti Chronico ad ann. 527. In hoc cyclo annos a
+    Christi Incarnatione numeravit Dionysius : atque
+    istam æram primus omnium annis supputandis ad-
+    hibuit.
+  </bloco>
+
+  <!-- Notas Marginais -->
+  <bloco tipo="nota_marginal" script="latino" bbox="485,170,500,185">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,460,515,475">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,590,500,605">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,860,500,875">
+    D
+  </bloco>
+
+  <!-- Títulos Inferiores -->
+  <bloco tipo="cabecalho" script="latino" bbox="200,730,800,760">
+    PARS PRIMA OPERUM.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="150,770,850,800">
+    OPERA DOGMATICA ET CANONICA.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="300,810,700,835">
+    EPISTOLA SYNODICA
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="150,840,850,865">
+    S. CYRILLI ET CONCILII ALEXANDRINI
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,870,650,890">
+    CONTRA NESTORIUM
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="300,895,700,910">
+    A DIONYSIO EXIGUO LATINE TRANSLATA.
+  </bloco>
+
+  <!-- Texto Inferior Esquerdo -->
+  <bloco tipo="texto_principal" script="latino" bbox="100,920,400,935">
+    PRÆFATIO EPISTOLÆ
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,935,350,950">
+    S. CYRILLI ALEXANDRINI EPISCOPI.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,950,450,980">
+    Domino beatissimo Patri Petro episcopo Dionysius
+    Exiguus in Domino salutem.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,980,300,995">
+    PATROL. LXVII.
+  </bloco>
+
+  <!-- Texto Inferior Direito -->
+  <bloco tipo="texto_principal" script="latino" bbox="510,860,950,940">
+    Beneficiorum vestrorum memor, venerabilis Pater,
+    et antistitum Christi decus egregium, semperque ante
+    oculos mentis apponens sancta nutrimentorum ves-
+    trorum studia a parvulo mihi depensa, quæ nulla
+  </bloco>
+
+  <!-- Rodapé -->
+  <bloco tipo="rodape" script="latino" bbox="600,960,620,980">
+    1
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="450,970,800,995">
+    248730 Digitized by Google
+  </bloco>
 </pagina>

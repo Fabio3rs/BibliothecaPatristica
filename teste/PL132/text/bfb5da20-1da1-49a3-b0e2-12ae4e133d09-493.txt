@@ -1,77 +1,171 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="120,10,880,70">
-    MUSICA ENCHIRIADIS.
+  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,80">
+    377 MUSICA ENCHIRIADIS. 978
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,80,490,760">
-Dia-
-tessaron.
-S. Hypałe hypaton
-T. Parypate hypalon
-T. Hypate lichanos
-S. Hypate neson
-T. Parypate meson
-T. Lichanos meson
-T. Mese
-
-Dia-
-passon.
-
-Dia-
-tessaron.
-S. Paramese
-T. Trit. diezeugmenon
-T. Paranet. diezeug.
-S. Net. diezeugmenon.
-
-T. Trite hyperbolæon
-T. Paraneæ hyperbolæon
-T. Nete hyperbolæon.
-
-Quoniam, inquit, diapason consonantia talem vocis efficit conjunctionem, ut unus atque idem nervus esse videatur, idque Pythagorici quoque consentiunt. Quocirca si qua ei consonantia fuerit addita, integra inviolataque servatur. Ita enim Diapason consonantiæ additur diatessaron, tamquam uni nervo. Sit igitur Diapason consonantia, quæ contineatur inter hypate meson, et nete diezeugmenon. Utraque hæc ita sibi consentit atque conjungitur sono, ut una vos quasi unius nervi, non quasi duorum mixta, pellat auditum. Quamcunque igitur huic Diapason consonantiæ consonantiam junxerimus, servatur integra, quia ita jungitur tamquam uni voculæ ac nervo. Si igitur Hypate meson et Nete diezeugmenon, duæ in acutum diatessaron fuerint junctæ, sic jungitur Nete quod est diezeugmenon, ea quæ est Nete hyperbolæon; Hypate autem meson, ea quæ est mese: utraque ad utramque consonabunt, et mese ad neten diezeugmenon, et eadem mese ad hypate meson; item nete hyperbolæon ad neten diezeugmenon, et ad hypate meson. Item si ad graviorem partem utriusque diatessaron consonantiæ relaxentur, erit ad mesen, quod est hypaton, diatessaron retinens consonantiam hypate hypaton, ad neten autem diezeugmenon paramese: consonabuntque et hypate hypaton, et hypate meson ad nete diezeugmenon. Ad paramese autem nete diezeugmenon, et hypate meson, sed eo modo, ut gravior, quæ est ad sibi quidem proximam. diatessaron retineat consonantiam: ad
+  
+  <bloco tipo="texto_principal" script="latino" bbox="100,90,480,250">
+    Dia- { S. Hypate hypaton
+    tessa- { T. Parypate hypaton
+    ron. { T. Hypate lichanos
+    { S. Hypate meson
+    Dia- { T. Parypate meson } Dia-
+    pa- { T. Lichanos meson } tessa-
+    son. { T. Mese } ron.
+    { S. Paramese
+    Dia- { T. Trit. diezeugmenon
+    tessa- { T. Paranet. diezeug.
+    ron. { S. Net. diezeugmenon.
+    } Dia-
+    T. Trite hyperbolæon } pa-
+    T. Paranete hyperbolæon } son.
+    T. Nete hyperbolæon. } Dia-
+    tessa-
+    ron.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,210,505,260">
-A
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,80,970,760">
-ulteriorem vero diatessaron ac diapason, ut hypate hypaton ad hypate meson diatessaron, ad neten diezeugmenon diatessaron ac diapason. Item nete hyperbolæon, quæ est acutior ad sibi proximam neten diezeugmenon, diatessaron consonantiam. Ad hypate meson diatessaron ac diapason, et caetera. Hæc quidem Boetius.
 
-CAPUT XVII.
+  <bloco tipo="nota_marginal" script="latino" bbox="490,100,510,120">
+    A
+  </bloco>
 
-De ordine consonantiarum, consonantia et inconsonantia.
+  <bloco tipo="texto_principal" script="latino" bbox="520,90,900,190">
+    ulteriorem vero diatessaron ac diapason, ut hypate
+    hypaton ad hypate meson diatessaron, ad neten
+    diezeugmenon diatessaron ac diapason. Item nete
+    hyperbolæon, quæ est acutior ad sibi proximam
+    neten diezeugmenon, diatessaron consonantiam.
+    Ad hypate meson diatessaron ac diapason, et
+    cætera. Hæc quidem Boetius.
+  </bloco>
 
-Præterea de diapason vel disdiapason non est opus amplius descriptione, quæ ita naturaliter omni ætati in canendo occurrunt, ut arte trali non egeant, constetque satis dictum in symphonia disdiapasoni, mediam ad utrasque octava regione conferri, extremas sibi loco quinto decimo respondere. Dicendum tamen, quæ sit mensura in singulis symphoniis propria. Constat namque diatessaron symphonia ex duobus tonis ac semitonio, ex quibus duabus constat symphonia diapason. Igitur absolutissime in diapason symphonia majore præ cæteris perfectione diversæ ad invicem voces resonant.
+  <bloco tipo="cabecalho" script="latino" bbox="520,195,900,230">
+    CAPUT XVII.
+    De ordine consonantiarum, consonantia et
+    inconsonantia.
+  </bloco>
 
-Secunda ab hac est symphonia diapente. At in diatessaron, quoniam non per omnem sonorum seriem quartis locis suaviter sibi phthongi concordant, ideo nec absolute ut in cæteris symphoniaca editur cantilena. Ergo in hoc genere cæntonis sua quadam lege vocibus voces divinitus accommodantur; per omnem enim sonorum seriem tritus subquartus (695), deutero solus a symphonia deficit, et inconsonus ei efficitur, eo quod solus diatessaron symphoniæ mensuram excedens, tribus integris tonis a præfato sono elongatur, cui extat subsquartus. Quapropter et vox, quæ organalis dicitur, vocem alteram, quæ vocatur principalis, eo modo comitari solet, ut in quolibet tetrachordo, in qualibet particula, nec infra tetrardum sonum descendat positione, nec inchoatione levetur, obstante triti soni inconsonantia, qui retardat et subscundus. Quæ ut lucidiore sint, exempli descriptione statuantur, prout possit fieri sub aspectum.
+  <bloco tipo="nota_marginal" script="latino" bbox="490,280,510,300">
+    B
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,265,505,320">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,360,505,420">
-C
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,760,970,880">
-    T  |  maris\    |  squali\
-    T  |  mine/ un\ |  tidi/ di\
-    T  |  do/ di    |  ni/ que
-    S  |  li/ maris\|  ni/ nis/ squali\ li.
-    T  |  cœ/ mine/ \ un\  so/ ta/ tidi/ di\ so/
-    T  |  Rex/ coeli do/  di/ Ty/ tanis ni/ que/
 
-Ad hanc descriptionem canendo facile sentitur, quomodo in descriptis duobus membris, sicut subtus ȝ retrardum sonum, organalis vox responsum incipere non potest, ita subtus eundem non valet positione progredi, et ob hoc in finalitate positionum a voce principali occupetur, ut ambæ in D unum conveniant, quod modo altiora, modo summissiora loca organum petat.
+  <bloco tipo="texto_principal" script="latino" bbox="100,255,480,700">
+    Quoniam, inquit, diapason consonantia talem
+    vocis efficit conjunctionem, ut unus atque idem
+    nervus esse videatur, idque Pythagorici quoque
+    consentiunt. Quocirca si qua ei consonantia fuerit
+    addita, integra inviolataque servatur. Ita enim Dia-
+    pason consonantiæ additur diatessaron, tamquam uni
+    nervo. Sit igitur Diapason consonantia, quæ conti-
+    neatur inter hypate meson, et nete diezeugmenon.
+    Utraque hæc ita sibi consentit atque conjungitur
+    sono, ut una vox quasi unius nervi, non quasi duo-
+    rum mixta, pellat auditum. Quamcunque igitur
+    huic Diapason consonantiæ consonantiam junxeri-
+    mus, servatur integra, quia ita jungitur tamquam
+    uni voculæ ac nervo. Si igitur Hypate meson et
+    Nete diezeugmenon, duæ in acutum diatessaron
+    fuerint junctæ, sic jungitur Nete quod est diezeug-
+    menon, ea quæ est Nete hyperbolæon; Hypate au-
+    tem meson, ea quæ est mese : utraque ad utram-
+    que consonabunt, et mese ad neten diezeugmenon,
+  </bloco>
 
-CAPUT XVIII.
-Quomodo altiora, modo submissiora loca organum petat.
+  <bloco tipo="nota_marginal" script="latino" bbox="490,500,510,520">
+    C
+  </bloco>
 
-Ergo quoniam prædicti limitis ȝ oppositione brevi
+  <bloco tipo="texto_principal" script="latino" bbox="100,505,480,700">
+    et eadem mese ad hypate meson; item nete hyper-
+    bolæon ad neten diezeugmenon, et ad hypate
+    meson. Item si ad graviorem partem utrisque dia-
+    tessaron consonantiæ relaxentur, erit ad mesen,
+    quod est hypaton, diatessaron retinens consonan-
+    tiam hypate hypaton, ad neten autem diezeugmenon
+    paramese : consonabitque et hypate hypaton et
+    hypate meson ad nete diezeugmenon. Ad paramesen
+    autem nete diezeugmenon, et hypate meson, sed
+    eo modo, ut gravior, quæ est ad sibi quidem
+    proximam. diatessaron retineat consonantiam : ad
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,460,505,520">
-D
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,240,900,690">
+    Præterea de diapason vel disdiapason non est
+    opus amplius descriptione, quæ ita naturaliter omni
+    ætati in canendo occurrunt, ut arte tradi non egeant,
+    constatque satis dictum in symphonia disdiapason,
+    mediam ad utrasque octava regione conferri, extre-
+    mas sibi loco quinto decimo respondere. Dicendum
+    tamen, quæ sit mensura in singulis symphoniis
+    propria. Constat namque diatessaron symphonia
+    ex duobus tonis ac semitonio, ex quibus duabus
+    constat symphonia diapason. Igitur absolutissime
+    in diapason symphonia majore præ ceteris perfec-
+    tione diversæ ad invicem voces resonant.
+    Secunda ab hac est symphonia diapente. At in
+    diatessaron, quoniam non per omnem sonorum
+    seriem quartis locis suaviter sibi phthongi concor-
+    dant, ideo nec absolute ut in cæteris symphoniaca
+    editur cantilena. Ergo in hoc genere cantionis sua
+    quadam lege vocibus voces divinitus accommodan-
+    tur; per omnem enim sonorum seriem tritus sub-
+    quartus (695), deutero solus a symphonia deficit, et
+    inconsonus ei efficitur, eo quod solus diatessaron
+    symphoniæ mensuram excedens, tribus integris tonis
+    a præfato sono elongatur, cui extat subsquartus.
+    Quapropter et vox, quæ organalis dicitur, vocem
+    alteram, quæ vocatur principalis, eo modo comitari
+    solet, ut in quolibet tetrachordo, in qualibet parti-
+    cula, nec infra tetrardum sonum descendat posi-
+    tione, nec inchoatione levetur, obstante triti soni
+    inconsonantia, qui tetrardo est subsccundus. Quæ
+    ut lucidiora fiant, exempli descriptione statuantur,
+    prout possit fieri sub aspectum.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,920,520,980">
-(695) Bl. tritus quartus subquartus, etc.
+
+  <bloco tipo="outro" script="latino" bbox="100,705,900,830">
+    [Tabula Musicalis]
+    maris\ | squali\
+    T [sym] mine/ un\ | tidi/ di\
+    T / do/ di | ni/ que
+    S [sym] li/ maris\ nf | nis/ squali\ li.
+    T [sym] cœ/ mine/ un\ so/ | ta/ tidi/ di\ so/
+    T [sym] Rex/ cœli do/ di/ | Ty/ tanis ni/ que/
+    T [sym] |
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="600,920,970,980">
-Digitized by Google
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,835,510,855">
+    D
   </bloco>
-  <notas>Todas as partes transcritas em alfabeto latino. Letras marginais A–D transcritas como notas_marginal. As marcas tipográficas antigas (æ, ȝ) mantidas conforme visível. Algumas formas ligadas e abreviações foram transcritas na forma visível no documento sem normalização; palavras parcialmente ilegíveis foram reproduzidas conforme aparência, sem uso de [ilegivel] por bloco.</notas>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,835,480,930">
+    Ad hanc descriptionem canendo facile sentitur,
+    quomodo in descriptis duobus membris, sicut
+    subtus Y retrardum sonum, organalis vox respon-
+    sum incipere non potest, ita subtus eumdem non
+    valet positione progredi, et ob hoc in finalitate
+    positionum a voce principali occupetur, ut ambæ in
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,835,900,930">
+    unum conveniant, quod modo altiora, modo sum-
+    missiora loca organum petat.
+    CAPUT XVIII.
+    Quomodo altiora, modo submissiora loca organum
+    petat.
+    Ergo quoniam prædicti limitis Y oppositione brevi
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="100,940,400,960">
+    (695) Bl. tritus quartus subquartus, etc.
+  </bloco>
+  
+  <bloco tipo="rodape" script="latino" bbox="700,950,900,980">
+    Digitized by Google
+  </bloco>
+
+  <notas>
+    Transcrição de página de tratado musical (Musica Enchiriadis).
+    Layout em duas colunas com notas marginais A, B, C, D no gutter.
+    Tabela musical no inferior com neumas e sílabas.
+    Abreviações mantidas (e.g., diezeug., hyperbolæon).
+  </notas>
 </pagina>

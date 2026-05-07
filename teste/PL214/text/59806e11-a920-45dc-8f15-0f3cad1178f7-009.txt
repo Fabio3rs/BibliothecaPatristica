@@ -1,47 +1,49 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="80,20,920,110">
-SÆCULUM XIII
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="350,40,650,80">
+    SÆCULUM XIII
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,110,960,270">
-INNOCENTII III
+  <bloco tipo="texto_principal" script="latino" bbox="50,100,950,190">
+    INNOCENTII III
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="220,270,780,330">
-ROMANI PONTIFICIS
+  <bloco tipo="texto_principal" script="latino" bbox="250,210,750,250">
+    ROMANI PONTIFICIS
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,330,920,470">
-OPERA OMNIA
+  <bloco tipo="texto_principal" script="latino" bbox="100,280,900,360">
+    OPERA OMNIA
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="220,470,780,520">
-TOMIS QUATUOR DISTRIBUTA
+  <bloco tipo="texto_principal" script="latino" bbox="200,380,800,420">
+    TOMIS QUATUOR DISTRIBUTA
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,520,940,720">
-QUORUM PRIORES TRES REGESTORUM BALUZIANAM RECENSIONEM COMPLECTUNTUR, ACCEDENTIBUS ANECDOTARUM EPISTOLARUM LIBRIS, QUOS FRUSTRA OLIM A BALUZIO EXPEDITOS EX BIBLIOTHECA VATICANA IN LUCEM EMISERUNT LA PORTE DUTHIL ET BREQUIGNY; QUARTO VOLUMINI INSUNT EPISTOLAE EXTRA REGESTUM VAGANTES, PONTIFICIS DENIQUE SERMONES ET OPUSCULA VARIA, TUM JAM OLIM EDITA, TUM RECENTIUS AB EMINENTISSIMO CARDINALI MAJO, D. LUCI[T] TOSTI, ETC., ETC., TYPIS MANDATA
+  <bloco tipo="texto_principal" script="latino" bbox="50,440,950,540">
+    QUORUM PRIORES TRES REGESTORUM BALUZIANAM RECENSIONEM COMPLECTUNTUR, ACCEDENTIBUS ANECDOTARUM EPISTOLARUM LIBRIS, QUOS FRUSTRA OLIM A BALUZIO EXPETITOS EX BIBLIOTHECA VATICANA IN LUCEM EMISERUNT LA PORTE DUTHEIL ET BREQUIGNY; QUARTO VOLUMINI INSUNT EPISTOLÆ EXTRA REGESTUM VAGANTES, PONTIFICIS DENIQUE SERMONES ET OPUSCULA VARIA, TUM JAM OLIM EDITA, TUM RECENTIUS AB EMINENTISSIMO CARDINALI MAIO, D. LUIGI TOSTI, ETC., ETC., TYPIS MANDATA
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,720,880,820">
-ACCURANTE J.-P. MIGNE
-BIBLIOTHECAM [ilegivel] UNIVERSAE
-SIVE
-'CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS [ilegivel]
+  <bloco tipo="texto_principal" script="latino" bbox="250,560,750,590">
+    ACCURANTE J.-P. MIGNE
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="160,820,840,900">
-TOMUS PRIMUS
+  <bloco tipo="texto_principal" script="latino" bbox="200,590,800,650">
+    BIBLIOTHECÆ CLERI UNIVERSÆ
+    SIVE
+    'CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="220,900,780,960">
-VENDUNT 4 VOLUMINA 30 FRANCIS GALLICIS
+  <bloco tipo="texto_principal" script="latino" bbox="200,680,800,740">
+    TOMUS PRIMUS
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="60,960,940,1150">
-EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM
-IN VIA DICTA D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM
-SEU PETIT MONTROUGE
-1835
+  <bloco tipo="texto_principal" script="latino" bbox="200,780,800,810">
+    VENEUNT 4 VOLUMINA 30 FRANCIS GALLICIS
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="760,1420,980,1500">
-Digitized by Google
+  <bloco tipo="rodape" script="latino" bbox="100,850,900,940">
+    EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM
+    IN VIA DICTA D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM
+    SEU PETIT MONTROUGE
+    1855
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="550,960,950,990">
+    Digitized by Google
   </bloco>
   <notas>
-- Página identificada como capa (capa/guarda).
-- Foram marcadas como [ilegivel] palavras cujo reconhecimento é inseguro na imagem: linha que começa "BIBLIOTHECAM [ilegivel] UNIVERSAE" (possível leitura "CŒLI" ou similar) e final da linha "'CURSUUM ... RAMOS [ilegivel]" (fragmento incerto).
-- Entre colchetes foram mantidas abreviações ou letras incertas (ex.: D. LUCI[T] TOSTI) conforme visibilidade parcial.
-- Todos os blocos visíveis (título, subtítulo, parágrafo descritivo, menção do editor, tomus, preço, informação da tipografia e ano) foram transcritos; ornamentos e linhas decorativas não transcritos literalmente.
+    - Transcrição fiel da página de título (capa interna).
+    - Correção de OCR anterior: "1855" (não 1835), "D. LUIGI TOSTI" (não LUCI[T]), "BIBLIOTHECÆ CLERI UNIVERSÆ" (não BIBLIOTHECAM...), "EXPETITOS" (não EXPEDITOS), "BREQUIGNY" (não BAEQUIGNY).
+    - Ligaturas 'æ' mantidas conforme visíveis na tipografia.
+    - Texto "Digitized by Google" identificado como marca d'água digital no rodapé.
   </notas>
 </pagina>

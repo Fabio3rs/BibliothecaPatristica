@@ -1,80 +1,55 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,60">
-    1141    DE ARITHMETICA LIB. II.    1142
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,80,480,190">
-    Differentie pares.
-    | 1 | 4 | 6 | 8 | 10 | 12 | 14 |
-    | 2 | 6 | 12 | 20 | 30 | 42 | 56 |
-    
-    Parte altera longiores.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,190,480,330">
-    At vero si inter primum et secundum tetragonum, primum parte altera longiorem ponimus, ad utrosque una proportione conjungitur. In utrisque enim proportionibus dupli multiplicitas invenietur. Sin vero inter secundum tertiumque tetragonum, secundum parte altera longiorem ponas, sesquialter comparationis ad utrosque forma componitur. Et si inter tertium et quartum tetragonum, tertium parte altera longiorem constitutas, [ilegivel] species nascetur, et idem si in cunctis feceris, cunctas super particulares species invenire miraberis.
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="30,330,480,495">
-    ┌─────────────────────────────────────────────┐
-    │ primus   │ primus  │ secundus │ duplus      │
-    │ 1        │ 2       │ 4        │             │
-    ├─────────────────────────────────────────────┤
-    │ secundus │ secundus│ tertius  │ sesquialter │
-    │ 5        │ 6       │ 9        │             │
-    ├─────────────────────────────────────────────┤
-    │ tertius  │ tertius │ quartus  │ sesqui[ilegivel]│
-    │ 12       │ 12      │ 16       │             │
-    ├─────────────────────────────────────────────┤
-    │ quaternus│ quartus │ quintus  │ sesiquartus │
-    │ 16       │ 20      │ 25       │             │
-    └─────────────────────────────────────────────┘
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,495,480,800">
-    Et ad eundem modum in ceteris convenit intuerri. Rursus si ponantur duo tetragoni ex superius descriptis, id est primus et secundus, et in unum colligantur, et medius eorum parte altera longior bis multiplicetur, tetragonus sit. Namque unus et 4, si jungantur, 5 faciunt, eorum binarius parte altera longior si bis ducatur, quatuor faciunt, qui juncti, 9 sine ulla dubitatione conficient, qui est numerus quadratus. Et ad eundem modum in aliis hoc modo dispositis numeris, quos supra descripsimus, idem constat intelligi. Si vero conversas, et inter duos primum et secundum parte altera longiores secundum tetragonum ponas, qui in ordine quidem secundus est, sed actu et opere primus, ex duobus parte altera longioribus congregatis, et bis multiplicato medio tetragono, rursus tetragonus conficitur. Namque inter 6 et binarium numerum, qui sunt primus et secundus parte altera longiores, si ponantur quaternarius ordine secundus, primus actus tetragonus, et conjungantur duo et sex, faciunt 8. Tum si bis ducantur medii, quatuor faciunt rursus octonarium, qui cum superioribus juncti, sedecim tetragonum pandunt.
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="30,800,480,950">
-    5   13   25
-     .____.  .____.  .____.
-    /      \/      \/      \
-   | 4    | 12   | 21      |
-    \____/ \____/ \____/
-    1  1  2  1  4  1  6  9  9  12  16
-    9  23  49
-    tetragonus a tribus    tetragonus a quinque    tetragonus a septem
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,80,520,120">
-    A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,320,520,360">
-    B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,520,520,560">
-    C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,700,520,740">
-    D
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="520,80,970,260">
-    A     8     18     32
-      .____.  .____.  .____.
-     /      \/      \/      \
-    |  8   | 18   | 23      |
-     \____/ \____/ \____/
-    2 4 6  6 9 12  12 16 20
-    16    36    64
-    tetragonus a quatuor    tetragonus a sex    tetragonus a octo
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,260,970,920">
-    Illud quoque non oportet minore admiratione suscipere, quod secundum proprias naturas, ubi alternis cus duo tetragoni stant, et unus parte altera longior in medio ponitur, tetragonus qui nascitur, ille semper ab impari procreatur. Nam ex superioribus, uno et 4 et bis multiplicato binario, factus est novenarius tetragonus, qui scilicet a tribus procreatur. Ter enim tres 9 faciunt, qui ternarius impar est numerus. Et sequens qui ex quatuor et 9, et bis multiplicato senario conjungtus, est 25 tetragonus, cuipe ex impari quinarum nascitur continenti post ternarium. Quinquies enim quinque 25 procedunt, et quinarus post ternarium, impar est numerus. Et in sequenti quoque eadem ratio est. Nam qui ex 9 et 16 et bis ducto 12 quadratus 49 producitur, ille a septenario impari fit post quinarum; septies enim 49 creant. At vero ubi duo alternis[cus?] parte altera longiores unum medium tetragonum claudunt, omnes ex his qui sunt tetragoni a paribus producuntur. Nam qui ex duobus et 6 parte altera longioribus et quaternis multiplicatis bis, 16 tetragonus factus est, ille a quaternario numero, id est pari, producitur. Quater enim quatuor 16 sunt. Et in sequenti quoque ordine ubi ex senario et duodecim, et bis in suam summam ducto novenario, 56 fiunt, eorum continenti pari senario copulantur. Sex enim sexies 36 restituunt. Nec minus in eandem rationem cadet, ex 12 et 20 et bis 16 factus 64 tetragonus. Hic enim ex octonario continenti post senarium nascitur. Octies enim octo 64 tetragonum jungunt. Et in aliis quoque secundum eundem modum si idem facias, ratio ordinis non discrepat.
-    
-    CAPUT XXXIV.
-    
-    Quod ex quadratis ex parte altera longioribus, omnis formarum ratio consistat.
-    
-    Illud vero, quod ex his duobus tota omnium formarum videtur orta prolusio non minore consideratione notandum est. Namque trianguli qui cunctas alias formas, sicut suprius docuimus, collecti producunt, his junctis velut ex quibusdam elementis oriuntur. Namque ex uno primo tetragono, et binario primo parte altera longiore, ternarius triangulus copulatur. Et ex binario vel quaternario, id est ex secundo tetragono scenario, triangulus procreatur. Ex quaternario quoque et senario, denarius triangulus nascitur. Et ad eundem ordinem, cuncta triangulorum ratio constabit. Disponantur enim alternatim inter se tetragoni et parte altera longiores, qui ut melius pernotentur, prius in duobus eorum versibus disposuimus, post autem eosdem permisceimus, et qui exinde trianguli nascetur scripsimus.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="680,930,980,985">
-    Digitized by Google
-  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="50,40,200,70">1141</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,40,650,70">DE ARITHMETICA LIB. II.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,40,950,70">1142</bloco>
+  
+  <bloco tipo="outro" script="latino" bbox="80,80,450,160">Differentiæ pares.
+| 4 | 6 | 8 | 10 | 12 | 14 |
+| 2 | 6 | 12 | 20 | 30 | 42 | 56 |
+Parte altera longiores.</bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="550,80,570,100">A</bloco>
+  <bloco tipo="outro" script="latino" bbox="580,80,920,180">8       18       32
+  _8_     _18_     _23_
+| 2 | 4 | 6 | 6 | 9 | 12 | 12 | 16 | 20 |
+    16        36         64
+tetragonus  tetragonus  tetragonus
+a quatuor   a sex       ab octo</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="80,190,450,310">At vero si inter primum et secundum tetragonum, primum parte altera longiorem ponimus, ad utrosque eos una proportione conjungitur. In utrisque enim proportionibus dupli multiplicitas invenitur. Sin vero inter secundum tertiumque tetragonum, secundum parte altera longiorem ponas, sesquialteræ comparationis ad utrosque forma componitur. Et si inter tertium et quartum tetragonum, tertium parte altera longiorem constitues, sesquitertia species nascetur, et idem si in cunctis feceris, cunctas super particulares species invenire miraberis.</bloco>
+
+  <bloco tipo="outro" script="latino" bbox="80,320,450,460">tetragoni | primus 1 | parte altera longiores | primus 2 | tetragoni | secundus 4 | duplus
+            | secundus 4 |                      | secundus 6 |           | tertius 9 | sesquialter
+            | tertius 9 |                      | tertius 12 |           | quartus 16 | sesquitertius
+            | quartus 16 |                     | quartus 20 |           | quintus 25 | sesquiquartus</bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="460,400,480,420">C</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,470,450,750">Et ad eumdem modum in cæteris convenit intueri. Rursus si ponantur duo tetragoni ex superius descriptis, id est primus et secundus, et in unum colligantur, et medius eorum parte altera longior bis multiplicetur, tetragonus fit. Namque unus et 4, si jungantur, 5 faciunt, eorum binarius parte altera longior si bis ducatur, quatuor faciunt, qui juncti, 9 sine ulla dubitatione conficiunt, qui est numerus quadratus. Et ad eumdem modum in aliis huc modo dispositis numeris, quos supra descripsimus, idem constat intelligi. Si vero convertas, et inter duos primum et secundum parte altera longiores secundum tetragonum ponas, qui in ordine quidem secundus est, sed actu et opere primus, ex duobus parte altera longioribus congregatis, et bis multiplicato medio tetragono, rursus tetragonus conficitur. Namque inter 6 et binarium numerum, qui sunt primus et secundus parte altera longiores, si ponatur quaternarius ordine secundus, primus actu tetragonus, et conjungantur duo et sex, faciunt 8. Tum si bis ducantur medii, quatuor faciunt rursus octonarium, qui cum superioribus juncti, sedecim tetragonum pandunt.</bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="460,680,480,700">D</bloco>
+
+  <bloco tipo="outro" script="latino" bbox="80,780,450,930">5       13       25
+  _4_     _12_     _21_
+| 1 | 2 | 4 | 4 | 6 | 9 | 9 | 12 | 16 |
+    9         25         49
+tetragonus  tetragonus  tetragonus
+a tribus    a quinque   a septem</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="550,190,920,290">Illud quoque non oportet minore admiratione suscipere, quod secundum proprias naturas, ubi altrinsecus duo tetragoni stant, et unus parte altera longior in medio ponitur, tetragonus qui nascitur, ille semper ab impari procreatur. Nam ex superioribus, uno et 4 et bis multiplicato binario, factus est novenarius tetragonus, qui scilicet a tribus procreatur.</bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="550,290,570,310">B</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,310,920,640">Ter enim tres 9 faciunt, qui ternarius impar est numerus. Et sequens qui ex quatuor et 9, et bis multiplicato senario conjunctus, est 25 tetragonus, et ipse ex impari quinario nascitur continenti post ternarium. Quinquies enim quinque 25 procedunt, et quinarius post ternarium, impar est numerus. Et in sequenti quoque eadem ratio est. Nam qui ex 9 et 16 et bis ducto 12 quadratus 49 producitur, ille a septenario impari fit post quinarium continenti. Septies enim septem 49 creant. At vero ubi duo altrinsecus parte altera longiores unum medium tetragonum claudunt, omnes ex his qui fiunt tetragoni, a paribus producuntur. Nam qui ex duobus et 6 parte altera longioribus et quaternario bis multiplicato, 16 tetragonus factus est, ille a quaternario numero, id est pari, producitur. Quater enim quatuor 16 sunt. Et in sequenti quoque ordine ubi ex senario et duodecim, et bis in suam summam ducto novenario, 36 fiunt, ea continenti pari senario copulantur. Sex enim series 36 restituunt. Nec minus in eamdem rationem cadet, ex 12 et 20 et bis 16 factus 64 tetragonus. Illic enim ex octonario continenti post senarium nascitur. Octies enim octo 64 tetragonum jungunt. Et in aliis quoque secundum eumdem modum si idem facias, rationis ordo non discrepat.</bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="650,640,800,660">CAPUT XXXIV.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,660,920,930">Quod ex quadratis ex parte altera longioribus, omnis formarum ratio consistat
+Illud vero, quod ex his duobus tota omnium formarum videtur orta prolatio non minore consideratione notandum est. Namque trianguli qui cunctas alias formas, sicut superius docuimus, collecti producunt, his junctis velut ex quibusdam elementis oriuntur. Namque ex uno primo tetragono, et binario primo parte altera longiore, ternarius triangulus copulatur. Et ex binario vel quaternario, id est ex secundo tetragono senarius triangulus procreatur. Ex quaternario quoque et senario, denarius triangulus nascitur. Et ad eumdem ordinem, cuncta triangulorum ratio constabit. Disponantur enim alternatim inter se tetragoni et parte altera longiores, qui ut melius pernotarentur, prius in duobus eos versibus disposuimus, post autem eosdem permiscuimus, et qui exinde trianguli nascentur ascripsimus.</bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">Digitized by Google</bloco>
+  
   <notas>
-    Texto impresso em latim. Foram transcritas tabelas e figuras de forma linear (linhas e números) tentando seguir a disposição visual. Palavras ou sinais parcial ou totalmente ilegíveis foram marcados como [ilegivel] onde necessário; foram mantidas palavras e números legíveis sem normalização. Margens centrais marcadas com A, B, C, D transcritas como notas marginais. Script dominante: latino.
+    - A transcrição dos diagramas numéricos tenta representar a disposição visual das grades e semi-círculos.
+    - As letras A, B, C, D são marcadores marginais de seção.
+    - O texto "23" no diagrama superior direito (dentro do semi-círculo) foi transcrito conforme visível, embora matematicamente possa ser esperado "32" dado o contexto (soma 64).
+    - A tabela do meio esquerdo possui rótulos verticais "tetragoni" e "parte altera longiores".
   </notas>
 </pagina>

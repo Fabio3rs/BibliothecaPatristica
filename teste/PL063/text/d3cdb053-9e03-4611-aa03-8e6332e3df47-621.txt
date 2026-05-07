@@ -1,138 +1,57 @@
 <pagina estado="com_texto">
-  <bloco tipo="outro" script="latino" bbox="0,64,1000,120">
-tipo_pagina: texto
+  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,80">
+    1257 DE MUSICA LIB. III. 1258
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,64">
-1257          DE MUSICA LIB. III.          1258
+  <bloco tipo="texto_principal" script="latino" bbox="100,80,480,350">
+    proportione C E, et sunt superparticulares, E numerus C numerum parte <sup>a</sup> una sua ejusque transcendit. Sit autem hæc D. Dico quoniam D non erit numerus, sed unitas. Si enim est numerus D et pars ejus est qui est F, <sup>b</sup> metietur D numerus C numerum. Quocirca et E numerum metietur. Quo fit ut C quoque metiatur, utrumque igitur C et E numerus metietur D numerus, quod est impossibile. Qui enim sunt minimi in eadem proportione quibusl bet aliis numeris, hi primi ad se invicem sunt, et solam differentiam retinent <sup>c</sup> unitatem; unitas igitur est D: igitur E numerus C numerum unitate transcendit. Quocirca nullus incidet <sup>d</sup>. med us numerus, qui eam proportionem aequaliter scindat. Quo fit ut nec inter eos qui eandem his proportionem tenent, medius possit numerus collocari, qui eandem proportionem aequaliter scindat.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="0,120,500,360">
-proportione C E, et sunt superparticulares, E numer-
-rus C numerum parte a una sua ejusque transcendit.
-Sit autem haec D. Dico quoniam D non erit numerus,
-sed unitas. Si enim est numerus D et pars ejus est
-qui est E, b metietur D numerus E numerum. Quo-
-circa et E numerum metietur. Quo fit ut C quoque
-metietur, utrumque igitur C et E numeros metietur
-numerus, quod est impossibile. Qui enim sunt
-minimi in eadem proportione quibuslibet aliis nu-
-meris, hi primi ad se invicem sunt, et solam differen-
-tiam retinent e unitatem; unitas igitur est D: igitur
-E numerus C numerum unitate transcendit. Quo-
-circa nullus incidet medius numerus, qui eam pro-
-portionem aequaliter scindat. Quo fit ut nec inter
-eos qui eandem proportionem tenent, medius possit
-numerus collocari, qui eandem proportionem aequaliter
-scindat.
+  <bloco tipo="outro" script="latino" bbox="120,360,450,510">
+    [Diagrama: Arco externo "Superparticularis proportio 6 ad 4", Arco medio "Minimi ejusdem propor. 3 ad 2", Arco interno "minima differ"]
+    [Tabela:]
+    A | C | D | E | B
+    4 | 2 | 1 | 3 | 6
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="40,360,460,560">
-Superparticularum proportio 6 ad 4
-Minimi ejusdem propor. 3 ad 2
-minima differ
-A   C   D   E   B
-4   2   1   3   6
+  <bloco tipo="texto_principal" script="latino" bbox="100,520,480,700">
+    Et secundum Archita quidem rationem idcirco in superparticulari nullus medius terminus cadit, qui C aequaliter dividat proportionem, quoniam minimi in eadem proportione sola differunt unitate. Quasi vero non etiam in multiplici proportione minimi eamdem unitatis differentiam sortiantur. Cum plures videamus esse multiplices praeter eos qui in radicibus collocati sunt, <sup>i</sup> ter quos medius terminus scindens aequaliter eandem proportionem possit aptari. Sed haec qui arithmeticus nostros diligenter inspexerit, facilius intelliget. Addendum vero est id ita evenire, ut Architas putat, in sola superparticulari proportione. Non autem universaliter est dicendum. Nunc <sup>e</sup> autem ad sequentia convertamur.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="0,560,500,860">
-Et secundum Architas quidem rationem idcirco in su-
-perparticulari nullus medius terminus cadit, qui C
-aequaliter dividat proportionem, quoniam minimi in
-eadem proportione sola differunt unitate. Quasi vero
-non etiam in multiplici proportione minimi eandem
-unitatis differentiam sortiuntur. Cum plures videamus
-esse multiples praeter eos qui in radicibus collocati
-sunt, inter quos medius terminus scindens aequaliter
-eandem proportionem possit aptari. Sed haec qui
-arithmeticos nostros diligenter inspexerit, facilius
-intellegit. Addendum vero est id ita evenire, ut Ar-
-chitas putat, in sola superparticulari proportione.
-Non autem universaliter est dicendum. Nunc e autem
-ad sequentia conversamur.
-
-CAPUT XII.
-
-In qua numerorum proportione sit comma, et quoniam
-in ea quae major sit quam 75 ad 74, minor quam
-74 ad 73.
-
-Primum igitur dico quoniam hi numeri qui comma
-continent majorem inter se retinent proportionem
-quam 75 ad 74, minorem quam 74 ad 73. Id vero ita
-demonstrabitur. Ac primo igitur illud reminiscendum
-est, quod sex toni diapason commata transcendunt.
-Sit igitur A quidem 262144, B autem diapason ad
-eum continens consonantiam in duplici scilicet con-
-stituta 524288, C vero sex denies ab A numero disce-
-dat et sit 531441. Quae omnia ex secundi voluminis
-tonorum dispositione sunt colligenda. Inter B igitur
+  <bloco tipo="cabecalho" script="latino" bbox="250,710,350,730">
+    CAPUT XII.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,200,520,820">
-A
-B
-C
-D
+  <bloco tipo="texto_principal" script="latino" bbox="100,730,480,900">
+    In qua numerorum proportione sit comma, et quoniam in ea quae major sit quam 75 ad 74, minor quam 74 ad 75.
+    <nota_marginal script="latino" bbox="80,780,100,800">D</nota_marginal>
+    Primum igitur dico quoniam hi numeri qui comma continent majorem inter se retinent proportionem quam 75 ad 74, minorem quam 74 ad 75. Id vero ita demonstrabitur: ac primo quidem illud reminiscendum est, quod sex toni diapason commate transcendunt. Sit igitur A quidem 262144, B autem diapason ad eum contineat consonantiam in duplici scilicet constituta 524288, C vero sex tonis ab A numero discedat et sit 531441. Quae omnia ex secundi voluminis tonorum dispositione sunt colligenda. Inter B igitur
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,120,1000,420">
-atque C communis proportio continetur. Aufero igitur
-numerum de numero C, et relinquitur D in 7153 uni-
-tatibus collocatus. Quid numerus minor D est quam
-sit septuagesima tertia pars B numeri, major vero
-est quam septuagesima quarta pars. Nam si eundem D
-numerum, qui est in 7153, septuages ter multiplicem,
-sit mihi E, numerus in 522169 unitatibus constitutus.
-Si eum septuages quater multiplicem, fiet numerus F 529322.
-Quorum quidem E, qui per 73 auctus est, minor est B numero;
-F autem qui per 74, major est B numero. Recte igitur
-dictum est D, ejus quod est B, minorem quidem esse
-quam septuagesimam tertiam partem, majorem vero
-quam septuagesimam quartam. Quocirca et C numerus
-numerum in minore quidem parte ejus quod est B
-eundem B superat quam septuagesima tertia, majore
-vero quam septuagesima quarta. Ejus igitur quod est
-proportio ad id quod est B major quidem est quam
-75 ad 74, minor vero quam 74 ad 73. Nam in priore
-unitas septuagesima quarta est minoris; in posteriore
-vero eadem unitas septuagesima tertia.
+  <bloco tipo="texto_principal" script="latino" bbox="510,80,900,450">
+    <nota_marginal script="latino" bbox="490,80,510,100">A</nota_marginal>
+    atque C commatis proportio continetur. Aufero igitur B numerum de numero C, et relinquit D in 7153 unitatibus collocatus. <sup>f</sup> Quid numerus minor D est quam sit septuagesima tertia pars B numeri, major vero est quam septuagesima quarta sit. Nam si eundem D numerum, qui est in 7153, septuagies ter multiplicem, <sup>h</sup> fiet mihi E numerus in 522169 unitatibus constitutus. Si eum septuagies quater multiplicem, fit numerus F 529522. Quorum quidem E, qui per septuaginta tres auctus est, minor est B numero; F autem qui per 74, major est B numero. Recte igitur dictum est D, ejus quod est B, minorem quidem esse quam septuagesimam tertiam partem, majorem vero quam septuagesimam quartam. Quocirca C numerus B numerum <sup>l</sup> minore quidem parte ejus quod est
+    <nota_marginal script="latino" bbox="490,300,510,320">B</nota_marginal>
+    eundem B superat, quam septuagesima tertia, majore vero quam septuagesima quarta. Ejus igitur quod est C proportio ad id quod est B major quidem est quam 75 ad 74, minor vero quam 74 ad 75. Nam in priore unitas septuagesima quarta est minoris; in posteriore vero eadem unitas septuagesima tertia.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="560,300,980,560">
-Diapason
-A      B       C
-262144 524288 531441
-
-D
-7153
-
-e minor b     f maior b
-E 522169    F 529322
-7153
+  <bloco tipo="outro" script="latino" bbox="520,460,890,650">
+    [Diagrama: Arco "Octoni", Arco "Diapason"]
+    [Tabela:]
+    A | B | C
+    262144 | 524288 | 531441
+    [Circulo/Arco abaixo:] D ra D
+    [Numero:] 7153
+    [Arcos laterais:] Sesqui. ter
+    [Tabela abaixo:]
+    E | F
+    522169 | 529522
+    7153
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,560,1000,920">
-Item aliter explicandum, illo prius presumpto, quod
-si cui proportioni propria numerorum differentia
-aequaliter augeatur, minor inter eos qui post additionem
-sunt proportio continebitur quam inter priores qui ante
-additionem illam quadam proportione distabant. Ut si
-sex et quatuor, si utrisque binariis, quae est differentia
-sua apponatur, fuerint 8 et 6, sed inter 6 et 8 sequiaterna,
-inter 8 et 6 sequiateria proportio continebitur, minor
-vero est proportio sequiateria sequi-altera proportio.
-Hoc igitur ita praedicto, disponuntur superiores numeri
-qui proportionem commutatam continebant, id est 531441
-et sit A. Sit etiam B 524288; horum differentia est C 7153.
-igitur numerus majorum numerum eo qui est A septuagies
-quinquies multiplicet. Si igitur C numerum A septuagies
-quinquies multiplices, fiet mihi D qui est 536475. Igitur
-numerus cum qui est A, numerum eo qui est B antece-
-det, id est 5034. Nursus C numerus cum qui est B metiatur
-septuagies quater et multipliceturque, fiet igitur numerus F 529322.
-Qui F eo qui est B ...
+  <bloco tipo="texto_principal" script="latino" bbox="510,660,900,900">
+    Idem aliter explicandum, illo prius praesumpto, quod si cui proportioni propria numerorum differentia aequaliter augeatur, minor inter eos qui post additionem fiunt proportio continebitur quam inter priores qui ante additionem illam quadam proportione distabant. Ut sex et quatuor si utrisque binarius, quae est differentia sua apponatur, fient 8 et 6, sed inter 6 et 4 sesquialtera, inter 8 et 6 sesquitertia proportio continetur, minor vero est proportio sesquitertia sesquialtera proportione; hoc igitur ita praedicto, disponantur superiores numeri qui proportionem commatis continebant, id est 531441, et sit A. Sit etiam B 524288; horum differentia sit C 7153: C igitur numerus majorem numerum <sup>k</sup> eo qui est A septuagies quinquies metitur. Si igitur C numerum A septuagies quinquies multiplices, fiet mihi D qui est 556475. Igitur D numerus eum qui est A, numero eo qui est E antecedit, id est 5034. Rursus C numerus eum qui est B metiatur septuagies quater <sup>l</sup> multipliceturque, fiet igitur numerus F 529522. Qui F eo qui est B
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="0,860,1000,960">
-a Non habetur. b Metitur. c Unitale. d Non habet. e Non habetur.
-f Qui. g Non habetur. h Fit. (nota: edição e pontuação conforme impresso; palavras incertas marcatae [ilegivel])
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="360,960,1000,1000">
-Digitized by Google
+  <bloco tipo="aparato_critico" script="latino" bbox="100,910,900,950">
+    <sup>a</sup> Non habetur. <sup>b</sup> Metitur. <sup>c</sup> Unitate. <sup>d</sup> Non habet. <sup>e</sup> Non habetur. <sup>f</sup> Qui. <sup>g</sup> Non habetur. <sup>h</sup> Fit. <sup>i</sup> Enim. <sup>j</sup> Minorem. <sup>k</sup> Non habetur. <sup>l</sup> Multiplicetque
   </bloco>
   <notas>
-Scriptus in latino. Usei a marca [ilegivel] unicuamente em palavras cuja leitura não se apresentou certa; numeri e sinais diagrammatum transcriptae secundum imprintas cifras (A=262144, B=524288, C=531441, D=7153, E=522169, F=529322). Diagrams transcriptae in blocco "outro" com legetextus talis ut apparet. Letras verticales A, B, C, D in marginem centralem marcatae ut nota_marginal.
+    Transcrição de página dupla (1257-1258) com duas colunas.
+    Notas marginais A, B, D identificadas no início de seções.
+    Diagramas contêm tabelas e arcos com texto.
+    Superscritos (a-l) referem-se ao aparato crítico no rodapé.
+    A letra 'C' marginal não foi identificada claramente como marcador de seção neste recorte, apenas como parte do texto ou diagrama.
   </notas>
 </pagina>

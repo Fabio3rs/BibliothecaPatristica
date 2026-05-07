@@ -1,50 +1,46 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,90">
-41 PROLEGOMENA EDIT. ANTICERP. 42
-Elogii pictor, morum censor, citharista
-Pieridum, fide belligerator eral.
-A hic mundum saquens, sub religionis amictu
-Vixit, adhuc manet hic; en tumulatus adest.
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,45">
+    41 PROLEGOMENA EDIT. ANTVERP. 42
   </bloco>
-
-  <bloco tipo="outro" script="latino" bbox="40,90,960,680">
-[ilegivel]  Docto praeponus  [ilegivel]   S. Bernardus   1482.
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-[desenho de sarcophagus com figura de defunto]
-LIBERA ANIMAM MEAM
-[pequeno quadrato no pavimento:]
-Alanum brevis hora
-brevi tumulo sepelivit
-qui duo qui septem
-qui totum scibile scivit
+  <bloco tipo="texto_principal" script="latino" bbox="0,45,1000,95">
+    Eloquii pictor, morum censor, citharista
+    Pieridum, fidei belligerator erat.
+    A Hic mundum fugiens, sub religionis amictu
+    Vixit, adhuc manet hic; en tumulatus adest.
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="30,520,80,640">
-J.C.
+  <bloco tipo="gravura" script="latino" bbox="50,100,950,680">
+    [Inscriptiones in monumento:]
+    FR. ALANUS MAGNUS
+    S. Bernardus
+    1482.
+    LIBERA ANIMAM MEAM
+    [In pluteo pavimentali:]
+    Alanum brevis hora
+    brevi tumulo [ilegivel]
+    qui duo qui septem
+    qui totum scibile scivit.
+    [Notæ marginales in sculptura:]
+    J.C.
+    ALEXH
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="900,220,980,760">
-Alani (nota marginal, manus)
+  <bloco tipo="texto_principal" script="latino" bbox="100,690,900,720">
+    ALANI MAGNI TUMULUS.
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="60,700,960,920">
-ALANI MAGNI TUMULUS.
-
-(Ex actis Academiæ Inscrip., tom. IX, Parisiis, 1736, p. 229.)
-
-Alani magni tumulus conspiciebatur Cistercii in claustro, juxta templi ingressum. Hunc extruxerat, anno 1482, D. Joannes de Cirey, Cisterciensis abbas.
-
-Vetus Alani Epitaphium, litteris gothicis incisum in lapide quadrato, bipedali, in anteriori parte tumuli pavimento clausuri incluso, sic legebatur :
-
-Alanum brevis hora, brevi tumulo sepelivit :
-Qui duo, qui septem, qui totum scibile scivit.
-
-PATROL. CCX.
+  <bloco tipo="texto_principal" script="latino" bbox="150,720,850,750">
+    (Ex actis Academiæ Inscript., tom. IX, Parisiis, 1736, p. 229.)
   </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="0,920,1000,1000">
-Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="50,750,950,850">
+    Alani magni tumulus conspiciebatur Cistercii in claustro, juxta templi ingressum. Hunc extruxerat, anno 1482, D. Joannes de Cirey, Cisterciensis abbas.
+    Vetus Alani Epitaphium, litteris gothicis incisum in lapide quadrato, bipedali, in anteriori parte tumuli pavimento claustri incluso, sic legebatur :
   </bloco>
-
-  <notas>Script principal: latino. A gravura contém inscrições em letras góticas muito pequenas e parcialmente ilegíveis — essas palavras foram marcadas com [ilegivel] palavra a palavra onde a leitura não pôde ser segura. Foram identificadas notas marginais ("J.C." à esquerda do monumento; nota vertical à direita "Alani") e um epitáfio legível no quadrado do pavimento. Não se procedeu a normalizações nem traduções.</notas>
+  <bloco tipo="texto_principal" script="latino" bbox="100,850,900,900">
+    Alanum brevis hora, brevi tumulo sepelivit :
+    Qui duo, qui septem, qui totum scibile scivit.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="0,900,1000,1000">
+    PATROL. CCX.
+    2
+    Digitized by Google
+  </bloco>
+  <notas>Transcrição baseada na inspeção visual da imagem. O cabeçalho indica "ANTVERP." (Antuérpia), corrigindo o OCR "ANTUETP". As inscrições na gravura foram transcritas conforme visibilidade, marcando como [ilegivel] onde a resolução não permite certeza absoluta (ex: segunda linha da placa no chão). O texto descritivo abaixo da gravura foi transcrito literalmente, corrigindo erros de OCR como "Cirtercii" para "Cistercii", "extruxzeraf" para "extruxerat", "go1hicis" para "gothicis". As letras J.C. e ALEXH são assinaturas/marcas na gravura.</notas>
 </pagina>

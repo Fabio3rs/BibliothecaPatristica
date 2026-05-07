@@ -1,9 +1,11 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,70">
-    439                     EUSEBII VERCELL. EVANGELIUM CUM VARIIS COD. COLLATUM.                     440
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,60">
+    439 EUSEBII VERCELL. EVANGELIUM CUM VARIIS COD. COLLATUM. 440
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,70,490,900">
-    CODEX VERCELLENSIS.
+  <bloco tipo="cabecalho" script="latino" bbox="0,60,1000,90">
+    CODEX VERCELLENSIS. CODEX VERONENSIS.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="20,90,240,550">
     tatis, quod non
     venit ad diem
     solem-
@@ -15,67 +17,69 @@
     mandatum,
     ut si quis cog-
     novisset ubi
-    . . et , indica-
-    ret , ut adpre-
+    . . . et , indica-
+    ret, ut adpre-
     henderent
     illum.
-    
     CAPUT XII.
     1. Jesus autem an-
     te sex dies Pas-
     cae venit in
     Bethaniam,
     ubi (a) erat Laza-
-    rus , . . uem sus-
-    cita . . a mor-
-    2. luis ... cerunt
+    rus, . . uem sus-
+    cita . . . a mor-
+    2. tuis ¹ . . . cerunt
     illi cenam : et
     Martha minis-
     trabat, Laza-
     rus autem u-
     nus erat de
-    discumbentibus.
+    discumben-
+    tibus.
     3. Maria autem
     accepit libram
     nardi ungu-
     enti, et unxit
     pedes Jesu, et
-    ter . . . t . . . pillis
+    ter . . t . . pillis
     suis pedes ejus :
     et domus im-
     pleta est odo-
     re unguen-
     4. ti. Dicit u-
     nus ex disci-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="260,90,480,550">
     pulis ejus, (d) Si-
-    mon † Judas
+    mon Judas
     Scarioth, . . ui
     e . . m . . . ditu-
-    5. rus e . . Qu-
+    5. rus e . . . . Qua-
     re hoc ungu-
-    entum ? non
+    entum ² non
     venit dena-
     riis ccc. et da-
     tum est pau-
-    peribus ?
+    peribus?
     6. Hoc autem dixit,
     non quod de
     pauperibus
     cura illi esset,
     sed quia fur
-    er . . . el locu-
-    los (e) . . . †,
-    et ea , quae mit-
+    er . . . et locu-
+    los (e) ³ . . . . . . †,
+    et ea, quae mit-
     tebantur, au-
     ferebat.
-    7. A1Jesus : Dim..(f). lite
+    7. Ait Jesus : Dim..(f)⁴..lite
     illam ut in
-    diem sepul-
-    r ae meae ser-
+    diem sepultu-
+    rae meae ser-
     8. vet illut. Pau-
     peres enim
-    semper 8 habe-
-    tis vobiscum :
+    semper ⁵ habe-
+    bitis vobiscum :
     me autem
     non semper
     habebitis.
@@ -86,14 +90,13 @@
     venerunt,
     non propter
     Jesum solum,
-    sed ut Lazar.,
+    sed ut Lazar. .
     viderent, q. . .
-    suscitatv.
-    a mortuis.
+    suscitav. .
+    e mortuis.
     10. Cogitaverunt
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="490,70,980,900">
-    CODEX VERONENSIS.
+  <bloco tipo="texto_principal" script="latino" bbox="520,90,740,550">
     tatis, quia
     non venit
     ad diem fe-
@@ -107,9 +110,8 @@
     cognoverit
     ubi sit, ut
     indicet, et
-    adprehend-
+    adprehen-
     dant.
-    
     CAPUT XII.
     1. Jesus ergo an-
     te sex dies
@@ -132,24 +134,26 @@
     cepit libram
     unguenti (c) pi-
     stici †, et unxit
-    pedes Jesu ,
+    pedes Jesu,
     et extersit
     capillis suis
     pedes ejus :
     et domus impleta
     est ex odore
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="760,90,980,550">
     unguenti.
     4. Et dicit unus
     ex discipulis
     ejus, Judas (d) Si-
-    mon † Scariotes,
+    mon Scariotes,
     qui incipiebat
     eum tradere :
     5. Quare hoc un-
     guentum non
-    veniit denariis
+    venit denariis
     ccc. et datum
-    est pauperibus ?
+    est pauperibus?
     6. Dixit autem
     hoc, non quia
     de pauperibus
@@ -177,47 +181,73 @@
     illic est : et vene-
     runt, non propter
     (h) Jesum †, sed
-    ut Lazarium
+    ut Lazarum
     viderent, quem
-    suscitatvit
-    a mortuis.
+    suscitavit
+    e mortuis.
     10. Cogitaverunt
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="20,900,980,980">
+  <bloco tipo="texto_principal" script="latino" bbox="20,560,980,700">
     CODEX BRIXIANUS.
-    quia non veniet ad diem festum. Dederant autem
-    Principes Sacerdotum. et Pharisaei mandatum. ut
-    siquis sciret ubi esset. demonstrarent. ut adprehende-
+    quia non veniet ad diem festum. Dederant autem Principes Sacerdotum. et Pharisaei mandatum. ut
+    siquis sciret ubi esset. demonstraret. ut adprehende-
     rent eum Jesus autem ante sextum diem Paschae. ve-
-    nit in Bethaniam ubi(a) erat Lazarus qui fuerat mortuus
-    quem suscitavit Jesus ex mortuis. Fecerunt (b) ergo † ei
-    cenam ibi. et Martha ministrabat. Lazarus autem. unus
-    erat ex discumbentibus. cum eo Maria itaque sumpsit
-    libram unguenti nardi pistici pretiosi. et unxit pedes
+    nit in Bethaniam ubi(a) eratLazarus qui fuerat mortuus
+    quem suscitavitJesus ex mortuis.Fecerunt (b) ergo† ei
+    cenam ibi.et Martha ministrabat. Lazarusautem.unus
+    erat ex discumbentibus.cum eo Maria itaque sumpsit
+    libram unguenti nardi pistici pretiosi.et unxit pedes
     Jesus. et extersit capillis suis pedes ejus. domus
-    autem repleta est ex odore unguenti. Dixit ergo
+    autem repleta est ex odore unguenti.Dixit ergo
     unus ex discipulis ejus. Judas (d) Simonis † Scha-
-    
+    riotes qui traditurus erat eum. Quare hoc unguen-
+    tum. non venundatum est in trecentis denariis. et
+    datum est pauperibus. Hoc autem dixit. non quia de
+    pauperibus cura ei erat. sed quia fur erat. et locu-
+    lum (e) habebat †. et ea quae mittebantur portabat.
+    Dixit ergo Jesus. (f) Sine † illam in die sepulturae
+    meae servavit illud. Pauperes enim semper habe-
+    tis:vobiscum me autem non semper habetis. Cognovit
+    ergo turba multa ex Judaeis. quia Jesus illic est.et vene-
+    runt non tantum propter Jesum solum. sed et ut Laza-
+    rum viderent quem suscitavit a mortuis. Cogitaverunt
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="20,710,480,840">
     CODEX CORBEIENSIS.
-    56. 6 Quia non veniet ad diem festum ?
+    56. ⁶ Quia non veniet ad diem festum?
     CAP. XII. — 3. libram unguenti pistici.
     4. Judas Simonis Iscariotis, qui incipiebat eum
     tradere.
-    
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="520,710,980,840">
     VARIANTES LECTIONES.
-    1 Gal. fecerunt ei coenam: et Martha ibi ministrabat...
-    unan ex. Vulg. Fecerunt autem ei coenam ibi: et Martha
+    6. non quod de pauperibus cura esset illi... ⁷ ex-
+    portabat.
+    8. ⁸ non semper habebitis †.
+    9. Et turba multa . . . audivit.
+    ¹ Gal. fecerunt ei coenam : et Martha ibi ministrabat..
+    unus ex. Vulg. Fecerunt autem ei coenam ibi : et Martha
     ministrabat... unus erat ex.
-    2 Gal. non venit. Mm. non vendidit. Vulg. non veniit.
-    3 Mm. habebat, et quae mittebantur, auferrebat. Vulg.
+    ² Gal. non vendidit. Mm. non vendidit. Vulg. non vaenit.
+    ³ Mm. habebat, et quae mittebantur, auferebat. Vulg.
     habens, ea, quae mittebantur, portabat.
-    
-    BLANCHINI NOTAE.
-    (a) Ita et tex. Gr. ηλ Λαζαρος ο τεθνηκος. — (b) Ita et codd.
-    Cant. — (d) Addit Simon, pariter tex. Gr. Σιμονος. — (e) Ita et tex. Gr. ἔσχεν. — (f) Ita et tex. Gr. ἔλεγε.
-    — (g) Cod. Cant. ηκουσαν. — (h) Post Jesum, deest tantum, etiam in cod. Cant.
-    
+    ⁴ Mm. Sine illam. Vulg. Sinite illam.
+    ⁵ Gal. et Mm. habebitis... semper habebitis. Vulg. ha-
+    betis... semper habetis.
+    ⁶ Mm. Quia non veniat. Gal. quia non venit, ut Vulgata.
+    ⁷ Mm. auferebat.
+    ⁸ Et ita Gal. et Mm.
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="20,850,980,940">
+    BLANCHINI NOTÆ.
+    (a) Ita et tex. Gr. ἦν Λάζαρος ὁ τεθνηκώς. — (b) Ita et οὖν. — (c) Ante pistici, deest nardi, etiam in cod.
+    Cant. — (d) Addit Simon, pariter tex. Gr. Σίμωνος. — (e) Ita et tex. Gr. εἶχε. — (f) Ita et tex. Gr. ἄφες.
+    — (g) Cod. Cant. ἤκουσαν. — (h) Post Jesum, deest tantum, etiam in cod. Cant.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="0,950,1000,1000">
     Digitized by Google
   </bloco>
-  <notas>Transcrição preserva abreviaturas, sinais † e marcas editoriais como aparecem; algumas lacunas indicadas por elipses '...' e marcas [ilegivel] não foram necessárias; script principal latino. BBOX estimadas em escala 0-1000 segundo visual da imagem.</notas>
+  <notas>
+    Transcrição de página de edição crítica do Evangelho (Patrologia). Layout complexo com 4 colunas na parte superior, 1 bloco central, 2 colunas inferiores e notas de rodapé. Texto em latim com inserções de grego nas notas de Blanchini. Marcas de lacuna indicadas por pontos (. . .).
+  </notas>
 </pagina>

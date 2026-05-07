@@ -1,38 +1,47 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="660,10,980,120">
-3 2044 018 909 580
+  <bloco tipo="outro" script="latino" bbox="680,15,920,85">
+    3 2044 018 909 580
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="220,190,600,380">
-This book should be returned to
-the Library on or before the last date
-stamped below.
-
-A fine is incurred by retaining it
-beyond the specified time.
-Please return promptly.
+  <bloco tipo="texto_principal" script="latino" bbox="260,255,660,375">
+    This book should be returned to
+    the Library on or before the last date
+    stamped below.
+    A fine is incurred by retaining it
+    beyond the specified time.
+    Please return promptly.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,380,420,700">
-CANCELLED
-1675 740
-AUG 20 [ilegivel]
-[ilegivel]
-CANCELLED
+  <bloco tipo="outro" script="latino" bbox="200,395,460,445">
+    CANCELLED
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="420,380,680,700">
-[ilegivel] STUDY
-CHARGE
-[ilegivel] CHARGE
-[ilegivel]
-FEB [ilegivel]
+  <bloco tipo="outro" script="latino" bbox="480,375,700,445">
+    STALL STUDY
+    CHARGE
   </bloco>
-  <bloco tipo="nota_marginal" script="desconhecido" bbox="900,160,980,480">
-[ilegivel]
+  <bloco tipo="nota_marginal" script="latino" bbox="250,435,450,475">
+    1675 A 40
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="720,920,980,990">
-Digitized by Google
+  <bloco tipo="outro" script="latino" bbox="480,445,700,505">
+    STALL [ilegivel]
+    CHARGE
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="280,475,450,505">
+    AUG 20 '85 SS
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="250,505,450,580">
+    SYS 4513
+    Cass B
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="450,550,650,620">
+    FEB 10 1994
+    [ilegivel]
+    BOOK DO [ilegivel]
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,960,820,990">
+    Digitized by Google
   </bloco>
   <notas>
-tipo_pagina: capa_ou_guarda.
-Script principal: latino. Vários carimbos sobrepostos na área central; muitas sobreposições e manuscritos tornam palavras e datas parcialmente ilegíveis — nestes casos usei o token [ilegivel] por palavra. BBOXs são estimativas visuais na escala 0-1000. Não foram normalizadas nem traduzidas as leituras.
+    Página de guarda com carimbos de biblioteca e anotações manuscritas.
+    Transcrição dos carimbos sobrepostos feita conforme visibilidade.
+    "Cass B" escrito verticalmente ao lado de "SYS 4513".
   </notas>
 </pagina>

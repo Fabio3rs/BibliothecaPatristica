@@ -1,53 +1,120 @@
 <pagina estado="com_texto">
-  <bloco tipo="outro" script="latino" bbox="30,10,970,60">
-tipo_pagina: capa
+  <bloco tipo="cabecalho" script="latino" bbox="58,58,866,135">
+    APPENDIX AD SÆC. IV.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="30,60,970,320">
-APPENDIX AD SÆC. IV.
-AUCTORES ET MONUMENTA VEL INCERTÆ ÆTATIS, VEL DUBIÆ AUCTORITATIS,
-VEL TANTUM CONNEXIONIS CAUSA PATRIBUS ADJUNCTA.
-────────◊────────
-ANNO DOMINI CCCCXCIX.
-SANCTUS MARTINUS
-EPISCOPUS TURONENSIS.
-(Ex Galland. Vet. Patr. Biblioth. t. VII.)
-PROLEGOMENA.
+  <bloco tipo="cabecalho" script="latino" bbox="70,145,855,190">
+    AUCTORES ET MONUMENTA VEL INCERTÆ ÆTATIS, VEL DUBLÆ AUCTORITATIS,
+    VEL TANTUM CONNEXIONIS CAUSA PATRIBUS ADJUNCTA.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,340,490,820">
-I. Non tantum vitæ sanctitate, verum etiam doctrinæ laude præstantissimum fuisse beatum MARTINUM ecclesiæ Turonicæ antistitem, luculenter satis testatur qui eum probe noverat Sulpicius Severus. Sic enim ille (a): Jam vero, inquit, in verbis et confabulatione ejus quanta gravitas, quanta dignitas erat! quam acer, quam efficax, et quam in absolvendis scripturarum questionibus promptus et facilis! — Jesum testor semperque communem, me ex nullius umquam ore tantum scientiæ, tantum ingenii, tam boni et tam puri sermonis audisse. Quamquam in Martini virtutibus quantula est ista laudatio! nisi quod mirum est, homini illiterato ne hanc quidem gratiam defuisse. Et alibi (b): Jam si ad levam Achaiae sinum paululum devexus intraveris, sciat Corinthus, sciant Athenæ, non sapientiorum in Academia Platonem, nec Socratem in carcere fortiorem: felicem quidem Græciam, quæ meruit audire Apostolum prædicantem; sed nequaquam a Christo Gallias derelictas, quibus donaverit habere Martinum. Hæc Sulpicius.
-
-II. Porro sub tanti Patris nomine circumfertur Confessio Trinæ unitatis et unius Trinitatis, stylo simplici et alicubi obscuriore, librariorum fortasse inscitiæ conscripta; quam anno 1512 primus edidit cum aliis veterum opusculis Jodocus Clichtoveus. Deinceps vero sæpius idem libellus, virorum eruditorum Petri Pithœi, Casparis Barthii, Christiani Daumii aliorumque opera, typis denuo consignatus comparitur. Exstat præterea in plerisque Patrum bibliothecis et in collectionibus conciliorum excusus.
+  <bloco tipo="cabecalho" script="latino" bbox="380,215,565,230">
+    ANNO DOMINI CCCXCIX.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,340,950,820">
-A. De eo autem hæc habet Combefisius (c): Exscripseram, inquit, sermonem de sancta Trinitate, ejus (Martini) prænotatum nomine, ex codice em. card. Mazarin; sed ita in eo vitiosum, ut non visum sit repraesentare: id inde factum videtur, quod antiquarius ex vetustioribus membranis aut ceris non satis feliciter potuerit exscribere. Est tamen ille, conjecturæ his quæ Severus de illitterati Martini eruditione ac facundia, tanta scribit obtestatione. Ita Combefisius, ea respiciens quæ modo ex Sulpicio recitavimus. Ex priscis item membranis eandem Confessionem Trajecti evulgavit anno 1514 Theod. Pulmannus, cujus varias lectiones ad suæ editionis calcem cum [ilegivel] prodiit; 1677 rejectit Daumius.
-
-III. Verum præ cæteris commendanda videtur B. Thomæ Beauxamis solertia; qui tres vetustissimos codices nactus, eorum collatione diligenter instituta, eundem sancti præpositus Turonensis libellum brevi commentario illustratum subjectumque Vitæ beati Martini a Sulpicio Severo conscripsit, prelo commissus Parisiis anno 1571. Quandoquidem vero hanc editionem reliquis multo emendatiorem secuti sumus, quæ præterea inter rariores recensentur (d); juverit proinde nonnulla ex eodem Parisiensi editore in medium proferre, quibus dum ille studium suum in hanc opellam impensum produci, ejus partim sive integritatem, sive pretium asseruit. Sic igitur ille (e): "Tria, inquit, e diversis bibliothecis volumina mihi prolata sunt, quæ manus ipsa, satis antiquissima esse constabat: caracteres enim aliis qui ante mille annos in usu erant, collati, persimiles omnium."
+  <bloco tipo="cabecalho" script="latino" bbox="155,245,775,285">
+    SANCTUS MARTINUS
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,360,510,392">
-A
+  <bloco tipo="cabecalho" script="latino" bbox="275,295,655,315">
+    EPISCOPUS TURONENSIS.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,480,510,512">
-B
+  <bloco tipo="nota" script="latino" bbox="320,325,610,340">
+    (Ex Galland. Vet. Patr. Biblioth. t. VII.)
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,600,510,632">
-C
+  <bloco tipo="cabecalho" script="latino" bbox="360,365,575,385">
+    PROLEGOMENA.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,720,510,752">
-D
+  <bloco tipo="texto_principal" script="latino" bbox="50,410,465,845">
+    I. Non tantum vitæ sanctitate, verum etiam doc-
+    trinæ laude præstantissimum fuisse beatum MARTI-
+    NUM ecclesiæ Turonicæ antistitem, luculenter satis
+    testatur qui eum probe noverat Sulpicius Severus.
+    Sic enim ille (a) : « Jam vero, inquit, in verbis et
+    confabulatione ejus quanta gravitas, quanta dignitas
+    erat! quam acer, quam efficax, et quam in absol-
+    vendis scripturarum quæstionibus promptus et fa-
+    cilis! — Jesum testor spemque communem, me ex
+    nullius umquam ore tantum scientiæ, tantum ingenii,
+    tam boni et tam puri sermonis audivisse. Quamquam
+    in Martini virtutibus quantula est ista laudatio! nisi
+    quod mirum est, homini illiterato ne hanc quidem
+    gratiam defuisse. » Et alibi (b) : « Jam si ad Irevam,
+    Achaiæ sinum paululum devexus intraveris, sciat
+    Corinthus, sciant Athenæ, non sapientiorem in
+    Academia Platonem, nec Socratem in carcere for-
+    tiorem : felicem quidem Græciam, quæ meruit au-
+    dire Apostolum prædicantem; sed nequaquam a
+    Christo Gallias derelictas, quibus donaverit habere
+    Martinum. » Hæc Sulpicius.
+    II. Porro sub tanti Patris nomine circumfertur
+    Confessio Trinæ unitatis et unius Trinitatis, stylo sim-
+    plici et alicubi obscuriore, librariorum fortasse in-
+    scitia, conscripta; quam anno 1512 primus edidit
+    cum aliis veterum opusculis Jodocus Clichtoveus.
+    Deinceps vero sæpius idem libellus, virorum erudi-
+    torum Petri Pithœi, Casparis Barthii, Christiani
+    Daumii aliorumque opera, typis denuo consignatus
+    comperitur. Exstat præterea in plerisque Patrum
+    bibliothecis et in collectionibus conciliorum excusus.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="40,820,700,960">
-(a) Sulp. Sev. de Vit. B. Mart. cap. 25. opp. tom. I. pag. 34, edit. Veron. 1741.
-(b) Id. Dial. m. cap. 17, ibid. pag. 146.
-(c) Combef. Bibl. Conc. tom. VIII, pag. 470.
-(d) Daum. praef. ad opusc. de S. Trinit. pag. 7. Hist. litt. de la France, tom. I, part. II, pag. 417.
-(e) Beaux. praefat. pag. 251 seqq.
+  <bloco tipo="nota_marginal" script="latino" bbox="470,410,490,430">
+    A
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,860,980,995">
-PATROL. XVIII. 1
-Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="480,410,890,615">
+    De eo autem hæc habet Combefisius (c) : « Exscrip-
+    seram, inquit, sermonem de sancta Trinitate, ejus
+    (Martini) prænotatum nomine, ex codice em. card.
+    Mazarini; sed ita in eo vitiosum, ut non visum sit
+    repræsentare : id inde factum videtur, quod anti-
+    quarius ex vetustioribus membranis aut ceris non
+    satis feliciter potuerit exscribere. Est tamen ille,
+    conjecturæ his quæ Severus de illitterati Martini
+    eruditione ac facundia, tanta scribit obstestatione. »
+    Ita Combefisius, ea respiciens quæ modo ex Sulp-
+    cio recitavimus. Ex priscis item membranis eamdem
+    Confessionem Trajecti evulgavit anno 1514 Theod.
+    Pulmannus, cujus varias lectiones ad suæ editionis
+    calcem quæ Cygneæ prodiit 1677 rejecit Daumius.
   </bloco>
-  <notas>
-Pagina identificada como "capa" (página de rosto / frontispício) com texto em duas colunas. Script transcrito: latino.
-Observações e correcções: - Foram transcritas todas as notas marginais (A–D) como blocos distintos. - Palavras incertas foram marcadas com [ilegivel] (apenas onde a leitura era insegura, p.ex. um termo próprio na col. dex. acerca das lectiones). - O ornament entresecções do cabeçalho foi representado por "────────◊────────". - BBOX são estimativas em escala 0–1000 (x1,y1,x2,y2). - Não se normalizou nem traduziu o texto; apenas foram corrigidos sinais de impressão óbvios e marcada incerteza quando necessário.
-  </notas>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,635,490,655">
+    B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,615,890,845">
+    III. Verum præ cæteris commendanda videtur
+    Thomæ Beauxamis solertia; qui tres vetustissimos
+    codices nactus, eorum collatione diligenter instituta,
+    eumdem sancti præsulis Turonensis libellum brevi
+    commentario illustratum subjectumque Vitæ beati
+    Martini a Sulpicio Severo conscriptæ, prelo commisit
+    Parisiis anno 1571. Quandoquidem vero hanc edi-
+    tionem reliquis multo emendatiorem secuti sumus,
+    quæ præterea inter rariores recensetur (d); juverit
+    proinde nonnulla ex eodem Parisiensi editore in me-
+    dium proferre, quibus dum ille studium suum in
+    hanc opellam impensum prodit, ejus pariter sive
+    integritatem, sive pretium astruit. Sic igitur ille (e) :
+    « Tria, inquit, e diversis bibliothecis volumina mihi
+    prolata sunt, quæ manus ipsa, satis antiquissima
+    esse contestabatur : characteres enim aliis qui ante
+    mille annos in usu erant, collati, persimiles omnium
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,825,490,845">
+    C
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="50,860,465,930">
+    (a) Sulp. Sev. de Vit. B. Mart. cap. 25. opp.
+    tom. I, pag. 34, edit. Veron. 1741.
+    (b) Id. Dial. III, cap. 17, ibid. page 146.
+    (c) Combef. Bibl. Conc. tom. VIII, pag. 470,
+    PATROL. XVIII.
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="480,860,890,930">
+    not. (c).
+    (d) Duam. præfat. ad opusc. de S. Trinit. pag. 7.
+    Hist. litt. de la France, tom. 1, part. II, pag. 417.
+    (e) Beaux. præfat. pag. 251 seq.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="750,935,770,955">
+    1
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="580,965,750,990">
+    Digitized by Google
+  </bloco>
 </pagina>

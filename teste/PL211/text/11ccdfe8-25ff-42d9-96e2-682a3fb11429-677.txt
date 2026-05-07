@@ -1,43 +1,58 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="120,20,880,140">
-SOMMAIRE
-DES MATIERES RENFERMEES DANS LE SOIXANTE-DEUXIEME VOU[ilegivel]
+  <bloco tipo="rodape" script="latino" bbox="50,20,400,60">
+    Imprimerie MIGNE, au Petit-Montrouge
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="10,20,220,120">
-Imprimerie MIGNE au Petit-Mon[ilegivel]
+  <bloco tipo="texto_principal" script="latino" bbox="100,100,900,120">
+    ———————————
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,160,620,860">
-DE LA TOUR.
-Troisieme partie.
-
-Discours sur l'état et les devoirs religieux. . . . . . . . . . . . . . . . . .
-Discours sur les devoirs du clergé. . . . . . . . . . . . . . . . . . . .
-Discours sur les devoirs des pretres. . . . . . . . . . . . . . . . . . . .
-Discours sur les devoirs. Panégyriques. . . . . . . . . . . . . . . . . . . .
-
-[ilegivel].
-
-Notice.
-Oeuvres completes. — Sermons pour les dimanches et fetes.
-Pour l'Avent et le Carême, sur les mystères de Jésus-Christ, et sur plusieurs points de morale.
-Pour l'Avent et le Carême. — Sur les Mystères de Jésus-Christ.
-Mystères de Jésus-Christ.
-Mystères de la sainte Vierge.
-Sujets divers.
-Panégyriques.
-Conferences ou discours contre les ennemis de notre sainte religion.
+  <bloco tipo="texto_principal" script="latino" bbox="200,250,900,750">
+    DE LA TOUR.
+    Troisième partie.
+    Discours sur l'état et les devoirs religieux.
+    Discours sur les devoirs du clergé.
+    Discours sur les devoirs des prêtres.
+    Discours sur les devoirs. Panégyriques.
+    BEURNIER.
+    Notice.
+    Oeuvres complètes. — Sermons pour les dimanches et fêtes,
+    pour l'Avent et le Carême, sur les mystères de Jésus-
+    Christ et de la sainte Vierge, et sur plusieurs points de
+    morale.
+    Avent.
+    Carême.
+    Mystères de Jésus-Christ.
+    Mystères de la sainte Vierge.
+    Sujets divers.
+    Panégyriques.
+    Conférences ou Discours contre les ennemis de notre sainte
+    religion.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="640,160,980,860">
-col. 9
-293
-327
-473
-[ilegivel]
+  <bloco tipo="texto_principal" script="latino" bbox="50,250,150,750">
+    Col. 9
+    293
+    327
+    473
+    
+    1067
+    1069
+    1069
+    1173
+    1307
+    1354
+    1433
+    1623
+    1757
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,920,980,995">
-Digitized by Google
+  <bloco tipo="cabecalho" script="latino" bbox="300,800,700,850">
+    DES MATIERES RENFERMEES DANS LE SOIXANTE-DEUXIEME VOL
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,850,650,900">
+    SOMMAIRE
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="700,950,950,990">
+    Digitized by Google
   </bloco>
   <notas>
-Página apresentada na imagem invertida (rotacionada 180°). A transcrição foi feita em leitura normal (upright) mantendo fidelidade ao que se vê: não foram traduzidos nem normalizados termos; usei "[ilegivel]" para palavras ou trechos incoerentes/ilegíveis. Identificação do(s) script(s): latino. BBOXs estimadas em escala 0-1000, aproximadas a partir da disposição visual. Coluna esquerda transcrita primeiro (bloco texto_principal bbox 80,160,620,860), depois a coluna de números à direita (bloco texto_principal bbox 640,160,980,860). Nota marginal superior (Imprimerie...) colocada em bloco próprio. Eventuais lacunas de numeração e palavras pouco legíveis foram marcadas com [ilegivel].
+    A página física encontra-se invertida (rotacionada 180°) na imagem fornecida. O conteúdo textual foi transcrito na orientação de leitura normal (upright) para fidelidade semântica, mas os blocos (BBOX) foram mapeados conforme a posição visual dos elementos na imagem (ex: "SOMMAIRE" fisicamente no rodapé da imagem, "Imprimerie" no topo). A coluna da esquerda na imagem contém a numeração das páginas, transcrita primeiro conforme diretriz de fluxo visual. Script: Latino.
   </notas>
 </pagina>

@@ -1,8 +1,15 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,80">
-    1123                             BERNONIS ABBATIS AUGIENSIS                             1124
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,200,50">
+    1123
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,90,490,920">
+  <bloco tipo="cabecalho" script="latino" bbox="350,20,650,50">
+    BERNONIS ABBATIS AUGIENSIS
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="800,20,900,50">
+    1124
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="100,60,480,400">
     Of. Benedicam Domino.
     Communiones.
     Com. Ecce Virgo conc.
@@ -22,24 +29,34 @@
     Com. Notas mihi fec.
     Com. Amen dico vobis.
     Com. Etsi coram hom.
-    Com. Dominus dabit benignitalem.
+    Com. Dominus dabit benignitatem.
     Com. Revelabitur gloria.
     Com. Viderunt omnes.
-    Com. Fili, quid fecisti?
-    Rectius has regeret authenticus tetrardus, si in-
+    Com. Fili, quid fecisti ?
+    Rectius has reget authenticus tetrardus, si in-
     veteratus permitteret usus.
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="580,480,600,500">
+    C
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,400,480,530">
     Com. Illumina faciem.
     Com. Quicunque fecerit.
     Com. Amen dico vobis.
     Com. Data est mihi.
     Gloria Patri, et Filio, et Spiritui sancto, sicut
-    erat in principio, et nunc et semper, et in sæcula C
+    erat in principio, et nunc et semper, et in sæcula
     sæculorum. Amen.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,530,480,600">
     PLAGIS PROTI.
-    Secundum quæ legis verbum, mutua quo dilec-
-    tione Dei et proximi, Christe, mandasti colere,
-    quo per hæc geminæ observantiæ præcepta red-
-    damus. Amen.
+    Secundum quæ legis verbum, mutua quo dilectione Dei et proximi, Christe, mandasti colere, quo per hæc geminæ observantiæ præcepta reddamus. Amen.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,600,480,950">
     Sæculorum. Amen.
     Ant. Dominus dixit ad me.
     Ant. Redime me, Domine.
@@ -49,7 +66,7 @@
     Ant. Fac mecum, Domine.
     Ant. Clamaverunt.
     Ant. Terribilis est.
-    Ant. Multiæ tribul.
+    Ant. Multæ tribul.
     Ant. Sacerdotes ejus.
     Ant. Sitientes, venite.
     Ant. Mihi autem nimis.
@@ -63,30 +80,54 @@
     Ant. Venite, adoremus.
     Gloria Patri, et Filio, et Spiritui sancto, sicut
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,90,960,920">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="550,50,570,70">
+    A
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="550,50,900,90">
     erat in principio et nunc et semper, et in sæcula
     sæculorum. Amen.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="550,90,900,150">
     Gradalia.
     Grad. De necessitatibus.
     Grad. Universi qui te.
     Grad. Ne avertas faciem.
     Grad. Angelis suis.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="550,150,900,210">
     Alleluia.
     Al. Dies sanctificatus.
-    Al. Video coelos.
+    Al. Video cælos.
     Al. Dominus regnavit.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="550,210,900,270">
     Offertoria.
     Of. Laudate Dominum.
     Of. Protege, Domine.
     Of. Vir erat in terra.
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="520,270,540,290">
+    B
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="550,270,900,310">
     Of. Ad te, Domine, levavi.
     Of. De profundis.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="550,310,900,510">
     Communiones.
     Sæculorum. Amen.
     Com. Multitudo lang.
     Com. Potum meum.
     Com. Hierusalem, surge
-    Com. Laetabimur in sæc.
+    Com. Lætæbimur in sæc.
     Com. Aufer a me.
     Com. Vovete et reddite.
     Com. Narrabo omnia.
@@ -98,16 +139,31 @@
     Com. Dominus regit me.
     Com. Dominus firmamentum.
     Gloria Patri, et Filio, etc.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="550,510,900,540">
     AUTHENTICUS DEUTERUS.
-    Tertia die, Christe, te resurgere et mundo fere
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="550,540,900,600">
+    Tertia [die, Christe, te resurgere et mundo fere
     lumen credimus. O alme, fac nos et tuum semper
-    laudare nomen, et in patria te æternæ regione cer-
-    nentes sedere. Amen.
+    laudare nomen, et in patriæ te æternæ regione cernentes sedere. Amen.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="550,600,900,640">
     Sæculorum. Amen.
     Ant. Miserere mihi, Domine, quoniam.
     Ant. Ego autem sicut oliva.
     Ant. Dum clamarem.
     Ant. Confessio et pulch
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="520,680,540,700">
+    D
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="550,640,900,950">
     Ant. Cognovi, Domine.
     Ant. Ego clamavi quoniam.
     Ant. Dum sanctificatus.
@@ -116,7 +172,7 @@
     Ant. Repleatur os meum.
     Ant. Si iniquitates.
     Sæculorum. Amen.
-    Ant. Deus, dum egredieris.
+    Ant. Deus, dum egredereris.
     Ant. Intret oratio.
     Ant. Sacerdotes tui, Domine.
     Ant. Tibi dixit cor.
@@ -124,22 +180,20 @@
     Ant. Liberator meus.
     Ant. Omnia quæ fecisti.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,120,540,160">
-    A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,380,540,420">
-    B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="420,560,460,600">
-    C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="560,680,600,720">
-    D
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="0,920,1000,1000">
+
+  <bloco tipo="rodape" script="latino" bbox="500,960,800,990">
     Digitized by Google
   </bloco>
+  
   <notas>
-    Scriptos: latino. As marcações A, B, C, D transcritas como blocos de nota_marginal (letras marginais centrais). BBOXes são estimativas proporcionais ao arquivo digital. Onde a legibilidade parecia incerta, mantive a forma tal como aparece no impresso; para vocábulos cuja leitura era manifestamente incerta, teria sido usado [ilegivel] (nenhum desses foi necessário em bloco principal, pequenas variantes ortográficas foram transcritas conforme visível).
+    Transcrição de página da Patrologia Latina (Bernonis Abbatis Augiensis).
+    Letras A, B, C, D identificadas como notas marginais de seção conforme instrução.
+    'A' no início da coluna direita.
+    'B' no gutter entre colunas, nível médio.
+    'C' no final da linha na coluna esquerda ("in sæcula C").
+    'D' no gutter entre colunas, nível inferior.
+    Texto "si in- / veteratus" dividido por hífen na coluna esquerda.
+    Texto "Tertia [die" com colchete visível.
+    Texto "mundo fere" transcrito literalmente.
   </notas>
 </pagina>
