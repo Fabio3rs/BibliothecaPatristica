@@ -1,66 +1,93 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="370,45,630,65">
+  <bloco tipo="cabecalho" script="latino" bbox="250,30,750,70">
     CRUCIATUS SANCTORUM MARTYRUM.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="235,65,335,85">
+
+  <!-- Coluna esquerda -->
+  <bloco tipo="cabecalho" script="latino" bbox="150,70,350,100">
     TABULA V.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="615,65,715,85">
-    TABULA VII.
+  <bloco tipo="nota_marginal" script="latino" bbox="50,412,70,430">A</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="75,412,480,435">
+    SS. Martyres nonnunquam, ut muscarum et fucorum aculeis excruciarentur, stipitibus erectis, melle delibuti, radiisque solis expositi appendebantur.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="105,425,465,535">
-    A SS. Martyres nonnunquam, ut muscarum et fucorum
-    aculeis excruciarentur, stipitibus erectis, melle deli-
-    buti, raduisque solis expositi appendebantur.
-    B Aliquando vel utroque pede, ingentibus saxis ad eorum
-    cervices alligatis :
-    C Vel altero pede, fumo supposito :
-    D Vel etiam apicibus pollicum manuum, eorum pedibus
-    gravibus additis oneribus :
-    E Vel demum altero quoque pede in genu deflexo, et
-    genu ferreo injecto vinculo, altero deinde pede ferri
-    pondere gravato.
+  <bloco tipo="nota_marginal" script="latino" bbox="50,448,70,465">B</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="75,448,480,465">
+    Aliquando vel utroque pede, ingentibus saxis ad eorum cervices alligatis :
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="495,425,895,535">
-    A Martyres quandoque rotis, mucronibus undique affixis,
-    ligati, super cuspides ferreos circumagebantur.
-    B Alii, inodo, quibus affixi non erant præuota i mucrones,
-    super cuspides item ferreos.
-    C Aut saltem, ut misere vitam finirent, super ardentes
-    prunas.
-    D Demum rotarum convexis alligati, e loco sublimi præ-
-    cipitabantur.
-    E Aut rotarum radiis intexti, sic ad plurimos dies, ut in-
-    terficerent, relinquebantur.
+  <bloco tipo="nota_marginal" script="latino" bbox="50,482,70,498">C</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="75,482,480,498">
+    Vel altero pede, fumo supposito :
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="235,545,335,565">
+  <bloco tipo="nota_marginal" script="latino" bbox="50,500,70,518">D</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="75,500,480,525">
+    Vel etiam apicibus pollicum manuum, eorum pedibus gravibus additis oneribus :
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="50,525,70,545">E</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="75,525,480,555">
+    Vel denum altero quoque pede in genu deflexo, et genu ferreo injecto vinculo, altero deinde pede ferri pondere gravato.
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="200,535,400,565">
     TABULA VI.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="615,545,715,565">
+  <bloco tipo="nota_marginal" script="latino" bbox="50,875,70,890">A</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="75,875,480,890">
+    Typhonis supplicium.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="50,890,70,910">B</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="75,890,480,910">
+    Martyres corio bovis inclusi radiis solis objiciebantur.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="50,910,70,925">C</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="75,910,480,925">
+    Scaphismi supplicium.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="50,925,70,940">D</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="75,925,480,945">
+    Martyres quandoque humi positi, radiis item solis ad maximum eorum cruciatum exponebantur.
+  </bloco>
+
+  <!-- Coluna direita -->
+  <bloco tipo="cabecalho" script="latino" bbox="650,70,850,100">
+    TABULA VII.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="520,412,540,430">A</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="545,412,950,435">
+    Martyres quandoque rotis, mucronibus undique affixis, ligati, super cuspides ferreos circumagebantur.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="520,445,540,462">B</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="545,445,950,465">
+    Aliqui nudo, quibus affixi non erant praeacuti mucrones, super cuspides item ferreos.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="520,478,540,495">C</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="545,478,950,498">
+    Aut saltem, ut misere vitam finirent, super ardentes prunas.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="520,505,540,522">D</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="545,505,950,528">
+    Demum rotarum convexis alligati, e loco sublimi praecipitabantur.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="520,528,540,545">E</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="545,528,950,555">
+    Aut rotarum radiis intexti, sic ad plurimos dies, ut interirent, relinquebantur.
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="700,535,900,565">
     TABULA VIII.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="105,885,465,955">
-    A Typhonis supplicium.
-    B Martyres corio bovis inclusi radiis solis objiciebantur.
-    C Scaphismi supplicium.
-    D Martyres quandoque humi positi, radiis item solis ad
-    maximum eorum cruciatum exponebantur.
+  <bloco tipo="nota_marginal" script="latino" bbox="520,875,540,892">A</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="545,875,950,900">
+    Martyres torculari premebantur, eo prorsus modo, quo uvae olivaeque ad vinum oleumque exprimendum premebantur.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="495,885,895,955">
-    A Martyres torculari premebantur, eo prorsus modo, quo
-    uvæ olivæque ad vinum oleumque exprimendum pre-
-    muntur.
-    B Trochleis extendebantur.
-    C Iisdem item elevabantur.
+  <bloco tipo="nota_marginal" script="latino" bbox="520,895,540,912">B</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="545,895,950,915">
+    Trochleis extendebantur.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="550,965,800,990">
-    Digitized by Google
+  <bloco tipo="nota_marginal" script="latino" bbox="520,912,540,928">C</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="545,912,950,930">
+    Iisdem item elevabantur.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="50,960,150,995">
-    216
-  </bloco>
-  <notas>
-    Transcrição literal mantendo erros aparentes do original (ex: "raduisque" por "radiisque", "inodo" por "modo", "præuota i" por "praenotati"?).
-    Layout consiste em quatro gravuras (Tabula V, VI, VII, VIII) com legendas descritivas abaixo de cada uma.
-  </notas>
+
+  <notas>Transcrição fiel das legendas latinas das quatro tabulae em prancha gravada. Palavra de leitura reservada em Tab. VII B (praeacuti) transcrita conforme melhor discernimento visual. Hifenizações de fim de linha não preservadas no fluxo textual; pontuação e ortografia seguem o original impresso.</notas>
 </pagina>

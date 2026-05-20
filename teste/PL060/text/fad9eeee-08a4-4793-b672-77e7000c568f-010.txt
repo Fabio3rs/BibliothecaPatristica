@@ -1,63 +1,127 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="120,10,880,90">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,110">
     CRUCIATUS SANCTORUM MARTYRUM.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="80,90,360,150">
+
+  [!-- left column top title --]
+  <bloco tipo="cabecalho" script="latino" bbox="80,120,420,170">
     TABULA IX.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="640,90,920,150">
-    TABULA XI.
+
+  [!-- left top illustration block --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,170,475,440">
+    [ilustração - TABULA IX]
   </bloco>
-  <bloco tipo="imagem" script="desconhecido" bbox="70,150,460,520">
-    [ilustração - tabela IX]
+
+  [!-- marginal letters for left top illustration (A-D) --]
+  <bloco tipo="nota_marginal" script="latino" bbox="310,190,360,230">
+    A
   </bloco>
-  <bloco tipo="imagem" script="desconhecido" bbox="540,150,930,520">
-    [ilustração - tabela XI]
+  <bloco tipo="nota_marginal" script="latino" bbox="270,260,310,300">
+    B
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,520,460,700">
-    A. Martyr in equuleo.
-    B. Martyr pendens ab equuleo.
-    C. Lampades accensse.
-    D. Scorpiones. } His torquendi instrumentis
+  <bloco tipo="nota_marginal" script="latino" bbox="140,330,180,370">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="180,360,220,400">
+    D
+  </bloco>
+
+  [!-- caption under left top illustration (identifiers removed; identifiers are in nota_marginal blocks) --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,450,475,520">
+    Martyr in equuleo.
+    Martyr pendens ab equuleo.
+    Lampades accensae.
+    Scorpiones. } His torquendi instrumentis
     qui in equuleum agebantur excruciari aliquando
     solebant.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="540,520,930,700">
-    Duo alii fident modi quibus pariter SS. Marty-
-    res caedebantur.
-    A. Primum ostendit atque demonstrat,
-    B. Alterum: qui modus, in sanctorum Martyrum
-    rebus gestis, his verbis exprimitur: Cathomo ce-
-    datur.
+
+  [!-- right column top title --]
+  <bloco tipo="cabecalho" script="latino" bbox="580,120,920,170">
+    TABULA XI.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="140,720,420,780">
+
+  [!-- right top illustration block --]
+  <bloco tipo="texto_principal" script="latino" bbox="525,170,950,440">
+    [ilustração - TABULA XI]
+  </bloco>
+
+  [!-- marginal letters for right top illustration (A,B) --]
+  <bloco tipo="nota_marginal" script="latino" bbox="820,200,860,240">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="610,210,650,250">
+    B
+  </bloco>
+
+  [!-- caption under right top illustration (identifiers removed) --]
+  <bloco tipo="texto_principal" script="latino" bbox="525,450,950,520">
+    Duo alii iidem modi quibus pariter SS. Martyres caedebantur.
+    Primum ostendit atque demonstrat,
+    Alterum: qui modus, in sanctorum Martyrum rebus gestis, his verbis exprimitur: Cathomo cedatur.
+  </bloco>
+
+  [!-- middle titles for bottom illustrations --]
+  <bloco tipo="cabecalho" script="latino" bbox="170,540,430,580">
     TABULA X.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="620,720,900,780">
+  <bloco tipo="cabecalho" script="latino" bbox="570,540,830,580">
     TABULA XII.
   </bloco>
-  <bloco tipo="imagem" script="desconhecido" bbox="70,780,460,1180">
-    [ilustração - tabela X]
+
+  [!-- left bottom illustration --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,580,475,870">
+    [ilustração - TABULA X]
   </bloco>
-  <bloco tipo="imagem" script="desconhecido" bbox="540,780,930,1180">
-    [ilustração - tabela XII]
+
+  [!-- marginal letters for left bottom illustration (A,B,C) --]
+  <bloco tipo="nota_marginal" script="latino" bbox="200,740,240,780">
+    A
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="80,1180,460,1360">
-    Medi sunt hi, quibus sancti Martyres lioris, vel
+  <bloco tipo="nota_marginal" script="latino" bbox="150,860,190,900">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="240,860,280,900">
+    C
+  </bloco>
+
+  [!-- caption under left bottom illustration (identifiers removed) --]
+  <bloco tipo="rodape" script="latino" bbox="50,880,475,950">
+    Medi sunt hi, quibus sancti Martyres loris, vel
     flagris, aut consimilibus caedebantur.
-    A Unum horum indicat,
-    B Alterum,
-    C Tertium.
+    Unum horum indicat,
+    Alterum,
+    Tertium.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="540,1180,930,1360">
-    A Martyres aliquando hoc modo lapidibus preme-
-    bantur:
-    B Pugnis, palpis, calcibus, aliisque modis percutie-
-    bantur:
-    C Lapidibus item quandoque obruiebantur.
+
+  [!-- right bottom illustration --]
+  <bloco tipo="texto_principal" script="latino" bbox="525,580,950,870">
+    [ilustração - TABULA XII]
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="420,1360,640,1410">
+
+  [!-- marginal letters for right bottom illustration (A,B,C) --]
+  <bloco tipo="nota_marginal" script="latino" bbox="730,620,770,660">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="640,700,680,740">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="850,640,890,680">
+    C
+  </bloco>
+
+  [!-- caption under right bottom illustration (identifiers removed) --]
+  <bloco tipo="rodape" script="latino" bbox="525,880,950,950">
+    Martyres aliquando hoc modo lapidibus premebantur:
+    Pugnis, palpis, calcibus, aliisque modis percutiebantur:
+    Lapidibus item quandoque obruiebantur.
+  </bloco>
+
+  [!-- provenance note --]
+  <bloco tipo="nota" script="latino" bbox="400,960,600,990">
     Digitized by Google
   </bloco>
-  <notas>Transcrição preserva ortografia do impresso; marcações de ilustrações deixadas como [ilustração] pois não há texto legível dentro delas. Algumas letras fragmentárias foram interpretadas literalmente; uso de hífen de linha mantido conforme original (p.ex. "Marty-\nres").</notas>
+
+  <notas>Transcrição prioritiza leitura direta da imagem. Letras identificadoras (A, B, C, D) colocadas em blocos nota_marginal separados conforme instruções; essas letras foram removidas do corpo dos textos-caption para respeitar o mapeamento marginal. Ilustrações assinaladas como [ilustração - TABULA ...] por não conterem texto legível além dos marcadores; ortografia original preservada sempre que legível; sinais de hifenização respeitados conforme imagem (p.ex. "excruciari aliquando").</notas>
 </pagina>

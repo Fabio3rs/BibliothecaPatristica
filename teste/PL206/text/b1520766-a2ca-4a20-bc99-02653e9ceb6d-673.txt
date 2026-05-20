@@ -1,25 +1,29 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="600,20,880,140">
-    3 2044 015 471 865
+  <bloco tipo="cabecalho" script="latino" bbox="720,40,960,140">
+3 2044 015 471 865
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="215,260,470,380">
-    This book should be returned to
-    the Library on or before the last date
-    stamped below.
-    A fine of five cents a day is incurred
-    by retaining it beyond the specified
-    time.
-    Please [ilegivel] promptly.
+  <bloco tipo="texto_principal" script="latino" bbox="200,340,520,420">
+This book should be returned to
+the Library on or before the last date
+stamped below.
+
+A fine of five cents a day is incurred
+by retaining it beyond the specified
+time.
+
+Please n promptly.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="200,320,440,560">
-    STALL-STDY
-    CHARGE
-    CANCELLED
+  <bloco tipo="nota_marginal" script="latino" bbox="190,420,410,620">
+STALL-STAY
+CHARGE
+CANCELLED
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="420,920,980,995">
-    Digitized by Google
+  <bloco tipo="rodape" script="latino" bbox="620,880,920,980">
+Digitized by Google
   </bloco>
   <notas>
-    Texto em alfabeto latino. A palavra no final do retângulo impresso ("Please [ilegivel] promptly.") está parcialmente ilegível e foi marcada com [ilegivel] por palavra, conforme instruções. O carimbo vertical ("CANCELLED") foi transcrito em leitura linear; sua orientação original é vertical/rotacionada. "STALL-STDY" foi transcrito conforme visível no carimbo, sem normalização.
+- "Please n promptly." : the word between "Please" and "promptly." is obscured by an overlying stamp; transcribed exactly as visible ("n").
+- The block transcribed as nota_marginal contains stamped/overprinted elements: "STALL-STAY", "CHARGE" and the diagonal/vertical "CANCELLED". Orientation and partial occlusion noted; each word given on its own line in transcription.
+- BBOX coordinates are approximate, scaled 0-1000.
   </notas>
 </pagina>

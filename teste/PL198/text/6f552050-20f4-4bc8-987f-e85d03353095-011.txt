@@ -1,48 +1,86 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,360">
-SÆCULUM XII.
-ADAMI SCOTI
-CANONICI REGULARIS ORDINIS PRÆMONSTRATENSIS
-OPERA OMNIA,
-AD FIDEM EDITIONIS ANTWERPIENSIS ANNI 1659, IN-FOL., QUAM CURAVIT GODEFRIDUS
-GHISELBERTUS, TYPIS MANDATA.
-[ilegivel]
+<pagina estado="com_texto" tipo="capa_ou_guarda">
+  <bloco tipo="cabecalho" script="latino" bbox="380,50,620,80">
+    SÆCULUM XII.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,360,920,650">
-ACCEDUNT
-MAGISTRI PETRI COMESTORIS
-HISTORIA SCHOLASTICA,
-SERMONES
-OLIM SUB NOMINE PETRI BLESENSIS EDITI,
+  <bloco tipo="texto_principal" script="latino" bbox="120,100,880,160">
+    ADAMI SCOTI
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,650,920,780">
-NECNON
-GODEFRIDI VITERBIENSIS CHRONICON,
-CUI TITULUS :
-MEMORIÆ SÆCULORUM SIVE PANTHEON.
+  <bloco tipo="texto_principal" script="latino" bbox="100,170,900,200">
+    CANONICI REGULARIS ORDINIS PRÆMONSTRATENSIS
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="90,780,900,840">
-ACCURANTE J.-P. MIGNE,
-BIBLIOTHECÆ CLERI UNIVERSÆ
-SIVE
-CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
+  <bloco tipo="texto_principal" script="latino" bbox="150,210,750,270">
+    OPERA OMNIA,
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="220,840,780,900">
-TOMUS UNICUS.
-VENIT 9 FRANCIS GALLICIS.
+  <bloco tipo="nota_marginal" script="latino" bbox="780,210,900,250">
+    471
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="70,900,940,960">
-EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM
-IN VIA DICTA D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM
-SEU PETIT-MONTROUGE
-1855
+  <bloco tipo="texto_principal" script="latino" bbox="100,280,900,320">
+    AD FIDEM EDITIONIS ANTWERPIENSIS ANNI 1659, IN-FOL., QUAM CURAVIT GODEFRIDUS GHISELBERTUS, TYPIS MANDATA.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="680,960,980,995">
-Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="450,330,550,345">
+    ACCEDUNT
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,355,850,400">
+    MAGISTRI PETRI COMESTORIS
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,410,900,450">
+    HISTORIA SCHOLASTICA,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,460,600,490">
+    SERMONES
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="300,500,700,520">
+    OLIM SUB NOMINE PETRI BLESENSIS EDITI,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="450,530,550,545">
+    NECNON
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,555,880,590">
+    GODEFRIDI VITERBIENSIS CHRONICON,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,600,600,615">
+    CUI TITULUS :
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,625,750,645">
+    MEMORIÆ SÆCULORUM SIVE PANTHEON.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="300,660,700,685">
+    ACCURANTE J.-P. MIGNE,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,690,750,705">
+    BIBLIOTHECÆ CLERI UNIVERSÆ
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="450,710,550,720">
+    SIVE
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,725,850,740">
+    CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,780,650,805">
+    TOMUS UNICUS.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="350,850,650,865">
+    VENIT 9 FRANCIS GALLICIS.
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="490,880,510,890">
+    —
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="100,900,900,920">
+    EXCUDEBatur ET VENIT APUD J.-P. MIGNE EDITOREM
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="80,920,920,940">
+    IN VIA DICTA D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="350,940,650,950">
+    SEU PETIT-MONTROUGE
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="450,955,550,970">
+    1855
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="550,975,850,995">
+    Digitized by Google
   </bloco>
   <notas>
-- Script principal identificado: latino.
-- Marcação manuscrita junto a "OPERA OMNIA," transcrita como "[ilegivel]" por impossibilidade de leitura segura.
-- "Digitized by Google" é selo/inscrição moderna transcrito como nota_marginal.
+    Transcrição de página de título (capa). Nota manuscrita "471" identificada ao lado de "OPERA OMNIA". Ortografia latina preservada (e.g., SÆCULUM, PRÆMONSTRATENSIS, LUTETIÆ).
   </notas>
 </pagina>

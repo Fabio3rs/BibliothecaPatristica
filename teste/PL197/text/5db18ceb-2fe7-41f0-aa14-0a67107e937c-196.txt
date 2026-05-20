@@ -1,150 +1,102 @@
 <pagina estado="com_texto">
-  <bloco tipo="outro" script="latin" bbox="0,0,1000,60">
-    tipo_de_pagina: texto
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,110">
+    [linha bbox="120,45,880,85"]S. HILDEGARDIS[/linha]
+    [linha bbox="715,45,980,85"]380[/linha]
   </bloco>
-  <bloco tipo="cabecalho" script="latin" bbox="0,0,1000,120">
-    378                         S. HILDEGARDIS                         380
+
+  <bloco tipo="cabecalho" script="latino" bbox="635,95,985,210">
+    [linha bbox="650,95,980,130"]EPISTOLA CLXIV.[/linha]
+    [linha bbox="645,145,985,180"]N. PRIORIS ET MONACHORUM CISTELLENSIUM AD[/linha]
+    [linha bbox="700,182,970,210"]HILDEGARDEM.[/linha]
   </bloco>
-  <bloco tipo="texto_principal" script="latin" bbox="30,120,480,920">
-    ducta nigreline erant, eandem vocem audivi dicen- A
-    tem : Surge, Aquilo, et veni Auster, perla hortum
-    meum, et fluent ante illum. Quod dicitur : Re-
-    cede, malum iniquitatis, et veni bonum justitiæ, et
-    irriga virtutibus plantationem sanctitatis, ut ful-
-    gcant in ea opera quæ non marcescant. Aquilo
-    enim sunt rixatores, qui verbis rixæ et excusatione
-    avaritiæ et provocatione injuriarum dulces et uli-
-    les herbas virtutum prosternerc volunt, quemadmo-
-    dum Aquilo universa præcipiant. Sed illi quos hoc
-    modo affligunt, patientiam sic discunt, et lacyma-
-    bili gemitu pro suis et istorum peccatis ad Deum
-    clamant ; unde etiam aliquando lædiosi ad peccan-
-    dum sunt ; et ob hoc sumus aromatum ex cordibus
-    eorum ascendit, quem angeli suscipiunt, et sic per
-    aquilonem viriditas bonis tribuitur. Illi etiam qui
-    facultates libenter habent, his qui in tribus præ-
-    fatis modis fulgenti aliqua objiciunt, ut confundan-
-    tur, et etiam necessarius causis obedientiarum sua-
-    rum, quaerunt quomodo eos affligant, ac multoties
-    in immunditiam carnis se involvunt, velut porcus
-    qui stercori involvitur, et nutibus serpentinei oculi
-    cum gravissima consuetudine interdum alios fati-
-    gant. Sed vos qui injustitiam diligitis, hanc admo-
-    nitionem memoriter tenete, ita ut facultates propriæ
-    voluntatis vestræ idololatriam esse cognoscatis, et
-    ab angelicis ordinibus, scilicet spiritalis populi se-
-    paratas, quemadmodum idolum fallaciæ a vero
-    Deo separatum est, ac etiam alia peccata relinqui-
-    te ; et ad salientem fontem ut laverimini fugite. La-
-    vacrum quoque pacti illius quo mundum reliquis-
-    tis inspicite, quatenus a peccatis recedatis, ac studete
-    ut sacrificium vestrum pingue fiat, ita ut perseve-
-    retis in bono quod incepsistis. Quandocunque enim
-    homo voluntatem suam in rota carnis suæ maciat,
-    sacrificium Deo est. Hoc enim ut sacrificium Abra-
-    hæ Deo accepabile est, cum ille filium suum ad sa-
-    crificandum Deo, obediencdo ligavit. Manus enim
-    domat qui prava opera diminuitt, et pedes ligat qui
-    itinera propriæ voluntatis suæ constringit, ac in-
-    clinatus obedit, ut caput ad gladium Isaac incina-
-    vit, et corpus domat qui carnalem concupiscentiam
-    abjicit. In his victoria est quæ vexillum portat,
-    quod in bono rumore, et in suavibus odori bus vir-
-    tutum redolet. Qui hanc habet, coram cunctis in-
-    imicis suis securus incedit. Hoc autem modo sa cri-
-    ficium pingue fiet, velut vitulus sagnatus, qui abs-
-    que omni macula erat, per quos anima macie de-
-    scit, quia bonum plenum pingue est. Christus enim
-    injuriis satisfactus non peccavit, et in hoc patientiam
-    sanctorum sanctificavit : unde et vos fideles, corda
-    vestra ad illius prælia qui vobis exemplum dedit
-    præparate, et sollicitudinem illorum quorum non
-    indigetis abjicie, et ut in alpha et omega apparaeatis
-    studete. In sensualitate enim peccatorum ob-
-    tenebrati estis ; sed cum a peccatis surrexeritïs pul-
-    chraæ formæ virtutum in vobis apparebunt ; qua-
-    propter et dextra Dei vos protegat.
+
+  <bloco tipo="nota_marginal" script="latino" bbox="515,140,560,190">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="515,525,560,575">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="515,705,560,755">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="515,860,560,910">D</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="110,110,505,960">
+    [linha bbox="120,110,505,150"]duta nigreline erant, candein vocem audivi dicere. lem : Surge, Aquilo, et veni Auster, perfla hortum[/linha]
+    [linha bbox="120,150,505,190"]meum, et fluent ante illum. Quod dicitur : Re-[/linha]
+    [linha bbox="120,190,505,230"]cede, malum iniquitatis, et veni bonum justitiae, et[/linha]
+    [linha bbox="120,230,505,270"]irrigia virtutibus plantationem sanctitatis, ut ful-[/linha]
+    [linha bbox="120,270,505,310"]geant in ea opera quae non marcescant. Aquilo[/linha]
+    [linha bbox="120,310,505,350"]enim sunt rixatores, qui verbis rixae et excusatione[/linha]
+    [linha bbox="120,350,505,390"]avaritiae et provocatione injuriarum dulces et uti-[/linha]
+    [linha bbox="120,390,505,430"]les herbas virtutum prosternerc volunt, quernadmo-[/linha]
+    [linha bbox="120,430,505,470"]dum Aquilo universa praecipitat. Sed illi quos hoc[/linha]
+    [linha bbox="120,470,505,510"]modo affligunt, patientiam sic disunt, et lacryma-[/linha]
+    [linha bbox="120,510,505,550"]bili gemitu pro suis el istorum peccatis ad Deum[/linha]
+    [linha bbox="120,550,505,590"]clamant ; unde etiam aliquando laediosi ad peccan-[/linha]
+    [linha bbox="120,590,505,630"]dum sunt ; et ob hoc fenum aromatum ex cordibus[/linha]
+    [linha bbox="120,630,505,670"]eorum ascendit, quem angeli suscipiunt, et sic per[/linha]
+    [linha bbox="120,670,505,710"]aquilonem viriditas bonis tribuitur. Illi etiam qui[/linha]
+    [linha bbox="120,710,505,750"]facultates libenter habent, his qui in tribus prae-[/linha]
+    [linha bbox="120,750,505,790"]fatis modis fulgent aliqua objiciunt, ut confundan-[/linha]
+    [linha bbox="120,790,505,830"]tur, et etiam necessariis causis obedientiam sua-[/linha]
+    [linha bbox="120,830,505,870"]rum, quaurunt quomodo eos amictant, ac mulieres[/linha]
+    [linha bbox="120,870,505,910"]in immunditiam carnis se involvunt, velut porcus[/linha]
+    [linha bbox="120,910,505,950"]qui stercore involvitur, et nitibus serpentini oculi[/linha]
   </bloco>
-  <bloco tipo="cabecalho" script="latin" bbox="520,120,980,200">
-    EPISTOLA CXLIV.
-    N. PRIORIS ET MONACHORUM CISTELLENSIUM AD
-    HILDEGARDEN.
-    Ab ea rescribere [ilegivel] quid in ordine displiceat Deo.
+
+  <bloco tipo="texto_principal" script="latino" bbox="555,215,980,995">
+    [linha bbox="560,215,975,255"]Ab ea rescrire aesiderant quid in ordine displicet[/linha]
+    [linha bbox="710,250,820,285"]Deo.[/linha]
+
+    [linha bbox="560,290,980,330"]HILDEGARDI honorandae et sincerae charitatis ul-[/linha]
+    [linha bbox="560,330,980,370"]nis amplectendae domine et magistrae sororum de[/linha]
+    [linha bbox="560,370,980,410"]S. Ruperto in Pinguia, N. prior indignus lotaque[/linha]
+    [linha bbox="560,410,980,450"]pauper et humilis congregatio Cistellensium fra-[/linha]
+    [linha bbox="560,450,980,490"]trum, inter choros virginum sequi Agnum quocun-[/linha]
+    [linha bbox="560,490,980,530"]que icerit.[/linha]
+
+    [linha bbox="560,530,980,570"]Locorum intersitio sejuncti, quia desiderabili[/linha]
+    [linha bbox="560,570,980,610"]praesentia vestra frui corporaliter non possumus,[/linha]
+    [linha bbox="560,610,980,650"]litterarum officio salutare vos et alloqui gaudemus,[/linha]
+    [linha bbox="560,650,980,690"]quippe quam in Chris'o vencraur, ut superorem,[/linha]
+    [linha bbox="560,690,980,730"]et apud Deum mediatricem habere speramus, ut[/linha]
+    [linha bbox="560,730,980,770"]charissimam matren. Audita namque fama vestrae[/linha]
+    [linha bbox="560,770,980,810"]bonae conversationis et in Dei... fidelis administra-[/linha]
+    [linha bbox="560,810,980,850"]tionis, pro vestra stabilitate et orationis obsequiu,[/linha]
+    [linha bbox="560,850,980,890"]et ad Deum pro vestra salute exhibemus minis-[/linha]
+    [linha bbox="560,890,980,930"]terium. Hanc igitur, o domina, salutatoriam vobis[/linha]
+    [linha bbox="560,930,980,970"]scribimus epistolam, ut et nostri memoriam fa-[/linha]
+    [linha bbox="560,970,980,1010"]ciatis, et subditis vobis eadem facere suideas.[/linha]
+    [linha bbox="560,1010,980,1050"]Nam multa audivimus de vobis, unde valde gau-[/linha]
+    [linha bbox="560,1050,980,1090"]denus, ut possitis arcana Dei scrutari, et de oc-[/linha]
+    [linha bbox="560,1090,980,1130"]cultis suis non modica manifestare. Proinde de-[/linha]
+    [linha bbox="560,1130,980,1170"]ementiam vestram petimus, ut quod in nobis et in[/linha]
+    [linha bbox="560,1170,980,1210"]ordine nostro, scilicet monastico, vobis imo divi-[/line]
+    [linha bbox="560,1210,980,1250"]nis oculis displicet, secundum quod Deus vobis[/linha]
+    [linha bbox="560,1250,980,1290"]ostenderit nobis rescribere non ambigatis. Vale.[/linha]
+
+    [linha bbox="560,1325,980,1365"]RESPONSUM HILDEGARDIS.[/linha]
+    [linha bbox="560,1365,980,1405"]Ego fons vivus, qui propter nomen meum tunica[/linha]
+    [linha bbox="560,1405,980,1445"]mea indui peregrini sunt in vacatione mundi. O[/linha]
+    [linha bbox="560,1445,980,1485"]plangendum et lugendum est! quod caelum raptum[/linha]
+    [linha bbox="560,1485,980,1525"]est, et quod dies obscurus est! Nunc ergo den-[/linha]
+    [linha bbox="560,1525,980,1565"]sioris revocandus est in atrium vocis lauis. O fili[/linha]
+    [linha bbox="560,1565,980,1605"]Israel, quare corrumpi desideratissimam charitatem,[/linha]
+    [linha bbox="560,1605,980,1645"]qua in me alto in profundum aspicente dati pi-[/linha]
+    [linha bbox="560,1645,980,1685"]cnenissimo opere. Et quia ipsa fluit in me, ideu flunt[/linha]
+    [linha bbox="560,1685,980,1725"]etiam de ipsa aqua viva. Ipsa autem stat in forma[/linha]
+    [linha bbox="560,1725,980,1765"]virgae, quia sicut in virgine dulcissimi amplexus[/linha]
+    [linha bbox="560,1765,980,1805"]sunt propter integritatem eius, sic etiam charitas[/linha]
+    [linha bbox="560,1805,980,1845"]habet dulcissimos amplexus virtutum. Sed medio[/linha]
+    [linha bbox="560,1845,980,1885"]ingut, quoniam temerarii scindunt illam per gar-[/linha]
+    [linha bbox="560,1885,980,1925"]rietatem murmurationis suae. Unde etiam fugit ab[/linha]
+    [linha bbox="560,1925,980,1965"]eis in altitudine illam unde venit et plangit, quia[/linha]
+    [linha bbox="560,1965,980,2005"]filii ipsius, quos plenius uberius enutrivit, deliciunt,[/linha]
+    [linha bbox="560,2005,980,2045"]volentes terga a putredine volantium mentium. O[/linha]
+    [linha bbox="560,2045,980,2085"]ipsi miseri! quare adjungunt se inseris alienationis[/linha]
+    [linha bbox="560,2085,980,2125"]et peregrinationis, austerentes se de visceribus re-[/linha]
+    [linha bbox="560,2125,980,2165"]galium nuptiarum novae sponsae, quae semper prae-[/linha]
+    [linha bbox="560,2165,980,2205"]parata est sponso suo, sicut virgo virgo evo, cum[/linha]
+    [linha bbox="560,2205,980,2245"]illi nondum in cognitione conjuncta est, sed cum[/linha]
+    [linha bbox="560,2245,980,2285"]adhuc in integritate sua incorrupta manet; et isti[/linha]
+    [linha bbox="560,2285,980,2325"]a sponsa illa se separant, et ideo obtenebrant et[/linha]
+    [linha bbox="560,2325,980,2365"]obnubilati sunt, quasi caelum sfregerint. Quid est[/linha]
   </bloco>
-  <bloco tipo="nota_marginal" script="latin" bbox="480,180,520,240">
-    A
-  </bloco>
-  <bloco tipo="texto_principal" script="latin" bbox="520,200,980,520">
-    HILDEGARDI honorandæ et sinceræ charitalis al-
-    nis amplecendæ dominæ et magistræ sororum de
-    S. Ruperto in Pinguia, N. prior indignus totaque
-    pauper et humilis congregatio Cistellensisium fra-
-    trum, inter choros virginum sequi Agnum quocum-
-    que ierit.
-    
-    Locorum intersition sejuncti, quia desiderabili
-    presentia vestra frui corporaliter non possumus,
-    litterarum officio salutare vos et alloqui gaudemus,
-    quippe quam in Christo veneramur, ut superiores,
-    et apud Deum mediaticrem habere speramus, ut
-    charissimam matrem. Audita namque tanta vestræ
-    bonæ conversationis et in Dei... fidelis administra-
-    tionis, pro vestra stabilitate et orationis obsequium,
-    et ad Deum pro vestra salute exhibemus mini-
-    rium. Hanc igitur, o domina, salutatiojam vobis
-    scribimus epistolam, ut et nostri memoriam fa-
-    cialit, et subditis vobis eadem facere studeatis.
-    Nam multa audivimus de vobis, unde valde gau-
-    demus, ut possitis arcana Dei scrutari, et de oc-
-    culis suis non modica manifestare. Proinde ele-
-    mentiam vestram petimus, ut quod in nobis et in
-    ordine nostro, scilicet monastico, vobis imò di-
-    vis oculis displicet, secundum quod Deus vobis
-    ostenderit nobis rescribere non ambigiatis. Vale.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latin" bbox="480,360,520,420">
-    B
-  </bloco>
-  <bloco tipo="texto_principal" script="latin" bbox="520,520,980,920">
-    RESPONSUM HILDEGARDIS.
-    
-    Ego fons vivus, qui propter nomen meum tunica
-    mea induit peregrini sunt in vexatione mundi. O
-    plangendum et lugendum est ! quod cœlum ruptum
-    est, et quod dies obscuratus est ! Nunc ergo dena-
-    rius revocandus est in atrium vocis laudis. O fili
-    Israel, quare corrumpitis dulcissimam charitatem,
-    quæ in me alto in profundum aspicientie fuit pre-
-    nissimum opere. Et quia ipsa fuit in me, ideo fuit
-    etiam de ipsa aqua vivae. Ipsa autem stat in forma
-    virgæ, quia sicut in virgine dulcissimi amplexus
-    sunt propter integralitatem ejus, sic etiam chari-
-    tas habet dulcissimos amplexus virtutum. Sed modo
-    lucet, quoniam temerarii sciundunt illam per gar-
-    litatem murmurationis suæ. Unde etiam fugit ab
-    eis in altitudinem illam unde venit et plangit, quia
-    filii ipsius, quos plenius verberibus enutrivit, delicunt,
-    nolentes tergi a putredine voluntatum mentium. O
-    ipsi miser! quare adjungunt se miseræ alienationis
-    et peregrinationis, auferentes se de visceribus re-
-    galium nuptiarum novæ sponsæ, quæ semper pra-
-    parata est Spono suo, sicut virgo viro est, cum
-    illi nondum in cognitione coniuncta est, sed cum
-    adhuc in integritate sua incorrupta manet ; et isti
-    a sponsa illa se separant, et ideo obtinebant et
-    obnubilhati sunt, quasi cœlum fregierint. Quid est
-    [ilegivel]...
-  </bloco>
-  <bloco tipo="nota_marginal" script="latin" bbox="480,640,520,700">
-    C
-  </bloco>
-  <bloco tipo="rodape" script="latin" bbox="360,940,640,995">
-    Digitized by Google
-  </bloco>
-  <notas>
-    - Script: latin.
-    - Acentuação, hifenização e quebras de linha foram mantidas conforme a impressão.
-    - Marquei palavras incertas ou ilegíveis com o token [ilegivel] (um token por palavra), sem normalizar ou traduzir o texto.
-    - Foram identificadas notas marginais na forma de letras A, B e C alinhadas verticalmente entre as colunas.
-  </notas>
+
+  <notas>Transcrição feita com manutenção da disposição em duas colunas; as letras de seção A, B, C e D foram separadas em blocos próprios de nota_marginal, sem inserção no texto corrido. Algumas passagens estão parcialmente ilegíveis na imagem e foram preservadas o mais literalmente possível.</notas>
 </pagina>

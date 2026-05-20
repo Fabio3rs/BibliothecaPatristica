@@ -1,9 +1,6 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
     987 AD OPERA SANCTI AMBROSII APPENDIX. 988
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,60,500,80">
-    A
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="50,60,480,850">
     (Psal. LXXV, 6). Exsurge, frater, exsurge; et male
@@ -20,6 +17,7 @@
     adveniens dominus invenerit vigilantem (Ephes. v, 14);
     quia dicit : Surge qui dormis, exsurge a mortuis
     (Matth. xxiv, 46); a et attinge Christum.
+    
     CAPUT XIV. — Sed non audeo, inquis, orare,
     quia me revocat conscientia; non enim semel, sed
     sæpius et frequenter erravi. At ego dicam : Si te
@@ -59,9 +57,12 @@
     quit, Achab quia mortuus est Naboth Jezraelites,
     disrupit vestimenta sua, et accinxit se sacco (Ibid., 16).
     Vacare ergo potuit Achab effusi sanguinis culpa;
-    b quia de conceptu, non de parricidio egerat pœni-
+    quia de conceptu, non de parricidio egerat pœni-
     tentiam, et remanserat in profana muliere impietas
     homicidii, quæ pretio quodam cruoris effusi putavit
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,60,500,80">
+    A
   </bloco>
   <bloco tipo="nota_marginal" script="latino" bbox="480,300,500,320">
     B
@@ -88,8 +89,8 @@
     omnibus quibus irritasti Deum, et fecisti declinare
     Israel (Ibid., 21 et seq.). Verum ille cum auctorita-
     tem non valeret effugere, ad priorem pœnitentiam
-    conversus repente consilium, rentum flatibus conf-
-    tetur, cilicio dejecit regiam potentiam, sacrum
+    conversus repente consilium, renuntio flatibus conf-
+    fetur, cilicio dejecit regiam potentiam, sacrum
     indutus pœnitentiæ, et severius faciem commaculavit,
     tacto gemitu publicabat offensam, non excusabat
     conscientiam. Factum est, inquis, quomodo audivi
@@ -104,12 +105,13 @@
     nec eloquii copia placuit Deo : sed multis precibus
     lacrymarum. Os tacuit, sed cor ingemuit : oculus
     flevit, sed conscientia ploravit, et verecundiam pœ-
-    nitentiniæ pietas laudavit Auctoris. Parum fuit rem
+    nitentiæ pietas laudavit Auctoris. Parum fuit rem
     debitum evasisse supplicium, nisi accepisset pœni-
     tentia probabilis testimonium. Et probatus est in
     timore, qui damnabatur in crimine : nec prius quod
     mortem luit occisi, inane fuit; sed repetitam idem-
-    tidem culpam iterata lamentatione purgavit.
+    idem culpam iterata lamentatione purgavit.
+    
     CAPUT XV. — Nec Manasses quoque rex filius
     Ezechiæ tacendus est, qui cunctorum prætergressus
     audaciam profanorum, manus tetendit impias contra
@@ -143,7 +145,6 @@
     Digitized by Google
   </bloco>
   <notas>
-    Transcrição literal mantendo abreviações e erros tipográficos aparentes (ex: "reventia" por "reverentia" na col 2, "rem debitum" dividido por linha).
-    Letras A, B, C, D mapeadas como notas marginais no gutter.
+    Transcrição baseada na imagem, preservando ortografia, abreviações e sinais editoriais visíveis. Letras A, B, C, D mapeadas como blocos nota_marginal separados no gutter. CAPUTs e referências mantidas tal como aparecem no texto.
   </notas>
 </pagina>

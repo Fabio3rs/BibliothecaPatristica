@@ -1,8 +1,8 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="20,20,980,80">
     1355 INDEX RERUM QUÆ IN POSTERIORE PARTE TOMI CONTINENTUR. 1356
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,80,500,960">
+  <bloco tipo="texto_principal" script="latino" bbox="20,80,490,960">
     inquisitionis forma vindicatur, 162. Alia inquisitio in Mani-
     cheorum apud Carthaginem, 137.
     Instantius et Salvianus Priscillianistarum episcopi, 212.
@@ -15,8 +15,6 @@
     apud ipsearserunt insulas pro sua Priscillianistarum,
     221. Ejus agendi ratio, 222. Ithaciaue notiones conscribuntur,
     224.
-    
-    J
     Januarii episcopi Aquilefensis ordinatio, 299. Ejus no-
     men mss. codd. præsenterunt, ibid. Ejus ad Leonem refatio
     temporis instantiæ reperta, 314.
@@ -43,11 +41,9 @@
     Jura gentium et Ecclesiæ qualia, 81.
     Justinius martyr Persarum illius descripti, 57. Ipsius
     operum notæ peropsis, 126.
-    Justinian & Theodosi episcoporum nomina quæra m The-
+    Justinian &amp; Theodosi episcoporum nomina quæra m The-
     odosi temporibus accessit, 560. S. Leo scripsit ad
     omnes, 516.
-    
-    L
     Laicis suffragii jura in conciliis non debetur, 184. Honore
     munus in iisdem concilijs, 170.
     Lapsorum epist. pœnitentia, 163.
@@ -89,6 +85,9 @@
     merent, 371. Ipsius adeptata ad Turibium, 241. Aliter
     dicemus Pelagius Insularum, 286. In publicos censores,
     bus eodem Pelagianus accusat, 402. Nonnulus ad ponti-
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,300,540,380">
+    J
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="500,80,980,960">
     tentiam adduciit, 297. Sermonemque partes Sappeter, 298.
@@ -170,8 +169,19 @@
     nis favet, 557. Jubet exultarit Timotheum Alexandrinum, 558.
     Aurilium catholicis præstat pro novo episcopo Anastasi-
     ego, 539 et seqq.
-    
     Digitized by Google
   </bloco>
-  <notas>Transcrição feita letra por letra; algumas palavras fragmentadas foram mantidas como no original (hífen e quebras). Marcas tipográficas e erros de digitalização preservados. BBOXs são estimativas relativas à imagem (escala 0-1000).</notas>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,620,540,720">
+    L
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="20,960,980,980">
+    
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="20,900,300,940">
+    
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="300,940,980,1000">
+    Digitized by Google
+  </bloco>
+  <notas>Transcrição feita fideliter sobre a imagem; colunas transcritas da esquerda para a direita. Letras marginais centrais (J, L) colocadas em blocos nota_marginal separados. BBOX estimadas em escala 0-1000. Quebras e hifenizações preservadas; palavras incertas não normalizadas.</notas>
 </pagina>

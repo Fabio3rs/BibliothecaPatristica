@@ -1,57 +1,63 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latin" bbox="100,20,900,160">
-ELENCHUS
-
-INDICUM QUI IN HOC TOMO CXXVIII CONTINENTUR.
+  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,120">
+    ELENCHUS
+    INDICUM QUI IN HOC TOMO CCXVIII CONTINENTUR.
   </bloco>
-  <bloco tipo="texto_principal" script="latin" bbox="120,170,880,260">
-— 
-PRÆFATIO qua, in indice sub titulo : INDEX INDICUM, evolvitur omnium tabularum series.
+  <bloco tipo="texto_principal" script="latino" bbox="150,180,850,240">
+    PRÆFATIO qua, in indice sub titulo : INDEX INDICUM, evolvitur omnium
+    tabularum series.
   </bloco>
-  <bloco tipo="texto_principal" script="latin" bbox="80,270,920,1360">
-INDICUM PARS PRIOR. — INDICES GENERALES.
-
-SERIES PRIMA. — INDICES GENERALES AUCTORUM.                                                     col. 4
-
-Table française indicative des auteurs, des ouvrages et des éditions.                            10°
-Index auctorum alphabeticus.                                                                     134
-Index auctorum chronologicus.                                                                    174
-Index auctorum statisticus.                                                                      226
-Index alius auctorum statisticus, in quo quisque scriptor ad suam revocatur dioccesim.         238
-Index auctorum hierarchicus.                                                                     266
-Index auctorum cleri regularis.                                                                  283
-Index auctorum cleri sæcularis.                                                                 290
-Index auctorum laicorum, tam virorum quam mulierum.                                             302
-Index scriptorum recentiorum, editorum, adnotatorum, etc.                                        307
-Index omnium auctorum biographicus.                                                              399
-Index auctorum analyticus.                                                                       547
-
-SERIES SECUNDA. — INDICES GENERALES OPERUM.                                                     657
-
-Index operum omnium alphabeticus.                                                                659
-Index operum chronologicus.                                                                      799
-Index operum syntheticus.                                                                        930
-Index operum analogicus.                                                                        1006
-Index operum cleri regularis.                                                                   1078
-Index operum cleri sæcularis.                                                                  1090
-Index operum scriptorum laicorum.                                                               1114
-Index operum anonymorum, dubiorum, etc.                                                         1126
-Index bibliographicus generalis, exû bens varias Patrum editiones, etc.                         1142
-Index bibliographicus specialis, complectens auctores qui de vita et scrips[orum] Patrum egerunt.1175
-Index generalis rerum analyticus.                                                               1186
-Index Patristico-theologicus.                                                                    1186
-
-SERIES TERTIA. — INDICES AUCTORUM A PATRIBUS MEMORATORUM.                                        1275
-
-Index poetarum gentilium, quorum scripta a Patribus extant.                                      1275
-Index poetarum Christianorum quorum dicta in Patrologia referuntur.                               1279
-Index scriptorum ethnicorum a quibus Patres argumenta mutua[lia] sunt.                            1284
+  <bloco tipo="cabecalho" script="latino" bbox="200,260,800,300">
+    INDICUM PARS PRIOR. — INDICES GENERALES.
   </bloco>
-  <bloco tipo="rodape" script="latin" bbox="1200,1400,980,1550">
-Parisiis. — Ex Typis J.-P. MIGNE.
+  <bloco tipo="texto_principal" script="latino" bbox="100,310,900,600">
+    SERIES PRIMA. — INDICES GENERALES AUCTORUM. col. 4
+    Table française indicative des auteurs, des ouvrages et des éditions. 10
+    Index auctorum alphabeticus. 134
+    Index auctorum chronologicus. 174
+    Index auctorum statisticus. 226
+    Index alius auctorum statisticus, in quo quisque scriptor ad suam
+    revocatur diœcesim. 238
+    Index auctorum hierarchicus. 266
+    Index auctorum cleri regularis. 283
+    Index auctorum cleri sæcularis. 290
+    Index auctorum laicorum, tam virorum quam mulierum. 302
+    Index scriptorum recentiorum, editorum, adnotatorum, etc. 307
+    Index omnium auctorum biographicus. 399
+    Index auctorum analyticus. 547
   </bloco>
-  <bloco tipo="outro" script="latin" bbox="120,1500,880,1560">
-Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="100,610,900,900">
+    SERIES SECUNDA. — INDICES GENERALES OPERUM. 657
+    Index operum omnium alphabeticus. 659
+    Index operum chronologicus. 799
+    Index operum syntheticus. 930
+    Index operum analogicus. 1006
+    Index operum cleri regularis. 1078
+    Index operum cleri sæcularis. 1090
+    Index operum scriptorum laicorum. 1114
+    Index operum anonymorum, dubiorum, etc. 1126
+    Index bibliographicus generalis, exhibens varias Patrum editiones, etc. 1142
+    Index bibliographicus specialis, complectens auctores qui de vita et
+    scriptis Patrum egerunt. 1175
+    Index generalis rerum analyticus. 1186
+    Index Patristico-theologicus. 1186
   </bloco>
-  <notas>Script: Latin. Observações e escolhas editoriais: ligaturas (Æ/æ, Œ/œ) e formas tipográficas foram transcritas em grafia reconhecível (p.ex. "PRÆFATIO" mantida). Foram normalizadas algumas grafias manifestamente corrompidas pelo escaneamento (p.ex. "edito:um" → "editorum"; "syntheticus" corrigido de "syn theticus" impresso; "extant" para leitura de "extant"/"extant."). O numeral do tomo foi lido como "CXXVIII" (impressão ligeiramente incerta). Onde o original apresentou caracteres parcialmente ilegíveis ou quebra tipográfica dentro de uma palavra (p.ex. "scrips Patrum" linha  para 1175), procedeu-se a restituição plausível; esses pontos foram regularizados em vez de marcar [ilegivel], por legibilidade. Se necessária transcrição páte-a-páte mais estrita com marcação [ilegivel] em cada palavra incerta, posso produzir versão alternativa.</notas>
+  <bloco tipo="texto_principal" script="latino" bbox="100,910,900,1100">
+    SERIES TERTIA. — INDICES AUCTORUM A PATRIBUS MEMO-
+    RATORUM. 1275
+    Index poëtarum gentilium, quorum scripta a Patribus citantur. 1275
+    Index poëtarum Christianorum quorum dicta in Patrologia referuntur. 1279
+    Index scriptorum ethnicorum a quibus Patres argumenta mutuati sunt. 1284
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="500,1350,900,1380">
+    Parisiis. — Ex Typis J.-P. MIGNE.
+  </bloco>
+  <notas>
+    Transcrição de página de índice (Elenchus) do Tomo CCXVIII.
+    Ligaturas 'æ' e 'œ' preservadas (ex: PRÆFATIO, diœcesim, sæcularis, poëtarum).
+    Números de coluna alinhados à direita foram incluídos no final de cada linha de texto correspondente.
+    Texto "exhibens" transcrito conforme contexto, embora a impressão possa apresentar falhas.
+    "citatur" corrigido para "citantur" baseado na gramática (scripta... citantur) e vestígios visuais.
+    "mutuati" transcrito apesar de falha na impressão ("mu:uati").
+  </notas>
 </pagina>

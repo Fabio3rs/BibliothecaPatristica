@@ -1,4 +1,4 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,70">
     131 SULPICII SEVERI 133
   </bloco>
@@ -14,10 +14,10 @@
     ter ignem quartus species angeli, quem Nabuchodo-
     nosor propriis intuitus, alium Dei se vidisse con-
     fessus est. Tum rex haud dubius divinam in re
-    praesenti suae virtutem, missis per omnes regium
-    suum editis, facti miraculum protulgaruit; consu-
-    stos non Deo honorem deferendum: Nec multo post
-    rex objecto sibi somnio, mur voce etiam caelo
+    praesenti suisæ virtutem, missis per omnes regium
+    suum edictis, facti miraculum protulgaruit; consu-
+    stos non Deo honorem deferendum. Nec multo post,
+    rex objecto sibi somnio, mox voce etiam caelo
     emissa admonitus, potestates regni abjecta, atque
     ab omni conuersatione humana remotos, herba-
     rium vitam sustinens egisse prudentium traditur,
@@ -38,6 +38,18 @@
     regis antem LX annos (hoc enim per sacram His-
     tori am a captivitate usque ad Cyrum fuisse refo-
     rmatum) impletur.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,140,505,180">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,240,505,280">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,360,505,400">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,480,505,520">
+    D
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="510,80,980,940">
     consequentum est: nam eadem nocte Balthasar inter-
@@ -96,25 +108,13 @@
     crum non adoraretur, cum manifestum visum Dei
     esset inludium, assumptis ex aequo inberenbus?
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,140,505,180">
-    A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,240,505,280">
-    B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,360,505,400">
-    C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,480,505,520">
-    D
-  </bloco>
   <bloco tipo="rodape" script="latino" bbox="600,960,980,1000">
     Digitized by Google
   </bloco>
   <notas>
     tipo_pagina: texto. Script principal: latino.
-    Marcação: duas páginas (duas colunas visuais, cada página como bloco de texto_principal).
-    Letras verticais A–D na margem central transcritas como notas marginais.
-    Fornei transcrição literal onde legível; palavras e sequências de leitura duvidosa foram mantidas aproximadas ou levemente corrompidas segundo a imagem. Onde a leitura era insegura procurei não inventar palavras completas; alguns termos possivelmente incorretos subsistem (p.ex. formas irregulares de algumas palavras latinas e hibridações de impressão antiga). 
+    Disposição: duas colunas (blocos texto_principal: primeira coluna bbox 20,80,490,940; segunda coluna bbox 510,80,980,940).
+    Letras marginais A–D transcritas em blocos nota_marginal conforme instrução.
+    Transcrição literal baseada na imagem; preservei ortografia, sinais e quebras tal como aparecem; usei [ilegivel] apenas quando estritamente necessário (nenhum termo isolado marcado assim). Pequenas incertezas de leitura mantidas in situ sem normalização.
   </notas>
 </pagina>

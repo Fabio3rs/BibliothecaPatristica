@@ -1,17 +1,9 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,45,100,70">
-    195
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="350,45,650,70">
-    PRÆFATIO AD TOM. II.
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="900,45,950,70">
-    196
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,80,495,95">
-    A
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,80,470,920">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,150,50">195</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,20,650,50">PRÆFATIO AD TOM. II.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,20,950,50">196</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,950">
     attexere de Antiquis Catalogis pontificum Roma-
     norum.
     Licet enim laudatus præsul tot præclara conscri-
@@ -34,14 +26,14 @@
     sine pontificum auctoritate; adeo ut mirari contin-
     gat, a nemine, quod sciam, ex scriptoribus institu-
     tam illorum comparationem cum cæteris remotissima
-    ab ætate scriptis. Perjucundum certe futurum arbi-
+    ab ætate scriptis. Per jucundum certe futurum arbi-
     tror observare, Catalogum in basilica S. Pauli su-
     perstitem indicia ætatis ostendere vel sancti Leonis
-    Magni, vel ab ejus sæculo non admodum dissitæ;
+    Magni, vel ab ejus sæculo non admodum dissita;
     eosdemque numeros annorum, mensium ac dierum
     intueri ibidem assignatos pontificibus Romanis, qui
     leguntur in codice octingentorum annorum ecclesiæ
-    Pergamensis supra memorato num. 3, 11, aliisque
+    Pergamensis supra memorato num. 3, II, aliisque
     paris antiquitatis infra exponendis in nostra Disser-
     tatione num. 12, quæ non duos tantum potiores Ca-
     talogos, sed reliquos etiam considerat, pluriumque
@@ -65,11 +57,15 @@
     plurium ædium sacrarum, necnon cœmeteriorum
     sanctorum martyrum, tum etiam nomenclatura ac
     dispositio illustrium Urbis ornamentorum : quæ per
+    sæpe missas nondum labefactas hodie autem par-
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,330,495,345">
-    B
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,80,950,920">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,60,510,80">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,320,510,340">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,560,510,580">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,820,510,840">D</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,60,950,950">
     in unum codicem cum vetustissima collectione In-
     scriptionum Romanarum, in Urbe descriptarum tum
     ex sacris, tum ex profanis ædificiis : et retulit inter
@@ -82,7 +78,7 @@
     græ dictioni litteras obtinent in paginis proximis
     Mabillonianis), iterum nectere et inarticulare.
     Alterum opusculum ejusdem ferme argumenti po-
-    stendum est ex Historia gentis Anglorum Willelmi
+    tendum est ex Historia gentis Anglorum Willelmi
     monachi Malmesmuricensis, ducentis circiter annis
     recentiori : ubi scriptor iste recensuit, occasione
     sacræ expeditionis susceptæ a cruce signatis sub
@@ -122,16 +118,13 @@
     ad Corbeiensis codicis Catalogum Vigilio æqualem;
     hinc vero ad alterum Corbeiensem ad finem septimi
     sæculi sub Conone, et ad initium octavi sub Sergio II
-    et Joanne VI perscriptum, tum ad novum codicis
-    [ilegivel]
+    et Joanne VI perscriptum; tum ad novum codicis
+    Einsidlensi saeculi octavi plerumque a S. Leone allato.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,580,495,595">
-    C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,830,495,845">
-    D
-  </bloco>
+
   <notas>
-    Texto em latim. Letras A, B, C, D no gutter indicam seções. Marca d'água "Digitized by Google" no canto inferior direito obscurece o final do texto.
+    Texto em latim. Layout em duas colunas com letras marginais A, B, C, D no gutter.
+    Rodapé "Digitized by Google" sobreposto no canto inferior direito, dificultando a leitura da última linha da coluna direita.
+    Última linha da coluna esquerda parcialmente cortada na margem inferior.
   </notas>
 </pagina>

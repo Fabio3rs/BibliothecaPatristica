@@ -1,8 +1,8 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,80">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="60,20,940,80">
     HISTORIA SACRA, LIB. II.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,90,495,940">
+  <bloco tipo="texto_principal" script="latino" bbox="30,100,490,900">
     terroe increpitat. Quis impensa consumerel, cum
     Daniel vir prudentia insignis nilnime id ab insen-
     sibi simulacro posse fieri contenderet? Tum illi
@@ -20,8 +20,9 @@
     suis foraminte ingressos ea quae idolo apposita
     fecerant devorasse. Ita omnes jussu regis interfecti:
     templum ac simulacrum Danieli in potestatem da-
-    tum, atque arbitrio ejus dirubium.
-    IX. Lateres Judai, quos ex permissu Cyri in
+    tum, atque arbitrio ejus dirutum.
+    
+    Lateres Judai, quos ex permissu Cyri in
     patriam regressos supra memoravimus, urbem ac
     sacellum resituere egresseri, ut pauci aliquae ino-
     pes, parum proficiellant; donec censepismo fere an-
@@ -63,7 +64,7 @@
     porum, et castra consularia direxi. Post Darium
     cum regnare annos et viginti annos te-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="505,90,970,940">
+  <bloco tipo="texto_principal" script="latino" bbox="510,100,970,900">
     gnasse traditur: quamquam in plerisque exemplari-
     bus viginti et quinque annos imperii ejus fuisse re-
     peri. Huic successit Artaxerxes, cujus, sup? a men-
@@ -74,7 +75,8 @@
     Artaxerxes regnavit annos unius et quadraginta,
     Xerxes duobus mensibus, postque eum Sucdianus
     septem mensibus fuit.
-    X. Darius deinde, sub quo templum est restitutum,
+    
+    Darius deinde, sub quo templum est restitutum,
     regnum adeptus est, cui Ochus tum nomen erat.
     Hic cum ex Hebraicis tres adolescentes speculati si-
     dei corporis custodes haberet, unusque ex his pus-
@@ -106,7 +108,8 @@
     bat. Caeterum Esdras nihil super resficienda urbe
     egisse comperio : credo, potioren curam rataplic-
     bem corruptis moribus reformare.
-    XI. Erat ea clementiae apud Babylioniam Neamias
+    
+    Erat ea clementiae apud Babylioniam Neamias
     minister regius, gente Judseus, Artaxerxis merito ob-
     sequiorum charissimus. Is Judae percontatus, quibus
     paluerue urbis statis esset, usqueper in iisdem
@@ -124,8 +127,23 @@
     bus, sisiumque cum cum praedicto equitatis, quo tu-
     lius iter ageret, dimisit, quas ad praetores epistulis,
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,945,970,990">
+  <bloco tipo="aparato_critico" script="latino" bbox="30,880,970,904">
+    
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="30,910,970,990">
     Digitized by Google
   </bloco>
-  <notas>Texto impresso em latim antigo; várias palavras ilegíveis foram marcadas conforme visibilidade (ex.: "sup? a men- tionem", "pus-deis", "conjani" indicam fragmentos incertos). Colunas transcritas esquerda depois direita; pequenas falhas tipográficas e cortes de margem mantidos sem normalização.</notas>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,200,525,240">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,360,525,400">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,540,525,580">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,740,525,780">
+    D
+  </bloco>
+  <notas>Transcrição fiel ao impresso; removidos numerais de secção (IX, X, XI) da coluna textual e colocados como notas marginais A–D no gutter. Ortografia antiga mantida; sinais de abreviação e possíveis lacunas preservados sem normalização. BBox estimadas em escala 0-1000.</notas>
 </pagina>

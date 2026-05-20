@@ -1,8 +1,8 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="620,30,930,150">
+  <bloco tipo="cabecalho" script="latino" bbox="630,30,920,150">
     3 2044 015 473 622
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="280,180,720,660">
+  <bloco tipo="texto_principal" script="latino" bbox="340,180,660,780">
     THE BORROWER WILL BE CHARGED
     AN OVERDUE FEE IF THIS BOOK IS NOT
     RETURNED TO THE LIBRARY ON OR
@@ -10,16 +10,15 @@
     BELOW. NON-RECEIPT OF OVERDUE
     NOTICES DOES NOT EXEMPT THE
     BORROWER FROM OVERDUE FEES.
-
-    |
-    
-    STALL-[ilegivel]
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="390,360,620,560">
+    STALL-STUDE
     CHARGED
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,860,980,990">
+  <bloco tipo="rodape" script="latino" bbox="740,920,980,995">
     Digitized by Google
   </bloco>
   <notas>
-    scriptos: latino. Observações: selo/carimbo preto diagonal parcialmente sobreposto ao cartão; palavra após "STALL-" parcialmente ilegível e marcada como [ilegivel]. Texto do cartão impresso legível e transcrito fielmente. Código de barras transcrito conforme aparece.
+    O carimbo preto sobre o cartão (bloco tipo="nota") está parcialmente sobreposto e rasurado; foi transcrito apenas o que é claramente legível ("STALL-STUDE" e "CHARGED"). O texto do cartão (bloco texto_principal) foi transcrito em maiúsculas conforme aparece. Os números do código de barras (bloco cabecalho) também foram transcritos.
   </notas>
 </pagina>

@@ -1,4 +1,4 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,60">
     935 IN APOCALYPSIN EXPOSITIO. DE VISIONE SEXTA. 936
   </bloco>
@@ -33,8 +33,8 @@
     sequentia hujus libri videntur fateri? Quod si mare in
     meliorem statum reparabitur, sicut cœlum terraque,
     a terræ sordibus quomodo inquinabitur? Quod si quis
-    dixerit ᵃ ante innovationem hanc passurum esse
-    inquinatïonem, atque in permutatione ejus ad nihi-
+    dixerit ante innovationem hanc passurum esse
+    inquinatiōnem, atque in permutatione ejus ad nihi-
     lum esse redigendas; non poterit Deus sicut in
     aqua, ita et in terra easdem sordes ad nihilum redi-
     gere, ut non sit necesse ut in mare defluant? Per
@@ -48,7 +48,7 @@
     Et diabolus qui seducebat eos, missus est in stagnum
     ignis et sulphuris, ubi est bestia et pseudopropheta. Hoc
     tunc implebitur, quando Dominus dicit: Ite, male-
-    dicti, in ignem æternum, ᵇ qui præparatus est diabolo
+    dicti, in ignem æternum, qui præparatus est diabolo
     et angelis ejus (Matth. xxv, 41).
     (Vers. 10.) Et cruciabuntur die ac nocte in sæcula
     sæculorum. A quo cruciatu misericordia redemptoris
@@ -142,10 +142,12 @@
     et angelis ejus.
   </bloco>
   <notas>
-    Transcrição de página dupla (935-936) da Patrologia Latina.
-    Números de versículos bíblicos entre parênteses (Vers. 11, 13, 10).
-    Número "373" inserido no texto da coluna 1.
-    Letras marginais A, B, C, D no gutter central.
-    Notas de rodapé indicadas por letras sobrescritas ᵃ e ᵇ no texto e correspondentes no rodapé.
+    Transcrição baseada na imagem da página dupla. Página em duas colunas;
+    ordem de fluxo: coluna esquerda (bloco texto_principal bbox 0,60-490,850),
+    depois coluna direita (bloco texto_principal bbox 510,60-1000,850). Letras
+    marginais A, B, C, D colocadas como blocos nota_marginal no gutter central.
+    Mantida ortografia, abreviações e sinais tal como na fonte; sem normalização
+    nem tradução. Uso de caracteres latinos históricos (æ, œ, ligaturas) conforme
+    visíveis. Notas de rodapé (ᵃ, ᵇ) transcritas em blocos tipo="nota".
   </notas>
 </pagina>

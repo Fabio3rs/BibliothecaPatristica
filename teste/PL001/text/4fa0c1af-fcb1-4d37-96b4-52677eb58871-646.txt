@@ -1,44 +1,52 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,60">
-    1249 LIBER DE PATIENTIA. 1250
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="20,10,120,70">
+    1249
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="150,80,850,120">
+  <bloco tipo="cabecalho" script="latino" bbox="140,10,860,140">
     QUINTI SEPTIMII FLORENTIS TERTULLIANI
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="250,130,750,170">
-    DE PATIENTIA
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="400,180,600,210">
+    DE PATIENTIA.
     LIBER.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="350,230,650,260">
+  <bloco tipo="cabecalho" script="latino" bbox="880,10,980,70">
+    1250
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="220,150,780,210">
     Argumentum.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,280,480,400">
-    Tractatus de patientia quem multi a Tertulliano ad-hucdum catholico circa a. cc. conscriptum fuisse existimant, in quam imprimis abiere sententiam doctiss. Tillemontius, D. Cellerius, P. Dominicus Schram, eximia est multa cum eloquentia adhortatio ad patientiam amplectendam, pene dicam ad martyrium sustinendum, haud aliter ac si, cum hæc conscriberet septimius jam-jam nova ingrueret procella, iterumque Christianorum calamitates forent refricandæ. Quidquid ea de re sit
+
+  [!-- Left column --]
+  <bloco tipo="texto_principal" script="latino" bbox="40,220,480,420">
+    Tractatus de patientia quem multi a Tertulliano adhucdum catholico circa a. cc. conscriptum fuisse existimant, in quam imprimis abiere sententiam doctiss. Tillemontius, D. Cellerius, P. Dominicus Schram, eximia est multa cum eloquentia adhortatio ad patientiam amplectendam, pene dicam ad martyrium sustinendum, haud aliter ac si, cum hæc conscriberet septimius jamjam nova ingrueret procella, iterumque Christianorum calamitates forent refricandæ. Quidquid ea de re sit
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,280,900,400">
-    ratum habendum, qualive tempore vel rerum tempestate fuerit hic libellus exaratus, in ea nulla non affertur caussa, cur Christiani ad patientiam excitari queant et ab impatientia deterredi. Nempe cum in operis limine, quasi publice stratus, suam auctor imbecillitatem, animique impotentiam propalaverit, patientiamque magnis laudibus summatim descripserit singula perstringit motiva ad eam amplectendam proponenda, scilicet :
+
+  [!-- Right column --]
+  <bloco tipo="texto_principal" script="latino" bbox="520,220,960,420">
+    ratum habendum, qualive tempore vel rerum tempestate fuerit. hic libellus exaratus, in ea nulla non affertur caussa, cur Christiani ad patientiam excitari queant et ab impatientia deterreri. Nempe cum in operis limine, quasi publice stratus, suam auctor imbecillitatem, animique impotentiam propalaverit, patientiamque magnis laudibus summatim descripserit singula perstringit motiva ad eam amplectendam proponenda, scilicet :
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,410,480,500">
-    I. Patientiam Dei erga nos,
-    II. Patientiam Christi,
+
+  [!-- Left column: enumeratio part 1 --]
+  <bloco tipo="texto_principal" script="latino" bbox="40,430,460,580">
+    I. Patientiam Dei erga nos.
+    II. Patientiam Christi.
     III. Natales impatientiæ ac ejus mala in ipso diabolo deprehensa.
     IV. Fidem patientia probandam.
     V. Temporalia exinde spreta.
     VI. Injurias æqua mente latas.
     VII. Dolorem e suorum amissione tempe-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,410,750,500">
-    II. ratum.
-    III, IV. VIII. Vindictæ cupiditatem exstinctam.
+
+  [!-- Right column: enumeratio part 2 --]
+  <bloco tipo="texto_principal" script="latino" bbox="500,430,900,580">
+    ratum.
+    VIII. Vindictæ cupiditatem extinctam.
     IX. Irrita jam inimici incitamenta.
-    V. X. Patientiam virtutum matrem.
-    VI. XI. Viriumque fontem inexhaustum.
-    VII. XII. Exempla patientiæ, demum mercedem et fructum.
-    VIII.
+    X. Patientiam virtutum matrem.
+    XI. Viriumque fontem inexhaustum.
+    XII. Exempla patientiæ, demum mercedem et fructum.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="800,410,900,500">
+
+  [!-- central marginalia numeration (gutter) --]
+  <bloco tipo="nota_marginal" script="latino" bbox="820,430,960,580">
     IX.
     X.
     XI.
@@ -47,38 +55,65 @@
     XIV, XV.
     Edd.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,540,480,740">
+
+  [!-- Divider ornament line omitted as a separate block --]
+
+  [!-- CAPUT PRIMUM heading --]
+  <bloco tipo="cabecalho" script="latino" bbox="240,600,760,640">
     CAPUT PRIMUM.
-    Confiteor ad Dominum Deum , satis temere me, si non etiam impudenter , de patientia componere ausum , cui præstandæ idoneus omnino non sim (1) , ut homo nullius boni (a) , quando oporteat demonstrationem et commendationem alicujus rei adortos , ipsos prius in administratione ejus rei deprehendi , et constantiam commonendi (2) propriæ conversationis auctoritate dirigere , ne dicta factis deficientibus erubescant. Atque utinam erubescere istud remedium ferat, uti pudor non exhibendi quod aliis suggestum imus, exhibendi fiat magisterium ! Nisi quod bonorum quorumdam , sicuti et malorum, intolerabilis magnitudo est, ut , ad capienda et præstanda ea , sola gratia divinæ inspirationis operetur. Nam quod maxime bonum, id
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,540,900,740">
-    A maxime penes Deum, nec alius id quam qui possidet dispensat , ut cuique dignatur. Itaque vel ut solatium erit disputare super eo quod frui non datur, vice languentium , qui cum vacent a sanitate , de bonis ejus tacere non norunt. Ita miserimus ego, semper æger caloribus impatientiæ, quam non oblinco patientiæ sanitatem, et suspirem, et invocem, et perorem necesse est, cum recordor, et in meæ imbecillitatis contemplatione digero, bonam fidei valetudinem , et dominicæ disciplinæ sanitatem , non facile cuiquam, nisi patientia assideat, provenire. Ita proposita Dei rebus est , ut nullum præceptum obire quis , nullum opus Domino complacitum perpetrare extraneus patientia possit. Bonum ejus, etiam qui cæci (3) vivunt (b) summæ virtutis appellatione honorant (4). Philo-
+
+  [!-- Left column: CAPUT PRIMUM part 1 --]
+  <bloco tipo="texto_principal" script="latino" bbox="40,650,480,920">
+    Confiteor ad Dominum Deum, satis temere me, si non etiam impudenter, de patientia componere ausum, cui præstandæ idoneus omnino non sim (1), ut homo nullius boni (a), quando oportet demonstrationem et commendationem alicujus rei adortos, ipsos prius in administratione ejus rei deprehendi, et constantiam commonendi (2) propriæ conversationis auctoritate dirigere, ne dicta factis deficientibus erubescant. Atque utinam erubescere istud remedium ferat, uti pudor non exhibendi quod aliis suggestimus imus, exhibendi fiat magisterium! Nisi quod bonorum quorumdam, sicuti et malorum, intolerabilis magnitudo est, ut, ad capienda et præstanda ea, sola gratia divinæ inspirationis operetur. Nam quod maxime bonum, id
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="150,750,850,770">
+
+  [!-- Right column: CAPUT PRIMUM part 2 --]
+  <bloco tipo="texto_principal" script="latino" bbox="520,650,960,920">
+    A maxime penes Deum, nec alius id quam qui possidet dispensat, ut cuique dignatur. Itaque vel ut solatium erit disputare super eo quod frui non datur, vice languentium, qui cum vacent a sanitate, de bonis ejus tacere non norunt. Ita miserrimus ego, semper æger caloribus impatientiæ, quam non obtineo patientiæ sanitatem, et suspirem, et invocem, et perorem necesse est, cum recordor, et in meæ imbecillitatis contemplatione digero, bonam fidei valetudinem, et dominicæ disciplinæ sanitatem, non facile cuiquam, nisi patientia assideat, provenire. Ita proposita Dei rebus est, ut nullum præceptum obire quis, nullum opus Domino complacitum perpetrare extraneus patientia possit. Bonum ejus, etiam qui cæci (3) vivunt (b) summæ virtutis appellatione honorant (4). Philo-
+  </bloco>
+
+  [!-- LECTIONES VARIANTES / apparatus critico left --]
+  <bloco tipo="aparato_critico" script="latino" bbox="60,940,440,990">
     LECTIONES VARIANTES.
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="150,775,400,810">
+
     (1) Sum Paris.
     (2) Commendandi Latin.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="500,775,750,810">
-    B (3) Cæca Rhen. Fran.
+
+  [!-- apparatus critico marginal letter B in gutter --]
+  <bloco tipo="nota_marginal" script="latino" bbox="450,940,500,990">
+    B
+  </bloco>
+
+  [!-- apparatus critico right --]
+  <bloco tipo="aparato_critico" script="latino" bbox="520,940,900,990">
+    (3) Cæca Rhen. Fran.
     (4) Honorent Fran. Paris.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="350,820,650,840">
+
+  [!-- COMMENTARIUS header --]
+  <bloco tipo="cabecalho" script="latino" bbox="240,1000,760,1030">
     COMMENTARIUS.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="100,845,480,920">
-    CAP. I. — (a) Homo nullius boni. Ubique fere abjectissime de se loquitur. Sic, lib. de Pœnit.: Eam tu peccator mei similis, imo me minor (ego enim præstantiam in deliciis meam agnosco), ita invade. Et lib. II de Cultu
+
+  [!-- Left column: COMMENTARIUS / nota --]
+  <bloco tipo="nota" script="latino" bbox="40,1040,480,1240">
+    CAP. I. — (a) Homo nullius boni. Ubique fere abjectissime de se loquitur. Sic, lib. de Poenit.: Eam tu peccator mei similis, imo me minor (ego enim præstantiam in delictis meam agnosco), ita invade. Et lib. II de Cultu foem.: Quod ipsum mihi, utique reprehendendo in omnibus, reprehendere Deus permittat. et eod. : Utinam miserrimus ego, etc. Rig.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="520,845,900,920">
-    fæm. : Quod ipsum mihi , utique reprehendendo in omnibus , reprehendere Deus permittat. et eod. : Utinam miserimus ego, etc. RIG.
+
+  [!-- Right column: COMMENTARIUS / nota --]
+  <bloco tipo="nota" script="latino" bbox="520,1040,960,1240">
     (b) Etiam qui cæci vivunt. Hæc scriptura est codi-
+    fœm. : Quod ipsum mihi, utique reprehendendo in omnibus, reprehendere Deus permittat. et eod. : Utinam miserrimus ego, etc. RIG.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="400,950,600,980">
+
+  [!-- Rodape / watermark --]
+  <bloco tipo="rodape" script="latino" bbox="360,1260,640,1310">
     Digitized by Google
   </bloco>
+
   <notas>
-    Transcrição de página de edição crítica (Patrologia Latina ou similar). Layout complexo com índice em três colunas no centro. A letra "B" no aparato crítico funciona como sigla de manuscrito.
+    Transcrição diplomática a partir da imagem. A letra de referência "B" no gutter entre as colunas do aparato crítico foi extraída como bloco nota_marginal separado, conforme instruções. O watermark foi transcrito como bloco rodape.
   </notas>
 </pagina>

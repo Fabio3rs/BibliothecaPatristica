@@ -1,10 +1,14 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,70">
 531    INDICES PATROLOGIÆ SPECIALES.  —  INDEX LXXII.    532
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="10,70,330,900">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="40,70,160,110">
 An.
-500 Samson Alethelatensis epi-
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="10,110,330,880">
+560 Samson Alethelatensis epi-
 scopus.
 505 S. Columbas, abb. et doctor.
 507 Leander Hispalenus epise.
@@ -92,8 +96,12 @@ digarius.
 688 Sergius papa.
 690 S. Ursmarus.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,70,660,900">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="350,70,480,110">
 An.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="340,110,660,880">
 690-723 S Wnibrodus.
 692 Acca.
 692 Adelbertus levita.
@@ -182,8 +190,12 @@ episcopus.
 858 Paulus Populoniensis.
 860 Ragimbertus.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,70,950,900">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="680,70,820,110">
 An.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="670,110,950,880">
 845 Methodius episcopus.
 885 Athelmus ep. etcops.
 913 Carolus Simplex rex.
@@ -272,10 +284,12 @@ nus IV.
 1207 Navarrus.
 1207 Guido abbas.
   </bloco>
+
   <bloco tipo="rodape" script="latino" bbox="350,900,650,990">
 Digitized by Google
   </bloco>
+
   <notas>
-Página em latim, índice em três colunas. Algumas palavras estão pouco legíveis no original digitalizado (ex.: formas próprias de nomes e abreviaturas); foram transcritas tal como aparecem na imagem sem normalização. BBOXs são estimativas visuais.
+Transcrição literal da página em latim, sem normalização. Os rótulos de secção "An." que aparecem no topo de cada coluna foram extraídos para blocos nota_marginal separados (BBOXs estimadas). BBOXs dos blocos são aproximações visuais. Onde o original é pouco legível conservei a grafia tal como aparece; não foram feitas traduções nem regularizações.
   </notas>
 </pagina>

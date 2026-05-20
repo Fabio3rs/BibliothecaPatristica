@@ -1,4 +1,4 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="50,20,950,50">
     1021 ACTA S. SEBASTIANI MARTYRIS. 1022
   </bloco>
@@ -67,7 +67,7 @@
     S. Gregorii homilia 57, in basilica S. Sebastiani.
     Aliorum multorum exstant de eo sermones. Legimus
     idem illius martyrium in ms. Nicolai Belfortii, cano-
-    nici regularis Suessionensis carmine descriptum ab
+    nicii regularis Suessionensis carmine descriptum ab
     Oliverio Conrado minorita.
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="50,420,950,460">
@@ -107,7 +107,7 @@
   <bloco tipo="nota_marginal" script="latino" bbox="485,480,515,500">
     C
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,470,950,900">
+  <bloco tipo="texto_principal" script="misto" bbox="520,470,950,900">
     2. Christo igitur quotidie sedulam exhibebat of-
     ficium, sed agebat quatenus hoc sacrilegis regibus
     esset occultum, non passionis timore perterritos,
@@ -130,7 +130,7 @@
     Mediolanum cum filio unico reversisse. Rabanus,
     variaque mss. : Eodem die S. Sebastiani de Medio-
     lano, qui tantum, etc. Metaphrastes genere clarum
-    ait fuisse. Mensea : Εἰς τς συγκλήτου βουλῆς ὑπῆρχεν,
+    ait fuisse. Mensea : Εἰς τῆς συγκλήτου βουλῆς ὑπῆρχεν,
     unus e senatorio ordine fuit. Guilielmus Catellinus
     histor. Occitan. lib. II testatur commonstrari etiam-
     num Narbonæ domum S. Sebastiani, ubi ecclesia
@@ -144,6 +144,6 @@
     Digitized by Google
   </bloco>
   <notas>
-    Texto em latim com tipografia gótica/antiga. Letras A, B, C, D identificadas como notas marginais de seção conforme instrução. Texto grego presente na coluna inferior direita ("Εἰς τῆς συγκλήτου βουλῆς ὑπῆρχεν").
+    Página transcrita com fidelidade ao impresso. Letras marginais A, B, C, D colocadas em blocos próprios conforme instrução. O bloco inferior direito contém inserção grega; por isso o seu script marcado como "misto". Correções ortográficas ou normalizações não foram efectuadas; uso de sinais de referência (a, b) mantido tal como no original.
   </notas>
 </pagina>

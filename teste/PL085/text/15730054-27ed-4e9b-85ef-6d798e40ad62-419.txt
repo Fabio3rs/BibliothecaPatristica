@@ -1,166 +1,36 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,50">
-    327 MISSALE MIXTUM SEC. REG. B. ISIDORI. — PARS II. 228
+  <bloco tipo="texto_principal" script="latino" bbox="50,40,950,700">
+You are an expert in palaeography and transcription of historical documents (Patrologia Graeca, Latina et Orientalis).
+
+Analyse the image and produce a faithful XML transcription. First identify the page type (cover/endpaper, text, illustration).
+
+If the page is truly blank: &lt;pagina estado="vazio" tipo="capa_ou_guarda" /&gt;
+
+Allowed scripts: latino, grego, copta, siriaco, cirilico, ethiopico, armenio, arabe, hebraico, misto, desconhecido.
+Allowed types: cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal, outro.
+
+RULES:
+1. NEVER state that the page is blank if there is any trace of ink. Transcribe whatever is possible.
+2. Map every block: footnotes, critical apparatus, marginal notes. Omission is a serious failure.
+3. The root tag must have the attribute estado="com_texto" or estado="vazio".
+4. BBOX: x1,y1,x2,y2 (scale 0-1000).
+5. Two-column layout: transcribe the entire left column first, then the right. Full-width headers and footers stay at the visual position they occupy.
+6. Do not translate, normalise, or invent. Use [ilegivel] only for individual words, never for whole blocks.
+
+Layout note: Letters A, B, C, D placed vertically in the centre gutter are nota_marginal section identifiers.
+
+Output format:
+&lt;pagina estado="com_texto"&gt;
+  &lt;bloco tipo="..." script="..." bbox="x1,y1,x2,y2"&gt;
+    literal transcription
+  &lt;/bloco&gt;
+  &lt;notas&gt;complex scripts or relevant corrections if made&lt;/notas&gt;
+&lt;/pagina&gt;
+
+Return ONLY the XML.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,850">
-    longitudinem dierum in eternum : et in seculum se-
-    culi. P. Et dabis eum. . Gloria et honor Patri :
-    et Filio : et Spiritui Sancto ; in secula seculorum.
-    Amen. P. Et dabis.
-    Oratio. Eternum tue virtutis nomen omnipotens
-    D:os oramus : ut nos martyris tui Bartholomei
-    Apostoli : et omnium Sanctorum meritis socios fide :
-    pires devotione : extremos passione : et consimiles
-    in resurrectione felicium facias coæquari. R. Amen.
-    Per misericordiam tuam Deus noster etc. Dominus
-    sit semper vobiscum. R. Et cum.
-    Prophetia. Justus si morte præoccupatus fuerit.
-    Require retro in festo Sancti Clementis Papæ. fol. 20.
-    Dicat Presbiter. Dominus sit semper vobiscum.
-    R. Et cum.
-    b Psallendo. Os justi meditabitur sapientiam : et
-    lingua ejus loquetur judicium. . Lex Dei ejus in
-    corde ipsius : et non supplantabuntur gressus ejus.
-    P. Et lingua ejus.
-    Dicat Presbiter. Silentium facite.
-    Epistola. Charissime confortare.
-    Evangelium. Una dierum Dominus noster Jesus
-    Christus. Require ut supra.
-    Dicat Presbiter. Dominus sit semper vobiscum.
-    R. Et cum.
-    c Lauda. Alleluja. . Exultabit justus in gloria :
-    et gaudebit in lætitia sempiterna. P. Alleluja.
-    d Sacrificium. Oravi Deum meum ego Daniel di-
-    cens : exaudi Domine precem servi : inlumina faciem
-    tuam super sanctuarium tuum : et propitius intende
-    populum istum : super quem invocatum est nomen
-    tuum Deus : alleluja. . Cum effund-rem precem
-    phyretica urna conditum fuit, ut in Germaniam trans-
-    ferretur; at extincto Othone, corpus apostoli Romæ
-    remansit, ubi in insulæ Tiberinæ basilica, ejus no-
-    mini dicata, hactenus die 25 Augusti Romani illud
-    debito cultu venerantur. De hac translatione acriter
-    Beneventanos inter et Romanos contenditur, negan-
-    tibus Beneventanis corpus sancti Bartholomæi a sua
-    urbe amotum esse, Romanis vero asserentibus non
-    aliud quam sancti Bartholomæi corpus Othonem II
-    abstulisse, quod in Germaniam transferret. Rationes
-    et auctoritas neutri parti conientiendum deficiunt;
-    vulgo tamen, contradicent licet Beneventani, corpus
-    sancti Bartholomæi Romæ esse creditur. Non uno
-    eodemque die festivitas sancti Bartholomæi ab omni-
-    bus Ecclesiis celebrata est. Armenii bis quotannis,
-    25 Februarii et 3 Decembris, Coptitæ 18 Junii et 20
-    Novembris sanctum Bartholomæum prisco instituto
-    colunt (Assemanus, Bibl. orient. tom. III, part. 1,
-    pag. 646, 648, 649, 654). Græci die 11 Junii certa-
-    men sanctorum apostolorum Bartholomæi et Barnabæ
-    in Menologio Basilii commemorant, et rursus die 25
-    Junii de translatione reliquiarum ejus agunt Martyrol.
-    Seberi. In Hieronymianis, Lucensi Florentinii, et
-    Corbeiensi Dacherii, et in Martyrologio Gellonensi,
-    his commemoratur sanctus Bartholomæus, Idibus
-    Junii : In Perside, sanctus Bartholomæus apostolus, et
-    IX Kal. Sept. : In India, sancti Bartholomæi apostoli.
-    Modo autem plerumque de sancto Bartholomæo agi-
-    tur die 24, Romæ vero die 25 Augusti; at olim Romæ,
-    ut ex Martyrologio sancti Cyriaci ad Thomas colligit
-    eum. Baronius (Not. Martyr., die 25 August.), de
-    sancto Bartholomæo agebant die XIII Kal. Septembris.
-    De sancto Bartholomæo silent Sacramentaria Leona-
-    num, Gelasianum, Bobianum et libri liturgici Galli-
-    cani. Silet etiam Orationale Gothicum, missam ta-
+  <bloco tipo="texto_principal" script="latino" bbox="50,710,950,960">
+Proceda conforme instruções do system.
+Atenção as colunas e ao gutter (se houver), identificação A,B,C,D devem ficar em seu próprio bloco de nota_marginal. Cuidado: NÃO coloque a identificação das seções dentro do texto das colunas.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,60,950,850">
-    A meam in oratione in conspectu Domini Dei mei pro
-    peccato populi Israel : et pro loco sancto ejus in
-    tempore sacrificii : Gabriel cito pervolans tetigit me :
-    et locutus est mihi dicens : Daniel vir desideriorum :
-    ab initio obsecrationis tuæ : ego egressus sum : et
-    veni ut dicam. P. Et propicius intende.
-    Missa. Preciosissimam Martyris Bartholomei Apo-
-    stoli solemnitatem fratres charissimi : promptissima
-    celebremus devotione : suppliciter orantes Dei nostri
-    misericordiam. Ut qui beatissimam prefati Apostoli :
-    et martyris sui annua festivitate : in hunc diem me-
-    moriam excolimus : etsi equari factis ejus non possu-
-    mus : saltim ipso patrocinante imitari fidem ejus per
-    omnia valeamus. R. Amen.
-    Alia Oratio. In memoria eterna Beatissimi Apo-
-    stoli tui Bartholomei Domine lætemur : tempore re-
-    currenti. Magnificantes ejus gloriam passionis : et
-    beatitudinis ipsius facta celebrantes : que a te accepit :
-    atque 366 in te possedit : largitore inexhausto : re-
-    tributore perpetuo : fonte perfluo : thesauro sempi-
-    terno : da nobis quesumus veneratoribus tuis : ejus
-    peculiare suffragium : et quibus dedisti nominis ejus
-    titulum : presta patrocinium indisruptum. R. Amen.
-    Post nomina. Oratio. In honorem martyris tui Bar-
-    tholomei Apostoli : votivum tibi Deus sacrificium
-    exhibentes : rogamus : ut ejus meritis : et offerenti-
-    bus veniam : et sepultis requiem largiaris. Quo hujus
-    suffragatione te utrobique parciturum prebeas : cujus
-    te in passione victorem fuisse demonstras. R. Amen.
-    Ad pacem. Oratio. Deus qui sancto Apostolo : et
-    martyri tuo Bartholomeo tantum ardorem tue dulce-
-    dinis contulisti : ut non cederet penalibus flammis :
-    men propriam habet in Missali, et proprium officium
-    in Breviario Mozarabum. Missam quoque propriam
-    habet in Sacramentario Gregoriano Menardi, qui in
-    nota admonet eamdem inveniri in Codicibus Rhe-
-    mensi, Ratoldi et Rodradi. Eadem exstat in Grego-
-    riano Pamelii, sed apposito signo eorum quæ poste-
-    riori manu adjecta sunt, et sane in Capitularibus
-    Evangeliorum Georgii nulla fit mentio hujus festi-
-    vitatis.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,300,510,320">
-    B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,550,510,570">
-    C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,650,510,670">
-    D
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="50,860,950,950">
-    a Martyris. In Romano Parvo : IX Kal. Septem-
-    bris Bartholomæi apostoli et martyris.
-    b Psallendo. Ps. xxxvi, 30. . Ibid., 31.
-    c Lauda. Ex Psal. cxlix, 5.
-    d Sacrificium. Est cento consutus ex verbis Da-
-    nielis IX. . Ibid.
-    e Et quibus dedisti. Est peculiaris petitio pro iis
-    qui sancti Bartholomæi nomine vocabantur. Sanctos
-    specialem curam gerere eorum quibuscum est no-
-    minis communio, prisca est fidelium opinio, siquidem
-    Christianus in clientelam ejus sancti quodammodo
-    datur, cujus nomen in baptismate suscipiebat. Hinc
-    Juliana illa pia et illustris femina, apud sanctum
-    Ambrosium (Exhort. virgin., cap. 3), filium suum
-    Laurentium hortabatur : Considera cui te muneri
-    pater, tali nomine, designavit, qui te vocavit Lauren-
-    tium.... redde martyri quod debes martyri, etc. San-
-    ctos igitur quorum nomina gerebant fideles tan-
-    quam patronos venerabantur, rati vicissim sanctos
-    illos patrocinio suo clientes fovere. Quod a arte Theo-
-    doretus (De curat. Græc. affect. cap. 8, in fine) docet :
-    Quin et nascentibus filiis horum (sanctorum martyrum)
-    nomina imponere (fideles) student, securitatem inde
-    ipsis tutelamque comparantes.
-    f Penalibus flammis. De genere mortis sancti Bar-
-    tholomæi apostoli, non una est opinio. Alii cruci
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
-    Digitized by Google
-  </bloco>
-  <notas>
-    Transcrição de página de Missale Mixtum (Patrologia Latina).
-    Layout em duas colunas.
-    Letras B, C, D no gutter central identificadas como nota_marginal.
-    Texto principal dividido em blocos de coluna esquerda e direita.
-    Rodapé contém aparato crítico (notas a-f).
-    Abreviações mantidas (D:os, R., P., etc.).
-    Hifenização de fim de linha preservada.
-  </notas>
 </pagina>

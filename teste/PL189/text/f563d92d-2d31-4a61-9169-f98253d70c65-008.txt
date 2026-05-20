@@ -1,64 +1,68 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="300,10,700,60">
+<pagina estado="com_texto" tipo="capa_ou_guarda">
+  <bloco tipo="cabecalho" script="latino" bbox="380,50,620,90">
     SÆCULUM XII
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,60,970,280">
+  <bloco tipo="texto_principal" script="latino" bbox="60,110,940,190">
     PETRI VENERABILIS
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="220,280,780,340">
+  <bloco tipo="texto_principal" script="latino" bbox="200,200,800,240">
     ABBATIS CLUNIACENSIS NONI
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,340,880,460">
-    OPERA. OMNIA
+  <bloco tipo="texto_principal" script="latino" bbox="150,250,850,330">
+    OPERA OMNIA
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="420,460,580,500">
+  <bloco tipo="texto_principal" script="latino" bbox="450,340,550,365">
     ACCEDUNT
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,500,920,620">
+  <bloco tipo="texto_principal" script="latino" bbox="100,380,900,430">
     WIBALDI ABBATIS STABULENSIS
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="440,620,560,660">
+  <bloco tipo="texto_principal" script="latino" bbox="460,440,540,465">
     NECNON
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,660,920,780">
-    ERNALDI ABBATIS BONÆVALLIS
+  <bloco tipo="texto_principal" script="latino" bbox="200,460,800,510">
+    ERNALDI ABBATIS BONEVALLIS
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,780,660,820">
+  <bloco tipo="texto_principal" script="latino" bbox="300,520,700,555">
     EPISTOLÆ ET OPUSCULA
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="140,820,860,910">
+  <bloco tipo="texto_principal" script="latino" bbox="300,580,700,615">
     ACCURANTE J.-P. MIGNE
-    BIBLIOTHECAE CLERI UNIVERSI
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,615,750,640">
+    BIBLIOTHECÆ CLERI UNIVERSÆ
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,640,520,660">
     SIVE
-    CURSUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="220,910,960,960">
-    ----
+  <bloco tipo="texto_principal" script="latino" bbox="150,660,850,685">
+    CURSUS COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,720,600,760">
     TOMUS UNICUS
-    ----
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,960,680,985">
+  <bloco tipo="texto_principal" script="latino" bbox="380,800,620,825">
     VENIT 8 FRANCIS GALLICIS
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="80,985,920,1000">
-    EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM
-    IN VIA DICTA D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM
-    SEU PETIT-MONTROUGE
-    1834
+  <bloco tipo="rodape" script="latino" bbox="200,880,800,905">
+    EXCUDEBatur ET VENIT APUD J.-P. MIGNE EDITOREM
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="760,520,960,720">
+  <bloco tipo="rodape" script="latino" bbox="100,905,900,930">
+    IN VIA DICTA D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="380,930,620,950">
+    SEU PETIT-MONTROUGE
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="480,955,520,975">
+    1854
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="820,580,990,760">
     BIBLIOTHECA BODLEIANA
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="100,985,180,1000">
-    R
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="760,985,980,1000">
+  <bloco tipo="outro" script="latino" bbox="600,980,900,1000">
     Digitized by Google
   </bloco>
   <notas>
-    Todos os blocos estão em script latino. Preservei as grafias e ligaduras visíveis (ex.: SÆCULUM, BONÆVALLIS, EPISTOLÆ).
-    A palavra transcrita como "FRANCIS" (VENIT 8 FRANCIS GALLICIS) apresenta leitura algo incerta no original; a grafia historicamente esperada seria "FRANCS", mas transcrevi conforme o que aparece na imagem.
-    A marca circular marginal foi transcrita como "BIBLIOTHECA BODLEIANA" por leitura parcial da impressão; trata-se de selo marginal parcialmente sobreposto ao texto.
-    Nenhuma normalização ou tradução foi efetuada; usei "[ilegivel]" apenas quando necessário (nenhum caso aplicado nesta página).
+    Transcrição de página de título (capa). Ligaturas Æ preservadas (SÆCULUM, BIBLIOTHECÆ, etc.). Texto "EXCUDEBatur" apresenta variação tipográfica (atur em caixa baixa/reduzida). Selo circular da biblioteca à direita.
   </notas>
 </pagina>

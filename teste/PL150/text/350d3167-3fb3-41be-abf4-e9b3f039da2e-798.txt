@@ -6,7 +6,7 @@
     FRAGMENTUM
     EX LIBRO DE MYSTERIIS ECCLESIÆ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,120,480,300">
+  <bloco tipo="texto_principal" script="latino" bbox="100,120,480,340">
     Dedicatio.
     Anglia quo fulget, quo gaudent præsule claro
     Londoniæ, quo Parisius scrutante sophiam
@@ -21,64 +21,77 @@
     Est domus ecclesia Domini. Summus faber illam
     Ex petris vivis, quadris pariterque rotundis
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,120,900,300">
-    A Construit in cœlis, et amoris schemate jungit
+  <bloco tipo="nota_marginal" script="latino" bbox="520,125,540,145">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,120,900,340">
+    Construit in cœlis, et amoris schemate jungit
     Fundamenta locans. Pes et basis est petra Christi.
     Circumstat paries populus gentilis, hebræus.
     Christo fundatus per partes quatuor orbis.
     Sancti quadrati lapides sunt, celte (35) politi.
-    Quadrata stabiles virtute, pologæ parati
+    Quadrata stabiles virtute, poloque parati
     Artificis summi prædocto pollice. Quorum
     Quidam portantur, nec portant : simpliciores
     Sunt isti: Portant, portantur : sunt mediocres.
     Sunt et portantes, non portati : Tamen hi sunt
     Sancti, quos Christus ad cœli sidera portat.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,320,800,360">
+  <bloco tipo="texto_principal" script="latino" bbox="200,370,800,410">
     FRAGMENTUM LIBRI DE ORTHOGRAPHIA.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,380,480,500">
+  <bloco tipo="texto_principal" script="latino" bbox="100,420,480,510">
     Si quis in ecclesia legis usquam verbula diva,
     Ut vites vitia, sis doctus in orthographia.
-    Inspice si prosunt, me ne fac invidiosum
+    Inspice si prosum, me ne fac invidiosum
     Invidiæ mete. Nec laudem quæro poetæ,
     Quamvis sit rarus. Ne sit mihi sensus avarus.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,380,900,500">
-    Non sic detenta mihi tradita quinque talenta
+  <bloco tipo="texto_principal" script="latino" bbox="520,420,900,510">
+    Non sic detenta mihi tradita quinque talenta.
     In te spes Christe mea figitur, ut liber iste
     Per te completus sit, te fulsimine fretus,
     Cum sit scripturæ fons omnis littera jure.
     Principio quod sit de se tractatio possit, etc.
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="120,510,880,540">
+  <bloco tipo="aparato_critico" script="latino" bbox="120,520,880,550">
     (35) Celtes est quoddam instrumentum aptum ad scindendum lapides. Ita glossa ms. ad h. l.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="450,560,550,580">
+  <bloco tipo="texto_principal" script="latino" bbox="400,570,600,590">
     AB ANNO MLVI
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,590,800,750">
-    RUFINI [id. br.]
+  <bloco tipo="texto_principal" script="latino" bbox="350,600,650,650">
+    RUFINI
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="660,600,780,640">
+    id. ep.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,660,750,690">
     INCERTÆ SEDIS EPISCOPI
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="300,700,700,740">
     DE BONO PACIS
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,750,600,780">
     LIBRI DUO
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="200,760,800,790">
-    (R. P. Bernardi PEZII Bibliotheca ascetica, tom. IX, Ratisbonæ, 1726, in-12, pag. 3.)
+  <bloco tipo="nota" script="latino" bbox="200,790,800,810">
+    (R. P. Bernardi PEZII Bibliotheca ascetica, tom. IX, Ratisbonæ, 1726, in-12, pag. 5.)
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="400,810,600,840">
+  <bloco tipo="texto_principal" script="latino" bbox="400,830,600,860">
     MONITUM.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,850,900,900">
+  <bloco tipo="texto_principal" script="latino" bbox="100,870,900,920">
     Nihil ascetæ dulcius, nihil magis necessarium pace, qua interiori qua exteriori, utpote sine qua pietatis studium nec feliciter suscipi, nec diu admodum constare potest. De hac agunt duo, quos præ manibus
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="500,950,800,990">
+  <bloco tipo="rodape" script="latino" bbox="500,960,800,990">
     Digitized by Google
   </bloco>
   <notas>
-    Transcrição de página impressa em latim.
-    Na seção "RUFINI", há uma anotação manuscrita ao lado que parece ser "id. br." ou similar.
-    A palavra "pologæ" na coluna superior direita pode apresentar ligadura ou erro de impressão (parece "pologqe").
-    Layout de duas colunas respeitado na primeira e segunda seções.
+    Transcrição de página impressa (Patrologia Latina).
+    Handwritten note "id. ep." (idem episcopus) next to RUFINI.
+    "poloque" expanded from "poloqͤ".
+    "fulsimine" transcribed as written (likely typo for fulmine).
+    Column marker 'A' extracted to nota_marginal.
   </notas>
 </pagina>

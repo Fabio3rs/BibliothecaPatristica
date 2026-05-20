@@ -1,36 +1,78 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,30,200,60">
+  <bloco tipo="cabecalho" script="latino" bbox="40,10,180,60">
     25
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="400,30,700,60">
+  <bloco tipo="cabecalho" script="latino" bbox="220,10,780,60">
     SPECIMEN CODICUM MSS
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="850,30,950,60">
+  <bloco tipo="cabecalho" script="latino" bbox="820,10,960,60">
     215
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="400,80,650,110">
+
+  <bloco tipo="texto_principal" script="latino" bbox="220,90,760,140">
     SPECIMEN
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,120,950,150">
+
+  <bloco tipo="texto_principal" script="latino" bbox="80,140,920,180">
     Codicum mss. ex quibus eruta sunt pleraque S. Maximi Taur. ep. opera hanc in collectionem traducta.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,180,450,210">
+
+  [!-- Left column (flow: left then right) --]
+  <bloco tipo="texto_principal" script="latino" bbox="60,200,480,240">
     Nº 1. Codex bibl. Vaticanae nº 3835, pag. 260.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="550,160,950,210">
-    Nº 3. Codex amplissimi capituli Veronensis sub nº 49.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,220,450,440">
-    INNAT SCOR̄ APOSTOLO
+
+  <bloco tipo="texto_principal" script="latino" bbox="60,250,480,460">
+    INNAT SCOR APOSTOLO
     PETRI ET PAULI
     LXXXVIIII
+
     CUM OMNES BEA
     TI APOSTOLI PA
     REM GRATIAM
     APUD DÑOS SCITA
-    TI S OBTINENT NETIO
+    TIS OBTINENT NETIO
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="480,220,900,420">
+
+  <bloco tipo="texto_principal" script="latino" bbox="60,480,480,520">
+    Nº 2. Codex venerab. monast. Sanctæ Crucis in Jerusalem sub nº 90.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="60,520,480,700">
+    INCIP SERMO DE NATALE SCOR PETRI ET PAULI APOSTOLORUM
+    I CUM OMNES BEATI APOSTOLI PAREM GRATIAM APUD NOS SCITATIS OBTINEANT
+    NEC QUOQUAM PER APOSTOLICATUS ET PAULUS UIDENTUR PRAECELLENT PRAELARI QUADAM
+    IN SALUATORE FIDEI UIRTUTE PRAECELLERE QUOD QUIDEM EXPLIFUDNIUDI GODOSSIMUS
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="60,700,480,820">
+    NATALEM BEATISSIMORUM APOSTOLORUM PETRI ET PAULI HODIE CELEBRANTES DIVER
+    SI SEPULCHRI NOSTRI FICERE DEBEMUS VERTANTA MYSTICITATEM MAGNA CUM LAETITIA CELE
+    BRARE QUI ENIM IUXTA LUXURIAE RUM SOLLENNITATE NON MAG NOFFIBUS IBICA TADPA
+    RATUR
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="60,840,460,880">
+    Nº 4. Codex Urbevetanus apud em. card. de Zelada, pag. 65.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="40,880,480,1000">
+    DEQUO SUPRA
+    ONUSQ'ADEOCON
+    TRISTARI DEBE
+    MUS ERSI QVOD IN HIS
+
+    quadragesimae diebus temptatio nos
+    tribulationis inueni[t]. Qm et saluatorem
+    nostrum propter ipsam quadragesimam uidemus esse temptatum
+  </bloco>
+
+  [!-- Right column --]
+  <bloco tipo="texto_principal" script="latino" bbox="520,200,940,240">
+    Nº 3. Codex amplissimi capituli Veronensis sub nº 49.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,250,940,460">
     De lectionib9 scorum euangelioru
     hodie recitauo est in sco iohan
     geo qua dns ihs in deserto
@@ -38,54 +80,44 @@
     piscibus saturauerit quinque
     milia uirorum ubique
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,460,800,490">
-    Nº 2. Codex venerab. monast. Sancte Crucis in Jerusalem sub nº 90.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="150,500,850,600">
-    INCIP SERMO DE NATALE SCOR PETRI ET PAULI APOSTOLORUM
-    I CUM OMNES BEATI APOSTOLI PAREM GRATIAM APUD NOS SCITATIS OBTINEANT
-    NEC QUOQUAM PER APOSTOLICATUS ET PAULUS UIDENTUR PRAECELLENT PRAELARI QUADAM
-    IN SALUATORE FIDEI UIRTUTE PRAECELLERE QUOD QUIDEM EXPLIcitu ui di Godossimus
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="150,620,850,750">
-    Natalem BEATISSIMORUM APOSTOLORUM PETRI ET PAULI HODIE CELEBRANTES DIUER
-    SI SEPULCHRI NOSTRI FICERE DEBEMUS UERTANTA MYSTICITATEM MAGNA CUM LAETITIA CELE
-    BRARE QUI ENIM IUXTA LUXURIAE RUM SOLLENNITATE NON MAG NOFFIBUS IBICA TADPA
-    RATUR
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,770,480,800">
-    Nº 4. Codex Urbevetanus apud em. card. de Ze-lada, pag. 65.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="550,770,900,800">
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,760,940,800">
     Idem codex Urbevetanus, pag. 142.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,810,480,940">
-    DE QUO SUPRA
-    NONUSQ' ADEO CON
-    TRISTARI DE BE
-    MUS ERSI QUOD IN BIS
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,940,480,1080">
-    quadragesimae diebus temptation nos
-    tribulationis inuenit. Qm et saluatorem
-    nostrum propter ipsam quadragesimam
-    uidemus esse temptatum
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,810,900,940">
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,820,940,1000">
     UN DE SU PRA DE EA
     DE M PENTECOSTEN
-    NOSSE CRE DO
+    OSSE CRE DO
     LIOS FRS QUE
     SIT RATIO
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,940,900,1080">
+
     QUOD UENERABILEM HANC PEN
     TECOSTEN DIEM NON MINORI LAETITIA CELE
-    BRAMUS QUAM SI PASCHA CURAUI MUS
+    BRAMUS QUAM SI PASCHA CURAUIMUS
     celebrare
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="600,1350,900,1390">
+
+  [!-- Central decorated initials / marginal letters A-D as nota_marginal blocks --]
+  <bloco tipo="nota_marginal" script="latino" bbox="120,300,200,380">
+    A
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="420,300,500,380">
+    B
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="120,920,200,980">
+    C
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="620,920,700,980">
+    D
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="620,990,920,1020">
     Digitized by Google
   </bloco>
-  <notas>Transcrição literal dos fac-símiles apresentados. Abreviações medievais (scorum, dns, ihs, etc.) mantidas conforme visibilidade. Letras capitais decoradas (C, N) indicadas implicitamente pelo início do texto. A seção Nº 2 possui dois blocos de texto distintos no fac-símile. A seção Nº 4 e Idem possuem texto em unciais/maiúsculas seguido de minúsculas.</notas>
+
+  <notas>Transcrição feita literalmente a partir do fac-símile; abreviações medievais mantidas (p.ex. DÑOS, scorum, dns, ihs). Quadros e letras iniciais ornamentadas indicadas como notas marginais (A–D). BBOX aproximadas em escala 0–1000; leitura de algumas linhas do fac-símile é discontinua e preservou grafia visível sem normalização. [ilegivel] não foi necessário para palavras individuais visíveis.</notas>
 </pagina>

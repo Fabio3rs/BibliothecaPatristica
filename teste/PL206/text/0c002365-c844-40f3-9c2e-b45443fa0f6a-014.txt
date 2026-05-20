@@ -1,22 +1,35 @@
-<pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="300,60,700,140">
+<pagina estado="com_texto">
+  <bloco tipo="cabecalho" script="latino" bbox="386,63,613,107">
     ELENCHUS
-    AUCTORUM ET OPERUM QUI IN HOC TOMO CCVI CONTINENTUR.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,230,880,380">
+  <bloco tipo="cabecalho" script="latino" bbox="163,126,836,153">
+    AUCTORUM ET OPERUM QUI IN HOC TOMO COVI CONTINENTUR.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="137,233,862,260">
     THOMAS CISTERCIENSIS MONACHUS ET JOANNES ALGRINUS S. R. E. CARDINALIS.
-    Commentarium in Cantica.                                   Col. 9
-    COELESTINUS III PONTIFEX ROMANUS.
-    Epistolæ et privilegia.                                    863
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="600,860,900,890">
+  <bloco tipo="texto_principal" script="latino" bbox="137,263,497,287">
+    Commentarium in Cantica.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="833,263,903,283">
+    Col. 9
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="303,300,696,323">
+    CŒLESTINUS III PONTIFEX ROMANUS.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="137,330,403,353">
+    Epistolæ et privilegia.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="863,330,903,350">
+    863
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="603,853,883,873">
     Ex Typis L. Migne, au Petit-Montrouge.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="550,960,800,990">
+  <bloco tipo="rodape" script="latino" bbox="503,953,763,983">
     Digitized by Google
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="960,400,990,900">
-    [ilegivel]
-  </bloco>
-  <notas>Correções baseadas na imagem: "CCVI" (não COVI), "III" (não ll), "Migne" (não Miows). Inclusão dos números de coluna/página "9" e "863". Ligatura "æ" em "Epistolæ". Faixa vertical à direita contém texto ilegível (provavelmente numeração de páginas adjacentes).</notas>
+  <notas>
+    Transcrição literal de "COVI" no subtítulo, embora o contexto sugira o numeral romano "CCVI" (volume 206). Ligaturas "æ" e "Œ" preservadas.
+  </notas>
 </pagina>
