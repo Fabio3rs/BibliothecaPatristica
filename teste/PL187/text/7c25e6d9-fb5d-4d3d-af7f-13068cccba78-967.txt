@@ -1,8 +1,11 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="740,40,950,120">
+  <bloco tipo="cabecalho" script="latino" bbox="655,28,968,128">
 3 2044 015 473 614
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="270,170,530,330">
+  <bloco tipo="outro" script="latino" bbox="225,220,508,709">
+  
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="244,234,499,355">
 THE BORROWER WILL BE CHARGED
 AN OVERDUE FEE IF THIS BOOK IS NOT
 RETURNED TO THE LIBRARY ON OR
@@ -11,20 +14,28 @@ BELOW. NON-RECEIPT OF OVERDUE
 NOTICES DOES NOT EXEMPT THE
 BORROWER FROM OVERDUE FEES.
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="300,330,520,480">
+  <bloco tipo="nota" script="latino" bbox="254,355,469,482">
 CANCELLED
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="320,340,480,420">
-[ilegivel] STUDY
+  <bloco tipo="nota" script="latino" bbox="293,340,410,426">
+[ilegivel]
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="760,920,980,990">
+  <bloco tipo="outro" script="latino" bbox="350,355,350,709">
+  
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="860,369,958,624">
+  
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="802,950,998,1000">
+  
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="743,936,977,965">
 Digitized by Google
   </bloco>
   <notas>
-- Texto principal: caixa de aviso de biblioteca dentro de um retângulo colado na página.
-- Carimbo "CANCELLED" está impresso de cabeça para baixo; transcrito conforme leitura literal.
-- Carimbo laranja parcialmente legível; primeira palavra foi classificada como [ilegivel] por estar incompleta/obscurecida.
-- BBOX aproximadas em escala 0-1000.
-- Todos os blocos de texto visíveis foram mapeados; elementos não textuais (abas/retângulos de cor) foram omitidos.
+- A palavra "[ilegivel]" foi usada para uma marca carimbada laranja parcialmente legível sobre o bolso.
+- O carimbo "CANCELLED" aparece invertido/rotacionado na imagem; transcrito aqui em maiúsculas sem indicação de rotação.
+- O bloco "outro" que envolve o bolso e os elementos escuros à margem foi mapeado como elemento não-textual (conteúdo vazio).
+- Caixa de código de barras transcrita conforme os dígitos visíveis abaixo do código de barras.
   </notas>
 </pagina>

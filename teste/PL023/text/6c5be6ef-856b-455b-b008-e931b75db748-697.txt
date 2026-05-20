@@ -1,8 +1,8 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="130,20,870,50">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,60">
     1531 AD TOMUM III OPERUM S. HIERONYMI APPENDIX. 1532
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,60,480,850">
+  <bloco tipo="texto_principal" script="latino" bbox="40,80,490,820">
     Juxta Eusebii, et probat eumdem Elcana Ephratæum
     ab Ephrata, non ab Ephraim dici. Sophoni, ἀφετω-
     λότος interpretantur. Spectatores hic Prophetæ in-
@@ -57,9 +57,12 @@
     Exsultet humilia de ore vestro, de quo antea gran-
     dia et superba dicebant. Quibus verbis Phenenham
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,60,920,850">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,110,510,140">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="510,80,960,820">
     et filios ejus increpat; quia ob fœcunditatem abhor-
-    cescam; contra Annam elevabatur.
+    rescam; contra Annam elevabatur.
     (Vers. 4.) Arcus fortium superatus est; et infirmi
     accincti sunt robore. Arcus Ægyptiorum, id est, for-
     titudo et potentia, superata est: et infirmi, scilicet
@@ -112,19 +115,10 @@
     crificio Domini, ita quoque libidinosius in conjungen-
     dis uxoribus, transgredi faciebant populum Domini.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,60,510,80">
-    A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,350,510,370">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,350,510,380">
     B
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,600,510,620">
-    C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,750,510,770">
-    D
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="80,860,480,950">
+  <bloco tipo="aparato_critico" script="latino" bbox="40,830,490,940">
     ¹ Nullum est vitium in Latinorum versione, ubi
     legimus tribus modiis farinæ: quia, ut alibi abunde
     probatum est ex Hieronymo, Ephi, Hebræorum
@@ -132,19 +126,23 @@
     lia nostra in primum caput primi libri Samuelis.
     * Cum Gemmeticensis ms. legit Rabanus quoque.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="520,860,920,950">
+  <bloco tipo="aparato_critico" script="latino" bbox="510,830,960,940">
     ᵃ Idem codex Gemmeticensis legit hoc loco, et
     singulis Annæ nascentibus, mortui sunt filii singuli
     Phenennæ. Apud Erasmum, mortuus primogenitus
     Phenennæ, mortui sunt et alii filii.
     ᵇ In meo ms. verba, eisque commisceri, non sunt.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="400,960,600,990">
+  <bloco tipo="rodape" script="latino" bbox="400,945,600,990">
     Digitized by Google
   </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,590,510,620">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,750,510,780">
+    D
+  </bloco>
   <notas>
-    Transcrição literal incluindo abreviaturas e variações ortográficas visíveis (ex: 'Doloe' em vez de 'Sterilis' ou 'Domine' no contexto de 1 Sam 2:5, 'Phetenmæ' vs 'Phenennæ').
-    As letras marginais A, B, C, D foram mapeadas como blocos separados.
-    O texto grego 'ἀφετωλότος' foi transcrito na primeira linha.
+    Transcrição literal do exemplar conforme a imagem. Mantidas ortografia, sinais, abreviaturas e palavras gregas inseridas no corpo do texto. As letras marginais A, B, C, D foram colocadas em blocos próprios conforme instruções. BBOX aproximadas em escala 0-1000.
   </notas>
 </pagina>

@@ -1,4 +1,4 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="50,20,150,50">
     323
   </bloco>
@@ -8,7 +8,7 @@
   <bloco tipo="cabecalho" script="latino" bbox="850,20,950,50">
     324
   </bloco>
-  
+
   <bloco tipo="texto_principal" script="latino" bbox="50,60,480,750">
     debetur, Domino largiente reddendum est, prome-
     rentibus orationibus vestris, ut nos ad solvendum
@@ -52,12 +52,13 @@
     sed illud vere abundeque legistis, quod ad detesta-
     bilem vestri sceleris impietatem et ad voluntatiam
     Domini pertinet passionem. Ipse enim per Isaiam
-    loquitur: Dorsum meum dedi ad flagella, k maxillas
+    loquitur: Dorsum wwum dedi ad flagella, k maxillas
   </bloco>
 
   <bloco tipo="nota_marginal" script="latino" bbox="500,60,520,80">
     A
   </bloco>
+
   <bloco tipo="texto_principal" script="latino" bbox="520,60,950,250">
     meas ad palmas, faciem autem meam non averti a
     confusione sputorum (Isai. L, 6). Ipse per David, De-
@@ -77,6 +78,7 @@
   <bloco tipo="nota_marginal" script="latino" bbox="500,260,520,280">
     B
   </bloco>
+
   <bloco tipo="texto_principal" script="latino" bbox="520,260,950,500">
     CAP. III. — Crux ergo Christi sacramentum veri
     et prænuntiati habet altaris, ubi per hostiam salu-
@@ -99,6 +101,7 @@
   <bloco tipo="nota_marginal" script="latino" bbox="500,510,520,530">
     C
   </bloco>
+
   <bloco tipo="texto_principal" script="latino" bbox="520,510,950,750">
     CAP. IV. — Hinc jam degustato aceto, Dominus,
     quod illa dabat vinea, quæ ab auctoris sui planta-
@@ -141,6 +144,7 @@
   <bloco tipo="nota_marginal" script="latino" bbox="500,760,520,780">
     D
   </bloco>
+
   <bloco tipo="aparato_critico" script="latino" bbox="520,760,950,950">
     D quissimo Vat., in quo postremo post vocem liberum
     subjicitur corpus. Paulo post, Prophetarum oracula ce-
@@ -168,10 +172,8 @@
   </bloco>
 
   <notas>
-    Transcrição de página da Patrologia Latina (S. Leonis Magni Sermones).
-    Layout em duas colunas para o texto principal e duas colunas para o aparato crítico.
-    Letras marginais A, B, C, D identificadas como marcadores de seção.
-    Números em negrito 209 e 270 transcritos como parte do texto.
-    Nota 'j' no aparato crítico é dividida entre as colunas esquerda e direita (anti- / Dquissimo). A letra D foi tratada como nota_marginal conforme instrução, embora funcione visualmente como inicial da continuação.
+    Transcrição fiel ao impresso visível na imagem, sem normalizações nem traduções.
+    Fluxo respeitado: coluna esquerda seguida da coluna direita. Letras marginais A, B, C, D transcritas em blocos nota_marginal separados.
+    BBOX valores aproximados em escala 0-1000, estimados a partir da imagem.
   </notas>
 </pagina>

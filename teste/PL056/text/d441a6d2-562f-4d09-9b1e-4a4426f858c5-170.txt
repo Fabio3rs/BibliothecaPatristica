@@ -1,4 +1,4 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="20,10,980,80">
 AD OPERA S. LEONIS MAGNI APPENDIX.
   </bloco>
@@ -19,7 +19,7 @@ Carpari et solo canonum
 Et Putarem auclerum corpore, ele.
 
 Dau item codices : 365. t. 706 bibliothec: S. Germani
-a frati- uuentatium un s- apae; aplius exempli & r-
+a frati- uuentatium un s- apae; aplius exempli &amp; r-
 berini, qui dybhamas recitais versibus distribuitur;
 al- et sine auctoris nomine ac sine uti on iii. opti-
 mus et Antiquus uoratur a Baluzio in praefatione ad
@@ -37,7 +37,7 @@ tem, ea ali quot indicis eum esse delectius qui in
 Vaticanis bibli-bhem posteia traduxus, sigautur
 num. 6361. Hio dum codices in Epi uno ea omum
 frequeuter adhi uti. D- u"rtio ec.s codicciihil resire
-prolinium, ignouum tandem, sed censum exempliun
+prolinium, ignouum tandem, sed censum exemplum
 conumunicauun molis lui t x monasterio S. Benedicti
 Paulitormsenad, qua ibi- res tradexim sine auctoris
 nomni- continens, saeculo xi - scriptum creditur.
@@ -87,6 +87,9 @@ stat: ecclesiarum. C. 71, al. 85 vel 93.
 
 Lib. vi. De el crimine et ordinatione ac de omni pote-
 state seu statu episcoporum. C. 201, al. 203 vel 207.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,40,520,80">
+A
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="500,80,980,960">
 Lib. vii. De vita et ordinatione clericorum. Alias, De
@@ -175,8 +178,17 @@ dem prius auctorem duo diversi fontes testantur, mi-
 nimn tum illi codices qui duplici collatione; Ausculi
 nomen praeferrunt, tum postissimum codex B- rbertinus,
   </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,300,490,340">
+B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,560,490,600">
+C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,820,490,860">
+D
+  </bloco>
   <bloco tipo="rodape" script="latino" bbox="20,960,980,1000">
 Digitized by Google
   </bloco>
-  <notas>Texto em latim impresso; página em duas colunas. Muitas abreviaturas editoriais preservadas; transcrição seguida visualmente e mantém hifenações e quebras de linha do original. Marcas como [cccxxvi] e numeração de páginas mantidas.</notas>
+  <notas>Transcrição literal do impresso em latim, duas colunas; preservadas hifenizações, abreviaturas e sinais editoriais tal como no original. As letras centrais A, B, C, D colocadas como notas marginais em blocos próprios; bbox aproximados no eixo 0-1000. Script identificado: latino.</notas>
 </pagina>

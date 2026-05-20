@@ -1,16 +1,23 @@
 <pagina estado="com_texto">
-  <bloco tipo="texto_principal" script="latino" bbox="126,696,878,772">
-    This is a reproduction of a library book that was digitized
-    by Google as part of an ongoing effort to preserve the
-    information in books and make it universally accessible.
+  <bloco tipo="outro" script="latino" bbox="120,10,880,60">
+tipo_pagina: capa_ou_guarda
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="126,814,655,886">
-    Google™ books
+  <bloco tipo="rodape" script="latino" bbox="60,620,940,630">
+[linha horizontal]
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="126,903,442,932">
-    https://books.google.com
+  <bloco tipo="rodape" script="latino" bbox="60,640,940,760">
+This is a reproduction of a library book that was digitized
+by Google as part of an ongoing effort to preserve the
+information in books and make it universally accessible.
   </bloco>
-  <notas>
-    Página de guarda moderna adicionada pela digitalização do Google Books. Contém aviso de direitos e logotipo.
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="60,780,640,920">
+Google™ books
+  </bloco>
+  <bloco tipo="rodape" script="desconhecido" bbox="660,760,940,920">
+[QR code]
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="60,940,940,990">
+https://books.google.com
+  </bloco>
+  <notas>tipo_pagina: capa_ou_guarda. Script principal: latino (texto em inglês e URL). Símbolo ™ preservado. Código QR representado como [QR code]. Linha horizontal representada como [linha horizontal]. Não há notas marginais (A, B, C, D).</notas>
 </pagina>

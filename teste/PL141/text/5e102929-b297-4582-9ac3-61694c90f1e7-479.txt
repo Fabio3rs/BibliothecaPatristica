@@ -1,14 +1,14 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,60">
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,60">
     949 DIPLOMATA. 950
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,60,490,930">
+  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,920">
     scilicet ut secundum fidem et eorum proprietatis
     continentiam perpetuo et incon vulsa maneant, et
     inviolata perdurent. Quorum petitioni benevolo fa-
     vore assentientes, maximeque ob gloriosi avunculi
     nostri domni Henrici ducis Burgundiæ memoriam
-    et Otonis fratris ejus, qui sese peculiariter inibi sub
+    et Ottonis fratris ejus, qui sese peculiariter inibi sub
     beati Germani patrocinio manciparunt, ut et sepul-
     turæ mandati sint; nos quoque eumdem locum
     sanctæ potius reverentiæ, quam alicui subjectioni
@@ -36,9 +36,9 @@
     deat : sed liceat monachis præfati cœnobii res ad
     sua stipendia pertinentes sub una immunitatis præ-
     ceptione quieto ordine possidere. Jubemus ergo ut
-    neque ipsi monachi aut negotiato:es eorum, neque
+    neque ipsi monachi aut negotiatores eorum, neque
     homines qui per ipsam casam Dei sperare videntur,
-    teloneum persolvere cogantur in civitatibus vel vicis,
+    teloneum persolvere cogantur in civitatibus aut vicis,
     seu villis aut mercatis, vel in portubus aut portis,
     sicut in præcepto gloriosissimi Caroli imperatoris
     continetur. Præcipientes autem jubemus, et jubentes
@@ -63,7 +63,19 @@
     semper perseveret atque permaneat. Concedimus
     etiam eidem congregationi eligendi Abbatem sibi li-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,60,960,400">
+  <bloco tipo="nota_marginal" script="latino" bbox="485,65,515,85">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,280,515,300">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,530,515,550">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,760,515,780">
+    D
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,60,950,920">
     centiam secundum regularem institutionem alio de-
     cedente. Et ut nullo unquam tempore sub alicujus
     episcopi dominatione redigantur, et nullus episcopus
@@ -75,7 +87,7 @@
     ptaverit, non valeat impetrare quod expetit : sed
     insuper pro regiæ majestatis contemptu centum
     libras auri cocti cogatur exsolvere : medietatem ca-
-    meræ nostræ, medietatem ipsis monachis; de cæ-
+    meræ nostræ, medietatem ipsis monachis; de cœ-
     teris vero supradictis præceptionibus immunitatis a
     contemptoribus pœna exigatur. Ut autem hæc alti-
     tudinis nostræ confirmatio seu præceptio meliorem
@@ -83,8 +95,6 @@
     terfirmavimus, et annuli nostri impressione sigillari
     jussimus.
     Actum Antissiodori civitate publice..
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,410,960,930">
     IV.
     Diploma Roberti regis Francorum pro monasterio
     sancti Maglorii Parisiensis.
@@ -106,7 +116,7 @@
     vere atque post metam hujusce labentis ævi Deum
     deorum in Sion sanctam contemplari. Quapropter
     congrua via, quod nobis pro commissi talenti lucro-
-    atitulatur, reputantes quod Domino fidelibusque
+    attitulatur, reputantes quod Domino fidelibusque
     ejus tribuitur, inviolabile atque interatum persi-
     stere ; simul moti misericordia pauperum et efflagi-
     tatione supradictarum honorabilium reginarum,
@@ -119,34 +129,20 @@
     risque sanctis inibi assignatis ob illorum corpora,
     quæ ut peregrina hospitabantur per aliorum rura.
     Est autem prius terra in qua ipsum situm est mo-
-    nasterium, prædium quod dedimus ipso die trans-
+    nasterium, et prædium quod dedimus ipso die trans-
     lationis sanctorum et dicitur Villaris, cum omni
     integritate quæ ad ipsum pertinet, et capella inibi
     consecrata in honorem sanctæ Dei Genitricis Mariæ.
     Item aliæ res quæ prius datæ sunt, unde prior est
-    ecclesia in suburbio Parisiaco haud procul a [ilegivel]
+    ecclesia in suburbio Parisiaco haud procul a s
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,60,505,80">
-    A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,260,505,280">
-    B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,490,505,510">
-    C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,740,505,760">
-    D
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="0,950,1000,1000">
+  <bloco tipo="rodape" script="latino" bbox="350,950,650,990">
     Digitized by Google
   </bloco>
   <notas>
-    Transcrição literal de documento impresso em latim.
-    Abreviações impressas como "præcepto", "cœnobii" mantidas com ligaduras.
-    "negotiato:es" mantém a pontuação original visível.
-    "servis" transcrito por extenso apesar de possível abreviatura visual "se:vis".
-    Marginais A, B, C, D posicionadas no gutter central.
-    Última palavra da página ilegível/manchada.
+    Transcrição fiel ao layout de duas colunas. As letras A, B, C, D no gutter foram mapeadas como nota_marginal.
+    Hifenizações originais mantidas (ex: incon vulsa, li-centiam).
+    Texto na coluna direita continua a palavra "licentiam" da esquerda.
+    Última palavra da página "a s" está cortada/abreviada.
   </notas>
 </pagina>

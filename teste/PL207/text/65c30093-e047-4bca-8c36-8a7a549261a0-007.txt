@@ -1,14 +1,14 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="capa_ou_guarda">
   <bloco tipo="cabecalho" script="latino" bbox="50,20,950,170">
 PATROLOGIÆ
 CURSUS COMPLETUS
+(SIVE
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="40,160,960,760">
-SIVE
 BIBLIOTHECA UNIVERSALIS, INTEGRA, UNIFORMIS, COMMODA, ŒCONOMICA,
 OMNIUM SS. PATRUM, DOCTORUM SCRIPTORUMQUE ECCLESIASTICORUM
 QUI
-AB AVO APOSTOLICO AD INNOCENTII III TEMPORA
+AB ÆVO APOSTOLICO AD INNOCENTII III TEMPORA
 FLORUERUNT;
 RECVSIO CHRONOLOGICA
 OMNIUM QUÆ EXISTITERE MONVMENTORVM CATHOLICÆ TRADITIONIS PER DVODECIM PRIORA
@@ -50,19 +50,19 @@ TVM ORIENTALES EQVIDEM AMPLECTITVR; HI AVTEM, IN EA, SOLA VERSIONE LATINA DONANT
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="120,760,880,900">
 PATROLOGIÆ TOMVS CCVII.
-(PETRVS BLESENSIS | BATHONIENSIS IN ANGLIA ARCHIDIACONVS.
+[PETRVS BLESENSIS | BATHONIENSIS IN ANGLIA ARCHIDIACONVS.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="60,820,140,880">
+.C
   </bloco>
   <bloco tipo="rodape" script="latino" bbox="40,880,960,980">
-.EXCVDEBATVR ET VENIT APVD J.-P. MIGNE, EDITOREM,
-IN VIA DICTA D'AMBOISE, PROPE PORTAM LVTETIÆ PARISIORVM VVLG0 D'ENFER NOMINATAM,
+EXCVDEBATVR ET VENIT APVD J.-P. MIGNE, EDITOREM,
+IN VIA DICTA D'AMBOISE, PROPE PORTAM LVTETIÆ PARISIORVM VULGO D'ENFER NOMINATAM,
 SEU PETIT-MONTROVGE.
 1855
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="40,720,140,780">
-.C
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="720,940,980,995">
+  <bloco tipo="nota" script="latino" bbox="720,940,980,995">
 Digitized by Google
   </bloco>
-  <notas>Transcrição reproduz a ortografia tipográfica original (uso de V para U, S longa e demais grafias históricas). Palavras e linhas difíceis foram marcadas com a mesma grafia visual observada; onde caracteres eram incertos, optou-se por manter a forma plausível em letra capitalizada conforme impresso. Não foram efetuadas normalizações nem traduções.</notas>
+  <notas>Transcrição efetuada priorizando a imagem sobre rascunhos OCR; ortografia tipográfica original mantida (V para U, S longa e formas históricas). BBOX aproximadas em escala 0–1000. Não foram feitas normalizações nem traduções; uso de [ilegivel] evitado pois os elementos principais são legíveis. A marca marginal ".C" foi transcrita em bloco próprio como nota_marginal.</notas>
 </pagina>

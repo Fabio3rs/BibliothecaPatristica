@@ -1,10 +1,8 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
     247 S. CHROMATIUS EP. AQUILEIENSIS. 248
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,65,505,85">
-    A
-  </bloco>
+
   <bloco tipo="texto_principal" script="latino" bbox="50,65,485,425">
     quid enim superius vel ingratus cogitare potest
     humana vecordia, si putaverit cum carne pulchram
@@ -38,12 +36,11 @@
     diffusa, potius id credant quod divinæ Scripturæ di-
     cunt, non quod linguæ humanæ maledicunt. De
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,210,505,230">
-    B
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,65,505,85">
+    A
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,410,505,430">
-    C
-  </bloco>
+
   <bloco tipo="texto_principal" script="latino" bbox="510,65,945,425">
     ipsa vero dissensione quam inter homines orta est
     (qui qualeslibet fuerint, non utique præjudicant
@@ -76,12 +73,22 @@
     ad visendos vos, verbis explicare non possumus, sed
     vos benigne credere non dubitamus.
   </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,210,505,230">
+    B
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,410,505,430">
+    C
+  </bloco>
+
   <bloco tipo="texto_principal" script="latino" bbox="100,440,900,550">
     ANNO DOMINI CCCCV.
     SECUNDINUS MANICHÆUS,
     EPISTOLA AD AUGUSTINUM.
     (Hanc epistolam vide inter opera S. Augustini tom. VIII, col. 571, ubi eam refellit S. Doctor prolatis argumentis.)
   </bloco>
+
   <bloco tipo="texto_principal" script="latino" bbox="100,560,900,750">
     ANNO DOMINI CCCCVII.
     SANCTUS CHROMATIUS,
@@ -89,29 +96,35 @@
     (Editio, cura Branda, Utini 1816, excusa.)
     PRÆFATIO EDITORIS.
   </bloco>
+
   <bloco tipo="nota_marginal" script="latino" bbox="490,770,505,790">
     D
   </bloco>
+
   <bloco tipo="texto_principal" script="latino" bbox="50,770,485,920">
     [IV; Nihil novi litterariæ reipublicæ afferimus, dum
     SACRI CHROMATII Aquileiensis episcopi SCRIPTA,
     e supersunt, seu novis Operibus, exhibemus.
     Anno enim 1528. quo primum Basileæ lucem
   </bloco>
+
   <bloco tipo="texto_principal" script="latino" bbox="510,770,945,920">
     publicam Chromatii Scripta aspexerunt, pluries hæc,
     tum seorsim aliquando, tum maxime in Collectio-
     nibus Patrum, edita fuerunt: ac novissime in Bi-
     bliotheca Patrum Scriptorumque Ecclesiasticorum
   </bloco>
+
   <bloco tipo="rodape" script="latino" bbox="400,950,600,990">
     Digitized by Google
   </bloco>
+
   <notas>
-    Transcrição de página da Patrologia Latina.
-    Marginalia A, B, C, D extraídas do fluxo principal do texto conforme instrução.
-    'pecul.' abreviatura no texto.
-    'quæsdam' transcrito literalmente (possível erro tipográfico para quasdam).
-    '[IV;' no início da prefação inferior esquerda.
+    Transcrição fiel ao impresso observado na página.
+    - Marginalia A, B, C, D mapeadas como blocos nota_marginal separados, não integradas ao fluxo das colunas.
+    - Mantida ortografia e abreviaturas tal como aparecem no impresso (ex.: "quæsdam", "quæ", "præcipue", "præsentiæ", "prælacio" etc.).
+    - Uso de parênteses e referências (Sap. VIII, 21; Gen. XXVI, 4) preservadas conforme aparecem.
+    - Marca "[IV;" reproduzida tal quale no início da secção inferior esquerda.
+    - Caso haja palavras ilegíveis no original, ter-se-ia usado [ilegivel]; nesta página o texto foi passível de transcrição visual.
   </notas>
 </pagina>

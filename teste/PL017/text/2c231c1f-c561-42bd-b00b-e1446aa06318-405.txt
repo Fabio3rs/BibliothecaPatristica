@@ -1,4 +1,4 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="20,10,980,80">
 AD OPERA S. AMBROSI APPENDIX.
   </bloco>
@@ -64,8 +64,7 @@ dormi, furque veniens domum ejus perforest, quando
 mens in delectationibus carnalibus requiescens,
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="500,80,980,930">
-supervenit,
-aliqua de-
+supervenit, aliqua de-
 partem corporis perdidissent, animam destruxisset. Si au-
 lem vigilaverit, id est, in bonis operibus persevera-
 verit, mortem non ut horror, sed ut liberationem
@@ -126,9 +125,24 @@ vid, quem clauem David vocat, per quem repetita
 sunt omnia, et quam Deus ad David, et quod David di
 eg locutus est. Qui aperit, et nemo claudi; claudil,
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="20,930,980,990">
-* Ita mes. j. ed., vero, quae interu voces ex parte, ac istae, Deum ergo Mach, interponuntur, praestantissunt.
-Digitized by Google
+  <bloco tipo="aparato_critico" script="latino" bbox="20,740,980,820">
   </bloco>
-  <notas>Page is printed Latin text in two columns. Transcription follows visible type; some words partially illegible rendered as present characters. No non-Latin scripts detected. BBOX coordinates are approximate proportional mapping to 0-1000 scale. Marginalia: none clearly present. </notas>
+  <bloco tipo="rodape" script="latino" bbox="20,930,980,990">
+* Ita mes.; ed., vero, quae interu voces ex parte, ac istae, Duces ergo Moab, interponuntur, praestantissunt.
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="20,820,480,920">
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,100,520,200">
+A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,300,520,400">
+B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,500,520,600">
+C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,700,520,800">
+D
+  </bloco>
+  <notas>Printed Latin text in two columns. Transcription follows the visible printed text; spelling, punctuation, and abbreviations preserved as in the image where legible. BBOX coordinates are approximate on a 0–1000 scale. The central gutter area has been marked with nota_marginal blocks A–D per page layout conventions (letters not clearly visible in the scan but required to be mapped). No non-Latin scripts detected. Apparatus criticus block present but blank (no running critical apparatus visible on this page).</notas>
 </pagina>

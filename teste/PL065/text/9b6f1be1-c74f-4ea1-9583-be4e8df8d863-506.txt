@@ -1,4 +1,4 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="40,10,960,90">
     995                                        INDEX OPERUM S. FULGENTII.                                        996
   </bloco>
@@ -93,8 +93,11 @@
     operatur in homine, 320. Quod Deus der cor novum ut an-
     nullemus in eo, pertinet ad bonae volul:atis infundj., 7.
   </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="60,720,120,780">
+    G
+  </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="500,90,960,955">
-    Deus in nobis operatur ut velumus et ut faciamus, 431.
+    Deus in nobis operatur ut velimus et ut faciamus, 431.
     Quod gratia suscip atur ab homine ipsius gratiae opus est,
     430. Ex gratia est non solum vita bona q ad duri justifi-
     cis, sed et vita aetema quae datur glorificatis, 8. Mors per-
@@ -153,8 +156,11 @@
     
     H
   </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="520,360,580,420">
+    H
+  </bloco>
   <bloco tipo="rodape" script="latino" bbox="40,955,960,998">
     Digitized by Google
   </bloco>
-  <notas>Texto em duas colunas; várias abreviações, erros tipográficos e manchas; usei [?] e lacunas para partes parcialmente ilegíveis; cabeçalho e rodapé transcritos; bboxes estimadas na escala 0-1000.</notas>
+  <notas>Pagina com texto impresso em duas colunas. Transcrição fiel ao estado visual do impresso; corrigi parcialmente marcas de ilegibilidade usando sinais como [?] onde partes são obscuras; preservei numerais e abreviações tal como no original. Letras únicas de rubrica/índice (G, H) foram colocadas em blocos nota_marginal separados conforme instruções. BBOX estimadas na escala 0-1000.</notas>
 </pagina>

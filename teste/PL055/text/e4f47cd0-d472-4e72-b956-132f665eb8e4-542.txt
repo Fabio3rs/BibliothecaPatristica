@@ -1,4 +1,4 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="40,10,960,70">
     1075 P. CACCIARI EXERCITATIONES IN S. LEONIS MAGNI OPERA. 1076
   </bloco>
@@ -7,7 +7,7 @@
     auctoritati vindicantium certissimumque argumen-
     tum illa carmina suppetunt, quibus canit :
     Pestem subeuntem prima recidit
-    ...Sedes Romana Petrï, quae pastoralís honoris
+    ...Sedes Romana Petri, quae pastoralis honoris
     facit caput mundo, quidquid non possidet armis,
     Religione tenet.
     
@@ -18,7 +18,7 @@
     repetens, eadem usque ad Coelestinum perducit, ita
     ad nostrum subjectionis intentum : Per hunc virum
     (Coelestinum videlicet) intra Gallias istis ipsis qui san-
-   	ctae memoriae Augustini scripta reprehendunt malefo-
+    ctae memoriae Augustini scripta reprehendunt malefo-
     quencie est adempta libertas, quando consultantium
     actione suscepta, et librorum qui errantibus displice-
     bant pietate laudata, quid oporteret de eorum auc-
@@ -158,6 +158,18 @@
     liano, atque dextis jam per Campaniam Pelagians,
     Romae demum obmacscentibus horum haeresiforma
   </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,120,490,160">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,380,490,420">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,620,490,660">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,820,490,860">
+    D
+  </bloco>
   <bloco tipo="rodape" script="latino" bbox="40,940,960,990">
     (a) In Operibus Sanctorum Prosperi Aquitani et
     Honorati Massiliensis notis observationibusque, Romae
@@ -167,5 +179,5 @@
     
     Digitized by Google
   </bloco>
-  <notas>Transcrição feita mantendo ortografia tipográfica antiga e cortes de linha; reticências e sinais de impressão preservados. Algumas palavras muito comprimidas no original foram separadas conforme leitura; onde inerente, utilizei colchetes para abbreviações não necessárias. Não foram inseridas leituras em outros scripts.</notas>
+  <notas>Transcrição literal do impresso, mantendo ortografia e cortes de linha do original; blocos dispostos por coluna (esquerda então direita). Letras marginais centrais A, B, C, D transcritas como nota_marginal em blocos separados. Onde o original apresenta abreviações ou sinais tipográficos antigos, a grafia foi preservada; não foram feitas normalizações nem traduções.</notas>
 </pagina>

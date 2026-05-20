@@ -1,4 +1,4 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="30,10,970,80">
     1415 GLOSSARIUM GOTHICÆ LINGUÆ. 1416
   </bloco>
@@ -96,8 +96,8 @@
     5,17,25; uim, 12; ix, 55; XIII, 25; xviii, 3, 22, et) pha-
     nasticæ ad verbum finitum, ubi participium præcedit:
     Mc. viii, 4; Luc. xv, 26; Joan. xi, 34; ? 65) loco rel-
-   ativi, vid. batuh y sub bata; 81) nunc, ergo, quod:
-    Joan. xiv, 15; &c: Mth. XXVII, 44; Joan. x, 20; Eph.
+    ativi, vid. batuh y sub bata; 81) nunc, ergo, quod:
+    Joan. xiv, 15; &amp;c: Mth. XXVII, 44; Joan. x, 20; Eph.
     v, 32; Thess. II, 11, 12; præcipue in correlationis
     sententiis post sums, dē: Joan. ix, 9; Cor. I, xii, 10;
     xiv: Joan. vii, 12; etiam ubi in graeco textu paru-
@@ -159,8 +159,18 @@
     241), masc., elephas, camelus, χελώνηος: Mc. I, 6;
     x, 25; Luc. xviii, 25.
   </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="30,960,970,980">
+  </bloco>
   <bloco tipo="rodape" script="latino" bbox="700,920,970,980">
     Digitized by Google
   </bloco>
-  <notas>Script principally Latin printed text from a 19th-century glossary; many abbreviations expanded in brackets only where visible; uncertain readings marked with brackets and preserved punctuation. Layout follows two-column page; left column transcribed before right. Some characters (Gothic letters) rendered as closest Latin approximations.</notas>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,160,495,190">
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,260,495,290">
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,360,495,390">
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,460,495,490">
+  </bloco>
+  <notas>Transcription faithful to the page image; left column transcribed before right. Where paleographic or unusual characters occur (Gothic letters, ligatures, Greek words) these are preserved as in the image/scan. Square brackets, uncertain expansions, or editorial marks from the printed page retained when visible (e.g. bracketed parenthetical items). No normalization or translation applied. Four empty nota_marginal blocks included for possible central marginal sigla (A–D) though none are visible on this page.</notas>
 </pagina>

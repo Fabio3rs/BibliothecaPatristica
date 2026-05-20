@@ -1,55 +1,75 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="80,20,920,160">
-SÆCULUM XII
-PETRI CELLENSIS
+<pagina estado="com_texto" tipo="capa_ou_guarda">
+  <bloco tipo="cabecalho" script="latino" bbox="400,30,600,60">
+    SÆCULUM XII
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="280,160,720,260">
-PRIMUM
+  <bloco tipo="nota_marginal" script="latino" bbox="850,10,980,100">
+    BR
+    60
+    .1116
+    v.202
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,260,940,420">
-DEINDE S. REMIGII APUD REMOS ABBATIS
-DEMUM CARNOTENSIS EPISCOPI
-OPERA OMNIA
-EX LIBRIS TUM EDITIS, TUM MSS. IN UNUM COLLECTA. CURA ET STUDIO D. AMBR. JANVIER MONACHI BENEDICTINI E CONGREGATIONE S. MAURI.
-ACCEDUNT
-URBANI III, GREGORII VIII
-ROMANORUM PONTIFICUM
-EPISTOLÆ ET PRIVILEGIA
-NECNON
+  <bloco tipo="texto_principal" script="latino" bbox="100,80,900,150">
+    PETRI CELLENSIS
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,420,940,520">
-GILBERTI FOLIOT LONDINENSIS EPISCOPI, ROBERTI DE TORINNEIO ABBATIS S. MICHAELIS IN PERICULO MARIS, JOANNIS BELETHI THEOLOGI PARISIENSIS, HUGONIS ETERIANI
+  <bloco tipo="texto_principal" script="latino" bbox="100,160,900,240">
+    PRIMUM
+    DEINDE S. REMIGII APUD REMOS ABBATIS
+    DEMUM CARNOTENSIS EPISCOPI
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,520,880,640">
-SCRIPTA QUÆ SUPERSUNT
-ACCURANTE J.-P. MIGNE
-BIBLIOTHECAE CLERI UNIVERSAE
-SIVE
-CURSUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE
+  <bloco tipo="texto_principal" script="latino" bbox="150,250,850,320">
+    OPERA OMNIA
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="160,640,840,760">
-——
-TOMUS UNICUS
-——
-VENIT 8 FRANCIS GALLICIS
+  <bloco tipo="texto_principal" script="latino" bbox="100,340,900,380">
+    EX LIBRIS TUM EDITIS, TUM MSS. IN UNUM COLLECTA. CURA ET STUDIO D. AMBR. JANVIER
+    MONACHI BENEDICTINI E CONGREGATIONE S. MAURI.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="60,760,940,920">
-EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM IN VIA DICTA D'AMBOISE. PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM SEU PETIT MONTROUGE
-1855
+  <bloco tipo="texto_principal" script="latino" bbox="450,400,550,420">
+    ACCEDUNT
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="840,20,980,220">
-BR
-[ilegivel]
-.116
-v.202
+  <bloco tipo="texto_principal" script="latino" bbox="100,430,900,480">
+    URBANI III, GREGORII VIII
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="760,900,980,990">
-Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="350,490,650,510">
+    ROMANORUM PONTIFICUM
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,520,750,560">
+    EPISTOLÆ ET PRIVILEGIA
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="450,580,550,600">
+    NECNON
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,610,900,660">
+    GILBERTI FOLIOT LONDINENSIS EPISCOPI, ROBERTI DE TORINNEIO ABBATIS
+    S. MICHAELIS IN PERICULO MARIS, JOANNIS BELETHI THEOLOGI PARISIENSIS,
+    HUGONIS ETERIANI
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="200,670,800,720">
+    SCRIPTA QUÆ SUPERSUNT
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,750,750,850">
+    ACCURANTE J.-P. MIGNE
+    BIBLIOTHECÆ CLERI UNIVERSÆ
+    SIVE
+    CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,880,600,920">
+    TOMUS UNICUS
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,940,600,960">
+    VENIT 8 FRANCIS GALLICIS
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="150,970,850,990">
+    EXCUDEBatur ET VENIT APUD J.-P. MIGNE EDITOREM
+    IN VIA DICTA D'AMBOISE. PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM
+    SEU PETIT MONTROUGE
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="450,995,550,1000">
+    1855
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="600,980,850,1000">
+    Digitized by Google
   </bloco>
   <notas>
-- Script principal identificado como latino (impressão tipográfica, maiúsculas e ligaturas Æ/Æ).
-- Marginalia manuscrita no canto superior direito transcrita com [ilegivel] onde os traços não são seguros.
-- Algumas palavras em caixa alta e abreviaturas (ex.: "S." para Sancti, "J.-P." para nome composto) mantidas literais.
-- Trechos tipográficos muito compactos (p.ex. "BIBLIOTHECAE CLERI UNIVERSAE", "CURSUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE") foram transcritos conforme visível; pequenas incertezas de leitura podem subsistir.
+    Transcrição de página de título (capa interna). Ligaturas AE (Æ) preservadas. Nota manuscrita no canto superior direito identificada como nota_marginal.
   </notas>
 </pagina>

@@ -1,158 +1,154 @@
-<pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,55">
-    1105
-    APPENDIX PRIMA.
-    1106
-  </bloco>
+<pagina estado="com_texto" tipo="texto" script="latino">
+  <!-- Cabeçalho -->
+  <bloco tipo="cabecalho" script="latino" bbox="10,50,200,70">1105</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="450,50,600,70">APPENDIX PRIMA.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="800,50,950,70">1106</bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="52,60,475,245">
-    Texitur ; appellant queis est ea captio mercis.
+  <!-- Poema Inicial - Coluna Esquerda -->
+  <bloco tipo="texto_principal" script="latino" bbox="50,80,450,250">
+    Textitur; appellunt quois est ea captio merctis.
     Adclinant leves laterum libramine lembos,
     Ut semel impositam doceant conscendere venam.
-    Nam se sponte levans adnabit mercis ad ora
+    Nam se sponte levan's aduabit mercis ad ora
     Navigii, pretiumque dabit pro munere largo,
-    Ni plaga contigerit, quam mensis foemina vestit.
-    Ecce aliud monstrum pelagi de clade natatur ;
+    Ni plaga contigerit, quam mensis fœmina vestit.
+    Ecce aliud monstrum pelagi de clade natatur;
     Cuncta illic immissa (1) natant; natura recessit
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="525,60,948,245">
-    A Mergendis data corporibus ; si denique teste
-    Luciferam narem insistens, qua spiritus igni est,
-    Velificavit apex, flammse si flamma perempta est,
+  <!-- Poema Inicial - Coluna Direita -->
+  <nota_marginal script="latino" bbox="460,85,480,100">A</nota_marginal>
+  <bloco tipo="texto_principal" script="latino" bbox="520,80,900,230">
+    Mergendis data corporibus; si denique teste
+    Luciferam narem insistens, quae spiritus igni est,
+    Velificavit apex, flammæ si flamma perempta est,
     Ibit subter aquas destructio naufraga lucis.
-    Hæc Sodomum et Gomorrum signat in sæcula pœnæ,
-    Gentibus injustis, queis pectora dura (2) timorem
-    Deseruere Dei; de cœlo jura tueri,
-    Inque unum rerum Dominum spectare docebunt.
+    Hac Sodorum et Gomorum signata in sæcula pœnæ,
+    Gentibus injustis, quibus pectora dura (2) timorem
+    Deseruere Dei; de cælo jura tuëri,
+    Inque unum rerum Dominum spectare docebuunt.
   </bloco>
 
-  <bloco tipo="aparato_critico" script="latino" bbox="60,265,940,350">
-    LECTlONES VARIANTES.
+  <!-- Lectiones Variantes -->
+  <bloco tipo="aparato_critico" script="latino" bbox="450,240,900,260">LECTIONES VARIANTES.</bloco>
+  
+  <!-- Coluna Esquerda Lectiones -->
+  <bloco tipo="aparato_critico" script="latino" bbox="30,260,450,310">
     nullus Fabric. et edit. Oxon.
     (1) Invita duo cod. mss.
-    (2) Corda obdur a Baluz. cod. Colb. corpora dura
-    B Morel. cod. Victor. Paulo post jura vereri Colb.
   </bloco>
 
-  <bloco tipo="cabecalho" script="latino" bbox="110,365,890,430">
+  <!-- Coluna Direita Lectiones -->
+  <bloco tipo="aparato_critico" script="latino" bbox="520,260,930,280">
+    (2) Corda obdura Baluz. cod. Colb. corpora dura
+  </bloco>
+  <nota_marginal script="latino" bbox="460,280,480,295">B</nota_marginal>
+  <bloco tipo="aparato_critico" script="latino" bbox="520,280,930,310">
+    Morel. cod. Victor. Paulo post jura vereri Colb.
+  </bloco>
+
+  <!-- Argumentum Título -->
+  <bloco tipo="texto_principal" script="latino" bbox="350,340,750,380">
     ARGUMENTUM LIBRI AD SENATOREM,
-    EX CHRISTIANA RELIGIONE AD IDOLORUM SERVITUTEM CONVERSUM ; PER JACOBUM PAMELIUM.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="60,390,930,420">
+    EX CHRISTIANA RELIGIONE AD IDOLORUM SERVITUTEM CONVERSUM; PER JACORUM PAMELIUM.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="56,435,470,530">
-    Senatorem graviter increpat, quod antea Christianus et
-    Consul, Isidis seu Matris Deum sacerdos fieri non sit
-    veritus; hortatur itaque ut saltem in senectute resipi-
-    scat. Porro cum etiam hic quædam sint Tertullianica,
-    ego illi adscribere malui quam B. Cypriano.
+  <!-- Resumo Introdução (Colspan 2) -->
+  <bloco tipo="texto_principal" script="latino" bbox="60,430,930,500">
+    Senatorem graviter increpat, quod antea Christianus et Consuli Isidis seu Matris Deum sacerdos fieri non sit veritus; hortatur itaque ut saltem in senectute resipiscat. Porro cum etiam hic quadam sint Tertullianica, ego illi ascribere maluì quam B. Cypriano.
   </bloco>
 
-  <bloco tipo="cabecalho" script="latino" bbox="250,535,760,620">
-    AD SENATOREM
-    Ex Christiana religione ad idolorum servi-
-    tutem conversum.
-    CAPUT PRIMUM.
+  <!-- Título Poema Principal -->
+  <bloco tipo="texto_principal" script="latino" bbox="250,510,500,530">AD SENATOREM</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,530,600,570">
+    Ex Christiana religione ad idolorum servitutem conversum.
+    CAPVT PRIMVM.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="58,625,475,860">
-    Cum te diversis iterum variisque viderem
-    Inservire sacris, priscoque errore teneri ;
-    Obstipui (a) monitus; quia carmina semper amasti,
-    Carmine respondens, properavi scribere versus ;
-    Ut te corriperem, tenebras præponere luci.
+  <!-- Poema Principal - Coluna Esquerda -->
+  <bloco tipo="texto_principal" script="latino" bbox="60,570,480,880">
+    Cum te diversis iterum vanisque viderem
+    Inservire sacris, priscorque errore teneri;
+    Obstipui (a) monitus; quia carmina semper amasti, C Carmine respondens, properavi scribere versus;
+    Ut te corripérem, tenebras præponere luci.
     Quis patiatur enim, te Matrem credere magnam
     Posse Deam dici, rursusque putare colendam,
     Cujus cultores infamia turpis inurit?
-    (b) Namque sacerdotes tunicis mulieribus iidem
-    Interius ritum cultu interiore fatentur ;
-    Idque licere putant, quod non licet; unde per orbem
+    (b) Namque sacerdotes tuni'cis mulieribus iidem
+    Interius ritum cultu interiore fatentur;
+    Idque licere putant, quodnon licet; unde per orbem
     Leviter incedunt, mollita voce loquentes,
     Lapsatosque tenent extenso pollice lumbos,
     Et proprium mutant vulgato crimine sexum.
     Cumque suos celebrant ritus, (c) his esse diebus
-    Se castos memorant; at si tantummodo tunc sunt,
+    Se castos memorant; at si tantummmodo tunc sunt,
     Ut perhibent, casti; reliquo jam tempore quid sunt?
     Sed quia coguntur saltem semel esse pudici,
     Mente fremunt, lacerant corpus, funduntque cruorem.
     Quale sacrum est vero, quod fertur nomine sanguis?
-    CAPUT II.
-    Nunc etiam dicis, quod te non fecerit ætas.
+
+    CAPVT II.
+    Nunc etiam dicis, quod te non fegerit ætas.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="523,625,948,910">
+  <!-- Poema Principal - Coluna Direita -->
+  <bloco tipo="texto_principal" script="latino" bbox="520,430,930,780">
     Sed tua religio calvum, (d) caligaque remota
     Gallica, sit pedibus molli redimita papyro.
-    Res miranda satis dejectaque culmine summo.
+    Res miranda satis dejjectaque culmine summo.
     Si quis ab Isiaco Consul procedat in urbem,
     Risus oris erit: quis te non rideat autem,
     Qui fueris Consul, nunc Isidis esse ministrum?
-    Quodque pudet primo, te non pudet esse secundo :
+    Quodque pudet primo, te non pudet esse secundo ::
     Ingeniumque tuum turpes damnare per hymnos
     Respondente tibi vulgo et lacerante Senatu.
     Teque domo propria pictum cum fascibus ante,
     Nunc quoque cum sistro faciem portare caninam.
     Hæc non humilitas, sed humilitatis imago est.
-    Ædibus illa tuis semper monumenta manebunt.
+    AEdibus illa tuis semper monumenta mane.bunt.
     Rumor et ad nostras pervenit publicus aures,
-    Te dixisse : Dea, erravi, ignosce, redivi.
-    Dic mihi si valeas, cum talia sæpe rogares,
+    Te dixisse : Dea, erravi, ignosce, rediVi.
+    Dic mihi si valeas, cum talia saepe rogares,
     Et veniam peteres; quæ tecum verba locuta est?
     Vere mente cares, sequeris qui mente carentes.
-    Hæc iterum repetis, nec te delinquere sentis.
-    Quid nereare vide; minus esses forte notandus,
+    Hæc iterum repétis, nec te dClnquere sentis.
+    Quid merereare vide; minus esses forte notandus,
     Si tantum hoc scires, et in hoc errore maneres ;
-    At cum vericola penetraveris ostia legis,
+    At cum vericolæ penetraveris ostia legis,
     Et tibi nosse Deum paucis accesserit annis ;
-    Cur linquenda, tenes aut cur retinenda relinquis?
+    Cur linquenda, tenes aut cur retinenda relinqu is?
     Nilque colis, dum cuncta colis; nec corde retractas
     Vera quid a falsis, quid ab umbris lumina distent.
-    Philosophum fingis, cum te sententia mutet;
-    Nam tibi si stomachum popularis moverit aura ;
-    Et Judæus eris, totusque incertus haberis.
+    Philosophum fingis, cum te sententia mutat ;
+
+    D Nam tibi si stomachum popularis moverit aura;
+    Et Judæus eris, totusque incertus haberi's.
     Indulge dictis, sapientia non placet alta;
-    Omne quod est nimium , contra cadit, unum ope-
-    rantur
-  </bloco>
+    Omne quod est minium , contra cadit, unum opec-
 
-  <bloco tipo="nota_marginal" script="latino" bbox="470,700,535,760">
-    C
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="485,800,545,860">
-    D
-  </bloco>
-
-  <bloco tipo="aparato_critico" script="latino" bbox="60,865,480,995">
     COMMENTARIUS.
-    CAP. I. — (a) Obstipui monitus, etc. Est hæc
-    phrasis non modo Cyprianica, qua alibi dixit : mens
-    obstipuit, sed et Tertullianica, sicut supra videre est
-    lib. de Indic. Domini, cap. II, ubi legitur :
-    Obstupere quidem plures, latuisse sepulchra.
-    Castigavimus autem monitus, pro motus.
-    (b) Namque sacerdotes, etc. Emendavimus iidem
-    pro idem, et paulo post: reliquo jam tempore quid
-    sunt, pro corpore. Atqui de sacerdotibus Isidis et ipsa
-    Iside, supra non semel satis dictum est. Hic illis tribuit
-    tunicas muliebres, mutatum sexum, lacerationem
-    corporis, ac fusionem cruoris, calvitiem, et pedes
+  </bloco>
+  <nota_marginal script="latino" bbox="490,580,510,600">C</nota_marginal>
+  <nota_marginal script="latino" bbox="490,780,510,800">D</nota_marginal>
+  <bloco tipo="texto_principal" script="latino" bbox="860,820,930,850">frantur</bloco>
+
+  <!-- Commentarius - Coluna Esquerda -->
+  <bloco tipo="aparato_critico" script="latino" bbox="60,840,480,960">
+    CAP. I. — (a) Obstipui monitus, etc. Est hæc phrasis non modo Cyprianica, quæ alibi dicit : mens obstipuit, sed et Tertullianica, sicuti supra videre est lib. de Indic. Domini, cap. II, ubi legitur :
+    Obstipuerò quidem plures, pCtuissc sepulchra.
+    Casticavimus autem monitus, pro motus.
+    (b) Namque sacerdotes, etc. Emendavinus iidem pro idem, et paulo post: reliquo jam tempore quid sunt, pro corpore. Atqui de sacerdotibus Isidis et ipsa Iside, supra non semel satis dictum est. Hic illis tribuit tunicas muliebres, mutatum sexum, lacerationem orporis, ac fusionem cruoris, calvitiem, ct pedcs
   </bloco>
 
-  <bloco tipo="aparato_critico" script="latino" bbox="520,865,945,995">
-    Gallicana papyro redimitos, denique cum sistro faciem
-    caninam.
-    (c) His esse diebus se castos memorant, etc. D:
-    Castis Isidis sacris, vide infra Tertullianum tom. V lib.
-    de jejuniis adv. Psychicos. Est ante etiam ille versus
-    obscurus, et forte mendosus :
-    Quale sacrum est vero, quod fertur nomine sanguis?
-    CAP. II. — (d) Caligæque remota, etc. De militia
-    caligala, vide supra tom. II, lib. de Idolol. cap. 19,
-    num. 147. Atqui corripitur etiam a in ablativo qui se-
-    quitur :
+  <!-- Commentarius - Coluna Direita -->
+  <bloco tipo="aparato_critico" script="latino" bbox="520,840,930,960">
+    Gallicana papyro redimitos, denique cum sistro faciem caninam.
+    (c) His esse diebus se castos memorant, etc. D : Castis Isidis sacris, vide infra Tertullianum tom. V lib. de jejuniis adv. Psychicos. Est ante etiam ille versus obscurus, et forte mendosus :
+    Quale sacrum est verò, quod fertur nomine sanguis ?
+    CAP. II. — (d) Caligaque remota, etc. De militia caligata, vide supra tom. II, lib. de Idolol. cap. 19. num. 147. Atqui corrigitur etiam a in ablativo qui se- quitur :
     Gallica, sit pedibus molli redimita papyro.
   </bloco>
-
-  <notas>Letras A, B, C e D separadas em blocos de nota_marginal conforme a página. Ortografia preservada segundo a imagem, sem normalização.</notas>
+  
 </pagina>
