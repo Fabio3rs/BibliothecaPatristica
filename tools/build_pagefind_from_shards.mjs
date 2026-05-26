@@ -94,6 +94,45 @@ async function writeRecordHtml(dir, name, url, meta, filters, bodyContent) {
   }
 }
 
+function buildRecordHtml(url, meta, filters, bodyContent) {
+  const parts = [];
+  parts.push('<!DOCTYPE html>');
+  parts.push('<html lang="pt-BR">');
+  parts.push('<head>');
+  parts.push('  <meta charset="utf-8">');
+  if (meta && meta.title) parts.push(`  <title>${escapeHtml(meta.title) + escapeHtml(meta.work ? ' - ' + meta.work : '')}</title>`);
+  if (meta) {
+    for (const [k, v] of Object.entries(meta)) {
+      if (k === 'title') continue;
+      parts.push(`  <meta data-pagefind-meta="${escapeHtml(k)}" content="${escapeHtml(v)}">`);
+    }
+  }
+  if (filters) {
+    for (const [fk, fv] of Object.entries(filters)) {
+      if (Array.isArray(fv)) {
+        for (const item of fv) {
+          parts.push(`  <meta data-pagefind-meta="filter:${escapeHtml(fk)}" content="${escapeHtml(item)}">`);
+        }
+      }
+    }
+  }
+  if (meta.author) {
+    parts.push(`  <meta data-pagefind-meta="author" content="${escapeHtml(meta.author)}">`);
+  }
+  if (meta.work) {
+    parts.push(`  <meta data-pagefind-meta="title" content="${escapeHtml(meta.work)}">`);
+  }
+  parts.push(`  <meta data-pagefind-meta="url" content="${escapeHtml(url)}">`);
+  parts.push('</head>');
+  parts.push('<body>');
+  parts.push('  <main data-pagefind-body>');
+  parts.push(`    <p>${escapeHtml(bodyContent)}</p>`);
+  parts.push('  </main>');
+  parts.push('</body>');
+  parts.push('</html>');
+  return parts.join('\n');
+}
+
 function resolvePagefindModule(publicDir) {
   const candidates = [
     path.resolve(publicDir, '..', 'node_modules', 'pagefind', 'lib', 'index.js'),
@@ -201,6 +240,9 @@ async function main() {
           : `${vid} p.${p.page}`;
 
         const contentPieces = [p.summary_page || ''];
+        if (p.author) contentPieces.push(p.author);
+        if (p.work) contentPieces.push(p.work);
+        if (topKeywords.length) contentPieces.push(topKeywords.join(' '));
         if (kwLabels.length) contentPieces.push(kwLabels.join(' '));
         if (bookNames.length) contentPieces.push(bookNames.join(' '));
         const content = contentPieces.join(' ').replace(/<[^>]*>?/gm, ' ').replace(/\s+/g, ' ').trim();
@@ -223,8 +265,10 @@ async function main() {
           metaObj.books = bookNames.join(' • ');
         }
 
+        const recordHtml = buildRecordHtml(`${base}/viewer?doc=${vid}&page=${p.page}`, metaObj, filters, p.summary_page || content || '');
+
         // optionally emit a standalone HTML file per record for testing
-        /*if (params.emitHtmlDir) {
+        if (params.emitHtmlDir) {
           try {
             ensureDir(params.emitHtmlDir);
             const filename = `${vid.replace(/[^a-zA-Z0-9_-]/g, '_')}_p${p.page}.html`;
@@ -233,14 +277,14 @@ async function main() {
           } catch (e) {
             console.error('Falha emitindo HTML de teste:', e.message);
           }
-        } else*/ {
-          await index.addCustomRecord({
+        } else {
+          const { errors } = await index.addHTMLFile({
             url: `${base}/viewer?doc=${vid}&page=${p.page}`,
-            content,
-            meta: metaObj,
-            filters,
-            language: 'pt',
+            content: recordHtml,
           });
+          if (errors?.length) {
+            console.error(`Pagefind addHTMLFile errors em ${vid} p.${p.page}:`, errors);
+          }
         }
 
         totalRecords++;
