@@ -10,7 +10,8 @@ const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
 
 const t = useTranslations(Astro.currentLocale);
 // Mapeia locale para tag BCP-47 válida no atributo lang do HTML
-const htmlLang = (Astro.currentLocale ?? 'pt-br') === 'en' ? 'en' : 'pt-BR';
+const locale = Astro.currentLocale ?? 'pt-br';
+const htmlLang = locale === 'en' ? 'en' : locale === 'it' ? 'it-IT' : 'pt-BR';
 
 // URL para o mesmo caminho no outro locale
 const switchUrl = getLocaleSwitchUrl(
