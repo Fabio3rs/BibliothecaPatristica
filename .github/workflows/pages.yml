@@ -15,8 +15,71 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  plan_pagefind:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+      batch_size: ${{ steps.plan.outputs.batch_size }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Plan Pagefind batches
+        id: plan
+        run: |
+          matrix=$(node ../tools/plan_pagefind_batches.mjs --index ../data/shards/enrichment/index.json --batch-size 25 --format matrix)
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+          echo "batch_size=25" >> "$GITHUB_OUTPUT"
+
+  build_pagefind:
+    runs-on: ubuntu-latest
+    needs: plan_pagefind
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan_pagefind.outputs.matrix) }}
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Pagefind shard
+        run: node ../tools/build_pagefind_from_shards.mjs --public ./public --out ./public/pagefind/${{ matrix.batch_id }} --base /BibliothecaPatristica --batch-size ${{ needs.plan_pagefind.outputs.batch_size }} --batch-index ${{ matrix.batch_index }} --enrichment-index ../data/shards/enrichment/index.json
+
+      - name: Pack Pagefind shard
+        run: tar -czf pagefind-${{ matrix.batch_id }}.tgz -C ./public/pagefind ${{ matrix.batch_id }}
+
+      - name: Upload Pagefind shard artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pagefind-${{ matrix.batch_id }}
+          path: web/pagefind-${{ matrix.batch_id }}.tgz
+          if-no-files-found: error
+
+  build_site:
+    runs-on: ubuntu-latest
+    needs:
+      - plan_pagefind
+      - build_pagefind
     defaults:
       run:
         working-directory: web
@@ -37,14 +100,21 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build Pagefind index from shards
-        # Run the indexing script to populate web/public/pagefind before the site build
+      - name: Download Pagefind shards
+        uses: actions/download-artifact@v4
+        with:
+          path: web/public/pagefind-artifacts
+          merge-multiple: true
+
+      - name: Expand Pagefind shards
         run: |
-          # mkdir -p tmp/build
-          # export THREADS=$(nproc)
-          node ../tools/build_pagefind_from_shards.mjs --public ./public --out ./public/pagefind --base /BibliothecaPatristica --emit-html-dir tmp/build
-          # npx pagefind --site tmp/build/ --output-path "public/pagefind"
-          # rm -rf tmp/build
+          mkdir -p ./public/pagefind
+          for archive in ./public/pagefind-artifacts/*.tgz; do
+            tar -xzf "$archive" -C ./public/pagefind
+          done
+
+      - name: Write Pagefind manifest
+        run: node ../tools/plan_pagefind_batches.mjs --index ../data/shards/enrichment/index.json --batch-size ${{ needs.plan_pagefind.outputs.batch_size }} --format manifest --manifest-out ./public/pagefind/manifest.json
 
       - name: Build
         run: npm run build
@@ -59,7 +129,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build
+    needs: build_site
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

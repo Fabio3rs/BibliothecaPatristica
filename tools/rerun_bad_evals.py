@@ -143,7 +143,7 @@ def run_batch(
         openai_base_url=args.openai_base_url,
         openai_api_key=args.openai_api_key,
         save_all_text_path=None,
-        reprocess=True,
+        reprocess_reason="Reprocessamento devido a avaliação baixa/descartar",
     )
 
     failures = main2.judge_all_parallel(

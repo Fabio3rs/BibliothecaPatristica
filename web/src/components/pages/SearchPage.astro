@@ -49,6 +49,10 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     const datalist = document.getElementById('keywords-suggestions');
     let checkboxNodes = [];
     let keywordOptions = [];
+    let keywordCatalog = null;
+    let keywordCatalogPromise = null;
+    let keywordManifest = null;
+    let keywordManifestPromise = null;
     const _jsonCache = new Map();
     function getJsonOnce(url) {
       if (!_jsonCache.has(url)) {
@@ -82,6 +86,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       pageSize: 25,
       page: 1,
       filters: {},
+      exactPhrase: false,
     };
 
     function readStateFromUrl() {
@@ -100,6 +105,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       const kwValues = params.getAll('keyword');
       const termFromKw = kwValues.join(' ');
       state.term = term || termFromKw;
+      state.exactPhrase = kwValues.length > 0 && !!termFromKw;
       state.pageSize = !Number.isNaN(pageSize) && pageSize > 0 ? Math.min(pageSize, 50) : 25;
       state.page = !Number.isNaN(page) && page > 0 ? page : 1;
       state.filters = filters;
@@ -125,22 +131,105 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
     let pagefindInstance = null;
     let pagefindPromise = null;
+    let pagefindManifest = null;
+    let pagefindManifestPromise = null;
     let renderTimer = null;
 
     const basePath = assetBase.endsWith('/') ? assetBase.slice(0, -1) : assetBase;
 
+    function pagefindAssetUrl(relativePath) {
+      const cleanPath = String(relativePath || '').replace(/^\/+/, '');
+      return `${assetBase}${cleanPath}`;
+    }
+
+    async function loadPagefindManifest() {
+      if (pagefindManifest) return pagefindManifest;
+      if (pagefindManifestPromise) return pagefindManifestPromise;
+      pagefindManifestPromise = (async () => {
+        try {
+          const res = await fetch(`${assetBase}pagefind/manifest.json`);
+          if (!res.ok) return null;
+          return await res.json();
+        } catch {
+          return null;
+        }
+      })();
+      pagefindManifest = await pagefindManifestPromise;
+      return pagefindManifest;
+    }
+
+    async function loadKeywordManifest() {
+      if (keywordManifest) return keywordManifest;
+      if (keywordManifestPromise) return keywordManifestPromise;
+      keywordManifestPromise = (async () => {
+        try {
+          const res = await fetch(`${assetBase}dict/keywords_manifest.json`);
+          if (!res.ok) return null;
+          return await res.json();
+        } catch {
+          return null;
+        }
+      })();
+      keywordManifest = await keywordManifestPromise;
+      return keywordManifest;
+    }
+
+    function normalizeKeywordOptions(items) {
+      return Array.from(new Set((items || [])
+        .map((item) => item?.label)
+        .filter((label) => typeof label === 'string' && label.trim().length > 0)))
+        .sort((a, b) => a.localeCompare(b, uiLocale, { sensitivity: 'base' }));
+    }
+
+    async function ensureKeywordCatalog() {
+      if (keywordCatalog) return keywordCatalog;
+      if (keywordCatalogPromise) return keywordCatalogPromise;
+      keywordCatalogPromise = (async () => {
+        const manifest = await loadKeywordManifest();
+        let items = [];
+
+        try {
+          if (manifest?.shards?.length) {
+            const shardPayloads = await Promise.all(
+              manifest.shards.map((shard) => getJsonOnce(`${assetBase}${shard.path}`))
+            );
+            items = shardPayloads.flatMap((payload) => Array.isArray(payload?.items) ? payload.items : []);
+          } else {
+            const fallback = await getJsonOnce(`${assetBase}dict/keywords_lookup.json`)
+              .catch(() => getJsonOnce(`${assetBase}dict/keywords.json`));
+            items = Array.isArray(fallback?.items) ? fallback.items : [];
+          }
+        } catch (err) {
+          console.error(err);
+          const fallback = await getJsonOnce(`${assetBase}dict/keywords_lookup.json`)
+            .catch(() => getJsonOnce(`${assetBase}dict/keywords.json`));
+          items = Array.isArray(fallback?.items) ? fallback.items : [];
+        }
+
+        keywordCatalog = items;
+        keywordOptions = normalizeKeywordOptions(items);
+        if (searchBox.value) updateSuggestions();
+        return keywordCatalog;
+      })().catch((err) => {
+        console.error(err);
+        keywordCatalog = null;
+        keywordCatalogPromise = null;
+        return [];
+      });
+      return keywordCatalogPromise;
+    }
+
     async function loadFilters() {
       try {
         // Volumes e collections são leves e necessários para os filtros estruturais.
-        // Keywords (2,3 MB) são carregadas separadamente, com delay, pois são usadas
-        // apenas para os chips visuais e sugestões — não bloqueiam a busca por volume.
+        // Keywords entram em duas camadas: top keywords imediatas para chips e
+        // catálogo completo sob demanda para sugestões e navegação.
         const volumesObj = await getJsonOnce(`${assetBase}volumes.json`);
 
         const volumes = volumesObj.volumes || [];
 
         const collections = Array.from(new Set(volumes.map((v) => v.collection_id))).sort();
         const volumeIds = volumes.map((v) => v.id).sort();
-        const keywordLabels = []; // renderiza vazio inicialmente; preenchido após lazy load
 
         const sections = [
           { key: 'collection', label: s.filterCollection, items: collections },
@@ -183,17 +272,19 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         });
 
         // Carrega keywords em background, sem bloquear a renderização dos filtros estruturais
-        getJsonOnce(`${assetBase}dict/keywords.json`)
+        getJsonOnce(`${assetBase}dict/keywords_top.json`)
           .then((keywordsObj) => {
             const keywords = keywordsObj.items || [];
-            keywordOptions = keywords.map((k) => k.label).sort();
+            keywordOptions = keywords
+              .map((k) => k.label)
+              .filter((label) => typeof label === 'string' && label.trim().length > 0);
             const chipsContainer = document.getElementById('keywords-chips');
             if (!chipsContainer) return;
-            const chips = keywordOptions.slice(0, 300);
+            const chips = keywords.slice(0, 300);
             chipsContainer.innerHTML = chips.map((kw) => `
-              <button type="button" class="keyword-chip" data-keyword="${kw.replace(/"/g, '&quot;')}"
+              <button type="button" class="keyword-chip" data-keyword="${kw.label.replace(/"/g, '&quot;')}"
                  style="font-size:0.78rem;padding:0.15rem 0.45rem;border-radius:999px;border:1px solid var(--color-border);background:var(--color-surface);color:var(--color-ink);cursor:pointer;"
-                 title="${kw.replace(/"/g, '&quot;')}">${kw.replace(/</g, '&lt;').replace(/&/g, '&amp;')}</button>
+                 title="${kw.label.replace(/"/g, '&quot;')}">${kw.label.replace(/</g, '&lt;').replace(/&/g, '&amp;')}</button>
             `).join('');
             chipsContainer.querySelectorAll('.keyword-chip').forEach((btn) => {
               btn.addEventListener('click', (e) => {
@@ -201,7 +292,10 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
                 toggleFilter('keyword', btn.dataset.keyword);
               });
             });
-            if (state.term) updateSuggestions();
+            if (state.term) {
+              void ensureKeywordCatalog();
+              updateSuggestions();
+            }
           })
           .catch(() => {
             const chipsContainer = document.getElementById('keywords-chips');
@@ -238,16 +332,30 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       if (pagefindPromise) return pagefindPromise;
       pagefindPromise = (async () => {
         try {
-          const mod = await import(`${assetBase}pagefind/pagefind.js`);
-          // Caso o bundle já retorne uma instância com search
-          if (mod && typeof mod.search === 'function') return mod;
+          const manifest = await loadPagefindManifest();
+          const primaryPath = manifest?.indexes?.[0]?.path || 'pagefind';
+          const bundlePath = manifest?.indexes?.[0]?.path
+            ? pagefindAssetUrl(`${primaryPath}/pagefind.js`)
+            : pagefindAssetUrl('pagefind/main/pagefind.js');
+          const mod = await import(bundlePath);
           const pfModule = mod?.default || mod?.pagefind || mod;
-          if (pfModule && typeof pfModule.search === 'function') return pfModule;
-          if (pfModule && typeof pfModule.init === 'function') {
-            const pf = await pfModule.init({ basePath: `${assetBase}pagefind/` });
-            if (pf && typeof pf.search === 'function') return pf;
+          const pf = (pfModule && typeof pfModule.search === 'function') ? pfModule : mod;
+          const basePathForInit = manifest?.indexes?.[0]?.path
+            ? pagefindAssetUrl(`${primaryPath}/`)
+            : pagefindAssetUrl('pagefind/main/');
+
+          if (pf && typeof pf.options === 'function') {
+            await pf.options({ basePath: basePathForInit });
           }
-          throw new Error('Bundle Pagefind sem search/init utilizável');
+
+          if (manifest?.indexes?.length > 1 && pf && typeof pf.mergeIndex === 'function') {
+            for (const extra of manifest.indexes.slice(1)) {
+              await pf.mergeIndex(pagefindAssetUrl(`${extra.path}/`));
+            }
+          }
+
+          if (pf && typeof pf.search === 'function') return pf;
+          throw new Error('Bundle Pagefind sem search utilizável');
         } catch (err) {
           console.error(err);
           resultsEl.textContent = s.searchIndexUnavailable;
@@ -278,6 +386,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       // Keywords são buscadas como texto (evita baixar o filter chunk de 7MB)
       if (name === 'keyword') {
         state.term = state.term === value ? '' : value;
+        state.exactPhrase = !!state.term;
         searchBox.value = state.term;
         state.page = 1;
         syncUrl();
@@ -320,6 +429,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
     function handleTermInput() {
       state.term = searchBox.value;
+      state.exactPhrase = false;
       state.page = 1;
       syncUrl();
       render();
@@ -335,6 +445,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
     async function render() {
       const term = (state.term || '').trim();
+      const searchInput = state.exactPhrase && term ? `"${term.replace(/"/g, '\\"')}"` : term;
       const searchTerm = term === '' ? null : term;
       const pageSize = state.pageSize || 25;
       const filters = state.filters;
@@ -366,9 +477,13 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           return;
         }
 
-        const searchResult = await pf.debouncedSearch(searchTerm, { filters: Object.keys(filters).length ? filters : undefined }, 300);
+        let searchResult = await pf.debouncedSearch(searchInput || searchTerm, { filters: Object.keys(filters).length ? filters : undefined }, 300);
         // debouncedSearch retorna null quando uma chamada mais recente foi enfileirada — abandona silenciosamente
         if (searchResult === null) return;
+        if (searchResult && searchResult.results && searchResult.results.length === 0 && state.exactPhrase && searchInput !== searchTerm) {
+          searchResult = await pf.debouncedSearch(searchTerm, { filters: Object.keys(filters).length ? filters : undefined }, 300);
+          if (searchResult === null) return;
+        }
         if (!searchResult || !searchResult.results) {
           resultsEl.textContent = s.searchIndexEmpty;
           return;
@@ -519,6 +634,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     }
 
     searchBox.addEventListener('input', () => {
+      void ensureKeywordCatalog();
       // Pré-carrega os fragmentos do índice enquanto o usuário digita,
       // sem ainda executar a busca — reduz latência percebida.
       ensurePagefind().then((pf) => {
@@ -531,6 +647,10 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         handleTermInput();
         updateSuggestions();
       }, 120);
+    });
+
+    searchBox.addEventListener('focus', () => {
+      void ensureKeywordCatalog();
     });
 
     // Suporte a Enter

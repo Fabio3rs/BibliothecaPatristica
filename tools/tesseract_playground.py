@@ -203,14 +203,22 @@ def main() -> None:
     for cnt in contours:
         # Ignorar ruídos pequenos e as bordas gigantescas do papel
         area = cv2.contourArea(cnt)
-        if 500 < area < 50000: # Ajuste esses valores conforme necessário
+        if 500 < area < 50000:  # Ajuste esses valores conforme necessário
             rect = cv2.minAreaRect(cnt)
             angle = rect[-1]
-            
+            rw, rh = rect[1]
+
             # Normalização do ângulo para OpenCV 4.5+
-            if angle > 45:
-                angle = angle - 90
-            angles.append(angle)
+            # minAreaRect retorna o ângulo do eixo mais curto.
+            # Para linhas de texto horizontais (largura >> altura), o eixo
+            # curto é vertical → ângulo fica em torno de -90°.
+            # Corrigimos para obter o ângulo real da linha (próximo de 0°).
+            if rw < rh:
+                angle = angle + 90  # roda 90° para alinhar com o eixo longo
+            # Após normalização, descarta ângulos absurdos (>10°): provavelmente
+            # contornos de elementos decorativos, linhas de margem etc.
+            if abs(angle) <= 10:
+                angles.append(angle)
 
     # 3. MÉDIA DOS ÂNGULOS
     # Usamos a mediana para evitar que um contorno doido puxe o valor

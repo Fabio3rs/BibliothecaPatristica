@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "build:search": "astro build && pagefind --site dist --output-path dist/pagefind",
+    "build:dicts": "python3 ../tools/export_keywords_dicts.py --db ../data/patristica_keywords.db --out ./public/dict",
+    "build:search": "node ../tools/build_pagefind_from_shards.mjs --public ./public --out ./public/pagefind --base /BibliothecaPatristica --batch-size 25 --enrichment-index ../data/shards/enrichment/index.json",
     "preview": "astro preview",
     "check": "astro check"
   },

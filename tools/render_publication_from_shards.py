@@ -8,13 +8,13 @@ Uso:
         --index data/shards/enrichment/index.json \
         --out web/public \
         --db data/patristica_keywords.db \
-        --keywords-json web/public/dict/keywords.json \
+        --keywords-json web/public/dict/keywords_lookup.json \
         --export-authors-json web/public/dict/authors.json \
         --page-block-size 100 \
         --raw-base-url "https://raw.githubusercontent.com/Fabio3rs/BibliothecaPatristica/refs/heads/codex/teste"
 
 O dicionário canônico de keywords vem do SQLite (patristica_keywords.db) +
-keywords.json gerado por export_keywords_dicts.py.  Cada keyword bruta dos
+keywords_lookup.json gerado por export_keywords_dicts.py.  Cada keyword bruta dos
 shards é resolvida para o ID canônico do seu grupo HDBSCAN (não-escritura) ou
 para o ID da própria citação (escritura), colapsando variantes no canônico.
 
@@ -64,7 +64,7 @@ def load_index(path: Path) -> dict:
 
 
 DEFAULT_DB = Path("data/patristica_keywords.db")
-DEFAULT_KEYWORDS_JSON = Path("web/public/dict/keywords.json")
+DEFAULT_KEYWORDS_JSON = Path("web/public/dict/keywords_lookup.json")
 
 
 authors_global_lookup: set[str] = (
@@ -157,7 +157,7 @@ def build_keyword_lookup(db_path: Path, keywords_json_path: Path) -> Dict[str, s
                 return f"k:{s}"
         return f"k:g{group_id}"
 
-    # Carrega o conjunto de IDs válidos do keywords.json para garantir
+    # Carrega o conjunto de IDs válidos do lookup publicado para garantir
     # que só emitimos IDs que realmente existem no dicionário publicado.
     valid_ids: set[str] = set()
     if keywords_json_path.exists():
@@ -167,7 +167,7 @@ def build_keyword_lookup(db_path: Path, keywords_json_path: Path) -> Dict[str, s
                 valid_ids.add(item["id"])
     else:
         raise FileNotFoundError(
-            f"keywords.json não encontrado em {keywords_json_path}. "
+            f"keywords lookup não encontrado em {keywords_json_path}. "
             "Execute export_keywords_dicts.py primeiro."
         )
 
@@ -218,7 +218,7 @@ def build_keyword_lookup(db_path: Path, keywords_json_path: Path) -> Dict[str, s
 
     if skipped:
         log(
-            f"[WARN] {skipped} keywords do DB não encontradas no keywords.json (ignoradas)."
+            f"[WARN] {skipped} keywords do DB não encontradas no lookup publicado (ignoradas)."
         )
 
     return lookup
@@ -387,7 +387,7 @@ def page_blocks(
             "block_index": idx,
             "page_first": chunk[0].page,
             "page_last": chunk[-1].page,
-            "dict_refs": {"keywords": "dict/keywords.json"},
+            "dict_refs": {"keywords": "dict/keywords_manifest.json"},
             "pages": [],
         }
         for r in chunk:
