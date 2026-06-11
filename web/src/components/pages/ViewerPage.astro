@@ -81,6 +81,64 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       return ids.map((id) => map.get(id) || id);
     }
 
+    function keywordShardKeyFromId(keywordId) {
+      const slug = String(keywordId || '').replace(/^k:/, '').trim().toLowerCase();
+      if (!slug) return 'other';
+      const first = slug[0];
+      if (/[0-9]/.test(first)) return '0-9';
+      if (/[a-z]/.test(first)) return first;
+      return 'other';
+    }
+
+    async function loadKeywordsForIds(ids = []) {
+      const uniqueIds = Array.from(new Set((ids || []).filter((id) => typeof id === 'string' && id.length > 0)));
+      if (!uniqueIds.length) return [];
+
+      const fallbackLookup = async () => {
+        const lookup = await getJSON(`${assetBase}dict/keywords_lookup.json`)
+          .catch(() => getJSON(`${assetBase}dict/keywords.json`));
+        const dict = Array.isArray(lookup?.items) ? lookup.items : [];
+        const map = new Map(dict.map((d) => [d.id, d.label]));
+        return uniqueIds.map((id) => map.get(id) || id);
+      };
+
+      const manifest = await getJSON(`${assetBase}dict/keywords_manifest.json`).catch(() => null);
+      if (!manifest?.shards?.length || manifest.strategy !== 'alpha') {
+        return fallbackLookup();
+      }
+
+      const shardById = new Map(manifest.shards.map((shard) => [shard.id, shard.path]));
+      const shardKeys = Array.from(new Set(uniqueIds.map((id) => keywordShardKeyFromId(id))));
+      const shardPayloads = await Promise.all(
+        shardKeys.map((shardKey) => {
+          const shardPath = shardById.get(shardKey);
+          return shardPath ? getJSON(`${assetBase}${shardPath}`) : Promise.resolve(null);
+        })
+      );
+
+      const map = new Map();
+      shardPayloads.forEach((payload) => {
+        (payload?.items || []).forEach((item) => {
+          if (item?.id && item?.label && !map.has(item.id)) {
+            map.set(item.id, item.label);
+          }
+        });
+      });
+
+      const missing = uniqueIds.filter((id) => !map.has(id));
+      if (missing.length) {
+        const lookup = await getJSON(`${assetBase}dict/keywords_lookup.json`)
+          .catch(() => getJSON(`${assetBase}dict/keywords.json`));
+        const dict = Array.isArray(lookup?.items) ? lookup.items : [];
+        const lookupMap = new Map(dict.map((d) => [d.id, d.label]));
+        missing.forEach((id) => {
+          if (lookupMap.has(id)) map.set(id, lookupMap.get(id));
+        });
+      }
+
+      return uniqueIds.map((id) => map.get(id) || id);
+    }
+
     function escapeHtml(s) {
       return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
@@ -380,8 +438,8 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
         const volumes = await getJSON(`${assetBase}volumes.json`);
 
-        const [keywords, entities, collections] = await Promise.all([
-          getJSON(`${assetBase}dict/keywords.json`),
+        const [keywordsLabels, entities, collections] = await Promise.all([
+          loadKeywordsForIds(page.keyword_ids || []),
           getJSON(`${assetBase}dict/entities.json`),
           getJSON(`${assetBase}dict/collections.json`),
         ]);
@@ -404,7 +462,6 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         const pageSegments = segments.filter((s) => (page.segment_ids || []).includes(s.id));
         const pageSnapshots = snapshots.filter((s) => (page.snapshot_ids || []).includes(s.id));
 
-        const keywordsLabels = labelize(page.keyword_ids, keywords.items);
         const entitiesLabels = labelize(page.entity_ids, entities.items);
         const segmentLabels = pageSegments.map((s) => s.label);
         const snapshotLabels = pageSnapshots.map((s) => s.label);

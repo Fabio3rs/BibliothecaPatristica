@@ -28,6 +28,8 @@ def main():
 
     sources = {
         "keywords": dict_dir / "keywords.json",
+        "keywords_lookup": dict_dir / "keywords_lookup.json",
+        "keywords_manifest": dict_dir / "keywords_manifest.json",
         "keywords_top": dict_dir / "keywords_top.json",
         "keyword_groups": dict_dir / "keyword_groups.json",
         "entities": dict_dir / "entities.json",

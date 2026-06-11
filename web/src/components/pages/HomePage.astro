@@ -30,7 +30,7 @@ const personas = [
     title: t.personaDevotoTitle,
     desc: t.personaDevotoDesc,
     cta: t.personaDevotoCta,
-    href: `${baseWithSlash}search?term=${encodeURIComponent('João Crisóstomo')}`,
+    href: `${baseWithSlash}search?keyword=${encodeURIComponent('João Crisóstomo')}&term=${encodeURIComponent('João Crisóstomo')}`,
   },
   {
     icon: '📖',
@@ -44,7 +44,7 @@ const personas = [
     title: t.personaResearcherTitle,
     desc: t.personaResearcherDesc,
     cta: t.personaResearcherCta,
-    href: `${baseWithSlash}search?term=${encodeURIComponent('Trindade')}`,
+    href: `${baseWithSlash}search?keyword=${encodeURIComponent('Trindade')}&term=${encodeURIComponent('Trindade')}`,
   },
 ];
 ---
@@ -181,7 +181,7 @@ const personas = [
 <Layout title="Bibliotheca Patristica" description={t.homeSubtitle.replace(/<[^>]*>/g, '')} breadcrumbs={[{label: t.breadcrumbHome, href: baseWithSlash}]}>
   <Fragment slot="head">
     <link rel="prefetch" href={`${baseWithSlash}search`} />
-    <link rel="prefetch" href={`${baseWithSlash}pagefind/pagefind.js`} />
+    <link rel="prefetch" href={`${baseWithSlash}pagefind/main/pagefind.js`} />
   </Fragment>
 
   <!-- Hero -->
@@ -247,7 +247,7 @@ const personas = [
           <h3>{title}</h3>
           <ul>
             {links.map(link => (
-              <li><a href={`${baseWithSlash}search?term=${encodeURIComponent(link.term)}`}>{link.label}</a></li>
+              <li><a href={`${baseWithSlash}search?keyword=${encodeURIComponent(link.term)}&term=${encodeURIComponent(link.term)}`}>{link.label}</a></li>
             ))}
           </ul>
         </div>
@@ -272,7 +272,7 @@ const personas = [
   <script type="module" define:vars={{ assetBase, uiStrings, uiLocale }}>
     const cloud = document.getElementById('tag-cloud');
     const statsGrid = document.getElementById('stats-grid');
-    const searchUrl = (tag) => `${assetBase}search?term=${encodeURIComponent(tag)}`;
+    const searchUrl = (tag) => `${assetBase}search?keyword=${encodeURIComponent(tag)}&term=${encodeURIComponent(tag)}`;
 
     const isEn = uiLocale === 'en';
     const s = uiStrings;

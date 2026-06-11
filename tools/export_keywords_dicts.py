@@ -3,9 +3,12 @@
 Gera dicionários de keywords para o site a partir de `data/patristica_keywords.db`.
 
 Saídas em `web/public/dict/` (configurável via --out):
-  - keywords.json        : todos os termos com contagem, grupo e flags.
-  - keywords_top.json    : top N termos NÃO-escritura por frequência real (para nuvem de tags).
-  - keyword_groups.json  : metadados por grupo HDBSCAN.
+  - keywords.json         : catálogo completo com contagem, grupo e flags (compatibilidade).
+  - keywords_lookup.json   : lookup leve para renderizadores e indexadores.
+  - keywords_manifest.json : manifesto dos shards de keywords por consumo.
+  - keywords/*.json        : shards alfabéticos do catálogo navegável.
+  - keywords_top.json     : top N termos NÃO-escritura por frequência real (para nuvem de tags).
+  - keyword_groups.json   : metadados por grupo HDBSCAN.
 
 A frequência real é calculada varrendo os page_blocks em --pages-dir (web/public).
 Se --pages-dir não for fornecido, usa o campo `count` do banco.
@@ -23,6 +26,7 @@ import re
 import sqlite3
 import unicodedata
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional
 
@@ -188,6 +192,24 @@ def normalized_category_key(text: str) -> str:
     return re.sub(r"\s+", "_", ascii_approx).strip().casefold()
 
 
+def now_iso() -> str:
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+
+
+def keyword_shard_key(keyword_id: str) -> str:
+    slug = (keyword_id or "").removeprefix("k:").strip().lower()
+    if not slug:
+        return "other"
+    first = slug[0]
+    if first.isdigit():
+        return "0-9"
+    if first.isalpha():
+        return first
+    if slug.startswith("g"):
+        return "g"
+    return "other"
+
+
 def main():
     ap = argparse.ArgumentParser(
         description="Exporta dicionários de keywords com grupos HDBSCAN para o site."
@@ -277,16 +299,64 @@ def main():
         )
     items.sort(key=lambda x: x["label"].lower())
 
+    lookup_items = [
+        {
+            "id": item["id"],
+            "label": item["label"],
+            "count": item["count"],
+            "iscit": item["iscit"],
+        }
+        for item in items
+    ]
+
+    shard_map: Dict[str, List[dict]] = {}
+    for item in items:
+        shard_key = keyword_shard_key(item["id"])
+        shard_map.setdefault(shard_key, []).append(item)
+
+    shard_manifest = []
+    for shard_key in sorted(shard_map.keys()):
+        shard_items = sorted(shard_map[shard_key], key=lambda x: x["label"].lower())
+        shard_manifest.append(
+            {
+                "id": shard_key,
+                "path": f"dict/keywords/{shard_key}.json",
+                "count": len(shard_items),
+                "first_label": shard_items[0]["label"] if shard_items else "",
+                "last_label": shard_items[-1]["label"] if shard_items else "",
+            }
+        )
+
     if args.dry_run:
-        print(f"[DRY RUN] keywords: {len(items)} | top: {min(len(items), args.top)}")
+        print(
+            f"[DRY RUN] keywords: {len(items)} | lookup: {len(lookup_items)} | "
+            f"shards: {len(shard_manifest)} | top: {min(len(items), args.top)}"
+        )
 
         for kw in items:
             print(
-                f"{kw['ecanonico']} - {kw['label']} (id={kw['id']}, group={kw['group_id']}, is_scripture={kw['is_scripture']})"
+                f"{kw['label']} (id={kw['id']}, group={kw['group_id']}, is_scripture={kw['iscit']})"
             )
         return
 
     write_json(args.out / "keywords.json", {"items": items})
+    write_json(args.out / "keywords_lookup.json", {"items": lookup_items})
+    write_json(
+        args.out / "keywords_manifest.json",
+        {
+            "schema_version": 1,
+            "strategy": "alpha",
+            "generated_at": now_iso(),
+            "lookup_path": "dict/keywords_lookup.json",
+            "full_path": "dict/keywords.json",
+            "top_path": "dict/keywords_top.json",
+            "shards": shard_manifest,
+        },
+    )
+
+    for shard_key, shard_items in shard_map.items():
+        shard_path = args.out / "keywords" / f"{shard_key}.json"
+        write_json(shard_path, {"items": sorted(shard_items, key=lambda x: x["label"].lower())})
 
     # keywords_top.json — apenas temas (iscit=false), ordenados por frequência agregada
     # Usado pela nuvem de tags da página inicial; citações bíblicas são excluídas
@@ -309,7 +379,8 @@ def main():
     write_json(args.out / "keyword_groups.json", {"groups": groups_sorted})
 
     print(
-        f"[OK] keywords: {len(items)} | top: {len(top_items)} | groups: {len(groups_sorted)}"
+        f"[OK] keywords: {len(items)} | lookup: {len(lookup_items)} | "
+        f"shards: {len(shard_manifest)} | top: {len(top_items)} | groups: {len(groups_sorted)}"
     )
 
 
