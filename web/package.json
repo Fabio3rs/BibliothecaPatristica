@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "build:dicts": "python3 ../tools/export_keywords_dicts.py --db ../data/patristica_keywords.db --out ./public/dict",
-    "build:search": "node ../tools/build_pagefind_from_shards.mjs --public ./public --out ./public/pagefind --base /BibliothecaPatristica --batch-size 25 --enrichment-index ../data/shards/enrichment/index.json",
+    "build:search": "node ../tools/build_pagefind_from_shards.mjs --public ./public --out ./public/pagefind --base /BibliothecaPatristica --batch-size 25 --source-manifest ./public/manifest.json --enrichment-dir ../data/shards/enrichment",
     "preview": "astro preview",
     "check": "astro check"
   },
