@@ -6,7 +6,7 @@ import { buildPagefindManifest, loadEnrichmentDocIds, planPagefindBatches, write
 function parseArgs() {
   const args = process.argv.slice(2);
   const params = {
-    indexPath: path.resolve('data/shards/enrichment/index.json'),
+    indexPath: path.resolve('web/public/volumes.json'),
     batchSize: 25,
     format: 'matrix',
     manifestOut: null,

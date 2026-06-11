@@ -35,7 +35,7 @@ jobs:
       - name: Plan Pagefind batches
         id: plan
         run: |
-          matrix=$(node ../tools/plan_pagefind_batches.mjs --index ./public/manifest.json --batch-size 25 --format matrix)
+          matrix=$(node ../tools/plan_pagefind_batches.mjs --index ./public/volumes.json --batch-size 25 --format matrix)
           echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
           echo "batch_size=25" >> "$GITHUB_OUTPUT"
 
@@ -63,7 +63,7 @@ jobs:
         run: npm install
 
       - name: Build Pagefind shard
-        run: node ../tools/build_pagefind_from_shards.mjs --public ./public --out ./public/pagefind/${{ matrix.batch_id }} --base /BibliothecaPatristica --batch-size ${{ needs.plan_pagefind.outputs.batch_size }} --batch-index ${{ matrix.batch_index }} --source-manifest ./public/manifest.json --enrichment-dir ../data/shards/enrichment
+        run: node ../tools/build_pagefind_from_shards.mjs --public ./public --out ./public/pagefind/${{ matrix.batch_id }} --base /BibliothecaPatristica --batch-size ${{ needs.plan_pagefind.outputs.batch_size }} --batch-index ${{ matrix.batch_index }} --source-manifest ./public/volumes.json --enrichment-dir ../data/shards/enrichment
 
       - name: Pack Pagefind shard
         run: tar -czf pagefind-${{ matrix.batch_id }}.tgz -C ./public/pagefind ${{ matrix.batch_id }}
@@ -114,7 +114,7 @@ jobs:
           done
 
       - name: Write Pagefind manifest
-        run: node ../tools/plan_pagefind_batches.mjs --index ./public/manifest.json --batch-size ${{ needs.plan_pagefind.outputs.batch_size }} --format manifest --manifest-out ./public/pagefind/manifest.json
+        run: node ../tools/plan_pagefind_batches.mjs --index ./public/volumes.json --batch-size ${{ needs.plan_pagefind.outputs.batch_size }} --format manifest --manifest-out ./public/pagefind/manifest.json
 
       - name: Build
         run: npm run build
