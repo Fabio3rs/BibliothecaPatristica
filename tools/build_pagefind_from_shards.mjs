@@ -30,7 +30,7 @@ function parseArgs() {
     minCount: 1,
     batchSize: 25,
     batchIndex: null,
-    sourceManifest: 'web/public/manifest.json',
+    sourceManifest: 'web/public/volumes.json',
     enrichmentDir: 'data/shards/enrichment',
   };
 
