@@ -30,7 +30,8 @@ function parseArgs() {
     minCount: 1,
     batchSize: 25,
     batchIndex: null,
-    enrichmentIndex: 'data/shards/enrichment/index.json',
+    sourceManifest: 'web/public/manifest.json',
+    enrichmentDir: 'data/shards/enrichment',
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -41,7 +42,8 @@ function parseArgs() {
     else if (a === '--min-count') params.minCount = parseInt(args[++i], 10) || 1;
     else if (a === '--batch-size') params.batchSize = parseInt(args[++i], 10) || 25;
     else if (a === '--batch-index') params.batchIndex = parseInt(args[++i], 10);
-    else if (a === '--enrichment-index') params.enrichmentIndex = args[++i];
+    else if (a === '--source-manifest' || a === '--enrichment-index') params.sourceManifest = args[++i];
+    else if (a === '--enrichment-dir') params.enrichmentDir = args[++i];
   }
 
   return params;
@@ -252,12 +254,12 @@ async function main() {
     throw new Error('pagefind não encontrado. Instale `pagefind` em web/.');
   }
 
-  params.enrichmentIndex = path.resolve(params.enrichmentIndex);
-  params.enrichmentDir = path.dirname(params.enrichmentIndex);
+  params.sourceManifest = path.resolve(params.sourceManifest);
+  params.enrichmentDir = path.resolve(params.enrichmentDir);
 
   const pagefindModule = await import(pathToFileURL(pagefindPath).href);
   const kwMap = await loadKeywordMap(params.publicDir);
-  const docIds = await loadEnrichmentDocIds(params.enrichmentIndex);
+  const docIds = await loadEnrichmentDocIds(params.sourceManifest);
   const batches = planPagefindBatches(docIds, params.batchSize);
 
   if (!batches.length) {
