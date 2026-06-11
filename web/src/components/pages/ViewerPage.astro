@@ -20,29 +20,32 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
     // Reconstrói funções de formatação (não serializáveis via define:vars)
     const isEn = uiLocale === 'en';
+    const isIt = uiLocale === 'it';
     const s = {
       ...uiStrings,
-      viewerVolume: (id, title) => `${uiStrings.viewerVolume.replace ? uiStrings.viewerVolume : ''}${id}${title ? ' — ' + title : ''}`,
-      viewerPage: isEn ? (n) => `Page ${n}` : (n) => `Página ${n}`,
-      viewerPageOfTotal: isEn ? (n, t) => `Page ${n} of ${t}` : (n, t) => `Página ${n} de ${t}`,
-      viewerFirst: isEn ? 'First' : 'Primeira',
-      viewerLast: isEn ? 'Last' : 'Última',
-      viewerGo: isEn ? 'Go' : 'Ir',
-      viewerPageInputLabel: isEn ? 'Page number' : 'Número da página',
-      viewerFocusMode: isEn ? 'Focus mode' : 'Modo foco',
-      viewerNormalMode: isEn ? 'Normal mode' : 'Modo normal',
+      viewerVolume: (id, title) => `Volume ${id}${title ? ' — ' + title : ''}`,
+      viewerPage: isEn ? (n) => `Page ${n}` : isIt ? (n) => `Pagina ${n}` : (n) => `Página ${n}`,
+      viewerPageOfTotal: isEn ? (n, t) => `Page ${n} of ${t}` : isIt ? (n, t) => `Pagina ${n} di ${t}` : (n, t) => `Página ${n} de ${t}`,
+      viewerFirst: isEn ? 'First' : isIt ? 'Prima' : 'Primeira',
+      viewerLast: isEn ? 'Last' : isIt ? 'Ultima' : 'Última',
+      viewerGo: isEn ? 'Go' : isIt ? 'Vai' : 'Ir',
+      viewerPageInputLabel: isEn ? 'Page number' : isIt ? 'Numero di pagina' : 'Número da página',
+      viewerFocusMode: isEn ? 'Focus mode' : isIt ? 'Modalità focus' : 'Modo foco',
+      viewerNormalMode: isEn ? 'Normal mode' : isIt ? 'Modalità normale' : 'Modo normal',
       viewerDecreaseFont: isEn ? 'A-' : 'A-',
       viewerIncreaseFont: isEn ? 'A+' : 'A+',
-      viewerContinueReading: isEn ? 'Continue reading' : 'Continuar lendo',
-      viewerProgress: isEn ? 'Progress' : 'Progresso',
-      viewerSearchInVolume: isEn ? 'Search in this volume…' : 'Buscar neste volume…',
-      viewerIndex: isEn ? 'Index' : 'Índice',
-      viewerNoIdentity: isEn ? 'Volume information not available' : 'Informação do volume não disponível',
-      viewerRelatedSim: isEn ? (sim) => `similarity ${sim.toFixed(2)}` : (sim) => `similaridade ${sim.toFixed(2)}`,
+      viewerContinueReading: isEn ? 'Continue reading' : isIt ? 'Continua la lettura' : 'Continuar lendo',
+      viewerProgress: isEn ? 'Progress' : isIt ? 'Progresso' : 'Progresso',
+      viewerSearchInVolume: isEn ? 'Search in this volume…' : isIt ? 'Cerca in questo volume…' : 'Buscar neste volume…',
+      viewerIndex: isEn ? 'Index' : isIt ? 'Indice' : 'Índice',
+      viewerNoIdentity: isEn ? 'Volume information not available' : isIt ? 'Informazioni sul volume non disponibili' : 'Informação do volume não disponível',
+      viewerRelatedSim: isEn ? (sim) => `similarity ${sim.toFixed(2)}` : isIt ? (sim) => `somiglianza ${sim.toFixed(2)}` : (sim) => `similaridade ${sim.toFixed(2)}`,
       viewerRelatedTitle: isEn
         ? (doc, title, page) => `${doc}${title ? ' — ' + title : ''} · p. ${page}`
+        : isIt
+          ? (doc, title, page) => `${doc}${title ? ' — ' + title : ''} · pag. ${page}`
         : (doc, title, page) => `${doc}${title ? ' — ' + title : ''} · pág. ${page}`,
-      viewerError: isEn ? (msg) => `Error loading viewer: ${msg}` : (msg) => `Erro ao carregar viewer: ${msg}`,
+      viewerError: isEn ? (msg) => `Error loading viewer: ${msg}` : isIt ? (msg) => `Errore nel caricamento del visualizzatore: ${msg}` : (msg) => `Erro ao carregar viewer: ${msg}`,
       viewerVolumeLabel: (id, title) => `${isEn ? 'Volume' : 'Volume'} ${id}${title ? ' — ' + title : ''}`,
     };
 
@@ -438,21 +441,21 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
         const volumes = await getJSON(`${assetBase}volumes.json`);
 
+        const volume = volumes.volumes.find((v) => v.id === doc);
+        if (!volume) throw new Error(isIt ? 'Volume non trovato nei mock' : 'Volume não encontrado nos mocks');
+
+        const meta = await getJSON(`${assetBase}${volume.meta_url.replace(/^\//, '')}`);
+        const block = meta.page_blocks.find((b) => pageNumber >= b.page_first && pageNumber <= b.page_last);
+        if (!block) throw new Error(isIt ? 'Blocco non trovato' : 'Bloco não encontrado');
+
+        const blockData = await getJSON(`${assetBase}${block.file.replace(/^\//, '')}`);
+        const page = blockData.pages.find((p) => p.page === pageNumber) || blockData.pages[0];
+
         const [keywordsLabels, entities, collections] = await Promise.all([
           loadKeywordsForIds(page.keyword_ids || []),
           getJSON(`${assetBase}dict/entities.json`),
           getJSON(`${assetBase}dict/collections.json`),
         ]);
-
-        const volume = volumes.volumes.find((v) => v.id === doc);
-        if (!volume) throw new Error('Volume não encontrado nos mocks');
-
-        const meta = await getJSON(`${assetBase}${volume.meta_url.replace(/^\//, '')}`);
-        const block = meta.page_blocks.find((b) => pageNumber >= b.page_first && pageNumber <= b.page_last);
-        if (!block) throw new Error('Bloco não encontrado');
-
-        const blockData = await getJSON(`${assetBase}${block.file.replace(/^\//, '')}`);
-        const page = blockData.pages.find((p) => p.page === pageNumber) || blockData.pages[0];
 
         const segmentsFile = meta.segment_blocks?.[0]?.file;
         const snapshotFile = meta.snapshot_blocks?.[0]?.file;
@@ -463,7 +466,6 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         const pageSnapshots = snapshots.filter((s) => (page.snapshot_ids || []).includes(s.id));
 
         const entitiesLabels = labelize(page.entity_ids, entities.items);
-        const segmentLabels = pageSegments.map((s) => s.label);
         const snapshotLabels = pageSnapshots.map((s) => s.label);
         const summaryGlobal = page.summary_global || pageSnapshots[0]?.summary || '';
 
@@ -473,7 +475,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         if (breadcrumbsEl) {
           breadcrumbsEl.innerHTML = `
             <li style="display:flex;align-items:center;gap:0.35rem;">
-              <a href="${assetBase}">${uiStrings.breadcrumbHome || (isEn ? 'Home' : 'Início')}</a>
+              <a href="${assetBase}">${uiStrings.breadcrumbHome || (isEn ? 'Home' : isIt ? 'Home' : 'Início')}</a>
             </li>
             <li style="display:flex;align-items:center;gap:0.35rem;" aria-hidden="true"><span>/</span></li>
             <li style="display:flex;align-items:center;gap:0.35rem;"><span>${s.viewerVolumeLabel(volume.id, volume.title || '')}</span></li>
@@ -789,7 +791,7 @@ viewerRoot.innerHTML = '';
         pageInput.setAttribute('aria-label', s.viewerPageInputLabel || 'Page number');
 
         const pageTotalSpan = document.createElement('span');
-        pageTotalSpan.textContent = `${isEn ? 'of' : 'de'} ${lastPage}`;
+        pageTotalSpan.textContent = `${isEn ? 'of' : isIt ? 'di' : 'de'} ${lastPage}`;
 
         pageInput.addEventListener('change', () => {
           let v = parseInt(pageInput.value, 10);
@@ -1060,7 +1062,7 @@ viewerRoot.innerHTML = '';
 
             const rangeSpan = document.createElement('span');
             rangeSpan.style.cssText = 'font-size:0.72rem; color:var(--color-muted);';
-            rangeSpan.textContent = `${isEn ? 'p.' : 'pág.'} ${seg.page_first}${seg.page_last !== seg.page_first ? '–' + seg.page_last : ''}`;
+            rangeSpan.textContent = `${isEn ? 'p.' : isIt ? 'pag.' : 'pág.'} ${seg.page_first}${seg.page_last !== seg.page_first ? '–' + seg.page_last : ''}`;
 
             a.appendChild(labelSpan);
             a.appendChild(rangeSpan);

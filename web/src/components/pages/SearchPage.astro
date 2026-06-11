@@ -71,14 +71,21 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     // Reconstrói funções de formatação (não serializáveis via define:vars)
     const s = uiStrings;
     const isEn = uiLocale === 'en';
+    const isIt = uiLocale === 'it';
     const paginationShowing = isEn
       ? (start, end, total) => `Showing ${start}–${end} of ${total} results`
+      : isIt
+        ? (start, end, total) => `Mostrando ${start}–${end} di ${total} risultati`
       : (start, end, total) => `Mostrando ${start}–${end} de ${total} resultados`;
     const paginationPage = isEn
       ? (page, total) => `Page ${page} / ${total}`
+      : isIt
+        ? (page, total) => `Pagina ${page} / ${total}`
       : (page, total) => `Página ${page} / ${total}`;
     const ariaFilterBy = isEn
       ? (cat, val) => `Filter by ${cat}: ${val}`
+      : isIt
+        ? (cat, val) => `Filtra per ${cat}: ${val}`
       : (cat, val) => `Filtrar por ${cat}: ${val}`;
 
     const state = {

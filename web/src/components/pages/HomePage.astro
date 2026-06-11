@@ -8,21 +8,53 @@ const assetBase = baseWithSlash;
 const t = useTranslations(Astro.currentLocale);
 const uiStrings = serializeTranslations(t);
 const uiLocale = Astro.currentLocale ?? 'pt-br';
+const locale = uiLocale === 'en' ? 'en' : uiLocale === 'it' ? 'it' : 'pt-br';
 
-const startPoints = {
-  "Autores Notáveis": [
-    { label: "Agostinho de Hipona", term: "Agostinho de Hipona" },
-    { label: "Orígenes de Alexandria", term: "Orígenes de Alexandria" },
-    { label: "João Crisóstomo", term: "João Crisóstomo" },
-    { label: "Jerônimo", term: "Jerônimo de Estridão" },
-  ],
-  "Temas Centrais": [
-    { label: "Trindade", term: "Trindade" },
-    { label: "Cristologia", term: "Cristologia" },
-    { label: "Eucaristia", term: "Eucaristia" },
-    { label: "Gnose", term: "Gnosis" },
-  ]
+const startPointsByLocale = {
+  'pt-br': {
+    'Autores Notáveis': [
+      { label: 'Agostinho de Hipona', term: 'Agostinho de Hipona' },
+      { label: 'Orígenes de Alexandria', term: 'Orígenes de Alexandria' },
+      { label: 'João Crisóstomo', term: 'João Crisóstomo' },
+      { label: 'Jerônimo', term: 'Jerônimo de Estridão' },
+    ],
+    'Temas Centrais': [
+      { label: 'Trindade', term: 'Trindade' },
+      { label: 'Cristologia', term: 'Cristologia' },
+      { label: 'Eucaristia', term: 'Eucaristia' },
+      { label: 'Gnose', term: 'Gnosis' },
+    ],
+  },
+  en: {
+    'Notable Authors': [
+      { label: 'Augustine of Hippo', term: 'Agostinho de Hipona' },
+      { label: 'Origen of Alexandria', term: 'Orígenes de Alexandria' },
+      { label: 'John Chrysostom', term: 'João Crisóstomo' },
+      { label: 'Jerome', term: 'Jerônimo de Estridão' },
+    ],
+    'Core Themes': [
+      { label: 'Trinity', term: 'Trindade' },
+      { label: 'Christology', term: 'Cristologia' },
+      { label: 'Eucharist', term: 'Eucaristia' },
+      { label: 'Gnosis', term: 'Gnosis' },
+    ],
+  },
+  it: {
+    'Autori notevoli': [
+      { label: "Agostino d'Ippona", term: 'Agostinho de Hipona' },
+      { label: 'Origene di Alessandria', term: 'Orígenes de Alexandria' },
+      { label: 'Giovanni Crisostomo', term: 'João Crisóstomo' },
+      { label: 'Girolamo', term: 'Jerônimo de Estridão' },
+    ],
+    'Temi centrali': [
+      { label: 'Trinità', term: 'Trindade' },
+      { label: 'Cristologia', term: 'Cristologia' },
+      { label: 'Eucaristia', term: 'Eucaristia' },
+      { label: 'Gnosi', term: 'Gnosis' },
+    ],
+  },
 };
+const startPoints = startPointsByLocale[locale];
 
 const personas = [
   {
@@ -275,9 +307,12 @@ const personas = [
     const searchUrl = (tag) => `${assetBase}search?keyword=${encodeURIComponent(tag)}&term=${encodeURIComponent(tag)}`;
 
     const isEn = uiLocale === 'en';
+    const isIt = uiLocale === 'it';
     const s = uiStrings;
     const ariaOccurrences = isEn
       ? (n) => `${n} occurrence(s)`
+      : isIt
+        ? (n) => (n === 1 ? '1 occorrenza' : `${n} occorrenze`)
       : (n) => `${n} ocorrência(s)`;
 
     function formatNumber(n) {

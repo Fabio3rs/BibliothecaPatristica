@@ -15,7 +15,7 @@ export const ptBR: Record<string, any> = {
   navViewer: 'Leitura',
   navMenuLabel: 'Menu de navegação',
   /** Botão de troca de idioma na topbar */
-  langSwitchLabel: 'Switch to English',
+  langSwitchLabel: 'Trocar idioma',
   langSwitchCurrent: 'PT',
   langSwitchOther: 'EN',
 

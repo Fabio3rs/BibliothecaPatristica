@@ -16,9 +16,9 @@ export const en: Translations = {
   navSearch: 'Search',
   navViewer: 'Reader',
   navMenuLabel: 'Navigation menu',
-  langSwitchLabel: 'Mudar para Português',
+  langSwitchLabel: 'Switch language',
   langSwitchCurrent: 'EN',
-  langSwitchOther: 'PT',
+  langSwitchOther: 'IT',
 
   // ─── Disclaimer (AI notice) ────────────────────────────────────────────────
   disclaimerTitle: '⚠️ About summaries and keywords',
