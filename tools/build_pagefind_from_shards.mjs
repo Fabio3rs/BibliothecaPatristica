@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Build Pagefind indexes from the enrichment NDJSON shards.
+// Build Pagefind indexes from the published site shards in web/public.
 //
 // Modes:
 // - batch mode: build one shard group into `--out`
@@ -31,7 +31,6 @@ function parseArgs() {
     batchSize: 25,
     batchIndex: null,
     sourceManifest: 'web/public/volumes.json',
-    enrichmentDir: 'data/shards/enrichment',
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -42,8 +41,7 @@ function parseArgs() {
     else if (a === '--min-count') params.minCount = parseInt(args[++i], 10) || 1;
     else if (a === '--batch-size') params.batchSize = parseInt(args[++i], 10) || 25;
     else if (a === '--batch-index') params.batchIndex = parseInt(args[++i], 10);
-    else if (a === '--source-manifest' || a === '--enrichment-index') params.sourceManifest = args[++i];
-    else if (a === '--enrichment-dir') params.enrichmentDir = args[++i];
+    else if (a === '--source-manifest') params.sourceManifest = args[++i];
   }
 
   return params;
@@ -91,11 +89,11 @@ function buildRecordUrl(base, docId, page) {
   return `${cleanBase}/viewer?doc=${encodeURIComponent(docId)}&page=${encodeURIComponent(String(page))}`;
 }
 
-function buildCustomRecord(params, kwMap, docId, row) {
+function buildCustomRecord(params, kwMap, docId, page) {
   const keywordMetas = [];
   const seenKeywordLabels = new Set();
-  for (const label of row.keywords || []) {
-    const meta = kwMap.get(label) || { label };
+  for (const keywordId of page.keyword_ids || []) {
+    const meta = kwMap.get(keywordId) || { id: keywordId, label: keywordId };
     if (!meta?.label || seenKeywordLabels.has(meta.label)) continue;
     if (!usableKeyword(meta, params.minCount)) continue;
     seenKeywordLabels.add(meta.label);
@@ -117,17 +115,17 @@ function buildCustomRecord(params, kwMap, docId, row) {
   const topKeywords = keywordLabels.slice(0, 3);
   const hint = topKeywords.length
     ? topKeywords.join(' • ')
-    : unique([row.author, row.work]).join(' — ');
+    : unique([page.author, page.work]).join(' — ');
   const title = hint
-    ? `${docId} p.${row.page} — ${hint}`.slice(0, 220)
-    : `${docId} p.${row.page}`;
+    ? `${docId} p.${page.page} — ${hint}`.slice(0, 220)
+    : `${docId} p.${page.page}`;
 
   const contentParts = unique([
     title,
-    row.summary_page,
-    row.summary_global,
-    row.author,
-    row.work,
+    page.summary_page,
+    page.summary_global,
+    page.author,
+    page.work,
     keywordLabels.join(' '),
     bookNames.join(' '),
   ]);
@@ -141,17 +139,17 @@ function buildCustomRecord(params, kwMap, docId, row) {
 
   const meta = {
     title,
-    author: row.author || '',
-    work: row.work || '',
+    author: page.author || '',
+    work: page.work || '',
     doc: docId,
-    page: String(row.page),
+    page: String(page.page),
     collection: docId.slice(0, 2),
   };
   if (keywordLabels.length) meta.keywords = keywordLabels.slice(0, 10).join(' • ');
   if (bookNames.length) meta.books = bookNames.join(' • ');
 
   return {
-    url: buildRecordUrl(params.base, docId, row.page),
+    url: buildRecordUrl(params.base, docId, page.page),
     content,
     language: 'pt',
     meta,
@@ -161,7 +159,6 @@ function buildCustomRecord(params, kwMap, docId, row) {
 
 async function loadKeywordMap(publicDir) {
   const candidates = [
-    path.join(publicDir, 'dict', 'keywords_lookup.json'),
     path.join(publicDir, 'dict', 'keywords.json'),
   ];
   let keywordsData = null;
@@ -172,30 +169,30 @@ async function loadKeywordMap(publicDir) {
     }
   }
   if (!keywordsData) {
-    throw new Error('keywords_lookup.json ou keywords.json não encontrado em public/dict');
+    throw new Error('keywords.json não encontrado em public/dict');
   }
   const keywords = Array.isArray(keywordsData.items) ? keywordsData.items : [];
-  return new Map(keywords.map((item) => [item.label, item]));
+  return new Map(keywords.map((item) => [item.id, item]));
 }
 
-async function loadVolumeRows(enrichmentDir, docId) {
-  const filePath = path.join(enrichmentDir, `${docId}.ndjson`);
-  const text = await fs.promises.readFile(filePath, 'utf-8');
-  const rows = [];
+async function loadVolumePages(publicDir, vol) {
+  const metaPath = path.join(publicDir, vol.meta_url);
+  const meta = await readJSON(metaPath);
+  const pages = [];
 
-  for (const line of text.split(/\r?\n/)) {
-    if (!line.trim()) continue;
-    try {
-      rows.push(JSON.parse(line));
-    } catch (err) {
-      throw new Error(`Falha ao ler ${filePath}: ${err.message}`);
+  for (const block of meta.page_blocks || []) {
+    const blockPath = path.join(publicDir, block.file);
+    const blockData = await readJSON(blockPath);
+    const blockPages = Array.isArray(blockData.pages) ? blockData.pages : [];
+    for (const page of blockPages) {
+      pages.push(page);
     }
   }
 
-  return rows;
+  return pages;
 }
 
-async function buildIndexForBatch(pagefindModule, batch, params, kwMap, outputDir) {
+async function buildIndexForBatch(pagefindModule, batch, params, kwMap, volumeMap, outputDir) {
   if (fs.existsSync(outputDir)) {
     fs.rmSync(outputDir, { recursive: true, force: true });
   }
@@ -218,12 +215,17 @@ async function buildIndexForBatch(pagefindModule, batch, params, kwMap, outputDi
 
   try {
     for (const docId of batch.docs) {
-      const rows = await loadVolumeRows(params.enrichmentDir, docId);
-      for (const row of rows) {
-        const record = buildCustomRecord(params, kwMap, docId, row);
+      const vol = volumeMap.get(docId);
+      if (!vol) {
+        throw new Error(`Volume ${docId} não encontrado em ${params.sourceManifest}`);
+      }
+
+      const pages = await loadVolumePages(params.publicDir, vol);
+      for (const page of pages) {
+        const record = buildCustomRecord(params, kwMap, docId, page);
         const result = await index.addCustomRecord(record);
         if (result?.errors?.length) {
-          console.error(`Pagefind addCustomRecord errors em ${docId} p.${row.page}:`, result.errors);
+          console.error(`Pagefind addCustomRecord errors em ${docId} p.${page.page}:`, result.errors);
         }
         totalRecords += 1;
         if (totalRecords % 5000 === 0) {
@@ -255,10 +257,12 @@ async function main() {
   }
 
   params.sourceManifest = path.resolve(params.sourceManifest);
-  params.enrichmentDir = path.resolve(params.enrichmentDir);
 
   const pagefindModule = await import(pathToFileURL(pagefindPath).href);
   const kwMap = await loadKeywordMap(params.publicDir);
+  const volumesData = await readJSON(params.sourceManifest);
+  const volumes = Array.isArray(volumesData.volumes) ? volumesData.volumes : [];
+  const volumeMap = new Map(volumes.map((volume) => [volume.id, volume]));
   const docIds = await loadEnrichmentDocIds(params.sourceManifest);
   const batches = planPagefindBatches(docIds, params.batchSize);
 
@@ -271,7 +275,7 @@ async function main() {
     if (!batch) {
       throw new Error(`batch-index inválido: ${params.batchIndex}`);
     }
-    await buildIndexForBatch(pagefindModule, batch, params, kwMap, path.resolve(params.outDir));
+    await buildIndexForBatch(pagefindModule, batch, params, kwMap, volumeMap, path.resolve(params.outDir));
     return;
   }
 
@@ -282,7 +286,7 @@ async function main() {
 
   for (const batch of batches) {
     const batchOutDir = path.join(params.outDir, batch.batch_dir);
-    await buildIndexForBatch(pagefindModule, batch, params, kwMap, batchOutDir);
+    await buildIndexForBatch(pagefindModule, batch, params, kwMap, volumeMap, batchOutDir);
   }
 
   const manifest = buildPagefindManifest(batches, params.batchSize);

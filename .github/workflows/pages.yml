@@ -15,71 +15,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  plan_pagefind:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: web
-    outputs:
-      matrix: ${{ steps.plan.outputs.matrix }}
-      batch_size: ${{ steps.plan.outputs.batch_size }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
-      - name: Plan Pagefind batches
-        id: plan
-        run: |
-          matrix=$(node ../tools/plan_pagefind_batches.mjs --index ./public/volumes.json --batch-size 25 --format matrix)
-          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
-          echo "batch_size=25" >> "$GITHUB_OUTPUT"
-
-  build_pagefind:
-    runs-on: ubuntu-latest
-    needs: plan_pagefind
-    strategy:
-      fail-fast: false
-      matrix: ${{ fromJSON(needs.plan_pagefind.outputs.matrix) }}
-    defaults:
-      run:
-        working-directory: web
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
-          cache-dependency-path: web/package-lock.json
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build Pagefind shard
-        run: node ../tools/build_pagefind_from_shards.mjs --public ./public --out ./public/pagefind/${{ matrix.batch_id }} --base /BibliothecaPatristica --batch-size ${{ needs.plan_pagefind.outputs.batch_size }} --batch-index ${{ matrix.batch_index }} --source-manifest ./public/volumes.json --enrichment-dir ../data/shards/enrichment
-
-      - name: Pack Pagefind shard
-        run: tar -czf pagefind-${{ matrix.batch_id }}.tgz -C ./public/pagefind ${{ matrix.batch_id }}
-
-      - name: Upload Pagefind shard artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: pagefind-${{ matrix.batch_id }}
-          path: web/pagefind-${{ matrix.batch_id }}.tgz
-          if-no-files-found: error
-
   build_site:
     runs-on: ubuntu-latest
-    needs:
-      - plan_pagefind
-      - build_pagefind
     defaults:
       run:
         working-directory: web
@@ -100,21 +37,58 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Download Pagefind shards
-        uses: actions/download-artifact@v4
-        with:
-          path: web/public/pagefind-artifacts
-          merge-multiple: true
-
-      - name: Expand Pagefind shards
+      - name: Build Pagefind shards in parallel
         run: |
+          set -euo pipefail
+
+          batch_size=25
+          rm -rf ./public/pagefind
           mkdir -p ./public/pagefind
-          for archive in ./public/pagefind-artifacts/*.tgz; do
-            tar -xzf "$archive" -C ./public/pagefind
+
+          matrix_json=$(node ../tools/plan_pagefind_batches.mjs --index ./public/volumes.json --batch-size "$batch_size" --format matrix)
+          printf '%s\n' "$matrix_json" > /tmp/pagefind-matrix.json
+
+          total_batches=$(node -e "const fs=require('fs'); const m=JSON.parse(fs.readFileSync('/tmp/pagefind-matrix.json','utf8')); process.stdout.write(String((m.include || []).length));")
+          if [ "$total_batches" -eq 0 ]; then
+            echo "Nenhum lote Pagefind foi planejado"
+            exit 1
+          fi
+
+          limit=$(nproc)
+          if [ "$limit" -lt 2 ]; then
+            limit=2
+          fi
+
+          echo "Construindo $total_batches lotes Pagefind com concorrência $limit"
+
+          active=0
+          while IFS= read -r batch; do
+            batch_index=$(node -e "const item=JSON.parse(process.argv[1]); process.stdout.write(String(item.batch_index));" "$batch")
+            batch_id=$(node -e "const item=JSON.parse(process.argv[1]); process.stdout.write(String(item.batch_id));" "$batch")
+
+            echo "Iniciando $batch_id"
+            node ../tools/build_pagefind_from_shards.mjs \
+              --public ./public \
+              --out "./public/pagefind/$batch_id" \
+              --base /BibliothecaPatristica \
+              --batch-size "$batch_size" \
+              --batch-index "$batch_index" \
+              --source-manifest ./public/volumes.json &
+
+            active=$((active + 1))
+            if [ "$active" -ge "$limit" ]; then
+              wait -n
+              active=$((active - 1))
+            fi
+          done < <(node -e "const fs=require('fs'); const m=JSON.parse(fs.readFileSync('/tmp/pagefind-matrix.json','utf8')); for (const item of m.include || []) console.log(JSON.stringify(item));")
+
+          while [ "$active" -gt 0 ]; do
+            wait -n
+            active=$((active - 1))
           done
 
       - name: Write Pagefind manifest
-        run: node ../tools/plan_pagefind_batches.mjs --index ./public/volumes.json --batch-size ${{ needs.plan_pagefind.outputs.batch_size }} --format manifest --manifest-out ./public/pagefind/manifest.json
+        run: node ../tools/plan_pagefind_batches.mjs --index ./public/volumes.json --batch-size 25 --format manifest --manifest-out ./public/pagefind/manifest.json
 
       - name: Build
         run: npm run build
