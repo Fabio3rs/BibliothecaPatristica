@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "npm run build:indices && npm run build:indices-search",
+    "prebuild": "npm run build:indices-search",
     "build": "astro build",
     "build:dicts": "python3 ../tools/export_keywords_dicts.py --db ../data/patristica_keywords.db --out ./public/dict",
     "build:indices": "python3 ../tools/export_indices_from_db.py --db ../data/patristic_indices.db --out ./public/indices",
