@@ -49,7 +49,7 @@ from typing import List, Optional, Tuple, Any
 from keyword_integrity import IntegrityStatus, ValidationEvidence
 
 # Heurísticas de ruído/rejeição de página OCR
-from test_limpeza_ocr import clean_ocr_text_optimized, classify_page_noise
+from scripts.limpeza_ocr import clean_ocr_text_optimized, classify_page_noise
 from scripture_ref_normalizer import (
     extract_citations_from_value_cached,
 )

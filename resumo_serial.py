@@ -36,7 +36,7 @@ from typing import List, Optional, Tuple
 PROJECT_ROOT = Path(__file__).resolve().parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
-from test_limpeza_ocr import (  # type: ignore  # noqa: E402
+from scripts.limpeza_ocr import (  # type: ignore  # noqa: E402
     clean_summary_global_for_search,
     clean_summary_page_for_embedding,
 )
