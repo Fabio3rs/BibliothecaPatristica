@@ -1,6 +1,7 @@
 ---
 // @ts-nocheck
 import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
 import Layout from '../Layout.astro';
 import { useTranslations } from '../../i18n';
 
@@ -8,7 +9,8 @@ const base = import.meta.env.BASE_URL || '/';
 const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
 const t = useTranslations(Astro.currentLocale);
 
-const manifest = JSON.parse(await readFile(new URL('../../../public/indices/manifest.json', import.meta.url), 'utf8'));
+const manifestPath = join(process.cwd(), 'public', 'indices', 'manifest.json');
+const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
 const volumes = manifest.volumes || [];
 const collections = [...new Set(volumes.map((item: { collection?: string }) => item.collection).filter(Boolean))].sort();
 const collectionOptions = collections.map((collection) => ({
