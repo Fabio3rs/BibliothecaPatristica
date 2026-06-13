@@ -5,8 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "npm run build:indices && npm run build:indices-search",
     "build": "astro build",
     "build:dicts": "python3 ../tools/export_keywords_dicts.py --db ../data/patristica_keywords.db --out ./public/dict",
+    "build:indices": "python3 ../tools/export_indices_from_db.py --db ../data/patristic_indices.db --out ./public/indices",
+    "build:indices-search": "node ../tools/build_indices_pagefind_from_json.mjs --public ./public --out ./public/indices-pagefind --base /BibliothecaPatristica --source-manifest ./public/indices/manifest.json",
     "build:search": "node ../tools/build_pagefind_from_shards.mjs --public ./public --out ./public/pagefind --base /BibliothecaPatristica --batch-size 25 --source-manifest ./public/volumes.json",
     "preview": "astro preview",
     "check": "astro check"

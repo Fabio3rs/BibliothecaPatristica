@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
+import { readJsonMaybeGz } from './json_io.mjs';
 
 export async function readJSON(filePath) {
-  const data = await fs.promises.readFile(filePath, 'utf-8');
-  return JSON.parse(data);
+  return readJsonMaybeGz(filePath);
 }
 
 export function nowIso() {

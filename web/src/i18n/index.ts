@@ -82,11 +82,30 @@ export function getLocaleSwitchUrl(
   search: string = '',
 ): string {
   const locale = normalizeLocale(currentLocale);
-  const baseNoSlash = base.endsWith('/') ? base.slice(0, -1) : base;
   const locales: SupportedLocale[] = ['pt-br', 'en', 'it'];
   const nextLocale = locales[(locales.indexOf(locale) + 1) % locales.length];
-  const currentPrefix = locale === 'pt-br' ? '' : `/${locale}`;
-  const nextPrefix = nextLocale === 'pt-br' ? '' : `/${nextLocale}`;
+  return getLocaleUrl(nextLocale, currentPath, base, search);
+}
+
+/**
+ * Calcula a URL de um locale específico para o caminho atual.
+ */
+export function getLocaleUrl(
+  targetLocale: SupportedLocale,
+  currentPath: string,
+  base: string,
+  search: string = '',
+): string {
+  const baseNoSlash = base.endsWith('/') ? base.slice(0, -1) : base;
+  const currentLocale = normalizeLocale(
+    currentPath.startsWith(`${baseNoSlash}/en`)
+      ? 'en'
+      : currentPath.startsWith(`${baseNoSlash}/it`)
+        ? 'it'
+        : 'pt-br',
+  );
+  const currentPrefix = currentLocale === 'pt-br' ? '' : `/${currentLocale}`;
+  const nextPrefix = targetLocale === 'pt-br' ? '' : `/${targetLocale}`;
   const withoutBase = currentPath.startsWith(baseNoSlash)
     ? currentPath.slice(baseNoSlash.length)
     : currentPath;

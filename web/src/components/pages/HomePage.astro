@@ -3,6 +3,7 @@ import Layout from '../Layout.astro';
 import { useTranslations, serializeTranslations } from '../../i18n';
 const base = import.meta.env.BASE_URL || '/';
 const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
+const baseNoSlash = base.endsWith('/') ? base.slice(0, -1) : base;
 const assetBase = baseWithSlash;
 
 const t = useTranslations(Astro.currentLocale);
@@ -56,56 +57,161 @@ const startPointsByLocale = {
 };
 const startPoints = startPointsByLocale[locale];
 
-const personas = [
-  {
-    icon: '🕊️',
-    title: t.personaDevotoTitle,
-    desc: t.personaDevotoDesc,
-    cta: t.personaDevotoCta,
-    href: `${baseWithSlash}search?keyword=${encodeURIComponent('João Crisóstomo')}&term=${encodeURIComponent('João Crisóstomo')}`,
-  },
-  {
-    icon: '📖',
-    title: t.personaTheologyTitle,
-    desc: t.personaTheologyDesc,
-    cta: t.personaTheologyCta,
-    href: `${baseWithSlash}search`,
-  },
-  {
-    icon: '🔬',
-    title: t.personaResearcherTitle,
-    desc: t.personaResearcherDesc,
-    cta: t.personaResearcherCta,
-    href: `${baseWithSlash}search?keyword=${encodeURIComponent('Trindade')}&term=${encodeURIComponent('Trindade')}`,
-  },
-];
 ---
 
 <style>
   .hero {
-    text-align: center;
-    padding: var(--space-8) var(--space-4);
-    background: linear-gradient(180deg, color-mix(in srgb, var(--color-accent) 8%, var(--color-bg)) 0%, var(--color-bg) 100%);
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+    gap: var(--space-6);
+    align-items: stretch;
+    padding: var(--space-8);
+    border-radius: calc(var(--radius-m) + 2px);
+    border: 1px solid var(--color-border);
+    background:
+      radial-gradient(circle at top left, color-mix(in srgb, var(--color-accent) 14%, transparent) 0, transparent 42%),
+      linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 70%, var(--color-bg) 30%) 0%, var(--color-bg) 100%);
+    box-shadow: var(--shadow-soft);
+  }
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    justify-content: center;
+  }
+  .hero-copy h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.1rem, 4.5vw, 3.7rem);
+    line-height: 1.05;
+    margin: 0;
+    max-width: 12ch;
+  }
+  .hero-copy p {
+    margin: 0;
+    max-width: 62ch;
+    color: var(--color-muted);
+    font-size: clamp(1rem, 1.8vw, 1.12rem);
+    line-height: 1.7;
+  }
+  .hero-search {
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-4);
     border-radius: var(--radius-m);
     border: 1px solid var(--color-border);
+    background: color-mix(in srgb, var(--color-surface) 85%, var(--color-bg) 15%);
   }
-  .hero h1 {
-    font-family: var(--font-serif);
-    font-size: clamp(1.6rem, 4vw, 2.4rem);
-    margin: 0 0 var(--space-3);
-    line-height: 1.2;
-  }
-  .hero p {
-    max-width: 65ch;
-    margin: 0 auto var(--space-5);
+  .hero-search label {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
     color: var(--color-muted);
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    font-weight: 700;
+  }
+  .hero-search .field-row {
+    display: flex;
+    gap: var(--space-3);
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+  .hero-search input[type="search"] {
+    flex: 1 1 360px;
+    min-width: 0;
+    width: 100%;
+    max-width: none;
+    padding: 0.95rem 1rem;
+    border-radius: var(--radius-m);
+    font-size: 1.05rem;
+  }
+  .hero-search .button {
+    padding-inline: 1.2rem;
+    min-height: 3.2rem;
+  }
+  .hero-quick-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .hero-quick-links a,
+  .hero-quick-links button {
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-ink);
+    padding: 0.45rem 0.85rem;
+    text-decoration: none;
+    font: inherit;
+    font-size: 0.92rem;
+    cursor: pointer;
+  }
+  .hero-quick-links a:hover,
+  .hero-quick-links button:hover {
+    background: color-mix(in srgb, var(--color-accent) 12%, var(--color-surface));
+    border-color: color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
   }
   .hero-actions {
     display: flex;
     gap: var(--space-3);
-    justify-content: center;
     flex-wrap: wrap;
+  }
+  .hero-side {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-5);
+    border-radius: var(--radius-m);
+    border: 1px solid var(--color-border);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 88%, var(--color-accent) 12%) 0%, var(--color-surface) 100%);
+    min-height: 100%;
+  }
+  .hero-side .eyebrow {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-muted);
+    font-weight: 700;
+  }
+  .hero-side h2 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+    line-height: 1.2;
+  }
+  .hero-side p {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.65;
+    font-size: 0.98rem;
+  }
+  .quick-basic-list {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .section-anchor {
+    scroll-margin-top: 6.5rem;
+  }
+  .section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-4);
+  }
+  .section-heading h2 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(1.25rem, 2vw, 1.7rem);
+  }
+  .section-heading p {
+    margin: 0;
+    color: var(--color-muted);
+    max-width: 64ch;
   }
 
   .stats-grid {
@@ -125,6 +231,75 @@ const personas = [
     margin: var(--space-1) 0 0;
     font-size: 0.85rem;
     color: var(--color-muted);
+  }
+
+  .collections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-4);
+  }
+  .collection-card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-m);
+    padding: var(--space-5);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  .collection-card .eyebrow {
+    margin: 0;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+  .collection-card h3 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+  }
+  .collection-card p {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.6;
+    flex: 1;
+  }
+  .collection-card .button {
+    align-self: flex-start;
+  }
+
+  .entry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-4);
+  }
+  .entry-card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-m);
+    padding: var(--space-5);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  .entry-card h3 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+  }
+  .entry-card p {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.6;
+  }
+  .entry-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
   }
 
   .start-points-grid {
@@ -161,51 +336,13 @@ const personas = [
     background-color: var(--color-surface-raised);
   }
 
-  .personas-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: var(--space-5);
-    margin-top: var(--space-4);
-  }
-  .persona-card {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-m);
-    padding: var(--space-5);
-    box-shadow: var(--shadow-soft);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    transition: transform 0.15s, box-shadow 0.15s;
-  }
-  .persona-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
-  }
-  .persona-icon {
-    font-size: 1.6rem;
-    line-height: 1;
-  }
-  .persona-card h3 {
-    margin: 0;
-    font-family: var(--font-serif);
-    font-size: 1.15rem;
-  }
-  .persona-card p {
-    margin: 0;
-    color: var(--color-muted);
-    font-size: 0.95rem;
-    line-height: 1.55;
-    flex: 1;
-  }
-  .persona-card .button {
-    align-self: flex-start;
-    margin-top: auto;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .persona-card:hover {
-      box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+  @media (max-width: 980px) {
+    .hero {
+      grid-template-columns: 1fr;
+      padding: var(--space-5);
+    }
+    .hero-copy h1 {
+      max-width: none;
     }
   }
 </style>
@@ -218,16 +355,52 @@ const personas = [
 
   <!-- Hero -->
   <section class="hero" style="margin-top:var(--space-4);">
-    <h1>{t.homeTitle}</h1>
-    <p set:html={t.homeSubtitle}></p>
-    <div class="hero-actions">
-      <a class="button" href={`${baseWithSlash}search`}>{t.homeCtaSearch}</a>
-      <a class="button secondary" href={`${baseWithSlash}viewer?doc=PG059&page=535`}>{t.homeCtaExample}</a>
+    <div class="hero-copy">
+      <h1>{t.homeTitle}</h1>
+      <p set:html={t.homeSubtitle}></p>
+
+      <form class="hero-search" action={`${baseWithSlash}search`} method="get">
+        <label for="home-search">{t.searchHeroLabel}</label>
+        <div class="field-row">
+          <input id="home-search" type="search" name="term" placeholder={t.homeSearchPlaceholder} />
+          <button class="button" type="submit">{t.homeSearchCta}</button>
+        </div>
+        <div class="hero-quick-links" aria-label={t.searchHeroHint}>
+          <a href={`${baseWithSlash}search`}>{t.searchAllCollections}</a>
+          <a href={`${baseWithSlash}indices`}>{t.navIndices}</a>
+          <a href={`${baseWithSlash}search?collection=PG`}>PG</a>
+          <a href={`${baseWithSlash}search?collection=PL`}>PL</a>
+          <a href={`${baseWithSlash}search?collection=PO`}>PO</a>
+          <a href={`${baseNoSlash}#autores`}>{t.navAuthors}</a>
+          <a href={`${baseNoSlash}#temas`}>{t.navThemes}</a>
+        </div>
+      </form>
+
+      <div class="hero-actions">
+        <a class="button secondary" href={`${baseWithSlash}search?term=${encodeURIComponent('João Crisóstomo')}`}>{t.homeCtaExample}</a>
+        <a class="button secondary" href={`${baseNoSlash}#volumes`}>{t.navVolumes}</a>
+        <a class="button secondary" href={`${baseWithSlash}indices`}>{t.navIndices}</a>
+      </div>
     </div>
+
+    <aside class="hero-side" aria-label={t.homePreviewTitle}>
+      <span class="eyebrow">{t.homePreviewTitle}</span>
+      <h2>Comece pela busca, depois refine por coleção.</h2>
+      <p>
+        O acervo reúne textos OCR, resumos, palavras-chave e navegação por volumes.
+        O caminho mais curto é pesquisar um autor, obra ou tema e então abrir um resultado.
+      </p>
+      <ul class="quick-basic-list" aria-label="Resumo de uso">
+        <li>Use a busca para localizar autor, obra, tema ou termo.</li>
+        <li>Filtre por PG, PL ou PO quando já souber a coleção.</li>
+        <li>Abra um volume direto por um ponto de partida conhecido.</li>
+      </ul>
+      <a class="button secondary" href={`${baseWithSlash}search`}>{t.homeSearchCta}</a>
+    </aside>
   </section>
 
   <!-- Stats -->
-  <section class="card-plain" style="margin-top:var(--space-5);">
+  <section class="card-plain section-anchor" style="margin-top:var(--space-5);">
     <div class="stats-grid" id="stats-grid">
       <div class="stat-item"><h3>…</h3><p>{t.statVolumes}</p></div>
       <div class="stat-item"><h3>{t.statSeries}</h3><p>{t.statSeriesLabel}</p></div>
@@ -236,43 +409,44 @@ const personas = [
     </div>
   </section>
 
-  <!-- About -->
-  <section class="card" style="margin-top:var(--space-5);">
-    <div style="max-width:80ch; margin:0 auto;">
-      <h2 style="margin-top:0;font-family:var(--font-serif);">{t.aboutTitle}</h2>
-      <div style="display:flex; flex-direction:column; gap:var(--space-4); color:var(--color-ink); line-height:1.6;">
-        <p set:html={t.aboutP1}></p>
-        <p set:html={t.aboutP2}></p>
-        <p set:html={t.aboutP3}></p>
-        <p set:html={t.aboutP4}></p>
-        <p set:html={t.aboutP5}></p>
-        <p set:html={t.aboutP6}></p>
-        <p set:html={t.aboutP7}></p>
-        <p set:html={t.aboutP8}></p>
+  <!-- Coleções -->
+  <section id="volumes" class="section-anchor card" style="margin-top:var(--space-5);">
+    <div class="section-heading">
+      <div>
+        <h2>{t.homeCollectionsTitle}</h2>
+        <p>{t.homeCollectionsDesc}</p>
       </div>
     </div>
-  </section>
-
-  <!-- Personas -->
-  <section class="card" style="margin-top:var(--space-5);">
-    <h2 style="margin-top:0;font-family:var(--font-serif);">{t.personasTitle}</h2>
-    <p style="color:var(--color-muted); max-width:65ch;">{t.personasDesc}</p>
-    <div class="personas-grid">
-      {personas.map(p => (
-        <div class="persona-card">
-          <div class="persona-icon" aria-hidden="true">{p.icon}</div>
-          <h3>{p.title}</h3>
-          <p>{p.desc}</p>
-          <a class="button" href={p.href}>{p.cta}</a>
-        </div>
-      ))}
+    <div class="collections-grid">
+      <article class="collection-card">
+        <p class="eyebrow">PG</p>
+        <h3>Patrologia Graeca</h3>
+        <p>Autores gregos, homilias, comentários e tratados dogmáticos.</p>
+        <a class="button secondary" href={`${baseWithSlash}search?collection=PG`}>Explorar PG</a>
+      </article>
+      <article class="collection-card">
+        <p class="eyebrow">PL</p>
+        <h3>Patrologia Latina</h3>
+        <p>Autores latinos, tradição ocidental, Agostinho, Jerônimo e outros.</p>
+        <a class="button secondary" href={`${baseWithSlash}search?collection=PL`}>Explorar PL</a>
+      </article>
+      <article class="collection-card">
+        <p class="eyebrow">PO</p>
+        <h3>Patrologia Orientalis</h3>
+        <p>Textos de tradições orientais e materiais complementares.</p>
+        <a class="button secondary" href={`${baseWithSlash}search?collection=PO`}>Explorar PO</a>
+      </article>
     </div>
   </section>
 
-  <!-- Pontos de partida -->
-  <section class="card" style="margin-top:var(--space-5);">
-    <h2 style="margin-top:0;font-family:var(--font-serif);">{t.startPointsTitle}</h2>
-    <p style="color:var(--color-muted); max-width:65ch;">{t.startPointsDesc}</p>
+  <!-- Básicos -->
+  <section id="autores" class="section-anchor card" style="margin-top:var(--space-5);">
+    <div class="section-heading">
+      <div>
+        <h2>{t.homeAuthorsTitle}</h2>
+        <p>{t.homeAuthorsDesc}</p>
+      </div>
+    </div>
     <div class="start-points-grid">
       {Object.entries(startPoints).map(([title, links]) => (
         <div>
@@ -287,25 +461,34 @@ const personas = [
     </div>
   </section>
 
-  <!-- Tag Cloud -->
-  <section class="card" style="margin-top:var(--space-5);">
-    <header style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);flex-wrap:wrap;">
+  <!-- Sobre -->
+  <section id="sobre" class="section-anchor card" style="margin-top:var(--space-5);">
+    <div class="section-heading">
       <div>
-        <p style="margin:0;color:var(--color-muted);">{t.tagCloudSubtitle}</p>
-        <h2 style="margin:0;font-family:var(--font-serif);">{t.tagCloudTitle}</h2>
+        <h2>{t.aboutTitle}</h2>
+        <p>{t.homePreviewFallback}</p>
       </div>
-      <small style="color:var(--color-muted);">{t.tagCloudNote}</small>
-    </header>
-    <div id="tag-cloud" role="list" aria-label={t.tagCloudTitle} style="margin-top:var(--space-4); display:flex; gap:0.6rem; flex-wrap:wrap; align-items:flex-end;">
-      <p style="margin:0;color:var(--color-muted);">{t.tagCloudLoading}</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:var(--space-4); color:var(--color-ink); line-height:1.7; max-width:80ch;">
+      <p set:html={t.aboutP1}></p>
+      <p set:html={t.aboutP2}></p>
+      <p set:html={t.aboutP3}></p>
+      <p set:html={t.aboutP4}></p>
+      <p set:html={t.aboutP5}></p>
+      <p set:html={t.aboutP6}></p>
+      <p set:html={t.aboutP7}></p>
+      <p set:html={t.aboutP8}></p>
     </div>
   </section>
 
   <script type="module" define:vars={{ assetBase, uiStrings, uiLocale }}>
     const cloud = document.getElementById('tag-cloud');
     const statsGrid = document.getElementById('stats-grid');
+    const authorsList = document.getElementById('authors-list');
+    const themeGroups = document.getElementById('theme-groups');
     const searchUrl = (tag) => `${assetBase}search?keyword=${encodeURIComponent(tag)}&term=${encodeURIComponent(tag)}`;
-
+    const dataCache = window.pdfocrDataCache;
+    const jsonCache = new Map();
     const isEn = uiLocale === 'en';
     const isIt = uiLocale === 'it';
     const s = uiStrings;
@@ -314,6 +497,24 @@ const personas = [
       : isIt
         ? (n) => (n === 1 ? '1 occorrenza' : `${n} occorrenze`)
       : (n) => `${n} ocorrência(s)`;
+    let authorsLoaded = false;
+    let tagsLoaded = false;
+    let groupsLoaded = false;
+
+    const getJsonOnce = (url) => {
+      if (dataCache?.getJsonOnce) return dataCache.getJsonOnce(url);
+      if (!jsonCache.has(url)) {
+        const promise = fetch(url).then(async (res) => {
+          if (!res.ok) throw new Error(`HTTP ${res.status} ao buscar ${url}`);
+          return res.json();
+        }).catch((err) => {
+          jsonCache.delete(url);
+          throw err;
+        });
+        jsonCache.set(url, promise);
+      }
+      return jsonCache.get(url);
+    };
 
     function formatNumber(n) {
       if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1).replace('.0', '')}M+`;
@@ -323,9 +524,7 @@ const personas = [
 
     async function loadStats() {
       try {
-        const res = await fetch(`${assetBase}volumes.json`);
-        if (!res.ok) return;
-        const data = await res.json();
+        const data = await getJsonOnce(`${assetBase}volumes.json`);
         const volumes = data.volumes || [];
         const totalPages = volumes.reduce((acc, v) => acc + ((v.page_last || 0) - (v.page_first || 1) + 1), 0);
 
@@ -335,6 +534,153 @@ const personas = [
       } catch (e) {
         console.warn(s.statsLoadError, e);
       }
+    }
+
+    function cleanAuthorLabel(label) {
+      return String(label || '')
+        .replace(/^\d+\)\s*/, '')
+        .replace(/^\*\*|\*\*$/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    function isLikelyAuthor(label) {
+      if (!label) return false;
+      if (label.length > 48) return false;
+      if (/^A autoria/i.test(label)) return false;
+      if (/^The authors?/i.test(label)) return false;
+      if (!/[\p{L}]/u.test(label)) return false;
+      return true;
+    }
+
+    function renderAuthorChips(items) {
+      if (!authorsList) return;
+      const unique = [];
+      const seen = new Set();
+      for (const raw of items || []) {
+        const label = cleanAuthorLabel(raw);
+        if (!isLikelyAuthor(label) || seen.has(label)) continue;
+        seen.add(label);
+        unique.push(label);
+        if (unique.length >= 18) break;
+      }
+
+      authorsList.innerHTML = '';
+      authorsList.setAttribute('aria-busy', 'false');
+      if (!unique.length) {
+        authorsList.innerHTML = `<p style="margin:0;color:var(--color-muted);">${isEn ? 'No authors found.' : isIt ? 'Nessun autore trovato.' : 'Nenhum autor encontrado.'}</p>`;
+        return;
+      }
+
+      const wrap = document.createElement('div');
+      wrap.style.cssText = 'display:flex;flex-wrap:wrap;gap:var(--space-2);';
+      unique.forEach((label) => {
+        const a = document.createElement('a');
+        a.href = searchUrl(label);
+        a.textContent = label;
+        a.style.cssText = 'display:inline-flex;align-items:center;padding:0.35rem 0.55rem;border-radius:999px;border:1px solid var(--color-border);background:var(--color-surface);text-decoration:none;color:var(--color-ink);';
+        wrap.appendChild(a);
+      });
+      authorsList.appendChild(wrap);
+    }
+
+    function renderThemeGroups(groups) {
+      if (!themeGroups) return;
+      const visible = (groups || []).filter((g) => !g?.is_noise).slice(0, 12);
+      themeGroups.innerHTML = '';
+      themeGroups.setAttribute('aria-busy', 'false');
+      if (!visible.length) {
+        themeGroups.innerHTML = `<p style="margin:0;color:var(--color-muted);">${isEn ? 'No theme groups found.' : isIt ? 'Nessun gruppo tematico trovato.' : 'Nenhum grupo temático encontrado.'}</p>`;
+        return;
+      }
+
+      const grid = document.createElement('div');
+      grid.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-3);margin-top:var(--space-4);';
+      visible.forEach((group) => {
+        const card = document.createElement('article');
+        card.className = 'card';
+        card.style.margin = '0';
+        const top = Array.isArray(group.top_keywords) ? group.top_keywords.slice(0, 4) : [];
+        const title = top[0]?.label || (isEn ? 'Theme group' : isIt ? 'Gruppo tematico' : 'Grupo temático');
+        card.innerHTML = `
+          <p class="eyebrow" style="margin:0 0 var(--space-2);">${title}</p>
+          <p style="margin:0 0 var(--space-2); color:var(--color-muted);">${group.total?.toLocaleString?.() || group.total || 0} ${isEn ? 'occurrences' : isIt ? 'occorrenze' : 'ocorrências'}</p>
+        `;
+        const chips = document.createElement('div');
+        chips.style.cssText = 'display:flex;flex-wrap:wrap;gap:0.4rem;';
+        top.forEach((kw) => {
+          const a = document.createElement('a');
+          a.href = searchUrl(kw.label);
+          a.textContent = kw.label;
+          a.style.cssText = 'text-decoration:none;color:var(--color-ink);padding:0.2rem 0.4rem;border:1px solid var(--color-border);border-radius:999px;background:var(--color-surface);font-size:0.82rem;';
+          chips.appendChild(a);
+        });
+        card.appendChild(chips);
+        grid.appendChild(card);
+      });
+      themeGroups.appendChild(grid);
+    }
+
+    async function loadAuthors() {
+      if (authorsLoaded || !authorsList) return;
+      authorsLoaded = true;
+      try {
+        const data = await getJsonOnce(`${assetBase}dict/authors.json`);
+        renderAuthorChips(Array.isArray(data) ? data : data.items || []);
+      } catch (err) {
+        authorsLoaded = false;
+        authorsList?.setAttribute('aria-busy', 'false');
+        authorsList.innerHTML = `<p style="margin:0;color:var(--color-muted);">${isEn ? 'Failed to load authors.' : isIt ? 'Impossibile caricare gli autori.' : 'Falha ao carregar autores.'}</p>`;
+        console.error(err);
+      }
+    }
+
+    async function loadTags() {
+      if (tagsLoaded || !cloud) return;
+      tagsLoaded = true;
+      try {
+        const data = await getJsonOnce(`${assetBase}dict/keywords_top.json`);
+        const items = (data.items || []).slice(0, 60);
+        if (items.length) {
+          renderCloud(items);
+        } else {
+          cloud.innerHTML = `<p style="margin:0;color:var(--color-muted);">${s.tagCloudEmpty}</p>`;
+        }
+      } catch (err) {
+        tagsLoaded = false;
+        console.error(s.tagCloudError, err);
+        cloud.innerHTML = `<p style="margin:0;color:var(--color-muted);">${s.tagCloudError}</p>`;
+      }
+    }
+
+    async function loadThemeGroups() {
+      if (groupsLoaded || !themeGroups) return;
+      groupsLoaded = true;
+      try {
+        const data = await getJsonOnce(`${assetBase}dict/keyword_groups.json`);
+        renderThemeGroups(data.groups || []);
+      } catch (err) {
+        groupsLoaded = false;
+        themeGroups?.setAttribute('aria-busy', 'false');
+        themeGroups.innerHTML = `<p style="margin:0;color:var(--color-muted);">${isEn ? 'Failed to load themes.' : isIt ? 'Impossibile caricare i temi.' : 'Falha ao carregar temas.'}</p>`;
+        console.error(err);
+      }
+    }
+
+    function observeLazyLoad(targetId, handler) {
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            obs.disconnect();
+            void handler();
+          }
+        }, { rootMargin: '180px 0px' });
+        observer.observe(target);
+        return;
+      }
+      window.setTimeout(() => void handler(), 0);
     }
 
     function renderCloud(items) {
@@ -373,24 +719,11 @@ const personas = [
       });
     }
 
-    async function loadTags() {
-      try {
-        const res = await fetch(`${assetBase}dict/keywords_top.json`);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        const items = (data.items || []).slice(0, 60);
-        if (items.length) {
-          renderCloud(items);
-        } else {
-          cloud.innerHTML = `<p style="margin:0;color:var(--color-muted);">${s.tagCloudEmpty}</p>`;
-        }
-      } catch (err) {
-        console.error(s.tagCloudError, err);
-        cloud.innerHTML = `<p style="margin:0;color:var(--color-muted);">${s.tagCloudError}</p>`;
-      }
-    }
-
     loadStats();
-    loadTags();
+    observeLazyLoad('authors-list', loadAuthors);
+    observeLazyLoad('temas', async () => {
+      await loadTags();
+      window.setTimeout(() => void loadThemeGroups(), 0);
+    });
   </script>
 </Layout>

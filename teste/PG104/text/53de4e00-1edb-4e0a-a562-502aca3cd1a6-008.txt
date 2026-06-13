@@ -1,51 +1,59 @@
-SAECULUM 1X, ANNUS $91
-
+<pagina estado="com_texto">
+  <bloco tipo="cabecalho" script="latino" bbox="200,10,800,70">
+SÆCVLVM XI, ANNUS 891
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="100,70,900,270">
 ΦΩΤΙΟΥ,
-
-ΠΑΤΡΙΆΡΧΟΥ ΚΩΝΣΤΑΝΤΙΝΟΥΠΟΛΕΩΣ,
-ΤΑ EYPIZKOMENA IIANTA.
-
-[ond
-
+ΠΑΤΡΙΑΡΧΟΥ ΚΩΝΣΤΑΝΤΙΝΟΥΠΟΛΕΩΣ.
+ΤΑ ΕΥΡΙΣΚΟΜΕΝΑ ΠΑΝΤΑ.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,270,920,520">
 PHOTII,
-
- CONSTANTINOPOLITANI PATRIARCHJE,
-
+CONSTANTINOPOLITANI PATRIARCHÆ,
 OPERA OMNIA
-
 IN CLASSES QUINQUE DISTRIBUTA :
-EXEGETICA, DOGMATICA, PARUENETICA, HISTORICA, CANONICA;
-CUBIS VARIORUM, NEMPE :
-
-CHRISTOPHON WOLFIT, ΑΥ̓͂Θ. ANT. SCOTTI, FRANC. COMBEFISII, CARD. BARONII, STEWAR-
-TII, RICH MONTACUTII, ANTIMITI REMNICENSIS EPI. [SCOPI FR. SCORSI, JOANN. BAPT.
-COTELEAIT 1 UST ELLI, VOELLI, FONTANI, CORDERII, ANDREE SCHOTTI, CRAMERI , CARD. ANG.
-
-Al, JAGERI, EMMANUELIS BEKKERI, JOSEPHI HERGENROETH. ER, -
-
-JAM ANTEA LUCE DONATA, PARTIM NUNC PRIMUM EDITA ;
+EXEGETICA, DOGMATICA, PARÆNETICA, HISTORICA, CANONICA;
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,520,880,640">
+CUIUS VARIORUM, NEMPE :
+CHRISTOPHORI VOLLII, ANG. ANT. SCOTTI, FRANC. COMBESIIS, CARD. BARONII, STEWARTII, RICHARDI MONTACUTII, ANTIMII REMNICENSIS EPISCOPI, FR. SCORSI, JOANN. BAPT. COTELIERII, JUSTELLI, VOLLII, FONTANI, CORDRII, ANDREÆ SCHOTII, CRAMERI, CARD. ANG. MALL, JAEGER, EMMANUELIS BEXELII, JOSEPHI HERGENROTHER,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,640,880,740">
+JAM ANTEA LUCE DONATA, PARTIM NUNC PRIMUM EDITA;
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,740,880,820">
 ACCEDUNT
-
-PETM SICULI, PETRI! ARQÜUM EPISCOPI, BABTHOLONAEI EDESSENI OPUICPLA, — 7 "i
-
+PETRI SICULI, PETRI [ilegivel] EPISCOPI, BARTHOLOMEI EDESSENI OPUSCULA.
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="120,820,880,900">
 ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE,
-Bibliiethece Cleri universe, ᾿
-
-SIYE
-CURSUUM COMPLETORUM IN SINGULOS SCIENTLE ECCLESIASTICUS RAMOS EDITORE.
-———— HQ QC ——Há—
+Bibliothecæ cleri universæ,
+SIVE
+CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="160,900,840,960">
+——
 TOMUS QUARTUS ET ULTIMUS.
-
-———ÉEEREEREEERRP- Ot RR mmt
-
-VvENEUNT À voL. 482 FRANCIS GALLICIS.
-e
-
-EXCUDEBATUR ET VENIT APUD J -P. MIGNE EDITOREM,
-
-IN YIA DICTA D'ANBOISE, OLIM PROPE PORTAM LUTETIA PARISIORUM VULGO D'ENFER
-NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MOENIA PARISINA.
-
+——
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="280,960,720,1010">
+VENUNT 4 VOL. 42 FRANCIS GALLICIS.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="60,1010,940,1160">
+EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
+IN VIA DICTA D'AMBOISE, OLIM PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MOENIA PARISINA.
 1860
-
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="700,620,940,840">
+[selo] BIBLIOTHECA B[ilegivel]
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="740,1160,980,1220">
 Digitized by Google
+  </bloco>
+  <notas>
+- Página mista: grego e latino (script="grego" e script="latino") foram preservados nos blocos respectivos.
+- Vários nomes próprios e abreviações na lista dos "variorum" estão parcialmente ilegíveis; os vocábulos incertos foram marcados com [ilegivel] onde necessário (apenas para palavras individuais).
+- Não foram observadas identificações marginais A, B, C ou D no gutter; portanto, nenhum bloco nota_marginal para esses identificadores foi incluído.
+- BBOX estimadas em escala 0-1000, aproximadas conforme orientação visual.
+  </notas>
+</pagina>

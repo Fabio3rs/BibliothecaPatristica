@@ -1,21 +1,49 @@
 #!/usr/bin/env bash
 
-# Calls the OCR to the Patristica Grega volumes (PGXXX.pdf)
-# using the Tesseract OCR engine.
-# The language used is Latin+Greek (lat+grc).
+# patristicagrega.sh (versão com GNU parallel)
+# Executa `main2.py` em paralelo sobre os PDFs PG*.pdf e gera logs por volume em ./teste/
 
-FILES=/homessddata/patristica/PG*.pdf
-for f in $FILES
-do
-  echo "Processing $f file..."
-  # se existir teste/$f (sem o pdf)/*.txt, pula
-  # exemplo teste/PG001/*.txt
-  # if [ -d "teste/${f%.pdf}" ] && [ "$(ls -A teste/${f%.pdf}/*.txt 2>/dev/null)" ]; then
-  #   echo "Skipping $f, already processed."
-  #   continue
-  # fi
+set -u
 
-  # python ./main2.py --algorithm ollama --llm-model qwen3.5:9b --procs 4 --omp-threads 2 --out teste/ --lang lat+grc "$f"
-  python ./main2.py --algorithm openai --llm-model gpt-5-mini --procs 100 --omp-threads 2 --out teste/ --lang lat+grc "$f"
-done
+# Configuráveis via env: JOBS, PROCS, OMP_THREADS, LLM_MODEL
+JOBS=${JOBS:-11}
+PROCS=${PROCS:-1}
+OMP_THREADS=${OMP_THREADS:-2}
+LLM_MODEL=${LLM_MODEL:-qwen3.5:397b-cloud}
+ALGORITHM=${ALGORITHM:-ollama}
 
+# Diretório de saída de logs
+LOG_DIR=${LOG_DIR:-teste}
+mkdir -p "${LOG_DIR}"
+
+# Coleta arquivos (tratando ausência de matches)
+shopt -s nullglob
+VOLUMES=(/homessddata/patristica/PG*.pdf)
+shopt -u nullglob
+
+if [ ${#VOLUMES[@]} -eq 0 ]; then
+  echo "Nenhum arquivo PG*.pdf encontrado em /homessddata/patristica"
+  exit 0
+fi
+
+echo "📦  Usando GNU parallel (jobs=${JOBS}) — processando ${#VOLUMES[@]} volumes"
+
+# Exportar variáveis que queremos que apareçam expandidas na linha de comando
+export PROCS OMP_THREADS LLM_MODEL LOG_DIR
+
+printf '%s
+' "${VOLUMES[@]}" | \
+parallel --bar --jobs "${JOBS}" --halt soon,fail=10% \
+  "python './main2.py' \
+      --algorithm '${ALGORITHM}' \
+      --llm-model '${LLM_MODEL}' \
+      --procs '${PROCS}' \
+      --omp-threads '${OMP_THREADS}' \
+      --verify-fix --do-not-reprocess-compare \
+      --out '${LOG_DIR}/' \
+      --lang 'lat+grc' '{}' \
+      > '${LOG_DIR}/{/}.log' 2>&1"
+
+echo "" 
+
+# lat+grc

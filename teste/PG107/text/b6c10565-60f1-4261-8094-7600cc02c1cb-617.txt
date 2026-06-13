@@ -1,8 +1,61 @@
-1153 ORACULA. LET!
+<pagina estado="com_texto">
+  <bloco tipo="cabecalho" script="latino" bbox="40,20,960,80">
+    1153    ORACULA.    1154
+  </bloco>
 
-1 sn |
+  [!-- Coluna esquerda (toda a coluna esquerda primeiro) --]
+  <bloco tipo="texto_principal" script="desconhecido" bbox="40,90,490,440">
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="40,450,490,490">
+    Figure 5.
+  </bloco>
 
-Figure 7. Figure 8.
+  <bloco tipo="texto_principal" script="desconhecido" bbox="40,500,490,840">
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="40,850,490,900">
+    Figure 7.
+  </bloco>
 
-PaTRoL. Ga. CVII. 81
-Digitized by Google
+  <bloco tipo="rodape" script="latino" bbox="40,910,620,980">
+    PATROL. Gr. CVII.
+  </bloco>
+
+  [!-- Notas marginais no gutter (A, B, C, D) como blocos separados --]
+  <bloco tipo="nota_marginal" script="latino" bbox="490,130,520,180">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,360,520,420">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,600,520,660">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,840,520,900">
+    D
+  </bloco>
+
+  [!-- Coluna direita (após completar a coluna esquerda) --]
+  <bloco tipo="texto_principal" script="desconhecido" bbox="510,90,960,440">
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="510,450,960,490">
+    Figure 6.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="desconhecido" bbox="510,500,960,840">
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="510,850,960,900">
+    Figure 8.
+  </bloco>
+
+  [!-- Rodapé direito: numeração de página e marca do scanner --]
+  <bloco tipo="rodape" script="latino" bbox="820,910,960,980">
+    87
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="360,980,660,1000">
+    Digitized by Google
+  </bloco>
+
+  <notas>
+    Os blocos que contêm as ilustrações foram mantidos como texto_principal com script="desconhecido" e sem transcrição interna, uma vez que contêm apenas imagens e pequenos rótulos gráficos (letras indicativas) não legíveis com segurança. As legendas das figuras foram transcritas exactamente como aparecem: "Figure 5.", "Figure 6.", "Figure 7.", "Figure 8.". As quatro identificações verticais no gutter foram transcritas como notas marginais separadas: A, B, C, D.
+  </notas>
+</pagina>

@@ -1,47 +1,60 @@
+<pagina estado="com_texto">
+  <bloco tipo="cabecalho" script="misto" bbox="120,20,880,120">
 TRADITIO CATHOLICA.
-SAECULUM X. ANNUS 965.
-
+SÆCULUM X. ANNUS 963.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="100,130,900,260">
 ΣΥΜΕΩΝ
-
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="300,270,700,320">
 ΛΟΓΟΘΕΤΟΥ,
-
-TOY ΜΕΤΑΦΡΑΣΤΟΥ͂,
-
-ΤΑ EYPIXKOMENA ΠΑΝΤΑ.
-
-a m———À
-
-SYMEONIS LOGOTHET A,
-
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="80,330,920,420">
+ΤΟΥ ΜΕΤΑΦΡΑΣΤΟΥ,
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="180,440,820,500">
+ΤΑ ΕΥΡΙΣΚΟΜΕΝΑ ΠΑΝΤΑ.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="200,510,800,520">
+—
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,540,880,620">
+SYMEONIS LOGOTHETÆ,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="420,630,580,660">
 COGNOMENTO
-
-METAPHRAST E,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,680,880,760">
+METAPHRAS TÆ,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="220,780,780,820">
 OPERA OMNIA,
-
-ASCETICA, PARJENETICA, CANONICA, HISTORICA, HAGIOGRAPHICA, MAGNAM
-PARTEM EX MSS. PARISIENSIBUS NUNC PRIMUM GRJECE EDITA;
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="110,740,890,920">
+ASCETICA, PARÆNETICA, CANONICA, HISTORICA, HAGIOGRAPHICA, MAGNAM PARTEM EX MSS. PARISIENSIBUS NUNC PRIMUM GRÆCE EDITA;
 ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE,
-
-BIRLIOTVESORM OLEBR!I ONIVERSE,
-sivk
-
-CURSUUM COMPLETORUM IN SINGULOS SCIENTLE ECCLESIASTICE RAMOS EDITORE.
-
-————— ÁUiÁjÁtiÁt»-6-6-0 c ——————
-
+BIBLIOTHECÆ CŒRI UNIVERSÆ,
+SIVE
+CURSUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
+----------------------------------------------------------------
 TOMUS PRIMUS.
-—————— ÁÁÁ/ ÁAÁnin»oe-e-o«um——————————
-
-YENEUNT TRIA VOLUMINA 33 FRANCIS GALLICIS.
-
+VENUNT TRIA VOLUMINA 33 FRANCIS GALLICIS.
 EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
-IN NIA DICTA D'AMBOISE, OLIM PROPE PORTAM LUTETL£ PARISIORUM VULGO D'ENFER
-NOMINATAM, SEU PETIT-MONTROUGE, ἢ NUNC VERO INTRA MOENIA PARISINA.
-
-1861
-
-TR gos
-
-Cu ΄
+IN VIA DICTA D'AMBOISE, OLIM PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MOENIA PARISINA.
+1864
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="720,520,940,760">
+[ilegivel]
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="300,980,700,1000">
+R. 4, 27.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="760,980,980,1000">
 Digitized by Google
+  </bloco>
+  <notas>
+- Script identificado como misto (grego e latino): linhas principais em grego maiúsculo e o restante em latino.
+- O carimbo circular à direita está parcialmente legível na imagem; transcrito aqui como [ilegivel] para não inventar leitura.
+- A disposição dos blocos respeita ordem visual de cima para baixo; agrupou-se o texto editorial e informações editoriais numa única área inferior para manter ordem e evitar sobreposição de bounding boxes.
+  </notas>
+</pagina>

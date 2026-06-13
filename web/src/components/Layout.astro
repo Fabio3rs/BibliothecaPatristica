@@ -1,25 +1,25 @@
 ---
 import '../styles/global.css';
+import '../utils/dataCache.ts';
 import Breadcrumbs from './Breadcrumbs.astro';
-import { useTranslations, getLocaleSwitchUrl } from '../i18n';
+import { useTranslations, getLocaleUrl } from '../i18n';
 
 const { title = 'Bibliotheca Patristica', description = 'Acervo digital aberto da Patrologia Graeca, Latina e Orientalis de J.P. Migne — busca textual e metadados enriquecidos.', breadcrumbs = [] } = Astro.props;
 const rawBase = import.meta.env.BASE_URL || '/';
-const base = rawBase;
-const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
+const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
+const baseWithSlash = `${base}/`;
 
 const t = useTranslations(Astro.currentLocale);
 // Mapeia locale para tag BCP-47 válida no atributo lang do HTML
 const locale = Astro.currentLocale ?? 'pt-br';
 const htmlLang = locale === 'en' ? 'en' : locale === 'it' ? 'it-IT' : 'pt-BR';
 
-// URL para o mesmo caminho no outro locale
-const switchUrl = getLocaleSwitchUrl(
-  Astro.currentLocale,
-  Astro.url.pathname,
-  base,
-  Astro.url.search,
-);
+const localeOptions = [
+  { code: 'pt-br', label: t.langSwitchPt },
+  { code: 'en', label: t.langSwitchEn },
+  { code: 'it', label: t.langSwitchIt },
+] as const;
+const localeRoot = locale === 'pt-br' ? baseWithSlash : `${baseWithSlash}${locale}/`;
 ---
 <!doctype html>
 <html lang={htmlLang}>
@@ -47,8 +47,8 @@ const switchUrl = getLocaleSwitchUrl(
       .lang-switch {
         display: inline-flex;
         align-items: center;
-        gap: 0.25rem;
-        padding: 0.2rem 0.55rem;
+        gap: 0.35rem;
+        padding: 0.2rem;
         border-radius: var(--radius, 6px);
         border: 1px solid var(--color-border);
         background: transparent;
@@ -65,12 +65,15 @@ const switchUrl = getLocaleSwitchUrl(
         color: var(--color-accent);
         background: color-mix(in srgb, var(--color-accent) 8%, transparent);
       }
-      .lang-switch .ls-current {
+      .lang-switch .ls-option {
+        padding: 0.2rem 0.55rem;
+        border-radius: calc(var(--radius, 6px) - 2px);
+        color: var(--color-muted);
+      }
+      .lang-switch .ls-option[aria-current="true"] {
         color: var(--color-accent);
         font-weight: 700;
-      }
-      .lang-switch .ls-sep {
-        opacity: 0.4;
+        background: color-mix(in srgb, var(--color-accent) 10%, transparent);
       }
     </style>
   </head>
@@ -85,23 +88,26 @@ const switchUrl = getLocaleSwitchUrl(
             </a>
             <div style="color: var(--color-muted); font-size: 0.95rem;">{t.tagline}</div>
           </div>
-          <nav aria-label={t.navSearch + ' / ' + t.navViewer}>
+          <nav aria-label={t.navMenuLabel}>
             <button class="nav-toggle" aria-label={t.navMenuLabel} aria-expanded="false" aria-controls="primary-nav" id="nav-toggle">
               ☰
             </button>
             <div class="nav-links" id="primary-nav">
               <a href={`${baseWithSlash}search`}>{t.navSearch}</a>
-              <a href={`${baseWithSlash}viewer?doc=PG144&page=396`}>{t.navViewer}</a>
-              <a
-                href={switchUrl}
-                class="lang-switch"
-                aria-label={t.langSwitchLabel}
-                title={t.langSwitchLabel}
-              >
-                <span class="ls-current">{t.langSwitchCurrent}</span>
-                <span class="ls-sep">|</span>
-                <span>{t.langSwitchOther}</span>
-              </a>
+              <a href={`${baseWithSlash}indices`}>{t.navIndices}</a>
+              <div class="lang-switch" role="group" aria-label={t.langSwitchLabel}>
+                {localeOptions.map((option) => (
+                  <a
+                    href={getLocaleUrl(option.code, Astro.url.pathname, base, Astro.url.search)}
+                    class="ls-option"
+                    aria-current={locale === option.code ? 'true' : undefined}
+                    aria-label={option.label}
+                    title={option.label}
+                  >
+                    {option.code === 'pt-br' ? 'PT' : option.code.toUpperCase()}
+                  </a>
+                ))}
+              </div>
             </div>
           </nav>
         </div>
@@ -130,24 +136,25 @@ const switchUrl = getLocaleSwitchUrl(
         </div>
       </footer>
     </div>
-  <script type="module">
-    const toggle = document.getElementById('nav-toggle');
-    const nav = document.getElementById('primary-nav');
-    if (toggle && nav) {
-      toggle.addEventListener('click', () => {
-        const open = nav.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', String(open));
-        toggle.textContent = open ? '✕' : '☰';
-      });
-      // Fecha ao clicar fora
-      document.addEventListener('click', (e) => {
-        if (!toggle.contains(e.target) && !nav.contains(e.target) && nav.classList.contains('open')) {
-          nav.classList.remove('open');
-          toggle.setAttribute('aria-expanded', 'false');
-          toggle.textContent = '☰';
-        }
-      });
-    }
-  </script>
-</body>
+    <script type="module">
+      //
+
+      const toggle = document.getElementById('nav-toggle');
+      const nav = document.getElementById('primary-nav');
+      if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+          const open = nav.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', String(open));
+          toggle.textContent = open ? '✕' : '☰';
+        });
+        document.addEventListener('click', (e) => {
+          if (!toggle.contains(e.target) && !nav.contains(e.target) && nav.classList.contains('open')) {
+            nav.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.textContent = '☰';
+          }
+        });
+      }
+    </script>
+  </body>
 </html>

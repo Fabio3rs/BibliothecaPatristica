@@ -1,163 +1,51 @@
-&
+<pagina estado="com_texto">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,100,50">611</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="400,20,600,50">NICEPHORI GREGORÆ</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="900,20,960,50">612</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="480,55,500,75">A</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,60,450,100">Ἄρα αὐτῷ. Ζητεῖ ἐν τοῖς ἄγνοις τῶν γενεῶν ἐλπίς.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,100,450,120">Ἀτάλλουσα. Αὔξουσα.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,120,450,140">Κουροτρόφος. Γρ. γηροτρόφος.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,140,450,160">Συναορεῖ. Συζεύγνυται, συνακολουθεῖ.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,160,450,180">Ἢ μάλισα. Ἤτις.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,190,450,230">Ἦρ μεῖς. Ἢν μικρῷ πρόσθεν εἰδωλοποιεῖσθαι ὑφ' ἡμν εἴρηκεν.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,240,450,320">Τοῦτο μικροῦ. Μικρὸν μέρος φησί τῶν ἐνυπνίων τὸ προτείνειν ἐλπίδα δόξης, ἢ πλούτου, καὶ ὅσα ἐρῶσιν οἱ φιλόσαρκοι· τὸ δὲ μεῖζον μέρος ἐστὶν ἡ διὰ τῶν νείρων μαντικὴ μελλόντων πρόγνωσις κεραταίνουσα.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,330,450,350">Φαυλοτέρου. Τοῦ ψευδοῦς.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,350,450,370">Γένους. Εἴδους.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,370,450,390">Δοκεῖν. Τὴν ἐλπίδα.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="480,300,500,320">B</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,400,450,550">Διττὰς ὑποτίθεται. Διττοὺς οἶδεν Ὅμηρος ὀνείρους, οὐρανίους καὶ χθονίους. Κέρασιν οὖν ἀπεικάζει τοὺς οὐρανίους ὀνείρους, τῷ τὰ κέρατα εἰς ὕψος ἔχειν καὶ ἀνατείνειν, ἢ καὶ τῷ ἀγγιστεύειν τῷ ἡγεμονικῷ, οὓς καὶ ἀληθεύειν φησίν· ὀδοῦσιν ἐλέφαντος δὲ τοὺς χθονίους, ὅτι οἱ ὀδόντες αὐτοῦ τῇ πλησμονῇ τς γαστρὸς ὑπηρετοῦσιν· ὅπερ ὡς γεῶδες καὶ ὑλικν εἰς συγχύσεως καὶ ψεύδους δήλωσιν παρελείφθη· καὶ ἄλλως δὲ τὸ κέρας λεπτυνόμενον διαφανὲς γίνεται, ὡς καὶ εἰς ἔσοπτρα συντελεῖν· οἱ δὲ τοῦ ἐλέφαντος ὀδόντες οὐδαμῶς· ς εἶναι κἂκ τούτου δικαιότερον εἰς ἀληθείας ἔνδειξιν τὸ κέρας παραλαμβάνεσθαι.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="480,480,500,500">C</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,560,450,590">Εἰ γάρ. Εἰ γὰρ ἦν σοφὴ περὶ τὴν τῶν ὀνείρων</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,600,450,630">Utique rei. Quærit in certaminibus generositatis spes.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,630,450,660">Juvenum nutrix. Scribitur alias, senectutis alumna.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,660,450,680">Ei comes est. Copulatur, eamque comitatur.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,680,450,710">Quam nobismet ipsis. Quam paulo ante per simulacra et imagines a nobis fingi dixit.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,710,450,790">Id omne brevis partis. Brevem insomniorum partem dicit, nempe spem gloriæ ac divitiarum præ se ferre, et quæcunque carnis amore irretiti amant et sectantur. Sed major est divinatio somniorum, quæ rerum futurarum præcognitionem lucrificit.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,790,450,810">Deterioris. Falsi vanique commentii.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="480,750,500,770">D</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,810,450,930">Duplices constituit portas. Gemina et ambigua agnovit Homerus somnia, cœlestia necnon terrestria. Proinde somnia cœlestia cornibus assimilal, eo quod cornua in fastigium vigeant tendantque, aut quod proxima affiniaque sint animi principatui, quæ etiam serio agere asserit : sed terrestria dentibus elephantis, quia ipsius dentes ventris satietati subserviunt : quod quidem velut terrenum ac materiale in confusionis ac mendacii explicationem sumptum est. Alioqui cornu extenuatum lucidum efficitur, ut etiam ad specula conferat, sed elephantis dentes nequaquam ; ut hinc justius sit ad veritatis demonstrationem cornu usurpari.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,930,450,960">Nam si. Si enim circa somniorum judicium sagax et cauta fuisset Penelope, compertum habuisset</bloco>
 
-"Apa αὑτῷ. Ζητεῖ iw τοῖς ἀγῶσι τῶν γενεῶν
-ἐλπίς,
+  <bloco tipo="texto_principal" script="grego" bbox="550,60,950,130">κρίσιν, ἐγίνωσκεν ἂν τι πάντες οἱ ὄνειροι φύσιν ἔχουσιν ἀληθεύειν, ἢ δὲ ἀνθρωπίνη ἄγνοια παρακρίνουσα ψευδεῖς αὐτούς· ἐσοῦ ὅτε λογίζεται εἶναι.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="550,130,950,180">Πάντας. Πάντας ἂν ὡς ἀληθεῖς διὰ τῶν κερατίνων πυλῶν, καὶ οὐχ ὡς ψευδεῖς τινας διὰ τῶν ἐλεφαντίνων διεβίβαζεν.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="550,180,950,200">Πεποιήσται. Ὑπὸ Ὁμήρου ἐν Ὀδυσσείᾳ τατα.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="550,200,950,350">Χῆρες μέν. Ταῦτα διέξεισιν Ὅμηρος ἐν τῷ ιθ' γράμματι τῆς δυσσείας· ἔχει δὲ οὕτως· Ἐλθὼν δ' Ὀδυσσεὺς ἐν τῷ οἴκῳ μετὰ τὴν πολλὴν ἐκείνην πλάνην, ὡμίλει μὲν τοῖς ἐν οἴκ θεράπουσι καὶ θεραπαινίσιν· ὡμίλει δὲ καὶ τῇ Πηνελόπῃ, πλὴν ὡς ξένος καὶ ἄγνωστος. Μεταξὺ τοίνυν τῶν ὁμιλιῶν ἐκείνων διεξιοῦσα πρὸς τν Ὀδυσσέα τὰς ἑαυτῆς λύπας, ὅτι νυκτὸς κα ἡμέρας ταῖς ἀμετρήτοις λύπαις ἕνεκα τοῦ ἀνδρὸς τήκεται, ὀδυρομένη γοῶσά τε, καὶ τάδε φησίν·</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="550,350,950,550">'Αλλ' ἄγε μοι τὸν ὄνειρον ὑπόκριναι, καὶ ἄκουσον· Χῆρές μοι κατὰ οἶκον ἐείκοσι πυρὸν ἔδουσιν Ἐξ ὕδατος, καὶ τέ σφιν ἰαίνομαι εἰσορόωσα· Ἐλθὼν δ' ἐξ ὄρεος μέγας αἰετὸς ἀγκυλοχείλης, Πᾶσι κατ' αὐχένας ἧκε, καὶ ἔκτανεν. Οἱ δ' ἐπὶ χυτὸν Ἀθρόοι ἐν μεγάροισι· δ' ὃ ἐς αἰθέρα δῖον ἀέρθη, Αὐτὰρ ἐγὼ κλαῖον κα ἐκώκυον ἐν περ ὀνείρῳ, μφί με γερέθοντο ἐϋπλοκαμῖδες Ἀχαιαὶ Οἰκτρ' ὀλοφυρομένην· ὅ μοι αἰετὸς ἔκτανε χῆρας· Ἄψ δ' ἐλθὼν κατ' ἄρ' ζετ' ἐπ προύχοντι μελάθρῳ, Φωνῇ δὲ βροτῇ κατερήτυε, φώρησέν τε· Θάρσει, Ἰκαρίου κούρη τηλεκλειτοῖο.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="550,600,950,650">omnia somnia sua natura posse serio agere et veracia esse. Sed ignorantia humana indecenter et inepte ea comparans, fallacia interdum vanaque esse existimat.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,650,950,690">Omnia. Omnia sicut veracia per corneas portas, et quædam velut non fallacia per elephautinas et eburneas transmittebat.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,690,950,710">Introducta est. Ab Homero : ista sunt in Olyssea.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,710,950,850">Anseres quidem proci. Ea percenset Homerus in 19 Odyssæ libro. Sic porro se res habet : Domum reversus Ulysses post assiduos illos errores, in suis quidem ædibus consuetudiuem habebat cum servis et ancillis, versabatur quoque cum Penelope, nisi quod ut hospes erat illis ignotus. Ergo inter illas confabulationes apud Ulyssem percensens suos angores et molestias, quoniam noctu diuque immoderatis animi ægritudinibus propter maritum suum tabescit et attenuatur, lugens atque lamentans, et hæc dicit :</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,850,950,960">Hospes, tu nobis, precor, hæc insomnia mente Concipe, ab anseribus vicenis, arce sub alta Pascuntur misto lymphæ frumenta liquore. Quos ego dum video pascentes, lætor, ab alto Monte volans pennis rostro crudelis adunco, Atque ingens aquila invasit, pendentia colla Cervicemque ruens vicios mactavit : at illi Sternuntur cæsi passim, et jacuere cruore. Armiger igniferum sublatus in æthera pennis Fugit, et insurgens simul aera verberat alis. Dum queror insomnis ultra flens ipsa videbam, Et lacrymas somno, largosque effundere fletus,</bloco>
 
-Ἀτάλλουσα. Ab£ovca.
-
-Κουροτρόφος. To. γηροτρόιρος.
-
-Συναορεῖ. Συζεύγννται, συναχολουθεῖ.
-
-"A μάλιστα. Ἥτις.
-
-Ἣν ἡμεῖς. Ἣν μιχρῷ πρόοθεν εἰδωλοποιεῖσθαι
-ὑφ᾽ ἡμῶν εἴρηκεν. .
-
-Τοῦτο μικροῦ. Μικρὺν μέρος φησὶ τῶν ἐνυπνίων
-τὸ προτείνειν ἐλπίδα δόξῃ; ἃ πλούτου", χαὶ ὅσα
-ἐρῶσιν οἱ φιλάραρχοι" τὸ δὲ μεῖζον μέρος ἐστὶν ἡ
-διὰ τῶν ὀνείρων μαντιχὴν μελλόντων πρόγνωσιν
-κερδαίνουσα,
-
-Φαυλοτέρου. Τοῦ ψευδοῦς.
-
-Γένους. Εἴδους.
-
-Δυχεῖν. Ἰὴν ἐλπίδα.
-
-Διττὰς ὑποτέθεται. Διττοὺς οἶδεν Ὅμηρος ὀνεῖ-
-ρους, οὐρανίους καὶ χθονίους. Κέρασιν οὖν ἀπει-
-κάζει τοὺς οὐρανίους ὀνείρους, τῷ τὰ κέρατα εἰς
-ipo, ἔχειν καὶ ἀνατείνειν, ἢ xai τῷ ἀγχιστεύειν
-πῷ ἡγεμονιχῷ, οὖς xal ἀληθεύειν φησίν’ ὀξοῦσιν
-ἐλέφαντος δὲ τοὺς χθονίους, ὅςι οἱ ὀδόντε: αὐτοῦ
-τῇ πλησμονῇ τῆς γαστρὸς ὑπηρετοῦσιν " ὅπερ ὡς
-Ὑεῶδες καὶ ὑλικὸν εἰς συγχύσεως καὶ ψεύδους δέλω-
-σιν παρελείφθη" xal ἄλλως δὲ τὸ χέρας λεπτυνόμε-
-νὸν διαφανξ; γίνεται, ὡς καὶ εἰς ἔσοπτρα συντελεῖν"
-οἱ δὲ τοῦ ἐλέφαντος ὀδόντες οὐδαμῶς" ὦ; εἶναι
-x&x τούτου δικαιότερον εἰς ἀληθείας ἔνδειξιν τὸ
-κέρας παραλαμδάνεσθα,.
-
-Εἰ γάρ. Εἰ γὰρ ἣν σοφὴ περὶ τὴν τῶν ὀνείρων
-
-Utique rei. Quzrit in certaminibus generositatis
-spes.
-
-Juvenum nutrix, Scribitur alias, senectutis a-
-tumna.
-
-Ki comes est. Copulatur, eamque comitatur.
-
-Quam nobismet ipsis. Quam paulo ante per simu-
-lacra et imagines a nobis fingi dixit,
-
-ld omne brevis partis. Brevem insomniorum por.
-lem dicit, nempe spem glori» ac divitiarum prae
-se ferre, et quxcunque carnis amore irretiti amant
-€t seclantur. Sed major est divinatio somniorum,
-quz rerum futurarum pracognitionem lucrifacit.
-
-Deterioris. Falsi vanique commenti.
-
-Duplices constituit portas. Gemina et ambigua
-agnovit llomerus somnia, celestia necnon terre-
-swia. Proinde somuia coelestia cornibus assimilat,
-€o quod cornua in fastigium vigeant tendant (ue,
-aut quod proxima atliniaque sinl animi principatui,
-quie etiam serio agere asserit: sed terrestria den-
-tibus elephantis, quia ipsius dentes ventris salic-
-tati subserviunt: quod quidem velut terrenum ac
-waterisle in confusionis ac mendacii explicationem
-sumptum est. Alioqui cornu extenuatum lucidum
-efficitur, ut etiam ad specula conferat, sed elephau-
-tis dentes nequaquam ; ut hinc justius sit ad veri-
-tatis demonstrationem cornu usurpari.
-
-Nam si. Si enim circa somniorum judicium sa-
-gax et cauta fuisset Penelope, compertum habuisset
-
-NICEPIIORI SREGOR.E
-
-012
-Δ κρίσιν, ἐγίνωσκεν ἂν ὅτι πάντες οἱ δνείροι φύσιν
-ἔχουσιν ἀληθεύειν, ἡ δὲ ἀνθρωπίνη ἄγνοια παρλ-
-κρίνουσα ψευδεῖς αὐτοὺ; ἔσθ' ὅτε λογίζεται εἶναι,
-Πάγτας. Πάντας ἂν ὡς ἀληθεῖς διὰ τῶν x£paxi-
-νῶν πυλῶν, xal οὐχ ὡς ψευδεῖς τινας διὰ τῶν ἐλε-
-φαντίνων διεδίδαξεν.
-Πεποίηται, Ὑπὸ "Oufpov ἐν Ὀδυσσείᾳ. ταῦτα,
-
-Xüvec μέν. Ταῦῖτα διέξεισιν "Opnpoc ἐν τῷ i
-γράμματι vij; Ὀδυσϑδείας" ἔχει δὲ οὕτως" "E/09v ὁ
-Ὀδυσσεὺς ἐν τῷ οἴκῳ μετὰ τὴν πολλὴν ἐχείνην
-φλάνην, ὡμίλει μὲν τοῖς ἐν οἴκῳ θεράπουτι xz
-θεραπαινίσιν * ὡμίλει δὲ xal τῇ Πηνελόπῃ, πλὶν
-ὡς ξένος xal ἄγνωστος. Μεταξὺ τοίνυν τῶν ὁμιλιῶν
-ἐχείνων διεξιοῦσα πρὸς τὸν Ὀδυσσέα τὰς ἑαυτῆς
-λύπας, ὅτι νυχτὸς καὶ ἡμέρας ταῖς ἀμετρῆτοις λύ-
-πᾶις ἕνεχα τοῦ ἀνδρὸς τήχεται, ὀδυρομένη γοῶσά
-«ε, χαὶ τάδε φησίν’
-
-"AAA ἄγε μοι τὸν ὄνειρον ὑπόχριγαι, καὶ ἄχου-
-σὴν
-Χῆνές μοι κατὰ οἶκον ἐδίκοσι πυρὸν ἔδουσιν
-ἘΞ ὕδατος, καί τέ σφιν ἰαίνομαι εἰσορόωσα"
-Ἐλιθὼν δ' ἐξ ὄρεος μέγας αἰδτὸς ἀγκυκοχείης,
-Πᾶσι κατ᾽ αὐχένας j£e, xal ἔκεσγεν. " e ἐκέ-
-χυγτο
-᾿Αθρόοι ἐν μεγάροις" ὁ δ' ἐς αἰθέρα δῖον ἀέρθη.
-Αὐτὰρ ἐγὼ κλαῖον καὶ ἑκώκυον Ev περ ὀγείρῳ,
-Ἀμφί μὲ ἠγερέθοντο ἐῦπιλοκαμίδες ᾿Αχαιαὶ .
-Ol«cp' ὀλορυρομένην ὅ μοι αἰετὸς ἔκτανε χῆ"
-
-ρας
-Ay ἐλθὼν κατ᾽ ἄρ᾽ ξζετ' ἐπὶ κροῦχοντι pai»
-"TR
-Φωνῇ δὲ βροτέῃ xarspiitvs, φώνησέν τε"
-C Θάρσει, "Ixapiou χούρη tnAexAetcoio.
-omnia somnia $ua natura posse serio agere et ve:
-racia esse, Sed ignorantia humana indecenter et
-inepte ea. comparans, fallacia interdum vanaque
-esse exsistimat.
-
-Omnia. Omnia sicut veracia per corneas portas,
-et quxdam velut non fallacia per clephantinas et
-eburneas transmittebat.
-
-Introducta est. Ab llomero : ista sunt in OJysses.
-
-Anseres quidein proci. Ea percenset Ilomerus ia
-19 Odyssez libro. Sic porro se res habet: Domum
-reversus Ulysses post assiduos illos errores, in suis
-quidem zdibus consuetudiuem habebat cum servis
-et ancillis, versabatur quoque cum Penelope , nisi
-D quod ut hospes erat illis ignotus. — Ergo inter illas
-
-confabulationes apud Ulyssem  petcensens suos
-
-angores et molestias, quoniam noctu diuque im-
-
-moderatis animi sgritudinibus propter maritum
-
-suum iabescit οἱ attenuatur, lugens atque lamen
-
-lans, et hzc dicit :
-Hospes, tu nobis, precor, haec insomnia mente
-Concipe, αὖ anseribus vicenis, arce sub alia
-Pascuntur misto lympha frumenta liquore.
-Quos ego dum video pascentes, lator, ab alto
-Monte volans pennis rostro crudelis adunco,
-Alque ingens. aquila invasit, pendentia colla
-Cervicemque ruens vicios mactavii : at illi
-Sternuntur cesi passim, et jacuere cruore.
-Armiger igniferum sublatus in ethera pennis
-Fugit, et insurgens. simul aera verberat alis,
-Dum queror insomnis ultro [lens ipsa videbar,
-Et lucrymas somno, largosque effundere fletus,
-
-4
-
-Digitized by Google
-
+  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">Digitized by Google</bloco>
+</pagina>

@@ -9,26 +9,40 @@ const uiStrings = serializeTranslations(t);
 const uiLocale = Astro.currentLocale ?? 'pt-br';
 ---
 <Layout title={t.searchTitle} description={t.searchSubtitle} breadcrumbs={[{label: t.breadcrumbHome, href: baseWithSlash},{label: t.breadcrumbSearch}]}>
-  <div class="main-grid">
+  <div class="main-grid search-layout">
     <FiltersPanel loading={true} />
 
-    <section aria-label={t.ariaResults} style="display:flex;flex-direction:column;gap:var(--space-4);">
-      <header style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);flex-wrap:wrap;">
-        <div>
-          <p style="margin:0;color:var(--color-muted);">{t.searchSubtitle}</p>
-          <h1 style="margin:0;">{t.searchTitle}</h1>
+    <section aria-label={t.ariaResults} class="search-main">
+      <header class="search-hero card">
+        <div class="search-hero-copy">
+          <p class="eyebrow">{t.searchSubtitle}</p>
+          <h1>{t.searchTitle}</h1>
+          <p>{t.searchHeroHint}</p>
         </div>
-        <div style="display:flex;align-items:center;gap:var(--space-2);flex-wrap:wrap;">
+        <div class="search-controls">
           <label class="sr-only" for="search-box">{t.searchPlaceholder}</label>
-          <input id="search-box" type="search" placeholder={t.searchPlaceholder} list="keywords-suggestions" class="search-input" />
+          <input id="search-box" type="search" placeholder={t.searchPlaceholder} list="keywords-suggestions" class="search-input search-input-xl" />
           <datalist id="keywords-suggestions"></datalist>
-
-          <label for="page-size" style="font-size:0.9rem;color:var(--color-muted);">{t.searchItemsLabel}</label>
-          <select id="page-size" class="page-size-select">
-            <option value="10">10</option>
-            <option value="25" selected>25</option>
-            <option value="50">50</option>
-          </select>
+          <div class="search-toolbar">
+            <label for="page-size" class="search-toolbar-label">{t.searchItemsLabel}</label>
+            <select id="page-size" class="page-size-select">
+              <option value="10">10</option>
+              <option value="25" selected>25</option>
+              <option value="50">50</option>
+            </select>
+          </div>
+          <div class="search-quick-filters" aria-label={t.searchHeroLabel}>
+            <button type="button" class="chip-button" data-collection="">{t.searchAllCollections}</button>
+            <button type="button" class="chip-button" data-collection="PG">PG</button>
+            <button type="button" class="chip-button" data-collection="PL">PL</button>
+            <button type="button" class="chip-button" data-collection="PO">PO</button>
+          </div>
+          <div class="search-suggestions">
+            <button type="button" class="suggestion-button" data-term="Agostinho de Hipona">{t.searchQuickAuthors}</button>
+            <button type="button" class="suggestion-button" data-term="Trindade">{t.searchQuickThemes}</button>
+            <button type="button" class="suggestion-button" data-term="João 1,1">{t.searchQuickScripture}</button>
+            <button type="button" class="suggestion-button" data-term="Eucaristia">{t.searchQuickKeywords}</button>
+          </div>
         </div>
       </header>
 
@@ -37,6 +51,180 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       </div>
     </section>
   </div>
+
+  <style>
+    .search-layout {
+      align-items: start;
+    }
+    .search-layout :global(.card[aria-label]) {
+      position: sticky;
+      top: calc(var(--space-4) + 72px);
+      max-height: calc(100vh - 96px);
+      overflow: auto;
+    }
+    .search-main {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+    .search-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-4);
+      padding: var(--space-6);
+      border: 1px solid var(--color-border);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 92%, var(--color-accent) 8%) 0%, var(--color-surface) 100%);
+    }
+    .search-hero-copy .eyebrow {
+      margin: 0 0 var(--space-2);
+      color: var(--color-muted);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+    .search-hero-copy h1 {
+      margin: 0;
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+    }
+    .search-hero-copy p {
+      margin: var(--space-3) 0 0;
+      max-width: 70ch;
+      color: var(--color-muted);
+      line-height: 1.65;
+    }
+    .search-controls {
+      display: grid;
+      gap: var(--space-3);
+    }
+    .search-input-xl {
+      max-width: none;
+      padding: 1rem 1.05rem;
+      border-radius: var(--radius-m);
+      font-size: 1.05rem;
+    }
+    .search-toolbar {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+    .search-toolbar-label {
+      color: var(--color-muted);
+      font-size: 0.9rem;
+    }
+    .filters details {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-s);
+      background: var(--color-surface-2);
+      padding: 0.5rem 0.7rem;
+    }
+    .filters summary {
+      cursor: pointer;
+      list-style: none;
+      font-weight: 700;
+    }
+    .filters summary::-webkit-details-marker { display: none; }
+    .filters-group {
+      display: grid;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+    }
+    .search-quick-filters,
+    .search-suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+    .chip-button,
+    .suggestion-button {
+      border-radius: 999px;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-ink);
+      padding: 0.45rem 0.8rem;
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.9rem;
+    }
+    .chip-button:hover,
+    .suggestion-button:hover,
+    .chip-button[aria-pressed="true"] {
+      background: color-mix(in srgb, var(--color-accent) 10%, var(--color-surface));
+      border-color: color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+    }
+    .search-result-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    @keyframes shimmer {
+      0% { background-position: 0% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .result-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem 0.7rem;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+    }
+    .result-meta-item {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.35rem;
+      line-height: 1.4;
+      padding: 0.14rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid var(--color-border);
+      background: color-mix(in srgb, var(--color-accent) 7%, var(--color-surface));
+    }
+    .result-meta-label {
+      color: var(--color-ink);
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+    }
+    .result-meta-value {
+      color: var(--color-muted);
+      overflow-wrap: anywhere;
+    }
+    .result-chips {
+      gap: 0.4rem;
+    }
+    .result-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+    .results-list .card {
+      box-shadow: var(--shadow-soft);
+    }
+    @media (max-width: 980px) {
+      .search-hero {
+        padding: var(--space-5);
+      }
+      .search-layout :global(.card[aria-label]) {
+        position: static;
+        max-height: none;
+        overflow: visible;
+      }
+    }
+    @media (max-width: 720px) {
+      .search-hero {
+        padding: var(--space-4);
+      }
+      .search-hero-copy h1 {
+        font-size: clamp(1.7rem, 8vw, 2.3rem);
+      }
+      .search-result-card .button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
 
   <script type="module" define:vars={{ baseUrl: baseWithSlash, uiStrings, uiLocale }}>
     const assetBase = baseUrl;
@@ -47,26 +235,20 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     // usa o atributo aria-label renderizado pelo servidor. Selecionamos pelo papel semântico.
     const filtersRoot = document.querySelector('aside[aria-label]');
     const datalist = document.getElementById('keywords-suggestions');
+    const quickCollectionButtons = Array.from(document.querySelectorAll('[data-collection]'));
+    const suggestionButtons = Array.from(document.querySelectorAll('[data-term]'));
     let checkboxNodes = [];
     let keywordOptions = [];
     let keywordCatalog = null;
     let keywordCatalogPromise = null;
     let keywordManifest = null;
     let keywordManifestPromise = null;
-    const _jsonCache = new Map();
-    function getJsonOnce(url) {
-      if (!_jsonCache.has(url)) {
-        const p = fetch(url).then(async (res) => {
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          return res.json();
-        }).catch((err) => {
-          _jsonCache.delete(url);
-          throw err;
-        });
-        _jsonCache.set(url, p);
-      }
-      return _jsonCache.get(url);
-    }
+    let renderGeneration = 0;
+    let keywordCatalogGeneration = 0;
+    const dataCache = window.pdfocrDataCache;
+    const jsonCache = new Map();
+    const RESULT_BATCH_SIZE = 8;
+    const KEYWORD_SHARD_BATCH_SIZE = 4;
 
     // Reconstrói funções de formatação (não serializáveis via define:vars)
     const s = uiStrings;
@@ -87,6 +269,35 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       : isIt
         ? (cat, val) => `Filtra per ${cat}: ${val}`
       : (cat, val) => `Filtrar por ${cat}: ${val}`;
+    const escapeHtml = (value) => String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+
+    const getJsonOnce = (url) => {
+      if (dataCache?.getJsonOnce) return dataCache.getJsonOnce(url);
+      if (!jsonCache.has(url)) {
+        const promise = fetch(url).then(async (res) => {
+          if (!res.ok) throw new Error(`HTTP ${res.status} ao buscar ${url}`);
+          return res.json();
+        }).catch((err) => {
+          jsonCache.delete(url);
+          throw err;
+        });
+        jsonCache.set(url, promise);
+      }
+      return jsonCache.get(url);
+    };
+
+    const loadJsonInBatches = (urls, options = {}) => {
+      if (dataCache?.loadJsonInBatches) return dataCache.loadJsonInBatches(urls, options);
+      return Promise.all(urls.map((url) => getJsonOnce(url).then(
+        (value) => ({ url, ok: true, value }),
+        (error) => ({ url, ok: false, value: null, error }),
+      )));
+    };
 
     const state = {
       term: '',
@@ -135,6 +346,10 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     readStateFromUrl();
     searchBox.value = state.term;
     pageSizeSel.value = String(state.pageSize);
+    quickCollectionButtons.forEach((btn) => {
+      const selected = state.filters.collection?.includes(btn.dataset.collection || '') || (!state.filters.collection && !(btn.dataset.collection || ''));
+      btn.setAttribute('aria-pressed', selected ? 'true' : 'false');
+    });
 
     let pagefindInstance = null;
     let pagefindPromise = null;
@@ -191,16 +406,18 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     async function ensureKeywordCatalog() {
       if (keywordCatalog) return keywordCatalog;
       if (keywordCatalogPromise) return keywordCatalogPromise;
+      const generation = ++keywordCatalogGeneration;
       keywordCatalogPromise = (async () => {
         const manifest = await loadKeywordManifest();
         let items = [];
 
         try {
           if (manifest?.shards?.length) {
-            const shardPayloads = await Promise.all(
-              manifest.shards.map((shard) => getJsonOnce(`${assetBase}${shard.path}`))
+            const shardResults = await loadJsonInBatches(
+              manifest.shards.map((shard) => `${assetBase}${shard.path}`),
+              { batchSize: KEYWORD_SHARD_BATCH_SIZE, delayMs: 12 },
             );
-            items = shardPayloads.flatMap((payload) => Array.isArray(payload?.items) ? payload.items : []);
+            items = shardResults.flatMap((payload) => Array.isArray(payload.value?.items) ? payload.value.items : []);
           } else {
             const fallback = await getJsonOnce(`${assetBase}dict/keywords_lookup.json`)
               .catch(() => getJsonOnce(`${assetBase}dict/keywords.json`));
@@ -213,6 +430,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           items = Array.isArray(fallback?.items) ? fallback.items : [];
         }
 
+        if (generation !== keywordCatalogGeneration) return keywordCatalog || [];
         keywordCatalog = items;
         keywordOptions = normalizeKeywordOptions(items);
         if (searchBox.value) updateSuggestions();
@@ -247,15 +465,17 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           <h2 style="margin-top:0;">${s.filtersTitle}</h2>
           <div class="filters">
             ${sections.map((sec) => `
-              <div>
-                <h3>${sec.label}</h3>
-                ${sec.items.length ? sec.items.map((item) => `
-                  <label>
-                    <input type="checkbox" name="${sec.key}" value="${item}">
-                    ${item}
-                  </label>
-                `).join('') : `<p class="muted" style="margin:0;">${s.filtersNoOptions}</p>`}
-              </div>
+              <details ${sec.key === 'collection' ? 'open' : ''}>
+                <summary>${sec.label}</summary>
+                <div class="filters-group">
+                  ${sec.items.length ? sec.items.map((item) => `
+                    <label>
+                      <input type="checkbox" name="${sec.key}" value="${item}">
+                      ${item}
+                    </label>
+                  `).join('') : `<p class="muted" style="margin:0;">${s.filtersNoOptions}</p>`}
+                </div>
+              </details>
             `).join('')}
             <div>
               <h3>${s.filterKeywords}</h3>
@@ -423,6 +643,30 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       renderTimer = setTimeout(render, 50);
     }
 
+    function setCollectionFilter(collection) {
+      if (!collection) {
+        delete state.filters.collection;
+        checkboxNodes.forEach((cb) => {
+          if (cb.name === 'collection') cb.checked = false;
+        });
+      } else {
+        state.filters.collection = [collection];
+        checkboxNodes.forEach((cb) => {
+          if (cb.name === 'collection') {
+            cb.checked = cb.value === collection;
+          }
+        });
+      }
+      quickCollectionButtons.forEach((btn) => {
+        const selected = collection ? btn.dataset.collection === collection : !btn.dataset.collection;
+        btn.setAttribute('aria-pressed', selected ? 'true' : 'false');
+      });
+      state.page = 1;
+      syncUrl();
+      if (renderTimer) clearTimeout(renderTimer);
+      renderTimer = setTimeout(render, 50);
+    }
+
     window.clearAllFilters = function() {
       state.filters = {};
       state.term = '';
@@ -451,6 +695,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     }
 
     async function render() {
+      const generation = ++renderGeneration;
       const term = (state.term || '').trim();
       const searchInput = state.exactPhrase && term ? `"${term.replace(/"/g, '\\"')}"` : term;
       const searchTerm = term === '' ? null : term;
@@ -495,6 +740,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           resultsEl.textContent = s.searchIndexEmpty;
           return;
         }
+        if (generation !== renderGeneration) return;
 
         const allResults = searchResult.results;
         const total = allResults.length;
@@ -510,21 +756,52 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           `;
           return;
         }
+        if (generation !== renderGeneration) return;
 
         // ── Paginação lazy: slice ANTES de chamar .data() ──
         const totalPages = Math.max(1, Math.ceil(total / pageSize));
         state.page = Math.min(Math.max(1, state.page), totalPages);
         const start = (state.page - 1) * pageSize;
         const end = Math.min(start + pageSize, total);
-        const hits = await Promise.all(allResults.slice(start, end).map((r) => r.data()));
+        const visibleResults = allResults.slice(start, end);
         const activeEl = document.activeElement;
         const focusAria = activeEl && activeEl.classList.contains('button') ? activeEl.getAttribute('aria-label') : null;
 
+        if (generation !== renderGeneration) return;
         resultsEl.innerHTML = '';
         const nav = buildPagination(state.page, totalPages, total, start, end);
         resultsEl.appendChild(nav);
-        hits.forEach((hit) => resultsEl.appendChild(buildCard(hit, term)));
+        const cardsWrap = document.createElement('div');
+        cardsWrap.style.display = 'grid';
+        cardsWrap.style.gap = 'var(--space-4)';
+        cardsWrap.setAttribute('aria-busy', 'true');
+        const loadingNotice = document.createElement('div');
+        loadingNotice.className = 'card';
+        loadingNotice.style.margin = '0';
+        loadingNotice.innerHTML = `
+          <p style="margin:0 0 var(--space-3);color:var(--color-muted);">${s.searchBusy}</p>
+          <div style="display:grid;gap:var(--space-2);" aria-hidden="true">
+            <div style="height:0.9rem;border-radius:999px;background:linear-gradient(90deg,var(--color-surface-2),color-mix(in srgb,var(--color-accent) 14%,var(--color-surface)),var(--color-surface-2));background-size:200% 100%;animation:shimmer 1.4s linear infinite;"></div>
+            <div style="height:0.65rem;width:82%;border-radius:999px;background:linear-gradient(90deg,var(--color-surface-2),color-mix(in srgb,var(--color-accent) 14%,var(--color-surface)),var(--color-surface-2));background-size:200% 100%;animation:shimmer 1.4s linear infinite;"></div>
+            <div style="height:0.65rem;width:64%;border-radius:999px;background:linear-gradient(90deg,var(--color-surface-2),color-mix(in srgb,var(--color-accent) 14%,var(--color-surface)),var(--color-surface-2));background-size:200% 100%;animation:shimmer 1.4s linear infinite;"></div>
+          </div>
+        `;
+        cardsWrap.appendChild(loadingNotice);
+        resultsEl.appendChild(cardsWrap);
         resultsEl.appendChild(buildPagination(state.page, totalPages, total, start, end));
+
+        for (let i = 0; i < visibleResults.length; i += RESULT_BATCH_SIZE) {
+          if (generation !== renderGeneration) return;
+          const chunk = visibleResults.slice(i, i + RESULT_BATCH_SIZE);
+          const hits = await Promise.all(chunk.map((r) => r.data()));
+          if (generation !== renderGeneration) return;
+          if (loadingNotice.isConnected) loadingNotice.remove();
+          hits.forEach((hit) => cardsWrap.appendChild(buildCard(hit, term)));
+          if (i + RESULT_BATCH_SIZE < visibleResults.length) {
+            await new Promise((resolve) => setTimeout(resolve, 0));
+          }
+        }
+        cardsWrap.removeAttribute('aria-busy');
         if (focusAria) {
           const btn = resultsEl.querySelector(`[aria-label="${focusAria}"]`);
           if (btn) btn.focus();
@@ -586,13 +863,14 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
     function buildCard(hit, term) {
       const article = document.createElement('article');
-      article.className = 'card';
+      article.className = 'card search-result-card';
 
       const h3 = document.createElement('h3');
       h3.className = 'result-title';
       const link = document.createElement('a');
-      const rawUrl = hit.url || '#';
-      const target = normalizeUrl(rawUrl);
+      const pageUrl = hit.url || '#';
+      const rawUrl = hit.meta?.rawUrl || '';
+      const target = normalizeUrl(pageUrl);
       if (term && target.startsWith(basePath)) {
         const urlObj = new URL(target, window.location.origin);
         urlObj.searchParams.set('highlight', term);
@@ -603,39 +881,89 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       link.textContent = hit.meta?.title || s.searchNoTitle;
       h3.appendChild(link);
 
+      const metaLine = document.createElement('div');
+      metaLine.className = 'result-meta';
+
+      const author = hit.meta?.author || '';
+      const work = hit.meta?.work || '';
+      const volume = hit.meta?.doc || '';
+      const page = hit.meta?.page || '';
+      if (author) {
+        const authorSpan = document.createElement('div');
+        authorSpan.className = 'result-meta-item';
+        authorSpan.innerHTML = `<span class="result-meta-label">${s.searchResultAuthor}:</span><span class="result-meta-value">${escapeHtml(author)}</span>`;
+        metaLine.appendChild(authorSpan);
+      }
+      if (work) {
+        const workSpan = document.createElement('div');
+        workSpan.className = 'result-meta-item';
+        workSpan.innerHTML = `<span class="result-meta-label">${s.searchResultWork}:</span><span class="result-meta-value">${escapeHtml(work)}</span>`;
+        metaLine.appendChild(workSpan);
+      }
+      if (volume || page) {
+        const volSpan = document.createElement('div');
+        volSpan.className = 'result-meta-item';
+        volSpan.innerHTML = `<span class="result-meta-label">${s.searchResultVolume}:</span><span class="result-meta-value">${escapeHtml(volume)}${page ? ` · p. ${escapeHtml(page)}` : ''}</span>`;
+        metaLine.appendChild(volSpan);
+      }
+
       const snippet = document.createElement('p');
       snippet.className = 'result-snippet';
-      // Usar innerHTML para que as tags <mark> do Pagefind sejam renderizadas
       snippet.innerHTML = hit.excerpt || (hit.content ? hit.content.slice(0, 180) : s.searchNoSnippet);
 
-      article.appendChild(h3);
-      article.appendChild(snippet);
+      const chips = document.createElement('ul');
+      chips.className = 'chips result-chips';
 
-      const badges = [];
+      const badgeItems = [];
       const filtersHit = hit.filters || {};
       Object.entries(filtersHit).forEach(([category, vals]) => {
         if (Array.isArray(vals)) {
-          vals.forEach(v => badges.push({ category, value: v }));
+          vals.forEach(v => badgeItems.push({ category, value: v }));
         }
       });
-
-      if (badges.length) {
-        const chips = document.createElement('ul');
-        chips.className = 'chips';
-        badges.forEach((b) => {
-          const li = document.createElement('li');
-          li.textContent = b.value;
-          li.style.cursor = 'pointer';
-          li.title = ariaFilterBy(b.category, b.value);
-          li.onclick = (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            toggleFilter(b.category, b.value);
-          };
-          chips.appendChild(li);
+      if (hit.meta?.keywords) {
+        String(hit.meta.keywords).split('•').map((label) => label.trim()).filter(Boolean).forEach((value) => {
+          badgeItems.push({ category: 'keyword', value });
         });
-        article.appendChild(chips);
       }
+
+      badgeItems.slice(0, 8).forEach((b) => {
+        const li = document.createElement('li');
+        li.textContent = b.value;
+        li.style.cursor = 'pointer';
+        li.title = ariaFilterBy(b.category, b.value);
+        li.onclick = (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleFilter(b.category, b.value);
+        };
+        chips.appendChild(li);
+      });
+
+      const actions = document.createElement('div');
+      actions.className = 'result-actions';
+
+      const openBtn = document.createElement('a');
+      openBtn.className = 'button secondary';
+      openBtn.href = link.href;
+      openBtn.textContent = s.searchResultOpenPage;
+      actions.appendChild(openBtn);
+
+      if (rawUrl) {
+        const rawBtn = document.createElement('a');
+        rawBtn.className = 'button secondary';
+        rawBtn.href = rawUrl;
+        rawBtn.target = '_blank';
+        rawBtn.rel = 'noreferrer';
+        rawBtn.textContent = s.searchResultOpenRaw;
+        actions.appendChild(rawBtn);
+      }
+
+      article.appendChild(h3);
+      if (metaLine.childNodes.length) article.appendChild(metaLine);
+      article.appendChild(snippet);
+      if (chips.childNodes.length) article.appendChild(chips);
+      article.appendChild(actions);
 
       return article;
     }
@@ -679,6 +1007,25 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       const suggestions = keywordOptions.filter((k) => k.toLowerCase().includes(term)).slice(0, 15);
       datalist.innerHTML = suggestions.map((s) => `<option value="${s}"></option>`).join('');
     }
+
+    quickCollectionButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        setCollectionFilter(btn.dataset.collection || '');
+      });
+    });
+
+    suggestionButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const term = btn.dataset.term || '';
+        searchBox.value = term;
+        state.term = term;
+        state.exactPhrase = true;
+        state.page = 1;
+        syncUrl();
+        render();
+        updateSuggestions();
+      });
+    });
 
     // Render inicial imediato
     render();

@@ -25,6 +25,7 @@ em produção. Formato: {raw_base_url}/{DOC}/text/{filename}.
 from __future__ import annotations
 
 import argparse
+import gzip
 import json
 import sqlite3
 import unicodedata
@@ -379,7 +380,7 @@ def page_blocks(
 
     for idx, start in enumerate(range(0, len(recs_sorted), block_size), start=1):
         chunk = recs_sorted[start : start + block_size]
-        file_name = f"meta/{volume_id}-pages-{idx:03d}.json"
+        file_name = f"meta/{volume_id}-pages-{idx:03d}.json.gz"
         block = {
             "schema_version": 1,
             "volume_id": volume_id,
@@ -448,10 +449,12 @@ def page_blocks(
 def write_json(path: Path, obj: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     # Grava JSON compacto para economizar espaço em disco/banda
-    path.write_text(
-        json.dumps(obj, ensure_ascii=False, separators=(",", ":")),
-        encoding="utf-8",
-    )
+    payload = json.dumps(obj, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    if path.suffix == ".gz":
+        with gzip.open(path, "wb", compresslevel=9) as f:
+            f.write(payload)
+        return
+    path.write_bytes(payload)
 
 
 def dump_authors_lookup(path: Path) -> None:
@@ -580,7 +583,7 @@ def main():
         page_first, page_last = pages_sorted[0], pages_sorted[-1]
         # snapshot global
         summary_global = next((r.summary_global for r in recs if r.summary_global), "")
-        snapshot_path = args.out / "snapshots" / f"{vid}.json"
+        snapshot_path = args.out / "snapshots" / f"{vid}.json.gz"
         snapshot_obj = {
             "schema_version": 1,
             "volume_id": vid,
@@ -609,7 +612,7 @@ def main():
             knn_min_dist=args.related_min_dist,
         )
         for b in blocks:
-            out_path = args.out / "meta" / f"{vid}-pages-{b['block_index']:03d}.json"
+            out_path = args.out / "meta" / f"{vid}-pages-{b['block_index']:03d}.json.gz"
             write_json(out_path, b)
 
         # manifesto do volume
@@ -623,14 +626,14 @@ def main():
             "page_block_size": args.page_block_size,
             "page_blocks": page_files,
             "snapshot_blocks": [
-                {"index": 1, "file": f"snapshots/{vid}.json", "snapshot_count": 1}
+                {"index": 1, "file": f"snapshots/{vid}.json.gz", "snapshot_count": 1}
             ],
             "stats": {
                 "pages_with_summary": len(recs),
                 "has_keywords": any(r.keywords for r in recs),
             },
         }
-        write_json(args.out / "meta" / f"{vid}.json", meta_obj)
+        write_json(args.out / "meta" / f"{vid}.json.gz", meta_obj)
 
         # volumes.json entry
         volumes_out.append(
@@ -640,7 +643,7 @@ def main():
                 "page_first": page_first,
                 "page_last": page_last,
                 "page_count": len(recs),
-                "meta_url": f"meta/{vid}.json",
+                "meta_url": f"meta/{vid}.json.gz",
                 "search_bundle": "pagefind/main",
                 "viewer_url_template": f"/pdfocr/viewer?doc={vid}&page={{page}}",
             }

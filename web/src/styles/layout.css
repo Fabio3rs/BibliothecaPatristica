@@ -9,7 +9,7 @@
   top: 0;
   z-index: 10;
   backdrop-filter: blur(8px);
-  background: color-mix(in srgb, var(--color-surface) 85%, transparent);
+  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -40,12 +40,18 @@
 
 .logo:hover { color: var(--color-accent); }
 
-.nav-links { display: flex; gap: var(--space-4); align-items: center; }
+.nav-links {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
 
 .nav-links a {
   color: var(--color-ink);
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   text-decoration: none;
   padding: 0.2rem 0;
   border-bottom: 2px solid transparent;
