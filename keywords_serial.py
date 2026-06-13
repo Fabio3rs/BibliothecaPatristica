@@ -599,11 +599,17 @@ def llm_chat(
 SYSTEM_PROMPT = """\
 Você realiza indexação intelectual por facetas com warrant literário estrito em corpus patrístico.
 
-Regras:
-- texto_original é a âncora.
+Regras de Estrutura e Relação:
+- keywords_ranking é o agregador central: inclua aqui TODOS os termos e conceitos relevantes da página, rigorosamente ordenados por importância dentro do texto.
+- categorias serve para classificar e repetir os termos extraídos em 'keywords_ranking' em suas respectivas facetas. Todo termo categorizado deve ter correspondência direta com o ranking.
+
+Regras de Sintaxe das Keywords (Anti-Prolixidade):
+- Cada item no array 'keywords_ranking' DEVE ser um termo isolado, conceito composto ou referência direta (máximo de 3 a 4 palavras por item).
+- PROIBIDO gerar frases completas, orações explicativas, verbos conjugados ou resumos de argumentos (ex: NÃO faça "Isaías 53 sobre morte e ressurreição").
+- Se um argumento liga uma obra a um tema, quebre em itens separados no array (ex: item 1: "Isaías 53", item 2: "Servo Sofredor", item 3: "Ressurreição").
 - Use resumo_global e resumo_da_pagina apenas como bússola temática; só inclua keyword se o termo ou conceito estiver explicitamente sustentado por texto_original.
-- Extraia apenas termos com valor real de indexação.
-- Priorize o núcleo argumentativo da página; ordene keywords_ranking por importância.
+
+Regras de Normalização:
 - Normalize nomes de pessoas em forma canônica PT-BR quando houver forma consagrada.
 - Obras e referências bíblicas por extenso, sem abreviações. Capítulo e versículo separados por vírgula quando explicitamente citados no texto original.
 - Não separar nome dos livros dos seus capítulos e versículos, devem ficar em mesmo valor JSON para fazer sentido.

@@ -76,7 +76,8 @@ def parse_llm_judge_xml(xml_str: str) -> Dict[str, Any]:
 
     try:
         root = ET.fromstring(xml_str)
-    except ET.ParseError:
+    except ET.ParseError as e:
+        print(f"Erro ao fazer parse do XML: {e} {xml_str}")
         return result
 
     try:
@@ -96,12 +97,15 @@ def parse_llm_judge_xml(xml_str: str) -> Dict[str, Any]:
             ]
 
         comentario = root.find("comentario")
-        if comentario is not None and comentario.text:
-            result["comentario"] = comentario.text.strip()
+        if comentario is not None:
+            # junta texto da subárvore (inclui filhos)
+            texto = "".join(comentario.itertext()).strip()
+            result["comentario"] = texto if texto else None
 
         result["status"] = "parse_ok"
-    except Exception:
+    except Exception as e:
         result["status"] = "parse_error"
+        print(f"Erro inesperado ao fazer parse do XML: {e} {xml_str}")
 
     return result
 
@@ -136,7 +140,7 @@ def record_evaluation(
             decision, deterministic_reason,
             fidelidade, usabilidade, idiomas_json, comentario,
             xml_raw, duration_ms, status
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """,
         (
             volume_id,
