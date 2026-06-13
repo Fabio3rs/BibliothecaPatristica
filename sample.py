@@ -23,16 +23,18 @@ from pathlib import Path
 import multiprocessing as mp
 
 from PIL import Image
+import cv2
+import numpy as np
 import pytesseract
 
 # ---------------------------------------------------------------------------
 # Constantes
 # ---------------------------------------------------------------------------
 
-SUPPORTED_PREFIXES = ("PG", "PL")   # PO fica para fase 2
+SUPPORTED_PREFIXES = ("PG", "PL")  # PO fica para fase 2
 TESS_LANG = "lat+grc"
 MIN_LINES = 10
-DEFAULT_PER_VOLUME = 10             # páginas por volume
+DEFAULT_PER_VOLUME = 10  # páginas por volume
 
 # ---------------------------------------------------------------------------
 # Schema SQLite
@@ -76,6 +78,7 @@ CREATE INDEX IF NOT EXISTS idx_lines_page     ON lines(page_id);
 # Helpers: filesystem
 # ---------------------------------------------------------------------------
 
+
 def find_volumes(root: Path) -> list[Path]:
     """Retorna diretórios PG*/PL* dentro de root."""
     vols = []
@@ -113,18 +116,98 @@ def find_page_pairs(vol: Path) -> list[tuple[Path, Path, str]]:
 
     return pairs
 
+
 # ---------------------------------------------------------------------------
 # Helpers: Tesseract
 # ---------------------------------------------------------------------------
 
-def tesseract_lines(img_path: Path) -> list[dict]:
+
+def preprocess_image(img, border_size=50):
+    # Converter pra grayscale
+    arr = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) if len(img.shape) == 3 else img
+
+    thresh = cv2.threshold(arr, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
+
+    # 1. REMOVER RUÍDO E JUNTAR LINHAS
+    # Criamos um kernel largo para "derreter" as palavras em linhas horizontais
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (30, 5))
+    dilate = cv2.dilate(thresh, kernel, iterations=2)
+
+    # 2. ENCONTRAR CONTORNOS
+    contours, _ = cv2.findContours(dilate, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+
+    angles = []
+    for cnt in contours:
+        # Ignorar ruídos pequenos e as bordas gigantescas do papel
+        area = cv2.contourArea(cnt)
+        if 500 < area < 50000:  # Ajuste esses valores conforme necessário
+            rect = cv2.minAreaRect(cnt)
+            angle = rect[-1]
+            rw, rh = rect[1]
+
+            # Normalização do ângulo para OpenCV 4.5+
+            # minAreaRect retorna o ângulo do eixo mais curto.
+            # Para linhas de texto horizontais (largura >> altura), o eixo
+            # curto é vertical → ângulo fica em torno de -90°.
+            # Corrigimos para obter o ângulo real da linha (próximo de 0°).
+            if rw < rh:
+                angle = angle + 90  # roda 90° para alinhar com o eixo longo
+            # Após normalização, descarta ângulos absurdos (>10°): provavelmente
+            # contornos de elementos decorativos, linhas de margem etc.
+            if abs(angle) <= 10:
+                angles.append(angle)
+
+    # 3. MÉDIA DOS ÂNGULOS
+    # Usamos a mediana para evitar que um contorno doido puxe o valor
+    if len(angles) > 0:
+        median_angle = np.median(angles)
+    else:
+        median_angle = 0.0  # Sem inclinação detectada
+
+    # print(f"Ângulo real detectado: {median_angle}")
+
+    # 4. ROTACIONAR
+    (h, w) = img.shape[:2]
+    center = (w // 2, h // 2)
+    M = cv2.getRotationMatrix2D(center, median_angle, 1.0)
+    rotated = cv2.warpAffine(
+        img, M, (w, h), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE
+    )
+
+    _, thresh = cv2.threshold(rotated, 100, 255, cv2.THRESH_BINARY)
+
+    # # Adiciona a borda branca (o valor [255, 255, 255] é o branco em BGR)
+    # processed = cv2.copyMakeBorder(
+    #     thresh,
+    #     top=border_size,
+    #     bottom=border_size,
+    #     left=border_size,
+    #     right=border_size,
+    #     borderType=cv2.BORDER_CONSTANT,
+    #     value=[255, 255, 255],
+    # )
+
+    # rotated = cv2.copyMakeBorder(
+    #     rotated,
+    #     top=border_size,
+    #     bottom=border_size,
+    #     left=border_size,
+    #     right=border_size,
+    #     borderType=cv2.BORDER_CONSTANT,
+    #     value=[255, 255, 255],
+    # )
+
+    return thresh, rotated
+
+
+def tesseract_lines(img: np.ndarray) -> list[dict]:
     """
     Roda Tesseract em modo TSV e retorna lista de linhas com bbox + texto.
     Agrupa word-level TSV em linhas pelo campo line_num.
     Descarta linhas com texto vazio.
     """
     tsv = pytesseract.image_to_data(
-        str(img_path),
+        img,
         lang=TESS_LANG,
         output_type=pytesseract.Output.DICT,
     )
@@ -146,51 +229,58 @@ def tesseract_lines(img_path: Path) -> list[dict]:
                 "y2": tsv["top"][i] + tsv["height"][i],
             }
         else:
-            line_map[key]["x"]  = min(line_map[key]["x"],  tsv["left"][i])
-            line_map[key]["y"]  = min(line_map[key]["y"],  tsv["top"][i])
-            line_map[key]["x2"] = max(line_map[key]["x2"], tsv["left"][i] + tsv["width"][i])
-            line_map[key]["y2"] = max(line_map[key]["y2"], tsv["top"][i] + tsv["height"][i])
+            line_map[key]["x"] = min(line_map[key]["x"], tsv["left"][i])
+            line_map[key]["y"] = min(line_map[key]["y"], tsv["top"][i])
+            line_map[key]["x2"] = max(
+                line_map[key]["x2"], tsv["left"][i] + tsv["width"][i]
+            )
+            line_map[key]["y2"] = max(
+                line_map[key]["y2"], tsv["top"][i] + tsv["height"][i]
+            )
         line_map[key]["text"].append(text)
 
     # Converte para lista ordenada por posição vertical
     result = []
     for key in sorted(line_map, key=lambda k: (line_map[k]["y"], line_map[k]["x"])):
         d = line_map[key]
-        result.append({
-            "text": " ".join(d["text"]),
-            "bbox": {
-                "x": d["x"],
-                "y": d["y"],
-                "w": d["x2"] - d["x"],
-                "h": d["y2"] - d["y"],
-            },
-        })
+        result.append(
+            {
+                "text": " ".join(d["text"]),
+                "bbox": {
+                    "x": d["x"],
+                    "y": d["y"],
+                    "w": d["x2"] - d["x"],
+                    "h": d["y2"] - d["y"],
+                },
+            }
+        )
 
     return result
 
 
-def crop_line(img: Image.Image, bbox: dict) -> bytes:
+def crop_line(img: np.ndarray, bbox: dict) -> bytes:
     """Recorta a linha da imagem e retorna PNG em bytes."""
     x, y, w, h = bbox["x"], bbox["y"], bbox["w"], bbox["h"]
     # margem de 2px
     x1 = max(0, x - 2)
     y1 = max(0, y - 2)
-    x2 = min(img.width,  x + w + 2)
-    y2 = min(img.height, y + h + 2)
-    crop = img.crop((x1, y1, x2, y2))
+    x2 = min(img.shape[1], x + w + 2)
+    y2 = min(img.shape[0], y + h + 2)
+    crop = img[y1:y2, x1:x2]
     buf = io.BytesIO()
-    crop.save(buf, format="PNG")
+    Image.fromarray(crop).save(buf, format="PNG")
     return buf.getvalue()
+
 
 # ---------------------------------------------------------------------------
 # SQLite
 # ---------------------------------------------------------------------------
 
+
 def open_db(db_path: str) -> sqlite3.Connection:
     conn = sqlite3.connect(db_path)
     conn.execute("PRAGMA journal_mode=WAL;")
     conn.execute("PRAGMA busy_timeout=3000;")
-    
 
     conn.executescript(DDL)
     conn.commit()
@@ -202,7 +292,9 @@ def session_exists(conn: sqlite3.Connection) -> bool:
     return row[0] > 0
 
 
-def create_session(conn: sqlite3.Connection, description: str, sample_size: int, volumes: list[str]) -> int:
+def create_session(
+    conn: sqlite3.Connection, description: str, sample_size: int, volumes: list[str]
+) -> int:
     cur = conn.execute(
         "INSERT INTO sessions (description, sample_size, volumes) VALUES (?, ?, ?)",
         (description, sample_size, json.dumps(volumes)),
@@ -231,6 +323,7 @@ def insert_line(conn: sqlite3.Connection, session_id: int, row: dict) -> None:
             row["detected_lang"],
         ),
     )
+
 
 # Multiprocessing
 
@@ -315,43 +408,61 @@ def get_current_process_index() -> int:
     return _process_index_map.get(current_pid, -1)
 
 
-def _process_page(img_path_str: str, txt_path_str: str, page_id: str, volume: str) -> dict:
+def _process_page(
+    img_path_str: str, txt_path_str: str, page_id: str, volume: str
+) -> dict:
     """Processa uma página: roda tesseract, recorta linhas e retorna dados serializáveis."""
     try:
         img_path = Path(img_path_str)
-        # Executa segmentação (TSV -> linhas)
-        lines = tesseract_lines(img_path)
+        img_original = cv2.imread(str(img_path))
     except Exception as e:
-        return {"status": "error", "page_id": page_id, "message": f"tesseract_lines failed: {e}"}
+        return {
+            "status": "error",
+            "page_id": page_id,
+            "message": f"Image.open failed: {e}",
+        }
+
+    binaryzed, img = preprocess_image(img=img_original)
+
+    try:
+        # Executa segmentação (TSV -> linhas)
+        lines = tesseract_lines(binaryzed)
+    except Exception as e:
+        return {
+            "status": "error",
+            "page_id": page_id,
+            "message": f"tesseract_lines failed: {e}",
+        }
 
     if len(lines) < MIN_LINES:
         return {"status": "skip", "page_id": page_id, "num_lines": len(lines)}
 
     # Detecta língua dominante (heurística simples)
     try:
-        osd = pytesseract.image_to_osd(str(img_path), output_type=pytesseract.Output.DICT)
+        osd = pytesseract.image_to_osd(binaryzed, output_type=pytesseract.Output.DICT)
         detected_lang = osd.get("script", "unknown")
     except Exception:
         detected_lang = "unknown"
 
-    try:
-        img = Image.open(img_path)
-    except Exception as e:
-        return {"status": "error", "page_id": page_id, "message": f"Image.open failed: {e}"}
-
     rows = []
     for idx, line in enumerate(lines):
         try:
-            line_png = crop_line(img, line["bbox"])
+            line_png = crop_line(binaryzed, line["bbox"])
         except Exception as e:
-            return {"status": "error", "page_id": page_id, "message": f"crop_line failed: {e}"}
+            return {
+                "status": "error",
+                "page_id": page_id,
+                "message": f"crop_line failed: {e}",
+            }
 
-        rows.append({
-            "line_index": idx,
-            "bbox": line["bbox"],
-            "line_image": line_png,
-            "tesseract_text": line["text"],
-        })
+        rows.append(
+            {
+                "line_index": idx,
+                "bbox": line["bbox"],
+                "line_image": line_png,
+                "tesseract_text": line["text"],
+            }
+        )
 
     return {
         "status": "ok",
@@ -370,12 +481,17 @@ def _process_page_wrapper(task_tuple: tuple) -> dict:
         img_path_str, txt_path_str, page_id, volume = task_tuple
         return _process_page(img_path_str, txt_path_str, page_id, volume)
     except Exception as e:
-        return {"status": "error", "page_id": task_tuple[2] if len(task_tuple) > 2 else "?", "message": str(e)}
+        return {
+            "status": "error",
+            "page_id": task_tuple[2] if len(task_tuple) > 2 else "?",
+            "message": str(e),
+        }
 
 
 # ---------------------------------------------------------------------------
 # Core
 # ---------------------------------------------------------------------------
+
 
 def sample_and_ingest(
     root: Path,
@@ -398,7 +514,9 @@ def sample_and_ingest(
     included_volumes = []
 
     # Cria sessão antes de processar
-    session_id = create_session(conn, description, 0, [])  # sample_size atualizado ao final
+    session_id = create_session(
+        conn, description, 0, []
+    )  # sample_size atualizado ao final
 
     # Configuração de multiprocessing
     cpu_threads = max(1, mp.cpu_count() // 2)
@@ -415,10 +533,15 @@ def sample_and_ingest(
         sample = random.sample(pairs, min(per_volume, len(pairs)))
         vol_lines = 0
         # Preparar tarefas para pool: cada tarefa é (img_path_str, txt_path_str, page_id, volume_name)
-        tasks = [(str(img_path), str(txt_path), page_id, vol.name) for img_path, txt_path, page_id in sample]
+        tasks = [
+            (str(img_path), str(txt_path), page_id, vol.name)
+            for img_path, txt_path, page_id in sample
+        ]
 
         # Processar páginas em paralelo em subprocessos; inserção no DB é feita no processo principal
-        with mp.Pool(processes=cpu_threads, initializer=_init_omp_env, initargs=(omp_threads,)) as pool:
+        with mp.Pool(
+            processes=cpu_threads, initializer=_init_omp_env, initargs=(omp_threads,)
+        ) as pool:
             results = pool.map(_process_page_wrapper, tasks)
 
         for res in results:
@@ -427,21 +550,27 @@ def sample_and_ingest(
                 print(f"[WARN] {res.get('page_id')}: erro - {res.get('message')}")
                 continue
             if res.get("status") == "skip":
-                print(f"[SKIP] {res.get('page_id')}: apenas {res.get('num_lines')} linhas, abaixo do mínimo {MIN_LINES}")
+                print(
+                    f"[SKIP] {res.get('page_id')}: apenas {res.get('num_lines')} linhas, abaixo do mínimo {MIN_LINES}"
+                )
                 continue
 
             rows = res.get("rows", [])
             for row in rows:
-                insert_line(conn, session_id, {
-                    "page_id":        res.get("page_id"),
-                    "volume":         res.get("volume"),
-                    "image_path":     res.get("image_path"),
-                    "line_index":     row["line_index"],
-                    "bbox":           row["bbox"],
-                    "line_image":     row["line_image"],
-                    "tesseract_text": row["tesseract_text"],
-                    "detected_lang":  res.get("detected_lang"),
-                })
+                insert_line(
+                    conn,
+                    session_id,
+                    {
+                        "page_id": res.get("page_id"),
+                        "volume": res.get("volume"),
+                        "image_path": res.get("image_path"),
+                        "line_index": row["line_index"],
+                        "bbox": row["bbox"],
+                        "line_image": row["line_image"],
+                        "tesseract_text": row["tesseract_text"],
+                        "detected_lang": res.get("detected_lang"),
+                    },
+                )
                 vol_lines += 1
 
             print(f"[OK] {res.get('page_id')}: {res.get('num_lines')} linhas inseridas")
@@ -457,27 +586,47 @@ def sample_and_ingest(
         (all_lines_count, json.dumps(included_volumes), session_id),
     )
     conn.commit()
-    print(f"\n[DONE] Sessão {session_id}: {all_lines_count} linhas de {len(included_volumes)} volumes")
+    print(
+        f"\n[DONE] Sessão {session_id}: {all_lines_count} linhas de {len(included_volumes)} volumes"
+    )
+
 
 # ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
+
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Amostragem e segmentação para finetuning Tesseract")
-    parser.add_argument("--root",        required=True,                  help="Diretório raiz com volumes PG*/PL*")
-    parser.add_argument("--db",          default="ocr.db",               help="Caminho do SQLite (default: ocr.db)")
-    parser.add_argument("--session",     default="amostra",              help="Descrição da sessão")
-    parser.add_argument("--per-volume",  type=int, default=DEFAULT_PER_VOLUME, help="Páginas por volume")
-    parser.add_argument("--seed",        type=int, default=None,         help="Seed aleatória para reprodutibilidade")
-    parser.add_argument("--resample",    action="store_true",            help="Força nova amostragem mesmo se já existir sessão")
+    parser = argparse.ArgumentParser(
+        description="Amostragem e segmentação para finetuning Tesseract"
+    )
+    parser.add_argument(
+        "--root", required=True, help="Diretório raiz com volumes PG*/PL*"
+    )
+    parser.add_argument(
+        "--db", default="ocr.db", help="Caminho do SQLite (default: ocr.db)"
+    )
+    parser.add_argument("--session", default="amostra", help="Descrição da sessão")
+    parser.add_argument(
+        "--per-volume", type=int, default=DEFAULT_PER_VOLUME, help="Páginas por volume"
+    )
+    parser.add_argument(
+        "--seed", type=int, default=None, help="Seed aleatória para reprodutibilidade"
+    )
+    parser.add_argument(
+        "--resample",
+        action="store_true",
+        help="Força nova amostragem mesmo se já existir sessão",
+    )
     args = parser.parse_args()
 
     conn = open_db(args.db)
 
     if session_exists(conn) and not args.resample:
         count = conn.execute("SELECT COUNT(*) FROM lines").fetchone()[0]
-        print(f"[INFO] Sessão existente com {count} linhas. Use --resample para nova amostragem.")
+        print(
+            f"[INFO] Sessão existente com {count} linhas. Use --resample para nova amostragem."
+        )
         return
 
     if args.resample:

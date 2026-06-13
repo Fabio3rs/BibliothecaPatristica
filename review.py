@@ -1,25 +1,43 @@
 #!/usr/bin/env python3
 """
-review.py — interface Flask para revisão humana dos pares linha-imagem/texto
+review.py - interface Flask para revisão humana dos pares linha-imagem/texto
 
 Uso:
-    python review.py --db ocr.db
-    python review.py --db ocr.db --port 5001 --host 0.0.0.0
+  python review.py --db ocr.db
+  python review.py --db ocr.db --port 5001 --host 0.0.0.0
 
 Fluxo:
-    - Lista linhas por agreement_score ASC (mais problemáticas primeiro)
-    - Mostra imagem do crop + texto Tesseract + texto Qwen
-    - Permite aprovar, corrigir ou rejeitar cada linha
-    - Filtra por status, volume, score mínimo/máximo
+  - Lista linhas por agreement_score ASC (mais problemáticas primeiro)
+  - Mostra imagem do crop + texto Tesseract + texto Qwen
+  - Permite aprovar, corrigir ou rejeitar cada linha
+  - Filtra por status, volume, score mínimo/máximo
 """
 
 import argparse
 import base64
 import json
+import re
 import sqlite3
 from pathlib import Path
+from typing import Optional
 
 from flask import Flask, jsonify, redirect, render_template_string, request, url_for
+
+# imagem e preprocessamento
+import cv2
+import io
+from PIL import Image
+import numpy as np
+
+try:
+    # prefer local import when running script directly
+    from sample import preprocess_image
+except Exception:
+    # fallback to package-relative import
+    try:
+        from .sample import preprocess_image
+    except Exception:
+        preprocess_image = None
 
 # ---------------------------------------------------------------------------
 # HTML template
@@ -167,8 +185,23 @@ TEMPLATE = """
   <!-- Painel esquerdo: imagem -->
   <div class="img-panel">
     <h2>Crop da linha</h2>
-    <div class="line-crop">
-      <img src="data:image/png;base64,{{ line_b64 }}" alt="linha">
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:160px;">
+        <h3 style="font-size:11px;color:#555;margin-bottom:6px;">Tesseract crop</h3>
+        <div class="line-crop">
+          <img src="data:image/png;base64,{{ line_b64 }}" alt="linha-tess">
+        </div>
+      </div>
+      <div style="width:260px;min-width:160px;">
+        <h3 style="font-size:11px;color:#555;margin-bottom:6px;">LLM crop (preprocessed)</h3>
+        <div class="line-crop">
+          {% if llm_b64 %}
+          <img src="data:image/png;base64,{{ llm_b64 }}" alt="linha-llm">
+          {% else %}
+          <div style="padding:10px;color:#666;font-size:12px;">nenhum recorte LLM disponível</div>
+          {% endif %}
+        </div>
+      </div>
     </div>
     <div class="meta">
       <b>{{ line.page_id }}</b> — linha {{ line.line_index }}<br>
@@ -193,6 +226,7 @@ TEMPLATE = """
       <div class="score-fill" style="width:{{ (line.agreement_score*100)|int }}%; background: {{ '#4caf50' if line.agreement_score >= 0.8 else ('#ff9800' if line.agreement_score >= 0.5 else '#f44336') }};"></div>
     </div>
     {% endif %}
+    <textarea id="text_context" rows="40">{{ text_context }}</textarea>
   </div>
 
   <!-- Painel direito: edição -->
@@ -267,10 +301,13 @@ app = Flask(__name__)
 DB_PATH = "ocr.db"
 
 
-def get_conn() -> sqlite3.Connection:
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    return conn
+def get_conn(path: str = DB_PATH) -> sqlite3.Connection:
+    con = sqlite3.connect(path, timeout=30.0)
+    con.row_factory = sqlite3.Row
+    con.execute("PRAGMA busy_timeout = 30000")
+    con.execute("PRAGMA journal_mode = WAL")
+    con.execute("PRAGMA foreign_keys = ON")
+    return con
 
 
 def get_stats() -> dict:
@@ -280,12 +317,12 @@ def get_stats() -> dict:
     ).fetchall()
     stats = {r["status"]: r["n"] for r in rows}
     return {
-        "pending":   stats.get("pending", 0),
-        "inferred":  stats.get("inferred", 0),
-        "approved":  stats.get("approved", 0),
+        "pending": stats.get("pending", 0),
+        "inferred": stats.get("inferred", 0),
+        "approved": stats.get("approved", 0),
         "corrected": stats.get("corrected", 0),
-        "rejected":  stats.get("rejected", 0),
-        "error":     stats.get("error", 0),
+        "rejected": stats.get("rejected", 0),
+        "error": stats.get("error", 0),
     }
 
 
@@ -295,13 +332,55 @@ def get_volumes() -> list[str]:
     return [r["volume"] for r in rows]
 
 
+def parse_page_num_from_filename(image_path: Path) -> Optional[int]:
+    """
+    Extrai o sufixo numérico final da imagem, ex.: foo-076.png -> 76.
+    """
+    m = re.search(r"-([0-9]{1,4})$", image_path.stem)
+    return int(m.group(1)) if m else None
+
+
+def infer_volume_id(image_path: Path) -> Optional[str]:
+    """
+    Considera a convenção teste/<VOL>/images/<file>.png → retorna <VOL>.
+    """
+    try:
+        return image_path.parent.parent.name
+    except Exception:
+        return None
+
+
+def txt_path_for_image(img_path: Path, txt_dir: Path) -> Path:
+    """
+    Seleciona o txt associado a uma imagem:
+    - Usa o nome estável se existir.
+    - Caso contrário, procura qualquer txt que termine com o número da página.
+    - Fallback: path estável mesmo que ainda não exista (para escrita).
+    """
+    stable = txt_dir / (img_path.stem + ".txt")
+    if stable.exists():
+        return stable
+
+    page_num = parse_page_num_from_filename(img_path)
+    if page_num is not None:
+        # prioriza zero-padding, depois sem padding
+        candidates = sorted(txt_dir.glob(f"*-{page_num:03d}.txt"))
+        if candidates:
+            return candidates[0]
+        candidates = sorted(txt_dir.glob(f"*-{page_num}.txt"))
+        if candidates:
+            return candidates[0]
+
+    return stable
+
+
 @app.route("/")
 def review():
-    offset        = int(request.args.get("offset", 0))
+    offset = int(request.args.get("offset", 0))
     filter_status = request.args.get("status", "inferred")
     filter_volume = request.args.get("volume", "")
 
-    conn  = get_conn()
+    conn = get_conn()
     where = []
     params = []
 
@@ -327,27 +406,74 @@ def review():
     if line and line["line_image"]:
         line_b64 = base64.b64encode(line["line_image"]).decode("utf-8")
 
+    llm_b64 = ""
+    text_context = None
+    # try to build LLM crop from original image + bbox using preprocess_image
+    if line and line["image_path"] and line["bbox"] and preprocess_image is not None:
+        try:
+            img = cv2.imread(line["image_path"])
+            img_path = Path(line["image_path"])
+            volume_path = img_path.parent.parent
+
+            txt_path = txt_path_for_image(img_path, volume_path / "text")
+
+            if txt_path.exists():
+                with open(txt_path, "r", encoding="utf-8") as f:
+                    text_context = f.read()
+
+            if img is not None:
+                _, img_proc = preprocess_image(img)
+                # parse bbox JSON
+                try:
+                    bbox = (
+                        json.loads(line["bbox"])
+                        if isinstance(line["bbox"], str)
+                        else line["bbox"]
+                    )
+                    x = int(bbox.get("x", 0))
+                    y = int(bbox.get("y", 0))
+                    w = int(bbox.get("w", 0))
+                    h = int(bbox.get("h", 0))
+                    x1 = max(0, x - 2)
+                    y1 = max(0, y - 2)
+                    x2 = min(img_proc.shape[1], x + w + 2)
+                    y2 = min(img_proc.shape[0], y + h + 2)
+                    crop = img_proc[y1:y2, x1:x2]
+                    buf = io.BytesIO()
+                    if len(crop.shape) == 3:
+                        pil_img = Image.fromarray(cv2.cvtColor(crop, cv2.COLOR_BGR2RGB))
+                    else:
+                        pil_img = Image.fromarray(crop)
+                    pil_img.save(buf, format="PNG")
+                    llm_b64 = base64.b64encode(buf.getvalue()).decode("utf-8")
+                except Exception:
+                    llm_b64 = ""
+        except Exception:
+            llm_b64 = ""
+
     return render_template_string(
         TEMPLATE,
         line=line,
         line_b64=line_b64,
+        llm_b64=llm_b64,
         offset=offset,
         total=total,
         stats=get_stats(),
         volumes=get_volumes(),
         filter_status=filter_status,
         filter_volume=filter_volume,
+        text_context=text_context,
     )
 
 
 @app.route("/submit", methods=["POST"])
 def submit_review():
-    line_id       = int(request.form["line_id"])
+    line_id = int(request.form["line_id"])
     reviewed_text = request.form["reviewed_text"].strip()
-    action        = request.form["action"]   # approved | corrected | rejected
-    next_offset   = int(request.form.get("next_offset", 0))
-    status        = request.form.get("status", "inferred")
-    volume        = request.form.get("volume", "")
+    action = request.form["action"]  # approved | corrected | rejected
+    next_offset = int(request.form.get("next_offset", 0))
+    status = request.form.get("status", "inferred")
+    volume = request.form.get("volume", "")
 
     conn = sqlite3.connect(DB_PATH)
     conn.execute(
@@ -370,10 +496,11 @@ def api_stats():
 # CLI
 # ---------------------------------------------------------------------------
 
+
 def main() -> None:
     global DB_PATH
     parser = argparse.ArgumentParser(description="Interface de revisão OCR")
-    parser.add_argument("--db",   default="ocr.db",    help="Caminho do SQLite")
+    parser.add_argument("--db", default="ocr.db", help="Caminho do SQLite")
     parser.add_argument("--host", default="127.0.0.1", help="Host Flask")
     parser.add_argument("--port", type=int, default=5000, help="Porta Flask")
     args = parser.parse_args()

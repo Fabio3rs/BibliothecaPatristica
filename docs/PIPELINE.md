@@ -54,7 +54,8 @@
 ## Geração dos shards do site
 1) Dicionário canônico: `python tools/export_keywords_dicts.py --db data/patristica_keywords.db --out web/public/dict --min-count 1` (ajuste `--include-noise`/`--top` conforme necessidade).
 2) Renderização das páginas/shards: `python tools/render_publication_from_shards.py --index data/shards/enrichment/index.json --out web/public --db data/patristica_keywords.db --keywords-json web/public/dict/keywords.json --page-block-size 100 --raw-base-url <URL raw>`.
-3) Build Astro + índice Pagefind custom (seção abaixo).
+3) Export dos índices do banco: `python tools/export_indices_from_db.py --db data/patristic_indices.db --out web/public/indices`.
+4) Build Astro + índice Pagefind custom (seção abaixo). O `npm run build` em `web/` chama `npm run build:indices` antes do build principal para garantir que `/indices` receba os JSONs atualizados.
 
 ## Busca web (Pagefind custom por shards)
 - Por que custom: o índice completo excede limites do GitHub Pages; o Pagefind padrão em `dist/` não é usado diretamente.
