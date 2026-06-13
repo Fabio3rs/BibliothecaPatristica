@@ -26,12 +26,12 @@ import sys
 from pathlib import Path
 from typing import Iterable, List, Tuple
 
-# Garantir import do projeto (para acessar test_limpeza_ocr.py)
+# Garantir import do projeto (para acessar scripts/limpeza_ocr.py)
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from test_limpeza_ocr import (  # type: ignore
+from scripts.limpeza_ocr import (  # type: ignore
     clean_ocr_text_optimized,
     clean_summary_page_for_embedding,
     clean_summary_global_for_search,

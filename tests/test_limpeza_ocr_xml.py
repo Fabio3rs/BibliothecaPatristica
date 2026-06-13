@@ -5,7 +5,7 @@
 
 import pytest
 
-from test_limpeza_ocr import (
+from scripts.limpeza_ocr import (
     clean_ocr_text_optimized,
     extract_text_from_ocr_xml,
     classify_page_noise,
