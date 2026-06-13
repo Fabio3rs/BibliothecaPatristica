@@ -1,0 +1,1058 @@
+---
+// @ts-nocheck
+import { readFile } from 'node:fs/promises';
+import Layout from '../Layout.astro';
+import { useTranslations } from '../../i18n';
+
+const base = import.meta.env.BASE_URL || '/';
+const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
+const t = useTranslations(Astro.currentLocale);
+
+const manifest = JSON.parse(await readFile(new URL('../../../public/indices/manifest.json', import.meta.url), 'utf8'));
+const volumes = manifest.volumes || [];
+const collections = [...new Set(volumes.map((item: { collection?: string }) => item.collection).filter(Boolean))].sort();
+const collectionOptions = collections.map((collection) => ({
+  value: escapeAttr(collection || ''),
+  label: escapeHtml(collection || ''),
+}));
+
+function escapeHtml(value: string) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function escapeAttr(value: string) {
+  return escapeHtml(value).replace(/'/g, '&#39;');
+}
+
+function fmtPct(value: number | string | undefined) {
+  return `${Math.round((Number(value) || 0) * 100)}%`;
+}
+
+function fmtCount(value: number | string | undefined) {
+  return String(Number(value) || 0);
+}
+
+function volumeTitle(item: any) {
+  return item?.volume?.display?.original || item?.volume?.volume_label || item?.volume?.volume_id || item?.volume_id || '';
+}
+
+function sectionTitle(section: any) {
+  return section?.heading_display?.original || section?.heading_raw || section?.section_key || '';
+}
+
+function sectionSubtitle(section: any) {
+  if (section?.index_kind && section?.heading_display?.original && section.index_kind !== section.heading_display.original) {
+    return section.index_kind;
+  }
+  return section?.heading_raw || '';
+}
+
+function entryTitle(entry: any) {
+  return entry?.target_display?.original || entry?.target_raw || entry?.entry_raw || entry?.id || '';
+}
+
+function entrySubtitle(entry: any) {
+  if (entry?.target_display?.original && entry?.entry_raw && entry.target_display.original !== entry.entry_raw) {
+    return entry.entry_raw;
+  }
+  return entry?.target_raw || '';
+}
+
+function viewerHref(volumeId: string, page?: string) {
+  const params = new URLSearchParams({ doc: volumeId || '' });
+  if (page && /^\d+$/.test(page)) params.set('page', page);
+  return `${baseWithSlash}viewer?${params.toString()}`;
+}
+
+function pickReferencePage(...values: Array<string | number | undefined | null>) {
+  for (const value of values) {
+    const text = String(value || '').trim();
+    if (/^\d+$/.test(text)) return text;
+  }
+  return '';
+}
+
+function renderVolume(item: any) {
+  const volumeId = item.volume_id || '';
+  const completeness = Number(item.completeness || 0);
+  const selected = Astro.url.searchParams.get('volume') === volumeId;
+  const startPage = pickReferencePage(item.reference_start_page, item.start_page);
+  const endPage = pickReferencePage(item.reference_end_page, item.end_page);
+  const search = [
+    volumeId,
+    item.collection,
+    volumeTitle(item),
+    item.path,
+  ].filter(Boolean).join(' ').toLowerCase();
+  const selectedBadge = selected ? `<span class="badge">${escapeHtml(t.indicesSelectedVolume)}</span>` : '';
+  const openAttr = selected ? 'open' : '';
+
+  return `
+    <details
+      class="volume-card"
+      data-volume-item
+      data-volume-id="${escapeAttr(volumeId)}"
+      data-collection="${escapeAttr(item.collection || '')}"
+      data-completeness="${completeness >= 0.75 ? 'complete' : 'partial'}"
+      data-search="${escapeAttr(search)}"
+      data-works="${escapeAttr(fmtCount(item.works_total || 0))}"
+      data-sections="${escapeAttr(fmtCount(item.sections_total || 0))}"
+      data-entries="${escapeAttr(fmtCount(item.entries_total || 0))}"
+      ${openAttr}
+    >
+      <summary>
+        <span class="volume-summary-main">
+          <span class="volume-badges">
+            <span class="badge">${escapeHtml(item.collection || '')}</span>
+            <span class="badge">${fmtPct(completeness)}</span>
+            ${selectedBadge}
+          </span>
+          <span class="volume-title">
+            <strong>${escapeHtml(volumeId)}</strong>
+            <span>${escapeHtml(volumeTitle(item))}</span>
+          </span>
+          <span class="volume-path muted">${escapeHtml(item.path || '')}${startPage ? ` · p. ${escapeHtml(startPage)}${endPage && endPage !== startPage ? `–${escapeHtml(endPage)}` : ''}` : ''}</span>
+          <span class="chip-row">
+            <span class="chip">${fmtCount(item.works_total || 0)} ${escapeHtml(t.indicesWorksLabel)}</span>
+            <span class="chip">${fmtCount(item.sections_total || 0)} ${escapeHtml(t.indicesSectionsLabel)}</span>
+            <span class="chip">${fmtCount(item.entries_total || 0)} ${escapeHtml(t.indicesEntriesLabel)}</span>
+          </span>
+        </span>
+        <span class="summary-meta">
+          <a class="badge open-link" href="${escapeAttr(viewerHref(volumeId))}">${escapeHtml(t.indicesOpenViewer)}</a>
+          <span class="badge">↕</span>
+        </span>
+      </summary>
+      <div class="volume-body" data-volume-body hidden>
+        <div class="loading-panel">
+          <p class="muted" style="margin:0;">${escapeHtml(t.indicesLoading)}</p>
+        </div>
+      </div>
+    </details>
+  `;
+}
+
+const renderedVolumes = volumes.map((item) => renderVolume(item)).join('');
+---
+
+<Layout title={t.indicesTitle} description={t.indicesSubtitle} breadcrumbs={[{ label: t.breadcrumbHome, href: baseWithSlash }, { label: t.breadcrumbIndices }]}>
+  <div class="indices-page">
+    <header class="indices-hero card">
+      <div>
+        <p class="eyebrow">{t.breadcrumbIndices}</p>
+        <h1>{t.indicesTitle}</h1>
+        <p>{t.indicesSubtitle}</p>
+      </div>
+      <div class="indices-hero-actions">
+        <a class="button secondary" href={`${baseWithSlash}search`}>{t.navSearch}</a>
+        <a class="button secondary" href={`${baseWithSlash}viewer`}>{t.indicesOpenVolume}</a>
+      </div>
+    </header>
+
+    <aside class="card indices-notice" aria-label={t.indicesNoticeTitle}>
+      <span class="notice-label">{t.indicesNoticeTitle}</span>
+      <p>{t.indicesNoticeBody}</p>
+    </aside>
+
+    <section class="card indices-search" aria-label={t.indicesSearchTitle}>
+      <div class="indices-search-head">
+        <div>
+          <h2>{t.indicesSearchTitle}</h2>
+          <p class="muted">{t.indicesSearchPlaceholder}</p>
+        </div>
+        <div class="indices-search-bar">
+          <label class="sr-only" for="indices-pagefind-box">{t.indicesSearchPlaceholder}</label>
+          <input id="indices-pagefind-box" type="search" placeholder={t.indicesSearchPlaceholder} />
+          <button id="indices-pagefind-submit" class="button secondary" type="button">{t.indicesSearchButton}</button>
+          <button id="indices-pagefind-clear" class="button secondary" type="button">{t.indicesSearchClear}</button>
+        </div>
+      </div>
+      <div id="indices-pagefind-status" class="muted" style="margin:0;"></div>
+      <div id="indices-pagefind-results" class="indices-pagefind-results" aria-live="polite">
+        <p class="muted" style="margin:0;">{t.indicesSearchLoading}</p>
+      </div>
+    </section>
+
+    <section class="indices-shell" aria-label={t.indicesTitle}>
+      <aside class="card indices-filters" aria-label={t.filtersTitle}>
+        <h2>{t.filtersTitle}</h2>
+        <label class="field">
+          <span>Filtrar lista</span>
+          <input id="indices-search" type="search" placeholder={t.indicesSearchPlaceholder} />
+        </label>
+        <label class="field">
+          <span>{t.filterCollection}</span>
+          <select id="collection-filter">
+            <option value="">{t.indicesAllCollections}</option>
+            {collectionOptions.map((collection) => (
+              <option value={collection.value}>{collection.label}</option>
+            ))}
+          </select>
+        </label>
+        <label class="field">
+          <span>{t.indicesCompletenessLabel}</span>
+          <select id="completeness-filter">
+            <option value="">{t.indicesAllLevels}</option>
+            <option value="complete">&gt;= 75%</option>
+            <option value="partial">&lt; 75%</option>
+          </select>
+        </label>
+        <button id="clear-filters" class="button secondary" type="button">{t.indicesClearFilters}</button>
+        <p id="indices-status" class="muted" style="margin:0;"></p>
+      </aside>
+
+      <main class="indices-main">
+        <div class="card indices-summary">
+          <div class="summary-grid">
+            <article><h3 id="stat-volumes">0</h3><p>{t.indicesVolumesLabel}</p></article>
+            <article><h3 id="stat-works">0</h3><p>{t.indicesWorksLabel}</p></article>
+            <article><h3 id="stat-sections">0</h3><p>{t.indicesSectionsLabel}</p></article>
+            <article><h3 id="stat-entries">0</h3><p>{t.indicesEntriesLabel}</p></article>
+          </div>
+        </div>
+
+        <div id="volume-list" class="indices-list" aria-live="polite" set:html={renderedVolumes}></div>
+      </main>
+
+      <aside class="card indices-context" aria-label={t.indicesContextTitle}>
+        <h2>{t.indicesContextTitle}</h2>
+        <p class="context-hint muted" style="margin:0;">{t.indicesContextHint}</p>
+        <div id="context-panel">
+          <p class="muted" style="margin:0;">{t.indicesNoVolume}</p>
+        </div>
+      </aside>
+    </section>
+  </div>
+
+  <style>
+    .indices-page { display: grid; gap: var(--space-5); }
+    .indices-hero {
+      display: flex; justify-content: space-between; gap: var(--space-4); align-items: end;
+      padding: var(--space-6); border: 1px solid var(--color-border);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 88%, var(--color-accent) 12%) 0%, var(--color-surface) 100%);
+    }
+    .indices-hero h1 { margin: 0; font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3rem); }
+    .indices-hero p { margin: var(--space-2) 0 0; max-width: 70ch; color: var(--color-muted); line-height: 1.6; }
+    .eyebrow { margin: 0 0 var(--space-2); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-muted); font-size: 0.8rem; font-weight: 700; }
+    .indices-notice {
+      display: grid;
+      gap: var(--space-2);
+      padding: var(--space-4) var(--space-5);
+      border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+      background: linear-gradient(180deg, color-mix(in srgb, var(--color-accent) 12%, var(--color-surface) 88%), var(--color-surface));
+    }
+    .notice-label {
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.76rem;
+      color: var(--color-accent);
+      font-weight: 800;
+    }
+    .indices-notice p {
+      margin: 0;
+      color: var(--color-muted);
+      line-height: 1.6;
+      max-width: 90ch;
+    }
+    .indices-search {
+      display: grid;
+      gap: var(--space-3);
+      padding: var(--space-5);
+      border: 1px solid var(--color-border);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 92%, var(--color-accent) 8%), var(--color-surface));
+    }
+    .indices-search-head {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-4);
+      align-items: start;
+      flex-wrap: wrap;
+    }
+    .indices-search h2 { margin: 0; font-family: var(--font-serif); font-size: 1.2rem; }
+    .indices-search p { margin: var(--space-1) 0 0; }
+    .indices-search-bar {
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .indices-search-bar input {
+      min-width: min(100%, 320px);
+      border-radius: var(--radius-m);
+      padding: 0.8rem 0.9rem;
+    }
+    .indices-pagefind-results {
+      display: grid;
+      gap: var(--space-3);
+    }
+    :global(.indices-result) {
+      display: grid;
+      gap: var(--space-2);
+      padding: var(--space-4);
+    }
+    :global(.indices-result-tag) {
+      display: inline-flex;
+      align-self: start;
+      width: fit-content;
+      border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+      color: var(--color-accent);
+      background: color-mix(in srgb, var(--color-accent) 8%, var(--color-surface-2));
+      border-radius: 999px;
+      padding: 0.18rem 0.55rem;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+    :global(.indices-result h3) {
+      margin: 0;
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+    }
+    .indices-shell { display: grid; grid-template-columns: 260px minmax(0, 1fr) 320px; gap: var(--space-4); align-items: start; }
+    .indices-filters, .indices-context, .indices-summary, .indices-list .volume-card { box-shadow: var(--shadow-soft); }
+    .indices-filters, .indices-context {
+      display: grid;
+      gap: var(--space-3);
+      position: sticky;
+      top: calc(var(--space-4) + 72px);
+      max-height: calc(100vh - 96px);
+      overflow: auto;
+    }
+    .indices-filters h2, .indices-context h2 { margin: 0; font-family: var(--font-serif); font-size: 1.2rem; }
+    .field { display: grid; gap: var(--space-2); font-size: 0.92rem; }
+    .field span { color: var(--color-muted); font-weight: 600; }
+    .field input, .field select { width: 100%; max-width: none; border-radius: var(--radius-m); padding: 0.8rem 0.9rem; }
+    .indices-main { display: grid; gap: var(--space-4); overflow-anchor: none; min-width: 0; }
+    .summary-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-3); }
+    .summary-grid article { padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-m); background: var(--color-surface); }
+    .summary-grid h3 { margin: 0; font-size: clamp(1.4rem, 3vw, 2rem); color: var(--color-accent); }
+    .summary-grid p { margin: var(--space-1) 0 0; color: var(--color-muted); }
+    .indices-list { display: grid; gap: var(--space-4); min-width: 0; }
+    :global(.volume-card) {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-m);
+      background: var(--color-surface);
+      overflow: clip;
+      overflow-anchor: none;
+    }
+    :global(.volume-card > summary) {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-4);
+      padding: var(--space-5);
+      outline: none;
+    }
+    :global(.volume-card > summary::-webkit-details-marker) { display: none; }
+    :global(.volume-card > summary:hover) { background: color-mix(in srgb, var(--color-surface) 84%, var(--color-accent) 16%); }
+    :global(.volume-summary-main) { display: grid; gap: var(--space-3); min-width: 0; }
+    :global(.volume-badges), :global(.chip-row), :global(.summary-meta) { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
+    :global(.volume-title) {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      align-items: baseline;
+      font-family: var(--font-serif);
+      font-size: 1.16rem;
+      line-height: 1.2;
+    }
+    :global(.volume-title strong) { font-size: 1.5rem; letter-spacing: 0.01em; }
+    :global(.volume-path) { font-size: 0.9rem; line-height: 1.4; }
+    :global(.volume-card[open] .volume-title strong) { color: var(--color-accent); }
+    :global(.volume-card[data-focus-target="true"]),
+    :global(.section-card[data-focus-target="true"]),
+    :global(.work-card[data-focus-target="true"]),
+    :global(.entry-link[data-focus-target="true"]) {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 45%, transparent), 0 0 0 4px color-mix(in srgb, var(--color-accent) 12%, transparent);
+    }
+    :global(.volume-card), :global(.work-card), :global(.section-card), :global(.entry-link) {
+      scroll-margin-top: calc(var(--space-6) + 88px);
+    }
+    :global(.badge), :global(.chip) {
+      display: inline-flex; align-items: center; border: 1px solid var(--color-border); border-radius: 999px;
+      padding: 0.28rem 0.6rem; font-size: 0.82rem; background: var(--color-surface-2);
+    }
+    :global(.open-link) { text-decoration: none; color: inherit; }
+    :global(.open-link:hover), :global(.open-link:focus-visible) { border-color: var(--color-accent); }
+    :global(.volume-card > summary:focus-visible),
+    :global(.section-card > summary:focus-visible),
+    :global(.work-link:focus-visible),
+    :global(.entry-link:focus-visible) {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
+    }
+    :global(.volume-body) {
+      padding: 0 var(--space-5) var(--space-5);
+      border-top: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+      background:
+        linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 96%, var(--color-accent) 4%) 0%, var(--color-surface) 100%);
+    }
+    :global(.volume-columns) {
+      display: grid;
+      grid-template-columns: 1.05fr 1.45fr;
+      gap: var(--space-5);
+      margin-top: var(--space-5);
+      align-items: start;
+    }
+    :global(.tree-pane) {
+      display: grid;
+      gap: var(--space-3);
+      min-width: 0;
+    }
+    :global(.tree-pane h3) {
+      margin: 0;
+      font-family: var(--font-serif);
+      font-size: 1.08rem;
+      color: var(--color-ink);
+    }
+    :global(.tree-section-note) {
+      margin: 0;
+      color: var(--color-muted);
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+    :global(.work-list), :global(.sections-list) {
+      display: grid;
+      gap: var(--space-3);
+      min-width: 0;
+    }
+    :global(.work-card), :global(.section-card) {
+      padding: var(--space-3);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-s);
+      background: var(--color-surface-2);
+    }
+    :global(.work-link) {
+      display: grid;
+      gap: var(--space-2);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s, background-color 0.15s, transform 0.1s;
+      min-width: 0;
+    }
+    :global(.work-link:hover) {
+      border-color: var(--color-accent);
+      background: color-mix(in srgb, var(--color-accent) 8%, var(--color-surface-2));
+      transform: translateY(-1px);
+    }
+    :global(.work-card) {
+      display: grid;
+      gap: var(--space-2);
+      min-width: 0;
+    }
+    :global(.work-card strong) {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+    :global(.work-card .work-meta) {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      align-items: center;
+      color: var(--color-muted);
+      font-size: 0.86rem;
+      line-height: 1.4;
+      min-width: 0;
+    }
+    :global(.work-card .work-meta > span:first-child) {
+      overflow-wrap: anywhere;
+      min-width: 0;
+    }
+    :global(.section-card > summary) {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-3);
+      cursor: pointer;
+      min-width: 0;
+    }
+    :global(.section-card > summary::-webkit-details-marker) { display: none; }
+    :global(.section-card > summary > span:first-child) {
+      display: grid;
+      gap: var(--space-2);
+      min-width: 0;
+    }
+    :global(.section-card > summary strong) {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+    }
+    :global(.section-subtitle) {
+      color: var(--color-muted);
+      font-size: 0.9rem;
+      line-height: 1.45;
+      overflow-wrap: anywhere;
+    }
+    :global(.entry-list) {
+      margin-top: var(--space-3);
+      display: grid;
+      gap: 0;
+    }
+    :global(.entry-link) {
+      display: grid;
+      gap: var(--space-1);
+      padding: var(--space-2) 0;
+      border-bottom: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
+      text-decoration: none;
+      color: inherit;
+      min-width: 0;
+    }
+    :global(.entry-link:last-child) { border-bottom: 0; }
+    :global(.entry-link strong) { font-size: 0.94rem; line-height: 1.45; }
+    :global(.entry-meta) {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--color-muted);
+      font-size: 0.86rem;
+      min-width: 0;
+    }
+    :global(.entry-meta > span:first-child) { overflow-wrap: anywhere; }
+    :global(.entry-meta .badge) {
+      flex-shrink: 0;
+    }
+    :global(.entry-arrow) { color: var(--color-accent); }
+    :global(.loading-panel), :global(.empty-panel) {
+      padding: var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-s); background: var(--color-surface-2);
+    }
+    .muted { color: var(--color-muted); }
+    #context-panel { display: grid; gap: var(--space-3); }
+    .context-hint { font-size: 0.92rem; line-height: 1.5; }
+    :global(.context-block) {
+      display: grid;
+      gap: var(--space-1);
+      padding: var(--space-3);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-s);
+      background: var(--color-surface-2);
+    }
+    :global(.context-block-label) {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      color: var(--color-muted);
+      font-weight: 700;
+    }
+    :global(.context-block-value) {
+      margin: 0;
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      line-height: 1.4;
+      overflow-wrap: anywhere;
+    }
+    :global(.context-volume, .context-work, .context-section) {
+      display: grid;
+      gap: var(--space-2);
+    }
+    :global(.context-volume .context-block-value) {
+      font-size: 1.15rem;
+    }
+    :global(.context-work .context-block-value) {
+      font-size: 1rem;
+    }
+    :global(.context-section .context-block-value) {
+      font-size: 0.98rem;
+    }
+    .indices-context {
+      min-width: 0;
+    }
+    @media (max-width: 1300px) {
+      .indices-shell { grid-template-columns: 240px minmax(0, 1fr) 300px; }
+      :global(.volume-columns) { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 1100px) {
+      .indices-shell { grid-template-columns: 1fr; }
+      .indices-filters, .indices-context { position: static; max-height: none; overflow: visible; }
+      .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      :global(.volume-columns) { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      .indices-hero { padding: var(--space-5); flex-direction: column; align-items: start; }
+      .indices-notice { padding: var(--space-4); }
+      .summary-grid { grid-template-columns: 1fr; }
+      :global(.volume-card > summary) { flex-direction: column; }
+      :global(.entry-link) { flex-direction: column; align-items: start; }
+    }
+  </style>
+
+  <script type="module" define:vars={{
+    baseUrl: baseWithSlash,
+    strings: {
+      loading: t.indicesLoading,
+      noVolume: t.indicesNoVolume,
+      unavailable: t.indicesUnavailable,
+      selectedWork: t.indicesSelectedWork,
+      selectedSection: t.indicesSelectedSection,
+      openVolume: t.indicesOpenVolume,
+      contextTitle: t.indicesContextTitle,
+      entriesLabel: t.indicesEntriesLabel,
+      volumesLabel: t.indicesVolumesLabel,
+      searchBusy: t.indicesSearchBusy,
+      searchNoResults: t.indicesSearchNoResults,
+      searchUnavailable: t.indicesSearchUnavailable,
+      searchOpen: t.indicesSearchOpen,
+      searchPlaceholder: t.indicesSearchPlaceholder,
+    },
+  }}>
+    function escapeHtml(value) {
+      return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function pickReferencePage(...values) {
+      for (const value of values) {
+        const text = String(value || '').trim();
+        if (/^\d+$/.test(text)) return text;
+      }
+      return '';
+    }
+
+    const statusEl = document.getElementById('indices-status');
+    const dataCache = window.pdfocrDataCache;
+    const searchInput = document.getElementById('indices-search');
+    const collectionFilter = document.getElementById('collection-filter');
+    const completenessFilter = document.getElementById('completeness-filter');
+    const clearFiltersBtn = document.getElementById('clear-filters');
+    const statVolumes = document.getElementById('stat-volumes');
+    const statWorks = document.getElementById('stat-works');
+    const statSections = document.getElementById('stat-sections');
+    const statEntries = document.getElementById('stat-entries');
+    const contextPanel = document.getElementById('context-panel');
+    const pagefindBox = document.getElementById('indices-pagefind-box');
+    const pagefindSubmit = document.getElementById('indices-pagefind-submit');
+    const pagefindClear = document.getElementById('indices-pagefind-clear');
+    const pagefindStatus = document.getElementById('indices-pagefind-status');
+    const pagefindResults = document.getElementById('indices-pagefind-results');
+    const allVolumes = [...document.querySelectorAll('[data-volume-item]')];
+    const volumeCache = new Map();
+    const state = { q: '', volumeQuery: '', collection: '', completeness: '', volume: '', work: '', section: '', entry: '' };
+    let indicesPagefind = null;
+    let indicesPagefindPromise = null;
+    let searchRenderToken = 0;
+
+    function norm(value) {
+      return String(value || '').toLowerCase().trim();
+    }
+
+    const getJsonOnce = (url) => dataCache?.getJsonOnce(url) ?? fetch(url).then((res) => {
+      if (!res.ok) throw new Error(`HTTP ${res.status} ao buscar ${url}`);
+      return res.json();
+    });
+
+    function setUrl() {
+      const params = new URLSearchParams();
+      if (state.q) params.set('q', state.q);
+      if (state.volumeQuery) params.set('vq', state.volumeQuery);
+      if (state.collection) params.set('collection', state.collection);
+      if (state.completeness) params.set('completeness', state.completeness);
+      if (state.volume) params.set('volume', state.volume);
+      if (state.work) params.set('work', state.work);
+      if (state.section) params.set('section', state.section);
+      if (state.entry) params.set('entry', state.entry);
+      const query = params.toString();
+      window.history.replaceState({}, '', window.location.pathname + (query ? `?${query}` : ''));
+    }
+
+    function readUrl() {
+      const params = new URLSearchParams(window.location.search);
+      state.q = params.get('q') || '';
+      state.volumeQuery = params.get('vq') || '';
+      state.collection = params.get('collection') || '';
+      state.completeness = params.get('completeness') || '';
+      state.volume = params.get('volume') || '';
+      state.work = params.get('work') || '';
+      state.section = params.get('section') || '';
+      state.entry = params.get('entry') || '';
+      searchInput.value = state.volumeQuery;
+      collectionFilter.value = state.collection;
+      completenessFilter.value = state.completeness;
+      if (pagefindBox) pagefindBox.value = state.q;
+    }
+
+    function matchesVolume(volumeEl) {
+      const collection = volumeEl.dataset.collection || '';
+      const completeness = volumeEl.dataset.completeness || '';
+      const search = volumeEl.dataset.search || '';
+      if (state.collection && state.collection !== collection) return false;
+      if (state.completeness && state.completeness !== completeness) return false;
+      if (state.volumeQuery && !search.includes(norm(state.volumeQuery))) return false;
+      return true;
+    }
+
+    function setStats(count) {
+      statVolumes.textContent = String(count);
+      statWorks.textContent = String([...allVolumes].reduce((acc, el) => acc + Number(el.dataset.works || 0), 0));
+      statSections.textContent = String([...allVolumes].reduce((acc, el) => acc + Number(el.dataset.sections || 0), 0));
+      statEntries.textContent = String([...allVolumes].reduce((acc, el) => acc + Number(el.dataset.entries || 0), 0));
+    }
+
+    function renderVolumeMarkup(payload, volumeId) {
+      const works = payload?.works || [];
+      const sections = payload?.sections || [];
+      const workMarkup = works.length
+        ? works.slice(0, 8).map((work) => {
+            const startPage = pickReferencePage(work.reference_start_page, work.start_page);
+            const endPage = pickReferencePage(work.reference_end_page, work.end_page);
+            const href = `${baseUrl}viewer?doc=${encodeURIComponent(volumeId)}${startPage ? `&page=${encodeURIComponent(startPage)}` : ''}`;
+            const pageRange = `${startPage ? escapeHtml(startPage) : ''}${endPage ? `–${escapeHtml(endPage)}` : ''}`;
+            const active = state.work && state.work === work.work_key ? ' data-active="true"' : '';
+            return `
+            <a class="work-card work-link"${active} data-work-key="${escapeHtml(work.work_key || '')}" href="${href}">
+              <strong>${escapeHtml(work.title_display?.original || work.title_raw || '')}</strong>
+              <span class="work-meta">
+                <span>${escapeHtml(work.author_raw || '')}</span>
+                ${pageRange ? `<span class="badge">${pageRange}</span>` : ''}
+              </span>
+            </a>
+          `;
+          }).join('')
+        : `<div class="empty-panel"><p class="muted" style="margin:0;">${escapeHtml(strings.noVolume)}</p></div>`;
+      const sectionMarkup = sections.length
+        ? sections.map((section) => {
+            const entries = (section.entries || []).slice(0, 8).map((entry) => {
+              const page = pickReferencePage(entry.reference_page, entry.page_ref_int, entry.page_ref_raw);
+              const href = page ? `${baseUrl}viewer?doc=${encodeURIComponent(volumeId)}&page=${encodeURIComponent(page)}` : `${baseUrl}viewer?doc=${encodeURIComponent(volumeId)}`;
+              const active = state.entry && state.entry === String(entry.id || '') ? ' data-active="true"' : '';
+              return `
+                <a class="entry-link"${active} data-entry-id="${escapeHtml(String(entry.id || ''))}" href="${href}">
+                  <strong>${escapeHtml(entryTitle(entry))}</strong>
+                  <span class="entry-meta">
+                    <span>${escapeHtml(entrySubtitle(entry))}</span>
+                    ${page ? `<span class="badge">${escapeHtml(page)}</span>` : ''}
+                    <span class="entry-arrow">↗</span>
+                  </span>
+                </a>
+              `;
+            }).join('');
+            const active = state.section && state.section === section.section_key ? ' data-active="true"' : '';
+            return `
+              <details class="section-card"${active} data-section-key="${escapeHtml(section.section_key || '')}" open>
+                <summary>
+                  <span>
+                    <strong>${escapeHtml(sectionTitle(section))}</strong>
+                    <span class="section-subtitle">${escapeHtml(sectionSubtitle(section))}</span>
+                  </span>
+                  <span class="summary-meta">
+                    <span class="badge">${escapeHtml(String(section.entries?.length || 0))} ${escapeHtml(strings.entriesLabel)}</span>
+                  </span>
+                </summary>
+                <div class="entry-list">${entries || `<div class="empty-panel"><p class="muted" style="margin:0;">${escapeHtml(strings.noVolume)}</p></div>`}</div>
+              </details>
+            `;
+          }).join('')
+        : `<div class="empty-panel"><p class="muted" style="margin:0;">${escapeHtml(strings.noVolume)}</p></div>`;
+      return `
+        <div class="volume-columns">
+          <section class="tree-pane">
+            <h3>${escapeHtml(strings.selectedWork)}</h3>
+            <p class="tree-section-note">${escapeHtml(strings.selectedWork)} · ${escapeHtml(volumeId)}</p>
+            <div class="work-list">${workMarkup}</div>
+          </section>
+          <section class="tree-pane">
+            <h3>${escapeHtml(strings.selectedSection)}</h3>
+            <p class="tree-section-note">${escapeHtml(strings.selectedSection)} · ${escapeHtml(volumeId)}</p>
+            <div class="sections-list">${sectionMarkup}</div>
+          </section>
+        </div>
+      `;
+    }
+
+    async function openVolume(volumeEl) {
+      const volumeId = volumeEl.dataset.volumeId || '';
+      const body = volumeEl.querySelector('[data-volume-body]');
+      if (!body || !volumeId) return;
+      if (!volumeCache.has(volumeId)) {
+        const promise = getJsonOnce(`${baseUrl}indices/${volumeId}.json.gz`)
+          .catch(() => getJsonOnce(`${baseUrl}indices/${volumeId}.json`));
+        volumeCache.set(volumeId, promise);
+      }
+      body.hidden = false;
+      body.innerHTML = `<div class="loading-panel"><p class="muted" style="margin:0;">${escapeHtml(strings.loading)}</p></div>`;
+      try {
+        const payload = await volumeCache.get(volumeId);
+        body.innerHTML = renderVolumeMarkup(payload, volumeId);
+        for (const el of body.querySelectorAll('[data-focus-target="true"]')) {
+          el.removeAttribute('data-focus-target');
+        }
+        const focusSelector = state.entry
+          ? `[data-entry-id="${CSS.escape(state.entry)}"]`
+          : state.section
+            ? `[data-section-key="${CSS.escape(state.section)}"]`
+            : state.work
+              ? `[data-work-key="${CSS.escape(state.work)}"]`
+              : null;
+        const focusTarget = focusSelector ? body.querySelector(focusSelector) : null;
+        if (focusTarget) {
+          focusTarget.setAttribute('data-focus-target', 'true');
+          if (focusTarget.matches('details')) focusTarget.open = true;
+          window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(() => {
+              const offset = 120;
+              const top = focusTarget.getBoundingClientRect().top + window.scrollY - offset;
+              window.scrollTo({ top: Math.max(0, top), behavior: 'auto' });
+              focusTarget.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'auto' });
+            });
+          });
+        }
+        const selectedWork = payload?.works?.find((work) => state.work && state.work === work.work_key) || payload?.works?.[0] || null;
+        const selectedSection = payload?.sections?.find((section) => state.section && state.section === section.section_key) || payload?.sections?.[0] || null;
+
+        contextPanel.innerHTML = `
+          <div class="context-block context-volume">
+            <span class="context-block-label">${escapeHtml(strings.openVolume)}</span>
+            <p class="context-block-value">${escapeHtml(volumeId)}</p>
+            <p class="muted" style="margin:0;">${escapeHtml(payload?.volume?.display?.original || payload?.volume?.volume_label || '')}</p>
+            <p class="muted" style="margin:0;">${escapeHtml(payload?.volume?.source_root || '')}</p>
+          </div>
+          <div class="context-block context-work">
+            <span class="context-block-label">${escapeHtml(strings.selectedWork)}</span>
+            <p class="context-block-value">${escapeHtml(selectedWork?.title_display?.original || selectedWork?.title_raw || strings.noVolume)}</p>
+            <p class="muted" style="margin:0;">${escapeHtml(selectedWork?.author_raw || '')}</p>
+          </div>
+          <div class="context-block context-section">
+            <span class="context-block-label">${escapeHtml(strings.selectedSection)}</span>
+            <p class="context-block-value">${escapeHtml(selectedSection?.heading_display?.original || selectedSection?.heading_raw || strings.noVolume)}</p>
+            <p class="muted" style="margin:0;">${escapeHtml(selectedSection?.index_kind || '')}</p>
+          </div>
+        `;
+      } catch (err) {
+        console.error(err);
+        body.innerHTML = `<div class="empty-panel"><p class="muted" style="margin:0;">${escapeHtml(strings.unavailable)}</p></div>`;
+      }
+    }
+
+    function applyFilters() {
+      let visibleVolumes = 0;
+      for (const volume of allVolumes) {
+        const visible = matchesVolume(volume);
+        volume.hidden = !visible;
+        if (visible) visibleVolumes += 1;
+      }
+      setStats(visibleVolumes);
+      statusEl.textContent = `${visibleVolumes} ${strings.volumesLabel}`;
+      const selected = state.volume
+        ? allVolumes.find((volume) => volume.dataset.volumeId === state.volume)
+        : allVolumes.find((volume) => !volume.hidden);
+      if (selected) {
+        selected.open = true;
+        void openVolume(selected);
+      }
+    }
+
+    function scheduleFilter() {
+      window.clearTimeout(scheduleFilter._t);
+      scheduleFilter._t = window.setTimeout(() => {
+        setUrl();
+        applyFilters();
+      }, 90);
+    }
+
+    async function ensureIndicesPagefind() {
+      if (indicesPagefind) return indicesPagefind;
+      if (indicesPagefindPromise) return indicesPagefindPromise;
+      indicesPagefindPromise = (async () => {
+        try {
+          const pagefindUrl = `${baseUrl}indices-pagefind/pagefind.js`;
+          const mod = await import(pagefindUrl);
+          const pfModule = mod?.default || mod?.pagefind || mod;
+          const pf = (pfModule && typeof pfModule.search === 'function') ? pfModule : mod;
+          if (pf && typeof pf.options === 'function') {
+            await pf.options({ basePath: `${baseUrl}indices-pagefind/` });
+          }
+          return pf && typeof pf.search === 'function' ? pf : null;
+        } catch (err) {
+          console.error(err);
+          pagefindStatus.textContent = strings.searchUnavailable;
+          return null;
+        }
+      })();
+      indicesPagefind = await indicesPagefindPromise;
+      return indicesPagefind;
+    }
+
+    function sectionTitle(section) {
+      return section?.heading_display?.original || section?.heading_raw || section?.section_key || '';
+    }
+
+    function sectionSubtitle(section) {
+      if (section?.index_kind && section?.heading_display?.original && section.index_kind !== section.heading_display.original) {
+        return section.index_kind;
+      }
+      return section?.heading_raw || '';
+    }
+
+    function entryTitle(entry) {
+      return entry?.target_display?.original || entry?.target_raw || entry?.entry_raw || entry?.id || '';
+    }
+
+    function entrySubtitle(entry) {
+      if (entry?.target_display?.original && entry?.entry_raw && entry.target_display.original !== entry.entry_raw) {
+        return entry.entry_raw;
+      }
+      return entry?.target_raw || '';
+    }
+
+    function buildIndicesResult(hit, term) {
+      const article = document.createElement('article');
+      article.className = 'card indices-result';
+      const kind = String(hit.meta?.kind || '');
+      const tag = document.createElement('span');
+      tag.className = 'indices-result-tag';
+      tag.textContent =
+        kind === 'work' ? strings.selectedWork
+        : kind === 'section' ? strings.selectedSection
+        : kind === 'entry' ? strings.indicesEntriesLabel
+        : strings.indicesOpenVolume;
+      const title = document.createElement('h3');
+      title.textContent = hit.meta?.title || strings.noVolume;
+      const kindEl = document.createElement('div');
+      kindEl.className = 'muted';
+      kindEl.textContent =
+        kind === 'work' ? strings.selectedWork
+        : kind === 'section' ? strings.selectedSection
+        : kind === 'entry' ? strings.indicesEntriesLabel
+        : strings.indicesOpenVolume;
+      const snippet = document.createElement('p');
+      snippet.className = 'muted';
+      snippet.innerHTML = hit.excerpt || hit.content || '';
+      const link = document.createElement('a');
+      link.className = 'button secondary';
+      const targetParams = new URLSearchParams();
+      if (term) targetParams.set('q', term);
+      if (hit.meta?.volume) targetParams.set('volume', hit.meta.volume);
+      if (hit.meta?.kind === 'work' && hit.meta?.workKey) targetParams.set('work', hit.meta.workKey);
+      if (hit.meta?.kind === 'section' && hit.meta?.sectionKey) targetParams.set('section', hit.meta.sectionKey);
+      if (hit.meta?.kind === 'entry') {
+        if (hit.meta?.sectionKey) targetParams.set('section', hit.meta.sectionKey);
+        if (hit.meta?.entryId) targetParams.set('entry', hit.meta.entryId);
+      }
+      link.href = `${baseUrl}indices?${targetParams.toString()}`;
+      link.textContent = strings.searchOpen;
+      link.addEventListener('click', (event) => {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+        event.preventDefault();
+        pagefindResults.innerHTML = `<p class="muted" style="margin:0;">${escapeHtml(strings.searchBusy)}</p>`;
+        window.location.href = link.href;
+      });
+      article.append(tag, title, kindEl, snippet, link);
+      return article;
+    }
+
+    async function renderIndicesSearch() {
+      const token = ++searchRenderToken;
+      const term = (pagefindBox?.value || '').trim();
+      state.q = term;
+      if (!term) {
+        pagefindStatus.textContent = '';
+        pagefindResults.innerHTML = `<p class="muted" style="margin:0;">${escapeHtml(strings.searchPlaceholder)}</p>`;
+        return;
+      }
+      pagefindStatus.textContent = strings.searchBusy;
+      pagefindResults.innerHTML = `<p class="muted" style="margin:0;">${escapeHtml(strings.searchBusy)}</p>`;
+      const pf = await ensureIndicesPagefind();
+      if (!pf) {
+        pagefindStatus.textContent = strings.searchUnavailable;
+        return;
+      }
+      const result = await pf.search(term);
+      if (token !== searchRenderToken) return;
+      const hits = result?.results || [];
+      pagefindStatus.textContent = `${hits.length} ${strings.entriesLabel}`;
+      if (!hits.length) {
+        pagefindResults.innerHTML = `<p class="muted" style="margin:0;">${escapeHtml(strings.searchNoResults)}</p>`;
+        return;
+      }
+      pagefindResults.innerHTML = '';
+      for (const hit of hits.slice(0, 12)) {
+        const data = await hit.data();
+        if (token !== searchRenderToken) return;
+        pagefindResults.appendChild(buildIndicesResult(data, term));
+      }
+    }
+
+    readUrl();
+    applyFilters();
+    void renderIndicesSearch();
+
+    allVolumes.forEach((volume) => {
+      volume.querySelector('summary')?.addEventListener('click', () => {
+        state.volume = volume.dataset.volumeId || '';
+        setUrl();
+        void openVolume(volume);
+      });
+    });
+
+    searchInput.addEventListener('input', (event) => {
+      state.volumeQuery = event.target.value;
+      state.volume = '';
+      state.work = '';
+      state.section = '';
+      state.entry = '';
+      scheduleFilter();
+    });
+    collectionFilter.addEventListener('change', (event) => {
+      state.collection = event.target.value;
+      scheduleFilter();
+    });
+    completenessFilter.addEventListener('change', (event) => {
+      state.completeness = event.target.value;
+      scheduleFilter();
+    });
+    clearFiltersBtn.addEventListener('click', () => {
+      state.q = '';
+      state.volumeQuery = '';
+      state.collection = '';
+      state.completeness = '';
+      state.volume = '';
+      state.work = '';
+      state.section = '';
+      state.entry = '';
+      searchInput.value = '';
+      if (pagefindBox) pagefindBox.value = '';
+      collectionFilter.value = '';
+      completenessFilter.value = '';
+      setUrl();
+      applyFilters();
+      void renderIndicesSearch();
+    });
+
+    pagefindSubmit?.addEventListener('click', () => void renderIndicesSearch());
+    pagefindClear?.addEventListener('click', () => {
+      if (pagefindBox) pagefindBox.value = '';
+      state.q = '';
+      state.work = '';
+      state.section = '';
+      state.entry = '';
+      setUrl();
+      void renderIndicesSearch();
+    });
+    pagefindBox?.addEventListener('input', () => {
+      window.clearTimeout(renderIndicesSearch._t);
+      renderIndicesSearch._t = window.setTimeout(() => void renderIndicesSearch(), 180);
+    });
+    pagefindBox?.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        void renderIndicesSearch();
+      }
+    });
+
+    window.addEventListener('popstate', () => {
+      readUrl();
+      applyFilters();
+      void renderIndicesSearch();
+    });
+  </script>
+</Layout>

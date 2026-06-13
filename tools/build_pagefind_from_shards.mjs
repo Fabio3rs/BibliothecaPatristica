@@ -144,6 +144,7 @@ function buildCustomRecord(params, kwMap, docId, page) {
     doc: docId,
     page: String(page.page),
     collection: docId.slice(0, 2),
+    rawUrl: page.raw?.url || '',
   };
   if (keywordLabels.length) meta.keywords = keywordLabels.slice(0, 10).join(' • ');
   if (bookNames.length) meta.books = bookNames.join(' • ');

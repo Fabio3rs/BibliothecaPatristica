@@ -190,7 +190,8 @@ def clean_llm_xml(raw_xml: str) -> str:
 
     # 2. Neutraliza tags que NÃO estão na sua lista permitida
     # Esta regex procura por < ou </ seguidos de algo que NÃO seja pagina, bloco ou notas
-    allowed_tags = r"/?(?:pagina|bloco|notas)"
+    # <lb/>
+    allowed_tags = r"/?(?:pagina|bloco|notas|avaliacaoo|fidelidade|usabilidade|comentario|idiomas_identificados|idioma|julgamento|lb|nota_marginal)"
     pattern = rf"<(?!{allowed_tags}\b)[^>]+>"
 
     # Transformamos o <fantasma> em [fantasma]
@@ -442,6 +443,84 @@ def preprocess_image(img_bgr: np.ndarray, method: str = "auto") -> np.ndarray:
     return thresh
 
 
+def preprocess_image_tesseract(img, border_size=50):
+    # Converter pra grayscale
+    arr = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) if len(img.shape) == 3 else img
+
+    thresh = cv2.threshold(arr, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
+
+    # 1. REMOVER RUÍDO E JUNTAR LINHAS
+    # Criamos um kernel largo para "derreter" as palavras em linhas horizontais
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (30, 5))
+    dilate = cv2.dilate(thresh, kernel, iterations=2)
+
+    # 2. ENCONTRAR CONTORNOS
+    contours, _ = cv2.findContours(dilate, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+
+    angles = []
+    for cnt in contours:
+        # Ignorar ruídos pequenos e as bordas gigantescas do papel
+        area = cv2.contourArea(cnt)
+        if 500 < area < 50000:  # Ajuste esses valores conforme necessário
+            rect = cv2.minAreaRect(cnt)
+            angle = rect[-1]
+            rw, rh = rect[1]
+
+            # Normalização do ângulo para OpenCV 4.5+
+            # minAreaRect retorna o ângulo do eixo mais curto.
+            # Para linhas de texto horizontais (largura >> altura), o eixo
+            # curto é vertical → ângulo fica em torno de -90°.
+            # Corrigimos para obter o ângulo real da linha (próximo de 0°).
+            if rw < rh:
+                angle = angle + 90  # roda 90° para alinhar com o eixo longo
+            # Após normalização, descarta ângulos absurdos (>10°): provavelmente
+            # contornos de elementos decorativos, linhas de margem etc.
+            if abs(angle) <= 10:
+                angles.append(angle)
+
+    # 3. MÉDIA DOS ÂNGULOS
+    # Usamos a mediana para evitar que um contorno doido puxe o valor
+    if len(angles) > 0:
+        median_angle = np.median(angles)
+    else:
+        median_angle = 0.0  # Sem inclinação detectada
+
+    print(f"Ângulo real detectado: {median_angle}")
+
+    # 4. ROTACIONAR
+    (h, w) = img.shape[:2]
+    center = (w // 2, h // 2)
+    M = cv2.getRotationMatrix2D(center, median_angle, 1.0)
+    rotated = cv2.warpAffine(
+        img, M, (w, h), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE
+    )
+
+    _, thresh = cv2.threshold(rotated, 100, 255, cv2.THRESH_BINARY)
+
+    # # Adiciona a borda branca (o valor [255, 255, 255] é o branco em BGR)
+    # processed = cv2.copyMakeBorder(
+    #     thresh,
+    #     top=border_size,
+    #     bottom=border_size,
+    #     left=border_size,
+    #     right=border_size,
+    #     borderType=cv2.BORDER_CONSTANT,
+    #     value=[255, 255, 255],
+    # )
+
+    # rotated = cv2.copyMakeBorder(
+    #     rotated,
+    #     top=border_size,
+    #     bottom=border_size,
+    #     left=border_size,
+    #     right=border_size,
+    #     borderType=cv2.BORDER_CONSTANT,
+    #     value=[255, 255, 255],
+    # )
+
+    return thresh, rotated
+
+
 def auto_rotate_image(img: np.ndarray):
     arr = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) if len(img.shape) == 3 else img
     thresh = cv2.threshold(arr, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
@@ -689,117 +768,117 @@ def pages_to_images(
 
 
 PROMPT = """
-Você é um especialista em paleografia e transcrição de documentos históricos (Patrologia Graeca, Latina et Orientalis).
+You are an expert in palaeography and transcription of historical documents (Patrologia Graeca, Latina et Orientalis).
 
-Analise a imagem e produza uma transcrição XML fiel. Identifique primeiro o tipo de página (capa/guarda, texto, gravura).
+Analyse the image and produce a faithful XML transcription. First identify the page type (cover/endpaper, text, illustration).
 
-Se a página estiver realmente em branco: <pagina estado="vazio" tipo="capa_ou_guarda" />
+If the page is truly blank: <pagina estado="vazio" tipo="capa_ou_guarda" />
 
-Scripts permitidos: latino, grego, copta, siriaco, cirilico, ethiopico, armenio, arabe, hebraico, misto, desconhecido.
-Tipos permitidos: cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal, outro.
+Allowed scripts: latino, grego, copta, siriaco, cirilico, ethiopico, armenio, arabe, hebraico, misto, desconhecido.
+Allowed types: cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal, outro.
 
-REGRAS:
-1. NUNCA afirme que a página está em branco se houver qualquer vestígio de tinta. Transcreva o que for possível.
-2. Mapeie todos os blocos: rodapés, aparato crítico, notas marginais. Omissão é falha grave.
-3. Tag raiz deve ter atributo estado="com_texto" ou estado="vazio".
-4. BBOX: x1,y1,x2,y2 (escala 0-1000).
-5. Em duas colunas: transcreva a coluna esquerda inteira, depois a direita. Cabeçalhos e rodapés span-completo ficam na posição visual que ocupam.
-6. Não traduza, não normalize, não invente. Use [ilegivel] apenas por palavra, nunca por bloco.
+RULES:
+1. NEVER state that the page is blank if there is any trace of ink. Transcribe whatever is possible.
+2. Map every block: footnotes, critical apparatus, marginal notes. Omission is a serious failure.
+3. The root tag must have the attribute estado="com_texto" or estado="vazio".
+4. BBOX: x1,y1,x2,y2 (scale 0-1000).
+5. Two-column layout: transcribe the entire left column first, then the right. Full-width headers and footers stay at the visual position they occupy.
+6. Do not translate, normalise, or invent. Use [ilegivel] only for individual words, never for whole blocks.
 
-Nota sobre layout: Letras A, B, C, D na vertical central são nota_marginal de seção.
+Layout note: Letters A, B, C, D placed vertically in the centre gutter are nota_marginal section identifiers.
 
-Formato de saída:
+Output format:
 <pagina estado="com_texto">
   <bloco tipo="..." script="..." bbox="x1,y1,x2,y2">
-    transcrição literal
+    literal transcription
   </bloco>
-  <notas>scripts complexos ou correções relevantes se foram realizadas</notas>
+  <notas>complex scripts or relevant corrections if made</notas>
 </pagina>
 
-Retorne APENAS o XML.
+Return ONLY the XML.
 """.strip()
 
 PROMPT_VERIFY_TESSERACT = """
-Você é um especialista em paleografia e transcrição de documentos históricos (Patrologia Graeca, Latina et Orientalis).
+You are an expert in palaeography and transcription of historical documents (Patrologia Graeca, Latina et Orientalis).
 
-Analise a imagem e produza uma transcrição XML fiel. Identifique primeiro o tipo de página (capa/guarda, texto, gravura).
+Analyse the image and produce a faithful XML transcription. First identify the page type (cover/endpaper, text, illustration).
 
-Se a página estiver realmente em branco: <pagina estado="vazio" tipo="capa_ou_guarda" />
+If the page is truly blank: <pagina estado="vazio" tipo="capa_ou_guarda" />
 
-Scripts permitidos: latino, grego, copta, siriaco, cirilico, ethiopico, armenio, arabe, hebraico, misto, desconhecido.
-Tipos permitidos: cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal, outro.
+Allowed scripts: latino, grego, copta, siriaco, cirilico, ethiopico, armenio, arabe, hebraico, misto, desconhecido.
+Allowed types: cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal, outro.
 
-REGRAS:
-1. NUNCA afirme que a página está em branco se houver qualquer vestígio de tinta. Transcreva o que for possível.
-2. Mapeie todos os blocos: rodapés, aparato crítico, notas marginais. Omissão é falha grave.
-3. Tag raiz deve ter atributo estado="com_texto" ou estado="vazio".
-4. BBOX: x1,y1,x2,y2 (escala 0-1000).
-5. O rascunho OCR é uma pista — confirme visualmente antes de usar. O Tesseract erra scripts, diacríticos e ligaduras.
-6. Em duas colunas: transcreva a coluna esquerda inteira, depois a direita. Cabeçalhos e rodapés span-completo ficam na posição visual que ocupam.
-7. Não traduza, não normalize, não invente. Use [ilegivel] apenas por palavra, nunca por bloco.
+RULES:
+1. NEVER state that the page is blank if there is any trace of ink. Transcribe whatever is possible.
+2. Map every block: footnotes, critical apparatus, marginal notes. Omission is a serious failure.
+3. The root tag must have the attribute estado="com_texto" or estado="vazio".
+4. BBOX: x1,y1,x2,y2 (scale 0-1000).
+5. The OCR draft is a hint — verify visually before using it. Tesseract makes mistakes with scripts, diacritics, and ligatures.
+6. Two-column layout: transcribe the entire left column first, then the right. Full-width headers and footers stay at the visual position they occupy.
+7. Do not translate, normalise, or invent. Use [ilegivel] only for individual words, never for whole blocks.
 
-Nota sobre layout: Letras A, B, C, D na vertical central são nota_marginal de seção.
+Layout note: Letters A, B, C, D placed vertically in the centre gutter are nota_marginal section identifiers.
 
-Formato de saída:
+Output format:
 <pagina estado="com_texto">
   <bloco tipo="..." script="..." bbox="x1,y1,x2,y2">
-    transcrição literal
+    literal transcription
   </bloco>
-  <notas>scripts complexos ou correções relevantes se foram realizadas</notas>
+  <notas>complex scripts or relevant corrections if made</notas>
 </pagina>
 
-Retorne APENAS o XML.
+Return ONLY the XML.
 """.strip()
 
 PROMPT_VERIFY_LLM_VS_TESSERACT = """
-Você é um especialista em paleografia e transcrição de documentos históricos (Patrologia Graeca, Latina et Orientalis).
+You are an expert in palaeography and transcription of historical documents (Patrologia Graeca, Latina et Orientalis).
 
-Analise a imagem e produza uma transcrição XML fiel. Identifique primeiro o tipo de página (capa/guarda, texto, gravura).
+Analyse the image and produce a faithful XML transcription. First identify the page type (cover/endpaper, text, illustration).
 
-Se a página estiver realmente em branco: <pagina estado="vazio" tipo="capa_ou_guarda" />
+If the page is truly blank: <pagina estado="vazio" tipo="capa_ou_guarda" />
 
-Scripts permitidos: latino, grego, copta, siriaco, cirilico, ethiopico, armenio, arabe, hebraico, misto, desconhecido.
-Tipos permitidos: cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal, outro.
+Allowed scripts: latino, grego, copta, siriaco, cirilico, ethiopico, armenio, arabe, hebraico, misto, desconhecido.
+Allowed types: cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal, outro.
 
-REGRAS:
-1. NUNCA afirme que a página está em branco se houver qualquer vestígio de tinta. Transcreva o que for possível.
-2. Mapeie todos os blocos: rodapés, aparato crítico, notas marginais. Omissão é falha grave.
-3. Tag raiz deve ter atributo estado="com_texto" ou estado="vazio".
-4. BBOX: x1,y1,x2,y2 (escala 0-1000).
-5. Os rascunhos OCR são pistas — confirme visualmente antes de usar. O Tesseract erra scripts, diacríticos e ligaduras. O llm_ocr pode alucinar estrutura e conteúdo; a imagem é sempre a fonte de verdade.
-6. Em duas colunas: transcreva a coluna esquerda inteira, depois a direita. Cabeçalhos e rodapés span-completo ficam na posição visual que ocupam.
-7. Não traduza, não normalize, não invente. Use [ilegivel] apenas por palavra, nunca por bloco.
+RULES:
+1. NEVER state that the page is blank if there is any trace of ink. Transcribe whatever is possible.
+2. Map every block: footnotes, critical apparatus, marginal notes. Omission is a serious failure.
+3. The root tag must have the attribute estado="com_texto" or estado="vazio".
+4. BBOX: x1,y1,x2,y2 (scale 0-1000).
+5. The OCR drafts are hints — verify visually before using them. Tesseract makes mistakes with scripts, diacritics, and ligatures. The llm_ocr may hallucinate structure and content; the image is always the ground truth.
+6. Two-column layout: transcribe the entire left column first, then the right. Full-width headers and footers stay at the visual position they occupy.
+7. Do not translate, normalise, or invent. Use [ilegivel] only for individual words, never for whole blocks.
 
-Nota sobre layout: Letras A, B, C, D na vertical central são nota_marginal de seção.
+Layout note: Letters A, B, C, D placed vertically in the centre gutter are nota_marginal section identifiers.
 
-Formato de saída:
+Output format:
 <pagina estado="com_texto">
   <bloco tipo="..." script="..." bbox="x1,y1,x2,y2">
-    transcrição literal
+    literal transcription
   </bloco>
-  <notas>scripts complexos ou correções relevantes se foram realizadas</notas>
+  <notas>complex scripts or relevant corrections if made</notas>
 </pagina>
 
-Retorne APENAS o XML.
+Return ONLY the XML.
 """.strip()
 
 
 PROMPT_CORRECAO_LLM_VS_TESSERACT = """
-Atue como especialista em paleografia (Patrologia). Transcreva a imagem para XML fiel, priorizando a visão da imagem sobre os rascunhos de OCR (Tesseract/LLM).
+Act as a palaeography expert (Patrologia). Transcribe the image to faithful XML, prioritising the image over the OCR drafts (Tesseract/LLM).
 
-Diretrizes:
-1. Estado: Use `vazio` apenas se não houver tinta; caso contrário, `com_texto`.
-2. Layout: Mapeie todos os blocos (cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal). Letras centrais A, B, C, D são `nota_marginal`.
-3. Fluxo: Transcreva coluna esquerda, depois a direita. BBOX em escala 0-1000.
-4. Fidelidade: Proibido traduzir ou normalizar. Use `[ilegivel]` apenas por palavra.
+Guidelines:
+1. State: Use `vazio` only if there is no ink; otherwise, `com_texto`.
+2. Layout: Map every block (cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal). Central letters A, B, C, D are `nota_marginal`.
+3. Flow: Transcribe the left column, then the right. BBOX on scale 0-1000.
+4. Fidelity: Translation and normalisation are forbidden. Use `[ilegivel]` only for individual words.
 5. Scripts: latino, grego, copta, siriaco, cirilico, ethiopico, armenio, arabe, hebraico, misto.
 
-Formato de Saída (APENAS XML):
+Output format (ONLY XML):
 <pagina estado="com_texto/vazio" tipo="capa_ou_guarda/texto/gravura">
   <bloco tipo="..." script="..." bbox="x1,y1,x2,y2">
-    transcrição literal
+    literal transcription
   </bloco>
-  <notas>detalhes técnicos ou correções</notas>
+  <notas>technical details or corrections</notas>
 </pagina>
 """.strip()
 
@@ -813,8 +892,8 @@ USER_PROMPT_CORRECAO_LLM_VS_TESSERACT = """
 {llm_ocr}
 </llm_ocr>
 
-Proceda conforme instruções do system. Retorne apenas o XML sem markdown.
-Atenção as colunas e ao gutter (se houver), identificação A,B,C,D devem ficar em seu próprio bloco de nota_marginal. Cuidado: NÃO coloque a identificação das seções dentro do texto das colunas.
+Proceed as instructed in the system prompt. Return only the XML without markdown.
+Pay attention to the columns and the gutter (if any); A, B, C, D identifiers must be in their own nota_marginal block. Warning: do NOT place section identifiers inside the column text.
 """.strip()
 
 USER_PROMPT_VERIFY_LLM_VS_TESSERACT = """
@@ -826,8 +905,8 @@ USER_PROMPT_VERIFY_LLM_VS_TESSERACT = """
 {llm_ocr}
 </llm_ocr>
 
-Proceda conforme instruções do system. Retorne apenas o XML sem markdown.
-Atenção as colunas e ao gutter (se houver), identificação A,B,C,D devem ficar em seu próprio bloco de nota_marginal. Cuidado: NÃO coloque a identificação das seções dentro do texto das colunas.
+Proceed as instructed in the system prompt. Return only the XML without markdown.
+Pay attention to the columns and the gutter (if any); A, B, C, D identifiers must be in their own nota_marginal block. Warning: do NOT place section identifiers inside the column text.
 """.strip()
 
 USER_PROMPT_VERIFY_TESSERACT = """
@@ -835,44 +914,44 @@ USER_PROMPT_VERIFY_TESSERACT = """
 {tesseract_text}
 </rascunho_ocr>
 
-Proceda conforme instruções do system. Retorne apenas o XML sem markdown.
-Atenção as colunas e ao gutter (se houver), identificação A,B,C,D devem ficar em seu próprio bloco de nota_marginal. Cuidado: NÃO coloque a identificação das seções dentro do texto das colunas.
+Proceed as instructed in the system prompt. Return only the XML without markdown.
+Pay attention to the columns and the gutter (if any); A, B, C, D identifiers must be in their own nota_marginal block. Warning: do NOT place section identifiers inside the column text.
 """.strip()
 
 PROMPT_LLM_JUDGE = """
-Você é um especialista em paleografia e transcrição de documentos históricos (Patrologia Graeca, Latina et Orientalis).
-Compare a imagem com a transcrição na tag <ocr> e avalie a fidelidade.
+You are an expert in palaeography and transcription of historical documents (Patrologia Graeca, Latina et Orientalis).
+Compare the image with the transcription in the <ocr> tag and assess its fidelity.
 
-# Critérios de avaliação
+# Evaluation criteria
 
-**Fidelidade** — quão bem a transcrição reflete o que está na imagem:
-- alta: texto principal correto, erros mínimos ou apenas em scripts difíceis
-- media: erros parciais, omissões menores, mas estrutura preservada
-- baixa: erros significativos, blocos omitidos, confusão de scripts
-- descartar: transcrição irreconhecível ou completamente incorreta
+**Fidelity** — how well the transcription reflects what is in the image:
+- alta: main text correct, minimal errors or only in difficult scripts
+- media: partial errors, minor omissions, but structure preserved
+- baixa: significant errors, omitted blocks, script confusion
+- descartar: transcription unrecognisable or completely incorrect
 
-**Usabilidade** — se o texto é aproveitável para produção de resumos:
-- alta: semântica preservada, termos principais identificáveis
-- media: compreensível com esforço, perdas pontuais de sentido
-- baixa: sentido comprometido por erros acumulados
-- descartar: inutilizável
+**Usability** — whether the text is usable for producing summaries:
+- alta: semantics preserved, main terms identifiable
+- media: understandable with effort, occasional loss of meaning
+- baixa: meaning compromised by accumulated errors
+- descartar: unusable
 
-# Notas importantes
-- Para blocos em scripts não-latinos (armênio, siríaco, grego), avalie apenas:
-  (a) se o bloco está presente na transcrição
-  (b) se a extensão aproximada parece compatível com a imagem
-  (c) se não há confusão óbvia de script (ex: caracteres árabes no meio de armênio)
-  Não avalie a correção caractere a caractere nesses scripts.
-- Para blocos em francês/latim/inglês, avalie semântica e fidelidade completas.
+# Important notes
+- For blocks in non-Latin scripts (Armenian, Syriac), assess only:
+  (a) whether the block is present in the transcription
+  (b) whether the approximate extent seems compatible with the image
+  (c) whether there is no obvious script confusion (e.g. Arabic characters in the middle of Armenian)
+  Do not evaluate character-level correctness for these scripts.
+- For blocks in French/Latin/English/Greek, evaluate semantics and fidelity fully.
 
-Formato de saída esperado (retorne apenas o XML válido preenchido de acordo com o julgamento da imagem):
+Expected output format (return only valid XML filled according to the image judgement):
 <avaliacao>
   <comentario>
-    Comentário específico por bloco: o que está correto, o que está errado ou omitido.
+    Specific comment per block: what is correct, what is wrong or omitted.
   </comentario>
   <idiomas_identificados>
-    <idioma>armênio</idioma>
-    <!-- outros idiomas em PT-BR, cite o idioma identificado no texto, exemplo: "francês" -->
+    <idioma>armenio</idioma>
+    <!-- other languages in PT-BR, cite the language identified in the text, e.g. "francês" -->
   </idiomas_identificados>
   <julgamento>
     <fidelidade>alta|media|baixa|descartar</fidelidade>
@@ -941,19 +1020,19 @@ images_max_size = [1600, 1800, 3200, 3200, 3200]
 
 
 GEMINI_WORKAROUND_END_PROMPT = """
-Blocos são pedaços de texto (geralmente parágrafos ou seções, em alguns casos cabeçalhos e rodapés) que foram organizados pelo editor da página.
-Um bloco pode conter texto em diferentes idiomas ou scripts, quando for o caso, pode usar "misto".
-Se a página estiver realmente em branco: <pagina estado="vazio" tipo="capa_ou_guarda" />
-Estamos lidando com blocos porque a transcrição geralmente acontece por parágrafos ou blocos lógicos de texto coerente.
+Blocks are pieces of text (usually paragraphs or sections, in some cases headers and footers) that were organised by the page editor.
+A block may contain text in different languages or scripts; when that is the case, you may use "misto".
+If the page is truly blank: <pagina estado="vazio" tipo="capa_ou_guarda" />
+We work with blocks because transcription usually happens by paragraphs or coherent logical text units.
 
-Lembre-se de prestar bastante atenção na diagramação da página, entender a intenção do editor e então copiar os textos literalmente, cada um em seu bloco.
+Remember to pay close attention to the page layout, understand the editor's intent, and then copy the texts literally, each in its own block.
 
-Exemplo:
+Example:
 <pagina estado="com_texto">
   <bloco tipo="..." script="..." bbox="x1,y1,x2,y2">
-    transcrição literal do bloco da imagem
+    literal transcription of the block from the image
   </bloco>
-  <notas>scripts complexos ou correções relevantes se foram realizadas</notas>
+  <notas>complex scripts or relevant corrections if made</notas>
 </pagina>
 """
 
@@ -1057,7 +1136,7 @@ def ollama_process_image(
         url,
         headers={"Content-Type": "application/json"},
         data=json.dumps(payload),
-        timeout=900,
+        timeout=2100,
     )
 
     # Melhor printar antes de lançar a exception
@@ -1111,7 +1190,7 @@ def ollama_process_image(
         .replace("</ilegivel>", "")
         .replace("<ilegivel/>", "[ilegivel]")
     )
-    response = clean_llm_xml(response)
+    # response = clean_llm_xml(response)
 
     return response
 
@@ -1183,7 +1262,7 @@ def openai_process_image(
         "frequency_penalty": 0.0,
     }
 
-    timeout = 120
+    timeout = 400
 
     if "gpt-5" not in model:
         payload["temperature"] = 0.05
@@ -1504,6 +1583,55 @@ def infer_volume_id(image_path: Path) -> Optional[str]:
         return None
 
 
+# Regex: linha com ≥3 tokens antes + letra isolada [A-D] + ≥2 tokens depois
+# Exige contexto denso em ambos os lados para evitar falsos positivos em latim
+# (ex: "...fautores A tem gratia..." → hit; "...littera A est..." → miss por falta de tokens pós)
+_GUTTER_INLINE_RE = re.compile(
+    r"(?m)(?:^|(?<=\n))"                   # início de linha
+    r"(?:[A-Za-zÀ-öø-ÿ,;:.]+\s+){3,}"    # ≥3 tokens esquerda
+    r"\b([ABCD])\b"                         # identificador isolado
+    r"(?:\s+[A-Za-zÀ-öø-ÿ,;:.]+){2,}",   # ≥2 tokens direita
+)
+
+# Detecta hifenização no meio da linha: palavra- seguida de ≥2 espaços e outra palavra
+# Indica fusão de colunas (fim da col. esquerda + início da col. direita na mesma linha)
+_MID_LINE_HYPHEN_RE = re.compile(
+    r"(?m)"
+    r"^"
+    r"(?=.{60,})"             # linha longa (≥60 chars, típico de página de 2 colunas fundidas)
+    r"[^\n]*?"                # qualquer conteúdo antes
+    r"\b\w{3,}-"              # palavra com ≥3 chars terminando em hífen
+    r"\s{2,}"                 # ≥2 espaços (separador entre colunas)
+    r"\w{3,}"                 # início da palavra da coluna direita
+    r"[^\n]*$"                # resto da linha
+)
+
+
+def _has_inline_gutter_id(text: str, min_hits: int = 2) -> bool:
+    """
+    Retorna True se o bloco contém identificadores de gutter (A/B/C/D)
+    embutidos no fluxo de texto, indicando fusão de colunas.
+
+    min_hits=2  →  exige pelo menos 2 ocorrências para evitar falso positivo
+                   com a preposição latina "A" (ex: "a Deo").
+    """
+    hits = _GUTTER_INLINE_RE.findall(text)
+    distinct = set(hits)
+    return len(hits) >= min_hits or (len(distinct) >= 2)
+
+
+def _has_mid_line_hyphen(text: str, min_hits: int = 2) -> bool:
+    """
+    Detecta fusão de colunas pela presença de hifenização no meio da linha.
+    Ex.: '...ne mo-  demptio animae...' → duas colunas grudadas.
+    min_hits=2 evita falso positivo com hífen composto ocasional.
+    """
+    hits = _MID_LINE_HYPHEN_RE.findall(text)
+    return len(hits) >= min_hits
+
+
+
+
 def verificar_padrao_blocos(txt: str) -> bool:
     """
     Verifica se o texto segue o padrão de blocos esperado.
@@ -1520,18 +1648,18 @@ def verificar_padrao_blocos(txt: str) -> bool:
             if resxml is None:
                 return False
 
-            nota_marginal_letra_encontrada = False
-            for bloco in resxml.findall(".//bloco[@tipo='nota_marginal']"):
-                if bloco is None:
-                    continue
+            # nota_marginal_letra_encontrada = False
+            # for bloco in resxml.findall(".//bloco[@tipo='nota_marginal']"):
+            #     if bloco is None:
+            #         continue
 
-                text = (bloco.text or "").strip()
-                if text and text[0] in "ABCD":
-                    nota_marginal_letra_encontrada = True
+            #     text = (bloco.text or "").strip()
+            #     if text and text[0] in "ABCD":
+            #         nota_marginal_letra_encontrada = True
 
-            if nota_marginal_letra_encontrada:
-                # Podemos ignorar a fase abaixo já que encontramos uma nota marginal válida com A, B, C ou D
-                return True
+            # if nota_marginal_letra_encontrada:
+            #     # Podemos ignorar a fase abaixo já que encontramos uma nota marginal válida com A, B, C ou D
+            #     return True
 
             first = True
 
@@ -1549,6 +1677,18 @@ def verificar_padrao_blocos(txt: str) -> bool:
                 if text.startswith("A "):
                     print(
                         f"Possível fusão da coluna central com o bloco de texto {text[0:100]}..."
+                    )
+                    return False
+
+                if _has_inline_gutter_id(text):
+                    print(
+                        f"Possível fusão de colunas: identificador A/B/C/D inline detectado: {text[0:120]}..."
+                    )
+                    return False
+
+                if _has_mid_line_hyphen(text):
+                    print(
+                        f"Possível fusão de colunas: hifenização central detectada: {text[0:120]}..."
                     )
                     return False
 
@@ -1608,19 +1748,19 @@ def verify_page(
     )
 
     if (
-        overlap.recall_ratio > 0.2 and overlap.recall_ratio <= 0.6
+        overlap.recall_ratio > 0.2 and overlap.overlap_ratio <= 0.6
     ):  # LLM detectou texto latino, mas Tesseract só pegou parte → possível degradação ou script complexo
         print(
             f"[VERIFY] {img_path.name} — possível degradação/script complexo (Overlap: {overlap.overlap_ratio:.2f}, Recall: {overlap.recall_ratio:.2f})"
         )
 
-    if (txt.count("[ilegivel]") + txt.count("[ilegível]")) > 3:
+    if (txt.count("[ilegivel]") + txt.count("[ilegível]")) > 0:
         print(f"[VERIFY] {img_path.name} — muitos tokens ilegíveis detectados")
         return False
 
     # return True  # desativado de momento, quero apenas rodar de novo os com muito token ilegível
     if (
-        overlap.recall_ratio < 0.2 and overlap.overlap_ratio < 0.2
+        overlap.recall_ratio < 0.5 and overlap.overlap_ratio < 0.5
     ):  # LLM detectou muito texto latino, mas Tesseract quase nada → provável omissão ou alucinação
         # Debug prints para identificar o texto dos dois lados e o arquivo no terminal:
 
@@ -1882,7 +2022,7 @@ def ocr_tesseract(img_path: Image, lang: str = DEFAULT_LANG) -> str:
     """OCR com pré-processamento adaptativo."""
     with Image.open(img_path) as pil_im:
         im_bgr = cv2.cvtColor(np.array(pil_im), cv2.COLOR_RGB2BGR)
-        im_pre = preprocess_image(im_bgr, "fast")
+        im_pre, original_rotated = preprocess_image_tesseract(im_bgr)
 
         # im_pre = auto_rotate_image(im_pre)
 
@@ -2330,7 +2470,7 @@ def _ocr_one(
 
             # pré-processamento
             t2 = time.time()
-            im_pre = preprocess_image(im_bgr, "fast")
+            im_pre, original_rotated = preprocess_image_tesseract(im_bgr)
 
             border_size = 50
 

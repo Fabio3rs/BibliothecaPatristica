@@ -16,7 +16,14 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
   <script type="module" define:vars={{ assetBase: baseWithSlash, uiStrings, uiLocale }}>
     const viewerRoot = document.getElementById('viewer-root');
-    const jsonCache = new Map();
+    let loadGeneration = 0;
+    let rawOcrController = null;
+    const dataCache = window.pdfocrDataCache;
+    const getJsonOnce = (url) => dataCache?.getJsonOnce(url) ?? fetch(url).then((res) => {
+      if (!res.ok) throw new Error(`HTTP ${res.status} ao buscar ${url}`);
+      return res.json();
+    });
+    const loadJsonInBatches = (urls, options = {}) => dataCache?.loadJsonInBatches(urls, options) ?? Promise.all(urls.map((url) => getJsonOnce(url).then((value) => ({ url, ok: true, value }), (error) => ({ url, ok: false, value: null, error }))));
 
     // Reconstrói funções de formatação (não serializáveis via define:vars)
     const isEn = uiLocale === 'en';
@@ -50,16 +57,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     };
 
     async function getJSON(path) {
-      if (jsonCache.has(path)) return jsonCache.get(path);
-      const p = fetch(path).then(async (res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status} ao buscar ${path}`);
-        return res.json();
-      }).catch((err) => {
-        jsonCache.delete(path);
-        throw err;
-      });
-      jsonCache.set(path, p);
-      return p;
+      return getJsonOnce(path);
     }
 
     function safeUrl(raw) {
@@ -112,16 +110,14 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
       const shardById = new Map(manifest.shards.map((shard) => [shard.id, shard.path]));
       const shardKeys = Array.from(new Set(uniqueIds.map((id) => keywordShardKeyFromId(id))));
-      const shardPayloads = await Promise.all(
-        shardKeys.map((shardKey) => {
-          const shardPath = shardById.get(shardKey);
-          return shardPath ? getJSON(`${assetBase}${shardPath}`) : Promise.resolve(null);
-        })
+      const shardPayloads = await loadJsonInBatches(
+        shardKeys.map((shardKey) => shardById.get(shardKey)).filter(Boolean).map((shardPath) => `${assetBase}${shardPath}`),
+        { batchSize: 4, delayMs: 12 },
       );
 
       const map = new Map();
       shardPayloads.forEach((payload) => {
-        (payload?.items || []).forEach((item) => {
+        (payload.value?.items || []).forEach((item) => {
           if (item?.id && item?.label && !map.has(item.id)) {
             map.set(item.id, item.label);
           }
@@ -212,7 +208,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       // Regex to capture tags and attributes (simple, not full XML parser)
       return esc
         .replace(/(&lt;!--[\s\S]*?--&gt;)/g, '<span class="xml-comment">$1</span>')
-        .replace(/(&lt;\/?)([a-zA-Z0-9_:-]+)([^&]*?)(&gt;)/g, (m, open, name, rest, close) => {
+        .replace(/(&lt;\/?)([a-zA-Z0-9_:-]+)([^&]*?)(&gt;)/g, (_m, open, name, rest, close) => {
           // color attributes inside rest
           const attrs = rest.replace(/([a-zA-Z0-9:_-]+)(=)\"([^\"]*)\"/g, '<span class="xml-attr">$1</span>$2<span class="xml-value">"$3"</span>');
           return `${open}<span class="xml-name">${name}</span>${attrs}${close}`;
@@ -433,16 +429,22 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
     async function load() {
       try {
+        const generation = ++loadGeneration;
+        if (rawOcrController) rawOcrController.abort();
+        rawOcrController = null;
         document.body.classList.add('viewer-active');
         const url = new URL(window.location.href);
         const doc = url.searchParams.get('doc') || 'PG144';
-        const pageNumber = Number(url.searchParams.get('page') || 396);
         const highlight = (url.searchParams.get('highlight') || '').trim();
 
         const volumes = await getJSON(`${assetBase}volumes.json`);
 
         const volume = volumes.volumes.find((v) => v.id === doc);
         if (!volume) throw new Error(isIt ? 'Volume non trovato nei mock' : 'Volume não encontrado nos mocks');
+        const requestedPage = Number(url.searchParams.get('page'));
+        const pageNumber = Number.isFinite(requestedPage) && requestedPage > 0
+          ? Math.min(Math.max(requestedPage, volume.page_first || 1), volume.page_last || requestedPage)
+          : (volume.page_first || 1);
 
         const meta = await getJSON(`${assetBase}${volume.meta_url.replace(/^\//, '')}`);
         const block = meta.page_blocks.find((b) => pageNumber >= b.page_first && pageNumber <= b.page_last);
@@ -462,7 +464,6 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         const segments = segmentsFile ? (await getJSON(`${assetBase}${segmentsFile.replace(/^\//, '')}`)).segments : [];
         const snapshots = snapshotFile ? (await getJSON(`${assetBase}${snapshotFile.replace(/^\//, '')}`)).snapshots : [];
 
-        const pageSegments = segments.filter((s) => (page.segment_ids || []).includes(s.id));
         const pageSnapshots = snapshots.filter((s) => (page.snapshot_ids || []).includes(s.id));
 
         const entitiesLabels = labelize(page.entity_ids, entities.items);
@@ -471,6 +472,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
         // Atualizar título da aba e breadcrumb
         document.title = `${s.viewerVolumeLabel(volume.id, volume.title || '')} · ${s.viewerPage(page.page)} | Bibliotheca Patristica`;
+        if (generation !== loadGeneration) return;
         const breadcrumbsEl = document.querySelector('.breadcrumbs ol');
         if (breadcrumbsEl) {
           breadcrumbsEl.innerHTML = `
@@ -491,7 +493,8 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           localStorage.setItem('viewerBookmarks', JSON.stringify(bookmarks));
         } catch (_) {}
 
-viewerRoot.innerHTML = '';
+        viewerRoot.innerHTML = '';
+        if (generation !== loadGeneration) return;
 
         // Injetar estilos do viewer apenas uma vez
         if (!document.getElementById('viewer-styles')) {
@@ -503,11 +506,14 @@ viewerRoot.innerHTML = '';
             @media (max-width: 1100px) { .viewer-grid { grid-template-columns: 1fr; gap: var(--space-4); } }
             .viewer-grid aside { order: 2; }
             .viewer-grid .main-content { order: 1; }
+            .viewer-grid aside { position: sticky; top: 5.75rem; align-self: start; }
+            @media (max-width: 1100px) { .viewer-grid aside { position: static; } }
             .viewer-header-nav { display: flex; gap: var(--space-2); flex-wrap: wrap; align-items: center; }
             .viewer-header-nav .button.disabled { opacity: 0.45; pointer-events: none; cursor: default; }
             .viewer-header-nav input[type="number"] { width: 4.5rem; padding: 0.35rem 0.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-s); background: var(--color-surface); color: var(--color-ink); font-size: 0.9rem; text-align: center; }
             .viewer-header-nav input[type="number"]:focus { outline: 2px solid var(--color-accent); outline-offset: 2px; }
             .viewer-header-nav .button { padding: 0.35rem 0.65rem; font-size: 0.85rem; }
+            .viewer-action-bar { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4); }
             @media (max-width: 720px) {
               .viewer-header-nav .button { padding: 0.3rem 0.5rem; font-size: 0.8rem; }
               .viewer-header-nav input[type="number"] { width: 3.8rem; font-size: 0.85rem; }
@@ -718,6 +724,26 @@ viewerRoot.innerHTML = '';
         toolbar.appendChild(fontUp);
         toolbar.appendChild(localSearchWrap);
 
+        const actionBar = document.createElement('div');
+        actionBar.className = 'viewer-action-bar';
+        const copyExcerptBtn = document.createElement('button');
+        copyExcerptBtn.className = 'button secondary';
+        copyExcerptBtn.style.fontSize = '0.8rem';
+        copyExcerptBtn.textContent = isEn ? 'Copy excerpt' : isIt ? 'Copia estratto' : 'Copiar trecho';
+        const copyRefBtn = document.createElement('button');
+        copyRefBtn.className = 'button secondary';
+        copyRefBtn.style.fontSize = '0.8rem';
+        copyRefBtn.textContent = isEn ? 'Copy reference' : isIt ? 'Copia riferimento' : 'Copiar referência';
+        const reportBtn = document.createElement('a');
+        reportBtn.className = 'button secondary';
+        reportBtn.style.fontSize = '0.8rem';
+        reportBtn.target = '_blank';
+        reportBtn.rel = 'noreferrer';
+        reportBtn.textContent = isEn ? 'Report issue' : isIt ? 'Segnala errore' : 'Reportar erro';
+        actionBar.appendChild(copyExcerptBtn);
+        actionBar.appendChild(copyRefBtn);
+        actionBar.appendChild(reportBtn);
+
         // ── Índice de páginas (collapsible) ──
         const indexDetails = document.createElement('details');
         indexDetails.style.marginBottom = 'var(--space-4)';
@@ -833,8 +859,33 @@ viewerRoot.innerHTML = '';
 
         header.appendChild(navGroup);
 
+        const citationText = `${volume.id} p. ${page.page}`;
+        reportBtn.href = `https://github.com/Fabio3rs/BibliothecaPatristica/issues/new?title=${encodeURIComponent(`${citationText} — ${volumeAuthor || volumeWork || volume.id}`)}&body=${encodeURIComponent(`URL: ${window.location.href}\n\nObservação:\n`)}`;
+        copyExcerptBtn.addEventListener('click', async () => {
+          const text = (page.excerpt || page.summary_page || summaryGlobal || '').trim();
+          if (!text) return;
+          try {
+            await navigator.clipboard.writeText(text);
+            copyExcerptBtn.textContent = isEn ? 'Copied' : isIt ? 'Copiato' : 'Copiado';
+            setTimeout(() => {
+              copyExcerptBtn.textContent = isEn ? 'Copy excerpt' : isIt ? 'Copia estratto' : 'Copiar trecho';
+            }, 1200);
+          } catch (_) {}
+        });
+        copyRefBtn.addEventListener('click', async () => {
+          const text = `${citationText}${page.title ? ` — ${page.title}` : ''}`;
+          try {
+            await navigator.clipboard.writeText(text);
+            copyRefBtn.textContent = isEn ? 'Copied' : isIt ? 'Copiato' : 'Copiado';
+            setTimeout(() => {
+              copyRefBtn.textContent = isEn ? 'Copy reference' : isIt ? 'Copia riferimento' : 'Copiar referência';
+            }, 1200);
+          } catch (_) {}
+        });
+
         mainContent.appendChild(identityCard);
         mainContent.appendChild(toolbar);
+        mainContent.appendChild(actionBar);
         mainContent.appendChild(header);
 
         // Índice de páginas: em telas grandes (>1100px) vai para a sidebar
@@ -893,31 +944,57 @@ viewerRoot.innerHTML = '';
           ocrTitle.textContent = s.viewerOcrTitle;
           ocrHeader.appendChild(ocrTitle);
 
+          const ocrActions = document.createElement('div');
+          ocrActions.style.cssText = 'display:flex; gap:var(--space-2); align-items:center; margin-left:auto; flex-wrap:wrap;';
+
+          const loadBtn = document.createElement('button');
+          loadBtn.className = 'button';
+          loadBtn.style.fontSize = '0.8rem';
+          loadBtn.textContent = s.viewerOcrLoadPage || s.rawOpen;
+          ocrActions.appendChild(loadBtn);
+
           const extLink = document.createElement('a');
           extLink.href = rawHref;
           extLink.target = '_blank';
           extLink.rel = 'noreferrer';
           extLink.style.cssText = 'font-size:0.75rem; color:var(--color-muted); margin-left:auto;';
-          extLink.textContent = s.viewerOcrOpen;
-          ocrHeader.appendChild(extLink);
+          extLink.textContent = s.viewerOcrOpenFile || s.viewerOcrOpen;
+          ocrActions.appendChild(extLink);
+          ocrHeader.appendChild(ocrActions);
           ocrSection.appendChild(ocrHeader);
 
           const bodyWrap = document.createElement('div');
+          const rawHint = document.createElement('p');
+          rawHint.style.cssText = 'margin:0 0 var(--space-3); color:var(--color-muted); font-size:0.85rem;';
+          rawHint.textContent = s.viewerRawLoadHint;
+          bodyWrap.appendChild(rawHint);
 
           const pre = document.createElement('pre');
           pre.className = 'viewer-ocr-xml';
           pre.style.cssText = 'max-height:60vh; overflow-y:auto;';
-          pre.textContent = s.viewerOcrLoading;
+          pre.style.display = 'none';
 
           bodyWrap.appendChild(pre);
           ocrSection.appendChild(bodyWrap);
           mainContent.appendChild(ocrSection);
 
-          (async () => {
+          let rawLoaded = false;
+          let rawLoading = false;
+
+          const loadRawOcr = async () => {
+            if (rawLoaded || rawLoading) return;
+            rawLoading = true;
+            loadBtn.disabled = true;
+            const controller = new AbortController();
+            if (rawOcrController) rawOcrController.abort();
+            rawOcrController = controller;
+            pre.style.display = '';
+            pre.textContent = s.viewerOcrLoading;
             try {
-              const res = await fetch(rawHref);
+              const res = await fetch(rawHref, { signal: controller.signal });
               if (!res.ok) throw new Error(`HTTP ${res.status}`);
               const txt = await res.text();
+              if (controller.signal.aborted || generation !== loadGeneration) return;
 
               const ocrData = parseOcrXml(txt);
               if (ocrData && ocrData.blocos.length > 0) {
@@ -991,13 +1068,31 @@ viewerRoot.innerHTML = '';
                 else if (savedOcrMode === 'visual') showVisual();
                 else showPlain();
               } else {
+                pre.style.display = '';
                 pre.textContent = txt;
                 if (highlight) applyHighlight(pre, highlight);
               }
+              rawHint.remove();
+              rawLoaded = true;
+              loadBtn.disabled = true;
             } catch (e) {
+              if (e?.name === 'AbortError') return;
+              pre.style.display = '';
               pre.textContent = s.viewerOcrError(e.message);
+              loadBtn.disabled = false;
+            } finally {
+              rawLoading = false;
             }
-          })();
+          };
+
+          loadBtn.addEventListener('click', () => {
+            void loadRawOcr();
+          });
+
+          if (highlight) {
+            pre.dataset.highlight = highlight;
+          }
+
         }
 
         // Sidebar Metadados

@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import base64
+import gzip
 import json
 import multiprocessing as mp
 import os
@@ -49,6 +50,9 @@ signal.signal(signal.SIGINT, _handle_sigint)
 
 
 def read_json(path: pathlib.Path) -> Any:
+    if path.suffix == ".gz":
+        with gzip.open(path, "rt", encoding="utf-8") as f:
+            return json.load(f)
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
 

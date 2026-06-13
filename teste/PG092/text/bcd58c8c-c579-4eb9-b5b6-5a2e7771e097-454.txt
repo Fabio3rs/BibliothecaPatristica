@@ -1,143 +1,182 @@
+<pagina estado="com_texto">
+  <bloco tipo="cabecalho" script="latino" bbox="30,10,180,60">
 891
-
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="240,10,760,60">
 CHRONICON PASCHALE.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="820,10,980,60">
+892
+  </bloco>
 
-802
+  [!-- Left page, left column (Latin) --]
+  <bloco tipo="texto_principal" script="latino" bbox="30,70,420,640">
+imperator Justinianus : misitque Romam et Hiero-
+solyma, et in magnam Antiochenorum urbem Theo-
+polim Syriæ, et in magnam urbem Alexandri-
+rum in Ægypto, et in Illyriorum gentis urbem Thes-
+salonicam, et Ephesum urbem Asiæ, illud ipsum
+sacrum suum rescriptum, hisce verbis conceptum :
 
-imperator Ju-tinianus : misitque Romam et Hiero- A ὁ αὐτὸς βασιλεὺς Ἰουστινιανὸς ἐν ΚΚωνσταντινουπό-
+Imperator Cæsar Justinianus, pius, victor,
+triumphator, maximus, semper Augustus, civibus
+nostris salutem.
+Cum Salvatorem, et Dominum omnium Jesum
+Christum verum Deum nostrum colamus per omnia,
+studemus etiam (quatenus datum est humanæ menti
+assequi) imitari ejus condescensionem seu demis-
+sionem.
+Etenim cum quosdam invenerimus morbo atque
+insania detentos impiorum Nestorii, et Eutychiis,
+Dei et sanctæ catholicæ et apostolicæ Ecclesiæ ho-
+stium, nempe qui detrectabant sanctam gloriosam
+semper Virginem Mariam Theotocon sive Deiparam
+appellare proprie, et secundum veritatem, illos [ilegivel]
+quæ sit recta Christianorum fides edo-
+cere. Nam hi incurabiles cum sint, celantes errorem
+suum, passim circumeunt, (sicut didicimus) et sim-
+pliciorum animos exturbant et scandalizant, ea
+struentes, quæ sunt sanctæ catholicæ Ecclesiæ con-
+traria. Necessarium igitur esse putavimus, lam hæ-
+reticorum vaniloquia et mendacia dissipare, quam
+omnibus insinuare, quomodo aut sentiat sancta Dei
+et catholica et apostolica Ecclesia, aut prædicent
+sanctissimi ejus sacerdotes : quos et nos secuti,
+manifestia constituimus ea, quæ fidei nostræ sunt :
+non quidem innovantes fidem (quod absit !) sed
+coarguentes eorum insaniam, qui eadem cum im-
+piis hæreticis sentiunt. Quod quidem et nos in no-
+stri imperii primordiis pridem satagentes cunctis
+fecimus manifestum.
+  </bloco>
 
-solyma. et in magnam Antiochenorum urbem Theo-
-polim Syrie , et in. magnam urbem Alexandrino-
-rum in Egypto, et in lllyriorum gentis urbem Thes-
-salonicam , et Ephesum urbem Asiz, illud ipsum
-sacrum suum rescriptum , hisce verbis conceptum :
+  [!-- Left page, right column (Greek) --]
+  <bloco tipo="texto_principal" script="grego" bbox="420,70,520,640">
+Ὁ αὐτὸς βασιλεὺς Ἰουστινιανὸς ἐν Κωνσταντινουπόλει,
+κατπέμψας (39) καὶ ἐν τῇ πόλει Ῥώμῃ, καὶ ἐν Ἱεροσολύμοις, καὶ
+ἐν τῇ μεγάλῃ τῶν Ἀντιοχέων θεῶν πολιτείᾳ Συρίας, καὶ ἐν τῇ μεγάλῃ τῶν
+Ἀλεξανδρειῶν πόλει τῇ πρὸς Αἴγυπτον, καὶ ἐν Θεσσαλονίκῃ (40) τῇ πόλει
+τοῦ Ἰλλυριῶν ἔθνους, καὶ ἐν Ἐφέσῳ πόλει τῆς Ἀσίας τὸ αὐτὸ θεῖον αὐτοῦ γράμ-
+μα, ὅπερ ἔλεγον οὕτως.
 
-« Imperstor Cesar Justinianus, pius, victor,
+Αὐτοκράτωρ Καῖσαρ Ἰουστινιανὸς, εὐσεβής, νικητής,
+τροπαιοφόρος, μέγιστος, δεισάβαστος, Αὔγουστος, πολιτείας
+μυστηρίας (41).
+
+Τὸν Σωτῆρα καὶ Δεσπότην τῶν ἀπάντων Ἰησοῦν Χριστὸν
+τὸν ἀληθινὸν ἡμῶν Θεὸν θεραπεύειν· διὰ πάντων ὑποδό
+σαντες, ὅσῳ ἔνδεxεται νῦν καταλαμβάνειν ἀνθρώπου μιμησθαι
+τὴν αὐτῷ συγκατάβασιν.
+  </bloco>
+
+  [!-- Gutter marginal letters (A,B,C,D) down centre --]
+  <bloco tipo="nota_marginal" script="latino" bbox="505,120,525,180">
+A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="505,260,525,320">
+B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="505,420,525,480">
+C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="505,560,525,620">
+D
+  </bloco>
+
+  [!-- Right page, left column (Greek) --]
+  <bloco tipo="texto_principal" script="grego" bbox="520,70,760,640">
+Καὶ * εὑρόμενες τινὰς τῇ νόσῳ καὶ μανίᾳ κρατουμένους
+Νεστóριον καὶ Εὐτύχιον τῶν ἐχθρῶν τοῦ Θεοῦ καὶ τῆς ἁγιότητος
+καθολικῆς καὶ ἀποστολικῆς Ἐκκλησίας, ἀρνούμενους τὴν Ἁγίαν
+ἔνδοξον Ἀειπάρθενον Μαρίαν Θεοτόκον εἶναι χρυσεῖον καὶ καθ'
+ἀλήθειαν, ἐπισπóδασμενοι τούτους, τὴν σφόδρα τῶν Χριστιανῶν
+διδαχὴν πίστεως. Οἱ δὲ ἀνέκτοντες ἔχοντες καὶ χρύπτοντες τὴν
+ταύτην πλάνην περιέρχονται, καὶ μεμαχημένοι, ἐπὶ τῶν ἀπλού-
+στερῶν ψυχῶν ἔτι παραγίνονται καὶ σκανδαλίζουσιν, καὶ ὡς ὀδυνὰ
+τῆς ἁγίας καθολικῆς καὶ ἀποστολικῆς Ἐκκλησίας λέγουσι.
+  </bloco>
+
+  [!-- Right page, right column (Latin) --]
+  <bloco tipo="texto_principal" script="latino" bbox="760,70,960,640">
+Imperator Caesar Justinianus, pius, victor,
 triumphator, maximus, semper Augustus, civibus
 nostris salutem.
 
-« Cum Salvatorem, et Dominum omnium Jesum
+Cum Salvatorem et Dominum omnium Jesum
 Christum verum Deum nostrum colamus per omnia,
-studenius etiam (quatenus datum est humanz menti
+studemus etiam (quatenus datum est humanae menti
 assequi) imitari ejus condescensionem seu demis-
-sionem.
-
-« Etenim cum quosdam invenerimus morbo atque
-insania detentos impiorum Nestorii, et Eutychis,
-Dei et sanct. catliolicie et apostolicae Ecclesiz ho-
-stium , nempe qui detrectabant sanctain gloriosam
+sionem. Etenim cum quosdam invenerimus morbo atque
+insania detentos impiorum Nestorii, et Eutychiis,
+Dei et sanctae catholicae et apostolicae Ecclesiae ho-
+stium, nempe qui detrectabant sanctam gloriosam
 semper Virginem Mariam Theotocon sive Deiparam
-appellare proprie, et secundum veritatem , illos fe-
-stinavimus , qu. sit recta Christianorum fides edo-
-cere. Nam hi incurabiles cum sint, celantes errorem
-suum, passim circumeunt, (sicut diJicimus) et sim-
-pliciorum animos exturbant et scandalizant, ea
-astruentes, 4.5 sunt sancte catholice Ecclesize con-
-traria. Necessarium igitur esse putavimus, tam ha-
-reticorum vaniloquia et mendacia dissipare , quam
+appellare proprie, et secundum veritatem, illos [ilegivel]
+quae sit recta Christianorum fides docere. Nam hi incurabiles
+cum sint, celantes errorem suum, passim circumeunt
+(sicut didicimus) et simpliciorum animos exturbant et
+scandalizant, eastruentes, quae sunt sanctae catholicae
+Ecclesiae contraria. Necessarium igitur esse puavimus, lam
+haereticorum vaniloquia et mendacia dissipare, quam
+omnibus insinuare, quomodo aut sentiat sancta Dei et catholica
+et apostolica Ecclesia, aut praedicent sanctissimi ejus sacerdotes.
+  </bloco>
 
-λει, καταπέμψας (59). xai ἐν τῇ πόλει Ῥώμῃ, xol
-ἐν Ἱεροσολύμοις, καὶ ἐν τῇ μεγάλῃ τῶν ᾿Αντιοχέων
-Θεου πόλειτῆς Συρίας, καὶ ἐν τῇ μεγάλῃ τῶν ᾿Αλεξαν-
-δρέων πόλει τῇ πρὸς Αἴγυπτον, xai ἐν Θεσσαλο-
-νίχῃ (40) τῇ πόλει τοῦ Ἰλλυριῶν ἔθνους, καὶ ἐν
-Ἐφέσῳ πόλει τῆς ᾿Ασίας τὸ αὐτὸ θεῖον αὐτοῦ γράμ-
-μα, ὅπερ εἶχεν οὕτως.
+  [!-- Lower section: Ducangii Notae (spans left and right) --]
+  <bloco tipo="texto_principal" script="latino" bbox="30,660,480,860">
+DUCANGII NOTÆ.
 
-« Αὐτοχράτωρ Καῖσαρ Ἰουστινιανὸς, εὐσεδὴς, νι-
-κητὴς, τροπαιοῦχος, μέγιστος, ἀεισέθαστος, Αὔγου-
-στος, πολίταις ἡμετέροις (41).
+ταύτη τῇ πόλει καὶ ὁ ταύτης ἰδιότητος ὑπάρχος.
+Affligebantur etiam Constitutiones imperatoriae in
+parteibus, ut hodie etiam fieri solet: unde pro-
+grammata appellabantur. Lexicon ms., πρόγραμμα, πραγ-
+μάτων, γνώρισμα, χρήματα, ἀποδείξεις, φανερὰ. Vulcatius
+Gallicanus in Avidio Cassio: Et programma in pa-
+rteibus fuit, ut si quis cæcitus inveniretur apud Da-
+phen, distinctus fuerit. Lex 3 Cod. de leg. et con-
+stit.: Nam satis est edicti eas nuncupatione censæ,
+vel per omnes populares iudicum promulgatibiles et
+vulgari, etc. Novella Valentiani, de confirmand.
+iis, etc. Illustra itaque et præclara magnificentia tua
+hanc salutis rationem sanctionem programma tuo ad
+universorum faciat notitiam pervenire. Eadem for-
+mula finitur edictum Licinii apud Lactantium lib.
+De mortib. persecut., n. 48. Ita etiam infra Justi-
+niani edictum De fide ab auctore Chronici indi-
+gitur.
+  </bloco>
 
-« Τὸν Σωτῆρα καὶ Δεσπότην ἐῶν ἁπάντων Ἰησοῦν
-Χριστὸν τὸν ἀληθινὸν ἡμῶν ** Θεὸν θεραπεύειν ** διὰ
-πάντων σπουδάζομεν" ὅσον QS ἐνδέχεται νοῦν
-χαταλαμβάνειν ἀνθρώπινον μιμεῖσθαι τὴν αὐτοῦ
-συγκατάθασιν-
+  <bloco tipo="texto_principal" script="grego" bbox="520,660,960,860">
+(39) Καὶ ἀποσυγγχῶρς. Ad quous missa, et quando
+emissa haec constitutio fuerit, docet tum scriptor,
+tua inscriptio quae Constantinopolitanis in colice
+D inscribitur, et haec subscriptio quæ hic omittitur :
+DAT. II. MART. DN. JUSTIN. PP. A. III COS. Deinde, τὸ
+αὐτὸ Ἐφεσίοις, τὸ αὐτὸ Καίσαρσιν, τὸ αὐτὸ Κωστιν-
+νωνί, τὸ αὐτὸ Λαμψινος, Τραπεζουπισι, Θεο-
+πολιταις, Σεβαστεινῳ, Ταρσοῦσιν, 'Αγχιανῷ.
+(40) Θεσσαλονίκη, etc. Urbem Illyrici statuit
+scripto: quippe Dalmatia sub praefecto praetorio
+Illyrici existit, ex statuto Constantini, ut auctor
+est Zoninus.
+(41) Πολιτικὰ μυστήρια. In cod., Κωνσταντινο-
+πολίται, ubi haec Justiniani constitutio aliter paulo
+describitur, ex quo variantes lectiones hic apposu-
+mus. In hanc porro nunc editæ sunt quaedam ad-
+notationes Fr. Pithoei viri doctissimi.
+  </bloco>
 
-« Καὶ "5 εὑρόντες τινὰς τῇ νόδῳ xol μανίᾳ xpa-
-τουμένους Νεστορίου καὶ Εὐτυχοῦς τῶν ἐχθρῶν τοῦ
-Θεοῦ καὶ τῆς ἁγιώτατης καθολιχῇς καὶ ἀποστολιχῆς
-Ἐχχλησίας ἀρνουμένους τὴν ἁγίαν ἔνδοξον ᾿Αειπαρ-
-θένον Μαρίαν Θεοτόχον εἰπεῖν χυρίως xai xas' ἀλή-
-Octav, ἑσπουδάσαμεν τούτους τὴν ὀρθὴν τῶν Χρι-
-στιανῶν διδαχθῆναι πίστιν. Οἱ δὲ ἀνιάτως: ἔχοντες
-καὶ χρύπτοντες τὴν ἑαυτῶν πλάνην, περιέρχονται,
-χαθὰ μεμαθήχαμεν, τὰς τῶν ἁπλουστέρων ψυχὰς ἐχ-
-ταράττοντες καὶ σχανδαλίζοντες καὶ “᾽ ἐναντία τῆς
-ἁγίας καθολιχῇς καὶ ἀποστολικῆς ᾿Εχχλησίας λέγον-
-τες. ᾿Αναγκαῖον τοίνυν ἐνομίσαμεν καταλῦσαι μὲν
-τὰς τῶν αἱρετικῶν ψευδολογίας, σαφηνίσαι δὲ πᾶσιν
+  [!-- Bottom-most block: Variae Lectiones --]
+  <bloco tipo="rodape" script="latino" bbox="30,880,960,980">
+VARIÆ LECTIONES.
 
-omnibus insinuare, quomodo aut sentiat sancta Dei ( ὅπως δοξάζει ἡ ἁγία τοῦ Θεοῦ χαθολιχὴ xal ἀποστο-
+" ἥμῶν om. P sola.  " θερραίων P.  " σπουδάζοντες ὑν PV. Correxì ex codice Justin., pag. 4, ed.
+Spangenb. " καὶ addidi ex cod.  " καὶ addidi ex cod. " παραλίσσι P sola. " αὑτοῖς, αὐτοῖ V.
+  </bloco>
 
-et catholica et apostolica Ecclesia , aut ργϑάϊοθηι
-Sanctissimi ejus sacerdotes: quos et nos seculi,
-manifesta constituimus ea, qua fidei nostra sunt:
-non quidem innovantes fidem (quod absit!) sed
-coarguentes eorum insaniam , qui eadem cum im-
-piis hareticis sentiunt. Quod quidem et nos in no-
-stri imperii primordiis pridem satagentes cunctis
-fecimus manifestum.
-
-λικὴ Ἐκκλησία, Κηρύττουσι δὲ οἱ αὐτῆς * ὁσιώτατοι
-ἱερεῖς, οἷς καὶ ἡμεῖς ἑπόμενοι φανερὰ χαθιστῶμεν
-τὰ περὶ τῆς ἐν ἡμῖν ἐλπίδος, οὐ χαινέζοντες πίστίν,
-μὴ γένοιτο, ἀλλ᾽ ἐλέγχοντες τὴν μανίαν τῶν φρονοῦν»
-τῶν τὰ τῶν ἀσεδῶν αἱρετιχῶν, ὅπερ xal ἤδη ἐν τοῖς
-προοιμίοις τῆς ἡμετέρας βασιλείας πράξαντες πᾶσι
-κατάδηλον ἐποιήσαμεν.
-
-Ὀυσάνοῖ! NOTJE£.
-
-ταύτῃ τῇ πόλει χαὶ ὁ ταύτης ἐνδοξότατος ὕπαρχος.
-Afligehantur etiam Constitutiones imperatorize in
-parietibus, ut hodie etiam fleri solet : unde προ-
-
-($9) Kal ἀποπέμψας. Ad quos missa, et quando
-emissa hzc constitutio fuerit , docet tum scriptor,
-tum inscriptio quz Constantinopolitanis in codice
-
-γράμματα appellabantur. Lexicon ms., πρόγραμμα, D inscribitur, et heec subscriptio quz hic omittitur :
-
-γνώρισμα, xou a, ἀπόδειξις φανερά. Vulcatius
-Gallicanus iw Ávidio Cassio : Et programma in b
-rietibus fixit, ut si quis cinctus inveniretur apud Da-
-phuen, discinctus (uerit. Lex 5 Cod. de leg. et con-
-tit : Nam satis est. edicti eas nuncupaltione censeri,
-vel per omnes populos judicum. programmatibus di-
-vulgari , etc, Novella Valentiniani, de contirmand.
-iis, etc. JHlustris itaque et precelsa magnificentia tua
-hanc saluberrimam sanctionem. programmate suo ad
-universorum faciat. notitiam pervenire. Eadem for-
-mula. finitur edictum Licinii apud Lactantium lib.
-De mortib. persecut., n. 48. lta etiam infra Justi-
-niani edictum De fide ab auctore Chronici iudi-
-gitatur.
-
-DAT. ID. MART. DN. JUSTIN. PP. A. 1 COSS. Deinde, '
-
-αὐτὸ Ἐφεσίοις, «b αὐτὸ Καισαρεῦσιν, τὸ αὐτὸ Κυζι-
-χκηνοῖς, τὸ αὐτὸ ᾿Αμιδηνοῖς, Τραπεζουντίοις, Θθεο-
-πολίταις, Σεδαστηνοῖς, Tapssust, 'A χυραινοῖς .
-
-(40) Gscca.Aor(xn , etc. Urbem lilyrici statuit
-scriptor : quippe Dalmatia sub praefecto pretorio
-Illyrici exstitit, ex statuto Constantini, ut auclot
-est Zosimus.
-
-44) Ποιλίταις ἠμετέροις. 1n cod., Κωνσταντινον
-πολίταις, ubi hec Justiniani constitutio aliter paulo
-describitur, ex quo variantes lectiotes hic apposul-
-mus. ln hanc porro nuper editze sunt quedam ad-
-notationes Fr. Pithei viri doctissimi.
-
-VARLE LECTIONES.
-
-ἡμῶν oin. P sola. — ** θεραπεύων P.
-
-4: σπουδαζόμενος ὃν PV. Correxi ex codice Justin., pag. ἂν δέν
-Spangenb. 55 xaX addidi ex ουά. ** xal addidiex cod. ** παραλῦσαι P sola.
-
-τι αὐτῆς. αὐτοὶ V.
-
-Digitized by Google
+  <notas>
+  - Foram criados quatro blocos nota_marginal centrados no gutter com os sinais: A, B, C, D (essenciais; não colocados no fluxo do texto).
+  - Onde a leitura da palavra no latino se mostra incerta foi marcada como [ilegivel] (uma palavra isolada somente).
+  - BBox aproximadas escala 0-1000; a pagina é uma imagem de duplo folio (duas páginas juntas). Os blocos seguem a ordem visual da esquerda para a direita.
+  </notas>
+</pagina>

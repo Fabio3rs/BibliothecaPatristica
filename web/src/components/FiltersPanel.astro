@@ -11,20 +11,43 @@ const t = useTranslations(Astro.currentLocale);
   ) : (
     <div class="filters">
       {sections.map((section: FilterSection) => (
-        <div>
-          <h3>{section.label}</h3>
-          {(section.items || []).length ? (
-            section.items.map((item: string) => (
-              <label>
-                <input type="checkbox" name={section.key} value={item} />
-                {item}
-              </label>
-            ))
-          ) : (
-            <p class="muted" style="margin:0;">{t.filtersNoOptions}</p>
-          )}
-        </div>
+        <details open={section.key === 'collection'}>
+          <summary>{section.label}</summary>
+          <div class="filters-group">
+            {(section.items || []).length ? (
+              section.items.map((item: string) => (
+                <label>
+                  <input type="checkbox" name={section.key} value={item} />
+                  {item}
+                </label>
+              ))
+            ) : (
+              <p class="muted" style="margin:0;">{t.filtersNoOptions}</p>
+            )}
+          </div>
+        </details>
       ))}
     </div>
   )}
 </aside>
+
+<style>
+  .filters details {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-s);
+    background: var(--color-surface-2);
+    padding: 0.5rem 0.7rem;
+  }
+  .filters summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--color-ink);
+    list-style: none;
+  }
+  .filters summary::-webkit-details-marker { display: none; }
+  .filters-group {
+    display: grid;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+  }
+</style>

@@ -6,11 +6,11 @@
 set -u
 
 # Configuráveis via env: JOBS, PROCS, OMP_THREADS, LLM_MODEL
-JOBS=${JOBS:-8}
-PROCS=${PROCS:-80}
+JOBS=${JOBS:-11}
+PROCS=${PROCS:-1}
 OMP_THREADS=${OMP_THREADS:-2}
-LLM_MODEL=${LLM_MODEL:-gpt-5-mini}
-ALGORITHM=${ALGORITHM:-openai}
+LLM_MODEL=${LLM_MODEL:-qwen3.5:397b-cloud}
+ALGORITHM=${ALGORITHM:-ollama}
 
 # Diretório de saída de logs
 LOG_DIR=${LOG_DIR:-teste}
@@ -39,7 +39,7 @@ parallel --bar --jobs "${JOBS}" --halt soon,fail=10% \
       --llm-model '${LLM_MODEL}' \
       --procs '${PROCS}' \
       --omp-threads '${OMP_THREADS}' \
-      --verify-fix \
+      --verify-judge-llm \
       --out '${LOG_DIR}/' \
       --lang 'lat+grc' '{}' \
       > '${LOG_DIR}/{/}.log' 2>&1"

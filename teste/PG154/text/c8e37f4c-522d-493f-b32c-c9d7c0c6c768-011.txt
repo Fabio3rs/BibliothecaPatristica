@@ -1,42 +1,57 @@
+<pagina estado="com_texto">
+  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,90">
 TRADITIO CATHOLICA.
-SAECULUM XIV. ANNUS 1315.
-
-IQANNOY
-KANTAKOYZHNOY
-
-' | ΤΑ EYPIZKOMENA IIANTA.
-
-JOANNIS.
-
+SÆCULUM XIV. ANNUS 1375.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="120,100,880,300">
+ΙΩΑΝΝΟΥ
+ΤΟΥ
+ΚΑΝΤΑΚΟΥΖΗΝΟΥ
+ΤΑ ΕΥΡΙΣΚΟΜΕΝΑ ΠΑΝΤΑ.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,300,920,460">
+JOANNIS
 CANTACUZENI
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,460,880,560">
 OPERA OMNIA,
 HISTORICA, THEOLOGICA, APOLOGETICA.
-
-ACCEDUNT
-
-JOANNIS PALJEOLOGI IMP., PHILOTHEI CPOLITANI PATRIARCHE, DEMETRII
-CYDONII, MAXIMI CHRYSOBERGAE, PHILOTHEI SELYMBRIENSIS.
-
-ORATIONES, OPUSCULA, EPISTOLJE;
-
-ACCURANTE ET DENUO RECOGNOSCENTSE J.-P. MIGNE,
-BIBLIOTHECAE CLEBMI UNIVERSA,
-
-SIYE
-CURSUUM COMPLETORUM IN SINGULOS SCIENTÍE ECCLRSIASTICE RAMOS EDITORE.
-
-—— — —— o
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="60,560,940,700">
+ACCEDITUR
+JOANNIS PALAEOLOGI IMP., PHILOTHEI CPOLITANI PATRIARCHAE, DEMETRII CYDONII, MAXIMI CHRYSOBERGAE, PHILOTHEI SELYMBRIENSIS.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="160,700,840,780">
+ORATIONES, OPUSCULA, EPISTOLAE;
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,780,920,860">
+ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE,
+BIBLIOTHECAE [ilegivel] UNIVERSAE,
+SIVE
+CURSUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,860,880,920">
+──────
 TOMUS POSTERIOR.
-
-—  —— RR ν᾽ OR mm mmm.
-
-vENIT 1B FR. GALLICIS.
-
-EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM, '
-IN VIA DICTA: THIBAUD, OLIM. D'AMBOISE — PROPE PORTAM LUTETLE PARISIORUM VULGO
-D'LNFER NOMINATAM, SEU PET. IT-MONTROUGE, NUNC VERO INTRA MUENIA PARISINA.
-
-1906
-
+──────
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="120,920,880,980">
+VENIT 15 FR. GALLICIS.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="60,980,940,1040">
+EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
+IN VIA DICTA: THIBAUD, OLIM D'AMBOISE PROPE PORTAM LUTETIAE PARISIORUM VULGO D'ENFER NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA [ilegivel] PARISINA.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="420,1040,580,1080">
+1866
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="700,1060,980,1100">
 Digitized by Google
+  </bloco>
+  <notas>
+- Script: Greek lines transcribed in Greek (script="grego"); the rest in Latin (script="latino").
+- Two words marked [ilegivel] where individual words on the printed page were unclear: the word after "BIBLIOTHECAE" and the word before "PARISINA" in the publisher line. I preserved all other visible letters and punctuation without normalization.
+- No marginal identifiers "A, B, C, D" were visible in the gutter; therefore no nota_marginal blocks were created.
+- Bounding boxes are approximate (scale 0-1000) and follow the visual order top-to-bottom.
+  </notas>
+</pagina>
