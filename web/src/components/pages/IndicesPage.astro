@@ -648,10 +648,18 @@ const renderedVolumes = volumes.map((item) => renderVolume(item)).join('');
       return String(value || '').toLowerCase().trim();
     }
 
-    const getJsonOnce = (url) => dataCache?.getJsonOnce(url) ?? fetch(url).then((res) => {
+    async function decodeJsonResponse(res, url) {
       if (!res.ok) throw new Error(`HTTP ${res.status} ao buscar ${url}`);
-      return res.json();
-    });
+      const bytes = new Uint8Array(await res.arrayBuffer());
+      const isGzipped = bytes.length >= 2 && bytes[0] === 0x1f && bytes[1] === 0x8b;
+      const payload = isGzipped && typeof DecompressionStream !== 'undefined'
+        ? await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer()
+        : bytes;
+      const text = new TextDecoder('utf-8').decode(payload);
+      return JSON.parse(text);
+    }
+
+    const getJsonOnce = (url) => dataCache?.getJsonOnce(url) ?? fetch(url).then((res) => decodeJsonResponse(res, url));
 
     function setUrl() {
       const params = new URLSearchParams();

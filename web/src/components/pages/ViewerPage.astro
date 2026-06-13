@@ -19,10 +19,17 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     let loadGeneration = 0;
     let rawOcrController = null;
     const dataCache = window.pdfocrDataCache;
-    const getJsonOnce = (url) => dataCache?.getJsonOnce(url) ?? fetch(url).then((res) => {
+    async function decodeJsonResponse(res, url) {
       if (!res.ok) throw new Error(`HTTP ${res.status} ao buscar ${url}`);
-      return res.json();
-    });
+      const bytes = new Uint8Array(await res.arrayBuffer());
+      const isGzipped = bytes.length >= 2 && bytes[0] === 0x1f && bytes[1] === 0x8b;
+      const payload = isGzipped && typeof DecompressionStream !== 'undefined'
+        ? await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer()
+        : bytes;
+      const text = new TextDecoder('utf-8').decode(payload);
+      return JSON.parse(text);
+    }
+    const getJsonOnce = (url) => dataCache?.getJsonOnce(url) ?? fetch(url).then((res) => decodeJsonResponse(res, url));
     const loadJsonInBatches = (urls, options = {}) => dataCache?.loadJsonInBatches(urls, options) ?? Promise.all(urls.map((url) => getJsonOnce(url).then((value) => ({ url, ok: true, value }), (error) => ({ url, ok: false, value: null, error }))));
 
     // Reconstrói funções de formatação (não serializáveis via define:vars)
