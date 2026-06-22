@@ -18,7 +18,7 @@ mkdir -p "${LOG_DIR}"
 
 # Coleta arquivos (tratando ausência de matches)
 shopt -s nullglob
-VOLUMES=(/homessddata/patristica/PG*.pdf)
+VOLUMES=(/homessddata/patristica/PG0[3-9]*.pdf)
 shopt -u nullglob
 
 if [ ${#VOLUMES[@]} -eq 0 ]; then
@@ -30,7 +30,7 @@ echo "📦  Usando GNU parallel (jobs=${JOBS}) — processando ${#VOLUMES[@]} vo
 
 # Exportar variáveis que queremos que apareçam expandidas na linha de comando
 export PROCS OMP_THREADS LLM_MODEL LOG_DIR
-
+# 
 printf '%s
 ' "${VOLUMES[@]}" | \
 parallel --bar --jobs "${JOBS}" --halt soon,fail=10% \

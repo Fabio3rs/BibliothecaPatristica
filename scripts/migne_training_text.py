@@ -24,6 +24,7 @@ import re
 import sqlite3
 import sys
 import unicodedata
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, List
 import xml.etree.ElementTree as ET
@@ -234,6 +235,42 @@ def is_valid_line(text: str) -> bool:
 
 # Scripts suportados
 VALID_SCRIPTS = {"latino", "grego", "latinogrego", "misto"}
+
+
+def classify_unicode_script(text: str) -> str:
+    """Classifica a linha por script Unicode.
+
+    Retorna:
+    - ``grego``: contém letras gregas e nenhuma latina
+    - ``misto``: contém letras gregas e latinas
+    - ``latino``: contém letras latinas e nenhuma grega
+    - ``desconhecido``: não conseguiu identificar letras úteis
+    """
+    has_lat = False
+    has_gr = False
+    for cluster in iter_grapheme_clusters(text):
+        base = cluster[0]
+        if not base.isalpha():
+            continue
+        nome = unicodedata.name(base, "")
+        if "LATIN" in nome:
+            has_lat = True
+        elif "GREEK" in nome or "COPTIC" in nome:
+            has_gr = True
+
+    if has_lat and has_gr:
+        return "misto"
+    if has_gr:
+        return "grego"
+    if has_lat:
+        return "latino"
+    return "desconhecido"
+
+
+@dataclass(frozen=True)
+class PrioritizedLine:
+    text: str
+    script: str
 
 
 def load_charfreq(charfreq_path: Path, min_count: int) -> set[str]:
@@ -609,6 +646,22 @@ def cleanup_line(text: str) -> str | None:
     return text
 
 
+def script_priority(script: str) -> int:
+    """Ordena linhas para priorizar grego e misto sem perder latim."""
+    order = {
+        "grego": 0,
+        "misto": 1,
+        "latinogrego": 1,
+        "latino": 2,
+        "desconhecido": 3,
+    }
+    return order.get(script, 3)
+
+
+def is_greek_or_mixed(script: str) -> bool:
+    return script in {"grego", "misto", "latinogrego"}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--db", default="data/ocr_versions.db")
@@ -668,6 +721,16 @@ def main() -> None:
         help="Não rejeita linhas só por conter símbolos litúrgicos raros do corpus",
     )
     parser.add_argument(
+        "--prioritize-greek-mixed",
+        action="store_true",
+        help="Escreve primeiro linhas em grego e linhas mistas grego+latim",
+    )
+    parser.add_argument(
+        "--greek-mixed-only",
+        action="store_true",
+        help="Filtra a saída para manter apenas linhas gregas e mistas grego+latim",
+    )
+    parser.add_argument(
         "--unicharset",
         default=None,
         help="Caminho para o unicharset do Tesseract; emite aviso (e rejeita a linha) "
@@ -697,6 +760,7 @@ def main() -> None:
         return
 
     lines: List[str] = []
+    prioritized_lines: List[PrioritizedLine] = []
     n_rows = 0
 
     def accept_line(raw: str) -> str | None:
@@ -735,7 +799,27 @@ def main() -> None:
                     file=sys.stderr,
                 )
                 return None
+        if args.greek_mixed_only and not is_greek_or_mixed(classify_unicode_script(line)):
+            return None
         return line
+
+    def add_line(line: str) -> None:
+        if args.prioritize_greek_mixed:
+            prioritized_lines.append(
+                PrioritizedLine(text=line, script=classify_unicode_script(line))
+            )
+        else:
+            lines.append(line)
+
+    def flush_prioritized_lines() -> None:
+        if not args.prioritize_greek_mixed:
+            return
+        ordered = sorted(
+            enumerate(prioritized_lines),
+            key=lambda item: (script_priority(item[1].script), item[0]),
+        )
+        for _, item in ordered:
+            lines.append(item.text)
 
     # 1) Se receber --xml-dir, percorre XMLs e extrai blocos parseáveis primeiro
     if args.xml_dir:
@@ -766,7 +850,7 @@ def main() -> None:
                         if raw_norm is None:
                             continue
                         if args.unlimited:
-                            lines.append(raw_norm)
+                            add_line(raw_norm)
                         else:
                             pieces = wrap_line_by_units(raw_norm, args.max_units)
                             for p2 in pieces:
@@ -774,7 +858,7 @@ def main() -> None:
                                     continue
                                 if accept_line(p2) is None:
                                     continue
-                                lines.append(p2)
+                                add_line(p2)
 
     # 2) Em seguida, completa com textos do DB (se existir)
     if db_path.exists():
@@ -803,7 +887,7 @@ def main() -> None:
                     if raw_norm is None:
                         continue
                     if args.unlimited:
-                        lines.append(raw_norm)
+                        add_line(raw_norm)
                     else:
                         pieces = wrap_line_by_units(raw_norm, args.max_units)
                         for p2 in pieces:
@@ -811,14 +895,30 @@ def main() -> None:
                                 continue
                             if accept_line(p2) is None:
                                 continue
-                            lines.append(p2)
+                            add_line(p2)
             continue
 
         conn.close()
 
+    flush_prioritized_lines()
+
     if args.shuffle:
         random.seed(args.seed)
-        random.shuffle(lines)
+        if args.prioritize_greek_mixed:
+            grouped: dict[int, list[str]] = {0: [], 1: [], 2: [], 3: []}
+            for line in lines:
+                grouped[script_priority(classify_unicode_script(line))].append(line)
+            for group in grouped.values():
+                random.shuffle(group)
+            lines = grouped[0] + grouped[1] + grouped[2] + grouped[3]
+        else:
+            random.shuffle(lines)
+
+    if args.prioritize_greek_mixed and not args.shuffle:
+        lines = sorted(
+            lines,
+            key=lambda line: (script_priority(classify_unicode_script(line)),),
+        )
 
     out_path = Path(args.out)
 

@@ -16,6 +16,7 @@ import io
 import json
 import os
 import random
+import hashlib
 import re
 import sqlite3
 import sys
@@ -35,6 +36,8 @@ SUPPORTED_PREFIXES = ("PG", "PL")  # PO fica para fase 2
 TESS_LANG = "lat+grc"
 MIN_LINES = 10
 DEFAULT_PER_VOLUME = 10  # páginas por volume
+DEFAULT_PREPROCESS_MODE = "adaptive_soft"
+DEFAULT_TESS_LANG = "lat+grc"
 
 # ---------------------------------------------------------------------------
 # Schema SQLite
@@ -68,6 +71,27 @@ CREATE TABLE IF NOT EXISTS lines (
     created_at      TEXT DEFAULT (datetime('now')),
     updated_at      TEXT DEFAULT (datetime('now'))
 );
+
+CREATE TABLE IF NOT EXISTS line_versions (
+    id              INTEGER PRIMARY KEY,
+    run_id          TEXT,
+    line_id         INTEGER NOT NULL REFERENCES lines(id) ON DELETE CASCADE,
+    provider        TEXT NOT NULL,
+    model           TEXT NOT NULL,
+    text_content    TEXT NOT NULL,
+    text_hash       TEXT NOT NULL,
+    source_score    REAL,
+    is_current      INTEGER NOT NULL DEFAULT 1,
+    meta_json       TEXT,
+    created_at      TEXT DEFAULT (datetime('now')),
+    updated_at      TEXT DEFAULT (datetime('now'))
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS uq_line_versions_dedup
+    ON line_versions(run_id, line_id, provider, model, text_hash);
+
+CREATE INDEX IF NOT EXISTS idx_line_versions_line_id
+    ON line_versions(line_id, is_current, created_at DESC);
 
 CREATE INDEX IF NOT EXISTS idx_lines_session  ON lines(session_id);
 CREATE INDEX IF NOT EXISTS idx_lines_status   ON lines(status);
@@ -122,82 +146,77 @@ def find_page_pairs(vol: Path) -> list[tuple[Path, Path, str]]:
 # ---------------------------------------------------------------------------
 
 
-def preprocess_image(img, border_size=50):
-    # Converter pra grayscale
+def deskew_like_sample_color(img: np.ndarray, border_size: int = 50) -> np.ndarray:
+    """Aplica o mesmo deskew do modo sample.py, mas preserva as cores originais."""
     arr = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) if len(img.shape) == 3 else img
-
     thresh = cv2.threshold(arr, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
 
-    # 1. REMOVER RUÍDO E JUNTAR LINHAS
-    # Criamos um kernel largo para "derreter" as palavras em linhas horizontais
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (30, 5))
     dilate = cv2.dilate(thresh, kernel, iterations=2)
 
-    # 2. ENCONTRAR CONTORNOS
     contours, _ = cv2.findContours(dilate, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
-
     angles = []
     for cnt in contours:
-        # Ignorar ruídos pequenos e as bordas gigantescas do papel
         area = cv2.contourArea(cnt)
-        if 500 < area < 50000:  # Ajuste esses valores conforme necessário
+        if 500 < area < 50000:
             rect = cv2.minAreaRect(cnt)
             angle = rect[-1]
             rw, rh = rect[1]
-
-            # Normalização do ângulo para OpenCV 4.5+
-            # minAreaRect retorna o ângulo do eixo mais curto.
-            # Para linhas de texto horizontais (largura >> altura), o eixo
-            # curto é vertical → ângulo fica em torno de -90°.
-            # Corrigimos para obter o ângulo real da linha (próximo de 0°).
             if rw < rh:
-                angle = angle + 90  # roda 90° para alinhar com o eixo longo
-            # Após normalização, descarta ângulos absurdos (>10°): provavelmente
-            # contornos de elementos decorativos, linhas de margem etc.
+                angle = angle + 90
             if abs(angle) <= 10:
                 angles.append(angle)
 
-    # 3. MÉDIA DOS ÂNGULOS
-    # Usamos a mediana para evitar que um contorno doido puxe o valor
-    if len(angles) > 0:
-        median_angle = np.median(angles)
-    else:
-        median_angle = 0.0  # Sem inclinação detectada
-
-    # print(f"Ângulo real detectado: {median_angle}")
-
-    # 4. ROTACIONAR
+    median_angle = np.median(angles) if angles else 0.0
     (h, w) = img.shape[:2]
     center = (w // 2, h // 2)
     M = cv2.getRotationMatrix2D(center, median_angle, 1.0)
     rotated = cv2.warpAffine(
         img, M, (w, h), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE
     )
+    return rotated
 
+
+def _preprocess_legacy(img: np.ndarray, border_size: int = 50) -> tuple[np.ndarray, np.ndarray]:
+    rotated = deskew_like_sample_color(img, border_size=border_size)
     _, thresh = cv2.threshold(rotated, 100, 255, cv2.THRESH_BINARY)
-
-    # # Adiciona a borda branca (o valor [255, 255, 255] é o branco em BGR)
-    # processed = cv2.copyMakeBorder(
-    #     thresh,
-    #     top=border_size,
-    #     bottom=border_size,
-    #     left=border_size,
-    #     right=border_size,
-    #     borderType=cv2.BORDER_CONSTANT,
-    #     value=[255, 255, 255],
-    # )
-
-    # rotated = cv2.copyMakeBorder(
-    #     rotated,
-    #     top=border_size,
-    #     bottom=border_size,
-    #     left=border_size,
-    #     right=border_size,
-    #     borderType=cv2.BORDER_CONSTANT,
-    #     value=[255, 255, 255],
-    # )
-
     return thresh, rotated
+
+
+
+
+def _preprocess_adaptive_soft(
+    img: np.ndarray,
+    clahe_clip: float = 2.0,
+    block_size: int = 31,
+    c_value: int = 4,
+) -> tuple[np.ndarray, np.ndarray]:
+    rotated = deskew_like_sample_color(img)
+    gray = cv2.cvtColor(rotated, cv2.COLOR_BGR2GRAY) if len(rotated.shape) == 3 else rotated
+    clahe = cv2.createCLAHE(clipLimit=clahe_clip, tileGridSize=(8, 8))
+    gray = clahe.apply(gray)
+    # binary = cv2.adaptiveThreshold(
+    #     gray2, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, block_size, c_value
+    # )
+    return gray, gray
+
+
+def preprocess_image(
+    img: np.ndarray,
+    mode: str = DEFAULT_PREPROCESS_MODE,
+    border_size: int = 50,
+    clahe_clip: float = 2.0,
+    block_size: int = 31,
+    c_value: int = 4,
+) -> tuple[np.ndarray, np.ndarray]:
+    if mode == "sample":
+        raise NotImplementedError("Modo 'sample' não implementado.")
+        # return _preprocess_legacy(img, border_size=border_size)
+    if mode == "adaptive_soft":
+        return _preprocess_adaptive_soft(
+            img, clahe_clip=clahe_clip, block_size=block_size, c_value=c_value
+        )
+    raise ValueError(f"Modo de preprocessamento desconhecido: {mode}")
 
 
 def tesseract_lines(img: np.ndarray) -> list[dict]:
@@ -272,6 +291,34 @@ def crop_line(img: np.ndarray, bbox: dict) -> bytes:
     return buf.getvalue()
 
 
+def build_tesseract_config(tessdata_dir: str | None = None) -> str:
+    parts = ["--psm 6", "--oem 1"]
+    if tessdata_dir:
+        parts.append(f'--tessdata-dir "{tessdata_dir}"')
+    return " ".join(parts)
+
+
+def tesseract_text_for_image(
+    img: Image.Image,
+    lang: str = DEFAULT_TESS_LANG,
+    tessdata_dir: str | None = None,
+) -> str:
+    config = build_tesseract_config(tessdata_dir)
+    return pytesseract.image_to_string(img, lang=lang, config=config).strip()
+
+
+def resolve_reference_text(row: sqlite3.Row) -> str:
+    if isinstance(row, sqlite3.Row):
+        qwen_text = (row["qwen_text"] or "").strip() if "qwen_text" in row.keys() else ""
+        reviewed_text = (
+            (row["reviewed_text"] or "").strip() if "reviewed_text" in row.keys() else ""
+        )
+    else:
+        qwen_text = (row[2] or "").strip() if len(row) > 2 else ""
+        reviewed_text = (row[3] or "").strip() if len(row) > 3 else ""
+    return qwen_text or reviewed_text
+
+
 # ---------------------------------------------------------------------------
 # SQLite
 # ---------------------------------------------------------------------------
@@ -279,12 +326,62 @@ def crop_line(img: np.ndarray, bbox: dict) -> bytes:
 
 def open_db(db_path: str) -> sqlite3.Connection:
     conn = sqlite3.connect(db_path)
-    conn.execute("PRAGMA journal_mode=WAL;")
-    conn.execute("PRAGMA busy_timeout=3000;")
+    journal_mode = conn.execute("PRAGMA journal_mode=WAL;").fetchone()[0]
+    if str(journal_mode).lower() != "wal":
+        conn.close()
+        raise RuntimeError(f"SQLite não entrou em WAL mode: {journal_mode}")
+    conn.execute("PRAGMA busy_timeout=30000;")
 
     conn.executescript(DDL)
+    _migrate_line_versions(conn)
     conn.commit()
     return conn
+
+
+def _migrate_line_versions(conn: sqlite3.Connection) -> None:
+    cols = [r[1] for r in conn.execute("PRAGMA table_info(line_versions)").fetchall()]
+    if not cols:
+        return
+    if "run_id" not in cols:
+        conn.execute("ALTER TABLE line_versions ADD COLUMN run_id TEXT")
+    if "source_score" not in cols:
+        conn.execute("ALTER TABLE line_versions ADD COLUMN source_score REAL")
+    if "is_current" not in cols:
+        conn.execute("ALTER TABLE line_versions ADD COLUMN is_current INTEGER DEFAULT 1")
+    if "meta_json" not in cols:
+        conn.execute("ALTER TABLE line_versions ADD COLUMN meta_json TEXT")
+    conn.execute("DROP INDEX IF EXISTS uq_line_versions_dedup")
+    conn.execute(
+        """
+        CREATE UNIQUE INDEX IF NOT EXISTS uq_line_versions_dedup
+        ON line_versions(run_id, line_id, provider, model, text_hash)
+        """
+    )
+
+    existing = conn.execute("SELECT COUNT(*) FROM line_versions").fetchone()[0]
+    if existing:
+        return
+    rows = conn.execute(
+        "SELECT id, qwen_text, agreement_score FROM lines WHERE IFNULL(qwen_text, '') <> ''"
+    ).fetchall()
+    for row in rows:
+        txt = row["qwen_text"] or ""
+        conn.execute(
+            """
+            INSERT OR IGNORE INTO line_versions
+                (run_id, line_id, provider, model, text_content, text_hash, source_score, is_current, meta_json)
+            VALUES (?, ?, ?, ?, ?, ?, ?, 1, NULL)
+            """,
+            (
+                "legacy",
+                row["id"],
+                "legacy",
+                "legacy",
+                txt,
+                hashlib.sha256(txt.encode("utf-8")).hexdigest(),
+                row["agreement_score"],
+            ),
+        )
 
 
 def session_exists(conn: sqlite3.Connection) -> bool:
@@ -323,6 +420,165 @@ def insert_line(conn: sqlite3.Connection, session_id: int, row: dict) -> None:
             row["detected_lang"],
         ),
     )
+
+
+from functools import lru_cache
+
+# @cache
+@lru_cache(maxsize=32)
+def load_process_image(image_path: str, preprocess_mode: str) -> tuple[np.ndarray, dict]:
+    img_original = cv2.imread(str(Path(image_path)))
+    if img_original is None:
+        raise FileNotFoundError(f"Não foi possível abrir {image_path}")
+
+    _, gray_image = preprocess_image(img=img_original, mode=preprocess_mode)
+
+    return gray_image
+
+def _rebuild_line_image(row: tuple, preprocess_mode: str) -> bytes:
+    image_path = row[1]
+    bbox_value = row[2]
+
+    img_proc = load_process_image(image_path, preprocess_mode)
+    bbox = json.loads(bbox_value) if isinstance(bbox_value, str) else bbox_value
+    x = int(bbox.get("x", 0))
+    y = int(bbox.get("y", 0))
+    w = int(bbox.get("w", 0))
+    h = int(bbox.get("h", 0))
+    x1 = max(0, x - 2)
+    y1 = max(0, y - 2)
+    x2 = min(img_proc.shape[1], x + w + 2)
+    y2 = min(img_proc.shape[0], y + h + 2)
+    crop = img_proc[y1:y2, x1:x2]
+    buf = io.BytesIO()
+    Image.fromarray(crop).save(buf, format="PNG")
+    return buf.getvalue()
+
+
+def _refresh_line_image_job(args: tuple[int, str, str, str]) -> tuple[int, bytes]:
+    line_id, image_path, bbox, preprocess_mode = args
+    row = (line_id, image_path, bbox)
+    return line_id, _rebuild_line_image(row, preprocess_mode)
+
+
+def refresh_line_images(
+    conn: sqlite3.Connection,
+    preprocess_mode: str = DEFAULT_PREPROCESS_MODE,
+    limit: int | None = None,
+    dry_run: bool = False,
+    jobs: int = 1,
+) -> None:
+    query = """
+        SELECT id, image_path, bbox
+        FROM lines
+        WHERE image_path IS NOT NULL
+        ORDER BY image_path, agreement_score ASC, id ASC
+    """
+    params: tuple = ()
+    if limit is not None:
+        query += " LIMIT ?"
+        params = (limit,)
+
+    rows = conn.execute(query, params).fetchall()
+    if not rows:
+        print("[INFO] Nenhuma linha elegível para refresh de imagens.")
+        return
+
+    print(f"[INFO] Refresh de {len(rows)} line_image(s) com preprocess_mode={preprocess_mode}")
+    if dry_run:
+        sample_ids = ", ".join(str(row["id"]) for row in rows[:20])
+        print(f"[DRY-RUN] Nenhuma linha será alterada. IDs elegíveis: {sample_ids}")
+        if len(rows) > 20:
+            print(f"[DRY-RUN] ... e mais {len(rows) - 20} linha(s).")
+        return
+
+    jobs = max(1, jobs)
+    updated = 0
+    tasks = [(row[0], row[1], row[2], preprocess_mode) for row in rows]
+    if jobs == 1:
+        for task in tasks:
+            try:
+                line_id, new_image = _refresh_line_image_job(task)
+                conn.execute(
+                    "UPDATE lines SET line_image=?, updated_at=datetime('now') WHERE id=?",
+                    (new_image, line_id),
+                )
+                updated += 1
+            except Exception as e:
+                print(f"[WARN] id={task[0]}: não foi possível atualizar image - {e}")
+    else:
+        with mp.Pool(processes=jobs) as pool:
+            for line_id, new_image in pool.imap_unordered(_refresh_line_image_job, tasks, chunksize=32):
+                conn.execute(
+                    "UPDATE lines SET line_image=?, updated_at=datetime('now') WHERE id=?",
+                    (new_image, line_id),
+                )
+                updated += 1
+
+    conn.commit()
+    print(f"[DONE] line_image atualizado em {updated} linha(s)")
+
+
+def recalc_tesseract_fields(
+    conn: sqlite3.Connection,
+    lang: str = DEFAULT_TESS_LANG,
+    tessdata_dir: str | None = None,
+    limit: int | None = None,
+    dry_run: bool = False,
+) -> None:
+    query = """
+        SELECT id, line_image, qwen_text, reviewed_text
+        FROM lines
+        WHERE line_image IS NOT NULL
+        ORDER BY agreement_score, id ASC
+    """
+    params: tuple = ()
+    if limit is not None:
+        query += " LIMIT ?"
+        params = (limit,)
+
+    rows = conn.execute(query, params).fetchall()
+    if not rows:
+        print("[INFO] Nenhuma linha elegível para recálculo de Tesseract.")
+        return
+
+    config = build_tesseract_config(tessdata_dir)
+    print(
+        f"[INFO] Recálculo de tesseract_text/agreement_score em {len(rows)} linha(s) "
+        f"com lang={lang} config={config}"
+    )
+    if dry_run:
+        sample_ids = ", ".join(str(row["id"]) for row in rows[:20])
+        print(f"[DRY-RUN] Nenhuma linha será alterada. IDs elegíveis: {sample_ids}")
+        if len(rows) > 20:
+            print(f"[DRY-RUN] ... e mais {len(rows) - 20} linha(s).")
+        return
+
+    updated = 0
+    for row in rows:
+        try:
+            blob = row["line_image"] if isinstance(row, sqlite3.Row) else row[1]
+            if blob is None:
+                continue
+            img = Image.open(io.BytesIO(blob))
+            new_text = tesseract_text_for_image(img, lang=lang, tessdata_dir=tessdata_dir)
+            ref_text = resolve_reference_text(row)
+            score = agreement_score(ref_text, new_text) if ref_text else 0.0
+            conn.execute(
+                """
+                UPDATE lines
+                SET tesseract_text=?, agreement_score=?, updated_at=datetime('now')
+                WHERE id=?
+                """,
+                (new_text, score, row["id"] if isinstance(row, sqlite3.Row) else row[0]),
+            )
+            updated += 1
+        except Exception as e:
+            row_id = row["id"] if isinstance(row, sqlite3.Row) else row[0]
+            print(f"[WARN] id={row_id}: não foi possível recalcular Tesseract - {e}")
+
+    conn.commit()
+    print(f"[DONE] tesseract_text/agreement_score atualizado em {updated} linha(s)")
 
 
 # Multiprocessing
@@ -409,7 +665,11 @@ def get_current_process_index() -> int:
 
 
 def _process_page(
-    img_path_str: str, txt_path_str: str, page_id: str, volume: str
+    img_path_str: str,
+    txt_path_str: str,
+    page_id: str,
+    volume: str,
+    preprocess_mode: str,
 ) -> dict:
     """Processa uma página: roda tesseract, recorta linhas e retorna dados serializáveis."""
     try:
@@ -422,7 +682,7 @@ def _process_page(
             "message": f"Image.open failed: {e}",
         }
 
-    binaryzed, img = preprocess_image(img=img_original)
+    binaryzed, img = preprocess_image(img=img_original, mode=preprocess_mode)
 
     try:
         # Executa segmentação (TSV -> linhas)
@@ -478,8 +738,10 @@ def _process_page(
 def _process_page_wrapper(task_tuple: tuple) -> dict:
     """Wrapper para Pool.map — recebe uma tupla e repassa para _process_page."""
     try:
-        img_path_str, txt_path_str, page_id, volume = task_tuple
-        return _process_page(img_path_str, txt_path_str, page_id, volume)
+        img_path_str, txt_path_str, page_id, volume, preprocess_mode = task_tuple
+        return _process_page(
+            img_path_str, txt_path_str, page_id, volume, preprocess_mode
+        )
     except Exception as e:
         return {
             "status": "error",
@@ -498,6 +760,7 @@ def sample_and_ingest(
     conn: sqlite3.Connection,
     per_volume: int,
     description: str,
+    preprocess_mode: str = DEFAULT_PREPROCESS_MODE,
     seed: int | None = None,
 ) -> None:
     if seed is not None:
@@ -534,7 +797,7 @@ def sample_and_ingest(
         vol_lines = 0
         # Preparar tarefas para pool: cada tarefa é (img_path_str, txt_path_str, page_id, volume_name)
         tasks = [
-            (str(img_path), str(txt_path), page_id, vol.name)
+            (str(img_path), str(txt_path), page_id, vol.name, preprocess_mode)
             for img_path, txt_path, page_id in sample
         ]
 
@@ -618,9 +881,72 @@ def main() -> None:
         action="store_true",
         help="Força nova amostragem mesmo se já existir sessão",
     )
+    parser.add_argument(
+        "--preprocess-mode",
+        choices=["adaptive_soft", "sample"],
+        default=DEFAULT_PREPROCESS_MODE,
+        help="Receita de pré-processamento usada no ingest",
+    )
+    parser.add_argument(
+        "--refresh-images",
+        action="store_true",
+        help="Atualiza line_image em linhas já existentes sem apagar o DB.",
+    )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="Limita a quantidade de linhas afetadas por --refresh-images.",
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Mostra o que seria alterado sem gravar mudanças.",
+    )
+    parser.add_argument(
+        "--jobs",
+        type=int,
+        default=max(1, mp.cpu_count() // 2),
+        help="Número de processos para --refresh-images.",
+    )
+    parser.add_argument(
+        "--recalc-tesseract",
+        action="store_true",
+        help="Recalcula tesseract_text e agreement_score nas linhas existentes.",
+    )
+    parser.add_argument(
+        "--tesseract-lang",
+        default=DEFAULT_TESS_LANG,
+        help="Idioma/traineddata para o recálculo do Tesseract (ex.: lat, grc, lat+grc).",
+    )
+    parser.add_argument(
+        "--tessdata-dir",
+        default=None,
+        help="Diretório opcional com os traineddata do Tesseract.",
+    )
     args = parser.parse_args()
 
     conn = open_db(args.db)
+
+    if args.refresh_images:
+        refresh_line_images(
+            conn,
+            preprocess_mode=args.preprocess_mode,
+            limit=args.limit,
+            dry_run=args.dry_run,
+            jobs=args.jobs,
+        )
+        return
+
+    if args.recalc_tesseract:
+        recalc_tesseract_fields(
+            conn,
+            lang=args.tesseract_lang,
+            tessdata_dir=args.tessdata_dir,
+            limit=args.limit,
+            dry_run=args.dry_run,
+        )
+        return
 
     if session_exists(conn) and not args.resample:
         count = conn.execute("SELECT COUNT(*) FROM lines").fetchone()[0]
@@ -639,6 +965,7 @@ def main() -> None:
         conn=conn,
         per_volume=args.per_volume,
         description=args.session,
+        preprocess_mode=args.preprocess_mode,
         seed=args.seed,
     )
 
