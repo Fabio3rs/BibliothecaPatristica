@@ -1,0 +1,7 @@
+interface:
+  display_name: "Patristic Index Extractor"
+  short_description: "Extract PG/PL volume indexes reliably"
+  default_prompt: "Use $patristic-index-extractor to inspect one PG/PL volume, locate the volume index, work indexes, and final indexes, and write the parsed result to SQLite."
+
+policy:
+  allow_implicit_invocation: false
