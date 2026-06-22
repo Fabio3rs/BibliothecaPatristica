@@ -45,6 +45,39 @@
   - Logs em `logs/keywords_parallel/<volume>.log`.
 - **Avisos**: prompts/outputs somente em PT-BR; revisão humana limitada; valide keywords antes de uso editorial.
 
+## Extração de índices internos (`scripts/run_index_extraction.py`)
+- **Objetivo**: extrair a estrutura editorial dos índices que aparecem dentro de cada volume PG/PL, separando índice do começo do tomo, índices de abertura de obra e índices finais do volume.
+- **Driver**: `scripts/run_index_extraction.py` executa um ciclo por volume, chama o prescan, monta o prompt do Codex, coleta o JSON final e importa o resultado no SQLite.
+- **Prescan e prompt**:
+  - `scan_volume.py` localiza páginas candidatas e títulos recorrentes em `teste/<VOLUME>/text/*`.
+  - `build_volume_prompt.py` gera o envelope com blocos `TASK`, `VOLUME`, `PRESCAN`, `WORK INSTRUCTIONS`, `TODO`, `OUTPUT FILE` e `FINAL RESPONSE`.
+  - O prompt manda preservar literais OCR e tratar a amostra inicial como mapa, não como verdade final.
+- **Artefatos**:
+  - `data/index_payloads/<VOLUME>_prescan.json`
+  - `data/index_payloads/<VOLUME>_prompt.txt` quando `--dry-run`
+  - `data/index_payloads/<VOLUME>_last_message.txt`
+  - `data/index_payloads/<VOLUME>_indices.json`
+  - logs persistentes em `data/index_logs/*`
+- **Banco de dados**: o importador grava em `data/patristic_indices.db`, com tabelas `volumes`, `works`, `index_sections`, `index_entries` e `runs`.
+- **Contrato de saída**:
+  - payload JSON com top-level `volume`, `works`, `sections`, `notes`
+  - chaves estáveis para `work_key` e `section_key`
+  - preservação de `raw_json` em todos os níveis para auditoria posterior
+- **Taxonomia**:
+  - front-matter do volume: `ELENCHUS`, `AUCTORUM ET OPERUM`, `ORDO RERUM` quando funciona como inventário do tomo
+  - índice de abertura de obra: `INDEX CAPITUM`, `PROLEGOMENA`, `CAPUT`, `LIBER`, `SECTIO`
+  - índice final do volume: `ORDO RERUM`, `INDEX ANALYTICUS`, `INDEX RERUM ET VERBORUM`, `INDEX GRÆCITATIS`
+  - referência editorial em vez de numeração do arquivo OCR: o sufixo `*.txt` é apenas identificação técnica
+- **Flags úteis**:
+  - seleção: `--volume-id`, `--all-volumes`, `--blob`, `--limit`
+  - execução: `--codex-bin`, `--model`, `--use-json`, `--replace`, `--skip-done`
+  - operação: `--output-dir`, `--log-dir`, `--keep-temp`, `--dry-run`, `--verbose`
+- **Avisos**:
+  - o prescan é apenas ponto de partida; o volume precisa ser conferido em OCR antes do fechamento
+  - números, colunas e referências internas devem ser mantidos literalmente quando houver dúvida
+  - a importação substitui por volume quando `--replace` é usado; sem isso, o fluxo preserva o que já existe
+  - a documentação canônica da classificação editorial continua em `docs/taxonomia_indices.md`
+
 ## Embeddings e clustering (`hdbscan_embedding.py`)
 - Entrada: tabela `keyword_embedding` (BLOB float32) em `data/patristica_keywords.db` (pode filtrar por `--model`).
 - Pipeline: UMAP (`--umap-components`, `--umap-neighbors`) → HDBSCAN (`--min-cluster-size`, `--min-samples`, `--cluster-selection-epsilon`).

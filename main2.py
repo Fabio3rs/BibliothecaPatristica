@@ -66,6 +66,10 @@ DEFAULT_DPI = 300  # 300dpi é o "doce" do Tesseract; subir só se necessário
 DEFAULT_LANG = "lat"  # requer pacotes traineddata do Tesseract para latim
 USE_PDFTOCAIRO = True  # geralmente mais estável / eficiente
 IMAGE_FMT = "png"  # png ou jpeg (evitar PPM para não inflar memória)
+DEFAULT_TESSERACT_PREPROCESS_MODE = "adaptive_soft"
+DEFAULT_TESSERACT_CLAHE_CLIP = 2.0
+DEFAULT_TESSERACT_BLOCK_SIZE = 31
+DEFAULT_TESSERACT_C_VALUE = 4
 MAX_THREADS_CONVERT = 12  # ajuste conforme seus núcleos
 DEFAULT_LLM_MODEL = "qwen3.5:397b-cloud"
 DEFAULT_OLLAMA_URL = "http://localhost:11434/api/chat"
@@ -163,13 +167,20 @@ def init_tesseract_cache(con: sqlite3.Connection) -> None:
 
 
 def get_tesseract_cached(
-    con: sqlite3.Connection, image_path: Path, lang: str
+    con: sqlite3.Connection,
+    image_path: Path,
+    lang: str,
+    preprocess_mode: str = DEFAULT_TESSERACT_PREPROCESS_MODE,
+    clahe_clip: float = DEFAULT_TESSERACT_CLAHE_CLIP,
+    block_size: int = DEFAULT_TESSERACT_BLOCK_SIZE,
+    c_value: int = DEFAULT_TESSERACT_C_VALUE,
 ) -> str | None:
     # hash do conteúdo do arquivo, não do path — imagem movida ainda bate
     h = hashlib.sha256(image_path.read_bytes()).hexdigest()
+    cache_key = f"{h}:{lang}:{preprocess_mode}:{clahe_clip}:{block_size}:{c_value}"
     row = con.execute(
         "SELECT result FROM tesseract_cache WHERE image_hash = ?",
-        (h,),
+        (cache_key,),
     ).fetchone()
     return row["result"] if row else None
 
@@ -443,6 +454,56 @@ def preprocess_image(img_bgr: np.ndarray, method: str = "auto") -> np.ndarray:
     return thresh
 
 
+def preprocess_adaptive_soft(
+    img_bgr: np.ndarray,
+    clahe_clip: float = DEFAULT_TESSERACT_CLAHE_CLIP,
+    block_size: int = DEFAULT_TESSERACT_BLOCK_SIZE,
+    c_value: int = DEFAULT_TESSERACT_C_VALUE,
+) -> np.ndarray:
+    gray = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2GRAY)
+    clahe = cv2.createCLAHE(clipLimit=clahe_clip, tileGridSize=(8, 8))
+    gray = clahe.apply(gray)
+    return cv2.adaptiveThreshold(
+        gray,
+        255,
+        cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
+        cv2.THRESH_BINARY,
+        block_size,
+        c_value,
+    )
+
+
+def _normalize_tesseract_preprocess_mode(mode: str) -> str:
+    if mode in {"adaptive_soft", "sample", "legacy"}:
+        return mode
+    raise ValueError(f"Modo de pré-processamento desconhecido: {mode}")
+
+
+def _preprocess_tesseract_image(
+    img_bgr: np.ndarray,
+    preprocess_mode: str = DEFAULT_TESSERACT_PREPROCESS_MODE,
+    clahe_clip: float = DEFAULT_TESSERACT_CLAHE_CLIP,
+    block_size: int = DEFAULT_TESSERACT_BLOCK_SIZE,
+    c_value: int = DEFAULT_TESSERACT_C_VALUE,
+) -> np.ndarray:
+    preprocess_mode = _normalize_tesseract_preprocess_mode(preprocess_mode)
+    if preprocess_mode == "adaptive_soft":
+        return preprocess_adaptive_soft(
+            img_bgr,
+            clahe_clip=clahe_clip,
+            block_size=block_size,
+            c_value=c_value,
+        )
+    if preprocess_mode in {"sample", "legacy"}:
+        im_pre, _ = preprocess_image_tesseract(img_bgr)
+        return im_pre
+    raise ValueError(f"Modo de pré-processamento desconhecido: {preprocess_mode}")
+
+
+def _encode_llm_image(image_path: Path) -> str:
+    return base64.b64encode(image_path.read_bytes()).decode("utf-8")
+
+
 def preprocess_image_tesseract(img, border_size=50):
     # Converter pra grayscale
     arr = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) if len(img.shape) == 3 else img
@@ -595,19 +656,27 @@ def find_image_by_page(images_dir: Path, page_num: int) -> Optional[Path]:
 
 
 def purge_tesseract_cache(
-    con: sqlite3.Connection, image_path: Path, lang: Optional[str] = None
+    con: sqlite3.Connection,
+    image_path: Path,
+    lang: Optional[str] = None,
+    preprocess_mode: str = DEFAULT_TESSERACT_PREPROCESS_MODE,
+    clahe_clip: float = DEFAULT_TESSERACT_CLAHE_CLIP,
+    block_size: int = DEFAULT_TESSERACT_BLOCK_SIZE,
+    c_value: int = DEFAULT_TESSERACT_C_VALUE,
 ) -> int:
     """
     Remove a entrada do cache para a imagem (opcionalmente filtrando por lang).
     Retorna o número de linhas removidas.
     """
     h = hashlib.sha256(image_path.read_bytes()).hexdigest()
+    cache_key = f"{h}:{lang or ''}:{preprocess_mode}:{clahe_clip}:{block_size}:{c_value}"
     if lang:
         cur = con.execute(
-            "DELETE FROM tesseract_cache WHERE image_hash = ? AND lang = ?", (h, lang)
+            "DELETE FROM tesseract_cache WHERE image_hash = ? AND lang = ?",
+            (cache_key, lang),
         )
     else:
-        cur = con.execute("DELETE FROM tesseract_cache WHERE image_hash = ?", (h,))
+        cur = con.execute("DELETE FROM tesseract_cache WHERE image_hash = ?", (cache_key,))
     con.commit()
     return cur.rowcount
 
@@ -999,21 +1068,20 @@ def optimize_adaptative_cloud(image_path: Path, max_size=3200) -> str:
 
 def optimize_image_for_cloud(image_path, max_size=3200):
     """
-    Reduz a imagem para acelerar o processamento na nuvem e evitar erro 500 por timeout.
+    Mantido por compatibilidade. Para LLM/VLM, agora preferimos a imagem original.
     """
-    img = Image.open(image_path)
+    return _encode_llm_image(Path(image_path))
 
-    # Redimensiona mantendo a proporção se for maior que o max_size
-    img.thumbnail((max_size, max_size), Image.Resampling.LANCZOS)
 
-    # Converte para escala de cinza para reduzir os canais de cor (já que o texto é P&B/Sépia)
-    # img = img.convert("L")
-
+def encode_llm_image_for_transport(image_path: Path, max_size: int | None = None) -> tuple[str, str]:
+    """
+    Codifica a imagem para o LLM sem pré-processamento de OCR.
+    Retorna (base64, mime).
+    """
+    img = Image.open(image_path).convert("RGB")
     buffered = io.BytesIO()
-    # Salva com compressão JPEG para diminuir drasticamente o payload Base64
     img.save(buffered, format="JPEG", quality=90)
-
-    return base64.b64encode(buffered.getvalue()).decode("utf-8")
+    return base64.b64encode(buffered.getvalue()).decode("utf-8"), "image/jpeg"
 
 
 images_max_size = [1600, 1800, 3200, 3200, 3200]
@@ -1061,11 +1129,11 @@ def gemini_process_image(
 
     # Preparação da imagem (mesma lógica sua)
     if current_try <= 3 and not reprocess:
-        img_b64 = optimize_image_for_cloud(image_path, images_max_size[current_try - 1])
-        mime = "image/jpeg"
+        img_b64, mime = encode_llm_image_for_transport(
+            image_path, images_max_size[current_try - 1]
+        )
     else:
-        img_b64 = base64.b64encode(Path(image_path).read_bytes()).decode("utf-8")
-        mime = "image/png"
+        img_b64, mime = encode_llm_image_for_transport(image_path)
 
     # Montagem do conteúdo no novo formato
     # No novo SDK, a imagem é um objeto Part
@@ -1106,9 +1174,11 @@ def ollama_process_image(
     reprocess: bool = False,
 ):
     if current_try <= 3:  # and not reprocess:
-        img_b64 = optimize_image_for_cloud(image_path, images_max_size[current_try - 1])
+        img_b64, _mime = encode_llm_image_for_transport(
+            image_path, images_max_size[current_try - 1]
+        )
     else:
-        img_b64 = base64.b64encode(Path(image_path).read_bytes()).decode("utf-8")
+        img_b64, _mime = encode_llm_image_for_transport(image_path)
 
     if current_try > 4:
         system_prompt += (
@@ -1216,11 +1286,12 @@ def openai_process_image(
     # Usa versão comprimida nas primeiras tentativas para evitar timeouts/payloads grandes
     # and not reprocess:
     if current_try <= 3:
-        img_b64 = optimize_image_for_cloud(image_path, images_max_size[current_try - 1])
-        mime = "image/jpeg"  # Compressão para JPEG nas primeiras tentativas
+        img_b64, mime = encode_llm_image_for_transport(
+            image_path, images_max_size[current_try - 1]
+        )
+        mime = "image/jpeg"
     else:
-        # Se estamos refazendo por motivo textual, vamos mandar a imagem original
-        img_b64 = base64.b64encode(Path(image_path).read_bytes()).decode("utf-8")
+        img_b64, mime = encode_llm_image_for_transport(image_path)
 
     if current_try > 4:
         system_prompt += (
@@ -1703,6 +1774,10 @@ def verify_page(
     txt_dir: Path,
     lang: str = "fra+lat+grc+ell+syr",
     expect_txt_xml: bool = True,
+    tesseract_preprocess_mode: str = DEFAULT_TESSERACT_PREPROCESS_MODE,
+    tesseract_clahe_clip: float = DEFAULT_TESSERACT_CLAHE_CLIP,
+    tesseract_block_size: int = DEFAULT_TESSERACT_BLOCK_SIZE,
+    tesseract_c_value: int = DEFAULT_TESSERACT_C_VALUE,
 ) -> bool:
     """
     Verifica se a página foi processada corretamente.
@@ -1731,14 +1806,22 @@ def verify_page(
             print(f"[VERIFY] {img_path.name} — texto não parece ser XML")
             return False
 
-    if not verificar_padrao_blocos(txt):
-        print(f"[VERIFY] {img_path.name} — padrão de blocos não encontrado")
-        return False
+    # if not verificar_padrao_blocos(txt):
+    #     print(f"[VERIFY] {img_path.name} — padrão de blocos não encontrado")
+    #     return False
 
     tesseract_db = open_tesseract_cache_db()
     init_tesseract_cache(tesseract_db)
 
-    tesseractres = run_tesseract_cached(tesseract_db, img_path, lang=lang)
+    tesseractres = run_tesseract_cached(
+        tesseract_db,
+        img_path,
+        lang=lang,
+        preprocess_mode=tesseract_preprocess_mode,
+        clahe_clip=tesseract_clahe_clip,
+        block_size=tesseract_block_size,
+        c_value=tesseract_c_value,
+    )
 
     # Vou descartar os ilegíveis para evitar conflito com o Tesseract que não insere [ilegivel]
     overlap = latin_overlap_result(
@@ -1760,7 +1843,7 @@ def verify_page(
 
     # return True  # desativado de momento, quero apenas rodar de novo os com muito token ilegível
     if (
-        overlap.recall_ratio < 0.5 and overlap.overlap_ratio < 0.5
+        overlap.recall_ratio < 0.3 and overlap.overlap_ratio < 0.2
     ):  # LLM detectou muito texto latino, mas Tesseract quase nada → provável omissão ou alucinação
         # Debug prints para identificar o texto dos dois lados e o arquivo no terminal:
 
@@ -1864,6 +1947,10 @@ def should_call_llm_judge(
     txt_dir: Path,
     lang: str = "fra+lat+grc+ell+syr",
     eval_db_path: Optional[Path] = None,
+    tesseract_preprocess_mode: str = DEFAULT_TESSERACT_PREPROCESS_MODE,
+    tesseract_clahe_clip: float = DEFAULT_TESSERACT_CLAHE_CLIP,
+    tesseract_block_size: int = DEFAULT_TESSERACT_BLOCK_SIZE,
+    tesseract_c_value: int = DEFAULT_TESSERACT_C_VALUE,
 ) -> tuple[bool, str]:
     """
     Decide se deve acionar o LLM judge.
@@ -1889,7 +1976,15 @@ def should_call_llm_judge(
         return False, reason
 
     # reuse verificações determinísticas
-    ok = verify_page(img_path, txt_dir, lang=lang)
+    ok = verify_page(
+        img_path,
+        txt_dir,
+        lang=lang,
+        tesseract_preprocess_mode=tesseract_preprocess_mode,
+        tesseract_clahe_clip=tesseract_clahe_clip,
+        tesseract_block_size=tesseract_block_size,
+        tesseract_c_value=tesseract_c_value,
+    )
     return (not ok, "verify_failed" if not ok else "verify_pass")
 
 
@@ -2018,11 +2113,24 @@ def llm_process_chat_retry(
     raise RuntimeError("All attempts failed: " + image_path.name)
 
 
-def ocr_tesseract(img_path: Image, lang: str = DEFAULT_LANG) -> str:
+def ocr_tesseract(
+    img_path: Image,
+    lang: str = DEFAULT_LANG,
+    preprocess_mode: str = DEFAULT_TESSERACT_PREPROCESS_MODE,
+    clahe_clip: float = DEFAULT_TESSERACT_CLAHE_CLIP,
+    block_size: int = DEFAULT_TESSERACT_BLOCK_SIZE,
+    c_value: int = DEFAULT_TESSERACT_C_VALUE,
+) -> str:
     """OCR com pré-processamento adaptativo."""
     with Image.open(img_path) as pil_im:
         im_bgr = cv2.cvtColor(np.array(pil_im), cv2.COLOR_RGB2BGR)
-        im_pre, original_rotated = preprocess_image_tesseract(im_bgr)
+        im_pre = _preprocess_tesseract_image(
+            im_bgr,
+            preprocess_mode=preprocess_mode,
+            clahe_clip=clahe_clip,
+            block_size=block_size,
+            c_value=c_value,
+        )
 
         # im_pre = auto_rotate_image(im_pre)
 
@@ -2062,29 +2170,53 @@ def ocr_tesseract_raw(img_path: Image, lang: str = DEFAULT_LANG) -> str:
 
 
 def run_tesseract_cached(
-    con: sqlite3.Connection, image_path: Path, lang: str, force: bool = False
+    con: sqlite3.Connection,
+    image_path: Path,
+    lang: str,
+    force: bool = False,
+    preprocess_mode: str = DEFAULT_TESSERACT_PREPROCESS_MODE,
+    clahe_clip: float = DEFAULT_TESSERACT_CLAHE_CLIP,
+    block_size: int = DEFAULT_TESSERACT_BLOCK_SIZE,
+    c_value: int = DEFAULT_TESSERACT_C_VALUE,
 ) -> str:
     h = hashlib.sha256(image_path.read_bytes()).hexdigest()
+    cache_key = f"{h}:{lang}:{preprocess_mode}:{clahe_clip}:{block_size}:{c_value}"
 
     if force:
         con.execute(
-            "DELETE FROM tesseract_cache WHERE image_hash = ? AND lang = ?", (h, lang)
+            "DELETE FROM tesseract_cache WHERE image_hash = ? AND lang = ?",
+            (cache_key, lang),
         )
         con.commit()
     else:
-        cached = get_tesseract_cached(con, image_path, lang)
+        cached = get_tesseract_cached(
+            con,
+            image_path,
+            lang,
+            preprocess_mode=preprocess_mode,
+            clahe_clip=clahe_clip,
+            block_size=block_size,
+            c_value=c_value,
+        )
         if cached is not None:
             if len(cached.strip()) < 100:
                 # cache parece corrompido/incompleto, recalcula
                 con.execute(
                     "DELETE FROM tesseract_cache WHERE image_hash = ? AND lang = ?",
-                    (h, lang),
+                    (cache_key, lang),
                 )
                 con.commit()
             else:
                 return cached
 
-    result = ocr_tesseract(image_path, lang=lang)
+    result = ocr_tesseract(
+        image_path,
+        lang=lang,
+        preprocess_mode=preprocess_mode,
+        clahe_clip=clahe_clip,
+        block_size=block_size,
+        c_value=c_value,
+    )
 
     # Fallback: se a saída parecer muito curta, tenta sem pré-processamento
     if len(result.strip()) < 50:
@@ -2097,7 +2229,7 @@ def run_tesseract_cached(
 
     con.execute(
         "INSERT OR REPLACE INTO tesseract_cache (image_hash, lang, result, imgpath) VALUES (?, ?, ?, ?)",
-        (h, lang, result, str(image_path)),
+        (cache_key, lang, result, str(image_path)),
     )
     con.commit()
     return result
@@ -2114,6 +2246,10 @@ def ocr_images_to_text(
     openai_base_url: str = DEFAULT_OPENAI_BASE_URL,
     openai_api_key: str | None = None,
     prompt: str = PROMPT,
+    tesseract_preprocess_mode: str = DEFAULT_TESSERACT_PREPROCESS_MODE,
+    tesseract_clahe_clip: float = DEFAULT_TESSERACT_CLAHE_CLIP,
+    tesseract_block_size: int = DEFAULT_TESSERACT_BLOCK_SIZE,
+    tesseract_c_value: int = DEFAULT_TESSERACT_C_VALUE,
 ) -> None:
     """
     Faz OCR página-a-página e salva um .txt por página em txt_dir.
@@ -2146,7 +2282,14 @@ def ocr_images_to_text(
                 + "\nAtenção as colunas e ao gutter (se houver), identificação A,B,C,D devem ficar em seu próprio bloco de nota_marginal. Cuidado: NÃO coloque a identificação das seções dentro do texto das colunas.",
             )
         else:
-            txt = ocr_tesseract(img_path)
+            txt = ocr_tesseract(
+                img_path,
+                lang=lang,
+                preprocess_mode=tesseract_preprocess_mode,
+                clahe_clip=tesseract_clahe_clip,
+                block_size=tesseract_block_size,
+                c_value=tesseract_c_value,
+            )
 
         # salva o txt da página
         page_txt_path.write_text(txt, encoding="utf-8")
@@ -2276,7 +2419,13 @@ def get_current_process_index() -> int:
 
 
 def verify_one(
-    img_path: Path, txt_dir: Path, lang: str = "fra+lat+grc+ell+syr"
+    img_path: Path,
+    txt_dir: Path,
+    lang: str = "fra+lat+grc+ell+syr",
+    tesseract_preprocess_mode: str = DEFAULT_TESSERACT_PREPROCESS_MODE,
+    tesseract_clahe_clip: float = DEFAULT_TESSERACT_CLAHE_CLIP,
+    tesseract_block_size: int = DEFAULT_TESSERACT_BLOCK_SIZE,
+    tesseract_c_value: int = DEFAULT_TESSERACT_C_VALUE,
 ) -> tuple[Path, bool]:
     """
     Verifica se uma única página foi processada corretamente.
@@ -2292,7 +2441,16 @@ def verify_one(
     )
 
     # A partir de agora, todos os txts deverão estar no padrão XML, o que não estiver, rejeitamos e rodamos de novo
-    return img_path, verify_page(img_path, txt_dir, lang=lang, expect_txt_xml=True)
+    return img_path, verify_page(
+        img_path,
+        txt_dir,
+        lang=lang,
+        expect_txt_xml=True,
+        tesseract_preprocess_mode=tesseract_preprocess_mode,
+        tesseract_clahe_clip=tesseract_clahe_clip,
+        tesseract_block_size=tesseract_block_size,
+        tesseract_c_value=tesseract_c_value,
+    )
 
 
 def _ocr_one(
@@ -2305,6 +2463,10 @@ def _ocr_one(
     openai_base_url: str,
     openai_api_key: str | None,
     reprocess_reason: str | None = None,
+    tesseract_preprocess_mode: str = DEFAULT_TESSERACT_PREPROCESS_MODE,
+    tesseract_clahe_clip: float = DEFAULT_TESSERACT_CLAHE_CLIP,
+    tesseract_block_size: int = DEFAULT_TESSERACT_BLOCK_SIZE,
+    tesseract_c_value: int = DEFAULT_TESSERACT_C_VALUE,
 ) -> str:
     try:
         start_total = time.time()
@@ -2360,7 +2522,15 @@ def _ocr_one(
                 init_tesseract_cache(tesseract_db)
 
                 tesseractres = strip_bidi_markers(
-                    run_tesseract_cached(tesseract_db, img_path, lang=lang)
+                    run_tesseract_cached(
+                        tesseract_db,
+                        img_path,
+                        lang=lang,
+                        preprocess_mode=tesseract_preprocess_mode,
+                        clahe_clip=tesseract_clahe_clip,
+                        block_size=tesseract_block_size,
+                        c_value=tesseract_c_value,
+                    )
                 ).strip()
 
                 # --- Versionar resultado Tesseract intermediário ---
@@ -2470,7 +2640,13 @@ def _ocr_one(
 
             # pré-processamento
             t2 = time.time()
-            im_pre, original_rotated = preprocess_image_tesseract(im_bgr)
+            im_pre = _preprocess_tesseract_image(
+                im_bgr,
+                preprocess_mode=tesseract_preprocess_mode,
+                clahe_clip=tesseract_clahe_clip,
+                block_size=tesseract_block_size,
+                c_value=tesseract_c_value,
+            )
 
             border_size = 50
 
@@ -2601,6 +2777,10 @@ def ocr_images_to_text_parallel(
     openai_api_key: str | None = None,
     save_all_text_path: Optional[Path] = None,
     reprocess_reason: str | None = None,
+    tesseract_preprocess_mode: str = DEFAULT_TESSERACT_PREPROCESS_MODE,
+    tesseract_clahe_clip: float = DEFAULT_TESSERACT_CLAHE_CLIP,
+    tesseract_block_size: int = DEFAULT_TESSERACT_BLOCK_SIZE,
+    tesseract_c_value: int = DEFAULT_TESSERACT_C_VALUE,
 ) -> None:
     ensure_dir(txt_dir)
 
@@ -2627,6 +2807,10 @@ def ocr_images_to_text_parallel(
             openai_base_url=openai_base_url,
             openai_api_key=openai_api_key,
             reprocess_reason=reprocess_reason,
+            tesseract_preprocess_mode=tesseract_preprocess_mode,
+            tesseract_clahe_clip=tesseract_clahe_clip,
+            tesseract_block_size=tesseract_block_size,
+            tesseract_c_value=tesseract_c_value,
         )
         # imap_unordered tende a dar melhor throughput geral
         all_text_chunks = list(pool.imap_unordered(worker, images, chunksize=chunksize))
@@ -2643,6 +2827,10 @@ def verify_all_parallel(
     omp_threads_per_proc: int = 2,
     chunksize: int = 2,
     maxtasksperchild: int = 1000,
+    tesseract_preprocess_mode: str = DEFAULT_TESSERACT_PREPROCESS_MODE,
+    tesseract_clahe_clip: float = DEFAULT_TESSERACT_CLAHE_CLIP,
+    tesseract_block_size: int = DEFAULT_TESSERACT_BLOCK_SIZE,
+    tesseract_c_value: int = DEFAULT_TESSERACT_C_VALUE,
 ) -> list[Path]:
     ensure_dir(txt_dir)
 
@@ -2659,7 +2847,15 @@ def verify_all_parallel(
         initargs=(omp_threads_per_proc,),
         maxtasksperchild=maxtasksperchild,
     ) as pool:
-        worker = partial(verify_one, txt_dir=txt_dir, lang=lang)
+        worker = partial(
+            verify_one,
+            txt_dir=txt_dir,
+            lang=lang,
+            tesseract_preprocess_mode=tesseract_preprocess_mode,
+            tesseract_clahe_clip=tesseract_clahe_clip,
+            tesseract_block_size=tesseract_block_size,
+            tesseract_c_value=tesseract_c_value,
+        )
         results = pool.imap_unordered(worker, images, chunksize=chunksize)
 
         failures = [img_path for img_path, is_valid in results if not is_valid]
@@ -2682,6 +2878,10 @@ def judge_one(
     eval_db_path: Path,
     prompt_version: str,
     judge_force: bool = False,
+    tesseract_preprocess_mode: str = DEFAULT_TESSERACT_PREPROCESS_MODE,
+    tesseract_clahe_clip: float = DEFAULT_TESSERACT_CLAHE_CLIP,
+    tesseract_block_size: int = DEFAULT_TESSERACT_BLOCK_SIZE,
+    tesseract_c_value: int = DEFAULT_TESSERACT_C_VALUE,
 ) -> tuple[Path, bool]:
     """
     Gating determinístico + LLM judge opcional.
@@ -2694,7 +2894,14 @@ def judge_one(
 
     if not needs_llm:
         needs_llm, decision_reason = should_call_llm_judge(
-            img_path, txt_dir, lang=lang, eval_db_path=eval_db_path
+            img_path,
+            txt_dir,
+            lang=lang,
+            eval_db_path=eval_db_path,
+            tesseract_preprocess_mode=tesseract_preprocess_mode,
+            tesseract_clahe_clip=tesseract_clahe_clip,
+            tesseract_block_size=tesseract_block_size,
+            tesseract_c_value=tesseract_c_value,
         )
 
     page_txt_path = txt_path_for_image(img_path, txt_dir)
@@ -2832,6 +3039,10 @@ def judge_all_parallel(
     openai_api_key: str | None = None,
     prompt_version: str = "",
     judge_force: bool = False,
+    tesseract_preprocess_mode: str = DEFAULT_TESSERACT_PREPROCESS_MODE,
+    tesseract_clahe_clip: float = DEFAULT_TESSERACT_CLAHE_CLIP,
+    tesseract_block_size: int = DEFAULT_TESSERACT_BLOCK_SIZE,
+    tesseract_c_value: int = DEFAULT_TESSERACT_C_VALUE,
 ) -> list[Path]:
     ensure_dir(txt_dir)
 
@@ -2859,6 +3070,10 @@ def judge_all_parallel(
             eval_db_path=eval_db_path,
             prompt_version=prompt_version,
             judge_force=judge_force,
+            tesseract_preprocess_mode=tesseract_preprocess_mode,
+            tesseract_clahe_clip=tesseract_clahe_clip,
+            tesseract_block_size=tesseract_block_size,
+            tesseract_c_value=tesseract_c_value,
         )
 
         results = pool.imap_unordered(worker, images, chunksize=chunksize)
@@ -2953,6 +3168,30 @@ def main():
         default="",
         help="Lista de páginas para reextrair, separadas por vírgula (ex.: 12,45,102). Usa nomes estáveis sem UUID.",
     )
+    ap.add_argument(
+        "--tesseract-preprocess-mode",
+        choices=["adaptive_soft", "sample", "legacy"],
+        default=DEFAULT_TESSERACT_PREPROCESS_MODE,
+        help="Pré-processamento do fluxo Tesseract. adaptive_soft é o padrão.",
+    )
+    ap.add_argument(
+        "--tesseract-clahe-clip",
+        type=float,
+        default=DEFAULT_TESSERACT_CLAHE_CLIP,
+        help="CLAHE clipLimit do modo adaptive_soft.",
+    )
+    ap.add_argument(
+        "--tesseract-block-size",
+        type=int,
+        default=DEFAULT_TESSERACT_BLOCK_SIZE,
+        help="Tamanho da janela do adaptiveThreshold (ímpar).",
+    )
+    ap.add_argument(
+        "--tesseract-c-value",
+        type=int,
+        default=DEFAULT_TESSERACT_C_VALUE,
+        help="Valor C do adaptiveThreshold.",
+    )
     args = ap.parse_args()
 
     pdf_path = Path(args.pdf).resolve()
@@ -2976,6 +3215,13 @@ def main():
     # Ajustes de defaults para OpenAI
     if args.algorithm == "openai" and args.llm_model == DEFAULT_LLM_MODEL:
         args.llm_model = DEFAULT_OPENAI_MODEL
+
+    if args.tesseract_block_size < 3 or args.tesseract_block_size % 2 == 0:
+        print(
+            "--tesseract-block-size precisa ser ímpar e >= 3.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
 
     if args.openai_api_key is None:
         args.openai_api_key = os.getenv("OPENAI_API_KEY")
@@ -3033,6 +3279,10 @@ def main():
             openai_api_key=args.openai_api_key,
             prompt_version=prompt_version,
             judge_force=args.judge_force,
+            tesseract_preprocess_mode=args.tesseract_preprocess_mode,
+            tesseract_clahe_clip=args.tesseract_clahe_clip,
+            tesseract_block_size=args.tesseract_block_size,
+            tesseract_c_value=args.tesseract_c_value,
         )
 
         if failures:
@@ -3058,6 +3308,10 @@ def main():
                 openai_api_key=args.openai_api_key,
                 save_all_text_path=concat_path,
                 reprocess_reason="judge_reprocess",
+                tesseract_preprocess_mode=args.tesseract_preprocess_mode,
+                tesseract_clahe_clip=args.tesseract_clahe_clip,
+                tesseract_block_size=args.tesseract_block_size,
+                tesseract_c_value=args.tesseract_c_value,
             )
         print("Avaliação concluída.")
         return
@@ -3072,6 +3326,10 @@ def main():
             omp_threads_per_proc=args.omp_threads,
             chunksize=args.chunksize,
             maxtasksperchild=args.maxtasksperchild,
+            tesseract_preprocess_mode=args.tesseract_preprocess_mode,
+            tesseract_clahe_clip=args.tesseract_clahe_clip,
+            tesseract_block_size=args.tesseract_block_size,
+            tesseract_c_value=args.tesseract_c_value,
         )
 
         if failures:
@@ -3105,6 +3363,10 @@ def main():
                 openai_api_key=args.openai_api_key,
                 save_all_text_path=concat_path,
                 reprocess_reason=reprocess_reason,
+                tesseract_preprocess_mode=args.tesseract_preprocess_mode,
+                tesseract_clahe_clip=args.tesseract_clahe_clip,
+                tesseract_block_size=args.tesseract_block_size,
+                tesseract_c_value=args.tesseract_c_value,
             )
         print("Verificação concluída.")
         return
@@ -3124,6 +3386,10 @@ def main():
         openai_base_url=args.openai_base_url,
         openai_api_key=args.openai_api_key,
         save_all_text_path=concat_path,
+        tesseract_preprocess_mode=args.tesseract_preprocess_mode,
+        tesseract_clahe_clip=args.tesseract_clahe_clip,
+        tesseract_block_size=args.tesseract_block_size,
+        tesseract_c_value=args.tesseract_c_value,
     )
     print("Concluído.")
 

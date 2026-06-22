@@ -12,6 +12,7 @@ import re
 import socket
 import sqlite3
 import time
+import uuid
 from typing import Optional
 import unicodedata
 import urllib.request
@@ -22,6 +23,13 @@ import urllib3.connection as _uc
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 import multiprocessing as mp
+import hashlib
+from dataclasses import dataclass
+
+try:
+    import pytesseract
+except ImportError:  # pragma: no cover - fail fast at runtime
+    pytesseract = None
 
 from sample import preprocess_image
 import cv2
@@ -38,7 +46,6 @@ DEFAULT_BASE_URL = "http://localhost:11434"
 DEFAULT_TOP_P = 0.9
 DEFAULT_TEMP = 0.1
 DEFAULT_BATCH_SIZE = 50
-
 SYSTEM_PROMPT = """You are a precise OCR post-processor specializing in classical Latin and Ancient Greek manuscripts and printed editions.
 Your task: transcribe EXACTLY what you see in the image — a single line of text from a historical printed book.
 
@@ -65,7 +72,10 @@ def connect_db(path: str) -> sqlite3.Connection:
     con = sqlite3.connect(path, timeout=30.0)
     con.row_factory = sqlite3.Row
     con.execute("PRAGMA busy_timeout = 30000")
-    con.execute("PRAGMA journal_mode = WAL")
+    journal_mode = con.execute("PRAGMA journal_mode = WAL").fetchone()[0]
+    if str(journal_mode).lower() != "wal":
+        con.close()
+        raise RuntimeError(f"SQLite não entrou em WAL mode: {journal_mode}")
     con.execute("PRAGMA foreign_keys = ON")
     return con
 
@@ -74,40 +84,25 @@ def claim_batch(db: str, batch_size: int) -> list[tuple]:
     """
     Reserva atomicamente até `batch_size` linhas pending → processing.
     Retorna lista de (id, line_image, tesseract_text).
-    Funciona com SQLite 3.35+ (RETURNING). Para versões anteriores,
-    usa fallback com SELECT + UPDATE separados dentro de BEGIN IMMEDIATE.
+    Prioriza as linhas mais problemáticas primeiro, usando `agreement_score ASC`
+    e depois `id ASC` para desempate.
+    Funciona com SQLite em transação explícita para manter a seleção atômica.
     """
     conn = connect_db(db)
     try:
-        rows = conn.execute(
-            """
-            UPDATE lines
-            SET status = 'processing', updated_at = datetime('now')
-            WHERE id IN (
-                SELECT id FROM lines WHERE status = 'pending' LIMIT ?
-            )
-            RETURNING id, image_path, bbox, line_image, tesseract_text
-        """,
-            (batch_size,),
-        ).fetchall()
-        conn.commit()
-        return [
-            (
-                r["id"],
-                r["image_path"],
-                r["bbox"],
-                r["line_image"],
-                r["tesseract_text"],
-            )
-            for r in rows
-        ]
-    except sqlite3.OperationalError:
-        # Fallback para SQLite < 3.35
         conn.execute("BEGIN IMMEDIATE")
         ids = [
             r[0]
             for r in conn.execute(
-                "SELECT id FROM lines WHERE status='pending' LIMIT ?", (batch_size,)
+                """
+                SELECT id
+                FROM lines
+                WHERE status = 'pending'
+                ORDER BY IFNULL(agreement_score, 0) ASC,
+                         id ASC
+                LIMIT ?
+                """,
+                (batch_size,),
             ).fetchall()
         ]
         if not ids:
@@ -115,11 +110,21 @@ def claim_batch(db: str, batch_size: int) -> list[tuple]:
             return []
         placeholders = ",".join("?" * len(ids))
         conn.execute(
-            f"UPDATE lines SET status='processing', updated_at=datetime('now') WHERE id IN ({placeholders})",
+            f"""
+            UPDATE lines
+            SET status = 'processing', updated_at = datetime('now')
+            WHERE id IN ({placeholders})
+            """,
             ids,
         )
         rows = conn.execute(
-            f"SELECT id, image_path, bbox, line_image, tesseract_text FROM lines WHERE id IN ({placeholders})",
+            f"""
+            SELECT id, image_path, bbox, line_image, tesseract_text
+            FROM lines
+            WHERE id IN ({placeholders})
+            ORDER BY IFNULL(agreement_score, 0) ASC,
+                     id ASC
+            """,
             ids,
         ).fetchall()
         conn.commit()
@@ -138,16 +143,90 @@ def claim_batch(db: str, batch_size: int) -> list[tuple]:
 
 
 def save_result(
-    db: str, line_id: int, qwen_text: str, score: float, status: str = "inferred"
+    db: str,
+    line_id: int,
+    consensus_text: str,
+    score: float,
+    score_llm: float | None = None,
+    status: str = "inferred",
+    preserve_rejected: bool = False,
+    text_column: str = "qwen_text",
 ) -> None:
     conn = connect_db(db)
+    if preserve_rejected:
+        current_status = conn.execute(
+            "SELECT status FROM lines WHERE id=?",
+            (line_id,),
+        ).fetchone()
+        if current_status and current_status["status"] == "rejected":
+            status = "rejected"
+    if text_column not in {"qwen_text", "tesseract_text", "reviewed_text"}:
+        raise ValueError(f"Coluna de texto inválida: {text_column}")
     conn.execute(
-        """
+        f"""
         UPDATE lines
-        SET qwen_text=?, agreement_score=?, status=?, updated_at=datetime('now')
+        SET {text_column}=?, agreement_score=?, score_llm=?, status=?, updated_at=datetime('now')
         WHERE id=?
     """,
-        (qwen_text, score, status, line_id),
+        (consensus_text, score, score_llm, status, line_id),
+    )
+    conn.commit()
+    conn.close()
+
+
+def reference_text_for_row(row: sqlite3.Row, reference_mode: str) -> str:
+    """
+    Resolve o texto de referência para comparação.
+
+    Observação:
+    - `auto` aqui significa `reviewed_text` se existir, senão `qwen_text`.
+    - O recálculo de `agreement_score` usa `tesseract_text` explicitamente no modo
+      `auto`, porque esse score representa Tesseract vs LLM.
+    """
+    reviewed = (row["reviewed_text"] or "").strip() if "reviewed_text" in row.keys() else ""
+    consensus = (row["qwen_text"] or "").strip() if "qwen_text" in row.keys() else ""
+    if reference_mode == "reviewed":
+        return reviewed
+    if reference_mode == "consensus":
+        return consensus
+    if reference_mode == "auto":
+        return reviewed or consensus
+    raise ValueError(f"reference_mode inválido: {reference_mode}")
+
+
+def ensure_versions_table(db: str) -> None:
+    conn = connect_db(db)
+    conn.executescript(
+        """
+        CREATE TABLE IF NOT EXISTS line_versions (
+            id              INTEGER PRIMARY KEY,
+            run_id          TEXT,
+            line_id         INTEGER NOT NULL REFERENCES lines(id) ON DELETE CASCADE,
+            provider        TEXT NOT NULL,
+            model           TEXT NOT NULL,
+            text_content    TEXT NOT NULL,
+            text_hash       TEXT NOT NULL,
+            source_score    REAL,
+            is_current      INTEGER NOT NULL DEFAULT 1,
+            meta_json       TEXT,
+            created_at      TEXT DEFAULT (datetime('now')),
+            updated_at      TEXT DEFAULT (datetime('now'))
+        );
+        CREATE UNIQUE INDEX IF NOT EXISTS uq_line_versions_dedup
+            ON line_versions(run_id, line_id, provider, model, text_hash);
+        CREATE INDEX IF NOT EXISTS idx_line_versions_line_id
+            ON line_versions(line_id, is_current, created_at DESC);
+        """
+    )
+    cols = [r[1] for r in conn.execute("PRAGMA table_info(line_versions)").fetchall()]
+    if "run_id" not in cols:
+        conn.execute("ALTER TABLE line_versions ADD COLUMN run_id TEXT")
+    conn.execute("DROP INDEX IF EXISTS uq_line_versions_dedup")
+    conn.execute(
+        """
+        CREATE UNIQUE INDEX IF NOT EXISTS uq_line_versions_dedup
+            ON line_versions(run_id, line_id, provider, model, text_hash)
+        """
     )
     conn.commit()
     conn.close()
@@ -164,6 +243,16 @@ def ensure_runs_column(db: str) -> None:
     conn.close()
 
 
+def ensure_score_llm_column(db: str) -> None:
+    """Garante a coluna `score_llm` na tabela `lines`."""
+    conn = connect_db(db)
+    cols = [r[1] for r in conn.execute("PRAGMA table_info(lines)").fetchall()]
+    if "score_llm" not in cols:
+        conn.execute("ALTER TABLE lines ADD COLUMN score_llm REAL")
+        conn.commit()
+    conn.close()
+
+
 def increment_runs(db: str, line_id: int) -> None:
     """Incrementa o contador `runs` para a linha especificada."""
     conn = connect_db(db)
@@ -173,6 +262,321 @@ def increment_runs(db: str, line_id: int) -> None:
     )
     conn.commit()
     conn.close()
+
+
+@dataclass(frozen=True)
+class BackendSpec:
+    provider: str
+    model: str
+    weight: float = 1.0
+
+
+def parse_backend_spec(spec: str) -> BackendSpec:
+    if ":" not in spec:
+        return BackendSpec("ollama", spec.strip())
+    provider, model = spec.split(":", 1)
+    provider = provider.strip().lower()
+    model = model.strip()
+    if provider not in {"ollama", "openai"}:
+        return BackendSpec("ollama", spec.strip())
+    weight = 1.0
+    if "@" in model:
+        model_part, weight_part = model.rsplit("@", 1)
+        try:
+            weight = float(weight_part)
+            model = model_part
+        except ValueError:
+            weight = 1.0
+    return BackendSpec(provider, model, weight)
+
+
+def normalize_for_consensus(text: str) -> str:
+    text = unicodedata.normalize("NFC", text or "")
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
+
+
+def consensus_from_versions(versions: list[dict], tesseract_text: str) -> tuple[str, float]:
+    if not versions:
+        return "", 0.0
+    votes: dict[str, list[dict]] = {}
+    for v in versions:
+        key = normalize_for_consensus(v["text"])
+        votes.setdefault(key, []).append(v)
+
+    ranked = sorted(
+        votes.items(),
+        key=lambda item: (
+            sum(vv.get("weight", 1.0) for vv in item[1]),
+            sum((vv.get("weight", 1.0) * agreement_score(tesseract_text or "", vv["text"])) for vv in item[1])
+            / max(sum(vv.get("weight", 1.0) for vv in item[1]), 1e-9),
+            max(vv.get("score", 0.0) for vv in item[1]),
+        ),
+        reverse=True,
+    )
+    best_text, best_votes = ranked[0]
+    best_weight = sum(vv.get("weight", 1.0) for vv in best_votes)
+    weighted_agreement = sum(
+        vv.get("weight", 1.0) * agreement_score(tesseract_text or "", vv["text"])
+        for vv in best_votes
+    ) / max(best_weight, 1e-9)
+    # O score deve refletir a concordância real com o Tesseract.
+    # `weight_share` é útil para desempate, mas não serve como score final
+    # porque vira 1.0 quando há apenas um backend.
+    return best_text, round(min(1.0, weighted_agreement), 4)
+
+
+def llm_best_score(versions: list[dict], tesseract_text: str) -> float:
+    if not versions:
+        return 0.0
+    return round(
+        max(agreement_score(tesseract_text or "", v["text"]) for v in versions),
+        4,
+    )
+
+
+def save_line_version(
+    db: str,
+    run_id: str,
+    line_id: int,
+    provider: str,
+    model: str,
+    text: str,
+    source_score: float | None = None,
+    meta_json: str | None = None,
+) -> None:
+    conn = connect_db(db)
+    text_hash = hashlib.sha256(text.encode("utf-8")).hexdigest()
+    exists = conn.execute(
+        """
+        SELECT 1 FROM line_versions
+        WHERE run_id = ? AND line_id = ? AND provider = ? AND model = ? AND text_hash = ?
+        LIMIT 1
+        """,
+        (run_id, line_id, provider, model, text_hash),
+    ).fetchone()
+    if exists:
+        conn.close()
+        return
+    conn.execute(
+        """
+        UPDATE line_versions
+        SET is_current = 0, updated_at = datetime('now')
+        WHERE line_id = ? AND provider = ? AND model = ? AND is_current = 1
+        """,
+        (line_id, provider, model),
+    )
+    conn.execute(
+        """
+        INSERT OR IGNORE INTO line_versions
+            (run_id, line_id, provider, model, text_content, text_hash, source_score, is_current, meta_json)
+        VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?)
+        """,
+        (run_id, line_id, provider, model, text, text_hash, source_score, meta_json),
+    )
+    conn.commit()
+    conn.close()
+
+
+def build_tesseract_config(tessdata_dir: str | None = None) -> str:
+    parts = ["--psm 13", "--oem 1"]
+    if tessdata_dir:
+        parts.append(f'--tessdata-dir "{tessdata_dir}"')
+    return " ".join(parts)
+
+
+def rerun_tesseract_lines(
+    db: str,
+    lang: str,
+    tessdata_dir: str | None = None,
+    limit: int | None = None,
+    delay: float = 0.0,
+    dry_run: bool = False,
+    reference_mode: str = "auto",
+    jobs: int = 1,
+    empty_only: bool = False,
+) -> None:
+    if pytesseract is None:
+        raise RuntimeError(
+            "pytesseract não está disponível no ambiente. Ative a .venv com a dependência instalada."
+        )
+
+    conn = connect_db(db)
+    query = """
+        SELECT id, line_image, tesseract_text, qwen_text, reviewed_text, agreement_score, status
+        FROM lines
+        WHERE IFNULL(agreement_score, 0) < 1.0
+            AND line_image IS NOT NULL
+            AND status NOT IN ('approved', 'corrected')
+            AND qwen_text IS NOT NULL AND qwen_text <> ''
+    """
+    if empty_only:
+        query += " AND TRIM(IFNULL(tesseract_text, '')) = ''"
+    query += """
+        ORDER BY IFNULL(agreement_score, 0) ASC, id ASC
+    """
+    params: tuple = ()
+    if limit is not None:
+        query += " LIMIT ?"
+        params = (limit,)
+
+    rows = conn.execute(query, params).fetchall()
+    conn.close()
+
+    if not rows:
+        print("[INFO] Nenhuma linha elegível para rerun Tesseract.")
+        return
+
+    config = build_tesseract_config(tessdata_dir)
+    print(
+        f"[INFO] Rerun Tesseract em {len(rows)} linha(s) com lang={lang} ref={reference_mode} config={config}"
+        + (" empty_only=True" if empty_only else "")
+    )
+    if dry_run:
+        sample_ids = ", ".join(str(row["id"]) for row in rows[:20])
+        print(f"[DRY-RUN] Nenhuma linha será alterada. IDs elegíveis: {sample_ids}")
+        if len(rows) > 20:
+            print(f"[DRY-RUN] ... e mais {len(rows) - 20} linha(s).")
+        return
+
+    job_args = [
+        {
+            "db": db,
+            "run_id": f"tess-{uuid.uuid4().hex}",
+            "line_id": row["id"],
+            "line_image": row["line_image"],
+            "tesseract_text": row["tesseract_text"],
+            "qwen_text": row["qwen_text"],
+            "reviewed_text": row["reviewed_text"],
+            "agreement_score": row["agreement_score"],
+            "status": row["status"],
+            "lang": lang,
+            "config": config,
+            "delay": delay,
+            "reference_mode": reference_mode,
+            "tessdata_dir": tessdata_dir,
+        }
+        for row in rows
+    ]
+
+    if jobs == 1:
+        for job in job_args:
+            _rerun_tesseract_job(job)
+        return
+
+    with mp.Pool(processes=jobs) as pool:
+        pool.map(_rerun_tesseract_job, job_args)
+
+
+def _rerun_tesseract_job(job: dict) -> None:
+    db = job["db"]
+    line_id = job["line_id"]
+    delay = job["delay"]
+    reference_mode = job["reference_mode"]
+    try:
+        img = Image.open(io.BytesIO(job["line_image"]))
+        text = pytesseract.image_to_string(img, lang=job["lang"], config=job["config"]).strip()
+        row_like = {
+            "qwen_text": job["qwen_text"],
+            "reviewed_text": job["reviewed_text"],
+        }
+        ref_text = reference_text_for_row(row_like, reference_mode)
+        score = agreement_score(ref_text, text) if ref_text else 0.0
+        meta = {
+            "rerun": "tesseract",
+            "lang": job["lang"],
+            "tessdata_dir": job["tessdata_dir"],
+            "reference_mode": reference_mode,
+            "reference_kind": "reviewed_text"
+            if reference_mode == "reviewed"
+            else ("qwen_text" if reference_mode == "consensus" else "reviewed_text_or_qwen_text"),
+            "reference_score": job["agreement_score"],
+        }
+        save_line_version(
+            db,
+            job["run_id"] or "rerun-tesseract",
+            line_id,
+            "tesseract",
+            job["lang"],
+            text,
+            source_score=score,
+            meta_json=json.dumps(meta, ensure_ascii=False),
+        )
+        save_result(
+            db,
+            line_id,
+            text,
+            score,
+            score,
+            "inferred",
+            preserve_rejected=True,
+            text_column="tesseract_text",
+        )
+        marker = "✓" if score >= 1.0 else ("△" if score >= 0.5 else "✗")
+        print(
+            f"[TESS] id={line_id} ref={reference_mode} score_before={job['agreement_score']:.2f} score={score:.2f} {marker} text={repr(text[:80])} ref_text={repr(ref_text[:80])}"
+        )
+    except Exception as e:
+        print(f"[TESS] ERRO id={line_id}: {e}")
+        save_result(db, line_id, "", 0.0, 0.0, "error", preserve_rejected=True)
+
+    if delay > 0:
+        time.sleep(delay)
+
+
+def recalc_agreement_scores(
+    db: str,
+    reference_mode: str = "auto",
+    limit: int | None = None,
+    dry_run: bool = False,
+) -> None:
+    conn = connect_db(db)
+    query = """
+        SELECT id, qwen_text, reviewed_text, tesseract_text, agreement_score
+        FROM lines
+        WHERE IFNULL(qwen_text, '') <> ''
+           OR IFNULL(reviewed_text, '') <> ''
+        ORDER BY id ASC
+    """
+    params: tuple = ()
+    if limit is not None:
+        query += " LIMIT ?"
+        params = (limit,)
+    rows = conn.execute(query, params).fetchall()
+
+    if not rows:
+        conn.close()
+        print("[INFO] Nenhuma linha elegível para recálculo de score.")
+        return
+
+    print(f"[INFO] Recálculo de score em {len(rows)} linha(s) ref={reference_mode}")
+    if dry_run:
+        sample_ids = ", ".join(str(row["id"]) for row in rows[:20])
+        print(f"[DRY-RUN] Nenhuma linha será alterada. IDs elegíveis: {sample_ids}")
+        if len(rows) > 20:
+            print(f"[DRY-RUN] ... e mais {len(rows) - 20} linha(s).")
+        conn.close()
+        return
+
+    updated = 0
+    for row in rows:
+        current_text = (row["qwen_text"] or "").strip()
+        if reference_mode == "auto":
+            ref_text = (row["tesseract_text"] or "").strip()
+        else:
+            ref_text = reference_text_for_row(row, reference_mode)
+        if not current_text or not ref_text:
+            continue
+        score = agreement_score(ref_text, current_text)
+        conn.execute(
+            "UPDATE lines SET agreement_score=?, updated_at=datetime('now') WHERE id=?",
+            (score, row["id"]),
+        )
+        updated += 1
+
+    conn.commit()
+    conn.close()
+    print(f"[DONE] agreement_score atualizado em {updated} linha(s)")
 
 
 # ---------------------------------------------------------------------------
@@ -359,7 +763,7 @@ def openai_process_image(
         {
             "role": "user",
             "content": [
-                {"type": "text", "text": USER_PROMPT},
+                {"type": "text", "text": user_prompt},
                 {"type": "image_url", "image_url": image_url},
             ],
         },
@@ -377,7 +781,7 @@ def openai_process_image(
         payload["temperature"] = temperature
         payload["top_p"] = top_p
     else:
-        payload["reasoning_effort"] = "high" if reprocess else "medium"
+        payload["reasoning_effort"] = "medium" if reprocess else "low"
         payload["service_tier"] = "flex"
         if reprocess:
             timeout = 1200
@@ -407,12 +811,15 @@ def worker(args: dict) -> None:
     Cada worker tem sua própria conexão — sem estado compartilhado.
     """
     db = args["db"]
-    model = args["model"]
     base_url = args["base_url"]
-    service = args["service"]
+    openai_base_url = args["openai_base_url"]
+    openai_api_key = args["openai_api_key"]
+    backends: list[BackendSpec] = args["backends"]
     delay = args["delay"]
     batch_size = args["batch_size"]
     worker_id = args["worker_id"]
+    run_id = args["run_id"]
+    should_append_extra_context = args.get("should_append_extra_context", False)
 
     prefix = f"[W{worker_id}]"
     processed = 0
@@ -460,7 +867,7 @@ def worker(args: dict) -> None:
 
                 image_path = Path(image_path) if image_path else None
 
-                if image_path:
+                if image_path and should_append_extra_context:
                     volume_path = image_path.parent.parent
                     txt_path = txt_path_for_image(image_path, volume_path / "text")
 
@@ -490,27 +897,59 @@ def worker(args: dict) -> None:
 
                 user_prompt = USER_PROMPT
 
-                if context:
+                if context and should_append_extra_context:
                     context = unicodedata.normalize("NFC", context)
                     user_prompt = f"PAGE CONTEXT: <context>\n{context}\n</context>\nTranscribe only the image:"
 
-                if service == "ollama":
-                    raw = call_ollama_vision(to_send, model, base_url, user_prompt=user_prompt)
-                else:
-                    raw = openai_process_image(
-                        image_bytes=to_send, model=model, base_url=base_url, user_prompt=user_prompt
+                versions: list[dict] = []
+                for backend in backends:
+                    backend_weight = backend.weight
+                    if backend.provider == "ollama":
+                        raw = call_ollama_vision(
+                            to_send, backend.model, base_url, user_prompt=user_prompt
+                        )
+                    elif backend.provider == "openai":
+                        raw = openai_process_image(
+                            image_bytes=to_send,
+                            model=backend.model,
+                            base_url=openai_base_url,
+                            api_key=openai_api_key,
+                            user_prompt=user_prompt,
+                        )
+                    else:
+                        raise ValueError(f"backend desconhecido: {backend.provider}")
+                    text = strip_think(raw)
+                    text = unicodedata.normalize("NFC", text)
+                    versions.append(
+                        {
+                            "provider": backend.provider,
+                            "model": backend.model,
+                            "text": text,
+                            "score": agreement_score(tesseract_text or "", text),
+                            "weight": backend_weight,
+                        }
                     )
-                qwen_text = strip_think(raw)
-                score = agreement_score(tesseract_text or "", qwen_text)
-                save_result(db, line_id, qwen_text, score, "inferred")
+                    save_line_version(
+                        db,
+                        run_id,
+                        line_id,
+                        backend.provider,
+                        backend.model,
+                        text,
+                        source_score=versions[-1]["score"],
+                        meta_json=json.dumps({"user_prompt": user_prompt[:200]}),
+                    )
+                qwen_text, score = consensus_from_versions(versions, tesseract_text or "")
+                score_llm = llm_best_score(versions, tesseract_text or "")
+                save_result(db, line_id, qwen_text, score, score_llm, "inferred")
                 marker = "✓" if score >= 0.8 else ("△" if score >= 0.5 else "✗")
                 print(
-                    f"{prefix} id={line_id} score={score:.2f} {marker}  "
-                    f"tess={repr((tesseract_text or '')[:64])}  qwen={repr(qwen_text[:64])}"
+                    f"{prefix} id={line_id} score={score:.2f} score_llm={score_llm:.2f} {marker}  "
+                    f"tess={repr((tesseract_text or '')[:64])}  consensus={repr(qwen_text[:64])}"
                 )
             except Exception as e:
                 print(f"{prefix} ERRO id={line_id}: {e}")
-                save_result(db, line_id, "", 0.0, "error")
+                save_result(db, line_id, "", 0.0, 0.0, "error")
 
             processed += 1
             if delay > 0:
@@ -527,16 +966,59 @@ def main() -> None:
     parser.add_argument("--db", default="ocr.db")
     parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument("--base-url", default=DEFAULT_BASE_URL)
+    parser.add_argument("--openai-base-url", default=DEFAULT_OPENAI_BASE_URL)
+    parser.add_argument("--openai-api-key", default=os.getenv("OPENAI_API_KEY"))
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--delay", type=float, default=0.0)
     parser.add_argument("--jobs", type=int, default=1, help="Workers paralelos")
+    parser.add_argument(
+        "--rerun-tesseract",
+        action="store_true",
+        help="Reprocessa apenas linhas com agreement_score < 1.0 usando Tesseract.",
+    )
+    parser.add_argument(
+        "--rerun-tesseract-empty",
+        action="store_true",
+        help="Reprocessa apenas linhas com tesseract_text vazio usando Tesseract.",
+    )
+    parser.add_argument(
+        "--recalc-agreement-score",
+        action="store_true",
+        help="Atualiza agreement_score no DB sem rerodar OCR.",
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Mostra o que seria reprocessado sem gravar mudanças.",
+    )
+    parser.add_argument(
+        "--tesseract-lang",
+        default="lat",
+        help="Idioma/traineddata para o rerun Tesseract (ex.: lat, grc, lat+grc).",
+    )
+    parser.add_argument(
+        "--tessdata-dir",
+        default=None,
+        help="Diretório opcional com os traineddata do Tesseract.",
+    )
+    parser.add_argument(
+        "--tesseract-reference",
+        default="auto",
+        choices=["auto", "reviewed", "consensus"],
+        help="Referência usada no score do rerun Tesseract: auto, reviewed ou consensus.",
+    )
     parser.add_argument(
         "--batch-size",
         type=int,
         default=DEFAULT_BATCH_SIZE,
         help="Linhas por lote por worker",
     )
-    parser.add_argument("--service", default="ollama", choices=["ollama", "openai"])
+    parser.add_argument(
+        "--backend",
+        action="append",
+        default=[],
+        help="Backend no formato provider:model[@peso]. Pode repetir.",
+    )
     parser.add_argument(
         "--reprocess-below",
         type=float,
@@ -546,24 +1028,80 @@ def main() -> None:
             "antes de iniciar os workers, para que sejam reprocessadas"
         ),
     )
+    parser.add_argument(
+        "--run-id",
+        default=None,
+        help="Identificador opcional da execução para registrar versões em line_versions.",
+    )
     args = parser.parse_args()
+    run_id = args.run_id or f"run-{uuid.uuid4().hex}"
 
     # Garantir que a coluna `runs` exista antes de tocar no banco
     ensure_runs_column(args.db)
+    ensure_score_llm_column(args.db)
+    ensure_versions_table(args.db)
+
+    if args.rerun_tesseract:
+        rerun_tesseract_lines(
+            args.db,
+            lang=args.tesseract_lang,
+            tessdata_dir=args.tessdata_dir,
+            limit=args.limit,
+            delay=args.delay,
+            dry_run=args.dry_run,
+            reference_mode=args.tesseract_reference,
+            jobs=args.jobs,
+        )
+        return
+
+    if args.rerun_tesseract_empty:
+        rerun_tesseract_lines(
+            args.db,
+            lang=args.tesseract_lang,
+            tessdata_dir=args.tessdata_dir,
+            limit=args.limit,
+            delay=args.delay,
+            dry_run=args.dry_run,
+            reference_mode=args.tesseract_reference,
+            jobs=args.jobs,
+            empty_only=True,
+        )
+        return
+
+    if args.recalc_agreement_score:
+        recalc_agreement_scores(
+            args.db,
+            reference_mode=args.tesseract_reference,
+            limit=args.limit,
+            dry_run=args.dry_run,
+        )
+        return
 
     conn = connect_db(args.db)
-    pending = conn.execute(
-        "SELECT COUNT(*) FROM lines WHERE status='pending'"
-    ).fetchone()[0]
+    recovered = conn.execute(
+        "UPDATE lines SET status='pending', updated_at=datetime('now') WHERE status='processing'"
+    ).rowcount
+    conn.commit()
+    pending = conn.execute("SELECT COUNT(*) FROM lines WHERE status='pending'").fetchone()[0]
     conn.close()
+    if recovered:
+        print(f"[INFO] {recovered} linhas recuperadas de processing para pending")
 
-    # Se for pedido reprocessar abaixo de um limiar, atualiza o banco
+    if pending > 0:
+        _run_worker_pass(
+            args=args,
+            run_id=run_id,
+            pass_label="pendentes",
+            limit=args.limit,
+        )
+    else:
+        print("[INFO] Nenhuma linha pendente na primeira passagem.")
+
     if args.reprocess_below is not None:
         if not (0.0 <= args.reprocess_below <= 1.0):
             print("[ERROR] --reprocess-below deve estar entre 0.0 e 1.0")
             return
         conn = connect_db(args.db)
-        # Conta quantas linhas qualificam
         to_requeue = conn.execute(
             "SELECT COUNT(*) FROM lines WHERE (status='inferred' OR status='error') AND IFNULL(agreement_score,0) < ?",
             (args.reprocess_below,),
@@ -578,41 +1116,13 @@ def main() -> None:
         print(
             f"[INFO] {to_requeue} linhas com agreement_score < {args.reprocess_below} marcadas como pending para reprocessamento"
         )
-
-        # Recalcula pendentes para informar o usuário
-        conn = connect_db(args.db)
-        pending = conn.execute(
-            "SELECT COUNT(*) FROM lines WHERE status='pending'"
-        ).fetchone()[0]
-        conn.close()
-
-    if pending == 0:
-        print("[INFO] Nenhuma linha pendente.")
-        return
-
-    # Aplica --limit: marca excedente como fora do escopo atual
-    # (simples: apenas os primeiros `limit` serão pegos pelos workers)
-    effective = min(pending, args.limit) if args.limit else pending
-    print(f"[INFO] {effective} linhas para processar com {args.jobs} worker(s)")
-
-    worker_args = [
-        {
-            "db": args.db,
-            "model": args.model,
-            "base_url": args.base_url,
-            "service": args.service,
-            "delay": args.delay,
-            "batch_size": args.batch_size,
-            "worker_id": i,
-        }
-        for i in range(args.jobs)
-    ]
-
-    if args.jobs == 1:
-        worker(worker_args[0])
-    else:
-        with mp.Pool(processes=args.jobs) as pool:
-            pool.map(worker, worker_args)
+        if to_requeue > 0:
+            _run_worker_pass(
+                args=args,
+                run_id=run_id,
+                pass_label="reprocesso",
+                limit=args.limit,
+            )
 
     conn = connect_db(args.db)
     done = conn.execute(
@@ -623,6 +1133,39 @@ def main() -> None:
     ]
     conn.close()
     print(f"\n[DONE] inferred={done}  errors={errors}")
+
+
+def _run_worker_pass(args: argparse.Namespace, run_id: str, pass_label: str, limit: int | None) -> None:
+    conn = connect_db(args.db)
+    pending = conn.execute("SELECT COUNT(*) FROM lines WHERE status='pending'").fetchone()[0]
+    conn.close()
+    if pending == 0:
+        print(f"[INFO] Nenhuma linha pendente para {pass_label}.")
+        return
+
+    effective = min(pending, limit) if limit else pending
+    print(f"[INFO] {effective} linhas para {pass_label} com {args.jobs} worker(s)")
+
+    worker_args = [
+        {
+            "db": args.db,
+            "base_url": args.base_url,
+            "openai_base_url": args.openai_base_url,
+            "openai_api_key": args.openai_api_key,
+            "backends": [parse_backend_spec(x) for x in (args.backend or [f"ollama:{args.model}"])],
+            "delay": args.delay,
+            "batch_size": args.batch_size,
+            "worker_id": i,
+            "run_id": run_id,
+        }
+        for i in range(args.jobs)
+    ]
+
+    if args.jobs == 1:
+        worker(worker_args[0])
+    else:
+        with mp.Pool(processes=args.jobs) as pool:
+            pool.map(worker, worker_args)
 
 
 if __name__ == "__main__":

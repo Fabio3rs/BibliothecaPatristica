@@ -33,6 +33,7 @@ __all__ = [
     "profile_keywords",
     "read_poribp",
     "render_publication_from_shards",
+    "reingest_line_images",
     "rerun_bad_evals",
     "resumo_embedding_utils",
     "tesseract_playground",
@@ -57,4 +58,3 @@ def __getattr__(name: str):
 
 def __dir__():
     return sorted(list(__all__) + list(globals().keys()))
-
