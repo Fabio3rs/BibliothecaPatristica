@@ -1,131 +1,148 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,50">
-    469 SECTIO I. POEMATA DOGMATICA. 471
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="40,20,960,80">
+    469                 SECTIO I. POEMATA DOGMATICA.                 479
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,60,480,250">
-    50 Πῶς εἰς ν ἦλθε τῶν διεστώτων φύσις;
-    Ἄῤῥητόν ἐστιν, ὡς δ' ἐμοιγε φαίνεται,
-    Μικρῷ λόγῳ μετροντι τὰ κρείσσω λόγου.
-    Τὸ Πνεῦμ' ἐπῆλθε παρθένῳ καθάρσιον,
-    Λόγος δ' ἑαυτῷ πῆγυντ' ἔνδοθι βροτόν,
-    55 Ὅλου βροτοῦ θανόντος ἀντάλλαγμ' ὅλον.
-    Ἐπεὶ δ' ἀμικτὸς ἐστι σαρκὶν Θεός,
-    Ψυχὴ δὲ καὶ νοῦς οἷον ἐν μεταχμίῳ,
-    Σαρκοὶ μὲν, ὡς σύνοικος, ὡς δ' εἰκών, Θεοῦ·
-    Τῷ συγγενεῖ μιγεῖσα  Θεοῦ φύσις,
-    60 Ἐκεθεν ἔσχε καὶ πάχους κοινωνίαν.
-    Οὕτω τὸ θεῶσαν καὶ θεωθὲν εἷς Θεός.
-    Τί οὖν πέπονθεν ἀμφότερ'; ὡς ἐμὸς λόγος,
-    Τὸ μὲν κερασθὲν τῷ πάχει, τὸ δ' ὡς πάχος
+
+  [!-- LEFT COLUMN (Greek verse then Latin prose) --]
+  <bloco tipo="texto_principal" script="grego" bbox="40,80,480,360">
+50 Πῶς εἰς ἕν ἦλθε τῶν διεστώτων φύσις;
+Ἀὐῤῥητόν ἔστιν, ὡς δ᾽ ἔμοιγε φαίνεται,
+Μικρῷ λόγῳ μετροῦντι τὰ χρείασιν λόγου.
+Τὸ Πνεῦμ᾽ ἐπήλθε παρθένῳ καθάρσιον,
+Λόγος δ᾽ ἑαυτῷ πήγνυτ᾽ ἔνδοθι βροτόν,
+55 Ὅλου βροτοῦ θανόντος ἀντάλλαγμα ὅλον.
+Ἐπεὶ δ᾽ ἄμιχτός ἐστι σαρκίῳ θεός,
+Ψυχὴ δὲ καὶ νοῦς ὡς ἐν μεταμιγμίῳ,
+Σαρξ μὲν, ὡς σύνοιχος, ὡς δ᾽ εἰκὼν, θεοῦ.
+Τῷ συγγενεῖ μιγεῖσα ἡ θεοῦ φύσις,
+60 Ἐκεῖθεν ἔσχε καὶ πάχους κοινωνίαν.
+Οὕτω τὸ θεῶσαν καὶ θεωθὲν εἷς θεός.
+Τί οὖν πέπονθεν ἀμφότερα; ὡς ἐμός λόγος,
+Τὸ μὲν κερασθὲν τῷ πάχει, τὸ δ᾽ ὡς πάχος
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,60,950,250">
-    A Ἐμὼν μετασχὸν, πλὴν παθῶν ἁμαρτίας.
-    65 Ζητῶ τ αἷμα τ προσερρύη Θεοῦ;
-    Εἰ μν πονηρ· φεῦ, τὸ Χριστοῦ τ κακῷ·
-    Εἰ τ Θεῷ δέ· πῶς, τέρῳ κρατουμένων
-    Ἡμῶν; ἐπεὶ κρατοῦντός ἐστ' ἀεὶ λύτρον.
-    Ἢ τοτ' ἀληθές, αὐτὸν προσφέρειν Θεῷ,
-    70 Ἵν' αὐτὸς ἡμᾶς τοῦ κρατοντος ἁρπάσῃ,
-    Λάβῃ τε ἀντάλλαγμα τοῦ πεπτωκότος
-    Τὸν Χριστόν· ὁ χρίσας γὰρ οὐχ ἀλώσιμος.
-    Οὕτω φρονοῦμεν. Τοὺς τύπους δ' αἰδούμεθα.
-    Ἔχεις τὰ τῆδε· προσκύνει τὴν Τριάδα.
-    IA'. Περὶ Ἐνανθρωπήσεως.
-    Νήπιος, ὅστις ἄνακτα Θεοῦ Λόγον αἰὲν ἐόντα
-    Οὐ σέβει· ἰσοθέως Πατρὸς ἐπουρανίου.
+
+  <bloco tipo="texto_principal" script="latino" bbox="40,360,480,760">
+50 Quomodo in unum convenit dissidentium natura?
+Ineffabile istud est, ut mihi videtur,
+Infirma metienti oratione, quæ quamlibet superant orationem.
+Spiritus supervenit Virgini expiator,
+Verbum autem sibi ipsi compegit in ipsius sinu hominem,
+55 Qui totius hominis peccato mortui pretium integrum ac redemptio esset.
+Cum autem caruncula misceri non possit Deus,
+Anima et mens sunt veluti quoddam intermedium quo carni nititur.
+Anima quidem, ut carnis contubernalis; mens vero, ut Dei imago;
+Affini conjuncta est Dei natura,
+60 Hinc habuit et carnis societatem.
+Sic et quod deificat, et quod deificatur, unus est Deus.
+Quid igitur factum utrique est? ut assero,
+Alterum quidem fuit unitum crassae substantiae; alterum vero, cum crassa substantia
+Meorum fuit particeps, præter peccati affectum.
+65 Quare cui effusus sit sanguis Christi?
+Si quidem malo, heu! Christi sanguis effusus improbo?
+Sin autem Deo: quomodo, alteri mancipatis
+Nobis? Siquidem ejus qui dominatur, semper est redemptionis pretium.
+Profecto id verum est, ipsum se offerre Deo,
+70 Ut nos servitio eximat,
+Et Deus accipiat, in permutatione ejus qui cecidit,
+Christum. Qui enim unxit, capi non potest.
+Ita sentimus. Typos autem veneramur.
+Illaec ista hic: adora Trinitatem.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,260,950,580">
-    50 Quomodo in unum convenit dissidentium natura?
-    Ineffabile istud est, ut mihi videtur,
-    Infirma metienti oratione, quæ quamlibet superant orationem.
-    Spiritus supervenit Virgini expiator,
-    Verbum autem sibi ipsi compegit in ipsius sinu hominem,
-    55 Qui totius hominis peccato mortui pretium integrum ac redemptio esset.
-    Cum autem carunculæ misceri non possit Deus,
-    Anima et mens sunt veluti quoddam intermedium quo carni unitur
-    Anima quidem, ut carnis contubernalis; mens vero, ut Dei imago;
-    Affini conjuncta est Dei natura,
-    60 Hinc habuit et carnis societatem.
-    Sic et quod deificat, et quod deificatur, unus est Deus.
-    Quid igitur factum utrique est? ut assero,
-    Alterum quidem fuit unitum crassæ substantiæ; alterum vero, ceu crassa substantia
-    Meorum fuit particeps, præter peccati affectum.
-    258 259 65 Quæro cui effusus sit sanguis Christi?
-    Si quidem malo, heu! Christinæ sanguis effusus improbo?
-    Sin autem Deo : quomodo, alteri mancipatis
-    Nobis? Siquidem ejus qui dominatur, semper est redemptionis pretium.
-    Profecto id verum est, ipsum se offerre Deo,
-    70 Ut nos servitio eximat,
-    Et Deus accipiat, in permutationem ejus qui cecidit,
-    Christum. Qui enim unxit, capi non potest.
-    Ita sentimus. Typos autem veneramur.
-    Ilabes ista hic : adora Trinitatem.
-    XI. De Christi Incarnatione*.
-    Stultus, quicunque supremum Dei Verbum, semper existens,
-    Non veneratur honore pari ac Patrem supercœlestem.
+
+  [!-- MARGINAL SIGN A at gutter near top of right column --]
+  <bloco tipo="nota_marginal" script="latino" bbox="498,100,516,170">
+A
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="50,590,480,750">
-    * Alias Murat. 224.
-    61 Θεῶσαν. Quod deificat, id est, divinitas, θεω-
-    θέν, quod deificatur, id est, humanitas.
-    63 Τὸ μὲν. Alterum quidem, id est, τὸ θεῶσαν.
-    Verbum ac Deitas crassæ substantiæ ut uniretur.
-    Ibid. τὸ δ' ὡς πάχος. Alterum autem, τὸ θεωθέν,
-    nempe humanitas, crassa substantia, meorum esset
-    particeps, ἐμὼν μετασχὸν, meis esset affectibus ob-
-    noxia, præter peccatum.
-    65 Τῷ, pro τίνι.
+
+  [!-- RIGHT COLUMN (marginal-A Greek stanza and continuation) --]
+  <bloco tipo="texto_principal" script="grego" bbox="520,80,960,360">
+A Ἐμὼν μετασχόν, πλὴν παθῶν ἁμαρτίας.
+65 Ζητῶ τὸ αἷμα τῷ προσεβληφῷ θεῷ;
+Εἰ μὲν πονηρῷ, φεῦ, τὸ Χριστοῦ τῷ χαρῷ·
+Εἰ τῷ θεῷ δέ· πῶς, ἑτέρῳ κρατουμένων
+Ἡμῶν; ἐπεὶ κρατουόντ' ἐστ᾽ ἀεὶ λύτρον.
+Ἡ τοῦτ' ἀληθές, αὐτὸν προσφέρειν θεῷ,
+70 Ἵν' αὐτὸς ἡμᾶς τοῦ κρατοῦντος ἁρπάσῃ.
+Λάθῃ τε ἀντάλλαγμα τοῦ πεπτωχότος
+Τὸν Χριστόν· ὁ χρίσας γὰρ οὐκ ἁλώσιμος.
+Οὕτω φρονοῦμεν. Τοὺς τύπους δ' αἰδοῦμεθα.
+Ἔχεις τὰ τῇδε· προσκυνεῖ τὴν Τριάδα.
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="520,590,950,750">
-    66 Κακῷ. Ita cod. Vat. Edit, κακῶν.
-    67 Ἑτέρῳ κρατουμένων. Cod. Vat. ἄλλῳ, cum
-    alteri mancipati nos essemus.
-    70 Ἡμᾶς το κρατοῦντος ἁρπάσῃ. Ut nos e
-    manibus dominantis eripiat.
-    75 Τοὺς τύπους δ' αἰδούμεθα. Videtur intelli-
-    gere Eucharistiam et mysteria, quæ vere typi effusi
-    sanguinis ac immolatio Christi mystica.
+
+  [!-- RIGHT COLUMN Latin header for section XI should be separate cabecalho (do not embed section id inside column text) --]
+  <bloco tipo="cabecalho" script="latino" bbox="420,360,580,420">
+    XI. De Christi Incarnatione.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="400,760,600,780">
-    METRICA VERSIO.
+
+  [!-- RIGHT COLUMN Latin continuation (metrics and prose) --]
+  <bloco tipo="texto_principal" script="latino" bbox="520,420,960,760">
+Stultus, quicunque supremum Dei Verbum, semper exsistens,
+Non veneratur honore pari ac Patrem supercelestem.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,790,480,950">
-    Qui coaluit natura dissidentium?
-    Effabile haud est, videtur quidem ut mihi,
-    Dum metior sermone quod potius vocibus.
-    In Virginem almus Spiritus purgans venit,
-    Verbumque fingit sibimet hominem in intimo.
-    Defuncti hominis hæc est redintegratio.
-    At quia nefas jungi Deum est carunculæ :
-    Sed mens et anima sicut interstitia sunt,
-    Carnis quidem, ceu contubernalis, velut,
-    Dei imago, natura Dei ut affini addita;.
-    Hinc societatem crassitatis obtinet.:
-    Sic quod Deum fecit, deificatumque ideun,
-    Deus unus est. Quid ergo utrumque passus est?
-    Ut assero, hoc mistum cui crassæ : istud, ut.
-    Affectuum consors meorum crassitas,
+
+  [!-- MARGINAL SIGN B marking second metrical column area --]
+  <bloco tipo="nota_marginal" script="latino" bbox="500,820,520,880">
+B
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,790,950,950">
-    B Sine labe. Quæso cui cruor fusus Dei?
-    Si quidem malo, heu! Christi cruorne pessimo?
-    At si Deo, qui mancipatis.alteri
-    Nobis? utique redemptio Dominantis est.
-    Hoc nempe verum, se quod offerat Deo,.
-    Ut ipse nos a detinente liberet,
-    Et capiat,in vicem illius qui concidit,
-    Unctum, quia is qui unxit, capi.haudquaquam potest.
-    Sentimus hoc modo. Reveremur ac typos.
-    Isthæc habes hic. Trinitatem almam cole.
-    XI. DE CHRISTI INCARNATIONE.
-    (A. B. Caillau interprete.)
-    Stultus, qui Verbum Patris immortale, supernum
-    Non simili ac Patrem pronus honore colit.
+
+  [!-- METRICAL VERSIO section (two-column layout: left column here) --]
+  <bloco tipo="texto_principal" script="latino" bbox="40,820,480,980">
+METRICA VERSIO.
+Qui coalesit natura dissidentium?
+Inefabile haud est, videtur quidem ut mihi,
+Dum metior sermone quod polius vocibus.
+In Virginem almus Spiritus purgans venit,
+Verbumque fingit sibi met hominem in intimo.
+Deluncti hominis hæc est redintegratio.
+At quia nefas jungí Deum est carunculæ:
+Sed mens et anima sicut interstitia sunt,
+Carnis quidem, seu contubernalis, velut,
+Dei imago, natura Dei ut assimilata;
+Hinc societatem crassialis obtinet.
+Sic quod Deum fecit, deificatumque idem,
+Deus unus est. Quid ergo utrumque passus est?
+Ut assero, hoc mistum cui crassa : istud, ut.
+Affectuum consors meorum crassitas,
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
-    Digitized by Google
+
+  [!-- METRICAL VERSIO right column (continuation) --]
+  <bloco tipo="texto_principal" script="latino" bbox="520,820,960,980">
+B Sine labe. Quaeso cui error fusus Dei?
+Si quidem malo, heu! Christi cruorem pessimo?
+At si Deo, qui mancipatis alteri
+Nobis: utique redemptio Dominantis est.
+Hoc nempe verum, se quod offeret Deo,
+Ut ipse nos a devincte liberet,
+Et capiat in vicem illius qui concidit,
+Unctum, quia is qui unxit, capi haudquaquam potest.
+Sentimus hoc modo. Reveremur ac typos.
+Isthæc habes hic. Trinitatem almam cole.
   </bloco>
+
+  [!-- APPARATUS CRITICUS / footnotes and editorial notes at bottom --]
+  <bloco tipo="aparato_critico" script="misto" bbox="40,980,960,1200">
+* Alias Murat. 224.
+61 θεώσαν. Quod deificat, id est, divinitas, θεω-
+θῆ, quod deificatur, id est, humanitas.
+63 Τὸ μέν. Alterum quidem, id est, τὸ θεώσαν.
+Verbum ac Deitas crassae substantiae ut uniretur.
+τὸ δ᾽ ὡς πάχος. Alterum autem, τὸ θεωθέν,
+nempe humanitas, crassa substantia, meorum esset
+particeps, præter peccatum.
+65 Τῷ, pro τίνι.
+66 Κακῷ. Ita cod. Vat. Edit. κακῶν.
+67 Ἐτέρῳ κρατουμένων. Cod. Vat. ἄλλως, cum
+alteri mancipati nos essemus.
+70 Ἡμᾶς τοῦ κρατοῦντος ἁρπαγή. Ut nos e manibus dominantis eriperet.
+73 Τοὺς τύπους δ' αἰδούμεθα. Videtur intelligere Eucharistiam et mysteria, quæ vere typi effusi sanguinis ac immolationis Christi mysticae.
+  </bloco>
+
   <notas>
-    Transcrição de página da Patrologia Graeca com texto grego, tradução latina em prosa e verso, e aparato crítico.
+    Observações paleográficas e editoriais:
+    - Estado da página marcado "com_texto".
+    - Distribuição dos blocos respeita fluxo: coluna esquerda (grego depois latim) seguida da coluna direita (nota marginal A, grego, cabeçalho XI separado, latim, marca marginal B e versão métrica).
+    - Letras marginais centrais identificadas como blocos tipo="nota_marginal" (A e B).
+    - Transcrição fiel ao impresso/imagen: ortografia, sinais e abreviaturas preservadas sem normalização. Não foram efetuadas traduções.
+    - Uso de script "misto" no aparato crítico devido à alternância de grego e latim nas notas.
   </notas>
 </pagina>

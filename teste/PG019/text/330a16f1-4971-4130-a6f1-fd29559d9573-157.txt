@@ -1,167 +1,131 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="50,20,950,50">
-    289 CHRONICORUM LIB. I. 290
+  <bloco tipo="cabecalho" script="latino" bbox="50,40,100,60">289</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="380,40,620,60">CHRONICORUM LIB. I.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="900,40,950,60">290</bloco>
+  
+  <!-- Coluna Esquerda (Grego) -->
+  <bloco tipo="texto_principal" script="grego" bbox="50,70,450,900">
+    <linha>ΡΠΕ' ΟΛΥΜΠΙΑΣ.</linha>
+    <linha>Γ'. ὑπ. Κορνηφικίου καὶ Πομπηίου.</linha>
+    <linha>Δ'. ὑπ. Ἀντωνίου καὶ Λίβωνος.</linha>
+    <linha>Ε'. ὑπ. Ὀκταβιανοῦ Αὐγούστου καὶ Κικέρωνος.</linha>
+    <linha>Ϛ'. ὑπ. Ὀκταβιανοῦ Αὐγούστου τὸ β' καὶ Κορβιλίου.</linha>
+    <linha>ΡΠϚ' ΟΛΥΜΠΙΑΣ.</linha>
+    <linha>Ζ'. ὑπ. κταβιανο Αὐγούστου τὸ γ' καὶ Κράσσου.</linha>
+    <linha>Η'. ὑπ. κταβιανο Αὐγούστου τὸ δ' καὶ Κράσσου τὸ β'.</linha>
+    <linha>Θ'. ὑπ. ενοβάρβου καὶ Σωσσίου.</linha>
+    <linha>Ι'. ὑπ. Ὀκταβιανοῦ Αὐγούστου τὸ ε' καὶ Ἀπουληΐου.</linha>
+    <linha>ΡΠΖ' ΟΛΥΜΠΙΑΣ.</linha>
+    <linha>ΙΑ'. ὑπ. Ὀκταβιανοῦ Αὐγούστου τὸ ϛ' κα Ἀγρίππα.</linha>
+    <linha>ΙΒ'. ὑπ. Ὀκταβιανοῦ Αὐγούστου τὸ ζ' καὶ Ἀγρίππα τὸ β'.</linha>
+    <linha>ΙΓ'. ὑπ. κταβιανο Αὐγούστου τὸ η' καὶ Ταύρου.</linha>
+    <linha>ΙΔ'. ὑπ. Ὀκταβιανοῦ Αὐγούστου τὸ θ' καὶ Σιλανοῦ.</linha>
+    <linha>ΡΠΗ' ΟΛΥΜΠΙΑΣ.</linha>
+    <linha>ΙΕ'. ὑπ. Ὀκταβιανοῦ Αὐγούστου τὸ ι' καὶ Φλάκκου.</linha>
+    <linha>ΙϚ'. ὑπ. κταβιανο Αὐγούστου τὸ ια' καὶ Πίσωνος.</linha>
+    <linha>ΙΖ'. ὑπ. κταβιανο Αὐγούστου τὸ ιβ' καὶ Ἀρουντίου.</linha>
+    <linha>ΙΗ'. ὑπ. Κάλου καὶ Τιβέριου.</linha>
+    <linha>ΡΠΘ' ΟΛΥΜΠΙΑΣ.</linha>
+    <linha>ΙΘ'. ὑπ. Λολλίου καὶ Λεπίδου.</linha>
+    <linha>Κ'. ὑπ. Ἀπουληΐου καὶ Νερβᾶ.</linha>
+    <linha>ΚΑ'. ὑπ. Σατουρνίνου καὶ Λουκρητίου.</linha>
+    <linha>ΚΒ'. ὑπ. Λεντούλου καὶ Λεντούλου.</linha>
+    <linha>ΡΠΙ' ΟΛΥΜΠΙΑΣ.</linha>
+    <linha>ΚΓ'. ὑπ. Λεντούλου τὸ β' καὶ Κορνηλίου.</linha>
+    <linha>ΚΔ'. ὑπ. Φορντίου καὶ Σιλανοῦ.</linha>
+    <linha>ΚΕ'. ὑπ. Δομιτίου καὶ Ἀενοβάρβου.</linha>
+    <linha>ΚϚ'. ὑπ. Λίβωνος καὶ Πίσωνος.</linha>
+    <linha>ΡΠΙΑ' ΟΛΥΜΠΙΑΣ.</linha>
+    <linha>ΚΖ'. ὑπ. Κράσσου καὶ Λεντούλου.</linha>
+    <linha>ΚΗ'. ὑπ. Νέρωνος καὶ Κλάρου.</linha>
+    <linha>ΚΘ'. ὑπ. Μεσσαλᾶ καὶ Κυρινίου.</linha>
+    <linha>Λ'. ὑπ. Ῥουβελλίου καὶ Σατορνίνου.</linha>
+    <linha>ΡΠΙΒ' ΟΛΥΜΠΙΑΣ.</linha>
+    <linha>ΛΑ'. ὑπ. Μαξίμου καὶ Τουβέρωνος.</linha>
+    <linha>ΛΒ'. ὑπ. Ἀφρικανοῦ καὶ Μαξίμου τὸ β'.</linha>
+    <linha>ΛΓ'. ὑπ. Δρούσου καὶ Κρισπίνου.</linha>
+    <linha>ΛΔ'. ὑπ. Κενσωρίνου καὶ Γάλλου.</linha>
+    <linha>ΡΠΙΓ' ΟΛΥΜΠΙΑΣ.</linha>
+    <linha>ΛΕ'. ὑπ. Νέρωνος τὸ β' καὶ Πίσωνος τὸ β'.</linha>
+    <linha>ΛϚ'. ὑπ. Βάλβου καὶ Βετέρου.</linha>
+    <linha>ΛΖ'. ὑπ. κταβιανο Αὐγ. τὸ ιγ' καὶ Σύλλα.</linha>
+    <linha>ΛΗ'. ὑπ. Σαβίνου καὶ Ῥουφίνου.</linha>
+    <linha>ΡΠΙΔ' ΟΛΥΜΠΙΑΣ.</linha>
+    <linha>ΛΘ'. ὑπ. Ὀκταβιανοῦ Αὐγ. τὸ ιδ' καὶ Σιλανοῦ.</linha>
+    <linha>Μ'. ὑπ. Λεντούλου Πίσωνος.</linha>
+    <linha>ΜΑ'. ὑπ. Πουβλίου Καίσαρος καὶ Παύλου.</linha>
+    <linha>ΜΒ'. ὑπ. Οὐινδικίου καὶ Οὐάρου.</linha>
+    <linha>ΡΠΙΕ' ΟΛΥΜΠΙΑΣ.</linha>
+    <linha>ΜΓ'. ὑπ. Λαμία καὶ Σερβηλίου.</linha>
+    <linha>ΜΔ'. ὑπ. Μάγνου καὶ Βαλερίου.</linha>
+    <linha>ΜΕ'. ὑπ. Λεπίδου καὶ Πλάγκου.</linha>
+    <linha>ΜϚ'. ὑπ. Τιβέριου Καίσαρος καὶ Καπήτωνος.</linha>
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,60,480,140">
-    ΡΠΕ' ΟΛΥΜΠΙΑΣ.
-    Γ'. ὑπ. Κορνηφικίου καὶ Πομπήϊου.
-    Δ'. ὑπ. ντωνίου καὶ Λίβωνος.
-    Ε'. ὑπ. Ὀκταβιανοῦ Αὐγούστου καὶ Κικέρωνος.
-    Ϛ'. ὑπ. Ὀκταβιανοῦ Αὐγούστου τὸ β' καὶ Κορβιλίου.
+
+  <!-- Notas Marginais (Gutter) -->
+  <bloco tipo="nota_marginal" script="latino" bbox="470,70,490,90">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,330,490,350">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,530,490,550">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,730,490,750">D</bloco>
+
+  <!-- Coluna Direita (Latim) -->
+  <bloco tipo="texto_principal" script="latino" bbox="510,70,950,900">
+    <linha>CLXXXV OLYMPIAS.</linha>
+    <linha>III. Cornificio et Pompeio coss.</linha>
+    <linha>IV. Antonino et Libone coss.</linha>
+    <linha>V. Octaviano Augusto et Cicerone coss.</linha>
+    <linha>VI. Octaviano Augusto II et Corvilio coss.</linha>
+    <linha>CLXXXVI OLYMPIAS.</linha>
+    <linha>VII. Octaviano Augusto III et Crasso coss.</linha>
+    <linha>VIII. Octaviano Augusto IV et Crasso II coss.</linha>
+    <linha>IX. Ænobarbo et Sosio coss.</linha>
+    <linha>X. Octaviano Augusto V et Apuleio coss.</linha>
+    <linha>CLXXXVII OLYMPIAS.</linha>
+    <linha>XI. Octaviano Augusto VI et Agrippa coss.</linha>
+    <linha>XII. Octaviano Augusto VII et Agrippa II coss.</linha>
+    <linha>XIII. Octaviano Augusto VIII et Tauro coss.</linha>
+    <linha>XIV. Octaviano Augusto IX et Silano coss.</linha>
+    <linha>CLXXXVIII OLYMPIAS.</linha>
+    <linha>XV. Octaviano Augusto X et Flacco coss.</linha>
+    <linha>XVI. Octaviano Augusto XI et Pisone coss.</linha>
+    <linha>XVII. Octaviano Augusto XII et Aruntio coss.</linha>
+    <linha>XVIII. Celso et Tiberio coss.</linha>
+    <linha>CLXXXIX OLYMPIAS.</linha>
+    <linha>XIX. Lollie et Lepido coss.</linha>
+    <linha>XX. Apuleio et Nerva coss.</linha>
+    <linha>XXI. Saturnilo et Lucretio coss.</linha>
+    <linha>XXII. Lentulo et Lentulo coss.</linha>
+    <linha>CXC OLYMPIAS.</linha>
+    <linha>XXIII. Lentulo II et Cornelio coss.</linha>
+    <linha>XXIV. Fornicio et Silano coss.</linha>
+    <linha>XXV. Domitio et Ænobarbo coss.</linha>
+    <linha>XXVI. Libone et Pisone coss.</linha>
+    <linha>CXCI OLYMPIAS.</linha>
+    <linha>XXVII. Crasso et Lentulo coss.</linha>
+    <linha>XXVIII. Nerone et Claro coss.</linha>
+    <linha>XXIX. Messala et Cyrinio coss.</linha>
+    <linha>XXX. Rubellio et Saturnino coss.</linha>
+    <linha>CXCII OLYMPIAS.</linha>
+    <linha>XXXI. Maximo et Tuberone coss.</linha>
+    <linha>XXXII. Africano et Maximo II coss.</linha>
+    <linha>XXXIII. Druso et Crispino coss.</linha>
+    <linha>XXXIV. Censorino et Gallo coss.</linha>
+    <linha>CXCIII OLYMPIAS.</linha>
+    <linha>XXXV. Nerone II et Pisone II coss.</linha>
+    <linha>XXXVI. Balbo et Vetere coss.</linha>
+    <linha>XXXVII. Octaviano Aug. XIII et Sylla coss.</linha>
+    <linha>XXXVIII. Sabino et Rufino coss.</linha>
+    <linha>CXCIV OLYMPIAS.</linha>
+    <linha>XXXIX. Octaviano Aug. XIV et Silano coss.</linha>
+    <linha>XL. Lentulo et Pisone coss.</linha>
+    <linha>XLI. Publio Cæsare et Paulo coss.</linha>
+    <linha>XLII. Vindicio et Vario coss.</linha>
+    <linha>CXCV OLYMPIAS.</linha>
+    <linha>XLIII. Lamia et Servilio coss.</linha>
+    <linha>XLIV. Magno et Valerio coss.</linha>
+    <linha>XLV. Lepido et Planeo coss.</linha>
+    <linha>XLVI. Tiberio Cæsare et Capitone coss.</linha>
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,60,950,140">
-    A CLXXXV OLYMPIAS.
-    III. Cornificio et Pompeio coss.
-    IV. Antonino et Libone coss.
-    V. Octaviano Augusto et Cicerone coss.
-    VI. Octaviano Augusto II et Corvilio coss.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,145,480,245">
-    ΡΠϚ' ΟΛΥΜΠΙΑΣ.
-    Ζ'. ὑπ. Ὀκταβιανοῦ Αὐγούστου τὸ γ' καὶ Κράσσου.
-    Η'. ὑπ. Ὀκταβιανοῦ Αὐγούστου τὸ δ' καὶ Κράσσου τὸ β'.
-    Θ'. ὑπ. Ἀενοβάρβου καὶ Σωσσίου.
-    Ι'. ὑπ. Ὀκταβιανοῦ Αὐγούστου τὸ ε' καὶ Ἀπουληΐου.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,145,950,225">
-    CLXXXVI OLYMPIAS.
-    VII. Octaviano Augusto III et Crasso coss.
-    VIII. Octaviano Augusto IV et Crasso II coss.
-    IX. Aenobarbo et Sosio coss.
-    X. Octaviano Augusto V et Apuleio coss.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,250,480,330">
-    ΡΠΖ' ΟΛΥΜΠΙΑΣ.
-    ΙΑ'. ὑπ. Ὀκταβιανοῦ Αὐγούστου τὸ ς' κα Ἀγρίππα.
-    ΙΒ'. ὑπ. Ὀκταβιανοῦ Αὐγούστου τὸ ζ' καὶ Ἀγρίππα τὸ β'.
-    ΙΓ'. ὑπ. κταβιανο Αὐγούστου τὸ η' καὶ Ταύρου.
-    ΙΔ'. ὑπ. Ὀκταβιανοῦ Αὐγούστου τὸ θ' καὶ Σιλανοῦ.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,230,950,320">
-    CLXXXVII OLYMPIAS.
-    XI. Octaviano Augusto VI et Agrippa coss.
-    XII. Octaviano Augusto VII et Agrippa II coss.
-    B XIII. Octaviano Augusto VIII et Tauro coss.
-    XIV. Octaviano Augusto IX et Silano coss.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,335,480,415">
-    ΡΠΗ' ΟΛΥΜΠΙΑΣ.
-    ΙΕ'. ὑπ. Ὀκταβιανοῦ Αὐγούστου τὸ ι' καὶ Φλάκκου.
-    ΙϚ'. ὑπ. κταβιανο Αὐγούστου τὸ ια' καὶ Πίσωνος.
-    ΙΖ'. ὑπ. Ὀκταβιανοῦ Αὐγούστου τὸ ιβ' καὶ Ἀρουντίου.
-    ΙΗ'. ὑπ. Κέλσου καὶ Τιβερίου.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,325,950,410">
-    CLXXXVIII OLYMPIAS.
-    XV. Octaviano Augusto X et Flacco coss.
-    XVI. Octaviano Augusto XI et Pisone coss.
-    XVII. Octaviano Augusto XII et Aruntio coss.
-    XVIII. Celso et Tiberio coss.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,420,480,500">
-    ΡΠΘ' ΟΛΥΜΠΙΑΣ.
-    ΙΘ'. ὑπ. Λολλίου καὶ Λεπίδου.
-    Κ'. ὑπ. Ἀπουληΐου καὶ Νερβᾶ.
-    ΚΑ'. ὑπ. Σατουρνίνου καὶ Λουκρητίου.
-    ΚΒ'. ὑπ. Λεντούλου καὶ Λεντούλου.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,415,950,490">
-    CLXXXIX OLYMPIAS.
-    XIX. Lollie et Lepido coss.
-    XX. Apuleio et Nerva coss.
-    XXI. Saturnilo et Lucretio coss.
-    XXII. Lentulo et Lentulo coss.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,505,480,580">
-    ΡΡΙ' ΟΛΥΜΠΙΑΣ.
-    ΚΓ'. ὑπ. Λεντούλου τὸ β' καὶ Κορνηλίου.
-    ΚΔ'. ὑπ. Φορντίου καὶ Σιλανοῦ.
-    ΚΕ'. ὑπ. Δομιτίου καὶ Ἀενοβάρβου.
-    ΚϚ'. ὑπ. Λίβωνος καὶ Πίσωνος.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,495,950,575">
-    CXC OLYMPIAS.
-    C XXIII. Lentulo II et Cornelio coss.
-    XXIV. Fornicio et Silano coss.
-    XXV. Domitio et Aenobarbo coss.
-    XXVI. Libone et Pisone coss.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,585,480,665">
-    ΡΡΙΑ' ΟΛΥΜΠΙΑΣ.
-    ΚΖ'. ὑπ. Κράσσου καὶ Λεντούλου.
-    ΚΗ'. ὑπ. Νέρωνος καὶ Κλάρου.
-    ΚΘ'. ὑπ. Μεσσᾶλα καὶ Κυρινίου.
-    Λ'. ὑπ. Ρουβελλίου καὶ Σατορνίνου.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,580,950,655">
-    CXCI OLYMPIAS.
-    XXVII. Crasso et Lentulo coss.
-    XXVIII. Nerone et Claro coss.
-    XXIX. Messala et Cyrinio coss.
-    XXX. Rubellio et Saturnino coss.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,670,480,750">
-    ΡΡΙΒ' ΟΛΥΜΠΙΑΣ.
-    ΛΑ'. ὑπ. Μαξίμου καὶ Τουβέρωνος.
-    ΛΒ'. ὑπ. Ἀφρικανοῦ καὶ Μαξίμου τὸ β'.
-    ΛΓ'. ὑπ. Δρούσου καὶ Κρισπίνου.
-    ΛΔ'. ὑπ. Κενσωρίνου καὶ Γάλλου.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,660,950,735">
-    CXCII OLYMPIAS.
-    XXXI. Maximo et Tuberone coss.
-    XXXII. Africano et Maximo II coss.
-    XXXIII. Druso et Crispino coss.
-    XXXIV. Censorino et Gallo coss.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,755,480,835">
-    ΡΡΙΓ' ΟΛΥΜΠΙΑΣ.
-    ΛΕ'. ὑπ. Νέρωνος τὸ β' καὶ Πίσωνος τὸ β'.
-    ΛϚ'. ὑπ. Βάλβου καὶ Βετέρου.
-    ΛΖ'. ὑπ. Ὀκταβιανοῦ Αὐγ. τὸ ιγ' καὶ Σύλλα.
-    ΛΗ'. ὑπ. Σαβίνου καὶ Ρουφίνου.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,740,950,820">
-    CXCIII OLYMPIAS.
-    D XXXV. Nerone II et Pisone II coss.
-    XXXVI. Balbo et Vetere coss.
-    XXXVII. Octaviano Aug. XIII et Sylla coss.
-    XXXVIII. Sabino et Rufino coss.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,840,480,920">
-    ΡΡΙΔ' ΟΛΥΜΠΙΑΣ.
-    ΛΘ'. ὑπ. κταβιανο Αὐγ. τὸ ιη' καὶ Σιλανοῦ.
-    Μ'. ὑπ. Λεντούλου Πίσωνος.
-    ΜΑ'. ὑπ. Πουβλίου Καίσαρος καὶ Παύλου.
-    ΜΒ'. ὑπ. Οὐινδικίου καὶ Οὐάρου.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,825,950,900">
-    CXCIV OLYMPIAS.
-    XXXIX. Octaviano Aug. XIV et Silano coss.
-    XL. Lentulo et Pisone coss.
-    XLI. Publio Cæsare et Paulo coss.
-    XLII. Vindicio et Vario coss.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,925,480,980">
-    ΡΡΙΕ' ΟΛΥΜΠΙΑΣ.
-    ΜΓ'. ὑπ. Λαμίου καὶ Σερβηλίου.
-    ΜΔ'. ὑπ. Μάγνου καὶ Βαλερίου.
-    ΜΕ'. ὑπ. Λεπίδου καὶ Πλάγκου.
-    ΜϚ'. ὑπ. Τιβερίου Καίσαρος καὶ Καπίτωνος.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,905,950,980">
-    CXCV OLYMPIAS.
-    XLIII. Lamia et Servilio coss.
-    XLIV. Magno et Valerio coss.
-    XLV. Lepido et Planco coss.
-    XLVI. Tiberio Cæsare et Capitone coss.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="550,970,800,995">
-    Digitized by Google
-  </bloco>
-  <notas>
-    Transcrição de lista consular bilingue (Grego/Latim).
-    Marginalia latina A, B, C, D incluídas nos blocos de texto correspondentes.
-    Ortografia fiel ao original (ex: "Lollie", "Saturnilo" no latim; "Κορνηφικίου" no grego).
-  </notas>
+
+  <bloco tipo="rodape" script="latino" bbox="400,950,600,980">Digitized by Google</bloco>
 </pagina>

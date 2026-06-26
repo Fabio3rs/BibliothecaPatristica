@@ -1,20 +1,21 @@
 <pagina estado="com_texto">
-  <bloco tipo="outro" script="desconhecido" bbox="40,40,960,420">
-    [ilustração: duas vinhetas lado a lado com figuras; contém pequenas legendas/letras junto às figuras que fazem parte da composição gráfica e não são transcritas separadamente]
+  <bloco tipo="outro" script="desconhecido" bbox="20,30,490,420">
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,480,900,660">
-    Leonis, romanorum
-    imperatoris Augusti, ...
+  <bloco tipo="outro" script="desconhecido" bbox="510,30,980,420">
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="180,700,820,820">
-    Leo, Jacques-Paul Migne
+  <bloco tipo="texto_principal" script="latino" bbox="50,470,950,700">
+Leonis, romanorum
+imperatoris Augusti, ...
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="760,940,980,990">
-    Digitized by Google
+  <bloco tipo="rodape" script="latino" bbox="150,730,850,880">
+Leo, Jacques-Paul Migne
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="760,920,980,980">
+Digitized by Google
   </bloco>
   <notas>
-    Transcrição literal preservada. As coordenadas BBOX são estimativas proporcionais (escala 0-1000).
-    A ilustração no topo contém pequenas letras/legendas próximas às figuras (rótulos internos da imagem); essas foram tratadas como parte da ilustração e não como blocos de texto separados.
-    Não foram identificadas marcações marginais tipo A, B, C ou D no gutter central que precisem ser transcritas como nota_marginal.
+- Página com ilustração no terço superior dividida em duas vinhetas (blocos 1 e 2).  
+- Não foram identificadas letras A, B, C ou D dispostas verticalmente no gutter central (nenhuma nota_marginal separada criada).  
+- Pequenas anotações/legendas dentro das vinhetas não são legíveis com segurança a partir da imagem fornecida; por isso os blocos de ilustração foram marcados como "outro" e mantidos sem transcrição literal de eventuais letras marginais.
   </notas>
 </pagina>

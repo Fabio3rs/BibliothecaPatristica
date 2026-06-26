@@ -1,4 +1,4 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="misto" bbox="0,0,1000,60">
     725 ORATIO VI. — DE PACE I. 726
   </bloco>
@@ -50,7 +50,7 @@
     απέδωκε, τηνικαυτα συναποδίδουσι τοις παρελθουσι
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="510,60,1000,750">
-    A ovile pastore libertus, ne dicam audacius : quoniam
+    ovile pastore libertus, ne dicam audacius : quoniam
     vinea illa vera, atque a bono agricola optime pur-
     gata, et quæ pulchram vindemiam in divisa torcu-
     laria inferre solebat, in amaritudinem mihi versa
@@ -65,7 +65,7 @@
     æquum pugnavimus, ob eum, qui in lignum elatus
     est, dejecti sumus, atque ob eum, qui sepultus est,
     ac resurrexit, morte affecti sumus.
-    B IV. Ac prius quidem ista; et quid attinet hilari-
+    IV. Ac prius quidem ista; et quid attinet hilari-
     tatis tempore res molestas refricare immorando,
     quarum non modo detestanda est experientia, sed
     memoria etiam ipsa fugienda? Præstat enim ser-
@@ -83,7 +83,7 @@
     qui Veritatis, idem sentientes 28 et loquentes; qui
     Sapientiæ, solertes; qui Lucis, ut in die honeste 29
     nos gerentes; qui Viæ, omnes rectum iter tenentes;
-    C qui Ostii, omnes intus; qui Ovis et Pastoris, mau-
+    qui Ostii, omnes intus; qui Ovis et Pastoris, mau-
     sueti et ejusdem caulæ, ac pastoris unius, non in
     pastoris imperiti vasis 30 gregem pascentis, aut
     pascuæ oves interimentis, aut lupis et præcipitiis
@@ -94,7 +94,7 @@
     et coagmentatum juxta omnem, quæ in Spiritu est,
     connexionem atque compagem 31 : postquam is, qui
     omnia facit, atque in id quod utilius est immutat,
-    D planctum nostrum in gaudium convertit, ac pro
+    planctum nostrum in gaudium convertit, ac pro
   </bloco>
   <bloco tipo="aparato_critico" script="misto" bbox="0,750,1000,780">
     25 Psal. xxxvii, 12. 26 Isa. xxx, 10. 27 Rom. xii, 11. 28 ibid. 16. 29 Rom. xiii, 13. 30 Zach. xi, 13. 31 Colos. ii, 19.
@@ -136,10 +136,21 @@
   <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
     Digitized by Google
   </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,100,520,140">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,320,520,360">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,520,520,560">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,680,520,720">
+    D
+  </bloco>
   <notas>
-    Transcrição de página da Patrologia Graeca com texto grego à esquerda e tradução latina à direita.
-    Marcas marginais A, B, C, D incluídas no fluxo do texto latino onde aparecem visualmente.
-    Número "181" em negrito no texto latino preservado.
-    Aparato crítico dividido em duas colunas na parte inferior.
+    Transcrição feita a partir da imagem da Patrologia Graeca: coluna esquerda em grego, coluna direita em latim.
+    Letras marginais A, B, C, D separadas como blocos nota_marginal e removidas do fluxo do texto principal.
+    BBOXs estimadas no espaço 0-1000 conforme análise visual da página.
   </notas>
 </pagina>

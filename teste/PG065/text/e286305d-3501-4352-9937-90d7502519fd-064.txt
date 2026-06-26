@@ -1,59 +1,52 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="55,20,945,105">
-119
-APPENDIX AD PALLADIUM.
-
-De abbate Ammona.
-
-Περὶ τοῦ ἀββᾶ Ἀμμωνᾶ.
-
-120
+  <bloco tipo="cabecalho" script="latino" bbox="110,45,145,60">119</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="410,45,640,60">APPENDIX AD PALLADIUM.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="905,45,935,60">123</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="245,70,400,85">De abbate Ammona.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="645,70,835,85">Περὶ τοῦ ἀββᾶ μμωνᾶ.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="515,75,530,90">A</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="125,95,510,250">1. (36) Frater interrogavit abbatem Ammonam, dicens : Profer mihi verbum. Ait senex : Vade, talem habe cogitationem, qualem rei qui in carcere versantur. Illi namque semper interrogant accedentes viros, ubinam degat præses, et quando venturus sit; atque ex exspectatione plorant. Pari modo monachus debet semper attendere, ac animam suam objurgare, dicendo : Væ mihi ! Quomodo potero astare ad tribunal Christi ? quidve habebo defensionis coram illo? Si ita assidue meditatus fueris, poteris consequi salutem.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="535,95,940,250">α'. Ἀδελφὸς ἠρώτησε τὸν ἀββᾶν Ἀμμωνᾶν, λέγων· Εἰπέ μοι ῥῆμα. Καὶ λέγει ὁ γέρων· Ὕπαγε, ποίησαι τὸν λογισμόν σου, ὥσπερ οἱ κακοῦργοι ποιοῦσιν οἱ ντες ἐν τ φυλακῇ. Ἐκεῖνοι γὰρ ἐρωτῶσιν ἀεὶ τοὺς ἀνθρώπους, ποῦ ἐστιν ὁ γεμὼν καὶ πότε ἔρχεται, καὶ ἀπὸ τῆς προσδοκίας κλαίουσιν. Οὕτως καὶ ὁ μοναχὸς ὀφείλει διαπαντὸς προσέχειν, καὶ ἐλέγχειν τὴν αυτοῦ ψυχήν, λέγων· Οὐαί μοι ! Πῶς ἔχω παραστῆναι τῷ βήματι τοῦ Χριστοῦ ; καὶ πῶς χω αὐτ ἀπολογσασθαι; Ἐὰν οὕτως μελετήσῃς διαπαντός, δυνήσῃ σωθῆναι.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="515,290,530,305">B</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="125,255,510,345">2. (37) Memorabant de abbate Ammona, quod basiliscum occiderit. Nam profectus in desertum ad hauriendam aquam e lacu, cum vidisset basiliscum, sese in faciem prostravit, ac dixit : Domine, aut ego moriar, aut iste. Statimque basiliscus virtute Christi crepuit.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="535,255,940,345">β'. Ἔλεγον περὶ το ἀββᾶ μμωνᾶ, τι καὶ βασιλίσκον ἀπέκτεινεν. Ἀπελθὼν γὰρ εἰς τὴν ἔρημον ἀντλῆσαι δωρ ἀπ λάκκου, καὶ ἰδὼν τὸν βασιλίσκον, ἔβαλεν αὐτὸν ἐπὶ πρόσωπον, λέγων· Κύριε, εἰ ἐγὼ ἔχω ἀποθανεῖν, ἢ οὗτος. Καὶ εὐθέως ὁ βασιλίσκος ἐν τῇ δυνάμει τοῦ Χριστοῦ διεῤῥάγη.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="125,350,510,385">3. (38) Dixit abbas Ammonas : Per quatuordecim annos in Sceti commoratus oravi Deum die ac nocte, ut mihi vim largiretur vincendi iram.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="535,350,940,385">γ'. Εἶπεν ὁ ἀββᾶς μμωνᾶς, ὅτι Δεκατέσσαρα ἔτη ἐποίησα ἐν Σκήτει δεόμενος τοῦ Θεοῦ νυκτὸς κα ἡμέρας, να μοι χαρίσηται νικῆσαι τὴν ὀργήν.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="515,505,530,520">C</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="125,390,510,580">4. (39) Narravit quidam Patrum, quod ad Cellia erat aliquis senex laboriosus, ferens mattam. Is abiens venit ad abbatem Ammonam. Qui cernens eum matta vestitum, dixit : Hæc tibi nihil prodest. Interrogavit autem senex, dicens : Tres cogitationes mihi faciunt molestiam, vel per solitudines vagari, vel ad peregrinum locum abire, ubi nemo cognoscat me; vel denique ut in cellam me includam, occurrens nemini, ac post biduum comedens. Ait illi abbas Ammonas : Nullum e tribus expedit ut facias; sed potius sede in cella tua, et parum comede singulis diebus : atque habeto semper in corde tuo publicani sermonem **, poterisque salvus fieri.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="535,390,940,590">δ'. Διηγήσατό τις τῶν Πατέρων, ὅτι ἦν τις γέρων πονικὸς εἰς τὰ Κελλία (40), φορῶν ψάθιον· καὶ ἀπελθὼν παρέβαλε τῷ ἀββᾷ Ἀμμωνᾷ. Εἶδε δὲ αὐτὸν ὁ γέρων φοροῦντα τὸ ψάθιον, καὶ λέγει αὐτῷ· Τοῦτο οὐδέν σε ὠφελε. Καὶ ρώτησεν αὐτὸν  γέρων, λέγων· Τρεῖς λογισμοὶ ὀχλοῦσί μοι· ἢ τὸ πλάζεσθαι ἐν ταῖς ἐρήμοις ** (41), ἢ ἵνα ἀπέλθω ἐπὶ ξένης ὅπου οὐδείς με ἐπιγινώσκει, ἢ ἵνα ἐγκλείσω ἑαυτὸν ες κελλίον, καὶ μηδενὶ ἀπαντήσω. διὰ δύο ἐσθίων. Λέγει αὐτ ὁ ἀββς Ἀμμωνς· Οὐδὲν ἐκ τῶν τριῶν συμφέρει σοι ποιῆσαι· ἀλλὰ μᾶλλον κάθου εἰς τὸ κελλίον σου, καὶ ἔσθιε μικρὸν καθ' ἡμέραν· καὶ ἔχε διαπαντὸς τὸν λόγον τοῦ τελώνου ἐν τῇ καρδίᾳ σου· καὶ δυνήσῃ σωθῆναι.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="125,590,510,725">5. Fratribus accidit afflictio in loco eorum; ac volentes locum relinquere profecti sunt ad abbatem Ammonam. Ecce autem senex navigio devehebatur. Qui videns illos ad fluminis litus iter agentes, dixit nautis : Me ad terram demittite. Et vocatis fratribus, dixit eis : Ego sum Ammonas, quem convenire cupitis. Solatusque ipsorum corda, remisit eos unde venerant. Non enim quod contigerat nocebat animæ, sed humana erat vexatio.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="535,595,940,735">ε'. Ἀδελφοῖς συνέβη θλῖψις ἐν τῷ τόπῳ αὐτῶν, καὶ θέλοντες καταλιπεῖν αὐτόν, ἀπῆλθον πρὸς τὸν ἀββᾶν μμωνᾶν. Καὶ ἰδο ὁ γέρων κατέπλεε, καὶ ἰδὼν αὐτοὺς παρὰ τὴν ὄχθην ὁδεύοντας τοῦ ποταμοῦ, εἶπε τοῖς ναύταις· Βάλτε με εἰς τν γῆν. Καὶ καλέσας τοὺς ἀδελφοὺς εἶπεν αὐτοῖς· Ἐγώ εἰμι Ἀμμωνᾶς, πρὸς ν θέλετε ἐλθεῖν. Καὶ παρακαλέσας αὐτῶν τὰς καρδίας, ἐποίησεν αὐτοὺς ὑποστρέψαι ὅθεν ἐξῆλθον. Οὐ γὰρ εἶχε τ πρᾶγμα ζημίαν ψυχῆς, ἀλλὰ θλῖψιν ἀνθρωπίνην.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="515,730,530,745">D</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="125,735,510,845">6. Venit aliquando abbas Ammonas ut trajiceret flumen, ac reperto instructo promptoque pontone, assedit. Ecce autem alia navis, eo deducta, vectores trajiciebat. Dicunt ei : Veni etiam, tu abba, trajice nobiscum. Respondit ille : Nisi in publicum pontonem non ascendo. Habebat autem fasciculum palmeorum ramusculorum, et sedebat plectam te-</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="535,740,940,845">ς'. Ἦλθέ ποτε ὁ ἀββᾶς μμωνᾶς περάσαι τὸν ποταμόν, καὶ εὗρε τὸ πορθμεῖον φιλοκαλημένον **, καὶ παρεκαθέσθη αὐτῷ· καὶ ἰδο ἄλλο σκάφος εἰς τὸν τόπον ἦλθε, καὶ ἐπέρασε τοὺς ὄντας ἀνθρώπους. Καὶ λέγουσιν αὐτῷ· Δεῦρο καὶ σὺ ἀββᾶ, πέρασον μεθ' ἡμῶν. Ὁ δὲ λέγει· Εἰ μὴ εἰς τὸ δημόσιον πορθμεῖον οὐκ ἀναβαίνω. Εἶχε δ δέσμην θαλλῶν, καὶ ἐκάθητο πλέκων σει-</bloco>
+  
+  <bloco tipo="aparato_critico" script="misto" bbox="125,855,940,955">
+    ** Luc. XVIII, 23. ** Al. πλάζεσθαι ἐν τῇ ἐρήμῳ. ** Al. πεφιλοκαλημένον.
+    (36) Vit. Patr. III, 2; L. Climac. p. 418, Anastas. quæst. 135.
+    (37) Vit. Patr. III, 214.
+    (38) Vit. Patr. VII, 3.
+    (39) Vit. Patr. X, 16.
+    (40) Εἰς τὰ Κελλία. Pelagius, in cella. Cella pro Cellia. Locus est celebris in Ægypti eremo, a multitudine cellularum nuncupatus, Cellia, Cellæ, Cellulæ.
+    (41) Τὸ πλάζεσθαι ἐν ταῖς ἐρήμοις. Interpres idem : Ut alicubi in eremo reccdam. Legebat πλάζεσθαι.
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="505,118,530,150">A</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="505,350,530,382">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="505,560,530,592">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="505,845,530,877">D</bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="95,115,485,860">
-1. (36) Frater interrogavit abbatem Ammonam, dicens : Profer mihi verbum. Ait senex : Vade, talem habe cogitationem, qualem rei qui in carcere versantur. Illi namque semper interrogant accedentes viros, utrumnam degat praeses, et quando venturus sit; atque ex expectatione plorant. Pari modo monachus debet semper attendere, ac animum suum obiurgare, dicendo : Væ mihi ! Quomodo potero astare ad tribunal Christi ? quidve habebo defensionis coram illo ? Si ita assidue meditaris fueris, poteris consequi salutem.
-
-2. (37) Memorabant de abbate Ammona, quod basiliscum occiderit. Nam profectus in desertum ad hauriendam aquam e lacu, cum vidisset basiliscum, sese in faciem prostravit, ac dixit : Domine, aut ego moriar, aut iste. Statimque basiliscus virtute Christi crepuit.
-
-3. (38) Dixit abbas Ammonas : Per quatuordecim annos in Sceti commoratus oravi Deum die ac nocte, ut mihi vim largiretur incendendi iram.
-
-4. (39) Narravit quidam Patrum, quod ad Cellia erat aliquis senex laboriosus, ferens mattam. Is abiens venit ad abbatem Ammonam. Qui cernens eum matta vestitum, dixit : Haec tibi nihil prodest. Interrogavit autem senex, dicens : Tres cogitationes mihi faciunt molestiam, vel per solitudines vagari, vel ad peregrinum locum abire, ubi nemo cognoscat me; vel denique ut in cella me includam, ac post biduum comedens. Ait illi abbas Ammonas : Nullum e tribus expedit ut facias; sed potius sede in cella tua, et parum comede singulis diebus : atque habe to semper in corde tuo publicani sermonem ³, poterisque salvus fieri.
-
-5. Fratribus accidit amicitia in loco eorum; ac volentes locum relinquere profecti sunt ad abbatem Ammonam. Ecce autem senex navigio devecnebatur. Qui videns illos ad fluminis litus iter agentes, dixit nautis : Me ad terram devehite. Et vocatis fratribus, dixit eis : Ego sum Ammonas, quem convenire cupitis. Solatusque ipsorum corda, remisit eos unde venerant. Non enim quod contigerat nocebat animae, sed humana erat vexatio.
-
-6. Venit aliquando abbas Ammonas ut traiceret flumen, ac reperto instituto promptoque pontone, ascedit. Ecce autem alia navis, ea deucta, vectores traiciebat. Dicunt ei : Veni etiam, tu abba, trajice nobis cum. Respondit ille : Nisi in publicum pontonem non ascendo. Habebat autem fasciculum palmeorum ramusculorum, et sedebat plectens [ilegivel].
-  </bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="540,115,920,885">
-α'. Ἀδελφὸς ἐπηρώτησε τὸν ἀββᾶν Ἀμμωνᾶν, λέγων· Εἴπε μοι ῥῆμα. Καὶ λέγει ὁ γέρων· Ὕπαγε, τοιαύτην διάθεσιν τοῦ λογισμοῦ σου, ὥσπερ οἱ κακοῦργοι ποιοῦσιν ὄντες ἐν τῇ φυλακῇ. Ἐκεῖνοι γὰρ ἐρωτῶσιν τοὺς ἀνθρώπους, ποῦ ἐστιν ὁ ἡγεμών, καὶ πότε ἔρχεται, καὶ ἀπὸ τῆς προσδοκίας κλαίουσιν. Οὕτως καὶ ὁ μοναχὸς ὀφείλει διαπαντὸς προσέχειν, καὶ ἐλέγχειν τὴν ἑαυτοῦ ψυχήν, λέγων· Οὐαί μοι! Πῶς ἔχω παραστῆναι τῷ βήματι τοῦ Χριστοῦ; καὶ τίς ἔχω ἀπολογίαν; εἰ οὕτως μελετήσῃς διαπαντὸς, δύνασαι σωθῆναι.
-
-β'. Ἔλεγον περὶ τοῦ ἀββᾶ Ἀμμωνᾶ, ὅτι καὶ βασιλίσκον ἀπέκτεινεν. Ἀπελθὼν γὰρ εἰς τὴν ἔρημον ἵνα πλησιάσῃ ὕδωρ ἀπὸ λάκκου, καὶ ἰδὼν τὸν βασιλίσκον, ἔβαλε αὐτὸν ἐπὶ πρόσωπον, λέγων· Κύριε, εἴτε ἐγὼ ἀποθανῶ, ἢ οὗτος. Καὶ εὐθὺς ὁ βασιλίσκος ἐν τῇ δυνάμει τοῦ Χριστοῦ ἐξεράγη.
-
-γ'. Εἶπεν ὁ ἀββᾶς Ἀμμωνᾶς, ὅτι δεκατέσσαρα ἔτη ἐποίησα ἐν Σκήτῃ δεόμενος τοῦ Θεοῦ νυκτὸς καὶ ἡμέρας, ἵνα μοι χαρίσηται νικῆσαι τὴν ὀργήν.
-
-δ'. Διηγήσατό τις τῶν Πατέρων, ὅτι τις γέρων πονηρὸς εἰς τὰ Κέλλια (40), φορῶν ψάθιον· καὶ ἀπελθὼν παρῆλθε τῷ ἀββᾷ Ἀμμωνᾷ. Εἶδε δὲ αὐτὸν ὁ γέρων φοροῦντα τὸ ψάθιον, καὶ λέγει αὐτῷ· Τοῦτο οὐδὲν σε ὠφελεῖ. Καὶ ἐπηρώτησεν αὐτὸν ὁ γέρων, λέγων· Τρεῖς λογισμοὶ θλίβουσί μοι· ἢ τὸ πλάζεσθαι ἐν ταῖς ἐρήμοις, (41) ἢ ἵνα ἀπέλθω εἰς ξένην, ὅπου οὐδεὶς με ἐπιγινώσκει, ἢ ἵνα ἐγκλείσω ἐμαυτόν εἰς κελλίον, καὶ μηδὲν ἀπαντήσω διὰ δύο ἐτῶν. Λέγει αὐτῷ ὁ ἀββᾶς Ἀμμωνᾶς· Οὐδὲν ἐκ τῶν τριῶν συμφέρει σοι ποιῆσαι· ἀλλὰ μᾶλλον κάθου εἰς τὸ κελλίον σου, καὶ ἔσθιε μικρὸν καθ' ἡμέραν· καὶ ἔχε διαπαντὸς τὸν λόγον τοῦ τελωνίου ἐν τῇ καρδίᾳ σου· καὶ δύνασαι σωθῆναι.
-
-ε'. Ἀδελφοὶ συνέβη θέλοντες ἐν τῷ τόπῳ αὐτῶν, καὶ θέλοντες καταλιπεῖν αὐτόν, ἀπῆλθον πρὸς τὸν ἀββᾶν Ἀμμωνᾶν. Καὶ ἰδοὺ ὁ γέρων κατέπλεε, καὶ ἰδὼν αὐτοὺς παρὰ τὴν ὄχθην τοῦ ποταμοῦ, εἶπε τοῖς ναύταις· Βάλετέ με εἰς τὴν γῆν. Καὶ καλέσας τοὺς ἀδελφοὺς εἶπεν αὐτοῖς· Ἐγώ εἰμι Ἀμμωνᾶς, πρὸς ὃν θέλετε ἐλθεῖν. Καὶ παρακαλέσας αὐτῶν τὰς καρδίας, ἐποίησε αὐτοὺς ὑποστῆναι ὅθεν ἐξῆλθον. Οὐ γὰρ εἶχε τὸ πρᾶγμα ζημίαν ψυχῆς, ἀλλὰ διέψευκεν ἀνθρώπινον.
-
-ζ'. Ἦλθε ποτὲ ὁ ἀββᾶς Ἀμμωνᾶς περάσαι τὸν ποταμόν, καὶ εὗρε τὸ πορθμεῖον προβεβλημένον αὐτῷ, καὶ παρεκάθισεν αὐτῷ· καὶ ἰδοὺ ἄλλο σκάφος εἰς τὸν ἔσπερον ἦλθε, καὶ παραπεράσας τοὺς ὄντας ἀνθρώπους. Καὶ λέγουσιν αὐτῷ· Δεῦρο καὶ σύ, ἀββᾶ, πέρασον μεθ' ἡμῶν. Ὁ δὲ λέγει· Εἰ μὴ εἰς τὸ δημόσιον πορθμεῖον οὐκ ἀναβαίνω. Ἔχει δὲ δέσμην βαλάνων [ilegivel], καὶ ἐκάθητο πλέκων [ilegivel].
-  </bloco>
-
-  <bloco tipo="rodape" script="misto" bbox="95,865,945,995">
-« Luc. xviii, 23.  « Al. πελάσεσθαι ἐν τῇ ἐρήμῳ. »
-
-(36) Vit. Patr. iii, 2; L. Climac. p. 418, Anastas. quæst. 135.
-(37) Vit. Patr. iii, 214.
-(38) Vit. Patr. vii, 3.
-(39) Vit. Patr. x, 16.
-(40) Εἰς τὰ Κέλλια. Pelagius, in cella. Cella pro Celia. Locus est celeberrimus in Ægypti eremo, a multitudine cellarum nuncupatus. Cella, Cellae, Cellulae.
-
-(41) Τὸ κλιμακᾶν ἐν τῇ ἐρήμῳ. Interpres idem : Ut alicubi in eremo recedam. Legebat τὸν ἑ[ilegivel].
-  </bloco>
-
-  <notas>A, B, C, D tratados como nota_marginal de seção no corredor central; os trechos finais com leitura incerta foram marcados com [ilegivel] apenas em nível de palavra.</notas>
+  
+  <notas>Transcription of a bilingual page (Latin/Greek) from Patrologia Graeca/Latina. Marginal letters A, B, C, D indicate sections. Footnotes contain critical apparatus and references.</notas>
 </pagina>

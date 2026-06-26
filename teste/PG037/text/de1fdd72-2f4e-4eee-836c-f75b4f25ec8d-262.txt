@@ -1,8 +1,9 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,50">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,60">
     515 S. GREGORII THEOL. CARMINUM LIBER I. THEOLOGICA. 516
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,60,480,260">
+
+  <bloco tipo="texto_principal" script="grego" bbox="40,80,480,380">
     ΛΔ'. Εὐχαριστήριον ἄλλο.
     Σοὶ χάρις, ὦ πάντων βασιλεῦ, πάντων δὲ ποιητά.
     Σοὶ χάρις· ὃς τὰ νοητὰ λόγῳ, τὰ θ' ὁρατὰ κελεύσει
@@ -12,31 +13,37 @@
     Ἀγγελικῆς στρατιῆς πυρόεις χορός, ἄφθιτοι ἀρχὴν
     Λαοὶ πρωτοτόκων, καὶ λαμπομένων χορὸς ἄστρων·
     Πνεύματα θεσπεσίων ἀνδρῶν, ψυχαί τε δικαίων,
-    Πάντες ὑμηγερέες, καὶ σὸν θρόνον ἀμφιέποντες,
+    Πάντες ὁμηγερέες, καὶ σὸν θρόνον ἀμφιέποντες,
     10 Γηθοσύνη τε, φόβῳ τε διηνεκὲς ἀείδουσι
-    Ὕμνον ἀνυμνείοντες ἄχραντον, ἢ καὶ ἄπαυστον·
+    Ὕμνον ἀνυμνείοντες ἀκήρατον, ἢ καὶ ἄπαυστον·
     Σοὶ χάρις, ὦ πάντων βασιλεῦ, πάντων δὲ ποιητά.
-    Οὗτος χραντος ὕμνος ἐπ' οὐρανίοιο χοροῖο.
+    Οὗτος ἀκήρατος ὕμνος ἐπ' οὐρανίοιο χοροῖο.
     Ναὶ λίτομαι κἀγώ, Πάτερ ἄφθιτε, καὶ γόνυ κάμπτω
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,60,950,260">
-    A 15 Ἡμετέρης κραδίης, Πάτερ ἄμβροτε, καὶ νόος
+
+  <bloco tipo="nota_marginal" script="misto" bbox="480,70,500,100">
+    A
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="520,80,960,380">
+    15 Ἡμετέρης κραδίης, Πάτερ ἄμβροτε, καὶ νόος,
     [ἔνδον
-    Πρηϋνής σου προπάροιθε· κάρη δέ μοι ἐς χθόνα νεύει
+    Πρηνῆς σου προπάροιθε· κάρη δέ μοι ἐς χθόνα νεύει
     Λισσομένῳ· κεῖμαι δ' ἱκέτης, καὶ δάκρυα χεύω.
-    Οὐδὲ γὰρ ἄξιός εἰμι πρὸς ορανὸν ἀντία λεύσσειν·
+    Οὐδὲ γὰρ ἄξιός εἰμι πρὸς οὐρανὸν ἀντία λεύσσειν·
     Ἀλλὰ σύ μ' οἰκτείροις, ἐλέους Πάτερ, ἴλαος ἔσσο
     20 Σὲ κινυρῷ θεράποντι· σάου δέ με χεῖρα τανύσσας
     Ἐξ ὀνύχων θανάτοιο, νοήματα πάντα καθάρας·
-    Μή μ' ἀπογυμνώσῃς σοῦ Πνεύματος, ἀλλ' ἔτι μλλον
+    Μή μ' ἀπογυμνώσῃς σοῦ Πνεύματος, ἀλλ' ἔτι μᾶλλον
     Χεῦε μένος καὶ θάρσος ἐνὶ στήθεσσιν ἐμοῖσιν·
     Ὄφρα σε καὶ κραδίη, καὶ χείλεσι καλὸν ἀείσω.
     25 Ὥσπερ ἐμῷ γενετῆρι, σῷ θεράποντι παρέστης,
-    Ὡς καὶ ἐμοὶ καθαρόν βίοτον, καθαράν τε τελευτήν,
-    Ἐλπωρὴν τε τυχεῖν ἀγαθήν, ἐλεόν τε, χάριν τε·
-    Πάντα δ' ἀμαλδύνει, ὅσα λιτον ἐκ νεότητος,
+    Δὸς καὶ ἐμοὶ καθαρόν βίοτον, καθαράν τε τελευτήν,
+    Ἐλπωρὴν τε τυχεῖν ἀγαθήν, ἔλεόν τε, χάριν τε·
+    Πάντα δ' ἀμαλδύνει, ὅσα λιτόν ἐκ νεότητος,
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,270,800,560">
+
+  <bloco tipo="texto_principal" script="latino" bbox="120,380,880,720">
     XXXIV. Alia gratiarum actio *.
     Tibi gratiæ, o rex omnium, et omnium creator :
     Tibi gratiæ, qui intelligibilia mente et visibilia, jussu
@@ -62,22 +69,26 @@
     Ne me nudes tuo Spiritu, sed potius amplius
     Infunde fortitudinem et fiduciam pectoribus meis,
     Ut te et corde et labiis rite canam.
-    25 Quemadmodum meo patri, tuo famulo, adfuisti,
+    Quemadmodum meo patri, tuo famulo, adfuisti,
     294 295 Da mihi et puram vitam, sanctamque mortem ;
     Spemque nancisci bonam, et misericordiam et gratiam.
     Omnia autem dele, quæcunque peccavi a juventute,
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="100,570,450,590">
+
+  <bloco tipo="nota" script="latino" bbox="100,730,460,760">
     * Alias Toll. 14, pag. 95.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="100,595,900,630">
-    XXXIV. 25 Γεγετήρι, σῶ. Tollius legere mallet γενετήρ' ὡς σῶ. Nobis melius videtur γενετῆρι, τῶ. (CAILLAU.)
-    28 Ἀμαλδύνει. Mallet Tollius ἀμαλδύνης, et quidem rectius. Ibidem ὅσ' ἥλιτον.
+
+  <bloco tipo="aparato_critico" script="misto" bbox="100,760,900,860">
+    XXXIV. 25 Γεγετήρι, σῷ. Tollius legere mallet γενετήρ' ὡς σῷ. Nobis melius videtur γενετῆρι, τῶ. (CAILLAU.)
+    28 Ἀμαλδύνει. Mallet Tollius ἀμαλδύνῃς, et quidem rectius. Ibidem ὅσ' ἥλιτον.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="400,640,600,660">
+
+  <bloco tipo="cabecalho" script="latino" bbox="380,860,620,900">
     METRICA VERSIO.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,670,480,960">
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,900,480,990">
     XXXIV. ALIA GRATIARUM ACTIO.
     (A. B. Caillau interprete.)
     Laus tibi, regnator mundi, mundique Creator,
@@ -94,7 +105,12 @@
     Laus tibi, regnator mundi, mundique Creator.
     Semper hic æthereo renovatur cantus olympo.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,670,950,960">
+
+  <bloco tipo="nota_marginal" script="misto" bbox="520,900,540,920">
+    B
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,900,980,990">
     B Te precor ipse, Pater, supplex, flexisque fidelis
     Poplitibus cordis, Pater immortalis, adoro.
     Mens inter complexa pedes silet, oraque terræ
@@ -111,10 +127,12 @@
     Spes bona me recreet, recreet pia gratia mentem
     Dele cuncta, bonus princeps, quæ cæca juventus
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="500,970,800,990">
+
+  <bloco tipo="rodape" script="latino" bbox="650,980,990,999">
     Digitized by Google
   </bloco>
+
   <notas>
-    Transcrição de página da Patrologia Graeca (PG). Contém texto grego (poesia de S. Gregório de Nazianzo) e traduções/paráfrases latinas. Números em negrito (294 295) indicam paginação da edição original ou referência colateral. Letras A e B nas margens indicam estrofes ou seções.
+    Transcrição fiel ao original da imagem; preservados os textos grego e latino sem normalização. As letras marginais identificadas na página (A, B) foram extraídas e colocadas em blocos nota_marginal separados, conforme instrução. BBoxes estimados em escala 0-1000. Onde o impresso apresenta variantes ou abreviações, foram mantidas tal como aparecem na imagem; observações críticas incluídas no aparato_critico.
   </notas>
 </pagina>

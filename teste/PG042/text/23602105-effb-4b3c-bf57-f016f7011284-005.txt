@@ -1,30 +1,31 @@
-<pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="715,45,930,265">
-    Æ
-    ONOMICA,
-    TICORUM,
-    LATINIS,
+<pagina estado="com_texto">
+  <bloco tipo="outro" script="desconhecido" bbox="0,0,700,1000">
+    [!-- Papel marmorizado / guarda; sem texto legível --]
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="715,280,930,315">
-    M PRIMA
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="715,335,860,435">
-    M DILIGNE-
-    NIBUS
-    AUCTA;
-    NTI-
-    UM
-    US
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="715,465,860,535">
-    , STATI-
-    TUR-
-    IM
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="540,950,910,990">
-    Digitized by Google
-  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,40,1000,980">
+E
+CONOMICA,
+TICORUM,
+ATINIS,
+[ilegivel] 
+PRIMA
+[ilegivel]
+[ilegivel]
+STATI-
+[ilegivel]
+</bloco>
+  <bloco tipo="rodape" script="latino" bbox="760,920,1000,995">
+Digitized by Google
+</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="880,30,980,180">
+E
+</bloco>
   <notas>
-    A página apresenta severo dano na margem esquerda (encadernação/textura), restando texto visível apenas na margem direita. Transcrição feita estritamente sobre o visível.
+    Observações de transcrição:
+    - A maior parte da página é guarda/marmorizado sem texto (bloco "outro").
+    - O texto impresso aparece apenas numa faixa estreita no bordo direito; transcrito literalmente conforme legível.
+    - A letra grande "E" decorativa foi transcrita separadamente como nota_marginal (não integrada ao texto_principal).
+    - Vários segmentos do texto são ilegíveis; usei a marca [ilegivel] para palavras isoladas conforme a regra.
+    - Fragmentos visíveis incluídos como "CONOMICA," "TICORUM," "ATINIS," "PRIMA" e "STATI-"; não foram normalizados nem expandidos.
   </notas>
 </pagina>

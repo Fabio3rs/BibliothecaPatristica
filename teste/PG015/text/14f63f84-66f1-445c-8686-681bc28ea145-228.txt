@@ -1,130 +1,83 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,80">
-    431 HEXAPLORUM QUÆ SUPERSUNT. 432
+  <bloco tipo="cabecalho" script="misto" bbox="100,40,900,80">
+    451 HEXAPLORUM QUÆ SUPERSUNT. 452
   </bloco>
-  
-  [!-- Upper Section Headers --]
-  <bloco tipo="texto_principal" script="grego" bbox="150,85,300,105">
-    TO EBPAIKON.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="380,85,580,115">
-    TO EBPAIKON
+  <bloco tipo="texto_principal" script="misto" bbox="150,80,850,120">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ ΑΚΥΛΑΣ.
     Ἑλληνικοῖς γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="750,85,850,105">
-    AKYΛAΣ.
-  </bloco>
-
-  [!-- Upper Section Content --]
-  <bloco tipo="texto_principal" script="hebraico" bbox="250,110,350,240">
-    פאת 11
-    קלעים 13
+  <bloco tipo="texto_principal" script="hebraico" bbox="250,120,350,240">
+    ןפצ 11
+    המזרח 13
     לכתף 14
-    כבד 16
-    ושני 20
+    כבס 16
+    שמן זית 20
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="400,110,450,240">
+  <bloco tipo="texto_principal" script="latino" bbox="400,120,500,240">
     11.
     13.
     14.
     16.
     20.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="600,110,700,240">
+  <bloco tipo="texto_principal" script="grego" bbox="600,120,800,240">
     11.
     13.
-    14. Ὀμίφ.
-    16. Παραπάνυσμα.
+    14. Ὡμία.
+    16. Παρατάνωμα.
     20.
   </bloco>
-
-  [!-- Upper Latin Versions Headers --]
-  <bloco tipo="texto_principal" script="latino" bbox="100,250,300,270">
-    VERSIO HEBRAICI TEXT.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="400,250,600,270">
-    VULGATA LATINA.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="750,250,850,270">
-    AQUILA.
-  </bloco>
-
-  [!-- Upper Latin Versions Content --]
-  <bloco tipo="texto_principal" script="latino" bbox="100,275,300,400">
-    11. Aquilonis.
-    Fundæ.
-    13. Ad orientem.
-    14. Humero.
-    16. Operimentum.
-    Retorta.
-    20. Oleum olivæ.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="380,275,600,410">
-    11. Aquilonis.
-    Tentoria.
-    13. Ad orientem.
-    14. Lateri.
-    16. Tentorium.
-    Retorta.
-    20. Oleum de arboribus oliva-
+  <bloco tipo="texto_principal" script="latino" bbox="100,250,850,350">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+    11. Aquilonis. 11. Aquilonis. 11.
+    Fundæ. Tentoria.
+    13. Ad orientem. 13. Ad orientem. 13.
+    14. Humero. 14. Lateri. 14. Humero.
+    16. Operimentum. 16. Tentorium. 16. Tentorium.
+    Retorta. Retorta.
+    20. Oleum olivæ. 20. Oleum de arboribus oliva- 20.
     rum.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,275,850,400">
-    11.
-    13.
-    14. Humero.
-    16. Tentorium.
-    20.
-  </bloco>
-
-  [!-- Notes Section --]
-  <bloco tipo="texto_principal" script="latino" bbox="250,415,750,435">
+  <bloco tipo="cabecalho" script="latino" bbox="300,360,700,380">
     Notæ et variæ lectiones ad cap. XXVII Exodi.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="100,440,900,600">
-    V. 4. Καὶ ποιήσεις αὐτῷ ἐσχάραν. In hunc locum hæc habentur in catenis mss. ex anonymo : εἶδος καμίνου, ἐν αἷς ἀνάπτετον σὺν τῷ ἐλαίῳ τὴν σχιβάδα. Καὶται ἐν τῷ ιςʹ Ἀριθμν, ἐν  φησι σφόδριον ἀργυροῦν, καὶ φιάλην, ἀμφότερα πλήρη σμύρνης ἀνακεκομμένης ἐλαίῳ. Id est : « Species pateræ, in qua similam cum oleo commiscebant. In cap. XVI, Numerorum [est nunc cap. VII] legitur, vasellum argenteum, et phialam utramque plenam similæ refectæ oleo. » — Οἱ λοιποί, etc. Ex Coislin.
+  <bloco tipo="nota" script="misto" bbox="100,380,500,500">
+    V. 4. Καὶ ποιήσεις αὐτῷ ἐσχάραν. In hunc locum hæc habentur in catenis mss. ex anonymo : εἶδος κακλάβου, ἐν αἷς ἀνάπτετον σὺν τῷ ἐλαίῳ τν σχιβάλην. Καὶται ἐν τῷ ις' Ἀριθμῶν, ἐν ᾗ φησι ἐριθάλοιον ἀργυροῦν, καὶ φιάλην, ἀμφότερα πλήρη σεμιδάλεως ἀναπεποιημένης ἐλαίῳ. Id est : « Species pateræ, in qua similam cum oleo commiscebant. In cap. xvi, Numerorum [est nunc cap. vii] legitur, vasellum argenteum, et phialam utramque
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="520,380,900,500">
+    plenam similæ refectæ oleo. — Οἱ λοιποί, etc. Ex Coislin.
     V. 5. Ἄλλος, σύνθεσιν. Ex Coislin.
-    V. 7. Ἄλλος, τοὺς φορεῖς. Sic unus ms. et Aldina editio. — Ibid. Ἄλλ., ἕως αἴρειν αὐτό. Sic Basiliensis solus.
+    V. 7. Ἄλλος, τοὺς φορεῖς. Sic unus ms. et Aldina editio. — Ibid. Ἄλλ., ως αἴρειν αὐτό. Sic Basiliensis solus.
     V. 9. Ἄλλος, πρὸς νότον. Sic quidam mss., tacito interprete.
     Ibidem. Ἄλλος, γωνίᾳ. Sic edit. Rom., ubi ad
   </bloco>
-
-  [!-- Lower Section Header --]
-  <bloco tipo="texto_principal" script="latino" bbox="400,605,600,625">
+  <bloco tipo="cabecalho" script="latino" bbox="400,510,600,530">
     CAPUT XXVIII EXODI.
   </bloco>
-
-  [!-- Lower Section Headers --]
-  <bloco tipo="texto_principal" script="grego" bbox="150,630,300,650">
-    TO EBPAIKON.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="380,630,580,660">
-    TO EBPAIKON
+  <bloco tipo="texto_principal" script="misto" bbox="150,530,850,560">
+    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ ΑΚΥΛΑΣ.
     Ἑλληνικοῖς γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="750,630,850,650">
-    AKYΛAΣ.
-  </bloco>
-
-  [!-- Lower Section Content --]
-  <bloco tipo="texto_principal" script="misto" bbox="100,655,350,740">
-    לחשן 1
-    אפד 4
-    חשן
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,560,350,700">
+    לכהנו 1
+    חשן 4
     אפד
-    תכלת Tò Σαμαρ., πήλιον ἤτοι μίτραν.
-    ושני תכלת וארגמן 5
-    תחת כתפו
-    ואתו-את עשו 6
-    מזהב שני תכלת
+    מעיל
+    כתנת
+    מצנפת
+    אבנט
+    תכלת וארגמן
+    ושני תולעת 5
+    ועשו את האפד זהב תכלת 6
+    וארגמן ושני תולעת ושש משזר
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="400,655,450,740">
+  <bloco tipo="texto_principal" script="latino" bbox="400,560,500,700">
     1.
     4.
     5.
     6.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="650,655,900,740">
+  <bloco tipo="texto_principal" script="grego" bbox="600,560,850,700">
     1. Τοῦ ἱερατεύειν αὐτὸν ἐμοί.
     4.
     Ἐπένδυμα.
@@ -132,53 +85,27 @@
     5.
     6.
   </bloco>
-
-  [!-- Lower Latin Versions Headers --]
-  <bloco tipo="texto_principal" script="latino" bbox="100,750,300,770">
-    VERSIO HEBRAICI TEXT.
+  <bloco tipo="texto_principal" script="latino" bbox="100,720,850,900">
+    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
+    1. Ut sacerdotio fungatur ipse 1. Ut sacerdotio fungatur mihi. 1. Ut sacerdotio fungatur ipse
+    mihi. mihi.
+    4. Pectorale. 4. Rationale. 4.
+    Superhumerale. Superhumerale. Superindumentum.
+    Oculatum. Strictam. Constrictam.
+    Cidarim. Semer., pileum, sive 'Cidarim.
+    mitram.
+    5. Vermiculum cocci. 5. Coccumque bis tinctam. 5
+    6. Et facient superhumerale, 6. Facient autem superhume- 6.
+    auro, hyacintho et purpura, ver- rale de auro et hyacintho et pur-
+    miculo cocci, et bysso retorta. pura, coccineo bis tincto, et bysso
+    retorta.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="400,750,600,770">
-    VULGATA LATINA.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="750,750,850,770">
-    AQUILA.
-  </bloco>
-
-  [!-- Lower Latin Versions Content --]
-  <bloco tipo="texto_principal" script="latino" bbox="100,775,350,930">
-    1. Ut sacerdotio fungatur ipse mihi.
-    4. Pectorale.
-    Superhumerale.
-    Oculatum.
-    Cidarim. Samar., pileum, sive mitram.
-    5. Vermiculum cocci.
-    6. Et facient superhumerale, auro, hyacintho et purpura, vermiculo cocci, et bysso retorta.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="380,775,650,930">
-    1. Ut sacerdotio fungatur mihi.
-    4. Rationale.
-    Superhumerale.
-    Strictam.
-    'Cidarim.
-    5. Coccumque bis tinctam.
-    6. Facient autem superhumerale de auro et hyacintho et purpura, coccoque bis tincto, et bysso retorta.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,775,900,900">
-    1. Ut sacerdotio fungatur ipse mihi.
-    4.
-    Superindumentum.
-    Constrictam.
-    5
-    6.
-  </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="500,960,800,990">
+  <bloco tipo="rodape" script="latino" bbox="450,950,750,980">
     Digitized by Google
   </bloco>
-  
   <notas>
-    Texto em layout poliglota (Hexapla) comparando Hebraico, Grego e Latim.
-    Transcrição de caracteres hebraicos baseada na visualização direta (ex: `פאת`, `קלעים`, `לחשן`).
-    Notas marginais e variantes no centro da página contêm misto de Latim e Grego.
+    Transcription of Hebrew text is approximate based on visual inspection of the polyglot layout.
+    The notes section is split into two blocks corresponding to the two columns of text within that section.
+    Page numbers 451 and 452 are at the top corners.
   </notas>
 </pagina>

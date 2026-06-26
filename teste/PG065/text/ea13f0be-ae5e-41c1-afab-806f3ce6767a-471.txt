@@ -1,129 +1,56 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="55,45,950,105">
-935  DE LEGE SPIRITUALI.  926
-  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,100,50">925</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="380,30,600,50">DE LEGE SPIRITUALI.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="880,30,930,50">926</bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="40,110,485,940">
-Ἔρχεται· καὶ οἱ φέροντες αὐτό, εἰσιν ἀγαθοῦ διά-
-κονοι.
+  <!-- Left Column (Greek) -->
+  <bloco tipo="texto_principal" script="grego" bbox="50,60,450,90">ἔρχεται· καὶ οἱ φέροντες αὐτὸ, εἰσὶν ἀγαθοῦ διά- κονοι.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,100,450,140">ΡΞ'. Ἀγαθῶν καὶ κακῶν τὰς μετεμπλοκὰς ὁμαλῷ λογισμῷ ὑποδέχου· καὶ οὕτως ἀνατρέπει ὁ Θεὸς τῆς ἀνωμαλίας τὰ πράγματα.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,150,450,190">ΡΞΑ'. Ἡ ἀνισότης τῶν λογισμῶν, τὰς τῶν δικῶν ἀνιδίως μεταβολὰς ἐπιφέρει· ὁ Θεὸς γὰρ τὰ ἀκούσια τοῖς ἑκουσίοις προσηνῶς ἀπένειμε.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,200,450,230">ΡΞΒ'. Τὰ αἰσθητά, τῶν νοερῶν ἐστιν ἔκγονα, τὸ δέον φέροντα ψήφῳ Θεοῦ.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,240,450,290">ΡΞΓ'. Καρδίας ἡδυπαθούσης, λογισμοὶ λοιμοὶ ἀνα- φύονται· καὶ ἐν τῷ καπνῷ τν ἐγκειμένην λην ἐπι- γινώσκομεν.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,300,450,340">ΡΞΔ'. Παράμενε τῇ διανοίᾳ, καὶ οὐ κοπιάσεις ἐν πειρασμοῖς· ἔκειθεν δὲ ἀναχωρῶν, ὑπόμενε τὰ ἐπερ- χόμενα.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,350,450,380">ΡΞΕ'. Εὔχου μὴ ἐλθεῖν σοι πειρασμόν· ἐλθόντα δὲ, κατάδεξαι ὡς σὸν, καὶ οὐκ ἀλλότριον.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,390,450,420">ΡΞϚ'. Ἄρον τὴν ἔννοιαν ἀπὸ πάσης πλεονεξίας, καὶ τότε δυνήσει ἰδεῖν τὰς μεθοδείας τοῦ διαβόλου.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,430,450,460">ΡΞΖ'. Ὁ λέγων πάσας εἰδέναι τὰς μεθοδείας τοῦ διαβόλου, οὐκ οἶδεν αυτὸν τέλειον εἰσφέρειν.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,470,450,510">ΡΞΗ'. Ὅταν ἐξέλθῃ ὁ νοῦς τῶν σωματικῶν φρον- τίδων, βλέπει κατ' ἀναλογίαν τὰς τῶν ἐχθρῶν παν- ουργίας.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,520,450,560">ΡΞΘ'. Ὁ λογισμοῖς συναπαγόμενος, ἐκτυφλοῦται ὑπ' αὐτν· καὶ τὰς μὲν ἐργασίας τῆς μαρτίας βλέ- πει, τὰς δὲ αἰτίας αὐτῶν οὐ δύναται ἰδεῖν.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,570,450,610">ΡΟ'. Ἔστιν ὁ ποιν προφανς ἐντολήν, δουλεύων πάθει, καὶ διὰ λογισμῶν πονηρῶν ἀγαθὴν πρᾶξιν ἐξαφανίζων.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,620,450,660">ΡΟΑ'. Ἐμπεριόμενος ἐν ἀρχῇ κακοῦ, μὴ λέγε· Οὐ μὴ νικήσῃ με. Καθὸ γὰρ ἂν ἐμφέρῃ, κατὰ τοσοῦτον ἤδη νενίκησαι.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,670,450,710">ΡΟΒ'. Ἕκαστον τῶν γενομένων, ἀπὸ μικρο ἄρ- χεται· καὶ κατὰ μέρος τρεφόμενον, λαμβάνει τὴν αὔ- ξησιν.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,720,450,760">ΡΟΓ'. Δίκτυόν ἐστι πολύπλοκον, ἡ τῆς κακίας μέθ- οδος· ᾧ μερικῶς ἐμπλακείς, ἐὰν ἀμελήσῃ, περι- εκτικῶς σφίγγεται.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,770,450,810">ΡΟΔ'. Μὴ θέλε ἀκούειν δυστυχίας ἐχθρῶν ἀνθρώ- πων. Οἱ γὰρ ἡδέως ἀκούοντες τῶν τοιούτων ῥημά- των, καρποὺς τρυγῶσι τῆς δίας προθέσεως.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,820,450,860">ΡΟΕ'. Μὴ πᾶσαν θλῖψιν ἐπέρχεσθαι τοῖς ἀνθρώ- ποις δι' ἁμαρτίαν νόμιζε· εἰσί γάρ τινες εὐαρε- στοῦντες καὶ πειραζόμενοι. Γέγραπται γάρ· Ἀσεβεῖς καὶ ἄνομοι ἐκδιωχθήσονται. Ὁμοίως καὶ Οἱ εὐσεβῶς θέλοντες ζῆν ἐν Χριστῷ, διωχθήσονται.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,870,450,910">ΡΟϚ'. Ἐν καιρῷ θλίψεως, βλέπε τὴν προσβολὴν τῆς θλίψεως· ἐπειδὴ γὰρ ἡ προσβολὴ παραμυθεῖται τὴν θλῖψιν, εὐπαράδεκτος γίνεται.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,920,450,940">ΡΟΖ'. Τινὲς φρονίμους λέγουσι, τοὺς διακριτικούς</bloco>
 
-ΡΣΑ'. Ἀγαθῶν καὶ κακῶν τὰς μετεμπλοκὰς ὁμαλῷ λογισμῷ ὑποδέχου· καὶ οὕτως ἀναπέμπει ὁ Θεὸς τῆς ἀνωμαλίας τὰ πράγματα.
+  <!-- Right Column (Latin) -->
+  <bloco tipo="texto_principal" script="latino" bbox="480,60,900,100">satione venire solet : cæterum illud deferentes, boni illius ministri sunt.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,110,900,150">CLX. Bonarum et malarum rerum communes implicationes æqua ratione suscipito; atque ita Deus avertit inæqualitatis occasiones.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,160,900,200">CLXI. Cogitationum inæqualitas, propriorum im- proprie mutationes infert; nam Deus invita volun- tariis prompte distribuit.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,210,900,250">CLXII. Opera externa promanant ex intelligibi- libus, atque ex sententia divina suppeditant quod necessarium est.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,260,900,300">CLXIII. Cordi deliciis indulgenti, pestilentes succrescunt cogitationes; et in fumo materiam subjacentem cognoscimus.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,310,900,350">CLXIV. Permane constans in animo, et nullam senties in tentationibus molestiam : illinc autem discedens, suffer contingentia.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,360,900,390">CLXV. Precare Deum, ne tibi veniat tentatio; cæ- terum venientem suscipito, ut tuam, non ut alienam.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,400,900,430">CLXVI. Tolle cogitationem tuam ab omni avari- tia, ac tum conspicere poteris omnes diaboli insidias.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,440,900,470">CLXVII. Qui dixerit se nosse omnes diaboli in- sidias, non novit se ipsum perfectum gerere.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,480,900,510">CLXVIII. Mens egressa de corporalibus curis, videt secundum proportionem inimicorum versutias.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,520,900,560">CLXIX. Qui cogitationibus ducitur, excæcatur ab illis; et peccatorum quidem operationes videt, porro illorum causas videre non potest.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,570,900,600">CLXX. Est qui facit propalam mandatum, affe- ctibus serviens, et per cogitationes pravas bonum opus obscurans.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,610,900,650">CLXXI. Dum versaris in mali seu peccati princi- pio, ne dicas : Non vincet me. Quatenus enim in eo versaris, tantum jam quoque victus es.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,660,900,700">CLXXII. Unumquodque eorum quod fit, a parvis incipitur initiis; atque ita, dum particulatim nutri- tur, lentis incrementis augmentum consequitur.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,710,900,750">CLXXIII. Vitiorum methodus rete est multiplex : qui particulatim implicatus est, si neglexerit, tan- dem omnibus membris constringitur.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,760,900,800">CLXIV. Ne velis cupidus esse audiendi inimi- corum hominum infortunia. Libenter enim audien- tes verba hujusmodi, proprii propositi fructus vin- demiant.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,810,900,860">CLXXV. Ne omnem afflictionem aut tribulatio- nem hominibus propter peccata contingere existi- mes; sunt enim nonnulli qui Deo placent, et tamen probantur tentationibus. Scriptum est enim : Im- pii et iniqui persecutionem patientur. Similiter scri- ptum est : Volentes in Christo pie vivere, persecu- tionem patientur 18.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,870,900,910">CLXXVI. In tempore tribulationis, accessum tri- bulationis intuere; si enim adjectio tribulationem consolatur, dulcis fit tribulatio et facilis.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,920,900,940">CLXXVII. Quidam prudentes vocant eos qui</bloco>
 
-ΡΣΒ'. Ἡ ἄνοδος τῶν λογισμῶν, τὰς τῶν ἰδίων ἐνδίως μεταβολὰς ἐπιφέρει· ὁ Θεὸς γὰρ τὰ ἀδιάφορα τοῖς ἐξουσίοις προσφύως ἀπένειμε.
+  <!-- Marginal Notes -->
+  <bloco tipo="nota_marginal" script="latino" bbox="460,60,475,80">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,310,475,330">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,570,475,590">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,760,475,780">D</bloco>
 
-ΡΣΓ'. Καρδίας θυμωθείσης, λογισμοὶ λοιμοὶ ἀναφύονται· καὶ ἐν τῷ καπνῷ τὴν [ilegivel] ὕλην ἐπιγινώσκομεν.
-
-ΡΣΔ'. Παράμενε τῇ διανοίᾳ, καὶ οὐ κτυπᾷς ἐν πειρασμοῖς· ἔκαστον δὲ διαχωρῶν, ὑπομένει τὰ ἐπερχόμενα.
-
-ΡΣΕ'. Εὔχου μὴ εἰλθεῖν σοι πειρασμόν· ἐλθόντα δέ, κατέδεξαι ὡς σόν, καὶ οὐχ ἀλλότριον.
-
-ΡΣϚ'. Ἄρον τὴν ἔννοιαν ἀπὸ πάσης πλεονεξίας, καὶ τότε δυνήσῃ ἰδεῖν τὰς μεθοδείας τοῦ διαβόλου.
-
-ΡΣΖ'. Ὁ λέγων πᾶσας εἰδέναι τὰς μεθοδείας τοῦ διαβόλου, οὐκ ἀπέχει αὐτοῦ τελείως εἰσέρχεται.
-
-ΡΣΗ'. Ὅταν ἐξέλθῃ ὁ νοῦς τῶν σωματικῶν φροντίδων, βλέπει κατὰ ἀναλογίαν τῆς τῶν ἐχθρῶν πανουργίας.
-
-ΡΣΘ'. Ὁ λογισμὸς συναρπαζόμενος, ἐκτυφλοῦται ὑπ' αὐτῶν· καὶ τὰς μὲν ἐργασίας τῆς ἁμαρτίας βλέπει, τὰς δὲ αἰτίας αὐτῶν οὐ δύναται ἰδεῖν.
-
-ΡΟ'. Ἔστιν ὁ ποιῶν προφανὲς ἐντολήν, δουλεύων πάθει· καὶ διὰ λογισμῶν πονηρῶν ἀγαθὴν πρᾶξιν ἐξαφανίζων.
-
-ΡΟΑ'. Ἐμφερομένος ἐν ἀρχῇ κακοῦ, μὴ λέγε· Οὐ μὴ νικήσῃ με. Καθά γὰρ ἂν ἐμφερη, κατὰ τοσοῦτον ἤδη νικᾶσθαι.
-
-ΡΟΒ'. Ἕκαστον τῶν γινομένων, ἀπὸ μικροῦ ἄρχεται· καὶ κατὰ μέρος τρεφόμενον, λαμβάνει τὴν αὔξησιν.
-
-ΡΟΓ'. Δίκτυον ἐστὶ πολύπλοκον, ἡ τῆς κακίας μέθοδος· ὃ μερικῶς ἐμπλακεὶς, ἐὰν ἀμελήσῃ, περιεκτικῶς σφίγγεται.
-
-ΡΟΔ'. Μὴ θέλῃς ἀκούειν δυστυχίας ἐχθρῶν ἀνθρώπων. Οἱ γὰρ θέλους ἀκούοντας τῶν τοιούτων ῥημάτων, [ilegivel] τῆς ἰδίας προαιρέσεως.
-
-ΡΟΕ'. Μὴ πᾶσαν θλίψιν ὑπέρχεσθαι τοῖς ἀνθρώποις δι' ἁμαρτίαν νομίζε· εἰσί γάρ τινες εὔαρεστοι καὶ πειραζόμενοι. Γέγραπται γάρ· Ἀσεβεῖς καὶ ἄνομοι ἐδιώχθησαν. Ὁμοίως καὶ οἱ εὐσεβῶς θέλοντες ζῆν ἐν Χριστῷ, διωχθήσονται. 88
-
-ΡΟΖ'. Ἐν καιρῷ θλίψεως, βλέπε τὴν προσβολὴν τῆς θλίψεως· ἐπειδὴ ἡ προσβολὴ παραμυθεῖται τὴν θλίψιν, εὐπαράδεκτος γίνεται.
-
-ΡΟΥ'. Τινὲς φρονίμως λέγουσι, τοὺς διακριτικοὺς
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="510,110,965,940">
-a statione venire solet ; celerum illud deferentes,
-boni illius ministri sunt.
-
-CLX. Bonarum et malarum rerum communes
-implicationes æqua ratione suscipio ; atque ita
-Deus avertit inaequalitatis occasiones.
-
-CLXI. Cogitationum inaequalitas, propriorum im-
-proprie mutationes infert ; nam Deus invita volun-
-tariis promptre distribuit.
-
-CLXII. Opera externa promanant ex intelligibili-
-bus, atque ex sententia divina suscipiant quod
-necessarium est.
-
-CLXIII. Cordi deliciis indulgenti, pestilentes
-succrescunt cogitationes ; et in fumo materiam
-subjacentem cognoscimus.
-
-CLXIV. Permane constans in animo, et nullam
-senties in tentationibus molestiam : illinc autem
-discedens, suffer contingentia.
-
-CLXV. Precare Deum, ne tibi veniat tentatio; ca-
-terum venientem suscipito, ut bonum, non ut alienam.
-
-CLXVI. Tolle cogitationem tuam ab omni avari-
-tia, ac tum conspicere poteris omnes diaboli insidias.
-
-CLXVII. Qui dixerit se nosse omnes diaboli in-
-sidias, non novit se ipsum perfectum gerere.
-
-CLXVIII. Mens egressa de corporalibus curis,
-videt secundum proportionem inimicorum versutias.
-
-CLXIX. Qui cogitationibus ducitur, excecatur ab
-illis ; et peccatorum quidem operationes videt,
-porro illorum causas videre non potest.
-
-CLXX. Est qui facit propalam mandatum, affec-
-tibus serviens, et per cogitationes pravas bonum
-opus obscurans.
-
-CLXXI. Dum versaris in mali seu peccati princi-
-pio, ne dicas : Non vincet me. Quateus enim in eo
-versaris, tantum jam quoque victus es.
-
-CLXXII. Unumquodque eorum quod fit, a parvis
-incipitur initiis ; atque ita, dum particularim nutri-
-tur, lentis incrementis augmentum consequitur.
-
-CLXXIII. Vitiorum methodus rete est multiplex :
-qui particularim implicatus est, si neglexerit, tan-
-dem omnibus membris constringitur.
-
-CLXXIV. Ne velis cupidus esse audiendi inimi-
-corum hominum infortunia. Libenter enim audien-
-tes verba hujusmodi, proprii propositi fructus vin-
-demia nt.
-
-CLXXV. Ne omnem afflictionem aut tribulatio-
-nem hominibus propter peccata contingere existi-
-mes; sunt enim nonnulli qui Deo placent, et tamen
-probantur tentationibus. Scriptum est enim : Iusti
-et iniqui persecutionem patientur. Similiter scri-
-ptum est : Volentes in Christo pie vivere, persecu-
-tionem patientur. 88
-
-CLXXVI. In tempore tribulationis, accessum tri-
-bulationis intuere ; si enim adjectio tribulationem
-consolatur, dulcis fit tribulatio et facilis.
-
-CLXXVII. Quidam prudentes vocant eos qui
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,150,515,190">A</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,350,515,390">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,575,515,615">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,790,515,830">D</bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="110,940,280,995">
-88 II Tim. iii, 12.
-  </bloco>
+  <!-- Footer -->
+  <bloco tipo="rodape" script="latino" bbox="50,950,250,970">18 II Tim. III, 12.</bloco>
 </pagina>

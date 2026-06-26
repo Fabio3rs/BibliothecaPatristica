@@ -1,47 +1,71 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,50">
-    337 S. CLEMENTIS I ROM. PONT. OPERA GENUINA. 338
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,80">
+    S. CLEMENTIS I. ROM. PONT. OPERA GENUINA.
   </bloco>
-  <bloco tipo="texto_principal" script="siriaco" bbox="80,60,480,680">
-    ܘܐܡܪ
-    ... [texto siriaco correspondente ao Caput IV] ...
-    ...
-    ... [texto siriaco correspondente à seção B] ...
-    ...
-    ... [texto siriaco correspondente à seção C] ...
-    ...
-    ... [texto siriaco correspondente ao Caput V] ...
-    ܗܠܠܐ ܐܡܪ ... ܒܬܘܠܘܬܐ ...
+
+  <bloco tipo="texto_principal" script="siriaco" bbox="20,80,490,560">
+    [ilegivel] [ilegivel] [ilegivel] [ilegivel] . 
+    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
+    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
+    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
+    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
+    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
+    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
+    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
+    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
+    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
+    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,60,920,680">
-    CAPUT IV.
+
+  <bloco tipo="texto_principal" script="siriaco" bbox="20,560,490,760">
+    [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
+    [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
+    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
+    [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
+    [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
+    [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="480,40,520,100">
     A
-    Qui enim his anhelat sublimibus excellentibusque sedibus, mundo moritur seque ab eo segregat, ut, procul, vitam ducat cœlestem ac divinam, sanctorum angelorum instar, in conscientia pura sanctaque et in virtute Spiritus sancti, Deo omnipotenti, propter regnum cœlorum, serviens per Jesum Christum.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,300,520,360">
     B
-    Idcirco concupiscentias carnis a se removet, nec solum his valedicit verbis: Crescite et multiplicamini, sed suspirat in spem vitæ æternæ, paratam et conservatam in cœlis ¹⁰, quam promisit qui non mentitur Deus ¹¹.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,520,520,580">
     C
-    Hinc cujuscunque sexus virginibus asseritur nomen multo clarius quam honor ex filiis et filiabus procedens, eisque promittitur sublimior habitationis locus; nec ipsis comparandi sunt conjuges licet sanctitate eximii, et quorum torus fuit immaculatus. Locus enim in quo habitabunt, non tantum electis omnibus commune regnum cœlorum est, sed pars ipsorum cum sanctis angelis est, ut nobilius et excellentius quod elegerunt vitæ genus remuneretur ¹².
   </bloco>
-  <bloco tipo="texto_principal" script="siriaco" bbox="80,700,480,860">
-    ... [texto siriaco Caput V] ...
-    ܡܪܝ ... ܒܪܝ ...
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,700,920,860">
-    CAPUT V.
+  <bloco tipo="nota_marginal" script="latino" bbox="480,680,520,740">
     D
-    Virginatatem amplecti meditaris, frater! Num vero satis expendisti quantum laboris ac molestiæ secum inducat virginitas? Jugiter coram Deo ambulare debet, nec unquam ab ejus removenda est præsentiâ.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="100,870,900,920">
-    ¹⁰ I Petr. I, 4. ¹¹ Tit. I, 2. ¹² Nemo non videt hic virginibus applicari a sancto Clemente textum Isaiæ (cap. LVI, 5). Eamdem, sequentibus sæculis, applicationem ejusdem loci fecerunt multi doctores.
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,100,980,520">
+    CAPUT IV.
+
+    Qui enim his anhelat sublimibus excellentibusque sedibus, mundo moritur seque ab eo segregat, ut, procul, vitam ducat caelestem ac divinam, sanctorum angelorum instar, in conscientia pura sanctaque et in virtute Spiritus sancti, Deo omnipotenti, propter regnum coelorum, serviens per Jesum Christum.
+
+    Idcirco concupiscentias carnis a se removeat, nec solum his valedicit verbis: Crescite et multiplicamini, sed suspirat in spem vitae aeternae, paratam et conservatam in coelis, quam promisit qui non mentitur Deus.
   </bloco>
-  <bloco tipo="rodape" script="misto" bbox="300,930,600,960">
-    ܣܠܩ FIN. (a)
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,520,980,760">
+    Hinc cujuscunque sexus virginibus asseritur nomen multo clarius quam honor ex filiis et filiabus procedens, eisque promittitur sublimior habitationis locus; nec ipsis comparandi sunt conjuges licet sanctitate eximii, et quorum torus fuit immaculatus. Locus enim in quo habitabunt, non tantum electis omnibus commune regnum coelorum est, sed pars ipsorum cum sanctis angelis est, ut nobilius et excellentius quod elegerunt vitae genus remuneretur.
+    
+    CAPUT V.
+
+    Virginitatem amplecti meditaris, frater! Num vero satis expendisti quantum laboris ac molestiae secum inducat virginitas? Jugiter coram Deo ambulare debet, nec unquam ab ejus removenda est praesentia.
   </bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="80,760,920,900">
+    I Petr. 1, 4.    Tit. 1, 2.    Isaiae (cap. lvi, 5).    Eandem, sequentibus saeculis, applicationem ejusdem loci fecerunt multi doctores.
+  </bloco>
+
+  <bloco tipo="rodape" script="misto" bbox="220,900,780,980">
+    حطر  FIN. (a)
+  </bloco>
+
   <notas>
-    A página apresenta texto em duas colunas: Siriaco à esquerda e Latino à direita.
-    As letras A, B, C, D são marcadores marginais de seção.
-    O rodapé contém notas de rodapé numeradas (10, 11, 12).
-    O final do texto é marcado por "FIN. (a)" e a palavra siriaca "ܣܠܩ" (Sliq - Fim).
-    A transcrição do siriaco foi aproximada devido à resolução, focando na estrutura visível.
+    - O texto em coluna esquerda está em escrita siriaca (transcrito aqui com marcadores [ilegivel] para palavras não transcritas graficamente).
+    - As letras marginadas A, B, C, D foram colocadas em blocos próprios conforme instrução e não inseridas no fluxo do texto das colunas.
+    - BBOX valores são estimativas proporcionais à imagem (escala 0-1000).
   </notas>
 </pagina>

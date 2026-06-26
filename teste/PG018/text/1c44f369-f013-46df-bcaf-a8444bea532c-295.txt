@@ -1,11 +1,25 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="50,20,950,60">
-    581 EPISTOLÆ. 582
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,100,50">
+    581
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,60,480,360">
+  <bloco tipo="cabecalho" script="latino" bbox="420,20,580,50">
+    EPISTOLÆ.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="900,20,950,50">
+    582
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="100,60,400,90">
     Διάκονοι.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,60,500,80">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="600,60,900,90">
+    Diaconi.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,90,450,380">
     Σαραπίων διάκονος, ὁμοίως.
-    Ἰοστος διάκονος, ὁμοίως.
+    Ἰοῦστος διάκονος, ὁμοίως.
     Δίδυμος διάκονος.
     Δημήτριος διάκονος.
     Μαῦρος διάκονος.
@@ -25,8 +39,7 @@
     Κάρπων διάκονος.
     Ζώϊλος διάκονος, ὁμοίως.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,60,950,360">
-    A Diaconi.
+  <bloco tipo="texto_principal" script="latino" bbox="550,90,950,380">
     Sarapion diaconus, similiter.
     Justus diaconus, similiter.
     Didymus diaconus.
@@ -38,46 +51,102 @@
     Tryphon diaconus.
     Ammonius diaconus.
     Didymus diaconus.
-    Ptollarius diaconus.
+    Ptollarion diaconus.
     Seras diaconus.
     Gaius diaconus.
-    B Hierax diaconus.
+    Hierax diaconus.
     Marcus diaconus.
     Theonas diaconus.
     Sarmaton diaconus.
     Carpon diaconus.
     Zoilus diaconus, similiter.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="450,380,550,400">
+  <bloco tipo="nota_marginal" script="latino" bbox="480,260,500,280">
+    B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,400,520,430">
     III.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="300,400,700,420">
+  <bloco tipo="texto_principal" script="latino" bbox="250,440,750,470">
     Apud eumdem Athanasium ibid. pag. 396.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,430,480,830">
+  <bloco tipo="texto_principal" script="grego" bbox="150,480,350,500">
     ΚΑΘΑΙΡΕΣΙΣ ΑΡΕΙΟΥ
-    καὶ τῶν σὺν αὐτῷ, ὑπὸ Ἀλεξάνδρου ἀρχιεπισκόπου Ἀλεξανδρείας.
-    Ἀλέξανδρος, πρεσβυτέροις καὶ διακόνοις Ἀλεξανδρείας καὶ Μαρεώτου, παρὼν παροῦσιν (81), ἀγαπητοῖς ἀδελφοῖς ἐν Κυρίῳ χαίρειν.
-    Εἰ κα φθάσαντες ὑπεγράψατε οἷς ἐπέστειλα τοῖς περὶ Ἄρειον, προτρέπων αὐτοὺς, ἀρνήσασθαι μὲν τὴν ἀσέβειαν, πεισθῆναι δὲ τ ὑγιαινούσ καὶ καθολικῇ πίστει· καὶ ἐδείξατε ἑαυτῶν ὀρθὴν τὴν προαίρεσιν, καὶ τὴν ἐν τοῖς δόγμασι συμφωνίαν τῆς καθολικῆς κκλησίας· ὅμως ἐπειδὴ καὶ πρς τοὺς ἁπανταχοῦ συλλειτουργοὺς ἐπέστειλα περὶ τν περὶ ρειον, ἀναγκαον ἡγησάμην, ὑμᾶς μὲν, τοὺς τῆς πόλεως κληρικοὺς συναγαγεῖν· μᾶς δ, τοὺς ἀπὸ τοῦ Μαρεώτου μεταπέμψασθαι· μάλιστα ὅτι ἀφ' ὑμῶν Χάρης καὶ Πιστὸς (82) πρεσβύτεροι, καὶ Σαραπίων, καὶ Παράμμων, καὶ Ζώσιμος, καὶ Ερηναῖος διάκονοι, ἐπηκολούθησαν τοῖς περὶ Ἄρειον, καὶ ἠγάπησαν σὺν ατοῖς καθαιρεθῆναι· ἵνα καὶ τὰ νῦν γραφόμενα γνῶτε, τήν τε ἐν τούτοις συμφωνίαν ἑαυτῶν ἐπιδείξητε, καὶ τ καθαιρέσει τν περὶ ρειον καὶ τῶν περὶ Πιστὸν σύμψηφοι γένησθε. Πρέπει γὰρ τὰ παρ' ἐμοῦ γραφόμενα γινώσκειν ὑμς, καὶ καστον, ς παρ' αὐτοῦ γραφόμενα, ἐν τῇ καρδί κατέχειν.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,430,950,830">
+  <bloco tipo="texto_principal" script="latino" bbox="600,480,800,500">
     DEPOSITIO ARII
-    et sociorum ab Alexandro Alexandriæ archiepiscopo.
-    C Alexander, presbyteris diaconisque Alexandriæ et Mareotæ, præsens præsentibus, dilectis in Domino fratribus, salutem.
-    Licet jam subscripseritis litteris meis ad Arium suosque missis, quibus hortabar illos, ut abnegata impietate, sanæ et catholicæ fidei obtemperarent : eaque in re rectum propositum vestrum, necnon Ecclesiæ catholicæ circa dogmata consonantiam, palam feceritis; attamen quia omnibus etiam ubique terrarum comministris, quæ Arium sociosque ejus spectant litteris significavi; necesse duxi, vos, urbis clericos, convocare, vos item Mareoticos arcessere : præsertim cum ex vobis Chares et Pistus presbyteri : Sarapion, Parammon, Zosimus et Irenæus diaconi, ad Arii partes transierint, atque voluerint deponi cum illis; ut nota sint vobis quæ jam scripta sunt, utque vestram in hisce concordiam declaretis, ac depositioni Arii, Pisti sociorumque suffragium addatis vestrum. Par quippe est comperta vobis esse quæ a me conscripta sunt, eaque singulos, quasi quisque vestrum scripsisset, corde complecti.
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="50,840,480,930">
-    (80) Hi quatuor postremi, Θεωνᾶς, Σαρμάτων, Κάρπων, Ζώϊλος, desunt apud Galasium.
-    (81) Παρὼν παροῦσιν. Singularis loquendi formula.
+  <bloco tipo="nota_marginal" script="latino" bbox="480,510,500,530">
+    C
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,510,450,840">
+    καὶ τῶν σὺν αὐτῷ, ὑπὸ Ἀλεξάνδρου ἀρχιεπι-
+    σκόπου Ἀλεξανδρείας.
+    Ἀλέξανδρος, πρεσβυτέροις καὶ διακόνοις Ἀλεξαν-
+    δρείας καὶ Μαρεώτου, παρὼν παροῦσιν (81), ἀγαπη-
+    τοῖς ἀδελφοῖς ἐν Κυρίῳ χαίρειν.
+    Εἰ καὶ φθάσαντες ὑπεγράψατε οἷς ἐπέστειλα τοῖς
+    περὶ Ἄρειον, προτρέπων αὐτοὺς, ἀρνήσασθαι μὲν
+    τὴν ἀσέβειαν, πεισθῆναι δὲ τῇ γιαινούσ καὶ καθο-
+    λικῇ πίστει· καὶ ἐδείξατε ἑαυτῶν ρθὴν τὴν προαί-
+    ρεσιν, καὶ τὴν ἐν τοῖς δόγμασι συμφωνίαν τῆς κα-
+    θολικῆς Ἐκκλησίας· ὅμως ἐπειδὴ καὶ πρὸς τοὺς ἁπαν-
+    ταχοῦ συλλειτουργοὺς ἐπέστειλα περὶ τῶν περὶ
+    Ἄρειον, ἀναγκαῖον γησάμην, ὑμᾶς μὲν, τοὺς τῆς
+    πόλεως κληρικοὺς συναγαγεῖν· μᾶς δὲ, τοὺς ἀπὸ τοῦ
+    Μαρεώτου μεταπέμψασθαι· μάλιστα ὅτι ἀφ' ὑμῶν
+    Χάρης καὶ Πιστὸς (82) πρεσβύτεροι, καὶ Σαραπίων,
+    καὶ Παράμμων, καὶ Ζώσιμος, καὶ Ερηναῖος διάκονοι,
+    ἐπηκολούθησαν τοῖς περὶ Ἄρειον, καὶ ἠγάπησαν σὺν
+    αὐτοῖς καθαιρεθῆναι· ἵνα καὶ τὰ νῦν γραφόμενα
+    γνῶτε, τήν τε ἐν τούτοις συμφωνίαν ἑαυτῶν ἐπιδεί-
+    ξησθε, καὶ τῇ καθαιρέσει τῶν περὶ Ἄρειον καὶ τῶν
+    περὶ Πιστὸν σύμψηφοι γένησθε. Πρέπει γὰρ τὰ παρ'
+    ἐμοῦ γραφόμενα γινώσκειν ὑμᾶς, καὶ ἕκαστον, ὡς
+    παρ' αὐτοῦ γραφόμενα, ἐν τῇ καρδίᾳ κατέχειν.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,510,950,840">
+    et sociorum ab Alexandro Alexandriæ archiepiscopo.
+    Alexander, presbyteris diaconisque Alexandriæ
+    et Mareotæ, præsens præsentibus, dilectis in Domino
+    fratribus, salutem.
+    Licet jam subscrispseritis litteris meis ad Arium
+    suosque missis, quibus hortabar illos, ut abnegata
+    impietate, sanæ et catholicæ fidei obtemperarent :
+    eaque in re rectum propositum vestrum, necnon
+    Ecclesiæ catholicæ circa dogmata consonantiam,
+    palam feceritis; attamen quia omnibus etiam ubi-
+    que terrarum comministris, quæ Arium sociosque
+    ejus spectant litteris significavi; necesse duxi, vos,
+    urbis clericos, convocare, vos item Mareoticos ar-
+    cessere : præsertim cum ex vobis Chares et Pistus
+    presbyteri : Sarapion, Parammon, Zosimus et Ire-
+    næus diaconi, ad Arii partes transierint, atque vo-
+    luerint deponi cum illis; ut nota sint vobis quæ
+    jam scripta sunt, utque vestram in hisce concor-
+    diam declarelis, ac depositioni Arii, Pisti socio-
+    rumque suffragium addatis vestrum. Par quippe est
+    comperta vobis esse quæ a me conscripta sunt, ea-
+    que singulos, quasi quisque vestrum scripsisset,
+    corde complecti.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,700,500,720">
+    D
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="50,850,450,950">
+    (80) Hi quatuor postremi, Θεωνᾶς, Σαρμάτων, Κάρ-
+    πων, Ζώϊλος, desunt apud Galasium.
+    (81) Παρὼν παροῦσιν. Singularis loquendi for-
+    mula.
     (82) Hunc Pistum esse putamus qui Alexandriæ
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="520,840,950,930">
-    D episcopus ab Arianis ordinatus est, quippe sub ipsum Arianismi initium inter antesignanos computabatur, ut paulo infra est, τῶν περὶ Ἄρειον καὶ τῶν περὶ Πιστόν, etc.
+  <bloco tipo="aparato_critico" script="misto" bbox="550,850,950,950">
+    episcopus ab Arianis ordinatus est, quippe sub
+    ipsum Arianismi initium inter antesignanos com-
+    putabatur, ut paulo infra est, τῶν περὶ Ἄρειον καὶ
+    τῶν περὶ Πιστόν, etc.
   </bloco>
   <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
     Digitized by Google
   </bloco>
-  <notas>
-    Transcrição de página bilíngue (Grego/Latino). As letras marginais A, B, C, D foram incluídas nos blocos de texto correspondentes.
-  </notas>
 </pagina>

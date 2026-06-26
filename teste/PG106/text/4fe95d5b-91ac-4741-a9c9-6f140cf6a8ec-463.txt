@@ -1,94 +1,171 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,20,140,80">
+  <bloco tipo="cabecalho" script="latino" bbox="100,40,150,60">
     907
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="300,20,700,80">
+  <bloco tipo="cabecalho" script="latino" bbox="450,40,650,60">
     JOANNIS GEOMETRÆ
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="860,20,980,80">
+  <bloco tipo="cabecalho" script="latino" bbox="920,40,960,60">
     908
   </bloco>
-
-  [!-- Gutter marginal identifiers (must be separate blocks) --]
-  <bloco tipo="nota_marginal" script="latino" bbox="480,100,520,150">
+  <bloco tipo="texto_principal" script="grego" bbox="100,70,480,250">
+    Χορὸς φιλάνων πυγθέων ¹⁰ σεμνοτρόπων,
+    Ὁ μὲν τεθνηκὼς δεξιοῦται πλουσίοις
+    Ὕμᾶς ταλάντοις, ὡς ν αὐτο τὸν τάφον
+    Συχνὰῖς ἐπισκέπτοισθε ¹¹ λαμπαδουχίαις.
+    Ὕμῶν δὲ μήτις τόνδε κινήσοι λίθον,
+    Μηδὲ φθονήσοι τῇσδε τῆς συσκηνίας.
+    Μόνους δὲ χρύπτοι παῖδα καὶ τὴν μητέρα·
+    Ὡς ἂν καθὼς πᾶν ἔσχεν ἡ μήτηρ νέα,
+    Οὕτω πάλιν θανοῦσα, συμμένη μόνῳ.
+    Εἰ δὲ πρὸς οὐδὲν τόνδε θείς τις ¹² τὸν νόμον,
+    Κινεῖν λοιτο τόνδε τὸν κοινὸν λίθον,
+    Τὸ τῆς Προνοίας ὄμμα τιμωρὸν λάβοι,
+    Καὶ πῦρ γεέννης, καὶ τὸ τς δίκης ξίφος.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="150,255,480,270">
+    δ'. Εἰς τὴν κοίμησιν τῆς Θεοτόκου.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="100,270,480,320">
+    Σαῖς ἠγκαλίζου πρίν με χερσί, Παρθένε,
+    Θηλῆς δὲ σῆς ἔσπασα μητρικὸν γάλα.
+    Τὸ πνεμά σου νν αὐτὸς ἠγκαλισμένος,
+    Τὸ σμα πέμπω πρὸς τρυφῆς τ χωρίον.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="200,325,450,340">
+    ε'. Εἰς τὴν ἀπόστασιν.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="100,345,480,490">
+    Νῦν, οὐρανὲ, στάλαξον ὄμβρους αἱμάτων·
+    Ἀήρ, ἐπενδύθητι πένθιμον σκότος·
+    Ἡ γῆ, καταξάνθητι καὶ άγηθί μοι,
+    Κλῖψον τὰ δένδρα, ῥίψον οἷα βοστρύχους,
+    Ὅλην στολὴν μέλαιναν ἀντὶ τῆς χλόης,
+    Τὸ σὸν πρόσωπον ἀμφιέσασα, στένε.
+    Τὸ συγγενὲς μὲν αἷμα πᾶσαν τὴν Ἔω
+    Πρῴτον μένει, καὶ μερίζεται ξίφος·
+    Τὰ συμφυῆ, φεῦ ! καὶ γένη τε καὶ μέλη.
+    Πατὴρ μὲν ὀργᾷ πρὸς σφαγὴν τν φιλάτων·
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,500,520,670">
+    lacrymabile tempus sustinens. Sed, o vos, qui splen-
+    didam hanc domum incolitis, castorum et sancto-
+    rum illustrium caterva, mortuus vos divitibus cum
+    thesauris adit, ut illius sepulcrum numerosis con-
+    tegatis lampadibus. Vestrum autem nullus hunc
+    moveat lapidem, neque illi invideat contubernio;
+    solos autem recondat filium et matrem : ut, sicut pro
+    toto cum habuit recens mater, ita mortua iterum
+    cum solo maneat. Si quis autem pro nihilo legem
+    hanc reputans, movere susceperit communem hanc
+    lapidem, oculum Providentiæ vindicem sibi assu-
+    mat, et ignem gehennæ, et justitiæ gladium.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="200,675,450,690">
+    4. In dormitionem Deiparæ.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,690,520,740">
+    Tuis amplectebaris me prius manibus, Virgo,
+    ex ubere autem tuo maternum lac sugebam. Nunc
+    animam tuam ipse amplexus, corpus mitto ad se-
+    dem deliciarum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,745,400,760">
+    5. In apostasim.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,760,520,880">
+    Nunc, cœlum, irrora imbrem sanguinis, aer lu-
+    ctus velo obnubiletur, tellus aperiatur et mihi de-
+    hiscat. Arbores seca, comam simul lacera, omnem
+    vestitum nigrum pro viridi, faciemque ope-
+    riens, geme. Cognatus quidem sanguis totum Orien-
+    tem primum exspectat, et dividit gladius consan-
+    guinea, heu ! genera et membra. Pater quidem ira-
+    scitur ad cædem suorum, et dextram natus patria
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="520,60,540,80">
     A
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,330,520,380">
+  <bloco tipo="texto_principal" script="grego" bbox="540,60,900,270">
+    Καὶ δεξιὰν παῖς πατρικῷ χραίνει φόνῳ·
+    Αἴρει δὲ καὶ μάχαιραν, ὦ πικροῦ πάθους !
+    Ἀνὴρ ἀδελφὸς εἰς ἀδελφοῦ καρδίαν·
+    Ἡ γ δὲ πολλος συσπαραχθεῖσα τρόμοις,
+    Κάτω δονεῖται, καὶ κεραυνῶν αἱ φλόγες
+    Ἄνωθεν αὐτὴν ἐκτεφροῦσι τν κόνιν.
+    Πόλεις δὲ ῥώμης τὰς ἐπάλξεις ὡς κόμας
+    Πρὸς γῆν βαλοῦσαι καὶ κατεσπαραγμέναι,
+    Θρηνοῦσαι πικρὸν, οἷα πένθιμοι κόραι.
+    Οἱ τῆς γαρ κρατοσιν· α πάλαι πόλεις
+    Φόρους τελοῦσαι, τῶν καθ' ἡμν νῦν φόνων
+    Αἰτοσι μισθούς· καὶ χορεύουσι μέγα.
+    Καὶ ταῦτα μὲν δὴ ταῦτα πρὸς τὴν Ἔω.
+    Τὰ πρὸς Δύσιν δ, ποῖος ἐξεῖποι λόγος;
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="520,275,540,295">
     B
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,620,520,680">
+  <bloco tipo="texto_principal" script="grego" bbox="540,275,900,490">
+    Σκυθῶν μὲν αὐτὴν πλῆθος, ὡς μὲν πατρίδα
+    Διατρέχει τε καὶ περιτρέφει κύκλῳ·
+    Ὡς γῆν δ βλαστάνουσαν εὐγενεῖς κλάδους
+    Ἀνδρῶν ἀτρέπτων καὶ σιδηρέαν φύσιν
+    Πρόῤιζον ἐκτέμνουσι, καὶ βρεφῶν γένη
+    Ξίφος μερίζει· καὶ τὰ μὲν μήτηρ ἔχει,
+    Τὰ δ' ἐχθρὸς ἐξέσπασε τῶν βελῶν βίᾳ.
+    Αἱ δὲ κραταιαὶ πρν πόλεις, λεπτὴ κόνις.
+    Ἱπποτρόφους δὲ τὰς πρὶν ἀνθρωποτρόφους,
+    Οἴμοι ! βλέπων νῦν πῶς παύσομαι δακρύων;
+    Χῶραι μὲν οὕτω πυρπολοῦνται καὶ τόποι
+    Σὺ δ', ἡ βασιλὶς τοῦ Βυζαντος ἑστία,
+    Ποῦ μοι τύχης ἔστηκας, εἰπέ μοι, πόλις,
+    Πόλις κακοῖς κρατοῦσα, τοῖς καλοῖς σον
+    Νικῶσα τὸ πρίν; Οὐ χλονῇ ¹³ καθ' ἡμέραν,
+    Οὐ βάθρα πίπτει καὶ σπαράσσεται τρόμῳ;
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="530,500,550,520">
     C
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,760,520,820">
+  <bloco tipo="texto_principal" script="latino" bbox="540,500,930,690">
+    inquinat nece : figit autem gladium, o acerbum
+    dolorem ! frater in fratris pectus. Terra multis
+    agitata tremoribus deorsum fertur, et tonitruum
+    ignes deorsum ipsum incinerant pulverem. Ur-
+    bes autem roboris munimentis ut comis ad solum
+    dejectis et dirutis, amare lacrymantur ut luctuosæ
+    virgines. Filii Agar vincunt; quæ olim urbes tri-
+    buta solvebant, nunc contra nos cædium mercedem
+    rogant et gaudio exsultant. Et hæc quidem ad
+    Orientem. Sed quæ ad Occidentem, quænam dicet
+    oratio? Scytharum multitudo hanc regionem ut
+    suam patriam perlustrat et circulatim circumlu-
+    strat ; ut terram producentem nobiles surculos ho-
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="530,710,550,730">
     D
   </bloco>
-
-  [!-- Left column, top: Greek --]
-  <bloco tipo="texto_principal" script="grego" bbox="40,90,470,420">
-Χορᾶ φιλάγνων πανθέων· σεμνοτρόπων,  
-Ὁ μὲν τεθνήκως· δεῖξονται πλουσίοις  
-Ὑμᾶς ταλαίπωρος, ὡς ἂν αὐτοῦ τὸν τάφον  
-Συγκινᾶν ἐπισκιόπτω ' λαμπροδουλείας.  
-Τῷ δὲ μὴ τῆς τόδε κινήσῃ λίθον,  
-Μήδ' φθόνῳ ἔτυχε τῆς συχνης.  
-Μόνους ὅσ' χρῶσαι καὶ καὶ τὰ μητέρα·  
-Ὦς ἂν κακῶς πᾶν ἔχῃ ἢ μήτηρ νέ᾽,  
-Πῶς πάλιν ἀνασῦσα, συμφέρει μόνη.  
-Εἰ δὲ πρὸς οὕσδε τόνδε θέλῃ τις ἢ τῶν νόμων,  
-Κινείν ἔλαιον τόνδε τὸν κοιλὸν λίθον,  
-Τὸ τῆς Προνοίας ὄμμα τιμωρᾷ λάθῃ,  
-Καὶ γὰρ γέννης, καὶ τὸ τῆς βίης ἔφορον.  
-δ'. Εἰς τὴν κοιμησίν τῆς Θεοτόκου:  
-Σαὶς ηψαλίδων πρὸς με χερσί. Μαθθὲν,  
-Θηλὶς ὅ σὺς ἔπασσα μητρικὸν γάλα.  
-Τὸ πνεῦμά σου νῦν αὐτὸς ἠγαλλιασμένος,  
-Τὸ σῶμα πέμπω πρὸς τροφῆς τὸ χωρίον.
+  <bloco tipo="texto_principal" script="latino" bbox="540,710,930,880">
+    minum invictorum et ferream naturam radicitus
+    avellunt, et infantium ætatem gladius tollit : hos
+    quidem mater habet, illos autem hostis eripuit sa-
+    gittis vim inferens. Quæ olim potentes urbes erant,
+    nunc levis pulvis : illas quæ tam multos equos et
+    tot homines alebant prius, heu mihi ! quomodo
+    nunc intuens cessabo a lacrymis ! Ita quidem re-
+    giones et loci igne cremantur. Tu vero, regina By-
+    zantii sedes, in quo fortunæ mihi sisteris, dic mihi,
+    o civitas ? Civitas malis obnoxia, bonis quantum
+    vincebas nuper, nonne quotidie excuteris ? nonne
+    fundamenta cadunt et motibus dejiciuntur ? nonne
+    quos produxisti ramos in brachiis tuis, vidisti gladii
   </bloco>
-
-  [!-- Right column, top: Greek --]
-  <bloco tipo="texto_principal" script="grego" bbox="530,90,960,420">
-A Καὶ δεξιὰν παῖς πατρικῷ κραίνειν φόνον·  
-Λίπρει δὲ καὶ μάχαιραν, ὦ πικροῦ πάθους!  
-Ἀνήρ ἀδελφὸς εἷς ἀδελφοὺς χαρίει·  
-Ἡ γῆ δὲ πολλοῖς συσταραχθεῖσα τρόμοις.  
-Κάτω δονεῖται, καὶ κεραυνῶν αἱ φλόγες·  
-Ἄνωθεν αὖθις ἐκεῖ σπεύδουσι τὴν χόλην·  
-Πόλεις δὲ Ῥώμης τὰς ἐπαίξεισιν ὡς χώμα·  
-Πρὸς γῆν βαλοῦσιν καὶ κατεστραγγμῶσιν,  
-Θρηνοῦσι πικρόν, οἷα πένθιμον κόρα.  
-Οἱ τῆς Ἄγαρ κραταιοί· αἱ πάλαι πόλεις  
-Φόρους τελοῦσαι, τῶν καθ' ἡμῶν νῦν φόρων·  
-Αἰτοῦσι μισθούς· καὶ χορεύουσι μέγα.  
-Καὶ ταῦτα μὲν ἔτι ταῦτα πρὸς τὴν Ἀνατολήν.  
-Τὰ πρῶτα Δίων ἐστίν, ποῖος ἐξείπω λόγος;  
-Σκυθῶν μὲν αὐτὴν πλήθος, ὡς μὴν πατρίδα·
+  <bloco tipo="aparato_critico" script="latino" bbox="100,890,650,910">
+    10 Dub. scr. est hæc vox. 11 Sic cod. 12 τίσον cod. 13 χλονᾶ cod.
   </bloco>
-
-  [!-- Left column, bottom: Latin --]
-  <bloco tipo="texto_principal" script="latino" bbox="40,430,470,760">
-lacrymabile tempus sustinens. Sed, o vos, qui splendida hanc domum incolitis, castorum et sanctorum illustrium caterva, mortuos vos divitiis cum thesauris adiſt, ut illius sepulcrum numerosis contegatis lampadibus. Vestrum autem nullus hunc moveat lapidem, neque illi invidet contubernio; solos autem recordati filium et matrem: ut, sicut pro toto cum habit recens mater, ita mortua iterum cum solo maneat. Si quis autem pro nihilo legem hanc reputans, movere susceperit communem hanc lapidem, oculum Providentiae vindicem sibi assumat, et ignem gehennæ, et justitiæ gladium.
-4. In dormitionem Deiparæ.  
-Tuis amplectebaris me prius manibus, Virgo, ex utere autem tuo maternum lac sugebar. Nunc animam tuam ipse amplexus, corpus mitte ad se- dem delicarium.
-5. In apostasim.  
-Nunc, cœlum, irrora imbrem sanguinis, aer luctus velo obnubiletur, tellus aperiatur et mihi dehiscat. Arbores seca, comam simul lacera, omnem vestitum nigrum pro viridi, faciemque operiens, geme. Cognatus quidem sanguis totum Orientem primum expeclat, et dividit gladius consanguineus, heu! genera et membra. Pater quidem ira- scitur ad caedem suorum, et dextram natus patria
+  <bloco tipo="rodape" script="latino" bbox="550,950,750,980">
+    Digitized by Google
   </bloco>
-
-  [!-- Right column, bottom: Latin --]
-  <bloco tipo="texto_principal" script="latino" bbox="530,430,960,760">
-inquinat nece : &amp;git autem gladium, o acerbum dolorem ! frater in fratris pectus. Terra multis agitata tremoribus decorsum fertur, et militum voces deversam ipsum incinerant pulverem. Urbes autem reboris munimentis ut comis ad solum dejectis et dirutis, amare lacrymantur ut lectarior virginis. Filii Agar viruntur; quæ aliis urbes et tributa solvebant, nunc contra nos cedidum mercedem rogat et gaudio exsultant. Et hæc quidem ad Orientem. Sed quæ ad Occidentem, quænam dicet oratio? Scytharum multitudo hanc regionem ut suam patriam perlustrat et circulation circulat; ut terram producantem nobiles surculos hominum devorant et ferream naturam radicitus avellant, et infantium ætatem gladius tollit: hos quidem mater habet, illos autem hostis eripuit sanguis vim inferens. Quæ olim potentes urbes erant, nunc levis pulvis: illas quæ tam multos equos et tot homines alebant prius, heu nihil! quomodo nunc inanes cessabo a lacrymis! Ila quidem regionis et loci ignes cremantur. Tu vero, regina Byzantii sedes, in quo fortuna mihi sisteris, dic mihi, o civitas? Civitas malis obnoxia, bonis quantum vincebas super, nunc quotidie excuteris? nunc fundamental cadunt et motibus dejiciuntur? nomue quos produxisti ramos in brachiis tuis, vidisti gladii
-  </bloco>
-
-  [!-- Footnotes / small notes at bottom --]
-  <bloco tipo="rodape" script="latino" bbox="30,760,960,920">
-* Düb. scr. est hæc vox.  " Sic cod.  " ίσον cod.  " χλωδι cod.  
-(Nota: várias abreviações e sinais críticos presentes na margem inferior; reprodução literal conforme impresso.)
-  </bloco>
-
   <notas>
-    Observações:
-    - Página com duas colunas principais: topo (grego) e rodapé (latim). Segui a regra de transcrever a coluna esquerda inteira antes da direita.
-    - As letras A, B, C, D colocadas verticalmente no gutter foram transcritas como blocos separados do tipo nota_marginal (ver blocos correspondentes).
-    - Partes do texto grego apresentavam palavras parcialmente ilegíveis; procurei transcrever fielmente o que é visível. Onde a leitura era incerta, preservei a forma mais provável sem normalizar. Não usei a marca [ilegivel] extensivamente, apenas quando necessário; contudo, devido à qualidade da imagem, pequenas incertezas permanecem nas palavras gregas e em algumas abreviaturas latinas.
-    - "Digitized by Google" não foi incluído como parte do texto principal, mas a referência a elementos de rodapé/nota crítica foi mantida no bloco de rodapé.
+    Transcrição fiel ao layout de duas colunas (esquerda completa, depois direita completa), respeitando a mudança de idioma (Grego no topo, Latino em baixo) dentro de cada coluna física. As letras marginais A, B, C, D foram tratadas como blocos separados de nota_marginal.
   </notas>
 </pagina>

@@ -1,59 +1,147 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,20,1000,95">401 COMMENTARIUS IN NAHUM CAP. I. 402</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="0,90,485,915">[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-Τὰ μὲν δὴ τῆς ὑποθέσεως τοῦ βιβλίου ταῦτα· προσκείσθω δὲ κατὰ μέρος λοιπὸν.
-ΚΕΦ. Α'.
-Στίχ. α'. — Λῆμμα Νινευή, βιβλίον ὁράσεως Ναούμ τοῦ Ἐλκεσαίου.
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-Ἐπίστευσα, διὸ καὶ ἐλάλησα· [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="430,150,470,185">A</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="430,470,470,505">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="430,760,470,795">D</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,175,540,210">B</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,90,1000,915">CAP. I.
-VERS. 1. — Lemma, assumptio, Ninives, liber visionis Nahumi Elcesaei. Hic quidem con-
-suetus librorum propheticorum titulus est : voca-
-buli tamen lemma notionem enucleare, prout in
-opere erit. Unus erat sanctus Spiritus, qui horum
-numerum dignis suam gratiam suppeditabat, teste
-beato Paulo : Habentes autem eundem Spiritum
-fidei, sicut scriptum est : Credidi, propterea locu-
-tus sum; et nos quia credimus, idcirco loqui-
-mur. Quibus verbis significat, eadem sancti
-Spiritus gratia tum veteres illos politos, tum etiam
-recentiores qui Novi Testamenti mysterio operam
-suam locaverunt. Diversae vero pro instantia operis
-praestabantur facultates : Divisiones 214 enim,
-inquit, gratiarum sunt, idem tamen Spiritus.
-Diverse dona ait, unum nihilominus, qui omnia
-suppeditat, Spiritum. Imo et gratiarum catalogum
-recitat : Alii quidem per Spiritum datur sermo
-sapientiae, alii sermo scientiae juxta eundem Spiri-
-tum. Tum reliqua subdit : Hæc autem omnia
-operatur unus et idem Spiritus dividens seorsum
-singulis prout vult. Omnia scilicet ab uno Spi-
-ritu fieri confirmat; ceterum varias, prout res
-postulat, facultates dari, quarum ope gravissimarum
-rerum notitiam excipiebant prophetæ. Itaque exsti-
-tuti quidem omnes, ut credibile est, ad sublimiorum re-
-rum cognitionem comparabantur. Oportebat enim
-eorum mentes a praesenti natura procul abesse, ut
-uni possent revelatarum rerum contemplationi
-vacare. Nam si fieri nequit, ut nos accurate a prae-
-ceptoribus inbuamur doctrina aliqua, nisi animis
-ab omni [ilegivel] cohibitis, sedulo dictis mentem
-intendamus : num prophetae terrifica adeo atque
-inerrabiles visiones percipere potuissent, nisi
-mentem antea, nempe sub ipsam visionis tempus,
-abalienatam terrenis habuissent? Sic beatum Pe-
-trum Scriptura dicit in extasi positum vidisse si-
-ndonem de coelo deivsam. Spiritus enim gratia
-mentem ejus primo abstraxit terrestribus, tum</bloco>
-  <bloco tipo="rodape" script="latino" bbox="0,930,760,995">1 Cor. IV. 13. 1 Cor. XII. 6. Ibid. 8. Ibid. 11.</bloco>
-  <notas>Coluna esquerda transcrita antes da direita; letras A, B, C e D tratadas como blocos de nota_marginal separados, conforme a marcação vertical central do layout.</notas>
+  <bloco tipo="cabecalho" script="latino" bbox="280,40,620,65">
+    COMMENTARIUS IN NAHUMI CAP. I.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="40,45,70,60">
+    401
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,45,890,60">
+    402
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="20,70,440,900">
+    ὑπὲρ ν ἀπονοί τε καὶ μοχθηρίᾳ γνώμης ἑλόμενοι
+    πρὸς τοσοῦτον ἐξώκειλαν ἀσεβείας, ὥστε κα ἐπὶ τὸν
+    Θεὸν ἐρασθαι πόλεμον τό γε ἐπ' αὐτος· ὥσπερ γὰρ
+    ὁ Ἀβδιοὺ τὴν κατὰ τῶν Ἰδουμαίων λέγει τιμωρίαν,
+    ἣν ὑπομενεῖν ἤμελλον ὕστερον μετὰ τὴν ἀπὸ Βαβυ-
+    λῶνος ἐπάνοδον τοῦ λαοῦ, ὑπὲρ ὧν πεπλημμελήκεσαν
+    εἰς τὴν Ἱερουσαλὴμ εἰς τε τοὺς οκοῦντας αὐτὴν
+    κατὰ τὸν καιρὸν ἐκεῖνον, δῆλον τῇ μηνύσει ποιῶν
+    ὅτι κατὰ γνώμην Θεοῦ τὰ περὶ αὐτοὺς γενήσεται
+    ταῦτα, οὕτως ὁ μακάριος Ναοὺμ ἐπὶ τῆς βίβλου ταύ-
+    της τὴν ἐπαχθησομένην τοῖς Ἀσσυρίοις παρὰ τοῦ
+    Θεοῦ τιμωρίαν φησίν, (p. 326) ἥνπερ οὖν κα διὰ
+    Βαβυλωνίων ὑπέμειναν ὕστερον· δηλῶν κα αὐτὸς
+    ὅτι κατὰ γνώμην Θεοῦ κα παθεῖν ταῦτα οἱ Ἰσραη-
+    λῖται διὰ τὴν οἰκείαν συνεχωρήθησαν ἀσέβειαν· καὶ
+    ἀνδίσον οἷς πεπλημμελήκεσαν δώσουσι δίκην. Τὰ μὲν δ τῆς ὑποθέσεως τοῦ βιβλίου ταῦτα· προσεκτέον
+    εἰ τοῖς κατὰ μέρος λοιπόν.
+    ΚΕΦ. Α'.
+    Στίχ. α'. — « Λῆμμα Νινευή, βιβλίον ὁράσεως
+    Ναοὺμ τοῦ Ἐλκεσαίου. » Τοῦτο μὲν οὖν ἡ εωθυῖα
+    ἐπιγραφὴ τῶν προφητικῶν· τοῦ λήμματος δὲ σαφη-
+    νίσαι προῄρηται τὴν διάνοιαν· ἐν μὲν γὰρ ἦν τὸ Πνεῦμα
+    τὸ ἅγιον, ὁ πᾶς τν τοιούτων ἐξιωμένος τὴν οἰκείαν
+    παρεῖχετο χάριν· καθὼς  μακάριος Παλος φησίν·
+    « Ἔχοντες δὲ αὐτὸ Πνεῦμα τῆς πίστεως κατὰ τὸ
+    γεγραμμένον· Ἐπίστευσα, διὸ καὶ ἐλάλησα· καὶ
+    ἡμες πιστεύομεν, διὸ καὶ λαλοῦμεν. » δεικνὺς τι
+    τῆς αὐτῆς τοῦ ἁγίου Πνεύματος χάριτος οἵ τε πάλαι
+    ἐπῆγον, καὶ οἱ τῷ τῆς Καινῆς Διαθήκης ὑπηρετοῦ-
+    μενοι μυστηρίῳ· διάφοροι δὲ πρὸς τὸ κατεπείγον τῆς
+    χρείας ἐπετελοῦντο αἱ ἐνέργειαι· « Διαιρέσεις γάρ, »
+    φησί, « χαρισμάτων εἰσί, τὸ δὲ αὐτὸ Πνεῦμα. » Διά-
+    φορα μὲν εἶναι τὰ διδόμενα λέγων, ἓν δὲ τὸ παρέχον
+    ἅπαντα Πνεῦμα. Εἰπὼν γοῦν καὶ τὸν τν χαρισμά-
+    των κατάλογον, « Ὃ μν γὰρ διὰ τοῦ Πνεύματος
+    δίδεται λόγος σοφίας, ἄλλ δὲ λόγος γνώσεως κατὰ
+    τὸ αὐτὸ Πνεῦμα, » καὶ τὰ ἑξῆς (p. 327) ἐπάγει·
+    « Ταῦτα δὲ πάντα ἐνεργεῖ τ ἓν καὶ αὐτὸ Πνεῦμα
+    διαιροῦν ἰδίᾳ ἑκάστῳ καθὼς βούλεται· » δεικνὺς ὅτι
+    ἐξ ἑνς τοῦ ἁγίου Πνεύματος ἅπαντα ἐνηργεῖτο·
+    πλείστου δὲ καὶ κατὰ τὴν χρείαν ἐνεγίνοντο αὐτοῖς
+    δώρηται, καθ' ἃς τὴν ἀποκάλυψιν ἐδέχοντο τῶν
+    πραγμάτων. Ἐκτάσει μὲν οὖν ἅπαντες ὡς εἰκὸς
+    τῶν ἀπορρήτων ἐδέχοντο τὴν γνῶσιν, ἐπειπερ
+    τὴν ατοῖς τας ἐννοίαις πόρρω που τῆς παρού-
+    σης καταστάσεως γεγονότας, οὕτω δυνηθῆναι τῇ τῶν
+    θείων μόνον θεωρίᾳ προσανέχειν μόνῃ· εἰ γὰρ ἡμς
+    ψυχεῖν τε ἀκριβῆ παρὰ τῶν παιδευόντων δέχεσθαι
+    τὴν μάθησιν, εἰ μὴ πάντων ἑαυτοὺς ἀποσπάσαντες
+    τῶν ἐκρυβεὶς πολλῇ προσέχοιμεν τοῖς λεγομένοις, ἢ
+    καὶ γε τὰς οὕτω φοβεράς τε καὶ ἀπορρήτους θεωρίας
+    ἐμελλον ἂν αὐτὰς ὑποδέχεσθαι, μὴ τ λογισμῷ πρό-
+    τερον κατὰ τὸν τς θεωρίας καιρὸν ἐξισταμένοις τῶν
+    πραγμάτων; Οὕτω τὸν μακάριον λέγει Πέτρον ἐν ἐκ-
+    στάσει γεγονότα τὴν σύνθεσιν ἰδεν ἐκ το οὐρανο
+    κατερχομένην· ἐπειδὴ ἡ το Πνεύματος χάρις πρό-
+    τερον αὐτοῦ τν διάνοιαν ἀπέσπασε τῶν παρόντων,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="460,70,880,900">
+    ipsis erat bellum Deo indixerint. Jam sicuti Abdias
+    Idumæis canit punitionem, quam deinde passuri
+    erant, post Hebræi populi Babylone reditum, ob ea
+    quæ adversus Hierosolyma eorumque incolas antea
+    deliquerant; significans omnino fore, ut hæc a Dei
+    voluntate illis eveniant: ita beatus hoc libro Nahum-
+    mus superventuras Assyriis a Deo pœnas recitat,
+    quas reapse a Babyloniis perpessi sunt postea: ipse
+    pariter ostendens, quemadmodum Dei nutu et hæc
+    contingere Israelitis permissum fuerit; et ipsi de-
+    mum Assyrii scelera sua tempore idoneo supplicii's
+    expiaturi essent. Et libri quidem argumentum ejus-
+    modi est. Nunc ad singula explananda incumben-
+    dum est.
+    Assyrii γε τῆς ἀπονοίας τῆς αυτῶν κατὰ καιρὸν
+    ἀνδίσον οἷς πεπλημμελήκεσαν δώσουσι δίκην. Τὰ μὲν δὴ τῆς ποθέσεως το βιβλίου τατα· προσεκτέον
+    εἰ τος κατὰ μέρος λοιπόν.
+    CAP. I.
+    VERS. 1. — « Lemma, assumptio, Ninives,
+    liber visionis Nahumi Elccsæi. » Hic quidem con-
+    suetus librorum propheticorum titulus est : voca-
+    buli tamen lemma notionem enucleare, pretium
+    operæ erit. Unus erat sanctus Spiritus, qui horum
+    munerum dignis suam gratiam suppedidabat, teste
+    beato Paulo : « Habentes autem eumdem Spiritum
+    fidei, sicuti scriptum est : Credidi, propterea locu-
+    tus sum; et nos quia credimus, idcirco loqui-
+    mur ¹. » Quibus verbis significat, eadem sancti
+    Spiritus gratia tum veteres illos politos, tum etiam
+    recentiores qui Novi Testamenti mysterio operam
+    suam locaverunt. Diversæ vero pro instantia operis
+    præstabantur facultates : « Divisiones 214 enim,
+    inquit, gratiarum sunt, idem tamen Spiritus ². »
+    Diversa dona ait, unum nihilominus, qui omnia
+    suppedital, Spiritum. Imo et gratiarum catalogum
+    recitat : « Alii quidem per Spiritum datur sermo
+    sapientiæ, alii sermo scientiæ juxta eundem Spiri-
+    tum ³. » Tum reliqua subdit : « Hæc autem omnia
+    operatur unus et idem Spiritus dividens seorsum
+    singulis prout vult ⁴. » Omnia scilicet ab uno Spi-
+    ritu fieri confirmat; cæterum varias, prout res
+    postulal, facultates dari, quarum opegravissimarum
+    rerum notitiam excipiebant prophetæ. Itaque exstasi
+    quidem omnes, ut credibile est, ad sublimiorum re-
+    rum cognitionem comparabantur. Oportebat enim
+    corum mentes a præsenti natura procul abesse, ut
+    uni possent revelatarum rerum contemplationi
+    vacare. Nam si fieri nequit, ut nos accurate a præ-
+    ceptoribus imbuamur doctrina aliqua, nisi animis
+    ab omni evagatione cohibitis, sedulo dictis mentem
+    intendamus : num prophetæ terrificas adeo atque
+    inenarrabiles visiones percipere potuissent, nisi
+    mentem antea, nempe sub ipsum visionis tempus,
+    abalienatam terrenis habuissent? Sic beatum Pe-
+    trum Scriptura dicit in exstasi positum vidisse sin-
+    donem de cælo demissam. Spiritus enim gratia
+    mentem ejus primo abstraxit terrestribus, tum
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="445,70,455,85">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="445,320,455,335">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="445,520,455,535">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="445,750,455,765">
+    D
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="20,910,500,940">
+    ¹ 1 Cor. iv, 13. ² 1 Cor. xii, 6. ³ Ibid. 8. ⁴ Ibid. 11.
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="600,950,800,980">
+    Digitized by Google
+  </bloco>
 </pagina>

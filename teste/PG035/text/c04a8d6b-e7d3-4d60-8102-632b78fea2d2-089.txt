@@ -1,54 +1,70 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,60">
-    169 VITA S. GREGORII. 170
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,150,50">169</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="400,20,600,50">VITA S. GREGORII.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,20,950,50">170</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,280">
+    ante discessum ex hac vita, hinc migraremus. Quod quidem nobis ob oculos ponentes, vitam actionesque omnes nostras dirigebamus, tum divini præcepti ductum sequentes, tum alter alteri virtutis studium exacuentes; atque, nisi hoc arrogantius dicere videar, uterque alteri norma et amussis eramus, qua rectum a pravo discernitur. Non enim cum sodalium nostrorum petulantissimis et impudicissimis, sed cum castissimis consuetudinem habebamus; nec cum pugnacissimis, sed cum pæatissimis, iisque, quorum consuetudo maximos fructus afferebat: illud nimirum exploratum habentes, facilius esse vitium contrahere, quam virtutem impertiri; quemadmodum etiam facilius esse morbo alieno infici, quam sanitatem largiri. Disciplinis porro, non tam jucundissimis, quam optimis oblectabamur: nam hinc quoque, vel ad virtutem, vel ad vitium, juvenes informantur.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,60,480,850">
-    ante discessum ex hac vita, hinc migraremus. Quod quidem nobis ob oculos ponentes, vitam actionesque omnes nostras dirigebamus, tum divini præcepti ductum sequentes, tum alter alteri virtutis studium exacuentes; atque, nisi hoc arrogantius dicere videar, uterque alteri norma et amussis eramus, qua rectum a pravo discerneret. Non enim cum sodalium nostrorum petulantissimis et impudicissimis, sed cum castissimis consuetudinem habebamus; nec cum pugnacissimis, sed cum pæatissimis, iisque, quorum consuetudo maximos fructus afferebat: illud nimirum exploratum habentes, facilius esse vitium contrahere, quam virtutem impertiri; quemadmodum etiam facilius esse morbo alieno infici, quam sanitatem largiri. Disciplinis porro, non tam jucundissimis, quam optimis oblectabamur: nam hinc quoque, vel ad virtutem, vel ad vitium, juvenes informantur.
-    XLIII-XLV. In sacris domibus assidui. Christiani et esse et nominari volunt. Pestiferæ aliis Athenæ, nihil illis nocent, sed ad fidem confirmant.
-    Duæ nobis viæ notæ erant: altera prima et præstantior, altera secunda et inferioris pretii: illa nempe, quæ ad sacras nostras domos, eosque qui illic erant doctores, ferebat; hæc autem, quæ ad externos præceptores. Cæteras omnes, quæ ad festa, spectacula, celebres conventus, epulas ducebant, æquo ac libenti animo aliis relinqueramus.... Jam cum aliis alia quædam cognomenta sint, vel a parentibus accepta, vel ex seipsis, hoc est ex propriis vitæ studiis institutisque comparata: nobis contra magna res et magnum nomen erat, Christianos et esse et nominari... Atque, ut rem in pauca contraham, pestiferæ quidem aliis, quod ad animæ salutem attinet, Athenæ sunt... nobis autem nihil detrimenti ab iis allatum est, utpote qui animo communiti et obsepti eramus. Quin potius hinc ad fidem confirmati sumus. » Inde contigit, ut egregium illud par amicorum, non in universa Græcia solum, sed extra Græciam celebraretur; et cum eorum magistri famam Athenarum adæquarent, ipsi quoque, ubicunque noti erant magistri, in hominum ore versarentur, et Oresti ac Piladi longe ab omnibus præferrentur.
-    Quidquid præterea de Basilio privatim Gregorius honorifice prædicat, de ipso quoque Gregorio intelligendum esse nemini dubitare licet, quamvis id silentio prætermittat vir tam modestus, ut (a) « laudes suas ne ab alio quidem unquam prædicari pateretur. » Dicere ergo liceat, cum Vitæ ipsius scriptore, de Gregorio, quod ipse Gregorius noster de Basilio scripsit; nempe Gregorium his præditum fuisse moribus, qui etiam sine doctrina laudem habuissent; sed ad hos mores et egregiam indolem tantam accessisse doctrinæ copiam, ut nemo cum eo comparandus esset, sive in rhetorica, quæ linguam ad Græcismum format, historiam colligit, metris præ-
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,60,510,80">A</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,290,480,330">
+    <bold>XLIII-XLV. In sacris domibus assidui. Christiani et esse et nominari volunt. Pestiferæ aliis Athenæ, nihil illis nocent, sed ad fidem confirmant.</bold>
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="460,350,480,380">
-    B
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,340,480,650">
+    « Duæ nobis viæ notæ erant: altera prima et præstantior, altera secunda et inferioris pretii: illa nempe, quæ ad sacras nostras domos, eosque qui illic erant doctores, ferebat; hæc autem, quæ ad externos præceptores. Cæteras omnes, quæ ad festa, spectacula, celebres conventus, epulas ducebant, æquo ac libenti animo aliis reliqueramus.... Jam cum aliis alia quædam cognomenta sint, vel a parentibus accepta, vel ex seipsis, hoc est ex propriis vitæ studiis institutisque comparata: nobis contra magna res et magnum nomen erat, Christianos et esse et nominari... Atque, ut rem in pauca contraham, pestiferæ quidem aliis, quod ad animæ salutem attinet, Athenæ sunt... nobis autem nihil detrimenti ab iis allatum est, utpote qui animo communiti et obsepti eramus. Quin potius hinc ad fidem confirmati sumus. » Inde contigit, ut egregium illud par amicorum, non in universa Græcia solum, sed extra Græciam celebraretur; et cum eorum magistri famam Athenarum adæquarent, ipsi quoque, ubicunque noti erant magistri, in hominum ore versarentur, et Oresti ac Piladi longe ab omnibus præferrentur.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="460,550,480,580">
-    C
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,290,510,310">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,500,510,520">C</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,660,480,840">
+    Quidquid præterea de Basilio privatum Gregorius honorifice prædicat, de ipso quoque Gregorio intelligendum esse nemini dubitare licet, quamvis id silentio prætermittat vir tam modestus, ut (a) « laudes suas ne ab alio quidem unquam prædicari pateretur. » Dicere ergo liceat, cum Vitæ ipsius scriptore, de Gregorio, quod ipse Gregorius noster de Basilio scripsit; nempe Gregorium his præditum fuisse moribus, qui etiam sine doctrina laudem habuissent; sed ad hos mores et egregiam indolem tantam accessisse doctrinæ copiam, ut nemo cum eo comparandus esset, sive in rhetorica, quæ linguam ad Græcismum format, historiam colligit, metris præ-
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="460,700,480,730">
-    D
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,700,510,720">D</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,60,950,160">
+    est, et carminibus leges præscribit; sive in omnibus philosophiæ partibus: ne geometriam quidem ab eo neglectam fuisse, nec astronomiam, nec arithmeticam; sed iis relictis, quæ ad pietatem prodesse non poterant, tantum ex iis disciplinis sibi sumpsisse, quantum satis erat, ut ab iis, qui sese in hoc genere venditabant, exagitari non posset.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,60,980,850">
-    A est, et carminibus leges præscribit; sive in omnibus philosophiæ partibus: ne geometriam quidem ab eo neglectam fuisse, nec astronomiam, nec arithmeticam; sed iis relictis, quæ ad pietatem prodesse non poterant, tantum ex iis disciplinis sibi sumpsisse, quantum satis erat, ut ab iis, qui sese in hoc genere venditabant, exagitari non posset.
-    XLVI. Præceptores quibus usus est Athenis.
-    Præceptores, quibus usus est Athenis Gregorius, apud id homines celebres erant, apud quot Athenæ ipsæ. Hi fuere Himerius et Proæresius: primus gentilis erat, alter vero Christianus. Is, ob dicendi copiam, primum in Gallias, inde Romam a Constantio missus, illic ex senatusconsulto donatus est statua ejusmodi inscriptione nobilitata: REGINA RERUM ROMA REGI ELOQUENTIÆ. Christianum hunc diximus, quidquid scripserit Eunapius, qui hunc ut gentilem sibi vindicat. Proæresius enim Christianæ religioni sic addictus fuit, ut cum Julianus, lege data ne Christiani liberalium artium doctores essent, ipsi Christianos docere permisisset, scholam sponte deseruerit: quod ex Hieronymo discimus. Quin ipse Eunapius scribit, Proæresium sententia Juliani a lectione remotum fuisse. An vero Julianus, ethnicorum philosophorum studiosissimus, sententia sua a lectione removisset Proæresium, nisi Christianam religionem fuisset professus?
-    XLVII. De Juliano Gregorii augurium.
-    Habuit Athenis Gregorius, inter studiorum socios, Julianum exæquatorem, quem in oratione decima nona (n. 12 et 16) alloquitur; alterum item Julianum longe famosiorem. Is erat Julianus, Constantii Augusti successor, sua a religione Christiana defectione notissimus, omnibusque retro sæculis execrandus. Cum Athenas venisset circa annum 353 medium, ubi primum cum eo congressus est Gregorius, hominem novit; et quidquid postea infelix comprobavit eventus, perspexit et prænuntiavit non dubitavit his verbis (b): « Quale Romanorum regio malum alit! » Οἷον κακὸν  Ῥωμαίων τρέφει πόλις.
-    XLVIII. Reditum in patriam meditatur.
-    Non diu post Juliani adventum, Gregorius et Basilius, plena doctrinæ mercibus nave, reditum in patriam, ut initum sanctioris instituti consilium perficiant, meditantur (c). « Aderat discessus dies, et quidquid ad discessum pertinebat, extremæ allocutiones, prosecutiones, revocationes, gemitus, complexus, lacrymæ. » Tum eos circumstat sodalitium (d), æqualium, ac magistrorum etiam nonnullorum chorus: negant se eis abeundi potestatem facturos; obsecrant, vim faciunt, hortantur, spondent se calculis suis daturos eloquentiæ principatum Gregorio: nihil non efficiunt ut reditum intercludant. Omnia perrumpit Basilius; sed Gregorius, partim amicorum precibus emollitus, partim ab ipso Basilio proditus, sic enim ipse Basilium incu-
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,170,950,190">
+    <bold>XLVI. Præceptores quibus usus est Athenis.</bold>
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,60,520,90">
-    A
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,200,950,430">
+    Præceptores, quibus usus est Athenis Gregorius, apud tot homines celebres erant, apud quot Athenæ ipsæ. Ii fuere Himerius et Præresius: primus gentilis erat, alter vero Christianus. Is, ob dicendi copiam, primum in Gallias, inde Romam a Constantio missus, illic ex senatusconsulto donatus est statua ejusmodi inscriptione nobilitata: REGINA RERUM ROMA REGI ELOQUENTIÆ. Christianum hunc diximus, quidquid scripserit Eunapius, qui hunc ut gentilem sibi vindicat. Præresius enim Christianæ religioni sic addictus fuit, ut cum Julianus, lege data ne Christiani liberalium artium doctores essent, ipsi Christianos docere permisisset, scholam sponte deseruerit: quod ex Hieronymo discimus. Quin ipse Eunapius scribit, Præresium sententia Juliani a lectione remotum fuisse. An vero Julianus, ethnicorum philosophorum studiosissimus, sententia sua a lectione removisset Præresium, nisi Christianam religionem fuisset professus?
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="20,860,480,920">
-    (a) Or. 43, n. 22.
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,440,950,460">
+    <bold>XLVII. De Juliano Gregorii augurium.</bold>
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="520,470,950,620">
+    Habuit Athenis Gregorius, inter studiorum socios, Julianum exæquatorem, quem in oratione decima nona (n. 12 et 16) alloquitur; alterum item Julianum longe famosiorem. Is erat Julianus, Constantii Augusti successor, sua a religione Christiana defectione notissimus, omnibusque retro sæculis execrandus. Cum Athenas venisset circa annum 353 medium, ubi primum cum eo congressus est Gregorius, hominem novit; et quidquid postea infelix comprobavit eventus, perspexit et pronuntiavit non dubitavit his verbis (b): « Quale Romanorum regio malum alit! » Οἷον κακὸν ἡ Ῥωμαίων τρέφει πόλις.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,630,950,650">
+    <bold>XLVIII. Reditum in patriam meditatur.</bold>
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,660,950,840">
+    Non diu post Juliani adventum, Gregorius et Basilius, plena doctrinæ mercibus nave, reditum in patriam, ut initum sanctioris instituti consilium perficiant, meditantur (c). « Aderat discessus dies, et quidquid ad discessum pertinebat, extremæ allocutiones, prosecutiones, revocationes, gemitus, complexus, lacrymæ. » Tum eos circumstat sodalium (d), æqualium, ac magistrorum etiam nonnullorum chorus: negant se eis abeundi potestatem facturos; obsecrant, vim faciunt, hortantur, spondent se calculis suis daturos eloquentiæ principatum Gregorio: nihil non efficiunt ut reditum intercludant. Omnia perrumpit Basilius; sed Gregorius, partim amicorum precibus emollitus, partim ab ipso Basilio proditus, sic enim ipse Basilium incu-
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="50,850,480,890">
+    (a) Or. 43, n. 22.<br/>
     (b) Or. 5, n. 24.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="520,860,980,920">
-    (c) Or. 43, n. 21.
-    (d) Carm. De vita sua, v. 243 et seq.
+
+  <bloco tipo="aparato_critico" script="latino" bbox="520,850,950,890">
+    (c) Or. 43, n. 21.<br/>
+    (d) Carm. De vita sua, v. 243 et seq
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="20,930,400,960">
-    PATROL. GR. XXXV.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="900,930,920,950">
-    6
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="350,960,650,990">
-    Digitized by Google
-  </bloco>
-  <notas>
-    Texto em latim com algumas palavras em grego ("Οἷον κακὸν  Ῥωμαίων τρέφει πόλις").
-    Letras marginais A, B, C, D identificadas no gutter/intercoluna.
-    Transcrição literal mantendo abreviações e ortografia original (ex: pæatissimis, præ-).
-  </notas>
+
+  <bloco tipo="rodape" script="latino" bbox="50,910,400,940">PATROL. GR. XXXV.</bloco>
+  <bloco tipo="rodape" script="latino" bbox="900,910,920,940">6</bloco>
+  <bloco tipo="outro" script="latino" bbox="400,960,600,990">Digitized by Google</bloco>
 </pagina>

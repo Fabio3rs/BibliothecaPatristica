@@ -1,22 +1,57 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,50">
     1127 EUSEBII CÆSARIENSIS OPP. PARS II. — APOLOGETICA. 1128
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,200">
+  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,110">
     Humana vita ratione ac numero prorsus indiget ;
-    Numero ac ratione vivimus ; ambo nos fovem.
+    Numero ac ratione vivimus ; ambo nos fovent.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,60,510,80">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,60,950,110">
+    Ὁ βίος ἀνθρώποις λογισμοῦ καὶ ἀριθμοῦ δεῖται
+    [πάνυ.
+    Ζῶμεν δ' ἐν ἀριθμῷ καὶ λογισμῷ· ταῦτα γὰρ σώ
+    [ζει βροτούς.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,120,480,150">
     Tum ita diserte :
     Ratio mortales regit, moresque servat.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,120,950,150">
+    Εἶτα διαῤῥήδην ἐπιφέρει·
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,160,480,180">
     Deinde :
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,150,950,240">
+    Ὁ λόγος ἀνθρώποις κυβερνᾷ, κατὰ πρόσωπον
+    [(86), καὶ σώζει ὂν
+    Ἔστιν ἀνθρώπων (87) λογισμός, ἔστι καὶ θεῖος
+    [λόγος
+    Ὁ λόγος ἀνθρώπῳ πέφυκε περὶ βίου καταστρο-
+    [φάς (88).
+    Ὁ δὲ γε τὰς τέχνας ἁπάσι συνέπεισι θεῖος λόγος,
+    Διδάσκων αὐτὸς ατούς, ὅ τι ποιεῖν δε συμφέρον.
+    Οὐ γὰρ ἄνθρωπος τέχνην τιν' εὗρεν, ὁ δὲ θεὸς
+    [ταύτην ηὗρε.
+    Ὁ δὲ γε τοῦ ἀνθρώπου λόγος πέφυκεν ἀπό γε
+    [θείου λόγου.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,180,480,280">
     Si est in homine ratiocinatio, est et divina ratio.
     Ratio homini innata est, ad casus vitæ varios.
     Ratio divina artes cuique moderatur suas :
     Omnibus per se aperit, quid magis cuique conferat.
-    Haud enim artem ullam homo reperit, Deus hæc
+    Haud enim artem ullam homo reperi, Deus hæc
     [unus parit.
     Ratio nimirum hominis, ratione ex divina sata est.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,210,480,320">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,250,510,270">
+    B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,290,480,380">
     Porro cum Isaiæ voce hæc Spiritus inclamet : « Quo
     mihi multitudinem victimarum vestrarum ? dicit
     Dominus : plenus sum holocaustis ; adipem agno-
@@ -26,15 +61,25 @@
     eamdem sententiam Menander comicus totidem
     verbis ita scribit :
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,330,480,520">
-    Si quis, quod hædi vel bovis, mi Pamphile,
-    683 Cruentet aras sanguine, aut aliud deis
+  <bloco tipo="texto_principal" script="grego" bbox="520,250,950,360">
+    Ναὶ μὴν διὰ τοῦ σαΐου Πνεύματος κεκραγότος·
+    « Τί μοι πλῆθος τν θυσιῶν ὑμῶν ; λέγει Κύριος·
+    πλήρης εἰμὶ ὁλοκαυτωμάτων, καὶ στέαρ ἀρνῶν, καὶ
+    αἷμα ταύρων οὐ βούλομαι. » Καί μετ' ὀλίγα ἐπαγα-
+    γόντος · « Λούσασθε, καθαροὶ γίνεσθε, ἀφέλετε τὰς
+    πονηρίας ἀπὸ τῶν ψυχῶν μῶν. » Καὶ ἐπὶ τού-
+    τοις Μένανδρος ὁ κωμικὸς (89) αὐταῖς γράφει ταῖς
+    λέξεσιν·
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,390,480,560">
+    683 Si quis, quod hædi vel bovis, mi Pamphile,
+    Cruentet aras sanguine, aut aliud deis
     Quodcunque mactet ; sive quod docti manus
     Laborat arte, purpura ardenti micans,
     Aurore textum pallium, aut candens ebur,
     Viridem aut smaragdum, muta qua moles sinit,
     Animantes mutans, offerat ; Numen sibi
-    Credat secundum : mentis hic nimium levis,
+    Credat secundum : mentis hic nimirum levis,
     Heu ! gravius errat. Commodis sit moribus
     Homo, necesse est : virginis casto innocens
     Parcat pudori, parcat alieno toro ;
@@ -42,7 +87,24 @@
     Cave ergo vel acum ne appetas, mi Pamphile ;
     Te quippe nusquam non videt præsens Deus.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,530,480,620">
+  <bloco tipo="texto_principal" script="grego" bbox="520,370,950,530">
+    Εἴ τις δὲ θυσίαν προσφέρων, ὦ Πάμφιλε,
+    Ταύρων τι πλῆθος,  ἐρίφων (90), ἤ, νὴ Δία,
+    Ἑτέρων τούτων, ἢ κατασκευάσματα,
+    Χρυσᾶς ποιήσας χλαμύδας, ἤτοι πορφυρᾶς,
+    Ἢ δι' ἐλέφαντος ἢ σμαράγδου ζῴδια (91),
+    Εὔνουν νομίζει τὸν θεν καθιστάναι·
+    Πεπλάνητ' ἐκεῖνος, καὶ φρένας κοῦφας ἔχει.
+    Δεῖ γὰρ τὸν νδρα χρήσιμον πεφυκέναι,
+    Μὴ παρθένους φθείροντα καὶ μοιχόμενον,
+    Κλέπτοντι καὶ σφάττοντα χρημάτων χάριν.
+    Μηδὲ βελόνης ἕναμ' ἐπιθυμῆς (92), Πάμφιλε,
+    Ὁ γὰρ θεὸς βλέπει σε πλησίον παρών.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,500,510,520">
+    C
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,570,480,640">
     « Deus vicinus ego sum, et non Deus de longe. Num
     faciet aliquid homo in absconditis, et ego non vi-
     debo eum ? » inquit Deus per Jeremiam ³. Atque
@@ -50,7 +112,15 @@
     crificium justitiæ, et sperate in Domino ⁴, » para-
     phrasi quadam exponens, sic ait,
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,630,480,740">
+  <bloco tipo="texto_principal" script="grego" bbox="520,540,950,610">
+    « Θεὸς ἐγγίζων ἐγώ εἰμι, καὶ οὐχὶ Θεὸς πόῤῥω-
+    θεν. Ποιήσει τι ἄνθρωπος ἐν κρυφαίοις, καὶ οὐχ ὁρ-
+    ῶμι αὐτόν, » διὰ Ἱερεμίου φησί. Καὶ πάλιν ὁ Μί-
+    νανδρος, παραφράζων τὴν Γραφὴν ἐκείνην· « Θύσατε
+    θυσίαν δικαιοσύνης, καὶ ἐλπίσατε ἐπὶ Κύριον, » ὧδέ
+    πως γράφει·
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,650,480,760">
     ... Neve acum, o suavissime,
     Aliena quæ sit, appelas : etenim Deo
     Injusta nulla, justa quæ modo sunt placent
@@ -58,105 +128,54 @@
     Qui nocte terram, qui die assiduo colit.
     Deo sacrifices, æqui ad extremum tenax ;
     Ut veste munda splendidus, sic pectore.
-    At cum Ionabiti, siste, nec pavidō gradu
+    At cum Ionabiti, siste, nec pavido gradu
     Fugam capesse, quando nil conscius
     Ipse tibi fueris : te Deus præsens videt.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,60,950,240">
-    A Ὁ βίος ἀνθρώποις λογισμοῦ κα ἀριθμοῦ δεῖται
-    [πάνυ.
-    Ζῶμεν δ' ἐν ἀριθμῷ καὶ λογισμῷ· ταῦτα γὰρ σώ
-    [ζει βροτούς.
-    Εἶτα διαρρήδην ἐπιφέρει·
-    Ὁ λόγος ἀνθρώποις κυβερνᾷ, κατὰ πρόσωπον
-    [(86), καὶ σώζει ν
-    Ἔστιν ἀνθρώπων (87) λογισμός, ἔστι καὶ θεῖος
-    [λόγος
-    Ὁ λόγος ἀνθρώπῳ πέφυκε περὶ βίου καταστρο-
-    [φάς (88).
-    Ὁ δὲ γε τὰς τέχνας ἁπάσι συνέπεισιν θεῖος λόγος,
-    Διδάσκων αὐτὸς αὐτούς, ὅ τι ποιεῖν δεῖ συμφέρον.
-    Οὐ γὰρ ἄνθρωπος τέχνην τιν' εὗρεν, ὁ δὲ Θεὸς
-    [ταύτην φέρει.
-    Ὁ δὲ γε τοῦ ἀνθρώπου λόγος πέφυκεν ἀπό γε
-    [θείου λόγου.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,250,950,360">
-    B Ναὶ μὴν διὰ τοῦ Ἡσαΐου Πνεύματος κεκραγότος·
-    « Τί μοι πλῆθος τῶν θυσιῶν ὑμῶν; λέγει Κύριος·
-    πλήρης εἰμὶ ὁλοκαυτωμάτων, καὶ στέαρ ἀρνῶν, καὶ
-    αἷμα ταύρων οὐ βούλομαι. » Καί μετ' ὀλίγα ἐπαγα-
-    γόντος · « Λούσασθε, καθαροὶ γίνεσθε, ἀφέλετε τὰς
-    πονηρίας ἀπὸ τῶν ψυχῶν ὑμῶν . » Καὶ ἐπὶ τού-
-    τοις Μένανδρος ὁ κωμικὸς (89) αὐταῖς γράφει ταῖς
-    λέξεσιν·
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,370,950,510">
-    C Εἴ τις δ θυσίαν προσφέρων, ὦ Πάμφιλε,
-    Ταύρων τι πλῆθος, ἢ ἐρίφων (90), ἤ, νὴ Δία,
-    Ἑτέρων τοιούτων, ἢ κατασκευάσματα,
-    Χρυσᾶς ποιήσας χλαμύδας, ἤτοι πορφυρᾶς,
-    Ἢ δι' ἐλέφαντος ἢ σμαράγδου ζώδια (91),
-    Εἴδωλον νομίζει τὸν Θεὸν καθεστάναι·
-    Πεπλάνητ' ἐκεῖνος, καὶ φρένας κοῦφας ἔχει.
-    Δεῖ γὰρ τὸν ἄνδρα χρήσιμον πεφυκέναι,
-    Μὴ παρθένους φθείροντα καὶ μοιχόμενον,
-    Κλέπτοντα καὶ σφάττοντα χρημάτων χάριν.
-    Μηδὲ βελόνης ἔναμμ' ἐπιθυμῆς (92), Πάμφιλε,
-    Ὁ γὰρ Θεὸς βλέπει σε πλησίον παρών.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,520,950,660">
-    D Ὁ Θεὸς ἐγγίζων ἐγώ εἰμι, καὶ οὐχὶ Θεὸς πόρρω-
-    θεν. Ποιήσει τι ἄνθρωπος ἐν κρυφαίοις, καὶ οὐχ ρ-
-    μαι αὐτόν, » διὰ Ἰερεμίου φησί. Καὶ πάλιν ὁ Μί-
-    νανδρος, παραφράζων τὴν Γραφὴν ἐκείνην· « Θύσατε
-    θυσίαν δικαιοσύνης, καὶ ἐλπίσατε ἐπὶ Κύριον, » Ὡς
-    πως γράφει·
-    ... Μηδὲ βελόνης (95),
-    Ὁ φίλας, ἐπιθύμησον ἀλλοτρίας ποτέ.
-    Ὁ γὰρ Θεὸς τ' ἔργοις δικαίοις ἥδεται,
-    Καὶ οὐκ ἀδίκοις· ποιοῦντα δὲ ἐὰ τὸν ἴδιον
-    Βίον ὕφωσαι, τὴν γν ἀροῦντα νύκτα καὶ
+  <bloco tipo="texto_principal" script="grego" bbox="520,620,950,760">
+    ... Μηδὲ βελόνης (93),
+    Ὦ φίλτατ', ἐπιθύμησον ἀλλοτρίας ποτέ.
+    Ὁ γὰρ θεὸς τ' ἔργοις δικαίοις ἥδεται,
+    Καὶ οὐκ ἀδίκοις· ποιοῦντα δὲ ἐὰ τὸν διον
+    Βίον ὑφῶσαι, τὴν γῆν ἀροῦντα νύκτα καὶ
     Τὴν ἡμέραν. Θεῷ δὲ θῦε διὰ τέλους
-    Δίκαιος ὤν, καὶ λαμπρός, ὡς ταῖς χλαμύσι,
+    Δίκαιος ὤν, καὶ λαμπρὸς, ὡς τας χλαμύσι,
     Τῇ καρδίᾳ. Βροντῆς ἐὰν ἀκούσῃς, μὴ φύγῃς,
     Μηδὲν συνειδὼς αὐτὸς σαυτῷ, δέσποτα.
-    Ὁ γὰρ Θεὸς βλέπει σε, πλησίον παρών.
+    Ὁ γὰρ θεὸς βλέπει σε, πλησίον παρών.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="50,750,480,780">
-    1 Isa. 1, 11. 2 ibid. 16. 3 Jerem. xxiii, 23. 4 Psal. iv, 6.
+  <bloco tipo="nota_marginal" script="latino" bbox="490,680,510,700">
+    D
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="50,790,480,920">
+  <bloco tipo="nota" script="misto" bbox="50,770,480,790">
+    ¹ Isa. I, 11. ² ibid. 16. ³ Jerem. XXIII, 23. ⁴ Psal. IV, 6.
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="50,800,480,950">
     (86) Κατὰ πρόσωπον, etc. Reponendum ex Cle-
     mente, κατὰ τρόπον σώζει. Εἶτα. Nisi malis καὶ
     σώζει κατὰ τρόπ., aut, quod secutus sum, καὶ σώζει
     τρόπον. Si tamen retineatur κατά, vox τρόπον mo-
     dum potius quam mores significabit.
     (87) Ἔστιν ἀνθρώπων. Et hic Clementem se-
-    quor; scribit enim, et ἔστιν ἀνθρώπῳ λογ.
+    quor ; scribit enim, εἰ ἔστιν ἀνθρώπῳ λογ.
     (88) Καταστροφάς. Vera, ut opinor, lectio, ex
     qua vicissim Clementem corrigas, apud quem vi-
     tiose, καὶ τὰς τροφάς.
     (89) Μένανδρος ὁ κωμικός. Justinus lib. De mon-
     archia, sequentes versus Philemoni tribuit.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="520,670,950,920">
+  <bloco tipo="aparato_critico" script="misto" bbox="520,800,950,950">
     (90) Ἢ ἐρίφων. Clemens, ἢ ίφων. Omissus est
-    apex ante ρ, cum scribendum fuerit ἢ 'ρίφων.
-    (91) Ζώδια. Operarum vitio, in versione legitur
+    apex ante ρ, cum scribendum fuerit ἢ' ῥίφων.
+    (91) Ζῴδια. Operarum vitio, in versione legitur
     animantes imitans. Corrige, animante mutans.
-    (92) Ἔναμμ' ἐπιθ. Ita ex Clemente malui, quam
+    (92) Ἕναμ' ἐπιθ. Ita ex Clemente malui, quam
     ut legebatur, ἐν ἅμμα ἐπιθυμήσης, tametsi ἐν ἅμμ'
     ἐπιθυμεῖν retineri possit.
-    (95) Μηδὲ βελόνης. Aliter atque aliter apud
-    Clementem hi versus et incipiunt et desinunt. Sed
+    (93) Μηδὲ βελόνης. Aliter atque aliter apud
+    Clementem ii versus et incipiunt et desinunt. Sed
     neque hic, neque illic sua singulis ratio satis con-
     stat, nec facile constitui potest.
   </bloco>
-  <notas>
-    A página contém texto em duas colunas: Latina à esquerda e Grega à direita.
-    O número "683" aparece no meio da coluna esquerda como marcador de seção.
-    As notas de rodapé na coluna direita estão divididas em duas sub-colunas visuais (86-89 e 90-95).
-    Há letras marginais A, B, C, D na coluna grega indicando seções.
-  </notas>
+  <notas>Transcription of a bilingual page (Latin/Greek) from Patrologia Graeca. Marginal letters A, B, C, D identified in the gutter.</notas>
 </pagina>

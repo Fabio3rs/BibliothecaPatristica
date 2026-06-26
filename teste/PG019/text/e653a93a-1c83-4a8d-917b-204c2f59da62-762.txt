@@ -1,29 +1,42 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,30,900,60">
-    1359 AD EUSEBII CHRONICON APPENDIX. 1360
+  <bloco tipo="cabecalho" script="latino" bbox="100,30,150,50">
+    1359
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,60,490,500">
-    tumno XCI, hiemi LXXXIV; quæ quidem tempesta-
+  <bloco tipo="cabecalho" script="latino" bbox="350,30,650,50">
+    AD EUSEBII CHRONICON APPENDIX.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,30,900,50">
+    1360
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="100,60,480,230">
+    tumno XCI, hiemi LXXXIV; quae quidem tempesta-
     tes ante cardines ipsos incipit : ver a Favonio, qui
     spirare incipit ex a. d. VII Id. Febr. ad VII Id.
     Maii; æstatem inde ad diem VII Id. Sextiles;
-    autumnum ab hoc die ad IV Id. Nov.; reliquum
+    autumnum ab hoc die ad IV Id. Nov. ; reliquum
     hiemi imputat. Hæc intervalla si singillatim com-
     putes, exclusis prioribus terminis, invenies priori
-    dies competere XCI, æstati dies XC; autumno dies
-    XCV; hiemi LXXXIX. Minime itaque sibi consentiens
+    dies competere XCI, æstati dies XC ; autumno dies
+    XCV ; hiemi LXXXIX. Minime itaque sibi consentiens
     est Varro.
+  </bloco>
 
+  <bloco tipo="nota_marginal" script="latino" bbox="485,60,505,80">
+    A
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,240,480,560">
     Plinius vero nihilo magis concors est secum, et
     ejus locus manifestissimo mendo tenetur. « Cardo,
     inquit, temporum quadripartita anni distinctione
     constat per incrementa lucis. Augetur hæc a
     bruma, et æquatur noctibus verno æquinoctio,
     diebus XC, horis III. Deinde superat noctes ad
-    solstitium diebus XCIII, horis XII, usque ad æqui-
+    solstitium diebus XCI, horis XII, usque ad æqui-
     noctium autumni. Et tum æquata die procedit ex
     eo ad brumam diebus LXXXIX, horis III. » In his
-    verbis desideratur intervalli circumscription, quod
+    verbis desideratur intervalli circumscriptio, quod
     ab solstitio æstivo ad autumnale pertinet. Legen-
     dum itaque post, « horis XII, » hoc fere modo, « et
     inde diebus XCI, horis XII usque ad æquinoctium
@@ -32,21 +45,34 @@
     bus CCCLXV 1/4, residuos faciunt dies XCII 1/2.
     Quare ex mente Plinii Julius Cæsar hæc annua
     intervalla descripsit.
+  </bloco>
 
+  <bloco tipo="nota_marginal" script="latino" bbox="485,330,505,350">
+    B
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,570,480,610">
     Ab æquinoctio verno ad solstitium dies XCIII,
     horas XII.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,60,900,500">
-    A solstitio ad æquinoctium autumnale dies XCN,
+
+  <bloco tipo="nota_marginal" script="latino" bbox="485,580,505,600">
+    C
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,60,900,130">
+    A solstitio ad æquinoctium autumnale dies XCI,
     horas XII.
     Ab æquinoctio autumnali ad brumam dies LXXXIX,
     horas III.
     A bruma ad vernum æquinoctium dies XC,
     horas III.
+  </bloco>
 
+  <bloco tipo="texto_principal" script="latino" bbox="520,140,900,560">
     His animadversis, si æquinoctium vernum sta-
-    tuatur in XXV Martii, additis diebus XCIII, calculus
-    desinet in XXVI Junii. Hinc post dies XCII, conjicie-
+    tuatur in XXV Martii, additis diebus XCII, calculus
+    desinet in XXVI Junii. Hinc post dies XCI, conjicie-
     tur autumnale æquinoctium in XXVI Sept., solsti-
     tium hibernum in XXIV Decembris, aut XXV, ut inde
     ad vernum æquinoctium dies reliqui sint XC. Biduo
@@ -57,69 +83,60 @@
     solstitium hibernum XXV Decembris : ut in octa-
     vum Kalendas quatuor cardinalium signorum in-
     troitus inciderent.
-
     In Kalendario, quod Julii Cæsaris nomine Lucas
     Gauricus edidit, æquinoctium vernum ascribitur
     VIII Kal. Apr., nono die ab ingressu solis in Arie-
     tem : et solstitium æstivum VIII item Cal. Julias,
     septimo die quam sol in Cancrum subiit. Sed valde
-    rudem oportet esse, qui hoc Kalendarium Julii Cæ-
+    rudem oportet esse, qui hoc Kalendarium Julii Kæ-
     saris esse sibi persuadeat, uti libro VI De doct.
     temp., cap. XII, demonstravimus.
-
     Postremo si quis veros anni cardines anno primo
     Juliano scire velit, ex sequenti tabella discet; in
     quam medios quoque solis ingressus in dodecate-
     moria conjecimus ex Diagrammate lib. I, pag. 31.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,510,800,540">
+
+  <bloco tipo="outro" script="latino" bbox="150,580,850,600">
     Tabella mediorum, ac verorum solis ingressuum in signa cardinalia anno primo Juliano.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="250,540,500,600">
-    CARDINES MEDII.
-    Æquinoctium vernum Martii, XXIV, 21, 11'.
-    Solstitium æstivum Junii, XXIV, 4, 39".
-    Æquinoctium autumni Sept. XXIII, 12, 6'.
-    Solstitium hibernum Dec. XXIII, 19, 34".
+
+  <bloco tipo="outro" script="latino" bbox="200,610,800,680">
+    CARDINES MEDII.                 CARDINES VERI.
+    Æquinoctium vernum Martii, XXIV, 21, 11'.   Martii  XXIII, 23, 47.
+    Solstitium æstivum Junii,  XXIV, 4, 39'.    Junii   XXIV, 23, 3'.
+    Æquinoctium autumni Sept.  XXIII, 12, 6'.   Sept.   XXV, 11, 11'.
+    Solstitium hibernum Dec.   XXIII, 19, 34'.  Dec.    XXIV, 25, 54'.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="550,540,800,600">
-    CARDINES VERI.
-    Martii XXIII, 23, 47".
-    Junii XXIV, 23, 3'.
-    Sept. XXV, 11, 11".
-    Dec. XXIV, 25, 54".
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,610,490,900">
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,690,480,880">
     Hinc apparet Sosigenem medios potius solis in-
     gressus in signa, quam veros exprimere voluisse :
     quos fere, præterquam in uno hiberno solstitio,
     consecutus est. Plerique tamen scriptores, dum
     veterum astronomorum cardines diversis tempori-
     bus constitutos relegunt, per imprudentiam eos in
-    Julianum annum transtulerunt. Quinetiam Sosige-
+    Julianum annum transtulerunt. Quinctiam Sosige-
     nes ipse videtur parum in hac re definienda sibi
-    constitisse. Nam « trinis commentationibus (ait
+    constitisse. Nam e trinis commentationibus (ait
     Plinius lib. XVIII, cap. XXV) quanquam diligen-
-    tior esset cæteris, non cessavit tamen adulbitare,
-    ipse semel corrigendo. » Itaque aliis, atque aliis
+    tior esset cæteris, non cessavit tamen addubitare,
+    ipse semet corrigendo. » Itaque aliis, atque aliis
     diebus cardines illigavit, ex quo varietas illa
     scriptorum in constituendis æquinoctiis ac solsti-
     tiis in anno Juliano manasse videtur.
-
-    CAPUT VI.
-    De falsa Scaligeri sententia super veterum astrono-
-    morum solstitiis. Contra quem demonstratur, ne-
-    que perpetuam sub tropico meridiem fieri illos pu-
-    tasse, neque solstitium in toto dodecatemorio.
-    Genuinus explicatur.
-    Ilic de cardinibus veterum opinione constitutis
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="510,610,900,950">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="485,760,505,780">
+    D
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="520,690,900,950">
     injectus a nobis sermo, Scaligeriani cujusdam
     commenti meminisse nos facit, quod in Manilianis
     illius Notis legitur (pag. 157), et in epistola quadam
-    ad Mamertum Patissouem, quæ est quarta libr
-    primi editarum nuper illius epistolarum. « Ibi at
+    ad Mamertum Patissonem, quæ est quarta libri
+    primi editarum nuper illius epistolarum. « Ibi at-
     ipsis incunabulis astronomiæ (verba sunt epistolæ)
     hanc veterum Græcorum opinionem fuisse censet,
     Eudoxi, Metonis, Cleostrati, et Euctemonis; om-
@@ -130,21 +147,25 @@
     tegro dodecatemorio committi. Horum prius illuc
     in novissima editione Manilii legere non memini.
     posterius autem in Notis exstat ad lib. I Ἰσαγω-
-    cum, ubi de Antiesciis agit. Utrumque vero non so-
+    cum, ubi de Antisciis agit. Utrumque vero non so-
     lum ridiculum est, sed falso etiam antiquis illis
     astronomis affingitur. Quippe alterum ex ambobus,
     de perpetua luce sub tropico, non aliter stare po-
     test, nisi antiquos illos putasse velimus parallelum
     istum supra finitorem, quantus quantus est, ex-
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="500,960,800,990">
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,890,480,960">
+    CAPUT VI.
+    De falsa Scaligeri sententia super veterum astrono-
+    morum solstitiis. Contra quem demonstratur, ne-
+    que perpetuam sub tropico meridiem fieri illos pu-
+    tasse, neque solstitium in toto dodecatemorio.
+    Geminus explicatur.
+    Ilic de cardinibus veterum opinione constitutis
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="400,970,600,990">
     Digitized by Google
   </bloco>
-  <notas>
-    - Texto em latim com caracteres especiais (æ, œ).
-    - Presença de grego no bloco inferior direito (μεσημβρίαν, λόγῳ θεωρητῷ, σαγω-).
-    - Possível erro de impressão "adulbitare" (provavelmente "adulterare") transcrito literalmente.
-    - "XCN" transcrito literalmente no topo da coluna direita (provavelmente "XCI").
-    - "libr" transcrito literalmente (abreviação ou erro por "libri").
-  </notas>
 </pagina>

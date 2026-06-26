@@ -1,106 +1,140 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,60">
-    435 SECTIO I. POEMATA DOGMATICA. 454
+  <bloco tipo="cabecalho" script="latino" bbox="40,20,960,90">
+433        SECTIO I. POEMATA DOGMATICA.        434
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="0,60,490,210">
-    Οὐ ταῦτα εἰσιόντι σοι καθυπεσχόμην,
-    Πλουτεῖν, ἀμεριμνεῖν, εὐσθενεῖν, ἢ εὐτεκνεῖν·
-    Εὐζωίαν δὲ καὶ τὰ προσδοκώμενα·
-    45 Ὡς ἀντὶ τῶν νῦν προσδοκᾶν τὰ μείζονα.
-    Πῶς οὖν δίκαιον, ὥσπερ ἐν συναλλαγῇ,
-    Καὶ τὸ πραθὲν ζητεῖν σε, καὶ τὸ χρῆμ' ἔχειν;
-    Εἰ μ μόνῳ σοι τοῦτο τν πάντων γέρας.
-    Ὦ, σφόδρ' ἄπληστον, καὶ ξένης συνεισφορᾶς!
-    50 Ἢ κεῖνα ῥῖψον, φίλτατ', ἢ καὶ ταῦτα δός·
-    Εἴ πέρ τι δεῖ σοι τὸν σὸν ἑστάναι λόγον,
-    Μηδ' ἐκτὸς ἕρκη τῶν καλῶς συγκειμένων.
-    Πῶς ον, ἂν εἴποις, τοῖς καλοῖς κα ταῦτα ν;
+
+  [!-- Coluna esquerda superior: grego --]
+  <bloco tipo="texto_principal" script="grego" bbox="30,100,480,380">
+Οὐ ταῦτα εἰσόντ' σοι καθυπεσχόμην,
+Πλουτεῖν, ἀμεριμνή, εὐδονειν, ἢ εὐτεχεῖν·
+Εὔχονται δὲ καὶ τὰ προσδοκώμενα.
+45 Ὡς ἀντ. τῶν νῦν προσδοχῶν τὰ μείζονα.
+Πῶς ἄν δικαίον, ὥσπερ ἐν συναλλαγῇ,
+Καὶ τὸ πραθὲν ζητεῖν σε, καὶ τὸ χρῆσθ' ἔχειν;
+Εἰ μὴ μόνῳ σοι τοῦτο τῶν πάντων γέρας.
+Ὦ σφόδρ' ἄπληστον, καὶ ξένης συνεισφοράς!
+50 Ἡ καῖνα ῥίψων, φιλτάτ', ἣ καὶ ταῦτα δός·
+Εἰ περ τι δεῖ σοι τὸν σὺν ἔσταναι λόγον,
+Μηδ' ἔκτος ἔχῃ τῶν καλῶς συγκείμενων.
+Πῶς οὖν, ἂν εἴποις, τοῖς πάλαι καὶ ταῦτα ἦν;
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="510,60,1000,210">
-    A Οὕπω τότ' ἦν  πίστις ἐῤῥιζωμένη,
-    55 Καὶ πίστις ἦν τὰ τῆδε τν νοουμένων,
-    Ὥσπερ γάλακτι νηπίοις ἀνδρουμένοις.
-    Τεκμήριον δὲ τοῦ λόγου. Καὶ γὰρ τότ' ἦν
-    Τὰ μὲν μέγιστα τῶν κακῶν ἀγνωστά πως·
-    Τὰ δ' οὐ μέγιστα τῶν κακῶν τιμητέα·
-    60 Ἀντιζυγοῦντης τῆς ἐν ἀμφοῖν ἀξίας.
-    Αἱ δ' ἐκδικήσεις τῶν σοφῶν πέρμετροι.
-    Δαυΐδ σε ταῦτα πειθέτω, καὶ Μωϋσῆς,
-    Ἐλισεός τε, οὗ τρέμω μεμνημένος·
-    Ὁ μὲν κολασθεὶς ἐνδεῶς τοῖς πταίσμασι,
-    65 Ὁ δ' ἀντὶ μικρῶν, καὶ Θεοῦ λαβν θέαν·
+
+  [!-- Bloco central em latim, full-width (texto principal) --]
+  <bloco tipo="texto_principal" script="latino" bbox="60,390,940,640">
+Non ista tibi talem ampiecenti pollicitus sum,
+Scilicet opes, curarum expertem vitam, robur corporis, inclytam prolem,
+Sed vitam illam beatam et bona quae exspectantur,
+45 Ut pro his praesentibus sperares majora.
+Quo pacto igitur aequum sit, ut velut in contractu
+Et rem venditam requiras, et pretium prae manibus habeas?
+Nisi tibi uni hunc prae omnibus vindices honorem.
+232-233 Quam magna aviditas, et novum commercii genus!
+50 Aut illa projice, vir optime, aut etiam haec largire,
+Si quidem necesse est ut tuis sitis verbis,
+Nec his excedas quae praeclare sunt pacta.
+Quomodo igitur, inquiēs, priscis hominibus haec bona erant?
+Nondum eo tempore fides altas satis egerat radices,
+55 Et vitae praesentis bona erant certitudo de bonis quae intellectu conspiciuntur,
+Ac veluti pueris qui lacte vescuntur, donec vires colligant.
+Planum est hujus rei argumentum. Etenim tunc erant
+Vel maxima peccata quodam modo ignoscibilia;
+Et culpae non maximae poenis affliciebantur,
+60 Expenso velut in bilance utriusque merito.
+Vindictae auten quedam sanctorum modum excessere.
+Illic tibi suadeat exemplum Davidis, Moysis
+Et Eliae cuius non sine horrore mentionem facio.
+Ille quidem (David) poenas dedit inpares culpis,
+65 Iste vero (Moyses) pro levibus gravius punitus est, qui Dei visione dignatus erat,
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="150,220,850,440">
-    Non ista tibi fidem amplectenti pollicitus sum,
-    Scilicet opes, curarum expertem vitam, robur corporis, inclytam prolem,
-    Sed vitam illam beatam et bona quæ exspectantur,
-    45 Ut pro his præsentibus sperares majora.
-    Quo pacto igitur æquum sit, ut velut in contractu
-    Et rem venditam requiras, et pretium præ manibus habeas?
-    232-233 Quam magna aviditas, et novum commercii genus!
-    50 Aut illa projice, vir optime, aut etiam hæc largire,
-    Si quidem necesse est ut tuis stes verbis,
-    Nec iis excedas quæ præclare sunt pacta.
-    Quomodo igitur, inquier, priscis hominibus hæc bona erant?
-    Nondum eo tempore fides altas satis egerat radices,
-    55 Et vitæ præsentis bona erant certitudo de bonis quæ intellectu conspiciuntur,
-    Ac veluti pueris qui lacte vescuntur, donec vires colligant.
-    Planum est hujus rei argumentum. Etenim tunc erant
-    Vel maxima peccata quodam modo ignoscibilia;
-    Et culpæ non maximæ pœnis afficiebantur,
-    60 Expensio velut in bilance utriusque merito.
-    Vindictæ autem quædam sanctorum modum excessere.
-    Hoc tibi suadeat exemplum Davidis, Mosis
-    Et Elisæi cujus non sine horrore mentionem facio.
-    Ille quidem (David) pœnas dedit impares culpis,
-    65 Iste vero (Moyses) pro levibus graviter punitus est, qui Dei visione dignatus erat,
+
+  [!-- Notas marginais no gutter: A, B, C, D (cada uma em seu próprio bloco) --]
+  <bloco tipo="nota_marginal" script="latino" bbox="490,130,515,165">
+A
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="0,450,490,740">
-    48 Πῶς οὖν δίκαιον, etc. Sic fere cap. 25 Epicteti legitur : Ἄδικος οὖν ἔσ καὶ ἄπληστος, εἰ μὴ προέμενος ταῦτα, ἀνθ' ὧν ἐκεῖνα πιπράσκεται, προῖκα αὐτὰ βουληθῇ λαμβάνειν. Injustus eris et inexplebilis, si non numerato eo pretio, quo illa veneunt, gratis illa accipere velis.
-    49 Καὶ ξένης συνεισφορᾶς. Et novæ collectæ.
-    52 Συγκειμένων. Id est, ὁμολογουμένων, πεφωνημένων.
-    55 Καὶ πίστις ἦν τά, etc. Fidem ipsis faciebant de bonis quæ mente tantum percipiuntur.
-    59 Κακῶν. Sic ipse legit Billius et vertit : Non gravibus autem juncta laus culpæ erat. Et in nota ad hunc locum : Levia peccata honori quodammodo, inquit, et laudi dabantur. Quod quam absurdum sit, quam Gregorio et Scripturis repugnet, nemo non intelligit. Nunquam certe laudata, nunquam honori habita leguntur in Scripturis peccata, quasi Deo probante minora vitia. Mundi sunt oculi ejus, ne malum videant. Obscuri ac difficilioris hujus loci
+  <bloco tipo="nota_marginal" script="latino" bbox="490,200,515,235">
+B
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="510,450,1000,740">
-    sensus iste est : Tunc temporis gravissima peccata veniam aliquando consequabantur; quæ vero non admodum gravia, plectebantur, inæquali ac veluti contraria lance, appenso utrorumque merito. In ed. καλῶν. Mox, τιμητέα. Vocis hujus notissima est in jure hæc acceptio. Inscrutabilis hujus Dei judicii exemplum suppeditant David et Moyses : ille quidem ob gravissima peccata leviter pœnas luit ; iste vero ob leviusculum delictum promissa terra, in cujus desiderio erat, exclusus fuit.
-    65 Ὁ δ' ἀντὶ μικρν, καὶ Θεοῦ λαβὼν θέαν. Pro levibus alter conspicit rebus Deum. Ita Billius, Leuv. Moyses autem pro re una non magna consecutus est, ut ipsum Deum aspiceret, legemque promulgaret. Nihil ineptum magis, magisque a Gregorii mente alienum, quam utraque hæc versio. Planus est vatis sensus : David, inquit, gravioribus delictis minores pœnas dedit ; deinde prosequitur : Iste autem (Moyses) pro levioribus punitus est gravissime, cum esset vir tantus, quem suo Deus aspectu dignatus fuerat. —
+  <bloco tipo="nota_marginal" script="latino" bbox="490,270,515,305">
+C
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="400,750,600,770">
-    METRICA VERSIO.
+  <bloco tipo="nota_marginal" script="latino" bbox="490,340,515,375">
+D
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="0,780,490,940">
-    Opes, quietem, robur, et prolem inclytam,
-    Felix sed ævum, quæque sperantur bona,
-    Majora speres ut loco præsentium.
-    Estne igitur æquum, te, velut in contractibus,
-    Et res habere, et venditam rem poscere?
-    Ni forte honoris vis tibi hoc uni dari.
-    Nimis avidi hoc est, et novi commercii.
-    Aut illa, bone vir, projice, aut hæc da quoque.
-    Si stare verbis tu cupis firmus tuis,
-    Nec, pacta quæ sunt commode, his excedere.
-    Ista quoque, dices, ergo cur priscis erant?
-    Fundata nondum tunc satis fides erat :
+
+  [!-- Coluna esquerda inferior: notas/observações (misto grego/latim) --]
+  <bloco tipo="nota" script="misto" bbox="30,660,480,900">
+48 Πῶς οὖν διάλογος, &amp;c. Sic fere cap. 25 Epicleti legitur: 'Αδιχος οὖν ἦν καὶ ἅπληστος, εἰ μὴ προσφέροντας ταῦτα, ἀν' ἑκάστῳ μερισατόμεν, προῖκα αὐτὰ βουλόμενος λαμβάνειν.' Illius eris et inexplēbiles, si non numerato eo pretio, quo illa veneunt, gra- tis illa accipere velis.
+49 Καὶ ἔξῃς συνεισφορᾶς. Et novae collectae.
+52 Συγκεκιμένων. Id est, ὁμολογουμένων, περικα- τευθέντων.
+55 Καὶ πιστις ἦν ταῖς, &amp;c. Fidem ipsis facilebant de bonis quae mente tantum percipiuntur.
+59 Κακῶν. Sic: ipse legit Billius et vertit: Non gravibus autem juncta laus culpa erat. Et in nota ad hunc locum: Levia peccata honoris quodammodo, in- quit, et laudi dabantur. Quod quam absurdum sit, quam Gregorio et Scriptoribus repugnet, nemo non intellegit. Nunquam certe laudata, nunquam honori babita leguntur in Scripturis peccata, quasi Deo probante minora vitia. Mundi sunt oculi ejus, ne malum videant. Obscuri ac difficiliores hujus loci sensus iste est: Tunc temporis gravissima peccata veniam aliquando consequebantur; quae vero non admodum gravia, plectebantur, inaequali ac pelali contra lanciae, appenso utrorumque merito. In ed. xa- λῶν. Mox, τυπτήσα. Vocis hujus notissima est in jure haec acceptio. Inscrutabilis hujus Dei iudicii exemplum suppeditant David et Moyses: ille quidem ob gravissima peccata leviter poenas tulit; iste vero ob leviusculorum delictum promissa terra, in cujus desiderio erat, exclusus fuit.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,780,1000,940">
-    B Fidemque certis fluxa præstabant bona;
-    Velut puellis, lacte qui vires trahunt.
-    Planum hinc fit istud : tunc enim gravissimis.
-    Etiam solebat venia criminibus dari,
-    Non gravibus autem juncta laus culpæ erat.
-    In utroque dispar sic erat libræ bilanx.
-    At vindicandis optimis viris modus
-    Aberat : docent hoc David et Moses, docet
-    Eliseus etiam, mente quem versans tremo.
-    Culpis minores ille nam pœnas fuit.
-    Pro levibus alter conspicit rebus Deum,
-    Capiteque legem, maximam et servat manum.
+
+  [!-- Coluna direita superior: grego --]
+  <bloco tipo="texto_principal" script="grego" bbox="520,100,970,380">
+Α Οὕτω τότ' ἦν ἡ πίστις ἐβριθωμένη,
+55 Καὶ πίστις ἦν τὰ τῆδε τῶν νοουμένων,
+'Ὅσπερ γάλακτι νηπίοις ἀναθρυμμένοις,
+Τεχνήριον δὲ τοῦ λόγου. Καὶ γὰρ τὸτ' ἦν
+Τὰ μὲν μέγιστα τῶν κακῶν συγγνωσταῖ πως·
+Τὰ δ' οὐ μέγιστα τῶν κακῶν τιμητέα·
+60 Ἀντιζυγούσης τῆς ἐν ἀμφότεροις ἀξίας.
+Αἱ δ' ἐκδιήξεις τῶν σοφῶν ὑπέ̣ρμετροι.
+Δαυῖδ σε ταῦτα πείθεσθ', καὶ Μωϋσῆς,
+'Ελισσαιος τε, οὗ τρέμω μεμμημένος·
+Ὁ μὲν κολασθῆν' ἐνδεὀς τοῖς πταισμασι,
+65 Ὁ δ' ἀντὶ μικρῶν, καὶ θεοῦ λαβὼν θέαν
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="600,960,900,990">
-    Digitized by Google
+
+  [!-- Coluna direita inferior: notas/observações (misto grego/latim) --]
+  <bloco tipo="nota" script="misto" bbox="520,660,970,900">
+65 Ὁ δ' ἀντὶ μικρῶν, καὶ θεοῦ λαβὼν θέαν. Pro levibus autem conspecti rebus Deum. Ita Billius. Leuv. Moyses autem pro re una non magna consecutus est: ut ipsum Deum aspiceret, legemque promulgaret. Nihil ineptum magis, magisque a Gregorii mente alienum, quam utraque haec versio. Planus est vatis sensus: David, inquiit, gravioribus deliciis minoris poenas dedit; deinde prosequitur: Iste autem (Moyses) pro levioribus poenis est gravissimus, cum esset vir sanctus, quem suo Deus aspectu dignatus fuerat. —
   </bloco>
+
+  [!-- Cabeçalho da seção METRICA VERSIO. central --]
+  <bloco tipo="cabecalho" script="latino" bbox="280,920,720,970">
+METRICA VERSIO.
+  </bloco>
+
+  [!-- Versos métricos: duas colunas A (esquerda) e B (direita) --]
+  <bloco tipo="texto_principal" script="latino" bbox="30,980,480,1400">
+Opes, quietem, robur, et prolem inclytam,
+Felix sed zeum, quaeque sperantur bona,
+Majora speres ut loco praesentium.
+Estne igitur aequum, ie, velut in contractibus,
+Et res habere, et venditam rem poscere?
+Ni forte honoris vis, tibi hoc uni dari.
+Nimis avidi hoc est, et novi commercii.
+Aut illa, bone vir, projice, aut haec da quoque.
+Si stare verbis tu cupis firmus tuis,
+Nec, pacta quae sunt commode, his excedere.
+Ista quoque, dices, ergo cur priscis erant?
+Fundata nondum tunc salis fides erat:
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,980,970,1400">
+B Eilemque certis fluxa praestabant bona;
+Velut puellis, lacte qui vires trahunt.
+Planum hinc fit istud: tunc enim gravissimis,
+Etiam solebat venia criminibus dari,
+Non gravibus autem juncta laus culpis erat,
+In utroque dispar sic erat librae bilanz.
+At vindicandis optimis viris modus
+Aberat: docuit hoc David et Moyses, docet
+Elisaeus etiam, mente quem versans tremo.
+Culpis minores ille nam poenas tulit.
+Pro levibus alter conspicit rebus Deum,
+Capitique legem, maximam et servat manuum.
+  </bloco>
+
+  [!-- Pequeno rodapé / marca de digitalização --]
+  <bloco tipo="outro" script="latino" bbox="720,1450,960,1490">
+Digitized by Google
+  </bloco>
+
   <notas>
-    Transcrição de página da Patrologia Graeca. Contém texto grego, tradução latina, aparato crítico misto (grego/latim) e versão métrica latina. Números de linha (45, 50, etc.) e referências (232-233) foram mantidos no fluxo do texto onde aparecem. Ligaduras latinas (æ, œ) foram normalizadas.
+  - As transcrições gregas e algumas leituras latinas contêm trechos de difícil leitura; foram mantidos acentos e separações conforme aparente no impresso.  
+  - As letras A, B, C, D no gutter foram transcritas em blocos próprios como notas marginais, não inseridas no fluxo do texto.
+  - Script dos blocos mistos marcado como "misto" quando o conteúdo contém grego+latim.
   </notas>
 </pagina>

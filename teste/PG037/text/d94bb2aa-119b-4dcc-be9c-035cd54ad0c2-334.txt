@@ -1,8 +1,9 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
-    659 S. GREGORII THEOL. CARMINUM LIBER I. THEOLOGICA. 660
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="40,20,960,70">
+    659  S. GREGORII THEOL. CARMINUM LIBER I. THEOLOGICA.  660
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="60,60,480,300">
+
+  <bloco tipo="texto_principal" script="grego" bbox="40,80,480,300">
     Τοίχων, ὀρόφων καὶ ψηφῖδος πεδοστιβοὺς·
     Ἄργυρος, ὁ μέν τις κρυπτὸς ἐν κόλποις χθονὸς
     Εἱργθεὶς, ὅθεν προῆλθεν, ἄξιος τάφου,
@@ -18,23 +19,8 @@
     Κούραι γυναῖκες, ὀμμάτων δύσματα·
     Τύμβου τὰ πάντα πλουσίου, γραπτῆς χοός.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,60,940,300">
-    A 150 Ὁ δ' νδης στηκέν, ἂν δ καὶ πέσ
-    Νόσῳ καμών, μόγις ποτ' ἢ μακρῷ χρόνῳ,
-    Οὐδὲν παρέξει πρᾶγμα τοῖς αὑτο φίλοις,
-    Τεθνήξεθ' ὡς λέων τις ἐν βρυχήμασι
-    Νεκρός, ζαπλούτων πλείστου εὐανθέστερος.
-    155 Τί λοιπόν; ὕβρις, θυμός, ἔκστασις, θράσος,
-    Μέθη, γέλωτες ἀκρατεῖς, αἰχροὶ λόγοι,
-    Θεοῦ περιφρόνησις, αἵματος, φίλων,
-    Ταῦτ' οὐ πενήτων μᾶλλον ἐστ' ἢ πλουσίων·
-    Πλοῦτος γὰρ ὕβριν, ἢ δ' ἀπώλειαν φέρει.
-    160 Ὁ δ' ἐκπιέζθ' ὡς τὰ πολλ', οὐδ' αἴρεται·
-    Θεοῦ μάλιστ' ἂν συνδραμὼν φόβος τύχῃ.
-    Καλῶν ἁπάντων παιδαγωγὸς εὐσθενής.
-    Ἄθρει δ' ἕκαστον ἀνθ' ἑκάστου συντόμως,
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="180,310,820,650">
+
+  <bloco tipo="texto_principal" script="latino" bbox="60,300,480,700">
     Parietes, tigna et stratum calculis solum,
     Argentum partim abditum in terræ sinu
     Inclusum, unde prodiit, dignum sepulcris,
@@ -47,7 +33,7 @@
     145 Florigeri, spargentes odores, discos abluentes,
     Gustatores, umbram efficientes, nutuum observatores,
     Balneatores, pincernæ ad signum digiti sublati,
-    Crine mulieres, oculorum objectamenta :
+    Crine mulieres, oculorum oblectamenta :
     Sunt hæc omnia divitis sepulcri, picti pulveris.
     150 Stat vero pauper, atque etiamsi cadat
     Morbo laborans, vix tandem aut longo senio,
@@ -64,31 +50,60 @@
     Bonorum omnium fortis magister.
     Considera breviter, unum cum altero conferens,
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="60,660,480,800">
+
+  <bloco tipo="aparato_critico" script="misto" bbox="40,700,480,860">
     136 Πεδοστιβοὺς. Val. Edit. πεδοτριβοὺς. Soli calculis strati.
     137 Ἄργυρος. Hic versus uno pede redundare videbatur Benedictinis, qui delendum proponebant τίς. Sed immerito, cum ἄργυρος sit dactylus, a quo primus pes versus informetur.
     139 Πότοις. Coisl. τοποῖς, in ædibus.
     143 Χάρις. Forte χάριν.
-    144 Στρώται. Per stratores, inquit Billius, intel-ligit Gregorius eos, qui mensas aut lectos, aut ali-
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="520,660,940,780">
-    quid ejusmodi sternunt. Per vocatores autem eos, qui apud divites hoc munere funguntur, ut heri nomine ad epulas certos homines invitent.
-    145 Παρτῆς. Aspersores odorum fragrantium.
+    144 Στρώται. Per stratores, inquit Billius, intelligit Gregorius eos, qui mensas aut lectos, aut aliquid ejusmodi sternunt. Per vocatores autem eos, qui apud divites hoc munere funguntur, ut heri nomine ad epulas certos homines invitent.
+    145 Ῥαντῆρες. Aspersores odorum fragrantium.
     147 Κερασταὶ δακτύλων ὑψώμασι. Qui summa manu potum ministrant. Bill., Leuv. temperatores extremis utentes digitis.
     150 Ὁ δ' ἔνδης. Ita Coisl. Edit. mendose οὐδ' ἔνδης.
-    153 Τεθνήξεθ' ὡς. Ita Coisl. Edit. τέθνηξ' ἐό'.
+    153 Τεθνήξεθ' ὡς. Ita Coisl. Edit. τέθνηξ' ἐὼς.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="400,810,600,830">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="500,100,520,140">
+    A
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="520,80,940,320">
+    150 Ὁ δ' ἐνδεὴς ἕστηκεν, ἂν δὲ καὶ πέσῃ
+    Νόσῳ καμὼν, μόγις ποτ' ἢ μακρῷ χρόνῳ,
+    Οὐδὲν παρέξει πρᾶγμα τοῖς αὐτοῦ φίλοις,
+    Τεθνήξέθ' ὡς λέων τις ἐν βρυχήμασι
+    Νεκρός, ζαπλούτων πλεῖστον εὐανθέστερος.
+    155 Τί λοιπόν; ὕβρις, θυμός, ἔκστασις, θράσος,
+    Μέθη, γέλωτες ἀκρατεῖς, αἰσχροὶ λόγοι,
+    Θεοῦ περιφρόνησις, αἵματος, φίλων,
+    Ταῦτ' οὐ πενήτων μᾶλλον ἐστ' ἢ πλουσίων·
+    Πλοῦτος γὰρ ὕβριν, ἣ δ' ἀπώλειαν φέρει.
+    160 Ὁ δ' ἐκπιέζεται ὡς τὰ πολλά, οὐδ' αἴρεται·
+    Θεοῦ μάλιστα ἂν συνδραμὼν φόβος τύχῃ.
+    Καλῶν ἁπάντων παιδαγωγὸς εὐσθενής.
+    Ἄθρει δ' ἕκαστον ἀνθ' ἑκάστου συντόμως,
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="520,700,940,860">
+    . "Aprvpoc. Hic versus uno pede reduadare videbatur Benedictinis, qui delendum proponebant. Sed immerito, cum ἄργυρος sit dactylus, a quo primus pes versus informetur.
+    439 Πότοις. Coisl. τοποῖς, in ædibus.
+    141 Κερασταὶ δακτύλων ὑψώμασι. Qui summa manu potum ministrant. Bill., Leuv. temperatores extremis utentes digitis.
+    150 Ὁ δ' ἔνδης. Ita Coisl. Edit. mendose οὐδ᾽ ἐνδής.
+    153 Τεθνῆξεθ' ὡς. Ita Coisl. Edit. τέθνηξ' ἐὼς.
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="380,810,620,840">
     METRICA VERSIO.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,840,450,950">
+
+  <bloco tipo="texto_principal" script="latino" bbox="60,840,450,960">
     Argentum et imo conditum partim sinu
     Terræ, unde fluxit, atque humo dignum tegi
     Partim redundans et micans in poculis :
     Equi, tapetes, ductor et cum curribus,
-    Canes, canumque qui feras capinnt duces :
+    Canes, canumque qui feras capiunt duces :
     Et quæ voluptas ventris est, heri improbi,
-    Itatumque nil quæ respuit prorsus, gulæ :
+    Datumque nil quæ respuit prorsus, gulæ :
     Strator, vocator, janitor, somnum ciens,
     Floresque gestans, quique discos abluunt
     Terguntque, gustant qui dapes, umbram cient,
@@ -97,8 +112,13 @@
     Hæc sunt sepulcri divitis, pictæque humi.
     Consistit at inops : ac licet tandem cadat,
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,840,940,950">
-    B Aut febre, senio fractus aut longo, nihil
+
+  <bloco tipo="nota_marginal" script="latino" bbox="520,840,540,870">
+    B
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,840,940,960">
+    Aut febre, senio fractus aut longo, nihil
     Charis amicis afferet negotii.
     Instar leonis spiritum nam rugiens
     Edet, opulento floridus multo magis.
@@ -113,12 +133,12 @@
     Collata cerne quæque jam cum singulis,
     Utrique justus arbiter vitæ manens.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="450,960,550,990">
+
+  <bloco tipo="rodape" script="latino" bbox="360,980,640,998">
     Digitized by Google
   </bloco>
+
   <notas>
-    Transcrição de página da Patrologia Graeca (S. Gregorii Theol. Carminum Liber I).
-    Layout complexo com texto grego no topo (duas colunas), tradução/prosa latina no meio, aparato crítico em duas colunas na parte inferior esquerda/direita, e versão métrica latina em duas colunas no rodapé.
-    Letras marginais 'A' e 'B' identificam colunas ou seções.
+    Página com texto grego (esquerda e coluna direita superior) e tradução/versão latina (duas colunas centrais e métricas abaixo). Aparato crítico em duas colunas na parte inferior; letras marginais A e B transcritas separadamente em blocos nota_marginal. Transcrição fiel ao impresso; não foram feitas normalizações ou traduções.
   </notas>
 </pagina>

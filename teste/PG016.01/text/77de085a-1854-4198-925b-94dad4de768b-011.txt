@@ -1,26 +1,32 @@
-<pagina estado="com_texto" tipo="capa_ou_guarda">
-  <bloco tipo="texto_principal" script="latino" bbox="253,278,725,325">
+<pagina estado="com_texto">
+  <bloco tipo="cabecalho" script="latino" bbox="0,10,1000,50">
+    ----------
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,240,880,530">
     HEXAPLORUM
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="345,342,622,372">
+
     QUÆ SUPERSUNT
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="275,428,685,472">
-    LIBER II REGUM
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="405,488,568,508">
+
+    ———
+
+    LIBER II RĒGUM
+
     SECUNDUM HEBRÆOS
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="395,528,615,562">
+
     II SAMUELIS.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="135,875,315,898">
+  <bloco tipo="rodape" script="latino" bbox="40,840,340,920">
     PATROL. GR. XVI.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="805,878,825,895">
+  <bloco tipo="rodape" script="latino" bbox="500,840,600,920">
     1
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="605,958,805,985">
+  <bloco tipo="rodape" script="latino" bbox="700,930,995,995">
     Digitized by Google
   </bloco>
+  <notas>
+    - Transcrições realizadas conforme visível: uso de ligatura "Æ" em "QUÆ" e "HEBRÆOS"; macron sobre "E" em "RĒGUM" representado com caractere U+0112.
+    - Ornamento horizontal abaixo de "QUÆ SUPERSUNT" transcrito como uma linha longa "———".
+    - BBOXs estimadas proporcionalmente à imagem (escala 0-1000).
+  </notas>
 </pagina>

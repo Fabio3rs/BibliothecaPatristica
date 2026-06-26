@@ -1,156 +1,51 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="60,30,940,120">
-55
-GEORGII HAMARTOLI
-56
-  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="100,30,150,50">55</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="400,30,600,50">GEORGII HAMARTOLI</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="880,30,930,50">56</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="100,60,490,80">III. De rege Nino.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,80,490,270">Ninus rex factus Syriæ, urbem condidit maximam, circuitus trium dierum, quam ex nomine suo Ninivem vocavit, primusque in ea regnavit. Ex ejus familia ortus est Zoroaster ille famosus Persarum astronomus, qui morti proximus, optavit ut ab igne cælesti percuteretur, Persis dicens : « Si me ignis interemerit, sumite ex ossibus meis combustis servateque : regnum enim e regione vestra non exibit, quandiu ossa mea servaveritis. » Ab Orione exauditus, fulgure percussus est. Persæ autem ex ossibus ejus in pulverem redactis sumpserunt, eaque servant usque ad præsens tempus.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="100,280,490,300">IV. De rege Thura.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,300,490,400">Post Ninum in Assyrios regnavit triginta annis quidam nomine Thuras, quem ex nomine planetæ Martem vocaverunt. Marti primam statuam erexerunt Assyrii, eumque ut deum usque adhuc colunt, sub nomine Persico Baal : Baal deus est Mars bellicosus, cujus meminit Daniel, quemque honoratum et adoratum fuisse tradit.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="100,405,490,420">V. De rege Lame.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,420,490,440">Post Martem regnavit Lames annis viginti.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="100,445,490,460">VI. De rege Sardanapalo.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,460,490,590">Post Lamem regnavit Sardanapalus magnus triginta quinque annis, et a Perseo interfectus est. Sardanapali adulatores, ejusque voluptatum, gulæ et ebrietatis socii in ipsius tumulo hæc, quasi ab eo videlicet dictata, inscripserunt : « Nihil habeo moriens præter stupra, comessationes et potationes. Inter amores et delicias regnavi. Nunc ego, quibus semper fruitus sum , delicias omnes relinquo. Etenim quamvis magnæ Ninivis rex fuerim, nunc nihil sum nisi cinis. »</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,590,490,690">At vero falsa inscripserunt scribæ ; nihil enim defuncto superest de comessationibus et potationibus ; sed hæc omnia in putridam corruptionem soluta sunt : nihilque habet nisi fœtidum vitæ perversæ odorem, qui animam inquietam miseramque semper cruciat, prave dissoluteque factorum conscientiam.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="100,700,490,720">VII. De rege Perseo.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,720,490,790">Post Sardanapalum autem regnavit Perseus, Pici, id est Jovis filius. Perseus Lycaoniam armis superavit : quo loco sibimet ipsi statuam crexit, urbemque condidit, quam ex sua effigie leonium nominavit. Aliis regionibus subactis,</bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="60,120,490,820">
-III. De rege Nino.
+  <notas_marginais>
+    <bloco tipo="nota_marginal" script="latino" bbox="500,60,515,80">A</bloco>
+    <bloco tipo="nota_marginal" script="latino" bbox="500,280,515,300">B</bloco>
+    <bloco tipo="nota_marginal" script="latino" bbox="500,470,515,490">C</bloco>
+    <bloco tipo="nota_marginal" script="latino" bbox="500,690,515,710">D</bloco>
+  </notas_marginais>
 
-Ninus rex factus Syriæ, urbem condidit maxi-
-mam, circuitus trium dierum, quam ex nomine
-suo Ninivem vocauit, primusque in ea regnavit.
-Ex ejus familia ortus est Zoroaster ille famo-
-sus Persarum astronomus, qui morti proximus,
-optauit ut ab igne caelesti [ilegivel], Persis di-
-cens : Si me ignis interemerit, sumite ex os-
-sibus meis combustis servateque : regnum enim e
-regione vestra non exibit, quandoquidem ossa mea ser-
-uarientis. Ab Orione exauditus, fulgure percus-
-sis est. Persæ autem ex ossibus ejus in pulverem
-reductis sumpserunt, eaque servant usque ad
-præsens tempus.
+  <bloco tipo="texto_principal" script="grego" bbox="520,60,920,80">9 I'. Περὶ Νίνου βασιλέως.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,80,920,270">Ὁ δὲ Ννος ἐπικρατὴς γενόμενος τῆς Συρίας καὶ κτίσας πόλιν μεγίστην σφόδρα, πορείας ἡμερῶν γ', ἣν κα ἐκάλεσεν εἰς ὄνομα αὐτοῦ Νινευή, καὶ πρῶτος ἐν αὐτῇ ἐβασίλευσε· (2) ἐξ οὗ γένους ἐγένετο καὶ ὁ Ζωρόαστρος ὁ περιβόητος καὶ Περσῶν ἀστρονόμος, ὃς μέλλων τελευτᾶν ηὔχετο ὑπ' οὐρανίου πυρὸς ἀναρπῆναι, εἰπὼν τοῖς Πέρσαις· « Ἐὰν καύσῃ με τὸ πῦρ, ἐκ τῶν καιομένων μου ὀστέων λάβετε καὶ φυλάξατε, καὶ οὐκ ἐκλείψει τὸ βασίλειον ἐκ τῆς χώρας ὑμν, ἕως οὗ φυλάττητε τὰ ὀστᾶ μου. » Καὶ εὐξάμενος τῷ Ὠρίωνι ὑπὸ πυρς ἀνηλώθη. Καὶ λαβόντες οἱ Πέρσαι ἀπὸ τῶν τεφρωθέντων ὀστέων αὐτοῦ χουσι φυλάττοντες ἕως ἄρτι.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="520,280,920,300">Δ'. Περὶ Θούρα βασιλέως.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,300,920,400">Μετὰ δὲ Νῖνον ἐβασίλευσεν Ἀσσυρίων Θούρας τις· τοὔνομα, ἔτη λ', ὃν καὶ μετωνόμασαν Ἄρεα εἰς νομα τοῦ πλανήτου ἀστέρος, φησιν· « Ἀρεῖ πρώτην στήλην ἀναστήσαντες Ἀσσύριοι καὶ ὡς θεὸν μέχρι τοῦ νν προσκυνοντες καλοῦσι Περσιστὶ Βάαλ θεὸν, τουτέστι· Ἄρης πολεμικὸς, οὗ καὶ Δανιὴλ μέμνηται, ὡς προσκυνομένου καὶ λατρευομένου.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="520,405,920,420">Ε'. Περὶ Λάμου βασιλέως.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,420,920,440">Μετὰ δὲ Ἄρμην ἐβασίλευσε Λάμης, ἔτη κ'</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="520,445,920,460">Ϛ'. Περὶ Σαρδαναπάλου βασιλέως.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,460,920,560">Μετὰ δὲ Δάμην ἐβασίλευσεν Σαρδανάπαλος ὁ μέγας, ἔτη λε'· καὶ ἐσφάγη ὑπὸ τοῦ Περσέως. (2) Οἱ δὲ γε κόλακες καὶ μιμηταὶ τς ἐκείνου φιλοσαρκίας καὶ γαστριμαργίας καὶ οἰστρηλασίας ἐπέγραψαν, ὡς ἐξ αὐτοῦ δήθεν, τῷ τάφῳ αὐτοῦ τοιάδε· « Τόσ' ἔχω, ὅσ' ἐφύβρισα καὶ ἔφαγόν τε καὶ ἔπιον... καὶ μετ' ἔρωτος τερπνοῦ ἐπολιτευσάμην. Παθόντα καὶ πολλὰ καὶ ὄλβια πάντα λέλειπται.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="520,560,920,590">10 Καὶ γὰρ νῦν σποδὸς εἰμι, Νίνου μεγάλης [βασιλεύσας. »</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,590,920,700">Ἀλλ' οὖν γε ψευδῶς ο γεγραφότες ἐπέγραψαν. Οὐ γὰρ ἔχει  τελευτήσας, ὅπερ φαγε καὶ πιεν, ἀλλ' εἰς τὴν δυσώδη (δυσώδη) φθορὰν ἐκεῖ τὰ πάντα κεχώρηκεν· ἔχει δ τοῦ παρανόμου βίου τὴν δυσωδίαν, ἥτις διηνεκῶς τν ἐμπαθ καὶ θλιαν ψυχὴν ἀλγύνει καὶ ἀνιᾷ, συνειδυῖαν ἑαυτῇ τὰ κάκιστα καὶ μεμνημένην, ὧν παρανόμως καὶ ἀκολάστως εἰργάσατο.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="520,705,920,720">Z'. Περὶ τοῦ Περσέως βασιλέως.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,720,920,790">Μετὰ δὲ Σαρδανάπαλον ἐβασίλευσε Περσεὺς ὁ υἱὸς Πίκου, τοῦ καὶ Διός· ὃς γε πολεμήσας καὶ νικήσας τοὺς Λυκάονας καὶ πόλιν κτίσας ἐκεῖ καὶ τὴν αυτοῦ στήλην στήσας ἐκάλεσεν αὐτὴν κόνιον ἐκ τοῦ ἰδίου ἀπεικονίσματος· ὑποτάξας καὶ τὰς</bloco>
 
-IV. De rege Thura.
-
-Post Ninum in Assyrios regnavit triginta annis
-quidam nomine Thuras, quem ex nomine planctae
-Martem vocauerunt. Marti primam statuam
-erexerunt Assyrii, eumque ut deum usque adhuc
-colunt, sub nomine Persico Baal: Baal deus est
-Mars bellicosus, cujus meminit Daniel, quemque
-lionorum et adoratum fuisse tradit.
-
-V. De rege Lame.
-
-Post Martem regnavit Lames annis viginti.
-
-VI. De rege Sardanapalo.
-
-Post Lamen regnavit Sardanapalus magnus tri-
-ginta quinque annis, et a Perseo interfectus est.
-Sardanapali adulatores, ejusque voluptatum, gulæ
-et ebrietatis socii in ipsius tumulo hæc, quasi ad
-eo videlicet dicta, inscripserunt: «Nihil habeo
-moriens præter stupra, comessationes et potationes.
-Inter amores et delicias regnavi. Nunc ego, quibus
-semper fruitus sum, delicias omnes relinquo.
-Etenim quamuis magnæ Ninis rex fuerim,
-nunc nihil sum nisi cinis.»
-
-At vero falsa inscripserunt scribæ: nihil enim
-defuncto superest de comessationibus et potatio-
-nibus; sed hæc omnia in putridam corruptionem
-soluta sunt: nihilque habet nisi foetidum vitæ per-
-versæ odorem, qui animam inquietam miseramque
-semper cruciat, pravæ dissolutæque factorum con-
-scia.
-
-VII. De rege Perseo.
-
-Post Sardanapalum autem regnavit Perseus,
-Pici, id est Jovis filius. Perseus Lycaonium
-armis superavit: quo loco sibi met ipsi statuam
-erexit, urbemque condidit, quam ex sua effigie
-leonum nominauit. Aliis regionibus subactis,
-  </bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="510,120,940,820">
-A  9  Γ. Περὶ Νίνου βασιλέως.
-
-"Ὁ δὲ Νῖνος ἐπικρατὴς γενόμενος τῆς Συρίας"
-καὶ κέλευσε "πόλιν μεγίστην σφοδρὰν, πορείας ἡμε-
-ρῶν γ", ἦν καὶ ἐκάλεσεν εἰς τὴν αὐτὴν Νεινέην, καὶ
-πρῶτος ἐν αὐτῇ βασίλευσε. (2) Ἐκ τοῦ γένους ἐγένετο καὶ ὁ Ζωροάστρης ὁ περίδημος
-καὶ Περσῶν ἀστρονομὸς, ὅς μελλων τελευτᾶν πρός
-τῷ οὐρανῷ πυρὸς ἀναθῆναι, εἶπεν τοῖς Πέρ-
-σαις· "Εἰ μὲν χάσῃ μὲ τὸ πύρ, ἐκ τῶν καμόμενων
-μου ὀστέων λάβετε καὶ φυλάξατε, καὶ οὐκ ἐκλείψῃ
-τὸ βασίλειον ἐξ τῆς χώρας ὑμῶν, ἕως ὅτ' ὁ φυλά-
-ττης τὰ ὀστέα μου." Καὶ ἐξελθόντες τῶν Ὠριώνων
-ὑπὸ τοῦ πυρὸς ἀνηλώθη. Καὶ λαβόντες οἱ Πέρσαι ἀπὸ
-τῶν τεφρωθέντων ὀστέων αὐτοῦ "ἔχουσι φυλά-
-ττοντες ἕως ἀρτι.
-
-Β  Δ'. Περὶ Θούρα βασιλέως.
-
-Μετὰ δὲ Νίνον ἐβασίλευσεν 'Ἀσσούριον Θοῦρας'
-τῷ τὸ ὄνομα, ἔτη λ', ὃν καὶ μετωνύμασαν 'Ἄρεα'
-εἰς ὄνομα τοῦ πλανήτου ἀστέρος, φώτιν 'Ἄρεα πρῶ-
-την' τῇ στήλῃ ἀνατίσσαντες Ἀσσούριοι καὶ ὡς θεὸν
-μέχρι τοῦ νῦν προσκυνοῦντες καλοῦσι Περσικῶς Βαλ
-θεὸν, τοὑτέστι 'Ἄρης πολεμικός', οὗ καὶ Δανιήλ
-μνήμηται, ὡς προσκυνούμενον καὶ λατρευόμενον.
-
-Ε'. Περὶ Λάμεου βασιλέως.
-
-Μετὰ δὲ 'Ἄρεα ἐβασίλευσεν Λάμης', ἔτη χ'
-
-ΣΤ'. Περὶ Σαρδαναπάλου βασιλέως.
-
-Μετὰ δὲ Λάμην ἐβασίλευσεν Σαρδαναπάλος ὁ μέ-
-γας, ἔτη λε'· καὶ ἐστραφή ὑπὸ τοῦ Περσέως. (2) Οἱ δὲ
-σάρδοι καὶ ἀλαλῷ, καὶ μνῆμαι τῆς ἑκείνου φιλουργίας
-καὶ γαστρυμαργίας καὶ ὀιστρώσεως ἐτέτυφας, ὅτι
-ἐξ αὐτοῦ δήθεν, τῷ τάφῳ αὐτοῦ τοιαῦτα· "Τόδ' ἔγω,
-ὅς τέθνηκα καὶ ἐγώ, ..." καὶ μετ'
-ἔρωτος τερπνῆς ἐπολιτευσάμην. Παλόντα καὶ πολλὰ
-χαὶ ἄλλα πάντα λελίπται.
-
-10 Καὶ γὰρ τῶν νῦν σκοπῶν εἰμι, Νίνου μεγάλης
-βασιλεύσαι.
-
-... (υπολειπομένον κείμενον ἐν τῷ δεξιῷ στήλῳ συνέχοντα)
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="488,140,512,200">
-A
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="488,300,512,360">
-B
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="488,480,512,540">
-C
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="488,660,512,720">
-D
-  </bloco>
-
-  <bloco tipo="rodape" script="misto" bbox="60,820,940,960">
-Variae lectiones et notae.
-
-"² 2116. " τῆς 'Ασσοριας P». " εν αὐτῇ Par. " πορ. ἐδω ἡμ. γ' ἐκάλεσεν αὐτὴν B', O. " καὶ
-καλεσας sic - N. pr. Par. " Νινευτ B' — Εἰ δὲ γ´ κατ Z, B', O — κ.τ.λ. Par.
-κ.α. σχολιαζομ' B° O. " σὺ ὑπ. Par. " φυλάττεται B° O. " αὕται B', 0· " Π. ἐν τῶν Par. " αὐτοῦ
-om. Par. " ὁ Θουρας Leo βουρσ Ccel. " Α. ὡς πολεμικότητα καὶ γενεσιν ὑπὲρ ἣν Ccel. 'Πρ'
-μετωνύμασαν Leo. " προτονν B', ἔτη. pp. παρὰ Περσῶν καὶ λατρευομ' B'. " Ζακύμη Ccel. Πλ-
-ῆθ' τῶν πολλὰ B', O. " λεγόμενα: Ath. VIII, 1,4. " Καὶ γὰρ ἐγὼ Ath. 17 ἐπαλάθου Aug. Mun. 1
-" 816 (3584) Eus. (Chr. II, 119.) " Ἰσῆμον Par. " οἱκεῖον Par.
-  </bloco>
-
-  <bloco tipo="outro" script="latino" bbox="760,960,940,995">
-Digitized by Google
-  </bloco>
-
-  <notas>
-- Os bboxes são aproximações visuais em escala 0-1000.
-- Foram mantidos hífens e quebras de linha conforme visíveis no impresso.
-- Marquei como [ilegivel] uma palavra na linha que descreve o desejo de Zoroaster (caractere pouco legível) em vez de corrigir ou normalizar.
-- As letras marginais A, B, C, D no gutte r foram colocadas em blocos nota_marginal distintos, conforme instruído.
-- O bloco do rodapé contém a rubrica "Variae lectiones et notae." e parte do aparato crítico; este último contém material misto (latim/grego) e foi etiquetado como script="misto".
-  </notas>
+  <bloco tipo="texto_principal" script="misto" bbox="380,805,620,825">Variæ lectiones et notæ.</bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="100,830,900,930">57 2116. 58 τῆς σσυρίας P2. 59 ἐν αὐτῇ Par. 60 προ. ὁδοῦ ἡμ. γ' ἐκάλεσεν αὐτὴν B2, O. 61 καὶ καλέσας εἰς — Ν. πρ. Par. 62 Νινευὶ B2 — ἐξ οὗ ἐγ. καὶ Z, B2, O — καὶ om. O. 63 καὶ Z. P. Par. 64 ἀναλωθῆναι B2 O. 65 οὗ om. Par. 66 φυλάττεται B2 O. 67 ἀρίου B2, O. 68 Π. ἐκ τῶν Par. 69 αὐτοῦ om. Par. 70 Θούρας Leo Θοῦρος Ced. 71 Ἄ. ς πολεμικώτατον καὶ γενναῖον ὄντα, ὃν οἱ Α. Β. ὃν μετωνόμασαν Leo. 72 πρῶτον B2. 73 πρ. παρὰ Περσῶν καὶ λατρευομένου B2. 74 Ζάμις Ceil. 75 Παθόντα δὲ πολλὰ B2, O. 76 λέλυπται Ath. VIII, 14. 76a Καὶ γὰρ ἐγὼ Ath. 77 ἐμπαθίαν Aug. Mun.? 78 816 (3854) Eus. Chr. II, 119. 79 Ἰκόνιον Par. 80 οἰκείου Par.</bloco>
+  
+  <bloco tipo="rodape" script="latino" bbox="560,960,780,980">Digitized by Google</bloco>
 </pagina>

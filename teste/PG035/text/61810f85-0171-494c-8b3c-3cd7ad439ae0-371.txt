@@ -1,4 +1,4 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="50,30,950,60">
     755 ORATIO VI. - DE PACE I. 754
   </bloco>
@@ -43,7 +43,7 @@
     μεν οντες ανθρωποι, και ου παντη διεφυγομεν του
     πονηρου τον φθονον, ουδε της παντα κατεχουσης
     νωσω κρειττονος πεφηναμεν· αλλα της κοινης συμ-
-    φορας μερος, και αυτοι μετειληφαμεν, και την
+    φορᾶς μερος, και αυτοι μετειληφαμεν, και την
     καλην και πατρωαν κληρονομιαν, το της ομονοιας
     αγαθον, ουκ εις τελος διεφυλαξαμεν, ου μικρον μεν
     κινεισθαι τους αλλους επενοεκτησαμεν (ει τι δει
@@ -94,13 +94,25 @@
     nec morbo eo, qui omnia occupabat, superiores ex-
     stitimus; verum publicæ calamitatis partem ipsi
     quoque accepimus, nec præclaram et paternam hæ-
-    reditatem, hoc est, concordiae bonum, ad extremum
+    reditatem, hoc est, concordiæ bonum, ad extremum
     usque retinuimus, non parum tamen hic quoque alios
     superavimus (si quid etiam adversus inimicitiam
     nostram gloriari oportet, Christo fretos), quod in
     hanc fraudem ultimi prolapsi, primi erecti sumus.
     Nam quod in morbum inciderimus, communis na-
     (maxima jam ex parte vos opera ipsa monuerunt.)
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,110,520,132">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,290,520,312">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,510,520,532">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,710,520,732">
+    D
   </bloco>
   <bloco tipo="aparato_critico" script="misto" bbox="50,660,480,940">
     (20) Τῶν ποιμένων τὸν τιμιώτατον. Juxta Sche-
@@ -130,13 +142,9 @@
     quod secutus est Billius.
     (33) Ἐν αὐτῇ. Reg. hu, Or. 1, ἐν ἑαυτῇ, (in
     seipsa.)
-    (34) Ἐπειδὴ δέ. Reg. hu, Or. 1, Ἐπεὶ δέ.
+    (34) Ἐπειδὴ δέ. Reg. hu, Or. 1, Ἐπεὶ δέ.
   </bloco>
   <notas>
-    Pagina continet textum bilinguem (Graece et Latine) in columnis duabus.
-    Numeri in margine superiori: 755 (sinistra), 754 (dextra).
-    Litterae A, B, C, D in margine sinistro columnae Latinae apparent (non transscriptae ut bloci separati sed in contextu).
-    Numerus 185 in texto Latino in characteribus bold apparet.
-    Notae criticae in parte inferiori paginae divisae sunt in duas columnas.
+    Pagina bilinguis graeco-latina; columna sinistra greca, columna dextra latina. Marginalia literarum A-D in media inter columnas (separata ut nota_marginal). Numeri parentesi (20)-(34) correspondentes ad notas criticae in apparatus. Bbox valores estimati in scala 0-1000.
   </notas>
 </pagina>

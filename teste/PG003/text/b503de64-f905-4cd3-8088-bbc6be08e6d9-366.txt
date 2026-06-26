@@ -1,144 +1,75 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,50">
-    751 S. DIONYSII AREOPAGITÆ 752
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,80">
+S. DIONYSII AREOPAGITAE    751                                                                            752
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,50,480,290">
-    num ex bono ? an bono ex malo ? an vero utrique
-    ex causa alia ? Omne quod secundum naturam est,
-    ex definita causa nascitur ; malum autem si cau-
-    sæ sit ac definitionis expers , non est secundum
-    naturam ; neque enim est in rerum natura, quod
-    contra naturam est, neque in arte ratio est insci-
-    tiæ. Num ergo anima malorum causa sit, sicut
-    ignis v. g. calor is, atque omnia, quibus appropin-
-    quat, malitia replet ? an vero bona quidem animæ
-    natura, sed in actionibus suis alias quidem sic ,
-    alias vero aliter se habet ? Si natura sua status
-    etiam ejus malus est, unde statum habuit ? an ex
-    causa bona quæ effectrix est rerum omnium ? Sed
-    si ex ea, quomodo malum est secundum essentiam ?
-    Omnes enim ejus effectus boni sunt. Sin per actio-
-    nes, neque hoc est immutabile ; alioquin unde vir-
-    tutes illi, nisi boniformis facta sit ? Reliquum est igitur, malum esse debilitatem quandam defectionem-
-    que a bono.
+
+  [!-- Coluna esquerda, superior --]
+  <bloco tipo="texto_principal" script="latino" bbox="40,80,480,360">
+num ex bono? an bono ex malo? an vero utrique ex causa alia? Omne quod secundum naturam est, ex definita causa nascitur; malum autem si causae sit ac definitionis expers, non est secundum naturam; neque enim est in rerum natura, quod contra naturam est, neque in arte ratio est inscitiae. Num ergo anima malorum causa sit, sicut ignis v. g. caloris, atque omnia, quibus appropinquat, malitia replet? an vero bona quidem animae natura, sed in actionibus suis alias quidem sic, alias vero aliter se habet? Si natura sua status etiam ejus malus est, unde statum habuit? an ex causa bona quae effectrix est rerum omnium? Sed si ex ea, quomodo malum est secundum essentiam? Omnes enim ejus effectus boni sunt. Sin per actiones, neque hoc est immutabile; alioquin unde virtutes illi, nisi boniformis faciat? Reliquum est igitur, malum esse debilitatem quamdam defectionemque a bono.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,50,920,290">
-    A ἐκ τοῦ ἀγαθοῦ ;  τῷ ἀγαθῷ ἐκ τοῦ κακοῦ ;  ἀμφοῖν
-    ἐξ ἄλλης αἰτίας ; Πᾶν τὸ κατὰ φύσιν ἐξ αἰτίας ρισμέ-
-    νης γεννᾶται · εἰ δὲ τὸ κακὸν ἀναίτιον καὶ ἀόριστον,
-    οὐ κατὰ φύσιν · οὐδὲ γὰρ ἐν τῇ φύσει τὸ παρὰ φύσιν,
-    οὐδὲ ἄτεχνος 29 ἐν τῇ τέχνῃ λόγος. Ἄρα ἡ ψυχὴ τῶν
-    κακῶν αἰτία, καθάπερ τὸ πῦρ τοῦ θερμαίνειν, καὶ πάν-
-    τα οἷς ν γειτνιάσῃ, κακίας ἀναπίμπλησιν ; ἢ ἀγαθὴ
-    μὲν ἡ τῆς ψυχῆς φύσις, ταῖς δὲ ἐνεργείαις, ποτὲ μὲν
-    οὕτως ἔχει, ποτὲ δὲ οὕτως ; Εἰ μὲν φύσει καὶ τὸ εναι
-    αὐτῆς κακόν, καὶ πόθεν αὐτ τὸ εναι ; ἢ ἐκ τῆς δη-
-    μιουργικῆς τν ὅλων ὄντων ἀγαθῆς ατίας ; Ἀλλ' εἰ
-    ἐκ ταύτης, πῶς κατ' οὐσίαν κακόν ; ἀγαθὰ γὰρ πάντα
-    ταύτης ἔκγονα. Εἰ δὲ ταῖς ἐνεργείαις , οὐδὲ τοῦτο
-    ἀμετάβλητον· εἰ δὲ μή, πόθεν αἱ ἀρεταί, μὴ καὶ ἀγαθο-
-    ειδοὺς αὐτῆς γινομένης ; Λείπεται ἄρα , τὸ κακν
-    B ἀσθένεια καὶ ἔλλειψις τοῦ ἀγαθοῦ εἶναι.
+
+  [!-- Marcador de secção (central, full-width) --]
+  <bloco tipo="texto_principal" script="latino" bbox="40,360,960,400">
+§ XXXI.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,50,515,65">
-    A
+
+  [!-- Coluna esquerda, médio (secc. XXXI) --]
+  <bloco tipo="texto_principal" script="latino" bbox="40,400,480,620">
+Bonorum causa una est. Si bono malum est contrarium, malorum causæ multæ non tamen efficientes sunt malorum rationes ac facultates, sed impotentia, et infirmitas, et incongrua quædam pervistio rerum dissimilium. Mala nec immobilia sunt, neque semper eodem modo se habent, sed infinita et indeterminata, in aliis atque aliis, iisque infinitis, diversimode vagantur. Malorum etiam omnium principium atque finis bonum est; boni enim causa sunt omnia, et quæ bona sunt et quæ mala; quippe cum hæc quoque bona desiderio agamus (nemo enim proposito sibi malo facit) quæ facit; quapropter neque substantia malum nititur, sed substantia simulacro, dum boni et non sui ipsius gratia geritur.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,260,515,275">
-    B
+
+  [!-- Marcador de secção (central, full-width) --]
+  <bloco tipo="texto_principal" script="latino" bbox="40,620,960,660">
+§ XXXII.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="450,310,550,330">
-    § XXXI.
+
+  [!-- Coluna esquerda, inferior (secc. XXXII etc.) --]
+  <bloco tipo="texto_principal" script="latino" bbox="40,660,480,920">
+Malo status tribuendus est per accidens, et propter aliud, et non ex proprio principio; ut quod dum sit, rectum quidem esse videatur, quia 373 boni gratia fit, revera autem rectum non sit, quandoquidem id bonum opinemur, quod bonum non est. Ostensum est aliud esse quod exteriatur, et aliud quod agitur. Malum itaque defecit a via præter intentionem, præter naturam, præter causam, præter principium, præter finem, extra terminum, extra voluntatem, extra substantiam. Malum ergo privatio est, et defectus, et infirmitas, et inconconimita[s] et error, et frustratio scopi, pulchritudinis, vitæ, intellectus, rationis, perfectionis, fundamenti, causæ; est interminatum, sterile, iners, imbecillum, confusum, dissimile, infinitum, tenebrosum, statu caret, ipsumque nullo pacto, ac nusquam, et nihil exsistit. Quandoquidem ergo malum
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,340,480,560">
-    Bonorum causa una est. Si bono malum
-    est contrarium , malorum causæ multæ sunt ;
-    non tamen efficientes sunt malorum rationes ac
-    facultates, sed impotentia, et infirmitas, et incon-
-    grua quædam permissio rerum dissimilium. Mala nec
-    immobilia sunt, neque semper eodem modo se
-    habent, sed infinita et indeterminata, in aliis atque
-    aliis, iisque infinitis, diversimode vagantur. Malo-
-    rum etiam omnium principium atque finis bonum
-    est ; boni enim causa sunt omnia, et quæ bona sunt
-    et quæ mala ; quippe cum hæc quoque boni deside-
-    rio agamus (nemo enim proposito sibi malo facit
-    quæ facit) : quapropter neque substantia malum ni-
-    titur, sed substantiæ simulacro , dum boni et non
-    sui ipsius gratia geritur.
+
+  [!-- Notas marginais (letras no gutter) --]
+  <bloco tipo="nota_marginal" script="latino" bbox="488,240,512,300">
+A
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,340,920,560">
-    Τῶν ἀγαθῶν τ αἴτιον ν. Ε τῷ ἀγαθῷ τὸ κακὸν
-    ἐναντίον , τοῦ κακοῦ τὰ αἴτια πολλά · οὐ μὴν τὰ
-    ποιητικὰ τῶν κακῶν, λόγοι καὶ δυνάμεις, ἀλλ' ἀδυ-
-    ναμία, καὶ ἀσθένεια, καὶ μίξις τῶν ἀνομοίων ἀσύμ-
-    μετρος. Οὔτε ἀκίνητα καὶ ἀεί ὡσαύτως ἔχοντα τὰ κα-
-    κά, ἀλλ' ἄπειρα, καὶ ἀόριστα, καὶ ἐν λλοις φερόμενα,
-    καὶ τούτοις ἀπείροις. Πάντων καὶ τῶν κακῶν ἀρχὴ
-    καὶ τέλος ἔσται τὸ ἀγαθόν · τοῦ γὰρ ἀγαθοῦ ἕνεκα
-    πάντα καὶ ὅσα ἀγαθά, καὶ ὅσα ἐναντία · καὶ γὰρ καὶ
-    ταῦτα πράττομεν τὸ ἀγαθὸν ποθοῦντες · (οὐδεὶς γὰρ
-    C εἰς 30 τὸ κακν ἀποβλέπων ποιεῖ ἃ ποιεῖ ·) διὸ οὔτε
-    ὑπόστασιν ἔχει τ κακόν , ἀλλὰ παρυπόστασιν 31, τοῦ
-    ἀγαθοῦ ἕνεκα καὶ οὐχ ἑαυτοῦ γινόμενον.
+  <bloco tipo="nota_marginal" script="latino" bbox="488,340,512,400">
+B
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,500,515,515">
-    C
+  <bloco tipo="nota_marginal" script="latino" bbox="488,520,512,580">
+C
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="450,580,550,600">
-    § XXXII.
+  <bloco tipo="nota_marginal" script="latino" bbox="488,700,512,760">
+D
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,610,480,880">
-    Malo status tribuendus est per accidens , et
-    propter aliud, et non ex proprio principio ; ut
-    quod dum fit , rectum quidem esse videatur,
-    quia 373 boni gratia fit, revera autem rectum
-    non sit , quandoquidem id bonum opinemur, quod
-    bonum non est. Ostensum est aliud esse quod expe-
-    titur, et aliud quod agitur. Malum itaque deflectit
-    a via præter intentionem, præter naturam, præter
-    causam, præter principium, præter finem, extra
-    terminum, extra voluntatem, extra substantiam.
-    Malum ergo privatio est, et defectus, et infirmitas,
-    et inconcinnitas, et error, et frustratio scopi, pul-
-    chritudinis, vitæ, intellectus, rationis, perfectionis,
-    fundamenti, causæ ; est interminatum , sterile ,
-    iners, imbecillum, confusum, dissimile, infinitum,
-    tenebrosum, statu caret, ipsumque nullo pacto, ac
-    nusquam, et nihil exsistit. Quomodo ergo malum
+
+  [!-- Agora coluna direita: transcrever integralmente depois da esquerda --]
+
+  [!-- Coluna direita, superior (paralela ao primeiro bloco) --]
+  <bloco tipo="texto_principal" script="grego" bbox="520,80,960,360">
+ἄξ τοῦ ἀγαθοῦ; ἢ τῷ ἀγαθῷ ἐκ τοῦ κακοῦ; ἢ ἀμφότεροις ἐκ κλῆσις αἰτίας; Πᾶν τὸ κατὰ φύσιν ἐκ αἰτίας ὁρισμένης γεννᾶται· εἰ δὲ τὸ κακὸν ἀναίτιον καὶ ἀδόριστον, οὐ κατὰ φύσιν· οὐδὲ γὰρ ἐν τῇ φύσει τὸ παρὰ φύσιν, οὐδὲ ἀτεχνίας ἐν τῇ τέχνῃ λόγος. Ἄρα ἡ ψυχή τῶν κακῶν αἴτια, καθάπερ τὸ πῦρ ὑπερθερμαίνειν, καὶ πάντα τὰ ὧν ἂν γεινῃσκῃ, κακίας ἀναπλησίην; ἢ ἀγαθὴ μὲν ἡ τῆς ψυχῆς φύσις, ταῖς δὲ ἐνεργείαις, ποτὲ μὲν οὕτως ἔχει, ποτὲ δὲ οὕτως; Εἰ μὲν φύσει καὶ τὸ εἶναι αὐτῆς κακὸν, καὶ πόθεν αὐτῇ τὸ εἶναι; ἢ ἐκ τῆς δημιουργικῆς τῶν ὅλων ὄντων ἀγαθῆς αἰτίας; Ἀλλ' εἰ ἐκ ταύτης, πῶς κατ' οὐσίαν κακόν; ἀγαθὰ γὰρ πάντα ταύτης ἔκγονα. Εἰ δὲ ταῖς ἐνεργείαις, οὐδὲ τοῦτο ἀμεταβάλλητον· εἰ δὲ μὴ, πόθεν αἱ ἀρεταί, μὴ καὶ ἀγαθοειδοῦς αὐτῆς γιγνομένης; Λείπεται ἄρα, τὸ κακὸν ἀσθένεια καὶ ἔλλειψις τοῦ ἀγαθοῦ.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,610,920,880">
-    Τῷ κακῷ τ εἶναι θετέον κατὰ συμβεβηκός, καὶ δι'
-    ἄλλο, καὶ οὐκ ἐξ ἀρχῆς οἰκείας · ὥστε τὸ γιγνόμενον,
-    ὀρθν μὲν εἶναι δοκεῖν, ὅτι τοῦ ἀγαθοῦ νεκα γίνεται, τ
-    ὄντι δὲ οὐκ ὀρθὸν εἶναι, διότι τὸ μὴ ἀγαθὸν ἀγαθὸν οἰό-
-    μεθα. Δέδεικται ἄλλο τὸ ἐφετόν, καὶ ἄλλο τὸ γινόμενον.
-    Οὐκοῦν τὸ κακὸν παρὰ τὴν δόν, καὶ παρὰ τὸν σκοπόν,
-    D καὶ παρὰ τὴν φύσιν, καὶ παρὰ τὴν ατίαν, καὶ παρὰ τὴν
-    ἀρχήν, καὶ παρὰ τὸ τέλος, καὶ παρὰ τὸν ὅρον, καὶ παρὰ
-    τὴν βούλησιν, καὶ παρὰ τὴν ὑπόστασιν. Στέρησις ἄρα
-    ἐστὶ τὸ κακόν, καὶ ἔλλειψις, καὶ ἀσθένεια, καὶ ἀσυμμε-
-    τρία, καὶ ἁμαρτία, καὶ ἄσκοπον, καὶ ἀκαλλές, καὶ ἄζω-
-    ον 32, καὶ ἄνουν, καὶ ἄλογον, καὶ ἀτελές, καὶ ἀνίδρυτον,
-    καὶ ἀναίτιον, καὶ ἀόριστον, καὶ ἄγονον, καὶ ἄγονον καὶ
-    ἄδρανές, καὶ ἄτακτον, καὶ ἀνόμοιον, καὶ ἄπειρον, καὶ
-    σκοτεινόν, καὶ ἀνούσιον, καὶ αὐτὸ μηδαμῶς μηδαμῇ
-    μηδὲν ὄν. Πῶς ὅλως δύναταί τι τὸ κακὸν τῇ πρὸς τ
-    ἀγαθὸν μίξει 33 ; τὸ γὰρ πάντῃ τοῦ ἀγαθοῦ ἄμοιρον
+
+  [!-- Coluna direita, médio (paralela a § XXXI e texto adjacente) --]
+  <bloco tipo="texto_principal" script="grego" bbox="520,400,960,620">
+Τῶν ἀγαθῶν τὸ αἰτιον ἐν. Εἰ τῷ ἀγαθῷ τὸ κακὸν ἐναντίον, τοῦ κακοῦ τὰ αίτια πολλὰ· οὐ μὴν τὰ ποιητικὰ τῶν κακῶν, λόγοι καὶ δυνάμεις, ἀλλ' ἀδυναμία, καὶ ἀσθένεια, καὶ μίξις τῶν ἀνομοίων ἀσύμμετρος. Οὔτε ἀκίνητα καὶ ἀεί ὡσαύτως ἔχοντα τὰ κακά, ἀλλ' ἄπειρα, καὶ ἀόριστα, καὶ ἐν ἑτέρῳ φερόμενα, καὶ τούτοις ἄπειρα. Πάντων καὶ τῶν κακῶν ἀρχὴ καὶ τέλος ἑστὶ τὸ ἀγαθόν· τοῦ γὰρ ἀγαθοῦ ἕνεκα πάντα καὶ ἅ ἀγαθὰ, καὶ ὅσα ἐναντία· καὶ γὰρ καὶ ταῦτα πρὸς τὸ ἀγαθὸν ἔχουσιν· οὐδὲ γὰρ εἶναι τοῦ ἀγαθοῦ τοὐναντίον ἀπὸ θεσέως ποτε· ὥσπερ οὐδὲ τὰ κακὰ ἀπόκειται καθ' αὐτὰ, ἀλλ' ὑπὸ ἀπουσίας τοῦ ἀγαθοῦ.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,710,515,725">
-    D
+
+  [!-- Coluna direita, inferior (paralela a § XXXII e restante) --]
+  <bloco tipo="texto_principal" script="grego" bbox="520,660,960,920">
+Τὸ κακὸν τοῦτο ἔστιν βεβλαμένον κατὰ συμβεβηκὸς, καὶ δι' ἕτερον, οὐκ ἐκ ἰδίου ἀρχῆς· ὥστε τὸ γιγνόμενον, ὀρθὸν μὲν δοκεῖ εἶναι, ὅτι τοῦ ἀγαθοῦ ἕνεκα γίνεται, τῷ ὄντι δὲ οὐ τοῦ ὄντος ὄντως, διότι τὸ μὴ ἀγαθὸν ἀγαθόν οὐκ ἔστιν· δεῖκται ἄλλο τὸ ἐφετόν, καὶ ἄλλο τὸ γινόμενον. οὐκοῦν τὸ κακὸν παρὰ τὴν ὁδὸν, καὶ παρὰ τὴν φύσιν, καὶ παρὰ τὴν αἰτίαν, καὶ παρὰ τὴν ἀρχήν, καὶ παρὰ τὸ τέλος, καὶ παρὰ τὸν σκοπόν, καὶ παρὰ τὴν βούλησιν, καὶ παρὰ τὴν ὑπόστασιν. Στέρησις ἄρα ἐστὶ τὸ κακὸν, καὶ ἔλλειψις, καὶ ἀσθένεια, καὶ ἀσυμμετρία, καὶ πλῆθος ἁμαρτιῶν, καὶ ἄπειρον.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="100,890,900,980">
-    VARIÆ LECTIONES.
-    29 οὐδὲ ἄτεχνος, M. 30 εἰς non est in M. 31 duobus verbis lego παρ' ὑπόστασιν, M. 32 ἄζων, P. 33 με-
-    θέξει.
+
+  [!-- Rodapé / notas variantes (full-width) --]
+  <bloco tipo="rodape" script="latino" bbox="40,920,960,1000">
+VARIÆ LECTIONES.
+
+19 οὐδὲ ἀτεχνίας, M.    30 εἰς non est in M,    31 duobus verbis lege παρ' ὑπόστασιν, M.    32 ἀξίων, P.    33 με-
+δεῖται.
   </bloco>
+
   <notas>
-    Transcrição de página da Patrologia Graeca (S. Dionysii Areopagitæ).
-    Layout em duas colunas: Latina à esquerda, Grega à direita.
-    Letras A, B, C, D no gutter identificam parágrafos.
-    Número 373 embutido no texto latino (§ XXXII).
-    Notas críticas no rodapé referem-se a números no texto (29, 30, 31, 32, 33).
-    Nota 33 dividida em duas linhas no rodapé ("με-" / "θέξει.").
+- Foram mantidas as divisões em colunas: todos os blocos da coluna esquerda aparecem antes dos da coluna direita.
+- Onde a leitura foi incerta foi preservada a grafia aparente; para palavras de difícil leitura utilizou-se a forma literal observada na imagem, sem normalização.
+- As letras A, B, C, D no gutter foram colocadas em blocos nota_marginal separados, conforme instruções.
   </notas>
 </pagina>

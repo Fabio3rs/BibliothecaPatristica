@@ -1,100 +1,153 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,30,900,60">
-    495 HEXAPLORUM QUÆ SUPERSUNT. 496
+  <bloco tipo="cabecalho" script="latino" bbox="100,40,150,60">
+    495
   </bloco>
-  
-  <bloco tipo="texto_principal" script="misto" bbox="100,60,900,200">
-    TO EBPAIKON.
-    וחג שבועות תעשה לך 22
-    שלש פעמים בשנה 24
-    לא תשחט על חמץ 25
-    ולא ילין עד בקר 29
-    וישמע אל הים ... [ilegivel]
+  <bloco tipo="cabecalho" script="latino" bbox="380,40,650,60">
+    HEXAPLORUM QUÆ SUPERSUNT.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,40,900,60">
+    496
+  </bloco>
 
+  <bloco tipo="texto_principal" script="latino" bbox="150,65,300,85">
+    TO EBPAIKON.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="400,65,600,85">
     TO EBPAIKON
     Ἑλληνικοῖς γράμμασι.
-    22.
+  </bloco>
+  <bloco tipo="texto_principal" script="greco" bbox="750,65,850,85">
+    AKYΛAΣ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,90,350,190">
+    ראשית קציר חטים 23
+    שלש פעמים 24
+    לא־תשחט 25
+    ויהי רדת 29
+    ויחש לא־ידע כי קרן עור פניו
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,90,450,190">
+    23.
     24.
     25.
     29.
-
-    AKYΛAΣ.
-    22. Ἀρχὴ πρωτογενημάτων.
+  </bloco>
+  <bloco tipo="texto_principal" script="greco" bbox="650,90,900,190">
+    23. Ἀρχὴ πρωτογενημάτων.
     24. Τρεῖς καθόδους.
     25.
     29.
     Græce abest.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="100,210,900,340">
+  <bloco tipo="texto_principal" script="latino" bbox="150,215,350,235">
     VERSIO HEBRAICI TEXT.
-    22. Primitias messis triticorum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,215,600,235">
+    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,215,850,235">
+    AQUILA.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,240,350,350">
+    23. Primitias messis triticorum.
     24. Tribus vicibus.
     25. Sanguinem sacrificii mei.
     29. Duæ tabulæ.
-
-    VULGATA LATINA.
-    22. In primitiis frugum messis tuæ triticex.
+    Et Moseh non cognovit quod
+    promicuisset cutis facierum suarum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,240,650,350">
+    23. In primitiis frugum messis
+    tuæ triticæ.
     24. Ter in anno.
     25. Sanguinem hostiæ meæ.
     29. Tenebat duas tabulas.
-
-    AQUILA.
-    22. Initium primitiarum fructuum.
+    Et ignorabat quod cornuta esset
+    facies ejus.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="680,240,900,350">
+    23. Initium primitiarum fructuum.
     24. Tres descensus.
     25.
     29.
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="100,340,900,380">
-    Et Moseh non cognovit quod promicuisset cutis facierum suarum.
-    Et ignorabat quod cornuta esset facies ejus.
     Et Moyses nesciebat, quia cornuta erat species vultus ejus.
   </bloco>
 
-  <bloco tipo="nota" script="latino" bbox="100,380,900,450">
+  <bloco tipo="texto_principal" script="latino" bbox="300,360,700,380">
     Notæ et variæ lectiones ad cap. XXXIV Exodi.
-    V. 5. Lectiones ad versus 5, 6 et 7 prodeunt partim ex editione Romana, partim ex cæteris : atque ex aliis interpretibus in aliquot exemplaria editionis LXX interpretum irrepsisse prorsus videntur.
-    V. 12. Ἔγχυμα. Sic Basiliensis codex, tacito interprete.
-    V. 16. Ex Basiliensi.
-    V. 20. Ἀ., τεναντοκοπήσεις. Σ., τραχηλοκοπήσεις. Sic Basiliensis. Τεναντοκοπῶ dicitur et τενοντοκοπῶ, sed postrema forma sincerior videtur a τένων, τένοντος. — Coislin. Α., τενοντοκοπήσεις αὐτό. Σ., τραχηλοκοπήσεις αὐτό.
   </bloco>
 
-  <bloco tipo="cabecalho" script="latino" bbox="400,450,600,470">
+  <bloco tipo="nota" script="misto" bbox="100,385,480,460">
+    V. 5. Lectiones ad versus 5, 6 et 7 prodeunt partim ex editione Romana, partim ex cæteris : atque ex aliis interpretibus in aliquot exemplaria editionis LXX interpretum irrepsisse prorsus videntur.
+    V. 12. Ἔγχυμα. Sic Basiliensis codex, tacito interprete.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="500,385,900,460">
+    V. 16. Ex Basiliensi.
+    V. 20. Ἁ., τεναντοκοπήσεις. Σ., τραχηλοκοπήσεις. Sic Basiliensia. Τεναντοκοπεῖν dicitur et τενοντοκοπεῖν, sed postrema forma sincerior videtur a τένων, τένοντος. — Coislin. Α., τενοντοκοπήσεις αὐτό. Σ., τραχηλοκοπήσεις αὐτό.
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="400,470,600,490">
     CAPUT XXXV EXODI.
   </bloco>
 
-  <bloco tipo="texto_principal" script="misto" bbox="100,470,900,650">
+  <bloco tipo="texto_principal" script="latino" bbox="150,495,300,515">
     TO EBPAIKON.
-    ויקהל משה 5
-    את כל עדת בני ישראל 7
-    ויאמר אליהם 8
-    קחו מאתכם תרומה 9
-    כל נדיב לבו 11
-    יביאה את תרומת יהוה 21
-    הזהב והכסף והנחשת
-
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="400,495,600,515">
     TO EBPAIKON
-    Ἑλληνικος γράμμασι.
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="greco" bbox="750,495,850,515">
+    AKYΛAΣ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,520,350,700">
+    5 כל נדיב לבו
+    7 עצי שטים
+    8 ושמן למאור ולשמן למשחת הקדש ולקטרת הסמים
+    9 ואבני שהם
+    ומלאים
+    לחשן
+    11 האהל ומקדשו
+    וקרשיו
+    מריחו
+    ועמדיו
+    21 ויבאו כל איש אשר נשאו לבו
+    הביאו
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,520,450,700">
     5.
     7.
     8.
     9.
     11.
     21.
-
-    AKYΛAΣ.
-    5. Ἐξουσιαζόμενος.
+  </bloco>
+  <bloco tipo="texto_principal" script="greco" bbox="650,520,900,700">
+    5. Ἑκουσιαζόμενος.
     7.
     8.
-    9. Ὄνυχος.
+    9. Ὄνυχς.
+    Λόγιον.
     11. Καὶ τὴν σκέπην αὐτοῦ.
     Κρίκους.
     21.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="100,660,900,900">
+  <bloco tipo="texto_principal" script="latino" bbox="150,725,350,745">
     VERSIO HEBRAICI TEXT.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,725,600,745">
+    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,725,850,745">
+    AQUILA.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,750,350,900">
     5. Spontaneus corde.
     7. Et ligna sitim,
     8. Et oleum luminari, et aromata oleo unctionis, et suffimento aromatum.
@@ -105,11 +158,11 @@
     Uncinos ejus.
     Vectes ejus.
     21. Et omnis quem spontaneum fecit spiritus ejus ipsum attulerunt.
-
-    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,750,650,900">
     5. Voluntarius et prono animo.
     7. Ligna setim,
-    8. Et oleum ad luminaria con cinnanda, et ut conficiatur, unguentum, et thymiama suavissimum.
+    8. Et oleum ad luminaria concinnanda, et ut conficiatur, unguentum, et thymiasma suavissimum.
     9. Onychinos.
     Ad ornatum.
     Rationalis.
@@ -117,8 +170,8 @@
     Annulos.
     Cum vectibus.
     21. Attulerunt mente promptissima atque devota.
-
-    AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="680,750,900,900">
     5. Libens.
     7.
     8.
@@ -129,14 +182,7 @@
     21.
   </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="500,950,800,990">
+  <bloco tipo="rodape" script="latino" bbox="500,950,800,980">
     Digitized by Google
   </bloco>
-  
-  <notas>
-    Documento poliglota (Hexapla) contendo comparações entre Hebraico, Grego (Aquila) e Latim (Vulgata e outras versões).
-    Transcrição de caracteres hebraicos e gregos realizada conforme visibilidade.
-    Algumas palavras no hebraico superior estão parcialmente ilegíveis devido à resolução, marcadas como [ilegivel] onde necessário, mas a estrutura geral foi mantida.
-    A nota crítica no centro contém abreviaturas de manuscritos (Basiliensis, Coislin).
-  </notas>
 </pagina>

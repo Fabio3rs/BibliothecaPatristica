@@ -1,30 +1,33 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,40,900,70">
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,60">
     599 HEXAPLORUM QUÆ SUPERSUNT. 600
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="100,70,350,530">
+  
+  <!-- Top Section: Psalm VII continuation -->
+  <bloco tipo="texto_principal" script="misto" bbox="60,65,330,345">
     TO ΕΒΡΑΙΚΟΝ.
-    וְחֹקֶר לִבּוֹת וּכְלָיוֹת אֱלֹהִים
-    12 אֱלֹהִים צַדִּיק וְאֵל זוֹעֵם בְּכָל־יוֹם
-    13 חַרְבּוֹ לִלּוֹשׁ
-    קַשְׁתּוֹ 14
-    15 הִנֵּה יְחַבֶּל־אָוֶן
-    16 בּוֹר כָּרָה וַיֶּחְפֹּר
+    וְחֶסֶד אֵל כָּל־הַיּוֹם
+    12 אֱלֹהִים שֹׁפֵט צַדִּיק וְאֵל זוֹעֵם
+    בְּכָל־יוֹם
+    13 חַרְבּוֹ יִלּוֹשׁ
+    וְדַרְכּוֹ
+    14 לְחֹלֲלָהּ
+    15 הָרָה וְיָלַד שָׁקֶר
+    16 בּוֹר כָּרָה וַיַּחְפֹּרֶהוּ
     VERSIO HEBRAICI TEXT.
     Et probans corda et renes Deus.
     Hieron., probator cordis et renum Deus.
     12. Deus judex justus, et Deus indignans in omni die. Hieron., Deus judex justus et fortis comminans tota die.
-    13. Gladium suum acuet. Hieron., id
-    Tetendit. Hieron., id
+    13. Gladium suum acuet. Hieron., id Tetendit. Hieron., id.
     14. In ardentes. Hieron., ad comburendum.
-    15. Parturiet.
-    Et concepit laborem, et peperit mendacium. Hieron., concepto dolore, peperit iniquitatem.
+    15. Parturiet. Et concepit laborem, et peperit mendacium. Hieron., concepto dolore, peperit iniquitatem.
     16. In foveam, operabitur. Hieron., in interitum, quem operatus est.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="400,70,650,530">
+
+  <bloco tipo="texto_principal" script="misto" bbox="350,65,640,345">
     TO ΕΒΡΑΙΚΟΝ
-    Ἑλληνικοῖς γράμμασι.
-    12. Ζωωνη.
+    Ἑλληνικος γράμμασι.
+    12. Ζωνη.
     13.
     14.
     15. Ιεβαλ.
@@ -39,63 +42,72 @@
     Concepit dolorem, et peperit iniquitatem.
     16. In foveam quam fecit.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="700,70,950,530">
+
+  <bloco tipo="texto_principal" script="misto" bbox="660,65,950,345">
     ΑΚΥΛΑΣ.
     12. Ἀπειλούμενος κατὰ πᾶσαν μέραν.
     13.
     14.
     15. Καὶ ἔτεκε ψεῦδος.
-    16. Ἐν διαφθορᾷ ἣν εἰργάσατο.
-    AQUILA.
+    16. Ἐν διαφθορᾷ ἣν εἰργάσατο. AQUILA.
     12. Comminans per omnem diem.
     13.
     14.
     15. Et peperit mendacium.
     16. In corruptione, quam fecit.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="100,540,950,800">
+
+  <!-- Notes Section -->
+  <bloco tipo="cabecalho" script="latino" bbox="300,350,700,370">
     Notæ et variæ lectiones ad Psalmum VII.
-    V. 1. Ἀ., ψαλμὸς ὑπὲρ ἀγνοίας etc. Sic Drusius et Martianæus noster. Symmachi ita proferunt Corderius et Drusius, ἀγνόημα τῷ Δαυίδ. Martianæus totum titulum secundum Symmachum adfert ut nos edimus. Vox ψαλμὸς alicubi præfixa suspecta nobis videtur : veroque similis est Symmachum vocem ןינע ἀγνόημα vertisse. In Breviario quod Hieronymo tribuitur, legimus : A., pro iguoratione David, qui cecinit Domino pro verbis Æthiopis. S., pro ignoratione David, quod cecinit Domino pro verbis Chusi filii Jemini.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="60,375,480,795">
+    V. 1. Ἀ., ψαλμὸς ὑπὲρ ἀγνοίας etc. Sic Drusius et Martianæus noster. Symmachi ita proferunt Corderius et Drusius, ἀγνόημα τῷ Δαυΐδ. Martianæus totum titulum secundum Symmachum adfert ut nos edimus. Vox ψαλμὸς alicubi præfixa suspecta nobis videtur : veroque similius est Symmachum vocem [Hebrew] ἀγνόημα vertisse. In Breviario quod Hieronymo tribuitur, legimus : A., pro ignoratione David, qui cecinit Domino pro verbis Æthiopis. S., pro ignoratione David, quod cecinit Domino pro verbis Chusi filii Jemini.
     V. 5. Ἀ., εἰ ἀνήρπασα etc. Has lectiones ex Vaticano mutuamur, qui monet Theodotionem ut LXX habere.
-    V. 6. Ὁ βραῖος, σέλ. Ἀ., ἀεί etc., ut supra psalm. III, vers. 5.
+    V. 6. Ὁ Ἑβραῖος, σέλ. Ἀ., δεὶ etc., ut supra psalm. III, vers. 5.
     V. 7. Ἀ., ἐν ἀνυπερθεσίαις etc. Hæ lectiones prodeunt ex Drusio et ex mss. Drusius et Vaticanus habent, Ἀ., ἐν ἀνυπερθεσίαις, quam lectionem firmat Hebraicus textus. Duo legunt, ἐν ἀνυπερθεσίᾳ. Ibid. Ἄλλος, ἐν κρίματι. Drusius.
     V. 8. Σ., κυκλωσάτω σε. Sic unus. Drusius vero id sine interpretis nomine adfert.
-    Ibid. Colbertinus unus, Ἑβραῖος, θυσία, sic
-    Hebraicum verbum Græcis litteris exprimit. Idem codex Aquilæ et Theodotionis lectiones adfert, quas Drusius item adtulerat, sed sine interpretum nomine.
+    Ibid. Colbertinus unus, Ἑβραος, θυσία, sic
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="490,375,940,795">
+    Hebraicum verbum Græcis litteris exprimit. Idem codex Aquilæ et Theodotionis lectiones adfert, quas Drusius item adulterat, sed sine interpretum nomine.
     V. 9. Ἄλλος, Κύριος δικάσει λαούς. Sic Drusius sine interpretis nomine.
     Ibid. Ἀ., κατὰ τὸ δίκαιόν μου etc. Sic Aquilæ lectionem habent codices tres et Chrysostomus. Drusius legit, Ὁ, i. e. omnes, κατὰ τὴν δικαιοσύνην. Unus item codex, Ἀ., Σ., Ὁ., Θ., κατὰ τὴν δικαιοσύνην. Simili nota deceptus est Drusius. Nam ut jam observatum est, cum tenue discrimen inter ἑρμηνευτὰς deprehenditur, aliquando librarii, vel etiam auctores id annotare negligunt. Lectionem Symmachi ex Drusio mutuamur.
     V. 10. Lectiones trium Interpretum ex mss. restituimus, quæ apud Drusium laceræ et mutilæ erant.
-    Ibid. Θ., ἔταστης καρδιῶν καὶ etc. Sic Colbertinus unus. Ἄλλος, δοκιμάζων. Coislin. bombycinus XIII vel XIV sæculi. Est, ut videtur, lectio Aquilæ, qui vocem ןחנ ita solet vertere.
-    V. 12. Interpretationes Theodotionis et VI edit. exhibet Colbertinus unus. In hunc locum [ilegivel]
+    Ibid. Θ., ἔτασης καρδιῶν καὶ etc. Sic Colbertinus unus. Ἄλλος, δοκιμάζων. Coislin. bombycinus XIII vel XIV sæculi. Est, ut videtur, lectio Aquilæ, qui vocem [Hebrew char] ita solet vertere.
+    V. 12. Interpretationes Theodotionis et VI edit. exhibet Colbertinus unus. [Greek text]
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="100,810,350,950">
+
+  <!-- Bottom Section: Psalm VIII -->
+  <bloco tipo="cabecalho" script="latino" bbox="400,800,600,820">
     PSALMUS VIII.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="60,825,330,945">
     TO ΕΒΡΑΙΚΟΝ.
     1 לַמְנַצֵּחַ עַל־הַגִּתִּית
     VERSIO HEBRAICI TEXT.
     1. Victori super Gittith. Hieron., victori pro torcularibus.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="400,810,650,950">
+
+  <bloco tipo="texto_principal" script="misto" bbox="350,825,640,945">
     TO ΕΒΡΑΙΚΟΝ
-    Ἑλληνικος γράμμασι.
-    1. Λαμανασση, αλ αγεθθιθ.
+    Ἑλληνικοῖς γράμμασι.
+    1. Λαμανασση, ἀλ αγεθθιθ.
     VULGATA LATINA.
     1. In finem pro torcularibus.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="700,810,950,950">
+
+  <bloco tipo="texto_principal" script="misto" bbox="660,825,950,945">
     ΑΚΥΛΑΣ.
     1. Τῷ νικοποιῷ ὑπὲρ τῶν ληνῶν.
     AQUILA.
     1. Victori pro torcularibus.
   </bloco>
+
   <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
     Digitized by Google
   </bloco>
-  <notas>
-    Transcrição de página da Patrologia Graeca (Hexaplorum quæ supersunt).
-    Contém texto em Hebraico, Grego e Latim dispostos em colunas paralelas.
-    A seção de notas ("Notæ et variæ lectiones") contém referências críticas a manuscritos e versões (Drusius, Vaticanus, Colbertinus, etc.).
-    Alguns caracteres hebraicos nas notas podem estar invertidos ou com ligaduras típicas de impressão antiga.
-    O final da última nota (V. 12) está parcialmente ilegível/cortado na borda inferior.
-  </notas>
 </pagina>

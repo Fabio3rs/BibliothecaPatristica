@@ -1,6 +1,8 @@
-<pagina estado="com_texto">
-  <bloco tipo="texto_principal" script="latino" bbox="20,20,490,970">
-663
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,70">
+663  S. BASILII MAGNI  664
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="20,70,490,920">
 arbitror, de multitudine peccatorum accusabit? A
 Haec cum solum aliquid contra Moysem impro-
 bando dixisset, idque ipsum vere (Uxorem enim,
@@ -53,8 +55,20 @@ filii pestilentes 52. Cum autem tales essent, propter-
 ea quod pater in hos vehementius non invlegeretur,
 tanta ira Dei lenitatem incendit, ut, alienigenis
 irruptionem facientibus, illi ipsi ejus filii una die
-</bloco>
-  <bloco tipo="texto_principal" script="greco" bbox="510,20,980,970">
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,150,510,180">
+A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,320,510,350">
+B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,500,510,530">
+C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,680,510,710">
+D
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,70,980,920">
 . . . μοιραὶ ἐν μονον ἐν καταραμένῳ μέρει , καὶ τοῦτο
 ἀληθὲς (Ιναικαγ χαρ, φησίν, Αἰθιοπικάσαν Ελσβερ
 ἐαιντῷ), τοσαύτης ἐπειράθη τῆς ἀγανακτήσεως τοῦ
@@ -93,7 +107,7 @@ Eἰ ὁ δικαῖος μόλις σώζεται, ὁ ἀσεβὴς καὶ �
 καὶ ἐξευλλεκται αὐτῷ. Ἐλημμελήσθη περὰ πλημ-
 μελειαν ἑταῖρ Κυρίου. Εἰ δὲ ἐπὶ τῶν κατὰ ἁμαρτάν
 οὕτως ἀπαρακήπτον τὸ κρέμα, καὶ ὑπὲρ τῆς καθάρ-
-σεως ἡ θυσία αὐγανὰ, ἦ γὰρ & ὁ δικαιος ἴδίο μαρ-
+σεως ἡ θυσία αὐγανὰ, ἦ γὰρ &amp; ὁ δικαιος ἴδίο μαρ-
 τυρίαν προσέφερῃ ὑπὲρ τῶν υἱῶν, τῷ ἂν τις ἐπάξῃ
 περὶ, τῶν ἐν γνώσει ἁμαρτανόντων, ἦ τῶν τοιούτων
 ἐπιχειρήσουσιν; Καὶ ἵνα μὴ δήξωμεν στοχασμοῖς
@@ -107,9 +121,9 @@ Eἰ ὁ δικαῖος μόλις σώζεται, ὁ ἀσεβὴς καὶ �
 μακροθυμίας τοῦ Θεοῦ, ὥστε, ἐπαναστάντων τῶν
 ἀλλογένων, τοὺς μὲν υἱοὺς αὐτοῦ ἐξεῖλον ἀναιρεῖν,
 καὶ κατὰ τὸν πόλεμον ἐν ἡμέρᾳ μία, ἡτηθήσαν δὲ
-</bloco>
-  <bloco tipo="rodape" script="latino" bbox="20,975,980,1000">
-(68) Item codex επιτιμίων. Autov ὅς τούτον· sed
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="20,860,980,975">
+(68) Idem codex επιτιμίων. Autov ὅς τούτον· sed
 vvcala dē manu recentiori adjecta est. Reg. tertius
 αὐτὸν τούτον.
 (69) Reg. primus πέτρας ἐξάξω, educam.
@@ -119,7 +133,9 @@ apud LXX. Reg. primus καὶ ὅση. Nec ita multo
 post Regii primus et tertius γὰρ πλημμελείαι ἐνε̣ντι.
 Editio Paris. et Reg. secundus πλημμελείων. Apud
 LXX πλημμελείας.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="20,975,980,1000">
 Digitized by Google
-</bloco>
-  <notas>Texto em duas colunas: coluna esquerda em latim (alfabeto latino), coluna direita em grego (alfabeto grego). Rodapé contém notas críticas mistas latim/greco. Foram preservadas abreviaturas e sinais conforme visíveis; marcas de paginação (663, 664) e cabeçalho "S. BASILII MAGNI" não transcritas como bloco separado por serem parciais no topo da imagem.</notas>
+  </bloco>
+  <notas>Documento em duas colunas: coluna esquerda em latino (script=latino), coluna direita em grego (script=grego). Cabeçalho incluído em bloco próprio. Letras marginais centrais A, B, C, D transcritas em blocos nota_marginal separados (bboxs aproximadas ao centro gutter). Aparato crítico e notas de rodapé mapeados em bloco aparato_critico (conteúdo crítico numerado (68)-(71)) e rodapé com indicação "Digitized by Google". BBOX coordenadas fornecidas numa escala 0-1000, aproximadas a partir da imagem. Transcrição feita preservando grafia, abreviaturas e sinais visíveis; nenhuma normalização ou tradução foi aplicada.</notas>
 </pagina>

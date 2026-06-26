@@ -1,39 +1,46 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,70">
     551 S. GREGORII THEOL. CARMINUM LIBER I. THEOLOGICA. 552
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,60,480,380">
+
+  <bloco tipo="texto_principal" script="grego" bbox="50,80,480,380">
     380 Τοῦνεκεν εἰς μέσον ἦλθεν ἐμῶν τεκέων ἐπί- [κουρος,
     Μῦθον ἀοσσητῆρα θεοῦ σὺν χειρὶ φέρουσα.
-    Μητρὶ δ' ἐμῇ τὰ πρῶτα μυθήσομαι, ὅσσ' ἐπέοικε,
-    Κεῖνο μὲν ἀτρεκέως μυθήσο, καὶ κατέλεξας,
-    Ζυζυγίη χαρίεσσα, καὶ ἥνεσα (ἢ γὰρ ἔγωγε
-    385 Ἄρβου· ὅθεν κατέληξε τεὸς λόγος), ὡς ἀγάμοισι
+    Μητρὶ δ' ἐμῇ τὰ πρῶτα μυθήσομαι, ὅσσ' ἐπέοικε.
+    Κεῖνο μὲν ἀτρεχέως μυθήσαο, καὶ κατέλεξας,
+    Συζυγίη χαρίεσσα, καὶ ἥνεσα (ἢ γὰρ ἔγωγε
+    385 Ἄρξομ' ὅθεν κατέληξε τεὸς λόγος), ὡς ἀγάμοισι
     Ῥίζα γάμος. Καὶ γὰρ τε πέλει καὶ ῥίζα καὶ ἀρχή.
-    Τίς δέ κεν ἀρνήσαιτο σαοφρονέων γενετῆρας;
+    Τίς δὲ κεν ἀρνήσαιτο σαοφρονέων γενετῆρας;
     Οὐ μὴν πάντ' ἀγόρευσας ἐτήτυμα. Ἀλλὰ δέχοιο,
     Καὶ μήτηρ περ ἐοῦσα, σοφὸν καὶ ἐχέφρονα μῦθον,
-    390 Καὶ μεγάλης σοφίης μυστήριον ἀμφὶ γενέθλην,
+    390 Καὶ μεγάλῃς σοφίης μυστήριον ἀμφὶ γενέθλην,
     Ἣν κευθμῶνες ἔδειξαν ἐμοὶ μεγάλοιο θεοῖο.
-    Οὐχ λου ἀνθρώποιο πατὴρ βροτός, ὡς ἐνέπουσιν,
+    Οὐχ ὅλου ἀνθρώποιο πατὴρ βροτός, ὡς ἐνέπουσιν,
     Ἀλλ' ὅσον σαρκός τε καὶ αἵματος, ἀμφοτέρων μέν
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="500,60,950,380">
-    A Ὀλλυμένων. Ψυχὴ δὲ θεοῦ κρατέοντος ἄδημα
+
+  <bloco tipo="nota_marginal" script="latino" bbox="520,80,540,110">
+    A
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="520,80,950,380">
+    Ὀλλυμένων. Ψυχὴ δὲ θεοῦ κρατέοντος ἄημα
     395 Ἕκτοθεν εἰσπίπτουσα πλάσει χόος. Οἶδεν ὁ [μείζας,
-    Πῶς τὸ πρῶτον πνευσε, καὶ εἰκόνα μίξατο γαίῃ.
-    Μάρτυς ἐμῶν ἐπέων καὶ σὸς πόθος. Ἠμιτελὴς γάρ,
-    Στέρνον οὐ ψυχῆς τεκέων, τὰ δὲ σώματα μοῦνα,
+    Πῶς τὸ πρῶτον ἔπνευσε, καὶ εἰκόνα μίξατο γαίῃ.
+    Μάρτυς ἐμῶν ἐπέων καὶ σὸς πόθος. Ἠμιτελὴς γὰρ,
+    Στέρνον οὐ ψυχὰς τεκέων, τὰ δὲ σώματα μοῦνα,
     Οἷς δάκνῃ μογέουσι, καὶ οἷς θαλέουσι γέγηθας.
-    400 Πλείονα γὰρ τυτθῆσι πατὴρ καὶ πότνια μήτηρ
+    400 Πλείονα γὰρ τυτθῇσι πατήρ καὶ πότνια μήτηρ
     Ὃν τεκέων λώβησιν ἐὸν καταδάμναται ἦτορ,
-    Ἢ μεγάλαις ψυχῶν κακίαις καὶ χείροσι λώβαις.
+    Ἢ μεγάλαις ψυχῶν κακιαις καὶ χείροσι λώβαις.
     Τῶν μὲν γὰρ τοκέες, τῶν δ' οὐ τελέθουσι τοκῆες.
-    Εἰ δέ σε μητέρ' ἐγὼ καλέω, κάπι χείρονι μοίρῃ,
-    405 Πῶς σύ γ' ἀριστερόφρων φθονέεις πατρὸς ἰδέ- [οιαν;
+    Εἰ δὲ σε μητέρ' ἐγὼ καλέω, κάπι χείρονι μοίρῃ,
+    405 Πῶς σύ γ' ἀρειοτέρου φθονεῖς πατρὸς ἰδέ- [οιαν;
     Ὡς μεγάλῳ γενετῆρι βροτῶν ἐθέλουσ' ὑπείκειν
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,390,480,600">
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,390,480,620">
     380 Quare in medium prodii meorum natorum adjutrix,
     Sermonem auxiliatorem, Deo dante, afferens.
     Primum matri meæ dicam quæ conveniunt.
@@ -49,7 +56,8 @@
     Sed tantum carnis et sanguinis, quorum utrumque
     Peribit. Anima autem Dei omnipotentis spiraculum est.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,390,950,600">
+
+  <bloco tipo="texto_principal" script="latino" bbox="500,390,950,620">
     320-321 395 Extrinsecus incidens in terrestre figmentum. Novit qui :uiscuit,
     Quando primum afflavit, ac imaginem terræ miscuit.
     Testis est meorum verborum etiam amor tuus. Dimidiatus enim est,
@@ -63,49 +71,49 @@
     405 Quomodo his qui cælibes sunt, præstantiorem invides patrem?
     Magno ergo hominum genitori libenter cede,
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="50,610,480,700">
+
+  <bloco tipo="aparato_critico" script="misto" bbox="50,630,480,740">
     381 Ἀοσσητῆρα. Sic Reg. 990. Edit. ἀοσσητῆρα.
-    384 Ζυζυγίη χαρίεσσα. Combef. legit συζυγίη,
+    384 Συζυγίη χαρίεσσα. Combef. legit συζυγίη,
     et vertit, in conjugii gratiam orans, ejusque causam
     agens.
-    390 Μυστήριον. Ita Coisl. et tres Regg. Edit.
-    μυστήρια.
+    390 Μυστήριον. Ita Coisl. et tres Regg. Edit. μυστήρια.
     391 Ἣν. Reg. ἣν.
     392 Ὄλου. Tres Reg. et Chig. ὅλος.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="500,610,950,700">
-    395 Πλάσει χόος. Ita Coisl. et duo Regg. Chig.
-    Θεοῦ πλάσει. Edit. χόος πλάσει.
-    396 Μείζατο. Tres Regg. et Coisl. δήσατο. Vide
-    supra, sect. 1, poem. vii, De anima, vers. 80 et 81,
-    ubi eadem leguntur.
+
+  <bloco tipo="aparato_critico" script="misto" bbox="500,630,950,740">
+    395 Πλάσει χόος. Ita Coisl. et duo Regg. Chig. Θεοῦ πλάσει. Edit. χόος πλάσει.
+    396 Μείζατο. Tres Regg. et Coisl. δήσατο. Vide supra, sect. 1, poem. vii, De anima, vers. 80 et 81, ubi eadem leguntur.
     398 Μοῦνα. Reg. 39 μοῦνον.
     399 Θαλέουσι. Coisl. et duo Regg. θαλέουσι.
-    405 Ἠθέουσιv. Int. τοῖ; ἀγαθοῖ; τέκνοις.
+    405 Ἠθέοισιν. Int. τοῖς; ἀγαθοῖς; τέκνοις.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="400,710,600,730">
+
+  <bloco tipo="cabecalho" script="latino" bbox="360,740,640,780">
     METRICA VERSIO.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,740,480,950">
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,780,480,980">
     Submoveam, vestram aggrediar defendere causam. B
     Ac primum dicam, quæ sunt dicenda parenti :
-    Vera quidem, fater, carnis conjunctio, narras,
+    Vera quidem, fateor, carnis conjunctio, narras,
     Mirificeque probo (namque hinc exordiar, unde
     Dicere cessasti), quod radix virginitatis
     Conjugium. Radix namque est et origo perennis.
     Ecquis enim sana genitores mente negarit?
-    Attamen haud vere dixisti cuncta; sed æqua
-    Aure, precor, genitrix, cordatum percipe dictum,
+    Attamen haud vere dixisti cuncta; sed quæ. Aure, precor, genitrix, cordatum percipe dictum,
     Ortumque in nostro sophiæ mysteria magnæ,
-    Abdita cœlestis mihi quam doctrina retext.
+    Abdita cœlestis mihi quam doctrina retexil.
     Non homo totum hominem, veluti de more lo- [quuntur,
     Progignit : verum crassæ tantummodo carnis
     Est pater, et calidi dat semina prima cruoris :
     Quorum utrumque gravi corruptum morte peribit.
     Ast anima in corpus divino condita flatu
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,740,950,950">
-    Immeat externæ. Novit Rex ille supernus
+
+  <bloco tipo="texto_principal" script="latino" bbox="500,780,950,980">
+    Immeat externæ. Novit rex ille supernus
     Quo primum pacto flavit, terræque jugavit
     Augustam effigiem. Porro ne dicere falsa
     Censear, ipsa tuo locuples mihi testis amore
@@ -123,13 +131,18 @@
     Occupat, ut prives natos meliore parente?
     Ergo Patri magno, genitrix, jam cede libenter,
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
+
+  <bloco tipo="rodape" script="latino" bbox="380,990,620,1010">
     Digitized by Google
   </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="80,770,100,790">
+    B
+  </bloco>
+
   <notas>
-    Transcrição de página da Patrologia Graeca (S. Gregorii Theol. Carminum Liber I).
-    Layout em duas colunas para texto grego, tradução latina em prosa, aparato crítico e versão métrica latina.
-    Na linha 395 da tradução latina em prosa, a palavra após "qui" parece estar impressa como ":uiscuit" (possível erro de impressão para "suscitavit" ou similar).
-    Notas marginais A, B identificam parágrafos.
+    Transcrição fiel ao impresso visível na imagem. Mantidas ortografia, sinais e numeração tal como no original, sem normalização.
+    As letras marginais A e B foram colocadas em blocos próprios (nota_marginal) conforme instrução; não foram inseridas no fluxo do texto.
+    Correções e variantes registradas no aparato crítico reproduzidas tal como no impresso.
   </notas>
 </pagina>

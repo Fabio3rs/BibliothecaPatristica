@@ -1,51 +1,100 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,50">
-    227 S. CLEMENTIS I ROM. PONT. OPERA GENUINA. 228
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,70">
+227   S. CLEMENTIS I ROM. PONT. OPERA GENUINA.   228
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,60,480,130">
-    comedeis : si autem nolueritis, neque audieritis me, A gladius devorabit vos : os enim Domini locutum est hæc 67. Omnes itaque dilectos suos volens pœnitentiæ fieri participes, omnipotente sua voluntate firmavit.
+
+  [!-- Nota marginal letters placed in the central gutter (one per block) --]
+  <bloco tipo="nota_marginal" script="latino" bbox="480,180,520,240">
+A
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="100,130,480,160">
-    γὰρ στόμα Κυρίου ἐλάλησε ταῦτα. Πάντας οὖν τοὺς ἀγαπητοὺς αὐτοῦ βουλόμενος μετανοίας μετασχεῖν, ἐστήριξε τῷ παντοκρατορικῷ βουλήματι αὐτοῦ.
+  <bloco tipo="nota_marginal" script="latino" bbox="480,300,520,360">
+B
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,170,480,340">
-    CAPUT IX.
-    Quare obsequamur magnificæ et gloriosæ illius voluntati, et supplices illius misericordiæ ac benignitati procidamus; et convertamur ad miserationes ejus, relictis vanis operibus, contentione, et quæ ad mortem ducit, æmulatione. 68 Fixis oculis, eos intueamur, qui magnificæ ejus gloriæ perfecte servierunt. Summus Enoch 69, qui in obedientia justus repertus, translatus fuit, et non inventa est mors illius. Noe 70 fidelis inventus, per ministerium suum regenerationem (65) mundo prædicavit; et per eum Dominus conservavit animalia, cum concordia in arcam ingressa.
+  <bloco tipo="nota_marginal" script="latino" bbox="480,620,520,680">
+C
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,350,480,400">
-    CAPUT X.
-    Abraham amicus 71 vocatus, inventus est fidelis, quando dictis Dei obtemperans fuit. Hic per obedientiam exiit de terra sua, et de cognatione sua,
+  <bloco tipo="nota_marginal" script="latino" bbox="480,760,520,820">
+D
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,60,900,160">
-    Α αἱ ἁμαρτίαι ὑμῶν ὡς φοινικοῦν, ς χιόνα λευκανῶ· κν δὲ σιν ὡς κόκκινον, ὡς ἔριον λευκανῶ. Καὶ ἐὰν θέλητε, καὶ εἰσακούσητέ μου, τὰ ἀγαθὰ τῆς γῆς φάγεσθε· ἐὰν δὲ μὴ θέλητε, μηδὲ εσακούσητέ μου, μάχαιρα ὑμς κατέδεται· τὸ γὰρ στόμα Κυρίου ἐλάλησε ταῦτα. Πάντας οὖν τος ἀγαπητοὺς αὐτοῦ βουλόμενος μετανοίας μετασχεῖν, ἐστήριξε τῷ παντοκρατορικῷ βουλήματι αὐτοῦ.
+
+  [!-- Left column main text (Latin) --]
+  <bloco tipo="texto_principal" script="latino" bbox="40,80,480,520">
+comedietis : si autem nolueritis, neque audieritis me, gladias devorabitur vos: os enim Domini locutum est haec *. Omnes itaque dilectos suos volens poenitentiae fieri participes, omnipotente sua voluntate firmavit.
+
+CAPUT IX.
+
+Quare obsequamur magnificae et gloriosae illius voluntati, et supplices illius misericordiae ac benignitati procidamus; et convertamur ad miserationes ejus, relictis vanis operibus, contentione, et quae ad mortem ducit, æmulatione. Fixis oculis, eos intueantur, qui magnificæ ejus gloriæ perfecte servierunt. Summus Enoch " qui in obedientia justus repertus, translatus fuit, et non inventa est mors illius. Noe " fidelis inventus, per ministerium suum regenerationem (65) mundo prædicavit; et per eum Dominus conservavit animalia, cum concordia in arcam ingressa.
+
+CAPUT X.
+
+Abraham amicus 71 vocatus, inventus est fidelis, quando dictis Dei obtemperans fuit. Hic per obedientiam exiit de terra sua, et de cognatione sua,
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,170,900,340">
-    ΚΕΦΑΛΑΙΟΝ Θ.
-    Διὸ ὑπακούσωμεν (61) τῇ μεγαλοπρεπεῖ κα ἐνδόξῳ βουλήσει αὐτοῦ, καὶ ἱκέται γενόμενοι τοῦ ἐλέους καὶ τῆς χρηστότητος αὐτοῦ, προσπέσωμεν καὶ ἐπιστρέψωμεν ἐπὶ τοὺς οἰκτιρμοὺς αὐτοῦ, ἀπολιπόντες τὴν ματαιοπονίαν (62), τήν τε ἔριν, καὶ τὸ εἰς θάνατον ἄγον ζῆλος (63). Ἀτενίσωμεν (64) εἰς τος τελείως λειτουργήσαντας τῇ μεγαλοπρεπεῖ δόξῃ αὐτοῦ. Ἀδάμωμ Ἐνὼχ, ὃς ἐν ὑπακοῇ δίκαιος εὑρεθες, μετετέθη, καὶ οὐχ εὑρέθη αὐτοῦ θάνατος. Νῶε πιστὸς εὑρεθεὶς, διὰ τῆς λειτουργίας αὐτοῦ παλιγγενεσίαν κόσμῳ ἐκήρυξε (66), καὶ διέσωσε δι' αὐτοῦ ὁ Δεσπότης τὰ εἰσελθόντα ἐν ὁμονοίᾳ ζα εἰς τὴν κιβωτόν.
+
+  [!-- Footnotes / references line between main text and variorum header --]
+  <bloco tipo="rodape" script="latino" bbox="40,520,960,560">
+* Isa. 1, 16, 20. "Clem. Alex., Strom. lib. IV, pag. 516 [ilegivel]. ** Gen. v. 24. Eccli. xliv, 16; Heb. xi, 5. 10 Gen. vi, 8; vii, 1. Eccl. xliv, 17; Heb. xi, 7; I Petr. iii, 20; II Petr. ii, 5. 71 II Paral. xx, 7; Judith vii, 22; apud Lat. Interp. Isa. xli, 8; Jac. ii, 23
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,350,900,400">
-    ΚΕΦΑΛΑΙΟΝ Ι.
-    Ἀβραὰμ, ὁ φίλος (67) προσαγορευθεὶς, πιστὸς εὑρέθη, ἐν τῷ αὐτὸν ὑπήκοον γενέσθαι τοῖς ῥήμασι τοῦ Θεοῦ. Οὗτος δι' ὑπακοῆς ἐξῆλθεν ἐκ τῆς γῆς αὐτοῦ, καὶ ἐκ τῆς
+
+  [!-- Full-width heading for notes section --]
+  <bloco tipo="rodape" script="latino" bbox="0,560,1000,640">
+VARIORUM NOTAE.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="100,410,900,450">
-    67 Isa. 1, 16, 20. 68 Clem. Alex., Strom. lib. iv, pag. 516 sequentia nummatim perstringit. 69 Gen. v, 24. Eccli. xliv, 16; Heb. xi, 5. 70 Gen. vi, 8; vii, 1. Eccl. xliv, 17; Heb. xi, 7; I Petr. iii, 20; II Petr. ii, 5. 71 I Paral. xx, 7; Judith viii, 22; apud Lat. Interp. Isa. xli, 8; Jac. ii, 23
+
+  [!-- Lower left column: Variorum notes — Latin apparatus/notes --]
+  <bloco tipo="aparato_critico" script="latino" bbox="40,640,480,980">
+tur tertia lectio, eaque corrupta. Qui enim lib. i ad uxorem cap. ult. recte verterat : Et venite, dispensemus; in lib. iv, adversus Marcionem cap. 14, vitiosis suis libris interpretatur : Et venite, concilientur, quod est ἐπαλλαγήσονται ; atque id verbi restitutendum forsan Chrysostomo in illud. Vidua eligatur non minus sexaginta annorum, etc., ubi locum proi hacte adducit, exponoique per καταλλαγάς. Porro dum Isaias testimoniu apud sanctos Patres quaero, duo loca depravata inveni, de quibus admonere non erat supervacaneum: Nempe Irenæi ac Luciferi. Ille lib. iv Adversus hæreses, cap. 32, ait : Lavamini, etc. Non enim sic ut natus homo, ut multi audent dicere, diversis (hoc est, aversatur) eorum sacrificium; sed uisemus eorum cæcitati, etc. Quid sibi vult, multus homo? Conjeciebam, iratus homo, fundum conjecit habens antecedentia et subsequencia. Præcedit : Deinde ne quis putet, propterea quod irasceretur, eum recusare hæc, inserti consilium ei dans. Sequitur : Si enim irascens, abnueret hæc eorum sacrificia. Juxta Luciferum ib. 1, ad Constantium imperatorem, pro S. Athanasio, verbi prophetica esse de-
+(61) Ὑπακούσωμεν. Hanc esse veram ms. lectionem testatur Wolf. Sic quoque legerunt Mill. et Grab. qua sane voce utitur S. Pater, cap. 7 et 10, alibi sæpius. Editi ad unum omnes Junium secuti, traxosύςμενοι. Id. — Ad ὑπακούσωμεν. Dominus Boisius ὑπακουσόμενοι legendum monuit, cujus conjecturae ego libens subscribo, licet interdum ἔπασχον pro ὑπακούων usurpetur, ut ls. xiv. ἔπασχον ἐνταῦθα ἔκπασεν ἀνόητον, et tertio casu junctum reperiatur apud LXX, sed sensu diverso, ut Prov. xv, 32: ἐν ταῖς ἔπαρσιν ἐπακούσεν, et Gen. xvii, 11: ἐὰν ἐπικοιμηθῆτε τὸν κύριον τῇ πατρίδιᾳ γῇ.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="400,460,600,480">
-    VARIORUM NOTÆ.
+
+  [!-- Right column main text (Greek) --]
+  <bloco tipo="texto_principal" script="grego" bbox="520,80,960,520">
+ἀλλ' ἐναπάλιν ὑμῶν ὡς φωτίζουσιν, ὡς χίλια λενα-
+γωρῶν· ὅτι δὲ ὦσιν ὡς κεκπινων, ὡς ἐριοι λενα-
+οὶ. Καὶ ἑὰν θέλητε, καὶ σιχανοῦμαί μου, τὰ
+δράδα τῆς τῆς φάγεσθαι ἑὰν δὲ μὴ θέλητε, μηδὲ
+σιχανοῦμαί μου, μάχαιρα ὑμᾶς κατεδείξαι τὸ
+οὖν τοὺς ἀγαπητούς αὐτοῦ βουλόμενος μετανοίας με-
+ταχειν, ἐστήριξε τῷ παντοκρατορικῷ βουλήματι αὐτοῦ.
+
+ΚΕΦΑΛΑΙΟΝ Θ'.
+
+Διὸ ὑπακούσωμεν (61) τῇ μεγαλοπρεπεῖ καὶ ἐν-
+δέξῃ βουλὴσι αὐτοῦ, καὶ ἱκέται γενώμενοι τοῖς
+ἔλεσι καὶ τῆς χρηστότητος αὐτοῦ, προστίξωμεν καὶ
+ἐπιστρέψωμεν ἐπὶ τοὺς οἰκτιρμοὺς αὐτοῦ, ἀπολυ-
+πόντες τὴν μετανοίαν (62), τὴν τε ἔρι, καὶ τὸ εἰς
+θάνατον ἄγον ζῆλος (63). Ἀτενίσωμεν (64) εἰς τοὺς
+τελείους λειτουργήσαντας τῇ μεγαλοπρεπεῖ δόξῃ αὐτοῦ.
+Ἀδώσωμεν Ἐνώχ, ὃς ἐν ὑπακοῇ δικαίως εὑρέθη, μετα-
+τέθη, καὶ οὐχ εὑρέθη αὐτοῦ θάνατος. Νῶε πιστὸς
+εὑρέθη, διὰ τῆς λειτουργίας αὐτοῦ παλιγγενεσίαν κη-
+ρυξάμενος (66), καὶ ἐδιώσσε δι' αὐτοῦ ὁ Δεσπότης τὰ
+εἰσέλθοντα ἐν ὁμονοίᾳ ζῴα εἰς τὴν κιβωτόν.
+
+ΚΕΦΑΛΑΙΟΝ Ι'.
+
+Ἄβραμ, ὁ φίλος (67) προσηγχώσθη, πιστὸς εὑρέ-
+θη, ἐν τῷ αὐτῷ ἐπήκλησεν γενέσθαι τοῖς ῥήμασι τοῦ Θεοῦ. Οὕτως δὴ ὑπακοῆς ἐξῆλθεν ἐκ τῆς γῆς αὐτοῦ, καὶ ἐκ τῆς
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="100,490,480,950">
-    tur tertia lectio, eaque corrupta. Qui enim lib. 1 ad uxorem cap. ult, recte verterat : Et venite, disputemus; in lib. iv, adversus Marcionem cap. 14, vitiosis fultus libris, interpretatur : Et venite, conciliemur, quod est διαλλαχθῶμεν : atque id verbi restituendum forsan Chrysostomo in illud, Vidua eligatur non minus sexaginta annorum, etc., ubi locum prop'hetæ adducit, exponitque per καταλλάξεσθαι, et καταλλάξαι. Porro dum Isaiæ testimonium apud sanctos Patres quæro, duo loca depravata inveni, de quibus admonere non erit supervacaneum: Nempe Irenæi ac Luciferi. Ille lib. iv Adversus hæreses, cap. 32, ait : Lavamini, etc. Non enim sic ut mutus homo, ut multi audent dicere, divertite (hoc est, aversatur) eorum sacrificium; sed miserans eorum cæcitati, etc. Quid sibi vult, mutus homo? Conjeciebam, iratus homo, fundum conjecturæ habens antecedentia et subsequentia. Præcedit : Deinde ne quis putet, propterea quod irasceretur, eum recusare hæc, infert consilium ei dans. Sequitur : Si enim irascens, abnueret hæc eorum sacrificia. Juxta Luciferum lib. 1, ad Constantium imperatorem, pro S. Athanasio, verbi prophetica esse debent : Lavamini, mundi estote, auferte malitias ab animis vestris, non ab inimicis vestris. Cor.
-    (61) Ὑπακούσωμεν. Hanc esse veram ms. lectionem testatur Wott. Sic quoque legerunt Mill. et Grab. qua sane voce utitur S. Pater, cap. 7 et 10, alibi sæpius. Editi ad unum omnes Junium secuti, ἐπακούσωμεν. Id. — Διὸ ἐπακούσωμεν. Dominus Boisinus ὑπακούσωμεν legendum monuit, cujus conjecturæ ego libens subscribo, licet interdum ἐπακούειν pro ὑπακούειν usurpetur, ut Is. xliv: Ἐπακούσατε ἔμπροσθεν αὐτοῦ θνη, et tertio casui junctum reperiatur apud LXX, sed sensu diverso, ut Prov. xv, 32 : εὐχαῖς δὲ δικαίων ἐπακούει, et Gen. xvi, 11 : ὅτι ἐπήκουσε ὁ Κύριος τῇ ταπεινώσει σου. JUN.
+
+  [!-- Right column lower apparatus / notes (Greek) --]
+  <bloco tipo="aparato_critico" script="grego" bbox="520,640,960,980">
+(62) Μετανοίαν. Forte μεταβολήν. Id.
+(63) Καὶ τὸ ... ἄγορ ζῆλος. Lege καὶ τὸν... ἄγοντας ζῆλον. Vocem ζῆλος mascul. genere, ut par est, sum-
+mit S. Pater sup., cap. 3 et 5, licet per hanc fere
+Epistolam eandem vocem neutro genere expresserit librarius, ut Mill. et Wolf. observav. (64) Ἀτενίσωμεν, etc. Haec confer cum Clemente Alexandrino, p. 516, Strom., lib. IV, a verbis, ἀτενίσωμεν ὡς τοὺς τελεῖους λειτουργήσαντας, etc.; et agnosces, pie Lector, mecum ex illo inter-
+polatum fuisse dulcissimam epistolam, atque inter-
+polatorem sedulo cavisse, ut longe esset magis quam ὕπαρξιν, τῇ τεθλιμμένῃ, quibus laudibus eam ornat Eusebius. EDUARD. BARN.
+(65) Qua scil. per baptismum renascimur. Regenerationis ejusdem symbolum fuisse arcanum, qua voce servatus est, etiam I Petri iii, 20, notatur. Coust.
+(66) Παλιγγενεσίαν κόσμῳ ἐκκινήσει. Regeneratio quae fit per baptismi lavacrum, operante Spiritu sancto, ταλυνγγεῖσθαι nomine loco intelli-
+genda non est, sed generis humili instauratio, ut apud Philonem etc.
+(67) Ἀβραάμ ὁ φίλος. Add. cum Jun. τοῦ θεοῦ. Sic et Clem. Alex. l. c. haec verba exscriberunt Dav. tamen legit.
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="520,490,900,950">
-    (62) Ματαιοπονίαν. Forte ματαιολογίαν. Id.
-    (63) Καὶ τὸ... ἄγον ζῆλος. Lege καὶ τὸν... ἄγοντα ζῆλον. Vocem ζῆλος mascul. genere, ut par est, sumit S. Pater sup., cap. 3 et 5, licet per hanc fere Epistolam eamdem vocem neutro genere expresserit librarius, ut Mill. et Wott. observatum.
-    (64) Ἀτενίσωμεν, etc. Hæc confer cum Clemente Alexandrino, p. 516, Strom., lib. iv, a verbis, ἀτενίσωμεν οὖν εἰς τοὺς τελείως λειτουργήσαντας, etc., et agnosces, pie Lector, mecum ex illo interpolatam fuisse dulcissimam epistolam, atque interpolatorem sedulo cavisso, ut longa esset magis quam μεγάλη τε καὶ θαυμασία, quibus laudibus eam ornat Eusebius. EDUARD. BERN.
-    (65) Qua scil. per baptismum renascimur. Regenerationis ejusdem symbolum fuisse arcam, qua Noe servatus est, etiam I Petri iii, 20, notatur. COUST.
-    (66) Παλιγγενεσίαν κόσμῳ ἐκήρυξε. Regeneratio quæ fit per baptismi lavacrum, operante Spiritu sancto, παλιγγενεσίας nomine hoc loco intelligenda non est, sed generis humani instauratio, et generatio nova : atque hoc sensu apud Philonem Judæum, et alios reperitur. Locus etiam Matthæi, xix, 28, ἐν τῇ παλιγγενεσίᾳ, sic interpretandus est, cum, scilicet, cœlum, terra, et mare præterierint, ut est Apoc. xxi, et qui throno insidet nova omnia creabit, οὐρανὸν καινὸν, γῆν καινήν, καὶ καινὰ πάντα. JUN.
-    (67) Ἀβραὰμ ὁ φίλος. Add. cum Jun. τοῦ Θεοῦ. Sic et Clem. Alex. l. c. hæc verba exscribens. Dav. tamen legit : Ἀβραὰμ Θεοῦ φίλος, putans ex voce ΘΥ' facile manasse O. Vide infra, cap. 17. GALL. — Ἀβραὰμ ὁ φίλος προσαγορευθεὶς. Forte τοῦ Θεοῦ addendum, ut est Jac. ii, 23, καὶ φίλος Θεοῦ ἐκλήθη. JUN.
-  </bloco>
+
   <notas>
-    Transcrição fiel incluindo textos em Latim e Grego. O termo "Ἀδάμωμ" na coluna direita (meio) foi transcrito conforme aparece visualmente, embora possa ser uma corrupção de "Ἄμωμον". A letra 'A' no início da coluna direita e no final da primeira linha da esquerda marca o início da seção paralela.
+  - Transcrições feitas visualmente a partir do original digital. Alguns vocábulos e fragmentos tipográficos muito pequenos ou pouco nítidos foram marcados como [ilegivel] quando a leitura segura não foi possível (aplicado apenas a palavras individuais, conforme instruções).
+  - As letras A, B, C, D que aparecem verticalmente no meio da pagina foram colocadas em blocos nota_marginal distintos (bbox centrado no gutter) e não inseridas no fluxo das colunas.
+  - BBox aproximadas em escala 0-1000; colocadas para refletir a posição visual: header full-width, colunas esquerda e direita, notas/rodapés e blocos marginais.
+  - Script identificado por coluna: latino (esquerda) e grego (direita). Onde existiam inserções de apparatus crítico, usei tipo="aparato_critico".
   </notas>
 </pagina>

@@ -1,7 +1,8 @@
 /**
  * Strings de interface — Português do Brasil (idioma padrão)
  *
- * NOTA SOBRE OS DADOS: resumos, palavras-chave e entidades gerados por IA
+ * NOTA SOBRE OS DADOS: resumos, palavras-chave e entidades gerados por
+ * Large Language Models e Vision Language Models
  * estão em português do Brasil, independentemente do idioma da UI.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -26,10 +27,10 @@ export const ptBR: Record<string, any> = {
   langSwitchEn: 'English',
   langSwitchIt: 'Italiano',
 
-  // ─── Disclaimer (aviso IA) ─────────────────────────────────────────────────
+  // ─── Disclaimer (aviso editorial sobre modelos) ───────────────────────────
   disclaimerTitle: '⚠️ Sobre resumos e palavras‑chave',
   disclaimerLine1:
-    'Usamos IA para gerar resumos e termos em português e ajudar a localizar rapidamente temas no corpus patrístico.',
+    'O projeto começou no Brasil, por isso os resumos, palavras-chave e parte dos metadados auxiliares ainda foram gerados em português do Brasil para ajudar a localizar rapidamente temas no corpus patrístico.',
   disclaimerLine2:
     'O acervo ainda está em expansão e pode conter erros de OCR. Se um tema não aparecer na busca, ele pode existir; se uma palavra‑chave surgir, confirme no texto antes de usar academicamente.',
   disclaimerLine3:
@@ -37,7 +38,7 @@ export const ptBR: Record<string, any> = {
   /** Aviso específico: dados gerados em PT-BR mesmo com UI em outro idioma */
   disclaimerDataLang:
     '🌐 Os resumos e palavras-chave foram gerados em português do Brasil e não variam conforme o idioma da interface.',
-  disclaimerAriaLabel: 'Aviso sobre o conteúdo gerado por IA',
+  disclaimerAriaLabel: 'Aviso sobre o conteúdo gerado por modelos de linguagem',
 
   // ─── Footer ────────────────────────────────────────────────────────────────
   footerLeft: 'Projeto colaborativo • <a href="https://github.com/Fabio3rs/BibliothecaPatristica" target="_blank" rel="noopener noreferrer">código aberto</a>',
@@ -94,7 +95,7 @@ export const ptBR: Record<string, any> = {
 
   // ─── Personas ──────────────────────────────────────────────────────────────
   aboutP8:
-    'Importante: a maior parte do acervo está em seus idiomas originais — grego, latim, siríaco, copta e outras línguas orientais. O que você encontra em português nesta plataforma são <strong>resumos, palavras-chave e metadados extraídos automaticamente</strong> por meio de processamento de texto e inteligência artificial, que servem como pontes para navegar e compreender o corpus.',
+    'Importante: a maior parte do acervo está em seus idiomas originais — grego, latim, siríaco, copta e outras línguas orientais. O que você encontra em português nesta plataforma são <strong>resumos, palavras-chave e metadados extraídos automaticamente</strong> por meio de Large Language Models e Vision Language Models, que servem como pontes para navegar e compreender o corpus.',
 
   personasTitle: 'Para quem é este acervo?',
   personasDesc: 'Escolha o seu perfil e descubra como a Bibliotheca Patristica pode ajudar.',
@@ -117,6 +118,8 @@ export const ptBR: Record<string, any> = {
   searchPlaceholder: 'Buscar por autor, obra, tema ou termo',
   searchHeroLabel: 'O que você procura?',
   searchHeroHint: 'Use a busca textual e os filtros para navegar por coleção, volume e palavras-chave.',
+  searchDataNote:
+    'Nota: o projeto nasceu no Brasil. Resumos, palavras-chave e sugestões de dicionário ainda aparecem principalmente em português do Brasil, enquanto os OCRs permanecem nos idiomas originais sempre que possível.',
   searchAllCollections: 'Todos',
   searchQuickAuthors: 'Autores',
   searchQuickThemes: 'Temas',
@@ -186,6 +189,8 @@ export const ptBR: Record<string, any> = {
   viewerSummaryPage: 'Resumo da página',
   viewerSummaryGlobal: 'Resumo global',
   viewerExcerpt: 'Trecho Notável',
+  viewerDataNote:
+    'Nota editorial: este projeto começou no Brasil. Resumos, palavras-chave e metadados auxiliares ainda estão principalmente em português do Brasil; o OCR permanece no idioma original sempre que possível.',
   viewerNoContent: 'Sem conteúdo disponível.',
   viewerOcrTitle: 'OCR Original',
   viewerOcrLoading: 'Carregando…',

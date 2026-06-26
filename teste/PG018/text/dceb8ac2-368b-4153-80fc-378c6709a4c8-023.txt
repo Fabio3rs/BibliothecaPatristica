@@ -1,39 +1,157 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,60">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,50">
     37 CONVIVIUM DECEM VIRGINUM. 38
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="0,60,490,750">
+  <bloco tipo="texto_principal" script="grego" bbox="50,60,480,650">
     τὸ ἄριστον καὶ κάλλιστον ἐπιτήδευμα μόνον τυγχάνει.
-    Καὶ διὰ ταῦτα καὶ ὁ Κύριος εἰς τὴν βασιλείαν τῶν οὐρανῶν τοὺς ἀποπαρθενεύσαντας σφᾶς αὐτοὺς ἐπαγ- γέλλεται, ἔνθα περὶ διαφόρας εὐνουχισμῶν ἐν Εὐαγ- γελίοις περιεργῦ. Σπάνιον γὰρ σφόδρα καὶ δυσθεώ- κητον ἀνθρώποις ἁγνεία· καὶ ὅσω κορυφαίοτατον καὶ με- γαλοπρεπές, τοσούτῳ κα τοὺς κινδύνους μείζονας ἔχον.
-    Δεῖται οὖν ἑρρωμένων καὶ γενναίων φύσεων, αἰτί- νες, ἀθρόως (12) τῆς δυπαθείας τὸ ῥεῦμα ὑπεριπτά- μεναι (13), ἄνω μετέωρον ἀπευθύνουσι τὸ ὄχημα τῆς ψυχῆς, μὴ ἀπολήγουσαι τοῦ σκοπο, ἕως ν, ὑπερ- πηδήσασι κούφως τὸν κόσμον ὀξυτάτῃ διανοίᾳ τά- χει, καὶ ἐπ τὴν οὐράνιον ἀληθῶς ἀφίξα σταθεῖσαι, αὐτὴν ελικρινῶς θεάσωνται τὴν ἀφθαρσίαν, ἀπὸ τῶν ἀμύτων τοῦ Παντοκράτορος ἀποπίνουσαι κώλπων.
-    Τοῦτο τὸ πόμα γεννᾶν οκ ἐχώρησε γ· μόνος Β αὐτὸ πηγάζειν οἶδεν ὁ οὐρανός. Παρθενίαν γὰρ βαί- νειν μὲν ἐπὶ γς, ἐπιφαίνειν δὲ τῶν οὐρανῶν γητέον· ς δὴ ἐφιέμενοι, καὶ πρὸς μόνον τὸ τέλος ατῆς ἀφορῶντες τινες, ἀντίκτυς ποσὶν ἀτελεῖς ὑπὸ βαναυ- σίας προσπελθόντες, ἐκ μέσης ἀνέκαμψαν ὁδο, οὐδν ἄξιον φρόνημα τοῦ ἐπιτηδεύματος ἐπανηρη- μένοι. Οὐ γὰρ μόνον ἄφθορα τὰ σώματα τηρεῖσθαι δεῖ, σπερ οὐδὲ τοὺς ναοὺς κρείττονας ἀποφαίνεσθαι τῶν ἀγαλμάτων· ἀλλὰ τὰς ψυχὰς ἀγάλματα τῶν σωμάτων οὔσας θεραπεύεσθαι χρὴ κοσμουμένας δι- καιοσύνῃ. Θεραπεύουσι δὲ καὶ ἀποσμῆχονται τότε μᾶλλον, ὁπόταν, δόκαις κατακολεῖν (14) τῶν θείων ἀμιλλώμεναι λόγων, μὴ ἀπολήγωσι πρὶν α- τοῦ ἐφάψασθαι ὅ ἐστιν Ἀληθές, ἐπὶ σοσν ἀφ- ικνούμεναι θύρας.
+    Καὶ διὰ ταῦτα καὶ ὁ Κύριος εἰς τὴν βασιλείαν τῶν
+    οὐρανῶν τοὺς ἀποπαρθενεύσαντας σφᾶς αὐτοὺς ἐπαγ-
+    γέλλεται, ἔνθα περὶ διαφόρας εὐνουχισμῶν ἐν Εὐαγ-
+    γελίοις περιεργῦ. Σπάνιον γὰρ σφόδρα καὶ δυσκατόρ-
+    κτον ἀνθρώποις ἁγνεία· καὶ ὅσω κορυφαίοτατον καὶ με-
+    γαλοπρεπές, τοσούτῳ κα τοὺς κινδύνους μείζονας ἔχον.
+    Δεῖται οὖν ἑρρωμένων καὶ γενναίων φύσεων, αἰτί-
+    νες, ἀθρόως (12) τῆς ἡδυπαθείας τὸ ῥεῦμα ὑπεριπτά-
+    μεναι (13), ἄνω μετέωρον ἀπευθύνουσι τὸ ὄχημα τῆς
+    ψυχῆς, μὴ ἀπολήγουσαι τοῦ σκοποῦ, ἕως ἄν, περ-
+    πτήσασαι κούφως τὸν κόσμον ὀξυτάτῃ διανοίᾳ τά-
+    χει, καὶ ἐπὶ τὴν οὐράνιον ἀληθῶς ἀχίδα σταθεῖσαι,
+    αὐτὴν εἰλικρινῶς θεάσωνται τὴν ἀφθαρσίαν, ἀπὸ τν
+    ἀμύτων τοῦ Παντοκράτορος ἀποπίνουσαι κόλπων.
+    Τοῦτο τ πόμα γεννᾶν οὐκ ἐχώρησε γῆ· μόνος
+    αὐτὸ πηγάζειν οἶδεν ὁ οὐρανός. Παρθενίαν γὰρ βαί-
+    νειν μὲν ἐπὶ γῆς, ἐπιψαύειν δὲ τῶν οὐρανῶν ἡγητέον·
+    ἧς δὴ ἐφιέμενοι, καὶ πρὸς μόνον τὸ τέλος αὐτῆς
+    ἀφορῶντες τινες, ἀντίπους ποσὶν ἀτελεῖς ὑπὸ βαναυ-
+    σίας προσπελθόντες, ἐκ μέσης ἀνέκαμψαν ὁδο,
+    οὐδὲν ἄξιον φρόνημα τοῦ ἐπιτηδεύματος ἐπανηρη-
+    μένοι. Οὐ γὰρ μόνον ἄφθορα τὰ σώματα τηρεῖσθαι
+    δεῖ, σπερ οὐδὲ τοὺς ναοὺς κρείττονας ἀποφαίνεσθαι
+    τῶν ἀγαλμάτων· ἀλλὰ τὰς ψυχὰς ἀγάλματα τῶν
+    σωμάτων οὔσας θεραπεύεσθαι χρὴ κοσμουμένας δι-
+    καιοσύνῃ. Θεραπεύουσι δὲ καὶ ἀποσμύχονται τότε
+    μᾶλλον, πόταν, δάκνεις κατακοπεῖν (14) τῶν
+    θείων ἀμιλλώμεναι λόγων, μὴ ἀπολήγωσι πρὶν αὐ-
+    τοῦ ἐφάψασθαι ὅ ἐστιν Ἀληθές, ἐπὶ σοῦσιν ἀφ-
+    ικνούμεναι θύρας.
     certaverint, donec terendis sapientum foribus ¹, ipsum quod est Verum assecutæ fuerint.
-    Ὥσπερ γὰρ ἅλατι τῶν κρεῶν οἱ ἰχῦρες ἐκτέχονται· καὶ αἱ σπηλιόδες, καὶ πάντα τὰ φθοροποιά· τὸν α- τὸν τρόπον καὶ τῆς παρθένου οἱ λόγοι πᾶσαι ταῖς μαθήμασιν ἀποστύγουσι τοῦ σώματος ἐπιθυμίαι. Ἀνάγκη γὰρ τὴν μὴ πασομένην, δίκην ἅλατος, τοῦ Χριστοῦ τας φωναῖς ψυχήν, ἐποίζειν, καὶ σκώλη- κας (15) γεννᾶν, ὥσπερ ἁμελεὶ ἐπώξεσαν καὶ ἐσάπη- σαν οἱ μώλωπές μου, μετὰ δακρύων ἐξομολογού- μενος ὁ Δαυΐδ ἐν τοῖς ρεσι (16) κραξεν ὁ βασιλεύς, ὅτι μὴ ἀπέπνιγεν ἅλας τοῖς σωφρονισμοῖς αυτόν, ἀλλὰ ῥαθυμήσας εἰς οἶστρον (17) ὑπέστη, καὶ ἐξ-
+    Ὥσπερ γὰρ ἅλατι τῶν κρεῶν ο ἰχρες ἐκτήκονται·
+    καὶ αἱ σηπεδόνες, καὶ πάντα τὰ φθοροποιά· τὸν αὐ-
+    τὸν τρόπον καὶ τῆς παρθένου οἱ λόγοι πᾶσαι
+    ταῖς μαθήμασιν ἀποστύφουσι τοῦ σώματος ἐπιθυμίαι.
+    Ἀνάγκη γὰρ τὴν μὴ πασσουμένην, δίκην ἅλατος, τοῦ
+    Χριστοῦ ταῖς φωναῖς ψυχήν, ἐποῖζειν, καὶ σκώλη-
+    κας (15) γεννᾶν, ὥσπερ ἁμελεὶ ἐπώξεσαν καὶ ἐσάπη-
+    σαν οἱ μώλωπές μου, μετὰ δακρύων ἐξομολογού-
+    μενος ὁ Δαυὶδ ἐν τοῖς ρεσιν (16) ἔκραξεν ὁ βασιλεύς,
+    ὅτι μὴ ἀπέπνιγεν ἅλας τοῖς σωφρονισμοῖς αυτόν,
+    ἀλλὰ ῥαθυμήσας εἰς οἶστρον (17) ὑπεσχη. καὶ ἐξ-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,60,1000,750">
-    A honestissimaeque professio. Unde et Dominus eos potissimum in regnum cœlorum ingressuros pol- licetur, qui ipsi seipsos castraverunt, ubi in Evan geliis ¹ eunuchorum differentias tradit. Rara quippe admodum arduaque hominibus castitas; ac quanto principalior magnificentiorque, tanto etiam majo- ribus obsepta periculis est.
-    Ergo indoles requirit fortes et generosas, quæ, acri impetu atque volatu voluptatis fluxu superatæ, sublime sursum mentis vehiculum dirigant, a pro- posito suo nunquam abscedentes, quoad alacri le- viter saltu mundum supergressæ, acutissima men- tis pernicitate, inque cœlesti vere constitutæ cul- mine, ipsam pure contemplantur incorruptionem, ab Omnipotentis impolluto sinu exsilientem.
-    B Hoc nectar gignere non valet terra : uni cœlo datum est illud ex se profundere. Itaque virginita- tem ambulare quidem super terram, contingere vero vertice cœlos existimandum est. Cujus desi- derio quidam taciti, et ad illius solummodo finem animum attendentes, illotis pedibus ex mentis sor- diditale imperfecti animo accedentes, vix mediam aggressi viam pedem retulerunt, nullo scilicet pro studii institutique præstantia digno satis arrepto mentis proposito. Non enim solum incorrupta ser- vanda sunt corpora, uti neque templorum quam statuarum major habenda est ratio; sed animabus quæ sint corporum statuæ justitia perornandis, omnis vero adhibenda diligentia. Adhibetur autem, ac tum maxime concinnantur, cum firmo constan-
-    C tique proposito divinos sermones audire impigre
-    Ut enim carnium tabes ac putredines sale absu- muntur, cunctaque ex eis corruptionis semina ter- guntur; sic in virgine, a ratione procul abhorren- tes corporeæ omnes libidines, doctrinarum austero astringuntur. Neque enim fiat, ut qui, ritu salis, Christi vocibus animus non conspergitur, non fœ- teat apricis verminet, uti sane David rex ex monti- bus lacrymarum imbre confitens clamabat ³ : Pu- truerunt et corruptæ sunt cicatrices meæ ; quod ni- mirum veluti sale sobriis meditationibus seipsum non defricuerit aut astrinxerat, sed segnins agens
+  <bloco tipo="nota_marginal" script="latino" bbox="490,60,510,80">
+    A
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="0,750,1000,780">
-    1 Matth. XIX, 12. 2 Eccli. vi, 36. 3 Psal XXXVII, 6.
+  <bloco tipo="texto_principal" script="latino" bbox="520,60,950,650">
+    honestissimæque professio. Unde et Dominus eos
+    potissimum in regnum cœlorum ingressuros pol-
+    licetur, qui ipsi seipsos castraverunt, ubi in Evan-
+    geliis ¹ eunuchorum differentias tradit. Rara quippe
+    admodum arduaque hominibus castitas; ac quanto
+    principalior magnificentiorque, tanto etiam majo-
+    ribus obsepta periculis est.
+    Ergo indoles requirit fortes et generosas, quæ,
+    acri impetu atque volatu voluptatis fluxu superatæ,
+    sublime sursum mentis vehiculum dirigant, a pro-
+    posito suo nunquam abscedentes, quoad alacri le-
+    viter saltu mundum supergressæ, acutissima men-
+    tis pernicitate, inque cœlesti vere constitutæ cul-
+    mine, ipsam pure contemplantur incorruptionem,
+    ab Omnipotentis impolluto sinu exsilientem.
+    Hoc nectar gignere non valet terra: uni cœlo
+    datum est illud ex se profundere. Itaque virginita-
+    tem ambulare quidem super terram, contingere
+    vero vertice cœlos existimandum est. Cujus desi-
+    derio quidam taciti, et ad illius solummodo finem
+    animum attendentes, illotis pedibus ex mentis sor-
+    diditate imperfecti animo accedentes, vix mediam
+    aggressi viam pedem retulerunt, nullo scilicet pro
+    studii institutique præstantia digno satis arrepto
+    mentis proposito. Non enim solum incorrupta ser-
+    vanda sunt corpora, uti neque templorum quam
+    statuarum major habenda est ratio; sed animabus
+    quæ sint corporum statuæ justitia perornandis,
+    omnis vero adhibenda diligentia. Adhibetur autem,
+    ac tum maxime concinnantur, cum firmo constan-
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="0,780,490,950">
-    (12) Ἄθρ. Codex Vat., Ἄθρόως τῆς δυπαθείας Maz., θρόως τ ῥεῦμα μετ- οχετεύσασαι τῆς ἡδυπαθείας. Moz pro οὐράνιον, Maz. cod. legit οὐρανίαν. EDIT. LUPAR.
-    (13) Ὑπεριστάμενα. Allat. et Mazar., μετ- οχετεύσασαι. Alio derivato fluunt, ab eo se abstra- hentes, omnemque libidinem coercentes : quæ utraque vox nullo incommodo servari possit. COM- BEFIS.
-    (14) Καταχ. Ubi codex Vat. legit κατακολεῖν ἀμιλλώμεναι λόγον. Maz., melius, κατακολεῖν τῶν θείων ἀμιλλώμεναι λόγων. ED. LUPAR.
-    (15) Σκώληξ. Vat. σκώληκας ποιεῖν. Maz., γεννᾶν. In alterutro nimia librarii licentia. ID.
-    (16) Ἐν τος ὄρεσι. Suspecta mihi vox. Nam loquitur Methodius de Davidis luctu ab adulterio; quem non in montibus habuit, sed domi et Hiero- solymis. ubi a Nathan propheta correptus fuit.
+  <bloco tipo="nota_marginal" script="latino" bbox="490,280,510,300">
+    B
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="510,780,1000,950">
-    D Quare potius foret ἐν βάρεσι, in palatio ac regiis ædibus, in quibus stratum suum largo lacrymarum imbre veræ pœnitens rex pius perfundebat. Ante quidem et Saüle persequente sic in montibus vagus agebat ac profugus, in quem per eam fugam, non pauca illius psalmi, ut quod ait, Amici mei et proximi mei adversum me, etc., partimque in Absa- lon persecutione fuit, etsi eo brevi turb ine, extin- cto parricida, liber evasit, potioresque amici fidem illi servaverint. Mox pro εἰς οἶστρον, frigidius Vat. Possinii, εἰς στερον, quod malim exscribentis men- dum. Sic certe solet, post stimulos ad libidinem, res ipsa sequi, ut in Davide; nam prius amore exarsit ab incauto mulieris aspectu, tumque regis potentia adductam domum constupravit. COMBEFIS.
-    (17) Εἰς οστρον. — Hæc est lectio codicis Maz., ubi Vat. habet εἰς ὕστερον. Οἶστρος est stimulus carnis et cupiditatis ad flagitium trahens. Etiam illud
+  <bloco tipo="nota_marginal" script="latino" bbox="490,480,510,500">
+    C
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,490,950,650">
+    tique proposito divinos sermones audire impigre
+    Ut enim carnium tabes ac putredines sale absu-
+    muntur, cunctaque ex eis corruptionis semina ter-
+    guntur; sic in virgine, a ratione procul abhorren-
+    tes corporeæ omnes libidines, doctrinarum austero
+    astringuntur. Neque enim fiat, ut qui, ritu salis,
+    Christi vocibus animus non conspergitur, non fœ-
+    teat atque verminet, uti sane David rex ex monti-
+    bus lacrymarum imbre confitens clamabat ²: Pu-
+    truerunt et corruptæ sunt cicatrices meæ; quod ni-
+    mirum veluti sale sobriis meditationibus seipsum
+    non defricuerit aut astrinxerat, sed segnius agens
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="50,660,950,680">
+    ¹ Matth. XIX, 12. ² Eccli. VI, 36. ³ Psal. XXXVII, 6.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="50,690,480,950">
+    (12) Ἄθρ. Codex Vat., Ἀθρόως τῆς ἡδυπαθείας
+    τὸ ῥεμα ὑπερπτάμεναι. Maz., Ἀθρόως τὸ ῥεῦμα μετ-
+    οχετεύσασαι τῆς δυπαθείας. Moz pro οὐράνιον, Maz.
+    cod. legit οὐρανίαν. EDIT. LUPAR.
+    (13) Ὑπεριπτάμεναι. Allat. et Mazar., μετ-
+    οχετεύσασαι. Alio derivato fluxu, ab eo se abstra-
+    hentes, omnemque libidinem coercentes: quæ
+    utraque vox nullo incommodo servari possit. COM-
+    BEFIS.
+    (14) Κατακ. Ubi codex Vat. legit κατακοπεῖν
+    ἀμιλλώμεναι λόγον. Maz., melius, κατακοπεῖν τῶν
+    θείων ἀμιλλώμεναι λόγων. ED. LUPAR.
+    (15) Σκώληκ. Vat. σκώληκας ποιεῖν. Maz., γεννᾶν.
+    In alterutro nimia librarii licentia. ID.
+    (16) Ἐν τοῖς ὄρεσιν. Suspecta mihi vox. Nam
+    loquitur Methodius de Davidis luctu ab adulterio;
+    quem non in montibus habuit, sed domi et Hiero-
+    solymis, ubi a Nathan propheta correptus fuit.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,690,510,710">
+    D
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="520,690,950,950">
+    Quare potius foret ἐν βάρεσι, in palatio ac regiis
+    ædibus, in quibus stratum suum largo lacrymarum
+    imbre veræ pœnitens rex pius perfundebat. Ante
+    quidem et Saüle persequente sic in montibus vagus
+    agebat ac profugus, in quem per eam fugam, non
+    pauca illius psalmi, ut quod ait, Amici mei et
+    proximi mei adversum me, etc., partimque in Absa-
+    lon persecutione fuit, etsi eo brevi turbine, extin-
+    cto parricida, liber evasit, potioresque amici fidem
+    illi servaverint. Mox pro εἰς οἶστρον, frigidius Vat.
+    Possinii, εἰς στερον, quod malim exscribentis men-
+    dum. Sic certe solet, post stimulos ad libidinem,
+    res ipsa sequi, ut in Davide; nam prius amore
+    exarsit ab incauto mulieris aspectu, tumque regis
+    potentia adductam domum constupravit. COMBEFIS.
+    (17) Εἰς οστρον.— Hæc est lectio codicis Maz.,
+    ubi Vat. habet εἰς ὕστερον. Οἶστρος est stimulus
+    carnis et cupiditatis ad flagitium trahens. Etiam illud
   </bloco>
   <notas>
-    Transcrição de página bilingue (Grego/Latim) da Patrologia Graeca.
-    A linha "certaverint, donec..." aparece em itálico na coluna esquerda (grega), completando o período latino iniciado na coluna direita ("C tique proposito...").
-    Notas de rodapé contêm mistura de Grego e Latim.
+    Transcription includes Greek and Latin text.
+    Marginal letters A, B, C, D identified as section markers.
+    Line "certaverint..." appears in the left column between Greek paragraphs.
+    Footnotes contain mixed Greek and Latin.
   </notas>
 </pagina>

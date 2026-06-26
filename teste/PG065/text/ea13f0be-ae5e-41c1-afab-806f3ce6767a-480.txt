@@ -1,137 +1,122 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="55,40,945,95">943   S. MARCI EREMITAE   944</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="492,88,520,118">A</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="494,418,520,448">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="494,614,520,644">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="494,802,520,832">D</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="55,105,495,925">LXXV. Omnis rite baptizatus omnem gratiam
-acceptit mystice ; plenissime vero novit reliquum
-per præceptum operationem.
+  <bloco tipo="cabecalho" script="misto" bbox="50,20,950,50">
+    943 S. MARCI EREMITÆ 944
+  </bloco>
+  
+  <!-- Coluna Esquerda (Latim) -->
+  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,95">
+    LXXXV. Omnis rite baptizatus omnem gratiam accepit mystice; plenissime vero novit reliquum per præceptorum operationem.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,95,480,150">
+    LXXXVI. Præceptum Christi quod juxta conscientiam perficitur, secundum multitudinem dolorum cordis largitur consolationem. Verumtamen unumquodque horum suo tempore perficitur.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,150,480,195">
+    LXXXVII. Constantem in omni re precationem obtine, quasi nihil citra opem possis effectum reddere.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,195,480,240">
+    LXXXVIII. Ad parandum Dei subsidium nihil est precatione efficacius aut potentius, atque ad ejusdem beneplacitum nihil illa utilius.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,240,480,285">
+    LXXXIX. Omnis præceptorum exsecutio in illa conclusa est. Ea enim quæ est erga Deum charitate nihil dictu est sublimius.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,285,480,345">
+    XC. Precatio attenta signum est amoris erga Deum perseverantis. At ejusdem negligentia et distracta mentis occupatio studii voluptatis argumentum est.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,345,480,415">
+    XCI. Qui sine dolore et molestia vigilat, longanimis est et vacat precationibus, ille perspicue Spiritus sancti est particeps. Qui vero in his affligitur, voluntate tamen constanter perseverat, actutum et ille subsidium consequetur.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,415,480,475">
+    XCII. Præceptum præcepto ostensum est excellentius : ideo etiam fides fide firmior invenitur. Est fides ex auditu ⁴⁹, secundum Apostolum, et est fides rerum sperandarum substantia ⁵⁰.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,475,480,545">
+    XCIII. Pulchrum est disserendo prodesse interrogantibus : est autem longe præstantius, per virtutem et precationem illis cooperari ; etenim qui per hæc se ipsum Deo offert, etiam proximo auxiliatur proprio quodam auxilio.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,545,480,620">
+    XCIV. Quod si compendioso quodam sermone discendi cupidum juvare est animus, fac illi ostendas precationem et rectam fidem, nec non rerum accidentium tolerantiam : omnia enim reliqua quæ pulchra sunt, per hæc inveniuntur.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,620,480,665">
+    XCV. Pro quibus rebus consequendis aliquis in Deum speravit, illarum gratia non amplius contendit cum proximo.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,665,480,735">
+    XCVI. Si omne non voluntarium ex voluntariis, secundum Scripturam, causam habet et originem ; nemo ita infensus est homini, ut sibi ipse exsistit. Voluntariam dicit cogitationem, non voluntariam autem contingentiam.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,735,480,765">
+    XCVII. Omnium malorum dux est ignorantia, secunda post hanc est incredulitas.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,765,480,810">
+    XCVIII. Patientia et precatione fugienda est tentatio : quæ si absint, si te illi opposueris, vehementius te impugnabit.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,810,480,895">
+    XCIX. Qui, juxta doctrinam Christi ⁵¹, mitis est, sapientibus est sapientior, et qui humilis est corde, potentibus est potentior, quoniam hujusmodi jugum Christi secundum cognitionem bajulant.
+  </bloco>
 
-LXXVI. Præceptum Christi quod juxta con-
-scientiam perspicitur, secundum multitudinem dolo-
-rum cordis largitur consolationem. Verumtamen
-unumquodque horum suo tempore perficitur.
+  <!-- Coluna Direita (Grego) -->
+  <bloco tipo="texto_principal" script="grego" bbox="510,60,950,100">
+    ΠΕ'. Πᾶς  βαπτισθεὶς ὀρθοδόξως ἔλαβε μυστικῶς πᾶσαν τὴν χάριν· πληροφορεῖται δὲ λοιπὸν κατὰ τὴν ἐργασίαν τῶν ἐντολῶν.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,100,950,155">
+    ΠϚ'. Ἐντολὴ Χριστοῦ κατὰ συνείδησιν ἐπιτελουμένη, κατὰ τὸ πλῆθος τῶν ὀδυνῶν τς καρδίας, δωρεῖται παράκλησιν. Πλὴν ἕκαστον αὐτῶν ἰδίῳ καιρῷ παραγίνεται.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,155,950,190">
+    ΠΖ'. Ἔχε παράμονον δέησιν ἐπὶ παντὶ πράγματι, ὡς μηδὲν ἐπιτελεῖν δυνάμενος ἐκτὸς βοηθείας.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,190,950,235">
+    ΠΗ'. Οὐδὲν προσευχῆς εἰς συνεργίαν δυνατώτερον, καὶ πρς εὐδοκίαν Θεοῦ οδὲν αὐτῆς ὠφελιμώτερον.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,235,950,285">
+    ΠΘ'. Πᾶσα ἐργασία ἐντολῶν ἐν αὐτῇ περικέκλεισται. Τῆς γὰρ εἰς Θεὸν ἀγάπης οὐδὲν εἴρηται ἀνώτερον.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,285,950,335">
+    Ρ'. Προσευχὴ ἀρρέμβος, σημεῖον φιλοθεΐας τ παραμένοντι. μέλεια δὲ αὐτῆς καὶ ῥεμβασμός, φιληδονίας τεκμήριον.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,335,950,415">
+    ΡΑ'. Ὁ ἀθλήπτως ἀγρυπνῶν καὶ μακροθυμῶν, καὶ προσευχόμενος, Πνεύματος ἁγίου ἐναργῶς μέτοχος τυγχάνει. Ὁ δὲ θλιβόμενος ἐν τούτοις, καὶ θελήματι ὑπομένων, ταχέως καὶ οὕτως ἐπιτυγχάνει τῆς ἀντιλήψεως.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,415,950,475">
+    ΡΒ'. Ἐντολὴ ἐντολῆς ἀποδέδεικται διαφορωτέρα· διὸ καὶ πίστις πίστεως βεβαιοτέρα εὑρίσκεται. Ἔστι πίστις ἐξ ἀκοῆς, κατὰ τὸν Ἀπόστολον καὶ ἔστι πίστις ἐλπιζομένων ὑπόστασις.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,475,950,545">
+    ΡΓ'. Καλὸν τὸ διὰ λόγων ὠφελεῖν τοὺς πυθανομένους· κρεῖσσον δὲ τὸ δι' ἀρετῆς καὶ προσευχῆς συνεργεῖν αὐτοῖς· ὁ γὰρ διὰ τούτων ἑαυτὸν προσφέρων τῷ Θε βοηθεῖ καὶ τῷ πέλας διὰ τοῦ ἰδίου βοηθήματος.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,545,950,605">
+    ΡΔ'. Εἰ θέλεις συντόμῳ λόγ ὠφελῆσαι τν φιλομαθ, ὑπόδειξον αὐτῷ προσευχὴν κα πίστιν ὀρθήν, καὶ τῶν ἐπερχομένων ὑπομονήν· πάντα γὰρ λοιπὰ τὰ καλὰ διὰ τούτων εὑρίσκεται.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,605,950,650">
+    ΡΕ'. Περὶ ὧν τις ἤλπισεν εἰς Θεόν, οὐκ ἔτι περὶ ἐκείνων τῷ πλησίον διαμάχεται.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,650,950,725">
+    ΡϚ'. Εἰ πᾶν ἀκούσιον ἐκ τῶν ἑκουσίων τὴν αἰτίαν ἔχει, κατὰ τὴν Γραφήν, οὐδεὶς οὕτως ἐχθρὸς ἀνθρώπου, ὡς αὐτὸς ἑαυτοῦ τυγχάνει. Ἑκούσιον λέγει τὸν λογισμόν· ἀκούσιον δὲ τὴν σύμβασιν.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,725,950,765">
+    ΡΖ'. Πάντων τῶν κακῶν προηγεῖται ἡ ἄγνοια· δευτέρα δὲ αὐτῆς ἐστιν ἡ ἀπιστία.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,765,950,810">
+    ΡΗ'. Φύγε πειρασμὸν δι' ὑπομονῆς καὶ δεήσεως· εἰ δὲ ἐκτὸς τούτων ἀντιτάσσει, περισσοτέρως ἐπέρχεται.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,810,950,875">
+    ΡΘ'. Ὁ πρᾶος κατὰ Θεόν, τῶν σοφῶν ἐστι σοφώτερος· καὶ ὁ ταπεινὸς τῇ καρδίᾳ τῶν δυνατῶν δυνατώτερος, ἐπειδὴ τὸν ζυγὸν τοῦ Χριστοῦ κατὰ γνῶσιν βαστάζουσι.
+  </bloco>
 
-LXXVII. Constanter in omni re precationem
-obline, quasi nihil citra operem possis effectum red-
-dere.
+  <!-- Notas Marginais (Gutter) -->
+  <bloco tipo="nota_marginal" script="latino" bbox="490,60,505,80">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,270,505,290">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,490,505,510">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,710,505,730">
+    D
+  </bloco>
 
-LXXVIII. Ad parandum Dei subsidium nihil
-est precatione efficacius aut potentius, atque ad
-ejusdem beneplacitum nihil illa utilius.
-
-LXXIX. Omnis præceptorum executio in illa
-conclusa est. Ea enim quæ est erga Deum chari-
-tate nihil dictu est sublimius.
-
-XC. Precatio attenta signum est amoris erga
-Deum perseverantis. At ejusdem negligentia et dis-
-tracta mentis occupatio studii voluptatis argumentum est.
-
-XCI. Qui sine dolore et molestia vigilat, longa-
-nimis est et vacat precationibus, ille perspicue
-Spiritus sancti est particeps. Qui vero in his affli-
-gitur, voluntate tamen constanter perseverat, actu-
-um et ille subsidium consequitur.
-
-XCII. Præceptum præcepto ostensum est excel-
-lentius : ideo etiam fides fide firmior invenitur. Est
-fides ex auditu 80, secundum Apostolum, et est fides
-rerum sperandarum substantia 88.
-
-XCIII. Pulchrum est disserendo prodesse inter-
-rogantibus : est autem longe præstantius, per vir-
-tutem et precationem illis cooperari ; etenim qui
-per hæc se ipsum Deo offert, etiam proximo auxi-
-liatur proprio quodam auxilio.
-
-XCIV. Quod si compendioso quodam sermone
-discedi cupido juvare est animus, fac illi osten-
-das precationem et rectam fidem, nec non rerum
-accidentium tolerantiam : omnia enim reliqua quæ
-pulchra sunt, per hæc inveniuntur.
-
-XCV. Pro quibus rebus consequendis aliquis in
-Deum speravit, illarum gratia non amplius conten-
-dit cum proximo.
-
-XCVI. Si omne non voluntarium ex voluntariis,
-secundum Scripturam, causam habet et originem ;
-nemo illa infensus est homini, ut sibi ipse existit.
-Voluntariam dicit cogitationem, non voluntariam
-autem contingentiam.
-
-XCVII. Omnium malorum dux est ignorantia,
-secunda hanc est incredulitas.
-
-XCVIII. Patientia et precatione fugienda est ten-
-tatio : quæ si absint, si te illi oppusueris, vehe-
-mentius te impugnabit.
-
-XCIX. Qui, juxta doctrinam Christi 31, mitis
-est, sapientibus est sapientior, et qui humilis
-est corde, potentibus est potentior, quoniam hu-
-jusmodi jugum Christi secundum cognitionem
-[ilegivel].</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="505,105,955,925">ΠΕ'. Πᾶς ὁ βαπτισθεὶς ὀρθοδόξως ἔλαβε μυστικῶς
-πᾶσαν τὴν χάριν· πληροφορεῖται δὲ λοιπὸν κατὰ
-τὴν ἐργασίαν τῶν ἐντολῶν.
-
-ΠϚ'. Ἐντολὴ Χριστοῦ κατὰ συνείδησιν ἐπιτελου-
-μένη, κατὰ τὸ πλῆθος τῶν ὀδυνῶν τῆς καρδίας, δίδεται παράκλησιν. Πλὴν ἕκαστον αὐτῶν ἰδίῳ καιρῷ
-παραγίνεται.
-
-ΠΖ'. Ἔχει παράμονον θέσιν ἐπὶ παντὶ πράγματι,
-ὡς μηδὲν ἐπιτελεῖν δυνάμενος ἄνευ βοηθείας.
-
-ΠΗ'. Οὐδὲν προσευχῆς εἰς συνεργίαν δυνατώτε-
-ρον, καὶ πρὸς εὐδοκίαν Θεοῦ οὐδὲν αὐτῆς ὠφελιμώ-
-τερον.
-
-ΠΘ'. Πᾶσα ἔργασια ἐντολῆς ἐν αὐτῇ περικλείε-
-ται. Τῆς γὰρ εἰς Θεὸν ἀγάπης οὐδὲν ἔρηται ἀνώτερον.
-
-ι'. Προσευχὴ ἀρρέμβος, σημεῖον φιλοθείας τῷ
-παραμένοντι· Ἀμέλεια δὲ αὐτῆς καὶ ῥέμβασμός, φιληδονίας τεκμήριον.
-
-ιΑ'. Ὁ [ilegivel] ἀγρυπνῶν καὶ μακροθυμῶν, καὶ
-προσευχόμενος, Πνεύματος ἁγίου ἐνεργείας μέτοχος
-τυγχάνει. Ὁ δὲ ὀλιγωρῶν ἐν τούτοις καὶ βραδυτῆτι
-ὑπομένων, ταχέως καὶ οὕτως ἐπιτυγχάνει τῆς ἀντιλήψεως.
-
-ιΒ'. Ἐντολὴ ἐντολῆς ἀποδείκνυται διαφορῶτερα·
-διὰ καὶ πίστις πίστεως βεβαιοτέρα εὑρίσκεται. Ἔστι
-πίστις ἐξ ἀκοῆς, κατὰ τὸν Ἀπόστολον, καὶ ἔστι πίστις
-ἐλπιζομένων ὑπόστασις.
-
-ιΓ'. Καλὸν τὸ διὰ λόγων ὠφελεῖν τοὺς [ilegivel]·
-χρεῖσσον δὲ τὸ δι᾽ ἀρετῆς καὶ προσευχῆς συνεργεῖν
-αὐτοῖς· ὁ γὰρ διὰ τούτων ἑαυτὸν προσφέρων τῷ Θεῷ
-βοηθεῖ καὶ τῷ πλησίᾳ διὰ τοῦ ἰδίου βοηθήματος.
-
-ιΔ'. Εἰ θέλεις συντόμῳ λόγῳ ὠφελῆσαι τὸν φιλομαθῆ,
-ὑπόδειξον αὐτῷ προσευχὴν καὶ πίστιν ὀρθὴν, καὶ τὴν
-ἐτεροχρόνων ὑπομονήν· πάντα γὰρ λοιπὰ τὰ καλά διὰ
-τούτων εὑρίσκεται.
-
-ιΕ'. Περὶ ὧν τις ἥλπισεν εἰς Θεόν, οὐκ ἔτι περὶ
-ἐκείνων τῷ πλησίον διαμάχεται.
-
-ιϚ'. Εἰ πᾶν ἀκούσιον ἐκ τῶν ἑκουσίων τὴν αἰτίαν
-ἔχει, κατὰ τὴν Γραφήν, οὐδεὶς οὕτως ἔχθρας ἀνθρώπου,
-ὡς αὐτὸς ἑαυτοῦ τυγχάνει. Ἑκούσιον λέγει τὸν λογισμόν,
-ἀκούσιον δὲ τὴν σύμβασιν.
-
-ιΖ'. Πάντων τῶν κακῶν προηγείται ἡ ἄγνοια,
-δευτέρα δὲ αὐτῆς ἐστὶν ἡ ἀπιστία.
-
-ιΗ'. Φεῦγε πειρασμὸν δι᾽ ὑπομονῆς καὶ βεβαίως·
-εἰ δὲ ἐκτὸς τούτων ἀντιτάσσῃ, περισσοτέρως ἐπέρχεται.
-
-ιΘ'. Ὁ πρὸς κατὰ Θεὸν, τῶν σοφῶν ἐστι σοφώτερος,
-καὶ ὁ ταπεινὸς τῇ καρδίᾳ τῶν δυνατῶν δυνατότερος,
-ἐπειδὴ τὸν ζυγὸν τοῦ Χριστοῦ κατὰ γνώσιν βαστάζουσιν.</bloco>
-  <bloco tipo="rodape" script="latino" bbox="70,940,820,995">80 Rom. x, 17.    88 Hebr. xi, 1.    81 Matth. xi, 29.</bloco>
-  <notas>Pagina bilíngue (latino e grego). As identificações A, B, C e D foram separadas em blocos próprios de nota_marginal, conforme instrução.</notas>
+  <!-- Rodapé / Notas de rodapé -->
+  <bloco tipo="aparato_critico" script="latino" bbox="50,900,550,930">
+    ⁴⁹ Rom. x, 17. ⁵⁰ Hebr. xi, 1. ⁵¹ Matth. xi, 29.
+  </bloco>
+  
+  <bloco tipo="rodape" script="latino" bbox="600,940,800,970">
+    Digitized by Google
+  </bloco>
 </pagina>

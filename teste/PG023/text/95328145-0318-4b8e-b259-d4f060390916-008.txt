@@ -1,30 +1,30 @@
-<pagina estado="com_texto" tipo="capa_ou_guarda">
-  <bloco tipo="cabecalho" script="latino" bbox="380,50,620,90">
+<pagina estado="com_texto">
+  <bloco tipo="cabecalho" script="latino" bbox="380,85,640,125">
     ELENCHUS
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="140,110,860,140">
+  <bloco tipo="cabecalho" script="latino" bbox="140,155,880,175">
     AUCTORUM ET OPERUM QUI IN HOC TOMO XXIII CONTINENTUR.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="260,200,740,230">
+  <bloco tipo="texto_principal" script="latino" bbox="260,235,760,255">
     EUSEBIUS PAMPHILI CÆSARIENSIS EPISCOPUS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,250,400,280">
+  <bloco tipo="texto_principal" script="latino" bbox="110,275,400,295">
     Commentaria in Psalmos.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="700,250,900,280">
+  <bloco tipo="texto_principal" script="latino" bbox="760,275,900,295">
     Col. 65
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="60,630,450,680">
-    OITAFÆRP
+  <bloco tipo="nota_marginal" script="latino" bbox="60,640,400,740">
+    [Texto invertido/bleed-through]: PRIVACY NOTICE
+    COPY 2000
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="60,680,450,730">
-    AMIRP
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="580,900,920,930">
+  <bloco tipo="rodape" script="latino" bbox="660,925,940,945">
     Ex Typis MIGNE, au Petit-Montrouge.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="550,950,800,980">
+  <bloco tipo="outro" script="latino" bbox="530,965,780,985">
     Digitized by Google
   </bloco>
-  <notas>Texto invertido/espelhado nas linhas 6 e 7 corresponde a sangria (bleed-through) do verso da página (PRÆFATIO / PRIMA).</notas>
+  <notas>
+    O bloco em bbox="60,640,400,740" contém texto impresso no verso da página que transparece (bleed-through), estando invertido horizontalmente.
+  </notas>
 </pagina>

@@ -1,10 +1,17 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,40,900,70">
-    513 S. PAMPHILI MARTYRIS 514
+  <bloco tipo="cabecalho" script="latino" bbox="100,30,150,50">
+    513
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,80,490,710">
+  <bloco tipo="cabecalho" script="latino" bbox="400,30,600,50">
+    S. PAMPHILI MARTYRIS
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,30,900,50">
+    514
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="80,60,480,730">
     valent sensus ejus altitudinem contueri; sive præ-
-    vitate mentis, quæ studium gerunt non solum dicta
+    vitate mentis, qua studium gerunt non solum dicta
     ejus (11) incusare, verum etiam adversus eos qui
     hæc legunt hostiles inimicitias sumere, tam perti-
     naciter id agentes, ut nulla prorsus venia eos dignos
@@ -17,11 +24,11 @@
     dictum est, retinere sciant, ab omni autem specie
     mala abstinere se noverint : ab his vero qui Origenis
     libros legunt, istud penitus exclusum putant esse
-    mandatum, quo probabiles jubentur effici trapezitæ,
+    mandatum, quod probabiles jubentur effici trapezitæ,
     scientes quod bonum est retinere, ab omni autem
-    specie mala se abstinere : sed tantummodo si quis
+    specie mala se abstinere 7 : sed tantummodo si quis
     legere libros illius visus fuerit, statim ab his hære-
-    ticorum perfundentur infamia. Denique (14) cum
+    ticorum perfundetur infamia. Denique (14) cum
     multis honestæ vitæ et religiosi propositi viris, in
     quibus nihil prorsus culpæ inveniunt, inimicitias
     propter hoc solum habent si eorum (15) studium
@@ -42,14 +49,19 @@
     pronuntiare sententia, nec statuto dogmate termi-
     nare, sed inquirere pro viribus, et sensum discutere
     Scripturarum, nec tamen profiteri quod integre
-    perfecteque comprehenderit; suspicari magis se de
+    perfecteque comprehenderit ; suspicari magis se de
     quamplurimis dicens, nec tamen certum esse quia
     in omnibus quod perfectum est et integrum asse-
     cutus sit. Sed et nonnunquam invenimus eum (17) de
     multis hærese se profitentem, in quibus ea quidem
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,80,900,710">
-    A quæ in quæstionem veniunt movet, nec tamen eorum
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,60,510,80">
+    A
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,60,920,730">
+    quæ in quæstionem veniunt movet, nec tamen eorum
     absolutiones adjungit, sed cum omni humilitate et
     veritate non erubescit fateri (18) hæc sibi non li-
     quere. Audivimus etiam illud ab eo frequenter in-
@@ -63,9 +75,16 @@
     rentia, quasi qui sciat se de sanctis Scripturis dicere,
     cum multa quæ sibi occurrerunt exposuerit, præci-
     pit his qui legunt, probare de singulis quæ dixerit,
-    et quod rectius prudens lector judicaverit, obtinere :
-    B profecto quia nec ipsum latebat quod non omnia
-    quæ moverat, vel discusserat, probabilia vel fixa
+    et quod rectius prudens lector judicaverit, obtinere:
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,360,510,380">
+    B
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,380,920,600">
+    profecto quia nec ipsum latebat quod non omnia
+    quæ moverat, vel discussorat, probabilia vel fida
     haberi deberent, pro eo quod multa mystica in Scri-
     pturis sanctis, et in secreto recondita esse credantur.
     Illud denique ejus si intentius advertamus, quam inte-
@@ -76,15 +95,22 @@
     ac desides, ne ad inquirendum quidem accedere,
     Domino et Salvatore nostro ad hoc nos provocante,
     profecto revocassemus pedem, considerantes quod
-    longe simus ab ea magnitudine spiritualis intelligentiæ,
-    (22) quæ de tam magnis rebus investigari de-
+    longe simus ab ea magnitudine spiritualis intelliger-
+    tiæ, (22) quæ de tam magnis rebus investigari de-
     beat intellectus. »
-    C PAMPHILUS. Et paulo post ait :
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,620,510,640">
+    C
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,640,920,730">
+    PAMPHILUS. Et paulo post ait :
     ORIGENES. « Si cui vero in disceptatione profundum
     aliquid occurrerit, de hoc dicendum quidem est,
     sed non cum omni affirmatione. Hoc enim aut te-
     merarii hominis est, et ejus qui sensum humanæ in-
-    firmitatis perdiderit, obliviscusque sui sit : aut certe
+    firmitatis perdidcrit, oblitusque sui sit : aut certe
     perfectorum virorum, et eorum qui confidenter se
     sciant ab ipso Domino Jesu didicisse, id est, a Verbo
     veritatis, et ab ipsa Sapientia per quam omnia facta
@@ -94,8 +120,12 @@
     sus vel intelligere talia potuit vel proferre. Nos vero,
     pro eo solo quod mediocriter licet (23), credimus
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="100,720,490,950">
-    ? I Thess. v, 21, 22.
+
+  <bloco tipo="nota" script="latino" bbox="80,740,250,760">
+    7 I Thess. v, 21, 22.
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="80,760,480,930">
     (11) Incusare. Sic mss. Editi autem perperam, D
     incursare.
     (12) Alias, quæ impertiri solet [al. quam impertiri
@@ -105,7 +135,7 @@
     sunt in editis.
     (14) Sic ms. Sorbonicus. Ms. vero Regius, cum
     multis bonæ vitæ et religiosi propositi viris. Ms. S.
-    Remigii, cum multis religiosis vitæ et proposito viris.
+    Remigii, cum multis religiosæ vitæ et proposito viris.
     Editi, et ms. Corbeiensis, cum multis hoc (editi,
     hujus) vitæ et religiosi propositi viris.
     (15) Editi, studia. Omnes mss., studium.
@@ -114,15 +144,16 @@
     (17) Ita omnes mss. Editi vero inepte, de multis
     hæresibus profitentem [al. proficientem].
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="510,720,900,950">
+
+  <bloco tipo="aparato_critico" script="latino" bbox="520,760,920,930">
     (18) Hæc. Deest in antea editis, necnon paulo in-
     fra, ipsi. Deinde ms. Regius habet dignantur, loco
     dedignantur.
     (19) Mss. plerique et editi, esse, male.
-    (20) Ita omnes mss. Editi vero perperam, eisdem
+    (20) Ita omnes mss. Editi vero perperam, ejusdem
     capitulis.
     (21) Ita editi. Mss. vero plerique : Origenes de
-    Præfatione librorum in Genesim [al. de præfatione
+    Præfatione librorum in Genesim; [al. de præfatione
     librorum Origenis in Genesim]. Nisi omnimodis pigri
     essent [al. Nisi omnimodis quidam pigri essent : al.
     pigri essent ingenii], et desides, etc.
@@ -133,13 +164,8 @@
     pro eo solo quod mediocriter licet credidimus, tamen
     de Domino Jesu loquimur, et ejus, etc. Cæteri mss.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="500,960,900,990">
+
+  <bloco tipo="rodape" script="latino" bbox="400,950,600,990">
     Digitized by Google
   </bloco>
-  <notas>
-    Transcrição de página da Patrologia (provavelmente Graeca ou Latina, dado o conteúdo sobre Orígenes e Panfilo).
-    Texto em latim com citações em grego (transliteradas ou citadas como ORIGENES).
-    Letras A, B, C no corpo do texto funcionam como marcadores de coluna/seção.
-    Aparato crítico extenso na parte inferior.
-  </notas>
 </pagina>

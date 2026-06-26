@@ -1,12 +1,20 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
-    579 S. ALEXANDRI ALEXANDRINI 580
+  <bloco tipo="cabecalho" script="latino" bbox="100,30,150,50">
+    579
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,70,480,800">
+  <bloco tipo="cabecalho" script="latino" bbox="380,30,620,50">
+    S. ALEXANDRI ALEXANDRINI
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,30,900,50">
+    580
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,60,450,140">
     Apis presbyter.
     Proterius presbyter.
     Paulus presbyter.
     Cyrus presbyter, similiter.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,150,450,500">
     Diaconi.
     Ammonius diaconus, similiter.
     Macarius diaconus.
@@ -32,8 +40,12 @@
     Serapion diaconus.
     Nilus diaconus.
     Romanus diaconus, similiter.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,510,450,830">
     Mareotæ presbyteri.
-    Apollonius presbyter, hisce scriptis suffragor, necnon depositioni Arii, eorumque qui ejus impietatis sectatores sunt.
+    Apollonius presbyter, hisce scriptis suffragor,
+    necnon depositioni Arii, eorumque qui ejus impie-
+    tatis sectatores sunt.
     Ingenius presbyter, similiter.
     Ammonius presbyter.
     Dioscorus presbyter.
@@ -53,11 +65,13 @@
     Thalelæus presbyter.
     Dionysius presbyter, similiter.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,70,950,800">
-    A Ἄπις πρεσβύτερος.
+  <bloco tipo="texto_principal" script="grego" bbox="550,60,900,140">
+    Ἄπις πρεσβύτερος.
     Προτέριος πρεσβύτερος.
     Παῦλος πρεσβύτερος.
-    Κύρος πρεσβύτερος, ὁμοίως.
+    Κῦρος πρεσβύτερος, ὁμοίως.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="550,150,900,500">
     Διάκονοι.
     Ἀμμώνιος διάκονος, ὁμοίως.
     Μακάριος διάκονος.
@@ -67,8 +81,8 @@
     Ἀπολλώνιος διάκονος.
     Ὀλύμπιος διάκονος.
     Ἀφθόνιος διάκονος.
-    Ἀθανάσιος (73) διάκονος.
-    B Μακάριος διάκονος, ὁμοίως.
+    Ἀθανάσιος διάκονος.
+    Μακάριος διάκονος, ὁμοίως.
     Παῦλος διάκονος.
     Πέτρος διάκονος.
     Ἀμβυτιανὸς (74) διάκονος.
@@ -83,8 +97,12 @@
     Σεραπίων διάκονος.
     Νεῖλον (75) διάκονος.
     Ῥωμανὸς διάκονος, ὁμοίως.
-    C Μαρεώτου (76) πρεσβύτεροι.
-    Ἀπολλώνιος πρεσβύτερος (77) σύμψηφός εἰμι τοῖς γεγραμμένοις , καὶ τῇ καθαιρέσει Ἀρείου, καὶ τῶν σὺν αὐτῷ ἀσεβησάντων.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="550,510,900,830">
+    Μαρεώτου (76) πρεσβύτεροι.
+    Ἀπολλώνιος πρεσβύτερος (77) σύμψηφός εἰμι τοῖς
+    γεγραμμένοις, καὶ τ καθαιρέσει Ἀρείου, καὶ τῶν
+    σὺν αὐτῷ ἀσεβησάντων.
     Ἰγγένιος (78) πρεσβύτερος, ὁμοίως.
     Ἀμμώνιος πρεσβύτερος.
     Διόσκορος πρεσβύτερος.
@@ -95,34 +113,45 @@
     Ἀμμωνᾶς πρεσβύτερος.
     Ὠρίων πρεσβύτερος.
     Σέρηνος πρεσβύτερος.
-    D Δίδυμος πρεσβύτερος.
+    Δίδυμος πρεσβύτερος.
     Ἡρακλῆς πρεσβύτερος.
     Βόκκων πρεσβύτερος.
-    Ἀγαθὸς πρεσβύτερος.
-    Ἀχιλλᾶς πρεσβύτερος.
+    Ἀγαθς πρεσβύτερος.
+    Ἀχιλλς πρεσβύτερος.
     Παῦλος (79) πρεσβύτερος.
     Θαλέλαιος πρεσβύτερος.
     Διονύσιος πρεσβύτερος, ὁμοίως.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="50,810,480,950">
+  <bloco tipo="nota_marginal" script="latino" bbox="520,60,540,80">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="520,280,540,300">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="520,510,540,530">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="520,720,540,740">
+    D
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="100,840,450,930">
     (73) Hic Ἀθανάσιος deest apud Gelas.
-    (74) Gelas., Ἀμυντιανός. Post sequentem, Gaium scilicet, omnes reliqui diaconi Alexandrini, decem numero, apud Gelasium desiderantur.
+    (74) Gelas., Ἀμυντιανός. Post sequentem,
+    Gaium scilicet, omnes reliqui diaconi Alexandrini,
+    decem numero, apud Gelasium desiderantur.
     (75) Forte Νεῖλος.
     (76) Gelas., Μαριώτου.
     (77) Gelas., Ἀπολλώς πρεσβύτερος, ὁμοίως, omis-
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="520,810,950,950">
+  <bloco tipo="aparato_critico" script="misto" bbox="550,840,900,930">
     sis reliquis usque ad Ἰγγένιος.
-    (78) Gelasius, Ἰγγένιος. Sequentem vocat Gelasius, Ἀμμωνς. Vide Apolog. S. Athanas. contr. Arian., pag. 192.
-    (79) Hi tres postremi, Παῦλος, Θαλέλαιος, Διονύσιος, desunt apud Gelasium.
+    (78) Gelasius, Ἰγγένιος. Sequentem vocat Gelas.
+    sic, Ἀμμωνᾶς. Vide Apolog. S. Athanas. contr.
+    Arian., pag. 192.
+    (79) Hi tres postremi, Παῦλος, Θαλέλαιος, Διο-
+    νύσιος, desunt apud Gelasium.
   </bloco>
   <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
     Digitized by Google
   </bloco>
-  <notas>
-    Transcrição de página bilíngue (Latim/Grego) da Patrologia Graeca.
-    Notas de rodapé (aparato crítico) divididas em duas colunas na parte inferior.
-    A nota (77) é dividida entre as duas colunas do aparato ("omis-" na esquerda, "sis..." na direita).
-    Letras marginais A, B, C, D incluídas no texto grego.
-  </notas>
 </pagina>

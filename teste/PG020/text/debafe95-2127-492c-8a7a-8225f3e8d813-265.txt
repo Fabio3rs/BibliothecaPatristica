@@ -1,9 +1,8 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,100,50">221</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="350,20,650,50">HISTORIAE ECCLESIASTICAE LIB. VI.</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="900,20,950,50">222</bloco>
-  
-  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,250">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    521 HISTORIÆ ECCLESIASTICÆ LIB. VI. 522
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,70,480,280">
     XVII. De Symmacho interprete.
     XVIII. De Ambrosio.
     XIX. Quæ de Origene a gentilibus commemorata sint.
@@ -15,14 +14,16 @@
     XXV. Qualiter libros utriusque Testamenti recensuit.
     XXVI. Quomodo Heraclas Alexandrinum suscepit episcopatum.
     XXVII. Qualiter episcopi Origenem suscipiebant.
-    XXVIII. De persecutione sub Maximo.
+    XXVIII. De persecutione sub Maximino.
     XXIX. De Fabiano, qualiter Romanorum episcopus divinitus designatus est.
     XXX. Qui fuerint Origenis discipuli.
     XXXI. De Africano temporum scriptore.
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="520,60,950,250">
-    A XXXII. Quot et quos Origenes Cæsareæ in Palæstina commentarios scripsit.
+  <bloco tipo="nota_marginal" script="latino" bbox="490,65,510,85">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,70,950,280">
+    XXXII. Quot et quos Origenes Cæsareæ in Palæstina commentarios scripsit.
     XXXIII. De errore Berylli.
     XXXIV. De Philippo Cæsare.
     XXXV. Quomodo Dionysius Heraclæ in episcopatu successit.
@@ -38,115 +39,47 @@
     XLV. Epistola Dionysii ad Novatum.
     XLVI. De aliis Dionysii epistolis.
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,260,510,280">A</bloco>
-  <bloco tipo="texto_principal" script="greco" bbox="50,260,480,280">ΚΕΦΑΛΑΙΟΝ Α'.</bloco>
-  <bloco tipo="texto_principal" script="greco" bbox="50,280,480,300">Περὶ το κατὰ Σεβρον διωγμο (Nic. H. E. v, 2).</bloco>
-  <bloco tipo="texto_principal" script="greco" bbox="50,300,480,530">
-    Ὡς δὲ καὶ Σεβρος διωγμὸν κατὰ τῶν κκλησιν
-    κίνει, λαμπρὰ μὲν τῶν ὑπὲρ εὐσεβείας ἀθλητῶν ἐν
-    ἁπάσαις ταῖς κκλησίαις κατὰ πάντα τόπον ἀπετε-
-    λεῖτο μαρτύρια, μάλιστα δ' ἐπήλθεν ἐπ' Ἀλεξαν-
-    δρείας· τῶν ἀπ' Αἰγύπτου καὶ Θηβαΐδος ἀθλητῶν
-    ἀριστίνδην αὐτοῦ ὥσπερ ἐπὶ μέγιστον Θεοῦ παρα-
-    πεμπομένων σταδίον, διὰ καρτερικωτάτης τε ποικί-
-    λων βασάνων καὶ θανάτου τρόπον ὑπομονῆς, τοὺς
-    παρὰ Θεοῦ στεφάνους ἀναδομένων. Ἐν οἷς κα Λεω-
-    νίδης ὁ λεγόμενος Ὠριγένους πατὴρ τὴν κεφαλὴν
-    ἀποτμηθεὶς, νέον κομιδῇ καταλείπει τὸν παῖδα· ὃς δ
-    ὁποίας ἐξ ἐκείνου περὶ τὸν θεῖον λόγον (11) προαιρέ-
-    σεως ἦν, οὐκ ἄκαιρον διὰ βραχέων διελθεῖν, τῷ μά-
-    λιστα πολὺν εναι παρὰ τοῖς πολλοῖς τὸν περὶ αὐτοῦ
-    βεβοημένον λόγον.
+  <bloco tipo="texto_principal" script="grego" bbox="50,300,480,500">
+    ΚΕΦΑΛΑΙΟΝ Α'.
+    Περὶ τοῦ κατὰ Σεβῆρον διωγμοῦ (Nic. H. E. v, 2).
+    Ὡς δ καὶ Σεβρος διωγμὸν κατὰ τῶν Ἐκκλησιῶν ἐκίνει, λαμπρὰ μὲν τῶν ὑπὲρ εὐσεβείας ἀθλητῶν ἐν ἁπάσαις ταῖς Ἐκκλησίαις κατὰ πάντα τόπον ἀπετελεῖτο μαρτύρια, μάλιστα δ' ἐπλήθυνεν ἐπ' Ἀλεξανδρείας· τῶν ἀπ' Αἰγύπτου καὶ Θηβαΐδος ἀθλητῶν ἀριστίνδην αὐτο, ὥσπερ ἐπὶ μέγιστον Θεοῦ παραπεμπομένων στάδιον, διὰ καρτερικωτάτης τε ποικίλων βασάνων καὶ θανάτου τρόπων ὑπομονῆς, τοὺς παρὰ Θεοῦ στεφάνους ἀναδομένων. Ἐν οἷς καὶ Λεωνίδης ὁ λεγόμενος Ὠριγένους πατὴρ τὴν κεφαλὴν ἀποτμηθείς, νέον κομιδῇ καταλείπει τὸν παῖδα· ὃς δὴ ὁποίας ἐξ ἐκείνου περὶ τὸν θεῖον λόγον (11) προαιρέσεως ἦν, οὐκ ἄκαιρον διὰ βραχέων διελθεῖν, τῷ μάλιστα πολὺν εἶναι παρὰ τοῖς πολλοῖς τὸν περὶ αὐτοῦ βεβοημένον λόγον.
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="520,260,950,280">201 CAPUT I.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,280,950,300">De persecutione sub Severo.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,300,950,530">
-    Porro cum Severus persecutionem adversus Ec-
-    clesias excitasset, per omnes quidem ubique loco-
-    rum ecclesias ab athletis pro pietate certantibus
-    illustria sunt confecta martyria. Præcipue tamen
-    Alexandriæ increbuerunt, cum ex universa Ægy-
-    pto ac Thebaide lectissimi pugiles eo tanquam in
-    amplissimum Dei stadium deducerentur, et cujus-
-    quemodi tormenta mortesque invicto animo per-
-    pessi, immortales a Deo coronas acciperent. Inter
-    quos Leonides qui Origenis pater fuisse dicitur,
-    capite truncatus, supradictum filium admodum
-    adolescentem reliquit. Qui quanto animi impetu
-    erga divinam fidem jam inde ab illa ætate fuerit
-    affectus, non erit intempestive paucis commemo-
-    rare, præsertim cum ejus fama multis multorum
-    hominum sermonibus celebretur.
+  <bloco tipo="nota_marginal" script="latino" bbox="490,460,510,480">
+    C
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,540,510,560">B</bloco>
-  <bloco tipo="texto_principal" script="greco" bbox="50,540,480,560">ΚΕΦΑΛΑΙΟΝ Β'.</bloco>
-  <bloco tipo="texto_principal" script="greco" bbox="50,560,480,580">Περὶ τῆς Ὠριγένους ἐκ παιδὸς ἀσκήσεως (Nic. H. E. v, 3).</bloco>
-  <bloco tipo="texto_principal" script="greco" bbox="50,580,480,800">
-    Πολλὰ μὲν οὖν ἄν τις εἴποι, τὸν βίον τοῦ ἀνδρὸς ἐν
-    στολῇ παραδοῦναι διὰ γραφῆς πειρώμενος, δέοντ' ἄν
-    καὶ ἰδίας ποθέσεως ἢ περὶ αὐτοῦ συντάξεως. Ὅμως
-    δ' ἡμες ἐπὶ τοῦ παρόντος ἐπιτεμνόμενοι τὰ πλεῖστα,
-    διὰ βραχέων ὡς οἷόν τε ὀλίγα ἄττα τῶν περὶ αὐτὸν
-    διεξυσόμεθα, ἐκ τινων ἐπιστολῶν καὶ ἱστορίας τῶν
-    καὶ ες ἡμς τῷ βίῳ περιλαλημένων αὐτοῦ γνωρίμων,
-    τὰ δηλούμενα φέροντες. Ὠριγένους (12) καὶ τὰ ἐξ
-    αὐτῶν, ὡς εἰπεν, σπαργάνων ἀξιομνημόνευτά μοι εἶ-
-    ναι δοκεῖ. Δέκατον μὲν γὰρ ἔπεγε Σεβῆρος τῆς βασι-
-    λείας ἔτος, ἡγεῖτο δὲ Ἀλεξανδρείας καὶ τῆς λοιπῆς
+  <bloco tipo="nota_marginal" script="latino" bbox="490,510,510,530">
+    B
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="520,540,950,560">CAPUT II.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,560,950,580">De Origenis a puero institutione.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,580,950,800">
-    Quod si quis vitam illius viri accurate et per
-    otium velit litteris tradere, longa profecto oratione
-    opus esset : idque argumentum proprium opus fla-
-    gitaret. Verum nos impræsentiarum pleraque in
-    compendium redigentes, pauca quædam de illo
-    quoad fieri potest brevissime referemus : partim ex
-    quibusdam epistolis, partim ex sermonibus ejus
-    discipulorum qui ad nostram usque ætatem super-
-    stites fuerunt, comperta in medium afferentes. Ori-
-    genis res etiam a primis, ut ita dicam, incunabulis
-    gestæ, commemoratione dignæ mihi videntur. Igi-
+  <bloco tipo="texto_principal" script="grego" bbox="50,520,480,780">
+    ΚΕΦΑΛΑΙΟΝ Β'.
+    Περὶ τς Ὠριγένους ἐκ παιδὸς ἀσκήσεως (Nic. H. E. v, 3).
+    Πολλὰ μὲν οὖν ἄν τις εἴποι, τὸν βίον τοῦ ἀνδρὸς ἐν σχολῇ παραδοναι διὰ γραφῆς πειρώμενος, δέοντ' ἂν καὶ ἰδίας ὑποθέσεως ἢ περὶ αὐτοῦ σύνταξις. Ὅμως δ' ἡμεῖς ἐπὶ το παρόντος ἐπιτεινάμενοι τὰ πλεῖστα, διὰ βραχέων ὡς οἷόν τε ὀλίγα ἄττα τῶν περὶ αὐτὸν διεισόμεθα, ἐκ τινων ἐπιστολῶν καὶ ἱστορίας τῶν καὶ εἰς ἡμᾶς τῷ βί πεφυλαγμένων αὐτοῦ γνωρίμων, τὰ δηλούμενα φέροντες. Ὠριγένους (12) καὶ τὰ ἐξ αὐτῶν, ὡς εἰπεν, σπαργάνων ἀξιομνημόνευτά μοι εἶναι δοκεῖ. Δέκατον μὲν γὰρ ἔτει ἐπεῖγε Σεβῆρος τῆς βασιλείας ἔτος , ἡγεῖτο δὲ Ἀλεξανδρείας καὶ τῆς λοιπῆς
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,680,510,700">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,780,510,800">D</bloco>
-
-  <bloco tipo="aparato_critico" script="misto" bbox="50,810,480,930">
-    (11) Περὶ τὸν θεῖον λόγον. Rufinus divinæ legis
-    studia, Christophorsonus sacrarum Litterarum stu-
-    dium interpretatur. Musculus vero divinam doctri-
-    nam vertit. Nicephorus in libro v hæc ex Eusebio
-    describens, ἱερὸν λόγον posuit. Observavi autem
-    Eusebium, quoties de Evangelio seu de religione
-    Christiana loquitur, θεῖον λόγον in singulari solitum
-    esse dicere. De Scripturis vero sanctis cum loqui-
-    tur θείους λόγους appellare. Sie in cap. 3 hujus li-
-    bri τὴν εἰς τν θεῖον λόγον πίστιν, et cap. 5, in fine.
-    (12) Vulg. φέροντες Ὠριγένους. Post vocem φέ-
-    ροντες ponendum est punctum. Deinde scribendum a
+  <bloco tipo="texto_principal" script="latino" bbox="520,300,950,650">
+    201 CAPUT I.
+    De persecutione sub Severo.
+    Porro cum Severus persecutionem adversus Ecclesias excitasset, per omnes quidem ubique locorum ecclesias ab athletis pro pietate certantibus illustria sunt confecta martyria. Præcipe tamen Alexandriæ increbuerunt, cum ex universa Ægypto ac Thebaide lectissimi pugiles eo tanquam in amplissimum Dei stadium deducerentur, et cujusquemodi tormenta mortesque invicto animo perpessi, immortales a Deo coronas acciperent. Inter quos Leonides qui Origenis pater fuisse dicitur, capite truncatus, supradictum filium admodum adolescentem reliquit. Qui quanto animi impetu erga divinam fidem jam inde ab illa ætate fuerit affectus, non erit intempestivum paucis commemorare, præsertim cum ejus fama multis multorum hominum sermonibus celebretur.
   </bloco>
-
-  <bloco tipo="aparato_critico" script="misto" bbox="520,810,950,930">
-    capite: Ὠριγένους καὶ τὰ ἑαυτῶν, ὡς επεῖν, σπαργά-
-    νων, etc., ut scribitur in codice Mazarino. Nec ali-
-    ter legisse videtur Christophorsonus, cujus lectio-
-    nem ac distinctionem nos hic libenti animo secuti
-    sumus. Porro et illud monendum est, Origenis no-
-    men in codd. Mediceo, Maz. et Fuk. semper cum
-    aspiratione scribi, quomodo in Theodori Metochitæ
-    Commentariis scriptum olim legere memini. Nec
-    displicet hæc scriptura, nam Ὠριγένης dicitur
-    quasi ὠρὶ γεννηθείς, id est, mature genitus; cui
-    contrarium est ἄωρι.
+  <bloco tipo="texto_principal" script="latino" bbox="520,660,950,780">
+    CAPUT II.
+    De Origenis a puero institutione.
+    Quod si quis vitam illius viri accurate et per otium velit litteris tradere, longa profecto oratione opus esset : idque argumentum proprium opus flagitaret. Verum nos impræsentiarum pleraque in compendium redigentes, pauca quædam de illo quoad fieri potest brevissime referemus : partim ex quibusdam epistolis, partim ex sermonibus ejus discipulorum qui ad nostram usque ætatem superstites fuerunt, comperta in medium afferentes. Origenis res etiam a primis, ut ita dicam, incunabulis gestæ, commemoratione dignæ mihi videntur. Igi-
   </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="50,940,250,960">PATROL. GR. XX.</bloco>
-  <bloco tipo="rodape" script="latino" bbox="800,940,850,960">17</bloco>
-  <notas>Texto em duas colunas: Grego à esquerda, Latim à direita. Notas de rodapé mistas (Grego/Latim). Números marginais A, B, C, D no centro.</notas>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,740,510,760">
+    D
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="50,790,480,920">
+    (11) Περὶ τὸν θεῖον λόγον. Rufinus divinæ legis stadia, Christophorsonus sacrarum Litterarum studium interpretatur. Musculus vero divinam doctrinam vertit. Nicephorus in libro v hæc ex Eusebio describens, ἱερὸν λόγον posuit. Observavi autem Eusebium, quoties de Evangelio seu de religione Christiana loquitur, θεῖον λόγον in singulari solitum esse dicere. De Scripturis vero sanctis cum loquitur θείους λόγους appellare. Sic in cap. 3 hujus libri τὴν εἰς τὸν θεῖον λόγον πίστιν, et cap. 5, in fine.
+    (12) Vulg. φέροντες Ὠριγένους. Post vocem φέροντες ponendum est punctum. Deinde scribendum a
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="520,790,950,920">
+    capite: Ὠριγένους καὶ τὰ ἑαυτῶν, ς εἰπεῖν, σπαργάνων, etc., ut scribitur in codice Mazarino. Nec aliter legisse videtur Christophorsonus, cujus lectio nem ac distinctionem nos hic libenti animo secuti sumus. Porro et illud monendum est, Origenis nomen in codd. Mediceo, Maz. et Fuk. semper cum aspiratione scribi, quomodo in Theodori Metochitæ Commentariis scriptum olim legere memini. Nec displicet hæc scriptura, nam Ὠριγένης dicitur quasi ὠρ γεννηθείς, id est, mature genitus; cui contrarium est ἄωρι.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="50,930,300,950">
+    PATROL. GR. XV.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="850,930,900,950">
+    17
+  </bloco>
+  <notas>Transcription follows the two-column layout rule. Marginal letters A, B, C, D are identified as nota_marginal. The text contains a mix of Latin and Greek scripts.</notas>
 </pagina>

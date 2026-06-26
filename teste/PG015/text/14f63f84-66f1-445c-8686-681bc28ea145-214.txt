@@ -1,32 +1,45 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,30,900,60">
-    123 HEXAPLORUM QUÆ SUPERSUNT. 124
+  <bloco tipo="cabecalho" script="latino" bbox="350,20,650,40">
+    HEXAPLORUM QUÆ SUPERSUNT.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="400,60,600,80">
+  <bloco tipo="cabecalho" script="latino" bbox="400,45,600,65">
     CAPUT XXI EXODI.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="50,80,350,500">
-    TO ΕΒΡΑΙΚΟΝ.
+  <bloco tipo="outro" script="latino" bbox="80,20,110,40">
+    123
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="890,20,920,40">
+    124
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="100,70,300,90">
+    TO EBPAIKON.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,100,300,450">
     וְיָצְאָה חִנָּם 2
-    וְאִם־אָדֹן יִתֶּן־לוֹ 3
+    אִם־אֲדֹנָיו יִתֶּן־לוֹ 3
     וְהִגִּישׁוֹ אֲדֹנָיו אֶל־הָאֱלֹהִים 6
-    וְכִי־יִמְכֹּר אִישׁ אֶת־בִּתּוֹ לְאָמָה 7
-    לֹא תֵצֵא כְּצֵאת הָעֲבָדִים
-    אִם־רָעָה בְּעֵיני אֲדֹנֶיהָ אֲשֶׁר־לֹא 8
-    יְעָדָהּ
-    וְהִפְדָּהּ לֹא־יִמְשֹׁל 9
-    לְמָכְרָהּ 11
-    עֹנֶה כְּמִשְׁפָּט 12
-    וְכִי־יָזִד אישׁ עַלרֵעֵהוּ 13
-    לְהָרְגוֹ בְּעָרְמָה 17
-    וְכִי־יְרִיבן 18
-    הַנִּגָּשִׁים אֶת־הַדָּגָן
+    וְכִי־יִמְכֹּר אִישׁ 7
+    אֶת־בִּתּוֹ לְאָמָה לֹא
+    כַּאֲמָתוֹת תּצֵא
+    אֲשֶׁר לֹא־יְעָדָהּ 8
+    וְהִפְדָּהּ 9
+    שְׁלָשׁאֵלֶּה 11
+    מוֹת יוּמָת 12
+    וַאֲשֶׁר לֹא צָדָה 13
+    וְהָאֱלֹהִים אִנָּה לְיָדוֹ
+    מוֹת יוּמָת 17
+    וְכִי־יְרִיבֻן 18
+    אֲנָשִׁים וְהִכָּה־אִישׁ
     הָרָה 22
     שְׁקָלִים 32
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="380,80,580,500">
-    TO ΕΒΡΑΙΚΟΝ
+
+  <bloco tipo="texto_principal" script="misto" bbox="350,70,550,90">
+    TO EBPAIKON
     Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,100,550,450">
     2.
     3.
     6.
@@ -41,58 +54,68 @@
     22.
     32.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="620,80,920,500">
+
+  <bloco tipo="texto_principal" script="grego" bbox="700,70,850,90">
     ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,100,950,450">
     2.
     3.
     6. Καὶ ἄξεις αὐτὸν πρὸς τοὺς θεούς.
-    7. Καὶ ὅταν πωλήσῃ ἀνὴρ τὴν θυγατέρα εἰς οἰκέτιν· οὐκ ἐξελεύ-
-    σεται ὡς ξοδος τν δούλων.
-    8. Ἐὰν κακωθῇ ἐν ὀφθαλμοῖς τοῦ κυρίου αὐτῆς, ὃς ο καθεωμολογή-
-    σατο αὐτὴν.
+    7. Καὶ ὅταν πωλήσῃ ἀνὴρ τὴν θυγατέρα εἰς οἰκέτιν· οὐκ ἐξελεύ-σεται ὡς ἔξοδος τῶν δούλων.
+    8. Ἐὰν κακωθῇ ἐν φθαλμος τοῦ κυρίου αὐτῆς, ὃς οὐ καθεωμολογή-σατο αὐτήν.
     9.
     11.
     12.
-    13. Καὶ ὃς οὐ μεθώδευσεν. Ἄφῃκεν.
+    13. Καὶ ὃς οὐ μεθώδευσεν. Ἄφηκεν.
     17.
     18. Ἐὰν δὲ διαμάχωνται.
     22.
     32. Στατῆρας.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,510,350,900">
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,480,300,500">
     VERSIO HEBRAICI TEXT.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,510,300,900">
     2. Egredietur liber.
     3. Et egredietur uxor ejus cum eo.
     6. Et accedere faciet eum dominus suus ad deos.
     7. Et cum vendiderit vir filiam suam in ancillam, non egredietur, secundum egressionem servorum.
     8. Si mala in oculis domini sui, qui non desponsavit eam.
     9. Secundum judicium filiarum.
-    11. Tria hæc.
+    11. Tria haec.
     12. Moriundo morietur.
     13. Et qui non insidiatus est. Fecit occurrere.
     17. Moriundo morietur.
     18. Si rixati fuerint. Et percusserit vir socium suum.
-    22. Prægnantem.
+    22. Pregnantem.
     32. Siclos.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="380,510,620,900">
+
+  <bloco tipo="texto_principal" script="latino" bbox="400,480,600,500">
     VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,510,600,900">
     2. Egredietur liber.
     3. Et uxor egredietur simul.
     6. Offeret eum dominus diis.
-    7. Si quis vendiderit filiam suam in famulam, non egredietur sicut ancillæ exire consueverunt.
+    7. Si quis vendiderit filiam suam in famulam, non egredietur sicut ancillae exire consueverunt.
     8. Si displicuerit oculis domini sui, cui tradita fuerat.
     9. Juxta morem filiarum.
     11. Tria ista.
     12. Morte moriatur.
-    13. Qui autem non est insidiatus. Tradidit.
+    13. Qui autem non est insidia-tus. Tradidit.
     17. Morte moriatur.
     18. Si rixati fuerint. Et percusserit alter proximum suum.
-    22. Prægnantem.
+    22. Pregnantem.
     32. Siclos.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,510,920,900">
+
+  <bloco tipo="texto_principal" script="latino" bbox="750,480,850,500">
     AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,510,950,900">
     2.
     3.
     6. Et duces eum ad deos.
@@ -101,16 +124,14 @@
     9.
     11.
     12.
-    13. Et qui non insidiatus fuerit. Dimisit.
+    13. Et qui non insidiatus fue-rit. Dimisit.
     17.
     18. Si vero pugnaverint.
     22.
     32. Stateras.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="550,950,750,980">
+
+  <bloco tipo="rodape" script="latino" bbox="500,950,800,980">
     Digitized by Google
   </bloco>
-  <notas>
-    A página apresenta uma estrutura complexa de Hexapla, comparando textos hebraicos, gregos (Aquila) e latinos (Vulgata e outras versões). A coluna do meio superior contém apenas números de versículos, indicando onde estaria a transliteração do hebraico em caracteres gregos ("TO ΕΒΡΑΙΚΟΝ Ἑλληνικος γράμμασι"), mas o texto em si não está impresso nesta coluna específica, apenas os números de referência alinhados com as outras colunas.
-  </notas>
 </pagina>

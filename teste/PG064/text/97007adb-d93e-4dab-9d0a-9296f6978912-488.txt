@@ -1,131 +1,219 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="110,40,890,85">817    SUPPLEMENTUM AD S. J. CHRYSOSTOMI OPERA.    818</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="35,85,485,985">
-Frustra, ait, receperunt haereditatem, praesidiam. Atque tantum honorati, nec sibi, nec aliis sapien-
-tiam comparaverunt, nomine tantum pra se ferunt doctrinam.
+  <bloco tipo="cabecalho" script="latino" bbox="130,45,170,65">817</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="325,45,735,65">SUPPLEMENTUM AD S. J. CHRYSOSTOMI OPERA.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="915,45,955,65">818</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="135,70,535,125">
+    Frustra, ait, receperunt hæreditatem, præsidientia-
+    que tantum honorati, nec sibi, nec aliis sapien-
+    tiam compararuut, nomine tantum præ se ferunt
+    doctrinam.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="135,128,535,150">
+    Propterea frustra factus est funiculus mendax
+    Scribis.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="135,153,535,285">
+    Funiculum plurimis in locis terræ dimensionem
+    appellat, ut terram quam in hæreditatem acceperunt
+    insinuet, sicut cum dicit : Funes ceciderunt mihi in
+    validissimis meis ⁶⁰. Sententia autem illius est : Frus-
+    tra vobis, etiam docentibus hæreditas terræ facta
+    est, id est, nec post accepta a me bona, meliores
+    effecti estis. Hebræus vero legit : Frustra vobis
+    factum est magisterium Scribis, hoc est, Alios do-
+    centes, vobis utilitati non fuistis.
+  </bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="540,70,555,85">A</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,70,955,125">
+    Εἰκῇ, φησί, κληρονομίαν ἔλαβον, καὶ προεδρίᾳ
+    ἁπλῶς ἐτιμήθησαν· οὔτε αυτούς, οτε τοὺς λλους
+    ἐσόφισαν· ὄνομα μόνον ἐστὶν ἡ διδασκαλία παρ'
+    αὐτοῖς.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,128,955,155">
+    Διὰ τοῦτο εἰς μάτην ἐγέρθη ἰσχοῖνος ψευδὴς
+    Γραμματεύσιν.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,158,955,295">
+    Σχοῖνον μὲν πολλαχοῦ καλε τῆς γῆς τὴν διαμέτρη-
+    σιν, ἵνα τὴν γῆν, ἣν κατεκληρονόμησαν μηνύσῃ, ὡς
+    ὅταν λέγῃ· Σχοινία ἀπέπεσόν μοι ἐν τοῖς κρατί-
+    στοίς μου. Βούλεται δὲ εἰπεῖν, ὅτι Εἰς μάταιον ὑμῖν
+    ἐγένετο, καὶ ἡμν τοῖς διδάσκουσιν ἡ κληρονομία
+    τῆς γῆς· τουτέστιν, Οὐδὲ ἀπὸ τοῦ ἀπολαύειν τῶν
+    παρ' ἐμοῦ καλν ἀμείνους γεγόνατε. Ὁ δὲ Ἑβραῖος
+    οὕτω φησίν· Εἰς μάτην ὑμν ἐγένετο ἡ διδασκαλία
+    τοῖς Γραμματεύσι. Τουτέστιν, Οὐδὲν ὠφελήθητε
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="135,300,535,335">
+    VERS. 10. Propterea dabo uxores eorum aliis.
+    Quo nihil in rerum natura æstimabilius.
+    Et agros hæredibus.
+  </bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="540,295,555,310">B</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,295,955,310">
+    ἑτέρους διδάσκοντες.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,310,955,325">
+    Διὰ τοῦτο δώσω τὰς γυναῖκας αὐτῶν ἑτέροις.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,325,955,340">
+    Ὁ πάντων κτῆμά ἐστι τιμιώτερον.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,340,955,355">
+    Καὶ τοὺς ἀγροὺς ατῶν τοῖς κληρονόμοις.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="135,345,535,475">
+    Hæredes hostes appellat. Sicut enim qui hære-
+    ditate potiti sunt, ita et hi secure, nullaque cum
+    difficultate, tenent et perfruuntur. Cur itaque illis
+    præbes? propter pietatem? Minime; sed ut isti
+    majoribus pœnis afficiantur, quod et in liberis mul-
+    toties agi videmus; illis enim probro affectis, alios
+    in eorum sedibus collocamus; ne privatione solum
+    propriorum bonorum, sed et impensa in externos
+    cura pungantur et crucientur.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="135,480,535,510">
+    VERS. 11. Et sanaverunt contritionem filiæ populi
+    mei ad ignominiam, dicentes : Pax, pax, et ubi erat ?
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,355,955,480">
+    Κληρονόμους τοὺς πολεμίους καλεῖ. Καθάπερ οἱ
+    κληρονομήσαντες ἀσφαλῶς κατέχουσι καὶ βεβαίως,
+    οὕτω καὶ οὗτοι. Τί οὖν ἐκείνοις δίδως; δι' εὐσέβειαν;
+    Οὐδαμῶς, ἀλλὰ πρὸς τούτοις [ἴσ. τὴν τούτων] κόλασιν
+    καὶ τιμωρίαν· ἐπεὶ καὶ ἐπὶ τῶν παίδων τοῦτο ποιοῦ-
+    μεν πολλάκις, ἐκείνους ἀτιμάσαντες, ἑτέρους ἐν τοῖς
+    ἐκείνων τόποις δείκνυμες· ἵνα μὴ τῇ στερήσει μόνον
+    τῶν οκείων καλῶν, ἀλλὰ καὶ τῇ τν ἄλλων ἐπιμε-
+    λείᾳ δάκνωνται καὶ λυπῶνται.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,480,955,515">
+    Καὶ ἰάσαντο τὸ σύντριμμα τῆς θυγατρὸς τοῦ
+    λαοῦ μου ἐπ' ἀτιμία, λέγοντες· Εἰρήνη, εἰρήνη,
+  </bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="540,505,555,520">C</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,515,955,525">
+    ποῦ δ εἴη ;
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="135,520,535,565">
+    Ad ignominiam, hoc est, Ad vanitatem : quasi
+    diceret : Ad nullam utilitatem, quin ad perniciem;
+    sane magna est ignominia convictos abducere.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="135,570,535,605">
+    VERS. 13. Non est uva in vitibus, et non sunt fi-
+    cus in ficulnea, et folia defluxerunt, dedi eis, et tran-
+    sierunt ab eis.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,525,955,570">
+    Τό, Ἐπ' ἀτιμία, τοῦτό ἐστιν, Ἐπ ματαιότητι. να
+    επῃ, ἐπ' οὐδεμιᾷ φελείᾳ, ἐπὶ βλάβῃ μν οὖν, καὶ
+    ἰκανῇ ἀτιμία ἀπάγειν τοὺς πειθομένους.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,570,955,610">
+    Οὐκ ἔστι σταφυλὴ ἐν ταῖς ἀμπέλοις, καὶ οὐκ
+    ἔστι σῦκα ἐν ταῖς συκαῖς, καὶ τὰ φύλλα κατερ-
+    ῥύηκε, καὶ ἔδωκεν αὐτος, καὶ παρῆλθεν αὐτούς.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="135,610,535,755">
+    Instructam aciem ostendit. Superius namque
+    dixerat : Pharetra ejus sicut sepulcrum apertum.
+    Omnes fortes, et comedent messem vestram, et pa-
+    nes vestros, tempus innuens animadversionis. Hoc
+    igitur dicere præsumit : Tantum elapsum est tem-
+    poris, ut et hiems advenerit, nec aliquid in melius
+    profecimus. Illud quippe, et dedit eis, hostibus
+    scilicet Deus vestra tradidit bona; at illud : Transie-
+    runt ab eis, id est, ea quæ ipsorum usui et commo-
+    dis superfluere, dissipata sunt ab illis.
+  </bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="540,720,555,735">D</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,610,955,765">
+    Τὸ παρατεταγμένον τοῦ πολέμου ἔδειξεν. Ἄνω-
+    τέρω γὰρ ἔφη· Ἡ φαρέτρα αὐτοῦ, ς τάφος
+    ἀνεῳγμένος. Πάντες ἰσχυροί, καὶ κατέδονται
+    τὸν θερισμὸν ὑμν, καὶ τος ἄρτους ὑμῶν, τὸν
+    καιρὸν τῆς ἐπιστασίας μηνύων. Τοῦτο τοίνυν βού-
+    λεται εἰπεῖν, ὅτι Τοσοῦτος χρόνος παρῆλθεν, ὥστε
+    καὶ τὴν τοῦ χειμῶνος ἐπιστῆναι ὥραν, καὶ οὐδὲν
+    βέλτιον διετέθημεν. Τὸ γάρ, Καὶ ἔδωκεν αὐτος,
+    τουτέστι, Τοῖς ἐχθροῖς ὁ Θεὸς παρέσχε τὰ ἡμέτερα
+    ἀγαθά· τὸ δέ, Καὶ παρῆλθεν αὐτούς, τουτέστι, τῶν
+    μὲν ἀπήλαυσαν, τὰ δὲ διέφθειραν.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="135,765,535,835">
+    Quid hoc est? Vel quod direpta ab hostibus, vel
+    ob sterilitatem forsitan divinitus inflictam. Nam
+    quia bellum continuo gerentes, terram spoliabant,
+    hæc eveniebant : idque factum, ut punirentur in
+    fructibus.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="135,840,535,855">
+    VERS. 14. Et potum dedit nobis aquam fellis.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="135,858,535,900">
+    Vides quantum sit bonum tribulatio ? Aqua vero
+    fellis quæ fuerit? exitus fide firmatus; quæ illi di-
+    cturi erant præveniens propheta effatur.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="135,910,535,930">
+    Propter quid nos sedemus?
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,770,955,840">
+    Τί ἐστι τοῦτο; ἤτοι τῶν πολεμίων λαβόντων· ἢ
+    καὶ ἀφορίας γενομένης τάχα δὲ τῆς [ἴσ. διὰ τῆς] τοῦ
+    Θεοῦ πληγῆς. Ἐπειδὴ γὰρ συνεχῶς πολεμοῦντες
+    ἐγύμνουν τὴν γν, ταῦτα συνέβαινεν· ἐγένετο δὲ ἵνα
+    παιδεύωνται ἐν τοῖς καρποῖς.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,845,955,860">
+    Καὶ ἐπότισεν ἡμᾶς ὕδωρ χολῆς.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,865,955,925">
+    Ὁρᾷς ὅσον ἀγαθὸν ἡ θλῖψις; ὕδωρ δὲ χολῆς ποῖον
+    ἂν γένοιτο; τὴν ἔκβασιν [videtur deesse verbum
+    λέγει, ἢ σημαίνει aut simile] μαρτυρουμένην· ἃ
+    ἔμελλον ἐρεῖν προλαβὼν ὁ προφήτης λέγει.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,930,955,945">
+    Ἐπὶ τί ἡμες καθήμεθα;
+  </bloco>
 
-Propterea frustra factus est funiculus mendax Scribis.
-
-Funiculum plurimis in locis terrae dimensionem appellat, ut terram quam in haereditatem acceperunt
-insinuet, sicut cum dicit : Funes ceciderunt mihi in [ilegivel] meis 60. Sententia autem illius est : Frus-
-tra vobis, etiam docentibus haereditas terrae facta est, id est, nec post accepta a me bona, meliores
-effecti estis. Hebraeus vero legit : Frustra vobis factum est magisterium Scribis, hoc est, Alios do-
-centes, vobis utilitati non fuitis.
-
-VERS. 10. Propterea dabo uxores eorum aliis.
-Quo nihil in rerum natura aestimabilius.
-Et agros haeredibus.
-Haeredes hostes appellat. Sicut enim qui haere-
-ditate potiti sunt, ita et hi secure, nullaque cum
-difficultate, tenent et perruuntur. Cur itaque illis
-praebes? propter pietatem? Minime, sed ut isti
-majoribus poenis afficiantur, quod et in liberis mul-
-toties agi videmus; illis enim probro affectis, alios
-in eorum sedibus colocamus; ne privatione solum
-propriorum bonorum, sed et impensa in externos
-cura pungantur et crucientur.
-
-VERS. 11. Et sanaverunt contritionem filiae populi
-mei ad ignominiam, dicentes : Pax, pax, et ubi erat ?
-
-Ad ignominiam, hoc est, Ad vanitatem : quasi
-diceret : Ad nullam utilitatem, quin ad perniciem;
-sane magna est ignominia convictos abducere.
-
-VERS. 13. Non est uva in vitibus, et non sunt fi-
-cus in ficulnea, et folia defluxerunt, dedi eis, et tran-
-sierunt ab eis.
-
-Instructam aciem ostendit. Superius namque
-dixerat : Pharetra ejus sicut sepulcrum apertum.
-Omnes fortes, et comedent messem vestram, et pa-
-nes vestros, tempus innuens animadversionis. Hoc
-igitur dicere praescivit : Tantum elapsum est tem-
-poris, ut et hiems adveniret, nec aliquid in melius
-profecimus. Illud quippe, et dedi eis, hostibus
-scilicet Deus vestra tradidit bona; at illud : Tran-
-sierunt ab eis, id est, ea quae ipsorum usui et commo-
-dis superfuerunt, dissipata sunt ab illis.
-
-Quid hoc est? Vel quod diripita ab hostibus, vel
-ob sterilitatem forsitan divinitus inflictam. Nam
-quia bellum continuo gerentes, terram spoliabant,
-haec eveniebant; idque factum, ut punirentur in
-fructibus.
-
-VERS. 14. Et polum dedit nobis aquam fellis.
-Vides quantum sit bonum tribulatio? Aqua vero
-fellis quae fuerit? exitus [ilegivel] firmans; quae illi di-
-cturi erant, praenveniens prophetia effatur.
-
-Propter quid nos sedemus?</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,505,515,535">C</bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="505,85,980,985">
-Εἰκῇ, φησὶ, κληρονομίαν ἔλαβον, καὶ προεδρίαν
-ἁπλῶς ἐτιμήθησαν· οὔτε αὐτοῖς, οὔτε τοῖς ἄλλοις
-ἐσοφίσαντο· ὄνομα μόνον ἐστὶν ἡ διδασκαλία παρ’
-αὐτοῖς.
-
-Διὰ τοῦτο εἰς μάτην ἐτράβην [ilegivel] πνευθὲς
-Γραμματέων.
-
-Σχοῖνον μὲν πολλαχοῦ καλεῖ τῆς γῆς τὴν διαμέτρη-
-σιν, ἵνα τὴν γῆν, ἣν κατεκληρονομήσαν μυρίοι, ὡς
-ὅταν λέγῃ· Σχοῖνος ἐκληρονόμησεν καὶ ἐν τοῖς πρακ-
-σου μου. Βούλεται δὲ εἰπεῖν, ὅτι Εἰς μάταιον ὑμῖν
-ἐγένετο, καὶ ἡμῖν τοῖς διδάσκουσιν ἡ κληρονομία
-τῆς γῆς τούτεστιν, Οὐδὲν ὠφελήθητε
-Οὕτως ὑμῖν; Εἰς μάτην ὑμῖν ἐγένετο ἡ διδασκαλία
-τοῖς Γραμματεύσι. Τοῦτέστιν, Οὐδὲν ὠφελήθητε
-τῆς διδασκαλίας.
-
-Διὰ τοῦτο δώσω τὰς γυναῖκας αὐτῶν ἑτέροις.
-Ὁ πάντων χρήμα ἐστὶ τιμιώτερον.
-Καὶ τοὺς ἀγροὺς αὐτῶν τοῖς κληρονόμοις.
-Κληρονόμους τοὺς πολεμίους καλεῖ. Καθάπερ οἱ
-κληρονομήσαντες ἀσφαλῶς κατέχουσι καὶ βεβαίως,
-οὕτως καὶ οὗτοι. Τί οὖν ἐκείνοις δίδως; δι᾿ εὐσέβειαν;
-Οὐδαμῶς, ἀλλὰ πρὸς τούτοις [τὸ, τὸν τούτων] κόλασιν
-καὶ τιμωρίαν· ἐπεὶ καὶ ἐπὶ τῶν παίδων τοῦτο πολλαχῇ,
-ἐχθροὺς ἀπαμύναντες, ἑτέρους ἐν τοῖς
-ἐκείνων τόποις δείκνυμεν· ἵνα μὴ τῇ στερήσει μόνον
-τῶν οἰκείων κακῶν, ἀλλὰ καὶ τῇ τῶν ἄλλων ἐπι-
-μελείας ἀδυνάτου καὶ λυποῦνται.
-
-• Καὶ ἰάσατο τὸ σύντριμμα τῆς θυγατρὸς τοῦ
-λαοῦ μου ἐπ᾽ αἰσχίᾳ, λέγοντες· Εἰρήνη, εἰρήνη.
-ποῦ δ᾽ ἔστιν;
-
-Τὸ, Ἐπ᾽ αἰσχίᾳ, τοῦτό ἐστιν, Ἐπὶ ματαιότητι· ἵνα
-εἴπῃ, ἐπ᾽ οὐδεμιᾷ ὠφελείᾳ, ἐπὶ βλάβῃ μὲν οὖν, καὶ
-ἱκανὴ ἀτιμία ἅπαξόμενοι τοὺς πεποιθότας.
-
-• Οὐκ ἔστιν συναγωγὴ ἐν ταῖς ἀμπέλοις, καὶ οὐκ
-ἔστι σύκα ἐν ταῖς συκαῖς, καὶ τὰ φύλλα κατερρύη-
-κε, καὶ ἔδωκεν αὐτοῖς, καὶ παρέδωκεν αὐτούς.
-Τὸ παρατεταγμένον τοῦ πολέμου ἐδήλωσε. Ἄνω-
-τέρω γὰρ ἐξῆς· Ἡ φαρέτρα αὐτοῦ, ὡς τάφος
-ἀνθρωπηρός· πάντες ἰσχυροί, καὶ κατέδραμον
-τὸν θερισμὸν ὑμῶν, καὶ τοὺς ἄρτους ὑμῶν, τὸν
-καιρὸν τῆς ἐπιστασίας μηνύων. Τοῦτο τοίνυν βού-
-λεται λέγειν, ὅτι τοσοῦτος χρόνος παρήλθεν, ὥστε
-καὶ τὴν τοῦ χειμῶνος ἐπιστάτην ὥραν, καὶ οὐδὲν
-βέλτιον διετέθημεν. Τὸ γὰρ, Καὶ ἔδωκεν αὐτοῖς,
-τοῦτέστιν, τοῖς ἐχθροῖς ὁ Θεὸς παρέδωκε τὰ ἡμέτερα
-ἀγαθά· τὸ δὲ, καὶ παρέδωκεν αὐτούς, τοῦτέστιν, τῶν
-μὲν ἀπήλαυσαν, τὰ δὲ διέφθειραν.
-
-Τί ἐστι τοῦτο; ἢ τοὺς τῶν πολεμίων λαβόντες, ἢ
-καὶ ἀφορὰς γεγονέναι τάχα δὲ τῆς [ilegivel] διὰ τῆς τοῦ
-Θεοῦ πληγῆς. Ἐπειδὴ γὰρ συνεχῶς πολεμοῦντες
-ἐξέμουν τὴν γῆν, ταῦτα συνέβαινε· ἐγένετο δὲ ἵνα
-παιδεύωνται ἐν τοῖς καρποῖς.
-
-Καὶ ἔδωκεν ἡμῖν ὕδωρ χολῆς.
-Ὁρᾷς ὅσον ἀγαθὸν ἡ θλῖψις; ὕδωρ δὲ χολῆς ποῖος
-ἂν γένοιτο; τὴν ἔκβασιν [videtur deesse verbum]
-λέγει, ἢ σημαίνει· καὶ συμβεβηκότως μαρτυρουμένην· ἢ
-μέλλον ἐρεῖν προλαβὼν ὁ προφήτης λέγει.
-• Ἔτι τί ἡμεῖς καθήμεθα;</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,730,520,760">D</bloco>
+  <bloco tipo="rodape" script="latino" bbox="585,955,805,985">Digitized by Google</bloco>
 </pagina>

@@ -1,14 +1,15 @@
 ---
 import Layout from '../Layout.astro';
 import FiltersPanel from '../FiltersPanel.astro';
-import { useTranslations, serializeTranslations } from '../../i18n';
+import { useTranslations, serializeTranslations, getLocaleBase } from '../../i18n';
 const base = import.meta.env.BASE_URL || '/';
 const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
+const localeBase = getLocaleBase(Astro.currentLocale, base);
 const t = useTranslations(Astro.currentLocale);
 const uiStrings = serializeTranslations(t);
 const uiLocale = Astro.currentLocale ?? 'pt-br';
 ---
-<Layout title={t.searchTitle} description={t.searchSubtitle} breadcrumbs={[{label: t.breadcrumbHome, href: baseWithSlash},{label: t.breadcrumbSearch}]}>
+<Layout title={t.searchTitle} description={t.searchSubtitle} breadcrumbs={[{label: t.breadcrumbHome, href: localeBase},{label: t.breadcrumbSearch}]}>
   <div class="main-grid search-layout">
     <FiltersPanel loading={true} />
 
@@ -18,6 +19,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           <p class="eyebrow">{t.searchSubtitle}</p>
           <h1>{t.searchTitle}</h1>
           <p>{t.searchHeroHint}</p>
+          <p class="search-data-note">{t.searchDataNote}</p>
         </div>
         <div class="search-controls">
           <label class="sr-only" for="search-box">{t.searchPlaceholder}</label>
@@ -94,6 +96,13 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       max-width: 70ch;
       color: var(--color-muted);
       line-height: 1.65;
+    }
+    .search-data-note {
+      padding: var(--space-3) var(--space-4);
+      border: 1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-border));
+      border-radius: var(--radius-m);
+      background: color-mix(in srgb, var(--color-surface) 82%, var(--color-accent) 18%);
+      font-size: 0.95rem;
     }
     .search-controls {
       display: grid;
@@ -226,8 +235,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     }
   </style>
 
-  <script type="module" define:vars={{ baseUrl: baseWithSlash, uiStrings, uiLocale }}>
-    const assetBase = baseUrl;
+  <script type="module" define:vars={{ assetBase: baseWithSlash, localeBase, uiStrings, uiLocale }}>
     const resultsEl = document.getElementById('results');
     const searchBox = document.getElementById('search-box');
     const pageSizeSel = document.getElementById('page-size');
@@ -358,6 +366,20 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     let renderTimer = null;
 
     const basePath = assetBase.endsWith('/') ? assetBase.slice(0, -1) : assetBase;
+    const localePath = localeBase.endsWith('/') ? localeBase.slice(0, -1) : localeBase;
+
+    function localizeRoutePath(pathname) {
+      const normalized = String(pathname || '/');
+      const withoutBase = normalized.startsWith(basePath)
+        ? normalized.slice(basePath.length)
+        : normalized;
+      const withLeadingSlash = withoutBase.startsWith('/') ? withoutBase : `/${withoutBase}`;
+      let strippedPath = withLeadingSlash;
+      if (withLeadingSlash === '/en' || withLeadingSlash === '/it') strippedPath = '/';
+      else if (withLeadingSlash.startsWith('/en/')) strippedPath = withLeadingSlash.slice(3) || '/';
+      else if (withLeadingSlash.startsWith('/it/')) strippedPath = withLeadingSlash.slice(3) || '/';
+      return `${localePath}${strippedPath === '/' ? '' : strippedPath}`;
+    }
 
     function pagefindAssetUrl(relativePath) {
       const cleanPath = String(relativePath || '').replace(/^\/+/, '');
@@ -551,7 +573,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       // Garante barra inicial
       if (!path.startsWith('/')) path = `/${path}`;
 
-      return `${basePath}${path}`;
+      return localizeRoutePath(`${basePath}${path}`);
     }
 
     async function ensurePagefind() {
@@ -874,7 +896,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       if (term && target.startsWith(basePath)) {
         const urlObj = new URL(target, window.location.origin);
         urlObj.searchParams.set('highlight', term);
-        link.href = urlObj.pathname + urlObj.search + urlObj.hash;
+        link.href = localizeRoutePath(urlObj.pathname) + urlObj.search + urlObj.hash;
       } else {
         link.href = target;
       }

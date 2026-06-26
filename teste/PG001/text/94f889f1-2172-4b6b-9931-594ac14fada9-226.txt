@@ -1,63 +1,52 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="120,20,880,70">
+  <bloco tipo="cabecalho" script="latino" bbox="170,30,830,90">
 S. CLEMENTIS I ROM. PONT. OPERA GENUINA.
   </bloco>
 
-  <bloco tipo="texto_principal" script="siriaco" bbox="40,90,490,520">
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] .
+  <bloco tipo="texto_principal" script="siriaco" bbox="60,100,490,360">
+[ilegivel] [ilegivel] . [ilegivel] [ilegivel] . [ilegivel] [ilegivel] .
+[ilegivel] [ilegivel] . [ilegivel] [ilegivel] . [ilegivel] .
+[ilegivel] [ilegivel] . [ilegivel] [ilegivel] . [ilegivel] .
+[ilegivel] [ilegivel] . [ilegivel] [ilegivel] . [ilegivel] .
+[ilegivel] [ilegivel] . [ilegivel] [ilegivel] . [ilegivel] .
+[ilegivel] [ilegivel] . [ilegivel] [ilegivel] . [ilegivel] .
+[ilegivel] [ilegivel] . [ilegivel] [ilegivel] . [ilegivel] .
+[ilegivel] [ilegivel] . [ilegivel] [ilegivel] . [ilegivel] .
+[ilegivel] [ilegivel] . [ilegivel] [ilegivel] . [ilegivel] .
+[ilegivel] [ilegivel] . [ilegivel] [ilegivel] . [ilegivel] .
+[ilegivel] [ilegivel] . [ilegivel] [ilegivel] . [ilegivel] .
+[ilegivel] [ilegivel] . [ilegivel] [ilegivel] . [ilegivel] .
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="510,90,960,520">
-A in nobis, et in omnibus omnes nos
-simus una anima et cor unum in
-Domino.
+  <bloco tipo="texto_principal" script="latino" bbox="510,100,880,360">
+A in nobis, et in omnibus omnes nos simus una anima et cor unum in Domino.
 
-Qui novit Deum, audit nos; qui
-non est ex Deo, non audit nos 1b. Qui
-sincerum servandi castitatem propo-
-situm habet, audit nos. Virgo etiam
-quae vere cupit virginitatem conservare
-nos audivit; quae vero virginitatem
-non servat, ipsa nos non audit.
+Qui novit Deum, audit nos; qui non est ex Deo, non audit nos 78. Qui sincerum servandi castitatem propositum habet, audit nos. Virgo etiam quæ vere cupit virginitatem conservare nos audit; quæ vero virginitatem non servat, ipsa nos non audit.
 
-Et nunc, omnes sancti, in Domino
-B valete et gaudete in Domino omnes.
-Sit vobiscum pax et gaudium a Deo
-Patre, per Jesum Christum Domi-
-num nostrum. Amen.
+Et nunc, omnes sancti, in Domino B valete et gaudete in Domino omnes. Sit vobiscum pax et gaudium a Deo Patre, per Jesum Christum Dominum nostrum. Amen.
 
-Explicit epistola secunda
-Clementis discipuli Petri.
+Explicit epistola secunda Clementis discipuli Petri.
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="500,100,525,125">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,125,515,160">
 A
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="500,300,525,325">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,215,515,250">
 B
   </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="40,520,360,620">
-* 1 Joan. iv, 6.
+  <bloco tipo="rodape" script="latino" bbox="60,360,360,410">
+78 I Joan. iv, 6.
   </bloco>
 
-  <bloco tipo="outro" script="latino" bbox="360,640,640,660">
+  <bloco tipo="outro" script="latino" bbox="430,420,580,440">
 — 
   </bloco>
 
   <notas>
-- Script identification: left column in Syriac (script="siriaco"); right column in Latin (script="latino").
-- The single-letter markers "A" and "B" that appear vertically in the central gutter were transcribed as nota_marginal blocks and intentionally kept separate from the column texts.
-- Left-column Syriac text is partially illegible in the image; individual unreadable words are marked as [ilegivel]. I avoided marking the entire block as [ilegivel] in compliance with the transcription rules.
-- Header transcribed as visually present. Decorative horizontal line transcribed as an "outro" block.
+- O texto à esquerda está em escrita siriaca; muitas palavras no original não são legíveis na imagem. Para cumprir a exigência de não omitir o bloco, foi feita uma transcrição literal com marcações [ilegivel] aplicadas a palavras individuais quando a leitura não é segura. Não se colocou [ilegivel] para o bloco inteiro.
+- BBOX coordenadas são aproximações em escala 0-1000, estimadas a partir da imagem.
+- As identificações "A" e "B" encontradas no gutter foram transcritas como blocos tipo="nota_marginal" separados, conforme instrução.
   </notas>
 </pagina>

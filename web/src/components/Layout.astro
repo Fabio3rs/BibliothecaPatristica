@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import '../utils/dataCache.ts';
 import Breadcrumbs from './Breadcrumbs.astro';
-import { useTranslations, getLocaleUrl } from '../i18n';
+import { useTranslations, getLocaleBase, getLocaleRouteUrl, getLocaleUrl } from '../i18n';
 
 const { title = 'Bibliotheca Patristica', description = 'Acervo digital aberto da Patrologia Graeca, Latina e Orientalis de J.P. Migne — busca textual e metadados enriquecidos.', breadcrumbs = [] } = Astro.props;
 const rawBase = import.meta.env.BASE_URL || '/';
@@ -13,13 +13,13 @@ const t = useTranslations(Astro.currentLocale);
 // Mapeia locale para tag BCP-47 válida no atributo lang do HTML
 const locale = Astro.currentLocale ?? 'pt-br';
 const htmlLang = locale === 'en' ? 'en' : locale === 'it' ? 'it-IT' : 'pt-BR';
+const localeBase = getLocaleBase(locale, base);
 
 const localeOptions = [
   { code: 'pt-br', label: t.langSwitchPt },
   { code: 'en', label: t.langSwitchEn },
   { code: 'it', label: t.langSwitchIt },
 ] as const;
-const localeRoot = locale === 'pt-br' ? baseWithSlash : `${baseWithSlash}${locale}/`;
 ---
 <!doctype html>
 <html lang={htmlLang}>
@@ -83,7 +83,7 @@ const localeRoot = locale === 'pt-br' ? baseWithSlash : `${baseWithSlash}${local
       <header class="topbar">
         <div class="wrapper header-grid">
           <div>
-            <a href={base} class="logo" aria-label={t.logoLabel}>
+            <a href={localeBase} class="logo" aria-label={t.logoLabel}>
               <span aria-hidden="true">📚</span> {t.logoText}
             </a>
             <div style="color: var(--color-muted); font-size: 0.95rem;">{t.tagline}</div>
@@ -93,13 +93,14 @@ const localeRoot = locale === 'pt-br' ? baseWithSlash : `${baseWithSlash}${local
               ☰
             </button>
             <div class="nav-links" id="primary-nav">
-              <a href={`${baseWithSlash}search`}>{t.navSearch}</a>
-              <a href={`${baseWithSlash}indices`}>{t.navIndices}</a>
+              <a href={getLocaleRouteUrl(locale, 'search', base)}>{t.navSearch}</a>
+              <a href={getLocaleRouteUrl(locale, 'indices', base)}>{t.navIndices}</a>
               <div class="lang-switch" role="group" aria-label={t.langSwitchLabel}>
                 {localeOptions.map((option) => (
                   <a
                     href={getLocaleUrl(option.code, Astro.url.pathname, base, Astro.url.search)}
                     class="ls-option"
+                    data-locale-code={option.code}
                     aria-current={locale === option.code ? 'true' : undefined}
                     aria-label={option.label}
                     title={option.label}
@@ -136,11 +137,53 @@ const localeRoot = locale === 'pt-br' ? baseWithSlash : `${baseWithSlash}${local
         </div>
       </footer>
     </div>
-    <script type="module">
-      //
+    <script type="module" define:vars={{ basePath: base }}>
 
       const toggle = document.getElementById('nav-toggle');
       const nav = document.getElementById('primary-nav');
+      const localeLinks = Array.from(document.querySelectorAll('.lang-switch .ls-option[data-locale-code]'));
+
+      function normalizeLocale(locale) {
+        const lower = String(locale || '').toLowerCase();
+        if (lower === 'en' || lower.startsWith('en-')) return 'en';
+        if (lower === 'it' || lower.startsWith('it-')) return 'it';
+        return 'pt-br';
+      }
+
+      function localeBase(locale) {
+        const baseNoSlash = basePath.endsWith('/') ? basePath.slice(0, -1) : basePath;
+        const normalized = normalizeLocale(locale);
+        return normalized === 'pt-br'
+          ? `${baseNoSlash}/`
+          : `${baseNoSlash}/${normalized}/`;
+      }
+
+      function localizedUrl(targetLocale) {
+        const baseNoSlash = basePath.endsWith('/') ? basePath.slice(0, -1) : basePath;
+        const pathname = window.location.pathname || '/';
+        const search = window.location.search || '';
+        const hash = window.location.hash || '';
+        const withoutBase = pathname.startsWith(baseNoSlash)
+          ? pathname.slice(baseNoSlash.length)
+          : pathname;
+        const normalizedPath = withoutBase.startsWith('/') ? withoutBase : `/${withoutBase}`;
+        let strippedPath = normalizedPath;
+        if (normalizedPath === '/en' || normalizedPath === '/it') strippedPath = '/';
+        else if (normalizedPath.startsWith('/en/')) strippedPath = normalizedPath.slice(3) || '/';
+        else if (normalizedPath.startsWith('/it/')) strippedPath = normalizedPath.slice(3) || '/';
+        const targetBase = localeBase(targetLocale).replace(/\/$/, '');
+        const routePath = strippedPath === '/' ? '' : strippedPath;
+        return `${targetBase}${routePath}${search}${hash}` || '/';
+      }
+
+      function syncLocaleLinks() {
+        localeLinks.forEach((link) => {
+          const targetLocale = link.getAttribute('data-locale-code');
+          if (!targetLocale) return;
+          link.href = localizedUrl(targetLocale);
+        });
+      }
+
       if (toggle && nav) {
         toggle.addEventListener('click', () => {
           const open = nav.classList.toggle('open');
@@ -155,6 +198,18 @@ const localeRoot = locale === 'pt-br' ? baseWithSlash : `${baseWithSlash}${local
           }
         });
       }
+      const originalReplaceState = window.history.replaceState.bind(window.history);
+      const originalPushState = window.history.pushState.bind(window.history);
+      window.history.replaceState = (...args) => {
+        originalReplaceState(...args);
+        syncLocaleLinks();
+      };
+      window.history.pushState = (...args) => {
+        originalPushState(...args);
+        syncLocaleLinks();
+      };
+      window.addEventListener('popstate', syncLocaleLinks);
+      syncLocaleLinks();
     </script>
   </body>
 </html>
