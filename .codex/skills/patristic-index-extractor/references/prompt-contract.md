@@ -44,7 +44,7 @@ WORK INSTRUCTIONS
 - Verify the hinted files directly before deciding anything.
 - Search the whole volume if needed, but do not skip the hinted pages.
 - Keep OCR literals.
-- Separate volume-front, work-front, and volume-end indexes.
+- Apply the collection-specific taxonomy from `references/volume-taxonomy.md`.
 - For each work, inspect the opening pages and the work index before naming the work.
 - Inspect the closing pages for final indexes.
 - If a number is uncertain, keep the raw literal and lower confidence.
@@ -72,3 +72,5 @@ FINAL RESPONSE
 - The driver should not ask the model to discover the obvious file structure from scratch.
 - The driver should not send a generic prompt without the pre-scan block.
 - The driver should read the output file from disk and ingest it with `scripts/import_index_json.py`.
+- For `PO`, the prompt should make clear whether the volume uses tome-level tables, fascicle inventories, or retrospective tables if the prescan already discovered them.
+- Until the helper scripts are updated, `PO` prompts may contain incomplete heading detection; the model should treat `PRESCAN` as hints, not as complete coverage.

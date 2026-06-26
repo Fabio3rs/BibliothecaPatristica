@@ -1,8 +1,15 @@
 # Volume Index Taxonomy
 
-Source: the repository note in `../../../../docs/taxonomia_indices.md`.
+Sources:
 
-## 1. Begining of the volume
+- `../../../../docs/taxonomia_indices.md` for `PG` and `PL`
+- `../../../../docs/taxonomia_indices_po.md` for `PO`
+
+Choose the branch that matches `collection`.
+
+## 1. `PG` and `PL`
+
+### 1.1 Beginning of the volume
 
 Use this zone to find the editorial inventory of the whole tome.
 
@@ -18,7 +25,7 @@ Typical signals:
 - references point to columns or pages in the printed book
 - the OCR file suffix is not the editorial page number
 
-## 2. Beginning of a work
+### 1.2 Beginning of a work
 
 Use this zone to find the internal structure of a single work.
 
@@ -36,7 +43,7 @@ Typical signals:
 - each entry is a semantic unit, even if wrapped across OCR lines
 - pagination usually points into the body text of the work
 
-## 3. End of the volume
+### 1.3 End of the volume
 
 Use this zone to find closing indexes and editorial closure.
 
@@ -53,20 +60,130 @@ Typical signals:
 - final editorial closure, sometimes with explicit `FINIS TOMI`
 - may continue the same work list that started earlier in the volume
 
-## 4. Numbering rules
+## 2. `PO`
+
+### 2.1 Volume-level structures
+
+Use these classes to identify the opening editorial structures of a tome.
+
+Typical section classes:
+
+- `volume_title`
+- `volume_table`
+- `fascicle_inventory`
+
+Typical headings or signals:
+
+- `TOMUS ...`
+- `TABLE DES MATIÈRES`
+- repeated `FASC. I`, `FASC. II`, etc.
+- list of works, editors, and page ranges for the current tome
+
+### 2.2 Work-level opening structures
+
+Use these classes to identify the opening editorial structures of a fascicle or work.
+
+Typical section classes:
+
+- `work_front_matter`
+- `work_internal_table`
+
+Typical headings:
+
+- `AVERTISSEMENT`
+- `INTRODUCTION`
+- `PRÉFACE`
+- `PROLOGUE`
+- `TABLE DES MATIÈRES`
+- `TABLE DES MATIÈRES CONTENUES DANS CE LIVRE`
+
+Typical signals:
+
+- editorial discussion of manuscripts, versions, and translation
+- chapter, part, or section table for a single work
+- may appear in French, English, Latin, or another editorial language
+
+### 2.3 Work-level closing indexes
+
+Use these classes to identify the specialized closing indexes attached to one work or fascicle.
+
+Typical section classes:
+
+- `work_index_nominal`
+- `work_index_scripture`
+- `work_index_alphabetical`
+- `work_index_analytic`
+
+Typical headings:
+
+- `TABLE DES NOMS PROPRES`
+- `TABLE DES NOMS PROPRES SYRIAQUES`
+- `INDEX DES NOMS PROPRES`
+- `INDEX DES CITATIONS DES ÉCRITURES`
+- `TABLE ALPHABÉTIQUE`
+- `TABLE ALPHABÉTIQUE DES MATIÈRES`
+- `TABLE ANALYTIQUE DES MATIÈRES`
+
+Typical signals:
+
+- alphabetical or thematic ordering
+- references to pages, lines, notes, or sections
+- entries keyed by names, biblical citations, or topics
+
+### 2.4 Editorial closure and retrospective tables
+
+Use these classes to identify final editorial closure or tables that do not belong to the current tome only.
+
+Typical section classes:
+
+- `editorial_closure`
+- `retrospective_table`
+
+Typical headings:
+
+- `ADDENDA`
+- `CORRIGENDA`
+- `ADDENDA AND CORRIGENDA`
+- `TABLE DES MATIÈRES` that explicitly lists several tomes
+
+Typical signals:
+
+- corrections and addenda
+- cumulative inventory of several tomes
+- repeated mentions of `Tome V`, `Tome VI`, etc. on one page
+- `FASC.` entries that do not belong to the current volume
+
+## 3. Numbering rules
 
 - Keep OCR literals intact.
 - Do not assume monotonic page numbering.
 - Treat `Ibid.` as a reference to the previous entry.
 - Treat `col.` as column reference, not file number.
 - When in doubt, store the raw text and lower the confidence.
+- For `PO`, preserve bracket pagination and parallel page numbering exactly as printed.
 
-## 5. Practical decision rule
+## 4. Practical decision rule
 
 Classify the section by the strongest heading evidence, not by the file suffix.
 
 Priority order:
 
+For `PG` and `PL`:
+
 1. volume-front inventory (`ELENCHUS`, `AUCTORUM ET OPERUM`)
 2. work-front chapter index (`INDEX CAPITUM`, `PROLEGOMENA`)
 3. volume-end analytic index (`ORDO RERUM`, `INDEX ANALYTICUS`, `INDEX RERUM ET VERBORUM`, `INDEX GRÆCITATIS`)
+
+For `PO`:
+
+1. `volume_title`
+2. `volume_table`
+3. `fascicle_inventory`
+4. `work_front_matter`
+5. `work_internal_table`
+6. `work_index_nominal`
+7. `work_index_scripture`
+8. `work_index_alphabetical`
+9. `work_index_analytic`
+10. `editorial_closure`
+11. `retrospective_table`

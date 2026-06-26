@@ -9,6 +9,7 @@ The agent writes one JSON file per volume.
 - Examples:
   - `data/index_payloads/PG001_indices.json`
   - `data/index_payloads/PL099_indices.json`
+  - `data/index_payloads/PO025_indices.json`
 
 ## Payload shape
 
@@ -92,8 +93,25 @@ Each entry is one object with:
 
 ## Required semantics
 
-- `scope_kind` must be one of `volume_front`, `work_front`, or `volume_end`.
-- `index_kind` must reflect the visible heading, for example `ELENCHUS`, `INDEX CAPITUM`, `ORDO RERUM`, `INDEX ANALYTICUS`, `INDEX RERUM ET VERBORUM`, or `INDEX GRÆCITATIS`.
+- `scope_kind` must reflect the structural role of the section in its collection.
+- For `PG` and `PL`, use:
+  - `volume_front`
+  - `work_front`
+  - `volume_end`
+- For `PO`, use the collection-specific classes when needed:
+  - `volume_title`
+  - `volume_table`
+  - `fascicle_inventory`
+  - `work_front_matter`
+  - `work_internal_table`
+  - `work_index_nominal`
+  - `work_index_scripture`
+  - `work_index_alphabetical`
+  - `work_index_analytic`
+  - `editorial_closure`
+  - `retrospective_table`
+- `index_kind` must reflect the visible heading, for example `ELENCHUS`, `INDEX CAPITUM`, `ORDO RERUM`, `INDEX ANALYTICUS`, `INDEX RERUM ET VERBORUM`, `INDEX GRÆCITATIS`, `TABLE DES MATIÈRES`, `TABLE DES NOMS PROPRES`, `TABLE ANALYTIQUE DES MATIÈRES`, or `INDEX DES CITATIONS DES ÉCRITURES`.
 - `target_file` must point to the OCR text file for the referenced page when one can be identified.
 - Keep OCR literals in `entry_raw`, `heading_raw`, and reference fields.
 - Use `raw_json` to preserve any extra evidence that is useful for later review.
+- For `PO`, use `raw_json` to preserve extra structural evidence such as `FASC.` labels, cross-tome mentions, bracket pagination, and parallel page numbering.
