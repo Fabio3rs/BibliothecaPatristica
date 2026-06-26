@@ -34,8 +34,8 @@ DEFAULT_RESUMOS_DB = PROJECT_ROOT / "data" / "patristica_resumos.db"
 DEFAULT_KEYWORDS_DB = PROJECT_ROOT / "data" / "patristica_keywords.db"
 DEFAULT_MODEL = "qwen3:30b"
 DEFAULT_OLLAMA_URL = "http://localhost:11434"
-DEFAULT_TIMEOUT_OLLAMA = 120  # Ollama local é rápido
-DEFAULT_TIMEOUT_OPENAI = 300  # OpenAI com reasoning pode demorar
+DEFAULT_TIMEOUT_OLLAMA = 1000
+DEFAULT_TIMEOUT_OPENAI = 1000
 
 DEFAULT_NUM_CTX = 16384
 TOKEN_RESERVE_OUTPUT = 1024  # keywords precisam de menos output
@@ -139,17 +139,18 @@ DEFAULT_TEMPERATURE = 0.01
 
 
 DEFAULT_SYSTEM_CURTO = """
-Você vai receber uma lista de keywords patrísticas/bíblicas semanticamente parecidas, deverá traduzi-las para o português segundo as regras.
+Você vai receber uma lista de keywords patrísticas/bíblicas semanticamente parecidas, sua resposta deverá ser de acordo com as regras.
 
 REGRAS:
 Fundir palavras que significam a mesma coisa em um único significado canônico para indexação de acadêmicos em português do Brasil se não tiver tradução podem ser mantidas no original (latim, grego, etc.).
 Apenas o que deve ser alterado deve estar presente na saída, o que estiver correto não deve ser incluído.
 Caso sejam citações bíblicas, use o nome do livro por extenso, mantendo os capítulos e versículos no formato católico tradicional. (ex: use 'João 1,1' e não 'João 1, 1')"
 Não alterar número de capítulos ou versículos.
-Proibido usar descrições como 'Termo não identificado', 'Lixo' ou 'Erro'. Se uma palavra estiver incorreta e não houver como normalizar/traduzir, marque com "(REVISÃO NECESSÁRIA)" junto ao nome em "change_to".
+Proibido usar descrições como 'Termo não identificado', 'Lixo' ou 'Erro'. Se não entender o sentido, não faça alterações.
 
 A ordem de saída deve ser no sentido:
-Original como está na mensagem do usuário|change_to|Nome adequado as regras
+original: Como está na mensagem do usuário
+change_to: Nome adequado as regras
 
 Só retorne o que deve ser alterado.
 
@@ -157,8 +158,8 @@ Formato de saída de exemplo JSON UTF-8:
 {
   "results": [
     {
-      "original": "kw. I",
-      "change_to": "keyword I"
+      "change_to": "keyword I",
+      "original": "kw. I"
     }
   ]
 }

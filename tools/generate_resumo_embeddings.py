@@ -28,7 +28,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 
 
-from embedding_playground import DEFAULT_MODEL, DEFAULT_OLLAMA_URL, embed_documents
+from scripts.playgrounds.embedding_playground import DEFAULT_MODEL, DEFAULT_OLLAMA_URL, embed_documents
 
 from resumo_embedding_utils import (
     connect_db,

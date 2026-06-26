@@ -263,7 +263,7 @@ def main() -> None:
         args.all_volumes = True
 
     if args.all_volumes:
-        blob = args.blob or "PG*,PL*"
+        blob = args.blob or "PG*,PL*,PO*"
         volume_ids = select_volume_ids(args.root, blob, args.limit)
         if not volume_ids:
             raise SystemExit(f"No volumes selected for blob {blob!r}.")

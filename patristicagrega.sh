@@ -17,8 +17,9 @@ LOG_DIR=${LOG_DIR:-teste}
 mkdir -p "${LOG_DIR}"
 
 # Coleta arquivos (tratando ausência de matches)
+#0[3-9]
 shopt -s nullglob
-VOLUMES=(/homessddata/patristica/PG0[3-9]*.pdf)
+VOLUMES=(/homessddata/patristica/PG*.pdf)
 shopt -u nullglob
 
 if [ ${#VOLUMES[@]} -eq 0 ]; then

@@ -69,6 +69,7 @@ def generate_missing_embeddings(
     batch_size: int,
 ) -> int:
     missing = [r for r in rows if not r["embedding"]]
+    print(f"Total de keywords sem embedding: {len(missing)}")
     total = 0
     for i in range(0, len(missing), batch_size):
         batch = missing[i : i + batch_size]
@@ -178,6 +179,7 @@ def main() -> None:
     ensure_schema(con)
 
     rows = fetch_keywords(con)
+    print(f"Total de keywords: {len(rows)}")
     generated = generate_missing_embeddings(
         con, rows, model=args.model, ollama_url=args.ollama_url, batch_size=args.batch_size
     )

@@ -235,6 +235,7 @@ def fetch_pending(
             WHERE e.documento = r.documento
               AND e.pagina_num = r.pagina_num
               AND e.model = ?
+			  AND r.criado_em < e.updated_at
         )
     """
     params: List[object] = [model]

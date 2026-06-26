@@ -21,7 +21,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from embedding_playground import (
+from scripts.playgrounds.embedding_playground import (
     DEFAULT_MODEL,
     DEFAULT_OLLAMA_URL,
     build_instruct_query,
