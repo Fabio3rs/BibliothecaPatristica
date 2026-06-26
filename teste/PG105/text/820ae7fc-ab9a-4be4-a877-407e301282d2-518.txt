@@ -1,99 +1,58 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,485,50">
-1027    S. JOSEPHI HYMNOGRAPHI
-  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="126,32,185,48">1027</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="403,32,630,48">S. JOSEPHI HYMNOGRAPHI</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="908,32,946,48">1028</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="535,55,550,68">A</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="125,55,530,118">nium nostrum Domina ; gaude, sola immaculata et pulchra inter mulieres (36) : gaude, vas quod unguentum inexhaustum in te evacnatum suscepisti</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="555,55,945,98">ρία πάντων ἡμν· χαῖρε, ἡ μόνη ἄμωμος εν γυ-ναιξὶ καὶ καλή· χαῖρε, σκεῦος μύρον τὸ ἀκένωτον ἐπὶ σὲ χενωθὲν εσεδέξαμενον.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="125,123,530,173">Perpetua Virgo, columba quæ Misericordem peperisti (37), gaude ; gaude, confessorum omnium gloriatio; gaude, athletarum corona, omniumque justorum divina exsultatio, nostrumque fidelium salus.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="555,118,945,183">Ἡ περιστερὰ ἡ τν Ἐλεήμονα ἀποκυήσασα, χαῖρε, ειπάρθενε· σίων πάντων, χαῖρε, τὸ καύχημα τῶν ἀθλητῶν στεφάνωμα, χαῖρε, ἁπάντων τε τῶν δικαίων θεῖον ἐγκαλλώπισμα, καὶ ἡμν τῶν πιστῶν τὸ διάσωσμα.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="125,183,530,268">Hæreditatis tuæ, quæ nos sumus, peccatis omnibus ignosce, Christe Deus, non respiciens nunc ad illa, cum habeas deprecantem te eam, quæ sine semine genuit te super terram, quippe qui propter magnam misericordiam tuam voluisti formam alienam suscipere.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="555,188,945,258">Φεῖσαι, ὁ Θεός, τῆς κληρονομίας σου τὰς ἁμαρτίας ἡμν πάσας, παραβλέπων νῦν εἰς τοῦτο, ἔχων ἐκδυσωποῦσάν σε τὴν ἐπὶ γῆς ἀσπόρως σε κυοφορήσασαν διὰ μέγα ἔλεος θελήσαντα μορφωθῆναι, Χριστέ, τὸ ἀλλότριον.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="535,268,550,281">B</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="295,273,335,286">VII</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="735,273,760,286">Z.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="125,291,530,331">In sanctissimam Deiparam canon VII (38), cujus acrostichis hæc est : Deipara, senis te modis ego cano. » Joseph.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="555,291,945,331">Εἰς τὴν ὑπεραγίαν Θεοτόκον, Κανὼν ζ', οὗ ἡ ἀκροστιχὶς ἐστι· « Ἕκτον προσδέξω τῇ Θεοτόκῳ μέλος. » Ἰωσήφ.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="295,336,355,348">Ode 1.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="715,336,785,348">ᾨδὴ α'.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="125,348,530,398">Decepta pravo hostis consilio, prima mater mortem adduxit in mundum : tu vero, o purissima, vitam enixa nos corruptione peremptos vivificasti.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="555,348,945,393">Ἐκ πονηρᾶς συμβουλίας τοῦ δυσμενοῦς  προμήτωρ θάνατον ἐπεισήξεν· ἀλλ' αὕτη τὴν ζωὴν κυήσασα, ἁγνή, νεκρωθέντας τῇ φθορᾷ μᾶς ἐζώωσας.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="125,403,530,458">35 Et cogitationibus prolabens, et maculis carnalibus sordescens, ad te vere (39) puram, immaculatam et castam confugio : esto adjutrix servo tuo.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="555,403,945,458">Καὶ λογισμοῖς λισθαίνων κα μωλυσμος σαρκικοῖς σπιλούμενος, ἐπὶ σὲ τὴν καθαρὰν ἀληθῶς καὶ ἄσπιλον, ἁγνὴν καταφεύγω, βοηθὸς γενοῦ τ δούλῳ σου.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="535,473,550,486">C</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="125,463,530,513">Infestas cordis mei passiones, o Deipara, tuis medicaminibus cura ; gravissimam cogitationum inconstantium tempestatem seda intercessione tua apud Deum, o Domina.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="555,463,945,503">Τὰ τῆς καρδίας μου πάθη τὰ χαλεπά, Θεοτόκε, ἴασαι, τῶν ἀστάτων λογισμῶν τὸ δεινὸν κλυδώνιον τῇ σῇ μεσιτείᾳ πρὸς Θεὸν ἐκσπάσον, Δέσποινα.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="295,518,355,530">Ode 3.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="715,518,785,530">ᾨδὴ γ'.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="125,535,530,585">Per illam quæ peperit te, miserere mihi, et salva me, o Verbum, tu qui solus natura compatiens propter viscera misericordiæ tuæ effudisti pro me totum sanguinem tuum.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="555,535,945,575">Ὁ μόνος φύσει συμπαθής, ὁ τ αἷμά σου, Λόγε, διὰ σπλάγχνα ἐλέους δι' ἐμὲ ἐπ σταυροῦ κενώσας, διὰ τῆς σε κυησάσης οἰκτείρον καὶ σῶσόν με.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="125,590,530,605">Addictum Deo templum per divinam generatio-</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="555,590,945,605">Ναὸς γενόμενος Θεοῦ τ θεογεννήσει, κουσίως ες</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="535,673,550,686">D</bloco>
+  
+  <bloco tipo="aparato_critico" script="latino" bbox="125,620,530,913">(36) Non potuit S. Josephus immaculatum B. Virginis conceptum verbis clarioribus deprædicare. Quid enim est dicere B. Virginem solam inter mulieres fuisse immaculatam, nisi cum omnes mulieres post Adæ lapsum fuerint cum originali macula conceptæ, eam solam inter illas ab hac macula in suo conceptu liberam exstitisse, atque adeo solam inter omnes immaculatam fuisse?
+(37) Ob puritatem originalem maxime appellatur Virgo nomine columbæ, quæ sine felle est, et typus puritatis : Una est columba mea. Cantic. cap. II. Nam sexaginta sunt reginæ, et multo plures concubinæ ; adolescentularum autem non est numerus, sed primaria Sponsa et omnibus longo intervallo anteposita, una est Maria, hoc est sola, quam singularitatem maxime habet in puritate justitiæ originalis. Est quippe amor munditiæ et puritatis velut nativus columbæ, ut propterea aquam, unde bibere et se lavare possit, mundam et puram esse admoneat Varro libr. III, c. 7 : Sunt enim, inquit, permundæ hæ volucres. Itaque apte consentit cum summo Virginis nitore nomen columbæ. Et nomen quidem Hebræum columbæ, a radice impurum quid et graveolens ferente deductum est, quia indidem derivatur unde cœnum et lutum, ut Sanctius in cap. II Cantic., n. 58, ratio-</bloco>
+  
+  <bloco tipo="aparato_critico" script="latino" bbox="555,620,945,913">cinatur; ipsum tamen columbæ nomen nihil nisi purum et illime præ se fert, quod in rem nostram apposite cadit. Nam B. Virgo, quamvis de cœnosa et fœtida radice parentum generis nostri procreata, nihil tamen continet nisi sanctum et purum, ita ut etiam ipsum ejus primum initium fuerit iniemeratissimum et omni prorsus labe carens, quod Galatinus libr. VII, De arcanis, cap. 5, expressum putat eo Spiritus sancti oraculo Cantic. II : Columba mea in foraminibus petræ. Nam petram ad principium generationis pertinere putat ex Isaiæ LV, ubi Hebræi jubentur attendere ad petram unde excisi erant, id est, ad suæ generationis principium. In ipsis ergo petræ foraminibus, inque ipso primo ortus ad vitam principio puritas Virginis commendatur. Vide Nieremberg. in Exceptionib. c. 13.
+(38) Exstat hic canon Græce tantum in Paracletica Græcorum, Feria IV, sexti tomi seu secundi.
+(39) Ne aliquis putaret B. Virginem false, inaniter et ficte dici puram et immaculatam, addidit Josephus, vere, significans ipsam in veritate puram fuisse atque immaculatam. Revera autem non fuisset pura, nec dici posset vere immaculata, si in primo instanti sui esse impuritate ac macula originalis criminis sordidata apparuisset.</bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="20,60,485,620">
-nium nostrum Domina ; gaude, sola immaculata et pulchra inter mulieres (36) : gaude, vas quod unguentum inexhaustum in te evacuatum suscepisti.
-
-Perpetua Virgo, columba quæ Misericordem peperisti (37), gaude ; gaude, confessorum omnium gloria, gaude, [ilegivel] corona, omniumque justorum divina exsultatio, nostrumque fidelium salus.
-
-Haereditatis tuae, quæ nos sumus, peccatis omnibus ignosce, Christe Deus, non respicias nunc ad illa, cum habeas deprecantem te eam, quæ sine semine genuit te super terram, quippe qui propter magnam misericordiam tuam voluisti formam alienam suscipere.
-
-VII
-
-In sanctissimam Deiparam canon VII (38), cujus acrostichis hæc est: e Deipara, [ilegivel] le modis ego cano. J Joseph.
-
-Ode 1.
-
-Decepta pravo hostis consilio, prima mater mortem adduxit in mundum : tu vero, o purissima, vitam enixa nos corruptione peremptos vivificasti.
-
-35 Et cogitationibus prolabens, et maculis carnalibus sordescens, ad te vere (39) puram, immaculatat et castum confugio : esto adjutrix servio tuo.
-
-Infestas cordis mei passiones, o Deipara, tuis medicaminibus cura; gravissimam cogitationum inconstantiam tempestatem seda intercessione tua apud Deum, o Domina.
-
-Ode 3.
-
-Per illam quæ peperit te, miserere mihi, et salva me, o Verbum, tu qui solus natura compatiens propter viscera misericordiæ tuæ effudisti pro me totum sanguinem tuum.
-
-Addictum Deo templum per divinam generatio-
-  </bloco>
-
-  <bloco tipo="apparato_critico" script="latino" bbox="20,620,485,930">
-(36) Non potuit S. Josephus immaculatam B. Virginis conceptum verbis clarioribus depraedicare. Quid enim est dicere B. Virginem solam inter mulieres fuisse immaculata, nisi cum omnes mulieres post Adam lapsum fuerint cum originali macula conceptæ, eam solam inter has hac macula in suo conceptu liberam extitisse, atque adeo solam inter omnes immaculatam fuisse?
-
-(37) Ob puritatis originem maxime appellatur Virgo nominée columbe, quæ sine selle est, et typus puritatis : Una est columba mea. Cantic. cap. ii. Nam sexaginta sunt regiæ, et nullo plures concubinæ ; adolescentularum autem non est numerus, sed primaria Sponsa et omnibus longo intervallo anteposita, una est Maria, hoc est sola, quam singularitatem maxime habet in puritate justitiæ originalis. Est quoque amor nunditiæ et puritatis velut nativus columbe, ut propterea aquam, unde bibere et se lavare possit, mundum et purum esse admoneat Varro libr. iii. c. 7 : Sunt enim, inquit, permunda [ilegivel] volucres. Itaque apud consentit cum summo Virginis munere nomen columbae. Et nomen quidem Hebraicum columbae, a radice impuram quid et graveolens ferente deductum est, quia indulgent derivatur unde cœnum et lutum, ut Sancius in cap. 11 Cantic., n. 58, ratio-
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,210,510,260">
-A
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,320,510,360">
-B
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,460,510,500">
-C
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,590,510,630">
-D
-  </bloco>
-
-  <bloco tipo="cabecalho" script="latino" bbox="515,10,980,50">
-S. JOSEPHI HYMNOGRAPHI    1028
-  </bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="515,60,980,620">
-Α πᾶ παντων τιμων χαῖρε, ἡ μόνη ἁμωμος ἐν γυναιξ, καὶ καλή, χαῖρε, αειθε[ilegivel] μῦρον τὸ ἀκίων ἐπί σὲ κενοθὲν εἰσδέξαμενον.
-
-Ἡ περιπεσὰν τὴν Ἐλεημονὰν ἀποκρίνουσα, χαῖρε, "Ἀπισταρθεεν" ὄλων πάντων, χαῖρε, τὸ καινὴμα τῶν ἀθλῶν τὸν ἀθλοῦντες στεφανῶμα, χαῖρε, ἀπάντων τῶν δικαίων θεῖον ἔγχαλμα, καὶ ἡμῶν τῶν πιστῶν τὸ διὰσωμα.
-
-Φεισα, ὁ Θεός, τῆς κληρονομίας σου τὰς ἁμαρτίας ἡμῶν πάσας, παραβλέπων νῦν εἰς τοῦτο, ἵν' ἔχωσι τὸκδικαιούνται σε τὴν ἐπὶ γῆς ἀσπροῖς σε κουργορίανα διὰ μέγα ἔλεος δεηθῶσιν μεροριθμήαν, Χρι-στὲ, τὸ ἀλλάκερον.
-
-B
-
-Z.
-
-Εις την ὑπεραγαθὴν θεοτόκον, Κυρίων ς', σοὶ ἡ ακροστιχὶς ἐστίν· 'Ἐκταρ σορεῶν τῇ θεοτόκῳ μέλος.' Ἰωσήφ.
-
-Ώδη α'.
-
-'Ἐκ πονηρᾶς συμβουλῆς τοῦ δυνάσταντος ἡ τρομί-φυρ θάνατον ἐπεῖσεν· ἀλλ' αὕτη τὴν ζωὴν κατέσχεν, ἀνὴρ, νεκρωθέντας τῇ φοβρᾷ ἡμᾶς ἐζώσεν.
-
-Καὶ λογισμοὶ ὀλισθαίνοντ᾽ καὶ μωλωπισμοὶ σαρκικῷς σπλάγχνοις, ἔτι σὲ τὴν καθαρὰν ἀλήθειαν καὶ ἀστηλόν, ἄγνην καταφεύγω, βοηθὸς γενέσθαι τῷ δούλῳ σου.
-
-Τα τῆς καρδίας μου πάθῃ τά χαλεπά, Θεοτόκ', ταῦτα, τῶν ἀστατῶν λογισμῶν τὰ δεινὰν κλωθῶν τῇ σὺ μεσιτείας πρὸς Θεὸν ἔκτασιν, Δέσποινα.
-
-Ἡωδ' γ'.
-
-Ὁ μόνος φύσει συμπάθης, ὁ σο ἀμψα σου. Λέγε, διὰ ἀπλάγχνας ἔλεος σὺ ἐμὰ ἐπὶ σταυροῦ τεχνος, διὰ τῆς σε κυρήσας ὀκτώρων καὶ σωσῶν με.
-
-Ναδς γενόμενος Θεοὶ τὴν θεογνησίαν, ἐκυσίας εἰς
-  </bloco>
-
-  <bloco tipo="apparato_critico" script="grego" bbox="515,620,980,930">
-(36) [Ἡ] περιγραφὴ τῆς Ἀγίας Μαρίας μεταφρασθεῖσα: ἡμνους τὰ κατὰ τὰ ἔθιμα. Ἀπὸ τοῦ Ἰωσὴφ· [ilegivel] · Β. Παρὰ τοῖς πατροῖς ὅτι τὸ ὄνομα [ilegivel]...
-(37) [ilegivel] τῆς παρθενίας, ὡς τύπος τῆς περιστεράς [ilegivel]...
-(38) Εἰς τὸν κανόνα ταῖς ἑβδόμαις· ἡ ἀκροστιχίς ἔστιν 'Εἰς τὴν Θεοτόκον'...
-  </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="20,940,980,990">
-Digitized by Google
-  </bloco>
-
-  <notas>
-Transcrição feita conforme imagem; letras marginais A, B, C, D colocadas como blocos nota_marginal separados (bbox centradas no gutter). Foram marcadas com [ilegivel] palavras ou partes claramente danificadas/ilegíveis sem inventar texto. Scripts identificados: coluna esquerda latino, coluna direita grego.
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="595,963,800,983">Digitized by Google</bloco>
 </pagina>

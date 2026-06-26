@@ -1,54 +1,140 @@
-<pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,18,980,74">809    DE ADORATIONE IN SPIRITU ET VERITATE. LIB. XII.    810</bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="471,88,500,112">A</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="471,372,500,396">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="471,560,500,584">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="471,754,500,778">D</bloco>
-
-  <bloco tipo="texto_principal" script="greco" bbox="25,82,468,872">[ilegivel] ἔφη, Παῦλος· Ἦν οὖν ἄρα ἀνάγκη καθιεροῦσθαι
-Θεῷ τὸ ὑπὸ τοῦ προσκομισθέντος (1), καὶ τὸν [ilegivel] νόμον, παραβεβληθῆναι δὲ τῷ λοιπῷ
-σώματι τῆς θυσίας τοῖς πτωχοῖς. Εἰ δὲ δὴ τις ὅλον τὸ δῶρον [ilegivel]
-[ilegivel]
-ΠΑΛΛ. [ilegivel]
-ΚΥΡ. [ilegivel]
-ΠΑΛΛ. [ilegivel]
-ΚΥΡ. [ilegivel]</bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="502,82,962,872">Paulus ait. Erat igitur necesse ut Deo consecrare-
-tur, quod quispiam obtulisset, ut lex jusque obla-
-tionis postulabat, 429 reliquo sacrificii corpore
-ministri sustentarentur. Si vero aliquis totam pro-
-sus oblationem subtraxisset, et in suos convertisset
-usus, nihilique adolevisset, lege reus erat, perinde
-si sancta commedisset; id quod Heli sacerdotis filii
-fecerunt antequam sacrificia adolerentur, rapientes,
-eaque profanantes, et iis, qui sacrificandi causa
-venerant, summa cum impietate, dicentes : Da
-carnem assandum sacerdoti **. Sed illa quidem
-crimina, ut quae voluntate suscepta essent, et aper-
-tam haberent injuriam, pro merito punita sunt.
-Ceterum : Si acciderit, inquit, quempiam vel
-oblivione corruptum, vel quid legibus constitutum
-esset, parum accurate tenentem, tale quidpiam ad-
-mittere, multam subeat; et, nulla mora interposita,
-tantundem persolvat, et ei quintam partem adji-
-ciat, id est, quintam aestimationis partem ; et
-ita enim crimina diluit, et ignorantia noxam propu-
-lsabit **. Si igitur, quod imprudenter admissum est,
-crimine non vacat; quid putamus, si per superbiam
-atque audaciam admittatur? Caveant igitur ii, ad
-quorum curam pertinent sacra, ne quidquam ex
-hostia, antequam adoleatur, suum faciant : aliqui
-enim operibus abscedere, et quam longissime dis-
-junctos esse sanctorum hominum dignitas postulat,
-expedite cum illis minime congredi, qui ejusmodi
-morbis affecti sunt. Scriptum est enim : « Qui lan-</bloco>
-
-  <bloco tipo="nota" script="misto" bbox="30,878,930,968">(1) Agellius interpres legi posse putat, τι δὴ τοῦ προσκομισθέντος, ut sit, Erat igitur necesse ut Deo consecraretur aliquid de eo quod quispiam obtulisset.
-** I Reg. ii, 15. *** Levit. xxii, 14-16. **** Levit. xxi, 1-8.</bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="860,958,915,990">26</bloco>
-
-  <notas>Coluna esquerda transcrita antes da direita; letras A, B, C e D tratadas como nota_marginal separada no gutter.</notas>
+<pagina estado="com_texto">
+  <bloco tipo="cabecalho" script="latino" bbox="0,20,1000,60">
+    809 DE ADORATIONE IN SPIRITU ET VERITATE. LIB. XII. 810
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="20,60,460,880">
+    στέσιος ἔφη Παῦλος. ν οὖν ἄρα ἀνάγκη καθιεροῦσθαι
+    Θεῷ τὸ ὑπὸ τοῦ προσκομισθέντος (1), κατὰ τὸν
+    ἑκάστῳ πρέποντα νόμον, παραπεμφθεῖσαι δὲ τῷ λοιπῷ
+    σώματι τῆς θυσίας τοὺς ὑπουργούς. Εἰ δὲ δὴ τις ὅλον
+    ὥσπερ βύβλου τὸ δῶρον ἀπονοσφίσαιτο, καὶ ταῖς ἰδίαις
+    ἀπονεύμῃκε χρείαις, τεθυμιακὼς οὐδὲν· ὡς ἅγια
+    κατεδηδοκώς, ἐγράφeto νόμῳ. Τοῦτό τοι δεδράκασι
+    οἱ Ἠλὶ τοῦ ερέως υἱοί, πρὸ θυσιῶν ἁρπάζοντες καὶ
+    βεβηλοῦντες τὰ ἱερά, καὶ τοῖς εἰς τ θυεῖν ἥκουσιν, ἀν-
+    οσιώτατα λέγοντες· « Δὸς κρέας ὀπτῆσαι τῷ ἱερεῖ. »
+    Ἀλλ' ἐκεῖνα μὲν ὡς ἐκούσια καὶ γυμνὴν ἔχοντα τὴν
+    ὕβριν, ἀναλόγως ἐκολάζετο. « Εἰ δὲ δὴ γένοιτο, φησίν,
+    ἢ λήθῃ συνηρπασμένον, ἢ τὸ τοῖς νόμοις δοκοῦν οὐκ
+    ἀκριβῶς ἐγνωκότα, δράσαι τι τοιοῦτον· ζημίαν ὑπο-
+    μενέτω· καὶ ἀποτιννύτω μὲν τὸ ἴσον ἀμελητί· προσ-
+    ἐπαγέτω δὲ τούτῳ καὶ τὸ ἐπίπεμπτον, » τοῦτ' ἔστι,
+    τὴν τοῦ τιμήματος πέμπτην μοῖραν· « καὶ ἀπολύσε-
+    ται γὰρ οὕτω τὰ ἐγκλήματα, καὶ τὰ ἐκ τῆς ἀγνοίας
+    διακρούσεται βλάβη. » Ὅτε τοίνυν τὸ ἀγνοηθέν, γρα-
+    φῆς οκ ἐλεύθερον, τί ἂν οἰετό τις τὸ ἐξ ἀπονοίας
+    καὶ θράσους; Παραιτητέον δὴ οὖν οἷς ἐν φροντίδι τὰ
+    ἱερά, μηδὲν πρὸ θυσίας οἰκειοῦσθαι ζητεῖν·  ἴστων,
+    ὅτι δεινὰ πεπλημμεληκότες, ὀφλήσουσι δίκην, καὶ
+    ὑπὸ θείαν ἔσονται κίνησιν. Ἢ οὐκ εἶναι φῆς ἀληθὲς
+    τὸ χρῆμα, ὦ πν;
+    sciant se gravissimi criminis poenas daturos, et divinæ ultioni subjiciendos. An id minime verum
+    esse putas, Palladi?
+    ΠΑΛ. Παντάπασι μὲν οὖν.
+    ΚΥΡ. Ἁγίους δὲ ὅτι καὶ ἐκνενημμένους εἶναι χρή
+    τοὺς ερατεύοντας, ἀποστείσαθαι δὲ καὶ μάλα νεανι-
+    κῶς τὸ οἰονείπως νεκρὸν καὶ ἀπεψυγμένον φρόνημα,
+    καὶ τὸ μὴ ἔμπουν εἰς ἀρετήν, διεδάφει λέγων· « Εἰ-
+    πὸν τος ἱερεῦσι τοῖς υἱος Ἀαρών, καὶ ἐρεῖς πρὸς
+    αὐτούς· Ἐν ταῖς ψυχαῖς οὐ μιανθήσονται ἐν τῷ
+    θνει αὐτῶν, ἀλλ' ἢ ἐν τῷ οκείῳ τῷ ἐγγίστα αὐτῶν,
+    ἐπὶ πατρὶ καὶ μητρί, καὶ υἱος καὶ θυγατράσιν, ἐπ'
+    ἀδελφῷ, καὶ ἐπ' ἀδελφῇ παρθένῳ τῇ ἐγγίζουσῃ
+    αὐτῷ, τῇ μ ἐκδεδομέν ἀνδρί, ἐπὶ τούτοις μιανθή-
+    σεται. Οὐ μιανθήσεται ἐξάπινα ἐν τῷ λα αὐτο
+    εἰς βεβήλωσιν αὐτοῦ. Καὶ φαλάκρωμα οὐ ξυρήσε-
+    σθε τὴν κεφαλὴν ἐπὶ νεκρῷ, καὶ τὴν ψιν τοῦ πώ-
+    γωνος οὐ ξυρήσονται, καὶ ἐπὶ τὰς σάρκας αὐτῶν
+    οὐ κατατεμοῦσιν ἐντομίδας. Ἅγιοι ἔσονται τῷ Θεῷ
+    αὐτῶν, καὶ οὐ βεβηλώσουσι τὸ ὄνομα τοῦ Θεοῦ αὐ-
+    τῶν· τὰς γὰρ θυσίας Κυρίου δῶρα τοῦ Θεοῦ αὐτῶν
+    αὐτοὶ προσφέρουσι, καὶ ἔσονται ἅγιοι. » Μίασμα
+    μὲν γὰρ ἀνδρὶ γένοιτ' ἂν παντελῶς οὐδέν, ὁ ἑτέρου
+    θάνατος, εἰ τόν γε τῆς ἀληθείας πολυπραγμονοίη
+    τις λόγον. Νεκρότης γε μὴν ἡ σωματική, τύπος ἂν
+    εἴη τς ἔσω καὶ ἐν ψυχαῖς, ὑφ' ἧς ἀνάγκη κατα-
+    μιαίνεσθαι τὸν ἀγχοῦ γεγονότα, ἢ κατὰ θέλησιν, ἢ
+    κατὰ ταυτουργίαν· νεκρῶν γὰρ ἔργων ἀποφοιτᾶν
+    καὶ ὡς ἀπωτάτω φέρεσθαι, πρέπει ἂν ἀγίοις, καὶ
+    τοῖς τὰ τοιάδε κατηρρώστηκόσι μὴ εἰς ταὐτὸν ἰέναι,
+    καλόν. Γέγραπται γάρ, ὅτι « Ὁ ἁπτόμενος πίσσης,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="470,60,980,880">
+    Paulus ait. Erat igitur necesse ut Deo consecrare-
+    tur, quod quispiam obtulisset, ut lex cujusque obla-
+    tionis postulabat, 429 reliquo sacrificii corpore
+    ministri sustentarentur. Si vero aliquis totam pror-
+    sus oblationem subtraxisset, et in suos convertisset
+    usus, nihilque adolevisset, lege reus erat, perinde ac
+    si sancta comedisset; id quod Heli sacerdotis filii
+    fecerunt antequam sacrificia adolerentur, rapientes,
+    eaque profanantes, et iis, qui sacrificandi causa
+    venerant, summa cum impietate, dicentes: « Da
+    carnem assandam sacerdoti **. » Sed illa quidem
+    crimina, ut quæ voluntate suscepta essent, et aper-
+    tam haberent injuriam, pro merito punita sunt.
+    Cæterum: « Si acciderit, inquit, quempiam vel
+    oblivione corruptum, vel quid legibus constitutum
+    esse, parum accurate tenentem, tale quidpiam ad-
+    mittere, multam subeat; et, nulla mora interposita,
+    tantumdem persolvat, et ei quintam partem adji-
+    ciat, » id est, quintam æstimationis partem; « ita
+    enim crimina diluet, et ignorantiae noxam propulsa-
+    bit ***. » Si igitur, quod imprudenter admissum est,
+    crimine non vacat; quid putamus, si per superbiam
+    alque audaciam admittatur? Caveant igitur ii, ad
+    quorum curam pertinent sacra, ne quidquam ex
+    hostia, antequam adoleatur, suum faciant; alioqui
+    PALL. Ego vero maxime.
+    CYR. Cæterum, qui sacerdotio præditi sunt, eos
+    sanctos ac mundos esse oportere, ac mortuum quo-
+    dammodo exstinctumque animi sensum, et virtu-
+    tibus minime spirantem, fortiter depellendum esse,
+    planum fecit his verbis: « Loquere ad sacerdotes
+    filios Aaron, et dices ad eos: In animabus non pol-
+    luentur in gente ipsorum, nisi in propinquo, qui
+    proximus est eis, super patre et super matre, et
+    filiis et filiabus, super fratre et super sorore vir-
+    gine, quæ proxime illum attingit, neque collocata
+    est viro: in his polluetur. Non polluetur statim in
+    populo suo in profanationem suam. Ad calvitium
+    non radetis caput super mortuo; et aspectum barbæ
+    non radent, et super carnes suas non secabunt se-
+    ctiones. Sancti erunt Deo suo, et non profanabunt
+    nomen Dei sui: hostias enim Domino, oblationes
+    Deo suo ipsi offerunt, et erunt sancti ****. » Maculam
+    quidem homini nullam prorsus mors alterius ho-
+    minis affert, si veram rationem exquiras; 430
+    sed mors tamen corporis figura est illius mortis in-
+    timæ, cum animæ intereunt; qua inquinari eum
+    necesse est, qui vel voluntatis conjunctione, vel
+    factorum similitudine propinquus fuerit: a mortuis
+    enim operibus abscedere, et quam longissime dis-
+    junctos esse sanctorum hominum dignitas postulat,
+    expeditque cum illis minime congredi, qui ejusmodi
+    morbis affecti sunt. Scriptum est enim: « Qui tan-
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,60,470,80">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,300,470,320">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,520,470,540">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,720,470,740">
+    D
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="20,890,980,940">
+    ** I Reg. u, 15. *** Levit. xxii, 14-16. **** Levit. xxi, 1-8.
+    (1) Agellius interpres legi posse putat, τὶ ἀπὸ τοῦ προσκομισθέντος, ut sit, Erat igitur necesse ut Deo
+    consecraretur aliquid de eo quod quispiam obtulisset.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="20,940,980,980">
+    PATROL. GR. LXVIII.
+    26
+    Digitized by Google
+  </bloco>
+  <notas>Transcription of mixed Greek and Latin text. Marginal letters A, B, C, D identified in gutter.</notas>
 </pagina>

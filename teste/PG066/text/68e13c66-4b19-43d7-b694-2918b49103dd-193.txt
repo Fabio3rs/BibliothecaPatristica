@@ -1,14 +1,144 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="70,35,930,78">373    COMMENTARIUS IN MICHAE CAP. V.    374</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="420,95,445,125">A</bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="45,90,495,932">[ilegivel] [ilegivel] [ilegivel]· το γὰρ, «[ilegivel] εἰς τὸν αἰῶνα τοῦ αἰῶνος τὸ σπέρμα αὐτοῦ, καὶ τὸν θρόνον αὐτοῦ ὡς τὰς ἡμέρας τοῦ οὐρανοῦ, καὶ τὸ σπέρμα αὐτοῦ εἰς τὸν αἰῶνα, καὶ τὸν θρόνον αὐτοῦ ὡς ὁ ἥλιος ἐναντίον μου, καὶ ὡς ἡ σελήνη κατηρτισμένη εἰς τὸν αἰῶνα»· πρόδηλον ὡς ἐπ' οὐδενὸς μὲν τῶν διαδόχων ἕξει χώραν λεγόμενα· (p. 293) σαφῶς δὲ τοῦ Δεσπότου Χριστοῦ δείκνυσι τὴν βασιλείαν ἀΐδιον καὶ ἀσάλευτον, κατὰ πολλὴν μὲν τῆς δυνάμεως, πολλὴν δὲ τῆς λαμπρότητος εἰς τὸ ἔπειτα διαμενεῖ. [ilegivel] [ilegivel]
-
-Σικ. γʹ, δʹ. — διὰ τοῦτο δώσει αὐτοὺς ἕως καὶ-[ilegivel]. Ὠδίνειν καὶ τίκτειν πολλάκις ἡ θεία λέγει Γραφὴ [ilegivel] τὸ ἐν μέσῳ τῶν δεινῶν παρεχόμενον θείαν ἀνακούφισιν βοήθειαν· οὕτω λέγει δὲ [ilegivel] [ilegivel] [ilegivel]· [ilegivel]</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,360,515,388">B</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="505,90,948,932">Ponam in saeculum saeculi semen ejus; et thronum ejus sicut dies coeli; et semen ejus manebit in aeternum; et thronus ejus sicut sol in conspectu meo, et sicut luna perfecta in aeternum”, notissimum est de nemine successorum Davidis dici potuisse: perspicue autem Christi Domini regnum perpetuum ostendere, et immobile multa cum virtute multoque splendore in posterum tempus perseveraturum. Atque ita praesens testimonium, conveniens quidem secundum veritatem atque evidentiam actarum rerum comprehendimus in Christo Domino, juxta evangelicum textum **; sed tamen dici etiam de posteris Davidis, qui per tempora secundum Dei promissionem reges Israelis extiterunt: unde nunc etiam propheta de Zorobabele merito intellexit. Nam cum de rebus post reditum Babylonie loquatur, et de Gogi incursione, constanter meminit et illius de Davidis stirpe hominis, cui tunc principatus traditus erat; ut ostendat, quaecunque hic ad salutem gentis fecerit, ea ex Dei ad Davidem promissione vim accepisse. Unde et dixit: «Egressiones ejus ab initio, a diebus aeternitatis»: quibus verbis significat, quod supra dictum fuit atque promissum, id Deum repse pronuntiavisse, atque ab initio ut fieri posset, constituisse. Postea addit:
-
-VERS. 3, 4. — Propterea dabit eos usque ad tempus, quo pariens pariet. Parturire et parere saepe dicit divina Scriptura, cum in mediis calamitatibus divinum imperato auxilium affuerit. Sic ait: «Propter timorem tui, Domine, in ventre concepimus, et parturivimus ac peperimus spiritum salutis quem in terra fecisti 87»; ut dicat: Quia te timuimus, concepimus in nobis ineffabilem gratiam tuam, a qua per multos dolores in malis maximis salus nobis mirabiliter parta est. Igitur hoc quoque loco, quasi Hierusalem ex divina gratia concepisset, atque hoc donum peperisset, cujus beneficio ipsi salvi exstitissent, hostes contra funditus peribunt, ait se inimicos exitio tradituros, quoniam urbi Hierusalem post dolores multos quos pertulit in hostium incursu, mirabile partum est Dei donum. «Et reliqui fratres ejus convertentur ad filios Israelis.» Tunc omnes a captivitate reducti, communem eis instituent regem Zorobabelem: haud diutius secus quam decem tribubus sub regno constitutis, solis vero Judae ac Benjamini tribubus reges de Davidis stirpe ut antea habentibus; sed cunctis unum regem Zorobabelem agnoscentibus. Sic etiam beatus Oseas aiebat: «Et congre-</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="488,565,512,594">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="478,785,505,815">D</bloco>
-  <bloco tipo="rodape" script="latino" bbox="70,948,930,990">ibid. 30, 33.  Luc. 1, 32.  Isa. xxxi, 18.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,60">
+    573 COMMENTARIUS IN MICHÆ CAP. V. 574
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,60,495,80">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,60,470,480">
+    λύσειν τοῦ Ἰσραὴλ ἁρμόσειεν ἄν, οὓς παιδεύειν μὲν
+    ἁμαρτάνοντας ὑπισχνεῖται, οὐ μὴν παντελῶς ἐξ-
+    ωθεῖσθαι τῆς βασιλείας· μηνύει δὲ προβαίνων τὸν
+    κατὰ σάρκα Δεσπότην Χριστόν, ἐφ' οὕπερ τῶν ἐπ-
+    αγγελιῶν τῶν οἰκείων ἀληθὲς ἔδειξε τὸ πέρας ὁ Θεός·
+    τὸ γάρ, « Θήσομαι εἰς τὸν αἰῶνα τοῦ αἰῶνος τὸ
+    σπέρμα αὐτοῦ, καὶ τὸν θρόνον αὐτοῦ ὡς τὰς ἡμέρας
+    τοῦ οὐρανοῦ, κα τὸ σπέρμα αὐτοῦ εἰς τὸν αἰῶνα
+    μένει, καὶ ὁ θρόνος αὐτο ὡς ὁ ἥλιος ἐναντίον μου,
+    καὶ ὡς ἡ σελήνη κατηρτισμένη εἰς τὸν αἰῶνα, » πρό-
+    δηλον ὡς ἐπ' οὐδενς μὲν τῶν διαδόχων ἕξει χώραν
+    λεγόμενα· (p. 293) σαφῶς δὲ τοῦ Δεσπότου Χρι-
+    στοῦ δείκνυσι τὴν βασιλείαν διηνεκῆ τε κα ἀσάλευτον,
+    μετὰ πολλῆς μὲν τῆς δυνάμεως, πολλῆς δὲ τῆς λαμ-
+    πρότητος, εἰς τν ἔπειτα διαμένον· οὕτω καὶ τὴν
+    παροῦσαν μαρτυρίαν ἁρμόττουσαν μὲν κατὰ τὸ ἀλη-
+    θὲς κα ἀναντίῤητον τν πραγμάτων ἴδοι τις ἂν
+    ἐπὶ τοῦ Δεσπότου Χριστοῦ, κατὰ τὴν ἐν τοῖς Εαγ-
+    γελίοις φωνήν· λεγομένων ἐκ τοῦ Δαυὶδ βασιλέων
+    τοῦ Ἰσραὴλ διὰ τὴν ἐπαγγελίαν τὴν θείαν· ὅθεν δὴ
+    καὶ νῦν ὁ προφήτης, ἐπὶ τοῦ Ζοροβάβελ αὐτὴν ἐξ-
+    εῖργεν εἰκότως· ἐπειδὴ γὰρ τὰ μετὰ τὴν ἐπάνοδον
+    ἔλεγε τὴν ἀπὸ Βαβυλῶνος, καὶ τὴν ἔφοδον τῶν περὶ
+    τὸν Γώγ, τὴν τε ἐπενεχθεῖσαν αὐτοῖς παρὰ τοῦ Θεοῦ
+    τιμωρίαν, ἀκολούθως μέμνηται καὶ τοῦ κατ' ἐπαγγελ-
+    λίαν θείαν ἐκ τῆς το Δαυὶδ διαδοχῆς τὴν ἀρχὴν αὐ-
+    τῶν τότε πεπιστευμένου, ὡς ἂν δείξειεν καὶ τὰ διὰ
+    τούτων περὶ τὸ ἔθνος κατορθωθέντα, διὰ τὴν ἤδη γεγενημένην
+    τὴν ἰσχὺν εἰληφέναι· ὅθεν καὶ εἶπεν τὸ, « Αἱ ξοδοι
+    ατοῦ ἀπ' ἀρχῆς ἐξ ἡμερῶν αἰῶνος· » ἵνα εἴπῃ ὅτι:
+    τὰ ἄνωθεν εἰρημένα τε καὶ ἐπηγγελμένα, παρὰ τοῦ Θεοῦ προσδέλετο· τοῦτον ες τὴν ἀρχὴν δυνηθῆναί
+    τε πεποίηκε τοιαῦτα. Εἶτα ἐπάγει·
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="490,60,950,480">
+    incarnatum, in quo promissionum suarum verita-
+    tem exitum habuisse ostendit Deus. Nam verba :
+    « Ponam in sæculum sæculi semen ejus ; et thronum
+    ejus sicut dies cæli ; et semen ejus manebit in æter-
+    num ; et thronus ejus sicut sol in conspectu meo,
+    et sicut luna perfecta in æternum ⁶⁶, » notissimum
+    est de nemine successorum Davidis dici potuisse :
+    perspicue autem Christi Domini regnum perpetuum
+    ostendere, et immobile multa cum virtute multo-
+    que splendore in posterum tempus perseveraturum.
+    Atque ita præsens testimonium, conveniens quidem
+    secundum veritatem atque evidentiam actarum re-
+    rum comperiemus in Christo Domino, juxta evan-
+    gelicum textum ⁶⁶ : sed tamen dici etiam de poste-
+    ris Davidis, qui per tempora secundum Dei pro-
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,280,495,300">
+    B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="490,290,950,480">
+    missionem reges Israelis exstiterunt : unde nunc
+    etiam propheta de Zorobabele merito intellexit.
+    Nam cum de rebus post reditum Babylone loquatur,
+    et de Gogi incursione, consentanee meminit et illius
+    de Davidis stirpe hominis, cui tunc principatus
+    traditus erat ; ut ostendat, quæcunque hic ad salu-
+    tem gentis fecerit, ea ex Dei ad Davidem promis-
+    sione vim accepisse. Unde et dixit : « Egressiones
+    ejus ab initio, a diebus æternitatis : » quibus verbis
+    significat, quod supra dictum fuit atque promissum,
+    id Deum reapse pronuntavisse , atque ab initio ut
+    fieri posset, constituisse. Postea addit :
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,530,495,550">
+    C
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,530,470,900">
+    Στίχ. γ', δ'. — « Διὰ τοῦτο δώσει αὐτοὺς ως και-
+    οῦ τικτούσης τέξεται. » Ὠδίνειν καὶ τίκτειν πολλά-
+    κις ἡ θεία λέγει Γραφὴ (p. 294) τὸ ἐν μέσῳ τῶν δει-
+    νῶν παράδοξον τὴν θείαν ἀναφαίνεσθαι βοήθειαν· οὕτω
+    λέγει τὸ, « Διὰ τὸν φόβον σου, Κύριε, ἐν γαστρὶ ἐλά-
+    βομεν, καὶ ὠδινήσαμεν, καὶ ἐτέκομεν πνεῦμα σωτη-
+    ρίας· ὁ ἐποίησας ἐπὶ τῆς γῆς· « ἵνα εἴπῃ, ὅτι Ὑπὲρ
+    ὧν ἐφοβούμεθά σε, συνειλάβομεν ἐν αὐτοῖς τὴν ἀπόρ-
+    ρητόν σου χάριν, ἀφ' ἧς διὰ πολλῶν δίνων ἐν τῷ με-
+    γάλει τῶν κακῶν σωτηρία ἡμν ἀπετέχθη παράδοξος·
+    κατεῖδε τοίνυν ὡς ἂν τῆς Ἱερουσαλὴμ συλλαβούσης
+    τι ἐκ τῆς θείας χάριτος καὶ τὴν δωρεὰν ἀποτεκούσης
+    ταύτην, ἀφ' ἧς αὐτοί τε περιεσώθησαν, καὶ παντελῆ
+    τὴν ἀπώλειαν ἐδέξαντο οἱ πολέμιοι, τοῦτο λέγει ὅτι
+    τοὺς ἐναντίους παραδώσει ἀπωλείᾳ, ἐπειδὴ τῇ Ἱερου-
+    σαλὴμ μετὰ πολλῶν δίνων, ς ὑπέμεινεν ἐν τῇ τῶν
+    πολεμίων ἐφόδῳ, ἀπετέχθη τοῦ Θεοῦ δωρεά. « Καὶ οἱ
+    ἐ-λοιποὶ τῶν ἀδελφῶν αὐτοῦ ἐπιστρέψουσιν ἐπὶ τοὺς
+    υἱοὺς Ἰσραήλ. » Τότε γὰρ δὴ πάντες οἱ ἀπὸ τῆς
+    αἰχμαλωσίας ἐπανελθόντες, κοινὸν ἡγήσονται βασιλέα
+    τὸν Ζοροβάβελ· οὐκέτι ἰδίᾳ μὲν ἀρχομένων τῶν
+    δέκα φυλῶν, τῆς δὲ Ἰούδα μόνης μετὰ τῆς Βενιαμὶν
+    τῆς ἐκ τοῦ Δαυὶδ βασιλέας κατὰ τὸ πρόσθεν ἐχούσης,
+    ἀλλὰ πάντων ἕνα βασιλέα τὸν Ζοροβάβελ ἡγουμένων
+    λοιπὸν. Οὕτω καὶ ὁ μακάριος Ὡση λέγει · « Καὶ συν-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="490,530,950,750">
+    VERS. 3, 4. — « Propterea dabit eos usque ad
+    tempus, quo pariens pariet. » Parturire et parere
+    sæpe dicit divina Scriptura, cum in mediis calami-
+    tatibus divinum insperato auxilium affulget. Sic
+    ait : « Propter timorem tui, Domine, in ventre con-
+    cepimus, et parturivimus ac peperimus spiritum
+    salutis quem in terra fecisti ⁶⁷ ; » ut dicat : Quia
+    193 te timuimus, concepimus in nobis ineffabilem
+    gratiam tuam, a qua per multos dolores in malis
+    maximis salus nobis mirabiliter parta est. Igitur
+    hoc quoque loco, quasi Hierusalem ex divina gra-
+    tia concepisset, atque hoc donum peperisset, cujus
+    beneficio ipsi salvi exstitissent, hostes contra fun-
+    ditus periissent, ait se inimicos exitio traditurum,
+    quoniam urbi Jerusalem post dolores multos quos
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,750,495,770">
+    D
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="490,760,950,900">
+    pertulit in hostium incursu, mirabile partum est
+    Dei donum. « Et reliqui fratres ejus convertentur
+    ad filios Israel. » Tunc omnes a captivitate redu-
+    ces, communem existimabunt regem Zorobabelem :
+    haud diutius seorsum decem tribubus sub regno
+    constitutis, solis vero Judæ ac Benjamini tribubus
+    reges de Davidis stirpe ut antea habentibus ; sed
+    cunctis unum regem Zorobabelem abhinc agnoscen-
+    tibus. Sic etiam beatus Oseas aiebat : « Et congru-
+    gabuntur filii Judæ et filii Israël in id ipsum, con-
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="50,910,500,940">
+    ⁶⁶ Ibid. 30, 53. ⁶⁷ Luc. 1, 52. ⁶⁸ Isa. xxvi, 18.
+  </bloco>
+  <notas>
+    Transcrição fiel do texto grego e latino. As letras A, B, C, D foram mapeadas como notas marginais. Números de rodapé (66, 67, 68) transcritos conforme aparecem no rodapé e no texto (como sobrescrito). O número 193 em negrito no corpo do texto latino foi mantido.
+  </notas>
 </pagina>

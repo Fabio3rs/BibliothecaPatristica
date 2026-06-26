@@ -1,38 +1,166 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,20,960,60">1057    DE TEMPERANTIA.    1058</bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="40,60,480,950">
-οὐσίαν εἴπωμεν, οὐκ ἔχει φυσικῶς συνεινοουμένην [ilegivel]. ἀλλ᾿ αὐτὸς κατ᾿ οὐσίαν· ὁ Θεὸς ἐστὶ νοῦς, καὶ ὅλος νόησις, καὶ μόνος, καὶ ὑπὲρ οὐσίαν ὅλος, καὶ ὑπὲρ νόησιν ὅλος· διὰ τοῦτο μόνος ἀείρρητος, καὶ ἀμέτρητος, καὶ ἁπλοῦς. Ὁ τοῦτον [ilegivel] ἔχων, οὕτω τῆς δυάδος ἐξῆλθεν· ὁ δὲ ταύτην πάμπαν ἀπολιπών, γέγονε ποσῶς ἐν τῇ μονάδι, τὴν τοῦ νοεῖν ὑπεροχῶς ἀποθέμενος δύναμιν.
-
-Θ. Ἐν μὲν τοῖς πολλοῖς ἑτεροίοις καὶ ἀνομοιότητι ἔστι καὶ διαφορά· ἐν δὲ τῷ Θεῷ μόνῳ, ἢ καὶ μόνον συγκατέχεται, ταύτης καὶ ἔξω γίνεται, τῶν πολλῶν ἐπιβάλλειν ταῖς περὶ Θεοῦ θεωρίαις. Καὶ δῆλον τοῦτο Μωυσῆς ἔξω τῆς παρεμβολῆς πήξας τὴν σκηνὴν τῆς διανοίας, καὶ τότε προσελθὼν τῷ Θεῷ. Τὸ γὰρ μετὰ λόγου τὸ κατὰ προφορὰν πειρασθῆναι φάναι τὸν ἄρρητον, ἐπικίνδυνον, ὅτι δυὰς καὶ πλέον ἐστὶν ὁ κατὰ προφορὰν λόγος. Τὸ δὲ ἄνευ φωνῆς μόνη ψυχῇ τὸ ὂν θεωρεῖν, ἰσχυρότερον, ὅτι κατὰ τὴν ἀδιαίρετον μονάδα, καὶ οὐκ ἐν τοῖς πολλοῖς.
-
-(8) Ὁ τὸν νόμον διὰ βίου καὶ πολιτείας ἐκπληρῶν, μόνον τῶν τῆς κακίας ἀρχῶν συμπερασμάτων, καταφευγὼν τῷ Θεῷ τὴν ἄλογον τῶν παθῶν ἐνέργειαν, καὶ τούτῳ πρὸς σωτηρίαν ἀρκεῖται τῷ τρόπῳ, διὰ τὴν ἐν αὐτῷ πνευματικὴν νηστείαν.
-
-ἸΒ. Ὁ τὴν εὐαγγελικήν ζωήν τηρήσας ἀπαλλάγην, ὡς αὐχῶν τέλος ἑαυτοῦ τῆς κακίας ἐξέτεμε, καὶ πᾶσαν ἀρετὴν ἔργῳ τε καὶ λόγῳ μετέρχεται, οὐσίαν θυσίαν αἰνέσεως, καὶ ἐξομολογήσεως, πάσης τῆς καθ᾿ ἐνεργείας τῶν παθῶν ἀπηλλαγμένος ὁλοσχερῶς, καὶ τῆς κατὰ νοῦν πρὸς αὐτὴν μάχης ὑπάρχων ελεύθερος, καὶ μόνον ἔχων τὴν ἐπ᾿ ἐλπίδι τῶν μελλόντων ἀγαθῶν τὴν ψυχὴν διαφερούσαν ἀκόρεστον ἡδονήν.
-
-ΙΓ. Ὁ τῆς γεέννης φόβος, κακίαν ἐφεύγειν παρασκευάζει τοὺς εἰσαγωγούς· ὁ δὲ πόθος τῆς τῶν ἀγαθῶν ἀντιδόσεως, τοὺς προκοπτοὺς τὴν ἐπ᾿ ἐνεργείας τῶν ἀγαθῶν χαρίζεται προθυμίαν. Τὸ δὲ τῆς ἀγάπης μυστήριον, πάντων ὑπερβαίνει τῶν γεγονότων, ef-
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,60">
+    1057 DE TEMPERANTIA. 1058
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="470,80,510,110">A</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="470,320,510,350">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="470,520,510,550">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="470,720,510,750">D</bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="515,60,960,950">
-vel erga subjectam substantiam ejus qui praeditus est facultate. Nulla enim res prorsus exstat, quae per seipsam simplex substantia sit aut intellectione, ut sit unitas individua. Deus autem sive substantia dicatur, non habet a natura facultatem intelligendi quae una intelligatur ab ipso, ne sit compositus; sive dicatur intellectio, non habet naturaliter subjectam substantiam intellectionis susceptivam. At vero Deus ipse secundum substantiam est intellectio, et totus intellectio, ac solus et simplex et carens partibus.
-
-Proinde qui quomodocunque praeditus est intellectione, nondum exiit binarium; qui vero hunc prorsus reliquit, aliquantisper in unitate vim intelligendi præstantissimæ deposuit.
-
-IX. Multis quidem in rebus est diversitas, dissimilitudo atque differentia; dicere vero, Deum qui proprie unus ac solus est, illius experient esse, est multorum de Deo speculationes incessere. Et hoc ita se habere declarat Moyses, qui fixo extra castra tabernaculo intellectus, familiariter est cum Deo locutus. Periculosum enim est, sermone prolato ineffabilem eloqui tentare, quia sermo prolatus, dualis est ac pluralis. At animo solo sine voce contemplari ipsum ens, tutius est, quoniam in individua subsistit unitate, non in pluribus. E-nim pontifex, cui vir mandatum erat ut semel in anno ingrederetur in Sancta sanctorum intra velamen, docet, illum solum qui aulamqui sancta transiit, et ad Sancta sanctorum pervenit, hoc est, rerum sensibilium ac intelligibilium universam naturam transgressus est, et omni vitio peculiari quod contraxit a nativitate, purgatus, nuda apertaque mente ad imaginationes de Deo irrumpere debere.
-
-X. Magnus ille Moses cum fixisset extra castra suum ipsius tabernaculum, hoc est, semotis iis quae cernuntur, firmasset animum et intellectum, cœpit adorare Deum; et in nubem caliginosam ingressus, in [ilegivel] et materia carentem notitiae locum, illic manet, ut initietur sacrosanctis mysteriis.
-
-XI. Qui vita et conversatione legem exsequitur, is vitiis duntaxat connexionibus vacat, immolans Deo irrationalem affectum operationem, cui modus ille sufficiat ad salutem, ob exilitatem sui spiritus.
-
-XII. Qui vitam evangelicam vere complectitur, initium et finem sui ipsius a vitio secrevit, omnemque virtutem opere et sermone percurrit, immolans sacrificium laudis et confessionis, ereptus ab omni perturbatione quae gignitur ex affectum vigore, et liber a conflictu mentis adversus illam, alens duntaxat animo, spe futurorum bonorum, delicias nullam afferentes satietatem.
-
-XIII. Metus gehennae instruit novitios, ut fugiant vitium; desiderium autem remunerandi accepta beneficia, largitur promotis alacritatem animi ad ea quae bona sunt peragenda. At charitatis mysterium supra creaturas omnes extollit mentem, ef-
+  <bloco tipo="texto_principal" script="grego" bbox="50,60,450,200">
+    οὐσίαν εἴπομεν, οὐκ ἔχει φυσικῶς συνεπινουμένην
+    αὐτῇ τὴν το νοεῖσθαι δύναμιν, ἵνα μὴ καὶ σύνθετος·
+    εἴτε νόησις, οὐκ ἔχει φυσικῶς δεκτικὴν τὴν τῆς νοή-
+    σεως ὑποκειμένην οὐσίαν. Ἀλλ' αὐτὸς κατ' οὐσίαν,
+    νόησίς ἐστιν ὁ Θεὸς, καὶ ὅλος νόησις, καὶ μόνον, καὶ
+    ὑπὲρ οὐσίαν ὅλος, καὶ ὑπὲρ νόησιν ὅλος· διότι μονὰς
+    ἀδιαίρετος, καὶ ἀμερὴς, καὶ ἁπλῆ. Ὁ τοίνυν καθο-
+    τιοῦν νόησιν ἔχων, οὕτω τῆς δυάδος ἐξῆλθεν· ὁ δ
+    ταύτην πάμπαν ἀπολιπών, γέγονε ποσῶς ἐν τῇ μο-
+    νάδι, τὴν τοῦ νοεῖν ὑπεροχικῶς ἀποθέμενος δύναμιν.
   </bloco>
-
-  <notas>As identificações marginais A, B, C e D foram separadas em blocos próprios. Trechos de leitura incerta foram marcados com [ilegivel].</notas>
+  <bloco tipo="texto_principal" script="latino" bbox="50,200,450,250">
+    totius excedens substantiam et intellectum : ideoque unitas individua, simplex et carens partibus.
+    Proinde qui quomodocunque præditus est intellectione, nondum exiit binarium; qui vero hunc
+    prorsus reliquit, aliquantisper in unitate vim intelligendi præstantissime deposuit.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="455,60,465,80">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="465,60,950,250">
+    ipso : vel erga subjectam substantiam ejus qui præ-
+    ditus est facultate. Nulla enim res prorsus exstat,
+    quæ per seipsam simplex substantia sit aut intel-
+    lectio, ut sit unitas individua. Deus autem sive
+    substantia dicatur, non habet a natura facultatem
+    intelligendi quæ una intelligatur ab ipso, ne sit
+    compositus ; sive dicatur intellectio, non habet na-
+    turaliter subjectam substantiam intellectionis sus-
+    ceptivam. At vero Deus ipse secundum substan-
+    tiam est intellectio, et totus intellectio, ac solus et
+    totus intellectio, et totus intellectio, ac solus et
+    totus intellectio : ideoque unitas individua, simplex et carens partibus.
+    Proinde qui quomodocunque præditus est intellectione, nondum exiit binarium; qui vero hunc
+    prorsus reliquit, aliquantisper in unitate vim intelligendi præstantissime deposuit.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,250,450,540">
+    Θ'. Ἐν μὲν τοῖς πολλοῖς τερότης καὶ ἀνομοιότης
+    ἐστί καὶ διαφορά· ἐν δὲ τῷ Θεῷ κυρίως ἓν καὶ μόνῳ
+    τυγχάνοντι, ταύτης καὶ ἔξω γενέσθαι, τῶν πολλν
+    ἐπιβάλλειν ταῖς περὶ Θεο θεωρίαις. Καὶ δηλοῖ τοῦτο
+    Μωϋσς ἔξω τῆς παρεμβολῆς πηγνύμενος τὴν σκη-
+    νὴν τῆς διανοίας, καὶ τότε προσομιλῶν τ Θεῷ. Τὸ
+    γὰρ μετὰ λόγου τοῦ κατὰ προφορὰν πειρᾶσθαι φάναι
+    τὸν ἄρρητον, ἐπικίνδυνον, ὅτι δυὰς καὶ πλέον ἐστὶν
+    ὁ κατὰ προφορὰν λόγος. Τὸ δὲ ἄνευ φωνῆς μόνη ψυχῇ
+    τὸ ὂν θεωρεῖν, ἰσχυρότερον, ὅτι κατὰ τὴν ἀδιαίρετον
+    ἵσταται μονάδα, καὶ οὐκ ἐν τοῖς πολλοῖς.  γὰρ
+    ἀρχιερεὺς ἅπαξ τοῦ ἔτους εἰς τὰ Ἅγια τῶν ἁγίων ἔσω
+    τοῦ καταπετάσματος εἰσιέναι μόλις προστεταγμένος,
+    διδάσκει, μόνον δεῖν ἐκεῖνον τὸν τὴν αὐτὴν καὶ τὰ
+    ἅγια διαβάντα, καὶ εἰς τὰ Ἅγια τν ἁγίων ἔσω γε-
+    νόμενον, τοῦτ' ἔστι τὴν ἅπασαν τῶν αἰσθητῶν τε
+    καὶ νοημάτων παρελθόντα φύσιν, καὶ πάσης τῆς
+    κατὰ τὴν γένεσιν ἰδιότητος γενόμενον καθαρόν,
+    ἀνείμονι καὶ γυμνῇ τ διανοί προσβάλλειν ταῖς περὶ
+    Θεοῦ φαντασίαις.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="455,250,465,270">
+    B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="465,250,950,540">
+    IX. Multis quidem in rebus est diversitas, dis-
+    similitudo atque differentia ; dicere vero, Deum qui
+    proprie unus ac solus est, illius expertem esse,
+    est multorum de Deo speculationes incessere. Et
+    hoc ita se habere declarat Moyses, qui fixo extra
+    castra tabernaculo intellectus, familiariter est cum
+    Deo locutus. Periculosum enim est, sermone pro-
+    lato ineffabilem eloqui tentare, quia sermone prola-
+    tus, dualis est ac pluralis. At animo solo sine voce
+    contemplari ipsum ens, tutius est, quoniam in
+    individua subsistit unitate, non in pluribus. Et-
+    enim pontifex, cui vix mandatum erat ut semel in
+    anno ingrederetur in Sancta sanctorum intra vela-
+    men, docet, illum solum qui aulam est sancta trans-
+    iit, et ad Sancta sanctorum pervenit, hoc est,
+    rerum sensibilium ac intelligibilium universam na-
+    turam transgressus est, et omni vitio peculiari
+    quod contraxit a nativitate, purgatus, nuda aper-
+    taque mente ad imaginationes de Deo irrumpere
+    debere.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,540,450,630">
+    Ι'. Μωϋσς ὁ μέγας ἔξω τῆς παρεμβολῆς πηξάμε-
+    νος τὴν ἑαυτοῦ σκηνήν, τοῦτ' ἔστι τὴν γνώμην καὶ
+    τὴν διάνοιαν ἱδρυσάμενος ἔξω τῶν ρωμένων, προσ-
+    κυνεῖν τὸν Θεὸν ἄρχεται, καὶ εἰς τὸν γνόφον εἰσελθὼν
+    τὸν ἀπῆ καὶ ἄϋλον τῆς γνώσεως τόπον, ἐκεῖ μένει
+    τελούμενος τὰς ἱερωτάτας τελετάς.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="455,540,465,560">
+    C
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="465,540,950,630">
+    X. Magnus ille Moses cum fixisset extra castra
+    suum ipsius tabernaculum, hoc est, semotis iis
+    quæ cernuntur, firmasset animum et intellectum,
+    cœpit adorare Deum ; et in nubem caliginosam
+    ingressus, in amœnum et materia carentem noti-
+    tiæ locum, illic manet, ut initietur sacrosanctis
+    mysteriis.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,630,450,700">
+    ΙΑ'. Ὁ τὸν νόμον (8) διὰ βίου καὶ πολιτείας ἐπιτε-
+    λῶν, μόνων τῶν τῆς κακίας ἀργεῖ συμπερασμάτων,
+    καταθύνων τῷ Θε τὴν λογον τῶν παθῶν ἐνέργειαν,
+    καὶ τούτῳ πρὸς σωτηρίαν ἀρκεῖται τῷ τρόπῳ, διὰ
+    τὴν ἐν αὐτῷ πνευματικὴν νηπιότητα.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="465,630,950,700">
+    XI. Qui vita et conversatione legem exsequitur,
+    is vitiosis duntaxat connexionibus vacat, immolans
+    Deo irrationalem affectuum operationem, cui mo-
+    dus ille sufficiat ad salutem, ob exilitatem sui spi-
+    ritus.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,700,450,830">
+    ΙΒ'. Ὁ τὴν εὐαγγελικὴν ζων γνησίως ἀσπαζόμε-
+    νος, καὶ ἀρχὴν καὶ τέλος ἑαυτοῦ τῆς κακίας ἐξέτεμε,
+    καὶ πᾶσαν ἀρετὴν ἔργῳ τε καὶ λόγῳ μετέρχεται,
+    Θύων θυσίαν αἰνέσεως, καὶ ἐξομολογήσεως, πάσης
+    τῆς κατ' ἐνεργείας τῶν παθῶν ἀπηλλαγμένος ὀχλή-
+    σεως, καὶ τς κατὰ νον πρὸς αὐτὴν μάχης ὑπάρ-
+    χων ἐλεύθερος, καὶ μόνον ἔχων τὴν ἐπ' ἐλπίδι τῶν
+    μελλόντων ἀγαθῶν τὴν ψυχὴν διατρέφουσαν ἀκόρε-
+    στον ἡδονήν.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="455,700,465,720">
+    D
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="465,700,950,830">
+    XII. Qui vitam evangelicam vere complectitur,
+    initium et finem sui ipsius a vitio secrevit, omnem-
+    que virtutem opere et sermone percurrit, immo-
+    lans sacrificium laudis et confessionis, ereptus ab
+    omni perturbatione quæ gignitur ex affectuum vi-
+    gore, et liber a conflictu mentis adversus illam,
+    alens duntaxat animo, spe futurorum bonorum,
+    delicias nullam afferentes satietatem.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,830,450,920">
+    ΙΓ'. Ὁ τῆς γεέννης φόβος, κακίανφεύγειν παρα-
+    σκευάζει τοὺς εἰσαγομένους· ὁ δὲ πόθος τῆς τῶν
+    ἀγαθῶν ἀντιδόσεως, τοῖς προκόπτουσι τὴν ἐπ' ἐνερ-
+    γείᾳ τν ἀγαθν χαρίζεται προθυμίαν. Τὸ δὲ τῆς
+    ἀγάπης μυστήριον, πάντων ὑπεραίρει τῶν γεγονό-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="465,830,950,920">
+    XIII. Metus gehennæ instruit novitios, ut fugiant
+    vitium ; desiderium autem remunerandi accepta
+    beneficia, largitur promotis alacritatem animi ad
+    ea quæ bona sunt peragenda. At charitatis myste-
+    rium supra creaturas omnes extollit mentem, ef-
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="50,920,600,940">
+    (8) Ὁ τὸν νόμον, hanc item et sequentem sententiam caute legas.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,960,800,990">
+    Digitized by Google
+  </bloco>
 </pagina>

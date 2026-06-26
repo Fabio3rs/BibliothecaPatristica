@@ -1,41 +1,145 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="70,20,930,90">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
     315 ORATIO III CONTRA ARIANOS. 346
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="30,100,480,860">
-    και ειρηνην, αυτην και ο Τιτος διδοτω, ως ό Παυλος επισιμαινεται δια πάσης επιστολης γραφων· Χάρις ὑμῖν καὶ εἰρήνη ἀπὸ Θεοῦ Πατρός ἡμῶν καὶ Κυ- ρίου Ἰησοῦ Χριστοῦ. Μια γαρ και η αυτή χάρις εστι παρὰ Πατρὸς ἐν Υιώ, ως εστιν εν τῷ φῶς τοῦ ηλιου και του απαγγέσματος (74), και τὸ φωτίζειν τῷ ηλίῳ διὰ τοῦ απαγγέσματος γίνεται. Οὕτω γουν πάλιν επιτυχόμενος Θεσσαλονικείς και λέγον· Αὖ- τός δὲ ὁ θεὸς και Πατήρ ἡμῶν, και ὁ Κύριος Ἰησοῦς Χριστός (75) κατευθύναι τὴν ὁδόν ἡμῶν πρὸς ὑμᾶς, τὴν ἐνότητα τοῦ Πατρὸς και τοῦ Υἱοῦ ἐφυλάξεν· οὐ γὰρ ειπε, κατευθύνειν, ὡς παρα δυο διδόμενης, παρα τούτου και τούτου, διπλῆς χάριτος, αλλὰ, κατευθύναι, ἵνα δείξη, ὅτι ὁ Πατήρ δι' Υἱοῦ δίδωσι ταύτην· ἐξ ὧν χὰριν ερυθράν οι ασεβείς δυνα- μενοι, ου βούλονται (76).
-    
-    12. Εἰ γὰρ μή τὴν ἐνότητα και ιδιον τῆς τοῦ Πατρός ουσίας γένηται ο Λογος, ως τὸ απαγγέσμα τοῦ φω- τος, αλλὰ διεσπάσθη τῇ φύσει ὁ Υἱὸς τοῦ Πατρός (77) τῆρχει τον Πατερα δυναμι μόνον, οἰδες των γεννητῶν επικοινωνουντος· πρός τόν πεπιστωκότα ἐν τοῖς διδο- μένοις· νῦν δε η τοιαύτη (78) δόσις δείκνυσι τὴν ενο- τητα τοῦ Πατρὸς και τοῦ Υἱοῦ. Οὐκ αν γούν εξιχάτς τις λαβείην παρά τοῦ θεού (79) και τῶν ἀγγέλων, ἡ παρὰ τινος των ἄλλων χριστάνων, ουδὲ αν είποι τις, λήψωσι δε ο θεός και ο ἄγγελος (80), αλλὰ παρὰ Πα- τρός και τοῦ Υἱοῦ διὰ την ενότητα και την ενωσην δώσι. Δια γὰρ του Υἱοῦ δίδοται· τα δίδωμεθ· ουδενα δε εστιν, ο μη δι' Υἱοῦ νεργεῃ ὁ Πατηρ· οὕτω γαρ και ο λαβὼν ασφαλη την χάριν εχει. Εἰ δε ὁ πατρι- ἀρχης Ιακωβ, ευλογων τους εγγόνους Εφραϊμ και Μανασση ελεγε· ὁ θεὸς ο τρεφων με εκ νεοτητος μου έως τῆς ημερας ταυτης· ὁ ἄγγελος ὁ φυνόμενος με (81) ἐκ παντων των κακων, ευλογησαι τα παιδια ταύτα· ου τον νησθετων και την φυσιν ἀγγελων ἔστων ενα συνήψε (83) του κ̓ισαντους αυτουργειν· ουδε αρχεις των τρεχοντων αυτων θεων, παρ' αγ- γελου την ευλογίαν γινε τοις εγγονους, αλλ' ειρηκως, Ὁ ῥυσμενος με εκ παντων των κακων, εδειξε μη των κτισθέντων τινα αγγελον, αλλὰ τον Λογον ειναι του θεου, ὃν τῷ Πατρι συντρέπειν ηχρετο, δι' ου και σο ἐστιν βεβα, ρυεται ο θεος. Τουτον γαρ και μεγαλης βουλης 'Αγγελον του Πατρος ειδος καλουμενον, ουκ
+  <bloco tipo="texto_principal" script="grego" bbox="50,60,480,650">
+    καὶ εἰρήνη, αὐτὴν κα ὁ Υἱὸς δίδωσιν, ὡς ὁ Παῦλος
+    ἐπισημαίνεται διὰ πάσης ἐπιστολῆς γράφων· Χάρις
+    ὑμν καὶ ερήνη ἀπὸ Θεοῦ Πατρὸς ἡμῶν καὶ Κυ-
+    ρίου ησοῦ Χριστοῦ. Μία γὰρ καὶ ἡ αὐτὴ χάρις
+    ἐστὶ παρὰ Πατρὸς ἐν Υἱ, ὡς στιν ἐν τ φῶς τοῦ
+    ἡλίου καὶ τοῦ ἀπαυγάσματος (74), καὶ τὸ φωτίζειν
+    τοῦ ἡλίου διὰ τοῦ ἀπαυγάσματος γίνεται. Οὕτω γοῦν
+    πάλιν ἐπανηγύρμενος Θεσσαλονικεῦσι καὶ λέγων· Αὐ-
+    τὸς δὲ ὁ Θεὸς καὶ Πατὴρ ἡμῶν, καὶ ὁ Κύριος
+    Ἰησοῦς Χριστὸς (75) κατευθύναι τὴν ὁδν ἡμν
+    πρὸς ὑμᾶς, τὴν ἑνότητα τοῦ Πατρὸς καὶ τοῦ Υἱο
+    ἐφύλαξεν· οὐ γὰρ εἶπε, κατευθύναιεν, ὡς παρὰ δύο
+    διδομένης, παρὰ τούτου καὶ τούτου, διπλῆς χάριτος,
+    ἀλλά, κατευθύναι, ἵνα δείξῃ, ὅτι ὁ Πατὴρ δι' Υἱο
+    δίδωσι ταύτην· ἐξ ὧν κἂν ἐρυθριν οἱ ἀσεβεῖς δυνά-
+    μενοι, οὐ βούλονται (76).
+    12. Εἰ γὰρ μὴ ἦν νότης καὶ διον τῆς τοῦ Πατρς
+    οὐσίας γέννημα ὁ Λόγος, ὡς τὸ ἀπαύγασμα τοῦ φω-
+    τός, ἀλλὰ διεστήκει τῇ φύσει ὁ Υὸς τοῦ Πατρός (77)·
+    ἤρκει τὸν Πατέρα δοῦναι μόνον, οὐδενὸς τῶν γεννητῶν
+    ἐπικοινωνοῦντος πρὸς τὸν πεποιηκότα ἐν τοῖς διδο-
+   μένοις· νῦν δὲ ἡ τοιαύτη (78) δόσις δείκνυσι τὴν ἑνό-
+    τητα τοῦ Πατρς καὶ το Υἱο. Οὐκ ν γοῦν εὐξαίτό
+    τις λαβεῖν παρὰ τοῦ Θεοῦ (79) καὶ τῶν ἀγγέλων, ἢ
+    παρά τινος τῶν ἄλλων κτισμάτων, οὐδ' ν εἴποι τις,
+    Δώῃ σοι ὁ Θεὸς καὶ ὁ γγελος (80), ἀλλὰ παρὰ Πα-
+    τρὸς καὶ τοῦ Υἱο διὰ τὴν νότητα καὶ τὴν ἐνοίκη-
+    δόσιν. Διὰ γὰρ τοῦ Υοῦ δίδονται τὰ διδόμενα· οὐδὲν
+    δέ ἐστιν, ὃ μὴ δι' Υἱοῦ ἐνεργεῖ  Πατήρ· οὕτω γὰρ
+    καὶ ὁ λαβν ἀσφαλῆ τὴν χάριν ἔχει. Εἰ δὲ ὁ πατρι-
+    άρχης Ἰακώβ, εὐλογν τοὺς ἐγγόνους Ἐφραμ καὶ
+    Μανασσῆ λεγεν· Ὁ Θεὸς ὁ τρέφων με ἐκ νεότητός
+    μου ἕως τῆς ἡμέρας ταύτης· ὁ ἄγγελος ὁ ῥυό-
+    μενός με (81) ἐκ πάντων τῶν κακῶν, εὐλογήσαι
+    τὰ παιδία ταῦτα· οὐ τν κτισθέντων καὶ τὴν φύσιν
+    ἀγγέλων ὄντων ἕνα συνῆπτε (83) τῷ κτίσαντι αὐτοὺς
+    Θεῷ· οὐδὲ ἀρεῖς τὸν τρέφοντα αὐτὸν Θεόν, παρ' ἀγ-
+    γέλου τὴν εὐλογίαν ἥτει τος ἐγγόνοις, ἀλλ' εἰρηκώς,
+    Ὁ ῥυόμενός με ἐκ πάντων τῶν κακῶν, ἔδειξε μὴ
+    τῶν κτισθέντων τινὰ ἄγγελον, ἀλλὰ τὸν Λόγον εἶναι
+    τοῦ Θεοῦ, ν τῷ Πατρὶ συνάπτων ἤχετο, δι' οὗ καὶ
+    οὗς ἐὰν θέλῃ, ῥύεται ὁ Θεός. Τοῦτον γὰρ καὶ μεγάλης
+    βουλῆς Ἄγγελον τοῦ Πατρὸς εἰδὼς καλούμενον, οὐκ
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,100,980,860">
-    uti Paulus in omnibus suis Epistolis significat, dum ita scribit : Gratia vobis et pax a Deo Patre nostro et Domino Jesu Christo 76. Una enim eademque est gratia quae a Patre in Filio datur, quemadmodum una est lux solis et splendoris, et sol· nonper suam lucem illuminat. Sic item Thssalonicesibus precatur: Ipse autem Deus et Pater noster et Domi- nus Jesus Christus dirigat viam nostram ad vos 77, quibus verbis Patris et Filii unitatem servavit. Nam non dixit, dirigant, quasi duplex gratia a duobus, nempe ab illo et illo daretur, sed, dirigat, ut illam a Patre per Filium dari significaret : quae quidem impios cogerent saltem erubescere, nisi erubescere nollent.
-    
-    12. Namque si non esset unitas, nec Verbum naturae Patris proprius esset fetus, ut lucis splendor, sed Filius a Patre natura differret, satis certe esset si solus Pater daret, cum nullam rem creatam in dandis gratiis sociam haberet Creator. Quapropter hic dandi modus signum est unitatis Patris et Fi- lii. (80) Nemo igitur quid a Deo et ab angelis aut aliqua alia re creata precatus fuerit, nemoque cuiquam dixerit, Det tibi Deus et angelus: sed quae precamur, a Patre et Filio precamur, ob eorum uni- talem unicunque donationem. Quæ enim dantur, per Filium dantur, nihiloque omnino est quod non per Filium efficiat Pater : hincque certa et secura est gratia quam accipimus. Quod si patriarcha Jacob suis nepotibus Ephraim et Manasse benediciens dixit, Deus qui pascit me a juventute mea usque in praesentem diem : Angelus qui eruit me de cunctis malis, benedicat pueris istis ; nequaquam ex hisce verbis aliquem ex creatis et qui natura sunt angeli, cum Deo, a quo creati sunt, conjunxisse existimandus est, neque Deo alttore suo dinisso benedictionem pro nepotibus ab angelo poposcisse, sed his dicitis, Qui eruit me de cunctis malis, ostendit non aliquem ex creatis angelis, sed Dei esse Verbum, quod cum Patre in oratione consociavit, quia per ipsum 445 Deus quos voluerit liberat. Nam cum nescitus non
+  <bloco tipo="nota_marginal" script="latino" bbox="490,60,510,80">
+    A
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="50,860,980,980">
-    76 Rom. 1, 7; I Cor. 1, 3; Ephes. 1, 2, etc. 77 I Thess. III, 11. 78 Genes. XLVIII, 15, 16.
-    
-    (74) Sic Reg. 1, Seguer. Angl. Gobler. et Felc. f. D Al ediiti, ἐν τῷ φῶς τοῦ ἡλίου καὶ τοῦ ἀπαγγέσματος γίνεται οὕτω. Ibidem Anglice., Οὕτω δε πάλιν.
-    
-    (75) Reg. 1, et Seguer., ὁ θεός και Πατήρ ἡμῶν και ὁ Κύριος Ἰησοῦς Χριστός. Al i et editi, ὁ θεὸς ἡμῖν καὶ ὁ Κύριος Ἰησοῦς Χριστός.
-    
-    (76) Sic Reg. 1, Seguer. Gobler. et Felc. f.; sed duo ultimi pro καὶ, habuent ext. Anglice.. και ερου- θριαν οι κατά Σαβελλιον και 'Αρεων ασεβείς ὀφει- λουσι, και δυναμενοι ου βουλονται. Sic item all et editi, sed omissis his verbis, κατα Σαβελλιον και 'Αρεων. Ibidem Reg. 1, et Seguer., Ει γαρ μη ην.
-    
-    (77) Reg. 1, Seguer., από τοῦ Πατρὸς. In aliis et editis decet this.
-    
-    (78) Reg. 1, et Seguer., η αυτη. Editi et alii, η τουτοισ.
-    
-    (79) Reg. 1, et Seguer., του Θεου. Editi et alii, του Πατρος.
-    
-    (80) Nemo hæc S. Athanasi verba putet officere sanctionum invocationi. Namque cum angelos aut sanctos invocamus, non ab illis, sed a Deo omnium omnium auctore quæ petimus, ipsis interceden- tibus, obtenturos speramus.
-    
-    (81) Uterque Regius et Seguer., και ο άγγελος. Cateri et editi, και άγγελος. Mox Regius h. f, et Seguer., και ενοειδη. Editi et alii, και την εννοιαν.
-    
-    (82) Reg. 1, Seg., et Graecus Scripturae textus, ὁ φρυξων με. Editi et alii, ο θεοφανενος με.
-    
-    (83) Sic uleroque Regius et Seguer. Al alii et editi, συνηψε, mendiose.
-    
+  <bloco tipo="texto_principal" script="latino" bbox="520,60,950,650">
+    uti Paulus in omnibus suis Epistolis significat, dum
+    ita scribit : Gratia vobis et pax a Deo Patre nostro
+    et Domino Jesu Christo 76. Una enim eademque est
+    gratia quæ a Patre in Filio datur, quemadmodum
+    una est lux solis et splendoris, et sol nonnisi per
+    suam lucem illuminat. Sic item Thessalonicensibus
+    precatur : Ipse autem Deus et Pater noster et Domi-
+    nus Jesus Christus dirigat viam nostram ad vos 77,
+    quibus verbis Patris et Filii unitatem servavit. Nam
+    non dixit, dirigant, quasi duplex gratia a duobus,
+    nempe ab illo et illo daretur, sed, dirigat, ut illam
+    a Patre per Filium dari significaret : quæ quidem
+    impios cogerent saltem erubescere, nisi erubescere
+    nollent.
+    12. Namque si non esset unitas, nec Verbum
+    naturæ Patris proprius esset fœtus, ut lucis splendor,
+    sed Filius a Patre natura differret, satis certe esset
+    si solus Pater daret, cum nullam rem creatam in
+    dandis gratiis sociam habeat Creator. Quapropter
+    hic dandi modus signum est unitatis Patris et Fi-
+    lii. (80) Nemo igitur quid a Deo et ab angelis aut
+    aliqua alia re creata precatus fuerit, nemoque cui-
+    quam dixerit, Det tibi Deus et angelus : sed quæ
+    precamur, a Patre et Filio precamur, ob eorum uni-
+    tatem unicamque donationem. Quæ enim dantur, per
+    Filium dantur, nihilque omnino est quod non per
+    Filium efficiat Pater : hincque certa et secura est
+    gratia quam accipimus. Quod si patriarcha Jacob
+    suis nepotibus Ephraim et Manasse benedicens
+    dixit, Deus qui pascit me a juventute mea usque in
+    præsentem diem : Angelus qui eruit me de cunctis
+    malis, benedicat pueris istis 78 : nequaquam ex hisce
+    verbis aliquem ex creatis et qui natura sunt angeli,
+    cum Deo, a quo creati sunt, conjunxisse existimandus
+    est, neque Deo altore suo dimisso benedictionem
+    pro nepotibus ab angelo poposcisse, sed his dictis,
+    Qui eruit me de cunctis malis, ostendit non aliquem
+    ex creatis angelis, sed Dei esse Verbum, quod cum
+    Patre in oratione consociavit, quia per ipsum 445
+    Deus quos voluerit liberat. Nam cum nescius nou
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,350,510,370">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,500,510,520">
+    C
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="50,700,480,950">
+    76 Rom. 1, 7; I Cor. 1, 3; Ephes. 1, 2, etc.
+    (74) Sic Reg. 1, Seguer. Angl. Gobler. et Felc. 1. D
+    Ai editi, ἐν τῷ φῶς τοῦ ἡλίου καὶ τοῦ ἀπαυγάσματος
+    γίνεται οὕτω. Ibidem Anglic., Οὕτω δὲ πάλιν.
+    (75) Reg. 1, et Seguer., ὁ Θεὸς καὶ Πατὴρ ἡμν
+    καὶ ὁ Κύριος Ἰησος Χριστός. Alii et editi, ὁ Θεὸς
+    ἡμν καὶ  Κύριος ἡμῶν Ἰησοῦς Χριστός.
+    (76) Sic Reg. 1, Seguer. Gobler. et Felc. 1; sed
+    duo ultimi pro κἂν, habent καί. Anglic., καὶ ἐρυ-
+    θριν οἱ κατὰ Σαβέλλιον καὶ Ἄρειον ἀσεβεῖς φεί-
+    λουσι, καὶ δυνάμενοι οὐ βούλονται. Sic item alii et
+    editi, sed omissis his verbis, κατὰ Σαβέλλιον καὶ
+    Ἄρειον. Ibidem Reg. 1, et Seguer., Εἰ γὰρ μὴ ἦν.
+    Editi, Εἰ γὰρ καὶ μὴ ἦν.
+    (77) Reg. 1, Seguer., ἀπὸ τοῦ Πατρός. In aliis et
+    editiis deest ἀπό.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,700,510,720">
+    D
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="520,700,950,950">
+    77 I Thess. III, 11.
+    78 Genes. XLVIII, 15, 16.
+    (78) Reg. 1, et Seguer., ἡ αὐτή. Editi et alii, ἡ
+    τοιαύτη.
+    (79) Reg. 1, et Seguer., τοῦ Θεο. Editi et alii,
+    τοῦ Πατρός.
+    (80) Nemo hæc S. Athanasii verba putet officere
+    sanctorum invocationi. Namque cum angelos aut
+    sanctos invocamus, non ab illis, sed a Deo bonorum
+    omnium auctore quæ petimus, ipsis intercedenti-
+    bus, obtenturos speramus.
+    (81) Uterque Regius et Segner., καὶ ὁ ἄγγελος.
+    Cæteri et editi., καὶ ἄγγελος. Mox Regius 1, et Se-
+    guer., καὶ ἐνοική. Editi et alii, καὶ τὴν ἐνοίκη.
+    (82) Reg. 1, Seg. et Græcus Scripturæ textus,
+    ὁ ῥυόμενός με. Editi et alii, ὁ ῥυσάμενός με.
+    (83) Sic uterque Regius et Seguer. At alii et
+    editi, συνῆπται, mendose.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
     Digitized by Google
   </bloco>
-  <notas>Página com texto grego à esquerda e latino à direita; transcrição mantida literal. Algumas palavras gregas fragmentárias e sinais de edição anotados nos rodapés; usei [ilegivel] não foi necessário. BBOXs aproximados em escala 0-1000.</notas>
 </pagina>

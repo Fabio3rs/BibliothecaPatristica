@@ -1,9 +1,9 @@
 /**
  * UI strings — Italiano
  *
- * NOTA SUI DATI: i riassunti, le parole chiave e le entità generate dall'IA
- * restano in portoghese brasiliano (pt-BR), indipendentemente dalla lingua
- * dell'interfaccia. Il messaggio di avviso lo chiarisce agli utenti.
+ * NOTA SUI DATI: i riassunti, le parole chiave e le entità generate da
+ * Large Language Models e Vision Language Models restano in portoghese
+ * brasiliano (pt-BR), indipendentemente dalla lingua dell'interfaccia.
  */
 import type { Translations as BaseTranslations } from './pt-br';
 
@@ -27,17 +27,17 @@ export const it: BaseTranslations = {
   langSwitchEn: 'Inglese',
   langSwitchIt: 'Italiano',
 
-  // ─── Disclaimer (avviso IA) ─────────────────────────────────────────────────
+  // ─── Disclaimer (avviso editoriale sui modelli) ───────────────────────────
   disclaimerTitle: '⚠️ Informazioni su riassunti e parole chiave',
   disclaimerLine1:
-    "Usiamo l'IA per generare riassunti e termini, così da aiutare a individuare rapidamente i temi nel corpus patristico.",
+    "Il progetto è nato in Brasile, perciò riassunti, parole chiave e parte dei metadati di supporto sono stati inizialmente generati in portoghese brasiliano per aiutare a individuare rapidamente i temi nel corpus patristico.",
   disclaimerLine2:
     "La collezione è ancora in espansione e può contenere errori di OCR. Se un tema non compare nella ricerca, potrebbe comunque esistere; se una parola chiave appare, verificare sempre il testo originale prima di un uso accademico.",
   disclaimerLine3:
     "I risultati sono strumenti di supporto: la lettura dell'originale e la revisione umana restano sempre necessarie.",
   disclaimerDataLang:
     "🌐 I riassunti e le parole chiave sono stati generati in portoghese brasiliano e non cambiano in base alla lingua dell'interfaccia.",
-  disclaimerAriaLabel: 'Avviso sui contenuti generati dall IA',
+  disclaimerAriaLabel: 'Avviso sui contenuti generati da modelli di linguaggio',
 
   // ─── Footer ────────────────────────────────────────────────────────────────
   footerLeft: 'Progetto collaborativo • <a href="https://github.com/Fabio3rs/BibliothecaPatristica" target="_blank" rel="noopener noreferrer">codice aperto</a>',
@@ -94,7 +94,7 @@ export const it: BaseTranslations = {
 
   // ─── Personas ──────────────────────────────────────────────────────────────
   aboutP8:
-    'Importante: la maggior parte del corpus resta nelle lingue originali — greco, latino, siriaco, copto e altre lingue orientali. Ciò che trovi in portoghese su questa piattaforma sono <strong>riassunti, parole chiave e metadati estratti automaticamente</strong> tramite elaborazione del testo e intelligenza artificiale, che fungono da ponte per navigare e comprendere il corpus.',
+    'Importante: la maggior parte del corpus resta nelle lingue originali — greco, latino, siriaco, copto e altre lingue orientali. Ciò che trovi in portoghese su questa piattaforma sono <strong>riassunti, parole chiave e metadati estratti automaticamente</strong> tramite Large Language Models e Vision Language Models, che fungono da ponte per navigare e comprendere il corpus.',
 
   personasTitle: 'A chi è destinato questo archivio?',
   personasDesc: 'Scegli il tuo profilo e scopri come la Bibliotheca Patristica può aiutarti.',
@@ -117,6 +117,8 @@ export const it: BaseTranslations = {
   searchPlaceholder: 'Cerca per autore, opera, tema o termine',
   searchHeroLabel: 'Cosa stai cercando?',
   searchHeroHint: 'Usa la ricerca testuale e i filtri per navigare per collezione, volume e parole chiave.',
+  searchDataNote:
+    "Nota: il progetto è iniziato in Brasile. Riassunti, parole chiave e suggerimenti di dizionario compaiono ancora soprattutto in portoghese brasiliano, mentre gli OCR restano nelle lingue originali quando possibile.",
   searchAllCollections: 'Tutti',
   searchQuickAuthors: 'Autori',
   searchQuickThemes: 'Temi',
@@ -186,6 +188,8 @@ export const it: BaseTranslations = {
   viewerSummaryPage: 'Riassunto della pagina',
   viewerSummaryGlobal: 'Riassunto globale',
   viewerExcerpt: 'Estratto notevole',
+  viewerDataNote:
+    "Nota editoriale: questo progetto è iniziato in Brasile. Riassunti, parole chiave e metadati di supporto sono ancora soprattutto in portoghese brasiliano; l'OCR resta nella lingua originale quando possibile.",
   viewerNoContent: 'Nessun contenuto disponibile.',
   viewerOcrTitle: 'OCR originale',
   viewerOcrLoading: 'Caricamento…',
@@ -244,6 +248,8 @@ export const it: BaseTranslations = {
   indicesNoticeTitle: 'Avviso importante',
   indicesNoticeBody: 'Gli indici sono stati estratti automaticamente. Sono ancora incompleti, possono contenere errori e non sono stati revisionati manualmente.',
   indicesSearchPlaceholder: 'Cerca volume, autore, sezione o voce',
+  indicesSearchButton: 'Cerca',
+  indicesSearchClear: 'Pulisci ricerca',
   indicesAllCollections: 'Tutte le collezioni',
   indicesAllLevels: 'Tutti i livelli',
   indicesLoading: 'Caricamento indici...',

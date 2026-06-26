@@ -1,15 +1,15 @@
 ---
 import Layout from '../Layout.astro';
-import { useTranslations, serializeTranslations } from '../../i18n';
+import { useTranslations, serializeTranslations, getLocaleBase, getLocaleRouteUrl } from '../../i18n';
 const base = import.meta.env.BASE_URL || '/';
 const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
-const baseNoSlash = base.endsWith('/') ? base.slice(0, -1) : base;
 const assetBase = baseWithSlash;
 
 const t = useTranslations(Astro.currentLocale);
 const uiStrings = serializeTranslations(t);
 const uiLocale = Astro.currentLocale ?? 'pt-br';
 const locale = uiLocale === 'en' ? 'en' : uiLocale === 'it' ? 'it' : 'pt-br';
+const localeBase = getLocaleBase(locale, base);
 
 const startPointsByLocale = {
   'pt-br': {
@@ -347,9 +347,9 @@ const startPoints = startPointsByLocale[locale];
   }
 </style>
 
-<Layout title="Bibliotheca Patristica" description={t.homeSubtitle.replace(/<[^>]*>/g, '')} breadcrumbs={[{label: t.breadcrumbHome, href: baseWithSlash}]}>
+<Layout title="Bibliotheca Patristica" description={t.homeSubtitle.replace(/<[^>]*>/g, '')} breadcrumbs={[{label: t.breadcrumbHome, href: localeBase}]}>
   <Fragment slot="head">
-    <link rel="prefetch" href={`${baseWithSlash}search`} />
+    <link rel="prefetch" href={getLocaleRouteUrl(locale, 'search', base)} />
     <link rel="prefetch" href={`${baseWithSlash}pagefind/main/pagefind.js`} />
   </Fragment>
 
@@ -359,27 +359,27 @@ const startPoints = startPointsByLocale[locale];
       <h1>{t.homeTitle}</h1>
       <p set:html={t.homeSubtitle}></p>
 
-      <form class="hero-search" action={`${baseWithSlash}search`} method="get">
+      <form class="hero-search" action={getLocaleRouteUrl(locale, 'search', base)} method="get">
         <label for="home-search">{t.searchHeroLabel}</label>
         <div class="field-row">
           <input id="home-search" type="search" name="term" placeholder={t.homeSearchPlaceholder} />
           <button class="button" type="submit">{t.homeSearchCta}</button>
         </div>
         <div class="hero-quick-links" aria-label={t.searchHeroHint}>
-          <a href={`${baseWithSlash}search`}>{t.searchAllCollections}</a>
-          <a href={`${baseWithSlash}indices`}>{t.navIndices}</a>
-          <a href={`${baseWithSlash}search?collection=PG`}>PG</a>
-          <a href={`${baseWithSlash}search?collection=PL`}>PL</a>
-          <a href={`${baseWithSlash}search?collection=PO`}>PO</a>
-          <a href={`${baseNoSlash}#autores`}>{t.navAuthors}</a>
-          <a href={`${baseNoSlash}#temas`}>{t.navThemes}</a>
+          <a href={getLocaleRouteUrl(locale, 'search', base)}>{t.searchAllCollections}</a>
+          <a href={getLocaleRouteUrl(locale, 'indices', base)}>{t.navIndices}</a>
+          <a href={getLocaleRouteUrl(locale, 'search', base, '?collection=PG')}>PG</a>
+          <a href={getLocaleRouteUrl(locale, 'search', base, '?collection=PL')}>PL</a>
+          <a href={getLocaleRouteUrl(locale, 'search', base, '?collection=PO')}>PO</a>
+          <a href={`${localeBase}#autores`}>{t.navAuthors}</a>
+          <a href={`${localeBase}#temas`}>{t.navThemes}</a>
         </div>
       </form>
 
       <div class="hero-actions">
-        <a class="button secondary" href={`${baseWithSlash}search?term=${encodeURIComponent('João Crisóstomo')}`}>{t.homeCtaExample}</a>
-        <a class="button secondary" href={`${baseNoSlash}#volumes`}>{t.navVolumes}</a>
-        <a class="button secondary" href={`${baseWithSlash}indices`}>{t.navIndices}</a>
+        <a class="button secondary" href={getLocaleRouteUrl(locale, 'search', base, `?term=${encodeURIComponent('João Crisóstomo')}`)}>{t.homeCtaExample}</a>
+        <a class="button secondary" href={`${localeBase}#volumes`}>{t.navVolumes}</a>
+        <a class="button secondary" href={getLocaleRouteUrl(locale, 'indices', base)}>{t.navIndices}</a>
       </div>
     </div>
 
@@ -395,7 +395,7 @@ const startPoints = startPointsByLocale[locale];
         <li>Filtre por PG, PL ou PO quando já souber a coleção.</li>
         <li>Abra um volume direto por um ponto de partida conhecido.</li>
       </ul>
-      <a class="button secondary" href={`${baseWithSlash}search`}>{t.homeSearchCta}</a>
+      <a class="button secondary" href={getLocaleRouteUrl(locale, 'search', base)}>{t.homeSearchCta}</a>
     </aside>
   </section>
 
@@ -422,19 +422,19 @@ const startPoints = startPointsByLocale[locale];
         <p class="eyebrow">PG</p>
         <h3>Patrologia Graeca</h3>
         <p>Autores gregos, homilias, comentários e tratados dogmáticos.</p>
-        <a class="button secondary" href={`${baseWithSlash}search?collection=PG`}>Explorar PG</a>
+        <a class="button secondary" href={getLocaleRouteUrl(locale, 'search', base, '?collection=PG')}>Explorar PG</a>
       </article>
       <article class="collection-card">
         <p class="eyebrow">PL</p>
         <h3>Patrologia Latina</h3>
         <p>Autores latinos, tradição ocidental, Agostinho, Jerônimo e outros.</p>
-        <a class="button secondary" href={`${baseWithSlash}search?collection=PL`}>Explorar PL</a>
+        <a class="button secondary" href={getLocaleRouteUrl(locale, 'search', base, '?collection=PL')}>Explorar PL</a>
       </article>
       <article class="collection-card">
         <p class="eyebrow">PO</p>
         <h3>Patrologia Orientalis</h3>
         <p>Textos de tradições orientais e materiais complementares.</p>
-        <a class="button secondary" href={`${baseWithSlash}search?collection=PO`}>Explorar PO</a>
+        <a class="button secondary" href={getLocaleRouteUrl(locale, 'search', base, '?collection=PO')}>Explorar PO</a>
       </article>
     </div>
   </section>
@@ -453,7 +453,7 @@ const startPoints = startPointsByLocale[locale];
           <h3>{title}</h3>
           <ul>
             {links.map(link => (
-              <li><a href={`${baseWithSlash}search?keyword=${encodeURIComponent(link.term)}&term=${encodeURIComponent(link.term)}`}>{link.label}</a></li>
+              <li><a href={getLocaleRouteUrl(locale, 'search', base, `?keyword=${encodeURIComponent(link.term)}&term=${encodeURIComponent(link.term)}`)}>{link.label}</a></li>
             ))}
           </ul>
         </div>
@@ -481,12 +481,12 @@ const startPoints = startPointsByLocale[locale];
     </div>
   </section>
 
-  <script type="module" define:vars={{ assetBase, uiStrings, uiLocale }}>
+  <script type="module" define:vars={{ assetBase, uiStrings, uiLocale, localeBase }}>
     const cloud = document.getElementById('tag-cloud');
     const statsGrid = document.getElementById('stats-grid');
     const authorsList = document.getElementById('authors-list');
     const themeGroups = document.getElementById('theme-groups');
-    const searchUrl = (tag) => `${assetBase}search?keyword=${encodeURIComponent(tag)}&term=${encodeURIComponent(tag)}`;
+    const searchUrl = (tag) => `${localeBase}search?keyword=${encodeURIComponent(tag)}&term=${encodeURIComponent(tag)}`;
     const dataCache = window.pdfocrDataCache;
     const jsonCache = new Map();
     const isEn = uiLocale === 'en';

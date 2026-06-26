@@ -1,4 +1,7 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,40">
+797   MORALIA.   798
+  </bloco>
   <bloco tipo="texto_principal" script="grego" bbox="20,40,480,960">
 Ὅδε ἐστιν ὁ Νός μου ὁ ἀγαπητὸς, ἐν ᾧ εὐδόκησεν.
 ησα. Τότε ὁ Ἰησοῦς ἀρχίζη εἰς τὴν ἐρημον
@@ -59,7 +62,7 @@
 (72) In Reg. tertio et in Messan. leguntur ea verba,
 quae apud Joannem sequuntur post vocem ἐμὲ, ad
 illud usque, ἐγὼ εἶπον ὑμῖν.
-</bloco>
+  </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="520,40,980,960">
 A ductus est in desertum a Spiritu,
 diabolo (Matth. iii, 16, 17; iv, 4).... Ecce ego
@@ -94,7 +97,7 @@ mortuos (II Cor. i, 8, 9).... Et omnes qui pie vo
 lunt vivere in Christo Jesu, persecutionem patientur
 (II Tim. iii, 12).
 Quod nemo debet seipsum objicere tentationibus,
-antequam Deus permisserit; imo debet quisque
+antequam Deus permiserit; imo debet quisque
 orare, ut ne incidat in tentationem.
 Caput II.
 Sic ergo orale : Pater noster, qui es in cœlis, san
@@ -117,6 +120,21 @@ ego testimonium perhibeo de illo, quod opera ejus.
 (74) Editio Paris. μὴ ἐμπεσῆν.
 (75) Rursus oratio Dominica hoc loco invenitur
 integra in codice Messanensi.
-</bloco>
-  <notas>Pagina em duas colunas: coluna esquerda em grego, coluna direita em latim. Pequenas notas numeradas inseridas no fim de cada coluna foram mantidas conforme visível. Alguns caracteres incertos marcados entre parênteses e numerais de referência (71)-(75) transcritos literais conforme o impresso.</notas>
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,100,520,170">
+A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,300,520,360">
+B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,420,520,480">
+D
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,480,540,540">
+C
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="0,940,1000,1000">
+Digitized by Google
+  </bloco>
+  <notas>Pagina em duas colunas; bloco esquerdo em grego (script="grego"), bloco direito em latim (script="latino"). Marcas marginais A, B, C, D extraídas para blocos tipo="nota_marginal" separados (posições estimadas em bbox). Cabeçalho com número de página e título transcrito. Transcrição dos dois blocos principal efetuada conforme o impresso na imagem, sem normalização; notas numeradas (71)-(75) mantidas conforme visíveis. Eventuais lacunas/leisboliçõs incertas preservadas tal qual no documento.</notas>
 </pagina>

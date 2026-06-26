@@ -1,8 +1,8 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+  <bloco tipo="cabecalho" script="latino" bbox="50,50,950,100">
     925 KALENDARIUM VETUS ROMANUM. 926
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,60,950,200">
+  <bloco tipo="texto_principal" script="latino" bbox="50,100,950,200">
     E xi. C. Sucula mane occidit, hiemat. C. xvi
     F x. C. Lepus occidit mane, tempestatem significat. C. xxii
     G ix. C. xxiii
@@ -14,7 +14,7 @@
     E iii. F. xxix
     F Prid. C. Totæ Suculæ occidunt, Favonius, aut Auster, interdum pluvia. C. xxx
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="400,200,600,230">
+  <bloco tipo="texto_principal" script="latino" bbox="400,210,600,230">
     DECEMBER.
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="50,230,950,600">
@@ -28,13 +28,13 @@
     F vi. C. viii
     G v. C. ix
     H iv. C. x
-    A iii AGON. NP. Corus, vel Septentrio, interdum Auster cum pluvia. C. xi
+    A iii ACON. NP. Corus, vel Septentrio, interdum Auster cum pluvia. C. xi
     B Prid. EN. xii
     C Eid. NP. Scorpio totus mane exoritur, hiemat. C. xiii
     D xix. F. xiv
     E xviii. CONS. NP. xv
     F xvii. C. xvi
-    G xvi. SAT. NP. FERIÆ SATURNI. Sol in Capricornum transitum facit, brumale solstitium, ut Hip- xvii
+    G xvi. SAT. NP. FERIAE SATURNI. Sol in Capricornum transitum facit, brumale solstitium, ut Hip- xvii
     parcho placet. C.
     H xv. C. Ventorum commutatio. C. xviii
     A xiv. OPAL. NP. xix
@@ -51,13 +51,13 @@
     D iii. F. Canicula occidit vespere, tempestatem significat. C. xxx
     E Prid. C. Tempestas ventosa. C. xxxi
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="250,600,750,640">
+  <bloco tipo="cabecalho" script="latino" bbox="250,620,750,650">
     68 KALENDARII ROMANI EXPLANATIO.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,640,950,950">
-    F. Fastus dies. N. Nefastus. NP. Nefastus primo. FP. Fastus primo. NON. Nonæ. AGON. Agonalia. Ovi-
+  <bloco tipo="texto_principal" script="latino" bbox="50,650,950,950">
+    F. Fastus dies. N. Nefastus. NP. Nefastus primo. FP. Fastus primo. NON. Nonæ. ACON. Agonalia. Ovi-
     dius. EN. Endotercisus, pro Intercisus. CAR. Carmentalia : quod sacra tum, et feriæ Carmentis. Varr.
-    SID. Idus. LUPER. Lupercalia : quod in Lupercali Luperci sacra faciunt. Varro. QUIR. Quirinalia a Quirino,
+    SID. Idus. LUPER. Lupercalia : quod in Lupercali Luperci sacra faciunt. Varro. QUIR. Quirinalia a Quirino, qui-
     quod huic deo feriæ. FERAL. Feralia : ab inferis, et ferendo, quod ferunt tum epulas ad sepulcrum, qui-
     bus jus libi parentare. TER. Terminalia : quod is dies anni extremus constitutus. Duodecimus enim
     mensis fuit Februarius. REGIF. Regifugium. Ovidius : quanquam est inter Ovidium et Kalendarium de
@@ -66,27 +66,28 @@
     bus, qui NP. dies fuit; alioqui dies idem et NP, et N. fuisset. EQ. Equiria. Varro. Festus. Ovidius. LIB.
     Liberalia. Varro. QUIN. Quinquatrus. Varro. TUBIL. Tubilustrum, quod eo die in atrio sutorio sacrorum
     tubæ lustrantur. Varro. Ovidius. Festus. Q. REX. C. F. Quando rex comitiavit, fas. Varro. Festus. CIRC.
-    Circenses. FORD. Fordicidia : a fordis bubus, bos forda, quæ fert in ventre, quod ea die publice immo-
-    lantur boves prægnantes in curiis. Complures a fordis cædendis fordicidia dicta. Varro. CER. Cerealia,
+    Circenses. FORD. Fordicidia : a fordís bubus, bos forda, quæ fert in ventre, quod ea die publice immo-
+    lantur boves prægnantes in curiis. Complures a fordís cædendis fordicidia dicta. Varro. CER. Cerealia,
     Varro. PAR. Parilia : a pariendo, ut ait Victorinus Afer. Alii, Palilia, a Pale, quod eo die Feriæ ei deæ
     fiunt. Varro, Ovidius lib. 1 Fast. Festus in verbo, Pales, et Parilibus. VIN. Vinalia a vino. Varro. ROB.
-    Robigalia : dicta ab Robigo, secundum segetes. Varro. FLOR. Floralia, Ovidius. Plin. COMP. Compitalia.
-    Popifugium, pro populi fugium. APOLLIN. Apollinares. MERK. Merkatus. VICT. CÆSAR. Victoria Cæsaris.
-    NEPT. Neptunalia. FER. Feralia. HISP. Hispaniam. vicit. PORT. Portunalia. VIN. F. P. Vinalia, fas Prætori.
+    Robigalia : dicta a Robigo, secundum segetes. Varro. FLOR. Floralia, Ovidius. Plin. COMP. Compitalia.
+    LEM. Lemuria. Varro, Ovidius. LUD. MART. IN CIRC. Ludi Martii in Circo, Ovidius. MART. CAR. MONET. Marti,
+    Carnæ Deæ, Monetæ Junoni. Macrobios. Ovidius. IN CAPIT. In Capitolio. VEST. V. F. PR. Vestæ, nefas
+    Prætori. MAT. Matri Matutæ. Ovidius. Q. ST. D. Quando stercus defertur. Varro, Festus, Ovidius. POPLIF.
+    Poplifugium, pro populi fugium. APOLLIN. Apollinares. MERK. Merkatus. VICT. CÆSAR. Victoria Cæsaris.
+    NEPT. Neptunalia. FER. Feralia. HISP. Hispaniam vicit. PORT. Portunalia. VIN. F. P. Vinalia, fas Prætori.
     Varro, Plinius. CONS. Consualia. Plutarch. VOLC. Volcanalia. Varro. OPIC. Opiconsiva. Varro. VOLT. Voltur-
     nalia. Varro. H. D. ARA VICTORIÆ IN CURIA DEDIC. EST. Hoc die ara Victoriæ dedicata est. FER. NEPT. Feriæ
     Neptuno. F. EQUOR. PROB. Feriæ equorum probandorum. Valerius Max. lib. II. LUD. CIRC. Ludi circenses,
     in Augusti die natali. Suetonius, Dio. MEDIT. Meditrinalia, a Meditrina dea. Varro. AUGUST. Augustanalia.
     FONT. Fontanalia. Varro. ARM. Armilustrum. Varro. EPUL. INDICT. Epulum indictum. LUD. PLEB, IN CIRC.
     Ludi plebis in circo, Suetonius. AGO. Agonalia. SATUR. Saturnalia. Macrob. OPAL. Opalia. Varro. Macro-
-    bius. DIV. Divalia. Divi Julii dies festus. LAR. Laurentinalia. Varro, Ovidius, Plutarchus.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="400,950,600,1000">
-    Digitized by Google
+    binus. DIV. Divalia. Divi Julii dies festus. LAR. Laurentinalia. Varro, Ovidius, Plutarchus.
   </bloco>
   <notas>
-    Transcrição de calendário romano e explicação de abreviaturas.
-    A numeração romana à direita das listas de dias foi incluída no final de cada linha para manter a integridade do registro diário.
-    O texto da explicação foi transcrito linha por linha conforme a quebra original.
+    Transcrição fiel do layout. As letras A, B, C, D, E, F, G, H na margem esquerda das listas do calendário são letras nundinais e foram transcritas como parte do bloco de texto principal, pois não estão no gutter central como identificadores de seção isolados, mas sim integradas às linhas da tabela.
+    A linha "G xvi. SAT. NP..." tem continuação na linha seguinte "parcho placet. C.".
+    A palavra "Macrobius" é dividida entre "Macro-" e "binus." no final do texto.
+    "Terminalibus" é dividido entre "Terminali-" e "bus".
   </notas>
 </pagina>

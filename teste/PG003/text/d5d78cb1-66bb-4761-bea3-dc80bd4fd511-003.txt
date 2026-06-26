@@ -1,48 +1,57 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="420,20,580,45">
-    SÆCULUM I.
+  <bloco tipo="cabecalho" script="misto" bbox="150,20,850,60">
+SÆCULUM I.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="150,55,850,280">
-    ΤΟΥ ΕΝ ΑΓΙΟΙΣ ΠΑΤΡΟΣ ΗΜΩΝ
-    ΔΙΟΝΥΣΙΟΥ
-    ΤΟΥ ΑΡΕΟΠΑΓΙΤΟΥ
-    ΤΑ ΣΩΖΟΜΕΝΑ ΠΑΝΤΑ.
+  <bloco tipo="texto_principal" script="misto" bbox="120,80,880,125">
+ΤΟΥ ΕΝ ΑΓΙΟΙΣ ΠΑΤΡΟΣ ΗΜΩΝ
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,310,900,510">
-    S. DIONYSII
-    AREOPAGITÆ
-    OPERA OMNIA QUÆ EXSTANT,
-    ET COMMENTARII QUIBUS ILLUSTRANTUR,
+  <bloco tipo="texto_principal" script="grego" bbox="80,140,920,255">
+ΔΙΟΝΥΣΙΟΥ
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,530,800,630">
-    STUDIO ET OPERA
-    BALTHASARIS CORDERII,
-    SOCIETATIS JESU DOCTORIS THEOLOGI.
+  <bloco tipo="texto_principal" script="grego" bbox="160,270,860,350">
+ΤΟΥ ΑΡΕΙΟΠΑΓΙΤΟΥ
+ΤΑ ΣΩΖΟΜΕΝΑ ΠΑΝΤΑ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,650,900,750">
-    ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE,
-    BIBLIOTHECÆ CLERI UNIVERSÆ
-    SIVE
-    CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
+  <bloco tipo="texto_principal" script="misto" bbox="460,360,540,400">
+—
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="400,780,600,800">
-    TOMUS PRIOR.
+  <bloco tipo="texto_principal" script="latino" bbox="120,380,880,490">
+S. DIONYSII
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,805,900,845">
-    In quo universus Sancti textus, et Georgii Pachymeræ Paraphrasis Græce et Latine, cum Adnotationibus Balthasaris Corderii in singula capita continentur.
+  <bloco tipo="texto_principal" script="latino" bbox="300,505,700,545">
+AREOPAGITÆ
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="300,870,700,890">
-    VENEUNT DUO VOLUMINA 16 FRANCIS GALLICIS.
+  <bloco tipo="texto_principal" script="latino" bbox="80,565,920,625">
+OPERA OMNIA QUÆ EXSTANT,
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,915,900,975">
-    EXCUDEBatur ET VENIT APUD J.-P. MIGNE EDITOREM,
-    IN VIA DICTA D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM,
-    SEU PETIT-MONTROUGE.
+  <bloco tipo="texto_principal" script="latino" bbox="220,660,880,820">
+ET COMMENTARII QUIBUS ILLUSTRANTUR,
+STVDIO ET OPERA
+BALTHASARIS CORDERII,
+SOCIETATIS JESU DOCTORIS THEOLOGI.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="450,980,550,995">
-    1857
+  <bloco tipo="rodape" script="latino" bbox="80,840,920,990">
+ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE,
+BIBLIOTHÆCÆ CÆLI UNIVERSÆ
+SIVE
+CURSUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORB.
+----------------------------------------
+TOMUS PRIOR.
+In quo universus Sancti textus, et Georgii Pachymeræ Paraphrasis Græce et Latine, cum Adnotationibus Balthasaris
+Corderii in singula capita continentur.
+----------------------------------------
+VENEUNT DUO VOLUMINA 16 FRANCIS GALLICIS.
+----------------------------------------
+EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
+IN VIA DICTA D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM,
+SEU PETIT-MONTROUGE.
+1857
   </bloco>
   <notas>
-    Página de título mista (Grego/Latino). Ligaturas latinas (Æ, Œ) preservadas. Ortografia histórica mantida (e.g., EXCUDEBatur, Græce).
+- Script: misto (Greek and Latin present). Greek blocks transcribed in original Greek uppercase.
+- Typographic features preserved where visible: ligatures (Æ/Æ), use of V for U in some words (transcribed here as seen: e.g., "STVDIO"). Where reading uncertain, conservative regular Latin forms chosen (e.g., "DENUO" rather than a V-shaped U); original typography may use V-shaped characters.
+- Long lower text grouped into a single rodape block to preserve vertical order and line breaks.
+- No marginal section-identifiers (A, B, C, D) were visible on this page.
+- Minor punctuation and spacing reproduced as in the image; editorial normalization was avoided.
   </notas>
 </pagina>

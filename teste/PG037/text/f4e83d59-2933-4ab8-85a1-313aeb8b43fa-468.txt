@@ -1,32 +1,40 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,50">
-    923 S. GREGORII THEOL. CARMINUM LIBER I. THEOLOGICA. 924
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,60">
+    923  S. GREGORII THEOL. CARMINUM LIBER I. THEOLOGICA.  924
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="80,60,480,280">
+
+  [!-- LEFT COLUMN (Greek) --]
+  <bloco tipo="texto_principal" script="grego" bbox="40,70,480,320">
     καὶ ὡς πρόσεισιν, οἴχεται λίθου δίκην.
     Οὐδεὶς ὑγείας πλοῦτος ἀλγοῦσι πλέον·
     Σοφῶς δὲ ταύτην ἡ φύσις βροτῶν θέλει.
     Ἠχοὶ θαλάσσης, ἀνδρὸς ἄφρονος λόγοι·
-    90 Βρύοντες ἀκτάς, οὐ πιαίνουσι χλόας.
-    Πείθουσι δῶρα καὶ σοφοὺς παραβλέπειν
+    90 Βρίθοντες ἀκτάς, οὐ πιαίνουσι χλόας.
+    Πείθουσι δῶρα καὶ σοφοὺς παραβλέπειν·
     Βροτοῖς δὲ θήρα χρυσός, ὡς πτηνοῖς πάγη.
-    Γῆρας λῦπαι τίκτουσι καὶ πρὸ τῶν χρόνων·
-    Ἃ γὰρ τρόπος καθέζιεν, οὐ στήσει χρόνος.
+    Γῆρας λύπαι τίκτουσι καὶ πρὸ τῶν χρόνων·
+    Ἃ γὰρ τρόπος καθέζεν, οὐ στήσει χρόνος.
     95 Πλοῦτος τάχιστος τῶν κακῶν ὑπηρέτης·
     Καὶ γὰρ πρόχειρον εἰς κακουργίαν κράτος.
-    Οὐκ στιν οὐδὲν κτῆμα βέλτιον φίλου·
-    Πονηρὸν ἄνδρα μηδέπου κτήσῃ φίλον.
+    Οὐχ ἔστιν οὐδὲν κτῆμα βέλτιον φίλου·
+    Πονηρὸν ἄνδρα μηδέπου χτήσῃ φίλον.
     Τάξις τιμάσθω, καὶ προηγείσθω κράτους·
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="510,60,920,280">
-    A 100 Κράτος γὰρ αὕτη καὶ κράτους ἀεὶ φύλαξ
+
+  [!-- RIGHT COLUMN (Greek) --]
+  <bloco tipo="nota_marginal" script="latino" bbox="520,60,550,100">
+    A
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="520,70,960,320">
+    100 Κράτος γὰρ αὕτη καὶ κράτους ἀεὶ φύλαξ·
     Νοῦς ἐμμέριμνος σῆς βιβρώσκων ὀστέα·
-    Θάλλει δὲ σμα φροντίδας παρατρέχων.
+    Θάλλει δὲ σῶμα φροντίδας παρατρέχων.
     Οὐδεὶς κόρος πέφυκε σωφρόνως ἔχειν·
-    Καὶ γὰρ τὸ πῦρ εἰωθς ταῖς λαις θέειν.
+    Καὶ γὰρ τὸ πῦρ εἴωθε ταῖς ὕλαις θέειν·
     105 Οἶνος πάθους ἔγερσις ἐκλελοιπότος·
-    Ὕλη γὰρ εἰσρέουσα μάννυσι φλόγα.
-    Φεύγουσιν ὀργὰς οἱ δίκας δεδιηκότες·
+    Ὕλη γὰρ εἰσρέουσα ῥώννυσι φλόγα.
+    Φεύγουσιν ὀργὰς οἱ δίκαι δεδιηκότες·
     Θυμὸν γὰρ ἐξάπτουσι πολλάκις δίκαι.
     Δεινὸν πόνοις κάμνοντι προσθεῖναι πόνους·
     110 Ἀλλ' οὖν πόνους ἔπαυσε πολλάκις πόνος.
@@ -34,13 +42,15 @@
     Ἄλλοις ὁρῶνται κινδυνεύοντες πόνοις.
     Δόξης ἀεὶ φρόντιζε τῆς αἰωνίου·
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,300,800,580">
+
+  [!-- CENTRAL LATIN BLOCK (above apparatus, spans center) --]
+  <bloco tipo="texto_principal" script="latino" bbox="120,340,880,620">
     Et ut accedit, illico cadit instar lapidis.
     Nullæ divitiæ ægris sanitate potiores sunt :
     Sapienter hanc natura mortalium cupit.
     Sonitus maris, viri stulti sunt sermones :
     90 Premunt littora, non pingua reddunt prata.
-    Munera effuciunt, ut sapientes hallucinentur :
+    Munera efficiunt, ut sapientes hallucinentur :
     Hominibus aurum est laqueus, ut avibus pedica.
     Senectutem mœrores pariunt, etiam ante tempus;
     Quæ enim mores prostraverunt, non restituet tempus.
@@ -49,67 +59,79 @@
     594-595 Non est ulla possessio præstantior amico :
     Improbum hominem nunquam habeas amicum.
     Ordo colatur et præponatur robori ;
-    400 Robur namque ipse est et roboris semper custos.
+    100 Robur namque ipse est et roboris semper custos.
     Mens sollicita, tinea est corrodens ossa ;
     Viget corpus curas effugiens.
     Satietas nulla conducit ad temperantiam ;
     Etenim ignis solet ad ligna currere.
-    405 Vinum libidinem excitat languentem ;
+    105 Vinum libidinem excitat languentem ;
     Materia enim subjecta flammæ vires addit.
     Fugiunt iras qui lites timent :
     Iram enim accendunt sæpius lites.
     Durum est laboribus vexato labores addere.
-    410 Verumtamen labores sæpe sævit labor.
+    110 Verumtamen labores sæpe sedavit labor.
     Sunt qui aliorum labores timent ;
-    Aliis tamen videntur laboribus periculose conflictari
+    Aliis tamen videntur laboribus periculose conflictari.
     Perpetuam sempiternæ gloriæ curam habe ;
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="80,600,480,730">
-    86 Ὡς πρόσεισιν. Combef. ὥσπερ ἐστίν... ὡς δέ.
-    88 Σοφῶς. Leuv. σαφῶς. Μοῖ βροτῶν. Ita Regg.
+
+  [!-- APPARATUS CRITICUS (left and right) --]
+  <bloco tipo="aparato_critico" script="misto" bbox="40,640,480,840">
+    86  Ὡς πρόσεισιν. Combef. ὥσπερ ἐστίν... ὡς δέ.
+    88  Σοφῶς. Leuv. σαφῶς. Mox βροτῶν. Ita Regg.
     duo, Leuv. et Combef. Edit. θέλει.
-    90 Χλάς. Sic mss. Male edit. χόας.
-    91 Πείθουσι. Alludit ad hæc verba Eccli. xx, 31,
+    90  Χλόας. Sic mss. Male edit. χρόας.
+    91  Πείθουσι. Alludit ad hæc verba Eccli. xx, 31,
     Xenia et bona excæcant oculos judicum.
-    95 Πλοῦτος τάχιστος. Leuv. cod. πλοῦτος κά-
+    95  Πλοῦτος τάχιστος. Leuv. cod. πλοῦτος κἀ-
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="510,600,920,730">
+
+  <bloco tipo="aparato_critico" script="misto" bbox="520,640,960,840">
     μισος ἐν κακοῖς ὑπηρέτης.
-    98 Μηδέπον exigit metrum. Edit. μηδέ ποτε.
-    99 Τάξις. Reg. 1277, πράξις.
-    103 Οὐδεὶς κόρος. Id est, satietas libidinem ex-
+    98  Μηδέπου exigitur metrum. Edit. μηδέ ποτε.
+    99  Τάξις. Reg. 1277, πρᾶξις.
+    103  Οὐδεὶς κόρος. Id est, satietas libidinem ex-
     citat.
-    106 Ῥώγνυσι. Reg. 1277, ῥωννύει.
-    110 Πόνους. Reg. 1277, πόνον.
+    106  Ῥώνγυσι. Reg. 1277, ῥωννύει.
+    110  Πόνους. Reg. 1277, πόνον.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="400,750,600,770">
+
+  [!-- METRICA VERSIO header --]
+  <bloco tipo="cabecalho" script="latino" bbox="420,720,580,750">
     METRICA VERSIO.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,780,480,930">
+
+  [!-- LOWER LATIN COLUMNS (left then right) --]
+  <bloco tipo="texto_principal" script="latino" bbox="80,760,480,940">
     Ut venit ipsa, labitur velut lapis.
     Haud sanitate census est ægris prior :
     Natura jure semper hanc valde expetit.
     Haud sermo stulti dispar est maris sono :
     Ripas adimplet, prata sed nihil juvat.
     Vel mente cæcat præditos munus bona :
-    Quod ree avibus est, munus hoc mortalibus.
+    Quod rete avibus est, munus hoc mortalibus.
     Diem ante mæror efficit gravis senes ;
     Nam strata tempus moribus non eriget.
-    Census minister est malis celerrimius :
+    Census minister est malis celerrimus :
     Nam prompta res est ad scelus potentia.
-    Nil unquam amico conferendum duxeris :
+    Nil unquam amico conferendum duxeris ;
     At nunquam amicum junxeris malum tibi.
     Ordo colatur, robori et sit pro duce :
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,780,920,930">
-    B Nam robur ipse est, roboris custos quoque.
+
+  <bloco tipo="nota_marginal" script="latino" bbox="500,760,540,800">
+    B
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,760,920,940">
+    Nam robur ipse est, roboris custos quoque.
     Tinea est, medullas quæ coquit, mens anxia :
-    Curas eaduces quod fugit, corpus viget.
+    Curas edaces quod fugit, corpus viget.
     Castum esse nescit obrutum corpus cibis.
     Ad ligna nempe flamma currit fervida.
     Vinum jacentes excitat libidines :
     Ut flamma lignis robur admotis capit.
-    Lites pavorem queis movent, iras fugant :
+    Lites pavorem quibus movent, iras fugant :
     Lites furorem sæpe nam gignunt gravem.
     Labore fessis sarcinam est grave addere :
     Labor laborem sæpe compressit tamen.
@@ -117,12 +139,15 @@
     Aliis patere cernitur periculis.
     Curæ perenne sit decus semper tibi :
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="500,950,800,980">
+
+  <bloco tipo="rodape" script="latino" bbox="380,950,980,995">
     Digitized by Google
   </bloco>
+
   <notas>
-    Transcrição literal incluindo erros aparentes do original (ex: "eaduces" em vez de "edaces", "ree" em vez de "rei").
-    Números em negrito no texto latino central (594-595, 400, 405, 410) e no aparato (1277).
-    Letras marginais A e B identificadas no início de colunas/parágrafos.
+    Transcrição fiel ao impresso da imagem, preservando ortografia, acentuação e numeração tal como aparecem no original (incluindo errata tipográficos e sinais gráficos).
+    Letras marginais identificadas como blocos tipo="nota_marginal": A (junto à coluna grega direita) e B (antes da coluna latina inferior direita).
+    Scripts usados: gregoriano/transliteração grega no texto grego (script="grego"), latim impresso em script="latino", aparato crítico misto (grego/latim) em script="misto".
+    BBOX são estimativas em escala 0-1000 e representam posições aproximadas dos blocos na imagem.
   </notas>
 </pagina>

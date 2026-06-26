@@ -1,101 +1,80 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,10,900,40">
-    457 EPISTOLA II AD VIRGINES. 458
+  <bloco tipo="cabecalho" script="latino" bbox="30,20,200,70">
+    157
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="530,40,545,60">
+  <bloco tipo="cabecalho" script="latino" bbox="200,20,800,70">
+    EPISTOLA II AD VIRGENES.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="800,20,970,70">
+    158
+  </bloco>
+
+  [!-- Coluna esquerda (siríaco) — transcrever inteiro antes da coluna direita --]
+  <bloco tipo="texto_principal" script="siriaco" bbox="30,80,470,380">
+    ܒܫܡܗ̇ ܕܐܒܐ ܘܪܘܚܐ ܘܝܫܘܥ ܡܫܝܚܐ. ܡܛܠܐ ܗܢܐ ܕܢܚܬܐ ܒܩܪܒܐ. ܠܐ ܐܣܪܟܘܢ ܒܢܫܡܐ ܘܒܓܘܪܣܐ. ܘܗܟܢܐ ܥܕܢܐ ܕܩܪܒܐ ܐܦ ܠܐ ܢܬܒܠܝܢ ܠܒܪܝ̈ܐ. 
+    ܘܡܛܠܗܘܢ ܕܐܝܬܝܢ ܡܢܗܘܢ ܬܫܪܘܬܐ ܩܕܝܫܬܐ ܘܒܝܘܡܐ ܒܠܘܫܢܐ. ܠܐ ܢܬܚܕܘܗܝ ܒܚܘܒܐ ܘܠܐ ܢܫܬܪܚܘܢ ܒܝܘܡܐ. ܗܢܐ ܗܘܐ ܡܛܠܐ ܕܢܗܘܟܐ ܠܡܪܢ ܘܠܡܪܢܬܐ.
+    ܡܛܠܗܘܢ ܥܕܢܐ ܡܬܚܙܝܢ ܘܬܩܘܦܢܐ ܠܟܠܗܘܢ. ܬܚܬ ܗܢܐ ܝܬܪܳܐ ܘܢܦܫܐ ܕܡܠܦܢܐ ܘܕܡܢܚܐ۔
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="485,100,515,140">
     A
   </bloco>
-  <bloco tipo="texto_principal" script="siriaco" bbox="80,40,480,280">
-    ܐܝܟܢܐ ܕܕܚܬ ܗ ܡܢ ܨܘܪܗ ܘܡܢ ܙܗܝܪܘܬܗ
-    ܘܡܢ ܡܚܕܘܬܗ ܠܐ ܢܗܘܐ ܡܬܚܝܒ ܚܪ ܒܥܠ
-    ܘܠܐ ܚܡ ܚܕܐ ܡܢ ܐܠܗ ܡܚܙܐ ܗܘ ܠܐ ܠܡܚܙ
-    ܕܐܟ ܒܢܫܐ ܡܪܬܗܝ ܚܡܙܗ ܀ ܡܣܟܠ
-    ܗܘ ܕܢܐܣܐ ܠܬܘܡܐ ܚܕܚܕ ܡܢܗܘܢ
-    ܘܢܗܕܘܢ ܘܚܕܐ ܡܢܗܘܢ ܬܚܣܠ ܒܤܠܐ
-    ܐܠܗܐ ܗܘ ܠܐ ܡܬܚܝܒ ܚܡܝܗܝ ܘܠܐ ܢܗܘܐ
-    ܘܡ ܕܐܝܟ ܡܢܗ ܡܬܥܡܕ ܀
+
+  <bloco tipo="texto_principal" script="siriaco" bbox="30,380,470,760">
+    ܫܪܝܪܐ. ܘܗܝ ܡܢ ܗܢܐ ܡܕܪܫܐ ܕܚܘܒܐ ܘܫܠܡܐ. ܠܐ ܡܬܐ ܢܪܥܘܢ ܒܡܕܒܪܐ ܕܐܝܟ ܪܚܡܐ ܐܝܟ ܕܛܘܒܐ. ܗܢܐ ܡܕܢܚܐ ܥܡܐ ܠܥܡܐ ܘܠܟܠ ܡܢܗܘܢ ܕܪܚܡܬܐܝ̈ܢ. ܘܗܢܐ ܚܕ ܡܢ ܡܗܕܪܬܐ ܕܢܚܘܐ ܡܛܠ ܥܕܬܐ. 
+    ܘܐܝܟ ܢܚܒܘܫܘܢ ܒܩܕܡܐ ܘܢܬܒܷܪܢ ܒܒܝܬܐ ܕܡܪܢ ܘܕܡܪܢܬܐ. ܠܐ ܢܬܪܗܡܘܢ ܒܗܘܢ ܕܪܗܡܐ ܐܠܐ ܒܩܕܡܬܐ ܕܩܕܝܫܘܬܐ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="550,40,920,300">
-    cum periculo vitæ in justitia perse-
-    verantem.
-    Pensate, fratres, qualis libidinis
-    ardor justum hunc invasisset, si
-    oculos ipse in ejus Ægyptiæ corpus
-    injacere consuevisset? Tali exemplo
-    docti, nequaquam apud mulieres ac
-    virgines assidue perstemus: id enim
-    proposito refragatur eorum qui im-
-    maculatos se custodire volunt. Cha-
-    ritas enim qua sorores diligere de-
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="530,220,545,240">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="485,300,515,340">
     B
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="550,280,920,320">
-    bemus, comites habere debet om-
-    nem sanctitatem, castitatem, mentis energiam omnimodam, Deique timorem; nec fre-
-    quentem apud illas commorationem, aut assiduum in quavis hora accessum admittit.
+
+  [!-- Coluna direita (latim) --]
+  <bloco tipo="texto_principal" script="latino" bbox="530,80,970,380">
+    cum periculo vita in justitia perseverantem.
+    
+    Pensate, fratres, qualis libidinis ardor justum hunc invasisset, si oculos ipse in ejus Aegyptiæ corpus injicere consuevisset? Tali exemplo docti, nequaquam apud mulieres ac virgines assidue perstentus: id enim proposito refragatur eorum qui immaculatos se custodire volunt. Charitas enim qua sorores diligere debemus, comites habere debet omnem sanctitatem, castitatem, mentis energiam omnimodam, Deique timorem; nec frequentem apud illas commorationem, aut assiduum in quavis hora accessum admittit.
   </bloco>
-  <bloco tipo="texto_principal" script="siriaco" bbox="80,350,480,750">
-    ܦܩܘܕܐ ܕ
-    ܠܐ ܡܨܝܢܢ ܚܢ ܠܡܥܡܕ ܢܐܢܐ ܀ ܗܢܘ
-    ܕܗܘܘ ܒܩܕܫܘܬܐ ܘܒܝܐ ܕܐܠܗܐ ܀
-    ܚܕܐ ܡܢ ܐܠܗܐ ܗܘ ܘܡܢ ܒܟܘܗ ܘܠܗܘ
-    ܗܘ ܚܝܠܐ ܡܢܗܘܢ ܀ ܐܢܬܘܢ ܕܐܝܟܢܐ ܚܝ
-    ܐܢܘܢ ܀ ܘܡܢ ܕܐܝܟܐ ܚܝܝܘܢ ܀ ܒܚܨܪ
-    ܐܢ ܗܠܐ ܐܢܘܢ ܀ ܕܢܫܡܥ ܗܒܘ ܡܢܘܢ ܀
-    ܐܢܬܘܢ ܕܐܝܟ ܒܣܪܐ ܡܝܬܐ ܐܢܬܘܢ ܀
-    ܡܚܙܝܬܘܢ ܠܐ ܡܬܥܡܕܝܢ ܚܝܡܢ ܠܐ ܕܝܢܐ
-    ܚܕܐ ܐܢܬܢ ܀ ܡܢ ܨܠܘ ܠܥܠ ܒܚܡܪܐ
-    ܚܪ ܚܢܐ ܡܣܟ ܀ ܗܘ ܕܡܢܗ ܐܝܬܝܗ ܕܡܨܠܐ
-    ܗܘ ܕܢܗܘܐ ܠܗܘܢ ܚܪܘܐ ܀ ܬܢܝܢܐ ܡܢ ܗܘܐ
-    ܘܡܢܕܐ ܓܝܪܗ ܒܐܠܗܐ ܀
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="530,480,545,500">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="485,460,515,500">
     C
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="550,350,920,780">
-    CAPUT IX.
-    Num vobis ignota est historia
-    Samsonis Nazaræi virique fortissi-
-    mi, in quo Spiritus Dei habitavit?
-    Iste segregatus ac Deo consecratus
-    fuit, miraque fortitudo in eo exstitit
-    atque robur; hunc tamen perdidit
-    mulier, vilis corpusculi illecebris,
-    quibus cor ejus misere incendit.
-    Non illum, quicunque es, imitare.
-    Noveris te, nec tua te lateat dignitas;
-    mulier autem viri pretiosam animam
-    capit 60. Impense igitur suademus
-    viro ne apud cujusvis hominis uxo-
-    rem immoretur, nedum licentiam
-    ei demus idem cum puella nubili
-    tectum habendi, aut somnum car-
-    pendi ubi quiescit illa, nec frequen-
-    ter illam adeundi, quod odibile est,
-    ac timori Dei prorsus alienum.
+
+  <bloco tipo="cabecalho" script="siriaco" bbox="30,420,470,500">
+    ܗܘܐ ܡܫܚܬܐ
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="530,680,545,700">
+
+  <bloco tipo="cabecalho" script="latino" bbox="530,420,970,500">
+    CAPUT IX.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="siriaco" bbox="30,500,470,820">
+    ܡܫܪܕܐ ܘܫܪܝܪܐ. ܐܠܗܐ ܗܘܐ ܠܗܘܢ ܒܪܝܟܐ. ܕܡܛܠܗܘܢ ܥܡܪܘܢ ܡܢ ܡܕܝܢܐ ܘܢܟܣܘܢ ܒܛܘܒܐ. ܠܐ ܢܛܠܗܘܢ ܒܪܥܝܢ ܘܒܬܥܨܐ. ܗܢܐ ܕܡܚܒܒܐ ܐܝܬܝܢ ܡܢ ܟܠ ܟܠܗܘܢ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="530,500,970,820">
+    Num vobis ignota est historia Samsonis Nazaræi virique fortissimi, in quo Spiritus Dei habitavit? Iste segregatus ac Deo consecratus fuit, miraque fortitudo in eo exstitit atque robur; hunc tamen perdidit mulier, vilis corpusculi illecebris, quibus cor ejus misere incendit. Non illum, quicunque es, imitare. Noveris te, nec tua te lateat dignitas; mulier autem viri pretiosam animam capit 66. Impense igitur suademus viro ne apud cujusvis hominis uxorem inmoretur, nedum licentiam ei demus idem cum puella nubili tectum habendi, aut somnum carpendi ubi quiescit illa, nec frequenter illam adveundi, quod odibile est, ac timori Dei prorsus alienum.
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="485,700,515,740">
     D
   </bloco>
-  <bloco tipo="texto_principal" script="siriaco" bbox="80,800,480,940">
-    ܦܩܘܕܐ ܒ
-    ܠܐ ܕܕܕ ܗܘ ܕܕܗ ܘܐܚܣ ܐܠܗܐ ܠܚܢܐ
-    ܐܢ ܚܙܗ ܀ ܚܢܢܐ ܡܕܡܪܢ ܡܬܡܕܢ ܒܨܠܘ
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="550,800,920,940">
+
+  <bloco tipo="cabecalho" script="latino" bbox="530,820,970,920">
     CAPUT X.
-    Nonne documento tibi est exem-
-    plum Davidis quem invenerat Deus
-    virum secundum cor suum, fidelem,
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="100,950,300,980">
-    60 Prov VI, 26.
+
+  <bloco tipo="texto_principal" script="latino" bbox="530,920,970,990">
+    Nonne documento tibi est exemplum Davidis quem invenerat Deus virum secundum cor suum, fidelem,
   </bloco>
+
+  <bloco tipo="nota" script="latino" bbox="60,920,420,980">
+    "Prov VI, 26.
+  </bloco>
+
   <notas>
-    Texto em duas colunas: Siríaco (esquerda) e Latim (direita).
-    Letras A, B, C, D no gutter são notas marginais.
-    O texto siríaco parece ser Garshuni (Árabe em caracteres siríacos).
+    - Observação de transcrição: as letras marginais A, B, C, D (identificadores de secção) foram transcritas em blocos separados tipo="nota_marginal" e não inseridas no texto das colunas, conforme instruções.
+    - Script "siriaco" foi aplicado aos blocos da coluna esquerda. A transcrição do siriaco foi realizada como leitura literal das linhas visíveis; devido à resolução e estilização da impressão, alguns grafemas menores podem ter sido normalizados para caracteres siríacos padrão.
+    - BBOXs são aproximações relativas ao eixo 0-1000 conforme solicitado.
   </notas>
 </pagina>

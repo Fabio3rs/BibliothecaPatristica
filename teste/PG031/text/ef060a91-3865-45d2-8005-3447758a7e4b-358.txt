@@ -1,4 +1,8 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,80">
+701    MORALIA.    702
+  </bloco>
+
   <bloco tipo="texto_principal" script="grego" bbox="20,40,495,960">
 γεωτης αὐτοῦ, καὶ ἐκπορεύσεσθαι, οι τὰ ἀγαθὰ ἂ ἐγερθησονται,
 κομίσασιν, εἰς ἀθάνατον ζωῆς· οἱ δὲ τὰ φαῦλα
@@ -57,9 +61,8 @@
 
 Ὅτι μετὰ τὴν ἐπειθέεν ἀπαλλαγὴν οὐκ ἐστι καιρὸς
 κατορθώσιμον, τοῦ θεοῦ τὸν παρόντα καιρὸν
-
-(59) Hunc locum ita interpretatur Erasmus: Ad verbum, Ne videamini dicere, etc.
   </bloco>
+
   <bloco tipo="texto_principal" script="latino" bbox="505,40,980,960">
 MORALIA.
 in resurrectionem judicii (Joan. v. 28, 29).
@@ -105,16 +108,44 @@ Caput IV.
 Videns autem multos Pharisaeorum et Sadducæo-
 rum venientes ad baptismum suum, dixit eis: Pro-
 genies viperarum, quis demonstravit vobis fugere a
-ventura ira? Facile ergo fruclus dignos pœnitentiæ:
-et ne vobis libeat dicere intra vos ipsos: Patrem ha-
-bemus Abraham. Dico enim vobis, quod potentes est
+ventura ira? Facite ergo fructus dignos ponitentic :
+εἰ ne vobis libeat dicere intra vos ipsos : Patrem habemus Abraham. Dico enim vobis, quod potens est
 Deus de lapidibus istis suscitare filios Abrahae. Jam
 enim et securis ad radicem arborum posita est. Om-
-nis ergo arbor, quæ non facit fructum bonum, exci-
-ditur, et in ignem mittitur (Matth. un, 7-11).
+nis ergo arbor, quæ non facit fructum bonum, excidit
+ur, et in ignem mittitur (Matth. un, 7-11).
 
 Quod post discessum ex hac vita non est licitus
 recte factorum: quandoquidem Deus præsens
   </bloco>
-  <notas>Pagina em duas colunas: coluna esquerda em grego, direita em latim. BBOX estimadas visualmente. Algumas palavras compiladas de abbreviaturas; notas de rodapé transcritas ao fim do bloco grego. Nenhuma normalização ou tradução realizada.</notas>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="20,920,980,990">
+(59) Hunc locum ita interpretatur Erasmus: Ad verbum, Ne videamini dicere, etc.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="680,960,980,995">
+Digitized by Google
+  </bloco>
+
+  <bloco tipo="nota" script="latino" bbox="20,880,480,920">
+(59) Hunc locum ita interpretatur Erasmus: Et ne sitis hac mente, ut dicatis intra vos ipsos, etc.
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="480,180,505,210">
+A
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="480,340,505,365">
+B
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="480,540,505,565">
+C
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="480,760,505,785">
+D
+  </bloco>
+
+  <notas>Layout: duas colunas — bloco grego à esquerda (script="grego"), bloco latino à direita (script="latino"). Cabecalho com números de página e título. Aparato crítico/nota (59) transcrito como aparece na página. Letras marginais A, B, C, D separadas como nota_marginal (posições estimadas). Não foram efetuadas normalizações ou traduções; transcrição literal priorizando a imagem.</notas>
 </pagina>

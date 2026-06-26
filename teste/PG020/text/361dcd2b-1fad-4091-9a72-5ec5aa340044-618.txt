@@ -1,53 +1,162 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,60">
+  <bloco tipo="cabecalho" script="latino" bbox="100,30,900,60">
     1227 EUSEBII CÆSARIENSIS OPP. PARS I. — HISTORICA. 1228
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,60,480,600">
-    communione potiri mereretur : ipse vero etiam post mortem imperium retinens, quasi redivivus universum orbem gubernans, Victor Maximus Augustus, suo adhuc nomine rempublicam regeret.
-
+  <bloco tipo="texto_principal" script="latino" bbox="80,70,490,130">
+    communione potiri mereretur : ipse vero etiam
+    post mortem imperium retinens, quasi redivivus
+    universum orbem gubernans, Victor Maximus Au-
+    gustus, suo adhuc nomine rempublicam regeret.
+  </bloco>
+  <nota_marginal script="latino" bbox="470,70,485,85">A</nota_marginal>
+  <bloco tipo="texto_principal" script="latino" bbox="80,140,490,460">
     CAPUT LXXII.
     De phœnice ave.
-    Non quemadmodum avis illa Ægyptia, quæ cum ejus generis unica sit, super aromatum cumulo emori dicitur, seipsam quasi victimam immolans : moxque ex ipsis favillis renasci, et pennis in altum subvecta, eadem qua prius specie cerni : sed potius exemplo Servatoris sui, qui instar tritici sati, ex uno semine in multa sese diffundens, ope ac benedictione Dei spicam protulit, et universum terrarum orbem fructibus suis implevit; B ad hunc modum beatissimus 563 princeps per successionem liberorum multiplex factus est ex uno : adeo ut passim in omnibus provinciis imagines ei simul cum filiis honoris causa statuantur, et familiare nomen Constantini etiam post ejus obitum usurpetur.
-
-    CAPUT LXXIII.
-    Quomodo in nummis Constantinum velut in cælum ascendentem expresserint.
-    Quinetiam nummi hujusmodi forma signati sunt : anteriore quidem parte beatum principem obiecto capite præferentes ; altera vero parte in quadrijugo curru auriga instar sedentem, et porrecta ipsi cœlitus dextra ad superos assumptum.
-
-    CAPUT LXXIV.
-    Quod cum Deum coluisset, merito etiam a Deo honoratus est.
-    Hæc miracula summus omnium Deus in Constantino, qui solus ex omnibus retro imperatoribus Christianum se palam professus fuerat, nostris
+    Non quemadmodum avis illa Ægyptia, quæ
+    cum ejus generis unica sit, super aromatum cu-
+    mulo emori dicitur, seipsam quasi victimam immo-
+    lans : moxque ex ipsis favillis renasci, et pennis
+    in altum subvecta, eadem qua prius specie cerni :
+    sed potius exemplo Servatoris sui, qui instar tri-
+    tici sati, ex uno semine in multa sese diffundens,
+    ope ac benedictione Dei spicam protulit, et uni-
+    versum terrarum orbem fructibus suis implevit;
+    ad hunc modum beatissimus 563 princeps per
+    successionem liberorum multiplex factus est ex
+    uno : adeo ut passim in omnibus provinciis imagi-
+    nes ei simul cum filiis honoris causa statuantur,
+    et familiare nomen Constantini etiam post ejus
+    obitum usurpetur.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,60,960,600">
-    A εὐχὴν· αὐτὸς δὲ τῆς βασιλείας (77) καὶ μετὰ θάνατον ἐπειλημμένος, ὥσπερ οὖν ἐξ ἀναβιώσεως τὴν σύμπασαν ἀρχὴν διοικῶν, Νικητῆς, Μέγιστος, Σεβαστὸς (78) αὐτῷ προσρῥήματα τῆς ωμαίων ἡγεμονίας ἐκράτει (79).
-
+  <nota_marginal script="latino" bbox="470,340,485,355">B</nota_marginal>
+  <bloco tipo="texto_principal" script="latino" bbox="80,470,490,590">
+    CAPUT LXXIII.
+    Quomodo in nummis Constantinum velut in cœ-
+    lum ascendentem expresserint.
+    Quinetiam nummi hujusmodi forma signati sunt :
+    anteriore quidem parte beatum principem obiecto
+    capite præferentes ; altera vero parte in quadrijugo
+    curru auriga instar sedentem, et porrecta ipsi
+    cœlitus dextra ad superos assumptum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,600,490,730">
+    CAPUT LXXIV.
+    Quod cum Deum coluisset, merito etiam a Deo
+    honoratus est.
+    Hæc miracula summus omnium Deus in Con-
+    stantino, qui solus ex omnibus retro imperatoribus
+    Christianum se palam professus fuerat, nostris
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,70,920,140">
+    εὐχὴν· αὐτὸς δὲ τῆς βασιλείας (77) καὶ μετὰ θάνα-
+    τον ἐπειλημμένος, ὥσπερ οὖν ἐξ ἀναβιώσεως τὴν
+    σύμπασαν ἀρχὴν διοικῶν, Νικητῆς, Μέγιστος, Σεβα-
+    στὸς (78) αὐτῷ προσρῥηματὶ τῆς Ῥωμαίων ἡγεμονίας
+    ἐκράτει (79).
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,150,920,460">
     ΚΕΦΑΛΑΙΟΝ ΟΒ'.
     Περὶ φοίνικος ὀρνέου.
-    Οὐ κατὰ τὸν Αἰγύπτου ὄρνιν, ὃν δὴ φασι μονογενῆ ὄντα τὴν φύσιν, θυήσκειν μὲν ἐπ' ἀρωμάτων, αὐτὸν αὑτῷ τν τελευτὴν θυπολοῦντα, ἀναβιώσκειν δ' ἐξ αὐτῆς σποδιᾶς, καὶ ἀναπτάσθαι τοιοῦτον οἷος καὶ πρότερον ἦν φῦναι · κατὰ δὲ τὸν αὐτοῦ Σωτῆρα, ς τῷ τοῦ πυροῦ σπόρῳ παραπλησίως ἀνθ' ἑνὸς πολυπλασιαζόμενος, σὺν εὐλογίᾳ Θεο παρείχε τν στάχυν, καὶ τὴν σύμπασαν οἰκουμένην τῶν αὐτοῦ κατεπλήθιζε καρπῶν· τούτῳ ον ἐμφερς ὁ τρισμακάριος, πολυπλασίας (80) διὰ τῆς τῶν παίδων διαδοχῆς ἀνθ' ἑνὸς ἐγήγνετο, ὡς καὶ εἰκόνων ἀναστάσει παρὰ πᾶσιν θνεσιν μα τοῖς αὐτοῦ τιμᾶσθαι παισίν, οἰκεῖόν τε τοὔνομα Κωνσταντίνου, καὶ μετὰ τὴν τοῦ βίου παραλαμβάνεσθαι τελευτήν.
-
+    Οὐ κατὰ τὸν Αἰγύπτου ὄρνιν, ὃν δ φασι μονογεν
+    ὄντα τὴν φύσιν, θυήσκειν μὲν ἐπ' ἀρωμάτων, αὐτὸν
+    αὑτῷ τν τελευτὴν θυπηλοῦντα, ἀναβιώσκειν δ' ἐξ
+    αὐτς σποδις, καὶ ἀναπτάμενα τοιοῦτον οἷος καὶ
+    πρότερον ἦν φῦναι· κατὰ δὲ τὸν αὐτοῦ Σωτῆρα, ς
+    τ τοῦ πυροῦ σπόρῳ παραπλησίως ἀνθ' ἑνὸς πολυ-
+    πλασιαζόμενος, σὺν εὐλογίᾳ Θεοῦ παρείχε τὸν στάχυν,
+    καὶ τὴν σύμπασαν οἰκουμένην τῶν αὐτοῦ κατε-
+    πλήθλα καρπῶν· τούτῳ οὖν ἐμμερῶς  τρισμακάριος,
+    πολυπλάσιος (80) διὰ τῆς τν παίδων διαδοχῆς ἀνθ'
+    ἑνς ἐγίνετο, ὡς κα εἰκόνων ἀναστάσει παρὰ
+    πᾶσιν ἔθνεσιν ἅμα τοῖς ατοῦ τιμσθαι παισίν,
+    οἰκεῖόν τε τὸ ὄνομα Κωνσταντίνου, καὶ μετὰ τὴν τοῦ
+    βίου παραλαμβάνεσθαι τελευτήν.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,470,920,660">
     ΚΕΦΑΛΑΙΟΝ ΟΓ'.
-    Ὅπως ἐν νομίσμασιν, ὡς εἰς οὐρανὸν ἀνιόντα Κωνσταντῖνον ἐνεχάρασσον.
-    Ἤδη δὲ καὶ νομίσμασιν ἐνεχάραττον τύποι, πρόσθεν μὲν ἐντυποῦντες τὸν μακάριον, ἐγκεκαλυμμένον τὴν κεφαλὴν σχήματι (81), θατέρου δὲ μέρους ἐφ' ἅρματι τεθρίππῳ ἡνίοχου τρόπον, ὑπὸ δεξιᾶς νωθεν ἐκτεινομένης αὐτῷ χειρὸς ἀναλαμβανόμε- C νον.
-
+    Ὅπως ἐν νομίσμασιν, ὡς εἰς οὐρανὸν ἀνιόντα
+    Κωνσταντῖνον ἐνεχάρασσον.
+    Ἤδη δὲ καὶ νομίσματι ἐνεχαράττοντο τύποι,
+    πρόσθεν μὲν ἐντυποῦντες τὸν μακάριον, ἐγκεκαλυμ-
+    μένον τὴν κεφαλὴν σχήματι (81), θατέρου δὲ μέρους
+    ἐφ' ἅρματι τεθρίππῳ ἡνίοχου τρόπον, ὑπὸ δεξιᾶς
+    ἄνωθεν ἐκτεινομένης αὐτῷ χειρὸς ἀναλαμβανόμε-
+  </bloco>
+  <nota_marginal script="latino" bbox="495,640,510,655">C</nota_marginal>
+  <bloco tipo="texto_principal" script="grego" bbox="510,655,560,675">
+    νον.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,680,920,760">
     ΚΕΦΑΛΑΙΟΝ ΟΔ'.
-    Ὅτι  τιμηθεὶς ὑπ' αὐτοῦ Θεὸς δικαίως αὐτὸν ἀντετίμησε.
-    Ταῦθ' ἡμῖν αὐτοῖς δείξας ὀφθαλμοῖς, ἐπὶ μόνῳ τν πώποτε Χριστιανῷ διαφανς (82) ἀποδειχθέντι Κωνσταντίνῳ τ ἐπὶ πάντων Θεός, ὁπόσον ἦν ἄρα
+    Ὅτι ὁ τιμηθεὶς ὑπ' αὐτοῦ Θεὸς δικαίως αὐτὸν
+    ἀντετίμησε.
+    Ταῦθ' ἡμν αὐτος δείξας φθαλμος, ἐπὶ μόνῳ τῶν
+    πώποτε Χριστιανῷ διαφανῶς (82) ἀποδειχθέντι
+    Κωνσταντίνῳ τὸ ἐπὶ πάντων Θεὸς, ὅπόσον ἦν ρα
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="40,610,480,950">
-    (77) Vulg. αὐτὸς δ τῆς βασιλείας μετὰ θάνατον. Scribo αὐτὸς δὲ τῆς β. καὶ μετὰ θάνατον ἐπειλημμένος, quod confirmant sequentia. Atque ita in codice Fuk. diserte scriptum inveni.
-    (78) Νικητῆς, Μέγιστος, Σεβαστός. Hujusmodi erat inscriptio, legibus et epistolis Constantini præfigi solita, ut passim testatur Eusebius : Victor Constantinus Magnus Augustus. Pronomen Victoris sumpsit Constantinus post partam de tyrannis victoriam. D Sed et filii ipsius quasi jure hæreditario illud retinuerunt, ut docent eorumdem epistolæ. Porro ex hoc loco apparet, post obitum Constantini Maximi, tribus circiter mensibus, id est toto interregni spatio, leges omnes atque edicta, Constantini, tanquam superstilis, nomine inscripta fuisse, cum nullus alius Augustus esset in orbe Romano, ut supra observavi. Potest etiam intelligi hic locus de liberis Constantini Magni qui eodem titulo et nomine utebantur, et in quibus pater reviviscere videbatur. Quam interpretationem confirmant sequentia.
-    (79) Vulg. ἡγεμονίας κρατεῖν. Scribo ἐκράτει, ut respondeat ei verbo quod multo ante præcessit, κατηύξοντο. Porro in codice Regio ad marginem hujus capitis, Græcus scholiastes hæc verba in honorem Constantini ascripserat : Εἰς αἰώνιον μνημόσυνόν ἐστι τὸ ὄνομά σου, ἀποστόλων τρισκαιδέκατε. Sed et passim in hoc opere laudibus ac votis eum aspergit idem ille scriba. In Fuk. codice scribitur κρατεῖ.
+  <bloco tipo="aparato_critico" script="misto" bbox="80,750,490,960">
+    (77) Vulg. αὐτὸς δ τῆς βασιλείας μετὰ θάνατον.
+    Scribo αὐτὸς δ τῆς β. καὶ μετὰ θάνατον ἐπειλημμέ-
+    νος, quod confirmant sequentia. Atque ita in codice
+    Fuk. diserte scriptum inveni.
+    (78) Νικητῆς, Μέγιστος, Σεβαστός. Hujusmodi
+    erat inscriptio, legibus et epistolis Constantini præ-
+    figi solita, ut passim testatur Eusebius : Victor
+    Constantinus Magnus Augustus. Pronomen Victoris
+    sumpsit Constantinus post partam de tyrannis vi-
+    ctoriam. Sed et filii ipsius quasi jure hæreditario illud
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="520,610,960,950">
-    (80) Vulg. πολυπλασίως. Savilius ad oram libri sui notat legendum esse πολυπλάσιος, cui assentior; mallem tamen πολυπλασίων.
-    (81) Ἐγκεκαλυμμένον τὴν κεφαλὴν σχήματι. Ultima vox delenda mihi videtur, quam ex margine in textum irrepsisse credibile est. Ascriptum autem erat in margine ὀχήματι, ad explicationem vocabuli sequentis ἅρματι. Quod vero ad marginem editionis Genevensis legitur διαβήματι, meo quidem judicio ineptissimum est, neque Græci sermonis proprietates eam locutionem admittit. Porro in plerisque nummis Constantinus capite galeato conspicitur.
-    (82) Vulg. Χριστιανὸν διαφανῶς. Scribendum est sine dubio Χριστιανῷ. Scribendum quoque est μόνῳ τν πώποτε βασιλέων, aut certe subaudiendum. Cæterum Eusebius neminem excipit ex numero imperatorum Romanorum, dum ait primum ex omnibus Constantinum palam et aperte Christianum fuisse. Quod certe verissimum est. Etsi enim Philippus imperator Christianus fuisse a nonnullis proditur, non tamen Christianam religionem, perinde ac Constantinus, palam professus est. Alio sensu Orosius in libro VII, de Constantino ita scribit : « Primus imperatorum Christianus, excepto Philippo, qui Christianus annis admodum paucis ad hoc tantum consultus finisse mihi visus est, ut millesimus Romæ annus Christo, potius quam idolis dedicaretur. »
+  <nota_marginal script="latino" bbox="495,860,510,875">D</nota_marginal>
+  <bloco tipo="aparato_critico" script="misto" bbox="80,860,490,960">
+    retinuerunt, ut docent eorumdem epistolæ. Porro
+    ex hoc loco apparet, post obitum Constantini Ma-
+    ximi, tribus circiter mensibus, id est toto interregni
+    spatio, leges omnes atque edicta, Constantini, tanquam
+    superstis, nomine inscripta fuisse, cum nullus alius
+    Augustus esset in orbe Romano, ut supra observavi.
+    Potest etiam intelligi hic locus de liberis Constan-
+    tini Magni qui eodem titulo et nomine utebantur, et
+    in quibus pater reviviscere videbatur. Quam inter-
+    pretationem confirmant sequentia.
+    (79) Vulg. ἡγεμονίας κρατεῖν. Scribo ἐκράτει, ut
+    respondeat ei verbo quod multo ante præcessit, κατ-
+    ῆρχον. Porro in codice Regio ad marginem hujus
+    capitis, Græcus scholiastes hæc verba in honorem
+    Constantini ascripserat : Εἰς αἰώνιον μνημόσυνόν ἐστι
+    τὸ ὄνομά σου, ἀποστόλων τρισκαιδέκατε. Sed et
+    passim in hoc opere laudibus ac votis eum aspergit
+    idem ille scriba. In Fuk. codice scribitur κρατεῖ.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="0,960,1000,1000">
-    Digitized by Google
+  <bloco tipo="aparato_critico" script="misto" bbox="510,750,920,960">
+    (80) Vulg. πολυπλασίως. Savilius ad oram libri
+    sui notat legendum esse πολυπλάσιος, cui assentior;
+    mallem tamen πολυπλάσιον.
+    (81) Ἐγκεκαλυμμένον τὴν κεφαλὴν σχήματι.
+    Ultima vox delenda mihi videtur, quam ex margine
+    in textum irrepsisse credibile est. Ascriptum autem
+    erat in margine ὀχήματι, ad explicationem vocabuli
+    sequentis ἅρματι. Quod vero ad marginem editionis
+    Genevensis legitur διαβήματι, meo quidem judicio
+    ineptissimum est, neque Græci sermonis proprietas
+    eam locutionem admittit. Porro in plerisque num-
+    mis Constantinus capite galeato conspicitur.
+    (82) Vulg. Χριστιανῷ διαφανῶς. Scribendum est
+    sine dubio Χριστιανῷ. Scribendum quoque est μόνῳ
+    τῶν πώποτε βασιλέων, aut certe subaudiendum. Cæte-
+    rum Eusebius neminem excipit ex numero imperato-
+    rum Romanorum, dum ait primum ex omnibus Con-
+    stantinum palam et aperte Christianum fuisse. Quod
+    certe verissimum est. Etsi enim Philippus imperator
+    Christianus fuisse a nonnullis proditur, non tamen
+    Christianam religionem, perinde ac Constantinus,
+    palam professus est. Alio sensu Orosius in libro VII,
+    de Constantino ita scribit : « Primus imperatorum
+    Christianus, excepto Philippo, qui Christianus an-
+    nis admodum paucis ad hoc tantum constitutus
+    fuisse mihi visus est, ut millesimus Romæ annus
+    Christo, potius quam idolis dedicaretur. »
   </bloco>
   <notas>
-    Letras marginais A, B, C, D identificadas no fluxo do texto ou margens.
-    Texto grego e latino misturados nas notas de rodapé.
-    Número 563 em negrito no texto latino.
+    Transcription includes Latin and Greek text. Marginal letters A, B, C, D identified in gutter/margins.
   </notas>
 </pagina>

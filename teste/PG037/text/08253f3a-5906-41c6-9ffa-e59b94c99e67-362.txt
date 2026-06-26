@@ -1,41 +1,48 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="0,0,1000,60">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="180,0,820,60">
     745 S. GREGORII THEOL. CARMINUM LIBER I. THEOLOGICA. 748
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="60,60,480,250">
+
+  <bloco tipo="texto_principal" script="grego" bbox="60,60,480,260">
     480 Ὅν εἷς, τὸ πλεῖον τῶν ἀναγκαίων ἔχειν
     Μηδέν τε μέτρον εἰδέναι τῆς κτήσεως,
-    Κακοῦ τ χεῖρον φάρμακον ποιουμένους,
-    Διψώντας αὐτῷ τ ποτῷ καυσουμένους.
-    Ἐξ οὗ, τί γίνεθ', ὡς παράδοξον, σκόπει.
+    Κακοῦ τὸ χεῖρον φάρμακον ποιουμένους,
+    Διψῶντας αὐτῷ τῷ ποτῷ καισουμένους.
+    Ἐξ οὗ, τί γίνεθ', ὡς παράδοξον, σκέπει,
     485 Ἀεὶ πένεσθαι τῷ λιπόντι κτωμένους,
     Τέρψιν δὲ τοῦ κτηθέντος οὐ δύνασθ' ἔχειν,
-    Τῷ μὴ παρόντι · καὶ γὰρ ἐκτῆσαι φρένας.
+    Τῷ μὴ παρόντι· καὶ γὰρ ἐκτήχει φρένας.
     Πρῶτος μὲν οὗτος εὐτελοῦς ζωῆς νόμος,
     Ἔστιν δ' ἐκεῖνος δεύτερος. Τὸν Ἀβραὰμ
     490 Τὸν πατριάρχην, τὸν θεόπτην τὸν μέγαν,
     Οἴκου, γένους τε, πατρίδος ἐξελκύσας,
     Ὁ τῶν μεγίστων οἰκονόμος μυστηρίων,
-    Εἰς γῆν μετήγαγ' εὐκόλως ἀλλοτρίαν,
+    Εἰς γῆν μετήγαγ' εὐχόλως ἀλλοτρίαν,
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="500,60,940,250">
-    A Ξένον, πάροικον, ἄστεγον, πλανώμενον.
+
+  <bloco tipo="texto_principal" script="grego" bbox="500,60,940,260">
+    Ξένον, πάροικον, ἄστεγον, πλανώμενον,
     495 Πίστις γὰρ εἶλκεν ἐλπίδων τῶν μειζόνων·
-    Ἄρτον δ' Ἰακὼβ καὶ σκέπην ἥτει μόνον,
+    Ἄρτον δ' Ἰακὼβ καὶ σκέπην ἦτει μόνον,
     Ὀρμῶν ποταμῶν ποτ' εἰς μέσην, ὥσπερ λόγος,
     Εἰ καὶ πολυθρέμμων ἐπάνεσιν ὕστερον,
-    Μισθὸν δίκαιον εὑράμενος οὗτον πόνων.
+    Μισθὸν δίκαιον εὑρόμενος οὗτον πόνων.
     500 Καὶ τοῦτο δ' εἰπεῖν εὖ ἔχει πρὸς οἷς ἔφην·
-    Μωσῆς δ' εἴσω τοῦ γνόφου μόνος μόνῳ
+    Μωσῆς ὅτ' εἴσω τοῦ γνόφου μόνος μόνῳ
     Θεῷ προσωμίλησε, καὶ πλαξὶν νόμον
     Διπλοῦν ἐδέξαθ', ᾧ λεὼν ἦγε μέγαν·
     Τότ' οὖν μερίζων ἦν κατέσχον ἐκ Θεοῦ,
-    505 Ἄλλοις μὲν λλην γῆν ἐμέτρησε ξένην·
-    Υἱος δὲ Λευὶ κλῆρον οὐ νέμει μόνοις.
-    Κλῆρος γὰρ αὐτοῖς  κράτιστος, ν Θεός.
+    505 Ἄλλοις μὲν ἄλλην γῆν ἐμέτρησε ξένην·
+    Υἱοὶ δὲ Λευὶ κλῆρον οὐ νέμει μόνον.
+    Κλῆρος γὰρ αὐτοῖς ὁ κράτιστος, ἦν Θεός.
   </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="500,60,520,90">
+    A
+  </bloco>
+
   <bloco tipo="texto_principal" script="latino" bbox="220,280,780,580">
-    480 Horum una est, plus quam necessitas requirat, habere.
+    480 Horum una est, plus quam necessitas requirat, habere,
     Nec modum ullum possessionum agnoscere,
     Malo pejorem dum facimus medicinam,
     Sitientesque ipso potu æstuamus.
@@ -43,7 +50,7 @@
     485 Per id quod deest, semper sumus pauperes in opibus,
     Neque ex acquisitis voluptatem ullam percipere possumus,
     Propter id quod non adest : hoc enim mentem labefacit.
-    Atque illa quidem prima exstitit vita simplicis lex,
+    Atque illa quidem prima exstitit vitæ simplicis lex,
     Hæc autem secunda. Abrahamum
     490 Patriarcham, magnum Dei contemplatorem,
     Domno, genere, patria extractum,
@@ -56,34 +63,41 @@
     Quanquam postea dives pecoribus rediit,
     Justam hanc mercedem laborum adeptus.
     500 Atque illud etiam his, quæ dixi, æquum est addere :
-    Quando Moses intra caliginem solus cum solo
-    Collocutus est Deo, ac lapidibus insculptam legem
-    Duplicem accepit, qua magnum regebat populum :
+    Quando Moses intra caliginem solus cum Deo collocutus est,
+    ac lapidibus insculptam legem Duplicem accepit, qua magnum regebat populum :
     Tunc dividens terram, quam a Deo datam tenebant,
-    440-441 505 Aliis quidem aliam emensus est extraneam terram,
+    505 Aliis quidem aliam emensus est extraneam terram,
     Solis autem filiis Levi nullam partem distribuit.
     Pars enim illis præstantissima erat Deus.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="80,600,450,700">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="480,740,500,780">
+    B
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="80,600,450,760">
     482 Ποιουμένους. Ita Coisl. Edit. ποιουμένους.
-    483 Αὐτ τῷ. Ita Coisl. Edit. εἶναι τῷ. Μοι καυ-
-    σομένους, combustos.
-    485 Τῷ λιπόντι κτωμένους. Coisl. λείποντι τηκο-
+    483 Αὐτῷ τῷ. Ita Coisl. Edit. εἶναι τῷ. Mox καυ-
+    σουμένου:, combustos.
+    485 Τῷ λιπόντι κτωμένους. Coisl. λειπόντι τυχ-
     μένους.
     486 Τοῦ κτηθέντος. Coisl. τῶν κτηθέντων.
-    495 Εἶλκεν. Vat. et Coisl. ἦγεν.
+    495 Ἐἶλκεν. Vat. et Coisl. ἦγεν.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="500,600,920,700">
-    499 Μισθὸν δίκαιον εὑράμενος οὗτον πόνων.
-    Coisl. μισθὸν δικαίων εὑράμενος τούτου. Vat. etiam
+
+  <bloco tipo="aparato_critico" script="misto" bbox="500,600,920,760">
+    499 Μισθὸν δίκαιον εὑρόμενος οὗτον πόνων.
+    Coisl. μισθὸν δικαίων εὑράμενος τοῦτον. Vat. etiam
     εὑράμενος. — Benedictini post edit. servaverunt vo-
     cem οὗτον, quæ Græco idiomati extranea videtur ;
-    dicitur enim τούτου, non vero οὗτον. Forte legendum
+    dicitur enim τοῦτου, non vero οὗτον. Forte legendum
     foret οὕτως, sic justam mercedem, etc.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="420,710,580,730">
+
+  <bloco tipo="cabecalho" script="latino" bbox="360,710,640,740">
     METRICA VERSIO.
   </bloco>
+
   <bloco tipo="texto_principal" script="latino" bbox="80,740,450,920">
     Quorum unus est hic, plus habere scilicet,
     Quam sit necesse, scire nec census modum :
@@ -100,8 +114,9 @@
     Patriasque sedes, cum propinquis omnibus,
     Linquens, obiret externas terras, vagus,
   </bloco>
+
   <bloco tipo="texto_principal" script="latino" bbox="500,740,920,920">
-    B Carensque tecto, dissitas longe ; fides
+    Carensque tecto, dissitas longe ; fides
     Trahebat etenim, spesque majoris boni.
     Jacob poposcit, pane dempto et vestibus,
     Nihil, interamnam se fuga ad terram ferens :
@@ -116,12 +131,12 @@
     Levi sed ortis ipse nil solis dedit,
     Quod pars eorum præpotens esset Deus.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="450,960,550,990">
+
+  <bloco tipo="rodape" script="latino" bbox="420,960,580,990">
     Digitized by Google
   </bloco>
+
   <notas>
-    Transcrição de página da Patrologia Graeca (PG 37), contendo texto grego, tradução latina em prosa, aparato crítico e tradução latina em verso (Metrica Versio).
-    O bloco de texto principal latino no meio da página corresponde à tradução em prosa do poema grego acima.
-    As letras A e B indicam parágrafos/poemas.
+    Página contendo texto grego em duas colunas superiores (esquerda e direita), tradução latina em prosa ao centro e versão métrica latina abaixo, com aparato crítico em duas colunas no rodapé. As letras-seccionais A e B foram colocadas em blocos de nota_marginal separados (locais aproximados nas margens da coluna correspondente). Transcrição fiel à imagem; não foram aplicadas normalizações nem traduções. Eventuais variantes ortográficas reproduzidas conforme impresso.
   </notas>
 </pagina>

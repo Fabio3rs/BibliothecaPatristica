@@ -1,153 +1,85 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="misto" bbox="0,0,1000,60">
     769 ORATIO VII. — IN LAUDEM CÆSARI FRATRIS. 770
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,60,480,400">
-    ραθρον. Καὶ τὸ μὲν πρῶτον αὐτῷ (18) τέχνασμα τε
-    καὶ σόφισμα (19), ἵνα μηδὲ τς ἐπὶ τος ἄθλοις τι-
-    μῆς τυγχάνωμεν (ἐφθόνει γὰρ καὶ ταύτης Χριστια-
-    νοῖς ὁ γεννάδας ), πάσχοντας ὡς Χριστιανούς, ὡς
-    κακούργους κολάζεσθαι. τὸ δὲ δεύτερον πειθοῦς
-    ὄνομα προσεῖναι τῷ γινομένῳ, μὴ τυραννίδος, ὡς
-    ἂν μεῖζον ᾖ τοῦ κινδύνου τὸ τῆς αἰσχύνης, αὐθαιρέ-
-    τως χωροῦσι πρὸς τὴν ἀσέβειαν. Καὶ τοὺς μὲν χρή-
-    μασι, τοὺς δ ἀξιώμασι, τοὺς δὲ ὑποσχέσεσι, τοὺς
-    δὲ παντοίαις τιμαῖς ὑφελκόμενος (20), ἃς οὐδὲ βασι-
-    λικῶς προσῆγεν, ἀλλὰ καὶ λίαν δουλοπρεπῶς ἐν ταῖς
-    ἁπάντων ὄψει, πάντας δὲ τῇ γοητείᾳ τν λόγων (21)
-    καὶ τ καθ' ἑαυτὸν ὑποδείγματι, ἐπὶ πολλοῖς πειρᾶ-
-    ται καὶ Καισαρίου. Φεῦ τς παραπληξίας καὶ τῆς
-    ἀνοίας, εἰ Καισάριόν ἐστι ὅντα, καὶ ἀδελφὸν ἐμὸν, καὶ
-    τῶν γονέων τούτων συλλήσειν ἤλπισεν!
+
+  [!-- Left column: top Greek block --]
+  <bloco tipo="texto_principal" script="grego" bbox="30,60,480,360">
+    ραθρον. Καὶ τὸ μὲν πρῶτον αὐτῷ (18) τέχνασμα τε καὶ σόφισμα (19), ἵνα μηδὲ τῆς ἐπὶ τοῖς ἄθλοις τιμῆς τυγχάνωμεν (ἐφθόνει γὰρ καὶ ταύτης Χριστιανοῖς ὁ γεννάδας ), πάσχοντας ὡς Χριστιανούς, ὡς κακούργους κολάζεσθαι· τὸ δὲ δεύτερον πειθοῦς ὄνομα προσεῖναι τῷ γινομένῳ, μὴ τυραννίδος, ὡς ἂν μεῖζον ᾖ τοῦ κινδύνου τὸ τῆς αἰσχύνης, αὐθαιρέτως χωροῦσι πρὸς τὴν ἀσέβειαν. Καὶ τοὺς μὲν χρήμασι, τοὺς δὲ ἀξιώμασι, τοὺς δὲ ὑποσχέσεσι, τοὺς δὲ παντοίαις τιμαῖς ὑφελκόμενος (20), ἃς οὐδὲ βασιλικῶς προσῆγεν, ἀλλὰ καὶ λίαν δουλοπρεπῶς ἐν ταῖς ἁπάντων ὄψεσι, πάντας δὲ τῇ γοητείᾳ τῶν λόγων (21) καὶ τῷ καθ' ἑαυτὸν ὑποδείγματι, ἐπὶ πολλοῖς πειρᾶται καὶ Καισαρίου. Φεῦ τῆς παραπληξίας καὶ τῆς ἀνοίας, εἰ Καισάριόν τε ὄντα, καὶ ἀδελφὸν ἐμὸν, καὶ τῶν γονέων τούτων συλλήσειν ἤλπισεν!
   </bloco>
+
+  [!-- Left column: small Latin interjection in gutter area --]
+  <bloco tipo="texto_principal" script="latino" bbox="30,360,480,420">
+    amentiam, 206 si spem habuit fore, ut et Cæsarium, et fratrem meum, et his parentibus natum præderetur!
+  </bloco>
+
+  [!-- Left column: continuation Greek narrative --]
+  <bloco tipo="texto_principal" script="grego" bbox="30,420,480,760">
+    IB. Ἀλλ᾽, ἵνα μικρὸν προσδιατρίψω τῷ λόγῳ, καὶ κατατρυφήσω τοῦ διηγήματος, ὡς οἱ παρόντες τοῦ θαύματος (22), εἴηει μὲν ὁ γεννάδας ἐκεῖνος, τῷ τοῦ Χριστοῦ σημείῳ φραξάμενος, καὶ τὸν μέγαν λόγον ἑαυτοῦ προβαλλόμενος, πρὸς τὸν πολὺν ἐν ὅπλοις, καὶ μέγαν ἐν λόγων δεινότητι· οὐδὲν δὲ καταπλαγεὶς πρὸς τὴν ὕβριν, οὐδὲ θωπείᾳ τι καταβαλὼν τοῦ φρονήματος, ἀθλητὴς ἑτοῖμος ἦν, καὶ λόγῳ καὶ ἔργῳ, πρὸς τὸν ἐν ἀμφοτέροις δυνατὸν ἀγωνίζεσθαι. Τὸ μὲν οὖν στάδιον τοιοῦτον, καὶ ὁ τῆς εὐσεβείας ἀγωνιστὴς τοσοῦτος· καὶ ἀγωνοθέτης (23), ἔνθεν μὲν Χριστὸς τοῖς ἑαυτοῦ πάθεσι τὸν ἀθλητὴν ἐξοπλίζων, ἐκεῖθεν δὲ δεινὸς τύραννος τῇ τῶν λόγων οἰκειότητι προσαινῶν, καὶ τῷ τῆς ἐξουσίας ὄγγῳ δεδιττόμενος· θέατρον δὲ ἀμφοτέρωθεν, τῶν τε τῇ εὐσεβείᾳ λειπομένων ἔτι, καὶ τῶν ὑπ᾽ ἐκείνου συνηρπασμένων, ὅπῃ νεύσῃ (24) τὰ κατ᾽ αὐτοὺς ἀποσκοπούντων, ὅστις νικήσει πλείω τὴν ἀγωνίαν (25) ἐχόντων ἢ περὶ οὓς τὸ θέατρον.
+  </bloco>
+
+  [!-- Right column: top Latin block (remove marginal letter A) --]
   <bloco tipo="texto_principal" script="latino" bbox="520,60,950,350">
-    A obsidebat, omni machinarum genere in voraginem
-    suam miseros callide pertrahens. Ac, ne eos hono-
-    res, qui martyribus haberi solent, consequerentur
-    (hos enim Christianis vir egregius invidebat),
-    primum illius artificium hoc fuit, ut qui Christi
-    causa patiebantur, tanquam sontes et facinorosi
-    cruciatu afficerentur; alterum, quod huic rei, non
-    tyrannidis, sed persuasionis nomen imponebat :
-    quod scilicet major eorum infamia, quam pericu-
-    lum esset, qui sponte ad impietatem se conferebant.
+    obsidebat, omni machinarum genere in voraginem suam miseros callide pertrahens. Ac, ne eos honores, qui martyribus haberi solent, consequerentur (hos enim Christianis vir egregius invidebat), primum illius artificium hoc fuit, ut qui Christi causa patiebantur, tanquam sientes et facinorosi cruciatu afficerentur; alterum, quod huic rei, non tyrannidis, sed persuasionis nomen imponebat: quod scilicet major eorum infamia, quam periculum esset, qui sponte ad impietatem se conferebant,
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,400,480,430">
-    amentiam, 206 si spem habuit fore, ut et Cæsarium,
-  </bloco>
+
+  [!-- Right column: middle Latin continuation --]
   <bloco tipo="texto_principal" script="latino" bbox="520,350,950,430">
-    Cumque alios pecuniis, alios dignitatibus, alios
-    promissis, alios variis honorum generibus, quos ne
-    regie quidem, sed perquam serviliter in omnium
-    aspectu deferebat, omnes denique verborum præ-
-    stiis ac suo exemplo ac se allicere, post multos
-    B Casarium quoque aggreditur. Proh stuporem et
-    et fratrem meum, et his parentibus natum
-    præderetur!
+    Cumque alios pecuniis, alios dignitatibus, alios promissis, alios variis honorum generibus, quos ne regie quidem, sed perquam serviliter in omnium aspectu deferbat, omnes denique verborum præstiis ac suo exemplo ad se allicere, post multos Cæsarium quoque aggreditur. Proh stuporem et
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,430,480,650">
-    IV. Ἀλλ', να μικρὸν προσδιατρίψω τῷ λόγῳ, καὶ
-    κατατρυφήσω τοῦ διηγήματος, ὡς οἱ παρόντες τοῦ
-    θαύματος (22), εἴηει μὲν ὁ γεννάδας ἐκεῖνος, τῷ τοῦ
-    Χριστοῦ σημείῳ φραξάμενος, καὶ τὸν μέγαν λόγον
-    ἑαυτοῦ προβαλλόμενος, πρὸς τὸν πολὺν ἐν ὅπλοις, καὶ
-    μέγαν ἐν λόγων δεινότητι· οὐδὲν δὲ καταπλαγεὶς
-    πρὸς τὴν ὕβιν, οὐδὲ θωπείᾳ τι καταβαλὼν τοῦ φρονή-
-    ματος, ἀθλητὴς ἑτοῖμος ἦν, καὶ λόγῳ καὶ ἔργῳ,
-    πρὸς τὸν ἐν ἀμφοτέροις δυνατὸν ἀγωνίζεσθαι. Τὸ
-    μὲν ον στάδιον τοιοῦτον, καὶ ὁ τῆς εὐσεβείας ἀγω-
-    νιστὴς τοσοῦτος· καὶ ἀγωνοθέτης (23), ἔνθεν μὲν
-    Χριστὸς τοῖς ἑαυτοῦ πάθεσι τὸν ἀθλητὴν ἐξοπλίζων,
-    ἐκεῖθεν δὲ δεινὸς τύραννος τῇ τῶν λόγων οἰκειότητι
-    προσοινῶν, καὶ τῷ τς ἐξουσίας γκῳ δεδιττόμε-
-    νος· θέατρον δὲ ἀμφοτέρωθεν, τῶν τε τῇ εὐσεβείᾳ
-    λειπομένων ἔτι, καὶ τῶν ὑπ' ἐκείνου συνηρπασμένων,
-    ὅπῃ νεύσῃ (24) τὰ κατ' αὐτοὺς ἀποσκοπούντων, ὅστις
-    νικήσει πλείω τὴν ἀγωνίαν (25) ἐχόντων ἢ περὶ οὓς
-    τὸ θέατρον.
-  </bloco>
+
+  [!-- Right column: large Latin translation/commentary block corresponding to Greek IV --]
   <bloco tipo="texto_principal" script="latino" bbox="520,430,950,650">
-    XII. Verum (ut in hoc sermone paululum immo-
-    rer, atque ex hac narratione delicias capiam, quem-
-    admodum e re mira ii qui tum affuerunt), ingre-
-    diebatur vir ille fortis, Christi signo munitus, ely-
-    peique vice magnum verbum obtendens, ad homi-
-    nem multum in armis, et magnum in dicendi facul-
-    tate. Nec vero ad illius aspectum ullo metu percul-
-    sus est, nec ob verborum blanditias de animi magni-
-    tudine quidquam abjecit; verum promptus et para-
-    tus athleta erat ad decertandum, tum sermone,
-    tum opere, adversus eum, qui in utroque genere
-    viribus pollebat. Ac tale quidem erat stadium, tan-
-    tusque pietatis propugnator. Atque certaminis præ-
-    ses, hinc quidem Christus, per passiones suas pugile-
-    C lem armans, illinc autem gravis tyrannus, tum
-    verborum illecebris athletam mulcens, tum poten-
-    tiæ mole terrians. Quin etiam utrinque theatrum
-    erat, hoc est, eorum qui in fidei pietate adhuc
-    remanserant, et eorum qui ab illo abrepti fuerant,
-    utram in partem eorum certamen inclinaret, spectantium, atque, uter vinceret, magis laborantium,
-    quam illi ipsi, quos spectabant.
+    XII. Verum (ut in hoc sermone paululum immorer, atque ex hac narratione delicias capiam, quemadmodum e re mira ii qui tum affuerunt), ingrediebatur vir ille fortis, Christi signo munitus, clypeique vice magnum verbum obtendens, ad hominem multum in armis, et magnum in dicendi facultate. Nec vero ad illius aspectum ullo metu perculsus est, nec ob verborum blanditias de animi magnitudine quidquam abjecit; verum promptus et paratus athleta erat ad decertandum, tum sermone, tum opere, adversus eum, qui in utroque genere viribus pollebat. Ac tale quidem erat stadium, tantusque pietatis propugnator. Atque certaminis præses, hinc quidem Christus, per passiones suas pugilem armans, illinc autem gravis tyrannus, tum verborum illecebris athletam mulcens, tum potentiæ mole terrians. Quin etiam utrinque theatrum erat, hoc est, eorum qui in fidei pietate adhuc remanserant, et eorum qui ab illo abrepti fuerant, utram in partem eorum certamen inclinaret, spectantium, atque, uter vinceret, magis laborantium, quam illi ipsi, quos spectabant.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,650,480,780">
-    IV. Ἄρ' οὐκ ἔδεισε περὶ Καισαρίου, μήτι πάθῃ
-    τῆς προθυμίας ἀνάξιον; Ἀλλὰ θαρσεῖτε· μετὰ
-    Χριστοῦ γὰρ ἡ νίκη τοῦ τὸν κόσμον νικήσαντος. Τὰ
-    μὲν οὖν καθ' ἕκαστον τῶν τότε ῥηθέντων ἢ πρατε-
-    νθέντων ἐκδιηγεῖσθαι τὰ νῦν ἐγὼ μέν, εὖ ἴστε, τοῦ
-    παντὸς ἂν ἐτιμησάμην· καὶ γὰρ καὶ λογικάς τι-
-    νας (26) ἐστὶν ἃς χει στροφὰς καὶ κομψείας ὁ λό-
-    γος (27), ἐμοὶ γοῦν οὐκ ἀηδεῖς εἰς μνήμην· ἔξω δ'
-  </bloco>
+
+  [!-- Right column: lower Latin block (XIII) --]
   <bloco tipo="texto_principal" script="latino" bbox="520,650,950,780">
-    XIII. An non timuisti, ne quid Cæsario animi
-    alacritate parum dignum accidat? At bono estote
-    animo. Victoria enim cum Christo, qui vicit mun-
-    dum 14. Ac nihil quidem mallem quam ut ea quæ
-    tum dicta et proposita sunt, sigillatim nunc expone-
-    rem; nam et logicas aliquot argutias leporesque,
-    meo quidem judicio, memoratu non injucundos ea
-    disputatio continet : verum intempestivum prorsus
+    XIII. An non timuisti, ne quid Cæsario animi alacritate parum dignum accidat? At bono estote animo. Victoria enim cum Christo, qui vicit mundum. Ac nihil quidem mallem quam ut ea quæ tum dicta et proposita sunt, sigillatim nunc exponerem; nam et logicas aliquot argutias leporesque, meo quidem judicio, memoratu non injucundos ea disputatio continet: verum intempestivum prorsus
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="50,780,200,800">
+
+  [!-- Marginal letters (A, B, C, D) placed as nota_marginal blocks (separated from column texts) --]
+  <bloco tipo="nota_marginal" script="latino" bbox="480,80,500,100">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,320,500,340">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,500,520,520">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,730,500,750">
+    D
+  </bloco>
+
+  [!-- Small printed note reference --]
+  <bloco tipo="nota" script="latino" bbox="50,780,220,800">
     * Joan. xvi, 33.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="50,800,480,950">
-    (18) Αὐτῷ. Sic Reg. hm Editi, αὐτο.
-    (19) Σόφισμα, etc. Locus iste in Reg. hu, sic
-    legitur : Σόφισμα, πάσχοντας ὡς Χριστιανούς, ὡς
-    κακούργους κολάζεσθαι, ἵνα μηδὲ τῆς ἐπὶ τοῖς ἄθλοις
-    τιμῆς τυγχάνωμεν· ἐφθόνει γὰρ καὶ ταύτης Χριστια-
-    νοῖς  γεννάδας· τὸ δὲ δεύτερον, etc. Eodem modo
-    legit Savilius, nisi quod delet, πάσχοντας ὡς Χρι-
-    στιανούς, et pro τυγχάνωμεν, habet, τυγχάνοιεν.
-    (20) Ὑφελκόμενος. Id est, ὑποσυρώμενος. Reg.
-    bm, ὑφελκόμενος, « subtrahens, subducens. »
-    (21) Τῶν λόγων. Unus Regius addit, παρασύρων,
-    « abstrahens, perveniens. »
+
+  [!-- Apparatus criticus / footnotes - left column bottom --]
+  <bloco tipo="aparato_critico" script="misto" bbox="30,800,490,950">
+    (18) Αὐτῷ. Sic Reg. hm Editi, αὐτοῦ.
+    (19) Σόφισμα, etc. Locus iste in Reg. hu, sic legitur: Σόφισμα, πάσχοντας ὡς Χριστιανούς, ὡς κακούργους κολάζεσθαι, ἵνα μηδὲ τῆς ἐπὶ τοῖς ἄθλοις τιμῆς τυγχάνοιμεν· ἐφθόνει γὰρ καὶ ταύτης Χριστιανοῖς ὁ γεννάδας· τὸ δὲ δεύτερον, etc. Eodem modo legit Savilius, nisi quod delet, πάσχοντας ὡς Χριστιανούς, et pro τυγχάνοιμεν, habet, τυγχάνοιεν.
+    (20) Ὑφελκόμενος. Id est, ὑποσυρώμενος. Reg. bm, ὑφελκόμενος, "subtrahens, subducens."
+    (21) Τῶν λόγων. Unus Regius addit, παρασύρων, "abstrahens, pervertens."
   </bloco>
+
+  [!-- Apparatus criticus / footnotes - right column bottom --]
   <bloco tipo="aparato_critico" script="misto" bbox="520,800,950,950">
-    (22) Θαύματος. Comb. et Billius legunt, θεάματος,
-    « ex spectaculo. » Quæ lectio placeret, si codicum
-    auctoritate niteretur.
-    (23) Ἀγωνοθέτης. Nicetas « Julianum, » Billius
-    « diabolum » intelligit; Julianus quippe erat antago-
-    nista, non vero certaminis præses.
+    (22) Θαύματος. Comb. et Billius legunt, θεάματος, "ex spectaculo." Quæ lectio placeret, si codicum auctoritate niteretur.
+    (23) Ἀγωνοθέτης. Nicetas "Julianum," Billius "diabolum" intelligit; Julianus quippe erat antagonista, non vero certaminis præses.
     (24) Νεύσῃ. Colb. 6, νεύσει.
-    (25) Πλείω τὴν ἀγωνίαν. « Magis animi anxiis
-    ac sollicitis. »
+    (25) Πλείω τὴν ἀγωνίαν. "Magis animi anxiis ac sollicitis."
     (26) Τίνας. Deest in Reg. hu, Or. 1, et Jes.
-    (27) Ὁ λόγος. Deest in Regg. bm, hu, Or. 1,
-    et Jes.
+    (27) Ὁ λόγος. Deest in Regg. bm, hu, Or. 1, et Jes.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="600,960,900,990">
+
+  <bloco tipo="rodape" script="latino" bbox="600,960,900,995">
     Digitized by Google
   </bloco>
+
   <notas>
-    Transcrição de página bilingue (Grego/Latim) da Patrologia Graeca.
-    Layout em duas colunas principais com aparato crítico no rodapé.
-    Algumas linhas de tradução latina intercaladas ou posicionadas de forma a conectar colunas (ex: "amentiam...").
-    Números entre parênteses (18), (19), etc., referem-se às notas de rodapé.
-    Letras A, B, C, D no texto indicam seções.
+    Transcrição fiel da página bilingue (grego/latim) com divisão por colunas: transcrito primeiro a coluna esquerda (grego com pequena intercalação latina), depois a coluna direita (latim). Marginalia identificada pelas letras A, B, C, D colocadas como blocos nota_marginal separados (foram removidas do fluxo textual). Numerais de secção (XII., XIII., IB.) mantidos conforme impresso. Não foram feitas normalizações nem traduções; apenas correções evidentes de marcação marginal (remoção de letras marginais do corpo do texto). BBOX aproximados em escala 0-1000.
   </notas>
 </pagina>

@@ -1,136 +1,144 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,60">
     525 SECTIO II. POEMATA MORALIA. 526
   </bloco>
+
+  [!-- LEFT COLUMN: Greek poetry (top) --]
   <bloco tipo="texto_principal" script="grego" bbox="0,60,490,280">
-    35 Τοῖσι μὲν οὔτε γάμος, οὔτ' ἄλγεα, οὐ μελεδῶναι,
-    Οὐ παθέων κλόνος αἰνὸς ἀτάσθαλος· οὐ μελέεσσι
-    Σχίζοντ', οὐδὲ δόμοισιν· ὁμόφρονες ἀλλήλοισιν,
-    Αὐτῷ τ' αὐτὸς ἕκαστος. Ἵη φύσις, ἓν τε νόημα,
-    Εἷς πόθος ἀμφὶ ἄνακτα Θεὸν μέγαν. Οὐδέ τι πασι.
-    40 Τέρποντ', οὔτ' ἀλόχοισι, γλυκὺν πόνον ἀμφι-
-    [έποντες·
-    Οὐ πλούτοις κείνοισιν ἐρώμενος, οὐδ' σα θνητος
-    Γαα φέρει κακίης μελεδήματα. Οὐκ ἀρόουσιν,
-    Οὐ πελάγη πλώουσιν ἀτειρέος εἵνεκα γαστρός,
-    Γαστέρος ἀρχεκάκου· τροφὴ μία πᾶσιν ἀρίστη
-    45 Δαίνυσθαι μεγάλοιο θεοῦ λόγον, ἠδὲ φαεινῆς
-    Ἕλκειν ἐκ Τριάδος σέλας ἄσπετον. Οἴδισιο δὲ
-    Ζώουσι καθαροῖο Θεοῦ καθαροὶ θεράποντες.
+35 Τοῖσι μὲν οὔτε γάμος, οὐτ' ἄλγεα, οὐ μελεδῶναι,
+Οὐ παθέων κλόνος αἰνὸς ἀτάσθαλος· οὐ μελέεσσι
+Σχίζοντ᾽, οὐδὲ δόμοισιν· ὁμόφρονες ἀλλήλοισιν,
+Αὐτῷ τ᾽ αὐτὸς ἕκαστος. ἡ φύσις, ἓν τε νόημα,
+Εἷς πόθος ἀμφὶ ἄνακτα θεὸν μέγαν. Οὐδὲ τι πασι.
+40 Τέρποντ᾽, οὔτ᾽ ἀλόχοισι, γλυχὺν πόνον ἀμφι-
+[έποντες'
+Οὐ πλοῦτος κείνοισιν ἐράσμιος, οὐδ' ὅσα θνητοῖς
+Γαῖα φέρει κακίης μελεδήματα. Οὐχ ἀρόουσιν,
+Οὐ πελάγη πλώουσιν ἀτειρέος εἵνεκα γαστρὸς,
+Γαστέρος ἀρχεκάχοιο· τροφὴ μία πᾶσιν ἀρίστη
+45 Δαίνυσθαι μεγάλου θεοῦ λόγον, ἠδὲ φαεινῆς
+Ἕλκειν ἐκ Τριάδος σέλας ἄσπετον. Οἴδισιοι δὲ
+Ζῶσιν καθαροῖο θεοῦ καθαροὶ θεράποντες.
   </bloco>
+
+  [!-- LEFT COLUMN: Latin prose translation (below Greek) --]
+  <bloco tipo="texto_principal" script="latino" bbox="0,280,490,730">
+35 Nullæ illis nuptiæ, nullæ molestiæ, nullæ sollicitudines.
+Affectuum gravi et pernicioso tumultu carent. Non membris
+Dividuntur, aut domibus: consentiunt inter se omnes,
+Ac secum ipso unusquisque. Una illis natura, una sententia,
+Unum desiderium, circa Deum regem magnum. Nec filiis
+40 Delectantur, nec uxoribus, dulcem quærentes laborem.
+Non divitiæ illis amabiles, nec quæcunque mortalibus
+Terra profert nequitiæ incrementa. Non arant,
+Non maria navigant, indomiti ventris causa,
+Ventris malorum originis. Unus omnibus optimus cibus,
+45 Satiari Dei magni verbo, atque lucida
+Trahere ex Triade lumen immensum. Soli
+Vivunt, puri Numinis famuli puri,
+Simplices, intelligentia præditi, lucidi, qui nec a carnibus
+  </bloco>
+
+  [!-- MARGINAL SIGN A (top of right column) --]
+  <bloco tipo="nota_marginal" script="latino" bbox="510,60,540,100">
+A
+  </bloco>
+
+  [!-- RIGHT COLUMN: Greek (top) - removed marginal sigla A from text --]
   <bloco tipo="texto_principal" script="grego" bbox="510,60,1000,280">
-    A Ἁπλοῖ τε, νοεροί τε, διαυγέες, οὔτ' ἀπὸ σαρκῶν
-    Ἀρχόμενοι (σάρκες γὰρ ἐπεὶ πάγαν, αὖτις ἀλοῦνται),
-    50 Οὔτ' ἐπὶ σάρκας ἰόντες, ὅπερ δ' ἐγένοντο, μένουσι.
-    Τοῖς μέτα παρθενίη θεοείκελος, οἶμος ἑτοίμη [τε.
-    Πρὸς Θεὸν, ἑσπομένη τε νοήμασιν Ἀθανάτοιο
-    Νωμῶντος μεγάλοιο σοφῶς στήσαι κόσμου·
-    Ἐν δὲ καὶ οὐρανίῃην, χθόνιον, μεγαλήτορα, θνητὸν,
-    55 Ἀνθρώπων μογερῶν ερὸν γένος, εὔχος Ἄνακτος.
-    Εἰ δ' ἄγε νῦν ἐρέω μυστήρια σεμνὰ Θεοῖο,
-    Παρθενίη τε χρόνοισιν ὅπως πυμάτοισιν ἔλαμψεν.
-    Ἦν ποτ' ἔην, ὅτε πάντα μελαίνῃ νὺξ ἐκάλυπτεν.
-    Οὐδ' ρ' ἔην ἑοῦς ἐρατὸν φάος· οὐδὲ κέλευθον
-    60 Ἥλιος πυρόεσσαν ἐπέσσυτο ἀντολίῃθεν.
-    Οὐ μήνη κερόεσσα φαέσσιτο, νυκτὸς ἄγαλμα·
+Ἁπλοῖ τε, νοεροί τε, διαυγέες, οὔτ' ἀπὸ σαρκῶν
+Ἀρχόμενοι (σάρκες γὰρ ἐπεὶ πάγαν, αὖθις ἀλοῦνται),
+50 Οὔτ' ἐπὶ σάρκας ἰόντες, ὅπερ δ' ἐγένοντο, μένουσι.
+Τοῖς μέτα παρθενίη θεοείκελος, οἶμος ἑτοίμη [τε.
+Πρὸς Θεὸν, ἑσπομένη τε νοήμασιν Ἀθανάτοιο
+Νωμῶντος μεγάλοιο σοφῶς στήσαι κόσμου·
+Ἐν δὲ καὶ οὐρανίῃην, χθόνιον, μεγαλήτορα, θνητὸν,
+55 Ἀνθρώπων μογερῶν ἱερὸν γένος, εὔχος Ἄνακτος.
+Εἰ δ' ἄγε νῦν ἐρέω μυστήρια σεμνὰ Θεοῖο,
+Παρθενίη τε χρόνοις ὅπως πυμάτοισιν ἔλαμψεν.
+Ἦν ποτ' ἔην, ὅτε πάντα μελαίνῃ νὺξ ἐκάλυπτεν.
+Οὐδ' ἄρ' ἔην ἑοῦς ἐρατὸν φάος· οὐδὲ κέλευθον
+60 Ἥλιος πυρόεσσαν ἐπέσσυτο ἀντολίῃθεν.
+Οὐ μήνη κερόεσσα φαέσσιτο, νυκτὸς ἄγαλμα·
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="0,280,490,530">
-    35 Nullæ illis nuptiæ, nullæ molestiæ, nullæ sollicitudines.
-    Affectuum gravi et pernicioso tumultu carent. Non membris
-    Dividuntur, aut domibus : consentiunt inter se omnes,
-    Ac secum ipso unusquisque. Una illis natura, una sententia,
-    Unum desiderium, circa Deum regem magnum. Nec filiis
-    40 Delectantur, nec uxoribus, dulcem quærentes laborem.
-    Non divitiæ illis amabiles, nec quæcunque mortalibus
-    Terra profert nequitiæ incrementa. Non arant,
-    Non maria navigant, indomiti ventris causa,
-    Ventris malorum originis. Unus omnibus optimus cibus,
-    45 Satiari Dei magni verbo, atque lucida
-    Trahere ex Triade lumen immensum. Soli
-    Vivunt, puri Numinis famuli puri,
-    Simplices, intelligentia præditi, lucidi, qui nec a carnibus
+
+  [!-- RIGHT COLUMN: Latin metrical version (left part of lower area) --]
+  <bloco tipo="cabecalho" script="latino" bbox="0,730,1000,760">
+METRICA VERSIO.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,280,1000,530">
-    Ortum ducunt (carnes enim, postquam compactæ sunt, peribunt);
-    50 Nec in carnes venerunt, sed, quod creati sunt, permanent.
-    Cum bis juncta virginitas, Deo similis, expedita semita
-    Ad Deum, assecla cogitationum Dei immortalis,
-    Qui sapienter regit magni gubernacula mundi;
-    In eoque cœleste, terrestre, magnanimum, mortale,
-    55 Hominum laboriosorum sacrum genus, laudem ac decus regis.
-    Nunc ergo agite, edisseram mysteria Dei veneranda,
-    Et quo modo postremis virginitas temporibus affulserit.
-    Fuit aliquando cum omnia nox nigra cooperiret.
-    Non tunc probibat auroræ lumen amabile, nec viam
-    60 Sol inflammatam currebat ab oriente.
-    Non luna cornuta apparebat, noctis decus.
+
+  <bloco tipo="texto_principal" script="latino" bbox="0,760,490,1000">
+His non connubium, non curæ, ægrique dolores,
+Non motus turbas miseras in corde cientes.
+Non etiam membris dirimuntur, et ædibus, omnes
+Inter se miro jungit concordia nexu.
+Idem quisque sibi: natura est omnibus una,
+Unaque mens, simileque Dei rapiuntur amore.
+Nec vero gnatis charisque uxoribus illi
+Gaudent, ac dulci exercent sua membra labore.
+Non illos inflammat opum vesana cupido,
+Nec quæcunque mali parit irritamina tellus.
+Non pelagus sulcant ratibus, nec vomere terram
+Proscindunt ventris causa, mortalibus ægris
+Primigena qui fraude mali genus omne creavit.
+Optimus hic cunctis cibus est, ut Numine summo
+Essuriant mentem, Triadisque ex lumine lucem
+Immensam excipiant. Sunt porro conjugis omnes
+Expertes, puri regis purique ministri.
+Hiis mens et simplex natura est, atque corusca.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="0,530,490,730">
-    38 Αὐτῷ τ' αὐτός. Ita Regg. 39 et 995. Edit. αὐτῷ ταὐτός.
-    43 Ἀτειρέος. Gloss. ἀδαμάστου, ἀκολάστου.
-    44 Γαστέρος ἀρχεκάκου. Sic infra lib. II, sect. I, poem. I, De rebus suis, vers. 283.
-    45 Λόγον. Sic duo Regg. et Chig. Edit. νόον.
-    46 Οἴδισιο. Gloss. μονόβιοι, ἄγαμοι.
-    48 Ἁπλοῖ τε. Chig. ἁπλοί τε. Vide supra, sect. I, poem. VII, vers. 17, etc.
-    51 Τοῖς μέτα. Gloss. μετὰ τούτοις, vel τούτοις.
+
+  [!-- MARGINAL SIGN B (marks start of right-column meter continuation) --]
+  <bloco tipo="nota_marginal" script="latino" bbox="510,760,545,800">
+B
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="510,530,1000,730">
-    μέτεστιν.
-    52 Ἑσπομένη. Gloss. ἀκολουθοῦσα.
-    53 Νωμῶντος. Ita fere infra, lib. II, sect. I, De rebus suis, poem. I, vers. 575.
-    54 Ἐν δὲ. Subauditur κόσμῳ. Mox μεγαλήτορα. Ceisl. μεγαλήτορα.
-    55 Εὔχος Ἄνακτος. Gloss. ὅτι εἰς δόξαν πάντα καὶ μᾶλλον  ἄνθρωπος γέγονε τοῦ Θεοῦ.
-    60 Ἐπέσσυτο. Gloss. ἐπέρχετο ἀπὸ τῆς ἀνατολῆς.
+
+  [!-- RIGHT COLUMN: Latin metrical version (right part of lower area) --]
+  <bloco tipo="texto_principal" script="latino" bbox="510,760,1000,1000">
+Non a carne fluunt (namque omnis carnea moles
+Postquam concrevit, certæ est obnoxia morti),
+Nec rursus carnem subeunt, nec corpora crassa,
+Sed tales remanent, quales sunt ante creati.
+Hujus virginitas classis, promptissima cœli
+Semita, consiliisque Dei sapientiæ hærens,
+Qui clavo latum sapienter dirigit orbem,
+Humanumque genus, cœlo terræque profectum,
+Magnanimum, ærumnasque ferens, laudemque
+decusque Principis ætherei. Sed jam mysteria magni
+Carminibus veneranda Dei nunc persequar, utque
+Candida virginitas postremis fulserit annis.
+Omnia nox quondam tenebris horrenda tegebat.
+Non erat auroræ splendor, non Phœbus Eois
+Partibus exoriens currus agitabat equorum:
+Gloria nec noctis radiabat in æthere Phœbe:
+Sed confusa simul temerarius omnia motus
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="0,730,1000,750">
-    METRICA VERSIO.
+
+  [!-- APPARATUS CRITICUS: two-column critical notes at bottom-left and bottom-right --]
+  <bloco tipo="aparato_critico" script="misto" bbox="0,1000,490,1400">
+38 Αὐτῷ τ' αὐτός. Ἰτα Regg. 39 et 995. Edit. αὐτῷ τοῦτός.
+43 Ἀτειρέος. Gloss. ἀδαμάστου, ἀκολάστου.
+44 Γαστέρος ἀρχεκάχοιο. Sic infra lib. II, sect. I, poem. I, De rebus suis, vers. 283.
+45 Λόγον. Sic duo Regg. et Chig. Edit. νόον.
+46 Οἴδισιοι. Gloss. μονόβιοι, ἄγαμοι.
+48 Ἁπλοῖ τε. Chig. ἁπλοί τε. Vide supra, sect. I, poem. VII, vers. 17, etc.
+51 Τοῖς μέτα. Gloss. μετὰ τούτοις, vel τούτοις.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="0,750,490,950">
-    His non connubium, non curæ, ægrique dolores,
-    Non motus turbas miseras in corde cientes.
-    Non etiam membris dirimuntur, et ædibus, omnes
-    Inter se miro jungit concordia nexu.
-    Idem quisque sibi : natura est omnibus una,
-    Unaque mens, simileque Dei rapiuntur amore.
-    Nec vero gnatis charisque uxoribus illi
-    Gaudent, ac dulci exercent sua membra labore.
-    Non illos inflammat opum vesana cupido,
-    Nec quæcunque mali parit irritamina tellus.
-    Non pelagus sulcant ratibus, nec vomere terram
-    Proscindunt ventris causa, mortalibus ægris
-    Primigena qui fraude mali genus omne creavit.
-    Optimus hic cunctis cibus est, ut Numine summo
-    Essuriant mentem, Triadisque ex lumine lucem
-    Immensam excipiant. Sunt porro conjugis omnes
-    Expertes, puri regis purique ministri.
-    Hiis mens et simplex natura est, atque corusca.
+
+  <bloco tipo="aparato_critico" script="misto" bbox="510,1000,1000,1400">
+μέτεστιν.
+52 Ἑσπομένη. Gloss. ἀκολουθοῦσα.
+53 Νωμῶντος. Ita fere infra, lib. II, sect. I, De rebus suis, poem. I, vers. 575.
+54 Ἐν δὲ. Subauditur κόσμῳ. Mox μεγαλήτορα. Ceisl. μεγαλήτορα.
+55 Εὔχος Ἄνακτος. Gloss. ὅτι εἰς δόξαν πάντα καὶ μᾶλλον ὁ ἄνθρωπος γέγονε τοῦ Θεοῦ.
+60 Ἐπέσσυτο. Gloss. ἐπέρχετο ἀπὸ τῆς ἀνατολῆς.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,750,1000,950">
-    B Non a carne fluunt (namque omnis carnea moles
-    Postquam concrevit, certæ est obnoxia morti),
-    Nec rursus carnem subeunt, nec corpora crassa,
-    Sed tales remanent, quales sunt ante creati.
-    Hujus virginitas classis, promptissima cœli
-    Semita, consiliisque Dei sapientiæ hærens,
-    Qui clavo latum sapienter dirigit orbem,
-    Humanumque genus, cœlo terræque profectum,
-    Magnanimum, ærumnasque ferens, laudemque
-    [decusque
-    Principis ætherei. Sed jam mysteria magni
-    Carminibus veneranda Dei nunc persequar, utque
-    Candida virginitas postremis fulserit annis.
-    Omnia nox quondam tenebris horrenda tegebat.
-    Non erat auroræ splendor, non Phœbus Eois
-    Partibus exoriens currus agitabat equorum :
-    Gloria nec noctis radiabat in æthere Phœbe :
-    Sed confusa simul temerarius omnia motus
+
+  <bloco tipo="rodape" script="latino" bbox="0,1400,1000,1450">
+Digitized by Google
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="0,950,1000,1000">
-    Digitized by Google
-  </bloco>
+
   <notas>
-    Transcrição de página da Patrologia Graeca contendo texto grego, tradução latina prosaica, aparato crítico e versão métrica latina.
-    Caracteres especiais como [te. e [decusque foram mantidos conforme visíveis.
-    A palavra 'μέτεστιν.' no início da coluna direita do aparato crítico foi transcrita isoladamente.
+    Transcrição fiel baseada na imagem; a página contém duas colunas principais (grego+tradução latina/versio metrica). As siglas marginais "A" e "B" foram transcritas em blocos nota_marginal separados (retiradas do fluxo do texto, conforme instruções). Colunas transcritas seguindo a ordem: coluna esquerda (grego então latim) e coluna direita (grego então latim). Aparato crítico apresentado em duas colunas inferiores. Onde o original apresenta abreviaturas, colchetes e variantes editoriais, foram mantidos tal como visíveis na fonte.
   </notas>
 </pagina>

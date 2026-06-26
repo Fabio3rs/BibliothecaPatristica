@@ -1,8 +1,8 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,60">
+  <bloco tipo="cabecalho" script="latino" bbox="100,30,900,60">
     443 S. EUSEBII HIERONYMI 444
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,60,490,900">
+  <bloco tipo="texto_principal" script="latino" bbox="80,65,480,900">
     scientiæ, nec ipsi intrantes, et alios volentes in-
     troire prohibentes. Pulchreque pectora eorum in
     quibus habitabant cogitationes pessimæ, carceres
@@ -16,7 +16,7 @@
     effudit Dominus super eos totam iram suam et in-
     dignationem furoris plenam, ut 515 qui prius ta-
     cuerat, nequaquam ultra reticeret, nec sermonibus
-    eos, sed pœnis tormentisque corriperet, et compre-
+    eos, sed pœnis tormentisque corripere, et compre-
     henderet eos bellum fortissimum, quod nequaquam
     possint evadere, ostendens ferociam Romanorum.
     Cumque ex omni parte combustus sit, et nihil in
@@ -45,7 +45,7 @@
     et oculos habentem : surdum, et aures ei sunt.
     Omnes gentes congregatæ sunt simul, et collectæ
     sunt tribus. Qui in vobis annuntiabit istud, et quæ
-    prima sunt, audire nos faciet? dent testes eorum,
+    prima sunt, audire nos faciet ? dent testes eorum,
     et justificentur : et audiant, et dicant : Vere vos
     testes mei, dicit Dominus, et servus meus quem
     elegi, ut sciatis et credatis mihi, et intelligatis,
@@ -60,11 +60,11 @@
     Jacob, et creavit te, Israel : Noli timere, quoniam
     redemi te ; vocavi te nomine tuo, meus es tu : et
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,300,510,320">
-    B
+  <bloco tipo="nota_marginal" script="latino" bbox="490,65,510,85">
+    A
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,60,940,900">
-    A si transieris per aquam, tecum sum, et flumina
+  <bloco tipo="texto_principal" script="latino" bbox="520,65,920,900">
+    si transieris per aquam, tecum sum, et flumina
     non cooperient te. Et si transieris per ignem, non
     combureris ; flamma non exuret te, quia ego
     Dominus Deus tuus, Sanctus Israel, Salvator tuus.
@@ -79,6 +79,11 @@
     et filias meas a terminis terræ, omnes qui vocantur
     nomine meo ; in gloria enim mea creavi illum, et
     plasmavi eum, et feci illum, et eduxi populum
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,300,510,320">
+    B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,300,920,550">
     cæcum, qui habent oculos, et sunt cæci, et surdæ
     sunt aures ejus. Omnes gentes congregatæ sunt
     simul, et convenerunt principes earum. Quis an-
@@ -93,10 +98,15 @@
     et non erat in vobis alienus. Vos mei testes, et
     ego Dominus Deus ab initio, et non est qui de ma-
     nibus meis eruat. Faciam, et quis avertet illud ? »
-    C Hebræi de secundo Salvatoris hæc interpretan-
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,550,510,570">
+    C
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,550,920,750">
+    Hebræi de secundo Salvatoris hæc interpretan-
     tur adventu, quando post plenitudinem gentium
     omnis salvandus sit Israel. Nos autem nequaquam
-    putamus ad eos fieri repromissionem, quibus supra
+    putamus ad eos fieri reprobmissionem, quibus supra
     dictum est : Quis cæcus, nisi pueri mei, et qui surdi,
     nisi qui dominantur eorum ? et excæcati sunt servi
     Dei. Et rursum : Factus est populus castatus atque
@@ -108,7 +118,12 @@
     lem, et alterum spiritualem, eorum qui in Salvato-
     rem credere noluerunt, et eorum qui receperunt
     Filium Dei : hoc etiam nunc intelligendum, quod
-    D provoeetur apostolorum chorus, et prima Christi
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,750,510,770">
+    D
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,750,920,900">
+    provehetur apostolorum chorus, et prima Christi
     Ecclesia de Judæorum populo congregata, ut intel-
     ligat Creatorem et factorem suum, qui et animæ
     et corporis ejus sit conditor. Nec timeat persecu-
@@ -121,17 +136,11 @@
     gentium invideant, et nolint sermonem evangelicum
     prædicari. Quanquam Judæi, in aquis Ægyptios, in
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="100,930,650,960">
-    ¹ Suffecimus vocem Deus cum Victorio e: Græco cum primis codice.
+  <bloco tipo="aparato_critico" script="latino" bbox="100,920,700,950">
+    ¹ Suffecimus vocem Deus cum Victorio e Græco cum primis codice.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="550,960,850,990">
+  <bloco tipo="rodape" script="latino" bbox="600,960,800,990">
     Digitized by Google
   </bloco>
-  <notas>
-    Transcrição literal de página da Patrologia Latina (S. Eusebii Hieronymi).
-    Números em negrito (515, 516, 517) mantidos como texto simples pois o XML não suporta formatação inline complexa sem tags extras, mas representam numeração de seção.
-    Letras capitais A, B, C, D marcam seções. B está na margem entre colunas.
-    Ligaturas æ, œ transcritas como caracteres compostos ou separados conforme visual (ex: æ).
-    "provoeetur" transcrito literalmente conforme aparece (possível erro de impressão ou ligatura peculiar para provocetur).
-  </notas>
+  <notas>Transcrição fiel ao layout de duas colunas. As letras A, B, C, D no gutter foram identificadas como notas marginais. Números em negrito (515, 516, 517) mantidos no fluxo do texto.</notas>
 </pagina>

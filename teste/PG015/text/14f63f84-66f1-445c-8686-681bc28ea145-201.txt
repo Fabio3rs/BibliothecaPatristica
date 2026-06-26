@@ -1,73 +1,188 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,40,950,70">
-    397 EXODI CAP. XIV. 398
+  <bloco tipo="cabecalho" script="misto" bbox="50,30,950,60">
+    597 EXODI CAP. XIV. 598
   </bloco>
   
-  [!-- Top Section: Three Columns --]
-  <bloco tipo="texto_principal" script="misto" bbox="50,80,300,400">
+  <!-- Upper Section: Greek -->
+  <bloco tipo="texto_principal" script="grego" bbox="50,70,300,90">
     ΣΥΜΜΑΧΟΣ.
-    17.
-    18. Καὶ καθωπλισμένοι ἀνέβησαν οἱ υοὶ Ἰσραὴλ ἀπὸ γῆς Αἰγύπτου.
-    20. Εἰς θὰμ τὴν ἐρημοτάτην.
-    SYMMACHUS.
-    17.
-    18. Et armati ascenderunt filii Israel de terra Ægypti.
-    20. In Etham in extremo deserti.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="350,70,600,90">
+    σ'.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,70,950,90">
+    ΘΕΟΔΟΤΙΩΝ.
   </bloco>
 
-  <bloco tipo="texto_principal" script="misto" bbox="350,80,600,400">
-    σ.
-    17. Φυλιστιιμ. Ἄλλος, ἀπώ [ilegivel].
-    18. Πέμπτη δὲ γενεᾷ ἀνέβησαν οἱ υἱοὶ Ἰσραλ ἐκ γῆς Αἰγύπτου.
-    20. Εν Ὀθὰμ παρὰ τὴν ἔρημον.
+  <bloco tipo="texto_principal" script="grego" bbox="50,100,300,180">
+    17.
+    18. Καὶ καθωπλισμένοι ἀνέβη-
+    σαν οἱ υἱοὶ Ἰσραὴλ ἀπὸ γῆς Αἰγύ-
+    πτου.
+    20. Εἰς Ἠθὰν τὴν ἐρημοτάτην.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="350,100,600,180">
+    17. Φυλιστιείμ. Ἄλλος, ἀπώ
+    εως δεσῆς.
+    18. Πέμπτῃ δὲ γενεᾷ ἀνέστησαν
+    οἱ υοὶ Ἰσραὴλ ἐκ γῆς Αἰγύπτου.
+    20. Ἐν θὸμ παρὰ τὴν ἔρημον.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,100,950,180">
+    17.
+    18. Πεμπτάζοντες δὲ ἀνέβησαν
+    οἱ υοὶ Ἰσραὴλ ἐκ τῆς γῆς Αἰγύ-
+    πτου.
+    20. Εἰς Ἠθὰν τὴν ἐρημοτάτην.
+  </bloco>
+
+  <!-- Upper Section: Latin Headers -->
+  <bloco tipo="texto_principal" script="latino" bbox="50,190,300,210">
+    SYMMACHUS.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,190,600,210">
     LXX INTERPRETES.
-    17. Phylistiim. Alius, ruinæ duplicis.
-    18. Quinta autem progenie ascenderunt filii Israel de terra Ægypti.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,190,950,210">
+    THEODOTIO.
+  </bloco>
+
+  <!-- Upper Section: Latin Text -->
+  <bloco tipo="texto_principal" script="latino" bbox="50,220,300,300">
+    17.
+    18. Et armati ascenderunt filii
+    Israel de terra Ægypti.
+    20. In Ethan in extremo deserti.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,220,600,300">
+    17. Phylistiim. Alius, ruinæ du-
+    plicis.
+    18. Quinta autem progenie a-
+    scenderunt filii Israel de terra Æ-
+    gypti.
     20. In Othom juxta desertum.
   </bloco>
-
-  <bloco tipo="texto_principal" script="misto" bbox="650,80,950,400">
-    ΘΕΟΔΟΤΙΩΝ.
+  <bloco tipo="texto_principal" script="latino" bbox="650,220,950,300">
     17.
-    18. Πεμπτάζοντες δὲ ἀνέβησαν οἱ υἱοὶ Ἰσραὴλ ἐκ τῆς γῆς Αἰγύπτου.
-    20. Εἰς θὰμ τὴν ἐρημοτάτην.
-    THEODOTIO.
-    17.
-    18. Quintati autem ascenderunt filii Israel de terra Ægypti.
-    20. In Etham in extremo deserti.
+    18. Quinti autem ascenderunt
+    filii Israel de terra Ægypti.
+    20. In Ethan in extremo deserti.
   </bloco>
 
-  [!-- Middle Section: Notes --]
-  <bloco tipo="cabecalho" script="latino" bbox="250,410,750,430">
+  <!-- Apparatus Title -->
+  <bloco tipo="texto_principal" script="latino" bbox="200,320,800,340">
     Notæ et variæ lectiones ad cap. XIII Exodi.
   </bloco>
 
-  <bloco tipo="nota" script="misto" bbox="50,435,450,600">
-    ἀτίνακτα, ε in immota, υ in quadrat cum aliis interpretibus, καὶ ἀσάλευτον.—Coislin., εἰς νάκτα, duæ postremæ syllabæ lectionis quam veram putavimus, εἰς ἀτίνακτα.
-    V. 17. Ἄλλος, πτώσεως διπλῆς. Sic Basiliensis ad vocem [ilegivel].
-    V. 18. Prodeunt hæc ex cod. Basilensi, Drusio et Hieronymo. In has porro lectiones hæc Drusius : « Ἐνωπλισμένοι, id est, ἔνοπλοι, sive ἔνοπλοι, armati. Putavi aliquando legendum esse ἐνωπλισμένοι. Hieron. epist. 135, quæ ad Damasum scripta : Aquila namque, qui non contentiosius, ut quidam putant, sed studiosius, verbum interpretatur ad verbum, in eo loco ubi LXX posuerunt « Quinta autem generatione ascenderunt filii Israel de terra Ægypti, » ita transtulit, καὶ ἐνωπλισμένοι ἀνέβησαν οἱ υἱοὶ Ἰσραλ ἀπὸ γῆς Αἰγύπτου, id est, « et armati ascenderunt filii Israel de terra Ægypti. » Licet pro eo quod nos « armati » diximus, secundum Græci
+  <!-- Apparatus Text Left Column -->
+  <bloco tipo="aparato_critico" script="misto" bbox="50,350,480,580">
+    ἀείνακτα, ε in immota, ν in quadrat cum aliis in-
+    terpretibus, καὶ ἀσάλευτον.—Coislin., εἰς νάκτα, duæ
+    postremæ syllabæ lectionis quam veram putavimus,
+    εἰς ἀείνακτα.
+    V. 17. Ἄλλος, πτώσεως δεσῆς. Sic Basiliensis
+    ad vocem οἰκῆς.
+    V. 18. Prodeunt hæc ex cod. Basiliensi, Drusio
+    et Hieronymo. In iis porro lectiones hæc Drusius :
+    ε Ἐνωπλισάμενοι, id est, ἔνοπλοι, sive ἐνόπλοις, ar-
+    mati. Putavi aliquando legendum esse ἐνωπλισμέ-
+    νοι. Hieron. epist. 135, quæ ad Damasum scripta :
+    Aquila namque, qui non contentiosius, ut quidam pu-
+    tant, sed studiosius, verbum interpretatur ad ver-
+    bum, in eo loco ubi LXX posuerunt ( Quinta autem
+    generatione ascenderunt filii Israel de terra Ægypti, )
+    ita transtulit, καὶ ἐνωπλισάμενοι ἀνέβησαν οἱ υἱοὶ
+    Ἰσραὴλ ἀπὸ γς Αἰγύπτου, id est, ( et armati a-
+    scenderunt filii Israel de terra Ægypti. ) Licet pro
+    eo quod nos ( armati ) diximus, secundum Græci
   </bloco>
 
-  <bloco tipo="nota" script="misto" bbox="460,435,950,600">
-    sermonis ambiguitatem, ε instructi, sive muniti, propter supellectilem, qua Ægyptios spoliaverant, possit intelligi. Idem paulo post. Aquilam vero, ut in cæteris, et in hoc maxime loco proprie transtulisse omnis Judæa conclamat, et Synagogarum universa consonant subsellia. Πεμπτάζοντες, numero quinario, verbum a πεμπτάς deformatum. Jonathan, Quilibet cum quinque infantibus aut puerulis, &amp; ctc. Huc usque Drusius. Cætera Rabbinorum commenta omittenda ducimus. Ibi vide si vacat.
-    Notandum est Diodorum in catenis ad Aquilam legere ἑνωπλισμένοι, ad Symmachum vero ὁπλῖται· editionem autem Romanorum perinde atque Basiliensem codicem, Ἁ., Σ., καθωπλισμένοι. Puto melius legi ad Aquilam, ἑνωπλισμένοι. — Coislin., Ἁ., νωπλισμένοι. Σ., ὁπλῖται. Θ., πεμπτάζοντες. Lectio Aquilæ ea est, quam nos cum Drusio putavimus restituendam. Symmachi, ὁπλῖται. Cod. Basil. et alii, καθωπλισμένοι.
+  <!-- Apparatus Text Right Column -->
+  <bloco tipo="aparato_critico" script="misto" bbox="490,350,950,580">
+    sermonis ambiguitatem, ε instructi ) sive ( muniti )
+    propter supellectilem, qua Ægyptios spoliaverant,
+    possit intelligi. Idem paulo post. Aquilam vero, ut
+    in cæteris, et in hoc maxime loro proprie translu-
+    lisse omnis Judæa conclamat, et Synagogarum uni-
+    versa consonant subsellia. Πεμπτάζοντες, numero
+    quinario, verbum a πεμπτάς deformatum. Jonathan,
+    Quilibet cum quinque infantibus aut puerulis, &amp; ctc.
+    Huc usque Drusius. Cætera Rabbinorum commenta
+    omittenda ducimus. Ibi vide si vacat.
+    Notandum est Diodorum in catenis ad Aquilam
+    legere ἐνωπλισμένοι, ad Symmachum vero ὁπλῖται·
+    editionem autem Romanorum perinde atque Basi-
+    liensem codicem, Ἁ., Σ., καθωπλισμένοι. Puto me-
+    lius legi ad Aquilam, ἐνωπλισμένοι. — Coislin., Ἁ.,
+    ἐνωπλισμένοι. Σ., ὁπλῖται. Θ., πεμπτάζοντες. Le-
+    ctio Aquilæ ea est, quam nos cum Drusio putavi-
+    mus restituendam. Symmachi, ὁπλται. Cod. Basil.
+    et alii, καθωπλισμένοι.
   </bloco>
 
-  [!-- Bottom Section: Three Columns --]
-  <bloco tipo="cabecalho" script="latino" bbox="350,610,650,630">
+  <!-- Lower Section Header -->
+  <bloco tipo="cabecalho" script="latino" bbox="350,600,650,620">
     CAPUT XIV EXODI.
   </bloco>
 
-  <bloco tipo="texto_principal" script="misto" bbox="50,640,300,920">
+  <!-- Lower Section: Greek Headers -->
+  <bloco tipo="texto_principal" script="grego" bbox="50,630,300,650">
     ΣΥΜΜΑΧΟΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="350,630,600,650">
+    σ'
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,630,950,650">
+    ΘΕΟΔΟΤΙΩΝ.
+  </bloco>
+
+  <!-- Lower Section: Greek Text -->
+  <bloco tipo="texto_principal" script="grego" bbox="50,660,300,800">
     2. Φιαρώ (mel. Φιερώθ).
     3.
     7. Ἀνὰ τρεῖς.
     8.
-    9. Ἐπὶ τοῦ στόματος τοῦ Ἱερώθ.
+    9. Ἐπὶ τοῦ στόματος τοῦ ερώθ.
     11.
     15.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="350,660,600,800">
+    2. Τῆς ἐπαύλεως.
+    Μαγδώλου.
+    3. Καὶ ἐρεῖ Φαραὼ τῷ λαῷ αὐτοῦ,
+    Οἱ υοὶ Ἰσραήλ. Ἄλλοι, καὶ ἐρεῖ
+    Φαραὼ περὶ τῶν υἱν Ἰσραήλ.
+    7. Τριοστάτας.
+    8. Καὶ ἐσκλήρυνε. Ἄλλος, καὶ
+    ἐθάρυνε.
+    9. Ἀπέναντι τῆς ἐπαύλεως.
+    11. Θανατώσαι. Ἄλλος, ἀπο-
+    κτεῖναι.
+    15. Καὶ ἀναζευξάτωσαν.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,660,950,800">
+    2. Φιαρώ (mel. Φιερώθ).
+    3.
+    7.
+    8.
+    9. Ἐπ Φιεβρών.
+    11.
+    15.
+  </bloco>
+
+  <!-- Lower Section: Latin Headers -->
+  <bloco tipo="texto_principal" script="latino" bbox="50,810,300,830">
     SYMMACHUS.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,810,600,830">
+    LXX INTERPRETES.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="650,810,950,830">
+    THEODOTIO.
+  </bloco>
+
+  <!-- Lower Section: Latin Text -->
+  <bloco tipo="texto_principal" script="latino" bbox="50,840,300,960">
     2. Phietro (mel. Phieroth).
     3.
     7. Per ternos.
@@ -76,36 +191,21 @@
     11.
     15.
   </bloco>
-
-  <bloco tipo="texto_principal" script="misto" bbox="350,640,600,920">
-    σ
-    2. Τῆς ἐπαύλεως. Μαγδώλου.
-    3. Καὶ ἐρεῖ Φαραὼ τῷ λα αὐτο, Οἱ υοὶ Ἰσραήλ. Ἄλλοι, καὶ ἐρεῖ Φαραὼ περὶ τῶν υἱν Ἰσραήλ.
-    7. Τριστάτας.
-    8. Καὶ ἐσκλήρυνε. Ἄλλος, καὶ ἐβάρυνε.
-    9. Ἀπέναντι τῆς ἐπαύλεως.
-    11. Θανατῶσαι. Ἄλλος, ἀποκτεῖναι.
-    15. Καὶ ἀναζευξάτωσαν.
-    LXX INTERPRETES.
-    2. Suburbii. Magdolum.
-    3. Et dicet Pharao populo suo : Filii Israel. Alii, et dicet Pharao de filiis Israel.
+  <bloco tipo="texto_principal" script="latino" bbox="350,840,600,960">
+    2. Suburbii.
+    Magdolum.
+    3. Et dicet Pharao populo suo :
+    Filii Israel. Alii, et dicet Pharao
+    de filiis Israel.
     7. Tristatas.
-    8. Et induravit. Alius, et aggravavit.
+    8. Et induravit. Alius, et aggra-
+    vavit.
     9. E regione suburbii.
-    11. Ut morti traderes. Alius, ut occideres.
+    11. Ut morti traderes. Alius, ut
+    occideres.
     15. Et disjungant se.
   </bloco>
-
-  <bloco tipo="texto_principal" script="misto" bbox="650,640,950,920">
-    ΘΕΟΔΟΤΙΩΝ.
-    2. Φιερώ (mel. Φιερώθ).
-    3.
-    7.
-    8.
-    9. Ἐπὶ Φιερώθ.
-    11.
-    15.
-    THEODOTIO.
+  <bloco tipo="texto_principal" script="latino" bbox="650,840,950,960">
     2. Phietro (mel. Phieroth).
     3.
     7.
@@ -115,14 +215,7 @@
     15.
   </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
+  <bloco tipo="rodape" script="latino" bbox="400,970,600,990">
     Digitized by Google
   </bloco>
-
-  <notas>
-    A página apresenta uma disposição poliglota (Hexapla) com colunas para Symmachus, LXX e Theodotion.
-    No topo, coluna central, verso 17, o texto grego está parcialmente ilegível ("ἀπώ..."), correspondendo na tradução latina a "ruinæ duplicis".
-    As notas centrais ("Notæ et variæ lectiones") discutem variantes textuais e leituras de códices (Basiliensis, Coislin, etc.).
-    Abreviações como "cod.", "epist.", "mel." foram mantidas conforme o original.
-  </notas>
 </pagina>

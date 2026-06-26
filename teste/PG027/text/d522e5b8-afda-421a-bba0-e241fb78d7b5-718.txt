@@ -1,9 +1,12 @@
 <pagina estado="com_texto">
-  <bloco tipo="outro" script="latino" bbox="50,940,950,999">
+  <bloco tipo="outro" script="latino" bbox="0,0,1000,1000">
+    capa_ou_guarda
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="220,360,700,560">
+    [ilegivel] [ilegivel] [ilegivel]
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="760,920,1000,995">
     Digitized by Google
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="150,240,500,420">
-    [ilegivel]
-  </bloco>
-  <notas>Pequenas manchas e vestígios de impressão dispersos ao centro-esquerdo e centro-direito da página. Texto legível apenas no canto inferior direito: "Digitized by Google". O bloco central contém apenas pontos e marcas ilegíveis; transcreveu-se como [ilegivel] por palavra conforme instruções.</notas>
+  <notas>Página tratada como guarda/capa com marcas e carimbo. O bloco "texto_principal" representa agrupamentos de manchas/inscriçãoes ilegíveis e foi transcrito usando três tokens [ilegivel] para indicar palavras ou agrupamentos distintos visíveis; o carimbo no rodapé foi legível e transcrito integralmente.</notas>
 </pagina>

@@ -1,131 +1,184 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,100,50">793</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="350,20,650,50">SECTIO II. POEMATA MORALIA.</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="900,20,950,50">794</bloco>
-  
-  <bloco tipo="texto_principal" script="grego" bbox="50,60,480,240">
-35 Νῦν δ σκόπει μοι τ πρᾶγμα καὶ ποῖ φέρει.
-B. Σχεδὸν μν οἶδα, πλὴν λέγε.
-A. Ζητῶ τιν' εἰκὼ τοῦ λόγου σαφεστάτην.
-B. Τίς δ' ἂν γένοιτο;
-A. Πέτραν τιν' εἶδες ἐκ λόφου κινουμένην;
-40 B. Καὶ πολλάκις γε· πῶς γὰρ οὔ;
-A. Ῥοίζῳ τε πολλῷ σφενδονωμένην κάτω;
-B. Πολλῷ φόβῳ τε.
-A. Ἦ καὶ τόδ' εἶδες ᾳδίως σταμένην;
-B. Εἰ μή τις ἄλλος, οὐκ ἐγώ.
-45 Αὐτὴν γὰρ ὠθοῦσ' ἡ πέτρα, κρείττων χερός.
-A. Λέγεις ἀληθῆ·
-Τὸ δ' αὐτὸ πάσχω, κἂν ἐγὼ κατατρέχω.
-Ῥοζος φέρει με πρὸς βίαν.
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="40,10,220,60">
+793
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="390,10,60,60">
+SECTIO II. POEMATA MORALIA.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="920,10,980,60">
+794
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="520,60,950,240">
-A Μένειν δ' ἀπαρχῆς κἂμ ῥστον καὶ λίθον.
-50 B. Ῥᾷστον τί δ' οὐκ χει;
-A. Τούτῳ κακὸν μέν ἐστι καὶ πᾶν προσφερὲς,
-Μάλιστα δ' ὅρκος, οἶμαι.
-Τὸ πῶς δ', ἄκουσον. Ἥδονὴ τ πράγματι
-Πολλὴ πρόσεστιν.
-55 Εἴτ' ἂν τύχῃ τις εἰς συμπάθειαν πεσών,
-Τί γίνεται; οὐκ ἀνείργεται,
-Ἕως ν ἔλθ πρὸς κατάκρημνον βάθος.
-B. Λέγεις τί χρημνόν;
-A. Κρημνῶν μέγιστός ἐστιν ἡ ψευδορκία.
-60 B. Τὸ πῶς, μάθοιμ' ἂν ἡδέως.
-Πολλοὶ γὰρ οὐδ' σασι πῶς ἐστι κακόν.
+  [!-- LEFT COLUMN: Greek (upper left) --]
+  <bloco tipo="texto_principal" script="grego" bbox="40,70,480,360">
+35 Νῦν δὲ σκόπει μοι τὸ πρᾶγμα καὶ ποῖ φέρει,
+Σχεδὸν μὲν οἶδα, πλὴν λέγε.
+Ζητῶ τιν᾽ εἰκὼ τοῦ λόγου σαφεστάτην.
+Τίς δ᾽ ἂν γένοιτο;
+Πέτραν τιν᾽ εἶδες ἐκ λόφου κινούμενην;
+Καὶ πολλάκις γε· πῶς γὰρ οὐ;
+Ῥοίζῳ τε πολλῷ σφενδονημένην κάτω;
+Πολλῷ φόβῳ τε.
+Ἦ καὶ τόδ᾽ εἶδες ῥᾳδίως ἱσταμένην;
+Εἰ μὴ τις ἄλλος, οὐκ ἐγὼ.
+Αὐ τὴν γὰρ ὠθοῦσ᾽ ἡ πέτρα, κρείττων χερός.
+Λέγεις ἀληθῆ.
+Τὸ δ᾽ αὐτὸ πάσχω, κἂν ἐγὼ κατατρέχω.
+Ῥοῖζος φέρει με πρὸς βίαν.
+  </bloco>
+
+  [!-- Nota marginal for interlocutors in left Greek column (B then A etc.) --]
+  <bloco tipo="nota_marginal" script="latino" bbox="55,90,95,130">
+B.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="55,120,95,160">
+A.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="55,180,95,220">
+B.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="55,220,95,260">
+A.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="55,260,95,300">
+B.
+  </bloco>
+
+  [!-- RIGHT COLUMN: Greek (upper right) --]
+  <bloco tipo="texto_principal" script="grego" bbox="520,70,960,360">
+Μένειν δ᾽ ἀπαρχῆς κἀμὲ ῥᾷστον καὶ λίθον.
+Ῥᾷστον τί δ᾽ οὐχ ἔχει;
+Τούτῳ κακὸν μέν ἐστι καὶ πᾶν προσφερὲς,
+Μάλιστα δ᾽ ὅρκος, οἴομαι.
+Τὸ πῶς δ᾽, ἄκουσον. Ἡδονὴ τῷ πράγματι
+Πολλὴ πρόσεστιν.
+Εἴτ᾽ ἂν τύχῃ τις εἰς συμπάθειαν πεσών,
+Τί γίνετ᾽; οὐχ ἀνείργεται,
+Ἕως ἂν ἔλθῃ πρὸς κατακρήμμων βάθος.
+Λέγεις τί χρημνόν;
+Κρημνῶν μέγιστός ἐστιν ἡ ψευδορχία.
+Τὸ πῶς, μάθοιμ᾽ ἂν ἡδέως.
+Πολλοὶ γὰρ οὐδ᾽ ἴσασι πῶς ἐστι κακόν.
 Ἔστι δὲ δὴ πῶς;
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="50,250,480,550">
-35 Nunc autem mihi rem considera, et quo ferat.
-B. Fere intelligo, sed tamen dic.
-A. Quæro nitidissimam aliquam sermonis imaginem.
-B. Quænam autem erit illa?
-A. Petram vidisti aliquando ex monte ruentem?
-40 B. Ac sæpe id quidem. Cur non enim?
-A. Ac magno impetu ad ima, quasi funda rotatam?
-B. Et cum magno tremore.
-A. Num aliquando ipsam vidisti facile sisti?
-B. Nisi quis alius viderit, ego non vidi.
-45 Seipsam enim impellens petra fortior est manu.
-A. Recte dicis.
-Idem mihi accidit, cum ad inferiora curro:
-Effert me impetus violenter.
+  [!-- Nota marginal for interlocutors in right Greek column --]
+  <bloco tipo="nota_marginal" script="latino" bbox="535,90,575,130">
+A.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="535,200,575,240">
+B.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="520,250,950,550">
+  [!-- LEFT COLUMN: Latin translation (middle left) --]
+  <bloco tipo="texto_principal" script="latino" bbox="40,380,480,760">
+Nunc autem mihi rem considera, et quo ferat.
+Fere intelligo, sed tamen dic.
+Quæro nitidissimam aliquam sermonis imaginem.
+Quænam autem erit illa?
+Petram vidisti aliquando ex monte ruentem?
+Ac sæpe id quidem. Cur non enim?
+Ac magno impetu ad ima, quasi funda rotatam?
+Et cum magno tremore.
+Num aliquando ipsam vidisti facile sisti?
+Nisi quis alius viderit, ego non vidi.
+Seipsam enim impellens petra fortior est manu.
+Recte dicis.
+Idem mihi accidit, cum ad inferiora curro:
+Effert me impetus violenter.
 Manere autem ab initio, et me, et lapidem, res facillima.
-50 B. Quid hic autem non facillimum?
-A. Huic imagini malum omne persimile,
+  </bloco>
+
+  [!-- Nota marginal for interlocutors in left Latin column (aligning with Latin lines) --]
+  <bloco tipo="nota_marginal" script="latino" bbox="55,420,95,460">
+B.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="55,460,95,500">
+A.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="55,520,95,560">
+B.
+  </bloco>
+
+  [!-- RIGHT COLUMN: Latin translation (middle right) --]
+  <bloco tipo="texto_principal" script="latino" bbox="520,380,960,760">
+Quid hic autem non facillimum?
+Huic imagini malum omne persimile,
 Præcipue vero jusjurandum, ut mihi videtur.
 Quomodo istud, audi. Inest huic rei
 Multum voluptatis.
-55 Deinde si quis in consuetudinem inciderit,
+Deinde si quis in consuetudinem inciderit,
 Quid fit? non cohibetur,
 Donec in profundum gurgitem pervenerit.
-B. Quem dicis gurgitem?
-A. Gurgitum maximus est perjurium.
-60 B. Quomodo id fiat, libenter didicerim.
+Quem dicis gurgitem?
+Gurgitum maximus est perjurium.
+Quomodo id fiat, libenter didicerim.
 Multi enim ne norunt quidem quomodo id sit malum.
 Quonam autem modo malum est?
   </bloco>
 
-  <bloco tipo="aparato_critico" script="misto" bbox="50,560,480,700">
-36 Λέγε. Ita legendum videtur. In edit. quibusdam λέγεις, in aliis deest.
-47 Τὸ δ' αὐτὸ πάσχω, κἂν ἐγὼ κατατρέχω. Sic Coisl. Dimidium versiculi in editis desideratur.
-48 Μέ. Ita Combef. Edit. σέ.
-52 Μάλιστα, etc. Male hos versus divisos præbebant editi, quos secuti sunt incaute Benedictini. Eos ad ordinem verum reduximus admittendo le-
+  [!-- Nota marginal for interlocutors in right Latin column --]
+  <bloco tipo="nota_marginal" script="latino" bbox="535,420,575,460">
+A.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="535,520,575,560">
+B.
   </bloco>
 
-  <bloco tipo="aparato_critico" script="misto" bbox="520,560,950,700">
+  [!-- APARATO CRITICO (bottom left area) --]
+  <bloco tipo="aparato_critico" script="misto" bbox="40,780,480,920">
+36 Λέγε. Ita legendum videtur. In edit. quibusdam λέγεις, in aliis deest.
+41 Τὸ δ' αὐτὸ πάσχω, κἂν ἐγὼ κατατρέχω. Sic Coisl. Dimidium versiculi in editis desideratur.
+47 Mé. Ita Combef. Edit. σέ.
+52 Μάλιστα, etc. Male hos versus divisos præbebant editi, quos secuti sunt incautæ Benedictini. Eos ad ordinem verum reduximus admittendo le-
 ctionem Coislianam πρόσεστιν. Multis insuper peccat versio metrica tum quoad sensum, tum quoad typographiam, tum quoad versuum divisionem, quæ omnia correximus italicis distincta. CAILLAU.
 54 Πρόσεστιν. Ita Coisl. Edit. ἐστιν.
 55 Εἰς συμπάθειαν. Qui affectum induerit quadam necessitudine. Συνήθειαν, consuetudine.
 56 Ἀνείργεται. Ita Coisl. Edit. ἀπείργεται.
   </bloco>
 
-  <bloco tipo="cabecalho" script="latino" bbox="400,710,600,730">METRICA VERSIO.</bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="50,740,480,950">
-Nunc jam ista quonam res ferat, quæso, vide.
-B. Jam pene nosco. A. Sed tamen
-Sermonis aliquid postulo exemplum tui.
-B. Quodnam sit illud?
-A. Petram cadentem monte vidisti edito?
-B. Ego ista vidi, nec semel.
-A. Quanta ruens ad ima volvitur impetu!
-B. Quanto et tremore!
-A. An facile quæ se sistere visa est tibi?
-B. Mihi non : an alii nescio,
-Nam petra sese concitans, vincit manum.
-A. Tu vera dicis:
-Hæc et mihi accidere; ad ima cum feror,
-Me citior abripit impetus.
+  [!-- METRICA VERSIO header (center lower) --]
+  <bloco tipo="cabecalho" script="latino" bbox="360,930,640,970">
+METRICA VERSIO.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="520,740,950,950">
-B Facile at manere primum erat meque et petram.
-B. Perfacile sane.
-A. Huic cuncta petræ paria cum sint crimina,
+  [!-- METRICA VERSIO Latin text (lower columns combined area) --]
+  <bloco tipo="texto_principal" script="latino" bbox="40,980,960,1280">
+Nunc jam ista quonam res ferat, quæso, vide.
+Jam pene nosco. Sed tamen
+Sermonis aliquid postulo exemplum tui.
+Quodnam sit illud?
+Petram cadentem monte vidisti edito?
+Ego ista vidi, nec semel.
+Quanta ruens ad ima volvitur impetu!
+Quanto et tremore!
+An facile quæ se sistere visa est tibi?
+Mihi non: an alii nescio;
+Nam petra sese concitans, vincit manum.
+Tu vera dicis:
+Hæc et mihi accidere; ad ima cum feror,
+Me citior abripit impetus.
+Facile at manere primum erat meque et petram.
+Perfacile sane.
+Huic cuncta petræ paria cum sint crimina,
 Tum maxime horcus, ut puto.
 Qui fiat hoc, audi. Certe huic inest rei
 Grandis voluptas.
-At semel ut horco quispiam assuevit, quid hinc
+At semel ut horcus quispiam assuevit, quid hinc
 Contingit? haud jam sistitur,
 Quoad in profundum gurgitem præceps ruat.
-B. Quis gurges hic est?
-A. Non gurges ullus major est perjurio.
-B. Id scire quid sit, mi placet.
+Quis gurges hic est?
+Non gurges ullus major est perjurio.
+Id scire quid sit, mi placet.
 Horcus malum nam quale sit, multos latet.
 Hoc ergo pande.
   </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">Digitized by Google</bloco>
-  
+  <bloco tipo="rodape" script="latino" bbox="360,1330,640,1400">
+Digitized by Google
+  </bloco>
+
   <notas>
-    Transcrição de página de edição crítica contendo texto grego, tradução latina, aparato crítico e versão métrica latina.
-    O aparato crítico flui da coluna esquerda para a direita (palavra "le-" continua em "ctionem").
-    Scripts mistos no aparato crítico (latim com citações gregas).
+    Transcrição fiel da página impressa com colunas grega e latina, sinais de interlocutor movidos para blocos nota_marginal separados (A., B.). BBOXes aproximados em escala 0-1000; fluxo: coluna esquerda (grego+latim) seguida da coluna direita (grego+latim), depois aparato crítico e versão métrica. Scripts indicados conforme conteúdo: greco para o grego, latino para o latim, misto no aparato crítico.
   </notas>
 </pagina>

@@ -1,8 +1,8 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="0,0,1000,60">
-    993 ORATIO XVIII. — FUNEBRIS IN PATREM. 994
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="misto" bbox="0,0,1000,80">
+    995 ORATIO XVIII. — FUNEBRIS IN PATREM. 994
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="40,60,480,660">
+  <bloco tipo="texto_principal" script="grego" bbox="40,80,480,700">
     δὲν εναι, τὴν ἀγαθὴν παρὰ τοῦ Κυρίου συζυγίαν
     ἀρμόζεσθαι. Τὸ δ' αὐτὸ (4) δοκεῖ καὶ τοῖς ἔξωθεν·
     εἴπερ ἐκείνων (5) τὸ, Γυναικὸς ἀνὴρ χρῆμ' οὐδὲν
@@ -37,7 +37,7 @@
     εἰκόνα ἢ συντηρεῖν, ἢ ἀνακαθαίρειν εἰς δύναμιν ·
     τοὺς δὲ γραπτοὺς (8) καὶ τεχνητοὺς κόσμους. ταῖς
     ἐπὶ τῆς σκηνῆς ἀποῤῥίψασα. Μίαν δὲ ἀληθινὴν εὐ-
-    γένειαν γινώσκουσα, τὴν εὐσέβειαν, καὶ τὸ εδέναι
+    γένειαν γινώσκουσα, τὴν εὐσέβειαν, καὶ τὸ εἰδέναι
     πόθεν τε γεγόναμεν, καὶ ποῖ καταντήσομεν. Ἕνα
     τε πλοῦτον ἀσφαλῆ τε καὶ ἄσυλον, τὸ ἀποπλουτεῖν
     θεῷ, καὶ τοῖς πένησι, καὶ μάλιστα τῶν ἐκ γέ-
@@ -53,7 +53,7 @@
     τῆς ἐπιμελείαις καὶ περινοίαις, κατὰ τοὺς Σολο-
     μῶντος περὶ τῆς ἀνδρείας γυναικὸς ρους καὶ νό-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,60,960,660">
+  <bloco tipo="texto_principal" script="latino" bbox="520,80,960,700">
     A nitius esse, bonumque conjugium a Domino conci-
     liari. Qua in sententia externi quoque sunt; siqui-
     dem illorum hoc est : Nullam proba uxore meliorem
@@ -105,10 +105,22 @@
     autem et prolixius eos juvare, id demum firmi ho-
     noris ac perfectissimi solatii esse. Jam cum aliæ rei
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="40,670,200,690">
+  <bloco tipo="nota_marginal" script="latino" bbox="480,110,520,150">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,300,540,360">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="520,420,560,460">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="520,760,560,800">
+    D
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="40,700,240,730">
     44 Gen. 11, 18.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="40,700,480,920">
+  <bloco tipo="aparato_critico" script="misto" bbox="40,730,480,980">
     (4) Αὐτό. Sic Reg. bm, Coisl. 1, et Or. 1. in ed.,
     αὐτόν.
     (5) Ἐκείνων. « Illorum, » id est, « unius ex ipsis, »
@@ -119,7 +131,7 @@
     Nihil enim vir melius sortiri potest muliere
     Bona, rursus vero mala non durius aliud.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="520,700,960,920">
+  <bloco tipo="aparato_critico" script="misto" bbox="520,730,960,980">
     (6) Ἰσόῤῥοπον καὶ ὁμότιμον. « Ob æquales vir-
     tutis lances, paremque præstantiam »
     (7) Ἔχοντι ἡττώμενον. Jes., ἔχων τῇ ἡττώ-
@@ -131,13 +143,12 @@
     καὶ πλούτου πεπτωκότες · « consanguineos, » id est,
     « qui a nobilitate et fortuna deciderunt. »
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="600,950,950,990">
+  <bloco tipo="rodape" script="latino" bbox="600,980,1000,1000">
     Digitized by Google
   </bloco>
   <notas>
-    Transcrição de página bilingue (Grego/Latim) da Patrologia Graeca.
-    O número "335" no corpo do texto latino é uma referência de página original inserida no fluxo.
-    O número "41" no corpo do texto latino também é uma referência.
-    A letra "Η'." no grego corresponde ao numeral 8, alinhado com "VIII." no latim.
+    Transcrição fiel ao impresso da página bilingue (grego à esquerda, latim à direita).
+    Letras marginais centrais A, B, C, D separadas em blocos nota_marginal; não foram colocadas no fluxo do texto.
+    BBOX são aproximações em escala 0-1000.
   </notas>
 </pagina>

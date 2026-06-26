@@ -1,82 +1,144 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="70,43,104,69">313</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="268,41,767,69">GLAPHYRORUM IN GENESIM LIB. VI.</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="893,43,930,69">314</bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="456,100,479,126">A</bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="62,74,496,836">
-μᾶλλον οἰκονομικὴν γενέσθαι φαμὲν. Ἡ μὲν γὰρ [ilegivel] ἐλευθέρας, τοῦ κατὰ νόμον [ilegivel] ἐστερημένη· [ilegivel] πρὸς οἶκον [ilegivel] αἰτία πολλὴ τοῦ καί, εἴπερ ἕλκοιτο, συνελθόντε ἑτέραν, τεθνεώσης αὐτῇ τῆς πρώτης. Κοινωνίας δὲ τῆς πνευματικῆς καὶ μὴν καὶ τόκου τοῦ νοητοῦ συνόδου, τὸ πᾶντως ἡμῖν καὶ ἀπόδειξις σωματικὴ καταγράφει ἂν ἐπὶ τὸ ἀληθὲς ὁ ἀνθρώπινος νοῦς.
-
-Γ'. Καταβήσεται τοίνυν Ἰούδας, καὶ ἀφίκετο πρὸς ἄνθρωπον, ᾧ ὄνομα Ἱρά. Αἰπόλος δὲ οὗτος καὶ [ilegivel] ποιμενικῶν [ilegivel]. Καὶ τὴν Σαβὰμ [ilegivel] μητέρα [ilegivel] τριῶν τέκνων ἀπέδειξε· Ἤρ, Αὐὰν καὶ Σηλώμ. Ἐκ τούτων ὁ μὲν Ἤρ σημαίνει [ilegivel], τοῦτ' ἔστι σάρκινος· [ilegivel] δὲ [ilegivel]· τρίτος δὲ [ilegivel] καὶ [ilegivel].
-
-Κατεβήθη δὲ καὶ ἐξ οὐρανῶν, καθάπερ ἐκ τινος ἁγίας γῆς, ὁ μονογενὴς τοῦ Θεοῦ Λόγος, ὁ ἀληθῶς ὑμνούμενος, καὶ τῆς βασιλείας τὴν δόξαν φυσικῶς ἀνημμένος. Τοῦτο γὰρ ἡμῖν τὸν Ἰούδα πρόσωπον σημαίνει· αἴτιον μὲν γὰρ ἡ τοῦ ὀνόματος σημασία δηλοῖ. Βασιλικὴν [ilegivel] Ἰούδας τέτακται φυλή. Τογάρτοι καὶ ὁ θεσπέσιος Ἰακώβ, τὴν ἐφ' αὐτῷ ποιούμενος εὐλογίαν, Ἰούδα εἶπεν· «Σὲ αἰνέσει οἱ ἀδελφοί σου» 36. Ἀλλὰ καὶ σοφώτατος Παῦλος ἐμαρτύρησεν, ὅτι ἐκ φυλῆς Ἰούδα μέλλει Χριστὸς ἐξέρχεσθαι, ὑπὲρ πάντας κτίσεις ὑμνούμενος 37. Κατεβήθη οὖν ὁ μονογενὴς τοῦ Θεοῦ Υἱός, καὶ ἐξῆλθεν διὰ τῆς ἐρήμου Μαδιὰμ πρὸς τὸν μακάριον Μωυσῆν, τότε ἐκεῖ βόσκοντα. Ὤφθη γὰρ αὐτῷ ἐν εἴδει πυρὸς ἐν τῇ βάτῳ 38, καὶ συνήφθη ὡς ἔπος εἰπεῖν ἡ Συναγωγὴ Ἰσραηλιτῶν ἐν Αἰγύπτῳ· [ilegivel] τῇ ἀλλοφύλῳ καὶ Χαναναίᾳ γυναικί, καθάπερ καὶ ὁ Ἰούδας διὰ τοῦ ποιμένος [ilegivel] ἐπὶ Σαβὰ, ἥτις ἑρμηνεύεται ὕψος ἢ ἔπαρσις.
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,100,50">313</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="300,30,700,50">GLAPHYRORUM IN GENESIM LIB. VI.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="900,30,950,50">314</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,60,450,200">
+    μᾶλλον οκονομικν γενέσθαι φαμέν. Ἡ μὲν γὰρ
+    ἐπεθύμει γονῆς ἐλευθέρας, τοῦ κατὰ νόμον συνημ-
+    κότος ἑστερημένη· ὁ δὲ ἦν ἤδη πως οὐκ ἐν αἰτίᾳ
+    πολλῇ τοῦ καί, εἴπερ ἔλοιτο, συνελθεῖν ἑτέρᾳ, τεθνευ-
+    σης αὐτῷ τς πρώτης. Κοινωνίας δὲ τῆς πνευματικῆς
+    καὶ μὴν καὶ τόκου τοῦ νοητοῦ σύνοδός ποι πάντως
+    ἡμν καὶ ἀπόσειξις σωματικὴ καταγράψειεν ἂν ἐφ'
+    ἑαυτῆς τοὺς τύπους. Χειραγωγηθεὶν γὰρ ὧδε καὶ
+    οὐχ ἑτέρως ἂν μᾶλλον ἐπὶ τὸ ἀληθὲς ὁ ἀνθρώπινος
+    νοῦς.
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="456,375,479,400">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="456,553,479,580">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,60,480,75">A</bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="505,74,943,846">
-Nam illa quidem desiderabat semel libe-
-rum, orbata eo qui sibi legitime fuerat con-
-junctus: hic vero in levi culpa fuit, ut qui se commi-
-scuerit cum libera, priori uxore sibi jam mortua.
-Typus autem conjunctionis spiritualis, et partus in-
-tellectualis per se nobis descripserit ista coniunctio
-et generatio corporalis. Nulla enim alia ratione
-mens humana commodius ad veritatem deduci po-
-test.
-
-3. Descendit igitur Judas, et divertit apud homi-
-nem, cui nomen Hira. Fuit autem caprarum pa-
-stor, peritusque rei pastoralis. Ibique Sabam visam
-duxit in uxorem, ac trium filiorum matrem efficit;
-minimum Her, Aunan et Selom. Ex his Her signifi-
-cat pelliceus, hoc est carnalis; Aunan vero, stupidus
-sive percursus corde; tertius autem, evulsio sive di-
-missio et pacificatio. Porro e coelis etiam descendit
-tanquam e sancta quadam terra unigenitum Dei
-Verbum, qui Filius vere celeberrimus est, siquidem natu-
-raliter adjunctam habet regni majestatem. Id enim
-nobis persona Judae repraesentat, siquidem nomen
-ipsius significat laudem, seu celebrationem. Tribus au-
-tem Judae praedestina insignita fuit, tribus honore et in
-suprema excellentia posita. Unde divinus Jacob, dans
-benedictionem Judae, ait : « Te laudent fratres tui » 36
-Atqui sapientissimus Paulus etiam testatus est,
-quod ex tribu Juda oriturus sit Christus, ultra om-
-nes creaturas celebrandus 37. Descendit itaque uni-
-genitus Dei Filius, et exivit per desertum Madian
-ad beatum Moysen, tunc ibi pascentem. Apparuit
-enim ipsi in specie ignis in rubo 38, et simul per
-ipsum conjunctus est quodammodo Synagogae Israelit-
-arum in Aegypto; tanquam alienigenae et Chananaeae
-mulieri, quemadmodum et Judas per pastorem ap-
-paruit ipsi Sebae, quae interpretatur altitudo seu ela-
-tio. Nam Judaeorum Synagoga veluti in amicitiam
-Dei evocata est, neque amplius erat abjecta et precul-
-cata, sordidamque servorum conditionem sustinens,
-sed exaltata atque illustris. Erepta enim erat, tan-
-quam ex fornace ferrea et ex domo servitutis, sicut
-scriptum est 39. Postea vero huic Synagogae veluti
-alienigenae, et idola colenti, tandem tres nati sunt
-populi, suppletis Deo ordinem diligendum, et ex una
-quidem matre geniti, sed tempore partiti sunt ge-
-nerationem. Quo autem modo breviter dicemus.
-Nam Judas adjunxit quidem Thamar filio suo, qui
-erat primogenitus: quia cum esset malus, perdidit
-eum Deus. Huic continuo in nuptiis succedit Au-
-nan, qui erat ortus tempore secundus: hic vero
-quia noluit suscitare semen fratri suo, simili modo
-ut primus interiit, ira divina etiam ipsum corripiente.
-Tertium autem, ut est Selom, non permisit pater
-inire nuptias, veritus ne forte ut primi interiret.
-Equid hoc res sibi vult? Edicere conabor, Deo ad-
-juvante. Nam cum Deus Synagogam primam in Aegy-
-pto (quam alienigenam esse tradidimus, eo quod
+  <bloco tipo="texto_principal" script="latino" bbox="480,60,950,200">
+    pensatione. Nam illa quidem desiderabat semen li-
+    berum, orbata eo qui sibi legitime fuerat conjun-
+    ctus : hic vero in levi culpa fuit, ut qui se commi-
+    scuerit cum libera, priori uxore sibi jam mortua.
+    Typos autem conjunctionis spiritualis, et partus in-
+    tellectualis per se nobis descrips erit ista conjunctio-
+    et generatio corporalis. Nulla enim alia ratione
+    mens humana commodius ad veritatem deduci po-
+    test.
   </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="93,855,751,892">36 Hebr. vi., 7. 37 Hebr. vii., 14. 38 Exod. iii., 1 seq. 39 Exod. xiii., 3.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,210,450,880">
+    γ'. Καταβέβηκε τοίνυν Ἰούδας, καὶ ἀφίκετο πρὸς
+    ἄνθρωπον, ᾧ νομα Ἱράς. Αἰπόλος δὲ οὗτος καὶ τε-
+    χνίτης τὰ ποιμενικά. Καὶ τὴν Σαδὰν ἐκεῖσε θεασάμε-
+    νος, ἐποιεῖτο μὲν συνοικον, μητέρα δὲ καὶ τριν ἀπ-
+    έδειξε τέκνων· Ἥρ δὴ λέγω καὶ Αὐνὰν, καὶ μίντοι
+    καὶ Σηλώμ. Καὶ ὁ μὲν Ἥρ δερμάτινος, τουτέστι
+    σάρκινος, ἑρμηνεύεται· πεπληρὼς δὲ καρδίαν
+    Αὐνὰν· ἐκσπασμὸς δὲ ὁ τρίτος, ἤγουν θάλλυσις
+    καὶ εἰρήνευσις. Καταβέβηκε δὲ καὶ ἐξ οὐρανῶν, καθά-
+    περ ἔκ τινος ἁγίας γῆς,  μονογενὴς τοῦ Θεοῦ Λό-
+    γος, ὁ ἀληθῶς μνούμενος, καὶ τῆς βασιλείας τὴν
+    δόξαν φυσικῶς ἀνημμένος. Τοῦτι γὰρ ἡμῖν τὸ Ἰούδα
+    πρόσωπον ὑπεμνήσειεν ἂν· αἴνεσιν μὲν γὰρ ἡ τοῦ
+    ὀνόματος σημασία δηλοῖ. Βασιλικωτάτη δὲ τῶν λλων,
+    καὶ ἐν ταῖς εἰς κρον ὑπεροχαῖς ἡ Ἰούδα τέθειται
+    φυλή. Τοιγάρτοι καὶ ὁ θεσπέσιος Ἰακώβ, τὴν ἐπ'
+    αὐτῷ ποιούμενος εὐλογίαν, Ἰούδα φησί, « Σὲ αἰνέ-
+    σαισαν οἱ ἀδελφοί σου. » Μεμαρτύρηκε δὲ καὶ ὁ σο-
+    φώτατος Παῦλος, ὡς ἐκ τῆς ούδα φυλῆς ἀνέφυ Χρι-
+    στὸς, ὁ παρὰ πάσης κτίσεως ὑμνούμενος. Καταβέ-
+    βηκε τοίνυν ὁ μονογενὴς το Θεοῦ Λόγος, καὶ ἐπ-
+    εφοίτησε μὲν τ ἐρήμῳ Μαδιὰμ διαποιμαίνοντι τότε
+    τῷ μακαρίῳ Μωσεῖ. Ὤφθη γὰρ αὐτῷ ἐν εἴδει πυρὸς
+    ἐν τῇ βάτῳ, κα συνῆφθη τρόπον τινὰ δι' αὐτοῦ, κα-
+    θάπερ ἀλλοφύλῳ Χαναναία γυναικί, τῇ κατ' Αἴγυπτον
+    Συναγωγῇ τν υἱν Ἰσραήλ· καθάπερ ἀμείλει καὶ
+    ὁ Ἰούδας διὰ τοῦ ποιμαίνοντος τῇ Σαδὰ, ἡ διερμη-
+    νεύεται ὕψωσίς τε καὶ ἔπαρσις. Κεκλημένη γὰρ
+    ὥσπερ εἰς οἰκειότητα τὴν ὡς πρὸς Θεν ἡ τν Ἰου-
+    δαίων Συναγωγή, χθαμαλὴ μὲν ἦν οὐκέτι καὶ πεπα-
+    τημένη, καὶ τὸ τῆς δουλείας ἔχουσα σμικροπρεπές,
+    ὑψηλ δὲ γέγονε καὶ διαφανής. Λελύτρωται γὰρ ὡς
+    ἐκ καμίνου σιδηρᾶς, καὶ ἐξ οἴκου δουλείας, κατὰ τὸ
+    γεγραμμένον. Εἶτα τῆς ἐν Αἰγύπτῳ Συναγωγῆς τῆς ὡς
+    ἀλλοφύλου τε καὶ εἰδωλολατρούσης ποτὲ τρεῖς γεγό-
+    νασι λαοί, τὴν υἱῶν τάξιν ἀποπληροῦντες Θεῷ, καὶ
+    μιᾶς μὲν ὥσπερ ἐκπεφυκότες μητρός, μερισάμενοι
+    δὲ τὴν ἐν χρόνῳ γένεσιν. Καὶ τίνα δὴ τρόπον, ἐροῦ-
+    μεν οὐκ εἰς μακράν. Εἶτα τὴν Θάμαρ πρώτῳ μὲν τῷ
+    Ἥρ, ς ἦν πρωτότοκος, συνῆψεν Ἰούδας. Ἐπεὶ δὲ
+    πονηρὸν ὄντα διώλεσε Θεός, διαδέχεται τὸν γάμον
+    εὐθὺς ὁ Αὐνὰν, ὃς ν καὶ γενέσει καὶ χρόνῳ δεύτε-
+    ρος.  δὲ ἐπείπερ οὐκ ἤθελεν ἐγεῖραι σπέρμα τῷ
+    ἀδελφῷ, συνεδίλλυται τῷ πρώτῳ, θείας καὶ αὐτὸν ες
+    τοτο ὑπενεγκούσης ὀργς. Εἶτα τὸν τρίτον, τουτέστι,
+    τὸν Σηλώμ, οὐκ ἐφίησιν ὁ πατὴρ μεταποιεῖσθαι τοῦ
+    γάμου, μὴ ἄρα τοῖς πρώτοις συναπόληται δεδιώς.
+  </bloco>
 
-  <notas>Colunas transcritas em ordem visual (esquerda, depois direita). Letras de seção A, B e C registradas separadamente como nota_marginal no gutter. Trechos do grego com baixa legibilidade foram mantidos com [ilegivel] sem normalização.</notas>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,280,480,295">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,480,480,495">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,700,480,715">D</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="480,210,950,880">
+    3. Descendit igitur Judas, et divertit apud homi-
+    nem, cui nomen Hira. Fuit autem caprarum pa-
+    stor, peritusque rei pastoralis. Ibique Sabam visam
+    duxit in uxorem, ac trium filiorum matrem effecit ;
+    nimirum Her, Aunan et Selom. Ex his Her significat
+    pelliceus, hoc est carnalis ; Aunan vero, stupidus
+    sive percussus corde ; tertius autem, evulsio sive di-
+    missio et pacificatio. Porro e cœlis etiam descendit
+    tanquam e sancta quadam terra unigenitum Dei
+    Verbum, qui Filius vere celebris est, sibique natu-
+    raliter adjunctam habet regni majestatem. Id enim
+    nobis persona Judæ repræsentat, siquidem nomen
+    ipsius significat laudem, seu celebrationem. Tribus au-
+    tem Judæ præ aliis insignita fuit tribubus honore et in
+    suprema excellentia posita. Unde divinus Jacob, dans
+    benedictionem Judæ, ait : « Te laudent fratres tui 26. »
+    197 Atqui sapientissimus Paulus etiam testatus est,
+    quod ex tribu Juda oriturus sit Christus, ultra om-
+    nes creaturas celebrandus 27. Descendit itaque uni-
+    genitus Dei Filius, et exivit per desertum Madian
+    ad beatum Moysen, tunc ibi pascentem. Apparuit
+    enim ipsi in specie ignis in rubo 28, et simul per
+    ipsum conjunctus est quodammodo Synagogæ Israeli-
+    tarum in Ægypto ; tanquam alienigenæ et Chananaæ
+    mulieri, quemadmodum et Judas per pastorem ap-
+    paruit ipsi Sebæ, quæ interpretatur altitudo seu ela-
+    tio. Nam Judæorum Synagoga veluti in amicitiam
+    Dei vocata est, neque amplius erat abjecta et procul-
+    cata, sordidamque servorum conditionem sustinens,
+    sed exaltata atque illustris. Erepta enim erat, tan-
+    quam ex fornace ferrea et ex domo servitutis, sicut
+    scriptum est 29. Postea vero huic Synagogæ veluti
+    alienigenæ, et idola colenti, tandem tres nati sunt
+    populi, supplentes Deo ordinem filiorum, et ex una
+    quidem matre geniti, sed tempore partiti sunt ge-
+    nerationem. Quo autem modo breviter dicemus.
+    Nam Judas adjunxit quidem Thamar filio suo, qui
+    erat primogenitus : qui cum esset malus, perdidit
+    eum Deus. Huic continuo in nuptiis succedit Au-
+    nan, qui erat ortus tempore secundus : hic vero
+    quia noluit suscitare semen fratri suo, simili modo
+    ut primus interiit, ira divina etiam ipsum corripien te.
+    Tertium autem, hoc est Selom, non permittit pater
+    inire nuptias, veritus ne forte ut primi interiret.
+    Equid hæc res sibi vult ? Edicere conabor, Deo ad-
+    juvante. Nam cum Deus Synagogam primam in Ægy-
+    pto (quam alienigenam esse tradidimus, eo quod
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="50,890,950,920">
+    26 Hebr. VI, 7. 27 Hebr. VII, 14. 28 Exod. III, 1 seqq. 29 Exod. XIII, 3.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="550,950,750,980">
+    Digitized by Google
+  </bloco>
 </pagina>

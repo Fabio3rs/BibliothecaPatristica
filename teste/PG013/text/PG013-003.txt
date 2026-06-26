@@ -1,42 +1,44 @@
 <pagina estado="com_texto">
-  <bloco tipo="texto_principal" script="latino" bbox="740,100,920,480">
+  <bloco tipo="capa_ou_guarda" script="desconhecido" bbox="0,0,760,1000">
+    [guarda marmorizada cobrindo a maior parte da página; sem texto legível]
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="760,20,1000,980">
 ICA,
 ORUM,
-IS,
+
 PRIMA
+[ilegivel]
 DILIGEN-
-NIBUS
-CTA;
+SUS
+ECTA;
+[ilegivel]-
 TI-
 UN
 S
+
 STATI-
 LITUR-
-RTIN
+UTIN
 D
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="740,600,770,620">
-B.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="740,650,920,880">
+
 -LATINA.
-MOLE SUA
-T. GRÆCA
-IS AMPLE-
-ERSIONEM
-A QUARTA
-QUE NEBE
-ATUR EM-
-E ET 272
-IS AMPLI-
-T SEORSIM
-NOVEM VEL
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="740,900,920,950">
-O D'ENFER
-SINÆ.
+[ilegivel] SUA
+GRAECA
+[ilegivel]
+[ilegivel]
+[ilegivel]
+[ilegivel]
+[ilegivel]
+[ilegivel]
+</bloco>
+  <bloco tipo="outro" script="latino" bbox="760,880,1000,1000">
+Digitized by Google
   </bloco>
   <notas>
-    Página parcialmente coberta por papel marmoreado à esquerda. Transcrição baseada apenas no texto visível na margem direita. A letra "B." funciona como marcador de seção.
+- A página é uma guarda/folha marmorizada que cobre a maior parte da página; apenas uma coluna estreita à direita contém texto impresso visível através/ao lado da guarda.
+- Todas as palavras que não puderam ser lidas com segurança foram marcadas com [ilegivel] (usado apenas por palavra).
+- BBOXs são aproximações proporcionais à imagem (escala 0-1000).
+- Não se observam identificadores marginais A, B, C ou D nesta página.
+- Mantive maiúsculas e hífens tal como aparecem; não foi feita normalização nem tentativa de reconstrução de palavras completas a partir de fragmentos.
   </notas>
 </pagina>

@@ -1,61 +1,95 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="100,20,900,60">
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,50">
     23 SUPPLEMENTUM AD ORIGENIS EXEGETICA. 24
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,60,480,150">
+  <bloco tipo="texto_principal" script="latino" bbox="100,60,480,140">
     facerent, conscripsisse illius vaticinia, eaque posteris reliquisse, in quibus erat et illud : Orietur stella ¹². Aut saltem ex paterna traditione, atque doctrina istud accipientes Magi, in Bethleem venerunt.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,60,900,150">
-    A τοῦ χοντας (26), ἀναγράψασθαι τὰς προφητείας αὐτοῦ, καὶ καταλιπεῖν, ἐν αἷς καὶ τὸ Ἀνατελεῖ στρον. Ἢ καὶ ἐκ τῆς πατρικῆς παραδόσεως τοῦτο καὶ διαδοχῆς παραλαβόντες οἱ Μάγοι, ἐπὶ τὴν Βηθλεὲμ παρεγένοντο.
+  <bloco tipo="nota_marginal" script="latino" bbox="490,60,510,80">
+    A
   </bloco>
-  <bloco tipo="cabecalho" script="grego" bbox="350,170,650,220">
+  <bloco tipo="texto_principal" script="grego" bbox="520,60,900,140">
+    τοῦ ἔχοντας (26), ἀναγράψασθαι τὰς προφητείας αὐτο, καὶ καταλιπεῖν, ἐν αἷς καὶ τό· Ἀνατελεῖ στρον. Ἢ καὶ ἐκ τῆς πατρικῆς παραδόσεως τοῦτο καὶ διαδοχῆς παραλαβόντες οἱ Μάγοι, ἐπὶ τὴν Βηθλεὲμ παρεγένοντο.
+  </bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="350,180,650,210">
     ΩΡΙΓΕΝΟΥΣ ΕΚΛΟΓΑΙ
+  </bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="380,220,620,240">
     ΕΙΣ ΤΟ ΔΕΥΤΕΡΟΝΟΜΙΟΝ.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="200,230,800,290">
+  <bloco tipo="cabecalho" script="latino" bbox="150,260,850,290">
     ORIGENIS ADNOTATIONES IN DEUTERONOMIUM.
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="350,300,650,320">
     (Ex Bibliotheca Gallandiana.)
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,310,480,460">
+  <bloco tipo="texto_principal" script="latino" bbox="100,340,480,460">
     CAP. I.
     V. 31. Ut si homo ceu nutritor gestet.
-    Aquila, Ut si portet nutrix, filium gestavit, interpretatus est. Origenes vero in homiliis in Jeremiam dixit : « Adtemperavit se condescenditque nobis, nostram infirmitatem suam faciens ; velut magister cum pueris balbutiens, velut pater liberos suos nutriens, moresque illorum induens, et paulatim perducens eos ad ea quæ perfectiora et sublimiora sunt. »
+    Aquila, Ut si portet nutrix, filium gestavit, interpretatus est. Origenes vero in homiliis in Jeremiam dixit : « Adtemperavit se condescenditque nobis, nostram infirmitatem suam faciens ; velut magister cum pueris balbutiens, velut pater liberos suos nutriendi, moresque illorum induens, et paulatim perducens eos ad ea quæ perfectiora et sublimiora sunt.»
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,310,900,460">
+  <bloco tipo="texto_principal" script="grego" bbox="520,340,900,360">
     ΚΕΦ. Α'.
-    Στίχ. λα'. Ὡσε τροφοφορήσαι ἄνθρωπος.
-    Ἀκύλας. Ὡσε ἄραι τροφὸς τὸν υἱὸν ἐδίδαξεν, ἠρμήνευσεν. Ὠριγένης δὲ ἐν ταῖς εἰς τὸν Ἱερεμίαν ὁμιλίαις φησί· « Συμπεριηνέχθη καὶ συγκατέβη ἡμν (27), τὴν ἡμετέραν ἀσθένειαν οἰκειούμενος· ὡς διδάσκαλος συμψέλλιζων παιδίοις , ὡς πατὴρ ἰδίους τιθηνούμενος παῖδας, καὶ τοὺς τρόπους αὐτῶν ὑποδυόμενος, καὶ κατὰ μικρὸν ἄγων αὐτοὺς ἐπὶ τὰ τελειότερα καὶ ὑψηλότερα. »
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,470,480,660">
+  <bloco tipo="texto_principal" script="grego" bbox="520,360,900,380">
+    Στίχ. ια'. Ὡσεὶ τροφοφορήσαι ἄνθρωπος.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,380,900,480">
+    Ἀκύλας· Ὡσε ἄραι τροφς τὸν υἱὸν ἐδίδαξεν, ἠρμήνευσεν. Ὠριγένης δὲ ἐν ταῖς εἰς τὸν Ἱερεμίαν ὁμιλίαις φησί· « Συμπεριηνέχθη καὶ συγκατέθη ἡμν (27), τὴν ἡμετέραν ἀσθένειαν οἰκειούμενος· ὡς διδάσκαλος συμψέλλιζων παιδίοις, ὡς πατὴρ δίους τιθηνοῦμενος παῖδας, καὶ τοὺς τρόπους αὐτῶν ποδυόμενος, κα κατὰ μικρν ἄγων αὐτοὺς ἐπὶ τὰ τελειότερα καὶ ὑψηλότερα. »
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,490,510,510">
+    B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,470,480,490">
     CAP. III.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,490,480,510">
     V. 18. Et præcepi vobis.
-    Hæc dicit tribui Ruben et tribui Gad et dimidiæ tribui Manasse.
-    VV. 27, 28. Plus Moysi præ Aarone tribuit, vidisse nempe terram oculis propriis. At ingressum non tribuit, propter fidei defectum hac pœna multatis, quæ utrumque extra terram promissionis de hac vita transfert, cum eo pervenire non possent ; nam finis per fidem datur. Quod quidem symbolum etiam de Rege fuit, quæ ad perfectionem consummare non poterat, neque promissionem largiri : quoniam, justus ex fide vivet ¹³. Est tamen honor hic, novisse judicium Dei, et prænovisse propriam mortem.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,470,900,660">
+  <bloco tipo="texto_principal" script="latino" bbox="100,510,480,530">
+    Hæc dicit tribuni Ruben et tribui Gad et dimidiæ tribui Manasse.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,490,900,510">
     ΚΕΦ. Γ'.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,510,900,530">
     Στίχ. ιη'. Καὶ ἐνετειλάμην ὑμῖν.
-    (28) Ταῦτα λέγει τῇ φυλῇ Ῥουβήμ, καὶ τῇ φυλῇ Γάδ, καὶ τ ἡμίσει (29) φυλῆς Μανασσῆ.
-    Στίχ. κζ', κη'. Πλέον τῷ Μωϋσεῖ παρὰ τῷ Ἀαρὼν δίδωσι, τὸ θεάσασθαι τὴν γῆν ἐξ αὐτόπτου. Τὴν δ εἴσοδον οὐ δίδωσι, τῇ τῆς πίστεως ἐνδείᾳ ταύτην δίκην ἐπιθεὶς, καθ' ἣν ἀμφοτέρους ἐκτὸς τῆς γς τῆς ἐπηγγελμένης μεθίστησιν ἀπὸ τοῦ βίου, καὶ (30) δυναμένους ἀφικέσθαι, τοῦ τέλους ἄτε διὰ πίστεως διδομένου. Ὅ δὲ καὶ σύμβολον εἰς τὸν νόμον, οὐ δυνάμενον τελεῶσαι οὐδὲ τὴν ἐπαγγελίαν ἀποκαταστῆσαι, ὅτι  δίκαιος ἐκ πίστεως ζήσεται. Τιμὴ δὲ αὕτη, τὸ γνῶναι κρίσιν Θεοῦ, καὶ προγνῶναι τὴν οἰκείαν τελευτήν.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,670,480,830">
-    Ejusdem. Producit Jesum, jam quidem sanctificatum ex sequela et conversatione cum Moyse, sed recepturum mox spiritum principalem per Moysen, ut et suos pro se stabiliret. Quemadmodum etiam Elisæus in spiritu Eliæ aderat, Eliæ opus facturus. In eodem etenim spiritu eadem operari oportet. Accipe ad te, ut dicitur in Numeris, Jesum filium Nave ; hominem qui habet spiritum Dei in seipso, et impones manus tuas super eo ¹⁴. Sic etiam apostoli Spiritum vivificantem habentes ex insufflatione Domini , spiritum accipiunt principalem cæ-
+  <bloco tipo="texto_principal" script="grego" bbox="520,530,900,560">
+    (28) Ταῦτα λέγει τῇ φυλῇ Ῥουβήμ, καὶ τῇ φυλῇ Γάδ, καὶ τῷ ἡμίσει (29) φυλῆς Μανασσῆ.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,670,900,830">
-    Τοῦ αὐτοῦ. Προάγει τὸν ησοῦν, καὶ ἤδη μὲν ἡγιασμένον ἐκ τῆς ἀκολουθήσεως, καὶ παρὰ μονῆς (31) [Μωϋσέως, τὸ δὲ ἀρχικὸν πνεῦμα διὰ Μωϋσέως μέλλοντα κομίζεσθαι πρὸς τὸ καὶ οἰκείους ἀντ' αὐτοῦ καταστῆσαι. Ὥσπερ καὶ Ἐλισσαῖος ἐν πνεύματι Ἠλίου παρῆν τῷ Ἠλίου πράξων ἔργον· ἐν γὰρ τῷ αὐτῷ πνεύματι τὰ αὐτὰ κατεργάζεσθαι δεῖ. Λάβε πρὸς ἑαυτόν, ὡς φησιν ἐν τοῖς Ἀριθμοῖς, τὸν Ἰησοῦν υἱὸν Ναυή, ἄνθρωπον ὃς χει πνεῦμα Θεοῦ ἐν αὐτῷ, καὶ ἐπιθήσεις τὰς χεῖράς σου ἐπ' αὐτῷ. Οὕτω καὶ οἱ ἀπόστολοι Πνεῦμα ζωοποιοῦν 18.
+  <bloco tipo="texto_principal" script="latino" bbox="100,530,480,640">
+    Vv. 27, 28. Plus Moysi præ Aarone tribuit, vidisse nempe terram oculis propriis. At ingressum non tribuit, propter fidei defectum hac pœna multatis, quæ utrumque extra terram promissionis de hac vita transfert, cum eo pervenire non possent ; nam finis per fidem datur. Quod quidem symbolum etiam de Rege fuit, quæ ad perfectionem consummare non poterat, neque promissionem largiri : quoniam, justus ex fide vivet ¹³. Est tamen honor hic, novisse judicium Dei, et prænovisse propriam mortem.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="100,840,900,940">
+  <bloco tipo="texto_principal" script="grego" bbox="520,560,900,640">
+    Στίχ. κζ', κη'. Πλέον τῷ Μωϋσεῖ παρὰ τῷ Ἀαρὼν δίδωσι, τὸ θεάσασθαι τὴν γῆν ἐξ αὐτόπτου. Τὴν δ εἴσοδον οὐ δίδωσι, τῇ τς πίστεως ἐνδείᾳ ταύτην δίκην ἐπιθείς, καθ' ἣν ἀμφοτέρους ἐκτὸς τῆς γῆς τῆς ἐπηγγελμένης μεθίστησιν ἀπὸ τοῦ βίου, καὶ (30) δυναμένους ἀφικέσθαι, τοῦ τέλους ἅτε διὰ πίστεως διδομένου. Ὃ δὲ καὶ σύμβολον εἰς τὸν νόμον, οὗ δυνάμενον τελεῶσαι οὐδὲ τὴν ἐπαγγελίαν ἀποκαταστῆσαι, ὅτι ὁ δίκαιος ἐκ πίστεως ζήσεται. Τιμὴ δὲ αὕτη, τὸ γνῶναι κρίσιν Θεοῦ, καὶ προγνῶναι τὴν οἰκείαν τελευτήν.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,650,510,670">
+    C
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,650,480,830">
+    Ejusdem. Producit Jesum, jam quidem sanctificatum ex sequela et conversatione cum Moyse, sed recepturum mox spiritum principalem per Moysen, ut et suos pro se stabiliret. Quemadmodum etiam Eliasus in spiritu Eliæ aderat, Eliæ opus facturus. In eodem etenim spiritu eadem operari oportet. Accipe ad te, ut dicitur in Numeris, Jesum filium Nave ; hominem qui habet spiritum Dei in seipso, et impones manus tuas super eo ¹⁴. Sic etiam apostoli Spiritum vivificantem habentes ex insufflatione Domini , spiritum accipiunt principalem cœ-
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,650,900,830">
+    Τοῦ αὐτοῦ. Προάγει τὸν Ἰησοῦν, καὶ ἤδη μὲν ἡγιασμένον ἐκ τῆς ἀκολουθήσεως, καὶ παρὰ μονῆς (31) Μωϋσέως, τὸ δὲ ἀρχικὸν πνεῦμα διὰ Μωϋσέως μέλλοντα κομίζεσθαι πρὸς τὸ καὶ οἰκείους ἀντ' αὐτοῦ καταστῆσαι. Ὥσπερ καὶ Ἐλισσαος ἐν πνεύματι Ἠλίου παρῆν τῷ Ἠλίου πράξων ἔργον· ἐν γὰρ τῷ αὐτῷ πνεύματι τὰ αὐτὰ κατεργάζεσθαι δεῖ. Λάβε πρὸς αυτόν, ς φησιν ἐν τοῖς Ἀριθμοῖς, τὸν Ἰησοῦν υἱὸν Ναυή, ἄνθρωπον ὃς χει πνεῦμα Θεοῦ ἐν αὐτῷ, καὶ ἐπιθήσεις τὰς χεῖράς σου ἐπ' αὐτ. Οὕτω καὶ οἱ ἀπόστολοι Πνεῦμα ζωποιοῦν
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="100,840,480,860">
+    ¹² Num. xxiv, 17. ¹³ Gal. III, 11. ¹⁴ Num. xxvii, 18.
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="100,860,480,930">
     (26) Sic, pro ἔχοντες correximus. EDIT. PATR.
-    (27) Forte ἡμν.
-    (28) Hæc subjiciuntur sine alio auctoris nomine his, quæ in vulg. habentur ad v. 11, pag. 387, et
+    (27) Forte ἡμῖν.
+    (28) Hæc subjiciuntur sine alio auctoris nomine iis, quæ in vulg. habentur ad v. 11, pag. 387, et
+  </bloco>
+  <bloco tipo="aparato_critico" script="grego" bbox="520,840,900,860">
+    ὑποδέστεροι.
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="520,860,900,930">
     (29) Sic reposuimus, pro τὸ ἥμισυ. ED. PATROL.
     (30) Forte μὴ pro καί.
     (31) Forte παραμονῆς.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="400,950,600,990">
+  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
     Digitized by Google
   </bloco>
-  <notas>
-    Transcrição de página com texto em colunas paralelas (Latim à esquerda, Grego à direita). Inclui cabeçalho de página, títulos de seção, corpo do texto e aparato crítico numerado no rodapé.
-  </notas>
 </pagina>

@@ -44,6 +44,71 @@ export function useTranslations(locale: string | undefined): Translations {
   return dict[normalizeLocale(locale)];
 }
 
+export function getLocaleBase(
+  locale: string | undefined,
+  base: string,
+): string {
+  const normalized = normalizeLocale(locale);
+  const baseNoSlash = base.endsWith('/') ? base.slice(0, -1) : base;
+  return normalized === 'pt-br'
+    ? `${baseNoSlash}/`
+    : `${baseNoSlash}/${normalized}/`;
+}
+
+function detectLocaleFromPath(
+  currentPath: string,
+  base: string,
+): SupportedLocale {
+  const baseNoSlash = base.endsWith('/') ? base.slice(0, -1) : base;
+  const withoutBase = currentPath.startsWith(baseNoSlash)
+    ? currentPath.slice(baseNoSlash.length)
+    : currentPath;
+  const normalizedPath = withoutBase.startsWith('/') ? withoutBase : `/${withoutBase}`;
+  if (normalizedPath === '/en' || normalizedPath.startsWith('/en/')) return 'en';
+  if (normalizedPath === '/it' || normalizedPath.startsWith('/it/')) return 'it';
+  return 'pt-br';
+}
+
+function stripLocaleFromPath(
+  currentPath: string,
+  base: string,
+): string {
+  const baseNoSlash = base.endsWith('/') ? base.slice(0, -1) : base;
+  const withoutBase = currentPath.startsWith(baseNoSlash)
+    ? currentPath.slice(baseNoSlash.length)
+    : currentPath;
+  const normalizedPath = withoutBase.startsWith('/') ? withoutBase : `/${withoutBase}`;
+  if (normalizedPath === '/en' || normalizedPath === '/it') return '/';
+  if (normalizedPath.startsWith('/en/')) return normalizedPath.slice(3) || '/';
+  if (normalizedPath.startsWith('/it/')) return normalizedPath.slice(3) || '/';
+  return normalizedPath || '/';
+}
+
+export function getLocalizedPath(
+  targetLocale: SupportedLocale,
+  currentPath: string,
+  base: string,
+): string {
+  const localeBase = getLocaleBase(targetLocale, base).replace(/\/$/, '');
+  const strippedPath = stripLocaleFromPath(currentPath, base);
+  const cleanPath = strippedPath === '/' ? '' : strippedPath;
+  return `${localeBase}${cleanPath}` || '/';
+}
+
+export function getLocaleRouteUrl(
+  targetLocale: SupportedLocale,
+  route: '' | '/' | string,
+  base: string,
+  search: string = '',
+  hash: string = '',
+): string {
+  const localeBase = getLocaleBase(targetLocale, base).replace(/\/$/, '');
+  const cleanRoute = !route || route === '/'
+    ? ''
+    : `/${String(route).replace(/^\/+/, '')}`;
+  return `${localeBase}${cleanRoute}${search}${hash}` || '/';
+}
+
 /**
  * Serializa apenas as chaves de string/number do objeto de traduções para
  * injeção segura via `define:vars` nos scripts cliente.
@@ -96,24 +161,14 @@ export function getLocaleUrl(
   base: string,
   search: string = '',
 ): string {
-  const baseNoSlash = base.endsWith('/') ? base.slice(0, -1) : base;
-  const currentLocale = normalizeLocale(
-    currentPath.startsWith(`${baseNoSlash}/en`)
-      ? 'en'
-      : currentPath.startsWith(`${baseNoSlash}/it`)
-        ? 'it'
-        : 'pt-br',
-  );
-  const currentPrefix = currentLocale === 'pt-br' ? '' : `/${currentLocale}`;
-  const nextPrefix = targetLocale === 'pt-br' ? '' : `/${targetLocale}`;
-  const withoutBase = currentPath.startsWith(baseNoSlash)
-    ? currentPath.slice(baseNoSlash.length)
-    : currentPath;
-  const withoutLocale = currentPrefix
-    ? withoutBase.replace(new RegExp(`^${currentPrefix}(?=/|$)`), '')
-    : withoutBase;
-  const cleanPath = withoutLocale.replace(/^\/+/, '');
-  return `${baseNoSlash}${nextPrefix}${cleanPath ? `/${cleanPath}` : ''}${search}`;
+  const currentLocale = detectLocaleFromPath(currentPath, base);
+  const localizedPath = getLocalizedPath(targetLocale, currentPath, base);
+  const currentLocaleBase = getLocaleBase(currentLocale, base).replace(/\/$/, '');
+  const targetLocaleBase = getLocaleBase(targetLocale, base).replace(/\/$/, '');
+  const normalizedPath = localizedPath.startsWith(targetLocaleBase)
+    ? localizedPath
+    : localizedPath.replace(currentLocaleBase, targetLocaleBase);
+  return `${normalizedPath}${search}`;
 }
 
 /**

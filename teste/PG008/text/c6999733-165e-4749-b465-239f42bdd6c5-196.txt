@@ -1,90 +1,78 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,50,100,80">377</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="400,50,600,80">PÆDAGOGI LIB. II.</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="900,50,950,80">378</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="300,100,700,130">* CAPITULA LIBRI SECUNDI.</bloco>
-  
-  [!-- Capitula List Left (Greek) --]
-  <bloco tipo="texto_principal" script="grego" bbox="50,140,480,400">
-α'. Πῶς περὶ τὰς τροφὰς ἀναστρεπτέον.
-β'. Πῶς τῷ ποτῷ προσενεκτέον.
-γ'. Ὅτι οὐ χρὴ περὶ τὴν πολυτέλειαν τῶν σκευῶν σπουδάζειν.
-δ'. Πῶς χρὴ περὶ τὰς ἑστιάσεις ἀρίεσθαι.
-ε'. Περὶ γέλωτος.
-ς'. Περὶ αἰσχρολογίας.
-ζ'. Τίνα χρὴ παραφυλάττεσθαι [ilegivel] ως ἀτελῶς συμβιῶντας.
-η'. Εἰ μύροις καὶ στεφάνοις χρηστέον.
-θ'. Πῶς τῷ ὕπνῳ προσενεκτέον.
-ι'. Τίνα διαληπτέον περὶ παιδοποιίας.
-ια'. Περὶ ὑποδήσεως.
-ιβ'. Ὅτι οὐ χρὴ περὶ τοὺς λίθους καὶ τὸν χρυσὸν ἐκπονηθῆναι κόσμον.
+  <bloco tipo="cabecalho" script="misto" bbox="0,0,1000,60">
+    377 PÆDAGOGI LIB. II. 378
   </bloco>
-
-  [!-- Capitula List Right (Latin) --]
-  <bloco tipo="texto_principal" script="latino" bbox="520,140,950,400">
-1. Quomodo circa alimenta versari oporteat.
-2. Quomodo in potu se gerere oporteat.
-3. Quod in sumptuosam vasorum supellectilem non sit studium conferendum.
-4. Quomodo in conviviis se recreare oporteat.
-5. De risu.
-6. De turpiloquio.
-7. Quænam observare oporteat eos, qui honeste simul vivunt.
-8. An unguentis et coronis utendum sit.
-9. Quomodo se in somno gerere oporteat.
-10. Quænam de procreatione liberorum tractanda sint.
-11. De calceamentis.
-12. Quod non oporteat gemmas et aureum ornatum stupere et admirari.
+  <bloco tipo="texto_principal" script="latino" bbox="0,60,1000,110">
+    * CAPITULA LIBRI SECUNDI.
   </bloco>
-
-  [!-- Marginal Letters --]
-  <bloco tipo="nota_marginal" script="latino" bbox="490,140,510,160">A</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,410,510,430">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,600,510,620">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,800,510,820">D</bloco>
-
-  [!-- Main Text Header Left --]
-  <bloco tipo="texto_principal" script="grego" bbox="100,420,450,480">
-ΛΟΓΟΣ ΔΕΥΤΕΡΟΣ.
-ΚΕΦ. Α'.
-Πῶς περὶ τὰς τροφὰς ἀναστρεπτέον.
+  <bloco tipo="nota_marginal" script="latino" bbox="480,110,520,130">
+    A
   </bloco>
-
-  [!-- Main Text Header Right --]
-  <bloco tipo="texto_principal" script="latino" bbox="550,420,900,480">
-LIBER SECUNDUS.
-CAP. I.
-Quomodo circa alimenta versari oporteat.
+  <bloco tipo="texto_principal" script="grego" bbox="50,110,480,350">
+    α'. Πώς περὶ τὰς τροφὰς ἀναστρεπτέον.
+    β'. Πώς τῷ ποτῷ προσενεκτέον.
+    γ'. Ὅτι οὐ χρὴ περ τὴν πολυτέλειαν τῶν σκευῶν ἐσπουδακέναι.
+    δ'. Πώς χρὴ περὶ τὰς ἑστιάσεις ἀρίεσθαι.
+    ε'. Περὶ γέλωτος.
+    ζ'. Περὶ αἰσχρολογίας.
+    η'. Τίνα χρὴ παραφυλάττεσθαι ὡς ἀτελῶς συμβιούντας.
+    θ'. Εἰ μύροις καὶ στεφάνοις χρηστέον.
+    ι'. Πώς τῷ ὕπνῳ προσενεκτέον.
+    ια'. Τίνα διαληπτέον περὶ παιδοποιίας.
+    ιβ'. Περὶ ὑποδήσεως.
+    ιγ'. Ὅτι οὐ χρὴ περ τοὺς λίθους καὶ τὸν χρυσὸν ἐκποιήσαι κόσμον.
   </bloco>
-
-  [!-- Main Text Body Left (Greek) --]
-  <bloco tipo="texto_principal" script="grego" bbox="100,490,480,850">
-Ἑπομένοις τοίνυν τοῦ σκοποῦ καὶ τὰς Γραφὰς πρὸς τὸ βιωφελὲς τῆς Παιδαγωγίας ἐκλεγομένοις, ὁποόν τινα εἶναι χρὴ παρ' ὅλον τὸν βίον τὸν Χριστιανὸν, καλούμενον, κεφαλαιωδῶς ὑπογραπτέον. Ἀρκτέον οὖν ἡμν ἀφ' μῶν αὐτῶν, καὶ ὅμως ἁρμόττειν γε χρὴ. Στοχαζομένοις τοίνυν τῆς συμμετρίας τοῦ συντάγματος, ὁποόν τινα τῷ ἑαυτοῦ σώματι ἕκαστον ἡμῶν προσφέρεσθαι, μᾶλλον δὲ ὅπως αὐτὸ κατευθύνειν χρὴ, λεκτέον· ὁπόταν γάρ τις, ἀπὸ τῶν ἐκτὸς κα αὐτῆς ἔτι τῆς τοῦ σώματος ἀγωγῆς ἐπὶ τὴν διάνοιαν ἀναχθεὶς (54) ὑπὸ τοῦ Λόγου, τὴν θεωρίαν τῶν κατὰ τὸν ἄνθρωπον συμβαινόντων κατὰ φύσιν ἀκριβῶς ἐκμάθῃ, εἴσεται μὴ σπουδάζειν μὲν περὶ τὰ ἐκτός, τὸ δὲ ἴδιον τοῦ ἀνθρώπου, τὸ ὄμμα τῆς ψυχῆς ἐκκαθαίρειν, ἁγνίζειν δὲ καὶ τὴν σάρκα αὐτς. Ὁ γὰρ ἐκείνων καθαρῶς ἀπολυθείς, δι' ὧν τι χοῦς ἐστι, τί ἂν ἄλλο προύργιαίτερον ἑαυτοῦ χοι πρὸς τὸ ὀρθῷ ἐλθεῖν ἐπὶ τὴν κατάληψιν τοῦ Θεοῦ; Ο μὲν δὴ ἄλλοι ἄνθρωποι « ζῶσιν να ἐσθίωσιν, » ὥσπερ ἀμελεῖ καὶ τὰ ἄλογα ζῶα, « Οἷς (55) οὐδὲν ἀλλ' ἡ γαστήρ ἐστιν ὁ βίος· » ἡμῖν δὲ ὁ Παιδαγωγὸς ἐσθίειν παραγγέλλει, ἵνα ζῶμεν· οὔτε γὰρ ἔργον ἡμῖν ἡ τροφή, οὔτε σκοπὸς δονή· ὑπὲρ δὲ τῆς ἐνταῦθα διαμονῆς, ἣν  Λόγος ες ἀφθαρσίαν παιδαγωγεῖ· διὸ καὶ ἐκκρίνεται ἡ τροφή. Ἁπλῆ δὲ αὕτη καὶ ἀπερίεργος.
+  <bloco tipo="texto_principal" script="latino" bbox="520,110,950,350">
+    1. Quomodo circa alimenta versari oporteat.
+    2. Quomodo in potu se gerere oporteat.
+    3. Quod in sumptuosam vasorum supellectilem non sit studium conferendum.
+    4. Quomodo in conviviis se recreare oporteat.
+    5. De risu.
+    6. De turpiloquio.
+    7. Quænam observare oporteat eos, qui honeste simul vivunt.
+    8. An unguentis et coronis utendum sit.
+    9. Quomodo se in somno gerere oporteat.
+    10. Quænam de procreatione liberorum tractanda sint.
+    11. De calceamentis.
+    12. Quod non oporteat gemmas et aureum ornatum stupere et admirari.
   </bloco>
-
-  [!-- Main Text Body Right (Latin) --]
-  <bloco tipo="texto_principal" script="latino" bbox="520,490,950,850">
-Propositum itaque institutum ac scopum sequentibus, et Scripturas ad eam Pædagogiæ partem, quæ vitæ utilis futura est, diligentibus, qualem esse in tota vita eum qui Christianus dicitur, oporteat, summatim describendum est. Nobis igitur a nobis ipsis incipiendum est, et quomodo nos componere ac moderari oporteat. Habita ergo operis nostri, commodæque illius dispositionis ratione, quemadmodum unumquemque nostrum se in suum corpus gerere, vel potius quomodo id dirigere oporteat, dicendum est. Quando enim quis a rebus externis, et ab ipsa præterea corporis cultura ad mentem a ratione, seu Verbo, deductus, eorum, quæ in homine secundum naturam eveniunt, contemplatione accurate didicerit, sciet non esse studium in res externas conferendum : sed hominis quod est proprium, animæ nempe oculum, expurgandum, castamque et sanctam carnem suam tuendam. Qui enim ab illis pure emundatus exsolutusque fuerit, per quæ est adhuc pulvis, quidnam aliud commodius seipso habere poterit, ad hoc, ut recta via ad Dei procedat comprehensionem ? Atque alii quidem homines vivunt ut comedant, quod certe etiam rationis expertibus evenit animantibus, Quibus nihil aliud quam venter vita est : nobis autem Pædagogus præ-
+  <bloco tipo="nota_marginal" script="latino" bbox="480,330,520,350">
+    B
   </bloco>
-
-  [!-- Footnotes / Apparatus --]
-  <bloco tipo="aparato_critico" script="misto" bbox="100,860,480,880">P. 161-162 ED. POTTER, 158-159 ED. PARIS.</bloco>
-  
-  <bloco tipo="aparato_critico" script="misto" bbox="100,880,480,960">
-(54) Ἀναχθείς. Hoc pro vulg. ἀχθεὶς reposuit e Pal. ms. SYLBURG. — Consentiunt Reg., Bod. Sed ἀχθεὶς retinet ms. Nov.
-(55) Ζῶσιν. Socratis effatum respicit, quod refert Musonius apud Stobæum serm. 17, qui est De incontinentia : Προσήκει ἐσθίειν ἡμν ἵνα ζμεν, οὐχ ἵνα ῥῶμεθα, εἴ γε μέλλομεν συντοχεῖν ἀρίστῳ ὄντι τῷ λόγῳ Σωκράτους, ὃς ἔφη, Τοὺς μὲν πολλοὺς ἀνθρώπους ζῆν ἵνα ἐσθίωσιν, αὐτὸς (scrib. αὐτὸν) δὲ ἐσθίειν ἵνα ζ. « Edendum ut vivamus, non ut vivipiscemur ; siquidem ad optimam Socratis senten-
+  <bloco tipo="texto_principal" script="grego" bbox="50,360,480,850">
+    ΛΟΓΟΣ ΔΕΥΤΕΡΟΣ.
+    ΚΕΦ. Α'.
+    Πώς περὶ τὰς τροφὰς ἀναστρεπτέον.
+    Ἑπομένοις τοίνυν τοῦ σκοποῦ καὶ τὰς Γραφὰς πρὸς τὸ βιωφελεῖς τῆς Παιδαγωγίας ἐκλεγομένοις, ὁποόν τινα εναι χρὴ παρ' ὅλον τν βίον τὸν Χριστιανὸν, καλούμενον, κεφαλαιωδῶς ὑπογραπτέον. Ἀρκτέον οὖν ἡμν ἀφ' μῶν ατῶν, καὶ ὅμως ἁρμόττειν γε χρὴ. Στοχαζομένοις τοίνυν τῆς συμμετρίας τοῦ συντάγματος, ὁποῖόν τινα τῷ ἑαυτοῦ σώματι ἕκαστον ἡμῶν προσφέρεσθαι, μᾶλλον δὲ ὅπως αὐτὸ κατευθύνειν χρὴ, λεκτέον· ὁπόταν γάρ τις, ἀπὸ τῶν ἐκτὸς κα αὐτῆς ἔτι τῆς τοῦ σώματος ἀγωγῆς ἐπὶ τὴν διάνοιαν ἀναχθεὶς (54) ὑπὸ τοῦ Λόγου, τὴν θεωρίαν τῶν κατὰ τὴν νθρωπον συμβαινόντων κατὰ φύσιν ἀκριβῶς ἐκμάθῃ, εἴσεται μὴ σπουδάζειν μὲν περὶ τὰ ἐκτός, τὸ δὲ ἴδιον τοῦ ἀνθρώπου, τὸ ὄμμα τς ψυχῆς ἐκκαθαίρειν, ἁγνίζειν δὲ καὶ τὴν σάρκα αὐτῆς. Ὁ γὰρ ἐκείνων καθαρῶς ἀπολυθεὶς, δι' ὧν ἔτι χοῦς ἐστι, τί ἂν λλο προύργιαίτερον ἑαυτοῦ ἔχοι πρὸς τὸ ὁδῷ ἐλθεῖν ἐπὶ τὴν κατάληψιν τοῦ Θεοῦ; Ο μὲν δὴ ἄλλοι ἄνθρωποι « ζῶσιν (55) ἵνα ἐσθίωσιν, » ὥσπερ ἀμελεῖ καὶ τὰ ἄλογα ζῶα, « Οἷς (56) οὐδὲν ἀλλ' ἡ γαστήρ ἐστιν ὁ βίος· » ἡμν δὲ  Παιδαγωγς ἐσθίειν παραγγέλλει, ἵνα ζμεν· οὔτε γὰρ ἔργον ἡμν ἡ τροφή, οὔτε σκοπὸς ἡδονή· ὑπὲρ δὲ τῆς ἐνταῦθα διαμονῆς, ἣν  Λόγος εἰς ἀφθαρσίαν παιδαγωγεῖ· διὸ καὶ ἐκκρίνεται ἡ τροφή. Ἁπλῆ δὲ αὕτη καὶ ἀπερίεργος.
   </bloco>
-
+  <bloco tipo="nota_marginal" script="latino" bbox="480,550,520,570">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,750,520,770">
+    D
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,360,950,850">
+    LIBER SECUNDUS.
+    CAP. I.
+    Quomodo circa alimenta versari oporteat.
+    Propositum itaque institutum ac scopum sequentibus, et Scripturas ad eam Pædagogiæ partem, quæ vitæ utilis futura est, diligentibus, qualem esse in tota vita eum qui Christianus dicitur, oporteat, summatim describendum est. Nobis igitur a nobis ipsis incipiendum est, et quomodo nos componere ac moderari oporteat. Habita ergo operis nostri, commodæque illius dispositionis ratione, quemadmodum unumquemque nostrum se in suum corpus gerere, vel potius quomodo id dirigere oporteat, dicendum est. Quando enim quis a rebus externis, et ab ipsa præterea corporis cultura ad mentem a ratione, seu Verbo, deductus, eorum, quæ in homine secundum naturam eveniunt, contemplatione accurate didicerit, sciet non esse studium in res externas conferendum : sed hominis quod est proprium, animæ nempe oculum, expurgandum, castamque et sanctam carnem suam tuendam. Qui enim ab illis pure emundatus exsolutusque fuerit, per quæ est adhuc pulvis, quidnam aliud commodius seipso habere poterit, ad hoc, ut recta via ad Dei procedat comprehensionem ? Atque alii quidem homines vivunt ut comedant, quod certe etiam rationis expertibus evenit animantibus, Quibus nihil aliud quam venter vita est : nobis autem Pædagogus præ-
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="50,860,480,960">
+    P. 161-162 ED. POTTER, 158-159 ED. PARIS.
+    (54) Ἀναχθεὶς. Hoc pro vulg. ἀχθεὶς reposuit e Pal. ms. SYLBURG. — Consentiunt Reg., Bod. Sed ἀχθεὶς retinet ms. Nov.
+    (55) Ζῶσιν. Socratis effatum respicit, quod refert Musonius apud Stobæum serm. 17, qui est De incontinentia : Προσήκει ἐσθίειν ἡμῖν ἵνα ζῶμεν, οὐχ ἵνα ῥῶμεθα, εἴ γε μέλλομεν συντυχεῖν ἀρίστῳ ὄντι τῷ λόγῳ Σωκράτους, ὃς φη, Τοὺς μὲν πολλοὺς ἀνθρώπους ζῆν ἵνα ἐσθίωσιν, αὐτὸς (scrib. αὐτὸν) δὲ ἐσθίειν ἵνα ζῇ. « Edendum ut vivamus, non ut vivamus ; siquidem ad optimam Socratis senten-
+  </bloco>
   <bloco tipo="aparato_critico" script="misto" bbox="520,860,950,960">
-tiam accommodare nos voluerimus, qui bonam hominum partem vivere dixit ut edant, se autem edere ut vivat. » Clemens idem dictum iterum respexit Strom. VII, pag. 752. Item Juvenalis, sat. XI, v. 11 : Et quibus in solo vivendi causa palato est.
-(56) Οἷς. Ut serarius constet sibi, scribe, Οἷς οἱ δὲν ἔστιν ἄλλο, πλὴν γαστήρ, βίος. Nihil est familiarius Clementi, quam versiculo: auctorum aut citare ut in mentem veniunt, aut accommodare instituto, καὶ παραλεύειν. HEINSIUS.
+    tiam accommodare nos voluerimus, qui bonam hominum partem vivere dixit ut edant, se autem edere ut vivat. » Clemens idem dictum iterum respexit Strom. VII, pag. 752. Item Juvenalis, sat. XI, v. 11 :
+    Et quibus in solo vivendi causa palato est.
+    (56) Οἷς. Ut serarius constet sibi, scribe,
+    Οἷς ο δὲν στιν ἄλλο, πλὴν γαστήρ, βίος.
+    Nihil est familiarius Clementi, quam versiculo: auctorum aut citare ut in mentem veniunt, aut accommodare instituto, καὶ παρελκόν. HEINSIUS.
   </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="400,970,600,990">Digitized by Google</bloco>
-
   <notas>
-    - A letra grega no item ζ' da lista de capítulos está parcialmente coberta por uma mancha de tinta. Transcrito como [ilegivel] para a parte afetada.
-    - As letras A, B, C, D foram mapeadas como notas marginais no gutter central.
-    - O texto latino na coluna direita continua no verso (não visível), terminando com "præ-".
-    - O aparato crítico contém notas em latim e citações em grego.
+    Transcription of a bilingual page (Greek/Latin) from Patrologia Graeca.
+    Gutter markers A, B, C, D identified as nota_marginal.
+    Footnote (55) spans across the bottom left and bottom right blocks.
+    Ink blot in Greek TOC line 7 transcribed as 'ὡς' based on context and visible 'ς'.
   </notas>
 </pagina>

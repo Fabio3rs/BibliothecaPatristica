@@ -1,74 +1,85 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="100,20,900,50">
-    359 S. GREGORII THEOLOGI 360
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="misto" bbox="50,10,950,60">
+359  S. GREGORII THEOLOGI  360
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,60,480,200">
-    nite. Omnino autem purgati sitis, ac purgemini. Nulla enim re Deus perinde delectatur, ut hominis, pro quo omnis sermo et omnia mysteria, resipiscentia et salute; ut efficiamini, sicut luminaria in mundo, vis quædam vitalis reliquis hominibus, quo perfecta lumina magno illi lumini astantes, ejus ipsius, quæ in cœlo est, lucis splendoribus imbuamini, purius et clarius a Trinitate illuminati, cujus nunc radium unum ex una deitate manantem minus plene accepistis, in Christo Jesu Domino nostro, cui gloria et imperium in sæcula sæculorum. Amen.
+
+  [!-- LEFT COLUMN (flow first) --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,70,480,360">
+nite. Omnino autem purgati sitis, ac purgemini. Nulla enim re Deus perinde delectatur, ut hominis, pro quo omnis sermo et omnia mysteria, resipiscentia et salute; ut efficiamini, sicut luminaria in mundo, vis quædam vitalis reliquis hominibus, quo perfecta lumina magno illi lumini astantes, ejus ipsius, quæ in cœlo est, lucis splendoribus imbuamini, purius et clarius a Trinitate illuminati, cujus nunc radium unum ex una deitate manantem minus plene accepistis, inChristo Jesu Domino nostro, cui gloria et imperium in sæcula sæculorum. Amen.
   </bloco>
-  <bloco tipo="texto_principal" script="greco" bbox="520,60,900,200">
-    A οὐδεν τοσοῦτον χαίρει Θεός, ὅσον ἀνθρώπου διορθώσει καὶ σωτηρίᾳ, ὑπὲρ οὗ λόγος ἅπας καὶ ἅπαν μυστήριον· ἵνα γένησθε ὡς φωστῆρες ἐν κόσμῳ, ζωτικὴ τος ἄλλοις ἀνθρώποις δύναμις, ἵνα φτα τέλεια τ μεγάλω φωτ παραστάντες, καὶ τὴν ἐκεῖσε μνησθεῖτε φωτογωγίαν, ἐλλαμπόμενοι τῇ Τριάδι καθαρώτερον καὶ τρανότερον, ἧς νῦν μετρίως ὑποδέδεχθε (90) τὴν μίαν αὐγὴν ἐκ μιᾶς τῆς θεότητος, ἐν Χριστῷ Ἰησοῦ τῷ Κυρίῳ ἡμῶν, ᾧ ἡ δόξα, καὶ τὸ κράτος (91) εἰς τοὺς αἰῶνας τῶν αώνων. Ἀμήν.
+
+  <bloco tipo="aparato_critico" script="misto" bbox="50,360,480,440">
+** Philip. II, 15.
+(90) ὔποδέδεγθε. Bas., ὑποδεδέγμεθα, « accepimus. »
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="100,210,480,250">
-    ** Philip. 11, 15.
-    (90) Ὑποδέδεχθε. Bas., ὑποδεδέγμεθα, « accepimus. »
+
+  <bloco tipo="cabecalho" script="latino" bbox="120,460,420,520">
+ORATIO XL'
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="520,210,900,250">
-    (91) Καὶ τὸ κράτος. Sic Coisl. 2 et Or. 1. Sic etiam legit Billius. Hæc desunt in ed.
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,520,480,900">
+In sanctum baptisma.
+
+I. Quoniam heri splendidum Luminum diem celebravimus (salutem etenim nostram lætitia prosequi conveniebat, ac multo quidem magis, quam carnis amici, qui dies eos quotannis celebrant, quibus vel nati, vel matrimonio juncti sunt, vel nomen acceperunt, vel certe inter juvenes censeri cœperunt, vel locum aliquem primum incoluerunt, vel quacunque tandem alia de causa, quæ ab hominibus celebratur); hodie de baptismo, ac beneficio hinc ad nos manante, breviter disseremus : tametsi hesterna luce nos oratio effugerit, tum quia temporis angustia premebamur, tum quia sermo saturitatem ac fastidium fugiebat. Sermonis quippe saturitas non minus auribus inimica est, quam immodicus cibus corpori. Operæ pretium autem fuerit vos ad ea, quæ dicturi sumus, animum attentum afferre, atque orationem de tantis rebus institutam, non perfunctorie et oscitanter, sed prompte et alacriter excipere : quandoquidem hoc quoque splendor est, vim hujusce mysterii perspectam habere.
+692 II. Triplex nativitatis genus agnoscit Scriptura : primum ex corporibus, alterum ex baptismo, tertium ex resurrectione. Horum primum, nocturnum et servum est, ac cum libidine conjunctum : alterum, diurnum et liberum, ac depellendarum vitiosarum affectionum vim habens,
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="200,270,400,300">
-    ORATIO XL
+
+  [!-- MARGINAL LETTERS (central markers) --]
+  <bloco tipo="nota_marginal" script="latino" bbox="480,300,510,330">
+A
   </bloco>
-  <bloco tipo="cabecalho" script="greco" bbox="600,270,800,300">
-    ΛΟΓΟΣ Μ'
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,460,510,485">
+B
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,310,400,330">
-    In sanctum baptisma.
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,600,510,625">
+C
   </bloco>
-  <bloco tipo="texto_principal" script="greco" bbox="600,310,800,330">
-    Εἰς τὸ ἅγιον βάπτισμα.
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,760,510,785">
+D
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,310,510,330">
-    B
+
+  [!-- RIGHT COLUMN --]
+  <bloco tipo="texto_principal" script="grego" bbox="520,70,950,360">
+A οὐδενὶ τοσοῦτον χαίρει Θεός, ὅσον ἀνθρώπου διορθώσει καὶ σωτηρίᾳ. ὑπὲρ οὗ λόγος ἅπας καὶ ἅπαν μυστήριον· ἵνα γένησθε ὡς φωστῆρες ἐν κόσμῳ, ζωτικὴ τοῖς ἄλλοις ἀνθρώποις δύναμις, ἵνα φῶτα τέλεια τῷ μεγάλῳ φωτὶ παραστάντες, καὶ τὴν ἐκεῖσε μνησθεῖτε φωταγωγίαν, ἐλλαμπόμενοι τῇ Τριάδι καθαρώτερον καὶ τρανότερον, ἧς νῦν μετρίως ὑποδέδεχθε (90) τὴν μίαν αὐγὴν ἐκ μιᾶς τῆς θεότητος, ἐν Χριστῷ Ἰησοῦ τῷ Κυρίῳ ἡμῶν, ᾧ ἡ δόξα, καὶ τὸ κράτος (91) εἰς τοὺς αἰῶνας τῶν αἰώνων. Ἀμήν.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,340,480,580">
-    I. Quoniam heri splendidum Luminum diem celebravimus (salutem etenim nostram lætitia prosequi conveniebat, ac multo quidem magis, quam carnis amici, qui dies eos quotannis celebrant, quibus vel nati, vel matrimonio juncti sunt, vel nomen acceperunt, vel certe inter juvenes censeri cœperunt, vel locum aliquem primum incoluerunt, vel quacunque tandem alia de causa, quæ ab hominibus celebratur); hodie de baptismo, ac beneficio hinc ad nos manante, breviter disseremus : tametsi hesterna luce nos oratio effugerit, tum quia temporis angustia premebamur, tum quia sermo saturitatem ac fastidium fugiebat. Sermonis quippe saturitas non minus auribus inimica est, quam immodicus cibus corpori. Operæ pretium autem fuerit vos ad ea, quæ dicturi sumus, animum attentum afferre, atque orationem de tantis rebus institutam, et alacriter excipere : quandoquidem hoc quoque habere.
+
+  <bloco tipo="aparato_critico" script="misto" bbox="520,360,950,440">
+(91) Καὶ τὸ κράτος. Sic Coisl. 2 et Or. 1. Sic etiam legit Billius. Hæc desunt in ed.
   </bloco>
-  <bloco tipo="texto_principal" script="greco" bbox="520,340,900,580">
-    A'. Χθὲς τῇ λαμπρ τῶν Φώτων ἡμέρᾳ πανηγυρίσαντες (καὶ γὰρ ἔπρεπε χαρμόσυνα θέσθαι τῆς σωτηρίας τῆς μετέρας, κα πολλῷ μλλον (92)  γαμήλια, κα γενέθλια, κα ὀνομαστήρια, τοῖς σαρκὸς φίλοις, κουρόσυνα (93) τε καὶ κατοικέσια (94), καὶ ἐτήσια (95), ὅσα τε ἄλλα πανηγυρίζουσιν ἄνθρωποι), σήμερον περὶ τοῦ βαπτίσματος βραχέα διαλεξόμεθα (96), καὶ τῆς ἐντεῦθεν ἡμῖν ὑπαρχούσης εὐεργεσίας· εἰ κα χθὲς μᾶς  λόγος παρέδραμε, τῆς ὥρας κατεπειγούσης, καὶ ἅμα το λόγου τὸν κόρον φεύγοντος. Κόρος δὲ (97) λόγου πόλεμος ἀκοαῖς, ὡς ὑπερβάλλουσα τροφὴ σώμασι (98). Προσέχειν δὲ ἄξιον τοῖς λεγομένοις, καὶ μὴ παρέργως, ἀλλὰ προθύμως τὸν περὶ τηλικούτων δεξασθαι λόγον· ἐπειδὴ καὶ τοῦτό ἐστι φωτισμὸς, τὸ γνῶναι τοῦ μυστηρίου τὴν δύναμιν.
+
+  <bloco tipo="cabecalho" script="grego" bbox="620,460,880,520">
+ΛΟΓΟΣ Μ'.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,480,510,500">
-    C
+
+  <bloco tipo="texto_principal" script="grego" bbox="520,520,950,920">
+Εἰς τὸ ἅγιον βάπτισμα.
+
+A'. Χθὲς τῇ λαμπρᾷ τῶν Φώτων ἡμέρᾳ πανηγυρίσαντες (καὶ γὰρ ἔπρεπε χαρμόσυνα θέσθαι τῆς σωτηρίας τῆς ἡμετέρας, καὶ πολλῷ μᾶλλον (92) γαμήλια, καὶ γενέθλια, καὶ ὀνομαστήρια, τοῖς σαρκὸς φίλοις, κουρόσυνα (93) τε καὶ κατοικέσια (94), καὶ ἐτήσια (95), ὅσα τε ἄλλα πανηγυρίζουσιν ἄνθρωποι), σήμερον περὶ τοῦ βαπτίσματος βραχέα διαλεξόμεθα (96), καὶ τῆς ἐντεῦθεν ἡμῖν ὑπαρχούσης εὐεργεσίας· εἰ καὶ χθὲς ἡμᾶς ὁ λόγος παρέδραμε, τῆς ὥρας κατεπειγούσης, καὶ ἅμα τοῦ λόγου τὸν κόρον φεύγοντος. Κόρος δὲ (97) λόγου πόλεμος ἀκοαῖς, ὡς ὑπερβάλλουσα τροφὴ σώμασι (98). Προσέχειν δὲ ἄξιον τοῖς λεγομένοις, καὶ μὴ παρέργως, ἀλλὰ προθύμως τὸν περὶ τηλικούτων δεξασθαι λόγον· ἐπειδὴ καὶ τοῦτό ἐστι φωτισμὸς, τὸ γνῶναι τοῦ μυστηρίου τὴν δύναμιν.
+
+B'. Τρισσὴν γέννησιν ἡμῖν οἶδεν ὁ Λόγος· τὴν ἐκ σωμάτων, τὴν ἐκ βαπτίσματος, καὶ (99) τὴν ἐξ ἀναστάσεως. Τούτων δὲ (1), ἡ μὲν νυκτερινή τέ ἐστι, καὶ δούλη, καὶ ἐμπαθής· ἡ δὲ ἡμερινὴ, καὶ ἐλευθέρα, καὶ λυτικὴ παθῶν, πᾶν τὸ ἀπὸ γενέσεως κάλυμμα περιτέμνουσα, καὶ πρὸς τὴν ἄνω ζωὴν ἐπαν-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,590,480,700">
-    692 II. Triplex nativitatis genus agnoscit Scriptura : primum ex corporibus, alterum ex baptismo, tertium ex resurrectione. Horum primum, nocturnum et servum est, ac cum libidine conjunctum : alterum, diurnum et liberum, ac depellendarum vitiosarum affectionum vim habens,
+
+  <bloco tipo="nota" script="misto" bbox="520,920,950,980">
+Alias, et nunc «L.» — Habita Constantinopoli 7 Januarii 381.
+(92) Πολλῷ μᾶλλον. Quatuor Regg., Coisl. 2. Par., Οἰκον., etc., πολὺ πλεῖον. Reg. d., πολὺ πλέον.
+(93) Κουρόσυνα. Schol. : « Ὅτε τοὺς ὀδόντας ἐκφύσαι τὰ νήπια, ἑορτὴν ἐπετέλουν. »
+(94) Κατοικέσια. Schol. : Τὰ τοῦ οἴκου ἐγκαίνια. « Habitationis encænia, novæ domus habitatio. »
+(95) Ἑτήσια. « Quæ annua celebritate recurrunt. »
+(96) Διαλεξόμεθα. Duo Regg., διαλεξώμεθα. Alii duo, φιλοσοφήσομεν.
+(97) Κόρος δέ. Reg. ph, κόρος γάρ.
+(98) Σώματι. In nonnullis, σώματι.
+(99) Καὶ. Deest in pluribus.
+(1) Δέ. Deest in tribus Regg. et Or. 1.
   </bloco>
-  <bloco tipo="texto_principal" script="greco" bbox="520,590,900,700">
-    B'. Τρισὴν γέννησιν ἡμῖν οἶδεν  Λόγος· τὴν ἐκ σωμάτων, τὴν ἐκ βαπτίσματος, καὶ (99) τὴν ἐξ ἀναστάσεως. Τούτων δὲ (1), ἡ μὲν νυκτερινή τέ ἐστι, καὶ δούλη, καὶ ἐμπαθής· ἡ δὲ ἡμερινή, καὶ ἐλευθέρα, καὶ λυτικὴ παθῶν, πᾶν τὸ ἀπὸ γενέσεως κάλυμμα περιτέμνουσα, καὶ πρὸς τὴν ἄνω ζωὴν ἐπαν-
+
+  <bloco tipo="rodape" script="latino" bbox="300,980,700,999">
+Digitized by Google
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,680,510,700">
-    D
-  </bloco>
-  <bloco tipo="nota" script="latino" bbox="520,680,900,720">
-    primum non est habendus, qui, ut ipse sibi videtur, ritum hunc comam tondendi et dedicandi animadvertent.
-  </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="100,730,480,900">
-    Alias, et nunc L. — Habita Constantinopoli 7 Januarii 381.
-    (92) Πολλῷ μᾶλλον. Quatuor Regg., Coisl. 2. Par., Οἰκον., etc., πολὺ πλεῖον. Reg. d., πολὺ πλέον.
-    (95) Κουρόσυνα. Schol. : « Ὅτε τοὺς ὀδόντας ἐκφύσαι τὰ νήπια, ἑορτὴν ἐπετέλουν. » Cum infantes dentes efferunt, festum agebant. » Nicetas sic exponit : « Quando, decursa et exacta adolescentia, in juvenum ordinem ascripti sunt; » aut, « quando primum ipsis coma in superfluum excrescens attonsa est. » Suidas interpretatur κουροσύνους, « sacrificium olim pro comæ primitiis offerri solitum, » τὸ ὑπὲρ κουρᾶς θυόμενον. Gregorius forsan hac voce, tani « barbare » quam « comæ » primitias significat. Barbariorum antiquitatum ritum, πυγωνοκουροπλόν, erudite explicat Adrianus Valesius in suis ad Berengarii panegyricum notis, pag. 194; sed tamen.
-  </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="520,730,900,900">
-    (94) Κατοικέσια. Schol. : Τὰ τοῦ οἴκου ἐγκαίνια. « Habitationis encænia, novæ domus habitatio.»
-    (93) Ἐτήσια. « Quæ annua celebritate recurrunt. » Nonnulli etiam interpretantur de præludio, seu tirocinio consularus, militaris præfecturæ, etc. Nicetas id intelligit de die, quo quis maximum periculum effugit.
-    (96) Διαλεξόμεθα. Duo Regg., διαλεξόμεθα. Alii duo, φιλοσοφήσομεν.
-    (97) Κόρος δέ. Reg. ph, κόρος γάρ.
-    (98) Σώματι. In nonnullis, σώματι.
-    (99) Καί. Deest in pluribus.
-    (1) Δέ. Deest in tribus Regg. et Or. 1.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="400,950,600,980">
-    Digitized by Google
-  </bloco>
+
   <notas>
-    Transcrição de página bilingue (Latim/Grego) da Patrologia Graeca. Inclui aparato crítico e notas marginais (A, B, C, D). O número "692" no texto latino refere-se à paginação original da edição de referência.
+Transcrição fiel do folio bilingue (latim / grego) com aparato crítico e notas marginais. Colunas transcritas seguindo o fluxo: coluna esquerda (latim) seguida da coluna direita (grego). Letras centrais A, B, C, D colocadas como blocos nota_marginal separadamente. BBOX aproximados no sistema 0–1000.
   </notas>
 </pagina>

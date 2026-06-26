@@ -3,10 +3,11 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import Layout from '../Layout.astro';
-import { useTranslations } from '../../i18n';
+import { useTranslations, getLocaleBase, getLocaleRouteUrl } from '../../i18n';
 
 const base = import.meta.env.BASE_URL || '/';
 const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
+const localeBase = getLocaleBase(Astro.currentLocale, base);
 const t = useTranslations(Astro.currentLocale);
 
 const manifestPath = join(process.cwd(), 'public', 'indices', 'manifest.json');
@@ -67,7 +68,7 @@ function entrySubtitle(entry: any) {
 function viewerHref(volumeId: string, page?: string) {
   const params = new URLSearchParams({ doc: volumeId || '' });
   if (page && /^\d+$/.test(page)) params.set('page', page);
-  return `${baseWithSlash}viewer?${params.toString()}`;
+  return `${getLocaleRouteUrl(Astro.currentLocale ?? 'pt-br', 'viewer', base)}?${params.toString()}`;
 }
 
 function pickReferencePage(...values: Array<string | number | undefined | null>) {
@@ -141,7 +142,7 @@ function renderVolume(item: any) {
 const renderedVolumes = volumes.map((item) => renderVolume(item)).join('');
 ---
 
-<Layout title={t.indicesTitle} description={t.indicesSubtitle} breadcrumbs={[{ label: t.breadcrumbHome, href: baseWithSlash }, { label: t.breadcrumbIndices }]}>
+<Layout title={t.indicesTitle} description={t.indicesSubtitle} breadcrumbs={[{ label: t.breadcrumbHome, href: localeBase }, { label: t.breadcrumbIndices }]}>
   <div class="indices-page">
     <header class="indices-hero card">
       <div>
@@ -150,8 +151,8 @@ const renderedVolumes = volumes.map((item) => renderVolume(item)).join('');
         <p>{t.indicesSubtitle}</p>
       </div>
       <div class="indices-hero-actions">
-        <a class="button secondary" href={`${baseWithSlash}search`}>{t.navSearch}</a>
-        <a class="button secondary" href={`${baseWithSlash}viewer`}>{t.indicesOpenVolume}</a>
+        <a class="button secondary" href={getLocaleRouteUrl(Astro.currentLocale ?? 'pt-br', 'search', base)}>{t.navSearch}</a>
+        <a class="button secondary" href={getLocaleRouteUrl(Astro.currentLocale ?? 'pt-br', 'viewer', base)}>{t.indicesOpenVolume}</a>
       </div>
     </header>
 
@@ -283,9 +284,15 @@ const renderedVolumes = volumes.map((item) => renderVolume(item)).join('');
       align-items: center;
     }
     .indices-search-bar input {
+      flex: 1 1 320px;
       min-width: min(100%, 320px);
       border-radius: var(--radius-m);
       padding: 0.8rem 0.9rem;
+    }
+    .indices-search-bar .button {
+      flex: 0 0 auto;
+      min-height: 2.9rem;
+      white-space: nowrap;
     }
     .indices-pagefind-results {
       display: grid;
@@ -579,6 +586,10 @@ const renderedVolumes = volumes.map((item) => renderVolume(item)).join('');
     @media (max-width: 720px) {
       .indices-hero { padding: var(--space-5); flex-direction: column; align-items: start; }
       .indices-notice { padding: var(--space-4); }
+      .indices-search-head { flex-direction: column; }
+      .indices-search-bar { display: grid; grid-template-columns: 1fr; width: 100%; }
+      .indices-search-bar input { min-width: 0; width: 100%; }
+      .indices-search-bar .button { width: 100%; justify-content: center; }
       .summary-grid { grid-template-columns: 1fr; }
       :global(.volume-card > summary) { flex-direction: column; }
       :global(.entry-link) { flex-direction: column; align-items: start; }
@@ -586,7 +597,8 @@ const renderedVolumes = volumes.map((item) => renderVolume(item)).join('');
   </style>
 
   <script type="module" define:vars={{
-    baseUrl: baseWithSlash,
+    assetBase: baseWithSlash,
+    localeBase,
     strings: {
       loading: t.indicesLoading,
       noVolume: t.indicesNoVolume,
@@ -602,8 +614,13 @@ const renderedVolumes = volumes.map((item) => renderVolume(item)).join('');
       searchUnavailable: t.indicesSearchUnavailable,
       searchOpen: t.indicesSearchOpen,
       searchPlaceholder: t.indicesSearchPlaceholder,
+      searchButton: t.indicesSearchButton,
+      searchClear: t.indicesSearchClear,
     },
   }}>
+    const baseUrl = localeBase;
+    const assetUrl = assetBase;
+
     function escapeHtml(value) {
       return String(value || '')
         .replace(/&/g, '&amp;')
@@ -643,6 +660,9 @@ const renderedVolumes = volumes.map((item) => renderVolume(item)).join('');
     let indicesPagefind = null;
     let indicesPagefindPromise = null;
     let searchRenderToken = 0;
+
+    if (pagefindSubmit) pagefindSubmit.textContent = strings.searchButton;
+    if (pagefindClear) pagefindClear.textContent = strings.searchClear;
 
     function norm(value) {
       return String(value || '').toLowerCase().trim();
@@ -784,8 +804,8 @@ const renderedVolumes = volumes.map((item) => renderVolume(item)).join('');
       const body = volumeEl.querySelector('[data-volume-body]');
       if (!body || !volumeId) return;
       if (!volumeCache.has(volumeId)) {
-        const promise = getJsonOnce(`${baseUrl}indices/${volumeId}.json.gz`)
-          .catch(() => getJsonOnce(`${baseUrl}indices/${volumeId}.json`));
+        const promise = getJsonOnce(`${assetUrl}indices/${volumeId}.json.gz`)
+          .catch(() => getJsonOnce(`${assetUrl}indices/${volumeId}.json`));
         volumeCache.set(volumeId, promise);
       }
       body.hidden = false;
@@ -874,12 +894,12 @@ const renderedVolumes = volumes.map((item) => renderVolume(item)).join('');
       if (indicesPagefindPromise) return indicesPagefindPromise;
       indicesPagefindPromise = (async () => {
         try {
-          const pagefindUrl = `${baseUrl}indices-pagefind/pagefind.js`;
+          const pagefindUrl = `${assetUrl}indices-pagefind/pagefind.js`;
           const mod = await import(pagefindUrl);
           const pfModule = mod?.default || mod?.pagefind || mod;
           const pf = (pfModule && typeof pfModule.search === 'function') ? pfModule : mod;
           if (pf && typeof pf.options === 'function') {
-            await pf.options({ basePath: `${baseUrl}indices-pagefind/` });
+            await pf.options({ basePath: `${assetUrl}indices-pagefind/` });
           }
           return pf && typeof pf.search === 'function' ? pf : null;
         } catch (err) {

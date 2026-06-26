@@ -1,56 +1,48 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="60,10,940,120">
-TRADITIO CATHOLICA.
-SÆCULUM V. ANNUS 444.
+  <bloco tipo="cabecalho" script="latino" bbox="315,35,670,90">
+    TRADITIO CATHOLICA.
+    SÆCULUM V. ANNUS 444.
   </bloco>
-  <bloco tipo="cabecalho" script="grego" bbox="160,130,840,200">
-ΤΟΥ ΕΝ ΑΓΙΟΙΣ ΠΑΤΡΟΣ ΗΜΩΝ
+  <bloco tipo="texto_principal" script="grego" bbox="140,95,860,305">
+    ΤΟΥ ΕΝ ΑΓΙΟΙΣ ΠΑΤΡΟΣ ΗΜΩΝ
+    ΚΥΡΙΛΛΟΥ
+    ΑΡΧΙΕΠΙΣΚΟΠΟΥ ΑΛΕΞΑΝΔΡΕΙΑΣ
+    ΤΑ ΕΥΡΙΣΚΟΜΕΝΑ ΠΑΝΤΑ.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="80,210,920,320">
-ΚΥΡΙΛΛΟΥ
+  <bloco tipo="texto_principal" script="latino" bbox="145,350,855,485">
+    S. P. N. CYRILLI
+    ALEXANDRIÆ ARCHIEPISCOPI
+    OPERA QUÆ REPERIRI POTUERUNT OMNIA;
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="80,330,920,410">
-ΑΡΧΙΕΠΙΣΚΟΠΟΥ ΑΛΕΞΑΝΔΡΕΙΑΣ
+  <bloco tipo="texto_principal" script="latino" bbox="125,490,875,605">
+    CURA ET STUDIO
+    JOANNIS AUBERTI
+    LAUDUNENSIS ECCLESIÆ PRESBYTERI CANONICI ET IN SCHOLA PARISIENSI LAUDUNENSIS COLLEGII MAGISTRI,
+    AC INTERPRETIS REGII.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="200,430,800,480">
-ΤΑ ΕΥΡΙΣΚΟΜΕΝΑ ΠΑΝΤΑ.
--
+  <bloco tipo="texto_principal" script="latino" bbox="185,610,810,640">
+    EDITIO PARISIENSIS ALTERA DUOBUS TOMIS AUCTIOR ET EMENDATIOR.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,500,940,660">
-S. P. N. CYRILLI
+  <bloco tipo="texto_principal" script="latino" bbox="140,645,860,715">
+    ACCURANTE ET RECOGNOSCENTE J.-P. MIGNE,
+    BIBLIOTHECÆ CLERI UNIVERSÆ,
+    SIVE CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="240,670,760,710">
-ALEXANDRIÆ ARCHIEPISCOPI
+  <bloco tipo="texto_principal" script="latino" bbox="330,740,670,805">
+    TOMUS TERTIUS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,720,940,780">
-OPERA QUÆ REPERIRI POTUERUNT OMNIA;
+  <bloco tipo="texto_principal" script="latino" bbox="305,825,710,845">
+    VENEUNT 10 VOLUMINA 100 FRANCIS GALLICIS.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="360,800,640,830">
-CURA ET STUDIO
+  <bloco tipo="rodape" script="latino" bbox="120,865,895,915">
+    EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
+    IN VIA DICTA D'AMBOISE, OLIM PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER
+    NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MŒNIA PARISINA.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,840,920,920">
-JOANNIS AUBERTI
+  <bloco tipo="rodape" script="latino" bbox="480,920,530,935">
+    1864
   </bloco>
-  <bloco tipo="aparatocrítico" script="latino" bbox="60,920,920,975">
-LAUDUNENSIS ECCLESIÆ PRESBYTERI CANONICI ET IN SCHOLA PARISIENSI LAUDUNENSIS COLLEGI MAGISTRI, AC INTERPRETIS REGII.
-EDITIO PARISIENSIS ALTERA DUOBUS TOMIS AUCTOR. ET EMENDATIOR.
-ACCURANTE ET RECOGNOSCENTE J.-P. MIGNE,
-BIBLIOTHECA CLERI UNIVERSÆ,
-SIVE CURSUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITOR.
+  <bloco tipo="outro" script="latino" bbox="585,955,790,980">
+    Digitized by Google
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="120,976,880,980">
-TOMUS TERTIUS.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="60,980,940,1000">
-VENEUNT 10 VOLUMINA 100 FRANCIS GALLICIS.
-EXCUDERATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
-IN VIA DICTA D'AMBOISE, OLIM PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM, SEU PETIT-MONROUGE, NUNC VERO INTRA MOENIA PARISINA.
-[ilegivel]
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="780,980,980,1000">
-Digitized by Google
-  </bloco>
-  <notas>
-Página de título com textos em grego e latim; usei script="grego" para blocos puramente gregos e script="latino" para os latinos. A linha do ano final estava ilegível no original e foi transcrita como [ilegivel]. Agrupei as linhas editoriais e de edição em blocos identificados como aparato_critico e rodape. Não foram identificadas notas marginais A, B, C ou D nesta página.
-  </notas>
 </pagina>

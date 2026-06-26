@@ -1,62 +1,68 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="misto" bbox="0,0,1000,60">
     505 ORATIO XLIII. — IN LAUDEM BASILII MAGNI. 506
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="0,60,490,430">
-    μὴν καὶ ἄλλα γνωρίσματα , πτωχοτροφίαι , ξενοδο-
-    χίαι , ψυχῆς κάθαρσις ἐξ ἐγκρατείας , ἀπόμοιρα κτή-
-    σεως Θεῷ καθιερωθείσης ( πρᾶγμα οὕτω τότε πολ-
-    λοῖς σπουδαζόμενον , ὥσπερ νῦν αὐξηθέν τε καὶ τιμη-
-    θὲν ἐκ τῶν πρώτων ὑποδειγμάτων [85] ) , τά τε ἄλλα ,
-    ὅσα Πόντῳ (86) καὶ Καππαδόκαις μερισαμένοις ἦρ-
-    κεσε πολλῶν πληροῦν ἀκμάς · ἐμοὶ δὲ μέγιστον δοκεῖ
-    καὶ περιφανέστατον ἡ εὐτεκνία . Τοὺς γὰρ αὐτοὺς πο-
-    λιτείαις καὶ καλλιπαῖδας , μῦθοι μὲν ἴσως ἔχουσιν ·
-    ἡμν δὲ τούτους ἡ περα παρέστησε , τοιούτους μὲν
-    αὐτοὺς γεγονότας , ὥστε εἰ καὶ μὴ τοιοῦτοι ἦσαν
-    πατέρες , ἑαυτοὺς εἰς εὐδοξίαν ἀρκεῖν · τοιούτων δὲ
-    πεφηνότες πατέρες (87) , ὥστε ε καὶ μὴ (88) αὐτοὶ
-    τοσοῦτον (89) ἦσαν ες ἀρετήν , πάντας ὑπεραίρειν
-    τῇ ετεκνί . Ἕνα μὲν γὰρ ἢ δύο γενέσθαι τῶν ἐπαι-
-    νουμένων , κἂν τ φύσει δό τις · ἡ δὲ διὰ πάντων
-    ἀκρότης , σαφὲς τῶν ἀγαθόντων ἐγκώμιον . Δηλοῖ δὲ ὁ
-    μακαρισμὸς τν ἱερέων καὶ τῶν παρθένων ἀριθμός ,
-    καὶ τῶν ἐν γάμῳ , μηδὲν τῇ συζυγίᾳ βλαβῆναι (90)
-    βιωσαμένων , πρὸς τὴν σην τῆς ἀρετῆς εὐδόκιμησιν ,
-    ἀλλὰ βίων (91) αἱρέσεις μᾶλλον ,  πολιτείας ταῦτα
-    ποιησαμένων .
+
+  [!-- LEFT COLUMN: flow top-to-bottom --]
+  <bloco tipo="texto_principal" script="grego" bbox="0,60,490,360">
+    μὴν καὶ ἄλλα γνωρίσματα, πτωχοτροφίαι, ξενοδο-
+    χίαι, ψυχῆς κάθαρσις ἐξ ἐγκρατείας, ἀπόμοιρα κτή-
+    σεως Θεῷ καθιερωθείσης (πρᾶγμα οὕτω τότε πολ-
+    λοῖς σπουδαζόμενον, ὥσπερ νῦν αὐξηθέν τε καὶ τιμη-
+    θὲν ἐκ τῶν πρώτων ὑποδειγμάτων [85]), τὰ τε ἄλλα,
+    ὅσα Πόντῳ (86) καὶ Καππαδόκαις μερισαμένοις ἤρ-
+    κεσε πολλῶν πληροῦν ἀκοάς· ἐμοὶ δὲ μέγιστον δοκεῖ
+    καὶ περιφανέστατον ἡ εὐτεκνία. Τοὺς γὰρ αὐτοὺς πο-
+    λιπαῖδας καὶ καλλίπαιδας, μῦθοι μὲν ἴσως ἔχουσιν·
+    ἡμῖν δὲ τούτους ἡ πεῖρα παρέστησε, τοιούτους μὲν
+    αὐτοὺς γεγονότας, ὥστε εἰ καὶ μὴ τοιούτων ἦσαν
+    πατέρες, ἑαυτοῖς εἰς εὐδοξίαν ἀρκεῖν· τοιούτων δὲ
+    πεφηνότες πατέρες (87), ὥστε εἰ καὶ μὴ (88) αὐτοὶ
+    τοσοῦτον (89) ἦσαν εἰς ἀρετήν, πάντας ὑπεραίρειν
+    τῇ εὐτεκνίᾳ. Ἕνα μὲν γὰρ ἢ δύο γενέσθαι τῶν ἐπαι-
+    νουμένων, κἂν τῇ φύσει δοίη τις· ἡ δὲ διὰ πάντων
+    ἀκρότης, σαφὲς τῶν ἀγαθόντων ἐγκόμιον. Δηλοῖ δὲ ὁ
+    μακαριστὸς τῶν ἱερέων καὶ τῶν παρθένων ἀριθμός,
+    καὶ τῶν ἐν γάμῳ, μηδὲν τῇ συζυγίᾳ βλαβῆναι (90)
+    βιωσαμένων, πρὸς τὴν ἴσην τῆς ἀρετῆς εὐδόκιμησιν,
+    ἀλλὰ βίων (91) αἱρέσεις μᾶλλον, ἧ πολιτείας ταῦτα
+    ποιησαμένων.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="0,430,490,490">
+
+  <bloco tipo="texto_principal" script="latino" bbox="0,360,490,460">
     quido demonstrat ille felicitatis nomine prædicandus sacerdotum et virginum numerus, eorumque,
     qui in matrimonio eam vim sibi adhibuerunt, ut nihil impedimento esset, quominus parem virtutis
     gloriam assequerentur; atque illud effecerunt, ut hæc generum vitæ potius, quam rationis vivendi
     electiones essent.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="0,490,490,750">
-    I'. Τίς οὐκ οδε τὸν τούτου πατέρα , Βασίλειον , τὸ
-    μέγα παρὰ πᾶσιν νομα , ς πατρικῆς εὐχῆς ἔτυγεν ,
-    ἵνα μὴ λέγω μόνος , εἴπερ τις ἀνθρώπων ; Παντὸς
-    γὰρ κρατῶν ἀρετῆς , παρὰ τοῦ παιδὸς κωλύεται μόνου
-    τὸ πρωτεῖον ἔχειν . Τίς Ἐμμελίαν (92) , τὴν περ ἐγέ-
-    νετο προκληθεῖσαν , ἢ γενομένην δὲ προεκλήθη · τὴν
-    τῆς ἐμμελείας ὄντως φερώνυμον , ἢ τοῦτο ἐν γυναιξὶν
-    ᾠδήν , εἰ δεῖ συντόμως εἰπεῖν , ὅπερ ἐν ἀνδράσιν
-    ἐκεῖνος . Ὥσ' εἴπερ δει δουλεύοντα (93) πάντως τῇ
-    φύσει τὸν νῦν εὐφημούμενον (94) ἀνθρώποις δοθῆναι ,
-    ὥσπερ τινὰ τῶν πάλαι (95) παρὰ Θεοῦ δεδομένον
-    εἰς κοινὸν ὄφελος , μήτε ἐξ ἄλλων μᾶλλον ἁρμόζειν ,
-    ἢ ἐκείνων τοῦτον γενέσθαι , μήτε ἐκείνοις ἕτερον μᾶλ-
-    λον ἢ τδε πατράσιν ὀνομασθῆναι · ὅπερ οὖν καλῶς
-    ποιοῦν καὶ συνέδραμεν . Ἐπεὶ δὲ τὰς ἀπαρχὰς τῶν
-    ἐπαίνων νόμῳ θείῳ πειθόμενοι , ὃς πατράσι (96) κε-
-    λεύει πᾶσαν νέμειν τιμήν , τοῖς μνημονευθεῖσιν ἀπο-
-    δεδώκαμεν , ἐπ' αὐτὸν ομεν ἤδη , τοσοῦτον εἰπόντες ,
-    ὃ κα πᾶσιν ἂν οἶμαι δόξειεν ἀληθῶς λέγεσθαι τοῖς
-    ἐκεῖνον ἐφισταμένοις , ὅτι μόνης ἡμῖν ἔδει τῆς ἐκεί-
+
+  <bloco tipo="texto_principal" script="grego" bbox="0,460,490,750">
+    Γ'. Τίς οὐκ οἶδε τὸν τούτου πατέρα, Βασίλειον, τὸ
+    μέγα παρὰ πᾶσιν ὄνομα, ὃς πατρικῆς εὐχῆς ἔτυχε,
+    ἵνα μὴ λέγω μόνως, εἴπερ τις ἀνθρώπων; Παντὸς
+    γὰρ κρατῶν ἀρετῆς, παρὰ τοῦ παιδὸς κωλύεται μόνου
+    τὸ πρωτεῖον ἔχειν. Τίς Ἐμμελίαν (92), τὴν ὅπερ ἐγέ-
+    νετο προκληθεῖσαν, ἤ γενομένην ὃ προεχλήθη· τὴν
+    τῆς ἐμμελείας ὄντως φερώνυμον, ἢ τοῦτο ἐν γυναιξί·
+    ὥσπερ, εἰ δεῖ συντόμως εἰπεῖν, ὅπερ ἐν ἀνδράσιν
+    ἐκεῖνος. Ὥστ᾽ εἴπερ ἔδει δουλεύσοντα (93) πάντως τῇ
+    φύσει τὸν νῦν εὐφημούμενον (94) ἀνθρώποις δοθῆναι,
+    ὥσπερ τινὰ τῶν πάλαι (95) παρὰ Θεοῦ δεδομένων
+    εἰς κοινὸν ὄφελος, μήτε ἐξ ἄλλων μᾶλλον ἁρμόζειν,
+    ἢ ἐκείνων τοῦτον γενέσθαι, μήτε ἐκείνοις ἕτερον μᾶλλον
+    ἢ τοῦδε πατράσιν ὀνομασθῆναι· ὅπερ οὖν καλῶς
+    ποιοῦν καὶ συνέδραμεν. Ἐπεὶ δὲ τὰς ἀπαρχὰς τῶν
+    ἐπαίνων νόμῳ θείῳ πειθόμενοι, ὃς πατράσι (96) κε-
+    λέυει πᾶσαν νέμειν τιμήν, τοῖς μνημονευθεῖσιν ἀπο-
+    δεδώκαμεν, ἐπ᾽ αὐτὸν ἴωμεν ἤδη, τοσοῦτον εἰπόντες,
+    ὃ καὶ πᾶσιν ἂν οἴμαι δόξειεν ἀληθῶς λέγεσθαι τοῖς
+    ἐκείνων ἐπισταμένοις, ὅτι μόνης ἡμῖν ἔδει τῆς ἐκεί-
   </bloco>
+
+  [!-- RIGHT COLUMN: flow top-to-bottom --]
   <bloco tipo="texto_principal" script="latino" bbox="510,60,1000,430">
     A multa quoque alia insignia sunt, nimirum, paupe-
-    rum alendorum , atque hospitum excipiendorum
+    rum alendorum, atque hospitum excipiendorum
     studium, animæ purgatio per continentiam, bono-
     rum portio Deo consecrata (quæ res nondum tunc
     multis studio erat, ut nunc ex primis exemplis
@@ -65,12 +71,12 @@
     implendis suffecerunt; mihi tamen maximum et
     clarissimum esse videtur felicitas in liberis. Nam
     qui simul et multos, et probos atque honestos filios
-    habuerint, in fabulis fortasse reperias : hos autem
+    habuerint, in fabulis fortasse reperias: hos autem
     experientia ipsa nobis exhibuit, ut qui tales quidem
     ipsi fuerint, ut, etiamsi talium liberorum parentes
     haudquaquam exstitissent, sibi ipsis tamen ad no-
     minis claritatem sufficere potuissent; rursum au-
-    B tem ejusmodi filios in lucem extulerint, ut, etiam-
+    tem ejusmodi filios in lucem extulerint, ut, etiam-
     si ipsi non tanta virtute fuissent, omnes tamen so-
     bolis felicitate superaturi essent. Nam cum unus
     aut duo cum laude vivunt, id tale est, ut naturæ
@@ -78,7 +84,8 @@
     provecta omnium virtus, iis plane, a quibus editi
     et educati sunt, assignari debet. Quod quidem li-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,490,1000,750">
+
+  <bloco tipo="texto_principal" script="latino" bbox="510,430,1000,750">
     X. Eccui Basilius, Basilii nostri pater, incogni-
     tus est, vir magni apud omnes nominis, qui paterni
     voti compos factus est, si quis unquam alius, ne
@@ -90,38 +97,60 @@
     nitatis, nomen ferens, quæ, ut uno verbo dicam,
     hoc inter mulieres fuit, quod ille inter viros; ut, si
     quidem eum, cujus laudes illustrandas suscepimus,
-    ad servitutum naturæ obeundam, mortalibus dari
+    ad servitutem naturæ obeundam, mortalibus dari
     oportebat, velut quempiam ex priscis illis viris, qui
     ad publicam utilitatem divino beneficio concessi
     sunt, neque huic ex aliis potius, quam ex his gi-
     gni conveniret, neque illis rursus cujusquam alte-
     rius potius, quam hujus parentes nominari. Quæ
-    D duæ res percommode concurrerunt. Posteaquam
+    duæ res percommode concurrerunt. Posteaquam
     autem legi divinæ obtemperantes, quæ honorem
     omnem parentibus haberi jubet, iis, quorum men-
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="0,750,490,950">
+
+  <bloco tipo="aparato_critico" script="misto" bbox="0,750,490,910">
     (85) Ὑποδειγμάτων. Pass., παραδειγμάτων.
     (86) Ὅσα Πόντῳ, etc. Basilii parentes tam eximia pietatis munificentiae et charitatis exempla, tum in Ponto, tum apud Cappadoces præstituerunt, ut regiones illæ de illorum laudibus continuo personarent. Quod quidem monumentum honorificentissimum est, ac ipso marmore pretiosius.
     (87) Πεφηνότας πατέρας. Chrys. et Coisl. 1, πεφηνότας πατέρας. Pass., πεφυκότας πατέρας.
-    (88) Εἰ καὶ μή. Regg. c, d et Pass., εἰ μ καί.
+    (88) Εἰ καὶ μή. Regg. c, d et Pass., εἰ μὴ.
     (89) Τοσοῦτον. Chrys. et Par., τοσοῦτοι.
-    (90) Βλαβῆναι. Duo Coisl., παραλαβῆναι.
-    (91) Ἀλλὰ βίων, etc. Ostendit hic Gregorius sacerdotium, cœlibatum et matrimonium, vitæ quidem genere et instituto inter se differre, non item ratio-
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="510,750,1000,950">
-    ne vitæ gerendæ. Diversæ viæ sunt, quibus omnes pariter ad virtutis scopum tendere debent. Multos enim liberos procreaverunt Basilii pater, quorum alii virginitatem, alii matrimonium amplexi, ad parem virtutis ac pietatis gloriam pervenerunt, et, ut loquitur Tillemontius, tom. IX, art. 4, pag. 7, « inter illos generis vitæ, non sanctitatis discrimen exstitit. »
-    (92) Ἐμμελίαν. In nonnullis, Ἐμέλειαν. (Emmelia, Basilii mater.
+
+  <bloco tipo="aparato_critico" script="misto" bbox="510,750,1000,910">
+    (90) Βλαβῆναι. Duo Coisl., παραλαβῆναι.
+    (91) Ἀλλὰ βίων, etc. Ostendit hic Gregorius sacerdotium, cœlibatum et matrimonium, vitæ quidem genere et instituto inter se differre, non item ratio ne vitæ gerendæ. Diversæ viæ sunt, quibus omnes pariter ad virtutis scopum tendere debent. Multos enim liberos procreaverat Basilii pater, quorum alii virginitatem, alii matrimonium amplexi, ad parem virtutis ac pietatis gloriam pervenerunt, et, ut loquitur Tillemontius, tom. IX, art. 4, pag. 7, « inter illos generis vitæ, non sanctitatis discrimen exstitit. »
+    (92) Ἐμμελίαν. In nonnullis, Ἐμέλειαν. (Emmelia, Basilii mater.)
     (93) Δουλεύσοντα. Pass., δουλεύσαντα.
     (94) Εὐφημούμενον. Reg. d, ἐπαινούμενον.
-    (95) Τῶν πάλαι. Sic Rregg. a, c, d, bn, ph, Coisl. 1 et 2, Or. 2, etc. In ed., τῶν παλαιῶν πάλαι
+    (95) Τῶν πάλαι. Sic Regg. a, c, d, bm, ph, Coisl. 1 et 2, Or. 2, etc. In ed., τῶν παλαιῶν πάλαι.
     (96) Ὃν πατράσι. Sic quinque Regg. In ed., πατράσι.
   </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="480,910,1000,1000">
+    Digitized by Google
+  </bloco>
+
+  [!-- Marginal letters A, B, C, D as nota_marginal blocks --]
+  <bloco tipo="nota_marginal" script="latino" bbox="500,80,540,120">
+    A
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="480,320,520,360">
+    B
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="240,460,280,500">
+    C
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="740,460,780,500">
+    D
+  </bloco>
+
   <notas>
-    Transcrição de página da Patrologia Graeca (Oratio XLIII de Gregório de Nazianzo).
-    Texto em colunas paralelas: Grego à esquerda, Latim à direita.
-    Nota: Há um bloco de texto em Latim inserido na coluna esquerda ("quido demonstrat..."), que parece ser a tradução da seção grega precedente.
-    Nota: O número "777" aparece em negrito no texto latino da coluna direita.
-    Nota: O aparato crítico (notas de rodapé) está dividido em duas colunas na parte inferior. A nota (91) é dividida entre as duas colunas do aparato.
+    Página com texto em duas colunas paralelas: coluna esquerda predominantemente grega (com inserção latina) e coluna direita latina.
+    Ordem de fluxo respeitada: blocos da coluna esquerda (de cima para baixo) seguidos pelos da coluna direita.
+    Aparato crítico (notas 85–96) distribuído em dois blocos conforme a disposição impressa.
+    Letras marginais A, B, C, D marcadas como nota_marginal em blocos próprios.
   </notas>
 </pagina>

@@ -1,135 +1,298 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="100,20,900,100">
-    1975 HEXAPLORUM QUÆ SUPERSUNT. 1976
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,200,50">
+    1975
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,20,650,50">
+    HEXAPLORUM QUÆ SUPERSUNT.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,20,950,50">
+    1976
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,50,620,80">
     HESAIÆ CAPUT LXV.
   </bloco>
   
-  <bloco tipo="texto_principal" script="misto" bbox="50,100,350,420">
+  <!-- Top Section: Hebrew / Translit / Aquila -->
+  <bloco tipo="texto_principal" script="latino" bbox="150,80,300,110">
     TO EBPAIKON.
-    הנני 1
-    ההלכים הדרך לא-טוב 2
-    יחד 7
-    הן ו אמר 8
-    הערכים לגד שולחן מסכאים 11
-    למני ממסך
-    לשבעה 15
-    להידיד יקרא שם אחר
-    אשר יתברך בארץ יתברך 16
-    באמת האלהים
-    אשר אני בראת 18
-    את-ירושלם
-    [ilegivel] 20
-    בן מאה שנה
-    לבהלה 23
   </bloco>
-
-  <bloco tipo="texto_principal" script="misto" bbox="360,100,550,420">
+  <bloco tipo="texto_principal" script="grego" bbox="380,80,620,110">
     TO EBPAIKON
     Ἑλληνικοῖς γράμμασι.
-    1.
-    2.
-    7.
-    8.
-    11.
-    15.
-    16.
-    18.
-    20.
-    23.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,80,900,110">
+    ΑΚΥΛΑΣ.
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="600,100,950,420">
-    ΑΚΥΛΑΣ.
+  <!-- Row 1 -->
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,110,300,140">
+    הנני 1
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,110,420,140">
     1.
-    2. . . . ὁδ οὐκ ἀγαθῇ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,110,780,140">
+    1.
+  </bloco>
+
+  <!-- Row 2 -->
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,140,300,170">
+    הלכים הדרך לא-טוב 2
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,140,420,170">
+    2.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,140,900,170">
+    2. . . . ὁδῷ οὐκ ἀγαθῇ.
+  </bloco>
+
+  <!-- Row 7 -->
+  <bloco tipo="texto_principal" script="hebraico" bbox="200,170,300,190">
+    יחדו 7
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,170,420,190">
     7.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,170,780,190">
+    7.
+  </bloco>
+
+  <!-- Row 8 -->
+  <bloco tipo="texto_principal" script="hebraico" bbox="200,190,300,210">
+    כה אמר 8
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,190,420,210">
     8.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,190,780,210">
+    8.
+  </bloco>
+
+  <!-- Row 11 -->
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,210,300,250">
+    הערכים לגד שולחן ממלאים 11
+    למני ממסך
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,210,420,230">
+    11.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,210,900,230">
     11. Κέρασμα.
+  </bloco>
+
+  <!-- Row 15 -->
+  <bloco tipo="texto_principal" script="hebraico" bbox="200,250,300,270">
+    לשבעה 15
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,250,420,270">
     15.
-    Καὶ τοῖς δούλοις αὐτοῦ καλέσει ὄνομα ἕτερον.
-    16. Ὁ εὐλογημένος ἐν τῇ γ εὐλογηθήσεται (ἐν τῷ Θεῷ) πεπιστευμένως.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,250,780,270">
+    15.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,270,300,290">
+    הלידי יקרא שם אחד
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,290,950,330">
+    Καὶ τοῖς δούλοις αὐτοῦ καλέσει
+    ὄνομα ἕτερον.
+  </bloco>
+
+  <!-- Row 16 -->
+  <bloco tipo="texto_principal" script="hebraico" bbox="150,290,300,330">
+    המתברך בארץ 16
+    באלהי נמן
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,290,420,310">
+    16.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,330,950,370">
+    16. Ὁ εὐλογημένος ἐν τῇ γ εὐ-
+    λογηθήσεται (ἐν τῷ Θεῷ) πεπι-
+    στευμένος.
+  </bloco>
+
+  <!-- Row 18 -->
+  <bloco tipo="texto_principal" script="hebraico" bbox="200,330,300,370">
+    אשר אני ברא 18
+    את-ירושלם
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,330,420,350">
     18.
-    Χ Τὴν Ἰερουσαλήμ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,370,900,390">
+    18.
+    Ἢ Τὴν Ἰερουσαλήμ.
+  </bloco>
+
+  <!-- Row 20 -->
+  <bloco tipo="texto_principal" script="hebraico" bbox="200,370,300,410">
+    עוד ימים 20
+    ונער
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,370,420,390">
     20.
-    Ὁ νέος Χ αὐτός :
-    Χ Υἱός :
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,390,900,430">
+    20.
+    Ὁ νέος ἐ αὐτός :
+    ἐ Υἱός :
+  </bloco>
+
+  <!-- Row 23 -->
+  <bloco tipo="texto_principal" script="hebraico" bbox="200,410,300,450">
+    ב-מאה שנה
+    לחטא 23
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,410,420,430">
+    23.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,430,900,450">
     23. Εἰς σπεῦσιν.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="50,430,350,740">
+  <!-- Middle Section: Latin Translations -->
+  <bloco tipo="texto_principal" script="latino" bbox="100,460,300,480">
     VERSIO HEBRAICI TEXT.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,460,600,480">
+    VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,460,900,480">
+    AQUILA.
+  </bloco>
+
+  <!-- Latin Rows -->
+  <bloco tipo="texto_principal" script="latino" bbox="100,480,300,510">
     1. Ecce ego.
     2. Ambulantes in via non bona.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,480,600,510">
+    1. Ecce ego.
+    2. Qui graditur in via non bona.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,480,900,510">
+    1.
+    2. ... in via non bona.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,510,300,560">
     7. Simul.
     8. Sic dixit.
-    11. Parantes Jovi (ad. fortunæ) mensam, et implentes Meni libamen.
+    11. Parantes Jovi (ad. fortunæ)
+    mensam, et implentes Meni liba-
+    men.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,510,600,560">
+    7. Simul.
+    8. Hæc dicit.
+    11. Qui ponitis fortunæ mensam,
+    et libatis super eam.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,510,900,560">
+    7.
+    8.
+    11. Mixtam potionem.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,560,300,580">
     15. In juramentum.
-    Et servis suis vocabit nomen aliud.
-    16. Qui benedictus in terra benedicetur in Deo veritatis.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,560,600,580">
+    15. In juramentum.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,560,780,580">
+    15.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,580,300,620">
+    Et servis suis vocabit nomen
+    aliud.
+    16. Qui benedictus in terra be-
+    nedicetur in Deo veritatis.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,580,600,620">
+    Et servos suos vocabit nomine
+    alio.
+    16. In quo qui benedictus est
+    super terram, benedicetur in Deo
+    amen.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,580,950,620">
+    Et servis suis vocabit nomen
+    aliud.
+    16. Cui benedictus in terra be-
+    nedicetur (in Deo), fideliter.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,620,300,680">
     18. Quæ ego creans.
     Ipsam Jerusalem.
     20. Infans dierum.
     Puer.
     Filius centum annorum.
-    23. Ad turbationem.
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="360,430,600,740">
-    VULGATA LATINA.
-    1. Ecce ego.
-    2. Qui graditur in via non bona.
-    7. Simul.
-    8. Hæc dicit.
-    11. Qui ponitis fortunæ mensam, et libatis super eam.
-    15. In juramentum.
-    Et servos suos vocabit nomine alio.
-    16. In quo qui benedictus est super terram, benedicetur in Deo amen.
+  <bloco tipo="texto_principal" script="latino" bbox="380,620,600,680">
     18. Quæ ego creo.
     Jerusalem.
     20. Infans dierum.
     Puer.
     Centum annorum.
-    23. In conturbatione.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,620,900,680">
+    18.
+    Ἴ Ipsam : Jerusalem.
+    20.
+    Ἴ Ipse : puer.
+    Ἴ Filius :
   </bloco>
 
-  <bloco tipo="texto_principal" script="misto" bbox="600,430,950,740">
-    AQUILA.
-    1.
-    2. ... in via non bona.
-    7.
-    8.
-    11. Mixtam potionem.
-    15.
-    Et servis suis vocabit nomen aliud.
-    16. Cui benedictus in terra benedicetur (in Deo), fideliter.
-    18.
-    Χ Ipsam : Jerusalem.
-    20.
-    Χ Ipse : puer.
-    Χ Filius :
+  <bloco tipo="texto_principal" script="latino" bbox="100,680,300,700">
+    23. Ad turbationem.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,680,600,700">
+    23. In conturbatione.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,680,900,700">
     23. Ad festinationem.
   </bloco>
 
-  <bloco tipo="nota" script="misto" bbox="100,750,900,780">
+  <!-- Notes Section -->
+  <bloco tipo="aparato_critico" script="latino" bbox="100,710,900,740">
     Notæ et variæ lectiones ad cap. LXV Hesaiæ.
   </bloco>
 
-  <bloco tipo="aparato_critico" script="misto" bbox="100,780,500,940">
-    V. 1. Χ Ἰδού εἰμι. Sic ad marg. cum asterisco Curter. ex ms. Jes. in cujus textu desideratur; sed in hodiernis exemplaribus legitur. Alii, Ἰδοὺ ἐγώ, habent.
-    V. 2. Curter. ex ms. Jes. ad marg., τοῖς ἑπομένοις ὁδῷ οὐ καλῇ. Οἱ Γ', ὁδῷ οὐκ ἀγαθῇ.
-    V. 7. Θ., Χ ἐπὶ τὸ αὐτό. Idem.
-    V. 8. Idem ad marg., Χ ὅτι. Verum mendose, nisi fortasse לְ כְּ quod respondet τῷ, ὅτι, ex Hebraico textu exciderit.
-    V. 11. Hieronymus : « Quodque LXX transtulerunt, dæmonii, in Hebraico habet, MENNI, quod Symmachus interpretatus est, absque me; ut sit
+  <bloco tipo="aparato_critico" script="latino" bbox="100,740,480,880">
+    V. 1. Ἰ Ἰδοὺ εἰμι. Sic ad marg. cum asterisco
+    Curter. ex ms. Jes. in cujus textu desideratur; sed
+    in hodiernis exemplaribus legitur. Alii, Ἰδοὺ ἐγώ,
+    habent.
+    V. 2. Curter. ex ms. Jes. ad marg., τοῖς ἑπομέ-
+    νοις ὁδ οὐ καλ. Οἱ Γ, ὁδῷ οὐκ ἀγαθῇ.
+    V. 7. Θ., Ἴ ἐπὶ τὸ αὐτό. Idem.
+    V. 8. Idem ad marg., Ἴ ὅτι.. Verum mendose,
+    nisi fortasse יכ quod respondet τῷ, ὅτι, ex Hebraico
+    textu exciderit.
+    V. 11. Hieronymus : « Quodque LXX transtule-
+    runt, dæmoni, in Hebraico habet, MENNI, quod
+    Symmachus interpretatus est, absque me; ut sit
   </bloco>
-
-  <bloco tipo="aparato_critico" script="misto" bbox="510,780,900,940">
-    sensus : Qui paratis fortunæ mensam, et impletis absque me potionem. »
+  <bloco tipo="aparato_critico" script="latino" bbox="500,740,900,880">
+    sensus : Qui paratis fortunæ mensam, et impletis
+    absque me potionem. »
     Ibid. Omnes, κέρασμα. Curter.
-    V. 15. Οἱ λοιπ., εἰς ρκον. Procopius atque Hieronymus, qui ait : « Pro saturitate, quæ Hebraice dicitur SABAA, cæteri juramentum interpretati sunt : quod verbum multas habet intelligentias, et pro diversitate accentuum variatur. Intelligitur enim et juramentum, et saturitas, et satietas, et plures, et septem. »
-    Ibid. Ἀ., καὶ τοῖς δούλοις etc. Sic Procopius has lectiones adfert pleniores quam Hieronymus.
+    V. 15. Οἱ λοιπ., εἰς ὅρκον. Procopius atque
+    Hieronymus, qui ait: « Pro saturitate, quæ Hebraice
+    dicitur SABAA, cæteri juramentum interpretati
+    sunt : quod verbum multas habet intelligentias, et
+    pro diversitate accentuum variatur. Intelligitur
+    enim et juramentum, et saturitas, et satietas, et
+    plures, et septem. »
+    Ibid. Ἀ., καὶ τοῖς δούλοις etc. Sic Procopius has
+    lectiones adfert pleniores quam Hieronymus.
   </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="600,960,850,990">
+  <bloco tipo="rodape" script="latino" bbox="500,950,800,980">
     Digitized by Google
   </bloco>
 </pagina>

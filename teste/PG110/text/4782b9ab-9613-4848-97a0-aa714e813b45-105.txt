@@ -1,80 +1,177 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,70">
-201  CHRONICON.  —  LIB. II.  202
+  <bloco tipo="cabecalho" script="misto" bbox="50,30,950,60">
+    201 CHRONICON. — LIB. II. 202
   </bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="40,80,490,1160">
-απολειπω εν ψαλτηρίω το πρόβλημά μου. "Πρόβλημα δ' ἐστὶν θεώρημα ἢ θεωρημα ἢ τὸ πρόβλημα ἐστὶν ὅταν ἡ θεωρίαν συντείνειν πρὸ; θεωρίαν καὶ γνώσιν. Παράδειγμα δὲ ἐστι λόγος ἀπὸ τοῦ καθ' ἕκαστα ἄγων ἐπὶ τὸ καθόλου, ὅ δεῖ δείκνυσι πιστευόμενον, τὸ μερικόν διὰ μερικοῦ καὶ ὁμοίου. Παροιμία δὲ ἐστι λόγος ἀπόκρυφος ὅ· ἐξόρου πρός [ilegivel] σημαίνων.
-
-ΑΒ'. Θωιλας.
-"Μετὰ δὲ Ἀβιμελεχ, γέγονε κριτής Θωιλὰ ἔτη χγ'.
-
-ΑΓ'. Περὶ Ἰαήρ 67.
-"Μετὰ τοῦτον γέγονε κριτὴς Ἰαήρ ἔτη χβ'.
-
-ΑΔ'. Περὶ Ἰεφθάε 69.
-1° Μετὰ Ἰαήρ γέγονε κριτής Ἰεφθάε ὁ Γαλααδίτης ἔτη ζ', πατάξας τοὺς Ἀμμωνίτας καὶ τοὺς Φιλισταίους, θλίψαντας τὸν Ἰσραὴλ ἔτη ιη'.
-2° Μετὰ δὲ Ἰεφθὰ γέγονε κριτής Σεβών ὁ Βηθλεεμίτης ἔτη χ'.
-3° Μετὰ δὲ Σεβών γέγονε κριτής Ἐγλών Ζαρι· ἔτη ιβ'.
-4° Μετὰ τοῦτον γέγονε κριτής Ἀβδῶν Φαραθωνίτης ἔτη η'.
-
-ΛΕ'. Περὶ Σαμψῶνος.
-"Μετὰ δὲ Ἀβδῶν γέγονε κριτὴς Σαμψὼν ἔτη χ', καταξάξας καὶ τοὺς Φιλισταίους ἐν σταγῶν ὄνου, καὶ ἐν ῥάβδῳ, καὶ ἐν ἄλλαις πράξεσι, καὶ 108 ἐν συγκρίματι οἴχου, θλίψας τὸν Ἰσραὴλ ἔτη μ', οὐ τὴν ἰσχὺν καὶ ἀνδρείαν δεῖκνυσιν μὲν καὶ ταῦτα, δηλοῖ δὲ καὶ τὰ διάφορα ἔργα· ταῦτα δεσμὸν διαλυόμενα βάλλει διὰ τῶν χειρῶν αὐτοῦ καὶ πύλας πόλεων ἀναπιπτόμενας· φησὶ γὰρ· ἔστι δὲ Σαμψὼν εἰς Γάζαν τὴν πόλιν περὶ τινὰ πόρναν, καὶ γινόμενος οἱ Γαζαῖοι ἐνδείφρονται ἀπ' ἐπτάρας χειρισάντες· τὴν πόλιν, βολώμενοι αὐτὸν ἀνέλυσεν τῇ θρίαμβον· ὁ δὲ μεσονυκτίης τῆς νυκτὸς ἀνασχών, καὶ ἐπιλαβόμενος τὰς πύλας τῆς πόλεως σὺν ταῖς κλείδος, καὶ ἀνασπασάς αὐτὴν ἐκ τῆς ἔσω πλευρᾶς, καὶ ἐπαίδευ ἐπὶ τῶν ὀστέων αὐτοῦ ἐξῆλθεν, ἔθηκεν δὲ αὐτὰς ἐπὶ τὴν κροῖφην τοῦ προσώπου τῆς πόλεως· (23β) τῆς πόλεως.
-"Εἰς δὲ τὸν ὅλον Ἡρακλήν ὁ Ἕλλην εἶπε· ἔργα αὐτοῦ ἔστιν· ... [ilegivel]· ἔσται δὲ ἔτι λόγοι καὶ σημειώσεις περὶ τούτων.
+  <bloco tipo="texto_principal" script="grego" bbox="60,65,460,155">
+    ἀνοίξω ἐν ψαλτηρίῳ τὸ πρόβλημά μου **1**. **1** Πρόβλημά
+    ἐστι θεώρημα συντεῖνον πρὸς θεωρίαν καὶ γνῶσιν.
+    Παράδειγμα δέ ἐστι λόγος ἀπὸ τοῦ καθ' ἕκαστα ἄγων
+    ἐπὶ τὸ καθόλου, ἡ δεῖξις πιστουμένη τὸ μερικὸν διὰ
+    μερικοῦ καὶ ὁμοίου. Παροιμία δέ ἐστι λόγος ἀπόκρυ-
+    φος δι' ἑτέρου προδήλου σημαινόμενος.
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="510,80,960,1160">
-Problema. — Problema sit theorema quando ad visionem et cognitionem perducit. Paradigma est argumentum de eo quod cuique parti competit ad id quod toti. Demonstratio probat partem per partem et ejus simile. Proverbium est sermo obscurus per alium clarum significatus.
-
-XXXII. De Thola.
-Post Abimelech judex fuit Tholas annis viginti tribus.
-
-XXXIII. De Jair.
-Post Tholan judicavit Israel Jair annis viginti duobus.
-
-XXXIV. De Jephthae.
-Post Jair judex Iactus est Jephthae, Galaadites annis septem, percussitque Ammonitas et Philistinos qui oppresserant Israel annis decem et octo.
-Post Jephthae judex fuit Sebon Bethleemites annis visini?
-Huic successit Eglon Zari et judicavit annis duodecim.
-Quo mortuo, judex fuit Abdon Pharathonites annis octo.
-
-XXXV. De Samsone.
-Abdoni successit Samson, judicavitque populum annis viginti, percussitque in asini maxilla, in virga, in vulpibus, in eversione domus, Philistaeos qui Israel annis quadraginta oppresserant. Per hanc mira ejus vis et fortitudo innotescit; sed quanta fuerit os: edendum praecipue ipsa validissima vincula quae facile a manibus suis dispulit, et ablati postes urbis; dicit enim Scriptura: ingressus est Samson Gazam ad quandam mulierem meretricem.
-Quod cum audissent Gazae habitatores, ei insidiati sunt et sub vespera clausuerunt urbem, volentes eum, mane facto, occidere. Samson vero media nocte surgens apprehendit portas fores cum duobus postibus et seris, imposuitque humeris suis reposuit in vertice montis, qui respicit urbem.
-In his temporibus innotuit celebris apud Graecos Hercules, qui duodecim labores suos perfecit. Hic est qui purpuram invenit, et non alius.
-Optime ad Samson refertur quod dicit propheta: "Nolite credere amicis, et ea quae domi sunt in sinu tuo custodiri clausura oris tui." Cum etiam iustus iusse a priore muliere vexatus, ei denuntiatus est enigma, facta est ei causa maxima aerumnae.
-Posterior quoque Dalila cum seduxisset justum illum, tradidit eum opprobrium inimicis suis, et qui ex promissio conceperunt fuerat et annis viginti judic Israel fuerat et, solis manibus ore leo-
+  <bloco tipo="nota_marginal" script="latino" bbox="470,65,490,80">
+    A
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="492,160,508,200">
-A
+  <bloco tipo="texto_principal" script="latino" bbox="480,65,940,155">
+    Problema fit theorema quando ad visionem et
+    cognitionem perducit. Paradigma est argumentum
+    de eo quod cuique parti competit ad id quod toti.
+    Demonstratio probat partem per partem et ejus si-
+    mile. Proverbium est sermo obscurus per alium cla-
+    rum significatus.
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="492,340,508,380">
-B
+  <bloco tipo="texto_principal" script="grego" bbox="60,160,460,180">
+    ΛΒ'. Θωλᾶς.
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="492,520,508,560">
-C
+  <bloco tipo="texto_principal" script="latino" bbox="480,160,940,180">
+    XXXII. De Thola.
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="492,700,508,740">
-D
+  <bloco tipo="texto_principal" script="grego" bbox="60,180,460,200">
+    **6** Μετὰ δὲ Ἀβιμέλεχ γέγονε κριτὴς Θωλᾶ ἔτη κγ'.
   </bloco>
-
-  <bloco tipo="aparato_critico" script="latino" bbox="40,1160,960,1360">
-Variae lectiones et notae.
-1 Ps. XLV, 4. * 1575 (3960) Ced. 105,8 Jud. x, 2, "1. a sec. un." * 1362 (3059) Ced. 105.9 Jud. x.3.4. * KTA. Mon. Aug. ? 70 1315 (4004) Ced. 105,10.49. Jud. xii, 7. Enn. s. 1 1307 (4010) Ced. 105,20, item 7 ut Leo et Jud. xii, 9. Eusebii Leo, "Abrasit" LXX. * 1380 (414) Ced. 115,20 et Leo etc. ut Jud. xii, 11. Aλγλέμ &amp; Ζαδολωνίτης Leo, Ἐλληνα &amp; Ζαδ. Ced. Ἀλώων &amp; Zac. LXX. Nota addita Maraboti. cod. ? 1290 (4017) Ced. 105,21. Λαβὸν Marab. Ced. Λαβὸν &amp; Marab. Leo. * 1912 (4125) Ced. 106,1-107,9. ? Jud. xvi, 1-3. ὁ προσηλωκὼν, πρόσωπον cod. 6 τοῦ ἔστι τρο. του Χίδρων 3. * Mich. vii, 5; καταπνιγείσθαι cod.
-PATR.OL. GR. CX.
+  <bloco tipo="texto_principal" script="latino" bbox="480,180,940,210">
+    Post Abimelech judex fuit Tholas annis viginti
+    tribus.
   </bloco>
-
-  <bloco tipo="outro" script="latino" bbox="760,1360,960,1400">
-Digitized by Google
+  <bloco tipo="texto_principal" script="grego" bbox="60,205,460,225">
+    ΛΓ'. Περὶ Ἰαΐρ **7**.
   </bloco>
-
-  <notas>
-- Diversas palavras e trechos gregos estavam danificados ou pouco legíveis na imagem; marquei-os como [ilegivel] onde a leitura era incerta.
-- As letras A, B, C, D no gutter foram transcritas como blocos individuais do tipo nota_marginal, conforme instrução.
-- Algumas terminações no latim (linteamentos e palavras partidas no final da coluna) foram reproduzidas de forma aproximada, visando fidelidade ao que é visível.
-  </notas>
+  <bloco tipo="texto_principal" script="latino" bbox="480,205,940,225">
+    XXXIII. De Jair.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="60,225,460,245">
+    **8** Μετὰ τοῦτον γέγονε κριτὴς Ἰαρ ἔτη κβ'.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,225,940,255">
+    Post Tholam judicavit Israel Jair annis viginti
+    duobus.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="60,250,460,270">
+    ΛΔ'. Περὶ Ἰεφθάε **9**.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,250,940,270">
+    XXXIV. De Jephthe.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="60,270,460,310">
+    **10** Μετὰ Ἰαρ γέγονε κριτὴς Ἰεφθάε ὁ Γαλααδί-
+    της ἔτη ζ'. πατάξας τοὺς Ἀμμανίτας καὶ τοὺς
+    Φιλιστιείμ, θλίψαντας τὸν Ἰσραὴλ ἔτη ιη'.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,290,490,305">
+    B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,270,940,310">
+    Post Jair judex factus est Jephthe Galaadites
+    annis septem, percussitque Ammonitas et Philistæos
+    qui oppresserant Israel annis decem et octo.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="60,310,460,340">
+    **11** (2) Μετὰ δὲ Ἰεφθάε γέγονε κριτὴς Σεβὼν 
+    Βηθλεεμίτης ἔτη κ'.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,310,940,340">
+    Post Jephthe judex fuit Sebon Bethleemites annis
+    viginti.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="60,340,460,370">
+    **12** (3) Μετὰ δὲ Σεβν γέγονε κριτὴς Ἐγλὼν Ζα-
+    ροῦ ἔτη ιβ'.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,340,940,370">
+    Huic successit Eglon Zari et judicavit annis
+    duodecim.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="60,370,460,400">
+    **13** (4) Μετὰ τοῦτον γέγονε κριτὴς Ἀβδν Φαρα-
+    θωνίτης ἔτη η'.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,370,940,400">
+    Quo mortuo, judex fuit Abdon Pharathonites
+    annis octo.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="60,405,460,425">
+    ΛΕ'. Περὶ Σαμψώνος.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,405,940,425">
+    XXXV. De Samsone.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="60,425,460,820">
+    **14** Μετὰ δὲ Ἀβδὼν γέγονε κριτὴς Σαμψὼν τη κ',
+    πατάξας καὶ τοὺς Φιλιστιεὶμ ἐν σιαγόνι ὄνου, καὶ ἐν
+    ῥάβδῳ, κα ἐν ἀλώπηξι, καὶ **108** ἐν συμπτώματι
+    οἴκου, θλίψαντας τὸν Ἰσραὴλ ἔτη μ', οὗ τὴν ἰσχν
+    καὶ ἀνδρείαν δεικνύουσι μὲν καὶ ταῦτα, δηλοῦσι δὲ
+    καὶ τὰ διάφορα ἰσχυρώτατα δεσμὰ διαλυόμενα ῥα-
+    δίως ἀπὸ τν χειρῶν αὐτοῦ καὶ πύλαι πόλεως ἀνα-
+    σπώμεναι· φησὶ γάρ **15** · **C** Εἰσῆλθε Σαμψὼν ες Γά-
+    ζαν τὴν πόλιν πρός τινα πόρνην, καὶ γνόντες οἱ
+    Γαζαῖοι ἐνέδρευσαν ἀφ' ἑσπέρας κλείσαντες τὴν πό-
+    λιν, βουλόμενοι αὐτὸν ἀνελεῖν τῇ ἐπαύριον. Ὁ δὲ
+    μεσούσης τῆς νυκτὸς ἀναστὰς καὶ ἐπιλαβόμενος τὰς
+    πύλας τῆς πόλεως σὺν τοῖς δυσὶ σταθμοῖς, καὶ ἀνα-
+    βαστάσας αὐτὴν σν τοῖς μοχλοῖς, καὶ ἐπιθεὶς ἐπὶ
+    τῶν μων αὐτοῦ ἐξῆλθε, ἔθηκε δὲ αὐτὰς ἐπὶ τὴν
+    κορυφὴν τοῦ κατὰ προσώπου **16** ὄρους (23b) τῆς πό-
+    λεως **17**. **D** Ἐφ' οὗ καὶ Ἡρακλῆς ὁ παρ' Ἕλλησι δια-
+    βόητος ἐγνωρίζετο ὁ τοὺς ιβ' ἄθλους ἀνύσας. Οὗτός
+    ἐστι καὶ ὁ τς κογχύλης εὑρέτης, καὶ οὐκ ἄλλος. (5)
+    Περὶ δὲ Σαμψὼν καλῶς παραινεῖ  προφήτης λέγων **18** ·
+    **19** Μὴ καταπιστεύετε ἐν φίλοις — καὶ ἀπὸ τῆς συγκοί-
+    του σου φύλαξαι τοῦ ἀναθέσθαι αὐτῇ.) Παρενοχλήθη
+    γὰρ ὁ δίκαιος οὗτος ὑπὸ τῆς πρώτης αὐτο γυναικός,
+    καὶ ἀναγγείλας αὐτῇ τ πρόβλημα, γέγονε αὐτῷ λύ-
+    πης μεγίστης ὑπόθεσις· ὡσαύτως δὲ καὶ ἡ δευτέρα
+    Δαλιλὰ, ἔργοις ἀπατηλοῖς δελεάσασα τὸν ὅσιον, ἐπί-
+    χαρμον τοῦτον ἐποίησε τοῖς ἐχθροῖς ατοῦ, καὶ ὁ ἐξ
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,500,490,515">
+    C
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,425,940,820">
+    Abdoni successit Samson, judicavitque populum
+    annis viginti, percussitque in asini maxilla, in
+    virga, in vulpibus, in eversione domus, Philistæos
+    qui Israel annis quadraginta oppresserant. Per
+    hæc mira ejus vis et fortitudo innotescit; sed quanta
+    fuerit ostendunt præcipue ista validissima vincula
+    quæ facile a manibus suis disrupit, et ablati po-
+    stes urbis; dicit enim Scriptura: **C** Ingressus est
+    Samson Gazam ad quamdam mulierem meretricem.
+    Quod cum audissent Gazæ habitatores, et insidiati
+    sunt et sub vespera clauserunt urbem, volentes
+    eum, mane facto, occidere. Samson vero media
+    nocte surgens apprehendit portæ fores cum duobus
+    postibus et seris, impositasque humeris suis re-
+    posuit in vertice montis, qui respicit urbem. **D**
+    In his temporibus innotescebat celebris apud Græ-
+    cos Hercules, qui duodecim labores suos perfecit.
+    Hic est qui purpuram invenit, et non alius.
+    Optime ad Samson refertur quod dicit propheta:
+    « Nolite credere amicis, et ab ea quæ dormit in
+    sinu tuo custodi claustra oris tui. » Cum enim
+    justus iste a priore muliere vexatus, ei denuntias-
+    set ænigma, facta est ei causa maximæ ærumnæ.
+    Posterior quoque Dalila cum seduxisset justum
+    illum, tradidit eum opprobrium inimicis suis, et
+    qui ex promissione conceptus fuerat et annis vi-
+    ginti judex Israel fuerat et, solis manibus ore leo-
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,720,490,735">
+    D
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="60,830,940,950">
+    Variæ lectiones et notæ.
+    **6** Ps. XLIV, 4. **A** 1575 (3960) Ced. 105,8 Jud. x, 2. **7** π. Ἰ. a sec. m. **8** 1562 (3052) Ced. 105,9
+    Jud. x, 3,4. **9** ΚΤΑ. Mon. Aug. ? **10** 1315 (4004) Ced. 105,10-19. Jud. XII, 7. ἔτη '. **11** 1307 (4010)
+    Cel. 105,20, ἔτη ζ' ut Leo et Jud. XII, 9. Εὐσεβών Leo, Ἀβαισάν LXX. **12** 1300 (414) Ced. 115,20 et
+    Leo ἔτη ι' ut Jud. XII, 11. Αἰγλμ ὁ Ζαβουλωνίτης Leo, Ἐγλὼν ὁ Ζαβ. Ced. Αἰλμ ὁ Ζαβ. LXX. Nota
+    Αεδὼμ Μαραθωνίτ. cod. **13** 1290 (4017) Ced. 105,21. Λαβδὼν Μαραθ. Ced. Λαθὼμ ὁ Μαραθ. Leo.
+    **14** 1212 (4025) Ced. 106,1-107,9 ? **15** Jud. XVI, 1-3. **16** προσώπου l. πρόσωπον cod. **17** τοῦ . τοῦ ἐπὶ
+    πρ. τοῦ Χεβρὼν 3. **18** Mich. VII, 5; καταπιστεύεσθε cod.
+    PATROL. GR. CX. 7
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="580,960,800,990">
+    Digitized by Google
+  </bloco>
 </pagina>

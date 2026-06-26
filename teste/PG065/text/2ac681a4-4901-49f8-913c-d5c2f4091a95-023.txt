@@ -1,97 +1,121 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="55,18,945,55">
-    37   CANONES.   38
+  <bloco tipo="cabecalho" script="latino" bbox="50,40,80,60">37</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="420,40,530,60">CANONES.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="880,40,910,60">38</bloco>
+  
+  <!-- Coluna Esquerda (Grego) -->
+  <bloco tipo="texto_principal" script="grego" bbox="50,70,460,140">
+    ζωτος τοῦ ἀνδρὸς, τοῦ ψάκτου ἐστι, διὰ τοῦτο
+    καὶ τὸ, τινά, πρόσκειται, ὥσπερ καὶ τὸ ἐβιάσατο.
+    Κἂν γὰρ ἁπλῶς ἄλλη συνεφθάρη γυναικὶ μὴ ἀπο-
+    τεξαμένη, καὶ οὕτως ἡ καθαίρεσις αὐτῷ ἐπήγετο,
+    κἂν μὴ ἐβιάσατο αὐτήν.
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="40,60,490,165">
-    ζῶντος τοῦ ἀνδρὸς τοῦ φάσκοντος εἶναι, διὰ τοῦτο [ilegivel]
-    καὶ τὸ, τῇ, προσκεῖται, ὥσπερ καὶ τὸ [ilegivel]
-    Καὶ γὰρ ἁπλῶς ἄλλη συνεφάρη γυναικὶ μὴ ἀπο-
-    τειζαμένη, καὶ οὕτως ἡ καθαίρεσις αὐτῷ ἐπήγετο,
-    κἂν μὴ ἐδιδάσθατο αὐτήν.
+  <bloco tipo="cabecalho" script="grego" bbox="200,145,310,160">KANON Γ'.</bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="50,165,460,250">
+    Περὶ δὲ Σούρ, ἐπειδὴ ὁ ἐπίσκοπος Ἀπόλλων
+    διεβεβαιώσατο καὶ ἀπεσταλκέναι τοῦτον καὶ ἀλ-
+    λότριον τῆς Ἐκκλησίας πεποιηκέναι, ἔστω οὕ-
+    τως ὡς ἀπεφήνατο ὁ ἐπίσκοπος, χρωμένον ἐκεί-
+    νου ταῖς οἰκείαις δικαιολογίαις, εἴγε βούλεται,
+    καὶ μέμψεται τὴν ἀπόφασιν τοῦ ἐπισκόπου.
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="45,175,490,465">
-    ΚΑΝΩΝ Γ'.
-    Περὶ δὲ Σύρ. ἐπειδὴ ὁ ἐπίσκοπος Ἀπολλὼν
-    εἰσεβεβαίωτο καὶ ἀπεσταλκέναι τοῦτον καὶ ἀλλ-
-    λέσθαι τῆς Ἐκκλησίας πεποίηκε, ἔστω οὕ-
-    τως ὡς διὰ τῆς ἐπισκόπου, χρησθέντος ἐκεί-
-    νου ταῖς οἰκείαις δικαιολογίαις, εἴτε βούλεται,
-    καὶ μέμνηται τὴν ἀπόφασιν τοῦ ἐπισκόπου.
-
-    ΒΑΛΣ. Κηρύχῳ ἦν ὁ Σύρ τοῦ ἐπισκόπου Ἀπόλ-
-    λωνος· ὁ ἐπίσκοπος αὐτὸν ἀπεσταλκέναι τοῦ κλήρου
-    διεβεβαίωσε, ἀντὶ τοῦ ἐξαγγελχέναι. Ἔστω οὖν,
-    φησί, κατὰ τὴν ἐπ’ αὐτῷ κρίσιν τοῦ ἐπισκόπου,
-    τοῦ κλήρου ἀλλότριος. Εἰ δὲ αἰτιάται τὴν τοῦ ἐπι-
-    σκόπου ἀπόφασιν, γράφοι τις οἰκείας δικαιολογίας
-    παρὰ τῇ συνόδῳ, ἕως ἧς τὴν πάντως καὶ ὁ ἐπί-
+  <bloco tipo="cabecalho" script="latino" bbox="80,255,140,270">BALS.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,255,460,370">
+    Κληρικὸς ἦν  Σοὺρ τοῦ ἐπισκόπου Ἀπόλ-
+    λωνος· ὃς ἐπίσκοπος αὐτὸν ἀπεσταλκέναι τοῦ κλήρου
+    διεβεβαιώσατο, ἀντὶ τοῦ ἐκβεβληκέναι. Ἔστω οὖν,
+    φησί, κατὰ τὴν ἐπ' αὐτῷ κρίσιν τοῦ ἐπισκόπου, τοῦ
+    κλήρου ἀλλότριος. Εἰ δὲ αἰτιᾶται τὴν τοῦ ἐπισκό-
+    που ἀπόφασιν, χρήσθω ταῖς οκείαις δικαιολογίαις
+    παρὰ τῇ συνόδῳ, ἐξ ἧς ν πάντως καὶ ὁ ἐπί-
     σκοπος.
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="45,475,490,765">
-    ΚΑΝΩΝ Δ'.
-    Περὶ Πανούφ τοῦ κατασταθέντος ἐν τῇ
-    Λυκῷ, δεῖ ζητῆσαι. Καὶ εἰ μὲν εὔρεθη ὄντος,
-    κατηχουμένου τυγχάνοντος, τὴν ἀδελφὴν ἑαυτοῦ
-    εἰς γάμου κοινωνίαν δεξάμενος, μετὰ δὲ τὸ
-    βάπτισμα εἰς χεῖρας ἐληλὺς, μετὰ δὲ τὸ βά-
-    πτισμα εἰς χεῖρας ἐλθεῖν, μετὰ τὸ βάπτισμα
-    οὐκ ἐκοινώνησεν αὐτῇ. Εἰ δὲ πιστὸς τυγχάνων,
-    τὴν αὐτὴν διὰ συμβίωσιν ἑαυτοῦ πρὸς γάμον κοι-
-    νωνίαν δέξατο, ἔστω τοῦ κλήρου ἀλλότριος. Οὐ γὰρ
-    πρόςχημα τῷ ἐπισκόπῳ Ἀπολλωνῳ, εἰ ἐξ
-    ἀγνοίας κατέστησεν αὐτόν.
+  <bloco tipo="cabecalho" script="grego" bbox="200,375,310,390">KANON Δ'.</bloco>
 
-    ΒΑΛΣ. Ὁ Πανούφ ἐλέγετο πρὸ τοῦ βαπτισθῆναι
-    τὴν οἰκίαν αὐτοῦ εἰς γυναῖκα λαβεῖν· βαπτι-
-    σθεὶς δὲ χειροτονηθεὶς διάκονος. Λέγει οὖν ὁ Θεοφί-
-    λος ὅτι ἐὰν ἡ γυνὴ τελευτήσῃ, καὶ μετὰ τὸ βά-
+  <bloco tipo="texto_principal" script="grego" bbox="50,395,460,545">
+    Περὶ Πανούφ τοῦ καταστάντος διακόνου ἐν τῇ
+    Λυκῷ, δεῖ ζητῆσαι. Καὶ εἰ μὲν εὑρέθη οὗτος,
+    κατηχούμενος τυγχάνων, τὴν ἀδελφιδὴν αυτοῦ
+    πρὸς γάμου κοινωνίαν δεξάμενος, μετὰ δὲ τὸ
+    βάπτισμα εἰς κλῆρον δεχθείς, μενέτω ἐν τῷ κλή-
+    ρῳ· εἴγε κεκοίμηται ἐκείνη καὶ μετὰ τὸ βάπτισμα
+    οὐκ ἐκοινώνησεν αὐτῇ. Εἰ δὲ πιστὸς τυγχάνων
+    τὴν αὐτὴν ἀδελφιδὴν αυτοῦ πρὸς γάμου κοινω-
+    νίαν ἐδέξατο, ἔστω τοῦ κλήρου ἀλλότριος. Οὐ
+    γὰρ πρόραμμα τῷ ἐπισκόπῳ Ἀπόλλωνι, εἰ ἐξ
+    ἀγνοίας κατέστησεν αὐτόν.
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="80,550,140,565">BALS.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,550,460,755">
+    Ὁ Πανοῦφ ἐλέγετο πρὸ τοῦ βαπτισθῆναι
+    τὴν οἰκείαν ἀδελφιδὴν εἰς γυναῖκα λαβεῖν· βαπτι-
+    σθεὶς δ κεχειροτόνητο διάκονος. Λέγει οὖν ὁ Θεόφι-
+    λος, ὅτι ἐὰν ἡ γυνὴ ἐτελεύτησε, καὶ μετὰ τὸ βά-
     πτισμα οὐκ ἐχρήσατο αὐτῇ, μενέτω διάκονος, ὡς
-    τοῦ ἁγίου βαπτίσματος δὲ πάντων καθαιρῶν
+    τοῦ ἁγίου βαπτίσματος τὰ πρὸ τούτου καθάραντος
     ἁμαρτήματα. Εἰ δὲ πιστὸς ὢν μετὰ τὸ βάπτισμα
-    ἔσχε αὐτήν, ἐκβληθήτω τοῦ κλήρου. Τῷ δὲ ἐξ
-    ἀγνοίας αὐτὸν χειροτονήσαντι, οὐ πρόσγίνεται.
-    Τὸ δὲ, εἰ τελευτήσει ἡ γυνή, εἴ-
-    πεν, ὡς οὕτως συνέβη λέγεται. ἐπείτογε
-    κἂν ζῶσα ἦν καὶ μετὰ τὸ βάπτισμα οὐκ ἔγνω αὐτήν
-    ὁ Πανούφ, ἀλλὰ καὶ ἀπεμάχετο αὐτῇ, ἔδει τε
+    ἔσχεν αὐτήν, ἐκβληθήτω τοῦ κλήρου. Τῷ δὲ ἐξ
+    ἀγνοίας αὐτὸν χειροτονήσαντι ἐκ τούτου βλάβη οὐ
+    προσγενήσεται. Τὸ δέ, εἰ κεκοίμηται ἡ γυνή, εἶ-
+    παν, ὡς οὕτω συμβεβηκέναι λεγόμενον· ἐπείτοιγε
+    κἂν ζῶσα ἦν καὶ μετὰ τὸ βάπτισμα οὐκ γνω αὐτὴν
+    ὁ Πανοῦφ, ἀλλὰ καὶ ἀπεπέμψατο αὐτήν, ἠδύνατο καὶ
     οὕτως εἶναι διάκονος.
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="45,775,490,990">
-    ΚΑΝΩΝ Ε'.
-    Περὶ Ἰακὼβ χρὴ ζητῆσαι. Εἰ ἀναγνώστης ἦν,
-    καὶ ἐπὶ πορνείας διαβληθεὶς ὑπεύθυνος ἐδείχθη, καὶ
-    παρὰ τῶν πρεσβυτέρων ἐξεβλήθη, εἴτα χειροτο-
-    νήθη οὗτος, ἐκβαλλέσθω, ἀκριβῶς ἐξετασθείς,
-    καὶ μὴ μόνον ἐκ ψιθυρισμῶν ἢ κακο-
-    λογίας ὑποψίας εἰς αὐτὸν τεθέντης. Εἰ δὲ μὴ
-    εὑρέθη ὑπεύθυνος, μενέτω τῷ κλήρῳ· οὐ γὰρ
-    δεῖ ταῖς μᾶταιαις διαβολαῖς προσέχειν.
+  <bloco tipo="cabecalho" script="grego" bbox="200,760,310,775">KANON E'.</bloco>
 
-    ΒΑΛΣ. Ἰάκωβός τις ἀναγνώστης ἐλέγετο εἶναι, καὶ
-    ἐπὶ πορνείαις διαβληθῆναι, καὶ ἐκβληθῆναι τοῦ κλή-
-    ρου, εἶτα εἰς μείζονα χειροτονηθῆναι βαθμόν. Γράφει
+  <bloco tipo="texto_principal" script="grego" bbox="50,780,460,895">
+    Περὶ Ἰακὼβ χρὴ ζητῆσαι. Εἰ ἀναγνώστης ἦν,
+    καὶ ἐγκλήματι πορνείας ὑπεύθυνος εὑρέθη, καὶ
+    παρὰ τῶν πρεσβυτέρων ἐξεβλήθη, εἶτα κεχειροτό-
+    νηται οὗτος, ἐκβαλλέσθω, ἀκριβοῦς ἐξετάσεως
+    γενομένης, καὶ μὴ μόνον ἐκ ψιθυρισμῶν ἢ κακο-
+    λογιῶν ὑποψίας εἰς ατὸν γενομένης. Εἰ δ μὴ
+    ερέθη ὑπεύθυνος, μενέτω ἐν τῷ κλήρῳ· οὐ γὰρ
+    δεῖ τας ματαίαις διαβολαῖς προσέχειν.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="515,60,960,165">
+  <bloco tipo="cabecalho" script="latino" bbox="80,900,140,915">BALS.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,900,460,945">
+    Ἰακώβ τις ἀναγνώστης ἐλέγετο εἶναι, καὶ
+    ἐπὶ πορνείας διαβληθῆναι, καὶ ἐκβληθῆναι τοῦ κλή-
+    ρου, εἶτα εἰς μείζονα χειροτονηθῆναι βαθμόν. Γράψει
+  </bloco>
+
+  <!-- Notas Marginais (Gutter) -->
+  <bloco tipo="nota_marginal" script="latino" bbox="470,70,490,90">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,290,490,310">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,510,490,530">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,720,490,740">D</bloco>
+
+  <!-- Coluna Direita (Latim) -->
+  <bloco tipo="texto_principal" script="latino" bbox="480,70,890,130">
     est : Alicui, sicut et illud, vim attulit. Licet enim
     simpliciter cum muliere aliqua, non separata, rem
-    habuerit ; sic quomque in eum deposito introducta
+    habuerit; sic quoque in eum depositio introducta
     est, etsi ei vim non attulerit.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="515,175,960,465">
-    CANON III.
+  <bloco tipo="cabecalho" script="latino" bbox="620,145,720,160">CANON III.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="480,165,890,240">
     De Sur autem, quia Apollo episcopus affirmavit
-    se et eum amandavisse, et ab Ecclesia alienum se-
-    cisse, ita sit ut pronuntiavit episcopus ; uolente illo
+    se et eum amandavisse, et ab Ecclesia alienum fe-
+    cisse, ita sit ut pronuntiavit episcopus; utente illo
     suis defensionibus, si vult, et de episcopi sententia
     conqueritur.
+  </bloco>
 
-    BALS. Erat quidem Sur clericis episcopi Apol-
+  <bloco tipo="cabecalho" script="latino" bbox="500,255,560,270">BALS.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,255,890,360">
+    Erat quidem Sur clericus episcopi Apol-
     linis, qui episcopus se eum a clero amandasse, id
     est, expulisse, affirmavit. Sit ergo, inquit, secun-
     dum episcopi judicium, quod in ipsum prolatum
@@ -100,61 +124,58 @@
     scilicet, ex qua est etiam episcopus.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="515,475,960,765">
-    CANON IV.
+  <bloco tipo="cabecalho" script="latino" bbox="620,375,720,390">CANON IV.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="480,395,890,535">
     De Panuph, qui in Lyco diaconus constitutus est,
-    quaerere oportet ; et si is quidem inventus fuerit,
-    cum esset catechumenus, [ilegivel] filiam in matri-
-    monii societatem accepisse, post baptismum in clero
+    quærere oportet; et si is quidem inventus fuerit,
+    cum esset catechumenus, fratris sui filiam in matri-
+    monii societatem accepisse post baptismum in clerum
     promotus, in clero maneat, si illa ex vita migrarit,
     et post baptismum cum ea rem non habuerit. Sin au-
-    tem cum esset fidelis eandem [ilegivel] filiam in
-    matrimonio [ilegivel] duxisset, a clero alienus.
-    Non est enim episcopo Apollini praejudicium si eum per
+    tem cum esset fidelis eamdem fratris sui filiam in
+    matrimonii societatem duxit, sit a clero alienus. Non
+    est enim episcopo Apollini præjudicium si eum per
     ignorantiam constituit.
+  </bloco>
 
-    BALS. Dicebatur Panuph antequam esset bapti-
+  <bloco tipo="cabecalho" script="latino" bbox="500,550,560,565">BALS.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,550,890,755">
+    Dicebatur Panuph antequam esset bapti-
     zatus fratris sui filiam uxorem duxisse. Baptizatus
-    autem diaconus ordinatus fuerat. Dicit ergo Thec-
-    phiolus, quod si mulier e vita exesset, et post
-    baptismum ea non usus sit, maneat diaconus ;
-    nempe cum sacris baptismi omnia peccata pra-
-    cedentia deleat. Sin autem, cum esset fidelis, se
-    post baptismum, eam habuit, clero ejiciatur. Fi-
-    autem, qui eum insciens ordinavit, praejudicium
+    autem diaconus ordinatus fuerat. Dicit ergo Theo-
+    philus, quod si mulier e vita excesserit, et post
+    baptismum ea non usus sit, maneat diaconus;
+    nempe cum sanctus baptismus omnia peccata præ-
+    cedentia deleat. Sin autem, cum esset fidelis, seu
+    post baptismum, eam habuit, clero ejiciatur. Ei
+    autem, qui eum insciens ordinavit, præjudicium
     non afferetur. Illud autem : Si mulier e vita mi-
     grarit, dicit, utpote quoniam ita evenisse dicitur.
-    Nam etsi etiam post baptismum vixisset, nec eum
-    Panuph cognovisset, sed ipsam etiam amandasset ;
+    Nam etsi etiam post baptismum vixisset, nec eam
+    Panuph cognovisset, sed ipsam etiam amandasset;
     potuisset sic quoque esse diaconus.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="515,775,960,990">
-    CANON V.
-    De Iacob quaerere oportet. Si enim lector erat, et
-    criminis fornicationis fuisse eum obnoxium, ostensum
-    sit, et a presbyteris sit ejectus, deinde is est ordi-
-    natus, ejiciatur ; accurata examinatione facta ; non
-    autem ex susurris vel maledictis orta in eum suspi-
-    cione. Sin autem non [fuerit inventus] criminis obno-
-    xius, maneat in clero. Neque enim vanis calumniis
-    animum adhaerere oportet.
+  <bloco tipo="cabecalho" script="latino" bbox="620,760,720,775">CANON V.</bloco>
 
-    BALS. Jacob quidam lector fuisse dicebatur, et
+  <bloco tipo="texto_principal" script="latino" bbox="480,780,890,895">
+    De Jacob quærere oportet. Si enim lector erat, et
+    crimini fornicationis fuisse eum obnoxium, ostensum
+    sit, et a presbyteris sit ejectus, deinde is est ordi-
+    natus, ejiciatur; accurata examinatione facta; non
+    autem ex susurris vel maledictis orta in eum suspi-
+    cione. Sin autem non fuerit inventus crimini obno-
+    xius, maneat in clero. Neque enim vanis calumniis
+    animum adhibere oportet.
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="500,900,560,915">BALS.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,900,890,945">
+    Jacob quidam lector fuisse dicebatur, et
     propter fornicationem clero esse ejectus, et deinde
     ad majorem gradum fuisse ordinatus. Scribit ergo
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="485,85,515,120">
-    A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,330,515,365">
-    B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,620,515,655">
-    C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,845,515,880">
-    D
-  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="580,960,780,980">Digitized by Google</bloco>
 </pagina>

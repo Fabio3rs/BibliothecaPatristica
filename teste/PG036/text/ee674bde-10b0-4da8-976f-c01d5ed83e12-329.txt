@@ -1,7 +1,21 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="100,20,900,60">
-    611 S. GREGORII THEOLOGI 612
+    611    S. GREGORII THEOLOGI    612
   </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="480,70,500,110">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,360,500,400">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="160,640,180,680">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="700,700,720,740">
+    D
+  </bloco>
+
   <bloco tipo="texto_principal" script="latino" bbox="80,60,480,740">
     rei impositis, hic, ut majoris cujusdam miraculi
     specimen ederet, formam materia priorem protulit
@@ -28,8 +42,9 @@
     mundum intravit ¹¹, hominemque per fraudem il-
     lexit ac circumvenit, idcirco Deus passione nostra
     patitur, nimirum homo factus, eoque paupertatis
-    sese dejicit, ut caro compingatur, quo nos 838
+    sese dejicit, ut caro conpingatur, quo nos 838
     ejus paupertate ditemur. Hinc mors, et sepultura, et
+    resurrectio. Hinc nova creatura, et festum festo
     succedens, ac rursus ego festum diem agito, salutis
     meæ Encænia celebrans.
 
@@ -50,51 +65,53 @@
     iis diebus qui ante fluxerunt, sublimi utique subli-
     mior, et admirabili admirabilior. Ad supernæ siqui-
   </bloco>
+
   <bloco tipo="texto_principal" script="grego" bbox="510,60,920,740">
     A ὑπεστήσατο (εἶδος γὰρ ἡλίου τὸ φῶς)· μετὰ δὲ τοῦ-
     το τὴν ὕλην ἐπάγει, τὸν ὀφθαλμὸν τῆς ἡμέρας δη-
     μιουργήσας τοῦτον τὸν ἥλιον. Οὕτω τι πρῶτον ἐν
     ἡμέραις ἀριθμεῖται, καὶ δεύτερον, καὶ τρίτον, καὶ τὸ
-    ξῆς, ἄχρι τῆς βδόμης κα καταπαυσίμου τν ἔρ-
+    ἑξῆς, ἄχρι τῆς βδόμης καὶ καταπαυσίμου τῶν ἔρ-
     γων ἡμέρας, αἷς καταμερίζεται τὰ γινόμενα (83),
-    λόγοις ἀρρήτοις τασσόμενα, καὶ οὐκ ἀθρόως ἀναδιδό-
+    λόγοις ἀρρήτοις τασσόμενα, καὶ οὐχ ἀθρόως ἀναδιδό-
     μενα τῷ πάντα δυνατῷ Λόγῳ, καὶ ᾧ τὸ (84) νοῆσαι
     μόνον, ἢ εἰπεῖν, ἔργον ἐστὶ παριστάμενον. Εἰ δὲ τε-
-    λευταῖος  ἄνθρωπος ἀνεδείχθη, καὶ ταῦτα χειρὶ
-    Θεοῦ κα εἰκόνι τετιμημένος, θαυμαστὸν οὐδέν. Ἔδει
-    γάρ, ὥσπερ βασιλεῖ, προϋποστναι τὰ βασίλεια, καὶ
-    οὕτως εἰσαχθῆναι τὸν βασιλέα πᾶσιν ἤδη δορυφορού-
-    μενον. Εἰ μὲν οὖν ἐμείναμεν (85), ὅπερ μεν, καὶ
+    λευταῖος ὁ ἄνθρωπος ἀνεδείχθη, καὶ ταῦτα χειρὶ
+    Θεοῦ καὶ εἰκόνι τετιμημένος, θαυμαστὸν οὐδέν. Ἔδει
+    γάρ, ὥσπερ βασιλεῖ, προϋποστῆναι τὰ βασίλεια, καὶ
+    οὕτω εἰσαχθῆναι τὸν βασιλέα πᾶσιν ἤδη δορυφορού-
+    μενον. Εἰ μὲν οὖν ἐμείναμεν (85), ὅπερ ἦμεν, καὶ
     B τὴν ἐντολὴν ἐφυλάξαμεν, ἐγενόμεθα ἂν ὅπερ οὐκ
-    ἦμεν, τῷ ξύλῳ τς ζωῆς προσελθόντες, μετὰ τὸ ξύ-
+    ἦμεν, τῷ ξύλῳ τῆς ζωῆς προσελθόντες, μετὰ τὸ ξύ-
     λον τῆς γνώσεως. Καὶ τί γεγονότες; Ἀθανατισ-
     θέντες, καὶ Θεῷ πλησιάσαντες. Ἐπεὶ δὲ τῷ φθό-
     νῳ (86) τοῦ πονηροῦ θάνατος εἰς τὸν κόσμον εἰσῆλ-
     θε, καὶ ὠφεῖλε διὰ τῆς ἀπάτης τὸν ἄνθρωπον, διὰ τοῦ-
     το τῷ ἡμετέρῳ πάθει πάσχει Θεὸς, γενόμενος ἄν-
-    θρωπος, καὶ πτωχεύει τῷ σαρκὶ (87) παγῆναι, ἵν'
-    ἡμεῖς τῇ ἐκείνου πτωχείᾳ πλουτήσωμεν. Ἐντεθεν
-    θάνατος, καὶ ταφή, καὶ ἀνάστασις. Ἐντεῦθεν  καινὴ
+    θρωπος, καὶ πτωχεύει τῷ σαρκὶ (87) παγεῖν, ἵν'
+    ἡμεῖς τῇ ἐκείνου πτωχείᾳ πλουτήσωμεν. Ἐντεῦθεν
+    θάνατος, καὶ ταφὴ, καὶ ἀνάστασις. Ἐντεῦθεν καινὴ
     κτίσις, καὶ μεθέορτος ἑορτή, καὶ πάλιν ἐγὼ πανη-
     γυριστής, ἐγκαινίζων τὴν ἐμαυτοῦ (88) σωτηρίαν.
     et resurrectio. Hinc nova creatura, et festum festo
     E'. Τί οὖν, φησίν; Οὐχ ἡ πρώτη Κυριακὴ τὸ Ἐγ-
-    καίνιον ἦν, ἡ μετὰ τὴν ερὰν νύκτα καὶ δᾳδουχίαν;
+    καίνιον ἦν, ἡ μετὰ τὴν ἱερὰν νύκτα καὶ δαδουχίαν;
     Ἀλλὰ τῇ σήμερον τοῦτο δίδως, ὦ (89) φιλέορτε
     σύ, καὶ πολλὰς ἐπινοῶν ἑορτότητας; Ἐκείνη τὸ
     σωτήριον ἦν, αὕτη δὲ (90) τὸ τῆς σωτηρίας γενέ-
     θλιον· κἀκεῖνη (91) μὲν ἐστὶ μεθόριον τῆς ταφῆς καὶ
-    τῆς ἀναστάσεως, αὕτη δὲ καθαρῶς τς δευτέρας γε-
+    τῆς ἀναστάσεως, αὕτη δὲ καθαρῶς τῆς δευτέρας γε-
     νέσεως (92)· ἵν', ὥσπερ ἡ πρώτη κτίσις τὴν ἀρχὴν
     ἀπὸ Κυριακῆς λαμβάνει (δῆλον δέ· ἀπὸ γὰρ ταύτης
     ἑβδόμη τὸ Σάββατον γίνεται, κατάπαυσις οὖσα τῶν
-    ἔργων), οὕτω καὶ ἡ δευτέρα πάλιν ἐκ τῆς αὐτῆς ρ-
+    ἔργων), οὕτω καὶ ἡ δευτέρα πάλιν ἐκ τῆς αὐτῆς ἀρ-
     χηται, πρώτη οὖσα τῶν μετ' αὐτήν, καὶ ὀγδοὰς ἀπὸ
-    τῶν πρὸ αὐτς, ὑψηλς ὑψηλοτέρα, καὶ θαυμασίας
+    τῶν πρὸ αὐτῆς, ὑψηλῆς ὑψηλοτέρα, καὶ θαυμασίας
     θαυμασιωτέρα. Πρὸς γὰρ τὴν ἄνω φέρει κατάστασιν·
-    ἣν καὶ ὁ θεος Σολομν ανίττεσθαί μοι δοκεῖ, διδόναι
-    D μερίδα τοῖς πτά (93), τῷ βίῳ τούτῳ, νομοθετῶν·
+    ἣν καὶ ὁ θεῖος Σολομὼν αἰνίττεσθαί μοι δοκεῖ, διδόναι
+    D μερίδα τοῖς ἑπτὰ (93), τῷ βίῳ τούτῳ, νομοθετῶν·
   </bloco>
+
   <bloco tipo="aparato_critico" script="misto" bbox="80,750,480,940">
     ¹¹ Sap. 11, 24.
     (83) Γινόμενα. Regg. c, d, ph, Savil., etc., γε-
@@ -108,12 +125,13 @@
     talitatem assereretur. Sin autem legem infregisset,
     mori obnoxius efficeretur, ac pro impassibili, pas-
     sibilis, pro immortali, mortalis fieret. »
-    (86) Ἐπεὶ δὲ τ φθόνῳ. Sic tres Regg., tres
+    (86) Ἐπεὶ δὲ τῷ φθόνῳ. Sic tres Regg., tres
     Coll., Pass., etc. In ed., Ἐπεὶ γὰρ φθόνῳ.
     (87) Τῷ σαρκί. Sic legerat Savilius ex conjectu-
     ra; quam duo codices, alter Reg., alter Jes., confir-
     mant. In ed., τὸ σάρξ.
   </bloco>
+
   <bloco tipo="aparato_critico" script="misto" bbox="510,750,920,940">
     (88) Τὴν ἐμαυτοῦ. Sic plerique Regg. In ed.,
     ἐμαυτοῦ τήν.
@@ -127,19 +145,20 @@
     et perfecta, ad quam spectat octava, futurum scili-
     cet ævum, quod post istud præsens nos est exce-
     pturum.
-    (93) Τοῖς πτά. Eccle. XI, 2 : « Da partem se-
+    (93) Τοῖς ἑπτά. Eccle. XI, 2 : « Da partem se-
     ptem, necnon et octo, quia ignoras quid futurum
     sit mali super terram. » Septem « præsens » vi-
     tam, octo « futuram » significat.
   </bloco>
+
   <bloco tipo="rodape" script="latino" bbox="350,950,650,990">
     Digitized by Google
   </bloco>
+
   <notas>
-    Página com texto em duas colunas: Latina à esquerda, Grega à direita.
-    Há uma frase latina intercalada na coluna direita ("et resurrectio...").
-    Números de referência (83-93) e letras de seção (A, B, C, D, E') presentes.
-    Número de página interno "838" em negrito na coluna esquerda.
-    Nota de rodapé "11" referenciada no texto.
+    Página com texto em duas colunas: latina à esquerda (script="latino"), grega à direita (script="grego").
+    Marcadores marginais centrais identificados: A (inizio colonna greca), B (medio colonna greca), C (margem sinistra vicino al blocco V.), D (inferiore colonna greca).
+    Conservada a numeração interna "838" nel testo latino e il riferimento a nota di piè "¹¹".
+    Apparatus criticus presente in due blocchi in calce a entrambe le colonne.
   </notas>
 </pagina>

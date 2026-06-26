@@ -1,136 +1,194 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,60">
     707 S. GREGORII THEOL. CARMINUM LIBER I. THEOLOGICA. 703
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,70,480,200">
-    Βίβλων παλαιῶν, ἀγαθ', αἷς ἐνετράφης·
-    Ἔα με κερδαίνοντα κεκλῆσθαι κακόν.
-    370 Κρεῖσσον γὰρ ἢ σέβοντα τοὺς θεῶν νόμους
-    Πένητα ναίειν, δόξαν ἠμποληκότα.
-    Μή μοι γένος γένυζε, μᾶζα μοι γένος.
-    Τὰ χρήματ' ἀνθρώποισι τιμιώτατα.
-    Πένητος ἀνδρὸς οὐδὲν ἀθλιώτερον.
-    375 Ἄνευ δὲ χαλκοῦ, Φοῖβος οὐ μαντεύεται.
-    Οὐκ ἔστιν ὅστις πάντ' ἀνὴρ εὐδαιμονεῖ·
-    Ἢ γὰρ πεφυκὼς ἐσθλός, οὐκ ἔχει βίον,
-    Ἢ δυσγενς ὤν, πλουσίαν ἀροῖ πλάκα.
-    Πῶς γὰρ καλεῖς δυσδαίμονα, τὸν πένητα μέν,
-    380 Πολλῷ δ' ἔχοντα πλουσιώτερον τρόπον;
-    Δύσδαιμον ὄντως τὸ φρονεῖν οὕτω κακῶς.
+
+  [!-- LEFT COLUMN: Greek poetry --]
+  <bloco tipo="texto_principal" script="grego" bbox="50,70,480,300">
+Βίβλων παλαιῶν, ὦγαθ', αἷς ἐνετράφης·
+Ἔα με κερδαίνοντα κεκλῆσθαι κακόν.
+370 Κρεῖσσον γὰρ ἢ σέβοντα τοὺς θεῶν νόμους
+Πένητα ναῖειν, δόξαν ἠμποληκότα.
+Μή μοι γένος γένυζε, μᾶζα μοι γένος.
+Τὰ χρήματ' ἀνθρώποισι τιμιώτατα.
+Πένητος ἀνδρὸς οὐδὲν ἀθλιώτερον.
+375 Ἄνευ δὲ χαλκοῦ, Φοῖβος οὐ μαντεύεται.
+Οὐκ ἔστιν ὅστις πάντ' ἀνὴρ εὐδαιμονεῖ·
+Ἢ γὰρ πεφυκὼς ἐσθλός, οὐκ ἔχει βίον,
+Ἢ δυσγενὴς ὤν, πλουσίαν ἀροῖ πλάκα.
+Πῶς γὰρ καλεῖς δυσδαίμονα, τὸν πένητα μὲν,
+380 Πολλῷ δ' ἔχοντα πλουσιώτερον τρόπον;
+Δύσδαιμον ὄντως τὸ φρονεῖν οὕτω κακῶς.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,70,950,200">
-    A Ταῦτ' οὖν παντα φεῦγε τοὺς τ' εἰρηκότας,
-    Εἴτ' λλο τούτοις ἔμμερές τι ἐν λόγοις.
-    Καὶ ταῦτ' ἐπαίνει, τῶν σοφῶς εἰρημένων·
-    385 Ὅτ' ἐκ πονηροῦ πράγματος κέρδος λάβῃς,
-    Τοῦ δυστυχεῖν νόμιζε ἀρραβῶν' χειν.
-    Μὴ πάντοθεν κέρδαινε, σαυτὸν αἰσχύνων·
-    Τὸ μὴ δικαίως εὐτυχεῖν, χει φόβον.
-    Μὴ Πλοῦτον επῃς, οὐχὶ θαυμάζω θεόν,
-    390 Ὃν καὶ κάκιστος ῥδίως ἐκτήσατο.
-    Πένης μέν ἐστι, τὸν τρόπον δὲ πλούσιος.
-    Σοφὸν πένητα μᾶλλον, ἢ Μίδαν κακόν.
-    Ἀτρεῖ δέ μοι θέογνις ὡς λῆρον πλατύν,
-    Κρημνοὺς προτιμῶν τῆς ἀπορίας καὶ βυθούς,
-    395 Κακῶς τε Κύρνῳ νομοθετῶν ες χρήματα.
+
+  [!-- LEFT COLUMN: Latin prose/poetry beneath Greek --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,310,480,700">
+In antiquis libris, quibus innutritus es, o bone,
+Sine me lucra facientem vocari improbum :
+370 Id enim satius, quam colentem leges deorum
+Pauperem degere, gloriam ambientem.
+Ne mihi genus proferas : offa mihi genus.
+Pecunia hominibus maxime venerabilis.
+Homine egeno nihil miserabilius.
+375 Sine ære Apollo non vaticinatur.
+Nemo est qui ab omni parte sit beatus;
+Vel enim egregiis ortus parentibus, caret opibus,
+Vel gente non clarus divitem arat campum.
+Quomodo ergo miserabilem eum vocas, qui pauper quidem est,
+380 Sed moribus præditus est longe ditissimis?
+Vere miserum est tam prave sentire.
+Hæc igitur omnia effuge, et eos qui ea effulerunt,
+Et si quid aliud his consonum libris.
+Atque etiam hæc lauda sapienter dicta :
+385 Cum ex re prava lucrum feceris,
+Scito te pignus infelicis vitæ habere.
+Ne lucrearis undequaque, teipsum dedecorans :
+Injusta prosperitas non caret metu,
+Ne Plutum appelles : non ego admiror deum,
+390 Quem facillime teterrimus possidet.
+434-435 Pauper quidem est, sed moribus dives.
+Pauperem sapientem malo quam improbum Midam.
+Delirat mihi Theognis insigniter,
+Barathra præferens egestati et abyssos,
+395 Pravasque de pecunia leges Cyrno præscribens.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="150,210,850,550">
-    In antiquis libris, quibus innutritus es, o bone,
-    Sine me lucra facientem vocari improbum :
-    370 Id enim satius, quam colentem leges deorum
-    Pauperem degere, gloriam ambientem.
-    Ne mihi genus proferas : offa mihi genus.
-    Pecunia hominibus maxime venerabilis.
-    Homine egeno nihil miserabilius.
-    375 Sine ære Apollo non vaticinatur.
-    Nemo est qui ab omni parte sit beatus;
-    Vel enim egregiis ortus parentibus, caret opibus,
-    Vel gente non clarus divitem arat campum.
-    Quomodo ergo miserabilem eum vocas, qui pauper quidem est,
-    380 Sed moribus præditus est longe ditissimis?
-    Vere miserum est tam prave sentire.
-    Hæc igitur omnia effuge, et eos qui ea effutierunt,
-    Et si quid aliud his consonum libris.
-    Atque etiam hæc lauda sapienter dicta :
-    385 Cum ex re prava lucrum feceris,
-    Scito te pignus infelicis vitæ habere.
-    Ne lucrearis undequaque, teipsum dedecorans :
-    Injusta prosperitas non caret metu,
-    Ne Plutum appelles : non ego admiror deum,
-    390 Quem facillime teterrimus possidet.
-    434-435 Pauper quidem est, sed moribus dives.
-    Pauperem sapientem malo quam improbum Midam.
-    Delirat mihi Theognis insigniter,
-    Barathra præferens egestati et abyssos,
-    395 Pravasque de pecunia leges Cyrno præscribens.
+
+  [!-- LEFT COLUMN apparatus/footnotes area (lower left) --]
+  <bloco tipo="aparato_critico" script="misto" bbox="50,700,480,900">
+369 Ἔα με κερδαίνοντα. Versiculi hi, inquit
+Billius, ex variis poetis corrogati sunt; quibus
+postea ad paupertatis commendationem alios mox
+subnectit.
+370 Κρεῖσσον. Leuv. ita reddit : Nam longe id
+præstat, atque si leges deorum colens, in paupertate
+cum gloria degerem.
+372 Μή μοι γένος γένυζε. Arbitratur Billius γε-
+νύζειν esse vocem effictam ad irridendam generis
+nobilitatem. Vat. ξένιζε, ne meum genus deprimas.
+380 Πολλῷ. Ita Coisl. Edit. πολλῶν.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="50,560,480,700">
-    369 Ἔα με κερδαίνοντα. Versiculi hi, inquit
-    Billius, ex variis poetis corrogati sunt; quibus
-    postea ad paupertatis commendationem alios mox
-    subnectit.
-    370 Κρεῖσσον. Leuv. ita reddit : Nam longe id
-    præstat, atque si leges deorum colens, in paupertate
-    cum gloria degerem.
-    372 Μή μοι γένος γένυζε. Arbitratur Billius γε-
-    νύζειν esse vocem effictam ad irridendam generis
-    nobilitatem. Vat. ξένιζε, ne meum genus deprimas.
-    380 Πολλῷ. Ita Coisl. Edit. πολλῶν.
+
+  [!-- MIDDLE marginal letter markers for left column area --]
+  <bloco tipo="nota_marginal" script="latino" bbox="480,120,520,160">
+A
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="520,560,950,720">
-    385 Ὅτ' ἐκ. Val. οὐκ ἐκ.
-    389 Μὴ Πλοτον εἴπῃς. Noli Plutum, id est, di-
-    tem appellare, etc.
-    394 Κρημνούς. Alludit Gregorius ad hæc Theo-
-    gnidis :
-    Χρὴ πενίην φεύγοντα, καὶ εἰς μεγακήτεα πόντον
-    Πίπτειν, καὶ πετρῶν, Κύρνε, κατ' ἠλιβάτων.
-    Oportet eum, qui inopiam fugit, in vastum mare se
-    projicere, aut e præruplis scopulis se dare præcipi-
-    tem.
+
+  [!-- RIGHT COLUMN: Greek poetry --]
+  <bloco tipo="texto_principal" script="grego" bbox="520,70,950,300">
+Ταῦτ' οὖν ἅπαντα φεῦγε τοὺς τ' εἰρηχότας,
+Εἴτ' ἄλλο τούτοις ἐμφερές τι ἐν λόγοις.
+Καὶ ταῦτ' ἐπαίνει τῶν σοφῶς εἰρημένων·
+385 Ὅτ' ἐκ πονηροῦ πράγματος κέρδος λάβῃς,
+Τοῦ δυστυχεῖν νόμιζε ἀρραβῶν' ἔχειν.
+Μὴ πάντοθεν κέρδαινε, σαυτὸν αἰσχύνων·
+Τὸ μὴ δικαίως εὐτυχεῖν, ἔχει φόβον.
+Μὴ Πλοῦτον εἴπῃς, οὐχὶ θαυμάζω θεόν,
+390 Ὃν καὶ κάκιστος ῥᾳδίως ἐκτήσατο.
+Πένης μέν ἐστι, τὸν τρόπον δὲ πλούσιος.
+Σοφὸν πένητα μᾶλλον, ἢ Μίδαν κακόν.
+Ληρεῖ δέ μοι Θεόγνις ὡς λῆρον πλατύν,
+Κρημνοὺς προτιμῶν τῆς ἀπορίας καὶ βυθούς,
+395 Κακῶς τε Κύρνῳ νομοθετῶν εἰς χρήματα.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="350,730,650,750">
-    METRICA VERSIO
+
+  [!-- RIGHT COLUMN: Latin apparatus/translation/prose next to Greek --]
+  <bloco tipo="texto_principal" script="latino" bbox="520,310,950,700">
+In antiquis libris, quibus innutritus es, o bone,
+Sine me lucra facientem vocari improbum :
+Id enim satius, quam colentem leges deorum
+Pauperem degere, gloriam ambientem.
+Ne mihi genus proferas : offa mihi genus.
+Pecunia hominibus maxime venerabilis.
+Homine egeno nihil miserabilius.
+Sine ære Apollo non vaticinatur.
+Nemo est qui ab omni parte sit beatus;
+Vel enim egregiis ortus parentibus, caret opibus,
+Vel gente non clarus divitem arat campum.
+Quomodo ergo miserabilem eum vocas, qui pauper quidem est,
+Sed moribus præditus est longe ditissimis ?
+Vere miserum est tam prave sentire.
+Hæc igitur omnia effuge, et eos qui ea effulerunt,
+Et si quid aliud his consonum libris.
+Atque etiam hæc lauda sapienter dicta :
+Cum ex re prava lucrum feceris,
+Scito te pignus infelicis vitæ habere.
+Ne lucrearis undequaque, teipsum dedecorans :
+Injusta prosperitas non caret metu,
+Ne Plutum appelles : non ego admiror deum,
+Quem facillime teterrimus possidet.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,760,480,950">
-    Desumpta, juvenis quæ manu volvit frequens,
-    Sine me vocari, dummodo lucrer, malum :
-    Id namque præstat, quam colentem cœlitum
-    Leges egere, gloria hinc dum quæritur.
-    Genus mihi ne profer : offa mi genus.
-    Res nulla censu charior mortalibus.
-    Miserum indigente nil magis fingi potest.
-    Responsa Phœbus, æra si desint, negat.
-    Nemo beatus rebus est in omnibus.
-    Nam vel probis vir moribus victu caret :
-    Vel, stirpe cum sit sordida, censu affluit.
-    Miserum vocandum nam quid ipse existimas
-    Opibus carentem, divitem sed moribus?
-    Miser est profecto, quisquis hæc sentit male.
+
+  [!-- RIGHT column apparatus/critical notes area (lower right) --]
+  <bloco tipo="aparato_critico" script="misto" bbox="520,700,950,920">
+385 Ὅτ' ἐκ. Vat. οὐκ ἐκ.
+389 Μὴ Πλοῦτον εἴπῃς. Noli Plutum, id est, ditem appellare, etc.
+394 Κρημνούς. Alludit Gregorius ad hæc Theognidis:
+Χρὴ πενίην φεύγοντα, καὶ εἰς μεγακήτεα πόντον
+Πίπτειν, καὶ πετρῶν, Κύρνε, κατ' ἠλιβάτων.
+Oportet eum, qui inopiam fugit, in vastum mare se
+projicere, aut e præruplis scopulis se dare præcipitem.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,760,950,950">
-    B Ilæc ergo cuncta cum suis auctoribus,
-    Aliudque si quid tale sit dictum, fuge.
-    At ista lauda : dicta sunt enim probe.
-    Ex non honesta cum capis re commodum,
-    Calamitatis, hoc scias, arrham tenes.
-    Non undecunque lucra fac : verere te.
-    Pavore iniqua non caret felicitas.
-    Plutum quid inquis? Non ego admiror deum,
-    Haud ægre apisci quem queat vel pessimus.
-    Pauper quidem ille : moribus dives tamen.
-    Sophos egentes malo, quam Midas malos.
-    Delirat autem maxime Theognides,
-    Diram anteponit cum necem penuriæ,
-    Cyrnoque sancit improbas leges opum.
+
+  [!-- Metric header --]
+  <bloco tipo="cabecalho" script="latino" bbox="300,920,700,950">
+METRICA VERSIO
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="600,960,900,990">
-    Digitized by Google
+
+  [!-- METRICA left column --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,950,480,1200">
+Desumpta, juvenis quæ manu volvit frequens,
+Sine me vocari, dummodo lucrer, malum :
+Id namque præstat, quam colentem cœlitum
+Leges gerere, gloria hinc dum quæritur.
+Genus mihi ne profer : offa mi genus.
+Res nulla censu charior mortalibus.
+Miserum indigente nil magis fingi potest.
+Responsa Phœbus, æra si desint, negat.
+Nemo beatus rebus est in omnibus.
+Nam vel probis vir moribus victu caret :
+Vel, stirpe cum sit sordida, censu affluit.
+Miserum vocandum nam quid ipse existimas
+Opibus carentem, divitem sed moribus?
+Miser est profecto, quisquis hæc sentit male.
   </bloco>
+
+  [!-- METRICA right column --]
+  <bloco tipo="texto_principal" script="latino" bbox="520,950,950,1200">
+B Ilæc ergo cuncta cum suis auctoribus,
+Aliudque si quid tale sit dictum, fuge.
+At ista lauda : dicta sunt enim probe.
+Ex non honesta cum capis re commodum,
+Calamitatis, hoc scias, arrham tenes.
+Non undecunque lucra fac : verere te.
+Pavore iniqua non caret felicitas.
+Plutum quid inquis? Non ego admiror deum,
+Haud ægre apisci quem queat vel pessimus.
+Pauper quidem ille : moribus dives tamen.
+Sophos egentes malo, quam Midas malos.
+Delirat autem maxime Theognides,
+Diram anteponit cum necem penuriæ,
+Cyrnoque sancit improbas leges opum.
+  </bloco>
+
+  [!-- Marginal letter markers for right column / metric --]
+  <bloco tipo="nota_marginal" script="latino" bbox="520,940,540,960">
+B
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="920,340,940,360">
+D
+  </bloco>
+
+  [!-- Footer / rodape --]
+  <bloco tipo="rodape" script="latino" bbox="600,1250,950,1280">
+Digitized by Google
+  </bloco>
+
   <notas>
-    Transcrição de página da Patrologia Graeca (S. Gregorii Theol. Carminum).
-    Texto em grego e latim dispostos em colunas.
-    Letras 'A' e 'B' marcam início de seções/colunas.
-    Notas críticas misturam grego e latim.
+    Layout: duas colunas principais (esquerda: grego+latim; direita: grego+latim) seguidas da versão metrica em duas colunas.
+    Foram mapeados blocos de aparato critico (notas) abaixo de cada coluna principal.
+    Letras marginais centrais A, B e D assinaladas como nota_marginal em blocos próprios.
+    Scripts indicados conforme conteúdo do bloco: 'grego' para textos gregos, 'latino' para latinos, 'misto' para apparatus.
+    BBOX aproximadas em escala 0-1000, estimadas a partir da imagem; fluxos respeitam ordem: coluna esquerda primeiro, depois coluna direita.
   </notas>
 </pagina>

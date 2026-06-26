@@ -1,10 +1,12 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="40,20,960,80">
     597 SECTIO II. POEMATA MORALIA. 598
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,70,490,300">
+
+  [!-- LEFT COLUMN (Greek top) --]
+  <bloco tipo="texto_principal" script="grego" bbox="40,80,480,320">
     Εἰ δὲ σύ γ' ἔνθα καὶ ἔνθα χέοις ψαμάθοισι βαθείαις,
-    Ἢ κατὰ πετράων, ἢ λείμακος, ἢὲ χαράδρης,
+    Ἢ κατὰ πετράων, ἢ λείμαχος, ἢὲ χαράδρης,
     210 Ὠκέσσοι ῥόος ἐσθλὸς ἀσύνθετος, οὐδὲν ὄνειαρ.
     Εἰ μέν σοι γε πατὴρ ζώει φίλος, ὅς σε φάωσδε
     Ἤγαγεν, ἢ μήτηρ γλυκερή, καὶ φίλτρον ἀμεμφές,
@@ -18,23 +20,9 @@
     Κεῖνος μὲν βαλέει, τὸ δ' ἐμὸν κέαρ ἔμπεδον ἔσται.
     250 Τῶν δ' ἄλλων μοι τόσσον ἀλεύεσθαι φιλότητα,
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="510,70,950,300">
-    Α Ἤ τοι μὴ φιλίην γε, συνωρεφίην δ' ἀλεγεινήν,
-    Ἢ θάρσος δολερὸν τε καὶ εὐθαλέεσσιν ἄπιστον,
-    Ὁσσάτιον Χριστοῖο περιδράσεσθαι ἔοικεν
-    Ἔμπεδον ἐμπεφυῖαν ἀειζώοισι πόθοισι.
-    255 Μηδὲ σύ παρθενίης μὲν ἔχειν πόθον ἠμερόεσσης,
-    Τοῖς δ' ἄλλοισι παθέεσσι τεὴν φρένα πάμπαν ἀνοίγειν,
-    Σωφροσύνη κομήσασα· κακὸν δέ γε τοῦτο χέρεῖον,
-    Τίκτεσθ' ἐξ ἀγαθοῖο κακὸν φθονεροῖο δόλοισιν.
-    Οὐ γὰρ τόσσον ἔμοιγε γάμος, οὐδ' ἔργα γάμοιο
-    260 Φύξιμος, ᾧ γε Θεὸς θνητῶν γένος αἰὲν ἀέξει,
-    Ὅσσον ἐμοὶς παθέεσσιν ἄκος καὶ ἄλκαρ ἀνεῦρον
-    Παρθενίην. Ὃν εἰ μν ἐλεύθερον μαρ ἔχοιμι,
-    Ἔστι καὶ ἀζυγίης τις ἐμοὶ χάρις. Εἰ δ θύρετρα
-    Θήρεσιν ἀμπετάσαιμι, φίλην φραγμοῖσιν ἄλωην
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="150,310,850,620">
+
+  [!-- LEFT COLUMN (Latin middle) --]
+  <bloco tipo="texto_principal" script="latino" bbox="120,320,480,640">
     Si autem tu hinc inde fuderis in profundas arenas,
     In rupes, in prata, in torrentes,
     240 Optimus periit tibi fluxus non collectus, nulla utilitas.
@@ -63,7 +51,9 @@
     Est mihi cælibatui habenda gratia. Sin autem portas
     Feris aperiam, amīcam sepibus aream
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="50,630,490,800">
+
+  [!-- LEFT COLUMN APPARATUS (bottom left) --]
+  <bloco tipo="aparato_critico" script="misto" bbox="40,640,480,840">
     239 Λείμαχος. Coisl. κλίμακος.
     241 Φάωσδε. Coisl. φάος δέ.
     242 Ἀμεμφές. Regg. duo et Chig. ἀμεμπτον.
@@ -76,42 +66,28 @@
     tantæ libertatis fuit in reprehendendo, ut et sandalia
     et crepidas Veneris reprehenderet. De illius mor-
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="510,630,950,800">
-    ducitate passim vide apud Lucianum.
-    250 Ἀλεύεσθαι. Ita tres Regg., Coisl. et Chig.
-    Edit. ἀλεύσασθαι. Mox Coisl. φιλότητι pro φιλότητα.
-    251 Ἤ τοι μή. Coisl. εἰ τοι μή, et sup. lin. καὶ
-    εἰ μή.
-    252 Εὐθαλέεσσιν. Coisl. εὐθαλέουσιν.
-    253 Ἔοικεν. Coisl. ἑοικώς.
-    257 Κακὸν. Chig. et Reg. 9.ο κακοῦ.
-    260 Φύξιμος. Reg. 39 φευκτός.
-    263 Θύρετρα. Reg. 992 θύραθρα.
+
+  [!-- RIGHT COLUMN (Greek top) - note: 'A' marker removed and placed as nota_marginal --]
+  <bloco tipo="texto_principal" script="grego" bbox="520,80,960,320">
+    Ἤ τοι μὴ φιλίην γε, συνωρεφίην δ' ἀλεγεινήν,
+    Ἢ θάρσος δολερὸν τε καὶ εὐθαλέεσσιν ἄπιστον,
+    Ὁσσάτιον Χριστοῖο περιδράσεσθαι ἔοικεν
+    Ἔμπεδον ἐμπεφυῖαν ἀειζώοισι πόθοισι.
+    255 Μηδὲ σύ παρθενίης μὲν ἔχειν πόθον ἠμερόεσσης,
+    Τοῖς δ' ἄλλοις παθέεσσι τεὴν φρένα πάμπαν ἀνοίγειν,
+    Σωφροσύνη κομήσασα· κακὸν δέ γε τοῦτο χέρεῖον,
+    Τίκτεσθ' ἐξ ἀγαθοῖο κακὸν φθονεροῖο δόλοισιν.
+    Οὐ γὰρ τόσσον ἔμοιγε γάμος, οὐδ' ἔργα γάμοιο
+    260 Φύξιμος, ᾧ γε Θεὸς θνητῶν γένος αἰὲν ἀέξει,
+    Ὅσσον ἐμοῖς παθέεσσιν ἄκος καὶ ἄλκαρ ἀνεῦρον
+    Παρθενίην. Ὃν εἰ μν ἐλεύθερον μαρ ἔχοιμι,
+    Ἔστι καὶ ἀζυγίης τις ἐμοὶ χάρις. Εἰ δ θύρετρα
+    Θήρεσιν ἀμπετάσαιμι, φίλην φραγμοῖσιν ἄλωην
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="350,810,650,830">
-    METRICA VERSIO.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,840,490,950">
-    A In rupes, in prata, in torrentes, in arenas :
-    Optimus haud dubie fluxus tibi, virgo peribit,
-    Dispersos quoniam lentus devolvitur undas.
-    Ætherea quanquam genitor charissimus aura
-    Si fruitur, qui te donavit lumine vitæ,
-    Aut dulcis genitrix, a crimine liber amorque,
-    Quinetiam fratrum si niteris ipsa favore,
-    Aut patris auxilio et matris, vel forte juvandi
-    In senio si sunt, ipsis convivere nulla
-    Invidia est, oculos nec ob id tibi Momus acerbos
-    Injiciet, soleas stridorem emittere dicens:
-    Hoc quoque non fuerit mediocriter utile, virgo,
-    Cum malus hostiles in te contorquet ocellos :
-    Invidus ille licet jactat, tu pectore firmo
-    Semper eris, nec te livor maculabit iniquus,
-    Nil alienus amor tibi sit, nil extera flamma.
-    Aut si quosdam alios casto amplexaris amore,
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,840,950,950">
-    B Saltem ne tecti jus sit commune caveto.
+
+  [!-- RIGHT COLUMN (Latin middle) --]
+  <bloco tipo="texto_principal" script="latino" bbox="520,320,960,640">
+    Saltem ne tecti jus sit commune caveto.
     Corporibusque nocens sanis fiducia fallax;
     Quin potius pressis manibus complectere Christum,
     Æternusque illi te jungat nexus amoris.
@@ -129,14 +105,87 @@
     Egregie de me merita est, gratesque rependo.
     At si, cum validis conclusa sit area septis,
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="300,960,700,1000">
+
+  [!-- RIGHT COLUMN APPARATUS (bottom right) --]
+  <bloco tipo="aparato_critico" script="misto" bbox="520,640,960,840">
+    ducitate passim vide apud Lucianum.
+    250 Ἀλεύεσθαι. Ita tres Regg., Coisl. et Chig.
+    Edit. ἀλεύσασθαι. Mox Coisl. φιλότητα pro φιλότητα.
+    251 Ἤ τοι μή. Coisl. εἰ τοι μή, et sup. lin. καὶ
+    εἰ μή.
+    252 Εὐθαλέεσσιν. Coisl. εὐθαλέουσιν.
+    253 Ἔοικεν. Coisl. ἑοικώς.
+    257 Κακὸν. Chig. et Reg. 9.ο κακοῦ.
+    260 Φύξιμος. Reg. 39 φευκτός.
+    263 Θύρετρα. Reg. 992 θύραθρα.
+  </bloco>
+
+  [!-- METRICA VERSIO header (center) --]
+  <bloco tipo="cabecalho" script="latino" bbox="360,840,640,880">
+    METRICA VERSIO.
+  </bloco>
+
+  [!-- METRICA LEFT COLUMN (Latin) --]
+  <bloco tipo="texto_principal" script="latino" bbox="40,880,480,980">
+    In rupes, in prata, in torrentes, in arenas :
+    Optimus haud dubie fluxus tibi, virgo peribit,
+    Dispersos quoniam lentus devolvitur undas.
+    Ætherea quanquam genitor charissimus aura
+    Si fruitur, qui te donavit lumine vitæ,
+    Aut dulcis genitrix, a crimine liber amorque,
+    Quinetiam fratrum si niteris ipsa favore,
+    Aut patris auxilio et matris, vel forte juvandi
+    In senio si sunt, ipsis convivere nulla
+    Invidia est, oculos nec ob id tibi Momus acerbos
+    Injiciet, soleas stridorem emittere dicens:
+    Hoc quoque non fuerit mediocriter utile, virgo,
+    Cum malus hostiles in te contorquet ocellos :
+    Invidus ille licet jactat, tu pectore firmo
+    Semper eris, nec te livor maculabit iniquus,
+    Nil alienus amor tibi sit, nil extera flamma.
+    Aut si quosdam alios casto amplexaris amore,
+  </bloco>
+
+  [!-- METRICA RIGHT COLUMN (Latin) --]
+  <bloco tipo="texto_principal" script="latino" bbox="520,880,960,980">
+    Saltem ne tecti jus sit commune caveto.
+    Corporibusque nocens sanis fiducia fallax ;
+    Quin potius pressis manibus complectere Christum,
+    Æternusque illi te jungat nexus amoris.
+    Nec tibi virginea quidquam clarescere laude
+    Profuerit, vitiis habeas si pectus apertum,
+    Virginitate tumens. Gravius scelus istud habendum
+    [est,
+    Nascitur ex virtute malum cum dæmonis astu.
+    Non tam elenim ut dulces thalamos nexumque juga-
+    [lem,
+    Quo genus humanum Deus immortalis adauget,
+    Effugiam, quam ut criminibus mentique medelam
+    Quæram, virgineæ vitæ delector amore.
+    Quæ si forte meam purgarit crimine mentem,
+    Egregie de me merita est, gratesque rependo.
+    At si, cum validis conclusa sit area septis,
+  </bloco>
+
+  [!-- Marginal letter markers (central letters segregated as nota_marginal) --]
+  <bloco tipo="nota_marginal" script="latino" bbox="500,110,520,140">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="80,860,100,900">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,860,520,900">
+    B
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="360,980,640,1000">
     Digitized by Google
   </bloco>
+
   <notas>
-    Transcrição de página da Patrologia Graeca contendo texto grego, tradução latina, aparato crítico e versão métrica.
-    O texto grego superior está em duas colunas.
-    O aparato crítico inferior está em duas colunas.
-    A "METRICA VERSIO" inferior está em duas colunas marcadas com A e B.
-    Algumas quebras de palavra no final da linha foram mantidas com hífen (ex: ἀμφαγα-, juga-).
+    Página com duas colunas principais no topo (grego) e duas colunas centrais (tradução latina),
+    apparatus criticus em duas colunas na parte inferior e versão métrica em duas colunas no rodapé.
+    Letras marginais A e B foram separadas em blocos nota_marginal (não inseridas no corpo do texto).
+    Transcrição é literal, priorizando a leitura visual da imagem; quebras de linha e hifenações originais foram mantidas.
   </notas>
 </pagina>

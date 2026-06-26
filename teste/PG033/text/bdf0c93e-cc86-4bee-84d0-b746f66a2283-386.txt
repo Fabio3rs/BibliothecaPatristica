@@ -1,4 +1,4 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="40,10,960,70">
     757 CATECHESIS XII. DE CHRISTO INCARNATO. 758
   </bloco>
@@ -93,6 +93,18 @@
     post tempore sacrorum continentia, uti aliquid Chri-
     sti sacerdotibus peculiarem denotatur.
   </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,80,520,140">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="720,320,780,400">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="160,660,240,740">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,920,540,980">
+    D
+  </bloco>
   <bloco tipo="rodape" script="latino" bbox="40,930,980,990">
     (1) Κατορθῶσαι αὑτη̋. Hæc verba desunt in
     codib. Coisl., Reg., Roe, Casaub. et Grod.; alias nihil
@@ -125,5 +137,5 @@
     qui sacerdotio fungitur, ὁ ἱερέων· ut perpetuam
     et statui afixam continentiam desmignet. Eodem
   </bloco>
-  <notas>Scripts: página com partes em grego e latino. Foram mantidas grafias originais, sinais diacríticos e notas numeradas. Algumas letras e palavras menores foram transcritas conforme legibilidade; "[ilegivel]" não foi necessário.</notas>
+  <notas>Estado: com_texto. Scripts presentes: greco (texto coluna esquerda) e latino (coluna direita e rodapé). Mantida a ortografia original, diacríticos e sinais de edição; não foram feitas normalizações nem traduções. Identificadores marginais A, B, C, D transcritos em blocos nota_marginal separados (bboxes aproximados entre colunas e margens). Onde houver variações de leiturae de codd., mantive as formas visíveis no exemplar digital.</notas>
 </pagina>

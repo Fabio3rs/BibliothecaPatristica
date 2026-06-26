@@ -1,47 +1,79 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="70,20,930,90">PHILOSTORGI 585</bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="470,145,495,170">A</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,355,510,380">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,620,510,645">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,745,515,770">D</bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="70,95,500,810">
-[ilegivel]
-19. Theodosius, victis barbaris, Homousianos restituit. — Theodosius imperator juxta urbem Sirmium congressus cum barbaris : eo enim simul atque imperium accepisset, utilitate publici et exigente, profectus fuerat : victis prœlio barbaris exinde Constantinopolitanam urbem cum ingenti pompa ingressus est. Et Homousianus quidem Ecclesiarum curam commisit; Arianos vero et Eunomianos ex quorum numero fuit etiam Demophilus, qui cum ejectus fuisset, ad civitatem suam Beroeam se contulit. Hypatius quoque Nicaeae expulsus, Cyprum Syriae ex ea erat oriundus, se recepit. Sed et Dorotheus Antiochiae ejectus, in Thraciam unde originem ducebat, demigravit. Alii denique in alia dispersi sunt loca.
-
-EX LIBRO DECIMO HISTORIAE.
-
-1. Cleri Antiocheni ad Eunomium legatio. — Dorotheus quidem, uti supra dictum est, Antiochia est expulsus; presbyteri vero ejusdem urbis Asterius et Crispinus, et reliquus clerus, collecto concilio, cui nonnulli etiam ex vicinis episcopis interfuerunt, ad Eunomium eosque qui cum illo erant miserunt, communionem eorum postulantes. Hi vero per literas responderunt, non alia conditione esse illos suscepturos esse, quam si damnationis sententiam in Aetium ejusque scripta olim latam rescinderent, sed et vitae eorum emendationem requirebant; quibusdam enim haud puris actibus erant contaminati. At illi, tum quidem conditione oblata non admiserunt; postea vero eo usque progressi sunt, ut et Eunomium et eos qui cum illo erant, in Ecclesia praescinderent, et [ilegivel], eos vocantes, plerosque desperationis advenisse, eo quod scilicet hujusmodi conditionem ipsis ferre ausi fuissent.
-
-2. Arii dogmata. — Arium impietatis ipsorum ante signanum accusat Philostorgius, quod hujus universi Deum ex multis partibus compositum esse dixerit. Ait enim Arium asseruisse, eum non quantus est comprehendi posse, sed in quantum minuscujusque vice comprehendi valeat; eumdem quoque sensisse, Deum neque substantiam esse, neque hypostasin, neque aliud quidquam eorum quae de illo dicuntur (40); sed et Ariminensem synodum et Constantinopolitanam [ilegivel]
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,150,40">
+    585
   </bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="515,95,950,810">
-[ilegivel]
-Ὅτι ὁ Θεοδόσιος ὁ βασιλεὺς κατὰ Σίρμιον τοῖς βαρβάροις συμβαλὼν (a) (εἶχεν γὰρ αὐτὸς τοῦ λαβεῖν τὴν ἀρχὴν, τῆς χρείας ἐπικουρήσης, παρηγέθη), καὶ νικήσας μάχῃ, εἶθ᾽ ἑξῆς ἐν Κωνσταντινουπόλει εἰσῆλθεν. Καὶ τοῖς μὲν τὸ ὁμοούσιον φρονοῦσιν τῶν ἐκκλησιῶν ἐπετέτρεπε τὴν ἐπιμέλειαν· Ἀρειανοὺς δὲ καὶ Εὐνομιανοὺς ἀπελάει τῆς πόλεως. Καὶ δὴ καὶ Δημόφιλος ἀπελαθεὶς εἰς τὴν ἑαυτοῦ πατρίδα καταλαμβάνει τὴν Βέροιαν. Καὶ Ὑπάτιος δὲ τῆς Νικαίας ἀπωσθεὶς πρὸς τὴν γεννησαμένην Κύπρον τὴν ἐν Συρίᾳ παρεγίνεται. Ἀλλὰ καὶ Δωρόθεος τῆς Ἀντιοχείας ἀπελαθείς τὴν Θρᾴκην, ὅθεν γένος, ἐγκατέλιπε. Καὶ ἄλλοι δὲ ἀλλαχοῦ ἐσκορπίσθησαν.
-
-ΕΚ ΤΗΣ ΔΕΚΑΤΗΣ ΙΣΤΟΡΙΑΣ.
-
-α'. Ὅτι Δωρόθεος μὲν, ὡς ἐρρήθη, τῆς Ἀντιοχείας ἠλάθη· οἱ δὲ ταύτης πρεσβύτεροι Ἀστέριος καὶ Κρίσπινος, καὶ τὸ ἄλλο πλήρωμα συνδραμόντες, συμπροσεκαλέσαντο αὐτοῖς καὶ τῶν πέριξ πόλεων ἐπισκόπων, πρέσβεις πρὸς τὸν Εὔνομιον καὶ τοὺς τῆς κοινωνίας αὐτοῦ ἐπιστατοῦντας ἀποστέλλουσιν. Οἱ δὲ ἀπεστάλησαν, μή ἄλλως αὐτοὺς παραδέξασθαι, εἰ μὴ τὴν ἐπ᾽ Αἰτίῳ καὶ τοῖς αὐτοῦ συγγράμμασι κατακεκριμένην ἀποφάσιν ἀναγράφοιεν· ἔτι δὲ καὶ διαφθοράς (38) αἰτοῦν τὸν βίον· συνεσπόμενον γὰρ τινὶ οὐ καθαρῶς διατεθίρασιν. Οἱ δὲ τότε μὲν τὴν πρόκλησιν οὐ προσεδέξαντο (39)· χρόνῳ δὲ ὕστερον καὶ εἰς τὸ χαλκεῖον ἐπ᾽ ἐκκλησίας τῶν τε Εὐνομίων καὶ τῶν σὺν αὐτῷ προσελθόντες, μετεχειρίσαντο αὐτοὺς κακοῦντες, καὶ πλήρεις ἀπονοίας καὶ κακοήθειας, ἀνθ᾽ ὧν αὐτοῖς ταῦτα προτείνειν ἔγνωσαν.
-
-β'. Ὅτι τοῦ ἀρχηγοῦ αὐτῶν τῆς αἱρέσεως Ἄρειον ὁ συγγραφεὺς διαβάλλει, ὡς πολυμερῆ καὶ πολυδύναμον λέγοντα τὸν Θεὸν τῶν ὅλων. Οὐ γὰρ ὅσον ἐστιν ὁ Θεὸς καταλαμβάνεσθαι, χρήσιν, ἀλλ᾽ ὅσον ἡ ἑκάστου δύναμις πρὸς κατάληψιν ἔρχεται· καὶ μήτε οὐσίαν αὐτῷ εἶναι δογματίζειν, μήτε ὑπόστασιν, μήτε ἄλλο μηδὲν ὧν ὀνομάζεται· καὶ τὴν ἐν Ἁρμινίῳ δὲ σύνοδον καὶ τὴν ἐν Κωνσταντινουπόλει τὰ αὐτὰ δοξάζειν, [ilegivel]
+  <bloco tipo="cabecalho" script="latino" bbox="430,20,570,40">
+    PHILOSTORGII
   </bloco>
-
-  <bloco tipo="cabecalho" script="latino" bbox="360,800,720,835">VALESII ANNOTATIONES.</bloco>
-
-  <bloco tipo="aparato_critico" script="misto" bbox="80,835,500,980">
-(38) [ilegivel], in manuscripto codice Bocharti legitur distinctis vocibus, δὲ χαράζειν. Unde quis suspicari possit scribendum esse, [ilegivel].
-(39) Τὴν πρόκλησιν οὐ ἀρνοῦμαι. Laudo versionem Gothofredi, qui sic interpretatur hunc locum: Conditionem non admiserunt. Vide, si placet, qua de hac voce notavi ad librum nonum hujus historiae.
+  <bloco tipo="cabecalho" script="latino" bbox="880,20,930,40">
+    586
   </bloco>
-
-  <bloco tipo="aparato_critico" script="misto" bbox="520,835,950,980">
-(40) Sor. lib. iv, cap. 24.
-
-(a) Κατὰ Σίρμιον τοῖς βαρβάροις συμβαλών. Erat hic Philostorgius. Nam Theodosius Sirmii quidem imperator factus fuit, at idem in Macedonia constitutus Thessalonicae Gothos devicit. Illud recte Philostorgius cum ceteris, quod Theodosii de Gothis victoriam ad tempus refert, quo jam imperator renuntiatus erat. Male enim Theodoretus, qui lib. v, cap. 5, ante ejus imperium id factum memorat. Præligatis barbari venut Theodosius Constantinopolim, statimque Ecclesias restituit Homousianis, sub finem anni 380, inquit Jac. Gothofredus ita locum.
+  <bloco tipo="texto_principal" script="latino" bbox="100,50,490,90">
+    illuc adducerent, et Theophilum Indum, Antiochiæ convenirent, et totius Orientis statum ordinarent.
   </bloco>
-
-  <bloco tipo="cabecalho" script="latino" bbox="400,900,680,930">VARIORUM.</bloco>
-
-  <notas>Coluna esquerda transcrita antes da direita; letras A, B, C e D isoladas como nota_marginal conforme instrução. Segmentos top/bottom parcialmente ilegíveis marcados com [ilegivel].</notas>
+  <bloco tipo="nota_marginal" script="latino" bbox="495,50,510,65">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,100,490,320">
+    19. Theodosius, victis barbaris, Homousianos restituit. — Theodosius imperator juxta urbem Sirmium congressus cum barbaris : eo enim simul atque imperium accepisset, utilitate publica id exigente, profectus fuerat : victis prælio barbaris exinde Constantinopolitanam urbem cum ingenti pompa ingressus est. Et Homousianis quidem Ecclesiarum curam commisit ; Arianos vero et Eunomianos urbe expulit. Ex quorum numero fuit etiam Demophilus : qui cum ejectus fuisset, ad civitatem suam Berrhœam se contulit. Hypatius quoque Nicæa expulsus, Cyrum Syriæ ex qua erat oriundus se recepit. Sed et Dorotheus Antiochia ejectus, in Thraciam unde originem ducebat, demigravit. Alii denique in alia dispersi sunt loca.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="495,280,510,295">
+    B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,330,490,350">
+    EX LIBRO DECIMO HISTORIAE.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,360,490,600">
+    1. Cleri Antiocheni ad Eunomium legatio. — Dorotheus quidem, uti supra dictum est, Antiochia est expulsus ; presbyteri vero ejusdem urbis Asterius et Crispinus, et reliquus clerus, collecto concilio, cui nonnulli etiam ex vicinis episcopis interfuerunt, ad Eunomium eosque qui cum illo erant miserunt, communionem eorum postulantes. Hi vero per literas responderunt, non alia conditione sese illos suscepturos esse, quam si damnationis sententiam in Aetium ejusque scripta olim latam rescidissent, sed et vitæ eorum emendationem requirebant ; quibusdam enim haud puris actibus erant contaminati. At illi, tum quidem conditionem oblatam non admiserunt ; postea vero eo usque progressi sunt, ut et Eunomium et eos qui cum illo erant, in Ecclesia proscinderent, μετεωρολέσχας eos vocantes, plerosque desperationis ac vesaniæ, eo quod scilicet hujusmodi conditionem ipsis ferre ausi fuissent.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="495,500,510,515">
+    C
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,610,490,750">
+    2. Arii dogmata. — Arium impietatis ipsorum antesignanum accusat Philostorgius, quod hujus universi Deum ex multis partibus compositum esse dixerit. Ait enim Arium asseruisse, eum non quantus est comprehendi posse, sed in quantum uniuscujusque vis comprehendere valet ; eumdem quoque sensisse, Deum neque substantiam esse, neque hypostasin, neque aliud quidquam eorum quæ de illo dicuntur (40); sed et Ariminensem synodum et Constantinopolitanam
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="495,710,510,725">
+    D
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,50,920,90">
+    Κιλικίας ἄξοντες, καὶ Θεόφιλον τὸν νδὸν ἐν τῇ Ἀν-τιοχείᾳ καταληψόμενοι, καὶ τὰ τῆς ἄλλης δύσεως καταστησόμενοι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,100,920,320">
+    ιθ'. Ὅτι Θεοδόσιος ὁ βασιλεὺς κατὰ Σίρμιον τοῖς βαρβάροις συμβαλὼν (a) (ἐκεῖ γὰρ αὐτίκα τοῦ λαβεῖν τν ἀρχν, τῆς χρείας ἀπαιτούσης, παρεγένετο), καὶ νικήσας μάχῃ, ἐκεῖθεν λαμπρῶς ἐπὶ τὴν Κωνσταν-τινούπολιν ἄνεισι. Καὶ τοῖς μὲν τὸ ὁμοούσιον φρο-νοῦσι τῶν ἐκκλησιῶν ἐπιτρέπει τὴν ἐπιμέλειαν· Ἀρειανοὺς δὲ καὶ Εὐνομιανοὺς ἀπελαύνει τῆς πόλεως. Ὧν εἷς ἦν καὶ ὁ Δημόφιλος· ἀπελαθεὶς δὲ, τὴν ἑαυτοῦ πόλιν καταλαμβάνει τὴν Βέρροιαν. Καὶ Ὑπάτιος δὲ τῆς Νικαίας ἀποδιωχθεὶς, πρὸς τν γεννησαμένην Κύρρον τὴν ἐν Συρίᾳ παραγίνεται. Ἀλλὰ καὶ Δωρό-θεος τῆς Ἀντιοχείας ἀπελαθεὶς, τὴν Θρᾴκην, ὅθεν ἐγεγόνει, κατέλαβεν. Καὶ ἄλλοι δὲ ἀλλαχοῦ διεσπά-ρησαν.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,330,920,350">
+    ΕΚ ΤΗΣ ΔΕΚΑΤΗΣ ΙΣΤΟΡΙΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,360,920,580">
+    α'. Ὅτι Δωρόθεος μὲν, ὡς ἐρρήθη, τῆς ντιοχείας λάθη· οἱ δὲ ταύτης πρεσβύτεροι Ἀστέριος καὶ Κρισπῖνος, καὶ τὸ ἄλλο πλήρωμα συνεδριάσαντες, συμπαρόντων αὐτοῖς καὶ τινων τῶν πέριξ πόλεων ἐπισκόπων, πέμπουσι πρὸς τοὺς ἀμφὶ τὸν Εὐνόμιον, τὴν κοινωνίαν αὐτῶν ἐπιζητοῦντες. Οἱ δὲ ἀντεπι-στέλλουσι, μὴ ἄλλως αὐτοὺς παραδέξασθαι, εἰ μ τὴν ἐπ' Ἀετίῳ καὶ τοῖς αὐτοῦ συγγράμμασι κατα-χειροτονίαν ἀποψηφίσωνται· ἔτι δὲ καὶ διακάθαρ-σιν (38) ἀπῇτουν τοῦ βίου· συνεύροντο γὰρ καὶ τισιν οὐ καθαροῖς διαιτήμασιν. Οἱ δ τότε μὲν τὴν πρόκλησιν οὐ προσήκαντο (39)· χρόνῳ δ' ὕστερον καὶ εἰς τὸ κακίζειν ἐπ' ἐκκλησίας τόν τε Εὐνόμιον καὶ τοὺς σὺν αὐτῷ προεληλύθεισαν, μετεωρολέσχας αὐτοὺς καλοῦντες, καὶ πλήρεις ἀπονοίας καὶ σκαιότη-τος, ἀνθ' ὧν αὐτοῖς τοιαῦτα προτείνειν ἔγνωσαν.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,590,920,750">
+    β'. Ὅτι τὸν ἀρχηγὸν αὐτῶν τῆς ἀσεβείας Ἄρειον  συγγραφεὺς διαβάλλει, ὡς πολυμερῆ κα πολυσύν-θετον λέγοντα τὸν Θεὸν τῶν ὅλων. Οὐ γὰρ ὅσον ἐστὶν  Θεὸς καταλαμβάνεσθαι, κηρύσσειν, ἀλλ' ὅσον  ἑκάστου δύναμις πρὸς κατάληψιν ἐῥώται· καὶ μήτε δὲ οὐσίαν αὐτὸν εἶναι δογματίζειν, μήτε ὑπόστασιν, μήτε ἄλλο μηδὲν ὧν ὀνομάζεται· καὶ τὴν ἐν Ἀρι-μίνῳ δ σύνοδον καὶ τὴν ἐν Κωνσταντινουπόλει τὰ αὐτὰ δοξάζειν, ἥτις τὴν τοῦ Μονογενοῦς γέννησιν
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="400,760,600,775">
+    VALESII ANNOTATIONES.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="100,780,490,830">
+    (38) Διακάθαρσιν. In manuscripto codice Bocharti legitur distinctis vocibus, διὰ κάθαρσιν. Unde quis suspicari possit scribendum esse, ἰδία κάθαρσιν ἀπῄτουν τοῦ βίου.
+    (39) Τὴν πρόκλησιν οὐ προσήκαντο. Laudo
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="520,780,920,830">
+    versionem Gothofredi, qui sic interpretatur hunc locum : Conditionem non admiserunt. Vide, si placet, quæ de hac voce notavi ad librum nonum hujus Historiæ.
+    (40) Soz. lib. iv, cap. 24.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="450,850,550,865">
+    VARIORUM.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="100,870,490,940">
+    (a) Κατὰ Σίρμιον τοῖς βαρβάροις συμβαλών. Errat hic Philostorgius. Nam Theodosius Sirmii quidem imperator factus fuit, at idem in Macedonia constitutus Thessalunicæ Gothos devicit. Illud recte Philostorgius cum cæteris, quod Theodosii de Go-this victoriam ad tempus refert, quo jam imperator
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="520,870,920,940">
+    renuntiatus erat. Male enim Theodoretus, qui lib. v, cap. 5, ante ejus imperium id factum memorat. Profligatis barbaris venit Theodosius Constantinopo-lim, statimque Ecclesias restituit Homousianis, sub finem anni 380, inquit Jac. Gothofredus in locum.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="550,960,750,980">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcription follows the two-column layout. Letters A, B, C, D in the gutter are transcribed as nota_marginal and removed from the main text flow as per instructions.
+  </notas>
 </pagina>

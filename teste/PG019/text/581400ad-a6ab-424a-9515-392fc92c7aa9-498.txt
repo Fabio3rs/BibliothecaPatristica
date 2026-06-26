@@ -1,14 +1,35 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,80">
-    835 APPENDIX AD EUSEBII CHRONICON. 836
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,100,60">
+    835
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,90,480,680">
+  <bloco tipo="cabecalho" script="latino" bbox="300,30,700,60">
+    APPENDIX AD EUSEBII CHRONICON.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,30,950,60">
+    836
+  </bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="450,70,470,90">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,70,440,260">
     motus corporum, si ab aliqua habitatione earum
     quæ sunt in nostro orbe habitabili ad centrum
     terræ adjungatur aliqua recta, et producatur, tum
     hi qui sunt positi secundum extremitatem diametri
     in australi zona fiunt antipodes eorum qui in bo-
     reali zona habitant.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="550,70,950,150">
+    ρὴν τῶν σωμάτων, ἐὰν ἀπό τινος οἰκήσεως τῶν ἐπὶ
+    τῇ καθ' μᾶς οἰκουμένῃ ἐπὶ τὸ κέντρον τῆς γῆς ἐπι-
+    ζευχθῇ τις εὐθεῖα, καὶ ἐκβληθῇ, οἱ κατὰ τὸ πέρας
+    κείμενοι τῆς διαμέτρου ἐν τῇ νοτίῳ ζώνῃ ἀντίποδες
+    γίνονται τῶν ἐν τῇ βορεί ζώνῃ κατοικούντων.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,260,440,680">
     Dividitur autem nostra terra habitabilis in tres
     partes, Asiam, Europam, Lybiam. Duplo autem
     major est fere longitudo habitabilis terræ latitu-
@@ -18,11 +39,6 @@
     dine. Qui vero terræ descriptiones rotunda figura
     faciunt, multum aberrant a vero; æqualis enim fit
     longitudo latitudini; quod natura non patitur.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,330,500,345">
-    B
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,345,480,680">
     Necesse igitur est, ut non serventur distantiarum
     mensurationes in rotundis descriptionibus. Se-
     gmentum enim quoddam est sphæræ pars terræ ha-
@@ -37,11 +53,6 @@
     viduntur 25 myriades, et 2000 stadia in partes 60,
     fit sexagesimum 4200. Distantiæ igitur inter zonas
     hoc modo sunt definitæ. Frigidarum quidem zona-
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,480,500,495">
-    C
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,495,480,680">
     rum duarum latitudo utriusque earum est sexage-
     simorum 6, quæ sunt stadia 25200; temperatarum
     vero zonarum latitudo utriusque earum est sexage-
@@ -51,70 +62,78 @@
     cos sunt sexagesima 4, quæ faciunt stadia 16800.
     Sunt igitur a polo qui est in terra, qui situs est
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="100,685,250,700">
-    47 Pro υις' vet. habet δ'.
+
+  <bloco tipo="nota_marginal" script="latino" bbox="450,330,470,350">
+    B
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,90,900,160">
-    A ριν τῶν σωμάτων, ἐὰν ἀπό τινος οἰκήσεως τῶν ἐπὶ
-    τῇ καθ' ἡμᾶς οἰκουμένῃ ἐπὶ τὸ κέντρον τῆς γῆς ἐπι-
-    ζευχθῇ τις εὐθεῖα, καὶ ἐκβληθῇ, οἱ κατὰ τὸ πέρας
-    κείμενοι τῆς διαμέτρου ἐν τῇ νοτί ζώνῃ ἀντίποδες
-    γίνονται τῶν ἐν τῇ βορείῳ ζώνῃ κατοικούντων.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,170,900,680">
+
+  <bloco tipo="texto_principal" script="grego" bbox="550,150,950,680">
     Διαιρεῖται δὲ ἡ καθ' ἡμᾶς οἰκουμένη εἰς μέρη
     τρία, Ἀσίαν, Εὐρώπην, Λιβύην. Διπλάσιον δέ ἐστιν
-    ὡς γγιστα τὸ μῆκος τῆς οἰκουμένης τοῦ πλάτους·
+    ὡς ἔγγιστα τὸ μκος τῆς οἰκουμένης τοῦ πλάτους·
     δι' ἣν αἰτίαν οἱ κατὰ λόγον γράφοντες τὰς γεωγρα-
     φίας ἐν πίναξι γράφουσι παραμήκεισιν, ὡς διπλάσιον
     εἶναι τὸ μῆκος τοῦ πλάτους. Οἱ δὲ στρογγύλας γρά-
-    φοντες τὰς γεωγραφίας πολὺ τῆς ἀληθείας εἰσὶ πε-
+    φοντες τὰς γεωγραφίας πολὺ τῆς ἀληθείας εἰσι πε-
     πλανημένοι· ἴσον γὰρ γίνεται τὸ μῆκος τῷ πλάτει·
-    ὅπερ οὐκ ἔστιν ἐν τῇ φύσει. Ἀνάγκη οὖν μὴ τηρεῖ-
-    σθαι τὰς ἐπὶ διαστημάτων συμμετρίας τὰς ἐν ταῖς
-    στρογγύλαις γεωγραφίαις. Ἔκτμημά τι γάρ ἐστι
+    ὅπερ οὐκ στιν ἐν τ φύσει. Ἀνάγκη οὖν μὴ τηρεῖ-
+    σθαι τὰς ἐκὶ διαστημάτων συμμετρίας τὰς ἐν ταῖς
+    στρογγύλοις γεωγραφίαις. Ἔκτμημά τι γάρ ἐστι
     σφαίρας τὸ οκούμενον μέρος τς γῆς, διπλάσιον
-    ἔχον τὸ μῆκος τοῦ πλάτους, ὅπερ οὐ δύναται ἀπο-
-    τερματίζεσθαι κύκλῳ. ναμεμετρημένου δὲ τοῦ με-
+    ἔχον τὸ μκος τοῦ πλάτους, ὅπερ οὐ δύναται ἀπο-
+    τεματίζεσθαι κύκλῳ. ναμεμετρημένου δὲ τοῦ με-
     γίστου (44) κύκλου τῶν ἐν τῇ γῇ κατὰ τὸν ἐν τῷ
-    κόσμῳ μεσημβρινόν, καὶ ερημένου μυριάδων κε'
-    καὶ σταδίων ,β, τῆς διαμέτρου μυριάδων η', καὶ στά-
-    διων υις'· διαιρουμένου τε τοῦ μεσημβρινοῦ (45)
-    κύκλου εἰς μέρη ξ', καλεῖται· τὸ ἑντήμα ἑξηκοστόν·
-    ὃ γίνεται ρβ' στάδια. Ἐὰν γὰρ μερισθῶσιν αἱ κε'
-    μυριάδες καὶ τὰ ,β στάδια εἰς μέρη ξ', γίνεται τὸ
-    ἑξηκοστὸν σταδίων ρς'. στιν οὖν τὰ μεταξὺ τῶν
-    ζωνῶν διαστήματα τούτων ἀφωρισμένα τὸν τρόπον.
-    Τῶν μν κατειλημμένων ζωνῶν δύο τὸ πλάτος ἑκατέ-
-    ρας αὐτῶν ἑξηκοστῶν ε', ἅπερ εἰσὶ στάδιοι μὲν
-    ,κε'· τῶν δ εὐκράτων δύο ζωνῶν τ πλάτος ἑκατέρας
-    αὐτῶν ἑξηκοστῶν ε', ἃ γίνεται στάδιοι μὲν ,κα'· τῆς
+    κόσμῳ μεσημβρινὸν, καὶ εὑρημένου μυριάδων κε'
+    καὶ σταδίων β, τῆς διαμέτρου μυριάδων η', καὶ στά-
+    διων υιε'· διαιρουμένου τε τοῦ μεσημβρινοῦ (45)
+    κύκλου εἰς μέρη ξ', καλεῖται τὸ ἓν τμῆμα ἑξηκοστόν·
+    ὃ γίνεται δφ' στάδια. Ἐὰν γὰρ μερισθῶσιν αἱ κε'
+    μυριάδες καὶ τὰ β στάδια εἰς μέρη ξ', γίνεται τὸ
+    ἑξηκοστὸν στάδιων βφ'. Ἔστιν οὖν τὰ μεταξὺ τν
+    ζωνν διαστήματα τοῦτον ἀφωρισμένα τὸν τρόπον.
+    Τῶν μὲν κατεψυγμένων ζωνῶν δύο τὸ πλάτος ἑκατέ-
+    ρας αὐτῶν ξηκοστῶν ς', περ εἰσὶ στάδιοι μὲν
+    κφ'· τῶν δὲ εὐκράτων δύο ζωνῶν τ πλάτος ἑκατέρας
+    αὐτῶν ἑξηκοστῶν ε', ἃ γίνεται στάδιοι μὲν κα'· τῆς
     δὲ διακεκαυμένης ζώνης τὸ πλάτος ἑξηκοστῶν η'·
-    ὥστε ἀπὸ τοῦ ἰσημερινοῦ ἐφ' ἑκάτερα πρὸς τοὺς τρο-
-    πικοὺς ἑξηκοστὰ εἶναι δ', ἃ γίνεται στάδια μὲν ,ιςω'.
-    Γίνονται οὖν ἀπὸ μὲν τοῦ πόλου τοῦ ἐν τῇ γ, ὃς
+    ὥστε ἀπὸ τοῦ σημερινο ἐφ' ἑκάτερα πρὸς τοὺς τρο-
+    πικοὺς ξηκοστά εἰσι δ', ἃ γίνεται στάδια μὲν ,ισω'.
+    Γίνονται οὖν ἀπὸ μὲν το πόλου τοῦ ἐν τῇ γ, ὃς
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="100,710,480,950">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="450,500,470,520">
+    C
+  </bloco>
+
+  <bloco tipo="nota" script="misto" bbox="50,685,250,705">
+    47 Pro υιε' vet. habet δ'.
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="450,710,470,730">
+    D
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="50,710,440,950">
     (44) Ἀναμεμετρημένου δὲ τοῦ μεγίστου. Era-
-    tosthenes est hæc dimensio maximi circuli, ut au-
-    ctor est Strabo lib. II, et Plinius lib. II, cap. 108,
+    tosthenes est hæc dimensio maximi circuli, ut auc-
+    tor est Strabo lib. II, et Plinius lib. II, cap. 108,
     quam stadiorum 252000 mensuram Romana com-
     putatione dicit efficere trecenties, et quindecies
     centena millia passuum, quod et verum est. Nam
-    stadium cxxv passibus constat. Proinde si 252000
+    stadium ccxv passibus constat. Proinde si 252000
     per 125 multiplices, fient 31500000 passuum, quæ
-    sunt milliariorum 31500. At Cleomedes lib. I, cap.
+    sunt miliariorum 31500. At Cleomedes lib. I, cap.
     10, refert ab Eratosthene definitum esse terræ am-
-    bitum 250000 stadiorum : et qua methodo depre-
+    bitum 250000 stadiorum: et qua methodo depre-
     hensus sit modus ille, describit, nimirum ex eo
     quod angulus, qui gnomone et radio solis includi-
     tur Alexandriæ, sole in Cancri tropico meridiano
-    tempore sito, pars est quinquagesima quatuor re-
-    ctorum, ut et peripheria circuli in horologio de-
-    scripti, cui ille angulus insistit, pars est quinquage-
-    sima circuli totius. Quare cum Syenen inter et
+    tempore sito, pars est quinquagesima quatuor rec-
+    torum, ut et peripheria circuli in horologio de-
+    scripti, cui ille angulus insistit, pars est quinqu-
+    agesima circuli totius. Quare cum Syenen inter et
     Alexandriam, quæ sub eodem meridiano sunt, in-
-    tervallum sit quinque millium stadiorum : quæ est
+    terrvallum sit quinque millium stadiorum : quæ est
     quinquagesima pars ambitus terræ : totus ambitus
     250000 stadiorum colliget. Verum cum tot antiquis
     testibus constet ab Eratosthene mensuram illam,
@@ -122,19 +141,15 @@
     videtur paulo plus quinquagesima parte tam an-
     gulo, quem gnomon cum radio continet, quam
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="520,710,900,950">
+
+  <bloco tipo="aparato_critico" script="misto" bbox="550,710,950,950">
     circumferentiæ circuli maximi in Sciotherico tribu-
     tum auctore illo fuisse.
     Strabo loco citato Hipparchum ait eumdem cum
     Eratosthene terræ circuitum supposuisse, stadiorum
     252000. Plinius vero adjecisse illum asserit ad Era-
-    tosthenis mensuram paulo minus stadium 25000.
+    tosthenis mensuram paulo minus supputatione 25000.
     Qua ratione maximus circulus erit stad. 277000.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="505,830,520,845">
-    D
-  </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="520,845,900,950">
     Ut ad Geminum nostrum redeam, cum is terræ
     ambitum ex Eratosthenis sententia circumscribat
     stadiorum 252000, falsum est quod ex eo conse-
@@ -142,26 +157,21 @@
     cum ea ratio sit diametri ad ambitum, quæ est 7 ad
     22 : oportet diametrum terræ colligere stad. 80182
     fere.
-    (45) Διαρουμένου δὲ τοῦ μεσημβρινοῦ. Circu-
+    (45) Διαιρουμένου δὲ τοῦ μεσημβρινοῦ. Circu-
     lum veteres astronomi in partes sexaginta distri-
-    buerunt, ut supra diximus. Ita sexagesimæ cuicque
+    buerunt, ut supra diximus. Ita sexagesimæ cuique
     parti competunt stadia 4200. Quod si in 360 partes
     dividatur circulus, pars quælibet stadia postulat
     700. Vide Achillem Tatium Isag. cap. 29. Jam hoc
     admonuimus, dimensionem istam ad Rhodiacum
-    ἔγκλιμα referri, in quo semidiameter arctici cir-
+    Ἔγκλιμα referri, in quo semidiameter arctici cir-
     culi graduum est 36. Hinc etiam frigidam zonam
     definit arctico circulo illius loci proprio : ut quibus
-    polus gradibus 54, ac deinceps pluribus attollitur,
+    polis gradibus 54, ac deinceps pluribus attollitur,
     frigida in zona esse censeantur, quod est absurdum.
   </bloco>
+
   <bloco tipo="rodape" script="latino" bbox="350,960,650,990">
     Digitized by Google
   </bloco>
-  <notas>
-    Transcrição de página bilingue (Latim/Grego) da Patrologia Graeca ou similar.
-    Marcadores marginais A, B, C, D identificados no gutter entre colunas.
-    Números gregos (ex: κε', η', υις') mantidos conforme original.
-    Notas de rodapé (44) e (45) contêm texto misto.
-  </notas>
 </pagina>

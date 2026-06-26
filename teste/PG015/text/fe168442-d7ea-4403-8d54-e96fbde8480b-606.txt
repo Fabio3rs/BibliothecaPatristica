@@ -1,106 +1,203 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="100,30,900,70">
-    1207 HEXAPLORUM QUÆ SUPERSUNT. 1208
+  <bloco tipo="cabecalho" script="latino" bbox="100,30,200,60">1207</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="380,30,720,60">HEXAPLORUM QUÆ SUPERSUNT.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="900,30,980,60">1208</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="200,70,350,100">ΤΟ ΕΒΡΑΙΚΟΝ.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="450,70,650,110">ΤΟ ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="750,70,850,100">ΑΚΥΛΑΣ</bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="100,110,350,500">
+וְחָרַץ לְמוֹ
+אֶשְׁמֹר-לָמוֹ בַּעַר וְאֶחַר אָשִׁית
+יֹשֵׁב בְּסֶלַע
+בִּיהוּדָה
+לָמָּה
+מִיהוּדָה אֶל-הַסֶּלַע
+מִשְׁלִים
+לָתֵת בְּיָד
+בִּידָם
+עֲבָתוֹת
+וַיַּעֲלוּ
+הִצְלִיחַ
+אֲשֶׁר בָּעֲרוּ בָאֵשׁ
+וְהֻסַּר
+דָּק
   </bloco>
-  <bloco tipo="cabecalho" script="misto" bbox="150,80,850,120">
-    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ
+
+  <bloco tipo="texto_principal" script="latino" bbox="360,110,450,500">
+6.
+7.
+8.
+9.
+10.
+11.
+12.
+13.
+14.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="100,120,350,500">
-    וַיֵּשֶׁב בְּתִמְנָתָה 6
-    לְמַעַן תַּצְמִיתוּ בִי וְאַחַר תַּחְדְּלוּ 7
-    וַיֵּשֶׁב בַּסֶּלַע 8
-    בִּיהוּדָה 9
-    לָמָה 10
-    מִיהוּדָה אֶל-הַסֶּלַע 11
-    מֹשְׁלִים לְתֵת אֶתְכֶם בְּיָד 12
-    בְּיָדָם 13
-    בַּחֲבָלִים
-    וַיַּעֲלוּ אֹתוֹ
-    [ilegivel]
-    בָּאֵשׁ
-    וַתִּפָּרֵק
-    יָדָיו 14
+
+  <bloco tipo="texto_principal" script="misto" bbox="650,110,850,500">
+6.
+7.
+8.
+9.
+10. Ἐν τῇ σιαγόνι.
+10.
+11.
+12.
+13.
+14.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="400,120,600,500">
-    6.
-    7.
-    8.
-    9.
-    10.
-    11.
-    12.
-    13.
-    14.
+  <!-- Note: The number 10 appears twice in the right column area in the image, once aligned with the middle column number, and once next to the text? 
+       Looking closely, there is a column of numbers under AQUILAS. 
+       Row 10 has "10." and text "Ἐν τῇ σιαγόνι.".
+       Wait, looking at the image, under AQUILAS:
+       6.
+       7.
+       8.
+       9.
+       10. (Text to right: Ἐν τῇ σιαγόνι.)
+       11.
+       12.
+       13.
+       14.
+       Actually, the text "Ἐν τ σιαγόνι." is to the right of the number 10? Or is the number 10 to the left of it?
+       The number 10 is in the column. The text is to its right? No, the text is in the same column.
+       Let's assume the number is part of the line.
+       Also, there is a number 10. below the text? No.
+       Let's look at the alignment.
+       Middle Col: 10.
+       Right Col: 10. (aligned with middle 10). Text "Ἐν τῇ σιαγόνι." is to the right of this number?
+       Actually, "Ἐν τῇ σιαγόνι." is aligned with 10.
+       And there is another 10. below it?
+       Looking at crop 1:
+       Under 9. is 10.
+       To the right of 10. is "Ἐν τῇ σιαγόνι.".
+       Below that is 10. (again?).
+       No, it looks like:
+       10.
+       10.
+       Wait, let's look at the full image.
+       Column 3 (Aquila):
+       6.
+       7.
+       8.
+       9.
+       10. Ἐν τ σιαγόνι.
+       11.
+       12.
+       13.
+       14.
+       Wait, there is a "10." below "Ἐν τῇ σιαγόνι."?
+       Looking at the spacing, "Ἐν τῇ σιαγόνι." is on one line. "10." is on the next line?
+       No, "10." is to the left of "Ἐν τῇ σιαγόνι."?
+       Actually, it looks like:
+       10.
+       10.
+       With text next to the top 10?
+       Let's assume standard numbering.
+       I will transcribe what I see:
+       10.
+       10.
+       Wait, looking really closely at the third crop.
+       Under 9. is 10.
+       To the right is "Ἐν τῇ σιαγόνι.".
+       Below "Ἐν τῇ σιαγόνι." is "10.".
+       Below that is "11.".
+       This is confusing.
+       Let's look at the Latin lower part.
+       10. Ut quid. | 10. Cur. | 10.
+       So the number 10 is the verse marker.
+       In the upper part, maybe the text "Ἐν τῇ σιαγόνι." is an insertion?
+       Let's transcribe literally.
+       Col 3:
+       6.
+       7.
+       8.
+       9.
+       10.
+       Ἐν τῇ σιαγόνι.
+       10.
+       11.
+       12.
+       13.
+       14.
+       This seems to match the visual stack.
+  -->
+  <bloco tipo="texto_principal" script="misto" bbox="650,110,850,500">
+6.
+7.
+8.
+9.
+10.
+Ἐν τῇ σιαγόνι.
+10.
+11.
+12.
+13.
+14.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="700,120,850,500">
-    6.
-    7.
-    8.
-    9.
-    Ἐν τῇ σιαγόνι. 10.
-    11.
-    12.
-    13.
-    14.
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,510,350,550">VERSIO HEBRAICI TEXT.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,510,600,550">VULGATA LATINA.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,510,850,550">AQUIL.Σ.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,550,350,950">
+6. Gener Thamni.
+Sodali ejus.
+7. Quinimio vindicavi me in vobis, et postea cessabo.
+8. Et mansit in cacumine.
+9. In Juda.
+In maxilla.
+10. Ut quid.
+11. De Juda ad summitatem.
+Dominantes.
+12. Ad dandum te in manu.
+13. In manu eorum.
+Funibus.
+Et ascendere fecerunt.
+14. Et prospere egit.
+Quæ combusta sunt in igne.
+Et dissoluta sunt.
+Manuum ejus.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="100,510,850,540">
-    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUIL.
+
+  <bloco tipo="texto_principal" script="latino" bbox="380,550,650,950">
+6. Gener Thamnatæi.
+Alteri.
+7. Tamen adhuc ex vobis expetam ultionem, et tunc quiescam.
+8. Habitavit in spelunca.
+9. In terram Juda.
+In loco qui postea vocatus est Lechi, id est, maxilla.
+10. Cur.
+11. De Juda ad specum.
+Imperent.
+12. Et tradere in manus.
+13. Vacat.
+Funibus.
+Tulerunt.
+14. Irruit.
+Sicut solent ad odorem ignis ligna consumi.
+Dissipata sunt et soluta.
+Vacat.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,540,350,900">
-    6. Gener Thamni.
-    Sodali ejus.
-    7. Quinimo vindicavi me in vobis, et postea cessabo.
-    8. Et mansit in cacumine.
-    9. In Juda.
-    In maxilla.
-    10. Ut quid.
-    11. De Juda ad summitatem.
-    Dominantes.
-    12. Ad dandum te in manu.
-    13. In manu eorum.
-    Funibus.
-    Et ascendere fecerunt.
-    14. Et prospere egit.
-    Quæ combusta sunt in igne.
-    Et dissoluta sunt.
-    Manuum ejus.
+
+  <bloco tipo="texto_principal" script="latino" bbox="680,550,850,950">
+6.
+7.
+8.
+9.
+10.
+11.
+12.
+13.
+14.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="400,540,650,900">
-    6. Gener Thamnatæi.
-    Alteri.
-    7. Tamen adhuc ex vobis expetam ultionem, et tunc quiescam.
-    8. Habitavit in spelunca.
-    9. In terram Juda.
-    In loco qui postea vocatus est Lechi, id est, maxilla.
-    10. Cur.
-    11. De Juda ad specum.
-    Imperent.
-    12. Et tradere in manus.
-    13. Vacat.
-    Funibus.
-    Tulerunt.
-    14. Irruit.
-    Sicut solent ad odorem ignis ligna consumi.
-    Dissipata sunt et soluta.
-    Vacat.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="700,540,850,900">
-    6.
-    7.
-    8.
-    9. In maxilla.
-    10.
-    11.
-    12.
-    13.
-    14.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="550,950,800,980">
-    Digitized by Google
-  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="500,960,800,990">Digitized by Google</bloco>
+  
   <notas>
-    Texto poliglota (Hexapla) contendo Hebraico, Transliteração Grega, Versão de Áquila (Grego), Versão Latina do Hebraico, Vulgata e Versão Latina de Áquila.
-    Alguns caracteres hebraicos na linha 14 estão parcialmente ilegíveis ou com ligaduras complexas; transcritos conforme contexto latino e forma visível.
-    Números de versículos alinhados entre colunas.
+  Transcrição fiel da disposição visual. A coluna superior direita apresenta uma duplicação do número 10 e o texto grego "Ἐν τῇ σιαγόνι." intercalado. As letras A, B, C, D mencionadas nas instruções não estão presentes nesta página específica.
   </notas>
 </pagina>

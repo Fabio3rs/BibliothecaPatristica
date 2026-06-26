@@ -1,24 +1,32 @@
 ---
 import Layout from '../Layout.astro';
-import { useTranslations, serializeTranslations } from '../../i18n';
+import { useTranslations, serializeTranslations, getLocaleBase } from '../../i18n';
 const base = import.meta.env.BASE_URL || '/';
 const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
+const localeBase = getLocaleBase(Astro.currentLocale, base);
 const t = useTranslations(Astro.currentLocale);
 const uiStrings = serializeTranslations(t);
 const uiLocale = Astro.currentLocale ?? 'pt-br';
 ---
-<Layout title="Bibliotheca Patristica — Leitura" description="Visualizador de páginas do corpus patrístico com metadados enriquecidos e OCR." breadcrumbs={[{label: t.breadcrumbHome, href: baseWithSlash},{label: t.breadcrumbViewer}]}>
+<Layout title="Bibliotheca Patristica — Leitura" description="Visualizador de páginas do corpus patrístico com metadados enriquecidos e OCR." breadcrumbs={[{label: t.breadcrumbHome, href: localeBase},{label: t.breadcrumbViewer}]}>
   <div id="viewer-root" style="min-height:60vh;">
     <div style="padding:var(--space-8) 0;text-align:center;color:var(--color-muted);">
       <p>{t.viewerLoading}</p>
     </div>
   </div>
 
-  <script type="module" define:vars={{ assetBase: baseWithSlash, uiStrings, uiLocale }}>
+  <script type="module" define:vars={{ assetBase: baseWithSlash, localeBase, uiStrings, uiLocale }}>
     const viewerRoot = document.getElementById('viewer-root');
     let loadGeneration = 0;
     let rawOcrController = null;
     const dataCache = window.pdfocrDataCache;
+    const localePath = localeBase.endsWith('/') ? localeBase.slice(0, -1) : localeBase;
+
+    function routeUrl(route, search = '') {
+      const cleanRoute = String(route || '').replace(/^\/+/, '');
+      return `${localePath}/${cleanRoute}${search}`;
+    }
+
     async function decodeJsonResponse(res, url) {
       if (!res.ok) throw new Error(`HTTP ${res.status} ao buscar ${url}`);
       const bytes = new Uint8Array(await res.arrayBuffer());
@@ -484,7 +492,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         if (breadcrumbsEl) {
           breadcrumbsEl.innerHTML = `
             <li style="display:flex;align-items:center;gap:0.35rem;">
-              <a href="${assetBase}">${uiStrings.breadcrumbHome || (isEn ? 'Home' : isIt ? 'Home' : 'Início')}</a>
+              <a href="${localeBase}">${uiStrings.breadcrumbHome || (isEn ? 'Home' : isIt ? 'Home' : 'Início')}</a>
             </li>
             <li style="display:flex;align-items:center;gap:0.35rem;" aria-hidden="true"><span>/</span></li>
             <li style="display:flex;align-items:center;gap:0.35rem;"><span>${s.viewerVolumeLabel(volume.id, volume.title || '')}</span></li>
@@ -721,7 +729,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         localSearchInput.placeholder = s.viewerSearchInVolume;
         localSearchInput.addEventListener('keydown', (e) => {
           if (e.key === 'Enter' && localSearchInput.value.trim()) {
-            window.location.href = `${assetBase}search?term=${encodeURIComponent(localSearchInput.value.trim())}&volume=${encodeURIComponent(doc)}`;
+            window.location.href = routeUrl('search', `?term=${encodeURIComponent(localSearchInput.value.trim())}&volume=${encodeURIComponent(doc)}`);
           }
         });
         localSearchWrap.appendChild(localSearchInput);
@@ -852,7 +860,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           backLink.className = 'button secondary';
           backLink.style.fontSize = '0.85rem';
           const backParams = new URLSearchParams({ term: highlight });
-          backLink.href = `${assetBase}search?${backParams.toString()}`;
+          backLink.href = routeUrl('search', `?${backParams.toString()}`);
           backLink.textContent = s.viewerBack;
           navGroup.prepend(backLink);
         }
@@ -937,6 +945,11 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         trechoRes.p.style.color = 'var(--color-muted)';
         if (!page.excerpt) trechoRes.wrap.style.display = 'none';
         mainContent.appendChild(trechoRes.wrap);
+
+        const dataNote = document.createElement('aside');
+        dataNote.style.cssText = 'margin:0 0 var(--space-5); padding:var(--space-3) var(--space-4); border:1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-border)); border-radius:var(--radius-m); background:color-mix(in srgb, var(--color-surface) 84%, var(--color-accent) 16%); color:var(--color-muted); line-height:1.6;';
+        dataNote.textContent = s.viewerDataNote;
+        mainContent.appendChild(dataNote);
 
         // Bloco OCR Original (sempre visível)
         const rawHref = safeUrl(page.raw?.url);
@@ -1118,7 +1131,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
             const li = document.createElement('li');
             if (isKeywords) {
               const a = document.createElement('a');
-              a.href = `${assetBase}search?term=${encodeURIComponent(txt)}`;
+              a.href = routeUrl('search', `?term=${encodeURIComponent(txt)}`);
               a.textContent = txt;
               a.style.textDecoration = 'none';
               a.style.color = 'inherit';
@@ -1215,7 +1228,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
             const a = document.createElement('a');
             const params = new URLSearchParams({ doc: rel.doc, page: String(rel.page) });
-            a.href = `${assetBase}viewer?${params.toString()}`;
+            a.href = routeUrl('viewer', `?${params.toString()}`);
             a.style.cssText = 'display:flex; flex-direction:column; gap:2px; padding:var(--space-2) var(--space-3); border-radius:var(--radius); background:var(--color-surface); border:1px solid var(--color-border); text-decoration:none; color:inherit; transition: border-color 0.15s;';
             a.addEventListener('mouseenter', () => a.style.borderColor = 'var(--color-accent)');
             a.addEventListener('mouseleave', () => a.style.borderColor = 'var(--color-border)');
@@ -1276,4 +1289,3 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     load();
   </script>
 </Layout>
-        el.style.overflow = 'hidden';

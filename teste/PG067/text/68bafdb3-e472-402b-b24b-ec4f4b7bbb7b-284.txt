@@ -1,128 +1,44 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="120,50,940,150">
-    259  SOCRATIS  260
-    CAP. XXXVIII.  ΚΕΦΑΛ. ΛΗ'.
-  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="100,30,200,60">659</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="480,30,580,60">SOCRATIS</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="880,30,950,60">300</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="220,70,400,100">CAP. XXXVIII.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="650,70,800,100">ΚΕΦΑΛ. ΛΙΓ'.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="500,100,520,120">A</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="110,105,510,170">Quomodo imperator Constantinopolim reversus, cum a populo propter Gothos conviciis appeleretur, contra barbaros profectus est : et cum illis congressus juxta Adrianopolim Macedoniæ urbem, interfectus est : cum vixisset annis quinquaginta, imperasset autem annis sedecim.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="530,105,930,170">Ὡς ὁ βασιλεὺς ὑποστρέψας ἐν τῇ Κωνσταντίνου πόλει, καὶ ὑπὸ το δήμου διὰ τοὺς Γότθους κατονειδισθεὶς, ἐξελαύνει τῆς πόλεως κατὰ βαρβάρων· καὶ συμβαλὼν αὐτοῖς ἐν Ἁδριανου-πόλει τῆς Μακεδονίας, ὑπ' αὐτῶν ἀναιρεῖται, ζήσας μὲν ἔτη πεντήκοντα, βασιλεύσας δὲ ἔτη ξ πρὸς τοῖς δέκα.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="110,175,510,495">Porro imperator Valens ingressus Constantino-polim die tertio Kalendas Junias, consulatu ipsius sexto, et Valentiniani Junioris secundo, populum ingenti affectum mœstitia offendit. Nam barbari qui jam Thraciam depopulati fuerant, ipsa quoque Constantinopoleos suburbana vastabant, cum nullæ tunc adessent copiæ ad resistendum ipsis idoneæ. Verum ubi barbari ad ipsa urbis mœnia propius accedere tentarunt, cives eam rem moleste ferentes, adversus principem murmurare cœperunt, quasi qui hostes ipse eo adduxisset : quippe cum non illico adversus illos signa movisset, sed bellum de industria traheret. Itaque cum equestre certamen ageretur, omnes uno consensu adversus impera-torem vociferati sunt, ut qui nullam reipublicæ curam gereret. Clamabantque acriter : Da nobis arma, et ipsi pugnabimus. His auditis imperator ad iracundiam provocatus est ; et die tertio Idus Junii urbe egreditur, minatus se de Constantinopolitanis pœnas sumpturum, si rediisset incolu-mis : tum ob convicia quibus ipsum tunc affecerant, tum quod antea tyrannidi Procopii favissent. Urbem igitur eversurum se, et aratrum solo ejus impactu-rum minatus, contra barbaros proficiscitur. Et</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="500,280,520,300">B</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="530,175,930,495">Ὁ δὲ βασιλεὺς Οὐάλης περὶ τὴν τριακάδα τοῦ Μαου μηνὸς ¹, ἐν τῇ ἕκτῃ ἑαυτοῦ ὑπατείᾳ καὶ Οὐα-λεντινιανοῦ τοῦ Νέου τὸ δεύτερον, ἐλθὼν εἰς τὴν Κωνσταντινούπολιν, εὑρίσκει τὸν δμον ἐν ἀθυμίᾳ καθεστῶτα πολλῇ. Οἱ γὰρ βάρβαροι καταδραμόντες τὴν Θράκην, ἤδη καὶ τὰ προάστεια ἐπόρθουν τῆς Κωνσταντίνου πόλεως, μηδεμιᾶς οὔσης ἀξιομάχου τηλικαύτα δυνάμεως. Ἐπεὶ δὲ καὶ τοῖς τείχεσι προσ-πελάζειν ἐπεχείρουν οἱ βάρβαροι, χαλεπῶς  πόλις φερε τὰ γινόμενα· ἐψιθύριζόν τε κατὰ τοῦ βασι-λέως, ὡς ἐπαγόντος τοὺς πολεμίους, καὶ ὅτι μὴ ἀντεπεξῆγεν εὐθύς, ἀλλὰ παρεῖλκε τὸν πρὸς τοὺς βαρβάρους πόλεμον. Καὶ δὴ ἱπποδρομίας ἐπιτελου-μένης, πάντες ἐκ συμφωνίας κατεβόων τοῦ βασιλέως ὡς περιορῶντος τὰ πράγματα. Ἔκραζον οὖν συντό-νως· Δὸς ὅπλα καὶ πολεμοῦμεν μεῖς. Ταῦτα βού-των, ἐξάπτεται πρὸς ὀργὴν ὁ βασιλεύς. Καὶ ὑπερ-βαίνει (13) περὶ τὴν ἐνδεκάτην τοῦ ουνίου μηνὸς ἐπαπειλήσας ἣν ὑποστρέψῃ, δίκην ὑπὸ Κωνσταντι-νουπολιτῶν λήψεσθαι, ὧν τότε ὑβρίζειν αὐτὸν ἐδό-κουν, καὶ ὑπὲρ ὧν δη πρότερον τῇ τυραννίδι Προ-κοπίου προσέθεντο· ἔρημόν τε καταστήσειν τὴν πό-λιν, καὶ ἄροτρον εἰπὼν βαλεῖν κατ' αὐτήν, ἐπὶ τοὺς</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="500,480,520,500">C</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="110,495,510,610">illos quidem procul ab urbe repulit, et Adriano-polim usque persecutus est, quæ urbs est Thraciæ, in finibus Macedoniæ sita. Ibi congressus cum barbaris occubuit, 260 die tertio Idus Augusti, iisdem consulibus quos supra nominavi. Annus hic erat quartus ducentesimæ octogesimæ nonæ olym-piadis. Et alii quidem incendio eum periisse nar-</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="530,495,930,610">βαρβάρους ἐχώρει. Καὶ ὥσπερ μὲν αὐτοὺς πόρρω τῆς πόλεως· ἐδίωκε δὲ ἄχρι τῆς ἐν Θράκῃ Ἁδριανου-πόλεως, ἣ ἐν τοῖς ὅροις τῆς Μακεδονίας ἐστίν. Ἐκε τε συμβαλὼν τοῖς βαρβάροις, ἀπέθανε τῇ ἐννάτῃ τοῦ Αὐγούστου μηνὸς ², ἐν τῇ αὐτῇ ὑπατείᾳ. Τοτο δὲ ἦν τέταρτον ἔτος τῆς διακοστῆς (14) ὀγδοηκοστῆς ἐννάτης Ὀλυμπιάδος. Καὶ ο μὲν πυρ φασὶν ἀπολέ-σθαι αὐτὸν ¹, εἰς κώμην καταφυγόντα τινά, ἣν ἐπι-</bloco>
+  
+  <bloco tipo="cabecalho" script="latino" bbox="400,620,650,640">VALESII ANNOTATIONES.</bloco>
+  
+  <bloco tipo="aparato_critico" script="misto" bbox="110,640,510,720">(13) Καὶ ὑπερβαίνει. Legendum est ὑπεκβαίνει. Idem porro dies notantur in Fastis Idatii : Valente VI et Valentiniano II. His coss. ingressus est Valens Aug. ab Oriente Constantinopolim die III Kalend. Junias. Et ipso anno profectus est Valens Aug. ex urbe ad Fossatum die III Idus Junias.</bloco>
+  
+  <bloco tipo="aparato_critico" script="misto" bbox="530,640,930,720">(14) Τῆς διακοστῆς. Scribendum est διακοσιοστῆς. Sic antiquarii brevitati studentes, scribere solebant hæc vocabula. Nam et διακοστὸν scribe-bant et τριακοστὸν, pro διακοσιοστῷ et τριακοσιο-στῷ.</bloco>
+  
+  <bloco tipo="cabecalho" script="latino" bbox="460,740,580,760">VARIORUM.</bloco>
+  
+  <bloco tipo="aparato_critico" script="misto" bbox="110,760,510,890">¹ Περὶ τὴν τριακάδα τοῦ Μαΐου μηνός. Iis forte diebus [scil. in fine mensis Maii anni 378, ut docent Valesius et Pagius], Valens tandem excitus Antio-chia, longitudine viarum emensa venit Constanti-nopolim : ubi moratus paucissimos dies (duntaxat duodecim), seditioneque popularium levi pulsatus, Sebastiano paulo ante ab Italia, ut petierat, misso, vigiliantiæ nocte ductori, pedestris exercitus cura commissa, quem regebat antea Trajanus ; ipse ad Melanthiada villam Cæsarianam profectus, militem stipendio fovebat, et alimentis, et blanda crebritate sermonum. Ammian., lib. xxxi, cap. 11.
+² Ἀπέθανε τῇ ἐννάτῃ τοῦ Αὐγούστου μηνός. Scribit Idatius in Fastis ad annum 378 : Pugnam magnam fuisse cum Romanis et Gothis milliario XII ab Andrianopoli, die quinto Idus Augusti. Ex ea</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="500,760,520,780">D</bloco>
+  
+  <bloco tipo="aparato_critico" script="misto" bbox="530,760,930,940">die Valens Aug. nunquam apparuit. In quo con-sentiit cum Socrate, licet non cum Valesii inter-pretatione, qui τῇ ἐννάτῃ τοῦ Αὐγούστου μηνὸς per-peram reddidit, die tertio Idus Augusti.
+¹ Οἱ μὲν πυρὶ φασὶν ἀπολέσθαι αὐτόν. Hanc pugnam (quam Cannensi æquiparat Ammianus) nox diremit. Primaque caligine tenebrarum inter gre-garios imperator, ut opinari dabatur (neque enim vidisse se quisquam, vel præsto fuisse asseveravit) sagitta perniciose saucius ruit : spiritumque mox consumpto decessit, nec postea repertus est usquam. Alii dicunt Valentem animam non exhalasse confe-stim, sed cum candidatis et spadonibus paucis prope ad agrestem casam relatum secunda contignatione fabre munitam dum fovetur manibus imperiitis, circumses-sum ab hostibus qui esset ignorantibus, dedecore</bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="530,95,560,130">A</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="525,450,560,500">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="525,720,560,770">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="525,845,560,885">D</bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="120,145,495,780">
-    Quomodo imperator Constantinopolim reversus, cum
-    a populo propter Gothos conviciis appelleretur,
-    contra barbaros profectus est : et cum illis con-
-    gressus juxta Adrianopolim Macedoniae urbem,
-    interfectus est : cum vixisset annis quinquaginta,
-    imperasset autem annis sexdecim.
-
-    Porro imperator Valens ingressus Constantinopo-
-    lim die tertio Kalendas Junias, consulatu ipsius
-    sexto, et Valentiniani Junioris secundo, populum
-    ingenti affectum moestitia offendit. Nam barbari qui
-    jam Thraciam depopulati fuerant, ipsa quoque
-    Constantinopoleos suburbana vastabant, cum nullo
-    tunc adessent copiae ad resistendum ipsis idoneae.
-    Verum ubi barbari ad ipsa urbis moenia propius
-    accedere tentarunt, cives eam rem moleste ferentes,
-    adversus principem murmurare ceperunt, quasi
-    qui hostes ipse eo adduxisset : quippe cum non
-    ilico adversus illos signa movisset, sed bellum de
-    industria traheret. Itaque cum equestre certamen
-    ageretur, omnes uno consensu adversus impera-
-    torem vociferati sunt, ut qui nullam reipublicae
-    curam gereret. Clamabantque acriter : Da nobis
-    arma, et ipsi pugnabimus. His auditis imperator
-    ad iracundiam provocatus est : et die tertio Idus
-    Junii urbe egreditur, minatus se de Constantinopoli-
-    tanis poenas sumpturum, si rediisset incolumis : tum ob
-    convicia quibus ipsum tunc affecerant, tum quod antea
-    tyrannidi Procopii favissent. Urbem igitur eversurum se,
-    et [ilegivel] solo ejus [ilegivel] minatus, contra barbaros
-    proficiscitur. Et [ilegivel] illos quidem procul ab urbe
-    repulit, et Adrianopolim usque persecutus est, quae urbs est
-    Thraciae, in finibus Macedoniae sita. Ibi congressus cum
-    barbaris occubuit, 260 die tertio Idus Augusti,
-    iisdem consulibus quos supra nominavi. Annus hic
-    erat quartus ducentesimae octogesimae nonae olympiadis.
-    Et alii quidem incendio eum perisse nar-
-  </bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="505,145,935,780">
-    Ὁ δὲ βασιλεὺς ὑποστρέψας ἐν τῇ Κωνσταντινουπόλει,
-    καὶ ὑπὸ τοῦ δήμου διὰ τοὺς Γότθους [ilegivel],
-    ἐξελθὼν τῆς πόλεως κατὰ βαρβάρων· καὶ συμβαλὼν
-    αὐτοῖς ἐν Ἀδριανουπόλει τῆς Μακεδονίας, ὑπ᾽
-    αὐτῶν ἀναιρεῖται, ἥσας μὲν ἔτη πεντήκοντα,
-    βασιλεύσας δὲ ἔτη ϛεʹ πρὸς τοῖς δέκα.
-
-    Ὁ δὲ βασιλεὺς Οὐάλης περὶ τὴν τριακοστὴν τοῦ Μαΐου μηνός,
-    ἐν τῇ ἕκτῃ αὐτοῦ [ilegivel] καὶ Οὐαλεντινιανοῦ τοῦ Νέου τὸ δεύτερον,
-    ἐλθὼν εἰς τὴν Κωνσταντινούπολιν, εὑρίσκει τὸν δῆμον ἐν θυμῷ
-    καθεστῶτα πολλῷ. Οἱ γὰρ βάρβαροι καταβαρόντες τὴν Θρᾴκην,
-    ἤδη καὶ τὰ πρόσ[ilegivel] τῆς Κωνσταντινουπόλεως,
-    μηδεμιᾶς οὔσης ἀξιομάχου δυνάμεως. Ἐκεῖ δὲ καὶ τοῖς τείχεσι
-    προσπελάζειν ἐπιχειροῦσιν οἱ βάρβαροι, χαλεπῶς ἡ πόλις
-    ἔφερε τὰ γινόμενα· ἐθυμίζοντο δὲ κατὰ τοῦ βασιλέως,
-    ὡς ἐπαγαγόντος τοὺς πολεμίους, καὶ ὅτι μὴ ἀντετίθεντο
-    εὐθὺς, ἀλλὰ παρέσυρον τὸν τῶν [ilegivel] πόλεμον.
-    Καὶ ὅτι προφασισμένης, πάντες ἐκ συμφωνίας κατεβόων τοῦ βασιλέως
-    ὡς περιορῶντος τὰ πράγματα. Ἔκραζον οὖν συνεχῶς· Δὸς ὅπλα
-    καὶ πολεμήσωμεν ἡμεῖς. Ταῦτα ἀκούων, ἐξάπτεται πρὸς ὀργὴν
-    ὁ βασιλεύς. Καὶ ὑπερβάλλει [ilegivel] περὶ τὴν ἑνδεκάτην τοῦ Ἰουνίου μηνός,
-    ἐπαπειλήσας τῇ ὑποστροφῇ, δίκην ὑπὸ Κωνσταντινουπολιτῶν ληψεσθαι,
-    [ilegivel] καὶ ὑπὲρ ὧν ἤδη πρότερον τῇ τυραννίδι Προκοπίου προσετέντο.
-    Ἔρημον τε καταστήσειν τὴν πόλιν, καὶ ἄρδην εἰσὶν βαλὼν κατ᾽ αὐτήν.
-    [ilegivel] βαρβάρους ἐχώρει. Καὶ οὖν αὐτοὺς πρὸς τῇ
-    πόλει ἐδίωξε ὡς ἄχρι τῆς ἐν Θρᾴκῃ Ἀδριανου-
-    πόλεως, ἣ ἐν τοῖς ὁρίοις τῆς Μακεδονίας ἐστίν. Ἐκεῖ
-    τε συμβαλὼν τοῖς βαρβάροις, ἀπέθανε τῇ ἐνάτῃ
-    τοῦ Αὐγούστου μηνός, ἐν τῇ αὐτῇ [ilegivel].
-    Τοῦτο δὲ ἦν τέταρτον ἔτος τῆς διακοστῆς (14) ὀγδόης Ὀλυμπιάδος.
-    Καὶ οἱ μὲν πρὶγ[ilegivel] σοφὰρ ἀπολέσθαι αὐτόν, ἄλλοι δὲ
-    [ilegivel]
-  </bloco>
-
-  <bloco tipo="cabecalho" script="latino" bbox="335,792,675,830">VALESII ANNOTATIONES.</bloco>
-
-  <bloco tipo="nota" script="misto" bbox="120,825,485,915">
-    (13) Καὶ ὑπερβάλλει. Legendum est ὑπερβαλεῖν porro dies monatur in Fastis Idatii:
-    Valente vi et Valentiniano ii. His coss. ingressus
-    est Valens Aug. ab Oriente Constantinopolim die iii
-    Kalend. Junias. Et ipso anno profectus est Valens
-    Aug. ex urbe ad Fossam die iii Idus Junias.
-  </bloco>
-
-  <bloco tipo="nota" script="misto" bbox="505,825,925,915">
-    (14) Τῆς διακοστῆς. Scribendum est διακοσιοστῆς.
-    Sic antiquiari brevitate studentes, scribere
-    solebant hanc vocabulam. Nam et διακοσιον scribebant et τριακοστόν, pro διακοσιοστῷ et τριακοσιοστῷ.
-  </bloco>
-
-  <bloco tipo="cabecalho" script="latino" bbox="430,930,598,960">VARIORUM.</bloco>
-
-  <bloco tipo="nota" script="misto" bbox="120,955,490,1000">
-    ∗ Περί τὴν [ilegivel] τοῦ Αὐγούστου μηνός. His forte D die Valens Aug. nunquam apparuit. In quo con-
-    [ilegivel], [scil. in fine mensis Maii anni 578, ut docent
-    Valesius et Pagius], Valens tandem exitus Antio-
-    [ilegivel], longitudine viarum enisa venit Constanti-
-    nopolim : ubi moratus paucissimos dies (duntaxat
-    duodecim), seditioneque popularium levi pulsatus,
-    Sebastiano paulo ante in Italiam, ut petierat, misso,
-    vigilantiae nota duci, pedestris exercitus cura
-    commissa, quem regebat antea Trajanus; ipse ad
-    Melanthiae villam Cæsariarum profectus, militem
-    stipendio levavit, et alimentis, et blanda crebritate
-    sermonum. Illi, etc., cap. 11.
-  </bloco>
-
-  <bloco tipo="nota" script="misto" bbox="505,955,925,1000">
-    Ὁ [ilegivel] σοφὰρ ἀπολέσθαι αὐτόν. Ille pugnam (quam Cannensi aequiparat Ammianius) nox diremit.
-    Primaque caligine tenebrarum inter gregarios imperator, ut opinari dabatur
-    (neque enim vidisse se quisquam, vel praesto fuisse asseraverit) sagitta perniciosa
-    succus rivi : spiritum mox consumpto decessit, nec postea repertus est usquam.
-    Alii dicunt Valenten animam non exhalasse cons[ilegivel], sed cum candidatis
-    et spadonibus paucis prope adgressam casam relatam secunda contemplatione [ilegivel].
-  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="550,950,800,980">Digitized by Google</bloco>
 </pagina>

@@ -1,35 +1,159 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,85">733  IN EVANGELIUM JOANNIS.  734</bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="20,90,475,915">[ilegivel] καὶ τοῦτο δὲ οὐ μικρὸν τὸ φιλαληθές [ilegivel]
-[ilegivel] τρόπον τε τεκμήριον· καὶ ἄλλως δὲ τὸν αἰ-
-[ilegivel] [ilegivel] χρὴ· οὗτος γὰρ ταύτῃ
-[ilegivel] καὶ μετὰ τὴν ὕβριν ταύτην τῶν
-[ilegivel] [ilegivel] ἀξίως
-[ilegivel] [ilegivel] γεγονότας τὸν ἁμαρ-
-τανόμενον [ilegivel]
-
-Στίχ. ιε'. — Τὸ (2), ὀλίγον, ἐμπροσθέν, κατὰ τὴν ὄψιν λέγει καὶ τὴν παρὰ ἀνθρώποις ὑπόληψιν· [ilegivel]
-
-Στίχ. κγ'. — [ilegivel]
-
-Στίχ. κθ'. — [ilegivel]</bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="500,110,535,150">A</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,400,525,445">B</bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="520,90,980,915">veracitatis characterisque eorum. Caeterum vexantibus contumeliis erubescent, veratam non erubescere debet; sic enim tanto magis splendescit, cum imprimis, talibus contumeliis pressis, vexantibus providet. Illi stulti sacrilegioque omnibus apparuerunt, cum, qui propter bonum venerat, boni tanquam inimicum et hostem repellendo. Non solum in hoc erraverunt, sed etiam non consequendo quod consecuti sunt qui eum receperunt.
-
-Vers. 14.— Apostolus etiam humanum corpus tabernaculum appellat, dicens : Nam et qui sumus in hoc tabernaculo, ingemiscimus (II Cor. v, 4). Et iterum : Scimus quoniam si terrena domus nostra hujus habitationis dissolvatur (ibid., 1). Usitatum autem Scripturae, a carne totum hominem appellare, ut in illo : Ad te omnis caro veniet (Psal. LXIV, 2). Et in eo : Effundam de spiritu meo super omnem carnem (Joel. ii, 28).
-
-Vers. 15. — Post et ante juxta opinionem dicit, atque ad intellectum hominum. Si dicit factum est hoc est pro fecit; quid mirum? cum ostenderimus hanc esse Scripturae sacrae hoc persaepe dicendi consuetudinem, nostrum etiam Evangelistam dixisse supra : non comprehenderunt (v. 6.) pro comprehenderunt.
-
-Vers. 27. — Nihil suspicans aperta libertate, quae ad Christum spectant, annuntiat beatus Joannes. Ideo autem etiam signat locum: (v. 28) Evangelista, ad fiduciam praeconis magna annuntiantis ostendendam. Cum enim ad Jordanem devenisset, in media turba omnium astantium ab eo baptizatorum (ad baptismum enim eius concurrerant Judaei) hoc mirabilia verba denuntiavit : Non sum dignus ut solvam ejus corrigiam calceamenti.
-
-Vers. 28. — Haec autem facta sunt non in Bethania, sed in Bethabara, ut habent accuratiores exemplaria. Bethania enim non erat cis Jordanem, nec in deserto, sed prope Jerusalem. Haec loca autem notat quia, paulo post facta eo tempore narraturus est, utque astantes veritatis verborum testes habeat.
-
-Vers. 29. — Hic Baptista dicens : Hic est qui tollit peccatum mundi, non dixit : ecce Filius unigenitus, nec ecce qui est in sinu Patris, ut supra vidimus (v. 18). Attamen videretur magnitudinem naturae recte enuntiari ad promissiones eorum quae dari erant probandas. Sed hoc non dixit, Agnum vero Dei vocat illum, quo passio significabatur, cum passione sua peccatum diluerit. Peccato enim in nostra mortalitate regnante, ac vicissim morte propter peccatum nobis adhaerente, Dominus noster Jesus Christus venit, hanc et illud nobis condonans; ac morte per mortem suam destruxit, destruxit quoque peccatum in nostra mortalitate radicalum.</bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="30,915,470,985">(1) Cod. cal. p. 31.</bloco>
-  <bloco tipo="rodape" script="latino" bbox="530,915,980,985">(2) Mai ibid.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="0,20,1000,60">
+    733 IN EVANGELIUM JOANNIS. 734
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="20,60,450,220">
+    ἀναγράφοντος· καὶ τοῦτο δὲ οὐ μικρὸν τὸ φιλάληθες
+    αὐτν τρόπου τε τεκμήριον· καὶ ἄλλως δὲ τὸν αἰ-
+    σχυνόμενον ὑπὲρ τῶν ὑβριστῶν, οὐχ ὑπὲρ τοῦ παρ-
+    οικηθέντος αἰσχύνεσθαι χρὴ· οὗτος γὰρ ταύτῃ
+    μᾶλλον ἠλεγμέν, καὶ μετὰ τὴν ὕβριν τοσαύτην τῶν
+    ὑβριστῶν ποιούμενος πρόνοιαν· ἐκεῖνοι δὲ ἀγνώμο-
+    νες καὶ μιαροὶ παρὰ πᾶσιν ἐφάνησαν, τὸν ἐπὶ τοσού-
+    τοις παραγενόμενον ἀγαθὸν ὡς ἐχθρὸν ἀπωσάμενοι
+    καὶ πολέμιον· οὐ ταύτῃ μόνον ἐθλάκησαν, ἀλλὰ καὶ
+    τῷ μὴ τυχεῖν ὧν ἔτυχον οἱ λαβόντες αὐτόν.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,60,480,80">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,60,980,220">
+    veracitatis characterisque eorum. Cæterum vexan-
+    tibus contumeliis erubescens, vexatum non erube-
+    scere debet; sic enim tanto magis splendescit, cum
+    imprimis, talibus contumeliis perpessis, vexantibus
+    providet. Illi stulti sacrilegique omnibus apparu-
+    runt, cum, qui propter bonum venerat, boni tan-
+    quam inimicum et hostem repellendo. Non solum
+    in hoc erraverunt, sed etiam non consequendo
+    quod consecuti sunt qui eum receperunt.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="20,220,450,340">
+    Στιχ. ιθ'. — Ζητην δὲ (1) καὶ ἐπὶ ἀνθρώπων ὁ
+    Ἀπόστολος τὸ σῶμα καλεῖ, λέγων· Καὶ γὰρ οἱ ντες
+    ἐν τῷ σκήνει στενάζομεν· καὶ πάλιν, Οἴδαμεν δτι
+    ἐὰν ἡ ἐπίγειος ἡμν οἰκία τοῦ σκήνους κατα-
+    λυθῇ. δωμεν δὲ τῆς Γραφῆς ἀπὸ τῆς σαρκὸς τὸν
+    ὅλον ἄνθρωπον καλεῖν, ὡς τὸ, Πρὸς σὲ πᾶσα σὰρξ
+    ἥξει· καὶ τὸ, Ἐκχεῶ ἀπὸ τοῦ Πνεύματός μου
+    ἐπὶ πσαν σάρκα.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,280,480,300">
+    B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,220,980,350">
+    VERS. 14. — Apostolus etiam humanum corpus ta-
+    bernaculum appellat, dicens : Nam et qui sumus in
+    hoc tabernaculo, ingemiscimus (II Cor. v, 4). Et
+    iterum : Scimus quoniam si terrestris domus nostra
+    hujus habitationis dissolvatur (ibid., 1). Usitatum
+    autem Scripturæ, a carne totum hominem appellare,
+    ut in illo : Ad te omnis caro veniet (Psal. LXIV, 2).
+    Et in eo : Effundam de spiritu meo super omnem car-
+    nem (Joel. 11, 28).
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="20,340,450,460">
+    Στιχ. κ'. — Τὸ (2), ὀπίσω, ἔμπροσθεν, κατὰ τὴν
+    δόξαν λέγει καὶ τὴν παρὰ ἀνθρώποις ὑπόληψιν· εἰ
+    δὲ, Γέγονε, εἶπεν ἀντὶ τοῦ, Γενήσεται, οὐ θαυμα-
+    στὸν· πρὸς γὰρ τῷ χύδην εὑρίσκεσθαι ταύτην ἐν τῇ
+    θείᾳ Γραφῇ τὴν συνήθειαν, ἔτι καὶ τὸν εὐαγγελιστὴν
+    ἐν τοῖς ἀνωτέρω οὕτως εἰρηκότα ἐδείξαμεν, τὸ, Οὐ
+    κατέλαβεν, σαφῶς επόντα, ἀντὶ τοῦ, Οὐκέτι λήψεται.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,350,980,460">
+    VERS. 15. — Post et ante juxta opinionem dicit,
+    atque ad intellectum hominum. Si dicit factum
+    est hoc est pro fiet; quid mirum? cum ostenderi-
+    mus hanc esse Scripturæ sacræ hoc persæpe di-
+    cendi consuetudinem, nostrum etiam Evangelistam
+    dixisse supra : non comprehenderunt (v. 6.) pro
+    comprehendent.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="20,460,450,600">
+    Στιχ. κγ'. — Μηδὲν ὑφορώμενος μετὰ τῆς προ-
+    σηκούσης ἐλευθερίας τὰ περὶ το Χριστοῦ πᾶσιν ἀνακη-
+    ρύττει ὁ μακάριος Ἰωάννης· διὰ γὰρ τοῦτο καὶ τὸν
+    τόπον ἐπισημαίνεται ὁ εὐαγγελιστής, ἵνα τὴν παρ-
+    ρησίαν δείξῃ τοῦ μεγαλοφωνοτάτου κήρυκος· τὸν
+    γὰρ Ἰορδάνην καταλαβών, ἐν μέσῳ τῷ πλήθει παρ-
+    όντων ἁπάντων τῶν ὑπ' αὐτοῦ βαπτιζομένων (βα-
+    πτίζονται γὰρ ἐπέστησαν οἱ ουδαῖοι), τὴν θαυμαστὴν
+    ἐκείνην ἔφθεγξε φωνήν· Οὐκ εἰμὶ ἱκανὸς λῦσαι
+    τὸν ἱμάντα τοῦ ὑποδήματος αὐτο.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,500,480,520">
+    C
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,460,980,600">
+    VERS. 27. — Nihil suspicans aperta libertate,
+    quæ ad Christum spectant, annuntiat beatus Joan-
+    nes. Ideo autem etiam signat locum: (v. 28) Evan-
+    gelista, ad fiduciam præconis magna annuntiantis
+    ostendendam. Cum enim ad Jordanem devenisset,
+    in media turba omnium astantium ab eo baptizato-
+    rum (ad baptismum enim ejus concurrerant Judæi)
+    hæc mirabilia verba denuntiavit : Non sum dignus
+    ut solvam ejus corrigiam calceamenti.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="20,600,450,720">
+    Στιχ. κη'. — Ταῦτα δ ἐγένετο οὐκ ἐν τῇ Βηθα-
+    νίᾳ, ἀλλ' ἐν τῇ Βηθαβᾷ, ὡς τὰ ἀκριβῆ περιέχει τῶν
+    ἀντιγράφων· ἡ γὰρ Βηθανία οὐχὶ πέραν Ἰορδάνου,
+    ἀλλ' ἐπὶ τῆς ἐρήμου ἦν, ἀλλ' ἐγγύς που τῶν εροσο-
+    λύμων· τούς δὲ τόπους ἐπισημαίνεται ὡς τὰ πρὸ
+    μικροῦ συμβάντα τοῦ χρόνου διηγεῖσθαι μέλλων, καὶ
+    τοὺς παρόντας καὶ θεωμένους μάρτυρας ποιούμενος
+    τῆς ἀληθείας τῶν λεγομένων.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,600,980,700">
+    VERS. 28. — Hæc autem facta sunt non in Betha-
+    nia, sed in Bethara, ut habent accuratiora exempla-
+    ria. Bethania enim non erat cis Jordanem, nec
+    in deserto, sed prope Jerusalem. Hæc loca autem
+    notat quia paulo post facta eo tempore narraturus
+    est, utque astantes veritatis verborum testes habeat.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="20,720,450,920">
+    Στιχ. κθ'. — Εἰρηκὼς ἐνταῦθα ὁ Βαπτιστής, ὅτι
+    Οὗτός ἐστιν ὁ αἴρων τὴν ἁμαρτίαν τοῦ κόσμου,
+    οὐκ εἶπεν, ὁ μονογενὴς Υἱός, οὐδέ, ὁ ν ἐν τος
+    κόλποις τοῦ Πατρός, οἷα φαίνεται ἐν τοῖς ἀνωτέρω
+    εἰρηκώς· καίτοι ἔδοξεν ἂν νῦν ἀκολουθώτερον αὐτοῦ
+    τὸ μέγεθος λέγειν τῆς φύσεως· εἰς ἔνδειξιν τῆς
+    ἐπαγγελίας τῶν δι' αὐτοῦ δοθησομένων· ἀλλὰ τοῦτο
+    μὲν οὐκ ἔφη, Ἰμνὸν δὲ αὐτὸν ἐκάλεσεν τοῦ Θεο·
+    ἵνα ἦν ὄνομα τοῦ πάθους σημαντικόν· ἐπειδὴ ἐν
+    τῷ πάθει τὴν μαρτίαν κατέλυσεν. Ταύτης γὰρ ἐν
+    τῇ θνητότητι τὴν ἐπίτασιν δεξαμένης, τοῦ δὲ θανά-
+    του πάλιν ὑπ' ἐκείναις καθ' ἡμν σφιχθέντος, ἐλη-
+    λ - ύ - ὡ, ὁ Κύριος ἡμν ὁ Σωτὴρ Ἰησοῦς Χριστός, ἐκεῖ-
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,720,480,740">
+    D
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,700,980,920">
+    VERS. 29. — Hic Baptista dicens : Hic est qui tol-
+    lit peccatum mundi, non dixit : ecce Filius unigeni-
+    tus, nec ecce qui est in sinu Patris, ut supra vidi-
+    mus (v. 18). Attamen videretur magnitudo naturæ
+    recte enuntiari ad promissiones eorum quæ da-
+    turus erat probandas. Sed hoc non dixit, Agnum
+    vero Dei vocat illum, quo passio significabatur,
+    cum passione sua peccatum diluerit. Peccato enim
+    in nostra mortalitate regnante, ac vicissim morte
+    propter peccatum nobis adhærente, Dominus no-
+    ster Jesus Christus venit, hanc et illud nobis condo-
+    nans; ac morte per mortem suam destructa, destruxit
+    quoque peccatum in nostra mortalitate radicatum.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="20,930,300,960">
+    (1) Coid. cai p. 31.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="500,930,700,960">
+    (2) Mai ibid.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,960,800,990">
+    Digitized by Google
+  </bloco>
 </pagina>

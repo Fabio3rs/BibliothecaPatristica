@@ -1,108 +1,81 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,60">
-    397 CHRONICORUM LIB. II. 398
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,80,900,120">
-    HEBR. ASSYR. SICYON. ATHEN. AEGYPT
-    Abrahamus Debhora Lampares Sicyon Cecrops XIX
-    et dynastia
-    Barachus Rampsēs
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,130,950,200">
-    Mycenis regnavit Per- 706 14 17 38 37 10 a Mida regnavit in Phry-
-    seus annis VII. 707 15 18 39 38 11 gia.
-    708 16 19 40 39 12
-    b Ilium ab Ilo conditum 709 17 20 41 40 13
-    et nominatum.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="550,210,800,230">
-    c VIII. PANDION an. XXV.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,240,700,280">
-    710 18 21 42 1 14
-    711 19 22 43 2 15
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,290,950,330">
-    d Ea quæ de Spartis memorantur, quos Palæphatus scribit, cum proximarum essent regionum, adver-
-    sum Cadmum subito constitisse, et propter repentinos quasi de terra contractus, et ex omni parte con-
-    fectos, Spartos vocatos.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,340,700,360">
-    712 20 23 44 3 16
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,370,950,450">
-    e Quidam his temporibus vindicant gesta Liberi patris, et ea quæ de Indis, Lycurgo, Actræone et Pen-
-    theo memorantur. Quomodo adversum Persem consistens occidatur in prælio, ait Dinarchus poeta, non
-    rhetor. Qui autem voluerit, potest inspicere ipsius Liberi patris apud Delphos sepulcrum juxta Apolli-
-    nem Aureum. Pingitur vero Liber muliebri et delicato corpore, propter mulieres in suo exercitu mili-
-    tantes : nam pariter ad arma viris feminas alligabat [Scalig. allegabat], ut Philochorus loquitur in se-
-    cundo Atthidis libro.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="550,460,800,480">
-    f XX. POLYBUS annis XL.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,490,950,600">
-    Mycenis regnavit Eury- 713 21 24 1 4 17 g Laius Chrysippum ra-
-    stheus annis XLIIII. 714 22 25 2 5 18 puit, Œdipi patrem.
-    715 23 26 3 6 19 h Templum in Eleusina
-    716 24 27 4 7 20 ædificatum ab Athenien-
-    717 25 28 5 8 21 sibus.
-    718 26 29 6 9 22 i Miletus civitas con-
-    719 27 30 7 10 23 dita in Asia.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,610,650,630">
-    k XXIII. PANYAS annis XLV.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,640,950,720">
-    720 28 1 8 11 24 l Europa Agenoris filia,
-    721 29 2 9 12 25 ut in quibusdam legimus,
-    722 30 3 10 13 26 rapitur ; quod his con-
-    723 31 4 11 14 27 gruit quæ de Minoe dicun-
-    724 32 5 12 15 28 tur.
-    725 33 6 13 16 29 m Philammon Delphius
-    726 34 7 14 17 30 divinus nobilis habetur,
-    qui primus apud Pythium
-    chorum constituit. Al.
-    Apud Delphos Pythiorum
-    ludos constituit.
-  </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="50,730,480,920">
-    a Μίδας Φρυγῶν ἐβασίλευσεν. Sync. p. 162, B.
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,100,50">397</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,20,650,50">CHRONICORUM LIB. II.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="900,20,950,50">398</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="250,60,750,90">HEBR. ASSYR. SICYON. ATHEN. AEGYPT</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="200,90,750,120">Abrahamus Debbora Lampares Sicyon Cecrops XIX dynastia
+et Barachus Rampses</bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="50,130,200,160">Mycenis regnavit Perseus annis VII.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,130,700,150">706 14 17 38 37 10</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="750,130,950,160">a Mida regnavit in Phrygia.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="250,150,700,165">707 15 18 39 38 11</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,165,700,180">708 16 19 40 39 12</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="50,180,200,210">b Ilium ab Ilo conditum et nominatum.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,180,700,195">709 17 20 41 40 13</bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="550,210,750,230">c VIII. PANDION an. XXV.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="250,240,700,260">710 18 21 42 1 14</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,260,700,275">711 19 22 43 2 15</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,280,950,320">d Ea quæ de Spartis memorantur, quos Palæphatus scribit, cum proximarum essent regionum, adversum Cadmum subito constitisse, et propter repentinus quasi de terra contractus, et ex omni parte compactas, Spartos vocatos.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="250,330,700,350">712 20 23 44 3 16</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="50,360,950,450">e Quidam his temporibus vindicant gesta Liberi patris, et ea quæ de Indis, Lycurgo, Actræone et Pentheo memorantur. Quomodo adversum Persem consistens occidatur in prælio, ait Dinarchus poeta, non rhetor. Qui autem voluerit, potest inspicere ipsius Liberi patris apud Delphos sepulcrum juxta Apollinem Aureum. Pingitur vero Liber muliebri et delicato corpore, propter mulieres in suo exercitu militantes : nam pariter ad arma viris feminas alligabat [Scalig. allegabat], ut Philochorus loquitur in secundo Atthidis libro.</bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="550,460,750,480">f XX. POLYBUS annis XI.</bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="50,490,200,520">Mycenis regnavit Eurystheus annis XLIII.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,490,700,505">713 21 24 1 4 17</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="750,490,950,520">g Laius Chrysippum rapuit, Œdipi patrem.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="250,505,700,520">714 22 25 2 5 18</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="750,520,950,560">h Templum in Eleusina ædificatum ab Atheniensibus.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="250,520,700,535">715 23 26 3 6 19</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,535,700,550">716 24 27 4 7 20</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,550,700,565">717 25 28 5 8 21</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,565,700,580">718 26 29 6 9 22</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,580,700,595">719 27 30 7 10 23</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="750,580,950,610">i Miletus civitas condita in Asia.</bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="350,610,650,630">k XXIII. PANYAS annis XLV.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="250,630,700,645">720 28 1 8 11 24</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="750,630,950,680">l Europa Agenoris filia, ut in quibusdam legimus, rapitur ; quod his congruit quæ de Minoe dicuntur.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="250,645,700,660">721 29 2 9 12 25</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,660,700,675">722 30 3 10 13 26</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,675,700,690">723 31 4 11 14 27</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,690,700,705">724 32 5 12 15 28</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="750,690,950,740">m Philammon Delphius divinus nobilis habetur, qui primus apud Pythium chorum constituit. Al. Apud Delphos Pythiorum ludos constituit.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="250,705,700,720">725 33 6 13 16 29</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,720,700,735">726 34 7 14 17 30</bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="50,750,480,950">
+    a Μίβας Φρυγῶν ἰδασίλευσεν. Sync. p. 162, B.
     b Ἴλιον ὑπὸ Ἰλίου ἐκτίσθη. Idem p. 161, D.
-    c Ἀθηναίων η' ἐβασίλευσε Πανδίων Ἐρεχθέως
-    ἔτη ιε'. Ibidem p. 161, B.
-    d Κάδμος τοὺς πλησιοχώρους αἰφνιδίως ἐπανελ-
-    θόντας αὐτῷ, διὰ τὸ πανταχόθεν ὡς ἀπὸ γῆς συῤεῖν
-    κατ' αὐτοῦ, Σπάρτους ὠνόμασεν, ὡς Παλαίφατος ἐν
-    πρώτῳ φησίν. Idem p. 162, B.
-    e Διονύσου πράξεις, καὶ τὰ περὶ Ἰνδος, Λυκούρ-
-    γου τε καὶ Ἀκταίωνος, καὶ Πενθέα· ὅπως τε Περσεὶ
-    ἑωτῇς ες μάχην ἀναιρεῖται, ὡς φησι Δείναρχος ὁ
-    ποιητής, οὐχ ὁ ῥήτωρ· τῷ δ βουλομένῳ πάρεστιν
-    ἰδεν αὐτο τὴν ταφὴν ἐν Δελφοῖς παρὶ τὸν Ἀπόλλωνα
-    τὸν Χρυσέον. Γράφεται δὲ θηλύμορφος, διὰ τὸ μιξό-
+    c Ἀθηναίων η' ἐβασίλευσε Πανδίων Ἐρεχθέως ἔτη κε'. Ibidem p. 161, B.
+    d Κάδμος τοὺς πλησιοχώρους αἰφνιδίως ἐπανελθόντας αὐτῷ, διὰ τὸ πανταχόθεν ὡς ἀπὸ γς συρρεῖν κατ' αὐτοῦ, Σπάρτους ὠνόμασεν, ὡς Παλαίφατος ἐν πρώτῳ φησίν. Idem p. 162, B.
+    e Διονύσου πράξεις, καὶ τὰ περὶ Ἰνδούς, Λυκοῦργόν τε καὶ Ἀκταίωνα, καὶ Πενθέα · ὅπως τε Περσεαὶ συστὰς εἰς μάχην ἀναιρεῖται, ὡς φησι Δείναρχος ὁ ποιητής, οὐχ  ῥήτωρ· τῷ δὲ βουλομένῳ πάρεστιν ἰδεν αὐτο τὴν ταφὴν ἐν Δελφοῖς παρὶ τὸν Ἀπόλλωνα τὸν Χρυσοῦν. Γράφεται δὲ θηλύμορφος, διὰ τὸ μιξό-
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="500,730,950,920">
-    θηλυν στρατὸν ὁπλίζειν· ὡπλίζε γὰρ σὺν τοῖς ἄῤῥεσι
-    τὰς θηλείας, ὡς φησιν ὁ Φιλόχορος ἐν δευτέρῳ. Ibi-
-    dem C.
-    f Σικυωνίων κ' ἐβασίλευσε Πόλυβος ἔτη μ'. Idem
-    p. 148, A.
+
+  <bloco tipo="aparato_critico" script="misto" bbox="500,750,950,950">
+    θηλυν στρατὸν πλίζειν· πλίζει γὰρ σὺν τοῖς ἄρρεσι τὰς θηλείας, ὡς φησιν ὁ Φιλόχορος ἐν δευτέρῳ. Ibidem C.
+    f Σικυωνίων κ' ἐβασίλευσε Πόλυβος ἔτη ια'. Idem p. 148, A.
     g Λάιος Χρύσιππον ἥρπασε. Ibidem B.
-    h Ὁ ἐν Ἐλευσνι νεὼς ἐκτίσθη. Ibidem.
+    h Ὁ ἐν Ἐλευσῖνι νεὼς ἐκτίσθη. Ibidem.
     i Μίλητος ἐκτίσθη πόλις. Ibidem.
-    k Ἀσσυρίων κγ' ἐβασίλευσε Πανύας ἔτη με'. Idem
-    p. 151, A.
+    k Ἀσσυρίων κγ' ἐβασίλευσε Πανύας ἔτη με'. Idem p. 151, A.
     l Εὐρώπης ἁρπαγή. Idem p. 158, B.
-    m Φιλάμμων ὁ Δέλφιος ἥκμαζεν, ὁ πρῶτος στήσας
-    Πυθοῖ χορόν. Idem p. 162, D.
+    m Φιλάμμων ὁ Δέλφιος ἦκμαζεν, ὁ πρῶτος στήσας Πυθοῖ χορόν. Idem p. 162, D.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="500,950,800,980">
-    Digitized by Google
-  </bloco>
-  <notas>
-    Transcrição de tabela cronológica bilíngue (Latim/Grego).
-    Na nota 'e' do aparato crítico, a palavra "ἑωτῇς" foi transcrita conforme aparece visualmente, embora possa ser uma corrupção de "αὐτῷ" ou similar.
-    A página contém números de página 397 e 398 no topo.
-  </notas>
+
+  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">Digitized by Google</bloco>
 </pagina>
