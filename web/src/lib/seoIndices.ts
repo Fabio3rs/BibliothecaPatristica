@@ -88,6 +88,7 @@ export type SeoSection = {
   titleSecondary: string;
   pageStart: number | null;
   pageEnd: number | null;
+  viewerHref: string | null;
   sectionHref: string;
   anchorId: string;
   entries: SeoEntry[];
@@ -99,6 +100,8 @@ export type SeoWork = {
   title: string;
   pageStart: number | null;
   pageEnd: number | null;
+  viewerHref: string | null;
+  fallbackHref: string;
 };
 
 export type SeoVolumePayload = {
@@ -185,7 +188,7 @@ function buildViewerHref(volumeId: string, page: number | null): string | null {
 }
 
 function buildIndicesHref(volumeId: string, sectionKey?: string): string {
-  const params = new URLSearchParams({ doc: volumeId });
+  const params = new URLSearchParams({ volume: volumeId });
   if (sectionKey) params.set('section', sectionKey);
   return `/indices?${params.toString()}`;
 }
@@ -225,13 +228,17 @@ async function readVolumeDoc(volumeId: string): Promise<IndexVolumeDoc> {
   return readJsonMaybeGz(join(INDICES_DIR, volumeId)) as Promise<IndexVolumeDoc>;
 }
 
-function toSeoWork(work: IndexWork): SeoWork {
+function toSeoWork(volumeId: string, work: IndexWork): SeoWork {
+  const pageStart = pickFirstPage(work.reference_start_page);
+  const workKey = normalizeWhitespace(work.work_key);
   return {
-    key: normalizeWhitespace(work.work_key),
+    key: workKey,
     author: normalizeWhitespace(work.author_raw),
     title: normalizeWhitespace(work.title_display?.original || work.title_raw || work.work_key),
-    pageStart: pickFirstPage(work.reference_start_page),
+    pageStart,
     pageEnd: pickFirstPage(work.reference_end_page),
+    viewerHref: buildViewerHref(volumeId, pageStart),
+    fallbackHref: buildIndicesHref(volumeId),
   };
 }
 
@@ -312,6 +319,7 @@ function toSeoSection(volumeId: string, section: IndexSection, idx: number): Seo
   const kind = normalizeWhitespace(section.index_kind);
   const titleSecondary = kind && kind !== title ? kind : '';
   const sectionKey = normalizeWhitespace(section.section_key || `section-${idx + 1}`);
+  const pageStart = pickFirstPage(section.reference_page_start, section.page_start);
   const entries = dedupeSeoEntries(
     (Array.isArray(section.entries) ? section.entries : [])
       .map((entry, entryIdx) => toSeoEntry(volumeId, sectionKey, title, entry, entryIdx))
@@ -323,8 +331,9 @@ function toSeoSection(volumeId: string, section: IndexSection, idx: number): Seo
     kind,
     title,
     titleSecondary,
-    pageStart: pickFirstPage(section.reference_page_start, section.page_start),
+    pageStart,
     pageEnd: pickFirstPage(section.reference_page_end, section.page_end),
+    viewerHref: buildViewerHref(volumeId, pageStart),
     sectionHref: buildIndicesHref(volumeId, sectionKey),
     anchorId: `${slugify(kind || title)}-${idx + 1}`,
     entries,
@@ -362,7 +371,7 @@ export async function getSeoVolumePayload(volumeId: string): Promise<SeoVolumePa
   const manifestEntry = manifestVolumes.find((item) => item.volume_id === volumeId);
   const doc = await readVolumeDoc(volumeId);
   const title = normalizeWhitespace(doc.volume?.display?.original || doc.volume?.volume_label || doc.volume?.volume_id || volumeId);
-  const works = Array.isArray(doc.works) ? doc.works.map(toSeoWork) : [];
+  const works = Array.isArray(doc.works) ? doc.works.map((work) => toSeoWork(volumeId, work)) : [];
   const candidateSections = Array.isArray(doc.sections)
     ? doc.sections
         .filter(isThematicSection)
