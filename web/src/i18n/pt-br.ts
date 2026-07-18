@@ -208,10 +208,13 @@ export const ptBR: Record<string, any> = {
   viewerDataNote:
     'Nota editorial: este projeto começou no Brasil. Resumos, palavras-chave e metadados auxiliares ainda estão principalmente em português do Brasil; o OCR permanece no idioma original sempre que possível.',
   viewerNoContent: 'Sem conteúdo disponível.',
-  viewerOcrTitle: 'OCR Original',
+  viewerOcrTitle: 'Texto original da página',
+  viewerOcrTopAction: 'Mostrar texto original',
   viewerOcrLoading: 'Carregando…',
   viewerOcrError: (msg: string) => `Erro ao carregar OCR: ${msg}`,
   viewerOcrOpen: '↗ abrir arquivo',
+  viewerOcrDescription: 'Este é o texto extraído automaticamente da imagem da página (OCR).',
+  viewerOcrAutoLoadLabel: 'Carregar automaticamente neste navegador',
   viewerOcrStructured: 'Visualização estruturada',
   viewerOcrPlain: 'Texto bruto',
   viewerOcrVisual: 'Layout visual',
@@ -244,8 +247,8 @@ export const ptBR: Record<string, any> = {
   // ─── RawToggle ─────────────────────────────────────────────────────────────
   rawOpen: 'Abrir OCR bruto',
   rawUnavailable: 'OCR bruto não publicado neste espelho.',
-  viewerRawLoadHint: 'Clique para carregar o OCR bruto nesta página.',
-  viewerOcrLoadPage: 'Carregar aqui',
+  viewerRawLoadHint: 'Use este botão para carregar o texto original desta página.',
+  viewerOcrLoadPage: 'Carregar texto original',
   viewerOcrOpenFile: 'Abrir arquivo bruto',
 
   // ─── Breadcrumbs ───────────────────────────────────────────────────────────

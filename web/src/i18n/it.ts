@@ -207,10 +207,13 @@ export const it: BaseTranslations = {
   viewerDataNote:
     "Nota editoriale: questo progetto è iniziato in Brasile. Riassunti, parole chiave e metadati di supporto sono ancora soprattutto in portoghese brasiliano; l'OCR resta nella lingua originale quando possibile.",
   viewerNoContent: 'Nessun contenuto disponibile.',
-  viewerOcrTitle: 'OCR originale',
+  viewerOcrTitle: 'Testo originale della pagina',
+  viewerOcrTopAction: 'Mostra il testo originale',
   viewerOcrLoading: 'Caricamento…',
   viewerOcrError: (msg: string) => `Errore nel caricamento dell'OCR: ${msg}`,
   viewerOcrOpen: '↗ apri file',
+  viewerOcrDescription: 'Questo è il testo estratto automaticamente dall’immagine della pagina (OCR).',
+  viewerOcrAutoLoadLabel: 'Carica automaticamente in questo browser',
   viewerOcrStructured: 'Vista strutturata',
   viewerOcrPlain: 'Testo grezzo',
   viewerOcrVisual: 'Layout visuale',
@@ -243,8 +246,8 @@ export const it: BaseTranslations = {
   // ─── RawToggle ─────────────────────────────────────────────────────────────
   rawOpen: 'Apri OCR grezzo',
   rawUnavailable: 'OCR grezzo non pubblicato in questo mirror.',
-  viewerRawLoadHint: 'Fai clic per caricare l’OCR grezzo in questa pagina.',
-  viewerOcrLoadPage: 'Carica qui',
+  viewerRawLoadHint: 'Usa questo pulsante per caricare il testo originale di questa pagina.',
+  viewerOcrLoadPage: 'Carica il testo originale',
   viewerOcrOpenFile: 'Apri file grezzo',
 
   // ─── Breadcrumbs ───────────────────────────────────────────────────────────

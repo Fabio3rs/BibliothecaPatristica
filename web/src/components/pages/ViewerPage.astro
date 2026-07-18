@@ -158,6 +158,14 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       return `${volume.id} p. ${page.page}${descriptor ? ` — ${descriptor}` : ''}`;
     }
 
+    function buildViewerDocumentTitle({ page, volume, volumeAuthor, volumeWork }) {
+      const primary = pickBestDescriptor(page.author, volumeAuthor);
+      const secondary = pickBestDescriptor(page.work, page.title, volumeWork, volume.title);
+      const context = [primary, secondary].filter(Boolean).join(' — ');
+      const baseLabel = context || s.viewerVolumeLabel(volume.id, volume.title || '');
+      return `${baseLabel} · ${s.viewerPage(page.page)} | Bibliotheca Patristica`;
+    }
+
     function buildCitationMetadata({ page, volume, volumeAuthor, volumeWork, summaryGlobal }) {
       const excerpt = normalizeWhitespace(page.excerpt || page.summary_page || summaryGlobal || page.summary_global || '');
       const author = pickBestDescriptor(page.author, volumeAuthor);
@@ -282,6 +290,19 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     function persistViewerMode(mode) {
       try {
         localStorage.setItem('viewerMode', mode);
+      } catch (_) {}
+    }
+
+    function getStoredRawAutoLoad() {
+      try {
+        return localStorage.getItem('viewerRawAutoLoad') === '1';
+      } catch (_) {}
+      return false;
+    }
+
+    function persistRawAutoLoad(enabled) {
+      try {
+        localStorage.setItem('viewerRawAutoLoad', enabled ? '1' : '0');
       } catch (_) {}
     }
 
@@ -704,22 +725,8 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         const snapshotLabels = pageSnapshots.map((s) => s.label);
         const summaryGlobal = page.summary_global || pageSnapshots[0]?.summary || '';
         let viewerMode = initialViewerMode;
-
-        // Atualizar título da aba e breadcrumb
-        document.title = `${s.viewerVolumeLabel(volume.id, volume.title || '')} · ${s.viewerPage(page.page)} | Bibliotheca Patristica`;
-        if (generation !== loadGeneration) return;
-        const breadcrumbsEl = document.querySelector('.breadcrumbs ol');
-        if (breadcrumbsEl) {
-          breadcrumbsEl.innerHTML = `
-            <li style="display:flex;align-items:center;gap:0.35rem;">
-              <a href="${localeBase}">${uiStrings.breadcrumbHome || (isEn ? 'Home' : isIt ? 'Home' : 'Início')}</a>
-            </li>
-            <li style="display:flex;align-items:center;gap:0.35rem;" aria-hidden="true"><span>/</span></li>
-            <li style="display:flex;align-items:center;gap:0.35rem;"><span>${s.viewerVolumeLabel(volume.id, volume.title || '')}</span></li>
-            <li style="display:flex;align-items:center;gap:0.35rem;" aria-hidden="true"><span>/</span></li>
-            <li style="display:flex;align-items:center;gap:0.35rem;"><span aria-current="page">${s.viewerPage(page.page)}</span></li>
-          `;
-        }
+        const rawHref = safeUrl(page.raw?.url);
+        const shouldAutoLoadRaw = rawHref !== '#' && getStoredRawAutoLoad();
 
         // Bookmark: save current position
         try {
@@ -862,6 +869,30 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           return buildViewerSearch(targetPage, overrides);
         }
 
+        function createBreadcrumbItem(content, { href = '', isCurrent = false, separator = false } = {}) {
+          const li = document.createElement('li');
+          li.style.cssText = 'display:flex;align-items:center;gap:0.35rem;';
+          if (separator) {
+            li.setAttribute('aria-hidden', 'true');
+            const span = document.createElement('span');
+            span.textContent = '/';
+            li.appendChild(span);
+            return li;
+          }
+          if (href) {
+            const link = document.createElement('a');
+            link.href = href;
+            link.textContent = content;
+            li.appendChild(link);
+            return li;
+          }
+          const span = document.createElement('span');
+          if (isCurrent) span.setAttribute('aria-current', 'page');
+          span.textContent = content;
+          li.appendChild(span);
+          return li;
+        }
+
         function syncViewerModeUrl() {
           const nextUrl = `${window.location.pathname}${buildViewerSearch(pageNumber)}${window.location.hash || ''}`;
           window.history.replaceState(window.history.state, '', nextUrl);
@@ -915,6 +946,21 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
             }
           }
         } catch (e) { /* ignore */ }
+
+        // Atualizar título da aba e breadcrumb com o melhor contexto disponível
+        document.title = buildViewerDocumentTitle({ page, volume, volumeAuthor, volumeWork });
+        if (generation !== loadGeneration) return;
+        const breadcrumbVolumeLabel = volumeWork || volumeAuthor || s.viewerVolumeLabel(volume.id, volume.title || '');
+        const breadcrumbsEl = document.querySelector('.breadcrumbs ol');
+        if (breadcrumbsEl) {
+          breadcrumbsEl.replaceChildren(
+            createBreadcrumbItem(uiStrings.breadcrumbHome || (isEn ? 'Home' : isIt ? 'Home' : 'Início'), { href: localeBase }),
+            createBreadcrumbItem('', { separator: true }),
+            createBreadcrumbItem(breadcrumbVolumeLabel),
+            createBreadcrumbItem('', { separator: true }),
+            createBreadcrumbItem(s.viewerPage(page.page), { isCurrent: true }),
+          );
+        }
 
         const volCollectionLabel = collections.items.find((c) => c.id === volume.collection_id)?.label || volume.collection_id;
         const identityTitle = document.createElement('h3');
@@ -1002,6 +1048,15 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         fontUp.addEventListener('click', () => { fontSizeLevel = Math.min(2, fontSizeLevel + 1); applyFontSize(); });
 
         // Busca local
+        if (rawHref !== '#') {
+          const topOcrBtn = document.createElement('button');
+          topOcrBtn.className = 'button secondary';
+          topOcrBtn.style.fontSize = '0.8rem';
+          topOcrBtn.textContent = s.viewerOcrTopAction;
+          topOcrBtn.dataset.role = 'viewer-ocr-top-action';
+          toolbar.appendChild(topOcrBtn);
+        }
+
         const localSearchWrap = document.createElement('div');
         localSearchWrap.className = 'viewer-search-local';
         const localSearchInput = document.createElement('input');
@@ -1266,9 +1321,9 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         mainContent.appendChild(dataNote);
 
         // Bloco OCR Original (sempre visível)
-        const rawHref = safeUrl(page.raw?.url);
         if (rawHref !== '#') {
           const ocrSection = document.createElement('div');
+          ocrSection.id = 'viewer-original-text';
           ocrSection.style.cssText = 'margin-top:var(--space-5); border-top:1px solid var(--color-border); padding-top:var(--space-4);';
 
           const ocrHeader = document.createElement('div');
@@ -1277,6 +1332,17 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           ocrTitle.style.cssText = 'font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--color-muted);';
           ocrTitle.textContent = s.viewerOcrTitle;
           ocrHeader.appendChild(ocrTitle);
+
+          const autoLoadLabel = document.createElement('label');
+          autoLoadLabel.style.cssText = 'display:inline-flex; align-items:center; gap:0.45rem; font-size:0.8rem; color:var(--color-muted);';
+          const autoLoadToggle = document.createElement('input');
+          autoLoadToggle.type = 'checkbox';
+          autoLoadToggle.checked = shouldAutoLoadRaw;
+          autoLoadLabel.appendChild(autoLoadToggle);
+          const autoLoadText = document.createElement('span');
+          autoLoadText.textContent = s.viewerOcrAutoLoadLabel;
+          autoLoadLabel.appendChild(autoLoadText);
+          ocrHeader.appendChild(autoLoadLabel);
 
           const ocrActions = document.createElement('div');
           ocrActions.style.cssText = 'display:flex; gap:var(--space-2); align-items:center; margin-left:auto; flex-wrap:wrap;';
@@ -1298,6 +1364,10 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           ocrSection.appendChild(ocrHeader);
 
           const bodyWrap = document.createElement('div');
+          const rawDescription = document.createElement('p');
+          rawDescription.style.cssText = 'margin:0 0 var(--space-2); color:var(--color-ink); font-size:0.95rem; line-height:1.6;';
+          rawDescription.textContent = s.viewerOcrDescription;
+          bodyWrap.appendChild(rawDescription);
           const rawHint = document.createElement('p');
           rawHint.style.cssText = 'margin:0 0 var(--space-3); color:var(--color-muted); font-size:0.85rem;';
           rawHint.textContent = s.viewerRawLoadHint;
@@ -1314,117 +1384,153 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
           let rawLoaded = false;
           let rawLoading = false;
+          let rawLoadPromise = null;
 
-          const loadRawOcr = async () => {
-            if (rawLoaded || rawLoading) return;
+          const topOcrBtn = toolbar.querySelector('[data-role="viewer-ocr-top-action"]');
+
+          function scrollToOcrSection() {
+            ocrSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+
+          const loadRawOcr = async ({ scrollIntoView = false, persistPreference = false } = {}) => {
+            if (persistPreference) {
+              persistRawAutoLoad(true);
+              autoLoadToggle.checked = true;
+            }
+            if (rawLoaded) {
+              if (scrollIntoView) scrollToOcrSection();
+              return;
+            }
+            if (rawLoading && rawLoadPromise) {
+              await rawLoadPromise;
+              if (scrollIntoView && rawLoaded) scrollToOcrSection();
+              return;
+            }
             rawLoading = true;
             loadBtn.disabled = true;
-            const controller = new AbortController();
-            if (rawOcrController) rawOcrController.abort();
-            rawOcrController = controller;
-            pre.style.display = '';
-            pre.textContent = s.viewerOcrLoading;
-            try {
-              const res = await fetch(rawHref, { signal: controller.signal });
-              if (!res.ok) throw new Error(`HTTP ${res.status}`);
-              const txt = await res.text();
-              if (controller.signal.aborted || generation !== loadGeneration) return;
-
-              const ocrData = parseOcrXml(txt);
-              if (ocrData && ocrData.blocos.length > 0) {
-                pre.innerHTML = highlightXml(txt);
-                pre.dataset.raw = txt;
-                if (highlight) applyHighlight(pre, highlight);
-
-                const toggleWrap = document.createElement('div');
-                toggleWrap.style.cssText = 'display:flex; gap:var(--space-2); margin-bottom:var(--space-3); flex-wrap:wrap;';
-
-                const btnPlain = document.createElement('button');
-                btnPlain.className = 'button';
-                btnPlain.style.fontSize = '0.8rem';
-                btnPlain.textContent = s.viewerOcrPlain;
-
-                const btnStruct = document.createElement('button');
-                btnStruct.className = 'button secondary';
-                btnStruct.style.fontSize = '0.8rem';
-                btnStruct.textContent = s.viewerOcrStructured;
-
-                const btnVisual = document.createElement('button');
-                btnVisual.className = 'button secondary';
-                btnVisual.style.fontSize = '0.8rem';
-                btnVisual.textContent = s.viewerOcrVisual;
-
-                const structContainer = document.createElement('div');
-                structContainer.style.cssText = 'max-height:60vh; overflow-y:auto;';
-                renderOcrStructured(structContainer, ocrData);
-                structContainer.style.display = 'none';
-
-                const visualContainer = document.createElement('div');
-                visualContainer.style.cssText = 'max-height:60vh; overflow-y:auto;';
-                renderOcrVisual(visualContainer, ocrData);
-                visualContainer.style.display = 'none';
-
-                function setActiveBtn(active) {
-                  [btnPlain, btnStruct, btnVisual].forEach((btn) => {
-                    btn.className = btn === active ? 'button' : 'button secondary';
-                  });
-                }
-                function showPlain() {
-                  pre.style.display = '';
-                  structContainer.style.display = 'none';
-                  visualContainer.style.display = 'none';
-                  setActiveBtn(btnPlain);
-                }
-                function showStruct() {
-                  pre.style.display = 'none';
-                  structContainer.style.display = '';
-                  visualContainer.style.display = 'none';
-                  setActiveBtn(btnStruct);
-                }
-                function showVisual() {
-                  pre.style.display = 'none';
-                  structContainer.style.display = 'none';
-                  visualContainer.style.display = '';
-                  setActiveBtn(btnVisual);
-                }
-
-                btnPlain.addEventListener('click', () => { localStorage.setItem('viewerOcrMode', 'plain'); showPlain(); });
-                btnStruct.addEventListener('click', () => { localStorage.setItem('viewerOcrMode', 'struct'); showStruct(); });
-                btnVisual.addEventListener('click', () => { localStorage.setItem('viewerOcrMode', 'visual'); showVisual(); });
-                toggleWrap.appendChild(btnPlain);
-                toggleWrap.appendChild(btnStruct);
-                toggleWrap.appendChild(btnVisual);
-                bodyWrap.insertBefore(toggleWrap, pre);
-                bodyWrap.appendChild(structContainer);
-                bodyWrap.appendChild(visualContainer);
-                const savedOcrMode = localStorage.getItem('viewerOcrMode');
-                if (savedOcrMode === 'struct') showStruct();
-                else if (savedOcrMode === 'visual') showVisual();
-                else showPlain();
-              } else {
-                pre.style.display = '';
-                pre.textContent = txt;
-                if (highlight) applyHighlight(pre, highlight);
-              }
-              rawHint.remove();
-              rawLoaded = true;
-              loadBtn.disabled = true;
-            } catch (e) {
-              if (e?.name === 'AbortError') return;
+            rawLoadPromise = (async () => {
+              const controller = new AbortController();
+              if (rawOcrController) rawOcrController.abort();
+              rawOcrController = controller;
               pre.style.display = '';
-              pre.textContent = s.viewerOcrError(e.message);
-              loadBtn.disabled = false;
-            } finally {
-              rawLoading = false;
-            }
+              pre.textContent = s.viewerOcrLoading;
+              try {
+                const res = await fetch(rawHref, { signal: controller.signal });
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const txt = await res.text();
+                if (controller.signal.aborted || generation !== loadGeneration) return;
+
+                const ocrData = parseOcrXml(txt);
+                if (ocrData && ocrData.blocos.length > 0) {
+                  pre.innerHTML = highlightXml(txt);
+                  pre.dataset.raw = txt;
+                  if (highlight) applyHighlight(pre, highlight);
+
+                  const toggleWrap = document.createElement('div');
+                  toggleWrap.style.cssText = 'display:flex; gap:var(--space-2); margin-bottom:var(--space-3); flex-wrap:wrap;';
+
+                  const btnPlain = document.createElement('button');
+                  btnPlain.className = 'button';
+                  btnPlain.style.fontSize = '0.8rem';
+                  btnPlain.textContent = s.viewerOcrPlain;
+
+                  const btnStruct = document.createElement('button');
+                  btnStruct.className = 'button secondary';
+                  btnStruct.style.fontSize = '0.8rem';
+                  btnStruct.textContent = s.viewerOcrStructured;
+
+                  const btnVisual = document.createElement('button');
+                  btnVisual.className = 'button secondary';
+                  btnVisual.style.fontSize = '0.8rem';
+                  btnVisual.textContent = s.viewerOcrVisual;
+
+                  const structContainer = document.createElement('div');
+                  structContainer.style.cssText = 'max-height:60vh; overflow-y:auto;';
+                  renderOcrStructured(structContainer, ocrData);
+                  structContainer.style.display = 'none';
+
+                  const visualContainer = document.createElement('div');
+                  visualContainer.style.cssText = 'max-height:60vh; overflow-y:auto;';
+                  renderOcrVisual(visualContainer, ocrData);
+                  visualContainer.style.display = 'none';
+
+                  function setActiveBtn(active) {
+                    [btnPlain, btnStruct, btnVisual].forEach((btn) => {
+                      btn.className = btn === active ? 'button' : 'button secondary';
+                    });
+                  }
+                  function showPlain() {
+                    pre.style.display = '';
+                    structContainer.style.display = 'none';
+                    visualContainer.style.display = 'none';
+                    setActiveBtn(btnPlain);
+                  }
+                  function showStruct() {
+                    pre.style.display = 'none';
+                    structContainer.style.display = '';
+                    visualContainer.style.display = 'none';
+                    setActiveBtn(btnStruct);
+                  }
+                  function showVisual() {
+                    pre.style.display = 'none';
+                    structContainer.style.display = 'none';
+                    visualContainer.style.display = '';
+                    setActiveBtn(btnVisual);
+                  }
+
+                  btnPlain.addEventListener('click', () => { localStorage.setItem('viewerOcrMode', 'plain'); showPlain(); });
+                  btnStruct.addEventListener('click', () => { localStorage.setItem('viewerOcrMode', 'struct'); showStruct(); });
+                  btnVisual.addEventListener('click', () => { localStorage.setItem('viewerOcrMode', 'visual'); showVisual(); });
+                  toggleWrap.appendChild(btnPlain);
+                  toggleWrap.appendChild(btnStruct);
+                  toggleWrap.appendChild(btnVisual);
+                  bodyWrap.insertBefore(toggleWrap, pre);
+                  bodyWrap.appendChild(structContainer);
+                  bodyWrap.appendChild(visualContainer);
+                  const savedOcrMode = localStorage.getItem('viewerOcrMode');
+                  if (savedOcrMode === 'struct') showStruct();
+                  else if (savedOcrMode === 'visual') showVisual();
+                  else showPlain();
+                } else {
+                  pre.style.display = '';
+                  pre.textContent = txt;
+                  if (highlight) applyHighlight(pre, highlight);
+                }
+                rawHint.remove();
+                rawLoaded = true;
+                loadBtn.disabled = true;
+              } catch (e) {
+                if (e?.name === 'AbortError') return;
+                pre.style.display = '';
+                pre.textContent = s.viewerOcrError(e.message);
+                loadBtn.disabled = false;
+              } finally {
+                rawLoading = false;
+                rawLoadPromise = null;
+              }
+            })();
+            await rawLoadPromise;
+            if (scrollIntoView && rawLoaded) scrollToOcrSection();
           };
 
           loadBtn.addEventListener('click', () => {
-            void loadRawOcr();
+            void loadRawOcr({ persistPreference: true });
+          });
+
+          topOcrBtn?.addEventListener('click', () => {
+            void loadRawOcr({ scrollIntoView: true, persistPreference: true });
+          });
+
+          autoLoadToggle.addEventListener('change', () => {
+            persistRawAutoLoad(autoLoadToggle.checked);
           });
 
           if (highlight) {
             pre.dataset.highlight = highlight;
+          }
+
+          if (shouldAutoLoadRaw) {
+            void loadRawOcr();
           }
 
         }
