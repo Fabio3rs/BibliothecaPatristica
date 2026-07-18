@@ -54,8 +54,8 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       viewerLast: isEn ? 'Last' : isIt ? 'Ultima' : 'Última',
       viewerGo: isEn ? 'Go' : isIt ? 'Vai' : 'Ir',
       viewerPageInputLabel: isEn ? 'Page number' : isIt ? 'Numero di pagina' : 'Número da página',
-      viewerFocusMode: isEn ? 'Focus mode' : isIt ? 'Modalità focus' : 'Modo foco',
-      viewerNormalMode: isEn ? 'Normal mode' : isIt ? 'Modalità normale' : 'Modo normal',
+      viewerFocusMode: isEn ? 'Reading mode' : isIt ? 'Modalità lettura' : 'Modo leitura',
+      viewerNormalMode: isEn ? 'Default mode' : isIt ? 'Modalità standard' : 'Modo padrão',
       viewerDecreaseFont: isEn ? 'A-' : 'A-',
       viewerIncreaseFont: isEn ? 'A+' : 'A+',
       viewerContinueReading: isEn ? 'Continue reading' : isIt ? 'Continua la lettura' : 'Continuar lendo',
@@ -242,6 +242,55 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
     async function getJSON(path) {
       return getJsonOnce(path);
+    }
+
+    function normalizeViewerMode(value) {
+      return value === 'reading' ? 'reading' : 'default';
+    }
+
+    function getStoredViewerMode() {
+      try {
+        const stored = normalizeViewerMode(localStorage.getItem('viewerMode'));
+        if (stored === 'reading') return stored;
+        if (localStorage.getItem('viewerFocusMode') === '1') return 'reading';
+      } catch (_) {}
+      return 'default';
+    }
+
+    function getRequestedViewerMode(url) {
+      return normalizeViewerMode(url.searchParams.get('view'));
+    }
+
+    function resolveInitialViewerMode(url) {
+      if (url.searchParams.has('view')) {
+        return getRequestedViewerMode(url);
+      }
+      // Query params sem `view` representam links canônicos do layout padrão.
+      // Só reaproveitamos a preferência local quando o viewer abre "nu".
+      if (url.searchParams.toString()) {
+        return 'default';
+      }
+      return getStoredViewerMode();
+    }
+
+    function applyViewerMode(mode) {
+      const isReading = mode === 'reading';
+      viewerRoot.classList.toggle('viewer-reading-mode', isReading);
+      document.body.classList.toggle('viewer-reading-active', isReading);
+    }
+
+    function persistViewerMode(mode) {
+      try {
+        localStorage.setItem('viewerMode', mode);
+      } catch (_) {}
+    }
+
+    function scheduleIdle(callback, timeout = 1200) {
+      if (typeof requestIdleCallback === 'function') {
+        requestIdleCallback(callback, { timeout });
+        return;
+      }
+      window.setTimeout(callback, Math.min(timeout, 250));
     }
 
     function safeUrl(raw) {
@@ -620,6 +669,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         const url = new URL(window.location.href);
         const doc = url.searchParams.get('doc') || 'PG144';
         const highlight = (url.searchParams.get('highlight') || '').trim();
+        const initialViewerMode = resolveInitialViewerMode(url);
 
         const volumes = await getJSON(`${assetBase}volumes.json`);
 
@@ -653,6 +703,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         const entitiesLabels = labelize(page.entity_ids, entities.items);
         const snapshotLabels = pageSnapshots.map((s) => s.label);
         const summaryGlobal = page.summary_global || pageSnapshots[0]?.summary || '';
+        let viewerMode = initialViewerMode;
 
         // Atualizar título da aba e breadcrumb
         document.title = `${s.viewerVolumeLabel(volume.id, volume.title || '')} · ${s.viewerPage(page.page)} | Bibliotheca Patristica`;
@@ -688,6 +739,14 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
             .viewer-grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; align-items: start; gap: var(--space-6); }
             @media (min-width: 1400px) { .viewer-grid { grid-template-columns: minmax(0, 1fr) 340px; gap: var(--space-8); } }
             @media (max-width: 1100px) { .viewer-grid { grid-template-columns: 1fr; gap: var(--space-4); } }
+            body.viewer-reading-active { background: color-mix(in srgb, var(--color-bg) 74%, #f1e6d2 26%); }
+            body.viewer-reading-active .topbar { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(10px); background: color-mix(in srgb, var(--color-bg) 82%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--color-border) 72%, transparent); }
+            body.viewer-reading-active .topbar .wrapper { padding-top: var(--space-2); padding-bottom: var(--space-2); }
+            body.viewer-reading-active .topbar .tagline,
+            body.viewer-reading-active .breadcrumbs,
+            body.viewer-reading-active .disclaimer-wrapper,
+            body.viewer-reading-active .footer { display: none !important; }
+            body.viewer-reading-active #conteudo.wrapper { max-width: 92ch; }
             .viewer-grid aside { order: 2; }
             .viewer-grid .main-content { order: 1; }
             .viewer-grid aside { position: sticky; top: 5.75rem; align-self: start; }
@@ -715,10 +774,25 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
             .viewer-identity .identity-badge { display: inline-block; padding: 2px 8px; border-radius: var(--radius-s); background: var(--color-surface); border: 1px solid var(--color-border); font-size: 0.75rem; color: var(--color-muted); }
             .viewer-progress-bar { width: 100%; height: 4px; background: var(--color-border); border-radius: 2px; margin-top: var(--space-3); overflow: hidden; }
             .viewer-progress-bar > div { height: 100%; background: var(--color-accent); border-radius: 2px; transition: width 0.3s ease; }
-            .viewer-focus-mode .viewer-grid { grid-template-columns: 1fr !important; }
-            .viewer-focus-mode aside { display: none !important; }
-            .viewer-focus-mode .main-content { max-width: 720px; margin: 0 auto; }
-            @media (min-width: 1400px) { .viewer-focus-mode .main-content { max-width: 800px; } }
+            .viewer-reading-mode .viewer-grid { grid-template-columns: 1fr !important; }
+            .viewer-reading-mode aside { display: none !important; }
+            .viewer-reading-mode .main-content { max-width: 72ch; margin: 0 auto; padding: var(--space-6); background: color-mix(in srgb, var(--color-surface) 90%, #f8ecd8 10%); box-shadow: 0 12px 36px rgba(65, 48, 20, 0.08); }
+            .viewer-reading-mode .viewer-identity { margin-bottom: var(--space-6); background: transparent; padding: 0 0 var(--space-4); border-radius: 0; border: 0; border-bottom: 1px solid var(--color-border); }
+            .viewer-reading-mode .viewer-identity .identity-meta-wrap { margin-top: var(--space-3); }
+            .viewer-reading-mode .viewer-toolbar { position: sticky; top: 4.25rem; z-index: 10; margin: 0 0 var(--space-5); padding: var(--space-3); background: color-mix(in srgb, var(--color-surface) 90%, transparent); border: 1px solid color-mix(in srgb, var(--color-border) 90%, transparent); border-radius: var(--radius-m); box-shadow: 0 8px 24px rgba(20, 20, 20, 0.05); }
+            .viewer-reading-mode .viewer-action-bar { margin-bottom: var(--space-5); }
+            .viewer-reading-mode .viewer-header-nav { justify-content: flex-start; }
+            .viewer-reading-mode .viewer-header-nav .button,
+            .viewer-reading-mode .viewer-toolbar .button { min-height: 2.25rem; }
+            .viewer-reading-mode .viewer-bookmark-banner { max-width: 72ch; margin-left: auto; margin-right: auto; }
+            .viewer-reading-mode .main-content p,
+            .viewer-reading-mode .main-content li { line-height: 1.9; }
+            @media (min-width: 1400px) { .viewer-reading-mode .main-content { max-width: 74ch; } }
+            @media (max-width: 720px) {
+              body.viewer-reading-active #conteudo.wrapper { max-width: 100%; }
+              .viewer-reading-mode .main-content { padding: var(--space-4); border-radius: var(--radius-m); }
+              .viewer-reading-mode .viewer-toolbar { top: 3.75rem; }
+            }
             .viewer-bookmark-banner { margin-bottom: var(--space-4); padding: var(--space-3) var(--space-4); border-radius: var(--radius-m); background: var(--color-surface-2); border: 1px solid var(--color-accent); display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); flex-wrap: wrap; }
             .viewer-index-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(3rem, 1fr)); gap: 4px; max-height: 200px; overflow-y: auto; }
             @media (min-width: 1400px) { .viewer-index-list { max-height: 320px; grid-template-columns: repeat(auto-fill, minmax(3.2rem, 1fr)); } }
@@ -764,10 +838,10 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
         const mainGrid = document.createElement('div');
         mainGrid.className = 'main-grid viewer-grid';
-        
+
         const mainContent = document.createElement('div');
-        mainContent.className = 'card';
-        
+        mainContent.className = 'card main-content';
+
         const sidebar = document.createElement('aside');
         sidebar.style.cssText = 'display:flex; flex-direction:column; gap:var(--space-4);';
 
@@ -776,10 +850,43 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         const firstPage = allBlocks.length ? allBlocks[0].page_first : 1;
         const lastPage = allBlocks.length ? allBlocks[allBlocks.length - 1].page_last : pageNumber;
 
-        function buildNavUrl(targetPage) {
+        function buildViewerSearch(targetPage, overrides = {}) {
           const p = new URLSearchParams({ doc, page: String(targetPage) });
           if (highlight) p.set('highlight', highlight);
+          const targetMode = normalizeViewerMode(overrides.view ?? viewerMode);
+          if (targetMode === 'reading') p.set('view', 'reading');
           return `?${p.toString()}`;
+        }
+
+        function buildNavUrl(targetPage, overrides = {}) {
+          return buildViewerSearch(targetPage, overrides);
+        }
+
+        function syncViewerModeUrl() {
+          const nextUrl = `${window.location.pathname}${buildViewerSearch(pageNumber)}${window.location.hash || ''}`;
+          window.history.replaceState(window.history.state, '', nextUrl);
+        }
+
+        function setViewerMode(nextMode) {
+          viewerMode = normalizeViewerMode(nextMode);
+          applyViewerMode(viewerMode);
+          persistViewerMode(viewerMode);
+          syncViewerModeUrl();
+          void load();
+        }
+
+        function prefetchPageAssets(targetPage) {
+          if (targetPage < firstPage || targetPage > lastPage) return;
+          const targetBlock = allBlocks.find((candidate) => targetPage >= candidate.page_first && targetPage <= candidate.page_last);
+          if (!targetBlock?.file) return;
+          const targetBlockUrl = `${assetBase}${targetBlock.file.replace(/^\//, '')}`;
+          void getJsonOnce(targetBlockUrl).catch(() => {});
+        }
+
+        function prefetchAdjacentPages() {
+          scheduleIdle(() => {
+            [pageNumber + 1, pageNumber - 1].forEach((targetPage) => prefetchPageAssets(targetPage));
+          });
         }
 
         // Cabeçalho com Navegação
@@ -861,19 +968,17 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         const toolbar = document.createElement('div');
         toolbar.className = 'viewer-toolbar';
 
-        // Modo foco
+        // Modo leitura
         const focusBtn = document.createElement('button');
         focusBtn.className = 'button secondary';
         focusBtn.style.fontSize = '0.8rem';
-        let isFocusMode = false;
-        focusBtn.textContent = s.viewerFocusMode;
         focusBtn.addEventListener('click', () => {
-          isFocusMode = !isFocusMode;
-          viewerRoot.classList.toggle('viewer-focus-mode', isFocusMode);
-          focusBtn.textContent = isFocusMode ? s.viewerNormalMode : s.viewerFocusMode;
-          try { localStorage.setItem('viewerFocusMode', isFocusMode ? '1' : '0'); } catch (_) {}
+          setViewerMode(viewerMode === 'reading' ? 'default' : 'reading');
         });
-        try { if (localStorage.getItem('viewerFocusMode') === '1') { isFocusMode = true; viewerRoot.classList.add('viewer-focus-mode'); focusBtn.textContent = s.viewerNormalMode; } } catch (_) {}
+        focusBtn.textContent = viewerMode === 'reading' ? s.viewerNormalMode : s.viewerFocusMode;
+        applyViewerMode(viewerMode);
+        persistViewerMode(viewerMode);
+        syncViewerModeUrl();
 
         // Font size
         const fontDown = document.createElement('button');
@@ -904,7 +1009,12 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         localSearchInput.placeholder = s.viewerSearchInVolume;
         localSearchInput.addEventListener('keydown', (e) => {
           if (e.key === 'Enter' && localSearchInput.value.trim()) {
-            window.location.href = routeUrl('search', `?term=${encodeURIComponent(localSearchInput.value.trim())}&volume=${encodeURIComponent(doc)}`);
+            const params = new URLSearchParams({
+              term: localSearchInput.value.trim(),
+              volume: doc,
+            });
+            if (viewerMode === 'reading') params.set('view', 'reading');
+            window.location.href = routeUrl('search', `?${params.toString()}`);
           }
         });
         localSearchWrap.appendChild(localSearchInput);
@@ -1060,6 +1170,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           backLink.className = 'button secondary';
           backLink.style.fontSize = '0.85rem';
           const backParams = new URLSearchParams({ term: highlight });
+          if (viewerMode === 'reading') backParams.set('view', 'reading');
           backLink.href = routeUrl('search', `?${backParams.toString()}`);
           backLink.textContent = s.viewerBack;
           navGroup.prepend(backLink);
@@ -1334,7 +1445,9 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
             const li = document.createElement('li');
             if (isKeywords) {
               const a = document.createElement('a');
-              a.href = routeUrl('search', `?term=${encodeURIComponent(txt)}`);
+              const params = new URLSearchParams({ term: txt });
+              if (viewerMode === 'reading') params.set('view', 'reading');
+              a.href = routeUrl('search', `?${params.toString()}`);
               a.textContent = txt;
               a.style.textDecoration = 'none';
               a.style.color = 'inherit';
@@ -1431,6 +1544,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
             const a = document.createElement('a');
             const params = new URLSearchParams({ doc: rel.doc, page: String(rel.page) });
+            if (viewerMode === 'reading') params.set('view', 'reading');
             a.href = routeUrl('viewer', `?${params.toString()}`);
             a.style.cssText = 'display:flex; flex-direction:column; gap:2px; padding:var(--space-2) var(--space-3); border-radius:var(--radius); background:var(--color-surface); border:1px solid var(--color-border); text-decoration:none; color:inherit; transition: border-color 0.15s;';
             a.addEventListener('mouseenter', () => a.style.borderColor = 'var(--color-accent)');
@@ -1477,6 +1591,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         mainGrid.appendChild(mainContent);
         mainGrid.appendChild(sidebar);
         viewerRoot.appendChild(mainGrid);
+        prefetchAdjacentPages();
 
         if (highlight) {
           applyHighlight(resPagina.p, highlight);

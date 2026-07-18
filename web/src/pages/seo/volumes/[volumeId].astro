@@ -35,6 +35,18 @@ function pageRange(start: number | null, end: number | null) {
   if (!start) return '';
   return end && end !== start ? `p. ${start}–${end}` : `p. ${start}`;
 }
+
+function workHref(work: typeof payload.works[number]) {
+  return withBase(work.viewerHref || work.fallbackHref);
+}
+
+function sectionPrimaryHref(section: typeof payload.sections[number]) {
+  return withBase(section.viewerHref || section.sectionHref);
+}
+
+function sectionPrimaryLabel(section: typeof payload.sections[number]) {
+  return section.viewerHref ? 'Abrir seção no viewer' : 'Abrir seção no índice';
+}
 ---
 
 <Layout
@@ -60,7 +72,7 @@ function pageRange(start: number | null, end: number | null) {
     </div>
     <div class="hero-actions">
       <a class="button" href={withBase(`/viewer?doc=${encodeURIComponent(payload.volumeId)}`)}>Abrir volume no viewer</a>
-      <a class="button secondary" href={withBase(`/indices?doc=${encodeURIComponent(payload.volumeId)}`)}>Abrir índice do volume</a>
+      <a class="button secondary" href={withBase(`/indices?volume=${encodeURIComponent(payload.volumeId)}`)}>Abrir índice do volume</a>
       {payload.hasThematicSections && (
         <a class="button secondary" href={withBase(`/seo/volumes/${encodeURIComponent(payload.volumeId)}/indice-tematico`)}>Abrir índice temático estático</a>
       )}
@@ -100,12 +112,12 @@ function pageRange(start: number | null, end: number | null) {
           <p class="eyebrow">Obras</p>
           <h2>Obras identificadas no volume</h2>
         </div>
-        <a class="button secondary" href={withBase(`/indices?doc=${encodeURIComponent(payload.volumeId)}`)}>Ver detalhes no índice</a>
+        <a class="button secondary" href={withBase(`/indices?volume=${encodeURIComponent(payload.volumeId)}`)}>Ver detalhes no índice</a>
       </div>
       <ul class="link-list">
         {payload.works.map((work) => (
           <li>
-            <a href={withBase(`/indices?doc=${encodeURIComponent(payload.volumeId)}${work.key ? `&work=${encodeURIComponent(work.key)}` : ''}`)}>
+            <a href={workHref(work)}>
               <strong>{work.author ? `${work.author} — ` : ''}{work.title}</strong>
               {(work.pageStart || work.pageEnd) && <span>{pageRange(work.pageStart, work.pageEnd)}</span>}
             </a>
@@ -137,7 +149,8 @@ function pageRange(start: number | null, end: number | null) {
             </div>
             <div class="section-actions">
               <a class="button secondary" href={withBase(`/seo/volumes/${encodeURIComponent(payload.volumeId)}/indice-tematico#${section.anchorId}`)}>Entradas</a>
-              <a class="button secondary" href={withBase(section.sectionHref)}>Abrir seção no índice</a>
+              <a class="button secondary" href={sectionPrimaryHref(section)}>{sectionPrimaryLabel(section)}</a>
+              {section.viewerHref && <a class="button secondary" href={withBase(section.sectionHref)}>Abrir seção no índice</a>}
             </div>
           </li>
         ))}

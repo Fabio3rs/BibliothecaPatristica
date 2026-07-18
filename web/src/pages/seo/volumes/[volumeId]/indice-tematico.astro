@@ -54,7 +54,7 @@ function withBase(path: string) {
     </div>
     <div class="hero-actions">
       <a class="button secondary" href={withBase(`/seo/volumes/${encodeURIComponent(payload.volumeId)}`)}>Voltar ao hub do volume</a>
-      <a class="button secondary" href={withBase(`/indices?doc=${encodeURIComponent(payload.volumeId)}`)}>Abrir índice dinâmico</a>
+      <a class="button secondary" href={withBase(`/indices?volume=${encodeURIComponent(payload.volumeId)}`)}>Abrir índice dinâmico</a>
     </div>
   </section>
 
