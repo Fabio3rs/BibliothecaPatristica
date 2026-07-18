@@ -43,6 +43,8 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     // Reconstrói funções de formatação (não serializáveis via define:vars)
     const isEn = uiLocale === 'en';
     const isIt = uiLocale === 'it';
+    const localeTag = isEn ? 'en-US' : isIt ? 'it-IT' : 'pt-BR';
+    const seoHubLabel = 'SEO';
     const s = {
       ...uiStrings,
       viewerVolume: (id, title) => `Volume ${id}${title ? ' — ' + title : ''}`,
@@ -69,7 +71,174 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         : (doc, title, page) => `${doc}${title ? ' — ' + title : ''} · pág. ${page}`,
       viewerError: isEn ? (msg) => `Error loading viewer: ${msg}` : isIt ? (msg) => `Errore nel caricamento del visualizzatore: ${msg}` : (msg) => `Erro ao carregar viewer: ${msg}`,
       viewerVolumeLabel: (id, title) => `${isEn ? 'Volume' : 'Volume'} ${id}${title ? ' — ' + title : ''}`,
+      viewerCitationVolumePage: isEn
+        ? (volume, page) => `Volume ${volume}, p. ${page}`
+        : isIt
+          ? (volume, page) => `Volume ${volume}, p. ${page}`
+          : (volume, page) => `Volume ${volume}, p. ${page}`,
+      viewerCitationAccessed: isEn
+        ? (date) => `Accessed ${date}`
+        : isIt
+          ? (date) => `Consultato il ${date}`
+          : (date) => `Acesso em ${date}`,
     };
+
+    function normalizeWhitespace(value) {
+      return String(value || '').replace(/\s+/g, ' ').trim();
+    }
+
+    function hasMeaningfulDescriptor(value) {
+      const text = normalizeWhitespace(value);
+      if (!text || text.length <= 2) return false;
+      return (text.match(/\p{L}/gu) || []).length >= 3;
+    }
+
+    function pickBestDescriptor(...values) {
+      return values
+        .map((value) => normalizeWhitespace(value))
+        .filter((value) => hasMeaningfulDescriptor(value))
+        .sort((a, b) => b.length - a.length)[0] || '';
+    }
+
+    function isUsefulLocator(value) {
+      const text = normalizeWhitespace(value);
+      return !!text && !/^\d+$/.test(text);
+    }
+
+    function formatAccessDate(date = new Date()) {
+      return new Intl.DateTimeFormat(localeTag, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      }).format(date);
+    }
+
+    function joinSentence(parts) {
+      return parts
+        .map((part) => normalizeWhitespace(part))
+        .filter(Boolean)
+        .map((part) => part.endsWith('.') ? part : `${part}.`)
+        .join(' ');
+    }
+
+    function buildCitationSubject(meta) {
+      return [meta.work, meta.locator].filter(Boolean).join('. ');
+    }
+
+    function buildCitationAuthor(meta) {
+      return normalizeWhitespace(meta.author || meta.source);
+    }
+
+    function buildCitationCorporateAuthor(meta) {
+      return normalizeWhitespace(meta.source || meta.author);
+    }
+
+    function buildViewerIssueUrl({ page, volume, volumeAuthor, volumeWork }) {
+      const issueTitleDescriptor = pickBestDescriptor(page.work, volumeWork, page.author, volumeAuthor, volume.title, volume.id);
+      const referenceParts = [
+        pickBestDescriptor(page.author, volumeAuthor),
+        pickBestDescriptor(page.work, volumeWork),
+        normalizeWhitespace(volume.title || ''),
+      ].filter(Boolean);
+      const reference = referenceParts.join(' — ') || volume.id;
+      const title = `${volume.id} p. ${page.page}${issueTitleDescriptor ? ` — ${issueTitleDescriptor}` : ''}`;
+      const params = new URLSearchParams({
+        template: 'ocr-page-report.yml',
+        title,
+        volume_id: volume.id,
+        page_number: String(page.page),
+        page_url: window.location.href,
+        reference,
+      });
+      return `https://github.com/Fabio3rs/BibliothecaPatristica/issues/new?${params.toString()}`;
+    }
+
+    function buildShortReference({ page, volume, volumeAuthor, volumeWork }) {
+      const descriptor = pickBestDescriptor(page.title, page.work, volumeWork, page.author, volumeAuthor, volume.title);
+      return `${volume.id} p. ${page.page}${descriptor ? ` — ${descriptor}` : ''}`;
+    }
+
+    function buildCitationMetadata({ page, volume, volumeAuthor, volumeWork, summaryGlobal }) {
+      const excerpt = normalizeWhitespace(page.excerpt || page.summary_page || summaryGlobal || page.summary_global || '');
+      const author = pickBestDescriptor(page.author, volumeAuthor);
+      const work = pickBestDescriptor(page.work, volumeWork);
+      const locator = isUsefulLocator(page.title) ? normalizeWhitespace(page.title) : '';
+      const source = normalizeWhitespace(s.viewerCitationSource || 'Bibliotheca Patristica Digital');
+      const volumePage = s.viewerCitationVolumePage(volume.id, page.page);
+      return {
+        excerpt,
+        author,
+        work,
+        locator,
+        source,
+        volumeId: volume.id,
+        volumePage,
+        url: window.location.href,
+        accessDate: formatAccessDate(),
+      };
+    }
+
+    function formatCitation(style, meta) {
+      const author = buildCitationAuthor(meta);
+      const corporateAuthor = buildCitationCorporateAuthor(meta);
+      const subject = buildCitationSubject(meta) || meta.work || s.viewerVolumeLabel(meta.volumeId || '', '');
+      const locator = meta.locator ? `${s.viewerCitationLocatorLabel} ${meta.locator}` : '';
+      const volumePage = meta.volumePage;
+      if (style === 'apa') {
+        const authorPart = author || corporateAuthor;
+        const workPart = subject || meta.source;
+        const parenthetical = [locator, volumePage].filter(Boolean).join(', ');
+        const sourcePart = meta.author ? meta.source : '';
+        return joinSentence([
+          authorPart,
+          '(n.d.)',
+          `${workPart}${parenthetical ? ` (${parenthetical})` : ''}`,
+          sourcePart,
+          meta.url,
+        ]);
+      }
+      if (style === 'chicago') {
+        return joinSentence([
+          author || corporateAuthor,
+          subject,
+          locator,
+          volumePage,
+          s.viewerCitationAccessed(meta.accessDate),
+          meta.url,
+        ]);
+      }
+      if (style === 'abnt') {
+        return joinSentence([
+          (author || corporateAuthor).toLocaleUpperCase(localeTag),
+          subject,
+          volumePage,
+          `${s.viewerCitationAvailableAt}: ${meta.url}`,
+          `${s.viewerCitationAccessedOn}: ${meta.accessDate}`,
+        ]);
+      }
+      return joinSentence([
+        author || corporateAuthor,
+        subject,
+        locator,
+        volumePage,
+        `${s.viewerCitationAvailableAt}: ${meta.url}`,
+        `${s.viewerCitationAccessedOn}: ${meta.accessDate}`,
+      ]);
+    }
+
+    async function writeClipboardWithFeedback(button, buildText, idleLabel) {
+      try {
+        const text = buildText();
+        if (!text) return;
+        await navigator.clipboard.writeText(text);
+        button.textContent = s.viewerCopied;
+      } catch (_) {
+        button.textContent = s.viewerCopyFailed;
+      }
+      setTimeout(() => {
+        button.textContent = idleLabel;
+      }, 1200);
+    }
 
     async function getJSON(path) {
       return getJsonOnce(path);
@@ -658,6 +827,12 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         badgePage.textContent = s.viewerPageOfTotal(pageNumber, lastPage);
         identityMetaWrap.appendChild(badgePage);
 
+        const seoLink = document.createElement('a');
+        seoLink.className = 'identity-badge';
+        seoLink.href = `${assetBase}seo/volumes/${encodeURIComponent(volume.id)}`;
+        seoLink.textContent = seoHubLabel;
+        identityMetaWrap.appendChild(seoLink);
+
         if (volumeSummary) {
           const summaryP = document.createElement('p');
           summaryP.style.cssText = 'margin: var(--space-2) 0 0; color: var(--color-muted); font-size: 0.9rem; line-height: 1.5;';
@@ -744,19 +919,44 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         const copyExcerptBtn = document.createElement('button');
         copyExcerptBtn.className = 'button secondary';
         copyExcerptBtn.style.fontSize = '0.8rem';
-        copyExcerptBtn.textContent = isEn ? 'Copy excerpt' : isIt ? 'Copia estratto' : 'Copiar trecho';
+        copyExcerptBtn.textContent = s.viewerCopyExcerpt;
         const copyRefBtn = document.createElement('button');
         copyRefBtn.className = 'button secondary';
         copyRefBtn.style.fontSize = '0.8rem';
-        copyRefBtn.textContent = isEn ? 'Copy reference' : isIt ? 'Copia riferimento' : 'Copiar referência';
+        copyRefBtn.textContent = s.viewerCopyReference;
+        const citationStyleLabel = document.createElement('label');
+        citationStyleLabel.className = 'viewer-citation-control';
+        citationStyleLabel.style.fontSize = '0.8rem';
+        citationStyleLabel.style.color = 'var(--color-muted)';
+        citationStyleLabel.textContent = `${s.viewerCitationStyleLabel}: `;
+        const citationStyleSelect = document.createElement('select');
+        citationStyleSelect.className = 'viewer-citation-select';
+        citationStyleSelect.setAttribute('aria-label', s.viewerCitationStyleLabel);
+        [
+          ['abnt', s.viewerCitationStyleAbnt],
+          ['apa', s.viewerCitationStyleApa],
+          ['chicago', s.viewerCitationStyleChicago],
+        ].forEach(([value, label]) => {
+          const option = document.createElement('option');
+          option.value = value;
+          option.textContent = label;
+          citationStyleSelect.appendChild(option);
+        });
+        citationStyleLabel.appendChild(citationStyleSelect);
+        const citeExcerptBtn = document.createElement('button');
+        citeExcerptBtn.className = 'button secondary';
+        citeExcerptBtn.style.fontSize = '0.8rem';
+        citeExcerptBtn.textContent = s.viewerCitationAction;
         const reportBtn = document.createElement('a');
         reportBtn.className = 'button secondary';
         reportBtn.style.fontSize = '0.8rem';
         reportBtn.target = '_blank';
         reportBtn.rel = 'noreferrer';
-        reportBtn.textContent = isEn ? 'Report issue' : isIt ? 'Segnala errore' : 'Reportar erro';
+        reportBtn.textContent = s.viewerReportIssue;
         actionBar.appendChild(copyExcerptBtn);
         actionBar.appendChild(copyRefBtn);
+        actionBar.appendChild(citationStyleLabel);
+        actionBar.appendChild(citeExcerptBtn);
         actionBar.appendChild(reportBtn);
 
         // ── Índice de páginas (collapsible) ──
@@ -874,28 +1074,31 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
         header.appendChild(navGroup);
 
-        const citationText = `${volume.id} p. ${page.page}`;
-        reportBtn.href = `https://github.com/Fabio3rs/BibliothecaPatristica/issues/new?title=${encodeURIComponent(`${citationText} — ${volumeAuthor || volumeWork || volume.id}`)}&body=${encodeURIComponent(`URL: ${window.location.href}\n\nObservação:\n`)}`;
+        reportBtn.href = buildViewerIssueUrl({ page, volume, volumeAuthor, volumeWork });
         copyExcerptBtn.addEventListener('click', async () => {
-          const text = (page.excerpt || page.summary_page || summaryGlobal || '').trim();
-          if (!text) return;
-          try {
-            await navigator.clipboard.writeText(text);
-            copyExcerptBtn.textContent = isEn ? 'Copied' : isIt ? 'Copiato' : 'Copiado';
-            setTimeout(() => {
-              copyExcerptBtn.textContent = isEn ? 'Copy excerpt' : isIt ? 'Copia estratto' : 'Copiar trecho';
-            }, 1200);
-          } catch (_) {}
+          await writeClipboardWithFeedback(
+            copyExcerptBtn,
+            () => normalizeWhitespace(page.excerpt || page.summary_page || summaryGlobal || ''),
+            s.viewerCopyExcerpt,
+          );
         });
         copyRefBtn.addEventListener('click', async () => {
-          const text = `${citationText}${page.title ? ` — ${page.title}` : ''}`;
-          try {
-            await navigator.clipboard.writeText(text);
-            copyRefBtn.textContent = isEn ? 'Copied' : isIt ? 'Copiato' : 'Copiado';
-            setTimeout(() => {
-              copyRefBtn.textContent = isEn ? 'Copy reference' : isIt ? 'Copia riferimento' : 'Copiar referência';
-            }, 1200);
-          } catch (_) {}
+          await writeClipboardWithFeedback(
+            copyRefBtn,
+            () => buildShortReference({ page, volume, volumeAuthor, volumeWork }),
+            s.viewerCopyReference,
+          );
+        });
+        citeExcerptBtn.addEventListener('click', async () => {
+          await writeClipboardWithFeedback(
+            citeExcerptBtn,
+            () => {
+              const meta = buildCitationMetadata({ page, volume, volumeAuthor, volumeWork, summaryGlobal });
+              const reference = formatCitation(citationStyleSelect.value, meta);
+              return meta.excerpt ? `${meta.excerpt}\n\n${reference}` : reference;
+            },
+            s.viewerCitationAction,
+          );
         });
 
         mainContent.appendChild(identityCard);

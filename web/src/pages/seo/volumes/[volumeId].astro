@@ -1,0 +1,271 @@
+---
+import Layout from '../../../components/Layout.astro';
+import { buildCanonicalUrl, getSeoVolumePayload, listIndexVolumes } from '../../../lib/seoIndices';
+
+export async function getStaticPaths() {
+  const volumes = await listIndexVolumes();
+  return volumes.map((volume) => ({
+    params: { volumeId: volume.volume_id },
+  }));
+}
+
+const { volumeId } = Astro.params;
+if (!volumeId) {
+  throw new Error('volumeId ausente em /seo/volumes/[volumeId].astro');
+}
+
+const payload = await getSeoVolumePayload(volumeId);
+const base = import.meta.env.BASE_URL || '/';
+const basePath = base.endsWith('/') ? base.slice(0, -1) : base;
+const canonicalPath = `/seo/volumes/${payload.volumeId}`;
+const canonicalUrl = buildCanonicalUrl(Astro.site, canonicalPath);
+const pageTitle = `${payload.volumeId} — índice estático do volume | Bibliotheca Patristica`;
+const description = `${payload.volumeId}: hub estático com links editoriais para o volume, índices originais e páginas de leitura com referências patrísticas.`;
+
+function withBase(path: string) {
+  const clean = path.startsWith('/') ? path : `/${path}`;
+  return `${basePath}${clean}`;
+}
+
+function pct(value: number) {
+  return `${Math.round((Number(value) || 0) * 100)}%`;
+}
+
+function pageRange(start: number | null, end: number | null) {
+  if (!start) return '';
+  return end && end !== start ? `p. ${start}–${end}` : `p. ${start}`;
+}
+---
+
+<Layout
+  title={pageTitle}
+  description={description}
+  breadcrumbs={[{ label: 'Início', href: withBase('/') }, { label: 'SEO' }, { label: payload.volumeId }]}
+  showPrimaryNav={false}
+  showLocaleSwitch={false}
+>
+  <Fragment slot="head">
+    <link rel="canonical" href={canonicalUrl} />
+  </Fragment>
+
+  <section class="seo-hero card" style="margin-top:var(--space-4);">
+    <div>
+      <p class="eyebrow">Hub estático para crawler</p>
+      <h1>{payload.heading}</h1>
+      <p>
+        Esta página resume o volume e aponta para os índices originais publicados no acervo. O conteúdo indexado
+        preserva a linguagem da fonte, com moldura editorial mínima em português para facilitar descoberta,
+        rastreamento e distribuição de links.
+      </p>
+    </div>
+    <div class="hero-actions">
+      <a class="button" href={withBase(`/viewer?doc=${encodeURIComponent(payload.volumeId)}`)}>Abrir volume no viewer</a>
+      <a class="button secondary" href={withBase(`/indices?doc=${encodeURIComponent(payload.volumeId)}`)}>Abrir índice do volume</a>
+      {payload.hasThematicSections && (
+        <a class="button secondary" href={withBase(`/seo/volumes/${encodeURIComponent(payload.volumeId)}/indice-tematico`)}>Abrir índice temático estático</a>
+      )}
+    </div>
+  </section>
+
+  <section class="seo-grid" aria-label="Resumo do volume">
+    <article class="card seo-metrics">
+      <h2>Visão geral</h2>
+      <div class="metric-grid">
+        <div><strong>{payload.collection || 'Coleção não informada'}</strong><span>Coleção</span></div>
+        <div><strong>{pct(payload.completeness)}</strong><span>Completude</span></div>
+        <div><strong>{payload.worksTotal}</strong><span>Obras</span></div>
+        <div><strong>{payload.sectionsTotal}</strong><span>Seções</span></div>
+        <div><strong>{payload.entriesTotal}</strong><span>Entradas</span></div>
+        <div><strong>{payload.sections.length}</strong><span>Seções temáticas</span></div>
+      </div>
+    </article>
+
+    <article class="card seo-notes">
+      <h2>Nota editorial</h2>
+      <p>
+        Os itens abaixo são organizados a partir do material original dos índices, em latim, grego e outras línguas
+        do corpus. Esta rota não tenta traduzir nem reinterpretar o índice; apenas explicita links HTML estáticos
+        para volumes, seções e páginas de referência.
+      </p>
+      <p>
+        Quando uma entrada não tem página de referência, o link cai para a navegação de índice do volume.
+      </p>
+    </article>
+  </section>
+
+  {payload.works.length > 0 && (
+    <section class="card seo-section-list" aria-label="Obras do volume">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Obras</p>
+          <h2>Obras identificadas no volume</h2>
+        </div>
+        <a class="button secondary" href={withBase(`/indices?doc=${encodeURIComponent(payload.volumeId)}`)}>Ver detalhes no índice</a>
+      </div>
+      <ul class="link-list">
+        {payload.works.map((work) => (
+          <li>
+            <a href={withBase(`/indices?doc=${encodeURIComponent(payload.volumeId)}${work.key ? `&work=${encodeURIComponent(work.key)}` : ''}`)}>
+              <strong>{work.author ? `${work.author} — ` : ''}{work.title}</strong>
+              {(work.pageStart || work.pageEnd) && <span>{pageRange(work.pageStart, work.pageEnd)}</span>}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section class="card seo-section-list" aria-label="Seções temáticas">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Índice temático</p>
+        <h2>Seções temáticas detectadas</h2>
+      </div>
+      {payload.hasThematicSections ? (
+        <a class="button secondary" href={withBase(`/seo/volumes/${encodeURIComponent(payload.volumeId)}/indice-tematico`)}>Abrir hub temático</a>
+      ) : null}
+    </div>
+
+    {payload.hasThematicSections ? (
+      <ul class="section-list">
+        {payload.sections.map((section) => (
+          <li id={section.anchorId}>
+            <div class="section-copy">
+              <strong>{section.title}</strong>
+              {section.titleSecondary && <span>{section.titleSecondary}</span>}
+              {(section.pageStart || section.pageEnd) && <small>{pageRange(section.pageStart, section.pageEnd)}</small>}
+            </div>
+            <div class="section-actions">
+              <a class="button secondary" href={withBase(`/seo/volumes/${encodeURIComponent(payload.volumeId)}/indice-tematico#${section.anchorId}`)}>Entradas</a>
+              <a class="button secondary" href={withBase(section.sectionHref)}>Abrir seção no índice</a>
+            </div>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="empty-copy">Nenhuma seção temática do allowlist foi detectada neste volume.</p>
+    )}
+  </section>
+
+  <style>
+    .seo-hero {
+      display: grid;
+      gap: var(--space-4);
+      padding: var(--space-6);
+      border: 1px solid var(--color-border);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 88%, var(--color-accent) 12%), var(--color-surface));
+    }
+    .seo-hero h1, .seo-metrics h2, .seo-notes h2, .seo-section-list h2 {
+      margin: 0;
+      font-family: var(--font-serif);
+    }
+    .seo-hero p {
+      margin: var(--space-2) 0 0;
+      max-width: 72ch;
+      color: var(--color-muted);
+      line-height: 1.65;
+    }
+    .eyebrow {
+      margin: 0 0 var(--space-2);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-accent);
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+    .hero-actions {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .seo-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: var(--space-4);
+      margin-top: var(--space-5);
+    }
+    .seo-metrics, .seo-notes, .seo-section-list {
+      padding: var(--space-5);
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+    .metric-grid div {
+      display: grid;
+      gap: 0.25rem;
+      padding: var(--space-3);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-s);
+      background: var(--color-surface-2);
+    }
+    .metric-grid strong {
+      font-size: 1.15rem;
+    }
+    .metric-grid span, .link-list span, .section-copy span, .section-copy small, .empty-copy {
+      color: var(--color-muted);
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+    .link-list, .section-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-3);
+    }
+    .link-list a, .section-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-3);
+      align-items: start;
+      padding: var(--space-3);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-s);
+      background: var(--color-surface-2);
+      text-decoration: none;
+      color: var(--color-ink);
+    }
+    .link-list a:hover, .section-list li:hover {
+      border-color: var(--color-accent);
+    }
+    .section-copy {
+      display: grid;
+      gap: 0.25rem;
+    }
+    .section-actions {
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      justify-content: end;
+    }
+    @media (max-width: 900px) {
+      .seo-grid {
+        grid-template-columns: 1fr;
+      }
+      .metric-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .link-list a, .section-list li, .section-head {
+        flex-direction: column;
+        align-items: start;
+      }
+      .section-actions {
+        justify-content: start;
+      }
+    }
+    @media (max-width: 560px) {
+      .metric-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</Layout>

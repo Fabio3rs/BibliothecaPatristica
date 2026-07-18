@@ -52,6 +52,7 @@ PATTERN_GROUPS: dict[str, list[tuple[str, re.Pattern[str]]]] = {
 @dataclass
 class Hit:
     file: str
+    file_seq: int | None
     page: int | None
     line: int
     text: str
@@ -67,9 +68,18 @@ def patterns_for_collection(collection: str) -> list[tuple[str, re.Pattern[str]]
     return patterns
 
 
-def page_from_path(path: Path) -> int | None:
+def file_seq_from_path(path: Path) -> int | None:
     m = re.search(r'-(\d+)\.txt$', path.name)
     return int(m.group(1)) if m else None
+
+
+def fold_ligatures(text: str) -> str:
+    return (
+        text.replace("Æ", "AE")
+        .replace("æ", "ae")
+        .replace("Œ", "OE")
+        .replace("œ", "oe")
+    )
 
 
 def scan_file(path: Path, patterns: Iterable[tuple[str, re.Pattern[str]]], max_lines: int | None = None) -> list[Hit]:
@@ -81,9 +91,11 @@ def scan_file(path: Path, patterns: Iterable[tuple[str, re.Pattern[str]]], max_l
             line = raw.rstrip('\n')
             if not line.strip():
                 continue
+            folded_line = fold_ligatures(line)
             for kind, pattern in patterns:
-                if pattern.search(line):
-                    hits.append(Hit(str(path), page_from_path(path), line_no, line.strip(), kind))
+                if pattern.search(line) or pattern.search(folded_line):
+                    file_seq = file_seq_from_path(path)
+                    hits.append(Hit(str(path), file_seq, file_seq, line_no, line.strip(), kind))
                     break
     return hits
 
@@ -92,12 +104,13 @@ def summarize_hits(hits: list[Hit]) -> dict[str, list[dict[str, object]]]:
     summary: dict[str, list[dict[str, object]]] = {}
     seen: set[tuple[str, int | None, str]] = set()
     for hit in hits:
-        key = (hit.kind, hit.page, hit.text)
+        key = (hit.kind, hit.file_seq, hit.text)
         if key in seen:
             continue
         seen.add(key)
         summary.setdefault(hit.kind, []).append(
             {
+                "file_seq": hit.file_seq,
                 "page": hit.page,
                 "file": hit.file,
                 "line": hit.line,
@@ -116,6 +129,7 @@ def detect_retrospective_tables(hits: list[Hit], collection: str) -> list[dict[s
         if hit.kind == "volume_table" and ("TOMES" in upper or re.search(r"\bTOME\s+[IVXLC0-9]+\b", upper)):
             retrospective.append(
                 {
+                    "file_seq": hit.file_seq,
                     "page": hit.page,
                     "file": hit.file,
                     "line": hit.line,
@@ -174,8 +188,8 @@ def main() -> None:
 
     print('== Sample hits ==')
     for path in sample_files:
-        page = page_from_path(path)
-        print(f'[{page if page is not None else "?"}] {path.name}')
+        file_seq = file_seq_from_path(path)
+        print(f'[OCR file {file_seq if file_seq is not None else "?"}] {path.name}')
         with path.open('r', encoding='utf-8', errors='replace') as fh:
             for line_no, raw in enumerate(fh, start=1):
                 if line_no > args.max_lines:
@@ -183,15 +197,16 @@ def main() -> None:
                 line = raw.rstrip('\n')
                 if not line.strip():
                     continue
+                folded_line = fold_ligatures(line)
                 for kind, pattern in patterns:
-                    if pattern.search(line):
+                    if pattern.search(line) or pattern.search(folded_line):
                         print(f'  L{line_no} [{kind}]: {line.strip()}')
                         break
     print()
 
     print('== All heading hits ==')
     for hit in all_hits:
-        print(f'[{hit.page if hit.page is not None else "?"}] {Path(hit.file).name}:L{hit.line} [{hit.kind}] {hit.text}')
+        print(f'[OCR file {hit.file_seq if hit.file_seq is not None else "?"}] {Path(hit.file).name}:L{hit.line} [{hit.kind}] {hit.text}')
 
 
 if __name__ == '__main__':

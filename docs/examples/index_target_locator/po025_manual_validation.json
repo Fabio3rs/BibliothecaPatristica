@@ -1,0 +1,33 @@
+{
+  "volume_id": "PO025",
+  "source_root": "teste/PO025/text",
+  "options": {
+    "top_k": 5,
+    "adjacency_window": 2
+  },
+  "entries": [
+    {
+      "entry_id": "po025_galates_vi_14",
+      "lemma_raw": "Galates VI, 14",
+      "query_names": [
+        "L'Apôtre aux Galates vi",
+        "Galat. vi, 14",
+        "Notre Seigneur Jésus-Christ, par lequel le monde a été crucifié pour moi"
+      ],
+      "page_hints": [
+        "370",
+        "322"
+      ],
+      "page_hint_ints": [
+        370,
+        322
+      ],
+      "context_raw": "L'Apôtre aux Galates vi. 14 « Et moi, qu'il ne m'arrive pas de me réjouir, sinon dans la croix de Notre Seigneur Jésus-Christ... »",
+      "expected_manual": {
+        "target_file": "teste/PO025/text/a0329d4a-5e9b-4a7b-9b0c-fc83f504d82e-380.txt",
+        "printed_page_anchor": 370,
+        "reason": "Caso PO com forte evidência textual direta no corpo bilingue/copta-francês, útil para validar normalização e matching fora de PG/PL."
+      }
+    }
+  ]
+}

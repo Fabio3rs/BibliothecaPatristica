@@ -1,0 +1,53 @@
+{
+  "volume_id": "PG003",
+  "source_root": "teste/PG003/text",
+  "options": {
+    "top_k": 5,
+    "adjacency_window": 2
+  },
+  "entries": [
+    {
+      "entry_id": "pg003_dionysius_hierotheo_543",
+      "lemma_raw": "Dionysius (S.)",
+      "query_names": [
+        "S. Dionysii de Hierotheo laudabile testimonium",
+        "S. Dionysius",
+        "Dionysius",
+        "Hierotheo"
+      ],
+      "page_hints": [
+        "543"
+      ],
+      "page_hint_ints": [
+        543
+      ],
+      "context_raw": "Dionysius (S.) cur post sanctum Hierotheum scripserit, 513, 548. S. Dionysii de Hierotheo laudabile testimonium, 543.",
+      "expected_manual": {
+        "target_file": "teste/PG003/text/71f490b7-f7b5-498a-8e94-ef7e22d326e7-272.txt",
+        "printed_page_anchor": 543,
+        "reason": "A página alvo contém cabeçalho impresso 543/544 e texto de S. Dionysii Areopagitae."
+      }
+    },
+    {
+      "entry_id": "pg003_doctrina_mystica_543",
+      "lemma_raw": "Doctrina mystica",
+      "query_names": [
+        "Doctrina mystica",
+        "mystica theologia",
+        "Ad mysticam theologiam"
+      ],
+      "page_hints": [
+        "543"
+      ],
+      "page_hint_ints": [
+        543
+      ],
+      "context_raw": "Doctrina mystica qualis sit, 543. Ad mysticam doctrinam quomodo pervenitur, ibid.",
+      "expected_manual": {
+        "target_file": "teste/PG003/text/71f490b7-f7b5-498a-8e94-ef7e22d326e7-272.txt",
+        "printed_page_anchor": 543,
+        "reason": "Mesmo alvo físico do primeiro caso, útil para verificar se o helper depende demais do nome próprio e pouco do contexto temático."
+      }
+    }
+  ]
+}

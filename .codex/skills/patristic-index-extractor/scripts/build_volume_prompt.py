@@ -16,6 +16,7 @@ def build_todo_lines(prescan: dict, collection: str) -> str:
         lines = [
             "- [ ] Verify the volume title and tome-level table.",
             "- [ ] Verify which `FASC.` entries belong to the current tome.",
+            "- [ ] For each discovered structure, locate the real OCR files using string evidence, not only page numbers.",
         ]
         heading_markers = (
             "TOMUS",
@@ -35,7 +36,10 @@ def build_todo_lines(prescan: dict, collection: str) -> str:
             "CORRIGENDA",
         )
     else:
-        lines = ["- [ ] Verify the front index and record its scope."]
+        lines = [
+            "- [ ] Verify the front index and record its scope.",
+            "- [ ] For each discovered structure, locate the real OCR files using string evidence, not only page numbers.",
+        ]
         heading_markers = (
             "ELENCHUS",
             "AUCTORUM ET OPERUM",
@@ -51,11 +55,11 @@ def build_todo_lines(prescan: dict, collection: str) -> str:
     seen: set[tuple[str, int | None]] = set()
     for hit in sorted(
         (h for h in hits if str(h.get("text", "")).strip()),
-        key=lambda h: (h.get("page") if isinstance(h.get("page"), int) else 10**9, str(h.get("text", ""))),
+        key=lambda h: (h.get("file_seq") if isinstance(h.get("file_seq"), int) else h.get("page") if isinstance(h.get("page"), int) else 10**9, str(h.get("text", ""))),
     ):
         text = str(hit.get("text", "")).strip()
-        page = hit.get("page")
-        if page is None:
+        file_seq = hit.get("file_seq")
+        if file_seq is None:
             continue
         if not text[0].isalpha():
             continue
@@ -75,12 +79,12 @@ def build_todo_lines(prescan: dict, collection: str) -> str:
             )
             if not starts_like_heading and upper_ratio < 0.7:
                 continue
-        key = (upper, page)
+        key = (upper, file_seq)
         if key in seen:
             continue
         if any(marker in upper for marker in heading_markers):
             seen.add(key)
-            lines.append(f"- [ ] Verify candidate index at page {page}: {text}")
+            lines.append(f"- [ ] Verify candidate index in OCR file suffix {file_seq}: {text}")
     if collection == "PO":
         lines.extend([
             "- [ ] Build one TODO item per discovered fascicle or work entrypoint.",
@@ -100,10 +104,35 @@ def build_todo_lines(prescan: dict, collection: str) -> str:
 
 def work_instructions(collection: str) -> str:
     base = [
+        "- This run is only for the current `volume_id`; every index section, work anchor, `target_file`, grep, and OCR search must stay inside the current `source_root`.",
+        "- Never search another volume to resolve an index from the current volume. A volume index belongs only to its own volume.",
+        "- Numbering glossary: `...-NNN.txt` is an OCR file suffix / physical file locator, not an editorial page number.",
+        "- Numbering glossary: `start_page`, `page_start`, and `page_ref_*` refer to printed/internal/editorial pagination or column references inside the historical volume.",
+        "- Numbering glossary: one scan may contain two printed pages, facing pages, or split-column layouts; do not assume a 1:1 relation between scan layout and printed pagination.",
         "- Start from the PRESCAN hints.",
         "- Verify the hinted files directly before deciding anything.",
         "- Search the whole volume if needed, but do not skip the hinted pages.",
+        "- After finding an index heading, keep searching until you locate the real OCR files for the indexed work or section.",
+        "- Use multi-step local search with title strings, author names, distinctive phrases, and nearby headings.",
+        "- For ligatures and CER variants, search both forms inside the same volume: `Æ/AE`, `æ/ae`, `Œ/OE`, `œ/oe`.",
+        "- When a title or heading contains ligatures, run paired local searches inside the same `source_root`, for example `GRÆCITATIS` and `GRAECITATIS`, or `quæ` and `quae`.",
+        "- Treat page numbers inside OCR as weak hints only; digit CER, page wear, bleed-through, cropping, and scan defects can make printed numbers unreliable.",
+        "- Never infer an editorial/internal page number from the OCR file suffix alone.",
+        "- Never infer the OCR file suffix from an editorial/internal page number alone.",
+        "- Prefer text evidence over printed numbers: repeated titles, headers, author strings, opening incipits, explicit work names, and distinctive section phrases are stronger anchors than numeric literals.",
+        "- Do not map `target_file` from numbers alone when stronger string evidence is available elsewhere in the volume.",
         "- Keep OCR literals.",
+        "- When using local text search, scope it to the current volume path only. Good pattern: `rg -n -S \"STRING\" {source_root}`.",
+        "- When narrowing by filename suffix, still keep the current volume root explicit. Good pattern: `rg -n -S \"STRING\" {source_root}/*.txt`.",
+        "- Prefer paired grep variants when ligatures may have been flattened by OCR, for example: `rg -n -S \"GRÆCITATIS|GRAECITATIS\" {source_root}`.",
+        "- Do not run repository-wide `rg`/`grep` for index resolution unless the task explicitly asks for a cross-volume audit.",
+        "- Transcribe the actual line-by-line entries for every verified index/table section.",
+        "- Do not stop after identifying headings, spans, or section structure.",
+        "- Do not use summaries like `entries_summary` in place of real `entries`.",
+        "- Leave `entries` empty only if the section truly has no line items, or OCR quality makes line extraction unreliable; explain that explicitly in `raw_json`.",
+        "- Before writing the final JSON, validate referential integrity inside the payload: every non-null `sections[].work_key` must exactly match one `works[].work_key` from the same volume payload.",
+        "- If an index heading uses a thematic label, alternate Latin form, ligature variant, or shortened title, still point `sections[].work_key` to the real canonical work record already present in `works[]`.",
+        "- Never invent a new `sections[].work_key` label unless that same key also exists in `works[]` for the current payload.",
         "- Apply the collection-specific taxonomy from `references/volume-taxonomy.md`.",
         "- If a number is uncertain, keep the raw literal and lower confidence.",
     ]
@@ -123,6 +152,7 @@ def work_instructions(collection: str) -> str:
                 "- Separate volume-front, work-front, and volume-end indexes.",
                 "- For each work, inspect the opening pages and the work index before naming the work.",
                 "- Inspect the closing pages for final indexes.",
+                "- For PG/PL, confirm work boundaries with repeated title/author strings across multiple files when numeric references are noisy.",
             ]
         )
     return "\n".join(base)
@@ -150,11 +180,17 @@ VOLUME
 - source_root: {args.source_root}
 - collection: {args.collection}
 
+NUMBERING GLOSSARY
+- OCR file / file suffix / physical file: the numeric suffix in `...-NNN.txt`; this identifies the OCR text file only.
+- Internal/editorial/printed page: the page, folio, or column number printed inside the historical source.
+- Scan/sheet reality: one scan may contain two printed pages, facing pages, or a non-1:1 layout.
+- Do not assume these numbering systems are equivalent.
+
 PRESCAN
 {json.dumps(prescan, ensure_ascii=False, indent=2)}
 
 WORK INSTRUCTIONS
-{work_instructions(args.collection)}
+{work_instructions(args.collection).format(source_root=args.source_root)}
 
 TODO
 {build_todo_lines(prescan, args.collection)}

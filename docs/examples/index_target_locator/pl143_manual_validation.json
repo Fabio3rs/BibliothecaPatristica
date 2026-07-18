@@ -1,0 +1,60 @@
+{
+  "volume_id": "PL143",
+  "source_root": "teste/PL143/text",
+  "options": {
+    "top_k": 5,
+    "adjacency_window": 2
+  },
+  "entries": [
+    {
+      "entry_id": "pl143_rudolfus_pfullendorf_293",
+      "lemma_raw": "Rudolfus de Pfullendorf filius",
+      "query_names": [
+        "Rudolfus de Pfullendorf",
+        "Rudolfus Pfullendorfensis",
+        "Rudolfi de Bregantia",
+        "Elisabetham nominat"
+      ],
+      "page_hints": [
+        "293 seqq."
+      ],
+      "page_hint_ints": [
+        293
+      ],
+      "context_raw": "Rudolfus de Pfullendorf filius 293 seqq.",
+      "expected_manual": {
+        "target_file": "teste/PL143/text/abffcac4-f601-458f-8b30-c02b4922b77f-155.txt",
+        "printed_page_anchor": 293,
+        "reason": "O arquivo contém cabeçalhos 297/298, mas o corpo preserva números editoriais 293-295 e o trecho cita diretamente Rudolfus de Pfullendorf."
+      }
+    },
+    {
+      "entry_id": "pl143_udalricus_brigantini_295",
+      "lemma_raw": "Udalricus",
+      "query_names": [
+        "Udalricus Brigantinus",
+        "Udalrici senioris",
+        "Biginabusin",
+        "Udalricus iste"
+      ],
+      "page_hints": [
+        "295",
+        "351"
+      ],
+      "page_hint_ints": [
+        295,
+        351
+      ],
+      "context_raw": "Udalricus 287, 292, 349-351. Hunc supra p. 295 Ottonis filium et Udalrici senioris nepotem suspicati sumus...",
+      "expected_manual": {
+        "target_file": "teste/PL143/text/abffcac4-f601-458f-8b30-c02b4922b77f-155.txt",
+        "accepted_targets": [
+          "teste/PL143/text/abffcac4-f601-458f-8b30-c02b4922b77f-154.txt",
+          "teste/PL143/text/abffcac4-f601-458f-8b30-c02b4922b77f-155.txt"
+        ],
+        "printed_page_anchor": 295,
+        "reason": "Caso útil para ambiguidade controlada: a entrada remete a várias páginas e a transição material entre 295 e 297 torna 154 e 155 aceitáveis como ponto de partida físico."
+      }
+    }
+  ]
+}

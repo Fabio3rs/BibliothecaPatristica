@@ -71,6 +71,10 @@ function viewerHref(volumeId: string, page?: string) {
   return `${getLocaleRouteUrl(Astro.currentLocale ?? 'pt-br', 'viewer', base)}?${params.toString()}`;
 }
 
+function seoVolumeHref(volumeId: string) {
+  return `${baseWithSlash}seo/volumes/${encodeURIComponent(volumeId || '')}`;
+}
+
 function pickReferencePage(...values: Array<string | number | undefined | null>) {
   for (const value of values) {
     const text = String(value || '').trim();
@@ -127,6 +131,7 @@ function renderVolume(item: any) {
         </span>
         <span class="summary-meta">
           <a class="badge open-link" href="${escapeAttr(viewerHref(volumeId))}">${escapeHtml(t.indicesOpenViewer)}</a>
+          <a class="badge open-link" href="${escapeAttr(seoVolumeHref(volumeId))}">SEO</a>
           <span class="badge">↕</span>
         </span>
       </summary>

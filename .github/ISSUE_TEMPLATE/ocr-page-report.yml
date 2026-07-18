@@ -1,0 +1,72 @@
+name: OCR / page report
+description: Report an OCR problem or another page-level issue from the viewer.
+title: "[OCR/Page]: "
+labels:
+  - ocr
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to report OCR mistakes or other page-level problems.
+        The viewer should prefill the page context automatically.
+  - type: input
+    id: volume_id
+    attributes:
+      label: Volume ID
+      description: Corpus volume identifier, for example `PG001` or `PL123`.
+      placeholder: PG001
+    validations:
+      required: true
+  - type: input
+    id: page_number
+    attributes:
+      label: Page number
+      description: Printed page number shown in the viewer.
+      placeholder: "123"
+    validations:
+      required: true
+  - type: input
+    id: page_url
+    attributes:
+      label: Viewer URL
+      description: Direct link to the page where you found the problem.
+      placeholder: https://github.com/...
+    validations:
+      required: true
+  - type: input
+    id: reference
+    attributes:
+      label: Work or reference
+      description: Best available author, work, or volume reference from the page metadata.
+      placeholder: John Chrysostom — Homilies on Matthew
+    validations:
+      required: false
+  - type: textarea
+    id: observed_problem
+    attributes:
+      label: What is wrong?
+      description: Describe the OCR mistake or page problem. Keep it focused on the affected line, word, or section.
+      placeholder: The OCR reads "gratiae" but the page clearly shows "gratiam".
+    validations:
+      required: true
+  - type: textarea
+    id: expected_text
+    attributes:
+      label: What should it say instead?
+      description: Provide the corrected text or the expected behavior.
+      placeholder: gratiam
+    validations:
+      required: true
+  - type: textarea
+    id: extra_context
+    attributes:
+      label: Additional context
+      description: Optional notes such as edition differences, neighboring text, or reproduction steps.
+      placeholder: Include only the minimum context needed. Avoid pasting long OCR excerpts.
+    validations:
+      required: false
+  - type: upload
+    id: attachments
+    attributes:
+      label: Supporting files
+      description: Optional screenshot or annotated image that helps locate the issue.
