@@ -208,10 +208,13 @@ export const en: Translations = {
   viewerDataNote:
     'Editorial note: this project started in Brazil. Summaries, keywords, and supporting metadata are still mainly in Brazilian Portuguese; the OCR remains in the original language whenever possible.',
   viewerNoContent: 'No content available.',
-  viewerOcrTitle: 'Original OCR',
+  viewerOcrTitle: 'Original page text',
+  viewerOcrTopAction: 'Show original text',
   viewerOcrLoading: 'Loading…',
   viewerOcrError: (msg: string) => `Error loading OCR: ${msg}`,
   viewerOcrOpen: '↗ open file',
+  viewerOcrDescription: 'This is the text automatically extracted from the page image (OCR).',
+  viewerOcrAutoLoadLabel: 'Load automatically in this browser',
   viewerOcrStructured: 'Structured view',
   viewerOcrPlain: 'Plain text',
   viewerOcrVisual: 'Visual layout',
@@ -244,8 +247,8 @@ export const en: Translations = {
   // ─── RawToggle ─────────────────────────────────────────────────────────────
   rawOpen: 'Open raw OCR',
   rawUnavailable: 'Raw OCR not published in this mirror.',
-  viewerRawLoadHint: 'Click to load the raw OCR on this page.',
-  viewerOcrLoadPage: 'Load here',
+  viewerRawLoadHint: 'Use this button to load the original text for this page.',
+  viewerOcrLoadPage: 'Load original text',
   viewerOcrOpenFile: 'Open raw file',
 
   // ─── Breadcrumbs ───────────────────────────────────────────────────────────
