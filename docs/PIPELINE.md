@@ -77,6 +77,46 @@
   - números, colunas e referências internas devem ser mantidos literalmente quando houver dúvida
   - a importação substitui por volume quando `--replace` é usado; sem isso, o fluxo preserva o que já existe
   - a documentação canônica da classificação editorial continua em `docs/taxonomia_indices.md`
+  - para o desenho ainda em aberto de um fluxo separado para índices alfabéticos, remissivos, onomásticos e bíblicos, ver `docs/levantamento_indices_alfabeticos.md`
+
+## Extração de índices alfabéticos e remissivos (`scripts/run_alphabetical_index_extraction.py`)
+- **Objetivo**: extrair payloads JSON para índices alfabéticos, analíticos, onomásticos, remissivos, bíblicos e de concordância em `PG`, `PL` e `PO`, usando o helper de localização material para apoiar a decisão do agente.
+- **Driver**: `scripts/run_alphabetical_index_extraction.py` executa um ciclo por volume, consome páginas pré-filtradas quando existirem, monta o prompt do Codex para `$alphabetical-index-extractor`, coleta o JSON final, valida o payload e importa automaticamente o resultado no SQLite alfabético.
+- **Entradas**:
+  - JSON externo de páginas filtradas por volume via `--filtered-pages-json` ou `--filtered-pages-dir`
+  - fallback heurístico interno quando não houver JSON externo; o script avisa quando isso acontecer
+  - payload anterior opcional via `--previous-result-json` ou `--previous-result-dir`
+- **Prompt e helper**:
+  - o envelope segue `.codex/skills/alphabetical-index-extractor/references/prompt-contract.md`
+  - o agente recebe `FILTERED PAGES`, `PREVIOUS RESULT`, `HELPER PATHS`, `OUTPUT FILE`
+  - o helper material é `scripts/index_target_locator.py`, com request/response JSON temporários por volume
+- **Artefatos**:
+  - `data/alphabetical_index_payloads/<VOLUME>_filtered_pages.json`
+  - `data/alphabetical_index_payloads/<VOLUME>_prompt.txt` quando `--dry-run`
+  - `data/alphabetical_index_payloads/<VOLUME>_helper_request.json`
+  - `data/alphabetical_index_payloads/<VOLUME>_helper_output.json`
+  - `data/alphabetical_index_payloads/<VOLUME>_last_message.txt`
+  - `data/alphabetical_index_payloads/<VOLUME>_alphabetical_indices.json`
+  - logs persistentes em `data/alphabetical_index_logs/*`
+- **Banco de dados**:
+  - `scripts/init_alphabetical_index_db.py` inicializa `data/alphabetical_indices.db`
+  - `scripts/import_alphabetical_index_json.py` importa um payload JSON canônico para o banco
+  - o schema usa `alphabetical_volumes`, `alphabetical_sections`, `alphabetical_nodes`, `alphabetical_entries`, `alphabetical_refs`, `alphabetical_scripture_refs` e `alphabetical_runs`
+- **Contrato de saída**:
+  - payload JSON com top-level `schema_version`, `generated_at`, `volume`, `sections`, `nodes`, `entries`, `refs`, `scripture_refs`, `coverage`, `notes`
+  - `section_start_file`, `editorial_anchor_file` e `target_file_best` permanecem conceitualmente distintos
+  - o helper não decide o payload final; sua evidência deve ser preservada em `raw_json`
+- **Flags úteis**:
+  - seleção: `--volume-id`, `--all-volumes`, `--blob`, `--limit`
+  - entradas externas: `--filtered-pages-json`, `--filtered-pages-dir`, `--previous-result-json`, `--previous-result-dir`
+  - execução: `--codex-bin`, `--model`, `--use-json`, `--replace`, `--skip-done`, `--db`
+  - operação: `--output-dir`, `--log-dir`, `--keep-temp`, `--dry-run`, `--verbose`
+- **Avisos**:
+  - o fallback interno de páginas filtradas é heurístico e mais fraco que um JSON externo curado
+  - headings detectados automaticamente são apenas candidatos; a decisão editorial continua com o agente
+  - `--skip-done` olha o status `imported` em `alphabetical_runs`, não apenas a presença do JSON no `output-dir`
+  - `--replace` sobrescreve o payload de saída e substitui as linhas do mesmo volume no banco alfabético
+  - o fluxo canônico está documentado em `docs/levantamento_indices_alfabeticos.md`, `docs/contrato_extrator_indices_alfabeticos.md` e `docs/normalizacao_indices_biblicos.md`
 
 ## Embeddings e clustering (`hdbscan_embedding.py`)
 - Entrada: tabela `keyword_embedding` (BLOB float32) em `data/patristica_keywords.db` (pode filtrar por `--model`).

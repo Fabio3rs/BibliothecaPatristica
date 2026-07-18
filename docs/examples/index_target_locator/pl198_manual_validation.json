@@ -1,0 +1,63 @@
+{
+  "volume_id": "PL198",
+  "source_root": "teste/PL198/text",
+  "options": {
+    "top_k": 5,
+    "adjacency_window": 2
+  },
+  "entries": [
+    {
+      "entry_id": "pl198_abisag_sapientia_139",
+      "lemma_raw": "Sapientia designata per Abisag Sunamitidem",
+      "query_names": [
+        "Abisag Sunamitis",
+        "Sapientia designata per Abisag Sunamitidem",
+        "ministerium Abisag",
+        "interna sapientia"
+      ],
+      "page_hints": [
+        "139",
+        "140"
+      ],
+      "page_hint_ints": [
+        139,
+        140
+      ],
+      "context_raw": "Sapientia designata per Abisag Sunamitidem, 139, 140.",
+      "expected_manual": {
+        "section_start_file": "teste/PL198/text/229c81cb-2a28-4de0-9028-c303ba6e5a5b-163.txt",
+        "accepted_section_start_targets": [
+          "teste/PL198/text/229c81cb-2a28-4de0-9028-c303ba6e5a5b-163.txt",
+          "teste/PL198/text/229c81cb-2a28-4de0-9028-c303ba6e5a5b-164.txt",
+          "teste/PL198/text/229c81cb-2a28-4de0-9028-c303ba6e5a5b-165.txt"
+        ],
+        "editorial_anchor_file": "teste/PL198/text/6f552050-20f4-4bc8-987f-e85d03353095-078.txt",
+        "printed_page_anchor": 139,
+        "reason": "A exposição temática começa na peça 163-165, mas o acerto editorial estrito para 139/140 cai melhor no arquivo 078."
+      }
+    },
+    {
+      "entry_id": "pl198_religiosa_congregatio_154",
+      "lemma_raw": "Religiosa congregatio designata per Mariam",
+      "query_names": [
+        "Religiosa congregatio designata per Mariam",
+        "prælatus illius per Joseph",
+        "sanctam congregationem",
+        "Maria est"
+      ],
+      "page_hints": [
+        "154"
+      ],
+      "page_hint_ints": [
+        154
+      ],
+      "context_raw": "Religiosa congregatio designata per Mariam, prælatus illius per Joseph, 154. Per Bethlehem Juda, 193.",
+      "expected_manual": {
+        "section_start_file": "teste/PL198/text/229c81cb-2a28-4de0-9028-c303ba6e5a5b-175.txt",
+        "editorial_anchor_file": "teste/PL198/text/73ee1ffc-330e-41ca-89d7-38bd826f3273-931.txt",
+        "printed_page_anchor": 154,
+        "reason": "Como abertura de desenvolvimento moral, 175 é o melhor início de seção; como arquivo onde a âncora editorial 154 aparece de forma mais direta, 931 é o melhor alvo."
+      }
+    }
+  ]
+}

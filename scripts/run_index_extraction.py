@@ -22,6 +22,7 @@ IMPORT_SCRIPT = SKILL_DIR / "scripts" / "import_index_json.py"
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "data" / "index_payloads"
 DEFAULT_DB = PROJECT_ROOT / "data" / "patristic_indices.db"
 DEFAULT_LOG_DIR = PROJECT_ROOT / "data" / "index_logs"
+EXISTING_PAYLOAD_SNIPPET_BYTES = 120_000
 
 
 def run_cmd(cmd: list[str], *, cwd: Path) -> subprocess.CompletedProcess[str]:
@@ -60,6 +61,80 @@ def select_volume_ids(root: Path, blob: str, limit: int | None) -> list[str]:
 
 def read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def truncate_utf8(text: str, max_bytes: int) -> tuple[str, bool]:
+    data = text.encode("utf-8")
+    if len(data) <= max_bytes:
+        return text, False
+    clipped = data[:max_bytes]
+    while True:
+        try:
+            return clipped.decode("utf-8"), True
+        except UnicodeDecodeError:
+            clipped = clipped[:-1]
+
+
+def build_existing_payload_prompt_block(payload_file: Path, volume_id: str) -> str:
+    raw_text = payload_file.read_text(encoding="utf-8")
+    payload_summary = [
+        f"### Payload that already exists for {volume_id}",
+        f"- File: {payload_file}",
+        f"- Size: {len(raw_text.encode('utf-8'))} bytes",
+    ]
+    try:
+        payload = json.loads(raw_text)
+    except json.JSONDecodeError as exc:
+        snippet, was_truncated = truncate_utf8(raw_text, EXISTING_PAYLOAD_SNIPPET_BYTES)
+        payload_summary.extend(
+            [
+                f"- Existing file is not valid JSON: {exc}",
+                f"- Embedded excerpt bytes: {len(snippet.encode('utf-8'))} / {EXISTING_PAYLOAD_SNIPPET_BYTES}",
+                "- The excerpt below may be truncated. Read the file directly if needed, then rewrite it.",
+                "",
+                "```json",
+                snippet.rstrip(),
+                "... [TRUNCATED]" if was_truncated else "",
+                "```",
+                f"Check and fix/add what is missing/what is wrong following the volume {volume_id} real files.",
+            ]
+        )
+        return "\n".join(line for line in payload_summary if line != "")
+
+    volume = payload.get("volume") if isinstance(payload, dict) else {}
+    works = payload.get("works") if isinstance(payload, dict) else []
+    sections = payload.get("sections") if isinstance(payload, dict) else []
+    notes = payload.get("notes") if isinstance(payload, dict) else []
+    entry_count = sum(
+        len(section.get("entries") or [])
+        for section in sections
+        if isinstance(section, dict)
+    )
+    payload_summary.extend(
+        [
+            f"- volume.volume_id: {volume.get('volume_id') if isinstance(volume, dict) else None}",
+            f"- works: {len(works) if isinstance(works, list) else 'invalid'}",
+            f"- sections: {len(sections) if isinstance(sections, list) else 'invalid'}",
+            f"- entries: {entry_count if isinstance(sections, list) else 'invalid'}",
+            f"- notes: {len(notes) if isinstance(notes, list) else 'invalid'}",
+            "- Read the existing file directly if you need the full prior payload.",
+            "- The embedded excerpt below is intentionally truncated to keep the prompt under the input limit.",
+        ]
+    )
+    pretty = json.dumps(payload, ensure_ascii=False, indent=2)
+    snippet, was_truncated = truncate_utf8(pretty, EXISTING_PAYLOAD_SNIPPET_BYTES)
+    payload_summary.extend(
+        [
+            "",
+            "Embedded excerpt:",
+            "```json",
+            snippet.rstrip(),
+            "... [TRUNCATED]" if was_truncated else "",
+            "```",
+            f"Check and fix/add what is missing/what is wrong following the volume {volume_id} real files.",
+        ]
+    )
+    return "\n".join(line for line in payload_summary if line != "")
 
 
 def volume_already_imported(db_path: Path, volume_id: str) -> bool:
@@ -218,6 +293,32 @@ def validate_payload(payload: dict[str, Any], volume_id: str, expected_file: Pat
         raise SystemExit("Payload 'works' must be a list.")
     if not isinstance(payload.get("sections"), list):
         raise SystemExit("Payload 'sections' must be a list.")
+    sections = payload.get("sections") or []
+    total_entries = 0
+    suspicious_empty_sections: list[str] = []
+    for section in sections:
+        if not isinstance(section, dict):
+            raise SystemExit("Each item in payload 'sections' must be an object.")
+        entries = section.get("entries")
+        if not isinstance(entries, list):
+            raise SystemExit("Each section payload must include an 'entries' list.")
+        total_entries += len(entries)
+        raw_json = section.get("raw_json")
+        has_summary_only = isinstance(raw_json, dict) and any(
+            key in raw_json for key in ("entries_summary", "chapter_count")
+        )
+        if len(entries) == 0 and has_summary_only:
+            suspicious_empty_sections.append(str(section.get("section_key") or section.get("heading_raw") or "unknown"))
+    if sections and total_entries == 0:
+        raise SystemExit(
+            f"Payload for {volume_id} has {len(sections)} sections but zero entries. "
+            "Rejecting structural-only extraction."
+        )
+    if suspicious_empty_sections:
+        raise SystemExit(
+            "Payload contains sections with summary metadata but no entries: "
+            + ", ".join(suspicious_empty_sections[:10])
+        )
     if not expected_file.exists():
         raise SystemExit(f"Expected output file not found: {expected_file}")
 
@@ -347,6 +448,10 @@ def main() -> None:
             if not args.keep_temp:
                 prescan_path.unlink(missing_ok=True)
             continue
+
+        # If a previous payload exists, reference it without embedding the full file.
+        if payload_file.exists():
+            prompt += "\n\n" + build_existing_payload_prompt_block(payload_file, volume_id)
 
         if args.verbose:
             print(f"[INFO] payload file: {payload_file}")

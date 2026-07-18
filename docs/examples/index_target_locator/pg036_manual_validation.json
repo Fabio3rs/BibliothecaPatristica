@@ -1,0 +1,84 @@
+{
+  "volume_id": "PG036",
+  "source_root": "teste/PG036/text",
+  "options": {
+    "top_k": 5,
+    "adjacency_window": 2
+  },
+  "entries": [
+    {
+      "entry_id": "pg036_in_dictum_evangelii_645",
+      "lemma_raw": "In dictum Evangelii",
+      "query_names": [
+        "In dictum Evangelii",
+        "Cum consummasset Jesus hos sermones",
+        "ORATIO XXXVII"
+      ],
+      "page_hints": [
+        "645"
+      ],
+      "page_hint_ints": [
+        645
+      ],
+      "context_raw": "XXXI. XXXVII. In dictum Evangelii, Cum consummasset Jesus hos sermones, etc. 645.",
+      "expected_manual": {
+        "section_start_file": "teste/PG036/text/3f33b4df-80cb-4996-8dae-e93d4c80d048-154.txt",
+        "editorial_anchor_file": "teste/PG036/text/ee674bde-10b0-4da8-976f-c01d5ed83e12-346.txt",
+        "printed_page_anchor": 645,
+        "reason": "A abertura material da ORATIO XXXVII está no arquivo 154, mas a âncora editorial 645 cai com muito mais precisão no arquivo 346."
+      }
+    },
+    {
+      "entry_id": "pg036_in_theophania_663",
+      "lemma_raw": "In Theophania sive Natalitia Salvatoris",
+      "query_names": [
+        "In Theophania",
+        "Natalitia Salvatoris",
+        "ORATIO XXXVIII"
+      ],
+      "page_hints": [
+        "663"
+      ],
+      "page_hint_ints": [
+        663
+      ],
+      "context_raw": "XXXVIII. XXXVIII. In Theophania sive Natalitia Salvatoris. 663.",
+      "expected_manual": {
+        "section_start_file": "teste/PG036/text/3f33b4df-80cb-4996-8dae-e93d4c80d048-169.txt",
+        "accepted_section_start_targets": [
+          "teste/PG036/text/3f33b4df-80cb-4996-8dae-e93d4c80d048-168.txt",
+          "teste/PG036/text/3f33b4df-80cb-4996-8dae-e93d4c80d048-169.txt"
+        ],
+        "editorial_anchor_file": "teste/PG036/text/3f33b4df-80cb-4996-8dae-e93d4c80d048-169.txt",
+        "printed_page_anchor": 663,
+        "reason": "O helper pode cair no preâmbulo imediatamente anterior (168) ou na abertura material da peça (169); como gabarito editorial estrito, a âncora 663 fica melhor representada em 169."
+      }
+    },
+    {
+      "entry_id": "pg036_in_sancta_lumina_677",
+      "lemma_raw": "In sancta Lumina",
+      "query_names": [
+        "In sancta Lumina",
+        "ORATIO XXXIX"
+      ],
+      "page_hints": [
+        "677"
+      ],
+      "page_hint_ints": [
+        677
+      ],
+      "context_raw": "XXXIX. XXXIX. In sancta Lumina, 677.",
+      "expected_manual": {
+        "section_start_file": "teste/PG036/text/3f33b4df-80cb-4996-8dae-e93d4c80d048-181.txt",
+        "accepted_section_start_targets": [
+          "teste/PG036/text/1b37c463-8e4a-46d5-8c2d-bac8e94d4217-190.txt",
+          "teste/PG036/text/3f33b4df-80cb-4996-8dae-e93d4c80d048-180.txt",
+          "teste/PG036/text/3f33b4df-80cb-4996-8dae-e93d4c80d048-181.txt"
+        ],
+        "editorial_anchor_file": "teste/PG036/text/ee674bde-10b0-4da8-976f-c01d5ed83e12-362.txt",
+        "printed_page_anchor": 677,
+        "reason": "Há disputa real entre arquivos de abertura material da ORATIO XXXIX, mas a âncora editorial 677 cai claramente no arquivo 362."
+      }
+    }
+  ]
+}

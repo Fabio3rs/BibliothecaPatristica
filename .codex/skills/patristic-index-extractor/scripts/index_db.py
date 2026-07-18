@@ -172,9 +172,22 @@ def derive_work_key(volume_id: str, work: dict[str, Any]) -> str:
     return f"{volume_id}:work:{slugify(str(title))}"
 
 
+def is_volume_scoped_key(volume_id: str, key: str) -> bool:
+    return key.startswith(f"{volume_id}:") or key.startswith(f"{volume_id}::") or key.startswith(f"{volume_id}_")
+
+
+def canonicalize_work_key(volume_id: str, key: str | None) -> str | None:
+    if not key:
+        return None
+    text = str(key)
+    if is_volume_scoped_key(volume_id, text):
+        return text
+    return f"{volume_id}::{text}"
+
+
 def derive_section_key(volume_id: str, section: dict[str, Any], ordinal: int) -> str:
     if section.get('section_key'):
-        return str(section['section_key'])
+        return canonicalize_work_key(volume_id, str(section['section_key'])) or str(section['section_key'])
     scope = section.get('scope_kind', 'section')
     kind = section.get('index_kind', 'INDEX')
     start = section.get('page_start')

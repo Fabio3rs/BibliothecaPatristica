@@ -7,6 +7,14 @@ Sources:
 
 Choose the branch that matches `collection`.
 
+## 0. Numbering Glossary
+
+- `OCR file suffix` or `physical OCR file`: the numeric suffix in `...-NNN.txt`. It identifies the local OCR text file only.
+- `Printed/internal/editorial page`: the page, folio, or column number printed in the source volume and cited by its indexes.
+- `Scan/sheet reality`: the visual capture behind the OCR. One scan may contain two printed pages, facing pages, split columns, or other non-1:1 layouts.
+
+Do not collapse these into one numbering system.
+
 ## 1. `PG` and `PL`
 
 ### 1.1 Beginning of the volume
@@ -157,6 +165,11 @@ Typical signals:
 
 - Keep OCR literals intact.
 - Do not assume monotonic page numbering.
+- Do not assume the OCR file suffix matches the printed/editorial page number.
+- Do not derive a physical file match from printed numbering alone when string evidence is available.
+- Printed/internal numbers can be wrong in OCR because of CER, worn type, faded ink, bleed-through, cropping, or damaged scans.
+- Prefer title strings, repeated running headers, author names, explicit work headings, and nearby body text over printed numbers when anchoring a physical OCR file.
+- If a scan contains facing pages or two printed pages on one sheet, preserve the printed references as editorial data and locate the physical file separately.
 - Treat `Ibid.` as a reference to the previous entry.
 - Treat `col.` as column reference, not file number.
 - When in doubt, store the raw text and lower the confidence.
