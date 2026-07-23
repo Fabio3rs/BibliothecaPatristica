@@ -1,123 +1,44 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,20,1000,90">
-    211                          THEODORI LECTORIS                          212
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,100,490,720">
-55. Ecclesiæ Romanæ hunc esse morem ait A
-Theodorus noster, ut res immobiles non possi-
-deat : sed si forte possessiones ei obvenerint,
-confestim eas vendat, et pretium in tres portiones
-distribuat : quarum una quidem tradatur Ecclesiæ,
-altera episcopo, tertia vero clero. Idem etiam sit in
-reliquis rebus quæ non sunt soli.
+  <bloco tipo="cabecalho" script="latino" bbox="90,40,125,55">211</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="400,40,600,55">THEODORI LECTORIS</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="875,40,910,55">212</bloco>
+  
+  <!-- Coluna Esquerda -->
+  <bloco tipo="texto_principal" script="latino" bbox="90,65,490,165">55. Ecclesiae Romanæ hunc esse morem ait Theodorus noster, ut res immobiles non possideat : sed si forte possessiones ei obvenerint, confestim eas vendat, et pretium in tres portiones distribuat : quarum una quidem tradatur Ecclesiæ, altera episcopo, tertia vero clero. Idem etiam fit in reliquis rebus quæ non sunt soli.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="90,170,490,225">56 Cabades legem tulit Persis, ut uxores inter ipsos communes essent. Cujus rei causa regno expulsus, regis Hunnorum auxilio regnum suum recuperavit.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="90,230,490,300">57. Anastasius imperator urbem Daras ædificavit. Ea vero jam ædificata, Bartholomæum apostolum in somnis vidit, dicentem suscepisse se urbis custodiam. Quare Anastasius Bartholomæi reliquias illuc misit, et in ea urbe deponi præcepit.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="90,305,490,385">58. Immireni gens est Persis subjecta, ad extremos Noti fines habitans. Et ab initio quidem Judæi fuerant, jam inde a regina Austri quæ ad Salomonem olim venit. Postea gentiles facti sunt. Anastasii vero temporibus Christianam religionem amplexi sunt, et episcopum acceperunt.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="90,390,490,475">59. Severus cum Anastasio imperatori, adjecta jurisjurandi religione, pollicitus esset se nihil novi commoturum esse adversus synodum Chalcedonensem, eodem ipso quo ordinatus est die, jusjurandum violans, supradictam synodum anathemate damnavit.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="90,480,490,515">60. Constantinus Magnus Deique amantissimus imperator, regnavit annos triginta et unum, menses decem.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="90,520,490,570">61. Constantius ejus filius imperavit annos viginti quatuor, dies quinque. Hujus temporibus allatæ sunt Constantinopolim reliquiæ sanctorum aposto-</bloco>
+  
+  <!-- Coluna Direita -->
+  <bloco tipo="texto_principal" script="grego" bbox="510,60,910,165">vε'. Ἔθος λέγει τῇ Ἐκκλησίᾳ εἶναι τῆς ώμης, ἀκίνητα μὴ κρατεῖν δίκαια (10)· ἀλλ' εἰ καὶ περιέλθωσιν, εὐθέως πιπράσκεσθαι, καὶ ες μοίρας τρεῖς (11) διαιρεῖσθαι τὸ τίμημα· καὶ τὸ μὲν τῇ κκλησίᾳ δίδοσθαι, τὸ δὲ τῷ ἐπισκόπῳ, τὸ δὲ τῷ κλήρῳ· οὕτω δὲ ποιεῖν καὶ ἐπὶ τοῖς λοιποῖς πράγμασιν.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,170,910,225">νς'. Κωάδης νόμον ἔθετο (12) παρὰ Πέρσαις, ὥστε κοινὰς τὰς γυναῖκας ὑπάρχειν. Καὶ διὰ τοῦτο διωχθεὶς ἐκ τῆς βασιλείας, διὰ τοῦ βασιλέως τῶν Οὔννων ταύτην ἀπέλαβεν.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,230,910,300">νζ'. Ἀναστάσιος ὁ βασιλεὺς κτισε τὸ Δάρας. Καὶ κτίσας, ὄναρ τεθέαται Βαρθολομαῖον (13) λέγοντα τὸν ἀπόστολον, ὡς αὐτὸς τὴν φυλακὴν ἐπετράπη τῆς πόλεως. Διὸ τὸ λεῖψανον αὐτοῦ ἐκεῖ πέμψας ἀπέθετο.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,305,910,385">νη'. Ἰμμιρηνοὶ (14) ἐστιν ἔθνος τελοῦν ὑπὸ Πέρσας· οἰκοσι δὲ ἐν ταῖς ἐσχατιαῖς τοῦ Νότου. Ἰουδαῖοι δὲ ὑπρχον ἀνέκαθεν, ἐκ τῆς ἐλθούσης (15) πρὸς Σολομῶντα βασιλίδος τοῦ Νότου. Ἐγένοντο ἐθνικοί. Οἱ αὐτοὶ δὲ ἐπὶ Ἀναστασίου ἐχριστιάνισαν, καὶ ἐπίσκοπον ἔλαβον.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,390,910,455">νθ'. Σεβῆρος ὅρκον δοὺς (16) Ἀναστασίῳ τῷ βασιλεῖ, ὡ: οὐδὲν κινήσοι ποτὲ κατὰ τῆς ἐν Χαλκηδόνι συνόδου, ἐν αὐτῇ τ ἡμέρᾳ ἐν  ἐχειροτονήθη, παραβὰς τὸν ὅρκον, ἀνεθεμάτισεν αὐτήν.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,475,910,515">ξ'. Ἐβασίλευσε Κωνσταντῖνος ὁ Μέγας καὶ φιλόχριστος βασιλεύς, ἔτη τριάκοντα καὶ ἕν, μῆνας δέκα.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,520,910,570">ξα'. Ἐβασίλευσε Κωνστάντιος ὁ υὸς αὐτοῦ, ἔτη εἰκοσιτέσσαρα, ἡμέρας ε'. Καὶ ἐπὶ αὐτοῦ, εἰσῆλθον ἐν Κωνσταντίνου πόλει τὰ λείψανα (17) τῶν ἁγίων</bloco>
 
-56 Calades regem tulit Persis, ut uxores inter
-ipsos communes essent. Cujus rei causa regno ex-
-pulsis, regis Hunnorum auxilio regnum suum recu-
-peravit.
+  <!-- Notas Marginais (Gutter) -->
+  <bloco tipo="nota_marginal" script="latino" bbox="495,65,505,75">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="495,280,505,290">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="495,500,505,510">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="495,715,505,725">D</bloco>
 
-57. Anastasins imperator urbem Daras ædificavit.
-Ea vero jam ædificata, Bartholomæum apostolum
-in somnis vidit, dicentem suscepisse se urbis cus-
-tiam. Quare Anastasius Bartholomæi reliquias illuc
-misit, et in ea urbe deponi præcepit.
+  <!-- Título das Anotações -->
+  <bloco tipo="cabecalho" script="latino" bbox="400,575,600,590">VALESII ANNOTATIONES.</bloco>
 
-58. Immireni gens est Persis subjecta, ad extre-
-mos Noti fines habitans. Et ab initio quidem Judæi
-fuerant, jam inde a regina Austri quæ ad Salomo-
-nem olim venit. Postea gentiles facti sunt. Anastasi
-vero temporibus Christianam religionem amplexi
-sunt, et episcopum acceperunt.
-
-59. Severus cum Anastasio imperatori, adjecta
-jurisjurandi religione, pollicitus esset se nihil novi
-commotulorum esse adversus synodum Chalcedonen-
-sem, eodem ipso quo ordinatus est die, jusjuran-
-dum violans, supradictam synodum anathematæ
-damnavit.
-
-60. Constantinus Magnus Deique amantissimus
-imperator, regnavit annos triginta et unum, menses
-decem.
-
-61. Constantius ejus filius imperavit annos viginti
-quatuor, dies quinque. Hujus temporibus allatae
-sunt Constantinopolim reliquiæ sanctorum aposto-
-lorum.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="510,100,960,720">
-55. Εἶδος λέγει· τῇ Ἐκκλησίᾳ εἶναι τῆς Ῥώμης,
-ἀκινῆτα μὴ κρατῆν δικαίᾳ (10)· ἀλλ' εἰ καὶ περιελ-
-θωσιν, εὐθὺς τιπρασκησθαι, καὶ εἰς μοίρας
-τρεῖς (11) διαιρεῖσθαι τὰ τιμήματα· καὶ τὸ μὲν τῆς
-Ἐκκλησίας δοθῆναι, τὸ δὲ τῷ ἐπισκόπῳ, τὸ δὲ τῷ
-κλήρῳ· οὕτω δὲ ποιεῖν καὶ ἐπὶ τοῖς ἄλλοις πράγμα-
-σιν.
-
-56. Καλῶς ἔλεγεν ὁ ἔθνος (12) παρὰ Περσῶν,
-ὥστε κοινὰς τὰς γυναῖκας ὑπάρχειν. Καὶ διὰ τοῦτο
-διωχθεὶς ἐκ τῆς βασιλείας, διὰ τοῦ βασιλέως τῶν
-Ὑὴνων ταύτην ἀπέλασε.
-
-57. Ἀναστασίου ὁ βασιλεὺς ἐκτισε τὸ Δάρας. Καὶ
-ἦν γεοδέσθαι Βαρθολωμαῖον (13) λέγοντα
-τὸν ἀπόστολον, ὡς αὐτὸς τὴν φυλακὴν ἐπετράπην
-τῆς πόλεως. Διὸ τὰ λειψάνα αὐτοῦ ἔχει πεμφθὰς
-ἀπέθετο.
-
-58. Ἰμμάρι πρὸς (14) ἐστιν ἔθνος τελων ὑπὸ Περ-
-σῶν· οἰκοῦσι δὲ ἐν ταῖς ἐσχατιαῖς τοῦ Νότου. Ἰου-
-δαῖοι ἦσαν ἐν ἀρχῇ, ἀπὸ τῆς Ἑλισόνιος (15)
-πρὸς Σολομώντα βασιλέος τοῦ Νότου. Ἐγεγόντο
-ἔθνη. Οἱ αὐτοὶ δὲ ἐπὶ Ἀναστασίου ἐχριστιανισαν,
-καὶ ἐπείσθησαν ἐπισκόπων.
-
-59. Σεβέρος σὺν Ἀναστασίῳ (16) Ἀναστασίω τῷ βη-
-στῇ· οὐδὲν κύρησιν τοῦτο κατὰ τῆς ἐν Χαλκην-
-δόνι συνόδου, ἐν αὐτῇ τῇ ἡμέρᾳ ἐν ᾗ ἐχειροτονήθη,
-παραβάς τὸν ὄρκον, ἀνεθέματίσεν αὐτήν.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,220,515,300">
-A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,340,515,420">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,480,515,560">
-C
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="40,720,960,920">
-VALESII ANNUTATIONES.
-
-(10) Ακινητα μὴ κρατῆν εἶναι. Hunc locum
-non intellexit Musculus, ut ex interpretacione cuius
-apparet. Sic enim vertit : Ecclesia Rom. mos esse
-feretur, ut jura non sint immota. Savilius autem ad
-oram sui cod. haec verba ita interpretatur : Ecclesia
-Romana possessiones accipere non solat rerum
-immobilium. Aliaea igitur improprie hoc loco su-
-muntur pro bonis seu corporibus. Sed non assen-
-tit Savilio, qui ζεττ[ilegivel] interpretatur, possessiones
-accepisse. Melius vertisset, retinere possessionem.
-Neque enim Ecclesia Rom. possessiones sibi obli-
-gatas receπεisse; sed acceptas non serva-
-bat. Illo enim eas vendebat, apostolicorum tem-
-porum morem in hac parte studens imitari. Primi
-enim illi Christiani possessiones suas vendere so-
-lebaant, earumque pretium offerendal ad praesidia
-apostolorum, ut in eorum actibus legimus.
-
-(11) [ilegivel] τῆς ποίας τρίς. Melius divisit Theodo-
-rus et. [ilegivel] τέσσαρα. Quatuor enim, tam de re-
-bus Ecclesiæ, quam de oblatione fidelium sic
-perhibentur. Prima erat pontificalis; secunda clerico-
-rum ; tertia vero ad pauperes. Hæc omnia quæ de
-portione, ut scribit Gerasimus papa in cap. 27. Vide
-Glossarium Francisci Philoni ad Novellas Ju-
-stinian., in voce Partes.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="350,920,980,1000">
-Digitized by Google
-  </bloco>
-  <notas>Coluna esquerda em latim; coluna direita em grego. Letras A, B, C na margem central transcritas em blocos próprios. Algumas palavras parcialmente ilegíveis marcadas como [ilegivel].</notas>
+  <!-- Anotações (Rodapé/Aparato Crítico) -->
+  <bloco tipo="aparato_critico" script="misto" bbox="90,595,490,935">(10) Ἀκίνητα μὴ κρατεῖν δίκαια. Hunc locum non intellexit Musculus, ut ex interpretatione ejus apparet. Sic enim vertit : Ecclesiæ Rom. mos esse fertur, ut jura non sint immota. Savilius autem ad oram sui cod. hæc verba ita interpretatur : Ecclesia Romana possessiones accipere non solet rerum immobilium. Δίκαια igitur improprie hoc loco sumitur pro bonis seu corporibus. Sed non assentior Savilio, qui χρατεῖν interpretatur, possessiones accipere. Melius vertisset, retinere possessionem. Neque enim Ecclesia Rom. possessiones sibi oblatas recusabat accipere ; sed acceptas non servabat. Ilico enim eas vendebat, apostolicorum temporum morem in hac parte studens imitari. Primi enim illi Christiani possessiones suas vendere solebant, earumque pretia offerebant ad pedes apostolorum, ut in eorum Actibus legimus. Hæc tamen consuetudo Ecclesiæ Romanæ brevi post immutata est. Quippe temporibus Gregorii Magni patrimonium beati Petri per omnes provincias imperii Romani late diffusum erat, ut ex ejus Epistolis discimus.</bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="90,845,490,935">(11) Εἰς μοίρας τρεῖς. Melius dixisset Theodorus εἰς μοίρας τέσσαρας. Quatuor enim, tam de reditu Ecclesiæ, quam de oblatione fidelium fiebant portiones. Prima erat pontificis ; secunda clericorum ; pauperum tertia ; quarta fabricis Ecclesiæ deputabatur, ut scribit Gelasius papa in cap. 27. [Vide Glossarium Francisci Pithœi ad Novellas Juliani, in voce Partes.]</bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="510,595,910,650">(12) Κωάδης νόμον ἔθετο. Idem scribit Theophanes in Chronico, pag. 106.</bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="510,650,910,675">(13) Ὄναρ τεθέαται Βαρθολομαῖον. Idem refert Niceph. in cap. 57 lib. xvi, ex hoc Theodori nostri loco.</bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="510,675,910,770">(14) Ἰμμιρηνοί. Niceph. in cap. 57 lib. xvi, Immeras vocat, ubi hunc Theod. nostri locum describit. Ego Homeritas esse existimo. Omnia enim quæ Immirenis tribuit Theodorus, Homeritis plæne conveniunt. Etenim Homeritæ ad extremos fines habitant Oceani meridiani, et metropolim habent Saba : cujus loci regina olim ad Salomonem visendum profecta est. Præterea origine sunt Judæi, orti ex Chettura Abrahæ. Postea vero ad superstitionem gentilium desciverunt, ut docet Philostorgius in l. iii Hist. ecclesiasticæ.</bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="510,770,910,835">(15) Ἐκ τῆς ἐλθούσης. Niceph. legisse videtur, ἐλθούσης μετὰ τῆς ἐλθούσης πρὸς Σολομῶντα βασιλίδος τοῦ Νότου. Χρόνῳ δ ὕστερον ἐγένοντο ἐθνικοί. Obstat tamen id quod apud Theoph. et alios legimus, Homeritas Justiniani demum temporibus fidem Christi suscepisse.</bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="510,835,910,885">(16) Σεβῆρος ὅρκον δοὺς. Idem relatum jam fuit in lib. ii Excerptorum ex Theod. Lectore. Unde non immerito quispiam suspicari possit hanc appendicem ex alio scriptore collectam esse.</bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="510,885,910,935">(17) Εἰσλθον ἐν Κωνσταντινουπόλει τὰ λείψανα. Idem refertur in Fastis quos nomine Idatii edidit Jacob. Sirmondus. Constantio octavum et Juliano Cæsare coss. His coss. introierunt Constan-</bloco>
+  
+  <bloco tipo="rodape" script="latino" bbox="580,955,790,980">Digitized by Google</bloco>
 </pagina>

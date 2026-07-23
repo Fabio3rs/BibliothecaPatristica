@@ -1,62 +1,41 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,70">
-1013     VITA S. XENOPHONTIS.     1014
-  </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="60,90,940,420">
-ΒΙΟΣ ΚΑΙ ΠΟΛΙΤΕΙΑ
+  <bloco tipo="cabecalho" script="latino" bbox="80,35,140,55">1013</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="390,35,610,55">VITA S. XENOPHONTIS.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="860,35,920,55">1014</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="350,115,650,145">ΒΙΟΣ ΚΑΙ ΠΟΛΙΤΕΙΑ</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="220,160,770,195">ΤΟΥ ΟΣΙΟΥ ΞΕΝΟΦΩΝΤΟΣ</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="270,215,720,235">ΚΑΙ ΤΩΝ ΑΥΤΟΥ ΤΕΚΝΩΝ ΙΩΑΝΝΟΥ ΚΑΙ ΑΡΚΑΔΙΟΥ.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="310,270,670,295">VITA ET CONVERSATIO</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="220,315,770,355">SANCTI XENOPHONTIS</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,365,510,380">ET</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="300,385,690,405">FILIORUM EJUS JOANNIS ET ARCADII.</bloco>
+  
+  <bloco tipo="nota" script="latino" bbox="160,415,830,435">(Textus Græcus, hactenus nunquam luci datus, prodiit ex cod. Reg. Paris. n. 1456. Edit. PATR.)</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="440,455,520,475">CAPUT I.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="340,480,560,500">Xenophontis patria, conjux, liberi.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="90,505,485,725">I. Xenophon, admirandus ille, ex ea civitate oriundus est, quæ reliquas tum pulchritudine, tum magnitudine, tum situ cæterisque rebus superat, et Constantino Magno, primo inter Christianos imperatore (qui veræ fidei professione æque ac religiosissima confirmatione clarissimus fuit), tanquam conditore suo gloriatur. Quod igitur inter civitates illa civitas, hoc ipsum Xenophon inter viros fuit; ætatis flore eximius, virtute prorsus eminens, senatoria dignitate conspicuus, neque primis gloriæ insignibus ulli secundus. Sed et maximis affluebat divitiis, earumque rerum copia, quæ, ut Jobus loquitur ¹, bonæ videntur. Quare non abs re cum illo dicere potuit : « Fluunt viæ meæ butyro, et montes mei fluunt lacte. »</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="505,505,900,715">Α'. Ξενοφῶν  θαυμάσιος, ἦν μὲν ἐκ ταύτης τῶν πόλεων, ἡ πασῶν τῶν ἄλλων κάλλει τε καὶ μεγέθει, καὶ θέσει, καὶ τοῖς ἄλλοις κρατεῖ, ἧς οἰκιστὴς ὁ πρῶτος ἐν Χριστιανοῖς βασιλεὺς Κωνσταντῖνος  Μέγας,  τῆς εὐσεβοῦς πίστεως ὁμολογητὴς ἅμα καὶ βεβαιωτὴς εὐσεβέστατος. Ὅπερ οὖν ἡ πόλις ἐν πόλεσι, τοῦτο καὶ Ξενοφῶν ἐν ἀνδράσι· πρῶτος ἐν ὥρᾳ βίου, καὶ τὴν ἀρετὴν ἀπαράμιλλος, ὃς τῆς συγκλήτου βουλῆς ὑπάρχων, καὶ τν τὰ πρῶτα φερόντων εἰς δόξαν οὐδενὸς δεύτερος, ἔτι καὶ πλούτῳ πολὺς ἦν, καὶ κατὰ τὸν θεῖον ὼβ τοῖς δοκοῦσι τούτοις ἀγαθοῖς εὐθηνούμενος, ὡς καὶ αὐτὸν εὐκαίρως μετ' ἐκείνου λέγειν, ὅτι « Χέονταί μου αἱ ὁδο βουτύρῳ, τὰ δὲ ὄρη μου χέονται γάλακτι. »</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="490,755,505,775">B</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="90,725,485,905">II. Verum quantum opibus eminebat, tantum cogitatione demittebatur, majore virtutum opulentia deorsum vergens. Non solum enim Xenophon illa splendoris ornamenta, sed multo magis virtutum similitudinem cum Jobo sibi communem ostendit ; eumdem præterea referens tum tentationibus, tum consolatione, tum tentationum victoria, quam a summa Dei bonitate, propitioque divini oculi in tales virtutum cultores respectu, consecutus fuit. Itaque divinus hic vir beatitudinem suam non facultatibus aut amplitudine metiebatur, neque (qua erat sapientia) ex vanitate sibi gloriam con-</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="505,725,900,905">Β'. Ἀλλ' ὅσῳ πλούτῳ λαμπρὸς ἦν, τοσούτῳ δὴ τῷ φρονήματι ταπεινός, καὶ πλούτῳ βρίθων τῆς ἀρετῆς μείζονι. Ἀδείκνυτο γὰρ Ξενοφῶν οὐ τῇ λαμπρότητι μόνον τῶν κατὰ κόσμον Ἰὼβ, ἀλλὰ καὶ πολλῷ πλέον [τῇ] τῆς ἀρετῆς ὁμοιότητι, προσθήσω δ' ὅτι καὶ τοῖς πειρασμοῖς, καὶ τῇ παρακλήσει καὶ λύσει τῶν πειρασμῶν· ὅπερ ἐστὶ τῆς πολλῆς ἀγαθότητος τοῦ Θεοῦ, καὶ τῶν εὐμενῶς βλεπόντων ὀφθαλμῶν ἐκείνου πρὸς τοὺς οὕτω δι' ἀρετὴν πάσχοντας. Ὁ τοίνυν θεῖος οὗτος ἀνήρ, οὐ τοῦ πλούτου καὶ τῆς περιφανείας μακάριον ἑαυτὸν ἡγετο, οὐδὲ καύχημα ἴδιον  σοφὸς ἐποιεῖτο τν ματαιότητα, μλλον μὲν</bloco>
+  
+  <bloco tipo="rodape" script="latino" bbox="100,915,220,935">¹ Job xxix, 6.</bloco>
+  
+  <bloco tipo="outro" script="latino" bbox="570,955,780,985">Digitized by Google</bloco>
 
-ΤΟΥ ΟΣΙΟΥ ΞΕΝΟΦΩΝΤΟΣ
-
-ΚΑΙ ΤΩΝ ΑΥΤΟΥ ΤΕΚΝΩΝ ΙΩΑΝΝΟΥ ΚΑΙ ΑΡΚΑΔΙΟΥ.
-
--
-
-VITA ET CONVERSATIO
-
-SANCTI XENOPHONTIS
-
-ET
-
-FILIORUM EJUS JOANNIS ET ARCADII.
-
-(Textus Graecus, hactenus nunquam luci datus, prodit ex cod. Reg. Paris. n. 1136. Edit. Patr.)
-
--
-
-CAPUT I.
-
-Xenophontis patria, conjux, liberi.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,440,470,1000">
-I. Xenophon, admirandus ille, ex ea civilitate oriundus est, quæ reliquas tum pulchritudine, tum magnitudine, tum situ ceterisque rebus superat, et Constantino Magno, primo inter Christianos imperatore (qui vera fidei professio æque ac religiosissima confirmatione clarissimus fuit), tanquam conditore suo gloriatur. Quod igitur inter civitates illa civitas, hoc ipsum Xenophon inter viros fuit; ætatis flore eximius, virtute prorsus eminens, senatoria dignitate conspicuus, neque primis gloriæ insignibus ulli secundus. Sed et maximis affluebat divitiis, earumque rerum copia, quæ, ut Jobus loquitur, "bonæ videntur." Quare non alii res cum illo dicere potuit: "Fluunt viæ meæ butyro, et montes mei fluunt lacte."
-
-II. Verum quantum opibus eminebat, tantum cogitatione demittebatur, majore virtutum opulentia decorsum vergens. Non solum enim Xenophon illis splendoris ornamenta, sed multo magis virtutum similitudinem cum Jobo sibi communem ostendit; eundem præterea referens tum tentationibus, tum consolatione, tum tentationum victoria, quam a summa Dei bonitate, propitioque divini oculi in tales virtutum cultores respectu, consecutus fuit. Itaque divinus hic vir beatitudinem suam non facultatibus aut amplitudine metiebatur, neque (qua erat sapientia) ex vanitate sibi gloriam con-
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="490,440,920,1000">
-Α'. Ξενοφῶν ὁ θαυμαστὸς, ἐξ μὲν ἐκ τῆς ταύτης τῶν πόλεων, τῶν πόλεων ᾗ πασῶν τῶν ἄλλων ἄξιαι τε καὶ μεγέθει, καὶ θέσει, καὶ τοῖς ἄλλοις κρατεῖ, ὁ πρῶτος ἐν Χριστιανῷ βασιλεῖ Κωνσταντῖνῳ· ὁ Μέγας, ὁ τῆς εὐσεβείας πάτριος, ὁμολογητὴς ἄμα καὶ βεβαιωτὴς εὐσεβεστάτου. Ὅπερ ἐν τῇ πόλει, τοῦτο καὶ Ξενοφῶν ἐν ἀνθρώποις· πρῶτος ἐν ὥρᾳ βίου, καὶ τὴν ἀρετὴν παραγμάτων ἀπαραμύκως, ὡς τῆς συγχλήτου βουλῆς ὑπάρχων· καὶ τὰ τὰ πρῶτα φερόντων ἐν δόξῃ οὐδενὸς δεύτερος· ἐπὶ καὶ πλούτῳ πολύ, καὶ κατὰ τὸν θεῖον ἰδὸν τοῦτον δοκεῖν· τὰς ἄλλας ἀρετὰς ἰδῶν, ἔτι τὰ ἑτέρᾳ [ilegivel]·
-
-Β'. Ἀλλ' ὅσῳ πλουτῷ λαμπρὸς ἦν, τοσούτῳ δὲ τῷ φρονήματι ταπεινός, καὶ πολὺν βίον τῆς ἀρετῆς μεῖζον. Διέλθον γὰρ Ξενοφῶν οὐ τῇ λαμπρότητι μόνον τῶν ἔξωθεν, ἀλλὰ καὶ τῇ ἐντὸς τῆς ἀρετῆς ὁμοίως, προσήκει δὲ καὶ τοῖς πειρασμοῖς, καὶ τῇ παρακλήσει καὶ τῇ νίκῃ τῶν πειρασμῶν· ὑπὲρ ἦν τῆς πολλῆς ἀγαθότητος τοῦ θεοῦ, καὶ τῶν ἐμφανῶν˙ βλέποντος ὁποιῶν ἔμελλεν ἔχειν τοῖς τοιούτοις, ὅτι ἡ ἀρετὴ πίστιν̓ ὑπεράσπισεν·
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,320,500,360">
-A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,420,500,460">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,560,500,600">
-C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,700,500,740">
-D
-  </bloco>
-  <bloco tipo="nota" script="latino" bbox="60,980,300,1020">
-Iob xxix, 6.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="600,1030,940,1120">
-Digitized by Google
-  </bloco>
   <notas>
-- Transcrição feita fielmente ao conteúdo visível; onde o traço da impressão dificulta leitura, foram usados marcadores [ilegivel] apenas para palavras individuais.
-- Os blocos A, B, C, D representam as identificações marginais (gutter) colocadas verticalmente no centro da página.
+    Transcrição fiel do texto em duas colunas (Latim à esquerda, Grego à direita).
+    Marcadores de seção Α' e Β' incluídos no início dos parágrafos gregos.
+    Letra 'B' no gutter identificada como nota_marginal.
+    Nota de rodapé '1 Job xxix, 6.' transcrita.
+    Texto interrompido no final da página ("con-").
   </notas>
 </pagina>

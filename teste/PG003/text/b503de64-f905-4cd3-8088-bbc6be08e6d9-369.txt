@@ -1,15 +1,20 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="20,10,980,80">
 737   DE DIVINIS NOMINIBUS. CAP. IV.  - -  CORDERII NOTÆ.   738
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,80,500,960">
+
+  <bloco tipo="nota" script="latino" bbox="40,160,140,200">
+§ II.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="20,80,500,520">
 ille noster non cogitatione aut voluntate, etc.; S. Dionysium non voluisse excludere a Deo electionem
 simpliciter, ac si Deus non libere sed necessario res creatas produxisset, sed electionem secundum quid,
 in quantum scilicet non tantum quibusdam creaturis bonitatem suam communicat, sed omnibus, prout
 scilicet electio discretionem quandam importat: nam aliquin, ut ibidem bene probat D. Thomas, Deus,
 cum sit primum agens, per intellectum et voluntatem cuncta causare dicendus est.
 
-§ II. Docet, ex Deo, tanquam fonte bonitatis, omnium rerum bonitatem derivari. Unde S. Thomas,
+Docet, ex Deo, tanquam fonte bonitatis, omnium rerum bonitatem derivari. Unde S. Thomas,
 parte 1, quaest. 6, art. 4, conclidit, quod quaelibet res dicatur bona bonitate divina sicut primo principio
 efficiente, exemplari, et finali totius bonitatis; formaliter vero dicatur bona similitudine bonitatis sibi
 inhaerente, quae est formalis uniuscujusque bonitas, id est: nulla res dicitur bona a bonitate divina tanquam
@@ -27,25 +32,36 @@ quod perinde est ac si diceret, posse esse principium efficiens et exemplare ali
 inhaerens subjecto ipsum denominat. Ideo asserit, res omnes bonae appellari a bonitate sibi inhaerente,
 sicut a forma; a bonitate autem 376 Dei, sicut ab efficiente, exemplari et fine; vide haec fusius apud
 Vasquez tom. I, in partem 1, q. 6, a. 4.
+  </bloco>
 
-§ III. Quod si autem supra omnes res sit bonum ipsum, etc. Docet hic bonum latius patere quam ens,
-cum ad ipsa non euilia se extendat; quod D. Thomas parte 1, quaest. 5, art. 2, secundum Platonicos
+  <bloco tipo="nota" script="latino" bbox="40,520,140,560">
+§ III.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="20,520,500,960">
+Quod si autem supra omnes res sit bonum ipsum, etc. Docet hic bonum latius patere quam ens,
+cum ad ipsa non entia se extendat; quod D. Thomas parte 1, quaest. 5, art. 2, secundum Platonicos
 dictum interpretatur, qui, materiam a privatione non distinguentes, dicebant materiam esse non ens, et
 consequenter volebant participationem boni ad plura se extendere quam participationem entis, cum materia
-prima bonum participet, quia ipsum appetit; nihil enim appetit nisi sibi simile, non autem participal eis,
+prima bonum participet, quia ipsum appetit; nihil enim appetit nisi sibi simile, non autem participat ens,
 cum ponatur non ens. Vel dicendum, inquit, quod bonum extenditur ad essentiam et non existentia non secundum
 praedicationem, sed secundum causalitatem, ut per non existentia intelligamus non ea simpliciter quae penitus non sunt,
 sed ea quae sunt in potentia et non in actu; quia bonum habet rationem finis, in quo non solum quiescunt ea quae sunt in actu, sed ad ipsum etiam ea moventur quae
 in actu non sunt, sed in potentia tantum; ens autem non importat habitudinem causae nisi formalis tantum vel inhaerens,
 vel exemplaris, cujus causalitas non se extendit, nisi ad ea quae sunt in actu. Porro, ut aliquid sit bonum, non est necesse exsistat. Nam sicut in quibusdam rerum essentialibus
-per intellectum ab existentia consideramus alias proprietates, et de ipsis eas praedicamus; sic etiam intelligere possumus rationem qualitatis, et de ipsis eam enuntiare. In emutatione enim, qua res aliqua
-dicitur esse bona, verbu est non significat exsistentiam, sed exterorum connexionem; sicuti cum dicimus:
+per intellectum ab existentia consideramus alias proprietates, et de ipsis eas praedicamus; sic etiam intelligere possumus rationem qualitatis, et de ipsis eam enuntiare. In enuntiatione enim, qua res aliqua
+dicitur esse bona, verbum est non significat exsistentiam, sed extremorum connexionem; sicuti cum dicimus:
 "Homo est animal." Caeterum quando dicitur, eo differre verum a bono, quod verum solum sit in intellectu, bonum autem in rebus, non est ita accipiendum, quasi bonum solum conveniat rebus
 existentibus; sed ideo dicitur, quia verum, quod etiam est passio entis, non convenit rebus nisi per ordinem ad intellectum, rebus autem convenit bonum ex seipsis, tamen si solo intellectu ratio entis et boni
 distinguitur. Aliud enim est, aliqua distinguere per intellectum solum; aliud est, per solum intellectum aliquid ipsis convenire, ut fusius explicat Vasquez, in partem 1, q. 77.
   </bloco>
+
+  <bloco tipo="nota" script="latino" bbox="520,120,620,160">
+§ IV.
+  </bloco>
+
   <bloco tipo="texto_principal" script="latino" bbox="500,80,980,960">
-§ IV. Nota, dum dicit: Cœlestium principiorum et subordinationum causam esse bonum, non significare
+Nota, dum dicit: Cœlestium principiorum et subordinationum causam esse bonum, non significare
 hoc loco Dionysium, ut quidam interpretati sunt, corpora cœlestia esse principia agentia eorum quæ
 oritur et interitum capiunt, et discerni res secundum eadem corpora. Non loquitur hic de hujusmodi
 principiis, sed de principiis et terminationibus orbium cœlestium, quos fecit Deus bonitate sua globosos,
@@ -53,31 +69,29 @@ in qua figura idem est principium et terminus sive finis. Non dixit auctores, et
 habet proprie terminum, sed veluti terminum habet moveri ab aliquo principio ad idem tanquam ad terminum,
 verbi gratia, ab oriente ad eundem orientem.
 
-Ibidem Paulo post ait: Solem esse imaginem divinæ bonitatis, quantius tenuissimum quid illius boni in eo
-praecul resonal. Graece est πολυχαριστ, quod Lucretius poeta romanus, lib. VI, vertit mulestimum, ea
-forma qua dicitur centissimum, nihilseum. Sigillate hic tenuissimum externi soni. Uti si quis, inquit
-S. Maximus, magna vociferatione aliquid dicat, qui abest, et bene clamorem; et quod dictum est,
-percipiunt; qui autem distant, minus audiunt; qui vero longe sunt, tenuissimum sonum audiverunt, sive si-
-gnificatione vocis: sic cogitandum est, inquit, de lumine solis, si cum visione consideratur, esse scilicet di-
-vinuum lumen infinitum, et conierri cum illo non posse, adinatur acutissimi clamoris et clarissimae vocis
-cum tenuissimo et obscurissimo sono collate.
+Ibidem paulo post ait: Solem esse imaginem divinæ bonitatis, quantius tenuissimum quid illius boni in eo
+praecul resonat. Graece est πολλοστόν, quod Lucretius poeta romanus, lib. VI, vertit mulestimum, ea
+forma qua dicitur centissimum, nullissimum. Significat hic tenuissimum externi soni. Ut si quis, inquit
+S. Maximus, magna vociferatione aliquid dicat, qui absunt, et bene clamorem; et quod dictum est,
+percipiunt; qui autem distant, minus audiunt; qui vero longe sunt, tenuissimum sonum audiunt, sive significatione vocis: sic cogitandum est, inquit, de lumine solis, si cum divino conferatur, esse scilicet divinum lumen infinitum, et conferri cum illo non posse, adinstar acutissimi clamoris et clarissimae vocis
+cum tenuissimo et obscurissimo sono collatæ.
 
-Ibidem: Hoc enim est illud lumen, tamen tunc non erat figuratum. S. Thomas in quaest. disputatis,
-tom. VIII, quaest. 4, artic. 2, ad 6, ait, lucem illam, quae legitur prumv die facta, secundum Gregorium (37)
-et Dionysium esse lucem solis, quae simul cum substantiis lumenarium, quae et subjectum ejus, fuit prima
-die producta secundum communem lucis naturam: quarta autem die attributum esse luminariis, deier-
-minatam virtutem, ad determinatos effectus, secundum quod videmus alios effectus habere radium solis,
-et alios radium lunae, et sic de aliis. Et propter hoc, inquit, dicit Dionysius lucem illam fuisse lucem
-solis, sed adhuc informem, quandam ad hoc quod jam erat substantia solis, et habebat virtutem illumina-
-tivam in communi; sed postmodum quarta die formata fuit, non quidem forma substantiali, quam prima die habuit, sed secundum alias conditiones accidentalies per collocationem determinatae virtuis,
-secundum quod postmodum data est ei specialis et determinata virtus ad effectus particulares. Et secundum
-loco in productione huius lucis distincta est lux a tenebris quantum ad tria. Primo quidem quantum ad causam, secundum quod causa luminis erat in substantiâ solis, causa vero tenebrarum in opacitate
-terrae. Secundo distincta est quantum ad locum, quia in uno hemisphaerio erat lumen, et in alio tenebrae. Tertio, quantum ad tempus, quia 377 in eodem hemisphaerio secundum unam partem temporis erat lumen, et secundum aliam partem erant tenebrae. Et hoc est quod dicitur: Lucem vocavit diem, et tenebras
-noctem.
+Ibidem: Hoc enim est illud lumen, tametsi tunc non erat figuratum. S. Thomas in quæst. disputatis,
+tom. VIII, quæst. 4, artic. 2, ad 6, ait, lucem illam, quæ legitur primo die facta, secundum Gregorium (37)
+et Dionysium esse lucem solis, quæ simul cum substantia luminarium, quæ est subjectum ejus, fuit prima
+die producta secundum communem lucis naturam: quarta autem die attributam esse luminariis determinatam virtutem, ad determinatos effectus, secundum quod videmus alios effectus habere radium solis,
+et alios radium lunæ, et sic de aliis. Et propter hoc, inquit, dicit Dionysius lucem illam fuisse lucem
+solis, sed adhuc informem, quantum ad hoc quod jam erat substantia solis, et habebat virtutem illuminativam in communi; sed postmodum quarta die formata fuit, non quidem forma substantiali, quam prima die habuit, sed secundum alias conditiones accidentales per collocationem determinatae virtuis,
+secundum quod postmodum data est ei specialis et determinata virtus ad effectus particulares. Et secundum hoc in productione hujus lucis distincta est lux a tenebris quantum ad tria. Primo quidem quantum
+ad causam, secundum quod causa luminis erat in substantiâ solis, causa vero tenebrarum in opacitate
+terrae. Secundo distincta est quantum ad locum, quia in uno hemisphaerio erat lumen, et in alio tenebrae. Tertio, quantum ad tempus, quia 377 in eodem hemisphaerio secundum unam partem temporis erat lumen, et secundum aliam partem erant tenebrae. Et hoc est quod dicitur: Lucem vocavit diem, et tenebras noctem.
+  </bloco>
 
+  <bloco tipo="rodape" script="latino" bbox="20,960,980,1000">
 (37) Lib. II Moral., c. 9.
   </bloco>
+
   <notas>
-Transcrição feita diretamente da imagem. Não foram observadas identificações marginais "A, B, C, D" no gutter; nenhuma nota marginal adicional visível foi omitida. Nenhuma palavra inteira foi marcada [ilegivel]; pequenas incertezas possíveis preservadas tal qual no texto.
+Transcrição feita prioritariamente a partir da imagem. As sinalizações de secção (§ II., § III., § IV.) foram colocadas em blocos [nota] separados, conforme instrução (não inseridas no fluxo dos blocos de coluna). Não foram aplicadas normalizações ou traduções; mantida fidelidade ao texto impresso. Nenhuma nota marginal identificada (A, B, C, D) visível na imagem.
   </notas>
 </pagina>

@@ -1,119 +1,98 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,60">
-    439    THEODORETI EPISCOPI CYRENSIS    441
-  </bloco>
-  <bloco tipo="outro" script="misto" bbox="80,70,920,260">
-    ΑΙΡΕΤΙΚΗΣ ΚΑΚΟΜΥΘΙΑΣ (90)
-    ΒΙΒΛΙΟΝ ΠΕΜΠΤΟΝ.
-    ΘΕΙΩΝ ΔΟΓΜΑΤΩΝ ΕΠΙΤΟΜΗ.
-    -
-    HÆRETICARUM FABULARUM LIBER QUINTUS.
-    DIVINORUM DECRETORUM EPITOME.
-    -
-    INDEX CAPITUM.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,260,490,760">
-    Praefatio.
-    1. De principio et Patre.
-    2. De Filio.
-    3. De sancto Spiritu, et divinis nominibus.
+  <bloco tipo="cabecalho" script="latino" bbox="90,45,910,65">439 THEODORETI EPISCOPI CYRENSIS 440</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="240,105,765,135">ΑΙΡΕΤΙΚΗΣ ΚΑΚΟΜΥΘΙΑΣ (90)</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="375,145,635,165">ΒΙΒΛΙΟΝ ΠΕΜΠΤΟΝ.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="350,170,675,185">ΘΕΙΩΝ ΔΟΓΜΑΤΩΝ ΕΠΙΤΟΜΗ.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,220,875,245">HÆRETICARUM FABULARUM LIBER QUINTUS.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="315,250,710,270">DIVINORUM DECRETORUM EPITOME.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="225,295,380,310">INDEX CAPITUM.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,295,515,310">A</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="620,295,825,310">ΚΕΦΑΛΑΙΩΝ ΕΛΕΓΧΟΣ.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="100,315,490,695">Præfatio.
+1. De principio et Patre.
+2. De Filio.
+3. De sancto Spiritu, et divinis nominibus.
+375 4. De creatione.
+5. De materia.
+6. De Æonibus.
+7. De angelis.
+8. De dæmonibus.
+9. De homine.
+10. De Providentia.
+11. De Servatoris incarnatione.
+12. Quod Dominus corpus susceperit.
+13. Quod animam etiam cum corpore assumpserit.
+14. Quod perfectam humanam naturam susceperit.
+15. Quod quam suscepit naturam restituerit.
+16. Quod idem bonus sit et justus.
+17. Quod idem Novum et Vetus dederit Testamentum.
+18. De baptismate.
+19. De resurrectione.
+20. De judicio.
+21. De promissionibus.
+22. De secundo Christi adventu.
+23. De Antichristo.
+24. De virginitate.
+25. De nuptiis.
+26. De secundis nuptiis.
+27. De fornicatione.
+28. De pœnitentia.
+29. De abstinentia.</bloco>
 
-    375 4. De creatione.
-    5. De materia.
-    6. De Aetnibus.
-    7. De angelis.
-    8. De dæmonibus.
-    9. De homine.
-    10. De Providentia.
-    11. De Servatoris incarnatione.
-    12. Quod Dominus corpus susceperit.
-    13. Quod animam etiam cum corpore assumpserit.
-    14. Quod perfectam humanam naturam susceperit.
+  <bloco tipo="texto_principal" script="grego" bbox="520,315,925,700">Προοίμιον.
+α'. Περὶ ἀρχῆς κα (91) Πατρός.
+β'. Περὶ Υοῦ.
+γ'. Περὶ το ἁγίου Πνεύματος, καὶ τῶν θείων ὀνομάτων.
+δ'. Περὶ δημιουργίας.
+ε'. Περὶ ὕλης.
+ζ'. Περὶ Αἰώνων.
+η'. Περὶ ἀγγέλων.
+θ'. Περὶ δαιμόνων (92).
+ι'. Περὶ ἀνθρώπου.
+ια'. Περὶ Προνοίας.
+ιβ'. Περὶ τς τοῦ Σωτῆρος οἰκονομίας (93).
+ιγ'. Ὅτι σῶμα ὁ Δεσπότης ἀνέλαβεν.
+ιδ'. Ὅτι καὶ ψυχὴν μετὰ τοῦ σώματος ἀνέλαβεν.
+ιε'. Ὅτι τελείαν τὴν ἀνθρωπείαν φύσιν ἀνέλαβεν.
+ιζ'. Ὅτι ἣν ἀνέλαβεν ἀνέστησε φύσιν.
+ιη'. Ὅτι ὁ (94) αὐτὸς ἀγαθὸς (95) καὶ δίκαιος.
+ιθ'. Ὅτι ὁ αὐτὸς κα τὴν Παλαιὰν καὶ τὴν Καινὴν δωκε (96) Διαθήκην.
+κ'. Περὶ βαπτίσματος.
+κα'. Περὶ ἀναστάσεως.
+κβ'. Περὶ κρίσεως.
+κγ'. Περὶ ἐπαγγελιῶν.
+κδ'. Περὶ τς δευτέρας το Σωτῆρος (97) ἐπιφανείας.
+κε'. Περὶ τοῦ Ἀντιχρίστου.
+κζ'. Περὶ παρθενίας.
+κη'. Περὶ γάμου.
+κθ'. Περὶ δευτέρου γάμου.
+λ'. Περὶ πορνείας.
+λα'. Περὶ μετανοίας.
+λβ'. Περὶ ἐγκρατείας.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="500,510,515,525">B</bloco>
 
-    15. Quod animam suscepit naturam restituerit.
-    16. Quod idem bonus sit et justus.
-    17. Quod idem Novum et Vetus dederit Testamentum.
+  <bloco tipo="texto_principal" script="latino" bbox="100,705,495,825">376 PRÆFATIO.
+Dulce quidem mel esse omnibus hominibus videtur, etiamsi cum nullo conferatur; dulcius tamen apparet, si amara quæpiam qualitas opponatur : et sanitatem amabilem quidem ducunt omnes, post morbum tamen amabiliorem existimant : et tranquillitas quoque gratior post tempestatem. Sic et veritatem qui recte sapiunt rem magni faciendam</bloco>
 
-    18. De baptis mate.
-    19. De resurrectione.
-    20. De judicio.
-    21. De promissionibus.
-    22. De secundo Christi adventu.
+  <bloco tipo="nota_marginal" script="latino" bbox="500,725,515,740">C</bloco>
 
-    23. De Antichristo.
-    24. De virginitate.
-    25. De nuptiis.
-    26. De secundis nuptiis.
-    27. De fornicatione.
-    28. De paenitentia.
-    29. De abstinentia.
+  <bloco tipo="texto_principal" script="grego" bbox="520,705,930,825">ΠΡΟΟΙΜΙΟΝ.
+Γλυκὺ μὲν εἶναι τὸ μέλι πᾶσιν ἀνθρώποις δοκεῖ, καὶ συγκρίσεως δίχα · γλυκύτερον δὲ φαίνεται, πικρᾶς τινος παρατεθείσης ποιότητος · καὶ τὴν ὑγίειαν ἀξίεραστον μὲν ἅπαντες νομίζουσι, μετὰ δὲ νόσον, ἀξιεραστοτέραν νομίζουσι · καὶ γαλήνη δὲ θυμηρεστέρα μετὰ χειμῶνα. Οὕτω καὶ τὴν ἀλήθειαν οἱ σωφρονοῦντες ἀξιόχρητον ἴσασι χρῆμα · λαμπροτέραν</bloco>
 
-    376 PRAEFATIO.
+  <bloco tipo="aparato_critico" script="misto" bbox="100,835,495,935">(90) Edit. Rom. præmittit titulum Κεφάλαια τοῦ πέμπτου βιβλίου.
+(91) καὶ. Ibid. περί.
+(92) Infra, Περὶ τοῦ διαβόλου καὶ τῶν δαιμόνων.
+(93) Περὶ — οἰκονομίας. Hæc separanda fuerint a verbis Περὶ Προνοίας, quia caput decimum unice exponit argumentum de Providentia. undecimum vero doctrinam de Servatoris incarnatione. Hinc</bloco>
 
-    Dulce quidem mel esse omnibus hominibus videtur, etiam si cum nullo conferatur; dulcius tamen apparet, si amara quaepiam qualitas opponatur: et sanitatem amabilem quidem ducunt omnes, post morbum tamen amabiliorem existimant: et tranquillitas quoque gravior post tempestatem. Sic et veritatem qui recep[iunt] rem magni faciendam
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="510,260,950,760">
-    ΚΕΦΑΛΑΙΟΝ ΕΛΕΓΧΟΣ.
+  <bloco tipo="aparato_critico" script="latino" bbox="520,830,930,880">mutari debuit numerus ad capita sequentia in editione priori h. l. expressus, quia plane diversus erat ab illo quem infra ascriptum videmus.</bloco>
+  
+  <bloco tipo="aparato_critico" script="misto" bbox="520,880,930,925">(94) δ. Des. in edit. Rom.
+(95) ἀγ. Infra præm. καί.
+(96) ἐδ. Infra, δέδωκε.
+(97) τοῦ Σωτ. Infra, τοῦ Θεο καὶ Σωτῆρος ἡμῶν.</bloco>
 
-    Προοιμιον.
-    α'. Περὶ ἀρχῆς καὶ (91) Πατρος.
-    β'. Περὶ Υἱου.
-    γ'. Περὶ τοῦ ἁγίου Πνεύματος, καὶ τῶν θείων ὀνομάτων.
-    δ'. Περὶ δημιουργίας.
-    ε'. Περὶ ὕλης.
-    ζ'. Περὶ Αἰώνων.
-    η'. Περὶ αἱρέσεων.
-    θ'. Περὶ δαιμόνων.
-    ι'. Περὶ ἀνθρώπων.
-    ια'. Περὶ προνοίας.
-    ιβ'. Περὶ τῆς τῶν Σωτῆρος οἰκονομίας.
-    ιγ'. Ὅτι σώμα ὁ Δεσπότης ἐδεξάμενος.
-    ιδ'. Ὅτι καὶ ψυχὴν μετὰ τοῦ σώματος ἐδελάβεν.
-    ιε'. Ὅτι ἦν ἀνάστασις σὺν.
-    ιστ'. Ὅτι (94) ἀνὴρ ἀγαθὸς καὶ δίκαιος.
-    ιζ'. Ὅτι ὁ αὐτὸς καὶ τῆς Παλαιᾶς καὶ τῆς Καινῆς ἔδωκε λόγους.
-    ιη'. Περὶ βαπτισμάτος.
-    ιθ'. Περὶ ἀναστάσεως.
-    κ'. Περὶ κρίσεως.
-    κα'. Περὶ ἐπαγγελίας.
-    κβ'. Περὶ τῆς δευτέρας τοῦ Σωτῆρος ἐπιγενείας.
-    κγ'. Περὶ τοῦ Ἀντιχρίστου.
-    κδ'. Περὶ παρθενίας.
-    κε'. Περὶ γάμου.
-    κστ'. Περὶ δευτέρου γάμου.
-    κζ'. Περὶ πορνείας.
-    κη'. Περὶ μετανοίας.
-    κθ'. Περὶ ἐγκρατείας.
-
-    ΠΡΟΟΙΜΙΟΝ.
-
-    Γλυκὺ μὲν εἶναι τὸ μέλι πᾶσιν ἀνθρώποις δοκεῖ, καὶ συγχρίσεως δίχα· γλυκύτερον δὲ φαίνεται, ἐπὶ χρᾷ τινος παρατεθέτης ποιήσεως· καὶ τὴν ὑγίειαν δεῖπλου μὲν ἅπαντες νομιζουσι, μετὰ δὲ νόσου δεῖπλα [ilegivel] νομιζουσι· καὶ γαλήνη δὲ θυμητερᾶ μετὰ χειμῶνα.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="470,240,530,310">
-    A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="470,420,530,500">
-    B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="470,640,530,720">
-    C
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="50,760,490,950">
-    (90) Edit. Rom. præmittit titulum Κεφάλαια τοῦ πέμπτου βιβλίου.
-    (91) καὶ. Ibid. περὶ.
-    (92) Infra. Περὶ τοῦ δαιμόνιου καὶ τῶν δαιμόνων.
-    (93) Περὶ οἰκονομίας. Haec separanda fuerunt a verbis Πρόνοια, quae caput decimum undecimum exponit argumentum de Providentia, undecimum vero doctrinam de Servatoris incarnatione.
-  </bloco>
-  <bloco tipo="rodape" script="grego" bbox="510,760,950,950">
-    (94) ὅ. Des. in edit. Rom.
-    (95) [ilegivel] Infra praem. καὶ.
-    (96) ἐδωδε.
-    (97) τοῦ Σωτ. Infra, τοῦ Θεοῦ καὶ Σωτῆρος ἡμῶν.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="350,960,650,995">
-    Digitized by Google
-  </bloco>
-  <notas>
-    Identifiquei três marcas marginais verticais (A, B, C) no gutter entre as duas colunas; coloquei-as em blocos nota_marginal distintos conforme instruído. O título principal contém textos gregos e latinos, por isso marquei o bloco como script="misto". Usei [ilegivel] em um termo grego do parágrafo introdutório que não está perfeitamente legível na imagem. Em alguns casos de hifenização impressa retirei a divisão de sílaba mantendo a sequência visível; não normalizei ou traduzi o texto.
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="590,960,790,985">Digitized by Google</bloco>
 </pagina>

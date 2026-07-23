@@ -1,27 +1,16 @@
-<pagina estado="com_texto">
-  <bloco tipo="texto_principal" script="latino" bbox="230,300,520,380">
-RETURNED TO THE LIBRARY ON OR
-BEFORE THE LAST DATE STAMPED
-BELOW. NON-RECEIPT OF OVERDUE
-NOTICES DOES NOT EXEMPT THE
-BORROWER FROM OVERDUE FEES.
+<pagina estado="com_texto" tipo="capa_ou_guarda">
+  <bloco tipo="texto_principal" script="latino" bbox="230,320,670,440">
+    RETURNED TO THE LIBRARY ON OR
+    BEFORE THE LAST DATE STAMPED
+    BELOW. NON-RECEIPT OF OVERDUE
+    NOTICES DOES NOT EXEMPT THE
+    BORROWER FROM OVERDUE FEES.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,340,420,400">
-[ilegivel]
+  <bloco tipo="nota" script="latino" bbox="260,430,560,550">
+    STALL-SHIPPED
+    CANCELLED
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,360,560,560">
-CANCELLED
+  <bloco tipo="rodape" script="latino" bbox="600,960,800,985">
+    Digitized by Google
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="490,380,500,820">
-|
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="560,960,980,995">
-Digitized by Google
-  </bloco>
-  <notas>
-- A small semicircular/curved stamp above the diagonal "CANCELLED" is present but illegible; transcribed as [ilegivel].
-- The boxed library notice is rendered verbatim, preserving line breaks and punctuation.
-- A vertical rule/line descends from the box; represented as a single vertical bar in an "outro" block.
-- No marginal section identifiers (A, B, C, D) were visible on this page.
-  </notas>
 </pagina>

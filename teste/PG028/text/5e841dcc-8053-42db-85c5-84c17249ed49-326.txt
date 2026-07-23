@@ -1,10 +1,10 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="40,20,960,100">
     537
     QVÆSTIONES AD ANTIOCHVM DVCEM.
     636
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="40,100,500,800">
+  <bloco tipo="texto_principal" script="grego" bbox="40,100,480,800">
     ἰρώτους σωθῆναι, καὶ εἰς ἐπίγνωσιν ἀληθείας ἐλθεῖν. Διπερ καὶ τοῖς μὲν ἁμαρτωλοῖς πολλάκις μακρο-
     χρονίαν χαρίζεται (6), ἀφορμὴν αὐτοῖς δίδους πρὸς μετάνοιαν· ὅπως χάν ὡς οἱ περὶ τὴν ἐνδεκάτην ἐν
     χάθει γῆρας ἐπιστρέψουσι· τοὺς δὲ δικαίους πολλάκις
@@ -60,9 +60,9 @@
     τελευτῶντων, ἢ χρησιμωμένων, ἢ ὑπὸ ἄλλων τοιού-
     των θανάτων τέλος τοῦ βίου χρωμένων;
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,100,960,800">
+  <bloco tipo="texto_principal" script="latino" bbox="520,100,960,800">
     A omnes homines salvos fieri et in agnitionem veri-
-    tat is venire. Hinc sæpe peccatoribus longum con-
+    tatis venire. Hinc sæpe peccatoribus longum con-
     cedit tempus, occasionem illis ad pœnitentiam tri-
     buens, ut saltem, velut qui ad horam undecimam
     venerunt, in extrema senectute convertantur. Ju-
@@ -73,7 +73,7 @@
     erat Domino anima ipsorum.
     
     QVEST. LXX. Quid ergo? Nemo eorum qui in
-    hac vita calamitosaum devenrt vitam illuc in gehen-
+    hac vita calamitosam devenrt vitam illuc in gehen-
     nam ingreditur? Nemone item illorum qui hic for-
     tunate vivunt, ingreditur in regnum cœlorum?
     
@@ -108,8 +108,8 @@
     enim metiri oportet quæ in pauperes erogantur,
     sed attendere ea a Deo nobis donari, ne forte pro
     ipsis Dei donis horrendum subeamus judicium.
-    Dipsæ enim et indignis et peccatoribus Deus divi-
-    tias impertit, ut illarum opere peccata sua eleemo-
+    Sæpe enim et indignis et peccatoribus Deus divi-
+    tias impertit, ut illarum ope peccata sua eleemo-
     synis abluant. Eleemosynis enim, inquit Scriptura
     divina, peccata purgantur.
     
@@ -117,27 +117,27 @@
     bito moriuntur, aut præcipitantur, vel simili morte
     intereunt?
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="492,180,508,220">
+  <bloco tipo="nota_marginal" script="latino" bbox="492,160,508,200">
     A
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="492,320,508,360">
+  <bloco tipo="nota_marginal" script="latino" bbox="492,300,508,340">
     B
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="492,460,508,500">
+  <bloco tipo="nota_marginal" script="latino" bbox="492,440,508,480">
     C
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="492,600,508,640">
+  <bloco tipo="nota_marginal" script="latino" bbox="492,580,508,620">
     D
   </bloco>
-  <bloco tipo="rodape" script="grego" bbox="40,800,500,930">
+  <bloco tipo="rodape" script="grego" bbox="40,800,480,930">
     (6) Reg. 2, 3, μακρούς χρόνους.
-    (7) Sic mss. Editi vero, ἀλλάξη.
+    (7) Sic mss. Editi vero, ἀλλάξῃ.
     (8) Ita mss.; τῶν οὐρανῶν deest in editis.
     (9) Reg. 2, μακράς. Editi vero μικρᾶς.
     (10) Ita mss. Editi vero, μερικῶς.
     (11) Sic Reg. 3. Editi vero, τῶν ἐναντίων·
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="510,800,960,930">
+  <bloco tipo="rodape" script="latino" bbox="520,800,960,930">
     * Sap. iv, 11.  • Luc. xvi, 20.  10 Hebr. xi, 37.           11 Eccl. iii, 33.
     (9) Reg. 2, μακράς. Editi vero μικρᾶς.
     (10) Ita mss. Editi vero, μερικῶς.
@@ -147,8 +147,9 @@
     Digitized by Google
   </bloco>
   <notas>
-    - As letras A, B, C, D no gutter foram transcritas em blocos próprios nota_marginal conforme instruções.
-    - Foram empregadas marcas de editorialidade tal como aparecem nas notas de rodapé; onde o texto é incerto mantive as leituras visíveis e marquei variantes entre parêntesis quando estão impressas.
-    - Pequenas lacunas ou sinais tipográficos não foram normalizados. Alguns termos gregos estão aproximados quando parcialmente ilegíveis; não usei [ilegivel] para blocos inteiros.
+    - Disposição em duas colunas: bloco grego à esquerda, bloco latino à direita. Segui a ordem esquerda → direita.
+    - As letras A, B, C, D no gutter foram colocadas em blocos individuais tipo="nota_marginal" conforme instruções (não inseri esses sinais dentro dos blocos de coluna).
+    - Mantive leiturAs e sinais tal como aparecem na imagem/edição; não normalizei ortografia nem traduzi. Usei leituras prováveis onde o original impresso é legível; pequenas incertezas foram preservadas sem normalização.
+    - Onde o texto editorial apresenta variantes (notas numeradas), transcrevi as leituras tal como aparecem nos rodapés.
   </notas>
 </pagina>

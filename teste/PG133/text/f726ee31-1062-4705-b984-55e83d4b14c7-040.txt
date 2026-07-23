@@ -1,66 +1,55 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,70">
-    63    ARISTENI MONACHI    64
-  </bloco>
-  <bloco tipo="cabecalho" script="grego" bbox="80,90,920,200">
-    Η ΥΠΟ ΑΡΙΣΤΙΝΟΥ
-    ΣΥΝΟΨΙΣ
-    ΤΩΝ ΚΑΝΟΝΩΝ ΠΑΝΤΩΝ.
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="80,200,920,280">
-    SYNOPSIS CANONUM OMNIUM
-    AB ARISTENO CONSCRIPTA.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,300,490,820">
+  <bloco tipo="cabecalho" script="latino" bbox="165,35,195,55">63</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="485,35,675,55">ARISTENI MONACHI</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="955,35,985,55">64</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="275,95,905,135">Η ΥΠΟ ΑΡΙΣΤΙΝΟΥ</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="515,145,655,165">ΣΥΝΟΨΙΣ</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="325,180,855,215">ΤΩΝ ΚΑΝΟΝΩΝ ΠΑΝΤΩΝ.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="225,245,955,280">SYNOPSIS CANONUM OMNIUM</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="375,295,805,320">AB ARISTENO CONSCRIPTA.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="565,345,585,365">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="565,565,585,585">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="565,785,585,805">C</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="155,340,565,915">
     Sanctorum apostolorum.
     1. Duo aut tres episcopi ordinant episcopum : unus vero, presbyterum et diaconum.
-    2. Sacerdos lac, aut mel, aut [ilegivel], aut animalia, aut legumina offerens ad altare, praeter[ilegivel] novas spicas et uvas et oleum et thymiama, deponatur.
-    3. Fructus [ilegivel] militantur, quos primi sequentibus distribuunt.
-    4. Conjugem sacerdos si ejiciat, excommunicetur : si vero non [ilegivel], gradu dejecti[leg?].
-    5. Saeculares curas suscipiens sacerdos, sacerdotio privetur.
-    6. Qui cum Judaeis Pascha celebrat, deponitur.
+    2. Sacerdos lac, aut mel, aut siceram, aut animalia, aut legumina offerens ad altare, præterquam novas spicas et uvas et oleum et thymiama, deponatur.
+    3. Fructus domum mittantur, quos primi sequentibus distribuant.
+    4. Conjugem sacerdos si ejiciat, excommunicetur : si vero non introducat, gradu dejiciatur.
+    5. Sæculares curas suscipiens sacerdos, sacerdo-tio privetur.
+    6. Qui cum Judæis Pascha celebrat, deponitur.
     7. Sacerdos non communicans dicat causam : quod si non dixerit, excommunicetur : suspectum enim reddit offerentem.
     8. Excommunicabis eum qui in oratione et communione non perseverat.
     9. Qui orat cum excommunicato aut gradu dejecto, ipsemet condemnatur.
     10. Qui aliunde ejectum susceperit, magis ipse ejiciendus est.
     11. Qui excommunicationem mentitur, ideo maxime rejiciendus est.
-    12. Sedem ex sede non invades, nisi iis qui ibi degunt utilior, tanquam ad docendum aptissimus judiceris. Idque multorum episcoporum judicio atque obtestatione.
-    13. Omnis clericus propria relicta ecclesia in aliena degens, si ab episcopo revocatus non redeat, excommunicatur, et qui hunc sciens et prudens detinet, ipsumem condemnatur.
-    14. Quilibet secundo matrimonio junctus, aut concubinam nutriens ad sacerdotium non admittitur.
+    12. Sedem ex sede non invades, nisi iis qui ibi degunt utilior, tanquam ad docendum aptissimus judiceris. Idque multorum episcoporum judicio at-que obtestatione.
+    13. Omnis clericus propria relicta ecclesia in aliena degens, si ab episcopo revocatus non redeat, excommunicatur, et qui hunc sciens et prudens detinet, ipsemet condemnatur.
+    14. Quilibet secundo matrimonio junctus, aut concubinam nutriens ad sacerdotium non admitti-tur.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="510,300,940,820">
-    Τῶν ἀποστόλων.
-    α'. Δύο ἢ τρεῖς ἐπισκόποι χειροτονοῦσιν ἐπισκό- πον· εἷς δὲ, πρεσβύτερον καὶ διάκονον.
-    β'. Ἱερεὺς ὁ γάλα, ὁ μέλι, ὁ [ilegivel], ὁ ζῷα, ὁ [ilegivel] ... προσάγειν τὴν χώραν, καὶ σταφυλῶν, καὶ ἠ λαίου, καὶ θυμιάματος, κατα- αρείσθω.
-    γ'. Αἱ σπόραι οἴκοι τιμπόθενται, ὅς οἱ πρῶ- τοι τοῖς ἔργοις διανίμουν.
-    δ'. Τῇ βοηθείᾳ ἱερεὺς ἐκβαλλόμενος ἀφοριζέσθω, μὴ εἰσάγων δὲ καθαιρεῖσθω.
-    ε'. Κοσμικῆς φροντίδος δεχόμενος ἱερεὺς, ἀνέ- ρχεται.
-    στ'. Καθαίρεται ὁ τελὼν μετὰ Ἰουδαίων τὸ Πά- σχα.
-    ζ'. Ἱερεὺς ὁ μὴ μεταλαμβάνων λεγέτω τὸ ἁρτον, ἀφοριζέσθω ἂν μὴ λέγῃ· ὕποπτον γὰρ πεποίηκε τὸν προσάγοντα.
-    η'. Ἀφορισθεὶς τῇ εὐχῇ καὶ τῇ μεταλήψει μὴ παραμένων.
-    θ'. Ὁ συνεχώμενος ἀκοσμήτωρ, ἢ καθηρημένος, αὐτοκατάκριστος.
-    ι'. Ὁ δεδεμένος τὸν ἄλλον ἀδεκτον, ἀδεκτό- ροι.
-    ια'. Ὁ τῶν ἀφοριζόμενος ψευδάμενος, ἀδεκτό- ρος.
-    ιβ'. Θρόνον οὐκ ἐπικυριήσῃς ἐκ θρόνου, εἰ μὴ τοῖς ἥκεν λωιτευτέρα· ὡς διδασκτικώτατος κρί- νο, καὶ τοῦτο πολλῶν ἐπισκόπων διακέκρισε καὶ παρακλησίαι.
-    ιγ'. Κληρικοὺς ἔτι τῆς οἰκείας ἐκθές, καὶ τὴν ἀλοτριῶν οἰκιῶν, καὶ πρὸς τοῦ ἱπισκόπου ἐνω- ποίησίαν, καὶ οἵ παληνοῦντες, ἀκοινωνήτους· καὶ τοῦτον δὲ ἐν γνωσὶ κατεχόν, αὐτοκατάκριστος.
-    ιδ'. Ἀνήρ ὁ ἔπας δίγαμος, ἢ παιδίαν ἐπιτρέ- φων.
+
+  <bloco tipo="texto_principal" script="grego" bbox="595,340,985,915">
+    Τῶν γίων ἀποστόλων.
+    α'. Δύο ἢ τρεῖς ἐπίσκοποι χειροτονοῦσιν ἐπίσκοπον · εἷς δὲ, πρεσβύτερον καὶ διάκονον.
+    β'. Ἱερεὺς ὁ γάλα, ἢ μέλι, ἢ σίκερα, ἢ ζῶα, ἢ ὄσπρια τῷ θυσιαστηρίῳ προσάγων, πλὴν χλόρων, καὶ σταφυλῶν, καὶ ἐλαίου, καὶ θυμιάματος, καθαιρείσθω.
+    γ'. Αἱ πῶραι οἴκοι πεμπέσθωσαν, ἃς οἱ πρῶτοι τοῖς ἑξῆς διανέμοιεν.
+    δ'. Τὴν βοηθὸν ἱερεὺς ἐκβάλλων ἀφοριζέσθω, μὴ εἰσάγων δὲ, καθαιρείσθω.
+    ε'. Κοσμικὰς φροντίδας δεχόμενος ἱερεύς, ἀνίερος.
+    ς'. Καθαίρεται ὁ τελν μετὰ ουδαίων τὸ Πάσχα.
+    ζ'. Ἱερεὺς ὁ μὴ μεταλαμβάνων λεγέτω τὸ αἴτιον, ἀφοριζέσθω δὲ μὴ λέγων · ὕποπτον γὰρ πεποίηκε τὸν προσάγοντα.
+    η'. Ἀφορίσεις τὸν τ εὐχ καὶ τ μεταλήψει μὴ παραμένοντα.
+    θ'. Ὁ συνευχόμενος ἀκοινωνήτῳ, ἢ καθηρημένῳ, αὐτοκατάκριτος.
+    ι'. Ὁ δεξάμενος τὸν ἄλλοθεν ἀδέκτον, ἀδεκτότερος.
+    ια'. Ὁ τὸν ἀφορισμὸν ψευσάμενος, ἀδεκτότατος.
+    ιβ'. Θρόνον οὐκ ἐπιπηδήσεις ἐκ θρόνου, εἰ μὴ τοῖς ἐκεῖ λυσιτελέστερος, ὡς διδακτικώτατος κρίνοιο · καὶ τοῦτο πολλῶν ἐπισκόπων διακρίσει καὶ παρακλήσει.
+    ιγ'. Κληρικὸς πας ὁ τς οἰκείας ἐκτός, καὶ τῇ ἀλλοτρίαν οἰκῶν, καὶ πρὸς τοῦ ἐπισκόπου δυσωπούμενος, καὶ οὐ παλινωστῶν, ἀκοινώνητος · καὶ τοῦτον ὁ ἐν γνώσει κατέχων, αὐτοκατάκριτος.
+    ιδ'. Ἄνιερος ἅπας δίγαμος, ἢ παλλακὴν ἐπιτρέφων.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,330,510,390">
-    A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,410,510,480">
-    B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,500,510,580">
-    C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,600,510,680">
-    D
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="600,900,980,980">
-    Digitized by Google
-  </bloco>
-  <notas>
-    Foram marcadas com [ilegivel] palavras cujo traçado no original é incerto; mantive a ordem e a numeração dos itens. As letras A,B,C,D no gutter estão transcritas como notas_marginal separadas, conforme instrução.
-  </notas>
+  
+  <bloco tipo="rodape" script="latino" bbox="585,960,805,990">Digitized by Google</bloco>
+  <notas>Transcription follows visual text including hyphenation at line breaks (e.g., sacerdo-tio, at-que, κρίνοιο). Greek numeral for 6 transcribed as ς' (stigma) based on sequence and visual form.</notas>
 </pagina>

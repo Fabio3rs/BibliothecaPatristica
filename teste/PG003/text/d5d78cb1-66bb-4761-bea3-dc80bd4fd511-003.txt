@@ -1,57 +1,50 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="150,20,850,60">
+<pagina estado="com_texto" tipo="capa_ou_guarda">
+  <bloco tipo="cabecalho" script="latino" bbox="470,15,615,55">
 SÆCULUM I.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="120,80,880,125">
+  <bloco tipo="texto_principal" script="grego" bbox="200,90,800,135">
 ΤΟΥ ΕΝ ΑΓΙΟΙΣ ΠΑΤΡΟΣ ΗΜΩΝ
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="80,140,920,255">
+  <bloco tipo="texto_principal" script="grego" bbox="120,150,880,320">
 ΔΙΟΝΥΣΙΟΥ
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="160,270,860,350">
+  <bloco tipo="texto_principal" script="grego" bbox="250,330,760,390">
 ΤΟΥ ΑΡΕΙΟΠΑΓΙΤΟΥ
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="230,395,770,455">
 ΤΑ ΣΩΖΟΜΕΝΑ ΠΑΝΤΑ.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="460,360,540,400">
-—
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,380,880,490">
+  <bloco tipo="texto_principal" script="misto" bbox="450,470,550,490">—</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="240,515,760,635">
 S. DIONYSII
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="300,505,700,545">
 AREOPAGITÆ
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,565,920,625">
 OPERA OMNIA QUÆ EXSTANT,
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="220,660,880,820">
+  <bloco tipo="texto_principal" script="latino" bbox="180,635,820,775">
 ET COMMENTARII QUIBUS ILLUSTRANTUR,
 STVDIO ET OPERA
 BALTHASARIS CORDERII,
 SOCIETATIS JESU DOCTORIS THEOLOGI.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="80,840,920,990">
+  <bloco tipo="texto_principal" script="latino" bbox="150,785,850,870">
 ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE,
-BIBLIOTHÆCÆ CÆLI UNIVERSÆ
+BIBLIOTHECÆ CLERI UNIVERSÆ
 SIVE
-CURSUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORB.
-----------------------------------------
+CURSUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="230,875,790,950">
 TOMUS PRIOR.
-In quo universus Sancti textus, et Georgii Pachymeræ Paraphrasis Græce et Latine, cum Adnotationibus Balthasaris
-Corderii in singula capita continentur.
-----------------------------------------
+In quo universus Sancti textus, et Georgii Pachymeræ Paraphrasis Græce et Latine, cum Adnotationibus Balthasaris Corderii in singula capita continentur.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="220,955,800,990">
 VENEUNT DUO VOLUMINA 16 FRANCIS GALLICIS.
-----------------------------------------
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="450,995,550,1000">—</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,1000,880,1000">
 EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
 IN VIA DICTA D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM,
 SEU PETIT-MONTROUGE.
 1857
   </bloco>
-  <notas>
-- Script: misto (Greek and Latin present). Greek blocks transcribed in original Greek uppercase.
-- Typographic features preserved where visible: ligatures (Æ/Æ), use of V for U in some words (transcribed here as seen: e.g., "STVDIO"). Where reading uncertain, conservative regular Latin forms chosen (e.g., "DENUO" rather than a V-shaped U); original typography may use V-shaped characters.
-- Long lower text grouped into a single rodape block to preserve vertical order and line breaks.
-- No marginal section-identifiers (A, B, C, D) were visible on this page.
-- Minor punctuation and spacing reproduced as in the image; editorial normalization was avoided.
-  </notas>
+  <notas>Transcrição conservadora; ornamentos representados como travessões. BBox aproximados em escala 0-1000. O texto foi lido como página de rosto sem colunas e sem notas marginais.</notas>
 </pagina>

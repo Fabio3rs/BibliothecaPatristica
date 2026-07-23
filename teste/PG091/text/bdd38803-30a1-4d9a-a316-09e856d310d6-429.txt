@@ -1,159 +1,46 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,0,960,70">
-    781 LOCI COMMUNES. 782
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="40,70,490,930">
-πέπον μέγα και καλόν, στρατηγὸν οὐκ ἔχον· Ἡλ-
-κεον, ἔφη, θηριον χαλεπὸν οὐκ ἔχει.
+  <bloco tipo="cabecalho" script="latino" bbox="20,40,80,60">781</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,40,650,60">LOCI COMMUNES.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="920,40,980,60">782</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="20,70,480,110">τόπεδον μέγα καὶ καλόν, στρατηγὸν οὐκ ἔχον· Ἠλί-<br/>κον, ἔφη, θηρίον κεφαλὴν οὐκ ἔχει.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="20,110,480,165">Φιλίππου. — Τὸν βασιλέα δεῖ μνημονεύειν, ὅτι<br/>ἄνθρωπος ὢν ἐξουσίαν εἴληφεν [ἔλαβεν] ἰσόθεον, ἵνα<br/>προαιρῆται μὲν τὰ καλὰ καὶ θεα, φρονήσει δὲ ἀν-<br/>θρωπίνῃ χρῆται.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="20,165,480,290">Εἰ βούλει τὴν οκίαν εὖ οἰκεῖσθαι, μιμοῦ τν<br/>Σπαρτιάτην Λυκοῦργον. Ὃν γὰρ τρόπον οὐ τείχεσι<br/>τὴν πόλιν ἔφραξεν, ἀλλ' ἀρετῇ τοὺς ἐνοικοῦντας<br/>ὠχύρωσεν, καὶ δαπανῶνς ἐτήρησεν ἐλευθέραν τὴν<br/>πόλιν· οὕτω καὶ σύ, μὴ μεγάλῃν ατὴν περίβαλε<br/>καὶ τοίχους ὑψηλούς· ἀνίστα, ἀλλὰ τοὺς ἐνοικοῦντας<br/>εὐνοί, καὶ πίστες, καὶ φιλίᾳ στήριζε, καὶ οὐδὲν ες<br/>αὐτὴν εἰσελεύσεται βλαβερόν, οὐδ' ἂν τὸ σύμπαν τῆς<br/>κακίας παρατάξηται στῖφος.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="20,290,480,370">Μηδεὶς τῶν φρονίμων τοῦ ἄρχειν ἀλλοτριοῦσθω.<br/>Καὶ γὰρ ἀσεβὲς τὸ ἀποστῆναι ἑαυτὸν τς τῶν δεομέ-<br/>νων εὐχρηστίας [εὐχαριστ.] καὶ ἀγενὲς τὸ τος φαύ-<br/>λοις παραχωρεῖν. νδητον γὰρ τὸ αρεῖσθαι κακῶς<br/>ἄρχεσθαι μᾶλλον,  καλῶς ἄρχειν.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="20,375,480,420">Δεινὸν καὶ χαλεπώτατον τοὺς χείρους τῶν βελτιό-<br/>νων ἄρχειν, καὶ τοὺς ἀνοησοτέρους τοῖς φρονιμωτέ-<br/>ροις προστάττειν.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="20,420,480,475">Εὐμένης. — Εὐμένης  βασιλες ἔλεγε τοῖς ἀδελ-<br/>φοῖς διαπαντός· Ἐὰν μὲν ὡς βασιλεῖ προσφέρησθε,<br/>ὡς ἀδελφοῖς ὑμῖν χαρίσομαι· ἐὰν δὲ ὡς ἀδελφῷ,<br/>ἐγὼ ὑμῖν ὡς βασιλεύς.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="20,475,480,530">Κότυς. Κότυς ὁ τν Θρακν βασιλεύς, Θηβαίων<br/>σεμνυνομένων ὅτι Λακεδαιμονίων ἠγήσαντο· Ἐγώ,<br/>φησίν, ἐώρακα χειμάρρους ποταμὼν μείζους τῶν<br/>ἀεννάων γενομένους, ἀλλ' ὀλίγον χρόνον.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="20,530,480,565">Ὁ αὐτὸς ἐρωτηθείς, Τίνι καταλιμπάνεις τὸ βασι-<br/>λειον; ἔφη· Τῷ δυναμένῳ.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="20,565,480,680">Φίλων. — Τῇ μὲν οὐσίᾳ τοῦ σώματος, ἴσος παν-<br/>τὸς ἀνθρώπου ὁ βασιλεύς· τῇ ἐξουσίᾳ δ τοῦ ἀξιω-<br/>ματος, ὅμοιός ἐστι τὸ ἐπὶ πάντων Θεῷ. Οὐκ ἔχει<br/>γὰρ ἐπὶ γῆς αὐτοῦ ψηλότερον. Χρὴ τοίνυν καὶ ὡς<br/>θνητὸν μὴ ἐπαίρεσθαι, καὶ ὡς Θεὸν μὴ ὀργίζεσθαι.<br/>Εἰ γὰρ καὶ εἰκόνι θείῃ τετίμηται, ἀλλὰ καὶ κόνει<br/>χοϊκῇ συμπέπλεκται, δι' ἧς ἐκδιδάσκεται τὴν πρὸς<br/>πάντας ἀπλότητα [ὁμοιότητα].</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="20,685,480,735">Μουσωνίου. — Πειρατέον καταπληκτικὸν μάλ-<br/>λον τοῖς ὑπηκόοις, ἢ φοβερὸν θεωρεῖσθαι· τῷ μὲν<br/>γὰρ σεμνότης [τὸ σεμνότητος], τῷ δ ἀπήνεια παρ-<br/>ακολουθεῖ.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="20,740,480,770">Δημοκρίτ. — Πονηρὰ φύσις ἐξουσίας ἐπιλαβομέ-<br/>νη, δημοσίας ἀπεργάζεται συμφοράς.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="20,770,480,815">Ἀντισθέν. — Τότε τὰς πόλεις ἀπόλλυσθαι συμ-<br/>βαίνει, ὅταν μὴ δύνωνται οἱ κρατοῦντες τοὺς φαύ-<br/>λους ἐκ τῶν σπουδαίων διακρίνειν.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="20,820,480,850">Ἐπισφαλς μαινομέν δοῦναι μάχαιραν, καὶ μο-<br/>χθηρῷ δύναμιν.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="20,855,480,890">Μενάνδρου. — Πλοῦτος ἀλόγιστος προσλαβὼν<br/>ἐξουσίαν, καὶ τοὺς φρονεῖν δοκοῦντας ἀνοήτους ποιεῖ.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="20,895,480,920">Δημοσθ. — Τὸ γὰρ εὖ πράττειν παρὰ τὴν ἀξίαν,</bloco>
 
-Φαλίππων. — Τὸν βασιλέα δεῖ μνημονεύειν, ὅτι
-ἄνθρωπος ὃν ἐχουσιν ἐλήφεν [ἐλαβεν] ἔκθεον, τινα
-προσιρπται μὲν τὰ καλὰ καὶ θεῖα, φρονῆσι δὲ ἀν-
-θρώπινη χρήσι.
+  <bloco tipo="nota_marginal" script="latino" bbox="490,70,510,90">A</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,70,980,110">ingenti exercitu proboque, quem imperator defice-<br/>ret: Quanta, inquit, bestia caput non habet?</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,110,980,165">Philippi. — Rex meminisse debet, homo cum<br/>sit, parem Deo potestatem accepisse, ut quæ præ-<br/>clara sunt atque divina animo deligat ac constituat<br/>et prudentia utatur humana.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,165,980,285">Si vis domum bene habitari, Lycurgum Sparta-<br/>num imitare. Quemadmodum enim ille non muris<br/>cinxit urbem, sed virtute incolas obvallavit, sic tu<br/>quoque, ne magnum atrium cingito, neve altos<br/>excita parietes, sed qui domum habitant benevo-<br/>lentia et fide et amicitia firmato, nihilque in eam<br/>noxium <b>561</b> ingredietur, vel si omnis malitiæ<br/>cuneus infensa acie petat.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="490,290,510,310">B</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,290,980,375">Nemo qui præditus prudentia sis, magistratus<br/>onus excutito. Etenim impium est, teipsum sub-<br/>ducere, ne iis prosis qui egeant; degenerisque<br/>animi labes, ut cedas illis, qui mali exsistant.<br/>Dementiæ namque est, malle male imperio subdi,<br/>quam illo bene præesse.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,380,980,420">Dirum molestissimumque est, deteriores melio-<br/>ribus præesse, ac qui dementiores sunt, prudentio-<br/>ribus jubere.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,420,980,475">Eumenes. — Eumenes rex crebro fratribus di-<br/>cere solebat: Si me ut rege utamini, ego tanquam<br/>fratribus indulgebo: sin autem ut fratre, ego<br/>vobis ut rex.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="490,485,510,505">C</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,475,980,530">Cotys. — Cotys Thracum rex, gloriantibus The-<br/>banis quod Lacædæmoniis imperarent: Vidi, in-<br/>quit, torrentes perennibus fluviis majores factos,<br/>sed ad breve tempus.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,530,980,560">Idem interrogatus cui relinqueret arcem regiam:<br/>Potenti, inquit.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,560,980,680">Philonis. — Corporis quidem substantia rex cui-<br/>vis homini æqualis est: dignitatis vero potestate,<br/>Deo, qui est super omnia (Rom. ix, 5), similis est.<br/>Non enim habet super terram, qui illo sublimior<br/>sit. Operæ pretium igitur, ut et quasi mortalis non<br/>extollatur, et ut Deus, ira non abripiatur. Quan-<br/>quam enim divina imagine honoratus est; terreno<br/>tamen pulveri copulatus est, quo docetur esse se<br/>omnibus similem.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="490,690,510,710">D</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,685,980,735">Musonii. — Conandum est ut subditis venerabi-<br/>lior, quam terribilior videare: alteri enim hone-<br/>statis gravitas, alteri ferocitas comes est.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,740,980,770">Democrit. — Pravus animus arrepta potestate<br/>publicas calamitates ac clades affert.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,770,980,815">Antisth. — Tunc nimirum urbes contingit inte-<br/>rire, cum ii, qui rerum potiuntur, malos a bonis<br/>discernere non valent.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,820,980,850">Ut furioso gladium, sic improbo potestatem tra-<br/>dere, periculosum.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,855,980,890">Menandri. — Opulentia rationis exsors nacta<br/>potestatem, eos etiam qui sapère videbantur, stul-<br/>tos reddit.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,895,980,920">Demosth. — Nam quod quis supra quam ex suis</bloco>
 
-Εἰ βούλει τὴν οἰκίαν εὖ οἰκεῖσθαι, μιμοῦ τὸν
-Σπαρτιάτην Λυκύργον. Οὐ γὰρ τρόπω οὐ τεῖχες·
-τὴν πόλιν ἐφράσεν, ἀλλ' ἀρετὴ τοὺς ἐνοικοῦντας
-ὑχώρησεν, καὶ διαπαντὸς ἐτήρησεν ἐλευθέραν τὴν
-πόλιν· οὕτως καὶ ὁ, μὴ μεγάλης αὑτὴν περιβάλλει
-καὶ τοὺς ὑψηλοὺς ἀνίσται, ἀλλὰ τοὺς ἐνοικοῦντας
-εὐνοῂ, καὶ πίστιν, καὶ φιλίᾳ στήριξεν, καὶ οὐδὲν εἰς
-αὐτὴν σπελυσαστ' ὑλαβερὸν, οὐδ' ἂν τὸ σὺμφερει τῆς
-πολεως παραδῆξαι στῖφος.
-
-Μήδεις τῶν φρονίμων τοῦ ἄρχειν ἀλλοτριοῦτο. Β
-Καὶ γὰρ ἀσεβεῖς τὸ ἀποστρατῆτον τἀυτὸν τῶν δεου-
-μένων εὐχρηστίας [εὐχαριστ.] καὶ ἀγενές τὸ τοῖς φαύ-
-λοις παραχωρεῖν. Ἀνόητον γὰρ τῷ αἱρεῖσθαι κακῶς
-ἄρχεισθαι μᾶλλον, ἢ καλῶς ἄρχειν.
-
-Δεινὸν καὶ χαλεπώτατον τοὺς χείρους τῶν βελτιώ-
-των ἄρχειν, και τοὺς ἀνοητότερους τοῖς φρονιμοτέ-
-ροις προστάττειν.
-
-Εὐμένης. — Εὐμένης ὁ βασιλεὺς ἔλεγε τοῖς ἀδελ-
-φοῖς διαπαντὸς· 'Εἰ μὲν ὡς βασιλεῖ προσφέρθη,
-ὡς ἀδελφός· οὐκ χαρίζομαι· ἐὰν δὲ ὡς ἀδελφῷ,
-ἐγὼ ὑμῖν ὡς βασιλεὺς.'
-
-Κότυς. Κότυς ὁ τῶν Θρακῶν βασιλεὺς, θηβαίων
-σεμνυνομένων διὰ Λακεδαιμονίων ἠπέξατο· 'Ἐγὼ,
-φρονῶ, ἔθραψα χειμάρους ποταμῶν μείζους τῶν
-δεηνῶν γενομένων, ἀλλ' ὀλίγον χρόνον.'
-
-Ὁ αὐτὸς ἐρωτηθεὶς· Τίνι καταλιμπάνεις τὸ βασι-
-λεῖον; ἔφη· 'Τῷ δυναμένῳ.'
-
-Φίλων. — Τῇ μὲν οὐσίᾳ τοῦ σώματος, ὅσον παν-
-τὸς ἀνθρώπου ὁ βασιλεὺς· τῇ ἐξουσίᾳ δὲ τοῦ ἀξίω-
-ματος, δημοῖς ἔτι δὴ ἐπὶ παντῶν θεῶ. Οὐκ ἔχει
-γὰρ ἐπὶ τῆς αὐτῆς ὑψηλότερον. Χρὴ τοίνυν καλὸν
-ὁμοίως μὴ πλουτεῖν, καὶ ὡς θεὸν μὴ ὀργίζεσθαι.
-Εἰ γὰρ καὶ εἴκον θεῖα τετίμηται, ἀλλὰ καὶ χρέα
-χρεῖν συμπίπτειν, δι' ὃ ἐκδιώκεται τὴν πρὸς
-πάντας ἀγάπην [ομοίωσιν].
-
-Μουσώνιον. — Πειρατέον καταπλῆκτικον μάλ-
-λον τοῖς ὑπὸ χώρων, ἢ φοβερὸν θεωρείν· τῷ μὲν
-γὰρ σεμνότητι [τῷ σεμνότητι], τῷ δὲ ἀπηνέτα παρ-
-ακολουθεῖ.
-
-Δημοκρίτ. — Σοφρὰ φύσις ἐξουσίας· ἐπιλαβομέ-
-νη, δημοσίας ἀπεργάζεται συμφορὰς.
-
-Ἀντισθέ. — Τότε τὰς πόλεις ἀπολλύσθαι συ-
-βαίνει, ὅταν μὴ δύνανται οἱ κρατοῦντες τοὺς φαύ-
-λους ἐκ τῶν σπουδαῖων διακρίνειν.
-
-Ἐπισφαλὲς μανουμένων δόνει κἀμάχαιρα, καὶ μοι-
-χῆρον δύναμιν.
-
-Μεναδρόρου. — Πλούτος ἀλλότριος προσλαβὼν
-ἔχουσιν, καὶ τοὺς φρονείν δοκοῦντας ἀνοήτους ποιει.
-
-Δημοσθ. — Τὸ γὰρ εἶ πράττειν παρὰ τὴν ἀξίαν,
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,360,510,620">
-B
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,70,960,930">
-A ingenti exercitu proboque, quem imperator defec-
-ret: Quanta, inquit, bestia caput non habet?
-
-Philippi. — Rex meminisse debet, homo cum
-sit, parem Deo potestatem accepisse, ut quae prae-
-clara sunt aliquae divina animo deligat ac constituat
-et prudentia utatur humana.
-
-Si vis domum bene habitari, Lycurgum Spartam-
-num imitare. Quemadmodum enim ille non muris
-cinxit urbem, sed virtute incolas obvallavit, sic tu
-quoque, ne magnum atriom cingito, neve altos
-excita parietes, sed qui domum habitent benevo-
-lentia et fide et amicitia firmato, nihilque in eam
-noxium 561 ingredietur, vel si omnis malitiae
-cuneus infensa acie petat.
-
-Nemo qui praeditus prudentia sis, magistratu-
-mous excutito. Etenim impinn est, teipsum sub-
-ducere, ne iis prosis qui egent; degenerisque
-animi labores, ut cedas illis, qui mali exsistant.
-Dementiae namque est, malle male imperio subdi,
-quam illo bene praesse.
-
-Dirum molestissimumque est, deteriores melio-
-ribus praesse, ac qui dementiores sunt, prudentio-
-ribus jubere.
-
-Eumenes. — Eumenes ver crebro fratribus di-
-cere solebat: Si me ut rege utamini, ego tanquam
-fratribus indulgeb o: sin autem ut fratre, ego
-vobis ut rex.
-
-Cotys. — Cotys Thracum rex, gloriantibus The-
-banis quod Lacedaemoniis imperarent: Vidi, in-
-quit, torrentes perennibus fluviis majores factos,
-sed ad breve tempus.
-
-Idem interrogatus cui relinqueret arcem regiam:
-Potenti, inquit.
-
-Philonis. — Corporis quidem substantia rex cui-
-vis homini aequalis est: dignitatis vero potestate,
-Deo, qui est super omnia (Rom. ix. 5), similis est.
-Non enim habet super terram, qui illo sublimior
-sit. Operae pretium igitur, ut et quasi mortalis non
-extollatur, et ut Deus, ira non abripiatur. Quan-
-quam enim divina imagine honoratus est, terreno
-tamen pulveri copulatus est, quo docetur esse se
-omnibus similem.
-
-Musoni. — Conandum est ut subditis venerabi-
-lior, quam terribilior videare: alteri enim hone-
-statis gravitas, alteri ferocitas comes est.
-
-Democrit. — Pravus animus arrepta, potestate
-publicas calamitates ac clades affert.
-
-Antisth. — Tunc minimur urbes contingit inle-
-rire, cum ii, qui rerum potiuntur, malos a bonis
-discernere non valent.
-
-Ut furioso gladium, sic improbo potestatem tra-
-dere, periculosum.
-
-Menandri. — Opulentia rationis exors nata
-potestatem, eos etiam qui sapere videbantur, stu-
-los reddit.
-
-Demosth. — Nam quod quis supra quam ex suis
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,940,980,1000">
-Digitized by Google
-  </bloco>
-  <notas>
-    - Os bbox são aproximações relativas à imagem (escala 0-1000).
-    - No bloco grego marquei palavras incertas com [ilegivel] quando a leitura era duvidosa; por preservar fielmente o original, não normalizei acentos nem flexões.
-    - A letra marginal "B" colocada em bloco próprio conforme instrução; não a incluí no fluxo das colunas.
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="600,960,800,990">Digitized by Google</bloco>
 </pagina>

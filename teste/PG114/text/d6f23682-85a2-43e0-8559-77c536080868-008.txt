@@ -1,60 +1,51 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="120,20,880,120">
-TRADITIO CATHOLICA.
-SÆCULUM X. ANNUS 963.
+  <bloco tipo="cabecalho" script="latino" bbox="305,46,658,95">
+    TRADITIO CATHOLICA.
+    SÆCULUM X. ANNUS 965.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="100,130,900,260">
-ΣΥΜΕΩΝ
+  <bloco tipo="texto_principal" script="grego" bbox="95,120,858,328">
+    ΣΥΜΕΩΝ
+    ΛΟΓΟΘΕΤΟΥ,
+    ΤΟΥ ΜΕΤΑΦΡΑΣΤΟΥ,
+    ΤΑ ΕΥΡΙΣΚΟΜΕΝΑ ΠΑΝΤΑ.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="300,270,700,320">
-ΛΟΓΟΘΕΤΟΥ,
+  <bloco tipo="texto_principal" script="latino" bbox="75,370,885,545">
+    SYMEONIS LOGOTHETÆ,
+    COGNOMENTO
+    METAPHRASTÆ,
+    OPERA OMNIA,
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="80,330,920,420">
-ΤΟΥ ΜΕΤΑΦΡΑΣΤΟΥ,
+  <bloco tipo="nota_marginal" script="latino" bbox="813,453,968,550">
+    [Sello: BIBLIOTECA PROVINCIAL]
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="180,440,820,500">
-ΤΑ ΕΥΡΙΣΚΟΜΕΝΑ ΠΑΝΤΑ.
+  <bloco tipo="texto_principal" script="latino" bbox="115,558,888,598">
+    ASCETICA, PARÆNETICA, CANONICA, HISTORICA, HAGIOGRAPHICA, MAGNAM
+    PARTEM EX MSS. PARISIENSIBUS NUNC PRIMUM GRÆCE EDITA;
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,510,800,520">
-—
+  <bloco tipo="texto_principal" script="latino" bbox="145,618,808,688">
+    ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE,
+    BIBLIOTHECÆ CLERI UNIVERSÆ,
+    SIVE
+    CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,540,880,620">
-SYMEONIS LOGOTHETÆ,
+  <bloco tipo="texto_principal" script="latino" bbox="255,725,698,768">
+    TOMUS PRIMUS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="420,630,580,660">
-COGNOMENTO
+  <bloco tipo="texto_principal" script="latino" bbox="271,803,678,825">
+    VENEUNT TRIA VOLUMINA 33 FRANCIS GALLICIS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,680,880,760">
-METAPHRAS TÆ,
+  <bloco tipo="rodape" script="latino" bbox="75,850,878,898">
+    EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
+    IN VIA DICTA D'AMBOISE, OLIM PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER
+    NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MŒNIA PARISINA.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="220,780,780,820">
-OPERA OMNIA,
+  <bloco tipo="rodape" script="latino" bbox="455,900,503,918">
+    1864
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="110,740,890,920">
-ASCETICA, PARÆNETICA, CANONICA, HISTORICA, HAGIOGRAPHICA, MAGNAM PARTEM EX MSS. PARISIENSIBUS NUNC PRIMUM GRÆCE EDITA;
-ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE,
-BIBLIOTHECÆ CŒRI UNIVERSÆ,
-SIVE
-CURSUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
-----------------------------------------------------------------
-TOMUS PRIMUS.
-VENUNT TRIA VOLUMINA 33 FRANCIS GALLICIS.
-EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
-IN VIA DICTA D'AMBOISE, OLIM PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MOENIA PARISINA.
-1864
+  <bloco tipo="nota_marginal" script="latino" bbox="375,930,588,968">
+    R. 4. 47.a
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="720,520,940,760">
-[ilegivel]
+  <bloco tipo="outro" script="latino" bbox="585,955,793,983">
+    Digitized by Google
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="300,980,700,1000">
-R. 4, 27.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="760,980,980,1000">
-Digitized by Google
-  </bloco>
-  <notas>
-- Script identificado como misto (grego e latino): linhas principais em grego maiúsculo e o restante em latino.
-- O carimbo circular à direita está parcialmente legível na imagem; transcrito aqui como [ilegivel] para não inventar leitura.
-- A disposição dos blocos respeita ordem visual de cima para baixo; agrupou-se o texto editorial e informações editoriais numa única área inferior para manter ordem e evitar sobreposição de bounding boxes.
-  </notas>
 </pagina>

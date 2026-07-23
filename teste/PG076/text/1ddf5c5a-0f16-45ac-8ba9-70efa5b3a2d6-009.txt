@@ -1,62 +1,51 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="80,20,920,120">
-SÆCULUM V.
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="380,55,510,75">
+    SÆCULUM V.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="50,120,950,680">
-ΤΟΥ ΕΝ ΑΓΙΟΙΣ ΠΑΤΡΟΣ ΗΜΩΝ
-
-ΚΥΡΙΛΛΟΥ
-
-ΑΡΧΙΕΠΙΣΚΟΠΟΥ ΑΛΕΞΑΝΔΡΕΙΑΣ
-
-ΤΑ ΕΥΡΙΣΚΟΜΕΝΑ ΠΑΝΤΑ.
-
--
-
-S. P. N. CYRILLI
-
-ALEXANDRIÆ ARCHIEPISCOPI
-
-OPERA QUÆ REPERIRI POTUERUNT OMNIA;
-
-CURA ET STUDIO
-
-JOANNIS AUBERTI
-
-LAUDUNENSIS ECCLESIÆ PRESBYTERI CANONICI ET IN SCHOLA PARISIENSI LAUDUNENSIS COLLEGII MAGISTRI,
-AC INTERPRETIS REGII.
-
-EDITIO PARISIENSIS ALTERA DUOBUS TOMIS AUCTIOR ET EMENDATIOR.
-
-ACCURANTE ET RECOGNOSCENTE J.-P. MIGNE,
-BIBLIOTHECA CLERI UNIVERSA,
-SIVE CURSUUM COMPLETORIUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
-
----◦---
-
-TOMUS NONUS.
-
----◦---
-
-VENUNT 10 VOLUMINA 100 FRANCIS GALLICIS.
-
--
+  <bloco tipo="texto_principal" script="grego" bbox="220,95,650,285">
+    ΤΟΥ ΕΝ ΑΓΙΟΙΣ ΠΑΤΡΟΣ ΗΜΩΝ
+    ΚΥΡΙΛΛΟΥ
+    ΑΡΧΙΕΠΙΣΚΟΠΟΥ ΑΛΕΞΑΝΔΡΕΙΑΣ
+    ΤΑ ΕΥΡΙΣΚΟΜΕΝΑ ΠΑΝΤΑ.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="60,680,940,930">
-EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
-IN VIA DICTA D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM,
-SEU PETIT-MONTRouGE.
-
-1859
+  <bloco tipo="texto_principal" script="latino" bbox="105,330,780,455">
+    S. P. N. CYRILLI
+    ALEXANDRIÆ ARCHIEPISCOPI
+    OPERA QUÆ REPERIRI POTUERUNT OMNIA;
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="740,900,990,995">
-Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="75,465,805,565">
+    CURA ET STUDIO
+    JOANNIS AUBERTI
+    LAUDUNENSIS ECCLESIÆ PRESBYTERI CANONICI ET IN SCHOLA PARISIENSI LAUDUNENSIS COLLEGII MAGISTRI,
+    AC INTERPRETIS REGII:
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="140,575,740,595">
+    EDITIO PARISIENSIS ALTERA DUOBUS TOMIS AUCTIOR ET EMENDATIOR.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="105,610,780,670">
+    ACCURANTE ET RECOGNOSCENTE J.-P. MIGNE,
+    BIBLIOTHECÆ CLERI UNIVERSÆ,
+    SIVE CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="280,705,550,745">
+    TOMUS NONUS.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="255,785,635,800">
+    VENEUNT 10 VOLUMINA 100 FRANCIS GALLICIS.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="65,845,830,905">
+    EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM.
+    IN VIA DICTA D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM,
+    SEU PETIT-MONTROUGE.
+    1859
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="695,960,895,985">
+    Digitized by Google
   </bloco>
   <notas>
-- Script identificado como misto (grego + latino) devido às linhas em grego no título e texto latino em tipografia.
-- Transcrição feita rigorosamente conforme legibilidade; pequenas abreviações e sinais tipográficos muito reduzidos foram reproduzidos de forma literal quando possíveis.
-- A linha com o texto muito pequeno "LAUDUNENSIS ... COLLEGII MAGISTRI, AC INTERPRETIS REGII." apresenta caracteres compactos; foi transcrita segundo a leitura mais provável. 
-- Ornamentos gráficos entre seções renderizados como "---◦---" por limitação de representação textual.
-- Não foram detectadas marcações A, B, C, D no gutter nesta imagem; portanto nenhuma nota_marginal correspondente foi adicionada.
+    - Página de título com texto misto (grego e latino).
+    - Ligaduras Æ preservadas conforme a tipografia original.
+    - Ornamentos gráficos (linhas decorativas) não transcritos textualmente.
+    - Layout centralizado.
   </notas>
 </pagina>

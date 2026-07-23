@@ -1,17 +1,16 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,80">
-    909     THEOPHANES.     910
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,70">
+    909 THEOPHANES. 910
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,90,950,380">
+  <bloco tipo="texto_principal" script="grego" bbox="100,80,900,380">
     ΓΡΗΓΟΡΙΟΥ
     ΑΡΧΙΕΠΙΣΚΟΠΟΥ ΘΕΣΣΑΛΟΝΙΚΗΣ
     ΤΟΥ ΠΑΛΑΜΑ
     ΘΕΟΦΑΝΗΣ
     Η
     ΠΕΡΙ ΘΕΟΤΗΤΟΣ ΚΑΙ ΤΟΥ ΚΑΤ' ΑΥΤΗΝ ΑΜΕΘΕΚΤΟΥ ΤΕ ΚΑΙ ΜΕΘΕΚΤΟΥ.
-    -
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,380,950,700">
+  <bloco tipo="texto_principal" script="latino" bbox="100,390,900,700">
     GREGORII PALAMÆ
     THESSALONICENSIS ARCHIEPISCOPI
     DIALOGUS QUI INSCRIBITUR
@@ -19,32 +18,32 @@
     SIVE
     DE DIVINITATIS ET RERUM DIVINARUM COMMUNICABILITATE
     ET INCOMMUNICABILITATE.
-    (Malthai, Lectiones Mosquenses, t. II.)
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="40,720,490,950">
-    Θεοφάνης. Ἐπισκέψω κατὰ σεαυτὸν γενόμενος, [ilegivel] ἀδελφε θεότιμε, τὰ ὑπομνήματα ἔναγχος, ἢ καθάπερ τινά περιττὰ ἀδολεσχῶν ἀμελήτον ἀφελὼν, καὶ [ilegivel] ὑπενεγκὼν κατὰ μικρὰν ἔκασα, τῶν τῆς σῆς ψυχῆς ἐξερήγησας; τελεῖος λογισμὸς;
-    Θεότιμος. Τί τοῦτο δ' λέγεις, ἀγαθὲ Θεοφάνε;
+  <bloco tipo="nota" script="latino" bbox="380,710,680,740">
+    (Matthæi, Lectiones Mosquenses, t. II.)
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="100,780,520,880">
+    Θεοφάνης. Ἐπεσκέψω κατὰ σεαυτὸν γενόμενος, Α
+    ἀδελφὲ Θεότιμε, τὰ ὡμιλημένα ἕναγχος, ἢ καθάπερ
+    τινὰ περιττὴν ἀδολεσχίαν ἀμελέτητον ἀφείς, καὶ
+    λεληθότως ὑπεκπνεῖν κατὰ μικρὸν ἐάσας, τῶν τς
+    σς ψυχῆς ἐξεφόρησας; τελέως λογισμῶν;
+    Θεότιμος. Τί τοῦθ' ὁ λέγεις, ἀγαθὲ Θεόφανες;
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="540,780,950,880">
+    Theophanes. Considerastine tecum, frater Theo-
+    time, recens colloquium, an superfluæ instar nu-
+    gationis neglectum et cita oblivione sepitum a
+    mentis tuæ cogitationibus omnino abstulisti?
+    Theotimus. Quid dicis, optime Theophanes? Sic-
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="100,890,520,940">
     Hunc dialogum edidi ex cod. bibliothecæ SS. synodi in fol. num. 70. Ex eodem jam edidi ejusdem Gregorii aliquot homilias Mosquæ, 1776, in 8. Hic
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,720,980,950">
-    Theophanes. Considerastine tecum, frater Theolime, recens colloquium, an superflua instar nu-
-    gationis neglectum et cità oblivione sepùm a
-    mentis tuæ cogitationibus omnino abstulisti?
-    Theolimus. Quid dicis, optime Theophanes? Sic-
-    Dialogus legitur etiam in codd. ejusdem bibliothe-
-    cæ 324, fol. 260 seqq. et 344, fol. 1 seqq. ex qui-
-    bus alii tempore varietates adjiciam.
+  <bloco tipo="nota" script="latino" bbox="540,890,950,940">
+    Dialogus legitur etiam in codd. ejusdem bibliothecæ 324, fol. 260 seqq. et 344, fol. 1 seqq. ex quibus alio tempore varietates adjiciam.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,740,540,780">
-    A
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="720,960,980,995">
+  <bloco tipo="rodape" script="latino" bbox="590,950,810,980">
     Digitized by Google
   </bloco>
-  <notas>
-    Foram mantidas as divisões em bloco conforme as colunas: primeira (grego) coluna esquerda e segunda (latim) coluna direita. 
-    Onde o copião apresenta palavras parcialmente ilegíveis, foram inseridos marcadores [ilegivel] para palavras individuais, não para blocos inteiros.
-    A letra "A" visível no centro (gutter) foi tratada como nota_marginal independente.
-    As caixas (bbox) são estimativas relativas à imagem (escala 0-1000).
-  </notas>
 </pagina>

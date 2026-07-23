@@ -1,99 +1,105 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,110">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,120">
 S. CLEMENTIS I ROM. PONT. OPERA DUBIA.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="50,120,480,540">
+  [!-- Left column (Latin) --]
+  <bloco tipo="texto_principal" script="latino" bbox="50,130,480,540">
 noribus cum omni Ecclesia, eligere viros ex nobis, et mittere cum Barnaba, et cum Paulo gentium
-apostolo ac Tarsensi, Judam qui vocatur Barsabbaş, et Silam, viros primarios in fratribus, atque
-scribere per manus eorum hæc: « Apostoli et seniores, et fratres, his qui sunt Antiochiae et Syriæ
+apostolo ac Tarsensi, Judam qui vocatur Barsabbas, et Silam, viros primarios in fratribus, atque
+scribere per manus eorum hæc: « Apostoli et seniores, et fratres, his qui sunt Antiochiæ et Syriæ
 et Ciliciæ fratribus ex gentibus, salutem. Quoniam audivimus quod quidam ex nobis turbaverunt vos
 verbis, evertentes animas vestras; quibus non mandavimus; placuit collectis in unum, eligere viros,
 et mittere ad vos cum charissimis nostris Barnaba et Paulo, hominibus qui tradiderunt animas suas
 pro Domino nostro Jesu Christo, per quos scripsistis. Misimus autem cum ipsis Judam et Silam, qui
 et ipsi verbis referent eadem. Visum est enim Spiritui sancto et nobis, nihil ultra imponere vobis
 oneris, quam hæc necessaria; ut abstineatis vos ab immolatis simulacrorum, et sanguine, et suffocato,
-et fornicatione; a quibus custodientes vos, bene agatis. Valete». Hanc igitur epistolam misimus;
+et fornicatione; a quibus custodientes vos, bene agatis. Valete.» Hanc igitur epistolam misimus;
 ipsi autem sat multis diebus remansimus Hierosolymis, una conquirentes quæ ad communem utilitatem
 et ad censuram pertinerent.
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="520,120,950,540">
-Α νενομισμένο (64) τοῖς τῷ τοῦ νόμου φυσικοῖς,
-Ἐνώχ, Νῶε, Μελχισεδὲκ, Ἰὼβ, καὶ ἕ τε τοιοῦτος ἐγενόμε· τότε ἔδοξεν ἡμῖν (65) τοῖς ἀποστόλοις,
-καὶ τῷ ἐπισκόπῳ Ἰακώβ, καὶ τοῖς πρεσβυτέροις σὺν ἡμῖν ἐκλεξαμένους ἄνδρας ἐξ ἡμῶν (66) αὐτοὺς
-πέμπαι σὺν τοῖς περὶ Βαρνάβαν, καὶ Παῦλον, τὸν τῶν ἐθνῶν ἀπόστολον, τὸν Ταρσέα, καὶ Ἰούδαν τὸν
-καλούμενον Βαρσαββᾶν, καὶ Σιλαν, ἄνδρας ἡγουμένους ἐν τοῖς ἀδελφοῖς, γράψαντες διὰ χειρὸς αὐτῶν
-τάδε: Οἱ ἀπόστολοι καὶ οἱ πρεσβύτεροι καὶ οἱ ἀδελφοί, τοῖς κατὰ τὴν 'Αντιόχειαν καὶ Συρίαν
-καὶ Κιλικίαν ἀδελφοῖς τοῖς ἐκ ἐθνῶν, χαίρειν. Ἐπειδὴ χρῄσαμεν ὄτι τινὲς ἐξ ἡμῶν ἐτάραξαν ὑμᾶς λόγοις,
-ἀνασκευάζοντες τὰς ψυχὰς ὑμῶν, οἷς οὐ διεστελάμεθα· ἔδοξε (67) γενόμενος ὁμοθυμαδὸν, ἐκλεξαμένους
-ἄνδρας ἐκπέμψαι πρὸς ὑμᾶς, σὺν τοῖς ἀγαπητοῖς ἡμῶν Βαρνάβᾷ καὶ Παύλῳ, ἀνθρώποις παραδεδοκόσι
-τὰς ψυχὰς αὐτῶν ὑπὲρ τοῦ Κυρίου ἡμῶν Ἰησοῦ Χριστοῦ, δι' ὧν ἐπεστειλάμεν.
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,200,510,260">
-A
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,320,510,380">
-B
-  </bloco>
-
-  <bloco tipo="cabecalho" script="latino" bbox="50,540,480,620">
+  <bloco tipo="cabecalho" script="latino" bbox="50,550,480,620">
 CAPUT XIII.
 Quomodo oportet separari ab haereticis.
   </bloco>
 
-  <bloco tipo="cabecalho" script="grego" bbox="520,540,950,620">
+  <bloco tipo="texto_principal" script="latino" bbox="50,630,480,920">
+Post vero satis longum tempus, visitavimus fratres, et confirmavimus eos verbo pietatis, et hortati
+sumus ut hæreticos fugerent, qui in nomine Christi ac Mosis, cum Christo ac Mose bellant, et in
+ovium pelle lupum occulunt. Hi namque sunt pseudochristi, et pseudoprophetae, et pseudoapostoli,
+fallaces et corruptores; vulgum partes, et vinearum humiliorum vastatores; per quos refrigerescet
+charitas multorum; qui autem perseveraverit usque in finem, indeflexus, hic salvus erit. De iisdem
+Dominus nos cautos reddens, ista denuntiavit: « Venient ad vos viri in vestimentis ovium; intrinsecus
+autem sunt lupi rapaces: a fructibus eorum cognoscetis eos: abstinete vos. »
+  </bloco>
+
+  [!-- Marginal letters in central gutter (nota_marginal) --]
+  <bloco tipo="nota_marginal" script="latino" bbox="490,200,510,240">
+A
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,320,510,360">
+B
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,440,510,480">
+C
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,560,510,600">
+D
+  </bloco>
+
+  [!-- Right column (Greek) --]
+  <bloco tipo="texto_principal" script="grego" bbox="520,130,950,540">
+Α νενομισμένον τοῖς πρὸ τοῦ νόμου φυσικοῖς, Ἐνώχ, Νῶε, Μελχισεδὲκ, Ἰὼβ, καὶ εἴ τις
+τοιοῦτος ἐγενόμε· τότε ἔδοξεν ἡμῖν (65) τοῖς ἀποστόλοις, καὶ τῷ ἐπισκόπῳ Ἰακώβῳ, καὶ τοῖς πρε-
+σβυτέροις σὺν ὄλῃ τῇ Ἐκκλησίᾳ, ἐκλεξαμένους ἄνδρας ἐξ ἡμῶν (66) αὐτῶν πέμψαι σὺν τοῖς περὶ Βαρνά-
+βαν, καὶ Παῦλον, τὸν τῶν ἐθνῶν ἀπόστολον, τὸν Ταρσεῖαν, καὶ Ἰούδαν τὸν καλούμενον Βαρσαββᾶν, καὶ
+Σίλαν, ἄνδρας ἡγουμένους ἐν τοῖς ἀδελφοῖς, γράψαντες διὰ χειρῶν αὐτῶν τάδε· Οἱ ἀπόστολοι καὶ οἱ
+πρεσβύτεροι καὶ οἱ ἀδελφοί, τοῖς κατὰ τὴν Ἄντιόχειαν καὶ Συρίαν καὶ Κιλικίαν ἀδελφοῖς τοῖς ἐξ
+ἐθνῶν, χαίρειν. Ἐπειδὴ ἠκούσαμεν ὅτι τινὲς ἐξ ἡμῶν ἐτάραξαν ὑμᾶς λόγοις, ἀνασκευάζοντες τὰς
+ψυχὰς ὑμῶν, οἷς οὐ διεστειλάμεθα· ἔδοξεν (67) γενόμενος ὁμοθυμαδὸν, ἐκλεξαμένους ἄνδρας ἐκπέμψαι
+πρὸς ὑμᾶς, σὺν τοῖς ἀγαπητοῖς ἡμῶν Βαρνάβᾳ καὶ Παύλῳ, ἀνθρώποις παραδεδοκόσι τὰς ψυχὰς αὐτῶν
+ὑπὲρ τοῦ Κυρίου ἡμῶν Ἰησοῦ Χριστοῦ, δι' ὧν ἐπεστείλαμεν· Ἀπεστάλκαμεν δὲ μετ' αὐτῶν Ἰούδαν καὶ
+Σίλαν, καὶ αὐτοὺς διὰ λόγου ἀπαγγέλλοντας τὰ αὐτά· Ἔδοξε γὰρ τῷ ἁγίῳ Πνεύματι καὶ ἡμῖν, μὴ θὲν πλέον
+ἐπιτίθεσθαι ὑμῖν βάρος, πλὴν τούτων τῶν ἐπ' ἀνάγκαις· ἀπέχεσθαι εἰδωλοθύτων, καὶ αἵματος, καὶ πνικτοῦ,
+καὶ πορνείας. Ἐξ ὧν διατηροῦντες ἑαυτοὺς, εὖ πράξετε. Ἔρρωσθε.
+  </bloco>
+
+  <bloco tipo="cabecalho" script="grego" bbox="520,550,950,620">
 ΚΕΦΑΛΑΙΟΝ ΙΓ'.
 Ὅπως χρὴ χωριζέσθαι τῶν αἱρετικῶν.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="50,620,480,980">
-Post vero satis longum tempus, visitavimus fratres, et confirmavimus eos verbo pietatis, et hortati
-sumus ut haereticos fugerent, qui in nomine Christi ac Mosis, cum Christo ac Mose bellant, et in
-ovium pelle lupum occulunt. Hi namque sunt pseudochristi, et pseudoprophetae, et pseudoapostoli,
-fallaces et corruptores; vulgum partes, et vinearum humiliorum vastatores; per quos res et resurgit
-caritas multorum; qui autem perseveraverit usque in finem, indeflexus, hic salvus erit. De iisdem
-Dominus nos cautos reddens, ista denuntiavit: Venient ad vos viri in vestimentis ovium; intrinsecus
-autem sunt lupi rapaces: a fructibus eorum cognoscetis eos: attendite vobis.
+  <bloco tipo="texto_principal" script="grego" bbox="520,630,950,920">
+Μετὰ δὲ χρόνου ἱκανῶν ἐπισκεψάμενοι τοὺς ἀδελφοὺς, καὶ στηρίζοντες αὐτοὺς τῷ λόγῳ τῆς εὐσεβείας,
+παρεγγυήσαμεν ὅπως φεύγωσιν ἐκ τῶν αἱρετικῶν, οἵτινες ἐν ὀνόματι Χριστοῦ καὶ Μωσέως πολεμοῦσιν,
+καὶ ἐν δόρῃ προβάτων τὸν λύκον κατακρύπτουσιν. Οὗτοι γὰρ εἰσι ψευδόχριστοι, καὶ ψευδοπροφῆται,
+καὶ ψευδαπόστολοι, πλάνοι καὶ φθορεῖς, ἀλωπέκων μερίδες καὶ χαμαίζηνων ἀμπελώνων φανισταί· δι' οὓς
+ψυχθήσεται ἡ τῶν πολλῶν ἀγάπη· ὁ δὲ ὑπομείνας εἰς τέλος ἀδιάστροφος, οὗτος σωθήσεται. Ὅπερ ὁ
+Κύριος προείπεν· Ἔλευσονται πρὸς ὑμᾶς ἄνδρες ἐν στολαῖς προβάτων, ἔσωθεν δὲ λύκοι ἐσθίοντες· ἐκ τῶν
+καρπῶν αὐτῶν ἐπιγνώσεσθε αὐτούς· πρόσεχετε ἑαυτοῖς.
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="520,620,950,980">
-Μετὰ δὲ χρόνου ἱκανῶν ἐπισκεψάμενοι τοὺς ἀδελφούς, καὶ στηρίζοντες αὐτοὺς τῷ λόγῳ τῆς εὐσεβείας,
-παρεγηγόραμεν ὅπως φεύγωσιν ἐκ τῶν αἱρετικῶν, οἵτινες ἐν ὀνόματι Χριστοῦ καὶ Μωσέως πολεμοῦσιν,
-καὶ ἐν μανδύας προβάτων λύκοι κρύπτονται. Οὗτοι γὰρ εἰσι ψευδόχριστοι, καὶ ψευδοπροφῆται,
-καὶ ψευδοδιδάσκαλοι, πλάνην καὶ φθορὰν φέρουσιν, μεσάζοντες δι' ὀφθαλμῶν· ὁ δὲ ὑπομένων ἕως τέλους
-καὶ ἀκατάβλητος σώσει· ὅπερ ὁ Κύριος προειπὼν ἔφη· Ἔρχονται πρὸς ὑμᾶς ἄνδρες ἐν στολαῖς προβάτων,
-ἔσωθεν δὲ λύκοι ἐσθίοντες: ἐκ τῶν καρπῶν αὐτῶν γινώσκετε αὐτούς· πρόσεχετε ἑαυτοῖς.
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,440,510,500">
-C
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,560,510,620">
-D
-  </bloco>
-
-  <bloco tipo="aparato_critico" script="latino" bbox="50,980,480,1260">
-CAPUT XIII. (continuatio)
-11 Act. xv, 25. 12 Ignat. interpol. ad Trall. 6. 13 Psalm. LXII, 11; Cant. ii, 15. 14 I. Ignat. interpol.
-ad Philad. 3. 15 Matth. xxiv, 12.
+  [!-- Apparatus / footnotes bottom left and right --]
+  <bloco tipo="aparato_critico" script="latino" bbox="50,920,480,990">
 VARIORUM NOTÆ.
 (64) Ἀπερ καὶ τοῖς πάλαι νενομισμένον. Ut homines sanctos qui ante Moysen vixerunt, nemo dixerit
-comedere idololthya, aut fuisse fornicatores; ita non abhorret a vero, eosdem abstinuisse sanguine et suffocato.
+comedisse idololthya, aut fuisse fornicatores; ita non abhorret a vero, eosdem abstinuisse sanguine et suffocato.
+(65) Hμiv. Deest in altero. (66) ἡμῶν: Deest etiam in eodem. (67) ἔδοξε r. Addit alter cod. ἡμῖν.
   </bloco>
 
-  <bloco tipo="aparato_critico" script="grego" bbox="520,980,950,1260">
-interdictione autem sanguinis continetur interdictum suffocati, iuxta illud Chrysostomi loco laudato:
-Τί ἔστιν χρῆμα τὸ αἱμα, ἡ ψυχή; τουτέστι, πνιχτόν· τοῦ γὰρ ἀλόγου ἡ ψυχή τὸ αἷμα τυγχάνει. Tertullianus
-Apologetic. cap. 9: Propterea quoque suffocatis, et morticinus abstinemus, ut quo sanguine contaminemur...
+  <bloco tipo="aparato_critico" script="grego" bbox="520,920,950,990">
+interdictione autem sanguinis continetur interdictum suffocati, juxta illud Chrysostomi loco laudato:
+Τί ἔστιν χρῆμα τὸ αἷμα, ἡ ψυχὴ; τουτέστι, πνικτόν· τοῦ γὰρ ἀλόγου ἡ ψυχή τὸ αἷμα τυγχάνει. Tertullianus
+Apologetic. cap. 9: Propterea quoque suffocatis, et morticinis abstinemus, ut quo sanguine contaminemur...
   </bloco>
 
   <notas>
-- Marginal letters A,B,C,D transcritas como blocos distintos, localizadas no gutter central.
-- Algumas palavras gregas e latinas foram transcritas conforme visíveis na imagem; onde o traço era incerto, manteve-se a leitura mais provável sem inventar termos inteiros.
-- Leituras incertas ou parcialmente ilegíveis foram evitadas; se requerido, posso acrescentar marcações [ilegivel] em tokens específicos.
+- Ordem dos blocos respeita: cabeçalho, coluna esquerda (latim), letras marginais (A,B,C,D), coluna direita (grego), aparatum criticum inferior (esquerdo e direito).
+- Letras marginais A, B, C, D transcritas como blocos independentes no gutter central.
+- Transcrição literal priorizada; não foi normalizado nem traduzido. Onde o original parecia lacunar ou variante de códice, nota crítica colocada no aparato.
   </notas>
 </pagina>

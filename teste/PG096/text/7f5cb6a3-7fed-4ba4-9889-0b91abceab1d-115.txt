@@ -1,151 +1,215 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,80">
+  <bloco tipo="cabecalho" script="misto" bbox="50,40,950,70">
     213 SACRA PARALLELA. 214
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="20,80,480,920">
-    • Ει πορευοντο τριβους αγαθους, ευροσαν αν τρι-
-    δους τῶν δικαιων λεγων.
-    • Τριβοι ζωης εκκληθιωσιν απο κακων.
-    • Ορθας τροχας ποιει τοις ποσιν· μη εκκλινῃς
-    εις τα δεξια, μηδε εις τα αριστερα.
-    • Ταδε λεγει Κυριος· Στητε επι τας ὁδους, και
-    ἰδετε, και ερωτησατε ὁδους Κυριου, και ἰδετε ποια
-    ἐστιν ἡ ὁδος ἡ αγαθη, και βασιλευσετε εν αυτη.  Ἰδετε
-    ποια ἐστιν η ὁδος ἡ αγαθη, και ευρησετε αναπαυσιν
-    ταις ψυχαις υμων.
-    • Μη επισπασθε ωλεθρον εν εργοις χειρων
-    υμων.
-    • Μη λῆμμα εν παντι ανεμῳ, και μη πορευου εν
-    παση ατραπῳ.
-    • Aποστησον απο πλημμυριας σου, και εξθινου B
-    χειρας, και απο πασης αμαρτιας καθαρισον χειρα
-    σου.
-    • Καταρας τεχνα επλανηθησαν απο οδου αληθειας,
-    εξακολουθησατε τῆ οδῷ του Βαλααμ.
-    • Πάντα δοκιμασαντες, το καλον κατεχετε· απο
-    παντος ειδους πονηρου απεχεσθε.
-    Οι το κακον φευγοντες, ουκ εαν απαξ η δευτερον
-    εκκληθωσιν την αμαρτιαν, επανεισοι, αλλ' εαν δυνα-
-    θωσι του κακου την πειραν εις το παντελες διαδρα-
-    ναι. Αρχη γαρ προς την αναληψιν των καλων, η
-    αναχωρησις των κακων. Εκκλησιον γαρ, φησιν,
-    απο κακου, και κομψον αρξατο, σοφως και εντε-
-    χνως, εισαγειν εις αρετην, αναχωρησιν της κακιας, C
-    αρχην ποιουμενος των καλων.
-    
-    Σπευθετε αρεσκει και βραχυς πολλην φλογα.
-    Σαπρατος εὑπνος πολλακις διελυσας.
-    Τοιοεισι ὁρμη, εκκλησον και μικρον βλαβος.
-    Μικρος μεν εστιν, εις δε μεγας τυγχανει.
-    
-    Πηγη κακων, μη βλῃψε, μη, ματαια οργη·
-    'Η ὁ ὀψ, γλωσσα, μη δεχου τον δοροφορ-
-    'Η ὁ ὀψ, χερι, γε, μη τραφης τα χειρα·
-    Ουτως, αν μηλιν ελθειν αθαρτος μερος.
-    
-    Επινηψον τας παιδιας, και παρῥωθον αυτων
-    βαθυνομεν. Επινηψον τους χρησιμους, και μηδε
-    γιγνωσκεις γενομθαι. Τότε ακρασιας τιμη εστιν με-
-    μορησις υποθεσεως, το μη αμαρτηματα φευγειν μονον,
-    αλλα και τα αδιαφορα μη ειναι δοκοῦντα, προς δε
-    την αμαρτιαν ημας σχεδονται.
-    
-    'Η των κακων απαλαισι, σωτηριας αρχη.
-    
-    ΤΙΤΛ. E'. — Περι οδοιματος χρηστου και κακου.
-    • Αιρετερον ονομα καλλιον, η πλουτος πολυς·
-    βελτι δε αργυριον και χρυσουν χαρις αγαθη.
-    • Αγαθον ονομα υπερ ελαιου αγαθου.
-    • Φροντισον περι ονοματος. Αυτο γαρ σο̑ παρα-
-    μενει, η χιλια μεταλλια θησαυρου.
-    • Χαρις ως παραδεισος εν ευλογιαις·
+  
+  <!-- Coluna Esquerda (Grego) -->
+  <bloco tipo="texto_principal" script="grego" bbox="50,75,480,110">
+    « Εἰ ἐπορεύοντο τρίβους ἀγαθὰς, εὕροσαν ἂν τρί-
+    βους τὰς τῶν δικαίων λείους. »
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,120,520,160">
-    A
+  <bloco tipo="texto_principal" script="grego" bbox="50,110,480,125">
+    « Τρίβοι ζωῆς ἐκκλίνουσιν ἀπὸ κακῶν. »
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,340,520,380">
-    B
+  <bloco tipo="texto_principal" script="grego" bbox="50,130,480,155">
+    « Ὁρθὰς τροχιὰς ποιεῖ σοῖς ποσίν· μὴ ἐκκλίνῃς
+    εἰς τὰ δεξιὰ, μηδὲ εἰς τὰ ἀριστερά. »
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,520,520,560">
-    C
+  <bloco tipo="texto_principal" script="grego" bbox="50,155,480,225">
+    « Τάδε λέγει Κύριος· Στήτε ἐπὶ ταῖς δοῖς, καὶ
+    ἴδετε, καὶ ἐρωτήσατε ὁδος Κυρίου, καὶ ἴδετε ποία
+    ἐστὶν ἡ δὸς ἡ ἀγαθή, καὶ βαδίζετε ἐν αὐτῇ. Ἴδετε
+    ποία ἐστὶν ἡ δὸς ἡ ἀγαθή, καὶ εὑρήσετε ἀνάπαυ-
+    σιν ταῖς ψυχαῖς ὑμῶν. »
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,700,520,740">
-    D
+  <bloco tipo="texto_principal" script="grego" bbox="50,225,480,255">
+    « Μὴ ἐπισπᾶσθε βλαθρὸν ἐν ἔργοις χειρῶν
+    ὑμν. »
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,80,980,920">
-    Prov. ii, 20. — « Si ambulassent per vias bonas,
-    invenissent vias iustorum planas. »
-    Prov. xvi, 17. — « Semitae vitae declinant a
+  <bloco tipo="texto_principal" script="grego" bbox="50,255,480,285">
+    « Μὴ λίχμα ἐν παντὶ ἀνέμῳ, καὶ μὴ πορεύου ἐν
+    πάσῃ ἀτραπῷ. »
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,285,480,330">
+    « Ἀπόστησον ἀπὸ πλημμελείας σου, καὶ εὕθυνον
+    χεῖρας, καὶ ἀπ πάσης ἁμαρτίας καθάρισον χεῖρά
+    σου. »
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,330,480,360">
+    « Κατάρας τέκνα ἐπλανήθησαν ἀπὸ ὁδοῦ ἀληθείας,
+    ἐξακολουθήσαντες τῇ ὁδ τοῦ Βαλαάμ. »
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,360,480,390">
+    « Πάντα δοκιμάσαντες, τὸ καλὸν κατέχετε· ἀπὸ
+    παντὸς εἴδους πονηροῦ ἀπέχεσθε. »
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,400,480,520">
+    Οἱ τ κακὸν φεύγοντες, οὐκ ἐὰν ἅπαξ ἢ δεύτερον
+    ἐκκλίνωσι τὴν ἁμαρτίαν, ἐπαινετοί, ἀλλ' ἐὰν δυνη-
+    θῶσι τοῦ κακοῦ τὴν πεῖραν εἰς τ παντελὲς διαδρά-
+    ναι. Ἀρχὴ γὰρ πρὸς τὴν ἀνάληψιν τῶν καλῶν, 
+    ἀναχώρησις τῶν κακῶν. Ἔκκλινον γάρ, φησιν,
+    ἀπὸ κακοῦ, καὶ ποίησον ἀγαθὸν, σοφῶς καὶ ἐντέ-
+    χνως εἰσάγων εἰς ἀρετήν, ἀναχώρησιν τῆς κακίας
+    ἀρχὴν ποιούμενος τῶν καλῶν.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,530,480,575">
+    Σπινθὴρ ἀνάπτει καὶ βραχὺς πολλὴν φλόγα.
+    Σπαραγμὸς ἐχίδνης πολλάκις διώλεσεν.
+    Τοῦτο οὖν ὅρων, ἔκκλινον καὶ μικρὸν βλάθος.
+    Μικρὸν μὲν ἐστιν, εἰς δὲ μεῖζον ἔρχεται.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,590,480,635">
+    Πηγὴ κακῶν, μὴ βλύε, μή, ματαία φρήν·
+    Ἦ δ' οὖν σύ, γλῶσσα, μὴ δέχου τὸν βόρβορον·
+    Ἢ δ' οὖν σύ, χεὶρ γε, μὴ γράφε τὰ χείρονα·
+    Οὕτως ἂν μῖν εἰκὼν ἀφθαρτος μένοι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,640,480,720">
+    Ἐπιγνῶμεν τὰς παγίδας, καὶ πόρρωθεν αὐτῶν
+    βαδίζωμεν. Ἐπιγνῶμεν τοὺς κρημνοὺς, καὶ μηδὲ
+    ἐγγὺς γενώμεθα. Τοῦτο ἀσφαλείας ἡμῖν ἔσται με-
+    γίστης ὑπόθεσις, τὸ μὴ ἁμαρτήματα φεύγειν μόνον,
+    ἀλλὰ καὶ τὰ ἀδιάφορα μὲν εἶναι δοκοῦντα, πρὸς δὲ
+    τὴν μαρτίαν ἡμᾶς σκελίζοντα.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,720,480,740">
+    Ἡ τῶν κακῶν ἀπαλλαγή, σωτηρίας ἀρχή.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,760,480,780">
+    ΤΙΤ. Ε'. — Περὶ ὀνόματος χρηστοῦ κα κακοῦ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,780,480,810">
+    « Αἱρετώτερον ὄνομα καλὸν, ἢ πλοῦτος πολύς·
+    ὑπὲρ δὲ ἀργύριον καὶ χρυσίον χάρις ἀγαθή. »
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,820,480,840">
+    « Ἀγαθὸν ὄνομα ὑπὲρ ἔλαιον ἀγαθὸν. »
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,850,480,880">
+    « Φρόντισον περὶ ὀνόματος. Αὐτὸ γάρ σοι παρα-
+    μένει, ἢ χίλιοι μίταλλοι θησαυροῦ. »
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,890,480,910">
+    « Χάρις ὡς παράδεισος ἐν εὐλογίαις. »
+  </bloco>
+
+  <!-- Coluna Direita (Latim) -->
+  <bloco tipo="texto_principal" script="latino" bbox="500,75,920,105">
+    Prov. II, 20. — « Si ambulassent per vias bonas,
+    invenissent vias justorum planas. »
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,105,920,130">
+    Prov. XVI, 17. — « Semitæ vitæ declinant a
     malis. »
-    Prov. iv, 26. — « Rectas facito semitas pedibus
-    tuis : ne declinas ad dextram, neque ad sinistram. »
-    Prov. vi, 16, 17. — « Haec dicit Dominus : State
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,130,920,155">
+    Prov. IV, 26. — « Rectas facito semitas pedibus
+    tuis : ne declines ad dextram, neque ad sinistram. »
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,155,920,225">
+    Prov. VI, 16, 17. — « Hæc dicit Dominus : State
     super vias, et videte, et interrogate semitas Do-
-    mini ; et videte quae sit via bona, et ambulate in
-    ea. Videte quae sit via bona, et invenietis requiem
+    mini ; et videte quæ sit via bona, et ambulate in
+    ea. Videte quæ sit via bona, et invenietis requiem
     animabus vestris. »
-    Sap. i, 12. — « Ne acquiritis perditionem in
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,225,920,255">
+    Sap. I, 12. — « Ne acquiratis perditionem in
     operibus manuum vestrarum. »
-    Eccli. v, 9. — « Ne ventiles ad omnem ventum,
-    et non ambules in omni-semita. »
-    Eccli. xxxviii, 10. — « Avertere a delicto tuo,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,255,920,285">
+    Eccli. V, 9. — « Ne ventiles ad omnem ventum,
+    et non ambules in omni semita. »
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,285,920,330">
+    Eccli. XXVIII, 10. — « Avertere a delicto tuo,
     et dirige manus, et ab omni peccato munda ma-
     num tuam. »
-    II Petr. ii, 15. — « Maledictionis filii, derelin-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,330,920,360">
+    II Petr. II, 15. — « Maledictionis filii, derelin-
     quentes viam veritatis, secuti viam Balaam. »
-    I Thess. v, 20. — « Omnia probantes, quod bo-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,360,920,400">
+    I Thess. V, 20. — « Omnia probantes, quod bo-
     num est tenete : ab omni specie mala abstinete
     vos. »
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,400,920,520">
     S. Basilii. — Qui vitium fugiunt, non si semel
     peccatum vitaverint, laudandi sunt ; sed si valeant
     effugere, quin vel vitii periculum unquam faciat.
-    Enim amplexandae virtutis initium est secessio a
+    Etenim amplectendæ virtutis initium est secessio a
     vitiis. Declina enim, inquit ille, a malo, et fac
-    bonum (Psal. xxxvii, 27) ; sapienter plane et artifi-
+    bonum (Psal. XXXVI, 27) ; sapienter plane et artifi-
     ciose, dum ad virtutem nos inducit, recessum a
     malo initium boni faciens.
-    
-    S. Greg. Nazianz., lierast. 13.
-    Scintilla magna parva flammae excitat.
-    Ac vipernus morsus haud raro necat.
-    Ob idque nonnamm, quamlibet parvum, fuge.
-    Nam parva primum si licet, crescit tamen.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,520,920,575">
+    S. Greg. Nazianz., tetrast. 13.
+    Scintilla magnas parva flammas excitat,
+    Ac viperinus morsus haud raro necat.
+    Ob idque noxam, quamlibet parvam, fuge.
+    Nam parva primum sit licet, crescit tamen.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,575,920,635">
     Id. Lament. ad Christ.
-    O mens inanis, fons multi, ne profues.
-    Aut, lingua, saltem ne lilium seudum excipe.
+    O mens inanis, fons mali, ne proflue.
+    623 Aut, lingua, saltem ne lutum fœdum excipe.
     Sin lingua, saltem ne malum scribas manus.
-    Imago sic Dei tibi maneabit integra.
-    
+    Imago sic Dei tibi manebit integra.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,635,920,720">
     S. Chrysost. — Laqueos agnoscamus, ac procul
-    ab ipsis incedamus. Praecipitia agnoscamus : ac ne
-    ad ea propius accedamus. Hoc summae nobis secu-
-    ritatis causa erit, si non modo peccata fugarimus ;
-    sed ea etiam, quae, licet nec bona nec mala esse
+    ab ipsis incedamus. Præcipitia agnoscamus : ac ne
+    ad ea propius accedamus. Hoc summæ nobis secu-
+    ritatis causa erit, si non modo peccata fugiamus ;
+    sed ea etiam, quæ, licet nec bona nec mala esse
     videantur, nos ad peccatum impellunt.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,720,920,750">
     S. Clement. — Discessus a malis, salutis est
     initium.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,760,920,780">
     TIT. V. — De fama bona aut mala.
-    
-    Prov. xxii, 1. — « Melius est nomen bonum,
-    quam divitiae multae : super argentum autem et
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,780,920,820">
+    Prov. XXII, 1. — « Melius est nomen bonum,
+    quam divitiæ multæ : super argentum autem et
     aurum gratia bona. »
-    Eccli. vii, 2. — « Melius est nomen bonum,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,820,920,850">
+    Eccli. VII, 2. — « Melius est nomen bonum,
     quam unguentum pretiosum. »
-    Eccli. xli, 15. — « Curam habe de bono nomine.
-    Hoc enim magis permane bit tibi, quam mille me-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,850,920,890">
+    Eccli. XLI, 15. — « Curam habe de bono nomine.
+    Hoc enim magis permanebit tibi, quam mille me-
     talla auri. »
-    Eccli. xi, 17. — « Gratia sicut paradisus in be-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,890,920,920">
+    Eccli. XL, 17. — « Gratia sicut paradisus in be-
     nedictionibus. »
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="600,940,980,1000">
+
+  <!-- Notas Marginais (Gutter) -->
+  <bloco tipo="nota_marginal" script="latino" bbox="485,75,495,90">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,285,495,300">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,490,495,505">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,700,495,715">
+    D
+  </bloco>
+
+  <!-- Rodapé -->
+  <bloco tipo="rodape" script="latino" bbox="600,960,800,980">
     Digitized by Google
   </bloco>
-  <notas>
-    - Aproximei bounding boxes em escala 0-1000. 
-    - Usei script="grego" para o bloco da coluna esquerda e marquei letras marginais A,B,C,D em blocos separados conforme solicitado.
-    - Onde a leitura era incerta (palavras fragmentárias no texto grego), preferi reproduzir o que é legível. Não foram usados marcadores [ilegivel] extensivos exceto quando a leitura ficaria inteiramente duvidosa; a transcrição grega contém alguns termos parcialmente reconstruídos a partir do impresso.
-  </notas>
 </pagina>

@@ -1,72 +1,214 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,110">
-    105      SYNOPSIS CANONUM.      106
+  <bloco tipo="cabecalho" script="latino" bbox="10,20,100,50">105</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="330,20,670,50">SYNOPSIS CANONUM.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,20,950,50">106</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="10,50,480,80">
+    καὶ ὁ ἀπὸ γυναικὸς ἐπ' ἄλλην, κατὰ τὸν Κύριον,
+    ὁμοίως.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,120,480,860">
-    καὶ δ' γυναικὸς τ' Ἕλληνας, κατὰ τὸν Κύριον, κ. τ. λ.
-    74. Ἐν γένει ἔνθεν οὐκ εἰσάγεται χρόνος, εἰ μὴ χαλασθείσης ἢ ὑπὲρ μεγίστης ἀνάγκης.
-    75. Τῷ μεγίστῳ Σαββάτῳ περὶ μέσας νύκτας τῆς ἁγίας ἑορτῆς.
-    76. Μετὰ τὴν ἑσπερινὴν εἴσοδον τοῦ Σαββάτου, μὴ γῶν ἐλθῇς.
-    77. Καὶ ὁ ἐλθὼν, καὶ ἡ λαμπάδος ἀπολείπουσα, ἀφορίσθω.
-    78. Ἄνδρας ἀφεντοῦμενον, ἡ πρὸ τοῦ πεισθῆναι λαβεῖν μισχάται· ὁ δὲ ἐπιστρέψας ἄνθρωπος εἴρηται.
-    79. Ὁ Ἑλληνικῶς ὀμωνύμως, ἐπετειρημένον.
-    80. Οἱ τὰς κόμας ἐν πλοχῇς ἐκτινοῖν πρὸς λύπην ἱερὰζομένους τῷ ἄρχοντι, ἀφοριεῖσθω.
-    81. Ὁ ὑπονόμος, καὶ καταφρονητικῶς μένων τὸ ἱερόν, ἐξωβιβάσθω καὶ τῶν κατηχουμένων.
-    82. Ἰουδαϊκῶς τινες ἐν ἱεροῖς ἔπραξαν μέλι. Ὅσοι τοῦτο συγχωρήσουσιν, ἢ λάθοι τοιοῦτον, οὐκ ἔσονται.
-    83. Εἰ δὲ τις οἰκείῳ ἄγρι, ὁ δὲ κατὰ τὸ ἀρχὴν τῶν προσάγοντος ἀμήνιστος.
-    84. Αἱ πρὸς τὰ αἰσχρὰ κινουσαὶ τὴν δράσιν γραφαὶ, ἀπαράγραπτοι.
-    85. Τὰς παλάμας ἢ· στιγμὰν τυχοῖ ὁ μεταληψάμενος· ὁ δὲ ἔργειον χρυσούν, ἡ ἄλλη ὄλγη ἀντίχειρος σκευῶν, ἀφοριεῖσθω.
-    86. Ἡ τῆς ἀμαρτίας ἔτι πάσι σχετίζεται ποιήσει, καὶ ἡ ἐπιστροφή καθορᾶται· καὶ οὕτω μετρεῖται ὑπὸ ἔλεος.
+  
+  <bloco tipo="texto_principal" script="grego" bbox="10,80,480,130">
+    κ'. Ἱερᾶς νδον οὐκ εἰσάγεται κτῆνος, εἰ μὴ κα-
+    ταλαβούσης ἐν ὕδῳ μεγίστης ἀνάγκης.
+    κα'. Τῷ μεγίστῳ Σαββάτῳ περὶ μέσας νύκτας
+    τῇ νηστείᾳ διακρατεῖν.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="10,130,480,170">
+    κβ'. Μετὰ τὴν ἑσπερινὴν εἴσοδον τοῦ Σαββάτου,
+    μὴ γόνυ κλίνης.
+    κγ'. Καὶ ὁ διδούς, καὶ ἡ λαμβάνουσα ἀμβλωθρί-
+    δια, ἀνδροφόνοι.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="10,170,480,220">
+    κδ'. Ἀνδρὸς ἀφαντουμένου, ἢ πρὸ τοῦ πεισθῆναι
+    λαβούσα, μοιχᾶται·  δὲ ἐπιστρέψας ἀνὴρ εἰ προ-
+    εἵρηται, λήψοιτο αὐτήν.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="10,220,480,270">
+    κε'. Ὁ Ἑλληνικῶς ὀμνύμενος, ἐπιτιμητέος.
+    κς'. Οἱ τὰς κόμας ἐν πλοκῆς ἐπινοίᾳ πρς λύμην
+    ἐργαζόμενοι τῶν ρώντων, ἀφοριστέοι.
+    κζ'. Ὁ ὑπογύμνιος, καὶ καταφρονητικῶς μένων
+    ἐν ἱερῷ, ἐξωθεῖσθω καὶ τῶν κατηχουμένων.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="10,270,480,330">
+    κη'. Ἰουδαϊκῶς τινες ἐν ἱεροῖς ἔψησαν μέλι. Ὃς
+    οὖν τοῦτο συγχωρήσειεν, ἢ λάβοι τοιοῦτον, οὐχ ἱε-
+    ρεύς. Εἰ δέ τις οἶκον ἄγοι, ὁ δ κατὰ τ ἀρκοῦν
+    τοῦ προσάγοντος λήψοιτο.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="10,330,480,370">
+    κθ'. Αἱ πρς τὰ αἰσχρὰ κινοῦσαι τὴν ὅρασιν γρα-
+    φαί, ἀζωγράφητοι.
+    λ'. Τὰς παλάμας εἰς σταυρὸν τυποῖ  μεταληψό-
+    μενος· ὁ δ δοχεῖον χρυσοῦν,  ἄλλην λην ἀντὶ
+    χειρὸς σκευάζων, ἀφοριστέος.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="10,370,480,410">
+    λα'. Ἡ τς ἁμαρτίας ἐπὶ πᾶσι σκοπεῖται ποιότης,
+    καὶ ἡ ἐπιστροφὴ καθορᾶται· καὶ οὕτω μετρεῖται
+    τὸ ἔλεος.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="100,410,350,430">
     Τοῦ ἁγίου Βασιλείου.
-    1. Αἱρετικοί, ὁ κατὰ τὴν πίστιν ἀλλότριοι· ὁ δὲ κατὰ τὰ ἴδιαν ζήτημα, συμμαχικὸς. Οἱ δὲ συνα- γόμενοι ἀποκτάσσονται τούτους ἱκεσίους, παρασυναγο- ίνται.
-    2. Τὰ ἐκ αἱρετικοῦ βάπτισμα, ἄδικον· δεχτὸν ἐὰν ὁ ἐκκλησιαστικὸν καὶ παρασυναγώγῃ.
-    3. Παρακλήσεις οἱ Πεπτύχηοι τῶν Μοναχῶν ἀφωνοῦσιν· ὅθεν καὶ εἰς αὐτὸν ἀθόριστος βαπτι- σταίνομαι.
-    4. Τὸ τῶν καθαρῶν, καὶ ὑδροπαστασιῶν, καὶ ἁγνῶσιν βαπτίσματος, εἰ καὶ δεκτόν διὰ τὸ ἱερ- λαῖον σωθὸς τούτους τὸ πνεῦμα τὸ ἅγιον, ἀλλ' οὐκ ἀπερχομένως χάριν ἔστω δεκτόν.
-    5. Ἡ κατ' ἐπισήμους φθορὰν, ὅτε ἂν φθείρη, χωρίστα.
-    6. Διάκονος παραγόμενος, ἤ ὁ τῶν λαϊκῶν με- ταστὰς τῶν, ἔχων τῆς κοινωνίας ἀκύρωτος.
-    7. Ἕν χρόνον ἢ δύο ἀφορίζεται διγάμον· τρεῖς δὲ καὶ τέσσαρες ὁ τρίγαμος, καὶ πέντε, κατὰ τὴν ἔργον συνέβη.
-    8. Αἱρετικὸς πρὸς τῷ τέλει μετανοήσας, δεκτός μὲν ἐπαρκείας.
-    9. Ὁ κανόνων, εἴ ποτε καὶ ἐξέγηγται, διαζεύ- γεται.
-    PATROL. GR. CXXXIII
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,120,950,860">
-    79. et qui in uxore ad aliam se applicat, ex Do- mini saeculentia, simili crimine teneatur.
-    80. Intra templum pecus non introducitur, nisi maxima necessitas in via contigerit.
-    81. Maximo Sabbato circa mediam noctem in sejeiio perseverandum est.
-    82. Post vespertinum ingressum Sabbati, ne genu flectas.
-    83. Tum qui dat, tum quae accipit abortivos foetus, homicidae.
-    84. Viro non comparente, quae priusquam de illis obtinuerit aliquid compererit, alii nusperit, machatur; vir autem qui reversus fuerit, si quidem praedictum sit, accipiat ipsam.
+
+  <bloco tipo="texto_principal" script="grego" bbox="10,430,480,490">
+    α'. Αἱρετικὸς, ὁ κατὰ τὴν πίστιν ἀλλότριος· ὁ δὲ
+    κατά τι ἰδίωμον ζήτημα, σχισματικός. Οἱ δὲ συνά-
+    γοντες ἀνυπότακτοι τούτους ἐκείνους, παρασυνά-
+    γωγοι.
+    β'. Τὸ ἐξ αἱρετικοῦ βάπτισμα, ἀδεκτόν· δεκτὸν
+    δὲ τὸ σχιστοῦ καὶ παρασυναγώγου.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="10,490,480,530">
+    γ'. Παράκλητον οἱ Πεπυκηνοὶ τὸν Μοντανὸν
+    ὀνομάζουσιν· ὅθεν καὶ εἰς αὐτὸν ἀβάπτιστοι βαπτι-
+    ζόμενοι.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="10,530,480,590">
+    δ'. Τὸ τν καθαρῶν, καὶ ὑδροπαραστατῶν, καὶ
+    ἐγκρατιτῶν βάπτισμα, εἰ καὶ ἀδεκτὸν διὰ τὸ ἐπι-
+    λεῖψαι αὐτοῖς τούτοις τὸ Πνεῦμα τ ἅγιον, ἀλλ' οὖν
+    οἰκονομίας χάριν ἔστω δεκτόν.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="10,590,480,620">
+    ε'. Ἡ κατ' ἐπιτήδευσιν φθείρασα, ὅτε ἂν φθείρῃ,
+    φονεύτρια.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="10,620,480,660">
+    ς'. Διάκονος πορνεύσας, εἰς τὸν τῶν λαϊκῶν με-
+    ταστὰς τόπον, ἔστω τῆς κοινωνίας ἀκώλυτος.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="10,660,480,710">
+    ζ'. Ἕνα χρόνον ἢ δύο ἀφορίζεται δίγαμος· τρεῖς
+    δὲ καὶ τέσσαρας ὁ τρίγαμος, καὶ πέντε, κατὰ τὴν
+    ἔμπροσθεν συνήθειαν.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="10,710,480,750">
+    η'. Αἱρετικὸς πρὸς τ τέλει μετανον, δεκτς
+    μετ' ἐπιχρίσεως.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="10,750,480,790">
+    θ'. Ὁ κανονικὸς, εἴ που καὶ ζεύγνυται, διαζευ-
+    γνύτω.
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,50,510,70">A</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,50,950,80">
+    est : et qui ab uxore ad aliam se applicat, ex Do-
+    mini sententia, simili crimine tenetur.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,80,950,130">
+    30. Intra templum pecus non introducitur, nisi
+    maxima necessitas in via contigerit.
+    31. Maximo Sabbato circa mediam noctem in
+    jejunio perseverandum est.
+    32. Post vespertinum ingressum Sabbati, ne genu
+    flectas.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,130,950,180">
+    83. Tum qui dat, tum quæ accipit abortivos fœ-
+    tus, homicidæ.
+    84. Viro non comparente, quæ priusquam de
+    illius obitu certi aliquid compererit, alii nupserit,
+    mœchatur; vir autem qui reversus fuerit, siquidem
+    prædictum sit, accipiat ipsam.
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,180,510,200">B</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,180,950,240">
     85. Qui gentili more jurat, puniendus.
-    86. Qui capillos artificiosis nexibus intorquent ad spectaculum perniciem, excommunicandi.
-    87. Uxori addictus, ac per contemptum manens in templo, expellatur etiam e catechumenorum ordine.
-    88. Quidam Judaico more in templis coxerunt mel. Qui igitur hoc persiserit, aut tale acceperit, non est habendus sacerdos. Si quis vero domo alii relinerit, ipse prout sufficit offerenti, accipiat.
-    89. Picturae quae ad turpis aspectum movent, non sunt pingendae.
-    90. Manus in crucis figuram cinnoni, qui Eucharistiam sumpturus est. Qui vero receptaculum aureum, aut aliam materiam vice manus parat, excommunicandus.
-    91. Delicti qualitas in omnibus consideratur, conversioque perspicitur: atque ita misericordia ad mensuram tribuitur.
+    86. Qui capillos artificiosis nexibus intorquent
+    ad spectantium perniciem, excommunicandi.
+    87. Uxori addictus, ac per contemptum manens
+    in templo, expellatur etiam e catechumenorum or-
+    dine.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,240,950,290">
+    88. Quidam Judaico more in templis coxerunt
+    mel. Qui igitur hoc permiserit, aut tale acceperit,
+    non est habendus sacerdos. Si quis vero domo
+    attulerit, ipse prout sufficit offerenti, accipiat.
+    89. Picturæ quæ ad turpia aspectum movent, non
+    sunt pingendæ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,290,950,340">
+    90. Manus in crucis figuram componit, qui
+    Eucharistiam sumpturus est. Qui vero recepta-
+    culum aureum, aut aliam materiam vice manus
+    parat, excommunicandus.
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,340,510,360">C</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,340,950,390">
+    91. Delicti qualitas in omnibus consideratur,
+    conversioque perspicitur : atque ita misericordia
+    ad mensuram tribuitur.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="600,390,850,410">
     Sancti Basilii Epistola I.
-    1. Haereticus est, qui a fide alienus; qui vero circa aliquam sanabilem quaestionem errat, schismaticus. Inobedientes vero qui hos congregant, ab Ecclesiae conventu arcendi sunt.
-    2. Haereticī baptisma, rejiciendum; schismatici vero atque ab Ecclesia alieni, recipiendum.
-    3. Paracletum Pepsiani Moulanum vocant. Unde et qui in ipsum baptizantur, non censentur baptizati.
-    4. Catharorum, Hydroparastatarum, atque Eu- creatitarum baptisma, quamvis non recipiendum, propter Spiritus sancti apud eos defectum, tamen dispensationis gratia recipiatur.
-    5. Quae de industria fetum corrumpit, quando- cunque corruperit, homicidio tenetur.
-    6. Diaconus qui fornicatus fuerit, in laicorum locum relegatus, communionem ne prohibeatur.
-    7. Unum aut duos annos excommunicatur bigamus, tres vero et quatuor trigamus, atque etiam quinque, juxta consuetudinem quae hactenus invaluit.
-    8. Haereticus in sine vita poenitens, discretione adhibita suscipiendus.
-    9. Canonicus si matrimonio junctus sit, disjungitur.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="470,170,510,760">
-    A
-    B
-    C
-    D
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,410,950,460">
+    1. Hæreticus est, qui a fide alienus : qui vero
+    circa aliquam sanabilem quæstionem errat, schi-
+    smaticus. Inobedientes vero qui hos congregant, ab
+    Ecclesiæ conventu arcendi sunt.
+    2. Hæretici baptisma, rejiciendum ; schismatici
+    vero atque ab Ecclesia alieni, recipiendum.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="50,880,420,950">
-    PATROL. GR. CXXXIII.
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,460,950,510">
+    3. Paracletum Pepusiani Montanum vocant. Unde
+    et qui in ipsum baptizantur, non censentur bapti-
+    zati.
+    4. Catharorum, Hydroparastatarum, atque Eu-
+    cratitarum baptisma, quamvis non recipiendum,
+    propter Spiritus sancti apud eos defectum, tamen
+    dispensationis gratia recipiatur.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="620,880,950,980">
-    Digitized by Google
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,510,510,530">D</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,510,950,560">
+    5. Quæ de industria fœtum corrupit, quando-
+    cunque corruperit, homicidio tenetur.
+    6. Diaconus qui fornicatus fuerit, in laicorum
+    locum relegatus, communione ne prohibeatur.
   </bloco>
-  <notas>
-    Transcrição efetuada visualmente; palavras ou lemas parcialmente ilegíveis foram aproximadas ou marcadas por seções inteiras claramente visíveis. [ilegivel] não foi utilizado para blocos inteiros, apenas quando necessário inserir correções de palavra (nenhuma inserida).
-  </notas>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,560,950,620">
+    7. Unum aut duos annos excommunicatur biga-
+    mus, tres vero et quatuor trigamus, atque etiam
+    quinque, juxta consuetudinem quæ hactenus in-
+    valuit.
+    8. Hæreticus in fine vitæ pœnitens, discretione
+    adhibita suscipiendus.
+    9. Canonicus si matrimonio junctus sit, disjun-
+    gitur.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="100,900,350,930">PATROL. GR. CXXXIII</bloco>
+  <bloco tipo="rodape" script="latino" bbox="750,900,770,930">4</bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,950,800,980">Digitized by Google</bloco>
 </pagina>

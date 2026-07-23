@@ -1,150 +1,130 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,80">
-1399					S. ANDREÆ CRETENSIS					1400
+  <bloco tipo="cabecalho" script="latino" bbox="120,50,180,70">
+    1399
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="430,50,660,70">
+    S. ANDREÆ CRETENSIS
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="910,50,960,70">
+    1400
+  </bloco>
+  
+  <!-- Coluna Esquerda (Latim) -->
+  <bloco tipo="texto_principal" script="latino" bbox="120,80,530,130">
+    Dominica in Ramis Palmarum, vespere ad Completorium canimus Triodium D. Andreæ Cretensis : similiter facimus reliquis Majoris Hebdomadæ diebus sero ad Completorium.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="160,140,510,160">
+    Ode 1, ton. 4, obliq. Ei qui urbes contrivit.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,160,530,210">
+    Imitemur, fideles b, Joseph castimoniam : animi proposito illo, quo præditam ratione honestavit hominum substantiam ; posita in actione virtute, in omni custodia viventes.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,215,530,265">
+    Otiositas a bonis, licui assimilis est; hanc ergo caveamus ; nec sicut illa tunc aruerimus, quæ foliis opacam luxuriantemque Synagogam typo præferret 1.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,270,530,315">
+    Dominicam imaginem figurans Joseph, in lacum mittitur j , venditur a fratribus, omnia vir inclytus sustinet in typum vere Christi.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,325,530,370">
+    Caventes ficus sterilitatem, fratres, intelligamus exemplum ; ne sicut illa tunc aruerimus, cum esuriens benignus Dominus ad eam divertit.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,380,530,425">
+    Festinans Jesus pro mundi salute pati, ultro cum discipulis suis, Hierosolymam ad spontancam passionem, quam passurus venisset, ascendit k.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,435,530,490">
+    Domino ad patiendum omnia festine accedenti adhærentes, parati ad ludibria, ad sputa ac convicia simus, quo ejus intemeratis passionibus, nos fideles pariter glorifikemur.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,495,530,550">
+    Passionibus passiones sanat, qui pro nobis patitur : volens quippe, humana nostra natura, vivificas suas recipit passiones, quo nos efficiamur salvi.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="280,560,360,575">
+    : Gloria.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,575,530,625">
+    Tria glorifico, æterna ; tria sancta laudo ; tria coæterna in substantia una prædico. Unus siquidem, in Patre, Filioque, et Spiritu sancto, Deus glorificatur.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="280,635,370,650">
+    In Deipar.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,650,530,670">
+    Moysis quidem virga, nec non virga Aaronis,
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="40,90,490,760">
-Dominica in Ramis Palmarum, vespere ad Comple-
-torium canimus Triduum D. Andreæ Cretensis:
-similiter facimus reliquis Majoris Hebdomadæ
-diebus sero ad Completorium.
-
-Ode 1, ton. 4. oblig. Ei qui urbes contriuit.
-
-Imitemur, fideles b. Joseph castimoniam: animi
-proposito illo, quo præditam ratione honestavit
-hominum substantiam; posita in actione virtute,
-in omni custodia viventes.
-
-Ociositas a bonis, scui assimilis est; hanc ergo
-caveamus; nec sicut illa tunc auremimus, quae fœlis
-opacam luxuriantemque Synagogam typo præfer-
-ret.
-
-Dominicam imaginem figurans Joseph, in lacum
-mittitur; venditur a fratribus, omnia vir inclitus
-sustiniet in ipsum vere Christi.
-
-Caventes lacus sterilitatem, fratres, intelligamus
-exemplum; ne sicut illa tunc auremimus, cum esu-
-riens benignus Dominus ad eam divertit.
-
-Festinans Jesus pro mundi salute pati, utro cum
-discipulis suis, Hierosolymam ad spontancam pas-
-sionem, quam passurus venisset, ascendit k.
-
-Domino ad patiendum omnia festine accedenti
-adhaerentes, parati ad ludibria, ad sputa ac convicia
-simus, quo ejus intemeratis passionibus, nos fide-
-les pariter glorificemur.
-
-Passionibus passiones sanat, qui pro nobis pati-
-tur: volens quippe, humana nostra natura, vivi-
-ficans suas recipit passiones, quo nos efficiamur
-salvi.
-
-: Gloria.
-
-Tria glorifico, æterna; tria sancta laudo; tria
-conterna in substantia una prædico. Unus siqui-
-dem, in Patre, Filioque, et Spiritu sancto, Deus
-glorificatur.
-
-In Deipar.
-
-Moysis quidem virga, nec non virga Aaronis,
-b Gen. xxxix, 8. i Matth. xxvi, 19. j Gen. xxxvii, 24, 28. k Matth. xx, 17 seqq.
+  <!-- Coluna Direita (Grego) -->
+  <bloco tipo="texto_principal" script="grego" bbox="550,80,950,130">
+    Τῇ Κυριακῇ τῶν Βαΐων ἑσπέρας εἰς τ Ἀπόδειπνον, ψάλλομεν τὸ Τριδιον τοῦ Κυρίου Ἀνδρέου Κρήτης· ὡσαύτως ποιοῦμεν καὶ τὰς λοιπὰς τῆς Μεγάλης ἑβδομάδος Ἑσπέρας, εἰς τὸ Ἀπόδειπνον.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="580,140,940,160">
+    ᾨδὴ α', ἦχ. πλ. δ'. Τῷ συντρίψαντι πόλεις.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="550,160,950,210">
+    Ἰωσὴφ τὴν σωφροσύνην μιμησώμεθα παῖ· γνώμην τὸν τιμήσαντα ** τὴν τῶν ἀνθρώπων λογικὴν οὐσίαν, πάσῃ φυλακῇ πολιτευσάμενοι, δι' ἀρετῆς πρακτικῆς.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="550,215,950,265">
+    Τῶν καλῶν ἡ ἀπραξία ὡμοιώθη τῇ συκῇ· ταύτην οὖν ἐκκλίνωμεν, μὴ ξηρανθῶμεν ὡς ἐκείνη τότε, τὴν συναγωγὴν φύλλοις πυκάζουσαν προϋπεγράψασα.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="550,270,950,315">
+    Τὴν εἰκόνα τοῦ Δεσπότου ὑπογράφων Ἰωσήφ, λάκκῳ κατατίθεται· ἀπεμπολεῖται ὑπὸ τν συγγόνων· πάντα ὑπομένει ὁ ἀόιδιμος εἰς τύπον ὄντως Χριστοῦ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="550,325,950,370">
+    Τῆς συκῆς τὴν ἀκαρπίαν ἐκφυγόντες, ἀδελφοί, γνῶμεν τὸ ὑπόδειγμα· μὴ ξηρανθῶμεν ὡς ἐκείνη τότε, ὅτε ἐπανάγων ὁ φιλάνθρωπος, ἦλθε πεινῶν αὐτήν.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="550,380,950,425">
+    Ἰησος ὑπὲρ τοῦ κόσμου ἐπειγόμενος παθεῖν, θέλων συνανέρχεται τοῖς μαθηταῖς αὐτοῦ, ἐπὶ τὴν πόλιν Ἱερουσαλήμ, πρὸς τὸ ἑκούσιον πάθος, ὃ λθε παθεν.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="550,435,950,490">
+    Κολληθέντες τῷ Κυρί πάντα σπεύδοντι παθεῖν, ἕτοιμοι γενώμεθα πρὸς ἐμπαιγμόν, πρὸς ἐμπτυσμούς, πρὸς χλεύην, ὅπως τος ἀχράντοις αὐτοῦ πάθεσι, συνδοξασθῶμεν πιστοί.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="550,495,950,550">
+    Πάθη πάθεσιν ἴαται, ὁ παθὼν ὑπὲρ ἡμῶν· θέλων γὰρ προσίεται τῇ καθ' ἡμς ἀνθρωπικῇ οὐσίᾳ, τὰ ζωοποιὰ αὐτο παθήματα, να σωθῶμεν ἡμες.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="730,560,790,575">
+    Δόξα.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="550,575,950,625">
+    Τρία ἄναρχα δοξάζω· τρία ἅγια ὑμνῶ· τρία συναΐδια ἐν οὐσιότητι μιᾷ κηρύττω· εἷς γὰρ ἐν Πατρί, Υἱῷ, καὶ Πνεύματι, δοξολογεῖται Θεός.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="720,635,790,650">
+    Θεοτόκε.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="550,650,950,670">
+    Ἡ μὲν ῥάβδος Μωϋσέως, καὶ ἡ ῥάβδος Ἀαρών,
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="510,90,960,760">
-Τῇ Κυριακῇ τῶν Βαΐων ἐσάπερ εἰς τὸ Ἀκάθιστον,
-ψάλλομεν τὸ Τριώδιον τοῦ Κυρίου
-Ἀνδρέου Κρήτης· ὡσαύτως ποιούμεν καὶ
-τὰς λοιπὰς τῆς Μεγάλης ἑβδομάδος ἑσπέρας,
-εἰς τὸ Ἀποκεῖσιμον.
-
-Ὀδὴ αʹ, πλ. δλ. Ὁ τῷ συτριβέντι κόλῳ.
-
-Ἰωσὴφ τὴν σωφροσύνην μερισμάτων παρι-
-γώμενον τὸν τιμωσάμενα τῆς τῶν ἀνθρώπων περι-
-χουσίαν, πάσῃ φυλακῇ πολιτευσαμένον, ἐπ' ἀρετῇ
-πρακτικῇ.
-
-Τῶν καλῶν ἡ ἀπραξία ὀμοιώθη τῇ ψυχῇ· ἀπ᾽
-τῆς οὖν ἐκκλησίας, μὴ ἐπαναβώμεν ὡς ἔτερον τὴν
-συναγωγὴν φυλλοῖς πυκνούσας προβλε-
-φροῦσα.
-
-Τὴν εἰκόνα τοῦ Δεσπότου ὑπογράφων Ἰωσὴφ,
-λάχῃ καταπληττέται· ἀπεπωμαλίζεται ὑπὸ τῶν συ-
-γγόνων· πάντα ὑπομένει ὁ ἀόθιμος εἰς τὴν ὄψιν
-Χριστοῦ.
-
-Τῆς συκῆς τὴν ἀκαρπίαν ἰχνηλατώντες, ἀδελφοί,
-γνώμεν τὸ ὑπόδειγμα· μὴ ἐπαναβώμεν ὡς ἔτερον
-τότε, ὅτε ἐπανώγων ὁ φιλάνθρωπος, ἠλθε κατ' αὐτὴν.
-
-Ἰησοῦς ὑπὲρ τοῦ κόσμου ἐπειγόμενος ποθεῖ
-θέλειν συναναχείρεσθαι τοῖς μαθηταῖς αὐτοῦ, καὶ τῇ
-πόλει Ἱεροσολύμων, πρὸς τὸ ἐκούσιον πάθος, ὅ ἤλθε
-παθεῖν.
-
-Κολληθέντες τῷ Κυρίῳ πάντα σκεύθητον παθεῖν,
-ἑτοιμοι· γενώμεθα πρὸς ἐπαναγινήν, πρὸς ὑπερ-
-σμούς, πρὸς κλίναι, ὅπως τοῖς ἀχερώσις αὐτοῖς πε-
-θεσι, συνοδοξασθῶμεν πιστοί.
-
-Πάθη πάθεσιν ἴαται, ὁ παθὼν ὑπὲρ ἡμῶν· θέλων
-γὰρ προσείτα τῇ καθ' ἡμᾶς ἀνθρωπικῇ φύσει,
-τὰ ζωοποιὰ αὐτοῦ παθήματα, ἵνα σωθῶμεν ἡμεῖς.
+  <!-- Marginalia (Gutter) -->
+  <bloco tipo="nota_marginal" script="latino" bbox="535,80,545,95">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="535,270,545,285">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="535,460,545,475">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="535,750,545,765">
+    D
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="492,200,508,235">
-A
+  <!-- Rodapé e Notas -->
+  <bloco tipo="aparato_critico" script="latino" bbox="120,680,850,700">
+    b Gen. xxxix, 8. 1 Matth. xxi, 19. j Gen. xxxvii, 21, 28. k Matth. xx, 17 seqq.
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="492,290,508,340">
-B
+  <bloco tipo="cabecalho" script="latino" bbox="440,705,620,725">
+    VARIÆ LECTIONES.
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="492,420,508,485">
-C
+  <bloco tipo="aparato_critico" script="misto" bbox="120,710,320,730">
+    ** Is. τὴν τιμήσασαν.
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="492,530,508,600">
-D
+  <bloco tipo="cabecalho" script="latino" bbox="450,735,640,755">
+    COMBEFISII NOTÆ.
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="40,760,490,980">
-VARIÆ LECTIONES.
-
-COMBESI FI NOTÆ.
-
-(50) Spirant hæ odæ devotissimum quidpiam, D recumbente, ac ministrante Martha. Auctor Sy-
-ac plane sacro illi Dominicæ Passionis tempori nazarii ad eum diem, de mente Chrysostomi, moles
-congruum. Perstringit in eis Andreas, quæ præ- tantum existimant aliam unctionem, quod sane vi-
-cipua iis diebus gesta a Domino recolit Ecclesia: detur habere praxus Scripturæ contextus, sed et
-in quæ etiam exstant plurimæ Patrum devotissimæ aliam unguentum, in quo tamen adversatur traditio,
-orationes, Græca pietate frequentatæ, ut quæ seu quasi-traditio Latina. Nihil sane vetat, ut ne
-exstant variæ nomine Chrysostomi, quanquam impositor in obsequium Domini Maria quem, cur-
-non sint ejus omnes: maxime illa in hiccum are- cepta ex fratris resuscitacione Judaeorum invidia,
-factam tom. VI Front. quam Sithet. habet Dama- morti proxime tradiditvel vel sciret, vel conjescit,
-sceni nomine in apographo R. P. Sirimundi. Vide- iterum in domestico oppido, aliquae et alia domo,
-tur ex præcipuis quam edidimus Amphilochii in vel etiam eadem; si quidem Simon leprosus fuit
-multis pecactricem, ex eodem apographo, di- Lazari pater, ut refert traditum Synaxarii auctor
-cetam feria 3 majoris illius hebdomadæ, qua Græ- Sabbato ejusdem Lazari; ac velut in sepulturam
-ci existimant eam unctionem factam, aliam ab ea ejus, quam præveniret, uxorit. Erat mulier con-
-quam Joannes memorat ante sex dies Paschæ, in piosa unguentis, adeo illustir stemate ac divitibus
-domo, ut videtur, Lazari, factum et ipso cum Jesu militia, castelloque sic regiæ urbi vicino.
+  <bloco tipo="nota" script="latino" bbox="120,755,530,935">
+    (30) Spirant hæc odæ devotissimum quidpiam, ac plane sacro illi Dominicæ Passionis temporicongruum. Perstringit in eis Andreas, quæ præcipua iis diebus gesta a Domino recolit Ecclesia : in quæ etiam exstant plurimæ Patrum devotissimæ orationes, Græca pietate frequentatæ, ut quæ exstant variæ nomine Chrysostomi, quanquam non sint ejus omnes : maxime illa in ficum arefactam tom. VI Front. quam Sirlet. habet Damasceni nomine in apographo R. P. Sirmundi. Videtur ex præcipuis quam edidimus Amphilochii in mulierem peccatricem, ex eodem apographo, dictam feria 3 majoris illius hebdomadæ, quæ Græci existimant eam unctionem factam, aliam ab ea quam Joannes memorat ante sex dies Paschæ, in domo, ut videtur, Lazari, factam et ipso cum Jesu
   </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="380,980,620,998">
-Digitized by Google
+  <bloco tipo="nota" script="latino" bbox="550,755,950,935">
+    recumbente, ac ministrante Martha. Auctor Synaxarii ad eum diem, de mente Chrysostomi, non tantum existimat aliam unctionem, quod sane videtur habere planus Scripturæ contextus, sed et aliam ungentem, in quo tamen adversatur traditio, seu quasi-traditio Latina. Nihil sane vetat, ut ne impensior in obsequium Domini Maria quem, concepta ex fratris resuscitatione Judæorum invidia, morti proxime tradendum vel sciret, vel conjiceret, iterum in domestico oppido, aliaque et alia domo, vel etiam eadem ; si quidem Simon leprosus fuit Lazari pater, ut refert traditum Synaxarii auctor Sabbato ejusdem Lazari; ac velut in sepulturam ejus, quam præveniret, unxerit. Erat mulier copiosa unguentis, adeo illustri stemate ac divite familia, castelloque sic regiæ urbi vicino.
   </bloco>
-
-  <notas>
-- Use of [ilegivel] inserted was avoided; uncertain or worn words have been transcribed to the best reading of the facsimile.
-- Marginal letters A, B, C, D provided as separate nota_marginal blocks per instructions.
-- Script identification: left column Latin (latino), right column Greek (grego). Some punctuation and hyphenation reproduced as in original.
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="600,960,820,990">
+    Digitized by Google
+  </bloco>
 </pagina>

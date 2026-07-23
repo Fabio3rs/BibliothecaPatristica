@@ -1,14 +1,15 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="120,20,880,100">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="40,8,960,80">
     781  S. CLEMENTIS I ROM. PONT. OPERA DUBIA.  782
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="80,110,480,150">
+  <bloco tipo="cabecalho" script="latino" bbox="80,88,420,132">
     CAPUT XIV.
   </bloco>
-  <bloco tipo="cabecalho" script="grego" bbox="520,110,920,150">
+  <bloco tipo="cabecalho" script="grego" bbox="540,88,920,132">
     ΚΕΦΑΛΑΙΟΝ ΙΔ'.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,150,480,640">
+
+  <bloco tipo="texto_principal" script="latino" bbox="40,140,480,640">
     Quod secundum Domini consilium, non debeat
     jactare se, nec nomen suum praedicare, quæ munus
     tribuit.
@@ -18,14 +19,14 @@
     mosyna apud Deum in abscondito, sicut Dominus ait:
     "Te autem faciente eleemosynam, nesciat sinistra
     tua, quid faciat dextera tua; ut sit eleemosyna tua in
-    abscondito"4. Ac vidua precetur pro largitore,
-    quicumque tandem ille sit, cum ipsa sanctum Christi
+    abscondito". Ac vidua precetur pro largitore,
+    quicunque tandem ille sit, cum ipsa sanctum Christi
     altare existat: "Et Pater, qui videt in abscondito,
-    in aperto reddet"5, conferenti benignitatem. Sed
+    in aperto reddet", conferenti benignitatem. Sed
     viduæ quæ secundum Dei mandatum vivere nolunt,
     curam habent sciscitandi multum, quæ fuerit sub-
     ministratrix, et quæ acceptrices. Quod cum vidua B
-    resciuit, queritur de illa quæ subministravit, di-
+    rescivit, queritur de illa quæ subministravit, di-
     cens: An nesciebas me tibi esse illa calamitosi-
     rem? Quid igitur illam mihi prætulisti? Talia di-
     cendo, decipit; neque cogitat, non fuisse hanc vo-
@@ -36,16 +37,15 @@
     tione largitricis ingressa in domum suam, atque in
     faciem procumbens, supplicare Deo, ut peccatum
     ei remittatur. Nam Deus praecepit beneficœ ne velut
-    aragico beati decantet beneficium: vidua vero
+    tragico beati decantet beneficium: vidua vero
     conquestata est quod illa nomen suum non procla-
-    maverit, et ipsa quoque eo audito ad accipienda cur-
-    reret: neque solum expostulavit, sed etiam ipsa
-    maledixit, oblita illius qui ait: Qui benedicit
-    tibi, benedictus est; et qui maledicit tibi, male-
-    dictus est. Dicit autem Dominus: Cum intraveri-
-    tis in domum, dicite: Pax huic domui; et si sue-
+    maverit, ut ipsa quoque eo audito ad accipiendum
+    curreret: neque solum expostulavit, sed etiam ipsi
+    maledixit, oblita illius qui ait: "Qui benedicit
+    tibi, benedictus est; et qui maledicit tibi, maledictus est." Dicit autem Dominus: "Cum intraveritis in domum, dicite: Pax huic domui; et si fue-
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,150,940,640">
+
+  <bloco tipo="texto_principal" script="grego" bbox="520,140,960,640">
     Ὅτι οὐ χρὴ κομπάζειν, καὶ περιαγγέλλειν τὸ
     ἑαυτῆς ὄνομα, τὴν χαριστοφοροῦσαν, κατὰ τὴν
     τοῦ Κυρίου διάταξιν.
@@ -53,88 +53,103 @@
     Ἡ μὲν οὖν παροῦσα, ἀποκρυπτόμενον τὸ οἰκεῖον ἔρω-
     μα, ὡς σοφῷ· μὴ σαληίζουσα ἔμπροσθεν αὐτῆς· ἵνα
     γένηται ἡ ἐλεημοσύνη πρὸς τὸν Θεὸν ἐν κρυπτῷ·
-    καθὼς φησὶν ὁ Κύριος, ὅτι: Σου δὲ ποιούντος ἔλεη-
+    καθὼς φησὶν ὁ Κύριος, ὅτι: Σου δὲ ποιούντος ἐλεη-
     μόσυνην, μὴ γινώσκῃ ἡ ἀριστερά σου, τί ποιεῖ ἡ δεξιά
     σου (71), ἵνα ἡ σοῦ ἡ ἐλεημοσύνη ἐν τῷ κρυπτῷ.
     Καὶ ἡ χήρα προσευχέσθω ὑπὲρ τοῦ δεομένου, ὅπως
-    ἔσται ἡ ἁγία θυσιαστασία Χριστοῦ (72) ὑπάρχου-
-    σα· Καὶ ὁ Πατήρ ὁ βλέπων ἐν τῷ κρυπτῷ, ἀποδό-
-    σεται τῷ εὐ ποιούντι ἐν τῷ φανερῷ. Ἀλλ' οἱ μὲν
-    κατ' ἐντολὴν θεοῦ ζῶν θέλουσι χήραι, φροντίζουσι
-    πολλικῶς, "εἰς διακονήσαντες", καὶ ἕνα ἐκ λα-
-    δουσιν καὶ μαθοῦσα, ἐπιμέμψεται τῇ διανοηματι-
-    γῃ, λέγουσαι· Οὐκ ἔχεις δὲ ἑγὼ σοὶ μᾶλλον παρ' (75)
-    ἐσχίνην ὠλιγομένη· Ὅτι οὖν προσιτάτω ἐκινή-
-    σα; Ταῦτα δὲ λέγει ἄχριν ὑπάρχουσα, οὖ νομίζουσα
-    ὅτι οὐκ ἀνθρώπου τοῦτο θέλημα γέγονεν, ἀλλὰ θεοῦ
-    πρόσταγμα. Εἰ γὰρ μαρτυρεῖ αὐτὴ ὅτι ἐγγύτερον
-    ὑπῆρχε, καὶ ἐν πλείονι ἐνώσει ἐζητᾶζετο, καὶ μᾶλλον
-    αὐτῆς, γυμνὴ γένετο, ὀφεῖλετο τοῖς δι'απασίν
-    νομ., καὶ ἀποστῆσασα, καὶ μὴ μαχὴμενη τὴν δια-
-    κόνισσαν, εἰσελθοῦσα εἰς οἶκον αὐτῆς, καὶ ἐπὶ
-    πρόσωπον κατακύψασα, ἱκέτευε τὸν Θεὸν ἀφε-
-    θῆναι αὐτῇ τὰ ἁμαρτήματα. Ὅτι γὰρ ὁ Θεὸς ἐνετέλ-
-    λετο τὰ τοιαῦτα μὴ τραγωδεῖν ἐπὶ τοῖς ὑποφέρουσιν·
+    ἔσται ἡ ἁγία θυσιαστήριον Χριστοῦ (72) ὑπάρχου-
+    σα· Καὶ ὁ Πατὴρ ὁ βλέπων ἐν τῷ κρυπτῷ, ἀποδό-
+    σει τῷ εὐποιούντι ἐν τῷ φανερῷ. Ἀλλ' οἱ μὴ
+    κατ' ἐντολὴν Θεοῦ ζῶν θέλουσαι χῆραι, φροντίζουσι
+    πολλὰ, εἰς διακονήσασαν, καὶ μίαν ἐκ λα-
+    δούσαιν καὶ μαθοῦσα, ἐπιμέμφεται τῇ διακονησαμέ-
+    νῃ, λέγουσα· Οὐκ ἔχεις ὅτι ἐγὼ σοι μᾶλλον παρ' (75)
+    ἐκείνην ὠλιγομένη· Ὅτι οὖν προετίμησας ἐκείνην
+    ἐμοῦ; Ταῦτα δὲ λέγει ἄρων ὑπάρχουσα, οὐ νοοῦσα
+    ὅτι οὐκ ἀνθρώπου τοῦτο θέλημα γέγονεν, ἀλλὰ Θεοῦ
+    πρόσταγμα. Εἰ γὰρ μαρτυρεῖ αὖτη ὅτι ἐγγύτερον
+    ὑπῆρχε, καὶ ἐν πλείονι ἐνδείᾳ ἐζητᾶτο, καὶ μᾶλλον
+    αὐτὴ γυμνὴ ἦ ἐκείνη, ὀφείλει νοεῖν τὸν διαταξάμε-
+    να, καὶ ἀποσιγήσασα, καὶ μὴ μμψμένη τὴν δια-
+    κόνισσαν, εἰσελθοῦσα εἰς οἶκον ἑαυτῆς, καὶ ἐπὶ
+    πρόσωπον αὐτῆς βαλοῦσα, ἱκετεύσαι τὸν Θεὸν ἄφε-
+    ρῃναι αὐτῇ τὸ πλημμέλημα. Ὅτι γὰρ ὁ Θεὸς ἐνετείλατο
+    τῇ εὐποιούσῃ μὴ τραγωδεῖν τὴν εὐποιΐαν· ἡ δὲ ἐμέμ-
+    φοτο, ἔτι μὴ ἐκρύψεν αὐτῆς (74) τὸ ὄνομα, ἵνα καὶ
+    αὐτὴ μαθοῦσα δράμῃ εἰς τὸ λαβεῖν· καὶ οὐ μόνον
+    ἐμέμφετο, ἀλλὰ καὶ κατήρατο αὐτῇ, ἐπιλαθόμενη
+    τοῦ εἰπόντος· "Ὡς εὐλογῶν σε εὐλόγηται, καὶ ὁ κατα-
+    ρωμένος σε κεκατάραται." Λέγει δὲ ὁ Κύριος· "Ὅταν
+    εἰσέρχησθε εἰς οἶκον (75), λέγετε· Εἰρήνη τῷ οἴκῳ
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,120,515,170">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="485,100,515,140">
     A
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,300,515,340">
+  <bloco tipo="nota_marginal" script="latino" bbox="485,280,515,320">
     B
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,460,515,500">
+  <bloco tipo="nota_marginal" script="latino" bbox="485,440,515,480">
     C
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,620,515,660">
+  <bloco tipo="nota_marginal" script="latino" bbox="485,600,515,640">
     D
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="320,660,680,700">
+
+  <bloco tipo="cabecalho" script="latino" bbox="300,660,700,700">
     VARIORUM NOTÆ.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="60,700,480,980">
-    Omne et præterea τὰ κατέχοντες τὰ διὰλόγια, καὶ μιμησαμέ-
-    να τῆς αὐτῆς δοφῆς, και οὕτως ἐστιν λεγόμενον. Sed falli-
+
+  <bloco tipo="aparato_critico" script="latino" bbox="40,700,480,980">
+    Omne et præterea τὰ κατέχοντες τὰ ἀλότρια, καὶ μιμησα-
+    μένα τῆς αὐτῆς δοφῆς, καὶ οὕτως ἐστὶν λεγόμενον. Sed falli-
     tur Nicetas interpres Græcus, dum adnotat: Εἰπε δὲ
     ὅτι τὰ ἔθνη τὰ δέσποτα ἐν τοῖς ἀναγραφικοῖς διατάξε-
     σιν (in unâ) συντάξει, ἵνα μὴ ἡ τῶν ἀρχῶν αὐτῶν
-    ἁπλώματα, καὶ ἀμοιβαίας... Est autem hic locus ex illo D.
+    ἁπλώματα, καὶ ἀμοιβαίας... Est autem hic locus ex illo
     apostolicarum Constitutionum opera ex libris com-
-    plectente, quod postea sexta synodus improvisa,
-    tanquam ad hæreticis depravatum et adulteratum.
+    plectente, quod postea sexta synodus improbavit,
+    tanquam ab hæreticis depravatum et adulteratum.
     Sed et Latini scriptores nomen diaconiae ita usurp-
     arunt. Cassianus collatio 18, cap. 7: Cum dia-
     conum nostris fratribus deserviremus. Similiterque
     collat. 21, cap. 1, 8, 9. Et Gregorius papa, lib.
-    vii, epist. 29; lib. ix, epist. 21. Quum ulitimum
-    locum opera pretio fuit conferre cum locus
+    vii, epist. 29; lib. ix, epist. 21. Quem ultimum
+    locum operæ pretium fuit conferre cum loco
     Joannis Diaconi lib. II De Vita S. Gregorii cap. 51,
-    ut aliter per alterum corrigatur. Melius enim in
-    Gregorio, mensis pauperum, et exhibenda diaconie.
+    ut alter per alterum corrigatur. Melius enim in
+    Gregorio, mensis pauperum, et exhibendæ diaconiæ.
+    Ac vice versa rectius in Joanne, ad mensas pauperum,
+    vel diaconis exhibitionem. Hinc diaconiæ (quarum
+    mentio passim) appellatæ sunt ædes erogandis
+    eleemosynis consecratæ.
   </bloco>
-  <bloco tipo="aparato_critico" script="grego" bbox="520,700,940,980">
-    veterum isia ex Commentariis Incerti ad Matthæum.
-    Aliter — cerro, sicut apostoli interpretantur in libro
+
+  <bloco tipo="aparato_critico" script="grego" bbox="520,700,960,980">
+    veterum ista ex Commentariis Incerti ad Matthæum.
+    Aliter — sicut apostoli interpretantur in libro
     Canonum qui est de episcopis, dextra est populus
     Christianus qui est ad dextram Christi, sinistra au-
-    tem omnis populus qui et ad sinistram. Hoc vero
+    tem omnis populus qui est ad sinistram. Hoc vero
     dicit, ne Christianum facientem eleemosynam, qui
     est dextra, infidelis aspiciat, qui est sinistra. Chri-
-    stianus autem si Christianum viderit eleemosynam fa-
+    stianus autem si Christianum viderit eleemosynas fa-
     cientem, non est contra Christi præceptum, quoniam
     ambo dextra sunt. Ea vero cum in hoc loco, ubi
-    textus evangelicus professur, nec in uno libro il-
-    li qui peculiariore de episcopis est, nec alibi Constit-
-    utiones reperiuntur, potuit dubio per posteriores
-    sublata fuerunt, quæmodumdam diximus initio nar-
-    rarum, quia, scilicet, displicebant. Certe allatum
-    interpretationem, probatum lice pseudo-Theophilo
+    textus evangelicus profertur, nec in uno libro illi
+    qui peculiariore de episcopis est, nec alibi Constitu-
+    tiones reperiuntur, procul dubio per posteriores
+    sublata fuerunt, quemadmodum diximus initio narrarum,
+    quia, scilicet, displicebant. Certæ allatam
+    interpretationem, probatam licet pseudo-Theophilo
     Antiocheni, Joannes Chrysostomus arguit. Id.
-    (72) Χριστοῦ. Alter Vindobon. cod. Θεοδ. Pas-
-    cum miscentur θεός, Κύριος et Χριστός, etiam in
+    (72) Χριστοῦ. Alter Vindobon. cod. Θεοδ. Passim
+    miscentur θεός, Κύριος et Χριστός, etiam in
     Novi Testamenti codicibus. Cler.
   </bloco>
+
   <notas>
-    Texto transcrito visualmente da imagem; bounding boxes estimadas em escala 0-1000.
-    As letras marginais A, B, C, D foram colocadas como blocos nota_marginal separados (localizadas no gutter central). Pequumas palavras e variantes paleográficas foram transcritas tal qual aparecem na folha (algumas formas parecem abreviadas ou com ortografia antiga); não foram feitas normalizações. Onde a leitura era incerta foram mantidas aproximações visuais, sem introduzir [ilegivel] em blocos inteiros.
+    Transcrizione fedele all'immagine; bounding boxes stimate in scala 0-1000.
+    Flusso: colonna sinistra (latina) quindi colonna destra (greca). Lettere marginali A, B, C, D sono riportate come blocchi nota_marginal nel gutter centrale e non inserite nel testo delle colonne. Non sono state effettuate normalizzazioni; sono mantenute grafie, abbreviazioni e varianti così come appaiono sulla pagina.
   </notas>
 </pagina>

@@ -1,6 +1,9 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,110">
-    1877    RECOGNITIONUM LIB. II.    1878
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="grego" bbox="40,10,200,70">
+ἦὑΨΙἸ
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="200,10,980,110">
+1877  RECOGNITIONUM LIB. II.  1878
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="30,120,490,900">
 ducere in hunc mundum creator Deus, quomodo
@@ -45,7 +48,7 @@ sit, cui tenebræ nullæ succedunt. Nam si univer-
 sum hunc mundum solis hujus replet lux, quantum
 aestimans esse illud incorporeum lumen et infinitum?
 tantum sine dubio, ut istud solis lumen ad illud
-tenebræ et non lux esse videatur.
+tenebrae et non lux esse videatur.
 
 LXII. Hæc cum diceret Simon, Petrus respondit:
 De utroque ergo patienter ausculta, id est et de
@@ -57,7 +60,7 @@ minus quam oculis perspexisse. Cum essem apud
 Capharnaum in captura piscium positus, et se-
 rem supra saxum, hamum setæ inextum et deci-
 piendis piscibus aptatum habens in manu, ita ut
-haerentem ei nos senserim piscem, dum mens mea
+haerentem ei non senserim piscem, dum mens mea
 per desiderabilem mihi Jerusalem distincta percur-
 reret, ad quam sane oblationum gratia et oratio-
 rum vigilans frequenter ascendebam. Verum et Cæ-
@@ -65,7 +68,7 @@ saream hanc mirari ab aliis audiens, et desiderare
 solebam, et eam in qua nondum fueram, videre
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="510,120,970,900">
-A mihi videbar, et cogitabam de ea quæ conveniret
+mihi videbar, et cogitabam de ea quæ conveniret
 de civitate magna cogitari, portas, muros, lavacra,
 plateas, angiportus, fora et horum consequentia,
 secundum ea scilicet quæ in aliis urbibus videram,
@@ -85,7 +88,7 @@ piscem ceperis? nunquidam mente excidissi, quod
 sic attonitus stupes? quid est quod pateris? dic mi-
 hi. At ego indignatus ei paululum, quod me a dul-
 cedine eorum quæ intuebam abstraxerit, respondi
-nihil me valli pati, sed animo desiderabilem mihi
+nihil me mali pati, sed animo desiderabilem mihi
 intueri Jerusalem, simulque Cæsaream, et corpore
 quidem cum ipso esse, mente vero illuc penitus
 auferri. At ille nescio unde inspiratus, reconditum
@@ -100,23 +103,23 @@ bus motibus effunduntur. Hoc autem accidit ex
 languore quodam animæ, quo ea quidem quæ sunt
 non vident, desiderant vero adducere ad conspectus
 ea quæ non sunt. Sed et illis ita accidit, qui
-sensus mutatione patientur et videtur sibi multas ima-
+sensus mutatione patientur et videntur sibi multas ima-
 gines videre, pro eo quod nimietate frigoris vel ca-
 loris anima ipsorum convulsa et emota locis suis,
 errorum patitur ministerii naturalis. Sed et hi qui
-hibernant siti, eum in soporem venerint, flumina et
+hibernant siti, cum in soporem venerint, flumina et
 fontes videre sibi videntur ac bibere; hoc autem
 patiuntur ariditate intemperati corporis laborantes.
 
 LXV. Denique ut accipias rei fidem de Jerusalem
 quam sæpe videram, dicebam fratri meo, quæ loca
-quoque convenerus visus mihi fuissem videre. Sed et
+quoque conventus visus mihi fuissem videre. Sed et
 de Cæsarea quam nunquam videram, nihilominus
 existimabam, quod esset talis, qualem mente et
 cogitatione conceperam. Cum autem venissem huc,
 nihil omnino simile respiciens eorum quæ per
 phantasias videram, reprehendi memetipsum et
-nonavi valde, quia ex aliis quæ videram, portas et
+notavi valde, quia ex aliis quæ videram, portas et
 muros aliasque ædes, revera similitudinem ex
 aliis capiens dederam. Neque enim quis potest
 novum aliquid, et cujus forma nulla unquam exis-
@@ -125,21 +128,22 @@ quinis capitibus ex sua cogitatione formare, ex istis
 quorum capitis vidit, cum singulis capitibus, illos quinus capi-
 tibus fingit. Et tu ergo nunc, si vcer aliquid tibi
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,200,520,250">
+  <bloco tipo="nota_marginal" script="latino" bbox="480,160,520,200">
 A
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,340,520,390">
+  <bloco tipo="nota_marginal" script="latino" bbox="480,320,520,360">
 B
   </bloco>
   <bloco tipo="nota_marginal" script="latino" bbox="480,520,560,580">
 C
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,720,520,780">
+  <bloco tipo="nota_marginal" script="latino" bbox="480,700,520,760">
 D
   </bloco>
   <notas>
-    - Usei [ilegivel] apenas quando estritamente necessário; neste excerto todos os vocábulos principais são legíveis.
-    - As caixas (bbox) são estimativas proporcionais em escala 0-1000.
-    - As letras A, B, C, D no gutter foram colocadas em blocos nota_marginal separados, conforme instrução.
+    - Transcrição feita com fidelidade ao folio visível; não houve normalização ortográfica.
+    - Letras marginais A, B, C, D transcritas em blocos nota_marginal distintos (gutter central); não foram inseridas no fluxo das colunas.
+    - BBOX são estimativas proporcionais na escala 0-1000, obedecendo ao pedido de mapear primeiro a coluna esquerda e depois a direita.
+    - Usei script="grego" apenas para a pequena inscrição superior; o restante transcrito como script="latino".
   </notas>
 </pagina>

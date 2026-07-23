@@ -1,99 +1,80 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,90">
-821      LOCI COMMUNES.      822
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="40,100,480,880">
-μηδὲ ἀλογίαν κατεκριθῆναι ἀναγκαῖοί γεγονότες· καὶ διὰ λόγου τρὶς λόγοι ἐπιθύοντες.
+  <bloco tipo="cabecalho" script="latino" bbox="50,50,100,80">821</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="380,50,620,80">LOCI COMMUNES.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,50,900,80">822</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,90,450,120">μηδὲ ἀλογίαν κατακριθήσεσθαι λογικοὶ γεγονότες, καὶ διὰ λόγου πρὸς λόγον σπεύδοντες.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,130,450,160">Σοφώτεροι γὰρ τῶν πολλν οἱ κόσμου χωρίσαντες ἑαυτούς, καὶ τῷ Θεῷ τὸν βίον καθιερώσαντες.</bloco>
+  
+  <bloco tipo="texto_principal" script="misto" bbox="50,170,450,300">Οὐδὲν ἀναλωτότερον φιλοσοφίας, οὐδὲν ἀλυπότερον. Πάντα ἐνδώσει πρότερον ἢ φιλόσοφος. Δύο ταῦτα δυσκράτητα, Θεὸς καὶ ἄγγελος, καὶ τὸ τρίτον, φιλοσοφία. [Ἔστι γὰρ φιλόσοφος] ἄϋλος ἐν ὕλῃ, ἐν σώματι ἀπερίγραπτος, ἐπὶ γῆς οὐράνιος, ἐν πάθεσιν ἀπαθής, πάντων ἡττώμενος πλὴν φρονήματος· νικῶν τῷ νικᾶσθαι τοὺς κρατεῖν νομίζοντας. ria cedat, præterquam animi sensu ac prudentia : qui eo quod vincitur, qui se victores existimant, vincat.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,310,450,370">Ἐγὼ μίαν σοφίαν οἶδα, τὸ φοβεῖσθαι Θεόν. Ἀρ- B χὴ τε γὰρ σοφίας, φόβος Κυρίου. Καί, Τέλος λόγου τὸ πν ἄκουε, τὸν Θεὸν φοβοῦ, κα τὰς ἐντολὰς φύλασσε.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,380,450,410">Ποιήσατε δικαιοσύνης ὅπλον, καὶ μὴ θανάτου, τὴν παίδευσιν.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,420,450,480">Χρυσόστ. — Ὥσπερ γῆν μὴ βρεχομένην οὐκ στι κἂν μυρία λάβῃ σπέρματα στάχυας ἐξενεγκεῖν· οὕτω ψυχὴν οὐκ ἔστιν μὴ ταῖς θείαις Γραφαῖς φωτισθεῖσαν, κἂν μυρία τις ἐκχέῃ ῥήματα, καρπόν τινα ἐπιδείξασθαι.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,490,450,550">Διδύμ. — Ἐντυγχάνειν δεῖ τας θείαις Γραφαῖς. Ὥσπερ γὰρ ὁ οἶνος πινόμενος ἀναπαύει λύπην, καὶ μεταβάλλει καρδίαν εἰς εὐφροσύνην· οὕτως ὁ πνευματικὸς ονος εἰς χαρὰν μεταβάλλει τὴν ψυχήν.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,560,450,590">Τὸ εἰδέναι τινὰ ὅτι ἀγνοεῖ, σοφίας ἐστίν· ὡς καὶ τὸ εἰδέναι ὅτι δίκησε, δικαιοσύνης.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,600,450,640">Τὸν γνωστικὸν οὐδέποτε τὸ πλουτεῖν γῆθεν ποιεῖ, οὐδὲ τὸ χρημάτων ἀπορεῖν ες ταπείνωσιν ἄγει· τῆς ἀρετῆς καὶ σοφίας αὐτὸν ὑπερυψούσης, καὶ ὑπεράνω αὐτῶν ἱστᾶσθαι παρασκευαζούσης.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,650,450,710">Φίλωνος. — Ἀνάγκη ἀπειρίᾳ καὶ κακίᾳ ἡνιόχου, τὰ ὑπεζευγμένα κατὰ κρημνῶν φέρεσθαι καὶ βαράθρων· ὥσπερ ἐμπειρίᾳ καὶ ἀρετῇ διασώζεσθαι. Ἀμήχανον τὰ μεγάλα πρὸ τῶν μικρῶν παιδευθῆναι.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,720,450,740">Κλήμεντ. — Ἕπεται τῇ γνώσει τὰ ἔργα, ὡς τῷ σώματι ἡ σκιά.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,750,450,780">Πλουτάρχου. — Ὄνειρῳ ἔοικεν ὁ τν ἀπαιδεύτων βίος, κενὰς ἔχων φαντασίας.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,790,450,820">Οὔτε ἐν ἰχθύσι φωνήν, οὔτε ἐν ἀπαιδεύτοις ἀρετὴν δεῖ ζητεῖν.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,830,450,860">Οὔτε δωρ θολερόν, οὔτε ἀπαίδευτον ψυχὴν ταράσσειν δεῖ.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,870,450,900">Δυσάρεστοι ὄντες οἱ ἀπαίδευτοι, καθάπερ ἐξ οἰκιν, τῶν προαιρέσεων καθ' ἡμέραν μετοικίζονται.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,910,450,940">Οἱ μὲν ξένοι, ἐν ταῖς ὁδοῖς, οἱ δὲ ἀπαίδευτοι, ἐν τοῖς πράγμασι διαπλανῶνται.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,950,450,970">Πλάτωνος. — Πᾶσα ἐπιστήμη χωριζομένη δι-</bloco>
 
-Σωφρότερον γὰρ τῶν πολλῶν οἱ κόσμῳ χωρίζοντες ἑαυτούς, καὶ τῷ θεῷ τὸν βίον καθιερώσαντες.
+  <bloco tipo="texto_principal" script="latino" bbox="550,90,950,140">dere, et cum rationales facti simus, et rationis cultu ad rationem properemus, brutorum genio atque indole absentiae rationis labem notamque incurrere.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="550,150,950,180">Majori sapientia quam pro vulgi ratione enitent, qui sæculo sese subducentes, vitam Deo consecrarunt.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="550,190,950,290">Nihil inexpugnabilius philosophia, nihilque a noxa labeque immuniu. Omnia prius cedent, quam philosophus. Duo sunt invicta, Deus et angelus; necnon tertium, philosophia. Est enim philosophus immaterialis in materia, in corpore incircumscriptus, cœlestis cum in terra versetur, in affectibus nihil eis obnoxius ; qui cunctos victo-</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="550,310,950,380">Unam ego sapientiam novi, ut nempe Deus timeatur. Initium enim sapientiæ timor Domini (Psal. cx, 10; Eccli. 1, 16). Et : Finem loquendi omnem audi ; Deum time, et serva mandata (Eccle. xii, 13).</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="550,390,950,410">Arma justitiæ, non mortis, correptionem facite.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="550,420,950,490">Chrysost. — Quemadmodum terra nisi imbre infusa ac irrigata, tametsi infinita, susceperit semina, spicas proferre non potest : sic neque animus divinis Scripturis non illuminatus, fructum unquam protulerit, etiamsi quis verba innumera apud eum effundat.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="550,500,950,560">Didymi. — Legendæ sunt divinæ Scripturæ. Uti enim vini potus dolorem sedat ; et cor ex tristitia in lætitiam transfert ; sic spiritale vinum gaudio perfundit animum.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="550,570,950,600">Quod quis sciat se nescire, sapientiæ est ; ut et quod sciat se injuriam fecisse, justitiæ.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="550,610,950,640">Sapientis animum nec divitiæ gaudio 584 efferunt, nec inopia ac pecuniarum egestas in humili deprimet, quem scilicet virtus ac sapientia alti attollant, illisque superiorem constituant.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="550,650,950,710">Philonis. — Necesse est aurigæ imperitia et malitia, jumenta per præceps agi atque barathra ; vicissimque illius peritia et virtute fore incolumia. Fieri non potest ut majora, ante ea quæ minora sint, docearis.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="550,720,950,740">Clementis. — Opera scientiam sequuntur, haud secus ac corpori comes est umbra.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="550,750,950,780">Plutarchi. -- In somnio similis est rudium vita ac indoctorum, inanes specie ludentes cogitationes habens.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="550,790,950,820">Neque in piscibus vox, neque in indoctis ac indisciplinatis virtus quærenda est</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="550,830,950,860">Nec aquam turbidam nec indoctum animum ac indisciplinatum, commovere par est.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="550,870,950,900">Indocti, cum morosi sint, quasi ex ædibus, ex suis quotidie institutis migrant.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="550,910,950,940">Peregrini quidem, in viis ; indocti vero, in negotiis errant.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="550,950,950,970">Omnis scientia, justitiæ reliquisque virtutibus</bloco>
 
-Οὐδὲν ἀναισχυντέρον φιλοσοφίας, οὐδὲν ἀλύπτερον. Πάντα ἐνδίσταν· πρῶτον ἡ φιλόσοφος. Δύο ταῦτα δυσκράτητα, θεός καὶ ἄγγελος, καὶ τὸ τρίτον, φιλοσοφία. [Ἐστι γὰρ φιλόσοφος] ἄυλος ἐν ὕλῃ, ἐν σώματι· ἀπεριγράπτος, ἐπὶ τῆς οὐράνιος, ἐν πάθεισιν ἀπαθής, πάντων ἡττωμένος πλὴν φρονήματος· νίκην τῶν νικῶν τοὺς κρατεῖν ἐννοιοντας.
+  <bloco tipo="nota_marginal" script="latino" bbox="900,100,920,120">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,310,480,330">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,510,480,530">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,750,480,770">D</bloco>
 
-Ἔχῃ μίαν σοφίαν οἰδα, τὸ φοβείσθαι θεόν. Ἀρ᾽ Β Ζῆι τὰ γὰρ σοφίας, σῶς Κύριον. Καὶ, Τέλεσ ἔλογον τὸ ἀὔτ᾽ ἄκουε, τὸν θεὸν φοβοῦ, καὶ τὰς ἐπτολὰς φύλασσε.
-
-Ποιήσατε δικαιοσύνης ὕπαλον, καὶ μὴ ὀνάντων, τὴν παιδείαν.
-
-Χρυσόστοι· — Ὅστερ τὴν μὴ βεχουμένην οὕτω εἶναι, ὅλμ μωρὰ λάθη στέρφατα ἀτάκτα ἐξεγεγυέν· οὕτω ψυχὴν οὐκ ἔστιν μὴ τὰς θείας Γραφὰς φροντιζοῦσαν, ἧν μωρία τις ἐκχει ἔμπᾶτα, χαρπῆ τινα ἐπιδείξασθαι.
-
-Διδύμ. — Ἐντυγχάνειν δὲ παρὰ τὰς θείας Γραφὰς. Ὅσπερ γὰρ ὁ ὄνος πτωχὸς ἀναπνέων λύπην, καὶ μεταβάλλει καρδίαν εἰς εὐπροσήγορίαν· οὕτως ὁ πνευματικὸς ὄνος· εἰς χαρὰν μεταβάλλει τὴν ψυχὴν.
-
-Τὸ εἴδειν τινὰ ὅτι ἄγνοια, σοφίας· ἐστὶν ὡς καὶ τὸ εἰδέναι τὸ μέλψιμον, διανοούμενοι.
-
-Τῶν γνησίων οὐδέποτε τὸ πλουτεῖν ἠξίει ποεῖ, ἀλλὰ τὸ χρῆμα ἀπορεῖν εἰς ταπεινώσιν ἄγει· τῆς ἀρετῆς καὶ σοφίας· αὐτὸν ὑπεροψιᾶν, καὶ ὑπερβαίνον αὐτὸν ἱσταμέναι παρασκευάζουσιν.
-
-Φίλιος. — Ἀνάγκη ἀπείρων, καὶ κακῖα γνώμων, τὰ ὑπεξουμένα καὶ χρημάτων φερόμενα καὶ βραβείων· ὥστε ἐμπειρία καὶ ἀρετὴ διαυγείᾳ δοκεῖ.
-
-Ἀμπραχὰμ· ἰὰ μεγάλα τρὸ τῶν μικρῶν παιδιῶν· ὀγμαι.
-
-Κλήμεντ. — Ἔπεται τῃ γνώσει τὰ ἔργα, ὡς τὸ σήμασι τῆς σκιά.
-
-Πλουτάρχου. — Ὅσοι ἐνοὶ ἔκαστον ὁ τῶν ἀπασχόλων βίος, κενὰ ἔχων φαντασίαν.
-
-Οὕτος ἐν ἰχθύσι φωναῖς, ὥστε ἐν ἑνὶ ἀνακρίσεσιν ἀχράν δὲ ζητεῖν.
-
-Οὔτε ὕδωρ ὠλεῖν, ὥστε ἀπαιδεύτων ψυχὴν ταράσσειν δεῖ.
-
-Δυσάρεστοι ὄντες οἱ ἀπαιδεύτοι, καθάπερ ἐξ ὕλης, τῶν προαιρέσεων καὶ ἤθων μετερίζονται.
-
-Οἱ μέν ξένοι, ἐν ταῖς ἰδίαις, οἱ δὲ ἀπαιδεῖς, ἐς τὰς πράγμασι διαπλάσονται.
-
-Πλάτωνος. — Πιστὰ ἐπιστήμη χωρίζουσιν δι-
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,100,960,880">
-A dere, ei cum rationales facti simus, et rationis cultu ad rationem properemus, brutorum genio atque indole absentiae rationis labem notamque incurrere.
-
-Majori sapientia quam pro vulgi ratione cernent, qui seculo sese subducentes, vitam Deo consecrarunt.
-
-Nihil inexpugnabilius philosophia, nihilque a noxa labecque immunius. Omnia prius cedent, quam philosophus. Duo sunt invicta, Deus et angelus; necnon tertium, philosophia. Est enim philosophus immaterialis in materia, in corpore incircumscriptus, caelestis cum in terra versetur, in affectibus nihil eis obnoxius; qui cunctus victoriae eo quod vincitur, qui se victores existimus, vincent.
-
-Unam ego sapientiam novi, ut nempe Deus timemur. Initium enim sapientiae timor Domini (Psal. cx, 10; Eccli. i, 16). Et: Finem loquendi omnem audi; Deum time, et serra mandata (Eccle. xii, 13).
-
-Arma justitiae, non mortis, correctionem facite.
-
-Chryssost. — Quemadmodum terra nisi imbue infusa ac irrigata, tumetsi inutilia, suscepit seminia, spicas proferre non potest: sic neque animus divinis Scripturis non illuminatus, fructum unquam protulerit, etiamsi quis verba innumera apud eum effundat.
-
-Didymi. — Legendae sunt divinae Scripturae. Ubi enim vini potus dolorem sedat; et cor ex tristitia in laetitiam transferit; sic spirituale vinum gaudio perfundit animum.
-
-Quod quis sciat se nescire, sapientiae est; ut et quod sciat se injuriam fecisse, justitiae.
-
-Sapientis animum nec divitiae gaudio 584 efferunt, nec inopia ac pecuniarum egestas in humi deprimunt, quem scilicet virtus ac sapientia alit; attollant, illiusque superiorum constituant.
-
-Philonis. — Necessee est aurigae imperitia et militia, jumenta per praeceps si aliquae barbarita; vicissimque illius peritia et virtute fore incolumia.
-
-Fieri non potest ut majora, ante ea quae minora sunt, deceantis.
-
-Clementis. — Opera scientiam sequuntur, haud secus ac corporis comes est umbra.
-
-Plutarch. — In somnio similis est reditum vita ac indoctorum, naues specie ludentes cogitationes habens.
-
-Neque in praeclinis vix, neque in indoctis ac indisciplinatis virtus quaerenda est.
-
-Nec aquam turbidiorem, nec indoctum animum ac indisciplinatum, contempserit par est.
-
-Iudicii, cum morosi sint, quasi ex aedibus, ex suis quotidie institutis migrent.
-
-Peregrini quidem, in viis; indocti vero, in negotiis errant.
-
-Omnis scientia, justitiae reliquique virtutibus
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,200,520,260">
-A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,320,520,380">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,440,520,500">
-C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,560,520,620">
-D
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="420,940,580,990">
-Digitized by Google
-  </bloco>
-  <notas>
-- Página em duas colunas: bloco esquerdo em grego (script="grego"), bloco direito em latim (script="latino").
-- Letras marginais A, B, C, D colocadas em blocos próprios (nota_marginal) junto ao gutter.
-- Transcrição do grego efetuada com leitura direta da imagem; palavras parcialmente incertas foram evitadas ou separadas por hífen quando necessário. Qualquer palavra totalmente ilegível teria sido marcada como [ilegivel], conforme instruções.
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="600,980,800,1000">Digitized by Google</bloco>
 </pagina>

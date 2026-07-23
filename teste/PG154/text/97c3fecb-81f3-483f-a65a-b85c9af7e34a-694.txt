@@ -1,65 +1,55 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="200,20,800,80">
-ORDO RERUM.
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,80">
+    1295 ORDO RERUM. 1296
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,60,480,260">
-1295
-
-Christianae fidei Confessio, facta Saracenis incerto au-
-ctore.
-
-DEMETRII CYDONII DE CONTEMNENDA MONTE
-ORATIO 1169
-
-ARGUMENTUM. Demetrius, ut doceat, mortem non metue-
-dam, sed contemnendam negligendamque esse, tria
-hominum mortem [ilegivel] proferre genera: primo eos
-qui mortem propter voluptatum jacturam abominentur
-(c. 2-6); deinde eos qui morte [ilegivel] omnia [ilegivel]
-(c. 20); denique eos qui propter poenas aeterna mortem
-omnium malorum maximum gravissimumque esse arbi-
-trantur (c. 7-20-23): ita ut [ilegivel] et demonstrat
-vanitatem timoris singulorum ejusque causas. 1169
-
-DEMETRII CYDONII EPISTOLA ad magnum primi-
-cerium Phocaeum, Thessalonica scripta, cum anno 1430
-Amuratus II urbem obsidione cingeret, quam non ex-
-pugnauam ferro et igne deleuit. — Ex hac epistola di-
-scimus Cydonium patria Thessalonicensem fuisse, non
-autem Cpolitanum vel Cretensen, ut Fabricius cum aliis
-putavit. 1213
+  <bloco tipo="texto_principal" script="latino" bbox="50,80,480,500">
+    Christianæ fidei Confessio, facta Saracenis incerto au-
+    ctore. 1151
+    DEMETRII CYDONII DE CONTEMNENDA MORTE
+    ORATIO 1169
+    ARGUMENTUM. Demetrius, ut doceat, mortem non metuen-
+    dam, sed contemnendam negligendamque esse, tria
+    hominum mortem timentium profert genera : primo eos
+    qui mortem propter voluptatum jacturam abominentur
+    (c. 2 — 6); deinde eos qui morte deleri omnia putent
+    (c. — 20); denique eos qui propter pœnas æternas mortem
+    omnium malorum maximum gravissimumque esse arbi-
+    trentur (c. 7 — 20-23): ita ut patefaciat et demonstret
+    vanitatem timoris singulorum ejusque causas. 1169
+    DEMETRII CYDONII EPISTOLA ad magnum primi-
+    cerium Phacrasem, Thessalonica scripta, cum anno 1430
+    Amuratus II urbem obsidione cingeret, quam mox ex-
+    pugnatam ferro et igne delevit. — Ex hac epistola di-
+    scimus Cydonium patria Thessalonicensem fuisse, non
+    autem Cpolitanum vel Cretensem, ut Fabricius cum aliis
+    putavit. 1313
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,60,980,260">
-1296
-
-MAXIMUS CHRYSOBERGA MONACHUS.
-Monitum Editorum. 121:
-
-MAXIMI CHRYSOBERGA AD CRETENSES DE PRO-
-CESSIONE SPIRITUS SANCTI ORATIO. 121:
-
-PHILOTHEUS SELYMBRIENSIS.
-ORATIO IN SANCTUM AGATHONICUM. 122
-
-ADDENDA.
-
-Philothei CP. Patriarchae Privilegium pro episcop.
-Hierassi. — Ejus in morte Sancto jure episcopalis comi-
-tat. 123.
-
-Philothei Patriarchae CP. Contra Gregoram Antir-
-heticorum Libri XII. Vide tom. CLI.
-
-Ejusdem Encomium Gregorii Palame. Vide ibid.
-Ejusdem Vita S. Demetrii Martyris. Vide tom. CXVI.
-Index in Ioannis Cantacuzeni Historiam Byzantinam.
+  <bloco tipo="texto_principal" script="latino" bbox="500,80,950,500">
+    MAXIMUS CHRYSOBERGA MONACHUS.
+    Monitum Editorum. 1217
+    MAXIMI CHRYSOBERGÆ AD CRETENSES DE PRO-
+    CESSIONE SPIRITUS SANCTI ORATIO. 1217
+    PHILOTHEUS SELYMBRIENSIS.
+    ORATIO IN SANCTUM AGATHONICUM. 122
+    ADDENDA.
+    Philothei CP. Patriarchæ Privilegium pro episcop
+    Hierissi. — Ejus in monte Sancto jura episcopalia com
+    mat 123
+    Philothei Patriarchæ CP. Contra Gregoram Antir.he-
+    ticorum Libri XII. Vide tom. CLI.
+    Ejusdem Encomium Gregorii Palamæ. Vide ibid.
+    Ejusdem Vita S. Demetrii Martyris. Vide tom. CXVI.
+    Index in Joannis Cantacuzeni Historiam Byzantinam
+    1243
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="760,960,980,995">
-Digitized by Google
+  <bloco tipo="rodape" script="latino" bbox="550,950,800,990">
+    Digitized by Google
   </bloco>
   <notas>
-- As instruções pediam que letras marginais A, B, C, D (se presentes) fossem transcritas em blocos tipo="nota_marginal". Nenhuma letra marginal identificável (A/B/C/D) foi observada na imagem.
-- Marquei com [ilegivel] palavras ou trechos onde a leitura é duvidosa: no bloco da coluna esquerda foram assinaladas três ocorrências incertas (linhas referentes a "hominum mortem ...", "deinde eos qui morte ...", e "ita ut ..."). Mantive hífens de separação silábica tal como aparecem no original.
-- BBox aproximadas em escala 0-1000; duas colunas transcritas seguindo a ordem: coluna esquerda, depois coluna direita.
+    - Transcrição fiel à imagem, preservando hifenizações de fim de linha (ex: "au-ctore", "metuen-dam", "primi-cerium", "ex-pugnatam", "di-scimus", "PRO-CESSIONE", "Antir.he-ticorum").
+    - Números de página do volume (1295, 1296) no cabeçalho.
+    - Números à direita de cada entrada referem-se às páginas/colunas da obra original.
+    - Ligaturas preservadas (æ, œ).
+    - Texto dividido em duas colunas principais.
   </notas>
 </pagina>

@@ -1,91 +1,69 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,85">
-S. MAXIMI CONFESSORIS
-  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="140,55,180,75">811</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="440,55,670,75">S. MAXIMI CONFESSORIS</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="920,55,960,75">812</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,85,545,135">petis, velut is, qui febrium ardoribus exustus vinum sibi præberi rogat; qui futura prospiciat Deus, tuam minime voluntatem facit, nec quod extra rationem flagitas tribuit.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,135,545,185">Ne in oratione divitias quæsieris, non sanitatem, vel ut hoc assequaris; non humanam gloriam; sed ea so ummodo quæ ad animi salutem conducant.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,185,545,245">Quemadmodum ut spiritum ducas nunquam non tempus est ac opportunum, sic neque ut mystica munera ad extremum usque spiritum a Domino petas.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,245,545,300">Cum boni alicujus consequendi causa Deum oraveris, nec confestim exauditus fueris; noli negligere neve despondeas animum, sæpe enim petitio tua in rem tuam non conducit.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,300,545,340">Aristot. — Qui preces offert, prudens exsistat necesse est : ne imprudens sibi ipse malum aliquod oret.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,340,545,400">Alexander. — 578 Alexander rex, cum Antipater adversus matrem multa scriberet ac criminaretur : Nescis, inquit, Antipater, matris unam lacrymam, multis accusationibus confertas epistolas delere ?</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,400,545,460">Epicuri. — Siquidem Deus humanis se precibus facilem redderet iisque obsequeretur, universum genus humanum quam cito interiret; cum subinde multa et acerba iræ impotentes alii in alios precantur.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,460,545,510">Isocrat. — Tunc homines meliore fruge componuntur, cum ad Deum accedunt : eique adeo similes sunt, ut sint benefiei et veritatem colant.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,510,545,560">Biantis. — Is, cum aliquando una cum impiis quibusdam navigio veheretur, navique procella jactata, illi deos invocarent : Silete, inquit, ne nos sentiant hic navigare.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,560,545,680">Eos, qui a diis meliorem mentem peterent, nec ipsi seipsos emendare studerent, stultos dicebat ac stupidos : nec enim pictorem a diis precari, ut lineam dent ac suavem colorem, quin artem ipse didicerit; nec vero ullum evadere musicum ipsa precum vi, nisi condiscantur quæ sunt musicæ. Eodem modo ne prudentem quidem ullum unquam fore precando, nisi earum rerum disciplinam coluerit.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="550,85,570,100">A</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="560,85,960,135">ὁ πυρέττων ἄνθρωπος· παρακαλεῖ παρασχεῖν ατῷ ονον, προβλέπων  Θεὸς τὰ μέλλοντα οὐ ποιεῖ τὸ θέλημά σου, οὐδὲ παρέχει τὴν ἄλογιστον δέησιν.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="560,135,960,185">Μὴ πλοῦτον ἐν δεήσει ζητήσῃς, μὴ ὑγείαν, ἢ τν ἐχθρν ἄμυναν· μὴ δόξαν ἀνθρωπίνην· ἀλλὰ μόνον τὰ συντελοῦντα πρὸς σωτηρίαν ψυχῆς.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="560,185,960,235">Ὥσπερ τὸ ἀναπνεῖν οὐδέποτε ἄκαιρον, οὕτως οὔτε τὸ αἰτεσθαι παρὰ Κυρίου αἰτήματα μυστικὰ μέχρις ἐσχάτης ἀναπνοῆς.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="560,235,960,290">Ὅταν περὶ τινὸς ἀγαθοῦ παρακαλέσῃς τὸν Θεόν, καὶ μὴ εἰσακούσῃ σου τὴν αἴτησιν, μὴ ὀλιγωρήσῃς, μηδὲ ὀλιγοψυχήσῃς· πολλάκις γὰρ πρὸς τὸ παρὸν οὐ</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="550,290,570,305">B</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="560,290,960,310">συμφέρει σοι τὸ αἴτημα.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="560,310,960,340">Ἀριστοτ. — Τὸν εὐχόμενον δεῖ φρόνιμον εἶναι· μὴ λάθῃ τι κακὸν εὐξάμενος ἑαυτῷ.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="560,340,960,400">Ἀλέξανδρ. — Ἀλέξανδρος ὁ βασιλεύς, ἐπεὶ Ἀντίπατρος αὐτῷ πολλὰ κατὰ τῆς μητρὸς ἔγραφεν, Ἄγνοεις, ἔφη, ντίπατρε, τι μητρὸς ἓν δάκρυον, πολλῶν διαβολῶν ἐπιστολὰς ἀπαλείφει ;</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="560,400,960,460">Ἐπικούρ. — Εἰ ταῖς τῶν ἀνθρώπων εὐχαῖς ὁ Θεὸς κατηκολούθει, ὅζττον ἂν ἀπώλοιντο πάντες ἄνθρωποι, συνεχῶς πολλὰ καὶ χαλεπὰ κατ' ἀλλήλων εὐχόμενοι.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="560,460,960,510">Ἰσοκράτ. — Οἱ ἄνθρωποι τότε γίνονται βελτίους, ὅταν Θεῷ προσέρχωνται· ὅμοιον δὲ ἔχουσι Θεῷ, τὸ εὐεργετεῖν καὶ ἀληθεύειν.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="550,510,570,525">C</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="560,510,960,560">Βίας. — Οὗτος συμπλέων ποτὲ ἀσεβέσι, χειμαζομένης τῆς νεὼς, κἀκείνων θεοὺς ἐπικαλουμένων, Σιγᾶτε, φη, μὴ αἴσθωνται ἡμς ἐνθάδε πλέοντας.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="560,560,960,680">Τοὺς αἰτουμένους παρὰ τῶν Θεῶν φρένας ἀγαθὰς, καὶ μὴ ἑαυτοὺς παιδεύοντας, ἀναισθήτους ἔφασκεν εἶναι. Οὔτε γὰρ ζωγράφον εὐχόμενον τοῖς θεοῖς δοῦναι αὐτῷ γραμμὴν κα εὐχροίαν λαβεῖν ν, εἰ μὴ μάθοι τέχνην· οὔτε μουσικὸν γενέσθαι ποτ' ἂν ἕνεκεν εὐχῆς, εἰ μὴ ἂν τὰ μουσικὰ μάθοι. Τὸν δὲ αὐτὸν τρόπον, οὐδ' ἂν φρόνιμόν τινα γενέσθαι εὐχόμενον, εἰ μὴ τούτων τὴν μάθησιν λάβοι.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="550,700,570,715">D</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,720,545,740">SERMO XV.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="140,740,545,760">De doctrina et litteris, seu eloquentia et sermone.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="140,760,545,800">Matth. v, 19. — Amen dico vobis, qui fecerit et docuerit, hic magnus vocabitur in regno cælorum.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="140,810,350,830">23 In Gesn. Stob. 266.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="560,720,960,740">ΛΟΓΟΣ ΙΕ' 23.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="560,740,960,760">Περὶ διδαχῆς καὶ λόγων (r).</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="560,760,960,800">Ματθ. ι'. — Ἀμὴν λέγω ὑμῖν, ὃς ν ποιήσ καὶ διδάξ, οὗτος μέγας κληθήσεται ἐν τῇ βασιλείᾳ τῶν οὐρανῶν.</bloco>
+  
+  <bloco tipo="texto_principal" script="misto" bbox="140,840,960,930">NOTE.
+(r) Περὶ διδαχῆς κα λόγων. Addit Gesn. sive Antonius, καὶ ὁμιλίας, quod sit explicatio superioris vocis. Quasi de doctrina, quæ familiari allocutione ac tractatione tradatur ; in qua tantus enituit Chrysostomus, illoque superior Gregorius Theologus, cujus auditor fuit Hieronymus. Non bene itaque Gesnerus, De doctrina quæ tum sermone tum conversatione sit, ac si πολιτεία esset loco ὁμιλίας, vel essent hæc duo membra opposita ac subdividentia ; quod longe a verò est.</bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="50,90,490,760">
-pris, velut is, qui febrium ardoribus exustus vinum sibi praeberi rogat; qui futura prospiciat: Deus, tuam minime voluntatem facit, nec quod extra rationem flagitas tribuit.
-
-Ne in oratione divitias quaesieris, non sanitatem, vel ut honores reciperis; non humanam gloriam; sed ea so immodo quae ad animi salutem conducant.
-
-Quemadmodum ut spiritum ducas nunquam non tempus est ac opportunum, sic neque ut mystica munera ad extremum usque spiritum a Domino petas.
-
-Cum boni alicujus consequendi causa Deum oraveris, nec confestim exauditus fueris; noli negligere neve despondeas animum, saepe enim petitio tua in rem tuam non conducit.
-
-Aristot. — Qui preces offert, prudens existat necesse est : ne imprudens sibi ipse malum aliquod oret.
-
-Alexander. — 578 Alexander rex, cum Antipater adversus matrem mala scriberet ac criminaretur : Nescis, inquit, Antipater, matris unam lacrymam, multis accusationibus confertas epistolas delere?
-
-Epicuri. — Siquidem Deus humanis se precibus facilem reddideret iisque obsequeretur, universum genus humanum quam cito interiret; cum subinde multa et acerba ira imponentes aliis in alios precentur.
-
-Isocrat. — Tunc homines meliore fruge componuntur, cum ad Deum accedunt : cique adeo similes sunt, ut sint beneficii et veritatem colant.
-
-Biantis. — Is, cum aliquando una cum impiis quibusdam navigio veheretur, navique procella jactata, illi deos invocarent : Silete, inquit, ne nos sentiant hic navigare.
-
-Eos, qui a diis meliorem mentem peterent, nec ipsi seipsos emendare studerent, stultos dicebant ac stupidos : nec enim pictorem a diis precari, ut lineam dent ac suauem colorem, quin artem ipse didicerit; nec vero ullum evadere musicum ipsa precum vi, nisi condiscantur que sunt musices. Eodem modo nec prudentem quidem ullum unquam fore precando, nisi earum rerum disciplinam coluerit.
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="488,150,512,190">
-A
-  </bloco>
-
-  <bloco tipo="texto_principal" script="greco" bbox="510,90,950,760">
-Μὴ πλούσιον ἐν δόξῃ ζητῇς, μὴ ὑγείην, ἡ τῶν ἐχθρῶν ἀμυναγ· μὴ δόξαν ἀνθρώπων· ἀλλὰ μᾶλλον τὰ συνετλοῦντα πρὸς σωτηρίαν ψυχῆς.
-
-"Ὅπερ τὸ ἀπαντεῖν οὐδέποτε ἔκαιρον, ὅπως οὖτε ἂι εἰσέλθαι παρὰ Κυρίου αἰτήματα μυστικά, μὴκέτι ἐξάψας ἀπαντήσῃ."
-
-"Ὅταν περὶ τινὸς ἀγαθοῦ παρακαλῇς τὸν θεόν, καὶ μὴ ἐπασκοπῇ σου παρακαλεῖ, μὴ ἀπλκωπῃς, μὴδὲ ὀλιγωρῶς πράξῃς τὸ πρός σε· ὃ μολεῖ· σὺ συμφέρει· σοὶ τὸ αἴτημα."
-
-Ἀριστοτ. — Τὼν εὐχόμενον ὅδε φρόνησιν εἶναί· μὴ λαθεῖν τὰ κακὰ εἰσάγων, ἑαυτῷ.
-
-Ἀλέξανδρος. — Ἀλέξανδρος ὁ βασιλεὺς, ἔπειτ᾿ Ἀντιπάτρος αὐτῷ πολλὰ κατὰ τῆς μητρὸς ἔγραφεν, 'Ἀγνοεῖς', ἔφη, 'Ἀντίπατρε, ὅτι μητρὸς ἐν δάκρυσιν, πολλῶν διαδίκων ἐπιστολὰς ἀπαλείψεις;'
-
-Ἐπικούρ. — Εἰ ταῖς τῶν ἀνθρώπων εὐχαῖς ὁ θεὸς κατεχολοῖτο, ἅπαντα ἄν ἀπόλωντο πάντες ἄνθρωποι, συνεχῶς πολλὰ καὶ χαλεπὰ κατ᾿ ἀλλήλων εὐχόμενοι.
-
-Ἰσοκράτ. — Οἱ ἄνθρωποι τότε γίνονται βέλτιοι, ἐὰν θεῷ προσέρχωνται· ὅμοιον δὲ ἔχουσιν θεῷ, τῷ εὐεργετεῖν καὶ ἀληθεύειν.
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="488,300,512,340">
-B
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="50,340,490,560">
-SERMO XV.
-
-De doctrina et litteris, seu eloquentia et sermone.
-
-Matth. v, 19. — Amen dico vobis, qui fecerit et docuerit, hic magnus vocabitur in regno caelorum.
-
-11 In Gesn. Stob. 266.
-  </bloco>
-
-  <bloco tipo="outro" script="greco" bbox="510,340,950,560">
-ΛΟΓΟΣ ΙΕ'.
-Περὶ διδαχῆς καὶ λόγων (r).
-
-Ματθ. v. — Ἀμήν λέγω ὑμῖν, ὅς ἐὰν ποιήσῃ καὶ διδάξῃ, οὗτος μέγας κληθήσεται ἐν τῇ βασιλείᾳ τῶν οὐρανῶν.
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="488,480,512,520">
-C
-  </bloco>
-
-  <bloco tipo="aparato_critico" script="latino" bbox="50,760,490,960">
-NOTÆ.
-(r) Perì διδαχῆς καὶ λόγων. Addit Gesn. sive Antonius, xal φυλλάς, quod sit explicatio superioris vocis. Quasi de doctrina, quæ familiaria allocutione ac tractatione tradatur; in qua tantus enim fuit Chrysostomus, illoque superior Gregorius Theologo-
-  </bloco>
-
-  <bloco tipo="aparato_critico" script="greco" bbox="510,760,950,960">
-[Σημείωσις ελληνική στο δεξιό κείμενο] — ὅς, οὓς ἀκούσας ἦν Ἱερώνυμος. Non bene itaque Gesnerus, De doctrina qua tum sermone una conversatione sit, ac si τοιαύτη ; esset loco quibus; vel essent hæc duo membra opposita advenientia; quod longue a verbo est.
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="488,700,512,740">
-D
-  </bloco>
-
-  <notas>
-- As instruído: as letras A, B, C, D no gutter foram transcritas em blocos nota_marginal próprios.
-- Alguns termos gregos e latinos estavam parcialmente ilegíveis na imagem; foram mantidos conforme lidos e, quando incerto, deixado em forma aproximada. Onde a leitura era duvidosa usou-se a convenção [ilegivel]; entretanto, procurei evitar seu uso excessivo, preferindo transcrever a forma mais provável.
-- BBOX aproximadas em escala 0-1000; posicionamento estimado a partir da imagem fornecida.
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="590,950,800,980">Digitized by Google</bloco>
 </pagina>

@@ -1,6 +1,6 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="50,20,950,90">
-549     CONSTITUTIONES APOSTOLICAE.  —  PROOEMIA.     550
+549     CONSTITUTIONES APOSTOLICÆ.  —  PROOEMIA.     550
   </bloco>
 
   <bloco tipo="texto_principal" script="grego" bbox="50,100,480,300">
@@ -100,7 +100,9 @@ D
   </bloco>
 
   <notas>
-- Transcrição feita diretamente da imagem; palavras difíceis de ler foram passadas como aparecendo o mais fielmente possível. Onde a leitura era duvidosa, evitei inserir token [ilegivel] exceto em casos muito isolados; mantive a divisão em colunas (esquerda grego, direita latim) e as notas marginais A–D colocadas em blocos próprios conforme instruído.
-- BBOXs são estimativas relativas à imagem (escala 0-1000).
+- Transcrição feita prioritariamente a partir da imagem, mantendo ortografia, sinais e divisão de linhas tal como aparecem.
+- Distribuí o fluxo por colunas: primeiro o bloco grego (esquerda), depois os blocos latinos (direita e centro/baixo), seguindo a ordem de leitura pedida.
+- Usei script="grego" para o texto grego e script="latino" para o latim. BBOXs são estimativas na escala 0-1000.
+- Marcas marginais A–D colocadas em blocos nota_marginal separados (não inseridas no fluxo do texto).
   </notas>
 </pagina>

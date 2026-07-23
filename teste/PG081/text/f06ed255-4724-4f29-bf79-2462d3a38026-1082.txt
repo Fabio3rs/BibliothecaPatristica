@@ -1,12 +1,16 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="capa_ou_guarda">
   <bloco tipo="outro" script="latino" bbox="0,0,1000,1000">
-    tipo_pagina: capa_ou_guarda
+    [folha em branco com pequenas manchas e sinais de impressão]
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="560,940,920,995">
+  <bloco tipo="rodape" script="latino" bbox="300,920,730,985">
     Digitized by Google
   </bloco>
-  <bloco tipo="outro" script="desconhecido" bbox="920,920,995,995">
-    [ilegivel]
+  <bloco tipo="nota_marginal" script="latino" bbox="880,900,995,995">
+    [marca manuscrita: sinal de visto]
   </bloco>
-  <notas>Página praticamente em branco, com pequenas manchas e um sinal manuscrito no canto inferior direito. Não há colunas nem notas marginais identificadas (letras A,B,C,D ausentes). Texto legível: rodapé "Digitized by Google" em alfabeto latino. Marca/traço no canto inferior direito transcrito como [ilegivel].</notas>
+  <notas>
+    Página identificada como capa/guarda (folha maioritariamente em branco).
+    Transcrição literal do único texto impresso presente: "Digitized by Google".
+    Pequenas manchas e pontinhos de tinta estão presentes no campo da folha e foram registados no bloco "outro" como descrição, e a marca manuscrita no canto inferior direito foi registada como nota_marginal.
+  </notas>
 </pagina>

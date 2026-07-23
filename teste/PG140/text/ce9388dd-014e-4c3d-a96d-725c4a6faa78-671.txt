@@ -1,63 +1,59 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,120">
-    123    ADDENDA.    124
+  <bloco tipo="cabecalho" script="misto" bbox="130,30,870,55">
+    1323 ADDENDA. 1324
   </bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="50,120,480,260">
-    ἡ ἀνέσεως· λόγον ἔτι ἔχεις· ὑπὲρ ἐστὶ φανῆ τάξεως ὅ A ἀνέσις καὶ ἐπίτασις οὐ ποσοῦ, ἀλλὰ ποσός, τὸ δὲ ἄλλο τι ἐστὶν· οὐκ ἄλλος γὰρ, ἀλλ' ἄλλοις· Πάσαι γοῦν αἱ τάξεις εὑρέθησαν. Ἔχει δὲ πλάτος ἑκάστη, ὥστε δεῖγμα καὶ τὴν ἀξίνην καὶ τὴν ὑποδιαστολήν, καὶ οὐκ ἂν ἄλλο τὸ τῆς κοινῆς ποιότητος εἴτε εἶδος, ἔτι ἄλλον γεννήσεται διὰ τὴν ἐπίτασιν ἢ τὴν ἀνέσιν. Ἡ γὰρ
+  <bloco tipo="texto_principal" script="grego" bbox="130,55,530,145">
+    ἡ ἄνεσις λόγου ἑτέρας οὕπερ ἐστι φανῆ τάξεως ὅ τι ἐστιν· οὐκ ἄλλος γάρ, ἀλλ' ἄλλοιος. Πᾶσαι γοῦν αἱ τάξεις εὑρέθησαν. Ἔχει δὲ πλάτος ἑκάστη, ὥστε δέχεσθαι καὶ τὴν αὔξησιν καὶ τὴν ὑποβίβασιν, καὶ οὐκ ἂν ἄλλο τὸ τς κοινῆς ποιότητος εἴτε εἶδος, εἴτε τομον γεννήσεται διὰ τὴν ἐπίτασιν ἢ τν ἄνεσιν. Ἡ γὰρ
   </bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="520,120,950,260">
-    ὀύσια ἡ ἐπίτασις δὲ οὐκ οὖσα; οὐδὲν ἄλλο λοιπῶν ἐπιτάσεως· ὅτι καὶ ἡ ἐπίτασις ἐν οὐδεμίᾳ οὐσίᾳ ἐστὶν ἂν παντὶ ἄλλῳ. Ἡ ἐπίτασις μᾶλλον ἐν οὐδεμ. ἄλλῳ, καὶ τὸ A ἄρα παντὶ τῷ B, τὸ δὲ Γ οὐδενὶ, τῷ B τὸ A ἄρα, οὐδὲν τῷ Γ, ἵνα καὶ τὸ A B Γ Δ πρὸς τὸ Ψ Φ Θ
-  </bloco>
-
-  <bloco tipo="outro" script="grego" bbox="200,240,760,420">
-    επίτασις    οὐσία    ἄλλο
-    οὐδὲ          πῶς
-    οὐδὲ
-
-    επίτασις    οὐσία    ἄλλο
-    οὐδὲ          πῶς
-    οὐδὲ
-
-    οὐσία
-      B
-          πῶς    οὐδὲ    οὐδὲ
-    A      B      X
-    ἄλλο         ἐπίτασις
-
-    (διαγραμμα: μισοκυκλικα σχήματα με λεζάντες επίτασις, οὐσία, ἄλλο, οὐδὲ, πῶς. τριγώνον με κορυφαί Α Β Γ και τετράγωνο με Χ και ἐντὸς ρομβος.)
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,260,520,290">
+  <bloco tipo="nota_marginal" script="latino" bbox="535,55,550,70">
     A
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,310,520,340">
+  <bloco tipo="texto_principal" script="grego" bbox="550,55,950,145">
+    ἄνεσις καὶ ἐπίτασις οὐ ποσοῦ, ἀλλὰ ποιοῦ, τὸ δὲ ἄλλο οὐσίας, ἡ ἐπίτασις δὲ οὐκ οὐσίας, οὐδὲν ἄλλο λοιπὸν ἐπιτάσεως ὅτι καὶ ἡ ἐπίτασις ἐν οὐδεμιᾷ οὐσίᾳ·  οὐσία δὲ ἐν παντὶ ἄλλῳ. Ἡ ἐπίτασις γοῦν ἐν οὐδενὶ ἄλλῳ, καὶ τὸ A ἄρα παντὶ τῷ B, τὸ δὲ Γ οὐδενί, τῷ B τὸ A ἄρα, οὐδενὶ τὸ Γ, ὅτι καὶ τὸ A B Γ Δ πρὸς τὸ Ψ Φ Ω
+  </bloco>
+  <bloco tipo="outro" script="grego" bbox="140,160,610,285">
+    ἐπίτασις οὐσία ἄλλο
+    οὐδὲ πῶς
+    οὐδὲ
+    ἐπίτασις οὐσία ἄλλο
+    οὐδὲ πῶς
+    οὐδὲ
+  </bloco>
+  <bloco tipo="outro" script="grego" bbox="630,160,940,285">
+    οὐσία
+    B
+    πῶς οὐδὲ οὐδὲ
+    A Γ
+    ἄλλο ἐπίτασις
+    X
+    Λ Φ
+    Θ
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="130,300,530,545">
+    Χ οὐ το ποσοῦ ἐπιτάσει διαφέρει· ποσῷ γὰρ οὐκ ἐπίτασις, ἀλλὰ τὸ ἄνισον, ὅπερ οὐκ ἄλλο τοῦ A τὸ A ποιήσει, ὡς τὸν ἴσον ὁρισμόν· οὐδὲ γὰρ ἄλλον μὲν ὁ A B Γ κύκλος ὁρισμν δέξεται το K Λ M N Z· ἀμφοτέρων γὰρ εἷς ἐστι κοινός· σχῆμα γάρ ἐστιν ὁ κύκλος ἐπίπεδον ὑπὸ μιᾶς γραμμῆς περιεχόμενον, ἢ καλεῖται περιφέρεια, πρὸς ν ἀφ' ἑνὸς τοῦ ἐντὸς το σχήματος σημείου κειμένου, πᾶσαι αἱ προσπίπτουσαι εὐθεῖαι ἴσαι ἀλλήλαις εἰσίν. Εἴτε γοῦν τ B τῷ A σον, εἴτε ἄνισον, τὸν αὐτὸν δέξεται ὅρον, ὧν δὲ ὁ ρος κοινός, κοινὸς καὶ ὁ τς οὐσίας ἐστὶ λόγος, καὶ τὸ τρίγωνον οὕτως καὶ τὸ πολύγωνον, καὶ ἐπὶ τοῦ ἀρτίου τοῦτο καὶ περιττοῦ. Εἰ δὲ καὶ χρυσῷ ἄργυρος ἐνωθείη, καὶ αὖθις, οὐ διαφορά τούτοις ἄλλη κἂκ τῆς ἑνώσεως γενήσεται, εἰ μὴ ἡ κατὰ ποιότητα. Ὁ μὲν γὰρ ἐνωθεὶς πρὸς τὸ λευκὸν ἕλῃ, ὁ δὲ πρὸς τὸ πυρῶδες, οὐδεὶς δὲ τὴν ἐνοῦσαν ἀλλοίωθῃ πρὸς τὴν ἄλ-
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="535,300,550,315">
     B
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,360,520,390">
+  <bloco tipo="texto_principal" script="grego" bbox="550,300,950,515">
+    λων ἰσότητα ἢ ἀνισότητα· μενεῖ γὰρ ἑκάστῳ τὸ ἑκάστου ποσόν, ὥστε οὐδεμία ἐπίτασις ἢ ἄνεσις· τὸ ἄλλο φέρει τινὶ γενήσεσθαι οὕπερ ἐστιν· ἐκεῖ γὰρ σύνθεσις ποιοτήτων· διὰ τοῦτο οὐδὲ ἁπλοῦν, ἀλλὰ σύνθετον τὸ συνελθόν ἐστι, ποιότητι· δὲ εἰκότως· ἡ ἄνεσις καὶ ἡ ἐπίτασίς ἐστι, ποσοῦ δ' οὔ. Οὐκ ἄλλο γάρ, ἀλλ' ἄλλοιον ἐκεῖνο· οὔτε γὰρ χρυσός, οὔτε ἄργυρος μόνον μίγμα, ἀλλ' ἑξαπλάσιος ἄργυρος τῇ νώσει τοῦ ξαπλασίου χρυσοῦ· κατὰ μὲν τὸ ποιὸν ἀλλοιώσει τε καὶ ἀλλοιωθῇ, ποσῷ δ' οὔ. Διὰ τοῦτο οὐ τῷ ποσῷ, εἰ σκοπε τις, ἴδῃ ἂν ποτε τὴν ἐπίτασιν ἢ τὴν ὕφεσιν, ἀλλ' ἐν τῷ ποιῷ. Δείξω δὲ τοῦτο οὕτως. Πρότασις· δεῖ γον δεῖξαι ὅτι ἐν τῇ τῶν ποιοτήτων συνελεύσει, ἐπισυμβαίνει ἐπίτασις κατὰ τὸ ἄλλοιον, οὐκ ἀεὶ δὲ, τὸ δὲ ποσὸν οὐκ ἔχει ἐπίτασιν. Ἔκθεσις·
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="535,515,550,530">
     C
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,410,520,440">
+  <bloco tipo="texto_principal" script="grego" bbox="550,515,950,545">
+    ἔστω τοίνυν τὸ A B Γ ποσόν, ὁμοίως δὲ καὶ τὸ Δ M N, δεῖ δὲ ἐν τοῖς ἀμφοτέροις σημείοις μὴ ὑπάρχειν
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="130,565,530,895">
+    Nam intensio et remissio non sunt quantitatis sed qualitatis. Aliud autem ad essentiam pertinet, ad quam non pertinet intensio. Ex quo efficitur aliud nullo modo pertinere ad intensionem, quandoquidem in nulla essentia est intensio, at essentia est in omni alio, intensio ergo in nullo alio erit. Omni igitur B conveniet A; at nulli B C conveniet. Nulli ergo C conveniet A. Quandoquidem neque A B C D differt ab V X Y Z propter quantitatis intensionem; nam in quantitate non est intensio sed inæqualitas; quæ quidem inæqualitas aliud A ab A non efficit cum eamdem definitionem habeat utrumque, ut neque circulus A B C definitionem aliam et diversam a definitione majoris circuli K L M N O suscipiet. Utriusque enim circuli una est definitio communis. Nam circulus est figura plana una linea comprehensa quæ circumferentia appellatur, ad quam omnes a centro figuræ ductæ lineæ rectæ æquales inter se sunt. Sive igitur B sit æquale ipsi A, sive inæquale, definitionem eamdem suscipiet. Quorum autem definitio communis est, ratio quoque essentiæ illorum est communis. Idem quoque observatur in triangulo, in multiangulo: itemque in
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="535,725,550,740">
     D
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="50,440,480,870">
-    Nam intentio et remissio non sunt quantitas sed qualitatio. Aliud autem ad essentiam pertinet, ad quam non pertinet intentio. Ex quo efficitur aliud nullo modo pertinere ad intensionem, quoadqualidem in nulla essentia est intentio, at essentia est in omni alio, intensio ergo in nullo alio erit. Omni igitur B conveniet A; at nulli B C conveniet. Nulli ergo C conveniet A. Quandoquidem neque A B C D differt ab V X Y Z propter quantitatis intensionem; nam in quantitate non est intensio sed inaequalitas: quae quidem inaequalitas aliud A ab A non efficiet cum eandem definitionem habeat utrumque, ut neque circulus A B C definitionem aliam et diversam a definitione majoris circuli K L M N O suscipit. Utriusque enim circuli una est definitio communis. Nam circulus est figura plana una linea comprehensa quae circumferentia appellatur, ad quam omnes a centro siguae duae lineae rectae aequales inter se sunt. Sive igitur B sit aequalis ipsi A, sive inaequalis, definitionem eandem suscipit.
+  <bloco tipo="texto_principal" script="latino" bbox="550,565,950,895">
+    pari et impari. Quod si argentum cum auro uniatur, non alia exsistet differentia ex hac copulatione, quam illa quæ ex qualitate est. Aurum enim copulatum albedinem accepit, et argentum album flavum auri colorem. Neutrum vero, neque aurum neque argentum, quantitatem, quam habuit, ob aliorum æqualitatem et inæqualitatem cum alia commutavit; unicuique enim sua manet quantitas. Quare nulla intensio aut remissio efficit ut aliquid aliud sit quam quod est. Illic enim est qualitatum compositio. Idcirco quod ita copulatur non est simplex sed compositum. Porro merito remissio et intensio qualitatibus inesse dicuntur, quantitati vero inesse negantur. Nam quod intenditur et remittitur aliud non evadit, sed dissimile. Aliud quidem est sexcuplum argentum copulatum a sexcuplo auro copulato. Ac ex qualitate quidem mutabuntur et dissimilia evadent, sed ex quantitate nequaquam. Quare si quis diligenter consideret, nunquam animadvertet intensionem aut remissionem quantitati inesse, sed qualitati. Quod ita esse hunc in modum demonstrabo. Oportet igitur demonstrare in qualitatum
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="520,440,950,870">
-    Nam intentio et remissio non sunt quantitatis sed qualitatis. Quod si argentum cum auro uniar, non alia exsistat differentia ex hac copulatione, quam illa quae ex qualitate est. Aurum enim copulatum albedinem accepit, et argentum album flavum auri colorem. Neutrum vero, neque aurum neque argentum, quantitatem, quam habuit, ob aliorum aequalitatem et inaequalitatem cum alia commutavit; unicuique enim sua manet quantitas. Quare nulla intentio aut remissio efficit ut aliquid aliud sit quam quod est. Ilicet enim est qualitatum compositio. Ideoque quod in copulatur non est simplex sed compositum. Porro merito remissio et intentio qualitatibus inesse dicuntur, quantitati vero inesse negantur. Nam quod intenditur et remittitur aliud non evadit, sed dissimile.
-  </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="600,900,950,980">
+  <bloco tipo="rodape" script="latino" bbox="590,955,800,985">
     Digitized by Google
   </bloco>
-
-  <notas>
-    - Os blocos foram separados por coluna (esquerda antes da direita). 
-    - As letras A, B, C, D localizadas no gutter foram colocadas em blocos tipo="nota_marginal" distintos conforme solicitado.
-    - O bloco central com os diagramas inclui transcrição literal das legendas gregas visíveis e uma breve descrição do diagrama quando partes do desenho são gráficas e não plenamente transcritas como texto.
-    - [ilegivel] não foi utilizado extensivamente; onde a leitura era incerta, optou-se por transcrever aproximando a forma visível. Palavras gregas parcialmente incertas foram omitidas ou ajustadas para evitar inventar texto.
-  </notas>
 </pagina>

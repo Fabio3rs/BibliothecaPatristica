@@ -1,57 +1,57 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,30,980,140">
-1103
-ORDO RERUM QUAE IN HOC TOMO CONTINENTUR
-1104
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,80">
+    1143 ORDO RERUM QUÆ IN HOC TOMO CONTINENTUR 1164
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,150,480,330">
-ALLE,
-Capita compunctionis metrica, 573
-Descriptio veris, 575
-Allocutio ad Bajazetem capitum in persona Tamerlanis, 577
-De fulmine Agareno (Bajazele) in forma psalmi, 581.
-Epistola ad Manuelem Chrysoloram, ab imp. scripta cum in aula regis Anglorum Henrici IV versauerit auxilium rebus suis afflictis emendicans, 531
-JOANNES ANAGNOSTA.
-Notitia ex Jankii de rer. Byzant. script., 583
-Narratio de excidio Thessalonices, anno 1430 ab Amurate expugnate. 787
-GEORGIUS PHRANTZIA.
-Notitia ex Bibliotheca Greca Joan. Alb. Fabricii, 631
+  <bloco tipo="texto_principal" script="latino" bbox="50,90,480,500">
+    ALIÆ,
+    CAPITA compunctionis metrica, 575
+    DESCRIPTIO veris, 577
+    ALLOCUTIO ad Bajazetem captivum in persona Tamer-
+    lanis, 579
+    De fulmine Agareno (Bajazete) in forma psalmi, 581.
+    EPISTOLA ad Manuelem Chrysoloram, ab imp. scripta
+    cum in aula regis Anglorum Henrici IV versaretur
+    auxilium rebus suis afflictis emendicans, 531
+    JOANNES ANAGNOSTA.
+    Notitia ex Hankii de rer. Byzant. script., 585
+    NARRATIO DE EXCIDIO THESSALONICES, anno 1430 ab
+    Amurate expugnatæ. 787
+    GEORGIUS PHRANTZA.
+    Notitia ex Bibliotheca Græca Joan. Alb. Fabricii,
+    631
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,150,970,330">
-GEORGII PHRANTZÆ CHRONICON MAJUS.
-Prooemion, 537
-Liber primus, a Michaele Palaeologo usque ad Iasonem, 641
-Liber II, incipiens post mortem imp. Manuelis Palaeologi et ab initio imperii Joannis, 737
-Liber III. De imperio Constantini Palaeologi, expugnatione Copiis et rebus quibusdam aliis, 807.
-Liber IV, qui a capta regina urbium incipit, turbas ac pugnas in Peloponneso inter fratres et despotae exitialas continens; atque earum quomodo ipsos quomodo ipsos et insulam auream sibi subjecerint, et quo scriptor acciderint et res alias quadam, capitibus distribuas.
-Additio Romani monitum in subsequens Chronicon abbreviatum. 1023
-CHRONICON MINUS SEU ABBREVIATUM.
-Indices in Georgium Phrantzam, 1079
+  <bloco tipo="texto_principal" script="latino" bbox="520,90,950,500">
+    GEORGII PHRANTZÆ CHRONICON MAJUS.
+    Proœmium, 537
+    LIBER primus, a Michaele Palæologo usque ad Manue-
+    lem, 641
+    LIBER II, incipiens post mortem imp. Manuelis Palæo-
+    logi et ab initio imperii Joannis, filii ejus. 737
+    Liber III. De imperio Constantini Palæologi, expug-
+    natione Cpolis et rebus quibusdam aliis, 807.
+    LIBER IV, qui a capta regina urbium incipit, turbas ac
+    pugnas in Peloponneso inter fratres et despotas excita-
+    tas continens, atque enarrans quomodo ipsos et insulam
+    Ameras sibi subjecerit, et quæ scriptori acciderint et
+    res alias quasdam, capitibus distributas.
+    Editoris Romani monitum in subsequens Chronicon
+    abbreviatum. 1025
+    CHRONICON MINUS SEU ABBREVIATUM.
+    Indices in Georgium Phrantzam, 1079
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,150,510,170">
-A
+  <bloco tipo="texto_principal" script="latino" bbox="200,600,800,650">
+    FINIS TOMI CENTESIMI QUINQUAGESIMI SEXTI.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,175,510,195">
-B
+  <bloco tipo="rodape" script="latino" bbox="600,850,950,900">
+    Parisiis. - Ex Typis J.-P. MIGNE.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,200,510,220">
-C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,225,510,245">
-D
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,400,800,520">
-FINIS TOMI CENTESIMI QUINQUAGESIMI SEXTI.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="620,860,920,940">
-Parisiis. - Ex Typis J.-P. MIGNE.
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="420,950,580,990">
-Digitized by Google
+  <bloco tipo="outro" script="latino" bbox="580,950,850,990">
+    Digitized by Google
   </bloco>
   <notas>
-- As instruções indicam que as letras A, B, C, D localizadas no gutter vertical devem ser transcritas em blocos próprios; foram colocadas como nota_marginal separadas.
-- Algumas palavras na coluna direita estavam parcialmente ilegíveis/obscurecidas na imagem (p.ex. nomes e algumas formas latinas longas). Mantive leituras plausíveis (por ex. "Iasonem", "auream") sem normalizar; se desejar, posso substituir termos duvidosos por marcação [ilegivel] palavra a palavra.
-- BBOX fornecidos em escala 0-1000 como aproximações relativas da posição visual dos blocos na página.
+    - Transcrição fiel à imagem, corrigindo erros do Tesseract e LLM (ex: 1143/1164 em vez de 1163/1160; Hankii em vez de Jankii; Manuelem em vez de Iasonem; Ameras em vez de auream; 1025 em vez de 1023).
+    - Quebras de linha e hifenização preservadas conforme visível na imagem (ex: Manue-lem, Palæo-logi, expug-natione).
+    - Não há letras marginais A, B, C, D visíveis nesta página, apesar da sugestão no LLM OCR.
+    - Ligaturas 'æ' e 'œ' mantidas onde visíveis (QUÆ, ALIÆ, Palæologo, Proœmium, etc.).
   </notas>
 </pagina>

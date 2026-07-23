@@ -1,61 +1,36 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="0,0,1000,80">
-613        S. JOANNIS DAMASCENI        616
-CAP. XLIV.       A       ΚΕΦΑΛ. ΜΔ'.
-  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="100,30,150,50">615</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="400,30,600,50">S. JOANNIS DAMASCENI</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,30,900,50">616</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="200,60,450,100">CAP. XLIV.<br/>De enhypostato.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,60,520,80">A</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="550,60,800,100">ΚΕΦΑΛ. ΜΔ'.<br/>Περὶ ἐνυποστάτου.</bloco>
 
-  <bloco tipo="texto_principal" script="misto" bbox="50,90,490,620">
-CAP. XLIV.
-De enhypostato.
+  <bloco tipo="texto_principal" script="latino" bbox="100,110,490,430">Quin enhypostaton quoque nonnunquam simplicem exsistentiam significat, quo sensu, non modo substantiam absolute enhypostaton dicimus, verum etiam accidens: tametsi illud non sit proprie enhypostaton, sed heterohypostalon (hoc est, in alio exsistentiam habens), nonnunquam vero separatam hypostasim, sive individuum, significat. Tametsi nec illud proprie enhypostaton, sed hypostasis sit ac dicatur. Proprie autem enhypostaton est, aut quod non per se et seorsim subsistit, sed consideratur in hypostasibus (v. gr. species, sive hominum natura non consideratur in hypostasi propria, sed in Petro, Paulo) ac reliquis singulorum hominum hypostasibus, aut quod cum alio, substantia diverso, ad totius cujusdam generationem componitur, unamque hypostasim compositam efficit: ut puta, homo ex anima et corpore constitutus est, nec vero anima sola dicitur hypostasis, nec item corpus, sed dicuntur ambo enhyposta: id autem quod ex utrisque exsurgit, utrorumque hypostasis dicitur. Elenim hypostasis id proprie est ac dicitur, quod seorsim atque in propria subsistentia exsistit.</bloco>
 
-Quin enhypostaton quoque nonnunquam simplicem existentiam significat, quo sensu, non modo substantiam absolute enhypostaton dicimus, verum etiam accidens: Jametsi illud non sit proprie enhypostaton, sed heterohypostaton (hoc est, in alio existentiam habens), nonnunquam vero separatam hypostasim, sive individuum, significat. Tametsi nec illud proprie enhypostaton, sed hypostasis sit ac dicatur. Proprie autem enhypostaton est, aut quod non per se et se seorsim subsistit, sed consideratur in hypostasibus (v. gr. species, sive hominum natura non consideratur in hypostasi propria, sei in Petro, Paulo) ac reliquis singulorum hominum hypostasibus, aut quod cum alio, substantia diverso, ad totius cujusdam generationem componitur, unamque hypostasim compositam elicit: ut puta, homo ex anima et corpore constitutus est, nec vero anima sola dicitur hypostasis, nec item corpus, sed dicuntur ambo enhypostata: id autem quod ex [ilegivel] exsurgit, utrorumque hypostasis dicitur. Elenim hypostasis id proprie est ac dicitur, quod seorsim atque in propria subsistentia exsistit.
+  <bloco tipo="texto_principal" script="grego" bbox="510,110,900,250">Καὶ τὸ ἐνυπόστατον δὲ (31) ποτὲ μὲν τὴν ἁπλῶς ὕπαρξιν σημαίνει· καθ' ὃ σημαινόμενον, οὐ μόνον τὴν ἁπλῶς οὐσίαν ἐνυπόστατον λέγομεν, ἀλλὰ καὶ τὸ συμβεβηκός· ὅπερ κυρίως οὐκ ἐνυπόστατόν ἐστι, ἀλλ' ἑτεροϋπόστατον· ποτὲ δὲ καὶ τὴν καθ' ἑαυτὸ ὑπόστασιν, ἤγουν τὸ ἄτομον δηλοῖ· ὅπερ κυρίως οὐκ ἐνυπόστατον, ἀλλ' ὑπόστασίς ἐστί τε καὶ λέγεται. Κυρίως δὲ ἐνυπόστατόν ἐστιν, ἢ τὸ καθ' ἑαυτὸ μὲν μὴ ὑφιστάμενον, ἀλλ' ἐν ταῖς ὑποστάσεσι θεωρούμενον· ὥσπερ τὸ εἶδος, ἤγουν ἡ φύσις τῶν ἀνθρώπων, ἐν ἰδίᾳ ὑποστάσει οὐ θεωρεῖται, ἀλλ' ἐν Πέτρῳ, κα Παύλῳ, καὶ ταῖς λοιπαῖς τῶν ἀνθρώπων ὑποστάσεσιν·</bloco>
 
-47 Christi caro ut humanitas εννυστατος.—
+  <bloco tipo="nota_marginal" script="latino" bbox="490,260,510,280">B</bloco>
 
-Rursus autem enhypostaton dicitur natura ea, quae ab alia hypostasi assumpta, ut in illa existat, consecuta est. Unde etiam Domini caro, cum per se ac seorsim ne nomemo quidem temporis existierit, nec proinde hypostasis est, sed potius en-
-  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,260,900,400">ἢ τ σὺν ἄλλῳ διαφόρῳ κατὰ τὴν οσίαν εἰς ὅλου τινὸς γένεσιν συντιθέμενον, καὶ μίαν ἀποτελοῦν ὑπόστασιν σύνθετον· οἷονεὶ  ἄνθρωπος ἐκ ψυχῆς ἐστι καὶ σώματος συντεθειμένος, καὶ οὔτε ἡ ψυχὴ μόνη λέγεται ὑπόστασις, οὔτε τὸ σῶμα, ἀλλ' ἐνυπόστατα. Τὸ δὲ ἐξ ἀμφοτέρων ἀποτελούμενον, ὑπόστασις ἀμφοτέρων e. Ὑπόστασις γὰρ κυρίως τὸ καθ' ἑαυτὸ ἰδιοσυστάτως ὑφιστάμενον ἔστι τε καὶ λέγεται.</bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="490,120,510,200">
-A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,260,510,340">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,400,510,480">
-C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,540,510,620">
-D
-  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="100,435,490,520">47 Christi caro ut humanitas ἐνυπόστατος.—Rursus autem enhypostaton dicitur natura ea, quæ ab alia hypostasi assumpta, ut in illa exsistat, consecuta est. Unde etiam Domini caro, cum per se ac seorsim ne momento quidem temporis exstiterit, nec proinde hypostasis est, sed potius en-</bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="510,90,950,620">
-ΚΕΦΑΛ. ΜΔ'.
-Περὶ ἐνυποστάτου.
+  <bloco tipo="nota_marginal" script="latino" bbox="490,480,510,500">C</bloco>
 
-Καὶ τὸ ἐνυπόστατον δὲ (31) ποτὲ μὲν τὴν ἁπλῶς ὑπάρξιν σημαίνει· κατ' ὃ σημανομένου, οὐ μόνον τὴν ἁπλῶς οὐσίαν ἐνυπόστατον λέγομεν, ἀλλὰ καὶ τὸ συμβεβηκός· ἔπει κυρίως οὖν ἐνυπόστατον ἔστι, ἀλλ' ἐτεροϋπόστατον· ποτὲ δὲ καὶ τὴν καθ' ἑαυτὸν ὑπόστασιν, ἦγουν ἄτομον δηλοῖ· ὅπερ κυρίως οὐκ ἐνυπόστατον, ἀλλ' ὑπόστασις ἐστι τε καὶ λέγεται. Κυρίως δὲ ἐνυπόστατον ἔστιν, ἢ τὸ καθ' ἑαυτὸ μὲν μὴ ὑφιστάμενον, ἀλλ' ἐν ταῖς ὑποστάσεσι θεωρούμενοι· ὅπερ τὸ εἶδος, ἦγουν ἡ φύσις τῶν ἀνθρώπων, ἐν ἰδίᾳ ὑποστάσει οὐ θεωρεῖται, ἀλλ' ἐν Πέτρῳ, καὶ Παύλῳ, καὶ ταῖς λοιπαῖς τῶν ἀνθρώπων ὑποστάσεσιν.
+  <bloco tipo="texto_principal" script="grego" bbox="510,435,900,520">Λέγεται πάλιν (32) ἐνυπόστατον ἡ ὑφ' ἑτέρας ὑποστάσεως προσληφθεῖσα φύσις, καὶ ἐν ἑαυτῇ σχην κυία τν ὕπαρξιν. Ὅθεν καὶ ἡ σὰρξ τοῦ Κυρίου μὴ ὑπόστασα καθ' ἑαυτήν, μηδὲ πρὸς καιροῦ ῥοπήν, οὐχ ὑπόστασις, ἀλλὰ μᾶλλον ἐνυπόστατόν ἐστιν. Ἐν γὰρ τῇ ὑποστάσει τοῦ Θεοῦ Λόγου ὑπέστη, προσληφθεῖσα</bloco>
 
-Β ἦ τὸ σὺν ἄλλῳ διαφορὰ κατὰ τὴν οὐσίαν, ἐκ ὅλου τοῦ εἴδους γεγέννηται, καὶ μὴ μόνον ἀποτελεῖν ὑπόστασιν σύνθετον· οἶσθα ὁ ἄνθρωπος ἐκ ψυχῆς ἐστὶ καὶ σώματος συντεθειμένος, καὶ οὔτε ἡ ψυχὴ μόνη λέγεται ὑπόστασις, οὔτε τὸ σῶμα, ἀλλ' ἐνυπόστατα. Τὸ δὲ ἐξ ἀμφοτέρων ἀποτελούμενον, ὑπόστασις ἀμφοτέρων ἐστὶν· οὖν ὁ ὄνθρωπος ἐστὶν καὶ σῶμα καὶ ψυχὴ συντεθειμένη. Ὑπόστασις γὰρ κυρίως τὸ καθ' ἑαυτὸ ὑφισταμένον ἔστιν καὶ λέγεται.
+  <bloco tipo="cabecalho" script="latino" bbox="400,530,600,550">VARIAE LECTIONES.</bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="100,555,900,610">• In cod. Reg. 2925, 2926, 2929, hæc in textu leguntur, quæ in Reg. 2930 margini ascripta fuerunt : Διὰ τὸ μήτε τὴν ψυχὴν καθ' ἑαυτὴν ὑποστῆναι, μηδὲ τὸ σῶμα, ἀλλ' ἀμφότερα ἅμα Quæ quidem sic etiam vertit vetus interpres : Propter neque animam secundum seipsam subsistere, neque corpus, sed utramque simul. Item Basileensis : Propterea quod nec sola anima (bruti) neque corpus solum subsistere potest, sed utraque simul.</bloco>
 
-Λέγεται πάλιν (32) ἐνυπόστατον ἡ ὑπ' ἑτέρας ὑποστάσεως προσληφθεῖσα φύσις, καὶ ἐκ ταύτης ἔχει τὴν ὑπαρξιν. Ὅθεν καὶ τὸ σῶμα τοῦ Κυρίου μὴ ὑπόστασις καθ' ἑαυτὴν, μᾶλλον δὲ ἐνυπόστατον ἐστίν· ἐν γὰρ τῇ ὑποστάσει τοῦ Θεοῦ Λόγου ὑπέστη, προσηλθεῖσα...
-  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="450,620,550,640">NOTAE.</bloco>
 
-  <bloco tipo="aparato_critico" script="latino" bbox="50,640,950,760">
-VARIAE LECTIONES.
+  <bloco tipo="nota_marginal" script="latino" bbox="490,700,510,720">D</bloco>
 
-* In cod. Reg. 2925, 2926, 2929, haec in textu leguntur, quae in Reg. 2930 margini ascripta fuerunt: Διὰ τὰ μὲν τῆς ψυχῆς καὶ ἑαυτῆς ὑποστάσεως, μὴδὲ τὸ σῶμα, ἀλλ' ἀμφοτέρα. Quae quidem sic etiam vertunt veluti interpres: Propter neque animam secundum seipsam subsistere, neque corpus, sed utraque simul. Item Basiliensis: Proplerea quod nec sola anima (fruti) neque corpus solum subsistere potest, sed utraque simul.
-  </bloco>
+  <bloco tipo="nota" script="misto" bbox="100,645,490,910">(31) Καὶ τὸ ἐνυπόστατον δὲ. Quintimo enhypostaton, etc. Sic Leontius in Collectaneis, cap. 27 : Ἰστέον, ὅτι τὸ ἐνυπόστατον διττόν ἐστι· σημαίνει γὰρ τὸ ἁπλῶς ν, καθ' ὃ σημαινόμενον, οὐ μόνον τὴν οὐσίαν, ἣν αὐθύπαρκτον καὶ αὐθυπόστατον οἱ περ ταῦτα δεινοὶ ὑπογράφουσιν, ἐνυπόστατον καλοῦμεν, δι' αὐτὸ τοῦτο τὸ εἶναι ἁπλῶς κα ὑφεστάναι, ἀλλὰ καὶ τὰ συμβεβηκότα ἐνυπόστατα· λέγομεν, κἂν ἐν ἑτέρ ἔχωσι τ εἶναι, τουτέστιν ἐν τῇ οὐσίᾳ· κα εἰσι, κυριωτέρως εἰπεῖν, ἑτεροπόστατα. Σημαίνει δὲ πάλιν καὶ τὸ καθ' ἑαυτὸ ὄν, τουτέστιν ἰδιοσυστάτως, καθ' ὃ σημαίνομεν, καὶ τὰ ἄτομα ἐνυπόστατα λέγονται, τουτέστι καὶ ὁ Πέτρος, καὶ ὁ Ἰωάννης, ἅπερ κυρίως οὐκ ἐνυπόστατα, ἀλλ' ὑποστάσεις μᾶλλον εἰσι, καὶ γνωρίζονται. Nosse oportet ἐνυπόστατον esse duplex. Nam significat ens simpliciter : quo sensu nedum substantiam, quam viri docti sic describunt, ut sit id quod seipso exsistit subsistitque, ἐνυπόστατον appellamus, utpote quæ simpliciter sit et exsistat. Verum et ipsa quoque accidentia ἐνυπόστατα dicimus, tametsi in alio, hoc est in substantia, esse habeant. At si proprie loqui velimus, ἑτεροϋπόστατα, h. e. extraneæ subsistentiæ, ea potius nominabimus. Rursum vero significat etiam id quod per seipsum est, hoc est in propria subsistentia : atque secundum hoc</bloco>
 
-  <bloco tipo="aparato_critico" script="latino" bbox="50,760,950,940">
-NOTE.
+  <bloco tipo="nota" script="misto" bbox="510,645,900,910">significatum individua proprie dicuntur ἐνυπόστατα, puta Petrus, Joannes, quæ tamen proprie non ἐνυπόστατα, sed magis hypostases sunt, et agnoscuntur. Profecto tertio et quarto sæculis ἐνυπόστατον significabat, id quod vere consisteret. Nam synodus Antiochena secunda adversus Paulum Samosatenum definierat, Patrem ab æterno Filium genuisse tanquam viventem efficientiam et ἐνυπόστατον subsistentem, quæ omnia in omnibus operaretur. Hieronymus quoque epistola ad Damasum testatur adactum se fuisse ab Orientalibus, ut tres hypostases, tria enhypostata, id est tres subsistentes personas profiteretur, ne Verbum divinum esse putaretur nudus oris sonus, aut flatus dictione in auras abiens, vel actio quædam præteriens, accidens aliquid, aut merum attributum. Cæterum Hilarius lib. x De Trin. 6, n. 21, et Rufinus in expositione Symboli pro Græca voce ἐνυπόστατον, Latinam substantivum adhibet.<br/>(32) Λέγεται πάλιν. Rursus autem enhypostaton, etc. In exemplum affert Domini carnem, sive humanitatem. Ejusmodi ἐνυπόστατα a Theodoro Abucara dial. 2 et 29, consimili vocabulo ὑποστατικά, hypostatica, dicuntur, quia pertinent ad hypostasim, cujus propria efficiantur.</bloco>
 
-(31) Καὶ τὸ ἐνυπόστατον 8ε. Quomino enhypostalon, etc. Sic Leontius in Collectaneis, cap. 27: Ἰστέον, ὅτι τὸ ἐνυπόστατον διττόν ἐστι· σημαίνει γὰρ τὸ ἁπλῶς, ἢ τὸ καθ' ὅ σημαίνεται, οὐ μόνον τὴν οὐσίαν, ἀλλὰ καὶ τὰ συμβεβηκότα. Ἔπειτα κυρίως οὐχ ἐνυπόστατον ἐστι, ἀλλ' ἐτεροϋπόστατον· ἱκανὸν δὲ καὶ τὴν καθ' ἑαυτὸν ὑπόστασιν, ἦγουν ἄτομον δηλοῖ. Quod hic vertimus: tametsi non proprie enhypostaton: i. e. significamus individuam proprie dici enhypostasin. Proinde Petrus, Joannes, quae tamen proprie nomen non ἐνυπόστατα, sed magis hypostases sunt, et agnoscantur. Profecto tertio et quarto sæculis ἐνυπόστατον significabat, id quod vere consisteret. Nam synodus Antiochenæ secunda adversus Paulum Samosatenum definierat, Patrem ab eterno Filium genuisse ianquam orientem efficientiam et ἐνυπόστατον subsistere, quae omnia in omnibus operaretur. Hieronymus quoque epistola ad Damasum testatur adducit usque si diffusa ab Orientalibus, ut tres hypostases, tria enhypostata, id est tres subsistentes personas professi- sunt, ne Verbum divinum esse putarentur nudus oris sonus, aut illius dictio veras aures alienas, vel actio quaedam prachensis, accidens aliquod, aut merum attributum. Caeterum Hilarius lib. 1. De Trin. c. 9, n. 21, et Rufinus in expositione Symboli pro Graeca voce ἐνυπόστατον, Latinam subsistentiam addit.
-  </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="700,960,980,995">
-Digitized by Google
-  </bloco>
-  <notas>
-    Nota 1: Marginalia A, B, C, D sono rappresentate ciascuna come blocchi separati nella gutter; non sono state inserite nel testo delle colonne.
-    Nota 2: Sono stati marcati [ilegivel] i singoli termini non chiaramente leggibili nell'immagine; per il resto la trascrizione è letterale, senza normalizzazioni.
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="550,950,800,980">Digitized by Google</bloco>
 </pagina>

@@ -1,34 +1,29 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="60,30,940,130">
-1371     ORDO RERUM QUE IN HOC TOMO CONTINENTUR.     1372
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="130,50,870,90">
+    1371 ORDO RERUM QUÆ IN HOC TOMO CONTINENTUR. 1372
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,130,480,270">
-Dissertatio parabolica IX. — Deterrret a fidendo reconciliationi gratiae oblata a principe quem gravissime quis [ilegivel]. 1533
-
-Dissertatio parabolica X. — Versatur in explicandis fraudibus insidiosissimis invidorum quibus innocentes et fidos regibus ministros pervertere conantur, indicatis simul rationibus is occurrendi, et vi veritatis ac sanctimoniae omnes malitiae cupidus ad extremum eluctantis. 1539
-
-Dissertatio parabolica XI. — Quam [ilegivel] sit ingrati animi vitium in homine monstrat exemplu bestiarum, et ab eo [ilegivel] propositas ejus poena. 1545
-
-Dissertatio parabolica XII. — Societatis similitudine
+  <bloco tipo="texto_principal" script="latino" bbox="130,100,490,230">
+    Dissertatio parabolica IX. — Deterret a fidendo reconciliationi gratiæ oblatæ a principe quem gravissime quis læserit. 1535
+    Dissertatio parabolica X. — Versatur in explicandis fraudibus insidiosissimis invidorum quibus innocentes et fidos regibus ministros pervertere conantur, indicatis simul rationibus iis occurrendi, et vi veritatis ac sanctimoniæ omnes malitiæ conatus ad extremum eluctantis. 1539
+    Dissertatio parabolica XI. — Quam turpe sit ingrati animi vitium in homine monstrat exemplo bestiarum, et ab eo deterret proposita ejus pœna. 1545
+    Dissertatio parabolica XII. — Societatis similitudine
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,130,940,270">
-fortunae coalescentes inter homines diversissimæ sortis, exemplum proponit. Providentia consulentiis hominibus curam beneficam declarat, et eam esse demonstrat optimum et certissimum fundamentum judicis humanæ. 1547
-
-Dissertatio parabolica XIII. — Docet voces aequas rerum aeterna lege constitutas: unde conveniat non agere ferre cum quis quae fecit, patitur. 1551
-
-Dissertatio parabolica XIV. — Tradit modum discerpendi consilia utilis ab inanibus, qualia maxima sunt id suadentia tenare quod fieri nequit. 1555
-
-Dissertatio parabolica XV. — Castigat curiosum desiderium longinquarum et iactilium rerum. 1555
+  <bloco tipo="texto_principal" script="latino" bbox="510,100,950,230">
+    fortunæ coalescentis inter homines diversissimæ sortis, exemplum proponit. Providentiæ consulentis hominibus curam beneficam declarat, et eam esse demonstrat optimum et certissimum fundamentum fiduciæ humanæ. 1547
+    Dissertatio parabolica XIII. — Docet vices æquas rerum æterna lege constitutas: unde conveniat non ægre ferre cum quis quæ fecit, patitur. 1551
+    Dissertatio parabolica XIV. — Tradit modum discernendi consilia utilia ab inanibus, qualia maxime sunt id suadentia tentare quod fieri nequit. 1555
+    Dissertatio parabolica XV. — Castigat curiosum desiderium longinquarum et inutilium rerum. 1555
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,360,800,420">
-FINIS TOMI CENTESIMI QUADRAGESIMI TERTII.
+  <bloco tipo="texto_principal" script="latino" bbox="320,450,680,480">
+    FINIS TOMI CENTESIMI QUADRAGESIMI TERTII.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="560,900,940,980">
-Parisiis. — Ex Typis J.-P. MIGNE.
+  <bloco tipo="rodape" script="latino" bbox="620,880,900,910">
+    Parisiis. — Ex Typis J.-P. MIGNE.
   </bloco>
   <notas>
-- Marquei como [ilegivel] palavras cujo grafismo na impressão é incerto na imagem (linhas na coluna esquerda): mantenha-se a leitura literal do resto do texto.
-- Não foram identificadas inscrições marginais com as letras A, B, C ou D; portanto nenhum bloco nota_marginal foi criado para tais marcas.
-- BBOX em escala 0-1000 são estimativas aproximadas baseadas na disposição visual da página.
+    - Transcrição fiel às ligaturas (æ, œ) visíveis na imagem.
+    - Colunas separadas para manter o fluxo visual original (esquerda depois direita).
+    - Correções aplicadas em relação ao OCR: "conatus" (não éonatus/cupidus), "eluctantis", "fiduciæ" (não judicis), "inutilium" (não iactilium), "tentare".
+    - Números de página do tomo (1535-1555) e do volume (1371-1372) preservados conforme imagem.
   </notas>
 </pagina>

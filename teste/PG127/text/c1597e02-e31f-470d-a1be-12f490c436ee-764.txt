@@ -1,27 +1,17 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="220,60,780,200">
-THE UNIVERSITY OF MICHIGAN
+<pagina estado="com_texto" tipo="capa_ou_guarda">
+  <bloco tipo="cabecalho" script="latino" bbox="276,136,622,172">
+    THE UNIVERSITY OF MICHIGAN
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="200,240,780,320">
-DATE DUE
+  <bloco tipo="texto_principal" script="latino" bbox="386,221,483,243">
+    DATE DUE
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="140,300,420,480">
-APR 1 1997
-[ilegivel] 1997
+  <bloco tipo="nota" script="latino" bbox="245,270,410,320">
+    MAR 31 1997
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="460,300,520,700">
-|  (vertical ruling)
+  <bloco tipo="nota" script="latino" bbox="285,295,410,350">
+    APR 1 1997
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="260,340,560,460">
-(heavy diagonal strike-through / ink smear)
+  <bloco tipo="rodape" script="latino" bbox="579,963,775,985">
+    Digitized by Google
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="740,920,1000,995">
-Digitized by Google
-  </bloco>
-  <notas>
-- BBOX coordinates are approximate, given on a 0-1000 scale (x1,y1,x2,y2).
-- The stamp at upper-left contains a legible "APR 1 1997"; adjacent small numerals/marks are partly illegible and transcribed as "[ilegivel] 1997".
-- The vertical and diagonal lines are graphic elements (ruled line and ink smear) and were encoded as tipo="outro".
-- No marginal identifiers A,B,C,D are present on this page.
-  </notas>
 </pagina>

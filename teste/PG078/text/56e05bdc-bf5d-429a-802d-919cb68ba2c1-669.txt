@@ -1,47 +1,135 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,80">
-    1325                              EPISTOLARUM LIB. V. — EPIST. II.                              1326
+  <bloco tipo="cabecalho" script="latino" bbox="80,40,900,65">
+    1325 EPISTOLARUM LIB. V. — EPIST. II. 1326
   </bloco>
-  <bloco tipo="cabecalho" script="grego" bbox="80,90,920,240">
+  <bloco tipo="texto_principal" script="grego" bbox="420,90,580,110">
     ΤΩΝ ΤΟΥ ΑΓΙΟΥ
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="220,120,780,155">
     ΙΣΙΔΩΡΟΥ ΤΟΥ ΠΗΛΟΥΣΙΩΤΟΥ
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="330,160,670,185">
     ΕΠΙΣΤΟΛΩΝ ΒΙΒΛΙΟΝ Ε'.
-    -
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="260,220,740,250">
     S. ISIDORI PELUSIOTÆ
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="390,260,610,285">
     EPISTOLARUM
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,300,650,325">
     LIBER QUINTUS
-    Andreas Schotto interpres, Soc. Jesu Presbytero, interprete.
-    -
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="40,260,490,740">
-    A'. — ΑΝΤΙΟΧΩ.
-    Animi corporisque moderatio optima (Similia lib. II, epist. 244.)
-    Ὅσπερ ἐν ταῖς σώμασιν ἀπὸ πλεονεξίας αἱ δυσ- κρισίαι γίνονται· ὅταν γὰρ τοὺς οἰκείους δόμους ἀφεῖ τα στοιχεῖα, ὑπεροπία γίνεται καὶ εἰς ἀμε- τριὰν ἐκπέσῃ, τότε αἱ νόσοι καὶ οἱ χαλεποί συμβαί- νουσι θάνατοι· οὕτω καὶ τῶν ψυχῶν. Εἰ γὰρ ἀπὸ τοῦ σώματος βίου εἰς ὀρθὴν ἐκπεσόμενον, καὶ πρα- ττικῶν καὶ δουλοπρεπεστῶν γινόμεθα, δι' ἐκείνου μὲν μισοῦσι, διὰ τούτου δὲ καταγλάστους γίνονται. Ἐναντίας γὰρ κακίας κρινόμενες, ἀποστραφων τε ὀργῆς καὶ κολακείας, καὶ μῖσος, χρηδίμων, καὶ γέλωτα φιλασκάνουν. Ἀλλ' ἐὰν τὴν πλεονεξίαν τοῦ πάθους περιέλθωμεν, καὶ ταπεινοὶ μετὰ ἀκριβείας, καὶ ὑφοίλῃ καὶ ἀσφαλείας ἔσομεθα. Τοιαύτη γὰρ ἡ παρ' ἡμῖν φιλοσοφία, μετριοφροσύνη καὶ φρόνησις εἰς μῖον συντελεῖ τῇ ψυχῇ μεταστροφὴν· τῇ δὲ κατὰ μὴδεν ἐπαιροῦν ἔτι ὃς τῷ μὴδένα ἀξιῶν κολακείας.
-    B. — ΕΡΜΟΓΕΝΕΙ ΚΑΙ ΛΑΜΠΕΤΙΩ, ΚΑΙ ΛΕΟΝ- ΤΙΩ ΕΠΙΣΚΟΠΟΙΣ.
-    Pro improbis orandum. Vide inf. epist. 103 et 440.
-    Εἰ καὶ πρὸς Ζωσίμων, καὶ Εὐσταθίῳ, καὶ Μάρωνι, ἀνδρας μάλιστα τι χρηστοὺς οἰκογενε κεκτημένους, μὴτε τὰ ἀπὸ τῶν πραγμάτων δεχόμενος διδασκαλίαν, μὴτε τὴν παρὰ τῶν ἄλλων συμβουλὴν προστιθεμένην· ἀλλ' ὡς ὑπολιπόμεναι ὑπὸ τῶν ἐπιτεθειμένων παραγόντων ἔτι, κρινεῖν, περὶ τῶν προσκείμενων διαλεχθῆναι· ἀλλάγε διὰκονὶ ἁπλῷ ἔτι εὐχαῖς τὸν θεῖον χρησαθαι τάχα, πῶς αὐτοὶς ἂν τοῦ βίου σοὶ τῆς χαλεπᾶς ἀντιμετώποι· θεῖον γάρ ἔστω ὡς ἐζώκε τὸ ἔργον
+  <bloco tipo="texto_principal" script="latino" bbox="290,330,720,350">
+    Andrea Schotto Antuerpiensi, Soc. Jesu Presbytero, interprete.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,260,960,740">
+  
+  <bloco tipo="texto_principal" script="misto" bbox="225,380,365,400">
+    Α'. — ΑΝΤΙΟΧΩ.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="605,380,795,400">
     553 I. — ANTIOCHO.
-    Ut in humanis corporibus ex humorum abundantia varia existunt in temperies, dum, excedentibus fines suos elementis, nimii fiunt et immoderati, unde morbi nascuntur, et molesta mors subsequitur; item et animi accidit. Si enim a temperantia placidaeque mente in iracundiam furorem quis una praecipitet, typhoque ardet, superbia atque servilem in modum sese gerat, et illis quidem odiosus, ex hoc vero etiam ridiculus evadet. Mala enim invicem pugnans miscento, antemiam quidem, assentientionem et odium acquirit, at aliis nimis praebeat. At si immodicam motum animi affectionem reca- dat, et egregie humiles et vivo excelsi reddener. Haec est enim nostra philosophandi ratio, ut modestiam sen temperantiam et generositatem uni animo inseramus. Modestiam quidem, ut opponas te nemini; generositatem vero, ut nulli assen- dandum esse existimes.
-    II. — HERMOGENI, LAMPETIO, ET LEONTIO, EPISCOPIS.
-    Etiam ad Zosimum, et Eustathium, et Maronem, viros neque ex sese quidquam sapientes, nec ex rerum experientia profecti, neque aliorum quidem consiliis acquiescentes, 554 sed in aper- tum prolapsos interitum, de rebus necessariis verba facere superfluum esse judicibus: nihilominus aequum fuerit preces ad Deum pro iis fundere. Forte eos e barbaro militiae sic extrahenti. Dei enim omne id opus esse constiat.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,300,517,350">
-    A.
+  <bloco tipo="texto_principal" script="latino" bbox="265,400,745,420">
+    Animi corporisque moderatio optima (Similia lib. 11, epist. 241.)
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,460,517,510">
-    B.
+
+  <bloco tipo="texto_principal" script="grego" bbox="100,425,500,670">
+    Ὥσπερ ἐν τοῖς σώμασιν ἀπὸ πλεονεξίας αἱ δυσ-
+    κρασίαι γίνονται· ὅταν γὰρ τοὺς οἰκείους ὅρους
+    ἀφέντα τὰ στοιχεῖα, ὑπερόρια γίνηται καὶ εἰς ἀμε-
+    τρίαν ἐκπέσῃ, τότε αἱ νόσοι καὶ ο χαλεποὶ συμβαί-
+    νουσι θάνατοι· οὕτω κἀπὶ τν ψυχῶν. Εἰ γὰρ ἀπὸ τοῦ
+    σώφρονος βίου εἰς ὀργὴν ἐκκυλισθείημεν, καὶ ταπει-
+    φωνούμενοι καὶ δουλοπρεπεῖς γινόμεθα, δι' ἐκείνου μὲν
+    μισητοί, διὰ τούτου δὲ καταγέλαστοι γινόμενοι.
+    Ἐναντίας γὰρ κακίας κιρνῶντες, ἀπόνειάν τε ὁμο
+    καὶ κολακείαν, καὶ μσος κερδαίνομεν, καὶ γέλωτα
+    ὀφλισκάνομεν. Ἀλλ' ἐὰν τὴν πλεονεξίαν τοῦ πάθους
+    περικόψωμεν, καὶ ταπεινοὶ μετὰ ἀκριβείας, καὶ
+    ψηλοὶ μετὰ ἀσφαλείας ἐσόμεθα. Τοιαύτη γάρ ἡ
+    παρ' ἡμῖν φιλοσοφία, μετριοφροσύνην καὶ ὕψος εἰς
+    μίαν συνείει (25) ψυχήν· μετριοφροσύνην μέν, τῷ
+    κατὰ μηθενὸς ἐπαίρεσθαι· ὕψος δέ, τῷ μηδένα
+    ἀξιοῦν κολακεύειν.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,620,517,670">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="505,425,515,440">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="505,640,515,655">
+    B
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,425,910,680">
+    Ut in humanis corporibus ex humorum abundantia
+    variæ exsistunt intemperies, dum, excedentibus
+    fines suos elementis, nimii fiunt et immoderati,
+    unde morbi nascuntur, et molesta mors subsequitur;
+    idem et animis accidit. Si enim a temperanti
+    placidaque mente in iracundiæ furorem quis una
+    præcipitet typhoque ardeat superbiæ atque servilem
+    in modum sese gerat, ex illis quidem odiosus, ex hoc
+    vero etiam ridiculus evadet. Mala enim invicem
+    pugnantia miscendo, amentiam quidem, assenta-
+    tionem et odium acquirat, et aliis risum præbeat.
+    At si immodicam motuum animi affectionem re-
+    secemus, et egregie humiles et tuto excelsi red-
+    demur. Hæc est enim nostra philosophandi ratio,
+    ut modestiam seu temperantiam et generositatem
+    uni animo inseramus. Modestiam quidem, ut oppo-
+    nas te nemini; generositatem vero, ut nulli assen-
+    tandum esse existimes.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="100,690,500,720">
+    Β'. — ΕΡΜΟΓΕΝΕΙ ΚΑΙ ΛΑΜΠΕΤΙΩ, ΚΑΙ ΛΕΟΝ-
+    ΤΙΩ ΕΠΙΣΚΟΠΟΙΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="565,690,860,720">
+    II. — HERMOGENI, LAMPETIO, ET
+    LEONTIO, EPISCOPIS.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="310,725,695,745">
+    Pro improbis orandum. Vide inf. epist. 103 et 440.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="100,745,500,880">
+    Εἰ κα πρὸς Ζώσιμον, καὶ Εὐστάθιον, καὶ Μάρωνα,
+    ἄνδρας μήτε τι χρηστὸν οἴκοθεν κεκτημένους, μήτε
+    τὴν ἀπὸ τῶν πραγμάτων δεχομένους διδασκαλίαν,
+    μήτε τὴν παρὰ τῶν λλων συμβουλὴν προειμένους,
+    ἀλλ' εἰς ὡμολογημένην ἀπώλειαν ἐκπεπτωκότας
+    πάρελκόν ἐστι, κρίνετε, περὶ τῶν προσηκόντων δια-
+    λέγεσθαι· ἀλλάγε δίκαιοι ἂν εἴητε εὐχαῖς πρὸς τὸ
+    θεῖον χρήσασθαι τάχα, πῶς αὐτοὺς ἐκ τοῦ βυθοῦ
+    τῆς κακίας ἀνιμήσητε· θεῖον γάρ ἐστιν ὡς ἔοικε τὸ
+    ἔργον
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="505,840,515,855">
     C
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="80,760,920,920">
-    VARIAE LECTIONES ET NOTAE.
-    (25) Pro συνειεν cod. Val. 650 legi συνάγρ. Pssim.
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,745,910,870">
+    Etsi ad Zosimum, et Eustathium, et Maronem,
+    viros neque ex sese quidquam sapientes, nec ex
+    rerum experientia proficientes, neque aliorum
+    quidem consiliis acquiescentes, 554 sed in aper-
+    tum prolapsos interitum, de rebus necessariis
+    verba facere superfluum esse judicetis : nihilomi-
+    nus æquum fuerit preces ad Deum pro iis fundere.
+    Forte eos e barathro malitiæ sic extrahetis. Dei
+    enim omne id opus esse constat.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,920,980,995">
+
+  <bloco tipo="cabecalho" script="latino" bbox="380,900,625,920">
+    VARIAE LECTIONES ET NOTAE.
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="120,930,550,950">
+    (25) Pro συνείει cod. Vat. 650 legit συνάγει. Possim.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="580,960,790,985">
     Digitized by Google
   </bloco>
-  <notas>Transcrições feitas conforme visibilidade; vários vocábulos gregos e latinos muito comprimidos e parcialmente ilegíveis foram reproduzidos fielmente onde possível; usei marca [ilegivel] apenas quando a palavra não pôde ser determinada isoladamente (nenhuma ocorrida aqui). As letras A, B, C no gutter foram registradas como notas marginais separadas.</notas>
 </pagina>

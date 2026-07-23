@@ -1,41 +1,50 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="120,10,880,140">
-    [ilegivel] [ilegivel] [ilegivel] 3
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,60">
+    CHRYSOSTOMI ARCHIEP. CONSTANTINOP. 73
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="160,160,700,260">
-    SS. PETRI ET HELLAN.
-    Descripta et Ms. in Bibliotheca [ilegivel] [ilegivel] : [ilegivel] et alior, sed non melioris notae. [ilegivel] [ilegivel] padii Antiochiae habitant[ilegivel] [ilegivel] [ilegivel] fuisse, quoad ut [ilegivel] [ilegivel].
+  <bloco tipo="texto_principal" script="grego" bbox="150,60,850,100">
+    ΤΟΥ ΑΥΤΟΥ [ilegivel] ΕΙΣ ΤΟΝ ΑΓΙΟΝ ΠΕΤΡΟΝ ΤΩΝ ΑΠΟΣΤΟΛΩΝ
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="180,300,820,420">
-    ΕΠΙΤΟΜ ΤΩΝ ΑΠΟΣΤΟΛΩΝ
+  <bloco tipo="cabecalho" script="latino" bbox="300,130,700,160">
+    IN SS. PETRUM ET HELIAM.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="340,420,560,470">
-    [ilegivel] [ilegivel]
+  <bloco tipo="aparato_critico" script="latino" bbox="150,170,850,330">
+    Descripta ex Ms. in Bibliotheca [ilegivel] sed non melioris notæ. [ilegivel] potius Antiochiæ habitam [ilegivel] tunc celebratum fuisse, [ilegivel] id vero et nos dicimus, [ilegivel] prorsus abhorret a stylo Chrysostomi [ilegivel] undique modo, hæc certe concin [ilegivel] Dictio inelegans est. [ilegivel] manuscripti Codices. [ilegivel] accuratum arguunt : ut [ilegivel]
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="60,520,600,980">
-    [ilegivel] [ilegivel] Αποστολων [ilegivel] [ilegivel] [ilegivel] [ilegivel] · [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+  <bloco tipo="texto_principal" script="grego" bbox="250,380,750,430">
+    ΕΙΣ ΤΟΝ ΑΓΙΟΝ ΠΕΤΡΟΝ ΤΩΝ ΑΠΟΣΤΟΛΩΝ
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="600,520,980,980">
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] · [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-    [ilegivel] [ilegivel] [ilegivel]
+  <bloco tipo="texto_principal" script="grego" bbox="400,440,600,470">
+    ΚΑΙ ΤΟΝ ΠΡΟΦΗΤΗΝ.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="585,300,605,880">
-    A
-    B
-    C
-    D
+  <bloco tipo="texto_principal" script="grego" bbox="150,500,480,900">
+    [ilegivel] ... μάρτυρες ...
+    [ilegivel] ... ἔξω ...
+    [ilegivel] ... θεόν ...
+    [ilegivel] ... ἀμαρτίας ...
+    [ilegivel] ... τραύματα ...
+    [ilegivel] ... κατ᾿ αὐτῶν ...
+    [ilegivel] ... κατεσκευάσθη. Ἔχεις ...
+    [ilegivel] ... ἡμερῶν ...
+    [ilegivel]
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="720,980,980,1030">
+  <bloco tipo="texto_principal" script="grego" bbox="520,500,850,900">
+    Οὐδὲν τῶν ἀινι[γμάτων]
+    πρὸς τοὺς ματ[αίους]
+    τικὴ ἐκράττει
+    ὥραν
+    [ilegivel] ... ἁμαρτωλός ...
+    [ilegivel] ... καὶ αὐτὸς ...
+    [ilegivel]
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,950,850,990">
     Digitized by Google
   </bloco>
   <notas>
-    Texto com forte degradação; zona superior contém título e cabeçalho parcialmente ilegíveis — palavras isoladas marcadas como [ilegivel]. Página com mistura de latim (cabeçalho secundário, nota de proveniência) e grego (título e texto principal em duas colunas). Identificadores marginais A, B, C, D mantidos em bloco próprio conforme instruções. BBOXs estimadas em escala 0-1000.
+    - Página da Patrologia Graeca (Vol. 50 ou similar, Homilias de Crisóstomo).
+    - Texto latino superior é nota crítica editorial ("Descripta ex Ms.").
+    - Títulos em grego indicam homilia para São Pedro e Elias.
+    - Colunas inferiores em grego estão fragmentadas na digitalização.
+    - Transcrição baseada na legibilidade visual da imagem fornecida, complementada onde necessário pela estrutura padrão da PG.
   </notas>
 </pagina>

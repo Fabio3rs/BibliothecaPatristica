@@ -1,6 +1,7 @@
 # Output Format
 
 This skill writes one JSON payload per volume.
+It may also use per-volume intermediate JSON fragments during assembly, but only the final payload is canonical for validation/import.
 
 ## File name
 
@@ -8,6 +9,13 @@ This skill writes one JSON payload per volume.
 - Recommended pattern: `<VOLUME>_alphabetical_indices.json`
 
 The runtime prompt may pass a different exact file path. Use the runtime output path if it is provided.
+
+## Intermediate fragments
+
+- Recommended directory: `data/intermediate_payloads/<VOLUME>/`
+- Recommended fragments: `volume.json`, `sections.json`, `nodes.json`, `entries.json`, `refs.json`, `scripture_refs.json`, `coverage.json`, `notes.json`, `manifest.json`
+- Recommended progress note file: `todo.json`
+- These files are checkpoints only. They do not replace the canonical final payload and are not imported directly into SQLite.
 
 ## Canonical payload shape
 

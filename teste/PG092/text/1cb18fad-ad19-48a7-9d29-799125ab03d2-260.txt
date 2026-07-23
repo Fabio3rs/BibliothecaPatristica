@@ -1,181 +1,80 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,80">
-503
-CHRONICON PASCHALE.
-504
+  <bloco tipo="cabecalho" script="latino" bbox="80,45,125,65">503</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="405,45,620,65">CHRONICON PASCHALE.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="890,45,935,65">504</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="80,70,430,85">A.C.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,85,430,105">2. XLII. Ind. II. Indicio et Vario coss.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="130,105,280,120">(A. a M. C. 5507.)</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,120,430,205">Herodes cum a magis Christi nativita- tem accepisset, pueros circa Bethleem a bimis et infra trucidat, ratus se in hac ejusdem ætatis puerorum clade una Chri- stum sublatum, cum isto tempore Do- minus cum Maria matre sua in Ægypto ageret.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="240,210,360,225">CXCV Olympias.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="110,225,450,240">3. XLIII. Ind. III. Lamia et Servilio coss. 3.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="110,240,490,255">5. XLIV. Ind. IV. Magno et Valerio coss. 1. 196.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,255,430,335">Herodes aqua intercute afflictus, cor- pore etiam verminante et putrescente, vi- tam finivit, justis pœnis datis, quod Ser- vatoris nostri causa pueros circa Bethleem sustulisset. Illius vero loco regnavit in Judæa Archelaus filius annis IX.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="120,350,430,365">6. XLV. Ind. V. Lepido et Planco coss.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,365,290,380">(A. a M. C. 5511.)</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="435,365,450,380">2.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,380,430,405">XLVI. Ind. VI. Tiberio Cæsare et Capi- tone coss.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,405,430,465">Augustus Judæorum regem Archelaum Herodis filium creat. Tetrarchas vero re- nuntiat Herodem, Antipam, Lysaniam, et Philippum, Archelai fratres.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="240,470,370,485">CXCVI Olympias.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="110,485,430,500">7. XLVII. Ind. VII. Cretio et Nerva coss.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="110,500,430,525">8. XLVIII. Ind. VIII. Camillo et Quinti- liano coss.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="110,525,430,550">9. XLIX. Ind. IX. Camerino et Sabino coss.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="435,545,495,560">1. 197.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="110,555,450,570">10. L. Ind. X. Dolabella et Silano coss. 2.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="240,570,375,585">CXCVII Olympias.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="110,585,450,600">11. LI. Ind. XI. Lepido et Tauro coss. 3.</bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="495,70,510,85">A</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="530,70,920,85">[Ol. Iph.] A</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="540,85,920,105">Ἰνδ. β'. μβ'. ὑπ. Οὐϊνδικίου (51) καὶ Οὐάρου (52).</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="435,105,450,120">2.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="530,115,920,195">Ἡρώδης τὴν το Χριστοῦ γέννησιν πυθόμενος παρὰ τῶν μάγων, τὰ περὶ τὴν Βηθλεὲμ ἀναιρεῖ παι- δία ἀπὸ διετοῦς καὶ κατωτέρω, οἰόμενος καὶ τὸν Χριστὸν τῆς τοιαύτης τοῖς μηλίκιν συναπολέσαι συμφορᾶς, ντος τοῦ Κυρίου κατὰ τοῦτον τὸν καιρὸν ἐν Αἰγύπτῳ μετὰ Μαρίας τῆς μητρὸς αὐτοῦ.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="660,210,780,225">ρμθ' Ὀλυμπιάς.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="540,225,880,240">Ἰνδ. γ'. μγ'. ὑπ. Λαμίου (52) καὶ Σερβιλίου.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="540,240,880,255">Ἰνδ. δ'. μδ'. ὑπ. Μάγνου (53) καὶ Βαλερίου.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="530,255,920,350">206 Ἡρώδης (54) ὕδερψ δεινῷ πιασθείς, σκώ- ληκας δὲ ἐκθράσας ἀπὸ τοῦ (55) σώματος καὶ σαπεὶς ὅλος, καταστρέφει τὸν βίον· ποινὴν δικαίαν τίσας, ἀνθ' ὧν ἀμφὶ Βηθλεὲμ ἀνεῖλεν παίδων (56) τῆς τοῦ Σωτῆρος μῶν ἐπιβουλῆς (57) ἕνεκα. Ἐβασίλευσεν δὲ (58) ἐν τῇ ουδαί ἀντ' αὐτοῦ Ἀρχέλαος ὁ υὸς αὐ- τοῦ ἔτη θ'.
   </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="515,265,530,280">B</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="540,350,880,365">Ἰνδ. ε'. με'. ὑπ. Λεπίδου καὶ Πλάγχου (55)</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="540,375,920,405">Ἰνδ. ς'. με'. ὑπ. Τιβέριου (56) Καίσαρος καὶ Κα- πίτωνος.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="530,405,920,465">Ἰουδαίων βασιλέα (57) Αὔγουστος Ἀρχέλαον (57) Ἡρώδου παῖδα καθίστησιν, τετράρχας δὲ ἀποδεί- κνυσιν Ἡρώδην τὸν καὶ Ἀντίπαν καὶ Λυσανίαν (58) καὶ Φίλιππον, Ἀρχελάου ἀδελφούς.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="660,470,790,485">ρκ' Ὀλυμπιάς.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="505,495,520,510">C</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="540,485,870,500">Ἰνδ. ζ'. μζ'. ὑπ. Κρητίου (59) καὶ Νερβᾶ.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="540,500,880,515">Ἰνδ. η'. μη'. ὑπ. Καμίλλου καὶ Κυντιλιανοῦ.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="540,530,900,545">Ἰνδ. θ'. μθ'. ὑπ. Καμερίνου (60) καὶ Σαβίνου.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="540,555,880,570">Ἰνδ. ι'. ν'. ὑπ. Δολαβέλλα καὶ Σιλανοῦ (61).</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="660,570,790,585">ρκζ' Ὀλυμπιάς.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="540,585,850,600">Ἰνδ. ια'. να'. ὑπ. Λεπίδου (62) καὶ Ταύρου.</bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="30,90,490,700">
-A.C.
+  <bloco tipo="cabecalho" script="latino" bbox="450,615,600,630">DUCANGII NOTÆ.</bloco>
+  
+  <bloco tipo="nota" script="misto" bbox="100,640,510,680">(51) Ἰνδικίου. Hic variant Fasti. Epiphanius et Idatius, Vindinium et Varum : Senator, Vinicium et Al[enum habent. Sed hoc loco legendum Οὐϊννικίου καὶ Οὐάρου.</bloco>
+  <bloco tipo="nota" script="misto" bbox="100,680,510,715">(52) Λαμίου. Λαμμία καὶ Σεβούλλου Νουμμίος scribit Epiphanius, apud quem, ut hic, et in Fastis Idatianis, omittitur consulatus Cati et Saturnini.</bloco>
+  <bloco tipo="nota" script="misto" bbox="100,715,510,755">(53) Μάγνου. Addit Epiphanius Πομπήϊου, per- peram, inquit Petavius : fuit enim is Cn. Cornelius Cinna Magnus, ut est apud Dionem. Schottus Magno adjungit Βόλουσον.</bloco>
+  <bloco tipo="nota" script="misto" bbox="100,755,510,780">(54) Ἡρώδης. Ex Chronico Eusebii, ubi Scali- ger. Adde Gregor. Turon. lib. I Hist. cap. 23.</bloco>
+  <bloco tipo="nota" script="misto" bbox="100,780,510,810">(55) Καὶ Πλάγχου. Epiphan. καὶ Ἀρουγχίου. Dio, Αἰμυλίου Λεπίδου καὶ Λουκίου Ἀῤουντίου. Fasti Idatiani, Lepido et Aruntio. Ita alii.</bloco>
+  <bloco tipo="nota" script="misto" bbox="100,810,510,845">(56) Τιβέριου. Deest hic consulatus in Fastis. Apud Epiphanium legitur Καίσαρος καὶ Καπίτω- νος. In Fastis vero Idatianis mss. Cæsare et Capi-</bloco>
+  
+  <bloco tipo="nota" script="misto" bbox="530,640,930,665">tone. Nam hos omisit Labbeus. Vide Petavium ad eumdem Epiphan. p. 95.</bloco>
+  <bloco tipo="nota" script="misto" bbox="530,665,930,690">(57) Ἀρχέλαον. Ex Chron. Eusebii, ubi Scali- ger.</bloco>
+  <bloco tipo="nota" script="misto" bbox="530,690,930,755">(58) Λυσανίαν. Negat Scaliger, quod scribit Eu- sebius, et ex eo Georgius Syncell. et Cedrenus, Ly- saniam ullum fuisse filium Herodis, licet testem Josephum adducat, qui nullius uspiam filii Herodis meminit, cui nomen Lysaniæ fuerit. Lysiam vocat idem Eusebius et Chron. ms. Symeonis Logo- thetæ.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="515,715,530,730">D</bloco>
+  <bloco tipo="nota" script="misto" bbox="530,755,930,780">(59) Κρητίου. Leg. Κρητικοῦ, ut apud Dionem, Epiphanium, in Fastis Schotti, Idatianis, et aliis.</bloco>
+  <bloco tipo="nota" script="misto" bbox="530,780,930,820">(60) Καμερίνου. Cameram vocant Fasti Idatiani mss. Κάμηρον Epiphanius : sed Camillo legendum. Ita enim vocabantur M. Furius hoc anno coss. cum Sexto Nonio Quintiliano, de quibus Dio.</bloco>
+  <bloco tipo="nota" script="misto" bbox="530,820,830,835">(61) Καὶ Σιλανοῦ. Schott. Συλλανοῦ.</bloco>
 
-2. XLII. Ind. n. Indicio et Vario coss.
-(A. a M. C. 5507.) 2.
-
-Herodes cum a magis Christi nativita-
-tem accepisset, pueros circa Bethleem a
-bimis et infra trucidat, ratus se in hac
-ejusdem aetatis puerorum clade una Chri-
-stum sublaturum, cum isto tempore Do-
-minus cum Maria matre sua in Aegypto
-ageret.
-
-CXCVI Olympias.
-
-3. XLIII. Ind. III. Lamia et Servilio coss. 3.
-5. XLIV. Ind. IV. Magno et Valerio coss. 4. 196.
-
-Herodes aqua intercute afflictus, cor-
-pore etiam verminante et putrescente, vi-
-tam finivit, justis poenis datis, quod Ser-
-vatoris nostri causa pueros circa Bethleem
-sustulisset. Illius vero loco regnavit in
-Judaea Archelaus filius annis IX.
-
-6. XLV. Ind. V. Lepido et Planco coss.
-(A. a M. C. 5541.) 2.
-
-XLVI. Ind. VI. Tiberio Caesare et Capi-
-tone coss.
-
-Augustus Judaeorum regem Archelaum
-Herodis filium creat. Tetrarchas vero re-
-nuntiavit Herodem, Antipam, Lysanianm, et
-Philippum, Archelai fratres.
-
-CXCVII Olympias.
-
-7. XLVII. Ind. VII. Cretio et Nerva coss.
-8. XLVIII. Ind. VIII. Camillo et Quinti-
-liano coss.
-9. XLIX. Ind. IX. Camerino et Sabino
-coss.
-10. L. Ind. X. Dolabella et Silano coss. 2.
-
-CXLVII Olympias.
-
-11. LI. Ind. XI. Lepido et Tauro coss. 5.
-  </bloco>
-
-  <notas>
-    Observações: a página é bipartida em duas colunas; o bloco central vertical com as letras A, B, C, D foi separado em notas marginais conforme solicitado. Onde a leitura é incerta foram evitadas normalizações; não foram substituídas palavras inteiras por [ilegivel], apenas eventuais grafias isoladas quando imprescindível.
-  </notas>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,140,515,210">
-A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,270,515,340">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,430,515,500">
-C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,600,515,670">
-D
-  </bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="520,90,970,700">
-[Οἰ. Ἰφ.] A
-
-Ἡρώδης ὅταν τοῦ Χριστοῦ γέννησιν πυθομένος
-παρὰ τῶν μάγων, τὰ περὶ τὴν Βηθλεὲμ ἀναίρει παι-
-δία ἀπὸ διετῶς καὶ κατωτέρω, ὁλέθριος καὶ τὸν
-Χριστὸν τῆς τοιαύτης τοῖς ὁμήλοις συνοπώσας
-συμφορᾶς, ὄντος τοῦ Κυρίου κατὰ τοῦτον τὸν καιρὸν
-ἐν Αἰγύπτῳ μετὰ Μαρίας τῆς μητρὸς αὐτοῦ.
-
-Ὀλέ' Ὀλυμπιὰς.
-
-Ἰνδ. γ'. μζ'. ὑπ. Λαμίου (52) καὶ Σεβιλίου.
-Ἰνδ. δ'. μδ'. ὑπ. Μάγνου (53) καὶ Βαλερίου.
-
-(208) Ἡρώδης (54) ὑδέρη δεινῆται παθόμενος, σώμα-
-τι χλακας δὲ ἐκβρέσας ἀπὸ τοῦ σώματος καὶ σαπρὸς
-βόλος, κατεστρέφε τὸν βίον: τοιαῦται δικαίαι τίσαι,
-ἄνω ὑπ ἀμφὶ Βηθλεὲμ ἀνεῖλεν παῖδας τῆς τοῦ
-Σωτῆρος ἡμῶν ἐπισπλῆς· ἔνεκα. Ἐβαλούσευε
-δ᾽ ἐν τῇ Ἰουδαίᾳ ἀντ' αὐτοῦ Ἀρχέλαος ὁ υἱὸς αὐ-
-τοῦ ἔτη θ'.
-
-Ἰνδ. ε'. με'. ὑπ. Λεπίδου καὶ Πλάγκου (55)
-
-Ἰνδ. ζ'. μζ'. ὑπ. Τιβέριου (56) Καῖσαρος καὶ Κα-
-πτῶνος.
-
-Ἰουδαίων βασιλεὺς Ἀρχέλαος Ἀρχέλαον (57)
-Ἠρώδου παῖδα καθιστήσαν, τετράρχας δὲ ἀπέδειξε
-κνυνὺν Ἠρώδην τὸν καὶ Ἀντίπαν καὶ Λυσάνιαν (58)
-καὶ Φίλιππον, Ἀρχέλαου ἀδελφούς.
-
-Ὀλέ' Ὀλυμπιὰς.
-
-Ἰνδ. ζ'. μζ'. ὑπ. Κρητίου (59) καὶ Νερβᾶ.
-Ἰνδ. η'. μη'. ὑπ. Καμμίλου καὶ Κυντιαλιανοῦ.
-
-Ἰνδ. θ'. μθ'. ὑπ. Καμερίνου (60) καὶ Σαβίνου.
-
-Ἰνδ. ι'. ν'. ὑπ. Δολαβέλλα καὶ Σιλάνου (61).
-
-οὖ ' Ὀλυμπιὰς.
-
-Ἰνδ. ια'. ωα'. ὑπ. Λεπίδου καὶ Ταῦρου.
-  </bloco>
-
-  <bloco tipo="aparato_critico" script="misto" bbox="30,720,490,930">
-DUCANGH NOTAE.
-
-(51) Ἰνδίκτιον. Hic variant Fasti. Epiphanius et
-Idatius, Vindiciani et Varum: Senator, Vinicium et
-Alfenum habent. Sed hoc loco legendum Οὐινίκιου
-και Οὐάρου.
-
-(52) Λαμίου. Λαμια καὶ Σεβουλίου. Νομιλίου
-scribit Epiphanius, apud quem, ut hic, et in Fastis
-Idiatianis, omniter consules Cati et Saturnini.
-
-(53) Μάγρον. Addit Epiphanius [Μα]γρον, per-
-peram, inquit Petavius: fuit enim is Cn. Cornelius
-Cinna Magnus, ut est apud Dionem. Schottus Magno
-adjungit Βολιανον.
-
-(54) Ἡρώδης. Ex Chronico Eusebii, ubi Scali-
-ger. Adde Gregor. Turon. lib. I. Hist. cap. 23.
-
-(55) Και Πλάγκον. Epiph. καὶ Ἀρουγίου. Dio,
-Αἰμιλίου Λεπίδου καὶ Λουνίου Ἀρχοντίου. Fasti
-Idiatiani, Lepido et Aruntio. Ita alii.
-
-(56) Τιβέριον. Deest hic consulatus in Fastis.
-Apud Epiphaniium legitur Καίσαρος καὶ Καπτῶ-
-νος. In Fastis vero Idiatianis mss. Caesare et Capi-
-  </bloco>
-
-  <bloco tipo="aparato_critico" script="grego" bbox="520,720,970,930">
-(57) Ἀρχέλαος. Ex Chron. Eusebii, ubi Scali-
-ger.
-
-(58) Λυσάνιαν. Negat Scaliger, quod scribit Eu-
-sebius, et ex eo Georgius Syncell. et Cedrenus, Ly-
-saniam ullum fuisse filium Herodis, licet testem
-Josephum adducat, qui nullius usquam filii Herodis
-meminit, cui nomen Lysaniae fuerit. Lysanio vocat
-idem Eusebius et Chron. ms. Symeonis Logo-
-theta.
-
-(59) Κρητίου. Leg. Κρητάκου, ut apud Dionem,
-Epiphanium, in Fastis Schotti, Idatianis, et aliis.
-
-(60) Καμερίνου. Camerinum vocant Fasti Idiatiani
-mss. Καμίρου Epiphanius: sed Camillo legendum.
-Ita enim vocabantur M. Furius hoc anno coss. cum
-Sexto Nonio Quintiliano, de quibus Dio.
-
-(61) Και Σιλανου. Schott. Σιλανου.
-  </bloco>
-
-  <bloco tipo="rodape" script="misto" bbox="50,930,950,990">
-VARIÆ LECTIONES.
-
-* Οὐινδίκτιον. τοῦ Ἰνδίκτιου V, Ἰνδίκτιου P.  * Οὐάριον P. * τοῦ om. P. * παιδία P. * ἐπιβουλὴς P.
-om. P. * ἐκ και ἐν P. * ἡ βασιλεια, τετράρχην cum βασιλεα suprascripto V. * Λεπίδου V.
-  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="430,855,600,870">VARIÆ LECTIONES.</bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="120,880,930,915">61 Οὐϊνδικίου. τοῦ Ἰνδικίου V, Ἰνδικίου P. 62 Οὐάρου P. 63 τοῦ om. P. 64 παιδία P. 65 ἐπιβουλῆς om. P. 66 δὲ καὶ ἐν P. 67 βασιλέα. τετράρχην cum βασιλέα suprascripto V. 68 Λεπίδου V.</bloco>
+  
+  <bloco tipo="rodape" script="latino" bbox="570,950,770,980">Digitized by Google</bloco>
 </pagina>

@@ -116,6 +116,7 @@
   - headings detectados automaticamente são apenas candidatos; a decisão editorial continua com o agente
   - `--skip-done` olha o status `imported` em `alphabetical_runs`, não apenas a presença do JSON no `output-dir`
   - `--replace` sobrescreve o payload de saída e substitui as linhas do mesmo volume no banco alfabético
+  - a estratégia operacional de chunking, intermediários, `todo.json` e builders está em `docs/estrategia_pipeline_extracao_indices_alfabeticos.md`
   - o fluxo canônico está documentado em `docs/levantamento_indices_alfabeticos.md`, `docs/contrato_extrator_indices_alfabeticos.md` e `docs/normalizacao_indices_biblicos.md`
 
 ## Embeddings e clustering (`hdbscan_embedding.py`)

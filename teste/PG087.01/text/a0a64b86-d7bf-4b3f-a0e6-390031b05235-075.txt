@@ -1,42 +1,147 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,120">
-    141          COMMENTARII IN GENESIN.          142
+  <bloco tipo="cabecalho" script="misto" bbox="50,20,950,50">
+    141 COMMENTARII IN GENESIN. 142
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,120,480,860">
-    λοιπὰ παρὰ θεοῦ γίνεται· καλῶς ὅν τῷ προσθήκῃ, ὃν ἐποίησεν ἔργων, ὁ πρόσκειται· τινὲς δὲ ἔργα τῶν τοῦ κόσμου συμπληρωτικῶν φύσεων· ἅπαξ εἰς ἄρκην γεγονότων μέχρι τῆς ἔκτης ἡμέρας, οὐχ ἡ φύσις ἐφίξατο, ἀλλὰ ταύτην παρήνε ὁ θεὸς· ἀπὸ δε τῆς ἔκτης ἡ φύσις τὸν ἑαυτῆς δρόμον πληροῖ προνοίᾳ θεοῦ εἶχεν συντέλειαν τοῦ κόσμου. Ἀπὸ τῶν τοιούτων οὖν ἔργων καταπαύσεται τῇ ἑπτῇ τῇ θεοῦ, ὅπως παύεται τοῦ ἐργάζεσθαι· μαρτυρεῖ Χριστὸς ἐν τῷ κατὰ Ἰωάννην Εὐαγγελίῳ, «Ὁ Πατήρ μου λέγων, ἔως ἄρτι ἐργάζεται, ἐγὼ ἔτι ἐργάζομαι.»
-    
-    Quorum de numero est resurrectio mortuorum, quae sane peculiari quadam consequentia, Deo sic dispositum est, eorum operum, quae fecerat, quænum[?] complent, et ad perfectionem adducunt, quae a primo usque ad sextum diem consummatae sunt. Has non creavit natura, sed Deus, qui et naturae pater est. Caeterum a sexto die natus sum cursus exorsus est, quem continuabit usque ad consummationem sæculi, sic postulante divina providentia. Ab illis igitur operibus requiescit Deus in die sexto. Siquidem quod Deus non inertia sectetur otia, docet Christus in Evangelio secundum Joannem, dicens: «Pater meus ad hoc usque temporis operatur, et ego operor.»
-    
-    Καὶ κατέπαυσεν τῇ ἡμέρᾳ τῇ ἑβδόμῃ. Τῇ κατά B τὴν ἡμέραν ἀγία πέρας ἐδέξεν εἰληφέναι τὴν κτίσιν, ὥσπερ καὶ ἐν ἑπτα ἡμέραις τὸν πάντα κύκλον τῶν ἡμερῶν περιέγραφεν, δυναμένος καὶ ἐν ταῖς ἐξ τούτων ποιῆσαι ἐν αἷς συνεπλήρουσε τὴν κτίσιν, ἵνα μὴ μὴ ὥς δηλῶσει ὧν τῶν γεγονότων, ἥ δε ἑβδόμη τοῦ πάντα πέρας εἰληφέναι· καὶ ὡς ἂν μὴ ἀχρηστος καὶ ἀθλίωτης τῆς μορφώσεως ἡμέρας ἐργασίας ἦν, ἥτις ἐπλήρου ἡμᾶς τῆς ἀναγκαίας ἔργας, ἔτι καὶ ἐξήγησε (ὅτι) ὅτι ἐν ἀριστῆς ἐκ τῶν χειρῶν αὐτοῦ τῆς προστάγματος. Καὶ εὐλόγησεν ὁ θεὸς τῆν ἡμέραν ταύτην· οὐ γὰρ ἄχρηστον εἶναι τὸ ποιεῖν ἔργον, ἀλλὰ ἀρμοδίως ἔδοξε ἐν ἀναπαύσει πεπληρωμένων τῶν ἔργων. Εἰδύσαμεν οὖν καὶ αὐτήν, ὅτι τὰ μετὰ τοιαῦτα τῇ τῆς ὑπὸ τοῖς ἐπὶ τοῦ ἔργου· ταῦτα ὥστε ὁ ἐλέγχων εἶναι συμπεπληρώσθαι τὴν κτίσιν καὶ τὸν ἥλιασεν οὐν ἑαυτὸν, ὡς ἔδοξε αὐτῷ.
-    
-    dati, sicut et illud: «Sancticificate jejunium», Judaeis imperavit supremum Numen, ut segregaremus destinare cultui divino; ut si oblivio Dei forte obreperet, tamen vivis tanquam ex ipso die, quo quietem capium, in memoriam revocetur et redigatur is, qui omnia fecit, et die septimo requievit.
+  <bloco tipo="texto_principal" script="grego" bbox="60,50,480,200">
+    λανθίη παρὰ Θεοῦ γίνεται· καλῶς οὖν ἡ προσθήκη,
+    ὧν ἐποίησεν ἔργων, » πρόκειται· τινὲς δ ἔργων
+    φασὶ τῶν τοῦ κόσμου συμπληρωτικῶν φύσεων·
+    ἅπαρ ἐξ ἀρχῆς γεγονότα μέχρι τῆς ἕκτης ἡμέρας,
+    οὐχ ἡ φύσις εἰργάζετο, ἀλλὰ ταύτην παρηγενὸ Θεός·
+    ἀπὸ δὲ τῆς ἕκτης ἡ φύσις τὸν ἑαυτῆς δρόμον πληροῖ
+    προνοίᾳ Θεο ἕως συντελείας τοῦ κόσμου. Ἀπὸ τῶν
+    τοιούτων οὖν ἔργων καταπαύει τῇ ζ'· ἐπεὶ ὅτι Θεὸς
+    οὔποτε παύεται τοῦ ἐργάζεσθαι, μαρτυρεῖ Χριστὸς
+    ἐν τῷ κατὰ Ἰωάννην Εὐαγγελίῳ, « Ὁ Πατήρ μου,
+    λέγων, ἕως ρτι ἐργάζεται, κἀγὼ ἐργάζομαι. »
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,240,520,300">
+  <bloco tipo="texto_principal" script="latino" bbox="60,200,480,340">
+    Quorum de numero est resurrectio mortuorum, nec non quæ per providentiam divinam eveniunt,
+    quæ sane peculiari quadam consequentia, Deo sic disponente, contingunt. Haud igitur indecenter
+    adjectum est, « eorum operum, quæ fecerat. » Quidam aiunt operum, id est, naturarum, quæ
+    mundum complent, et ad perfectionem adducunt, quæ a primo usque ad sextum diem consummatæ
+    sunt. Illas non creavit natura, sed Deus, qui et naturæ pater 46 est. Cæterum a sexto die na-
+    tura suum cursum exorsa est, quem continuabit usque ad consummationem sæculi, sic postulante
+    divina providentia. Ab illis igitur operibus requiescit Deus in die sexto. Siquidem quod Deus
+    non inertia sectetur otia, docet Christus in Evangelio secundum Joannem, dicens : « Pater
+    meus ad hoc usque temporis operatur, et ego operor 27. »
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="60,340,480,700">
+    Καὶ κατέπαυσε τῇ ἡμέρᾳ τ ἑβδόμῃ. Τῇ κατὰ
+    τὴν ἡμέραν ἁγίᾳ πέρας ἔδειξεν εἰληφέναι τὴν κτίσιν·
+    ὅθεν καὶ ἐν ἑπτὰ ἡμέραις τὸν πάντα κύκλον τῶν
+    ἡμερῶν περιέγραψε, δυνάμενος καὶ ἐν ταῖς ἓξ τούτο
+    ποιῆσαι ἐν αἷς συνεπλήρωσε τὴν κτίσιν, ἵνα αἱ μὲν
+    ἓξ δηλώσει ὦσι τῶν γεγονότων, ἡ δὲ ἑβδόμη τοῦ
+    πάντα πέρας εἰληφέναι· καὶ ὡς ν μὴ χρηστος κα
+    βδελυκτὴ τις νομίζοιτο, μηδεμιᾶς θείας ἐργασίας
+    ἠξιωμένη, καθὼ τινὲς τὰς φαυλοτέρας ἀπράκτους
+    νομίζουσιν, ἐπήγαγε· « Καὶ εὐλόγησεν ὁ Θεὸς τὴν
+    ἡμέραν τὴν ζ'· » οὐ γὰρ ἄχρηστον εἰς τὸ ποιεῖν ἡγή-
+    σατο, ἀλλ' ἁρμοδίαν ἔθετο εἰς ἀνάπαυσιν πεπληρω-
+    μένων τῶν ἔργων. Εὐλόγησεν οὖν καὶ αὐτήν, ἅτε
+    τὰς μὲν λοιπὰς τῷ τι ποιῆσαι ἐν αὐταῖς τιμήσας,
+    ταύτην δὲ τῷ λεγχον εἶναι συμπεπληρῶσθαι τὴν
+    κτίσιν· καὶ τὸ ἡλίασεν οὖν ἀντὶ το, ἀφώρισεν αὐτὴν
+    πρὸς τοῦτο· ὥσπερ οὖν καὶ τῶν ορτῶν ἡμέρας
+    ἁγίας φαμέν, ἐπειδὴ μνήμην ἔχουσι ἀγαθοῦ τινος
+    ὑπάρξαντος ἡμν ἐκ Θεο. Τοιοῦτον καὶ τὸ, « Ἁγιά-
+    σατε νηστείαν, » ἀντὶ τοῦ, Ἀφορίσατε τοῦ νηστεύειν
+    καιρόν· ὅθεν καὶ Ἰουδαίοις ἀφορίσαι τῇ τοῦ Θεοῦ θε-
+    ραπείᾳ τν ἡμέραν προσέταξεν, ἵνα πρὸς λήθην
+    ἐλθόντες Θεοῦ, ἄκοντες ὑπὸ τῆς ἀργίας· ἔννοιαν λά-
+    βωσι τοῦ πεποιηκότος τὰ πάντα καὶ τῇ ἑβδόμῃ παυ-
+    σαμένου ἡμέρᾳ.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="60,700,480,770">
+    dati, sicuti et illud : « Sanctificate jejunium 28, » id est, separate et ordinate jejunandi tempus; ita
+    Judæis imperavit supremum Numen, ut segregarent a cæteris diebus diem septimum, eumque
+    destinarent cultui divino : ut si oblivio Dei forte obreperet, tamen invitis tandem ex ipso die, quo
+    quietem capiunt, in memoriam revocetur et redigatur is, qui omnia fecit, et die septimo requievit.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="60,770,480,880">
+    Καὶ ἐγένετο οὕτως. Ἔδει τοτο κάκει κεῖσθαι
+    μετὰ τὸ, « Ποιήσωμεν ἄνθρωπον, » καὶ τὰ ἑξῆς, ὥσ-
+    περ ἐπὶ τῶν λλων, καὶ οὕτως ἐπενεγκεῖν τὸ, « Καὶ
+    ἐποίησεν ὁ Θεὸς τὸν ἄνθρωπον· » ἀλλ' εὐδηλον, φα-
+    σίν, ὡς τῆς μν προστακτικῆς φράσεως περιεχούσης
+    τὸ, « Ποιήσωμεν ἄνθρωπον κατ' εἰκόνα ἡμετέραν καὶ
+    καθ' ὁμοίωσιν, » τῆς δὲ ἀνταποδοτικῆς σιωπώσης τὸ,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,50,940,880">
+    consummata, ordinis gratia et debitæ consonan-
+    tiæ assumptum esse illum numerum. Verbum,
+    consummavit, interdum significat aliquid, cum
+    fuerit corruptum, esse restauratum : aliquando
+    ostendit, aliquid esse completum et perfectum.
+    Hoc igitur loco accipe verbum consummavit pro
+    complevit. Istud vero verbum hunc sensum appor-
+    tat, quasi Deus loquatur de perfectione eorum,
+    quæ, cum prius non essent, in essentiam provexit.
+    Exstant enim quædam opera Dei nondum ad rem
+    collata, sed longe ante sunt prædicta ut futura.
+    Quorum de numero est resurrectio mortuorum, nec non quæ per providentiam divinam eveniunt,
+    quæ sane peculiari quadam consequentia, Deo sic disponente, contingunt. Haud igitur indecenter
+    adjectum est, « eorum operum, quæ fecerat. » Quidam aiunt operum, id est, naturarum, quæ
+    mundum complent, et ad perfectionem adducunt, quæ a primo usque ad sextum diem consummatæ
+    sunt. Illas non creavit natura, sed Deus, qui et naturæ pater 46 est. Cæterum a sexto die na-
+    tura suum cursum exorsa est, quem continuabit usque ad consummationem sæculi, sic postulante
+    divina providentia. Ab illis igitur operibus requiescit Deus in die sexto. Siquidem quod Deus
+    non inertia sectetur otia, docet Christus in Evangelio secundum Joannem, dicens : « Pater
+    meus ad hoc usque temporis operatur, et ego operor 27. »
+    Et quievit in die septimo. Significavit Deus otio,
+    quod eo die tenuit, universi creationem ad finem
+    esse deductam. Spatio septem dierum totum die-
+    rum curriculum descripsit, quamvis id potuisset
+    spatium determinare intervallo sex dierum, qui-
+    bus rerum creationem perfecit. Verum voluit
+    dies sex esse symbola rerum omnium, quas pro-
+    duxit : at septimus in hoc ordinatus est, ut sit
+    indicium, eo die finem acepisse universi crea-
+    tionem. Et ne quis ceu inutilem eum diem aver-
+    setur et abominetur, quasi nullo opere digna a
+    Deo sit habita, sicuti quidam eos dies deteriores
+    arbitrantur in quibus nihil fit operis, merito sub-
+    jecit : « Et benedixit Deus diei septimo. » Non enim
+    suis operibus et laboribus eum parum idoneum
+    judicavit: sed eum statuit, ut sit utilis ad vacationem
+    ab operibus. Benedictione itaque eum haud asper-
+    natus est condecorare. Reliquos honoravit operi-
+    bus, quæ in iis evenerunt : verum septimum vo-
+    luit esse documentum, universi naturam in eo
+    esse consummatam. Et eum sanctificavit, id est,
+    separavit eum a reliquis, ut illius rei esset si-
+    gnum et memoraculum. Quemadmodum festos
+    dies appellamus sanctos, quod contineant memo-
+    riam beneficii alicujus singularis a Deo nobis
+    dati, sicuti et illud : « Sanctificate jejunium 28, » id est, separate et ordinate jejunandi tempus; ita
+    Judæis imperavit supremum Numen, ut segregarent a cæteris diebus diem septimum, eumque
+    destinarent cultui divino : ut si oblivio Dei forte obreperet, tamen invitis tandem ex ipso die, quo
+    quietem capiunt, in memoriam revocetur et redigatur is, qui omnia fecit, et die septimo requievit.
+    Et factum est sic. Oportebat hæc verba poni ad
+    hunc locum : « Faciamus hominem, » etc., sicuti
+    in cæteris factum esse cognovimus. Deinde doce-
+    bat inferri : « Et fecit Deus hominem. » Cæterum
+    omnibus constare, inquiunt, arbitramur, impe-
+    randi verbo et modo usum esse Deum, cum dice-
+    ret : « Faciamus hominem ad imaginem et simi-
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="485,50,505,70">
     A
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,380,520,460">
+  <bloco tipo="nota_marginal" script="latino" bbox="485,340,505,360">
     B
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,560,520,640">
+  <bloco tipo="nota_marginal" script="latino" bbox="485,550,505,570">
     C
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,760,520,820">
+  <bloco tipo="nota_marginal" script="latino" bbox="485,770,505,790">
     D
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,120,950,860">
-    A consummata, ordinis gratia et debita consonantia assumptum esse illum numerum. Verbum, consummavit, interdum significat aliquid, cum fuerit corruptum, esse restauratum; aliquando ostendit, aliquid esse completum et perfectum. Hoc igitur loco accipe verbum consummavit pro complevit. Istud vero verbum hunc sensum apportat, quasi Deus loquatur de perfectione eorum, quae, cum prius non essent, in essentiam provexit. Exstant enim quaedam opera Dei nondum ad rem collata, sed longe ante sunt praeclara ut futura, nec non quae per providentiam divinam eveniunt, Deo sic disponente, contingunt. Haud igitur indecente est, quod sunt operum, id est, naturarum, quae a primo usque ad sextum diem consummatae sunt.
-    
-    Et quievit in die septimo. Significavit Deus otium, quod eo die tenuit, universi creationem ad sinem esse deductam. Spatio septem dierum totum dierum curriculum descripsit, quanvis id poluisset spatium determinare intervallo sex dierum, quibus rerum creationem perfecit. Verum voluit dies sex esse symbola rerum omnium, quas produxit: at septimus in hoc ordinatus est, ut sit indicium, eo die finem accepisse universi creationem. Et ne quis cum inultilem eum diem avertatur et abominetur, quasi nullo opere digna a Deo sit habita, sicuti quidam eus dies errores arbitrantur in quibus nihil sit operis, merito subjicet: Et benedixit Deus diem septimo. Non enim suis operibus et laboribus eum parum idoneum judicavit: sed eum statuit, ut sit utilis ad vacationem ab operibus. Benedictio itaque eum haud aspernatus est condonare. Reliquos honoravit operibus, quae in iis evenerunt: verum septimum voluit esse documentum, universi naturam in eo esse consummatam. Et eum sanctificavit, id est, separavit eum a reliquis, ut illius rei esset signum et memoraculum. Quemadmodum festos dies appellamus sanctos, quod continent memoriam beneficii alicujus singularis a Deo nobis datum, id est, separatae et ordinatae jejunandi tempus; ita cæteris diebus diem septimum, eumque silentio et recollectione honoramus.
-    
-    El factum est sic. Oportebat haec verba poni alium locum: Faciamus hominem, &amp;c., sicuti in ceteris factum esse cognominus. Deinde debebat inferri: Et fecit Deus hominem. Cæterum omnibus constare, inquint, arbitramur, imprimis verbo et modo usum esse Divum, cum dicit: Faciamus hominem ad imaginem et similitudinem nostram. 
+  <bloco tipo="nota" script="latino" bbox="60,890,300,910">
+    27 Joan. v, 17. 28 Joel. I, 14
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="50,880,480,980">
-    11 Joan. v, 17.    12 Joel. 1, 14
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="650,920,950,990">
+  <bloco tipo="rodape" script="latino" bbox="600,950,800,980">
     Digitized by Google
   </bloco>
-  <notas>
-    A coluna esquerda contém texto majoritariamente em grego com passagens latinas intercaladas; a coluna direita é em latim. As letras A, B, C, D no bordo central foram tratadas como blocos de nota_marginal separados (bbox estreitas ao centro). Onde o texto estava pouco legível inseri aproximações estritamente ao nível de palavra; não foi usada a tag [ilegivel] nesta transcrição exceto onde indicada entre colchetes (ex.: quænum[?]) para sinalizar palavra incerta. BBoxes são estimativas proporcionais à imagem.
-  </notas>
 </pagina>

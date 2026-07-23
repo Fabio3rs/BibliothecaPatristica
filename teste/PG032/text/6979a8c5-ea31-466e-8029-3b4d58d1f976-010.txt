@@ -1,28 +1,40 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="180,30,820,160">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="nota_marginal" script="latino" bbox="10,10,150,50">
+    2550.4
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="410,60,630,100">
     ELENCHUS
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,160,880,290">
+  <bloco tipo="texto_principal" script="latino" bbox="130,120,890,150">
     AUCTORUM ET OPERUM QUÆ IN HOC TOMO XXXII CONTINENTUR.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="240,320,760,390">
+  <bloco tipo="texto_principal" script="latino" bbox="190,220,850,250">
     S. BASILIUS MAGNUS, CÆSAREÆ CAPPADOCIÆ ARCHIEPISCOPUS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,400,880,520">
-    Liber de Spiritu sancto. ...................................... col. 67
-    Epistolæ. ................................................................ 219
-    APPENDIX HUJUS TOMI. Simeonis Logotheti Sermones viginti quatuor de moribus,
-    excerpti ex operibus Basilii. ............................................... 1115
+  <bloco tipo="texto_principal" script="latino" bbox="110,260,910,330">
+    Liber de Spiritu sancto. col. 67
+    Epistolæ. 219
+    APPENDIX HUJUS TOMI. Simeonis Logothetæ Sermones viginti quatuor de moribus,
+    excerpti ex operibus Basilii. 1115
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="120,540,880,620">
-    Monendaus est Lector nos ad seriem Orientalem amendasse Basilii opuscula nonnulla
+  <bloco tipo="nota" script="latino" bbox="110,370,910,410">
+    Monendus est Lector nos ad seriem Orientalem amandasse Basilii opuscula nonnulla
     quæ Syriace nuper prodierunt.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="360,640,640,760">
-    [sello oval] HARVARD COLLEGE LIBRARY
+  <bloco tipo="nota" script="latino" bbox="410,450,550,520">
+    HARVARD
+    COLLEGE
+    LIBRARY
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="120,920,880,980">
+  <bloco tipo="rodape" script="latino" bbox="610,880,900,910">
     Ex Typis MIGNE, au Petit-Montrouge.
   </bloco>
-  <notas>Script: latino. Pequenas manchas e carimbos transcritos como texto aproximado; números de coluna/página e pontos de elipse mantidos conforme visíveis. Ignorei marcas manuscritas muito pequenas no canto superior esquerdo e rabiscos perto do rodapé.</notas>
+  <bloco tipo="nota_marginal" script="latino" bbox="760,900,860,950">
+    44. 36
+    3
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="610,960,810,980">
+    Digitized by Google
+  </bloco>
+  <notas>Transcrição fiel baseada na imagem. Correções feitas em relação ao OCR: "Monendus" (não Monenaus/Monenous), "amandasse" (não amendasse), "CÆSAREÆ", "CAPPADOCIÆ", "QUÆ" (ligaturas AE preservadas). Números de coluna/página alinhados à direita no texto original, aqui transcritos na sequência da linha para fidelidade ao conteúdo. Carimbo da Harvard College Library transcrito como bloco separado.</notas>
 </pagina>

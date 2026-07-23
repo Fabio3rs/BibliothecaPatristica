@@ -1,111 +1,46 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,80">
-1147     ELIA ECDICI     1148
-  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="125,65,175,85">1147</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="475,65,605,85">ELIÆ ECDICI</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="895,65,945,85">1148</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="525,90,540,105">A</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="125,90,515,135">compositis, et de felicitate omnem intelligentiam superante meditatur, et inde quasi divina quadam apparitione honoratur.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="125,135,515,215">105. Cum ab externis anima sese vacuam præstiterit, tum eam flamma quædam undique complexa quodammodo, ceu ignis ferrum, totam candentem efficit; et cum sit anima eadem, non tamen est contrectabilis, ut neque ferrum ignitum manibus contingi potest.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="125,215,515,260">106. Beatus qui in hac vita talis spectari meruit, et simulacrum suum (hoc est animam Dei imaginem), natura velut luteum, gratia igneum aspexit.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="125,260,515,315">107. Novitiis adhuc seu tironibus lex orandi tanquam molestus aliquis et morosus dominus imponitur; provectioribus autem est amor, quo esurientes velut ad convivium sumptuosum compelluntur.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="525,305,540,320">B</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="125,315,515,390">108. Qui probe in vita activa versantur, eos oratio interdum, ut nubes obumbrans, urentes cogitationum radios ab illis arcet ac defendit: interdum lacrymarum quasi stillicidiis eos perfundit, ac spiritualia quæ contemplantur demonstrat.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="125,390,515,480">109. Suavis quidem reperietur sonus ab aliquo forinsecus pulsate; anima vero, non consonante sibi intra orationem mystica Spiritus allocutione, sanctam sentire nequit compunctionem. Hæc enim verba, ‹ Quid oremus sicut oportet nescimus, › ad hoc inducunt orantem.</bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="20,80,480,420">
-compositis, et de felicitate omnem intelligentiam superante meditatur, et inde quasi divina quadam apparitione honoratur.
+  <bloco tipo="texto_principal" script="grego" bbox="545,90,935,135">λογισμῶν, καὶ τὰ περὶ τῆς πάντα νοῦν ὑπερεχούσης διασκεπτόμενος καί τινος ἐκεῖθεν θεοφανείας καταξιοῦμενος.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="545,135,935,215">ρε'. Ὁπόταν ἀπὸ τῶν ξωθεν σχολάσασα ἡ ψυχὴ συναφθῇ τῇ εὐχῇ, τότε οἷά τις φλὸξ περικυκλώσασα ταύτην ἐκείνη, σίδηρον καθάπερ τὸ πῦρ, πεπυρακτωμένην ὅλην καθίστησιν. Καί ἐστι ψυχὴ μὲν ἡ αὐτή, οὐκ ἔτι δὲ καὶ ἁπτή· οὐδὲ γὰρ ὁ πυρακτωθεὶς σίδηρος, ταῖς ξωθεν ἐπαφαῖς.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="545,215,935,260">ρς'. Μακάριος ὁ ἐν τῷ βί τούτῳ οὕτωσι θεωρηθῆναι καταξιωθεὶς, καὶ τὸν αὐτοῦ φύσει πήλινον ἀνδριάντα, χάριτι πύρινον κατιδών.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="545,260,935,315">ρζ'. Τοῖς μὲν εἰσαγομένοις, βαρὺς οά τις δεσπότης ὁ νόμος ἐπίκειται τῆς εὐχῆς· τοῖς προκόψασι δ, ὡς ἔρως, ὁ συνελαύνων πεινῶντα καθάπερ πολυτελῇ πρὸς ἑστίασιν.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="545,315,935,390">ρη'. Τοῖς καλῶς μετερχομένοις τὴν πρακτικήν, ποτὲ μὲν ἡ εὐχὴ νεφέλη καθάπερ ἐπισκιάζουσα, τοὺς καυστικοὺς ἀπείργει ἐξ αὐτῶν λογισμούς· ποτὲ δὲ σταγόνας οἷα δακρύων τούτοις ἐπιφεκάζουσα, δείκνυσι τὰ πνευματικὰ θεωρήματα.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="545,390,935,480">ρθ'. Ἡδὺ μὲν ἥδυσμα κιθάρας τῆς κρουομένης ὑπό τινος ἔξωθεν εὑρέθησεται· ψυχὴ δὲ, μὴ συντηκούσης αὐτῇ ἐν εὐχῇ τς ἐν πνεύματι μυστικῆς προσφωνήσεως, εὐκατάνυκτος οὐ πέφυκε γίνεσθαι. Τὸ γάρ, ‹ Τί προσευξώμεθα καθὸ δεῖ, οὐκ οἴδαμεν, › καὶ τὰ ἑξῆς, εἰς τοῦτο ἐνάγει τὸν προσευχόμενον.</bloco>
 
-105. Cum ab externis anima sese vacuam praestiterit, tam eam flamma quaedam undique complexa quodammodo, ceu ignis ferrum, totam candentem efficit; et cum sit anima eadem, non tamen est contractabilis, ut neque ferrum ignitum manibus conting i potest.
+  <bloco tipo="outro" script="desconhecido" bbox="140,495,925,505">___________________________________</bloco>
 
-106. Beatus qui in hac vita talis spectari meruit, et simulacrum suum (hoc est animam Dei imaginem), natura velut luteum, gratia ligneum aspexit.
+  <bloco tipo="texto_principal" script="grego" bbox="365,515,705,540">ΤΟΥ ΑΥΤΟΥ ΓΝΩΣΤΙΚΑ.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="300,545,670,590">Φωτίζεται νοῦς γνωστικῆς θεωρίας<br/>Πρὸς ὕψος ἀρθεὶς, τοῖς δ' ἐπετυχὼν λόγοις·<br/>Σκοτίζεται δ' αὖ, ἐγκλυσθεὶς εἰς πάθος.</bloco>
 
-107. Novitiis adhuc seu tironibus lex orandi tanquam molestus aliquis et morosus dominus imponitur; provectoribus autem est amor, quo esurientes velut ad convivium sumptuosum compelluntur.
+  <bloco tipo="texto_principal" script="latino" bbox="275,620,795,650">EJUSDEM GNOSTICÆ SENTENTIÆ.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="300,660,650,710">Illuminatur animus ad gnosticæ theoriæ<br/>Fastigium elevatus, et rationes rerum detegit;<br/>Recidit vero in caliginem, si demergatur in cupiditates.</bloco>
+  
+  <bloco tipo="outro" script="desconhecido" bbox="515,725,535,730">__</bloco>
 
-108. Qui probe in vita activa versantur, eos oratio interdum, ut nubes [ilegivel], [ilegivel] concessionum radios ab illis arces ac defendit; interdum lacrymarum quasi stillicidii eos perfundit, ac spiritualia quae contemplentur demonstrat.
+  <bloco tipo="nota_marginal" script="latino" bbox="525,750,540,765">C</bloco>
 
-109. Suavis quidem reperietur sonus ab aliquo forinsecus pulsate; anima vero, non consonante sibi intra orationem mystica Spiritus allocutione, sanctam sentire nequit compunctionem. Haec enim verba, Quid oremus sicut oportet nescimus, ad hoc inducunt orantem.
-  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="125,750,515,820">1. Scire debet gnosticus quando animus in idearum, quando in ratiociniorum, quando in sensationum versetur regione, ac rursus in hac ultima, utrum in tempestivis, an in intempestivis sensationibus magis reperiatur.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="125,830,515,890">2. Quando animus in ideis non est, in ratiociniis est semper; quando in ratiociniis est, in ideis non est; quando denique est in sensationibus, cum utrisque est.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="125,895,515,940">3. Per cogitationem mens ad intellectualia transit, per ratiocinationem ad rationalia ratio, ad actionem per imaginationem sensus.</bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="520,80,980,420">
-λογισμῶν, καὶ τὰ περὶ τῆς πάντα νοῦν, ὑπερεχούσης διασκεπτόμενος καὶ τινὸς ἐκ θεῖθεν θεωφανείας καταξιωμένος.
+  <bloco tipo="texto_principal" script="grego" bbox="545,750,935,830">α'. Ἀναγκαῖον εἰδέναι τὸν γνωστικὸν, πότε μὲν ὁ νοῦς αὐτοῦ εἰς τὴν χώραν τῶν νοημάτων ἐστί, πότε δὲ, εἰς τὴν τῶν λογισμῶν, καὶ πότε εἰς τὴν κατ' αἴσθησιν· καὶ ἐν ταύτῃ πάλιν, εἰ ἐν τοῖς κατὰ καιρὸν, ἢ ἐν τοῖς παρὰ καιρὸν μᾶλλον εὑρίσκεται.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="545,835,935,895">β'. Ἐν νοήμασιν οὐκ ὢν ὁ νοῦς, ἐν λογισμοῖς πάντως ἐστίν. Ἐν λογισμοῖς δ ὤν, ἐν νοήμασιν οὐκ στιν· ἐν δὲ τῇ αἰσθήσει γινόμενος, μετὰ πάντων ἐστίν.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="545,900,935,955">γ'. Διὰ τοῦ νοήματος μὲν ὁ νος διέρχεται πρὸς τὰ νοητά· διὰ δὲ τοῦ λογισμοῦ, πρὸς τὰ λογικὰ ὁ λόγος, πρὸς δὲ τὰ πρακτικά, διὰ τῆς φαντασίας ἡ αἴσθησις.</bloco>
 
-ρε'. Ὅταν ἀπὸ τῶν ἔξωθεν σχολάσασα ἡ ψυχὴ συναρθῇ τῇ εὐχῇ, τότε ὅλα τὰ φλογε[ῖ]α τὰ περικυκλώσαντα ταύτην ἔχειν, σίδηρον καθάπερ τὸ πῦρ, πεπυρακτωμένη ὅλη καθίσταται. Καὶ ἔστι ψυχὴ μὲν ἡ αὐτή, οὐκ ἔτι δὲ καὶ ἁπτή· οὐδὲ γὰρ ὁ πυρακτωθεὶς σίδηρος, ταῖς ἔξωθεν ἐπαφᾶις [ilegivel].
-
-ρϙ'. Μακάριος ὁ ἐν τῷ βίῳ τούτῳ ὀξωτωθεὶς θεωρηθῆναι καταξιωθεὶς, καὶ τὸν αὐτοῦ φύσει πηλίκον ἀνθρώπινα, χάριτι πυρίνοις κατεχόμενον.
-
-ρλ'. Τοῖς μὲν εἰσαγομένοις, βαρεῖς ὄλαι τις δεσπότης ὁ νόμος ἐπικατεῖται τῆς εὐχῆς· τοῖς προκοψάσι δὲ, ὡς ἔρως, ὁ συνελῶν πένθιντα καθάπερ πολυτελῆς πρόσ[ilegivel].
-
-ρμ'. Τοῖς καλῶς μετεχούσι τῆς πρακτικῆς, ποτέ μὲν ἡ εὐχὴ νέφειν καθάπερ ἐπισκιάζουσα, πολλαῖς ἁπαίρει ἑαυτὴν ὅτι ἔτι λογισμοῖς· ποτέ δὲ σταγόνας ὅλα δακρύων τούτους ἐπιμεχάζουσα, δεῖχνυσται τὰ πνευματικὰ θεωρήματα.
-
-ρν'. Ἤδη μὲν ἄνδρας κλῖθας τῆς χρουμένης ὑπὸ τίνως ἔξωθεν εὐρεθῆσεται· ψυχὴ δὲ, μὴ συνυχώσης ἀυτῇ ἐν εὐχῇ τῇ ἐν πνεύματι μυστικῇ προσωνομένως, εὐκατάνυχος οὐ πεῦψε γενέσθαι. Τὸ γὰρ, Τί προσευξώμεθα καθὼς δεῖ, οὐκ ὀδαμεν, καὶ ταύτῃ εἰς τοῦτο ἐνάγει τὸν προσευχόμενον.
-  </bloco>
-
-  <bloco tipo="cabecalho" script="grego" bbox="20,420,980,500">
-ΤΟΥ ΑΥΤΟΥ ΓΝΩΣΤΙΚΑ.
-
-Φωτίζεται νοῦς γνωστικῆς θεωρίας
-Πρὸς ὕψος ἀρθεις, τοῖς δ' ἐπεντυχιῶν λόγοις·
-Σκοτίζεται δ' ἀὖ, ἐγκλεισθεὶς εἰς πάθος.
-  </bloco>
-
-  <bloco tipo="cabecalho" script="latino" bbox="20,500,980,560">
-EJUSDEM GNOSTICÆ SENTENTIÆ.
-
-Illuminatur animus ad gnosticæ theoriæ
-Fastigium elevatus, et rationes rerum detegit;
-Recidit vero in caliginem, si demergatur in cupiditates.
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="20,560,480,920">
-1. Scire debet gnosticus quando animus in idea-
-rum, quando in ratiociniorum, quando in sensatio
-num versatur regione, ac rursus in hac ultima,
-utrum in tempestivis, an in intempestivis sen
-sationibus magis reperiatur.
-
-2. Quando animus in ideis non est, in ratiociniis
-est semper; quando in ratiociniis est, in ideis non
-est; quando denique est in sensationibus, cum
-utrisque est.
-
-3. Per cogitationem mens ad intellectualia transit,
-per ratiocinationem ad rationalia ratio, ad actio
-nem per imaginationem sensus.
-  </bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="520,560,980,920">
-α'. Ἀναγκαῖον ἐστὶν τὸν γνωστικὸν, πότε μὲν ὁ
-νοῦς αὐτοῦ εἰς τὴν χώραν τῶν νοημάτων ἐστὶ, πότε
-δὲ εἰς τὴν τῶν λογισμῶν· καὶ πότε εἰς τὴν κατ'
-αἰσθήσιν· καὶ ὅταν ἐν τοῖς λογισμοῖς, καὶ πότε εἰς τῷ
-κατ' αἰσθήσιν· καὶ ἐν ταύτῃ πάλιν, ἐν τῷ τοῖς καθ'
-καιροὺς, ἢ ἐν τοῖς παρὰ καιροὺς μᾶλλον εὑρίσ
-κεται.
-
-β'. Ἐν νοήμασιν οὐκ ὂν ὁ νοῦς, ἐν λογισμοῖς πάντως
-ἔστιν. Ἐν λογισμοῖς δὲ ὂν, ἐν νοήμασιν οὐκ
-ἔστιν· ἐν δὲ τῇ αἰσθήσει γενόμενος, μετὰ πάντων
-ἔστιν.
-
-γ'. Διὰ τῆς νοηματικῆς μὲν ὁ νοῦς διέρχεται πρὸς
-τὰ νοητά· διὰ δὲ τοῦ λογισμοῦ, πρὸς τὰ λογικά·
-διὰ δὲ τῆς φαντασίας, πρὸς τὰ πρακτικά, διὰ τῆς αἰσθήσεως
-πρὸς τὰ αἰσθητά.
-  </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="700,920,980,980">
-Digitized by Google
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="480,120,520,180">
-A
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="480,220,520,300">
-B
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="480,540,520,600">
-C
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="480,640,520,700">
-D
-  </bloco>
-
-  <notas>
-- Várias palavras foram parcial ou totalmente difíceis de ler; foram marcadas como [ilegivel] nos pontos individuais onde a leitura não pôde ser assegurada.  
-- A página contém colunas latinas (esquerda) e gregas (direita); os rótulos A, B, C, D presentes no gutter foram colocados em blocos nota_marginal separados, conforme instruções.
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="575,960,780,985">Digitized by Google</bloco>
 </pagina>

@@ -1,92 +1,153 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,80">
-1171      IGNATII DIACONI      1172
+  <bloco tipo="cabecalho" script="misto" bbox="100,30,900,60">
+    1171 IGNATII DIACONI 1172
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="40,90,480,600">
-EVA.
-Cognosco me mente errasse imprudenter, et tuam, conjux, perdidisse mentem. Ideo ostendor ut corruptionis causa.
-
-ADAM.
-Nonne auribus percipis, mulier, fragorem ex alto, tamquam ex Deo, sonantem? Quomodo fugiam [ilegivel] facinoris?
-
-EVA.
-Petiùm Dei ad aures sonus pervenit, cujus se[ilegivel] veritatem ferre metuens, tecum occultari potius velim, dilecte.
-
-ADAM.
-Quis occullabit me locus? qui occultabor? Nul- lus enim extra Deum locus est, in quem fugiens abscondar. Atamen sequere, mulier.
-
-DEUS.
-Adam, creaturis omnibus excellintor, manus meas opus et possessio, quo nunc abhisti? Et qualis a tali factus es?
-
-ADAM.
-Tua verba ne nudum et pedes in praesentiam venire non sinunt; sed tristis fuga et timor me detinent.
-
-DEUS.
-Quis, o infelix, tuam nunc mentem seduxit, et tuam nuditatem hic oculis ostendit, nisi transgressus fueris quas transgredi non fas erat?
-
-ADAM.
-Mulieri odens, quam dederas, Creator, magnam persuasionem sermone ferenti, ad lignum accessi, e quo comedere non fas erat.
-
-DEUS.
-Quoniam mulieri cedereas inventus es, et a me
+  <bloco tipo="texto_principal" script="latino" bbox="100,70,520,600">
+    EVA.
+    Cognosco me mente errasse imprudenter, et
+    tuam, conjux, perdidisse mentem. Ideo ostendor
+    ut corruptionis causa.
+    ADAM.
+    Nonne auribus percipis, mulier, fragorem ex
+    alto, tanquam ex Deo, sonantem? Quomodo fugiam
+    pœnam facinoris?
+    EVA.
+    Pedum Dei ad aures sonus pervenit, cujus se-
+    veritatem ferre metuens, tecum occultari potius
+    velim, dilecte.
+    ADAM.
+    Quis occultabit me locus? qui occultabor? Nul-
+    lus enim extra Deum locus est, in quem fugiens
+    abscondar. Attamen sequere, mulier.
+    DEUS.
+    Adam, creaturis omnibus excellentior, manus meæ
+    opus et possessio, quo nunc abiisti? Et qualis a tali
+    factus es?
+    ADAM.
+    Tua verba me nudum et pedes in præsentiam
+    venire non sinunt; sed tristis fuga et timor me
+    detinent.
+    DEUS.
+    Quis, o infelix, tuam nunc mentem seduxit, et
+    tuam nuditationem hic oculis ostendit, nisi trans-
+    gressus fueris quæ transgredi non fas erat?
+    ADAM.
+    Mulieri fidens, quam dederas, Creator, magnam
+    persuasionem sermone ferenti, ad lignum accessi,
+    e quo comedere non fas erat.
+    DEUS.
+    Quoniam mulieri cedens inventus es, et a mea
   </bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="520,90,960,600">
-ΕΥΑ.
-Ἔγνω παρακαλαπεῖσα τὸν γοῦν ἀφρόνηκ.
-Καὶ σὰς ὑποφθείρουσα, σύζυγε, φρένας.
-Ὅθεν δέδειγμαι τῆς σφαλμ: παραπῖτα.
-
-ΑΔΑΜ.
-Οὐκ αἰσθάνομαι τοῖς ὄψιν, ὦ γύναι, φάρμα.
-Ἀνίωθ', ὥστε ἐκ θεοῦ, κτλπρμονεῖς (34) : [ilegivel] τῆν δίκην τῶν ἁμαρτημάτων?
-
-ΕΥΑ.
-Πεῖδ´ θεὸν παιδεύειν ἐς ὕπτι πεπτώς.
-Οὕ δεῖλοις (35) τὴν παραβίασιν φέρειν,
-Σὺν σοι χρυβήκῃ μᾶλλον εὐθέως, φιλε.
-
-ΑΔΑΜ.
-[ilegivel] τόπος κρύπτεσθαι με; Καὶ κρυβήσομαι (36) :
-Οὐδεὶς γάρ ἔξω τοῦ θεοῦ τόπος πάλει,
-Ἐν ᾧ φυγῶν λανθάνω. Πίθῃ ἔπει, γύναι.
+  <bloco tipo="texto_principal" script="grego" bbox="540,70,920,600">
+    ΕΥΑ.
+    Ἔγνων παρακλαπεῖσα τὸν νοῦν ἀφρόνως,
+    Καὶ σὰς ὑποφθείρουσα, σύζυγε, φρένας·
+    Ὅθεν δέδειγμαι τῆς φθορᾶς παραίτια.
+    ΑΔΑΜ.
+    Οὐκ αἰσθάνῃ τος ὠσίν, ὦ γύναι, ψόφου,
+    Ἄνωθεν, ὥσπερ ἐκ Θεοῦ, κτυπουμένου (34);
+    Ὡς εὐλαβοῦμαι τν δίκην τν δρωμένων!
+    ΕΥΑ.
+    Ποδῶν Θεοῦ πάρεστιν εἰς ὦτα κτύπος,
+    Οὗ δειλιῶσα (35) τὴν πικρὴν ἄνειν φέρειν,
+    Σὺν σοὶ κρυβῆναι μᾶλλον εὐδοκῶ, φίλε.
+    ΑΔΑΜ.
+    Ποῖος τόπος κρύψει με; Καὶ κρυβήσομαι (36);
+    Οὐδεὶς γὰρ ἔξω τοῦ Θεο τόπος πέλει,
+    Ἐν  φυγὼν λάθωμι. Πλὴν ἕπου, γύναι.
+    ΘΕΟΣ.
+    Ἀδὰμ (37), τὸ πάντων κτισμάτων ὑπερφέρον,
+    Τὸ τς ἐμῆς μέλημα χειρὸς καὶ κτέαρ,
+    Ποῦ νῦν ἔβης; Καὶ ποῖος ἀνθ' οἵου πέλεις;
+    ΑΔΑΜ.
+    Οἱ σοὶ (38) λόγοι με γυμνὸν ὄντα καὶ πόδας
+    Εἰς προὔπιον οὐκ ἐῶσιν ἐλθεῖν· ἀλλὰ γε
+    Δεινὴ φυγὴ με συμποδίζει καὶ φόβος.
+    ΘΕΟΣ.
+    Τίς (39), ὦ τάλαν, σὰς νῦν παρῆγαγε φρένας,
+    Καὶ τὴν γύμνωσιν ἄρτι δεικνύει βλέπειν,
+    Εἰ μὴ προσῆλθες οἷς προσελθεῖν ο θέμις;
+    ΑΔΑΜ.
+    Γυναικὶ (40) πεισθείς, ἣν δέδωκας, ὁ Πλάσας,
+    Πολλὴν φερούσῃ πεισμονὴν ἐκ τοῦ λέγειν,
+    Ξύλῳ προσῆλθον, οὗ φαγεῖν οκ ἦν θέμις.
+    ΘΕΟΣ.
+    Ἐπε (41) γυναικὸς εὑρέτης ἡττημένος,
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,110,510,170">
-A
+  <bloco tipo="nota_marginal" script="latino" bbox="525,70,535,85">
+    A
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,300,510,360">
-B
+  <bloco tipo="nota_marginal" script="latino" bbox="525,270,535,285">
+    B
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,540,510,620">
-C
+  <bloco tipo="nota_marginal" script="latino" bbox="525,480,535,495">
+    C
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,700,510,780">
-D
+  <bloco tipo="nota_marginal" script="latino" bbox="525,680,535,695">
+    D
   </bloco>
-
-  <bloco tipo="aparato_critico" script="latino" bbox="40,610,480,930">
-In catalogo imperatorum Byzantinorum, de Michaele Paleologo: 'Omnes basileis kai ἄλλοις καὶ λόγοις καὶ πραχθεις' : qui versus deest in cod. 4130 et 2991 A. Iew Diacon. x. 11, p. 110. C : 'Ὑπηρέτας παρά τῇ ὑπὲρ αὐτῆς (Marie Despinae) καὶ θεοῦ τὰ τῶν βραχὶ πραχθεις τοῖς ἀδελφοῖς ἐγένετο' [ilegivel]. Phile carm. v. 753 : Kal γὰρ χωρὶς [ilegivel] transacta. Ibid. 903 : Ἀλλὰ τα λαμπρά τοῦ στρατηγῷ πραχθεῖσα.
-(34) Genes. iii. 8.
-(35) Codex, [ilegivel]. Possit et [ilegivel], nec ad prius, scribi.
+  <bloco tipo="aparato_critico" script="misto" bbox="100,610,520,750">
+    In catalogo imperatorum Byzantinorum, de Mi-
+    chaele Palæologo : Ὄντως βασιλεὺς καὶ λόγος καὶ
+    πρακτικός : qui versus deest in codd. 1630 et 2991
+    A. Leo Diacon. x, 11, p. 110 : C : Ὑπηνίκα παρὰ
+    τῷ ἱ αὐτῆς (Mariæ Deiparæ) καὶ Θεῷ τὰ τῶν
+    βροτῶν πρακτέα τοῖς ἀδεκάτοις ζυγοῖς καὶ σταθμοῖς
+    ταλαντεύεται. Phile carm. v, 753 : Καὶ γὰρ χωρὶς
+    εἰς καστον πρακτέα Πάντων μόνος, βέλτιστε, συγ-
+    κλείσας φέρει. Ibid. 905 : Ἀλλὰ τὰ λαμπρὰ τοῦ στρα-
+   τηγοῦ πρακτέα.
   </bloco>
-
-  <bloco tipo="aparato_critico" script="grego" bbox="520,610,960,930">
-(Συνέχεια ἐπιγραφῶν καὶ σχολίων ἐν τῷ ἀρχαίῳ τῷ χειρογράφῳ) [ilegivel] τῶν σχολίων τε καὶ περὶ τῶν λέξεων. Ἔνθα ὁ ἀνέγραψεν ὅτι ἐστὶν [ilegivel] ἔνδειξις. (36) Ibid. 11.
-(37) Genes. iii. 9.
-(38) Ibid. 10.
-(39) Ibid. 11.
-(40) Ibid. 12.
-(41) Ibid. 17.
+  <bloco tipo="aparato_critico" script="misto" bbox="540,610,920,850">
+    reliqua verba quæ proposuit metrum violant. Idem
+    v. 951, Καθίσταμαί σοι τὸν βίον διδάσκαλος : velim
+    sic legi : Διδάσκαλος καθίσταμαί σοι τοῦ βίου. Nec
+    sanior videtur vers. 955 : Ὁ καινοφανὴς Τηλέμα-
+    χος ἦλθες. Manifestissime respicitur Od. Π, 25 :
+    Ἦλθες, Τηλέμαχε, γλυκερὸν φάος : quod si memi-
+    nisset Wernsdorfius, quam scripsit notulam omi-
+    sisset. Sic Julianus Epist. 8 : Ἦλθες, Τηλέμαχε,
+    φησὶ τὸ ἔπος : ubi notavit Hellerus lectionis varie-
+    tatem ἦλθες. Et Phile in clausula versus ἦλθες
+    scripsisse videtur. Jam deerit syllaba, forsan ita
+    restituenda, ὁ καινοφανὴς σὺ Τ. ἦλθες. Attamen,
+    cum spondeum vitaverit in fine, malim ferr ab hoc
+    versu abstinere, præsertim cum unum et alterum
+    noverim, qui sint accentui rebelles. In talibus
+    dicendus erit voluisse aliquid rhythmi veteris reti-
+    nere, servato tamen religiose duodenario syllaba-
+    rum numero. At id tenendum, si nonnunquam ab
+    ipsis fuerit poetis neglecta lex accentus, non esse
+    criticis et emendatoribus negligendam. Sic sæpe
+    peccavit Wernsdorfius.
   </bloco>
-
-  <bloco tipo="outro" script="latino" bbox="420,940,760,980">
-Digitized by Google
+  <bloco tipo="nota" script="misto" bbox="100,750,520,930">
+    (34) Genes. III, 8.
+    (35) Codex, δειλιῶντα. Possit et δειλιῶντες, nec
+    id pejus, scribi.
+    (36) Versus est, puto, corruptus ; violatur enim
+    accentus lex penultimi. Velim reponi : Ποῖός με
+    κρύψει (καὶ κρυβήσομαι) τόπος ; Theodorus Pro-
+    dromi Rhod. II, pag. 73 : Τὸν πατέρα σχὼν εὐφυῆ
+    παιδεύτρια : vel erit scribendum παιδοτρίβην, vel
+    transponendum, παιδότριβα σχὼν εὐφυᾶ τν πατέρα,
+    Idem I, p. 35 : Ἄνδρες, μεταίπεν, εὐσεβεῖς δικασ-
+    πολοί. Hic est lapsus Gualmini de mora properan-
+    tis, vel typothetæ : legitima scriptura restituatur,
+    δικασπόλοι. Phile III, 75 : Χαίρετω σύμπας οὐρα-
+    νὸς ὅτι οἱ κάτω πε... Sic cum lacuna mutilus co-
+    dex. Wernsdorfii conjecturæ sunt nonnullæ, κάτω
+    πέμψε, κατώρθωσε, κατῴκισε, et, quam prætulit,
+    κατέπεμψε. Equidem κάτω πέμψε receperim, cum
   </bloco>
-
-  <notas>Transcrição feita visualmente. Onde a leitura é incerta foi colocado [ilegivel] em palavras isoladas. A página apresenta duas colunas (esquerda latino, direita grego); as letras A, B, C, D no meio da dobra foram capturadas como notas marginais separadas. O aparato crítico foi transcrito de forma resumida com marcação [ilegivel] quando ilegível.</notas>
+  <bloco tipo="nota" script="misto" bbox="540,850,920,930">
+    (37) Genes. III, 9.
+    (38) Ibid. 10.
+    (39) Ibid. 11.
+    (40) Ibid. 12.
+    (41) Ibid. 17.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,960,850,990">
+    Digitized by Google
+  </bloco>
 </pagina>

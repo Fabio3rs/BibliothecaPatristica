@@ -1,28 +1,20 @@
-<pagina estado="com_texto">
-  <bloco tipo="outro" script="latino" bbox="680,40,960,200">
-[ilegivel]
-BR60
-[ilegivel] P4
-v.128
+<pagina estado="com_texto" tipo="capa_ou_guarda">
+  <bloco tipo="nota_marginal" script="latino" bbox="740,45,900,160">
+    BR60
+    .P4
+    v. 128
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,140,780,640">
-DATE DUE
+  <bloco tipo="texto_principal" script="latino" bbox="285,230,765,845">
+    DATE DUE
+    
+    DOES NOT
+    CIRCULATE
+    
+    STANFORD UNIVERSITY LIBRARIES
+    STANFORD, CALIFORNIA
+    94305
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="240,640,760,860">
-DOES NOT CIRCULATE
-STANFORD UNIVERSITY LIBRARIES
-STANFORD, CALIFORNIA
-94305
+  <bloco tipo="rodape" script="latino" bbox="560,955,780,985">
+    Digitized by Google
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="420,900,760,995">
-Digitized by Google
-  </bloco>
-  <notas>
-- O topo direito contém marcas riscadas; a primeira linha está totalmente ilegível e foi marcada como [ilegivel].
-- A segunda linha legível contém "BR60".
-- A linha abaixo apresenta um edifício/carimbo parcialmente coberto (transcrito aqui como [ilegivel]) seguido por "P4".
-- "v.128" está visível abaixo desses elementos.
-- O texto "DOES NOT CIRCULATE" está dentro de um selo circular com risco(s) por cima; apenas o texto legível foi transcrito.
-- Não foram identificadas inscrições marginais A, B, C, D no gutter; portanto não foram criados blocos nota_marginal para tais identificadores.
-  </notas>
 </pagina>

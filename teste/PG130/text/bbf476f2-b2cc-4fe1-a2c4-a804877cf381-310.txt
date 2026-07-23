@@ -1,60 +1,29 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="40,20,960,120">
-(07    EUTHYMII ZIGABENI    608
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,120,490,900">
-Item contra Arianos. Magni Joannis Chrysostomi ex interpretatione illorum verborum, 'Faciamus hominem'. 
+<pagina estado="com_texto" tipo="texto_principal" script="misto">
+  <bloco tipo="cabecalho" script="latino" bbox="130,40,180,60">607</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="450,40,650,60">EUTHYMII ZIGABENI</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="920,40,970,60">608</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="130,70,530,105">Item contra Arianos. Magni Joannis Chrysostomi ex interpretatione illorum verborum, « Faciamus hominem ¹. »</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="130,110,530,200">Hic et Arii opinionem approbantibus lethale vulnus infligit. Non enim imperantis more dixit : Facito, tanquam minorem, aut essentia inferiorem alloqueretur, sed parem honoris gradum ostendens : Faciamus, inquit. Et quæ deinceps sequuntur magnam nobis essentiæ declarant similitudinem.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="130,205,530,235">Ejusdem ex interpretatione illorum verborum : « Et assumpsit Deus hominem, quem formaverat ². »</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="130,240,530,425">In ipso statim principio duo posuit. Neque enim dixit : Dominus, et tacuit, sed adjecit : Deus, duobus hisce verbis : Dominus Deus, reconditum et arcanum quiddam nos docens, ut scire possimus, sive Dominum, sive Deum audiverimus, inter hæc duo nomina nihil interesse. Ne igitur audiens Paulum ita dicentem : Unus Deus Pater, ex quo omnia, et unus Dominus Jesus Christus, per quem omnia ³, putes in his vocibus discrimen aliquod, et una quidem majus, altera minus indicari. Idcirco utraque promiscue et communiter utitur Scriptura, ne liceat hominibus pugnacibus rectam doctrinam contentionibus suis pervertere et conturbare.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="130,430,530,460">Ejusdem ex interpretatione in illa verba : « In principio erat Verbum ⁴. »</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="130,465,530,880">Illud : In principio erat Verbum, non significat, inquiunt, æternitatem : idem enim de cælo et terra dictum est. O insignem impudentiam, et magnam temeritatem ! Ego tibi de Deo loquor, et tu mihi terram et homines e terra conflatos in medium affers ? Ergo quoniam homines filii Dei dicuntur et dii : Ego enim, inquit, dixi, Dii estis, et filii Excelsi omnes ⁵, Unigeniti divinitatem in dubium vocabis, eumque nihil amplius habere, quam te, dices ? Minime vero, inquis. Atqui sic agis, licet verbis haud ita loquaris. Cum enim ipsum natura Filium neges, quid aliud moliris, nisi ut Filium esse per gratiam probes ? Sed testimonia, quæ ab istis afferuntur, consideremus. In principio, inquit, fecit Deus cælum et terram. Terra autem erat invisibilis et incomposita ⁶. Et, Fuit vir de Ramathaimsobim ⁷. Hæc isti putant admodum firma et valida argumenta, et sunt illa sane firma et valida ad doctrinam nostram comprobandam. Nam ad confirmandam detestabilem ipsorum opinionem nihil potest infirmius cogitari. Dic enim, obsecro, quid commune habet illud, Fecit, cum hoc : Erat ? Quid rursum Deus cum homine ? cur commisceas ea quæ misceri nequeunt ? cur ea quæ sunt divisa confundis, et ea quæ superiora sunt, inferiora constituis ? Hic enim non solum illud : Erat, indicat æternitatem, sed etiam illud : Verbum erat ; et illud : In principio erat. Quemadmodum enim illud : Qui est, cum de homine dicitur...</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="560,70,960,105">Ἔτι κατὰ Ἀρειανῶν το μεγάλου Ἰωάννου τοῦ Χρυσοστόμου ἐκ τῆς ρμηνείας τῆς εἰς τὸ· « Ποιήσωμεν ἄνθρωπον. »</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="560,110,960,190">Ἐνταῦθα καὶ τοῖς τὰ Ἀρείου φρονοῦσι καίριαν δίδωσι τὴν πληγήν. Οὐδὲ γὰρ προστακτικῶς επε· Ποίησον, ὡς ὑποδεεστέρῳ ἢ ἐλάττονι κατὰ τὴν οὐσίαν, ἀλλὰ μετὰ πολλῆς τῆς ἰσοτιμίας, Ποιήσωμεν. Καὶ τὸ ἑξῆς δὲ πολλὴν δείκνυσιν ἡμῖν τῆς οὐσίας τὴν μοιότητα.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="560,205,960,235">Ἐκ τῆς ἑρμηνείας τῆς εἰς τ, « Ἔλαβε Κύριος ὁ Θες τὸν νθρωπον ὃν ἔπλασεν. »</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="560,240,960,435">Εὐθέως ἐκ προοιμίων τὰ δύο τέθεικεν. Οὐδὲ γὰρ εἶπε « Κύριος, » καὶ ἐσίγησεν, ἀλλὰ προσέθηκε « Κύριος ὁ Θεός, » λανθάνον τι καὶ κεκρυμμένον ἐντεῦθεν διδάσκων ἡμς, ἵνα εἰδέναι ἔχωμεν, ὅτι κἂν τε Κύριον ἀκούσωμεν, κἂν τε Θεόν, οὐδεμία ἐν τοῖς ὀνόμασίν ἐστι διαφορά. Τούτου δὲ νῦν οὐχ ἁπλῶς ἐμνημόνευσα, ἀλλ' ἵνα, ὅταν ἀκούσῃς Παύλου λέγοντος· Εἷς Θεὸς ὁ Πατήρ, ἐξ οὗ τὰ πάντα, καὶ ες Κύριος Ἰησοῦς Χριστός, δι' οὗ τὰ πάντα, μὴ νομίσῃς διαφορὰν εἶναι ἐν ταῖς λέξεσι, καὶ τὴν μὲν μεῖζον τι δηλοῦν, τὴν δ ἔλαττον. Διὰ τοῦτο καὶ ἀδιαφόρως ἡ Γραφὴ τούτοις κέχρηται τοῖς ὀνόμασιν, ἵνα μὴ ἐξῇ τος φιλονείκως διακειμένοις τὰ ἐξ οἰκείας ὑπονοίας ἐπιστρέφειν τῇ τν δογμάτων ρθότητι.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="560,440,960,470">Τοῦ αὐτοῦ ἐκ τῆς ρμηνείας τς εἰς τὸ· « Ἐν ἀρχῇ ν ὁ Λόγος. »</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="560,475,960,880">Τὸ, Ἐν ἀρχῇ ἦν ὁ Λόγος, οὐ τὸ ἀΐδιον, φασί, δείκνυσι. Καὶ γὰρ καὶ περὶ οὐρανοῦ τοῦτο ἐλέχθη καὶ περὶ γῆς. Ὦ τῆς ἀναισχυντίας καὶ τῆς ἀνευλαβείας τῆς πολλς! Περὶ Θεοῦ σοι διαλέγομαι, καὶ σύ μοι τὴν γῆν φέρεις εἰς μέσον, καὶ τοὺς ἀπὸ τς γῆς ἀνθρώπους ; Οὐκοῦν ἐπειδὴ καὶ ὁ ἄνθρωπος υἱὸς Θεοῦ λέγεται, καὶ Θεός, Ἐγὼ γάρ, φησίν, εἶπα, Θεοί ἐστε, καὶ υἱοὶ Ὑψίστου πάντες, φιλονεικήσεις τῷ Μονογενεῖ τς υἱότητος, καὶ οὐδὲν φήσεις αὐτὸν ἔχειν κατὰ τοῦτο σοῦ πλέον ; Οὐδαμῶς, φής. Καὶ μὴν τοῦτο ποιεῖς, κἂν μὴ τῷ λόγῳ λέγῃς. Τῷ γὰρ μὴ φύσει εἶναι λέγειν αὐτὸν Υὸν οὐδὲν ἕτερον ἢ χάριτι εἶναι τοῦτον κατασκευάζεις. Πλὴν ἀλλ' ἴδωμεν καὶ τὰς μαρτυρίας, ἃς παράγουσιν ἡμν. Ἐν ἀρχῇ, φησίν, ἐποίησεν ὁ Θεὸς τὸν οὐρανὸν καὶ τὴν γῆν. Ἡ δὲ γῆ ἦν ἀόρατος καὶ ἀκατασκεύαστος. Καί· Ἦν ἄνθρωπος ἐξ Ἀρμαθαὶμ Σιφά. Ταῦτά ἐστιν, ἃ νομίζουσιν ἰσχυρά. Καὶ ἰσχυρά, ἀλλ' εἰς τὸ δεῖξαι τὴν παρ' ἡμῶν ὀρθότητα τῶν δογμάτων ἀσθενέστερα ὄντα πάντων, πρὸς τὸ στῆσαι τὴν βλασφημίαν αὐτν. Τί γάρ, εἰπέ μοι, κοινὸν ἔχει πρὸς τὸ ἐποίησε τὸ ἦν ; Τί δὲ ὁ Θεὸς πρὸς τὸν ἄνθρωπον ; Τί τὰ ἄμικτα μιγνύεις, καὶ συγχεῖς τὰ διαιρούμενα, καὶ τὰ ἄνω κάτω ποιεῖς ; Ἐνταθα γὰρ ο τὸ ἦν δείκνυσι τὸ ἀΐδιον μόνον, ἀλλὰ καὶ τὸ, Ἐν ἀρχῇ ἦν. Ὥσπερ οὖν τὸ ὢν ὅταν μὲν περὶ ἀνθρώπου λέγηται, τὸν ἐνεστῶτα χρόνον δηλοῖ μόνον, ὅταν δὲ περὶ Θεοῦ, τ ἀΐδιον δείκνυσιν· οὕτω καὶ τὸ ἦν, περὶ μὲν τῆς ἡμετέρας λεγόμενον φύσεως, τὸν παρελθόντα χρόνον σημαίνει</bloco>
 
-Illic et Arii opinionem approbantibus lethale vulnus infligit. Non enim imperantis more dixit: Facito, tanquam minorem, aut essentia inferiorem alloqueretur, sed parem honoris gradum ostendens: Faciamus, inquit. Et quae deinceps sequun- tur magnam nobis essentiae declarant similitudinem.
+  <bloco tipo="nota_marginal" script="latino" bbox="540,70,555,90">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="540,270,555,290">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="540,480,555,500">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="540,690,555,710">D</bloco>
 
-Ejusdem ex interpretatione illorum verborum: 'Et assumpsit Deus hominem, quem formaverat'. 
-
-In ipso statim principio duo posuit. Neque enim dixit: Dominus, et tacuit, sed adjecit: Deus, duobus hisce verbis: Dominus Deus, reconditum et arcanum quidam nos docens, ut scire possimus, sive Dominum, sive Deum audiverimus, inter haec duo nomina nihil interesse. Ne igitur audiens Paulum ita dicentem: Unus Deus Pater, ex quo omnia, et unus Dominus Jesus Christus, per quem omnia, pules in his vocibus discrimen aliquod, et una quidem majus, altera minus indicari. Idecirco utraque promiscue et communiter utitur Scriptura, ne liceat hominibus pugnacibus rectam doctrinam contentionibus suis pervertere et conturbare.
-
-Ejusdem ex interpretac:ione in illa verba: 'In principio erat Verbum'.
-
-Illud: In principio erat Verbum, non significat, inquiunt, æternitatem: idem enim de cælo et terra dictum est. O insigne impudentiam, et magnam temeritatem! Ego tibi de Deo loquor, et tu mihi terram et homines et terra conflatos in me- dium affers? Ergo quoniam homines filii Dei dicun- tur et dici: Ego enim, inquit, dixi, Dii estis, et filii Excelsi omnes', Unigeniti divinitatem in du- bium vocabis, eumque nihil amplius habere, quam te, dices? Minime vero, inquis. Aqui sic agis, li- cet verbis haud ita loquaris. Cum enim ipsum na- tura Filium neges, quid aliud moliris, nisi ut Fi- lium esse per gratiam probes? Sed testimonia, quæ ab istis afferuntur, consideremus. In prin- cipio, inqui, fecit Deus cœlum et terram. Terra autem erat invisibilis et incomposita'. Ei, Fuit [ilegivel] de Ramathaimsothim? Hæc isti putant adun- dum firma et valida argumenta, et sunt illa sane firma et valida ad doctrinam nostram con.pro- bandam. Nam ad confirmandam detestabilem ipso- rum opinionem nihil potest infirmius cogitari. Dic enim, obsecro, quid commune habet illud, Fecit, cum hoc: Erat? Quid rursus Deus cum homine? cur commisces ea quæ misceri nequeun? cur ea quæ sunt divina confundis, et ea quæ superiora sunt, inferiora constituis? Hic enim non solum illud: Erat, indicat æternitatem, sed etiam illud: Verbum erat; et illud: In principio erat. Quemad- modum enim illud: Qui est, cum de homine dici-</bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="510,120,960,900">
-ΕΥΘΥΜΙΙ ΖΙΓΑΒΕΝΙ
-
-'Επι κατα 'Αρειανω˙ του μεγάλου Ίωαννου του Χρυσοστόμου εκ της ερμηνειας της εις τὸ: 'Ποιησωμεν ανθρωπον'.
-
-'Ενταυθα και τοις τα 'Αρειου φρονουσιν κακως εδόκει την πληγῆν. Ουδε γαρ προστακτικῶς ειπε Ποιησου, ως υποδεεστέραν η ελαττον κατα την ουσι- αν, αλλα μετα πολλης της ισοτητος, Ποιησωμεν. Και το εξης δε πολλην δεικνυσιν ἡμων της ουσιας την ομοιωσιν.
-
-'Εκ της ερμηνειας της εις τὸ, 'Ελαβε Κυριος ὸ θεος τον ανθρωπον ων ἐπλασεν.'
-
-Ειδεως εκ προσωπων τα δυο τολεθελκα. Ουδε γαρ ειπε; Κυριος, και εσιγησεν, αλλα προσεθηκεν ο Κυριος ὸ θεος, ταυτα ειπὼνες, ινα και κεχρυμενόν εντευθεν διδάξη̣ν ημὲς, ινα ειδεναι εχωμεν, ὅταν τὸ Κυ- ριον ακουσωμεν, καὶ 'ομοίου, οὑτε τὸ ὁνομα σι γι ἐστι διαφορα. Τοιουτο δε νυν ουχ απλῶς εντυπ- νευσα, αἰτι αν ινα, ό̣ταν αθουσι; Παύλου λεντοντος: 'Εις θεος ο͂ Πατηρ, εξ οι τα παντα, και εις Κυριος 'Ιησους Χριστος, δι' ου τα παντα, μη νομῃς διαφορεσιν ειναι εν ταις λεξει, και τῶν μεν μειζοv τ. δηλαδη, τῇ δε ελαττον. Δια τουτο και διασαφωσις η Γραφη τούτους κήρυττει τοις όνομασι, ινα μη εξε̣ι του̣ς φιλονεικους διαχειμενους τα εις αἷλας υπονοιας επιστρεψιν τῆν των δογματων ορθοτητις.
-
-Του αυτου εκ της ερμηνειας της εις τὸ 'Εν αρχη ην ὸ Λογος.'
-
-Τῶ, 'Εν αρχη ην ὁ Λογος, οὑ το αδίηον, φασι, δει- χνυσι. Και γαρ και περι ουρανῶ τι το ελεχθη και περι της. 'Α της ανασυγκυσεως και της ανεξελιδεις της πολλης! Περ̣ι δὲ σο εἱ διαλεγομαι, και οι μοι τήν γην φησι μεσω, και τοῦς απο της γης, αν- θρωπους; Ουκουν ἰπεῖν καὶ ὁ ανθρωπος οἱο͂ς Θεοι λεγεσθαι, και θεοι, 'Εγω γραφω, φασιν, ελιω, δεῖλ ὁστε, και ιου' γλυκτοι πάντες, φλογισκεῖς τῶ Μονογενειη της υιοτητος, και ουδὰν φησιν αύτον εχεται κατα τουτον τὸ ὁνομα; Ουδιάλλως, φησι. Και μιν τούτοι ποεῖς, και μη τῶ λογω λεγεις. Τι γαρ μι φασιν ειναι λεγειν αυτον Πιθον ουδὰν ετερον η χαρις ειναι τουτον κατασκευαζεις. Πλην αλλή τιμωσιν και τὰ μαρτυρια, ἁ παραγουσιν ἥμιν. 'Εν αρχη, φησ', ἐπονησε ὁ θεος τον ουρανον και την γην'. Η δε ην αδικαιοσ και ακατασκευαστος. Καὶ 'Ηρ ἀπροωος εκ Αραμαθαιμ Σοθ. Ταυτα ισθυι, και ορ- γιον ισχυρα. Και ισχυρα, αλλ' εις τὸ δεξιαν την παρα' ημων ορθοτητα των δογματων αδελφεστερα θηκα παντων, προς το στηριξιν την βλασφημιαν αυτων. Τι γαρ, ειπε; ουκ, χοινοι εχες προς, τα δοξια τοῦ ῆ; Τι δε ὁθεος προς τον ανθρωπον; Τι τα αμηχα ρη ειναι, και συγχεως τα διαιρουμενα, και τα αμ- λοι κατω ποεισι; 'Ενταυθα γαρ ου τὸ 'ῆ τιο δεδειχασκτο 'αει μονον, αλλα και τὸ. 'Εν αρχη ην', 'Ανευρον τό˙ ὅταν μεν περι ανθρωπων λεγεις, την ενδεστα τι χρονον δηλοι μονον, ὁταν δε περι θεου, το αλλιον δεικνυσι: οὑτω και τὸ, περ̣ι μεν της της μετα τελεγμενον ρυσεως, τον παρελθοντα χρονον σημαινει</bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="495,200,515,260">
-A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,320,515,380">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,440,515,500">
-C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,560,515,620">
-D
-  </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="40,900,490,980">
-1 Gen. 1, 2E. 2 Gen. 11, 15. 1 Cor viii, 6. 1 Reg. 1, 1.
-  </bloco>
-  <bloco tipo="rodape" script="grego" bbox="510,900,960,980">
-1 Joan. 1, 1. * Psal. LXXXI, 6. * Gen. 1, 1, 2.
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="350,980,650,998">
-Digitized by Google
-  </bloco>
-  <notas>
-  - Letras marginais A, B, C, D colocadas como blocos separados conforme instruções.
-  - [ilegivel] usado para palavras individuais cuja leitura é incerta; não foi usado para blocos inteiros.
-  - BBox valores são estimativas proporcionais à imagem em escala 0-1000.
-  </notas>
+  <bloco tipo="aparato_critico" script="latino" bbox="130,885,530,915">¹ Gen. 1, 26. ² Gen. 11, 15. ³ I Cor VIII, 6. ⁴ I Reg. 1, 4.</bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="560,885,960,915">⁵ Joan. 1, 1. ⁶ Psal. LXXXI, 6. ⁷ Gen. 1, 1, 2.</bloco>
+  
+  <bloco tipo="rodape" script="latino" bbox="560,950,780,980">Digitized by Google</bloco>
 </pagina>

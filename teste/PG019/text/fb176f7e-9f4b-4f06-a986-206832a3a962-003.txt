@@ -1,28 +1,58 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="60,30,940,170">
-PATROLOGIÆ
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="100,50,880,130">
+    PATROLOGIÆ
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="200,170,800,240">
-CURSUS COMPLETUS,
+  <bloco tipo="cabecalho" script="latino" bbox="240,130,690,170">
+    CURSUS COMPLETUS,
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,240,880,920">
-PROFECTE [ilegivel] UNIVERSALIS PATRUM, [ilegivel] [ilegivel].
-OMNISS. PATR. [ilegivel] DOCTORUM, [ilegivel] [ilegivel],
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel].
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel].
-[ilegivel] [ilegivel] [ilegivel].
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel].
-SERIES I.
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel].
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel].
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel].
+  <bloco tipo="texto_principal" script="latino" bbox="90,175,850,205">
+    BIBLIOTHECA UNIVERSALIS, INTEGRA, UNIFORMIS, COMMODO, ŒCONOMICA,
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,930,980,980">
-Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="40,200,900,245">
+    OMNIUM SS. PATRUM, DOCTORUM, SCRIPTORUMQUE ECCLESIASTICORUM,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,240,850,290">
+    QUÆ IN EO CONTINENTUR A PRIMO ECCLESIÆ ÆVO USQUE AD INNOCENTII III TEMPORA;
+    ET AD 1300 PRO PATROLOGIA LATINA, AD 1439 PRO PATROLOGIA GRÆCA.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="250,290,640,315">
+    RECENSIO CHRONOLOGICA
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,315,900,580">
+    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+    [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="300,590,500,615">
+    SERIES PRIMA
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="250,615,680,640">
+    SIVE PATROLOGIA LATINA
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="300,650,600,675">
+    AUCTORE J.-P. MIGNE
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,680,520,700">
+    PARISIIS,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,705,750,730">
+    EXCUDITUR ET VENIT APUD EDITOREM, IN VIA DICTA D'AMBOISE,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="30,725,600,750">
+    PROPE PORTAM PARISIIS.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="370,950,420,970">
+    1857
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="780,890,860,910">
+    INFER
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="580,950,800,980">
+    Digitized by Google
   </bloco>
   <notas>
-- Muitas linhas estão fortemente desbotadas; usei a marca [ilegivel] para palavras individuais que não puderam ser lidas com segurança.
-- Não foram identificadas marcas marginais "A", "B", "C" ou "D" visíveis; portanto, nenhum bloco nota_marginal foi criado para essas identificações.
-- As caixas (bbox) são aproximações relativas à imagem em escala 0-1000.
+    Transcrição da página de título da Patrologia Latina. A imagem apresenta alto contraste e ruído, tornando o bloco central sob "RECENSIO CHRONOLOGICA" ilegível, marcado como [ilegivel]. Os títulos principais e informações de publicação são visíveis. A marca "INFER" está na margem inferior direita.
   </notas>
 </pagina>

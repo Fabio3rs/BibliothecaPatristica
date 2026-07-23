@@ -1,105 +1,200 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="30,20,970,80">
-517
-DE CERIMONIS AULÆ BYZANTINÆ LIB. I.
-518
-  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,100,60">517</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="250,30,750,60">DE CERIMONIIS AULÆ BYZANTINÆ LIB. I.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="900,30,950,60">518</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,60,450,90">τρίκλινα καὶ ὀφφικιάλιοι καὶ οἱ δύο δήμαρχοι· καὶ ὁ σιλεντιάριος, οἱ δ πραιπόσιτοι λαμβάνουσιν ἀνὰ ἱμα-</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,90,450,110">τίων ἐῤῥαμμένων ἀπὸ τριβλαττίων ⁶⁹ ὀρνεμένων (92) β', καὶ οἱ δήμαρχοι ἀδδία· (93).</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="180,110,300,130">ΚΕΦΑΛ. ΜΘ'.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="600,110,750,130">CAPUT XLIX.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,130,450,150">Ὅσα δε παραφυλάττειν ἐπὶ προβολῇ ἀνθυπά-</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="220,150,280,165">των.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,130,850,150">Observanda in promotione proconsulum.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="460,165,480,185">A</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,165,450,185">Α'. Καθέζεται ὁ βασιλεὺς ἐπὶ τοῦ σένζου ἐστεμ-</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,165,900,185">1. Imperator in throno coronatus suaque tunica</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,185,450,205">μένος, φορῶν τὴν χλανίδα αὐτοῦ, καὶ ἵστανται οἱ</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,185,900,205">indutus sedet, cubiculo præfecti secundum ordinem</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,205,450,225">τοῦ κουβουκλείου ἄρχοντες ἐν τῇ τάξει αὐτῶν· οἱ δὲ</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,205,900,225">suum, spatharocubicularii et cubicularii a tergo</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,225,450,245">σπαθαροκουβικουλάριοι· καὶ οἱ κουβικουλάριοι ἵσταν-</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,225,900,245">imperatoris, in semicirculo protospatharii eunuchi</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,245,450,265">ται ὀπίσθεν τοῦ βασιλέως κύκλοθεν ⁷⁰ (94) τοῦ ἡμικυ-</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,245,900,265">prope thronum, sabania sua et spathiobaculos fe-</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,265,450,285">κλίου, οἱ δὲ πρωτοσπαθάριοι· οἱ εὐνοῦχοι ἵστανται</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,265,900,285">rentes, astant. Papias, thuribulo sumpto, similiter,</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,285,450,305">πλησίον τοῦ σένζου, φοροῦντες τὰ σαβάνια αὐτῶν,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,285,900,305">ut in processione patriciorum, incensat et discedit.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,305,450,325">βαστάζοντες καὶ τὰ σπαθοβάκιλα αὐτῶν. Καὶ λαβὼν</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,305,900,325">Deinde signo ab imperatore accepto, intrat præpo-</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,325,450,345">θυμιατὸν ὁ παπίας, θυμιᾷ ὁμοίως, ὡς ἐπὶ προβολῇ</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,325,900,345">situs et inter cubiculi præfectos medius stat, per-</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,345,450,365">πατρικίων, καὶ ὑποχωρεῖ. Εἶτα λαβὼν νεμα ὁ πραι-</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,345,900,365">acta adoratione, in tripetonem cum duobus ostia-</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,365,450,385">πόσιτος παρὰ τοῦ βασιλέως, εἰσέρχεται καὶ ἵσταται</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,365,900,385">riis procedit, omnemque ritum, quem in promo-</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,385,450,405">μέσον ἀναμεταξὺ τῶν ἀρχόντων τοῦ κουβουκλείου,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,385,900,405">tione patriciorum supra exposuimus, observat.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,405,450,425">καὶ προσκυνήσας, ἐξέρχεται ἐν τῷ τριπέτωνι μετὰ</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,405,480,425">B</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,405,900,425">Deinde velum I sive magistros, qui omnia, ut mos</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,425,450,445">δύο ὀστιάριων, καὶ ἐκτελεῖ πάντα, ὃν τρόπον ἀνω-</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,425,900,445">est, perficiunt: iterum egressus, velum II, patricios</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,445,450,465">τέρω εἰρήκαμεν ἐν τῇ προβολῇ τῶν πατρικίων. Καὶ</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,445,900,465">et strategos, cæteraque vela, demarchos quoque et</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,465,450,485">εἰσάγει βῆλον α', μαΐστρους, καὶ ἐκτελεῖ πάντα,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,465,900,485">scholarum vicarium adducit. Si vero futurus pro-</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,485,450,505">ὡς ἡ συνήθεια ἔχει, ὁμοίως· πάλιν ἐξελθὼν εἰσάγει</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,485,900,505">consul in processione non ingressus est, præposito</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,505,450,525">βῆλον β', πατρικίους καὶ στρατηγοὺς, καὶ ἁπλῶς τὰ</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,505,900,525">accito imperator nomen promovendi dicit, hic ce-</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,525,450,545">λοιπὰ βῆλα, τούς τε δημάρχους καὶ τὸν τοποτηρητὴν</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,525,900,545">rimoniario, qui ipsum excipiens, ut supra de præ-</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,545,450,565">τῶν σχολν. Καὶ εἰ μὴ εἰσῆλθεν ἐν τῇ δοχῇ ὁ μέλ-</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,545,900,565">posito observatum est, coram præfectis cubiculi</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,565,450,585">λων γενέσθαι ἀνθύπατος, προσκαλεσάμενος ὁ βασι-</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,565,900,585">statuit, et purpureum quaternionem imperatori</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,585,450,605">λεὺς τν πραιπόσιτον, λέγει τὸ ὄνομα τοῦ μέλλοντος</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,585,900,605">tradit: 150 ceremoniarius vero cum silentiario</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,605,450,625">προβληθῆναι, κἀκεῖνος λέγει τῷ τς καταστάσεως,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,605,900,625">eum in conspectum imperatoris ductum adorare</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,625,450,645">κἀκεῖνος λαβὼν αὐτὸν, ὡς ἐπὶ πατρικίου, ἵστησιν</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,625,900,645">pedesque et genua ejus osculari jubent. Postea ab</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,645,450,665">αὐτὸν ἔμπροσθεν τῶν ἀρχόντων τοῦ κουβουκλείου,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,645,900,665">imperatore purpureum quaternionem seu procon-</bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="30,90,480,880">
-ΚΕΦΑΛ. ΜΘ'. A
-Ἴσα διὰ παραψυλλαττειν ἐπὶ προσθολῆς ἀνοπλα-
-τῶν.
+  <bloco tipo="aparato_critico" script="latino" bbox="350,680,650,700">VARIAE LECTIONES.</bloco>
+  
+  <bloco tipo="aparato_critico" script="misto" bbox="50,700,450,720">⁶⁹ τριβλατίων ὀρναμένων ed. ⁷⁰ κυκλόθεν cod.</bloco>
 
-Α'. Καθέζεται ὁ βασιλεὺς ἐπὶ τοῦ σέγκου ἐστεμμέ-
-νος, φορεῖ τὴν χλαιδὰν αὐτοῦ, καὶ ἵσταται οἱ
-τοῦ κουφοσουκλείου ἄρχοντες ἐν τῇ τάξει αὐτῶν· οἱ δὲ
-σταθαροκουκουλάριοι· καὶ οἱ κουφοκουλάριοι ἔστη-
-σαν ἐπὶ τῆς βολῆς· κύκλωθεν (94) τοῦ ἡμιχκ-
-λίου, οἱ δὲ πρωτοσταθάρχοι οἱ εὐνοῦχοι ἑστάνται·
-σπλᾶγχν τὸν σέγκον, σοροῦτες τὰ σαβάνια τῶν
-βασιλισχόντων· καὶ τὰ σταλαβδικά αὐτῶν. Καὶ λαβὼν
-θυμιατὸν ὁ πατριὰρχης, θυμία ὁμοίως, ὡς ἐπὶ προσθῆ-
-πρειν, καὶ ὑποχωρεῖ. Εἶτα λαβὼν νεῦμα ὁ πα-
-τριάρχης· παρὰ τοῦ βασιλέως, εἰσέρχεται καὶ ἵσταται
-μέσῳ ἀναμεταξὺ τῶν ἀρχόντων τοῦ κουφοσουκλείου,
-καὶ προσκυνητὰς, ἔξέρχεται ἐν τῷ τριπέτῳ μετὰ
-δύο ὀστέων, καὶ ἐκτελεῖ πάντα, ὡς τρόπον ἀνω-
-τέρω εἰρηκὼς ἐν τῇ προσθῇ τῶν πατρίων. Καὶ
-εἰσάγει βῆλον α', μαγίστρους, καὶ ἐκτελοῖ πάντα,
-ὡς ἡ συνήθεια ἔχει, ὁμοίως· πάλιν ἐξελθὼν εἰσάγει
-βῆλον β', πατριάρχους καὶ στρατηγοὺς, καὶ ἄλλα τὰ
-λοιπὰ βῆλα, τοὺς τε δημάρχους· καὶ τὸν τοποτηρητὴν
-τῶν σχολῶν. Καὶ ἐὰν μὴ εἰσήλθεν ἐν τῇ ἔλθῃ ὁ μέλλων
-γενέσθαι ἀνθύπατος, προσκληθησόμενος ὑπὸ τοῦ βασι-
-λέως τὸν πραπιστίστα, λέγει τὸ ὄνομα τοῦ μέλλοντος
-προβληθῆναι, καὶ ἐὰν ὁ εἶπεν ὁ [ilegivel] λέγει τῷ τῷ κατε-
-στασίᾳ· καὶ εἰκά τε λοιπὰ. (παραλλαγαὶ καὶ [ilegivel])
-  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="280,730,720,750">JOAN. JAC. REISKII COMMENTARIUS.</bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="490,140,510,200">
-A
-  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,750,480,770">C</bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="520,90,970,880">
-CAPUT XLIX.
-Observanda in promotione proconsulum.
+  <bloco tipo="texto_principal" script="misto" bbox="50,750,450,770">(92) M. τριβλαττίων ὀρνεμένων. Erit itaque sic</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,750,900,770">stet ad sinistram imperatoris illius hyparchus, quem</bloco>
+  
+  <bloco tipo="texto_principal" script="misto" bbox="50,770,450,790">distinguendum: ἀπὸ ἱματίων ἐῤῥαμμένων, vestibus</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,770,900,790">nos dicimus præfectum, et dicat ei imperator: Cum</bloco>
+  
+  <bloco tipo="texto_principal" script="misto" bbox="50,790,450,810">consutis (de quibus ad p. 371 disputo), et ἀπὸ</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,790,900,810">protospathario futurum patricium adducito. Dum au-</bloco>
+  
+  <bloco tipo="texto_principal" script="misto" bbox="50,810,450,830">τριβλαττίων ὀρνεμένων, (id est, ὠρνημένων a verbo</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,810,900,830">tem venerit patricius, inprimis osculetur pedes impe-</bloco>
+  
+  <bloco tipo="texto_principal" script="misto" bbox="50,830,450,850">ὀρνν orna, hoc est ora, vel potius ornatione; hoc</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,830,900,850">ratoris, deinde genu, ad extremum osculetur ipsum,</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,850,450,870">est prætexta instruere), instructis orna triblatæ,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,850,900,870">tunc osculetur omnes Romanos circumstantes, et dicant</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,870,450,890">seu serica prætexta ter tincta, seu saturatissimi</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,870,900,890">omnes: Beneveniatis. Nobis nimium laboriosum esse</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,890,450,910">coloris purpurei. "Opva non tantum Græcis, sed</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,890,900,910">videtur concessum nobis a Deo ministerium solum pro-</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,910,450,930">et Latinis medii ævi est ora, omne quod aliquam</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,910,900,930">curare: quocirca te nobis adjutorem facimus, et hunc</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,930,450,950">non modo vestem, sed etiam rem quamcunque</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,930,900,950">honorem tibi concedimus, ut Ecclesiis Dei et pauperibus</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,950,450,970">ambit et quasi continet; vid. Du Cange Gloss. Gr.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,950,900,970">legem facias, et inde opud altissimum Judicem ra-</bloco>
+  
+  <bloco tipo="texto_principal" script="misto" bbox="50,970,450,990">v. ὄρνα et Lat. v. urna, quibus addam hunc Chron.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,970,900,990">tionem reddas. Tunc induat eum imperator mantum,</bloco>
 
-1. Imperator in throno coronatus' sunaque tunica
-indutus sedet, cubiculo praefecti secundum ordinem
-suum, spatharocubicularii et cubicularii a tergo
-imperatoris, in semicirculo propospathari eumclicit
-prope thronum, sabania sua et spathabaculos se-
-rientes, aslanl. Papias, thuribulo sumpto, similiter,
-ut in processione patriciorum, incensat et discendit.
-Deinde signo ab imperatore accepto, intrat praeso-
-nsitus et inter cubiculum praefectos medius stat, per-
-acta adoratione, in tripenonem cum duobus ostia-
-riis procedit, omnemque ritum, quem in promo-
-tione patriciorum supra exposuimus, observat.
-Deinde velum sive magistros, qui omnia, ut mos
-est, perficientur: iterum egressus, velum II, patrices
-et strategos, caeteraque vela, demarchos quoque et
-scholarum vicarium adducit. Si vero futurus pro-
-consul in processione non ingressus est, praeposito
-accito imperator nomen promovendi dicit, hic ce-
-remoniario, qui ipsum excipiens, ut supra de prae-
-posito observatum est, coram praefectis cubiculii
-statuit, et purpureum quaterniorem imperatori
-tradit: 150 cerimonialius vero cum cilentario
-eum in conspectum imperatoris ductum adorare
-pedesque et genua ejus osculari jubent. Postea ab
-imperatore purpureum quaternionem seu procon-
-sulis...
-  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,990,450,1010">Cassin. III, 33: rotundas imagines omnes argenteas</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,990,900,1010">et ponat ei in dextro indice annulum, et det ei bom-</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,1010,450,1030">solum urna quatuor librorum circumdans; ubi urna</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,1010,900,1030">bacinum propria manu scriptum ubi taliter conti-</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,1030,450,1050">idem est atque id, quod nostrates Rahmen appellant.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,1030,900,1050">neatur scriptum: Esto patricius, misericors et</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,1050,450,1070">Idem III, 57, memorat coopertorium altaris sericum</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,1050,900,1070">justus. Tunc ponat ei in caput aureum circulum, et</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,1070,450,1090">cum urna purpurea, ornatum margaritis et smaltis.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,1070,900,1090">dimittat. Observo ad hanc formulam adhuc, post</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,1090,450,1110">Sed, ut dixi, credibilius mihi quidem est, orna esse</bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="500,1090,900,1110">salutationem Beneveniatis (καλῶς λθες) deesse:</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,1110,450,1130">pro ornatio vel ornatura; cujus formationis exempla</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,1110,900,1130">tunc ait imperator, aut simile quid. Pro legem fa-</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,1130,450,1150">plura, et in iis hoc ipsum orna quoque, Salmasius</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,1130,900,1150">cere diceremus hodie justitiam administrare. De</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,1150,450,1170">protulit ad Scr. Hist. Aug. t. II et 773. Non possum</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,1150,900,1170">annulo et circulo patriciali Græci nihil habent.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="460,1160,480,1180">D</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,1170,450,1190">in fine hujus capitis, quin formulam veterem Lati-</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,1170,900,1190">Bombacium notat chartam bombycinam, in qua</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,1190,450,1210">nam creandi patricii, quam ex Paulo Forojuliano</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,1190,900,1210">diploma patriciatus scriptum erat. Græci tabulas</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,1210,450,1230">de gestis Longobardorum Du Cange in Gloss. Lat.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,1210,900,1230">eburneas, diptycha, adhibebant cum intus jacente</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,1230,450,1250">v. Patricius edidit, hic adam. Poterit nonnulla</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,1230,900,1250">codicillo, seu libello chartaceo, id est pergamen0.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,1250,450,1270">nostri codicis illustrare, et jucundum erit ambo</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,1250,900,1270">Vid. ad p. 414.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,1270,450,1290">conferre. Patricii dignitas taliter disponenda est,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,1270,900,1290">(93) De hac voce conjecturam profero in not.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,1290,450,1310">quatenus illa non vili personæ, nec alicui concedatur</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,1290,900,1310">ad pag. 271.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,1310,450,1330">ignoto. Sit enim valde notus imperatori, sit fidelis</bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="500,1310,900,1330">(94) M. κυκλόθεν. Forte quoque εἰς σχῆμα deest,</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,1330,450,1350">et prudens, non elatus. Protospatharius veniens ante</bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="500,1330,900,1350">εἰς σχμα ἡμικυκλίου; conf. p. 143, nisi κυκλόθεν</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,1350,450,1370">imperatorem osculetur suum humerum et dicat:</bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="500,1350,900,1370">ipsis notet δίκην κύκλου.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="50,1370,450,1390">Maxime imperatorum, adest, quem vocasti. Tunc</bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="490,320,510,380">
-B
-  </bloco>
-
-  <bloco tipo="cabecalho" script="latino" bbox="30,740,970,790">
-VARIAE LECTIONES.
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="30,800,970,940">
-JOAN. JAC. REISKI COMMENTARIUS.
-
-(92) M. τριβλλατων ὀγκαμμένων ed. τὸ κυκλόθεν cod.
-[segue commentarius multi-linguis et nota critica, pars graeca et pars latina, textus densus et notae marginales].
-  </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="30,940,970,995">
-Digitized by Google
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,500,510,560">
-C
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,690,510,740">
-D
-  </bloco>
-
-  <notas>
-Pagina com texto em dois colunas; coluna esquerda em grego (transcrição parcial com termos ilegíveis marcados como [ilegivel]); coluna direita em latim. Letras A, B, C, D no gutter transcritas como blocos nota_marginal separados. Onde o original é incerto foram usados marcadores [ilegivel] para palavras isoladas.
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="580,960,800,990">Digitized by Google</bloco>
 </pagina>

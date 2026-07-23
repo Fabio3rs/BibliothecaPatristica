@@ -1,108 +1,64 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="80,10,920,70">
-185       SACRA PARALLELA.       186
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="40,80,490,900">
-TITA. IA'. — Περὶ ματαιοδοξούντων.
+  <bloco tipo="cabecalho" script="latino" bbox="40,50,80,70">135</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="370,50,630,70">SACRA PARALLELA.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,50,890,70">156</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="40,80,440,100">TIT. IA'. — Περὶ ματαιοπορούντων.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="40,100,440,120">« Εἰς κενὰ καὶ μάταια ἐκτείνασιν πλοῦτον, ἐξ οὗ οὐ γεύσεται. »</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="40,120,440,140">« Πλὴν μάτην ταράσσεται πᾶς νθρωπος ζῶν. »</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="40,150,440,180">« Ὁ σπείρων φαῦλα θερίσει κακά· ματαιότητι ἔργων αὐτοῦ συντελέσει. »</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="40,190,440,210">« Οἱ διώκοντες μάταια, ἐνδεεῖς φρενῶν. »</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="40,210,440,230">« Πάντες μάταιοι ποιοῦντες καταθύμια αὐτῶν, &amp; οὐκ φελήσει αὐτούς. »</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="40,230,440,260">« Ἐγὼ εἶπα· Κενῶς ἐκοπίασα εἰς μάταιον, καὶ εἰς οὐδὲν ἔδωκα τὴν ἰσχύν μου. »</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="40,270,440,310">« Πεποίθασιν ἐπὶ ματαίοις, καὶ λαλοῦσι κενά· ὅτι κύουσι πόνον, καὶ τίκτουσι μάταια, καὶ ἱστὸν ἀράχνης ὑφαίνουσι. »</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="40,310,440,330">« Συγκολλῶν στρακον,  διδάσκων μωρόν. »</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="40,340,440,390">« Εἷς οἰκοδομῶν, καὶ εἷς καθαιρῶν, τί ὠφελεῖ πλέον ἢ κόπους; Εἷς εὐχόμενος, καὶ εἷς καταρώμενος, τίνος φωνῆς εἰσακούσεται ὁ Δεσπότης; »</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="40,400,440,430">Κοσκίνῳ φέροντες ὕδωρ, καὶ ες τετρημένον πίθον ἀνθλοῦντες.</bloco>
+  
+  <bloco tipo="cabecalho" script="grego" bbox="180,440,300,460">ΣΤΟΙΧΕΙΟΝ Ν.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="40,460,440,490">TIT. A'. — Περὶ νεότητος, καὶ τῆς νέας ἡλικίας.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="40,490,440,520">« Ἐν τίνι κατορθώσει νεώτερος τὴν ὁδν αὐτο; ἐν τῷ φυλάξασθαι τοὺς λόγους σου. »</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="40,520,440,550">« Νεανίσκος μετὰ ὁσίων, καὶ εὐθεῖα  ὁδὸς αὐτοῦ. »</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="40,550,440,580">« Ἀγαθς, παῖς πένῃς κα σοφός, ὑπὲρ βασιλέα πρεσβύτερον καὶ ἄφρονα· »</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="40,580,440,630">« Εὐφραίνου, νεανίσκε, ἐν ἡμέραις νεότητός σου, καὶ ἀγαθυνάτω σε ἡ καρδία σου· καὶ περιπάτει ἐν ὁδοῖς καρδίας σου ἀμώμως. »</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="40,640,440,670">« Δάλησον, νεανίσκε, εἰ χρεία σοι· μόλις δὲ, ἐὰν μὴ ἐπιρωτηθῇς. »</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="40,680,440,740">« Βούλομαι τὰς νεωτέρας γαμεῖν, τεκνογονεῖν, οἰκοδεσποτεῖν, μηδεμίαν ἀφορμὴν διδόναι τῷ ἀντικειμένῳ, λοιδορίας χάριν. Ἤδη γάρ τινες ἐξετράπησαν ὀπίσω τοῦ Σατανᾶ. »</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="40,740,440,900">Φύσει ἀρρώστημα τοῦτο νέοις, κουφότητι γνώμης ἔχειν ἤδη νομίζειν τὰ ἐλπισθέντα. Ὅταν γάρ ποτε ἡρεμίᾳ λάβωνται, ἢ ἡσυχίας νυκτερινῆς, ἀναπλάττουσιν ἑαυτοῖς φαντάσματα ἀνυπόστατα, τῇ εὐκολίᾳ τς διανοίας ἐπὶ πάντα φερόμενοι. Ὑποτιθέμενοι περιφανείας βίου, γάμους λαμπρούς, εὐπαιδίαν, γῆρας βαθύ, τὰς παρὰ πάντων τιμάς. Εἶτα μηδαμοῦ στῆναι τοῖς λογισμοῖς δυνάμενοι, ὑπερφυσώνται, καὶ ὑπὸ τῆς ἀνοίας ἀπολαύειν δοκοῦσι τῶν ποτιθεμένων, ς ἤδη παρόντων καὶ ἐ, ποσὶ κειμένων αὐτοῖς.</bloco>
 
-• Εἰς κενὰ καὶ μάταια σκοπιάζει παῖς, ὅς οὐ [ilegivel].
-
-• Ἐγὼ μάτην ταράττομαι πᾶς· ἄνθρωπος ζῶν.
-
-• Ὁ σκεπτων φαῦλα θεωρεῖ κακὰ· ματαιότης [ilegivel] αὐτοῦ συνελθείση.
-
-• Οἱ διώκοντες· μάταια, ἔνδεξις φρενῶν.
-
-• Πάντες μάταιοι ποιοῦντες καταθύμια αὐτῶν, ἄνευ ὠφελίας αὐτοῖς.
-
-• Ἐγὼ εἶπα· Κενῶς ἐκοπίασα εἰς μάταιον, καὶ εἰς οὐδὲν ἔδωκα τὴν ἰσχὺν μου.
-
-• Πεπτοθασιν ἐπὶ ματαιοῖς, καὶ χαλοῦσι κενὰ· ἐπὶ κούσοι πόνων, καὶ τίκτουσι μάταια, καὶ ἦσαν ἄρχοντες ὑφαίνουσι.
-
-• Συγκολλῶν ὀστράκον, ὁ διδάσκαλος μὴ φθόρω.
-
-• Εἰς οἰκοδομὰς, καὶ εἰς καθαρμοὺς, τί ὠφέλει πλείονος ἢ κόσμον; Εἰς εὐχάς, καὶ εἰς καταρρέοντας, τίνος ψυχῆς εἰσακούεται ὁ δεσπότης;
-
-Κοσκίνημα φέρνουσας ὕδωρ, καὶ εἰς τερημένον πίσουν ἀπόλυσις.
-
-ΣΤΟΙΧΕΙΟΝ Ν.
-
-TITΛ. Δ'. — Περὶ νεότητος, καὶ τῆς νέας ἠλικίας.
-
-• Ἐν τῇς κατωρθώσει νεώτερος τὴν ὀδὸν αὐτοῦ; ἢ τὶ φθαλῶσαι τοὺς λόγους σου.
-
-• Νεανίσκος μετὰ ὀδίων, καὶ εὐθέως ἡ ὁδὸς αὐτοῦ.
-
-• Ἄγαθος, παῖς πένης καὶ σοφός, ὑπὲρ βασιλεῖα προεβάλλον καὶ ἀφρόνων.
-
-• Εὐφραίνου νεανίσκες, ἐν ἡμέραις νεότητος σου, καὶ ἀγαλλιώσου ἡ καρδία σου· καὶ περιπάτει ἐν τοῖς τρόποις σου ἀμώμως.
-
-• Δαίμον, νουθετεῖς, εἰ κριθὶα σοὶ· μάλισθ' ἐὰν μὴ πειραθῇς.
-
-• Βούλομαι ταῖς νεωτερᾶς γαμεῖν, τεχνουργεῖν, οἰκοδομεῖν, μηδὲν ἀφορμῆν δίδοναι τῷ ἀντικειμένῳ, λοιδορίας χάριν. Ἦδη γὰρ τινὲς ἐξετρὰγησαν ἀπὸ τοῦ Σατανᾶ.
-
-(σημειώσεις καὶ λοιπά κείμενα [ilegivel] — τέλος στήλης)
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,140,510,190">
-A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,320,510,370">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,520,510,570">
-C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,720,510,770">
-D
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,80,960,900">
-TIT. XIV. — De iis qui frustra laborant.
-
-Job xx, 18. — In vanum laboravit congregans divitias, ex quibus non gustavit.
-
-Psal. xxxviii, 12. — Verumtamen vane conturbatur omnis homo vivens.
-
-Prov. xiii, 8. — Qui sequerunt iniquitatem, metet mala: vanitatem operum suorum consumabit.
-
-• Qui persequuntur vana, mente carent.
-
-• Omnes vani facientes quae sibi grata sunt, quae nihil sibi proderunt.
-
-Isa. xlix, 4. — Ego dixi: Sine causa laboravi in vanum; et in nihil dedi fortitudinem meam.
-
-Isa. lix, 4. — Confidunt in vanis, et loquuntur vacua; quia parturiunt dolorem, et parunt iniquitatem, et telam araneae texunt.
-
-Eccli. xxii, 7. — Conglutinant testam, qui docet fatum.
-
-Eccli. xxxiv, 28. — Unus aedificans et unus destruens, quid proderet illis nisi labor? Unus orans, et unus maledicens, cujus vocem exaudiet Dominus?
-
-S. Basilii. — Cribro ferentes aquam, et in peritum dolium infundentes.
-
-LITTERA V.
-
-TIT. I. — De adolescentia et juvenili aetate.
-
-Psal. cxviii, 9. — In quo corrigit adolescens viam suam? in custodia sermonum tuorum.
-
-Prov. — Adolescens cum viris piis, et recta via ejus.
-
-Eccl. iv, 13. — Melior est puer pauper et sapiens, quam rex stultus et insipiens.
-
-Eccl. xi, 9. — Laetare, juvenis, in adolescentia tua, et in bono sit cor tuum in diebus iuventutis tuae, et ambula in viis cordis tui immaculatus.
-
-Eccli. xxiii, 7. — Adolescens, loquere, si quid tibi opus est: vix autem nisi interrogueris.
-
-I Tim. v, 12. — Volo juiores nubere, filios procreare, matres 615 familias esse, nullam occasionem dare adversario, maledicti gratia. Jam enim quandam conversae sunt retro Satanam.
-
-S. Basil. — Juvenibus a natura morbus hic insitus est, ut prae animi levitate jam se lenire existimant ea quae sperant. Nam cum tranquillitatem nocturnumve silentum nacti sunt, ejusmodi rerum species sibi fingunt, quarum nulla existentia est; qua velocitate mentis ad omnia praecipites feruntur. Vitae sibi splendorem, illustres nuptias, praeclaram sobolem, longam senectutem, delatosque sibi ab omnibus honores, proponunt. Deinde cum nusquam cogitationibus modum possint ponere, vehementer intumescunt, et qua sunt amantia, speratis rebus, seu jam praesentibus, et velut ad pedes positis, frui sibi videntur.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="600,960,980,995">
-Digitized by Google
-  </bloco>
   <notas>
-- As transcrições de algumas palavras gregas estão marcadas com [ilegivel] onde a leitura é incerta; preservei sinais de listagem (•) tal como aparecem visualmente.
-- Os blocos A, B, C, D no interstício central (gutter) foram isolados como nota_marginal cada um contendo apenas a letra.
-- BBOXs são estimativas relativas (escala 0-1000) feitas visualmente.
-- Evitei normalizar ou traduzir o texto; onde a letra era incerta usei [ilegivel] por palavra.
+    Marginal section identifiers in the gutter:
+    A: Top section start.
+    B: Mid-section (Isa LIX).
+    C: Second section start (Stoicheion N / Littera V).
+    D: Mid-section (1 Tim).
   </notas>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="460,80,480,100">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,280,480,300">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,490,480,510">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="460,710,480,730">D</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="480,80,880,100">TIT. XIV. — De iis qui frustra laborant.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,100,880,120">Job xx, 18. — « In vanum laboravit congregans divitias, ex quibus non gustabit. »</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,120,880,150">Psal. xxxviii, 12. — « Verumtamen vane conturbatur omnis homo vivens. »</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,150,880,180">Prov. xxii, 8. — « Qui seminat iniquitatem, metet mala : vanitatem operum suorum consummabit. »</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,180,880,200">« Qui persequuntur vana, mente carent. »</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,200,880,230">« Omnes vani facientes quae sibi grata sunt, quae nihil sibi proderunt. »</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,230,880,270">Isa. xlix, 4. — « Ego dixi : Sine causa laboravi in vanum ; et in nihil dedi fortitudinem meam. »</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,270,880,310">Isa. LIX, 4. — « Confidunt in vanis, et loquuntur vacua : quia pariunt dolorem, et pariunt iniquitatem, et telam araneae texunt. »</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,310,880,340">Eccli. xxii, 7. — « Conglutinat testam, qui docet fatuum. »</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,340,880,390">Eccli. xxxiv, 28. — « Unus ædificans et unus destruens, quid prodest illis nisi labor ? Unus orans, et unus maledicens, cujus vocem exaudiet Dominus ? »</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,400,880,430">S. Basilii. — Cribro ferentes aquam, et in pertusum dolium infundentes.</bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="600,440,720,460">LITTERA V.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="480,460,880,480">TIT. I. — De adolescentia et juvenili ætate.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,490,880,520">Psal. cxviii, 9. — « In quo corrigit adolescentior viam suam ? in custodiendo sermones tuos. »</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,520,880,550">Prov. — « Adolescens cum viris piis, et recta via ejus. »</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,550,880,580">Eccle. iv, 13. — « Melior est puer pauper et sapiens, quam rex stultus et insipiens. »</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,580,880,630">Eccle. xi, 9. — « Lætare, juvenis, in adolescentia tua, et in bono sit cor tuum in diebus juventutis tuæ, et ambula in viis cordis tui immaculatus. »</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,640,880,670">Eccli. xxxii, 7. — « Adolescens, loquere, si quid tibi opus est : vix autem, nisi interrogeris. »</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,680,880,730">I Tim. v, 12. — « Volo juniores nubere, filios procreare, matres 615 familias esse, nullam occasionem dare adversario, maledicti gratia. Jam enim quædam conversæ sunt retro Satanam. »</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="480,730,880,930">S. Basil.— Juvenibus a natura morbus hic insitus est, ut præ animi levitate jam se tenere existiment ea quæ sperant. Nam cum tranquillitatem nocturnumve silentium nacti sunt, ejusmodi rerum species sibi fingunt, quarum nulla exsistentia est; qua velocitate mentis ad omnia præcipites feruntur. Vitæ sibi splendorem, illustres nuptias, præclaram sobolem, longam senectutem, delatosque sibi ab omnibus honores, proponunt. Deinde cum nusquam cogitationibus modum possint ponere, vehementer intumescunt, et qua sunt amentia, speratis rebus, ceu jam præsentibus, et velut ad pedes positis, frui sibi videntur.</bloco>
 </pagina>

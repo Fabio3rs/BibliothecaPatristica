@@ -1,106 +1,165 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="040,020,960,090">
-999  THEODOSII DIACONI  1000
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,50">
+    999 THEODOSII DIACONI 1000
   </bloco>
-
-  [!-- LEFT COLUMN (read top to bottom) --]
-  <bloco tipo="texto_principal" script="grego" bbox="040,090,480,260">
-20 Ἰφῶν τὰ μικρὰ, δεῦρο μὴ κλέπων λόγοις
-Ἀλλ' πρὸς ἡμᾶς, ἥγων; μετ' αἰσχύνης.
-Προβηθεως γὰρ τῆς δεκαχρόνου κλίνος;
-Μικρὸς παρ' ἡμῖν ἄριστ, καὶ πλήρης ψόγων.
-Τῆς Ἴλιου γὰρ τοὺς πορφυρο[ἰ]ους δόμους (18)
-25 Ἐκ τῶν ἀπ' αὑτῆς λείψαντων τεχνικοτέ,
-Εἰς θαῦμα καὶ γέλωτα συμπεπτωκότες,
-Πῆ μὲν γελώμεν τῇ πλόχῃ τῶν ψευδάτων (19),
-Πῆ δ' αὐ χροτοῦμεν τῇ σφοδρᾷ τῶν βημάτων.
-Ἀλλ', ὦ στρατηγέ, ὁ κραταιός (20), ὁ μάγνων
-30 Πράξεις ταπεινὰς εἰς ἐπιρρηνους λόγους,
-Δίχασον αὐτὰς, καὶ προσωποληψίαν
+  <bloco tipo="texto_principal" script="grego" bbox="100,50,480,230">
+    20 Ὕψων τὰ μικρά, δεῦρο μὴ κλέπτων λόγοις
+    Λάλει πρὸς μᾶς σύχως μετ' αἰσχύνης.
+    Πορθήσεως γὰρ τῆς δεκαχρόνου κλόνος
+    Μικρὸς παρ' ἡμῖν ἄρτι, καὶ πλήρης ψόγων.
+    Τῆς λίου γὰρ τος πορφυργίους δόμους (18)
+    25 Ἐκ τῶν ἀπ' αὐτς λειψάνων ἐγνωκότες,
+    Εἰς θαῦμα κα γέλωτα συμπεπτωκότες,
+    Πῇ μὲν γελῶμεν τῇ πλοκῇ τῶν ψευσμάτων (19),
+    Πῇ δ' αὖ κροτοῦμεν τῇ στροφ τῶν ημάτων.
+    Ἀλλ', ὦ στρατηγῶν ὁ κρατὴρ (20), ὁ μιγνύων
+    30 Πράξεις ταπεινὰς εἰς ἐπηρμένους λόγους,
+    Δίκαιον αὐτός, καὶ προσωποληψίαν
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="040,260,480,520">
-verecunde loquere. Namque obsidionis decennalis
-rumor parvi apud nos est, et mendaciorum plenus.
-Illi nam domos late munitas turribus ex ejus adhuc
-noscente ruderibus, in admirationem incidentes
-et risum, modo ridemus complexione mendaciorum,
-modo verborum plaudibus ambagibus. Ast, o
-ducum crater, qui ducum misces cum fastuosis
-verbis actiones humiles, judica ipsemet et persona-
-les actiones, et [ilegivel] personarum, et [ilegivel]
+  <bloco tipo="nota_marginal" script="latino" bbox="530,50,550,70">
+    A
   </bloco>
-
-  [!-- Full-width section between columns --]
-  <bloco tipo="outro" script="latino" bbox="040,520,960,580">
-VARIÆ LECTIONES.
-24. πορρυριγιος C. F. et sic in Annot. Scr. πορρυριγιος, adjectivo male formato a πορρυριγον, quod est ap. Tzest. in Schol. ad Lycophr. 290. 27. ψυχαγωγων C., in not. ψυχαγωγων. 29. ὁ κραταιρ in me-
-trum peccat, neque tamen suspecta lectio. Hujus generis peccata in his Acroasisbus ad triginta numeravimus prater licentias in nominibus propriis admissas. 32. σταθμοῦ om. C. ex tenuitud codicis vestigiis lectionem eruit F. 33. Fort. χρέστι λόγος, domini nostri expeditiones verbis celebra. 39. σύρσουια larbans.
+  <bloco tipo="texto_principal" script="grego" bbox="560,50,950,230">
+    Ἀφεὶς παλαιάν, ὡς ζυγὸς γενοῦ σταθμοῦ (21).
+    Τοῦ δεσπότου δὲ καὶ θανὼν κρότει λόγους
+    Τὰς παντοπόμπους, καὶ σοφὰς στρατηγίας.
+    35 Μικρὸς γὰρ ἡμν ὁ στρατὸς τῆς Ἑλλάδος,
+    Μικραὶ φάλαγγες, ἀσθενεῖς στρατηγέται,
+    Αἴας, χιλλεύς, δυσσεύς, Διομήδης.
+    Οἷς δόξα πολλή, καὶ θεν ψευδωνύμων
+    Ἡ συντριβὴ φέρουσα τὰς ὁμιλίας
+    40 Κακῶς κατεσπάραττεν ἐκ τῶν ἐλπίδων.
+    Ἀλλ' εἰ δοκεῖ σοι τῆς ἀληθείας τρίβους
+    Καλῶς βαδίζειν, ἢ κακῶς περιτρέχειν,
+    Ἐνταῦθα παῦε τῶν φόνων τῆς λίου,
   </bloco>
-
-  <bloco tipo="nota" script="misto" bbox="040,580,480,920">
-NOTÆ.
-ἁστῶν pro ὡς τῶν, facilem habuerit explicationem de potentia a Cæsare civibus devictis in bello civili nostra, quae instructus (σπεῖστος) venit; sicut etiam v. 18 verba τα τυχης στεργις retuleris ad opinionem illam, quam Cæsarem de fortuna sua habuisse constat. At nonnen Πορφύς quomodo ad Cæsarem trahas necesse equidem, neque in glossatoris verbis quidquam inest, quod ad tenebras illas diluendas faciat. In Glossis apud Ducangium reperio: τέμπτος, parricida. Num igitur dicamus, Caesarem sic appellari a Theodosio, quod secundum famam nonnullorum mauer eius inter parricidum perierit? (Vid. Constant. Manasses Compend. Chron. p. 57 C. et Millium ad Jo. Antioch. Vat. Chronogr. p. 275.)
-qua appellatio, sive in laudem trahas Caesaris, non ea qua vulgus hominum via in lucem edidit; sive in vituperium, Theodosii consilio non adversatur. Ad vocabulo ποιμῖτος triumpha­torem significari dixeris, cuiu vix alius quisquam plures splendidi­ioresque triumphos egisset? Verum quidquid sit, locus, ut de quo supra diximus, III, 209. Βοβυτος, ἀʹ τοῦ ποιμτεου ἐβασκε τὴν μάχαιραν ἐκ τῶν αἱμάτων — nomine manifestè docet, voce ποιμῖτος sive ποιμητής, ex quocunque tamlen fonte manaverit, Cæsarem significarit, a Bruto occisum? Sed superest tertius in his Acroasisbus locus, qui omnium haec de Cæsare opinione videtur evertere. Nam III, 205, imperatoris potentia et Nicæpoli res bello gesta præsenterur rebus gestis et potentia summorum antiquitatis virorum, quorum recensum instituit huic: Κύριος, Δαρέιος, Κροῖσος, ὁ σερατοχράτης, Καίσαρ, Ἀχιλλεὺς, Μάχαια ἔστι Ἡροστάς. Jam cum in his verbis ποιμῖτος; coram memoraveru[n]t una cum Caesare, sponte appareret, Πορ-
-φυρον non accipi posse pro Caesare. Vide tamen, quam aliquo loco Καῖσαρ ponatur inter Cressum et Achillem; et quantum adverser versui in hac sede, trochamum offerens pro iambo aut spondeo. Ob duas itaque causas suspectum movem, cui si
+  <bloco tipo="texto_principal" script="latino" bbox="100,240,480,350">
+    verecunde loquere. Namque obsidionis decennalis
+    rumor parvi apud nos est, et mendaciorum plenus.
+    Ilii nam domos late munitas turribus ex ejus adhuc
+    noscentes ruderibus, in admirationem incidentes
+    et risum, modo ridemus complexionem mendacio-
+    rum, modo verborum plaudibus ambagibus. Ast, o
+    ducum crater, qui ducum misces cum fastuosis
+    verbis actiones humiles, judica ipsemet et persona-
   </bloco>
-
-  [!-- RIGHT COLUMN (after left column completed) --]
-  <bloco tipo="texto_principal" script="grego" bbox="520,090,960,260">
-A Ἀρεῖς ταλαίαι, ὦ; τίγγε γενὸς σταθμῶς (21).
-Τοῦ δεσπότου δὲ καὶ θαυμὸν χρήσε λόγος.
-Ταῖς παντοπώπους, καὶ σοφαῖς στρατηγίαις.
-35 Μικρὸς γὰρ ἡμῖν ὁ στρατὸς τῆς Ἑλλάδος,
-Μικραὶ φάλαγγες, ἀσθενεῖς στρατηγεῖται,
-Αἴας, Ἀχιλλεὺς, Ὀδυσσεὺς, Διομήδης,
-Οἳς δόξα πολλὴ, καὶ θεῶν ψευδωνύμων
-Ἡ συντριβὴ φέρουσα τὰς ὁμίλους.
-40 Κακῶς κατεστράφεν ἐ τὸν ἐπὶ ἐλπίδων.
-Ἀλλ' εἰ δοκεῖ σοι τῆς ἀληθείας τρίβους
-Καλῶς βαδίζειν, ἢ κακῶς περιτρέχειν,
-Ἐνταῦθα παῦε τῶν φώνων τῆς Ἴλιου,
+  <bloco tipo="nota_marginal" script="latino" bbox="530,280,550,300">
+    B
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="520,260,960,520">
-rum respeсtum dimittens velerem, das ulli sca-
-pus trutinae, et quanvis mortuos plaude verbis
-despotat, missis ubique sapientibus expeditionibus.
-Parvus enim est nobis Græciæ exercitus, parvæ
-phalanges, infimi Duces Ajax, Achilles, Ulysses,
-Diomedes, quos ambitio multa, et falsorum nummi
-contentio afferens concionum discordias male
-divellebat a spe. Verum si velis veritatis semitas
+  <bloco tipo="texto_principal" script="latino" bbox="560,240,950,350">
+    rum respectum dimittens veterem, fias uti sca-
+    pus trutinæ, et quamvis mortuus plaude verbis
+    despotæ, missis ubique sapientibus expeditionibus.
+    Parvus enim est nobis Græciæ exercitus, parvæ
+    phalanges, infirmi Duces Ajax, Achilles, Ulysses,
+    Diomedes, quos ambitio multa, et falsorum numi-
+    num contentio afferens concionum discordias male
+    divellebat a spe. Verum si velis veritatis semitas
   </bloco>
-
-  <bloco tipo="nota" script="misto" bbox="520,580,960,920">
-D (18) his verbis notat poëta Homerum, qui Trojam εὐπετεγε, bene narratum, et εὐδοξέσας πρὸς γῆν bene edificatas turres frequenterque disposita habentem, saepius in illue voce soleat.
-(19) Cornelius edidit ψευδάτων, sed ad oram paginæ mendum in ea voce latenus avertit.
-(20) Non intellegatur assimulatur Homerus cracri, in quo humilià Græcorum ducum facus cum clallis ac fastuosis verbis misceretur et attenuator, eo modo, quo in craterre vivum cum aqua solum [ilegivel] temparet. Audi Plavionium: Κρατέρ σερ ἀναμεικτὸν, in quo
-του? ἐπεὶν λαμβάνοντες, Crater pas quidam, in quocum cœnæcum cum aqua antiqui miscebant, ex quo nomen hunc bibebant.
-(21) Ultimum hujus versūs verbus desideratur in editione Cornelii, quoniam in codice eo loco mannos absumpta, vix ullum ejus vestigium supersit. Nos tamen superstitibus litteris diligenter, ut polimus, inspeximus, σαβαῖον repoti posse censuimus.
+  <bloco tipo="cabecalho" script="latino" bbox="400,360,600,380">
+    VARIAE LECTIONES.
   </bloco>
-
-  [!-- Marginal identifiers in gutter A,B,C,D as separate nota_marginal blocks --]
-  <bloco tipo="nota_marginal" script="latino" bbox="490,130,520,170">
-A
+  <bloco tipo="texto_principal" script="misto" bbox="100,380,950,450">
+    24. πορφυργίους C. F. et sic in Annot. Scr. προπυργίους, adjectivo male formato a προπύργιων, quod
+    est ap. Tzest. in Schol. ad Lycoph. 290. 27. ψευσάντων C., in not. ψευσμάτων. 29. ὁ κρατὴρ in me-
+    trum peccat, neque tamen suspecta lectio. Hujus generis peccata in his Acroasibus ad triginta numera-
+    vimus præter licentias in nominibus propriis admissas. 32. σταθμοῦ om. C. ex tenuibus codicis vestigiis
+    lectionem eruit F. 33. Fort. κρότει λόγους, domini nostri expeditiones verbis celebra. 39. φέρουσα tur-
+    bans.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,330,520,370">
-B
+  <bloco tipo="cabecalho" script="latino" bbox="500,460,580,480">
+    NOTAE.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,590,520,630">
-C
+  <bloco tipo="texto_principal" script="misto" bbox="100,480,480,900">
+    ἀστῶν pro ὡς τῶν, facilem habuerit explicationem
+    de potentia a Cæsare civibus devictis in bello civili
+    nata, qua instructus (ὡπλισμένος) venit; sicut
+    etiam v. 18 verba τὰ τύχης στέφη retuleris ad opi-
+    nionem illam, quam Cæsarem de fortuna sua ha-
+    buisse constat. At nomen Πομπ́ιος quomodo ad
+    Cæsarem trahas nescio equidem, neque in glossa-
+    toris verbis quidquam inest, quod ad tenebras illas
+    diluendas faciat. In Glossis apud Ducangium reperio:
+    πόμπιος parricida. Num igitur dicamus, Cæsarem
+    sic appellari a Theodosio, quod secundum famam
+    nonnullorum mater ejus inter pariendum perierit?
+    (Vid. Constant. Manasses Compend. Chron. p. 57 C.
+    et Millium ad Jo. Antioch. Mal. Chronogr. p. 275.)
+    quæ appellatio, sive in laudem trahas Cæsaris, non
+    ea qua vulgus hominum via in lucem editi; sive in
+    vituperium, Theodosii consilio non adversaretur.
+    An vocabulo πόμπιος triumphatorem significari
+    dixeris, cum vix alius quisquam plures splendi-
+    dioresque triumphos egerit? Verum quidquid sit,
+    locus, de quo supra diximus, III, 209. Βροῦτος,
+    ὃς τοῦ πομπίου ἔβαψε τὴν μάχαιραν ἐκ τῶν
+    αἱμάτων — nonne manifeste docet, voce πόμπιος
+    sive πομπ́ιος, ex quocunque tandem fonte mana-
+    verit, Cæsarem significari, a Bruto occisum? Sed
+    superest tertius in his Acroasibus locus, qui
+    omnem hanc de Cæsare opinionem videtur evertere.
+    Nam III, 205, imperatoris potentia et Nicephori
+    res bello gestæ præferuntur rebus gestis et poten-
+    tiæ summorum antiquitatis virorum, quorum re-
+    censum instituit hunc : Κύρος, Δαρεῖος, Κροῖσος, οἱ
+    στρατοκράται, Καῖσαρ, Ἀχιλλεύς, Μακεδὼν καὶ
+    Πομπ́ιος. Jam cum in his verbis Πομπ́ιος com-
+    memoretur una cum Cæsare, sponte apparet, Πομ-
+    π́ιον non accipi posse pro Cæsare. Vide tamen,
+    quam alieno loco Καῖσαρ ponatur inter Crœsum
+    et Achillem; et quantum adversetur versui in hac
+    sede, trochæum offerens pro iambo aut spondeo.
+    Ob duas itaque causas suspectum nomen, cui si
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,800,520,840">
-D
+  <bloco tipo="nota_marginal" script="latino" bbox="530,480,550,500">
+    C
   </bloco>
-
-  [!-- Footer --]
-  <bloco tipo="rodape" script="latino" bbox="300,940,900,990">
-Digitized by Google
+  <bloco tipo="texto_principal" script="misto" bbox="560,480,950,670">
+    Aias substitueris, omnes illæ difficultates evane-
+    scent, et simul historiæ consuletur et versui. Nec
+    improbabilis videri potest conjectura, quæ a li-
+    terarum vestigiis non multum recedit; præsertim
+    cum in codice, ex quo ductæ Acroases, versuum
+    initia plurimis in locis ita sint evanida et obscura,
+    ut quid scriptum fuerit, non appareat. Nec profecto
+    aliud nomen huic sedi accommodatius reperiri
+    poterit. Ajacis enim nomen et alibi cum Achille
+    jungitur, et, quod ad nostrum negotium unice
+    facit, a Theodosio ipso I, 37, Αἴας, Ἀχιλλεύς,
+    Ὀδυσσεύς. Si quis tamen totam hanc de vocabulo
+    Πομπ́ιος s. πόμπιος disputationem nimis lubri-
+    cam esse dixerit, non multum refragabor equidem,
+    gratiamque habeo, si quis difficultates, quæ in-
+    sunt cum in forma nominis Πομπ́ιος pro Πομπήϊος
+    accepti, tum in historia, faciliore ratione sol-
+    verit. F. J.]
   </bloco>
-
-  <notas>
-  - As transcrições gregas e algumas locuções latinas contêm marcas [ilegivel] onde o traço é incerto no original.
-  - Ordenação respeita coluna esquerda completa primeiro, depois coluna direita; títulos e secções de largura total colocados na posição visual onde aparecem.
-  </notas>
+  <bloco tipo="nota_marginal" script="latino" bbox="530,680,550,700">
+    D
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="560,680,950,900">
+    (18) His verbis notat poeta Homerum, qui Tro-
+    jam εὐτείχεον, bene muratam, et εὐδμήτους πύργους
+    bene ædificatas turres frequententerque dispositas haben-
+    tem, sæpius in Iliade vocare solet.
+    (19) Cornelius edidit ψευσάντων, sed ad oram
+    paginæ mendum in ea voce latens advertit.
+    (20) Non ineleganter assimilatur Homerus crate-
+    ri, in quo humilia Græcorum ducum facta cum
+    clatis ac fastuosis verbis miscentur et attemperan-
+    tur, eo modo, quo in cratere vinum cum aqua so-
+    lebat temperari. Audi Phavorinum : Κρατὴρ σκεύη,
+    τι, ἐν ᾧ τὸν οἶνον οἱ παλαιοὶ κιρνῦντες ὕδατι, ἐξ αὐ-
+    τοῦ ἔπινον λαμβάνοντες. Crater vas quoddam, in quo
+    vinum cum aqua antiqui miscebant, ex quo sumentes
+    bibebant.
+    21) Ultimum hujus versus verbum desideratur in
+    editione Cornelii, quoniam in codice eo loci maxime
+    absumpto, vix ullum ejus vestigium superest. Nos
+    tamen superstitibus litteris diligenter, ut potuimus,
+    inspectis, σταθμοῦ reponi posse censuimus.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,950,850,980">
+    Digitized by Google
+  </bloco>
 </pagina>

@@ -1,134 +1,45 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="0,0,1000,90">
-175     THEORIANI     176
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,110,490,820">
-la condere : neque enim examinatur divinitas.
+  <bloco tipo="cabecalho" script="latino" bbox="130,25,170,45">175</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="490,25,610,45">THEORIANI</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="930,25,970,45">176</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="130,55,540,75">ta complere : neque enim exinanitur divinitas.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="550,55,570,75">A</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="570,55,970,105">τῆς κενωθέντα τῇ πείνῃ · ἡ θεότης δὲ οὐκ θελε φαγεῖν καὶ πληρῶσαι τὰ πρόσδοχα ἄγγελα αὐτῆς κενωθέντα τῇ πείνῃ · οὐ γὰρ κενοῦται θεότης.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="150,85,450,105">DOCTOR. Hæc quidem verissima.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="590,105,850,125">'O ΔΙΔΑΣΚ. Πανάληθες.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="130,105,540,205">THEOR. En sanctissima Christi caro volebat ob sui, ut ita dicam, conservationem, comedere ; quod quidem divinitas sibi ipsi nolebat. Rursus divinitas volebat, sanctissimam Verbi carnem cibo uti ; et caro ipsamei volebat comedere. En tibi ut humana Christi voluntas divinæ suæmet obsecundabat.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="570,125,970,205">'O ΘΕΩΡ. Ἰδοὺ ἡ παναγία σὰρξ αὐτοῦ θελεν εἰς σύστασιν ἑαυτῆς, ἵν' οὕτως εἴπω, φαγεῖν, ὅ ἡ θεότης οὐκ ἤθελε περὶ αὐτς · πάλιν θελεν ἡ θεότης ἵνα  παναγία αὐτῆς σὰρξ φάγῃ, καὶ ἤθελεν ἡ ἁγία σὰρξ φαγεῖν · ἰδοὺ ἑπόμενον τὸ ἀνθρώπινον αὐτοῦ θέλημα τῷ θείῳ αὐτοῦ θελήματι.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="130,205,540,245">DOCTOR. Cur dixisti, mè dictionem quatenus haud usurpasse prout ejus primarius significatus fert ?</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="570,205,970,235">'O ΔΙΔΑΣΚ. Πῶς εἶπας ὅτι οὐκ ἐξελόμην τὸ καθ' ὃ κατὰ τὸ κύριον αὐτο σημαινόμενον ;</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="130,245,540,295">THEOR. Quia dixisti, quatenus Deus, vult comedere. Nam reapse vult comedere, quatenus esurit : esurit autem non quatenus Deus, sed quatenus homo.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="550,265,570,285">B</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="570,235,970,285">'O ΘΕΩΡ. Ὅτι εἶπας καθ' ὃ Θεὸς θέλει φαγεῖν · κατ' ἐκεῖνο γὰρ θέλει φαγεῖν, καθ' ὃ πεινᾷ · πεινᾷ δὲ οὐ καθ' ὃ Θεός, ἀλλὰ καθ' ὃ ἄνθρωπος.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="150,295,450,315">DOCTOR. Hoc quidem omnes sciunt.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="590,285,850,305">'O ΔΙΔΑΣΚ. Πᾶσι δῆλον τοῦτο.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="130,315,540,355">THEOR. Ain' vero, satisne tibi persuasimus, doctor, ut duas fatearis in Emmanuele voluntates, an divinorum quoque oraculorum testimonia requiris ?</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="570,305,970,345">'O ΘΕΩΡ. Τί δή ; πεπεικαμέν σε, διδάσκαλε, δύο θελήματα ὁμολογεῖν ἐπὶ τοῦ Ἐμμανουήλ, ἢ δε σοι καὶ τῶν ἐκ τῶν θείων λογίων μαρτυριῶν ;</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="130,355,540,415">DOCTOR. Si scrutari Scripturas jubemur, quia in ipsis vita æterna latet, et ipsæ de me, Christus ait, testantur 8, necesse est audire quid de hoc doctrinæ capite loquantur.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="570,345,970,425">'O ΔΙΔΑΣΚ. Εἰ ἐρευνᾶν τὰς Γραφὰς ἐκελεύσθημεν, ἐν αὐταῖς γάρ ἐστιν ἡ αἰώνιος ζωή, καὶ ἐκεῖνα εἰσιν αἱ μαρτυροῦσαι περὶ ἐμοῦ, φησὶν ὁ Χριστός, ἀναγκαῖόν ἐστιν ἀκοῦσαι τί περὶ τοῦ κεφαλαίου τούτου διαγορεύουσιν.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="130,425,540,875">THEOR. Scrutare igitur verba hæc : Verumtamen non sicut ego volo, sed sicut tu 9. Deinde et illa : Voluit Jesus in Galilæam ire 10. Exploratum est ipsum voluisse illuc ire, quatenus ibi non erat. Non erat autem ibi quatenus homo ; nam quatenus Deus, nusquam non erat, nam divinitate nusquam abest. Ergo quatenus homo, non quatenus Deus, ingredi voluit : adeoque voluntate præditus erat, etiam quatenus erat homo. Item alibi : Volo, inquit, ut ubi sum ego, et ipsi sint. Si quatenus Christus est Deus, supra illud, ubi, est (quatenus enim Deus est, in loco non est) ; fieri nequit, ut natura creata supra idem illud, ubi, sit : sane, quatenus homo est, vult ut ubi sit, ibidem et ipsi sint. Adeoque voluntate præditus erat, etiam quatenus erat homo. Rursus alibi : Cum venisset ad locum, sitire se dixit ; et obtulerunt ei vinum felle mistum, quo gustato, non voluit bibere. Secundum quam partem ipsius dixeris eum sitiisse? Si secundum divinitatem, affectibus erit obnoxia divinitas ejus, quæ natura sua potum appetiverit : sin quoad humanitatem, sane quatenus sitiit, eatenus quod naturæ non conveniebat, bibere noluit : eratque voluntate præditus idem, etiam quatenus erat homo. Et alibi dicitur : Circumibat in Galilæa Jesus. Non enim Judæam obire volebat, quod eum Judæi ad necem quærerent. Si circumcisio carnis naturæ competit, non ei junctæ in eadem hypostasi divinitatis : nimirum quatenus erat homo, idem in Galilæa circumambulans, Judæam obire non voluit, et idem voluntate præditus</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="550,485,570,505">C</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="570,425,970,875">'O ΘΕΩΡ. Ἐρεύνησον λοιπὸν τὸ, Πλὴν οὐχ ὡς ἐγὼ θέλω, ἀλλ' ὡς σύ · εἶτα καὶ τὸ, Ἠθέλησεν ὁ ησοῦς εἰσελθεῖν ες τὴν Γαλιλαίαν. Πρόδηλον δὲ ὅτι καθ' ὃ οὐκ ἦν ἐκεῖ, θέλησεν εσελθεῖν · (1) οὐκ ἦν δὲ ἀνθρωπότητι · θεότητι γὰρ οὐδαμς ἀπέστη. ρα οὖν καθὸ ἄνθρωπος, καὶ οὐ καθὸ Θεός, ἠθέλησεν εἰσελθεῖν · καὶ θελητικὸς ἦν καὶ καθὸ ἄνθρωπος. Καὶ ἑτέρωθι · Θέλω ὅπου εἰμὶ ἐγώ, καὶ αὐτοὶ ὦσιν. Εἰ καθὸ Θεὸς ὁ Χριστός, ὑπὲρ τὸ ποῦ ἐστιν (οὐ γὰρ ἐν τόπῳ καθὸ Θεός) · ὑπὲρ δὲ τὸ πᾶν [τὸ ποῦ] ἀδύνατον τὴν κτιστὴν ὑπάρχειν φύσιν · ἄρα καθὸ ἄνθρωπος θέλει, ἵνα ὅπου ἐστὶ, καὶ αὐτοὶ ὦσι. Καὶ θελητικὸς ἦν αὐτὸς κα καθὸ ἄνθρωπος. Καὶ ἀλλαχοῦ πάλιν · Ἐλθὼν εἰς τν τόπον εἶπε, Διψῶ · καὶ ἔδωκαν αὐτ οἶνον μετὰ χολῆς μεμιγμένον · καὶ γευσάμενος, οὐκ θελε πιεν. Κατὰ ποον αὐτο μέρος εἴπῃ ; αὐτὸν διψῆσαι ; Εἰ μὲν κατὰ τὴν θεότητα, ἐμπλήσθης ἔσται  θεότης αὐτοῦ, πόσεως κατὰ φύσιν ἐφιεμένη · εἰ δὲ κατὰ τὴν ἀνθρωπότητα, ἄρα καθὸ ἐδίψησε, κατ' ἐκεῖνο καὶ τὸ ἀκατάλληλον τῇ φύσει οὐκ ἤθελε πιεῖν · καὶ θελητικὸς ἦν ὁ αὐτὸς καὶ καθὸ ἄνθρωπος. Καὶ ἀλλαχοῦ φησι · Καὶ περιεπάτει ὁ Ἰησοῦς ἐν τῇ Γαλιλαίᾳ. Οὐ γὰρ ἤθελεν ἐν τῇ Ἰουδαίᾳ περιπατεῖν, ὅτι ἐζήτουν αὐτὸν οἱ Ἰουδαῖοι ἀποκτεῖναι. Εἰ τῆς σαρκὸς φύσει ὁ περίπατος, ἀλλ' οὐ τῆς καθ' ὑπόστασιν ἡνωμένης αὐτῇ θεότητος, ἄρα καθ ἄνθρωπος  αὐτς ἐν τῇ Γαλιλαίᾳ περιπατῶν, οὐκ ἤθελεν ἐν τῇ Ἰουδαίᾳ περιπατεῖν, καὶ θελητικὸς ἦν ὁ αὐτὸς κα καθὸ ἄνθρωπος. Καὶ ἑτέρωθι · Κἀκεῖθεν ἐξελθόντες, κα, ἐπορεύοντο</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="550,685,570,705">D</bloco>
 
-DOCTOR. Ille quidem verissima.
-
-THEOR. En sanctissima Christi caro volebat ob
-sui, ut ita dicam, conservationem, concedere; quod
-quidem divinitas sibi ipsi nolebat. Rursus divinitas
-volebat, sanctissimam Verbi carnem cibo uti; et
-caro ipsamet volebat concedere. En tibi ut humana
-Christi voluntas divinae [ilegivel] obsecundabat.
-
-DOCTOR. Cur dixisti, ne dicerem qualemus
-haud usurpasset prout ejus primarius significatus
-fert?
-
-THEOR. Quia dixisti, quatenus Deus, vult come-
-dere. Nam rursus vult comedere, qualemus esurit :
-esurit autem non quatenus Deus, sed quatenus homo.
-
-DOCTOR. Hoc quidem omnes sciunt.
-
-THEOR. Ain' vero, satisne tibi persuasimus,
-doctor, ut duas saecularis in Emmanuele voluntates,
-an divinorum quoque oraculorum testimonia re-
-quiris?
-
-DOCTOR. Si scrutari Scripturas jubemur, quia
-in ipsis vita aeterna latet, et ipse de me, Christus
-ait, testantur, necesse est audire quid de hoc do-
-ctrinae capite loquantur.
-
-THEOR. Scrutare igitur verba haec: Verumamen-
-non sicut ego volo, sed sicut tu? Deinde et illa:
-Voluit Jesus in Galilaeam ire10. Exploratum est
-ipsum voluisse illuc ire, quatenus ibi non erat. Non
-erat autem ibi quatenus homo; nam quatenus Deus,
-nusquam non erat, nam divinitate nusquam abest.
-Ergo quatenus homo, non quatenus Deus, ingredi
-voluit: adeoque voluntate praeditus erat, etiam qua-
-tenus erat homo. Item alibi: Volo, inquiit, ut ubi
-sum ego, et ipsi sint. Si quatenus Christus est Deus,
-supra illud, ubi est (quatenus enim Deus est, in
-loco non est) : fieri necesse, ut natura creata supra
-idem illud, ubi sit : sane, quatenus homo est,
-vult ut ubi sit, ibidem et ipsi sint. Adeoque volun-
-tate praeditus erat, etiam quatenus erat homo. Rur-
-sus alibi: Cum venisset ad locum, siue se dixit,
-et oblurbaret ei vinum felle mistum, quo gustando,
-non voluit bibere. Secundum quam partem ipsius
-dixeris eam susisse? Si secundum divinitatem, afse-
-cibus eri obnoxia divinitas ejus, quae natura sua
-potum appetiverit : sin quoad humanitatem, sane
-quatenus sitit, ceterna quod natura non convenie-
-bat, bibere noluit: eratque voluntate praelitus idem,
-etiam quatenus erat homo. Et alibi dicitur: Cir-
-cumbibat in Galilaea Jesus. Non enim Judaeam obire
-volebat, quod eum Judaci ad necem quaererent. Si
-circumductio carnis naturae competit, non ei junctae in
-eadem hypostasi divinitatis; nimirum quatenus
-erat homo, idem in Galilaea circumambulans, Ju-
-daeam obire non voluit, et idem voluntate praelitus
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="510,110,950,820">
-τὴν χορίαν· οὐ γὰρ ἐνέχοουσιν τῇ πεινᾷ ἡ θεότης· Ὁ δὲ
-φαγεῖν καὶ πληρῶσαι τὰ πρόσθια ἀγγεῖα αὐτῆς
-χενούμενα τῇ πεινῇ· οὐ γὰρ χενοῦται θεότης.
-
-Ὁ ΔΙΔΑΣΚ. Πανάληθες.
-
-Ὁ ΘΕΩΡ. Ἰδοὺ ἡ παναγία σαφῶς αὐτοῦ ἠθέλησε τῷ
-ἑαυτῷ αὐτῷ, ἵνα ἐλεῖν, φαγεῖν, ὁ θεὸς οὐκ ἠθέλη περὶ αὐτῆς· πάλιν ἠθέλη ὁ θεὸς ἵνα ἡ παναγία αὐτῆς σαφὲς φαγῇ, καὶ ἠθέλη ἄλλως φαγεῖν· ἰδοὺ ἐποικοῦντο τὸ ἀνθρώπινον αὐτοῦ θέλημα τῷ θεῷ αὐτοῦ δεησαμένον.
-
-Ὁ ΔΙΔΑΣΚ. Πῶς εἶπας ὅτι οὐκ ἐξελέλημέν το κακὸν ὁ κατὰ τὸν κύριον αὐτοῦ σημαινόμενον;
-
-Ὁ ΘΕΩΡ. Ὅτι εἶπας καθ' ὅ ὁ θεὸς θέλει φαγεῖν·
-κατ' ἐκεῖνο γὰρ θέλει φαγεῖν, καὶ ὁ πείνα· πάντ'
-δὲ οὐ καθ' ὁ θεὸς, ἀλλὰ καθ' ὁ ἄνθρωπος.
-
-Ὁ ΔΙΔΑΣΚ. Πᾶσι ὁλόν τοῦτο.
-
-Ὁ ΘΕΩΡ. Τῇ δὲ; ἑπεπλήρωκεν σε, διδάσκαλε, δύο
-θελήματα ὁμολογουμέν ἐπὶ τοῦ ῞Εμμαουῆλ, ἥ δε σε
-καὶ τῶν ἐν τῶν θείων λογίων μαρτυρίων;
-
-Ὁ ΔΙΔΑΣΚ. Εἰ ἐρευνᾶς τὰς Γραφὰς ἐκελεύσθης,
-ἐν αὐταῖς γὰρ ἐστιν ἡ αἰώνιος ζωή, καὶ ἐκεῖναι
-ἡμ: αὐ μάρτυροσι κατ' ἐμέ, ὅτι ὁ Χριστὸς
-ἀναφαίνειν ἔστιν ἀκοῦσαι τί περὶ τοῦ κεφαλαίου,
-τούτου διαρξόμενον.
-
-Ὁ ΘΕΩΡ. Ἐρεύνησον λοιπὸν το, πλὴν οὐκ ὡς ἐγὼ θέλω, ἀλλ' ὡς σύ· εἶπε καὶ τὸν, 'ἠθέλησε'
-ὁ Ἰησοῦς ἑπολεῖν ἐς τὴν Γαλιλαίαν. Πρό-
-δηλον δὲ ὅτι καὶ ὁ οὗτος ἠθελε, ἠθέλησε νίκας
-δεῖν (1) ὅταν ἡν ὁ ἀνθρώπινος· δεῖται γὰρ οὕτω
-μέρος ἀπό. Ἀρα οὖν καθὼς ἄνθρωπος, καὶ οὐ καθὼς
-θεός, ἠθέλησε εἰσελθεῖν· καὶ ἐκεῖνος γράφει καθὼς
-ἄνθρωπος· Καὶ ἐπερίβαλλεν : ῾Θέλω ἐλθεῖν ἐπὶ τήν
-αὐτὴν χώραν. Εἰ καὶ ὅθεν ὁ Χριστός, ὑπὲρ τῷ
-ἔτι (οὐ γὰρ ἐν τῷ πέντε καθὼς θεα)· ὑπὲρ δὲ τὸν
-[δει ??] ἀδυνάτον τὴν κίνησιν ὑπάρχειν φύσιν· ἄρα
-καθὼς ἄνθρωπος ὅλε, ἔλαβεν ἐστ'· καὶ αὐτον· κ.τ.λ.
-
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="494,170,510,230">
-A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="494,330,510,390">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="494,490,510,550">
-C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="494,650,510,710">
-D
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="50,820,600,960">
-* Joan. v, 39.  * Matth. xxvi, 39.   10 Joan. 1, 43.
-
-(1) Haecum Vaticanl codices lacunam explent. Pergit porro editio.
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="600,820,950,960">
-Digitized by Google
-  </bloco>
-  <notas>
-- A página contém duas colunas: coluna esquerda em latim (script="latino") e coluna direita em grego (script="grego"); os rótulos marginais A, B, C, D foram colocados em blocos próprios conforme instruções.
-- Onde a leitura era incerta marquei termos individuais como [ilegivel]. Não foram feitas normalizações ou traduções.
-- BBOX valores estimados proporcionalmente à imagem (escala 0-1000).
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="150,885,550,905">9 Joan. v, 39. 8 Matth. xxvi, 39. 10 Joan. 1, 45.</bloco>
+  <bloco tipo="rodape" script="latino" bbox="150,915,700,935">(1) Hactenus Vaticani codices lacunam explent. Pergit porro editio.</bloco>
+  
+  <bloco tipo="outro" script="latino" bbox="600,960,800,985">Digitized by Google</bloco>
 </pagina>

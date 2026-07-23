@@ -1,68 +1,36 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,90">
-    1649                               EPISTOLARUM LIB. II.                               1650
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="40,100,480,920">
-χόν σχῆμα ἐκ τῶν κοινωνηθέντων ἱερέων· πῶς χρὴ τούτους δέχεσθαι.
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,150,60">1649</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,30,650,60">EPISTOLARUM LIB. II.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,30,950,60">1650</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,60,480,90">κῶν σχῆμα ἐκ τῶν κοινωνθέντων ἱερέων· πῶς χρὴ τούτους δέχεσθαι.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,90,480,130">Ἀπόκρισις. — Ὁμολογοῦντας ἡμαρτηκέναι, καὶ ἐπιτιμηθέντας χρόνῳ τινί, εἶθ' οὕτως σφραγῖδα δεχομένους παρασεσωσμένου πρεσβυτέρου, προσδεκτέον.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,130,480,200">Ἐρώτησις Ζ'. — Περὶ τῶν ὑπογραψάντων καὶ κοινωνησάντων μοναχῶν καὶ κληρικῶν ἐν τῇ αὐτῇ αρέσει· πῶς χρὴ τούτους δέχεσθαι· χωρὶς ἐπιτιμίου, ἢ μετὰ ἐπιτιμίου· ἐὰν ὁμολογῶσι μηκέτι ἐνεργεῖν ἐν τῇ ἱερατείᾳ· καὶ εἰ ξεστιν μῖν, διδόναι ἐπιτίμια τοῖς τοιούτοις.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,200,480,270">Ἀπόκρισις. — Δῆλον ὅτι μετὰ τῶν προσηκόντων ἐπιτιμίων. Πῶς γὰρ ἂν μὴ τοὺς καρποὺς τῆς μετανοίας ἐπιδεικνύμενοι, εἶεν ἄξιοι συναφθῆναι τῷ ὀρθοδόξῳ σώματι; διδόναι δὲ καὶ ἡμᾶς ἐπιτίμια τοῖς τοιούτοις, οὐκ ἀποκριτέον. Γέγραπται γάρ, Ἀλλήλων τὰ βάρη βαστάζετε, καὶ οὕτως ἀναπληρώσατε τὸν νόμον τοῦ Χριστοῦ.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,270,480,310">Ἐρώτησις Η'. — Περὶ τῶν μοναχῶν τῶν ἀδιαφόρως παραβαλλόντων τοῖς τυχοῦσι, καὶ συνευχομένοις καὶ συνεσθίουσιν αὐτοῖς· εἰ χρὴ δέχεσθαι τοὺς τοιούτους εἰς συνεστίασιν, καὶ ψαλμῳδίαν.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,310,480,460">Ἀπόκρισις. — Τοῦ Ἀποστόλου λέγοντος· Στέλλεσθαι ὑμς ἀπὸ παντὸς ἀδελφοῦ ἀτάκτως περιπατοῦντος, καὶ μὴ κατὰ τὴν παράδοσιν ἣν παρελάβοτε παρ' ἡμῶν· πῶς οὐχὶ καὶ ἀφ' ἑαυτῶν τὸ καλὸν κρίνετε; εἰ μὲν οὖν ἀπόσχοιντο τῆς ἑαμάρτου συνηθείας, καταδεχόμενοί τε καὶ ἐπιτιμίαν τὴν προσηκούσαν, δεκτέοι. Ἐπιτηρητέον δὲ τίνες εἰσν οὓς φτε τυχόντας· ἆρα αἱρετικοί, ἢ προδήλως κατεγνωσμένοι ἐπὶ τῷ βίῳ; περὶ τν τοιούτων γάρ, φησὶν ὁ Ἀπόστολος· Ἐάν τις ἀδελφὸς ὀνομαζόμενος πόρνος, ἢ πλεονέκτης, ἢ εδωλολάτρης, καὶ τὰ ἑξῆς· τῷ τοιούτῳ μηδὲ συνεσθίειν.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,460,480,510">Ἐρώτησις Θ'. — Περὶ τῶν πρεσβυτέρων, τῶν βεβρωκότων μετὰ τῶν αἱρετικῶν ἅπαξ καὶ δίς, καὶ μὴ κοινωνησάντων, ἢ ὑπογραψάντων, ἢ συλλειτουργησάντων· εἰ χρὴ τοὺς τοιούτους δέχεσθαι εἰς συνεστίασιν, καὶ ψαλμῳδίαν, χωρὶς σφραγῖδος, ἢ μετὰ σφραγῖδος.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,510,480,610">Ἀπόκρισις. — Ἐπ τῶν τοιούτων τηρητέον, εἰ ο βεβρωκότες ἱερεῖς μετὰ ἱερέων αἱρετικῶν ἢ λαϊκῶν φαγον, καὶ ὁμολογουμένων ἢ ὀρθοφρονούντων μὲν, κοινωνούντων δὲ τοῖς αἱρετικοῖς. Μεῖζον γὰρ τὸ κρίμα ἐπὶ τῶν ἱερωμένων. Μετανοίᾳ δὲ ἀξιολόγῳ ἑκατέρους προσδεκτέον κοινωνῆσαι αὐτοῖς λων τε, καὶ προσευχῶν [al. ἄλλων τε προσευχῶν] καὶ σφραγίδος.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,610,480,650">Ἐρώτησις Ι'. — Περὶ τῶν ὑπογραψάντων κοσμικῶν ἐν τῇ αἱρέσει καὶ κοινωνούντων· εἰ χρ τοῖς τοιούτοις κοσμικοῖς ὀρθοδόξους κοσμικοὺς συνεσθίειν.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,650,480,700">Ἀπόκρισις. — Ἡ ἀδιαφορία, τῶν κακῶν τὸ ατιον. Ἀναμέσον γάρ, φησί, καθαροῦ καὶ βεβήλου οὐ διέστειλον. Χρὴ οὖν, εἴπερ ζηλωταί εἰσιν οἱ ρθοδοξοντες, μὴ προσίεσθαι τοὺς τοιούτους εἰς συν-</bloco>
 
-Aπόκρισις. — Ὁμολογοῦντας ἡμαρτηκέναι, καὶ ἐπετιμήσας χρόνῳ τινι, ἐι θ' οὕτως σφαγίδα δεχομένους παρασεσσωμένον πρεσβύτερον, προσδεχτέον.
+  <bloco tipo="texto_principal" script="latino" bbox="520,60,950,90">sticum a contaminatis sacerdotibus acceperunt : quomodo recipi debeant.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,90,950,130">Responsio. — Si confiteantur se peccasse, et ad aliquod tempus pœnitentiam egerint, atque ita consignationem deinde ab rectæ fidei presbytero acceperint, admittendi sunt.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,130,950,200">Interrogatio VII. — De monachis et clericis qui eidem hæresi subscripserunt communicaruntque : quomodo recipiendi sint : sine pœnitentia, an cum pœnitentia : si professi fuerint se non amplius sacra munia obituros : et num liceat nobis pœnitentias talibus imponere.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,200,950,270">Responsio. — Utique cum pœnitentiis convenientibus; quo enim modo, nisi exhibitis pœnientiæ fructibus, digni sint qui orthodoxo corpori uniantur? His autem et a nobis pœnitentias injungi, non est improbandum. Scriptum enim est : Alter alterius onera portate, et sic adimplete legem Christi ¹¹.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,270,950,310">Interrogatio VIII. — De monachis qui promiscue cum obviis quibuslibet conveniunt, unaque orant ac cibum sumunt : utrum ad communem cibum et psalmodiam admitti debeant.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,310,950,460">Responsio. — Cum Apostolus dicat : Ut subtrahatis vos ab omni fratre ambulante inordinate et non secundum traditionem quam acceperunt a nobis ¹²; quomodo non ex vobis ipsis quod bonum est judicatis? Itaque, si a prava consuetudine destiterint, acceperintque convenientem pœnitentiam, admittendi sunt. Observandum autem est quinam sint ii quos vocatis obvios quoslibet : num hæretici, aut palam culpatæ vitæ? De talibus quippe Apostolus ait : Si is qui frater nominatur, est fornicator, aut avarus, aut idolis serviens, et quæ sequuntur; cum ejusmodi nec cibum sumere ¹³.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,460,950,510">Interrogatio IX. — De presbyteris qui semel aut iterum cum hæreticis cibum sumpserunt, non tamen communicaverunt vel subscripserunt, aut una sacris operati sunt : sintne ad communem cibum et psalmodiam admittendi, absque consignatione, vel cum consignatione.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,510,950,610">Responsio. — In istis observandum est, an sacerdotes qui cibum sumpserunt, cum hæreticis sacerdotibus, an cum laicis sumpserint, et num cum iis qui recte quidem sentirent, sed communicarent cum hæreticis. Majus enim crimen est in sacratis hominibus. Utrique porro cum pœnitentia condigna suscipi debent, et admitti ad communionem salis, et precum, et consignationis.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,610,950,650">Interrogatio X. — De sæcularibus qui in hæresi subscripserunt communicaruntque : utrum cum illis sæcularibus sæculares orthodoxos cibum sumere conveniat.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,650,950,700">Responsio. — Usus promiscuus causa est malorum. Ait enim : Inter mundum et profanum non habuerunt distantiam ¹⁴. Itaque orthodoxi debent, si zelo flagrant, tales ad communem cibum non ad-</bloco>
 
-Eρώτησις Ζ'. — Περὶ τῶν ὑπογραφέντων καὶ κοινωνησάντων μοναχῶν καὶ κληρικῶν ἐν τῇ αἵρει· πῶς χρὴ τούτους δέχεσθαι· χωρὶς ἐπιτιμίου, ἡ μετὰ ἐπιτιμίου· ἐὰν ὁμολογίῃ, μηκέτι ἐνεργεῖν ἐν τῇ ἱερατείᾳ· καὶ εἶ ἔξεστιν ἡμῖν, διδόναι ἐπιτίμια τοῖς τοιούτοις.
+  <bloco tipo="nota_marginal" script="latino" bbox="490,55,510,75">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,285,510,305">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,505,510,525">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,725,510,745">D</bloco>
 
-Aπόκρισις. — Δῆλον ὅτι μετὰ τῶν προσήκοντων ἐπιτιμίων. Πῶς γὰρ ἂν μὴ τοὺς καρποὺς τῆς μετανοίας ἐπιδεικνύμενοι, εἰν ἄξιοι συναφθῆναι τῷ ὀρθοδόξῳ σώματι; διδόναι δε καὶ ἡμᾶς ἐπιτιμία τοῖς τοιούτοις, οὐκ ἀποκριτέον. Γέγραπται γὰρ, 'Ἀλλήλων τὰ βάρη βαστάζετε, καὶ οὕτως ἀναπληρώσατε τὸν νόμον τοῦ Χριστοῦ.'
-
-Eρώτησις Η'. — Περὶ τῶν μοναχῶν τῶν ἀδιαφόρων παραβαλλόντων τοῖς τυχοῦσι, καὶ συνεχομένων καὶ συνετίζουσιν αὐτούς· εἰ χρὴ δέχεσθαι τοὺς τοιούτους εἰς συγκείασιν καὶ ψαλμωδίαν.
-
-Aπόκρισις. — Τοῦ Ἀποστόλου λόγοντος· Στέλλεσθαι ὑμᾶς ἀπὸ πυκτὸς ἀδελφοῦ ἀδελφοῦ ἀκρότητος περιπατοῦντος, καὶ μὴ κατὰ τὴν παράδοσιν ἣν παραλάβομεν παρ' ἡμῶν· πῶς οὖν καὶ οὐχ ὑπὲρ ἑαυτὸν τὸ κάνετε; Ἐὰν οὖν ἀπέχωσιν τῆς ἐφαρμογῆς τῆς συνηθείας, καταδεχόμενοι τὰς ἐπιτιμίας τὴν προσήκουσαν, δέχεσθαι. Ἐπιτρέπειν δὲ τίνες εἰσὶν οἷς ὀργαί τε τυγχάνει· ἄρα ἀπελαύσει, ἡ προφάσει καταγγελλόμενοι ἐπὶ τῷ βήμῳ· περὶ τῶν τοιούτων γὰρ, φησὶ ὁ Ἀπόστολος· Εἴ τις ἀδελφὸς ὁνομάζεται καὶ ἐστιν πόρνος, ἢ πλεονέκτης, ἢ εἰδωλολάτρης, καὶ τὰ ἕτερα· ταῦτα τοιαῦτα μὴ συνσιέναι.
-
-Eρώτησις Θ'. — Περὶ τῶν πρεσβυτέρων, τῶν βεβρωκότων μετὰ τῶν αἱρετικῶν ἅπαξ καὶ δις, καὶ μὴ κοινωνησάντων· ἢ ὑπογραφάντων, ἢ συνεξευρηθέντων· εἰ χρὴ τοὺς τοιούτους δέχεσθαι εἰς συνουσίαν, καὶ ψαλμωδίαν, χωρὶς σφραγίδος· ἡ μετὰ σφραγίδος.
-
-Aπόκρισις. — Ἐπὶ τῶν τοιούτων τηρητέον, εἰ οἱ βεβρωκότες ἱερεῖς μετὰ ἱερέων αἱρετικῶν ἢ λαϊκῶν ἔργων, καὶ ὁμολογοῦντες ἢ ὀρθοφωνούντων μὲν, κοινωνοῦντες δὲ τοῖς αἱρετικοῖς. Μέῖζον γὰρ τὸ χρήμα ἐπὶ τῶν ἐρωτήσεων. Μετανοία δὲ δεῖξιν ὑποδεῖξιν ἐκάτεροι προσδέχονται κοινωνίας αὐτοῖς ἄλλων τε, καὶ προσευχῶν, ἄλλων τε προσευχῶν καὶ σφραγίδος.
-
-Eρώτησις Ι'. — Περὶ τῶν ὑπογραφάντων κοσμικῶν ἐν τῇ αἵρει καὶ κοινωνούντων· εἰ χρὴ τοῖς τοιούτοις κοσμικοῖς ὀρθοδόξους κοινωνίας συνδοχεῖν.
-
-Aπόκρισις. — Ἡ διαφορά τῶν κακῶν τῶν ἄλλων. Ἀναμέσον γὰρ, φησὶν, καθαροὶ καὶ βεβηλοὶ οὐ διακρίνουσιν. Χρὴ οὖν, εἴπερ ζηλωταὶ εἰσὶν οἱ ὀρθόδοξοι, μὴ προσδέσθαι τοὺς τοιούτους εἰς συνουσίαν.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,140,520,220">
-    A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,320,520,420">
-    B
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,100,960,920">
-asticum a contaminatis sacerdotibus acceperunt: quomodo recipi debeant.
-
-Responsio. — Si confiteantur se peccasse, et ad aliquod tempus poenitentiam egerint, atque ita consignationem deinde ab recta fidei presbytero acceperint, admittiendi sunt.
-
-Interrogatio VII. — De monachis et clericis qui eidem haeresi subscripserunt communicaruqnte: quomodo recipiendi sint: sine poenitentia, an cum poenitentia: si professi fuerint se non amplius sacra munia obituros: et num liceat nobis paenitentias laibus imponere.
-
-Responsio. — Utique cum poenitentiis convenientibus; quo enim modo, nisi exhibitis poenitentieæ fructibus, digni sint qui orthodoxo corpori uniriant? His autem et a nobis poenitentias injungi, non est improbandum. Scriptum enim est: Alter alterius onera portate, et sic adimplete legem Christi 11.
-
-Interrogatio VIII. — De monachis qui promiscuè cum obviis quibuslibet conveniunt, unaque orant ac cibum sumunt: utrum ad communem cibum et psalmodiam admitti debeant.
-
-Responsio. — Cum Apostolus dicat: Ut subtrahatis vos ab omni fratre ambulante inordinate et non secundum traditionem quam acceperunt a nobis 12; quomodo non ex vobis ipsis quod bonum est judicatis? Itaque, si a prava consuetudine destiterint, acceperintque convenientem poenitentiam, admittendi sunt. Observandum autem est quinam sint ii quos vocatis obvios quoslibet: num haeretici, aut palam culpate vitae? De talibus quippe Apostolus ait: Si is qui frater nominatur, est fornicator, aut avarus, aut idolis serviens, et quae sequuntur; cum eiusmodi nec cibum sumere 13.
-
-Interrogatio IX. — De presbyteris qui semel aut iterum cum haereticis cibum sumpserunt, non tamen communicaverunt vel subscripserunt, aut una sacris operam sunt: sintne ad communem cibum et psalmodiam admittiendi, absque consignatione, vel cum consignatione.
-
-Responsio. — In istis observandum est, an sacerdotes qui cibum sumpserunt, cum haereticis sacerdotibus, an cum laicis sumpserint, et num cum iis qui recte quidem sentirent, sed communicaverunt cum haereticis. Majus enim crimen est in sacris hominibus. Utrique porro cum poenitentia condigna suscipi debent, et admitti ad communionem salis, et precum, et consignationis.
-
-Interrogatio X. — De saecularibus qui in haeresi subscribserunt communicaveruntque: utrum cum illis saecularibus saeculares orthodoxos cibum sumere conveniat.
-
-Responsio. — Usus promiscuus causa est malorum. At enim: Inter mundum et profanum non habuerunt distantiam 14. Itaque orthodoxi debent, si zelo flagrant, tales ad communem cibum non ad-
-  </bloco>
-  <bloco tipo="nota_marginal" script="latin0" bbox="480,540,520,640">
-    C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,760,520,850">
-    D
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,920,960,990">
-    11 Galat. iv, 2. 12 II Thess. iii, 6. 13 I Cor., v, 11. 14 Ezech. xxii, 26.
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="420,990,580,1000">
-    Digitized by Google
-  </bloco>
-  <notas>
-    Foram marcadas com [ilegivel] palavras onde a leitura era incerta. As letras marginais A, B, C, D foram transcritas em blocos próprios, fora do texto das colunas, conforme instruções. Pequenas lacunas e incertezas na transcrição grega foram mantidas sem normalização.
-  </notas>
+  <bloco tipo="aparato_critico" script="latino" bbox="50,920,950,950">¹¹ Galat. iv, 2. ¹² II Thess. iii, 6. ¹³ I Cor. v, 11. ¹⁴ Ezech. xxii, 26.</bloco>
+  
+  <bloco tipo="outro" script="latino" bbox="600,960,800,990">Digitized by Google</bloco>
 </pagina>

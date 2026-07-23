@@ -1,60 +1,151 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,20,960,120">
+  <bloco tipo="cabecalho" script="latino" bbox="50,40,950,70">
     1325 DE RECTA FIDE AD REGINAS. 1326
   </bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="40,120,480,840">
-    Εκ τῆς πρὸς Κορινθίους πρώτης.
-
-    Καὶ ταῦτα τινες ἦτε· ἀλλ᾽ ἀπελούσασθε, ἀλλ᾽ ἡγιάσθητε, ἀλλ᾽ δικαιωθήτε ἐν τῷ ὀνόματι τοῦ Κυρίου Ἰησοῦ Χριστοῦ, καὶ ἐν τῷ Πνεύματι τοῦ Θεοῦ ἡμῶν. Εἰ τῷ ὀνόματι τοῦ Χριστοῦ δικαιούμεθα, ὡς Θεὸν τῇ πίστει τιμήσαντες, καὶ τὸ αὐτοῦ Πνεῦμα δεχόμενοι, πῶς οὐ θεὸς ὁ Χριστός;
-
-    Ἐκ τῆς πρὸς Κορινθίους β᾽.
-
-    Εἰ μὲν γὰρ ὁ ἐρχόμενος ἕτερον Ἰησοῦν κηρύσσει, ἢν οὐκ ἐκρήξαμεν, ἡ πνεῦμα ἔτερον λαμβάνετε, παρ᾽ ὑμῶν ἐλάβετε· ἡ Εὐαγγέλιον ἕτερον, παρ᾽ ὑμῶν ἔδεξασθε καλῶς ἀνείχεσθε. Πρὸ τοῦ τῆς ἐνανθρωπήσεως καιροῦ οὐδεὶς ὀνομάσας ἐβρίσκεται τὸν ἐν Θεῷ Λόγον, Ἰησοῦν τῷ Χριστῷ· εἰ μὴ ἂν κατὰ πρόγνωσιν ὀνομασθήσεσθαι τοῦτο κατὰ καιρούς, ἔτε καὶ γέγονεν σαφῶς. Ὅταν τοῖς καιροῖς ταῖς ἐπὶ τῆς σαρκὸς γένηται, οἱ ἐκ τῶν καινῶν Ἰησοῦ τοὺς ὅρους ἀκούουσιν, ὅτε γίγνεται ἄνθρωπος. Ἀλλὰ ἐὰν μὲν ὢν θεός χρησιμεῖται, καὶ εἴ τις ἄλλος παρ᾽ αὐτοῦ, ὃς δύναται κηρύξαι, τινες ἂν κηρύξαι· εἰ δὲ ἂν ἔχοι, καὶ θεὸς λατρευόμενος. Εἰ δὲ μέτρον αὐτῷ τὸ τῆς ἀνθρωπότητος ἔστι μόνον, καὶ ψιλὴ προσωπὸν ἔννοιε ἐπιστηται· κακήνται τῆς πίστεως ἡμῶν ὁ λόγος, ἀνθρώπου προσάγων ἡμᾶς, καὶ οὐ θεός. Ἀλλὰ τοῦτο δυσσεβές. Θεὸς ἄρα Χριστός, καὶ γινώσκειν ὡς τοῦ θεοῦ Λόγου σαρκὸς γεγονότος. Ὡς ῥηθὲν κοινωνίαν colitur: inanis profecto est fidei nostrae ratio, ut quae non Deo nos conjungat, sed homini. Atqui haec doctrina est plane impia. Deus itaque Christus, et Filius; cum Verbum sit caro factum.
-
+  <bloco tipo="texto_principal" script="grego" bbox="50,70,480,120">
+    δὲ καὶ τὰ ἔθνη δικαιοῦσθαι ἂν ἐν αὐτῷ, τοῖς χνεσιν
+    αὐτοῦ κατακολουθήσαντα, καὶ ἐν Θεῷ πιστεύοντα,
+    τουτέστι Χριστῷ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,120,480,230">
+    Ἐκ τῆς πρὸς Κορινθίους πρώτης.
+    « Καὶ τατά τινες τε· ἀλλ' ἀπελούσασθε, ἀλλ'
+    ἡγιάσθητε, ἀλλ' ἐδικαιώθητε ἐν τῷ νόματι τοῦ Κυ-
+    ρίου Ἰησοῦ Χριστοῦ, κα ἐν τῷ Πνεύματι τοῦ Θεοῦ
+    μῶν. » Εἰ ἐν τῷ ὀνόματι τοῦ Χριστοῦ δικαιοούμεθα,
+    ὡς Θεὸν τῇ πίστει τιμήσαντες, καὶ τὸ αὐτο Πνεῦμα
+    δεχόμενοι, πῶς οὐ Θεὸς ὁ Χριστός;
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,230,480,480">
+    Ἐκ τς πρὸς Κορινθίους β'.
+    « Εἰ μὲν γὰρ ὁ ἐρχόμενος ἕτερον Ἰησον κηρύσσει,
+    ὃν οὐκ ἐκηρύξαμεν, ἢ πνεῦμα ἕτερον λαμβάνετε,
+    παρ' ὃ ἐλάβετε· ἢ Εὐαγγέλιον ἕτερον, παρ' ὃ ἐδέξα-
+    σθε· καλῶς ἀνείχεσθε. » Πρὸ τῶν τῆς ἐνανθρωπή-
+    σεως καιρῶν οὐδεὶς ὀνομάσας εὑρίσκεται τὸν ἐκ Θεοῦ
+    Λόγον, Ἰησοῦν ἢ Χριστόν· εἰ μὴ ἄρα κατὰ πρόγνωσιν
+    ὀνομασθησόμενον τοῦτο κατὰ καιρούς, ὅτε καὶ γέγονε
+    σάρξ. Ὄνομα τοίνυν καινὸν ατῷ τ, Ἰησος, ὅτε γέ-
+    γονεν ἄνθρωπος. Ἀλλ' εἰ μὲν ὡς Θεὸς κηρύσσεται,
+    καὶ εἷς ὢν (οὐ γὰρ ἕτερός τις παρ' αὐτόν, ὃν δύναν-
+    ται κηρύξαι τινές), εὖ ἂν χοι, καὶ Θεῷ λατρεύομεν.
+    Εἰ δὲ μέτρον αὐτῷ τς ἀνθρωπότητός ἐστι μόνον,
+    καὶ ψιλῇ προσώπων ἑνώσει τετίμηται· κεκένωται
+    τῆς πίστεως ἡμν ὁ λόγος, ἀνθρώπῳ προσάγων ἡμᾶς,
+    καὶ οὐ Θε. Ἀλλὰ τοτο δυσσεβές. Θεὸς ἄρα Χριστός,
+    καὶ Υἱός, ὡς τοῦ Θεο Λόγου σαρκς γεγονότος.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,480,480,520">
+    rum societatem colitur : inanis profecto est fidei nostræ ratio, ut quæ non Deo nos conjungat, sed
+    homini. Atqui hæc doctrina est plane impia. Deus
+    factum.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,520,480,750">
     Ἐκ τῆς πρὸς Γαλάτας.
-
-    Θαυμάζω, ὅτι οὕτω τάχιον μετατίθεσθε ἀπὸ τοῦ καλεσάντος ὑμᾶς ἐν χάριτι Χριστοῦ, εἰς ἕτερον Εὐαγγέλιον· οὐκ ἔστιν ἄλλο· μὴ τινες ὑμᾶς παραστρατοῦσιν, οἵτινες ὑμᾶς ἑλάβωνται, καὶ βέλτιον μετεστρέφειν τὸ Εὐαγγέλιον τοῦ Χριστοῦ. Ἀλλὰ καὶ ἡμεῖς, εἰ ἄλλος ἄγγελος ἐξ οὐρανοῦ ἐυαγγελίζηται ὑμῖν παρ᾽ ὃ ἐευηγγελίσασθε, ἀνάθεμα ἴσον. Εἰ γὰρ ἐστὶν τὸ Εὐαγγέλιον τὸ λαλῆθεν ἀπὸ τοῦ Θεοῦ διὰ τῶν ἁγίων μυστηρίων, τοῦτο ἔστιν ἡ πίστις ἡ ἐν Χριστῷ· πῶς οὐ θεὸς ἔστιν ἔτι ἀληθὴς; Ὅθεν ἀναγκαιότης [ilegivel] ἀναγκαῖος ἐπιστρεφεῖσθαι. Ὅσα δὲ τὰ περὶ τῆς ἀρχαίας κατανύξεως εἶπαν, ὡς ἡ ἔχουσα χεῖρα πρὸς τὸ κατὰ φύσιν λοιπὸν θεόν, μοιάζει τοῖς ἐν τοῖς παλαιοῖς. Θαρσεῖ ὁ μακάριος Παῦλος, ὃς καὶ ἀναθεματίζει, εἰ τις μεταστρέψεται τὸ Εὐαγγέλιον τοῦ Χριστοῦ.
+    « Θαυμάζω, ὅτι οὕτω ταχέως μετατίθεσθε ἀπὸ
+    τοῦ καλέσαντος ὑμᾶς ἐν χάριτι Χριστοῦ, εἰς ἕτερον
+    Εὐαγγέλιον· ὃ οὐκ ἔστιν ἄλλο· εἰ μή τινές εἰσιν οἱ
+    ταράσσοντες ὑμᾶς, καὶ θέλοντες μεταστρέψαι τὸ
+    Εὐαγγέλιον τοῦ Χριστοῦ. Ἀλλὰ καὶ ἐὰν ἡμεῖς, ἢ γ-
+    γελος ἐξ οὐρανο εὐαγγελίζηται ὑμῖν παρ' ὃ εὐηγγε-
+    λισάμεθα ὑμῖν, ἀνάθεμα ἔστω. » Εἰ ἕν ἐστιν Εὐαγ-
+    γέλιον τὸ λαληθὲν ἁπάσῃ τῇ ὑπ' οὐρανὸν διὰ τῶν
+    ἁγίων μυσταγωγῶν, τοῦτο δέ ἐστιν ἡ πίστις ἡ ες
+    Χριστόν· πῶς ο Θεὸς εη ἂν ἀληθής, εἴπερ ἐστὶν
+    ἀναγκαῖον ὁμολογεῖν, ὡς ἐκ τῆς ἀρχαίας πλάνης κε-
+    κλήμεθα πρὸς ἐπίγνωσιν τοῦ κατὰ φύσιν ὄντος Θεοῦ;
+    Θαρσεῖ δὲ τοσοῦτον ὁ μακάριος Παῦλος, ὡς κα ἀγ-
+    γέλους ἀναθεματίζειν, εἰ δὴ μεταστρέψειαν τὸ Εὐαγ-
+    γέλιον τοῦ Χριστοῦ.
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="520,120,960,840">
+  <bloco tipo="texto_principal" script="grego" bbox="50,750,480,880">
+    « Ὅτε δὲ ηὐδόκησεν ὁ Θεὸς ὁ ἀφορίσας με ἐκ κοι-
+    λίας μητρός μου, ἀποκαλύψαι τὸν Υἱὸν ατοῦ ἐν ἐμοί,
+    ἵνα εὐαγγελίζωμαι αὐτὸν ἐν τοῖς ἔθνεσιν, εὐθέως οὐ
+    προσανεθέμην σαρκὶ καὶ αἵματι, οὐδὲ ἀνῆλθον εἰς
+    Ἱεροσόλυμα πρὸς τοὺς πρὸ ἐμοῦ ἀποστόλους. » Τῷ
+    γὰρ ἅπαξ τὴν ἐκ Θεοῦ λαχόντι μυσταγωγίαν καὶ
+    ἀποκάλυψιν, οὐκ ἔδει τῆς ἐξ ἀνθρώπων παιδαγωγίας.
+    Πλὴν ἐκεῖνό φαμεν· Τίνα ἀπεκάλυψεν ὁ Πατὴρ τῷ
+    μακαρίῳ Παύλῳ, ἢ τίνα προσέταξεν ἐν τοῖς θνεσιν
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,70,950,110">
+    buntur in ipso, si vestigiis illius innixæ, in Deum
+    hoc est in Christum crediderint.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,120,950,230">
     Ex priori ad Corinthios.
-
-    Et haec quidam fuistis: sed abluti estis, sed sanctificati estis, sed justificati estis in nomine Domini nostri Jesu Christi, et in Spiritu Dei nostri. Cum in nomine Christi justificemur, eamque ideo ut Deum veneremur, ejusdemque Spiritu locupletemur, quomodo non erit Deus Christus?
-
-    Ex posteriori ad Corinthios.
-
-    Nam si is qui venit, alium Jesum praedicat, quem non praedicavimus, aut alium spiritum accepistis, quem non accepistis: aut aliud Evangelium, quod non recepistis: recte pateremini. Anne Dei Verbum incarnatum nullus comperit es, qui aut Jesum, aut Christum illud nominaret; nisi quispiam forsan futurorum praescius olim, cum ni mirum caro factum esset, hoc nomine appellatum iri praedixerit. Nomen hoc itaque Jesus, simul atque factum est homo, novum impositum est illi. At vero si ut Deus obri annuntiatur, d unus nihilonimus est (neque enim est alius praeter illum, qui annuntiari posset), bene res habet. Deo enim servire invenimur. Quod si vero solae humanae naturae conditiones in illum conveniunt, nec aliam ob causam, quam propter nudam illam simplicemque personarum nostram ratio, ut quæ non Deo nos conjungat, sed homini. Atqui haec doctrina est plane impia. Deus itaque Christus, et Filius; cum Verbum sit caro factum.
-
-    C 121 Ex Epistola ad Galatas.
-
-    Miror, quod sic iam cito transferimini ab eo qui vos vocavit in gratiam Christi, in aliud Evangelium: quod non est aliud, nisi sunt aliqui, qui vos perturbant, et convertere volunt Evangelium Christi. Sed liceat nos, aut angelus de caelo evangelizet vobis praeterquam quod evangelizavimus vobis, anathema sit. Si unum tantum est Evangelium, in universo terrarum orbe per sacros mysteriorum doctores depradictum, hoc autem est illius in Christum, quomodo hoc non est verus Deus? Negari enim nullo modo potest, ab antiquo errore ad veri naturalisque Dei agnitionem translatos nos esse. Tanta autem est beati Pauli iudicia, ut ipsos etiam angelos anathemati subjicere non dubitet, si forte Christi Evangelium pervertere tentaverint.
-
-    Cum autem placuit illi, qui me segregavit ex utero matris meae, ut revelaret Filium suum in me, ut evangelizarem illum in gentibus, continuo non acquievi carni et sanguini: neque veni Hierosolymam ad antecessores meos apostolos. Sane qui a Deo divinorum mysteriorum doctrinam et revelationem hauserat, is humana institutione neu-quam indigebat. Verum istud interim adversarios interrogaverim, qualemnam caelestis Pater beato
+    « Et hæc quidam fuistis : sed abluti estis, sed
+    sanctificati estis, sed justificati estis in nomine Domini
+    nostri Jesu Christi, et in Spiritu Dei nostri 51. » Cum
+    in nomine Christi justificemur, eumque fide ut Deum
+    veneremur, ejusdemque Spiritu locupletemur, quo-
+    modo non erit Deus Christus ?
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="485,160,515,200">
+  <bloco tipo="texto_principal" script="latino" bbox="520,230,950,520">
+    Ex posteriori ad Corinthios.
+    « Nam si is qui venit, alium Jesum prædicat,
+    quem non prædicavimus, aut alium spiritum acce-
+    pistis, quem non accepistis : aut aliud Evangelium,
+    quod non recepistis : recte pateremini 52. » Ante
+    Dei Verbum incarnatum nullus compertus est, qui
+    aut Jesum, aut Christum illud nominaret; nisi
+    quispiam forsan futurorum præscius olim, cum ni
+    mirum caro factum esset, hoc nomine appellatum
+    iri prædixerit. Nomen hoc itaque Jesus, simul at-
+    que factum est homo, novum impositum est illi. At
+    vero si ut Deus orbi annuntiatur, et unus nihilomi-
+    nus est (neque enim est alius præter illum, qui an-
+    nuntiari possit), bene res habet. Deo enim servire
+    invenimur. Quod si vero solæ humanæ naturæ con-
+    ditiones in illum conveniunt, nec aliam ob causam,
+    quam propter nudam illam simplicemque persona-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,520,950,750">
+    121 Ex Epistola ad Galatas.
+    « Miror, quod sic tam cito transferimini ab eo
+    qui vos vocavit in gratiam Christi, in aliud Evan-
+    gelium : quod non est aliud, nisi sunt aliqui, qui
+    vos perturbant, et convertere volunt Evangelium
+    Christi. Sed licet nos, aut angelus de cœlo evange-
+    lizet vobis præterquam quod evangelizavimus vobis,
+    anathema sit 53. » Si unum tantum est Evangelium,
+    in universo terrarum orbe per sacros mysteriorum
+    doctores deprædicatum, hoc autem est fides in
+    Christum, quomodo hoc non est verus Deus ? Ne-
+    gari enim nullo modo potest, ab antiquo errore ad
+    veri naturalisque Dei agnitionem translatos nos
+    esse. Tanta autem est beati Pauli fiducia, ut ipsos
+    etiam angelos anathemati subjicere non dubitet, si
+    forte Christi Evangelium pervertere tentaverint.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,750,950,880">
+    « Cum autem placuit illi, qui me segregavit ex
+    utero matris meæ, ut revelaret Filium suum in me,
+    ut evangelizarem illum in gentibus, continuo non
+    acquievi carni et sanguini : neque veni Hierosoly-
+    mam ad antecessores meos apostolos 54. » Sane
+    qui a Deo divinorum mysteriorum doctrinam et
+    revelationem hauserat, is humana institutione neu-
+    tiquam indigebat. Verum istud interim adversarius
+    interrogaverim, qualemnam cælestis Pater beato
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,70,510,90">
     A
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="485,300,515,350">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,280,510,300">
     B
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="485,460,515,510">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,520,510,540">
     C
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="485,640,515,700">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,730,510,750">
     D
   </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="40,840,960,980">
-    51 1 Cor. vi. 11. 52 11 Cor. xi. 4. 53 Galat. i; 6-8. 54 ibid. 15-17.  Digitized by Google
+  <bloco tipo="aparato_critico" script="latino" bbox="50,890,950,910">
+    51 I Cor. VI, 11. 52 II Cor. XI, 4. 53 Galat. I, 6-8. 54 ibid. 15-17.
   </bloco>
-
-  <notas>
-    - Alguns vocábulos gregos e sinais diacríticos na coluna esquerda estão parcialmente ilegíveis no original digitalizado; substituições mínimas foram feitas e palavras isoladas marcadas como [ilegivel] quando a leitura não foi segura.
-    - As letras A, B, C, D no gutter foram colocadas em blocos nota_marginal separados conforme instrução.
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="700,960,900,980">
+    Digitized by Google
+  </bloco>
 </pagina>

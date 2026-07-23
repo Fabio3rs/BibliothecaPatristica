@@ -1,61 +1,75 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="0,0,1000,90">
-    1331        S. ISIDORI PELUSIOTÆ        1332
-    XI.. - MARTHIANO ET ZOSIMO.        A        IA'. - ΜΑΡΤΙΝΙΑΝΩ, ΚΑΙ ΖΩΣΙΜΩ.
+  <bloco tipo="cabecalho" script="misto" bbox="100,30,900,60">
+    1331 S. ISIDORI PELUSIOTÆ 1332
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,95,490,740">
-    Virtutis commendatio.
-    
-    Virtutem fugite, o optimi. Solet enim infantiari se desidiosa reddere suos amatores. Virtutem potius sectamini. Hæc enim sapiens efficere potest, atque in decani continere officio, qui eam amplexi sunt. Quæ etiam ex ipsis soculis mitte quid ex plaer[ilegivel] inue tuslibus spernunero se prodit, ostenditque qua mens interius modestia sit imbutu.
-    
-    XII. — ZOSIMO PRESBYTERO.
-    
-    Jubeſt a scelesta vita abstinere, aut a sacris mysteriis. Vide inf. ep. 231.
-    
-    Plerique sane (nam omnes dicere durum verbum B sit) valde atque adeo acerbe te mordent atque subannant; atque vixiam falso. Frater siquidem tuus germanus cum lacrymis et luctu talia, me dicam graviora, nobis narravit, ingressus extrahere te, si id fieri modo potest, e nimia barbarae libidinis, in quo flagitio capitis tui damno censuemini, omnes repudiando admonitionem, vitia, quibus subjacces, non expungnas. Scripsi nuper, ut uti juris factus, et impudicitiae tuae dedecus cogitans, et senium, quod obrepit, et sacrum sacerdotium, ad quod nescio cum imprudentia te ingesseris, praesentia dedecora, atque offendicula, futurum denique supplicium expenderes, omnibus cooperitus sceleribus in ipso senii vitaeque limine juvenilia et inanitia sectans. Quomodo vero juvenibus, ut modestie se temperareturque gerant, persuades, si ne ibi quidem ad extremum usque senium persuaseris? Quin igitur horres vereisque talia committere, et altaria frequentare? Quomodo immaculata sacrorum mysteria audes attingere? Illucor itaque se (etsi etiam dolos, verumtamen libere dicam) ut vel committere hujusmodi desinas, vel a venerandis altaris sacrificiis abstineas, ne quando igneue de caelo capiti accersens tue, turpiter meritas poenas ut optasti, iura.
-    
-    XIII. — EIDEM.
-    
-    Hominem desperata malitia et conclavatum suo relinquii genio.
-    
-    Audio in sapientem te incidisse virum qui corrupti, pecunia nequeat, virtutis persudiosum 557 omnemque operam adhibentem ad tui correctionem, renisam tamen abe re, infecta re, quasi prodesse conet possit. Tui enim morbi vis major omni ejus medela est inventa. Decebat tamen te specie rationum eleganti affectum prae admiratione intelligentia ipsius, et reverti ejus prudentiam ab improbitate temperare. Te verono solum, re infecta, illum remisse, verum etiam cum injuria prolisgsase, in-
+  <bloco tipo="cabecalho" script="latino" bbox="150,65,480,85">
+    XI. — MARTINIANO ET ZOSIMO.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,120,520,160">
+  <bloco tipo="cabecalho" script="grego" bbox="550,65,900,85">
+    IA'. — MARTINIANΩ, KAI ZΩSIMΩ.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="495,75,505,90">
     A
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="510,95,970,740">
-    ΙΑ'. — ΜΑΡΤΙΝΙΑΝΩ, ΚΑΙ ΖΩΣΙΜΩ.
-    
+  <bloco tipo="cabecalho" script="latino" bbox="400,90,600,105">
     Virtutis commendatio.
-    
-    Φεῦγετε, ὦ βελτιστοι, τὴν κακίαν. Δεὖν γὰρ ἔκδεσμελῃς ῥεδαῖε̣[ilegivel] αὐτοὶ ἀματῆρες. Λυττίστει καὶ παράφρονας ἐργάσασθαι τοὺς οἰκείους πραστας. Διίωκετε δὲ τὴν ἀρετήν. Δεινὴ γὰρ σωφρόνη καὶ ἣ τὴν προσηκοῦσαν κατασταναι διατηρησὶν τοὺς ἀτεναγχμοὺς αὐτῆς. Ἦ γάρ καὶ διὰ τῶν ὀφθαλμμῶν πολλάχαις ἡμερῶν τι καὶ γελαμὴν βλεπτόντων δεικν̣σ̣ιν, ὡς ἐνέστακται ἔνδον ὁ νοῦς συγχρωσήνης ἀνελέος.
-    
-    ΙΒ. — ΖΩΣΙΜΟ ΠΡΕΣΒΥΤΕΡΩ.
-    
-    Πολλοὶ μὲν (τὸ γὰρ πάντας εἰπεῖν τραχὺν ἔοικε κατασκευάζειν τὸν λόγον) δεινῶς πάνυ καὶ πικρῶς σε χωρούσουσιν· οὖς ἔχομαι μῆ ἀληθείαν. Ἐπειδὴ δὲ καὶ διωργησάς (32) ου ἀδελφὸς ὄρην μὲ καὶ ἀλοχυρόμενος ταῦτα, ἵνα μὴ λάγω φαρισικέτερα. Ἀπήγγειλεν ἡμῖν, ἀντιλογήσανθ ἀνημφοσομαι σε, εἰ οὖν τε, ἀπὸ τοῦ ῥύθμου τῆς ἀρετῆς, ὅ τι ἦν τῇ κακῇ τῆς αὐτοῦ κεφαλῆς συντετύχωκε, πολλὰ χαίρειν ὀφάς τῷ παρανέσαντι τοῖς κεκρατημενοις μὴ ἐγχειρειν. Γέγραφα ὡς αὐτοῦ γενομένος καὶ τὴν τῆς ἀσθενείας αἰσχύνην ἐνθοῦσε, ὅτε γάρ ἐς ἃ εἰπεῖς, τὴν τε θείαν ἱερωσύνην, εἰς τὸν οὐχ ὅτι ἔπεμψῃς αὐτοῦ τὰ τέ παρόντα ἀεὶν ἐνὶ ταῖς σκάνδαλοις, τὴν τε μέλλουσαν κόλασιν· πάνυ τοῖς κακοῖς ἐγκαλινδωμενος ἐπὶ γήρας ὡδὴ νεωτερισμῶν. Πῶς γὰρ τοὺς νεός συμφρωνει παρανέσεῖς, αὐτῷ μὲν ἐπὶ γήρας παραινων; Πῶς δὲ ὁ φρίττει τοιαῦτα ἔργ᾽, καὶ τῷ θυσασιότερῳ ἑπαμονῆται; Ἡμῖς δὲ τολμᾶν τῶν ἔργων ἀκανδρῆ μυστηρίων; Παρανὼν τοιόνγ, εἰ γὰρ καὶ λυπεῖ, τὸ ἀληθὲς μετὰ παραλήψεως λελεξύμεθα, ἡ παῦσις τοιοῦτο ἔργων, ἣ τοῦ σεπτόυ θυσιαστηρίου σαυτοῦ χωρίου· μὴ ποτε πρὸρ οὑρανέν τὰ ἑν ἐπὶ τοῦτο καλλέως κεφαλῆς, παραχρυσαν τοῖς ῥυθμόις ἀφορμὰς ὑν ἐπιθυμιῶν λόγων.
-    
-    ΙΓ'. — Τῷ ΑΥΤῸ.
-    
-    Πυνθάνομαι ὅτι σοφὸς τις ἀνήρ, καὶ χρηστῶν χρείων, καὶ ἀρετῆς συναγωνιστὴς ἐντυγχάνει σοὶ· καὶ πάντα νιώσας, ὅσα χρῆν τρός ἐπακολουθεῖν, ἀπεπέμφθη διὰπρως μὴδὲν ὑψίστης ἀλλὰ συνηθές. Κρείττωνος (33) τοῦ σοῦ νοήματος τῆς παρ᾽ αὐτῷ ἱατρικῆς τέχνης εὑρεθέντος. Δέον γὰρ σε γονευθῆναι μὲν τῷ χράλλῃ τῶν νοσημάτων, ἀνασχέσθαι δὲ τὴν σύνενι, ἀποσχέσθαι δὲ τὰ φρόνιμα καὶ πρᾳεσσαλῆ τῆς κακίας, οὑ μόνῳ ἀπρακτον, ἀλλὰ καὶ μὴδ' ὑβρεως τοῦτον ἀπεπέμπω. Τι σὺν πιπρῆσον; Εἰ γάρ
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,270,520,320">
+  <bloco tipo="texto_principal" script="latino" bbox="100,110,490,215">
+    Vitium fugite, o optimi. Solet enim infatuare ac dementes reddere suos amatores. Virtutem potius sectemini. Hæc enim sapientes efficere potest, atque in decenti continere officio, qui eam amplecti sunt. Quæ etiam ex ipsis oculis mite quid ac placidum tuentibus sæpenumero se prodit, ostenditque qua mens interius modestia sit imbuta.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,110,900,225">
+    Φεύγετε, ὦ βέλτιστοι, τὴν κακίαν. Δεινὴ γὰρ ἐκλυττῆσαι κα παράφρονας ἐργάσασθαι τοὺς οἰκείους ἐραστάς. Διώκετε δὲ τὴν ἀρετήν. Δεινὴ γὰρ σοφίσαι καὶ ἐν τῇ προσκηκούσῃ καταστάσει διατηρῆσαι τοὺς ἀντεχομένους αὐτῆς. Ἥ γε καὶ διὰ τῶν φθαλμν πολλάκις μερόν τι καὶ γαληνὸν βλεπόντων δείκνυσιν, ὡς ἐνέστακται ἔνδον ὁ νοῦς σωφροσύνης ἀνάπλεος.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="160,230,450,250">
+    XII. — ZOSIMO PRESBYTERO.
+  </bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="580,230,850,250">
+    IB'. — ZΩSIMΩ ΠΡΕΣΒΥΤΕΡΩ.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="495,265,505,280">
     B
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,420,520,470">
+  <bloco tipo="cabecalho" script="latino" bbox="220,255,780,270">
+    Jubet a scelestæ vita abstinere, aut a sacris mysteriis. Vide inf. ep. 231.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,275,490,640">
+    Plerique sane (nam omnes dicere durum verbum sit) valide atque adeo acerbe te mordent atque subsannant; atque utinam falso. Frater siquidem tuus germanus cum lacrymis et luctu talia, ne dicam graviora, nobis narravit, ingressus extrahere te, si id fieri modo potest, e nimia barathro libidinis, in quo flagitio capitis tui damno consenuisti, omnem répudiando admonitionem, vitiis, quibus subjaces, non expugnans. Scripsi nuper, ut tui juris factus, et impudicitiæ tuæ dedecus cogitans, et senium, quod obrepit, et sacrum sacerdotium, ad quod nescio qua impudentia te ingesseris, præsens tia dedecora, atque offendicula, futurum denique supplicium expenderes, omnibus coopertus sceleribus in ipso senii vitæque limine juvenilia et insania sectans. Quomodo vero juvenibus, ut modeste se temperanterque gerant, persuadeas, si ne tibi quidem ad extremum usque senium persuaseris? Quin igitur horres vererisque talia committere, et altaria frequentare? Quomodo immaculata sacrorum mysteria audes attingere? Ulterior itaque (etsi enim dolet, verumtamen libere dicam) ut vel committere hujusmodi desinas, vel a venerandis altaris sacrificiis abstineas, ne quando igneum de cœlo capiti accersens tuo, turpiter meritas pœnas ut optasti, luas.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,275,900,620">
+    Πολλοὶ μὲν (τὸ γὰρ πάντας εἰπεῖν τραχὺν σως κατασκευάσει τὸν λόγον) δεινῶς πάνυ καὶ πικρῶς σε κωμῳδοῦσιν· οὓς εὔχομαι μὴ ἀληθεύειν. Ἐπειδὴ δὲ καὶ ὁμογνήσιός (32) σου ἀδελφὸς θρηνῶν σε καὶ ὀλοφυρόμενος τὰ αὐτά, να μὴ λέγω φορτικώτερα. Ἀπήγγειλεν ἡμν, ἀντιβολῶν ἀνιμάσασθαί σε, εἰ οἷόν τε, ἀπὸ τοῦ βυθοῦ τς λαγνείας, ᾗ ἐπ τῷ κακ τῆς αὐτοῦ κεφαλῆς συγγεγήρακας, πολλὰ χαίρειν φράσας τῷ παραινέσαντι τοῖς κεκρατημένοις μὴ ἐγχειρεῖν. Γέγραφα ὅπως σαυτοῦ γενόμενος καὶ τὴν τῆς ἀσελγείας αἰσχύνην ἐννοήσας, τότε γῆρας εἰς ὃ ἔπεις, τήν τε θείαν ἱερωσύνην, εἰς ἣν οὐκ οἶδ' πως ἐπεχώμασας τά τε παρόντα ὀνείδη καὶ τὰ σκάνδαλα, τήν τε μέλλουσαν κόλασιν· πᾶσι τος κακοῖς ἐγκαλινδούμενος ἐπὶ γῆρας οὐδὲν νεωτερίζων. Πῶς γὰρ τοῖς νέοις σωφρονεῖν παραινέσεις, σαυτῷ μηδὲ ἐπὶ γῆρας παραινῶν; Πῶς δὲ οὐ φρίττεις τοιαῦτα δρᾶν, καὶ τῷ θυσιαστηρίῳ πλησιάζων; Πῶς δὲ τολμᾷς τν ἀχράντων ἅψασθαι μυστηρίων; Παραινῶ τοίνυν, (εἰ γὰρ καὶ λυπεῖ, τὸ ἀληθὲς μετὰ παρρησίας λελέξεται,) ἢ παῦσαι τοιαῦτα δρῶν, ἢ τοῦ σεπτοῦ θυσιαστηρίου σαυτὸν χώρισον· μή ποτε πῦρ οὐρανόθεν ἐπὶ τὴν σαυτοῦ καλέσῃς κεφαλήν, παρέχουσαν τοῖς ῥᾳθύμοις ἀφορμὰς ὧν ἐπιθυμοῦσι λόγων.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="495,480,505,495">
     C
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,585,520,635">
+  <bloco tipo="cabecalho" script="latino" bbox="230,645,360,660">
+    XIII. — EIDEM.
+  </bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="630,645,780,660">
+    IG'. — TΩ AYTΩ.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="495,685,505,700">
     D
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,745,970,920">
-    VARIAE LECTIONES ET NOTAE.
-    
-    (39) Pro ὀμᾶγγιας, voce inusitata, permode ὀμᾶγγος, quasi ὀμφάγγος, ut e rythmoi, quasi νοητικός vel γνώσιος. Μox pro ἀνεμέγασθαι tentabam ἀν ἀσθμασαι, quod eveniret est : vel potius ἀνελή[ilegivel] εἶσθαι ad ἀνελή, aperio, explico. Suspecta et illa.
-    
-    (33) Pro χρήστων coud. Var. 650 et Ali. legunt χρήστων. POSSIN.
+  <bloco tipo="cabecalho" script="latino" bbox="260,665,740,680">
+    Hominem desperatæ malitiæ ut conclavatum suo relinquit genio.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,925,970,995">
+  <bloco tipo="texto_principal" script="latino" bbox="100,685,490,830">
+    Audio in sapientem te incidisse virum qui corrumpi pecunia nequeat, virtutis perstudiosum 557 omnemque operam adhibentem ad tui correctionem, remissum tamen abs te, infecta re, quasi prodesse non posset. Tui enim morbi vis major omni ejus medela est inventa. Decebat tamen te specie rationum eleganti illectum præ admiratione intelligentiæ ipsius, et reveritum ejus prudentiam ab improbitate temperare. Te vero non solum, re infecta, illum remisisse, verum etiam cum injuria profligasse, in-
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,685,900,830">
+    Πυνθάνομαι ὅτι σοφός τις ἀνήρ, καὶ χρημάτων κρείττων, καὶ ἀρετῇ συναγωνιστὴς ἐντυχών σοι· καὶ πάντα νικήσας ὅσα ἐχρῆν πρὸς ἐπανόρθωσιν, ἀπεπέμφθη ἄπρακτος μηδὲν ὠφελῆσαί σε δυνηθείς. Κρείττονος (33) τοῦ σο νοσήματος τῆς παρ' αὐτῷ ατρικς τέχνης ερέθεντος. Δέον γάρ σε γοητευθέντα μὲν τῷ κάλλει τῶν νοημάτων, ἀγασθέντα δὲ τὴν σύνεσιν, αἰδεσθέντα δὲ τὸ φρόνημα παύσασθαι τῆς κακίας, οὐ μόνον ἄπρακτον, ἀλλὰ καὶ μεθ' ὕβρεως τοῦτον ἀπεπέμψω. Τί οὖν ποιητέον; Εἰ γὰρ
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="370,845,630,860">
+    VARIÆ LECTIONES ET NOTÆ.
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="100,870,490,940">
+    (32) Pro ὁμογνήσιος, voce inusitata, repone ὁμόγνιος, quasi ὁμογένιος, ut et γνήσιος, quasi γονήσιος vel γενήσιος. Μοχ pro ἀνεμήσασθαι tentabam ἀν εὐδάσθαι, quod evomere est : vel potius ἀναίη σισθαι ab ἀνεἰλω, aperio, explico. Suspecta et illa
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="510,870,900,930">
+    vox ἐπεκάμασας, quod est lasciviores, nisi rectius est ἐπεπόμπασας. Eruditiores æstimabunt. SCHOTT.
+    (33) Pro κρείττονος codd. Vat. 650 et Alt. legunt κρεῖττον. POSSIN.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="580,960,780,980">
     Digitized by Google
   </bloco>
-  <notas>Pagina em duas colunas: coluna esquerda em latino (script latino), coluna direita em grego (script grego). Letras A, B, C, D centrais constituem notas marginais (indicadas em blocos próprios). Vários termos ilegíveis foram marcados com [ilegivel] por palavra. Ligaduras e abreviações foram expandidas quando legíveis; mantive a ortografia tal como aparecia no texto impresso.</notas>
 </pagina>

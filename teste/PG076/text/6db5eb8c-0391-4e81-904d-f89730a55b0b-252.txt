@@ -1,32 +1,30 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,15,960,95">
-    487     S. CYRILLI ALEXANDRINI ARCHIEP.     488
+  <bloco tipo="cabecalho" script="latino" bbox="120,40,880,110">
+    487   S. CYRILLI ALEXANDRINI ARCHIEP.   488
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,95,490,155">
-    vestro, et victoria, ac stabilitate, gratiarum actiones
+  <bloco tipo="texto_principal" script="latino" bbox="60,120,480,220">
+    vestro, el victores, ac stabilitale, gratiarum actiones
     sanctissimo Christo offeramus. Per quem, et cum
     quo, Deo et Patri sit gloria, cum sancto Spiritu in
     saecula saeculorum. Amen.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,95,510,155">
+  <bloco tipo="texto_principal" script="grego" bbox="520,120,940,220">
+    ληχτους ευχαριστιας, τας υπερ τε του ημερου
+    χρατους, νικης τε και διαμονης, αναφερωμεν τω
+    παναγιω Χριστω· δι' ου, και μεθ' ου τω θεω και
+    Πατρι, δοξα συν αγιω Πνευματι, εις τους αιωνας
+    των αιωνων. Αμην.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,125,500,155">
     A
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="510,95,960,155">
-    [ilegivel] εὐχαριστίας, τας ὑπὲρ τῶν ἡμῶν
-    χάριτος, νίκης τε καὶ διαμονῆς, ἀναφέρουμεν τῷ
-    παναγίῳ Χριστῷ· δι' οὗ, καὶ μεθ' οὗ τῷ θεῷ καὶ
-    Πατρὶ, δόξα σὺν ἁγίῳ Πνεύματι, εἰς τοὺς αἰῶνας
-    τῶν αἰώνων. Ἀμήν.
+  <bloco tipo="outro" script="desconhecido" bbox="420,520,580,560">
+    —◦—
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="420,340,580,420">
-    [ornamento]
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="740,960,980,995">
+  <bloco tipo="rodape" script="latino" bbox="780,920,980,990">
     Digitized by Google
   </bloco>
   <notas>
-    O primeiro vocábulo da coluna grega no início da linha está ilegível na imagem e foi marcado como [ilegivel].
-    O sinal ornamental central foi transcrito como [ornamento].
-    A identificação de seção "A" aparece no gutter e foi colocada em seu próprio bloco tipo="nota_marginal", conforme instruções.
+    A letra marginal "A" foi separada em bloco próprio (nota_marginal) conforme instruções; a transcrição grega foi reproduzida sem normalizações ortográficas. Algumas formas gregas são pouco nítidas; preservei a leitura literal visível.
   </notas>
 </pagina>

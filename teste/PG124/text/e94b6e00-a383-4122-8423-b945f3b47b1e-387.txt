@@ -1,155 +1,45 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="0,0,1000,90">
-725. EXPOSITIO IN EPIST. I AD COR — CAP. XIII. 726
-ΚΕΦΑΛ. ΙΓ'. A CAPUT XIII.
-  </bloco>
+  <bloco tipo="cabecalho" script="misto" bbox="40,50,80,70">725</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="200,50,700,70">EXPOSITIO IN EPIST. I AD COR — CAP. XIII.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="900,50,950,70">726</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="160,80,300,100">ΚΕΦΑΛ. ΙΓ'.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="445,85,460,100">A</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="600,80,720,100">CAPUT XIII.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="40,110,430,410">1 Ἐὰν ταῖς γλώσσαις λαλῶ τῶν ἀνθρώπων καὶ τῶν ἀγγέλων, ἀγάπην δὲ μὴ ἔχω, γέγονα χαλκὸς χῶν, καὶ κύμβαλον ἀλαλάζον. Οὐκ εὐθὺς ὑπέδειξεν αὐτοῖς τὴν ὁδὸν, ἀλλὰ συγκρίνει αὐτὴν πρότερον πρὸς τὸ δοκοῦν αὐτοῖς χάρισμα εἶναι μεῖζον, τὸ τῶν γλωσσῶν, καὶ δείκνυσι ταύτην ἀσυγκρίτως τούτου ὑπερέχουσαν, καὶ μὴν καὶ τῶν λοιπῶν πάντων χαρισμάτων, καὶ τότε ἀξιοπίθητον ἀποφαίνει. Γλώσσας δὲ ἀνθρώπων, τῶν ἁπανταχοῦ τῆς οἰκουμένης ἐθνῶν φησιν. Οὐκ ἀρκούμενος δὲ τούτῳ, καὶ ἑτέραν τίθησιν ὑπερβολήν· « Ταῖς τῶν ἀγγέλων, » φησί, « γλώσσαις · » οὐχ ὅτι οἱ ἄγγελοι γλώσσας ἔχουσιν, ἀλλὰ κρεῖττόν τι γλῶσσαι θέλων, καὶ τὸ ὑπερέχον τῶν ἀνθρωπίνων γλωσσῶν, διὰ τοῦτο οὕτως εἶπεν. Ἀγγέλοις γὰρ γλῶσσα, ἡ νοερὰ πρὸς τὸ ἀλλήλοις διαδιδόναι τὰ θεῖα νοήματα δύναμις. Ἀπὸ δὲ τοῦ ἡμετέρου ὀργάνου ταύτην ὠνόμασεν, ὥσπερ καὶ τὸ, « Πᾶν γόνυ κάμψει ἐπουρανίων. » Οὐ γὰρ ὀστ καὶ νερα ἔχουσιν, ἀλλὰ τὴν ἐπιτεταμένην ὑποταγὴν ἐδήλωσε. « Γέγονα » δὲ, φησί, « χαλκὸς ἠχῶν · » τουτέστιν, φωνὴν μὲν ἀφιεὶς, εἰκ δὲ φθεγγόμενος, καὶ ὄχληρὸς ν, μηδένα δὲ ὠφελῶν, διὰ τὸ ἀγάπης ἠστέρησθαι.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="460,110,950,420">VERS. 1. Si linguis hominum loquar et angelorum, charitatem autem non habeam, factus sum æs sonans, vel cymbalum tinniens. Haud acutum submonstravit eis viam, sed comparat eam prius cum dono quod ipsis videbatur esse potius, linguarum videlicet, ostenditque hanc illud incomparabiliter antecellere, imo et cætera omnia charismata : et tum eam dignam esse ait, quæ ab omnibus expectatur. Linguas autem hominum, cunctarum gentium ubique terrarum commorantium intelligit. Nec hoc contentus, aliam ponit excellentiam : « Angelorum linguis, » inquit : non quod angeli linguas habeant, sed ut quiddam, quod humanis linguis excellentius esset, indicaret, sic dixit. Angelorum enim lingua est intellectualis vis qua sibi mutuo divinarum rerum intellectum ac divinas cogitationes impertiunt. A nostro autem organo eam nominavit, quemadmodum et illud, « Flectetur omne genu cœlestium P. » Non enim ossa et nervos habent, sed summam subjectionem indicavit. « Factus sum, » inquit, « æs sonans, » hoc est vocem quidem edens, temere autem loquens, ac turbulenta proferens, quibus nemini prosim, quandoquidem charitate sim destitutus.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="445,295,460,310">B</bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="40,110,480,850">
-Εἰ δὲ ταῖς γλώσσαις λαλῶ τῶν ἀνθρώπων καὶ
-τῶν ἀγγέλων, ἀγάπην δὲ μὴ ἔχω, γέγονα χαλκὸς
-ἠχῶν, καὶ κύμβαλον δαλάζον. Οὐκ εὐθὺς ὑπέδει-
-ξεν αὐτοῖς· τὴν ἑαυτῆς, ἀλλὰ συγχρίνει αὐτὴν πρόσειον
-πρὸς τὸ δοκοῦν αὐτοῖς χάρισμα εἶναι μεῖζον, τὸ τῶν
-γλωσσῶν, καὶ δείκνυσαι ταύτην ἀσυγκρίτως τοῦτον
-ὑπερέχουσαν, νὰι μὴν καὶ τῶν λοιπῶν πάντων χα-
-ρισμάτων, καὶ τότε ἀξιοποιηθῆναι ἀπορρεῖν. Γλώσ-
-σαι δὲ ἀνθρώπων, τῶν ἀπανταχού τῆς οἰκουμένης
-ἔθνεσι φησί. Οὐκ ἀρχόμενος δὲ τούτου, καὶ ἔτερας
-τείχους ὑπερβαλῶν· «Ταῖς τῶν ἀγγέλων,» [ilegivel],
-γλώσσαις· οὐκ ἔτι οἱ ἄγγελοι γλώσσας ἔχουσιν,
-ἀλλὰ χρηστὸν τὸ δηλώσαι θέλων, καὶ τὸ ὑπὲρ
-τῶν ἀνθρωπίνων γλωσσῶν, διὰ τοῦτο οὕτω εἶπεν.
-Ἄγγελος γὰρ ὁ γλῶσσα, ἡ νοερὰ πρὸς τὰ ἄλλ'· διεβάδισα τὰ θεῖα νοήματα δύναμις· Ἀπὸ τοῦ
-τοῦ ὀργάνου ταύτην ὑνόμασεν, ὥστε καὶ τὸ
-ἄλλο γένειν, ἀλλὰ τὰ τῆς ἐπιτεταγμένης ὑποταγῆς
-ἐδήλωσε. Γίγνονται δὲ, φησὶ, «χάλκος ἠχῶν,»
-τουτέστιν, φωνὴ μὲν ἀφελὴς, ἐκὶ δὲ φθεγγόμενος,
-καὶ πληρῶς ὢν, μηδένα δὲ ὠφελεῖ, διὰ τὸ τῆς ἀγάπης
-ἐστερημένος.
+  <bloco tipo="texto_principal" script="grego" bbox="40,420,430,520">Καὶ ἐὰν ἔχω προφητείαν, καὶ εἰδῶ τὰ μυστήρια πάντα, καὶ πᾶσαν τὴν γνῶσιν. Οὐχ ἁπλῶς προφητείαν, ἀλλὰ τὴν ἀκροτάτην, καὶ πάντα εἰδυίαν τὰ μυστήρια. Σκόπει δὲ, πῶς ἐπὶ μὲν τν γλωσσν, οὐδν εἶπεν εἶναι κέρδος· ἐπὶ δὲ τῆς προφητείας, τὸ εἰδέναι τὰ μυστήρια πάντα, καὶ πᾶσαν τὴν γνῶσιν.</bloco>
 
-Καὶ ἐὰν ἔχω προφητείαν, καὶ εἴδω τὰ μυστήρια
-πάντα, καὶ πάντα τὴν γνώσιν· Οὐκ ἄπλως προφη-
-τείαν, ἀλλὰ τὴν ἀκροτάτην, καὶ πάντα εἰδὼς τὰ μυ-
-στήρια. Σκοπεῖ δὲ, πῶς ἐπὶ μέν τῶν γλωσσῶν, οὐδὲν
-ἔτιν ἐστὶν χρήσιμον· ἐπὶ δὲ τῆς προφητείας, τὰ
-ὑπὲρ τὰ μυστήρια πάντα, καὶ πάντα τὴν γνώσιν.
+  <bloco tipo="texto_principal" script="latino" bbox="460,430,950,530">VERS. 2. Et si 202 habuero prophetiam, et noverim mysteria omnia, et omnem scientiam. Non simpliciter prophetiam, sed maxime sublimem, et quæ mysteria omnia noverit. Observa autem quod de linguis quidem nullam utilitatem dixit quæ eis inesset ; at de prophetia hoc dixit, Si noverim mysteria omnia, et omnem scientiam.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="445,485,460,500">C</bloco>
 
-Καὶ ἐὰν ἔχω πᾶσαν τὴν πίστιν, ἵνα ὄρη μὴ χαθῇ
-ἐσταυρω θὲν λέγων ὀγκόν, φαίνεσθαι, ἐπὶ τὴν μητέρα
-καὶ τὴν πηγήν ἀπάγων ἔλαβε, τὴν πίστιν, καὶ ταύτην
-πάλιν·
+  <bloco tipo="texto_principal" script="grego" bbox="40,530,430,590">Καὶ ἐὰν ἔχω πσαν τὴν πίστιν. Ἵνα μὴ καθ' ἕκαστον λέγων ὄχληρὸς φαίνηται, ἐπὶ τὴν μητέρα καὶ τὴν πηγὴν ἁπάντων ἦλθε, τὴν πίστιν, καὶ ταύτην, πᾶσαν.</bloco>
 
-Ὅστε καὶ ὄρη μεθεῖσθαι, ἀγάπην δὲ οὐκ ἔχω,
-οὐδὲν εἰμὶ. Ἐπειδὴ δόξει τοῖς ταχυφερεῖς μεγά-
-λα μεθεῖσθαι τὰ ὄρη, τούτῳ ἔνεκα ἐπεμηγήθη
-αὐτῷ, οὐχ ὅτι τοῦτο μόνον δύναται ἡ πάσα πίστις·
-τὸ γὰρ ἔργον μεθεῖσθαι, ὁ Κύριος μικρὸν μέρος τῆς
-πίστεως ἀνετίθησιν, εἰπὼν· Ἐὰν ἔχῃς πίστιν ὡς
-κόκκον σινάπεως· Ὄρα ὅτι ὅλά τῆς προφη-
-τείας, καὶ τῆς πίστεως, πάντα τὰ χαρίσματα περι-
-έλαβεν. Ἡ γὰρ ἐν λόγοις, ἡ ἐν ἔργοις, εἶσι τὰ θαύ-
-ματα. Οὕς εἶπε δὲ, ὅτι Ἀγάπην μὴ ἔχων, μικρὸς
-εἰμι καὶ ἐτελέσθη, ἀλλ᾽ οὐδέν εἰμι.
+  <bloco tipo="texto_principal" script="latino" bbox="460,540,950,590">Et si habuero omnem fidem. Ne sigillatim dicendo molestus videatur, ad matrem et fontem omnium, fidem pervenit, eamque omnem.</bloco>
 
-Καὶ τὴν ψυχοπρὸς πάντας τὰ ἑναντίον, μὴν
-οὕκ εἶπον, Ἐὰν δὲ μέροις τῆς ὑδρίας μου, ἀλλὰ
-Τὰ πάντα· καὶ οὐκ εἶπεν, Ἀλλὰ, ὨΨίμως·
-ὥστε προσκεψάσθαι τῇ δαπάνῃ καὶ τῇ ἐλεημοσύνῃ,
-μετ᾽ ἐπιμελείας πάσης.
+  <bloco tipo="texto_principal" script="grego" bbox="40,600,430,730">Ὥστε καὶ ὄρη μεθιστάναι, ἀγάπην δὲ οὐκ ἔχω, οὐδέν εἰμι. Ἐπειδὴ ἔδοκει τοῖς παχυτέροις μέγα, τὸ μεθιστάνειν τὰ ὄρη, τούτου ἕνεκα ἐπεμνήσθη αὐτοῦ, οὐχ ὅτι τοῦτο μόνον δύναται ἡ πσα πίστις· τὸ γὰρ ὄρη μεθιστάνειν, ὁ Κύριος μικρῷ μέρει τῆς πίστεως ἀνατίθησιν, εἰπών· « Ἐὰν ἔχητε πίστιν ὡς κόκκον σινάπεως. » Ὅρα δὲ, πῶς διὰ τῆς προφητείας καὶ τῆς πίστεως, πάντα τὰ χαρίσματα περιέλαβεν· ἢ γὰρ ἐν λόγοις, ἢ ἐν ἔργοις, εἰσὶ τὰ θαύματα. Οὐκ εἶπε δὲ, ὅτι γάπην μὴ χων, μικρός εἰμι καὶ εὐτελής, ἀλλ', « Οὐδέν εἰμι. »</bloco>
 
-Καὶ ἔαν παραδῖ τὸ σῶμά μου, ἵνα καταφά-
-γωμαι, ἀγάπην δὲ μὴ ἔχω, οὐδὲν ὠφελοῦμαι· Οὐκ
-  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="460,600,950,740">Ut montes transferam, charitatem autem non habeam, nihil sum. Quia videbatur magnum esse rudioribus montes transferre, propterea ejus rei meminit, non quod hoc solum possit tota fides : nam montes transferre, vel modicæ fidei parti Dominus ascribit : « Si habeatis, » inquiens, « fidem ut granum sinapis q. » Observa autem hic quomodo per prophetiam et fidem omnia charismata comprehendit : aut enim in verbis vel operibus sunt miracula. Non dixit autem charitatem non habens, Modicus sum et vilis ; verum, « Nihil sum. »</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="445,695,460,710">D</bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="490,140,520,200">
-A
-  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="40,740,430,810">Καὶ ἐὰν ψωμίσω πάντα τὰ ὑπάρχοντά μου. Οὐκ επεν, Ἐὰν δῷ μέρος τῆς οὐσίας μου, ἀλλά, « Τὰ πάντα » καὶ οὐκ εἶπε, Δῷ, ἀλλά, « Ψωμίσω · » ὥστε προσκεῖσθαι τῇ δαπάνῃ καὶ τὴν διακονίαν, τὴν μετ' ἐπιμελείας πάσης.</bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="520,110,980,850">
-CAPUT XIII.
-VERS. 1. ¢ Si linguis hominum loquar et angelo-
-rum, charitatem autem non habeam, factus sum as-
-sonans, vel cymbalum limineus. ¢ Haud actuam
-submonstravit eis viam, sed comparat eam prius
-cum dono quod ipsis videbatur esse potius, lingua-
-rum videlicet, ostenditque hanc illud incomparabi-
-liter antecellere, imo et caetera omnia charismata:
-et tum eam dignam esse ait, quae ab omnibus expe-
-latur. Linguas autem hominum, cunctarum gen-
-tium ubique terrarum commorantium intelligit.
-Nec hoc contentus, aliam ponit excellentiam : «An-
-gelorum linguis,» inquit: non quod angeli linguas
-habeant, sed ut quidam, quod humanis lin-
-guis excellentius esset, indicaret, sic dixit. Ange-
-lorum enim lingua est intellectualis vis qua sibi mu-
-tua divinarum rerum intellectum ac divinas cogni-
-lationes impertiunt. A nostro autem organo eam
-nominavit, quemadmodum et illud, «Flectetur
-omne genu coelestium» p. Non enim ossa et ner-
-vos habent, sed summam subjectionem indicavit.
+  <bloco tipo="texto_principal" script="latino" bbox="460,750,950,820">VERS. 3. Et si distribuero in cibos pauperum omnes facultates meas. Non dixi, Si partem aliquam facultatum mearum dedero, sed, « Omnes : » nec dixit, Dedero, sed, « In cibos distribuero, » aut sumptui ministerium cum omni diligentia adjiciatur.</bloco>
 
-Factus sum, inquit, «as sonans,» hoc est
-vocem quidem edens, temere autem loquens, ac
-turbulenta proferens, quibus nemini prosim, quan-
-do quidem charitate sum destitutus.
+  <bloco tipo="texto_principal" script="grego" bbox="40,820,430,860">Καὶ ἐὰν παραδῷ τὸ σῶμά μου, ἵνα καυθήσωμαι, ἀγάπην δὲ μὴ ἔχω, οὐδὲν ὠφελοῦμαι. Οὐχ</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="460,830,950,860">Et si dedero corpus meum ut ardeam, charitatem autem non habeam, nihil mihi prodest. Nou</bloco>
 
-VERS. 2. «Et si habuero prophetiam, et no-
-verim mysteria omnia, et omnem scientiam.» Non
-simpliciter prophetiam, sed maxime sublimem, et
-quae mysteria omnia noverit. Observa autem quod
-de linguis quidem nullam utilitatem dixit quae eis inesset; at de prophetia hoc dixit, Si noverim myste-
-ria omnia, et omnem scientiam.
-
-Et si laburo omnem fidem. ¢ Ne sigillatim
-dicendo molestus videatur, ad materem et fontem
-omnium, fidem perveni, eamque omnem.
-
-U montes transferam, charitatem autem non
-habeam, nihil sum. ¢ Quia videbatur magnum esse
-auditoribus montes transferre, propterea ejus rei
-mendicit, non quod hoc solum possit tota fides :
-nam montes transferre, vel modicae fidei parti Do-
-minus ascribit : «Si habetis,» inquit, «sine
-ut granum sinapis». Observa autem hic quomodo
-per prophetiam et fidem omnia charismata compre-
-hendit: aut enim in verbis vel operibus sunt mi-
-racula. Non dixit autem charitatem non habens,
-Modicus sum et vilis ; verum, «Nihil sum.»
-
-VERS. 3. «Et si distribuero in cibos pauperum
-omnes facultates meas.» Non dixit, Si partem ali-
-quam facultatum mearum dedero, sed, «Omnes:»
-nec dixit, Delerro, sed, «In cibos distribuero,» aut
-sumptui ministerium cum omni diligentia adjicitur.
-
-«Et si dedero corpus meum ut ardeam, charita-
-tem autem non habeam, nihil mihi prodest.» Non
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,300,520,360">
-B
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,460,520,520">
-C
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="490,620,520,680">
-D
-  </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="40,780,940,830">
-P Philipp. ii, 10. q Math. xvii, 20.
-  </bloco>
-
-  <bloco tipo="outro" script="latino" bbox="40,860,980,980">
-Variae lectiones.
-  1 fo. • ἀνθρώπων ο. • δὲ ο. • ἀλλήλους, καὶ ἀλληλων ο.
-  </bloco>
-
-  <notas>
-  - Greek text contains portions difficult to read; uncertain or unclear words have been marked with [ilegivel] where necessary.
-  - The page is two-column: left column transcribed first (Greek), then right column (Latin).
-  - Marginal identifiers A, B, C, D are placed as separate nota_marginal blocks and not included within the column texts.
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="40,870,350,890">P Philipp. II, 10. q Matth. XVII, 20.</bloco>
+  
+  <bloco tipo="aparato_critico" script="misto" bbox="350,890,600,910">Variæ lectiones.</bloco>
+  <bloco tipo="aparato_critico" script="grego" bbox="40,900,550,920">a ἢ ο. b ἀνθρώπων ο. c δὲ ο. d ἀλλήλους, καὶ ἀλλήλων ο.</bloco>
+  
+  <bloco tipo="outro" script="latino" bbox="600,950,850,980">Digitized by Google</bloco>
 </pagina>

@@ -1,71 +1,57 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,90">
-    751   THEOD. BALSAMON   752
-  </bloco>
+  <bloco tipo="cabecalho" script="misto" bbox="140,20,860,50">751 THEOD. BALSAMON 752</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="535,55,550,75">A</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,55,530,110">ARIST. Qui se latronibus adversos objiciunt, si sint quidem extra Ecclesiam, boni communione arcentur, clerici vero gradu deponuntur.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,55,940,110">ΑΡΙΣΤ. Οἱ τος λησταῖς ἀντεπιξιόντες, ἔξω μὲν ὄντες τῆς κοινωνίας, εἴργονται τοῦ ἀγαθοῦ· κληρικοὶ δὲ το βαθμοῦ καθαιροῦνται.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,115,530,195">Quando quidem juxta Dominicam vocem Omnis qui gladium accepit gladio peribit : et qui se latronibus adversos objiciunt, eosque occidunt, pœnas luunt. Si laici quidem sint, divinorum sacramentorum participes non erunt, si clerici autem, deponuntur.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,115,940,195">Ἐπειδή, κατὰ τὴν Κυριακὴν φωνήν, Πᾶς  λαβὼν μάχαιραν ἐν μαχαίρᾳ ἀποθανεῖται· καὶ οἱ τοῖς λῃσταῖς ἀντεπιξιόντες, καὶ τούτους φονεύοντες, ὑπὸ ἐπιτίμησιν ἔσονται· καὶ λαϊκοὶ μὲν ὄντες, τῶν θείων ἁγιασμάτων οὐ μεθέξουσι · κληρικοὶ δὲ ὄντες, καθαιρεθήσονται.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,195,530,215">CANON LVI.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,195,940,215">ΚΑΝΩΝ ΝϚ´.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,215,530,380">Qui sua sponte interfecit, et postea pœnitentia ductus est, viginti annis sacramento non communicabit. Viginti autem anni sic in eo dispensabuntur. Debet quatuor annis deflere stans extra fores oratorii, et fideles ingredientes rogans ut pro eo precentur, suam iniquitatem pronuntians. Post quatuor autem annos inter auditores recipietur, et quinque annis cum ipsis egredietur : septem autem annis cum iis qui in substratione, orant, egredietur. In quatuor annis solum stabit, cum fidelibus, sed non erit oblationis particeps. Iis autem expletis, erit sacramentorum particeps.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="535,280,550,300">B</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,215,940,380">Ὁ κουσίως φονεύσας, καὶ μετὰ τοῦτο μεταμεληθείς, εἴκοσιν ἔτη ἀκοινώνητος ἔσται τοῦ γιάσματος. Τὰ δὲ εἴκοσιν ἔτη οτως οκονομηθήσεται ἐπ' αὐτῷ. Ἐν δ' ἔτεσιν προσκλαίειν ὀφείλει, ἔξω τῆς θύρας ἑστὼς τοῦ εὐκτηρίου οἴκου, καὶ τν εἰσιόντων πιστῶν δεόμενος εὐχὴν ὑπὲρ αὐτοῦ ποιείσθαι, ἐξαγορεύων τὴν δίαν παρανομίαν. Μετὰ δὲ δ' ἔτη εἰς τοὺς ἀκρωμένους δεχθήσεται, ἐν ε' ἔτεσιν μετ' αὐτν ἐξελεύσεται. Ἐν δ' συστήσεται μόνον τοῖς πιστοῖς, προσφορᾶς δὲ οὐ μεταλήψεται. Πληρωθέντων δὲ τούτων μεθέξει τῶν γιασμάτων.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,380,530,400">CANON LVII.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,380,940,400">ΚΑΝΩΝ ΝΖ´.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,400,530,480">Qui non voluntarie interfecit, undecim annis sacramentis non communicabit. Undecim autem anni sic in eo dispensabuntur. Duos quidem annos deflebit, tres autem annos inter auditores perseverabit, in quatuor substratus, et anno solum consistet, et deinceps ad sacra admittetur.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,400,940,490">Ὁ ἀκουσίως φονεύσας (13) ἐν δέκα ἔτεσιν ἀκοινώνητος ἔσται τῶν ἁγιασμάτων. Οἰκονομηθήσεται δὲ ἐπ' αὐτῷ τὰ δέκα ἔτη οὕτω. Δύο μὲν ἔτη προσκλαύσει, τρία δὲ ἔτη ἐν ἀκρωμένοις διατελέσει, ἐν δ' ὑποπίπτων, καὶ ἐν ἐνιαυτῷ σταθήσεται μόνον, καὶ τὰ ἑξῆς εἰς τὰ ἅγια δεχθήσεται.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="535,490,550,510">C</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,490,530,550">BALS. Præsentes duo canones describunt quomodo debent puniri qui voluntarias et involuntarias cædes fecere. Pœnarum autem etiam modos definiunt.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,490,940,550">ΒΑΛΣ. Οἱ παρόντες δύο κανόνες ὑποτυποῦσιν ὅπως φείλουσιν ἐπιτιμᾶσθαι οἱ ποιήσαντες ἑκουσίους φόνους καὶ ἀκουσίους. Ὁρίζουσι δὲ καὶ τοὺς τρόπους τῶν ἐπιτιμίων.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,550,530,630">ZONAR. Ad annos viginti, eum qui voluntarie interfecit, atque ad pœnitentiam se confert, hic sanctus vir segregari jubet; ad decem vero eum qui non sponte occidit. Tum deinceps, utrisque pro singulis multæ locis, proprium tempus designat.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,550,940,630">ΖΩΝΑΡ. Ἐν εἴκοσιν ἐνιαυτοῖς τὸν ἑκουσίως φονεύσαντα, καὶ ες μετάνοιαν ἐλθόντα ἀφορίζει οὗτος ὁ ἅγιος· ἐν δέκα δὲ τὸν ἀκουσίως ἀνελόντα. Καὶ ἑξῆς ἐπ' ἀμφοτέροις ἑκάστ τόπῳ ἐπιτιμίου ὁρίζει καιρὸν ἰδιαίτατον.</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,630,530,690">ARIST. Can. 56. Voluntarius homicida viginti annos substernatur, involuntarius decem; adulter quindecim : fornicator septem : virgines post professionem lapsæ, annos quindecim.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,630,940,690">ΑΡΙΣΤ. καν. νϚ´. Ὁ ἑκούσιος φονευτής· εἰκοσαετίαν ὑποπιπτέτω· ὁ ἀκούσιος δεκαετίαν· ὁ μοιχὸς πεντεκαιδεκαετίαν· ὁ πόρνος ἑπταετίαν· αἱ παραπίπτουσαι μετὰ τὴν ὁμολογίαν παρθένοι πεντεκαιδεκαετίαν.</bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="535,690,550,710">D</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,690,530,840">Qui voluntarie quempiam occidit, et postea pœnitentiam egit, viginti annos a sanctificatione excommunicabitur. At viginti anni sic in eum dispensantur. Quatuor annis extra ædis oratoriæ foras stans, et fideles ingredientes orans preces pro ipso fundere, peccatum suum palam efferens deflere debet. Postea autem quatuor annos 115 ad audientes recipietur, et quinque annis cum iis egredietur. Septem annis cum iis qui in submissione</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="555,690,940,840">Ὁ ἑκουσίως φονεύσας, μετὰ δὲ τοῦτο μεταμεληθείς, εἴκοσιν ἔτεσιν ἀκοινώνητός ἐστι τοῦ γιάσματος. Τὰ δὲ εἴκοσιν ἔτη οὕτως οἰκονομηθήσεται ἐπ' αὐτῷ. Ἐν τέσσαρσιν ἔτεσιν ὀφείλει προσκλαίειν, ἔξω τῆς θύρας ἑστὼς τοῦ εὐκτηρίου οἴκου, καὶ τν εἰσιόντων πιστῶν δεόμενος εὐχὴν ὑπὲρ αὐτοῦ ποιεῖσθαι, ἐξαγορεύων τὴν δίαν παρανομίαν· μετὰ δὲ ταῦτα τὰ τέσσαρα ἔτη εἰς τοὺς ἀκρωμένους δεχθήσεται, καὶ ἐν πέντε ἔτεσι μετ' αὐτῶν ἐξελεύσεται·</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="440,850,650,870">Guill. Beveregii notæ.</bloco>
+  
+  <bloco tipo="aparato_critico" script="misto" bbox="140,870,940,940">(13) Ὁ ἀκουσίως φονεύσας. Scholiastes Harmenopuli, Τοὺς φονεῖς  Νηστευτής, τοὺς μὲν ἑκουσίους, ἐπὶ πενταετίαν καταδικάζει· τοὺς δ ἀκουσίους ἐπὶ τριετίαν. Homicidas Jejunator, voluntario quidem in quinquagennium condemnat : non voluntarios autem ad triennium. Harm. ep. au. s. 5, t. 5.</bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="40,100,490,860">
-ARIST. Qui se latronibus adversos objiciunt, si sint quidem extra Ecclesiam, boni communione arcentur, clerici vero gradu deponuntur.
-
-Quando quidem juxta Dominicam vocem Omnis qui gladium accepit gladio peribit: et qui se latronibus adversos objiciunt, eosque occidunt, poenas luent. Si laici quidem sint, divinorum sacramentorum participes non erunt, si clerici autem, deponentur.
-
-CANON LVI.
-Qui sua sponte interfecit, et postea poenitentia ductus est, viginti annis sacramento non communicabitur. Viginti autem anni sic in eo dispensabuntur. Debet quatuor annis delere stans extra fores oratorii, et fideles ingredientes rogans ut pro eo precentur, suam iniquitatem pronuntians. Post quales autem annos inter auditores recipietur, et quinque annis cum ipsis egredietur: septem autem annis cum iis qui in substructione, orant, egredietur. In quatuor annis solum stabit, cum fidelibus, sed non erit oblationalis participes. Tis autem expletis, erit sacramentorum participes.
-
-CANON LVII.
-Qui non voluntarie interfecit, undecim annis sacramentis non communicabit. Undecim autem anni sic in eo dispensabuntur. Duos quidem annos deflebili, tres autem annos inter auditores perseverabit, in quatuor substratus, et anno solum consistet, et deinceps ad sacra admittetur.
-
-BALS. Praesentes duo canones describunt quomodo debent puniri qui voluntarias et involuntarias caedes fecerunt. Poenarum autem etiam modos definivit.
-
-ZONAR. Ad annos viginti, enim qui voluntarie interfecit, atque ad poenitentiam se confert, hic sanctus vir segregari jubet; ad decem vero eum qui non sponte occidit. Tum deinceps, utrisque pro singulis nullae [ilegivel] proprium tempus designat.
-
-ARIST. Can. 56. Voluntarius homicida viginti annos subternatur, involuntarius decem; adulter quindecim: fornicator septem: virgines post professionem lapse, annos quindecim.
-
-Qui voluntarie quempiam occidit, et postea poenitentiam egit, viginti annos a sanctificatione excommunicabitur. At viginti anni sic in eum dispensantur. Quatuor annis extra aedis oratorii horas stans, et fideles ingredientes orans preces pro ipso fundere, peccatum suum palam efferens delere debet. Postea autem quatuor annos 115 ad audientes recipietur, et quinque annis cum iis egredietur. Septem annis cum iis qui in submissione
-  </bloco>
-
-  <notas>
-    - Utilizei [ilegivel] para palavras individuais cujo traçado no original é incerto.
-    - As caixas (bbox) são aproximações visuais calculadas para a imagem fornecida.
-    - Letras marginais A, B, C, D foram transcritas como blocos nota_marginal separados conforme solicitado.
-  </notas>
-
-  [!-- Marginal identifiers placed in central gutter, each as its own block --]
-  <bloco tipo="nota_marginal" script="latino" bbox="485,180,515,240">
-A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,320,515,380">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,470,515,530">
-C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,610,515,670">
-D
-  </bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="510,100,960,860">
-ΑΡΙΣΤ. Οἱ τοῖς λησταῖς ἀντιπεξιόντες, ἔξω μὲν τῆς κοι-
-νότητος, ἀπεκτέννται· ἔνθεν τῷ βαθμῷ καθαιροῦνται.
-
-Επεὶ δὴ, κατὰ τὴν Κυριακὴν φωνήν, Πᾶς ὁ λαβὼν μαχαίραν ἐν μαχαίρᾳ ἀποθανεῖται· καὶ οἱ τοῖς λησταῖς ἀντιπεπιδόντες, καὶ τούτους φονεύσαντες, ὅτι ἐπετείνωσαν τὴν ἀνομίαν· καὶ λαῖκοι μὲν ὄντες οὐ μετέχουσι τῶν θείων· κληρικοὶ δὲ ὄντες καταβιβασθήσονται.
-
-ΚΑΝΩΝ ΝϚʹ.
-Ὁ ἑαυτὸν φονεύσας, καὶ μετὰ τοῦτο μεταμεληθείς, ἔσται ἐν ἐτῶν ἀκοινώνητος· ἔστι τοῦ ἁγιασμοῦ· Τὰ δὲ ἔτη ἐκ τούτων ἐν οἷς ὀικονομηθήσεται ἐπ᾽ αὐτῷ. Ἐν δὲ τεσσάρων περιστάσεσιν ὅρκοις, ἔξω τῆς θύρας τοῦ ἐκκλησιακοῦ οἴκου, καὶ τῶν εἰσάγων πιστῶν δεδεμένος εὔχῃ ὑπὲρ αὐτοῦ προσεύχεται, ἐξαγορεύων τὴν ἰδίαν παρανομίαν. Μετὰ δὲ τινας ἔτη, εἰς τοὺς ἀκροωμένους δεχθήσεται, ἐν ᾧ ἔτει μετ᾽ αὐτῶν ἐξελεύσεται. Ἐν ᾧ συντάγματι μόνον τοῖς πιστοῖς, προσφορᾶς δὲ οὐ μεταλαμβάνει. Πληρώσεται δὲ τούτων μετὰ τῶν ἁγίων.
-
-ΚΑΝΩΝ ΝΖʹ.
-Ὁ ἀκούσιος φονευθεὶς, (13) ἐν δέκα ἔτεσι ἀκοινώνητος ἔσται τῶν ἁγιασμάτων· Οἰκονομηθήσεται δὲ ἐπ᾽ αὐτῷ τὰ δέκα ἐν οἷς. Δύο μὲν ἔτη προσκαλύπται, τρία δὲ ἔτη ἐν ἀκροωμένοις δεχθήσεται· ἔν δ᾽ ὑποκρίτῃ, καὶ ἔνῃ ἐνιαυτὸν σταθήσεται μόνον, καὶ τὰ ἔξης εἰς τὰ ἅγια δεχθήσεται.
-
-ΒΑΛΣ. Οἱ παρόντες δύο κανόνες ὑποτυποῦσιν ὅπως ὀφείλοισιν ἐπιτιμᾶσθαι οἱ ποιήσαντες ἔκ τινος φόνου καὶ ἀκούσιοι· ὁρίζουσι δὲ καὶ τοὺς τρόπους τῶν ἐπιτιμίων.
-
-ΖΩΝΑΡ. Ἐν ἔτεσιν, ὁ ἑκούσιος φονεύσας, καὶ μετὰ τοῦτο μεταμεληθείς ἰδεῖται, καὶ εἰς μετάνοιαν ἰὼν ἐπιστάτας ἀφανίζει· ὁ δὲ ἀκούσιος μὲν δὲ ἐλαφρῶς τὰ δέκα ἐχει. (τὸ κείμενον ἐν μέρει [ilegivel])
-  </bloco>
-
-  <bloco tipo="rodape" script="misto" bbox="40,860,960,980">
-Guill. Beveregii nota.
-
-(13) Ὁ ἀκούσιος φονεύσας. Scholiaste Harme-
-nopuli. Τοῦς γονεῖς ὁ Νηστευτὴς τοῖς μὲν ἐκου
-σίοις, ἐπὶ πεπτωκέσι καταδιώκει· τοὺς δὲ ἀκου
-σίους ἐπὶ τρεῖς ἔτη: Homicidas sejunctator, voluntario quidem in quinquennium condemnat : non voluntarios autem ad triennium. Harm. ep. an. s. 5, c. 3.
-  </bloco>
+  <bloco tipo="outro" script="latino" bbox="570,950,780,980">Digitized by Google</bloco>
 </pagina>

@@ -1,55 +1,66 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,20,960,110">
-    919                            MENSIS SEPTEMBER.                            920
-  </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="60,110,940,270">
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,150,40">919</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="400,20,600,40">MENSIS SEPTEMBER.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,20,900,40">920</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="350,70,650,160">
     ΒΙΟΣ ΚΑΙ ΠΟΛΙΤΕΙΑ (1)
     ΤΟΥ ΟΣΙΟΥ ΠΑΤΡΟΣ ΗΜΩΝ
     ΚΥΡΙΑΚΟΥ ΤΟΥ ΑΝΑΧΩΡΗΤΟΥ.
-    -
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="350,190,650,290">
     VITA ET CONVERSATIO
     SANCTI PATRIS NOSTRI
-    CYRIACI ANACHORETAE.
-    (Septembris die 29. — Graece et Latine in Analectis Montfauconii, ex interpretatione domini Antonii Pouget, monachi Benedictini Congregationis Sancti Mauri.)
+    CYRIACI ANACHORETÆ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,280,480,1220">
-    Benedicentes te, inquit Deus Abrahae, benedicam; A et maledicentes te maledicam: non eos solum, qui virtutem exercent, hinc remunerans; sed ad eos etiam qui ipsos laudant, trajiciens benedictionem. Hinc fit, ut oporteat beati hujus Cyriaci pro virtute certamina et sudores, non solum ferventissime audire, admirari et laudare; verum etiam ad eum pro viribus imitandum excitari, et ad similem zelum accingi : ut non solum benedictionem consequamur propterea quod laudaverimus; sed et simus cum eo coronarum participes, et praemiorum socii.
-    
-    Quem tulit quidem quae est in Graecia, Corinthius: parentibus autem nomen erat, patri quidem Joannes, qui etiam presbyter ecclesiae quae est Corinthi, ordinatus fuerat : matri vero Eudoxia. (1) Tempus ejus ortus fuit finis imperii Theodosii, junioris scilicet. Sancto autem avunculus erat Petrus Corinthiorum episcopus. Qui Petrus, beatum Cyriacum in Lectoris gradum ejusdem ecclesiae in tenera adhuc cooptat aetate.
-    
-    Ille autem divinis deditus Scripturis, easque assidue percurrens, noctesque in eis tolas et dies versans, apud se mirabatur, uti Deus (ab initio) propter salutem humani generis omnia dispensaverit : utque eos qui sibi in unaquaque genera-
+  
+  <bloco tipo="nota" script="misto" bbox="120,300,880,320">
+    (Septembris die 29. — Græce et Latine in Analectis Montfauconii, ex interpretatione domni Antonii Pouget, monachi Benedictini Congregationis Sancti Mauri.)
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,1220,480,1450">
-    (1) Ex duobus MSS. Codicibus bibliothecae C olb. quorum primus hoc numero 772 indignatur; secundus vero hunc habet praefixum numerum 1894. Quae vero in textu his clauduntur notis [ ] apud eum tantum Codicem leguntur, cujus nota in margine apponitur. Quae autem in interpretatione Latina his notis [ ] includuntur, apud Surium desiderantur.
-    
-    (2) Theodosius junior sine uitae functus est
+  
+  <bloco tipo="texto_principal" script="latino" bbox="120,360,500,540">
+    Benedicentes te, inquit Deus Abrahæ, benedicam; et maledicentes te maledicam : non eos solum, qui virtutem exercent, hinc remunerans; sed ad eos etiam qui ipsos laudant, trajiciens benedictionem. Hinc fit, ut oporteat beati hujus Cyriaci pro virtute certamina et sudores, non solum ferventissime audire, admirari et laudare; verum etiam ad eum pro viribus imitandum excitari, et ad similem zelum accingi : ut non solum benedictionem consequamur propterea quod laudaverimus; sed et simus cum eo coronarum participes, et præmiorum socii.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,280,960,1220">
-    Τους εὐλογοῦντάς σε, φησι προς τὸν ᾿Αβραάμ ὁ θεός, εὐλογήσω, καὶ τοὺς καταρωμένους καταριῶμαι· οὐ τοὺς ἀρετὴν μετιῶντα; μόνον ἐντεύθεν διεμειβόμενος, ἀλλὰ καὶ πρὸς τοὺς ἐπαινῶντας αὐτούς τὴν εὐλογίαν διαβιβάζων. Ἐνθεν τοὺς χρὴ καὶ τὰ ὑπὲρ ἀρετῆς τοῦ μακαρίου τούτου Κυριακοῦ παλαιώματα καὶ τοὺς ἰδίας, οὐ θερμά· μόνῳ ἀκούειν καὶ θαυμάζειν καὶ ἀποδέχεσθαι, ἀλλὰ καὶ πρὸς μιμήσιν δῆν δυνάμεις διανίσσασθαι· καὶ πρὸς τὸν ὅμοιον ἀποδέχεσθαι ζήλον· ὥστε μὴ εὐλογίας μόνον διὰ τὴν ἀπόσχην ἀξιούσθαι, ἀλλὰ καὶ συμμεριζέσθαι τοὺς στεφάνους αὐτῷ καὶ κοινωνεῖν τῶν βραβείων.
-    
-    Ὁ γηγενης μὲν ᾿η πρός τῇ Ἑλλάδι Κορίνθιος· ὄνομα δὲ τοῖς γονέσιν, τῷ μὲν πατρὶ ᾿Ιωάννης, ᾧ καὶ πρεσβύτερος τῆς ἐν Κορίνθῳ ἐκκλησίας· μητροῦ δὲ ὄνομα Εὐδοξία. Ὁ δὲ χρόνος αὐτοῦ τῆς γενέσεως τὸ τέλος γῆς τῆς βασιλείας Θεοδοσίου [Θεοδόσου], δηλαδή, τοῦ νέου [τῷ νέῷ]. Καὶ θεῖος δὲ ἦν πρὸς [τῆς] μητρὸς τῷ ἁγίῳ Πέτρος ὁ Κορίνθιων ἐπίσκοπος. Οὗτος δὲ ἦρ ξ Πέτρος τὸν μακάριον Κυριακόν εἰς τὸν τοῦ ἀναγνώστου βαθμὸν τῆς αὐτῆς ἐκκλησίας, ἐν ἁπαλῇ ἔτι καταλέγει τῇ ἡλικίῃ.
-    
-    Ὁ δὲ τὰς θείας Γραφὰς προσκεῖσθαι, καὶ ταὐτὰς συνεχῶς ἐπὶνων, καὶ νύκτας αὐταῖς ἕλκων καὶ ἡμέρας συναν, ἐθαυμάζειν ἐφ' ἑαυτοῦ, ὅπως τὴν ἀρχὴν ὁ θεὸς ἐπεὶ σωτήριος τοῦ ἀνθρωπείου [ἀνθρωπίνου] γένους, ᾧν ὡμοιώτα πάντα, καὶ ὅπως
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="490,360,510,375">A</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="520,360,900,550">
+    Τοὺς εὐλογοῦντάς σε, φησὶ πρὸς τὸν Ἀβραὰμ ὁ Θες, εὐλογήσω, καὶ τοὺς καταρωμένους καταράσομαι· οὐ τοὺς ἀρετὴν μετιόντας μόνον ἐντεῦθεν διαμειβόμενος, ἀλλὰ καὶ πρὸς τοὺς ἐπαινοῦντας αὐτοὺς τὴν εὐλογίαν διαβιβάζων. Ἔνθεν τοι χρὴ καὶ τὰ ὑπὲρ ἀρετῆς το μακαρίου τούτου Κυριακοῦ παλαίσματα καὶ τοὺς ἱδρῶτας, οὐ θερμότατα μόνον ἀκούειν καὶ θαυμάζειν καὶ ἀποδέχεσθαι, ἀλλὰ καὶ πρὸς μίμησιν ὅση δύναμις διανίστασθαι, καὶ πρὸς τὸν ὅμοιον ἀποδύεσθαι ζῆλον· στε μὴ ελογίας μόνον διὰ τὴν ἀποδοχὴν ἀξιοῦσθαι, ἀλλὰ καὶ συμμερίζεσθαι τοὺς στεφάνους αὐτῷ κα κοινωνεῖν τῶν βραβείων.
   </bloco>
-  <bloco tipo="rodape" script="grego" bbox="520,1220,960,1450">
-    Α. 450, IV Kal. Aug. ex Baronio et aliis. Verum duobus ante annis natum fuisse Cyriacum, ex eo constat quod annus vitae ipsius 18 conjungitur infra cum 9 imperii Leonis magni anno, qui est Christi 465. Unde 1 Cyriaci annus, est 448, idque saltem ante diem 5 Martii. Ea quoque die, anno 478, Cyriacus jam 27 incohaverat annum.
+  
+  <bloco tipo="texto_principal" script="latino" bbox="120,550,500,680">
+    Quem tulit quidem quæ est in Græcia, Corinthius : parentibus autem nomen erat, patri quidem Joannes, qui etiam presbyter ecclesiæ quæ est Corinthi, ordinatus fuerat : matri vero Eudoxia. (1) Tempus ejus ortus fuit finis imperii Theodosii, junioris scilicet. Sancto autem avunculus erat Petrus Corinthiorum episcopus. Qui Petrus, beatum Cyriacum in Lectoris gradum ejusdem ecclesiæ in tenera adhuc cooptat ætate.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,340,510,420">
-    A
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="490,580,510,595">B</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="520,550,900,710">
+    Ὃν ἤνεγκε μὲν  πρὸς τῇ Ἑλλάδι Κόρινθος· ὄνομα δὲ τοῖς τεκοῦσι, τῷ μὲν πατρὶ Ἰωάννης, ὃς κα πρεσβύτερος τῆς ἐν Κορίνθῳ ἐκκλησίας· κεχειροτόνητο, τῇ δὲ μητρὶ Εὐδοξία. Ὁ δὲ χρόνος αὐτῷ τῆς γενέσεως τὸ τέλος ν τῆς βασιλείας Θεοδοσίου [Θεοδοσίω ²], δηλαδὴ τοῦ νέου [τῷ νέω ²]. Καὶ θεῖος δὲ ἦν πρὸς [τῆς ²] μητρὸς τ ἁγί, Πέτρος  Κορινθίων ἐπίσκοπος. Οὗτος δὲ ἄρα  Πέτρος τὸν μακάριον Κυριακὸν εἰς τὸν τοῦ ἀναγνώστου βαθμὸν τῆς αὐτῆς ἐκκλησίας, ἐν ἁπαλῇ ἔτι καταλέγει τῇ ἡλικίᾳ.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,500,510,620">
-    B
+  
+  <bloco tipo="texto_principal" script="latino" bbox="120,710,500,780">
+    Ille autem divinis deditus Scripturis, easque assidue percurrens, noctesque in eis totas et dies versans, apud se mirabatur, uti Deus (ab initio) propter salutem humani generis omnia dispensaverit : utque eos qui sibi in unaquaque genera-
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,760,510,860">
-    C
+  
+  <bloco tipo="texto_principal" script="grego" bbox="520,710,900,780">
+    Ὁ δ ταῖς θείαις Γραφαῖς προσκείμενος, καὶ ταύτας συνεχῶς ἐπιὼν, καὶ νύκτας αὐταῖς λας καὶ ἡμέρας συνών, ἐθαύμαζεν ἐφ' ἑαυτοῦ, πως τε ἄρα τὴν ἀρχὴν ὁ Θεὸς ἐπὶ σωτηρίᾳ το ἀνθρωπείου [ἀνθρωπίνου ¹] γένους, ᾠκονόμησε πάντα, καὶ ὅπως
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,960,510,1060">
-    D
+  
+  <bloco tipo="aparato_critico" script="latino" bbox="120,790,500,890">
+    (1) Ex duobus MSS. Codicibus bibliothecæ Colb. quorum primus hoc numero 772 indigitatur; secundus vero hunc habet præfixum numerum 1891. Quæ vero in textu his clauduntur notis [ ] apud eum tantum Codicem leguntur, cujus nota in margine apponitur. Quæ autem in interpretatione Latina his notis [ ] includuntur, apud Surium desiderantur.
+    (2) Theodosius junior fine vitæ functus est
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="380,1500,660,1650">
-    Digitized by Google
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="490,790,510,805">C</bloco>
+  
+  <bloco tipo="aparato_critico" script="latino" bbox="520,790,900,880">
+    an. 450, IV Kal. Aug. ex Baronio et aliis. Verum duobus ante annis natum fuisse Cyriacum, ex eo constat quod annus vitæ ipsius 18 conjungitur infra cum 9 imperii Leonis magni anno, qui est Christi 465. Unde 1 Cyriaci annus, est 448, idque saltem ante diem 5 Martii. Ea quippe die, anno 478, Cyriacus jam 27 inchoaverat annum. inf.
   </bloco>
+  
+  <bloco tipo="rodape" script="latino" bbox="570,950,780,980">Digitized by Google</bloco>
+  
   <notas>
-    Texto transcrito em dois blocos de coluna: esquerda (latim) e direita (grego). Letras de identificação A, B, C, D localizadas no gutter foram colocadas em blocos nota_marginal próprios e não inseridas no fluxo do texto das colunas. Foram usadas marcações [ilegivel] apenas quando palavras inteiras eram incertas; todas as restantes grafias seguem o impresso visível.
+    Transcrição fiel do layout com colunas paralelas (Latim à esquerda, Grego à direita). As letras A, B, C foram extraídas do fluxo do texto e colocadas em blocos nota_marginal conforme instrução, embora visualmente apareçam no fim das linhas.
   </notas>
 </pagina>

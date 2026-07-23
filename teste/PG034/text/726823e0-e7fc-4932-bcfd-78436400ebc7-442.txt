@@ -1,4 +1,4 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,90">
 863      S. MACARII ÆGYPTII      864
   </bloco>
@@ -52,8 +52,8 @@ et sanam fidem, consequi possimus.
   </bloco>
 
   <bloco tipo="texto_principal" script="grego" bbox="510,90,980,880">
-Α γὰρ ἐκεῖ ἐπαγγελίας, ἣ κατὰ τὸ φανερὸν, τοῦτο ἐ-
-ταν τὰ ἐπιδῃ ἀπολύτρωσις κατὰ τὸ χρηστόν· ὅπερ
+Α γὰρ ἐκεῖ ἐπαγγελίας, ἣ κατὰ τὸ φανερὸν, τοῦτο ἐ-
+ταν τὰ ἐπιδῃ ἀπολύτρωσις κατὰ τὸ κρυπτόν· ὅπερ
 δὴ καὶ ὁ Ἀπόστολος τέλος πάσης ἐντολῆς εἶναι ἔδειξε·
 καὶ τοῦτό ἐστιν ἡ ἀληθινὴ τῆς ἐπαγγελίας γῆ, καὶ δι'
 αὐτὴν πάντα τυπικῶς παραδιδοτᾶι. Παρ' ὃ καὶ ὁ θεστήριος
@@ -94,17 +94,21 @@ et sanam fidem, consequi possimus.
 πρόσθεν ἐπαγγελθέντα βιωτῆς ἀληθινῆς ἀναγνωρισθῆναι.
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="490,180,510,220">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,170,510,220">
 A
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,320,510,360">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,310,510,360">
 B
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,460,510,500">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,450,510,500">
 C
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,600,510,640">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,590,510,640">
 D
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="40,760,960,820">
+
   </bloco>
 
   <bloco tipo="nota" script="latino" bbox="40,820,960,900">
@@ -115,8 +119,5 @@ D
 Digitized by Google
   </bloco>
 
-  <notas>
-- Leitura latina e grega transcritas fielmente segundo a imagem; pequenas lacunas e palavras ligadas por hífen foram mantidas conforme a divisão tipográfica da página.
-- Trechos gregos de difícil leitura foram transcritos com base em padrões textuais esperados; algumas formas podem apresentar incerteza palaeográfica (p.ex. palavras compostas e marcas diacríticas). Onde a leitura era duvidosa, preferiu-se uma forma plausível em lugar de omissão total, conforme instrução de evitar [ilegivel] para blocos inteiros.
-  </notas>
+  <notas>Transcrição fiel à imagem; disposição em duas colunas seguida (esquerda latim, direita grego). Letras marginais A–D colocadas em blocos próprios conforme instrução. Onde o impresso apresenta hifenação tipográfica, foi mantida tal divisão; não se procedeu a normalizações nem traduções.</notas>
 </pagina>

@@ -1,61 +1,117 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,90">
-    407                                   GEORGIUS PACHYMERES.                                   408
+  <bloco tipo="cabecalho" script="latino" bbox="100,40,150,60">
+    407
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="400,40,650,60">
+    GEORGIUS PACHYMERES.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="880,40,920,60">
+    468
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="40,100,480,320">
-    dynastæ, consules ac præsides. Ab omni Christiano quaeretur quomodo pacta convecta in baptismo iuxta servaverit.
-
-    Pæfacitis et manifestis omnibus omniam actionibus, tremendam judex proferet sententiam, et justos a dextris constituit, peccatores in supplicium dimittet.
-
-    A flamma gehenneæ, a tenebris et verme, a stridore dentium et tartaro, a lacu ignis et omnigenarum poenarum libera, Virgo, te in fide collaudantes.
-
+  <!-- Top Left Column -->
+  <bloco tipo="texto_principal" script="latino" bbox="100,65,510,310">
+    dynastæ, consules ac præsides. Ab omni Christiano
+    quæretur quomodo pacta conventa in baptismo
+    iusta servaverit.
+    Patefactis et manifestis omnibus omnium actio-
+    nibus, tremendam judex proferet sententiam, et
+    justos a dextris constituet, peccatores in suppli-
+    cium dimittet.
+    A flamma gehennæ, a tenebris et verme, a stri-
+    dore dentium et tartaro, a lacu ignis et omnige-
+    num pœnarum libera, Virgo, te in fide collau-
+    dantes.
     ODE IX.
-
-    Mortalis omnis rebus caducis deditus, tunc voluptates irridens atque contemnens, et acerbe plorans dicet : Ubi pater, ubi mater, ubi liberi, ubi roti, ubi amici, ubi cognati, ubi honoris imaginatio? Omnia evanuerunt.
+    Mortalis omnis rebus caducis deditus, tunc vo-
+    luptates irridens atque contemnens, et acerbe plo-
+    rans dicet : Ubi pater, ubi mater, ubi liberi, ubi
+    noti, ubi amici, ubi cognati, ubi honoris imagina-
+    tio? Omnia evanuerunt.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="520,100,960,320">
-    Ibi animæ lamentabuntur et fœmebunt, a cognatis et amicis separationem perpærentibus. Fratres enim divellentur, pater a filio, amicus ab amico, conjuges a conjugibus locis tormentorum sæviter discernentur ac disjungentur.
-
-    Reges insuper infantium flebunt, et expellentur principes ab Eden, projicienturque in gehennae ignem : hinc illinc videntes angelos, a quibus eo compelluntur, illisque supplicantes, versus illis proficientes.
-
-    En amici, dies horribilis necessitatem audivistis omnes. Præoccupemus Christi faciem in psalmis, et precibus. Ora pro nobis, Virgo ; orent angeli, Præcursor, sanctorum apostolorum duodenarius, omnes demum sancti. Amen.
+  <!-- Top Right Column -->
+  <bloco tipo="texto_principal" script="latino" bbox="530,65,920,300">
+    Ibi animæ lamentabuntur et frendebunt, a cogna-
+    tis et amicis separationem perpétientes. Fratres
+    enim divellentur, pater a filio, amicus ab amico,
+    conjuges a conjugibus locis tormentorum sæviter
+    discernentur ac disjungentur.
+    Reges instar infantium flebunt, et expellentur
+    principes ab Eden, projicienturque in gehennæ
+    ignem : hinc illinc videntes angelos, a quibus eo
+    compellentur, illisque supplicantes, verum nihil
+    proficientes.
+    En amici, diei horribilis necessitatem audivistis
+    omnes. Præoccupemus Christi faciem in psalmis,
+    et precibus. Ora pro nobis, Virgo ; orent angeli,
+    Præcursor, sanctorum apostolorum duodenarius,
+    omnes demum sancti. Amen.
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="480,160,500,200">
+  <!-- Marginal Notes Top Section -->
+  <bloco tipo="nota_marginal" script="latino" bbox="515,65,525,80">
     A
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="480,220,500,260">
+  <bloco tipo="nota_marginal" script="latino" bbox="515,280,525,295">
     B
   </bloco>
 
-  <bloco tipo="cabecalho" script="latino" bbox="60,340,940,470">
-    ANNO DOMINI MCCCXXX
-
+  <!-- Middle Title Section -->
+  <bloco tipo="cabecalho" script="latino" bbox="420,340,620,360">
+    ANNO DOMINI MDCCCXXX
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="250,370,780,415">
     GEORGIUS PACHYMERES
-
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="440,430,600,460">
     NOTITIA
-
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="300,465,730,480">
     (Ex Leone Allatio De Georgiis, ap. Fabric. Bibl. Gr. tom. X.)
   </bloco>
 
-  <bloco tipo="texto_principal" script="misto" bbox="60,490,940,900">
-    Georgius Pachymeres, Constantinopoli oriundus, sed Nicææ ortus atque educatus, in sacerdotium numerum cooptatus, hieromnemonnis, proœdicis (a) et diaecophylicis honore acutus est, claruitque sub Michaele et Andronico Palaeologis (b). Ipse de se in principio Historiæ: Γεώργιος Κωνσταντινοπολίτης, ... (τὸ ἀνεξαθὲν, ἐν Νικαίᾳ δὲ καὶ γεννηθεὶς, καὶ τραφείς, ἐν Κωνσταντινουπόλει κατεστάθη αὐτὸς, ὅτε θεὸς πεῖσατο ὑπὸ Ρωμαίων ἐγένετο, εἴκοσι ἔτη, ἔδενος· τινικαῦδε, καὶ χίρων ὁδῷ, δεινὸν, καὶ ἐδημηυσεν ἐν ἐκκλησιαστικαῖς διαιρέσεσι, καὶ πρωτοδίκου, φύλαξ τιμην, ἐπὶ δὲ καὶ ἐν ἀνακτορικοῖς εἰς δικαιοσύνην εἰς δικαιόωσιν· τάδε ξυνέγραψεν.) Georgius Constantinopoli oriundus, Nicææ tamen ortus et educitus Constantinolimque rursus restitutus, cum Dei num in potestatem rediit Romanorum, decem et novem hunc annos natus, et clero divina ascriptus, et dignitatibus ecclesiasticis condecoratus, et ad dignitatem usque proedici promotus, in eo et in aula diaecophylicis officio insignis hanc conscripsit. Proedictus male in epitome Gesneriana in prolectum, et in supplememo epitomen Antonii Veletrii proutedictum mutatus est; quod nihil est.
-
-    1. Scripsit in universam fere Aristotelis philosophiam epitomen (c), quæ a Philippo Bechio philosophò ac medico in Latinum sermonem conversa edita est Basileæ 1569, apud Frobenium in fol. cum Synesiis orationibus. Hoc quippe compendio Pachymeres obscurior Aristotelis loca non tantum de suo, sed aliorum etiam sententias atque expositionibus prolatis, nec ineleganter explanat; ita ab ipsa Porphyrii Isagoge opus exorsus, et per omnes suas partes philosophiam percurrens, in ipsius metaphysicæ compendiosa epitome suam fecit. Bechius scribit hoc opus accepisse ex Baslinii authorem lacunoso, in medio, et quasi indistincto; altero Fugerano multis in locis corrupto, fuisse adjutum in locis difficillimis a Joanne Hospitiano et Gulielmo Xylandro; ut omnino in spem bonam venerit, auctor nunc non pessime a se rursus in lucem prodire. In reliquis, ubi Pachymeres, ait Bechius, vel suas, vel aliorum meditationes asserit, majori etiam difficultate propter obscuritatem sum versatur. Nam verbis interdum utiliter non adeo tritis ac vulgatis, interdum sententias inchoat, et vix tandem interjectis bene longis parenthesis, absolvit. Unum et integrum opus ob sui molem raro uno volumine clauditur, ideoque in partes scissum sub diversis titulis, tanquam diversi tractatus proponuntur. Ejus partes editas et manuscripta, ut varie alio atque alio dispersæ in bibliothecis iuvuntur, hic referam. Ex hoc itaque con-
+  <!-- Main Text Block -->
+  <bloco tipo="texto_principal" script="misto" bbox="120,490,920,850">
+    Georgius Pachymeres, Constantinopoli oriundus, sed Nicææ ortus atque educatus, in sacerdotum
+    numerum cooptatus, hieromnemonis, protectdici (a) et dicæophylacis honore auctus est, claruitque sub
+    Michaele et Andronicis Palæologis (b). Ipse de se in principio Historiæ, Γεώργιος Κωνσταντινουπολίτης
+    μὲν τὸ ἀνέκαθεν, ἐν Νικαίᾳ δ καὶ γεννηθείς, καὶ τραφείς, ἐν Κωνσταντίνου δὲ καταστὰς αὖθις, ὅτε Θεοῦ
+    νεύματι ὑπὸ Ῥωμαίων ἐγένετο, εἰκοσν ἑνς δέοντος τὴνικαῦδε, καὶ κλήρῳ δοθεὶς θείῳ, κα ἀξιώμασιν ἐν
+    ἐκκλησιαστικοῖς διαπρέψας, καὶ ἐς πρωτεκδίκου φθάσας τιμήν, ἔτι δὲ καὶ ἐν ἀνακτόροις εἰς δικαιοφύλακα
+    τιμηθείς, τάδε ξυνέγραψεν. Georgius Constantinopoli oriundus, Nicææ tamen ortus et enutritus Con-
+    stantinopolimque rursus restitutus, cum Dei nutu in potestatem rediit Romanorum, decem et novem
+    tunc annos natus, et clero divino adscriptus, et dignitatibus ecclesiasticis condecoratus, et ad
+    dignitatem usque protectdici promotus, imo et in aula dicæophylacis officio insignitus hæc conscripsit.
+    Protectdicus male in epitome Gesneriana in protectdium, et in supplemento epitomes Antonii Verderii
+    protectictum mutatus est; quod nihili est.
+    1. Scripsit in universam fere Aristotelis philosophiam epitomen (c), quæ a Philippo Bechio philosopho
+    ac medico in Latinum sermonem conversa edita est Basileæ 1569, apud Frobenium in fol. cum Synesii
+    orationibus. Hoc quippe compendio Pachymeres obscuriora Aristotelis loca non tantum de suo, sed
+    aliorum etiam sententiis atque expositionibus prolatis, nec ineleganter explanat; ita ab ipsa Porphyrii
+    Isagoge opus exorsus, et per omnes suas partes philosophiam percurrrens, in ipsius metaphysicæ com-
+    pendiosa epitome finem facit. Bechius scribit hoc opus accepisse se ex Basiliensi admodum lacunoso,
+    mendoso, et quasi indistincto; altero Fuggerano multis in locis corrupto, fuisseque adjutum in locis
+    difficillimis a Joanne Hospiniano et Gulielmo Xylandro; ut omnino in spem bonam venerit, auctorem
+    hunc non pessime a se rursum in lucem prodire. In reliquis, ubi Pachymeres, ait Bechius, vel suas, vel
+    aliorum meditationes affert, majori etiam difficultate propter obscuritatem sum versatus. Nam verbis inter-
+    dum utitur non adeo tritis ac usualis, interdum sententias inchoat, et vix tandem interjectis bene longis
+    parenthesisbus, absolvit. Unum et integrum opus ob sui molem raro uno volumine clauditur, ideoque in
+    partes scissum sub diversis titulis, tanquam diversi tractatus proponuntur. Ejus partes editas et manu-
+    scriptas, ut variæ alio atque alio dispersæ in bibliothecis inveniuntur, hic referam. Ex hoc itaque com-
   </bloco>
 
-  <bloco tipo="aparato_critico" script="misto" bbox="60,900,940,1000">
-    (a) Υπομνηματογράφος; dicitur Pachymeres in ms. apud Lambecium VIII, p. 583.
-    (b) Andronicus Palaeologus Michaelis patris in imperio successit A. C. 1282.
-    (c) Graece supersest ms. in variis bibliothecis, ut in Cocliciana, teste Montfaucono, p. 222. Versus quos Pachymeres ipse epitomen huic suæ præfrixit, exhibet Allatius infra.
+  <!-- Footnotes -->
+  <bloco tipo="aparato_critico" script="misto" bbox="120,860,510,940">
+    (a) ῾Υπομνηματογράφος dicitur Pachymeres in
+    ms. apud Lambecium VIII, p. 585.
+    (b) Andronicus Palæologus Michaeli patri in im-
+    perio successit A. C. 1282.
   </bloco>
-
-  <notas>
-    - Usei script="misto" nos blocos que contêm inserções gregas.
-    - Foram mantidos os sinais de pontuação e hifenizações visíveis. Empreguei [ilegivel] em nenhum lugar exceto onde uma palavra inteira seria insegura; tentei transcrever literalmente mesmo quando a leitura é difícil.
-    - As letras A e B no gutter foram colocadas em blocos tipo="nota_marginal" separados, conforme instrução.
-  </notas>
+  <bloco tipo="aparato_critico" script="latino" bbox="530,860,920,930">
+    (c) Græce superest ms. in variis bibliothecis, ut
+    in Coisliniana, teste Montfaucono, p. 222. Versus
+    quos Pachymeres ipsæ epitomæ huic suæ præfixit,
+    exhibet Allatius infra.
+  </bloco>
 </pagina>

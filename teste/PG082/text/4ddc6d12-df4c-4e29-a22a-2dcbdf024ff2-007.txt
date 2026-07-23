@@ -1,59 +1,42 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="60,10,940,200">
-TRADITIO CATHOLICA.
-SÆCULUM V, ANNUS 458.
-
-ΘΕΟΔΩΡΗΤΟΥ
-ΕΠΙΣΚΟΠΟΥ ΚΥΡΟΥ
-ΑΠΑΝΤΑ.
--
+  <bloco tipo="cabecalho" script="latino" bbox="326,42,672,92">
+    TRADITIO CATHOLICA.
+    SÆCULUM V, ANNUS 458.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="80,200,920,560">
-THEODORETI
-CYRENSIS EPISCOPI
-
-OPERA OMNIA.
-
-POST RECENSIONEM JACOBI SIRMONDI
-
-EDIDIT, GRAECA E CODICIBUS LOCUPLETAVIT, ANTIQUIORES EDITIONES ADHIBUIT, VERSIONEM
-LATINAM RECOGNOVIT, LECTIONUM VARIETATEM, AMPLISSIMOS INDICES ADJECIT
-
-JOAN. LUDOV. SCHULZE
-
-GR. ET OO. LL. IN ACAD. [ilegivel] P. P. O.
-
-(Halae 1769 et ann. seqq.)
-
-ACCESSIT AUCTARIUM THEODORETI QUOD OLIM [ilegivel] JOAN. [ilegivel]
-
-ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE.
-
-BIBLIOTHECÆ CLERI UNIVERSÆ,
-SIVE
-CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORES.
+  <bloco tipo="texto_principal" script="grego" bbox="128,106,888,262">
+    ΘΕΟΔΩΡΗΤΟΥ
+    ΕΠΙΣΚΟΠΟΥ ΚΥΡΟΥ
+    ΑΠΑΝΤΑ.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="120,560,760,760">
---------------------------
-TOMUS TERTIUS.
---------------------------
+  <bloco tipo="texto_principal" script="latino" bbox="215,306,788,428">
+    THEODORETI
+    CYRENSIS EPISCOPI
+    OPERA OMNIA.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="60,760,940,920">
-VENUNT QUINQUE VOLUMINA 60 FRANCIS GALLICIS.
-
-EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
-IN VIA [ilegivel] D'AMBOISE, OLIM PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER
-NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MOENIA PARISINA.
-
-1864
+  <bloco tipo="texto_principal" script="latino" bbox="100,452,905,595">
+    POST RECENSIONEM JACOBI SIRMONDI
+    EDIDIT, GRÆCA E CODICIBUS LOCUPLETAVIT, ANTIQUIORES EDITIONES ADHIBUIT, VERSIONEM LATINAM RECOGNOVIT, LECTIONUM VARIETATEM, AMPLISSIMOS INDICES ADJECIT
+    JOAN. LUDOV. SCHULZE
+    GR. ET OO. LL. IN ACAD. FRIDER P. P. O.
+    (Halæ 1769 et ann. seqq.)
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="720,920,990,995">
-Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="125,605,880,722">
+    ACCESSIT AUCTARIUM THEODORETI QUOD OLIM ADORNAVIT JOAN. GARNERIUS,
+    ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE.
+    BIBLIOTHECÆ CLERI UNIVERSÆ,
+    SIVE
+    CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
   </bloco>
-  <notas>
-- Script: misto (grego e latino) nas áreas de cabeçalho e texto principal.
-- Foram marcadas como [ilegivel] palavras/abreviaturas cuja leitura é incerta/ilegível no original (palavras curtas ou abreviaturas na linha descritiva do editor e na indicação "accessit ... olim ...").
-- Layout: página de capa/guarda (title page) com texto centralizado em única coluna.
-- Não foram identificadas marcas marginais A, B, C ou D; nenhuma nota_marginal separada visível.
-  </notas>
+  <bloco tipo="texto_principal" script="latino" bbox="305,762,615,788">
+    TOMUS TERTIUS.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="125,815,885,932">
+    VENEUNT QUINQUE VOLUMINA 60 FRANCIS GALLICIS.
+    EXCUDEBatur ET VENIT APUD J.-P. MIGNE EDITOREM,
+    IN VIA DICTA D'AMBOISE, OLIM PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MŒNIA PARISINA.
+    1864
+  </bloco>
+  <bloco tipo="outro" script="latino" bbox="585,955,785,975">
+    Digitized by Google
+  </bloco>
 </pagina>

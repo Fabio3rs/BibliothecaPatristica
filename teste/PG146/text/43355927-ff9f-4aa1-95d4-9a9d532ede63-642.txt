@@ -1,52 +1,159 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="0,0,1000,70">
-    1203                                                   NICEPHORI CALLISTI                                                 1204
-    CAPUT XLI.                                                                                                           ΚΕΦΑΛ. ΜΑ'.
-    De Paulo Novatianorum episcopo, ei quæ ille admi-
-    ratione et memoria digna ediderit.                                                 Περὶ Παύλου τοῦ Ναυατιανῶν ἐπισκόπου, ὃλα διεγραψατο λόγον και μνήμης ἀξια.
+  <bloco tipo="cabecalho" script="latino" bbox="120,35,170,55">
+    1203
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="40,80,490,850">
-    Eo enim tempore Novatianorum episcopus Paulus, Chrysanthi successor, miraculum quoddam edidit, et præclaram sibi per id pietatis et amoris divini apud suos famam paravit. Grave in urbe grassatum est incendium, quale haud unquam alias illa sensi. Plurimam namque ejus partem flamma pervasit, adeo ut maxima quæque horrea et frumenti granaria conflagrarint, atque in eis publicum quoddam, cui Achillei (1) cognomen fuit. Porro ignis, ædificia circumquaque depastus, etiam contra Novatianorum ecclesiam, quæ prope eum locum fuit, qui Pelargus dicebatur, versus est. Cum autem ea sic in periculo esset, Paulus in sanctius sacrarium ingressus, Deum, ut ecclesiam conservaret, supplex oravit, pro urbe ipsa simul et templo precari ibi non intermittēs. Et Deus, nescio quo modo precibus ejus exauditis, delubrum id inviolatum servavit. Ignis namque per januas et fenestras iam omnes involuas, ei non nocuit: sed cum circumcirca ædificia simul multa consumpsisset, templum præteriit, intactum id atque inviolatum a tanto flagello relinquens. Et quod maximum est, cum incendium diluvium totum grassatum ubique esset, ne vestigium quidem fumi in muris et tignis ecclesiæ ejus apparuit. 535 Novatiani ex eo tempore quotannis 17 Augusti mensis die observatum templum sacra celebrantes, celebrem eum locum reddidere; et multos etiam ex gentilis superstitionis cultoribus in fano eo, propter factum id augusto, rem divinam facientes ad se pertraxere. Allud item memoria dignum facinus Paulus iste jam moriturus fecit, quod et ipsum non intempestive historiæ huic inseruerit. Illud namque nobis propositum est consilium, ut ex omnibus quod commodum est et utile, colligamus, et nonnunquam etiam ex serpentibus Andromachæ conficiamus. Paulus, siculi dixi, moriturus, sacerdotum qui sub eo erant, ordine omni accito, «Curæ, inquit, vobis sit, dum ego adhuc spiro, ut episcopum designetis, ne in ecclesia vestra, me defuncto, turba aliqua oriatur.» Atque ubi illi non sanum rectumque ea in re se judicium habere, propterea quod alius alii pro affectione favereunt, dixerunt, electionemque ei permisserunt, inferens ille, «Sententiam, inquit, consensumque vestrum in scriptum relatum mihi date, in eo scilicet vos quem ego delego et acquieturos esse, et ego id facere sum paratus.» Illi imperata statim faciunt, et Paulus in lecto sedens, charta accepta, Marciani cujusdam nomen in ea
+  <bloco tipo="cabecalho" script="latino" bbox="415,35,585,55">
+    NICEPHORI CALLISTI
   </bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="510,80,960,850">
-    Τηνικαύτα γὰρ ὁ τῶν Ναυατιανῶν ἐπίσκοπος Παῦλος, ὁ μετὰ Χρυσάνθου γεγονὼς, παρέδωκε τι ἀνθρώποις, καὶ μνήμης ἀξίαν ἐντεθεισάμενος· καὶ δόμα ἐντέθεν θεοπλίας παρὰ τῶν οἰκείων ἐκτίτο πολὺ· χαλεπόν μὲν γὰρ ἐμπρησμοῖς τῇ πόλει συνεβήσαν, ὃλον μὴ ἄλλο˙ περισσεύσαντο τὰ πλεῖον γὰρ τῆς πόλεως ἐπῆλθεν, καὶ τὰ μέγιστα τῶν ὀρέων κατεναλωσάν, καὶ τὰ δημόσια ὅσα Ἀχιλλεῖ ἐπωνόμαζεν ἦν. Ἔρπον δὲ τὸ πῦρ καὶ τὰ [ilegivel] διανεμώμενον, καὶ τὰ κύρια τῶν Ναυατιανῶν ἐκκλησίαν ἔχουσιν· τὰ Πελαργοῦ δόμα ἔ̣χειν. Οὕτω δ' ἐν κινδύνῳ τὴν ἐκκλησίαν Παῦλος ἦλθεν, εἰσελθὼν εἰς τὸ ἅγιον, θεῷ ἐκλιπαρῶν, σωτηρίαν ἐξακαλεσάμενος· ἀπελύθη τὸ ἱερὸν ἀβλαβές, καὶ οὐδενὶ χρόνῳ ἐπλήγη, οὐδὲ ὑπὸ τῶν πυρῶν ἐπενέβη· τῶν θυρῶν δὲ γὰρ ἡ δύναμις ἦν ἄλλως ἐνεργουμένη, πολλὰ δὲ τῶν οἰκημάτων κατέσβεσται, τὸν δὲ ναὸν ἄθικτον ἠφύλαξεν, ἀλώβητον, ἐνθαῦτα ὑπερβολικῶς διατηρηθέντος. Τοῦτο τὸ μέγιστον, ὅτι μετὰ τὸ πῦρ πανταχῆς βλαβῆς οὐδεὶς ἴχνος καπνοῦ ἐπεφάνη ἐν τοῖς τειχοῖς καὶ ὑπόστεγοις τῆς ἐκκλησίας. Καὶ ἐξ ἐκείνων οἱ Ναυατιανοὶ σωτῆρα θεωροῦντες περιφανὴν ἔσχον τὴν τοῦ τοπέον φροντίδα, πολλοὶ δὲ τῶν Ἑλλήνων ἐπίσκοποι ᾔνεσαν τὸ τεῖχος ὡς σεβαστὸν τὸ γενομένον ἐν τῷ καιρῷ.
-    Καὶ ἄλλο δὲ μνημής ἄξιον· ὁ Παῦλος, ἐπερχόμενος τῷ θανάτῳ, πρὶν ἀποθνῃσκῆναι, τάδε ἐπέτελλε τοῖς ἱερατικοῖς τοῖς παρ' αὐτῷ· «Ὑμεῖς μὲν, φησί, μέλει ἔστω, ὅπως ἔτι ὅσον ἔχω σπάρτον, ἐπισκόπου ὀνομάσητε, μηδὲ ἐν τῇ ἐκκλησίᾳ ὑμῶν ἀταραξίαν προξενήσηται ὁ ὄχλος ἐπ' ἐμὲ μεταθήσεται.» Ὅτε δὲ οἱ μὲν οὐκ ἠξίωσαν ἀπόφασιν ἔχειν, ἀλλ' ἐκ τῆς φιλιάς προσηνέχθησαν, ἐπεὶ ἔδοξαν ἑαυτοῖς ὅτι ἄλλον δεῖ ἀναγνωρίσαι, ἐγράψατο αὐτὸς ὁ Παῦλος ἐν τόπῳ καὶ ἔδωκεν ὄνομα Μάρκιανον ἐν τῇ χρίσει.
+  <bloco tipo="cabecalho" script="latino" bbox="830,35,880,55">
+    1204
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="480,120,520,180">
+  <bloco tipo="texto_principal" script="latino" bbox="265,60,365,75">
+    CAPUT XLI.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,60,505,75">
     A
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="480,300,520,360">
+  <bloco tipo="texto_principal" script="grego" bbox="665,60,765,75">
+    ΚΕΦΑΛ. ΜΑ'.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="125,75,500,105">
+    De Paulo Novatianorum episcopo, et quæ ille admi-
+    ratione et memoria digna ediderit.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,75,915,105">
+    Περὶ Παύλου τοῦ Ναυατιανῶν ἐπισκόπου, οἷα
+    διεπράξατο λόγου καὶ μνήμης ἄξια.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="125,110,500,810">
+    Eo enim tempore Novatianorum episcopus Pau-
+    lus, Chrysanthi successor, miraculum quoddam
+    cididit, et præclaram sibi per id pietatis et amoris
+    divini apud suos famam paravit. Grave in urbe
+    grassatum est incendium, quale haud unquam
+    alias illa sensit. Plurimam namque ejus partem
+    flamma pervasit, adeo ut maxima quæque horrea
+    et frumenti granaria conflagrarint, atque in eis
+    publicum quoddam, cui Achillei (1) cognomen fuit.
+    Porro ignis, ædificia circumquaque depastus, etiam
+    contra Novatianorum ecclesiam, quæ prope eum
+    locum fuit, qui Pelargus dicebatur, versus est.
+    Cum autem ea sic in periculo esset, Paulus in
+    sanctius sacrarium ingressus, Deum, ut ecclesiam
+    conservaret, supplex oravit, pro urbe ipsa simul et
+    templo precari ibi non intermittens. Et Deus, nescio
+    quo modo precibus ejus exauditis, delubrum id
+    inviolatum servavit. Ignis namque per januas et
+    fenestras jam omnes involans, ei non nocuit : sed
+    cum circumcirca ædificia simul multa consumpsis-
+    set, templum præteriit, intactum id atque invio-
+    latum a tanto flagello relinquens. Et quod maxi-
+    mum est, cum incendium biduum totum grassatum
+    ubique esset, ne vestigium quidem fumi in muris
+    et tignis ecclesiæ ejus apparuit. 535 Novatiani ex
+    eo tempore quotannis 17 Augusti mensis die ob
+    servatum templum sacra celebrantes, celebrem
+    eum locum reddidere ; et multos etiam ex gentilis
+    superstitionis cultoribus in fano eo, propter factum
+    id augusto, rem divinam facientes ad se pertraxere.
+    Allud item memoria dignum facinus Paulus iste
+    jam moriturus fecit, quod et ipsum non intempe-
+    stive historiæ huic inseretur. Illud namque nobis
+    propositum est consilium, ut ex omnibus quod
+    commodum est et utile, colligamus, et nonnun-
+    quam etiam ex serpentibus Andromachen conficia-
+    mus. Paulus, sicuti dixi, moriturus, sacerdotum
+    qui sub eo erant, ordine omni accito, Curæ,
+    inquit, vobis sit, dum ego adhuc spiro, ut episco-
+    pum designetis, ne in ecclesia vestra, me defuncto,
+    turba aliqua oriatur. Atque ubi illi non sanum
+    rectumque ea in re se judicium habere, propterea
+    quod alius alii pro affectione faverent, dixerunt, ele-
+    ctionemque ei permiserunt, inferens ille, Senten-
+    tiam, inquit, consensumque vestrum in scriptum
+    relatum mihi date, in eo scilicet vos quem ego dele-
+    gero acquieturos esse, et ego id facere sum paratus.
+    Illi imperata statim faciunt, et Paulus in lecto se-
+    dens, charta accepta, Marciani cujusdam nomen in ea
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="505,275,520,290">
     B
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="480,480,520,540">
+  <bloco tipo="texto_principal" script="grego" bbox="520,110,915,810">
+    Τηνικαῦτα γὰρ ὁ τῶν Ναυατιανῶν ἐπίσκοπος
+    Παῦλος, ὃς μετὰ Χρύσανθον γέγονε, παράδοξόν τι
+    ἐνήργει, καὶ ὄνομα ἐντεῦθεν θεοφιλίας παρὰ τῶν
+    οἰκείων ἐκτίτο πολύ· χαλεπὸς μὲν γὰρ ἐμπρησμὸς
+    τῇ πόλει συνέβαινεν, οἷον μὴ ἄλλον ἐπισκῆψαί
+    ποτε· τὸ πλεῖον γὰρ τῆς πόλεως ἐπέδραμεν, ὡς καὶ
+    τὰ μέγιστα τῶν οἴκων καταναλῶσαι, καὶ τὸ δη-
+    μόσιον ᾧ Ἀχιλλεὺς ἐπώνυμον ἦν. Ἔρπον δὲ τὸ πῦρ
+    καὶ τὰ κύκλῳ διανεμόμενον, καὶ ἐπὶ τὴν τῶν Ναυα-
+    τιανῶν ἐκκλησίαν ἐχώρει, ἣ τὰ Πελαργοῦ νομα
+    εχεν. Οὕτω δ' ἐν κινδύνῳ τὴν ἐκκλησίαν Παῦλος
+    ἰδών, εἰστρέχει τὸ ἱερόν, Θεῷ τὴν ἐκείνης σωτη-
+    ρίαν ἐκλιπαρῶν· κάκεισε ὢν οὐ διέλιπε δεόμενος
+    τοῦ Θεοῦ ὑπέρ τε τῆς πόλεως καὶ τοῦ νεώ. Καὶ
+    Θεὸς οὐκ οἶδ' ὅπως εἶξας ἐκείνῳ, τὸ ἱερὸν ἀλώρη-
+    τον διεσώσατο· διὰ γὰρ πασῶν τῶν θυρίδων λάθρως
+    εἰσερρῆσαν τὸ πῦρ, τὴν δύναμιν οὐκ ἐνήργησεν· ἀλλὰ
+    τὰ μὲν πολλὰ τῶν πέριξ ἐκείνου ἀθρόον κατεδαπά-
+    νησε· τὸν δὲ νεὼν παρέδραμεν ἀθιγῆ, ἀλώβητον τῆς
+    τοσαύτης ὑπερβαλλούσης μάστιγος διατηρήσας· καὶ
+    τὸ δὴ μέγιστον, ὅτιπερ καὶ ἐπὶ δυσὶν μέραις τοῦ
+    πυρὸς διατρέχοντος πάντα, οὐδ' ἴχνος καπνοῦ τος
+    ἐκείνου τοίχοις ἢ ξύλοις ἐνῆν κατιδεῖν. Καὶ ἐξ ἐκεί-
+    νου Ναυατιανοὶ σῶστρα θύοντες, περιφανῆ τὸν τό-
+    πον ἐποίουν, πολλοὺς καὶ τῶν Ἑλλήνων ἐφέλκον-
+    τες, ὡς σεβάσμιον τῷ γενομένῳ τν χῶρον ἐπι-
+    θειάζοντες. Καὶ ἄλλο δὲ μνήμης ἄξιον Παῦλος 
+    εἰρημένος· εἰργάσατο, ἀπολείπειν μέλλων τὸν βίον, ὃ
+    καὶ αὐτὸ οὐκ ἂν ἄκαιρον εἴη παραθεῖναι τῇ ἱστορίᾳ.
+    Διὰ πάντων γὰρ σκοπὸς ταύτῃ τ χρήσιμον ἐκπορί-
+    ζεσθαι. Ἔστι γὰρ ὅτε καὶ ἐξ ὄφεων τὴν Ἀνδρομάχην
+    διασκευάζομεν. Ἐπεὶ γάρ, ὡς εἴρηται, τελευτᾶν
+    ἔμελλε Παῦλος, πᾶσαν τὴν ὑπ' αὐτῷ ερωσύνην
+    μεταστειλάμενος, Φροντὶς ὑμν γενέσθω, φησίν,
+    ἕως τι κἀγὼ ἐμπνέων εἰμί, ἐπίσκοπον ἀναδείξαι·
+    ἵνα μὴ ἐμοῦ ἀπογενομένου, τὰ τῆς ὑμῶν ἐκκλη-
+    σίας ἐν συγχύσει γένηται. Ἐκείνων δ' εἰρηκότων
+    μὴ ὑγιὲς χειν τὸ ἐπὶ τῇ τοιαύτῃ πράξει κριτήριον,
+    ἄλλων ἄλλ προσκειμένων ἐκ προσπαθείας, κά-
+    κείνω μᾶλλον ἐπιτρεπόντων τὴν ἐκλογήν, ὑπολα-
+    βὼν ἐκεῖνος, γγραφόν μοι λοιπόν, ἔλεγε, τὴν
+    ὁμολογίαν ἐπίδοτε, ὡς, ὃν ἂν ἕλοιμην ἐγώ, στέρ-
+    ξετε· κἀγὼ τοῦτο δρᾶν τοιμος. Τν δ' εὐθὺς θε-
+    δρακότων, τῆς κλίνης ὑπερκαθίσας ὁ Παλος, καὶ
+    χάρτην λαβών, λελήθότως ὄνομά τινος τούτῳ ἐγγρά-
+    φει Μαρκιανοῦ· ὃς πρεσβύτερος μὲν ἦν, ὑπ' αὐτῷ
+    δὲ τὸν ἀσκητικὸν βίον μετῆλθεν, ἀπίδημος δὲ τὴνι-
+    καῦτα ν. Τῇ σφετέρᾳ ον σφραγδι τὸν χάρτην
+    ἐπισημηνάμενος, εἶτα κα τοὺς ἄλλους τῶν πρεσβυ-
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="505,485,520,500">
     C
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="480,640,520,700">
+  <bloco tipo="nota_marginal" script="latino" bbox="505,690,520,705">
     D
   </bloco>
-
-  <bloco tipo="nota" script="latino" bbox="40,860,490,1000">
-    (1) Triparti. historia ei Paul. Diac. habent. Thermas Achilleas. Et est Thermarum mentio quae Achillei dicuntur, in l. Omnis Servius. C. De quo dixi. Sed necesse an ea lex ad urbem Constantinopolitanam pertineat, quod in ea aquaeductus Hadriani mentio fiat: ut fortasse ibi de aquaeductuibus Antiochiae agatur, quam urbem præcipue
+  <bloco tipo="aparato_critico" script="misto" bbox="125,825,500,905">
+    (1) Tripart. historia et Paul. Diac. habent, Ther-
+    mas Achilleas. Et est Thermarum mentio quæ
+    Achilleæ dicuntur, in l. Omnis Servius. C. De
+    aquæ duct. Sed nescio an ea lex ad urbem Con-
+    stantinopolitanam pertineat, quod in ea aquæductus
+    Hadriani mentio fiat : ut fortasse ibi de aquæduc-
+    tibus Antiochiæ agatur, quam urbem præcipue
   </bloco>
-
-  <bloco tipo="nota" script="grego" bbox="510,860,960,1000">
-    Ἁδριανὸς ὀνομάζει· 'Αχιλλεῖα κρύσις, χλιδίαν' καὶ εὐεργεσίαν, h. e. farre pura et generosa. Suid. Aristoph. 'Αχιλλεῖον ἀπορρήτ.' h. e. primario secessus
+  <bloco tipo="aparato_critico" script="misto" bbox="520,825,915,905">
+    Hadrianus ornavit. Ἀχιλλεῖαι κρῖται, καθαραί· καὶ
+    εὐγενεῖς, h. e. farre pura et generosa. Suid. Ari-
+    stoph. Ἀχιλλείων ἀποράτην. h. e primario vesceris
+    pane, ἀντὶ τοῦ, σιτήσεως τῆς ἐν Πρυτανείῳ μετέ-
+    χεις. h. e. pro eo quod est, in Prytaneo epu-
+    laris.
   </bloco>
-
-  <bloco tipo="outro" script="latino" bbox="420,980,580,1000">
+  <bloco tipo="rodape" script="latino" bbox="550,960,760,985">
     Digitized by Google
   </bloco>
-
-  <notas>
-    - As instruções pedem fidelidade: onde o traço é incerto foram marcadas palavras isoladas com [ilegivel] no bloco grego (não substituindo frases inteiras).
-    - BBOXs estimadas em escala 0-1000; colunas foram transcritas esquerda primeiro (latino) e depois direita (grego).
-    - Letras marginais A,B,C,D foram colocadas em blocos próprios, conforme solicitado.
-    - Pequenas lacunas no texto grego foram marcadas como [ilegivel] quando a leitura não se mostrou segura; o restante do texto grego foi transcrito com fidelidade dentro do possível.
-  </notas>
 </pagina>

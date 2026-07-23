@@ -1,180 +1,90 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,60">
-623        CHRONICON PASCHALE.        624
+  <bloco tipo="cabecalho" script="latino" bbox="100,40,150,60">623</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="400,40,630,60">CHRONICON PASCHALE.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="880,40,930,60">624</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="100,70,480,480">
+    A. C.
+    tonino Pio, et tabulæ fiscales exustæ sunt.
+    148. xi. Ind. xv. Torquato II et Juliano coss.
+    His coss. Africanus moritur.
+    CCXXXII Olympias.
+    149. xii. Ind. i. Orphito et Prisco coss.
+    1. 252.
+    150. xiii. Ind. ii. Glabrione et Vetere coss.
+    2.
+    151. xiv. Ind. iii. Cordiano et Maximo coss.
+    3.
+    152. xv. Ind. iv. Glabrione II et Jumilio coss.
+    4.
+    CCXXXIII Olympias.
+    153. xvi. Ind. v. Præsente et Rufino coss.
+    1. 253.
+    154. xvii. Ind. vi. Commodo et Laterano coss.
+    2.
+    155. xviii. Ind. vii. Severo VI et Sabiniano coss.
+    3.
+    156. xix. Ind. viii. Silano et Augurino coss.
+    4.
+    CCXXXIV Olympias.
+    157. xx. Ind. ix. Barbaro et Regulo coss.
+    1. 254.
+    158. xxi. Ind. x. Tertullo et Sacerdote coss.
+    2.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="40,70,490,520">
-A. C.
-tonino Pio, et tabulæ fiscales exustæ
-sunt.
+  <bloco tipo="nota_marginal" script="latino" bbox="520,65,540,80">A</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="520,70,930,480">
+    [Ol. Iph.]
+    χρεοφειλετῶν παρὰ Ἀντωνίνου Εὐσεβοῦς, καὶ οἱ τα-μιακοὶ ᵇ χάρται δωρεὰν ἐκαύθησαν.
+    Ἰνδ. ιε'. ια'. ὑπ. Τορκουάτου τὸ β' καὶ Ἰουλιανοῦ.
+    4.
+    Ἐπὶ τούτων τῶν ὑπάτων Ἀφρικανὸς (63) τελευτᾷ.
+    σλβ' Ὀλυμπιάς
+    Ἰνδ. α'. ιβ'. ὑπ. Ὀρφίτου (64) καὶ Πρίσκου.
+    Ἰνδ. β'. ιγ'. ὑπ. Γλαβρίωνος (65) καὶ Βετέρου.
+    Ἰνδ. γ'. ιδ'. ὑπ. Κονδιανοῦ ᶜ (66) καὶ Μαξίμου.
+    Ἰνδ. δ'. ιε'. ὑπ. Γλαβρίωνος τὸ β' καὶ Ἰουμιλίου (67).
+    B
+    σλγ' Ὀλυμπιάς.
+    Ἰνδ. ε'. ις'. ὑπ. Πραίσεντος καὶ Ῥουφίνου.
+    257 Ἰνδ. ς'. ιζ'. ὑπ. Κομμόδου καὶ Λατερα-νοῦ (68).
+    Ἰνδ. ζ'. ιη'. ὑπ. Σεβήρου τὸ ς' (69) καὶ Σαβινια-νοῦ (70).
+    Ἰνδ. η'. ιθ'. ὑπ. Σιλβανοῦ ᵈ καὶ Αὐγουρίνου.
+    σλδ' Ὀλυμπιάς.
+    Ἰνδ. θ'. κ'. ὑπ. Βαρβάρου (71) καὶ Ῥηγούλου.
+    Ἰνδ. ι'. κα'. ὑπ. Τερτύλλου καὶ Σακερδότου.
+  </bloco>
+  
+  <bloco tipo="nota_marginal" script="latino" bbox="500,280,520,295">B</bloco>
 
-148. xi. Ind. xv. Torquato II et Ju-
-liano coss. -4.
-Hic coss. Africanus moritur.
+  <bloco tipo="cabecalho" script="latino" bbox="430,490,580,510">DUCANGII NOTAE.</bloco>
 
-CCXXXII Olympias.
-
-149. xii. Ind. i. Orphito et Prisco
-coss. 1. 232.
-
-150. xiii. Ind. ii. Glabrione et Ve-
-tere coss. 2.
-
-151. xiv. Ind. iii. Cordiano et Maxi-
-mo coss. 3.
-
-152. xv. Ind. iv. Glabrione II et Jumi-
-lio coss. 4.
-
-CCXXXIII Olympias.
-
-153. xvi. Ind. v. Præsente et Rufino
-coss. 4. 233.
-
-154. xvii. Ind. vi. Commodo et Late-
-rano coss. 2.
-
-155. xviii. Ind. vii. Severo VI et Sabi-
-niano coss. 3.
-
-156. xix. Ind. viii. Silano et Augu-
-rino coss. 4.
-
-CCXXXIV Olympias.
-
-157. xx. Ind. ix. Barbaro et Regulo
-coss. 1. 234.
-
-158. xxi. Ind. x. Tertullo et Sacer-
-dote coss. 2.
+  <bloco tipo="nota" script="misto" bbox="100,520,490,860">
+    (63) Ἀφρικανός. Quis ille Africanus qui Antonino Pio imperante mortem obierit, non omnino exploratum : neque enim hæc de Africano historico possunt intelligi, ut qui Historiam ad Antonini Heliogabali perduxerit, ut infra observavimus : sed et neque de Africano historico Christiano, qui sub Severo vixit, ut est in Chronico Græco Eusebii, quem alium a chronographo existimat Scaliger, qui non alius videtur ab illo Africano, quem sub Pertinace una cum Porphyrio floruisse testatur auctor Chronici ab Adamo ad Leonem Sapientem : Πορφύριος φιλόσοφος ὁ κατὰ Χριστιανῶν γράψας, καὶ Ἀφρικανὸς σοφώτατος. Proinde is forte fuerit Africanus Cestorum scriptor, quem Henricus Valesius ad Eusebii lib. vi Hist. eccl., cap. 31, paganum fuisse probare conatur. Verum cum Georgius Syncellus eumdem esse Africanum chronographum, qui τὰς ἱστορίας ἐν πενταβίβλῳ scripserit, et qui τῶν Κεστῶν libros ιx, quos Alexandro Severo dicaverit, evanescit conjectura viri doctissimi. Nam quod in Cestis nulla forte occurrat Christianismi nota, imo Paganismi plurima insint argumenta, id mirum videri minime debet, siquidem opus suum principi pagano inscripsit.
+    (64) Ὀρφίτου. De his coss. consulendus Norisius in Epist. consul., pag. 89, 90.
+    (65) Γλαβρίωνος. Ita Fasti Idatiani, Prosperi, Victorii, Senatoris, Mariani, etc. At Savilliani, Γαλ-λικανοῦ κα Οὐέτηρος præferunt, ut Panvinius et alii.
+    (66) Κορδιανοῦ. Editio Scalig., Κορδιανοῦ. Fasti
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="510,70,960,520">
-101. Iph.] A
+  <bloco tipo="nota_marginal" script="latino" bbox="495,520,510,540">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="495,720,510,740">D</bloco>
 
-χρεσφελετῶν παρὰ Ἀντωνίνῳ Εὐσεβοῦς, καὶ οἱ τα-
-μαχοὶ * χάρται δωραὶν ἱκαθύσαν.
-
-Ἰνδ. ιε'. ια'. ὑπ. Τορχουάτο τὸ β' καὶ Ἰουλιανοῦ.
-
-Ἐπὶ τούτων τῶν ὑπάτων Ἀφρικανὸς (63) τελευτᾶ-
-σ. ΑΒ' Ὀλυμπιάς.
-
-Ἰνδ. α'. ιβ'. ὑπ. Ὀρφίτου (64) καὶ Πρίσκου.
-
-Ἰνδ. β'. γ'. ὑπ. Πλαβίωνος (65) καὶ Βέτρου.
-
-Ἰνδ. γ'. δδ'. ὑπ. Κονδιανοῦ (66) καὶ Μαξίμου.
-
-Ἰνδ. δ'. κε'. ὑπ. Πλαβίωνος τὸ β' καὶ Ἰουλιλίου (67).
-
-B
-
-σλ' Ὀλυμπιάς.
-
-Ἰνδ. ε'. ιζ'. ὑπ. Πραισέντος καὶ Ρουψίνου.
-
-257 Ἰνδ. ϛ'. ιγ'. ὑπ. Κομμώδου καὶ Λατερα-
-νοῦ (68).
-
-Ἰνδ. ζ'. ιη'. ὑπ. Σιδήρου τοῦ σ' (69) καὶ Σαβινια-
-νοῦ (70).
-
-Ἰνδ. η'. ιθ'. ὑπ. Σιλβανοῦ* καὶ Αἰγουρίνου.
-
-σλα' Ὀλυμπιάς.
-
-Ἰνδ. θ'. χ'. ὑπ. Βαρβάρου (71) καὶ Ῥηγόλου.
-
-Ἰνδ. ι'. κα'. ὑπ. Τερτύλλου καὶ Σακερόστου.
+  <bloco tipo="nota" script="misto" bbox="510,520,900,860">
+    alii Gordianum vocant. Sed Condianus rursum occurrit anno Chr. CLXXX, in Fastis Idatii et Cuspiniani : cujus filius forte fuit Sextus ille Condianus sub Commodo, quem Maximi filium fuisse ait Dio apud Xiphilinum : Condiani vero (sic enim leg. pro Cocidiani recte advertunt Casaubonus et Salmasius) meminit Lampridius in eodem Commodo, ita ut forte Condianus Maximus appellatus fuerit.
+    (67) Ἰουμιλίου. Fasti Idat., Humillio. Savilliani, Ὁμμούλου. Senator et veteres inscript., Homulo, vel Homullo. Alia nuper edita a viro doctissimo Joan. Mabillonio in Itinere Italico, Glabrione et Homulio coss. Prosper, Victorius, Marianus et Wigorn., Romulo. Omuli meminit Capitolinus in Pio et in Alexandro. Vide Casaubonum ad eumdem, pag. 54, et Norisium, pag. 91.
+    (68) Κομμόδου καὶ Λατ. Capitolinus in Vero : Post Quæsturam statim cos. factus est cum Sextilio Laterano.
+    (69) Σεβήρου τὸ ς'. Delenda hæc nota numeralis, cum absit a Fastis Idatii et aliis, in quibus hi coss. ita nominantur. Sabinum et Severum Fasti Savilliani. Verum et Sabinum habent Prosper, Victorius, Senator ; præterea Marianus, ubi hæc addit, qui Cæsaris præceptores fuerunt. Sed unde hauserit videant alii.
+    (70) Σισβανοῦ. Editio Scalig., Σιλβανοῦ. Fasti Savilliani, Σουλιανὸς κα Αὐριανός. Silvanum et Augurinum habent cæteri. Vide Norisium, pag. 197.
+    (71) Βυρβάρου. Ita Fasti Savilliani et Prosper ; cæteri Barbatum legunt.
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="485,80,515,150">
-A
+  <bloco tipo="cabecalho" script="latino" bbox="410,870,590,890">VARIÆ LECTIONES.</bloco>
+  
+  <bloco tipo="aparato_critico" script="misto" bbox="100,895,600,920">
+    ᵇᵇ ταμειακοὶ P. ᶜ Κορδιανοῦ P. ᵈᵈ Σιλανοῦ P, Σισβανοῦ R.
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="485,200,515,270">
-B
-  </bloco>
-
-  <bloco tipo="outro" script="latino" bbox="40,520,960,560">
-DUCANGII NOTÆ.
-  </bloco>
-
-  <bloco tipo="aparato_critico" script="latino" bbox="40,560,480,900">
-(63) Ἀφρικανός. Quis ille Africanus qui Auto-
-nino Pio imperante mortem obierit, non omnino
-exploratum: neque enim hæc de Africano historico
-possunt intelligi, ut qui Historiam ad Antonini He-
-liogabali perdurxit, ut infra observamus: sed est
-hoc nomen de Africano historico Christiano, qui sub Se-
-vero vixit, ut est in Chronico Graeco Eusebii, quem
-alium a chronographo existimat Scaliger, qui non
-alius videtur ab illo Africano, quem sub Pertinace
-una cum Porphyrio floruisse testatur auctor Chro-
-nici ab Adamo ad Leonem Sapientem. Πορφύριος
-φιλόσοφος ὁ κατὰ Χριστιανῶν γράψας, καὶ Ἀφρι-
-κανὸς ὑποφάσεως. Proinde is forte fuerit Africanus
-Cestorum scriptor, quem Henricus Valesius ad Eu-
-sebii lib. vi. Hist. eccl., cap. 31, pag. [ilegivel] probare conatur. Verum cum Georgius Syncellus
-eundem esse Africanum chronographum, qui τὰς
-ἱστορίας ἐν πεναθίβων ἐπύρισεν, et qui τῶν Κε-
-στίων libros ix, quos Alexandro Severo dicaverit,
-evanescit conjectura viri doctissimi. Nam quod in
-Cestis nulla forte occurat Christianismi nota, imo
-Paganismi plurima insint argumenta, id mirum vi-
-deri minimè debet, siquidem opus suum principi
-pagano inscripsit.
-  </bloco>
-
-  <bloco tipo="aparato_critico" script="grego" bbox="510,560,960,900">
-C alii Gordianum vocant. Sed Condianus rursum oc-
-currit anno Chr. CLXXX. in Fastis Idatii et Cuspiniani:
-cujus filius fuit Sextus ille Condianus sub Com-
-modo, quem Maximi filium fuisse ait Dio apud Xi-
-philinum: Condiani vero (sic enim leg.) pro Coc-
-diani recte advertunt Casabounus et Salmasius) me-
-minit Lampridius in eodem Commodo, ita ut forte
-Condianus Maximus appellatus fuerit.
-
-(67) Ἰουμίλλου. Fasti Idat., Humillio. Savilliani,
-Ὁμοῦλου. Senator et veteres inscrip., Homulo, vel
-Homullo. Alia nuper edita a viro doctissimo Joan.
-Mabilionio in Itinere Italico, Glabrione et Homulio
-coss. Prosper, Victorius, Marianus et Wigorn., Ro-
-mulo. Omuli meminit Capitolinus in Pio et in
-Alexandro. Vide Casabounum ad eundem, pag. 54,
-et Norisium, pag. 91.
-
-(68) Κομμόδου καὶ Λατ. Capitolimus in Vero:
-Post Questrum statim cos. factus est cum Sertilio
-Laterano.
-
-(69) Σιδήρου τὸ σ'. Delenda hæc nota numeraliis, cum absit a Fastis Idatii et aliis, in quibus hi
-coss. ita nominantur, Sabinum et Severum Fasti
-Savilliani. Verum et Sabinum habent Prosper, Vi-
-ctorius, Senator; prætereà Marianus, ubi hæc ad-
-fuit, qui Cæsaris præceptores fuerunt. Sed unde hau-
-serit videantur alli.
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="485,520,515,720">
-C
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="485,720,515,860">
-D
-  </bloco>
-
-  <bloco tipo="outro" script="latino" bbox="40,900,960,980">
-VARIÆ LECTIONES.
-
-* ταμιαχοι P.  * Κορδιάνου P.  * Σιλανου P, Σισανου R.
-  </bloco>
-
-  <notas>
-- Use of [ilegivel] marks a few characters/figures not legible in the scan (one page-number reference in the Ducangii note).
-- Marginal letters A, B, C, D were rendered as separate nota_marginal blocks in the central gutter (per instruction) and were NOT inserted into the column texts.
-- Greek uncertain readings indicated where characters are unclear; Latin text transcribed literally as printed.
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="560,950,760,980">Digitized by Google</bloco>
 </pagina>

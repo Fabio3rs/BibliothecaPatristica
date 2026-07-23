@@ -1,27 +1,35 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="0,0,1000,140">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="70,0,930,80">
 121
 PROOEMIA VARIORUM.
 122
+  </bloco>
 
-quoque illud argumentum hinc desumptum, quo
+  <bloco tipo="nota_marginal" script="latino" bbox="470,95,500,135">
+A
+  </bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="70,80,490,260">
+quoque illud argumentum hinc desumptum, quo Actis haud obscuris verborum φιλαδελφία, φιλοξενία,
 epistolarum ad virgines sinceritatem oppugnare
 aggressus est. At de his satis.
 
-Cæterum easdem Epistolas Græce primitus exara-
-tas fuisse colligit cl. Wetstenius tum ex vocibus,
-εὐχαριστία, ἄσωτα, χίνδυνος, τάξις, σχῆμα, δια-
-θήκη, ἄγων, αὐτολεξει occurrentibus; tum ex iudi-
+Cæterum easdem Epistolas Græce primitus exaratas
+fuisse colligit cl. Wetstenius tum ex vocibus,
+εὐχαριστία, ἀσωτία, κίνδυνος, τάξις, σχῆμα, δια-
+θήκη, ἀγὼν, αὐτολεξεὶ occurrentibus; tum ex indi-
+  </bloco>
 
-A ciis haud obscuris verborum φιλαδελφια, φιλοξενια,
-φιλαργυρια, φιλοπρωτεια, παραπεισθαι, etc. Et scri-
-ptæ quidem forstase fuerint non longe a Neronis
-obitu, dum Ecclesia tranquilla pace frueretur: in
+  <bloco tipo="texto_principal" script="misto" bbox="510,80,940,260">
+ciis haud obscuris verborum φιλαδελφία, φιλοξενία,
+φιλαργυρία, φιλοπρωτεία, παραιτεῖσθαι, etc. Et scri-
+ptæ quidem fortasse fuerint non longe a Neronis
+obitu, dum Ecclesia tranquilla pace frueretur : in
 iis enim nullius calamitatis aut vexationis Christia-
 norum mentio.
   </bloco>
 
-  <bloco tipo="cabecalho" script="latino" bbox="60,140,940,360">
+  <bloco tipo="cabecalho" script="latino" bbox="110,285,900,450">
 IV.
 
 EX P. LUMPERI HISTORIA.
@@ -33,52 +41,26 @@ CAPUT PRIMUM.
 ARTICULUS UNICUS. — VITÆ S. CLEMENTIS HISTORIA.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="60,360,490,960">
+  <bloco tipo="texto_principal" script="latino" bbox="70,500,490,900">
 S. Clementis patria et generis nobilitas. — Cle-
 mens Romanus sanctorum Patrum, quotquot ex-
 stant vetustissimus, neque uno nomine primus,
 Roma e senatorio genere (25) ortus est. Græca S.
 Petri apud Henschenium acta etiam Augustis co-
 gnatum fuisse, Neronemque, dum Christianos per-
-seque batur, ab illo ea propter abstinuisse testan-
+sequebatur, ab illo eapropter abstinuisse testan-
 tur.
 
 Annus nativitatis, et ejus conversio. — Quo anno
 primam lucem aspexerit, nemo, quod sciam, pro-
 didit; si tamen conjectare liceat, Christo in terris
-adhuc degente natus e reliqua vitæ serie censendi po-
+adhuc degente natus e reliqua vitæ serie censeri po-
 test. Sanctus Paulus in ea, quam ad Philippenses
-dedit, epistola laudat Clementem nostrum seu apo-
-stolatus sui socium et coadjutorem 48-100; in libris
-Ad Philipp., cap. iv, v. 3 et seq.
-
-(25) Recentiores critici, levissima ducti conjec-
-tura, non Romanum et præclarissimo natum ge-
-nere, sed ex stirpe Judæica procreatum censent.
-Primus qui eam invenit novitatem fuit Tillemontius
-in suis Monumentis historiæ ecclesiasticæ, tomo II,
-pag. 149. Exinde vero idem visum Coutanio nostro
-in celeberrimo suo opere Epistolarum Romanorum
-pontificum, tomo I, pag. 11, licet postea suam mu-
-tavit sententiam loco citato, pag. 41. Accessit de-
-nùm reverendissimus dominus Remigius Cællerius
-noster, qui interdum minis id asserere non dubitavit
-in Historia general. auctorum sacrorum et ecclesia-
-sticorum, tomo I, pag. 398. Colligi id posse ex ejus-
-dem sancti Clementis ad Corinthios epistola capite iv
-arbitrar, ubi alt.: Propter emulationem Pater
-noster Jacob ausus est a facie Esau fratres sui. Verum
-hæc verba neguent vetustam opinionem elidere.
-Sane illam auctor Libri pontificalis secutus ait:
-Clemens natione Romanus de regione Cœlio monte ex
-patre Faustino. Similia habentur in Catalogis Ro-
-manorum Pontificum vetustioribus: consentientque
-Breviarium Romanum ad diem 23 Novembris; de
-illo item sanctus Eucherius Lugdunensis in epistola
-ad Valerium; Clemens vetusta prosapia senatorum,
+dedit, epistola laudat Clementem nostrum ceu apo-
+stolatus sui socium et coadjutorem; in libris
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="510,360,940,960">
+  <bloco tipo="texto_principal" script="misto" bbox="510,500,940,900">
 B vero Recognitionum, qui sub Clementis hujus nomine
 circumferuntur, a divo Petro apostolorum principe
 ad Christum conversus esse, eique postea comes
@@ -89,56 +71,59 @@ deatur.
 
 A divo Petro episcopus designatur. — Cum utroque
 certe apostolorum principe Clementem diu et
-familiariter egisse, a Petro autem etiam successore
-rem in pascendo gregæ Domini designatum fuisse,
+familiariter egisse, a Petro autem etiam successo-
+rem in pascendo grege Domini designatum fuisse,
 plerique fatentur (26).
 
 C atque etiam stirpe Cæsarum, omni scientia refertus,
 omniumque liberalium artium peritissimus ad hanc
-juslorem viam transivit; itaque in ea excellenter flo-
+justorum viam transiit; itaque in ea excellenter flo-
 ruit, ut Principis quoque apostolorum successor exsti-
-neret. His idem minime derogamus, cum ipsius Cle-
+terit. His idem minime derogamus, cum ipsius Cle-
 mentis in contrarium producta intelligi possint de
 fidei gratia, propter quam, ut inquit ad Galatas
-cap. vi Paulus apostolus, Filii promissionis compun-
-dantur in seminie. Quid quod Theophilus in suis ad
+cap. vi Paulus apostolus, Filii promissionis compu-
+tantur in semine. Quid quod Theophilus in suis ad
 Autolycum libris, lib. iv, sect. 25, Davidem patrem
-suo progenitorem nostrum appellat? Eτεταν Δαβὶδ ὁ
-πρόγονος ἡμῶν (ἐδαίκλευσιν?) etc. Deinde David pa-
-ter noster regravit annos quadraginta. Nunquid ideo
+seu progenitorem nostrum appellat? "Ἔπειτα Δαβὶδ ὁ
+πρόγονος ἡμῶν (ἐβασίλευσεν) ἔτη μ'. Deinde David pa-
+ter noster regnavit annos quadraginta. Nunquid ideo
 Hebræus episcopus iste Antiochenus? Eodem plane
-sensu cum Clemente loquentes Patrum antiquissumi
-Justinus M. (Dialogo cum Tryphone, sect. 134);
+sensu cum Clemente locuti sunt Patrum antiquis-
+simi Justinus M. (Dialogo cum Tryphone, sect. 134);
 Clemens Alexandrinus (Stromatum lib. vi, c. 7);
 Tertullianus adversus Marcionem, lib. iv, c. 24;
 auctor Expositionis in Evang. Lucæ, quæ sub Titii
-Bostrensis nomine circumferuntur (Tit. Bost. in cap. 1
+Bostrensis nomine circumfertur (Tit. Bost. in cap. 1
 Lucæ) Bibliot. PP., edit. Paris., tom. XIII, pag.
-767; Aug. serm. 3, § 4, Opp. tom. V, pag. 30.
-
-(26) Vide Irenæum, l. iii, c. 3; Zozim. apud Ba-
-ron. ad ann. 417, num. 20.
+767; Aug. serm. 5, § 4, Opp. tom. V, pag. 30.
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="470,420,530,480">
-A
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="470,540,530,600">
+  <bloco tipo="nota_marginal" script="latino" bbox="470,525,500,565">
 B
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="470,700,530,760">
+  <bloco tipo="nota_marginal" script="latino" bbox="470,785,500,825">
 C
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="470,860,530,920">
+  <bloco tipo="nota_marginal" script="latino" bbox="495,820,525,860">
 D
   </bloco>
 
+  <bloco tipo="nota" script="latino" bbox="120,825,470,860">
+Ad Philipp., cap. iv, v. 3 et seq.
+  </bloco>
+
+  <bloco tipo="nota" script="latino" bbox="65,860,500,995">
+(25) Recentiores critici, levissima ducti conjectura, non Romanum et præclarissimo natum genere, sed ex stirpe Judæica procreatum censent. Primus qui eam invexit novitatem fuit Tillemontius in suis Monumentis historiæ ecclesiasticæ, tomo II, pag. 149. Exinde vero idem visum Coutantio nostro in celeberrimo suo opere Epistolarum Romanorum pontificum, tomo I, pag. 14, licet postea suam mutarit sententiam loco citato, pag. 1. Accessit demum reverendissimus dominus Remigius Ceillierius noster, qui fidenter nimis id asserere non dubitavit in Historia generali auctorum sacrorum et ecclesiasticorum, tomo I, pag. 398. Colligi id posse ex ejusdem sancti Clementis ad Corinthios epistola capite iv arbitrabatur, ubi ait: Propter æmulationem Pater noster Jacob aufugit a facie Esau fratris sui. Verum hæc verba nequeunt vetustam opinionem elidere. Sane illam auctor Libri pontificalis secutus ait: Clemens natione Romanus de regione Cælio monte ex patre Faustino. Similia habentur in Catalogis Romanorum Pontificum vetustioribus: consentitque Breviarium Romanum ad diem 25 Novembris; de illo item sanctus Eucherius Lugdunensis in epistola ad Valerium: Clemens vetusta prosapia senatorum,
+  </bloco>
+
+  <bloco tipo="nota" script="latino" bbox="510,860,945,990">
+(26) Vide Irenæum, l. iii, c. 3; Zozim. apud Baron. ad ann. 417, num. 20.
+  </bloco>
+
   <notas>
-- Scriptos latino et graeco mixtim; grego preservatus ubi apparebat (ειὐχαριστία, ἄσωτα, χίνδυνος, τάξις, σχῆμα, διαθήκη, ἄγων, αὐτολεξει; φιλαδελφια, φιλοξενια, φιλαργυρια, φιλοπρωτεια, παραπεισθαι).
-- Alcune parole e sillabazioni parzialmente illeggibili o troncate (es.: linee con trattini per separazione sillabica). Per tali frammenti è stato lasciato il testo come appaiva; dove illeggibile è stato evitato di inserire [ilegivel] eccetto nei casi strettamente necessari (non sono stati usati indicatori estesi).
-- I numeri di nota e le parentesi bibliografiche sono rispettati come appaiono: (25), (26), riferimenti a note di pagina e citazioni abbrev.
+Transcriptio disposita secundum duas columnas: sinistra prius, deinde dextra. Litteræ marginales A, B, C, D separatim positae sunt. In loco Theophili verba Graeca sunt aliquantulum incerta; lectio data est ut apparebat in imagine.
   </notas>
 </pagina>

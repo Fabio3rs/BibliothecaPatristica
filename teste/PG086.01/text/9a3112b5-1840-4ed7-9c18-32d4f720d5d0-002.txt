@@ -1,28 +1,18 @@
-<pagina estado="com_texto">
-  <bloco tipo="outro" script="latino" bbox="0,0,1000,1000">
-    gravura
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="240,200,760,720">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="texto_principal" script="latino" bbox="275 450 690 600">
     Library of the University of Michigan
-    Brought with the income
+    Bought with the income
     of the
     Ford - Messer
     Bequest
   </bloco>
-  <bloco tipo="nota_marginal" script="desconhecido" bbox="10,300,140,560">
-    [mancha preta]
+  <bloco tipo="nota" script="latino" bbox="570 655 620 665">
+    E F FABER
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="600,680,760,740">
-    [ilegivel]
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="640,880,980,990">
+  <bloco tipo="rodape" script="latino" bbox="600 960 800 985">
     Digitized by Google
   </bloco>
   <notas>
-    - Página identificada como "gravura" (frontispício / ex-libris). 
-    - Transcrição literal do texto cursivo central conforme aparência. A palavra "Messer" e a divisão "Ford - Messer" transcritas conforme leitura gráfica; se for variante distinta no original, foi mantida a forma lida.
-    - Pequena assinatura/inscrição junto à gravura é ilegível e marcada como [ilegivel].
-    - Mancha preta à margem esquerda mapeada como nota_marginal e descrita como [mancha preta].
-    - Scripts presentes: latino predominante; marcas/figuras sem escrita classificadas como desconhecido.
+    A página consiste num ex-libris colado. O texto está em caligrafia cursiva inglesa. O bloco principal contém o texto do ex-libris, encimado por um retrato gravado e acompanhado na base por uma ilustração de livros e instrumentos científicos. A assinatura do gravador "E F FABER" encontra-se no canto inferior direito da gravura. Marca de digitalização no rodapé. O output do Tesseract foi ignorado por conter alucinações de caracteres gregos.
   </notas>
 </pagina>

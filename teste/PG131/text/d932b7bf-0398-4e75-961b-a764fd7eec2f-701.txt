@@ -1,23 +1,15 @@
-<pagina estado="com_texto">
-  <bloco tipo="outro" script="latino" bbox="0,0,1000,1000">
-    papel marmoreado (folha de guarda, sem texto impresso legível além das etiquetas adesivas)
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="720,20,980,150">
+<pagina estado="com_texto" tipo="capa_ou_guarda">
+  <bloco tipo="cabecalho" script="latino" bbox="686,12,966,76">
     3 2044 019 208 263
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="880,380,1000,700">
-    [etiqueta retangular escura - sem texto legível]
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="330,880,670,990">
-    [etiqueta prateada - sem texto legível]
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,930,980,990">
+  <bloco tipo="rodape" script="latino" bbox="582,958,804,988">
     Digitized by Google
   </bloco>
   <notas>
-    - As coordenadas BBOX são aproximadas (escala 0-1000).
-    - O bloco principal indica a folha de guarda marmoreada; não há texto corrido a transcrever.
-    - Etiquetas adesivas e código de barras foram mapeados em blocos separados; apenas os dígitos do código de barras são legíveis.
-    - Não foram identificadas marcas de seção A/B/C/D na coluna central.
+    - Página de guarda com papel marmoreado (padrão em tons de verde, amarelo, vermelho e preto).
+    - Etiqueta de código de barras no canto superior direito.
+    - Marca de digitalização no canto inferior direito.
+    - Presença de etiquetas adesivas em branco (prateada no centro inferior, escura na margem direita) sem texto legível, não transcritas como blocos de texto.
+    - Coordenadas BBOX estimadas na escala 0-1000.
   </notas>
 </pagina>

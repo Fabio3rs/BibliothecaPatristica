@@ -1,116 +1,164 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,35,1000,95">1157    IN APOSTOLUM TITUM.    1158</bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="445,100,505,145">A</bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="20,95,480,610">
-συνεύεσθαι καὶ ὑμᾶς καὶ συνευφρανθήσεσθαι· [ilegivel] κωμιζομένου γὰρ δικαίου, εὐφράνθησαν λαοὶ, [ilegivel]. Δίκαιον οὖν ἡγήμαι τὴν πάντων φωνὴν οἰκειοτάτως, καὶ ὡς [ilegivel] ἐκ πάντων ἀντὶ πάντων τούτου ὑμῖν ἀναδείξω τῷ λόγῳ, [ilegivel] τῶν λόγων, καὶ τῆς ἄπανταχοῦ γῆς τῶν Ἐκκλησιῶν περιηγητὴν διδάσκαλον.
-
-sermone, instar Cypri, coram statuam et erigam: solo orbe positarum Ecclesiarum doctor claruerit.
-
-Οὗτος γὰρ, οὗτος ἐστὶν ὁ μέγας Τῖτος, τοῦ [ilegivel] τῆς ἐκλογῆς ὁ σύντροφος, ὁ θερμὸς ἐκείνου κοινωνὸς ἐν τῷ τοῦ Εὐαγγελίου κηρύγματι. Τῖτος, ὁ πρῶτος τῆς εἰδωλομανίας ἀντίπαλος, καὶ τῆς Χριστοῦ θεότητος ὑπεράσπιστος· iis qui lapides adorarent offensionis positus lapis, quique positum in caput anguli Ecclesiae lapidem Christum eis substiterit. Τῖτος, δὴ ἀριθμὸς βάσις καὶ πέτρα τῆς πίστεως, ὁ ἀποπετρὸνῆσας τὸν νοῦν Χριστῷ τῇ πέτρᾳ στηρεῶντος ἐδάφους; Τῖτος, τὸ δεσπόζον τῆς Κρήτης Ἐκκλησίας προπύργιον, ὁ εὖπνον[ilegivel] τῆς περὶ ἡμᾶς θείας προνοίας ὀχύρωμα, δι' οὗ τὴν ἀλήθειαν ἐγνωκότες, τὴν ζωήν ἐσχήκαμεν, τὴν γνῶσιν ἐλάβομεν, τῷ φωτὶ ἐλαμπρύνθημεν. Τῖτος, ὁ τῆς δωδεκάδος τῆς ἡμετέρας νησοῦ καθέδρας ἀρχιθρόνος, ὁ θαλαπετὴς ἡλίου τῆς ἡμετέρας ἀμαυρώσεως, ὁ τῆς ἐκκλησιαστικοῦ στερεώματος φωστήρ, ὁ λὰμπρος τῶν ἀστέρων, ὁ τοὺς πλανήτας τῆς πλάνης πρὸς ἀπλανεῖς δρόμους ἀπαντῶν, καὶ τῆς πίστεως ἀληθείας ὁδηγός, καταπευθυνὼν τὴν σύμπασαν. Τῖτος, τῶν Χερουβὶμ ὁ ὀφθαλμός, τῶν Σεραφὶμ τὸ στόμα, ὁ γρήγορος ὀφθαλμός, τὸ ἀδιάλειπτον τῆς μυστικῆς ἀγρυπνίας βλέμμα. Τῖτος, τὸ ἀπρόσκοπτον στόλον, ἡ καθ' ἑαυτὸν εἰστή[ilegivel] φόρμις, τῶν οἰκείων τέχνης ὁ πρόμαχος, τῶν ἀπόρων ὁ πόρος, τῶν πεινώντων ἢ τροφή, τῶν ἀσθενῶν ὁ στήριγξ, ἡ τοὺς γυμνοὺς περιστέλλουσα στολή, ὁ ἐν αἰχμῇ γυμνὸς διασώζων λυμή, ὁ πυρὸς τῆς εὐσεβείας, ὁ διαφανὴς τῶν θείων δογμάτων σπινθὴρ, ἡ ἐκκλησιαστικοῦ λάμπις, ἡ στήλη τῶν ἀρετῶν, ἡ ἔμπνους τῶν καλοποιημάτων εἰκών, ἡ εὔλαλος τῶν δογμάτων λύρα, ὁ λιγυρὸς τῶν θείων ψαλμάτων ᾠδός, ἡ ἀσύγκριτος φόρμιγξ, ἡ τῆς πλη-
+  <bloco tipo="cabecalho" script="latino" bbox="30,30,100,60">1157</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="300,30,600,60">IN APOSTOLUM TITUM.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="820,30,900,60">1158</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="20,70,440,190">
+συνέξεσθαι καὶ ὑμς καὶ συνευφρανθήσεσθαι· « Ἐγ-
+κωμαζομένου γὰρ δικαίου, εὐφρανθήσονται λαοί,
+φησὶν ὁ σοφώτατος Σαλομών. Δίκαιον οὖν ἡγομαι
+τὴν πάντων φωνὴν οἰκειώσασθαι, καὶ ὡς εἷς ἐκ πάν-
+των ἀντὶ πάντων τοῦτον ὑμῖν ἀναστηλῶσαι τῷ λόγ,
+τὸν λογικὸν ἀνδριάντα τῶν λόγων, καὶ τῆς παντα-
+χοῦ γς τῶν κκλησιν πεφηνότα διδάσκαλον.
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="445,330,505,375">B</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="495,95,980,610">
-ac plane persuasum habeo fore, ut et vos conse-
-clemini ac collatemini: « Laudibus siquidem ce-
-lebrato justo, laetabuntur populi » (37), inquit
-sapientissimus Salomon. Justum itaque arbitror,
-ut omnium mihi ascribam vocem, ac velut unus
-et toto coetu, viceque universorum, hunc vobis
-qui nimirum, ceu rationalis sermonum statua,
-clarior.
+  <bloco tipo="texto_principal" script="latino" bbox="20,190,440,220">
+sermone, instar cipri, coram statuam et erigam : qui nimirum , ceu rationalis sermonum statua,
+toto orbe positarum Ecclesiarum doctor claruerit.
+  </bloco>
 
+  <bloco tipo="nota_marginal" script="latino" bbox="445,280,460,300">B</bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="20,220,440,700">
+Οὗτος γάρ, οὗτός ἐστιν ὁ μέγας Τίτος, τοῦ σκεύους
+τῆς ἐκλογῆς ὁ συνέκδημος, ὁ θερμὸς ἐκείνου κοινωνὸς
+ἐν τῷ τοῦ Εὐαγγελίου κηρύγματι. Τίτος, ὁ πρῶτος
+τῆς εδωλομανίας ἀντίπαλος, καὶ τῆς Χριστοῦ θεο-
+σοφίας ὑπέρμαχος· ὁ κατὰ τῶν προσκυνούντων τοὺς
+λίθους, λίθος προσκόμματος κείμενος, καὶ τὸν εἰς
+κεφαλὴν γωνίας τῆς Ἐκκλησίας λίθον Χριστὸν αὐτοῖς
+ὑποθέμενος. Τίτος, ἡ ἀκρότομος ἕδρα καὶ πέτρα τῆς
+πίστεως, ἡ ἀποπετρωθέντας τὸν νοῦν Χριστῷ τ
+πέτρ στερεμνίως ἐδράζουσα. Τίτος, τὸ θεόκτιστον
+τῆς Κρητῶν Ἐκκλησίας προπύργιον, ἡ ἀψευδὴς τῶν
+ἀδιστάκτως αὐτῷ προσιόντων ἀντίληψις, τὸ εὐπρε-
+πὲς τῆς περὶ ἡμς θείας κηδεμονίας προσώπιλον, δι'
+οὗ τὴν ἀλήθειαν ἔγνωμεν, τὴν ζωὴν ἐσχήμεν, τὴν
+γνῶσιν ἐλάβομεν, τὸ φῶς ἐνελάμφθημεν. Τίτος, ὁ
+τῆς δωδεκάδος τῶν τδε καθέδρας ἀρχίθρονος, ὁ
+θεολαμπὴς οὐρανὸς τῆς ἡμῶν ἀθεΐας, ὁ φαιδρὸς
+τοῦ ἐκκλησιαστικοῦ στερεώματος ἥλιος, ὁ λαμπαδοῦ-
+χος τῶν ἐμψύχων λαμπτήρων ἀστήρ, ὁ τοὺς πλανή-
+τας τῆς πλάνης πρὸς ἀπλανεῖς ἐφόδους ἀπλανῶς
+καθοδηγήσας τῆς πίστεως, καὶ στηριγμοῖς ἀληθείας
+καταπυρσεύων τὴν σύμπασαν. Τίτος, τῶν Χερουβὶμ
+τὸ ὄμμα, τῶν Σεραφὶμ τ στόμα, ὁ γρήγορος ὀφθαλ-
+μός, τὸ ἀκοίμητον τῆς μυστικῆς ἀγραυλίας βλέφαρον.
+Τίτος, τὸ ἀπροσμάχητον ὅπλον, ἡ κατ' ἐχθρῶν ἐστιλ-
+βωμένη ῥομφαία , τῶν οἰκείων τέκνων ὁ πρόμαχος,
+τῶν ἀπόρων ὁ πόρος, τῶν πεινώντων ἡ τροφή, τῶν
+ἀστέγων ἡ στέγη, ἡ τοὺς γυμνήτας περιστέλλουσα
+σκέπη, ὁ τος ἐν ζάλ κυμάτων διασώζων λιμήν, ὁ
+πυρσὸς τῆς εὐσεβείας, ὁ διαφανς τῶν θείων δογμά-
+των σπινθήρ, ἡ μψυχος τς Ἐκκλησίας λαμπάς, ἡ
+στήλη τῶν ἀρετῶν,  ἔμπνους τῶν κατορθωμάτων
+εἰκών, ἡ ελαλος τῶν δογμάτων λύρα, ὁ λιγυρὸς τῶν
+θείων ἀσμάτων ᾠδός, ἡ σηπτος φόρμιγξ, ἡ τ πλή-
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="445,500,460,520">C</bloco>
+
+  <bloco tipo="nota" script="latino" bbox="40,710,150,730">1 Prov. XI, 10.</bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="445,70,460,90">A</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="460,70,880,190">
+ritils ut et iterum orationem in eum convertam :
+ac plane persuasum habeo fore, ut et vos conse-
+ctemini ac collætemini : « Laudibus siquidem ce-
+lebrato justo, lætabuntur populi 1 (37), » inquit
+sapientissimus Salomon. Justum itaque arbitror,
+ut omnium mihi asciverim vocem, ac velut unus
+et toto cœtu, viceque universorum, hunc vobis
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="460,190,880,220">
+qui nimirum , ceu rationalis sermonum statua,
+toto orbe positarum Ecclesiarum doctor claruerit.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="460,220,880,700">
 Hic enim plane, hic est magnus ille Titus, pe-
 regrinationum comes vasis illius electionis, fervens
-ejus in praedicatione Evangelii socius. Titus, pri-
+ejus in prædicatione Evangelii socius. Titus, pri-
 mus insani idolorum cultus hostis, Christique di-
-vinae religionis vindex: iis qui lapides adorarent
+vinæ religionis vindex : iis qui lapides adorarent
 offensionis positus lapis, quique positum in caput
-anguli Ecclesiae lapidem Christum eis substiterit.
-Titus, durissima basis petraeque fidei, nutem in
+anguli Ecclesiæ lapidem Christum eis substraverit.
+Titus, durissima basis petraque fidei, mentem in
 petram duratos, in Christo petra firmans ac stabi-
-liens. Titus, Cretensium Ecclesiae a Deo condi-
-tum ceu turris propugnaculum; vera sine dubita-
-tione ad eum accedentium defensio, decorum di-
-vinae in nos curae praesidium, quo cognovimus ve-
+liens. Titus, Cretensium Ecclesiæ a Deo condi-
+tum ceu turris propugnaculum ; vera sine dubita-
+tione ad eum accedentium defensio, dccorum di-
+vinæ in nos curæ præ ludium, quo cognovimus ve-
 ritatem, obtinuimus vitam, scientiam accepimus,
-caelesti lumine perfusi sumus. Titus, duodenarum
-nostrae insulae sedium sedem principem tenens, a
-Deo fulgens nostrae caecitatis caelum, lux Ecclesi-
-astici firmamenti sol, animatis luminariibus prae-
+cœlesti lumine perfusi sumus. Titus, duodenarum
+nostræ insulæ sedium sedem principem tenens, a
+Deo fulgens nostræ cæcitatis cœlum, lætus Eccle-
+siastici firmamenti sol, animalis luminaribus præ-
 lucens astrum, erratica erroris sidera, ad indecli-
 nabilem fidei tramitem inerranter ducens, ac ceu
-subitalis igneus universam terram veritatis fulci-
+ sublatis ignibus universam terram veritatis fulci-
 mentis collustrans. Titus ille, Cherubicus oculus:
-os Seraphicum, vigil oculus, inscrutabilis my-
-sticae praeclationis pro pastoris munere palma.
-Titus, inexpugnabilis protectio, gladius in
+os Seraphicum, vigil obtutus, insoporabilis my-
+sticæ pernoctationis pro pastoris munere palpe-
+bra. Titus, inexpugnabilis protectio, gladius in
 hostes districtus, filiorum propugnator, inopum
-quassilis, cibus esurientium, vagorum et sine tec-
-to celum, nudorum operimentum, portus salutis
+quæstus, cibus esurientium, vagorum et sine tecto
+tectum, nudorum operimentum, portus salutis
 marinis fluctibus jactatorum, religionis facula,
-emicans divinorum dogmatum scintilla, animae
-Ecclesiae lampas, columna virtutum, spirans prae-
+emicans divinorum dogmatum scintilla, animata
+Ecclesiæ lampas, columna virtutum, spirans præ-
 clare gestorum imago, canora dogmatum lyra,
-vocalis divinorum carminum cantor, cithara si-
-lere nescientis, quae animi affectiones componens,
+vocalis divinorum carminum cantor , cithara si-
+lere nesciens, quæ animi affectiones compona ,
   </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="30,620,240,655">1 Prov. xi, 10.</bloco>
+  <bloco tipo="nota" script="latino" bbox="20,740,440,910">
+(37) Laudibus celebrato justo, lætabuntur populi.
+Paulo aliter habent Vulg. et LXX. Theodor. habet
+  </bloco>
 
-  <bloco tipo="cabecalho" script="latino" bbox="300,655,700,700">COMBEFISII NOTAE.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,710,600,730">COMBEFISII NOTÆ.</bloco>
 
-  <bloco tipo="nota" script="misto" bbox="20,700,485,995">
-Conventum, quem statim dicit τῆς ἱερᾶς Τίτου secundum
-[sic] Θεοσφράγιστον σύστημα, velut rectum quem
-sacra Titi manus divino charactere consignasset:
-non ipse immediate, sed in episcopis et sacerdoti-
-bus quos Cretae successores reliquit. Nihil
-etiam vetat, ut ne dicat solos proprios sacerdotes,
-maxime episcopos; in quorum corona videtur
+  <bloco tipo="texto_principal" script="latino" bbox="20,740,440,910">
+Conventum, quem statim dicit τῆς ἱερᾶς Τίτου
+χειρὸς θεοσφράγιστον σύστημα, velut cælum quem
+sacra Titi manus divino charactere consignasset :
+non ipse immediate, sed in episcopis et sacerdo-
+tibus quos Cretæ successores reliquisset. Nihil
+etiam vetat, ut ne dicat solos proprie sacerdotes,
+maximeque episcopos; in quorum corona videtur
 Archiepiscopus orasse, ac celebrandum assum-
-psisse primum suae sedis archiepiscopis; quorum
-sit partim laudare pro concione viros justos, et
+psisse primum suæ sedis archiepiscopum : quorum
+sit partium laudare pro concione viros justos, et
 encomio recreare populos; quas sibi ille partes,
-fore omnium vindicat, ut loquatur velut omnium
-ore, major ipse praelatus. Quid si pro lepo, ir-
-repsi seipsum?
-
-(37) Laudibus celebrato justo, laetabuntur populi.
-paulo aliter habent Vulg. et LXX. Theodor. habet
-illud, εὐφρανθήσονται, ἀγαλλιάσονται, populi; ut et illud Vulg. Exult-
-abit civitas: Tigur. et Sant. Exult-
-abit civitas: Bene gessit ci-
-vitas, cui affine illud LXX: Bene gessit ci-
-vitas, et genuinus sensus sit: In bonis justorum,
-quod et Vulg. et LXX habent. Hoc est, praemio
-affectis pro ratione justitiae et rectitudinis, quae est
-ipsa benedictio quam Hebraea, Sant. et Tigur. ha-
-bent, fore exaltandam civitatem, eique cessura
-omnia prospera. Felix certe civitas, in qua ea lex
-sanctaque distributio inviolata obtinet. Fuit
-sancto Hugoni multa hac in re, et iniqua, etiam in
-Dei ecclesia, distributio, in Dei providentiam,
-quanquam ad agomen tantum et propria in caelis
-praemia, tentatio, ut habent ejus acta.
+vice omnium vindicat, ut loquatur velut omnium
+ore, major ipse prælatus. Quid si pro ἱερὸν, ir-
+repsit ἱερέων ?
   </bloco>
 
-  <bloco tipo="nota" script="misto" bbox="495,700,980,995">
-illud, εὐφρανθήσονται, ἀγαλλιάσονται, populi; ut et illud Vulg. Exult-
-abit civitas: Tigur. et Sant. Exult-
-abit civitas: Bene gessit ci-
-vitas, cui affine illud LXX: Bene gessit ci-
-vitas, et genuinus sensus sit: In bonis justorum,
-quod et Vulg. et LXX habent. Hoc est, praemio
-affectis pro ratione justitiae et rectitudinis, quae est
-ipsa benedictio quam Hebraea, Sant. et Tigur. ha-
+  <bloco tipo="nota_marginal" script="latino" bbox="445,740,460,760">D</bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="460,740,880,910">
+secundum illud, εὐφρανθήσονται, ἀγαλλιάσον-
+ται, quod parum abest, ut et illud Vulg. Exsul-
+tabit civitas; Tigur et Sant. Exaltabitur : quo forte
+modo etiam illa habuerunt, habentque Hebraica :
+םיחלש cui affine illud LXX : Bene gessit ci-
+vitas, ut genuinus sensus sit : In bonis justorum,
+quod et Vulg. et LXX habent. Hoc est, præmio
+affectis pro ratione justitiæ et rectitudinis, quæ est
+ipsa benedictio quam Hebræa, Sant. et Tigur. ha-
 bent, fore exaltandam civitatem, eique cessura
-omnia prospera. Felix certe civitas, in qua ea lex
-sanctaque distributio inviolata obtinet. Fuit
+omnia prospere. Felix certe civitas, in qua ea lex
+sanctaque distributio, inviolata obtineret. Fuit
 sancto Hugoni multa hac in re, et iniqua, etiam in
-Dei ecclesia, distributio, in Dei providentiam,
-quanquam ad agomen tantum et propria in caelis
-praemia, tentatio, ut habent ejus acta.
+Dei ecclesia, distributione, in Dei providentiam,
+quanquam ad agonem tantum et potiora in cœlis
+præmia, tentatio, ut habent ejus acta.
   </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="600,950,800,980">Digitized by Google</bloco>
 </pagina>

@@ -1,70 +1,103 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,20,970,90">
-1651 S. THEODORI STUDITÆ 1652
+  <bloco tipo="cabecalho" script="latino" bbox="100,40,150,60">
+    1651
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="420,40,650,60">
+    S. THEODORI STUDITÆ
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="900,40,950,60">
+    1652
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="100,70,500,195">
+    mittere, nisi prius pœnas pro improba subscriptione dederint, seque ab hæretica communione abstraxerint. Sed quoniam aliqui ob angustias, dum pericula fugiunt, hæretica communione polluuntur : hos, casu factum id esse confitentes, oportet ad convictum admittere : non tamen indiscriminatim, sed indulgentia quadam temporì accommodata, et quæ utriusque afferat emolumentum, non autem animæ detrimentum.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="30,110,490,800">
-mittere, nisi prius poenas pro improba subscriptione, dederint, seque ab haeretica communione abstraxerint. Sed quoniam aliqui ob angustias, dum pericula fugiunt, haeretica communione polluntur: hos, casu factum id esse confitentes, oportet ad convictum admittere: non tamen indiscriminatim, sed indulgentia quadam tempori accommodata, et quæ utriusque afferent emolumentum, non autem animæ detrimentum.
-
-Interrogatio XI. — De iis qui baptizari volunt, si non reperiatur sacerdos orthodoxus aut inculpatus: an baptizari oporteat a sacerdotibus pollutis minimèque proclamatis, præcipue si mors immineat.
-
-Responsio. — Hujusmodi formula istius a confessoribus, episcopis, et præpositis promulgata est: iis presbyteris, qui propter communionem cum hæreticis, a sacris officiis exclusi sunt, permittitur ut, si non inveniantur sacerdos inculpatus fidei, et baptizent, et sacramenta tradant: quæ per sacerdotem minime culpæ affinem consecrata fuerint. Habitum quoque monasticum dent, ac preces faciant in exsequiis, et Evangelium in matutinis pronuntient, et aquam Theophaniorum benedicant, ut dicitur est, cum rerum angustiae urgent: quo populi non permaneant prorsus absque Evangelii auditione, minimèque baptizati. Si ergo vobis etiam placet hæc formula, illis quoque in locis observetur.
-
-Interrogatio XII. — De iis qui per schisma secesserunt, et pœnitentia ducti accurrunt: utrum nobis liceat pœnitentias talibus injungere, aut ipsos suscipere.
-
-Responsio. — Jam in superioribus declaratum est, injungi debere: ac superfluum est, idipsum bis retexere.
-
-Interrogatio XIII. — Si episcopus in crimen lapsus, a synodo depositus fuerit, postea tamen presbyterum ordinaverit; iste autem presbyter, postquam in monasterium venerit, pœnitentiam a suo præposito acceperit ad tempus, et postea sacerdotio functus sit: doceri expetimus an ejusmodi sacerdotem, si inculpatus est, suscipere oporteat.
-
-Responsio. — Cum manifesta sit absurditas, ne interrogationem quidem a vobis de hoc crimine fieri oportuit. Dixit quippe Christus: Non potest arbor mala fructus bonos facere. Itaque, non quia a proprio præposito, sed neque si a quopiam sancto, pœnitentiam acceperit, ideo solutus est ut sacrum facere possit. Neque enim ipse sacerdos, neque qui solvit, sanctus: quoniam sic omnes canonicae constitutiones subvertuntur ac disperibunt.
-
-18 Matth. vii, 17.
+  <bloco tipo="nota_marginal" script="latino" bbox="510,65,525,80">
+    A
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="510,110,970,800">
-ἐστισαν, εἰ μὴ πρότερον ὑπὲρ τῆς πονηρᾶς ὑπογραφῆς ἐπιτιμηθῇ· εἶτα καὶ ἀποσχοιντο τῆς αἱρετικῆς κοινωνίας. Ἐπειδὴ δὲ κατὰ περιστάσεις φευγόντες τοὺς κινδύνους χρῶνται τῇ αἱρετικῇ κοινωνίᾳ, ὁμολογοῦντας τὴν περιπέτειαν καὶ μετανοοῦντας προσδεχτέον εἰς συνειστίαν· καὶ τοῦτο οὐκ ἀδιάφορον, ἀλλὰ καθὰ ἔστιν σύμβασιν περιστατικὴν, καὶ φέρουσιν ἔντευθεν κέρδος ἀμφοτέρως, ἀλλ' οὐ ζημίαν ψυχῆς.
-
-Ἐρώτησις ΙΑ'. — Περὶ τῶν θελόντων βαπτισθῆναι, ἐὰν μὴ εὑρεθῇ ὀρθόδοξος ἱερεύς ἢ ἀμέμπτος· ἆρ' χρὴ βαπτισθῆναι ὑπὸ τῶν κοινωνούντων ἱερέων, ἢ ἀκηρύκτων; μάλιστα ἐὰν θάνατος καταπειγῇ.
-
-Ἀπόκρισις. — Τύπος τοιούτος ἐξεφωνήθη ἐνταῦθα παρὰ τῶν ὁμολογητῶν, ἱεραρχῶν τε καὶ καθηγουμένων· τοὺς εἰρημένους πρεσβυτέρους τῆς λειτουργίας διὰ τὴν αἱρετικὴν κοινωνίαν συνχωρητέους, μὴ ἀποσχόντων σεσωσμένου ἱερέως, καὶ βαπτίζειν, καὶ μεταδίδοναι τὰ ἁγιάσματα προστελεσμένα· ἐξ ἀφορισμοῦ [ilegivel] ἱερέως. Σχήμα τὰ διδακτὰ τῶν μοναχῶν, εὐχὴν τε ποιεῖσθαι ἐπὶ τοὺς νεκρούς, εὐαγγέλιον τε ἐκφωνεῖν ἐπὶ ὄρθρον, καὶ τὸ τῶν θεοφανίων ὕδωρ εὐλογεῖν, ὡς ἐπηγήται, κατὰ περιστάσεις·
-
-Ἐρώτησις ΙΒ'. — Περὶ τῶν ἀποσχισθέντων καὶ τῆς μετανοίας προσερχομένων· ἔξεστιν μὲν τούτοις τινα ἐπιτίμια διδόναι, ἢ δέχεσθαι αὐτούς;
-
-Ἀπόκρισις. — Ἤδη ἐν τοῖς ἀνωτέρω δεδήλωται, ὅτι χρὴ τὰς ἐπιτιμίας διδόναι· καὶ ἔτι ἐπακολουθεῖ τὸ αὐτό.
-
-Ἐρώτησις ΙΓ'. — Κἂν ἐπισκόπος εἰς ἔγκλημα περιπέσῃ, ὑπὸ συνόδου καθαιρεθείς, εἶτα πάλιν χειροτονήσῃ πρεσβύτερον· καὶ ὁ αὐτὸς πρεσβύτερος, ἐν μοναστηρίῳ παραγενομένης τῆς ἡγουμένης ἐδέξατο ἐπίτιμον πρὸς χρόνου, καὶ μετὰ ταῦτα ἑτέρῳ τρόπῳ ἔχων τὰς ἱερουργίας· εἰ δὲ τὸν τοιοῦτον ἱερέα δεχθῇ, εἰ ἀνεγκλήτως ἔχει, διδαχθήσεται.
-
-Ἀπόκρισις. — Προφανῶς οὕτως ἔχει τὸ πρᾶγμα· οὐδὲ ἐπερώτησας ὑμᾶς περὶ τοῦτο ἀξίως. Εἶπε γὰρ ὁ Χριστός· οὐ δύναται ἀπὸ ξυλικοῦ δένδρου ἄριστον καρπὸν ἐκβαλεῖν· ὅθεν οὐκ ἐπιτρέπεται τοῖς αἱρετικοῖς καὶ ἀκαταλλήλοις ἱερεύσιν τὰ ἅγια ἐπαναλαμβάνειν.
+  <bloco tipo="texto_principal" script="grego" bbox="540,70,940,195">
+    εστίασιν, εἰ μὴ πρότερον ὑπὲρ τῆς πονηρᾶς πογραφῆς ἐπιτιμηθεὶς· εἶτα κα ἀπόσχοιντο τῆς αἱρετικῆς κοινωνίας. Ἐπειδὴ δὲ κατὰ περίστασιν φεύγοντες τοὺς κινδύνους, χραίνονται τῇ αἱρετικῇ κοινωνίᾳ τινές· ὁμολογοῦντας τὴν περιπέτειαν καὶ μετανοοῦντας προσδεκτέον εἰς συνεστίασιν· καὶ τοῦτο οὐκ ἀδιαφόρως, ἀλλὰ κατὰ τινα σύμβασιν περιστατικήν, καὶ φέρουσαν ἐντεῦθεν κέρδος ἀμφοτέροις, ἀλλ' οὐ ζημίαν ψυχικήν.
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="480,150,520,200">
-A
+  <bloco tipo="texto_principal" script="latino" bbox="100,200,500,265">
+    Interrogatio XI. — De iis qui baptizari volunt, si non reperiatur sacerdos orthodoxus aut inculpalus : an baptizari oporteat a sacerdotibus pollutis minimeque proclamatis, præcipue si mors immincat.
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="480,280,520,340">
-B
+  <bloco tipo="texto_principal" script="grego" bbox="540,200,940,255">
+    Ἐρώτησις ΙΑ'. — Περὶ τῶν θελόντων βαπτισθῆναι, ἐὰν μὴ εὑρεθ ὀρθόδοξος ἱερεύς, ἢ ἀμεμπτος· εἰ χρὴ βαπτισθῆναι ὑπὸ τῶν κοινωνθέντων ἱερέων, ἢ ἀκηρύκτων· μάλιστα ἐὰν θάνατος κατεπείγῃ.
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="480,420,520,500">
-C
+  <bloco tipo="texto_principal" script="latino" bbox="100,270,500,480">
+    Responsio. — Hujusmodi formula istic a confessoribus, episcopis, et præpositis promulgata est : iis presbyteris, qui propter communionem cum hæreticis, a sacris officiis exclusi sunt, permitti ut, si non inveniatur sacerdos inculpatæ fidei, et baptizent, et sacramenta tradant : quæ per sacerdotem minime culpæ affinem consecrata fuerint. Habitum quoque monasticum dent, ac preces faciant in exsequiis, et Evangelium in matutinis pronuntient, et aquam Theophaniorum benedicant, ut dictum est, cum rerum angustiæ urgent : quo populi non permaneant prorsus absque Evangelii auditione, minimeque baptizati. Si ergo vobis etiam placet hæc formula, illis quoque in locis observetur.
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="480,560,520,650">
-D
+  <bloco tipo="nota_marginal" script="latino" bbox="510,280,525,295">
+    B
   </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="30,820,970,960">
-(41) Quæ sequuntur hujus epistolæ, non exstanti in codice Regio n. 1987, sed exstanti in apographis. NOTÆ. Sirmondij et Frontonis Ducæi, tum et in editione Cotelerii.
+  <bloco tipo="texto_principal" script="grego" bbox="540,265,940,475">
+    Ἀπόκρισις. — Τύπος τοιοῦτος ἐξεφωνήθη ἐνταῦθα παρὰ τε ὁμολογητῶν, εραρχν τε καὶ καθηγουμένων· τοὺς εἰρημένους πρεσβυτέρους τῆς λειτουργίας διὰ τὴν αἱρετικν κοινωνίαν, συγχωρεῖσθαι, μὴ εὑρισκομένου σεσωσμένου ἱερέως, καὶ βαπτίζειν, καὶ μεταδιδόναι τῶν γιασμάτων προτετελεσμένων καὶ ἐξ ἀκράντου [f. ἀχράντου] ἱερέως. Σχῆμά τε διδόναι μοναχοῦ, εὐχὴν τε ποιεῖσθαι ἐπὶ ἐκκομιδῆς, Εὐαγγέλιόν τε ἐκφωνεῖν ἐπὶ ὄρθρου, καὶ τὸ τν Θεοφανίων δωρ εὐλογεῖν, ς εἴρηται, κατὰ περίστασιν· διὰ τὸ μὴ ἐναπομένειν τοὺς λαοὺς παντάπασιν ἀνηκόους τοῦ Εὐαγγελίου, καὶ ἀφωτίστους. Εἰ οὖν συναρέσκει ὑμν, κρατείτω ὁ τοιοῦτος τύπος καὶ ἐν τοῖς αὐτόθι.
   </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="740,920,980,990">
-Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="100,485,500,540">
+    Interrogatio XII. — De iis qui per schisma secesserunt, et pœnitentia ducti accurrunt : utrum nobis liceat pœnitentias talibus injungere, aut ipsos suscipere.
   </bloco>
 
-  <notas>
-- A,B,C,D (letras verticais no gutter) foram transcritas em blocos próprios tipo="nota_marginal" e foram removidas do fluxo das colunas.
-- A coluna esquerda foi transcrita em latino; a coluna direita em grego.
-- Marquei como [ilegivel] palavras gregas cuja leitura é incerta no original impresso (bloco grego, ocorrências marcadas inline).
-- Os bbox são estimativas proporcionais à imagem (escala 0-1000).
-  </notas>
+  <bloco tipo="nota_marginal" script="latino" bbox="510,490,525,505">
+    C
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="540,485,940,530">
+    Ἐρώτησις ΙΒ'. — Περὶ τῶν ἀποσχισάντων καὶ τῇ μετανοίᾳ προστρεχόντων· εἰ ἔξεστιν ἡμν τοῖς τοιούτοις ἐπιτίμια διδόναι, ἢ δέχεσθαι αὐτούς.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,545,500,585">
+    Responsio. — Jam in superioribus declaratum est, injungi debere : ac superfluum est, idipsum bis retexere.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="540,540,940,585">
+    Ἀπόκρισις. — Ἤδη ἐν τοῖς ἀνωτέρω δεδήλωται, ὅτι χρὴ διδόναι· καὶ παρέλκον, δίς τὸ αὐτὸ ἐπικυκλοῦν.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,590,500,705">
+    Interrogatio XIII. — Si episcopus in crimen lapsus, a synodo depositus fuerit, postea tamen presbyterum ordinaverit ; iste autem presbyter, postquam in monasterium venerit, pœnitentiam a suo præposito acceperit ad tempus, et postea sacerdotio functus sit : doceri expetimus an ejusmodi sacerdotem, si inculpatus est, suscipere oporteat.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="540,590,940,710">
+    Ἐρώτησις ΙΓ'. — Κἂν ἐπίσκοπος εἰς ἔγκλημα περιπεσών, ὑπὸ συνόδου καθαιρεθῇ, εἶτα πάλιν μετὰ καθαίρεσιν χειροτονήσῃ πρεσβύτερον· ὁ δὲ αὐτὸς πρεσβύτερος ἐν μοναστηρίῳ παραγενόμενος, ὑπὸ τοῦ ἰδίου ἡγουμένου δέξηται ἐπιτίμιον πρὸς χρόνον [al. πρὸ χρόνων, jam pridem], καὶ μετὰ ταῦτα ἐνεργῇ ἐν τῇ ἱερωσύνῃ· εἰ χρὴ δέχεσθαι τὸν τοιοῦτον ερέα, ε ἀνέγκλητός ἐστι, διδαχθῆναι δεόμεθα.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,715,500,865">
+    Responsio. — Cum manifesta sit absurditas, ne interrogationem quidem a vobis de hoc crimine fieri oportuit. Dixit quippe Christus : Non potest arbor mala fructus bonos facere¹⁵. Itaque, non quia a proprio præposito, sed neque si a quopiam sancto, pœnitentiam acceperit, ideo solutus est ut sacrum facere possit. Neque enim ipse sacerdos, neque qui solvit, sanctus : quoniam sic omnes canonicæ constitutiones subvertentur ac disperibunt.
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="510,710,525,725">
+    D
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="540,715,940,855">
+    Ἀπόκρισις. — Προφανοῦς οὔσης τῆς ἀτοπίας, οὐδὲ ἐπερωτῆσαι ὑμᾶς χρν περὶ τοῦ τοιούτου ἐγκλήματος. Εἴρηκε γὰρ ὁ Χριστός· Οὐ δύναται σαπρὸν δένδρον καρποὺς καλοὺς ποιεῖν. στε οὐχ τι ὑπὸ τοῦ ἰδίου ἡγουμένου, ἀλλὰ κἂν ὑπὸ ἁγίου τινός, ἐπιτιμηθεὶς ὁ τοιοτος ἀπολέλυται τοῦ λειτουργεῖν. Οὐχ ερεύς, οὐδὲ ὁ λύσας, ἅγιος· ἐπεὶ οὕτω περιτραπήσεται πάντα κανονικὰ παραγγέλματα, καὶ οχήσεται (11).
+  </bloco>
+
+  <bloco tipo="nota" script="latino" bbox="100,870,280,890">
+    ¹⁵ Matth. VII, 17.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="100,900,500,930">
+    (11) Quæ sequuntur hujus epistolæ, non exstant in codice Regio n. 1987, sed exstant in apographis
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="510,885,580,900">
+    NOTÆ.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="540,900,940,930">
+    Sirmondj et Frontonis Ducæi, tum et in editione Cotelerii.
+  </bloco>
+
+  <bloco tipo="outro" script="latino" bbox="600,960,800,990">
+    Digitized by Google
+  </bloco>
 </pagina>

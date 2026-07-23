@@ -1,74 +1,149 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="34,52,86,77">1401</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="360,52,652,79">EPISTOLÆ. — EPIST. LVIII.</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="932,52,972,77">1402</bloco>
-
-  <bloco tipo="texto_principal" script="greco" bbox="30,88,490,814">τὰ γράμματα, καθάπερ Τουδαίοις τὰ παραγεγραμ-[ilegivel]
-[ilegivel] τῷ σταυρῷ τοῦ Χριστοῦ. [ilegivel]
-[ilegivel] ἐπειδὴ γὰρ [ilegivel] κατ' ἐχθροῦ [ilegivel]
-[ilegivel] ἡ Πτολεμαΐδος Ἐκκλησία [ilegivel]
-[ilegivel]</bloco>
-
-  <bloco tipo="note_marginal" script="latino" bbox="487,92,505,112">A</bloco>
-  <bloco tipo="note_marginal" script="latino" bbox="487,390,505,410">B</bloco>
-  <bloco tipo="note_marginal" script="latino" bbox="487,611,505,631">C</bloco>
-  <bloco tipo="note_marginal" script="latino" bbox="487,742,505,762">D</bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="510,88,964,842">ad crucem Christi ascripta legebantur. Quanquam
-ipsa crucis inscriptio, ut non religioso ab
-animo profecta, at verbis ipsis perhonorifica fuit,
-quibus rex Christus praedicabatur: hic autem lin-
-gua quam animo congruebat. Quae vero deinceps
-acciderunt, longe iis quae affixa sunt acerbiore
-fuerunt. Cum enim nonnihil adversus inimicum
-occasions nactus esset (inimicitia autem inde
-inter eos orta fuerant, quod nuptias hic acce-
-bat, ille prohibebat), is illum iurialibus suppliciis
-torquere instituit, quae minime posteritatis memo-
-riae produntur, sed cum ipso, uti coepere, desi-
-nant, sintque haec ad posteros Andronici magi-
-stratus signa auditione tenus propagata. Sed cum
-nobilis vir nihil injuste molitus, sed calamitosus,
-ob haec exarcerinaretur, et ista sub meridianum
-ipsum diei ardorem agerentur, ut solis carnifici-
-bus testibus periret; postquam condolere illi Eccle-
-siam sensit, nullo quidem alio ex indicio, sed quod
-slatim ut audivimus, e vestigio accurrimus, ut ei
-adssemus, et miseriae participes essemus, his
-ille auditis furore praeceps agitur; quod episco-
-pus ullus miseriis ullius auderet hominis, cui ipse
-esset inimicus, ac plurima impiisque insolenter
-jactitans, audacissimo satellitum Thoante ad id
-eum incitante, quo ad publicas calamitates adu-
-nistro tutior; tandem sceleratissima in voce furo-
-rem terminavit sum, frustra illum dicens spem
-aliquam in Ecclesia collocasse, neque quemquam
-ex Andronici manibus ereptum iri, non si pedem
-ipsium Christi manibus amplectatur. In hanc ille
-vocem imperita mente ac lingua ter erupit, secun-
-dum quam nihil est quod amplius metuamus ho-
-minem, sed, velut membrum insaniabile, ac nobis
-est segregandus, ne illius contagione quod since-
-rum est corrumpatur. Labes enim facile commu-
-nicatur, et qui impurum tetigerit, piaculum no-
-xamque contrahit. Esse autem coram Deo et
-203
-Andronico eiusque sociis, Thoanti et eius sociis
-nullum Dei templum aperiebatur. Omnis illis religiosa
-aedes ac septa claudantur. Nulla diabolo in para-
-diso pars est. Qui si clam irrepsserit, expelletur.
-Ac cum privatos omnes et magistratus hortor, ut
-nec eiusdem cum illo lecti, neque mensae partici-
-pes esse velint; tum sacerdotes imprimis, qui ne-
-viventes illos salutabunt, nec mortuos funebri
-pompa deducunt. Sin quisquam, velut exiguus
-urbis, Ecclesiam nostram contempserit, et ab ea
-damnatos receperit, quasi pauperi parare nihil
-necesse sit; noverit scissam a se Ecclesiam esse,
-quam unam esse vult Christus. Atque hic sive
-Levita, sive sacerdos sit, sive episcopus, apud nos
-eodem, atque Andronicus loco censetur; neque</bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="359,840,648,869">DION. PETAVII NOTAE.</bloco>
-  <bloco tipo="nota" script="misto" bbox="59,871,944,929">(82) Καὶ δέξεται. Vide Loc. Comm. de [ilegivel] in Excommunic. et Censur.</bloco>
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,150,60">
+    1401
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,30,650,60">
+    EPISTOLÆ. — EPIST. LVIII.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,30,950,60">
+    1402
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,75,510,95">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="40,70,480,870">
+    τὰ γράμματα, καθάπερ Ἰουδαίοις τὰ παραγεγραμ-
+    μένα τῷ σταυρῷ τοῦ Χριστοῦ. Καίτοι τὸ ἐπίγραμμα
+    τοῦ σταυροῦ, γεγονς ἀπὸ γνώμης οὐκ εὐσεβοῦς,
+    σεμνὸν ἦν ἐπὶ λέξεως, δι' οὗ βασιλεὺς  Χριστὸς
+    ἐμπηρύττετο. Ἐνταῦθα δὲ ἡ γλῶττα τῇ γνώμῃ συν-
+    ἔδαινε. Τὰ δὲ δὴ μετὰ ταῦτα τῶν πρώην ἐστιλιτευμέ-
+    νων βαρύτερα. Ἐπειδ γὰρ ἦν τινα κατ' ἐχθροῦ
+    πρόφασιν εὐράμενος ( ἔχθρα δὲ ἦν ατοῖς, τι γάμους
+    ὁ μὲν ἐσπούδαζεν, ὁ δ ἐκώλυεν ), ἐκείνοις αὐτὸν τοῖς
+    ἀποτροπαίοις κολαστηρίοις ἥλιζετο, μὴ παραδοθείη
+    τῇ διαδοχῇ το χρόνου · μετ' αὐτοῦ δὲ ὥσπερ ἤρξατο,
+    παύσαιτο · καὶ γένοιτο τοῖς μεθ' ἡμᾶς ἀκοὴ τατα τῆς
+    ἡγεμονίας Ἀνδρονίκου συνθήματα. Ἐπειδ οὖν ἀνρ
+    εὐγενής, οὐκ ἀδικῶν, ἀλλ' ἀτυχῶν, ἐπ' αὐτοῖς κατ-
+    εκτείνετο, καὶ ταῦτα τὸ τῆς μεσημβρίας ἱδρῶτο σταθε-
+    ρώτατον, ἵν' πὸ μόνοις μάρτυσι τοῖς δημίοις ἀπ-
+    ώλοιτο · καὶ τὴν Ἐκκλησίαν ἔγνω γινομένην αὐτῷ
+    συμπαθῆ, κατ' ἄλλο μὲν οὐδέν, ὅτι δ μαθόντες εὐ-
+    θύς, ὡς εἴχομεν, ἐξεδράμομεν, ἐφ' ᾧ παρακαθιζῆσαι,
+    καὶ συνδιενέγκαι τὴν συμφοράν· λυττᾷ πρὸς τὴν
+    ἀκοήν, εἴ τις ἐπίσκοπος ὢν ἐλεῆσαί τε τόλμηκεν ἄν-
+    θρωπον ἀπηχθημένον αὐτῷ. Καὶ πολλὰ καὶ παράνομα
+    νεανιευσάμενος, τοῦ θρασυτάτου τῶν ὑπηρετῶν
+    Θόαντος αὐτὸν ἐρεθίζοντος, ᾧ χρῆται πρὸς τὰς δημο-
+    σίας συμφορὰς ὀργάν, πέρας ἐπέθηκε τῇ μανίᾳ τν
+    ἀθεωτάτην φωνὴν εἰπὼν, ὅτι Μάτην ἐπὶ τὴν Ἐκ-
+    κλησίαν ἤλπισε, καὶ οὐδεὶς ν ἐξαιρεθείη τῶν Ἀν-
+    δρονίκου χειρῶν, οὐδ' ν εἴ τις τὸν πόδα κρατήσει
+    αὐτοῦ τοῦ Χριστοῦ. Ταύτην ἀπαιδεύτῳ γνώμῃ καὶ
+    γλώττῃ τρὶς ἀνεφθέγξατο τὴν φωνήν, μεθ' ἣν οὐκέτι
+    νουθετητέος ὁ ἄνθρωπος, ἀλλ' ὥσπερ μέλος ἀνιάτως
+    ἔχον ἀποκοπτέος ἡμῶν, ἵνα μ τῇ κοινωνί καὶ τὸ
+    ὑγιαῖνον συμπφθείρηται. Ὁ γὰρ μολυσμὸς διαδόσιμος
+    γίνεται, καὶ ὁ θίγων ἐναγοῦς, ἀπολαύει τῆς προστρο-
+    πῆς. Δεῖ δὲ εἶναι καὶ γνώμ καὶ σώματι καθαροὺς
+    τῷ Θεῷ. Ἐπὶ τούτοις, ἡ Πτολεμαΐδος Ἐκκλησία,
+    τάδε πρὸς τὰς ἁπανταχοῦ γς ἑαυτῆς ἀδελφὰς δια-
+    τάττεται·
+    mente et corpore puros convenit. Ob hæc Ptolemaidis
+    Ecclesia ad omnes ubique terrarum sorores suas
+    Ecclesias hæc decernenda censuit.
+    Ἀνδρονίκῳ, καὶ τοῖς αὐτοῦ, Θόαντι, καὶ τοῖς αὐτοῦ
+    μηδὲν ἀνοιγνύσθω τέμενος τοῦ Θεοῦ· πας αὐτος
+    ἱερὸς ἀποκεκλείσθω, καὶ σηκὸς, καὶ περίβολος. Οὐκ
+    ἔστι τῷ διαβόλῳ μέρος ἐν παραδείσῳ· ς κν λάθῃ
+    διάπυς, ἐξελαύνεται. Παραινῶ μὲν οὖν καὶ ἰδιώτῃ
+    παντὶ καὶ ἄρχοντι, μήτε ὁμορόφιον αὐτ, μήτε
+    μοτράπεζον γίνεσθαι· ἱερεῦσι δ διαφερόντως, οἵ
+    μήτε ζῶντας αὐτοὺς προσεροῦσι, μήτε τελευτή-
+    σαντας συμπροπέμψουσιν. Εἰ δέ τις ὡς μικροπο-
+    λίτιν ἀποσκυβαλίσει τὴν Ἐκκλησίαν, καὶ δέξεται (82)
+    τοὺς ἀποκηρύκτους αὐτῆς, ὡς οὐκ ἀνάγκη τῇ
+    πένητι πείθεσθαι· ἴστω σχίσας τὴν Ἐκκλησίαν,
+    ἣν μίαν ὁ Χριστὸς εἶναι βούλεται. Ὁ δὲ τοιοῦτος,
+    εἴτε Λευΐτης ἐστίν, εἴτε πρεσβύτερος, εἴτε ἐπίσκο-
+    πος, παρ' ἡμν ἐν νδρονίκου μοίρᾳ τετάξεται,
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,285,510,305">
+    B
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="510,70,960,870">
+    ad crucem Christi ascripta legebantur. Quam-
+    quam ipsa crucis inscriptio, ut non religioso ab
+    animo profecta, at verbis ipsis perhonorifica fuit,
+    quibus rex Christus prædicabatur : hic autem lin-
+    gua cum animo congruebat. Quæ vero deinceps
+    acciderunt, longe iis quæ affixa sunt acerbiora
+    fuerunt. Cum enim nonnihil adversus inimicum
+    occasionis nactus esset ( inimicitiæ autem inde
+    inter eos ortæ fuerant, quod nuptias hic affecta-
+    bat, ille prohibebat ), iis illum furialibus suppliciis
+    torquere instituit, quæ minime posteritatis memo-
+    riæ prodantur, sed cum ipso, uti cœpere, desi-
+    nant, sintque hæc ad posteros Andronici magi-
+    stratus signa auditione tenus propagata. Sed cum
+    nobilis vir nihil injuste molitus, sed calamitosus,
+    ob hæc excarnificaretur, et ista sub meridianum
+    ipsum diei ardorem agerentur, ut solis carnifici-
+    bus testibus periret; postquam condolere illi Eccle-
+    siam sensit, nullo quidem alio ex indicio, sed quod
+    statim ut audivimus, e vestigio accurrimus, ut ei
+    assideremus, et miseriæ participes essemus, his
+    ille auditis furore præceps agitur ; quod episco-
+    pus ullus misereri illius auderet hominis, cui ipse
+    esset inimicus, ac plurima impiaque insolenter
+    jactitans, audacissimo satellitum Thoante ad id
+    eum incitante, quo ad publicas calamitates admi-
+    nistro utitur ; tandem scelestissima in voce furo-
+    rem terminavit suum, frustra illum dicens spem
+    aliquam in Ecclesia collocasse, neque quemquam
+    ex Andronici manibus ereptum iri, non si pedem
+    ipsum Christi manibus amplectatur. In hanc ille
+    vocem imperita mente ac lingua ter erupit, secun-
+    dum quam nihil est quod amplius moneamus ho-
+    minem, sed, velut membrum insanabile, a nobis
+    est segregandus, ne illius contagione quod since-
+    rum est corrumpatur. Labes enim facile commu-
+    nicatur, et qui impurum tetigerit, piaculum no-
+    xamque contrahit. 203 Esse autem coram Deo et
+    mente et corpore puros convenit. Ob hæc Ptolemaidis
+    Ecclesia ad omnes ubique terrarum sorores suas
+    Ecclesias hæc decernenda censuit.
+    Andronico ejusque sociis, Thoanti et ejus sociis
+    nullum Dei templum aperiatur. Omnis illis religiosa
+    ædes ac septa claudantur. Nulla diabolo in para-
+    diso pars est. Qui si clam irrepserit, expellitur.
+    Ac cum privatos omnes et magistratus hortor, ut
+    nec ejusdem cum illo tecti, neque mensæ partici-
+    pes esse velint ; tum sacerdotes imprimis, qui nec
+    viventes illos salutabunt, nec mortuos funebri
+    pompa deducent. Sin quisquam, velut exiguæ
+    urbis, Ecclesiam nostram contempserit, et ab ea
+    damnatos receperit, quasi pauperi parere nihil
+    necesse sit ; noverit scissam a se Ecclesiam esse,
+    quam unam esse vult Christus. Atque hic sive
+    Levita, sive sacerdos sit, sive episcopus, apud nos
+    eodem, atque Andronicus loco censebitur : neque
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,505,510,525">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,705,510,725">
+    D
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="350,890,650,910">
+    DION. PETAVII NOTÆ.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="60,920,700,940">
+    (82) Καὶ δέξεται. Vide Loc. Comm. de δεκτοῖς in Excommunic. et Censur.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,960,900,990">
+    Digitized by Google
+  </bloco>
+  <notas>Transcrição fiel da imagem. A coluna da esquerda contém texto grego com uma inserção de texto latino no terço inferior ("mente et corpore..."). A coluna da direita é latina. As letras A, B, C, D estão na margem central (gutter). O número 203 aparece no meio do texto da coluna direita. O número (82) aparece no texto da coluna esquerda e na nota de rodapé.</notas>
 </pagina>

@@ -1,112 +1,38 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,90">
-    243   S. MAXIMI CONFESSORIS.   244
+  <bloco tipo="cabecalho" script="latino" bbox="170,30,210,50">243</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="460,30,700,50">S. MAXIMI CONFESSORIS.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="930,30,970,50">244</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="170,60,570,700">
+    ab omni immunem peccato attestatur, qui pro nobis simili nobis ratione Deus incarnatus est.
+    Et, ut summa dicam, per unam voluntatem, hoc eum significare existimo; nempe solam divinam voluntatem, ejus secundum carnem generationi præivisse. Quod vero ait, « non esse voluntatis differentiam; » hoc est, non habere contrariam voluntatem aut repugnantem, sed quæ omnino consentiat, ac sit unita. Idcirco, tum quidem, cum naturam nostram a deitate assumptam dicit, unius meminit voluntatis : cum vero illud affert : Non veni ut facerem voluntatem meam f; tunc omisso numero : « Non sunt hæc, inquit, diversæ voluntatis, » hoc est, contrariæ et adversantis; ex quo palam conficitur, esse in Christo duas naturales voluntates. Nam si contrariam ut homo non habuit, naturali præditus fuit. Quod enim contrarium non est, naturale prorsus est; nec ullus contradicet. Nihil enim in natura, vel iis quæ sunt ex natura, prorsus contrarium est. Itaque verisimile est eos mentiri ac subdere, quod ille in suis vere sermonibus non scripsit; hocque moliri adversarios, ut opinioni suæ, quæ plane non optima sit, ex viri litteris velamentum quærant, quas contra ejus mentem male interpretentur. Suffragatur enim illi ratio, quæ omnem procul calumniæ vim atque insultum amoliatur.
+    Et ego quidem, sic se habere sensum existimo, ab omni plane suspicione purum. Certiorem autem ipsum reddidit sanctissimus presbyter dominus abbas Anastasius, e seniore Roma reversus, vir, si quis alius, divina virtute ac prudentia ornatus; qui et dixit, diu se multumque, cum magnæ illic Ecclesiæ sacratissimis viris sermonem contulisse, ejus, quam ad Sergium scripserant, epistolæ gratia; sciscitando, quid causæ esset, ac quomodo una illi voluntas inserta esset : invenisseque ejus rei causa dolentes, ac excusantes, 133 prætereaque, qui jubente Honorio hanc Latine dictaverat, sanctissimum abbatem Joannem, ei ab epistolis adjutorem, affirmantem, nullo modo in ea per numerum unius prorsus voluntatis mentionem fecisse; licet hoc nunc ab eis confictum sit, qui epistolam Græce reddiderunt. At neque ullo modo abolendam seu excludendam censuisse naturalem
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,90,500,700">
-    ab omni immune peccato attestatur, qui pro nobis simili nobis ratione Deus incarnatus est.
-    Et, ut summa dicam; per unam voluntatem, hoc unum significare existimo; nempe solam divinam
-    voluntatem, ejus secundum carnem generationi praevuisse. Quod vero ait, a non esse voluntatis
-    differentiam; i hoc est, non habere contrariam voluntatem aut repugnantem, sed quae omnino
-    consentiant, ac sit unita. Idcirco, tum quidem, cum naturam nostram a deitate assumptam dicit,
-    unius meminerit voluntatis : cum vero illud affert : Non veni ut facerem voluntatem meam ; tunc omisso
-    numero : : Non sunt haec, inquit, diversae voluntatis, ; hoc est, contrariae et adversantes; ex quo
-    palam conficitur, esse in Christo duas naturales voluntates. Nam si contrariam ut homo non habuit,
-    naturali praeditus fuit. Quod enim contrarium non est, naturale prorsus est; nec ullus contradicit.
-    Nihil enim in natura, vel iis quae sunt ex natura, prorsus contrarium est. Itaque verisimile est eos
-    mentiri ac subdere, quod ille in suis vere sermonibus non scripsit; hocque moliri adversarios, ut
-    opinionis suae, quae plane non optima est, ex viri litteris velamentum querant, quas contra ejus
-    mentem male interpretentur. Suffragatur etiam illi ratio, quae omnem procul calumniae vim atque
-    insultum amolatur.
-    
-    Et ego quidem, sic se habere sensum existimo, ab omni plane suspicione purum. Certiorem autem
-    ipsum reddidit sanctissimus presbyter dominus abbas Anastasius, e seniore Roma reversus, vir,
-    si quis alius, divina virtute ac prudentia ornatus; qui ei dixit, diu se multumque, cum magna ille
-    Ecclesiae sacratissimis viris sermonem contulisse, ejus, quam ad Sergium scripserant, epistolae gratia;
-    se sollicitando, quid causae esset, ac quomodo una illi voluntas inserta esset: inveniesseque ejus rei
-    causa dolentes, ac excusantes, praetereaque, qui iubente Honorio hanc Latine dictaverat, sanctissimum
-    abbatem Joannem, ei ab epistolis adjutorem, affirmantem, nullo modo in ea per numerum unius prorsus
-    voluntatis mentionem fecisse; licet hoc nunc ab eis confessum sit, qui epistolam Graece reddiderunt.
-    At neque ullo modo abolendam seu excludendam censuisse naturalem...
-    133
+
+  <bloco tipo="nota_marginal" script="latino" bbox="575,60,590,75">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="575,280,590,295">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="575,480,590,495">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="575,680,590,695">D</bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="590,60,970,700">
+    ἀμαρτίας ἐλεύθερον τὸ καθ' ἡμᾶς, ἐπιμαρτύρετος τὴν δι' ἡμᾶς σαρκωθέντα Θεόν.
+    Καὶ ἵν' ἐπιτόμως εἴπω, διὰ τοῦ νὸς θελήματος, τὸ μόνον τῆς αὐτοῦ κατὰ σάρκα γεννήσεως τὴν θείαν προκαθηγήσασθαι θέλησιν δηλοῦν αὐτὸν οἶμαι· διὰ δὲ τοῦ « μὴ ὑπάρχειν θελήματος διαφοράν, » τὸ ἐναντίον οὐκ χειν ἢ ἀντιπρᾶττον, ἀλλὰ τὸ συνδαῖνον δι' ὅλου καὶ ἡνωμένον. Ὅθεν ἡνίκα μὲν τὴν ἡμετέραν φύσιν ἐκ τῆς θεότητος προσειλῆφθαι λέγει, θελήματος ἑνς μνημονεύει· ἡνίκα δὲ τὸ, Οὐκ ἦλθον ποιῆσαι τὸ θέλημα τὸ ἐμόν, εἰς μέσον τῷ λόγῳ προτίθησι, τὸν ἀριθμὸν ἀφείς, « Οὐκ εἰσὶ ταῦτα, φησί, διαφόρου θελήματος, » τουτέστιν ἐναντίου καὶ ἀντικειμένου, ἐξ οὗ τὸ δύο κατὰ φύσιν ὑπάρχειν ἐν τῷ Σωτῆρι θελήματα προδήλως συνάγεται. Εἰ γὰρ ἐναντίον οὐκ εἶχεν, φυσικὸν εἶχεν ς ἄνθρωπος. Τὸ γὰρ οὐκ ἐναντίον, φυσικὸν πάντως, καὶ οὐδεὶς ἀντερεῖ· οὐδὲν γὰρ ἐν τῇ φύσει ἢ τοῖς κατὰ φύσιν παντελῶς ἐναντίον· Δέος οὖν πολλὰ βαίνειν (c) [ἐπιβαλεῖν], ὃ μὴ κυρίως ἐν τοῖς ἑαυτοῦ γέγραφε λόγοις, καὶ μηχανᾶσθαι τοὺς δι' ἐναντίας οἰκείας δόξης ὡς οὐκ ἀρίστης ἐπικάλυμμα ποιεῖν τάνδρος τὰ γράμματα, καθ' ἕτερον ταῦτα παρὰ τὸν ἐκείνου σκοπὸν παρεξηγουμένους. Συνηγοροῦντα γὰρ ἔχει τὸν λόγον, πᾶσαν τοῦ ἐπηρεαστοῦ καταδρομὴν ἀπελαύνοντα.
+
+    Καὶ οὕτω μὲν ἐγώ γε τὸν νοῦν ἔχειν ὑπολαμβάνω, πάσης ὄντα καθαρὸν ὑποψίας. Βεβαιότερον δέ μοι τοῦτον πεποίηκεν ἐκ τῆς πρεσβυτέρας Ῥώμης ἐπανελθὼν ὁ σιώτατος πρεσβύτερος κύριος ἀββᾶς ναστάσιος, ἀνὴρ εἰ καί τις ἄλλος ἀρετῇ τε θεῖᾳ καὶ φρονήσει κεκοσμημένος· καὶ φήσας ὡς πολὺς αὐτῷ λόγος κεῖνται πρὸς τοὺς ἐκεῖσε τῆς μεγάλης Ἐκκλησίας ἱερωτάτους ἄνδρας, διὰ τὴν πρὸς Σέργιον ἐξ αὐτῶν γραφεῖσαν ἐπιστολήν, ὅτου χάριν καὶ πῶς αὐτῇ διερωτῶν ἐνετάγη τὸ ἓν θέλημα, καὶ εὗρεν ἀσχάλλοντας ἐν τούτῳ, καὶ ἀπολογουμένους, καὶ πρὸς αὐτοῖς τὸν ταύτην ἐν Λατίνοις ὑπαγορεύσαντα, κατὰ κέλευσιν αὐτοῦ κύριον ἀββᾶν Ἰωάννην ἁγιώτατον σύμπονον, ἰσχυριζόμενον ὡς οὐδαμῶς ἐπίμνησιν ἐν αὐτῇ δι' ἀριθμοῦ πεποίηται ἑνὸς τὸ παράπαν θελήματος, εἰ καὶ τοῦτο νῦν ἀνεπλάσθη παρὰ τῶν ταύτην ἑρμηνευσάντων εἰς τὴν Ἑλλάδα φωνήν. Οὔτε μὴν τὴν οἰανον κυρίωσιν (d) ἡ ἐκδο-
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="510,160,540,210">
-    A
+
+  <bloco tipo="nota" script="misto" bbox="190,710,320,730">f Joan. vi, 38.</bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="550,730,610,750">NOTE.</bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="190,750,570,910">
+    (c) Δέος οὖν πολλὰ βαίνειν. Istud erroris scribæ palam est. Anast. quibus duriuscule reddit, Timor ergo est opinari, Maximi litteram velut digito ostendit; nempe scripsisse, Δέος οὖν ἐπιβάλλειν, seu ἐπιβαλεῖν, quod etiam sentire, intelligere, opinari reddi quandoque queat: hic autem aptior ipsi ejus vocis communior acceptio, nempe adjicere, subdere. Sic certe Latinos Romæ excusare ait Maximus non scripsisse unius vocem in epistola, quæ tamen in Græcis exstaret: sicque subdititiam cam esse, ἐπιβεβλημένην, illorum fraude adjectam, qui tanti tantæque sedis antistitis auctoritate, novitati suæ præsidium quærerent: cum præsertim qua sic obscure simpliciusque conscripta erat, non videtur iis
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="510,270,540,320">
-    B
+
+  <bloco tipo="aparato_critico" script="misto" bbox="590,750,970,910">
+    deesse vocis illius inserendæ occasio, ipsamque totam sibi rapiendi epistolam, quasi illa Honorius Sergio reipsa stipulatus esset. Hincque forsitan ejus tandem et Romæ relictum vadinonium, ne, dum satis purgari non poterat, labis aliquid per ejus defensionem videretur prima ipsa sedes in Honorii successoribus contrahere, viris scilicet tanto fidei zelo clarioribus, quanto Honorius vel certe leniori in eam opera, ejus ipso ortu, videbatur seipsum obscurasse.
+    (d) Τὴν οἰανοῦν κυρίωσιν. Quin Maximus ἀκύρωσιν scripserit, vix dubito, eamque vocem alteri illi subjecta exposuerit, ἡ ἐκβολή. Sic certe ambæ unæ voces ejusdem sensus ac probe Græcæ, sibique
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="510,380,540,430">
-    C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="510,490,540,540">
-    D
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="560,90,960,700">
-    τὸν δι' ὑμᾶς σαρκωθέντα θεόν.
-    Καὶ τὴν ἐπιθῶσιν εἶπον, διὰ τοῦ ἐνὸς θελήματος, τὸ μόνην τῆς αὐτοῦ κατὰ σάρκα γνωσθέσιν τὴν θειαν
-    προσελθήσασθαι θελίμην ἑλήκην τὸν αὐτὸν ὁμοίαν· ὅτι δὲ τοῦ μή ὑπάρχειν θελήματος διαφορὰν, ῥᾳ
-    ἐναντίον οὖν ἔχειν τὴν ἀντικρατόν, ἀλλὰ δὲ τοῦ δεί-
-    που δι' ὅλου καὶ ἡμίσων. Ὅθεν γίγνεται μὲν τῇ ὑπε-
-    τέρας φύσιν τῆς θεήτητος προσεληφθαι λήψῃ,
-    θελήματος ἔκδος μνημονεύει· γνῶκα δὲ τῷ, οὐκ ἠλθον
-    κοινωνῆσαι τὸ θελήμα τὸ ἑμὸν, εἶπε μέσον τῷ λόγῳ
-    προσελθῆναι, τὸν ἀριθμὸν ἀφεῖ· Οὐκ εἰτε αὐτὰ,
-    χρησθ, διαφορὰν θελήματος, τουτέστιν ἐναντίον καὶ
-    ἀντικειμένου, ἔς δὲ τὰ δύο κατὰ φύσιν ὑπάρχοιν, τῷ
-    τῷ Σωτῆρι θελήματα πρόβλημα συνήνεν. ῎Ει ῥή
-    ἐναντίον οὐκ εἶχεν, φυσικὸν εἶχεν ὡς ἀνθρώπου.
-    Τὸ γὰρ οὐκ ἐναντίον, φυσικὸν παντός, καὶ οὐδεῖλ
-    ἀντἐρει· οὖδεν γὰρ ἐν τῇ φύσει τῶ τοις κατὰ φύσιν
-    παντελῶς ἐναντίον. Δέος οὐ πολλὰ παινεῖν (ε) [παρ-
-    λαβεῖν], ὁ μὴ κυρίως ἐν τοῖς ταυτοῖ γέγραπεν λόγους,
-    καὶ μηχανάσθαι τοὺς δι' ἑναντιλας αἰσχιας ὡς
-    οὓκ ἀρίστοις ἐπικαλλύμμα ποιεῖν τὰνδ' ὅτ̣ ῥημ-
-    ατα, καθ' ἕτερον ταῦτα παρὰ τὸν ἰδεαῦν σκοπῶν
-    παρέργητο· Συγχωροῦντα πρὸ ἔχει τὸν λόγον,
-    πᾶσαν τοῦ ἐμπερσσοῦ καταδρομὴν ἀπελαύνεται.
-    
-    Καὶ οὕτω μὲν ἐγὼ γε τὸν νόμον ἔχειν ὑπολαμβάνων,
-    πᾶς ὄντα καθαρὸν ὑποψίας. Βεβαιωτέρον δὲ μοι
-    τοῦτον πεπιστευκέν ἐκ τῆς πεσονέυρας Ῥώμης ἱπαρ-
-    ελθὼν ὁ ὀσιώτατος πρεσβύτερος κύριος Ἀββας
-    ῎Αναστάσιος, ἀνὴρ ἐπὶ καὶ τῖς αὐτὸς ἀρεταὶ τε θεί-
-    και φρονήσεως κεκοσμημένος· καὶ φησὶν· ὡς πολλῷ
-    αὐτῷ λόγῳ κεκύνηται πρὸς τοὺς ἐκείνους της μεγα-
-    λης ῾Εκκλησίας ἱερωτατους ἀνδρας, δια τὴν τῆς
-    Σέργιου ἐκ αὐτῶν γραφεῖσθαι ἑπιστολήν, ὅπου ἄρα
-    και πῶς αὐτῷ ἑιπερωτῆς ἐτείνα, τὸ δὲ ἔῖ ὅ ἑπου,
-    ὑπὲν ἀσχάλοτος ἐν τούτῳ, καὶ ἀπολογοῦντο, καὶ
-    περὶ αὐτοῖς τὸν ταῦτην τὴν Ἀαντινοὺς ὑπαρογραφ-
-    σαντα, κατὰ κέλευσιν αὐτοῦ χύρων ἱερεών. Ἰωάνην
-    ἀναγνωστὴν συμπονο, ἔγχρονίζον, ὡς οἰδαμᾶς
-    ἐπιμένους τῶν αὐτῶ͂ν δι' ἀρμοσὴν πεπιστευκὼς ὧν τὰ
-    παραπάν θελήματος, ἐπὶ καὶ τοῦτο νῦν ἀπεπαλό-
-    παρὰ τῶν ταύτην ἐρμηνευμάτων εἰς τὴν ῾Ελλάδα
-    ϱψειν. Οὕτω μὴν τῶν οἰκών χυρίψων (d) ἤ ἔθεω-
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,700,500,920">
-    I Ioan. vi, 38.
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="40,760,500,960">
-    NOTAE.
-    
-    (c) Δέος οὖν πολλὰ βαλειν. Istud erroris scriba palam est. Anas. quibus duriuscule reddit, Timor
-    ergo est opinari, Maxim litteram velut digito ostendit; nempe scripsisse, Δέος οὖν ἐπιβαλεῖν, seu
-    τῇ ἐπιβαλεῖν, quod etiam sentire, intelligere, opinari reddi quandoque queat: hic autem aptior ipsi
-    ejus voces communicare acceptio, nempe adjicere, subdere. Sic certe Latinos Romae excusare ait Maximus
-    non scripsisse anius vocem in epistola, quae tamen in Graecis exstaret: sicque subditi iam eam esse,
-    ἐπιθεσινμενην, illorum fraude adjectam, qui tanta fragilaque sedis antiistit auctoritate. novitati suae
-    praesidium quaererent: cum praesertim qua sic obscure simpliciusque conscripta erat. non videtur ijs
-    deesse vocis illius inserendae occasio, ipsamque totam sibi rapiendi epistolam, quasi illa Honorius
-    Sergio reipsa astipulatus esset. Hincque forsan eius tandem et Romae relictum vadimonium, ne
-    dum satis purgari non poterat, labiis aliquid de ejus defensionem videretur prima ipsa sedes in
-    Honori successorius contrahere, viris scilicet tanto fidei zelo clarioribus, quanto Honorius vel
-    ceteri leniori in eama opera, ejus ipso ortu, videbantur seipsum obscurasse.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="500,760,960,960">
-    Digitized by Google
-  </bloco>
-  <notas>
-    Texto principal dividido em duas colunas: esquerda em latino, direita em grego. Letras A, B, C, D ao longo do gutter foram colocadas como blocos nota_marginal separados. Onde a leitura é incerta inseri [ilegivel] — no entanto, tentei reproduzir textualmente o máximo possível; a apparatus critica contém mistura de latim e grego e abreviações editais. Marcas de rodapé e números (ex.: 133) preservados conforme visíveis.
-  </notas>
+
+  <bloco tipo="rodape" script="latino" bbox="580,950,790,980">Digitized by Google</bloco>
 </pagina>

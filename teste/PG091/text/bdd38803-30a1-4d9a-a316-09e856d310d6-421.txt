@@ -1,162 +1,44 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,80">
-765 LOCI COMMUNES. 765
-  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,90,50">765</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="400,30,600,50">LOCI COMMUNES.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="910,30,950,50">765</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,60,470,90">Βασιλείου. — Πλεονεξίας εἶδος τὸ χαλεπώτατον,</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="475,60,490,80">A</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="510,60,950,90">Basilii. — Avaritiæ genus gravissimum est, ne ea</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,90,470,110">μήτε τῶν φθειρομένων μεταδιδόναι τοῖς ἐνδεέσιν.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="510,90,950,110">quidem quæ pereunt egenis impartiri.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,110,470,130">Τοσούτους ἀδικεῖς, σους παρέχειν δύνασο.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="510,110,950,130">Tot injuria afficis, quot largiri potuisti.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,130,470,160">Θεολόγου. — Τὸ εὖ ποιεῖν, τοῦ πάσχειν τιμιώτερον, καὶ περισπουδαστότερον κέρδους ἔλεος.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="510,130,950,170">Theologi. — Nobilius est beneficium præstare, quam accipere; expetibiliorque lucro eleemosyna est.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,170,470,320">Κρεῖττον μυρίων παίδων πατέρα προσαγορεύεσθαι, ἢ μυρίους στατῆρας χειν ἐν βαλαντίῳ. Τὰ μὲν γὰρ χρήματα καταλείψεις ἐνταῦθα, καὶ μὴ βουλόμενος· τὴν δὲ ἐπὶ τοῖς ἀγαθοῖς ἔργοις φιλοτιμίαν ἀποκομίσεις πρὸς τὸν Δεσπότην· ὅταν δῆμος ὅλος ἐπὶ τοῦ κοινοῦ Κριτοῦ παριστάντης σε, τροφέα καὶ εὐεργέτην, καὶ πάντα τὰ τῆς φιλανθρωπίας ἀποκαλῶσιν ὀνόματα· Θεὸς ἔσται ὁ ἀποδεχόμενος· ἄγγελοι εὐφημοῦντες οἱ ἀπὸ κτίσεως· ἄνθρωποι μακαρίζοντες· δόξα αἰώνιος, στέφανοι δικαιοσύνης, βασιλεία τῶν οὐρανῶν δρά σοι ἔσται.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="475,300,490,320">B</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="510,170,950,350">Præstat innumerabili sobole liberorum patrem vocitari, quam numero superiores stateres in loculis habere. Nam pecunias, velis nolis, ævo hoc relinques : gloriam vero ac magnificentiam 552 honorum operum deferes ad Dominum; tunc nimirum, cum omnis multitudo sub communis Judicis præsentiæ circumfusi, te ciborum aliorumque bonorum promum condum, et quæcunque propensæ humanitatis nomina sunt, compellabunt; Deus placide habebit ac suscipiet, angeli cantico celebrabunt, qui a mundi ortu exstitere homines beatum prædicabunt : claritas æterna, justitiæ corona, regnum cœlorum, tua merces erunt et præmia.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,340,470,420">Σκορπιζόμενος ὁ πλοτος, καθ' ν ὁ Κύριος ἐπιτάττεται τρόπον, πέφυκε παραμένειν· συνεχόμενος δέ, ἀλλοτριοῦσθαι. Ἐὰν φυλάσσῃς, οὐκ χεις· ἐὰν δὲ σκορπίσῃς, οὐκ ἀπολέσεις. Ἐσκόρπισεν, ἔδωκε τοῖς πένησι.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="510,350,950,430">Divitiæ si dispergantur, qua ratione Dominus documento tradit, ex indole habent ut permaneant; sin autem contineantur, ut in alienum jus ac possessionem transeant. Si servas, non habebis; si disperseris, non amittes. Dispersit, dedit pauperibus (Psal. cxI, 9).</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,430,470,510">Καλὸν ἐφόδιον ἡ εὐσέβεια. Πάντας περιβαλόμενος ἄπελθε. Οἰκεῖον κόσμον σὸν πλοῦτόν σου ποίησον· ἄγε ατὸν μετὰ σεαυτοῦ. Πείσθητι καλῶς συμβούλῳ τῷ ἀγαπήσαντί σε Χριστῷ, τ δι' ἡμᾶς πτωχεύσαντι, ἵν' ἡμες τῇ ἐκείνου πτωχείᾳ πλουτήσωμεν.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="475,500,490,520">C</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="510,430,950,520">Pulchrum funus, pietas. Ubi cunctis instrumenta præbueris, discede. Tuas tibi opes tuum mundum facito : eum tibi habe comitem. Christi, qui te dilexit, consilio præclare obsequere; qui propter nos egenus factus est, ut ejus ipsi inopia divites essemus (II Cor. VIII, 9).</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,520,470,610">Θεολόγου. — Ἐλεημοσύνη, ἡ πάσης ἀπηλλαγμένη ἀδικίας· αὕτη πάντα καθαρὰ ποιεῖ. Τοῦτο κα νηστείας βέλτιον καὶ χαμευνίας· καίτοις ἐκεῖνα μοχθηρότερα καὶ ἐπιπονώτερα, ἀλλ' αὕτη καρδιαλωτέρα, χρωτίζει ψυχήν, λεπτύνει, κάλλην καὶ ὡραίαν ποιεῖ.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="510,520,950,620">Theologi. — Eleemosyna ab omni immunis iniquitate cuncta munda facit. Hæc et jejunio et nuda humo cubatione præstantior est; ac licet illa durioris sint disciplinæ majoremque laborem habeant, major tamen eleemosynæ utilitas est; nimirum colore animum imbuit, subtilem reddit, pulchrum ac formosum facit.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,620,470,710">Ἐκενα μόνα κερδήσομεν, ὅσα ἂν ἐκεῖ προπέμψωμεν. Ἐκενα μόνα ἐστὶν ἡμέτερα, ὅσα τῆς ψυχῆς ἐστι κατορθώματα, ἐλεημοσύνη καὶ φιλανθρωπία· οὐ γὰρ δυνατὸν χρήματα λαβόντα ἀπελθεῖν· μᾶλλον δὲ καὶ προκρίψωμεν αὐτά, ὥστε ἑτοιμάσαι ἡμν σκηνὴν ἐν ταῖς αἰωνίαις μοναῖς.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="475,700,490,720">D</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="510,620,950,720">Illa duntaxat lucro reportabimus, quæcunque illuc præmiserimus. Illa duntaxat nostra sunt, quæcunque animi virtutes sunt ac recte facta, eleemosyna scilicet et humanitas. Neque enim fieri potest ut sumptis opibus mundo excedas. Quinimo etiam has præmittamus, ut iis nobis in æternis sedibus tabernaculum paremus.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,720,470,850">Ἐλεημοσύνης χωρὶς, ἄκαρπος ἡ ψυχή. Πάντα ἀκάθαρτα ταύτης χωρὶς, πάντα ἀνόνητα. Τοῦτό ἐστιν ᾧ ἐξομοῦσθαι δυνάμεθα τῷ Θε, τὸ ἐλεεῖν καὶ οἰκτίρειν. Ὅταν οὖν τοῦτο μὴ ἔχωμεν, τοῦ παντὸς ἀπεστερήμεθα. Οὐκ εἶπεν, Ἐὰν πιστεύσητε, ὅμοιοί ἐστε τῷ Πατρὶ ὑμῶν. Οὐκ επεν, Ἐὰν παρθενεύσητε· ἀλλὰ τί; Γίνεσθε οἰκτίρμονες, ὡς  Πατὴρ ὑμῶν  ἐν τοῖς οὐρανοῖς. λεον γάρ, φησί, θέλω, καὶ οὐ θυσίαν.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="510,720,950,850">Citra eleemosynam infructuosa anima est : sine illa, cuncta immunda, nullius frugis universa sunt. Ea res est, qua Deo æquari licet, ut nempe eleemosynis studeamus ac miseratione impensi simus. Non dixit : Si jejunaveritis, similes eritis Patris vestri. Non dixit : Si virginitatem colueritis; sed : Estote misericordes, sicut Pater vester cælestis misericors est (Luc VI, 36). Misericordiam enim, inquit, volo, et non sacrificium (Osee VI, 6; Matth. IX, 13).</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="50,860,470,930">Ὅν βουλόμεθα τυχεῖν παρὰ τοῦ Θεο, τούτων πρότεροι μεταδιδόναι τοῖς πλησίον ὀφείλομεν. Ἄν δὲ τοὺς πλησίον τούτων ἀποστερῶμεν, πῶς τούτων τυχεῖν βουλόμεθα; Μακάριοι, φησίν, οἱ ἐλεήμονες,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="510,860,950,930">Quæ a Deo consequi volumus, hæc prius necesse est ut proximis impendamus. Sin autem proximos illis carere 553 alverimus, quomodo hæc a Deo consequi volumus ? Beati, inquit, misericordes, quo-</bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="40,80,480,920">
-- Βασιλειον. — Πλεονεξίας εἶδος τὸ χαλεπτώτατον. Α
-μὴ τῶν φθειρομένων μεταδίδωσιν τεῖς ἐνδεῖσιν.
-Τοιούτων ἀδικία, ὅσοι παρέχουσιν ἔχθισμα.
-Θεοδώρων. — Τὸ νῦν ποῖον, τοῦ πάσχειν τιμώτε-
-ρον, καὶ περισσοπώτατον κέρδους ἔλεος.
-
-Κρείττον μνῆμαι παιδῶν κατέχει προσαγορευέσθαι,
-ἢ μυσίους στάτῃρας ἔχειν τὸ βλαπτεῖν. Τα μὲν γὰρ
-χρήματα καταλεῖψις ἐνταῦθα, καὶ μὴ βουλόμενος
-τὰ ἐπὶ τῆς ἀγαθῆς ἔργον φιλοτιμίαν ἀποκοιν-
-ῶσαι πρὸς τὸν Δεσπότην· ὅταν δὴλος ἦλθ᾽ ἐπὶ τοῖς
-κακῶν Κρίτων παρατίθεσθαι σε, τροφεῖα καὶ εὐεργε-
-σίαν, καὶ πάντα τὰ τῆς φιλανθρωπίας ἀποκαλώσιν
-ὄνομα· θεός ἔσται ὁ ἀποβάλλων ἔγχεσιν εὐ-
-ηγοροῦντες ὁ ἀπὸ κλίσεως ἀνθρώποι μακαριζόντες,
-δεῖνα ἀἰῶνος, στέφανον δικαιοσύνης, βασιλείαν τῶν
-συραμένων ἔλλος σοι ἔσται.
-
-Σκοπτίζομεν ὁ πλούτος, καὶ ὁ δὲ Κύριος ἐπι-
-πέπτευται τρόπων, πέπυκεν παραμυθίην· συνεχιμένος
-δε, ἀλλοτροπώσασθαι. Ἐὰν φυλάξῃς, οὐκ ἔχεις· ἐὰν
-δὲ σκοπτίσης, οὐκ ἀπολείψεις. Ἐσκοπίσαν, ἔθουσι
-τοῖς, ἐπιδῆνα.
-
-Καλὸν ἔνεργον ἡ εὐσέβεια. Πάντας περιβάλλομε-
-νος ἄπλοι. Ὀπλίζων κόρον ἔδῃ πλήσων σου ποιήσων
-τῆς αὐτῆς μετὰ σταύρων. Πετόντα καὶ συμβάλλων
-τῇ ἀγαθότητι καὶ χρίσῃ, φησί· ὅτι ἡμεῖς πεπιστευ-
-κότες, ἡ ἡμεῖς τῇ διαιωνίᾳ πλουτίζουσιν.
-
-Θεολόγον. — Ἐλεημοσύνη, ἡ πάσης ἀπήλλαγ-
-μένη ἀδικίας· αὕτη πάντα καὶ παρα ποινή. Τοῦτο καὶ
-νηστεία· βελτίων καὶ χαιμονίας· κατατεθεῖ τεκνα
-μοσφιμοῦσα καὶ ἐπιτροπεῖα, ἀλλὰ ἀθὴν κεφα-
-λαιοστέρα, χρηστὴ ψυχή, λειμών, καὶ καλὴ τε
-προστασίᾳ.
-
-Τίκνει μὲν κερδησομεν, ὅσα ἂν ἔχει προσφέρ-
-ωμεν. Ἐκείνα μὲν ἔστιν ἡμέτερα, ὅσα τῆς ψυχῆς
-εἰσὶ κατορθώματα, ἐλεημοσύνη καὶ φιλανθρωπία·
-οἱ γὰρ δυνατοὶ χρῆματα λαβόντες ἀπελθεῖν· μᾶλλον
-καὶ ἀπροσήψιμον αὐτὰ, ὅστε ἑτοιμάσαι ἡμῖν
-στεφάνην ἐν τοῖς αἰωνίοις μοναῖς.
-
-Ἐλεημοσύνη γὰρ, ἄκαρπος ἡ ψυχή. Πάντα
-ἀκάθαρτα ταύτης χωρὶς, πάντα ἀνόητα. Τοῦτο
-ἔστιν ἰσχυροτέρα δύναμις τῷ θεῷ, τὸ ἔλεος καὶ
-εὐσπλοχία· ὅταν οὐκ πότοι μὴ ἔχωμεν, τοῦ παντὸς
-ἀπεκτησθῆμεν. Οὐκ εἶπεν, Ἐὰν πιστεύσητε, δράσαι
-ἵνα τὸν Πατέρα ὠμόν. Οὐκ εἶπεν, Ἐὰν παραβέλ-
-λωμεν· ἀλλὰ εἰ· Πεισθῶσι σιωπηρότερον, ὅς τὸ Πατὴρ
-ὀφείλειν τῷ τοῖς συρανοῖς· Ἐάδει γὰρ, φησί, θέλει,
-καὶ οὐκ ὀβολίσων.
-
-Ἐν βουλῇσιν τυχὼν παρά τοῦ θεοῦ, τούτων πρό-
-τερον μεταδιαθεὶς τοῖς πλησίον ἀρεθλομεν. Ἀν δὲ
-τοιαῦτα τοῦτον ἀποστερήσωμεν, πῶς τούτων τυ-
-χὼν βουλήσῃ; Μακάριοι, φησίν, οἱ ἐλεήμονες,
-οἵτινες;
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="480,180,520,240">
-A
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="520,80,960,920">
-Basilij. — Avaritiae genus gravissimum est, ne ea
-quidem quæ pereunt egenis impartiri.
-Tot injuria afficis, quot largiri potuisti.
-Theologi. — Nobilitus est beneficium præstare,
-quam accipere; expetibiliorque lucro eleemosyna
-est.
-
-Præstat innumerabili sobole liberorum patrem
-vocitari, quam numero superiores statures in loca-
-lis habere. Nam pecunias, velis solis, aevo hoc re-
-linques: gloria vero ac magnificentiam 552 ho-
-norem operum defers ad Dominum; tunc nimi-
-rum, cum omnis multitudo sub communis Judicis
-præsentia circumfusi, te ciborum aliorumque bo-
-norum promum condum, et quæcunque propense
-humanitatis nomina sunt, compellabunt; Deus pla-
-cide habebit ac suscipiet, angeli cantico celebra-
-bunt, qui a mundi ortu existere homines beatum
-prædicabant: claritas æterna, justitiæ corona, re-
-gnum cœlorum, tria merces erunt et præmia.
-
-Divitiæ si dispergant, una ratione Dominus
-documento tradit, ex indole habent ut permaneant;
-sin autem contineantur, ut in alienum jus ac pos-
-sessionem transeant. Si servas, non habebis; si
-disperseris, non amittes. Dispersit, dedit pauperibus
-(Psal. cx. 9).
-
-Pulchrum funus, pietas. Ubi cunctis indumenta
-præberis, discede. Tuas tibi opes tuum munus
-facito: eum tibi habe comitem. Christi, qui te di-
-lexit, consilio præclare obsequere; qui propter nos
-egenus factus est, ut ejus ipsi inopia divites esse-
-mus (II Cor. viii, 9).
-
-Theologi. — Eleemosyna ab omni immunis ini-
-quiitate cuncta munda facit. Hæc et jejunio et nuda
-humo cubatione præstantior est; ac licet illa du-
-rioris sint disciplinæ majorumque laborem pa-
-beant, major tamen eleemosynæ utilitas est; nimi-
-rum colore animum innuit, subtilem reddit, pul-
-chrum ac formosum facit.
-
-Ma duntaxat lucro reportabimus, quæcunque
-illuc præmisserimus. Illa duntaxat nostra sunt,
-quæcunqe animi virtutes sunt ac recte facta,
-eleemosyna scilicet et humanitas. Neque enim fieri
-potest ut sumptis opibus modo excedas. Quinim
-etiam, has præmittamus, ut jus nobis in æternis sedi-
-bus tabernaculum paremus.
-
-Citra eleemosynam infructuosa anima est: sine
-illa, cuncta immunda, nullius frugis universa sunt.
-Ea res est, quæ Deo æquari licet, ut nempe elemo-
-synis studeamus ac miseratione impensi simus. Non
-dixit: Si jenneraveritis, similes eritis Patris vestri.
-Non dixit: Si virginitatem colueritis; sed: Estote
-misericordes, sicut Pater vester cœlestis misericors
-est (Luc. vi, 36). Misericordiam enim, inquit, volo,
-et non sacrificium (Obœt. vi, 6; Matth. ix, 13).
-
-Quæ a Deo consequimur volumus, hæc prius necesse
-est ut præmia impendamus. Sin autem proximis
-illis carere 552 averimus, quoniam hæc a Deo
-consequi volumus: Recti, inqui, misericordes, quon-
-que?
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="480,400,520,460">
-B
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="480,620,520,680">
-C
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="480,780,520,840">
-D
-  </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="360,940,640,990">
-Digitized by Google
-  </bloco>
-
-  <notas>
-- Algumas palavras gregas e latinas foram retranscritas conforme visível; onde o traço é incerto, optou-se por leitura provável. 
-- Marcações A, B, C, D (nota_marginal) foram colocadas no gutter como blocos separados conforme instrução. 
-- Uso de [ilegivel] não foi necessário para palavras isoladas neste excerto; eventuais lacunas são assinaladas por hífens ou elipses dentro do fluxo textual.
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="600,960,800,990">Digitized by Google</bloco>
 </pagina>

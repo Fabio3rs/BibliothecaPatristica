@@ -1,134 +1,70 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,90">
-175      THEOD. BALSAMON      176
+  <bloco tipo="cabecalho" script="misto" bbox="150,30,850,60">
+    175 THEOD. BALSAMON 176
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,110,480,860">
-• Presbyter autem praeter ejus sententiam, ne-
-cessitate impellente, poenitentiam agentem non
-reconciliabit.
+  
+  <!-- Coluna Esquerda (Latim) -->
+  <bloco tipo="texto_principal" script="latino" bbox="140,65,540,110">
+    « Presbyter autem præter ejus sententiam, necessitate impellente, pœnitentiam agentem non reconciliabit. »
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="140,115,540,220">
+    Qui a Deo ligandi et solvendi potestatem acceperunt, secundum delictorum qualitatem et delinquentibus conversionem, supplicia decernent. Presbyter autem, præter episcopi sententiam ea nec augere potest nec minuere, nec pœnitentiam agentes ad gratiam recipere, et diviniis cos dignari sacramentis, quamvis peregre profectus sit episcopus.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="260,225,430,240">
+    570 CANON XLVII.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,240,540,335">
+    « De virginibus. Ut sacræ virgines, quando a patribus quorum oculis domi observabantur, separatæ fuerint, episcopi, vel ipso absente, presbyteri providentia venerabilioribus feminis commendentur, vel ut simul habitantes se invicem custodiant; ne passim vagando existimationem Ecclesiæ lædant. »
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,340,540,815">
+    DALS. Centesima vicesima tertia Justiniani novella, seu cap. 4, primi tit. lib. iv, hæc dicit aperte : In omnibus autem monasteriis, quæ cœnobia vocantur, jubemus, ut, secundum canones monasticos, in una domo omnes habitent et communiter alantur, et similiter in una domo omnes separatim dormiant; ut sibi invicem moderatæ temperantiæque vitæ rationis testimonium præbeant : iisdem omnibus etiam in feminarum monasteriis asceteriisque servatis. Præsens autem canon statuit, ut virgines Deo dedicatæ, a propriis patribus separatæ, non per se degant : sed quia a patribus servabantur, post earum autem in ecclesia dedicationem, ea patrum custodia et observatio cessavit ; debent episcopi, vel iis absentibus presbyteri, eas venerandis mulieribus tradere, ut ab iis per communem vitæ societatem serventur. Sin minus, omnes sacræ virgines simul habitent, ut simul viventes seipsas invicem servent : et non errantes, seu hic et illic agentes, ecclesiasticam vitæ honestatem et moderationem polluant, quoniam non bonam sui existimationem præbeant. Et hæc quidem leges et canones. Hodie autem parum quid eorum vel propemodum nihil fit. Nam neque monachi monasteriorum virorum simul habitant, neque ascetriæ : in solis autem mulierum cœnobiis monasteriis servatur hæc communis simul vivendi ratio et habitatio. Apud Latinos autem hucusque servatur ea vitæ ratio. Omnes enim monachi simul comedunt et dormiunt. Lege et canonem 6 præsentis synodi et quæ in eo sunt (fusius enim illic tractatum est, quomodo consecrentur virgines, etiam sine monachali habitu), et canonem 18 sancti Basilii.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="140,825,540,905">
+    ZONAR. Sexto hujus synodi canone de puellarum consecratione est actum. Quas igitur ilbi sacras puellas, hoc loco sacras virgines nominavit. Nam pro virginibus puellarum nomen usurpare mos est.
+  </bloco>
 
-Qui a Deo ligandi et solvendi potestatem acceperunt, secundum delictorum qualitatem et delinquentibus conversionem, supplicia decernent. Presbyter autem, praeter episcopi sententiam ea nec augere potest nec iniurare, nec poenitentiam agentes ad gratiam recipere, et divinius eos dignari sacramentis, quamvis precigre profectus sit episcopus.
+  <!-- Coluna Direita (Grego) -->
+  <bloco tipo="texto_principal" script="grego" bbox="560,65,950,105">
+    « ὁ παρὰ γνώμην τούτου οὐδ' ἀνάγκης συνωθούσης καταλλάξει μετανοοῦντα. »
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="560,110,950,215">
+    Οἱ παρὰ Θεοῦ λαβόντες ἐξουσίαν δεσμεῖν καὶ λύειν πρὸς τν ποιότητα τῶν ἁμαρτημάτων καὶ τὴν ἐπιστροφὴν τοῦ ἡμαρτηκότος τὰ ἐπιτίμια ὁρίζουσι. Πρεσβύτερος δὲ παρὰ γνώμην τοῦ ἐπισκόπου οὔτε αξειν ἢ μειοῦν αὐτὰ δύναται, οὔτε τος μετανοοῦντας καταλλάσσειν, κἂν ἀποδημῇ ὁ ἐπίσκοπος, καὶ τῶν θείων αὐτοὺς ἀξιοῦν ἁγιασμάτων.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="700,225,820,240">
+    ΚΑΝΩΝ ΜΖ'
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="560,245,950,335">
+    « Περὶ παρθένων. Ὥστε τὰς ἱερὰς παρθένους, ὅτε τῶν πατέρων χωρίζωνται, ἐξ ὧν ἐφυλάττοντο, τῇ τοῦ ἐπισκόπου, ἢ αὐτοῦ ἀπόντος τῇ τοῦ πρεσβυτέρου προνοίᾳ τας τιμιωτέραις γυναιξὶ παρατίθεσθαι, ἢ ἅμα κατοικούσας ἀλλήλας φυλάττειν, ἵνα μὴ πανταχοῦ πλαζόμεναι τὴν ὑπόληψιν βλάψωσι τῆς κκλησίας. »
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="560,340,950,835">
+    ΒΑΛΣ. Ἡ μὲν ρϛ' Ἰουστινιάνειος νεαρά, ἤγουν τὸ δ' κεφ. τοῦ α' τίτλου τοῦ δ' βιβλίου φησὶ ταῦτα ητῶς· Ἐν ἅπασι δὲ τος μοναστηρίοις, ἅπερ κοινόβια καλοῦνται, κελεύομεν κατὰ τοὺς μοναχικοὺς κανόνας ἐν ἑνὶ οἴκῳ πάντας οἰκεῖν, καὶ κοινῶς τρέφεσθαι, κατὰ τὸν ὅμοιον τρόπον, καὶ ἐν ἑνὶ οἴκῳ πάντας κεχωρισμένως καθεύδειν, ὥστε ἀμειβαδὸν ἀλλήλοις μαρτυρίαν τῆς σώφρονος διαγωγῆς παρέχειν αὐτούς· τούτων ἁπάντων καὶ περὶ τὰ μοναστήρια καὶ ἀσκητήρια τῶν γυναικῶν παραφυλαττομένων· ὁ δὲ παρὼν κανὼν διορίζεται τὰς ἀνατεθειμένας τῷ Θεῷ παρθένους, χωριζομένας ἀπὸ τῶν οἰκείων πατέρων, μὴ καθ' ἑαυτὰς διάγειν, ἀλλ' ἐπεὶ παρὰ τῶν πατέρων ἐφυλάττοντο, ἢ δὲ τοιαύτη φυλαχὴ μετὰ τὴν εἰς τν Ἐκκλησίαν ἀνάθεσιν αὐτν ἀπέλιψεν, ὀφείλουσιν οἱ ἐπίσκοποι ἢ τούτων ἀπόντων οἱ πρεσβύτεροι παραδιδόναι ταύτας σεμναῖς γυναιξίν, ἐφ' ᾧ ὑπὸ τούτων διὰ ζῆς ὁμοζωίας φυλάττεσθαι. Ἢ εἰ μὴ τοῦτο, πάσας τὰς ἱερὰς ταύτας παρθένους ὁμοῦ κατοικεῖν, ἵνα συζῶσαι φυλάττωσιν ἀλλήλας, καὶ μὴ πλαζόμεναι, ἤγουν τῇδε κἀκεῖσε διατρίβουσαι τὴν ἐκκλησιαστικὴν εὐκοσμίαν μολύνωσι διὰ τοῦ διδόναι οὐκ ἀγαθὰς ὑπολήψεις κατ' αὐτν. Καὶ  μὲν νόμος καὶ οἱ κανόνες ἐν τούτοις· σήμερον δὲ ἀπ τούτων τέως εἰς μᾶς μικρὸν ἢ οδὲν σχεδν γίνεται· οτε γὰρ ο μοναχοὶ τν ἀνδρν μοναστηρίων ὁμοῦ κατοικοῦσιν, οὔτε αἱ ἀσκήτριαι· εἰς μόνα δὲ τὰ γυναικεῖα κοινόβια μοναστήρια συντηρεῖται ἡ κοινὴ δίαιτα καὶ κατοικία. Εἰς δὲ τοὺς Λατίνους τέως ἡ τοιουτότροπος διαγωγὴ συντηρεῖται. Πάντες γὰρ οἱ μοναχοὶ ὁμο καὶ ἐσθίουσι καὶ ὑπνοῦσιν. Ἀνάγνωθι καὶ τὸν ϛ' κανόνα τῆς παρούσης συνόδου, καὶ τὰ ἐν αὐτῷ (πλατύτερον γὰρ ἐκεῖσε διελέφθη πῶς παρθένοι καθιεροῦνται, καὶ δίχα τοῦ μοναστικοῦ σχήματος) καὶ τὸν ιη' κανόνα τοῦ ἁγίου Βασιλείου.
+  </bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="560,840,950,905">
+    ΖΩΝΑΡ. Ἐν κτῷ κανόνι τῆς παρούσης συνόδου εἴρηται περὶ κορῶν καθιερώσεως. Ἃς γοῦν ἐκάλεσεν ἐκεῖ κόρας καθιερουμένας, ἐνταῦθα ερὰς παρθένους ὠνόμασε. Κόρα, γὰρ τὰς παρθένους ἔθος
+  </bloco>
 
-570 CANON XLVII.
-De virginibus. Ut sacrae virgines, quando a
-patribus eorum corulis domi observabantur,
-separatae fuerint, episcopi, vel ipso absente,
-presbyteri providentia venerabilioribus femi-
-nis commendentur, vel ut simul habitantes se
-invicem custodiant; ne passim vagando exi-
-timationem Ecclesiae laedant.
+  <!-- Notas Marginais (Gutter) -->
+  <bloco tipo="nota_marginal" script="latino" bbox="545,65,555,80">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="545,275,555,290">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="545,475,555,490">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="545,685,555,700">
+    D
+  </bloco>
 
-BALS. Centesima vicesima tertia Justiniani
-novella, seu cap. 4, primi tit. lib. IV, haec dicit
-aperte: In omnibus autem monasteriis, quæ
-coenobia vocantur, jubeamus, ut, secundum canones
-monasticos, in una domo omnes habitent et com-
-muniter alantur, et similiter in una domo omnes
-separatim dormiant; ut sibi invicem moderatæ
-temperantise vitæ rationis testimonium prae-
-beant: iisdem omnibus etiam in feminærum mo-
-nasteriis observandis servatis. Præsens autem
-canon statuit, ut virgines Deo dedicatæ, a propriis
-patribus separatæ, non per se degant: sed quia a
-patribus servabantur, post earum autem in ecclе-
-sia dedicationem, ea patrum custodia et observatio
-cessavit; debent episcopi, vel iis absentinibus presby-
-teri, eas venerandis mulieribus tradere, ut ab his
-per communem vitæ societatem serventur. Si
-minus, omnes sacræ virgines simul labient, ut
-simul viventis seipsas invicem servent: et non
-errantes, seu hic et illic agentes, ecclesiasticam
-vitæ honestatem et moderationem polluant, quoniam
-boni bonum sui existimationum præbeant. Et hæc
-quidem leges et canoncs. Hodie autem parum quid
-eorum vel prope modum nihil fit. Nam neque mo-
-nachi monasteriorum virorum simul habituant,
-neque æstretici: in solis autem mulierum coenobiis 🝫
-monasteriis servantur hæc communis simul vivendi
-ratio et habitatio. Apud Latinos autem hucusque
-servatur ea vitæ ratio. Omnes enim monachi simul
-concludunt et dormiunt. Lege et canone 6 præ-
-sensis synodi est quæ in eo sunt (sius enim illic
-tractatum est, quomodo consecrantur virgines,
-citam sine monachali habitu), et canone 18 sancti
-Basilii.
-
-ZONAR. Sexto hujus synodi canone de puellarum
-consecratione est actum. Quas igitur ibi sacratas
-puellas, hoc loco sacras virgines nominavit. Nam
-pro virginibus puellarum nomen usurpare mos est.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,110,960,860">
-• Οι παρα δε τις λαβοντες εξουσιαν εφορουν και ιδιαιτε-
-ρως την ποιότητα των αμαρτημάτων και την μεταστο-
-φην του ημερηκτητος τα επιτιμια διωριζουν.
-Πρεσβύτερος δε παρα γνώμην του επισκόπου ουτε
-οξενην η μειον αυτα δυνατόν, ούτε τους μετανούν-
-τας καταλλασσειν, καν αποδημή ο επισκοπος, και
-των θεων αυτοίς άξιον αγιασμάτων.
-
-ΚΑΝΩΝ ΜΖ'
-Περί παρθένων. Όσες τάς ιερές παρθένους, ετε
-των πατέρων χωρισμωσαι, εἰ ὃν αὐνωκλεπτον,
-ἢ τῷ τοῦ επισκόπου, ἢ αὐτοι ἀνέφοντες τῷ τρυ-
-κρεσθενρῳ προνοια ταῖς τιμωρίαις γυμνέφει
-παραδοθένται, ἡ ἁμα κατοικισει αλλαγῃ· φυ-
-λάττειν, ἵνα μὴ πανταχοῦ πλαζόσωνται τὴν ὑπό-
-ληψιν βλάβῃ του· Εκκλησίας.
-
-ΒΑΣΙΛ. Η μεν θεμ' Πουστιναίνειος νομαι, γραφουν
-δὲ τὸ κινο. τοῦ α' τίτλου του βίβλου πρωτ παρὰ ταύτα
-ρητώς: 'Εν πάσαι δὲ τοῖς μοναστηρίοις, ἅπερ κο-
-ίνια καλούνται, κελεύομεν κατά τοὺς μοναχικούς
-κανόνας ἐν τῇ μιᾷ οἰκίᾳ πάντας οἴκειν, καὶ κοινῶς τρε-
-φέσθαι, κατὰ τὸν τρόπον τοῦτον, καὶ τὸν ἑκάτε-
-ρον παρά τῳ ἑτέρῳ χωριζομένως καθιέναι, ὥστε ἀμφιδιδὰν
-ἀλλήλοις μαρτυρίαν τῆς σωφροσύνης παρέχειν· ἀφορ-
-ῶν ἀυτούς· τούτων μάλιστα καὶ περί τὰ μονα-
-στήρια καὶ ἀσκήτρια τῶν γυναικῶν παραλυλαττο-
-μένων· ὃ δ' ἁ περὶ τοὺς κανόνας διορίσει· τάς ἀναφερο-
-μένας τῇ θεῷ παρθένους, χωρισθείσας ἀπὸ τῶν
-οἰκείων πατέρων, μὴ καθ' αὑτὰς διαγείρειν, ἀλλ' ἔπει
-παρὰ τῶν πατέρων ὑπαχθέντων, ὅ τ' ἂν τοσαύτη φυ-
-λάττη μετὰ τῆς ἐκκλησιας ἀνάθεσιν αὐτῶν
-απέλειψαν, θεμελισαν καὶ διόρισαν, ἃ τούτων ἀπό-
-νειμαν ὁ παρουσῶν παραδίδωσι ταύταις ὁρισμα· ἐν
-ᾧ, ἅ ὁ ὑπό τὸύτων διὰ τῆς ἀσθαλώς, φυλατ-
-σασθαι. Ἡ δὲ με τοῦτο, πάσαι ἀς ἱερὰς ταύταις
-παρθένους ἑπ μοι κατοικισθ', ἵνα συζώσιν φυλάττοντας
-ἀλλήλας, καὶ μὴ ταπεινώμεναι, ἢγει τοῖς κακοῖς
-διατρίβασαι τὴν ἁκλησιαστικὴν ἐυσέβειαν πολλω-
-στὶ δὲ τοῖς ἑτέροις οὐκ ἀγαθὰ ὑποστήματα κατ'
-αὐτὼν. Καὶ ὁ μὲν νόμος καὶ οἱ κανόνες τῶ τόποὶς
-ὑπήρξαν. ὅδ' ἡ πραγματ. οἱ μὲν μοναχοὶ τῶν αν-
-δρῶν μοναστηρίων ἐν ὁμοῦ κατοικοῦσιν, οὗ τὰς ἀσκή-
-τριαι· ἐδ' μὲν ἀνά τὰ τὰ γυναικεῖα κοινῶς μοναστή-
-ρια συντηρεῖσθαι τῆ κοινῇ διατ. καὶ κατοικία. Εἰς ὅτι
-τοῦ, Λατίνοι τε ὅτι τοιούποτρος διαγωγῇ συντη-
-ρεῖται. Λαβεῖν γὰρ οἱ μοναχοὶ ὁμοῦ καὶ ἔςδόντως
-καὶ ἀντίνυσται. 'Αναγνωθὲν καὶ τὸν τ' κανόνα τῆς
-παρούσης συνόδου, καὶ ὅτι ἑνὶ τὸν (πλατυνερον τῷ)
-ἱερεῖς ἐπεὶδιγοι· τὰς παρθένους καθιερῶσιν, καὶ
-διὰ τοῦ μοναχικοῦ σχήματος) καὶ τὴν ὑπ' κανόνα
-τοῦ ἁγίου Βασιλείου.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,220,515,260">
-A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,320,515,360">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,440,515,480">
-C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,560,515,600">
-D
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="200,920,800,980">
-Digitized by Google
-  </bloco>
-  <notas>
-    Foram criados blocos separados para as quatro identificações marginais A, B, C, D (localizadas no gutter central). As bboxes são estimativas visuais.
-    A transcrição foi efetuada literalmente com base na imagem; algumas abreviações tipográficas e caracteres ligeiramente indistintos foram interpretados pelo contexto (especialmente em partes latinas e gregas muito compactas). Onde a legibilidade era duvidosa, optou-se pela leitura mais plausível em vez de omissão. Nenhuma secção inteira foi marcada [ilegivel].
-  </notas>
+  <notas>Transcription of mixed Latin and Greek text from Patrologia Graeca (Theodorus Balsamon). Marginal letters A, B, C, D indicate sections.</notas>
 </pagina>

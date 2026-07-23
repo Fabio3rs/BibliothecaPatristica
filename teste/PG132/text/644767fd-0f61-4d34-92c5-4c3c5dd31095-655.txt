@@ -1,156 +1,40 @@
 <pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,20,960,110">
-1193      ORATIO I CONTRA ARMENIOS.      1194
-  </bloco>
+  <bloco tipo="cabecalho" script="misto" bbox="100,30,900,60">1193 ORATIO I CONTRA ARMENIOS. 1194</bloco>
+  
+  <!-- Coluna Esquerda (Grego) -->
+  <bloco tipo="texto_principal" script="grego" bbox="80,65,480,240">ἡμν ἄνθρωπον γεγονέναι ὁμολογοῦσιν. Εἰ δ τὰ σώματα ἡμῶν θνητὰ καὶ φθαρτά, ὁ μέγας Ἀπόστολος σῶμα Χριστοῦ, καὶ μέλη ἐκήρυξε, καὶ ὁ Λόγος σὰρξ ἐγένετο, καὶ ἐσκήνωσεν ἐν ἡμῖν, ὡς ὁ Θεολόγος ἔφησε· πρόδηλον ὅτι τὰ σώματα τῶν Ἀρμενίων, οὐ σώματα καὶ μέλη Χριστοῦ εσιν· ἀλλὰ τοῦ Σατανᾶ, τοῦ σκηνώσαντος ἐν τοῖς σώμασιν αὐτν, καὶ τὰς αἱρέσεις αὐτῶν διδάσκοντος, καὶ τὰ ζιζάνια ἐν αὐτοῖς ποσπείραντος, καὶ τὴν ἑαυτοῦ θεομαχίαν, καὶ ἀποστασίαν αὐτοῖς ποβάλλοντος. Οτως οὖν οὗτοι, ἑαυτοὺς τοῦ Χριστοῦ ἀλλοτριοῦντες οἱ ἀσεβεῖς, οὐκ αἰσχύνονται.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="80,250,480,365">Ε'. Τίς ἀκούων τῶν ἀποστόλων καὶ τῶν γίων Πατέρων, τὴν γέννησιν τοῦ Θεο, καὶ Σωτῆρος ἡμῶν Ἰησοῦ Χριστοῦ, πρώτην ἑορτήν, καὶ ῥίζαν καὶ ἀρχήν, καὶ ἑορτῶν ἑορτήν, καὶ μητρόπολιν πασῶν ορτῶν ὀνομαζόντων· τούτους ἐὰν ὅλως Χριστιανοὺς λογίζηται, καὶ μὴ μᾶλλον ἀρνησιχρίστους καὶ διαβολικούς, μηδ' ὅλως τὴν γέννησιν αὐτο μνημονεύοντας ἢ ἑορτάζοντας;</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="80,375,480,515">Ζ'. Τίς ἀκούων τῶν γίων Πατέρων δύο θελήματα φυσικά, καὶ δύο φυσικὰς ἐνεργείας ἐν Χριστῷ κηρύττοντας, καθὼς αὐτὸς  Κύριος ἐν Εὐαγγελίοις διδάσκει· οὐ δικαίως μέμψεται τούτους, ὡς Μανιχαίους, καὶ Ἀπολλιναριστάς, καὶ Εὐτυχιανιστάς, μήτε θέλησιν, μήτε ἐνέργειαν ὁμολογοῦντας ἐν Χριστῷ· ἀλλὰ μίαν θέλησιν καὶ ἐνέργειαν, ὡς  Ἄρειος, ἐπὶ Χριστοῦ κηρύττοντας, καὶ τὴν θεότητα αὐτοῦ εὐτελέστερον τοῦ Πατρὸς δεικνύοντας.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="80,520,480,690">Ζ'. Τίς ὁρῶν καὶ ἀκούων τὰς πανηγυρικὰς αὐτῶν βίβλους, τὰς Ἀρμενιστὶ γεγραμμένας πάσας, δύο φύσεις, καὶ δύο ἐνεργείας προφανῶς ἐν Χριστῷ κηρυττούσας, καθὼς μυριάκις ὑπεδείξαμεν αὐτοῖς, καὶ ἠλέγξαμεν ἐξ αὐτῶν τῶν ἰδίων βιβλίων, οὐ θανάτου ἐνόχους ἀξίως καταδικάσειεν, ὡς ἀρνητὰς τοῦ Χριστοῦ, κα τῶν γίων Πατέρων ἐχθρούς, καὶ πολεμίους, τῶν τε Ῥωμαίων, καὶ Ἀρμενίων ἀρχαίων διδασκάλων θεοπνεύστων; Τίνες οὖν ἕτεροι αἱρετικο ἀσεβήσαντες, οὕτως ἀνησχύντησαν ὥσπερ οὗτοι, οἱ τ Εὐαγγέλιον τοῦ Χριστοῦ περικόψαι καὶ παραχαράξαι τολμήσαντες;</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="80,695,480,905">Η'. Τῶν ἁγίων Πατέρων συμφώνως τὸν Τρισάγιον ὕμνον, εἰς τὴν ἁγίαν Τριάδα σεραφικῶς καὶ εὐαγγελικῶς ἀναπεμπόντων· καὶ πάντων τῶν ἀρχιερέων τῆς μεγάλης πόλεως Ῥώμης, εἰς τὴν ἁγίαν Τριάδα, τὸν Τρισάγιον ὕμνον, ἀπὸ τῶν κορυφαίων ἀποστόλων ἀναπέμπεσθαι παραλαβεῖν μαρτυρούντων, καὶ μυρίοις ἀναθέμασι καὶ καθαιρέσεσι, Πέτρον τὸν Κναφέα καθυποβαλλόντων διὰ τὴν ἐν Τρισαγίῳ προσθήκην· τίς οὐ τέλειον τούτους μισήσειεν καὶ ἀποστραφήσεται ὡς ἀσεβεῖς, καὶ βλασφήμους καὶ κακοδόξους, οὐ μόνον τὴν γίαν Τριάδα σταυρωθῆναι βλασφημοῦντας· ἀλλὰ καὶ τὸν ἕνα Χριστὸν τὸν Υἱὸν τοῦ Θεοῦ, ὡς ὁ Νεστόριος, εἰς δύο υἱοὺς χωρίζοντας.</bloco>
+  
+  <bloco tipo="texto_principal" script="grego" bbox="80,910,480,960">Θ'. Εἰ δὲ ἐλεγχόμενοι ἀποκρίνονται λέγοντες· ὅτι ἡμεῖς οὐκ εἰς τὴν ἁγίαν Τριάδα τὸν Τρισάγιον</bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="40,110,480,1220">
-ἡμῖν ἄνθρωπον γεγονέναι ὁμολογοῦσιν. Εἰ δὲ τὰ σώ-
-ματα ἡμῶν θνητὰ καὶ φθαρτά, ὁ μέγας Ἀπόστολος·
-σῶμα Χριστοῦ, καὶ μέλη ἐκήρυξε, καὶ ὁ Λόγος·
-σαρξ ἐγένετο, καὶ ἐσχημάτισεν ἐν ἡμῖν, ὡς ὁ Θεολόγος
-ἐφῆ· πεποίηκεν ὅτι τὰ σώματα τῶν Ἀρμενίων,
-οἱ σῶμα ταὶ μέλη Χριστοῦ εἰσι· ἀλλὰ τοῦ Σατα-
-να, τοῦ συνηχαγμένου, ἐν τοῖς σώμασιν αὐτῶν, καὶ
-τὰς αἱρέσεις αὐτῶν διδάσκοντος, καὶ τὰ ζῆλα ἐν
-αὐτοῖς ὑποσπείροντος, καὶ τὴν ἑαυτοῦ θεομαχίαν,
-καὶ ἀποστασίαν αὐτοῖς ὑποβάλλοντος· Οὕτως· οὖν
-οἷσθ', ἑαυτοὺς τοῦ Χριστοῦ ἀλλοτριούvτες οἱ ἀσεβεῖς,
-οὗν αἰσχύνονται.
+  <!-- Coluna Direita (Latim) -->
+  <bloco tipo="texto_principal" script="latino" bbox="500,65,920,245">ciunt; nec Christum nobis consubstantialem hominem factum confitentur. Quod si magnus apostolus Paulus, mortalia ac corruptibilia corpora nostra, Christi corpus ac membra prædicavit : Verbumque caro factum est, et habitavit in nobis, quemadmodum Joannes Theologus dixit : palam est Armeniorum corpora, haudquaquam Christi esse corpora ac membra, sed Satanæ habitantis in eorum corporibus, eorumque docentis hæreses, ac zizania in eis seminantis, suamque illis adversam in Deum mentem ac defectionem suggerentis. Sic ergo impios, qui se a Christo alienos constituunt, non pudet?</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="500,250,920,375">V. Quis audiens apostolos ac sanctos Patres, Dei ac Salvatoris nostri Jesu Christi natalem diem, primam solemnitatem, radicemque ac principium solemnitatum, ac solemnitatum solemnitatem, omniumque solemnitatum metropolim appellantes, istos omnino Christianos arbitretur, ac non magis Christum negantes, ac diabolicos, qui nullam omnino ejus natalis memoriam faciant, aut celebrent?</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="500,380,920,515">VI. Quis audiens sanctos Patres, naturales duas voluntates, ac duas naturales operationes in Christo prædicantes, juxta quod ipse Dominus in Evangelio docet, non merito, illos tanquam Manichæos, Apollinaristas, ac Eutychianistas criminetur, qui nec voluntatem, nec operationem confiteantur in Christo; sed unam voluntatem ac operationem, velut Arius, in Christo doceant, ejusque deitatem Paterna abjectionem ostendant?</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="500,520,920,690">VII. Quis videns ac audiens eorum panegyricos ac sanctorum exornatorios libros omnes, duas naturas, ac duas voluntates liquido in Christo prædicantes, uti sexcentis vicibus ostendimus eis, exque illis eos redarguimus, non mortis reos condemnet, tanquam eos qui Christum negent, ac sanctis Patribus adversentur, sintque hostes, tum Græcorum, tum Armeniorum a Deo afflatorum veterum doctorum? Qui ergo impii alii hæretici eo impudentiæ provexerunt, quo isti, qui Christi Evangelium amputare, ac adulterare præsumpserint?</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="500,695,920,875">VIII. Cum sancti Patres hymnum Trisagion in sanctam Trinitatem seraphice ac evangelice, consonе reducant, omnesque magnæ urbis Romæ antistites, a principibus apostolorum accepisse testentur, reducendum in sanctam Trinitatem, sexcentisque diris ac depositionibus Petrum Fullonem, ob ejus in eo hymno auctarium subjecerint; quis non omnino istos oderit, ac aversetur, tanquam impios ac blasphemos, hæreticosque, qui nedum sanctam Trinitatem crucifixam blasphement; verum etiam unum Christum Dei Filium, Nestoriano errore in duos filios dividant?</bloco>
+  
+  <bloco tipo="texto_principal" script="latino" bbox="500,880,920,945">IX. Quod si reprehensi respondeant dicentes : Minime gentium, hymnum Trisagion in sanctam</bloco>
 
-E'. Τίς ἀκούων τῶν ἀποστόλων καὶ τῶν ἁγίων Πατέρων,
-τὴν γέννησιν τοῦ Θεοῦ, καὶ Σωτῆρος ἡμῶν Ἰησοῦ
-Χριστοῦ, πρώτην ἑορτήν, καὶ ῥίζαν καὶ ἀρχήν, καὶ
-ἑορτὴν ἑορτὴν, καὶ μητρόπολιν πασῶν ἑορτῶν
-ὀνομαζόντων· τούτοις ἄν ἄλλοι Χριστιανοὶ λογίζονται,
-καὶ μὴ μάλλον ἀρνούμενοις αὐτοῦ καὶ διαβολικοῖς,
-μὴ ὅλως τὴν γένεσιν αὐτοῦ μνημονεύοντας ἢ ἑορτάζοντας;
+  <!-- Notas de Margem (Gutter) -->
+  <bloco tipo="nota_marginal" script="latino" bbox="490,65,505,85">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,280,505,300">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,500,505,520">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,710,505,730">D</bloco>
 
-Ζ'. Τίς ἀκούων τῶν ἁγίων Πατέρων δύο θέληματα
-φυσικά, καὶ δύο φυσικὰς ἐνεργείας ἐν Χριστῷ κη-
-ρύττονας, καθώς αὐτὸς ὁ Κύριος ἐν Εὐαγγελίοις
-ἐδιδάσκει, οὕ δικαίως ἔμελεται τούτους, ὡς Μανι-
-χαίους, καὶ Ἀπολλιναρίστας, καὶ Ἐὐτυχιανίστας,
-μήτε θέλησιν, μήτε ἐνέργειαν ὁμολογοῦντας ἐν
-Χριστῷ· ἀλλὰ μίαν θέλησιν καὶ ἐνέργειαν, ὡς ὁ
-Ἄρειος, ἐπὶ Χριστῷ κηρύττονας, καὶ τὴν θεότητα
-αὐτοῦ ἐπεκτείνεσθαι τοῦ Πατρὸς δεικνύοντας.
-
-Z'. Τίς ὁρᾷ καὶ ἀκούει τάς πανηγυρικὰς σὺ-
-νων βίβλους, τὰς Ἀρμενιστί γεγραμμένας πάσας,
-δύο φύσεις, καὶ δύο ἐνέργειας προφανοῦς ἐν Χριστῷ
-κηρυσσοῦσας, καθὼς μύριας ὑπεδείξαμεν αὐτοῖς,
-καὶ ἠγάθασμεν ἐξ αὐτῶν τῶν ἰδίων βιβλίων, οἷθα
-θάνατον ἐνέχον, ἀξίω, καταδικάσειν, ὡς ἀρχηγεῖ τῶν
-Χριστοῦ, καὶ τῶν ἁγίων Πατέρων ἐχθρούς, καὶ ρο-
-εις, τῶν τε Ῥωμαίων, καὶ Ἀρμενίων ἀρχαίων
-διδασκάλων θεοπνευστῶν; Τίνες οὖν ἔτεροι αἱρετικοὶ
-ἀπεθανοντες, ὡς ἀνηχήγησαν ἄστερ οἷοι, οἱ
-τὸ Εὐαγγέλιον τοῦ Χριστοῦ περιέχῃ καὶ παραχω-
-ρῆσαι τοιμαςται;
-
-Η'. Τῶν ἁγίων Πατέρων συμφώνως τὸν Τρισάγιον
-ὕμνον, εἰς τὴν ἁγίαν Τριάδα σεβαστικὸς καὶ εὐαγ-
-γελικὸς ἀναπεπτωὼς καὶ πάντων τῶν ἀρχιερέων
-τῆς μεγάλης πόλεως· Ρώμης, εἰς τὴν ἁγίαν Τριάδα,
-τον Τρισάγιον ὕμνον, ἀπὸ τῶν κορυφαίων ἀποστό-
-λων ἀναπεπιστευμένων παραλαβόντων μαρτυρώντων, καὶ
-μυρίος ἀναθεματι καὶ καθαιρεθει· Πέτρον τὸν
-Κναζία καθυποβαλλόμενον διὰ τὴν τῆν Τριάδα
-προσήχθην· τις οὐ τελείοι τούτους μετέσεκεν καὶ
-ἀποστρατεύεται ὡς δεσεῖ, καὶ βλασφημιῶν καὶ
-κακοδοξίας, οὐ μόνων τῆν ἁγίαν Τριάδα σταυρωθῇ-
-ναι βλασφημοῦντας· ἀλλὰ καὶ τὸν ἕνα Χριστὸν τὸν
-Υἱὸν τοῦ θεοῦ, ὡς ὁ Νεστόριος, εἰς δύο υἱοὺς χωρι-
-ζοντας.
-
-Θ'. Εἰ δὲ ἐλεγχόμενοι ἀποκρίνονται λέγοντες· ὅτι
-ἡμεῖς οὐκ εἰς τὴν ἁγίαν Τριάδα τὸν Τρισάγιον
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="495,160,515,240">
-A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,320,515,400">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,480,515,560">
-C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,700,515,780">
-D
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="520,110,960,1220">
-A ciunt; uec Christum nobis consubstantialem homi-
-nem factum confitentur. Quod si magnus apostolus
-Paulus, mortalia ac corrumpibilia corpora nostra,
-Christi corpus ac membra praedicavit: Verbumque
-caro factum est, et habitavit in nobis, quemadmodum
-Joannes Theologus dixit: palam est Arme-
-niorum corpora, haudquaquam Christi esse corpora
-ac membra, sed Satanæ habitantlis in eorum cor-
-poribus, eorumque docentes hæreses, ac zizania in
-eis seminantis, suamque illis adversam in Deum
-mentem ac defectionem suggerentis. Sic ergo
-impios, qui se a Christo alienos constituunt, non
-pudet?
-
-V. Quis audiens apostolos ac sanctos Patres,
-Dei ac Salvatoris nostri Jesu Christi natalem dicim,
-primam solemnitatem, radicemque ac principium
-solemnitatum, ac solemnitatis sollemnitaten, om-
-niumque solemnitatum metropolis appellanttes,
-istos omnino Christianos arbitretur, ac non magis
-Christum negantes, ac diabolicos, qui nullam
-omninio ejus natalis memoriam faciant, aut ce-
-lebren?
-
-VI. Quis audiens sanctos Patres, naturales duas
-voluntates, ac duas naturales operationes in Christo
-praedicantes, juxta quod ipse Dominus in Evangelio
-docet, non merito, illos lanquam Manichaeos,
-Apollinaristas, ac Eutychianistas criminerunt, qui
-nec voluntatem, nec operationem confitcantur in
-Christo; sed unam voluntatem ac operationem,
-velut Arius, in Christo doceant, ejusque deitatis
-Paterna abjectionem ostendant?
-
-VII. Quis videns ac audiens eorum panegyricos
-ac sanctorum exornatorios libros omnes, duas
-naturas, ac duas voluntates liquide in Christo
-praedicantes, uti secentis vicibus ostendimus eis,
-exque illis eos redarguimus, non mortis eos con-
-demnet, tanquam eos qui Christum negent, ac
-sanctis Patribus adversentur, simique hosies, tum
-Graecorum, tum Armeniorum a Deo allatorum
-velorum doctorum? Qui ergo impii alii hæretici
-eo impudentia provexerunt, quo isti, qui Christi
-Evangelium amputare, ac adulterare præsumpe-
-rint?
-
-VIII. Cum sancti Patres hymnnam Trisagion in
-sanctam Trinitatem seraphice ac evangelice, con-
-sone reducant, omnesque magna urbis Romæ
-antistites, a principibus apostolorum acceptisse
-testentur, reducendum in sanctam Trinitatem,
-sexcentisque diris ac depositionibus Petrum Ful-
-lonem, ob ejus in eo hymno auctarium subjecerint;
-qui non omnino istos oderit, ac aversetur, tan-
-quam impios ac blasphemos, hæreticosque, qui
-nedum sanctam Trinitatem crucifixam blasphe-
-ment; verum etiam unum Christum Dei Filium,
-Nestorianeo errore in duos filios dividant?
-
-IX. Quod si reprehensi respondeant dicentes:
-Minime gentium, hymnum Trisagion in sanctam
-  </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="40,1220,960,1380">
-PATROL. GR. CXXXII.      38
-  </bloco>
-
-  <notas>
-- Alguns vocábulos gregos muito danificados ou incertos foram marcados por aproximação; palavras inteiras não foram omitidas.
-- Usei [ilegivel] para nenhuma palavra inteira; as poucas hesitações foram resolvidas por leitura contextual. BBOXs são aproximações em escala 0-1000.
-  </notas>
+  <!-- Rodapé -->
+  <bloco tipo="rodape" script="latino" bbox="150,965,350,985">PATROL. GR. CXXXII.</bloco>
+  <bloco tipo="rodape" script="latino" bbox="760,950,790,970">38</bloco>
+  <bloco tipo="rodape" script="latino" bbox="580,960,780,990">Digitized by Google</bloco>
 </pagina>
