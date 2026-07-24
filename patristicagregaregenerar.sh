@@ -19,7 +19,7 @@ mkdir -p "${LOG_DIR}"
 # Coleta arquivos (tratando ausência de matches)
 #0[3-9]
 shopt -s nullglob
-VOLUMES=(/homessddata/patristica/PG*.pdf)
+VOLUMES=(/homessddata/patristica/PG1[5-6]*.pdf)
 shopt -u nullglob
 
 if [ ${#VOLUMES[@]} -eq 0 ]; then
@@ -36,11 +36,9 @@ printf '%s
 ' "${VOLUMES[@]}" | \
 parallel --bar --jobs "${JOBS}" --halt soon,fail=10% \
   "python './main2.py' \
-      --algorithm '${ALGORITHM}' \
-      --llm-model '${LLM_MODEL}' \
+       --tesseract-cache-only --tesseract-cache-version \
       --procs '${PROCS}' \
       --omp-threads '${OMP_THREADS}' \
-      --verify-fix \
       --out '${LOG_DIR}/' \
       --lang 'migne' '{}' \
       > '${LOG_DIR}/{/}.log' 2>&1"

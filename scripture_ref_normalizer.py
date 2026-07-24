@@ -464,9 +464,10 @@ LIVROS_GR_TRANSLIT = [
 
 
 def _normalize(text: str) -> str:
-    """Lowercase + remove acentos + colapsa espaços."""
+    """Lowercase + remove acentos/pontuação de borda + colapsa espaços."""
     nfkd = unicodedata.normalize("NFKD", text)
     ascii_approx = "".join(c for c in nfkd if not unicodedata.combining(c))
+    ascii_approx = re.sub(r"[^\w\s]+", " ", ascii_approx, flags=re.UNICODE)
     return re.sub(r"\s+", " ", ascii_approx).strip().lower()
 
 
@@ -494,10 +495,13 @@ _BOOK_ABBREVIATIONS: dict[str, int] = {
     "gn": 0,
     "gen": 0,
     "ex": 1,
+    "exod": 1,
     "lv": 2,
     "lev": 2,
     "nm": 3,
+    "num": 3,
     "dt": 4,
+    "deut": 4,
     "jos": 5,
     "jz": 6,
     "rt": 7,
@@ -543,16 +547,26 @@ _BOOK_ABBREVIATIONS: dict[str, int] = {
     "zc": 44,
     "ml": 45,
     "mt": 46,
+    "mat": 46,
+    "matth": 46,
     "mc": 47,
+    "marc": 47,
     "lc": 48,
+    "luc": 48,
     "jo": 49,
+    "jean": 49,
+    "act": 50,
     "rm": 51,
+    "rom": 51,
     "1cor": 52,
     "2cor": 53,
     "gl": 54,
+    "gal": 54,
     "ef": 55,
+    "eph": 55,
     "fl": 56,
     "cl": 57,
+    "col": 57,
     "1ts": 58,
     "2ts": 59,
     "1tm": 60,
@@ -560,7 +574,9 @@ _BOOK_ABBREVIATIONS: dict[str, int] = {
     "tt": 62,
     "fm": 63,
     "hb": 64,
+    "heb": 64,
     "tg": 65,
+    "jac": 65,
     "1pe": 66,
     "2pe": 67,
     "1jo": 68,
@@ -575,9 +591,10 @@ _ORDINAL_ROMAN = {"1": "i", "2": "ii", "3": "iii"}
 # Prefixos neutros em construções "Livro de X" / "Evangelho de X" / "Carta de X"
 # São removidos antes do lookup para que "Livro de Daniel" → "Daniel".
 _STRIP_PREFIXES = re.compile(
-    r"^(?:livro\s+d[aeo]s?\s+|carta\s+d[aeo]s?\s+|epístola\s+d[aeo]s?\s+"
-    r"|epistola\s+d[aeo]s?\s+|evangelho\s+(?:segundo\s+|de\s+)?|gospel\s+of\s+"
-    r"|segundo\s+|liber\s+|prophetia\s+d[aeo]s?\s+)",
+    r"^(?:livro\s+d[aeo]s?\s+|carta\s+d[aeo]s?\s+|epistola\s+d[aeo]s?\s+"
+    r"|evangelho\s+(?:segundo\s+|de\s+)?|gospel\s+of\s+"
+    r"|segundo\s+|liber\s+|prophetia\s+d[aeo]s?\s+|epitre\s+aux?\s+"
+    r"|aux\s+|au\s+)",
     re.IGNORECASE,
 )
 
@@ -598,34 +615,54 @@ def _build_index() -> None:
         # Salmos — singular PT/LA/EN
         "salmo": 20,
         "psalm": 20,
+        "psalms": 20,
+        "psalmos": 20,
+        "psal": 20,
         "psalmo": 20,
         "psaume": 20,
+        "psaumes": 20,
         # Provérbios — singular
         "provérbio": 23,
         "proverbio": 23,
         "proverb": 23,
+        "proverbes": 23,
         # Cântico — forma curta
         "cantico": 25,
         "cântico": 25,
         "canticle": 25,
         "song of songs": 25,
+        "cantique des cantiques": 25,
         # Atos — formas curtas
         "atos": 50,
+        "ato": 50,
         "acta": 50,
         "acts": 50,
         "actus": 50,
+        "actes": 50,
+        "actes des apotres": 50,
+        "actes des apôtres": 50,
         # Evangelhos — pelo nome do evangelista sem "São"
         "mateus": 46,
+        "matthieu": 46,
         "matthaeus": 46,
+        "matth": 46,
         "matthew": 46,
         "marcos": 47,
         "marcus": 47,
         "mark": 47,
+        "marc": 47,
         "lucas": 48,
+        "luc": 48,
         "luke": 48,
         "joao": 49,
         "joãoo": 49,
+        "jean": 49,
         "john": 49,  # "joãoo" nunca ocorre mas garante
+        "saint matthieu": 46,
+        "saint marc": 47,
+        "saint luc": 48,
+        "saint jean": 49,
+        "s jacques": 65,
         # Apóstolo — forma genitiva latina
         "apostolorum": 50,
         # Profetas menores — formas alternativas PT
@@ -657,6 +694,7 @@ def _build_index() -> None:
         "hebraeus": 64,
         "hebraeos": 64,
         "hebrews": 64,
+        "hebreux": 64,
         # Epístolas numeradas — formas "1 X" e "2 X" sem prefixo romano
         "1 samuel": 8,
         "2 samuel": 9,
@@ -664,21 +702,55 @@ def _build_index() -> None:
         "2 reis": 11,
         "1 reges": 10,
         "2 reges": 11,
+        "1 rois": 8,
+        "2 rois": 9,
+        "3 rois": 10,
+        "4 rois": 11,
+        "i rois": 8,
+        "ii rois": 9,
+        "iii rois": 10,
+        "iv rois": 11,
         "1 cronicas": 12,
         "2 cronicas": 13,
         "1 macabeus": 21,
         "2 macabeus": 22,
         "1 corintios": 52,
         "2 corintios": 53,
+        "i corinthiens": 52,
+        "ii corinthiens": 53,
+        "1 corinthiens": 52,
+        "2 corinthiens": 53,
         "1 tessalonicenses": 58,
         "2 tessalonicenses": 59,
+        "i timothee": 60,
+        "ii timothee": 61,
+        "thessaloniciens": 58,
         "1 timoteo": 60,
         "2 timoteo": 61,
+        "1 timothee": 60,
+        "2 timothee": 61,
         "1 pedro": 66,
         "2 pedro": 67,
+        "1 pierre": 66,
+        "2 pierre": 67,
         "1 joao": 68,
         "2 joao": 69,
         "3 joao": 70,
+        "1 jean": 68,
+        "2 jean": 69,
+        "3 jean": 70,
+        "romains": 51,
+        "galates": 54,
+        "ephesiens": 55,
+        "colossiens": 57,
+        "tite": 62,
+        "genese": 0,
+        "exode": 1,
+        "deuteronome": 4,
+        "nombres": 3,
+        "isaie": 28,
+        "jeremie": 29,
+        "ezechiel": 32,
     }
     for alias, idx in aliases.items():
         key = _normalize(alias)
@@ -902,11 +974,27 @@ def lookup_book(phrase: str) -> tuple[str, int] | None:
     if key in _INDEX:
         return _INDEX[key]
     # Remove prefixo neutro e tenta de novo
-    stripped = _STRIP_PREFIXES.sub("", phrase).strip()
-    if stripped != phrase:
-        key2 = _normalize(stripped)
-        if key2 in _INDEX:
-            return _INDEX[key2]
+    key2 = _STRIP_PREFIXES.sub("", key).strip()
+    if key2 != key and key2 in _INDEX:
+        return _INDEX[key2]
+    return None
+
+
+def normalize_scripture_book_name(*candidates: str | None) -> str | None:
+    """
+    Tenta normalizar rótulos de livro bíblico vindos do pipeline.
+
+    Uso esperado:
+    - tente `book_raw` primeiro, pois ele preserva o impresso;
+    - use `book_norm` existente apenas como fallback/evidência auxiliar;
+    - devolva sempre a forma canônica PT-BR usada pelo projeto.
+    """
+    for candidate in candidates:
+        if not candidate:
+            continue
+        result = lookup_book(candidate)
+        if result:
+            return result[0]
     return None
 
 

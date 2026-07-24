@@ -46,6 +46,10 @@ DEFAULT_BASE_URL = "http://localhost:11434"
 DEFAULT_TOP_P = 0.9
 DEFAULT_TEMP = 0.1
 DEFAULT_BATCH_SIZE = 50
+DEFAULT_DB_TIMEOUT_SECONDS = 120.0
+DEFAULT_DB_BUSY_TIMEOUT_MS = 120000
+DEFAULT_DB_LOCK_RETRIES = 6
+DEFAULT_DB_LOCK_RETRY_DELAY = 1.0
 SYSTEM_PROMPT = """You are a precise OCR post-processor specializing in classical Latin and Ancient Greek manuscripts and printed editions.
 Your task: transcribe EXACTLY what you see in the image — a single line of text from a historical printed book.
 
@@ -68,10 +72,10 @@ DEFAULT_OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v
 # ---------------------------------------------------------------------------
 
 
-def connect_db(path: str) -> sqlite3.Connection:
-    con = sqlite3.connect(path, timeout=30.0)
+def connect_db(path: str, timeout: float = DEFAULT_DB_TIMEOUT_SECONDS) -> sqlite3.Connection:
+    con = sqlite3.connect(path, timeout=timeout)
     con.row_factory = sqlite3.Row
-    con.execute("PRAGMA busy_timeout = 30000")
+    con.execute(f"PRAGMA busy_timeout = {DEFAULT_DB_BUSY_TIMEOUT_MS}")
     journal_mode = con.execute("PRAGMA journal_mode = WAL").fetchone()[0]
     if str(journal_mode).lower() != "wal":
         con.close()
@@ -80,66 +84,149 @@ def connect_db(path: str) -> sqlite3.Connection:
     return con
 
 
-def claim_batch(db: str, batch_size: int) -> list[tuple]:
+def _is_locked_error(exc: sqlite3.OperationalError) -> bool:
+    return "database is locked" in str(exc).lower()
+
+
+def _rollback_quietly(conn: sqlite3.Connection) -> None:
+    try:
+        conn.rollback()
+    except sqlite3.Error:
+        pass
+
+
+def _run_db_with_retry(
+    conn: sqlite3.Connection,
+    operation,
+    *,
+    retries: int = DEFAULT_DB_LOCK_RETRIES,
+    delay: float = DEFAULT_DB_LOCK_RETRY_DELAY,
+):
+    last_exc: sqlite3.OperationalError | None = None
+    for attempt in range(retries):
+        try:
+            return operation()
+        except sqlite3.OperationalError as exc:
+            if not _is_locked_error(exc):
+                raise
+            last_exc = exc
+            _rollback_quietly(conn)
+            if attempt == retries - 1:
+                break
+            time.sleep(delay * (attempt + 1))
+    if last_exc is not None:
+        raise last_exc
+    raise RuntimeError("Falha inesperada ao executar operação SQLite.")
+
+
+def claim_batch(
+    db: str,
+    batch_size: int,
+    prefer_missing_backend: "BackendSpec | None" = None,
+    conn: sqlite3.Connection | None = None,
+) -> list[tuple]:
     """
     Reserva atomicamente até `batch_size` linhas pending → processing.
     Retorna lista de (id, line_image, tesseract_text).
-    Prioriza as linhas mais problemáticas primeiro, usando `agreement_score ASC`
-    e depois `id ASC` para desempate.
+    Quando `prefer_missing_backend` é informado, prioriza primeiro linhas sem
+    versão registrada para esse `provider/model` em `line_versions`.
+    Depois aplica `agreement_score ASC` e `id ASC` para desempate.
     Funciona com SQLite em transação explícita para manter a seleção atômica.
     """
-    conn = connect_db(db)
+    owns_conn = conn is None
+    conn = conn or connect_db(db)
     try:
-        conn.execute("BEGIN IMMEDIATE")
-        ids = [
-            r[0]
-            for r in conn.execute(
+        def _claim() -> list[tuple]:
+            conn.execute("BEGIN IMMEDIATE")
+            order_prefix = ""
+            params: list[object] = []
+            where_clause = "WHERE status = 'pending'"
+            if prefer_missing_backend is not None:
+                order_prefix = """
+                    CASE
+                        WHEN NOT EXISTS (
+                            SELECT 1
+                            FROM line_versions lv
+                            WHERE lv.line_id = lines.id
+                              AND lv.provider = ?
+                              AND lv.model = ?
+                        ) THEN 0
+                        ELSE 1
+                    END ASC,
                 """
-                SELECT id
-                FROM lines
-                WHERE status = 'pending'
-                ORDER BY IFNULL(agreement_score, 0) ASC,
-                         id ASC
-                LIMIT ?
+                params.extend(
+                    [prefer_missing_backend.provider, prefer_missing_backend.model]
+                )
+                where_clause = """
+                    WHERE status = 'pending'
+                       OR (
+                            status IN ('inferred', 'error')
+                            AND NOT EXISTS (
+                                SELECT 1
+                                FROM line_versions lv
+                                WHERE lv.line_id = lines.id
+                                  AND lv.provider = ?
+                                  AND lv.model = ?
+                            )
+                       )
+                """
+                params.extend(
+                    [prefer_missing_backend.provider, prefer_missing_backend.model]
+                )
+
+            params.append(batch_size)
+            ids = [
+                r[0]
+                for r in conn.execute(
+                    f"""
+                    SELECT id
+                    FROM lines
+                    {where_clause}
+                    ORDER BY {order_prefix}
+                             IFNULL(agreement_score, 0) ASC,
+                             id ASC
+                    LIMIT ?
+                    """,
+                    params,
+                ).fetchall()
+            ]
+            if not ids:
+                conn.commit()
+                return []
+            placeholders = ",".join("?" * len(ids))
+            conn.execute(
+                f"""
+                UPDATE lines
+                SET status = 'processing', updated_at = datetime('now')
+                WHERE id IN ({placeholders})
                 """,
-                (batch_size,),
-            ).fetchall()
-        ]
-        if not ids:
-            conn.commit()
-            return []
-        placeholders = ",".join("?" * len(ids))
-        conn.execute(
-            f"""
-            UPDATE lines
-            SET status = 'processing', updated_at = datetime('now')
-            WHERE id IN ({placeholders})
-            """,
-            ids,
-        )
-        rows = conn.execute(
-            f"""
-            SELECT id, image_path, bbox, line_image, tesseract_text
-            FROM lines
-            WHERE id IN ({placeholders})
-            ORDER BY IFNULL(agreement_score, 0) ASC,
-                     id ASC
-            """,
-            ids,
-        ).fetchall()
-        conn.commit()
-        return [
-            (
-                r["id"],
-                r["image_path"],
-                r["bbox"],
-                r["line_image"],
-                r["tesseract_text"],
+                ids,
             )
-            for r in rows
-        ]
+            rows = conn.execute(
+                f"""
+                SELECT id, image_path, bbox, line_image, tesseract_text
+                FROM lines
+                WHERE id IN ({placeholders})
+                """,
+                ids,
+            ).fetchall()
+            conn.commit()
+            rows_by_id = {r["id"]: r for r in rows}
+            return [
+                (
+                    rows_by_id[line_id]["id"],
+                    rows_by_id[line_id]["image_path"],
+                    rows_by_id[line_id]["bbox"],
+                    rows_by_id[line_id]["line_image"],
+                    rows_by_id[line_id]["tesseract_text"],
+                )
+                for line_id in ids
+            ]
+
+        return _run_db_with_retry(conn, _claim)
     finally:
-        conn.close()
+        if owns_conn:
+            conn.close()
 
 
 def save_result(
@@ -151,27 +238,36 @@ def save_result(
     status: str = "inferred",
     preserve_rejected: bool = False,
     text_column: str = "qwen_text",
+    conn: sqlite3.Connection | None = None,
 ) -> None:
-    conn = connect_db(db)
-    if preserve_rejected:
-        current_status = conn.execute(
-            "SELECT status FROM lines WHERE id=?",
-            (line_id,),
-        ).fetchone()
-        if current_status and current_status["status"] == "rejected":
-            status = "rejected"
-    if text_column not in {"qwen_text", "tesseract_text", "reviewed_text"}:
-        raise ValueError(f"Coluna de texto inválida: {text_column}")
-    conn.execute(
-        f"""
-        UPDATE lines
-        SET {text_column}=?, agreement_score=?, score_llm=?, status=?, updated_at=datetime('now')
-        WHERE id=?
-    """,
-        (consensus_text, score, score_llm, status, line_id),
-    )
-    conn.commit()
-    conn.close()
+    owns_conn = conn is None
+    conn = conn or connect_db(db)
+    try:
+        def _save() -> None:
+            final_status = status
+            if preserve_rejected:
+                current_status = conn.execute(
+                    "SELECT status FROM lines WHERE id=?",
+                    (line_id,),
+                ).fetchone()
+                if current_status and current_status["status"] == "rejected":
+                    final_status = "rejected"
+            if text_column not in {"qwen_text", "tesseract_text", "reviewed_text"}:
+                raise ValueError(f"Coluna de texto inválida: {text_column}")
+            conn.execute(
+                f"""
+                UPDATE lines
+                SET {text_column}=?, agreement_score=?, score_llm=?, status=?, updated_at=datetime('now')
+                WHERE id=?
+            """,
+                (consensus_text, score, score_llm, final_status, line_id),
+            )
+            conn.commit()
+
+        _run_db_with_retry(conn, _save)
+    finally:
+        if owns_conn:
+            conn.close()
 
 
 def reference_text_for_row(row: sqlite3.Row, reference_mode: str) -> str:
@@ -253,15 +349,28 @@ def ensure_score_llm_column(db: str) -> None:
     conn.close()
 
 
-def increment_runs(db: str, line_id: int) -> None:
+def increment_runs(
+    db: str,
+    line_id: int,
+    conn: sqlite3.Connection | None = None,
+) -> None:
     """Incrementa o contador `runs` para a linha especificada."""
-    conn = connect_db(db)
-    conn.execute(
-        "UPDATE lines SET runs = IFNULL(runs,0) + 1, updated_at = datetime('now') WHERE id = ?",
-        (line_id,),
-    )
-    conn.commit()
-    conn.close()
+    owns_conn = conn is None
+    conn = conn or connect_db(db)
+    try:
+        _run_db_with_retry(
+            conn,
+            lambda: (
+                conn.execute(
+                    "UPDATE lines SET runs = IFNULL(runs,0) + 1, updated_at = datetime('now') WHERE id = ?",
+                    (line_id,),
+                ),
+                conn.commit(),
+            ),
+        )
+    finally:
+        if owns_conn:
+            conn.close()
 
 
 @dataclass(frozen=True)
@@ -288,6 +397,11 @@ def parse_backend_spec(spec: str) -> BackendSpec:
         except ValueError:
             weight = 1.0
     return BackendSpec(provider, model, weight)
+
+
+def parse_backend_identity(spec: str) -> BackendSpec:
+    backend = parse_backend_spec(spec)
+    return BackendSpec(backend.provider, backend.model, 1.0)
 
 
 def normalize_for_consensus(text: str) -> str:
@@ -344,38 +458,47 @@ def save_line_version(
     text: str,
     source_score: float | None = None,
     meta_json: str | None = None,
+    conn: sqlite3.Connection | None = None,
 ) -> None:
-    conn = connect_db(db)
-    text_hash = hashlib.sha256(text.encode("utf-8")).hexdigest()
-    exists = conn.execute(
-        """
-        SELECT 1 FROM line_versions
-        WHERE run_id = ? AND line_id = ? AND provider = ? AND model = ? AND text_hash = ?
-        LIMIT 1
-        """,
-        (run_id, line_id, provider, model, text_hash),
-    ).fetchone()
-    if exists:
-        conn.close()
-        return
-    conn.execute(
-        """
-        UPDATE line_versions
-        SET is_current = 0, updated_at = datetime('now')
-        WHERE line_id = ? AND provider = ? AND model = ? AND is_current = 1
-        """,
-        (line_id, provider, model),
-    )
-    conn.execute(
-        """
-        INSERT OR IGNORE INTO line_versions
-            (run_id, line_id, provider, model, text_content, text_hash, source_score, is_current, meta_json)
-        VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?)
-        """,
-        (run_id, line_id, provider, model, text, text_hash, source_score, meta_json),
-    )
-    conn.commit()
-    conn.close()
+    owns_conn = conn is None
+    conn = conn or connect_db(db)
+    try:
+        text_hash = hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+        def _save_version() -> None:
+            exists = conn.execute(
+                """
+                SELECT 1 FROM line_versions
+                WHERE run_id = ? AND line_id = ? AND provider = ? AND model = ? AND text_hash = ?
+                LIMIT 1
+                """,
+                (run_id, line_id, provider, model, text_hash),
+            ).fetchone()
+            if exists:
+                conn.commit()
+                return
+            conn.execute(
+                """
+                UPDATE line_versions
+                SET is_current = 0, updated_at = datetime('now')
+                WHERE line_id = ? AND provider = ? AND model = ? AND is_current = 1
+                """,
+                (line_id, provider, model),
+            )
+            conn.execute(
+                """
+                INSERT OR IGNORE INTO line_versions
+                    (run_id, line_id, provider, model, text_content, text_hash, source_score, is_current, meta_json)
+                VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?)
+                """,
+                (run_id, line_id, provider, model, text, text_hash, source_score, meta_json),
+            )
+            conn.commit()
+
+        _run_db_with_retry(conn, _save_version)
+    finally:
+        if owns_conn:
+            conn.close()
 
 
 def build_tesseract_config(tessdata_dir: str | None = None) -> str:
@@ -737,6 +860,24 @@ def call_ollama_vision(
         body = json.loads(resp.read().decode("utf-8"))
     return body.get("message", {}).get("content", "").strip()
 
+def log_openai_error(response: requests.Response) -> None:
+    try:
+        body = response.json()
+    except ValueError:
+        body = response.text
+
+    interesting_headers = {
+        key: value
+        for key, value in response.headers.items()
+        if key.lower().startswith("x-ratelimit")
+        or key.lower() in {"retry-after", "x-request-id"}
+    }
+
+    print(
+        f"[HTTP {response.status_code}] "
+        f"body={body!r} headers={interesting_headers!r}"
+    )
+
 
 def openai_process_image(
     image_bytes: bytes,
@@ -782,7 +923,7 @@ def openai_process_image(
         payload["top_p"] = top_p
     else:
         payload["reasoning_effort"] = "medium" if reprocess else "low"
-        payload["service_tier"] = "flex"
+        # payload["service_tier"] = "flex"
         if reprocess:
             timeout = 1200
 
@@ -796,6 +937,10 @@ def openai_process_image(
             data=json.dumps(payload),
             timeout=timeout,
         )
+
+    if r.status_code != 200:
+        log_openai_error(r)
+
     r.raise_for_status()
     return r.json()["choices"][0]["message"]["content"]
 
@@ -820,9 +965,11 @@ def worker(args: dict) -> None:
     worker_id = args["worker_id"]
     run_id = args["run_id"]
     should_append_extra_context = args.get("should_append_extra_context", False)
+    prefer_missing_backend = args.get("prefer_missing_backend")
 
     prefix = f"[W{worker_id}]"
     processed = 0
+    conn = connect_db(db)
 
     def crop_from_preprocessed(img: np.ndarray, bbox_json: str) -> bytes:
         """Crop bbox from preprocessed (rotated) image and return PNG bytes."""
@@ -848,112 +995,132 @@ def worker(args: dict) -> None:
         pil_img.save(buf, format="PNG")
         return buf.getvalue()
 
-    while True:
-        batch = claim_batch(db, batch_size)
-        if not batch:
-            print(f"{prefix} Sem mais linhas. Encerrando ({processed} processadas).")
-            break
+    try:
+        while True:
+            batch = claim_batch(
+                db,
+                batch_size,
+                prefer_missing_backend=prefer_missing_backend,
+                conn=conn,
+            )
+            if not batch:
+                print(f"{prefix} Sem mais linhas. Encerrando ({processed} processadas).")
+                break
 
-        for line_id, image_path, bbox, line_image, tesseract_text in batch:
-            try:
-                # incrementa contador de tentativas antes de cada passagem pela LLM
+            for line_id, image_path, bbox, line_image, tesseract_text in batch:
                 try:
-                    increment_runs(db, line_id)
-                except Exception:
-                    # não deve bloquear o processamento se increment falhar
-                    pass
+                    # incrementa contador de tentativas antes de cada passagem pela LLM
+                    try:
+                        increment_runs(db, line_id, conn=conn)
+                    except Exception:
+                        # não deve bloquear o processamento se increment falhar
+                        pass
 
-                context: str|None = None
+                    context: str|None = None
 
-                image_path = Path(image_path) if image_path else None
+                    image_path = Path(image_path) if image_path else None
 
-                if image_path and should_append_extra_context:
-                    volume_path = image_path.parent.parent
-                    txt_path = txt_path_for_image(image_path, volume_path / "text")
+                    if image_path and should_append_extra_context:
+                        volume_path = image_path.parent.parent
+                        txt_path = txt_path_for_image(image_path, volume_path / "text")
 
-                    print(txt_path)
+                        print(txt_path)
 
-                    if txt_path.exists():
-                        with open(txt_path, "r", encoding="utf-8") as f:
-                            context = f.read()
+                        if txt_path.exists():
+                            with open(txt_path, "r", encoding="utf-8") as f:
+                                context = f.read()
 
-                # Prefer crop from original preprocessed image; fallback to stored line_image bytes
-                cropped_bytes = None
-                try:
-                    if image_path:
-                        img = cv2.imread(str(image_path))
-                        if img is not None:
-                            _, img_proc = preprocess_image(img)
-                            try:
-                                cropped_bytes = crop_from_preprocessed(img_proc, bbox)
-                            except Exception:
-                                cropped_bytes = None
-                except Exception as e:
-                    print(
-                        f"{prefix} warning: unable to crop from original image id={line_id}: {e}"
-                    )
-
-                to_send = cropped_bytes if cropped_bytes is not None else line_image
-
-                user_prompt = USER_PROMPT
-
-                if context and should_append_extra_context:
-                    context = unicodedata.normalize("NFC", context)
-                    user_prompt = f"PAGE CONTEXT: <context>\n{context}\n</context>\nTranscribe only the image:"
-
-                versions: list[dict] = []
-                for backend in backends:
-                    backend_weight = backend.weight
-                    if backend.provider == "ollama":
-                        raw = call_ollama_vision(
-                            to_send, backend.model, base_url, user_prompt=user_prompt
+                    # Prefer crop from original preprocessed image; fallback to stored line_image bytes
+                    cropped_bytes = None
+                    try:
+                        if image_path:
+                            img = cv2.imread(str(image_path))
+                            if img is not None:
+                                _, img_proc = preprocess_image(img)
+                                try:
+                                    cropped_bytes = crop_from_preprocessed(img_proc, bbox)
+                                except Exception:
+                                    cropped_bytes = None
+                    except Exception as e:
+                        print(
+                            f"{prefix} warning: unable to crop from original image id={line_id}: {e}"
                         )
-                    elif backend.provider == "openai":
-                        raw = openai_process_image(
-                            image_bytes=to_send,
-                            model=backend.model,
-                            base_url=openai_base_url,
-                            api_key=openai_api_key,
-                            user_prompt=user_prompt,
+
+                    to_send = cropped_bytes if cropped_bytes is not None else line_image
+
+                    user_prompt = USER_PROMPT
+
+                    if context and should_append_extra_context:
+                        context = unicodedata.normalize("NFC", context)
+                        user_prompt = f"PAGE CONTEXT: <context>\n{context}\n</context>\nTranscribe only the image:"
+
+                    versions: list[dict] = []
+                    for backend in backends:
+                        backend_weight = backend.weight
+                        if backend.provider == "ollama":
+                            raw = call_ollama_vision(
+                                to_send, backend.model, base_url, user_prompt=user_prompt
+                            )
+                        elif backend.provider == "openai":
+                            raw = openai_process_image(
+                                image_bytes=to_send,
+                                model=backend.model,
+                                base_url=openai_base_url,
+                                api_key=openai_api_key,
+                                user_prompt=user_prompt,
+                            )
+                        else:
+                            raise ValueError(f"backend desconhecido: {backend.provider}")
+                        text = strip_think(raw)
+                        text = unicodedata.normalize("NFC", text)
+                        versions.append(
+                            {
+                                "provider": backend.provider,
+                                "model": backend.model,
+                                "text": text,
+                                "score": agreement_score(tesseract_text or "", text),
+                                "weight": backend_weight,
+                            }
                         )
-                    else:
-                        raise ValueError(f"backend desconhecido: {backend.provider}")
-                    text = strip_think(raw)
-                    text = unicodedata.normalize("NFC", text)
-                    versions.append(
-                        {
-                            "provider": backend.provider,
-                            "model": backend.model,
-                            "text": text,
-                            "score": agreement_score(tesseract_text or "", text),
-                            "weight": backend_weight,
-                        }
-                    )
-                    save_line_version(
+                        save_line_version(
+                            db,
+                            run_id,
+                            line_id,
+                            backend.provider,
+                            backend.model,
+                            text,
+                            source_score=versions[-1]["score"],
+                            meta_json=json.dumps({"user_prompt": user_prompt[:200]}),
+                            conn=conn,
+                        )
+                    qwen_text, score = consensus_from_versions(versions, tesseract_text or "")
+                    score_llm = llm_best_score(versions, tesseract_text or "")
+                    save_result(
                         db,
-                        run_id,
                         line_id,
-                        backend.provider,
-                        backend.model,
-                        text,
-                        source_score=versions[-1]["score"],
-                        meta_json=json.dumps({"user_prompt": user_prompt[:200]}),
+                        qwen_text,
+                        score,
+                        score_llm,
+                        "inferred",
+                        conn=conn,
                     )
-                qwen_text, score = consensus_from_versions(versions, tesseract_text or "")
-                score_llm = llm_best_score(versions, tesseract_text or "")
-                save_result(db, line_id, qwen_text, score, score_llm, "inferred")
-                marker = "✓" if score >= 0.8 else ("△" if score >= 0.5 else "✗")
-                print(
-                    f"{prefix} id={line_id} score={score:.2f} score_llm={score_llm:.2f} {marker}  "
-                    f"tess={repr((tesseract_text or '')[:64])}  consensus={repr(qwen_text[:64])}"
-                )
-            except Exception as e:
-                print(f"{prefix} ERRO id={line_id}: {e}")
-                save_result(db, line_id, "", 0.0, 0.0, "error")
+                    marker = "✓" if score >= 0.8 else ("△" if score >= 0.5 else "✗")
+                    print(
+                        f"{prefix} id={line_id} score={score:.2f} score_llm={score_llm:.2f} {marker}  "
+                        f"tess={repr((tesseract_text or '')[:64])}  consensus={repr(qwen_text[:64])}"
+                    )
+                except Exception as e:
+                    print(f"{prefix} ERRO id={line_id}: {e}")
+                    try:
+                        save_result(db, line_id, "", 0.0, 0.0, "error", conn=conn)
+                    except Exception as save_exc:
+                        print(f"{prefix} ERRO ao salvar status=error id={line_id}: {save_exc}")
 
-            processed += 1
-            if delay > 0:
-                time.sleep(delay)
+                processed += 1
+                if delay > 0:
+                    time.sleep(delay)
+    finally:
+        conn.close()
 
 
 # ---------------------------------------------------------------------------
@@ -1032,6 +1199,14 @@ def main() -> None:
         "--run-id",
         default=None,
         help="Identificador opcional da execução para registrar versões em line_versions.",
+    )
+    parser.add_argument(
+        "--prefer-missing-backend",
+        default=None,
+        help=(
+            "Prioriza linhas pending que ainda não possuem versão em "
+            "line_versions para o backend exato provider:model informado."
+        ),
     )
     args = parser.parse_args()
     run_id = args.run_id or f"run-{uuid.uuid4().hex}"
@@ -1157,6 +1332,11 @@ def _run_worker_pass(args: argparse.Namespace, run_id: str, pass_label: str, lim
             "batch_size": args.batch_size,
             "worker_id": i,
             "run_id": run_id,
+            "prefer_missing_backend": (
+                parse_backend_identity(args.prefer_missing_backend)
+                if args.prefer_missing_backend
+                else None
+            ),
         }
         for i in range(args.jobs)
     ]

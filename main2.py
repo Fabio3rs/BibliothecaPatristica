@@ -460,17 +460,11 @@ def preprocess_adaptive_soft(
     block_size: int = DEFAULT_TESSERACT_BLOCK_SIZE,
     c_value: int = DEFAULT_TESSERACT_C_VALUE,
 ) -> np.ndarray:
-    gray = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2GRAY)
-    clahe = cv2.createCLAHE(clipLimit=clahe_clip, tileGridSize=(8, 8))
-    gray = clahe.apply(gray)
-    return cv2.adaptiveThreshold(
-        gray,
-        255,
-        cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
-        cv2.THRESH_BINARY,
-        block_size,
-        c_value,
-    )
+    # Tesseract já possui binarização interna. Aqui mantemos apenas deskew/rotate
+    # para evitar que thresholds externos destruam páginas de duas colunas.
+    _, rotated = preprocess_image_tesseract(img_bgr)
+    gray = cv2.cvtColor(rotated, cv2.COLOR_BGR2GRAY)
+    return gray
 
 
 def _normalize_tesseract_preprocess_mode(mode: str) -> str:
@@ -556,30 +550,8 @@ def preprocess_image_tesseract(img, border_size=50):
         img, M, (w, h), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE
     )
 
-    _, thresh = cv2.threshold(rotated, 100, 255, cv2.THRESH_BINARY)
-
-    # # Adiciona a borda branca (o valor [255, 255, 255] é o branco em BGR)
-    # processed = cv2.copyMakeBorder(
-    #     thresh,
-    #     top=border_size,
-    #     bottom=border_size,
-    #     left=border_size,
-    #     right=border_size,
-    #     borderType=cv2.BORDER_CONSTANT,
-    #     value=[255, 255, 255],
-    # )
-
-    # rotated = cv2.copyMakeBorder(
-    #     rotated,
-    #     top=border_size,
-    #     bottom=border_size,
-    #     left=border_size,
-    #     right=border_size,
-    #     borderType=cv2.BORDER_CONSTANT,
-    #     value=[255, 255, 255],
-    # )
-
-    return thresh, rotated
+    # Mantemos o retorno legado em 2 posições para não quebrar callers.
+    return rotated, rotated
 
 
 def auto_rotate_image(img: np.ndarray):
@@ -1769,6 +1741,19 @@ def verificar_padrao_blocos(txt: str) -> bool:
     return True
 
 
+def identificar_idioma_tesseract(text: str, lang_inicial: str = "migne"):
+    """
+    Lê o texto e identifica os modelos
+    """
+    # Implementação da lógica de identificação de idioma
+
+    if text.find("siriaco") != -1:
+        if lang_inicial.find("syr") == -1:
+            lang_inicial += "+syr"
+
+    return lang_inicial
+
+
 def verify_page(
     img_path: Path,
     txt_dir: Path,
@@ -1816,7 +1801,7 @@ def verify_page(
     tesseractres = run_tesseract_cached(
         tesseract_db,
         img_path,
-        lang=lang,
+        lang=identificar_idioma_tesseract(txt, lang_inicial=lang),
         preprocess_mode=tesseract_preprocess_mode,
         clahe_clip=tesseract_clahe_clip,
         block_size=tesseract_block_size,
@@ -1843,7 +1828,7 @@ def verify_page(
 
     # return True  # desativado de momento, quero apenas rodar de novo os com muito token ilegível
     if (
-        overlap.recall_ratio < 0.3 and overlap.overlap_ratio < 0.2
+        overlap.recall_ratio < 0.5 and overlap.overlap_ratio < 0.6
     ):  # LLM detectou muito texto latino, mas Tesseract quase nada → provável omissão ou alucinação
         # Debug prints para identificar o texto dos dois lados e o arquivo no terminal:
 
@@ -2218,10 +2203,11 @@ def run_tesseract_cached(
         c_value=c_value,
     )
 
-    # Fallback: se a saída parecer muito curta, tenta sem pré-processamento
-    if len(result.strip()) < 50:
+    # Fallback: páginas densas podem degradar muito com o preprocessamento
+    # adaptativo sem chegar a "quase vazio". Nesses casos, compara com OCR raw.
+    if len(result.strip()) < 1000:
         alt = ocr_tesseract_raw(image_path, lang=lang)
-        if len(alt.strip()) > len(result.strip()) * 1.5:
+        if len(alt.strip()) > max(len(result.strip()) * 1.5, len(result.strip()) + 200):
             print(
                 f"[TESS] Fallback raw melhor para {image_path.name} (len {len(alt)} vs {len(result)})"
             )
@@ -2233,6 +2219,107 @@ def run_tesseract_cached(
     )
     con.commit()
     return result
+
+
+def version_tesseract_result(
+    img_path: Path,
+    lang: str,
+    text_content: str,
+    *,
+    prompt_key: str,
+    reprocess_reason: str | None = None,
+    duration_ms: float | None = None,
+) -> None:
+    """Versiona um resultado do Tesseract no ocr_versions.db."""
+    _vdb = ocr_versions_db.open_versions_db()
+    try:
+        volume_id = infer_volume_id(img_path) or "unknown"
+        page_num = parse_page_num_from_filename(img_path) or 0
+        _img_hash = ocr_versions_db.sha256_file(img_path)
+        _ev_id = ocr_versions_db.get_or_create_engine_version(
+            _vdb,
+            engine="tesseract",
+            model=lang,
+            prompt_key=prompt_key,
+            system_prompt="",
+            user_prompt="",
+        )
+        result_id = ocr_versions_db.record_ocr_result(
+            _vdb,
+            volume_id=volume_id,
+            page_num=page_num,
+            image_path=img_path,
+            engine_version_id=_ev_id,
+            text_content=text_content,
+            reprocess_reason=reprocess_reason,
+            duration_ms=duration_ms,
+            image_hash=_img_hash,
+        )
+        if prompt_key == "tesseract_cache":
+            _vdb.execute(
+                "UPDATE ocr_results SET is_current = 0, updated_at = datetime('now') WHERE id = ?",
+                (result_id,),
+            )
+            prev = _vdb.execute(
+                """
+                SELECT id
+                  FROM ocr_results
+                 WHERE volume_id = ?
+                   AND page_num = ?
+                   AND id != ?
+                 ORDER BY created_at DESC, id DESC
+                 LIMIT 1
+                """,
+                (volume_id, page_num, result_id),
+            ).fetchone()
+            if prev is not None:
+                _vdb.execute(
+                    "UPDATE ocr_results SET is_current = 1, updated_at = datetime('now') WHERE id = ?",
+                    (prev["id"],),
+                )
+            _vdb.commit()
+    finally:
+        _vdb.close()
+
+
+def warm_tesseract_cache_one(
+    img_path: Path,
+    lang: str,
+    *,
+    force: bool = False,
+    preprocess_mode: str = DEFAULT_TESSERACT_PREPROCESS_MODE,
+    clahe_clip: float = DEFAULT_TESSERACT_CLAHE_CLIP,
+    block_size: int = DEFAULT_TESSERACT_BLOCK_SIZE,
+    c_value: int = DEFAULT_TESSERACT_C_VALUE,
+    version_cache: bool = False,
+) -> str:
+    """Gera/aquece o cache do Tesseract para uma imagem."""
+    tesseract_db = open_tesseract_cache_db()
+    init_tesseract_cache(tesseract_db)
+    try:
+        txt = run_tesseract_cached(
+            tesseract_db,
+            img_path,
+            lang=lang,
+            force=force,
+            preprocess_mode=preprocess_mode,
+            clahe_clip=clahe_clip,
+            block_size=block_size,
+            c_value=c_value,
+        )
+    finally:
+        tesseract_db.close()
+
+    if version_cache:
+        version_tesseract_result(
+            img_path,
+            lang,
+            txt,
+            prompt_key="tesseract_cache",
+            reprocess_reason="tesseract_cache_warm",
+        )
+
+    return txt
 
 
 def ocr_images_to_text(
@@ -2282,13 +2369,15 @@ def ocr_images_to_text(
                 + "\nAtenção as colunas e ao gutter (se houver), identificação A,B,C,D devem ficar em seu próprio bloco de nota_marginal. Cuidado: NÃO coloque a identificação das seções dentro do texto das colunas.",
             )
         else:
-            txt = ocr_tesseract(
+            txt = warm_tesseract_cache_one(
                 img_path,
                 lang=lang,
+                force=False,
                 preprocess_mode=tesseract_preprocess_mode,
                 clahe_clip=tesseract_clahe_clip,
                 block_size=tesseract_block_size,
                 c_value=tesseract_c_value,
+                version_cache=False,
             )
 
         # salva o txt da página
@@ -2521,11 +2610,12 @@ def _ocr_one(
                 tesseract_db = open_tesseract_cache_db()
                 init_tesseract_cache(tesseract_db)
 
+                identified_lang = identificar_idioma_tesseract(txtoriginal, lang_inicial=lang)
                 tesseractres = strip_bidi_markers(
                     run_tesseract_cached(
                         tesseract_db,
                         img_path,
-                        lang=lang,
+                        lang=identified_lang,
                         preprocess_mode=tesseract_preprocess_mode,
                         clahe_clip=tesseract_clahe_clip,
                         block_size=tesseract_block_size,
@@ -2535,28 +2625,13 @@ def _ocr_one(
 
                 # --- Versionar resultado Tesseract intermediário ---
                 try:
-                    _vdb = ocr_versions_db.open_versions_db()
-                    _img_hash = ocr_versions_db.sha256_file(img_path)
-                    _tess_ev_id = ocr_versions_db.get_or_create_engine_version(
-                        _vdb,
-                        engine="tesseract",
-                        model=lang,
+                    version_tesseract_result(
+                        img_path,
+                        identified_lang,
+                        tesseractres,
                         prompt_key="tesseract_cache",
-                        system_prompt="",
-                        user_prompt="",
-                    )
-                    ocr_versions_db.record_ocr_result(
-                        _vdb,
-                        volume_id=infer_volume_id(img_path) or "unknown",
-                        page_num=parse_page_num_from_filename(img_path) or 0,
-                        image_path=img_path,
-                        engine_version_id=_tess_ev_id,
-                        text_content=tesseractres,
                         reprocess_reason="tesseract_intermediate",
-                        duration_ms=None,
-                        image_hash=_img_hash,
                     )
-                    _vdb.close()
                 except Exception as _ve:
                     print(
                         f"[VERSIONING] Tesseract intermediário — erro ignorado: {_ve}"
@@ -2629,52 +2704,19 @@ def _ocr_one(
                     f"[{time.strftime('%H:%M:%S')}] {img_path.name} — LLM ({algorithm}) OCR: {t5 - t4:.3f}s"
                 )
         else:
-            # leitura
             t0 = time.time()
-            with Image.open(img_path) as pil_im:
-                im_bgr = cv2.cvtColor(np.array(pil_im), cv2.COLOR_RGB2BGR)
-            t1 = time.time()
-            print(
-                f"[{time.strftime('%H:%M:%S')}] {img_path.name} — leitura+conversão: {t1 - t0:.3f}s"
-            )
-
-            # pré-processamento
-            t2 = time.time()
-            im_pre = _preprocess_tesseract_image(
-                im_bgr,
+            txt = warm_tesseract_cache_one(
+                img_path,
+                lang=lang,
+                force=reprocess,
                 preprocess_mode=tesseract_preprocess_mode,
                 clahe_clip=tesseract_clahe_clip,
                 block_size=tesseract_block_size,
                 c_value=tesseract_c_value,
+                version_cache=False,
             )
-
-            border_size = 50
-
-            # Adiciona a borda branca
-            im_pre = cv2.copyMakeBorder(
-                im_pre,
-                top=border_size,
-                bottom=border_size,
-                left=border_size,
-                right=border_size,
-                borderType=cv2.BORDER_CONSTANT,
-                value=[255, 255, 255],
-            )
-
-            t3 = time.time()
             print(
-                f"[{time.strftime('%H:%M:%S')}] {img_path.name} — preprocessamento: {t3 - t2:.3f}s"
-            )
-
-            # OCR
-            t4 = time.time()
-            pil_pre = Image.fromarray(im_pre)
-            txt = pytesseract.image_to_string(
-                pil_pre, lang=lang
-            )  # opcional: passa config se quiser
-            t5 = time.time()
-            print(
-                f"[{time.strftime('%H:%M:%S')}] {img_path.name} — OCR: {t5 - t4:.3f}s"
+                f"[{time.strftime('%H:%M:%S')}] {img_path.name} — Tesseract cache/OCR: {time.time() - t0:.3f}s"
             )
 
         # salvar
@@ -2817,6 +2859,71 @@ def ocr_images_to_text_parallel(
 
     # if save_all_text_path:
     #    save_all_text_path.write_text("\n\n".join(all_text_chunks), encoding="utf-8")
+
+
+def _warm_tesseract_cache_worker(
+    img_path: Path,
+    lang: str,
+    force: bool = False,
+    tesseract_preprocess_mode: str = DEFAULT_TESSERACT_PREPROCESS_MODE,
+    tesseract_clahe_clip: float = DEFAULT_TESSERACT_CLAHE_CLIP,
+    tesseract_block_size: int = DEFAULT_TESSERACT_BLOCK_SIZE,
+    tesseract_c_value: int = DEFAULT_TESSERACT_C_VALUE,
+    version_cache: bool = False,
+) -> tuple[Path, int]:
+    txt = warm_tesseract_cache_one(
+        img_path,
+        lang=lang,
+        force=force,
+        preprocess_mode=tesseract_preprocess_mode,
+        clahe_clip=tesseract_clahe_clip,
+        block_size=tesseract_block_size,
+        c_value=tesseract_c_value,
+        version_cache=version_cache,
+    )
+    print(
+        f"[{time.strftime('%H:%M:%S')}] [TESSCACHE] {img_path.name} — text tamanho: {len(txt)}"
+    )
+    return img_path, len(txt)
+
+
+def warm_tesseract_cache_parallel(
+    images: List[Path],
+    lang: str = DEFAULT_LANG,
+    processes: int = 4,
+    omp_threads_per_proc: int = 2,
+    chunksize: int = 2,
+    maxtasksperchild: int = 1000,
+    force: bool = False,
+    tesseract_preprocess_mode: str = DEFAULT_TESSERACT_PREPROCESS_MODE,
+    tesseract_clahe_clip: float = DEFAULT_TESSERACT_CLAHE_CLIP,
+    tesseract_block_size: int = DEFAULT_TESSERACT_BLOCK_SIZE,
+    tesseract_c_value: int = DEFAULT_TESSERACT_C_VALUE,
+    version_cache: bool = False,
+) -> list[tuple[Path, int]]:
+    global _process_counter, _process_index_map
+    with _process_counter_lock:
+        _process_counter.value = 0
+        _process_index_map.clear()
+
+    ctx = mp.get_context("fork" if sys.platform != "win32" else "spawn")
+    with ctx.Pool(
+        processes=processes,
+        initializer=_init_omp_env,
+        initargs=(omp_threads_per_proc,),
+        maxtasksperchild=maxtasksperchild,
+    ) as pool:
+        worker = partial(
+            _warm_tesseract_cache_worker,
+            lang=lang,
+            force=force,
+            tesseract_preprocess_mode=tesseract_preprocess_mode,
+            tesseract_clahe_clip=tesseract_clahe_clip,
+            tesseract_block_size=tesseract_block_size,
+            tesseract_c_value=tesseract_c_value,
+            version_cache=version_cache,
+        )
+        return list(pool.imap_unordered(worker, images, chunksize=chunksize))
 
 
 def verify_all_parallel(
@@ -3192,6 +3299,24 @@ def main():
         default=DEFAULT_TESSERACT_C_VALUE,
         help="Valor C do adaptiveThreshold.",
     )
+    ap.add_argument(
+        "--tesseract-cache-only",
+        action="store_true",
+        default=False,
+        help="Aquece apenas o cache do Tesseract em data/tesseract.db, sem gerar .txt final.",
+    )
+    ap.add_argument(
+        "--tesseract-cache-force",
+        action="store_true",
+        default=False,
+        help="Força recomputar o cache do Tesseract mesmo quando já existe entrada.",
+    )
+    ap.add_argument(
+        "--tesseract-cache-version",
+        action="store_true",
+        default=False,
+        help="Ao aquecer o cache, também versiona o resultado no ocr_versions.db com prompt_key=tesseract_cache.",
+    )
     args = ap.parse_args()
 
     pdf_path = Path(args.pdf).resolve()
@@ -3257,6 +3382,25 @@ def main():
     print(f"Total de imagens: {len(images)}")
 
     concat_path = (base_out / "texto_extraido.txt") if args.concat else None
+
+    if args.tesseract_cache_only:
+        print("Aquecendo cache do Tesseract...")
+        warm_tesseract_cache_parallel(
+            images,
+            lang=args.lang,
+            processes=args.procs,
+            omp_threads_per_proc=args.omp_threads,
+            chunksize=args.chunksize,
+            maxtasksperchild=args.maxtasksperchild,
+            force=args.tesseract_cache_force,
+            tesseract_preprocess_mode=args.tesseract_preprocess_mode,
+            tesseract_clahe_clip=args.tesseract_clahe_clip,
+            tesseract_block_size=args.tesseract_block_size,
+            tesseract_c_value=args.tesseract_c_value,
+            version_cache=args.tesseract_cache_version,
+        )
+        print("Cache do Tesseract concluído.")
+        return
 
     if args.verify_judge_llm:
         print("Rodando avaliação com LLM judge (gating determinístico)...")

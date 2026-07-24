@@ -18,7 +18,7 @@ mkdir -p "${LOG_DIR}"
 
 # Coleta arquivos (tratando ausência de matches)
 shopt -s nullglob
-VOLUMES=(/homessddata/patristica/PL07*.pdf)
+VOLUMES=(/homessddata/patristica/PL*.pdf)
 shopt -u nullglob
 
 if [ ${#VOLUMES[@]} -eq 0 ]; then
@@ -39,9 +39,9 @@ parallel --bar --jobs "${JOBS}" --halt soon,fail=10% \
       --llm-model '${LLM_MODEL}' \
       --procs '${PROCS}' \
       --omp-threads '${OMP_THREADS}' \
-      --verify \
+      --verify-fix \
       --out '${LOG_DIR}/' \
-      --lang 'lat+grc' '{}' \
+      --lang 'migne' '{}' \
       > '${LOG_DIR}/{/}.log' 2>&1"
 
 echo "" 
