@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sqlite3
 import sys
 from pathlib import Path
@@ -68,6 +69,23 @@ SCRIPTURE_REF_ROLES = {
     "pericope",
     "concordance_component",
 }
+EDITORIAL_SCRIPTURE_BOOK_RE = re.compile(
+    r"^(?:index|indices|table|tables|ordo|elenchus|cap\.?)\b",
+    re.IGNORECASE,
+)
+SCRIPTURE_SECTION_SPECIAL_HEADINGS = (
+    "LOCA EX PSALMIS",
+    "VARIANTIA IN PSALTERIIS",
+)
+
+
+class ValidationErrors(ValueError):
+    def __init__(self, errors: list[str]) -> None:
+        self.errors = errors
+        count = len(errors)
+        suffix = "" if count == 1 else "s"
+        joined = "\n".join(f"- {error}" for error in errors)
+        super().__init__(f"{count} validation error{suffix}:\n{joined}")
 
 
 def load_payload(path: Path | None) -> dict[str, Any]:
@@ -146,6 +164,58 @@ def require_enum(value: Any, label: str, allowed: set[str]) -> str:
     return text
 
 
+def normalize_schema_version(value: Any) -> int:
+    if value == 1:
+        return 1
+    if isinstance(value, float) and value.is_integer() and int(value) == 1:
+        return 1
+    if isinstance(value, str):
+        text = value.strip()
+        if text in {"1", "1.0"}:
+            return 1
+    raise ValueError(
+        f"Unsupported payload schema_version={value!r}. "
+        "This importer currently supports only schema_version=1."
+    )
+
+
+def looks_like_cross_reference_without_anchor(ref_raw: str) -> bool:
+    text = ref_raw.strip().casefold()
+    if not text:
+        return False
+    markers = ("vid.", "vide", "voir", "v.", "cf.", "id.")
+    return any(marker in text for marker in markers)
+
+
+def collapse_ws(value: str | None) -> str:
+    return re.sub(r"\s+", " ", (value or "")).strip()
+
+
+def looks_like_editorial_scripture_book(value: Any) -> bool:
+    text = collapse_ws(to_text(value))
+    if not text:
+        return False
+    return bool(EDITORIAL_SCRIPTURE_BOOK_RE.match(text))
+
+
+def looks_like_oversized_scripture_ref_raw(value: Any) -> bool:
+    text = collapse_ws(to_text(value))
+    if not text:
+        return False
+    if len(text) > 200:
+        return True
+    if text.count(";") >= 6:
+        return True
+    if len(re.findall(r"\b\d{1,4}\b", text)) >= 8:
+        return True
+    return False
+
+
+def section_uses_special_scripture_apparatus(section: dict[str, Any]) -> bool:
+    heading = collapse_ws(to_text(section.get("heading_raw"))).upper()
+    return any(marker in heading for marker in SCRIPTURE_SECTION_SPECIAL_HEADINGS)
+
+
 def validate_coverage(coverage: dict[str, Any], *, sections: list[Any], entries: list[Any]) -> None:
     if sections and not entries:
         entries_status = coverage.get("entries_status")
@@ -171,6 +241,24 @@ def validate_coverage(coverage: dict[str, Any], *, sections: list[Any], entries:
                 )
 
 
+def normalize_material_path(path_text: str) -> Path:
+    path = Path(path_text.strip())
+    if path.is_absolute():
+        return path
+    return Path.cwd() / path
+
+
+def validate_material_path_in_volume(path_text: str, *, source_root: str, label: str) -> None:
+    source_root_path = normalize_material_path(source_root)
+    material_path = normalize_material_path(path_text)
+    try:
+        material_path.relative_to(source_root_path)
+    except ValueError as exc:
+        raise ValueError(
+            f"{label} points outside volume.source_root: {path_text!r} is not inside {source_root!r}."
+        ) from exc
+
+
 def validate_payload(payload: dict[str, Any]) -> tuple[dict[str, Any], str]:
     required_top = {
         "schema_version",
@@ -194,12 +282,7 @@ def validate_payload(payload: dict[str, Any]) -> tuple[dict[str, Any], str]:
     volume_id = volume["volume_id"]
     if not volume_id:
         raise ValueError("volume.volume_id is required.")
-    schema_version = payload["schema_version"]
-    if schema_version != 1:
-        raise ValueError(
-            f"Unsupported payload schema_version={schema_version!r}. "
-            "This importer currently supports only schema_version=1."
-        )
+    normalize_schema_version(payload["schema_version"])
     require_list(payload["sections"], "sections")
     require_list(payload["nodes"], "nodes")
     require_list(payload["entries"], "entries")
@@ -210,130 +293,223 @@ def validate_payload(payload: dict[str, Any]) -> tuple[dict[str, Any], str]:
     return volume, volume_id
 
 
-def collect_section_keys(sections: list[Any], volume_id: str) -> set[str]:
+def append_error(errors: list[str], exc: ValueError) -> None:
+    errors.append(str(exc))
+
+
+def collect_section_keys(sections: list[Any], volume_id: str, source_root: str, errors: list[str]) -> set[str]:
     keys: set[str] = set()
     for idx, item in enumerate(sections, start=1):
-        section = require_dict(item, f"sections[{idx}]")
-        require_keys(section, f"sections[{idx}]", ("section_key", "volume_id", "section_kind", "heading_raw"))
-        if section.get("volume_id") != volume_id:
-            raise ValueError(f"sections[{idx}] volume_id mismatch: expected {volume_id}")
-        key = require_non_empty_text(section.get("section_key"), f"sections[{idx}].section_key")
-        require_enum(section.get("section_kind"), f"sections[{idx}].section_kind", SECTION_KINDS)
-        require_non_empty_text(section.get("heading_raw"), f"sections[{idx}].heading_raw")
-        if section.get("page_start") is None and to_text(section.get("file_start")) is None:
-            raise ValueError(
-                f"sections[{idx}] must include at least one start anchor: page_start or file_start."
-            )
-        if section.get("page_end") is None and to_text(section.get("file_end")) is None:
-            raise ValueError(
-                f"sections[{idx}] must include at least one end anchor: page_end or file_end."
-            )
-        if section.get("section_order") is not None:
-            require_positive_int(section.get("section_order"), f"sections[{idx}].section_order")
-        require_unit_interval(section.get("confidence"), f"sections[{idx}].confidence")
-        keys.add(key)
+        try:
+            section = require_dict(item, f"sections[{idx}]")
+            require_keys(section, f"sections[{idx}]", ("section_key", "volume_id", "section_kind", "heading_raw"))
+            if section.get("volume_id") != volume_id:
+                raise ValueError(f"sections[{idx}] volume_id mismatch: expected {volume_id}")
+            key = require_non_empty_text(section.get("section_key"), f"sections[{idx}].section_key")
+            require_enum(section.get("section_kind"), f"sections[{idx}].section_kind", SECTION_KINDS)
+            require_non_empty_text(section.get("heading_raw"), f"sections[{idx}].heading_raw")
+            if section.get("page_start") is None and to_text(section.get("file_start")) is None:
+                raise ValueError(
+                    f"sections[{idx}] must include at least one start anchor: page_start or file_start."
+                )
+            if section.get("page_end") is None and to_text(section.get("file_end")) is None:
+                raise ValueError(
+                    f"sections[{idx}] must include at least one end anchor: page_end or file_end."
+                )
+            if section.get("section_order") is not None:
+                require_positive_int(section.get("section_order"), f"sections[{idx}].section_order")
+            require_unit_interval(section.get("confidence"), f"sections[{idx}].confidence")
+            for field in ("file_start", "file_end"):
+                value = to_text(section.get(field))
+                if value is not None:
+                    validate_material_path_in_volume(
+                        value,
+                        source_root=source_root,
+                        label=f"sections[{idx}].{field}",
+                    )
+            keys.add(key)
+        except ValueError as exc:
+            append_error(errors, exc)
     return keys
 
 
-def collect_node_keys(nodes: list[Any], section_keys: set[str]) -> set[str]:
+def collect_node_keys(nodes: list[Any], section_keys: set[str], errors: list[str]) -> set[str]:
     keys: set[str] = set()
     for idx, item in enumerate(nodes, start=1):
-        node = require_dict(item, f"nodes[{idx}]")
-        require_keys(node, f"nodes[{idx}]", ("node_key", "section_key", "node_order", "node_kind", "label_raw", "node_level"))
-        section_key = to_text(node.get("section_key"))
-        node_key = require_non_empty_text(node.get("node_key"), f"nodes[{idx}].node_key")
-        if section_key not in section_keys:
-            raise ValueError(f"nodes[{idx}] references missing section_key: {section_key}")
-        require_positive_int(node.get("node_order"), f"nodes[{idx}].node_order")
-        require_enum(node.get("node_kind"), f"nodes[{idx}].node_kind", NODE_KINDS)
-        require_non_empty_text(node.get("label_raw"), f"nodes[{idx}].label_raw")
-        require_positive_int(node.get("node_level"), f"nodes[{idx}].node_level")
-        require_unit_interval(node.get("confidence"), f"nodes[{idx}].confidence")
-        keys.add(node_key)
+        try:
+            node = require_dict(item, f"nodes[{idx}]")
+            require_keys(node, f"nodes[{idx}]", ("node_key", "section_key", "node_order", "node_kind", "label_raw", "node_level"))
+            section_key = to_text(node.get("section_key"))
+            node_key = require_non_empty_text(node.get("node_key"), f"nodes[{idx}].node_key")
+            if section_key not in section_keys:
+                raise ValueError(f"nodes[{idx}] references missing section_key: {section_key}")
+            require_positive_int(node.get("node_order"), f"nodes[{idx}].node_order")
+            require_enum(node.get("node_kind"), f"nodes[{idx}].node_kind", NODE_KINDS)
+            require_non_empty_text(node.get("label_raw"), f"nodes[{idx}].label_raw")
+            require_positive_int(node.get("node_level"), f"nodes[{idx}].node_level")
+            require_unit_interval(node.get("confidence"), f"nodes[{idx}].confidence")
+            keys.add(node_key)
+        except ValueError as exc:
+            append_error(errors, exc)
     for idx, item in enumerate(nodes, start=1):
-        parent_key = to_text(require_dict(item, f"nodes[{idx}]").get("parent_node_key"))
-        if parent_key and parent_key not in keys:
-            raise ValueError(f"nodes[{idx}] references missing parent_node_key: {parent_key}")
+        try:
+            parent_key = to_text(require_dict(item, f"nodes[{idx}]").get("parent_node_key"))
+            if parent_key and parent_key not in keys:
+                raise ValueError(f"nodes[{idx}] references missing parent_node_key: {parent_key}")
+        except ValueError as exc:
+            append_error(errors, exc)
     return keys
 
 
-def collect_entry_keys(entries: list[Any], section_keys: set[str], node_keys: set[str]) -> set[str]:
+def collect_entry_keys(
+    entries: list[Any],
+    section_keys: set[str],
+    node_keys: set[str],
+    source_root: str,
+    errors: list[str],
+) -> set[str]:
     keys: set[str] = set()
     for idx, item in enumerate(entries, start=1):
-        entry = require_dict(item, f"entries[{idx}]")
-        require_keys(entry, f"entries[{idx}]", ("entry_key", "section_key", "entry_order", "entry_kind", "entry_raw"))
-        section_key = to_text(entry.get("section_key"))
-        entry_key = require_non_empty_text(entry.get("entry_key"), f"entries[{idx}].entry_key")
-        if section_key not in section_keys:
-            raise ValueError(f"entries[{idx}] references missing section_key: {section_key}")
-        parent_node_key = to_text(entry.get("parent_node_key"))
-        if parent_node_key and parent_node_key not in node_keys:
-            raise ValueError(f"entries[{idx}] references missing parent_node_key: {parent_node_key}")
-        require_positive_int(entry.get("entry_order"), f"entries[{idx}].entry_order")
-        require_enum(entry.get("entry_kind"), f"entries[{idx}].entry_kind", ENTRY_KINDS)
-        require_non_empty_text(entry.get("entry_raw"), f"entries[{idx}].entry_raw")
-        require_unit_interval(entry.get("confidence"), f"entries[{idx}].confidence")
-        keys.add(entry_key)
+        try:
+            entry = require_dict(item, f"entries[{idx}]")
+            require_keys(entry, f"entries[{idx}]", ("entry_key", "section_key", "entry_order", "entry_kind", "entry_raw"))
+            section_key = to_text(entry.get("section_key"))
+            entry_key = require_non_empty_text(entry.get("entry_key"), f"entries[{idx}].entry_key")
+            if section_key not in section_keys:
+                raise ValueError(f"entries[{idx}] references missing section_key: {section_key}")
+            parent_node_key = to_text(entry.get("parent_node_key"))
+            if parent_node_key and parent_node_key not in node_keys:
+                raise ValueError(f"entries[{idx}] references missing parent_node_key: {parent_node_key}")
+            if entry_key in keys:
+                raise ValueError(
+                    f"Duplicate entry_key detected: entries[{idx}].entry_key={entry_key!r}. "
+                    "entry_key must be unique across the whole volume payload and must not restart per section."
+                )
+            require_positive_int(entry.get("entry_order"), f"entries[{idx}].entry_order")
+            require_enum(entry.get("entry_kind"), f"entries[{idx}].entry_kind", ENTRY_KINDS)
+            require_non_empty_text(entry.get("entry_raw"), f"entries[{idx}].entry_raw")
+            require_unit_interval(entry.get("confidence"), f"entries[{idx}].confidence")
+            for field in ("section_start_file", "editorial_anchor_file", "target_file_best"):
+                value = to_text(entry.get(field))
+                if value is not None:
+                    validate_material_path_in_volume(
+                        value,
+                        source_root=source_root,
+                        label=f"entries[{idx}].{field}",
+                    )
+            keys.add(entry_key)
+        except ValueError as exc:
+            append_error(errors, exc)
     return keys
 
 
-def validate_refs(refs: list[Any], entry_keys: set[str], scripture_refs: list[Any]) -> None:
+def validate_refs(
+    refs: list[Any],
+    entry_keys: set[str],
+    scripture_refs: list[Any],
+    source_root: str,
+    entries_by_key: dict[str, dict[str, Any]],
+    sections_by_key: dict[str, dict[str, Any]],
+    errors: list[str],
+) -> None:
     seen_ref_orders: dict[str, set[int]] = {}
     for idx, item in enumerate(refs, start=1):
-        ref = require_dict(item, f"refs[{idx}]")
-        require_keys(ref, f"refs[{idx}]", ("entry_key", "ref_order", "ref_kind", "ref_raw"))
-        entry_key = to_text(ref.get("entry_key"))
-        if entry_key not in entry_keys:
-            raise ValueError(f"refs[{idx}] references missing entry_key: {entry_key}")
-        ref_order = require_positive_int(ref.get("ref_order"), f"refs[{idx}].ref_order")
-        entry_ref_orders = seen_ref_orders.setdefault(entry_key or "", set())
-        if ref_order in entry_ref_orders:
-            raise ValueError(
-                f"Duplicate refs ref_order for entry_key={entry_key!r}: "
-                f"refs[{idx}].ref_order={ref_order}. "
-                "ref_order must be unique per entry_key."
+        try:
+            ref = require_dict(item, f"refs[{idx}]")
+            require_keys(ref, f"refs[{idx}]", ("entry_key", "ref_order", "ref_kind", "ref_raw"))
+            entry_key = to_text(ref.get("entry_key"))
+            if entry_key not in entry_keys:
+                raise ValueError(f"refs[{idx}] references missing entry_key: {entry_key}")
+            ref_order = require_positive_int(ref.get("ref_order"), f"refs[{idx}].ref_order")
+            entry_ref_orders = seen_ref_orders.setdefault(entry_key or "", set())
+            if ref_order in entry_ref_orders:
+                raise ValueError(
+                    f"Duplicate refs ref_order for entry_key={entry_key!r}: "
+                    f"refs[{idx}].ref_order={ref_order}. "
+                    "ref_order must be unique per entry_key."
+                )
+            entry_ref_orders.add(ref_order)
+            require_enum(ref.get("ref_kind"), f"refs[{idx}].ref_kind", REF_KINDS)
+            ref_raw = require_non_empty_text(ref.get("ref_raw"), f"refs[{idx}].ref_raw")
+            if (
+                to_text(ref.get("page_ref_raw")) is None
+                and to_text(ref.get("target_file")) is None
+                and to_text(ref.get("range_start_raw")) is None
+                and to_text(ref.get("range_end_raw")) is None
+            ):
+                if looks_like_cross_reference_without_anchor(ref_raw):
+                    raise ValueError(
+                        f"refs[{idx}] looks like a cross-reference without a material anchor: {ref_raw!r}. "
+                        "Do not serialize `vid./vide/voir/id.` style remissions as refs unless they also carry a real locator. "
+                        "Model them as an entry-level cross_reference or preserve them in entry_raw/raw_json."
+                    )
+                raise ValueError(
+                    f"refs[{idx}] must include at least one material anchor: "
+                    "page_ref_raw, target_file, range_start_raw, or range_end_raw."
             )
-        entry_ref_orders.add(ref_order)
-        require_enum(ref.get("ref_kind"), f"refs[{idx}].ref_kind", REF_KINDS)
-        require_non_empty_text(ref.get("ref_raw"), f"refs[{idx}].ref_raw")
-        if (
-            to_text(ref.get("page_ref_raw")) is None
-            and to_text(ref.get("target_file")) is None
-            and to_text(ref.get("range_start_raw")) is None
-            and to_text(ref.get("range_end_raw")) is None
-        ):
-            raise ValueError(
-                f"refs[{idx}] must include at least one material anchor: "
-                "page_ref_raw, target_file, range_start_raw, or range_end_raw."
-            )
-        require_unit_interval(ref.get("target_file_probability"), f"refs[{idx}].target_file_probability")
-        require_unit_interval(ref.get("confidence"), f"refs[{idx}].confidence")
+            require_unit_interval(ref.get("target_file_probability"), f"refs[{idx}].target_file_probability")
+            require_unit_interval(ref.get("confidence"), f"refs[{idx}].confidence")
+            for field in ("target_file", "section_start_file", "editorial_anchor_file"):
+                value = to_text(ref.get(field))
+                if value is not None:
+                    validate_material_path_in_volume(
+                        value,
+                        source_root=source_root,
+                        label=f"refs[{idx}].{field}",
+                    )
+        except ValueError as exc:
+            append_error(errors, exc)
     seen_scripture_ref_orders: dict[str, set[int]] = {}
     for idx, item in enumerate(scripture_refs, start=1):
-        ref = require_dict(item, f"scripture_refs[{idx}]")
-        require_keys(ref, f"scripture_refs[{idx}]", ("entry_key", "ref_order", "ref_role", "ref_raw"))
-        entry_key = to_text(ref.get("entry_key"))
-        if entry_key not in entry_keys:
-            raise ValueError(f"scripture_refs[{idx}] references missing entry_key: {entry_key}")
-        ref_order = require_positive_int(ref.get("ref_order"), f"scripture_refs[{idx}].ref_order")
-        entry_ref_orders = seen_scripture_ref_orders.setdefault(entry_key or "", set())
-        if ref_order in entry_ref_orders:
-            raise ValueError(
-                f"Duplicate scripture_refs ref_order for entry_key={entry_key!r}: "
-                f"scripture_refs[{idx}].ref_order={ref_order}. "
-                "ref_order must be unique per entry_key."
-            )
-        entry_ref_orders.add(ref_order)
-        require_enum(ref.get("ref_role"), f"scripture_refs[{idx}].ref_role", SCRIPTURE_REF_ROLES)
-        require_non_empty_text(ref.get("ref_raw"), f"scripture_refs[{idx}].ref_raw")
-        for field in ("chapter_start", "verse_start", "chapter_end", "verse_end"):
-            value = ref.get(field)
-            if value is not None:
-                require_positive_int(value, f"scripture_refs[{idx}].{field}")
-        is_range = ref.get("is_range", 0)
-        if is_range not in (0, 1):
-            raise ValueError(f"scripture_refs[{idx}].is_range must be 0 or 1.")
-        require_unit_interval(ref.get("confidence"), f"scripture_refs[{idx}].confidence")
+        try:
+            ref = require_dict(item, f"scripture_refs[{idx}]")
+            require_keys(ref, f"scripture_refs[{idx}]", ("entry_key", "ref_order", "ref_role", "ref_raw"))
+            entry_key = to_text(ref.get("entry_key"))
+            if entry_key not in entry_keys:
+                raise ValueError(f"scripture_refs[{idx}] references missing entry_key: {entry_key}")
+            ref_order = require_positive_int(ref.get("ref_order"), f"scripture_refs[{idx}].ref_order")
+            entry_ref_orders = seen_scripture_ref_orders.setdefault(entry_key or "", set())
+            if ref_order in entry_ref_orders:
+                raise ValueError(
+                    f"Duplicate scripture_refs ref_order for entry_key={entry_key!r}: "
+                    f"scripture_refs[{idx}].ref_order={ref_order}. "
+                    "ref_order must be unique per entry_key."
+                )
+            entry_ref_orders.add(ref_order)
+            require_enum(ref.get("ref_role"), f"scripture_refs[{idx}].ref_role", SCRIPTURE_REF_ROLES)
+            ref_raw = require_non_empty_text(ref.get("ref_raw"), f"scripture_refs[{idx}].ref_raw")
+            if looks_like_oversized_scripture_ref_raw(ref_raw):
+                raise ValueError(
+                    f"scripture_refs[{idx}].ref_raw looks contaminated by a page/column dump and must be rerun: "
+                    f"{ref_raw[:160]!r}"
+                )
+            book_raw = to_text(ref.get("book_raw"))
+            book_norm = to_text(ref.get("book_norm"))
+            if looks_like_editorial_scripture_book(book_raw):
+                raise ValueError(
+                    f"scripture_refs[{idx}].book_raw is an editorial section title, not a biblical book: {book_raw!r}"
+                )
+            if looks_like_editorial_scripture_book(book_norm):
+                raise ValueError(
+                    f"scripture_refs[{idx}].book_norm is an editorial section title, not a biblical book: {book_norm!r}"
+                )
+            for field in ("chapter_start", "verse_start", "chapter_end", "verse_end"):
+                value = ref.get(field)
+                if value is not None:
+                    require_positive_int(value, f"scripture_refs[{idx}].{field}")
+            is_range = ref.get("is_range", 0)
+            if is_range not in (0, 1):
+                raise ValueError(f"scripture_refs[{idx}].is_range must be 0 or 1.")
+            entry = entries_by_key.get(entry_key or "")
+            section = sections_by_key.get(to_text(entry.get("section_key")) if entry else None)
+            if section and section_uses_special_scripture_apparatus(section):
+                if book_raw is None and book_norm is None:
+                    raise ValueError(
+                        f"scripture_refs[{idx}] in special scripture apparatus must carry explicit or inherited book context."
+                    )
+            require_unit_interval(ref.get("confidence"), f"scripture_refs[{idx}].confidence")
+        except ValueError as exc:
+            append_error(errors, exc)
 
 
 def build_validation_summary(payload: dict[str, Any]) -> dict[str, Any]:
@@ -344,14 +520,36 @@ def build_validation_summary(payload: dict[str, Any]) -> dict[str, Any]:
     refs = require_list(payload["refs"], "refs")
     scripture_refs = require_list(payload["scripture_refs"], "scripture_refs")
     coverage = require_dict(payload["coverage"], "coverage")
-    section_keys = collect_section_keys(sections, volume_id)
-    node_keys = collect_node_keys(nodes, section_keys)
-    entry_keys = collect_entry_keys(entries, section_keys, node_keys)
-    validate_refs(refs, entry_keys, scripture_refs)
-    validate_coverage(coverage, sections=sections, entries=entries)
+    errors: list[str] = []
+    section_keys = collect_section_keys(sections, volume_id, volume["source_root"], errors)
+    node_keys = collect_node_keys(nodes, section_keys, errors)
+    entry_keys = collect_entry_keys(entries, section_keys, node_keys, volume["source_root"], errors)
+    entries_by_key = {
+        require_non_empty_text(require_dict(item, "entry").get("entry_key"), "entry.entry_key"): require_dict(item, "entry")
+        for item in entries
+    }
+    sections_by_key = {
+        require_non_empty_text(require_dict(item, "section").get("section_key"), "section.section_key"): require_dict(item, "section")
+        for item in sections
+    }
+    validate_refs(
+        refs,
+        entry_keys,
+        scripture_refs,
+        volume["source_root"],
+        entries_by_key,
+        sections_by_key,
+        errors,
+    )
+    try:
+        validate_coverage(coverage, sections=sections, entries=entries)
+    except ValueError as exc:
+        append_error(errors, exc)
+    if errors:
+        raise ValidationErrors(errors)
     return {
         "status": "valid",
-        "schema_version": payload["schema_version"],
+        "schema_version": 1,
         "volume_id": volume["volume_id"],
         "collection": volume["collection"],
         "source_root": volume["source_root"],

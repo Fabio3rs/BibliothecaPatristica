@@ -88,6 +88,8 @@ def test_resolve_index_targets_uses_name_and_page_hints(tmp_path: Path) -> None:
     assert entry["status"] == "resolved"
     assert entry["best_candidate"]["file"].endswith("page-591.txt")
     assert entry["candidates"][0]["inferred_printed_page"] == 543
+    assert "estimator_pages" in entry["candidates"][0]
+    assert "editorial_page_decision_source" in entry["best_candidate"]
 
 
 def test_resolve_index_targets_infers_page_from_neighbors(tmp_path: Path) -> None:
@@ -137,6 +139,64 @@ def test_resolve_index_targets_infers_page_from_neighbors(tmp_path: Path) -> Non
     candidate = result["entries"][0]["candidates"][0]
     assert candidate["inferred_printed_page"] == 543
     assert any(ev["kind"] == "adjacent_page_consensus" for ev in candidate["evidence"])
+
+
+def test_resolve_index_targets_uses_editorial_page_estimator_as_secondary_confirmation(tmp_path: Path) -> None:
+    text_root = tmp_path / "PGE" / "text"
+    text_root.mkdir(parents=True)
+    write_page(
+        text_root / "page-001.txt",
+        """
+        <pagina estado="com_texto">
+          <bloco tipo="cabecalho" script="latino">121 PRÆFATIO GENERALIS. 122</bloco>
+          <bloco tipo="texto_principal" script="latino">Dionysius laudatur hic.</bloco>
+        </pagina>
+        """,
+    )
+    request = {
+        "volume_id": "PGE",
+        "source_root": str(text_root),
+        "entries": [
+            {
+                "entry_id": "e1",
+                "query_names": ["Dionysius"],
+                "page_hint_ints": [122],
+            }
+        ],
+    }
+    result = resolve_index_targets(request)
+    candidate = result["entries"][0]["candidates"][0]
+    assert 122 in candidate["estimator_pages"]
+    assert any(ev["kind"] == "estimator_page_match" for ev in candidate["evidence"])
+    assert candidate["editorial_page_decision_source"] == "estimator_confirmed"
+
+
+def test_resolve_index_targets_marks_local_only_when_estimator_is_not_used(tmp_path: Path) -> None:
+    text_root = tmp_path / "POZ" / "text"
+    text_root.mkdir(parents=True)
+    write_page(
+        text_root / "page-001.txt",
+        """
+        <pagina estado="com_texto">
+          <bloco tipo="cabecalho" script="latino">543 INDEX RERUM</bloco>
+          <bloco tipo="texto_principal" script="latino">Dionysius laudatur hic.</bloco>
+        </pagina>
+        """,
+    )
+    request = {
+        "volume_id": "POZ",
+        "source_root": str(text_root),
+        "entries": [
+            {
+                "entry_id": "e1",
+                "query_names": ["Dionysius"],
+                "page_hint_ints": [543],
+            }
+        ],
+    }
+    result = resolve_index_targets(request)
+    candidate = result["entries"][0]["candidates"][0]
+    assert candidate["editorial_page_decision_source"] == "local_only"
 
 
 def test_resolve_index_targets_marks_ambiguous_when_probabilities_are_close(tmp_path: Path) -> None:

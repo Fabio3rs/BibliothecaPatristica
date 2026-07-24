@@ -188,7 +188,7 @@ def rotate(img: np.ndarray) -> np.ndarray:
     return rotated
 
 
-image_path = "teste/PL011/images/PL011-088.png"
+image_path = "teste/PG001/images/PG001-317.png"
 image = cv2.imread(image_path)
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 

@@ -8,7 +8,13 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from scripts.import_alphabetical_index_json import build_validation_summary
+from scripts.import_alphabetical_index_json import (
+    ValidationErrors,
+    build_validation_summary,
+    looks_like_cross_reference_without_anchor,
+    normalize_material_path,
+    normalize_schema_version,
+)
 
 
 def minimal_payload() -> dict:
@@ -67,6 +73,20 @@ def minimal_payload() -> dict:
         "coverage": {},
         "notes": [],
     }
+
+
+def test_normalize_schema_version_accepts_equivalent_v1_representations() -> None:
+    assert normalize_schema_version(1) == 1
+    assert normalize_schema_version(1.0) == 1
+    assert normalize_schema_version("1") == 1
+    assert normalize_schema_version("1.0") == 1
+
+
+def test_cross_reference_detector_matches_common_remission_markers() -> None:
+    assert looks_like_cross_reference_without_anchor("Ab, vid. Ex")
+    assert looks_like_cross_reference_without_anchor("voir Exode")
+    assert looks_like_cross_reference_without_anchor("id. 4)")
+    assert not looks_like_cross_reference_without_anchor("37 à 39")
 
 
 def test_duplicate_refs_ref_order_is_rejected() -> None:
@@ -161,3 +181,134 @@ def test_duplicate_scripture_refs_ref_order_is_rejected() -> None:
         assert "Duplicate scripture_refs ref_order" in str(exc)
     else:
         raise AssertionError("Expected duplicate scripture_refs ref_order validation failure")
+
+
+def test_cross_reference_ref_without_anchor_is_rejected_with_specific_error() -> None:
+    payload = minimal_payload()
+    payload["refs"] = [
+        {
+            "entry_key": "PO009:entry:001",
+            "ref_order": 1,
+            "ref_kind": "unresolved",
+            "ref_raw": "Ab, vid. Ex",
+            "page_ref_raw": None,
+            "page_ref_int": None,
+            "page_ref_col": None,
+            "line_ref_raw": None,
+            "range_start_raw": None,
+            "range_end_raw": None,
+            "target_file": None,
+            "target_file_probability": None,
+            "section_start_file": "/tmp/po009/text/page-001.txt",
+            "editorial_anchor_file": "/tmp/po009/text/page-001.txt",
+            "confidence": 0.4,
+            "raw_json": {},
+        }
+    ]
+
+    try:
+        build_validation_summary(payload)
+    except ValueError as exc:
+        assert "looks like a cross-reference without a material anchor" in str(exc)
+    else:
+        raise AssertionError("Expected cross-reference-without-anchor validation failure")
+
+
+def test_validation_aggregates_multiple_failures() -> None:
+    payload = minimal_payload()
+    payload["sections"][0]["section_kind"] = "onomastic_veterum"
+    payload["entries"][0]["section_key"] = "PO009:section:999"
+
+    try:
+        build_validation_summary(payload)
+    except ValidationErrors as exc:
+        message = str(exc)
+        assert "2 validation errors" in message
+        assert "sections[1].section_kind has invalid value 'onomastic_veterum'" in message
+        assert "entries[1] references missing section_key: PO009:section:999" in message
+    else:
+        raise AssertionError("Expected aggregated validation failures")
+
+
+def test_normalize_material_path_accepts_absolute_and_relative_forms() -> None:
+    assert normalize_material_path("/tmp/po009/text/page-001.txt") == Path("/tmp/po009/text/page-001.txt")
+    assert normalize_material_path("teste/PO009/text/page-001.txt") == ROOT / "teste/PO009/text/page-001.txt"
+
+
+def test_material_paths_may_be_relative_when_still_inside_same_volume() -> None:
+    payload = minimal_payload()
+    payload["volume"]["source_root"] = str(ROOT / "teste/PO009/text")
+    payload["sections"][0]["file_start"] = "teste/PO009/text/page-001.txt"
+    payload["sections"][0]["file_end"] = "teste/PO009/text/page-001.txt"
+    payload["entries"][0]["section_start_file"] = "teste/PO009/text/page-001.txt"
+    payload["entries"][0]["editorial_anchor_file"] = "teste/PO009/text/page-001.txt"
+    payload["entries"][0]["target_file_best"] = "teste/PO009/text/page-169.txt"
+    payload["refs"] = [
+        {
+            "entry_key": "PO009:entry:001",
+            "ref_order": 1,
+            "ref_kind": "editorial_page",
+            "ref_raw": "169",
+            "page_ref_raw": "169",
+            "page_ref_int": 169,
+            "page_ref_col": None,
+            "line_ref_raw": None,
+            "range_start_raw": None,
+            "range_end_raw": None,
+            "target_file": "teste/PO009/text/page-169.txt",
+            "target_file_probability": 0.9,
+            "section_start_file": "teste/PO009/text/page-001.txt",
+            "editorial_anchor_file": "teste/PO009/text/page-001.txt",
+            "confidence": 0.9,
+            "raw_json": {},
+        }
+    ]
+
+    summary = build_validation_summary(payload)
+    assert summary["status"] == "valid"
+
+
+def test_material_paths_from_another_volume_are_rejected() -> None:
+    payload = minimal_payload()
+    payload["entries"][0]["target_file_best"] = "teste/PO010/text/page-169.txt"
+
+    try:
+        build_validation_summary(payload)
+    except ValidationErrors as exc:
+        assert "entries[1].target_file_best points outside volume.source_root" in str(exc)
+    else:
+        raise AssertionError("Expected cross-volume material path validation failure")
+
+
+def test_duplicate_entry_key_is_rejected_before_sqlite() -> None:
+    payload = minimal_payload()
+    payload["entries"].append(
+        {
+            "entry_key": "PO009:entry:001",
+            "section_key": "PO009:section:001",
+            "parent_node_key": None,
+            "entry_order": 2,
+            "entry_kind": "scripture_citation",
+            "lemma_raw": "EXODE",
+            "lemma_display": "EXODE",
+            "lemma_norm": "exode",
+            "lemma_sort": "exode",
+            "entry_raw": "EXODE I, 1 . . . 170",
+            "context_raw": "EXODE I, 1 . . . 170",
+            "heading_letter": None,
+            "inferred_printed_page": 170,
+            "section_start_file": "/tmp/po009/text/page-001.txt",
+            "editorial_anchor_file": "/tmp/po009/text/page-001.txt",
+            "target_file_best": "/tmp/po009/text/page-170.txt",
+            "confidence": 0.9,
+            "raw_json": {},
+        }
+    )
+
+    try:
+        build_validation_summary(payload)
+    except ValidationErrors as exc:
+        assert "Duplicate entry_key detected" in str(exc)
+        assert "entry_key must be unique across the whole volume payload" in str(exc)
+    else:
+        raise AssertionError("Expected duplicate entry_key validation failure")
