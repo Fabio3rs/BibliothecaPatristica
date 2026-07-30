@@ -1,50 +1,63 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="60,20,940,180">
-    TRADITIO CATHOLICA.
-    SÆCULUM V. ANNUS 460.
+<pagina estado="com_texto" tipo="capa_ou_guarda">
+  <bloco tipo="cabecalho" script="latino" bbox="80,20,920,200">
+TRADITIO CATHOLICA.
+SÆCULUM V. ANNUS 460.
+-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,200,920,920">
-    SALVIANI
+  <bloco tipo="texto_principal" script="latino" bbox="60,200,940,720">
+SALVIANI
 
-    MASSILIENSIS PRESBYTERI,
+MASSILIENSIS PRESBYTERI,
 
-    S. PATRICII. HIBERNORUM APOSTOLI,
+S. PATRICII. HIBERNORUM APOSTOLI,
 
-    ARNOBII JUNIORIS, MAMERTI CLAUDIANI
+ARNOBII JUNIORIS, MAMERTI CLAUDIANI
 
-    OPERA OMNIA
+OPERA OMNIA
 
-    JUXTA MEMORATISSIMAS EDITIONES STEPHANI BALUZI, MARGARINI DE LA BIGNE, LAURENTII DE
-    LA BARRE ET GALLANDII ACCURATISSIMÈ RECOGNITA.
+JUXTA MEMORATISSIMAS EDITIONES STEPHANI BALUZI, MARGARINI DE LA BIGNE, LAURENTII DE
+LA BARRE ET GALLANDII ACCURATISSIME RECOGNITA.
 
-    INTERMISCENTUR
+INTERMISCENTUR
 
-    AUCTORIS ANONYMI
+AUCTORIS ANONYMI
 
-    DE HÆRESI PRÆDESTINATIANA LIBRI TRES,
+DE HÆRESI PRÆDESTINATIANA LIBRI TRES,
 
-    QUÏBUS ACCEDIT, APPENDICIS VICE,
+QUIBUS ACCEDIT, APPENDICIS VICE,
 
-    JACOBI SIRMONDI HISTORIA PRÆDESTINATIANA.
+JACOBI SIRMONDI HISTORIA PRÆDESTINATIANA.
 
-    ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE,
-    BIBLIOTHÆCÆ CLERI UNIVERSÆ,
+ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE,
+BIBLIOTHÆCÆ CLERI UNIVERSÆ,
 
-    SIVE
+SIVE
 
-    CURSUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
+CURSUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="160,920,840,980">
-    TOMUS UNICUS.
+  <bloco tipo="nota" script="latino" bbox="120,720,880,800">
+———————◊———————
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="60,800,940,980">
+TOMUS UNICUS.
 
-    EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
-    IN VIA DICTA THIBAUD, OLIM D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO
-    D'ENFER NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MŒNIA PARISINA.
+· · · · · ·
 
-    1865
+Vente: 8 francis gallicis.
+
+EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
+IN VIA DICTA THIBAUD, OLIM D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO
+D'ENFER NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MŒNIA PARISINA.
+
+1865
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="740,920,980,995">
+Digitized by Google
   </bloco>
   <notas>
-    - Pequenas manchas e sinais tipográficos presentes; palavras transcritas conforme aparência tipográfica.
-    - Usei "Æ"/"Æ" e sinais diacríticos conforme impresso; onde legibilidade incerta, preservei forma mais provável. 
+- BBOX coordenadas estimadas em escala 0-1000, mapeadas conforme fluxo vertical da página (cabeçalho, texto principal, nota decorativa, rodapé, nota_marginal).
+- Preservei maiúsculas, sinais diacríticos (Æ, Œ, Æ), e pontuação tal como visíveis no impresso; não procedi a normalizações.
+- A linha decorativa entre o corpo do texto e "TOMUS UNICUS." foi transcrita como sequência de pontos/traços; a leitura exata dos sinais ornamentais é parca.
+- A linha com o preço está pouco legível no original; transcrição aproximada: "Vente: 8 francis gallicis."
   </notas>
 </pagina>

@@ -1,18 +1,15 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,200,50">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,150,50">
     379
   </bloco>
   <bloco tipo="cabecalho" script="latino" bbox="300,20,700,50">
     AD OMNIA VENERABILIS BEDAE OPERA
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="800,20,950,50">
+  <bloco tipo="cabecalho" script="latino" bbox="850,20,950,50">
     380
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,60,505,80">
-    A
-  </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="50,60,480,280">
-    dhæt ondlang hagan ofer fild hæman on timber ryce
+    dhæt ondlang hagan ofer fild burnan on timber ryce
     dhonan on heastne brycg swa estweard on blecan
     brygge. dhnon eft on dhone aldan fehl. This syn-
     don dhesra halfo hide land gemæru æt wican ærest
@@ -34,9 +31,9 @@
     quorum inferius nomina notantur; sit autem terra
     ista libera omni regi nisi ecclesiastici censui.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,285,505,305">
-    B
-  </bloco>
+  <nota_marginal script="latino" bbox="485,60,505,80">
+    A
+  </nota_marginal>
   <bloco tipo="texto_principal" script="latino" bbox="50,280,480,340">
     † Ego Oswald episc. consensi. † Wulfric presbyter.
     † Eadgar presb. † Wistan presb. † Aelfred cle-
@@ -46,6 +43,9 @@
     † Wulfgar cl. † Wenstan cl. † Usc cl. † Leof-
     wine cl. † Wulfhodd clericus.
   </bloco>
+  <nota_marginal script="latino" bbox="485,285,505,305">
+    B
+  </nota_marginal>
   <bloco tipo="texto_principal" script="latino" bbox="50,340,480,360">
     Alia ejusdem.
   </bloco>
@@ -81,9 +81,9 @@
   <bloco tipo="texto_principal" script="latino" bbox="50,520,480,540">
     Charta Eadgari regis.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,540,505,560">
+  <nota_marginal script="latino" bbox="485,540,505,560">
     D
-  </bloco>
+  </nota_marginal>
   <bloco tipo="texto_principal" script="latino" bbox="50,540,480,900">
     †. In nomine Domini nostri Jesu Christi. omnis
     quidem larga munificentia regum testamenta lite-
@@ -107,15 +107,15 @@
     Dei æcclesiæ æternis barathri incudis lugubris ju-
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="520,60,950,100">
-    gifer cum Iuda Christi proditore efusque commilitibus
+    gifer cum Iuda Christi pro litore ejusque commilitibus
     punitur. Si non satisfactione emendaverit condigna
     quod contra nostrum deliquit decretum.
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="520,100,950,220">
     His metis præfatum rus hinc inde giratur. Dhis
     synt dha land gemæru into cyrigmne of welës bur-
-    nan in hor src of dham sice in dha die of dham die
-    in dham mere of dhat stret of dhatæ dret in morih-
+    nan in how src of dham sice in dha die of dham die
+    in dham mere on dhat stret of dhatæ dret in morih-
     hlot of æmithhlan on dhorndune. eastweardæ of
     dhornæsme on truythan byrge of dhan byrg on dhone
     folan pyt of dhan fulan pyt on. . . . . . . . wellan of dham
@@ -149,9 +149,9 @@
     † Ego Wulfric episc. † Ego Wulfnoð m.
     consensi.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,450,505,470">
+  <nota_marginal script="latino" bbox="485,450,505,470">
     C
-  </bloco>
+  </nota_marginal>
   <bloco tipo="texto_principal" script="latino" bbox="520,600,950,720">
     † Ego Aescwig abb. † Ego Aethelward m.
     † Ego Osgar abb. † Ego Eamulf m.
@@ -174,7 +174,7 @@
     delict tandem quadriformi plasmatum materia almo
     ad sui similitudinem institutum spiramine. univer-
     sisque in intimis firmaverat uno probandi causa
-    excepto vetuitque pransiciens paradisiacæ amœnitatis
+    excepto vetuitque pransiens paradisiacæ amœnitatis
     jocunditate collateræam Eva scilicet comite decen-
     sime collocavit. Larvica pro dolor seductus cavil-
     latione. versipellis suasilibusque tergiversatione vi-
@@ -190,7 +190,7 @@
     que proferendo nenias anagogico inustrans famino
     usque ad obtunsi cœlitalis umbraminis ad superno-
     rum sacrificium patriumobinur advoans. ange-
-    lus supernus elapsus luminibus in alream intemeratæ
+    lus superius elapsus luminibus in alream intemeratæ
     virginis ut evangelica promulgat famina. Stupenda
     eccunsse videtur carminis. Cui ecclesia tota catho-
     lica consona voce altitonando proclamat. Beata es
@@ -206,7 +206,8 @@
     Caracteres especiais como þ (thorn), ð (eth), æ (ash) foram mantidos.
     Abreviações impressas foram transcritas literalmente (ex: "consen'i", "con'i").
     As letras marginais A, B, C, D foram identificadas como notas marginais.
-    O layout de duas colunas foi respeitado, transcrevendo a coluna esquerda primeiro, depois a direita.
+    O layout de duas colunas foi respeitado, transcrevendo a coluna esquerda (pág. 379) primeiro, depois a direita (pág. 380).
     A lista de testemunhas na coluna direita possui sub-colunas internas que foram transcritas em sequência lógica de linhas.
+    A conexão "lugubris ju-" (fim da col. esq.) e "gifer" (início da col. dir.) foi preservada conforme o fluxo do texto na página.
   </notas>
 </pagina>

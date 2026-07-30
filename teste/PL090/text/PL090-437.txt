@@ -1,8 +1,23 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="10,10,980,50">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,50">
     865 DECEMNOVENNALES CIRCULI. 866
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="10,60,980,300">
+  <bloco tipo="nota_marginal" script="latino" bbox="0,50,50,330">
+    Bissext. anni.
+    Anni Domini.
+    Indictiones.
+    Anni Domini.
+    Indictiones.
+    Anni Domini.
+    Indictiones.
+    Epactæ.
+    Concurrentes.
+    Cycli lunares.
+    Luna Paschæ dec. quarta.
+    Dominicus dies Paschæ.
+    Luna ipsius.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="60,50,850,150">
     Decemnovennalis nonus.
     b 152 3 684 12 1216 4 0 5 17 Nonæ Aprilis iv idus Apr. 19
     153 6 685 13 1217 5 11 6 18 viii kalend. Apr. vii kalend. Apr. 15
@@ -24,7 +39,11 @@
     169 7 701 14 1233 6 7 6 15 iv kal. Apr. iii non. Apr. 19
     b 170 8 702 15 1234 7 18 7 16 xv kal. Maii ix kal. Maii 20
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="10,300,200,350">
+  <bloco tipo="nota_marginal" script="latino" bbox="860,50,950,330">
+    Ogdoades.
+    Hendecas.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="0,350,50,630">
     Bissext. anni.
     Anni Domini.
     Indictiones.
@@ -39,11 +58,7 @@
     Dominicus dies Paschæ.
     Luna ipsius.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="900,100,980,300">
-    Ogdoades.
-    Hendecas.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="10,360,980,600">
+  <bloco tipo="texto_principal" script="latino" bbox="60,350,850,630">
     Decemnovennalis decimus.
     b 171 9 703 1 1235 8 0 7 17 Nonæ Aprilis vi idus Apr. 16
     172 10 704 2 1236 9 11 2 18 viii kal. Apr. iii kalend. Apr. 19
@@ -65,7 +80,11 @@
     188 11 720 3 1252 10 7 9 15 iv kal. Apr. ii kal. Apr. 16
     b 189 12 721 4 1253 11 18 1 16 xv kal. Maii xii kal. Maii 16
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="10,600,200,650">
+  <bloco tipo="nota_marginal" script="latino" bbox="860,350,950,630">
+    Ogdoades.
+    Hendecas.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="0,650,50,930">
     Bissext. anni.
     Anni Domini.
     Indictiones.
@@ -80,11 +99,7 @@
     Dominicus dies Paschæ.
     Luna ipsius.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="900,400,980,600">
-    Ogdoades.
-    Hendecas.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="10,660,980,900">
+  <bloco tipo="texto_principal" script="latino" bbox="60,650,850,930">
     Decemnovennalis undecimus.
     190 13 722 5 1254 12 0 5 17 Nonæ Aprilis ii idus Apr. 21
     191 14 723 6 1255 13 11 4 18 viii kalend. Apr. v kalend. Apr. 17
@@ -106,29 +121,14 @@
     207 15 739 7 1271 14 7 5 15 iv kal. Apr. Nonæ Aprilis 21
     b 208 1 740 8 1272 15 18 6 16 xv kal. Maii viii kal. Maii 21
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="10,900,200,950">
-    Bissext. anni.
-    Anni Domini.
-    Indictiones.
-    Anni Domini.
-    Indictiones.
-    Anni Domini.
-    Indictiones.
-    Epactæ.
-    Concurrentes.
-    Cycli lunares.
-    Luna Paschæ dec. quarta.
-    Dominicus dies Paschæ.
-    Luna ipsius.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="900,700,980,900">
+  <bloco tipo="nota_marginal" script="latino" bbox="860,650,950,930">
     Ogdoades.
     Hendecas.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="550,960,850,990">
+  <bloco tipo="rodape" script="latino" bbox="550,950,850,990">
     Digitized by Google
   </bloco>
   <notas>
-    A página contém tabelas cronológicas ("Decemnovennales Circuli") em latim. O OCR original apresentava muitos erros, incluindo caracteres gregos indevidos e alucinações de texto. A transcrição foi corrigida com base na imagem, preservando as abreviações latinas (kal., idus, non., Apr., Maii) e a estrutura numérica das tabelas. Os cabeçalhos das colunas estão impressos verticalmente na margem esquerda de cada seção de tabela. As margens direitas indicam ciclos ("Ogdoades", "Hendecas").
+    Página contendo tabelas cronológicas ("Decemnovennales Circuli") em latim. Os cabeçalhos das colunas estão impressos verticalmente na margem esquerda de cada seção de tabela. As margens direitas indicam ciclos ("Ogdoades", "Hendecas"). A transcrição preserva as abreviações latinas (kal., idus, non., Apr., Maii) e a estrutura numérica. O caractere 'b' na primeira coluna indica anos bissextos.
   </notas>
 </pagina>

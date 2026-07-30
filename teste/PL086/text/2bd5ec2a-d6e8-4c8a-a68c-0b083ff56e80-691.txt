@@ -1,11 +1,8 @@
-<pagina estado="com_texto">
-  <bloco tipo="outro" script="latino" bbox="0,0,1000,120">
-    tipo_pagina: capa_ou_guarda
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="640,30,960,160">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="590,55,845,105">
     3 2044 009 501 602
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="220,180,780,720">
+  <bloco tipo="texto_principal" script="latino" bbox="340,285,730,385">
     THE BORROWER WILL BE CHARGED
     AN OVERDUE FEE IF THIS BOOK IS
     NOT RETURNED TO THE LIBRARY
@@ -14,44 +11,45 @@
     OVERDUE NOTICES DOES NOT
     EXEMPT THE BORROWER FROM
     OVERDUE FEES.
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="300,390,760,725">
+    WIDENER
     WIDENER
     BOOK DUE
-    NOV - 8 1980
-
+    FEB 10 1997
+    NOV - 8 1988
+    OCT 22 1991
     274 3119
-
     CANCELLED
-
-    NOV 19 1988
-
-    BOOK DUE
-    FEB 1 1989
-
     WIDENER
-
-    BOOK DUE
-    FEB 1 1990
-    X
-
+    FEB 10 1997
+    NOV 19 1988
+    CANCELLED
+    CANCELLED
+    WIDENER
     WIDENER
     BOOK DUE
     SEP 19 1995
-
+    FEB 1 1989
+    2554385
     WIDENER
-    FEB 10 1997
-    CANCELED
-
-    CANCELED
+    BOOK DUE
+    WIDENER
+    FEB 10 1990
     SEP 13 1989
-
-    [ilegivel]
+    CANCELLED
+    CANCELLED
+    295 4317
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="680,900,1000,1000">
+  <bloco tipo="rodape" script="latino" bbox="605,955,805,985">
     Digitized by Google
   </bloco>
   <notas>
-    script predominante: latino.
-    Observações: página identificada como capa/guarda (etiquetas de devolução e carimbos). Muitos carimbos sobrepostos; datas e palavras parcialmente obstruídas foram transcritas quando legíveis. Tokens não legíveis foram marcados como [ilegivel]. As caixas (bbox) são aproximações relativas à imagem (escala 0-1000).
+    Página de guarda com bolso de devolução de biblioteca (Widener).
+    Texto principal impresso em inglês.
+    Múltiplos carimbos de data sobrepostos e manuscritos.
+    A transcrição dos carimbos segue uma ordem aproximada de cima para baixo, esquerda para direita, capturando as datas legíveis (1988, 1989, 1990, 1995, 1997) e marcações de "CANCELLED".
+    Números manuscritos (ex: 274 3119, 295 4317) foram incluídos.
+    Código de barras no topo.
   </notas>
 </pagina>

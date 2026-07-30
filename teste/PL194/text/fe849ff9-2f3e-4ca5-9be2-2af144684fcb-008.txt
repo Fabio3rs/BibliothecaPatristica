@@ -1,16 +1,16 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="nota_marginal" script="latino" bbox="40,20,220,80">
-    ~~19/2150~~
+    19/2150
     C 550.1
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="90,180,140,210">
+  <bloco tipo="nota" script="latino" bbox="90,180,140,210">
     ★
   </bloco>
   <bloco tipo="nota" script="latino" bbox="380,180,620,240">
     1876. Oct. 9.
     [ilegivel]
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="880,120,960,620">
+  <bloco tipo="texto_principal" script="latino" bbox="880,120,960,620">
     IN
     PR
     OF
@@ -29,10 +29,11 @@
     Digitized by Google
   </bloco>
   <notas>
-    A página parece ser uma guarda ou folha de rosto com anotações de biblioteca.
+    Página parece ser uma guarda ou folha de rosto com anotações de biblioteca.
     Texto no canto superior esquerdo "19/2150" está riscado.
-    Texto à direita está parcialmente cortado e fragmentado.
-    Texto manuscrito no centro é muito fraco, transcrição parcial baseada em formas visíveis.
+    Texto à direita está parcialmente cortado e fragmentado, disposto verticalmente.
+    Texto manuscrito no centro é muito fraco, transcrição parcial baseada em formas visíveis ("1876. Oct. 9.").
     Texto no canto inferior direito está rotacionado.
+    Tesseract OCR foi ignorado devido a alucinações de caracteres gregos.
   </notas>
 </pagina>

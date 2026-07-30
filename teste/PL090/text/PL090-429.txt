@@ -1,52 +1,45 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,50,950,90">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,60">
     819 DECEMNOVENALES CIRCULI. 820
   </bloco>
-  
-  <!-- Tabela 1: Top Left -->
-  <bloco tipo="cabecalho" script="latino" bbox="50,95,480,130">
+
+  <!-- Coluna Esquerda Superior -->
+  <bloco tipo="texto_principal" script="latino" bbox="50,70,480,300">
     Circulus sexagesimus nonus, secundum eumdem Dionysium.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="30,130,50,250">
-    Ogdoas.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="30,250,50,380">
-    Hendecas.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,130,480,380">
     Anni Domini. Indictiones. Epactæ. Concurrentes. Cycli lunares. Decima quarta luna. Dies Dominicus Paschæ. Luna diei. Littera Dom.
-    1292 5 0 2 17 Nonæ Aprilis vn idus Apr. 15 b
-    1293 4 11 3 18 viii kal. Apr. iv kal. Apr. 18 a
-    1294 5 22 4 19 Idus Aprilis xiv kal. Maii 19 g f
-    1295 6 3 5 1 iv non. Apr. iii non. Apr. 15 e d
-    1296 7 14 6 2 xi kal. Apr. viii kal. Apr. 17 c b
-    1297 8 25 7 3 iv idus Apr. xvii kal. Maii 18 a
-    1298 9 6 8 4 iv kal. Apr. viii idus Apr. 21 b
-    1299 10 17 9 5 xv kal. Apr. xiii kal. Maii 15 a
-    1300 11 28 10 6 vii idus Apr. iv idus Apr. 17 g f
-    1301 12 9 11 7 v. kal. Apr. iv non. Apr. 20 e d
-    1302 13 20 12 8 xvii kal. Maii x kal. Maii 21 c
-    1303 14 1 13 9 viii idus Apr. xv idus Apr. 17 b
-    1304 15 12 14 10 ix kal. Apr. iv kal. Apr. 19 a
-    1305 16 23 15 11 u idus Apr. xvii kal. Maii 20 g
-    1306 17 4 16 12 Kal. Aprilis iii non. Apr. 16 f
-    1307 18 15 17 13 xii kal. Apr. vii kal. Apr. 19 e
-    1308 19 26 18 14 v idus Apr. xviii kal. Maii 19 d
-    1309 20 7 19 15 iv kal. Apr. iii kal. Apr. 15 c
+    1292 5 0 2 17 Nonæ Aprilis vii idus Apr. 15 e b
+    1293 4 11 3 18 viii kal. Apr. iv kal. Apr. 18 d c
+    1294 5 22 4 19 Idus Aprilis xiv kal. Maii 19 b a
+    1295 6 3 5 1 iv non. Apr. iii non. Apr. 15 g f
+    1296 7 14 6 2 xi kal. Apr. viii kal. Apr. 17 e d
+    1297 8 25 7 3 iv idus Apr. xvii kal. Maii 18 c b
+    1298 9 6 8 4 iv kal. Apr. viii idus Apr. 21 a
+    1299 10 17 9 5 xv kal. Apr. xiii kal. Maii 15 g
+    1300 11 28 10 6 vii idus Apr. iv idus Apr. 17 f e
+    1301 12 9 11 7 v. kal. Apr. iv non. Apr. 20 d c
+    1302 13 20 12 8 xvii kal. Maii x kal. Maii 21 b a
+    1303 14 1 13 9 viii idus Apr. xv idus Apr. 17 g f
+    1304 15 12 14 10 ix kal. Apr. iv kal. Apr. 19 e d
+    1305 16 23 15 11 ii idus Apr. xvii kal. Maii 20 c b
+    1306 17 4 16 12 Kal. Aprilis iii non. Apr. 16 a
+    1307 18 15 17 13 xii kal. Apr. vii kal. Apr. 19 g
+    1308 19 26 18 14 v idus Apr. xviii kal. Maii 19 f e
+    1309 20 7 19 15 iv kal. Apr. iii kal. Apr. 15 d c
     1310 21 18 20 16 xv kal. Maii xiii kal. Maii 16 b a
   </bloco>
-
-  <!-- Tabela 2: Top Right -->
-  <bloco tipo="cabecalho" script="latino" bbox="510,95,940,130">
-    Circulus septuagesimus secundus, secundum eumdem Dionysium.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,130,510,250">
+  <bloco tipo="nota_marginal" script="latino" bbox="30,130,50,200">
     Ogdoas.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,250,510,380">
+  <bloco tipo="nota_marginal" script="latino" bbox="30,200,50,290">
     Hendecas.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,130,900,380">
+
+  <!-- Coluna Direita Superior -->
+  <bloco tipo="nota_marginal" script="latino" bbox="490,70,510,90">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="510,70,940,300">
+    Circulus septuagesimus secundus, secundum eumdem Dionysium.
     Anni Domini. Indictiones. Epactæ. Concurrentes. Cycli lunares. Decima quarta luna. Dies Dominicus Paschæ. Luna diei. Littera Dom.
     1349 10 0 3 17 Nonæ Aprilis ii idus Apr. 21 a
     1350 11 11 4 18 viii kal. Apr. v kal. Apr. 17 g
@@ -61,53 +54,26 @@
     1359 20 20 13 8 xvii kal. Maii vi kal. Maii 20 e
     1360 21 1 14 9 viii idus Apr. Nonæ Aprilis 15 d
     1361 22 12 15 10 ix kal. Apr. v kal. Apr. 18 c
-    1362 23 23 16 11 u idus Apr. xv kal. Maii 19 b
+    1362 23 23 16 11 ii idus Apr. xv kal. Maii 19 b
     1363 24 4 17 12 Kal. Aprilis iv non. Apr. 15 a
     1364 25 15 18 13 xii kal. Apr. ix kal. Apr. 17 g
     1365 26 26 19 14 v idus Apr. Idus Aprilis 18 f
     1366 27 7 20 15 iv kal. Apr. Nonæ Aprilis 21 e
     1367 28 18 21 16 xv kal. Maii xiv kal. Maii 15 d
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="910,130,930,380">
-    A
-    a
-    g
-    l
-    d
-    e
-    c
-    h
-    a
-    f
-    g
-    e
-    d
-    c
-    b
-    a
-    g
-    f
-    e
-    d
-    b
-    a
-    g
+  <bloco tipo="nota_marginal" script="latino" bbox="490,130,510,200">
+    Ogdoas.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,390,950,420">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,200,510,290">
+    Hendecas.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,310,510,330">
     B
   </bloco>
 
-  <!-- Tabela 3: Middle Left -->
-  <bloco tipo="cabecalho" script="latino" bbox="50,430,480,465">
+  <!-- Coluna Esquerda Média -->
+  <bloco tipo="texto_principal" script="latino" bbox="50,340,480,570">
     Circulus septuagesimus, secundum eumdem Dionysium.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="30,465,50,585">
-    Ogdoas.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="30,585,50,715">
-    Hendecas.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,465,480,715">
     Anni Domini. Indictiones. Epactæ. Concurrentes. Cycli lunares. Decima quarta luna. Dies Dominicus Paschæ. Luna diei. Littera Dom.
     1311 7 0 4 17 Nonæ Aprilis vi idus Apr. 17 g
     1312 8 11 5 18 viii kal. Apr. vii kal. Apr. 15 f
@@ -122,28 +88,26 @@
     1321 17 20 14 8 xvii kal. Maii xvii kal. Maii 18 d
     1322 18 1 15 9 viii idus Apr. vii idus Apr. 14 c
     1323 19 12 16 10 ix kal. Apr. iv idus Apr. 17 b
-    1324 20 23 17 11 u idus Apr. xvii kal. Maii 20 a
+    1324 20 23 17 11 ii idus Apr. xvii kal. Maii 20 a
     1325 21 4 18 12 Kal. Aprilis vii idus Apr. 20 g
     1326 22 15 19 13 xii kal. Apr. x kal. Apr. 16 f
     1327 23 26 20 14 v idus Apr. iii idus Apr. 17 e
     1328 24 7 21 15 iv kal. Apr. iii non. Apr. 19 d
     1329 25 18 22 16 xv kal. Maii ix kal. Maii 20 c
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,585,510,615">
+  <bloco tipo="nota_marginal" script="latino" bbox="30,400,50,470">
+    Ogdoas.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="30,470,50,560">
+    Hendecas.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,450,510,470">
     C
   </bloco>
 
-  <!-- Tabela 4: Middle Right -->
-  <bloco tipo="cabecalho" script="latino" bbox="510,430,940,465">
+  <!-- Coluna Direita Média -->
+  <bloco tipo="texto_principal" script="latino" bbox="510,340,940,570">
     Circulus septuagesimus tertius, secundum eumdem Dionysium.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,465,510,585">
-    Ogdoas.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,585,510,715">
-    Hendecas.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,465,900,715">
     Anni Domini. Indictiones. Epactæ. Concurrentes. Cycli lunares. Decima quarta luna. Dies Dominicus Paschæ. Luna diei. Littera Dom.
     1368 3 0 6 17 Nonæ Aprilis v idus Apr. 15 f
     1369 4 11 7 18 viii kal. Apr. Kal. Aprilis 21 e
@@ -158,25 +122,23 @@
     1378 13 20 16 8 xvii kal. Maii xvii kal. Maii 17 b
     1379 14 1 17 9 viii idus Apr. iv idus Apr. 20 a
     1380 15 12 18 10 ix kal. Apr. vii idus Apr. 15 g
-    1381 16 23 19 11 u idus Apr. xix kal. Maii 16 f
+    1381 16 23 19 11 ii idus Apr. xix kal. Maii 16 f
     1382 17 4 20 12 Kal. Aprilis viii idus Apr. 19 e
     1383 18 15 21 13 xii kal. Apr. x kal. Apr. 15 d
     1384 19 26 22 14 v idus Apr. iv idus Apr. 15 c
     1385 20 7 23 15 iv kal. Apr. iv non. Apr. 18 b
     1386 21 18 24 16 xv kal. Maii ix kal. Maii 19 a
   </bloco>
-
-  <!-- Tabela 5: Bottom Left -->
-  <bloco tipo="cabecalho" script="latino" bbox="50,725,480,760">
-    Circulus septuagesimus primus, secundum eumdem Dionysium.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="30,760,50,880">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,400,510,470">
     Ogdoas.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="30,880,50,990">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,470,510,560">
     Hendecas.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,760,480,990">
+
+  <!-- Coluna Esquerda Inferior -->
+  <bloco tipo="texto_principal" script="latino" bbox="50,580,480,810">
+    Circulus septuagesimus primus, secundum eumdem Dionysium.
     Anni Domini. Indictiones. Epactæ. Concurrentes. Cycli lunares. Decima quarta luna. Dies Dominicus Paschæ. Luna diei. Littera Dom.
     1330 6 0 7 17 Nonæ Aprilis vi idus Apr. 17 d
     1331 7 11 8 18 viii kal. Apr. ii kal. Apr. 20 c
@@ -191,28 +153,26 @@
     1340 16 20 17 8 xvii kal. Maii xvii kal. Maii 15 a
     1341 17 1 18 9 viii idus Apr. vii idus Apr. 18 g
     1342 18 12 19 10 ix kal. Apr. iv idus Apr. 21 f
-    1343 19 23 20 11 u idus Apr. Idus Aprilis 15 e
+    1343 19 23 20 11 ii idus Apr. Idus Aprilis 15 e
     1344 20 4 21 12 Kal. Aprilis ii non. Apr. 17 d
     1345 21 15 22 13 xii kal. Apr. vii kal. Apr. 20 c
     1346 22 26 23 14 v idus Apr. xvii kal. Maii 21 b
     1347 23 7 24 15 iv kal. Apr. Kal. Aprilis 17 a
     1348 24 18 25 16 xv kal. Maii xii kal. Maii 17 c b
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,820,510,850">
+  <bloco tipo="nota_marginal" script="latino" bbox="30,640,50,710">
+    Ogdoas.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="30,710,50,800">
+    Hendecas.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,690,510,710">
     D
   </bloco>
 
-  <!-- Tabela 6: Bottom Right -->
-  <bloco tipo="cabecalho" script="latino" bbox="510,725,940,760">
+  <!-- Coluna Direita Inferior -->
+  <bloco tipo="texto_principal" script="latino" bbox="510,580,940,810">
     Circulus septuagesimus quartus, secundum eumdem Dionysium.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,760,510,880">
-    Ogdoas.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,880,510,990">
-    Hendecas.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,760,900,990">
     Anni Domini. Indictiones. Epactæ. Concurrentes. Cycli lunares. Decima quarta luna. Dies Dominicus Paschæ. Luna diei. Littera Dom.
     1387 7 0 1 17 Nonæ Aprilis viii idus Apr. 16 e
     1388 8 11 2 18 viii kal. Apr. iv kal. Apr. 18 b
@@ -227,15 +187,24 @@
     1397 17 20 11 8 xvii kal. Maii x kal. Maii 21 g
     1398 18 1 12 9 viii idus Apr. vii idus Apr. 17 f
     1399 19 12 13 10 ix kal. Apr. iv idus Apr. 20 e
-    1400 20 23 14 11 u idus Apr. xiv kal. Maii 20 d
+    1400 20 23 14 11 ii idus Apr. xiv kal. Maii 20 d
     1401 21 4 15 12 Kal. Aprilis iii non. Apr. 16 c
     1402 22 15 16 13 xii kal. Apr. vii kal. Apr. 19 b
     1403 23 26 17 14 v idus Apr. xvii kal. Maii 20 a
     1404 24 7 18 15 iv kal. Apr. iii kal. Apr. 15 g
     1405 25 18 19 16 xv kal. Maii xiii kal. Maii 16 f
   </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,640,510,710">
+    Ogdoas.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,710,510,800">
+    Hendecas.
+  </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="400,970,600,990">
+  <bloco tipo="rodape" script="latino" bbox="400,950,600,980">
     Digitized by Google
   </bloco>
+  <notas>
+    Transcrição baseada na imagem. As letras dominicais foram corrigidas conforme o ciclo juliano visível (e.g., 1292 'e b', 1293 'd c'). Os cabeçalhos das colunas estão no final de cada bloco de tabela. As letras A, B, C, D são notas marginais centrais.
+  </notas>
 </pagina>

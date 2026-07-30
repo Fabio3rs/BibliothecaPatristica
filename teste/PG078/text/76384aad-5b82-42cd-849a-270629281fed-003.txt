@@ -1,5 +1,5 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,30,900,220">
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,220">
     PATROLOGIÆ
     CURSUS COMPLETUS,
     SEU BIBLIOTHECA UNIVERSALIS, INTEGRA, UNIFORMIS, COMMODO, ŒCONOMICA,
@@ -8,7 +8,7 @@
     QUI AB ÆVO APOSTOLICO AD ÆTATEM INNOCENTII III (ANN. 1216) PRO LATINIS,
     ET AD CONCILII FLORENTINI TEMPORA (ANN. 1439) PRO GRÆCIS FLORUERUNT :
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,220,900,545">
+  <bloco tipo="texto_principal" script="latino" bbox="50,220,950,550">
     RECUSIO CHRONOLOGICA
     OMNIUM QUÆ EXSTITERE MONUMENTORUM CATHOLICÆ TRADITIONIS PER QUINDECIM PRIORA
     ECCLESIÆ SÆCULA ET AMPLIUS,
@@ -32,13 +32,13 @@
     USQUE AD NOVISSIMUM APOCALYPSIS, COMMENTATI SINT :
     EDITIO ACCURATISSIMA, CÆTERISQUE OMNIBUS FACILE ANTEPONENDA, SI PERPENDANTUR CHARACTERUM NITIDITAS,
     CHARTÆ QUALITAS, INTEGRITAS TEXTUS, CORRECTIONIS PERFECTIO, OPERUM RECENSORUM TUM VARIETAS
-    TUM NUMERUS, FORMA VOLUMINUM PERQUAM COMMODO SIBIQUE IN TOTO PATROLOGIÆ DECURSU CONSTANTER
+    TUM NUMERUS, FORMA VOLUMINUM PERQUAM COMMODO SIBIQUE IN TOTO PATROLOGIÆ DECURSU CONSTANter
     SIMILIS, PRETII EXIGUITAS, PRÆSERTIMQUE ISTA COLLECTIO UNA, METHODICA ET CHRONOLOGICA,
     SEXCENTORUM FRAGMENTORUM OPUSCULORUMQUE HACTENUS HIC ILLIC SPARSORUM, VEL ETIAM
     INEDITORUM, PRIMUM AUTEM IN NOSTRA BIBLIOTHECA, EX OPERIBUS ET MSS. AD OMNES
     ÆTATES, LOCOS, LINGUAS FORMASQUE PERTINENTIBUS, COADUNATORUM.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,545,800,640">
+  <bloco tipo="texto_principal" script="latino" bbox="50,550,950,640">
     SERIES GRÆCA PRIOR,
     IN QUA PRODEUNT PATRES, DOCTORES SCRIPTORESQUE ECCLESIÆ GRÆCÆ
     A S. BARNABA AD PHOTIUM,
@@ -46,22 +46,36 @@
     Bibliothecæ cleri universæ,
     SIVE CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,640,900,800">
-    PATROLOGIA, AD INSTAR [ilegivel] [ilegivel] TUR, ALIAM NEMPE LATINAM, ALIAM GRÆCO-LATINAM
-    AMBÆ PARTES PENE [ilegivel] [ilegivel] DUCEINTIS ET VIGINTI DUOBUS VOLUMINIBUS MOLE SUA
-    STANS, DECEM ET [ilegivel] [ilegivel] DUPLICI EDITIONE TYPIS MANDATA EST. PRIOR
-    GRÆCUM TEXTUM [ilegivel] [ilegivel] LECTITUR, NOVEMQUE ET CENTUM VOLUMINA, PRO PRIMA
-    SERIE GRÆCA, [ilegivel] [ilegivel] LATINAM TANTUM EXHIBET, IDEOQUE INTRA QUINQUE ET
-    QUINQUAGINT [ilegivel] [ilegivel] GRÆCO-L [ilegivel] SEPTUAGINTA VOLUMINA PROBABILITER
-    BOS SUPER [ilegivel] [ilegivel] QUINQUE [ilegivel] TA VOLUMINIBUS ABSOLVETUR. UNUM-
-    QUODQUE [ilegivel] [ilegivel] QUE MER [ilegivel] QUINQUE FRANCIS SOLUMMODO EMITUR:
-    UTROBIQ [ilegivel] [ilegivel] TUR ER [ilegivel] ECTIONEM INTEGRAM, SIVE LATINAM,
-    SIVE [ilegivel] [ilegivel] QUIS EMA [ilegivel] AMPLIUDINEM NECNON ET DIFFICUL-
-    [ilegivel] [ilegivel] QUODQUE [ilegivel] SEORSIM COLLECTIONEM GRÆCO-LATINAM,
-    [ilegivel] [ilegivel] US APPLI [ilegivel] NOVEM VEL PRO SEX FRANCIS OBTINEBIT.
-    [ilegivel] [ilegivel] PUS EAS TYPIS MANDANDI NON NOBIS DEEST.
+  <bloco tipo="texto_principal" script="latino" bbox="50,640,480,800">
+    PATROLOGIA, AD INSTAR
+    AMBÆ PARTES PENE
+    STANS, DECEM ET
+    GRÆCUM TEXTU
+    SERIE GRÆCA,
+    QUINQUAGINT
+    BOS SUPER
+    QUODQUE
+    UTROBI
+    SIVE
+    TA
+    BO
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="300,800,850,900">
+  <bloco tipo="texto_principal" script="latino" bbox="480,640,950,800">
+    TUR, ALIAM NEMPE LATINAM, ALIAM GRÆCO-LATINAM
+    DUCENTIS ET VIGINTI DUOBUS VOLUMINIBUS MOLE SUA
+    ECA DUPLICI EDITIONE TYPIS MANDATA EST. PRIOR
+    LECTITUR, NOVEMQUE ET CENTUM VOLUMINA, PRO PRIMA
+    LATINAM TANTUM EXHIBET, IDEOQUE INTRA QUINQUE ET
+    GRÆCO-L [ilegivel] SEPTUAGINTA VOLUMINA PROBABILITER
+    QUINQUE [ilegivel] TA VOLUMINIBUS ABSOLVETUR. UNUM-
+    QUE MER [ilegivel] QUINQUE FRANCIS SOLUMMODO EMITUR:
+    ECTIONEM INTEGRAM, SIVE LATINAM,
+    AMPLIUDINEM NECNON ET DIFFICUL-
+    SEORSIM COLLECTIONEM GRÆCO-LATINAM,
+    NOVEM VEL PRO SEX FRANCIS OBTINEBIT.
+    PUS EAS TYPIS MANDANDI NON NOBIS DEEST.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="300,800,850,920">
     LXXVIII.
     ZOSIMUS ABBAS.
     J.-P. MIGNE, EDITOREM,
@@ -72,10 +86,10 @@
     Digitized by Google
   </bloco>
   <notas>
-    - A página é uma página de título/introdução da Patrologia Graeca.
-    - A seção inferior contém duas colunas de texto, fortemente obscurecidas por uma mancha/sombra na esquerda e centro.
-    - O texto visível na coluna direita foi transcrito, marcando o início das linhas como [ilegivel] onde a sombra corta o texto.
-    - O número do volume é LXXVIII (78).
-    - Ligaturas (Æ, Œ) e abreviaturas foram mantidas conforme a imagem.
+    - Página de título da Patrologia Graeca, volume LXXVIII (Zosimus Abbas).
+    - A seção inferior contém duas colunas de texto; a coluna da esquerda está fortemente obscurecida por sombra/mancha.
+    - A coluna da direita é legível, mas com inícios de palavras cortados devido à divisão de colunas e sombra.
+    - Ligaturas (Æ, Œ) e abreviaturas (SS., etc.) mantidas conforme a imagem.
+    - Hifenização no final das linhas preservada (ex: DILIGEN- TER).
   </notas>
 </pagina>

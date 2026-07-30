@@ -1,9 +1,9 @@
 <pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="40,10,960,70">
-381  CODEX CANONUM ECCLES. ET CONSTITUTORUM S. SEDIS APOSTOL. 507
+381  CODEX CANONUM ECCLES. ET CONSTITUTORUM S. SEDIS APOSTOL.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="40,80,480,700">
+  <bloco tipo="texto_principal" script="latino" bbox="40,80,480,740">
 XI. Quisquis sane clericus uiduam, aut certe se-
 condam conjugem duxerit, omni ecclesiasticae digni-
 tatis privilegio mox deuidetur, laica sibi tanum com-
@@ -13,7 +13,7 @@ si nihil postea, propter quod hanc perdat, admittat.
 XII. Feminas uero non alias esse patimur in
 domibus clericorum, nisi eas tantum quas propter
 suas necessitudinum causas habitare cum iisdem
-synodis. Nicaena permisit.
+synodus. Nicaena permisit.
 
 XIII. Monachos quoque, quos tamen morum
 gravitas et uitae ac fidei institutio sancta commendat,
@@ -51,14 +51,16 @@ us posthac prov.nciarum omnium summi antistites,
   <bloco tipo="nota_marginal" script="latino" bbox="495,140,515,190">
 A
   </bloco>
+
   <bloco tipo="nota_marginal" script="latino" bbox="495,320,515,370">
 B
   </bloco>
+
   <bloco tipo="nota_marginal" script="latino" bbox="495,520,515,570">
 C
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="520,80,960,700">
+  <bloco tipo="texto_principal" script="latino" bbox="520,80,960,740">
 quod si ultra ad sacros ordines quemquam ilegitimus
 crediderint resumendum, et de suo, et de eorum
 statu, quos contra canones et interdicta nostra proue-
@@ -145,5 +147,5 @@ non promoveatur. Mox his omnibus deleta præpositione
 Digitized by Google
   </bloco>
 
-  <notas>Script: latino. Observações paleográficas: marginalia A, B, C colocadas no gutter entre columnias e transcritas em blocos próprios (removidas do fluxo principal); mantive hifenizações, abreviações e ortografia visíveis na folha sem normalização. Não foram usadas marcações [ilegivel] neste trecho. Aparato crítico e notas editoriais transcritas conforme visíveis.</notas>
+  <notas>estado="com_texto". Scriptura latina. Disposiçao em duas columnas: primeiro bloco texto_principal=columna esquerda (bbox 40,80,480,740), depois columna direita (bbox 520,80,960,740). Marginalia A, B, C colocadas como blocos nota_marginal no gutter. Mantida ortografia, hifenização e abreviações visíveis no original; nenhuma normalização ou tradução efetuada. Aparato crítico e rodapé transcritos conforme folha.</notas>
 </pagina>

@@ -1,19 +1,21 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,50">
-    417 CODEX CANONUM ECCLES. ET CONSTITUTORUM S. SEDIS APOSTOL. 418
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,90">
+    CODEX CANONUM ECCLES. ET CONSTITUTORUM S. SEDIS APOSTOL.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="40,55,55,70">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="50,95,70,120">
     A
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,55,440,640">
-    VIII. Si presbyter fuerit accusatus, cum quinque collegis ex vicinis episcopus causam suam audiat; si diaconus, cum duobus.
+
+  <bloco tipo="texto_principal" script="latino" bbox="60,100,460,640">
+    VIII. Si presbyter fuerit accusatus, cum quinque collegis ex vicinis episcopus causam suam audiat : si diaconus, cum duobus.
     IX. Si episcopo aut clerico fuerit crimen institutum.
     X. Ut judices ecclesiastici ad alios judices causam non provocent.
     XI. Ut filii clericorum spectacula non exhibeant.
     XII. Ut filii episcoporum hæreticis non conjungantur.
     XIII. Ut episcopi et clerici non ejiciant filios suos.
     XIV. Ut episcopi et clerici nihil conferant rerum suarum nisi catholicis.
-    XV. Episcopus, presbyter, aut diaconus non sint conductores.
+    XV. e Episcopus, presbyter, aut diaconus non sint conductores.
     86 XVI. Ut clericus cum extraneis feminis non habitet.
     XVII. De sacris gradibus.
     XVIII. De lectoribus.
@@ -23,65 +25,75 @@
     XXII. Ut nullus clericis amplius accipiat quam dedit.
     XXIII. In sacramentis aliud non offeratur quam panis et vinum aqua mixtum.
     XXIV. Ne episcopi, presbyteri, aut clerici ad viduas vel virgines soli accedant.
-    XXV. Primæ sedis episcopus princeps sacerdotum appelletur.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="40,460,55,475">
-    C
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,475,440,640">
+    XXV. Primae sedis episcopus princeps sacerdotum appellentur.
     XXVI. In taberna nec manducent nec bibant clerici.
     XXVII. Ut episcopus trans mare non proficiscatur.
-    XXVIII. Ut a jejunis aliariis sacramenta celebrentur.
+    XXVIII. Ut a jejunis altaris sacramenta celebren ur.
     XXIX. Ut in Ecclesia neque episcopus, neque clerici conviventur.
-    XXX. Ut presbyter inconsulto episcopo non reconciliet pænitentem.
-    XXXI. Ut virgines gravioribus feminis commendentur.
+    XXX. Ut presbyter inconsulto episcopo non reconcili et pœnitentem.
+    XXXI. Ut virgines gravioribus feminis commendantur.
     XXXII. Ut ægrotantes baptizentur.
     XXXIII. Ut reversis reconciliatio non negetur.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="460,55,940,160">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="440,320,470,360">
+    B
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="460,100,940,640">
     XXXIV. Ut presbyter chrisma non conficiat.
     XXXV. In aliena civitate clerici non morentur.
     XXXVI. Hæ sunt Scripturæ canonicæ quæ in Ecclesia leguntur : præter id aliud non legatur.
     XXXVII. Ut Donatistæ in numero laicorum recipiantur.
     XXXVIII. Ut episcopus minus quam a tribus episcopis non ordinetur.
     87 XXXIX. De infantibus qui incerti sunt fuisse baptizatos, absque dubitatione baptizentur.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="445,260,460,275">
-    B
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="460,260,940,560">
-    Dilectissimis fratribus et coepiscopis diversarum provinciarum Numidiæ, et Mauritaniæ utriusque, Tripolis, et provinciæ proconsularis : AURELIUS, MIZANUS, et cæteri episcopi.
-    Ecclesiasticæ utilitatis causa dum in Carthaginensi urbe convenerimus in unum, a plerisque suggestum est, ea quæ in concilio Hipponensi jamdudum maturata sunt, et legitime ad corrigendam disciplinam salubriter gesta et statuta noscuntur, effrenata temeritate quosdam minime custodire. Ad hujusmodi vero excusandos excessus, illud ab aliquibus prætendi, quod ea, quæ jamdudum cum legibus statuta sunt, ignorantes prave miserint. Ob quam rem, hæc communi consilio per universam provinciam Byzacenam in notitiam cunctis deducenda censuimus, ut si hinc quisquis decretorum temerator exstiterit, sciat se status sui ordinum fuisse jacturam. Brevem vero statutorum, in quo omnia videntur esse complexa, et quædam diligentius constituta, huic epistolæ subdi fecimus, ut compendio, quæ decreta sunt recentes, sollicitius observare curemus.
-    Optamus vos, fratres, semper in Deo bene valere, et nostri memores esse. Et manu emis MIZANI.
+    
+    Dilectissimis fratribus et coepiscopis diversarum provinciarum Numidiæ, et Mauritaniæ utriusque, Tripolis, et provinciæ proconsularis : AURELIUS, MIZONIUS, et cæteri episcopi.
+    
+    Ecclesiasticæ utilitatis causa dum in Carthaginensi urbe convenerimus in unum, a plerisque suggestum est, ea quæ in concilio Hipponensi jamdudum maturata sunt, et legitime ad corrigendam disciplinam salubriter gesta et statuta noscuntur, effrenata temeritate quosdam minime custodire. Ad hujusmodi vero excusandos excessus, illud ab aliquibus prætendi, quod ea, quæ jamdudum cum legibus statuta sunt, ignorantes prave miserint. Ob quam rem, hæc communi consilio per universam provinciam Byzacencam in notitiam cunctis deducenda censuimus, ut si hinc quisquis decretorum temerator exstiterit, sciat se status sui ordinum fuisse jacturam. Brevem vero statutorum, in quo omnia videntur esse complexa, et quædam diligentius constituta, huic epistolæ subdi fecimus, ut compendio, quæ decreta sunt recentes, sollicitius observare curemus.
+    
+    Optamus vos, fratres, semper in Deo bene valere, et nostri memores esse. Et manu emissis MIZANI.
+    
     Optamus vos, fratres, 88 beatos semper in Domino gaudere, et nostri memores esse.
+    
+    Statuta concilii Hipponensis breviata, et quædam eorum in concilio Carthaginensi cum Byzacenis episcopis collata et diligentius pertractata, hæc sunt.
+    
+    Nicæni concilii professio et fides recitata et confirmata est, ea quæ ita se habet. Credimus in unum provinciam Byzacencam, nam generali provinciæ consularis nomine Byzacium nunquam designatum invenitur.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="460,565,940,640">
-    Statuta concilii Hipponensis breviam. et quædam eorum in concilio Carthaginensi cum Byzacenis episcopis collata et diligentius pertractata, hæc sunt.
-    Nicæni concilii professio et fides recitata et confirmata est, a quæ ita se habet. Credimus in unum
-    provinciam Byzacenam, nam generali provinciæ consularis nomine Byzacium nunquam designatum invenitur.
+
+  <bloco tipo="nota_marginal" script="latino" bbox="50,360,70,390">
+    C
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="40,680,55,695">
-    D
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="60,660,440,940">
-    a Crabbas, causa sua discutatur, diaconus cum duobus.
-    b Cod. Vindeb., non conferant. Crabbi lectionem præferendam conteximus.
+
+  <bloco tipo="aparato_critico" script="latino" bbox="60,640,460,940">
+    a Crabbus, causa sua discutatur, diaconus cum duobus.
+    b Cod. Vindeb., non conferant. Crabbi lectionem præferendam contexuimus.
     c Ms. Vindeb., Ne episcopus, neque presbyter... non sint. Melius apud Crabbium, quem secuti sumus.
     d Sic ex eodem Crabb. In Vind. minus recte : Ne episcopi, neque presbyteri... non accedant.
     e Apud Crabbium, Scripturæ canonicæ in Ecclesia legendæ, quæ sint, et præter quas aliæ non legantur.
     f Ms. Crabbi, De his qui in nullo testimonio se baptizatos noverunt, ut baptizentur.
-    g Quæst., consulatis. Melius in cod. Crabbi; concilium enim in quo hæc breviatione ita fuit, a Byzacenis cum Aurelio celebratum idibus Augusti, breviarum canonum Hipponensium direxit ad episcopos cæterarum provinciarum Africæ plenaria synodo congregandos, ut ad isdem confirmarentur, quemadmodum ex Aurelii verbis in præmissa admonitione cognoscimus. Inter prolixas autem ejusmodi epistolas non erat præcumenda, quæ primum locum obtinebat. Neque consularis cum Harduino in eligas
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="460,660,940,940">
-    h Sie ex ms. Vindeb. Crabbi exemplar, convenimus. Cod. Thuan., in Carthaginensem urbem convenimus. Quæst., convenientes.
+
+  <bloco tipo="aparato_critico" script="latino" bbox="460,640,940,940">
+    g Quæst., consulatis. Melius in cod. Crabbi; concilium enim in quo hæc breviatio ita fuit, a Byzacenis cum Aurelio celebratum idibus Augusti, breviarum canonum Hipponensium direxit ad episcopos cæterarum provinciarum Africæ plenariam synodum congregandos, ut ad isdem confirmarentur, quemadmodum ex Aurelii verbis in præmissa admonitione cognoscimus. Inter prolixas autem ejusmodi epistolas non erat præcumbersome, quæ primum locum obtinebat.
+    h Sic ex ms. Vindeb. Crabbi exemplar, convenimus. Cod. Thuan., in Carthaginensem urbem convenimus. Quæs., convenientes.
     i Ex his verbis nonnulli putarunt has litteras ad episcopos Byzacenos fuisse directas, ac proinde falsam esse inscriptionem qua hæ litteræ ad episcopos aliarum provinciarum Africæ datæ præferuntur. Cuncta quæ in admonitione disseruimus num. 6.
     k Cod. Vind., ab his. Crabb., in his quinque, male.
-    l Crab., custodiat, unde; et post pauca pro subdi fecimus Harduinus notavit, alios subdidimus.
-    m Hæc prima salutatio ad Aurelium pertinere videtur. Confer præmissam admonitionem n. 6
-    n Hucusque ms. Oxon.: reliqua suppl. ex eodd. Thuan. et Crabbi. Leguntur etiam in Vindelbon.
-    o Sequenti supplevimus ex ms. Cr bbi, Vindobonensi, et Hubertino a, ad P. Cretantium. Quesnellus codicem Oxoniensem secutus, symbolum omi-
+    l Crabb., custodiat, unde; et post pauca pro subdi fecimus Harduinus notavit, alios subdidimus.
+    m Hæc prima salutatio ad Aurelium pertinere videtur. Confer præmissam admonitionem n. 6.
+    n Hucusque ms. Oxon.: reliqua suppl. ex cod. Thuan. et Crabbi. Leguntur etiam in Vindelbon.
+    o Sequenti supplevimus ex ms. Crabbi, Vindobonensi, et Hubertino a, ad P. Creatanium. Quesnellus codicem Oxoniensem secutus, symbolum omi-
   </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="50,660,70,695">
+    D
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="380,920,620,980">
+    Digitized by Google
+  </bloco>
+
   <notas>
-    Transcrição de página de códice canônico em latim. Layout em duas colunas com aparato crítico no rodapé. Números 86, 87, 88 indicam paginação ou seções internas. Letras A, B, C, D são marcas marginais de seção/nota.
+    Transcrição fiel do folio com duas colunas. Letras marginais A, B, C, D foram transcritas em blocos "nota_marginal" separados, não inseridas no fluxo principal. Aparato criticus transcrito conforme impresso no rodapé em duas colunas. Conservadas ortografia e abreviações visíveis no original; nenhuma normalização feita.
   </notas>
 </pagina>

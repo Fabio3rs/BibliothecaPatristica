@@ -1,27 +1,53 @@
-<pagina estado="com_texto">
-  <bloco tipo="texto_principal" script="grego" bbox="60,140,470,860">
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    380 COD. DIPLOM. — MONUM., ETC., SEU CODEX CAROLINUS. — EPP. ADRIANI. 390
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="530,140,940,860">
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
-[ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel] [ilegivel]
+  <bloco tipo="texto_principal" script="latino" bbox="60,70,470,580">
+    litanias perageremus, valde hoc nobis delectabile existit, quatenus apostolica exarantes censura decrevimus in omnibus nostris partibus quæ sub ditione spiritalis matris vestræ sanctæ Romanæ Ecclesiæ existunt, illico celebrari easdem una nobiscum, disponentes emisimus, Domino protegente, videlicet vicesima tertia die et vicesima sexta, atque vicesima octava hujus advenientis Junii mensis, quæ sunt in primis vigiliæ beati Joannis Baptistæ, et natalis sanctorum Joannis et Pauli, nec non et vigiliæ beati Petri apostoli a; similiter et vestra regalis potentia in suis dirigat universis finibus, seu transmarinis partibus, ubi Christiana moratur gens similiter perficiendas triduanas litanias; et ideo tale protelatum emisimus spatium, propter tam longinquas Christianas nationes ultra vestrum regale morantes regnum b. Nos quippe non solum unam vel duas, ut nobis insinuastis, celebrandas litanias prævidimus, sed etiam pro vestra, ut soliti sumus, indesinenter orare excellentia cupientes, decrevimus perficere, et Redemptori mundi canere laudes, ut ipsæ gentes, quæ per vestrum regale certamen ad Christianam perductæ sunt fidem, usque in ævum per vestrum maneant adminiculum, et nostris vestrisque finibus
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="475,210,525,250">A</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="475,390,525,430">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="475,570,525,610">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="475,750,525,790">D</bloco>
-  <notas>Texto principal em grego; palavras individualizadas como [ilegivel] devido à baixa resolução da imagem, que impede leitura segura no nível de palavra. Identificadores de seção A–D no gutter central transcritos conforme layout.</notas>
+  <bloco tipo="texto_principal" script="latino" bbox="530,70,940,580">
+    omnes repelli faciat ægritudinis morbos et procul ejiciat pestilentiam, ut nostris vestrisque diebus populus nobis a Deo commissus in magna degentes ubertatis affluentia simulque sincerissimæ sospitatis lætitia, longiori ævo una cum domna regina vestraque nobilissima prole mereamini regni gubernacula perfrui, et in æthereis arcibus sine fine regnare, ut per vestra laboriosa certamina magis magisque spiritalis mater vestra, sancta Romana Ecclesia, maneat exaltata. Incolumem excellentiam vestram gratia superna custodiat.
+
+    c LXXXVI.
+
+    465 (An. Dom. 786, Cod. Car. LXXX, chron. 85.)
+
+    d ARGUMENTUM. — Itherio et Maginario, abbatibus missis regiis quærentibus, quænam pœnitentia indicenda esset Saxonibus ad paganismum reversis, reponit prudentia episcopali opus esse, et hujusmodi lapsos, si vere conversi fuerint, admittendos.
+
+    Domno excellentissimo filio nostroque spiritali compatri Carolo, regi Francorum et Langobardorum atque patricio Romanorum, Adrianus papa.
+
+    Vestrae a Deo protectæ regalis excellentiæ suscipientes missos, scilicet Itherium et Magenarium religiosos abbates c, sciscitati sunt nos interrogantes de
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,80,520,100">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,280,520,300">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,680,520,700">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="480,850,520,870">
+    D
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="60,590,470,940">
+    a Ad epist. 50, al. 55, cum Adr. nuntiabat Carolo, se tercenties cani Kyrie eleison tota Urbe jussisse tempore obsidionis Papiensis an. 774, de eo genere litaniæ agebam, quod citra supplicationem fiebat extensis manibus in cunctis ecclesiis. Hic autem de celebrandis triduanis litaniis in supplicatione res est. De ratione eas celebrandi suppetit ap. Mabillonium (In Ordd. Romm. Comm. præ.) ex vetusto Rituali S. R. E. in cod. Cassinen. hujusmodi documentum : « In assumptione sanctæ Mariæ in ipsa vespera vigiliarum, præeparatur quoddam portatorium in sancto Laurentio apud Lateranos; suppositaque tabula imagine Christi Domini nostri insignita, a medio noctis concurrente populo exeunt cum litania ad sanctam Mariam Minorem, mundatis per viam plateis et suspensis per domos lucernis; ibique in gradibus sanctæ Mariæ deposita aliquandiu icona omnis chorus virorum ac mulierum genibus humiliter ante eam flexis, pugnis etiam pectora cædentes una voce per numerum dicunt centies Kyrie eleison, centies Christe eleison, item centies Kyrie eleison; fusisque lacrymis et precibus per sanctum Adrianum recta via vadunt ad sanctam Mariam Majorem, auditaque missarum celebritate ad palatium revertuntur. » Documentum spectat ad tempora Ottonis III, seu mavis ad exitum seculi decimi. Quare triduanas litanias ab Adriano indictas probabile est a nuper laudata haud abluere : quæ duæ præsertim decernuntur celebrandæ vigiliis. Illustratores Glossarii Cangiani ex Capitular. (tom. I, col. 256) exhibent epistolam Caroli Magni hæc narrantem : « Nos autem Domino adjuvante tribus diebus litaniam fecimus, id est Nonis Septembris, quod fuit Lunis die incipientes, et Martis et Mercuris, Dei misericordiam deprecantes, ut nobis pacem et sanitatem, atque victoriam, et prosperum iter tribuere dignetur... Et vino et carne ordinaverunt sacerdotes nostri, qui propter infirmitatem aut senectudinem aut juventudinem abstinere poterant, ut abstinuissent... Et interim quod ipsas litanias faciebant, discalceati ambulassent. » Ex quibus, ni fallor satis lucis affulget litaniis cum supplicatione, sive ut vulgo aiunt, processione celebratis, eo tantum discrimine inter Romanas et Francicas, quod in Urbe quietis aliquid dabatur litaniam ter celebrantibus, at in Francia continuato tridui spatio,
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="530,590,940,940">
+    Rogationum instar, ex supplicationes agebantur, juxta disciplinam quæ per illam ætatem inibi obtinebat. CENN.
+
+    b Duo hinc certo colligimus. Primo, litanias a pontifice indictas occasione conversionis Saxonum in tota ecclesiastica ditione, totaque Francorum monarchia, utrobique statis diebus celebratas esse. Deinde utramque ditionem adeo luculenter distingui, ut qui dominationem sanctæ sedis in dubium revocare audet, non solum a veritate longe abire, sed manifeste mentiri dicendus sit. ID.
+
+    c Summ. ex Bar. Indicaverat Carolus rex Adriano per Itherium et Manegarium abbates, Saxones quosdam in paganismum relapsos esse, deque iis quid agendum esset interrogavit. Respondit Adrianus papa post longam pœnitentiam illos ad consortium Ecclesiæ posse recipi. — Sum. 9 Baron. et Centur. GRÆTS.
+
+    d Argum. Panv. (Cod. Vat. 9) : « Indicaverat Carolus rex Adriano [ Hadr. ] per Itherium [ Ither. ] et Monegarium abbates, Saxones quosdam in paganismum relapsos esse, deque iis quid agendum esset interrogavit. Respondet Adrianus papa [ Hadr. papa epistola nona ] post longam pœnitentiam illos posse recipi in epistola nona [ illos ad consortium Ecclesiæ posse recipi ]. » CENN.
+
+    e Pagius ( an. 783, n. 13) hanc epistolam datam putat an. 783, quia reginæ mentionem non videt, eumque imitatur Zacagnius (ms. n. 165). Uterque allucinatur, ut dixi alias (p. 68, not.); etenim pontifex disciplinæ tantum satagens de relapsis, nec reginæ, nec regiæ sobolis, nec temporalis alicujus rei mentionem facit. Præterea alio ex capite allucinatio emergit, quod ibidem (inter not.) admonui; etenim Maginarius Dionysianus abbas successit Fulrado anno 781, post diem 16 Jul. quare epistola dari non potuit præcedenti anno, quam Maginarius abbas et ejus collega Hitherius missi regii attulerunt. Aut igitur ad hunc annum aut ad sequentem pertinet : ego vero statim post conversionem Saxonum eam constituo, quia materiæ affinitas ita faciendum suadet. Præterquam quod credibile admodum est, præcipiti ea in conversione ad ducis exemplum facta, nonnullos aut rudes, aut paganismo nimium addictos ad errorem continuo reversos esse. ID.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="350,950,650,990">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcrição fiel da página impressa (Patrologia Latina). O texto principal está em latim com algumas citações em grego transliterado (Kyrie eleison). As letras marginais A, B, C, D foram mapeadas como nota_marginal no gutter central. O aparato crítico (notas de rodapé) está dividido em dois blocos visuais (esquerdo e direito) na parte inferior. A nota 'a' flui do bloco esquerdo para o direito.
+  </notas>
 </pagina>

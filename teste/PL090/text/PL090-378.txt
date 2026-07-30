@@ -1,47 +1,93 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,120">
-    BEDE. VENERABILIS OPERUM PARS I. SECT. II. -- DIDASCALICA SPURIA ET DUBIA. 7'8
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    77 BEDAE VENERABILIS OPERUM PARS I. SECT. II. — DIDASCALICA SPURIA ET DUBIA. 778
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,120,980,560">
+  <bloco tipo="texto_principal" script="latino" bbox="50,60,900,400">
     Bissextiles anni D F A C E G B
-    Dominici dies. c o a g e p c h g f e j b a g q d c q a t e d c a g t e
-    Concurreutes. 4 5 6 7 2 3 1 :: 7 1 2 3 5 6 7 1 3 4 5 6 1 2 3 4 6 7 1 2
+    Dominici dies. c o a g e p c h g f e j b a g q d c q a f e d c a g f e
+    Concurrentes. 4 5 6 7 2 3 1 :: 7 1 2 3 5 6 7 1 3 4 5 6 1 2 3 4 6 7 1 2
     Anno Domini.
-    1064    R g . t . c . c p . p . t . l . d . g . g   F d . c . p . e  V . t . d  g . h . g . m . m . d   28
-    1092    h . H u . c . d . f . h . a . m . m R . i . h . u . e . e  Q . q . a . m . r . i . a . n . e . c . k. 56
-    1120    . i A s . f . r . i . b . o . n . f  k . k . a . f . f . s . b . o  o  S . k . k . p . f . f . l . 84
-    1146    . h . o . g . t . k . p . g . f . l . c . g . g  f . d . c . p . p . a . l . q . h . q . g . d . a . 112
-    1176    p . p   V . m . n . q . h . H . m . m . d . j . h . u . e . e  q . h . a . m . r . I . n . c . f . r   140
-    1206    . a . a . m . r . i . i . o . e . E k . k . A . f . . . s . i . b . o . o . e . k . k . b  F . f  . s . c . 148
-    1236    . h . o . o . T . k . l . p . g . f . l . f . l . c . o . o . l . k . p . g . g . o . l . c . n . g . t . d . a 196
-    1269    p . p . u . m . i  q . h . h . d . d . q p . V m . c q . h . h . n . m . d . i . a . u . e . e . r 231
-    1296    H a . m . n . R . i . i . o . e . e . r . k . a . n . u n S i . i . o . f . e . k . k  . B . f . s . c . r . 252
-    1316    b . o . u . i . k . k . h . g . f . s . d . a . c . o . o . T . l . h . P . g . g . l . h . f . l . 280
-    1344    p . g . k . m . L . c . h . a . d . d . q . p . u . m . q . h . . h . N d . d . q . i . v . m . e . r . r 308
-    1362    h . h . n . n . d . l . a . e . e . r . b . a . n . n S . i . o . f . e . R k  b . n . n . 5 . . 336
-    1386    p . g . f . k . k . k . B . g . r . s . c . o . k . l . k . b . g . g . s . c . c . P . o . T . . f . . 364
-    1424    p . g . m . l . c . h . a . h . l . D . q . g . f . m . m . C . b . h . u . d . d . q . a . n . M . m  392
-    1466    h . h . n . e . d . q . l . A m e . r . i . H n . u . e . t . i . a . f . e . r . b . . n . n . S . K 420
-    1488    n . o . r . f . r . k . h . b . o . n . s . k . k . o . F . l . k . B . g . g . s . c . c . p . o . i . l 448
-    1512    . b  G  o . l . c . . p p T . l . i . q . g . g . m . m C  l . u . . d . q . h . g . m . n . R . . 476
-    1510    h . k . u . f . d . q . . r . s . m . m . r . i . h . n . e . e . q . i . a . f . e  . r . l . h . n . n 504
-    1538    . i . a . f . r . B  b . o . n . n . S k . k . o . f . f . l . k . b . o . g . S  . k . b . f . f . l . 532
+    1064 R g. .g t. c. .c p. .p t. l. .l q. g. .g T d. .c p. .e V. l. .l q. h. .g m. .m .d 28
+    1092 h. H u. c. .d q. h. .a m. .m R. i. h. u. e. .e Q .q .a n. .m r. i. .i n. e. .e k. 56
+    1120 .i .A f. .f r. i. .b o. .n .f l. .k .a f. .f s. .b .b O .o S. k. .k p. .f .f l. .d 84
+    1148 .b o. .g t. .k .K p. .g .f l. .l .C g. .g t. .d .c p. .p u. .L l. .q .h .g t. .d .d 112
+    1176 p. .p V. .m q. .h .H m. .m .d i. .h u. .e .e q. .h .a n. .m R. .l .i n. .c .f r. 140
+    1204 .q .a t. .n r. i. .i o. .e E k. .k .A f. .f s. .i .b o. .o .e k. .k .b F. .f s. .c 168
+    1232 .h o. .o T. .k .h p. .g .f l. .l .C o. .o t. .l .k p. .g .g l. .l .C h. .g t. .D .d 196
+    1260 p. .p u. .m .i q. .h .h t. .d .d q. .p V. .m .c q. .h .h n. .m .d i. .i u. .e .e r. 224
+    1288 H .a n. .n R. .i .i o. .e .e r. .k .a u. .n S. .i .i o. .f .e k. .k .B .f s. .c 252
+    1316 b. .o O. .i k. .k .h .g .f s. .d .c o. .o T. .l .k P. .g .g l. .l .c h. .g t. .d 280
+    1344 p. .g .g m. .L .C h. .h t. .d .d q. .p u. .m q. .h .h N. .d .d q. .i V. .m .e r. r. 308
+    1362 h. .h n. .n .d l. .I a. .e .e r. .b .a n. .n S. .i .i o. .f .e .R .k .b n. .n s. .k 336
+    1380 i. .o f. .f k. .k .B g. .F s. .c .c o. .o t. .l .k .b g. .g s. .c .c P. .o T. .l .l 364
+    1400 p. .g .g m. .l .C h. .h t. .l .D .q g. .f m. .m .C b. .h u. .d .d q. .q u. .M .m r. 392
+    1424 h. .h n. .e .d q. .l .A m. .e r. .i .H n. .n e. .i .i .a f. .e r. .b .b n. .n S. .K 420
+    1466 i. .o f. .f r. .k .b o. .n s. .k .k o. .f F. .l .k .B g. .g s. .c .c p. .o .i .l .l 448
+    1488 .b G. .o l. .c .c p. .p T. .l .l q. .g .g m. .m C. .l u. .d q. .h g. .m n. .R .i 476
+    1512 h. .k u. .F .d q. .q .s m. .m r. .i .h n. .e .e q. .i .A f. .e r. .i h. .n .n .e k. 504
+    1540 .i .a f. .f .r B. .b o. .n S. .k k. .o f. .f l. .k .b o. .g S. .k .k b. .f .f l. .l 532
+    1568 .i .a f. .f .r B. .b o. .n S. .k k. .o f. .f l. .k .b o. .g S. .k .k b. .f .f l. .l 560
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,560,980,840">
-    (Littere italico typo in tabula praecedenti figuratae, rubro colore in antiquis editionibus depingebantur.)
-    1 2 3 4 5 6      7     8 .      9    10 11 12 13    14
-    a 3 d a 1 b xi. kal. Apr. vi. kal. Maii vi. idus Maii 6 5 25 4 iii. kal. Decemb.
+  <bloco tipo="nota_marginal" script="latino" bbox="920,60,980,200">
+    Annus magnus cycii.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,400,900,430">
+    Litteræ italico typo in tabula præcedenti figuratæ, rubro colore in antiquis editionibus depingebantur.)
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,430,950,850">
+    1 2 3 4 5 6 7 8 9 10 11 12 13 14
+    a 3 d a 1 b xi. kal. Apr. vi. kal. Maii vi. idus Maii 6 3 25 4 iii. kal. Decemb.
     r 2 e b 2 c x. kal. Apr. v. kal. Maii v. idus Maii 6 2 25 4 ii. kal. Decemb.
-    # 1 f c 3 d v. kal. Apr. iv. kal. Maii iv. idus Maii 6 1 25 4 i. kal. Decemb.
-    t 7 g d e 6 vii. kal. Apr. iii. kal. Maii iii. idus Maii 6 6 25 4 v. non. Decemb.
-    e 6 a e 5 7 v. kal. Apr. ii. kal. Maii ii. idus Maii 5 6 25 3 v. non. Decemb.
-    ... (column continues with calendar entries in similar format)
+    a 1 f c 3 d ix. kal. Apr. iv. kal. Maii iv. idus Maii 6 1 25 4 kal. Decemb.
+    t 7 g d 4 e viii. kal. Apr. iii. kal. Maii iii. idus Maii 6 7 25 4 iv. non. Decemb.
+    e 6 a e 5 f vii. kal. Apr. ii. kal. Maii ii. idus Maii 5 6 25 4 iii. non. Decemb.
+    n 5 b f 6 g vi. kal. Apr. kal. Maii idus Maii 5 5 25 3 v. kal. Decemb.
+    t 4 c g 7 h v. kal. Apr. vii. non. Maii xvii. kal. Jun. 5 4 25 3 iv. kal. Decemb.
+    m 3 d h 8 i iv. kal. Apr. vi. non. Maii xvi. kal. Jun. 5 3 25 3 iii. kal. Decemb.
+    s 2 e i 9 k iii. kal. Apr. v. non. Maii xv. kal. Jun. 5 2 25 3 ii. kal. Decemb.
+    s 1 f k 10 l ii. kal. Apr. iv. non. Maii xiv. kal. Jun. 5 1 25 3 kal. Decemb.
+    e 7 g l 11 m kal. Apr. iii. non. Maii xiii. kal. Jun. 4 7 25 3 iv. non. Decemb.
+    m 6 a m 12 n vii. idus Apr. ii. non. Maii xii. kal. Jun. 4 6 25 3 iii. non. Decemb.
+    s 5 b n 13 o vi. idus Apr. non. Maii xi. kal. Jun. 4 5 25 2 v. kal. Decemb.
+    e 4 c o 14 p v. idus Apr. viii. idus Maii x. kal. Jun. 4 4 25 2 iv. kal. Decemb.
+    m 3 d p 15 q iv. idus Apr. vii. idus Maii ix. kal. Jun. 4 3 25 2 iii. kal. Decemb.
+    s 2 e q 16 r iii. idus Apr. vi. idus Maii viii. kal. Jun. 4 2 25 2 ii. kal. Decemb.
+    u 1 f r 17 s ii. idus Apr. v. idus Maii vii. kal. Jun. 4 1 25 2 kal. Decemb.
+    s 7 g s 18 t idus Apr. iv. idus Maii vi. kal. Jun. 3 7 25 2 iv. non. Decemb.
+    o 6 a t 19 u xvii. kal. Maii iii. idus Maii v. kal. Jun. 3 6 25 2 iii. non. Decemb.
+    r 5 b u 20 a xvi. kal. Maii ii. idus Maii iv. kal. Jun. 3 5 25 2 ii. non. Decemb.
+    o 4 c v 21 b xv. kal. Maii idus Maii iii. kal. Jun. 3 4 25 1 iv. kal. Decemb.
+    t 3 d x 22 c xiv. kal. Maii xvii. kal. Jun. ii. kal. Jun. 3 3 25 1 iii. kal. Decemb.
+    c 2 e y 23 d xiii. kal. Maii xvi. kal. Jun. kal. Jun. 3 2 25 1 ii. kal. Decemb.
+    e 1 f z 24 e xii. kal. Maii xv. kal. Jun. vii. idus Jun. 3 1 25 1 kal. Decemb.
+    e 7 g a 25 f xi. kal. Maii xiv. kal. Jun. vi. idus Jun. 2 7 25 1 v. non. Decemb.
+    t 6 a b 26 g x. kal. Maii xiii. kal. Jun. v. idus Jun. 2 6 25 1 iv. non. Decemb.
+    e 5 b c 27 h ix. kal. Maii xii. kal. Jun. iv. idus Jun. 2 5 25 1 iii. non. Decemb.
+    g 4 c d 28 i viii. kal. Maii xi. kal. Jun. iii. idus Jun. 2 4 25 1 ii. non. Decemb.
+    e 3 d e 29 k vii. kal. Maii x. kal. Jun. ii. idus Jun. 2 3 25 1 kal. Decemb.
+    t 2 e f 30 l vi. kal. Maii ix. kal. Jun. idus Jun. 2 2 25 1 iv. kal. Decemb.
+    e 1 f g 31 m v. kal. Maii viii. kal. Jun. vii. idus Jun. 2 1 25 1 iii. kal. Decemb.
+    c 7 g h 32 n iv. kal. Maii vii. kal. Jun. vi. idus Jun. 1 7 25 1 ii. kal. Decemb.
+    y 6 a i 33 o iii. kal. Maii vi. kal. Jun. v. idus Jun. 1 6 25 1 kal. Decemb.
+    i 5 b k 34 p ii. kal. Maii v. kal. Jun. iv. idus Jun. 1 5 24 1 v. kal. Decemb.
+    4 c l 35 q kal. Maii iv. kal. Jun. iii. idus Jun. 1 4 24 1 iv. kal. Decemb.
+    
+    Retrogradæ notæ.
+    Litterarum notæ cum figura.
+    Dominicus dies Paschæ.
+    Luna Rogationum.
+    Pentecostes.
+    Hebdomadæ usque ad nativitatem divi Joannis Baptistæ.
+    Dies extra hebdomadas residuæ, etiam illius temporis.
+    Hebdomadæ a Pentecoste usque ad Adventum Domini.
+    Vacantes hebdomadæ.
+    Adventus Domini
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="20,840,980,990">
+  <bloco tipo="nota_marginal" script="latino" bbox="10,500,40,800">
+    Annus mensium, lunæ, etc.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,950,850,990">
     Digitized by Google
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="10,400,30,560">
-    1
-  </bloco>
-  <notas>Transcrição realizada em caracteres latinos; muitos sinais tipográficos e abreviações foram reproduzidos literalmente. Onde texto pequeno ou parcialmente ilegível aparece, preservei pontos e espaçamentos; usei "..." para indicar continuação do padrão repetitivo do calendário sem inserir conjecturas. BBOX estimadas em escala 0-1000.</notas>
+  <notas>Transcrição fiel da tabela computística e calendário. As letras com pontos (ex: "g. .g") indicam separação ou abreviação conforme visível na imagem. Textos verticais nas margens foram transcritos em blocos nota_marginal. Os rótulos verticais no rodapé da tabela foram incluídos no bloco de texto principal da tabela inferior.</notas>
 </pagina>

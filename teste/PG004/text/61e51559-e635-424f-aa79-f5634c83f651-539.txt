@@ -1,14 +1,7 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,30,100,50">
-    1065
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,50">
+    1065 VINDICIÆ OPERUM AREOPAGITICORUM 1066
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="300,30,700,50">
-    VINDICIÆ OPERUM AREOPAGITICORUM
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="900,30,950,50">
-    1066
-  </bloco>
-
   <bloco tipo="texto_principal" script="misto" bbox="50,60,480,920">
     insumque Verbum gessisse vicem mentis, effatiebat.
     Hæresos quoque suæ principiis inhærens Eutyches
@@ -67,7 +60,7 @@
     est hominum; quemadmodum et sol et lux vocatur
     Deus, qui suprema est causa et lucis et solis. Sed
     in quantum secundum substantiam totum vere homo
-    est; κατ' οὐσίαν ὅλην ἀληθῶς ἄνθρωπος ὤν. Verba
+    est; κατ' οὐσίαν λην ἀληθς ἄνθρωπος ὤν. Verba
     sunt, quæ e contra omnem hæresim, tam antiquam,
     quam novam militant, ut ait Scholiastes. Adver-
     santur ea Phantasiastæ, qui verum corpus, veram-
@@ -91,20 +84,6 @@
     affecta subsistat personali Filii Dei proprietate,
     quæ supersubstantialis est; et hæc unio, quæ di-
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="485,65,505,85">
-    A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,280,505,300">
-    B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,510,505,530">
-    C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,750,505,770">
-    D
-  </bloco>
-
   <bloco tipo="texto_principal" script="misto" bbox="515,60,950,920">
     citur hypostatica, transcendit omnem naturæ ordi-
     nem. Sed attamen revera homo; nec enim per
@@ -186,13 +165,23 @@
     hæreticus argumentis aliunde petitis, ut quæ de-
     mum grandiore quodam stylo ac insueto protulit,
   </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="50,940,200,960">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,60,510,80">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,280,510,300">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,510,510,530">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,740,510,760">
+    D
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="50,950,200,970">
     PATROL. GR. IV.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="900,940,920,960">
+  <bloco tipo="rodape" script="latino" bbox="900,950,920,970">
     33
   </bloco>
-
-  <notas>Transcrição fiel à imagem. Texto em duas colunas. Letras A, B, C, D no gutier como notas marginais. Número 677 inserido no texto da coluna direita. Grego transcrito conforme visível (οὐσιωδῶς, κατ' οὐσίαν ὅλην ἀληθῶς νθρωπος ὤν).</notas>
+  <notas>Transcrição fiel à imagem; texto apresentado em duas colunas (fluxo: coluna esquerda, depois coluna direita). Letras A, B, C, D no gutter transcritas como blocos nota_marginal separados. Scripts mistos (latim + grego) mantidos conforme imagem. BBOXes em escala 0-1000. Número "677" e passagens gregas preservadas conforme visíveis.</notas>
 </pagina>

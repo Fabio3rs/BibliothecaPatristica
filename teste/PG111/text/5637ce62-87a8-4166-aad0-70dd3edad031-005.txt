@@ -1,5 +1,5 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,200">
+  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,250">
     PATROLOGIÆ
     CURSUS COMPLETUS, [Patrologia]
     SEU BIBLIOTHECA UNIVERSALIS, INTEGRA, UNIFORMIS, COMMODO, ŒCONOMICA,
@@ -11,7 +11,7 @@
     OMNIUM QUÆ EXSTITERE MONUMENTORUM CATHOLICÆ TRADITIONIS PER QUINDECIM PRIMA
     ECCLESIÆ SÆCULA ET AMPLIUS,
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,200,900,500">
+  <bloco tipo="texto_principal" script="latino" bbox="100,250,900,520">
     JUXTA EDITIONES ACCURATISSIMAS, INTER SE CUMQUE NONNULLIS CODICIBUS MANUSCRIPTIS COLLATAS, PERQUAM DILIGEN-
     TER CASTIGATA; DISSERTATIONIBUS, COMMENTARIIS, VARIISQUE LECTIONIBUS CONTINENTER ILLUSTRATA; OMNIUM
     OPERIBUS POST AMPLISSIMAS EDITIONES QUÆ TRIBUS NOVISSIMIS SÆCULIS DEBENTUR ABSOLUTAS DETECTIS, AUCTA;
@@ -37,7 +37,7 @@
     PRIMUM AUTEM IN NOSTRA BIBLIOTHECA, EX OPERIBUS ET MSS. AD OMNES ÆTATES,
     LOCOS, LINGUAS FORMASQUE PERTINENTIBUS, COADUNATORUM.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="150,500,850,600">
+  <bloco tipo="texto_principal" script="latino" bbox="150,520,850,620">
     SERIES GRÆCA POSTERIOR,
     IN QUA PRODEUNT PATRES, DOCTORES SCRIPTORESQUE ECCLESIÆ GRÆCÆ
     AB ÆVO PHOTIANO AD CONCILII USQUE FLORENTINI TEMPORA:
@@ -45,7 +45,15 @@
     Bibliothecæ Cleri universæ,
     SIVE CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,600,900,750">
+  <bloco tipo="nota_marginal" script="latino" bbox="800,520,950,850">
+    14...
+    26...
+    Series Græca
+    Patrologia
+    111
+    Nicolaus CP.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,620,900,780">
     PATROLOGIA, AD INSTAR IPSIUS ECCLESIÆ, IN DUAS PARTES DIVIDITUR, ALIA NEMPE LATINA, ALIA GRÆCO-LATINA.
     LATINA, JAM PENITUS EXARATA, QUOAD PRIMAM SERIEM, VIGINTI-QUINQUE ET DUCENTIS VOLUMINIBUS MOLE SUA
     STAT, MOXVE POST PERACTOS INDICES STABIT, AC QUINQUE-VIGINTI-CENTUM ET MILLE FRANCIS VENIT. GRÆCA
@@ -60,25 +68,18 @@
     COLLECTIONEM GRÆCO-LATINAM, VEL EANDEM EX GRÆCO LATINE VERSAM, TUM QUODQUE VOLUMEN PRO NOVEM VEL
     PRO SEX FRANCIS OBTINEBIT. ISTÆ CONDITIONES SERIEBUS PATROLOGIÆ NONDUM EXCUSIS APPLICANTUR.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="150,750,850,820">
+  <bloco tipo="texto_principal" script="latino" bbox="150,780,850,850">
     PATROLOGIÆ GRÆCÆ TOMUS CXI.
     NICOLAUS CP., EUTYCHIUS ALEXANDRINUS, BASILIUS NEOPATRENSIS,
     BASILIUS CÆSARIENSIS, COGNOMENTO MINIMUS. ALII.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="100,820,900,900">
+  <bloco tipo="rodape" script="latino" bbox="100,850,900,950">
     EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
     IN VIA DICTA D'AMBOISE, OLIM PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER
     NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MŒNIA PARISINA.
     1863
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="800,500,950,800">
-    14...
-    26...
-    Series Græca
-    111
-    Nicolaus CP.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="50,930,200,980">
+  <bloco tipo="nota_marginal" script="latino" bbox="250,930,350,980">
     107
   </bloco>
   <bloco tipo="nota_marginal" script="latino" bbox="600,890,800,960">
@@ -91,8 +92,9 @@
   </bloco>
   <notas>
     - Transcrição fiel à imagem, incluindo ligaduras (Æ, Œ) e ortografia original.
-    - Nota manuscrita "[Patrologia]" incluída no cabeçalho.
-    - Notas manuscritas na margem direita e carimbo da biblioteca transcritos como nota_marginal.
+    - Nota manuscrita "[Patrologia]" incluída no cabeçalho ao lado de "CURSUS COMPLETUS".
     - "RECUSIO" transcrito conforme aparece na imagem (possível erro de impressão para RECENSIO).
+    - Notas manuscritas na margem direita e carimbo da biblioteca transcritos como nota_marginal.
+    - Data "1863" no rodapé central.
   </notas>
 </pagina>

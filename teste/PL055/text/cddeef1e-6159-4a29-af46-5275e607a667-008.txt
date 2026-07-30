@@ -1,29 +1,32 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,260">
+  <bloco tipo="cabecalho" script="latino" bbox="150,120,850,260">
 ELENCHUS OPERUM
 
 QUÆ IN PRIORI HUJUS TOMI PARTE CONTINENTUR.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,300,700,520">
+  <bloco tipo="texto_principal" script="latino" bbox="100,360,750,460">
 Liber sacramentorum Romanæ Ecclesiæ.
 Allocutio archidiaconi ad episcopum pro reconciliatione pœnitentium.
-Episto.a ad Demetriadem.
+Epistola ad Demetriadem.
 Quesnelli Dissertationes in S. Leonis Magni opera.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="720,300,920,520">
+  <bloco tipo="texto_principal" script="latino" bbox="800,360,900,460">
 Col. 21
 157
 161
 183
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="80,540,920,740">
+  <bloco tipo="rodape" script="latino" bbox="430,910,830,940">
+Paris. — Imprimerie de VRAYET DE SURCY, rue de Sèvres, 57.
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="80,740,880,880">
+  <bloco tipo="nota" script="latino" bbox="580,960,780,990">
+Digitized by Google
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="0,0,0,0">
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="200,900,900,980">
-Paris.—Imprimerie de Vrayet de Surcy, rue de Serres, 57.
-  </bloco>
-  <notas>Pagina transcrita fielmente a partir da imagem. Uso "Episto.a ad Demetriadem." conforme leitura visível (ponto no original). Sem normalização ortográfica; [ilegivel] não foi necessário. BBOXs estimados em escala 0-1000.</notas>
+  <notas>
+    Transcrição baseada na inspeção visual da imagem. Ligaturas preservadas (Romanæ, pœnitentium). 
+    Texto de sangria (verso) ignorado. 
+    Marca d'água digital no rodapé transcrita. 
+    Não há letras marginais A, B, C, D visíveis nesta página (blocos removidos em relação ao rascunho LLM). 
+    Ortografia mantida conforme impresso (ex: "Epistola", "CONTINENTUR").
+  </notas>
 </pagina>

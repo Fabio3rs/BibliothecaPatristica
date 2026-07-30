@@ -1,15 +1,15 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="360,70,500,90">
+  <bloco tipo="cabecalho" script="latino" bbox="350,50,650,90">
     SÆCULUM II.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="230,100,770,275">
+  <bloco tipo="texto_principal" script="grego" bbox="100,100,900,280">
     ΤΟΥ ΕΝ ΑΓΙΟΙΣ ΠΑΤΡΟΣ ΗΜΩΝ
     ΕΙΡΗΝΑΙΟΥ
     ΕΠΙΣΚΟΠΟΥ ΛΟΥΓΔΟΥΝΟΥ ΚΑΙ ΜΑΡΤΥΡΟΣ
     ΕΛΕΓΧΟΥ ΚΑΙ ΑΝΑΤΡΟΠΗΣ ΤΗΣ ΨΕΥΔΩΝΥΜΟΥ ΓΝΩΣΕΩΣ
     ΒΙΒΛΙΑ ΠΕΝΤΕ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,295,820,495">
+  <bloco tipo="texto_principal" script="latino" bbox="50,290,950,490">
     SANCTI IRENÆI
     EPISCOPI LUGDUNENSIS ET MARTYRIS
     DETECTIONIS ET EVERSIONIS FALSO COGNOMINATÆ AGNITIONIS
@@ -17,7 +17,7 @@
     CONTRA HÆRESES
     LIBRI QUINQUE.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,500,820,585">
+  <bloco tipo="texto_principal" script="latino" bbox="50,500,950,600">
     POST FRANCISCI FEUARDENTII ET JOANNIS ERNESTI GRABII RECENSIONEM
     CASTIGATI DENUO AD MSS. CODICES ROMANOS, GALLICANOS ET ANGLICANOS, NECNON AD
     ANTIQUIORES EDITIONES, ET A MULTIS, QUIBUS SCATEBANT, MENDIS EXPURGATI; AUCTI NOVIS FRAGMENTIS;
@@ -25,38 +25,35 @@
     PRÆMITTUNTUR TRES DISSERTATIONES IN QUIBUS HÆRESES AB IRENÆO MEMORATÆ ET LOCI DIFFICILES
     EXPLICANTUR, EJUSQUE VITÆ AC GESTORUM HISTORIA DISCUTITUR;
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="150,590,720,650">
+  <bloco tipo="texto_principal" script="latino" bbox="150,610,850,660">
     STUDIO ET LABORE
     DOMNI RENATI MASSUETI
     PRESBYTERI ET MONACHI BENEDICTINI E CONGREGATIONE S. MAURI.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,660,750,725">
+  <bloco tipo="texto_principal" script="latino" bbox="100,670,900,740">
     ACCURANTE ET RECOGNOSCENTE J.-P. MIGNE,
     BIBLIOTHECÆ CLERI UNIVERSÆ
     SIVE
     CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORIS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="310,790,550,810">
+  <bloco tipo="texto_principal" script="latino" bbox="300,790,700,820">
     VENIT 12 FRANCIS GALLICIS.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,850,810,895">
-    EXCUDEBatur ET VENIT APUD J.-P. MIGNE EDITOREM,
+  <bloco tipo="rodape" script="latino" bbox="50,850,950,910">
+    EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
     IN VIA DICTA D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM,
     SEU PETIT-MONTROUGE.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="400,905,450,920">
+  <bloco tipo="rodape" script="latino" bbox="400,915,600,940">
     1857
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="380,935,510,960">
+  <bloco tipo="rodape" script="latino" bbox="380,945,620,970">
     458926
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="690,960,900,985">
+  <bloco tipo="nota_marginal" script="latino" bbox="680,960,950,990">
     Digitized by Google
   </bloco>
   <notas>
-    Página de rosto (frontispício).
-    Ligaduras AE (Æ) preservadas em SÆCULUM, IRENÆI, COGNOMINATÆ, HÆRESES, BIBLIOTHECÆ, UNIVERSÆ, SCIENTIÆ, ECCLESIASTICÆ, LUTETIÆ, PRÆMITTUNTUR, IRENÆO, MEMORATÆ, VITÆ.
-    A palavra "EXCUDEBatur" no rodapé apresenta mistura de caixa (pequenas maiúsculas seguidas de minúsculas).
-    Texto grego e latino.
+    Página de rosto (frontispício) da Patrologia Graeca. Texto em grego e latim. Transcrição fiel à imagem, corrigindo erros do Tesseract (ex.: "DEFIICHIOMS", "ΠΚΜΩ͂Ν") e validando o LLM OCR. A grafia latina mantém as ligaduras e caracteres especiais (Æ, Œ) conforme o impresso do século XIX.
   </notas>
 </pagina>

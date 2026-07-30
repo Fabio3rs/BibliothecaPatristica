@@ -1,41 +1,60 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="60,20,940,140">
-    SAECULUM IX.
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="380,50,620,80">
+    SÆCULUM IX.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,140,940,900">
-    RATTRAMNI
+  <bloco tipo="nota_marginal" script="latino" bbox="50,60,80,80">
+    o
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,90,900,160">
+    RATRAMNI
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,170,850,330">
     CORBEIENSIS MONACHI,
     ÆNEÆ, SANCTI REMIGII,
     PARISIENSIS ET LUGDUNENSIS EPISCOPORUM,
     WANDALBERTI MONACHI, PAULI ALVARI CORDUBENSIS,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="180,340,820,390">
     OPERA OMNIA,
-    JUxta memoratissimas ACHERII, FLOREZII et ANTONII COLLECTIONES NOVISSIME ad PRELIUM
-    revocata.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="60,400,940,430">
+    JUXTA MEMORATISSIMAS ACHERII, FLOREZII ET ANTONII COLLECTIONES NOVISSIME AD PRELUM REVOCATA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="60,440,940,520">
     INTERMISCENTUR
-    
-    LOTHARI REGIS, HIERARDI TURONENSIS, GUNTHARII COLONIENSIS, THEOTGAUDI BELGICAE GALLICAE
-    PRIMATIS, ARDUCI VESONTIONENSIS, WULFADI BITURICENSIS,
-    ADVENTII METENSIS EPISCOPORUM; GRIMALDI SANGALLENSIS ABBATIS, MILONIS MONACHII S. AMANTI,
-    ISONIS SANGALLENSIS MONACHI, GOTTESCHALCI HERETICI, ETC., ETC.
-    
+    LOTHARII REGIS, HERARDI TURONENSIS, GUNTHARII COLONIENSIS, THEOTGAUDI BELGICÆ GALLICÆ
+    PRIMATIS, ARDUICI VESONTIONENSIS, WULFADI BITURICENSIS,
+    ADVENTII METENSIS EPISCOPORUM; GRIMALDI SANGALLENSIS ABBATIS, MILONIS MONACHI S. AMANDI,
+    ISONIS SANGALLENSIS MONACHI, GOTTESCHALCI HÆRETICI, ETC., ETC.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="130,530,870,560">
     SCRIPTA QUÆ EXSTANT UNIVERSA.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="130,580,870,660">
     ACCURANTE J.-P. MIGNE,
-    BIBLIOTHÆCÆ Cleri UNIVERSÆ,
-    sive
-    CURSUM COMPLETORUM IN SINGULIS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
-    
+    BIBLIOTHECÆ CLERI UNIVERSÆ,
+    SIVE
+    CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,700,650,730">
     TOMUS UNICUS.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,780,650,800">
     VENIT 7 FRANCIS GALLICIS
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="60,900,940,990">
-    EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
-    IN VIA DICTA D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM,
-    SEU PETIT-MONTRouGE.
-    
-    1832
+  <bloco tipo="nota_marginal" script="latino" bbox="180,830,210,860">
+    9
   </bloco>
-  <notas>Transcrição feita em caracteres latinos; pequenas manchas e marcas decorativas ignorei. Algumas palavras em maiúsculas com espaçamento tipográfico preservado; "RATTRAMNI" na impressão original apresenta variação tipográfica (possível leitura "RATRAMNI"); onde duvidei mantive forma visível. BBOX estimadas em escala 0-1000.</notas>
+  <bloco tipo="rodape" script="latino" bbox="70,850,930,900">
+    EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
+    IN VIA DICTA D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM.
+    SEU PETIT-MONTROUGE.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="450,910,550,930">
+    1852
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="580,960,800,980">
+    Digitized by Google
+  </bloco>
+  <notas>Transcrição fiel da página de título. "RATRAMNI" está sublinhado na imagem. Ligaturas "Æ" preservadas. Data 1852 conferida na imagem (OCR LLM indicou 1832). Marca marginal "o" no topo esquerdo e "9" manuscrito perto do rodapé esquerdo.</notas>
 </pagina>

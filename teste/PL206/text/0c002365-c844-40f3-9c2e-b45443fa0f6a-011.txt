@@ -1,9 +1,9 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,150">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="80,50,920,150">
     PATROLOGIÆ
     CURSUS COMPLETUS
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,150,950,260">
+  <bloco tipo="texto_principal" script="latino" bbox="50,150,950,250">
     SIVE
     BIBLIOTHECA UNIVERSALIS, INTEGRA, UNIFORMIS, COMMODO, ŒCONOMICA,
     OMNIUM SS. PATRUM, DOCTORUM SCRIPTORUMQUE ECCLESIASTICORUM
@@ -11,32 +11,42 @@
     AB ÆVO APOSTOLICO AD INNOCENTII III TEMPORA
     FLORUERUNT;
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,260,950,360">
+  <bloco tipo="texto_principal" script="latino" bbox="50,250,950,300">
     RECUSIO CHRONOLOGICA
-    OMNIUM QUÆ EXISTERE MONUMENTORUM CATHOLICÆ TRADITIONIS PER DUODECIM PRIORA
+    OMNIUM QUÆ EXSTITERE MONUMENTORUM CATHOLICÆ TRADITIONIS PER DUODECIM PRIORA
     ECCLESIÆ SÆCULA,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,300,950,350">
     JUXTA EDITIONES ACCURATISSIMAS, INTER SE CUMQUE NONNULLIS CODICIBUS MANUSCRIPTIS COLLATAS,
     PERQUAM DILIGENTER CASTIGATA;
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,350,950,380">
     DISSERTATIONIBUS, COMMENTARIIS LECTIONIBUSQUE VARIANTIBUS CONTINENTER ILLUSTRATA;
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,380,950,410">
     OMNIBUS OPERIBUS POST AMPLISSIMAS EDITIONES QUÆ TRIBUS NOVISSIMIS SÆCULIS DEBENTUR ABSOLUTIS
     DETECTIS, AUCTA;
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,410,950,440">
     INDICIBUS PARTICULARIBUS ANALYTICIS, SINGULOS SIVE TOMOS, SIVE AUCTORES ALICUJUS MOMENTI
     SUBSEQUENTIBUS, DONATA;
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,360,950,430">
+  <bloco tipo="texto_principal" script="latino" bbox="50,440,950,480">
     CAPITULIS INTRA IPSUM TEXTUM RITE DISPOSITIS, NECNON ET TITULIS SINGULARUM PAGINARUM MARGINEM SUPERIOREM
     DISTINGUENTIBUS SUBJECTAMQUE MATERIAM SIGNIFICANTIBUS, ADORNATA;
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,480,950,510">
     OPERIBUS CUM DUBIIS TUM APOCRYPHIS, ALIQUA VERO AUCTORITATE IN ORDINE AD TRADITIONEM
     ECCLESIASTICAM POLLENTIBUS, AMPLIFICATA;
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,430,950,500">
+  <bloco tipo="texto_principal" script="latino" bbox="50,510,950,570">
     DUOBUS INDICIBUS GENERALIBUS LOCUPLETATA : ALTERO SCILICET RERUM, QUO CONSULTO, QUIDQUID
     UNUSQUISQUE PATRUM IN QUODLIBET THEMA SCRIPSERIT UNO INTUITU CONSPICIATUR; ALTERO
     SCRIPTURÆ SACRÆ, EX QUO LECTORI COMPERIRE SIT OBVIUM QUINAM PATRES
     ET IN QUIBUS OPERUM SUORUM LOCIS SINGULOS SINGULORUM LIBRORUM
     SCRIPTURÆ TEXTUS COMMENTATI SINT.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,500,950,600">
+  <bloco tipo="texto_principal" script="latino" bbox="50,570,950,650">
     EDITIO ACCURATISSIMA, CÆTERISQUE OMNIBUS FACILE ANTEPONENDA, SI PERPENDANTUR : CHARACTERUM NITIDITAS,
     CHARTÆ QUALITAS, INTEGRITAS TEXTUS, PERFECTIO CORRECTIONIS, OPERUM RECENSORUM TUM VARIETAS
     TUM NUMERUS, FORMA VOLUMINUM PERQUAM COMMODA SIBIQUE IN TOTO OPERIS DECURSU CONSTANTER
@@ -45,7 +55,7 @@
     PRIMUM AUTEM IN NOSTRA BIBLIOTHECA, EX OPERIBUS AD OMNES ÆTATES,
     LOCOS, LINGUAS FORMASQUE PERTINENTIBUS, COADUNATORUM.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="150,600,850,680">
+  <bloco tipo="texto_principal" script="latino" bbox="100,650,900,730">
     SERIES SECUNDA,
     IN QUA PRODEUNT PATRES, DOCTORES SCRIPTORESQUE ECCLESIÆ LATINÆ
     A GREGORIO MAGNO AD INNOCENTIUM III.
@@ -54,9 +64,9 @@
     SIVE
     CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,680,950,750">
+  <bloco tipo="texto_principal" script="latino" bbox="50,730,950,780">
     PATROLOGIA BINA EDITIONE TYPIS MANDATA EST, ALIA NEMPE LATINA, ALIA GRÆCO-LATINA. — VENEUNT
-    MILLE ET TRECENTIS FRANCIS SEXAGINTA ET DUENTA VOLUMINA EDITIONIS LATINÆ; OCTINGENTIS
+    MILLE ET TRECENTIS FRANCIS SEXAGINTA ET DUCENTA VOLUMINA EDITIONIS LATINÆ; OCTINGENTIS
     ET MILLE TRECENTA GRÆCO-LATINÆ. — MERE LATINA UNIVERSOS AUCTORES TUM OCCIDENTALES,
     TUM ORIENTALES EQUIDEM AMPLECTITUR; HI AUTEM, IN EA, SOLA VERSIONE LATINA DONANTUR.
   </bloco>
@@ -64,26 +74,27 @@
     PATROLOGIÆ TOMUS CCVI.
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="50,810,950,850">
-    / CŒLESTINUS III PONTIFEX ROMANUS. THOMAS CISTERCIENSIS MONACHUS ET JOANNES
+    / CŒLESTINUS III / PONTIFEX ROMANUS. THOMAS CISTERCIENSIS MONACHUS ET JOANNES
     ALGRINUS S. R. E. CARDINALIS.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="50,860,950,940">
+  <bloco tipo="rodape" script="latino" bbox="50,860,950,900">
     .C EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
     IN VIA DICTA D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM,
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="350,900,650,920">
     SEU PETIT-MONTROUGE.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="450,940,550,960">
+  <bloco tipo="rodape" script="latino" bbox="400,920,600,950">
     1855
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="550,970,850,990">
+  <bloco tipo="rodape" script="latino" bbox="550,960,800,990">
     Digitized by Google
   </bloco>
   <notas>
     Transcrição de página de título (frontispício) da Patrologia Latina, Tomo 206.
+    Ortografia original preservada (ex: "RECUSIO" em vez de "RECENSIO", "ALGRINUS" em vez de "ALGERINUS").
+    Marcas manuscritas incluídas: "/" antes de CŒLESTINUS e entre III e PONTIFEX; ".C" antes de EXCUDEBATUR.
     Ligaturas AE e OE preservadas (Æ, Œ).
-    Marca manuscrita "/" antes de CŒLESTINUS.
-    Marca manuscrita ".C" antes de EXCUDEBATUR.
-    Texto "CONTINENTER" no bloco 2, linha 4 (original pode ter kerning apertado).
-    Texto "DUENTA" no bloco 8, linha 2 (provável erro de impressão para DUCENTA).
+    Ano "1855" estampado no rodapé central.
   </notas>
 </pagina>

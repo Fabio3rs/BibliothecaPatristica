@@ -1,9 +1,9 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,40,900,80">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,80">
     723 DE VITIS PATRUM LIBER II. 724
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,80,480,900">
-    culina, ipse Paulinus versibus cecinit (Paulin.
+  <bloco tipo="texto_principal" script="latino" bbox="50,100,480,900">
+    culina, ipse Paulinus versibus cecinit (Paulin.,
     in natali 10 S. Felicis).
     Donatus est præterea idem Paulinus ab eadem
     Melania tunica, innocuorum agnorum contexta vel-
@@ -15,7 +15,7 @@
     nobis charitatis, qua vobis sola pares sumus, misi-
     mus tunicam, quam ab usu meo, ut de stercoris vir-
     tute collectum pannum dignare suscipere. Nam vel
-    hoc innocentia tua construit, quod de tenero agno-
+    hoc innocentia tua congruit, quod de tenero agno-
     rum vellere contexta blanditur attactibus. Addo au-
     tem adhuc pretiæ ejus et gratiæ, quod quo dignior
     probetur usu tuo, de sanctæ et illustris in sanctis
@@ -63,7 +63,7 @@
     Hispania Romam parabat adventum, ex ipsa satis in-
     telligi potest. Fuit ille annus Domini (ut vidimus)
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,80,900,900">
+  <bloco tipo="texto_principal" script="latino" bbox="520,100,950,900">
     trecentesimus nonagesimus tertius. Sequenti autem,
     cum jam ad natalem diem sancti Felicis Nolam se con-
     tulisset, secundum ordinem edidit natalitium. Cum vero
@@ -86,7 +86,7 @@
     lymis tanquam in spirituali quadam academia, ut ve-
     ram excolerent sapientiam, quinque (ut vidimus)
     lustris consederant, cum primum Romam venerunt,
-    omnium plang oculos præ admiratione in se conver-
+    omnium plane oculos præ admiratione in se conver-
     terunt. Læti jam illi videre præsentes, quæ de iisdem
     absentibus summo sæpe præconio fama detulerat;
     sed non videre tantum, verum et audire solliciti;
@@ -120,29 +120,30 @@
     Melania recedit ab urbe in Siciliam et revertitur Jero-
     solymam.
     Anno Christi 408. — Hoc item anno (Christi 408,
-    Innocentii Papæ 7, Honorii 14, Theodosii 4, impp.)
+    Innocentii Papæ 7, Honorii 14, Theodosii 1, impp.)
     qui urbis obsidionem præcessit, Melania Romana vi-
     dua, de qua sæpe superius mentio facta est, pulique
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,80,510,100">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,110,510,130">
     A
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,380,510,400">
-    D
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,480,510,500">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,320,510,340">
     B
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,720,510,740">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,550,510,570">
     C
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="400,950,600,980">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,750,510,770">
+    D
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="300,940,700,980">
     Digitized by Google
   </bloco>
   <notas>
-    Transcrição de página com duas colunas de texto em latim.
-    Letras A, B, C, D identificadas como notas marginais de seção no gutter central.
-    Números de página 436 e 437 aparecem inseridos no corpo do texto.
-    Texto em fonte gótica/blackletter.
+    Transcrição fiel baseada na estrutura da Patrologia Latina (Migne).
+    Coluna da esquerda (pág. 723) e coluna da direita (pág. 724) tratadas como blocos distintos.
+    Letras marginais A, B, C, D posicionadas no gutter central.
+    Marcadores de coluna originais (436, 437) mantidos no fluxo do texto.
+    Correções aplicadas ao OCR Tesseract/LLM para latim padrão (ex: "trecentesimus", "Hieronymus", "epistola 10").
   </notas>
 </pagina>

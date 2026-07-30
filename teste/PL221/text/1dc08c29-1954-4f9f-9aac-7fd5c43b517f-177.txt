@@ -1,111 +1,187 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,70">
-333 INDEX ALPH. EORUM QUIBUS EPIST. INSCRIPTÆ. 334
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,60">
+    333 INDEX ALPH. EORUM QUIBUS EPIST. INSCRIPTÆ. 334
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,70,490,920">
-Tullensis parochiae fidelibus, Paschalis II, papa, CLVIII, 360; Honorius II, papa, CLXVI, 1290.
-Tullensi capitolo, Innocent. II, papa, CXXVI, 169, 235.
-Turencio, Ruricius episc., LVIII, 98.
-Turgedo, Ambroesicum episc., Ivo Carnot., CXLII, 271; Calixtus II, papa, CXLII, 1120.
-Turno, Sudonis, ibid., 598.
-Turoldo, monacho Beccensi, Anselmus Cantuar., CLIX, 169.
-Turonice civitatis fratribus S. Martini, Alcuinus, C, 176.
-Turonensis clero et populo, S. Gregorius VII, papa, CXLVII, 538; 624; Urbanus II, papa, CLII, 419.
-Turonensis archiepisc., S. Gregorius VII, papa, CXLVIII, 539; Calixtus II, papa, CXLIII, 1186; Paschalis II, papa, ibid., 241; Honorius II, papa, CLXVI, 1306; Innocent. III, papa, CLXXIX, 618; Adrianus IV, papa, CLXXXVIII, 1241; Urbanus III, papa, CCI, 1489; Innocent. III, papa, CXXIV, 432, 617; CXLV, 735, 848, 1271, 1297, 1118, 1190, 1357, 1169, 1171, 1538, 1361, 1381, 1575; CXXVI, 983, 318, 766, 1201.
-Turonensis canonicis, Honorius II, papa, CLXVI, 1230; Calixtus II, papa, CXLIII, 1131; Innocent. III, papa, CCXV, 1465.
-Turonensis, Metropolis suffraganeis episcopis, Honorius II, papa, CLXVI, 1279; Hildebertus Cenoman., CLXII, 251.
-Turribio, episc. Asturicensi, S. Leo Magnus, LIV, 1325.
-Turritano judicia, Innocent. III, papa, CCXV, 31, 158.
-Turritanus archiepisc., ibid., 430, 975; CCXVI, 421, 468; CCXVII, 278.
-Turritano abb., Lanfrancus Cantuar., CL, 546.
-Tursino, archiep. Eboracensi, Bernardus Clarav., CLXXII, 328.
-Tuscanensi clero et populo, Innocent. III, papa, CCXV, 1236.
-Tusceniensis episcopis, Gregorius II, papa, 386; Innocent. III, papa, CCXVI, 75.
-Tusculano episc., id., CCXVII, 961.
-Tutelonii, Turon. episc., Leo VII, papa, CXXXII, 1077.
-Tutoni de Heiburch, Innocent. III, papa, CCXVII, 178.
-Tymasio, Symmachus, XVII, 217, 218.
-Tyrasnonensis episc., Innocent. III, papa, CCXVI, 476, 1235.
-Tyrenensi archiep., id., CCXIV, 474, 475, 836; CCXV, 147, 356; CCXVI, 91; CCXVII, 245.
-Tyris, Honorius II, papa, CLXVI, 1290.
-Tyhallo, archiepisc. Pisano, Alexander III, papa, CC, 1184.
-Ubaldo, plebano S. Gavini, Innocent. III, papa, CCXVI, 1256.
-Uberto presbytero, S. Petrus Damian., CXLIV, 369.
-Ubertocomi, et clero Firmano, S. Gregorius VII, papa, CXLVII, 590.
-Uberto, clero, ibid., 290.
-Uberto, abb. ecclesiae S. Martini de Valle, Paschalis II, papa, CLXIII, 298.
-Uberto archipresbyt., Gelasius II, papa, ibid., 497.
-Uberto, archiepisc. Pisano, Innocent. II, papa, CXLIX, 381.
-Uberto, Aquensis eccles. archidiac., Adrianus II, papa, CLXXVIII, 1480.
-Uberto, Bobiensis episc., Urbanus III, papa, CCVI, 1184.
-Uberto, Bobiensis episc., Innocent. III, papa, CCXV, 1318.
-Uberto de Suinerenbrugh, ibid., 1410.
-Ubrando, Modestensi archiepisc., Celestinus II, papa, CLXIX, 768.
-Utredo, landavensis episc., Gilbertus Foliot, CXC, 751, 761, 778, 779, 784, 785, 787, 792.
-Udarico comiti, Eberhardus abbat., CXL, 1309.
-Udariico, archiepisc. Benevent., S. Leo IX, papa, CXLIII, 752.
-Udalrico, abbati Ecclesiae Laurensiense, ibid., 624.
-Udalrico, abbt. S. Michaelis ad Mosam, Urbanus II, papa, CLII, 500.
-Udario, abbas, S. Marie de Novo Castro, Eugenius III, papa, CXLIX, 282.
-Udario, abb. monast. Zwifaltensi, Calixtus II, papa, CXLIII, 1239.
-Uderico, episc. Constantienis, ibid., 1273.
-Udoni, episc. Tullensis Ecclesiae, S. Leo IX, papa, ibid., 772.
-Udone, Treverensis Ecclesiae archiep., Alexander II, papa, CXLV, 1312, 1314; S. Gregorius VIII, CXLVIII, 363, 370, 413, 492, 501.
+  <bloco tipo="texto_principal" script="latino" bbox="30,60,490,930">
+    Tullensis parochiæ fidelibus, Paschalis II, papa,
+    CLXIII, 360; Honorius II, papa, CLXVI, 1290.
+    Tullensi capitulo, Innocent. III, papa, CCXVI, 169, 235.
+    Turencio, Ruricius episc., LVIII, 98.
+    Turgedo, Ambricensium episc., Ivo Carnot., CLXII,
+    272; Calixtus II, papa, CLXIII, 1120.
+    Turno, Sidonius, ibid., 528.
+    Turoldo, monacho Beccensi, Anselmus Cantuar., CLIX,
+    169.
+    Turonica civitatis fratribus S. Martini, Alcuinus, C, 176.
+    Turonensi clero et populo, S. Gregorius VII, papa,
+    CXLVIII, 558, 624; Urbanus II, papa, CLI, 419.
+    Turonensi archiepisc., S. Gregorius VII, papa,
+    CXLVIII, 559; Calixtus II, papa, CLXIII, 1186; Paschalis
+    II, papa, ibid., 241; Honorius II, papa, CLXVI, 1306;
+    Innocent. II, papa, CLXXIX, 618; Adrianus IV, papa,
+    CLXXXVIII, 1421; Urbanus III, papa, CCII, 1489; Innocent.
+    III, papa, CCXIV, 422, 617; CCXV, 755, 818, 1271,
+    1297, 1118, 1120, 1169, 1171, 1548, 1361, 1534,
+    1575; CCXVI, 282, 518, 766, 1201.
+    Turonensibus canonicis, Honorius II, papa, CLXVI,
+    1230; Calixtus II, papa, CLXIII, 1131; Innocent. III, papa,
+    CCXV, 1465.
+    Turonensis, Metropolis suffraganeis episcopis, Honorius
+    II, papa, CLXVI, 1279; Hildebertus Cenoman.,
+    CLXXI, 254.
+    Turribio, episc. Asturicensi, S. Leo Magnus, LIV,
+    1325.
+    Turritano judici, Innocent. III, papa, CCXV, 31, 158.
+    Turritano archiepisc., ibid., 430, 975; CCXVI, 421, 468;
+    CCXVII, 278.
+    Turstino abb., Lanfrancus Cantuar., CL, 516.
+    Turstino, archiep. Eboracensi, Bernardus Claræv.,
+    CLXXIII, 238.
+    Tuscanensi clero et populo, Innocent. III, papa, CCXV,
+    1236.
+    Tusciensibus episcopis, Gregorius II, papa, 586; Innocent.
+    III, papa, CCXVI, 75.
+    Tusculano episc., id., CCXVI, 961.
+    Tuteloni, Turon. episc., Leo VII, papa, CXXXII, 1077.
+    Tutoni de Heiburch., Innocent. III, papa, CCXVII, 178.
+    Tymasio, Symmachus, XVIII, 217, 218.
+    Tyrasnonensi episc., Innocent. III, papa, CCXVI, 476,
+    1235.
+    Tyrensi archiep., id., CCXIV, 474, 475, 836.; CCXV,
+    147, 356; CCXVI, 911; CCXVII, 215.
+    Tyriis, Honorius II, papa, CLXVI, 1280.
+    Ubaldo, archiepisc. Pisano, Alexander III, papa, CC,
+    1184.
+    Ubaldo, plebano S. Gavini, Innocent. III, papa, CCXVI,
+    1256.
+    Uberto presbytero, S. Petrus Damian., CXLIV, 569.
+    Uberto comiti, et clero Firmano, S. Gregorius VII, papa,
+    CXLVIII, 590.
+    Uberto clerico, ibid., 290.
+    Uberto, abb. ecclesiæ S. Martini de Valle, Paschalis II,
+    papa, CLXIII, 336.
+    Uberto archipresbyt., Gelasius II, papa, ibid., 497.
+    Uberto, archiepisc. Pisano, Innocent. II, papa, CLXXIX,
+    321.
+    Uberto, Aquensis eccles. archidiac., Adrianus II, papa,
+    CLXXXVIII, 1180.
+    Uberto, præposito et canonicis Pratensibus, Alexander
+    III, papa, CC, 635; Adrianus IV, papa, CLXXXVIII, 1593.
+    Uberto, Aquensi episc., Urbanus III, papa, CCII, 1484.
+    Uberto, Bobiensi episc., Innocent. III, papa, CCXV, 1318.
+    Uberto de Sunnemburch., ibid., 1410.
+    Ubrando, Modoetensi archipresb., Cœlestinus II, papa,
+    CLXXIX, 768.
+    Uctredo, Landaviensi episc., Gilbertus Foliot, CXC,
+    751, 761, 778, 779, 784, 785, 787, 792.
+    Udalrico comiti, Eberhardus abb., CXLI, 1309.
+    Udalrico, archiepisc. Benevent., S. Leo IX, papa, CXLIII,
+    752.
+    Udalrico, abbati Ecclesiæ Lauressaniensis, ibid., 624.
+    Udalrico, abb. S. Michaelis ad Mosam, Urbanus II, papa,
+    CLI, 500.
+    Udalrico, abb. S. Mariæ de Novo Castro, Eugenius III,
+    papa, CLXXX, 1262.
+    Udalrido, abb. monast. Zwifaltensi, Calixtus II, papa,
+    CLXIII, 1239.
+    Udelrico, episc. Constantiensi, ibid., 1273.
+    Udoni, episc. Tullensis Ecclesiæ, S. Leo IX, papa, ibid.,
+    772.
+    Udoni, Trevirens. Ecclesiæ archiepisc., Alexander II,
+    papa, CXLVI, 1312, 1414; S. Gregorius VII, CXLVIII,
+    363, 370, 443, 492, 501.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,70,970,920">
-Ugoni, Cluniacensi abb., S. Petrus Damian., CXLIV, 371, 373; S. Gregorius VII, papa, CXLVII, 247.
-Ugoni praeposito, et ceteris canonicis Pistorien., Urbanus II, papa, CLI, 590.
-Ugoni, abb. monast. B. Mariæ, Calixtus II, papa, CLXIII, 1103, 1106.
-Ugoni, archipresb. eccles. S. Prosperi de Boudeno, Innocent. II, papa, CLXIX, 484.
-Ugoni, abb. S. Guillelmi, Eugenius III, papa, CLXXX, 1151.
-Ugoni, archiep. Janensis, Alexander III, papa, CC, 557.
-Ugoni, prior Plebis S. Mariae ad finem, ibid., 1241.
-Ugoni, abb. monast. S. Petri de Insula Arben., Innocent. III, papa, CCXIV, 610.
-Ulliredo, landavensis episc., Gilbertus Foliot, CXC, 917.
-Uldarico praeposito, Urbanus II, papa, CLI, 357.
-Uldarico, milit. Ecclesiæ Bambergensis, S. Gregorius VII, papa, CXLVIII, 528.
-Ugeterio, Andegav. episc., Gotfridus abb., CLVIII, 118.
-Innocentius II, papa, CXLXI, 108; Eugenius III, papa, CXLXX, 1538; Ulibonenis archiepisc., Innocent. III, papa, CCXIV, 689, 790; CCXV, 474, 1260.
-Ulrici, abb. eccles. S. Nicolai de Thelis, Eugenius III, papa, CLXX, 1221.
-Ulfrico, episc. Halberstadienis, ibid., 1493; Anastasius IV, papa, CLXXXVIII, 1076.
-Ulrico, abb. monast. S. Mariae Schyren., Eugenius III, papa, CLXXX, 1034.
-Ultraslavano episc., Innocent. III, papa, CCXIV, 228.
-Ulrico, Aquileiensis Eccles. patriarchae, Alexander III, papa, CC, 1283.
-Ulrico clerico, Innocent. III, papa, CCXV, 1110.
-Umberto, archiepisc. Arelatensis, Celestinus II, papa, CCVI, 897.
-Unanno, archiepisc. Hammaburgensis, Benedictus VII, papa, CXXII, 1675.
-Ungaria regi, Innocent. III, papa, CCXIV, 227, 461, 645; CCXV, 510, 497.
-Upsalensis Ecclesiae parochianis, Alexander III, papa, CC, 609.
-Upsalensis archiepisc., ibid., 855, 861; Innocent. III, papa, CCXIV, 551, 420.
-Upsalensibus nobilibus, Innocent. III, papa, CCXVII, 305.
-Urastao Bohemorum regi, S. Gregorius VII, papa, CXLVIII, 654.
-Urtinlavensis episc., Innocent. III, papa, CCXIV, 608.
-Urbano praefecto, Dionysius papa, CLXX, 187.
-Urbano II, papa, Raynaldus archiep., CL, 135?; Bonaventura et Raymundus, CLII, 351; Theodoricus abb., ibid., 555; Monaldus Silias, ibid., 557; Goffridus, abbat., Vindocin., CLVII, 53; Hugo abbat., CLXIX, 129; Ivo Carnot., CLXI, 15, 24, 56, 81, 59, 81, 82, 85, 661; Stephanus Tornac., CCXI, 409, 511.
-Urbatevano episc., Innocent. III, papa, CCXV, 673, 1255.
-Urbico, abb. monast. S. Hermetis, S. Gregorius Magn., LXXVII, 835, 1167, 1609.
-Urgelensis Eccles. episcopo, Silvester II, papa, CXXXII, 278; Innocent. III, papa, CCXIV, 427.
-Urgelensis capitulo, Innocent. III, papa, CCXIV, 428.
-Urraca illustris regine, Calixtus II, papa, CXLIII, 1221.
-Ursacio, Liberius papa, VIII, 1368.
-Urso duci Venetiarum, S. Gregorius II, papa, CLXXXIV, 511.
-Urso, episc., Leo papa, CXXX, 83.
-Urso, Ravenelensis episc., Victor III, papa, CXLIX, 963; Urbanus II, papa, CLI, 345.
-Ursoli, Gradensi patriarchae, Benedictus IX, papa, ibid., 1362.
-Ursoni, venerabili praeposito, Nicolaus II, papa, CXLIII, 1356.
-Ursello Grammatico Treverorum, Amsorius, XVIII, 927.
-Usualdo, Alcomucio, C, 173.
-Usardo, abb. et archidiacono, S. Lupus Ferarr., CXIX, 341.
-Uticensi episc., Innocent. III, papa, CCXV, 380; CCXVI, 409, 410, 411, 445, 457, 608, 694.
-Uticensi capitulo, id., CCXV, 1254.
-Utoni nepotis suo, Gozpertus abbat., CXXXIX, 371.
-Uvilia, virio illustris, comiti patrimonii, Theodoricus rex, LXIX, 690, 698.
-V., episc. Sarsiati, S. Petrus Damianus, CXLIV, 521, 524, 528.
-V., Castellan. episc., Alexander III, papa, CC, 1118.
-Vagao cubiculario imperat., Vitalianus, CXXII, 1145; LXXXVI, 1002.
+  <bloco tipo="texto_principal" script="latino" bbox="500,60,970,930">
+    Ugoni, Cluniacensi abb., S. Petrus Damian., CXLIV,
+    571, 573; S. Gregorius VII, papa, CXLVIII, 287.
+    Ugoni præposito, et cæteris canonicis Pistoriens.; Urbanus
+    II, papa, CLI, 590.
+    Ugoni, abb. monast. B. Ægidii, Calixtus II, papa, CLXIII,
+    1103, 1106.
+    Ugoni, archipresb. eccles. S. Prosperi de Bondeno,
+    Innocent. II, papa, CLXXIX, 484.
+    Ugoni, abb. S. Guillelmi, Eugenius III, papa, CLXXX,
+    1151.
+    Ugoni, archiep. Jannensi, Alexander III, papa, CC, 557.
+    Ugoni, priori plebis S. Mariæ ad finem, ibid., 1241.
+    Ugoni, abb. monast. S. Petri de Insula Arben., Innocent.
+    III, papa, CCXIV, 610.
+    Uhtredo, Landaviens. episc., Gilbertus Foliot, CXC, 917.
+    Uldarico præposito, Urbanus II, papa, CLI, 357.
+    Uldarico, militi Ecclesiæ Bambergensis, S. Gregorius
+    VII, papa, CXLVIII, 528.
+    Ulgerio, Andegav. episc., Gofridus abb., CLVII, 118;
+    Innocentius II, papa, CLXXIX, 108; Eugenius III, papa,
+    CLXXX, 1558; Bernardus Claræv., CLXXXII, 367.
+    Ulixbonensi archiepisc., Innocent. III, papa, CCXIV,
+    689, 790; CCXVI, 474, 1260.
+    Ulrico, abb. eccles. S. Nicolai de Thelis, Eugenius
+    III, papa, CLXXX, 1221.
+    Ulrico, episc. Halberstadiensi, ibid., 1493; Anastasius
+    IV, papa, CLXXXVIII, 1076.
+    Ulrico, abb. monast. S. Mariæ Schyren., Eugenius III,
+    papa, CLXXX, 1034.
+    Ultrasylvano episc., Innocent. III, papa, CCXIV, 228.
+    Ulrico, Aquileiensis Eccles. patriarchæ, Alexander III,
+    papa, CC, 1283.
+    Ulrico clerico, Innocent. III, papa, CCXV, 1410.
+    Umberto, archiepisc. Arelatensi, Cœlestinus III, papa,
+    CCVI, 897.
+    Unwanno, archiepisc. Hammaburgensi, Benedictus
+    VII, papa, CXXXIX, 1675.
+    Ungariæ regi, Innocent. III, papa, CCXIV, 227, 461,
+    645; CCXV, 510, 497.
+    Upsalensis Ecclesiæ parochianis, Alexander III, papa,
+    CC, 609.
+    Upsalensi archiepisc., ibid., 855, 861; Innocent. III,
+    papa, CCXIV, 551, 420.
+    Upsalensibus nobilibus, Innocent. III, papa, CCXVII,
+    305.
+    Uratislao Bohemorum regi, S. Gregorius VII, papa,
+    CXLVIII, 554.
+    Uratizlaviensi episc., Innocent. III, papa, CCXIV, 608.
+    Urbano præfecto, Dionysius papa, CLXX, 187.
+    Urbano II, papæ, Raynaldus archiep., CL, 1386; Boamundus
+    et Raymundus, CLI, 551; Theodoricus abb., ibid.,
+    555; Moniales Blasiæ, ibid., 557; Goffridus, abb. Vindocin.,
+    CLVII, 55; Hugo abb., CLIX, 929; Ivo Carnot.,
+    CLXII, 15, 24, 56, 51, 58, 59, 81, 82, 85, 661; Stephanus
+    Tornac., CCXI, 409, 551.
+    Urbevetano episc., Innocent. III, papa, CCXV, 673, 1255.
+    Urbico, abb. monast. S. Hermetis, S. Gregorius Magn.,
+    LXXVII, 833, 1167, 1169.
+    Urgellensis Eccl. episc., Silvester II, papa, CXXXIX,
+    278; Innocent. III, papa, CCXIV, 427.
+    Urgellensi capitulo, Innocent. III, papa, CCXIV, 428.
+    Urracæ illustri reginæ, Calixtus II, papa, CLXIII, 1221.
+    Ursacio, Liberius papa, VIII, 1368.
+    Urso duci Venetiarum, S. Gregorius II, papa, LXXXIX,
+    511.
+    Urso, episc., Leo papa, CXXX, 83.
+    Urso, Ravellensi episc., Victor III, papa, CXLIX, 962;
+    Urbanus II, papa, CLI, 525.
+    Ursoni, Gradensi patriarchæ, Benedictus, IX, papa, ibid.,
+    1562.
+    Ursoni, venerabili præposito, Nicolaus II, papa, CXLIII,
+    1356.
+    Ursulo Grammatico Trevirorum, Ausonius, XVIII, 927.
+    Usualdo, Alcuinus, C, 473.
+    Usuardo, abb. et archidiacono, S. Lupus Ferrar., CXIX,
+    541.
+    Uticensi episc., Innocent. III, papa, CCXV, 580; CCXVI,
+    409, 410, 411, 445, 457, 608, 694.
+    Uticensi capitulo, id., CCXV, 1254.
+    Utoni nepoti suo, Gozpertus abb., CXXXIX, 371.
+    Uviliæ, viro illustri, comiti patrimonii, Theodoricus rex,
+    LXIX, 520, 658.
+    V., episc. Sarsinati, S. Petrus Damianus, CXLIV, 521,
+    524, 525.
+    V., Castellan. episc., Alexander III, papa, CC, 1118.
+    Vasno, cubiculario imperat., Vitalianus, CXXX, 1145;
+    LXXXVII, 1002.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="0,920,1000,1000">
-Digitized by Google
+  <bloco tipo="rodape" script="latino" bbox="0,930,1000,1000">
+    Digitized by Google
   </bloco>
-  <notas>Script: latino. Página em duas colunas; transcrição feita preservando abreviaturas e sinais tal como aparecem; algumas abreviaturas e signos tipográficos (ex.: numerais romanos e pontos) mantidos literalmente. Onde caracteres ou leituras eram incertas, evitou-se supor palavras novas.</notas>
+  <notas>Transcrição fiel da imagem, preservando abreviações latinas (episc., abb., papa, etc.) e numerais romanos. Layout em duas colunas mantido. Cabeçalho e rodapé incluídos.</notas>
 </pagina>

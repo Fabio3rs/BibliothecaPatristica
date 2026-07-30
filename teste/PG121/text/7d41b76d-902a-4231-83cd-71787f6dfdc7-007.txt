@@ -1,9 +1,12 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="110,25,895,85">
+  <bloco tipo="cabecalho" script="latino" bbox="115,25,890,85">
     PATROLOGIÆ
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="290,90,715,125">
-    CURSUS COMPLETUS, [Patrologia]
+  <bloco tipo="texto_principal" script="latino" bbox="295,90,710,120">
+    CURSUS COMPLETUS,
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="720,95,930,125">
+    [Patrologia]
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="105,125,895,145">
     SEU BIBLIOTHECA UNIVERSALIS, INTEGRA, UNIFORMIS, COMMODO, OECONOMICA,
@@ -88,8 +91,10 @@
     GRÆCO LATINE VERSAM, TUM QUODQUE VOLUMEN PRO NOVEM VEL PRO SEX FRANCIS SOLUM OBTINEBIT. ISTÆ CON-
     DITIONES FUTURIS PATROLOGIÆ SERIEBUS APPLICANTUR, SI TEMPUS EAS TYPIS MANDANDI NON NOBIS DEEST.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="305,805,695,850">
+  <bloco tipo="texto_principal" script="latino" bbox="305,805,695,830">
     PATROLOGIÆ GRÆCÆ TOMUS CXXI.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="385,830,615,850">
     GEORGIUS CEDRENUS.
   </bloco>
   <bloco tipo="rodape" script="latino" bbox="125,860,875,900">
@@ -110,9 +115,8 @@
   </bloco>
   <notas>
     - Transcrição fiel à página de título da Patrologia Graeca, Tomus CXXI.
-    - Nota manuscrita "[Patrologia]" adicionada ao lado de "CURSUS COMPLETUS".
+    - Nota manuscrita "[Patrologia]" identificada ao lado de "CURSUS COMPLETUS".
     - Ligaturas latinas (Æ, Œ) preservadas conforme a imagem.
     - Carimbos da biblioteca e digitalização no rodapé.
-    - Não há notas marginais A, B, C, D na imagem (alucinação do draft anterior removida).
   </notas>
 </pagina>

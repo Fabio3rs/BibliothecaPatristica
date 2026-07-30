@@ -1,6 +1,8 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,250">
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,100,50">
     vi
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,50,920,250">
     PATROLOGIÆ
     CURSUS COMPLETUS,
     SEU BIBLIOTHECA UNIVERSALIS, INTEGRA, UNIFORMIS, COMMODO, ŒCONOMICA,
@@ -38,7 +40,7 @@
     PRIMUM AUTEM IN NOSTRA BIBLIOTHECA, EX OPERIBUS ET MSS. AD OMNES
     ÆTATES, LOCOS, LINGUAS FORMASQUE PERTINENTES, COADUNATORUM.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="150,560,850,640">
+  <bloco tipo="texto_principal" script="latino" bbox="150,560,850,630">
     SERIES GRÆCA PRIOR,
     IN QUA PRODEUNT PATRES, DOCTORES SCRIPTORESQUE ECCLESIÆ GRÆCÆ
     A S. BARNABA AD PHOTIUM,
@@ -46,7 +48,7 @@
     Bibliothecæ cleri universæ,
     SIVE CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,650,920,800">
+  <bloco tipo="texto_principal" script="latino" bbox="80,640,920,800">
     PATROLOGIA, AD INSTAR IPSIUS ECCLESIÆ, IN DUAS PARTES DIVIDITUR, ALIA NEMPE LATINA, ALIA GRÆCO-LATINA.
     LATINA, JAM PENITUS EXARATA ; QUOAD PRIMAM SERIEM VIGINTI-QUINQUE ET DUCENTIS VOLUMINIBUS MOLE SUA
     STAT, MOXVE POST PERACTOS INDICES STABIT, AC QUINQUE-VIGINTI-CENTUM ET MILLE FRANCIS VENIT. GRÆCA
@@ -61,14 +63,23 @@
     COLLECTIONEM GRÆCO-LATINAM, VEL EANDEM EX GRÆCO LATINE VERSAM, TUM QUODQUE VOLUMEN PRO NOVEM VEL
     PRO SEX FRANCIS OBTINEBIT. ISTÆ CONDITIONES SERIEBUS PATROLOGIÆ NONDUM EXCUSIS APPLICANTUR.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="100,810,900,950">
+  <bloco tipo="texto_principal" script="latino" bbox="200,810,800,830">
     PATROLOGIÆ GRÆCÆ TOMUS LXVIII.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="300,840,700,860">
     S. CYRILLUS ALEXANDRINUS.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="100,870,900,920">
     EXCUDEBATUR ET VENIT APUD J.-P. MIGNE, EDITOREM,
     IN VIA DICTA D'AMBOISE, OLIM PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER
     NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MOENIA PARISINA.
-    1864
-    G^o
   </bloco>
-  <notas>Transcrição da página de título da Patrologia Graeca, Tomo 68. Preservadas as ligaturas tipográficas (Æ, Œ) e hífens de final de linha conforme a imagem. Marca tipográfica "G^o" no rodapé. Número de página "vi" no canto superior esquerdo.</notas>
+  <bloco tipo="rodape" script="latino" bbox="450,920,550,950">
+    1864
+    Gv
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,960,800,980">
+    Digitized by Google
+  </bloco>
+  <notas>Transcrição da página de título da Patrologia Graeca, Tomo 68. Preservadas as ligaturas tipográficas (Æ, Œ) e hífens de final de linha conforme a imagem. Marca tipográfica "Gv" no rodapé. Número de página "vi" no canto superior esquerdo.</notas>
 </pagina>

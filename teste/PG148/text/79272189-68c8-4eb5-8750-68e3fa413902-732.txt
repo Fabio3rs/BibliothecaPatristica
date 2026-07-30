@@ -1,15 +1,15 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="150,50,850,250">
+  <bloco tipo="cabecalho" script="latino" bbox="150,50,850,220">
     INDEX
     RERUM, NOMINUM ET VERBORUM
     TAM IN NICEPHORI HISTORIA
     QUAM IN ANNOTATIONIBUS MAXIME MEMORABILIUM.
     ( Revocatur Lector ad numeros grandiores textui insertos. )
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="325,265,345,290">
+  <bloco tipo="nota_marginal" script="latino" bbox="480,230,520,260">
     A
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="110,295,490,930">
+  <bloco tipo="texto_principal" script="misto" bbox="100,270,480,920">
     Abasgi, 36.
     Ἄβδηρα, Αὔδηρα, Αὔδειρα, Ἄδυλα, Βήρα, 621 not.
     Abii, 31.
@@ -75,7 +75,7 @@
     Peregrinationes suas narrat Agathangelus, 1146 c.
     Agathias, 27, 441, in not.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="510,295,890,930">
+  <bloco tipo="texto_principal" script="misto" bbox="520,270,900,920">
     Agesilaus Spartanus, 124. Fugiens, 486.
     Alani, 422. Vide Massagetæ.
     Alemanni, qui et Galatæ occidui, 277.
@@ -83,7 +83,7 @@
     Alexander Magnus, 310, 401, 494, 519, 761, 807, 819.
     Alexandri M. diadema, 519.
     Alexander, Mysorum seu Bulgarorum rex, principatum
-    adeptus, Romanos fines vastat : urbes amænas occupat,
+    adeptus, Romanos fines vastat : urbes amœnas occupat,
     458. Pacem petit ab Andronico juniore : non impetrat,
     484. Viribus superior, cum Romanis confligit, ibid. Eum
     fundit fugatque, 487. Misericordiæ motus, pacem rursus
@@ -117,7 +117,7 @@
     214.
     Amurius, Lydiæ et Ioniæ princeps, reliquis Satrapis
     potentior : maris imperio potitur, 597. Cæsareorum am-
-    icus fidelissimus, ibid. Eum defensurus magnum florem
+    icus fidelissimus, ibid. Eum defensurus magnum furorem
     apparat : eodem jubente domi remanet, 598. Nova
     hieme Hellespontum trajicit, illum quæsiturus : tres
     imperatricem non adit, ne dolorem conspectu augeat,
@@ -126,7 +126,7 @@
     tribuenda, Cantacuzeno an Amurio, 650. De amico solli-
     citus, oblata ab Irene cibaria et vestimenta repudiat, 651.
     Eumdem in summas angustias adductum consolatur, 651.
-    Hieme exercitum infestabile, domum rediit, 652. Thraci-
+    Hieme exercitum infestante, domum rediit, 652. Thraci-
     nicam vi expugnandam censet, 676. Cantacuzenum re-
     prehendit, 677. A Byzantiis pecuniam accipit : in eam
     trajicit, brevi rediturus, 694. Latina classis ad Selym-
@@ -143,12 +143,16 @@
     Anathematismi in Palamam pœnentiali a Joanne Pa-
     triarcha debent valere, 953.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="600,950,820,980">
+  <bloco tipo="rodape" script="latino" bbox="600,950,850,980">
     Digitized by Google
   </bloco>
   <notas>
-    Transcription based on visual inspection of the image, correcting OCR errors in numbers and Greek characters.
-    Layout preserved with two main columns.
-    Central 'A' classified as nota_marginal per instructions.
+    Transcription follows the visual layout of the index page.
+    Greek characters transcribed based on visual inspection.
+    Numbers corrected based on image clarity (e.g., 658 instead of 6536, 824 instead of 834).
+    'A' centered below header classified as nota_marginal.
+    Two columns of text transcribed sequentially.
+    'furorem' corrected from 'florem' based on letter shape 'u'.
+    'infestante' corrected from 'infestabile' based on ending 'nte'.
   </notas>
 </pagina>

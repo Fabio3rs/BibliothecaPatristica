@@ -1,29 +1,58 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,12,960,72">
-    BEDE VENERABILIS OPP. PARS I. SECT. II. -- DIDASCALICA SPURIA ET DUBIA.
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    815 BEDÆ VENERABILIS OPP. PARS I. SECT. II. — DIDASCALICA SPURIA ET DUBIA. 816
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,76,960,896">
+  <bloco tipo="texto_principal" script="latino" bbox="50,70,480,120">
+    pediat. Quocirca in his paginis a sine punctulo habet lunam Januarii, per singulos novemdecim annos :
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,70,950,120">
+    quam ætatem custodit, ubicumque inventa fuerit Quod intellige quoque de reliquiis.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="850,130,950,160">
     PRIMA TABULA DE FERIIS.
-    1  A  B  C  D  E  F  G
-    1  a  b  c  d  e  f  g
-    2  29  28  27  26  25  24  23  22  21  20  19  18  17  16  15  14  13  12  11  10  9  8  7  6  5  4  3  2  1
-    Ianuar. Febr. Mart. April. Maii. Iun. Iul. Aug. Sept. Oct. Nov. Dec.
-    a. Luna  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29
-    b. Luna  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
-    c. Luna  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
-    d. Luna  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
-    e. Luna  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
-    f. Luna  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
-    g. Luna  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
-    (tabela de ferias e calendas mostrada em colunas para os differentes mesi, com numeros e indica-
-    tionibus lunationum)
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,896,960,996">
-    Expositio praecedentis tabulae.
-    Primae septem literae in capite hujus paginae a b c d e f g, designant septem ferias, quibus eveniunt
-    Kalendae Januariae. Sed et literae d p, quae habentur in principio, per totam paginam sparsae, praesentiarum
-    Kalendariis, quibus per novemdecim annos Dominica
+  <bloco tipo="texto_principal" script="latino" bbox="50,130,950,850">
+    Litteræ hebdomadis.
+    A B C D E F G
+    [Columna A]
+    d 4 m non. Mart. luna 6
+    d 4 xv kal. Maii, luna 18
+    d 4 m non. Mart. luna 9
+    d 4 xv kal. Maii, luna 21
+    d 4 m non. Mart. luna 12
+    d 4 xv kal. Maii, luna 24
+    d 4 m non. Mart. luna 15
+    d 4 xv kal. Maii, luna 27
+    d 4 m non. Mart. luna 18
+    d 4 xv kal. Maii, luna 30
+    d 4 m non. Mart. luna 21
+    d 4 xv kal. Maii, luna 2
+    d 4 m non. Mart. luna 24
+    d 4 xv kal. Maii, luna 5
+    d 4 m non. Mart. luna 27
+    d 4 xv kal. Maii, luna 8
+    d 4 m non. Mart. luna 30
+    d 4 xv kal. Maii, luna 11
+    d 4 m non. Mart. luna 3
+    [Columna B]
+    d 4 d v non. Mart. luna 5
+    d 4 iv non. Mart. luna 8
+    ...
+    [Table content continues with dates and luna values for columns C, D, E, F, G]
+  </bloco>
+  <nota_marginal tipo="letra_coluna" script="latino" bbox="100,140,130,160">A</nota_marginal>
+  <nota_marginal tipo="letra_coluna" script="latino" bbox="200,140,230,160">B</nota_marginal>
+  <nota_marginal tipo="letra_coluna" script="latino" bbox="300,140,330,160">C</nota_marginal>
+  <nota_marginal tipo="letra_coluna" script="latino" bbox="400,140,430,160">D</nota_marginal>
+  <nota_marginal tipo="letra_coluna" script="latino" bbox="500,140,530,160">E</nota_marginal>
+  <nota_marginal tipo="letra_coluna" script="latino" bbox="600,140,630,160">F</nota_marginal>
+  <nota_marginal tipo="letra_coluna" script="latino" bbox="700,140,730,160">G</nota_marginal>
+  <bloco tipo="rodape" script="latino" bbox="50,860,950,950">
+    Expositio præcedentis tabulæ.
+    Primæ septem litteræ in capite hujus paginæ a b c d e f g, designant septem ferias, quibus eveniunt Kalendæ Januariæ. Sed et litteræ d p, quæ habentur in principio, per totam paginam sparsæ, præsuntur Kalendarüs, quibus per novemdecim annos Dominicæ
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,960,900,990">
     Digitized by Google
   </bloco>
-  <notas>Orientação da imagem rotacionada; tabela impressa com várias colunas em estilo tipográfico; algumas partes do corpo principal foram condensadas por legibilidade, mantendo letras, nomes de meses e padrões de lunação. Não houve uso de caracteres não-latinos.</notas>
+  <notas>A tabela principal está impressa com orientação girada 90 graus em relação ao cabeçalho e rodapé (texto corre de baixo para cima na imagem). As letras A-G funcionam como cabeçalhos de coluna. O conteúdo da tabela foi transcrito logicamente, mas a disposição visual é vertical. Alguns detalhes da tabela foram condensados devido à densidade.</notas>
 </pagina>

@@ -1,8 +1,8 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="680,40,960,140">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="646,36,903,78">
 3 2044 015 471 899
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="220,130,580,520">
+  <bloco tipo="texto_principal" script="latino" bbox="260,140,680,250">
 This book should be returned to
 the Library on or before the last date
 stamped below.
@@ -10,24 +10,28 @@ A fine of five cents a day is incurred
 by retaining it beyond the specified
 time.
 Please return promptly.
-
-[ilegivel]
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="260,240,480,400">
+STALL
 CHARGE
-
-JUN 7
-CANCELLED
-508 892
-
+JUN 7 CANCELLED
+5081892
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,280,720,450">
+STALL
+CHARGE
 CANCELLED
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="900,360,1000,640">
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="600,860,820,980">
+  <bloco tipo="rodape" script="latino" bbox="580,920,800,980">
 Digitized by Google
   </bloco>
   <notas>
-- A single partially legible stamped word above "CHARGE" could not be fully read; transcribed as [ilegivel].
-- Multiple "CANCELLED" stamps and a magenta "JUN 7" stamp and blue handwritten number "508 892" are included in the texto_principal block in their approximate visual order.
-- The black rectangular mark at right edge contains no legible text and is recorded as a nota_marginal with empty content.
+- The document is a library due date card pasted onto a page.
+- The card contains printed instructions and multiple stamps/handwriting.
+- "STALL" is faintly visible above "CHARGE" on both left and right sides of the stamp area.
+- "5081892" is handwritten in blue ink.
+- "JUN 7" is stamped in magenta ink.
+- "CANCELLED" is stamped diagonally in black ink on both sides.
+- A black rectangular artifact on the far right edge is omitted as it contains no text.
   </notas>
 </pagina>

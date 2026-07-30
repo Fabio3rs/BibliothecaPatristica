@@ -1,8 +1,20 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="150,20,850,60">
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,60">
     905 S. CLEMENTIS I ROM. PONT. OPERA DUBIA.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,70,900,800">
+  <bloco tipo="nota_marginal" script="latino" bbox="20,150,50,180">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="20,350,50,380">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="20,550,50,580">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="20,750,50,780">
+    D
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,70,920,820">
     integros quisquam sine omni dubitatione confirmabit. Insertum sane in hac tanta rerum obscuritate et
     priscis antiquitatibus eoque illibata librorum Clementinorum editione judicium, neque singulas VV. DD. de
     his sententias nunc proferre ac dijudicare instituti nostri permittit ratio (97). Auctor, natione Judæus, disci-
@@ -10,7 +22,7 @@
     quidem rejiciebat dogmatum quæ a philosophis acceperat, sed servabat sibi etiam plurima, quæ ita quidem
     aptabat Christianæ religionis præceptis, ut novum quoddam idque philosophicum religionis genus inde prodiret,
     quod Clementina Clementinæque Recognitiones exhibent. At de Rufino ipso ejusque Græcos auctores interpretandi
-    ratione dubia fides, et quæ ille desuis addiderit quæve emiserit (vid. ejus præfat.) ignoratur. Quid vero, si in
+    ratione dubia fides, et quæ ille de suis addiderit quæve emiserit (vid. ejus præfat.) ignoratur. Quid vero, si in
     Latinam Rufini interpretationem iterum illata essent vana insipientis cujusdam hominis commenta? Etenim
     libri scripti multis in locis adeo inter se discrepant (v. c. libr. III, c. 2-12, 51-63 et sæpius), ut de eo opinor,
     quin Rufini ætate omnino recentiores et aliunde eorum nonnulla invecta sint, quæ in hoc illove veteri libro
@@ -74,11 +86,11 @@
     mam, rituum denique ortus resque gestas veterum Christianorum probe perspicere et intelligere sui muneris
     esse existimant.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="300,810,700,850">
+  <bloco tipo="rodape" script="latino" bbox="250,830,750,870">
     Scr. Lipsiæ d. S. Martini A. C. CIƆIƆCCCXXXVII.
     E. G. GERSDORF.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="100,860,900,970">
+  <bloco tipo="aparato_critico" script="latino" bbox="80,880,920,980">
     (97) Cf. Le Nourry Appar. ad bibl. max. PP., I, p. 398 — 423. Grabii Spicil. PP. I, p. 270 — 302.
     Germon De sect. hær. eccl. codd. corruptoribus p. 258 — 52. Lardner credibility of the gospel-history II,
     p. 769—817. Moshemii Diss. ad hist. eccl. pert. I, p. 174—192. Foggini De Romano Petri itin. exercitt.
@@ -86,9 +98,5 @@
     Systeme, p. 361—421. Tzschirner Fall d. Heidenth. herausgeg. von Niedner, p. 381 sq. — Kestner Agape
     p. 26 sqr. Oudinus, Caveas, all.
   </bloco>
-  <notas>
-    - Transcrição fiel à imagem, preservando hifens de final de linha e ortografia original (ex: CIƆIƆ para M).
-    - Texto em latim com caracteres especiais (æ, œ) mantidos.
-    - Layout de coluna única para o corpo do texto.
-  </notas>
+  <notas>Transcrição fiel prioritária à imagem; ortografia, abreviações e sinais mantidos quando visíveis. Uso "CIƆIƆ" tal qual impresso. Não foram feitas normalizações linguísticas; nenhum trecho foi traduzido. BBOX estimadas em escala 0-1000. Letras marginais A–D transcritas em blocos próprios conforme instrução.</notas>
 </pagina>

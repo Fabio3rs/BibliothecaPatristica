@@ -1,69 +1,88 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,20,970,80">
-41 PROLEGOMENA EDIT. ANTVERP. 42
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,50">
+    41 PROLEGOMENA EDIT. ANTVERP. 42
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="40,100,480,170">
-Eloqui pictor, morum censor, citharista
-Pieridum, fidei belligerator erat.
+  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,100">
+    Eloqui pictor, morum censor, citharista
+    Pieridum, fidei belligerator erat.
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="520,90,548,132">
-A
+  <bloco tipo="nota_marginal" script="latino" bbox="500,60,520,80">
+    A
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="520,100,960,170">
-Hic mirum fugiens, sub relligionis amictu
-Vixit, adhuc manet hic; en tumulatus adest.
+  <bloco tipo="texto_principal" script="latino" bbox="530,60,950,100">
+    Hic mundum fugiens, sub relligionis amictu
+    Vixit, adhuc manet hic; en tumulatus adest.
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="60,180,940,700">
-LIBERA
-ANIMAM
-MEAM
-
-Alanum breuis hora
-brevi tumulo sepeluit:
-Qui duo, qui septem, qui totum scibile scuit.
+  <bloco tipo="gravura" script="latino" bbox="100,110,900,740">
+    [Imagem: Tumulus Alani Magni]
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="70,540,130,700">
-J.C.
+  <bloco tipo="texto_principal" script="latino" bbox="150,180,300,220">
+    FR. Alanus Magnus
+    Natione Normandus
   </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="900,540,970,820">
-[ilegivel]
+  <bloco tipo="texto_principal" script="latino" bbox="320,180,500,200">
+    Doctor præstantissimus
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="180,730,820,790">
-ALANI MAGNI TUMULUS.
+  <bloco tipo="texto_principal" script="latino" bbox="680,180,800,200">
+    S. Bernardus
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="120,790,880,840">
-(Ex actis Academiæ Inscript., tom. IX, Parisiis, 1736, p. 229.)
+  <bloco tipo="texto_principal" script="latino" bbox="570,250,620,270">
+    1482.
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="60,840,940,940">
-Alani magni tumulus conspiciebatur Cistercii in claustro, juxta templi ingressum. Hunc extruxerat, anno 1482, D. Joannes de Curey, Cisterciensis abbas.
-
-Versus Alani Epitaphium, litteris gothicis incisum in lapide quadrato, bipedali, in anteriori parte tumuli pavimento claustri incluso, sic legebatur:
+  <bloco tipo="texto_principal" script="latino" bbox="230,560,330,580">
+    LIBERA
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="220,900,780,960">
-Alanum breuis hora, breui tumulo sepeluit :
-Qui duo, qui septem, qui totum scibile scuit.
+  <bloco tipo="texto_principal" script="latino" bbox="430,560,530,580">
+    ANIMAM
   </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="20,960,980,1000">
-PATROL. CCX.
-Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="640,560,720,580">
+    MEAM
   </bloco>
-
+  <bloco tipo="nota_marginal" script="latino" bbox="120,560,160,580">
+    J.C.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="840,560,880,580">
+    A.A.S.H.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="420,660,580,720">
+    Alanum brevis hora
+    brevi tumulo sepelivit.
+    Qui duo, qui septem
+    qui totum scibile scivit.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,760,650,780">
+    ALANI MAGNI TUMULUS.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="220,790,780,810">
+    (Ex actis Academiæ Inscript., tom. IX, Parisiis, 1736, p. 229.)
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,820,950,860">
+    Alani magni tumulus conspiciebatur Cistercii in claustro, juxta templi ingressum. Hunc extruxerat, anno
+    1482, D. Joannes de Cirey, Cisterciensis abbas.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,860,950,890">
+    Vetus Alani Epitaphium, litteris gothicis incisum in lapide quadrato, bipedali, in anteriori parte tumuli
+    pavimento claustri incluso, sic legebatur :
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="280,890,720,930">
+    Alanum brevis hora, brevi tumulo sepelivit :
+    Qui duo, qui septem, qui totum scibile scivit.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="50,930,250,950">
+    PATROL. CCX.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="800,930,820,950">
+    2
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,960,800,990">
+    Digitized by Google
+  </bloco>
   <notas>
-- A letra indicativa "A" (vista junto ao cabeçalho direito na imagem) foi transcrita como bloco separado tipo="nota_marginal" e retirada do fluxo do texto principal, conforme instruções (não deve figurar dentro do texto da coluna).
-- A inscrição à esquerda da lápide representada, junto às colunas, "J.C." foi transcrita como nota marginal separada.
-- Margem direita junto à gravura contém inscrição muito pequena e parcialmente ilegível; registada como [ilegivel] em bloco nota_marginal.
-- Leitura de algumas palavras na parte alta esquerda ("Pieridum, fidei belligerator erat") e em inscrições pequenas dentro da gravura exigiram hipótese de leitura pelo estado da imagem; mantive grafia próxima ao traçado visível sem normalização. Onde a leitura foi incerta mas necessária para fluxo, não se aplicou normalização; quaisquer palavras com leitura duvidosa foram evitadas ou marcadas como [ilegivel].
-- Foram priorizadas as inscrições claramente visíveis (título, legenda da gravura, epígrafe e texto descritivo). Inscrições muito pequenas dentro da gravura que não puderam ser lidas com segurança não foram inventariadas.
+    - Transcrição fiel à imagem, corrigindo erros do OCR (ex: "Eloqui" em vez de "Elloqui", "relligionis" com duplo l).
+    - O marcador "A" no início do verso direito foi separado como nota_marginal.
+    - Textos dentro da gravura (túmulo) foram transcritos em blocos separados conforme a localização visual.
+    - Assinaturas "J.C." e "A.A.S.H." nas margens da gravura classificadas como nota_marginal.
+    - Texto na placa no chão da gravura transcrito com quebras de linha visíveis.
+    - Rodapé inclui "PATROL. CCX.", número da página "2" e marca d'água "Digitized by Google".
   </notas>
 </pagina>

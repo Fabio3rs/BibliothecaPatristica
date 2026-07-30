@@ -1,12 +1,56 @@
-Caro utilizador,
-
-não foi possível localizar nenhuma imagem na sua mensagem. Sem o acesso à imagem do documento histórico, não consigo produzir a transcrição XML fiel exigida.
-
-Por favor, anexe a imagem diretamente na conversa para que eu possa:
-
-- identificar o tipo de página;
-- mapear as colunas, cabeçalhos, rodapés, aparato crítico e notas marginais;
-- localizar os identificadores A, B, C, D no gutter;
-- gerar a transcrição XML conforme as regras especificadas.
-
-Assim que a imagem estiver disponível, procederei à análise e à entrega exclusivamente em XML.
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    827 AD MARCULFI FORMULAS APPENDIX. 828
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,880">
+    non cessat quæ Dei potissimum congruant voluntati, etc. (Marculf., append., c. 8.)
+    XCVIII. Alia ingenuitas.
+    Secundum legem Romanam, nullatenus revocetur. Itaque sub die illo, regnante domno nostro illo rege, iudictione illa, vir venerabilis ille diaconus testatus est, etc. (Ibid., c. 56.)
+    XCIX. Redemptionale.
+    Dilectissimo mihi bene merito illi. Omnibus non habetur incognitum, sed patefactum, quod tu quotidie in bonis partibus fideliter mihi deservire non cessas, etc. (Ibid., c. 48.)
+    C. Epistola regi mittenda pro libertate servi sui impetranda.
+    Domino invictissimo atque glorioso regi illi : sancta Lingonensis Ecclesia præsentem perpetuamque incessanter felicitatem devotissimis exorat precibus. Ad notitiam celsitudinis vestræ perferre nos ecclesiastica provocat necessitas de promotione servi vestri nomine illius ex loco juris vestri nuncupato illo, de ministerio illo, vel de beneficio illo, cujus gratia eruditus, et inter nostræ parvitatis studia, scientia, vita, ac moribus pro modulo qualitatis quantitatisve instructus, jam munus clementiæ vestræ dandum nobisque significandum ejus de libertate expectantes, ad gradus ecclesiasticos eum promovere vestræ largitatis munificentia parati sumus mox ut statutum de eo vestram canonicamve dignitatis senserimus licentiam. Deus cœli et terræ universæque conditionis ad tutelam vos semper protegat Christianam, ita ut hoc ævo vestro superexaltatam in omnibus sanctæ matris Ecclesiæ sentiat causam.
+    CI. a Libertas civium Romanorum.
+    Auctoritas ecclesiastica patenter admonet, insuper et majestas regia canonicæ religioni assensum præbet, ut quemcunque sacros ad ordines ex familia propria promovere ecclesia quæque delegerit, in præsentia sacerdotum, canonicorum simul et nobilium laicorum, ejus qui subjectus est manumissio sub libertatis testamento solemniter roboretur. Idcirco ego in Dei nomine ille episcopus quendam Ecclesiæ nostræ famulum nomine illum sacris ordinibus dignum, ad altaris cornu, nobilium virorum in præsentia, civem Romanum per hoc auctoritatis testamentum statuo, ita ut ab hodierno die et tempore bene ingenuus atque ab omni servitutis vinculo securus permaneat, tanquam si ab ingenuis parentibus fuisset procreatus vel natus, eam denique pergat partem quamcunque volens canonice elegerit, habensque portas apertas, ita ut deinceps nec nobis neque successoribus nostris ullum debeat noxiæ conditionis servitium neque aliquod libertinitatis obsequium ; sed omnibus diebus vitæ suæ sub certa plenissimaque ingenuitate, sicut alii cives Romani, per hunc manumissionis atque ingenuitatis titulum bene semper ingenuus atque securus existat. Suum vero peculiare quod habet, aut quod abhinc assequi potuerit, faciat inde secundum canonicam auctoritatem libere quicquid voluerit. Et ut hoc testamentum atque ingenuitatis auctoritas inviolabilem intervulsamque obtineat firmitatem, manu propria firmavi. Sacerdotes quoque et canonicos necnon et laicos nobiles præsentes similiter subter firmare rogavi.
+    CII. Denariale præceptum.
+    Ille rex Francorum vir inluster. Quia fidelis noster nomine ille veniens ante nos vel procerum nostrorum præsentiam jactante denario secundum legem Salicam servum suum nomine illum dimisit ingenuum, etc. (Marculf., l. I, c. 22.)
+    CIII. Ingenuitas quam potest servus ad alium servum facere.
+    Dominus inquit in Evangelio : Dimittite, et dimittite vobis.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,60,950,880">
+    tetur vobis. Ideoque in Dei nomine ille, quamvis omnium servorum Dei famulus, tamen una cum permissione domini mei illius episcopi vel illius abbatis vernaculum meum nomine illum, quem ego dato pretio ab homine illo visus sum comparasse, per hanc chartulam ingenuitatis ingenuum esse censeo et liberum esse concedo, ita ut a die præsente ingenuus sit et ingenuus permaneat tanquam si ab ingenuis parentibus fuisset procreatus vel natus. Peculiare vero suum sive conlaboratum quod habet, seu deinceps elaborare potuerit, sibi habeat concessum atque indultum. Mundeburdem vero vel defensionem ubicunque infra potestatem sancti illius eligere voluerit, licentiam habeat eligendi, et nulli heredum ac proheredum meorum rediat libertinitatis obsequium; sed, sicut dixi, semper valeat permanere bene ingenuus atque securus. Et si postmodum quispiam contra hanc ingenuitatem venire aut eam calumniari præsumpserit, cui litem intulerit, auro uncias tantas, argento libras tant. coactus exsolvat, et quod repetit nullum obtineat effectum, sed præsens ingenuitas omni tempore firma et stabilis permaneat, stipulatione subnexa. Actum. Et cætera.
+    CIV. Relatio pagensium ad regem directa.
+    Suggerendum piissimo atque præcellentissimo domno illo regi et majore domus illius a servis vestris pagensibus illis quorum vel subscriptiones vel signacula subter tenentur inserta. Principalitatis vestræ circumspecta clementia, etc. (Marculf., l. I, c. 34.)
+    CV. Præceptum quorum ab hostibus vel alio modo fuerint instrumenta incensa.
+    A regali necesse est releventur clementia qui damnicatem ab hostibus vel violentiam sunt passi. Igitur fidelis Deo propitio noster ille clementiæ, etc. (Ibid., c. 33.)
+    CVI. Relatum quod dicitur apennis.
+    Mos nobilium Romanorum adsuevit, et ratio jure deposcit, ut si cujuscunque domus igne cremetur, per seriem scripturarum chartulam relationis, quæ dicitur apennis, recipiat. Quamobrem cum quadam die illustris comes ille, etc. (Marculf., append., c. 46.)
+    CVII. Confirmatio civium in eo qui ab hostibus est devædatus vel ab igne concrematus.
+    Consuetudine hujus loci vel etiam legis terrenæ justitia constat esse prospectum ut quicunque ab incendiis vel hostibus seu a latronibus perpessus est dispendium, etc. (Formul. vet., c. 28.)
+    CVIII. Alio modo.
+    Suggerendum domino piissimo et præcellentissimo illi glorioso regi, nos servientes vestri pagenses illius, quod veraciter cognovimus, vobis innotescere præsumpsimus. Homo aliquis nom. ill. nobis dixit eo quod casa sua vel instrumenta sua chartarum, tam venditionis, cautionis, obnoxiationis, judicii, cessionis, vel donationis, seu et reliqua strumenta chartarum ab igne ibidem cremassent, quod et judex vel vicini pagenses ipsius taliter nobis dixerunt vel testimoniaverunt quod ad hoc videndum accesserant, et sic vero actum erat. Proinde quod exinde cognovimus, vobis innotuimus. Domine, nostrum est ad suggerendum, vestrum est ad ordinandum quid ipse exinde agere debeat.
+    CIX. Prologus de judicio regis ubi duo causantur.
+    Cui Dominus regendi curam committit, cunctorum jurgia diligenti examinatione rimari oportet, ut juxta propositiones vel responsiones aliqua inter alterutrum salubris donetur sententia, etc. (Marculf., l. I, c. 25.)
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,50,510,70">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,350,510,370">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,500,510,520">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,750,510,770">
+    D
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="50,880,480,920">
+    a Burchard., lib. II, cap. 26; Regino, lib. I, cap. 301.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="550,950,850,990">
+    Digitized by Google
+  </bloco>
+  <notas>
+    Transcription follows the visual layout. Text flows from left column to right column. Section CIII begins at the bottom of the left column and continues at the top of the right column ("Dimittite, et dimittite vobis." + "tetur vobis."). Marginal letters A, B, C, D are placed in the gutter.
+  </notas>
+</pagina>

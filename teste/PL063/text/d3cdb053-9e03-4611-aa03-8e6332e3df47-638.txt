@@ -1,103 +1,127 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,90">
-    1271 AN. MANL. SEV. KOETII 1272
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+    1271 AN. MANL. SEV. BOETII 1272
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,90,960,520">
-    Chromaticum
-    Tetrachordos diezeugmenon
-    Chromaticum
-    Paramese                 X    4093 Hemitonium minus
-    Trite diezeugmenon       Y    5888 Hemitonium majus
-    Paranete diezeugmenon    BB   3618 Tria hemitonia
-    Nete diezeugmenon        DD   372
-    Enharmonicum
-    Paramese                 XZ   4096 Diesis
-    Trite diezeugmenon       Z    399 Diesis
-    Paranete diezeugmenon    AA   388 Diesis
-    Nete diezeugmenon        DD   372
-    Diatonicum
-    Tetrachordos hyperboleon
-    Diatonicum
-    Nete diezeugmenon        DD   372 Hemitonium minus
-    Trite hyperboleon         FF   2916 Tonus
-    Paranete hyperboleon      NN   2592 Tonus
-    Nete hyperboleon          LL   2034
-    Chromaticum
-    Tetrachordos hyperboleon
-    Chromaticum
-    Nete diezeugmenon        DD   372 Hemitonium minus
-    Trite hyperbolon          FF   2916 Hemitonium majus
-    Paranete hyperboleon      KK   2736 Tria hemitonia
-    Nete hyperboleon          LL   2034
-    Euharmonicum
-    Tetrachordos hyperboleon
-    Euharmonicum
-    Nete diezeugmenon        DD1  372 Diesis
-    Trite hyperboleon         EE   2994 Diesis
-    Paranete hyperboleon      NN   2916 Ditonus
-    Nete hyperboleon          LL   2034
+  <bloco tipo="texto_principal" script="latino" bbox="50,70,950,360">
+    Tetrachordos diezeugmenon Chromaticum
+    Paramese X 4096 Hemitonium minus
+    Trite diezeugmenon Y 5888 Hemitonium majus
+    Paranete diezeugmenon BB 3618 Tria hemitonia
+    Nete diezeugmenon DD 572
+
+    Tetrachordos diezeugmenon Enharmonium
+    Paramese X 4096 Diesis
+    Trite diezeugmenon Z 399 Diesis
+    Paranete diezeugmenon AA 388 Diesis
+    Nete diezeugmenon DD 372
+
+    Tetrachordos hyperboleon Diatonicum
+    Nete diezeugmenon DD 3072 Hemitonium minus
+    Trite hyperboleon FF 2916 Tonus
+    Paranete hyperboleon NN 2592 Tonus
+    Nete hyperboleon LL 2034
+
+    Tetrachordos hyperboleon Chromaticum
+    Nete diezeugmenon DD 372 Hemitonium minus
+    Trite hyperboleon FF 2916 Hemitonium majus
+    Paranete hyperboleon KK 2736 Tria hemitonia
+    Nete hyperboleon LL 2034
+
+    Tetrachordos hyperboleon Enharmonium
+    Nete diezeugmenon DD 372 Diesis
+    Trite hyperboleon EE 2994 Diesis
+    Paranete hyperboleon NN 2916 Ditonus
+    Nete hyperboleon LL 2034
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,520,880,720">
+  <bloco tipo="texto_principal" script="latino" bbox="150,370,850,420">
     HENRICI GLAREANI SPECULATIO.
     PLANA MONOCHORDI REGULARIS PARTITIO IN TRIBUS GENERIBUS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,720,480,2060">
-    [Diagrams and tables left column]
-    Ploslambanomenos 9216
-    Hypate hypaton    8192
+  <bloco tipo="texto_principal" script="latino" bbox="50,430,480,920">
+    Sesquitertia ratio.
+    Tetrachordos hypaton, cum proslambanomeno in tribus modulandi generibus
+    Diapente Diateff Diatonic. sesquiter.
+    Proslambanomenos 9216
+    Hypate hypaton 8192
     Parhypate hypaton 7776
-    Lychanos hypaton  6912
-    Hypate meson      6144
-    Hypate hypaten    8132
+    Lychanos hypaton 6912
+    Hypate meson 6144
+
+    Diapente Diateff Chromat. sesquiter.
+    Hypate hypaten 8132
     Parhypate hypaten 7776
-    Lychanos hypaten  7296
-    Hypate nieson     6144
-    Hypate hypaton    8192
+    Lychanos hypaten 7296
+    Hypate meson 6144
+
+    Diapente Diateff Enbarm. sesquiter.
+    Hypate hypaton 8192
     Parhypate hypaton 7984
-    Lychanos hypaton  7776
-    Hypate meson      6144
-    Hypate meson      6144
-    Parhypate meson   3852
-    Lychanos meson    3181
-    Mese              4608
-    Hypate meson      6144
-    Parhypate meson   3852
-    Lychanos meson    3472
-    Mese              4608
-    Hypate meson      5144
-    Parhypate meson   5988
-    Lychanos meson    3852
-    Mese              4608
+    Lychanos hypaton 7776
+    Hypate meson 6144
+
+    Sesquitertia ratio.
+    Tetrachordos meson in isdem
+    Diapente Diateff Diatonic. sesquiter.
+    Hypate meson 6144
+    Parhypate meson 5832
+    Lychanos meson 5184
+    Mese 4608
+
+    Diapente Diateff Chromat sesquiter.
+    Hypate meson 6144
+    Parhypate meson 5832
+    Lychanos meson 5472
+    Mese 4608
+
+    Diapente Diateff Enbarm sesquiter.
+    Hypate meson 5144
+    Parhypate meson 5988
+    Lychanos meson 5852
+    Mese 4608
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,720,960,2060">
-    [Diagrams and tables right column]
-    Mese              4608
-    Trite synemmenon  4574
-    Paranete synemm.  3588
-    Nete synemmenon   5156
-    Mese              4608
-    Trite synemmenon  4574
-    Paranete synemm.  4108
-    Nete synemmenon   5156
-    Mese              4608
-    Trite synemmenon  4491
-    Paranete synemm.  4574
-    Nete synemmenon   5156
-    Nete diezeugmenon 5072
+  <bloco tipo="texto_principal" script="latino" bbox="520,430,950,920">
+    Sesquiterita ratio.
+    Tetrachord Synem. in ijsde tribus generib.
+    Diapente Diateff Diatonico sesquiter.
+    Mese 4608
+    Trite synemmenon 4374
+    Paranete synemm. 3888
+    Nete synemmenon 3456
+
+    Diapente Diateff Chromat. sesquiter.
+    Mese 4608
+    Trite synemmenon 4374
+    Paranete synemm. 4104
+    Nete synemmenon 3456
+
+    Diapente Diateff Enbarm. sesquiter.
+    Mese 4608
+    Trite synemmenon 4491
+    Paranete synemm. 4374
+    Nete synemmenon 3456
+
+    Sesquitertia ratio.
+    Tetra. hyperboleon in tribus modulandi generibus
+    Diapente Diateff Diatonico sesquiter.
+    Nete diezeugmenon 3072
     Trite hyperboleon 2916
-    Paranete hyperbol.2592
-    Nete hyperboleon   2504
-    Nete diezeugmenon 5072
-    Trite hyperboleon 2016
-    Paranete hyperbol.2736
-    Nete hyperboleon   2504
-    Nete diezeugmenon 5072
+    Paranete hyperbol. 2592
+    Nete hyperboleon 2304
+
+    Diapente Diateff Chromat sesquiter.
+    Nete diezeugmenon 3072
+    Trite hyperboleon 2916
+    Paranete hy. erbol. 2736
+    Nete hyperboleon 2504
+
+    Diapente Diateff Enbarm. sesquiter.
+    Nete diezeugmenon 3072
     Trite hyperboleon 2994
-    Paranete hyperpol.2916
-    Nete hyperboleon   2504
+    Paranete hyperpol. 2916
+    Nete hyperboleon 2504
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="720,2010,980,2100">
+  <bloco tipo="rodape" script="latino" bbox="600,950,900,990">
     Digitized by Google
   </bloco>
-  <notas>Document is a printed page with diagrams and tables; some handwritten or decorative curve labels in diagrams were transcribed as bracketed descriptors "[Diagrams and tables left column]" and "[Diagrams and tables right column]" where exact curved text was illegible or graphical. Numeric alignments approximated to preserve content order. Script throughout is Latin (printed type).</notas>
+  <notas>Transcription follows the visual layout of the printed page. The top section is a table of musical intervals and values. The bottom section contains diagrams and tables divided into two main columns (left and right), each with three sub-sections (Hypaton/Meson on left, Synemmenon/Hyperboleon on right). Text within curved diagrams is transcribed linearly. Some numerals appear inconsistent with standard Boethian values (e.g., 572 instead of 3072, 5144 instead of 6144) but are transcribed faithfully as they appear in the ink. "Diateff" represents the printed glyph for Diatessaron (likely long s). Script is Latin with Greek musical terminology transliterated.</notas>
 </pagina>

@@ -1,55 +1,79 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="120,60,520,120">
-    Incipit prooemii aurelii Prudentii
-    Liber caemeriton incipit;
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="110,60,490,120">
+    Incipit proœmiũ aurelii Prudentii
+    Liber cœmeterion incipit;
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,125,520,260">
-    Liber cahemeri NON INCIPIT
-    + per quinquaginta annis
-    Perquiuuquennia iam decem
-    ne fallax librauit: septem insup
-    annui caelidomus di fruimur sole uolutati
-    et nihil ex tua [ilegivel] te diem adpont.
-    Vltima seruo te depreca[ilegivel]
+  <bloco tipo="nota_marginal" script="latino" bbox="110,125,170,210">
+    P
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,255,520,375">
-    Incipit hymnus in honore scoru[m]
-    octo martyrum Caesaraugus[tanorum]
-    Is noue nr populus subuno
-    martyrum [ilegivel] cineres sepul chro
-    Caesaraugusta vocata mur urbem Romanam
+  <bloco tipo="texto_principal" script="latino" bbox="170,125,500,250">
+    LIBER CŒMETERI NON INCIPIT
+    Per quinquaginta annis
+    Perquinquaginta iam decem
+    ni fallor fuerunt: septem insup
+    annui cœlidomus diu fruimur sole uolutati
+    et nihil ex tua [ilegivel] te diem adponit.
+    Vltima seruo te deprecatu
+    applicati
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,380,520,445">
-    A Incipit Passio Sci Laurentii
-    unaq(ue) sanctorum parent(um) lamroma(nae)
-    caelo dicata
+  <bloco tipo="nota_marginal" script="latino" bbox="110,215,190,320">
+    S
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="110,840,510,885">
-    Lucerna fictilis veterum Christianorum ex museo
-    F. B. Passeri.
+  <bloco tipo="texto_principal" script="latino" bbox="190,230,500,350">
+    INCIPIT HYMNUS IN HONORE SCORU
+    XVIII MARTYRUM CAESARAUGUS
+    TANORUM
+    IS NOUE NR POPULUS SUB UNO
+    Martyrum seruat cineres sepulchro.
+    Cæsaraugusta uocata mur urbem Romanam.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="560,60,920,220">
-    AUR PRVDENTII
-    CLEMENTIS. U. C.
+  <bloco tipo="nota_marginal" script="latino" bbox="110,355,180,425">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="180,365,500,430">
+    INCIPIT PASSIO SCI LAVRENTII
+    unica sanctorum parentum: lamroma
+    orbe dedicata
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="570,60,880,290">
+    AUR. PRVDENTII
+    CLEMENTIS. V. C.
     FINIT CONTRA
-    SYMMACHU LIB. II.
+    SYMMACHV LIB. II.
     Incipit eiusdem
-    ROMANUS CONTRA
+    ROMANVS CONTRA
     GENTILES:
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="750,285,900,335">
+  <bloco tipo="nota_marginal" script="latino" bbox="550,310,640,410">
+    R
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="710,310,830,350">
     IAMBICV
     METRV
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="560,300,920,435">
-    R Omnia [ilegivel] se aeterna di[ilegivel]
-    linguis [ilegivel] gaud[ilegivel] suumque
-    abgue [ilegivel]
+  <bloco tipo="texto_principal" script="latino" bbox="640,340,920,430">
+    omanus ex persona Ascendii.
+    linguis foris organo Ausonium,
+    domi, nobilissima
+    largure opertarum uisitatissima.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="540,840,940,885">
+  <bloco tipo="gravura" script="latino" bbox="110,470,490,810">
+    [Ilustração de lucerna]
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="100,815,490,855">
+    Lucerna fictilis veterum Christianorum ex museo
+    F. B. Passeri.
+  </bloco>
+  <bloco tipo="gravura" script="latino" bbox="540,470,920,810">
+    [Ilustração dos sete dormintes]
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="540,815,930,845">
     Prototypon vetustum SS. septem dormientium.
   </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,950,810,985">
+    Digitized by Google
+  </bloco>
   <notas>
-    Várias palavras abreviadas ou em tinta desgastada nos blocos com letras capitulares (P, D, R) foram marcadas como [ilegivel]. A inicial capitular A na coluna esquerda precede visualmente “Incipit” sem que se constitua primeira letra da palavra; a inicial R na coluna direita situa-se antes de “Omnia” com função aparentemente ornamental de abertura de seção. Notas interlineares muito diminutas acima do bloco da inicial P não foram integralmente legíveis. As inscrições internas nas duas ilustrações (lucerna e sete dormientes) não são claras o suficiente para transcrição individual nesta reprodução.
+    Transcrição baseada na imagem. As grandes iniciais P, S, A, R foram classificadas como nota_marginal devido ao seu destaque visual e posição marginal, conforme a lógica de mapeamento de blocos distintos. O texto foi transcrito fielmente, mantendo abreviações e ortografia original (ex: cœmeterion, uolutati). Palavras ilegíveis marcadas com [ilegivel].
   </notas>
 </pagina>
