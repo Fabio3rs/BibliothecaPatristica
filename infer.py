@@ -15,6 +15,8 @@ import time
 import uuid
 from typing import Optional
 import unicodedata
+import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -50,6 +52,9 @@ DEFAULT_DB_TIMEOUT_SECONDS = 120.0
 DEFAULT_DB_BUSY_TIMEOUT_MS = 120000
 DEFAULT_DB_LOCK_RETRIES = 6
 DEFAULT_DB_LOCK_RETRY_DELAY = 1.0
+DEFAULT_MIN_IMAGE_SIDE = 11
+CROP_PADDING = 2
+MAX_ERROR_BODY_CHARS = 2000
 SYSTEM_PROMPT = """You are a precise OCR post-processor specializing in classical Latin and Ancient Greek manuscripts and printed editions.
 Your task: transcribe EXACTLY what you see in the image — a single line of text from a historical printed book.
 
@@ -124,6 +129,7 @@ def claim_batch(
     batch_size: int,
     prefer_missing_backend: "BackendSpec | None" = None,
     conn: sqlite3.Connection | None = None,
+    min_image_side: int = DEFAULT_MIN_IMAGE_SIDE,
 ) -> list[tuple]:
     """
     Reserva atomicamente até `batch_size` linhas pending → processing.
@@ -138,75 +144,27 @@ def claim_batch(
     try:
         def _claim() -> list[tuple]:
             conn.execute("BEGIN IMMEDIATE")
-            order_prefix = ""
-            params: list[object] = []
-            where_clause = "WHERE status = 'pending'"
-            if prefer_missing_backend is not None:
-                order_prefix = """
-                    CASE
-                        WHEN NOT EXISTS (
-                            SELECT 1
-                            FROM line_versions lv
-                            WHERE lv.line_id = lines.id
-                              AND lv.provider = ?
-                              AND lv.model = ?
-                        ) THEN 0
-                        ELSE 1
-                    END ASC,
-                """
-                params.extend(
-                    [prefer_missing_backend.provider, prefer_missing_backend.model]
-                )
-                where_clause = """
-                    WHERE status = 'pending'
-                       OR (
-                            status IN ('inferred', 'error')
-                            AND NOT EXISTS (
-                                SELECT 1
-                                FROM line_versions lv
-                                WHERE lv.line_id = lines.id
-                                  AND lv.provider = ?
-                                  AND lv.model = ?
-                            )
-                       )
-                """
-                params.extend(
-                    [prefer_missing_backend.provider, prefer_missing_backend.model]
-                )
-
-            params.append(batch_size)
-            ids = [
-                r[0]
-                for r in conn.execute(
-                    f"""
-                    SELECT id
-                    FROM lines
-                    {where_clause}
-                    ORDER BY {order_prefix}
-                             IFNULL(agreement_score, 0) ASC,
-                             id ASC
-                    LIMIT ?
-                    """,
-                    params,
-                ).fetchall()
-            ]
+            _skip_too_small_claimable_rows(
+                conn,
+                min_image_side=min_image_side,
+                prefer_missing_backend=prefer_missing_backend,
+            )
+            ids = _select_claimable_ids(
+                conn,
+                batch_size=batch_size,
+                prefer_missing_backend=prefer_missing_backend,
+                min_image_side=min_image_side,
+            )
             if not ids:
                 conn.commit()
                 return []
             placeholders = ",".join("?" * len(ids))
-            conn.execute(
+            rows = conn.execute(
                 f"""
                 UPDATE lines
                 SET status = 'processing', updated_at = datetime('now')
                 WHERE id IN ({placeholders})
-                """,
-                ids,
-            )
-            rows = conn.execute(
-                f"""
-                SELECT id, image_path, bbox, line_image, tesseract_text
-                FROM lines
-                WHERE id IN ({placeholders})
+                RETURNING id, image_path, bbox, line_image, tesseract_text
                 """,
                 ids,
             ).fetchall()
@@ -224,6 +182,273 @@ def claim_batch(
             ]
 
         return _run_db_with_retry(conn, _claim)
+    finally:
+        if owns_conn:
+            conn.close()
+
+
+def _skip_too_small_claimable_rows(
+    conn: sqlite3.Connection,
+    *,
+    min_image_side: int,
+    prefer_missing_backend: "BackendSpec | None",
+) -> int:
+    """
+    Retira atomicamente da fila bboxes que jamais atingirão o mínimo do modelo.
+
+    O crop acrescenta `CROP_PADDING` de cada lado. A checagem aqui usa portanto
+    o tamanho máximo possível; clipping nas bordas é validado depois no worker.
+    """
+    small_bbox_sql = """
+        (
+            (
+                CASE
+                    WHEN json_valid(bbox)
+                    THEN CAST(json_extract(bbox, '$.w') AS INTEGER)
+                END
+            ) + ? < ?
+            OR (
+                CASE
+                    WHEN json_valid(bbox)
+                    THEN CAST(json_extract(bbox, '$.h') AS INTEGER)
+                END
+            ) + ? < ?
+        )
+    """
+    padding = 2 * CROP_PADDING
+    size_params: tuple[object, ...] = (
+        padding,
+        min_image_side,
+        padding,
+        min_image_side,
+    )
+
+    if prefer_missing_backend is None:
+        cursor = conn.execute(
+            f"""
+            UPDATE lines
+            SET status = 'skipped', updated_at = datetime('now')
+            WHERE status = 'pending'
+              AND {small_bbox_sql}
+            """,
+            size_params,
+        )
+        return cursor.rowcount
+
+    cursor = conn.execute(
+        f"""
+        UPDATE lines
+        SET status = 'skipped', updated_at = datetime('now')
+        WHERE (
+                status = 'pending'
+                OR (
+                    status = 'error'
+                    AND NOT EXISTS (
+                        SELECT 1
+                        FROM line_versions lv
+                        WHERE lv.line_id = lines.id
+                          AND lv.provider = ?
+                          AND lv.model = ?
+                    )
+                )
+              )
+          AND {small_bbox_sql}
+        """,
+        (
+            prefer_missing_backend.provider,
+            prefer_missing_backend.model,
+            *size_params,
+        ),
+    )
+    return cursor.rowcount
+
+
+def _fetch_ids_for_query(
+    conn: sqlite3.Connection,
+    query: str,
+    params: list[object] | tuple[object, ...],
+) -> list[int]:
+    return [int(row[0]) for row in conn.execute(query, params).fetchall()]
+
+
+def _fetch_line_candidates(
+    conn: sqlite3.Connection,
+    query: str,
+    params: list[object] | tuple[object, ...],
+) -> list[tuple[int, float]]:
+    return [
+        (int(row[0]), float(row[1]) if row[1] is not None else 0.0)
+        for row in conn.execute(query, params).fetchall()
+    ]
+
+
+def _line_candidate_sort_key(item: tuple[int, float]) -> tuple[float, int]:
+    line_id, agreement_score = item
+    return (agreement_score, line_id)
+
+
+def _select_claimable_ids(
+    conn: sqlite3.Connection,
+    batch_size: int,
+    prefer_missing_backend: "BackendSpec | None",
+    min_image_side: int = DEFAULT_MIN_IMAGE_SIDE,
+) -> list[int]:
+    if prefer_missing_backend is None:
+        return _fetch_ids_for_query(
+            conn,
+            """
+            SELECT id
+            FROM lines
+            WHERE status = 'pending'
+            ORDER BY IFNULL(agreement_score, 0) ASC,
+                     id ASC
+            LIMIT ?
+            """,
+            (batch_size,),
+        )
+
+    candidate_rows: list[tuple[int, float]] = []
+    seen_ids: set[int] = set()
+
+    for status in ("pending", "inferred", "error"):
+        rows = _fetch_line_candidates(
+            conn,
+            """
+            SELECT id, IFNULL(agreement_score, 0)
+            FROM lines
+            WHERE status = ?
+              AND NOT EXISTS (
+                    SELECT 1
+                    FROM line_versions lv
+                    WHERE lv.line_id = lines.id
+                      AND lv.provider = ?
+                      AND lv.model = ?
+                )
+              AND COALESCE(
+                    (
+                        CASE
+                            WHEN json_valid(lines.bbox)
+                            THEN CAST(json_extract(lines.bbox, '$.w') AS INTEGER)
+                        END
+                    ) + ? < ?
+                    OR (
+                        CASE
+                            WHEN json_valid(lines.bbox)
+                            THEN CAST(json_extract(lines.bbox, '$.h') AS INTEGER)
+                        END
+                    ) + ? < ?,
+                    0
+                ) = 0
+            ORDER BY IFNULL(agreement_score, 0) ASC,
+                     id ASC
+            LIMIT ?
+            """,
+            (
+                status,
+                prefer_missing_backend.provider,
+                prefer_missing_backend.model,
+                2 * CROP_PADDING,
+                min_image_side,
+                2 * CROP_PADDING,
+                min_image_side,
+                batch_size,
+            ),
+        )
+        for row in rows:
+            if row[0] not in seen_ids:
+                candidate_rows.append(row)
+                seen_ids.add(row[0])
+
+    candidate_rows.sort(key=_line_candidate_sort_key)
+    ids = [line_id for line_id, _score in candidate_rows[:batch_size]]
+    if len(ids) >= batch_size:
+        return ids
+
+    remaining = batch_size - len(ids)
+    if ids:
+        placeholders = ",".join("?" * len(ids))
+        top_up_query = f"""
+            SELECT id
+            FROM lines
+            WHERE status = 'pending'
+              AND id NOT IN ({placeholders})
+            ORDER BY IFNULL(agreement_score, 0) ASC,
+                     id ASC
+            LIMIT ?
+        """
+        top_up_params: list[object] = [*ids, remaining]
+    else:
+        top_up_query = """
+            SELECT id
+            FROM lines
+            WHERE status = 'pending'
+            ORDER BY IFNULL(agreement_score, 0) ASC,
+                     id ASC
+            LIMIT ?
+        """
+        top_up_params = [remaining]
+
+    ids.extend(_fetch_ids_for_query(conn, top_up_query, top_up_params))
+    return ids
+
+
+def count_claimable_lines(
+    db: str,
+    prefer_missing_backend: "BackendSpec | None" = None,
+    conn: sqlite3.Connection | None = None,
+    min_image_side: int = DEFAULT_MIN_IMAGE_SIDE,
+) -> int:
+    owns_conn = conn is None
+    conn = conn or connect_db(db)
+    try:
+        pending_row = conn.execute(
+            """
+            SELECT COUNT(*)
+            FROM lines
+            WHERE status = 'pending'
+            """
+        ).fetchone()
+        pending = int(pending_row[0]) if pending_row else 0
+        if prefer_missing_backend is None:
+            return pending
+
+        missing_row = conn.execute(
+            """
+            SELECT COUNT(*)
+            FROM lines l
+            LEFT JOIN line_versions lv
+              ON lv.line_id = l.id
+             AND lv.provider = ?
+             AND lv.model = ?
+            WHERE l.status IN ('inferred', 'error')
+              AND lv.line_id IS NULL
+              AND COALESCE(
+                    (
+                        CASE
+                            WHEN json_valid(l.bbox)
+                            THEN CAST(json_extract(l.bbox, '$.w') AS INTEGER)
+                        END
+                    ) + ? < ?
+                    OR (
+                        CASE
+                            WHEN json_valid(l.bbox)
+                            THEN CAST(json_extract(l.bbox, '$.h') AS INTEGER)
+                        END
+                    ) + ? < ?,
+                    0
+                ) = 0
+            """,
+            (
+                prefer_missing_backend.provider,
+                prefer_missing_backend.model,
+                2 * CROP_PADDING,
+                min_image_side,
+                2 * CROP_PADDING,
+                min_image_side,
+            ),
+        ).fetchone()
+        missing = int(missing_row[0]) if missing_row else 0
+        return pending + missing
     finally:
         if owns_conn:
             conn.close()
@@ -312,6 +537,8 @@ def ensure_versions_table(db: str) -> None:
             ON line_versions(run_id, line_id, provider, model, text_hash);
         CREATE INDEX IF NOT EXISTS idx_line_versions_line_id
             ON line_versions(line_id, is_current, created_at DESC);
+        CREATE INDEX IF NOT EXISTS idx_line_versions_provider_model_line_id
+            ON line_versions(provider, model, line_id);
         """
     )
     cols = [r[1] for r in conn.execute("PRAGMA table_info(line_versions)").fetchall()]
@@ -322,6 +549,59 @@ def ensure_versions_table(db: str) -> None:
         """
         CREATE UNIQUE INDEX IF NOT EXISTS uq_line_versions_dedup
             ON line_versions(run_id, line_id, provider, model, text_hash)
+        """
+    )
+    conn.execute(
+        """
+        CREATE INDEX IF NOT EXISTS idx_line_versions_provider_model_line_id
+            ON line_versions(provider, model, line_id)
+        """
+    )
+    conn.commit()
+    conn.close()
+
+
+def ensure_claim_indexes(db: str) -> None:
+    conn = connect_db(db)
+    conn.executescript(
+        """
+        CREATE INDEX IF NOT EXISTS idx_lines_status_score_id
+            ON lines(status, IFNULL(agreement_score, 0), id);
+        """
+    )
+    conn.commit()
+    conn.close()
+
+
+def ensure_search_update_trigger(db: str) -> None:
+    """Evita reconstruir o FTS em updates que não alteram conteúdo pesquisável."""
+    conn = connect_db(db)
+    has_fts = conn.execute(
+        "SELECT 1 FROM sqlite_master WHERE type='table' AND name='lines_fts'"
+    ).fetchone()
+    if not has_fts:
+        conn.close()
+        return
+
+    conn.execute("DROP TRIGGER IF EXISTS lines_fts_au")
+    conn.execute(
+        """
+        CREATE TRIGGER lines_fts_au
+        AFTER UPDATE OF page_id, volume, reviewed_text, qwen_text, tesseract_text
+        ON lines BEGIN
+            DELETE FROM lines_fts WHERE line_id = old.id;
+            INSERT INTO lines_fts(line_id, page_id, volume, search_text)
+            VALUES (
+                new.id,
+                COALESCE(new.page_id, ''),
+                COALESCE(new.volume, ''),
+                trim(
+                    COALESCE(new.reviewed_text, '') || ' ' ||
+                    COALESCE(new.qwen_text, '') || ' ' ||
+                    COALESCE(new.tesseract_text, '')
+                )
+            );
+        END
         """
     )
     conn.commit()
@@ -368,6 +648,32 @@ def increment_runs(
                 conn.commit(),
             ),
         )
+    finally:
+        if owns_conn:
+            conn.close()
+
+
+def mark_line_skipped(
+    db: str,
+    line_id: int,
+    conn: sqlite3.Connection | None = None,
+) -> None:
+    """Marca a linha como ignorada sem apagar textos ou scores existentes."""
+    owns_conn = conn is None
+    conn = conn or connect_db(db)
+    try:
+        def _mark() -> None:
+            conn.execute(
+                """
+                UPDATE lines
+                SET status = 'skipped', updated_at = datetime('now')
+                WHERE id = ?
+                """,
+                (line_id,),
+            )
+            conn.commit()
+
+        _run_db_with_retry(conn, _mark)
     finally:
         if owns_conn:
             conn.close()
@@ -729,6 +1035,119 @@ def strip_think(text: str) -> str:
     return re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL).strip()
 
 
+def _safe_url(url: str | None) -> str | None:
+    if not url:
+        return None
+    parts = urllib.parse.urlsplit(url)
+    return urllib.parse.urlunsplit((parts.scheme, parts.netloc, parts.path, "", ""))
+
+
+def _compact_error_body(raw: bytes, charset: str = "utf-8") -> str:
+    text = raw.decode(charset, errors="replace")
+    text = re.sub(r"\s+", " ", text).strip()
+    text = re.sub(
+        r'(?i)(authorization["\']?\s*[:=]\s*["\']?)(?:bearer\s+)?[^\s"\',}]+',
+        r"\1<redacted>",
+        text,
+    )
+    text = re.sub(
+        r'(?i)((?:api[-_]?key|token)["\']?\s*[:=]\s*["\']?)[^\s"\',}]+',
+        r"\1<redacted>",
+        text,
+    )
+    if len(text) > MAX_ERROR_BODY_CHARS:
+        return f"{text[:MAX_ERROR_BODY_CHARS]}…[truncated]"
+    return text
+
+
+def _interesting_http_headers(headers) -> dict[str, str]:
+    if not headers:
+        return {}
+    return {
+        str(key): str(value)
+        for key, value in headers.items()
+        if str(key).lower().startswith("x-ratelimit")
+        or str(key).lower() in {"retry-after", "x-request-id"}
+    }
+
+
+def format_inference_error(
+    exc: Exception,
+    *,
+    stage: str,
+    backend: BackendSpec | None,
+    total_elapsed: float,
+    api_elapsed: float | None,
+    image_source: str,
+    image_bytes: bytes | None,
+    prompt_chars: int,
+) -> str:
+    """Formata falhas do worker em uma única linha, incluindo a resposta HTTP."""
+    fields = [
+        f"stage={stage}",
+        f"type={type(exc).__name__}",
+    ]
+    if backend is not None:
+        fields.append(f"backend={backend.provider}:{backend.model}")
+    if api_elapsed is not None:
+        fields.append(f"api={api_elapsed:.2f}s")
+    fields.extend(
+        [
+            f"total={total_elapsed:.2f}s",
+            f"src={image_source}",
+            f"image_bytes={len(image_bytes) if image_bytes is not None else 0}",
+            f"prompt_chars={prompt_chars}",
+        ]
+    )
+
+    status = None
+    reason = None
+    url = None
+    body = ""
+    headers = {}
+
+    try:
+        if isinstance(exc, urllib.error.HTTPError):
+            status = exc.code
+            reason = exc.reason
+            url = _safe_url(exc.geturl())
+            headers = _interesting_http_headers(exc.headers)
+            charset = (
+                exc.headers.get_content_charset()
+                if hasattr(exc.headers, "get_content_charset")
+                else None
+            )
+            raw_body = exc.read(MAX_ERROR_BODY_CHARS * 4 + 1)
+            body = _compact_error_body(raw_body, charset or "utf-8")
+        elif isinstance(exc, requests.HTTPError) and exc.response is not None:
+            response = exc.response
+            status = response.status_code
+            reason = response.reason
+            url = _safe_url(response.url)
+            headers = _interesting_http_headers(response.headers)
+            body = _compact_error_body(
+                response.content[: MAX_ERROR_BODY_CHARS * 4 + 1],
+                response.encoding or "utf-8",
+            )
+    except Exception as detail_exc:
+        fields.append(f"http_detail_error={str(detail_exc)!r}")
+
+    if status is not None:
+        fields.append(f"http_status={status}")
+    if reason:
+        fields.append(f"reason={reason!r}")
+    if url:
+        fields.append(f"url={url!r}")
+    if body:
+        fields.append(f"body={body!r}")
+    if headers:
+        fields.append(f"headers={headers!r}")
+    if status is None:
+        fields.append(f"message={str(exc)!r}")
+
+    return " ".join(fields)
+
+
 def levenshtein(a: str, b: str) -> int:
     if not a:
         return len(b)
@@ -784,6 +1203,18 @@ def agreement_score(a: str, b: str) -> float:
     if max_len == 0:
         return 1.0
     return round(1.0 - levenshtein(a, b) / max_len, 4)
+
+
+def encoded_image_dimensions(image_bytes: bytes | None) -> tuple[int, int]:
+    """Lê largura e altura da imagem codificada sem decodificar todos os pixels."""
+    if not image_bytes:
+        raise ValueError("imagem vazia")
+    with Image.open(io.BytesIO(image_bytes)) as image:
+        return image.size
+
+
+def image_is_too_small(width: int, height: int, min_side: int) -> bool:
+    return width < min_side or height < min_side
 
 
 def parse_page_num_from_filename(image_path: Path) -> Optional[int]:
@@ -856,28 +1287,9 @@ def call_ollama_vision(
         headers={"Content-Type": "application/json"},
         method="POST",
     )
-    with urllib.request.urlopen(req, timeout=130) as resp:
+    with urllib.request.urlopen(req, timeout=230) as resp:
         body = json.loads(resp.read().decode("utf-8"))
     return body.get("message", {}).get("content", "").strip()
-
-def log_openai_error(response: requests.Response) -> None:
-    try:
-        body = response.json()
-    except ValueError:
-        body = response.text
-
-    interesting_headers = {
-        key: value
-        for key, value in response.headers.items()
-        if key.lower().startswith("x-ratelimit")
-        or key.lower() in {"retry-after", "x-request-id"}
-    }
-
-    print(
-        f"[HTTP {response.status_code}] "
-        f"body={body!r} headers={interesting_headers!r}"
-    )
-
 
 def openai_process_image(
     image_bytes: bytes,
@@ -938,9 +1350,6 @@ def openai_process_image(
             timeout=timeout,
         )
 
-    if r.status_code != 200:
-        log_openai_error(r)
-
     r.raise_for_status()
     return r.json()["choices"][0]["message"]["content"]
 
@@ -966,6 +1375,7 @@ def worker(args: dict) -> None:
     run_id = args["run_id"]
     should_append_extra_context = args.get("should_append_extra_context", False)
     prefer_missing_backend = args.get("prefer_missing_backend")
+    min_image_side = args.get("min_image_side", DEFAULT_MIN_IMAGE_SIDE)
 
     prefix = f"[W{worker_id}]"
     processed = 0
@@ -982,10 +1392,10 @@ def worker(args: dict) -> None:
         except Exception:
             raise
 
-        x1 = max(0, x - 2)
-        y1 = max(0, y - 2)
-        x2 = min(img.shape[1], x + w + 2)
-        y2 = min(img.shape[0], y + h + 2)
+        x1 = max(0, x - CROP_PADDING)
+        y1 = max(0, y - CROP_PADDING)
+        x2 = min(img.shape[1], x + w + CROP_PADDING)
+        y2 = min(img.shape[0], y + h + CROP_PADDING)
         crop = img[y1:y2, x1:x2]
         buf = io.BytesIO()
         if len(crop.shape) == 3:
@@ -997,28 +1407,38 @@ def worker(args: dict) -> None:
 
     try:
         while True:
+            claim_started_at = time.perf_counter()
             batch = claim_batch(
                 db,
                 batch_size,
                 prefer_missing_backend=prefer_missing_backend,
+                min_image_side=min_image_side,
                 conn=conn,
             )
+            claim_elapsed = time.perf_counter() - claim_started_at
             if not batch:
-                print(f"{prefix} Sem mais linhas. Encerrando ({processed} processadas).")
+                print(
+                    f"{prefix} claim={claim_elapsed:.2f}s rows=0 "
+                    f"Sem mais linhas. Encerrando ({processed} processadas)."
+                )
                 break
+            print(f"{prefix} claim={claim_elapsed:.2f}s rows={len(batch)}")
 
             for line_id, image_path, bbox, line_image, tesseract_text in batch:
+                line_started_at = time.perf_counter()
+                prep_elapsed = 0.0
+                db_elapsed = 0.0
+                image_source = "line_image"
+                stage = "prepare"
+                current_backend: BackendSpec | None = None
+                api_started_at: float | None = None
+                to_send: bytes | None = None
+                user_prompt = USER_PROMPT
                 try:
-                    # incrementa contador de tentativas antes de cada passagem pela LLM
-                    try:
-                        increment_runs(db, line_id, conn=conn)
-                    except Exception:
-                        # não deve bloquear o processamento se increment falhar
-                        pass
-
                     context: str|None = None
 
                     image_path = Path(image_path) if image_path else None
+                    prep_started_at = time.perf_counter()
 
                     if image_path and should_append_extra_context:
                         volume_path = image_path.parent.parent
@@ -1047,16 +1467,50 @@ def worker(args: dict) -> None:
                         )
 
                     to_send = cropped_bytes if cropped_bytes is not None else line_image
+                    image_source = "crop" if cropped_bytes is not None else "line_image"
+                    stage = "validate_image"
+                    image_width, image_height = encoded_image_dimensions(to_send)
+                    if image_is_too_small(
+                        image_width,
+                        image_height,
+                        min_image_side,
+                    ):
+                        db_started_at = time.perf_counter()
+                        mark_line_skipped(db, line_id, conn=conn)
+                        db_elapsed += time.perf_counter() - db_started_at
+                        prep_elapsed = time.perf_counter() - prep_started_at
+                        total_elapsed = time.perf_counter() - line_started_at
+                        print(
+                            f"{prefix} IGNORADO id={line_id} reason=image_too_small "
+                            f"image={image_width}x{image_height} "
+                            f"min_side={min_image_side} src={image_source} "
+                            f"prep={prep_elapsed:.2f}s db={db_elapsed:.2f}s "
+                            f"total={total_elapsed:.2f}s",
+                            flush=True,
+                        )
+                        processed += 1
+                        continue
 
                     user_prompt = USER_PROMPT
 
                     if context and should_append_extra_context:
                         context = unicodedata.normalize("NFC", context)
                         user_prompt = f"PAGE CONTEXT: <context>\n{context}\n</context>\nTranscribe only the image:"
+                    prep_elapsed = time.perf_counter() - prep_started_at
+
+                    # Só conta como tentativa quando a imagem chega à inferência.
+                    try:
+                        increment_runs(db, line_id, conn=conn)
+                    except Exception:
+                        pass
 
                     versions: list[dict] = []
+                    backend_timings: list[str] = []
                     for backend in backends:
+                        current_backend = backend
                         backend_weight = backend.weight
+                        stage = "api"
+                        api_started_at = time.perf_counter()
                         if backend.provider == "ollama":
                             raw = call_ollama_vision(
                                 to_send, backend.model, base_url, user_prompt=user_prompt
@@ -1071,6 +1525,9 @@ def worker(args: dict) -> None:
                             )
                         else:
                             raise ValueError(f"backend desconhecido: {backend.provider}")
+                        backend_elapsed = time.perf_counter() - api_started_at
+                        api_started_at = None
+                        stage = "normalize_response"
                         text = strip_think(raw)
                         text = unicodedata.normalize("NFC", text)
                         versions.append(
@@ -1082,6 +1539,11 @@ def worker(args: dict) -> None:
                                 "weight": backend_weight,
                             }
                         )
+                        backend_timings.append(
+                            f"{backend.provider}:{backend.model}={backend_elapsed:.2f}s"
+                        )
+                        stage = "save_version"
+                        db_started_at = time.perf_counter()
                         save_line_version(
                             db,
                             run_id,
@@ -1093,8 +1555,13 @@ def worker(args: dict) -> None:
                             meta_json=json.dumps({"user_prompt": user_prompt[:200]}),
                             conn=conn,
                         )
+                        db_elapsed += time.perf_counter() - db_started_at
+                    current_backend = None
+                    stage = "consensus"
                     qwen_text, score = consensus_from_versions(versions, tesseract_text or "")
                     score_llm = llm_best_score(versions, tesseract_text or "")
+                    stage = "save_result"
+                    db_started_at = time.perf_counter()
                     save_result(
                         db,
                         line_id,
@@ -1104,13 +1571,33 @@ def worker(args: dict) -> None:
                         "inferred",
                         conn=conn,
                     )
+                    db_elapsed += time.perf_counter() - db_started_at
                     marker = "✓" if score >= 0.8 else ("△" if score >= 0.5 else "✗")
+                    total_elapsed = time.perf_counter() - line_started_at
                     print(
                         f"{prefix} id={line_id} score={score:.2f} score_llm={score_llm:.2f} {marker}  "
+                        f"src={image_source} prep={prep_elapsed:.2f}s db={db_elapsed:.2f}s total={total_elapsed:.2f}s  "
+                        f"api={', '.join(backend_timings)}  "
                         f"tess={repr((tesseract_text or '')[:64])}  consensus={repr(qwen_text[:64])}"
                     )
                 except Exception as e:
-                    print(f"{prefix} ERRO id={line_id}: {e}")
+                    now = time.perf_counter()
+                    api_elapsed = (
+                        now - api_started_at
+                        if api_started_at is not None and stage == "api"
+                        else None
+                    )
+                    details = format_inference_error(
+                        e,
+                        stage=stage,
+                        backend=current_backend,
+                        total_elapsed=now - line_started_at,
+                        api_elapsed=api_elapsed,
+                        image_source=image_source,
+                        image_bytes=to_send,
+                        prompt_chars=len(user_prompt),
+                    )
+                    print(f"{prefix} ERRO id={line_id} {details}", flush=True)
                     try:
                         save_result(db, line_id, "", 0.0, 0.0, "error", conn=conn)
                     except Exception as save_exc:
@@ -1181,6 +1668,15 @@ def main() -> None:
         help="Linhas por lote por worker",
     )
     parser.add_argument(
+        "--min-image-side",
+        type=int,
+        default=DEFAULT_MIN_IMAGE_SIDE,
+        help=(
+            "Ignora imagens cuja largura ou altura seja menor que este valor "
+            f"(default: {DEFAULT_MIN_IMAGE_SIDE})"
+        ),
+    )
+    parser.add_argument(
         "--backend",
         action="append",
         default=[],
@@ -1209,12 +1705,17 @@ def main() -> None:
         ),
     )
     args = parser.parse_args()
+    args.min_image_side = getattr(args, "min_image_side", DEFAULT_MIN_IMAGE_SIDE)
+    if args.min_image_side < 1:
+        parser.error("--min-image-side deve ser maior que zero")
     run_id = args.run_id or f"run-{uuid.uuid4().hex}"
 
     # Garantir que a coluna `runs` exista antes de tocar no banco
     ensure_runs_column(args.db)
     ensure_score_llm_column(args.db)
     ensure_versions_table(args.db)
+    ensure_claim_indexes(args.db)
+    ensure_search_update_trigger(args.db)
 
     if args.rerun_tesseract:
         rerun_tesseract_lines(
@@ -1257,12 +1758,21 @@ def main() -> None:
         "UPDATE lines SET status='pending', updated_at=datetime('now') WHERE status='processing'"
     ).rowcount
     conn.commit()
-    pending = conn.execute("SELECT COUNT(*) FROM lines WHERE status='pending'").fetchone()[0]
     conn.close()
     if recovered:
         print(f"[INFO] {recovered} linhas recuperadas de processing para pending")
 
-    if pending > 0:
+    initial_prefer_missing_backend = (
+        parse_backend_identity(args.prefer_missing_backend)
+        if args.prefer_missing_backend
+        else None
+    )
+    initial_claimable = count_claimable_lines(
+        args.db,
+        prefer_missing_backend=initial_prefer_missing_backend,
+        min_image_side=args.min_image_side,
+    )
+    if initial_claimable > 0:
         _run_worker_pass(
             args=args,
             run_id=run_id,
@@ -1270,7 +1780,7 @@ def main() -> None:
             limit=args.limit,
         )
     else:
-        print("[INFO] Nenhuma linha pendente na primeira passagem.")
+        print("[INFO] Nenhuma linha elegivel na primeira passagem.")
 
     if args.reprocess_below is not None:
         if not (0.0 <= args.reprocess_below <= 1.0):
@@ -1306,19 +1816,33 @@ def main() -> None:
     errors = conn.execute("SELECT COUNT(*) FROM lines WHERE status='error'").fetchone()[
         0
     ]
+    skipped = conn.execute(
+        "SELECT COUNT(*) FROM lines WHERE status='skipped'"
+    ).fetchone()[0]
     conn.close()
-    print(f"\n[DONE] inferred={done}  errors={errors}")
+    print(f"\n[DONE] inferred={done}  errors={errors}  skipped={skipped}")
 
 
 def _run_worker_pass(args: argparse.Namespace, run_id: str, pass_label: str, limit: int | None) -> None:
-    conn = connect_db(args.db)
-    pending = conn.execute("SELECT COUNT(*) FROM lines WHERE status='pending'").fetchone()[0]
-    conn.close()
-    if pending == 0:
+    prefer_missing_backend = (
+        parse_backend_identity(args.prefer_missing_backend)
+        if args.prefer_missing_backend
+        else None
+    )
+    claimable = count_claimable_lines(
+        args.db,
+        prefer_missing_backend=prefer_missing_backend,
+        min_image_side=getattr(
+            args,
+            "min_image_side",
+            DEFAULT_MIN_IMAGE_SIDE,
+        ),
+    )
+    if claimable == 0:
         print(f"[INFO] Nenhuma linha pendente para {pass_label}.")
         return
 
-    effective = min(pending, limit) if limit else pending
+    effective = min(claimable, limit) if limit else claimable
     print(f"[INFO] {effective} linhas para {pass_label} com {args.jobs} worker(s)")
 
     worker_args = [
@@ -1330,13 +1854,14 @@ def _run_worker_pass(args: argparse.Namespace, run_id: str, pass_label: str, lim
             "backends": [parse_backend_spec(x) for x in (args.backend or [f"ollama:{args.model}"])],
             "delay": args.delay,
             "batch_size": args.batch_size,
+            "min_image_side": getattr(
+                args,
+                "min_image_side",
+                DEFAULT_MIN_IMAGE_SIDE,
+            ),
             "worker_id": i,
             "run_id": run_id,
-            "prefer_missing_backend": (
-                parse_backend_identity(args.prefer_missing_backend)
-                if args.prefer_missing_backend
-                else None
-            ),
+            "prefer_missing_backend": prefer_missing_backend,
         }
         for i in range(args.jobs)
     ]

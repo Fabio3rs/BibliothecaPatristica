@@ -93,9 +93,14 @@ CREATE UNIQUE INDEX IF NOT EXISTS uq_line_versions_dedup
 CREATE INDEX IF NOT EXISTS idx_line_versions_line_id
     ON line_versions(line_id, is_current, created_at DESC);
 
+CREATE INDEX IF NOT EXISTS idx_line_versions_provider_model_line_id
+    ON line_versions(provider, model, line_id);
+
 CREATE INDEX IF NOT EXISTS idx_lines_session  ON lines(session_id);
 CREATE INDEX IF NOT EXISTS idx_lines_status   ON lines(status);
 CREATE INDEX IF NOT EXISTS idx_lines_page     ON lines(page_id);
+CREATE INDEX IF NOT EXISTS idx_lines_status_score_id
+    ON lines(status, IFNULL(agreement_score, 0), id);
 """
 
 # ---------------------------------------------------------------------------

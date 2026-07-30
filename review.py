@@ -18,6 +18,7 @@ import base64
 import html
 import io
 import json
+import math
 import re
 import sqlite3
 import unicodedata
@@ -159,12 +160,41 @@ BASE_STYLE = """
   .raw-view .match-fuzzy {
     background: rgba(217, 83, 79, 0.18); color: #ffe2e2; border-radius: 3px; padding: 0 2px;
   }
+  .diff-view {
+    background: #181818; border: 1px dashed #333; border-radius: 4px; padding: 8px;
+    font-size: 12px; line-height: 1.5; color: #cfcfcf;
+  }
+  .diff-line { margin-top: 6px; }
+  .diff-label { color: #888; font-weight: bold; margin-right: 8px; }
+  .diff-add { background: rgba(92, 184, 92, 0.24); color: #e9ffe9; border-radius: 3px; }
+  .diff-del { background: rgba(217, 83, 79, 0.22); color: #ffe5e5; border-radius: 3px; text-decoration: line-through; }
+  .diff-repl { background: rgba(240, 173, 78, 0.24); color: #fff4d6; border-radius: 3px; }
   .match-badge, .pill, .badge {
     display: inline-block; padding: 2px 7px; border-radius: 999px; font-size: 11px; font-weight: bold;
   }
   .match-high { background: #1d4f1d; color: #a6e3a6; }
   .match-med { background: #5a4500; color: #ffd76a; }
   .match-low { background: #5a1f1f; color: #ff9d9d; }
+  .consensus-panel, .legacy-panel {
+    background: #1b1b1b; border: 1px solid #333; border-radius: 6px; padding: 12px;
+  }
+  .consensus-summary {
+    display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 10px;
+    font-size: 12px; color: #bbb;
+  }
+  .consensus-list { display: flex; flex-direction: column; gap: 10px; }
+  .consensus-item {
+    background: #181818; border: 1px solid #2f2f2f; border-radius: 6px; padding: 10px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .consensus-item.is-top { border-color: #4d5d2f; box-shadow: inset 0 0 0 1px rgba(157, 219, 157, 0.15); }
+  .consensus-head, .consensus-meta, .source-list {
+    display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+  }
+  .source-list { font-size: 11px; color: #999; }
+  .legacy-panel { font-size: 12px; color: #aaa; }
+  .legacy-panel ul { margin-left: 18px; }
+  .badge-legacy { background: #3b3342; color: #d2b5ff; }
   .version-list { display: flex; flex-direction: column; gap: 8px; }
   .version-item { background: #1d1d1d; border: 1px solid #333; border-radius: 4px; padding: 8px; }
   .version-head { display: flex; justify-content: space-between; gap: 8px; font-size: 11px; color: #888; margin-bottom: 6px; }
@@ -328,20 +358,73 @@ REVIEW_TEMPLATE = """
       {% if not (line.tesseract_text or '').strip() %}
       <span class="badge badge-empty">tesseract vazio</span>
       {% endif %}
+      {% if consensus.total_engines %}
+      <span class="match-badge match-{{ consensus.badge }}">{{ consensus.label }}</span>
+      {% endif %}
     </div>
     <div class="path-meta">
       <div><b>Imagem real:</b> {{ image_path or 'indisponível' }}</div>
       <div><b>Texto raw:</b> {{ txt_path or 'indisponível' }}</div>
     </div>
 
+    {% if consensus.groups %}
+    <h2>Consenso entre engines</h2>
+    <div class="consensus-panel">
+      <div class="consensus-summary">
+        <span class="match-badge match-{{ consensus.badge }}">{{ consensus.label }}</span>
+        <span>{{ consensus.detail }}</span>
+        <span>score {{ "%.3f"|format(consensus.consensus_score) }}</span>
+        <span>{{ consensus.total_versions }} versão(ões)</span>
+      </div>
+      <div class="consensus-list">
+        {% for group in consensus.groups %}
+        <div class="consensus-item {% if loop.first %}is-top{% endif %}">
+          <div class="consensus-head">
+            <span class="match-badge match-{{ 'high' if loop.first else group.badge }}">
+              {{ group.engine_count }} engine(s)
+            </span>
+            <span class="pill">{{ group.version_count }} versão(ões)</span>
+            {% if group.run_count %}
+            <span class="pill">{{ group.run_count }} run(s)</span>
+            {% endif %}
+            {% if group.best_source_score is not none %}
+            <span class="pill">best score {{ "%.2f"|format(group.best_source_score) }}</span>
+            {% endif %}
+          </div>
+          <div class="text-block clickable" onclick="copyTextToEditor(this.dataset.text)" data-text="{{ group.text_content|e }}" title="Clica para copiar para editor">{{ group.text_content }}</div>
+          <div class="source-list">
+            {% for source in group.sources %}
+            <span class="pill">{{ source.provider }}/{{ source.model }}{% if source.legacy %} legado{% endif %}</span>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if consensus.legacy_sources %}
+    <h2>Campos legados</h2>
+    <div class="legacy-panel">
+      <span class="badge badge-legacy">snapshot legado</span>
+      <span>`lines.qwen_text`, `lines.tesseract_text` e `agreement_score` podem estar defasados em relação a `line_versions`.</span>
+    </div>
+    {% endif %}
+
     {% if line.tesseract_text %}
-    <h2>Tesseract</h2>
+    <h2>Tesseract <span class="badge badge-legacy">legado</span></h2>
     <div class="text-block clickable" onclick="copyTo(this)" title="Clica para copiar para editor">{{ line.tesseract_text }}</div>
+    {% if tesseract_diff_html %}
+    <div class="diff-view">{{ tesseract_diff_html|safe }}</div>
+    {% endif %}
     {% endif %}
 
     {% if line.qwen_text %}
-    <h2>Qwen</h2>
+    <h2>Qwen <span class="badge badge-legacy">legado</span></h2>
     <div class="text-block clickable" onclick="copyTo(this)" title="Clica para copiar para editor">{{ line.qwen_text }}</div>
+    {% if qwen_diff_html %}
+    <div class="diff-view">{{ qwen_diff_html|safe }}</div>
+    {% endif %}
     {% endif %}
 
     {% if version_choices %}
@@ -358,13 +441,16 @@ REVIEW_TEMPLATE = """
           </span>
         </div>
         <div class="text-block clickable" onclick="copyTo(this)" title="Clica para copiar para editor">{{ v.text_content }}</div>
+        {% if v.diff_html %}
+        <div class="diff-view">{{ v.diff_html|safe }}</div>
+        {% endif %}
       </div>
       {% endfor %}
     </div>
     {% endif %}
 
     {% if line.agreement_score is not none %}
-    <h2>Agreement score: {{ "%.2f"|format(line.agreement_score) }}</h2>
+    <h2>Agreement score <span class="badge badge-legacy">legado</span>: {{ "%.2f"|format(line.agreement_score) }}</h2>
     <div class="score-bar">
       <div class="score-fill" style="width:{{ (line.agreement_score*100)|int }}%; background: {{ '#4caf50' if line.agreement_score >= 0.8 else ('#ff9800' if line.agreement_score >= 0.5 else '#f44336') }};"></div>
     </div>
@@ -382,7 +468,7 @@ REVIEW_TEMPLATE = """
     <h2>Texto revisado</h2>
     <textarea id="reviewed_text" rows="4">{{ line.reviewed_text or line.qwen_text or line.tesseract_text or '' }}</textarea>
     <textarea id="suggested_text" style="display:none;">{{ suggested_text }}</textarea>
-    <p class="hint">Clique no texto Tesseract ou Qwen à esquerda para copiar para cá. Edite livremente.</p>
+    <p class="hint">Clique no consenso, Tesseract ou Qwen à esquerda para copiar para cá. Edite livremente.</p>
 
     {% if match_info %}
     <div class="text-block">
@@ -395,6 +481,9 @@ REVIEW_TEMPLATE = """
     {% if suggested_text %}
     <div class="actions">
       <button class="btn btn-skip" type="button" onclick="applySuggestion()">Aplicar sugestão</button>
+      {% if consensus.winning_engine_count > 0 and consensus.winning_text %}
+      <button class="btn btn-skip" type="button" onclick="applyConsensus()">Usar consenso</button>
+      {% endif %}
     </div>
     {% endif %}
 
@@ -455,6 +544,15 @@ function applySuggestion() {
   if (!suggestion) return;
   document.getElementById('reviewed_text').value = suggestion.value;
   document.getElementById('reviewed_text').focus();
+}
+function copyTextToEditor(text) {
+  document.getElementById('reviewed_text').value = text;
+  document.getElementById('reviewed_text').focus();
+}
+function applyConsensus() {
+  const text = {{ consensus.winning_text|tojson }};
+  if (!text) return;
+  copyTextToEditor(text);
 }
 document.addEventListener('keydown', function(e) {
   if (e.target.tagName === 'TEXTAREA') return;
@@ -540,6 +638,10 @@ SEARCH_TEMPLATE = """
         <span class="pill">{{ row.page_id }}</span>
         <span class="pill">{{ row.volume }}</span>
         <span class="badge badge-{{ row.status }}">{{ row.status }}</span>
+        {% if row.consensus_total_engines %}
+        <span class="match-badge match-{{ row.consensus_badge }}">{{ row.consensus_label }}</span>
+        <span class="pill">{{ row.consensus_engine_count }}/{{ row.consensus_total_engines }} engines</span>
+        {% endif %}
         {% if row.tesseract_empty %}
         <span class="badge badge-empty">tesseract vazio</span>
         {% endif %}
@@ -547,6 +649,9 @@ SEARCH_TEMPLATE = """
       <div class="result-meta">
         <span>linha {{ row.line_index }}</span>
         <span>agreement {{ "%.2f"|format(row.agreement_score or 0) if row.agreement_score is not none else "?" }}</span>
+        {% if row.consensus_total_engines %}
+        <span>consenso {{ "%.3f"|format(row.consensus_score) }}</span>
+        {% endif %}
       </div>
       <div class="snippet">{{ row.snippet|safe }}</div>
       <div class="actions">
@@ -618,7 +723,9 @@ def ensure_search_schema(conn: sqlite3.Connection) -> None:
     )
     conn.execute(
         """
-        CREATE TRIGGER IF NOT EXISTS lines_fts_au AFTER UPDATE ON lines BEGIN
+        CREATE TRIGGER IF NOT EXISTS lines_fts_au
+        AFTER UPDATE OF page_id, volume, reviewed_text, qwen_text, tesseract_text
+        ON lines BEGIN
             DELETE FROM lines_fts WHERE line_id = old.id;
             INSERT INTO lines_fts(line_id, page_id, volume, search_text)
             VALUES (
@@ -698,7 +805,192 @@ def get_line_versions(conn: sqlite3.Connection, line_id: int) -> list[sqlite3.Ro
         return []
 
 
-def build_version_choices(line: sqlite3.Row, versions: list[sqlite3.Row]) -> list[dict]:
+def summarize_consensus_label(engine_count: int, total_engines: int, tie_groups: int) -> tuple[str, str, str]:
+    if engine_count <= 0 or total_engines <= 0:
+        return ("sem consenso", "low", "sem versões comparáveis")
+    if tie_groups and tie_groups > 1:
+        return ("conflito", "low", f"empate entre {tie_groups} grupos")
+    if engine_count == total_engines:
+        return ("alta confiança", "high", f"{engine_count}/{total_engines} engines concordam")
+    if engine_count >= max(2, math.ceil(total_engines * 0.6)):
+        return ("média confiança", "med", f"{engine_count}/{total_engines} engines concordam")
+    return ("baixa confiança", "low", f"{engine_count}/{total_engines} engines concordam")
+
+
+def render_colored_diff_html(reference_text: str, candidate_text: str) -> str:
+    reference_text = (reference_text or "").strip()
+    candidate_text = (candidate_text or "").strip()
+    if not reference_text or not candidate_text or reference_text == candidate_text:
+        return ""
+
+    ref_parts = []
+    cand_parts = []
+    for op, i1, i2, j1, j2 in SequenceMatcher(None, reference_text, candidate_text).get_opcodes():
+        ref_chunk = html.escape(reference_text[i1:i2])
+        cand_chunk = html.escape(candidate_text[j1:j2])
+        if op == "equal":
+            ref_parts.append(ref_chunk)
+            cand_parts.append(cand_chunk)
+        elif op == "delete":
+            ref_parts.append(f'<span class="diff-del">{ref_chunk}</span>')
+        elif op == "insert":
+            cand_parts.append(f'<span class="diff-add">{cand_chunk}</span>')
+        else:
+            ref_parts.append(f'<span class="diff-repl">{ref_chunk}</span>')
+            cand_parts.append(f'<span class="diff-repl">{cand_chunk}</span>')
+
+    return (
+        '<div class="diff-line"><span class="diff-label">consenso</span>'
+        + "".join(ref_parts)
+        + '</div><div class="diff-line"><span class="diff-label">fonte</span>'
+        + "".join(cand_parts)
+        + "</div>"
+    )
+
+
+def build_consensus_summary(
+    line: Optional[sqlite3.Row], versions: list[sqlite3.Row], consensus_row: Optional[sqlite3.Row] = None
+) -> dict:
+    groups: dict[str, dict] = {}
+    legacy_sources: list[dict[str, str]] = []
+
+    for version in versions:
+        text = (version["text_content"] or "").strip()
+        if not text:
+            continue
+        group = groups.setdefault(
+            text,
+            {
+                "text_content": text,
+                "engine_keys": set(),
+                "version_count": 0,
+                "best_source_score": None,
+                "sources": [],
+                "is_current": False,
+                "run_ids": set(),
+            },
+        )
+        engine_key = f'{version["provider"]}|{version["model"]}'
+        group["engine_keys"].add(engine_key)
+        group["version_count"] += 1
+        if version["source_score"] is not None:
+            current_best = group["best_source_score"]
+            group["best_source_score"] = (
+                version["source_score"]
+                if current_best is None
+                else max(current_best, version["source_score"])
+            )
+        group["is_current"] = group["is_current"] or bool(version["is_current"])
+        run_id = (version["run_id"] or "").strip()
+        if run_id:
+            group["run_ids"].add(run_id)
+        group["sources"].append(
+            {
+                "provider": version["provider"],
+                "model": version["model"],
+                "source_score": version["source_score"],
+                "is_current": bool(version["is_current"]),
+                "run_id": run_id,
+            }
+        )
+
+    for field_name, provider, model in (
+        ("qwen_text", "lines", "qwen_text"),
+        ("tesseract_text", "lines", "tesseract_text"),
+    ):
+        text = ((line[field_name] or "").strip() if line else "")
+        if not text:
+            continue
+        legacy_sources.append({"field": field_name, "provider": provider, "model": model, "text": text})
+        if text in groups:
+            groups[text]["sources"].append(
+                {
+                    "provider": provider,
+                    "model": model,
+                    "source_score": None,
+                    "is_current": True,
+                    "run_id": "",
+                    "legacy": True,
+                }
+            )
+
+    consensus_groups = []
+    total_engines = len({engine for group in groups.values() for engine in group["engine_keys"]})
+    total_versions = sum(group["version_count"] for group in groups.values())
+    for group in groups.values():
+        engine_count = len(group["engine_keys"])
+        label, badge, detail = summarize_consensus_label(engine_count, max(total_engines, engine_count), 0)
+        consensus_groups.append(
+            {
+                "text_content": group["text_content"],
+                "engine_count": engine_count,
+                "version_count": group["version_count"],
+                "best_source_score": group["best_source_score"],
+                "sources": sorted(
+                    group["sources"],
+                    key=lambda item: (
+                        bool(item.get("legacy", False)),
+                        item["provider"],
+                        item["model"],
+                    ),
+                ),
+                "is_current": group["is_current"],
+                "run_count": len(group["run_ids"]),
+                "label": label,
+                "badge": badge,
+                "detail": detail,
+            }
+        )
+
+    consensus_groups.sort(
+        key=lambda item: (
+            -item["engine_count"],
+            -(item["best_source_score"] if item["best_source_score"] is not None else -1.0),
+            -len(item["text_content"]),
+            item["text_content"],
+        )
+    )
+
+    if consensus_groups:
+        winning_engine_count = consensus_groups[0]["engine_count"]
+        tie_groups = sum(1 for group in consensus_groups if group["engine_count"] == winning_engine_count)
+    else:
+        winning_engine_count = 0
+        tie_groups = 0
+
+    consensus_keys = set(consensus_row.keys()) if consensus_row is not None and hasattr(consensus_row, "keys") else set()
+    if consensus_row is not None and "total_engines" in consensus_keys:
+        total_engines = consensus_row["total_engines"] or total_engines
+        total_versions = consensus_row["total_versions"] or total_versions
+        winning_engine_count = consensus_row["consensus_engine_count"] or winning_engine_count
+        tie_groups = consensus_row["consensus_tie_groups"] or tie_groups
+
+    summary_label, summary_badge, summary_detail = summarize_consensus_label(
+        winning_engine_count,
+        total_engines,
+        tie_groups,
+    )
+    consensus_ratio = (winning_engine_count / total_engines) if total_engines else 0.0
+    consensus_score = ((winning_engine_count * winning_engine_count) / total_engines) if total_engines else 0.0
+    consensus_text = consensus_groups[0]["text_content"] if consensus_groups else ""
+
+    return {
+        "groups": consensus_groups,
+        "winning_text": consensus_text,
+        "winning_engine_count": winning_engine_count,
+        "total_engines": total_engines,
+        "total_versions": total_versions,
+        "tie_groups": tie_groups,
+        "consensus_ratio": consensus_ratio,
+        "consensus_score": consensus_score,
+        "label": summary_label,
+        "badge": summary_badge,
+        "detail": summary_detail,
+        "legacy_sources": legacy_sources,
+    }
+
+
+def build_version_choices(line: sqlite3.Row, versions: list[sqlite3.Row], consensus_text: str = "") -> list[dict]:
     choices: list[dict] = []
     seen = set()
 
@@ -718,6 +1010,7 @@ def build_version_choices(line: sqlite3.Row, versions: list[sqlite3.Row]) -> lis
                 "is_current": bool(version["is_current"]),
                 "text_content": text,
                 "origin": "line_versions",
+                "diff_html": render_colored_diff_html(consensus_text, text),
             }
         )
 
@@ -731,6 +1024,7 @@ def build_version_choices(line: sqlite3.Row, versions: list[sqlite3.Row]) -> lis
                 "is_current": True,
                 "text_content": base_text,
                 "origin": "lines.tesseract_text",
+                "diff_html": render_colored_diff_html(consensus_text, base_text),
             }
         )
 
@@ -910,22 +1204,132 @@ def build_where_clause(where: list[str]) -> str:
     return f"WHERE {' AND '.join(where)}" if where else ""
 
 
+def fetch_line_consensus_map(conn: sqlite3.Connection, line_ids: list[int]) -> dict[int, sqlite3.Row]:
+    if not line_ids:
+        return {}
+    placeholders = ",".join("?" for _ in line_ids)
+    rows = conn.execute(
+        f"""
+        WITH version_groups AS (
+            SELECT
+                line_id,
+                TRIM(text_content) AS text_content,
+                COUNT(DISTINCT provider || '|' || model) AS engine_count,
+                COUNT(*) AS version_count,
+                MAX(source_score) AS best_source_score
+            FROM line_versions
+            WHERE line_id IN ({placeholders})
+              AND TRIM(COALESCE(text_content, '')) <> ''
+            GROUP BY line_id, TRIM(text_content)
+        ),
+        ranked_groups AS (
+            SELECT
+                line_id,
+                text_content,
+                engine_count,
+                version_count,
+                best_source_score,
+                COUNT(*) OVER (PARTITION BY line_id) AS group_count,
+                SUM(engine_count) OVER (PARTITION BY line_id) AS total_engines,
+                SUM(version_count) OVER (PARTITION BY line_id) AS total_versions,
+                COUNT(*) OVER (PARTITION BY line_id, engine_count) AS same_engine_count_groups,
+                ROW_NUMBER() OVER (
+                    PARTITION BY line_id
+                    ORDER BY
+                        engine_count DESC,
+                        COALESCE(best_source_score, -1.0) DESC,
+                        LENGTH(text_content) DESC,
+                        text_content ASC
+                ) AS rn
+            FROM version_groups
+        ),
+        line_consensus AS (
+            SELECT
+                line_id,
+                text_content AS consensus_text,
+                engine_count AS consensus_engine_count,
+                version_count AS consensus_version_count,
+                total_engines,
+                total_versions,
+                group_count AS consensus_group_count,
+                same_engine_count_groups AS consensus_tie_groups,
+                CASE
+                    WHEN total_engines > 0 THEN CAST(engine_count AS REAL) / total_engines
+                    ELSE 0.0
+                END AS consensus_ratio,
+                CASE
+                    WHEN total_engines > 0 THEN
+                        (CAST(engine_count * engine_count AS REAL) / total_engines)
+                    ELSE 0.0
+                END AS consensus_score,
+                best_source_score AS consensus_best_source_score
+            FROM ranked_groups
+            WHERE rn = 1
+        )
+        SELECT *
+        FROM line_consensus
+        """,
+        line_ids,
+    ).fetchall()
+    return {row["line_id"]: row for row in rows}
+
+
 def fetch_queue_line(
     conn: sqlite3.Connection, offset: int, filter_status: str, filter_tesseract: str, filter_volume: str
 ) -> tuple[Optional[sqlite3.Row], int]:
     where, params = build_line_filters(filter_status, filter_tesseract, filter_volume)
     where_clause = build_where_clause(where)
     total = conn.execute(f"SELECT COUNT(*) FROM lines {where_clause}", params).fetchone()[0]
-    line = conn.execute(
+    candidates = conn.execute(
         f"""
         SELECT * FROM lines
         {where_clause}
-        ORDER BY agreement_score ASC, id ASC
-        LIMIT 1 OFFSET ?
+        ORDER BY
+            COALESCE(score_llm, 0.0) ASC,
+            CASE WHEN TRIM(IFNULL(tesseract_text, '')) = '' THEN 0 ELSE 1 END ASC,
+            agreement_score ASC,
+            id ASC
+        LIMIT 250 OFFSET ?
         """,
         params + [offset],
-    ).fetchone()
-    return line, total
+    ).fetchall()
+    if not candidates:
+        return None, total
+
+    consensus_map = fetch_line_consensus_map(conn, [row["id"] for row in candidates])
+    ranked_candidates = []
+    for row in candidates:
+        row_dict = dict(row)
+        consensus = consensus_map.get(row["id"])
+        if consensus:
+            row_dict.update(dict(consensus))
+        else:
+            row_dict.update(
+                {
+                    "consensus_text": "",
+                    "consensus_engine_count": 0,
+                    "total_engines": 0,
+                    "total_versions": 0,
+                    "consensus_group_count": 0,
+                    "consensus_tie_groups": 0,
+                    "consensus_ratio": 0.0,
+                    "consensus_score": 0.0,
+                    "consensus_best_source_score": None,
+                }
+            )
+        ranked_candidates.append(row_dict)
+
+    ranked_candidates.sort(
+        key=lambda item: (
+            item["consensus_score"],
+            item["consensus_engine_count"],
+            item["score_llm"] if item["score_llm"] is not None else 0.0,
+            0 if not (item["tesseract_text"] or "").strip() else 1,
+            item["agreement_score"] if item["agreement_score"] is not None else 0.0,
+            item["id"],
+        )
+    )
+    return ranked_candidates[0], total
 
 
 def fetch_line_by_id(conn: sqlite3.Connection, line_id: int) -> Optional[sqlite3.Row]:
@@ -944,20 +1348,45 @@ def load_line_context(conn: sqlite3.Connection, line: Optional[sqlite3.Row]) -> 
         "line_b64": "",
         "llm_b64": "",
         "text_context": None,
+        "consensus": {
+            "groups": [],
+            "winning_text": "",
+            "winning_engine_count": 0,
+            "total_engines": 0,
+            "total_versions": 0,
+            "tie_groups": 0,
+            "consensus_ratio": 0.0,
+            "consensus_score": 0.0,
+            "label": "sem consenso",
+            "badge": "low",
+            "detail": "sem versões comparáveis",
+            "legacy_sources": [],
+        },
+        "tesseract_diff_html": "",
+        "qwen_diff_html": "",
     }
     if not line:
         return context
 
     versions = get_line_versions(conn, line["id"])
-    version_choices = build_version_choices(line, versions)
+    consensus = build_consensus_summary(line, versions, line)
+    version_choices = build_version_choices(line, versions, consensus["winning_text"])
     context["versions"] = versions
     context["version_choices"] = version_choices
+    context["consensus"] = consensus
+    context["tesseract_diff_html"] = render_colored_diff_html(
+        consensus["winning_text"], line["tesseract_text"] or ""
+    )
+    context["qwen_diff_html"] = render_colored_diff_html(
+        consensus["winning_text"], line["qwen_text"] or ""
+    )
 
     if line["line_image"]:
         context["line_b64"] = base64.b64encode(line["line_image"]).decode("utf-8")
 
     suggested_text = (
         line["reviewed_text"]
+        or consensus["winning_text"]
         or line["qwen_text"]
         or (version_choices[0]["text_content"] if version_choices else "")
         or line["tesseract_text"]
@@ -1181,12 +1610,24 @@ def search_lines():
             """,
             [q] + params + [SEARCH_PAGE_SIZE, offset],
         ).fetchall()
+        consensus_map = fetch_line_consensus_map(conn, [row["id"] for row in rows])
         for row in rows:
+            consensus = consensus_map.get(row["id"])
+            label, badge, _ = summarize_consensus_label(
+                consensus["consensus_engine_count"] if consensus else 0,
+                consensus["total_engines"] if consensus else 0,
+                consensus["consensus_tie_groups"] if consensus else 0,
+            )
             results.append(
                 {
                     **dict(row),
                     "snippet": row["snippet_html"] or html.escape(search_preview_text(row)),
                     "tesseract_empty": not (row["tesseract_text"] or "").strip(),
+                    "consensus_label": label,
+                    "consensus_badge": badge,
+                    "consensus_engine_count": consensus["consensus_engine_count"] if consensus else 0,
+                    "consensus_total_engines": consensus["total_engines"] if consensus else 0,
+                    "consensus_score": consensus["consensus_score"] if consensus else 0.0,
                 }
             )
         if not results:
@@ -1201,17 +1642,32 @@ def search_lines():
             f"""
             SELECT * FROM lines
             {where_clause}
-            ORDER BY agreement_score ASC, id ASC
+            ORDER BY
+                COALESCE(score_llm, 0.0) ASC,
+                agreement_score ASC,
+                id ASC
             LIMIT ? OFFSET ?
             """,
             params + [SEARCH_PAGE_SIZE, offset],
         ).fetchall()
+        consensus_map = fetch_line_consensus_map(conn, [row["id"] for row in rows])
         for row in rows:
+            consensus = consensus_map.get(row["id"])
+            label, badge, _ = summarize_consensus_label(
+                consensus["consensus_engine_count"] if consensus else 0,
+                consensus["total_engines"] if consensus else 0,
+                consensus["consensus_tie_groups"] if consensus else 0,
+            )
             results.append(
                 {
                     **dict(row),
                     "snippet": html.escape(search_preview_text(row)),
                     "tesseract_empty": not (row["tesseract_text"] or "").strip(),
+                    "consensus_label": label,
+                    "consensus_badge": badge,
+                    "consensus_engine_count": consensus["consensus_engine_count"] if consensus else 0,
+                    "consensus_total_engines": consensus["total_engines"] if consensus else 0,
+                    "consensus_score": consensus["consensus_score"] if consensus else 0.0,
                 }
             )
         if not results:
