@@ -349,8 +349,8 @@ def main() -> None:
             work_key = work.get('work_key') or derive_work_key(volume_id, work)
             work_order = work.get('work_order', work_idx)
             raw_work_json = work.get('raw_json', work)
-            start_file = work.get('start_file') or infer_file_from_page(page_map, work.get('start_page'))
-            end_file = work.get('end_file') or infer_file_from_page(page_map, work.get('end_page'))
+            start_file = work.get('start_file')
+            end_file = work.get('end_file')
             source_section_key = coerce_text(work.get('source_section_key'))
             if source_section_key:
                 source_section_key = (
@@ -400,8 +400,8 @@ def main() -> None:
             work_key = section.get('work_key')
             if work_key is not None:
                 work_key = str(work_key)
-            file_start = section.get('file_start') or infer_file_from_page(page_map, section.get('page_start'))
-            file_end = section.get('file_end') or infer_file_from_page(page_map, section.get('page_end'))
+            file_start = section.get('file_start')
+            file_end = section.get('file_end')
             con.execute(
                 '''INSERT INTO index_sections (
                     section_key, volume_id, work_key, scope_kind, index_kind, heading_raw,
@@ -444,10 +444,7 @@ def main() -> None:
                         "documented in `.codex/skills/patristic-index-extractor/references/output-format.md`."
                     )
                 entry = dict(entry_in)
-                target_file = entry.get('target_file') or infer_file_from_page(
-                    page_map,
-                    entry.get('page_ref_int') if entry.get('page_ref_int') is not None else entry.get('page_ref_col'),
-                )
+                target_file = entry.get('target_file')
                 if not target_file and entry.get('page_id'):
                     target_file = resolve_page_id_path(volume.get('source_root'), entry.get('page_id'))
                 con.execute(

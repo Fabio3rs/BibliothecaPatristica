@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+from difflib import SequenceMatcher
 import json
 import re
 import sys
@@ -22,23 +23,73 @@ PG_PL_MARKERS = (
     "ELENCHUS ONOMASTICUS",
     "INDEX SCRIPTORUM",
     "INDEX RERUM",
+    "INDEX GENERALIS",
+    "INDEX ALPHABETICUS",
+    "INDEX SECTIONUM",
+    "INDEX GRAECITATIS",
+    "INDEX IN",
+    "INDICES",
+    "INDEX",
     "ORDO RERUM",
 )
 
 PO_MARKERS = (
     "INDEX DES CITATIONS DES ECRITURES",
     "TABLE DES CITATIONS DE LA BIBLE",
+    "TABLE DES CITATIONS BIBLIQUES",
+    "TABLE DES CITATIONS DE L ECRITURE",
+    "TABLE DES CITATIONS DE LA SAINTE ECRITURE",
+    "TABLE DES PASSAGES DE LA BIBLE",
+    "TABLE DES RENVOIS A L ECRITURE",
+    "TABLE DES CITATIONS DES PERES DE L EGLISE",
     "TABLE DES PERICOPES DE L ECRITURE",
     "TABLE DES NOMS PROPRES",
     "TABLE DES NOMS PROPRES SYRIAQUES",
+    "TABLE DE TOUS LES NOMS PROPRES",
+    "SECONDE TABLE DES NOMS PROPRES",
+    "NOMS PROPRES ET PARTICULARITES REMARQUABLES",
+    "TABLE FRANCAISE DES NOMS PROPRES",
+    "TABLE GRECQUE DES NOMS PROPRES",
+    "TABLE ETHIOPIENNE DES NOMS PROPRES",
+    "TABLE DES MOTS SYRIAQUES ETRANGERS OU REMARQUABLES",
+    "TABLE DES MOTS SYRIAQUES ETRANGERS",
+    "TABLE DES MOTS SYRIAQUES",
+    "TABLE DES MOTS GRECS CITES DANS LES MSS",
+    "TABLE DES MOTS GRECS",
+    "TABLE DES MOTS REMARQUABLES",
     "TABLE DES PERICOPES",
     "TABLE DE CONCORDANCE",
     "TABLE ALPHABETIQUE",
     "TABLE ANALYTIQUE",
     "INDEX ANALYTIQUE",
+    "INDEX DES NOMS PROPRES",
+    "INDEX DES TABLES PARTICULIERES",
+    "TABLE",
+    "INDEX",
 )
 
-ALL_MARKERS = tuple(sorted({*PG_PL_MARKERS, *PO_MARKERS}))
+GENERAL_PG_PL_MARKERS = (
+    "CONSPECTUS TOMI",
+    "SYLLABUS AUCTORUM",
+    "SYLLABUS RERUM",
+    "AUCTORUM ET OPERUM",
+    "ELENCHUS AUCTORUM",
+    "ELENCHUS OPERUM",
+    "ELENCHUS RERUM",
+    "INDEX CAPITUM",
+    "ORDO OPERUM",
+    "ORDO RERUM",
+)
+GENERAL_PO_MARKERS = (
+    "TABLE DU TOME",
+    "TABLE DES MATIERES",
+    "TABLE GENERALE",
+    "TABLE OF CONTENTS",
+)
+AMBIGUOUS_GENERAL_FRONT_MARKERS = {"ELENCHUS RERUM", "SYLLABUS RERUM"}
+ALL_MARKERS = tuple(
+    sorted({*PG_PL_MARKERS, *PO_MARKERS, *GENERAL_PG_PL_MARKERS, *GENERAL_PO_MARKERS})
+)
 NOTE_PREFIXES = (
     "- ",
     "TRANSCRI",
@@ -73,6 +124,89 @@ def normalize_for_match(text: str) -> str:
     return text.strip().upper()
 
 
+def visible_line_text(text: str) -> str:
+    text = re.sub(r"<[^>]+>", " ", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def marker_offset(normalized_text: str, normalized_marker: str) -> int:
+    match = re.search(
+        rf"(?<!\w){re.escape(normalized_marker)}(?!\w)",
+        normalized_text,
+    )
+    return match.start() if match else -1
+
+
+OCR_HEADING_TRANSLATION = str.maketrans(
+    {
+        "0": "O",
+        "1": "I",
+        "|": "I",
+        "5": "S",
+        "8": "B",
+    }
+)
+
+
+def normalize_heading_for_cer(text: str) -> str:
+    normalized = normalize_for_match(text).translate(OCR_HEADING_TRANSLATION)
+    normalized = re.sub(r"\bL(?=NDEX\b)", "I", normalized)
+    return normalized
+
+
+def _marker_match_quality(text: str, marker: str) -> tuple[bool, str]:
+    normalized = normalize_heading_for_cer(text)
+    marker_norm = normalize_heading_for_cer(marker)
+    if marker_offset(normalized, marker_norm) >= 0:
+        return True, "normalized_exact"
+    marker_tokens = marker_norm.split()
+    text_tokens = normalized.split()
+    if len(marker_tokens) < 2 or not text_tokens:
+        return False, "none"
+    anchor = marker_tokens[0]
+    if not any(
+        token[:1] == anchor[:1] and abs(len(token) - len(anchor)) <= 2
+        for token in text_tokens
+    ):
+        return False, "none"
+    for marker_token in marker_tokens:
+        if not any(
+            SequenceMatcher(None, marker_token, text_token).ratio() >= 0.72
+            for text_token in text_tokens
+        ):
+            return False, "none"
+    window_min = max(1, len(marker_tokens) - 1)
+    window_max = min(len(text_tokens), len(marker_tokens) + 1)
+    best = 0.0
+    for width in range(window_min, window_max + 1):
+        for start in range(0, len(text_tokens) - width + 1):
+            candidate = " ".join(text_tokens[start : start + width])
+            best = max(best, SequenceMatcher(None, marker_norm, candidate).ratio())
+    threshold = 0.80 if len(marker_norm) >= 14 else 0.86
+    return best >= threshold, f"cer_fuzzy:{best:.3f}"
+
+
+def _best_marker_match(text: str, markers: tuple[str, ...]) -> tuple[str, str]:
+    normalized = normalize_heading_for_cer(text)
+    for marker in markers:
+        marker_norm = normalize_heading_for_cer(marker)
+        if marker_offset(normalized, marker_norm) >= 0:
+            return marker, "normalized_exact"
+    best_marker = ""
+    best_quality = 0.0
+    for marker in markers:
+        matched, quality = _marker_match_quality(text, marker)
+        if not matched or not quality.startswith("cer_fuzzy:"):
+            continue
+        score = float(quality.split(":", 1)[1])
+        if score > best_quality:
+            best_marker = marker
+            best_quality = score
+    if best_marker:
+        return best_marker, f"cer_fuzzy:{best_quality:.3f}"
+    return "", "none"
+
+
 def load_external_filtered_pages(
     path: Path,
     *,
@@ -99,23 +233,15 @@ def load_external_filtered_pages(
     return data
 
 
-def _looks_like_heading_candidate(stripped: str, marker: str, collection: str) -> bool:
+def _looks_like_heading_shape(stripped: str, collection: str) -> bool:
     if not stripped:
         return False
     if len(stripped) > 140:
         return False
     if any(stripped.upper().startswith(prefix) for prefix in NOTE_PREFIXES):
         return False
-    normalized = normalize_for_match(stripped)
-    marker_norm = normalize_for_match(marker)
-    if marker_norm not in normalized:
-        return False
     if not re.match(r"^[\[\]\(\)\d\s\*\.\-–—]*[A-ZÆŒ]", stripped):
         return False
-    marker_idx = normalized.find(marker_norm)
-    if marker_idx < 0 or marker_idx > 12:
-        return False
-
     letters = [c for c in stripped if c.isalpha()]
     uppercase_letters = [c for c in letters if c.isupper()]
     uppercase_ratio = (len(uppercase_letters) / len(letters)) if letters else 0.0
@@ -124,17 +250,35 @@ def _looks_like_heading_candidate(stripped: str, marker: str, collection: str) -
     return uppercase_ratio >= 0.58
 
 
-def build_fallback_filtered_pages(volume_id: str, text_root: Path, collection: str) -> dict[str, Any]:
+def _looks_like_heading_candidate(stripped: str, marker: str, collection: str) -> bool:
+    if not _looks_like_heading_shape(stripped, collection):
+        return False
+    matched, _ = _marker_match_quality(stripped, marker)
+    return matched
+
+
+def build_fallback_filtered_pages(
+    volume_id: str,
+    text_root: Path,
+    collection: str,
+    profile: str = "alphabetical",
+) -> dict[str, Any]:
+    if profile not in {"alphabetical", "general"}:
+        raise ValueError(f"Unsupported filtered-pages profile: {profile}")
     files = sorted(text_root.glob("*.txt"), key=page_sort_key)
-    markers = PO_MARKERS if collection == "PO" else PG_PL_MARKERS
-    marker_norms = [normalize_for_match(marker) for marker in markers]
+    if profile == "general":
+        markers = GENERAL_PO_MARKERS if collection == "PO" else GENERAL_PG_PL_MARKERS
+    else:
+        markers = PO_MARKERS if collection == "PO" else PG_PL_MARKERS
     candidate_sections: list[dict[str, Any]] = []
     candidate_files_seen: set[str] = set()
     candidate_files: list[str] = []
     all_hits: list[dict[str, Any]] = []
 
-    tail_count = min(32, len(files))
-    tail_files = files[-tail_count:]
+    window_count = min(32, len(files))
+    head_files = files[:window_count] if profile == "general" else []
+    tail_files = files[-window_count:] if profile == "alphabetical" else []
+    seed_files = head_files or tail_files
     tail_set = {str(path) for path in tail_files}
     file_to_index = {str(path): idx for idx, path in enumerate(files)}
 
@@ -150,7 +294,7 @@ def build_fallback_filtered_pages(volume_id: str, text_root: Path, collection: s
             if 0 <= neighbor_idx < len(files):
                 add_candidate_file(files[neighbor_idx])
 
-    for path in tail_files:
+    for path in seed_files:
         add_candidate_file(path)
 
     for path in files:
@@ -158,47 +302,77 @@ def build_fallback_filtered_pages(volume_id: str, text_root: Path, collection: s
             text = path.read_text(encoding="utf-8", errors="replace")
         except OSError:
             continue
-        lines = text.splitlines()
+        visible_lines = [
+            (line_no, visible_line_text(line))
+            for line_no, line in enumerate(text.splitlines(), start=1)
+        ]
+        visible_lines = [(line_no, line) for line_no, line in visible_lines if line]
         path_str = str(path)
-        for line_no, line in enumerate(lines, start=1):
-            stripped = line.strip()
-            if not stripped:
+        for visible_index, (line_no, stripped) in enumerate(visible_lines):
+            matched_marker = ""
+            matched_text = ""
+            match_quality = "none"
+            for width in (1, 2, 3):
+                window = visible_lines[visible_index : visible_index + width]
+                if len(window) != width:
+                    continue
+                candidate_text = " ".join(item[1] for item in window)
+                if not _looks_like_heading_shape(candidate_text, collection):
+                    continue
+                marker, quality = _best_marker_match(candidate_text, markers)
+                if marker:
+                    matched_marker = marker
+                    matched_text = candidate_text
+                    match_quality = quality
+                if matched_text:
+                    break
+            if not matched_text:
                 continue
-            for marker, marker_norm in zip(markers, marker_norms, strict=True):
-                if marker_norm not in normalize_for_match(stripped):
-                    continue
-                if not _looks_like_heading_candidate(stripped, marker, collection):
-                    continue
-                hit = {
+            marker = matched_marker
+            if (
+                profile == "general"
+                and marker in AMBIGUOUS_GENERAL_FRONT_MARKERS
+                and file_to_index[path_str] >= max(1, int(len(files) * 0.35))
+            ):
+                continue
+            hit = {
+                "file": path_str,
+                "file_seq": page_number(path),
+                "line": line_no,
+                "text": matched_text[:240],
+                "marker": marker,
+                "match_quality": match_quality,
+            }
+            all_hits.append(hit)
+            add_neighbors(path)
+            reason = "tail_heading_match" if path_str in tail_set else "heading_match"
+            candidate_sections.append(
+                {
+                    "heading": matched_text[:240],
                     "file": path_str,
                     "file_seq": page_number(path),
                     "line": line_no,
-                    "text": stripped[:240],
+                    "reason": reason,
                     "marker": marker,
+                    "match_quality": match_quality,
+                    "role": (
+                        "alphabetical_stop_boundary"
+                        if profile == "alphabetical"
+                        and collection in {"PG", "PL"}
+                        and marker == "ORDO RERUM"
+                        else "section_heading"
+                    ),
                 }
-                all_hits.append(hit)
-                add_neighbors(path)
-                reason = "tail_heading_match" if path_str in tail_set else "heading_match"
-                candidate_sections.append(
-                    {
-                        "heading": stripped[:240],
-                        "file": path_str,
-                        "file_seq": page_number(path),
-                        "line": line_no,
-                        "reason": reason,
-                        "marker": marker,
-                    }
-                )
-                break
+            )
 
     if not candidate_sections:
-        for path in tail_files:
+        for path in seed_files:
             try:
                 text = path.read_text(encoding="utf-8", errors="replace")
             except OSError:
                 continue
             normalized = normalize_for_match(text[:4000])
-            if any(normalize_for_match(marker) in normalized for marker in ALL_MARKERS):
+            if any(marker_offset(normalized, normalize_for_match(marker)) >= 0 for marker in markers):
                 candidate_sections.append(
                     {
                         "heading": path.name,
@@ -215,8 +389,10 @@ def build_fallback_filtered_pages(volume_id: str, text_root: Path, collection: s
         "volume_id": volume_id,
         "source_root": str(text_root),
         "collection": collection,
+        "profile": profile,
         "source": "fallback_internal",
         "file_count": len(files),
+        "head_files": [str(path) for path in head_files],
         "tail_files": [str(path) for path in tail_files],
         "candidate_files": candidate_files,
         "candidate_sections": candidate_sections,
@@ -230,6 +406,7 @@ def resolve_filtered_pages(
     root: Path,
     filtered_pages_json: Path | None,
     filtered_pages_dir: Path | None,
+    profile: str = "alphabetical",
 ) -> dict[str, Any]:
     volume_root = root / volume_id
     text_root = volume_root / "text"
@@ -249,8 +426,26 @@ def resolve_filtered_pages(
             external_path = candidate
 
     if external_path is not None:
-        return load_external_filtered_pages(external_path, volume_id=volume_id, text_root=text_root)
-    return build_fallback_filtered_pages(volume_id, text_root, info.series)
+        external = load_external_filtered_pages(
+            external_path,
+            volume_id=volume_id,
+            text_root=text_root,
+        )
+        external_profile = external.get("profile")
+        if external_profile == profile or (
+            profile == "alphabetical" and external_profile is None
+        ):
+            external["profile"] = profile
+            return external
+        fallback = build_fallback_filtered_pages(
+            volume_id,
+            text_root,
+            info.series,
+            profile,
+        )
+        fallback["ignored_legacy_external_file"] = str(external_path)
+        return fallback
+    return build_fallback_filtered_pages(volume_id, text_root, info.series, profile)
 
 
 def main() -> None:
@@ -261,6 +456,7 @@ def main() -> None:
     ap.add_argument("--filtered-pages-dir", type=Path, help="Directory with <VOLUME>_filtered_pages.json files")
     ap.add_argument("--output", type=Path, help="Optional output path for the canonical JSON artifact")
     ap.add_argument("--pretty", action="store_true", help="Pretty-print JSON")
+    ap.add_argument("--profile", choices=("alphabetical", "general"), default="alphabetical")
     args = ap.parse_args()
 
     payload = resolve_filtered_pages(
@@ -268,6 +464,7 @@ def main() -> None:
         root=args.root,
         filtered_pages_json=args.filtered_pages_json,
         filtered_pages_dir=args.filtered_pages_dir,
+        profile=args.profile,
     )
     encoded = json.dumps(payload, ensure_ascii=False, indent=2 if args.pretty else None)
     if args.output is not None:

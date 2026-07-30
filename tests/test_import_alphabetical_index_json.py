@@ -4,6 +4,8 @@ import json
 import sys
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -87,6 +89,112 @@ def test_cross_reference_detector_matches_common_remission_markers() -> None:
     assert looks_like_cross_reference_without_anchor("voir Exode")
     assert looks_like_cross_reference_without_anchor("id. 4)")
     assert not looks_like_cross_reference_without_anchor("37 à 39")
+    assert not looks_like_cross_reference_without_anchor("Div. Nom. cap. 3, § 1")
+    assert not looks_like_cross_reference_without_anchor("ibid.")
+
+
+def test_empty_extraction_requires_explicit_coverage_evidence() -> None:
+    payload = minimal_payload()
+    payload["sections"] = []
+    payload["entries"] = []
+
+    try:
+        build_validation_summary(payload)
+    except ValueError as exc:
+        assert "entries is empty" in str(exc)
+    else:
+        raise AssertionError("Expected empty extraction validation failure")
+
+
+def test_confirmed_empty_extraction_is_valid() -> None:
+    payload = minimal_payload()
+    payload["sections"] = []
+    payload["entries"] = []
+    payload["coverage"] = {
+        "entries_status": "no_index_section",
+        "entries_status_reason": "No alphabetical list entries occur in the inspected index.",
+        "evidence_files": ["/tmp/po009/text/page-001.txt"],
+    }
+
+    summary = build_validation_summary(payload)
+
+    assert summary["status"] == "valid"
+    assert summary["counts"]["entries"] == 0
+
+
+def test_no_line_items_requires_a_detected_section() -> None:
+    payload = minimal_payload()
+    payload["sections"] = []
+    payload["entries"] = []
+    payload["coverage"] = {
+        "entries_status": "no_line_items",
+        "entries_status_reason": "No rows were recovered.",
+        "evidence_files": ["/tmp/po009/text/page-001.txt"],
+    }
+
+    try:
+        build_validation_summary(payload)
+    except ValidationErrors as exc:
+        assert "no_index_section" in str(exc)
+    else:
+        raise AssertionError("Expected structural empty-status validation failure")
+
+
+def test_new_payload_rejects_legacy_scripture_material_ref_kind() -> None:
+    payload = minimal_payload()
+    payload["entries"][0]["entry_kind"] = "lemma"
+    payload["refs"] = [
+        {
+            "entry_key": "PO009:entry:001",
+            "ref_order": 1,
+            "ref_kind": "scripture",
+            "ref_raw": "Gen. I, 6",
+            "page_ref_raw": "169",
+            "target_file": "/tmp/po009/text/page-169.txt",
+        }
+    ]
+
+    try:
+        build_validation_summary(payload)
+    except ValidationErrors as exc:
+        assert "ref_kind has invalid value 'scripture'" in str(exc)
+    else:
+        raise AssertionError("Expected legacy scripture ref_kind rejection")
+
+
+def test_new_payload_rejects_general_pipeline_boundary_sections() -> None:
+    for section_kind in ("ordo_rerum", "editorial_closure"):
+        payload = minimal_payload()
+        payload["sections"][0]["section_kind"] = section_kind
+
+        try:
+            build_validation_summary(payload)
+        except ValidationErrors as exc:
+            assert "belongs outside the alphabetical-index pipeline" in str(exc)
+        else:
+            raise AssertionError(
+                f"Expected {section_kind} to be rejected in a new extraction"
+            )
+
+
+def test_scripture_entry_requires_a_scripture_ref() -> None:
+    payload = minimal_payload()
+    payload["refs"] = [
+        {
+            "entry_key": "PO009:entry:001",
+            "ref_order": 1,
+            "ref_kind": "editorial_page",
+            "ref_raw": "169",
+            "page_ref_raw": "169",
+        }
+    ]
+
+    try:
+        build_validation_summary(payload)
+    except ValidationErrors as exc:
+        assert "has no scripture_refs" in str(exc)
+    else:
+        raise AssertionError("Expected scripture entry without passage to be rejected")
 
 
 def test_duplicate_refs_ref_order_is_rejected() -> None:
@@ -214,10 +322,83 @@ def test_cross_reference_ref_without_anchor_is_rejected_with_specific_error() ->
         raise AssertionError("Expected cross-reference-without-anchor validation failure")
 
 
+def test_structural_locator_without_page_anchor_is_valid() -> None:
+    payload = minimal_payload()
+    payload["entries"][0]["entry_kind"] = "lemma"
+    payload["coverage"] = {"locator_status": "partial"}
+    payload["refs"] = [
+        {
+            "entry_key": "PO009:entry:001",
+            "ref_order": 1,
+            "ref_kind": "target_locator",
+            "ref_raw": "Div. Nom. cap. 3, § 1",
+            "page_ref_raw": None,
+            "target_file": None,
+            "target_file_probability": None,
+            "confidence": 0.9,
+            "raw_json": {"locator_scope": "Dionysian work citation"},
+        }
+    ]
+
+    summary = build_validation_summary(payload)
+
+    assert summary["status"] == "valid"
+    assert summary["counts"]["refs"] == 1
+
+
+def test_open_notation_without_page_anchor_is_valid() -> None:
+    payload = minimal_payload()
+    payload["entries"][0]["entry_kind"] = "lemma"
+    payload["coverage"] = {"locator_status": "partial"}
+    payload["refs"] = [
+        {
+            "entry_key": "PO009:entry:001",
+            "ref_order": 1,
+            "ref_kind": "unresolved",
+            "ref_raw": "ibid.",
+            "page_ref_raw": None,
+            "target_file": None,
+            "target_file_probability": None,
+            "confidence": 0.6,
+            "raw_json": {"notation": [{"notation_key": "ibid"}]},
+        }
+    ]
+
+    summary = build_validation_summary(payload)
+
+    assert summary["status"] == "valid"
+
+
+def test_editorial_page_ref_without_page_anchor_is_rejected() -> None:
+    payload = minimal_payload()
+    payload["entries"][0]["entry_kind"] = "lemma"
+    payload["coverage"] = {"locator_status": "partial"}
+    payload["refs"] = [
+        {
+            "entry_key": "PO009:entry:001",
+            "ref_order": 1,
+            "ref_kind": "editorial_page",
+            "ref_raw": "169",
+            "page_ref_raw": None,
+            "target_file": None,
+            "target_file_probability": None,
+            "confidence": 0.6,
+            "raw_json": {},
+        }
+    ]
+
+    with pytest.raises(
+        ValidationErrors,
+        match="must include at least one material anchor",
+    ):
+        build_validation_summary(payload)
+
+
 def test_validation_aggregates_multiple_failures() -> None:
     payload = minimal_payload()
     payload["sections"][0]["section_kind"] = "onomastic_veterum"
     payload["entries"][0]["section_key"] = "PO009:section:999"
+    payload["entries"][0]["entry_kind"] = "lemma"
 
     try:
         build_validation_summary(payload)
@@ -237,6 +418,7 @@ def test_normalize_material_path_accepts_absolute_and_relative_forms() -> None:
 
 def test_material_paths_may_be_relative_when_still_inside_same_volume() -> None:
     payload = minimal_payload()
+    payload["entries"][0]["entry_kind"] = "lemma"
     payload["volume"]["source_root"] = str(ROOT / "teste/PO009/text")
     payload["sections"][0]["file_start"] = "teste/PO009/text/page-001.txt"
     payload["sections"][0]["file_end"] = "teste/PO009/text/page-001.txt"

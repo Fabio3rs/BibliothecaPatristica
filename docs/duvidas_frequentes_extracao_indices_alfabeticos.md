@@ -4,6 +4,10 @@ Este documento consolida dúvidas recorrentes observadas nos logs reais de execu
 
 O objetivo não é redefinir o contrato do schema. O objetivo é reduzir retrabalho: várias execuções voltam às mesmas perguntas sobre `section_kind`, `refs`, helper, paginação OCR, builders reutilizáveis e uso de payloads anteriores como molde.
 
+Este FAQ é descritivo, não normativo. Se uma resposta histórica divergir do contrato atual,
+prevalecem: prompt runtime para paths/ownership, contrato de schema, normalização bíblica e
+estratégia vigente, nessa ordem.
+
 Leia este documento junto com:
 
 - [docs/contrato_extrator_indices_alfabeticos.md](/homessddata/Projects/pdfocr/docs/contrato_extrator_indices_alfabeticos.md:1)
@@ -15,12 +19,11 @@ Leia este documento junto com:
 
 Sim, mas apenas como modelo estrutural e editorial.
 
-Use outros volumes para:
+Use outros volumes apenas para:
 
-- copiar o shape de `sections`, `nodes`, `entries`, `refs`, `scripture_refs`, `coverage`, `notes`
-- confirmar a taxonomia fechada de `section_kind`, `entry_kind`, `ref_kind`
-- ver como casos parecidos foram serializados
-- reaproveitar builders existentes em `scripts/pipeline_index_extraction/`
+- reconhecer layouts e headings parecidos
+- formular buscas OCR locais
+- comparar uma hipótese editorial já permitida pelo contrato
 
 Não use outros volumes para:
 
@@ -36,14 +39,8 @@ Payloads que aparecem repetidamente como gabarito estrutural nos logs:
 - `PL015`
 - `PO003`
 
-Builders e scripts que aparecem repetidamente como gabarito operacional nos logs:
-
-- `assemble_alphabetical_payload.py`
-- `build_pl169_alphabetical_payload.py`
-- `build_pl154_alphabetical_payload.py`
-- `build_pl143_alphabetical_payload.py`
-- `build_pl123_ordo_rerum_payload.py`
-- `build_pl076_alphabetical_payload.py`
+Builders legados podem explicar formatos históricos do corpus, mas não são gabaritos operacionais
+da pipeline compacta e não devem ser copiados para novas extrações.
 
 ## 2. O que os agentes mais procuram em payloads já existentes?
 
@@ -62,32 +59,13 @@ Na prática, quando um agente abre outro payload, normalmente ele está buscando
 - como separar `entry` de `ref`
 - como um caso válido tratou `coverage` e `notes`
 
-## 3. Quando devo usar um payload antigo como molde e quando devo abrir um builder?
+## 3. Quando devo consultar payload ou builder antigo?
 
-Use payload antigo quando a dúvida é de schema ou serialização:
+Consulte-os somente como registro histórico ou pista sobre o layout de um volume parecido.
+O shape vigente vem do contrato e dos artefatos compactos, não de payload anterior.
 
-- quais chaves existem
-- como `refs` foram modeladas
-- como `coverage` foi preenchido
-- como um `section_kind` parecido foi representado
-
-Use builder antigo quando a dúvida é de workflow ou parser:
-
-- como montar `helper_request.json`
-- como dividir o volume em chunks
-- como gerar intermediários
-- como fazer merge de `entries.json`, `refs.json` e `scripture_refs.json`
-- como associar páginas OCR, anchors editoriais e `target_file_best`
-
-Regra prática:
-
-- dúvida de forma final do JSON: abrir payload
-- dúvida de processo de extração: abrir builder
-
-Na prática observada nos logs:
-
-- payloads são consultados para `shape`, taxonomia e exemplos de serialização
-- builders são consultados para chunking, helper, page-map, merge e escrita do payload
+Para workflow ou parser, use o driver compacto e seus contratos de fase. Payload ou builder antigo
+pode sugerir uma hipótese editorial, mas não define shape, ownership, merge, qualidade nem target.
 
 ## 4. Como decidir `section_kind`?
 
@@ -124,16 +102,17 @@ Nos casos reais do projeto, `ORDO RERUM` costuma ser:
 - um sumário de conteúdos do tomo
 - às vezes coexistindo com um índice alfabético real no mesmo volume
 
-Em geral:
+Na pipeline alfabética:
 
-- use `section_kind: ordo_rerum`
-- trate a seção como bloco próprio
-- não force isso a virar `alphabetical_general`
+- não emita seção, entries, nodes ou refs de `ORDO RERUM`
+- registre apenas `stop_boundary` no manifest, com arquivo, linha/bloco e heading literal
+- entregue a extração de seu conteúdo à pipeline geral (`scripts/run_index_extraction.py`)
 
-Também é comum que:
+O valor legado `section_kind: ordo_rerum` permanece somente para compatibilidade do banco e da
+pipeline geral.
 
-- linhas estruturais virem `entry_kind: heading_group`
-- linhas com paginação editorial produzam `refs`
+`section_kind: editorial_closure` segue a mesma regra: addenda/corrigenda e errata não são
+extraídos por novos payloads alfabéticos.
 
 ## 6. Como separar `entry` de `ref`?
 
@@ -346,9 +325,9 @@ Estados típicos aceitáveis:
 
 - `no_line_items`
 - `unrecoverable_ocr`
-- `no_index_section`
+- `no_index_section`, somente quando `sections=[]`
 
-## 18. Quando `partial_*` é aceitável?
+## 18. Quando estado parcial é aceitável?
 
 Só quando as tentativas razoáveis já foram feitas.
 
@@ -360,7 +339,9 @@ Antes de cair em `partial_*`, espera-se:
 - regex derivada do padrão editorial local
 - uso conservador do helper quando cabível
 
-`partial_*` não deve ser atalho para evitar investigação.
+`coverage.entries_status` não usa `partial_*`. Uma localização material pode terminar com
+`coverage.locator_status=partial` depois de tentativas documentadas; isso impede tratar o volume
+como integralmente resolvido. `partial` não deve ser atalho para evitar investigação.
 
 ## 19. O que fazer quando o importador falha?
 
@@ -446,12 +427,12 @@ Esses scripts aparecem repetidamente porque já resolvem:
 
 Se surgir uma dúvida durante a extração, resolva nesta ordem:
 
-1. contrato fechado do schema
-2. docs taxonômicos do projeto
-3. payload válido de volume parecido
-4. builder de volume parecido
-5. OCR local do volume corrente
-6. helper e regex local
+1. contrato runtime da fase para paths e ownership
+2. contrato fechado do schema
+3. normalização bíblica, quando aplicável
+4. OCR local do volume corrente
+5. evidência determinística, helper e regex local
+6. payload antigo apenas como comparação histórica, nunca como regra
 
 Essa ordem tende a minimizar:
 

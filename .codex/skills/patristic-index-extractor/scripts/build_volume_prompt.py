@@ -10,6 +10,20 @@ def load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def optional_artifact(path: Path | None) -> str:
+    if path is None:
+        return "(not provided)"
+    if not path.is_file():
+        return f"path={path} (missing)"
+    payload = load_json(path)
+    counts = {
+        key: len(value)
+        for key, value in payload.items()
+        if isinstance(value, list)
+    }
+    return f"path={path}\nsummary={json.dumps(counts, ensure_ascii=False)}"
+
+
 def build_todo_lines(prescan: dict, collection: str) -> str:
     hits = prescan.get("all_hits", [])
     if collection == "PO":
@@ -27,13 +41,6 @@ def build_todo_lines(prescan: dict, collection: str) -> str:
             "PRÉFACE",
             "PREFACE",
             "PROLOGUE",
-            "TABLE DES NOMS PROPRES",
-            "INDEX DES NOMS PROPRES",
-            "INDEX DES CITATIONS DES ÉCRITURES",
-            "TABLE ALPHABÉTIQUE",
-            "TABLE ANALYTIQUE DES MATIÈRES",
-            "ADDENDA",
-            "CORRIGENDA",
         )
     else:
         lines = [
@@ -44,12 +51,6 @@ def build_todo_lines(prescan: dict, collection: str) -> str:
             "ELENCHUS",
             "AUCTORUM ET OPERUM",
             "INDEX CAPITUM",
-            "ORDO RERUM",
-            "INDEX ANALYTICUS",
-            "INDEX RERUM ET VERBORUM",
-            "INDEX GRÆCITATIS",
-            "INDEX GRAECITATIS",
-            "ONOMASTICUM",
             "PROLEGOMENA",
         )
     seen: set[tuple[str, int | None]] = set()
@@ -72,8 +73,6 @@ def build_todo_lines(prescan: dict, collection: str) -> str:
             starts_like_heading = text.startswith(
                 (
                     "Index capitum",
-                    "Ordo rerum",
-                    "Onomasticum",
                     "Elenchus",
                 )
             )
@@ -88,15 +87,16 @@ def build_todo_lines(prescan: dict, collection: str) -> str:
     if collection == "PO":
         lines.extend([
             "- [ ] Build one TODO item per discovered fascicle or work entrypoint.",
-            "- [ ] For each work TODO item, verify front matter, internal tables, and closing indexes.",
+            "- [ ] For each work TODO item, verify front matter and internal tables of books, parts, or chapters.",
             "- [ ] Identify retrospective tables that list other tomes and keep them separate from the current tome.",
+            "- [ ] Leave closing names, subjects, scripture, citation, concordance, and alphabetical indexes to the alphabetical-index pipeline.",
             "- [ ] Recheck uncertain page numbers, bracket pagination, and OCR digits before finalizing.",
         ])
     else:
         lines.extend([
             "- [ ] Build one TODO item per discovered work.",
             "- [ ] For each work TODO item, verify the opening pages and the work-level index.",
-            "- [ ] Verify all closing indexes at the end of the volume.",
+            "- [ ] Leave closing alphabetical, analytical, onomastic, scripture, citation, and concordance indexes to the alphabetical-index pipeline.",
             "- [ ] Recheck uncertain page numbers, columns, and OCR digits before finalizing.",
         ])
     return "\n".join(lines)
@@ -139,19 +139,19 @@ def work_instructions(collection: str) -> str:
     if collection == "PO":
         base.extend(
             [
-                "- Separate tome-level structures, fascicle inventory, work front matter, work indexes, editorial closure, and retrospective tables.",
+                "- Separate tome-level structures, fascicle inventory, work front matter, work contents, and retrospective tables.",
                 "- Distinguish `TABLE DES MATIÈRES` of the current tome from internal work tables and cumulative tables of other tomes.",
                 "- Treat `FASC.` lines as candidate fascicle inventory, but verify whether they belong to the current tome.",
                 "- Inspect the opening pages of each discovered fascicle before naming the work.",
-                "- Inspect the closing pages for names indexes, scripture indexes, alphabetical tables, analytical tables, and addenda/corrigenda.",
+                "- Do not extract closing names, subjects, scripture, citation, concordance, alphabetical, or analytical indexes; the alphabetical-index pipeline owns them.",
             ]
         )
     else:
         base.extend(
             [
-                "- Separate volume-front, work-front, and volume-end indexes.",
+                "- Separate the volume-front inventory from each work's front matter and internal contents.",
                 "- For each work, inspect the opening pages and the work index before naming the work.",
-                "- Inspect the closing pages for final indexes.",
+                "- Do not extract closing alphabetical, analytical, onomastic, scripture, citation, concordance, names, subjects, or cross-reference indexes.",
                 "- For PG/PL, confirm work boundaries with repeated title/author strings across multiple files when numeric references are noisy.",
             ]
         )
@@ -160,17 +160,21 @@ def work_instructions(collection: str) -> str:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description="Build the Codex prompt envelope for one volume.")
-    ap.add_argument("--skill", default="patristic-index-extractor", help="Skill name to invoke")
     ap.add_argument("--volume", required=True, help="Volume id, e.g. PG001, PL099, or PO025")
     ap.add_argument("--source-root", required=True, help="Text root, e.g. teste/PG001/text")
     ap.add_argument("--collection", required=True, help="Collection code, e.g. PG, PL, or PO")
     ap.add_argument("--prescan-json", type=Path, required=True, help="JSON produced by scan_volume.py --json")
+    ap.add_argument("--filtered-pages-json", type=Path)
+    ap.add_argument("--editorial-pages-json", type=Path)
+    ap.add_argument("--helper-request-json", type=Path)
+    ap.add_argument("--helper-output-json", type=Path)
+    ap.add_argument("--workplan-json", type=Path)
     ap.add_argument("--output-dir", type=Path, default=Path("data/index_payloads"), help="Directory for the JSON payload artifact")
     args = ap.parse_args()
 
     prescan = load_json(args.prescan_json)
     output_file = args.output_dir / f"{args.volume}_indices.json"
-    prompt = f"""${args.skill} volume {args.volume} localizado em {args.source_root}
+    prompt = f"""$patristic-index-extractor
 
 TASK
 You are extracting the index structure for one OCR volume.
@@ -183,14 +187,45 @@ VOLUME
 NUMBERING GLOSSARY
 - OCR file / file suffix / physical file: the numeric suffix in `...-NNN.txt`; this identifies the OCR text file only.
 - Internal/editorial/printed page: the page, folio, or column number printed inside the historical source.
+- Editorial page headers commonly have the form `NUMBER  PAGE-TITLE  NUMBER+1`, for example
+  `915  INDEX RERUM  916`.
+- OCR generators may keep that header in one block, split it across multiple blocks, preserve only
+  one of the numbers, corrupt digits through CER, or omit the header entirely.
+- Infer missing or corrupt editorial numbers from several physical files before and after. Never
+  fill them from the physical filename suffix.
 - Scan/sheet reality: one scan may contain two printed pages, facing pages, or a non-1:1 layout.
 - Do not assume these numbering systems are equivalent.
 
 PRESCAN
 {json.dumps(prescan, ensure_ascii=False, indent=2)}
 
+LOCALIZATION ARTIFACTS
+Use FILTERED PAGES and HELPER EVIDENCE only as localization aids, not as restrictions or semantic
+ground truth. These artifacts suggest where to begin, not which pages you may investigate.
+
+Filtered-page localization artifact:
+{optional_artifact(args.filtered_pages_json)}
+
+Editorial page-to-file estimator artifact:
+{optional_artifact(args.editorial_pages_json)}
+
+Target-locator helper request:
+{optional_artifact(args.helper_request_json)}
+
+Target-locator helper output:
+{optional_artifact(args.helper_output_json)}
+
+Opening-matter workplan (works/parts/books/chapters; never the closing citations pipeline):
+{optional_artifact(args.workplan_json)}
+
 WORK INSTRUCTIONS
 {work_instructions(args.collection).format(source_root=args.source_root)}
+
+OCR READING
+- Prefer `python scripts/read_ocr_page_text.py --view xml --show-source <file>`.
+- The reader automatically joins likely within-block word wraps conservatively.
+- Use `scripts/pipeline_index_extraction/fix_linebreak_hyphens.py` only as a recovery helper after
+  checking the OCR; it is not evidence.
 
 TODO
 {build_todo_lines(prescan, args.collection)}

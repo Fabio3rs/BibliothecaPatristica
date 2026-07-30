@@ -14,6 +14,11 @@ Portanto, este documento deve agora ser lido como:
 - catálogo de formatos materiais reais que o contrato precisa cobrir
 - registro das lacunas ainda abertas fora do núcleo do schema
 
+Este levantamento é descritivo e não normativo. Em caso de divergência, prevalecem, nesta ordem,
+o contrato runtime da fase para paths/ownership, `contrato_extrator_indices_alfabeticos.md`,
+`normalizacao_indices_biblicos.md` e a estratégia vigente. Exemplos e lacunas históricas abaixo
+não reabrem decisões já fechadas no contrato.
+
 Ele precisa responder a quatro perguntas:
 
 - que tipos editoriais realmente existem no corpus
@@ -85,13 +90,13 @@ Esta é a amostragem sugerida para estabilizar a documentação e, depois, o con
 ### 4.1 PG
 
 - `PG003`
-  - esperado: `INDEX RERUM ET VERBORUM` + `ORDO RERUM`
+  - esperado: `INDEX RERUM ET VERBORUM`; `ORDO RERUM` apenas como fronteira de parada
   - motivo: índice remissivo denso, com muitos lemas e múltiplas referências
 - `PG011`
   - esperado: `INDEX ANALYTICUS`
   - motivo: índice analítico grande, com OCR danificado e fragmentação
 - `PG036`
-  - esperado: `INDEX ANALYTICUS` + `INDEX ORATIONUM` + `ORDO RERUM`
+  - esperado: `INDEX ANALYTICUS` + `INDEX ORATIONUM`; `ORDO RERUM` como fronteira
   - motivo: caso híbrido, bom para distinguir tipos finais diferentes
 - `PG021`
   - esperado: índice analítico denso
@@ -103,7 +108,8 @@ Esta é a amostragem sugerida para estabilizar a documentação e, depois, o con
 ### 4.2 PL
 
 - `PL143`
-  - esperado: `INDEX ONOMASTICUS`, `ELENCHUS PERSONARUM`, `ELENCHUS LOCALIS`, `ORDO RERUM`
+  - esperado: `INDEX ONOMASTICUS`, `ELENCHUS PERSONARUM`, `ELENCHUS LOCALIS`;
+    `ORDO RERUM` como fronteira
   - motivo: caso excelente de índice hierárquico de nomes e lugares
 - `PL163`
   - esperado: índices finais com cobertura parcial
@@ -112,7 +118,7 @@ Esta é a amostragem sugerida para estabilizar a documentação e, depois, o con
   - esperado: índice final menos regular
   - motivo: amostra de PL com formato menos limpo
 - `PL198`
-  - esperado: `INDEX IN ADAMUM SCOTUM` + `ORDO RERUM`
+  - esperado: `INDEX IN ADAMUM SCOTUM`; `ORDO RERUM` como fronteira
   - motivo: separa índice de obra específica de sumário final
 - `PL207`
   - esperado: índice final relativamente rico
@@ -296,6 +302,9 @@ Função:
 - ordem de obras, capítulos, apêndices, seções
 
 Não é o mesmo que índice remissivo.
+
+Na pipeline alfabética, `ORDO RERUM` não é uma seção possuída: é evidência de
+`stop_boundary`, e sua extração continua sob responsabilidade da pipeline geral.
 
 ### 6.2 Índice analítico de matérias
 
@@ -632,7 +641,7 @@ Ainda precisamos medir melhor:
 
 ### 11.4 Referências múltiplas
 
-Ainda não fechamos o formato ideal para:
+O levantamento encontrou:
 
 - lista simples de páginas
 - intervalos
@@ -641,6 +650,14 @@ Ainda não fechamos o formato ideal para:
 - referências com coluna
 - referências compostas por página e linha
 - referências paralelas em paginações diferentes
+
+O contrato final agora determina:
+
+- listas explícitas geram uma ocorrência por locator
+- intervalos impressos permanecem uma única `editorial_range`
+- `ibid.` só herda com antecedente estrutural seguro
+- `seq.`, `seqq.`, `fin` e `passim` permanecem formas abertas não expandidas
+- página, coluna, linha e sistemas paralelos ocupam campos distintos
 
 ### 11.5 Normalização de nomes
 
@@ -653,12 +670,16 @@ Ainda não sabemos até onde vale normalizar no momento da extração:
 
 ### 11.6 Convenção bíblica
 
-Ainda precisamos documentar com mais exemplos reais:
+A primeira convenção operacional está fechada em
+`docs/normalizacao_indices_biblicos.md`: catálogo católico de 73 livros, perfil Vulgata/Migne
+contextual para as formas `Regum` (`I-IV` no corpus PL; `II-IV` confirmadas na amostra PG001) e
+`I-II Esdrae`, e perfil francês editorial antigo para
+`I-IV Rois` dentro de tabelas bíblicas explícitas da PO. Índices de citações, perícopes,
+concordâncias e aparatos `source_only` permanecem classes distintas.
 
-- abreviações efetivamente usadas nos índices
-- se a numeração segue padrão católico latino, francês editorial ou convenção mista
-- como lidar com livros deuterocanônicos e numeração variável
-- diferença entre índice de citações e índice de perícopes
+Ainda convém ampliar continuamente os fixtures reais de abreviações, sobretudo para OCR grego,
+idiomas orientais e títulos muito degradados; novas formas não devem ser promovidas a aliases
+globais sem contexto suficiente.
 
 ### 11.7 Relação com a web
 

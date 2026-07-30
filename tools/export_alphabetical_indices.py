@@ -6,6 +6,7 @@ import gzip
 import json
 import re
 import sqlite3
+import sys
 import unicodedata
 from collections import defaultdict
 from dataclasses import dataclass
@@ -16,7 +17,27 @@ from typing import Any
 DEFAULT_DB = Path("data/alphabetical_indices.db")
 DEFAULT_OUT = Path("web/public/alpha")
 REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from patristica_pipeline.scripture_book_catalog import (
+    canonical_book_key,
+    canonical_book_label,
+)
+
 TARGET_BYTES = 350_000
+PAGE_SPECIFIC_EVIDENCE_KINDS = {
+    "cited_page_match",
+    "direct_editorial_page",
+    "editorial_header_match",
+    "editorial_page_match",
+    "header_pair",
+    "neighbor_fit",
+    "neighbor_sequence",
+    "page_drift_explanation",
+    "page_number_match",
+    "pagination_sequence",
+}
 
 BASE_QUERY = """
 select
@@ -25,6 +46,8 @@ select
   s.section_key,
   s.section_kind,
   s.heading_raw,
+  s.file_start as section_file_start,
+  s.file_end as section_file_end,
   e.entry_key,
   e.entry_kind,
   e.lemma_raw,
@@ -37,16 +60,22 @@ select
   e.inferred_printed_page,
   e.target_file_best,
   e.confidence,
+  r.ref_id,
+  r.ref_order,
+  r.scripture_ref_order,
   r.ref_kind,
   r.ref_raw,
   r.page_ref_raw,
   r.page_ref_int,
   r.target_file,
+  r.locator_status,
+  r.raw_json as ref_raw_json,
   sr.ref_role,
   sr.ref_raw as sref_raw,
   sr.ref_norm,
   sr.book_raw,
   sr.book_norm,
+  sr.book_key,
   sr.chapter_start,
   sr.verse_start,
   sr.chapter_end,
@@ -55,8 +84,10 @@ select
 from alphabetical_entries e
 join alphabetical_sections s on s.section_key = e.section_key
 join alphabetical_volumes v on v.volume_id = s.volume_id
-left join alphabetical_refs r on r.entry_key = e.entry_key and r.ref_order = 1
-left join alphabetical_scripture_refs sr on sr.entry_key = e.entry_key and sr.ref_order = 1
+join alphabetical_refs r on r.entry_key = e.entry_key
+left join alphabetical_scripture_refs sr
+  on sr.entry_key = r.entry_key
+ and sr.ref_order = r.scripture_ref_order
 where e.entry_kind not in ('heading_group', 'editorial_note')
 """
 
@@ -151,25 +182,106 @@ def parse_file_page(value: Any) -> int | None:
         return None
 
 
+def row_value(row: sqlite3.Row | dict[str, Any], key: str) -> Any:
+    try:
+        return row[key]
+    except (IndexError, KeyError):
+        return None
+
+
+def target_has_verified_evidence(row: sqlite3.Row | dict[str, Any]) -> bool:
+    if row_value(row, "locator_status") not in (None, "resolved"):
+        return False
+    raw_json = row_value(row, "ref_raw_json")
+    if isinstance(raw_json, str):
+        try:
+            raw_json = json.loads(raw_json)
+        except json.JSONDecodeError:
+            return False
+    if not isinstance(raw_json, dict):
+        return False
+    locator = raw_json.get("compact_locator")
+    if not isinstance(locator, dict) or locator.get("status") != "resolved":
+        return False
+    evidence = locator.get("evidence")
+    if not isinstance(evidence, list):
+        return False
+    for item in evidence:
+        if not isinstance(item, dict):
+            continue
+        kind = normalize_space(item.get("kind")).casefold()
+        if kind in PAGE_SPECIFIC_EVIDENCE_KINDS or any(
+            marker in kind
+            for marker in ("page", "pagina", "header", "neighbor", "pagination")
+        ):
+            return True
+    return False
+
+
+def target_is_index_source(row: sqlite3.Row | dict[str, Any]) -> bool:
+    target = normalize_space(row_value(row, "target_file"))
+    if not target:
+        return False
+    start = normalize_space(row_value(row, "section_file_start"))
+    end = normalize_space(row_value(row, "section_file_end"))
+    if target in {start, end}:
+        return True
+    target_page = parse_file_page(target)
+    start_page = parse_file_page(start)
+    end_page = parse_file_page(end)
+    if target_page is None or start_page is None or end_page is None:
+        return False
+    if Path(target).parent != Path(start).parent or Path(target).parent != Path(end).parent:
+        return False
+    lower, upper = sorted((start_page, end_page))
+    return lower <= target_page <= upper
+
+
+def pick_target_file(row: sqlite3.Row | dict[str, Any]) -> str | None:
+    target = normalize_space(row_value(row, "target_file"))
+    if (
+        not target
+        or target_is_index_source(row)
+        or not target_has_verified_evidence(row)
+    ):
+        return None
+    return target
+
+
 def pick_page(row: sqlite3.Row) -> int | None:
-    for value in (row["page_ref_int"], row["inferred_printed_page"], row["target_file"], row["target_file_best"]):
+    for value in (row["page_ref_int"], row["inferred_printed_page"]):
         if isinstance(value, int):
             return value
-        page = parse_file_page(value)
-        if page is not None:
-            return page
     return None
+
+
+def pick_viewer_page(row: sqlite3.Row) -> int | None:
+    return parse_file_page(pick_target_file(row))
+
+
+def public_shard_path(domain: str, path: str) -> str:
+    normalized = str(path or "").lstrip("/")
+    if normalized.startswith("alpha/"):
+        return normalized
+    return f"alpha/{domain}/{normalized}"
 
 
 def classify_domain(row: sqlite3.Row) -> str | None:
     section_kind = row["section_kind"]
     entry_kind = row["entry_kind"]
-    if section_kind in {"analytic_subject", "alphabetical_general", "ordo_rerum"} and entry_kind == "lemma":
-        return "subjects"
     if (
-        section_kind in {"scripture_index", "pericope_index", "concordance_index"}
-        or row["ref_norm"] is not None
-    ) and entry_kind in {"scripture_citation", "scripture_pericope", "concordance_item", "lemma"}:
+        entry_kind in {"scripture_citation", "scripture_pericope"}
+        and row_value(row, "ref_role") is None
+    ):
+        return None
+    if section_kind in {"analytic_subject", "alphabetical_general"} and entry_kind == "lemma":
+        return "subjects"
+    if section_kind in {"scripture_index", "pericope_index", "concordance_index"} and entry_kind in {
+        "scripture_citation",
+        "scripture_pericope",
+        "concordance_item",
+        "lemma",
+    }:
         return "scripture"
     if section_kind in {"onomastic_person", "onomastic_place", "onomastic_mixed", "author_index"} and entry_kind in {
         "lemma",
@@ -184,8 +296,38 @@ def make_entry(row: sqlite3.Row, domain: str) -> dict[str, Any]:
     label = normalize_space(row["lemma_display"] or row["lemma_raw"] or row["sref_raw"] or row["entry_raw"])
     snippet_source = row["context_raw"] if row["context_raw"] and row["context_raw"] != row["entry_raw"] else row["entry_raw"]
     book_label = normalize_space(row["book_norm"] or row["book_raw"])
+    book_tradition = (
+        "vulgate_migne"
+        if row["collection"] in {"PG", "PL"}
+        else "po_french_editorial"
+        if row["collection"] == "PO"
+        else None
+    )
+    book_key = (
+        normalize_space(row_value(row, "book_key"))
+        or canonical_book_key(
+            row["book_raw"],
+            tradition=book_tradition,
+        )
+        or canonical_book_key(
+            row["book_norm"],
+            tradition=book_tradition,
+        )
+    )
+    if book_key:
+        book_label = canonical_book_label(book_key) or book_label
+    ref_order = row["ref_order"]
+    target_file = pick_target_file(row)
+    occurrence_id = (
+        f"{row['entry_key']}:ref:{int(ref_order):04d}"
+        if isinstance(ref_order, int)
+        else row["entry_key"]
+    )
     return {
+        "occurrence_id": occurrence_id,
         "entry_key": row["entry_key"],
+        "ref_order": ref_order,
+        "scripture_ref_order": row_value(row, "scripture_ref_order"),
         "label": label,
         "translation": None,
         "collection": row["collection"],
@@ -198,10 +340,24 @@ def make_entry(row: sqlite3.Row, domain: str) -> dict[str, Any]:
         "ref_kind": row["ref_kind"] or row["ref_role"] or "",
         "ref_label": normalize_space(row["page_ref_raw"] or row["ref_raw"] or row["sref_raw"]),
         "page_ref": pick_page(row),
-        "target_file": repo_relative_path(row["target_file"] or row["target_file_best"]),
+        "viewer_page": pick_viewer_page(row),
+        "target_file": repo_relative_path(target_file),
+        "locator_status": (
+            "suspect_index_source"
+            if row["target_file"] and target_is_index_source(row)
+            else "unverified"
+            if row["target_file"] and not target_has_verified_evidence(row)
+            else "resolved"
+            if target_file
+            else "unresolved"
+        ),
         "confidence": row["confidence"],
         "book_label": book_label or None,
-        "book_slug": slugify(book_label) if domain == "scripture" and book_label else None,
+        "book_slug": (
+            slugify(book_key)
+            if domain == "scripture" and book_key
+            else None
+        ),
         "chapter_start": row["chapter_start"],
         "verse_start": row["verse_start"],
         "chapter_end": row["chapter_end"],
@@ -235,6 +391,13 @@ def make_record(row: sqlite3.Row) -> Record | None:
         )
         page_group = book_label
         group = book_slug
+    sort_key = "|".join(
+        [
+            sort_key,
+            f"{int(row['ref_order'] or 0):08d}",
+            str(row["entry_key"]),
+        ]
+    )
     payload = json.dumps(entry, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
     return Record(
         domain=domain,
@@ -257,6 +420,22 @@ def write_json(path: Path, payload: Any) -> None:
             fh.write(data)
         return
     path.write_bytes(data)
+
+
+def prune_stale_generated_files(
+    directory: Path,
+    *,
+    pattern: str,
+    expected_names: set[str],
+) -> int:
+    if not directory.is_dir():
+        return 0
+    removed = 0
+    for path in directory.glob(pattern):
+        if path.is_file() and path.name not in expected_names:
+            path.unlink()
+            removed += 1
+    return removed
 
 
 def paginate(items: list[Record], page_size: int, page_id_prefix: str) -> list[dict[str, Any]]:
@@ -386,7 +565,7 @@ def build_scripture(records: list[Record], page_size: int) -> tuple[list[dict[st
     book_labels: dict[str, str] = {}
     for record in sorted(records, key=lambda item: item.sort_key):
         slug = record.book_slug or "outros"
-        label = record.book_label or "Outros"
+        label = "Outros" if slug == "outros" else record.book_label or "Outros"
         by_book[slug].append(record)
         book_labels[slug] = label
 
@@ -539,6 +718,11 @@ def build_domain(domain: str, records: list[Record], out_dir: Path, generated_at
                 "pages": shard["pages"],
             },
         )
+    prune_stale_generated_files(
+        shards_dir,
+        pattern="*.json.gz",
+        expected_names={str(shard["path"]) for shard in shards},
+    )
 
     group_pages: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for page in pages_meta:
@@ -568,6 +752,11 @@ def build_domain(domain: str, records: list[Record], out_dir: Path, generated_at
                 "manifest_path": group_manifest_path,
             }
         )
+    prune_stale_generated_files(
+        domain_dir / "groups",
+        pattern="*.json",
+        expected_names={f"{group['id']}.json" for group in groups_meta},
+    )
 
     enriched_books = []
     for book in books_meta:

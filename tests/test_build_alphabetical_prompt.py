@@ -19,7 +19,7 @@ from scripts.build_alphabetical_prompt import (
 def test_build_work_instructions_mentions_neighbor_checks_and_regex_search() -> None:
     text = build_work_instructions(Path("/tmp/po025/text"))
 
-    assert "inspect the immediate neighboring OCR files" in text
+    assert "inspect several OCR files before and after" in text
     assert "rg -n -S" in text
     assert "450_3-5" in text
     assert "Before declaring `partial_*`" in text

@@ -11,7 +11,7 @@ from typing import Iterable
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[4]))
 
-from patristica_pipeline.common import parse_volume_info
+from patristica_pipeline.common import page_sort_key, parse_volume_info
 
 
 PATTERN_GROUPS: dict[str, list[tuple[str, re.Pattern[str]]]] = {
@@ -95,7 +95,7 @@ def scan_file(path: Path, patterns: Iterable[tuple[str, re.Pattern[str]]], max_l
             for kind, pattern in patterns:
                 if pattern.search(line) or pattern.search(folded_line):
                     file_seq = file_seq_from_path(path)
-                    hits.append(Hit(str(path), file_seq, file_seq, line_no, line.strip(), kind))
+                    hits.append(Hit(str(path), file_seq, None, line_no, line.strip(), kind))
                     break
     return hits
 
@@ -152,7 +152,7 @@ def main() -> None:
     info = parse_volume_info(args.root / args.volume)
     collection = info.series if info is not None else args.volume[:2].upper()
     patterns = patterns_for_collection(collection)
-    files = sorted(text_root.glob('*.txt'))
+    files = sorted(text_root.glob('*.txt'), key=page_sort_key)
     if not files:
         raise SystemExit(f'No OCR text files found in {text_root}')
 

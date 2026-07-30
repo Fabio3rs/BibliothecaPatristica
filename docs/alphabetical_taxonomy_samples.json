@@ -1,0 +1,102 @@
+[
+  {
+    "volume_id": "PG003",
+    "sample_file": "fbf896b3-ed57-422e-9668-d79cc8e21f05-591.txt",
+    "heading_patterns": ["INDEX RERUM ET VERBORUM"],
+    "section_kind": "analytic_subject",
+    "pipeline_owner": "alphabetical",
+    "material_reference_mode": "remissive",
+    "scripture_mode": "none",
+    "expected_role": "section_start"
+  },
+  {
+    "volume_id": "PG003",
+    "sample_file": "fbf896b3-ed57-422e-9668-d79cc8e21f05-596.txt",
+    "heading_patterns": ["ORDO RERUM"],
+    "section_kind": "ordo_rerum",
+    "pipeline_owner": "general",
+    "material_reference_mode": "boundary_only",
+    "scripture_mode": "none",
+    "expected_role": "stop_boundary"
+  },
+  {
+    "volume_id": "PL143",
+    "sample_file": "3f6bc174-597b-4055-810f-331a363722e9-802.txt",
+    "heading_patterns": ["INDEX ONOMASTICUS"],
+    "section_kind": "onomastic_person",
+    "pipeline_owner": "alphabetical",
+    "material_reference_mode": "remissive",
+    "scripture_mode": "none",
+    "expected_role": "section_start"
+  },
+  {
+    "volume_id": "PL143",
+    "sample_file": "3f6bc174-597b-4055-810f-331a363722e9-805.txt",
+    "heading_patterns": ["ELENCHUS ONOMASTICUS LOCALIS"],
+    "section_kind": "onomastic_place",
+    "pipeline_owner": "alphabetical",
+    "material_reference_mode": "remissive",
+    "scripture_mode": "none",
+    "expected_role": "internal_boundary"
+  },
+  {
+    "volume_id": "PO025",
+    "sample_file": "e2ff8472-852c-459a-bd8f-e86b9c01ad9b-826.txt",
+    "heading_patterns": ["TABLE DES CITATIONS DE LA BIBLE"],
+    "section_kind": "scripture_index",
+    "pipeline_owner": "alphabetical",
+    "material_reference_mode": "remissive",
+    "scripture_mode": "citation_index",
+    "expected_role": "section_start"
+  },
+  {
+    "volume_id": "PO025",
+    "sample_file": "de4224d9-6414-41e0-bbe2-ceb7bdd253c7-483.txt",
+    "heading_patterns": ["TABLE DES PÉRICOPES"],
+    "section_kind": "pericope_index",
+    "pipeline_owner": "alphabetical",
+    "material_reference_mode": "remissive",
+    "scripture_mode": "pericope_index",
+    "expected_role": "section_start"
+  },
+  {
+    "volume_id": "PO025",
+    "sample_file": "de4224d9-6414-41e0-bbe2-ceb7bdd253c7-490.txt",
+    "heading_patterns": ["TABLE DE CONCORDANCE"],
+    "section_kind": "concordance_index",
+    "pipeline_owner": "alphabetical",
+    "material_reference_mode": "parallel",
+    "scripture_mode": "concordance_component",
+    "expected_role": "section_start"
+  },
+  {
+    "volume_id": "PL036",
+    "sample_file": "3e37c6a9-1701-43c7-b217-cc14087a841a-015.txt",
+    "heading_patterns": ["LOCA EX PSALMIS"],
+    "section_kind": "scripture_index",
+    "pipeline_owner": "alphabetical",
+    "material_reference_mode": "source_only",
+    "scripture_mode": "textual_apparatus",
+    "expected_role": "section_start"
+  },
+  {
+    "volume_id": "PG027",
+    "sample_file": "d522e5b8-afda-421a-bba0-e241fb78d7b5-713.txt",
+    "heading_patterns": ["INDEX GRÆCITATIS"],
+    "section_kind": "foreign_terms",
+    "pipeline_owner": "alphabetical",
+    "material_reference_mode": "remissive",
+    "scripture_mode": "incidental_mention",
+    "expected_role": "section_start"
+  },
+  {
+    "volume_id": "PG036",
+    "sample_file": "4bcea90d-6809-4174-804c-e363c596f952-665.txt",
+    "heading_patterns": ["INDEX ORATIONUM"],
+    "section_kind": "crosswalk_index",
+    "pipeline_owner": "alphabetical",
+    "material_reference_mode": "parallel",
+    "scripture_mode": "none",
+    "expected_role": "section_start"
+  }
+]

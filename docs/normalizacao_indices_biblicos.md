@@ -24,12 +24,19 @@ Este documento deve ser lido junto com:
 - [contrato_extrator_indices_alfabeticos.md](/homessddata/Projects/pdfocr/docs/contrato_extrator_indices_alfabeticos.md:1)
 - [taxonomia_indices_po.md](/homessddata/Projects/pdfocr/docs/taxonomia_indices_po.md:188)
 
+Este documento é normativo apenas para a camada bíblica e fica subordinado ao contrato de schema
+em `contrato_extrator_indices_alfabeticos.md`. O levantamento e o FAQ são descritivos.
+
 Casos reais que sustentam estas regras:
 
 - [PO025, TABLE DES CITATIONS DE LA BIBLE](/homessddata/Projects/pdfocr/teste/PO025/text/e2ff8472-852c-459a-bd8f-e86b9c01ad9b-826.txt:1)
 - [PO025, TABLE DES PÉRICOPES DE L'ÉCRITURE](/homessddata/Projects/pdfocr/teste/PO025/text/de4224d9-6414-41e0-bbe2-ceb7bdd253c7-483.txt:1)
 - [PO025, TABLE DES PERICOPES DE L'ECRITURE](/homessddata/Projects/pdfocr/teste/PO025/text/de4224d9-6414-41e0-bbe2-ceb7bdd253c7-484.txt:1)
 - [PO025, TABLE DE CONCORDANCE](/homessddata/Projects/pdfocr/teste/PO025/text/de4224d9-6414-41e0-bbe2-ceb7bdd253c7-490.txt:1)
+- [PL221, índice canônico com Regum, Paralipomenon, Esdrae, Sapientiæ e Ecclesiastici](/homessddata/Projects/pdfocr/teste/PL221/text/d2ae06b2-c0dd-4fe4-b03a-e68dc3995a3a-020.txt:73)
+- [PG001, `Jo. VII, 24` em aparato latino](/homessddata/Projects/pdfocr/teste/PG001/text/94fbe3de-f05d-46c7-a1e8-ad445e5abaef-345.txt:55)
+- [PO022, `I ROIS / II, 8`](/homessddata/Projects/pdfocr/teste/PO022/text/48338044-d88b-47b6-9133-5d327e80b571-319.txt:30)
+- [PO010, numeração inglesa histórica `I/III/IV Kings`](/homessddata/Projects/pdfocr/teste/PO010/text/4e4f8da3-b0a1-44da-9726-14c2c32bc2f0-529.txt:44)
 
 ## 1. Princípio central
 
@@ -40,7 +47,8 @@ Toda informação bíblica extraída deve preservar pelo menos duas camadas:
 
 Onde:
 
-- `ref_raw` é a referência exatamente como aparece no volume, com abreviações, pontuação, numeração romana, colchetes, hífens e eventuais anomalias de OCR
+- `ref_raw` é a referência exatamente como aparece no volume, com abreviações, pontuação,
+  numeração romana, colchetes, hífens, quebras `-\n` e eventuais anomalias de OCR
 - `ref_norm` é uma forma canônica interna, voltada para busca e agregação
 
 Se não houver confiança suficiente, a referência pode existir apenas em `ref_raw`.
@@ -154,19 +162,25 @@ Exemplos de perícopes reais:
 - `xviii, 28-40 /fin`
 - `xiii, 1-64 fin. (Histoire de Suzanne)`
 
-Muitas entradas reais trazem listas ou grupos:
+Muitas linhas impressas reais trazem listas ou grupos:
 
 - `Exod. 3, 14; Joan. 8, 58`
 - `Psal. 4, 9; 91, 1`
 - `Matth. 27, 2; Luc. 3, 1; Act. 4, 27`
 
-Portanto, a modelagem futura deve permitir:
+Portanto, a segmentação deve distinguir:
 
-- uma entrada de índice
-- uma ou mais referências bíblicas parseadas dentro dela
-- ou uma perícope com metadados editoriais adicionais
+- `scripture_citation` e `scripture_pericope`: uma passagem distinta por entrada; se a linha
+  trouxer passagens diferentes, ela é dividida em entradas semânticas distintas
+- uma mesma passagem: uma `alphabetical_scripture_refs` e uma ou mais
+  `alphabetical_refs`, uma para cada página material onde a passagem é citada
+- `concordance_item`: pode possuir vários `concordance_component`, pois a unidade principal é a
+  rubrica ou correspondência, não uma passagem bíblica isolada
 
 Não é seguro colapsar a entrada inteira em uma única string canônica.
+
+O vínculo é explícito: cada ocorrência material de entrada bíblica preenche
+`alphabetical_refs.scripture_ref_order` com o `ref_order` da passagem correspondente.
 
 ## 5. Convenção editorial de saída canônica
 
@@ -188,6 +202,11 @@ Observação importante:
 
 - essa forma canônica é uma camada interna de busca
 - ela não substitui a forma impressa do volume
+- `ref_raw` nunca é alterado: conserva `Corin-\nthios` e `18-\n20` como impressos pelo OCR
+- somente uma camada derivada de busca/normalização pode recompor fragmentos alfabéticos da mesma
+  palavra (`Corin-\nthios` → `Corinthios`); em sequências numéricas (`18-\n20`) o hífen permanece
+  como intervalo, e casos ambíguos não são recompostos
+- toda recomposição inferida fica registrada em `raw_json.soft_wrap_repairs`
 
 ## 6. Livros bíblicos
 
@@ -206,7 +225,27 @@ Mas a saída canônica deve ser unificada em um nome português estável.
 
 ### 6.2 Base de nomes
 
-A base preferencial para `ref_norm` deve ser compatível com a lista já presente em [scripture_ref_normalizer.py](/homessddata/Projects/pdfocr/scripture_ref_normalizer.py:120), que contém livros em português, latim e grego.
+A fonte canônica da pipeline alfabética é
+[scripture_book_catalog.py](/homessddata/Projects/pdfocr/patristica_pipeline/scripture_book_catalog.py:1).
+Ela contém exatamente os 73 livros do cânon católico e aliases editoriais em português, latim,
+francês e inglês. `scripture_ref_normalizer.py` continua útil para texto corrido, mas não é a
+autoridade do índice estruturado.
+
+O catálogo completo é:
+
+- Pentateuco: Gênesis, Êxodo, Levítico, Números e Deuteronômio
+- históricos: Josué, Juízes, Rute, 1–2 Samuel, 1–2 Reis, 1–2 Crônicas, Esdras, Neemias, Tobias,
+  Judite, Ester e 1–2 Macabeus
+- sapienciais: Jó, Salmos, Provérbios, Eclesiastes, Cântico dos Cânticos, Sabedoria e Eclesiástico
+- profetas: Isaías, Jeremias, Lamentações, Baruc, Ezequiel, Daniel, Oseias, Joel, Amós, Abdias,
+  Jonas, Miqueias, Naum, Habacuc, Sofonias, Ageu, Zacarias e Malaquias
+- Novo Testamento: São Mateus, São Marcos, São Lucas, São João, Atos dos Apóstolos, Romanos,
+  1–2 Coríntios, Gálatas, Efésios, Filipenses, Colossenses, 1–2 Tessalonicenses, 1–2 Timóteo,
+  Tito, Filêmon, Hebreus, São Tiago, 1–2 Pedro, 1–3 João, São Judas e Apocalipse
+
+O banco grava `book_raw`, pode conservar `book_norm` fornecido pelo extrator e calcula `book_key`
+com esse catálogo. A interface deriva o rótulo português estável de `book_key`; portanto,
+`III REG.`, `III Regum` e `1 Reis` não criam grupos diferentes.
 
 ### 6.3 Formas de entrada esperadas
 
@@ -229,6 +268,12 @@ Também devem ser reconhecidas formas francesas reais do corpus, como:
 - `Actes`
 - `I Corinthiens`
 - `Hebreux`
+
+Formas latinas editoriais podem vir envolvidas por `Liber`, `Epist. ad`,
+`Epist. I ad` ou `Evangelium secundum`. Esses invólucros são removidos somente para consulta ao
+catálogo derivado; o literal completo permanece em `book_raw` e `ref_raw`. O mesmo vale para
+ligaturas: `Isaiæ`, `Hebræos`, `Matthæus`, `Tobiæ` e `Maccabæorum` são consultados como
+`Isaiae`, `Hebraeos`, `Matthaeus`, `Tobiae` e `Maccabaeorum`, sem alterar o OCR preservado.
 
 ## 7. Ordinais e numeração dos livros
 
@@ -266,11 +311,63 @@ Em tradições latinas mais antigas:
 
 podem mapear para convenções modernas diferentes.
 
-Nesses casos, o extrator deve:
+PG e PL usam de modo recorrente o perfil histórico da Vulgata adotado por Migne. Quando o
+contexto é uma citação bíblica latina confirmada, o mapeamento contextual é:
+
+- `I Regum` → `1 Samuel`
+- `II Regum` → `2 Samuel`
+- `III Regum` → `1 Reis`
+- `IV Regum` → `2 Reis`
+- `I Esdrae` → `Esdras`
+- `II Esdrae` → `Neemias`
+- `I/II Paralipomenon` → `1/2 Crônicas`
+
+Isso é comprovado no próprio aparato de [PL036](/homessddata/Projects/pdfocr/teste/PL036/text/3e37c6a9-1701-43c7-b217-cc14087a841a-015.txt:6), que declara a comparação com a
+Vulgata Sixto-Clementina, e por formas históricas `Regum` em PL036, PL221 e PG001.
+
+Uma tabela francesa histórica pode conservar a mesma numeração sob o título `Rois`. Em uma
+`TABLE DES CITATIONS DE LA BIBLE` ou estrutura equivalente da PO, aplique:
+
+- `I Rois` → `1 Samuel`
+- `II Rois` → `2 Samuel`
+- `III Rois` → `1 Reis`
+- `IV Rois` → `2 Reis`
+
+O caso real de [PO022, `I ROIS`, `II, 8`](/homessddata/Projects/pdfocr/teste/PO022/text/48338044-d88b-47b6-9133-5d327e80b571-319.txt:30)
+é confirmado pela nota da própria obra
+[`Ps. CXII, 7; cf. I Rois, II, 8`](/homessddata/Projects/pdfocr/teste/PO022/text/e7b21b72-210b-441d-aa00-549b90c545de-217.txt:50):
+o conteúdo corresponde a `1 Samuel 2,8`. Essa é uma regra contextual para francês editorial
+antigo, não uma licença para reinterpretar toda ocorrência de `Rois` em PO.
+
+Algumas edições inglesas da PO também usam a sequência histórica:
+
+- `I Kings` → `1 Samuel`
+- `II Kings` → `2 Samuel`
+- `III Kings` → `1 Reis`
+- `IV Kings` → `2 Reis`
+
+Há confirmações reais em PO010: `I Kings II,10`, `III Kings v,21 (7)` e
+`IV Kings xix,28`. Como inglês moderno usa `I Kings` para `1 Reis`, essa conversão exige perfil
+local da seção (`scripture_numbering_profile=po_old_english`), presença decisiva de
+`III/IV Kings` na mesma tabela ou confirmação textual. Nunca se ativa apenas porque a coleção é
+PO.
+
+O perfil não é uma substituição global. Fora de uma citação latina confirmada, o extrator deve:
 
 - preservar `ref_raw`
 - gerar `ref_norm` apenas quando o mapeamento estiver bem definido
 - registrar ambiguidade quando houver possibilidade de mais de um livro moderno correspondente
+- não converter `III/IV Esdras` para Esdras/Neemias: são obras apócrifas históricas distintas
+- não interpretar `Reg.` isolado, `cod. Reg.`, `canticum`, `Sapientia` ou `Esdras` em prosa como
+  nomes de livros sem capítulo/versículo ou estrutura editorial equivalente
+- não aplicar a numeração francesa antiga de `Rois` a francês moderno, prosa solta, catálogo de
+  obras ou cabeçalho sem estrutura bíblica confirmatória
+- no perfil latino PG/PL confirmado, `Jo.` é São João; fora dele, a abreviação curta permanece
+  ambígua, enquanto `Job`/`Iob`/`Iyob` identifica Jó explicitamente
+
+O banco preserva `book_raw` e `book_norm` e calcula separadamente `book_key`, uma chave canônica
+estável para agregação. Assim, a interface não separa um mesmo livro apenas porque um volume usa
+francês, latim ou português.
 
 ## 8. Capítulos, versículos e perícopes
 
@@ -488,6 +585,15 @@ Se o mapeamento entre forma antiga e livro moderno não estiver claro:
 - manter apenas `ref_raw`
 - marcar `normalization_status = ambiguous`
 
+`III/IV Esdras` e `III/IV Esdrae` são um caso diferente: podem ser obras históricas
+não canônicas explicitamente nomeadas. Nessa situação:
+
+- não mapear para `Esdras` ou `Neemias`
+- manter `book_key` canônico nulo
+- registrar `raw_json.canonical_status = historical_noncanonical`
+- registrar `raw_json.historical_book_key = "3 esdras"` ou `"4 esdras"`
+- não contar essa ausência intencional de `book_key` como livro OCR desconhecido
+
 ## 14. Latim, francês, grego e mistos
 
 Os índices bíblicos reais do corpus podem aparecer em:
@@ -573,18 +679,25 @@ O agente não pode:
 - transformar toda perícope em versículo isolado
 - descartar `fin`, `*`, `/fin` como ruído
 - fundir códigos de concordância com referência bíblica
+- promover menção bíblica incidental em índice lexical (`foreign_terms`, por exemplo) a
+  ocorrência navegável do índice bíblico
+- inventar páginas materiais para aparatos textuais `source_only`
 - “corrigir” numeração tradicional sem base suficiente
 
 ## 19. Lacunas ainda abertas
 
+O contrato interpretativo e o glossário v1 fecharam:
+
+- `ibid.` preservado no literal e resolvido somente por herança estrutural segura
+- `seq.` e `seqq.` como sequências abertas, nunca expandidas nem fechadas por inferência
+
 Ainda precisamos esclarecer:
 
-- a tabela exata de correspondência entre abreviações encontradas nos índices e os nomes canônicos do projeto
-- a política final para `ibid.`
-- a política final para `seq.` e `seqq.`
-- os casos de numeração tradicional em `Regum`, `Paralipomenon`, `Esdrae` e livros afins
 - a convenção para entradas compostas por várias referências heterogêneas
-- a relação entre índices bíblicos da `PO` e convenções usadas em fascículos orientais multilíngues
+- a segmentação determinística de obras/fascículos da `PO` quando a paginação reinicia ou quando
+  dois sistemas editoriais coexistem
+- abreviações novas em grego e idiomas orientais que ainda não tenham evidência real suficiente
+  para entrar no catálogo
 
 ## 20. Relação com o contrato final
 
@@ -610,10 +723,15 @@ Ela deve:
 
 - preservar sempre a forma impressa
 - produzir forma canônica apenas quando houver confiança
-- suportar múltiplas referências por entrada
+- suportar múltiplas ocorrências materiais por passagem e múltiplos componentes em concordâncias
 - distinguir referência bíblica de paginação editorial
 - distinguir citação, perícope e concordância
-- reutilizar, quando possível, as convenções já presentes em `scripture_ref_normalizer.py`
+- distinguir índice remissivo, aparato `source_only` e menção bíblica incidental
+- associar cada ocorrência material à passagem por `scripture_ref_order`
+- omitir `scripture_refs` para `scripture_mode=incidental_mention`, preservando a menção somente
+  no literal/contexto da entrada
+- usar `patristica_pipeline/scripture_book_catalog.py` como autoridade para nomes canônicos e
+  perfis editoriais; `scripture_ref_normalizer.py` permanece apenas como apoio para texto corrido
 
 Ela não deve:
 

@@ -291,12 +291,12 @@ def build_work_instructions(source_root: Path) -> str:
         "- Keep OCR literals.",
         "- Distinguish OCR file suffixes from editorial page numbers and cited references.",
         "- If real index material exists but a locator is still ambiguous, do not stop at the first mismatch between the printed page and the OCR file suffix.",
-        "- When the best candidate file does not clearly confirm the printed page or the lemma, inspect the immediate neighboring OCR files before concluding that the reference is unresolved.",
+        "- When the best candidate file does not clearly confirm the printed page or the lemma, inspect several OCR files before and after it before concluding that the reference is unresolved.",
         "- If the local page-number signal is weak because of CER, page drift, inherited dashes, or OCR corruption, expand the check to a small local window and look for better corroborating evidence.",
         "- You are explicitly allowed to run local OCR searches inside the current volume with `rg -n -S` and volume-specific regex patterns derived from the material you see.",
         "- Prefer regexes that match the actual editorial pattern of the current volume, including forms such as `450_3-5`, `55₁₀`, `464 n. 1`, `37 à 39`, `174, 175`, or inherited `—` lines.",
         "- If a lemma is distinctive, search the lemma directly in the current `source_root` with normalized and OCR-tolerant variants before leaving the entry partial.",
-        "- Before declaring `partial_*`, `ambiguous`, or leaving a section under-extracted, try direct OCR inspection, neighboring-page checks, and at least one pattern search that fits the volume.",
+        "- Before declaring `partial_*`, `ambiguous`, or leaving a section under-extracted, try direct OCR inspection, a multi-file before/after sequence check, and at least one pattern search that fits the volume.",
         "- When these extra checks still do not resolve the case, preserve in `raw_json` which searches or page-window checks were attempted and why they were insufficient.",
         "- In `refs`, `ref_order` must be unique within each `entry_key` and should normally be sequential starting at 1 for that entry.",
         "- In `scripture_refs`, `ref_order` must be unique within each `entry_key` and should normally be sequential starting at 1 for that entry.",
@@ -306,8 +306,12 @@ def build_work_instructions(source_root: Path) -> str:
         "- `book_raw` / `book_norm` must come from an explicit biblical book label or from safe inheritance from the nearest real biblical heading, such as `GENESIS.`, `EXODUS.`, `Psal. ...`, `EX PSALMO I.`, or equivalent localized forms.",
         "- In scripture tables, a heading like `INDEX SCRIPTURÆ SACRÆ.` or `TABLE DES CITATIONS DE LA BIBLE` announces the section only; it does not identify the biblical book for each row.",
         "- When a scripture line contains only chapter/verse or verse-level material such as `II, 7.` or `v. 2.`, inherit the biblical book only from the nearest explicit biblical heading and only until the next explicit biblical heading.",
+        "- Biblical-heading inheritance is strictly forward-only: a new heading applies to following rows, never to the row immediately before it. Recheck the last row before every heading boundary.",
+        "- In PO, do not apply one numbering profile to the whole collection. Historical `I-IV Rois` is contextual French Vulgate numbering; historical `I-IV Kings` requires a section-local `raw_json.scripture_numbering_profile=po_old_english`, a decisive `III/IV Kings` sequence, or textual confirmation.",
+        "- In confirmed Latin PG/PL scripture context, `Jo.` means São João while explicit `Job`/`Iob` means Jó. Derived lookup may fold `æ→ae` and `œ→oe`, but raw fields preserve the ligatures.",
+        "- Explicit `III/IV Esdras` or `III/IV Esdrae` are historical noncanonical works, not Esdras/Neemias. Preserve them with `raw_json.canonical_status=historical_noncanonical`.",
         "- If a scripture-like line does not have a safe explicit or inherited biblical book context, omit that `scripture_ref` instead of inventing one.",
-        "- Use PT-BR canonical book names for `book_norm` and `ref_norm`, compatible with `scripture_ref_normalizer.py`; preserve the original printed form in `book_raw` and `ref_raw`.",
+        "- Use the PT-BR canonical names and contextual profiles defined by `patristica_pipeline/scripture_book_catalog.py` for `book_norm` and `ref_norm`; preserve the original printed form in `book_raw` and `ref_raw`.",
         "- Treat verse-apparatus sections such as `LOCA EX PSALMIS` / `VARIANTIA IN PSALTERIIS` as a dedicated scripture-apparatus pattern, not as an ordinary alphabetical subject index.",
         "- In those apparatus sections, references like `v. 2.` and `v. 5.` inherit the current psalm/book from the local heading, for example `EX PSALMO I.`.",
         "- Do not leave an entry anchorless if a page number, column, line, range, target locator, or biblical citation can still be recovered from the printed material.",
@@ -334,6 +338,8 @@ def build_prompt(
     source_root: Path,
     collection: str,
     filtered_pages: dict[str, Any],
+    filtered_pages_json: Path | None = None,
+    workplan_json: Path | None = None,
     previous_payload: Path,
     previous_result_source: str,
     output_checkpoint_status: str,
@@ -350,7 +356,7 @@ def build_prompt(
         filtered_pages,
         max_bytes=FILTERED_PAGES_SNIPPET_BYTES,
     )
-    prompt = f"""$alphabetical-index-extractor volume {volume_id} located at {source_root}
+    prompt = f"""$alphabetical-index-extractor
 
 TASK
 You are building the alphabetical-index payload for one OCR volume.
@@ -364,10 +370,23 @@ NUMBERING GLOSSARY
 - OCR file / physical OCR file / file suffix: the numeric suffix in `...-NNN.txt`; this identifies the OCR text file only.
 - Editorial page / printed page: the number printed in the source and cited by the index.
 - Cited reference: the number, column, line, or range printed inside the index entry.
+- Editorial page headers commonly have the form `NUMBER  PAGE-TITLE  NUMBER+1`, for example
+  `915  INDEX RERUM  916`. OCR generators may keep that in one block, split it across blocks,
+  preserve only one number, corrupt digits through CER, or omit it.
+- Infer missing/corrupt editorial pagination from several physical files before and after. Never
+  substitute the physical filename suffix.
 - Do not collapse these numbering systems.
 
 FILTERED PAGES
 {filtered_pages_text}
+- canonical artifact: {filtered_pages_json or "(not provided)"}
+
+CLOSING-INDEX WORKPLAN
+- path: {workplan_json or "(not provided)"}
+- Traverse from the physical end toward the beginning.
+- This workplan owns alphabetical, analytical, onomastic, citation, scripture, concordance, and
+  related closing indexes. It does not own opening tables of works, books, or chapters.
+- Validated chunk fragments are continuation state; do not silently discard their stable objects.
 
 PREVIOUS RESULT
 - path: {previous_payload}
@@ -419,6 +438,7 @@ def main() -> None:
     ap.add_argument("--source-root", type=Path, required=True, help="OCR text root for the volume")
     ap.add_argument("--collection", required=True, help="Volume collection, e.g. PG/PL/PO")
     ap.add_argument("--filtered-pages-json", type=Path, required=True, help="Canonical filtered-pages JSON artifact")
+    ap.add_argument("--workplan-json", type=Path, help="Closing-index workplan JSON")
     ap.add_argument("--previous-payload", type=Path, required=True, help="Path to a prior payload used as checkpoint")
     ap.add_argument("--previous-result-source", required=True, help="How the previous payload path was resolved")
     ap.add_argument("--output-checkpoint-status", required=True, help="Current status of the output payload path")
@@ -445,6 +465,8 @@ def main() -> None:
             source_root=args.source_root,
             collection=args.collection,
             filtered_pages=filtered_pages,
+            filtered_pages_json=args.filtered_pages_json,
+            workplan_json=args.workplan_json,
             previous_payload=args.previous_payload,
             previous_result_source=args.previous_result_source,
             output_checkpoint_status=args.output_checkpoint_status,

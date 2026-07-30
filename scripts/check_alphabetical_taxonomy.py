@@ -16,6 +16,7 @@ from patristica_pipeline.common import parse_volume_info, page_sort_key
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 LEVANTAMENTO_DOC = PROJECT_ROOT / "docs" / "levantamento_indices_alfabeticos.md"
+TAXONOMY_FIXTURES = PROJECT_ROOT / "docs" / "alphabetical_taxonomy_samples.json"
 
 IGNORED_MARKER_SNIPPETS = (
     "sumário final",
@@ -175,6 +176,88 @@ def evaluate_volume(volume_id: str, root: Path, expected_markers: list[str], *, 
     }
 
 
+def load_taxonomy_fixtures(path: Path) -> list[dict[str, Any]]:
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(payload, list):
+        raise ValueError("taxonomy fixture must be a JSON array")
+    required = {
+        "volume_id",
+        "sample_file",
+        "heading_patterns",
+        "section_kind",
+        "pipeline_owner",
+        "material_reference_mode",
+        "scripture_mode",
+        "expected_role",
+    }
+    fixtures: list[dict[str, Any]] = []
+    for index, raw in enumerate(payload):
+        if not isinstance(raw, dict) or not required.issubset(raw):
+            missing = sorted(required - set(raw) if isinstance(raw, dict) else required)
+            raise ValueError(f"invalid taxonomy fixture[{index}], missing={missing}")
+        if not isinstance(raw["heading_patterns"], list) or not raw["heading_patterns"]:
+            raise ValueError(f"taxonomy fixture[{index}].heading_patterns must be non-empty")
+        fixtures.append(raw)
+    return fixtures
+
+
+def evaluate_taxonomy_fixtures(
+    fixtures: list[dict[str, Any]],
+    root: Path,
+    selected_volumes: set[str] | None = None,
+) -> list[dict[str, Any]]:
+    grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for fixture in fixtures:
+        volume_id = str(fixture["volume_id"]).upper()
+        if selected_volumes is None or volume_id in selected_volumes:
+            grouped[volume_id].append(fixture)
+
+    report: list[dict[str, Any]] = []
+    for volume_id in sorted(grouped):
+        expectations: list[dict[str, Any]] = []
+        for fixture in grouped[volume_id]:
+            path = root / volume_id / "text" / str(fixture["sample_file"])
+            text = (
+                path.read_text(encoding="utf-8", errors="replace")
+                if path.is_file()
+                else ""
+            )
+            text_norm = normalize_for_match(text)
+            patterns = [str(item) for item in fixture["heading_patterns"]]
+            matched_patterns = [
+                pattern
+                for pattern in patterns
+                if normalize_for_match(pattern) in text_norm
+            ]
+            expectations.append(
+                {
+                    "marker": " | ".join(patterns),
+                    "matched": bool(matched_patterns),
+                    "hit_count": len(matched_patterns),
+                    "hits": [{"file": str(path), "text": pattern} for pattern in matched_patterns],
+                    "sample_file": str(path),
+                    "section_kind": fixture["section_kind"],
+                    "pipeline_owner": fixture["pipeline_owner"],
+                    "material_reference_mode": fixture["material_reference_mode"],
+                    "scripture_mode": fixture["scripture_mode"],
+                    "expected_role": fixture["expected_role"],
+                }
+            )
+        missing = [item["marker"] for item in expectations if not item["matched"]]
+        report.append(
+            {
+                "volume_id": volume_id,
+                "collection": volume_id[:2],
+                "status": "ok" if not missing else "partial",
+                "expected_markers": [item["marker"] for item in expectations],
+                "missing_markers": missing,
+                "expectations": expectations,
+                "fixture_mode": True,
+            }
+        )
+    return report
+
+
 def print_report(report: list[dict[str, Any]]) -> None:
     total_ok = 0
     total_partial = 0
@@ -220,6 +303,17 @@ def main() -> None:
         help="Documento de levantamento usado para extrair os marcadores esperados",
     )
     ap.add_argument(
+        "--fixtures",
+        type=Path,
+        default=TAXONOMY_FIXTURES,
+        help="Fixture JSON with exact OCR samples and expected taxonomy",
+    )
+    ap.add_argument(
+        "--legacy-doc-markers",
+        action="store_true",
+        help="Use broad markers extracted from the levantamento document instead of exact fixtures",
+    )
+    ap.add_argument(
         "--volumes",
         help="Lista de volumes separados por vírgula. Se omitido, usa os volumes com marcadores explícitos no documento.",
     )
@@ -228,25 +322,33 @@ def main() -> None:
     ap.add_argument("--json", action="store_true", help="Emite o relatório em JSON")
     args = ap.parse_args()
 
-    markers_by_volume = extract_volume_markers(args.docs)
-    if args.volumes:
-        volume_ids = [item.strip().upper() for item in args.volumes.split(",") if item.strip()]
+    selected = (
+        {item.strip().upper() for item in args.volumes.split(",") if item.strip()}
+        if args.volumes
+        else None
+    )
+    if args.legacy_doc_markers:
+        markers_by_volume = extract_volume_markers(args.docs)
+        volume_ids = sorted(selected or set(markers_by_volume))
+        report = [
+            evaluate_volume(
+                volume_id,
+                args.root,
+                markers_by_volume.get(volume_id, []),
+                tail_count=max(1, args.tail_count),
+                max_tail_lines=max(1, args.max_tail_lines),
+            )
+            for volume_id in volume_ids
+        ]
     else:
-        volume_ids = sorted(markers_by_volume)
-
-    if not volume_ids:
-        raise SystemExit("No volumes selected for taxonomy check.")
-
-    report = [
-        evaluate_volume(
-            volume_id,
+        report = evaluate_taxonomy_fixtures(
+            load_taxonomy_fixtures(args.fixtures),
             args.root,
-            markers_by_volume.get(volume_id, []),
-            tail_count=max(1, args.tail_count),
-            max_tail_lines=max(1, args.max_tail_lines),
+            selected,
         )
-        for volume_id in volume_ids
-    ]
+
+    if not report:
+        raise SystemExit("No volumes selected for taxonomy check.")
 
     if args.json:
         print(json.dumps(report, ensure_ascii=False, indent=2))

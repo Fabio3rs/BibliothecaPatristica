@@ -15,6 +15,19 @@ Este contrato deve ser lido junto com:
 - [docs/normalizacao_indices_biblicos.md](/homessddata/Projects/pdfocr/docs/normalizacao_indices_biblicos.md:1)
 - [docs/taxonomia_indices_po.md](/homessddata/Projects/pdfocr/docs/taxonomia_indices_po.md:188)
 
+### Ordem normativa
+
+Em caso de conflito, aplique nesta ordem:
+
+1. contrato de fase do prompt runtime, somente para caminhos e ownership do shard;
+2. este contrato de schema e taxonomia;
+3. `normalizacao_indices_biblicos.md`, somente para a camada bíblica;
+4. `estrategia_pipeline_extracao_indices_alfabeticos.md`, para execução operacional.
+
+`levantamento_indices_alfabeticos.md` e `duvidas_frequentes_extracao_indices_alfabeticos.md` são
+documentos descritivos. Payloads e builders antigos são evidência histórica, nunca autoridade
+para contrariar o contrato vigente.
+
 ## 1. Decisão de modelagem
 
 A decisão é:
@@ -30,7 +43,7 @@ O problema central do schema atual é que ele pressupõe, na prática:
 - no máximo uma referência de página/coluna por linha
 - um único `target_file` principal
 
-Isso funciona para `ORDO RERUM` e `INDEX CAPITUM`, mas não para:
+Isso funciona para `ORDO RERUM` e `INDEX CAPITUM` na pipeline geral, mas não para:
 
 - `PG003`, com muitas referências por lema
 - `PL143`, com hierarquia explícita acima do lema
@@ -52,6 +65,9 @@ O agente:
 - não pode colapsar várias referências em um único campo textual
 - não pode substituir o literal OCR por forma normalizada
 - não pode confundir `arquivo OCR`, `página impressa da entrada do índice` e `página citada pelo índice`
+- deve preservar literalmente os campos `*_raw`, inclusive `-\n`; recomposição de soft hyphen
+  ocorre apenas em campos derivados de busca/normalização e fica registrada em
+  `raw_json.soft_wrap_repairs`
 
 O schema precisa preservar separadamente:
 
@@ -100,9 +116,48 @@ Não vale reaproveitar diretamente:
 
 Regras:
 
-- `ordo_rerum` não é índice alfabético, mas pode coexistir no mesmo volume e precisa poder ser armazenado no mesmo banco
+- `ordo_rerum` permanece no enum por compatibilidade do banco, mas pertence à pipeline geral;
+  na pipeline alfabética ele é apenas `stop_boundary` e seu conteúdo não deve ser emitido
 - `crosswalk_index` cobre casos como `INDEX ORATIONUM` com correspondência entre duas ordenações
-- `editorial_closure` cobre `addenda/corrigenda` quando o scanner final captar esse material junto
+- `editorial_closure` permanece no enum por compatibilidade do banco, mas addenda/corrigenda,
+  errata e fechamentos editoriais pertencem à pipeline geral ou são fronteira não possuída
+- `ordo_rerum` e `editorial_closure` são proibidos em novos payloads alfabéticos, mesmo quando o
+  bloco contenha linhas parecidas com remissões; se houver uma seção alfabética autônoma antes
+  deles, extraia-a e pare no boundary
+
+`section_kind` descreve a forma editorial, mas não basta para descrever a função. A seção deve
+preencher obrigatoriamente em `raw_json` estas dimensões ortogonais:
+
+```json
+{
+  "pipeline_owner": "alphabetical | general",
+  "alphabetical_role": "owned_section | stop_boundary",
+  "material_reference_mode": "remissive | parallel | source_only | boundary_only",
+  "scripture_mode": "none | citation_index | pericope_index | concordance_component | textual_apparatus | incidental_mention"
+}
+```
+
+Casos confirmados no corpus:
+
+- `PO025 / TABLE DES CITATIONS DE LA BIBLE`: `remissive + citation_index`
+- `PO025 / TABLE DES PÉRICOPES`: `remissive + pericope_index`
+- `PO025 / TABLE DE CONCORDANCE`: `parallel + concordance_component`
+- `PL036 / LOCA EX PSALMIS`: `source_only + textual_apparatus`
+- `PG027 / INDEX GRÆCITATIS`: seção `foreign_terms`; uma referência bíblica dentro de um
+  lema pode ser `incidental_mention`, sem virar ocorrência navegável no índice bíblico
+- `PG003 / ORDO RERUM`: `pipeline_owner=general`, `alphabetical_role=stop_boundary`
+
+Quando uma seção for híbrida, somente `material_reference_mode` e `scripture_mode` podem ser
+sobrescritos no `raw_json` da entrada. A precedência efetiva é `entry.raw_json` sobre
+`section.raw_json`; valores omitidos na entrada herdam a seção. `pipeline_owner` e
+`alphabetical_role` não são sobrescrevíveis por entrada.
+
+`scripture_mode=incidental_mention` preserva a menção em `entry_raw`/`context_raw`, mas não cria
+`scripture_refs` nem uma ocorrência navegável no índice bíblico.
+
+Seções possuídas exigem `file_start` e `file_end`. `stop_boundary` não é seção possuída: deve
+aparecer somente em `manifest.boundary_decisions`, com heading literal, arquivo, linha/bloco e
+motivo.
 
 ### 4.2 Tipos de entrada
 
@@ -133,15 +188,19 @@ Regras:
 - `editorial_range`
 - `editorial_page_line`
 - `target_locator`
-- `scripture`
 - `parallel_locator`
 - `unresolved`
 
 Regras:
 
 - `target_locator` cobre a localização no corpus OCR do ponto material provável
-- `scripture` é reservado para referências bíblicas parseadas
+- `scripture` é valor legado de compatibilidade do banco e é proibido em payloads novos; a
+  passagem bíblica pertence exclusivamente a `scripture_refs`
 - `parallel_locator` cobre concordâncias, tabelas paralelas e relações `novus/vetus ordo`
+- um intervalo editorial impresso (`12-15`) permanece uma única ref `editorial_range`, com
+  `range_start_raw` e `range_end_raw`; a pipeline não inventa ocorrências individuais
+- intervalos abertos ou incertos (`seq.`, `seqq.`, `fin`, dígitos duvidosos e intervalos que não
+  sejam páginas) também não são expandidos e permanecem em uma única ref `editorial_range`
 
 ### 4.4 Tipos de node
 
@@ -175,13 +234,16 @@ Regras:
 
 ## 5. Schema SQLite fechado
 
-Esta é a versão fechada do schema recomendada para implementação inicial.
+Esta seção acompanha o schema operacional v7 de `scripts/alphabetical_index_db.py`.
 
 Decisões explícitas desta versão:
 
 - `work_key` permanece como campo opcional sem FK nesta primeira versão
 - taxonomias documentais viram `CHECK` no banco para impedir drift de schema
 - `alphabetical_scripture_refs` passa a carregar `ref_norm`, porque a camada bíblica exige `ref_raw` e `ref_norm`
+- `alphabetical_scripture_refs.book_key` agrega aliases históricos pelo catálogo católico estável
+- `alphabetical_refs.locator_status` separa alvo comprovado de chute legado ou referência ainda
+  não localizada; `target_file` só é operacional quando o status é `resolved`
 - `alphabetical_runs.volume_id` referencia `alphabetical_volumes(volume_id)`
 - a ordem editorial é protegida por constraints de unicidade por escopo
 
@@ -326,6 +388,7 @@ CREATE TABLE IF NOT EXISTS alphabetical_refs (
     ref_id INTEGER PRIMARY KEY AUTOINCREMENT,
     entry_key TEXT NOT NULL REFERENCES alphabetical_entries(entry_key) ON DELETE CASCADE,
     ref_order INTEGER NOT NULL,
+    scripture_ref_order INTEGER,
     ref_kind TEXT NOT NULL CHECK (
         ref_kind IN (
             'editorial_page',
@@ -348,16 +411,25 @@ CREATE TABLE IF NOT EXISTS alphabetical_refs (
     range_end_raw TEXT,
     target_file TEXT,
     target_file_probability REAL,
+    locator_status TEXT NOT NULL DEFAULT 'unverified' CHECK (
+        locator_status IN ('resolved', 'ambiguous', 'unresolved', 'unverified')
+    ),
     section_start_file TEXT,
     editorial_anchor_file TEXT,
     confidence REAL,
     raw_json TEXT NOT NULL,
     CHECK (ref_order >= 1),
+    CHECK (scripture_ref_order IS NULL OR scripture_ref_order >= 1),
     CHECK (
         page_ref_raw IS NOT NULL
         OR target_file IS NOT NULL
         OR range_start_raw IS NOT NULL
         OR range_end_raw IS NOT NULL
+        OR locator_status IN ('unresolved', 'unverified')
+    ),
+    CHECK (
+        locator_status != 'resolved'
+        OR (target_file IS NOT NULL AND TRIM(target_file) != '')
     ),
     CHECK (
         target_file_probability IS NULL
@@ -373,6 +445,9 @@ CREATE INDEX IF NOT EXISTS idx_alpha_refs_kind
     ON alphabetical_refs(ref_kind);
 CREATE UNIQUE INDEX IF NOT EXISTS idx_alpha_refs_entry_order
     ON alphabetical_refs(entry_key, ref_order);
+CREATE INDEX IF NOT EXISTS idx_alpha_refs_scripture_parent
+    ON alphabetical_refs(entry_key, scripture_ref_order)
+    WHERE scripture_ref_order IS NOT NULL;
 
 CREATE TABLE IF NOT EXISTS alphabetical_scripture_refs (
     scripture_ref_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -389,6 +464,7 @@ CREATE TABLE IF NOT EXISTS alphabetical_scripture_refs (
     ref_norm TEXT,
     book_raw TEXT,
     book_norm TEXT,
+    book_key TEXT,
     chapter_start INTEGER,
     verse_start INTEGER,
     chapter_end INTEGER,
@@ -408,8 +484,10 @@ CREATE INDEX IF NOT EXISTS idx_alpha_scripture_entry_key
     ON alphabetical_scripture_refs(entry_key);
 CREATE INDEX IF NOT EXISTS idx_alpha_scripture_book_norm
     ON alphabetical_scripture_refs(book_norm);
-CREATE UNIQUE INDEX IF NOT EXISTS idx_alpha_scripture_entry_order_role
-    ON alphabetical_scripture_refs(entry_key, ref_order, ref_role);
+CREATE INDEX IF NOT EXISTS idx_alpha_scripture_book_key
+    ON alphabetical_scripture_refs(book_key);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_alpha_scripture_entry_order
+    ON alphabetical_scripture_refs(entry_key, ref_order);
 
 CREATE TABLE IF NOT EXISTS alphabetical_runs (
     run_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -503,6 +581,10 @@ num único `page_ref_int`.
 
 Esse é o principal gargalo do schema atual e precisa desaparecer.
 
+Cada linha desta tabela representa uma ocorrência material independente. Em uma entrada de nome
+como `São Fulano, 12, 30, 45`, há uma única `alphabetical_entries` e três
+`alphabetical_refs`, cada qual com seu número editorial e seu `target_file`.
+
 ### 6.5 `alphabetical_scripture_refs`
 
 Índices bíblicos e concordâncias não devem ser reduzidos a `page_ref_raw`.
@@ -516,6 +598,11 @@ Por isso:
 
 - a referência bíblica parseada vai para `alphabetical_scripture_refs`
 - a remissão material no volume continua em `alphabetical_refs`
+- `alphabetical_refs.scripture_ref_order` identifica explicitamente a passagem à qual a
+  ocorrência material pertence; não existe mais associação implícita com “a primeira citação”
+- citações e perícopes distintas devem virar entradas distintas; uma mesma passagem pode possuir
+  várias ocorrências materiais
+- componentes de concordância permanecem subordinados à entrada de concordância
 
 ## 7. Campos mínimos obrigatórios por camada
 
@@ -527,8 +614,9 @@ Obrigatórios:
 - `volume_id`
 - `section_kind`
 - `heading_raw`
-- um anchor inicial: `page_start` ou `file_start`
-- um anchor final: `page_end` ou `file_end`
+- `file_start`
+- `file_end`
+- as quatro dimensões taxonômicas obrigatórias em `raw_json`
 
 ### 7.2 Node
 
@@ -574,9 +662,34 @@ Ao menos um destes deve existir:
 - `range_start_raw`
 - `book_raw` via tabela bíblica
 
+Para referências bíblicas, `book_key` é calculado pelo montador/importador. Perfis históricos são
+locais à seção: `vulgate_migne` em citação latina confirmada de PG/PL,
+`po_french_editorial` para `I-IV Rois` em tabela bíblica e `po_old_english` somente quando a
+seção provar a numeração antiga de `I-IV Kings`. Obras explícitas `III/IV Esdras` usam
+`raw_json.canonical_status=historical_noncanonical`, não uma chave do catálogo católico.
+
+Uma entrada `scripture_citation` ou `scripture_pericope` sem `scripture_refs` é inválida e bloqueia
+a qualidade do volume. Ela não pode ser publicada em “Outros”: deve ser reextraída com livro e
+passagem seguros, ou removida da classe bíblica se a linha não for realmente uma citação.
+
+O vínculo material segue uma prova dupla:
+
+- primeiro, `page_ref_int` ou o intervalo editorial restringe os arquivos físicos candidatos;
+- depois, o conteúdo da página confirma a passagem ou o nome, com normalização derivada tolerante
+  a ligaturas, hifenização alfabética e CER limitado;
+- só um candidato único com evidência editorial específica e evidência material independente pode
+  receber `locator_status=resolved`;
+- número isolado, substring curta, citação sem página, ou `page_drift_explanation` isolada não
+  autorizam um link.
+
+Na PO, a mesma página pode reaparecer em fascículos e sistemas paralelos. A resolução precisa ser
+local à obra/fascículo; interpolação física global no volume não é evidência suficiente.
+
 ## 8. Payload JSON canônico
 
-O extrator deve produzir um único payload canônico por volume, no mesmo espírito do extrator atual.
+O montador Python, e não um agente, deve produzir um único payload canônico por volume a partir
+dos artefatos de fase validados. Agentes escrevem somente o fragmento semântico, resultado
+locator ou resultado de reparo indicado pelo prompt.
 
 Top-level:
 
@@ -594,9 +707,13 @@ Top-level:
 Regra adicional:
 
 - o extrator deve evitar `entries` vazias sempre que houver line items recuperáveis
+- se `sections` e `entries` vierem vazias porque não existe seção possuída, isso só é aceito com
+  `coverage.entries_status=no_index_section`, motivo não vazio e arquivos inspecionados
 - se `sections` vier não vazia e `entries` vier vazia, isso só é aceito quando `coverage.entries_status` for `unrecoverable_ocr` ou `no_line_items`
 - nesse caso excepcional, `coverage.entries_status_reason` deve explicar o motivo em texto não vazio
 - nesse caso excepcional, `coverage.evidence_files` deve listar arquivos OCR concretos que sustentam a decisão
+- `unrecoverable_ocr` significa que o conteúdo impresso não pôde ser recuperado do OCR disponível;
+  não significa ambiguidade, busca incompleta ou ausência de seção
 
 Formato:
 
@@ -850,11 +967,15 @@ podem divergir.
 
 Procedimento recomendado:
 
-1. o helper propõe candidatos e evidências
-2. o agente decide se a disputa é apenas material ou se muda a estrutura editorial da entrada
-3. se for apenas material, preencher uma única `entry` e preservar a disputa em `raw_json`
-4. se mudar a estrutura editorial, emitir duas ou mais `entries` concorrentes, cada uma com seus `refs`
-5. só preencher `target_file_best` como alvo único quando isso realmente ajudar a navegação; caso contrário, ele pode ficar nulo
+1. o helper propõe candidatos por página editorial e acrescenta evidências do conteúdo;
+2. o montador fecha deterministicamente apenas candidatos únicos com prova dupla;
+3. somente os locators pendentes são repartidos entre agentes;
+4. o agente decide se a disputa é apenas material ou se muda a estrutura editorial da entrada;
+5. se for apenas material, preencher uma única `entry` e preservar a disputa em `raw_json`;
+6. se mudar a estrutura editorial, emitir duas ou mais `entries` concorrentes, cada uma com seus
+   `refs`;
+7. só preencher `target_file_best` como alvo único quando isso realmente ajudar a navegação; caso
+   contrário, ele pode ficar nulo.
 
 ## 12. Decisão final sobre o que herdar do schema antigo
 

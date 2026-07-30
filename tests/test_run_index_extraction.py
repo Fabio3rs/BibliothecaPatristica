@@ -1,0 +1,529 @@
+from __future__ import annotations
+
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+import pytest
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+import scripts.run_index_extraction as run_index_extraction
+from scripts.run_index_extraction import (
+    build_editorial_pages_artifact,
+    build_hyphen_rerun_recovery_block,
+    build_previous_failure_prompt_block,
+    failure_mentions_hyphen_artifact,
+    load_failure_artifact,
+    payload_has_hyphen_artifacts,
+    prevalidate_existing_payload,
+    validate_payload,
+)
+
+PROMPT_SCRIPT = ROOT / ".codex/skills/patristic-index-extractor/scripts/build_volume_prompt.py"
+
+
+def test_infer_failure_stage_covers_chunk_and_quality_failures() -> None:
+    assert (
+        run_index_extraction.infer_failure_stage(
+            SystemExit("chunked Codex extraction failed for workplan")
+        )
+        == "chunk_extraction"
+    )
+    assert (
+        run_index_extraction.infer_failure_stage(
+            SystemExit("Final payload omitted stable objects")
+        )
+        == "fragment_consumption"
+    )
+    assert (
+        run_index_extraction.infer_failure_stage(
+            SystemExit("OCR evidence verification exceeded the limit")
+        )
+        == "payload_evidence"
+    )
+
+
+def test_editorial_pages_artifact_skips_po_without_using_pgpl_estimator(tmp_path: Path) -> None:
+    text_root = tmp_path / "PO001" / "text"
+    text_root.mkdir(parents=True)
+    output_path = tmp_path / "PO001_editorial_pages.json"
+
+    payload = build_editorial_pages_artifact(
+        volume_id="PO001",
+        source_root=text_root,
+        collection="PO",
+        output_path=output_path,
+        db_path=tmp_path / "editorial_pages.db",
+        use_cache=True,
+    )
+
+    assert payload["status"] == "skipped"
+    assert payload["reason"] == "editorial_page_estimator_supports_pg_pl_only"
+    assert json.loads(output_path.read_text(encoding="utf-8")) == payload
+
+
+def test_run_index_extraction_detects_hyphen_artifacts_in_payload_and_failure() -> None:
+    assert payload_has_hyphen_artifacts({"sections": [{"entries": [{"entry_raw": "pala-"}]}]})
+    assert not payload_has_hyphen_artifacts({"sections": [{"entries": [{"entry_raw": "palavra"}]}]})
+
+    assert failure_mentions_hyphen_artifact(
+        {
+            "error_summary": "payload validation failed",
+            "error_detail": "entries[2].entry_raw appears to contain an OCR line-break hyphen artifact.",
+        }
+    )
+    assert not failure_mentions_hyphen_artifact(
+        {
+            "error_summary": "payload validation failed",
+            "error_detail": "Missing top-level key: works",
+        }
+    )
+
+
+def test_validate_payload_rejects_unjustified_empty_index_section(tmp_path: Path) -> None:
+    payload_file = tmp_path / "PO001_indices.json"
+    payload_file.write_text("{}", encoding="utf-8")
+    payload = {
+        "volume": {"volume_id": "PO001"},
+        "works": [],
+        "sections": [
+            {
+                "section_key": "PO001:index:1",
+                "scope_kind": "work_index_alphabetical",
+                "heading_raw": "TABLE ALPHABETIQUE",
+                "entries": [],
+                "raw_json": {},
+            }
+        ],
+        "notes": [],
+    }
+
+    with pytest.raises(SystemExit, match="List-bearing sections have no entries"):
+        validate_payload(payload, "PO001", payload_file)
+
+    payload["sections"][0]["raw_json"] = {
+        "entries_status": "unrecoverable_ocr",
+        "entries_status_reason": "Characters are not legible.",
+        "evidence_files": ["/tmp/PO001/text/page-001.txt"],
+    }
+    validate_payload(payload, "PO001", payload_file)
+
+
+def test_prevalidate_existing_payload_returns_exact_current_failure(tmp_path: Path) -> None:
+    payload_file = tmp_path / "PL001_indices.json"
+    payload_file.write_text(
+        json.dumps(
+            {
+                "volume": {"volume_id": "PL001"},
+                "sections": [],
+                "notes": [],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    payload, failure = prevalidate_existing_payload(payload_file, "PL001")
+
+    assert payload is None
+    assert failure is not None
+    assert failure["stage"] == "prevalidate_existing_payload"
+    assert failure["error_detail"] == "Missing top-level key: works"
+
+
+def test_run_index_extraction_loads_failure_artifact_and_builds_special_blocks(tmp_path: Path) -> None:
+    failure_path = tmp_path / "PL001_failure.json"
+    failure_payload = {
+        "stage": "import_payload",
+        "payload_file": str(tmp_path / "PL001_indices.json"),
+        "error_summary": "payload import failed",
+        "error_detail": (
+            "import_index_json.py failed for PL001_indices.json\n"
+            "STDERR:\nentries[2].entry_raw appears to contain an OCR line-break hyphen artifact."
+        ),
+    }
+    failure_path.write_text(json.dumps(failure_payload, ensure_ascii=False), encoding="utf-8")
+
+    loaded = load_failure_artifact(failure_path)
+    assert loaded == failure_payload
+
+    failure_block = build_previous_failure_prompt_block("PL001", loaded)
+    assert "PREVIOUS FAILURE" in failure_block
+    assert "Fix the exact failure for PL001" in failure_block
+    assert "entries[2].entry_raw" in failure_block
+
+    recovery_block = build_hyphen_rerun_recovery_block()
+    assert "HYPHEN RERUN RECOVERY" in recovery_block
+    assert "read_ocr_page_text.py --view xml --show-source <file>" in recovery_block
+
+
+def test_patristic_prompt_keeps_localization_artifacts_as_aids(tmp_path: Path) -> None:
+    prescan = tmp_path / "PL001_prescan.json"
+    filtered = tmp_path / "PL001_filtered_pages.json"
+    editorial_pages = tmp_path / "PL001_editorial_pages.json"
+    helper_request = tmp_path / "PL001_helper_request.json"
+    helper_output = tmp_path / "PL001_helper_output.json"
+    output_dir = tmp_path / "out"
+    output_dir.mkdir()
+
+    prescan.write_text(
+        json.dumps({"volume": "PL001", "all_hits": []}, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    filtered.write_text(
+        json.dumps(
+            {
+                "volume_id": "PL001",
+                "source": "fallback_internal",
+                "candidate_files": ["/tmp/PL001/text/volume-001.txt"],
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    helper_request.write_text(
+        json.dumps({"volume_id": "PL001", "entries": []}, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    editorial_pages.write_text(
+        json.dumps(
+            {
+                "volume_id": "PL001",
+                "status": "ok",
+                "files": [
+                    {
+                        "file": "/tmp/PL001/text/volume-001.txt",
+                        "best_guess": [1, 2],
+                        "confidence_label": "high",
+                    }
+                ],
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    helper_output.write_text(
+        json.dumps({"volume_id": "PL001", "entries": []}, ensure_ascii=False),
+        encoding="utf-8",
+    )
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(PROMPT_SCRIPT),
+            "--volume",
+            "PL001",
+            "--source-root",
+            "/tmp/PL001/text",
+            "--collection",
+            "PL",
+            "--prescan-json",
+            str(prescan),
+            "--filtered-pages-json",
+            str(filtered),
+            "--editorial-pages-json",
+            str(editorial_pages),
+            "--helper-request-json",
+            str(helper_request),
+            "--helper-output-json",
+            str(helper_output),
+            "--output-dir",
+            str(output_dir),
+        ],
+        cwd=ROOT,
+        text=True,
+        encoding="utf-8",
+        capture_output=True,
+        check=True,
+    )
+
+    prompt = result.stdout
+    assert prompt.splitlines()[0] == "$patristic-index-extractor"
+    assert "$patristic-index-extractor" in prompt
+    assert "$alphabetical-index-extractor" not in prompt
+    assert "Do not extract closing alphabetical" in prompt
+    assert "inspect the closing pages for final indexes" not in prompt.lower()
+    assert "Use FILTERED PAGES and HELPER EVIDENCE only as localization aids" in prompt
+    assert "python scripts/read_ocr_page_text.py --view xml --show-source" in prompt
+    assert "automatically joins likely within-block word wraps" in prompt
+    assert "fix_linebreak_hyphens.py" in prompt
+    assert "not which pages you may investigate" in prompt
+    assert "Filtered-page localization artifact" in prompt
+    assert "Editorial page-to-file estimator artifact" in prompt
+    assert "Target-locator helper output" in prompt
+    assert str(output_dir / "PL001_indices.json") in prompt
+
+
+def _make_text_volume(root: Path, volume_id: str) -> None:
+    text_root = root / volume_id / "text"
+    text_root.mkdir(parents=True)
+    (text_root / f"{volume_id.lower()}-0001.txt").write_text("sample", encoding="utf-8")
+
+
+def _configure_successful_batch_stubs(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> list[str]:
+    imported: list[str] = []
+
+    monkeypatch.setattr(run_index_extraction, "select_volume_ids", lambda root, blob, limit: ["PL001", "PL002"])
+    monkeypatch.setattr(
+        run_index_extraction,
+        "scan_volume",
+        lambda volume_id, root: {"volume": {"volume_id": volume_id}, "all_hits": []},
+    )
+    monkeypatch.setattr(
+        run_index_extraction,
+        "build_filtered_pages_artifact",
+        lambda **kwargs: {"volume_id": kwargs["volume_id"], "source": "test_stub", "candidate_files": []},
+    )
+    monkeypatch.setattr(
+        run_index_extraction,
+        "build_editorial_pages_artifact",
+        lambda **kwargs: {"volume_id": kwargs["volume_id"], "status": "ok", "summary": None},
+    )
+    monkeypatch.setattr(
+        run_index_extraction,
+        "build_helper_request_artifact",
+        lambda **kwargs: {"volume_id": kwargs["volume_id"], "entries": []},
+    )
+    monkeypatch.setattr(
+        run_index_extraction,
+        "run_helper_locator",
+        lambda helper_request, helper_output_json: {"volume_id": helper_request["volume_id"], "entries": []},
+    )
+    monkeypatch.setattr(run_index_extraction, "build_prompt", lambda *args, **kwargs: "stub prompt")
+
+    def fake_run_codex(**kwargs):
+        payload_path = tmp_path / f"{Path(kwargs['last_message_path']).stem.replace('_last_message', '')}_indices.json"
+        volume_id = payload_path.stem.replace("_indices", "")
+        payload = {
+            "volume": {"volume_id": volume_id},
+            "works": [],
+            "sections": [{"section_key": "s1", "entries": [{"entry_raw": "entry"}]}],
+            "notes": [],
+        }
+        payload_path.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
+        kwargs["last_message_path"].write_text(
+            json.dumps(
+                {"status": "ok", "volume_id": volume_id, "written_file": str(payload_path)},
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+        return subprocess.CompletedProcess(args=["codex"], returncode=0, stdout="", stderr="")
+
+    monkeypatch.setattr(run_index_extraction, "run_codex", fake_run_codex)
+    monkeypatch.setattr(run_index_extraction, "validate_payload", lambda payload, volume_id, expected_file: None)
+    monkeypatch.setattr(
+        run_index_extraction,
+        "import_payload",
+        lambda payload_file, replace: imported.append(payload_file.stem.replace("_indices", "")),
+    )
+    return imported
+
+
+def test_run_index_extraction_batch_stops_on_first_failure_without_continue_on_error(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    root = tmp_path / "teste"
+    _make_text_volume(root, "PL001")
+    _make_text_volume(root, "PL002")
+
+    monkeypatch.setattr(run_index_extraction, "select_volume_ids", lambda root, blob, limit: ["PL001", "PL002"])
+
+    def fake_scan(volume_id: str, root: Path) -> dict[str, object]:
+        if volume_id == "PL001":
+            raise SystemExit("scan_volume.py failed for PL001\nSTDOUT:\n\nSTDERR:\nboom")
+        return {"volume": {"volume_id": volume_id}, "all_hits": []}
+
+    monkeypatch.setattr(run_index_extraction, "scan_volume", fake_scan)
+
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "run_index_extraction.py",
+            "--all-volumes",
+            "--root",
+            str(root),
+            "--output-dir",
+            str(tmp_path / "out"),
+            "--log-dir",
+            str(tmp_path / "logs"),
+        ],
+    )
+
+    with pytest.raises(SystemExit) as excinfo:
+        run_index_extraction.main()
+
+    assert "scan_volume.py failed for PL001" in str(excinfo.value)
+    captured = capsys.readouterr()
+    assert "[INFO] volume 1/2: PL001 (PL)" in captured.out
+    assert "PL002" not in captured.out
+    failure_path = tmp_path / "out" / "PL001_failure.json"
+    assert failure_path.exists()
+    failure = json.loads(failure_path.read_text(encoding="utf-8"))
+    assert failure["stage"] == "scan"
+    assert "scan_volume.py failed" in failure["error_detail"]
+
+
+def test_run_index_extraction_batch_continue_on_error_writes_failure_artifact_and_summary(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    root = tmp_path / "teste"
+    _make_text_volume(root, "PL001")
+    _make_text_volume(root, "PL002")
+    imported = _configure_successful_batch_stubs(monkeypatch, tmp_path / "out")
+
+    def fake_import(payload_file: Path, db_path: Path, replace: bool) -> None:
+        volume_id = payload_file.stem.replace("_indices", "")
+        if volume_id == "PL001":
+            raise SystemExit("import_index_json.py failed for PL001_indices.json\nSTDOUT:\n\nSTDERR:\ninvalid payload")
+        imported.append(volume_id)
+
+    monkeypatch.setattr(run_index_extraction, "import_payload", fake_import)
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "run_index_extraction.py",
+            "--all-volumes",
+            "--continue-on-error",
+            "--root",
+            str(root),
+            "--output-dir",
+            str(tmp_path / "out"),
+            "--log-dir",
+            str(tmp_path / "logs"),
+        ],
+    )
+
+    with pytest.raises(SystemExit) as excinfo:
+        run_index_extraction.main()
+
+    assert excinfo.value.code == 1
+    assert imported == ["PL002"]
+
+    captured = capsys.readouterr()
+    stdout_lines = [json.loads(line) for line in captured.out.splitlines() if line.startswith("{")]
+    assert any(line["status"] == "failed" and line["volume_id"] == "PL001" for line in stdout_lines)
+    assert any(line["status"] == "ok" and line["volume_id"] == "PL002" for line in stdout_lines)
+    summary = next(line for line in stdout_lines if line["status"] == "batch-complete-with-errors")
+    assert summary["failed_volumes"] == ["PL001"]
+    assert summary["failed_count"] == 1
+    assert "[ERROR] volume=PL001 import_index_json.py failed for PL001_indices.json" in captured.err
+
+    failure_path = tmp_path / "out" / "PL001_failure.json"
+    assert failure_path.exists()
+    failure_payload = json.loads(failure_path.read_text(encoding="utf-8"))
+    assert failure_payload["volume_id"] == "PL001"
+    assert failure_payload["stage"] == "import_payload"
+    assert "import_index_json.py failed" in failure_payload["error_detail"]
+
+
+def test_run_index_extraction_single_volume_continue_on_error_still_exits_with_failure(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    root = tmp_path / "teste"
+    _make_text_volume(root, "PL001")
+    _configure_successful_batch_stubs(monkeypatch, tmp_path / "out")
+    monkeypatch.setattr(
+        run_index_extraction,
+        "import_payload",
+        lambda payload_file, db_path, replace: (_ for _ in ()).throw(
+            SystemExit("import_index_json.py failed for PL001_indices.json\nSTDOUT:\n\nSTDERR:\nsingle failure")
+        ),
+    )
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "run_index_extraction.py",
+            "--volume-id",
+            "PL001",
+            "--continue-on-error",
+            "--root",
+            str(root),
+            "--output-dir",
+            str(tmp_path / "out"),
+            "--log-dir",
+            str(tmp_path / "logs"),
+        ],
+    )
+
+    with pytest.raises(SystemExit) as excinfo:
+        run_index_extraction.main()
+
+    assert excinfo.value.code == 1
+    captured = capsys.readouterr()
+    stdout_lines = [json.loads(line) for line in captured.out.splitlines() if line.startswith("{")]
+    assert stdout_lines[-1]["status"] == "batch-complete-with-errors"
+    assert stdout_lines[-1]["total_volumes"] == 1
+    assert "[ERROR] volume=PL001 import_index_json.py failed for PL001_indices.json" in captured.err
+
+
+def test_verbose_dry_run_reports_every_volume_stage_with_position(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    root = tmp_path / "teste"
+    _make_text_volume(root, "PL001")
+    monkeypatch.setattr(
+        run_index_extraction,
+        "scan_volume",
+        lambda volume_id, root: {"volume": {"volume_id": volume_id}, "all_hits": []},
+    )
+    monkeypatch.setattr(
+        run_index_extraction,
+        "build_filtered_pages_artifact",
+        lambda **kwargs: {
+            "volume_id": kwargs["volume_id"],
+            "source": "test_stub",
+            "candidate_files": [],
+        },
+    )
+    monkeypatch.setattr(
+        run_index_extraction,
+        "build_editorial_pages_artifact",
+        lambda **kwargs: {"volume_id": kwargs["volume_id"], "status": "ok"},
+    )
+    monkeypatch.setattr(run_index_extraction, "build_prompt", lambda *args, **kwargs: "stub prompt")
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "run_index_extraction.py",
+            "--volume-id",
+            "PL001",
+            "--root",
+            str(root),
+            "--output-dir",
+            str(tmp_path / "out"),
+            "--log-dir",
+            str(tmp_path / "logs"),
+            "--intermediate-root",
+            str(tmp_path / "intermediate"),
+            "--dry-run",
+            "--verbose",
+        ],
+    )
+
+    run_index_extraction.main()
+
+    captured = capsys.readouterr()
+    assert "[VOLUME 1/1 PL001] [STAGE 1/12] START prescan OCR" in captured.out
+    assert "[VOLUME 1/1 PL001] [STAGE 1/12] DONE prescan OCR" in captured.out
+    assert "[VOLUME 1/1 PL001] [STAGE 6/12] SKIP extract semantic chunks" in captured.out
+    assert "[VOLUME 1/1 PL001] [STAGE 12/12] SKIP import payload" in captured.out
+
+    progress_log = tmp_path / "logs" / "PL001_progress.log"
+    progress = progress_log.read_text(encoding="utf-8")
+    assert "[STAGE 1/12] START prescan OCR" in progress
+    assert "[STAGE 12/12] SKIP import payload" in progress

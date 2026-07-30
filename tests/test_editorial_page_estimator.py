@@ -40,6 +40,29 @@ def test_estimator_extracts_header_pair_as_strong_guess(tmp_path: Path) -> None:
     assert any(ev["kind"] == "header_pair" for ev in item["evidence"])
 
 
+def test_estimator_degrades_nonconsecutive_header_pair(tmp_path: Path) -> None:
+    text_root = tmp_path / "PGX" / "text"
+    write_page(
+        text_root / "page-001.txt",
+        """
+        <pagina estado="com_texto">
+          <bloco tipo="cabecalho" script="latino">f 89 HOMILIA. 890</bloco>
+          <bloco tipo="texto_principal" script="latino">Aliud corpus textus.</bloco>
+        </pagina>
+        """,
+    )
+
+    result = estimate_editorial_pages(source_root=text_root, collection="PG")
+    item = result["files"][0]
+
+    assert item["confidence_label"] == "low"
+    assert item["confidence"] <= 0.35
+    assert "nonconsecutive_header_pair_suspected_ocr" in item["warnings"]
+    assert any(
+        ev["kind"] == "header_pair_nonconsecutive" for ev in item["evidence"]
+    )
+
+
 def test_estimator_ignores_google_footer_noise(tmp_path: Path) -> None:
     text_root = tmp_path / "PLY" / "text"
     write_page(
@@ -92,6 +115,55 @@ def test_estimator_uses_neighbors_to_fill_missing_header(tmp_path: Path) -> None
     assert item["best_left_page"] == 67
     assert item["best_right_page"] == 68
     assert any(ev["kind"] == "neighbor_fit" for ev in item["evidence"])
+
+
+def test_estimator_reads_split_header_blocks_and_cer_digits(tmp_path: Path) -> None:
+    text_root = tmp_path / "PGC" / "text"
+    write_page(
+        text_root / "page-001.txt",
+        """
+        <pagina estado="com_texto">
+          <bloco tipo="cabecalho">12I</bloco>
+          <bloco tipo="cabecalho">INDEX RERUM</bloco>
+          <bloco tipo="cabecalho">122</bloco>
+          <bloco tipo="texto_principal">AARON .... 10</bloco>
+        </pagina>
+        """,
+    )
+
+    result = estimate_editorial_pages(source_root=text_root, collection="PG")
+    item = result["files"][0]
+
+    assert item["best_left_page"] == 121
+    assert item["best_right_page"] == 122
+
+
+def test_estimator_supports_single_page_ocr_generators_with_neighbor_window(
+    tmp_path: Path,
+) -> None:
+    text_root = tmp_path / "PGS" / "text"
+    write_page(
+        text_root / "page-001.txt",
+        '<pagina><bloco tipo="cabecalho">101 INDEX</bloco></pagina>',
+    )
+    write_page(
+        text_root / "page-002.txt",
+        '<pagina><bloco tipo="texto_principal">header missing</bloco></pagina>',
+    )
+    write_page(
+        text_root / "page-003.txt",
+        '<pagina><bloco tipo="cabecalho">103 INDEX</bloco></pagina>',
+    )
+
+    result = estimate_editorial_pages(
+        source_root=text_root,
+        collection="PG",
+        window=4,
+    )
+    middle = result["files"][1]
+
+    assert middle["best_single_page"] == 102
+    assert any(ev["kind"] == "neighbor_single_fit" for ev in middle["evidence"])
 
 
 def test_estimator_rejects_po_collection() -> None:

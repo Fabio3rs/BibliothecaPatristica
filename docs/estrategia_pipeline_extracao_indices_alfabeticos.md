@@ -5,7 +5,8 @@ Este documento descreve a estratégia operacional da pipeline de extração de �
 O foco aqui não é o schema final do payload. O foco é explicar por que a pipeline foi desenhada para:
 
 - trabalhar um volume por vez
-- dividir volumes grandes em chunks estáveis
+- separar extração semântica de localização material
+- dividir as citações em shards estáveis
 - salvar estado parcial em disco
 - usar scripts Python auxiliares para montagem e correção estrutural
 - reduzir dependência da memória de trabalho do LLM
@@ -19,6 +20,10 @@ Para dúvidas operacionais recorrentes, ver:
 
 - `docs/duvidas_frequentes_extracao_indices_alfabeticos.md`
 
+Ordem normativa: o prompt runtime decide apenas paths e ownership da fase; o contrato de schema
+vem em seguida; a normalização bíblica especializa esse contrato; este documento governa o
+workflow. O levantamento e o FAQ são descritivos.
+
 ## 1. Problema operacional
 
 Volumes de `PG`, `PL` e `PO` podem ter:
@@ -27,7 +32,7 @@ Volumes de `PG`, `PL` e `PO` podem ter:
 - OCR ruidoso
 - drift entre paginação impressa e sufixo físico do arquivo OCR
 - payloads grandes demais para edição manual segura
-- necessidade de retries após falhas de validação, importação ou helper
+- necessidade de reparo localizado após falhas de validação ou localização
 
 Pedir que um LLM resolva tudo isso de uma vez, mantendo o volume inteiro "na cabeça", é a estratégia errada.
 
@@ -60,24 +65,57 @@ Isso reduz a carga cognitiva do agente e melhora:
 
 Em termos práticos, o disco vira a memória externa do run.
 
-## 3. Por que dividir para conquistar
+## 3. Arquitetura vigente: semântica, localização e montagem
+
+O driver padrão executa:
+
+1. um agente semântico por volume, que acompanha o índice completo e grava um fragmento por seção
+2. um estimador determinístico de paginação para PG/PL, ou o localizador auxiliar para PO
+3. para referências bíblicas, um perfil de formato por seção e uma varredura regex invertida do
+   volume, lendo cada arquivo uma vez e excluindo a própria seção de índice
+4. um item independente por citação material, identificado por `(entry_key, ref_order)`
+5. shards de 40 citações para agentes localizadores em contextos novos
+6. montagem e validação integralmente em Python
+7. um único agente de reparo somente quando há citação pendente ou shard inválido; ambiguidade
+   material genuína pode permanecer `ambiguous` depois dele
+
+Para tabelas bíblicas regulares, a ordem de evidência é:
+
+1. JSON semântico já extraído
+2. parser determinístico da tabela (`livro/cabeçalho → passagem → páginas editoriais`)
+3. índice invertido de ocorrências no corpo, com bônus explícito para blocos
+   `tipo="aparato_critico"`
+4. top-N candidatos compactos por ocorrência
+5. micro-prompt especializado apenas para linhas que o parser não conseguiu fechar
+
+O `citation_format_profile` registra aliases realmente observados, separadores, ordem de campos,
+herança do cabeçalho e estilo de coluna. O micro-prompt recebe esse perfil, as linhas pendentes e
+o JSON parcial; nunca recebe páginas inteiras.
+
+Nenhum agente final lê todos os fragmentos montados. O payload canônico é produzido pelo montador
+determinístico. `ORDO RERUM` pertence à pipeline geral; aqui funciona somente como limite de
+parada, inclusive dentro de um arquivo físico misto.
+
+O mesmo vale para `addenda/corrigenda`, errata e outros `editorial_closure`: pertencem à pipeline
+geral ou delimitam a varredura. `ordo_rerum` e `editorial_closure` são enums legados e não podem
+ser emitidos por novos payloads alfabéticos.
+
+## 4. Por que dividir para conquistar
 
 O padrão recomendado é `divide-and-conquer`.
 
-O volume não precisa ser resolvido como um único problema monolítico. Ele pode ser quebrado em chunks estáveis, por exemplo:
+O volume não precisa ser resolvido como um único problema monolítico. Depois da leitura semântica,
+as localizações são quebradas em shards estáveis:
 
 - por seção editorial
-- por letra
-- por faixa de entries
-- por passo estrutural
-- por família de refs
+- por citação material
+- por faixa determinística de `(entry_key, ref_order)`
 
 Exemplos de chunking útil:
 
-- `sections` primeiro, `entries` depois
-- `analytic_subject` separado de `ordo_rerum`
-- letras `A-C`, depois `D-H`, depois `I-Z`
-- `entries.json` em um passe e `refs.json` em outro
+- fragmentos semânticos separados por seção
+- citações 1–40, 41–80 e assim por diante
+- uma entrada com várias citações distribuída em itens localizadores distintos
 
 Esse desenho é melhor porque:
 
@@ -86,7 +124,7 @@ Esse desenho é melhor porque:
 - facilita retries localizados
 - evita que correções tardias destruam trechos já estabilizados
 
-## 4. Intermediários como checkpoint real
+## 5. Intermediários como checkpoint real
 
 O diretório recomendado por volume é:
 
@@ -115,9 +153,11 @@ Esses arquivos existem para separar responsabilidades:
 - `manifest.json` documenta o checkpoint salvo
 - `todo.json` guarda progresso operacional curto
 
-Com isso, um rerun não precisa "lembrar" tudo. Ele pode ler o checkpoint e continuar.
+Com isso, um rerun não precisa "lembrar" tudo. Ele pode ler o checkpoint e continuar somente
+quando o driver confirmar o fingerprint de inputs, `source_root`, versão do contrato/prompt e
+taxonomia. Artefato estruturalmente válido com fingerprint antigo deve ser regenerado.
 
-## 5. `todo.json` não é payload
+## 6. `todo.json` não é payload
 
 `todo.json` tem função operacional, não estrutural.
 
@@ -136,18 +176,19 @@ Ele não substitui:
 
 O valor dele é permitir retomada rápida sem depender de memória implícita do agente.
 
-## 6. Por que usar scripts Python auxiliares
+## 7. Por que usar scripts Python auxiliares
 
 Em muitos volumes, o pior caminho é pedir que o agente reescreva um JSON enorme manualmente.
 
-Scripts em `scripts/pipeline_index_extraction/` existem para tratar etapas mecânicas e repetíveis, como:
+Scripts e módulos em `scripts/pipeline_index_extraction/` e `patristica_pipeline/` existem para
+tratar etapas mecânicas e repetíveis, como:
 
-- extrair chunks estáveis
+- criar shards de citações com ownership exato
 - normalizar campos
-- renumerar chaves
-- propagar mudanças estruturais
-- montar o payload final a partir de fragmentos
-- corrigir cascatas de `section_key`, `entry_key` ou `ref_order`
+- validar chaves e resultados
+- aplicar localizações aos refs
+- montar o payload final a partir dos fragmentos semânticos
+- construir pedidos compactos de reparo
 
 Isso é melhor do que edição manual porque:
 
@@ -161,7 +202,7 @@ Em outras palavras:
 - o LLM faz julgamento editorial
 - o script faz montagem e transformação determinística
 
-## 7. Por que isso ajuda o LLM
+## 8. Por que isso ajuda o LLM
 
 Essa estratégia não existe por estética. Ela existe porque LLMs não são bons lugares para manter estado operacional grande e frágil.
 
@@ -175,12 +216,11 @@ O desenho atual reduz a necessidade de:
 O agente pode trabalhar assim:
 
 1. detectar estrutura
-2. salvar checkpoint
-3. resolver um chunk
-4. salvar checkpoint
-5. montar payload final
-6. validar
-7. corrigir apenas o ponto quebrado
+2. salvar fragmentos por seção
+3. resolver um shard de citações
+4. salvar resultados localizadores
+5. deixar o Python montar e validar
+6. corrigir apenas as citações pendentes
 
 Esse fluxo é muito mais robusto do que:
 
@@ -189,7 +229,7 @@ Esse fluxo é muito mais robusto do que:
 3. escrever um JSON gigantesco
 4. descobrir no final que uma chave duplicou
 
-## 8. Relação com validação e retries
+## 9. Relação com validação e retries
 
 O importador e o validador existem para falhar cedo e com erro localizável.
 
@@ -203,7 +243,7 @@ Isso só funciona bem quando o volume já foi offloadado em intermediários pequ
 
 Sem isso, toda falha vira retrabalho amplo.
 
-## 9. Papel do helper e do estimador
+## 10. Papel do helper e do estimador
 
 O helper material (`index_target_locator`) e o estimador de paginação editorial são apoios, não a fonte canônica do payload.
 
@@ -219,7 +259,7 @@ Mas a estratégia geral continua a mesma:
 - preservar rastreabilidade em `raw_json`
 - evitar decisões implícitas não documentadas
 
-## 10. O que é canônico e o que é auxiliar
+## 11. O que é canônico e o que é auxiliar
 
 Canônico para importação:
 
@@ -228,14 +268,16 @@ Canônico para importação:
 Auxiliar:
 
 - `data/intermediate_payloads/<VOLUME>/*`
-- `data/alphabetical_index_payloads/<VOLUME>_helper_request.json`
-- `data/alphabetical_index_payloads/<VOLUME>_helper_output.json`
+- `semantic/manifest.json` e fragmentos por seção
+- `editorial_page_map.json`
+- `locator_workplan.json` e shards de resultados
+- `repair_request.json`, apenas quando necessário
 - logs em `data/alphabetical_index_logs/*`
 - scripts em `scripts/pipeline_index_extraction/`
 
 Os auxiliares existem para produzir e sustentar o payload canônico, não para substituí-lo.
 
-## 11. Quando essa estratégia deve ser preferida
+## 12. Quando essa estratégia deve ser preferida
 
 Ela deve ser o default quando houver:
 
@@ -252,13 +294,14 @@ Ela é especialmente importante quando:
 - o agente precisará voltar ao mesmo volume mais de uma vez
 - a extração exige tanto julgamento editorial quanto transformação mecânica
 
-## 12. Regra prática
+## 13. Regra prática
 
 Se o trabalho parece grande demais para o agente escrever corretamente em um único JSON final sem checkpoints intermediários, então ele já deveria estar usando:
 
 - chunking
-- intermediários
-- `todo.json`
-- script de montagem ou correção
+- intermediários por seção
+- shards por citação
+- montagem determinística
+- reparo somente das pendências
 
 Essa é a estratégia padrão recomendada desta pipeline.

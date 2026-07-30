@@ -15,7 +15,14 @@ from alphabetical_index_db import (
     connect_db,
     init_schema,
     now_iso,
+    refresh_volume_quality,
     upsert_volume,
+)
+from patristica_pipeline.scripture_book_catalog import (
+    canonical_book_key,
+    contextual_book_tradition,
+    historical_noncanonical_book_key,
+    normalize_book_alias,
 )
 
 SECTION_KINDS = {
@@ -59,10 +66,20 @@ REF_KINDS = {
     "editorial_range",
     "editorial_page_line",
     "target_locator",
-    "scripture",
     "parallel_locator",
     "unresolved",
 }
+
+UNANCHORED_STRUCTURAL_REF_KINDS = {
+    "target_locator",
+    "parallel_locator",
+    "unresolved",
+}
+
+CROSS_REFERENCE_MARKER_RE = re.compile(
+    r"(?<!\w)(?:vid\.|vide\b|voir\b|v\.|cf\.|id\.)(?!\w)",
+    re.IGNORECASE,
+)
 
 SCRIPTURE_REF_ROLES = {
     "citation",
@@ -77,6 +94,36 @@ SCRIPTURE_SECTION_SPECIAL_HEADINGS = (
     "LOCA EX PSALMIS",
     "VARIANTIA IN PSALTERIIS",
 )
+PAGE_SPECIFIC_EVIDENCE_KINDS = {
+    "cited_page_match",
+    "direct_editorial_page",
+    "editorial_header_match",
+    "editorial_page_match",
+    "header_pair",
+    "neighbor_fit",
+    "neighbor_sequence",
+    "page_number_match",
+    "pagination_sequence",
+}
+
+
+def material_ref_locator_status(ref: dict[str, Any]) -> str:
+    if to_text(ref.get("target_file")) is None:
+        return "unresolved"
+    raw = ref.get("raw_json", ref)
+    locator = raw.get("compact_locator") if isinstance(raw, dict) else None
+    if not isinstance(locator, dict):
+        return "unverified"
+    evidence = locator.get("evidence")
+    if locator.get("status") != "resolved" or not isinstance(evidence, list):
+        return "unverified"
+    if any(
+        isinstance(item, dict)
+        and str(item.get("kind") or "") in PAGE_SPECIFIC_EVIDENCE_KINDS
+        for item in evidence
+    ):
+        return "resolved"
+    return "unverified"
 
 
 class ValidationErrors(ValueError):
@@ -180,11 +227,10 @@ def normalize_schema_version(value: Any) -> int:
 
 
 def looks_like_cross_reference_without_anchor(ref_raw: str) -> bool:
-    text = ref_raw.strip().casefold()
+    text = ref_raw.strip()
     if not text:
         return False
-    markers = ("vid.", "vide", "voir", "v.", "cf.", "id.")
-    return any(marker in text for marker in markers)
+    return CROSS_REFERENCE_MARKER_RE.search(text) is not None
 
 
 def collapse_ws(value: str | None) -> str:
@@ -216,13 +262,38 @@ def section_uses_special_scripture_apparatus(section: dict[str, Any]) -> bool:
     return any(marker in heading for marker in SCRIPTURE_SECTION_SPECIAL_HEADINGS)
 
 
-def validate_coverage(coverage: dict[str, Any], *, sections: list[Any], entries: list[Any]) -> None:
-    if sections and not entries:
+def material_reference_mode(item: dict[str, Any] | None) -> str | None:
+    if not item:
+        return None
+    raw = item.get("raw_json")
+    if isinstance(raw, str):
+        try:
+            raw = json.loads(raw)
+        except json.JSONDecodeError:
+            return None
+    if not isinstance(raw, dict):
+        return None
+    value = raw.get("material_reference_mode")
+    return collapse_ws(to_text(value)).casefold() or None
+
+
+def validate_coverage(
+    coverage: dict[str, Any],
+    *,
+    sections: list[Any],
+    entries: list[Any],
+    refs: list[Any],
+) -> None:
+    if not entries:
         entries_status = coverage.get("entries_status")
-        if entries_status not in {"unrecoverable_ocr", "no_line_items"}:
+        allowed_statuses = (
+            {"no_index_section"} if not sections else {"unrecoverable_ocr", "no_line_items"}
+        )
+        if entries_status not in allowed_statuses:
             raise ValueError(
-                "sections is non-empty but entries is empty. "
-                "coverage.entries_status must be 'unrecoverable_ocr' or 'no_line_items'."
+                "entries is empty. "
+                f"coverage.entries_status must be one of {sorted(allowed_statuses)} "
+                f"when sections is {'empty' if not sections else 'non-empty'}."
             )
         reason = coverage.get("entries_status_reason")
         if not isinstance(reason, str) or not reason.strip():
@@ -239,6 +310,25 @@ def validate_coverage(coverage: dict[str, Any], *, sections: list[Any], entries:
                 raise ValueError(
                     f"coverage.evidence_files[{idx}] must be a non-empty OCR file path string."
                 )
+    locator_status = coverage.get("locator_status")
+    if locator_status is not None and locator_status not in {"complete", "partial"}:
+        raise ValueError(
+            "coverage.locator_status must be 'complete' or 'partial' when present."
+        )
+    unresolved_refs = [
+        index
+        for index, item in enumerate(refs, start=1)
+        if isinstance(item, dict) and to_text(item.get("target_file")) is None
+    ]
+    if locator_status == "complete" and unresolved_refs:
+        raise ValueError(
+            "coverage.locator_status='complete' is incompatible with refs without target_file."
+        )
+    if unresolved_refs and locator_status != "partial":
+        raise ValueError(
+            "Material refs without target_file require coverage.locator_status='partial'; "
+            f"unresolved refs include {unresolved_refs[:10]}."
+        )
 
 
 def normalize_material_path(path_text: str) -> Path:
@@ -306,7 +396,17 @@ def collect_section_keys(sections: list[Any], volume_id: str, source_root: str, 
             if section.get("volume_id") != volume_id:
                 raise ValueError(f"sections[{idx}] volume_id mismatch: expected {volume_id}")
             key = require_non_empty_text(section.get("section_key"), f"sections[{idx}].section_key")
-            require_enum(section.get("section_kind"), f"sections[{idx}].section_kind", SECTION_KINDS)
+            section_kind = require_enum(
+                section.get("section_kind"),
+                f"sections[{idx}].section_kind",
+                SECTION_KINDS,
+            )
+            if section_kind in {"ordo_rerum", "editorial_closure"}:
+                raise ValueError(
+                    f"sections[{idx}].section_kind={section_kind!r} belongs outside "
+                    "the alphabetical-index pipeline and is accepted only as legacy "
+                    "database evidence."
+                )
             require_non_empty_text(section.get("heading_raw"), f"sections[{idx}].heading_raw")
             if section.get("page_start") is None and to_text(section.get("file_start")) is None:
                 raise ValueError(
@@ -412,6 +512,15 @@ def validate_refs(
     sections_by_key: dict[str, dict[str, Any]],
     errors: list[str],
 ) -> None:
+    scripture_orders_by_entry: dict[str, set[int]] = {}
+    for item in scripture_refs:
+        if not isinstance(item, dict):
+            continue
+        entry_key = to_text(item.get("entry_key"))
+        ref_order = item.get("ref_order")
+        if entry_key in entry_keys and isinstance(ref_order, int) and ref_order >= 1:
+            scripture_orders_by_entry.setdefault(entry_key, set()).add(ref_order)
+
     seen_ref_orders: dict[str, set[int]] = {}
     for idx, item in enumerate(refs, start=1):
         try:
@@ -429,8 +538,29 @@ def validate_refs(
                     "ref_order must be unique per entry_key."
                 )
             entry_ref_orders.add(ref_order)
-            require_enum(ref.get("ref_kind"), f"refs[{idx}].ref_kind", REF_KINDS)
+            ref_kind = require_enum(
+                ref.get("ref_kind"),
+                f"refs[{idx}].ref_kind",
+                REF_KINDS,
+            )
             ref_raw = require_non_empty_text(ref.get("ref_raw"), f"refs[{idx}].ref_raw")
+            scripture_ref_order = ref.get("scripture_ref_order")
+            scripture_orders = scripture_orders_by_entry.get(entry_key or "", set())
+            if scripture_ref_order is not None:
+                scripture_ref_order = require_positive_int(
+                    scripture_ref_order,
+                    f"refs[{idx}].scripture_ref_order",
+                )
+                if scripture_ref_order not in scripture_orders:
+                    raise ValueError(
+                        f"refs[{idx}].scripture_ref_order={scripture_ref_order} does not identify "
+                        f"a scripture_refs parent for entry_key={entry_key!r}."
+                    )
+            elif scripture_orders:
+                raise ValueError(
+                    f"refs[{idx}] belongs to an entry with scripture_refs and must explicitly set "
+                    "scripture_ref_order to the cited passage."
+                )
             if (
                 to_text(ref.get("page_ref_raw")) is None
                 and to_text(ref.get("target_file")) is None
@@ -443,10 +573,13 @@ def validate_refs(
                         "Do not serialize `vid./vide/voir/id.` style remissions as refs unless they also carry a real locator. "
                         "Model them as an entry-level cross_reference or preserve them in entry_raw/raw_json."
                     )
-                raise ValueError(
-                    f"refs[{idx}] must include at least one material anchor: "
-                    "page_ref_raw, target_file, range_start_raw, or range_end_raw."
-            )
+                if ref_kind not in UNANCHORED_STRUCTURAL_REF_KINDS:
+                    raise ValueError(
+                        f"refs[{idx}] must include at least one material anchor: "
+                        "page_ref_raw, target_file, range_start_raw, or range_end_raw. "
+                        "Only target_locator, parallel_locator, and unresolved refs may "
+                        "preserve a non-page editorial locator without an anchor."
+                    )
             require_unit_interval(ref.get("target_file_probability"), f"refs[{idx}].target_file_probability")
             require_unit_interval(ref.get("confidence"), f"refs[{idx}].confidence")
             for field in ("target_file", "section_start_file", "editorial_anchor_file"):
@@ -476,6 +609,11 @@ def validate_refs(
                     "ref_order must be unique per entry_key."
                 )
             entry_ref_orders.add(ref_order)
+            if len(scripture_orders_by_entry.get(entry_key or "", set())) == 1 and ref_order != 1:
+                raise ValueError(
+                    f"scripture_refs[{idx}].ref_order must be 1 when it is the entry's only "
+                    "scripture reference."
+                )
             require_enum(ref.get("ref_role"), f"scripture_refs[{idx}].ref_role", SCRIPTURE_REF_ROLES)
             ref_raw = require_non_empty_text(ref.get("ref_raw"), f"scripture_refs[{idx}].ref_raw")
             if looks_like_oversized_scripture_ref_raw(ref_raw):
@@ -511,6 +649,53 @@ def validate_refs(
         except ValueError as exc:
             append_error(errors, exc)
 
+    for entry_key, scripture_orders in scripture_orders_by_entry.items():
+        entry = entries_by_key.get(entry_key, {})
+        entry_kind = to_text(entry.get("entry_kind"))
+        if (
+            entry_kind in {"scripture_citation", "scripture_pericope"}
+            and len(scripture_orders) > 1
+        ):
+            append_error(
+                errors,
+                ValueError(
+                    f"{entry_kind} entry {entry_key!r} has {len(scripture_orders)} distinct "
+                    "scripture_refs; split distinct passages into separate entries."
+                ),
+            )
+
+    for entry_key, entry in entries_by_key.items():
+        entry_kind = to_text(entry.get("entry_kind"))
+        if (
+            entry_kind in {"scripture_citation", "scripture_pericope"}
+            and not scripture_orders_by_entry.get(entry_key)
+        ):
+            append_error(
+                errors,
+                ValueError(
+                    f"{entry_kind} entry {entry_key!r} has no scripture_refs; "
+                    "a biblical entry must identify its passage and book context."
+                ),
+            )
+        section = sections_by_key.get(to_text(entry.get("section_key")), {})
+        source_only = (
+            material_reference_mode(entry) == "source_only"
+            or material_reference_mode(section) == "source_only"
+        )
+        if (
+            entry_kind in {"scripture_citation", "scripture_pericope"}
+            and not seen_ref_orders.get(entry_key)
+            and not source_only
+        ):
+            append_error(
+                errors,
+                ValueError(
+                    f"biblical entry {entry_key!r} has no material refs; remissive entries "
+                    "must serialize every cited page, while textual apparatus must declare "
+                    "raw_json.material_reference_mode='source_only'."
+                ),
+            )
+
 
 def build_validation_summary(payload: dict[str, Any]) -> dict[str, Any]:
     volume, volume_id = validate_payload(payload)
@@ -542,7 +727,12 @@ def build_validation_summary(payload: dict[str, Any]) -> dict[str, Any]:
         errors,
     )
     try:
-        validate_coverage(coverage, sections=sections, entries=entries)
+        validate_coverage(
+            coverage,
+            sections=sections,
+            entries=entries,
+            refs=refs,
+        )
     except ValueError as exc:
         append_error(errors, exc)
     if errors:
@@ -571,6 +761,30 @@ def import_payload(con: Any, payload: dict[str, Any], replace: bool) -> str:
     entries = require_list(payload["entries"], "entries")
     refs = require_list(payload["refs"], "refs")
     scripture_refs = require_list(payload["scripture_refs"], "scripture_refs")
+    entry_sections = {
+        str(require_dict(item, "entry")["entry_key"]): str(
+            require_dict(item, "entry")["section_key"]
+        )
+        for item in entries
+    }
+    section_profiles = {
+        str(require_dict(item, "section")["section_key"]): (
+            require_dict(item, "section").get("raw_json", {}) or {}
+        )
+        for item in sections
+    }
+    po_old_english_sections = {
+        entry_sections.get(str(require_dict(item, "scripture_ref")["entry_key"]))
+        for item in scripture_refs
+        if re.search(
+            r"\b(?:iii|iv|3|4)\s+kings\b",
+            " ".join(
+                normalize_book_alias(require_dict(item, "scripture_ref").get(field))
+                for field in ("book_raw", "book_norm")
+            ),
+        )
+    }
+    po_old_english_sections.discard(None)
 
     if replace:
         clear_volume(con, volume_id)
@@ -663,18 +877,80 @@ def import_payload(con: Any, payload: dict[str, Any], replace: bool) -> str:
             ),
         )
 
+    for item in scripture_refs:
+        ref = require_dict(item, "scripture_ref")
+        section_key = entry_sections.get(str(ref["entry_key"]))
+        section_raw = section_profiles.get(str(section_key), {})
+        local_profile = (
+            section_raw.get("scripture_numbering_profile")
+            if isinstance(section_raw, dict)
+            else None
+        )
+        book_tradition = contextual_book_tradition(
+            volume["collection"],
+            ref.get("book_raw"),
+            ref.get("book_norm"),
+            local_profile=local_profile,
+            section_uses_old_english=section_key in po_old_english_sections,
+        )
+        book_key = canonical_book_key(
+            ref.get("book_raw"),
+            tradition=book_tradition,
+        ) or canonical_book_key(
+            ref.get("book_norm"),
+            tradition=book_tradition,
+        )
+        scripture_raw_json = ref.get("raw_json", ref)
+        if isinstance(scripture_raw_json, dict):
+            scripture_raw_json = dict(scripture_raw_json)
+        historical_key = (
+            historical_noncanonical_book_key(ref.get("book_raw"))
+            or historical_noncanonical_book_key(ref.get("book_norm"))
+        )
+        if book_key is None and historical_key and isinstance(scripture_raw_json, dict):
+            scripture_raw_json.setdefault(
+                "canonical_status",
+                "historical_noncanonical",
+            )
+            scripture_raw_json.setdefault("historical_book_key", historical_key)
+        con.execute(
+            """INSERT INTO alphabetical_scripture_refs (
+                entry_key, ref_order, ref_role, ref_raw, ref_norm, book_raw, book_norm, book_key,
+                chapter_start, verse_start, chapter_end, verse_end, is_range, confidence, raw_json
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+            (
+                ref["entry_key"],
+                ref["ref_order"],
+                ref["ref_role"],
+                ref["ref_raw"],
+                to_text(ref.get("ref_norm")),
+                to_text(ref.get("book_raw")),
+                to_text(ref.get("book_norm")),
+                book_key,
+                ref.get("chapter_start"),
+                ref.get("verse_start"),
+                ref.get("chapter_end"),
+                ref.get("verse_end"),
+                ref.get("is_range", 0),
+                ref.get("confidence"),
+                json_text(scripture_raw_json),
+            ),
+        )
+
     for item in refs:
         ref = require_dict(item, "ref")
         con.execute(
             """INSERT INTO alphabetical_refs (
-                entry_key, ref_order, ref_kind, ref_raw, page_ref_raw, page_ref_int,
-                page_ref_col, line_ref_raw, range_start_raw, range_end_raw, target_file,
-                target_file_probability, section_start_file, editorial_anchor_file,
+                entry_key, ref_order, scripture_ref_order, ref_kind, ref_raw,
+                page_ref_raw, page_ref_int, page_ref_col, line_ref_raw,
+                range_start_raw, range_end_raw, target_file, target_file_probability,
+                locator_status, section_start_file, editorial_anchor_file,
                 confidence, raw_json
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
             (
                 ref["entry_key"],
                 ref["ref_order"],
+                ref.get("scripture_ref_order"),
                 ref["ref_kind"],
                 ref["ref_raw"],
                 to_text(ref.get("page_ref_raw")),
@@ -685,33 +961,9 @@ def import_payload(con: Any, payload: dict[str, Any], replace: bool) -> str:
                 to_text(ref.get("range_end_raw")),
                 to_text(ref.get("target_file")),
                 ref.get("target_file_probability"),
+                material_ref_locator_status(ref),
                 to_text(ref.get("section_start_file")),
                 to_text(ref.get("editorial_anchor_file")),
-                ref.get("confidence"),
-                json_text(ref.get("raw_json", ref)),
-            ),
-        )
-
-    for item in scripture_refs:
-        ref = require_dict(item, "scripture_ref")
-        con.execute(
-            """INSERT INTO alphabetical_scripture_refs (
-                entry_key, ref_order, ref_role, ref_raw, ref_norm, book_raw, book_norm,
-                chapter_start, verse_start, chapter_end, verse_end, is_range, confidence, raw_json
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
-            (
-                ref["entry_key"],
-                ref["ref_order"],
-                ref["ref_role"],
-                ref["ref_raw"],
-                to_text(ref.get("ref_norm")),
-                to_text(ref.get("book_raw")),
-                to_text(ref.get("book_norm")),
-                ref.get("chapter_start"),
-                ref.get("verse_start"),
-                ref.get("chapter_end"),
-                ref.get("verse_end"),
-                ref.get("is_range", 0),
                 ref.get("confidence"),
                 json_text(ref.get("raw_json", ref)),
             ),
@@ -730,6 +982,7 @@ def import_payload(con: Any, payload: dict[str, Any], replace: bool) -> str:
             json_text(payload),
         ),
     )
+    refresh_volume_quality(con, volume_id)
     return summary["volume_id"]
 
 

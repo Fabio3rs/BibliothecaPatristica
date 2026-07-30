@@ -38,6 +38,7 @@ def test_build_prompt_includes_previous_failure_block(tmp_path: Path) -> None:
         output_file=previous_payload,
     )
 
+    assert prompt.splitlines()[0] == "$alphabetical-index-extractor"
     assert "PREVIOUS FAILURE" in prompt
     assert "refs[2]" in prompt
     assert "validate_payload" in prompt

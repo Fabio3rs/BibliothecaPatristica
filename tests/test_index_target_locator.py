@@ -141,6 +141,53 @@ def test_resolve_index_targets_infers_page_from_neighbors(tmp_path: Path) -> Non
     assert any(ev["kind"] == "adjacent_page_consensus" for ev in candidate["evidence"])
 
 
+def test_resolve_index_targets_tracks_parallel_editorial_numbering_sequences(
+    tmp_path: Path,
+) -> None:
+    text_root = tmp_path / "POY" / "text"
+    text_root.mkdir(parents=True)
+    write_page(
+        text_root / "page-100.txt",
+        """
+        <pagina><bloco tipo="cabecalho">[104] LIBER JOB 664</bloco>
+        <bloco tipo="texto_principal">Praeambulum.</bloco></pagina>
+        """,
+    )
+    write_page(
+        text_root / "page-101.txt",
+        """
+        <pagina><bloco tipo="texto_principal">
+        Dionysius Antiochenus testimonium.
+        </bloco></pagina>
+        """,
+    )
+    write_page(
+        text_root / "page-102.txt",
+        """
+        <pagina><bloco tipo="cabecalho">[106] LIBER JOB 666</bloco>
+        <bloco tipo="texto_principal">Finis.</bloco></pagina>
+        """,
+    )
+
+    result = resolve_index_targets(
+        {
+            "volume_id": "POY",
+            "source_root": str(text_root),
+            "entries": [
+                {
+                    "entry_id": "e1",
+                    "query_names": ["Dionysius Antiochenus"],
+                    "page_hint_ints": [665],
+                }
+            ],
+        }
+    )
+
+    candidate = result["entries"][0]["candidates"][0]
+    assert candidate["file"].endswith("page-101.txt")
+    assert 665 in candidate["inferred_page_candidates"]
+
+
 def test_resolve_index_targets_uses_editorial_page_estimator_as_secondary_confirmation(tmp_path: Path) -> None:
     text_root = tmp_path / "PGE" / "text"
     text_root.mkdir(parents=True)

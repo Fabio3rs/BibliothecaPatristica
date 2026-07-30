@@ -24,35 +24,56 @@ from alphabetical_index_db import (
     DEFAULT_DB,
     collect_pending_volume_translations,
     connect_db,
+    get_volume_quality,
     init_schema,
     upsert_translation_rows,
     volume_already_imported,
 )
 from patristica_pipeline.common import parse_volume_info
-from patristica_pipeline.index_target_locator import parse_ocr_page_xml, resolve_index_targets
+from patristica_pipeline.alphabetical_compact_driver import run_compact_extraction
+from patristica_pipeline.alphabetical_analysis_db import (
+    DEFAULT_ANALYSIS_DB,
+    connect_analysis_db,
+    export_seed_rows,
+    init_analysis_schema,
+    review_occurrences,
+    volume_status,
+)
+from patristica_pipeline.alphabetical_analysis_pipeline import (
+    assemble_stage,
+    discover_stage,
+    extract_stage,
+    locate_stage,
+    verify_stage,
+)
+from patristica_pipeline.index_localization_helpers import (
+    build_helper_request_artifact,
+    run_helper_locator,
+)
+from patristica_pipeline.index_payload_evidence import verify_index_payload_evidence
+from patristica_pipeline.index_workplan import build_index_workplan, reconcile_workplan_progress
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 FILTERED_PAGES_SCRIPT = PROJECT_ROOT / "scripts" / "build_alphabetical_filtered_pages.py"
 PROMPT_SCRIPT = PROJECT_ROOT / "scripts" / "build_alphabetical_prompt.py"
 IMPORT_SCRIPT = PROJECT_ROOT / "scripts" / "import_alphabetical_index_json.py"
+EXPORT_WEB_SCRIPT = PROJECT_ROOT / "tools" / "export_alphabetical_indices.py"
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "data" / "alphabetical_index_payloads"
 DEFAULT_LOG_DIR = PROJECT_ROOT / "data" / "alphabetical_index_logs"
 DEFAULT_INTERMEDIATE_ROOT = PROJECT_ROOT / "data" / "intermediate_payloads"
-HELPER_TOP_K = 5
-HELPER_ADJACENCY_WINDOW = 2
-INDEX_LINE_RE = re.compile(r"\d{1,4}")
-PAGE_HINT_TOKEN_RE = re.compile(r"\b\d{1,4}(?:\s*[-–—]\s*\d{1,4})?\b(?:\s*(?:seq\.?|seqq\.?))?", re.IGNORECASE)
-EDITORIAL_TITLE_RE = re.compile(
-    r"^(?:"
-    r"CAP\.\s*[IVXLCDM0-9]+"
-    r"|INDEX(?:\s+[A-ZÆŒÀ-Ÿ][A-ZÆŒÀ-Ÿ\.\-]*)*"
-    r"|INDICES(?:\s+[A-ZÆŒÀ-Ÿ][A-ZÆŒÀ-Ÿ\.\-]*)*"
-    r"|TABLE(?:\s+[A-ZÆŒÀ-Ÿ][A-ZÆŒÀ-Ÿ\.\-]*)*"
-    r"|ORDO(?:\s+[A-ZÆŒÀ-Ÿ][A-ZÆŒÀ-Ÿ\.\-]*)*"
-    r"|ELENCHUS(?:\s+[A-ZÆŒÀ-Ÿ][A-ZÆŒÀ-Ÿ\.\-]*)*"
-    r")\b",
-    re.IGNORECASE,
-)
+DEFAULT_WEB_ALPHA_OUT = PROJECT_ROOT / "web" / "public" / "alpha"
+COMPLETE_COVERAGE_STATUSES = {"ok", "complete", "extracted", "recovered"}
+ANALYSIS_COMMANDS = {
+    "discover",
+    "extract",
+    "locate",
+    "verify",
+    "assemble",
+    "run",
+    "status",
+    "review",
+    "export-seeds",
+}
 
 
 def run_cmd(cmd: list[str], *, cwd: Path) -> subprocess.CompletedProcess[str]:
@@ -73,147 +94,52 @@ def resolve_path(path: Path | None) -> Path | None:
     return path.expanduser().resolve()
 
 
-def _unique_preserve_order(items: list[str]) -> list[str]:
-    seen: set[str] = set()
-    result: list[str] = []
-    for item in items:
-        key = item.strip()
-        if not key or key in seen:
-            continue
-        seen.add(key)
-        result.append(key)
-    return result
-
-
-def _is_index_line(stripped: str) -> bool:
-    if not stripped or len(stripped) > 240:
-        return False
-    if not re.search(r"[A-Za-zÆŒÀ-ÿ]", stripped):
-        return False
-    if EDITORIAL_TITLE_RE.match(stripped):
-        return False
-    if not INDEX_LINE_RE.search(stripped):
-        return False
-    if re.match(r"^\s*\d{1,4}\s+[A-ZÆŒ]", stripped):
-        return False
-    if stripped.upper().startswith(("INDEX ", "TABLE ", "ELENCHUS ", "ORDO ", "NOTES ", "OBS ", "OCR ")):
-        return False
-    return True
-
-
-def _extract_page_hints(text: str) -> list[str]:
-    return [match.group(0).strip() for match in PAGE_HINT_TOKEN_RE.finditer(text or "")]
-
-
-def _derive_lemma_raw(text: str) -> str:
-    lemma = re.split(r"\b\d{1,4}\b", text, maxsplit=1)[0].strip()
-    lemma = re.sub(r"\s+", " ", lemma)
-    lemma = lemma.strip(" ,;:.–—-")
-    return lemma
-
-
-def _derive_query_names(lemma_raw: str, context_raw: str) -> list[str]:
-    candidates: list[str] = []
-    cleaned = re.sub(r"\s*\((.*?)\)\s*$", "", lemma_raw).strip()
-    if cleaned:
-        candidates.append(cleaned)
-    if lemma_raw and lemma_raw not in candidates:
-        candidates.append(lemma_raw)
-    first_clause = re.split(r"\s*[;,]\s*|\s{2,}", cleaned or lemma_raw, maxsplit=1)[0].strip()
-    if first_clause and first_clause not in candidates:
-        candidates.append(first_clause)
-    context_prefix = context_raw.strip()
-    if context_prefix and context_prefix not in candidates:
-        candidates.append(context_prefix)
-    return _unique_preserve_order(candidates)[:4]
-
-
-def _looks_structural_title(text: str) -> bool:
-    compact = re.sub(r"\s+", " ", (text or "")).strip()
-    if not compact:
-        return False
-    if EDITORIAL_TITLE_RE.match(compact):
-        return True
-    if compact.upper().startswith(("CAP. ", "INDEX ", "INDICES ", "TABLE ", "ORDO ", "ELENCHUS ")):
-        return True
-    return False
-
-
-def _build_context_window(lines: list[str], index: int, *, width: int = 1) -> str:
-    start = max(0, index - width)
-    end = min(len(lines), index + width + 1)
-    window = [line.strip() for line in lines[start:end] if line.strip()]
-    return "\n".join(window)
-
-
-def build_helper_request_artifact(
+def volume_extraction_policy(
     *,
-    volume_id: str,
-    source_root: Path,
-    filtered_pages: dict[str, Any],
-    helper_request_json: Path,
-) -> dict[str, Any]:
-    candidate_files = [Path(item) for item in (filtered_pages.get("candidate_files") or [])]
-    if not candidate_files:
-        candidate_files = [Path(item) for item in (filtered_pages.get("tail_files") or [])]
-    if not candidate_files:
-        candidate_files = sorted(source_root.glob("*.txt"))
-
-    entries: list[dict[str, Any]] = []
-    seen: set[tuple[str, int, str]] = set()
-
-    for file_path in candidate_files:
-        if not file_path.exists():
-            continue
-        raw_text = file_path.read_text(encoding="utf-8", errors="replace")
-        parsed = parse_ocr_page_xml(raw_text)
-        lines = [line.strip() for line in parsed["all_text"].splitlines() if line.strip()]
-        for idx, line in enumerate(lines):
-            if not _is_index_line(line):
-                continue
-            if not _extract_page_hints(line):
-                continue
-            lemma_raw = _derive_lemma_raw(line)
-            if not lemma_raw:
-                continue
-            if _looks_structural_title(lemma_raw):
-                continue
-            context_raw = _build_context_window(lines, idx, width=1)
-            if _looks_structural_title(context_raw.splitlines()[0] if context_raw else ""):
-                if lemma_raw == (context_raw.splitlines()[0] if context_raw else ""):
-                    continue
-            request_key = (str(file_path), idx + 1, lemma_raw)
-            if request_key in seen:
-                continue
-            seen.add(request_key)
-            entries.append(
-                {
-                    "entry_id": f"{volume_id.lower()}_{file_path.stem}_{idx + 1:04d}",
-                    "lemma_raw": lemma_raw,
-                    "query_names": _derive_query_names(lemma_raw, context_raw),
-                    "page_hints": _extract_page_hints(line),
-                    "page_hint_ints": [int(match.group(0)) for match in INDEX_LINE_RE.finditer(line)],
-                    "context_raw": context_raw or line,
-                }
-            )
-
-    request = {
-        "volume_id": volume_id,
-        "source_root": str(source_root),
-        "options": {
-            "top_k": HELPER_TOP_K,
-            "adjacency_window": HELPER_ADJACENCY_WINDOW,
-        },
-        "entries": entries,
-    }
-    helper_request_json.write_text(json.dumps(request, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    return request
+    db_imported: bool,
+    quality_status: str | None,
+    skip_done: bool,
+    redo_invalid: bool,
+    replace: bool,
+) -> tuple[bool, bool, str]:
+    if redo_invalid:
+        if quality_status == "needs_reextract":
+            return False, True, "quality_needs_reextract"
+        if quality_status is None:
+            return True, False, "quality_unassessed"
+        return True, False, f"quality_{quality_status}"
+    if skip_done and db_imported and not replace:
+        if quality_status == "needs_reextract":
+            return False, True, "quality_needs_reextract"
+        if quality_status == "partial":
+            return False, True, "quality_partial"
+        return True, False, "already_imported"
+    return False, replace, "selected"
 
 
-def run_helper_locator(request: dict[str, Any], helper_output_json: Path) -> dict[str, Any]:
-    result = resolve_index_targets(request)
-    helper_output_json.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    return result
+def export_web_indices(*, db_path: Path, output_dir: Path) -> None:
+    cmd = [
+        sys.executable,
+        str(EXPORT_WEB_SCRIPT),
+        "--db",
+        str(db_path),
+        "--out",
+        str(output_dir),
+    ]
+    result = run_cmd(cmd, cwd=PROJECT_ROOT)
+    if result.returncode != 0:
+        raise SystemExit(
+            "export_alphabetical_indices.py failed\n"
+            f"STDOUT:\n{result.stdout}\nSTDERR:\n{result.stderr}"
+        )
+    print(result.stdout.strip())
+
+
+def maybe_export_web_indices(args: argparse.Namespace) -> bool:
+    if args.no_export_web or args.dry_run:
+        return False
+    export_web_indices(db_path=args.db, output_dir=args.web_alpha_out)
+    return True
 
 
 def select_volume_ids(root: Path, blob: str, limit: int | None) -> list[str]:
@@ -269,12 +195,24 @@ def inspect_payload_coverage(payload_file: Path) -> tuple[bool, str | None, str 
     coverage = payload.get("coverage")
     if not isinstance(coverage, dict):
         return False, None, None
-    status = coverage.get("entries_status")
-    if not isinstance(status, str):
+    entries_status = coverage.get("entries_status")
+    locator_status = coverage.get("locator_status")
+    status = (
+        entries_status
+        if isinstance(entries_status, str)
+        else locator_status
+        if isinstance(locator_status, str)
+        else None
+    )
+    if status is None:
         return False, None, None
     reason = coverage.get("entries_status_reason")
     reason_text = reason.strip() if isinstance(reason, str) and reason.strip() else None
-    return status.startswith("partial"), status, reason_text
+    return (
+        status.startswith("partial") or locator_status == "partial",
+        status,
+        reason_text,
+    )
 
 
 def previous_failure_path(output_dir: Path, volume_id: str) -> Path:
@@ -334,6 +272,61 @@ def write_output_checkpoint_error(path: Path, error_text: str | None) -> Path | 
     return path
 
 
+def infer_failure_stage(error: BaseException) -> str:
+    text = str(error).casefold()
+    if "chunked codex extraction" in text:
+        return "chunk_extraction"
+    if "omitted stable objects" in text:
+        return "fragment_consumption"
+    if "evidence verification" in text:
+        return "payload_evidence"
+    if "compact repair" in text or "repair result" in text:
+        return "compact_repair"
+    if "compact codex phase" in text or "codex exec" in text:
+        return "codex_exec"
+    if "last message" in text or "ack" in text:
+        return "ack_check"
+    if "import_alphabetical_index_json.py" in text:
+        return "import_payload"
+    if "validation" in text or "validate" in text:
+        return "validate_payload"
+    return "pipeline"
+
+
+def write_pipeline_quality_reports(
+    *,
+    payload_file: Path,
+    intermediate_dir: Path,
+    evidence_sample_size: int,
+    max_unverified_ratio: float,
+    skip_evidence_check: bool,
+) -> Path | None:
+    payload = read_json(payload_file)
+    evidence_path: Path | None = None
+    if not skip_evidence_check:
+        evidence = verify_index_payload_evidence(payload, sample_size=evidence_sample_size)
+        evidence_path = intermediate_dir / "payload_evidence_report.json"
+        evidence_path.write_text(
+            json.dumps(evidence, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        sampled = int(evidence.get("sampled_entry_count") or 0)
+        verified_ratio = evidence.get("verified_ratio")
+        ratio = 1.0 - float(verified_ratio) if verified_ratio is not None else 0.0
+        unverified = round(sampled * ratio)
+        if int(evidence.get("unjustified_empty_list_section_count") or 0):
+            raise SystemExit(
+                "OCR evidence verification found unjustified empty list-bearing sections; "
+                f"see {evidence_path}"
+            )
+        if ratio > max_unverified_ratio:
+            raise SystemExit(
+                "OCR evidence verification exceeded the limit: "
+                f"{unverified}/{sampled} unverified ({ratio:.3f}); see {evidence_path}"
+            )
+    return evidence_path
+
+
 def resolve_previous_payload_path(
     *,
     args: argparse.Namespace,
@@ -365,7 +358,9 @@ def run_codex(
     command = [
         codex_bin,
         "exec",
-        "--full-auto",
+        "--ephemeral",
+        "--sandbox",
+        "workspace-write",
         "--output-last-message",
         str(last_message_path),
     ]
@@ -478,6 +473,8 @@ def build_filtered_pages_artifact(
         "--output",
         str(canonical_path),
         "--pretty",
+        "--profile",
+        "alphabetical",
     ]
     if args.filtered_pages_json is not None:
         cmd.extend(["--filtered-pages-json", str(args.filtered_pages_json)])
@@ -497,6 +494,7 @@ def build_prompt(
     source_root: Path,
     collection: str,
     filtered_pages_file: Path,
+    workplan_json: Path,
     previous_payload: Path,
     previous_result_source: str,
     output_checkpoint_status: str,
@@ -519,6 +517,8 @@ def build_prompt(
         collection,
         "--filtered-pages-json",
         str(filtered_pages_file),
+        "--workplan-json",
+        str(workplan_json),
         "--previous-payload",
         str(previous_payload),
         "--previous-result-source",
@@ -885,7 +885,608 @@ def run_translation_stage(
     return summary
 
 
+def _compact_agent_runner(
+    *,
+    args: argparse.Namespace,
+    volume_id: str,
+    prompt: str,
+    expected_output: Path,
+    phase_id: str,
+) -> None:
+    phase_dir = args.log_dir / volume_id / Path(phase_id)
+    phase_dir.mkdir(parents=True, exist_ok=True)
+    attempt = len(list(phase_dir.glob("attempt_*_prompt.txt"))) + 1
+    prefix = phase_dir / f"attempt_{attempt:03d}"
+    prompt_file = prefix.with_name(prefix.name + "_prompt.txt")
+    last_message_file = prefix.with_name(prefix.name + "_last_message.json")
+    stdout_file = prefix.with_name(prefix.name + "_stdout.log")
+    stderr_file = prefix.with_name(prefix.name + "_stderr.log")
+    stream_file = prefix.with_name(prefix.name + "_stream.log")
+    prompt_file.write_text(prompt, encoding="utf-8")
+    result = run_codex(
+        codex_bin=args.codex_bin,
+        prompt=prompt,
+        last_message_path=last_message_file,
+        cwd=PROJECT_ROOT,
+        use_json=args.use_json,
+        model=args.model,
+        verbose=args.verbose,
+        stdout_log_path=stdout_file,
+        stderr_log_path=stderr_file,
+        stream_log_path=stream_file,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(
+            f"compact Codex phase {phase_id} failed for {volume_id}\n"
+            f"STDOUT:\n{result.stdout}\nSTDERR:\n{result.stderr}"
+        )
+    if not last_message_file.is_file():
+        raise RuntimeError(f"compact Codex phase {phase_id} wrote no acknowledgment")
+    try:
+        ack = json.loads(last_message_file.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise RuntimeError(
+            f"compact Codex phase {phase_id} returned invalid acknowledgment: {exc}"
+        ) from exc
+    written_file = Path(str(ack.get("written_file") or "")).expanduser()
+    if not written_file.is_absolute():
+        written_file = PROJECT_ROOT / written_file
+    if (
+        ack.get("status") != "ok"
+        or ack.get("volume_id") != volume_id
+        or written_file.resolve() != expected_output.resolve()
+    ):
+        raise RuntimeError(
+            f"compact Codex phase {phase_id} acknowledgment mismatch: {ack}"
+        )
+    if not expected_output.is_file():
+        raise RuntimeError(
+            f"compact Codex phase {phase_id} did not write {expected_output}"
+        )
+
+
+def run_compact_batch(args: argparse.Namespace, volume_ids: list[str]) -> None:
+    failed_volume_ids: list[str] = []
+    for idx, volume_id in enumerate(volume_ids, start=1):
+        collection: str | None = None
+        try:
+            volume_root = args.root / volume_id
+            text_root = volume_root / "text"
+            if not text_root.exists():
+                raise SystemExit(f"Text directory not found: {text_root}")
+            info = parse_volume_info(volume_root)
+            if info is None:
+                raise SystemExit(f"Could not parse volume info from {volume_root}")
+            collection = info.series
+            payload_file = args.output_dir / f"{volume_id}_alphabetical_indices.json"
+            db_imported = volume_already_imported(args.db, volume_id)
+            quality = get_volume_quality(args.db, volume_id)
+            quality_status = (
+                str(quality.get("status") or "").strip() or None
+                if quality is not None
+                else None
+            )
+            skip_extraction, replace_for_volume, selection_reason = (
+                volume_extraction_policy(
+                    db_imported=db_imported,
+                    quality_status=quality_status,
+                    skip_done=args.skip_done,
+                    redo_invalid=args.redo_invalid,
+                    replace=args.replace,
+                )
+            )
+            print(f"[INFO] volume {idx}/{len(volume_ids)}: {volume_id} ({collection})")
+            if args.redo_invalid and skip_extraction:
+                if quality_status is None:
+                    print(
+                        f"[WARN] {volume_id} has no volume quality assessment; "
+                        "--redo-invalid skips unassessed volumes.",
+                        file=sys.stderr,
+                    )
+                print(
+                    json.dumps(
+                        {
+                            "status": "skipped",
+                            "reason": selection_reason,
+                            "volume_id": volume_id,
+                            "collection": collection,
+                            "db": str(args.db),
+                            "quality_status": quality_status,
+                        },
+                        ensure_ascii=False,
+                    )
+                )
+                continue
+
+            filtered_pages_file = args.output_dir / f"{volume_id}_filtered_pages.json"
+            intermediate_dir = intermediate_dir_for_volume(
+                args.intermediate_root, volume_id
+            )
+            intermediate_dir.mkdir(parents=True, exist_ok=True)
+            compact_summary: dict[str, Any] = {
+                "status": "skipped",
+                "reason": selection_reason,
+            }
+            has_partial_coverage = False
+            coverage_status: str | None = None
+            coverage_reason: str | None = None
+            filtered_source = "skipped_existing_import"
+
+            if not skip_extraction:
+                filtered_pages = build_filtered_pages_artifact(
+                    args=args,
+                    volume_id=volume_id,
+                    canonical_path=filtered_pages_file,
+                )
+                filtered_source = str(filtered_pages.get("source") or "unknown")
+
+                def agent_runner(
+                    prompt: str,
+                    expected_output: Path,
+                    phase_id: str,
+                ) -> None:
+                    _compact_agent_runner(
+                        args=args,
+                        volume_id=volume_id,
+                        prompt=prompt,
+                        expected_output=expected_output,
+                        phase_id=phase_id,
+                    )
+
+                compact_summary = run_compact_extraction(
+                    volume_id=volume_id,
+                    collection=collection,
+                    source_root=text_root,
+                    filtered_pages_file=filtered_pages_file,
+                    intermediate_dir=intermediate_dir,
+                    output_file=payload_file,
+                    agent_runner=agent_runner,
+                    semantic_validator=validate_payload_file,
+                    locator_chunk_size=args.locator_chunk_size,
+                    locator_workers=args.chunk_workers,
+                    scripture_db_path=getattr(
+                        args,
+                        "scripture_db",
+                        PROJECT_ROOT / "data" / "scripture_citations.db",
+                    ),
+                    dry_run=args.dry_run,
+                )
+                if args.dry_run:
+                    print(
+                        json.dumps(
+                            {
+                                **compact_summary,
+                                "collection": collection,
+                                "filtered_pages_source": filtered_source,
+                                "filtered_pages_file": str(filtered_pages_file),
+                                "payload_file": str(payload_file),
+                                "intermediate_dir": str(intermediate_dir),
+                                "would_run_translation": args.translate,
+                            },
+                            ensure_ascii=False,
+                        )
+                    )
+                    continue
+
+                validate_payload_file(payload_file)
+                write_pipeline_quality_reports(
+                    payload_file=payload_file,
+                    intermediate_dir=intermediate_dir,
+                    evidence_sample_size=args.evidence_sample_size,
+                    max_unverified_ratio=args.max_unverified_evidence_ratio,
+                    skip_evidence_check=args.skip_evidence_check,
+                )
+                has_partial_coverage, coverage_status, coverage_reason = (
+                    inspect_payload_coverage(payload_file)
+                )
+                import_payload(payload_file, args.db, replace=replace_for_volume)
+                clear_previous_failure(
+                    previous_failure_path(args.output_dir, volume_id)
+                )
+
+            translation_summary = {
+                "ran": False,
+                "pending_strings": 0,
+                "written_rows": 0,
+                "completed_strings": 0,
+            }
+            if args.translate and not args.dry_run:
+                translation_summary = run_translation_stage(
+                    db_path=args.db,
+                    volume_id=volume_id,
+                    languages=args.translation_languages,
+                    model=args.translation_model,
+                    base_url=args.translation_openai_url,
+                    api_key=args.translation_openai_api_key,
+                    workers=max(1, args.translation_workers),
+                    timeout=max(1, args.translation_timeout),
+                    retries=max(1, args.translation_retries),
+                    verbose=args.verbose,
+                )
+            if has_partial_coverage:
+                print(
+                    f"[WARN] partial coverage for {volume_id}: {coverage_status}"
+                    + (f" - {coverage_reason}" if coverage_reason else ""),
+                    file=sys.stderr,
+                )
+            print(
+                json.dumps(
+                    {
+                        "status": "ok",
+                        "pipeline": "compact_divide_and_conquer",
+                        "volume_id": volume_id,
+                        "collection": collection,
+                        "db": str(args.db),
+                        "imported": not skip_extraction and not args.dry_run,
+                        "extraction_skipped": skip_extraction,
+                        "selection_reason": selection_reason,
+                        "quality_status_before_run": quality_status,
+                        "replace_for_volume": replace_for_volume,
+                        "filtered_pages_source": filtered_source,
+                        "filtered_pages_file": str(filtered_pages_file),
+                        "payload_file": str(payload_file),
+                        "intermediate_dir": str(intermediate_dir),
+                        "locator_chunk_size": args.locator_chunk_size,
+                        "locator_workers": args.chunk_workers,
+                        "compact_summary": compact_summary,
+                        "coverage_warning": has_partial_coverage,
+                        "coverage_status": coverage_status,
+                        "coverage_reason": coverage_reason,
+                        "translation_ran": translation_summary["ran"],
+                        "translation_written_rows": translation_summary["written_rows"],
+                    },
+                    ensure_ascii=False,
+                )
+            )
+        except KeyboardInterrupt:
+            raise
+        except BaseException as exc:
+            if isinstance(exc, GeneratorExit):
+                raise
+            failure_path = previous_failure_path(args.output_dir, volume_id)
+            write_previous_failure(
+                path=failure_path,
+                volume_id=volume_id,
+                stage=infer_failure_stage(exc),
+                error_summary=(str(exc).splitlines() or [type(exc).__name__])[0],
+                error_detail=str(exc) or repr(exc),
+                payload_file=args.output_dir
+                / f"{volume_id}_alphabetical_indices.json",
+                last_message_file=args.log_dir / volume_id / "last_message.json",
+                stdout_log_file=args.log_dir / volume_id / "stdout.log",
+                stderr_log_file=args.log_dir / volume_id / "stderr.log",
+                stream_log_file=args.log_dir / volume_id / "stream.log",
+            )
+            if not args.continue_on_error:
+                raise
+            if args.verbose and not isinstance(exc, SystemExit):
+                traceback.print_exc()
+            emit_volume_failure(
+                volume_id=volume_id,
+                collection=collection,
+                error=exc,
+            )
+            failed_volume_ids.append(volume_id)
+    if not failed_volume_ids:
+        maybe_export_web_indices(args)
+    if failed_volume_ids:
+        print(
+            json.dumps(
+                {
+                    "status": "batch-complete-with-errors",
+                    "failed_volumes": failed_volume_ids,
+                    "failed_count": len(failed_volume_ids),
+                    "total_volumes": len(volume_ids),
+                },
+                ensure_ascii=False,
+            )
+        )
+        raise SystemExit(1)
+
+
+def build_analysis_arg_parser() -> argparse.ArgumentParser:
+    ap = argparse.ArgumentParser(
+        description=(
+            "Run named, independently resumable stages of the alphabetical-index "
+            "analysis pipeline."
+        )
+    )
+    ap.add_argument("command", choices=sorted(ANALYSIS_COMMANDS))
+    ap.add_argument("--volume-id")
+    ap.add_argument("--all-volumes", action="store_true")
+    ap.add_argument("--blob")
+    ap.add_argument("--limit", type=int)
+    ap.add_argument("--root", type=Path, default=PROJECT_ROOT / "teste")
+    ap.add_argument("--analysis-db", type=Path, default=DEFAULT_ANALYSIS_DB)
+    ap.add_argument(
+        "--scripture-db",
+        type=Path,
+        default=PROJECT_ROOT / "data" / "scripture_citations.db",
+    )
+    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    ap.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
+    ap.add_argument("--log-dir", type=Path, default=DEFAULT_LOG_DIR)
+    ap.add_argument(
+        "--intermediate-root",
+        type=Path,
+        default=DEFAULT_INTERMEDIATE_ROOT,
+    )
+    ap.add_argument("--filtered-pages-json", type=Path)
+    ap.add_argument("--filtered-pages-dir", type=Path)
+    ap.add_argument("--codex-bin", default="codex")
+    ap.add_argument("--model")
+    ap.add_argument("--use-json", action="store_true")
+    ap.add_argument("--workers", type=int, default=1)
+    ap.add_argument("--locator-chunk-size", type=int, default=40)
+    ap.add_argument("--force", action="store_true")
+    ap.add_argument("--replace", action="store_true")
+    ap.add_argument("--verbose", action="store_true")
+    ap.add_argument("--status", dest="review_status")
+    ap.add_argument("--text", dest="text_query")
+    ap.add_argument("--review-limit", type=int, default=100)
+    ap.add_argument("--kind", choices=("name", "scripture"))
+    ap.add_argument("--output", type=Path)
+    return ap
+
+
+def _analysis_selected_volumes(args: argparse.Namespace) -> list[str]:
+    if args.blob and not args.all_volumes:
+        args.all_volumes = True
+    if args.all_volumes:
+        blob = args.blob or "PG*,PL*,PO*"
+        volume_ids = select_volume_ids(args.root, blob, args.limit)
+        if not volume_ids:
+            raise SystemExit(f"No volumes selected for blob {blob!r}.")
+        return volume_ids
+    if args.volume_id:
+        return [args.volume_id]
+    if args.command in {"status", "review", "export-seeds"}:
+        return []
+    raise SystemExit("Use --volume-id or --all-volumes/--blob.")
+
+
+def _analysis_agent_runner(
+    args: argparse.Namespace,
+    volume_id: str,
+) -> Any:
+    def runner(prompt: str, expected_output: Path, phase_id: str) -> None:
+        _compact_agent_runner(
+            args=args,
+            volume_id=volume_id,
+            prompt=prompt,
+            expected_output=expected_output,
+            phase_id=phase_id,
+        )
+
+    return runner
+
+
+def _analysis_read_command(
+    args: argparse.Namespace,
+    volume_ids: list[str],
+) -> bool:
+    if args.command not in {"status", "review", "export-seeds"}:
+        return False
+    if not args.analysis_db.is_file():
+        raise SystemExit(f"Analysis database not found: {args.analysis_db}")
+    with connect_analysis_db(args.analysis_db, read_only=True) as con:
+        if args.command == "status":
+            selected = volume_ids
+            if not selected:
+                selected = [
+                    str(row["volume_id"])
+                    for row in con.execute(
+                        "SELECT volume_id FROM analysis_volumes ORDER BY volume_id"
+                    ).fetchall()
+                ]
+            print(
+                json.dumps(
+                    [volume_status(con, volume_id) for volume_id in selected],
+                    ensure_ascii=False,
+                    indent=2,
+                )
+            )
+            return True
+        if args.command == "review":
+            rows = review_occurrences(
+                con,
+                volume_id=args.volume_id,
+                status=args.review_status,
+                text_query=args.text_query,
+                limit=args.review_limit,
+            )
+        else:
+            if not args.kind:
+                raise SystemExit("export-seeds requires --kind name|scripture.")
+            rows = export_seed_rows(
+                con,
+                kind=args.kind,
+                volume_id=args.volume_id,
+            )
+    serialized = json.dumps(rows, ensure_ascii=False, indent=2) + "\n"
+    if args.output:
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(serialized, encoding="utf-8")
+        print(
+            json.dumps(
+                {
+                    "status": "ok",
+                    "command": args.command,
+                    "row_count": len(rows),
+                    "written_file": str(args.output),
+                },
+                ensure_ascii=False,
+            )
+        )
+    else:
+        print(serialized, end="")
+    return True
+
+
+def run_analysis_cli(argv: list[str]) -> None:
+    args = build_analysis_arg_parser().parse_args(argv)
+    for field in (
+        "root",
+        "analysis_db",
+        "scripture_db",
+        "db",
+        "output_dir",
+        "log_dir",
+        "intermediate_root",
+        "filtered_pages_json",
+        "filtered_pages_dir",
+        "output",
+    ):
+        value = getattr(args, field)
+        if isinstance(value, Path):
+            setattr(args, field, value.expanduser().resolve())
+    if args.workers < 1:
+        raise SystemExit("--workers must be at least 1.")
+    if args.locator_chunk_size < 1:
+        raise SystemExit("--locator-chunk-size must be at least 1.")
+    volume_ids = _analysis_selected_volumes(args)
+    if _analysis_read_command(args, volume_ids):
+        return
+
+    args.output_dir.mkdir(parents=True, exist_ok=True)
+    args.log_dir.mkdir(parents=True, exist_ok=True)
+    args.intermediate_root.mkdir(parents=True, exist_ok=True)
+    with connect_analysis_db(args.analysis_db) as con:
+        init_analysis_schema(con)
+
+    commands = (
+        ["discover", "extract", "locate", "verify", "assemble"]
+        if args.command == "run"
+        else [args.command]
+    )
+    failed: list[str] = []
+    for volume_id in volume_ids:
+        try:
+            volume_root = args.root / volume_id
+            source_root = volume_root / "text"
+            info = parse_volume_info(volume_root)
+            if info is None or not source_root.is_dir():
+                raise SystemExit(f"Invalid volume source: {volume_root}")
+            collection = info.series
+            filtered_pages_file = (
+                args.output_dir / f"{volume_id}_filtered_pages.json"
+            )
+            intermediate_dir = intermediate_dir_for_volume(
+                args.intermediate_root,
+                volume_id,
+            )
+            intermediate_dir.mkdir(parents=True, exist_ok=True)
+            output_file = (
+                args.output_dir / f"{volume_id}_alphabetical_indices.json"
+            )
+            agent_runner = _analysis_agent_runner(args, volume_id)
+            summaries: list[dict[str, Any]] = []
+            for command in commands:
+                if command == "discover":
+                    filtered_pages = build_filtered_pages_artifact(
+                        args=args,
+                        volume_id=volume_id,
+                        canonical_path=filtered_pages_file,
+                    )
+                    summary = discover_stage(
+                        analysis_db=args.analysis_db,
+                        volume_id=volume_id,
+                        collection=collection,
+                        source_root=source_root,
+                        filtered_pages=filtered_pages,
+                        filtered_pages_file=filtered_pages_file,
+                        intermediate_dir=intermediate_dir,
+                        agent_runner=agent_runner,
+                        force=args.force,
+                    )
+                elif command == "extract":
+                    if not filtered_pages_file.is_file():
+                        raise SystemExit(
+                            f"discover checkpoint missing: {filtered_pages_file}"
+                        )
+                    summary = extract_stage(
+                        analysis_db=args.analysis_db,
+                        volume_id=volume_id,
+                        collection=collection,
+                        source_root=source_root,
+                        filtered_pages_file=filtered_pages_file,
+                        intermediate_dir=intermediate_dir,
+                        agent_runner=agent_runner,
+                        semantic_validator=validate_payload_file,
+                        force=args.force,
+                    )
+                elif command == "locate":
+                    summary = locate_stage(
+                        analysis_db=args.analysis_db,
+                        scripture_db=args.scripture_db,
+                        volume_id=volume_id,
+                        collection=collection,
+                        source_root=source_root,
+                        intermediate_dir=intermediate_dir,
+                        agent_runner=agent_runner,
+                        force=args.force,
+                    )
+                elif command == "verify":
+                    summary = verify_stage(
+                        analysis_db=args.analysis_db,
+                        volume_id=volume_id,
+                        source_root=source_root,
+                        intermediate_dir=intermediate_dir,
+                        agent_runner=agent_runner,
+                        workers=args.workers,
+                        shard_size=args.locator_chunk_size,
+                        force=args.force,
+                    )
+                else:
+                    summary = assemble_stage(
+                        analysis_db=args.analysis_db,
+                        volume_id=volume_id,
+                        source_root=source_root,
+                        output_file=output_file,
+                        semantic_validator=validate_payload_file,
+                        payload_importer=lambda path: import_payload(
+                            path,
+                            args.db,
+                            replace=args.replace,
+                        ),
+                        force=args.force,
+                    )
+                summaries.append(summary)
+                print(json.dumps(summary, ensure_ascii=False))
+            print(
+                json.dumps(
+                    {
+                        "status": "ok",
+                        "pipeline": "divide_to_analyze",
+                        "volume_id": volume_id,
+                        "commands": commands,
+                        "analysis_db": str(args.analysis_db),
+                        "summaries": summaries,
+                    },
+                    ensure_ascii=False,
+                )
+            )
+        except KeyboardInterrupt:
+            raise
+        except BaseException as exc:
+            if isinstance(exc, GeneratorExit):
+                raise
+            failed.append(volume_id)
+            emit_volume_failure(
+                volume_id=volume_id,
+                collection=None,
+                error=exc,
+            )
+            if not args.all_volumes:
+                raise
+    if failed:
+        raise SystemExit(1)
+
+
 def main() -> None:
+    if len(sys.argv) > 1 and sys.argv[1] in ANALYSIS_COMMANDS:
+        run_analysis_cli(sys.argv[1:])
+        return
     ap = argparse.ArgumentParser(
         description="Run one Codex extraction pass for one PG/PL/PO volume focused on alphabetical indexes."
     )
@@ -905,12 +1506,66 @@ def main() -> None:
     ap.add_argument(
         "--skip-done",
         action="store_true",
-        help="Skip volumes already imported into the alphabetical SQLite DB",
+        help=(
+            "Skip only imported volumes whose quality is valid; partial and "
+            "needs_reextract volumes are reprocessed with per-volume replacement"
+        ),
+    )
+    ap.add_argument(
+        "--redo-invalid",
+        action="store_true",
+        help=(
+            "Process only volumes whose DB quality status is needs_reextract, "
+            "replacing their existing rows"
+        ),
     )
     ap.add_argument("--db", type=Path, default=DEFAULT_DB, help="SQLite database used to detect and store imported alphabetical payloads")
-    ap.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR, help="Directory for payload and helper JSON artifacts")
+    ap.add_argument(
+        "--scripture-db",
+        type=Path,
+        default=PROJECT_ROOT / "data" / "scripture_citations.db",
+        help="Deterministic scripture-citation SQLite helper",
+    )
+    ap.add_argument(
+        "--output-dir",
+        type=Path,
+        default=DEFAULT_OUTPUT_DIR,
+        help="Directory for canonical payloads and filtered-page artifacts",
+    )
     ap.add_argument("--log-dir", type=Path, default=DEFAULT_LOG_DIR, help="Directory for persistent Codex logs")
     ap.add_argument("--intermediate-root", type=Path, default=DEFAULT_INTERMEDIATE_ROOT, help="Root directory for per-volume intermediate JSON checkpoints")
+    ap.add_argument(
+        "--legacy-single-context",
+        action="store_true",
+        help="Use the deprecated monolithic agent flow instead of the compact pipeline",
+    )
+    ap.add_argument(
+        "--max-files-per-chunk",
+        type=int,
+        default=6,
+        help="Deprecated compatibility option used only by the legacy flow",
+    )
+    ap.add_argument(
+        "--chunk-overlap",
+        type=int,
+        default=1,
+        help="Deprecated compatibility option used only by the legacy flow",
+    )
+    ap.add_argument(
+        "--chunk-workers",
+        type=int,
+        default=1,
+        help="Parallel locator agents in compact mode",
+    )
+    ap.add_argument(
+        "--locator-chunk-size",
+        type=int,
+        default=40,
+        help="Citations per compact locator-agent shard (default: 40)",
+    )
+    ap.add_argument("--evidence-sample-size", type=int, default=200)
+    ap.add_argument("--max-unverified-evidence-ratio", type=float, default=0.25)
+    ap.add_argument("--skip-evidence-check", action="store_true")
     ap.add_argument("--translate", action="store_true", help="Translate frontend-facing alphabetical index strings after import")
     ap.add_argument("--translation-languages", default="en,it,pt-br,fr", help="Comma-separated target language codes for translation")
     ap.add_argument("--translation-model", default=None, help="OpenAI model used for translation")
@@ -921,6 +1576,17 @@ def main() -> None:
     ap.add_argument("--translation-retries", type=int, default=3, help="Retry count per translation request")
     ap.add_argument("--keep-temp", action="store_true", help="Keep the last-message artifact after a successful run")
     ap.add_argument("--dry-run", action="store_true", help="Build filtered pages and prompt, then stop before calling Codex")
+    ap.add_argument(
+        "--no-export-web",
+        action="store_true",
+        help="Do not refresh the public alphabetical-index shards after a successful batch",
+    )
+    ap.add_argument(
+        "--web-alpha-out",
+        type=Path,
+        default=DEFAULT_WEB_ALPHA_OUT,
+        help="Output directory passed to tools/export_alphabetical_indices.py",
+    )
     ap.add_argument("--verbose", action="store_true", help="Stream Codex stdout/stderr live to the terminal")
     ap.add_argument(
         "--continue-on-error",
@@ -935,9 +1601,11 @@ def main() -> None:
     args.previous_result_json = resolve_path(args.previous_result_json)
     args.previous_result_dir = resolve_path(args.previous_result_dir)
     args.db = resolve_path(args.db) or args.db
+    args.scripture_db = resolve_path(args.scripture_db) or args.scripture_db
     args.output_dir = resolve_path(args.output_dir) or args.output_dir
     args.log_dir = resolve_path(args.log_dir) or args.log_dir
     args.intermediate_root = resolve_path(args.intermediate_root) or args.intermediate_root
+    args.web_alpha_out = resolve_path(args.web_alpha_out) or args.web_alpha_out
     args.translation_languages = normalize_language_list(args.translation_languages)
     args.translation_openai_api_key = args.translation_openai_api_key or os.getenv("OPENAI_API_KEY")
     args.translation_model = args.translation_model or os.getenv("OPENAI_MODEL") or "gpt-5-mini"
@@ -953,6 +1621,8 @@ def main() -> None:
 
     if args.blob and not args.all_volumes:
         args.all_volumes = True
+    if args.redo_invalid and not args.volume_id:
+        args.all_volumes = True
 
     if args.all_volumes:
         blob = args.blob or "PG*,PL*,PO*"
@@ -967,6 +1637,13 @@ def main() -> None:
     args.output_dir.mkdir(parents=True, exist_ok=True)
     args.log_dir.mkdir(parents=True, exist_ok=True)
     args.intermediate_root.mkdir(parents=True, exist_ok=True)
+
+    if args.locator_chunk_size < 1:
+        raise SystemExit("--locator-chunk-size must be at least 1.")
+
+    if not args.legacy_single_context:
+        run_compact_batch(args, volume_ids)
+        return
 
     failed_volume_ids: list[str] = []
 
@@ -991,17 +1668,38 @@ def main() -> None:
             )
             output_checkpoint_status, output_checkpoint_error = inspect_output_checkpoint(payload_file)
             db_imported = volume_already_imported(args.db, volume_id)
-            skip_extraction = args.skip_done and db_imported and not args.replace
+            quality = get_volume_quality(args.db, volume_id)
+            quality_status = (
+                str(quality.get("status") or "").strip() or None
+                if quality is not None
+                else None
+            )
+            skip_extraction, replace_for_volume, selection_reason = (
+                volume_extraction_policy(
+                    db_imported=db_imported,
+                    quality_status=quality_status,
+                    skip_done=args.skip_done,
+                    redo_invalid=args.redo_invalid,
+                    replace=args.replace,
+                )
+            )
 
-            if skip_extraction and not args.translate:
+            if args.redo_invalid and skip_extraction:
+                if quality_status is None:
+                    print(
+                        f"[WARN] {volume_id} has no volume quality assessment; "
+                        "--redo-invalid skips unassessed volumes.",
+                        file=sys.stderr,
+                    )
                 print(
                     json.dumps(
                         {
                             "status": "skipped",
-                            "reason": "already_imported",
+                            "reason": selection_reason,
                             "volume_id": volume_id,
                             "collection": collection,
                             "db": str(args.db),
+                            "quality_status": quality_status,
                             "payload_file": str(payload_file),
                             "output_checkpoint_status": output_checkpoint_status,
                         },
@@ -1010,7 +1708,25 @@ def main() -> None:
                 )
                 continue
 
-            if payload_file.exists() and output_checkpoint_status == "invalid" and not args.replace and not args.dry_run:
+            if skip_extraction and not args.translate:
+                print(
+                    json.dumps(
+                        {
+                            "status": "skipped",
+                            "reason": selection_reason,
+                            "volume_id": volume_id,
+                            "collection": collection,
+                            "db": str(args.db),
+                            "quality_status": quality_status,
+                            "payload_file": str(payload_file),
+                            "output_checkpoint_status": output_checkpoint_status,
+                        },
+                        ensure_ascii=False,
+                    )
+                )
+                continue
+
+            if payload_file.exists() and output_checkpoint_status == "invalid" and not replace_for_volume and not args.dry_run:
                 if args.verbose:
                     print(
                         f"[WARN] existing payload for {volume_id} is invalid but will be reused as previous-result checkpoint: "
@@ -1025,6 +1741,7 @@ def main() -> None:
             pipeline_scripts_dir = PROJECT_ROOT / "scripts" / "pipeline_index_extraction"
             intermediate_dir = intermediate_dir_for_volume(args.intermediate_root, volume_id)
             intermediate_dir.mkdir(parents=True, exist_ok=True)
+            workplan_json = intermediate_dir / "workplan.json"
             intermediate_files = summarize_intermediate_dir(intermediate_dir)
             last_message_path = args.output_dir / f"{volume_id}_last_message.txt"
             stdout_log_path = args.log_dir / f"{volume_id}_codex_stdout.log"
@@ -1082,11 +1799,30 @@ def main() -> None:
                         "falling back to internal heuristic prefilter."
                     )
 
+                previous_workplan = read_json(workplan_json) if workplan_json.is_file() else None
+                workplan = build_index_workplan(
+                    volume_id=volume_id,
+                    source_root=text_root,
+                    collection=collection,
+                    filtered_pages=filtered_pages,
+                    pipeline_kind="alphabetical",
+                    chunk_output_dir=intermediate_dir / "chunks",
+                    max_files_per_chunk=args.max_files_per_chunk,
+                    chunk_overlap=args.chunk_overlap,
+                )
+                workplan = reconcile_workplan_progress(workplan, previous_workplan)
+                workplan_json.write_text(
+                    json.dumps(workplan, ensure_ascii=False, indent=2) + "\n",
+                    encoding="utf-8",
+                )
+                chunks = [item for item in workplan.get("chunks") or [] if isinstance(item, dict)]
+
                 prompt = build_prompt(
                     volume_id=volume_id,
                     source_root=text_root,
                     collection=collection,
                     filtered_pages_file=filtered_pages_file,
+                    workplan_json=workplan_json,
                     previous_payload=previous_payload_file,
                     previous_result_source=previous_result_source,
                     output_checkpoint_status=output_checkpoint_status,
@@ -1098,7 +1834,6 @@ def main() -> None:
                     intermediate_dir=intermediate_dir,
                     output_file=payload_file,
                 )
-
                 if args.dry_run:
                     prompt_path = args.output_dir / f"{volume_id}_prompt.txt"
                     prompt_path.write_text(prompt, encoding="utf-8")
@@ -1249,9 +1984,16 @@ def main() -> None:
                         stream_log_file=stream_log_path,
                     )
                     raise
+                write_pipeline_quality_reports(
+                    payload_file=payload_file,
+                    intermediate_dir=intermediate_dir,
+                    evidence_sample_size=args.evidence_sample_size,
+                    max_unverified_ratio=args.max_unverified_evidence_ratio,
+                    skip_evidence_check=args.skip_evidence_check or not chunks,
+                )
                 has_partial_coverage, coverage_status, coverage_reason = inspect_payload_coverage(payload_file)
                 try:
-                    import_payload(payload_file, args.db, replace=args.replace)
+                    import_payload(payload_file, args.db, replace=replace_for_volume)
                 except SystemExit as exc:
                     write_previous_failure(
                         path=failure_path,
@@ -1305,6 +2047,9 @@ def main() -> None:
                         "db": str(args.db),
                         "imported": not skip_extraction,
                         "extraction_skipped": skip_extraction,
+                        "selection_reason": selection_reason,
+                        "quality_status_before_run": quality_status,
+                        "replace_for_volume": replace_for_volume,
                         "filtered_pages_source": filtered_source,
                         "previous_result_source": previous_result_source,
                         "previous_result_file": str(previous_payload_file),
@@ -1339,7 +2084,22 @@ def main() -> None:
                 last_message_path.unlink(missing_ok=True)
         except KeyboardInterrupt:
             raise
-        except Exception as exc:
+        except BaseException as exc:
+            if isinstance(exc, GeneratorExit):
+                raise
+            failure_path = previous_failure_path(args.output_dir, volume_id)
+            write_previous_failure(
+                path=failure_path,
+                volume_id=volume_id,
+                stage=infer_failure_stage(exc),
+                error_summary=(str(exc).splitlines() or [type(exc).__name__])[0],
+                error_detail=str(exc) or repr(exc),
+                payload_file=args.output_dir / f"{volume_id}_alphabetical_indices.json",
+                last_message_file=args.output_dir / f"{volume_id}_last_message.txt",
+                stdout_log_file=args.log_dir / f"{volume_id}_codex_stdout.log",
+                stderr_log_file=args.log_dir / f"{volume_id}_codex_stderr.log",
+                stream_log_file=args.log_dir / f"{volume_id}_codex_stream.log",
+            )
             if not args.continue_on_error:
                 raise
             if args.verbose and not isinstance(exc, SystemExit):
@@ -1348,6 +2108,8 @@ def main() -> None:
             failed_volume_ids.append(volume_id)
             continue
 
+    if not failed_volume_ids:
+        maybe_export_web_indices(args)
     if failed_volume_ids:
         print(
             json.dumps(
