@@ -104,7 +104,9 @@
   - o schema usa `alphabetical_volumes`, `alphabetical_sections`, `alphabetical_nodes`, `alphabetical_entries`, `alphabetical_refs`, `alphabetical_scripture_refs` e `alphabetical_runs`
 - **Contrato de saída**:
   - payload JSON com top-level `schema_version`, `generated_at`, `volume`, `sections`, `nodes`, `entries`, `refs`, `scripture_refs`, `coverage`, `notes`
-  - `section_start_file`, `editorial_anchor_file` e `target_file_best` permanecem conceitualmente distintos
+  - os aliases legados `section_start_file`, `editorial_anchor_file` e `target_file_best`
+    permanecem distintos; no banco v8 use `index_section_start_ocr_file`,
+    `index_entry_source_ocr_file` e `resolved_target_ocr_file`
   - o helper não decide o payload final; sua evidência deve ser preservada em `raw_json`
 - **Flags úteis**:
   - seleção: `--volume-id`, `--all-volumes`, `--blob`, `--limit`

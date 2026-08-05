@@ -30,6 +30,7 @@ from patristica_pipeline.index_fragment_assembly import (
     verify_payload_consumes_fragments,
 )
 from patristica_pipeline.index_payload_evidence import verify_index_payload_evidence
+from patristica_pipeline.index_work_anchor_reconciler import reconcile_work_anchors
 from patristica_pipeline.index_workplan import build_index_workplan, reconcile_workplan_progress
 from patristica_pipeline.index_chunk_driver import run_index_chunk_agents
 
@@ -210,6 +211,13 @@ def build_existing_payload_prompt_block(payload_file: Path, volume_id: str) -> s
     works = payload.get("works") if isinstance(payload, dict) else []
     sections = payload.get("sections") if isinstance(payload, dict) else []
     notes = payload.get("notes") if isinstance(payload, dict) else []
+    rerun_count = sum(
+        1
+        for work in works
+        if isinstance(work, dict)
+        and isinstance(work.get("raw_json"), dict)
+        and isinstance(work["raw_json"].get("work_anchor_rerun"), dict)
+    ) if isinstance(works, list) else "invalid"
     entry_count = sum(
         len(section.get("entries") or [])
         for section in sections
@@ -222,6 +230,7 @@ def build_existing_payload_prompt_block(payload_file: Path, volume_id: str) -> s
             f"- sections: {len(sections) if isinstance(sections, list) else 'invalid'}",
             f"- entries: {entry_count if isinstance(sections, list) else 'invalid'}",
             f"- notes: {len(notes) if isinstance(notes, list) else 'invalid'}",
+            f"- pending work-anchor reruns: {rerun_count}",
             "- Read the existing file directly if you need the full prior payload.",
             "- The embedded excerpt below is intentionally truncated to keep the prompt under the input limit.",
         ]
@@ -240,6 +249,55 @@ def build_existing_payload_prompt_block(payload_file: Path, volume_id: str) -> s
         ]
     )
     return "\n".join(line for line in payload_summary if line != "")
+
+
+def build_work_anchor_rerun_prompt_block(
+    payload: dict[str, Any],
+    volume_id: str,
+) -> str | None:
+    pending: list[dict[str, Any]] = []
+    for work in payload.get("works") or []:
+        if not isinstance(work, dict):
+            continue
+        raw_json = work.get("raw_json")
+        marker = (
+            raw_json.get("work_anchor_rerun")
+            if isinstance(raw_json, dict)
+            else None
+        )
+        if not isinstance(marker, dict):
+            continue
+        pending.append(
+            {
+                "work_key": work.get("work_key"),
+                "title_raw": work.get("title_raw"),
+                "start_page": work.get("start_page"),
+                "start_file": work.get("start_file"),
+                "rerun": marker,
+            }
+        )
+    if not pending:
+        return None
+    return (
+        "### WORK ANCHOR RERUN\n"
+        f"The previous {volume_id} payload contains {len(pending)} work anchor(s) "
+        "marked for agent review.\n"
+        "- Process every item below against OCR inside the current source_root.\n"
+        "- Inspect competing files and neighboring pages; do not accept helper ranking alone.\n"
+        "- A fuzzy/Levenshtein title hit is positive evidence, not a final decision.\n"
+        "- Reject target occurrences in ORDO/ELENCHUS lists, catalogues, prefatory inventories, and closing indexes.\n"
+        "- Assemble a logical header from all header blocks; page numbers may be attached to title text or emitted in separate OCR/XML blocks.\n"
+        "- A similar header on at least four files, allowing up to three missing/corrupt headers, is probable body-range evidence, not an exact title-page or ending boundary.\n"
+        "- Distinguish a direct title page/opening from a repeated running header and inspect both edges of any recurring-header range.\n"
+        "- Use editorial numbers only as secondary evidence and account for two-page scans, columns, and adjacent works sharing one scan.\n"
+        "- Preserve a declared page inside an estimator facing-page pair unless layout or direct text evidence resolves the side.\n"
+        "- Do not set end_page to next_start - 1, infer end_file from editorial numbers alone, or accept start_page > end_page.\n"
+        "- Do not force a single local anchor for composite containers. Pure external `Vide ... tom.` remissions keep a null local target and their raw reference evidence.\n"
+        "- Process any nested anchor_locator_review as part of the same mandatory review.\n"
+        "- If resolved, update the work anchor and remove raw_json.work_anchor_rerun.\n"
+        "- If direct evidence remains tied, preserve the marker with status=ambiguous.\n\n"
+        + json.dumps(pending, ensure_ascii=False, indent=2)
+    )
 
 
 def load_failure_artifact(path: Path) -> dict[str, Any] | None:
@@ -552,6 +610,28 @@ def validate_payload(payload: dict[str, Any], volume_id: str, expected_file: Pat
         raise SystemExit("Payload 'works' must be a list.")
     if not isinstance(payload.get("sections"), list):
         raise SystemExit("Payload 'sections' must be a list.")
+    works = payload.get("works") or []
+    invalid_work_ranges: list[str] = []
+    for index, work in enumerate(works):
+        if not isinstance(work, dict):
+            raise SystemExit("Each item in payload 'works' must be an object.")
+        start_page = work.get("start_page")
+        end_page = work.get("end_page")
+        if (
+            isinstance(start_page, int)
+            and not isinstance(start_page, bool)
+            and isinstance(end_page, int)
+            and not isinstance(end_page, bool)
+            and start_page > end_page
+        ):
+            invalid_work_ranges.append(
+                str(work.get("work_key") or f"works[{index}]")
+            )
+    if invalid_work_ranges:
+        raise SystemExit(
+            "Works have impossible editorial page ranges (start_page > end_page): "
+            + ", ".join(invalid_work_ranges[:10])
+        )
     sections = payload.get("sections") or []
     total_entries = 0
     suspicious_empty_sections: list[str] = []
@@ -780,14 +860,27 @@ def main() -> None:
     ap.add_argument("--max-files-per-chunk", type=int, default=6)
     ap.add_argument("--chunk-overlap", type=int, default=1)
     ap.add_argument("--chunk-workers", type=int, default=1)
+    ap.add_argument(
+        "--helper-workers",
+        type=int,
+        default=12,
+        help="CPU processes for deterministic target localization (default: 12; no fixed upper limit)",
+    )
     ap.add_argument("--evidence-sample-size", type=int, default=200)
     ap.add_argument("--max-unverified-evidence-ratio", type=float, default=0.25)
     ap.add_argument("--skip-evidence-check", action="store_true")
+    ap.add_argument(
+        "--skip-work-anchor-reconciliation",
+        action="store_true",
+        help="Do not audit, annotate, or repair suspicious work page/file anchors before validation and import",
+    )
     ap.add_argument("--continue-on-error", action="store_true")
     ap.add_argument("--keep-temp", action="store_true", help="Keep the temporary prescan JSON file")
     ap.add_argument("--dry-run", action="store_true", help="Build prescan and prompt, then stop before calling Codex")
     ap.add_argument("--verbose", action="store_true", help="Stream Codex stdout/stderr live to the terminal")
     args = ap.parse_args()
+    if args.helper_workers < 1:
+        raise SystemExit("--helper-workers must be at least 1")
 
     if args.blob and not args.all_volumes:
         args.all_volumes = True
@@ -840,6 +933,14 @@ def main() -> None:
         workplan_path = intermediate_dir / "workplan.json"
         assembled_path = intermediate_dir / "assembled_fragments.json"
         failure_path = failure_artifact_path(args.output_dir, volume_id)
+        existing_payload_for_prompt: dict[str, Any] | None = None
+        if payload_file.is_file():
+            try:
+                candidate_payload = read_json(payload_file)
+                if isinstance(candidate_payload, dict):
+                    existing_payload_for_prompt = candidate_payload
+            except (OSError, json.JSONDecodeError):
+                pass
         existing_payload, checkpoint_validation_failure = prevalidate_existing_payload(
             payload_file,
             volume_id,
@@ -902,6 +1003,7 @@ def main() -> None:
                 filtered_pages=filtered,
                 helper_request_json=helper_request_path,
                 workplan=workplan,
+                workers=args.helper_workers,
             )
             if not helper_request_path.exists():
                 write_json(helper_request_path, helper_request)
@@ -946,6 +1048,13 @@ def main() -> None:
             previous_failure = load_failure_artifact(failure_path)
             if payload_file.exists():
                 prompt += "\n\n" + build_existing_payload_prompt_block(payload_file, volume_id)
+            if existing_payload_for_prompt is not None:
+                anchor_rerun_block = build_work_anchor_rerun_prompt_block(
+                    existing_payload_for_prompt,
+                    volume_id,
+                )
+                if anchor_rerun_block:
+                    prompt += "\n\n" + anchor_rerun_block
             if previous_failure:
                 prompt += "\n\n" + build_previous_failure_prompt_block(volume_id, previous_failure)
             if checkpoint_validation_failure:
@@ -989,6 +1098,17 @@ def main() -> None:
             emit_stage(verbose=args.verbose, volume_id=volume_id, volume_index=idx, volume_total=len(volume_ids), stage_index=10, status="DONE", label="validate acknowledgment", progress_log=progress_log)
 
             payload = read_json(payload_file)
+            if not args.skip_work_anchor_reconciliation:
+                work_anchor_report = reconcile_work_anchors(
+                    payload,
+                    editorial_pages=editorial,
+                )
+                write_json(
+                    intermediate_dir / "work_anchor_reconciliation_report.json",
+                    work_anchor_report,
+                )
+                if int(work_anchor_report.get("payload_mutation_count") or 0):
+                    write_json(payload_file, payload)
             validate_payload(payload, volume_id, payload_file)
             write_pipeline_quality_reports(
                 payload_file=payload_file,

@@ -11,10 +11,12 @@ The prompt must be machine-generated and contain these blocks in this order:
 2. `VOLUME`
 3. `NUMBERING GLOSSARY`
 4. `PRESCAN`
-5. `WORK INSTRUCTIONS`
-6. `TODO`
-7. `OUTPUT FILE`
-8. `FINAL RESPONSE`
+5. `LOCALIZATION ARTIFACTS`
+6. `WORK INSTRUCTIONS`
+7. `OCR READING`
+8. `TODO`
+9. `OUTPUT FILE`
+10. `FINAL RESPONSE`
 
 ## Suggested template
 
@@ -55,20 +57,36 @@ WORK INSTRUCTIONS
 - Search the whole volume if needed, but do not skip the hinted pages.
 - Treat printed numbers inside OCR as weak clues only; CER and page wear often corrupt digits.
 - Prefer text anchors such as titles, repeated headers, author names, and distinctive opening phrases over numeric literals.
+- Treat an exact or Levenshtein/fuzzy phrase occurrence as additive evidence; a hit in an `ORDO`,
+  `ELENCHUS`, catalogue, prefatory inventory, or closing index is not the work target.
+- Compare one logical header assembled from all header blocks on a page; numeric tokens may be
+  attached to the title text or emitted in separate OCR/XML blocks.
+- A similar logical header on at least four files, with up to three missing/corrupt intervening
+  headers, is evidence for a probable body range. Inspect the range edges and neighboring files;
+  do not assume its first file is the title page.
+- Preserve a declared page that belongs to an estimator facing-page pair unless layout or direct
+  text evidence identifies the side.
+- Adjacent works may share a scan or editorial page. Do not set `end_page = next_start - 1`, infer
+  `end_file` from editorial numbers alone, or accept `start_page > end_page`.
+- Do not force local anchors for composite containers or external `Vide ... tom.` remissions.
 - Scope local searches to the current volume path only. Example: `rg -n -S "STRING" teste/PG001/text`.
 - When ligatures may have been flattened by OCR, search both forms inside the same volume. Example: `rg -n -S "GRÆCITATIS|GRAECITATIS" teste/PG001/text`.
 - Keep OCR literals.
 - Before saving the final JSON, validate referential integrity: every non-null `sections[].work_key` must exactly match one `works[].work_key` from the same payload.
 - Apply the collection-specific taxonomy from `references/volume-taxonomy.md`.
 - For each work, inspect the opening pages and the work index before naming the work.
-- Inspect the closing pages for final indexes.
+- Do not extract closing alphabetical, analytical, onomastic, scripture, citation, concordance, or
+  cross-reference indexes; they belong to the alphabetical-index pipeline.
+- Process every `work_anchor_rerun` or nested `anchor_locator_review`; remove it only after direct
+  OCR evidence resolves the anchor, otherwise preserve it as ambiguous/unresolved.
 - If a number is uncertain, keep the raw literal and lower confidence.
 
 TODO
 - [ ] Verify the front index and record its scope.
 - [ ] Build one TODO item per discovered work.
 - [ ] For each work TODO item, verify the opening pages and the work-level index.
-- [ ] Verify all closing indexes at the end of the volume.
+- [ ] Leave closing alphabetical and citation-related indexes to the alphabetical-index pipeline.
+- [ ] Resolve or preserve every work-anchor rerun marker.
 - [ ] Recheck uncertain page numbers, columns, and OCR digits before finalizing.
 
 OUTPUT FILE
@@ -87,6 +105,8 @@ FINAL RESPONSE
 - The driver should describe filename-derived locators in `PRESCAN` as OCR files or file suffixes, not as editorial pages.
 - The driver should not ask the model to discover the obvious file structure from scratch.
 - The driver should not send a generic prompt without the pre-scan block.
+- When an existing payload contains `work_anchor_rerun` or `anchor_locator_review`, the driver
+  should append a `WORK ANCHOR RERUN` block and require every listed work to be inspected.
 - The driver should read the output file from disk and ingest it with `.codex/skills/patristic-index-extractor/scripts/import_index_json.py` or the compatibility wrapper `scripts/import_index_json.py`.
 - For `PO`, the prompt should make clear whether the volume uses tome-level tables, fascicle inventories, or retrospective tables if the prescan already discovered them.
 - Until the helper scripts are updated, `PO` prompts may contain incomplete heading detection; the model should treat `PRESCAN` as hints, not as complete coverage.

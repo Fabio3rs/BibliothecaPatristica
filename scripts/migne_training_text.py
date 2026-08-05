@@ -18,6 +18,7 @@ Uso:
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 import html
 import random
 import re
@@ -27,6 +28,7 @@ import unicodedata
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, List
+from multiprocessing import Pool, cpu_count
 import xml.etree.ElementTree as ET
 
 
@@ -69,6 +71,24 @@ _HTML_TAG_RE = re.compile(r"</?(?:br|p|div|span|sup|sub|i|b|em|strong|small|font
 _HTML_ENTITY_RE = re.compile(r"&(nbsp|amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);")
 _BROKEN_TAG_RE = re.compile(r"</?[A-Za-z][A-Za-z0-9:-]*(?:\s[^>]*)?>")
 _ANGLE_MARKUP_RE = re.compile(r"<\/?[A-Za-z][^>]{0,80}>")
+_DB_BATCH_SIZE = 1000
+
+
+@dataclass(frozen=True)
+class WorkerConfig:
+    db_path: str
+    text_column: str
+    max_units: int
+    unlimited: bool
+    min_alpha_ratio: float
+    banned_chars: frozenset[str]
+    allow_list_symbols: bool
+    no_rtl: bool
+    valid_chars: frozenset[str]
+    greek_mixed_only: bool
+
+
+_WORKER_CFG: WorkerConfig | None = None
 
 
 def iter_grapheme_clusters(text: str):
@@ -271,6 +291,120 @@ def classify_unicode_script(text: str) -> str:
 class PrioritizedLine:
     text: str
     script: str
+
+
+def _iter_rowid_batches(rowids: list[int], batch_size: int) -> Iterable[tuple[int, ...]]:
+    for i in range(0, len(rowids), batch_size):
+        yield tuple(rowids[i:i + batch_size])
+
+
+def _init_worker(
+    db_path: str,
+    text_column: str,
+    max_units: int,
+    unlimited: bool,
+    min_alpha_ratio: float,
+    banned_chars: tuple[str, ...],
+    allow_list_symbols: bool,
+    no_rtl: bool,
+    valid_chars: tuple[str, ...],
+    greek_mixed_only: bool,
+) -> None:
+    global _WORKER_CFG
+    _WORKER_CFG = WorkerConfig(
+        db_path=db_path,
+        text_column=text_column,
+        max_units=max_units,
+        unlimited=unlimited,
+        min_alpha_ratio=min_alpha_ratio,
+        banned_chars=frozenset(banned_chars),
+        allow_list_symbols=allow_list_symbols,
+        no_rtl=no_rtl,
+        valid_chars=frozenset(valid_chars),
+        greek_mixed_only=greek_mixed_only,
+    )
+
+
+def _accept_line_worker(text: str, warning_counts: Counter[str]) -> str | None:
+    cfg = _WORKER_CFG
+    if cfg is None:
+        raise RuntimeError("Worker not initialized")
+
+    line = cleanup_line(text)
+    if line is None:
+        return None
+    alpha_count = sum(ch.isalpha() for ch in line)
+    ratio = alpha_count / max(1, len(line))
+    if ratio < cfg.min_alpha_ratio:
+        return None
+
+    if cfg.banned_chars and has_banned_char(line, cfg.banned_chars):
+        if not (cfg.allow_list_symbols and any(sym in line for sym in _BULLETISH)):
+            return None
+
+    if cfg.no_rtl and has_rtl_char(line):
+        return None
+
+    if cfg.valid_chars:
+        bad = [
+            cluster
+            for cluster in iter_grapheme_clusters(line)
+            if cluster != " " and cluster not in cfg.valid_chars
+        ]
+        if bad:
+            for cluster in bad:
+                warning_counts[cluster] += 1
+            return None
+
+    if cfg.greek_mixed_only and not is_greek_or_mixed(classify_unicode_script(line)):
+        return None
+
+    return line
+
+
+def _process_rowid_batch(rowids: tuple[int, ...]) -> tuple[list[str], dict[str, int]]:
+    cfg = _WORKER_CFG
+    if cfg is None:
+        raise RuntimeError("Worker not initialized")
+    if not rowids:
+        return [], {}
+
+    db_uri = f"file:{cfg.db_path}?mode=ro"
+    conn = sqlite3.connect(db_uri, uri=True)
+    conn.execute("PRAGMA query_only = ON")
+    conn.execute("PRAGMA busy_timeout = 30000")
+
+    lines: list[str] = []
+    unicharset_warnings: Counter[str] = Counter()
+
+    try:
+        placeholders = ",".join("?" * len(rowids))
+        sql = f"SELECT {cfg.text_column} FROM ocr_results WHERE rowid IN ({placeholders})"
+        cur = conn.execute(sql, rowids)
+        for (xml_blob,) in cur:
+            if not xml_blob:
+                continue
+            blocks = parse_page_xml_from_string(xml_blob, source="db")
+            for b in blocks:
+                text = b.get("text", "")
+                for raw in extract_lines_from_text(text):
+                    raw_norm = _accept_line_worker(raw, unicharset_warnings)
+                    if raw_norm is None:
+                        continue
+                    if cfg.unlimited:
+                        lines.append(raw_norm)
+                        continue
+                    pieces = wrap_line_by_units(raw_norm, cfg.max_units)
+                    for p2 in pieces:
+                        if estimated_width(p2) < 6:
+                            continue
+                        if _accept_line_worker(p2, unicharset_warnings) is None:
+                            continue
+                        lines.append(p2)
+    finally:
+        conn.close()
+
+    return lines, dict(unicharset_warnings)
 
 
 def load_charfreq(charfreq_path: Path, min_count: int) -> set[str]:
@@ -705,6 +839,12 @@ def main() -> None:
         help="Remove linhas que contenham chars com contagem < N no charfreq (padrão: 10)",
     )
     parser.add_argument(
+        "--workers",
+        type=int,
+        default=1,
+        help="Numero de workers de processamento do DB (0 = igual ao numero de CPUs)",
+    )
+    parser.add_argument(
         "--no-rtl",
         action="store_true",
         help="Remove linhas que contenham caracteres de escrita RTL (árabe, hebraico, etc.)",
@@ -862,43 +1002,107 @@ def main() -> None:
 
     # 2) Em seguida, completa com textos do DB (se existir)
     if db_path.exists():
-        conn = sqlite3.connect(str(db_path))
-        cur = conn.cursor()
+        worker_count = args.workers
+        if worker_count == 0:
+            worker_count = max(1, cpu_count() or 1)
 
-        q = "SELECT * FROM ocr_results WHERE is_current = 1"
-        if args.limit:
-            q += f" LIMIT {int(args.limit)}"
-        cursor = cur.execute(q)
+        db_uri = f"file:{db_path}?mode=ro"
+        conn = sqlite3.connect(db_uri, uri=True)
+        try:
+            cols = [row[1] for row in conn.execute("PRAGMA table_info(ocr_results)")]
+        finally:
+            conn.close()
 
-        # descobrir índice da coluna 'text' ou 'text_content'
-        cols = [c[0] for c in cursor.description]
-        has_text_col = "text" in cols
-        has_text_content = "text_content" in cols
+        if "text_content" in cols:
+            text_column = "text_content"
+        elif "text" in cols:
+            text_column = "text"
+        else:
+            print("[erro] coluna text/text_content não encontrada em ocr_results")
+            return
 
-        for row in cursor:
-            n_rows += 1
-            # o campo 'text' contém o XML anotado — parseá-lo
-            xml_blob = row[cols.index("text_content")]
-            blocks = parse_page_xml_from_string(xml_blob, source="db")
-            for b in blocks:
-                text = b.get("text", "")
-                for raw in extract_lines_from_text(text):
-                    raw_norm = accept_line(raw)
-                    if raw_norm is None:
+        limit_clause = f" LIMIT {int(args.limit)}" if args.limit else ""
+        conn = sqlite3.connect(db_uri, uri=True)
+        try:
+            rowids = [
+                row[0]
+                for row in conn.execute(
+                    f"SELECT rowid FROM ocr_results WHERE is_current = 1{limit_clause}"
+                )
+            ]
+        finally:
+            conn.close()
+
+        n_rows += len(rowids)
+
+        if not rowids:
+            pass
+        elif worker_count <= 1:
+            conn = sqlite3.connect(db_uri, uri=True)
+            conn.execute("PRAGMA query_only = ON")
+            conn.execute("PRAGMA busy_timeout = 30000")
+            try:
+                cursor = conn.execute(
+                    f"SELECT {text_column} FROM ocr_results WHERE is_current = 1{limit_clause}"
+                )
+                for row in cursor:
+                    xml_blob = row[0]
+                    if not xml_blob:
                         continue
-                    if args.unlimited:
-                        add_line(raw_norm)
-                    else:
-                        pieces = wrap_line_by_units(raw_norm, args.max_units)
-                        for p2 in pieces:
-                            if estimated_width(p2) < 6:
+                    blocks = parse_page_xml_from_string(xml_blob, source="db")
+                    for b in blocks:
+                        text = b.get("text", "")
+                        for raw in extract_lines_from_text(text):
+                            raw_norm = accept_line(raw)
+                            if raw_norm is None:
                                 continue
-                            if accept_line(p2) is None:
-                                continue
-                            add_line(p2)
-            continue
-
-        conn.close()
+                            if args.unlimited:
+                                add_line(raw_norm)
+                            else:
+                                pieces = wrap_line_by_units(raw_norm, args.max_units)
+                                for p2 in pieces:
+                                    if estimated_width(p2) < 6:
+                                        continue
+                                    if accept_line(p2) is None:
+                                        continue
+                                    add_line(p2)
+            finally:
+                conn.close()
+        else:
+            worker_count = min(worker_count, len(rowids))
+            with Pool(
+                processes=worker_count,
+                initializer=_init_worker,
+                initargs=(
+                    str(db_path.resolve()),
+                    text_column,
+                    args.max_units,
+                    args.unlimited,
+                    args.min_alpha_ratio,
+                    tuple(banned_chars),
+                    args.allow_list_symbols,
+                    args.no_rtl,
+                    tuple(valid_chars),
+                    args.greek_mixed_only,
+                ),
+            ) as pool:
+                for batch_lines, batch_warnings in pool.imap_unordered(
+                    _process_rowid_batch,
+                    _iter_rowid_batches(rowids, _DB_BATCH_SIZE),
+                ):
+                    for line in batch_lines:
+                        if args.prioritize_greek_mixed:
+                            prioritized_lines.append(
+                                PrioritizedLine(
+                                    text=line, script=classify_unicode_script(line)
+                                )
+                            )
+                        else:
+                            lines.append(line)
+                    for cluster, count in batch_warnings.items():
+                        unicharset_warnings[cluster] = (
+                            unicharset_warnings.get(cluster, 0) + count
+                        )
 
     flush_prioritized_lines()
 

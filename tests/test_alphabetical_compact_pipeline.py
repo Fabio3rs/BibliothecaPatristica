@@ -16,6 +16,7 @@ from patristica_pipeline.alphabetical_compact_pipeline import (
     build_repair_request,
     coerce_semantic_payload,
     merge_repair_results,
+    shard_repair_request,
     shard_locator_items,
     validate_locator_results,
 )
@@ -126,6 +127,83 @@ def test_coerce_accepts_canonical_fragments_and_explicit_lists() -> None:
         "coverage",
         "notes",
     }
+
+
+def test_locator_item_exposes_unambiguous_coordinate_contract() -> None:
+    payload = semantic_payload(ref_count=1)
+    payload["sections"][0].update(
+        {
+            "file_start": "/corpus/PL001/text/index-900.txt",
+            "file_end": "/corpus/PL001/text/index-905.txt",
+        }
+    )
+    payload["entries"][0]["editorial_anchor_file"] = (
+        "/corpus/PL001/text/index-901.txt"
+    )
+
+    item = build_locator_items(payload)[0]
+    contract = item["locator_contract"]
+
+    assert item["locator_format_version"] == 2
+    assert contract["index_source"]["index_entry_source_ocr_file"].endswith(
+        "index-901.txt"
+    )
+    assert contract["cited_location"][
+        "cited_editorial_page_start_number"
+    ] == 101
+    assert contract["target_resolution"]["status"] == "pending"
+    assert "resolved_target_ocr_file" not in contract["index_source"]
+
+
+def test_page_less_work_locator_can_resolve_from_strict_three_signal_bundle() -> None:
+    item = {
+        "locator_key": "PG003:e1::ref:000001",
+        "entry_key": "PG003:e1",
+        "ref_order": 1,
+        "ref_kind": "target_locator",
+        "ref_raw": "Myst. Theol. cap. 2",
+        "cited_pages": [],
+        "candidates": [
+            {
+                "file": "/corpus/PG003/text/work-010.txt",
+                "probability": 0.96,
+                "helper_status": "resolved",
+                "helper_is_best": True,
+                "candidate_role": "target_candidate",
+                "evidence": [
+                    {"kind": "body_work_locator_match"},
+                    {"kind": "work_locator_number_cooccurrence"},
+                    {"kind": "section_heading_family_match"},
+                ],
+            }
+        ],
+    }
+
+    resolved_items, pending = build_deterministic_locator_results([item])
+
+    assert pending == []
+    assert resolved_items[0]["target_file"].endswith("work-010.txt")
+    report = validate_locator_results([item], resolved_items)
+    assert report["status"] == "ok"
+
+
+def test_repair_request_is_checkpointable_in_bounded_shards() -> None:
+    request = {
+        "schema_version": 1,
+        "items": [
+            {"locator": {"entry_key": f"e{index}", "ref_order": 1}}
+            for index in range(5)
+        ],
+    }
+
+    shards = shard_repair_request(request, shard_size=2)
+
+    assert [shard["item_count"] for shard in shards] == [2, 2, 1]
+    assert [shard["repair_shard_id"] for shard in shards] == [
+        "repair-0001",
+        "repair-0002",
+        "repair-0003",
+    ]
 
 
 @pytest.mark.parametrize(
@@ -368,6 +446,166 @@ def test_deterministic_locator_keeps_competing_dual_candidates_pending() -> None
     assert len(pending) == 1
 
 
+def test_deterministic_locator_resolves_unique_generic_dual_evidence() -> None:
+    item = {
+        "entry_key": "VOL:index:e1",
+        "ref_order": 1,
+        "scripture_ref": None,
+        "candidates": [
+            {
+                "file": "/corpus/page-001.txt",
+                "probability": 0.96,
+                "candidate_role": "target_candidate",
+                "helper_status": "resolved",
+                "helper_is_best": True,
+                "evidence": [
+                    {"kind": "inferred_page_match", "raw": "101"},
+                    {"kind": "body_name_match", "raw": "Aaron"},
+                ],
+            }
+        ],
+    }
+
+    resolved_results, pending = build_deterministic_locator_results([item])
+
+    assert pending == []
+    assert resolved_results[0]["target_file"] == "/corpus/page-001.txt"
+    assert resolved_results[0]["evidence"][-1]["kind"] == (
+        "deterministic_dual_evidence"
+    )
+
+
+def test_deterministic_locator_keeps_generic_numeric_only_candidate_pending() -> None:
+    item = {
+        "entry_key": "VOL:index:e1",
+        "ref_order": 1,
+        "scripture_ref": None,
+        "candidates": [
+            {
+                "file": "/corpus/page-001.txt",
+                "probability": 0.99,
+                "candidate_role": "target_candidate",
+                "helper_status": "resolved",
+                "helper_is_best": True,
+                "evidence": [{"kind": "inferred_page_match", "raw": "101"}],
+            }
+        ],
+    }
+
+    resolved_results, pending = build_deterministic_locator_results([item])
+
+    assert resolved_results == []
+    assert len(pending) == 1
+
+
+def test_deterministic_locator_accepts_unique_internal_name_locator_pair() -> None:
+    item = {
+        "entry_key": "VOL:index:e1",
+        "ref_order": 1,
+        "scripture_ref": None,
+        "candidates": [
+            {
+                "file": "/corpus/page-001.txt",
+                "probability": 0.88,
+                "candidate_role": "target_candidate",
+                "helper_status": "resolved",
+                "helper_is_best": True,
+                "evidence": [
+                    {"kind": "body_locator_match", "raw": "114"},
+                    {
+                        "kind": "body_locator_name_unique",
+                        "raw": "Gregorius + 114",
+                    },
+                    {
+                        "kind": "internal_locator_vs_editorial_sequence",
+                        "raw": "114 vs 153-154 with neighbor_fit",
+                    },
+                    {"kind": "body_name_match", "raw": "Gregorius"},
+                ],
+            }
+        ],
+    }
+
+    resolved_results, pending = build_deterministic_locator_results([item])
+
+    assert pending == []
+    assert resolved_results[0]["target_file"] == "/corpus/page-001.txt"
+
+
+def test_deterministic_locator_keeps_crossed_name_hints_as_region_evidence() -> None:
+    item = {
+        "entry_key": "VOL:index:e1",
+        "ref_order": 1,
+        "scripture_ref": None,
+        "candidates": [
+            {
+                "file": "/corpus/work-a-001.txt",
+                "probability": 0.97,
+                "candidate_role": "target_candidate",
+                "helper_status": "resolved",
+                "helper_is_best": True,
+                "evidence": [
+                    {"kind": "body_name_match", "raw": "Gregorius"},
+                    {
+                        "kind": "onomastic_neighbor_cohort_unique",
+                        "raw": "Zacharias + Stephanus in the same local family",
+                    },
+                ],
+            }
+        ],
+    }
+
+    resolved_results, pending = build_deterministic_locator_results([item])
+
+    assert resolved_results == []
+    assert len(pending) == 1
+
+
+def test_semantic_coercion_applies_only_forced_mechanical_repairs() -> None:
+    payload = semantic_payload(ref_count=2)
+    payload["entries"][0]["entry_kind"] = "scripture_citation"
+    payload["refs"][0].update(
+        {
+            "page_ref_raw": "101",
+            "page_ref_int": None,
+            "scripture_ref_order": None,
+            "target_file": "/premature.txt",
+            "target_file_probability": 0.8,
+        }
+    )
+    payload["refs"][1].update(
+        {
+            "ref_raw": "ibid.",
+            "page_ref_raw": "ibid.",
+            "page_ref_int": None,
+            "scripture_ref_order": None,
+        }
+    )
+    payload["scripture_refs"] = [
+        {
+            "entry_key": "VOL:index:e1",
+            "ref_order": 1,
+            "ref_role": "citation",
+            "ref_raw": "Gen. 1, 1",
+        }
+    ]
+
+    coerced = coerce_semantic_payload(payload)
+
+    assert coerced["entries"][0]["target_file_best"] is None
+    assert coerced["refs"][0]["page_ref_int"] == 101
+    assert coerced["refs"][0]["target_file"] is None
+    assert coerced["refs"][0]["scripture_ref_order"] == 1
+    assert coerced["refs"][1]["page_ref_int"] == 101
+    assert coerced["refs"][1]["scripture_ref_order"] == 1
+    repair_kinds = {
+        repair["kind"]
+        for repair in coerced["refs"][1]["raw_json"]["deterministic_repairs"]
+    }
+    assert "resolve_immediate_ibid" in repair_kinds
+    assert "link_single_scripture_parent" in repair_kinds
+
+
 def test_locator_item_carries_only_its_linked_scripture_reference() -> None:
     payload = semantic_payload(ref_count=1)
     payload["entries"][0]["entry_kind"] = "scripture_citation"
@@ -453,6 +691,30 @@ def test_validation_requires_exact_results_and_repair_for_ambiguity() -> None:
     assert report["pending"][0]["ref_order"] == 2
 
 
+def test_validation_accepts_auditable_terminal_result_without_second_agent() -> None:
+    items = build_locator_items(semantic_payload(ref_count=1))
+    report = validate_locator_results(
+        items,
+        [
+            {
+                "entry_key": "VOL:index:e1",
+                "ref_order": 1,
+                "status": "unrecoverable_ocr",
+                "target_file": None,
+                "reason": "The candidate headers are illegible.",
+                "evidence": [
+                    {"kind": "ocr_search", "detail": "No readable digits"}
+                ],
+            }
+        ],
+    )
+
+    assert report["status"] == "ok"
+    assert report["accepted_results"][0]["attempted_evidence"] == [
+        {"kind": "ocr_search", "detail": "No readable digits"}
+    ]
+
+
 def test_assembler_assigns_each_ref_and_best_entry_target() -> None:
     payload = assemble_compact_payload(
         semantic_payload(),
@@ -527,7 +789,10 @@ def test_post_repair_accepts_auditable_unrecoverable_and_marks_partial() -> None
 
     assert payload["refs"][1]["target_file"] is None
     assert payload["coverage"]["locator_status"] == "partial"
-    assert payload["coverage"]["entries_status"] == "partial_extraction"
+    assert "entries_status" not in payload["coverage"]
+    assert "semantic entry extraction is unchanged" in payload["coverage"][
+        "locator_status_reason"
+    ]
     assert payload["coverage"]["locator_unrecoverable_refs"][0]["ref_order"] == 2
 
 

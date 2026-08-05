@@ -53,6 +53,10 @@ export const ptBR: Record<string, any> = {
   homeCtaExample: 'Começar por João Crisóstomo',
   homeCollectionsTitle: 'Coleções principais',
   homeCollectionsDesc: 'Acesso direto às três grandes séries do acervo.',
+  homeMigneEyebrow: 'Contexto histórico',
+  homeMigneTitle: 'O homem por trás de PG e PL',
+  homeMigneText:
+    'No século XIX, o padre e editor francês Jacques-Paul Migne reuniu e publicou as Patrologias Latina e Grega, ampliando o acesso aos escritos cristãos antigos e medievais. A Patrologia Orientalis surgiu depois, como uma coleção independente.',
   homeAuthorsTitle: 'Autores e temas',
   homeAuthorsDesc: 'Pontos de entrada rápidos para leitura, estudo e pesquisa.',
   homePreviewTitle: 'Prévia de leitura',
@@ -63,6 +67,17 @@ export const ptBR: Record<string, any> = {
   homeVolumeLabel: 'Volume',
   homePageLabel: 'Página',
   homePreviewFallback: 'Prévia editorial do acervo com metadados enriquecidos.',
+  homeGuideTitle: 'Comece pela busca, depois refine por coleção.',
+  homeGuideText:
+    'O acervo reúne textos OCR, resumos, palavras-chave e navegação por volumes. O caminho mais curto é pesquisar um autor, obra ou tema e então abrir um resultado.',
+  homeGuideListLabel: 'Resumo de uso',
+  homeGuideSearch: 'Use a busca para localizar autor, obra, tema ou termo.',
+  homeGuideFilter: 'Filtre por PG, PL ou PO quando já souber a coleção.',
+  homeGuideOpen: 'Abra um volume direto por um ponto de partida conhecido.',
+  homeCollectionPgDesc: 'Autores gregos, homilias, comentários e tratados dogmáticos.',
+  homeCollectionPlDesc: 'Autores latinos, tradição ocidental, Agostinho, Jerônimo e outros.',
+  homeCollectionPoDesc: 'Textos de tradições orientais e materiais complementares.',
+  homeCollectionExplore: 'Explorar',
 
   // ─── Sobre (about section) ────────────────────────────────────────────────
   aboutTitle: 'O que é a Bibliotheca Patristica?',

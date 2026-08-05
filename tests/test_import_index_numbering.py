@@ -64,3 +64,47 @@ def test_importer_does_not_infer_physical_file_from_editorial_page(tmp_path: Pat
 
     assert section_files == (None, None)
     assert target_file is None
+
+
+def test_importer_rejects_inverted_work_editorial_range(tmp_path: Path) -> None:
+    payload_path = tmp_path / "payload.json"
+    payload_path.write_text(
+        json.dumps(
+            {
+                "volume": {
+                    "volume_id": "PG001",
+                    "collection": "PG",
+                    "source_root": str(tmp_path / "PG001" / "text"),
+                },
+                "works": [
+                    {
+                        "work_key": "PG001:work:virgines",
+                        "title_raw": "EPISTOLAE DUAE AD VIRGINES",
+                        "start_page": 579,
+                        "end_page": 508,
+                    }
+                ],
+                "sections": [],
+                "notes": [],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(IMPORTER),
+            "--db",
+            str(tmp_path / "indices.db"),
+            "--input",
+            str(payload_path),
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert result.returncode != 0
+    assert "start_page > end_page" in result.stderr

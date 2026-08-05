@@ -53,6 +53,10 @@ export const en: Translations = {
   homeCtaExample: 'Start with John Chrysostom',
   homeCollectionsTitle: 'Main collections',
   homeCollectionsDesc: 'Direct access to the three major series in the corpus.',
+  homeMigneEyebrow: 'Historical context',
+  homeMigneTitle: 'The man behind PG and PL',
+  homeMigneText:
+    'In the nineteenth century, French priest and publisher Jacques-Paul Migne assembled and published the Latin and Greek Patrologies, greatly expanding access to ancient and medieval Christian writings. The Patrologia Orientalis appeared later as an independent collection.',
   homeAuthorsTitle: 'Authors and themes',
   homeAuthorsDesc: 'Fast entry points for reading, study and research.',
   homePreviewTitle: 'Reading preview',
@@ -63,6 +67,17 @@ export const en: Translations = {
   homeVolumeLabel: 'Volume',
   homePageLabel: 'Page',
   homePreviewFallback: 'Editorial preview of the corpus with enriched metadata.',
+  homeGuideTitle: 'Start with search, then refine by collection.',
+  homeGuideText:
+    'The collection brings together OCR texts, summaries, keywords, and volume navigation. The shortest path is to search for an author, work, or theme and then open a result.',
+  homeGuideListLabel: 'How to use the collection',
+  homeGuideSearch: 'Use search to find an author, work, theme, or term.',
+  homeGuideFilter: 'Filter by PG, PL, or PO when you already know the collection.',
+  homeGuideOpen: 'Open a volume directly from a familiar starting point.',
+  homeCollectionPgDesc: 'Greek authors, homilies, commentaries, and dogmatic treatises.',
+  homeCollectionPlDesc: 'Latin authors, the Western tradition, Augustine, Jerome, and others.',
+  homeCollectionPoDesc: 'Texts from Eastern Christian traditions and complementary materials.',
+  homeCollectionExplore: 'Explore',
 
   // ─── About (about section) ─────────────────────────────────────────────────
   aboutTitle: 'What is Bibliotheca Patristica?',

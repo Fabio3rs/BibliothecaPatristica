@@ -168,8 +168,19 @@ Typical signals:
 - Do not assume the OCR file suffix matches the printed/editorial page number.
 - Do not derive a physical file match from printed numbering alone when string evidence is available.
 - Printed/internal numbers can be wrong in OCR because of CER, worn type, faded ink, bleed-through, cropping, or damaged scans.
-- Prefer title strings, repeated running headers, author names, explicit work headings, and nearby body text over printed numbers when anchoring a physical OCR file.
+- Prefer direct title pages, author names, incipits, explicit work headings, and nearby body text over
+  printed numbers when anchoring a physical OCR file.
+- Treat exact and Levenshtein/fuzzy phrase matches as additive evidence. An occurrence inside an
+  `ORDO`, `ELENCHUS`, catalogue, prefatory inventory, or closing index is not a work target.
+- Compare a logical header assembled from all header blocks on the OCR file; page numbers may occur
+  in the title block or in separate OCR/XML blocks.
+- A similar logical header recurring on at least four physical files, with gaps of up to three
+  missing or damaged headers, is strong evidence of a probable body range. It does not by itself
+  identify the title-page start or exact ending.
 - If a scan contains facing pages or two printed pages on one sheet, preserve the printed references as editorial data and locate the physical file separately.
+- Adjacent works may share a physical scan or editorial page. Do not derive one work's end as the
+  next work's start minus one, and do not synthesize a physical ending from editorial numbers alone.
+- Pure external `Vide ... tom.` / `Voir ... tome ...` remissions have no local physical target.
 - Treat `Ibid.` as a reference to the previous entry.
 - Treat `col.` as column reference, not file number.
 - When in doubt, store the raw text and lower the confidence.

@@ -31,6 +31,86 @@ def write_json(path: Path, payload: object) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
 
 
+def test_discovery_redispatches_actionable_expansion_checkpoint(
+    tmp_path: Path,
+) -> None:
+    source_root = tmp_path / "PG001" / "text"
+    first_file = source_root / "page-001.txt"
+    second_file = source_root / "page-002.txt"
+    first_file.parent.mkdir(parents=True)
+    first_file.write_text("INDEX\nAARON 10\n", encoding="utf-8")
+    second_file.write_text("ABEL 11\nFINIS\n", encoding="utf-8")
+    filtered_file = tmp_path / "filtered.json"
+    write_json(filtered_file, {"candidate_files": [str(first_file)]})
+    phases: list[str] = []
+    prompts: list[str] = []
+
+    def agent_runner(prompt: str, expected_output: Path, phase_id: str) -> None:
+        phases.append(phase_id)
+        prompts.append(prompt)
+        discovery_input = json.loads(
+            (expected_output.parent / "discovery_input.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        expanded = "/expansion-" in phase_id
+        write_json(
+            expected_output,
+            {
+                "schema_version": OUTPUT_SCHEMA_VERSION,
+                **prompt_reference_bundle(),
+                "stage": "discovery",
+                "volume_id": "PG001",
+                "source_root": str(source_root),
+                "input_fingerprint": discovery_input["input_fingerprint"],
+                "status": "complete" if expanded else "needs_expansion",
+                "inspected_files": (
+                    [str(first_file), str(second_file)]
+                    if expanded
+                    else [str(first_file)]
+                ),
+                "segments": [
+                    {
+                        "segment_id": "PG001:index:start",
+                        "file": str(first_file),
+                        "line_start": 1,
+                        "line_end": 2,
+                        "role": "owned",
+                        "reason": "alphabetical index starts here",
+                    }
+                ],
+                "expansion_requests": (
+                    []
+                    if expanded
+                    else [
+                        {
+                            "request_id": "continue-index",
+                            "reason": "index continues after the inspected file",
+                            "anchor_files": [str(first_file)],
+                            "direction": "after",
+                            "max_files": 2,
+                        }
+                    ]
+                ),
+                "unresolved": [],
+            },
+        )
+
+    discovery, _, _ = analysis_pipeline._ensure_agent_discovery(
+        volume_id="PG001",
+        collection="PG",
+        source_root=source_root,
+        filtered_pages_file=filtered_file,
+        intermediate_dir=tmp_path / "intermediate",
+        agent_runner=agent_runner,
+        force=False,
+    )
+
+    assert discovery["status"] == "complete"
+    assert phases == ["extract/discovery", "extract/discovery/expansion-0001"]
+    assert "DISCOVERY EXPANSION ROUND 1" in prompts[1]
+
+
 def scripture_semantic(source_root: Path, *, ref_count: int = 3) -> dict:
     entry_key = "PL001:scripture:e1"
     refs = [

@@ -2,6 +2,9 @@
 
 Versão: 1
 
+O vocabulário espacial e os nomes canônicos do banco estão em
+`docs/dicionario_campos_indices_alfabeticos.md`.
+
 Este contrato é a referência semântica única dos prompts da pipeline de índices
 alfabéticos. O prompt define a tarefa e os caminhos; este documento define como
 preservar, interpretar e tornar auditável o conteúdo.
@@ -58,7 +61,8 @@ ser `owned`.
 
 Um `source_span` contém:
 
-- `file`: caminho absoluto dentro do `source_root`;
+- `file`: campo legado do artefato de fase que contém o caminho do arquivo OCR dentro de
+  `source_root`; no banco v8 ele é `ocr_file_path` e nunca significa número de página editorial;
 - `line_start` e `line_end`: linhas inclusivas, positivas;
 - `block_type`: tipo de bloco OCR quando disponível;
 - `text_sha256`: opcional, para auditoria do trecho.
@@ -122,4 +126,3 @@ em `consumed_spans` ou `residual_spans`. Uma extração não pode usar
 
 O manifesto é escrito por último. Um checkpoint só pode ser reutilizado quando
 fingerprint, versões do prompt, contrato, glossário e schema coincidirem.
-

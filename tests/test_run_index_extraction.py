@@ -15,6 +15,7 @@ from scripts.run_index_extraction import (
     build_editorial_pages_artifact,
     build_hyphen_rerun_recovery_block,
     build_previous_failure_prompt_block,
+    build_work_anchor_rerun_prompt_block,
     failure_mentions_hyphen_artifact,
     load_failure_artifact,
     payload_has_hyphen_artifacts,
@@ -112,6 +113,26 @@ def test_validate_payload_rejects_unjustified_empty_index_section(tmp_path: Path
     validate_payload(payload, "PO001", payload_file)
 
 
+def test_validate_payload_rejects_inverted_work_page_range(tmp_path: Path) -> None:
+    payload_file = tmp_path / "PG001_indices.json"
+    payload_file.write_text("{}", encoding="utf-8")
+    payload = {
+        "volume": {"volume_id": "PG001"},
+        "works": [
+            {
+                "work_key": "PG001:work:1",
+                "start_page": 579,
+                "end_page": 508,
+            }
+        ],
+        "sections": [],
+        "notes": [],
+    }
+
+    with pytest.raises(SystemExit, match="impossible editorial page ranges"):
+        validate_payload(payload, "PG001", payload_file)
+
+
 def test_prevalidate_existing_payload_returns_exact_current_failure(tmp_path: Path) -> None:
     payload_file = tmp_path / "PL001_indices.json"
     payload_file.write_text(
@@ -157,6 +178,45 @@ def test_run_index_extraction_loads_failure_artifact_and_builds_special_blocks(t
     recovery_block = build_hyphen_rerun_recovery_block()
     assert "HYPHEN RERUN RECOVERY" in recovery_block
     assert "read_ocr_page_text.py --view xml --show-source <file>" in recovery_block
+
+
+def test_build_work_anchor_rerun_prompt_block_lists_pending_works() -> None:
+    payload = {
+        "works": [
+            {
+                "work_key": "PG001:work:1",
+                "title_raw": "OPUS DUBIUM",
+                "start_page": 349,
+                "start_file": "/tmp/PG001/text/page-100.txt",
+                "raw_json": {
+                    "work_anchor_rerun": {
+                        "status": "ambiguous",
+                        "reason": "locator_candidate_probability_gap",
+                        "locator": {
+                            "candidates": [
+                                {"file": "/tmp/PG001/text/page-100.txt"},
+                                {"file": "/tmp/PG001/text/page-200.txt"},
+                            ]
+                        },
+                    }
+                },
+            }
+        ]
+    }
+
+    block = build_work_anchor_rerun_prompt_block(payload, "PG001")
+
+    assert block is not None
+    assert "WORK ANCHOR RERUN" in block
+    assert "PG001:work:1" in block
+    assert "Levenshtein" in block
+    assert "at least four files" in block
+    assert "up to three missing/corrupt headers" in block
+    assert "separate OCR/XML blocks" in block
+    assert "end_page to next_start - 1" in block
+    assert "Pure external `Vide ... tom.` remissions" in block
+    assert "nested anchor_locator_review" in block
+    assert "preserve the marker with status=ambiguous" in block
 
 
 def test_patristic_prompt_keeps_localization_artifacts_as_aids(tmp_path: Path) -> None:
@@ -245,6 +305,13 @@ def test_patristic_prompt_keeps_localization_artifacts_as_aids(tmp_path: Path) -
     assert "$alphabetical-index-extractor" not in prompt
     assert "Do not extract closing alphabetical" in prompt
     assert "inspect the closing pages for final indexes" not in prompt.lower()
+    assert "Levenshtein/fuzzy title matches are additive evidence" in prompt
+    assert "same block or separate blocks" in prompt
+    assert "at least four physical files" in prompt
+    assert "gaps of up to three files" in prompt
+    assert "Never derive `end_page` as `next_start - 1`" in prompt
+    assert "pure external remission" in prompt
+    assert "Resolve every work_anchor_rerun/anchor_locator_review" in prompt
     assert "Use FILTERED PAGES and HELPER EVIDENCE only as localization aids" in prompt
     assert "python scripts/read_ocr_page_text.py --view xml --show-source" in prompt
     assert "automatically joins likely within-block word wraps" in prompt

@@ -66,11 +66,13 @@ Resolva apenas quando o escopo editorial estiver claro.
 ### `not. a`, `not. b` e variantes
 
 Identificam notas por letra associadas a uma página ou coluna. Separe
-`page_ref_raw` de `note_ref_raw`; não incorpore a letra ao número da página.
+o literal legado `page_ref_raw` de `note_ref_raw`; no banco v8, use
+`cited_editorial_page_start_raw` e não incorpore a letra ao número da página.
 
 ### `col.` / `column`
 
-Identifica coluna editorial. Página e coluna são campos distintos.
+Identifica coluna editorial. Página e coluna são campos distintos; no banco v8 a coluna literal
+fica em `cited_editorial_column_raw`.
 
 ### `*`
 

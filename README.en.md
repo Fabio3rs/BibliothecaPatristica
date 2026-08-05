@@ -1,6 +1,33 @@
 # Patristic Digital Project (EN)
 
-Digitizing and processing the *Patrologia Graeca*, *Latina*, and *Orientalis* collections to produce OCR text, per-page summaries, and keywords. Original PDFs/images are **not** versioned; only OCR `.txt` files are kept. Next steps: FTS5 search and a RAG/agent librarian.
+Digitizing, enriching, and publishing the *Patrologia Graeca*, *Patrologia Latina*, and *Patrologia Orientalis* collections. The project turns their pages into searchable OCR text, summaries, keywords, and indexes for scholarly, theological, and devotional use.
+
+## Explore the collection
+
+**[Open BibliothecaPatristica](https://fabio3rs.github.io/BibliothecaPatristica/)**
+
+The published static website provides:
+
+- search by author, work, topic, and Latin or Greek terms;
+- navigation across the PG, PL, and PO collections, volumes, and indexes;
+- Portuguese summaries and keywords alongside the OCR text;
+- a Portuguese, English, and Italian interface.
+
+Original PDFs and images are **not** versioned; only OCR text and its derived data are kept in this repository.
+
+## Where to find the OCR texts
+
+The actual digitized text is versioned under [`teste/`](teste/). Each collection and volume stores its page files in directories such as `teste/PG001/text/`, `teste/PL001/text/`, and `teste/PO002/text/`. The website is the search and navigation layer built on top of this corpus.
+
+## Jacques-Paul Migne and the collections
+
+The abbreviations **PL** and **PG** refer to the *Patrologia Latina* and *Patrologia Graeca*, assembled and published in the nineteenth century by the French priest, printer, and editor [Jacques-Paul Migne (1800–1875)](https://catalogue.bnf.fr/ark:/12148/cb119160622). His publishing project circulated writings by the Church Fathers and other ancient and medieval Christian authors on an unprecedented scale: the PL appeared between 1844 and 1855, with later index volumes, while the PG comprises 161 volumes published between 1857 and 1866.
+
+Migne did not author these texts or produce critical editions in the modern sense. He compiled and reprinted editions available in his time. Although the collections have textual limitations and should be checked against newer critical editions when available, they remain fundamental historical references and, in some cases, preserve texts for which no other complete edition is readily accessible.
+
+The **Patrologia Orientalis (PO)** was not part of Migne's work. It is a later, independent collection founded in Paris by René Graffin and François Nau to publish texts from Eastern Christian traditions, often in their original languages with translations. It historically complements the Greek and Latin patrologies.
+
+Sources: [Bibliothèque Interuniversitaire de la Sorbonne — PL](https://www.bis-sorbonne.fr/patrologia-latina), [PG](https://www.bis-sorbonne.fr/patrologia-graeca), and [Persée — René Graffin](https://www.persee.fr/authority/175035).
 
 > Provenance note: prompts, summaries, and keywords are PT-BR only (no English release yet); this README is just a reference translation. OCR texts are already versioned under `teste/`, and cleaning/normalization of those OCRs remains a work in progress.
 
@@ -12,12 +39,14 @@ Digitizing and processing the *Patrologia Graeca*, *Latina*, and *Orientalis* co
 - `main2.py` — page-by-page OCR with Tesseract + OpenCV (lat/grc), OMP-limited parallelism.
 - `resumo_serial.py` — generates per-page summaries/keywords from `.txt` (default Ollama; OpenAI optional).
 - `download/` — see `download/README.md` for fetching PDFs (`download.py`) and checking missing ones (`checkfaltantes.py`).
+- `web/` — Astro static website with Pagefind search and multilingual navigation.
 - `requirements.txt` — minimal deps: numpy, opencv-python, Pillow, pytesseract, pdf2image.
 
 ## Quick start
 - OCR: `python main2.py <file.pdf> --lang lat` (adjust language; DPI/threshold tuned internally).
 - Summaries: `python resumo_serial.py --volume-dir teste/PL001` (Ollama). OpenAI: `--provider openai --model gpt-5-mini`.
 - Download: follow `download/README.md`.
+- Website: `cd web && npm install && npm run build`; for local development, run `npm run dev`.
 
 ## Related documentation
 - Semantic unification paper (English): `docs/LLM_unification_paper_en.md`
@@ -43,8 +72,9 @@ Digitizing and processing the *Patrologia Graeca*, *Latina*, and *Orientalis* co
 
 ## Status / Roadmap
 - OCR stable; summaries/keywords running.
+- Astro + Pagefind website published on GitHub Pages.
 - Ongoing: OCR cleaning/normalization and gap fixes.
-- Next: FTS5 index + librarian-style RAG agent.
+- Broader editorial and alphabetical indexes and search refinements are ongoing.
 
 ## AI, coverage, and human review
 - **Incomplete coverage**: not all pages/volumes are processed yet.

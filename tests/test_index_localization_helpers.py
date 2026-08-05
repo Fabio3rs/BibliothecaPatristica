@@ -50,8 +50,10 @@ def test_helper_uses_section_neighborhood_and_rejects_frontmatter_noise(
             ],
         },
         helper_request_json=tmp_path / "helper.json",
+        workers=17,
     )
 
+    assert request["options"]["workers"] == 17
     assert [entry["lemma_raw"] for entry in request["entries"]] == [
         "Epistola ad Corinthios, interprete Cardinale"
     ]

@@ -146,3 +146,42 @@ Semantics:
 - Do not replace line items with high-level summaries such as `entries_summary`.
 - Leave `entries` empty only when the section truly contains no list items, or when OCR quality prevents reliable line extraction; in that case explain the reason in `raw_json`.
 - For uncertain file mapping, keep the original numeric literal, lower `confidence`, and store the string-matching evidence in `raw_json`.
+
+## Work-anchor reruns
+
+The deterministic reconciler may add `works[].raw_json.work_anchor_rerun` when direct OCR evidence
+does not safely determine a work boundary. Treat this as an explicit pending agent task on the next
+volume run.
+
+- `status` is `ambiguous` or `unresolved`.
+- `declared_anchor` preserves the current page/file values.
+- `locator.candidates` preserves competing files, probabilities, fuzzy/title evidence, and any
+  recurring-header sequence.
+- `agent_checks` lists the OCR inspections still required.
+- A Levenshtein/fuzzy title match is positive evidence, not a final decision by itself.
+- A recurring-header sequence may describe a probable work range even when two or three physical
+  OCR files fail to reproduce the header.
+- Page numbers may occur in the same header block as the title or in separate header blocks; compare
+  the logical concatenated header after separating numeric tokens from title text.
+- Treat a recurring logical header on at least four physical OCR files, allowing gaps of up to three
+  files, as evidence for a probable body range. It does not by itself identify the exact title-page
+  start or ending boundary.
+- Inspect an occurrence's context. A title in `ORDO`, `ELENCHUS`, a catalogue, a prefatory
+  inventory, or a closing index is not a local work target.
+- Preserve the declared editorial page when it belongs to the estimator's facing-page pair unless
+  bounding-box, column, or direct textual evidence resolves which printed page applies.
+- Adjacent works may share a physical scan or editorial page. Do not derive `end_page` as
+  `next_start - 1`, and do not derive `end_file` from editorial numbers alone.
+- Reject proposed anchors with `start_page > end_page`.
+- Do not force a single anchor onto a composite inventory/container that lists multiple works.
+- Pure external remissions such as `Vide ... tom.` have no local target. Preserve them in
+  `raw_json.external_reference` with the OCR literal and referenced tome; leave local file locators
+  null unless separate OCR evidence proves that the work is also present locally.
+- Common review reasons include `candidate_probability_gap`, `numeric_only_evidence`,
+  `candidate_editorial_page_not_supported`, `candidate_start_page_after_end_page`,
+  `overlapping_editorial_boundaries_require_scan_layout_review`, and
+  `composite_work_requires_agent`. Preserve the exact emitted reason even when it is more specific.
+- Treat a nested `raw_json.work_anchor_rerun.anchor_locator_review` as part of the same mandatory
+  rerun task.
+- Remove `work_anchor_rerun` only after direct OCR evidence resolves the anchor. Preserve it with
+  `status: "ambiguous"` when readable candidates remain tied.

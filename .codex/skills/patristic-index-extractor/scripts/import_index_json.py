@@ -318,6 +318,26 @@ def validate_section_work_refs(sections: list[dict[str, Any]], works: list[dict[
         )
 
 
+def validate_work_page_ranges(works: list[dict[str, Any]], volume_id: str) -> None:
+    invalid: list[str] = []
+    for index, work in enumerate(works):
+        start_page = work.get("start_page")
+        end_page = work.get("end_page")
+        if (
+            isinstance(start_page, int)
+            and not isinstance(start_page, bool)
+            and isinstance(end_page, int)
+            and not isinstance(end_page, bool)
+            and start_page > end_page
+        ):
+            invalid.append(str(work.get("work_key") or f"works[{index}]"))
+    if invalid:
+        raise ValueError(
+            f"Payload has impossible work page ranges for {volume_id} "
+            f"(start_page > end_page): {', '.join(invalid[:10])}"
+        )
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description='Import one extracted index payload into SQLite.')
     ap.add_argument('--db', type=Path, default=DEFAULT_DB, help='Database path')
@@ -338,6 +358,7 @@ def main() -> None:
         generated_work_map,
     )
     validate_section_work_refs(sections, works, volume_id)
+    validate_work_page_ranges(works, volume_id)
 
     with connect_db(args.db) as con:
         init_schema(con)

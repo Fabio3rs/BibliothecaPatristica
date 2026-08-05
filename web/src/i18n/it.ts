@@ -52,6 +52,10 @@ export const it: BaseTranslations = {
   homeCtaExample: 'Inizia con Giovanni Crisostomo',
   homeCollectionsTitle: 'Collezioni principali',
   homeCollectionsDesc: 'Accesso diretto alle tre grandi serie del corpus.',
+  homeMigneEyebrow: 'Contesto storico',
+  homeMigneTitle: "L'uomo dietro PG e PL",
+  homeMigneText:
+    'Nel XIX secolo, il sacerdote ed editore francese Jacques-Paul Migne raccolse e pubblicò le Patrologie Latina e Greca, ampliando notevolmente l’accesso agli scritti cristiani antichi e medievali. La Patrologia Orientalis nacque più tardi come collezione indipendente.',
   homeAuthorsTitle: 'Autori e temi',
   homeAuthorsDesc: 'Punti di ingresso rapidi per lettura, studio e ricerca.',
   homePreviewTitle: 'Anteprima di lettura',
@@ -62,6 +66,17 @@ export const it: BaseTranslations = {
   homeVolumeLabel: 'Volume',
   homePageLabel: 'Pagina',
   homePreviewFallback: 'Anteprima editoriale del corpus con metadati arricchiti.',
+  homeGuideTitle: 'Inizia dalla ricerca, poi filtra per collezione.',
+  homeGuideText:
+    'Il corpus riunisce testi OCR, riassunti, parole chiave e navigazione per volumi. Il percorso più rapido è cercare un autore, un’opera o un tema e poi aprire un risultato.',
+  homeGuideListLabel: 'Come usare il corpus',
+  homeGuideSearch: 'Usa la ricerca per trovare un autore, un’opera, un tema o un termine.',
+  homeGuideFilter: 'Filtra per PG, PL o PO quando conosci già la collezione.',
+  homeGuideOpen: 'Apri direttamente un volume da un punto di partenza noto.',
+  homeCollectionPgDesc: 'Autori greci, omelie, commenti e trattati dogmatici.',
+  homeCollectionPlDesc: 'Autori latini, tradizione occidentale, Agostino, Girolamo e altri.',
+  homeCollectionPoDesc: 'Testi delle tradizioni cristiane orientali e materiali complementari.',
+  homeCollectionExplore: 'Esplora',
 
   // ─── Informazioni generali ────────────────────────────────────────────────
   aboutTitle: "Che cos'è la Bibliotheca Patristica?",

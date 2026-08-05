@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+"""Archived monolithic prompt builder; the runtime no longer invokes this flow."""
+
 from __future__ import annotations
 
 import argparse
@@ -296,7 +298,7 @@ def build_work_instructions(source_root: Path) -> str:
         "- You are explicitly allowed to run local OCR searches inside the current volume with `rg -n -S` and volume-specific regex patterns derived from the material you see.",
         "- Prefer regexes that match the actual editorial pattern of the current volume, including forms such as `450_3-5`, `55₁₀`, `464 n. 1`, `37 à 39`, `174, 175`, or inherited `—` lines.",
         "- If a lemma is distinctive, search the lemma directly in the current `source_root` with normalized and OCR-tolerant variants before leaving the entry partial.",
-        "- Before declaring `partial_*`, `ambiguous`, or leaving a section under-extracted, try direct OCR inspection, a multi-file before/after sequence check, and at least one pattern search that fits the volume.",
+        "- Before setting `coverage.locator_status=partial`, returning an ambiguous locator, or leaving a section under-extracted, try direct OCR inspection, a multi-file before/after sequence check, and at least one pattern search that fits the volume.",
         "- When these extra checks still do not resolve the case, preserve in `raw_json` which searches or page-window checks were attempted and why they were insufficient.",
         "- In `refs`, `ref_order` must be unique within each `entry_key` and should normally be sequential starting at 1 for that entry.",
         "- In `scripture_refs`, `ref_order` must be unique within each `entry_key` and should normally be sequential starting at 1 for that entry.",

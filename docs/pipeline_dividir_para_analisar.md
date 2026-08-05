@@ -19,7 +19,9 @@ python scripts/run_alphabetical_index_extraction.py assemble --volume-id PL001
 
 - `discover` usa o prefilter determinístico como pista, entrega a topologia ao
   agente e registra no banco segmentos `owned`, `boundary`, `context` e
-  `uncertain`, inclusive fronteiras no meio de um arquivo.
+  `uncertain`, inclusive fronteiras no meio de um arquivo. Um manifesto
+  `needs_expansion` é checkpoint não terminal: o driver executa até três
+  expansões delimitadas antes de permitir o handoff.
 - `extract` consome o manifesto segmentado, produz fragmentos semânticos v2 com
   `source_span`/coverage e importa entradas e ocorrências no banco operacional.
 - `locate` usa paginação editorial, o banco determinístico de citações e
@@ -30,6 +32,10 @@ python scripts/run_alphabetical_index_extraction.py assemble --volume-id PL001
 
 O default é retomar fingerprints completos. Use `--force` para regenerar a
 etapa selecionada e marcar etapas posteriores como obsoletas.
+
+`--legacy-single-context` não reativa mais o prompt monolítico, cujo contrato
+contradizia a montagem canônica por Python. Por compatibilidade de invocação, a
+opção emite um aviso e executa a pipeline compacta checkpointável.
 
 ## Modelo operacional
 

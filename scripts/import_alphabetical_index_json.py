@@ -11,6 +11,8 @@ from typing import Any
 
 from alphabetical_index_db import (
     DEFAULT_DB,
+    backfill_locator_evidence,
+    canonical_ref_location,
     clear_volume,
     connect_db,
     init_schema,
@@ -275,6 +277,118 @@ def material_reference_mode(item: dict[str, Any] | None) -> str | None:
         return None
     value = raw.get("material_reference_mode")
     return collapse_ws(to_text(value)).casefold() or None
+
+
+def section_taxonomy(section: dict[str, Any]) -> dict[str, str]:
+    """Materialize the four orthogonal section dimensions in DB columns."""
+
+    raw = section.get("raw_json")
+    if isinstance(raw, str):
+        try:
+            raw = json.loads(raw)
+        except json.JSONDecodeError:
+            raw = {}
+    if not isinstance(raw, dict):
+        raw = {}
+    section_kind = str(section.get("section_kind") or "")
+    inferred_material_mode = (
+        "parallel" if section_kind == "concordance_index" else "remissive"
+    )
+    inferred_scripture_mode = {
+        "scripture_index": "citation_index",
+        "pericope_index": "pericope_index",
+        "concordance_index": "concordance_component",
+    }.get(section_kind, "none")
+    required_fields = (
+        "pipeline_owner",
+        "alphabetical_role",
+        "material_reference_mode",
+        "scripture_mode",
+    )
+    return {
+        "pipeline_owner": str(raw.get("pipeline_owner") or "alphabetical"),
+        "alphabetical_role": str(
+            raw.get("alphabetical_role") or "owned_section"
+        ),
+        "material_reference_mode": str(
+            raw.get("material_reference_mode") or inferred_material_mode
+        ),
+        "scripture_mode": str(
+            raw.get("scripture_mode") or inferred_scripture_mode
+        ),
+        "taxonomy_source": (
+            "explicit" if all(raw.get(field) is not None for field in required_fields)
+            else "legacy_inferred"
+        ),
+    }
+
+
+def insert_entry_source_span(
+    con: Any,
+    *,
+    volume_id: str,
+    entry_key: str,
+    source_span: Any,
+) -> None:
+    if not isinstance(source_span, dict):
+        return
+    ocr_file_path = to_text(
+        source_span.get("ocr_file_path") or source_span.get("file")
+    )
+    line_start = source_span.get("line_start")
+    line_end = source_span.get("line_end")
+    if (
+        ocr_file_path is None
+        or not isinstance(line_start, int)
+        or isinstance(line_start, bool)
+        or not isinstance(line_end, int)
+        or isinstance(line_end, bool)
+        or line_start < 1
+        or line_end < line_start
+    ):
+        return
+    block_type = to_text(source_span.get("block_type"))
+    text_sha256 = to_text(source_span.get("text_sha256"))
+    con.execute(
+        """INSERT OR IGNORE INTO alphabetical_source_spans (
+            volume_id, ocr_file_path, line_start, line_end, block_type,
+            text_sha256, created_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?)""",
+        (
+            volume_id,
+            ocr_file_path,
+            line_start,
+            line_end,
+            block_type,
+            text_sha256,
+            now_iso(),
+        ),
+    )
+    span_row = con.execute(
+        """SELECT span_id
+        FROM alphabetical_source_spans
+        WHERE volume_id = ? AND ocr_file_path = ?
+          AND line_start = ? AND line_end = ?
+          AND block_type IS ? AND text_sha256 IS ?
+        ORDER BY span_id
+        LIMIT 1""",
+        (
+            volume_id,
+            ocr_file_path,
+            line_start,
+            line_end,
+            block_type,
+            text_sha256,
+        ),
+    ).fetchone()
+    if span_row is None:
+        return
+    con.execute(
+        """INSERT OR IGNORE INTO alphabetical_entry_source_spans (
+            entry_key, span_id, span_order, span_role
+        ) VALUES (?, ?, 1, 'primary')""",
+        (entry_key, int(span_row["span_id"])),
+    )
 
 
 def validate_coverage(
@@ -800,12 +914,16 @@ def import_payload(con: Any, payload: dict[str, Any], replace: bool) -> str:
 
     for item in sections:
         section = require_dict(item, "section")
+        taxonomy = section_taxonomy(section)
         con.execute(
             """INSERT INTO alphabetical_sections (
                 section_key, volume_id, work_key, section_order, section_kind, heading_raw,
                 heading_norm, heading_letter, page_start, page_end, file_start, file_end,
-                confidence, raw_json
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                index_editorial_page_start, index_editorial_page_end,
+                index_ocr_file_start, index_ocr_file_end,
+                pipeline_owner, alphabetical_role, material_reference_mode,
+                scripture_mode, taxonomy_source, confidence, raw_json
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
             (
                 section["section_key"],
                 section["volume_id"],
@@ -819,6 +937,15 @@ def import_payload(con: Any, payload: dict[str, Any], replace: bool) -> str:
                 section.get("page_end"),
                 to_text(section.get("file_start")),
                 to_text(section.get("file_end")),
+                section.get("page_start"),
+                section.get("page_end"),
+                to_text(section.get("file_start")),
+                to_text(section.get("file_end")),
+                taxonomy["pipeline_owner"],
+                taxonomy["alphabetical_role"],
+                taxonomy["material_reference_mode"],
+                taxonomy["scripture_mode"],
+                taxonomy["taxonomy_source"],
                 section.get("confidence"),
                 json_text(section.get("raw_json", section)),
             ),
@@ -853,8 +980,11 @@ def import_payload(con: Any, payload: dict[str, Any], replace: bool) -> str:
                 entry_key, section_key, parent_node_key, entry_order, entry_kind,
                 lemma_raw, lemma_display, lemma_norm, lemma_sort, entry_raw, context_raw,
                 heading_letter, inferred_printed_page, section_start_file,
-                editorial_anchor_file, target_file_best, confidence, raw_json
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                editorial_anchor_file, target_file_best,
+                index_editorial_page_estimate, index_section_start_ocr_file,
+                index_entry_source_ocr_file, resolved_target_ocr_file,
+                confidence, raw_json
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
             (
                 entry["entry_key"],
                 entry["section_key"],
@@ -872,9 +1002,19 @@ def import_payload(con: Any, payload: dict[str, Any], replace: bool) -> str:
                 to_text(entry.get("section_start_file")),
                 to_text(entry.get("editorial_anchor_file")),
                 to_text(entry.get("target_file_best")),
+                entry.get("inferred_printed_page"),
+                to_text(entry.get("section_start_file")),
+                to_text(entry.get("editorial_anchor_file")),
+                to_text(entry.get("target_file_best")),
                 entry.get("confidence"),
                 json_text(entry.get("raw_json", entry)),
             ),
+        )
+        insert_entry_source_span(
+            con,
+            volume_id=volume_id,
+            entry_key=str(entry["entry_key"]),
+            source_span=entry.get("source_span"),
         )
 
     for item in scripture_refs:
@@ -939,14 +1079,26 @@ def import_payload(con: Any, payload: dict[str, Any], replace: bool) -> str:
 
     for item in refs:
         ref = require_dict(item, "ref")
+        cited = canonical_ref_location(ref)
         con.execute(
             """INSERT INTO alphabetical_refs (
                 entry_key, ref_order, scripture_ref_order, ref_kind, ref_raw,
                 page_ref_raw, page_ref_int, page_ref_col, line_ref_raw,
                 range_start_raw, range_end_raw, target_file, target_file_probability,
+                cited_editorial_page_start_raw,
+                cited_editorial_page_start_number,
+                cited_editorial_page_end_raw,
+                cited_editorial_page_end_number,
+                cited_editorial_column_raw, cited_editorial_line_raw,
+                cited_editorial_line_start_raw,
+                cited_editorial_line_start_number,
+                cited_editorial_line_end_raw,
+                cited_editorial_line_end_number,
+                resolved_target_ocr_file, target_ocr_file_candidate_score,
+                cited_location_parse_status,
                 locator_status, section_start_file, editorial_anchor_file,
                 confidence, raw_json
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
             (
                 ref["entry_key"],
                 ref["ref_order"],
@@ -961,6 +1113,19 @@ def import_payload(con: Any, payload: dict[str, Any], replace: bool) -> str:
                 to_text(ref.get("range_end_raw")),
                 to_text(ref.get("target_file")),
                 ref.get("target_file_probability"),
+                cited["cited_editorial_page_start_raw"],
+                cited["cited_editorial_page_start_number"],
+                cited["cited_editorial_page_end_raw"],
+                cited["cited_editorial_page_end_number"],
+                cited["cited_editorial_column_raw"],
+                cited["cited_editorial_line_raw"],
+                cited["cited_editorial_line_start_raw"],
+                cited["cited_editorial_line_start_number"],
+                cited["cited_editorial_line_end_raw"],
+                cited["cited_editorial_line_end_number"],
+                to_text(ref.get("target_file")),
+                ref.get("target_file_probability"),
+                cited["cited_location_parse_status"],
                 material_ref_locator_status(ref),
                 to_text(ref.get("section_start_file")),
                 to_text(ref.get("editorial_anchor_file")),
@@ -968,6 +1133,8 @@ def import_payload(con: Any, payload: dict[str, Any], replace: bool) -> str:
                 json_text(ref.get("raw_json", ref)),
             ),
         )
+
+    backfill_locator_evidence(con)
 
     con.execute(
         """INSERT INTO alphabetical_runs (

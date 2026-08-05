@@ -22,7 +22,7 @@ def test_build_work_instructions_mentions_neighbor_checks_and_regex_search() -> 
     assert "inspect several OCR files before and after" in text
     assert "rg -n -S" in text
     assert "450_3-5" in text
-    assert "Before declaring `partial_*`" in text
+    assert "coverage.locator_status=partial" in text
     assert "intermediate_dir" in text
     assert "pipeline_index_extraction" in text
 

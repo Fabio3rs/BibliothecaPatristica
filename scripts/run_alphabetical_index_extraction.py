@@ -1049,6 +1049,15 @@ def run_compact_batch(args: argparse.Namespace, volume_ids: list[str]) -> None:
                         "scripture_db",
                         PROJECT_ROOT / "data" / "scripture_citations.db",
                     ),
+                    deterministic_text_locator=not getattr(
+                        args,
+                        "no_deterministic_text_locator",
+                        False,
+                    ),
+                    deterministic_locator_workers=max(
+                        1,
+                        getattr(args, "deterministic_locator_workers", 1),
+                    ),
                     dry_run=args.dry_run,
                 )
                 if args.dry_run:
@@ -1219,6 +1228,14 @@ def build_analysis_arg_parser() -> argparse.ArgumentParser:
     ap.add_argument("--workers", type=int, default=1)
     ap.add_argument("--locator-chunk-size", type=int, default=40)
     ap.add_argument("--force", action="store_true")
+    ap.add_argument(
+        "--skip-fingerprint",
+        action="store_true",
+        help=(
+            "Reuse completed checkpoints even if input fingerprint changed. "
+            "Useful for resuming long runs after non-impactful contract changes."
+        ),
+    )
     ap.add_argument("--replace", action="store_true")
     ap.add_argument("--verbose", action="store_true")
     ap.add_argument("--status", dest="review_status")
@@ -1398,6 +1415,7 @@ def run_analysis_cli(argv: list[str]) -> None:
                         intermediate_dir=intermediate_dir,
                         agent_runner=agent_runner,
                         force=args.force,
+                        skip_fingerprint=args.skip_fingerprint,
                     )
                 elif command == "extract":
                     if not filtered_pages_file.is_file():
@@ -1414,6 +1432,7 @@ def run_analysis_cli(argv: list[str]) -> None:
                         agent_runner=agent_runner,
                         semantic_validator=validate_payload_file,
                         force=args.force,
+                        skip_fingerprint=args.skip_fingerprint,
                     )
                 elif command == "locate":
                     summary = locate_stage(
@@ -1425,6 +1444,7 @@ def run_analysis_cli(argv: list[str]) -> None:
                         intermediate_dir=intermediate_dir,
                         agent_runner=agent_runner,
                         force=args.force,
+                        skip_fingerprint=args.skip_fingerprint,
                     )
                 elif command == "verify":
                     summary = verify_stage(
@@ -1436,6 +1456,7 @@ def run_analysis_cli(argv: list[str]) -> None:
                         workers=args.workers,
                         shard_size=args.locator_chunk_size,
                         force=args.force,
+                        skip_fingerprint=args.skip_fingerprint,
                     )
                 else:
                     summary = assemble_stage(
@@ -1450,6 +1471,7 @@ def run_analysis_cli(argv: list[str]) -> None:
                             replace=args.replace,
                         ),
                         force=args.force,
+                        skip_fingerprint=args.skip_fingerprint,
                     )
                 summaries.append(summary)
                 print(json.dumps(summary, ensure_ascii=False))
@@ -1537,7 +1559,10 @@ def main() -> None:
     ap.add_argument(
         "--legacy-single-context",
         action="store_true",
-        help="Use the deprecated monolithic agent flow instead of the compact pipeline",
+        help=(
+            "Deprecated invocation alias; emits a warning and runs the "
+            "checkpointed compact pipeline"
+        ),
     )
     ap.add_argument(
         "--max-files-per-chunk",
@@ -1562,6 +1587,20 @@ def main() -> None:
         type=int,
         default=40,
         help="Citations per compact locator-agent shard (default: 40)",
+    )
+    ap.add_argument(
+        "--no-deterministic-text-locator",
+        action="store_true",
+        help=(
+            "Disable the default OCR text + editorial-page deterministic locator "
+            "and send all unresolved material refs to locator agents"
+        ),
+    )
+    ap.add_argument(
+        "--deterministic-locator-workers",
+        type=int,
+        default=1,
+        help="Worker processes used by deterministic OCR text localization",
     )
     ap.add_argument("--evidence-sample-size", type=int, default=200)
     ap.add_argument("--max-unverified-evidence-ratio", type=float, default=0.25)
@@ -1641,10 +1680,16 @@ def main() -> None:
     if args.locator_chunk_size < 1:
         raise SystemExit("--locator-chunk-size must be at least 1.")
 
-    if not args.legacy_single_context:
-        run_compact_batch(args, volume_ids)
-        return
+    if args.legacy_single_context:
+        print(
+            "[WARN] --legacy-single-context no longer activates the contradictory "
+            "monolithic agent prompt; running the checkpointed compact pipeline instead.",
+            file=sys.stderr,
+        )
+    run_compact_batch(args, volume_ids)
+    return
 
+    # Retained temporarily as unreachable compatibility code for old result inspection.
     failed_volume_ids: list[str] = []
 
     for idx, volume_id in enumerate(volume_ids, start=1):

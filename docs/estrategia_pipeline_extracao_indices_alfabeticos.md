@@ -272,6 +272,31 @@ Auxiliar:
 - `editorial_page_map.json`
 - `locator_workplan.json` e shards de resultados
 - `repair_request.json`, apenas quando necessário
+
+### Checkpoints mecânicos internos
+
+A execução compacta não trata mais localização como um único bloco descartável. Os seguintes
+artefatos formam handoffs verificáveis e podem ser reutilizados separadamente:
+
+1. `ocr_source_snapshot.json`: identidade de conteúdo do volume;
+2. `mechanical_analysis.json`: leitura regex/Aho-Corasick do material do índice;
+3. `editorial_page_map.json`: inferência editorial por cabeçalhos e vizinhos;
+4. `deterministic_text_stage.json`: busca literal/fuzzy de nomes, contexto e locators internos;
+5. `scripture_candidate_stage.json`: busca bíblica persistida ou por varredura;
+6. `locator_items.json`: fusão canônica de candidatos e contrato v2;
+7. `locator_cache/`: decisões terminais por `(entry_key, ref_order)`;
+8. `repairs/repair-XXXX_{request,result}.json`: reparos grandes divididos nos mesmos limites dos
+   shards de localização;
+9. `assembly_report.json`: fingerprint do payload montado.
+
+Os sidecars `*.checkpoint.json` validam tanto a entrada quanto o SHA-256 da saída. O snapshot de
+OCR invalida automaticamente as etapas dependentes quando um arquivo muda, mesmo que o payload
+filtrado permaneça igual. Checkpoints do agente continuam sujeitos aos fingerprints dos contratos
+versionados.
+
+O banco da pipeline em etapas registra os arquivos presentes nos resumos de execução em
+`analysis_stage_artifacts` e oferece `analysis_occurrences_canonical` para consultas sem aliases
+espaciais ambíguos.
 - logs em `data/alphabetical_index_logs/*`
 - scripts em `scripts/pipeline_index_extraction/`
 

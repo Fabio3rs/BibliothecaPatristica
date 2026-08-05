@@ -9,6 +9,7 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from patristica_pipeline.editorial_page_estimator import (
+    _connect_db,
     estimate_editorial_pages,
     list_page_overrides,
     set_page_override,
@@ -18,6 +19,15 @@ from patristica_pipeline.editorial_page_estimator import (
 def write_page(path: Path, body: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(body, encoding="utf-8")
+
+
+def test_estimator_cache_uses_wal_and_busy_timeout(tmp_path: Path) -> None:
+    conn = _connect_db(tmp_path / "editorial_pages.db")
+    try:
+        assert conn.execute("PRAGMA journal_mode").fetchone()[0] == "wal"
+        assert conn.execute("PRAGMA busy_timeout").fetchone()[0] == 30000
+    finally:
+        conn.close()
 
 
 def test_estimator_extracts_header_pair_as_strong_guess(tmp_path: Path) -> None:
@@ -115,6 +125,35 @@ def test_estimator_uses_neighbors_to_fill_missing_header(tmp_path: Path) -> None
     assert item["best_left_page"] == 67
     assert item["best_right_page"] == 68
     assert any(ev["kind"] == "neighbor_fit" for ev in item["evidence"])
+
+
+def test_estimator_overrides_consecutive_cer_pair_with_bracketed_sequence(
+    tmp_path: Path,
+) -> None:
+    text_root = tmp_path / "PGQ" / "text"
+    for file_number, left in enumerate((101, 103, 405, 107, 109), start=1):
+        write_page(
+            text_root / f"page-{file_number:03d}.txt",
+            (
+                "<pagina estado=\"com_texto\">"
+                f"<bloco tipo=\"cabecalho\">{left} INDEX {left + 1}</bloco>"
+                "<bloco tipo=\"texto_principal\">Corpus.</bloco>"
+                "</pagina>"
+            ),
+        )
+
+    result = estimate_editorial_pages(
+        volume_id="PGQ",
+        source_root=text_root,
+        collection="PG",
+        db_path=tmp_path / "editorial_pages.db",
+        use_cache=False,
+    )
+    middle = result["files"][2]
+
+    assert middle["best_guess"] == [105, 106]
+    assert "header_pair_overridden_by_sequence" in middle["warnings"]
+    assert any(ev["kind"] == "sequence_consensus" for ev in middle["evidence"])
 
 
 def test_estimator_reads_split_header_blocks_and_cer_digits(tmp_path: Path) -> None:

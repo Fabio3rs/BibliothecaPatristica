@@ -90,6 +90,7 @@ def build_todo_lines(prescan: dict, collection: str) -> str:
             "- [ ] For each work TODO item, verify front matter and internal tables of books, parts, or chapters.",
             "- [ ] Identify retrospective tables that list other tomes and keep them separate from the current tome.",
             "- [ ] Leave closing names, subjects, scripture, citation, concordance, and alphabetical indexes to the alphabetical-index pipeline.",
+            "- [ ] Resolve every work_anchor_rerun/anchor_locator_review from an existing payload, or preserve it as ambiguous/unresolved with evidence.",
             "- [ ] Recheck uncertain page numbers, bracket pagination, and OCR digits before finalizing.",
         ])
     else:
@@ -97,6 +98,7 @@ def build_todo_lines(prescan: dict, collection: str) -> str:
             "- [ ] Build one TODO item per discovered work.",
             "- [ ] For each work TODO item, verify the opening pages and the work-level index.",
             "- [ ] Leave closing alphabetical, analytical, onomastic, scripture, citation, and concordance indexes to the alphabetical-index pipeline.",
+            "- [ ] Resolve every work_anchor_rerun/anchor_locator_review from an existing payload, or preserve it as ambiguous/unresolved with evidence.",
             "- [ ] Recheck uncertain page numbers, columns, and OCR digits before finalizing.",
         ])
     return "\n".join(lines)
@@ -120,6 +122,17 @@ def work_instructions(collection: str) -> str:
         "- Never infer an editorial/internal page number from the OCR file suffix alone.",
         "- Never infer the OCR file suffix from an editorial/internal page number alone.",
         "- Prefer text evidence over printed numbers: repeated titles, headers, author strings, opening incipits, explicit work names, and distinctive section phrases are stronger anchors than numeric literals.",
+        "- Exact and Levenshtein/fuzzy title matches are additive evidence, not proof by themselves; require an independent author, incipit, structure, or neighborhood signal for short, generic, or damaged titles.",
+        "- Reject title occurrences whose context is an `ORDO`, `ELENCHUS`, catalogue, prefatory inventory, or closing index; those occurrences are source/index evidence, not work targets.",
+        "- Assemble one logical header from every OCR/XML header block on the same physical file. Compare title text after separating numeric tokens, but preserve whether the number and text came from the same block or separate blocks.",
+        "- A similar logical header recurring on at least four physical files is strong evidence for a probable work-body range; allow gaps of up to three files with absent or OCR-damaged headers.",
+        "- Inspect both edges and neighboring files of a recurring-header range. A running header does not by itself prove that the first file is the title page or the last file is the work ending.",
+        "- If the editorial-page estimator supplies a facing-page pair and the declared page is one member, preserve the declared page unless bounding-box, column, or direct text evidence resolves the side.",
+        "- One scan may contain the end of one work and the start of another; adjacent works may share a physical file or editorial page.",
+        "- Never derive `end_page` as `next_start - 1`, and never synthesize `end_file` from editorial numbers alone.",
+        "- Reject a proposed work anchor whose `start_page` is greater than its `end_page`; preserve the evidence and mark it for agent review.",
+        "- Do not collapse a slash-separated or otherwise composite inventory into one locally anchored work unless the OCR proves that the container itself is a work.",
+        "- Treat a pure external remission such as `Vide ... tom.` or `Voir ... tome ...` as having no local target; preserve its literal and referenced tome in `raw_json` instead of inventing a local file anchor.",
         "- Do not map `target_file` from numbers alone when stronger string evidence is available elsewhere in the volume.",
         "- Keep OCR literals.",
         "- When using local text search, scope it to the current volume path only. Good pattern: `rg -n -S \"STRING\" {source_root}`.",
@@ -143,6 +156,7 @@ def work_instructions(collection: str) -> str:
                 "- Distinguish `TABLE DES MATIÈRES` of the current tome from internal work tables and cumulative tables of other tomes.",
                 "- Treat `FASC.` lines as candidate fascicle inventory, but verify whether they belong to the current tome.",
                 "- Inspect the opening pages of each discovered fascicle before naming the work.",
+                "- Expect shared scans and parallel or bracket pagination in PO; preserve each numbering system and require layout/text evidence before choosing a side.",
                 "- Do not extract closing names, subjects, scripture, citation, concordance, alphabetical, or analytical indexes; the alphabetical-index pipeline owns them.",
             ]
         )
@@ -151,6 +165,7 @@ def work_instructions(collection: str) -> str:
             [
                 "- Separate the volume-front inventory from each work's front matter and internal contents.",
                 "- For each work, inspect the opening pages and the work index before naming the work.",
+                "- An occurrence in an `ORDO RERUM`, `ELENCHUS`, or similar front inventory can supply the declared title/page but must never be selected as the work's physical start.",
                 "- Do not extract closing alphabetical, analytical, onomastic, scripture, citation, concordance, names, subjects, or cross-reference indexes.",
                 "- For PG/PL, confirm work boundaries with repeated title/author strings across multiple files when numeric references are noisy.",
             ]

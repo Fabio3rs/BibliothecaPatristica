@@ -128,6 +128,7 @@ def test_semantic_prompt_is_path_only_and_makes_ordo_a_boundary(tmp_path: Path) 
         filtered_pages_file=tmp_path / "filtered.json",
         semantic_dir=tmp_path / "semantic",
         manifest_file=tmp_path / "semantic" / "manifest.json",
+        mechanical_analysis_file=tmp_path / "mechanical_analysis.json",
     )
 
     assert "PHASE: SEMANTIC EXTRACTION" in prompt
@@ -136,9 +137,94 @@ def test_semantic_prompt_is_path_only_and_makes_ordo_a_boundary(tmp_path: Path) 
     assert "no_index_section" in prompt
     assert "consumed_spans" in prompt
     assert "printed range as one editorial_range" in prompt
+    assert str(tmp_path / "mechanical_analysis.json") in prompt
     assert "glossario_notacao_editorial_indices.md" in prompt
     assert "assembled_fragments.json" not in prompt
     assert len(prompt.encode("utf-8")) < 8_000
+
+
+def test_onomastic_helper_queries_separate_name_from_editorial_description() -> None:
+    queries = compact_driver._search_queries(
+        {
+            "section_kind": "onomastic_person",
+            "lemma_raw": "Gregorius II, papa Romanus",
+        }
+    )
+
+    assert "Gregorius II" in queries
+    assert "Gregorius" in queries
+    assert "Gregorius secundus" in queries
+    assert "Gregorius secundi" in queries
+
+    leo_queries = compact_driver._search_queries(
+        {"section_kind": "onomastic_person", "lemma_raw": "Leo III"}
+    )
+    assert "Leoni" in leo_queries
+    assert "Leonis" in leo_queries
+
+
+def test_compact_helper_candidate_preserves_internal_locator_evidence() -> None:
+    candidate = {
+        "file": "/corpus/page.txt",
+        "probability": 0.99,
+        "evidence": [
+            {"kind": f"generic_{index}", "raw": str(index), "weight": 1.0}
+            for index in range(8)
+        ]
+        + [
+            {"kind": "body_locator_name_unique", "raw": "Gregorius", "weight": 5.0},
+            {"kind": "body_locator_match", "raw": "114", "weight": 2.5},
+            {
+                "kind": "internal_locator_vs_editorial_sequence",
+                "raw": "114 vs 153-154",
+                "weight": 3.5,
+            },
+        ],
+    }
+
+    compact = compact_driver._compact_helper_candidate(candidate)
+    kinds = {item["kind"] for item in compact["evidence"]}
+
+    assert "body_locator_name_unique" in kinds
+    assert "body_locator_match" in kinds
+    assert "internal_locator_vs_editorial_sequence" in kinds
+
+
+def test_helper_request_supplies_neighbor_name_groups_and_sibling_hints(
+    tmp_path: Path,
+) -> None:
+    items = []
+    for order, lemma, page in (
+        (1, "Gregorius II", 114),
+        (2, "Zacharias", 119),
+        (3, "Stephanus II", 121),
+    ):
+        items.append(
+            {
+                "locator_key": f"e{order}::ref:000001",
+                "entry_key": f"e{order}",
+                "entry_order": order,
+                "section_key": "s1",
+                "section_kind": "onomastic_person",
+                "section_heading": "INDEX ONOMASTICUS",
+                "lemma_raw": lemma,
+                "entry_excerpt": f"{lemma} {page}",
+                "page_ref_raw": str(page),
+                "cited_pages": [page],
+            }
+        )
+
+    request = compact_driver._helper_request(
+        items,
+        volume_id="PLX",
+        source_root=tmp_path,
+    )
+
+    middle = request["entries"][1]
+    assert middle["sibling_page_hint_ints"] == [119]
+    flattened = {query for group in middle["neighbor_query_groups"] for query in group}
+    assert "Gregorius" in flattened
+    assert "Stephanus II" in flattened
 
 
 def test_locator_and_repair_prompts_preserve_genuine_ambiguity(tmp_path: Path) -> None:
@@ -606,7 +692,8 @@ def test_scripture_table_micro_agent_is_path_only_and_attaches_bounded_suggestio
         write_json(
             expected_output,
             {
-                "schema_version": 1,
+                "schema_version": OUTPUT_SCHEMA_VERSION,
+                **prompt_reference_bundle(),
                 "volume_id": "PO025",
                 "input_fingerprint": request["input_fingerprint"],
                 "results": [

@@ -20,7 +20,7 @@ from patristica_pipeline.scripture_book_catalog import (
 )
 
 DEFAULT_DB = Path("data/alphabetical_indices.db")
-ALPHABETICAL_DB_SCHEMA_VERSION = 7
+ALPHABETICAL_DB_SCHEMA_VERSION = 8
 
 SCHEMA_SQL = """
 PRAGMA foreign_keys = ON;
@@ -70,6 +70,31 @@ CREATE TABLE IF NOT EXISTS alphabetical_sections (
     page_end INTEGER,
     file_start TEXT,
     file_end TEXT,
+    index_editorial_page_start INTEGER,
+    index_editorial_page_end INTEGER,
+    index_ocr_file_start TEXT,
+    index_ocr_file_end TEXT,
+    pipeline_owner TEXT NOT NULL DEFAULT 'alphabetical' CHECK (
+        pipeline_owner IN ('alphabetical', 'general')
+    ),
+    alphabetical_role TEXT NOT NULL DEFAULT 'owned_section' CHECK (
+        alphabetical_role IN ('owned_section', 'stop_boundary')
+    ),
+    material_reference_mode TEXT NOT NULL DEFAULT 'remissive' CHECK (
+        material_reference_mode IN (
+            'remissive', 'parallel', 'source_only', 'boundary_only'
+        )
+    ),
+    scripture_mode TEXT NOT NULL DEFAULT 'none' CHECK (
+        scripture_mode IN (
+            'none', 'citation_index', 'pericope_index',
+            'concordance_component', 'textual_apparatus',
+            'incidental_mention'
+        )
+    ),
+    taxonomy_source TEXT NOT NULL DEFAULT 'legacy_inferred' CHECK (
+        taxonomy_source IN ('explicit', 'legacy_inferred')
+    ),
     confidence REAL,
     raw_json TEXT NOT NULL,
     CHECK (section_order IS NULL OR section_order >= 1),
@@ -145,6 +170,10 @@ CREATE TABLE IF NOT EXISTS alphabetical_entries (
     section_start_file TEXT,
     editorial_anchor_file TEXT,
     target_file_best TEXT,
+    index_editorial_page_estimate INTEGER,
+    index_section_start_ocr_file TEXT,
+    index_entry_source_ocr_file TEXT,
+    resolved_target_ocr_file TEXT,
     confidence REAL,
     raw_json TEXT NOT NULL,
     CHECK (entry_order >= 1),
@@ -190,6 +219,23 @@ CREATE TABLE IF NOT EXISTS alphabetical_refs (
     range_end_raw TEXT,
     target_file TEXT,
     target_file_probability REAL,
+    cited_editorial_page_start_raw TEXT,
+    cited_editorial_page_start_number INTEGER,
+    cited_editorial_page_end_raw TEXT,
+    cited_editorial_page_end_number INTEGER,
+    cited_editorial_column_raw TEXT,
+    cited_editorial_line_raw TEXT,
+    cited_editorial_line_start_raw TEXT,
+    cited_editorial_line_start_number INTEGER,
+    cited_editorial_line_end_raw TEXT,
+    cited_editorial_line_end_number INTEGER,
+    resolved_target_ocr_file TEXT,
+    target_ocr_file_candidate_score REAL,
+    cited_location_parse_status TEXT NOT NULL DEFAULT 'unparsed' CHECK (
+        cited_location_parse_status IN (
+            'parsed', 'partial', 'unparsed', 'not_applicable'
+        )
+    ),
     locator_status TEXT NOT NULL DEFAULT 'unverified' CHECK (
         locator_status IN ('resolved', 'ambiguous', 'unresolved', 'unverified')
     ),
@@ -214,12 +260,37 @@ CREATE TABLE IF NOT EXISTS alphabetical_refs (
         target_file_probability IS NULL
         OR (target_file_probability >= 0.0 AND target_file_probability <= 1.0)
     ),
+    CHECK (
+        target_ocr_file_candidate_score IS NULL
+        OR (
+            target_ocr_file_candidate_score >= 0.0
+            AND target_ocr_file_candidate_score <= 1.0
+        )
+    ),
+    CHECK (
+        cited_editorial_page_start_number IS NULL
+        OR cited_editorial_page_start_number >= 1
+    ),
+    CHECK (
+        cited_editorial_page_end_number IS NULL
+        OR cited_editorial_page_end_number >= 1
+    ),
+    CHECK (
+        cited_editorial_line_start_number IS NULL
+        OR cited_editorial_line_start_number >= 1
+    ),
+    CHECK (
+        cited_editorial_line_end_number IS NULL
+        OR cited_editorial_line_end_number >= 1
+    ),
     CHECK (confidence IS NULL OR (confidence >= 0.0 AND confidence <= 1.0))
 );
 CREATE INDEX IF NOT EXISTS idx_alpha_refs_entry_key
     ON alphabetical_refs(entry_key);
 CREATE INDEX IF NOT EXISTS idx_alpha_refs_page_ref_int
     ON alphabetical_refs(page_ref_int);
+CREATE INDEX IF NOT EXISTS idx_alpha_refs_cited_editorial_page
+    ON alphabetical_refs(cited_editorial_page_start_number);
 CREATE INDEX IF NOT EXISTS idx_alpha_refs_kind
     ON alphabetical_refs(ref_kind);
 CREATE UNIQUE INDEX IF NOT EXISTS idx_alpha_refs_entry_order
@@ -227,6 +298,241 @@ CREATE UNIQUE INDEX IF NOT EXISTS idx_alpha_refs_entry_order
 CREATE INDEX IF NOT EXISTS idx_alpha_refs_scripture_parent
     ON alphabetical_refs(entry_key, scripture_ref_order)
     WHERE scripture_ref_order IS NOT NULL;
+
+CREATE TABLE IF NOT EXISTS alphabetical_source_spans (
+    span_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    volume_id TEXT NOT NULL REFERENCES alphabetical_volumes(volume_id) ON DELETE CASCADE,
+    ocr_file_path TEXT NOT NULL,
+    line_start INTEGER NOT NULL,
+    line_end INTEGER NOT NULL,
+    block_type TEXT,
+    text_sha256 TEXT,
+    created_at TEXT NOT NULL,
+    CHECK (line_start >= 1),
+    CHECK (line_end >= line_start),
+    CHECK (
+        text_sha256 IS NULL
+        OR text_sha256 GLOB '[0-9a-f][0-9a-f]*'
+           AND length(text_sha256) = 64
+    ),
+    UNIQUE (
+        volume_id, ocr_file_path, line_start, line_end,
+        block_type, text_sha256
+    )
+);
+CREATE INDEX IF NOT EXISTS idx_alpha_source_spans_volume_file
+    ON alphabetical_source_spans(volume_id, ocr_file_path);
+
+CREATE TABLE IF NOT EXISTS alphabetical_entry_source_spans (
+    entry_key TEXT NOT NULL REFERENCES alphabetical_entries(entry_key) ON DELETE CASCADE,
+    span_id INTEGER NOT NULL REFERENCES alphabetical_source_spans(span_id) ON DELETE CASCADE,
+    span_order INTEGER NOT NULL DEFAULT 1,
+    span_role TEXT NOT NULL DEFAULT 'primary' CHECK (
+        span_role IN ('primary', 'continuation', 'supporting')
+    ),
+    PRIMARY KEY (entry_key, span_order),
+    UNIQUE (entry_key, span_id),
+    CHECK (span_order >= 1)
+);
+
+CREATE TABLE IF NOT EXISTS alphabetical_section_source_spans (
+    section_key TEXT NOT NULL REFERENCES alphabetical_sections(section_key) ON DELETE CASCADE,
+    span_id INTEGER NOT NULL REFERENCES alphabetical_source_spans(span_id) ON DELETE CASCADE,
+    span_order INTEGER NOT NULL DEFAULT 1,
+    span_role TEXT NOT NULL DEFAULT 'owned' CHECK (
+        span_role IN ('owned', 'context', 'uncertain')
+    ),
+    PRIMARY KEY (section_key, span_order),
+    UNIQUE (section_key, span_id),
+    CHECK (span_order >= 1)
+);
+
+CREATE TABLE IF NOT EXISTS alphabetical_boundaries (
+    boundary_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    volume_id TEXT NOT NULL REFERENCES alphabetical_volumes(volume_id) ON DELETE CASCADE,
+    boundary_order INTEGER NOT NULL,
+    boundary_kind TEXT NOT NULL CHECK (
+        boundary_kind IN (
+            'ordo_rerum', 'editorial_closure', 'addenda_corrigenda',
+            'errata', 'general_pipeline_material', 'other'
+        )
+    ),
+    heading_raw TEXT,
+    ocr_file_path TEXT NOT NULL,
+    line_start INTEGER,
+    line_end INTEGER,
+    reason TEXT NOT NULL,
+    raw_json TEXT NOT NULL,
+    CHECK (boundary_order >= 1),
+    CHECK (line_start IS NULL OR line_start >= 1),
+    CHECK (line_end IS NULL OR line_start IS NOT NULL AND line_end >= line_start),
+    UNIQUE (volume_id, boundary_order)
+);
+
+CREATE TABLE IF NOT EXISTS alphabetical_locator_evidence (
+    evidence_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    ref_id INTEGER NOT NULL REFERENCES alphabetical_refs(ref_id) ON DELETE CASCADE,
+    evidence_order INTEGER NOT NULL,
+    evidence_kind TEXT NOT NULL,
+    evidence_ocr_file_path TEXT,
+    observed_editorial_page_raw TEXT,
+    observed_editorial_page_number INTEGER,
+    detail TEXT,
+    weight REAL,
+    raw_json TEXT NOT NULL,
+    CHECK (evidence_order >= 1),
+    CHECK (
+        observed_editorial_page_number IS NULL
+        OR observed_editorial_page_number >= 1
+    ),
+    CHECK (weight IS NULL OR (weight >= 0.0 AND weight <= 1.0)),
+    UNIQUE (ref_id, evidence_order)
+);
+CREATE INDEX IF NOT EXISTS idx_alpha_locator_evidence_ref
+    ON alphabetical_locator_evidence(ref_id);
+CREATE INDEX IF NOT EXISTS idx_alpha_locator_evidence_kind
+    ON alphabetical_locator_evidence(evidence_kind);
+
+CREATE TRIGGER IF NOT EXISTS trg_alpha_sections_legacy_alias_insert
+AFTER INSERT ON alphabetical_sections
+BEGIN
+    UPDATE alphabetical_sections
+    SET index_editorial_page_start = COALESCE(
+            NEW.index_editorial_page_start, NEW.page_start
+        ),
+        index_editorial_page_end = COALESCE(
+            NEW.index_editorial_page_end, NEW.page_end
+        ),
+        index_ocr_file_start = COALESCE(
+            NEW.index_ocr_file_start, NEW.file_start
+        ),
+        index_ocr_file_end = COALESCE(NEW.index_ocr_file_end, NEW.file_end),
+        page_start = COALESCE(NEW.page_start, NEW.index_editorial_page_start),
+        page_end = COALESCE(NEW.page_end, NEW.index_editorial_page_end),
+        file_start = COALESCE(NEW.file_start, NEW.index_ocr_file_start),
+        file_end = COALESCE(NEW.file_end, NEW.index_ocr_file_end)
+    WHERE section_key = NEW.section_key;
+END;
+
+CREATE TRIGGER IF NOT EXISTS trg_alpha_sections_legacy_alias_update
+AFTER UPDATE OF page_start, page_end, file_start, file_end
+ON alphabetical_sections
+BEGIN
+    UPDATE alphabetical_sections
+    SET index_editorial_page_start = NEW.page_start,
+        index_editorial_page_end = NEW.page_end,
+        index_ocr_file_start = NEW.file_start,
+        index_ocr_file_end = NEW.file_end
+    WHERE section_key = NEW.section_key;
+END;
+
+CREATE TRIGGER IF NOT EXISTS trg_alpha_sections_canonical_alias_update
+AFTER UPDATE OF index_editorial_page_start, index_editorial_page_end,
+                index_ocr_file_start, index_ocr_file_end
+ON alphabetical_sections
+BEGIN
+    UPDATE alphabetical_sections
+    SET page_start = NEW.index_editorial_page_start,
+        page_end = NEW.index_editorial_page_end,
+        file_start = NEW.index_ocr_file_start,
+        file_end = NEW.index_ocr_file_end
+    WHERE section_key = NEW.section_key;
+END;
+
+CREATE TRIGGER IF NOT EXISTS trg_alpha_entries_legacy_alias_insert
+AFTER INSERT ON alphabetical_entries
+BEGIN
+    UPDATE alphabetical_entries
+    SET index_editorial_page_estimate = COALESCE(
+            NEW.index_editorial_page_estimate, NEW.inferred_printed_page
+        ),
+        index_section_start_ocr_file = COALESCE(
+            NEW.index_section_start_ocr_file, NEW.section_start_file
+        ),
+        index_entry_source_ocr_file = COALESCE(
+            NEW.index_entry_source_ocr_file, NEW.editorial_anchor_file
+        ),
+        resolved_target_ocr_file = COALESCE(
+            NEW.resolved_target_ocr_file, NEW.target_file_best
+        ),
+        inferred_printed_page = COALESCE(
+            NEW.inferred_printed_page, NEW.index_editorial_page_estimate
+        ),
+        section_start_file = COALESCE(
+            NEW.section_start_file, NEW.index_section_start_ocr_file
+        ),
+        editorial_anchor_file = COALESCE(
+            NEW.editorial_anchor_file, NEW.index_entry_source_ocr_file
+        ),
+        target_file_best = COALESCE(
+            NEW.target_file_best, NEW.resolved_target_ocr_file
+        )
+    WHERE entry_key = NEW.entry_key;
+END;
+
+CREATE TRIGGER IF NOT EXISTS trg_alpha_entries_legacy_alias_update
+AFTER UPDATE OF inferred_printed_page, section_start_file,
+                editorial_anchor_file, target_file_best
+ON alphabetical_entries
+BEGIN
+    UPDATE alphabetical_entries
+    SET index_editorial_page_estimate = NEW.inferred_printed_page,
+        index_section_start_ocr_file = NEW.section_start_file,
+        index_entry_source_ocr_file = NEW.editorial_anchor_file,
+        resolved_target_ocr_file = NEW.target_file_best
+    WHERE entry_key = NEW.entry_key;
+END;
+
+CREATE TRIGGER IF NOT EXISTS trg_alpha_entries_canonical_alias_update
+AFTER UPDATE OF index_editorial_page_estimate, index_section_start_ocr_file,
+                index_entry_source_ocr_file, resolved_target_ocr_file
+ON alphabetical_entries
+BEGIN
+    UPDATE alphabetical_entries
+    SET inferred_printed_page = NEW.index_editorial_page_estimate,
+        section_start_file = NEW.index_section_start_ocr_file,
+        editorial_anchor_file = NEW.index_entry_source_ocr_file,
+        target_file_best = NEW.resolved_target_ocr_file
+    WHERE entry_key = NEW.entry_key;
+END;
+
+CREATE TRIGGER IF NOT EXISTS trg_alpha_refs_target_alias_insert
+AFTER INSERT ON alphabetical_refs
+BEGIN
+    UPDATE alphabetical_refs
+    SET resolved_target_ocr_file = COALESCE(
+            NEW.resolved_target_ocr_file, NEW.target_file
+        ),
+        target_ocr_file_candidate_score = COALESCE(
+            NEW.target_ocr_file_candidate_score,
+            NEW.target_file_probability
+        ),
+        target_file = COALESCE(NEW.target_file, NEW.resolved_target_ocr_file),
+        target_file_probability = COALESCE(
+            NEW.target_file_probability,
+            NEW.target_ocr_file_candidate_score
+        )
+    WHERE ref_id = NEW.ref_id;
+END;
+
+CREATE TRIGGER IF NOT EXISTS trg_alpha_refs_legacy_target_update
+AFTER UPDATE OF target_file, target_file_probability ON alphabetical_refs
+BEGIN
+    UPDATE alphabetical_refs
+    SET resolved_target_ocr_file = NEW.target_file,
+        target_ocr_file_candidate_score = NEW.target_file_probability
+    WHERE ref_id = NEW.ref_id;
+END;
+
+CREATE TRIGGER IF NOT EXISTS trg_alpha_refs_canonical_target_update
+AFTER UPDATE OF resolved_target_ocr_file, target_ocr_file_candidate_score
+ON alphabetical_refs
+BEGIN
+    UPDATE alphabetical_refs
+    SET target_file = NEW.resolved_target_ocr_file,
+        target_file_probability = NEW.target_ocr_file_candidate_score
+    WHERE ref_id = NEW.ref_id;
+END;
 
 CREATE TABLE IF NOT EXISTS alphabetical_scripture_refs (
     scripture_ref_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -333,6 +639,9 @@ CREATE TABLE IF NOT EXISTS alphabetical_volume_quality (
     forbidden_section_count INTEGER NOT NULL,
     unknown_scripture_book_count INTEGER NOT NULL,
     unverified_target_count INTEGER NOT NULL,
+    entry_without_source_span_count INTEGER NOT NULL DEFAULT 0,
+    legacy_inferred_taxonomy_count INTEGER NOT NULL DEFAULT 0,
+    malformed_cited_location_count INTEGER NOT NULL DEFAULT 0,
     computed_at TEXT NOT NULL,
     raw_json TEXT NOT NULL,
     CHECK (db_schema_version >= 1),
@@ -346,7 +655,10 @@ CREATE TABLE IF NOT EXISTS alphabetical_volume_quality (
     CHECK (locator_partial IN (0, 1)),
     CHECK (forbidden_section_count >= 0),
     CHECK (unknown_scripture_book_count >= 0),
-    CHECK (unverified_target_count >= 0)
+    CHECK (unverified_target_count >= 0),
+    CHECK (entry_without_source_span_count >= 0),
+    CHECK (legacy_inferred_taxonomy_count >= 0),
+    CHECK (malformed_cited_location_count >= 0)
 );
 
 CREATE TABLE IF NOT EXISTS alphabetical_translations (
@@ -393,8 +705,11 @@ def init_schema(con: sqlite3.Connection) -> None:
     _migrate_scripture_material_links(con)
     _migrate_ref_locator_status(con)
     _migrate_scripture_book_keys(con)
+    migrated_v8_fields = _migrate_v8_field_semantics(con)
     _migrate_quality_schema(con)
     con.executescript(SCHEMA_SQL)
+    if migrated_v8_fields:
+        backfill_locator_evidence(con)
     con.execute(
         """INSERT INTO alphabetical_schema_meta (meta_key, meta_value, updated_at)
         VALUES ('schema_version', ?, ?)
@@ -428,6 +743,403 @@ def _table_exists(con: sqlite3.Connection, table_name: str) -> bool:
 def _table_columns(con: sqlite3.Connection, table_name: str) -> set[str]:
     rows = con.execute(f"PRAGMA table_info({table_name})").fetchall()
     return {str(row["name"]) for row in rows}
+
+
+def _add_column_if_missing(
+    con: sqlite3.Connection,
+    table_name: str,
+    column_name: str,
+    declaration: str,
+) -> None:
+    if column_name in _table_columns(con, table_name):
+        return
+    con.execute(
+        f"ALTER TABLE {table_name} ADD COLUMN {column_name} {declaration}"
+    )
+
+
+def _positive_int_literal(value: object) -> int | None:
+    text = str(value or "").strip()
+    if not re.fullmatch(r"[0-9]+", text):
+        return None
+    number = int(text)
+    return number if number >= 1 else None
+
+
+EDITORIAL_NUMERIC_GLYPH_TRANSLATION = str.maketrans(
+    "₀₁₂₃₄₅₆₇₈₉₋⁰¹²³⁴⁵⁶⁷⁸⁹⁻",
+    "0123456789-0123456789-",
+)
+
+
+def canonical_ref_location(ref: dict[str, object]) -> dict[str, object | None]:
+    """Return unambiguous cited-editorial endpoints from v1 or v8 fields.
+
+    Editorial numbers are printed locators. OCR file paths are deliberately not
+    inferred here: they belong to the separate target fields.
+    """
+
+    start_raw = ref.get("cited_editorial_page_start_raw")
+    start_number = ref.get("cited_editorial_page_start_number")
+    end_raw = ref.get("cited_editorial_page_end_raw")
+    end_number = ref.get("cited_editorial_page_end_number")
+    column_raw = ref.get("cited_editorial_column_raw")
+    line_raw = ref.get("cited_editorial_line_raw")
+    line_start_raw = ref.get("cited_editorial_line_start_raw")
+    line_start_number = ref.get("cited_editorial_line_start_number")
+    line_end_raw = ref.get("cited_editorial_line_end_raw")
+    line_end_number = ref.get("cited_editorial_line_end_number")
+
+    ref_kind = str(ref.get("ref_kind") or "")
+    if start_raw is None:
+        if ref_kind == "editorial_range":
+            start_raw = ref.get("range_start_raw") or ref.get("page_ref_raw")
+        else:
+            start_raw = ref.get("page_ref_raw")
+    if start_number is None:
+        start_number = ref.get("page_ref_int")
+    if start_number is None:
+        start_number = _positive_int_literal(start_raw)
+    if ref_kind == "editorial_range":
+        if end_raw is None:
+            end_raw = ref.get("range_end_raw")
+        if end_number is None:
+            end_number = _positive_int_literal(end_raw)
+    if column_raw is None:
+        column_raw = ref.get("page_ref_col")
+    if line_raw is None:
+        line_raw = ref.get("line_ref_raw")
+
+    line_text = str(line_raw or "").strip().translate(
+        EDITORIAL_NUMERIC_GLYPH_TRANSLATION
+    )
+    if line_text and line_start_number is None:
+        cross_page = re.fullmatch(
+            r"\D*(\d+)\s*[-–—]\s*(\d+)\s*[,_.:]\s*(\d+)\D*",
+            line_text,
+        )
+        same_page_range = re.fullmatch(
+            r"\D*(\d+)\s*[-–—]\s*(\d+)\D*",
+            line_text,
+        )
+        single_line = re.fullmatch(r"\D*(\d+)\D*", line_text)
+        if cross_page:
+            line_start_raw = line_start_raw or cross_page.group(1)
+            line_start_number = int(cross_page.group(1))
+            end_raw = end_raw or cross_page.group(2)
+            end_number = end_number or int(cross_page.group(2))
+            line_end_raw = line_end_raw or cross_page.group(3)
+            line_end_number = int(cross_page.group(3))
+        elif same_page_range:
+            line_start_raw = line_start_raw or same_page_range.group(1)
+            line_start_number = int(same_page_range.group(1))
+            line_end_raw = line_end_raw or same_page_range.group(2)
+            line_end_number = int(same_page_range.group(2))
+            end_raw = end_raw or start_raw
+            end_number = end_number or start_number
+        elif single_line:
+            line_start_raw = line_start_raw or single_line.group(1)
+            line_start_number = int(single_line.group(1))
+
+    if ref_kind in {"target_locator", "parallel_locator", "unresolved"} and not (
+        start_raw or line_raw or column_raw
+    ):
+        parse_status = "not_applicable"
+    elif ref_kind == "editorial_page_line":
+        parse_status = (
+            "parsed" if start_number is not None and line_start_number is not None
+            else "partial" if start_raw is not None or line_raw is not None
+            else "unparsed"
+        )
+    elif ref_kind == "editorial_range":
+        parse_status = (
+            "parsed" if start_number is not None and end_number is not None
+            else "partial" if start_raw is not None or end_raw is not None
+            else "unparsed"
+        )
+    else:
+        parse_status = (
+            "parsed" if start_number is not None
+            else "partial" if start_raw is not None or column_raw is not None
+            else "unparsed"
+        )
+
+    return {
+        "cited_editorial_page_start_raw": (
+            str(start_raw) if start_raw is not None else None
+        ),
+        "cited_editorial_page_start_number": start_number,
+        "cited_editorial_page_end_raw": (
+            str(end_raw) if end_raw is not None else None
+        ),
+        "cited_editorial_page_end_number": end_number,
+        "cited_editorial_column_raw": (
+            str(column_raw) if column_raw is not None else None
+        ),
+        "cited_editorial_line_raw": (
+            str(line_raw) if line_raw is not None else None
+        ),
+        "cited_editorial_line_start_raw": (
+            str(line_start_raw) if line_start_raw is not None else None
+        ),
+        "cited_editorial_line_start_number": line_start_number,
+        "cited_editorial_line_end_raw": (
+            str(line_end_raw) if line_end_raw is not None else None
+        ),
+        "cited_editorial_line_end_number": line_end_number,
+        "cited_location_parse_status": parse_status,
+    }
+
+
+def _migrate_v8_field_semantics(con: sqlite3.Connection) -> bool:
+    migrated = False
+    if _table_exists(con, "alphabetical_sections"):
+        section_columns = {
+            "index_editorial_page_start": "INTEGER",
+            "index_editorial_page_end": "INTEGER",
+            "index_ocr_file_start": "TEXT",
+            "index_ocr_file_end": "TEXT",
+            "pipeline_owner": "TEXT NOT NULL DEFAULT 'alphabetical'",
+            "alphabetical_role": "TEXT NOT NULL DEFAULT 'owned_section'",
+            "material_reference_mode": "TEXT NOT NULL DEFAULT 'remissive'",
+            "scripture_mode": "TEXT NOT NULL DEFAULT 'none'",
+            "taxonomy_source": "TEXT NOT NULL DEFAULT 'legacy_inferred'",
+        }
+        section_needs_backfill = any(
+            name not in _table_columns(con, "alphabetical_sections")
+            for name in section_columns
+        )
+        migrated = migrated or section_needs_backfill
+        for name, declaration in section_columns.items():
+            _add_column_if_missing(
+                con, "alphabetical_sections", name, declaration
+            )
+        if section_needs_backfill:
+            con.execute(
+            """UPDATE alphabetical_sections
+            SET index_editorial_page_start = COALESCE(
+                    index_editorial_page_start, page_start
+                ),
+                index_editorial_page_end = COALESCE(
+                    index_editorial_page_end, page_end
+                ),
+                index_ocr_file_start = COALESCE(
+                    index_ocr_file_start, file_start
+                ),
+                index_ocr_file_end = COALESCE(index_ocr_file_end, file_end),
+                pipeline_owner = CASE
+                    WHEN json_valid(raw_json)
+                     AND json_extract(raw_json, '$.pipeline_owner') IN (
+                        'alphabetical', 'general'
+                     ) THEN json_extract(raw_json, '$.pipeline_owner')
+                    WHEN section_kind IN ('ordo_rerum', 'editorial_closure')
+                        THEN 'general'
+                    ELSE pipeline_owner
+                END,
+                alphabetical_role = CASE
+                    WHEN json_valid(raw_json)
+                     AND json_extract(raw_json, '$.alphabetical_role') IN (
+                        'owned_section', 'stop_boundary'
+                     ) THEN json_extract(raw_json, '$.alphabetical_role')
+                    WHEN section_kind IN ('ordo_rerum', 'editorial_closure')
+                        THEN 'stop_boundary'
+                    ELSE alphabetical_role
+                END,
+                material_reference_mode = CASE
+                    WHEN json_valid(raw_json)
+                     AND json_extract(
+                        raw_json, '$.material_reference_mode'
+                     ) IN (
+                        'remissive', 'parallel', 'source_only', 'boundary_only'
+                     ) THEN json_extract(
+                        raw_json, '$.material_reference_mode'
+                     )
+                    WHEN section_kind IN ('ordo_rerum', 'editorial_closure')
+                        THEN 'boundary_only'
+                    WHEN section_kind = 'concordance_index' THEN 'parallel'
+                    ELSE material_reference_mode
+                END,
+                scripture_mode = CASE
+                    WHEN json_valid(raw_json)
+                     AND json_extract(raw_json, '$.scripture_mode') IN (
+                        'none', 'citation_index', 'pericope_index',
+                        'concordance_component', 'textual_apparatus',
+                        'incidental_mention'
+                     ) THEN json_extract(raw_json, '$.scripture_mode')
+                    WHEN section_kind = 'scripture_index' THEN 'citation_index'
+                    WHEN section_kind = 'pericope_index' THEN 'pericope_index'
+                    WHEN section_kind = 'concordance_index'
+                        THEN 'concordance_component'
+                    ELSE scripture_mode
+                END,
+                taxonomy_source = CASE
+                    WHEN json_valid(raw_json)
+                     AND json_extract(raw_json, '$.pipeline_owner') IS NOT NULL
+                     AND json_extract(raw_json, '$.alphabetical_role') IS NOT NULL
+                     AND json_extract(
+                        raw_json, '$.material_reference_mode'
+                     ) IS NOT NULL
+                     AND json_extract(raw_json, '$.scripture_mode') IS NOT NULL
+                        THEN 'explicit'
+                    ELSE 'legacy_inferred'
+                END"""
+            )
+
+    if _table_exists(con, "alphabetical_entries"):
+        entry_columns = {
+            "index_editorial_page_estimate": "INTEGER",
+            "index_section_start_ocr_file": "TEXT",
+            "index_entry_source_ocr_file": "TEXT",
+            "resolved_target_ocr_file": "TEXT",
+        }
+        entry_needs_backfill = any(
+            name not in _table_columns(con, "alphabetical_entries")
+            for name in entry_columns
+        )
+        migrated = migrated or entry_needs_backfill
+        for name, declaration in entry_columns.items():
+            _add_column_if_missing(
+                con, "alphabetical_entries", name, declaration
+            )
+        if entry_needs_backfill:
+            con.execute(
+            """UPDATE alphabetical_entries
+            SET index_editorial_page_estimate = COALESCE(
+                    index_editorial_page_estimate, inferred_printed_page
+                ),
+                index_section_start_ocr_file = COALESCE(
+                    index_section_start_ocr_file, section_start_file
+                ),
+                index_entry_source_ocr_file = COALESCE(
+                    index_entry_source_ocr_file, editorial_anchor_file
+                ),
+                resolved_target_ocr_file = COALESCE(
+                    resolved_target_ocr_file, target_file_best
+                )"""
+            )
+
+    if not _table_exists(con, "alphabetical_refs"):
+        return migrated
+    ref_columns = {
+        "cited_editorial_page_start_raw": "TEXT",
+        "cited_editorial_page_start_number": "INTEGER",
+        "cited_editorial_page_end_raw": "TEXT",
+        "cited_editorial_page_end_number": "INTEGER",
+        "cited_editorial_column_raw": "TEXT",
+        "cited_editorial_line_raw": "TEXT",
+        "cited_editorial_line_start_raw": "TEXT",
+        "cited_editorial_line_start_number": "INTEGER",
+        "cited_editorial_line_end_raw": "TEXT",
+        "cited_editorial_line_end_number": "INTEGER",
+        "resolved_target_ocr_file": "TEXT",
+        "target_ocr_file_candidate_score": "REAL",
+        "cited_location_parse_status": "TEXT NOT NULL DEFAULT 'unparsed'",
+    }
+    ref_needs_backfill = any(
+        name not in _table_columns(con, "alphabetical_refs")
+        for name in ref_columns
+    )
+    migrated = migrated or ref_needs_backfill
+    for name, declaration in ref_columns.items():
+        _add_column_if_missing(con, "alphabetical_refs", name, declaration)
+    if not ref_needs_backfill:
+        return migrated
+    rows = con.execute(
+        """SELECT ref_id, ref_kind, page_ref_raw, page_ref_int,
+                  page_ref_col, line_ref_raw, range_start_raw, range_end_raw,
+                  cited_editorial_page_start_raw,
+                  cited_editorial_page_start_number,
+                  cited_editorial_page_end_raw,
+                  cited_editorial_page_end_number,
+                  cited_editorial_column_raw, cited_editorial_line_raw,
+                  cited_editorial_line_start_raw,
+                  cited_editorial_line_start_number,
+                  cited_editorial_line_end_raw,
+                  cited_editorial_line_end_number
+        FROM alphabetical_refs"""
+    ).fetchall()
+    repairs = []
+    for row in rows:
+        location = canonical_ref_location(dict(row))
+        repairs.append(
+            (
+                *location.values(),
+                int(row["ref_id"]),
+            )
+        )
+    con.executemany(
+        """UPDATE alphabetical_refs
+        SET cited_editorial_page_start_raw = ?,
+            cited_editorial_page_start_number = ?,
+            cited_editorial_page_end_raw = ?,
+            cited_editorial_page_end_number = ?,
+            cited_editorial_column_raw = ?,
+            cited_editorial_line_raw = ?,
+            cited_editorial_line_start_raw = ?,
+            cited_editorial_line_start_number = ?,
+            cited_editorial_line_end_raw = ?,
+            cited_editorial_line_end_number = ?,
+            cited_location_parse_status = ?,
+            resolved_target_ocr_file = COALESCE(
+                resolved_target_ocr_file, target_file
+            ),
+            target_ocr_file_candidate_score = COALESCE(
+                target_ocr_file_candidate_score, target_file_probability
+            )
+        WHERE ref_id = ?""",
+        repairs,
+    )
+    return migrated
+
+
+def backfill_locator_evidence(con: sqlite3.Connection) -> None:
+    if not all(
+        _table_exists(con, table_name)
+        for table_name in ("alphabetical_refs", "alphabetical_locator_evidence")
+    ):
+        return
+    rows = con.execute(
+        """SELECT ref_id, raw_json
+        FROM alphabetical_refs
+        WHERE json_valid(raw_json)
+          AND json_type(raw_json, '$.compact_locator.evidence') = 'array'"""
+    ).fetchall()
+    inserts: list[tuple[object, ...]] = []
+    for row in rows:
+        raw = json.loads(str(row["raw_json"]))
+        locator = raw.get("compact_locator")
+        evidence = locator.get("evidence") if isinstance(locator, dict) else []
+        if not isinstance(evidence, list):
+            continue
+        for order, item in enumerate(evidence, start=1):
+            if not isinstance(item, dict):
+                continue
+            page_raw = item.get("editorial_page")
+            page_number = _positive_int_literal(page_raw)
+            weight = item.get("weight")
+            if not isinstance(weight, (int, float)) or isinstance(weight, bool):
+                weight = None
+            inserts.append(
+                (
+                    int(row["ref_id"]),
+                    order,
+                    str(item.get("kind") or "unspecified"),
+                    str(item["file"]) if item.get("file") else None,
+                    str(page_raw) if page_raw is not None else None,
+                    page_number,
+                    str(item["detail"]) if item.get("detail") else None,
+                    weight,
+                    json.dumps(item, ensure_ascii=False, sort_keys=True),
+                )
+            )
+    con.executemany(
+        """INSERT OR IGNORE INTO alphabetical_locator_evidence (
+            ref_id, evidence_order, evidence_kind, evidence_ocr_file_path,
+            observed_editorial_page_raw, observed_editorial_page_number,
+            detail, weight, raw_json
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+        inserts,
+    )
 
 
 def _migrate_scripture_material_links(con: sqlite3.Connection) -> None:
@@ -785,6 +1497,24 @@ def _migrate_quality_schema(con: sqlite3.Connection) -> None:
             ADD COLUMN unverified_target_count INTEGER NOT NULL DEFAULT 0
             CHECK (unverified_target_count >= 0)"""
         )
+    if "entry_without_source_span_count" not in columns:
+        con.execute(
+            """ALTER TABLE alphabetical_volume_quality
+            ADD COLUMN entry_without_source_span_count INTEGER NOT NULL DEFAULT 0
+            CHECK (entry_without_source_span_count >= 0)"""
+        )
+    if "legacy_inferred_taxonomy_count" not in columns:
+        con.execute(
+            """ALTER TABLE alphabetical_volume_quality
+            ADD COLUMN legacy_inferred_taxonomy_count INTEGER NOT NULL DEFAULT 0
+            CHECK (legacy_inferred_taxonomy_count >= 0)"""
+        )
+    if "malformed_cited_location_count" not in columns:
+        con.execute(
+            """ALTER TABLE alphabetical_volume_quality
+            ADD COLUMN malformed_cited_location_count INTEGER NOT NULL DEFAULT 0
+            CHECK (malformed_cited_location_count >= 0)"""
+        )
 
 
 def _translation_columns(con: sqlite3.Connection) -> set[str]:
@@ -1026,6 +1756,45 @@ def refresh_volume_quality(con: sqlite3.Connection, volume_id: str) -> dict[str,
     metrics["unverified_target_count"] = int(
         unverified_target_row["count"] or 0
     )
+    entry_without_span_row = con.execute(
+        """SELECT COUNT(*) AS count
+        FROM alphabetical_entries e
+        JOIN alphabetical_sections s ON s.section_key = e.section_key
+        WHERE s.volume_id = ?
+          AND NOT EXISTS (
+              SELECT 1
+              FROM alphabetical_entry_source_spans ess
+              WHERE ess.entry_key = e.entry_key
+          )""",
+        (volume_id,),
+    ).fetchone()
+    metrics["entry_without_source_span_count"] = int(
+        entry_without_span_row["count"] or 0
+    )
+    inferred_taxonomy_row = con.execute(
+        """SELECT COUNT(*) AS count
+        FROM alphabetical_sections
+        WHERE volume_id = ? AND taxonomy_source = 'legacy_inferred'""",
+        (volume_id,),
+    ).fetchone()
+    metrics["legacy_inferred_taxonomy_count"] = int(
+        inferred_taxonomy_row["count"] or 0
+    )
+    malformed_location_row = con.execute(
+        """SELECT COUNT(*) AS count
+        FROM alphabetical_refs r
+        JOIN alphabetical_entries e ON e.entry_key = r.entry_key
+        JOIN alphabetical_sections s ON s.section_key = e.section_key
+        WHERE s.volume_id = ?
+          AND r.ref_kind NOT IN (
+              'target_locator', 'parallel_locator', 'unresolved', 'scripture'
+          )
+          AND r.cited_location_parse_status = 'unparsed'""",
+        (volume_id,),
+    ).fetchone()
+    metrics["malformed_cited_location_count"] = int(
+        malformed_location_row["count"] or 0
+    )
     coverage: dict[str, object] = {}
     run_row = con.execute(
         """SELECT raw_json
@@ -1058,6 +1827,7 @@ def refresh_volume_quality(con: sqlite3.Connection, volume_id: str) -> dict[str,
         or metrics["coverage_unrecoverable_ocr"]
         or metrics["forbidden_section_count"]
         or metrics["unknown_scripture_book_count"]
+        or metrics["malformed_cited_location_count"]
     ):
         status = "needs_reextract"
     elif (
@@ -1078,7 +1848,10 @@ def refresh_volume_quality(con: sqlite3.Connection, volume_id: str) -> dict[str,
             unresolved_material_ref_count, locator_partial,
             forbidden_section_count, unknown_scripture_book_count,
             unverified_target_count, computed_at, raw_json
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            , entry_without_source_span_count,
+            legacy_inferred_taxonomy_count,
+            malformed_cited_location_count
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ON CONFLICT(volume_id) DO UPDATE SET
             db_schema_version = excluded.db_schema_version,
             status = excluded.status,
@@ -1093,6 +1866,9 @@ def refresh_volume_quality(con: sqlite3.Connection, volume_id: str) -> dict[str,
             forbidden_section_count = excluded.forbidden_section_count,
             unknown_scripture_book_count = excluded.unknown_scripture_book_count,
             unverified_target_count = excluded.unverified_target_count,
+            entry_without_source_span_count = excluded.entry_without_source_span_count,
+            legacy_inferred_taxonomy_count = excluded.legacy_inferred_taxonomy_count,
+            malformed_cited_location_count = excluded.malformed_cited_location_count,
             computed_at = excluded.computed_at,
             raw_json = excluded.raw_json""",
         (
@@ -1112,6 +1888,9 @@ def refresh_volume_quality(con: sqlite3.Connection, volume_id: str) -> dict[str,
             metrics["unverified_target_count"],
             computed_at,
             json.dumps(metrics, ensure_ascii=False, sort_keys=True),
+            metrics["entry_without_source_span_count"],
+            metrics["legacy_inferred_taxonomy_count"],
+            metrics["malformed_cited_location_count"],
         ),
     )
     return metrics
@@ -1134,7 +1913,10 @@ def get_volume_quality(
                    dangling_scripture_link_count,
                    unresolved_material_ref_count, locator_partial,
                    forbidden_section_count, unknown_scripture_book_count,
-                   unverified_target_count, computed_at
+                   unverified_target_count,
+                   entry_without_source_span_count,
+                   legacy_inferred_taxonomy_count,
+                   malformed_cited_location_count, computed_at
             FROM alphabetical_volume_quality
             WHERE volume_id = ?
         """

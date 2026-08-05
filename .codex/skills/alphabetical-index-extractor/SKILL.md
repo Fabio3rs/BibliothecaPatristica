@@ -22,7 +22,8 @@ legacy database compatibility.
 - Treat the driver's semantic or locator artifact as the current ownership contract, not as a
   limit on OCR investigation inside the current volume.
 - Treat the prompt's pre-filtered pages as the starting window, not as ground truth.
-- Work only inside the current `source_root`.
+- Keep all OCR/corpus investigation inside the current `source_root`. The versioned project
+  documentation named below remains readable as contract material.
 - Use the alphabetical-index documentation at:
   - `docs/contrato_interpretacao_indices.md`
   - `docs/glossario_notacao_editorial_indices.md`
@@ -39,6 +40,9 @@ legacy database compatibility.
   preserve numeric ranges such as `18-\n20` and lexical/editorial hyphens when continuation is not
   proved. Record an inferred join in `raw_json.soft_wrap_repairs`.
 - Keep `OCR file`, `editorial page`, and `cited reference` as separate concepts.
+- Use the spatial field dictionary in `docs/dicionario_campos_indices_alfabeticos.md`. An OCR file
+  is a `.txt` storage unit; an editorial page is a printed number. A filename suffix is neither a
+  page value nor independent page evidence.
 - Editorial pagination commonly appears as `NUMBER  PAGE-TITLE  NUMBER+1` in a facing-page header,
   but OCR generators may split it across blocks, retain one side, corrupt digits through CER, or
   omit it. Infer it from several neighboring physical files and never from the filename suffix.
@@ -61,13 +65,13 @@ legacy database compatibility.
 - Recognize `III/IV Esdras` or `III/IV Esdrae` as historical noncanonical works when explicit.
   Preserve the literal and record `raw_json.canonical_status=historical_noncanonical` plus
   `historical_book_key`; never coerce them to Esdras/Neemias.
-- Write only the phase artifact named in the prompt. Python, not an agent, assembles the canonical
-  final payload.
+- Write only the phase output set and optional checkpoints explicitly authorized by the runtime
+  prompt. Python, not an agent, assembles the canonical final payload.
 - Return only a tiny JSON acknowledgment in the final assistant message.
 
 ## Required Inputs
 
-Expect the driver to provide one of four bounded phase contracts:
+Expect the driver to provide one of five bounded phase contracts:
 
 - discovery phase: `volume_id`, `source_root`, prefilter evidence, and a segmented manifest output;
 - semantic phase: `volume_id`, `source_root`, filtered-pages artifact, semantic directory, and
@@ -75,6 +79,8 @@ Expect the driver to provide one of four bounded phase contracts:
 - locator phase: `volume_id`, `source_root`, one citation-shard input, and its result output;
 - repair phase: `volume_id`, `source_root`, a compact request containing only pending citations,
   and its result output.
+- scripture-table micro-repair: one section-local format profile, only its unresolved lines, and
+  one bounded suggestion result; it never owns semantic entries or target files.
 
 The driver fills these paths at runtime. Read large artifacts from disk only when the current
 phase names them. Never load a complete assembled payload during locator or repair work.
@@ -83,7 +89,9 @@ phase names them. Never load a complete assembled payload during locator or repa
 
 1. Read the exact runtime phase contract and the versioned interpretation/glossary references first.
 2. In discovery, classify non-overlapping line/block segments as `owned`, `boundary`, `context`,
-   or `uncertain`. Record every inspected file and any required expansion. Do not extract entries.
+   or `uncertain`. Record every inspected file and any required expansion. Expansion requests
+   must be bounded and actionable; the driver redispatches at most three expansion rounds. Do not
+   extract entries.
 3. In the semantic phase, inspect the pre-filtered OCR files and any neighbors required to follow
    complete sections and category hierarchies. Write one fragment per semantic section and write
    the manifest last.
@@ -91,7 +99,8 @@ phase names them. Never load a complete assembled payload during locator or repa
      `pipeline_owner`, `alphabetical_role`, `material_reference_mode`, and `scripture_mode`.
    - An entry may override only `material_reference_mode` and `scripture_mode`; entry values take
      precedence over section values. Do not use an omitted value as an implicit default.
-   - Owned section fragments must record `file_start` and `file_end`. A stop boundary is recorded
+   - Owned section fragments must record `file_start` and `file_end`; both are OCR file paths and
+     map to `index_ocr_file_start/end` in database v8. A stop boundary is recorded
      in `manifest.boundary_decisions`, not emitted as a section.
    - Every entry records a `source_span` covered by its fragment's `consumed_spans`.
    - Every fragment records `task_id`, `input_fingerprint`, `consumed_spans`, `residual_spans`,
@@ -115,7 +124,9 @@ phase names them. Never load a complete assembled payload during locator or repa
    Resolve every `(entry_key, ref_order)` independently; never propagate one entry-level target
    to all refs without page-specific evidence.
    - The driver first restricts candidates by the printed editorial page and then checks
-     book/chapter/verse or name evidence inside those physical files.
+     book/chapter/verse or name evidence inside those physical files. When a `target_locator` has
+     no printed page, use the page-independent work-locator bundle instead: exact work title or
+     abbreviation, locator-number cooccurrence, and section/work-family confirmation.
    - A unique scripture candidate may be resolved before sharding only when it has independent
      page evidence and material citation evidence. Numeric-only and text-only matches remain
      pending for an agent.
@@ -137,7 +148,9 @@ phase names them. Never load a complete assembled payload during locator or repa
 8. Reuse artifacts on disk only when the driver has verified their input/contract fingerprint.
    Never use conversational memory or session resume as continuation state.
 9. Analyze candidate evidence conservatively:
-   - use it to separate `section_start_file`, `editorial_anchor_file`, and `target_file_best`
+   - use it to separate the legacy fields `section_start_file`, `editorial_anchor_file`, and
+     `target_file_best`, whose v8 meanings are respectively `index_section_start_ocr_file`,
+     `index_entry_source_ocr_file`, and `resolved_target_ocr_file`
    - preserve candidate evidence in `raw_json`
    - do not let helper probabilities override direct editorial evidence without explanation
    - if the helper leaves the case ambiguous or the target file does not clearly confirm the printed page, inspect neighboring OCR files before settling on a partial result
@@ -257,6 +270,6 @@ Rules:
 
 ## References
 
-- Use `references/prompt-contract.md` for the three compact runtime phase contracts.
+- Use `references/prompt-contract.md` for the five bounded runtime phase contracts.
 - Use `references/output-format.md` for the phase artifacts and semantic object shapes. Python,
   not this skill, owns canonical payload assembly.

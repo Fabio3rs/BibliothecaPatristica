@@ -233,6 +233,40 @@ const startPoints = startPointsByLocale[locale];
     color: var(--color-muted);
   }
 
+  .migne-note {
+    display: grid;
+    grid-template-columns: minmax(170px, 0.35fr) minmax(0, 1fr);
+    gap: var(--space-5);
+    align-items: center;
+    border-left: 3px solid var(--color-accent);
+    background:
+      linear-gradient(90deg, color-mix(in srgb, var(--color-accent) 10%, var(--color-surface)) 0%, var(--color-surface) 48%);
+  }
+  .migne-note header {
+    display: grid;
+    gap: var(--space-2);
+  }
+  .migne-note .eyebrow {
+    margin: 0;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.76rem;
+    font-weight: 700;
+  }
+  .migne-note h2 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(1.3rem, 2vw, 1.65rem);
+    line-height: 1.2;
+  }
+  .migne-note p {
+    margin: 0;
+    max-width: 76ch;
+    color: var(--color-muted);
+    line-height: 1.7;
+  }
+
   .collections-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -345,6 +379,12 @@ const startPoints = startPointsByLocale[locale];
       max-width: none;
     }
   }
+  @media (max-width: 640px) {
+    .migne-note {
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+    }
+  }
 </style>
 
 <Layout title="Bibliotheca Patristica" description={t.homeSubtitle.replace(/<[^>]*>/g, '')} breadcrumbs={[{label: t.breadcrumbHome, href: localeBase}]}>
@@ -385,15 +425,12 @@ const startPoints = startPointsByLocale[locale];
 
     <aside class="hero-side" aria-label={t.homePreviewTitle}>
       <span class="eyebrow">{t.homePreviewTitle}</span>
-      <h2>Comece pela busca, depois refine por coleção.</h2>
-      <p>
-        O acervo reúne textos OCR, resumos, palavras-chave e navegação por volumes.
-        O caminho mais curto é pesquisar um autor, obra ou tema e então abrir um resultado.
-      </p>
-      <ul class="quick-basic-list" aria-label="Resumo de uso">
-        <li>Use a busca para localizar autor, obra, tema ou termo.</li>
-        <li>Filtre por PG, PL ou PO quando já souber a coleção.</li>
-        <li>Abra um volume direto por um ponto de partida conhecido.</li>
+      <h2>{t.homeGuideTitle}</h2>
+      <p>{t.homeGuideText}</p>
+      <ul class="quick-basic-list" aria-label={t.homeGuideListLabel}>
+        <li>{t.homeGuideSearch}</li>
+        <li>{t.homeGuideFilter}</li>
+        <li>{t.homeGuideOpen}</li>
       </ul>
       <a class="button secondary" href={getLocaleRouteUrl(locale, 'search', base)}>{t.homeSearchCta}</a>
     </aside>
@@ -409,6 +446,15 @@ const startPoints = startPointsByLocale[locale];
     </div>
   </section>
 
+  <!-- Contexto histórico -->
+  <aside class="migne-note card" aria-labelledby="migne-note-title">
+    <header>
+      <p class="eyebrow">{t.homeMigneEyebrow}</p>
+      <h2 id="migne-note-title">{t.homeMigneTitle}</h2>
+    </header>
+    <p>{t.homeMigneText}</p>
+  </aside>
+
   <!-- Coleções -->
   <section id="volumes" class="section-anchor card" style="margin-top:var(--space-5);">
     <div class="section-heading">
@@ -421,20 +467,20 @@ const startPoints = startPointsByLocale[locale];
       <article class="collection-card">
         <p class="eyebrow">PG</p>
         <h3>Patrologia Graeca</h3>
-        <p>Autores gregos, homilias, comentários e tratados dogmáticos.</p>
-        <a class="button secondary" href={getLocaleRouteUrl(locale, 'search', base, '?collection=PG')}>Explorar PG</a>
+        <p>{t.homeCollectionPgDesc}</p>
+        <a class="button secondary" href={getLocaleRouteUrl(locale, 'search', base, '?collection=PG')}>{t.homeCollectionExplore} PG</a>
       </article>
       <article class="collection-card">
         <p class="eyebrow">PL</p>
         <h3>Patrologia Latina</h3>
-        <p>Autores latinos, tradição ocidental, Agostinho, Jerônimo e outros.</p>
-        <a class="button secondary" href={getLocaleRouteUrl(locale, 'search', base, '?collection=PL')}>Explorar PL</a>
+        <p>{t.homeCollectionPlDesc}</p>
+        <a class="button secondary" href={getLocaleRouteUrl(locale, 'search', base, '?collection=PL')}>{t.homeCollectionExplore} PL</a>
       </article>
       <article class="collection-card">
         <p class="eyebrow">PO</p>
         <h3>Patrologia Orientalis</h3>
-        <p>Textos de tradições orientais e materiais complementares.</p>
-        <a class="button secondary" href={getLocaleRouteUrl(locale, 'search', base, '?collection=PO')}>Explorar PO</a>
+        <p>{t.homeCollectionPoDesc}</p>
+        <a class="button secondary" href={getLocaleRouteUrl(locale, 'search', base, '?collection=PO')}>{t.homeCollectionExplore} PO</a>
       </article>
     </div>
   </section>

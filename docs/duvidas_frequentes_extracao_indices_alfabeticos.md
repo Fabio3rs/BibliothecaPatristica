@@ -212,7 +212,7 @@ Use o helper quando existe problema real de locator material.
 Casos típicos:
 
 - o índice cita páginas internas do volume
-- a linha precisa de `target_file_best`
+- a linha precisa de um `resolved_target_ocr_file` (`target_file_best` é o alias legado)
 - há ambiguidade entre páginas vizinhas
 - o volume tem drift entre paginação impressa e OCR
 

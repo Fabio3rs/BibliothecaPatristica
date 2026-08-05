@@ -1,5 +1,11 @@
 # Contrato do extrator de índices alfabéticos
 
+Banco SQLite: versão 8. Payload histórico aceito pelo importador: versão 1.
+
+Os significados espaciais e os nomes canônicos do banco são definidos em
+`docs/dicionario_campos_indices_alfabeticos.md`. Em particular, `editorial_page` é um número
+impresso e `ocr_file` é um caminho de arquivo; nunca são a mesma coordenada.
+
 Este documento fecha o formato do novo extrator de índices alfabéticos, remissivos, onomásticos e bíblicos.
 
 Ele usa como ponto de partida o extrator atual de índices em:
@@ -234,7 +240,10 @@ Regras:
 
 ## 5. Schema SQLite fechado
 
-Esta seção acompanha o schema operacional v7 de `scripts/alphabetical_index_db.py`.
+O schema operacional v8 está em `scripts/alphabetical_index_db.py`. O bloco SQL histórico abaixo
+documenta a camada de compatibilidade v7 ainda aceita; os campos canônicos v8, as tabelas de
+proveniência, fronteiras e evidência estão descritos no dicionário de campos. Em caso de diferença,
+o schema executável v8 e o dicionário são normativos.
 
 Decisões explícitas desta versão:
 
@@ -246,6 +255,10 @@ Decisões explícitas desta versão:
   não localizada; `target_file` só é operacional quando o status é `resolved`
 - `alphabetical_runs.volume_id` referencia `alphabetical_volumes(volume_id)`
 - a ordem editorial é protegida por constraints de unicidade por escopo
+- campos canônicos distinguem `index_editorial_page_*`, `cited_editorial_*` e `*_ocr_file`
+- `alphabetical_source_spans` torna a proveniência de entradas consultável
+- `alphabetical_locator_evidence` torna os múltiplos hints consultáveis sem abrir `raw_json`
+- aliases como `page_ref_int`, `target_file` e `editorial_anchor_file` são legados depreciados
 
 Este é o schema recomendado para o novo banco.
 
@@ -618,6 +631,9 @@ Obrigatórios:
 - `file_end`
 - as quatro dimensões taxonômicas obrigatórias em `raw_json`
 
+No banco v8 essas quatro dimensões também são colunas com `CHECK`. `taxonomy_source` informa se
+vieram explicitamente do payload ou foram inferidas durante migração legada.
+
 ### 7.2 Node
 
 Obrigatórios:
@@ -638,6 +654,7 @@ Obrigatórios:
 - `entry_order`
 - `entry_kind`
 - `entry_raw`
+- ao menos um vínculo em `alphabetical_entry_source_spans` para extrações novas
 
 Fortemente recomendados:
 
@@ -672,9 +689,10 @@ Uma entrada `scripture_citation` ou `scripture_pericope` sem `scripture_refs` é
 a qualidade do volume. Ela não pode ser publicada em “Outros”: deve ser reextraída com livro e
 passagem seguros, ou removida da classe bíblica se a linha não for realmente uma citação.
 
-O vínculo material segue uma prova dupla:
+O vínculo material segue uma prova cruzada:
 
-- primeiro, `page_ref_int` ou o intervalo editorial restringe os arquivos físicos candidatos;
+- primeiro, `cited_editorial_page_start_number` e seus extremos, quando legíveis, restringem os
+  arquivos OCR candidatos dentro do escopo correto;
 - depois, o conteúdo da página confirma a passagem ou o nome, com normalização derivada tolerante
   a ligaturas, hifenização alfabética e CER limitado;
 - só um candidato único com evidência editorial específica e evidência material independente pode
@@ -949,11 +967,15 @@ Decisão importante:
 
 O helper já mostrou que precisamos separar papéis materiais.
 
-Portanto:
+Os nomes canônicos v8 são:
 
-- `section_start_file` = arquivo onde a seção efetivamente começa
-- `editorial_anchor_file` = arquivo onde o número editorial citado bate melhor
-- `target_file_best` = melhor alvo único para navegação, quando existir
+- `index_section_start_ocr_file` = arquivo OCR onde a seção efetivamente começa
+- `index_entry_source_ocr_file` = arquivo OCR que contém a entrada do índice
+- `resolved_target_ocr_file` = arquivo OCR corporal resolvido para navegação
+
+Os aliases legados são, respectivamente, `section_start_file`, `editorial_anchor_file` e
+`target_file_best`. O segundo nome legado era especialmente ambíguo: ele não deve mais significar
+“arquivo onde o número citado bate”; esse papel pertence à decisão e à evidência de cada ref.
 
 Esses campos não são equivalentes.
 

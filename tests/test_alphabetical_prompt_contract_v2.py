@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 from pathlib import Path
 
 import pytest
@@ -8,6 +9,7 @@ import pytest
 from patristica_pipeline.alphabetical_artifact_validation import (
     validate_discovery_manifest,
     validate_semantic_fragment_v2,
+    validate_source_span,
 )
 from patristica_pipeline.alphabetical_compact_driver import load_semantic_manifest
 from patristica_pipeline.alphabetical_compact_pipeline import CompactPipelineError
@@ -31,14 +33,38 @@ def versioned(payload: dict) -> dict:
     }
 
 
+def test_source_span_hash_detects_stale_ocr_checkpoint(tmp_path: Path) -> None:
+    source_root = tmp_path / "text"
+    source_root.mkdir()
+    source_file = source_root / "page-001.txt"
+    source_file.write_text("first\nsecond\n", encoding="utf-8")
+    span = {
+        "file": str(source_file),
+        "line_start": 2,
+        "line_end": 2,
+        "text_sha256": hashlib.sha256(b"second\n").hexdigest(),
+    }
+
+    validate_source_span(span, source_root=source_root, label="span")
+    source_file.write_text("first\nchanged\n", encoding="utf-8")
+
+    with pytest.raises(CompactPipelineError, match="current OCR span"):
+        validate_source_span(span, source_root=source_root, label="span")
+
+
 def test_reference_bundle_fingerprints_contract_glossary_and_schemas() -> None:
     bundle = prompt_reference_bundle()
 
     assert bundle["glossary_version"] == GLOSSARY_VERSION
     assert set(bundle["references"]) == {
+        "skill",
+        "prompt_contract",
+        "output_format",
         "interpretation_contract",
         "glossary_document",
         "glossary_data",
+        "spatial_field_dictionary",
+        "extractor_contract",
         "discovery_schema",
         "semantic_fragment_schema",
     }
@@ -158,15 +184,29 @@ def test_semantic_fragment_requires_traceable_entries_and_known_notation(
     }
     fragment = {
         "schema_version": 2,
+        **prompt_reference_bundle(),
         "task_id": "PL001:semantic:index",
         "input_fingerprint": "fp",
         "consumed_spans": [span],
         "residual_spans": [],
-        "sections": [{"section_key": "PL001:index"}],
+        "sections": [
+            {
+                "section_key": "PL001:index",
+                "file_start": str(source_file),
+                "file_end": str(source_file),
+                "raw_json": {
+                    "pipeline_owner": "alphabetical",
+                    "alphabetical_role": "owned_section",
+                    "material_reference_mode": "remissive",
+                    "scripture_mode": "none",
+                },
+            }
+        ],
         "nodes": [],
         "entries": [
             {
                 "entry_key": "PL001:index:e1",
+                "section_key": "PL001:index",
                 "entry_raw": "Aaron, 10, ibid.",
                 "source_span": span,
             }
@@ -175,6 +215,7 @@ def test_semantic_fragment_requires_traceable_entries_and_known_notation(
             {
                 "entry_key": "PL001:index:e1",
                 "ref_order": 2,
+                "ref_kind": "unresolved",
                 "ref_raw": "ibid.",
                 "notation": [
                     {
@@ -269,6 +310,7 @@ def test_loader_accepts_versioned_traceable_semantic_manifest(
         fragment_file,
         {
             "schema_version": 2,
+            **prompt_reference_bundle(),
             "task_id": "PL001:semantic:index",
             "input_fingerprint": fingerprint,
             "consumed_spans": [span],

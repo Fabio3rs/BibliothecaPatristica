@@ -27,7 +27,9 @@ attached to an existing fragment before the first attempt of a rerun.
 - Use the taxonomy in `references/volume-taxonomy.md`.
 - Use `../../../docs/taxonomia_indices.md` when `collection` is `PG` or `PL`.
 - Use `../../../docs/taxonomia_indices_po.md` when `collection` is `PO`.
-- Accept a machine-generated prompt envelope with `TASK`, `VOLUME`, `PRESCAN`, `WORK INSTRUCTIONS`, `TODO`, `OUTPUT FILE`, and `FINAL RESPONSE` sections.
+- Accept a machine-generated prompt envelope with `TASK`, `VOLUME`, `NUMBERING GLOSSARY`,
+  `PRESCAN`, `LOCALIZATION ARTIFACTS`, `WORK INSTRUCTIONS`, `OCR READING`, `TODO`,
+  `OUTPUT FILE`, and `FINAL RESPONSE` sections.
 - Maintain an explicit TODO list during extraction: volume-level structures and one checkpoint per
   discovered work, fascicle, book, part, or chapter entrypoint.
 - Do not finalize the volume until every TODO item has been verified against OCR files.
@@ -53,11 +55,25 @@ Use these meanings consistently. Do not collapse them into one numbering system.
 4. Classify volume-level tables of works and work-level contents according to the collection-specific taxonomy.
 5. Build or update a TODO list as you discover works; keep one checked item per work and separate
    items for its front matter, books, parts, or chapters.
-6. For each work, read its opening pages to capture the work index and its pagination, then mark that TODO item complete.
+6. For each work, read its opening pages and enough body pages to distinguish its title/front matter
+   from a recurring running-header range, then mark that TODO item complete.
 7. For `PO`, identify fascicle inventory pages, internal work tables, and retrospective tables before recording final sections.
 8. Do not extract closing alphabetical, analytical, onomastic, scripture, citation, concordance,
    names, subjects, or cross-reference indexes; the alphabetical-index pipeline owns them.
 9. Assemble a JSON payload, write it to the requested output file, and import it with `.codex/skills/patristic-index-extractor/scripts/import_index_json.py` or the compatibility wrapper `scripts/import_index_json.py`.
+
+For a corpus-wide deterministic anchor audit, use
+`python scripts/reconcile_work_index_anchors.py --all-volumes --workers 12`. The workers are
+separate processes, and the editorial-page cache uses SQLite WAL with a busy timeout. Parallel
+`--apply` must use `--no-import`; import validated payloads into the primary index database
+serially afterward.
+
+The main driver runs the CPU-bound target locator with
+`--helper-workers 12` by default. The locator keeps parsed volume pages once per worker, resolves
+entries in separate processes, preserves input order in the output, and uses RapidFuzz for
+Levenshtein scoring with a deterministic Python fallback. Worker arguments have no fixed upper
+limit; the locator only reduces the effective count when the volume has fewer entries than the
+requested number of workers.
 
 ## What to Record
 
@@ -92,6 +108,10 @@ Use these meanings consistently. Do not collapse them into one numbering system.
 - When the header is partial, corrupt, or absent, inspect several physical OCR files before and
   after and infer only from a consistent local editorial sequence. Never fill the gap from the
   physical filename suffix.
+- Treat all header blocks on the same OCR file as one logical header for comparison, while
+  preserving whether numbers and title text came from the same block or separate blocks.
+- If the editorial-page estimator returns a facing-page pair and the declared page is one member of
+  that pair, preserve it unless bounding-box, column, or direct text evidence identifies the side.
 - Keep `col.`, page numbers, Roman numerals, and suspicious digits verbatim.
 - When OCR is ambiguous, store the raw text and mark the record uncertain instead of correcting it.
 - Do not trust printed page numbers or OCR page numbers as the primary locator for the target file.
@@ -105,6 +125,51 @@ Use these meanings consistently. Do not collapse them into one numbering system.
 - Use numeric clues only as secondary evidence because CER, page wear, and scan defects can corrupt printed digits inside OCR.
 - When a target is not obvious, try several queries: full title, shortened title, normalized title, author plus title token, and nearby heading phrases.
 - Record the evidence of the located files in `raw_json`, including the strings that matched and any uncertainty about numbering.
+
+## Deterministic Work-Anchor Evidence
+
+Use this evidence order when locating `works[].start_file` and `works[].end_file`:
+
+1. Direct title-page, author, incipit, explicit opening, or explicit closing evidence.
+2. A multi-file recurring-header sequence confirmed by body text.
+3. Editorial-page estimator pairs and locally consistent printed pagination.
+4. Raw numeric coincidence or physical filename proximity.
+
+Apply these rules:
+
+- Exact and Levenshtein/fuzzy phrase matches are additive evidence, not proof by themselves.
+  Short, generic, or OCR-damaged titles require an independent author, incipit, structure, or
+  neighborhood signal.
+- An occurrence in `ORDO`, `ELENCHUS`, a catalogue, a prefatory inventory, or another list is
+  source/index evidence, not the work target.
+- A similar logical header recurring on at least four physical OCR files is strong evidence of a
+  probable body range. The sequence may bridge gaps of up to three files whose header is absent or
+  OCR-damaged. Inspect both edges and neighboring files; recurrence alone does not prove that the
+  first file is the title page or that the last file is the work ending.
+- A running header can identify a work's body range but must not replace direct title-page/opening
+  evidence when selecting the start boundary.
+- One physical scan may contain two editorial pages, columns, or the end of one work and the start
+  of the next. Adjacent works may therefore share a physical file or an editorial page.
+- Never set a work's end to `next_start - 1` without direct boundary evidence. Never synthesize
+  `end_file` from an editorial number alone.
+- Reject any proposed anchor whose start editorial page is greater than its end editorial page.
+- Do not collapse slash-separated or otherwise composite inventories into one locally anchored work
+  unless the OCR proves that the container itself is a work.
+- A pure external remission such as `Vide ... tom.` or `Voir ... tome ...` has no local target.
+  Preserve the literal and referenced tome in `raw_json`; do not invent a local `start_file`.
+
+## Ambiguity and Agent Reruns
+
+The deterministic reconciler may add `works[].raw_json.work_anchor_rerun` or a nested
+`anchor_locator_review`. Treat either marker as a mandatory TODO item.
+
+- Read every candidate file and its neighbors inside the current volume.
+- Preserve candidate rankings, raw literals, estimator pairs, matching strings, header sequences,
+  and the reason for ambiguity.
+- Remove the marker only when direct OCR evidence resolves the boundary.
+- If readable candidates remain tied, or the work is composite, external/remissive, numerically
+  contradictory, or dependent on unresolved scan layout, keep the marker with
+  `status: "ambiguous"` or `status: "unresolved"`.
 
 ## Output Contract
 
