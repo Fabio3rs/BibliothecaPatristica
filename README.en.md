@@ -36,7 +36,7 @@ Sources: [Bibliothèque Interuniversitaire de la Sorbonne — PL](https://www.bi
 - PDFs/images stay out of the repo because of size and copyright.
 
 ## Key scripts
-- `main2.py` — page-by-page OCR with Tesseract + OpenCV (lat/grc), OMP-limited parallelism.
+- `main2.py` — page-by-page multimodal OCR using multilingual Tesseract, the custom [`migne-tesseract`](https://github.com/Fabio3rs/migne-tesseract) model, VLM/LLM stages, OpenCV, and OMP-limited parallelism.
 - `resumo_serial.py` — generates per-page summaries/keywords from `.txt` (default Ollama; OpenAI optional).
 - `download/` — see `download/README.md` for fetching PDFs (`download.py`) and checking missing ones (`checkfaltantes.py`).
 - `web/` — Astro static website with Pagefind search and multilingual navigation.
@@ -49,6 +49,7 @@ Sources: [Bibliothèque Interuniversitaire de la Sorbonne — PL](https://www.bi
 - Website: `cd web && npm install && npm run build`; for local development, run `npm run dev`.
 
 ## Related documentation
+- OCR corpus and structured text format: `docs/CORPUS_OCR_FORMAT.md`
 - Semantic unification paper (English): `docs/LLM_unification_paper_en.md`
 - Versão em Português / Portuguese version: `docs/LLM_unification_paper.md`
 

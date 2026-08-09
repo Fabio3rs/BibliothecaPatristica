@@ -1,0 +1,44 @@
+# Bibliotheca Patristica
+
+> An open digital library and machine-readable OCR corpus of public-domain patristic material, centered on the Patrologia Graeca, Patrologia Latina, and Patrologia Orientalis.
+
+Bibliotheca Patristica is a Brazilian digital humanities project for scholarly, theological, devotional, and computational access to early and medieval Christian texts. Its public repository history begins in 2026. Most of the corpus comes from Jacques-Paul Migne's nineteenth-century Patrologia Graeca and Patrologia Latina; Patrologia Orientalis is a later, independent collection. Migne's volumes are historically important compilations, not modern critical editions.
+
+The corpus contains roughly 290,000 page-level OCR files and about one billion raw tokens. It is produced through multimodal pipelines that combine multilingual Tesseract models (Latin, Greek, and additional scripts), the project-specific `migne-tesseract` model trained for Migne's typography, modern vision-language models, LLM-assisted validation, heuristic gating, candidate comparison, and selective reruns. Page images are treated as ground truth, while every automated transcription or enrichment remains fallible.
+
+Current OCR pages use UTF-8 `.txt` filenames but usually contain a project-specific XML dialect rather than TEI, ALTO, hOCR, or ordinary plain text. Page and block elements record semantic roles, source scripts, normalized bounding boxes, and intended reading order. Legacy plain-text pages remain supported. The site can present the same file as continuous reading, highlighted transcription code, or a bounding-box-based reconstruction of the page layout.
+
+Original-language OCR is enriched with mainly Brazilian Portuguese summaries, keywords, entities, related-page signals, and editorial indexes. The static Astro and Pagefind site provides search, collection and volume navigation, reading tools, citations, internal indexes, and alphabetical, onomastic, and scripture-reference discovery while keeping the raw OCR in GitHub. Absence from search is not proof of absence from the corpus, and OCR or AI-generated metadata must be checked against scans or critical editions before scholarly quotation.
+
+The underlying historical works and editions are public-domain material. Project-generated OCR and metadata are released under CC0, and project code is MIT-licensed. Source PDFs and images are not versioned; third-party scans or reproductions can have provider- or jurisdiction-specific conditions.
+
+## Essential Documentation
+
+- [Project overview](https://raw.githubusercontent.com/Fabio3rs/BibliothecaPatristica/refs/heads/codex/README.en.md): English overview of the collections, history, site, pipeline, limitations, and current status.
+- [OCR corpus and structured text format](https://raw.githubusercontent.com/Fabio3rs/BibliothecaPatristica/refs/heads/codex/docs/CORPUS_OCR_FORMAT.md): Canonical guide to storage, custom XML, reading order, viewer representations, cleaning, provenance, and reuse.
+- [Technical pipeline](https://raw.githubusercontent.com/Fabio3rs/BibliothecaPatristica/refs/heads/codex/docs/PIPELINE.md): End-to-end OCR, enrichment, indexing, and static-publication architecture; primarily in Portuguese with an English abstract.
+- [Migne-specific Tesseract model](https://github.com/Fabio3rs/migne-tesseract): Custom OCR model used alongside multilingual Tesseract and VLM/LLM stages for Migne's printed material.
+- [Licensing notice](https://raw.githubusercontent.com/Fabio3rs/BibliothecaPatristica/refs/heads/codex/LICENSE-NOTICE.md): Concise distinction among code, generated data, source images, and third-party components.
+
+## Site and Discovery
+
+- [Bibliotheca Patristica](https://fabio3rs.github.io/BibliothecaPatristica/en): English entry point to the published collection.
+- [Corpus search](https://fabio3rs.github.io/BibliothecaPatristica/en/search): Pagefind search across summaries, keywords, authors, works, themes, and source-language terms.
+- [Volume and editorial indexes](https://fabio3rs.github.io/BibliothecaPatristica/en/indices): Navigation through collections, volumes, works, and extracted internal indexes.
+- [Reading-mode example](https://fabio3rs.github.io/BibliothecaPatristica/en/viewer?doc=PL129&page=169&view=reading): Structured continuous reading with access to transcription code and page layout.
+
+## Corpus and Data Access
+
+- [OCR corpus directory](https://github.com/Fabio3rs/BibliothecaPatristica/tree/codex/teste): Page-level source-language OCR organized by collection and volume.
+- [Published volume manifest](https://fabio3rs.github.io/BibliothecaPatristica/volumes.json): Machine-readable inventory of published volumes, page ranges, metadata shards, and viewer templates.
+- [Representative structured OCR page](https://raw.githubusercontent.com/Fabio3rs/BibliothecaPatristica/refs/heads/codex/teste/PL129/text/258c2257-1b0b-4bfe-ab60-4913f43cd7dc-169.txt): Real `.txt` file containing the project's XML page and block representation.
+- [Hugging Face dataset export](https://huggingface.co/datasets/FabioRS/BibliothecaPatristica): Parquet distribution of the structured PO corpus with processing and automated quality metadata; consult its card for release-specific coverage and license.
+- [GitHub repository](https://github.com/Fabio3rs/BibliothecaPatristica): Corpus, processing pipelines, documentation, and Astro website source.
+
+## Optional
+
+- [Portuguese project overview](https://raw.githubusercontent.com/Fabio3rs/BibliothecaPatristica/refs/heads/codex/README.pt-BR.md): Canonical human-facing overview in the project's original documentation language.
+- [Contribution guide](https://raw.githubusercontent.com/Fabio3rs/BibliothecaPatristica/refs/heads/codex/CONTRIBUTING.md): Repository scope, setup, data constraints, testing, and contribution expectations.
+- [OCR producer and prompts](https://raw.githubusercontent.com/Fabio3rs/BibliothecaPatristica/refs/heads/codex/main2.py): Multimodal OCR orchestration, transcription contract, verification, and rerun logic.
+- [Web viewer implementation](https://raw.githubusercontent.com/Fabio3rs/BibliothecaPatristica/refs/heads/codex/web/src/components/pages/ViewerPage.astro): Client-side structured reading, raw XML, and visual-layout renderers.
+- [Semantic unification paper](https://raw.githubusercontent.com/Fabio3rs/BibliothecaPatristica/refs/heads/codex/docs/LLM_unification_paper_en.md): Project method for reconciling heterogeneous LLM outputs into stable schemas.
