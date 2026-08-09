@@ -19,6 +19,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     const viewerRoot = document.getElementById('viewer-root');
     let loadGeneration = 0;
     let rawOcrController = null;
+    let viewerKeydownHandler = null;
     const dataCache = window.pdfocrDataCache;
     const localePath = localeBase.endsWith('/') ? localeBase.slice(0, -1) : localeBase;
 
@@ -58,6 +59,27 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       viewerNormalMode: isEn ? 'Default mode' : isIt ? 'Modalità standard' : 'Modo padrão',
       viewerDecreaseFont: isEn ? 'A-' : 'A-',
       viewerIncreaseFont: isEn ? 'A+' : 'A+',
+      viewerDecreaseFontLabel: isEn ? 'Decrease text size' : isIt ? 'Riduci la dimensione del testo' : 'Diminuir tamanho do texto',
+      viewerIncreaseFontLabel: isEn ? 'Increase text size' : isIt ? 'Aumenta la dimensione del testo' : 'Aumentar tamanho do texto',
+      viewerFontSizeStatus: isEn ? (pct) => `Text size: ${pct}%` : isIt ? (pct) => `Dimensione del testo: ${pct}%` : (pct) => `Tamanho do texto: ${pct}%`,
+      viewerReadingTools: isEn ? 'Reading tools' : isIt ? 'Strumenti di lettura' : 'Ferramentas de leitura',
+      viewerPageNavigation: isEn ? 'Page navigation' : isIt ? 'Navigazione tra le pagine' : 'Navegação entre páginas',
+      viewerOcrDisplayLabel: isEn ? 'Text display' : isIt ? 'Visualizzazione del testo' : 'Exibição do texto',
+      viewerOcrTitle: isEn ? 'Page text' : isIt ? 'Testo della pagina' : 'Texto da página',
+      viewerOcrPlain: isEn ? 'Transcription code' : isIt ? 'Codice della trascrizione' : 'Código da transcrição',
+      viewerOcrStructured: isEn ? 'Continuous reading' : isIt ? 'Lettura continua' : 'Leitura contínua',
+      viewerOcrVisual: isEn ? 'Page layout' : isIt ? 'Disposizione della pagina' : 'Disposição da página',
+      viewerOcrOpenFile: isEn ? 'Open transcription file' : isIt ? 'Apri il file della trascrizione' : 'Abrir arquivo da transcrição',
+      viewerOcrTopAction: isEn ? 'Go to page text' : isIt ? 'Vai al testo della pagina' : 'Ir para o texto da página',
+      viewerOcrLoaded: isEn ? 'Page text loaded' : isIt ? 'Testo della pagina caricato' : 'Texto da página carregado',
+      viewerOcrAutomaticNote: isEn ? 'Automatic transcription; it may contain errors.' : isIt ? 'Trascrizione automatica; può contenere errori.' : 'Transcrição automática; pode conter erros.',
+      viewerOpenNewTab: isEn ? 'opens in a new tab' : isIt ? 'si apre in una nuova scheda' : 'abre em nova aba',
+      viewerPageSummaryDetails: isEn ? 'Page summary' : isIt ? 'Riassunto della pagina' : 'Resumo da página',
+      viewerGlobalSummaryDetails: isEn ? 'Context up to this page' : isIt ? 'Contesto fino a questa pagina' : 'Contexto da obra até aqui',
+      viewerCopySummary: isEn ? 'Copy summary' : isIt ? 'Copia il riassunto' : 'Copiar resumo',
+      viewerCiteSummary: isEn ? 'Copy summary with citation' : isIt ? 'Copia il riassunto con citazione' : 'Copiar resumo com citação',
+      viewerReportTranscription: isEn ? 'Report a transcription/page error' : isIt ? 'Segnala un errore di trascrizione/pagina' : 'Reportar erro de transcrição/página',
+      viewerEditorialNote: isEn ? 'Editorial note' : isIt ? 'Nota editoriale' : 'Nota editorial',
       viewerContinueReading: isEn ? 'Continue reading' : isIt ? 'Continua la lettura' : 'Continuar lendo',
       viewerProgress: isEn ? 'Progress' : isIt ? 'Progresso' : 'Progresso',
       viewerSearchInVolume: isEn ? 'Search in this volume…' : isIt ? 'Cerca in questo volume…' : 'Buscar neste volume…',
@@ -235,13 +257,16 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     }
 
     async function writeClipboardWithFeedback(button, buildText, idleLabel) {
+      const status = button.closest('.viewer-action-bar')?.querySelector('[data-role="viewer-copy-status"]');
       try {
         const text = buildText();
         if (!text) return;
         await navigator.clipboard.writeText(text);
         button.textContent = s.viewerCopied;
+        if (status) status.textContent = s.viewerCopied;
       } catch (_) {
         button.textContent = s.viewerCopyFailed;
+        if (status) status.textContent = s.viewerCopyFailed;
       }
       setTimeout(() => {
         button.textContent = idleLabel;
@@ -548,6 +573,23 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       return labels[tipo?.toLowerCase()] || (tipo || 'Bloco');
     }
 
+    function applyScriptLanguage(element, script) {
+      const key = (script || '').toLowerCase();
+      const languageByScript = {
+        latino: 'la', latin: 'la',
+        grego: 'grc',
+        copta: 'cop', copte: 'cop', copto: 'cop',
+        siriaco: 'syr',
+        ethiopico: 'gez',
+        armenio: 'hy',
+        arabe: 'ar',
+        hebraico: 'he',
+      };
+      const language = languageByScript[key];
+      if (language) element.lang = language;
+      if (['siriaco', 'arabe', 'hebraico'].includes(key)) element.dir = 'rtl';
+    }
+
     function renderOcrStructured(container, ocrData) {
       container.innerHTML = '';
       if (!ocrData || !ocrData.blocos.length) {
@@ -643,6 +685,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
         const text = document.createElement('div');
         text.textContent = bloco.text;
+        applyScriptLanguage(text, bloco.script);
         el.appendChild(text);
         wrap.appendChild(el);
       });
@@ -686,6 +729,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         el.style.zIndex = String(idx);
         const text = document.createElement('span');
         text.textContent = bloco.text;
+        applyScriptLanguage(text, bloco.script);
         text.style.wordBreak = 'break-word';
         text.style.lineHeight = '1.15';
         el.appendChild(text);
@@ -696,6 +740,10 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     }
 
     async function load() {
+      if (viewerKeydownHandler) {
+        document.removeEventListener('keydown', viewerKeydownHandler);
+        viewerKeydownHandler = null;
+      }
       try {
         const generation = ++loadGeneration;
         if (rawOcrController) rawOcrController.abort();
@@ -788,8 +836,8 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
               .viewer-header-nav .nav-label-text { display: none; }
             }
             .viewer-identity { margin-bottom: var(--space-4); padding: var(--space-4); border-radius: var(--radius-m); background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-2) 100%); border: 1px solid var(--color-border); }
-            .viewer-identity h3 { margin: 0 0 var(--space-2); font-family: var(--font-serif); color: var(--color-accent); font-size: 1.15rem; }
-            @media (min-width: 1400px) { .viewer-identity h3 { font-size: 1.35rem; } }
+            .viewer-identity h1 { margin: 0 0 var(--space-2); font-family: var(--font-serif); color: var(--color-accent); font-size: 1.35rem; line-height: 1.25; }
+            @media (min-width: 1400px) { .viewer-identity h1 { font-size: 1.55rem; } }
             .viewer-identity p { margin: 0; color: var(--color-muted); font-size: 0.9rem; line-height: 1.5; }
             .viewer-identity .identity-meta-wrap { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; margin-top: var(--space-2); }
             .viewer-identity .identity-badge { display: inline-block; padding: 2px 8px; border-radius: var(--radius-s); background: var(--color-surface); border: 1px solid var(--color-border); font-size: 0.75rem; color: var(--color-muted); }
@@ -800,19 +848,23 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
             .viewer-reading-mode .main-content { max-width: 72ch; margin: 0 auto; padding: var(--space-6); background: color-mix(in srgb, var(--color-surface) 90%, #f8ecd8 10%); box-shadow: 0 12px 36px rgba(65, 48, 20, 0.08); }
             .viewer-reading-mode .viewer-identity { margin-bottom: var(--space-6); background: transparent; padding: 0 0 var(--space-4); border-radius: 0; border: 0; border-bottom: 1px solid var(--color-border); }
             .viewer-reading-mode .viewer-identity .identity-meta-wrap { margin-top: var(--space-3); }
-            .viewer-reading-mode .viewer-toolbar { position: sticky; top: 4.25rem; z-index: 10; margin: 0 0 var(--space-5); padding: var(--space-3); background: color-mix(in srgb, var(--color-surface) 90%, transparent); border: 1px solid color-mix(in srgb, var(--color-border) 90%, transparent); border-radius: var(--radius-m); box-shadow: 0 8px 24px rgba(20, 20, 20, 0.05); }
-            .viewer-reading-mode .viewer-action-bar { margin-bottom: var(--space-5); }
+            .viewer-reading-mode .viewer-toolbar { position: sticky; top: 4.25rem; z-index: 10; margin: 0 0 var(--space-3); padding: var(--space-2); background: color-mix(in srgb, var(--color-surface) 92%, transparent); border: 1px solid color-mix(in srgb, var(--color-border) 90%, transparent); border-radius: var(--radius-m); box-shadow: 0 8px 24px rgba(20, 20, 20, 0.05); }
+            .viewer-reading-mode .viewer-action-bar { margin-bottom: 0; }
             .viewer-reading-mode .viewer-header-nav { justify-content: flex-start; }
             .viewer-reading-mode .viewer-header-nav .button,
             .viewer-reading-mode .viewer-toolbar .button { min-height: 2.25rem; }
             .viewer-reading-mode .viewer-bookmark-banner { max-width: 72ch; margin-left: auto; margin-right: auto; }
             .viewer-reading-mode .main-content p,
             .viewer-reading-mode .main-content li { line-height: 1.9; }
+            .viewer-reading-mode [data-ocr-view] { max-height: none !important; overflow-y: visible !important; }
+            .viewer-reading-mode pre.viewer-ocr-xml { max-height: none !important; overflow-y: visible !important; }
             @media (min-width: 1400px) { .viewer-reading-mode .main-content { max-width: 74ch; } }
             @media (max-width: 720px) {
               body.viewer-reading-active #conteudo.wrapper { max-width: 100%; }
               .viewer-reading-mode .main-content { padding: var(--space-4); border-radius: var(--radius-m); }
               .viewer-reading-mode .viewer-toolbar { top: 3.75rem; }
+              .viewer-reading-mode .viewer-toolbar { flex-direction: row; align-items: center; }
+              .viewer-reading-mode .viewer-toolbar .button { flex: 1 1 auto; justify-content: center; min-height: 2.75rem; }
             }
             .viewer-bookmark-banner { margin-bottom: var(--space-4); padding: var(--space-3) var(--space-4); border-radius: var(--radius-m); background: var(--color-surface-2); border: 1px solid var(--color-accent); display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); flex-wrap: wrap; }
             .viewer-index-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(3rem, 1fr)); gap: 4px; max-height: 200px; overflow-y: auto; }
@@ -837,9 +889,31 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
             pre.viewer-ocr-xml .xml-text { color: var(--color-text); }
             .viewer-toolbar { display: flex; gap: var(--space-2); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-border); }
             @media (max-width: 480px) { .viewer-toolbar { flex-direction: column; align-items: stretch; } .viewer-search-local { width: 100%; } }
+            @media (max-width: 480px) { .viewer-reading-mode .viewer-toolbar { flex-direction: row; align-items: center; } }
             .viewer-search-local { display: flex; gap: var(--space-2); align-items: center; flex: 1; min-width: 200px; }
             .viewer-search-local input { flex: 1; padding: 0.4rem 0.6rem; border: 1px solid var(--color-border); border-radius: var(--radius-s); background: var(--color-surface); color: var(--color-ink); font-size: 0.9rem; }
             .viewer-search-local input:focus { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+            .viewer-reading-tools { margin: 0 0 var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius-m); background: var(--color-surface-2); }
+            .viewer-reading-tools > summary { cursor: pointer; padding: var(--space-3) var(--space-4); color: var(--color-ink); font-weight: 600; }
+            .viewer-reading-tools[open] > summary { border-bottom: 1px solid var(--color-border); }
+            .viewer-reading-tools-content { display: grid; gap: var(--space-3); padding: var(--space-4); }
+            .viewer-reading-tools .viewer-search-local { flex: none; }
+            .viewer-reading-tools .viewer-action-bar { margin: 0; }
+            .viewer-ocr-toggle { display: flex; gap: var(--space-2); margin-bottom: var(--space-3); flex-wrap: wrap; }
+            .viewer-ocr-toggle .button[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--color-focus); }
+            .viewer-grid .button[hidden] { display: none !important; }
+            .viewer-summary-details { margin: 0 0 var(--space-4); border-top: 1px solid var(--color-border); padding-top: var(--space-3); }
+            .viewer-summary-details > summary { cursor: pointer; color: var(--color-accent); font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; }
+            .viewer-summary-details > div { margin-top: var(--space-3); }
+            .viewer-footer-nav { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); margin: var(--space-6) 0; padding: var(--space-4) 0; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+            .viewer-footer-nav .button { min-height: 2.75rem; }
+            .viewer-footer-nav .viewer-page-position { color: var(--color-muted); font-size: 0.9rem; text-align: center; }
+            @media (max-width: 480px) {
+              .viewer-reading-tools-content { padding: var(--space-3); }
+              .viewer-action-bar .button { min-height: 2.75rem; }
+              .viewer-footer-nav .nav-label-text { display: none; }
+              .viewer-footer-nav .button { min-width: 2.75rem; justify-content: center; }
+            }
             .viewer-sidebar-section { margin-bottom: var(--space-4); }
             .viewer-sidebar-section h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-muted); margin: 0 0 0.75rem; }
             /* Layout wide no viewer */
@@ -918,7 +992,9 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           applyViewerMode(viewerMode);
           persistViewerMode(viewerMode);
           syncViewerModeUrl();
-          void load();
+          void load().then(() => {
+            viewerRoot.querySelector('[data-role="viewer-mode-toggle"]')?.focus();
+          });
         }
 
         function prefetchPageAssets(targetPage) {
@@ -978,7 +1054,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         }
 
         const volCollectionLabel = collections.items.find((c) => c.id === volume.collection_id)?.label || volume.collection_id;
-        const identityTitle = document.createElement('h3');
+        const identityTitle = document.createElement('h1');
         identityTitle.textContent = volumeAuthor && volumeWork ? `${volumeAuthor} — ${volumeWork}` : (volumeWork || volumeAuthor || s.viewerVolumeLabel(volume.id, volume.title || ''));
         identityCard.appendChild(identityTitle);
 
@@ -999,7 +1075,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         seoLink.className = 'identity-badge';
         seoLink.href = `${assetBase}seo/volumes/${encodeURIComponent(volume.id)}`;
         seoLink.textContent = seoHubLabel;
-        identityMetaWrap.appendChild(seoLink);
+        if (viewerMode !== 'reading') identityMetaWrap.appendChild(seoLink);
 
         if (volumeSummary) {
           const summaryP = document.createElement('p');
@@ -1015,9 +1091,10 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         const progressWrap = document.createElement('div');
         progressWrap.className = 'viewer-progress-bar';
         progressWrap.setAttribute('role', 'progressbar');
-        progressWrap.setAttribute('aria-valuemin', '0');
+        progressWrap.setAttribute('aria-valuemin', String(firstPage));
         progressWrap.setAttribute('aria-valuemax', String(lastPage));
         progressWrap.setAttribute('aria-valuenow', String(pageNumber));
+        progressWrap.setAttribute('aria-valuetext', s.viewerPageOfTotal(pageNumber, lastPage));
         progressWrap.setAttribute('aria-label', s.viewerProgress);
         const progressBar = document.createElement('div');
         const progressPct = lastPage > 1 ? ((pageNumber - 1) / (lastPage - 1) * 100) : 100;
@@ -1028,11 +1105,15 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         // ── Barra de ferramentas ──
         const toolbar = document.createElement('div');
         toolbar.className = 'viewer-toolbar';
+        toolbar.setAttribute('role', 'toolbar');
+        toolbar.setAttribute('aria-label', s.viewerReadingTools);
 
         // Modo leitura
         const focusBtn = document.createElement('button');
+        focusBtn.type = 'button';
         focusBtn.className = 'button secondary';
         focusBtn.style.fontSize = '0.8rem';
+        focusBtn.dataset.role = 'viewer-mode-toggle';
         focusBtn.addEventListener('click', () => {
           setViewerMode(viewerMode === 'reading' ? 'default' : 'reading');
         });
@@ -1043,19 +1124,31 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
         // Font size
         const fontDown = document.createElement('button');
+        fontDown.type = 'button';
         fontDown.className = 'button secondary';
         fontDown.style.fontSize = '0.8rem';
         fontDown.textContent = s.viewerDecreaseFont;
+        fontDown.setAttribute('aria-label', s.viewerDecreaseFontLabel);
         const fontUp = document.createElement('button');
+        fontUp.type = 'button';
         fontUp.className = 'button secondary';
         fontUp.style.fontSize = '0.8rem';
         fontUp.textContent = s.viewerIncreaseFont;
+        fontUp.setAttribute('aria-label', s.viewerIncreaseFontLabel);
+
+        const fontSizeStatus = document.createElement('span');
+        fontSizeStatus.className = 'sr-only';
+        fontSizeStatus.setAttribute('role', 'status');
+        fontSizeStatus.setAttribute('aria-live', 'polite');
 
         let fontSizeLevel = parseInt(localStorage.getItem('viewerFontSize') || '0', 10) || 0;
         function applyFontSize() {
           const sizes = ['0.95rem', '1.05rem', '1.15rem', '1.3rem'];
           const idx = Math.max(0, Math.min(fontSizeLevel + 1, sizes.length - 1));
           mainContent.style.fontSize = sizes[idx];
+          fontDown.disabled = fontSizeLevel <= -1;
+          fontUp.disabled = fontSizeLevel >= 2;
+          fontSizeStatus.textContent = s.viewerFontSizeStatus(Math.round(parseFloat(sizes[idx]) / 1.05 * 100));
           try { localStorage.setItem('viewerFontSize', String(fontSizeLevel)); } catch (_) {}
         }
         applyFontSize();
@@ -1063,8 +1156,9 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         fontUp.addEventListener('click', () => { fontSizeLevel = Math.min(2, fontSizeLevel + 1); applyFontSize(); });
 
         // Busca local
-        if (rawHref !== '#') {
+        if (rawHref !== '#' && viewerMode !== 'reading') {
           const topOcrBtn = document.createElement('button');
+          topOcrBtn.type = 'button';
           topOcrBtn.className = 'button secondary';
           topOcrBtn.style.fontSize = '0.8rem';
           topOcrBtn.textContent = s.viewerOcrTopAction;
@@ -1074,8 +1168,14 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
         const localSearchWrap = document.createElement('div');
         localSearchWrap.className = 'viewer-search-local';
+        const localSearchId = `viewer-search-${doc}-${pageNumber}`;
+        const localSearchLabel = document.createElement('label');
+        localSearchLabel.className = 'sr-only';
+        localSearchLabel.htmlFor = localSearchId;
+        localSearchLabel.textContent = s.viewerSearchInVolume;
         const localSearchInput = document.createElement('input');
         localSearchInput.type = 'search';
+        localSearchInput.id = localSearchId;
         localSearchInput.placeholder = s.viewerSearchInVolume;
         localSearchInput.addEventListener('keydown', (e) => {
           if (e.key === 'Enter' && localSearchInput.value.trim()) {
@@ -1087,20 +1187,24 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
             window.location.href = routeUrl('search', `?${params.toString()}`);
           }
         });
+        localSearchWrap.appendChild(localSearchLabel);
         localSearchWrap.appendChild(localSearchInput);
 
         toolbar.appendChild(focusBtn);
         toolbar.appendChild(fontDown);
         toolbar.appendChild(fontUp);
-        toolbar.appendChild(localSearchWrap);
+        toolbar.appendChild(fontSizeStatus);
+        if (viewerMode !== 'reading') toolbar.appendChild(localSearchWrap);
 
         const actionBar = document.createElement('div');
         actionBar.className = 'viewer-action-bar';
         const copyExcerptBtn = document.createElement('button');
+        copyExcerptBtn.type = 'button';
         copyExcerptBtn.className = 'button secondary';
         copyExcerptBtn.style.fontSize = '0.8rem';
-        copyExcerptBtn.textContent = s.viewerCopyExcerpt;
+        copyExcerptBtn.textContent = viewerMode === 'reading' ? s.viewerCopySummary : s.viewerCopyExcerpt;
         const copyRefBtn = document.createElement('button');
+        copyRefBtn.type = 'button';
         copyRefBtn.className = 'button secondary';
         copyRefBtn.style.fontSize = '0.8rem';
         copyRefBtn.textContent = s.viewerCopyReference;
@@ -1124,20 +1228,28 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         });
         citationStyleLabel.appendChild(citationStyleSelect);
         const citeExcerptBtn = document.createElement('button');
+        citeExcerptBtn.type = 'button';
         citeExcerptBtn.className = 'button secondary';
         citeExcerptBtn.style.fontSize = '0.8rem';
-        citeExcerptBtn.textContent = s.viewerCitationAction;
+        citeExcerptBtn.textContent = viewerMode === 'reading' ? s.viewerCiteSummary : s.viewerCitationAction;
         const reportBtn = document.createElement('a');
         reportBtn.className = 'button secondary';
         reportBtn.style.fontSize = '0.8rem';
         reportBtn.target = '_blank';
         reportBtn.rel = 'noreferrer';
-        reportBtn.textContent = s.viewerReportIssue;
+        reportBtn.textContent = viewerMode === 'reading' ? s.viewerReportTranscription : s.viewerReportIssue;
+        reportBtn.setAttribute('aria-label', `${reportBtn.textContent} (${s.viewerOpenNewTab})`);
         actionBar.appendChild(copyExcerptBtn);
         actionBar.appendChild(copyRefBtn);
         actionBar.appendChild(citationStyleLabel);
         actionBar.appendChild(citeExcerptBtn);
         actionBar.appendChild(reportBtn);
+        const copyStatus = document.createElement('span');
+        copyStatus.className = 'sr-only';
+        copyStatus.dataset.role = 'viewer-copy-status';
+        copyStatus.setAttribute('role', 'status');
+        copyStatus.setAttribute('aria-live', 'polite');
+        actionBar.appendChild(copyStatus);
 
         // ── Índice de páginas (collapsible) ──
         const indexDetails = document.createElement('details');
@@ -1179,21 +1291,25 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         titleGroup.appendChild(h2);
         header.appendChild(titleGroup);
 
-        const navGroup = document.createElement('div');
+        const navGroup = document.createElement('nav');
         navGroup.className = 'viewer-header-nav';
+        navGroup.setAttribute('aria-label', s.viewerPageNavigation);
 
         const hasPrev = pageNumber > firstPage;
         const hasNext = pageNumber < lastPage;
 
         function makeNavBtn(text, targetPage, enabled, ariaLabel, iconText) {
-          const a = document.createElement('a');
-          a.className = `button secondary${enabled ? '' : ' disabled'}`;
+          const control = document.createElement(enabled ? 'a' : 'button');
+          control.className = `button secondary${enabled ? '' : ' disabled'}`;
           // Em telas pequenas, mostra apenas ícone/símbolo; em maiores, texto
-          a.innerHTML = `<span class="nav-icon" aria-hidden="true">${iconText || text}</span><span class="nav-label-text">${text}</span>`;
-          a.setAttribute('aria-disabled', enabled ? 'false' : 'true');
-          if (ariaLabel) a.setAttribute('aria-label', ariaLabel);
-          if (enabled) a.href = buildNavUrl(targetPage);
-          return a;
+          control.innerHTML = `<span class="nav-icon" aria-hidden="true">${iconText || text}</span><span class="nav-label-text">${text}</span>`;
+          if (ariaLabel) control.setAttribute('aria-label', ariaLabel);
+          if (enabled) control.href = buildNavUrl(targetPage);
+          else {
+            control.type = 'button';
+            control.disabled = true;
+          }
+          return control;
         }
 
         const firstBtn = makeNavBtn(s.viewerFirst || '<<', firstPage, pageNumber > firstPage, s.viewerFirst, '⏮');
@@ -1247,11 +1363,12 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         }
 
         // Atalhos de teclado para navegação
-        document.addEventListener('keydown', (e) => {
+        viewerKeydownHandler = (e) => {
           if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable)) return;
           if (e.key === 'ArrowLeft' && hasPrev) { e.preventDefault(); window.location.href = buildNavUrl(pageNumber - 1); }
           if (e.key === 'ArrowRight' && hasNext) { e.preventDefault(); window.location.href = buildNavUrl(pageNumber + 1); }
-        });
+        };
+        document.addEventListener('keydown', viewerKeydownHandler);
 
         header.appendChild(navGroup);
 
@@ -1260,7 +1377,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           await writeClipboardWithFeedback(
             copyExcerptBtn,
             () => normalizeWhitespace(page.excerpt || page.summary_page || summaryGlobal || ''),
-            s.viewerCopyExcerpt,
+            viewerMode === 'reading' ? s.viewerCopySummary : s.viewerCopyExcerpt,
           );
         });
         copyRefBtn.addEventListener('click', async () => {
@@ -1278,24 +1395,42 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
               const reference = formatCitation(citationStyleSelect.value, meta);
               return meta.excerpt ? `${meta.excerpt}\n\n${reference}` : reference;
             },
-            s.viewerCitationAction,
+            viewerMode === 'reading' ? s.viewerCiteSummary : s.viewerCitationAction,
           );
         });
 
         mainContent.appendChild(identityCard);
-        mainContent.appendChild(toolbar);
-        mainContent.appendChild(actionBar);
-        mainContent.appendChild(header);
-
-        // Índice de páginas: em telas grandes (>1100px) vai para a sidebar
         const isWide = window.innerWidth > 1100;
-        if (isWide) {
+        if (viewerMode === 'reading') {
+          mainContent.appendChild(header);
+          mainContent.appendChild(toolbar);
+
+          const readingToolsDetails = document.createElement('details');
+          readingToolsDetails.className = 'viewer-reading-tools';
+          const readingToolsSummary = document.createElement('summary');
+          readingToolsSummary.textContent = s.viewerReadingTools;
+          const readingToolsContent = document.createElement('div');
+          readingToolsContent.className = 'viewer-reading-tools-content';
+          readingToolsContent.appendChild(localSearchWrap);
+          readingToolsContent.appendChild(actionBar);
+          readingToolsContent.appendChild(indexDetails);
+          readingToolsDetails.appendChild(readingToolsSummary);
+          readingToolsDetails.appendChild(readingToolsContent);
+          mainContent.appendChild(readingToolsDetails);
+        } else {
+          mainContent.appendChild(toolbar);
+          mainContent.appendChild(actionBar);
+          mainContent.appendChild(header);
+        }
+
+        // Índice de páginas: no modo padrão, telas grandes usam a sidebar.
+        if (viewerMode !== 'reading' && isWide) {
           // Mover índice para sidebar com wrapper
           const sidebarIndexWrap = document.createElement('div');
           sidebarIndexWrap.className = 'viewer-sidebar-section';
           sidebarIndexWrap.appendChild(indexDetails);
           sidebar.appendChild(sidebarIndexWrap);
-        } else {
+        } else if (viewerMode !== 'reading') {
           mainContent.appendChild(indexDetails);
         }
 
@@ -1303,7 +1438,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         function createTextBlock(title, text, isSerif = true) {
           const wrap = document.createElement('div');
           wrap.style.marginBottom = 'var(--space-5)';
-          const h = document.createElement('h3');
+          const h = document.createElement('h2');
           h.style.cssText = 'margin:0 0 0.5rem; font-family: var(--font-serif); color: var(--color-accent);';
           h.textContent = title;
           const p = document.createElement('p');
@@ -1327,14 +1462,47 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         if (!page.excerpt) trechoRes.wrap.style.display = 'none';
 
         const dataNote = document.createElement('aside');
+        dataNote.setAttribute('aria-label', s.viewerEditorialNote);
         dataNote.style.cssText = 'margin:0 0 var(--space-5); padding:var(--space-3) var(--space-4); border:1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-border)); border-radius:var(--radius-m); background:color-mix(in srgb, var(--color-surface) 84%, var(--color-accent) 16%); color:var(--color-muted); line-height:1.6;';
         dataNote.textContent = s.viewerDataNote;
 
+        function createSummaryDetails(label, textBlock, open = false) {
+          const details = document.createElement('details');
+          details.className = 'viewer-summary-details';
+          details.open = open;
+          const summary = document.createElement('summary');
+          summary.textContent = label;
+          const content = document.createElement('div');
+          content.appendChild(textBlock.p);
+          details.appendChild(summary);
+          details.appendChild(content);
+          return details;
+        }
+
         function appendSummaryContent() {
-          mainContent.appendChild(resPagina.wrap);
-          mainContent.appendChild(resGlobal.wrap);
+          if (viewerMode === 'reading') {
+            mainContent.appendChild(createSummaryDetails(s.viewerPageSummaryDetails, resPagina, true));
+            mainContent.appendChild(createSummaryDetails(s.viewerGlobalSummaryDetails, resGlobal));
+          } else {
+            mainContent.appendChild(resPagina.wrap);
+            mainContent.appendChild(resGlobal.wrap);
+          }
           mainContent.appendChild(trechoRes.wrap);
           mainContent.appendChild(dataNote);
+        }
+
+        function createReadingFooterNav() {
+          const nav = document.createElement('nav');
+          nav.className = 'viewer-footer-nav';
+          nav.setAttribute('aria-label', `${s.viewerPageNavigation} — ${s.viewerPage(pageNumber)}`);
+          nav.appendChild(makeNavBtn(s.viewerPrev, pageNumber - 1, hasPrev, s.viewerPrev, '◀'));
+          const position = document.createElement('span');
+          position.className = 'viewer-page-position';
+          position.textContent = s.viewerPageOfTotal(pageNumber, lastPage);
+          position.setAttribute('aria-current', 'page');
+          nav.appendChild(position);
+          nav.appendChild(makeNavBtn(s.viewerNext, pageNumber + 1, hasNext, s.viewerNext, '▶'));
+          return nav;
         }
 
         if (viewerMode !== 'reading') {
@@ -1343,14 +1511,17 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
         // Bloco OCR Original (sempre visível)
         if (rawHref !== '#') {
-          const ocrSection = document.createElement('div');
+          const ocrSection = document.createElement('section');
           ocrSection.id = 'viewer-original-text';
+          const ocrTitleId = `viewer-original-text-title-${doc}-${pageNumber}`;
+          ocrSection.setAttribute('aria-labelledby', ocrTitleId);
           ocrSection.style.cssText = 'margin-top:var(--space-5); border-top:1px solid var(--color-border); padding-top:var(--space-4);';
 
           const ocrHeader = document.createElement('div');
           ocrHeader.style.cssText = 'display:flex; align-items:center; gap:var(--space-2); margin-bottom:var(--space-3); flex-wrap:wrap;';
-          const ocrTitle = document.createElement('span');
-          ocrTitle.style.cssText = 'font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--color-muted);';
+          const ocrTitle = document.createElement('h2');
+          ocrTitle.id = ocrTitleId;
+          ocrTitle.style.cssText = 'margin:0; font-size:1.15rem; font-family:var(--font-serif); color:var(--color-accent);';
           ocrTitle.textContent = s.viewerOcrTitle;
           ocrHeader.appendChild(ocrTitle);
 
@@ -1371,6 +1542,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           ocrActions.style.cssText = 'display:flex; gap:var(--space-2); align-items:center; margin-left:auto; flex-wrap:wrap;';
 
           const loadBtn = document.createElement('button');
+          loadBtn.type = 'button';
           loadBtn.className = 'button';
           loadBtn.style.fontSize = '0.8rem';
           loadBtn.textContent = s.viewerOcrLoadPage || s.rawOpen;
@@ -1382,14 +1554,20 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           extLink.rel = 'noreferrer';
           extLink.style.cssText = 'font-size:0.75rem; color:var(--color-muted); margin-left:auto;';
           extLink.textContent = s.viewerOcrOpenFile || s.viewerOcrOpen;
+          extLink.setAttribute('aria-label', `${extLink.textContent} (${s.viewerOpenNewTab})`);
           ocrActions.appendChild(extLink);
+          const loadStatus = document.createElement('span');
+          loadStatus.className = 'sr-only';
+          loadStatus.setAttribute('role', 'status');
+          loadStatus.setAttribute('aria-live', 'polite');
+          ocrActions.appendChild(loadStatus);
           ocrHeader.appendChild(ocrActions);
           ocrSection.appendChild(ocrHeader);
 
           const bodyWrap = document.createElement('div');
           const rawDescription = document.createElement('p');
           rawDescription.style.cssText = 'margin:0 0 var(--space-2); color:var(--color-ink); font-size:0.95rem; line-height:1.6;';
-          rawDescription.textContent = s.viewerOcrDescription;
+          rawDescription.textContent = `${s.viewerOcrDescription} ${s.viewerOcrAutomaticNote}`;
           bodyWrap.appendChild(rawDescription);
           const rawHint = document.createElement('p');
           rawHint.style.cssText = 'margin:0 0 var(--space-3); color:var(--color-muted); font-size:0.85rem;';
@@ -1398,6 +1576,8 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
           const pre = document.createElement('pre');
           pre.className = 'viewer-ocr-xml';
+          pre.id = `viewer-ocr-plain-${doc}-${pageNumber}`;
+          pre.dataset.ocrView = 'plain';
           pre.style.cssText = 'max-height:60vh; overflow-y:auto;';
           pre.style.display = 'none';
 
@@ -1431,6 +1611,8 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
             }
             rawLoading = true;
             loadBtn.disabled = true;
+            ocrSection.setAttribute('aria-busy', 'true');
+            loadStatus.textContent = s.viewerOcrLoading;
             rawLoadPromise = (async () => {
               const controller = new AbortController();
               if (rawOcrController) rawOcrController.abort();
@@ -1450,54 +1632,68 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
                   if (highlight) applyHighlight(pre, highlight);
 
                   const toggleWrap = document.createElement('div');
-                  toggleWrap.style.cssText = 'display:flex; gap:var(--space-2); margin-bottom:var(--space-3); flex-wrap:wrap;';
+                  toggleWrap.className = 'viewer-ocr-toggle';
+                  toggleWrap.setAttribute('role', 'group');
+                  toggleWrap.setAttribute('aria-label', s.viewerOcrDisplayLabel);
 
                   const btnPlain = document.createElement('button');
+                  btnPlain.type = 'button';
                   btnPlain.className = 'button';
                   btnPlain.style.fontSize = '0.8rem';
                   btnPlain.textContent = s.viewerOcrPlain;
+                  btnPlain.setAttribute('aria-controls', pre.id);
 
                   const btnStruct = document.createElement('button');
+                  btnStruct.type = 'button';
                   btnStruct.className = 'button secondary';
                   btnStruct.style.fontSize = '0.8rem';
                   btnStruct.textContent = s.viewerOcrStructured;
 
                   const btnVisual = document.createElement('button');
+                  btnVisual.type = 'button';
                   btnVisual.className = 'button secondary';
                   btnVisual.style.fontSize = '0.8rem';
                   btnVisual.textContent = s.viewerOcrVisual;
 
                   const structContainer = document.createElement('div');
+                  structContainer.id = `viewer-ocr-structured-${doc}-${pageNumber}`;
+                  structContainer.dataset.ocrView = 'structured';
                   structContainer.style.cssText = 'max-height:60vh; overflow-y:auto;';
                   renderOcrStructured(structContainer, ocrData);
-                  structContainer.style.display = 'none';
+                  structContainer.hidden = true;
+                  btnStruct.setAttribute('aria-controls', structContainer.id);
 
                   const visualContainer = document.createElement('div');
+                  visualContainer.id = `viewer-ocr-visual-${doc}-${pageNumber}`;
+                  visualContainer.dataset.ocrView = 'visual';
                   visualContainer.style.cssText = 'max-height:60vh; overflow-y:auto;';
                   renderOcrVisual(visualContainer, ocrData);
-                  visualContainer.style.display = 'none';
+                  visualContainer.hidden = true;
+                  btnVisual.setAttribute('aria-controls', visualContainer.id);
 
                   function setActiveBtn(active) {
                     [btnPlain, btnStruct, btnVisual].forEach((btn) => {
                       btn.className = btn === active ? 'button' : 'button secondary';
+                      btn.setAttribute('aria-pressed', btn === active ? 'true' : 'false');
                     });
                   }
                   function showPlain() {
+                    pre.hidden = false;
                     pre.style.display = '';
-                    structContainer.style.display = 'none';
-                    visualContainer.style.display = 'none';
+                    structContainer.hidden = true;
+                    visualContainer.hidden = true;
                     setActiveBtn(btnPlain);
                   }
                   function showStruct() {
-                    pre.style.display = 'none';
-                    structContainer.style.display = '';
-                    visualContainer.style.display = 'none';
+                    pre.hidden = true;
+                    structContainer.hidden = false;
+                    visualContainer.hidden = true;
                     setActiveBtn(btnStruct);
                   }
                   function showVisual() {
-                    pre.style.display = 'none';
-                    structContainer.style.display = 'none';
-                    visualContainer.style.display = '';
+                    pre.hidden = true;
+                    structContainer.hidden = true;
+                    visualContainer.hidden = false;
                     setActiveBtn(btnVisual);
                   }
 
@@ -1522,12 +1718,17 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
                 rawHint.remove();
                 rawLoaded = true;
                 loadBtn.disabled = true;
+                loadBtn.hidden = true;
+                loadStatus.textContent = s.viewerOcrLoaded;
               } catch (e) {
                 if (e?.name === 'AbortError') return;
                 pre.style.display = '';
                 pre.textContent = s.viewerOcrError(e.message);
                 loadBtn.disabled = false;
+                loadBtn.hidden = false;
+                loadStatus.textContent = s.viewerOcrError(e.message);
               } finally {
+                ocrSection.setAttribute('aria-busy', 'false');
                 rawLoading = false;
                 rawLoadPromise = null;
               }
@@ -1561,6 +1762,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         }
 
         if (viewerMode === 'reading') {
+          mainContent.appendChild(createReadingFooterNav());
           appendSummaryContent();
         }
 
