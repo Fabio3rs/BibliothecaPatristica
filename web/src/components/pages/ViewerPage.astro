@@ -306,6 +306,20 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       } catch (_) {}
     }
 
+    function getStoredOcrMode() {
+      try {
+        const stored = localStorage.getItem('viewerOcrMode');
+        if (stored === 'plain' || stored === 'struct' || stored === 'visual') return stored;
+      } catch (_) {}
+      return 'struct';
+    }
+
+    function persistOcrMode(mode) {
+      try {
+        localStorage.setItem('viewerOcrMode', mode);
+      } catch (_) {}
+    }
+
     function scheduleIdle(callback, timeout = 1200) {
       if (typeof requestIdleCallback === 'function') {
         requestIdleCallback(callback, { timeout });
@@ -726,7 +740,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         const summaryGlobal = page.summary_global || pageSnapshots[0]?.summary || '';
         let viewerMode = initialViewerMode;
         const rawHref = safeUrl(page.raw?.url);
-        const shouldAutoLoadRaw = rawHref !== '#' && getStoredRawAutoLoad();
+        const shouldAutoLoadRaw = rawHref !== '#' && (viewerMode === 'reading' || getStoredRawAutoLoad());
 
         // Bookmark: save current position
         try {
@@ -754,10 +768,10 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
             body.viewer-reading-active .disclaimer-wrapper,
             body.viewer-reading-active .footer { display: none !important; }
             body.viewer-reading-active #conteudo.wrapper { max-width: 92ch; }
-            .viewer-grid aside { order: 2; }
+            .viewer-grid > .viewer-sidebar { order: 2; }
             .viewer-grid .main-content { order: 1; }
-            .viewer-grid aside { position: sticky; top: 5.75rem; align-self: start; }
-            @media (max-width: 1100px) { .viewer-grid aside { position: static; } }
+            .viewer-grid > .viewer-sidebar { position: sticky; top: 5.75rem; align-self: start; }
+            @media (max-width: 1100px) { .viewer-grid > .viewer-sidebar { position: static; } }
             .viewer-header-nav { display: flex; gap: var(--space-2); flex-wrap: wrap; align-items: center; }
             .viewer-header-nav .button.disabled { opacity: 0.45; pointer-events: none; cursor: default; }
             .viewer-header-nav input[type="number"] { width: 4.5rem; padding: 0.35rem 0.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-s); background: var(--color-surface); color: var(--color-ink); font-size: 0.9rem; text-align: center; }
@@ -782,7 +796,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
             .viewer-progress-bar { width: 100%; height: 4px; background: var(--color-border); border-radius: 2px; margin-top: var(--space-3); overflow: hidden; }
             .viewer-progress-bar > div { height: 100%; background: var(--color-accent); border-radius: 2px; transition: width 0.3s ease; }
             .viewer-reading-mode .viewer-grid { grid-template-columns: 1fr !important; }
-            .viewer-reading-mode aside { display: none !important; }
+            .viewer-reading-mode .viewer-sidebar { display: none !important; }
             .viewer-reading-mode .main-content { max-width: 72ch; margin: 0 auto; padding: var(--space-6); background: color-mix(in srgb, var(--color-surface) 90%, #f8ecd8 10%); box-shadow: 0 12px 36px rgba(65, 48, 20, 0.08); }
             .viewer-reading-mode .viewer-identity { margin-bottom: var(--space-6); background: transparent; padding: 0 0 var(--space-4); border-radius: 0; border: 0; border-bottom: 1px solid var(--color-border); }
             .viewer-reading-mode .viewer-identity .identity-meta-wrap { margin-top: var(--space-3); }
@@ -850,6 +864,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         mainContent.className = 'card main-content';
 
         const sidebar = document.createElement('aside');
+        sidebar.className = 'viewer-sidebar';
         sidebar.style.cssText = 'display:flex; flex-direction:column; gap:var(--space-4);';
 
         // Calcular limites de página a partir dos blocos de metadados
@@ -1306,19 +1321,25 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         const resPagina = createTextBlock(s.viewerSummaryPage, page.summary_page);
         const resGlobal = createTextBlock(s.viewerSummaryGlobal, summaryGlobal);
         const trechoRes = createTextBlock(s.viewerExcerpt, page.excerpt, true);
-        
-        mainContent.appendChild(resPagina.wrap);
-        mainContent.appendChild(resGlobal.wrap);
 
         trechoRes.p.style.fontStyle = 'italic';
         trechoRes.p.style.color = 'var(--color-muted)';
         if (!page.excerpt) trechoRes.wrap.style.display = 'none';
-        mainContent.appendChild(trechoRes.wrap);
 
         const dataNote = document.createElement('aside');
         dataNote.style.cssText = 'margin:0 0 var(--space-5); padding:var(--space-3) var(--space-4); border:1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-border)); border-radius:var(--radius-m); background:color-mix(in srgb, var(--color-surface) 84%, var(--color-accent) 16%); color:var(--color-muted); line-height:1.6;';
         dataNote.textContent = s.viewerDataNote;
-        mainContent.appendChild(dataNote);
+
+        function appendSummaryContent() {
+          mainContent.appendChild(resPagina.wrap);
+          mainContent.appendChild(resGlobal.wrap);
+          mainContent.appendChild(trechoRes.wrap);
+          mainContent.appendChild(dataNote);
+        }
+
+        if (viewerMode !== 'reading') {
+          appendSummaryContent();
+        }
 
         // Bloco OCR Original (sempre visível)
         if (rawHref !== '#') {
@@ -1342,7 +1363,9 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           const autoLoadText = document.createElement('span');
           autoLoadText.textContent = s.viewerOcrAutoLoadLabel;
           autoLoadLabel.appendChild(autoLoadText);
-          ocrHeader.appendChild(autoLoadLabel);
+          if (viewerMode !== 'reading') {
+            ocrHeader.appendChild(autoLoadLabel);
+          }
 
           const ocrActions = document.createElement('div');
           ocrActions.style.cssText = 'display:flex; gap:var(--space-2); align-items:center; margin-left:auto; flex-wrap:wrap;';
@@ -1393,7 +1416,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           }
 
           const loadRawOcr = async ({ scrollIntoView = false, persistPreference = false } = {}) => {
-            if (persistPreference) {
+            if (persistPreference && viewerMode !== 'reading') {
               persistRawAutoLoad(true);
               autoLoadToggle.checked = true;
             }
@@ -1478,19 +1501,19 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
                     setActiveBtn(btnVisual);
                   }
 
-                  btnPlain.addEventListener('click', () => { localStorage.setItem('viewerOcrMode', 'plain'); showPlain(); });
-                  btnStruct.addEventListener('click', () => { localStorage.setItem('viewerOcrMode', 'struct'); showStruct(); });
-                  btnVisual.addEventListener('click', () => { localStorage.setItem('viewerOcrMode', 'visual'); showVisual(); });
+                  btnPlain.addEventListener('click', () => { persistOcrMode('plain'); showPlain(); });
+                  btnStruct.addEventListener('click', () => { persistOcrMode('struct'); showStruct(); });
+                  btnVisual.addEventListener('click', () => { persistOcrMode('visual'); showVisual(); });
                   toggleWrap.appendChild(btnPlain);
                   toggleWrap.appendChild(btnStruct);
                   toggleWrap.appendChild(btnVisual);
                   bodyWrap.insertBefore(toggleWrap, pre);
                   bodyWrap.appendChild(structContainer);
                   bodyWrap.appendChild(visualContainer);
-                  const savedOcrMode = localStorage.getItem('viewerOcrMode');
-                  if (savedOcrMode === 'struct') showStruct();
+                  const savedOcrMode = getStoredOcrMode();
+                  if (savedOcrMode === 'plain') showPlain();
                   else if (savedOcrMode === 'visual') showVisual();
-                  else showPlain();
+                  else showStruct();
                 } else {
                   pre.style.display = '';
                   pre.textContent = txt;
@@ -1521,9 +1544,11 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
             void loadRawOcr({ scrollIntoView: true, persistPreference: true });
           });
 
-          autoLoadToggle.addEventListener('change', () => {
-            persistRawAutoLoad(autoLoadToggle.checked);
-          });
+          if (viewerMode !== 'reading') {
+            autoLoadToggle.addEventListener('change', () => {
+              persistRawAutoLoad(autoLoadToggle.checked);
+            });
+          }
 
           if (highlight) {
             pre.dataset.highlight = highlight;
@@ -1533,6 +1558,10 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
             void loadRawOcr();
           }
 
+        }
+
+        if (viewerMode === 'reading') {
+          appendSummaryContent();
         }
 
         // Sidebar Metadados
