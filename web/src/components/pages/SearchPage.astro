@@ -20,6 +20,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           <h1>{t.searchTitle}</h1>
           <p>{t.searchHeroHint}</p>
           <p class="search-data-note">{t.searchDataNote}</p>
+          <p id="search-engine-note" class="search-engine-note">{t.searchIndexadorPoc}</p>
         </div>
         <div class="search-controls">
           <label class="sr-only" for="search-box">{t.searchPlaceholder}</label>
@@ -57,6 +58,15 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
   <style>
     .search-layout {
       align-items: start;
+      min-width: 0;
+    }
+    .search-layout :global(aside),
+    .search-main {
+      min-width: 0;
+      max-width: 100%;
+    }
+    .search-layout :global(.filters) {
+      max-width: 100%;
     }
     .search-layout :global(.card[aria-label]) {
       position: sticky;
@@ -103,6 +113,9 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       border-radius: var(--radius-m);
       background: color-mix(in srgb, var(--color-surface) 82%, var(--color-accent) 18%);
       font-size: 0.95rem;
+    }
+    .search-engine-note {
+      font-size: 0.85rem;
     }
     .search-controls {
       display: grid;
@@ -211,6 +224,34 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     .results-list .card {
       box-shadow: var(--shadow-soft);
     }
+    .search-empty-state {
+      display: grid;
+      justify-items: center;
+      gap: var(--space-3);
+      padding: clamp(var(--space-6), 8vw, var(--space-8));
+      text-align: center;
+      border: 1px dashed color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+      background: color-mix(in srgb, var(--color-surface) 94%, var(--color-accent) 6%);
+    }
+    .search-empty-state-icon {
+      display: grid;
+      place-items: center;
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 999px;
+      color: var(--color-accent);
+      background: color-mix(in srgb, var(--color-accent) 12%, var(--color-surface));
+      font-size: 1.6rem;
+    }
+    .search-empty-state h2,
+    .search-empty-state p {
+      margin: 0;
+    }
+    .search-empty-state p {
+      max-width: 58ch;
+      color: var(--color-muted);
+      line-height: 1.6;
+    }
     @media (max-width: 980px) {
       .search-hero {
         padding: var(--space-5);
@@ -222,6 +263,14 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       }
     }
     @media (max-width: 720px) {
+      .search-layout :global(.filters) {
+        width: 100%;
+        flex-direction: column;
+        overflow: visible;
+      }
+      .search-layout :global(.filters > div) {
+        min-width: 0;
+      }
       .search-hero {
         padding: var(--space-4);
       }
@@ -245,18 +294,14 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     const datalist = document.getElementById('keywords-suggestions');
     const quickCollectionButtons = Array.from(document.querySelectorAll('[data-collection]'));
     const suggestionButtons = Array.from(document.querySelectorAll('[data-term]'));
+    const engineNote = document.getElementById('search-engine-note');
     let checkboxNodes = [];
     let keywordOptions = [];
-    let keywordCatalog = null;
-    let keywordCatalogPromise = null;
-    let keywordManifest = null;
-    let keywordManifestPromise = null;
+    let volumesPayload = null;
     let renderGeneration = 0;
-    let keywordCatalogGeneration = 0;
     const dataCache = window.pdfocrDataCache;
     const jsonCache = new Map();
     const RESULT_BATCH_SIZE = 8;
-    const KEYWORD_SHARD_BATCH_SIZE = 4;
 
     // Reconstrói funções de formatação (não serializáveis via define:vars)
     const s = uiStrings;
@@ -283,6 +328,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#39;');
+    const normalizeWhitespace = (value) => String(value || '').replace(/\s+/g, ' ').trim();
 
     const getJsonOnce = (url) => {
       if (dataCache?.getJsonOnce) return dataCache.getJsonOnce(url);
@@ -299,14 +345,6 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       return jsonCache.get(url);
     };
 
-    const loadJsonInBatches = (urls, options = {}) => {
-      if (dataCache?.loadJsonInBatches) return dataCache.loadJsonInBatches(urls, options);
-      return Promise.all(urls.map((url) => getJsonOnce(url).then(
-        (value) => ({ url, ok: true, value }),
-        (error) => ({ url, ok: false, value: null, error }),
-      )));
-    };
-
     const state = {
       term: '',
       pageSize: 25,
@@ -321,8 +359,8 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       const pageSize = parseInt(params.get('pageSize'), 10);
       const page = parseInt(params.get('page'), 10);
       const filters = {};
-      // Apenas 'collection' e 'volume' são filtros estruturais do Pagefind (leves).
-      // 'keyword' é resolvido via busca textual (term) para evitar baixar o chunk de 7MB.
+      // Coleção seleciona partições do PatrologiaIndexer; volume e livro entram
+      // na expressão booleana enviada ao índice.
       ['collection', 'volume', 'book'].forEach((key) => {
         const values = params.getAll(key);
         if (values.length) filters[key] = values;
@@ -359,14 +397,27 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       btn.setAttribute('aria-pressed', selected ? 'true' : 'false');
     });
 
-    let pagefindInstance = null;
-    let pagefindPromise = null;
-    let pagefindManifest = null;
-    let pagefindManifestPromise = null;
+    let indexadorModulePromise = null;
+    let indexadorManifest = null;
+    let indexadorManifestPromise = null;
+    const indexadorInstances = new Map();
+    const pageMetaPromises = new Map();
     let renderTimer = null;
 
     const basePath = assetBase.endsWith('/') ? assetBase.slice(0, -1) : assetBase;
     const localePath = localeBase.endsWith('/') ? localeBase.slice(0, -1) : localeBase;
+
+    function manifestIndexes(manifest) {
+      if (Array.isArray(manifest?.indexes)) return manifest.indexes;
+      return (manifest?.collections || []).filter((item) => item && typeof item === 'object');
+    }
+
+    function manifestCollections(manifest) {
+      if (Array.isArray(manifest?.collections) && manifest.collections.every((item) => typeof item === 'string')) {
+        return manifest.collections;
+      }
+      return Array.from(new Set(manifestIndexes(manifest).flatMap((item) => item.collections || [item.id])));
+    }
 
     function localizeRoutePath(pathname) {
       const normalized = String(pathname || '/');
@@ -381,89 +432,23 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       return `${localePath}${strippedPath === '/' ? '' : strippedPath}`;
     }
 
-    function pagefindAssetUrl(relativePath) {
-      const cleanPath = String(relativePath || '').replace(/^\/+/, '');
-      return `${assetBase}${cleanPath}`;
-    }
-
-    async function loadPagefindManifest() {
-      if (pagefindManifest) return pagefindManifest;
-      if (pagefindManifestPromise) return pagefindManifestPromise;
-      pagefindManifestPromise = (async () => {
-        try {
-          const res = await fetch(`${assetBase}pagefind/manifest.json`);
-          if (!res.ok) return null;
-          return await res.json();
-        } catch {
-          return null;
-        }
-      })();
-      pagefindManifest = await pagefindManifestPromise;
-      return pagefindManifest;
-    }
-
-    async function loadKeywordManifest() {
-      if (keywordManifest) return keywordManifest;
-      if (keywordManifestPromise) return keywordManifestPromise;
-      keywordManifestPromise = (async () => {
-        try {
-          const res = await fetch(`${assetBase}dict/keywords_manifest.json`);
-          if (!res.ok) return null;
-          return await res.json();
-        } catch {
-          return null;
-        }
-      })();
-      keywordManifest = await keywordManifestPromise;
-      return keywordManifest;
-    }
-
-    function normalizeKeywordOptions(items) {
-      return Array.from(new Set((items || [])
-        .map((item) => item?.label)
-        .filter((label) => typeof label === 'string' && label.trim().length > 0)))
-        .sort((a, b) => a.localeCompare(b, uiLocale, { sensitivity: 'base' }));
-    }
-
-    async function ensureKeywordCatalog() {
-      if (keywordCatalog) return keywordCatalog;
-      if (keywordCatalogPromise) return keywordCatalogPromise;
-      const generation = ++keywordCatalogGeneration;
-      keywordCatalogPromise = (async () => {
-        const manifest = await loadKeywordManifest();
-        let items = [];
-
-        try {
-          if (manifest?.shards?.length) {
-            const shardResults = await loadJsonInBatches(
-              manifest.shards.map((shard) => `${assetBase}${shard.path}`),
-              { batchSize: KEYWORD_SHARD_BATCH_SIZE, delayMs: 12 },
-            );
-            items = shardResults.flatMap((payload) => Array.isArray(payload.value?.items) ? payload.value.items : []);
-          } else {
-            const fallback = await getJsonOnce(`${assetBase}dict/keywords_lookup.json`)
-              .catch(() => getJsonOnce(`${assetBase}dict/keywords.json`));
-            items = Array.isArray(fallback?.items) ? fallback.items : [];
+    async function loadIndexadorManifest() {
+      if (indexadorManifest) return indexadorManifest;
+      if (indexadorManifestPromise) return indexadorManifestPromise;
+      indexadorManifestPromise = getJsonOnce(`${assetBase}indexador/search/manifest.json`)
+        .then((manifest) => {
+          indexadorManifest = manifest;
+          const volumeCount = new Set(manifestIndexes(manifest).flatMap((item) => item.volumes || [])).size;
+          if (engineNote && manifest.sample) {
+            engineNote.textContent = `${s.searchIndexadorPoc} ${s.searchIndexadorSample.replace('{count}', String(volumeCount))}`;
           }
-        } catch (err) {
-          console.error(err);
-          const fallback = await getJsonOnce(`${assetBase}dict/keywords_lookup.json`)
-            .catch(() => getJsonOnce(`${assetBase}dict/keywords.json`));
-          items = Array.isArray(fallback?.items) ? fallback.items : [];
-        }
-
-        if (generation !== keywordCatalogGeneration) return keywordCatalog || [];
-        keywordCatalog = items;
-        keywordOptions = normalizeKeywordOptions(items);
-        if (searchBox.value) updateSuggestions();
-        return keywordCatalog;
-      })().catch((err) => {
-        console.error(err);
-        keywordCatalog = null;
-        keywordCatalogPromise = null;
-        return [];
-      });
-      return keywordCatalogPromise;
+          return manifest;
+        })
+        .catch((error) => {
+          indexadorManifestPromise = null;
+          throw error;
+        });
+      return indexadorManifestPromise;
     }
 
     async function loadFilters() {
@@ -471,9 +456,16 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         // Volumes e collections são leves e necessários para os filtros estruturais.
         // Keywords entram em duas camadas: top keywords imediatas para chips e
         // catálogo completo sob demanda para sugestões e navegação.
-        const volumesObj = await getJsonOnce(`${assetBase}volumes.json`);
-
-        const volumes = volumesObj.volumes || [];
+        const [volumesObj, customManifest] = await Promise.all([
+          getJsonOnce(`${assetBase}volumes.json`),
+          loadIndexadorManifest().catch(() => null),
+        ]);
+        volumesPayload = volumesObj;
+        dataCache?.rememberJsonForNavigation?.(`${assetBase}volumes.json`, volumesObj);
+        const indexedVolumeIds = customManifest?.sample
+          ? new Set(manifestIndexes(customManifest).flatMap((item) => item.volumes || []))
+          : null;
+        const volumes = (volumesObj.volumes || []).filter((volume) => !indexedVolumeIds || indexedVolumeIds.has(volume.id));
 
         const collections = Array.from(new Set(volumes.map((v) => v.collection_id))).sort();
         const volumeIds = volumes.map((v) => v.id).sort();
@@ -499,15 +491,21 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
                 </div>
               </details>
             `).join('')}
-            <div>
-              <h3>${s.filterKeywords}</h3>
-              <p style="font-size:0.8rem;color:var(--color-muted);margin:0 0 0.5rem;">${s.filterKeywordsHint}</p>
-              <div id="keywords-chips" style="display:flex;flex-wrap:wrap;gap:0.3rem;">
-                <span style="font-size:0.8rem;color:var(--color-muted);">${s.filterKeywordsLoading}</span>
+            <details class="keyword-filter-section" open>
+              <summary>${s.filterKeywords}</summary>
+              <div class="filters-group">
+                <p style="font-size:0.8rem;color:var(--color-muted);margin:0;">${s.filterKeywordsHint}</p>
+                <div id="keywords-chips" style="display:flex;flex-wrap:wrap;gap:0.3rem;">
+                  <span style="font-size:0.8rem;color:var(--color-muted);">${s.filterKeywordsLoading}</span>
+                </div>
               </div>
-            </div>
+            </details>
           </div>
         `;
+
+        if (window.matchMedia('(max-width: 720px)').matches) {
+          filtersRoot.querySelector('.keyword-filter-section')?.removeAttribute('open');
+        }
 
         checkboxNodes = Array.from(filtersRoot.querySelectorAll('input[type="checkbox"]'));
 
@@ -541,10 +539,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
                 toggleFilter('keyword', btn.dataset.keyword);
               });
             });
-            if (state.term) {
-              void ensureKeywordCatalog();
-              updateSuggestions();
-            }
+            if (state.term) updateSuggestions();
           })
           .catch(() => {
             const chipsContainer = document.getElementById('keywords-chips');
@@ -576,43 +571,180 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       return localizeRoutePath(`${basePath}${path}`);
     }
 
-    async function ensurePagefind() {
-      if (pagefindInstance) return pagefindInstance;
-      if (pagefindPromise) return pagefindPromise;
-      pagefindPromise = (async () => {
-        try {
-          const manifest = await loadPagefindManifest();
-          const primaryPath = manifest?.indexes?.[0]?.path || 'pagefind';
-          const bundlePath = manifest?.indexes?.[0]?.path
-            ? pagefindAssetUrl(`${primaryPath}/pagefind.js`)
-            : pagefindAssetUrl('pagefind/main/pagefind.js');
-          const mod = await import(bundlePath);
-          const pfModule = mod?.default || mod?.pagefind || mod;
-          const pf = (pfModule && typeof pfModule.search === 'function') ? pfModule : mod;
-          const basePathForInit = manifest?.indexes?.[0]?.path
-            ? pagefindAssetUrl(`${primaryPath}/`)
-            : pagefindAssetUrl('pagefind/main/');
+    async function ensureIndexador(entry) {
+      if (indexadorInstances.has(entry.id)) return indexadorInstances.get(entry.id);
+      if (!indexadorModulePromise) {
+        indexadorModulePromise = import(`${assetBase}indexador/runtime/indexador-pagefind.js`);
+      }
+      const { createIndexadorPagefind } = await indexadorModulePromise;
+      const instance = createIndexadorPagefind({
+        assetBaseUrl: `${assetBase}indexador/runtime`,
+        indexBaseUrl: `${assetBase}indexador/search/${entry.path}`,
+        PAGE_SIZE: 50,
+        MAX_PER_TOKEN: 10000,
+        MAX_CONCURRENT_FETCHES: 6,
+        prefixMatch: true,
+        prefixMinLength: 3,
+        prefixMaxTerms: 32,
+        prefixMaxPerTerm: 10000,
+      });
+      await instance.init();
+      indexadorInstances.set(entry.id, instance);
+      return instance;
+    }
 
-          if (pf && typeof pf.options === 'function') {
-            await pf.options({ basePath: basePathForInit });
-          }
+    function groupTerms(values = []) {
+      const terms = values.map((value) => String(value || '').trim()).filter(Boolean);
+      if (!terms.length) return '';
+      return terms.length === 1 ? `(${terms[0]})` : `(${terms.map((value) => `(${value})`).join(' || ')})`;
+    }
 
-          if (manifest?.indexes?.length > 1 && pf && typeof pf.mergeIndex === 'function') {
-            for (const extra of manifest.indexes.slice(1)) {
-              await pf.mergeIndex(pagefindAssetUrl(`${extra.path}/`));
-            }
-          }
+    function buildIndexadorQuery(term, filters, includeCollection) {
+      const parts = [];
+      if (term) parts.push(`(${term})`);
+      const collections = includeCollection ? groupTerms(filters.collection) : '';
+      const volumes = groupTerms(filters.volume);
+      const books = groupTerms(filters.book);
+      if (collections) parts.push(collections);
+      if (volumes) parts.push(volumes);
+      if (books) parts.push(books);
+      return parts.join(' && ');
+    }
 
-          if (pf && typeof pf.search === 'function') return pf;
-          throw new Error('Bundle Pagefind sem search utilizável');
-        } catch (err) {
-          console.error(err);
-          resultsEl.textContent = s.searchIndexUnavailable;
-          return null;
+    async function loadResultPrefix(result, count) {
+      const needed = Math.min(count, result.total);
+      if (typeof result.getRange === 'function') return result.getRange(0, needed);
+      const pages = Math.ceil(needed / result.pageSize);
+      const chunks = [];
+      for (let page = 0; page < pages; page++) chunks.push(result.getPage(page));
+      return (await Promise.all(chunks)).flat().slice(0, needed);
+    }
+
+    async function loadVisibleResults(searchResults, start, end) {
+      if (searchResults.length === 1 && typeof searchResults[0].getRange === 'function') {
+        return searchResults[0].getRange(start, end);
+      }
+      const prefixes = await Promise.all(searchResults.map((result) => loadResultPrefix(result, end)));
+      return prefixes.flat()
+        .sort((left, right) => right.score - left.score)
+        .filter((item, index, items) => items.findIndex((candidate) => candidate.url === item.url) === index)
+        .slice(start, end);
+    }
+
+    function metadataBlockPath(value, volumeId) {
+      if (!/^[A-Za-z0-9.]+$/.test(volumeId)) return '';
+      const path = String(value || '').replace(/^\/+/, '');
+      const prefix = `meta/${volumeId}-pages-`;
+      const suffix = '.json.gz';
+      if (!path.startsWith(prefix) || !path.endsWith(suffix)) return '';
+      const blockNumber = path.slice(prefix.length, -suffix.length);
+      return /^\d+$/.test(blockNumber) ? path : '';
+    }
+
+    function resolveRawUrl(raw, rawBaseUrl) {
+      if (raw?.url) return String(raw.url);
+      if (!raw?.file || !rawBaseUrl) return '';
+      return `${String(rawBaseUrl).replace(/\/$/, '')}/${encodeURIComponent(String(raw.file))}`;
+    }
+
+    async function loadPageMetadata(volumeId, pageNumber, directBlockPath = '') {
+      const normalizedBlockPath = metadataBlockPath(directBlockPath, volumeId);
+      const key = `${volumeId}:${pageNumber}:${normalizedBlockPath}`;
+      if (pageMetaPromises.has(key)) return pageMetaPromises.get(key);
+      const promise = (async () => {
+        let blockPath = normalizedBlockPath;
+        if (!blockPath) {
+          const meta = await getJsonOnce(`${assetBase}meta/${encodeURIComponent(volumeId)}.json.gz`);
+          const block = (meta.page_blocks || []).find((item) => pageNumber >= item.page_first && pageNumber <= item.page_last);
+          blockPath = block?.file || '';
         }
-      })();
-      pagefindInstance = await pagefindPromise;
-      return pagefindInstance;
+        if (!blockPath) return { page: null, rawBaseUrl: '', blockPath: '', blockUrl: '', blockPayload: null };
+        const blockUrl = `${assetBase}${blockPath}`;
+        const payload = await getJsonOnce(blockUrl);
+        return {
+          page: (payload.pages || []).find((item) => Number(item.page) === pageNumber) || null,
+          rawBaseUrl: payload.raw_base_url || '',
+          blockPath,
+          blockUrl,
+          blockPayload: payload,
+        };
+      })().catch((error) => {
+        pageMetaPromises.delete(key);
+        throw error;
+      });
+      pageMetaPromises.set(key, promise);
+      return promise;
+    }
+
+    function makeExcerpt(value, term) {
+      const text = normalizeWhitespace(value || '');
+      if (!text) return s.searchNoSnippet;
+      const queryTerms = Array.from(new Set(String(term || '').match(/[\p{L}\p{N}]+/gu) || []))
+        .filter((item) => item.length >= 3);
+      const lower = text.toLocaleLowerCase(uiLocale);
+      const positions = queryTerms
+        .map((item) => lower.indexOf(item.toLocaleLowerCase(uiLocale)))
+        .filter((position) => position >= 0);
+      const matchAt = positions.length ? Math.min(...positions) : 0;
+      let start = Math.max(0, matchAt - 140);
+      if (start > 0) {
+        const nextSpace = text.indexOf(' ', start);
+        if (nextSpace >= 0 && nextSpace < matchAt) start = nextSpace + 1;
+      }
+      const excerpt = text.slice(start, start + 480);
+      let html = escapeHtml(excerpt);
+      queryTerms.forEach((item) => {
+        const escaped = item.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        html = html.replace(new RegExp(escaped, 'giu'), (match) => `<mark>${match}</mark>`);
+      });
+      return `${start > 0 ? '…' : ''}${html}${start + excerpt.length < text.length ? '…' : ''}`;
+    }
+
+    async function enrichIndexadorDocument(document, term) {
+      const parsed = new URL(document.url, window.location.origin);
+      const volumeId = parsed.searchParams.get('doc') || '';
+      const pageNumber = Number(parsed.searchParams.get('page'));
+      const directBlockPath = parsed.searchParams.get('mb') || '';
+      const metadata = volumeId && Number.isFinite(pageNumber)
+        ? await loadPageMetadata(volumeId, pageNumber, directBlockPath)
+        : { page: null, rawBaseUrl: '', blockPath: '', blockUrl: '', blockPayload: null };
+      const page = metadata.page;
+      if (metadata.blockPath) parsed.searchParams.set('mb', metadata.blockPath);
+      else parsed.searchParams.delete('mb');
+      const publicUrl = `${parsed.pathname}${parsed.search}${parsed.hash}`;
+      const titleHint = document.name.includes(' — ') ? document.name.split(' — ').slice(1).join(' — ') : '';
+      const titleLabels = titleHint.includes(' • ') ? titleHint.split(' • ').map((item) => item.trim()) : [];
+      return {
+        url: publicUrl,
+        excerpt: makeExcerpt([page?.summary_page, page?.summary_global].filter(Boolean).join(' '), term),
+        meta: {
+          title: document.name,
+          author: page?.author || '',
+          work: page?.work || '',
+          doc: volumeId,
+          page: String(pageNumber || ''),
+          collection: volumeId.slice(0, 2),
+          rawUrl: resolveRawUrl(page?.raw, metadata.rawBaseUrl),
+          keywords: titleLabels.slice(0, 3).join(' • '),
+        },
+        filters: {
+          collection: volumeId ? [volumeId.slice(0, 2)] : [],
+          volume: volumeId ? [volumeId] : [],
+        },
+        navigationCache: metadata.blockUrl && metadata.blockPayload
+          ? { blockUrl: metadata.blockUrl, blockPayload: metadata.blockPayload }
+          : null,
+      };
+    }
+
+    function renderEmptyState() {
+      resultsEl.innerHTML = `
+        <div class="card search-empty-state">
+          <span class="search-empty-state-icon" aria-hidden="true">🔍</span>
+          <h2>${escapeHtml(s.searchEmptyTitle)}</h2>
+          <p>${escapeHtml(s.searchEmptyDescription || s.searchIndexadorPrompt)}</p>
+        </div>
+      `;
     }
 
     function handleFilterChange() {
@@ -719,22 +851,13 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     async function render() {
       const generation = ++renderGeneration;
       const term = (state.term || '').trim();
-      const searchInput = state.exactPhrase && term ? `"${term.replace(/"/g, '\\"')}"` : term;
-      const searchTerm = term === '' ? null : term;
       const pageSize = state.pageSize || 25;
       const filters = state.filters;
-      const noCriteria = searchTerm === null && Object.keys(filters).length === 0;
+      const hasCriteria = term || filters.collection?.length || filters.volume?.length || filters.book?.length;
 
-      // ── Sem critério: passa term null normalmente ao Pagefind ──
-      // Porém, se já houve uma busca com filtro antes (pagefind inicializado),
-      // precisamos cancelar qualquer debouncedSearch anterior que esteja em voo
-      // com searchTerm=null+filtros, pois quando acorda ele executa search(null,{})
-      // varrendo 287k registros na thread principal e travando o browser.
-      // A forma de cancelar é chamar debouncedSearch('', ...) — string vazia faz o
-      // Pagefind incrementar o searchID interno e retornar {} sem varrer nada,
-      // descartando a chamada anterior em voo.
-      if (noCriteria && pagefindInstance) {
-        pagefindInstance.debouncedSearch('', {}, 0);
+      if (!hasCriteria) {
+        renderEmptyState();
+        return;
       }
 
       // Feedback visual imediato
@@ -745,27 +868,30 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       `;
 
       try {
-        const pf = await ensurePagefind();
-        if (!pf) {
+        const manifest = await loadIndexadorManifest();
+        const availableCollections = new Set(manifestCollections(manifest));
+        const requestedCollections = filters.collection?.length
+          ? filters.collection
+          : [...availableCollections];
+        const collections = requestedCollections.filter((item) => availableCollections.has(item));
+        const entries = manifestIndexes(manifest).filter((entry) => {
+          const supported = entry.collections || [entry.id];
+          return collections.some((collection) => supported.includes(collection));
+        });
+        const query = buildIndexadorQuery(term, filters, manifest.layout === 'unified');
+        if (!query) {
+          renderEmptyState();
+          return;
+        }
+        const engines = (await Promise.all(entries.map(ensureIndexador))).filter(Boolean);
+        if (!engines.length) {
           resultsEl.textContent = s.searchIndexUnavailable;
           return;
         }
-
-        let searchResult = await pf.debouncedSearch(searchInput || searchTerm, { filters: Object.keys(filters).length ? filters : undefined }, 300);
-        // debouncedSearch retorna null quando uma chamada mais recente foi enfileirada — abandona silenciosamente
-        if (searchResult === null) return;
-        if (searchResult && searchResult.results && searchResult.results.length === 0 && state.exactPhrase && searchInput !== searchTerm) {
-          searchResult = await pf.debouncedSearch(searchTerm, { filters: Object.keys(filters).length ? filters : undefined }, 300);
-          if (searchResult === null) return;
-        }
-        if (!searchResult || !searchResult.results) {
-          resultsEl.textContent = s.searchIndexEmpty;
-          return;
-        }
+        const searchResults = await Promise.all(engines.map((engine) => engine.search(query)));
         if (generation !== renderGeneration) return;
 
-        const allResults = searchResult.results;
-        const total = allResults.length;
+        const total = searchResults.reduce((sum, result) => sum + result.total, 0);
 
         // ── Sem resultados com critério ──
         if (total === 0) {
@@ -780,12 +906,12 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         }
         if (generation !== renderGeneration) return;
 
-        // ── Paginação lazy: slice ANTES de chamar .data() ──
         const totalPages = Math.max(1, Math.ceil(total / pageSize));
         state.page = Math.min(Math.max(1, state.page), totalPages);
         const start = (state.page - 1) * pageSize;
         const end = Math.min(start + pageSize, total);
-        const visibleResults = allResults.slice(start, end);
+        const visibleResults = await loadVisibleResults(searchResults, start, end);
+        if (generation !== renderGeneration) return;
         const activeEl = document.activeElement;
         const focusAria = activeEl && activeEl.classList.contains('button') ? activeEl.getAttribute('aria-label') : null;
 
@@ -815,7 +941,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         for (let i = 0; i < visibleResults.length; i += RESULT_BATCH_SIZE) {
           if (generation !== renderGeneration) return;
           const chunk = visibleResults.slice(i, i + RESULT_BATCH_SIZE);
-          const hits = await Promise.all(chunk.map((r) => r.data()));
+          const hits = await Promise.all(chunk.map((document) => enrichIndexadorDocument(document, term)));
           if (generation !== renderGeneration) return;
           if (loadingNotice.isConnected) loadingNotice.remove();
           hits.forEach((hit) => cardsWrap.appendChild(buildCard(hit, term)));
@@ -903,6 +1029,31 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       link.textContent = hit.meta?.title || s.searchNoTitle;
       h3.appendChild(link);
 
+      function rememberViewerAssets(prefetchManifest = false) {
+        const remember = dataCache?.rememberJsonForNavigation;
+        if (!remember) return;
+        if (volumesPayload) remember(`${assetBase}volumes.json`, volumesPayload);
+        if (hit.navigationCache?.blockUrl && hit.navigationCache?.blockPayload) {
+          remember(hit.navigationCache.blockUrl, hit.navigationCache.blockPayload);
+        }
+        if (!prefetchManifest || !volumesPayload || !hit.meta?.doc) return;
+        const volume = (volumesPayload.volumes || []).find((item) => item.id === hit.meta.doc);
+        if (!volume?.meta_url) return;
+        const metaUrl = `${assetBase}${String(volume.meta_url).replace(/^\/+/, '')}`;
+        void getJsonOnce(metaUrl)
+          .then((payload) => remember(metaUrl, payload))
+          .catch(() => {});
+      }
+
+      function prepareViewerLink(anchor) {
+        anchor.addEventListener('pointerenter', () => rememberViewerAssets(true));
+        anchor.addEventListener('focus', () => rememberViewerAssets(true));
+        anchor.addEventListener('pointerdown', () => rememberViewerAssets(false));
+        anchor.addEventListener('click', () => rememberViewerAssets(false));
+      }
+
+      prepareViewerLink(link);
+
       const metaLine = document.createElement('div');
       metaLine.className = 'result-meta';
 
@@ -969,6 +1120,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       openBtn.className = 'button secondary';
       openBtn.href = link.href;
       openBtn.textContent = s.searchResultOpenPage;
+      prepareViewerLink(openBtn);
       actions.appendChild(openBtn);
 
       if (rawUrl) {
@@ -991,23 +1143,11 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     }
 
     searchBox.addEventListener('input', () => {
-      void ensureKeywordCatalog();
-      // Pré-carrega os fragmentos do índice enquanto o usuário digita,
-      // sem ainda executar a busca — reduz latência percebida.
-      ensurePagefind().then((pf) => {
-        if (pf && typeof pf.preload === 'function' && searchBox.value) {
-          pf.preload(searchBox.value);
-        }
-      });
       if (renderTimer) clearTimeout(renderTimer);
       renderTimer = setTimeout(() => {
         handleTermInput();
         updateSuggestions();
       }, 120);
-    });
-
-    searchBox.addEventListener('focus', () => {
-      void ensureKeywordCatalog();
     });
 
     // Suporte a Enter

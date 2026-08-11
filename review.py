@@ -707,8 +707,9 @@ def ensure_search_schema(conn: sqlite3.Connection) -> None:
     conn.execute(
         """
         CREATE TRIGGER IF NOT EXISTS lines_fts_ai AFTER INSERT ON lines BEGIN
-            INSERT INTO lines_fts(line_id, page_id, volume, search_text)
+            INSERT INTO lines_fts(rowid, line_id, page_id, volume, search_text)
             VALUES (
+                new.id,
                 new.id,
                 COALESCE(new.page_id, ''),
                 COALESCE(new.volume, ''),
@@ -726,9 +727,10 @@ def ensure_search_schema(conn: sqlite3.Connection) -> None:
         CREATE TRIGGER IF NOT EXISTS lines_fts_au
         AFTER UPDATE OF page_id, volume, reviewed_text, qwen_text, tesseract_text
         ON lines BEGIN
-            DELETE FROM lines_fts WHERE line_id = old.id;
-            INSERT INTO lines_fts(line_id, page_id, volume, search_text)
+            DELETE FROM lines_fts WHERE rowid = old.id;
+            INSERT INTO lines_fts(rowid, line_id, page_id, volume, search_text)
             VALUES (
+                new.id,
                 new.id,
                 COALESCE(new.page_id, ''),
                 COALESCE(new.volume, ''),
@@ -744,7 +746,7 @@ def ensure_search_schema(conn: sqlite3.Connection) -> None:
     conn.execute(
         """
         CREATE TRIGGER IF NOT EXISTS lines_fts_ad AFTER DELETE ON lines BEGIN
-            DELETE FROM lines_fts WHERE line_id = old.id;
+            DELETE FROM lines_fts WHERE rowid = old.id;
         END
         """
     )
@@ -755,8 +757,9 @@ def ensure_search_schema(conn: sqlite3.Connection) -> None:
         conn.execute("DELETE FROM lines_fts")
         conn.execute(
             """
-            INSERT INTO lines_fts(line_id, page_id, volume, search_text)
+            INSERT INTO lines_fts(rowid, line_id, page_id, volume, search_text)
             SELECT
+                id,
                 id,
                 COALESCE(page_id, ''),
                 COALESCE(volume, ''),
@@ -1707,7 +1710,11 @@ def search_lines():
 @app.route("/submit", methods=["POST"])
 def submit_review():
     line_id = int(request.form["line_id"])
-    reviewed_text = request.form["reviewed_text"].strip()
+    # Revisoes alimentam diretamente o ground truth e devem obedecer a mesma
+    # forma canonica usada pelas versoes geradas na inferencia.
+    reviewed_text = unicodedata.normalize(
+        "NFC", request.form["reviewed_text"]
+    ).strip()
     action = request.form["action"]
     next_offset = int(request.form.get("next_offset", 0))
     status = request.form.get("status", "inferred")

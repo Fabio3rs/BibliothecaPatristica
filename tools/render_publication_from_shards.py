@@ -18,9 +18,10 @@ keywords_lookup.json gerado por export_keywords_dicts.py.  Cada keyword bruta do
 shards é resolvida para o ID canônico do seu grupo HDBSCAN (não-escritura) ou
 para o ID da própria citação (escritura), colapsando variantes no canônico.
 
-O campo `raw` em cada página aponta para o arquivo de texto OCR original no
-GitHub raw content, permitindo que o viewer exiba o link "Ver OCR Original"
-em produção. Formato: {raw_base_url}/{DOC}/text/{filename}.
+Cada bloco de páginas guarda `raw_base_url` uma única vez. Em cada página,
+`raw.file` identifica o OCR original e `raw.url` fica reservado a overrides
+excepcionais. O frontend resolve normalmente
+`{raw_base_url}/{raw.file}`.
 """
 from __future__ import annotations
 
@@ -54,6 +55,7 @@ class PageRecord:
     keywords: List[str]
     keyword_categories: Dict[str, List[str]]
     created_at: str
+    raw_url: str = ""
 
 
 def now_iso() -> str:
@@ -105,6 +107,14 @@ def load_shard(shard_path: Path) -> List[PageRecord]:
                     keywords=r.get("keywords") or [],
                     keyword_categories=kw_cats_norm,
                     created_at=r.get("created_at", ""),
+                    raw_url=(
+                        r.get("raw_url", "")
+                        or (
+                            (r.get("raw") or {}).get("url", "")
+                            if isinstance(r.get("raw"), dict)
+                            else ""
+                        )
+                    ),
                 )
             )
 
@@ -391,6 +401,9 @@ def page_blocks(
             "dict_refs": {"keywords": "dict/keywords_manifest.json"},
             "pages": [],
         }
+        base = raw_base_url.rstrip("/") if raw_base_url else ""
+        if base:
+            block["raw_base_url"] = f"{base}/{volume_id}/text"
         for r in chunk:
             kws = [keyword_ids[k] for k in r.keywords if k in keyword_ids]
 
@@ -422,15 +435,15 @@ def page_blocks(
             if related:
                 page_entry["related_pages"] = related
 
-            # Salva o nome do arquivo de texto OCR e, se tivermos uma base URL,
-            # monta a URL completa para o GitHub raw content.
-            if r.file:
-                base = raw_base_url.rstrip("/") if raw_base_url else ""
-                raw_url = f"{base}/{volume_id}/text/{r.file}" if base else ""
-                page_entry["raw"] = {
-                    "file": r.file,
-                    "url": raw_url,
-                }
+            # O caminho comum guarda somente o arquivo. URL completa é override
+            # explícito para páginas que não seguem o template do bloco.
+            if r.file or r.raw_url:
+                raw: Dict[str, str] = {}
+                if r.file:
+                    raw["file"] = r.file
+                if r.raw_url:
+                    raw["url"] = r.raw_url
+                page_entry["raw"] = raw
 
             block["pages"].append(page_entry)
         blocks.append(block)
@@ -525,8 +538,8 @@ def main():
         help=(
             "URL base para os arquivos de texto OCR originais no GitHub raw content. "
             "Formato esperado: https://raw.githubusercontent.com/{owner}/{repo}/refs/heads/{branch}/teste  "
-            "O caminho final montado será: {raw_base_url}/{DOC}/text/{filename}. "
-            "Passe string vazia para omitir a URL (raw.file ainda será salvo)."
+            "Cada bloco salvará {raw_base_url}/{DOC}/text uma vez e cada página "
+            "manterá somente raw.file. Passe string vazia para omitir a base."
         ),
     )
     ap.add_argument(

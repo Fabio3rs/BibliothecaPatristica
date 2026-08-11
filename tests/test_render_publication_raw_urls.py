@@ -66,3 +66,21 @@ def test_page_blocks_omit_raw_base_url_when_disabled() -> None:
 
     assert "raw_base_url" not in blocks[0]
     assert blocks[0]["pages"][0]["raw"] == {"file": "one.txt"}
+
+
+def test_page_blocks_keep_explicit_raw_url_only_as_override() -> None:
+    page = make_page(1, "one.txt")
+    page.raw_url = "https://archive.example.test/special/one.txt"
+
+    blocks, _ = page_blocks(
+        [page],
+        block_size=100,
+        volume_id="PL030",
+        keyword_ids={},
+        raw_base_url="https://raw.example.test/corpus",
+    )
+
+    assert blocks[0]["pages"][0]["raw"] == {
+        "file": "one.txt",
+        "url": "https://archive.example.test/special/one.txt",
+    }

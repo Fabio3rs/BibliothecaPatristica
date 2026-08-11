@@ -20,6 +20,9 @@ function parseArgs() {
     outDir: 'web/public/indices-pagefind',
     base: '/BibliothecaPatristica',
     sourceManifest: 'web/public/indices/manifest.json',
+    customIndexUrl: process.env.CUSTOM_INDEX_ADD_BATCH_URL || 'http://localhost:8080/add_batch',
+    customIndexBatchSize: Number(process.env.CUSTOM_INDEX_BATCH_SIZE || 50),
+    customIndexRequired: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -28,6 +31,14 @@ function parseArgs() {
     else if (a === '--out') params.outDir = args[++i];
     else if (a === '--base') params.base = args[++i];
     else if (a === '--source-manifest') params.sourceManifest = args[++i];
+    else if (a === '--custom-index-url') params.customIndexUrl = args[++i];
+    else if (a === '--custom-index-batch-size') params.customIndexBatchSize = Number(args[++i]);
+    else if (a === '--no-custom-index') params.customIndexUrl = '';
+    else if (a === '--custom-index-required') params.customIndexRequired = true;
+  }
+
+  if (!Number.isInteger(params.customIndexBatchSize) || params.customIndexBatchSize < 1) {
+    throw new Error('--custom-index-batch-size deve ser um inteiro maior que zero.');
   }
 
   return params;
@@ -103,6 +114,75 @@ function entryContent(volume, section, entry) {
   ].filter(Boolean).join(' ');
 }
 
+function concatenateRecordValues(value) {
+  const values = [];
+
+  function collect(current) {
+    if (current === null || current === undefined || current === '') return;
+    if (Array.isArray(current)) {
+      for (const item of current) collect(item);
+      return;
+    }
+    if (typeof current === 'object') {
+      for (const item of Object.values(current)) collect(item);
+      return;
+    }
+    values.push(String(current));
+  }
+
+  collect(value);
+  return normalizeWhitespace(values.join(' '));
+}
+
+function createCustomIndexSender(params) {
+  const pending = [];
+  let sent = 0;
+  let failed = 0;
+  let disabled = !params.customIndexUrl;
+
+  async function flush() {
+    if (disabled || pending.length === 0) return;
+
+    const batch = pending.splice(0, pending.length);
+    try {
+      const response = await fetch(params.customIndexUrl, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(batch),
+      });
+      if (!response.ok) {
+        const detail = normalizeWhitespace(await response.text()).slice(0, 500);
+        throw new Error(`HTTP ${response.status}${detail ? `: ${detail}` : ''}`);
+      }
+      sent += batch.length;
+    } catch (err) {
+      failed += batch.length;
+      if (params.customIndexRequired) throw err;
+      disabled = true;
+      console.warn(
+        `[AVISO] Falha ao enviar para ${params.customIndexUrl}: ${err.message}. ` +
+        'O índice Pagefind continuará; use --custom-index-required para tornar a falha fatal.',
+      );
+    }
+  }
+
+  return {
+    async add(record) {
+      if (disabled) return;
+      pending.push({
+        name: record.meta?.title || record.url,
+        url: record.url,
+        content: concatenateRecordValues(record),
+      });
+      if (pending.length >= params.customIndexBatchSize) await flush();
+    },
+    async finish() {
+      await flush();
+      return { sent, failed, disabled };
+    },
+  };
+}
+
 async function buildIndexForAll(pagefindModule, params, outputDir) {
   if (fs.existsSync(outputDir)) fs.rmSync(outputDir, { recursive: true, force: true });
   ensureDir(outputDir);
@@ -111,15 +191,17 @@ async function buildIndexForAll(pagefindModule, params, outputDir) {
   const volumes = Array.isArray(manifest.volumes) ? manifest.volumes : [];
   const { createIndex, close } = pagefindModule;
   const siteBase = params.base === '/' ? undefined : params.base;
-  const { index, errors } = await createIndex({
+  /*const { index, errors } = await createIndex({
     rootSelector: null,
     writePlayground: false,
     keepIndexUrl: false,
     site: siteBase,
-  });
-  if (errors?.length) throw new Error(`Falha ao iniciar Pagefind: ${errors.join('; ')}`);
+  });*/
+  //if (errors?.length) throw new Error(`Falha ao iniciar Pagefind: ${errors.join('; ')}`);
 
   let total = 0;
+  const customIndex = createCustomIndexSender(params);
+  let customIndexResult = { sent: 0, failed: 0, disabled: true };
   try {
     for (const volume of volumes) {
       const volumeId = volume.volume_id || volume.volumeId || volume.id;
@@ -147,7 +229,8 @@ async function buildIndexForAll(pagefindModule, params, outputDir) {
           completeness: String(doc.coverage?.completeness ?? ''),
         },
       });
-      await index.addCustomRecord(volumeRecord);
+      //await index.addCustomRecord(volumeRecord);
+      await customIndex.add(volumeRecord);
       total++;
 
       for (const work of doc.works || []) {
@@ -171,7 +254,8 @@ async function buildIndexForAll(pagefindModule, params, outputDir) {
             pageEnd: String(work.reference_end_page || work.end_page || ''),
           },
         });
-        await index.addCustomRecord(workRecord);
+        //await index.addCustomRecord(workRecord);
+        await customIndex.add(workRecord);
         total++;
       }
 
@@ -194,7 +278,8 @@ async function buildIndexForAll(pagefindModule, params, outputDir) {
             pageEnd: String(section.reference_page_end || section.page_end || ''),
           },
         });
-        await index.addCustomRecord(sectionRecord);
+        //await index.addCustomRecord(sectionRecord);
+        await customIndex.add(sectionRecord);
         total++;
 
         for (const entry of section.entries || []) {
@@ -216,18 +301,26 @@ async function buildIndexForAll(pagefindModule, params, outputDir) {
             page: String(entry.reference_page || entry.page_ref_int || ''),
           },
           });
-          await index.addCustomRecord(entryRecord);
+          //await index.addCustomRecord(entryRecord);
+          await customIndex.add(entryRecord);
           total++;
         }
       }
     }
 
-    await index.writeFiles({ outputPath: outputDir });
+    customIndexResult = await customIndex.finish();
+    //await index.writeFiles({ outputPath: outputDir });
   } finally {
     await close();
   }
 
   console.log(`[OK] Indices Pagefind: ${total} registros em ${outputDir}`);
+  if (params.customIndexUrl) {
+    console.log(
+      `[OK] Índice customizado: ${customIndexResult.sent} registros enviados para ${params.customIndexUrl}` +
+      (customIndexResult.failed ? `; ${customIndexResult.failed} falharam` : ''),
+    );
+  }
 }
 
 async function main() {

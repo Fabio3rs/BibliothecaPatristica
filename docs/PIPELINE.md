@@ -129,7 +129,9 @@
 
 ## Geração dos shards do site
 1) Dicionário canônico: `python tools/export_keywords_dicts.py --db data/patristica_keywords.db --out web/public/dict --min-count 1` (ajuste `--include-noise`/`--top` conforme necessidade).
-2) Renderização das páginas/shards: `python tools/render_publication_from_shards.py --index data/shards/enrichment/index.json --out web/public --db data/patristica_keywords.db --keywords-json web/public/dict/keywords.json --page-block-size 100 --raw-base-url <URL raw>`.
+2) Renderização das páginas/shards: `python tools/render_publication_from_shards.py --index data/shards/enrichment/index.json --out web/public --db data/patristica_keywords.db --keywords-json web/public/dict/keywords.json --resumos-db data/patristica_resumos.db --related-topk 7 --page-block-size 50`.
+   - Cada bloco `meta/<volume>-pages-*.json.gz` grava uma única `raw_base_url`. Por página, `raw.file` contém somente o nome do `.txt`; `raw.url` fica reservado a overrides incomuns.
+   - O tamanho 50 coincide com a granularidade usada pela busca e evita baixar metadados de páginas que não serão mostradas.
 3) Export dos índices do banco: `python tools/export_indices_from_db.py --db data/patristic_indices.db --out web/public/indices`.
 4) Build Astro + índice Pagefind custom (seção abaixo). O `npm run build` em `web/` chama `npm run build:indices` antes do build principal para garantir que `/indices` receba os JSONs atualizados.
 
@@ -180,7 +182,7 @@
 - **Resumos**: `backfill_clean_resumos.py --limit 1000 --batch-size 200` (preenche campos limpos/flags em `resumos`).
 - **Keywords & judge**: `ingest_keywords_from_resumos.py` (carrega keywords do DB de resumos), `generate_keyword_embeddings.py --db data/patristica_keywords.db --batch-size 512`, `cluster_keywords.py` (embedding faltante + HDBSCAN), `fill_canon_keywords.py` (nomes canônicos), `preview_related_pages.py --db data/patristica_resumos.db --kind page --queries DOC:PAGE`, perf/bench: `bench_keywords.py`, `profile_keywords.py`.
 - **Resumos embeddings**: `hdbscan_resumo_embeddings.py` (+ utils em `resumo_embedding_utils.py`) para embeddings/clusters dos resumos.
-- **Export/publicação**: `export_enrichment_shards.py --all --no-text` (gera `data/shards/enrichment/*.ndjson` + `index.json`), `export_keywords_dicts.py --db ... --out web/public/dict --top 80 --min-count 1` (dicts), `render_publication_from_shards.py --index data/shards/enrichment/index.json --out web/public --db data/patristica_keywords.db --keywords-json web/public/dict/keywords.json --page-block-size 100 --raw-base-url <raw_url>`, `build_dict_bundle.py` (all.json), `build_pagefind_from_shards.mjs --public web/public --out web/public/pagefind --base /BibliothecaPatristica`.
+- **Export/publicação**: `export_enrichment_shards.py --all --no-text` (gera `data/shards/enrichment/*.ndjson` + `index.json`), `export_keywords_dicts.py --db ... --out web/public/dict --top 80 --min-count 1` (dicts), `render_publication_from_shards.py --index data/shards/enrichment/index.json --out web/public --db data/patristica_keywords.db --keywords-json web/public/dict/keywords.json --resumos-db data/patristica_resumos.db --related-topk 7 --page-block-size 50`, `build_dict_bundle.py` (all.json), `build_pagefind_from_shards.mjs --public web/public --out web/public/pagefind --base /BibliothecaPatristica`.
 - **Playground/diagnóstico**: `opencv_playground.py` (cadeias OpenCV), `color_band_compare.py` (deltaE borda/centro), `read_poribp.py` (lex PorIBP), `bbox_playground.py` (visual de layout).
 
 *Limitação de idioma*: prompts, resumos e keywords são mantidos somente em PT-BR; este README em inglês é apenas referência.

@@ -6,8 +6,11 @@ Suporta paralelismo via --jobs (workers independentes, lotes atômicos via WAL)
 
 import argparse
 import base64
+import email.utils
 import json
+import math
 import os
+import random
 import re
 import socket
 import sqlite3
@@ -53,6 +56,10 @@ DEFAULT_DB_BUSY_TIMEOUT_MS = 120000
 DEFAULT_DB_LOCK_RETRIES = 6
 DEFAULT_DB_LOCK_RETRY_DELAY = 1.0
 DEFAULT_MIN_IMAGE_SIDE = 11
+DEFAULT_API_CONCURRENCY = None
+DEFAULT_RATE_LIMIT_RETRIES = 8
+DEFAULT_RATE_LIMIT_BACKOFF_BASE = 1.0
+DEFAULT_RATE_LIMIT_BACKOFF_MAX = 60.0
 CROP_PADDING = 2
 MAX_ERROR_BODY_CHARS = 2000
 SYSTEM_PROMPT = """You are a precise OCR post-processor specializing in classical Latin and Ancient Greek manuscripts and printed editions.
@@ -465,6 +472,9 @@ def save_result(
     text_column: str = "qwen_text",
     conn: sqlite3.Connection | None = None,
 ) -> None:
+    # Centralizar NFC aqui cobre reruns e futuros chamadores que nao passam pelo
+    # normalizador da resposta dos backends.
+    consensus_text = unicodedata.normalize("NFC", consensus_text or "")
     owns_conn = conn is None
     conn = conn or connect_db(db)
     try:
@@ -583,27 +593,60 @@ def ensure_search_update_trigger(db: str) -> None:
         conn.close()
         return
 
+    misaligned_rowids = conn.execute(
+        """
+        SELECT 1
+        FROM lines_fts
+        WHERE rowid != CAST(line_id AS INTEGER)
+        LIMIT 1
+        """
+    ).fetchone()
     conn.execute("DROP TRIGGER IF EXISTS lines_fts_au")
-    conn.execute(
-        """
-        CREATE TRIGGER lines_fts_au
-        AFTER UPDATE OF page_id, volume, reviewed_text, qwen_text, tesseract_text
-        ON lines BEGIN
-            DELETE FROM lines_fts WHERE line_id = old.id;
-            INSERT INTO lines_fts(line_id, page_id, volume, search_text)
-            VALUES (
-                new.id,
-                COALESCE(new.page_id, ''),
-                COALESCE(new.volume, ''),
-                trim(
-                    COALESCE(new.reviewed_text, '') || ' ' ||
-                    COALESCE(new.qwen_text, '') || ' ' ||
-                    COALESCE(new.tesseract_text, '')
-                )
-            );
-        END
-        """
-    )
+    if misaligned_rowids:
+        # Compatibilidade temporária com bancos criados antes de o FTS usar
+        # lines.id como rowid. A manutenção de limpeza migra o índice.
+        conn.execute(
+            """
+            CREATE TRIGGER lines_fts_au
+            AFTER UPDATE OF page_id, volume, reviewed_text, qwen_text, tesseract_text
+            ON lines BEGIN
+                DELETE FROM lines_fts WHERE line_id = old.id;
+                INSERT INTO lines_fts(line_id, page_id, volume, search_text)
+                VALUES (
+                    new.id,
+                    COALESCE(new.page_id, ''),
+                    COALESCE(new.volume, ''),
+                    trim(
+                        COALESCE(new.reviewed_text, '') || ' ' ||
+                        COALESCE(new.qwen_text, '') || ' ' ||
+                        COALESCE(new.tesseract_text, '')
+                    )
+                );
+            END
+            """
+        )
+    else:
+        conn.execute(
+            """
+            CREATE TRIGGER lines_fts_au
+            AFTER UPDATE OF page_id, volume, reviewed_text, qwen_text, tesseract_text
+            ON lines BEGIN
+                DELETE FROM lines_fts WHERE rowid = old.id;
+                INSERT INTO lines_fts(rowid, line_id, page_id, volume, search_text)
+                VALUES (
+                    new.id,
+                    new.id,
+                    COALESCE(new.page_id, ''),
+                    COALESCE(new.volume, ''),
+                    trim(
+                        COALESCE(new.reviewed_text, '') || ' ' ||
+                        COALESCE(new.qwen_text, '') || ' ' ||
+                        COALESCE(new.tesseract_text, '')
+                    )
+                );
+            END
+            """
+        )
     conn.commit()
     conn.close()
 
@@ -766,6 +809,9 @@ def save_line_version(
     meta_json: str | None = None,
     conn: sqlite3.Connection | None = None,
 ) -> None:
+    # O hash identifica o texto persistido; normalizar antes dele impede que
+    # formas Unicode equivalentes sejam registradas como votos distintos.
+    text = unicodedata.normalize("NFC", text or "")
     owns_conn = conn is None
     conn = conn or connect_db(db)
     try:
@@ -1071,6 +1117,83 @@ def _interesting_http_headers(headers) -> dict[str, str]:
     }
 
 
+def _http_status_code(exc: Exception) -> int | None:
+    if isinstance(exc, urllib.error.HTTPError):
+        return exc.code
+    if isinstance(exc, requests.HTTPError) and exc.response is not None:
+        return exc.response.status_code
+    return None
+
+
+def _http_headers(exc: Exception):
+    if isinstance(exc, urllib.error.HTTPError):
+        return exc.headers
+    if isinstance(exc, requests.HTTPError) and exc.response is not None:
+        return exc.response.headers
+    return None
+
+
+def _retry_after_seconds(exc: Exception, now: float | None = None) -> float | None:
+    headers = _http_headers(exc)
+    value = headers.get("Retry-After") if headers else None
+    if not value:
+        return None
+
+    try:
+        seconds = float(value)
+        return max(0.0, seconds) if math.isfinite(seconds) else None
+    except (TypeError, ValueError):
+        pass
+
+    try:
+        retry_at = email.utils.parsedate_to_datetime(str(value))
+        seconds = retry_at.timestamp() - (time.time() if now is None else now)
+        return max(0.0, seconds) if math.isfinite(seconds) else None
+    except (TypeError, ValueError, OverflowError):
+        return None
+
+
+def _call_with_429_backoff(
+    operation,
+    *,
+    retries: int = DEFAULT_RATE_LIMIT_RETRIES,
+    base_delay: float = DEFAULT_RATE_LIMIT_BACKOFF_BASE,
+    max_delay: float = DEFAULT_RATE_LIMIT_BACKOFF_MAX,
+    on_retry=None,
+):
+    """Repete somente HTTP 429, com backoff exponencial e equal jitter."""
+    for attempt in range(retries + 1):
+        try:
+            return operation()
+        except Exception as exc:
+            if _http_status_code(exc) != 429 or attempt >= retries:
+                raise
+
+            exponential_cap = min(max_delay, base_delay * (2**attempt))
+            jittered_delay = random.uniform(exponential_cap / 2, exponential_cap)
+            retry_after = _retry_after_seconds(exc)
+            sleep_seconds = max(jittered_delay, retry_after or 0.0)
+            if on_retry is not None:
+                on_retry(attempt + 1, retries, sleep_seconds)
+            time.sleep(sleep_seconds)
+
+
+def _call_with_api_slot(operation, semaphore=None, on_wait=None):
+    """Executa uma chamada ocupando no máximo um slot global de API."""
+    if semaphore is None:
+        return operation()
+
+    acquired = semaphore.acquire(False)
+    if not acquired:
+        if on_wait is not None:
+            on_wait()
+        semaphore.acquire()
+    try:
+        return operation()
+    finally:
+        semaphore.release()
+
+
 def format_inference_error(
     exc: Exception,
     *,
@@ -1287,7 +1410,7 @@ def call_ollama_vision(
         headers={"Content-Type": "application/json"},
         method="POST",
     )
-    with urllib.request.urlopen(req, timeout=230) as resp:
+    with urllib.request.urlopen(req, timeout=300) as resp:
         body = json.loads(resp.read().decode("utf-8"))
     return body.get("message", {}).get("content", "").strip()
 
@@ -1376,6 +1499,19 @@ def worker(args: dict) -> None:
     should_append_extra_context = args.get("should_append_extra_context", False)
     prefer_missing_backend = args.get("prefer_missing_backend")
     min_image_side = args.get("min_image_side", DEFAULT_MIN_IMAGE_SIDE)
+    rate_limit_retries = args.get(
+        "rate_limit_retries",
+        DEFAULT_RATE_LIMIT_RETRIES,
+    )
+    rate_limit_backoff_base = args.get(
+        "rate_limit_backoff_base",
+        DEFAULT_RATE_LIMIT_BACKOFF_BASE,
+    )
+    rate_limit_backoff_max = args.get(
+        "rate_limit_backoff_max",
+        DEFAULT_RATE_LIMIT_BACKOFF_MAX,
+    )
+    api_semaphore = args.get("api_semaphore")
 
     prefix = f"[W{worker_id}]"
     processed = 0
@@ -1511,20 +1647,57 @@ def worker(args: dict) -> None:
                         backend_weight = backend.weight
                         stage = "api"
                         api_started_at = time.perf_counter()
-                        if backend.provider == "ollama":
-                            raw = call_ollama_vision(
-                                to_send, backend.model, base_url, user_prompt=user_prompt
-                            )
-                        elif backend.provider == "openai":
-                            raw = openai_process_image(
-                                image_bytes=to_send,
-                                model=backend.model,
-                                base_url=openai_base_url,
-                                api_key=openai_api_key,
-                                user_prompt=user_prompt,
-                            )
-                        else:
+
+                        def call_backend() -> str:
+                            if backend.provider == "ollama":
+                                return call_ollama_vision(
+                                    to_send,
+                                    backend.model,
+                                    base_url,
+                                    user_prompt=user_prompt,
+                                )
+                            if backend.provider == "openai":
+                                return openai_process_image(
+                                    image_bytes=to_send,
+                                    model=backend.model,
+                                    base_url=openai_base_url,
+                                    api_key=openai_api_key,
+                                    user_prompt=user_prompt,
+                                )
                             raise ValueError(f"backend desconhecido: {backend.provider}")
+
+                        def log_rate_limit_retry(
+                            retry_number: int,
+                            retry_total: int,
+                            sleep_seconds: float,
+                        ) -> None:
+                            print(
+                                f"{prefix} 429 id={line_id} "
+                                f"backend={backend.provider}:{backend.model} "
+                                f"retry={retry_number}/{retry_total} "
+                                f"backoff={sleep_seconds:.2f}s",
+                                flush=True,
+                            )
+
+                        def call_backend_with_slot() -> str:
+                            return _call_with_api_slot(
+                                call_backend,
+                                semaphore=api_semaphore,
+                                on_wait=lambda: print(
+                                    f"{prefix} AGUARDANDO id={line_id} "
+                                    f"backend={backend.provider}:{backend.model} "
+                                    "reason=api_concurrency",
+                                    flush=True,
+                                ),
+                            )
+
+                        raw = _call_with_429_backoff(
+                            call_backend_with_slot,
+                            retries=rate_limit_retries,
+                            base_delay=rate_limit_backoff_base,
+                            max_delay=rate_limit_backoff_max,
+                            on_retry=log_rate_limit_retry,
+                        )
                         backend_elapsed = time.perf_counter() - api_started_at
                         api_started_at = None
                         stage = "normalize_response"
@@ -1626,6 +1799,33 @@ def main() -> None:
     parser.add_argument("--delay", type=float, default=0.0)
     parser.add_argument("--jobs", type=int, default=1, help="Workers paralelos")
     parser.add_argument(
+        "--api-concurrency",
+        type=int,
+        default=DEFAULT_API_CONCURRENCY,
+        help=(
+            "Máximo global de chamadas API simultâneas entre os workers "
+            "(default: mesmo valor de --jobs)"
+        ),
+    )
+    parser.add_argument(
+        "--rate-limit-retries",
+        type=int,
+        default=DEFAULT_RATE_LIMIT_RETRIES,
+        help="Retries adicionais para respostas HTTP 429",
+    )
+    parser.add_argument(
+        "--rate-limit-backoff-base",
+        type=float,
+        default=DEFAULT_RATE_LIMIT_BACKOFF_BASE,
+        help="Espera inicial em segundos para HTTP 429",
+    )
+    parser.add_argument(
+        "--rate-limit-backoff-max",
+        type=float,
+        default=DEFAULT_RATE_LIMIT_BACKOFF_MAX,
+        help="Teto do backoff exponencial em segundos para HTTP 429",
+    )
+    parser.add_argument(
         "--rerun-tesseract",
         action="store_true",
         help="Reprocessa apenas linhas com agreement_score < 1.0 usando Tesseract.",
@@ -1706,8 +1906,39 @@ def main() -> None:
     )
     args = parser.parse_args()
     args.min_image_side = getattr(args, "min_image_side", DEFAULT_MIN_IMAGE_SIDE)
+    args.rate_limit_retries = getattr(
+        args,
+        "rate_limit_retries",
+        DEFAULT_RATE_LIMIT_RETRIES,
+    )
+    args.rate_limit_backoff_base = getattr(
+        args,
+        "rate_limit_backoff_base",
+        DEFAULT_RATE_LIMIT_BACKOFF_BASE,
+    )
+    args.rate_limit_backoff_max = getattr(
+        args,
+        "rate_limit_backoff_max",
+        DEFAULT_RATE_LIMIT_BACKOFF_MAX,
+    )
+    args.api_concurrency = getattr(
+        args,
+        "api_concurrency",
+        DEFAULT_API_CONCURRENCY,
+    )
     if args.min_image_side < 1:
         parser.error("--min-image-side deve ser maior que zero")
+    if args.api_concurrency is not None and args.api_concurrency < 1:
+        parser.error("--api-concurrency deve ser maior que zero")
+    if args.rate_limit_retries < 0:
+        parser.error("--rate-limit-retries não pode ser negativo")
+    if args.rate_limit_backoff_base < 0:
+        parser.error("--rate-limit-backoff-base não pode ser negativo")
+    if args.rate_limit_backoff_max < args.rate_limit_backoff_base:
+        parser.error(
+            "--rate-limit-backoff-max deve ser maior ou igual a "
+            "--rate-limit-backoff-base"
+        )
     run_id = args.run_id or f"run-{uuid.uuid4().hex}"
 
     # Garantir que a coluna `runs` exista antes de tocar no banco
@@ -1843,7 +2074,16 @@ def _run_worker_pass(args: argparse.Namespace, run_id: str, pass_label: str, lim
         return
 
     effective = min(claimable, limit) if limit else claimable
-    print(f"[INFO] {effective} linhas para {pass_label} com {args.jobs} worker(s)")
+    configured_api_concurrency = getattr(
+        args,
+        "api_concurrency",
+        DEFAULT_API_CONCURRENCY,
+    )
+    api_concurrency = min(args.jobs, configured_api_concurrency or args.jobs)
+    print(
+        f"[INFO] {effective} linhas para {pass_label} com {args.jobs} worker(s), "
+        f"api_concurrency={api_concurrency}"
+    )
 
     worker_args = [
         {
@@ -1853,6 +2093,21 @@ def _run_worker_pass(args: argparse.Namespace, run_id: str, pass_label: str, lim
             "openai_api_key": args.openai_api_key,
             "backends": [parse_backend_spec(x) for x in (args.backend or [f"ollama:{args.model}"])],
             "delay": args.delay,
+            "rate_limit_retries": getattr(
+                args,
+                "rate_limit_retries",
+                DEFAULT_RATE_LIMIT_RETRIES,
+            ),
+            "rate_limit_backoff_base": getattr(
+                args,
+                "rate_limit_backoff_base",
+                DEFAULT_RATE_LIMIT_BACKOFF_BASE,
+            ),
+            "rate_limit_backoff_max": getattr(
+                args,
+                "rate_limit_backoff_max",
+                DEFAULT_RATE_LIMIT_BACKOFF_MAX,
+            ),
             "batch_size": args.batch_size,
             "min_image_side": getattr(
                 args,
@@ -1868,9 +2123,16 @@ def _run_worker_pass(args: argparse.Namespace, run_id: str, pass_label: str, lim
 
     if args.jobs == 1:
         worker(worker_args[0])
-    else:
+    elif api_concurrency == args.jobs:
         with mp.Pool(processes=args.jobs) as pool:
             pool.map(worker, worker_args)
+    else:
+        with mp.Manager() as manager:
+            api_semaphore = manager.BoundedSemaphore(api_concurrency)
+            for current_worker_args in worker_args:
+                current_worker_args["api_semaphore"] = api_semaphore
+            with mp.Pool(processes=args.jobs) as pool:
+                pool.map(worker, worker_args)
 
 
 if __name__ == "__main__":

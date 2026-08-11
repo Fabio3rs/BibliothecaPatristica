@@ -662,8 +662,8 @@ const renderedVolumes = volumes.map((item) => renderVolume(item)).join('');
     const allVolumes = [...document.querySelectorAll('[data-volume-item]')];
     const volumeCache = new Map();
     const state = { q: '', volumeQuery: '', collection: '', completeness: '', volume: '', work: '', section: '', entry: '' };
-    let indicesPagefind = null;
-    let indicesPagefindPromise = null;
+    let indicesSearchEngine = null;
+    let indicesSearchEnginePromise = null;
     let searchRenderToken = 0;
 
     if (pagefindSubmit) pagefindSubmit.textContent = strings.searchButton;
@@ -894,27 +894,33 @@ const renderedVolumes = volumes.map((item) => renderVolume(item)).join('');
       }, 90);
     }
 
-    async function ensureIndicesPagefind() {
-      if (indicesPagefind) return indicesPagefind;
-      if (indicesPagefindPromise) return indicesPagefindPromise;
-      indicesPagefindPromise = (async () => {
+    async function ensureIndicesSearchEngine() {
+      if (indicesSearchEngine) return indicesSearchEngine;
+      if (indicesSearchEnginePromise) return indicesSearchEnginePromise;
+      indicesSearchEnginePromise = (async () => {
         try {
-          const pagefindUrl = `${assetUrl}indices-pagefind/pagefind.js`;
-          const mod = await import(pagefindUrl);
-          const pfModule = mod?.default || mod?.pagefind || mod;
-          const pf = (pfModule && typeof pfModule.search === 'function') ? pfModule : mod;
-          if (pf && typeof pf.options === 'function') {
-            await pf.options({ basePath: `${assetUrl}indices-pagefind/` });
-          }
-          return pf && typeof pf.search === 'function' ? pf : null;
+          const runtimeUrl = `${assetUrl}indexador/runtime/indexador-pagefind.js`;
+          const mod = await import(runtimeUrl);
+          if (typeof mod.createIndexadorPagefind !== 'function') return null;
+          const engine = mod.createIndexadorPagefind({
+            assetBaseUrl: `${assetUrl}indexador/runtime`,
+            indexBaseUrl: `${assetUrl}indexador/indices`,
+            PAGE_SIZE: 12,
+            prefixMatch: true,
+            prefixMinLength: 3,
+            prefixMaxTerms: 32,
+            prefixMaxPerTerm: 20,
+          });
+          await engine.init();
+          return engine;
         } catch (err) {
           console.error(err);
           pagefindStatus.textContent = strings.searchUnavailable;
           return null;
         }
       })();
-      indicesPagefind = await indicesPagefindPromise;
-      return indicesPagefind;
+      indicesSearchEngine = await indicesSearchEnginePromise;
+      return indicesSearchEngine;
     }
 
     function sectionTitle(section) {
@@ -939,39 +945,54 @@ const renderedVolumes = volumes.map((item) => renderVolume(item)).join('');
       return entry?.target_raw || '';
     }
 
-    function buildIndicesResult(hit, term) {
+    function normalizeIndexadorResult(resultDocument) {
+      const url = new URL(String(resultDocument?.url || ''), window.location.origin);
+      const params = url.searchParams;
+      const kind = params.has('entry')
+        ? 'entry'
+        : params.has('section')
+          ? 'section'
+          : params.has('work')
+            ? 'work'
+            : 'volume';
+      return {
+        title: resultDocument?.name || strings.noVolume,
+        kind,
+        volume: params.get('volume') || '',
+        workKey: params.get('work') || '',
+        sectionKey: params.get('section') || '',
+        entryId: params.get('entry') || '',
+      };
+    }
+
+    function buildIndicesResult(resultDocument, term) {
+      const hit = normalizeIndexadorResult(resultDocument);
       const article = document.createElement('article');
       article.className = 'card indices-result';
-      const kind = String(hit.meta?.kind || '');
+      const kind = String(hit.kind || '');
+      const kindLabel =
+        kind === 'work' ? strings.selectedWork
+        : kind === 'section' ? strings.selectedSection
+        : kind === 'entry' ? strings.entriesLabel
+        : strings.openVolume;
       const tag = document.createElement('span');
       tag.className = 'indices-result-tag';
-      tag.textContent =
-        kind === 'work' ? strings.selectedWork
-        : kind === 'section' ? strings.selectedSection
-        : kind === 'entry' ? strings.indicesEntriesLabel
-        : strings.indicesOpenVolume;
+      tag.textContent = kindLabel;
       const title = document.createElement('h3');
-      title.textContent = hit.meta?.title || strings.noVolume;
+      title.textContent = hit.title || strings.noVolume;
       const kindEl = document.createElement('div');
       kindEl.className = 'muted';
-      kindEl.textContent =
-        kind === 'work' ? strings.selectedWork
-        : kind === 'section' ? strings.selectedSection
-        : kind === 'entry' ? strings.indicesEntriesLabel
-        : strings.indicesOpenVolume;
-      const snippet = document.createElement('p');
-      snippet.className = 'muted';
-      snippet.innerHTML = hit.excerpt || hit.content || '';
+      kindEl.textContent = [kindLabel, hit.volume].filter(Boolean).join(' · ');
       const link = document.createElement('a');
       link.className = 'button secondary';
       const targetParams = new URLSearchParams();
       if (term) targetParams.set('q', term);
-      if (hit.meta?.volume) targetParams.set('volume', hit.meta.volume);
-      if (hit.meta?.kind === 'work' && hit.meta?.workKey) targetParams.set('work', hit.meta.workKey);
-      if (hit.meta?.kind === 'section' && hit.meta?.sectionKey) targetParams.set('section', hit.meta.sectionKey);
-      if (hit.meta?.kind === 'entry') {
-        if (hit.meta?.sectionKey) targetParams.set('section', hit.meta.sectionKey);
-        if (hit.meta?.entryId) targetParams.set('entry', hit.meta.entryId);
+      if (hit.volume) targetParams.set('volume', hit.volume);
+      if (hit.kind === 'work' && hit.workKey) targetParams.set('work', hit.workKey);
+      if (hit.kind === 'section' && hit.sectionKey) targetParams.set('section', hit.sectionKey);
+      if (hit.kind === 'entry') {
+        if (hit.sectionKey) targetParams.set('section', hit.sectionKey);
+        if (hit.entryId) targetParams.set('entry', hit.entryId);
       }
       link.href = `${baseUrl}indices?${targetParams.toString()}`;
       link.textContent = strings.searchOpen;
@@ -981,7 +1002,7 @@ const renderedVolumes = volumes.map((item) => renderVolume(item)).join('');
         pagefindResults.innerHTML = `<p class="muted" style="margin:0;">${escapeHtml(strings.searchBusy)}</p>`;
         window.location.href = link.href;
       });
-      article.append(tag, title, kindEl, snippet, link);
+      article.append(tag, title, kindEl, link);
       return article;
     }
 
@@ -989,6 +1010,7 @@ const renderedVolumes = volumes.map((item) => renderVolume(item)).join('');
       const token = ++searchRenderToken;
       const term = (pagefindBox?.value || '').trim();
       state.q = term;
+      setUrl();
       if (!term) {
         pagefindStatus.textContent = '';
         pagefindResults.innerHTML = `<p class="muted" style="margin:0;">${escapeHtml(strings.searchPlaceholder)}</p>`;
@@ -996,24 +1018,30 @@ const renderedVolumes = volumes.map((item) => renderVolume(item)).join('');
       }
       pagefindStatus.textContent = strings.searchBusy;
       pagefindResults.innerHTML = `<p class="muted" style="margin:0;">${escapeHtml(strings.searchBusy)}</p>`;
-      const pf = await ensureIndicesPagefind();
-      if (!pf) {
+      const engine = await ensureIndicesSearchEngine();
+      if (!engine) {
         pagefindStatus.textContent = strings.searchUnavailable;
         return;
       }
-      const result = await pf.search(term);
-      if (token !== searchRenderToken) return;
-      const hits = result?.results || [];
-      pagefindStatus.textContent = `${hits.length} ${strings.entriesLabel}`;
-      if (!hits.length) {
-        pagefindResults.innerHTML = `<p class="muted" style="margin:0;">${escapeHtml(strings.searchNoResults)}</p>`;
-        return;
-      }
-      pagefindResults.innerHTML = '';
-      for (const hit of hits.slice(0, 12)) {
-        const data = await hit.data();
+      try {
+        const result = await engine.search(term);
         if (token !== searchRenderToken) return;
-        pagefindResults.appendChild(buildIndicesResult(data, term));
+        const hits = await result.getPage(0);
+        if (token !== searchRenderToken) return;
+        pagefindStatus.textContent = `${result.total} ${strings.entriesLabel}`;
+        if (!hits.length) {
+          pagefindResults.innerHTML = `<p class="muted" style="margin:0;">${escapeHtml(strings.searchNoResults)}</p>`;
+          return;
+        }
+        pagefindResults.innerHTML = '';
+        for (const hit of hits) {
+          pagefindResults.appendChild(buildIndicesResult(hit, term));
+        }
+      } catch (err) {
+        console.error(err);
+        if (token !== searchRenderToken) return;
+        pagefindStatus.textContent = strings.searchUnavailable;
+        pagefindResults.innerHTML = `<p class="muted" style="margin:0;">${escapeHtml(strings.searchUnavailable)}</p>`;
       }
     }
 

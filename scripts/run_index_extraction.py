@@ -46,6 +46,8 @@ DEFAULT_LOG_DIR = PROJECT_ROOT / "data" / "index_logs"
 DEFAULT_INTERMEDIATE_ROOT = PROJECT_ROOT / "data" / "index_intermediate_payloads"
 DEFAULT_EDITORIAL_PAGE_DB = DEFAULT_ESTIMATOR_DB
 EXISTING_PAYLOAD_SNIPPET_BYTES = 120_000
+PREVIOUS_FAILURE_DETAIL_MAX_CHARS = 12_000
+FAILURE_ARTIFACT_TRACEBACK_MAX_CHARS = 12_000
 HYPHEN_SAMPLE_LIMIT = 20
 LINEBREAK_HYPHEN_RE = re.compile(r"[\wÀ-ÖØ-öø-ÿÆæŒœ]-\s*(?:$|\n)", re.MULTILINE)
 HYPHEN_FAILURE_RE = re.compile(r"(?:line.?break|quebra de linha|hyphen artifact|hífen).{0,120}", re.I)
@@ -152,6 +154,49 @@ def truncate_utf8(text: str, max_bytes: int) -> tuple[str, bool]:
             return clipped.decode("utf-8"), True
         except UnicodeDecodeError:
             clipped = clipped[:-1]
+
+
+def compact_failure_text(text: str, max_chars: int) -> tuple[str, int, bool]:
+    """Deduplicate repeated diagnostic lines and cap text while retaining both edges."""
+    if max_chars < 200:
+        raise ValueError("max_chars must be at least 200")
+
+    lines: list[str] = []
+    seen: set[str] = set()
+    duplicate_count = 0
+    previous_blank = False
+    for line in text.splitlines():
+        key = line.strip()
+        if not key:
+            if previous_blank:
+                duplicate_count += 1
+                continue
+            previous_blank = True
+            lines.append("")
+            continue
+        previous_blank = False
+        if key in seen:
+            duplicate_count += 1
+            continue
+        seen.add(key)
+        lines.append(line)
+
+    compacted = "\n".join(lines).strip()
+    if len(compacted) <= max_chars:
+        return compacted, duplicate_count, False
+
+    marker_template = "\n... [{omitted} diagnostic characters omitted] ...\n"
+    marker = marker_template.format(omitted=0)
+    edge_budget = max_chars - len(marker) - 12
+    head_chars = max(1, edge_budget * 2 // 3)
+    tail_chars = max(1, edge_budget - head_chars)
+    omitted = len(compacted) - head_chars - tail_chars
+    marker = marker_template.format(omitted=omitted)
+    tail_chars = max(1, max_chars - head_chars - len(marker))
+    omitted = len(compacted) - head_chars - tail_chars
+    marker = marker_template.format(omitted=omitted)
+    clipped = compacted[:head_chars].rstrip() + marker + compacted[-tail_chars:].lstrip()
+    return clipped[:max_chars], duplicate_count, True
 
 
 def _collapse_ws(value: Any) -> str:
@@ -315,13 +360,36 @@ def build_previous_failure_prompt_block(
     failure_payload: dict[str, Any],
 ) -> str:
     stage = failure_payload.get("stage") or "unknown"
-    detail = failure_payload.get("error_detail") or failure_payload.get("error_summary") or "unknown"
+    raw_detail = str(
+        failure_payload.get("error_detail")
+        or failure_payload.get("error_summary")
+        or "unknown"
+    )
+    detail, duplicate_count, was_truncated = compact_failure_text(
+        raw_detail,
+        PREVIOUS_FAILURE_DETAIL_MAX_CHARS,
+    )
+    compaction_notes: list[str] = []
+    if duplicate_count:
+        compaction_notes.append(f"deduplicated {duplicate_count} repeated diagnostic line(s)")
+    if was_truncated:
+        compaction_notes.append(
+            f"truncated from {len(raw_detail)} to at most "
+            f"{PREVIOUS_FAILURE_DETAIL_MAX_CHARS} characters"
+        )
+    diagnostics = ""
+    if compaction_notes:
+        diagnostics = (
+            "- prompt diagnostic: " + "; ".join(compaction_notes) + ".\n"
+            "- Full stdout/stderr remain in the log paths recorded by the failure artifact.\n"
+        )
     return (
         "### PREVIOUS FAILURE\n"
         f"- volume_id: {volume_id}\n"
         f"- failed stage: {stage}\n"
         "- This is validator feedback from the previous run. Treat it as a required correction, "
         "then verify the correction against the OCR source.\n"
+        f"{diagnostics}"
         f"- exact_failure:\n{detail}\n\n"
         f"Fix the exact failure for {volume_id}; do not merely regenerate the same payload."
     )
@@ -353,6 +421,8 @@ def prevalidate_existing_payload(
 def failure_mentions_hyphen_artifact(failure_payload: dict[str, Any] | None) -> bool:
     if not failure_payload:
         return False
+    if failure_payload.get("mentions_hyphen_artifact") is True:
+        return True
     text = " ".join(
         str(failure_payload.get(key) or "")
         for key in ("error_summary", "error_detail")
@@ -785,7 +855,16 @@ def write_failure_artifact(
     stderr_log_file: Path | None,
     stream_log_file: Path | None,
 ) -> None:
-    detail = str(error) or repr(error)
+    raw_detail = str(error) or repr(error)
+    detail, duplicate_count, detail_truncated = compact_failure_text(
+        raw_detail,
+        PREVIOUS_FAILURE_DETAIL_MAX_CHARS,
+    )
+    raw_traceback = "".join(traceback.format_exception(error))
+    compact_traceback, traceback_duplicate_count, traceback_truncated = compact_failure_text(
+        raw_traceback,
+        FAILURE_ARTIFACT_TRACEBACK_MAX_CHARS,
+    )
     write_json(
         path,
         {
@@ -795,9 +874,16 @@ def write_failure_artifact(
             "collection": collection,
             "stage": stage,
             "error_type": type(error).__name__,
-            "error_summary": detail.splitlines()[0],
+            "error_summary": raw_detail.splitlines()[0],
             "error_detail": detail,
-            "traceback": "".join(traceback.format_exception(error)),
+            "error_detail_original_chars": len(raw_detail),
+            "error_detail_deduplicated_lines": duplicate_count,
+            "error_detail_truncated": detail_truncated,
+            "traceback": compact_traceback,
+            "traceback_original_chars": len(raw_traceback),
+            "traceback_deduplicated_lines": traceback_duplicate_count,
+            "traceback_truncated": traceback_truncated,
+            "mentions_hyphen_artifact": bool(HYPHEN_FAILURE_RE.search(raw_detail)),
             "payload_file": str(payload_file) if payload_file else None,
             "prescan_file": str(prescan_file) if prescan_file else None,
             "filtered_pages_file": str(filtered_pages_file) if filtered_pages_file else None,

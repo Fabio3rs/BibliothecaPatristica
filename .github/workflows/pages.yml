@@ -17,6 +17,10 @@ concurrency:
 jobs:
   build_site:
     runs-on: ubuntu-latest
+    env:
+      INDEXADOR_VERSION: v0.5
+      INDEXADOR_NATIVE_SHA256: d1d7f89caa992ff977f09fafdc7e5cf26bf074c931d91ced1f7bde244bd6c0e5
+      INDEXADOR_ASSETS_SHA256: 9b2f9cc5ec25be54230bd94c4d6801b3696d1b9b486368f860abaefe2fbc87f5
     defaults:
       run:
         working-directory: web
@@ -35,60 +39,62 @@ jobs:
           cache-dependency-path: web/package-lock.json
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Build Pagefind shards in parallel
+      - name: Download PatrologiaIndexer release
         run: |
           set -euo pipefail
 
-          batch_size=25
-          rm -rf ./public/pagefind
-          mkdir -p ./public/pagefind
+          release_base="https://github.com/Fabio3rs/PatrologiaIndexer/releases/download/${INDEXADOR_VERSION}"
+          release_dir="${RUNNER_TEMP}/patrologia-indexer-${INDEXADOR_VERSION}"
+          native_archive="${release_dir}/indexador-linux-x86_64-static-${INDEXADOR_VERSION}.tar.gz"
+          assets_archive="${release_dir}/indexador-assets-${INDEXADOR_VERSION}.tar.gz"
 
-          matrix_json=$(node ../tools/plan_pagefind_batches.mjs --index ./public/volumes.json --batch-size "$batch_size" --format matrix)
-          printf '%s\n' "$matrix_json" > /tmp/pagefind-matrix.json
+          mkdir -p "${release_dir}" ./public/indexador/runtime
+          curl --fail --location --retry 3 --output "${native_archive}" \
+            "${release_base}/indexador-linux-x86_64-static-${INDEXADOR_VERSION}.tar.gz"
+          curl --fail --location --retry 3 --output "${assets_archive}" \
+            "${release_base}/indexador-assets-${INDEXADOR_VERSION}.tar.gz"
 
-          total_batches=$(node -e "const fs=require('fs'); const m=JSON.parse(fs.readFileSync('/tmp/pagefind-matrix.json','utf8')); process.stdout.write(String((m.include || []).length));")
-          if [ "$total_batches" -eq 0 ]; then
-            echo "Nenhum lote Pagefind foi planejado"
-            exit 1
-          fi
+          printf '%s  %s\n' "${INDEXADOR_NATIVE_SHA256}" "${native_archive}" | sha256sum --check --status
+          printf '%s  %s\n' "${INDEXADOR_ASSETS_SHA256}" "${assets_archive}" | sha256sum --check --status
 
-          limit=$(nproc)
-          if [ "$limit" -lt 2 ]; then
-            limit=2
-          fi
+          tar -xzf "${native_archive}" -C "${release_dir}"
+          tar -xzf "${assets_archive}" --strip-components=1 -C ./public/indexador/runtime
+          test -x "${release_dir}/indexador"
+          test -f ./public/indexador/runtime/indexador_wasm.wasm
+          test -f ./public/indexador/runtime/indexador-pagefind.js
+          echo "INDEXADOR_BINARY=${release_dir}/indexador" >> "${GITHUB_ENV}"
 
-          echo "Construindo $total_batches lotes Pagefind com concorrência $limit"
+      - name: Build custom indices
+        run: |
+          set -euo pipefail
+          test -x "${INDEXADOR_BINARY}"
+          node ../tools/build_indices_indexador_from_json.mjs \
+            --source-manifest ./public/indices/manifest.json \
+            --out ./public/indexador/indices \
+            --binary "${INDEXADOR_BINARY}" \
+            --base /BibliothecaPatristica \
+            --documents-per-shard 500 \
+            --all
+          node ../tools/build_search_indexador_from_shards.mjs \
+            --public ./public \
+            --source-manifest ./public/volumes.json \
+            --out ./public/indexador/search \
+            --binary "${INDEXADOR_BINARY}" \
+            --base /BibliothecaPatristica \
+            --layout unified \
+            --documents-per-shard 500 \
+            --all
 
-          active=0
-          while IFS= read -r batch; do
-            batch_index=$(node -e "const item=JSON.parse(process.argv[1]); process.stdout.write(String(item.batch_index));" "$batch")
-            batch_id=$(node -e "const item=JSON.parse(process.argv[1]); process.stdout.write(String(item.batch_id));" "$batch")
-
-            echo "Iniciando $batch_id"
-            node ../tools/build_pagefind_from_shards.mjs \
-              --public ./public \
-              --out "./public/pagefind/$batch_id" \
-              --base /BibliothecaPatristica \
-              --batch-size "$batch_size" \
-              --batch-index "$batch_index" \
-              --source-manifest ./public/volumes.json &
-
-            active=$((active + 1))
-            if [ "$active" -ge "$limit" ]; then
-              wait -n
-              active=$((active - 1))
-            fi
-          done < <(node -e "const fs=require('fs'); const m=JSON.parse(fs.readFileSync('/tmp/pagefind-matrix.json','utf8')); for (const item of m.include || []) console.log(JSON.stringify(item));")
-
-          while [ "$active" -gt 0 ]; do
-            wait -n
-            active=$((active - 1))
-          done
-
-      - name: Write Pagefind manifest
-        run: node ../tools/plan_pagefind_batches.mjs --index ./public/volumes.json --batch-size 25 --format manifest --manifest-out ./public/pagefind/manifest.json
+      - name: Validate custom index assets
+        run: |
+          set -euo pipefail
+          test -s ./public/indexador/indices/index.map
+          test -s ./public/indexador/search/manifest.json
+          find ./public/indexador/indices -name '*.gz' -type f -print0 | xargs -0 -n1 gzip -t
+          find ./public/indexador/search -name '*.gz' -type f -print0 | xargs -0 -n1 gzip -t
+          node -e "const fs=require('fs'); const m=JSON.parse(fs.readFileSync('./public/indexador/search/manifest.json')); if(m.engine!=='PatrologiaIndexer'||m.sample||m.total_documents<1) process.exit(1); console.log('Search index:', m.total_documents, 'documents');"
 
       - name: Build
         run: npm run build

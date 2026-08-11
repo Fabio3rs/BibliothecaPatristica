@@ -277,6 +277,44 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       return getJsonOnce(path);
     }
 
+    function metadataBlockPath(value, volumeId) {
+      if (!/^[A-Za-z0-9.]+$/.test(volumeId)) return '';
+      const path = String(value || '').replace(/^\/+/, '');
+      const prefix = `meta/${volumeId}-pages-`;
+      const suffix = '.json.gz';
+      if (!path.startsWith(prefix) || !path.endsWith(suffix)) return '';
+      const blockNumber = path.slice(prefix.length, -suffix.length);
+      return /^\d+$/.test(blockNumber) ? path : '';
+    }
+
+    function renderCachedPagePreview(volume, page) {
+      const preview = document.createElement('section');
+      preview.className = 'card viewer-cache-preview';
+      preview.dataset.viewerPreview = 'true';
+      preview.setAttribute('aria-busy', 'true');
+      preview.style.cssText = 'display:grid;gap:var(--space-3);min-height:18rem;align-content:center;';
+
+      const locator = document.createElement('p');
+      locator.style.cssText = 'margin:0;color:var(--color-accent);font-weight:700;';
+      locator.textContent = `${s.viewerVolumeLabel(volume.id, volume.title || '')} · ${s.viewerPage(page.page)}`;
+
+      const heading = document.createElement('h1');
+      heading.style.margin = '0';
+      heading.textContent = [page.author, page.work].filter(Boolean).join(' — ')
+        || s.viewerVolumeLabel(volume.id, volume.title || '');
+
+      const summary = document.createElement('p');
+      summary.style.cssText = 'margin:0;max-width:78ch;line-height:1.7;';
+      summary.textContent = page.summary_page || page.summary_global || s.viewerNoContent;
+
+      const status = document.createElement('p');
+      status.style.cssText = 'margin:0;color:var(--color-muted);font-size:0.9rem;';
+      status.textContent = s.viewerLoading;
+
+      preview.append(locator, heading, summary, status);
+      viewerRoot.replaceChildren(preview);
+    }
+
     function normalizeViewerMode(value) {
       return value === 'reading' ? 'reading' : 'default';
     }
@@ -751,6 +789,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         document.body.classList.add('viewer-active');
         const url = new URL(window.location.href);
         const doc = url.searchParams.get('doc') || 'PG144';
+        const directBlockPath = metadataBlockPath(url.searchParams.get('mb') || '', doc);
         const highlight = (url.searchParams.get('highlight') || '').trim();
         const initialViewerMode = resolveInitialViewerMode(url);
 
@@ -763,12 +802,28 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           ? Math.min(Math.max(requestedPage, volume.page_first || 1), volume.page_last || requestedPage)
           : (volume.page_first || 1);
 
-        const meta = await getJSON(`${assetBase}${volume.meta_url.replace(/^\//, '')}`);
+        const metaPromise = getJSON(`${assetBase}${volume.meta_url.replace(/^\//, '')}`);
+        let blockData = null;
+        let page = null;
+        if (directBlockPath) {
+          blockData = await getJSON(`${assetBase}${directBlockPath}`);
+          page = (blockData.pages || []).find((candidate) => candidate.page === pageNumber) || null;
+          if (page && generation === loadGeneration) renderCachedPagePreview(volume, page);
+        }
+
+        const meta = await metaPromise;
         const block = meta.page_blocks.find((b) => pageNumber >= b.page_first && pageNumber <= b.page_last);
         if (!block) throw new Error(isIt ? 'Blocco non trovato' : 'Bloco não encontrado');
 
-        const blockData = await getJSON(`${assetBase}${block.file.replace(/^\//, '')}`);
-        const page = blockData.pages.find((p) => p.page === pageNumber) || blockData.pages[0];
+        const resolvedBlockPath = String(block.file || '').replace(/^\//, '');
+        if (!blockData || resolvedBlockPath !== directBlockPath) {
+          blockData = await getJSON(`${assetBase}${resolvedBlockPath}`);
+        }
+        page = blockData.pages.find((p) => p.page === pageNumber) || blockData.pages[0];
+        if (!page) throw new Error(isIt ? 'Pagina non trovata' : 'Página não encontrada');
+        if (!viewerRoot.querySelector('[data-viewer-preview]') && generation === loadGeneration) {
+          renderCachedPagePreview(volume, page);
+        }
 
         const [keywordsLabels, entities, collections] = await Promise.all([
           loadKeywordsForIds(page.keyword_ids || []),
@@ -787,7 +842,12 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         const snapshotLabels = pageSnapshots.map((s) => s.label);
         const summaryGlobal = page.summary_global || pageSnapshots[0]?.summary || '';
         let viewerMode = initialViewerMode;
-        const rawHref = safeUrl(page.raw?.url);
+        const rawUrl = page.raw?.url || (
+          page.raw?.file && blockData.raw_base_url
+            ? `${String(blockData.raw_base_url).replace(/\/$/, '')}/${encodeURIComponent(String(page.raw.file))}`
+            : ''
+        );
+        const rawHref = safeUrl(rawUrl);
         const shouldAutoLoadRaw = rawHref !== '#' && (viewerMode === 'reading' || getStoredRawAutoLoad());
 
         // Bookmark: save current position

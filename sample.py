@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
-sample.py — amostragem uniforme por volume + segmentação Tesseract → SQLite
+sample.py — amostragem priorizada por volume + segmentação Tesseract → SQLite
 
 Uso:
     python sample.py --root ./teste --db ocr.db --session "amostra inicial" --per-volume 10
-    python sample.py --root ./teste --db ocr.db --resample   # força nova amostragem
+    python sample.py --root ./teste --db ocr.db --append --per-volume 10
+    python sample.py --root ./teste --db ocr.db --append --dry-run --volume PG004
 
 Estrutura esperada:
     {root}/P{G|L}{vol}/images/*-{page}.png
@@ -12,14 +13,16 @@ Estrutura esperada:
 """
 
 import argparse
+from datetime import datetime, timezone
 import io
 import json
+import logging
 import os
 import random
 import hashlib
 import re
 import sqlite3
-import sys
+import unicodedata
 from pathlib import Path
 import multiprocessing as mp
 
@@ -33,11 +36,95 @@ import pytesseract
 # ---------------------------------------------------------------------------
 
 SUPPORTED_PREFIXES = ("PG", "PL")  # PO fica para fase 2
-TESS_LANG = "lat+grc"
+TESS_LANG = "migne"
 MIN_LINES = 10
 DEFAULT_PER_VOLUME = 10  # páginas por volume
 DEFAULT_PREPROCESS_MODE = "adaptive_soft"
-DEFAULT_TESS_LANG = "lat+grc"
+DEFAULT_TESS_LANG = "migne"
+BBOX_IOU_THRESHOLD = 0.80
+PRIORITY_ORDER = ("mixed", "greek", "other")
+PRIORITY_WEIGHTS = {"mixed": 0.50, "greek": 0.40, "other": 0.10}
+
+GREEK_RE = re.compile(r"[\u0370-\u03ff\u1f00-\u1fff]")
+LATIN_RE = re.compile(r"[A-Za-z\u00c0-\u024f]")
+SCRIPT_RE = re.compile(
+    r"\bscript\s*=\s*['\"](?P<script>misto|mixed|grego|greek)['\"]",
+    re.IGNORECASE,
+)
+
+LOGGER = logging.getLogger("sample")
+
+
+class IngestionError(RuntimeError):
+    pass
+
+
+def utc_now() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+def create_ingestion_report(
+    *, db_path: str, root: str, mode: str, per_volume: int
+) -> dict:
+    return {
+        "started_at": utc_now(),
+        "finished_at": None,
+        "status": "running",
+        "mode": mode,
+        "database": str(Path(db_path).expanduser().resolve(strict=False)),
+        "root": str(Path(root).expanduser().resolve(strict=False)),
+        "per_volume": per_volume,
+        "session_id": None,
+        "summary": {
+            "pages_planned": 0,
+            "lines_inserted": 0,
+            "bbox_conflicts": 0,
+        },
+        "volumes": {},
+        "issues": [],
+    }
+
+
+def add_report_issue(
+    report: dict | None,
+    severity: str,
+    code: str,
+    message: str,
+    **context,
+) -> None:
+    issue = {
+        "created_at": utc_now(),
+        "severity": severity,
+        "code": code,
+        "message": message,
+    }
+    issue.update({key: value for key, value in context.items() if value is not None})
+    if report is not None:
+        report.setdefault("issues", []).append(issue)
+    log_method = {
+        "error": LOGGER.error,
+        "warning": LOGGER.warning,
+    }.get(severity, LOGGER.info)
+    details = " ".join(f"{key}={value}" for key, value in context.items())
+    log_method("%s: %s%s", code, message, f" | {details}" if details else "")
+
+
+def default_report_path(db_path: str) -> Path:
+    database = Path(db_path).expanduser().resolve(strict=False)
+    timestamp = datetime.now().strftime("%Y%m%d-%H%M%S-%f")
+    return database.parent / "logs" / f"{database.name}.ingest-report-{timestamp}.json"
+
+
+def write_ingestion_report(report: dict, path: str | Path) -> Path:
+    output = Path(path).expanduser().resolve(strict=False)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    report["finished_at"] = report.get("finished_at") or utc_now()
+    output.write_text(
+        json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    LOGGER.info("Relatório de ingestão gravado em %s", output)
+    return output
 
 # ---------------------------------------------------------------------------
 # Schema SQLite
@@ -99,6 +186,7 @@ CREATE INDEX IF NOT EXISTS idx_line_versions_provider_model_line_id
 CREATE INDEX IF NOT EXISTS idx_lines_session  ON lines(session_id);
 CREATE INDEX IF NOT EXISTS idx_lines_status   ON lines(status);
 CREATE INDEX IF NOT EXISTS idx_lines_page     ON lines(page_id);
+CREATE INDEX IF NOT EXISTS idx_lines_created_at ON lines(created_at);
 CREATE INDEX IF NOT EXISTS idx_lines_status_score_id
     ON lines(status, IFNULL(agreement_score, 0), id);
 """
@@ -144,6 +232,127 @@ def find_page_pairs(vol: Path) -> list[tuple[Path, Path, str]]:
                 pairs.append((img, txt_by_page[pnum], page_id))
 
     return pairs
+
+
+def normalize_source_path(path: str | Path) -> str:
+    """Retorna uma identidade de caminho estável dentro do checkout atual."""
+    return str(Path(path).expanduser().resolve(strict=False))
+
+
+def classify_ocr_text(text: str) -> str:
+    """Classifica o OCR prévio em mixed, greek ou other."""
+    normalized = unicodedata.normalize("NFC", text or "")
+    scripts = {m.group("script").lower() for m in SCRIPT_RE.finditer(normalized)}
+    if scripts & {"misto", "mixed"}:
+        return "mixed"
+    if scripts & {"grego", "greek"}:
+        return "greek"
+
+    content = re.sub(r"<[^>]+>", " ", normalized)
+    has_greek = bool(GREEK_RE.search(content))
+    has_latin = bool(LATIN_RE.search(content))
+    if has_greek and has_latin:
+        return "mixed"
+    if has_greek:
+        return "greek"
+    return "other"
+
+
+def classify_ocr_file(path: Path) -> str:
+    return classify_ocr_text(path.read_text(encoding="utf-8", errors="replace"))
+
+
+def priority_targets(total: int) -> dict[str, int]:
+    """Distribui `total` pelas cotas 50/40/10 usando maiores restos."""
+    if total < 0:
+        raise ValueError("total deve ser >= 0")
+    raw = {name: total * PRIORITY_WEIGHTS[name] for name in PRIORITY_ORDER}
+    targets = {name: int(raw[name]) for name in PRIORITY_ORDER}
+    remaining = total - sum(targets.values())
+    ranked = sorted(
+        PRIORITY_ORDER,
+        key=lambda name: (-(raw[name] - targets[name]), PRIORITY_ORDER.index(name)),
+    )
+    for name in ranked[:remaining]:
+        targets[name] += 1
+    return targets
+
+
+def allocate_priority_counts(
+    total: int, available: dict[str, int]
+) -> dict[str, int]:
+    """Aplica as cotas e redistribui faltas por mixed → greek → other."""
+    wanted = priority_targets(total)
+    allocated = {
+        name: min(wanted[name], max(0, available.get(name, 0)))
+        for name in PRIORITY_ORDER
+    }
+    remaining = min(total, sum(max(0, available.get(name, 0)) for name in PRIORITY_ORDER))
+    remaining -= sum(allocated.values())
+    for name in PRIORITY_ORDER:
+        spare = max(0, available.get(name, 0) - allocated[name])
+        take = min(spare, remaining)
+        allocated[name] += take
+        remaining -= take
+        if remaining == 0:
+            break
+    return allocated
+
+
+def existing_material_for_volume(
+    conn: sqlite3.Connection, volume: str
+) -> tuple[set[str], set[str]]:
+    rows = conn.execute(
+        """
+        SELECT DISTINCT page_id, image_path
+        FROM lines
+        WHERE volume = ?
+        """,
+        (volume,),
+    ).fetchall()
+    page_ids: set[str] = set()
+    image_paths: set[str] = set()
+    for row in rows:
+        page_id = row["page_id"] if isinstance(row, sqlite3.Row) else row[0]
+        image_path = row["image_path"] if isinstance(row, sqlite3.Row) else row[1]
+        if page_id:
+            page_ids.add(str(page_id))
+        if image_path:
+            image_paths.add(normalize_source_path(image_path))
+    return page_ids, image_paths
+
+
+def select_prioritized_pages(
+    pairs: list[tuple[Path, Path, str]],
+    per_volume: int,
+    rng: random.Random,
+    existing_page_ids: set[str] | None = None,
+    existing_image_paths: set[str] | None = None,
+) -> tuple[list[tuple[Path, Path, str]], dict[str, int], int]:
+    """Seleciona páginas inéditas segundo as cotas de script."""
+    if per_volume < 0:
+        raise ValueError("per_volume deve ser >= 0")
+    existing_page_ids = existing_page_ids or set()
+    existing_image_paths = existing_image_paths or set()
+    buckets: dict[str, list[tuple[Path, Path, str]]] = {
+        name: [] for name in PRIORITY_ORDER
+    }
+    existing_count = 0
+    for pair in pairs:
+        image_path, txt_path, page_id = pair
+        if page_id in existing_page_ids or normalize_source_path(image_path) in existing_image_paths:
+            existing_count += 1
+            continue
+        buckets[classify_ocr_file(txt_path)].append(pair)
+
+    limit = min(per_volume, sum(len(items) for items in buckets.values()))
+    counts = allocate_priority_counts(
+        limit, {name: len(buckets[name]) for name in PRIORITY_ORDER}
+    )
+    selected: list[tuple[Path, Path, str]] = []
+    for name in PRIORITY_ORDER:
+        selected.extend(rng.sample(buckets[name], counts[name]))
+    return selected, counts, existing_count
 
 
 # ---------------------------------------------------------------------------
@@ -269,7 +478,7 @@ def tesseract_lines(img: np.ndarray) -> list[dict]:
         d = line_map[key]
         result.append(
             {
-                "text": " ".join(d["text"]),
+                "text": unicodedata.normalize("NFC", " ".join(d["text"])),
                 "bbox": {
                     "x": d["x"],
                     "y": d["y"],
@@ -309,7 +518,8 @@ def tesseract_text_for_image(
     tessdata_dir: str | None = None,
 ) -> str:
     config = build_tesseract_config(tessdata_dir)
-    return pytesseract.image_to_string(img, lang=lang, config=config).strip()
+    text = pytesseract.image_to_string(img, lang=lang, config=config).strip()
+    return unicodedata.normalize("NFC", text)
 
 
 def resolve_reference_text(row: sqlite3.Row) -> str:
@@ -329,18 +539,64 @@ def resolve_reference_text(row: sqlite3.Row) -> str:
 # ---------------------------------------------------------------------------
 
 
-def open_db(db_path: str) -> sqlite3.Connection:
+def open_db(db_path: str, read_only: bool = False) -> sqlite3.Connection:
+    if read_only:
+        resolved = Path(db_path).expanduser().resolve()
+        if not resolved.is_file():
+            raise FileNotFoundError(f"Banco SQLite não encontrado: {resolved}")
+        conn = sqlite3.connect(f"{resolved.as_uri()}?mode=ro", uri=True)
+        conn.row_factory = sqlite3.Row
+        conn.execute("PRAGMA query_only=ON;")
+        conn.execute("PRAGMA busy_timeout=30000;")
+        return conn
+
     conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
     journal_mode = conn.execute("PRAGMA journal_mode=WAL;").fetchone()[0]
     if str(journal_mode).lower() != "wal":
         conn.close()
         raise RuntimeError(f"SQLite não entrou em WAL mode: {journal_mode}")
     conn.execute("PRAGMA busy_timeout=30000;")
+    conn.execute("PRAGMA foreign_keys=ON;")
 
     conn.executescript(DDL)
+    _migrate_bbox_columns(conn)
     _migrate_line_versions(conn)
     conn.commit()
     return conn
+
+
+def _migrate_bbox_columns(conn: sqlite3.Connection) -> None:
+    columns = {
+        row[1] for row in conn.execute("PRAGMA table_xinfo(lines)").fetchall()
+    }
+    expressions = {
+        "bbox_x": "CAST(json_extract(bbox, '$.x') AS INTEGER)",
+        "bbox_y": "CAST(json_extract(bbox, '$.y') AS INTEGER)",
+        "bbox_w": "CAST(json_extract(bbox, '$.w') AS INTEGER)",
+        "bbox_h": "CAST(json_extract(bbox, '$.h') AS INTEGER)",
+    }
+    for column, expression in expressions.items():
+        if column not in columns:
+            conn.execute(
+                f"ALTER TABLE lines ADD COLUMN {column} INTEGER "
+                f"GENERATED ALWAYS AS ({expression}) VIRTUAL"
+            )
+
+    conn.executescript(
+        """
+        CREATE INDEX IF NOT EXISTS idx_lines_page_bbox_lookup
+            ON lines(page_id, bbox_x, bbox_y);
+        CREATE INDEX IF NOT EXISTS idx_lines_image_bbox_lookup
+            ON lines(image_path, bbox_x, bbox_y);
+        CREATE UNIQUE INDEX IF NOT EXISTS uq_lines_page_bbox_exact
+            ON lines(page_id, bbox_x, bbox_y, bbox_w, bbox_h)
+            WHERE page_id IS NOT NULL AND page_id <> '';
+        CREATE UNIQUE INDEX IF NOT EXISTS uq_lines_image_bbox_exact
+            ON lines(image_path, bbox_x, bbox_y, bbox_w, bbox_h)
+            WHERE image_path IS NOT NULL AND image_path <> '';
+        """
+    )
 
 
 def _migrate_line_versions(conn: sqlite3.Connection) -> None:
@@ -370,11 +626,12 @@ def _migrate_line_versions(conn: sqlite3.Connection) -> None:
         "SELECT id, qwen_text, agreement_score FROM lines WHERE IFNULL(qwen_text, '') <> ''"
     ).fetchall()
     for row in rows:
-        txt = row["qwen_text"] or ""
+        txt = unicodedata.normalize("NFC", row["qwen_text"] or "")
         conn.execute(
             """
             INSERT OR IGNORE INTO line_versions
-                (run_id, line_id, provider, model, text_content, text_hash, source_score, is_current, meta_json)
+                (run_id, line_id, provider, model, text_content, text_hash,
+                 source_score, is_current, meta_json)
             VALUES (?, ?, ?, ?, ?, ?, ?, 1, NULL)
             """,
             (
@@ -399,13 +656,14 @@ def create_session(
 ) -> int:
     cur = conn.execute(
         "INSERT INTO sessions (description, sample_size, volumes) VALUES (?, ?, ?)",
-        (description, sample_size, json.dumps(volumes)),
+        (unicodedata.normalize("NFC", description), sample_size, json.dumps(volumes)),
     )
     conn.commit()
     return cur.lastrowid
 
 
 def insert_line(conn: sqlite3.Connection, session_id: int, row: dict) -> None:
+    tesseract_text = unicodedata.normalize("NFC", row["tesseract_text"] or "")
     conn.execute(
         """
         INSERT INTO lines
@@ -417,14 +675,147 @@ def insert_line(conn: sqlite3.Connection, session_id: int, row: dict) -> None:
             session_id,
             row["page_id"],
             row["volume"],
-            row["image_path"],
+            normalize_source_path(row["image_path"]),
             row["line_index"],
             json.dumps(row["bbox"]),
             row["line_image"],
-            row["tesseract_text"],
+            tesseract_text,
             row["detected_lang"],
         ),
     )
+
+
+def bbox_iou(first: dict, second: dict) -> float:
+    """Calcula intersection-over-union de duas caixas x/y/w/h."""
+    ax1, ay1 = float(first["x"]), float(first["y"])
+    ax2 = ax1 + max(0.0, float(first["w"]))
+    ay2 = ay1 + max(0.0, float(first["h"]))
+    bx1, by1 = float(second["x"]), float(second["y"])
+    bx2 = bx1 + max(0.0, float(second["w"]))
+    by2 = by1 + max(0.0, float(second["h"]))
+    intersection = max(0.0, min(ax2, bx2) - max(ax1, bx1)) * max(
+        0.0, min(ay2, by2) - max(ay1, by1)
+    )
+    first_area = max(0.0, ax2 - ax1) * max(0.0, ay2 - ay1)
+    second_area = max(0.0, bx2 - bx1) * max(0.0, by2 - by1)
+    union = first_area + second_area - intersection
+    return intersection / union if union > 0 else 0.0
+
+
+def find_bbox_conflict(
+    conn: sqlite3.Connection,
+    page_id: str,
+    image_path: str,
+    bbox: dict,
+    threshold: float = BBOX_IOU_THRESHOLD,
+) -> int | None:
+    """Retorna o id de uma linha conflitante no mesmo material, se houver."""
+    if not 0 <= threshold <= 1:
+        raise ValueError("threshold deve estar entre 0 e 1")
+    x = int(bbox["x"])
+    y = int(bbox["y"])
+    w = int(bbox["w"])
+    h = int(bbox["h"])
+    if w <= 0 or h <= 0:
+        raise ValueError("bbox deve ter largura e altura positivas")
+    x2 = x + w
+    y2 = y + h
+    overlap_params = (x2, x, y2, y)
+    rows = conn.execute(
+        """
+        SELECT id, bbox_x, bbox_y, bbox_w, bbox_h
+        FROM lines
+        WHERE page_id = ?
+          AND bbox_x < ? AND bbox_x + bbox_w > ?
+          AND bbox_y < ? AND bbox_y + bbox_h > ?
+        UNION
+        SELECT id, bbox_x, bbox_y, bbox_w, bbox_h
+        FROM lines
+        WHERE image_path = ?
+          AND bbox_x < ? AND bbox_x + bbox_w > ?
+          AND bbox_y < ? AND bbox_y + bbox_h > ?
+        """,
+        (
+            page_id,
+            *overlap_params,
+            normalize_source_path(image_path),
+            *overlap_params,
+        ),
+    ).fetchall()
+    for row in rows:
+        existing = {
+            "x": row["bbox_x"],
+            "y": row["bbox_y"],
+            "w": row["bbox_w"],
+            "h": row["bbox_h"],
+        }
+        if bbox_iou(bbox, existing) >= threshold:
+            return int(row["id"])
+    return None
+
+
+def insert_nonconflicting_page(
+    conn: sqlite3.Connection,
+    session_id: int,
+    result: dict,
+    threshold: float = BBOX_IOU_THRESHOLD,
+    report: dict | None = None,
+) -> tuple[int, int]:
+    """Insere uma página atomicamente e ignora caixas similares/exatas."""
+    inserted = 0
+    conflicts = 0
+    conn.execute("BEGIN IMMEDIATE")
+    try:
+        for row in result.get("rows", []):
+            material_row = {
+                "page_id": result["page_id"],
+                "volume": result["volume"],
+                "image_path": result["image_path"],
+                "line_index": row["line_index"],
+                "bbox": row["bbox"],
+                "line_image": row["line_image"],
+                "tesseract_text": row["tesseract_text"],
+                "detected_lang": result["detected_lang"],
+            }
+            if find_bbox_conflict(
+                conn,
+                material_row["page_id"],
+                material_row["image_path"],
+                material_row["bbox"],
+                threshold=threshold,
+            ) is not None:
+                conflicts += 1
+                continue
+            try:
+                insert_line(conn, session_id, material_row)
+                inserted += 1
+            except sqlite3.IntegrityError as exc:
+                conflict_id = find_bbox_conflict(
+                    conn,
+                    material_row["page_id"],
+                    material_row["image_path"],
+                    material_row["bbox"],
+                    threshold=threshold,
+                )
+                if conflict_id is not None:
+                    conflicts += 1
+                    continue
+                add_report_issue(
+                    report,
+                    "error",
+                    "unexpected_integrity_error",
+                    str(exc),
+                    page_id=material_row["page_id"],
+                    line_index=material_row["line_index"],
+                    sqlite_errorcode=getattr(exc, "sqlite_errorcode", None),
+                    sqlite_errorname=getattr(exc, "sqlite_errorname", None),
+                )
+                raise
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    return inserted, conflicts
 
 
 from functools import lru_cache
@@ -513,7 +904,9 @@ def refresh_line_images(
                 print(f"[WARN] id={task[0]}: não foi possível atualizar image - {e}")
     else:
         with mp.Pool(processes=jobs) as pool:
-            for line_id, new_image in pool.imap_unordered(_refresh_line_image_job, tasks, chunksize=32):
+            for line_id, new_image in pool.imap_unordered(
+                _refresh_line_image_job, tasks, chunksize=32
+            ):
                 conn.execute(
                     "UPDATE lines SET line_image=?, updated_at=datetime('now') WHERE id=?",
                     (new_image, line_id),
@@ -760,6 +1153,47 @@ def _process_page_wrapper(task_tuple: tuple) -> dict:
 # ---------------------------------------------------------------------------
 
 
+def finalize_interrupted_session(
+    conn: sqlite3.Connection, session_id: int, report: dict | None = None
+) -> tuple[int, list[str]]:
+    """Remove sessão vazia ou preserva contagens reais após uma interrupção."""
+    row = conn.execute(
+        "SELECT COUNT(*) AS total FROM lines WHERE session_id = ?", (session_id,)
+    ).fetchone()
+    line_count = int(row["total"] if isinstance(row, sqlite3.Row) else row[0])
+    if line_count == 0:
+        conn.execute("DELETE FROM sessions WHERE id = ?", (session_id,))
+        conn.commit()
+        if report is not None:
+            report["session_id"] = None
+        LOGGER.warning("Sessão vazia %s removida após interrupção", session_id)
+        return 0, []
+
+    rows = conn.execute(
+        """
+        SELECT DISTINCT volume
+        FROM lines
+        WHERE session_id = ? AND volume IS NOT NULL AND volume <> ''
+        ORDER BY volume
+        """,
+        (session_id,),
+    ).fetchall()
+    volumes = [str(row[0]) for row in rows]
+    conn.execute(
+        """
+        UPDATE sessions
+        SET sample_size = ?, volumes = ?, updated_at = datetime('now')
+        WHERE id = ?
+        """,
+        (line_count, json.dumps(volumes), session_id),
+    )
+    conn.commit()
+    LOGGER.warning(
+        "Sessão parcial %s preservada com %s linha(s)", session_id, line_count
+    )
+    return line_count, volumes
+
+
 def sample_and_ingest(
     root: Path,
     conn: sqlite3.Connection,
@@ -767,96 +1201,236 @@ def sample_and_ingest(
     description: str,
     preprocess_mode: str = DEFAULT_PREPROCESS_MODE,
     seed: int | None = None,
-) -> None:
-    if seed is not None:
-        random.seed(seed)
-
+    volume_names: set[str] | None = None,
+    dry_run: bool = False,
+    jobs: int | None = None,
+    report: dict | None = None,
+) -> dict | None:
+    if per_volume <= 0:
+        raise ValueError("per_volume deve ser > 0")
+    rng = random.Random(seed)
     volumes = find_volumes(root)
+    if volume_names:
+        requested = {name.upper() for name in volume_names}
+        volumes = [vol for vol in volumes if vol.name.upper() in requested]
+        found = {vol.name.upper() for vol in volumes}
+        missing = sorted(requested - found)
+        if missing:
+            add_report_issue(
+                report,
+                "warning",
+                "volumes_not_found",
+                "Um ou mais volumes solicitados não foram encontrados.",
+                volumes=missing,
+            )
     if not volumes:
-        print(f"[ERRO] Nenhum volume PG/PL encontrado em {root}", file=sys.stderr)
-        sys.exit(1)
+        message = f"Nenhum volume PG/PL encontrado em {root}"
+        add_report_issue(report, "error", "no_volumes", message)
+        if report is not None:
+            report["status"] = "failed"
+        raise IngestionError(message)
 
     print(f"[INFO] {len(volumes)} volumes encontrados: {[v.name for v in volumes]}")
 
-    all_lines_count = 0
-    included_volumes = []
-
-    # Cria sessão antes de processar
-    session_id = create_session(
-        conn, description, 0, []
-    )  # sample_size atualizado ao final
-
-    # Configuração de multiprocessing
-    cpu_threads = max(1, mp.cpu_count() // 2)
-    omp_threads = 2  # default solicitado
-    print(f"[INFO] Multiprocessing: workers={cpu_threads}, omp_threads={omp_threads}")
-
+    selections: list[tuple[Path, list[tuple[Path, Path, str]], dict[str, int], int]] = []
     for vol in volumes:
         pairs = find_page_pairs(vol)
         if not pairs:
-            print(f"[WARN] {vol.name}: nenhum par img+txt encontrado, pulando")
+            add_report_issue(
+                report,
+                "warning",
+                "no_page_pairs",
+                "Nenhum par de imagem e texto encontrado.",
+                volume=vol.name,
+            )
             continue
+        existing_page_ids, existing_image_paths = existing_material_for_volume(
+            conn, vol.name
+        )
+        selected, class_counts, existing_count = select_prioritized_pages(
+            pairs,
+            per_volume,
+            rng,
+            existing_page_ids=existing_page_ids,
+            existing_image_paths=existing_image_paths,
+        )
+        selections.append((vol, selected, class_counts, existing_count))
+        if report is not None:
+            report["volumes"][vol.name] = {
+                "pages_planned": len(selected),
+                "priority": class_counts,
+                "existing_pages_excluded": existing_count,
+                "lines_inserted": 0,
+                "bbox_conflicts": 0,
+            }
+        print(
+            f"[PLAN] {vol.name}: mixed={class_counts['mixed']} "
+            f"greek={class_counts['greek']} other={class_counts['other']} "
+            f"existentes_excluídas={existing_count}"
+        )
+        if dry_run and selected:
+            print(f"[DRY-RUN] {vol.name}: {[page_id for _, _, page_id in selected]}")
 
-        # Amostra aleatória de páginas do volume
-        sample = random.sample(pairs, min(per_volume, len(pairs)))
-        vol_lines = 0
-        # Preparar tarefas para pool: cada tarefa é (img_path_str, txt_path_str, page_id, volume_name)
-        tasks = [
-            (str(img_path), str(txt_path), page_id, vol.name, preprocess_mode)
-            for img_path, txt_path, page_id in sample
-        ]
+    selected_pages = sum(len(selected) for _, selected, _, _ in selections)
+    if report is not None:
+        report["summary"]["pages_planned"] = selected_pages
+    if dry_run:
+        print(
+            f"[DRY-RUN] {selected_pages} página(s) seriam processadas; "
+            "nenhuma sessão ou linha foi gravada."
+        )
+        if report is not None:
+            report["status"] = "dry_run"
+        return report
+    if selected_pages == 0:
+        message = "Nenhuma página inédita elegível; nenhuma sessão foi criada."
+        add_report_issue(report, "warning", "no_new_pages", message)
+        if report is not None:
+            report["status"] = "completed_with_issues"
+        return report
 
-        # Processar páginas em paralelo em subprocessos; inserção no DB é feita no processo principal
-        with mp.Pool(
-            processes=cpu_threads, initializer=_init_omp_env, initargs=(omp_threads,)
-        ) as pool:
-            results = pool.map(_process_page_wrapper, tasks)
+    all_lines_count = 0
+    all_conflicts = 0
+    included_volumes: list[str] = []
 
-        for res in results:
-            # res: dict with keys status, page_id, num_lines, detected_lang, image_path, volume, rows (list)
-            if res.get("status") == "error":
-                print(f"[WARN] {res.get('page_id')}: erro - {res.get('message')}")
+    session_id = create_session(conn, description, 0, [])
+    if report is not None:
+        report["session_id"] = session_id
+
+    cpu_threads = max(1, jobs or mp.cpu_count() // 2)
+    omp_threads = 2
+    print(f"[INFO] Multiprocessing: workers={cpu_threads}, omp_threads={omp_threads}")
+
+    try:
+        for vol, selected, _class_counts, _existing_count in selections:
+            if not selected:
                 continue
-            if res.get("status") == "skip":
+            vol_lines = 0
+            vol_conflicts = 0
+            tasks = [
+                (str(img_path), str(txt_path), page_id, vol.name, preprocess_mode)
+                for img_path, txt_path, page_id in selected
+            ]
+
+            with mp.Pool(
+                processes=min(cpu_threads, len(tasks)),
+                initializer=_init_omp_env,
+                initargs=(omp_threads,),
+            ) as pool:
+                results = pool.map(_process_page_wrapper, tasks)
+
+            for res in results:
+                if res.get("status") == "error":
+                    add_report_issue(
+                        report,
+                        "warning",
+                        "page_processing_error",
+                        res.get("message", "Erro desconhecido ao processar página."),
+                        volume=vol.name,
+                        page_id=res.get("page_id"),
+                    )
+                    continue
+                if res.get("status") == "skip":
+                    add_report_issue(
+                        report,
+                        "warning",
+                        "page_below_minimum_lines",
+                        f"Página abaixo do mínimo de {MIN_LINES} linhas.",
+                        volume=vol.name,
+                        page_id=res.get("page_id"),
+                        detected_lines=res.get("num_lines"),
+                    )
+                    continue
+
+                inserted, conflicts = insert_nonconflicting_page(
+                    conn, session_id, res, report=report
+                )
+                vol_lines += inserted
+                vol_conflicts += conflicts
+                if conflicts:
+                    add_report_issue(
+                        report,
+                        "warning",
+                        "bbox_conflicts",
+                        "Linhas conflitantes foram ignoradas.",
+                        volume=vol.name,
+                        page_id=res.get("page_id"),
+                        count=conflicts,
+                    )
                 print(
-                    f"[SKIP] {res.get('page_id')}: apenas {res.get('num_lines')} linhas, abaixo do mínimo {MIN_LINES}"
+                    f"[OK] {res.get('page_id')}: {inserted} linhas inseridas, "
+                    f"{conflicts} conflito(s) ignorado(s)"
                 )
-                continue
 
-            rows = res.get("rows", [])
-            for row in rows:
-                insert_line(
-                    conn,
-                    session_id,
-                    {
-                        "page_id": res.get("page_id"),
-                        "volume": res.get("volume"),
-                        "image_path": res.get("image_path"),
-                        "line_index": row["line_index"],
-                        "bbox": row["bbox"],
-                        "line_image": row["line_image"],
-                        "tesseract_text": row["tesseract_text"],
-                        "detected_lang": res.get("detected_lang"),
-                    },
-                )
-                vol_lines += 1
+            all_lines_count += vol_lines
+            all_conflicts += vol_conflicts
+            if vol_lines:
+                included_volumes.append(vol.name)
+            if report is not None:
+                report["volumes"][vol.name]["lines_inserted"] = vol_lines
+                report["volumes"][vol.name]["bbox_conflicts"] = vol_conflicts
+            print(
+                f"[VOL] {vol.name}: {vol_lines} linhas de {len(selected)} páginas; "
+                f"conflitos={vol_conflicts}"
+            )
+    except Exception as exc:
+        add_report_issue(
+            report,
+            "error",
+            "ingestion_interrupted",
+            str(exc),
+            session_id=session_id,
+        )
+        recovered_count = all_lines_count
+        recovered_volumes = list(included_volumes)
+        try:
+            recovered_count, recovered_volumes = finalize_interrupted_session(
+                conn, session_id, report
+            )
+        except Exception as cleanup_exc:
+            conn.rollback()
+            add_report_issue(
+                report,
+                "error",
+                "session_reconciliation_failed",
+                str(cleanup_exc),
+                session_id=session_id,
+            )
+        if report is not None:
+            report["status"] = "failed"
+            report["summary"]["lines_inserted"] = recovered_count
+            report["summary"]["bbox_conflicts"] = all_conflicts
+            for volume in recovered_volumes:
+                report["volumes"].setdefault(volume, {})
+        raise
 
-            print(f"[OK] {res.get('page_id')}: {res.get('num_lines')} linhas inseridas")
+    if report is not None:
+        report["summary"]["lines_inserted"] = all_lines_count
+        report["summary"]["bbox_conflicts"] = all_conflicts
 
+    if all_lines_count == 0:
+        conn.execute("DELETE FROM sessions WHERE id = ?", (session_id,))
         conn.commit()
-        all_lines_count += vol_lines
-        included_volumes.append(vol.name)
-        print(f"[VOL] {vol.name}: {vol_lines} linhas totais de {len(sample)} páginas")
+        print("[INFO] Nenhuma linha nova foi inserida; sessão vazia removida.")
+        if report is not None:
+            report["session_id"] = None
+            report["status"] = "completed_with_issues"
+        return report
 
-    # Atualiza sessão com totais reais
     conn.execute(
         "UPDATE sessions SET sample_size=?, volumes=?, updated_at=datetime('now') WHERE id=?",
         (all_lines_count, json.dumps(included_volumes), session_id),
     )
     conn.commit()
     print(
-        f"\n[DONE] Sessão {session_id}: {all_lines_count} linhas de {len(included_volumes)} volumes"
+        f"\n[DONE] Sessão {session_id}: {all_lines_count} linhas de "
+        f"{len(included_volumes)} volumes; conflitos ignorados={all_conflicts}"
     )
+    if report is not None:
+        report["status"] = (
+            "completed_with_issues" if report.get("issues") else "completed"
+        )
+    return report
 
 
 # ---------------------------------------------------------------------------
@@ -881,10 +1455,22 @@ def main() -> None:
     parser.add_argument(
         "--seed", type=int, default=None, help="Seed aleatória para reprodutibilidade"
     )
-    parser.add_argument(
+    ingest_mode = parser.add_mutually_exclusive_group()
+    ingest_mode.add_argument(
+        "--append",
+        action="store_true",
+        help="Cria uma sessão adicional sem apagar linhas existentes.",
+    )
+    ingest_mode.add_argument(
         "--resample",
         action="store_true",
-        help="Força nova amostragem mesmo se já existir sessão",
+        help="Modo legado destrutivo: apaga linhas/sessões antes da amostragem.",
+    )
+    parser.add_argument(
+        "--volume",
+        action="append",
+        dest="volumes",
+        help="Restringe a um volume; pode ser repetido (ex.: --volume PG004).",
     )
     parser.add_argument(
         "--preprocess-mode",
@@ -912,7 +1498,7 @@ def main() -> None:
         "--jobs",
         type=int,
         default=max(1, mp.cpu_count() // 2),
-        help="Número de processos para --refresh-images.",
+        help="Número de processos para ingestão ou --refresh-images.",
     )
     parser.add_argument(
         "--recalc-tesseract",
@@ -922,57 +1508,127 @@ def main() -> None:
     parser.add_argument(
         "--tesseract-lang",
         default=DEFAULT_TESS_LANG,
-        help="Idioma/traineddata para o recálculo do Tesseract (ex.: lat, grc, lat+grc).",
+        help="Idioma/traineddata para o recálculo do Tesseract (ex.: lat, grc, lat+grc, migne).",
     )
     parser.add_argument(
         "--tessdata-dir",
         default=None,
         help="Diretório opcional com os traineddata do Tesseract.",
     )
+    parser.add_argument(
+        "--report",
+        default=None,
+        help="Caminho do relatório JSON; com problemas, um caminho automático é usado.",
+    )
+    parser.add_argument(
+        "--log-level",
+        choices=["DEBUG", "INFO", "WARNING", "ERROR"],
+        default="INFO",
+        help="Nível dos logs emitidos no stderr.",
+    )
     args = parser.parse_args()
 
-    conn = open_db(args.db)
-
-    if args.refresh_images:
-        refresh_line_images(
-            conn,
-            preprocess_mode=args.preprocess_mode,
-            limit=args.limit,
-            dry_run=args.dry_run,
-            jobs=args.jobs,
-        )
-        return
-
-    if args.recalc_tesseract:
-        recalc_tesseract_fields(
-            conn,
-            lang=args.tesseract_lang,
-            tessdata_dir=args.tessdata_dir,
-            limit=args.limit,
-            dry_run=args.dry_run,
-        )
-        return
-
-    if session_exists(conn) and not args.resample:
-        count = conn.execute("SELECT COUNT(*) FROM lines").fetchone()[0]
-        print(
-            f"[INFO] Sessão existente com {count} linhas. Use --resample para nova amostragem."
-        )
-        return
-
-    if args.resample:
-        print("[INFO] --resample: limpando dados anteriores...")
-        conn.executescript("DELETE FROM lines; DELETE FROM sessions;")
-        conn.commit()
-
-    sample_and_ingest(
-        root=Path(args.root),
-        conn=conn,
-        per_volume=args.per_volume,
-        description=args.session,
-        preprocess_mode=args.preprocess_mode,
-        seed=args.seed,
+    logging.basicConfig(
+        level=getattr(logging, args.log_level),
+        format="%(asctime)s %(levelname)s %(name)s %(message)s",
     )
+    if args.resample and args.dry_run:
+        parser.error(
+            "--resample não pode ser combinado com --dry-run; "
+            "use --append --dry-run para inspecionar uma ingestão incremental."
+        )
+
+    mode = (
+        "refresh_images"
+        if args.refresh_images
+        else "recalc_tesseract"
+        if args.recalc_tesseract
+        else "resample"
+        if args.resample
+        else "append"
+    )
+    report = create_ingestion_report(
+        db_path=args.db,
+        root=args.root,
+        mode="dry_run" if args.dry_run else mode,
+        per_volume=args.per_volume,
+    )
+    conn: sqlite3.Connection | None = None
+    exit_code = 0
+    try:
+        conn = open_db(args.db, read_only=args.dry_run)
+
+        if args.refresh_images:
+            refresh_line_images(
+                conn,
+                preprocess_mode=args.preprocess_mode,
+                limit=args.limit,
+                dry_run=args.dry_run,
+                jobs=args.jobs,
+            )
+            report["status"] = "dry_run" if args.dry_run else "completed"
+        elif args.recalc_tesseract:
+            recalc_tesseract_fields(
+                conn,
+                lang=args.tesseract_lang,
+                tessdata_dir=args.tessdata_dir,
+                limit=args.limit,
+                dry_run=args.dry_run,
+            )
+            report["status"] = "dry_run" if args.dry_run else "completed"
+        elif session_exists(conn) and not (
+            args.append or args.resample or args.dry_run
+        ):
+            count = conn.execute("SELECT COUNT(*) FROM lines").fetchone()[0]
+            print(
+                f"[INFO] Sessão existente com {count} linhas. Use --append para "
+                "adicionar material sem apagar a base."
+            )
+            report["status"] = "not_run"
+        else:
+            if args.resample:
+                print("[INFO] --resample: limpando dados anteriores...")
+                conn.executescript("DELETE FROM lines; DELETE FROM sessions;")
+                conn.commit()
+
+            sample_and_ingest(
+                root=Path(args.root),
+                conn=conn,
+                per_volume=args.per_volume,
+                description=args.session,
+                preprocess_mode=args.preprocess_mode,
+                seed=args.seed,
+                volume_names=set(args.volumes or []),
+                dry_run=args.dry_run,
+                jobs=args.jobs,
+                report=report,
+            )
+    except Exception as exc:
+        if report.get("status") != "failed":
+            add_report_issue(
+                report,
+                "error",
+                "execution_failed",
+                str(exc),
+                exception_type=type(exc).__name__,
+            )
+            report["status"] = "failed"
+        LOGGER.exception("Execução de sample.py interrompida")
+        exit_code = 1
+    finally:
+        report["finished_at"] = utc_now()
+        if conn is not None:
+            conn.close()
+        if args.report or report.get("issues"):
+            output = Path(args.report) if args.report else default_report_path(args.db)
+            try:
+                write_ingestion_report(report, output)
+            except OSError:
+                LOGGER.exception("Não foi possível gravar o relatório em %s", output)
+                exit_code = 1
+
+    if exit_code:
+        raise SystemExit(exit_code)
 
 
 if __name__ == "__main__":

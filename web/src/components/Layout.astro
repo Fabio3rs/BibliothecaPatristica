@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import '../utils/dataCache.ts';
 import Breadcrumbs from './Breadcrumbs.astro';
 import { useTranslations, getLocaleBase, getLocaleRouteUrl, getLocaleUrl } from '../i18n';
 import type { SupportedLocale } from '../i18n';
@@ -46,6 +45,9 @@ const localeOptions = [
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <link rel="manifest" href={`${baseWithSlash}manifest.json`} />
+    <script>
+      import '../utils/dataCache.ts';
+    </script>
 
     <slot name="head" />
     <style>

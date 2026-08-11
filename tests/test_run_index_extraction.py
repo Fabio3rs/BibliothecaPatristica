@@ -16,11 +16,13 @@ from scripts.run_index_extraction import (
     build_hyphen_rerun_recovery_block,
     build_previous_failure_prompt_block,
     build_work_anchor_rerun_prompt_block,
+    compact_failure_text,
     failure_mentions_hyphen_artifact,
     load_failure_artifact,
     payload_has_hyphen_artifacts,
     prevalidate_existing_payload,
     validate_payload,
+    write_failure_artifact,
 )
 
 PROMPT_SCRIPT = ROOT / ".codex/skills/patristic-index-extractor/scripts/build_volume_prompt.py"
@@ -178,6 +180,81 @@ def test_run_index_extraction_loads_failure_artifact_and_builds_special_blocks(t
     recovery_block = build_hyphen_rerun_recovery_block()
     assert "HYPHEN RERUN RECOVERY" in recovery_block
     assert "read_ocr_page_text.py --view xml --show-source <file>" in recovery_block
+
+
+def test_previous_failure_prompt_deduplicates_and_truncates_recursive_codex_error() -> None:
+    repeated_recovery = (
+        "Fix the exact failure for PG022; do not merely regenerate the same payload.\n"
+        "### HYPHEN RERUN RECOVERY\n"
+        "Re-read every affected source with read_ocr_page_text.py.\n"
+    )
+    terminal_error = (
+        "Error: turn/start failed: Input exceeds the maximum length of 1048576 "
+        "characters; actual_chars=2643474"
+    )
+    failure = {
+        "stage": "codex",
+        "error_summary": "codex exec failed for PG022",
+        "error_detail": (
+            "codex exec failed for PG022\nSTDERR:\nuser\n"
+            + "".join(f"unique OCR transcript line {index}\n" for index in range(20_000))
+            + repeated_recovery * 5
+            + terminal_error
+        ),
+    }
+
+    block = build_previous_failure_prompt_block("PG022", failure)
+
+    assert len(block) < 13_000
+    assert block.count("### HYPHEN RERUN RECOVERY") == 1
+    assert "deduplicated" in block
+    assert "truncated from" in block
+    assert terminal_error in block
+
+
+def test_compact_failure_text_preserves_small_diagnostic_verbatim() -> None:
+    detail = "validator failed\nrefs[2].target_file is missing"
+
+    compacted, duplicate_count, truncated = compact_failure_text(detail, 500)
+
+    assert compacted == detail
+    assert duplicate_count == 0
+    assert truncated is False
+
+
+def test_failure_artifact_does_not_persist_full_recursive_transcript(tmp_path: Path) -> None:
+    path = tmp_path / "PG022_failure.json"
+    detail = (
+        "codex exec failed for PG022\n"
+        + "".join(f"OCR transcript {index}\n" for index in range(30_000))
+        + "entry_raw has a line-break hyphen artifact\n"
+        + "Error: Input exceeds the maximum length; actual_chars=2643474"
+    )
+
+    write_failure_artifact(
+        path=path,
+        volume_id="PG022",
+        collection="PG",
+        stage="codex",
+        error=SystemExit(detail),
+        payload_file=None,
+        prescan_file=None,
+        filtered_pages_file=None,
+        editorial_pages_file=None,
+        helper_request_file=None,
+        helper_output_file=None,
+        last_message_file=None,
+        stdout_log_file=tmp_path / "PG022_stdout.log",
+        stderr_log_file=tmp_path / "PG022_stderr.log",
+        stream_log_file=tmp_path / "PG022_stream.log",
+    )
+
+    artifact = json.loads(path.read_text(encoding="utf-8"))
+    assert path.stat().st_size < 30_000
+    assert artifact["error_detail_truncated"] is True
+    assert artifact["error_detail_original_chars"] == len(detail)
+    assert artifact["mentions_hyphen_artifact"] is True
+    assert "actual_chars=2643474" in artifact["error_detail"]
 
 
 def test_build_work_anchor_rerun_prompt_block_lists_pending_works() -> None:

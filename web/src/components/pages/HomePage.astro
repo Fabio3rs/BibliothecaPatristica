@@ -390,7 +390,8 @@ const startPoints = startPointsByLocale[locale];
 <Layout title="Bibliotheca Patristica" description={t.homeSubtitle.replace(/<[^>]*>/g, '')} breadcrumbs={[{label: t.breadcrumbHome, href: localeBase}]}>
   <Fragment slot="head">
     <link rel="prefetch" href={getLocaleRouteUrl(locale, 'search', base)} />
-    <link rel="prefetch" href={`${baseWithSlash}pagefind/main/pagefind.js`} />
+    <link rel="prefetch" href={`${baseWithSlash}indexador/search/manifest.json`} />
+    <link rel="modulepreload" href={`${baseWithSlash}indexador/runtime/indexador-pagefind.js`} />
   </Fragment>
 
   <!-- Hero -->
