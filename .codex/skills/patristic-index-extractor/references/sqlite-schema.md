@@ -2,6 +2,12 @@
 
 Database: `data/patristic_indices.db`
 
+## Ownership boundary
+
+This schema documents the driver's persistence target. The extraction agent may read it for
+compatibility checks but must never initialize, import into, replace, rebuild, or otherwise modify
+the primary database. The driver imports a payload only after all driver-side validations pass.
+
 ## Tables
 
 ### `volumes`
@@ -74,7 +80,8 @@ Database: `data/patristic_indices.db`
 
 ## Replace policy
 
-Use `--replace` on import to remove the prior rows for the same `volume_id` before inserting the new pass.
+When an operator-authorized driver import replaces a volume, the driver uses `--replace` to remove
+the prior rows for that `volume_id` before inserting the validated payload.
 
 ## JSON import contract
 

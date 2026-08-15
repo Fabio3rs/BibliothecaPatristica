@@ -3,20 +3,38 @@
 The driver must send one Codex call per volume.
 All reference files live under `.codex/skills/patristic-index-extractor/references/`; do not look for them at the repository root.
 
+## Phase ownership
+
+The full pipeline has distinct write boundaries:
+
+1. Prescan, filtered-page localization, workplan construction, editorial-page estimation, and
+   helper localization are deterministic driver phases. They write only their named artifacts.
+2. Each chunk agent writes exactly one named fragment. It must not edit the workplan, assemble the
+   volume, write the canonical payload, reconcile anchors, or access the database for writes.
+3. The driver validates and deterministically assembles complete fragments.
+4. The final agent reads that assembly, writes the one named canonical payload, and may run only
+   non-mutating validation.
+5. The driver reconciles anchors, validates payload/fragment/OCR evidence, and imports only after
+   every gate succeeds.
+
+An acknowledgment from a chunk or final agent confirms only that its named JSON artifact was
+written. It never means that a volume was validated by the driver or imported.
+
 ## Required shape
 
 The prompt must be machine-generated and contain these blocks in this order:
 
 1. `TASK`
-2. `VOLUME`
-3. `NUMBERING GLOSSARY`
-4. `PRESCAN`
-5. `LOCALIZATION ARTIFACTS`
-6. `WORK INSTRUCTIONS`
-7. `OCR READING`
-8. `TODO`
-9. `OUTPUT FILE`
-10. `FINAL RESPONSE`
+2. `PHASE OWNERSHIP`
+3. `VOLUME`
+4. `NUMBERING GLOSSARY`
+5. `PRESCAN`
+6. `LOCALIZATION ARTIFACTS`
+7. `WORK INSTRUCTIONS`
+8. `OCR READING`
+9. `TODO`
+10. `OUTPUT FILE`
+11. `FINAL RESPONSE`
 
 ## Suggested template
 
@@ -25,6 +43,11 @@ $patristic-index-extractor volume PG001 localizado em teste/PG001/text
 
 TASK
 You are extracting the index structure for one OCR volume.
+
+PHASE
+You are the final-payload agent. Deterministic discovery, localization, chunk extraction, and
+assembly have already produced their named artifacts. Write and validate only the canonical output
+JSON. Do not mutate chunk fragments, the workplan, or any database.
 
 VOLUME
 - volume_id: PG001
@@ -73,6 +96,12 @@ WORK INSTRUCTIONS
 - When ligatures may have been flattened by OCR, search both forms inside the same volume. Example: `rg -n -S "GRÆCITATIS|GRAECITATIS" teste/PG001/text`.
 - Keep OCR literals.
 - Before saving the final JSON, validate referential integrity: every non-null `sections[].work_key` must exactly match one `works[].work_key` from the same payload.
+- Run non-mutating validation checks on the written payload and correct reported problems before
+  returning the acknowledgment. Validation may read files and the primary database but must not
+  modify the database.
+- Never initialize, import into, replace, rebuild, or otherwise write to
+  `data/patristic_indices.db`. In particular, do not invoke `init_index_db.py`,
+  `import_index_json.py`, or `rebuild_index_db_from_payloads.py`; the driver owns those actions.
 - Apply the collection-specific taxonomy from `references/volume-taxonomy.md`.
 - For each work, inspect the opening pages and the work index before naming the work.
 - Do not extract closing alphabetical, analytical, onomastic, scripture, citation, concordance, or
@@ -92,6 +121,8 @@ TODO
 OUTPUT FILE
 Write the full JSON payload to the output file named in the prompt.
 The payload must follow `references/output-format.md`.
+Validate the file without importing it. Database import belongs exclusively to the driver after
+all driver-side checks pass.
 Return a tiny JSON acknowledgment only.
 
 FINAL RESPONSE
@@ -107,6 +138,11 @@ FINAL RESPONSE
 - The driver should not send a generic prompt without the pre-scan block.
 - When an existing payload contains `work_anchor_rerun` or `anchor_locator_review`, the driver
   should append a `WORK ANCHOR RERUN` block and require every listed work to be inspected.
-- The driver should read the output file from disk and ingest it with `.codex/skills/patristic-index-extractor/scripts/import_index_json.py` or the compatibility wrapper `scripts/import_index_json.py`.
+- The driver should read and validate the output file from disk, including payload, fragment
+  consumption, and OCR-evidence checks, before ingesting it with
+  `.codex/skills/patristic-index-extractor/scripts/import_index_json.py` or the compatibility
+  wrapper `scripts/import_index_json.py`.
+- Only the driver may perform that import. A failed validation must leave the primary database
+  unchanged and must not produce an imported completion state.
 - For `PO`, the prompt should make clear whether the volume uses tome-level tables, fascicle inventories, or retrospective tables if the prescan already discovered them.
 - Until the helper scripts are updated, `PO` prompts may contain incomplete heading detection; the model should treat `PRESCAN` as hints, not as complete coverage.

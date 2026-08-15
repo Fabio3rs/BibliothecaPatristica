@@ -221,6 +221,17 @@ def _chunk_prompt(workplan_path: Path, workplan: dict[str, Any], chunk: dict[str
 TASK
 Read bounded OCR chunk {chunk["chunk_id"]} and write one extraction fragment. Do not assemble the volume.
 
+CHUNK PHASE OWNERSHIP
+- Write exactly one semantic fragment at `{output_file}`.
+- Do not edit the workplan, other chunk fragments, assembled fragments, or the canonical volume
+  payload.
+- Do not run the final-agent phase, work-anchor reconciliation, payload evidence validation, or
+  material target localization from this chunk.
+- Never initialize, import into, replace, rebuild, or otherwise modify any SQLite database. Never
+  invoke `init_index_db.py`, `import_index_json.py`, or `rebuild_index_db_from_payloads.py`.
+- The final acknowledgment means only that this fragment was written; the chunk runner still owns
+  deterministic fragment validation and workplan status updates.
+
 RUNTIME
 - workplan: {workplan_path}
 - volume_id: {workplan["volume_id"]}

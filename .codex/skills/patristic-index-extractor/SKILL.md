@@ -1,6 +1,6 @@
 ---
 name: patristic-index-extractor
-description: Extract structured indices from a single patrística OCR volume (`teste/PG*/text/*`, `teste/PL*/text/*`, or `teste/PO*/text/*`), classify the editorial index structure for that collection, and persist it in SQLite under `data/`. Use when Codex is invoked one volume at a time to inspect OCR pages, tolerate imperfect numbering, and write the parsed index structure to a database.
+description: Extract structured indices from a single patrística OCR volume (`teste/PG*/text/*`, `teste/PL*/text/*`, or `teste/PO*/text/*`), classify the editorial index structure for that collection, and write a driver-consumable JSON payload. Use when Codex is invoked one volume at a time to inspect OCR pages, tolerate imperfect numbering, and validate the parsed index structure without importing it into SQLite.
 ---
 
 # Patristic Index Extractor
@@ -12,10 +12,30 @@ move forward through tables of works, fascicles, books, parts, chapters, capitul
 contents. Closing alphabetical, analytical, onomastic, scripture, and citation indexes belong to
 the separate alphabetical-index pipeline.
 
-When the driver provides a workplan, process pending chunks with
+## Phase Ownership
+
+Respect the runtime phase boundary:
+
+- **Discovery and localization:** the driver runs prescan, filtered-page detection, editorial-page
+  estimation, helper localization, and workplan construction. Treat their artifacts as evidence;
+  do not turn them into a final payload or database state.
+- **Semantic chunk extraction:** when `RUNTIME` names a `chunk_id` and fragment `output_file`, write
+  only that fragment. Do not assemble the volume, edit the workplan, write the canonical payload,
+  run reconciliation, or touch any database.
+- **Deterministic assembly:** the driver validates chunk fingerprints and merges complete fragments
+  into `assembled_fragments.json`. Agents must not replace or bypass this artifact.
+- **Final payload:** consume every stable object from the validated assembly, resolve only the
+  remaining volume-level work, boundary, and anchor questions, write the named canonical JSON, and
+  run non-mutating checks on it.
+- **Reconciliation and quality gates:** the driver owns work-anchor reconciliation, fragment
+  consumption checks, payload validation, and OCR-evidence thresholds.
+- **Import:** the driver alone imports after every preceding gate succeeds. No extraction agent,
+  chunk agent, helper, or final agent may create an imported database state.
+
+The driver processes pending workplan chunks with
 `scripts/run_index_extraction_chunks.py --workplan <path>`. Each chunk runs in a fresh ephemeral
-Codex process; validated fragment JSON is the continuation state. Read exact validator feedback
-attached to an existing fragment before the first attempt of a rerun.
+Codex process; validated fragment JSON is the continuation state. A chunk agent reads only its
+runtime assignment and exact validator feedback, then stops after writing its fragment.
 
 ## Operating Contract
 
@@ -27,14 +47,21 @@ attached to an existing fragment before the first attempt of a rerun.
 - Use the taxonomy in `references/volume-taxonomy.md`.
 - Use `../../../docs/taxonomia_indices.md` when `collection` is `PG` or `PL`.
 - Use `../../../docs/taxonomia_indices_po.md` when `collection` is `PO`.
-- Accept a machine-generated prompt envelope with `TASK`, `VOLUME`, `NUMBERING GLOSSARY`,
-  `PRESCAN`, `LOCALIZATION ARTIFACTS`, `WORK INSTRUCTIONS`, `OCR READING`, `TODO`,
-  `OUTPUT FILE`, and `FINAL RESPONSE` sections.
+- Accept a machine-generated prompt envelope with `TASK`, `PHASE OWNERSHIP`, `VOLUME`,
+  `NUMBERING GLOSSARY`, `PRESCAN`, `LOCALIZATION ARTIFACTS`, `WORK INSTRUCTIONS`, `OCR READING`,
+  `TODO`, `OUTPUT FILE`, and `FINAL RESPONSE` sections.
 - Maintain an explicit TODO list during extraction: volume-level structures and one checkpoint per
   discovered work, fascicle, book, part, or chapter entrypoint.
 - Do not finalize the volume until every TODO item has been verified against OCR files.
 - Treat the `PRESCAN` section as the starting map, not as ground truth; inspect the files it names before finalizing the result.
-- Write the full extraction payload to the output file named in the `OUTPUT FILE` section.
+- In the final-payload phase, write the full extraction payload to the file named in the
+  `OUTPUT FILE` section. In a chunk phase, write only the named fragment.
+- Validate the written payload with non-mutating checks before acknowledging completion. Use
+  validators named by the runtime prompt and `scripts/verify_index_payload_evidence.py` when
+  applicable; validation may read the primary database but must not change it.
+- The driver exclusively owns database initialization, replacement, and import. Never run
+  `init_index_db.py`, `import_index_json.py`, `rebuild_index_db_from_payloads.py`, SQLite write
+  statements, or any other command that changes `data/patristic_indices.db`.
 - Return only a tiny JSON acknowledgment in the final assistant message.
 - If `collection` is `PO`, distinguish the tome table from work-level tables and from retrospective tables that list other tomes.
 - The current helper scripts are still tuned for `PG/PL` headings. If the prompt came from those scripts, treat the `PRESCAN` as partial and correct it from direct inspection before finalizing a `PO` volume.
@@ -47,26 +74,30 @@ attached to an existing fragment before the first attempt of a rerun.
 
 Use these meanings consistently. Do not collapse them into one numbering system.
 
-## Workflow
+## Final-Payload Workflow
 
-1. Initialize or reuse `data/patristic_indices.db` with `.codex/skills/patristic-index-extractor/scripts/init_index_db.py` or the compatibility wrapper `scripts/init_index_db.py`.
-2. Run `.codex/skills/patristic-index-extractor/scripts/scan_volume.py` on the target volume to locate candidate index pages and headings, or use the compatibility wrapper `scripts/scan_volume.py`.
-3. Use `.codex/skills/patristic-index-extractor/scripts/build_volume_prompt.py` to turn the scan output into the prompt envelope passed to `codex exec`, or use the compatibility wrapper `scripts/build_volume_prompt.py`.
-4. Classify volume-level tables of works and work-level contents according to the collection-specific taxonomy.
-5. Build or update a TODO list as you discover works; keep one checked item per work and separate
+Use this workflow only in the final-payload phase. A chunk agent follows `Phase Ownership` and its
+bounded runtime prompt instead, then stops after its fragment passes acknowledgment handoff.
+
+1. Read the driver-supplied prescan, workplan, localization artifacts, and exact output path.
+2. Classify volume-level tables of works and work-level contents according to the collection-specific taxonomy.
+3. Build or update a TODO list as you discover works; keep one checked item per work and separate
    items for its front matter, books, parts, or chapters.
-6. For each work, read its opening pages and enough body pages to distinguish its title/front matter
+4. For each work, read its opening pages and enough body pages to distinguish its title/front matter
    from a recurring running-header range, then mark that TODO item complete.
-7. For `PO`, identify fascicle inventory pages, internal work tables, and retrospective tables before recording final sections.
-8. Do not extract closing alphabetical, analytical, onomastic, scripture, citation, concordance,
+5. For `PO`, identify fascicle inventory pages, internal work tables, and retrospective tables before recording final sections.
+6. Do not extract closing alphabetical, analytical, onomastic, scripture, citation, concordance,
    names, subjects, or cross-reference indexes; the alphabetical-index pipeline owns them.
-9. Assemble a JSON payload, write it to the requested output file, and import it with `.codex/skills/patristic-index-extractor/scripts/import_index_json.py` or the compatibility wrapper `scripts/import_index_json.py`.
+7. Construct the canonical JSON from the validated assembly and verified volume-level evidence,
+   then write it to the requested output file.
+8. Run non-mutating payload checks, correct every reported problem, and leave final database
+   validation and import to the driver.
 
 For a corpus-wide deterministic anchor audit, use
 `python scripts/reconcile_work_index_anchors.py --all-volumes --workers 12`. The workers are
 separate processes, and the editorial-page cache uses SQLite WAL with a busy timeout. Parallel
-`--apply` must use `--no-import`; import validated payloads into the primary index database
-serially afterward.
+`--apply` must use `--no-import`; applying or importing results into the primary index database is
+the driver/operator's responsibility, not the extraction agent's.
 
 The main driver runs the CPU-bound target locator with
 `--helper-workers 12` by default. The locator keeps parsed volume pages once per worker, resolves
@@ -171,12 +202,19 @@ The deterministic reconciler may add `works[].raw_json.work_anchor_rerun` or a n
   contradictory, or dependent on unresolved scan layout, keep the marker with
   `status: "ambiguous"` or `status: "unresolved"`.
 
-## Output Contract
+## Payload and Validation Contract
 
-- Write to `data/patristic_indices.db`.
+- Write only the output JSON and explicitly authorized intermediate checkpoints or validation
+  reports. Never write to `data/patristic_indices.db`.
+- Non-mutating checks are encouraged. At minimum, verify JSON syntax, required top-level fields,
+  work/section referential integrity, page-range consistency, entry completeness, and suspicious
+  OCR line-break hyphens. When applicable, run
+  `python scripts/verify_index_payload_evidence.py --input <output_file> --sample-size 200`.
+- Do not use an import into the primary or a temporary SQLite database as a validation shortcut.
+- A successful local validation does not authorize import; the driver repeats its own validation
+  and is the only component allowed to import.
 - Keep the raw JSON for each section and entry.
 - Prefer stable keys (`work_key`, `section_key`) so reruns can replace rows cleanly.
 - `work_key` and `section_key` must be unique within the whole database, not only within one payload; prefix them with the current `volume_id` whenever the natural label is generic.
-- If the volume is rerun, replace the previous rows for that same `volume_id`.
 - The final payload file should be JSON only, with top-level keys `volume`, `works`, `sections`, and `notes`.
 - The final assistant message should be JSON only, with keys `status`, `volume_id`, and `written_file`.

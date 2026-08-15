@@ -1,7 +1,7 @@
 interface:
   display_name: "Patristic Index Extractor"
-  short_description: "Extract structured patrística volume indexes reliably"
-  default_prompt: "Use $patristic-index-extractor to inspect one PG, PL, or PO volume, apply the collection-specific taxonomy, and write the parsed index structure to SQLite."
+  short_description: "Extract and validate patrística index payloads"
+  default_prompt: "Use $patristic-index-extractor to inspect one PG, PL, or PO volume and write a validated JSON payload for driver-managed import."
 
 policy:
   allow_implicit_invocation: false

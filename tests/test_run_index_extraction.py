@@ -394,6 +394,16 @@ def test_patristic_prompt_keeps_localization_artifacts_as_aids(tmp_path: Path) -
     assert "automatically joins likely within-block word wraps" in prompt
     assert "fix_linebreak_hyphens.py" in prompt
     assert "not which pages you may investigate" in prompt
+    assert "PHASE OWNERSHIP" in prompt
+    assert "This is the final-payload agent phase" in prompt
+    assert "do not rewrite them" in prompt
+    assert "acknowledgment confirms only that the JSON was written" in prompt
+    assert "Never invoke `init_index_db.py`, `import_index_json.py`" in prompt
+    assert "driver\nalone validates and imports" in prompt
+    assert (
+        f"python scripts/verify_index_payload_evidence.py --input "
+        f"{output_dir / 'PL001_indices.json'} --sample-size 200"
+    ) in prompt
     assert "Filtered-page localization artifact" in prompt
     assert "Editorial page-to-file estimator artifact" in prompt
     assert "Target-locator helper output" in prompt

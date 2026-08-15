@@ -7,6 +7,7 @@ import { spawn } from 'node:child_process';
 import { performance } from 'node:perf_hooks';
 import { fileURLToPath } from 'node:url';
 import { readJsonMaybeGz } from './json_io.mjs';
+import { isAdministrativePage } from './search_record_policy.mjs';
 
 const REPOSITORY_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DEFAULT_DEV_VOLUMES = ['PG001', 'PL001', 'PO002'];
@@ -242,13 +243,18 @@ async function loadKeywordMap(publicDir) {
 async function loadVolumeRecords(params, keywordMap, volume) {
   const meta = await readJsonMaybeGz(path.join(params.publicDir, volume.meta_url));
   const records = [];
+  let skippedAdministrative = 0;
   for (const block of meta.page_blocks || []) {
     const blockData = await readJsonMaybeGz(path.join(params.publicDir, block.file));
     for (const page of blockData.pages || []) {
+      if (isAdministrativePage(page)) {
+        skippedAdministrative += 1;
+        continue;
+      }
       records.push(buildRecord(params, keywordMap, volume.id, page, block));
     }
   }
-  return records;
+  return { records, skippedAdministrative };
 }
 
 async function buildIndex(params, definition, keywordMap) {
@@ -267,6 +273,7 @@ async function buildIndex(params, definition, keywordMap) {
     '--output-dir', outDir,
   ]);
   let total = 0;
+  let skippedAdministrative = 0;
   let batch = [];
   let nextProgress = params.progressEvery;
   const ingestionStartedAt = performance.now();
@@ -282,7 +289,9 @@ async function buildIndex(params, definition, keywordMap) {
   try {
     await client.request({ type: 'Ping' });
     for (const volume of definition.volumes) {
-      const records = await loadVolumeRecords(params, keywordMap, volume);
+      const loaded = await loadVolumeRecords(params, keywordMap, volume);
+      const { records } = loaded;
+      skippedAdministrative += loaded.skippedAdministrative;
       for (const item of records) {
         batch.push(item);
         if (batch.length >= params.batchSize) {
@@ -316,6 +325,7 @@ async function buildIndex(params, definition, keywordMap) {
       collections: definition.collections,
       volumes: definition.volumes.map((volume) => volume.id),
       documents: total,
+      skipped_administrative: skippedAdministrative,
       terms: stats.total_terms,
       index_shards: dump.index_shards,
       document_shards: dump.document_shards,
@@ -391,7 +401,11 @@ async function main() {
   for (const definition of createIndexDefinitions(params.layout, selected)) {
     const result = await buildIndex(params, definition, keywordMap);
     indexes.push(result);
-    console.log(`[OK] ${result.id}: ${result.documents} páginas, ${result.terms} termos, ${(result.bytes / 1024).toFixed(1)} KiB.`);
+    console.log(
+      `[OK] ${result.id}: ${result.documents} páginas, `
+      + `${result.skipped_administrative} administrativas omitidas, `
+      + `${result.terms} termos, ${(result.bytes / 1024).toFixed(1)} KiB.`,
+    );
   }
 
   const outputManifest = {

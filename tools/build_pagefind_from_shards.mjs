@@ -16,6 +16,7 @@ import {
   readJSON,
   writeJSON,
 } from './pagefind_batches.mjs';
+import { isAdministrativePage } from './search_record_policy.mjs';
 
 function ensureDir(dirPath) {
   fs.mkdirSync(dirPath, { recursive: true });
@@ -212,6 +213,7 @@ async function buildIndexForBatch(pagefindModule, batch, params, kwMap, volumeMa
   }
 
   let totalRecords = 0;
+  let skippedAdministrative = 0;
   const startTime = Date.now();
 
   try {
@@ -223,6 +225,10 @@ async function buildIndexForBatch(pagefindModule, batch, params, kwMap, volumeMa
 
       const pages = await loadVolumePages(params.publicDir, vol);
       for (const page of pages) {
+        if (isAdministrativePage(page)) {
+          skippedAdministrative += 1;
+          continue;
+        }
         const record = buildCustomRecord(params, kwMap, docId, page);
         const result = await index.addCustomRecord(record);
         if (result?.errors?.length) {
@@ -247,7 +253,10 @@ async function buildIndexForBatch(pagefindModule, batch, params, kwMap, volumeMa
   }
 
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
-  console.log(`[OK] ${batch.batch_id}: ${totalRecords} registros, ${elapsed}s`);
+  console.log(
+    `[OK] ${batch.batch_id}: ${totalRecords} registros, `
+    + `${skippedAdministrative} administrativos omitidos, ${elapsed}s`,
+  );
 }
 
 async function main() {

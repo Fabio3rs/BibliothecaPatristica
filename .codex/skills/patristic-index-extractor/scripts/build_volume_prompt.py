@@ -144,6 +144,10 @@ def work_instructions(collection: str) -> str:
         "- Do not use summaries like `entries_summary` in place of real `entries`.",
         "- Leave `entries` empty only if the section truly has no line items, or OCR quality makes line extraction unreliable; explain that explicitly in `raw_json`.",
         "- Before writing the final JSON, validate referential integrity inside the payload: every non-null `sections[].work_key` must exactly match one `works[].work_key` from the same volume payload.",
+        "- Run non-mutating validation checks on the written payload and correct every reported problem before returning the acknowledgment.",
+        "- Validation may read the primary database, but it must not initialize, import into, replace, rebuild, or otherwise modify `data/patristic_indices.db`.",
+        "- Never invoke `init_index_db.py`, `import_index_json.py`, or `rebuild_index_db_from_payloads.py`; database import belongs exclusively to the driver after driver-side validation passes.",
+        "- When applicable, run the non-mutating `scripts/verify_index_payload_evidence.py` against the named output file; this evidence check does not replace the driver's complete validation.",
         "- If an index heading uses a thematic label, alternate Latin form, ligature variant, or shortened title, still point `sections[].work_key` to the real canonical work record already present in `works[]`.",
         "- Never invent a new `sections[].work_key` label unless that same key also exists in `works[]` for the current payload.",
         "- Apply the collection-specific taxonomy from `references/volume-taxonomy.md`.",
@@ -193,6 +197,15 @@ def main() -> None:
 
 TASK
 You are extracting the index structure for one OCR volume.
+
+PHASE OWNERSHIP
+- This is the final-payload agent phase.
+- Discovery, localization, workplan construction, semantic chunks, and deterministic assembly are
+  upstream artifacts; read them as supplied and do not rewrite them.
+- Write only the canonical output JSON and explicitly requested validation reports/checkpoints.
+- The acknowledgment confirms only that the JSON was written; it does not mean driver validation
+  passed or that the volume was imported.
+- Reconciliation, quality gates, completion state, and database import belong to the driver.
 
 VOLUME
 - volume_id: {args.volume}
@@ -250,6 +263,10 @@ Write the full JSON payload to:
 {output_file}
 
 The payload must follow `.codex/skills/patristic-index-extractor/references/output-format.md`.
+Validate the file without importing it. Do not write to `data/patristic_indices.db`; the driver
+alone validates and imports the payload after this agent exits.
+Non-mutating evidence check when applicable:
+`python scripts/verify_index_payload_evidence.py --input {output_file} --sample-size 200`
 Return a tiny JSON acknowledgment only.
 
 FINAL RESPONSE

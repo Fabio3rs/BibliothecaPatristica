@@ -77,6 +77,13 @@ def test_general_chunk_prompt_names_general_skill_first(tmp_path: Path) -> None:
 
     assert prompt.splitlines()[0] == "$patristic-index-extractor"
     assert "$alphabetical-index-extractor" not in prompt
+    assert "CHUNK PHASE OWNERSHIP" in prompt
+    assert "Write exactly one semantic fragment" in prompt
+    assert "Do not edit the workplan" in prompt
+    assert "Never initialize, import into, replace, rebuild" in prompt
+    assert "`init_index_db.py`, `import_index_json.py`" in prompt
+    assert "`rebuild_index_db_from_payloads.py`" in prompt
+    assert "acknowledgment means only that this fragment was written" in prompt
 
 
 def test_chunk_prompt_includes_existing_fragment_validation_failure(tmp_path: Path) -> None:
