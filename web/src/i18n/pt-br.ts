@@ -129,6 +129,7 @@ export const ptBR: Record<string, any> = {
 
   // ─── Busca (search) ────────────────────────────────────────────────────────
   searchTitle: 'Busca no acervo',
+  searchDocumentTitle: 'Busca por “{term}” | Bibliotheca Patristica',
   searchSubtitle: 'Texto OCR, resumos e palavras-chave em português para descoberta acadêmica.',
   searchPlaceholder: 'Buscar por autor, obra, tema ou termo',
   searchHeroLabel: 'O que você procura?',

@@ -128,6 +128,7 @@ export const it: BaseTranslations = {
 
   // ─── Ricerca ───────────────────────────────────────────────────────────────
   searchTitle: 'Cerca nel corpus',
+  searchDocumentTitle: 'Risultati per “{term}” | Bibliotheca Patristica',
   searchSubtitle: 'Testo OCR, riassunti e parole chiave in portoghese per la scoperta accademica.',
   searchPlaceholder: 'Cerca per autore, opera, tema o termine',
   searchHeroLabel: 'Cosa stai cercando?',

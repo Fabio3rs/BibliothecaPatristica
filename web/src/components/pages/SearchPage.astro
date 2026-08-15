@@ -375,6 +375,20 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       state.filters = filters;
     }
 
+    function syncDocumentTitle() {
+      const fullTerm = normalizeWhitespace(state.term);
+      if (!fullTerm) {
+        document.title = s.searchTitle;
+        return;
+      }
+      const termCharacters = Array.from(fullTerm);
+      const titleTerm = termCharacters.length > 72
+        ? `${termCharacters.slice(0, 71).join('')}…`
+        : fullTerm;
+      document.title = String(s.searchDocumentTitle || '{term} | Bibliotheca Patristica')
+        .replace('{term}', () => titleTerm);
+    }
+
     function syncUrl() {
       const params = new URLSearchParams();
       if (state.term.trim()) params.set('term', state.term.trim());
@@ -387,9 +401,11 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       });
       const newUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ''}`;
       window.history.replaceState({}, '', newUrl);
+      syncDocumentTitle();
     }
 
     readStateFromUrl();
+    syncDocumentTitle();
     searchBox.value = state.term;
     pageSizeSel.value = String(state.pageSize);
     quickCollectionButtons.forEach((btn) => {

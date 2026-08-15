@@ -129,6 +129,7 @@ export const en: Translations = {
 
   // ─── Search ────────────────────────────────────────────────────────────────
   searchTitle: 'Search the corpus',
+  searchDocumentTitle: 'Search results for “{term}” | Bibliotheca Patristica',
   searchSubtitle: 'OCR text, summaries and keywords in Portuguese for academic discovery.',
   searchPlaceholder: 'Search by author, work, theme or term',
   searchHeroLabel: 'What are you looking for?',
