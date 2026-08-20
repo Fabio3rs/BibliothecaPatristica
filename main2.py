@@ -36,7 +36,6 @@ import entropy_lib
 import evaluation_db
 import ocr_versions_db
 
-
 # Monkey-patch para injetar socket options
 import urllib3.connection as _uc
 
@@ -152,8 +151,7 @@ def open_tesseract_cache_db():
 
 
 def init_tesseract_cache(con: sqlite3.Connection) -> None:
-    con.execute(
-        """
+    con.execute("""
         CREATE TABLE IF NOT EXISTS tesseract_cache (
             image_hash TEXT PRIMARY KEY,
             imgpath        TEXT NOT NULL,
@@ -161,8 +159,7 @@ def init_tesseract_cache(con: sqlite3.Connection) -> None:
             result      TEXT NOT NULL,
             created_at  TEXT DEFAULT (datetime('now'))
         )
-    """
-    )
+    """)
     con.commit()
 
 
@@ -183,6 +180,24 @@ def get_tesseract_cached(
         (cache_key,),
     ).fetchone()
     return row["result"] if row else None
+
+
+def count_reruns_ocr_versions_db(con: sqlite3.Connection, image_path: Path) -> int:
+    """
+    Conta o número de reprocessamentos de OCR para uma determinada imagem no banco de dados focando em runs comparativas especificamente.
+    """
+    volume_id = infer_volume_id(image_path) or "unknown"
+    page_num = parse_page_num_from_filename(image_path) or 0
+
+    if volume_id == "unknown" or page_num == 0:
+        print(f"Não foi possível inferir volume_id ou page_num para {image_path}")
+        return 0
+
+    row = con.execute(
+        "SELECT COUNT(*) FROM ocr_results WHERE volume_id = ? AND page_num = ? AND reprocess_reason NOT IN ('legacy_unknown', 'tesseract_cache_warm', 'verify_failed_do_not_reprocess_compare', 'tesseract_intermediate');",
+        (volume_id, page_num),
+    ).fetchone()
+    return row[0] if row else 0
 
 
 def _escape_bare_ampersands(text: str) -> str:
@@ -221,14 +236,14 @@ def clean_llm_xml(raw_xml: str) -> str:
 # Resultado: <bloco>Qui [corrupti] e também &amp; em cordibus</bloco>
 
 
-def is_page_xml(text: str) -> bool:
+def is_page_xml(text: str) -> ET.ElementTree | None:
     t = (text or "").lower().strip()
     seems_xml = (
         t.startswith("<") and t.endswith(">") and ("<pagina" in t or "</pagina" in t)
     )
 
     if not seems_xml:
-        return False
+        return None
 
     # Escapa '&' soltos antes de tentar parsear — erro comum de saída de LLM
     sanitized = _escape_bare_ampersands(text)
@@ -237,7 +252,8 @@ def is_page_xml(text: str) -> bool:
         resxml = ET.parse(io.StringIO(sanitized))
 
         if resxml is None:
-            return False
+            return None
+        return resxml
     except ET.ParseError as e:
         # e.position é (linha, coluna) — 1-based, conforme SyntaxError
         snippet = ""
@@ -253,11 +269,11 @@ def is_page_xml(text: str) -> bool:
         print(
             f"XML passou pela validação inicial, mas não pelo parser completo: {e}{snippet}; {text}"
         )
-        return False
+        return None
     except Exception as e:
         print(f"Unexpected error while parsing XML: {e}")
-        return False
-    return True
+        return None
+    return resxml
 
 
 def remove_xml_tags(text: str) -> str:
@@ -543,7 +559,7 @@ def preprocess_image_tesseract(img, border_size=50):
     print(f"Ângulo real detectado: {median_angle}")
 
     # 4. ROTACIONAR
-    (h, w) = img.shape[:2]
+    h, w = img.shape[:2]
     center = (w // 2, h // 2)
     M = cv2.getRotationMatrix2D(center, median_angle, 1.0)
     rotated = cv2.warpAffine(
@@ -589,7 +605,7 @@ def auto_rotate_image(img: np.ndarray):
     print(f"Ângulo real detectado: {median_angle}")
 
     # 4. ROTACIONAR
-    (h, w) = img.shape[:2]
+    h, w = img.shape[:2]
     center = (w // 2, h // 2)
     M = cv2.getRotationMatrix2D(center, median_angle, 1.0)
     rotated = cv2.warpAffine(
@@ -641,14 +657,18 @@ def purge_tesseract_cache(
     Retorna o número de linhas removidas.
     """
     h = hashlib.sha256(image_path.read_bytes()).hexdigest()
-    cache_key = f"{h}:{lang or ''}:{preprocess_mode}:{clahe_clip}:{block_size}:{c_value}"
+    cache_key = (
+        f"{h}:{lang or ''}:{preprocess_mode}:{clahe_clip}:{block_size}:{c_value}"
+    )
     if lang:
         cur = con.execute(
             "DELETE FROM tesseract_cache WHERE image_hash = ? AND lang = ?",
             (cache_key, lang),
         )
     else:
-        cur = con.execute("DELETE FROM tesseract_cache WHERE image_hash = ?", (cache_key,))
+        cur = con.execute(
+            "DELETE FROM tesseract_cache WHERE image_hash = ?", (cache_key,)
+        )
     con.commit()
     return cur.rowcount
 
@@ -1045,7 +1065,9 @@ def optimize_image_for_cloud(image_path, max_size=3200):
     return _encode_llm_image(Path(image_path))
 
 
-def encode_llm_image_for_transport(image_path: Path, max_size: int | None = None) -> tuple[str, str]:
+def encode_llm_image_for_transport(
+    image_path: Path, max_size: int | None = None
+) -> tuple[str, str]:
     """
     Codifica a imagem para o LLM sem pré-processamento de OCR.
     Retorna (base64, mime).
@@ -1630,10 +1652,10 @@ def infer_volume_id(image_path: Path) -> Optional[str]:
 # Exige contexto denso em ambos os lados para evitar falsos positivos em latim
 # (ex: "...fautores A tem gratia..." → hit; "...littera A est..." → miss por falta de tokens pós)
 _GUTTER_INLINE_RE = re.compile(
-    r"(?m)(?:^|(?<=\n))"                   # início de linha
-    r"(?:[A-Za-zÀ-öø-ÿ,;:.]+\s+){3,}"    # ≥3 tokens esquerda
-    r"\b([ABCD])\b"                         # identificador isolado
-    r"(?:\s+[A-Za-zÀ-öø-ÿ,;:.]+){2,}",   # ≥2 tokens direita
+    r"(?m)(?:^|(?<=\n))"  # início de linha
+    r"(?:[A-Za-zÀ-öø-ÿ,;:.]+\s+){3,}"  # ≥3 tokens esquerda
+    r"\b([ABCD])\b"  # identificador isolado
+    r"(?:\s+[A-Za-zÀ-öø-ÿ,;:.]+){2,}",  # ≥2 tokens direita
 )
 
 # Detecta hifenização no meio da linha: palavra- seguida de ≥2 espaços e outra palavra
@@ -1641,12 +1663,12 @@ _GUTTER_INLINE_RE = re.compile(
 _MID_LINE_HYPHEN_RE = re.compile(
     r"(?m)"
     r"^"
-    r"(?=.{60,})"             # linha longa (≥60 chars, típico de página de 2 colunas fundidas)
-    r"[^\n]*?"                # qualquer conteúdo antes
-    r"\b\w{3,}-"              # palavra com ≥3 chars terminando em hífen
-    r"\s{2,}"                 # ≥2 espaços (separador entre colunas)
-    r"\w{3,}"                 # início da palavra da coluna direita
-    r"[^\n]*$"                # resto da linha
+    r"(?=.{60,})"  # linha longa (≥60 chars, típico de página de 2 colunas fundidas)
+    r"[^\n]*?"  # qualquer conteúdo antes
+    r"\b\w{3,}-"  # palavra com ≥3 chars terminando em hífen
+    r"\s{2,}"  # ≥2 espaços (separador entre colunas)
+    r"\w{3,}"  # início da palavra da coluna direita
+    r"[^\n]*$"  # resto da linha
 )
 
 
@@ -1673,20 +1695,22 @@ def _has_mid_line_hyphen(text: str, min_hits: int = 2) -> bool:
     return len(hits) >= min_hits
 
 
-
-
-def verificar_padrao_blocos(txt: str) -> bool:
+def verificar_padrao_blocos(txt: str, resxml: ET.ElementTree | None = None) -> bool:
     """
     Verifica se o texto segue o padrão de blocos esperado.
     """
+    if 'tipo="capa_ou_guarda"' in txt or "<pagina>" in txt or 'estado="vazio"' in txt:
+        # Se for uma capa, as outras validações não se aplicam
+        return True
 
     if len(txt) > 600 and "texto_principal" in txt and not "cabecalho" in txt:
         return False
 
     if len(txt) > 1000:
         try:
-            sanitized = _escape_bare_ampersands(txt)
-            resxml = ET.parse(io.StringIO(sanitized))
+            if resxml is None:
+                sanitized = _escape_bare_ampersands(txt)
+                resxml = ET.parse(io.StringIO(sanitized))
 
             if resxml is None:
                 return False
@@ -1735,6 +1759,9 @@ def verificar_padrao_blocos(txt: str) -> bool:
                     )
                     return False
 
+                if " A " in text and " B " in text and " C " in text and " D " in text:
+                    return False
+
         except Exception:
             return False
 
@@ -1762,7 +1789,7 @@ def verify_page(
     tesseract_preprocess_mode: str = DEFAULT_TESSERACT_PREPROCESS_MODE,
     tesseract_clahe_clip: float = DEFAULT_TESSERACT_CLAHE_CLIP,
     tesseract_block_size: int = DEFAULT_TESSERACT_BLOCK_SIZE,
-    tesseract_c_value: int = DEFAULT_TESSERACT_C_VALUE,
+    tesseract_c_value: int = DEFAULT_TESSERACT_C_VALUE
 ) -> bool:
     """
     Verifica se a página foi processada corretamente.
@@ -1781,8 +1808,10 @@ def verify_page(
         print(f"[VERIFY] {img_path.name} — texto vazio")
         return False
 
+    xml_parsed: ET.ElementTree | None = None
     if expect_txt_xml:
-        if is_page_xml(txt):
+        xml_parsed = is_page_xml(txt)
+        if xml_parsed:
             print(f"[VERIFY] {img_path.name} — página XML detectada")
 
             # Temporário, retornar aqui e ignorar o resto
@@ -1791,9 +1820,9 @@ def verify_page(
             print(f"[VERIFY] {img_path.name} — texto não parece ser XML")
             return False
 
-    # if not verificar_padrao_blocos(txt):
-    #     print(f"[VERIFY] {img_path.name} — padrão de blocos não encontrado")
-    #     return False
+    if not verificar_padrao_blocos(txt, xml_parsed):
+        print(f"[VERIFY] {img_path.name} — padrão de blocos não encontrado")
+        return False
 
     tesseract_db = open_tesseract_cache_db()
     init_tesseract_cache(tesseract_db)
@@ -1826,9 +1855,28 @@ def verify_page(
         print(f"[VERIFY] {img_path.name} — muitos tokens ilegíveis detectados")
         return False
 
+    try:
+        _vdb = ocr_versions_db.open_versions_db()
+        retries_until_now = count_reruns_ocr_versions_db(_vdb, img_path)
+    except Exception as e:
+        print(f"[ERROR] {img_path.name} — erro ao acessar o banco de dados de versões OCR: {e}")
+        retries_until_now = 0  # fallback para não bloquear a verificação
+
+    print(f'[DEBUG] {img_path.name} — Tentativas até agora: {retries_until_now}')
+
+    recall_ratio_default = 0.4
+    overlap_ratio_default = 0.5
+
+    # Resetar para valores mais altos se for a primeira tentativa de comparação
+    # Números até o momento obtidos por tentativa e erro
+    if retries_until_now == 0:
+        recall_ratio_default = 0.8
+        overlap_ratio_default = 0.8
+
     # return True  # desativado de momento, quero apenas rodar de novo os com muito token ilegível
     if (
-        overlap.recall_ratio < 0.5 and overlap.overlap_ratio < 0.6
+        overlap.recall_ratio < recall_ratio_default
+        or overlap.overlap_ratio < overlap_ratio_default
     ):  # LLM detectou muito texto latino, mas Tesseract quase nada → provável omissão ou alucinação
         # Debug prints para identificar o texto dos dois lados e o arquivo no terminal:
 
@@ -2610,7 +2658,9 @@ def _ocr_one(
                 tesseract_db = open_tesseract_cache_db()
                 init_tesseract_cache(tesseract_db)
 
-                identified_lang = identificar_idioma_tesseract(txtoriginal, lang_inicial=lang)
+                identified_lang = identificar_idioma_tesseract(
+                    txtoriginal, lang_inicial=lang
+                )
                 tesseractres = strip_bidi_markers(
                     run_tesseract_cached(
                         tesseract_db,
