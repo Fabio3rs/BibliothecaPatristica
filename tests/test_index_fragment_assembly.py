@@ -111,6 +111,97 @@ def test_fragment_consumption_report_detects_dropped_entry_and_ref(tmp_path: Pat
     assert report["checks"]["refs"]["missing_stable_keys"]
 
 
+def test_general_consumption_excludes_sections_owned_by_alphabetical_pipeline() -> None:
+    assembled = {
+        "schema_version": 1,
+        "volume_id": "PO025",
+        "pipeline_kind": "general",
+        "data": {
+            "works": [],
+            "sections": [
+                {
+                    "section_key": "PO025:contents",
+                    "scope_kind": "work_internal_table",
+                    "index_kind": "TABLE DES MATIÈRES",
+                    "heading_raw": "TABLE DES MATIÈRES",
+                    "entries": [{"entry_key": "PO025:contents:001"}],
+                },
+                {
+                    "section_key": "PO025:scripture",
+                    "scope_kind": "work",
+                    "index_kind": "PO_WORK_INDEX_SCRIPTURE",
+                    "heading_raw": "TABLE DES CITATIONS DE LA BIBLE",
+                    "entries": [{"entry_key": "PO025:scripture:001"}],
+                },
+            ],
+        },
+    }
+    payload = {
+        "works": [],
+        "sections": [
+            {
+                "section_key": "PO025:contents",
+                "entries": [{"entry_key": "PO025:contents:001"}],
+            }
+        ],
+    }
+
+    report = verify_payload_consumes_fragments(payload, assembled)
+
+    assert report["status"] == "ok"
+    assert report["checks"]["ownership"]["excluded_non_owned_section_count"] == 1
+
+
+def test_general_consumption_excludes_post_volume_publisher_advertisement() -> None:
+    assembled = {
+        "schema_version": 1,
+        "volume_id": "PL186",
+        "pipeline_kind": "general",
+        "data": {
+            "works": [],
+            "sections": [
+                {
+                    "section_key": "PL186:ordo",
+                    "scope_kind": "volume_end",
+                    "index_kind": "ORDO RERUM",
+                    "heading_raw": "ORDO RERUM",
+                    "entries": [{"entry_key": "PL186:ordo:001"}],
+                },
+                {
+                    "section_key": "PL186:publisher-advertisement",
+                    "scope_kind": "publisher_advertisement",
+                    "index_kind": "publisher_catalogue_contents",
+                    "heading_raw": "DEMONSTRATIONS EVANGELIQUES",
+                    "raw_json": {
+                        "editorial_scope_note": (
+                            "Publisher advertisement after FINIS TOMI, external to PL186."
+                        )
+                    },
+                    "entries": [{"entry_key": "PL186:publisher-advertisement:001"}],
+                },
+            ],
+        },
+    }
+    payload = {
+        "works": [],
+        "sections": [
+            {
+                "section_key": "PL186:ordo",
+                "entries": [{"entry_key": "PL186:ordo:001"}],
+            }
+        ],
+    }
+
+    report = verify_payload_consumes_fragments(payload, assembled)
+
+    assert report["status"] == "ok"
+    ownership = report["checks"]["ownership"]
+    assert ownership["excluded_non_owned_section_count"] == 1
+    assert ownership["excluded_non_owned_sections"][0]["section_key"] == (
+        "PL186:publisher-advertisement"
+    )
+
+
 def test_general_assembly_accepts_and_deduplicates_string_notes(tmp_path: Path) -> None:
     first = tmp_path / "first.json"
     second = tmp_path / "second.json"

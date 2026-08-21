@@ -30,6 +30,7 @@ from patristica_pipeline.index_fragment_assembly import (
     verify_payload_consumes_fragments,
 )
 from patristica_pipeline.index_payload_evidence import verify_index_payload_evidence
+from patristica_pipeline.index_pipeline_ownership import general_section_ownership
 from patristica_pipeline.index_work_anchor_reconciler import reconcile_work_anchors
 from patristica_pipeline.index_workplan import build_index_workplan, reconcile_workplan_progress
 from patristica_pipeline.index_chunk_driver import run_index_chunk_agents
@@ -51,6 +52,17 @@ FAILURE_ARTIFACT_TRACEBACK_MAX_CHARS = 12_000
 HYPHEN_SAMPLE_LIMIT = 20
 LINEBREAK_HYPHEN_RE = re.compile(r"[\wÀ-ÖØ-öø-ÿÆæŒœ]-\s*(?:$|\n)", re.MULTILINE)
 HYPHEN_FAILURE_RE = re.compile(r"(?:line.?break|quebra de linha|hyphen artifact|hífen).{0,120}", re.I)
+CANONICAL_HYPHEN_FIELDS = {
+    "author_raw",
+    "entry_raw",
+    "heading_norm",
+    "heading_raw",
+    "normalized_target",
+    "note_raw",
+    "target_raw",
+    "title_norm",
+    "title_raw",
+}
 LIST_BEARING_SCOPE_KINDS = {
     "work_index",
     "work_index_alphabetical",
@@ -208,12 +220,20 @@ def _scan_hyphen_artifacts(value: Any, path: str, hits: list[dict[str, str]]) ->
         return
     if isinstance(value, dict):
         for key, item in value.items():
-            _scan_hyphen_artifacts(item, f"{path}.{key}" if path else str(key), hits)
+            if key == "raw_json":
+                continue
+            item_path = f"{path}.{key}" if path else str(key)
+            if (
+                key in CANONICAL_HYPHEN_FIELDS
+                and isinstance(item, str)
+                and LINEBREAK_HYPHEN_RE.search(item)
+            ):
+                hits.append({"path": item_path, "sample": _collapse_ws(item)[:240]})
+            elif isinstance(item, (dict, list)):
+                _scan_hyphen_artifacts(item, item_path, hits)
     elif isinstance(value, list):
         for index, item in enumerate(value):
             _scan_hyphen_artifacts(item, f"{path}[{index}]", hits)
-    elif isinstance(value, str) and LINEBREAK_HYPHEN_RE.search(value):
-        hits.append({"path": path, "sample": _collapse_ws(value)[:240]})
 
 
 def summarize_hyphen_artifacts(payload: dict[str, Any]) -> list[str]:
@@ -437,6 +457,9 @@ The previous result contains or reported a likely OCR line-break hyphen artifact
   `python scripts/read_ocr_page_text.py --view xml --show-source <file>`
 - Join a trailing hyphen only when the following OCR line/page proves that the same word continues.
 - Preserve genuine lexical/editorial hyphens.
+- Repair canonical logical fields such as `entry_raw`, `target_raw`, and `normalized_target`.
+- Keep exact physical OCR line fragments in `raw_json`; provenance strings are not canonical
+  soft-wrap errors and must not be rewritten merely to satisfy the validator.
 - `scripts/pipeline_index_extraction/fix_linebreak_hyphens.py` is a repair aid, not OCR evidence.
 - Revalidate all changed `entry_raw`, headings, titles, and source spans before writing the payload."""
 
@@ -682,9 +705,16 @@ def validate_payload(payload: dict[str, Any], volume_id: str, expected_file: Pat
         raise SystemExit("Payload 'sections' must be a list.")
     works = payload.get("works") or []
     invalid_work_ranges: list[str] = []
+    seen_work_keys: set[str] = set()
     for index, work in enumerate(works):
         if not isinstance(work, dict):
             raise SystemExit("Each item in payload 'works' must be an object.")
+        work_key = str(work.get("work_key") or "").strip()
+        if not work_key:
+            raise SystemExit(f"works[{index}] must include a stable work_key.")
+        if work_key in seen_work_keys:
+            raise SystemExit(f"Duplicate work_key in payload: {work_key}")
+        seen_work_keys.add(work_key)
         start_page = work.get("start_page")
         end_page = work.get("end_page")
         if (
@@ -705,13 +735,44 @@ def validate_payload(payload: dict[str, Any], volume_id: str, expected_file: Pat
     sections = payload.get("sections") or []
     total_entries = 0
     suspicious_empty_sections: list[str] = []
-    for section in sections:
+    missing_start_anchors: list[str] = []
+    missing_end_anchors: list[str] = []
+    non_owned_sections: list[str] = []
+    seen_section_keys: set[str] = set()
+    seen_entry_keys: set[str] = set()
+    for section_index, section in enumerate(sections):
         if not isinstance(section, dict):
             raise SystemExit("Each item in payload 'sections' must be an object.")
+        section_key = str(section.get("section_key") or "").strip()
+        if not section_key:
+            raise SystemExit(f"sections[{section_index}] must include a stable section_key.")
+        if section_key in seen_section_keys:
+            raise SystemExit(f"Duplicate section_key in payload: {section_key}")
+        seen_section_keys.add(section_key)
+        if section.get("page_start") is None and not str(section.get("file_start") or "").strip():
+            missing_start_anchors.append(section_key)
+        if section.get("page_end") is None and not str(section.get("file_end") or "").strip():
+            missing_end_anchors.append(section_key)
+        owned, ownership_reason = general_section_ownership(section)
+        if not owned:
+            non_owned_sections.append(f"{section_key} ({ownership_reason})")
         entries = section.get("entries")
         if not isinstance(entries, list):
             raise SystemExit("Each section payload must include an 'entries' list.")
         total_entries += len(entries)
+        for entry_index, entry in enumerate(entries):
+            if not isinstance(entry, dict):
+                raise SystemExit(
+                    f"{section_key}.entries[{entry_index}] must be an object."
+                )
+            entry_key = str(entry.get("entry_key") or "").strip()
+            if not entry_key:
+                raise SystemExit(
+                    f"{section_key}.entries[{entry_index}] must include a stable entry_key."
+                )
+            if entry_key in seen_entry_keys:
+                raise SystemExit(f"Duplicate entry_key in payload: {entry_key}")
+            seen_entry_keys.add(entry_key)
         raw_json = section.get("raw_json")
         scope_kind = str(section.get("scope_kind") or "")
         heading = str(section.get("heading_raw") or "")
@@ -731,6 +792,21 @@ def validate_payload(payload: dict[str, Any], volume_id: str, expected_file: Pat
                 suspicious_empty_sections.append(
                     str(section.get("section_key") or heading or "unknown")
                 )
+    if missing_start_anchors:
+        raise SystemExit(
+            "Sections must include at least one start anchor (`page_start` or `file_start`): "
+            + ", ".join(missing_start_anchors[:10])
+        )
+    if missing_end_anchors:
+        raise SystemExit(
+            "Sections must include at least one end anchor (`page_end` or `file_end`): "
+            + ", ".join(missing_end_anchors[:10])
+        )
+    if non_owned_sections:
+        raise SystemExit(
+            "General payload contains sections owned by the closing alphabetical/citation "
+            "pipeline: " + "; ".join(non_owned_sections[:10])
+        )
     if suspicious_empty_sections:
         raise SystemExit(
             "List-bearing sections have no entries and no explicit recovery evidence: "
@@ -816,6 +892,8 @@ def infer_failure_stage(error: BaseException) -> str:
         return "fragment_consumption"
     if "evidence verification" in text:
         return "payload_evidence"
+    if "import_index_json.py" in text:
+        return "import_payload"
     if "scan_volume.py" in text:
         return "scan"
     if "filtered_pages" in text:
@@ -824,10 +902,13 @@ def infer_failure_stage(error: BaseException) -> str:
         return "editorial_pages"
     if "helper" in text:
         return "helper"
-    if "codex exec" in text or "last message" in text or "ack" in text:
+    if (
+        "codex exec" in text
+        or "last message" in text
+        or "acknowledgment mismatch" in text
+        or "invalid acknowledgment" in text
+    ):
         return "codex"
-    if "import_index_json.py" in text:
-        return "import_payload"
     if "validation" in text or "payload" in text and "invalid" in text:
         return "validate_payload"
     return "pipeline"
@@ -1129,7 +1210,14 @@ def main() -> None:
                 prompt += (
                     "\n\n### VALIDATED CHUNK ASSEMBLY\n"
                     f"Read and consume every stable object from: {assembled_file}\n"
-                    "Do not silently drop validated works, sections, or entries."
+                    "For every object owned by this general pipeline, copy `work_key`, "
+                    "`section_key`, and `entry_key` exactly; these identities are immutable, "
+                    "including keys containing `candidate-section`. Refine semantic fields or "
+                    "`raw_json`, never the stable key. Do not reconstruct entries without their "
+                    "`entry_key`. If a fragment clearly contains a closing alphabetical, "
+                    "analytical, scripture, citation, names, words, or concordance index, do not "
+                    "emit that non-owned section; record its stable key and exclusion reason in "
+                    "`notes`. Do not silently drop any owned work, section, or entry."
                 )
             previous_failure = load_failure_artifact(failure_path)
             if payload_file.exists():

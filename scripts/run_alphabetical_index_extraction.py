@@ -52,6 +52,10 @@ from patristica_pipeline.index_localization_helpers import (
 )
 from patristica_pipeline.index_payload_evidence import verify_index_payload_evidence
 from patristica_pipeline.index_workplan import build_index_workplan, reconcile_workplan_progress
+from patristica_pipeline.translation_augmentation import (
+    build_latin_lexicon_tools,
+    run_tool_guided_chat,
+)
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 FILTERED_PAGES_SCRIPT = PROJECT_ROOT / "scripts" / "build_alphabetical_filtered_pages.py"
@@ -62,6 +66,12 @@ DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "data" / "alphabetical_index_payloads"
 DEFAULT_LOG_DIR = PROJECT_ROOT / "data" / "alphabetical_index_logs"
 DEFAULT_INTERMEDIATE_ROOT = PROJECT_ROOT / "data" / "intermediate_payloads"
 DEFAULT_WEB_ALPHA_OUT = PROJECT_ROOT / "web" / "public" / "alpha"
+DEFAULT_TRANSLATION_DICTIONARY_DIR = Path(
+    os.getenv(
+        "PATRISTICA_DICTIONARY_DIR",
+        "/mnt/projects/Projects/Dicionarios/dicionarios",
+    )
+)
 COMPLETE_COVERAGE_STATUSES = {"ok", "complete", "extracted", "recovered"}
 ANALYSIS_COMMANDS = {
     "discover",
@@ -613,6 +623,7 @@ def build_translation_prompt(
     section_kind: str,
     contexts: list[str],
     languages: list[str],
+    tools_enabled: bool = False,
 ) -> tuple[str, str]:
     language_lines = "\n".join(f"- {language}" for language in languages)
     context_block = "\n".join(contexts[:3]).strip() or "(no extra context)"
@@ -626,6 +637,14 @@ def build_translation_prompt(
         "If OCR seems uncertain or ambiguous, prefer faithful preservation over correction or invention. "
         "Return a JSON object with exactly the requested language keys and string values only."
     )
+    if tools_enabled:
+        system_prompt += (
+            " You may consult the local Latin lexicon tool when a Latin word is genuinely "
+            "ambiguous or materially affects the translation. Query only a small set of likely "
+            "dictionary lemmas. Treat dictionary results as contextual evidence, not mandatory "
+            "word-for-word equivalents. Do not use the Latin tool for Greek, proper names, page "
+            "references, or text already written naturally in a target language."
+        )
     user_prompt = (
         "Translate the string using the context as guide.\n\n"
         "Metadata:\n"
@@ -687,11 +706,14 @@ def format_translation_progress(
     translations = dict(result.get("translations") or {})
     attempts = result.get("attempts")
     elapsed_s = result.get("elapsed_s")
+    tool_call_count = result.get("tool_call_count", 0)
+    tool_names = result.get("tool_names") or []
     sample_context = str(result.get("sample_context") or "")[:100]
     return (
         f"[INFO] translation {completed}/{total} volume={volume_id} "
         f"kind={source_kind} section_kind={section_kind or '-'} "
         f"langs={sorted(translations.keys())} attempts={attempts} elapsed_s={elapsed_s} "
+        f"tool_calls={tool_call_count} tools={tool_names} "
         f"source={source_text!r} context={sample_context!r}"
     )
 
@@ -707,6 +729,20 @@ def translate_candidate_worker(task: dict[str, Any]) -> dict[str, Any]:
     api_key = str(task["api_key"])
     timeout = int(task["timeout"])
     retries = max(1, int(task["retries"]))
+    tools_enabled = bool(task.get("tools_enabled", False))
+    dictionary_dir_raw = task.get("dictionary_dir")
+    max_tool_rounds = max(0, int(task.get("max_tool_rounds", 2)))
+
+    tools: list[dict[str, Any]] = []
+    handlers: dict[str, Any] = {}
+    if tools_enabled:
+        if not dictionary_dir_raw:
+            raise RuntimeError("translation tools require a dictionary directory")
+        tools, handlers = build_latin_lexicon_tools(Path(str(dictionary_dir_raw)))
+        if not tools:
+            raise RuntimeError(
+                f"no supported translation dictionaries found in {dictionary_dir_raw}"
+            )
 
     system_prompt, user_prompt = build_translation_prompt(
         source_text=source_text,
@@ -714,13 +750,10 @@ def translate_candidate_worker(task: dict[str, Any]) -> dict[str, Any]:
         section_kind=section_kind,
         contexts=contexts,
         languages=languages,
+        tools_enabled=bool(tools),
     )
     payload = {
         "model": model,
-        "messages": [
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_prompt},
-        ],
         "top_p": 1.0,
     }
     if "gpt-5" in model:
@@ -735,28 +768,37 @@ def translate_candidate_worker(task: dict[str, Any]) -> dict[str, Any]:
     for attempt in range(1, retries + 1):
         try:
             with make_session() as session:
-                response = session.post(
-                    url,
-                    headers={
-                        "Content-Type": "application/json",
-                        "Authorization": f"Bearer {api_key}",
-                    },
-                    data=json.dumps(payload),
-                    timeout=timeout,
+                def request_chat(request_payload: dict[str, Any]) -> dict[str, Any]:
+                    response = session.post(
+                        url,
+                        headers={
+                            "Content-Type": "application/json",
+                            "Authorization": f"Bearer {api_key}",
+                        },
+                        data=json.dumps(request_payload),
+                        timeout=timeout,
+                    )
+                    if response.status_code != 200:
+                        raise ValueError(f"http {response.status_code}: {response.text}")
+                    body = response.json()
+                    if not isinstance(body, dict):
+                        raise ValueError("openai returned a non-object response")
+                    return body
+
+                guided = run_tool_guided_chat(
+                    request_chat=request_chat,
+                    payload=payload,
+                    messages=[
+                        {"role": "system", "content": system_prompt},
+                        {"role": "user", "content": user_prompt},
+                    ],
+                    tools=tools,
+                    handlers=handlers,
+                    max_tool_rounds=max_tool_rounds,
                 )
-            if response.status_code != 200:
-                raise ValueError(f"http {response.status_code}: {response.text}")
-            body = response.json()
-            choices = body.get("choices") or []
-            if not choices:
-                raise ValueError("openai returned no choices")
-            content = choices[0].get("message", {}).get("content")
-            if isinstance(content, list):
-                content = "".join(
-                    item.get("text", "") if isinstance(item, dict) else str(item)
-                    for item in content
-                )
-            translations = validate_translation_payload(extract_json_object(str(content or "")), languages)
+            translations = validate_translation_payload(
+                extract_json_object(guided.content), languages
+            )
             return {
                 "source_text": source_text,
                 "source_kind": source_kind,
@@ -766,6 +808,14 @@ def translate_candidate_worker(task: dict[str, Any]) -> dict[str, Any]:
                 "model_name": model,
                 "attempts": attempt,
                 "elapsed_s": round(time.time() - started, 3),
+                "tool_call_count": len(guided.tool_calls),
+                "tool_names": sorted(
+                    {
+                        str(item.get("name") or "")
+                        for item in guided.tool_calls
+                        if item.get("name")
+                    }
+                ),
             }
         except Exception as exc:
             last_error = str(exc)
@@ -784,6 +834,9 @@ def run_translation_stage(
     timeout: int,
     retries: int,
     verbose: bool,
+    tools_enabled: bool = False,
+    dictionary_dir: Path | None = None,
+    max_tool_rounds: int = 2,
 ) -> dict[str, Any]:
     with connect_db(db_path) as con:
         init_schema(con)
@@ -809,6 +862,9 @@ def run_translation_stage(
             "api_key": api_key,
             "timeout": timeout,
             "retries": retries,
+            "tools_enabled": tools_enabled,
+            "dictionary_dir": str(dictionary_dir) if dictionary_dir is not None else None,
+            "max_tool_rounds": max_tool_rounds,
         }
         for item in pending
     ]
@@ -959,24 +1015,32 @@ def run_compact_batch(args: argparse.Namespace, volume_ids: list[str]) -> None:
                 raise SystemExit(f"Could not parse volume info from {volume_root}")
             collection = info.series
             payload_file = args.output_dir / f"{volume_id}_alphabetical_indices.json"
-            db_imported = volume_already_imported(args.db, volume_id)
-            quality = get_volume_quality(args.db, volume_id)
-            quality_status = (
-                str(quality.get("status") or "").strip() or None
-                if quality is not None
-                else None
-            )
-            skip_extraction, replace_for_volume, selection_reason = (
-                volume_extraction_policy(
-                    db_imported=db_imported,
-                    quality_status=quality_status,
-                    skip_done=args.skip_done,
-                    redo_invalid=args.redo_invalid,
-                    replace=args.replace,
+            translation_only = getattr(args, "translation_only", False)
+            if translation_only:
+                db_imported = False
+                quality_status = None
+                skip_extraction = True
+                replace_for_volume = False
+                selection_reason = "translation_only"
+            else:
+                db_imported = volume_already_imported(args.db, volume_id)
+                quality = get_volume_quality(args.db, volume_id)
+                quality_status = (
+                    str(quality.get("status") or "").strip() or None
+                    if quality is not None
+                    else None
                 )
-            )
+                skip_extraction, replace_for_volume, selection_reason = (
+                    volume_extraction_policy(
+                        db_imported=db_imported,
+                        quality_status=quality_status,
+                        skip_done=args.skip_done,
+                        redo_invalid=args.redo_invalid,
+                        replace=args.replace,
+                    )
+                )
             print(f"[INFO] volume {idx}/{len(volume_ids)}: {volume_id} ({collection})")
-            if args.redo_invalid and skip_extraction:
+            if args.redo_invalid and skip_extraction and not translation_only:
                 if quality_status is None:
                     print(
                         f"[WARN] {volume_id} has no volume quality assessment; "
@@ -1111,6 +1175,11 @@ def run_compact_batch(args: argparse.Namespace, volume_ids: list[str]) -> None:
                     timeout=max(1, args.translation_timeout),
                     retries=max(1, args.translation_retries),
                     verbose=args.verbose,
+                    tools_enabled=getattr(args, "translation_tools", False),
+                    dictionary_dir=getattr(args, "translation_dictionary_dir", None),
+                    max_tool_rounds=max(
+                        0, getattr(args, "translation_max_tool_rounds", 2)
+                    ),
                 )
             if has_partial_coverage:
                 print(
@@ -1143,6 +1212,8 @@ def run_compact_batch(args: argparse.Namespace, volume_ids: list[str]) -> None:
                         "coverage_reason": coverage_reason,
                         "translation_ran": translation_summary["ran"],
                         "translation_written_rows": translation_summary["written_rows"],
+                        "translation_only": getattr(args, "translation_only", False),
+                        "translation_tools": getattr(args, "translation_tools", False),
                     },
                     ensure_ascii=False,
                 )
@@ -1606,6 +1677,14 @@ def main() -> None:
     ap.add_argument("--max-unverified-evidence-ratio", type=float, default=0.25)
     ap.add_argument("--skip-evidence-check", action="store_true")
     ap.add_argument("--translate", action="store_true", help="Translate frontend-facing alphabetical index strings after import")
+    ap.add_argument(
+        "--translation-only",
+        action="store_true",
+        help=(
+            "Translate pending strings already present in the database without "
+            "running extraction, validation, or import"
+        ),
+    )
     ap.add_argument("--translation-languages", default="en,it,pt-br,fr", help="Comma-separated target language codes for translation")
     ap.add_argument("--translation-model", default=None, help="OpenAI model used for translation")
     ap.add_argument("--translation-openai-url", default="https://api.openai.com/v1", help="OpenAI-compatible base URL for translation")
@@ -1613,6 +1692,27 @@ def main() -> None:
     ap.add_argument("--translation-workers", type=int, default=1, help="Worker count for translation requests")
     ap.add_argument("--translation-timeout", type=int, default=180, help="Per-request timeout in seconds for translation")
     ap.add_argument("--translation-retries", type=int, default=3, help="Retry count per translation request")
+    ap.add_argument(
+        "--translation-tools",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Allow bounded read-only dictionary tools during translation",
+    )
+    ap.add_argument(
+        "--translation-dictionary-dir",
+        type=Path,
+        default=DEFAULT_TRANSLATION_DICTIONARY_DIR,
+        help=(
+            "Directory containing superdb.sqlite or the compatible individual dictionaries "
+            "(default: PATRISTICA_DICTIONARY_DIR or the local dictionary project)"
+        ),
+    )
+    ap.add_argument(
+        "--translation-max-tool-rounds",
+        type=int,
+        default=2,
+        help="Maximum dictionary tool-call rounds per translated string",
+    )
     ap.add_argument("--keep-temp", action="store_true", help="Keep the last-message artifact after a successful run")
     ap.add_argument("--dry-run", action="store_true", help="Build filtered pages and prompt, then stop before calling Codex")
     ap.add_argument(
@@ -1645,9 +1745,16 @@ def main() -> None:
     args.log_dir = resolve_path(args.log_dir) or args.log_dir
     args.intermediate_root = resolve_path(args.intermediate_root) or args.intermediate_root
     args.web_alpha_out = resolve_path(args.web_alpha_out) or args.web_alpha_out
+    args.translation_dictionary_dir = (
+        resolve_path(args.translation_dictionary_dir)
+        or args.translation_dictionary_dir
+    )
     args.translation_languages = normalize_language_list(args.translation_languages)
     args.translation_openai_api_key = args.translation_openai_api_key or os.getenv("OPENAI_API_KEY")
     args.translation_model = args.translation_model or os.getenv("OPENAI_MODEL") or "gpt-5-mini"
+
+    if args.translation_only:
+        args.translate = True
 
     if args.filtered_pages_json and args.all_volumes:
         raise SystemExit("--filtered-pages-json is only valid for a single-volume run.")
@@ -1657,6 +1764,24 @@ def main() -> None:
         raise SystemExit("Use at least one language in --translation-languages when --translate is enabled.")
     if args.translate and not args.translation_openai_api_key:
         raise SystemExit("Translation requires --translation-openai-api-key or OPENAI_API_KEY.")
+    if args.translation_max_tool_rounds < 0:
+        raise SystemExit("--translation-max-tool-rounds cannot be negative.")
+    if args.translate and args.translation_tools:
+        supported_dictionaries = (
+            "superdb.sqlite",
+            "retificado_v2.db",
+            "ls_dict.db",
+            "gaffiot.db",
+        )
+        if not args.translation_dictionary_dir.is_dir() or not any(
+            (args.translation_dictionary_dir / name).is_file()
+            for name in supported_dictionaries
+        ):
+            raise SystemExit(
+                "Translation tools require at least one supported read-only dictionary "
+                f"in {args.translation_dictionary_dir}. Use --no-translation-tools to "
+                "run without lexicon guidance."
+            )
 
     if args.blob and not args.all_volumes:
         args.all_volumes = True
@@ -2074,6 +2199,11 @@ def main() -> None:
                     timeout=max(1, args.translation_timeout),
                     retries=max(1, args.translation_retries),
                     verbose=args.verbose,
+                    tools_enabled=getattr(args, "translation_tools", False),
+                    dictionary_dir=getattr(args, "translation_dictionary_dir", None),
+                    max_tool_rounds=max(
+                        0, getattr(args, "translation_max_tool_rounds", 2)
+                    ),
                 )
 
             if has_partial_coverage:

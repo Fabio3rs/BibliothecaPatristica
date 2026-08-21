@@ -27,6 +27,12 @@ Respect the runtime phase boundary:
 - **Final payload:** consume every stable object from the validated assembly, resolve only the
   remaining volume-level work, boundary, and anchor questions, write the named canonical JSON, and
   run non-mutating checks on it.
+  - Copy every owned `work_key`, `section_key`, and `entry_key` exactly. Stable keys are immutable
+    identities, including provisional keys containing `candidate-section`; refine classification
+    fields and `raw_json`, never the key.
+  - A clearly mislocalized closing alphabetical/citation section is not owned merely because it
+    appears in the assembly. Omit it from the general payload, record its stable key and exclusion
+    reason in `notes`, and leave its extraction to the alphabetical pipeline.
 - **Reconciliation and quality gates:** the driver owns work-anchor reconciliation, fragment
   consumption checks, payload validation, and OCR-evidence thresholds.
 - **Import:** the driver alone imports after every preceding gate succeeds. No extraction agent,
@@ -44,6 +50,10 @@ runtime assignment and exact validator feedback, then stops after writing its fr
 - Read the opening pages of the volume and the opening/front matter of each work.
 - Transcribe the actual index lines into `entries`; do not stop at section detection alone.
 - Preserve OCR literals. Do not silently normalize uncertain digits, Roman numerals, or `Ibid.` references.
+- In canonical logical text fields, join a word split by an OCR soft wrap only after the following
+  line proves continuation. Preserve the exact physical fragments, including `-\n`, in
+  `raw_json.source_lines` or `raw_json.line_fragments`; provenance strings are not canonical
+  soft-wrap errors. Preserve genuine lexical/editorial hyphens in both layers.
 - Use the taxonomy in `references/volume-taxonomy.md`.
 - Use `../../../docs/taxonomia_indices.md` when `collection` is `PG` or `PL`.
 - Use `../../../docs/taxonomia_indices_po.md` when `collection` is `PO`.
@@ -88,8 +98,13 @@ bounded runtime prompt instead, then stops after its fragment passes acknowledgm
 5. For `PO`, identify fascicle inventory pages, internal work tables, and retrospective tables before recording final sections.
 6. Do not extract closing alphabetical, analytical, onomastic, scripture, citation, concordance,
    names, subjects, or cross-reference indexes; the alphabetical-index pipeline owns them.
+   Publisher advertisements and catalogues printed after an explicit `FINIS TOMI` are external
+   post-volume matter and belong to neither corpus-index payload.
 7. Construct the canonical JSON from the validated assembly and verified volume-level evidence,
    then write it to the requested output file.
+   - Preserve exact stable keys for all owned assembled objects.
+   - When a validated fragment is demonstrably outside this pipeline boundary, exclude it rather
+     than importing it under the wrong owner, and record the decision in `notes`.
 8. Run non-mutating payload checks, correct every reported problem, and leave final database
    validation and import to the driver.
 
@@ -122,6 +137,10 @@ requested number of workers.
 - An empty `entries` array is allowed only when the section truly has no line items, or when the OCR page is unreadable enough that individual entries cannot be recovered.
 - When `entries` is empty, explain the reason in `raw_json` and lower `confidence`.
 - Do not summarize a long table with `entries_summary` in place of actual `entries`.
+- A chunk whose owned files are conclusively another pipeline's material may emit no semantic
+  objects even when the deterministic line-shape estimator is nonzero. Record
+  `raw_json.pipeline_owner`, an `out_of_scope_*` classification, a non-empty
+  `entries_status_reason`, and the inspected evidence files.
 
 ## Number Handling
 
@@ -214,7 +233,10 @@ The deterministic reconciler may add `works[].raw_json.work_anchor_rerun` or a n
 - A successful local validation does not authorize import; the driver repeats its own validation
   and is the only component allowed to import.
 - Keep the raw JSON for each section and entry.
-- Prefer stable keys (`work_key`, `section_key`) so reruns can replace rows cleanly.
-- `work_key` and `section_key` must be unique within the whole database, not only within one payload; prefix them with the current `volume_id` whenever the natural label is generic.
+- Require stable keys (`work_key`, `section_key`, and `entry_key`) so reruns can replace rows cleanly.
+- Stable keys copied from `assembled_fragments.json` are immutable. Do not rename a provisional key
+  after resolving its semantics; store the refined meaning in the object's semantic fields.
+- `work_key`, `section_key`, and `entry_key` must be unique within the whole payload, and work/section
+  keys must be globally safe for SQLite; prefix generic natural labels with the current `volume_id`.
 - The final payload file should be JSON only, with top-level keys `volume`, `works`, `sections`, and `notes`.
 - The final assistant message should be JSON only, with keys `status`, `volume_id`, and `written_file`.

@@ -32,6 +32,48 @@ HEARTBEAT_INTERVAL_SECONDS = 30.0
 STALL_WARNING_SECONDS = 300.0
 
 
+def _path_candidates(value: Any, source_root: Path) -> set[str]:
+    path = Path(str(value))
+    if path.is_absolute():
+        return {str(path.resolve())}
+    return {
+        str((PROJECT_ROOT / path).resolve()),
+        str((source_root / path).resolve()),
+        str((source_root / path.name).resolve()),
+    }
+
+
+def _has_justified_out_of_scope_disposition(
+    payload: dict[str, Any],
+    *,
+    pipeline_kind: str,
+) -> bool:
+    raw_json = payload.get("raw_json")
+    if not isinstance(raw_json, dict):
+        return False
+    owned_evidence = raw_json.get("owned_file_evidence")
+    if not isinstance(owned_evidence, dict):
+        owned_evidence = {}
+    classification = str(
+        raw_json.get("classification") or owned_evidence.get("classification") or ""
+    ).strip().casefold()
+    pipeline_owner = str(
+        raw_json.get("pipeline_owner") or owned_evidence.get("pipeline_owner") or ""
+    ).strip().casefold()
+    explicitly_non_owned = classification.startswith("out_of_scope") or (
+        pipeline_owner in {"general", "alphabetical"} and pipeline_owner != pipeline_kind
+    )
+    reason = str(raw_json.get("entries_status_reason") or "").strip()
+    evidence_files = raw_json.get("evidence_files")
+    evidence_files = owned_evidence.get("files_checked") or evidence_files
+    return (
+        explicitly_non_owned
+        and bool(reason)
+        and isinstance(evidence_files, list)
+        and bool(evidence_files)
+    )
+
+
 def _fragment_entry_count(payload: dict[str, Any], pipeline_kind: str) -> int:
     if pipeline_kind == "alphabetical":
         return len(payload.get("entries") or [])
@@ -320,6 +362,11 @@ INSTRUCTIONS
 - Set `numbering_semantics` exactly to:
   {{"physical_file_fields":"physical_files_and_explicit_file_locators","entry_number_system":"editorial","numeric_equality_mapping_forbidden":true}}
 - Set status to `complete` only after every readable line item in the chunk is represented.
+- If every owned file is conclusively outside this pipeline's boundary, emit no semantic objects
+  and record `raw_json.pipeline_owner` with the actual owner (`general` or `alphabetical`), an
+  `out_of_scope_*` classification, a non-empty `entries_status_reason`, and the inspected files in
+  `raw_json.evidence_files` or `raw_json.owned_file_evidence.files_checked`. Deterministic line
+  estimates describe shapes, not ownership, and do not require emitting another pipeline's data.
 
 FINAL RESPONSE
 {{"status":"ok","volume_id":"{workplan["volume_id"]}","chunk_id":"{chunk["chunk_id"]}","written_file":"{output_file}"}}
@@ -517,7 +564,12 @@ def _validate_fragment(
     ]
     if len(stable_keys) != len(set(stable_keys)):
         raise ValueError(f"duplicate entry_key inside fragment {path}")
-    owned_files = {str(value) for value in chunk.get("physical_files") or []}
+    source_root = Path(str(workplan.get("source_root") or PROJECT_ROOT)).resolve()
+    owned_files = {
+        candidate
+        for value in chunk.get("physical_files") or []
+        for candidate in _path_candidates(value, source_root)
+    }
     for entry in entries:
         raw_json = entry.get("raw_json")
         source_files = raw_json.get("source_files") if isinstance(raw_json, dict) else None
@@ -532,14 +584,22 @@ def _validate_fragment(
             (Path(str(value)) for value in source_files),
             key=page_sort_key,
         )
-        if str(ordered_sources[0]) not in owned_files:
+        first_source_candidates = _path_candidates(ordered_sources[0], source_root)
+        if not first_source_candidates.intersection(owned_files):
             raise ValueError(
                 f"entry source ownership violation in {path}: "
                 f"ascending first source {ordered_sources[0]} is not owned by the chunk"
             )
     entry_count = len(entries)
     estimate = (chunk.get("deterministic_entry_estimate") or {}).get("estimated_entry_count") or {}
-    if entry_count == 0 and int(estimate.get("lower_bound") or 0) > 0:
+    if (
+        entry_count == 0
+        and int(estimate.get("lower_bound") or 0) > 0
+        and not _has_justified_out_of_scope_disposition(
+            payload,
+            pipeline_kind=str(pipeline_kind),
+        )
+    ):
         raise ValueError(
             f"complete fragment has no entries despite strong deterministic entry signals in {path}"
         )

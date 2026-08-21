@@ -47,6 +47,15 @@ def test_infer_failure_stage_covers_chunk_and_quality_failures() -> None:
         )
         == "payload_evidence"
     )
+    assert (
+        run_index_extraction.infer_failure_stage(
+            SystemExit(
+                "import_index_json.py failed for PL201_indices.json\n"
+                "STDERR:\nTraceback (most recent call last):"
+            )
+        )
+        == "import_payload"
+    )
 
 
 def test_editorial_pages_artifact_skips_po_without_using_pgpl_estimator(tmp_path: Path) -> None:
@@ -71,6 +80,23 @@ def test_editorial_pages_artifact_skips_po_without_using_pgpl_estimator(tmp_path
 def test_run_index_extraction_detects_hyphen_artifacts_in_payload_and_failure() -> None:
     assert payload_has_hyphen_artifacts({"sections": [{"entries": [{"entry_raw": "pala-"}]}]})
     assert not payload_has_hyphen_artifacts({"sections": [{"entries": [{"entry_raw": "palavra"}]}]})
+    assert not payload_has_hyphen_artifacts(
+        {
+            "sections": [
+                {
+                    "entries": [
+                        {
+                            "entry_raw": "palavra",
+                            "raw_json": {"source_lines": ["pala-", "vra"]},
+                        }
+                    ]
+                }
+            ]
+        }
+    )
+    assert payload_has_hyphen_artifacts(
+        {"sections": [{"entries": [{"target_raw": "pala-"}]}]}
+    )
 
     assert failure_mentions_hyphen_artifact(
         {
@@ -93,13 +119,15 @@ def test_validate_payload_rejects_unjustified_empty_index_section(tmp_path: Path
         "volume": {"volume_id": "PO001"},
         "works": [],
         "sections": [
-            {
-                "section_key": "PO001:index:1",
-                "scope_kind": "work_index_alphabetical",
-                "heading_raw": "TABLE ALPHABETIQUE",
-                "entries": [],
-                "raw_json": {},
-            }
+                {
+                    "section_key": "PO001:index:1",
+                    "scope_kind": "work_front",
+                    "heading_raw": "INDEX CAPITUM",
+                    "file_start": "/tmp/PO001/text/page-001.txt",
+                    "file_end": "/tmp/PO001/text/page-001.txt",
+                    "entries": [],
+                    "raw_json": {},
+                }
         ],
         "notes": [],
     }
@@ -112,7 +140,93 @@ def test_validate_payload_rejects_unjustified_empty_index_section(tmp_path: Path
         "entries_status_reason": "Characters are not legible.",
         "evidence_files": ["/tmp/PO001/text/page-001.txt"],
     }
+    payload["sections"][0]["file_start"] = "/tmp/PO001/text/page-001.txt"
+    payload["sections"][0]["file_end"] = "/tmp/PO001/text/page-001.txt"
     validate_payload(payload, "PO001", payload_file)
+
+
+def test_validate_payload_rejects_sections_without_import_anchors(tmp_path: Path) -> None:
+    payload_file = tmp_path / "PL201_indices.json"
+    payload_file.write_text("{}", encoding="utf-8")
+    payload = {
+        "volume": {"volume_id": "PL201"},
+        "works": [],
+        "sections": [
+            {
+                "section_key": "PL201:ordo",
+                "scope_kind": "volume_end",
+                "heading_raw": "ORDO RERUM",
+                "page_start": None,
+                "page_end": None,
+                "file_start": None,
+                "file_end": None,
+                "raw_json": {},
+                "entries": [
+                    {"entry_key": "PL201:ordo:001", "entry_raw": "CAP. I"}
+                ],
+            }
+        ],
+        "notes": [],
+    }
+
+    with pytest.raises(SystemExit, match="at least one start anchor"):
+        validate_payload(payload, "PL201", payload_file)
+
+
+def test_validate_payload_requires_stable_entry_keys(tmp_path: Path) -> None:
+    payload_file = tmp_path / "PL001_indices.json"
+    payload_file.write_text("{}", encoding="utf-8")
+    payload = {
+        "volume": {"volume_id": "PL001"},
+        "works": [],
+        "sections": [
+            {
+                "section_key": "PL001:ordo",
+                "scope_kind": "volume_end",
+                "heading_raw": "ORDO RERUM",
+                "file_start": "page-001.txt",
+                "file_end": "page-001.txt",
+                "raw_json": {},
+                "entries": [{"entry_raw": "CAP. I"}],
+            }
+        ],
+        "notes": [],
+    }
+
+    with pytest.raises(SystemExit, match="stable entry_key"):
+        validate_payload(payload, "PL001", payload_file)
+
+
+def test_validate_payload_rejects_closing_index_owned_by_other_pipeline(
+    tmp_path: Path,
+) -> None:
+    payload_file = tmp_path / "PO025_indices.json"
+    payload_file.write_text("{}", encoding="utf-8")
+    payload = {
+        "volume": {"volume_id": "PO025"},
+        "works": [],
+        "sections": [
+            {
+                "section_key": "PO025:scripture",
+                "scope_kind": "work",
+                "index_kind": "PO_WORK_INDEX_SCRIPTURE",
+                "heading_raw": "TABLE DES CITATIONS DE LA BIBLE",
+                "file_start": "page-001.txt",
+                "file_end": "page-001.txt",
+                "raw_json": {},
+                "entries": [
+                    {
+                        "entry_key": "PO025:scripture:001",
+                        "entry_raw": "GENESIS, I, 1",
+                    }
+                ],
+            }
+        ],
+        "notes": [],
+    }
+
+    with pytest.raises(SystemExit, match="closing alphabetical/citation pipeline"):
+        validate_payload(payload, "PO025", payload_file)
 
 
 def test_validate_payload_rejects_inverted_work_page_range(tmp_path: Path) -> None:

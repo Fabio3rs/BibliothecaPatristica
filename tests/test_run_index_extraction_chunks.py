@@ -200,6 +200,89 @@ def test_complete_empty_fragment_is_rejected_when_strong_entry_lines_exist(tmp_p
         raise AssertionError("empty complete fragment was accepted")
 
 
+def test_general_fragment_accepts_relative_source_path_for_owned_absolute_file(
+    tmp_path: Path,
+) -> None:
+    workplan, chunk = _workplan(tmp_path)
+    workplan["pipeline_kind"] = "general"
+    chunk["chunk_contract_version"] = 2
+    output = Path(chunk["output_file"])
+    output.write_text(
+        json.dumps(
+            {
+                "schema_version": 2,
+                "volume_id": "PL001",
+                "chunk_id": chunk["chunk_id"],
+                "section_id": chunk["section_id"],
+                "status": "complete",
+                "physical_files": chunk["physical_files"],
+                "numbering_semantics": {
+                    "physical_file_fields": "physical_files_and_explicit_file_locators",
+                    "entry_number_system": "editorial",
+                    "numeric_equality_mapping_forbidden": True,
+                },
+                "boundary_decisions": [],
+                "works": [],
+                "sections": [
+                    {
+                        "section_key": "PL001:ordo",
+                        "entries": [
+                            {
+                                "entry_key": "PL001:ordo:001",
+                                "raw_json": {"source_files": ["scan-001.txt"]},
+                            }
+                        ],
+                    }
+                ],
+                "notes": [],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    _validate_fragment(output, workplan, chunk)
+
+
+def test_general_fragment_accepts_justified_out_of_scope_empty_result(
+    tmp_path: Path,
+) -> None:
+    workplan, chunk = _workplan(tmp_path)
+    workplan["pipeline_kind"] = "general"
+    output = Path(chunk["output_file"])
+    output.write_text(
+        json.dumps(
+            {
+                "schema_version": 2,
+                "volume_id": "PL001",
+                "chunk_id": chunk["chunk_id"],
+                "section_id": chunk["section_id"],
+                "status": "complete",
+                "physical_files": chunk["physical_files"],
+                "numbering_semantics": {
+                    "physical_file_fields": "physical_files_and_explicit_file_locators",
+                    "entry_number_system": "editorial",
+                    "numeric_equality_mapping_forbidden": True,
+                },
+                "boundary_decisions": [],
+                "works": [],
+                "sections": [],
+                "notes": [],
+                "raw_json": {
+                    "entries_status_reason": "The inspected pages are a closing subject index.",
+                    "owned_file_evidence": {
+                        "pipeline_owner": "alphabetical",
+                        "classification": "out_of_scope_closing_analytical_index",
+                        "files_checked": chunk["physical_files"],
+                    },
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    _validate_fragment(output, workplan, chunk)
+
+
 def test_chunk_fragment_rejects_duplicate_ref_stable_key(tmp_path: Path) -> None:
     workplan, chunk = _workplan(tmp_path)
     output = Path(chunk["output_file"])

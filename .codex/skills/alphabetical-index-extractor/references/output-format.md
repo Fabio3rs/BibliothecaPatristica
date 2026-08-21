@@ -240,6 +240,10 @@ Rules:
 - Keep `ref_raw` even when `book_norm` is present.
 - Use conservative normalization.
 - If the parse is ambiguous, record the ambiguity in `raw_json` instead of inventing certainty.
+- When a paired page image resolves punctuation, a glyph, a note call, or layout, record
+  `raw_json.visual_evidence` with `image_path`, `physical_sequence`, `reason`, `observation`, and
+  `resolved_fields`. The image path is evidence; it never replaces an OCR `file`/`target_file`,
+  and the physical sequence never becomes an editorial page value.
 - When `III/IV Esdras` or `III/IV Esdrae` is an explicit historical work, keep canonical
   `book_key` ownership with Python and record
   `raw_json.canonical_status=historical_noncanonical` and a stable

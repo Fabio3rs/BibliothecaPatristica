@@ -43,6 +43,12 @@ legacy database compatibility.
 - Use the spatial field dictionary in `docs/dicionario_campos_indices_alfabeticos.md`. An OCR file
   is a `.txt` storage unit; an editorial page is a printed number. A filename suffix is neither a
   page value nor independent page evidence.
+- When an owned OCR decision remains ambiguous because of punctuation, CER, superscript note
+  calls, columns, tables, or headers, look for the corresponding physical page image. Use
+  `python <skill_dir>/scripts/locate-ocr-page-image.py --ocr-file <OCR_FILE>` to resolve only the sibling
+  `images/*.png` candidate, then inspect that image with the available image-viewing tool. The
+  physical suffix is only a pairing key; never treat it as printed pagination. If the image is
+  absent or unreadable, preserve the ambiguity rather than guessing.
 - Editorial pagination commonly appears as `NUMBER  PAGE-TITLE  NUMBER+1` in a facing-page header,
   but OCR generators may split it across blocks, retain one side, corrupt digits through CER, or
   omit it. Infer it from several neighboring physical files and never from the filename suffix.
@@ -156,6 +162,8 @@ phase names them. Never load a complete assembled payload during locator or repa
    - if the helper leaves the case ambiguous or the target file does not clearly confirm the printed page, inspect neighboring OCR files before settling on a partial result
    - when CER or pagination drift weakens the page-number signal, search the current volume with `rg -n -S` and regexes derived from the local editorial pattern
    - treat page drift between printed numbering and OCR file suffixes as normal; do not reject a candidate only because the numbers do not align literally
+   - inspect a paired page image when the ambiguity depends on printed layout or glyph shape;
+     keep the selected target as an OCR file path and record the image separately as visual evidence
 10. Keep `section_kind` inside the schema enum only. Do not invent narrower ad hoc values.
 11. Map headings like `INDEX AUCTORUM VETERUM ...` and `INDEX AUCTORUM RECENTIORUM ...` to `author_index`. Preserve the finer editorial distinction in `heading_raw`, `section_key`, and `raw_json.section_kind_reason`.
 12. For scripture-like sections, distinguish editorial headings from inherited biblical book headings:
@@ -185,6 +193,13 @@ phase names them. Never load a complete assembled payload during locator or repa
   - top candidate list with `file`, `probability`, and main evidence kinds
 - When the helper says `ambiguous`, keep the ambiguity explicit unless OCR inspection resolves it.
 - If the helper and direct OCR reading disagree, prefer the reading that is best supported by the printed structure and explain the override in `raw_json`.
+- The page-image locator only finds candidates; it does not inspect or interpret an image. Claim
+  visual confirmation only after actually opening the returned `image_path`.
+- Restrict image lookup to the sibling `images` directory of an owned OCR file. Do not batch-open
+  a volume or expand phase ownership merely because images exist.
+- Record material visual evidence in `raw_json.visual_evidence` with `image_path`,
+  `physical_sequence`, `reason`, `observation`, and `resolved_fields`. Set
+  `editorial_page_inferred=false` unless the printed page number itself was read from the image.
 
 ## What to Record
 

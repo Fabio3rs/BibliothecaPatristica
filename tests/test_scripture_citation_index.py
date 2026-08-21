@@ -29,7 +29,8 @@ def _write_sample_volume(tmp_path: Path) -> tuple[Path, Path]:
 Gen. 1,4,5,7; I Rois, II, 8; I Cor. II, 4;
 I Corin-
 thios 3, 18-
-20. Ex Psalmo CXII. v. 7. caritate
+20. Ex Psalmo CXII. v. 7. Deut. I, 16, et XVI, 18;
+Psal. 4, 9; 91, 1; Luc. XXIV, 4 et 5. caritate
 </bloco>
 </pagina>""",
         encoding="utf-8",
@@ -90,12 +91,200 @@ def _semantic_rows(db_path: Path) -> list[tuple]:
 
 
 def test_logical_text_joins_words_but_preserves_numeric_ranges() -> None:
-    source = "I Corin-\nthios 3, 18-\n20"
+    source = "I Corin-\nthios\u200b 3, 18‑\n20"
 
     logical = citation_logical_text(source)
 
     assert logical.text == "i corinthios 3, 18-20"
     assert source[slice(*logical.source_span(0, len(logical.text)))] == source
+
+
+def test_scanner_detects_main_text_xml_without_losing_raw_offsets(
+    tmp_path: Path,
+) -> None:
+    source_root = tmp_path / "teste" / "PL998" / "text"
+    source_root.mkdir(parents=True)
+    path = source_root / "PL998-001.txt"
+    path.write_text(
+        """<pagina tipo="conteudo">
+<bloco tipo="texto_principal" script="latino" bbox="10,20,490,900">
+In textu legitur Ioan. III, 16; I Corin-\nthios 13, 4; Gen. 2.
+</bloco>
+<bloco tipo="aparato_critico" script="latino" bbox="10,910,490,990">
+Rom. 5, 8
+</bloco>
+<bloco tipo="cabecalho" script="latino" bbox="10,0,490,15">Ps. XXII.</bloco>
+</pagina>""",
+        encoding="utf-8",
+    )
+
+    result = scan_file_task(
+        ScanTask(
+            volume_id="PL998",
+            collection="PL",
+            source_root=str(source_root),
+            file_path=str(path),
+            physical_index=0,
+            is_index_source=False,
+            observed_aliases=(),
+            estimator_pages=(),
+            profile_fingerprint="fixture",
+        )
+    )
+
+    found = {
+        (group["context_kind"], occurrence["ref_norm"]): (
+            group,
+            occurrence,
+        )
+        for group in result["groups"]
+        for occurrence in group["occurrences"]
+    }
+    assert ("body", "São João 3,16") in found
+    assert ("body", "1 Coríntios 13,4") in found
+    assert ("body", "Gênesis 2") in found
+    assert ("critical_apparatus", "Romanos 5,8") in found
+    assert ("header", "Salmos 22") in found
+
+    group, occurrence = found[("body", "1 Coríntios 13,4")]
+    assert group["block_type"] == "texto_principal"
+    assert occurrence["book_raw"] == "I Corin-\nthios"
+    assert group["citation_raw"] == "I Corin-\nthios 13, 4"
+    assert group["evidence_json"]["matching_pipeline"].endswith("+regex")
+
+
+def test_malformed_xml_fallback_remains_body_citation_source(tmp_path: Path) -> None:
+    source_root = tmp_path / "teste" / "PG998" / "text"
+    source_root.mkdir(parents=True)
+    path = source_root / "PG998-001.txt"
+    path.write_text(
+        """<pagina tipo="conteudo">
+<bloco tipo="texto_principal">Vide Gen. 1, 1 & confer Rom. 5, 8.</bloco>
+</pagina>""",
+        encoding="utf-8",
+    )
+
+    result = scan_file_task(
+        ScanTask(
+            volume_id="PG998",
+            collection="PG",
+            source_root=str(source_root),
+            file_path=str(path),
+            physical_index=0,
+            is_index_source=False,
+            observed_aliases=(),
+            estimator_pages=(),
+            profile_fingerprint="fixture",
+        )
+    )
+
+    assert result["parser_status"] == "xml_fallback"
+    assert result["groups"][0]["context_kind"] == "body"
+    assert {
+        occurrence["ref_norm"]
+        for group in result["groups"]
+        for occurrence in group["occurrences"]
+    } == {"Gênesis 1,1", "Romanos 5,8"}
+
+
+def test_psalm_heading_inheritance_rejects_impossible_psalm_number(
+    tmp_path: Path,
+) -> None:
+    source_root = tmp_path / "teste" / "PL997" / "text"
+    source_root.mkdir(parents=True)
+    path = source_root / "PL997-001.txt"
+    path.write_text(
+        """<pagina tipo="conteudo">
+<bloco tipo="texto_principal">
+EX PSALMO D. Vers. 1. EX PSALMO CLI. Vers. 2.
+</bloco>
+</pagina>""",
+        encoding="utf-8",
+    )
+
+    result = scan_file_task(
+        ScanTask(
+            volume_id="PL997",
+            collection="PL",
+            source_root=str(source_root),
+            file_path=str(path),
+            physical_index=0,
+            is_index_source=False,
+            observed_aliases=(),
+            estimator_pages=(),
+            profile_fingerprint="fixture",
+        )
+    )
+
+    refs = {
+        occurrence["ref_norm"]
+        for group in result["groups"]
+        for occurrence in group["occurrences"]
+    }
+    assert refs == {"Salmos 151", "Salmos 151,2"}
+    assert all(not ref.startswith("Salmos 500") for ref in refs)
+
+
+def test_chapter_only_notes_do_not_consume_next_footnote_number(
+    tmp_path: Path,
+) -> None:
+    source_root = tmp_path / "teste" / "PG997" / "text"
+    source_root.mkdir(parents=True)
+    path = source_root / "PG997-001.txt"
+    path.write_text(
+        """<pagina tipo="conteudo">
+<bloco tipo="rodape">
+4S Dan. XIII. 44 Gen. XXXIX. 45 Matth. XVIII, 15. 46 1 Cor. 2.11.
+</bloco>
+<bloco tipo="texto_principal">
+col. 689; la sagesse 10 divine; mes os. 9 guérissent; Gen. 2.
+</bloco>
+</pagina>""",
+        encoding="utf-8",
+    )
+
+    result = scan_file_task(
+        ScanTask(
+            volume_id="PG997",
+            collection="PG",
+            source_root=str(source_root),
+            file_path=str(path),
+            physical_index=0,
+            is_index_source=False,
+            observed_aliases=(),
+            estimator_pages=(),
+            profile_fingerprint="fixture",
+        )
+    )
+    refs = {
+        occurrence["ref_norm"]
+        for group in result["groups"]
+        for occurrence in group["occurrences"]
+    }
+
+    assert refs == {
+        "Daniel 13",
+        "Gênesis 39",
+        "Gênesis 2",
+        "São Mateus 18,15",
+        "1 Coríntios 2,11",
+    }
+    assert "Daniel 13,44" not in refs
+    assert "Colossenses 689" not in refs
+    assert "Sabedoria 10" not in refs
+    assert "Oseias 9" not in refs
+    daniel = next(
+        group
+        for group in result["groups"]
+        if group["occurrences"][0]["ref_norm"] == "Daniel 13"
+    )
+    assert daniel["citation_raw"] == "Dan. XIII"
+    assert daniel["evidence_json"]["note_call"] == {
+        "raw": "4S",
+        "number_start": 45,
+        "number_end": None,
+        "ocr_numeric_repair": True,
+    }
 
 
 def test_scanner_handles_lists_historical_names_and_roman_boundaries(
@@ -129,6 +318,9 @@ def test_scanner_handles_lists_historical_names_and_roman_boundaries(
     assert "1 Coríntios 2,4" in normalized
     assert "1 Coríntios 3,18-20" in normalized
     assert "Salmos 112,7" in normalized
+    assert {"Deuteronômio 1,16", "Deuteronômio 16,18"} <= normalized
+    assert {"Salmos 4,9", "Salmos 91,1"} <= normalized
+    assert {"São Lucas 24,4", "São Lucas 24,5"} <= normalized
     assert not any(
         item["book_key"] == "1 corintios"
         and item["chapter_start"] == 1
@@ -264,6 +456,45 @@ def test_database_is_incremental_searchable_and_excludes_index_sources(
     )
     assert stale_artifact["coverage_status"] == "stale"
     assert stale_artifact["stale_file_count"] == 1
+
+
+def test_body_and_ocr_note_call_are_persisted_in_database(tmp_path: Path) -> None:
+    source_root = tmp_path / "teste" / "PL997" / "text"
+    source_root.mkdir(parents=True)
+    path = source_root / "PL997-001.txt"
+    path.write_text(
+        """<pagina tipo="conteudo">
+<bloco tipo="texto_principal">Vide Gen. I, 1.</bloco>
+<bloco tipo="rodape">[4S] Dan. XIII.</bloco>
+</pagina>""",
+        encoding="utf-8",
+    )
+    db_path = tmp_path / "citations.db"
+
+    build_citation_database(
+        db_path=db_path,
+        volumes=[("PL997", "PL", source_root)],
+        workers=1,
+        payload_dir=tmp_path / "missing-payloads",
+    )
+
+    with sqlite3.connect(db_path) as con:
+        rows = con.execute(
+            """SELECT g.context_kind, o.ref_norm, g.evidence_json
+               FROM citation_occurrences o
+               JOIN citation_groups g ON g.group_id = o.group_id
+               ORDER BY g.block_index, o.item_order"""
+        ).fetchall()
+    assert [(row[0], row[1]) for row in rows] == [
+        ("body", "Gênesis 1,1"),
+        ("footer", "Daniel 13"),
+    ]
+    assert json.loads(rows[1][2])["note_call"] == {
+        "number_end": None,
+        "number_start": 45,
+        "ocr_numeric_repair": True,
+        "raw": "[4S]",
+    }
 
 
 def test_one_and_two_workers_produce_identical_semantic_rows(

@@ -89,6 +89,8 @@ Semantics:
 - `file_start` and `file_end` are physical OCR file locators for the files where the section is attested.
 - The same printed section may span multiple printed pages inside one scan or OCR file; keep the editorial span and the physical file span conceptually separate.
 - `page_start`/`page_end` may be `null` when the section page itself has no trustworthy printed/editorial number in OCR, as long as `file_start`/`file_end` anchor the section physically.
+- Every section must have at least one start anchor (`page_start` or `file_start`) and at least one
+  end anchor (`page_end` or `file_end`). This is validated before import.
 - If `work_key` is not `null`, it must exactly match one `works[].work_key` from the same payload.
 - Do not use a heading label, thematic alias, or shortened title as `sections[].work_key` unless that exact key is also the canonical `work_key` of a work in `works[]`.
 
@@ -96,6 +98,7 @@ Semantics:
 
 Each entry is one object with:
 
+- `entry_key`
 - `entry_order`
 - `entry_raw`
 - `target_raw`
@@ -110,6 +113,8 @@ Each entry is one object with:
 
 Semantics:
 
+- `entry_key` is required, globally unique within the payload, and immutable when copied from a
+  validated chunk assembly. Never regenerate or remove it in the final-payload phase.
 - `target_file` is the physical OCR file judged to contain the indexed target when it can be located.
 - `page_ref_raw`, `page_ref_int`, and `page_ref_col` are printed/editorial references copied from the source index line.
 - `page_ref_int` is not the OCR file suffix.
@@ -127,19 +132,26 @@ Semantics:
   - `fascicle_inventory`
   - `work_front_matter`
   - `work_internal_table`
-  - `work_index_nominal`
-  - `work_index_scripture`
-  - `work_index_alphabetical`
-  - `work_index_analytic`
   - `editorial_closure`
   - `retrospective_table`
-- `index_kind` must reflect the visible heading, for example `ELENCHUS`, `INDEX CAPITUM`, `ORDO RERUM`, `INDEX ANALYTICUS`, `INDEX RERUM ET VERBORUM`, `INDEX GRÆCITATIS`, `TABLE DES MATIÈRES`, `TABLE DES NOMS PROPRES`, `TABLE ANALYTIQUE DES MATIÈRES`, or `INDEX DES CITATIONS DES ÉCRITURES`.
+- `work_index_nominal`, `work_index_scripture`, `work_index_alphabetical`, and closing
+  `work_index_analytic` sections belong to the separate alphabetical-index payload and must not be
+  emitted here. A work-internal `TABLE ANALYTIQUE DES MATIÈRES` may remain a general section only
+  when it is structurally a contents table rather than a closing subject index.
+- `publisher_advertisement`, `publisher_catalogue`, and equivalent promotional matter after an
+  explicit `FINIS TOMI` are external to the volume index and must not be emitted by either index
+  pipeline. Preserve the exclusion evidence in `notes`.
+- `index_kind` must reflect the visible owned heading, for example `ELENCHUS`, `INDEX CAPITUM`,
+  `ORDO RERUM`, or `TABLE DES MATIÈRES`.
 - `target_file` must point to the OCR text file for the referenced page when one can be identified.
 - `target_file` should be chosen from direct local OCR evidence, not from page numbers alone.
 - The numeric suffix in `...-NNN.txt` is a physical OCR locator, not a printed page number.
 - Printed/internal numbers may be corrupted by OCR CER or scan wear; keep them as references, but prefer title/header/body-text evidence when anchoring a physical OCR file.
 - One scan may represent two printed pages, facing pages, or other non-1:1 layouts; preserve editorial references separately from physical file mapping.
-- Keep OCR literals in `entry_raw`, `heading_raw`, and reference fields.
+- Keep OCR literals in `entry_raw`, `heading_raw`, and reference fields, but remove a proven OCR
+  soft wrap from the canonical logical string. Preserve exact physical line fragments, including
+  `-\n`, in `raw_json.source_lines` or `raw_json.line_fragments`. Never clean provenance strings to
+  appease canonical-field validation.
 - Use `raw_json` to preserve any extra evidence that is useful for later review.
 - For `PO`, use `raw_json` to preserve extra structural evidence such as `FASC.` labels, cross-tome mentions, bracket pagination, and parallel page numbering.
 - `entries` is required for every section and must contain the section's actual line items whenever they can be read from OCR.

@@ -269,6 +269,87 @@ def test_compact_batch_reextracts_invalid_import_with_local_replace(
     assert exports == [True]
 
 
+def test_compact_batch_translation_only_never_extracts_or_imports(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    root = tmp_path / "teste"
+    (root / "PG001" / "text").mkdir(parents=True)
+    translated: list[str] = []
+
+    monkeypatch.setattr(
+        alphabetical_runner,
+        "volume_already_imported",
+        lambda db_path, volume_id: pytest.fail(
+            "translation-only must not inspect extraction runs"
+        ),
+    )
+    monkeypatch.setattr(
+        alphabetical_runner,
+        "get_volume_quality",
+        lambda db_path, volume_id: pytest.fail(
+            "translation-only must not refresh extraction quality"
+        ),
+    )
+    monkeypatch.setattr(
+        alphabetical_runner,
+        "run_compact_extraction",
+        lambda **kwargs: pytest.fail("translation-only must not extract"),
+    )
+    monkeypatch.setattr(
+        alphabetical_runner,
+        "import_payload",
+        lambda *args, **kwargs: pytest.fail("translation-only must not import"),
+    )
+    monkeypatch.setattr(
+        alphabetical_runner,
+        "run_translation_stage",
+        lambda **kwargs: translated.append(kwargs["volume_id"])
+        or {
+            "ran": True,
+            "pending_strings": 1,
+            "written_rows": 4,
+            "completed_strings": 1,
+        },
+    )
+    monkeypatch.setattr(alphabetical_runner, "maybe_export_web_indices", lambda args: True)
+
+    args = SimpleNamespace(
+        root=root,
+        output_dir=tmp_path / "payloads",
+        intermediate_root=tmp_path / "intermediate",
+        log_dir=tmp_path / "logs",
+        db=tmp_path / "alpha.db",
+        skip_done=True,
+        redo_invalid=False,
+        replace=False,
+        translation_only=True,
+        locator_chunk_size=40,
+        chunk_workers=1,
+        dry_run=False,
+        evidence_sample_size=20,
+        max_unverified_evidence_ratio=0.25,
+        skip_evidence_check=True,
+        translate=True,
+        translation_languages=["en", "pt-br"],
+        translation_model="test-model",
+        translation_openai_url="https://example.invalid/v1",
+        translation_openai_api_key="test-key",
+        translation_workers=2,
+        translation_timeout=30,
+        translation_retries=1,
+        translation_tools=True,
+        translation_dictionary_dir=tmp_path / "dicts",
+        translation_max_tool_rounds=2,
+        continue_on_error=False,
+        verbose=False,
+    )
+
+    alphabetical_runner.run_compact_batch(args, ["PG001"])
+
+    assert translated == ["PG001"]
+
+
 def test_main_persists_system_exit_and_continue_on_error(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,

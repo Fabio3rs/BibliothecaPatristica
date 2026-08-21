@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Join likely OCR line-break hyphen artifacts in alphabetical index payloads.
+"""Join proven OCR line-break hyphen artifacts in canonical index text fields.
 
 Usage:
   python scripts/pipeline_index_extraction/fix_linebreak_hyphens.py INPUT_JSON OUTPUT_JSON
 
-The script only cleans canonical text fields such as entry_raw and lemma_raw.
-It leaves raw_json and path-like fields untouched.
+The script supports both alphabetical top-level entries and general ``sections[].entries``.
+It leaves raw_json, provenance fragments, and path-like fields untouched.
 """
 
 from __future__ import annotations
@@ -25,6 +25,10 @@ TEXT_FIELDS = {
     "lemma_norm",
     "lemma_sort",
     "context_raw",
+    "heading_norm",
+    "heading_raw",
+    "normalized_target",
+    "note_raw",
     "ref_raw",
     "book_raw",
     "book_norm",
@@ -32,6 +36,9 @@ TEXT_FIELDS = {
     "line_ref_raw",
     "range_start_raw",
     "range_end_raw",
+    "target_raw",
+    "title_norm",
+    "title_raw",
 }
 
 
@@ -44,21 +51,25 @@ def clean_text(value: str) -> str:
     return cleaned
 
 
-def clean_payload(payload: dict) -> dict:
-    for entry in payload.get("entries", []):
+def _clean_items(items: list) -> None:
+    for entry in items:
+        if not isinstance(entry, dict):
+            continue
         for key in TEXT_FIELDS:
             if isinstance(entry.get(key), str):
                 entry[key] = clean_text(entry[key])
 
-    for ref in payload.get("refs", []):
-        for key in TEXT_FIELDS:
-            if isinstance(ref.get(key), str):
-                ref[key] = clean_text(ref[key])
 
-    for ref in payload.get("scripture_refs", []):
-        for key in TEXT_FIELDS:
-            if isinstance(ref.get(key), str):
-                ref[key] = clean_text(ref[key])
+def clean_payload(payload: dict) -> dict:
+    _clean_items(payload.get("works", []))
+    _clean_items(payload.get("sections", []))
+    _clean_items(payload.get("entries", []))
+    _clean_items(payload.get("refs", []))
+    _clean_items(payload.get("scripture_refs", []))
+
+    for section in payload.get("sections", []):
+        if isinstance(section, dict):
+            _clean_items(section.get("entries", []))
 
     return payload
 
