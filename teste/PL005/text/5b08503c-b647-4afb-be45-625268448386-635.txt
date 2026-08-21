@@ -1,21 +1,21 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="50,20,100,50">
     1261
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="400,20,600,50">
+  <bloco tipo="cabecalho" script="latino" bbox="380,20,620,50">
     LIBER SEPTIMUS.
   </bloco>
   <bloco tipo="cabecalho" script="latino" bbox="900,20,950,50">
     1262
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,480">
+  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,280">
     inquit Trebatius, verbum ea causa est additum, eaque
     ratione profertur; ne vinum omne omnino, quod in
     cellis atque apothecis est conditum, ex quibus illud,
     quod effunditur, promptum est, esse sacrum incipiat,
     et ex usibus eripiatur humanis. Addito ergo hoc
     verbo solum erit, quod infertur, sacrum, nec reli-
-    gione obligabitur ceterum. Qualis ergo hic honor
+    gione obligabitur cæterum. Qualis ergo hic honor
     est, in quo imponitur quasi lex deo, ne plus quærat,
     quam datum est? aut cujus ipse est aviditatis deus,
     qui nisi verbi fuerit præscriptione submotus, cupidi-
@@ -23,15 +23,25 @@
     supplicem privet? Mactus hoc vino inferto esto : inju-
     ria est ista, non honor. Quid enim si divus amplius
     hoc volet, neque erit contentus illato? nonne insigni-
-    ter dicendum est Irdi, qui honorem accipere cum
+    ter dicendum est lædi, qui honorem accipere cum
     conditione cogatur? Nam si exceptione non addita
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="50,260,70,280">
+  <bloco tipo="nota_marginal" script="latino" bbox="520,60,540,80">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,60,950,150">
+    potens, quam venerari, quam colere officiis omnibus
+    cæremonialibus debeas : cui legem venerator imponit,
+    quam cum pactionibus adorat et formulis : quæ per
+    unius formidinem verbi ab immodicis vini cupidita-
+    tibus arcetur.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="50,280,70,300">
     B
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,280,480,480">
+  <bloco tipo="texto_principal" script="latino" bbox="50,280,480,450">
     sacrum necesse est fieri omne omnino, quod in cellis
-    est; vinum, manifestum est et deo contumeliam
+    est, vinum, manifestum est et deo contumeliam
     fieri, cui modus constituatur invito : et vos ipsos
     in re sacra cæremoniarum officia violare, qui non
     tantum tribuitis vini, quantum deum videtis sibi velle
@@ -41,17 +51,7 @@
     ris assumito, quantum te habere decerno, et verborum
     circumscriptione definio. O deorum sublimitas præ-
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="520,60,540,80">
-    A
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,80,950,150">
-    potens, quam venerari, quam colere officiis omnibus
-    cæremonialibus debeas : cui legem venerator imponit,
-    quam cum pactionibus adorat et formulis : quæ per
-    unius formidinem verbi ab immodicis vini cupidita-
-    tibus arcetur.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,160,950,480">
+  <bloco tipo="texto_principal" script="latino" bbox="520,160,950,450">
     XXXII. Sed sit, ut vultis, honor in vino, sit in
     thure, immolatione et cædibus hostiarum iræ numi-
     num offensionesque placentur. Etiamne diis sertis, co-
@@ -59,88 +59,140 @@
     bus, et quassationibus cymbalorum? etiamne tympanis? etiamne symphoniis? Quid efficiunt crepitus
     scabillorum, ut cum eos audierint numina, honorifice
     secum existiment actum, et ferventes animos irarum
-    oblivione deponant? An numquid ut parvuli pusionibus ab ineptis vagitibus crepitaculis exterrentur auditu : eadem ratione et omnipotentia numina tibiarum
+    oblivione deponant? An numquid ut parvuli pusio-
+    nes ab ineptis vagitibus crepitaculis exterrentur audi-
+    tis : eadem ratione et omnipotentia numina tibiarum
     stridore mulcentur, et ad numerum cymbalorum
     mollita indignatione flaccescunt? Quid sibi volunt ex-
-    tationes istæ, quas canitis matutini, collatis ad tibiam
+    citationes istæ, quas canitis matutini, collatis ad tibiam
     vocibus? Obdormiscunt enim superi, remcare ut ad
     vigilias debeant? Quid dormitiones illæ, quibus bene
     ut valeant, auspicabili salutatione mandatis? Somni
     enim quiete solvuntur, occuparique ut hoc possint,
-    lenies audiendæ sunt næniæ? Lavatio, inquit, deum
+    lenes audiendæ sunt næniæ? Lavatio, inquit, deum
     matris est hodie. Sordescunt enim divi, et ad sordes
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="400,490,600,510">
+  <bloco tipo="cabecalho" script="latino" bbox="380,460,620,480">
     COMMENTARIUS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,520,480,560">
+  <bloco tipo="aparato_critico" script="latino" bbox="50,490,480,520">
     Cujacius Obss. Jur., l. II, c. 12, p. 52, seqq. ORELL.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,560,480,580">
+  <bloco tipo="aparato_critico" script="latino" bbox="50,520,480,560">
     Trebatius. Incertæ ætatis scriptor. Libri ejus x re-
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,560,520,580">
+  <bloco tipo="nota_marginal" script="latino" bbox="450,540,470,560">
     C
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,580,480,610">
+  <bloco tipo="aparato_critico" script="latino" bbox="50,560,480,590">
     ligionum citantur a Macrobio. Vide G. J. Voss., de
     Hist. lat., l. III, hoc verbo. ORELL.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,610,480,650">
-    Nec religione obligabitur ceterum. Qualis ergo, etc.
-    Ita rectissime interpunxit Gelenius et cæteri eum secuti. Antea legebatur : Nec religione obligabitur.
+  <bloco tipo="aparato_critico" script="latino" bbox="50,590,480,640">
+    Nec religione obligabitur cæterum. Qualis ergo, etc.
+    Ita rectissime interpunxit Gelenius et cæteri eum se-
+    cuti. Antea legebatur : Nec religione obligabitur.
     Cæterum qualis ergo. ORELL.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,650,480,710">
-    Qui honorem accipere cum conditione cogatur. Veteres cum aliquid conscribebant, caute et accurate loquebantur legesque semper et conditiones expresse addebant, ne qua se tacita religione obligarent; quod ex pluribus inscriptionibus patet, verbi causa :
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,710,480,760">
-    JUPITER. OPTIME. MAXIME. QUANBOQUE. TIBI. HODIE.
+  <bloco tipo="aparato_critico" script="latino" bbox="50,640,480,710">
+    Qui honorem accipere cum conditione cogatur. Ve-
+    teres cum aliquid consecrabant, caute et accurate
+    loquebantur legesque semper et conditiones expresse
+    addebant, ne qua se tacita religione obligarent; quod
+    ex pluribus inscriptionibus patet, verbi causa :
+    JUPITER. OPTIME. MAXIME. QUANDOQUE. TIBI. HODIE.
     HANC. ARAM. DABO. DEDICABOQUE. OLLIS. LEGIBUS.
     OLLISQUE. REGIONIBUS. DABO. DEDICABOQUE. QUAS.
     HIC. HODIE. PALAM. DIXERO.
     HERALD.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,760,480,780">
-    XXII. — Etiamne diis sertis, coronis adficiuntur et
+  <bloco tipo="aparato_critico" script="latino" bbox="50,710,480,730">
+    XXXII. — Etiamne diis sertis, coronis adficiuntur et
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="50,780,70,800">
+  <bloco tipo="nota_marginal" script="latino" bbox="450,730,470,750">
     D
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,800,480,900">
-    floribus. Deus coronis, sertis et floribus fuisse ornatos, passiva observatio est. Fiebat id proprie, quum prosperum aliquid acciderat aut malum aliquod depulsum fuerat : aut in magis et festivis solennitatibus. Lactantius, l. II. c. 4. Postquam metus deseruit, et pericula recesserunt; tum vero alacres ad deorum templa concurrunt; his libant, his sacrificant, hos coronant. Hinc Artemidorus, l. II; Onirocrit., c. 34 : Στεφανοῦνθας ἄνδρα καὶ κλάδος τοῖς προσήκουσι καὶ νενομισμένοις, σημαίνει ἀγαθὸν πᾶσι οὐκ ἄνευ μὲν φροντίδων ἀποθήσομενον. At me hoc nomine damnasse olim christianis coramæ. HERALD.
-    Etiamne æris tinnitibus. In sacris Isidis præcipue cymbala, tympana, et ejusmodi organa. HERALD
-    Etiamne æris tinnitibus et quassationibus cymbalorum? etiamne tympanis? Hæc conjungit etiam Lucretius, II, 618, seqq.
+  <bloco tipo="aparato_critico" script="latino" bbox="50,730,480,820">
+    floribus. Deos coronis, sertis et floribus fuisse orna-
+    tos, passiva observatio est. Fiebat id proprie, quum
+    prosperum aliquid acciderat aut malum aliquod de-
+    pulsum fuerat : aut in magnis et festivis solennitati-
+    bus. Lactantius, l. II, c. 4. Postquam metus dese-
+    ruit, et pericula recesserunt; tum vero alacres ad deo-
+    rum templa concurrunt; his libant, his sacrificant, hos
+    coronant. Hinc Artemidorus, l. II; Onirocrit., c.
+    34 : Στεφανοῦνθας ἄνδρα καὶ κλάδος τοῖς προσήκουσι
+    καὶ νενομισμένοις, σημαίνει ἀγαθὸν πᾶσι οὐκ ἄνευ μὲν
+    φροντίδων ἀποθήσομενον. At me hoc nomine damnasse
+    olim christianis coronæ. HERALD.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,900,480,950">
+  <bloco tipo="aparato_critico" script="latino" bbox="50,820,480,850">
+    Etiamne æris tinnitibus. In sacris Isidis præcipue
+    cymbala, tympana, et ejusmodi organa. HERALD.
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="50,850,480,920">
+    Etiamne æris tinnitibus et quassationibus cymbalorum?
+    etiamne tympanis? Hæc conjungit etiam Lucretius,
+    II, 618, seqq. :
     Tympana tenta tonant palmis, et cymbala circum
     Concava raucisono minantur cornua cantu,
     Et Phrygio stimulat numero cava tibia mentes.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,520,950,560">
-    Et Ovidius, l. iv Fast. :
-    Ilmut semimares et inania tympana tundunt
-    Æra,que tinnitius ære repulsa dabunt. NONN., p. 525.
+  <bloco tipo="aparato_critico" script="latino" bbox="520,490,950,530">
+    Et Ovidius, l. IV Fast. :
+    Ibunt semimares et inania tympana tundent
+    Æraque tinnitus ære repulsa dabunt. NONN., p. 525.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,560,950,590">
-    Quid efficiunt crepitus scabillorum. Vide supra, ad l. II. c. 42. ORELL.
+  <bloco tipo="aparato_critico" script="latino" bbox="520,530,950,560">
+    Quid efficiunt crepitus scabillorum. Vide supra, ad
+    l. II, c. 42. ORELL.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,590,950,660">
-    Tibiarum stridore mulcentur. Quum diis sacrificia offerentur, et preces conciperentur, tibiæ et varia instrumenta musica simul perstrepebant : sed tibiæ præcentoriæ proprie et illæ, quas deorum pulvinaribus præcinere solitas, nemo, opinor, ignorat. Unde etiam tibias a christianis olim reprobatas docebamus ad librum II, c. 42. HERALD.
+  <bloco tipo="aparato_critico" script="latino" bbox="520,560,950,640">
+    Tibiarum stridore mulcentur. Quum diis sacrificia
+    offerentur, et preces conciperentur, tibiæ et varia
+    instrumenta musica simul perstrepebant : sed tibiæ
+    præcentoriæ proprie et illæ, quas deorum pulvina-
+    ribus præcinere solitas, nemo, opinor, ignorat. Unde
+    etiam tibias a christianis olim reprobatas docebamus
+    ad librum II, c. 42. HERALD.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,660,950,760">
-    Quid sibi volunt excitationes illæ, etc. Ejusmodi excitationes maxime usitatæ in sacris Isidis et Serapidis. Prima hora sacerdotes Isidis templum aperiebant, idque aperto vocabatur, deinde salutabant deam, quod salutationem et excitationem vocabant, post totum diem stipem emendicabant : inde ad octavam redibant, deam componebant, templumque claudebant. Testes Apuleius Miles., l. XI (ubi vid. Oudendorp.), p. 795, Porphyrius, de Abstinentia ab animalibus. Plura collegerunt Jos. Scaliger, ad Tibull., l. I, Eleg. III, v. 31, et J. Lipsius, in Electis, l. II, c. 18. ORELL.
+  <bloco tipo="aparato_critico" script="latino" bbox="520,640,950,750">
+    Quid sibi volunt excitationes illæ, etc. Ejusmodi ex-
+    citationes maxime usitatæ in sacris Isidis et Serapi-
+    dis. Prima hora sacerdotes Isidis templum aperie-
+    bant, idque apertio vocabatur, deinde salutabant
+    deam, quod salutationem et excitationem vocabant,
+    post totum diem stipem emendicabant : inde ad oc-
+    tavam redibant, deam componebant, templumque
+    claudebant. Testes Apuleius Miles., l. XI (ubi vid.
+    Oudendorp.), p. 795, Porphyrius, de Abstinentia ab
+    animalibus. Plura collegerunt Jos. Scaliger, ad Ti-
+    bull., l. I, Eleg. III, v. 31, et J. Lipsius, in Electis,
+    l. II, c. 18. ORELL.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,760,950,900">
-    Dormitiones. Ita codex ms. et editio princeps. Gelenius edidit domitiones, quod probant tan erus et Stewechius tamquam vocem antiquam et probissimæ notæ, qua usi Pacuvius, Lucilius, Plautus, Apuleius, etiam Cicero, l. I, de Divinat. Classi propinquum reditum ec domuitionem dari. Nihil tamen equidem mutare ausim. De dormitionibus, id est, carminibus, quibus magna dea Isis ad somnum capiendum invitata, et excitationibus, quibus summo mane excitata fuerat e somno, multus est Bottiger V. Cl. in scripto suo die Isisoper, inserto l. t. Minerva Taschenbuch fürs Jahr 1809, p. 131 et 136. ORELL.
+  <bloco tipo="aparato_critico" script="latino" bbox="520,750,950,890">
+    Dormitiones. Ita codex ms. et editio princeps. Ge-
+    lenius edidit domuitiones, quod probant Canterus et
+    Stewechius tamquam vocem antiquam et probissimæ
+    notæ, qua usi Pacuvius, Lucilius, Plautus, Apuleius,
+    etiam Cicero, l. I, de Divinat. Classi propinquum
+    reditum et domuitionem dari. Nihil tamen equidem
+    mutare ausim. De dormitionibus, id est, carminibus,
+    quibus magna dea Isis ad somnum capiendum invi-
+    tata, et excitationibus, quibus summo mane excitata
+    fuerat e somno, multus est Bottiger V. Cl. in scri-
+    pto suo die Isisoper, inserto l. t. Minerva Taschen-
+    buch fürs Jahr 1809, p. 131 et 136. ORELL.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,900,950,950">
-    Lavatio..... Deum Matris est hodie. Sexto scilicet kalendas aprilis, quemadmodum his Ammiani Marcellini (l. XXII, c. 3) verbis discimus : Ante diem sextum
+  <bloco tipo="aparato_critico" script="latino" bbox="520,890,950,940">
+    Lavatio..... Deum Matris est hodie. Sexto scilicet
+    kalendas aprilis, quemadmodum his Ammiani Marcel-
+    lini (l. XXIII, c. 3) verbis discimus : Ante diem sextum
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
+  <bloco tipo="rodape" script="latino" bbox="400,950,600,990">
     Digitized by Google
   </bloco>
   <notas>
-    Transcrição de página com texto em latim e grego. As letras A, B, C, D foram identificadas como marcadores marginais de seção e transcritas em blocos separados conforme instrução, não sendo incluídas no fluxo do texto principal das colunas. O texto grego na coluna inferior esquerda foi transcrito caracter por caracter.
+    Transcrição fiel da imagem. Letras A, B, C, D tratadas como notas marginais. Texto grego transcrito no comentário. Ortografia original preservada (ex: cæterum, inferto, næniæ).
   </notas>
 </pagina>

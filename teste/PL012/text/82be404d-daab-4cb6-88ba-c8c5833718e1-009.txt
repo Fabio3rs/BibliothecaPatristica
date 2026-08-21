@@ -1,41 +1,20 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="350,100,650,150">
-    ELENCHUS
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="200,160,800,190">
-    OPERUM QUÆ IN HOC VOLUMINE CONTINENTUR.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="400,280,600,300">
-    S. EUSEBIUS VERCELLENSIS.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,310,900,330">
-    Evangelium S. Eusebii. . . . . . . . . . . . . . . . . col. 9
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,340,900,360">
-    Ejusdem Epistolæ. . . . . . . . . . . . . . . . . . . 947
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="400,390,600,410">
-    FIRMICUS MATERNUS.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,420,900,440">
-    Liber de Errore profanarum religionum. . . . . . . . . . . 971
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="400,470,600,490">
-    S. PHILASTRIUS.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,500,900,520">
-    Liber de Hæresibus, cum præcedentibus prolegomenis. . . . . . . . 1049
-  </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="100,700,900,900">
-    ERRATA.—Col. 83, lin. 17 (ascendendo) : τὸ ; leg. τῷ.—Col. 123, 129, 133, 137, in titulo superiori : ad episcopum Gurcensem; leg. ad Muscilium.—Col. 981, lin. 5 (ascendendo) : præmium; leg. proœmium.—Col. 1004, lin. 28 (ascendendo) : Ἀναλίσχονται ; leg. ἀναλίσχονται.—Col. 1015, lin. penult. : « Ἀοιδῆς τε κνισῆς τε τὸ γὰρ λάχομεν γέρας », ἡμες, λέγοντες, leg. : « Ἀοιδῆς τε κνισῆς τε, τὸ γὰρ λάχομεν γέρας ἡμεῖς, » λέγοντες.—Col. 1020, lin. 3 (ascendendo) : νίφος ; leg. νίρος.—Col. 1050, lin. 8 (ascendendo) : οἱ ; leg. οἱ.—Col. 1053, lin. 7 (ascendendo) : Ἱσραήλ ; leg. Ἰσραήλ.—Col. 1054, lin. ult. : ἄδην ; leg. ἅδην.—Col. 1055, lin. 18 (ascendendo) : αἰῶνος ; leg. αἰῶνος.—Ibid., lin. 17 (ascendendo) : in passione ; leg. in Passione.—Ibid., lin. 17-15 : Εἶτα ἐκβληθεὶς..... τοῦ ἅδου..... θεοῦ..... τῇ ; leg. Εἶτα ἐκβληθεὶς..... τοῦ ἅδου..... θεοῦ..... τῇ.—Ibid., lin. 14-12 : Σήμερον.... χαλεπῶς.... οἰκτρῶς..... ως, ἡμς ; leg. Σήμερον.... χαλεπῶς.... σκληρῶς..... ὡς μᾶς.—Col. 1058, lin. 26 (ascendendo) : δράκων ταύρου ; leg. δράκων ταύρου.—Ibid., lin. penult. : δράκαιν ; leg. δράκων.—Col. 1059, lin. 22-21 (ascendendo) : ἀλλ'... τις... τῇ... ἑορτῇ... ἀντώπιον ; leg. ἀλλ'... τις... τῇ... ορτῇ.. ἀνθρώπων.—Col. 1054, lin. 9 (ascendendo) : Bochorlus ; leg. Bochartus.—Col. 1216, lin. 1 : repræsentationem ; leg. repensationem.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="300,940,700,970">
-    MIGNE, succursaliste, à Montrouge, de Vrayet de Surcy, imprimeur à Paris.
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="400,970,600,990">
-    Digitized by Google
-  </bloco>
-  <notas>
-    A página é um índice (Elenchus) seguido de errata. O bloco de errata contém texto misto (Latim e Grego). Algumas correções no bloco de errata parecem envolver acentuação ou ortografia sutil (ex: οἱ vs οἱ, αἰῶνος vs αἰνος) que pode não ser totalmente distinguível visualmente mas foi transcrita conforme apparencia.
-  </notas>
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="392,63,639,90">ELENCHUS</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="199,106,848,147">OPERUM QUÆ IN HOC VOLUMINE CONTINENTUR.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="385,205,624,241">S. EUSEBIUS VERCELLENSIS.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="119,247,905,330">Evangelium S. Eusebii. . . . . . . . . . . . . . . . . . . col. 9
+Ejusdem Epistolæ. . . . . . . . . . . . . . . . . . . 947</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="392,394,633,435">FIRMICUS MATERNUS.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="118,444,898,478">Liber de Errore profanarum religionum. . . . . . . . . . . 971</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="397,513,632,551">S. PHILASTRIUS.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="119,561,906,593">Liber de Hæresibus, cum præcedentibus prolegomenis. . . . . . . 1049</bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="86,792,923,937">ERRATA.— Col. 83, lin. 17 (ascendendo) : οὐ; leg. ὁ.— Col. 123, 129, 133, 137, in titulo superiori. ad episcopum Gurcensem; leg. ad Musellium. — Col. 981, lin. 5 (ascendendo) : præmium; leg. proæmium. — Col. 1004, lin. 28 (ascendendo) : Αναλίσκονται ; ἰε. ὀαλίσκυνται. — Col. 1013, lin. penult. : «ἔοιης τε κνισσῆς τε τὸ τέρ λάχομεν γίρας », ἡμᾶς, λίγοντες, leg. : « Λοις τε πνισσῆς τι, τὸ γὰρ λάχομεν γίρας ἡμεῖς, » χιγοντει.— Col. 1020, lin. 3 (ascendendo) ; νὲφοςς; leg. 1 os.— Col. 1050, lin. 8 (ascendendo) : Ἶ; eg. ἜὙ. — Col. 1031, lin. ult. : ἐν; leg. to. — Col. 1035, lin. 18 (ascendendo): aumνos; leg. «uos. — Ibid., lin. 17 (ascendendo] : in passione; leg. in Passione. — Ibid., lin. 17-15 : Εια ἱκθληθς..... τοῦ δον..... θιομιῖ.... τῇ; ἱeg. Είτα ἰκθλμςις.... το ῥδον.... θιωρ.... τῇ. — Ibid., lin. 44-12 : πὴμρερον..... χαλκας.... οιδηροῦς..... ωσ, ῥ{ις; eg. με».... χλκᾶς.... εινηροῦς... oς ῥὸς. — Col. Οi, lin. 2 (ascendendo) : νν eτν; 1eg. δεκυν ταύοι. — bi., lin. penult. : δο; leg., e-. — Col. 103, lin. 22-21 (ascendendo) : o'... us... τῇ... mer... τττον; leg. n'... 3l... ... ἱητῇ .. ἑντον. — Col. 1051, lin. 9 (ascendendo) : Bochorlus; leg. Bocilrtus. — Col. 1216, lin. 1 : ræsentationem; leg. repensationem.</bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="503,903,912,936">MIGNE, succursaliste, à Montrouge, de Vrayet de Surcy, imprimeur à Paris.</bloco>
+
+  <notas>Pagina de índice seguida de errata. A marca d'água "Digitized by Google" não foi transcrita. O aparato crítico inferior é parcialmente de leitura difícil no impresso reduzido.</notas>
 </pagina>

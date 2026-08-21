@@ -1,13 +1,21 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,70">
-    653 EVANGELIUM SECUNDUM LUCAM. 686
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="40,40,960,130">
+    633
+    EVANGELIUM SECUNDUM LUCAM.
+    688
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,70,330,900">
+  <bloco tipo="cabecalho" script="latino" bbox="120,130,420,180">
     CODEX VERCELLENSIS.
-    nis venien-
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="580,130,860,180">
+    CODEX VERONENSIS.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="30,180,220,740">
+    nis vien-
     tem in nu-
-    be cum potes-
-    tate magna,
+    be cum pote-
+    state magna,
     et gloria.
     28. Incipientibus
     autem his fie-
@@ -18,17 +26,17 @@
     adpropinquat
     liberatio
     vestra.
-    29. Et dixit paren-
-    tobam illis:
-    Videte sicut,
+    29. Et dixit para-
+    bolam illis:
+    Videte ficum,
     et omnes ar-
-    30. bores; cum
+    bores; cum
     florent a se,
     scitis in pro-
-    ximo esse ae-
-    31. tatem. Sic et
+    ximo esse aec-
+    tatem. Sic et
     vos, cum vide-
-    ritis † haec,
+    ritis ¹ haec,
     scitote, quo-
     niam in pro-
     ximo est reg-
@@ -37,17 +45,18 @@
     bis, quia non
     transiet gens
     illa, donec om-
-    33. nia fiant. Cae-
+    nia fiant. Cae-
     lum, et ter-
     ra transiet;
     verba autem
-    mea non prae-
+    mea ² non prae-
     teribunt.
     34. Attendite au-
     tem vobis,
     ne quando
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,70,660,900">
+
+  <bloco tipo="texto_principal" script="latino" bbox="220,180,430,760">
     a graventur
     corda ves-
     tra gratula-
@@ -82,12 +91,48 @@
     in templo do-
     cens; nocti-
     bus vero e-
+    grediebatur,
+    et ⁵ demora-
+    batur in mon-
+    te, qui dicitur
+    Olivetum.
     38. Et omnis popu-
-    lus 6 de luce vi-
+    lus ⁶ de luce vi-
     gilabant ad e-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,70,970,900">
-    CODEX VERONENSIS.
+
+  <bloco tipo="texto_principal" script="latino" bbox="455,220,660,760">
+    30. bores, cum
+    (a) producant
+    jam † ex se
+    fructum, scitis
+    quoniam
+    jam prope
+    est aestas.
+    31. Ita et, haec
+    cum videritis
+    fieri, scitote
+    quod pro-
+    pe est regnum
+    Dei.
+    32. Amen dico
+    vobis, quia
+    non praeteribit
+    generatio
+    haec, donec
+    omnia fiant.
+    33. Caelum, et
+    terra transiet;
+    verba autem
+    mea non
+    transiet.
+    34. Attendite au-
+    tem vobis,
+    ne forte
+    graventur
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="705,180,970,760">
     corda vestra
     in crapula,
     et ebrietate,
@@ -129,18 +174,19 @@
     38. Et omnis po-
     pulus mani-
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,900,970,1000">
+
+  <bloco tipo="rodape" script="latino" bbox="30,760,970,875">
     CODEX BRIXIANUS.
-    in nubibus. cum potestatie magna et majestate. Sed
+    in nubibus. cum potestate magna et majestate. Sed
     cum haec incipient fieri, respicite et levate capita
-    vestra. quoniam adpropinquiat redemptio vestra. Et
+    vestra. quoniam adpropinquat redemptio vestra. Et
     dixit illis similitudinem. Videte ficulneam, et omnes
     arbores. cum incipient ostendere fructum. scitis
     quoniam prope est aestas. Ita et vos, cum videritis
     haec fieri. scitote quod prope est regnum Dei. Amen
     dico vobis quia non praeteribit generatio haec donec
     omnia fiant. Caelum et terra transibunt. verba autem
-    mea non praeteribunt. Attendite autem vobis ne
+    mea non praeteribunt. Adtendite autem vobis ne
     forte graventur corda vestra in crapula et ebrietate
     et cogitationibus hujus vitae. et superveniat in vos.
     repentina dies illa. tamquam laqueus enim superve-
@@ -151,19 +197,40 @@
     bus docens in templo noctibus vero exiens mora-
     bitur in monte qui vocatur Oliveti. Et omnis populus
     manicabat ad
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="30,875,970,915">
     CODEX CORBEIENSIS.
     28. Incipientibus fieri, respirabitis, et levabitis
     capita.
     34. et ebrietate, et cogitationibus saecularibus.
+  </bloco>
+
+  <bloco tipo="nota" script="latino" bbox="30,915,970,955">
     VARIANTES LECTIONES.
-    LEOCTIONES CODICIS VINDEBONENSIS ABEUNTES AB EDITIONE VULGATA.
+    1 Gal. haec omnia fieri. Vulg. haec fieri.
+    2 Gal. et Mm. non praeteribunt. Vulg. non transibunt.
+    3 Mm. durentur. Vulg. graventur.
+    4 Mm. effugere. Vulg. lugere.
+    5 Gat. et Mm. requiescebat. Vulg. manebat.
+    6 Gat. manicabat. Vulg. manicipabat.
+  </bloco>
+
+  <bloco tipo="nota" script="latino" bbox="30,955,970,985">
+    LECTIONES CODICIS VINDEBONENSIS ABEUNTES AB EDITIONE VULGATA.
+    27. in nubibus. 28. respirabitis et levabitis capita; saecularibus; et superveniat. 35. laqueus superveniet
+    quoniam adpropinquat. 30. cum producunt jam fructus. enim in omnes. 36. effugere omnia ista... et stabitis.
+    31. Ita et, haec cum videritis. 32. quoniam non praeteri-
+    bit. 33. Caelum, et terra transient.... non transient.
+    34. graventur cor vestrum in crapula... et cogitationibus
+    37. avocabatur in monte. 38. manicabat. Ibid. deest ad
+    cum.
+  </bloco>
+
+  <bloco tipo="nota" script="misto" bbox="30,985,970,1000">
     BLANCHINI NOTAE.
+    (a) Ita et text. Gr. προβάλλωσιν ἤδη. — (b) Ita et text. Gr. ἐκφεύγητε. — (c) Ita et codd. Cäth. στήσεσθε.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="60,760,300,840">
-    (a) Haec omnia fieri. Vulg. haec fieri.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="320,760,600,840">
-    (b) Ita et text. Gr. προβάλλεται ἤδη. — (b) Ita et text. Gr. ἐκφεύγῃ. — (c) Ita et codd. Cātōl. στήσεσθε.
-  </bloco>
-  <notas>Script predominante latino. Pequenas abreviações e sinais críticos preservados; uso de símbolos † mantido. Algumas linhas foram divididas conforme colunas; bbox aproximadas em escala 0-1000.</notas>
+
+  <notas>Transcrição diplomática do fac-símile, mantendo que a imagem mostra páginas espelhadas com várias colunas e o rodapé crítico. BBox aproximados em escala 0-1000.</notas>
 </pagina>

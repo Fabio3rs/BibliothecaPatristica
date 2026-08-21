@@ -1,10 +1,9 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,12,970,120">
-    587                                                                                   588
-    EUSEBII VERCELL. EVANGELIUM CUM VARIIS COD. COLLATUM.
-    CΟDEX VERCELLENSIS.                                                         CODEX VERONENSIS.
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="105,55,945,145">
+    587        EUSEBII VERCELL. EVANGELIUM CUM VARIIS COD. COLLATUM.        588
+    CODEX VERCELLENSIS.                                   CODEX VERONENSIS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,120,490,920">
+  <bloco tipo="texto_principal" script="latino" bbox="105,145,300,640">
     quere me.
     Qui dixit : Domine,
     permitte
@@ -12,7 +11,7 @@
     ire, et sepelire patrem
     60. meum. Dixit
     (a) autem † illi : (b) 1 Si-
-    ne mortuos †
+    ne mortuos
     sepelire † mor-
     tuos suos : tu
     autem vade;
@@ -20,7 +19,7 @@
     regnum Dei.
     61. Dixit autem
     et alius : Sequar te
-    Dne: prius autem permitte
+    Dne; prius autem permitte
     mihi ire, et nun-
     tiare eis, qui
     in domo sunt.
@@ -29,7 +28,7 @@
     (d) Nemo retro
     respiciens,
     et extendens
-    manum * su-
+    manum ² su-
     per aratrum, †
     aptus est reg-
     CAPUT X.
@@ -41,15 +40,17 @@
     faciem suam,
     (g) in omnem
     locum, et ci-
-    vilitatem †, ubi
-    (h) inlaturus
+    vitatem †, ubi
+    (h) intraturus
     2. erat. † Dice-
     bat autem il-
     lis : Messis co-
     piosa ; opera-
     rii autem pau-
-    ci. Praecam-
+    ci. Praecami-
     ni ergo Dominum
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="300,145,490,640">
     messis, ut mit-
     tat operari-
     os in messem
@@ -57,7 +58,7 @@
     3. Ecce mitto
     vos tanquam
     agnos (i) in me-
-    dio luporum † :
+    dio luporum †.
     4. Nolite por-
     tare saccu-
     lum ; non pe-
@@ -65,7 +66,7 @@
     ciamentum ;
     et neminem
     circa viam
-    salutavo-
+    salutave-
     5. ritis. In quam-
     cumque pri-
     mum domum
@@ -74,11 +75,11 @@
     huic domui.
     6. Si ibi fuerit
     filius pacis,
-    requie . . . ,  cel
-    3 super illum pax ves-
+    requie . . . , cel
+    ³ super illum pax ves-
     tra; sin autem,
     (j) super vos † re-
-    veretur.
+    vertetur.
     7. In eadem do-
     mo mane-
     te, edentes,
@@ -98,7 +99,7 @@
     te intrave-
     ritis, et rece-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,120,970,920">
+  <bloco tipo="texto_principal" script="latino" bbox="510,145,710,640">
     Sequere me.
     Ille autem
     dixit : Domine,
@@ -136,7 +137,7 @@
     faciem suam
     (g) in omnem
     locum, et ci-
-    vitalem †, quo
+    vitatem †, quo
     erat (h) venju-
     rus †.
     2. Et dicebat
@@ -145,25 +146,57 @@
     est, operarii
     autem pauci.
     Rogate ergo
-    pauci. Rogate ergo Dominum messis ut mittat ope-
-    rarios in messem suam. Hic ecce ego mitto vos, sicut
-    oves (i) in medio luporum †.
-    Nolite portare sacculum neque peram. neque cal-
-    ciamenta, et neminem per viam salutaveritis. Et
-    in quaecumque domum introieritis primum dicite : Pax
-    huic domui. et si ibi fuerit filius pacis, requiescet
-    super illum pax vestra, sin autem ad vos reveretur.
-    In eadem autem domo manete, edentes et bibentes
-    quae appunt illos sunt, dignus est enim operarius me-
-    rcede sua. Nolite transire de domo in domum. In
-    quacumque civitate introieritis, et susceperint
-    eos.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,920,970,990">
+  <bloco tipo="texto_principal" script="latino" bbox="710,145,945,640">
+    Dominum
+    messis, ut
+    mittat opera-
+    rios in messem
+    suam.
+    3. Et ecce ego
+    mitto vos,
+    sicut agnos
+    (i) in medio
+    luporum †.
+    4. Nolite portare
+    sacculum, neque
+    peram, neque
+    calciamenta ;
+    et neminem
+    per viam sa-
+    lutaveritis.
+    5. In quamcupque domum primum intraberitis, dicite :
+    Pax huic
+    domui : et si
+    ibi fuerit
+    filius pacis,
+    requiescet
+    super
+    i . . . . vestra;
+    sin autem,
+    (j) super vos †
+    revertetur.
+    7. In eadem
+    autem domo
+    manete, eden-
+    tes, et bibentes quae aput
+    illos sunt;
+    dignus est
+    enim operarius
+    mercede sua.
+    Nolite transire
+    de domo in
+    domum.
+    8. Et in quacum-
+    que civitate
+    intraveritis,
+    et acceperint
+  </bloco>
+  <bloco tipo="rodape" script="misto" bbox="90,640,950,885">
     CODEX BRIXIANUS.
     Sequere me Ille autem dixit. Domine permitte
     mihi primum ire et sepelire patrem meum Dixit ei
-    Jesus. Sine, mortuos sepeliiant mortuos suos tu au-
+    Jesus. Sine, mortuos sepeliaut mortuos suos tu au-
     tem vade adnuntia regnum Dei. Dixit autem et alius.
     Sequar te Domine. Sed primum permitte mihi. re
     nuntiare his qui in domo mea sunt Dixit autem ad
@@ -174,17 +207,29 @@
     vitatem et locum † quo erat ipse (h) venturus †. Et
     dicebat illis. Messis quidem multa. operarii autem pauci.
     Rogate ergo Dominum messis ut mittat ope-
-    rarios in messem suam. Hic ecce ego mitto vos,  sicut
+    rarios in messem suam. Hic ecce ego mitto vos sicut
     oves (i) in medio luporum †.
+    Nolite portare sacculum neque peram. neque cal-
+    ciamenta. et neminem per viam salutaveritis. Et
+    in quaecumque domum introieritis primum dicite. Pax
+    huic domui. et si ibi fuerit filius pacis. requiescet
+    super illum pax vestra. sin autem ad vos reveretur.
+    In eadem autem domo manete. edentes et bibentes
+    quae aput illos sunt. dignus est enim operarius mer-
+    cede sua. Nolite migrare de domo in domum. Et in
+    quacumque civitatem introieritis et susceperint
     CODEX CORBEIENSIS.
     Mutilus est cod. usque ad vers. 21 hujus capitis.
     VARIANTES LECTIONES.
-    1 Hæc. Sinite mortuos sepelire. Vulg. Sinite, ut mortui
-    sepelian.
+    1 Mm. Sinite mortuos sepelire. Vulg. Sinite, ut mortui
+    sepeliant.
     2 Gal. et Mm. in aratrum, et aspiciens. Vulg. ad ara-
     trum, et respiciens.
     3 Gal. super illum. Mm. eam. Vulg. super illum.
-    BLANCHINI NO TÆ.
   </bloco>
-  <notas>Transcrição preserva sinais tipográficos (†, 1, 3, letras entre parêntesis). Pequenas lacunas onde impresso ilegível foram marcadas por reticências ou mantidas espaços conforme original. Texto em colunas transcrito esquerda depois direita. Não foram transcritas notas críticas griegas em final de página em caracteres especiais além do corpo latino; mantidas rubricas e títulos tal como visíveis.</notas>
+  <bloco tipo="aparato_critico" script="misto" bbox="90,840,950,985">
+    BLANCHINI NOTÆ.
+    (a) Ita et tex. Gr., — (b) Ita et tex. Gr., ἄφες τοὺς νεκροὺς θάψαι. — (c) Tex. Gr., ἀποτάξασθαι τοῖς εἰς τὸν οἶκόν μου. Τῷ τοῖς, quod masculino ac neutro generi inservit, locum dedit huic varianti lectioni. — (d) Iuxta cod. Cant., οὐδείς εἰς τὰ ὀπίσω βλέπων, καὶ ἐπιβάλλων (et mittens) τὴν χεῖρα αὐτοῦ ἐπ᾽ ἄροτρον. — (e) Lege et mittens. — (f) Ante designavit, deest post haec, etiam in cod. Cant. — (g) Ita et cod. Cant., εἰς πάντα τόπον καὶ πόλιν. — (h) Ante venju- rus, deest ipse, in cod. ubique Cant. — (i) Ita et tex. Gr., ἐν μέσῳ λύκων. — (j) Tex. Gr., ἐφ᾽ ὑμᾶς. Interpres vertit cohaerente praecedenti super illum, ἐπ᾽ αὐτόν.
+  </bloco>
+  <notas>Transcrição feita por leitura direta da imagem, com divisão em quatro colunas da dupla página e seção inferior de aparelhos/notas. Mantidos sinais tipográficos e quebras de linha visíveis; as lacunas pequenas e degradações da impressão foram preservadas sem normalização.</notas>
 </pagina>

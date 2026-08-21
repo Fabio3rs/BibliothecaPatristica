@@ -1,16 +1,19 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
     363 TERTULLIANI 364
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,380">
+  <nota_marginal script="latino" bbox="490,60,510,80">
+    A
+  </nota_marginal>
+  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,360">
     inquietant divinitatis, si majestatis vestigia obsole-
     tant (1), de contemptu utique censentur, tam eorum
     qui ejusmodi factitant, quam eorum quibus factitant.
     Sed ludicra ista sunt. Cæterum si adjiciam, quæ non
-    minus conscientiæ omnium recognoscunt, in templis
+    minus conscientiæ omnium recognoscent, in templis
     adulteria (a) componi, inter aras lenocinia tractari,
     in ipsis plerumque ædituorum et sacerdotum taber-
-    naculis, sub iisdem vitiis et apicibus et purpuris,
+    naculis, sub iisdem vittis et apicibus et purpuris,
     thure flagrante libidinem expungi (b) : nescio, plusne
     de vobis dii vestri, quam de Christianis querantur.
     Certe sacrilegi de vestris semper apprehenduntur.
@@ -23,8 +26,17 @@
     nem hinc sacramenti nostri ordinem haurite, reper-
     cussis ante tamen opinionibus falsis.
   </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,360,480,440">
+    CAPUT XVI.
+    ARGUMENTUM. — Ostensurus jam, quem Deum, et quo-
+    modo illum colant Christiani, antea accingit se ad
+    convellendas opiniones de isto cultu falsas : de capite
+  </bloco>
+  <nota_marginal script="latino" bbox="490,280,510,300">
+    B
+  </nota_marginal>
   <bloco tipo="texto_principal" script="latino" bbox="520,60,950,380">
-    scilicet asinino, de cruce, de sole, de fœto isto
+    scilicet asinino, de cruce, de sole, de ficto isto
     Numine biformi, quod inscribebatur ONOKOITIS.
     Hæc omnia non sine risu morsuque diluit, inque illos
     ipsos accusatores magis quadrare ostendit. quo pacto
@@ -42,38 +54,35 @@
     bantur, indicibus fontis usos ob eam gratiam consi-
     milis bestiæ superficiem consecrasse. Atque ita inde,
     opinor, præsumptum, nos quoque ut judaicæ reli-
-    gionis (6) propinquos, eadem simulacro initiari. At
+    gionis (6) propinquos, eidem simulacro initiari. At
     enim idem Cornelius Tacitus, sane ille mendaciorum
     loquacissimus (e), in eadem historia refert Cnæum
     Pompeium, cum Hierusalem cepisset, proptereaque
     templum adiisset speculandis judaicæ religionis arca-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,380,480,440">
-    CAPUT XVI.
-    ARGUMENTUM. — Ostensurus jam, quem Deum, et quo-
-    modo illum colant Christiani, antea accingit se ad
-    convellendas opiniones de isto cultu falsas : de capite
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,440,950,540">
+  <bloco tipo="aparato_critico" script="latino" bbox="50,440,950,540">
     LECTIONES VARIANTES.
     (1) Rig. et Hav. e cod. Fuld. : majestatis fastigium ad-
     solant, uti etiam scriptum est in lib. 1. ad Natl. cap. 10.
     extr.
     (2) Rhen., Ald., Barræus, Gangæus : Nam qui-
-    dum, etc. ; Gelen., Fr. Junius, la Cerda : jam ut quidam ;
+    dam, etc. ; Gelen., Fr. Junius, la Cerda : jam ut quidam ;
     Haverc. et Rig. : Nam et quidam (ed. a. 1754. Nam et qui-
     dem). Haverc. Nam, ut quidam somniastis, caput — no-
-    struin, hanc — ejusmodi inseruit. Fr. Junius : Judaismo
+    strum, hanc — ejusmodi inseruit. Fr. Junius : Judaismo
     inseruit. Sed antiquiorem verborum distinctionem retinui-
     mus, quo facto v. hanc non delendum est, ut voluerunt
-    Heinriclius et Ritter, sed insevit pro inseruit scri-
+    Heinrichius et Ritter, sed insevit pro inseruit scri-
     bendum.
     (3) Argutatus Jun.
     (4) Infert Paris.
     (5) Exterminatos Havercamp.
     (6) Religionis abest Parisin.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,540,950,940">
+  <nota_marginal script="latino" bbox="40,480,60,500">
+    C
+  </nota_marginal>
+  <bloco tipo="nota" script="latino" bbox="50,540,480,940">
     COMMENTARIUS.
     Lexico, infelicem adhibet medicinam, quoniam non
     contulit Tertulliani Librum ad Nationes, nec constanti
@@ -87,7 +96,7 @@
     lib. 1. de Arte amandi versu 77.
     Nec fuge Niliacæ Memphitica sacra Juvencae.
     Multas illa facit, quod fuit ipsa Jovi.
-    Scilicet ut idem ait lib. III. 655.
+    Scilicet ut idem ait lib. III. 635.
     Cum sedent Phariæ sistris operata juvencæ?
     Quoque sui comites ire vetentur, eat?
     Cum fuget a templis oculos bona Diva virorum?
@@ -99,25 +108,30 @@
     ria Clodii, qui uxorem Cæsar is in sacris Bonæ Deæ
     vitiavit, nec dissimile factum, propter quod Dei ira
     contra familiam Eli accensa est, narratur I. Samuelis
-    u. 22. HAV.
+    II. 22. HAV.
     (b) Libidinem expungi, i. e. perfici, consummari. De
     Tiberio Suetonius in Vita ejus c. XLIV. Fertur etiam
     in sacrificando quondam captus facie ministri, acerram
-    præferentis, nequisse abstinere, quin pæne vizdum re
+    præferentis, nequisse abstinere, quin pæne vixdum re
     divina peracta, ibidem statim seductum constupraret,
     simulque fratrem ejus tibicinem. HAV.
     CAP. XV. — (c) Caput asininum. Præclara et docte
     congesta videri hoc loco apud interpretes Taciti pos-
-    sunt quibus addendus Lydius de Re Milit. lib. u.
+    sunt quibus addendus Lydius de Re Milit. lib. II.
+  </bloco>
+  <nota_marginal script="latino" bbox="500,750,520,770">
+    D
+  </nota_marginal>
+  <bloco tipo="nota" script="latino" bbox="520,540,950,940">
     in fine capitis secundi. Pro ejusmodi Cod. Fuld. hu-
     jusmodi. HAV.
     (d) Ægypto expeditos. In libro ad Nationes scrip-
     serat, Judæos refert in expeditione, etc.; et in Glossis,
-    Expeditio dicitur ἔξοδος εἰς πόλεμον In aliis, ἔξοδιος ἐκ-
+    Expeditio dicitur ἔξοδος εἰς πόλεμον In aliis, ἔξοδος ἐκ-
     δημητικὴ στρατιωτῶν. Ilic tamen expeditos Ægypto Ju-
     dæos dicit, quasi de tristis Ægyptiorum jugo libe-
     ratos : non extortes aut exules, ut putavit Tacitus.
-    Ric.
+    RIC.
     (e) Mendaciorum loquacissimus. Quod non mirum ubi
     de Judæis agit, cum omnes, quotquot sunt, in ista
     historia cœcutiverint, et eadem erroris chorda ober-
@@ -126,7 +140,7 @@
     Histor. c. 5. Sed adversus omnes alios hostile odium.
     Separati epulis, discreti cubilibus. Liberius Juvenalis
     Sat. XIV. versu 101.
-    D Romanas autem soliti contemnere leges,
+    Romanas autem soliti contemnere leges,
     Judaicum ediscunt, et servant, ac metuunt jus,
     Tradidit arcano quodcumque volumine Moses,
     Non monstrare vias, eadem nisi sacra colenti :
@@ -149,6 +163,6 @@
     Digitized by Google
   </bloco>
   <notas>
-    Transcrição de página de edição crítica de Tertuliano. Texto em latim com notas em latim e algumas palavras em grego (ONOKOITIS, ἔξοδος εἰς πόλεμον, etc.). A página contém o fim do Capítulo XV, o título e argumento do Capítulo XVI, e as seções de Lectiones Variantes e Commentarius.
+    Transcrição de página de edição crítica de Tertuliano (Apologeticum). Texto em latim com notas em latim e palavras em grego (ONOKOITIS, ἔξοδος εἰς πόλεμον, etc.). A página contém o fim do Capítulo XV, o título e argumento do Capítulo XVI, e as seções de Lectiones Variantes e Commentarius. As letras A, B, C, D são notas marginais de referência.
   </notas>
 </pagina>

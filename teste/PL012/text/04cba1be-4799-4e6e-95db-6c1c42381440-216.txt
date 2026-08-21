@@ -1,20 +1,23 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,70">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,50">
     401 EVANGELIUM SECUNDUM JOHANNEM. 402
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,70,500,900">
+  <bloco tipo="texto_principal" script="latino" bbox="0,50,500,80">
     CODEX VERCELLENSIS.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="0,80,250,450">
     et vade in Judaeam, ut et
     discipuli tui
-    videant (a) opera†, quae facis.
+    videant (a) ope-
+    ra †, ¹ quæ facis.
     4. Nemo enim
     in occulto
     aliquid facit,
-    et quaerit ip-
+    et quærit ip-
     se in palam
-    esse : si haec la-
-    cis, manifesta te * huic mun-
+    esse : si hæc fa-
+    cis, manifes-
+    ta te ² huic mun-
     5. do. Neque enim
     (b) tunc † fratres
     ejus credebant
@@ -32,39 +35,88 @@
     me autem o-
     dit : quia ego tes-
     timonium
-    dico de illo * quod
+    dico de illo ³ quod
     opera ejus ma-
     8. la sunt. Vos as-
     cendite in di-
-    em festum, in
-    quo non ascen-
+    em festum,
+    ego non ascen-
     dam in hunc
     diem festum :
     quoniam tem-
     pus meum
     nondum im-
     pletum est.
-    9. Haec dicens illis,
-    ipse mansit.
-    10. in Judaea. Et
+    9. Hæc dicens illis,
+    ipse mansit
+    10. in Judæa. Et
     postquam as-
     cenderunt
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,70,980,900">
-    CODex VERONENSIS.
-    
-    vade in Ju-
-    daeam , ut et
+  <bloco tipo="texto_principal" script="latino" bbox="250,80,500,450">
+    fratres ejus
+    in diem festum,
+    tunc et ipse
+    ascendit in
+    die festo non
+    palam, sed (e) abs-
+    11. conse †. Judæi
+    ergo quære-
+    bant eum in
+    die festo, et di-
+    cebant. Ubi est
+    12. ille ? Et mur-
+    mur de illo
+    erat in tur-
+    ba. Quidam di-
+    cebant : Quia
+    bonus est. Et
+    alii dicebant :
+    Non, sed sedu-
+    cit populum.
+    13. Nemo tamen
+    palam loque-
+    batur de illo
+    propter timo-
+    rem Ju . . . . -
+    rum.
+    14. Et cum jam di-
+    es festus me-
+    dius esset, as-
+    cendit Jesus in
+    templo, et do-
+    ceb . . . .
+    15. Mirabantur
+    ergo Judæi,
+    dicentes : Quo-
+    modo hic lit-
+    teras novit,
+    qui non di-
+    16. dicit ? Respondit
+    illis Jesus, dicens :
+    Mea doctri-
+    na non est
+    mea, sed ejus,
+    qui me misit.
+    17. Si quis volue-
+    rit voluntatem
+    illius f . . .
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,50,1000,80">
+    CODEX VERONENSIS.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,80,750,450">
+    vade in Judaeam, ut et
     discipuli tui
     4. videant (a) ope-
-    ra †, quae fa-
+    ra †, quæ fa-
     cis. Nemo enim
     aliquid faciens
-    in occulto ,
-    quaerit pro
+    in occulto,
+    quærit pro
     palam esse : si
-    haec facis, ma-
-    nifest a te ip•um
+    hæc facis, ma-
+    nifesta te ipsum
     huic mundo.
     5. Neque enim
     fratres ejus
@@ -77,7 +129,7 @@
     tempus autem
     vestrum semper
     est paratum.
-    7. Non potes mun-
+    7. Non potest mun-
     dus odire vos :
     me autem
     odit ; quia ego
@@ -93,21 +145,23 @@
     niam tempus
     meum nondum
     completum est.
-    9. Haec cum dixis-
+    9. Hæc cum dixis-
     set, remansit
     ipse (d) in Ga-
     lilaeam †.
     10. Cum autem
     ascenderunt fra-
     tres ejus, tunc
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="750,80,1000,450">
     et ipse ascendit
     in diem festum
-    non palam ,
+    non palam,
     sed (e) occul-
-    11. te †. Judaei
-    autem quae re-
+    11. te †. Judæi
+    autem quære-
     bant eum in
-    diem festum ;
+    diem festum,
     dicentes : Ubi
     12. est ille? Et
     murmur de eo
@@ -117,13 +171,13 @@
     dicebant : Quo-
     niam bonus
     est. Alii di-
-    cebant : Non ,
+    cebant : Non,
     sed seducit
     13. populum. Nemo
     tamen in pa-
     lam loquebatur
     de eo propter
-    metum Judaeo-
+    metum Judæo-
     14. rum. Cum
     autem jam dies
     festus medius
@@ -131,55 +185,77 @@
     Jesus in templo,
     et docebat.
     15. Mirabantur
-    autem Judaei,
+    autem Judæi,
     dicentes : Quo-
     modo hic lit-
-    eras novit,
+    teras novit,
     cum non didi-
     cerit ?
     16. Respondit
-    illis Jesus, dicens :
-    Mea doctri-
-    na non est
+    (f) Jesus †, et
+    dixit : Mea do-
+    ctrina non est
     mea, sed ejus,
     qui me misit.
     17. Si quis volue-
     rit voluntatem
     illius fa-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,900,980,1400">
+  <bloco tipo="texto_principal" script="latino" bbox="0,450,1000,480">
     CODEX BRIXIANUS.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="0,480,500,700">
     et vade in Judaeam, ut et discipuli tui. videant
-    opera tua quae facis. Nemo enim in occulo aliquid
-    facit et quaerit ipse in palam esse. si haec facis mani-
-    festa te ipsum, huic mundo. Neque enim fratres ejus.
+    opera tua quae facis. Nemo enim in occulto aliquid
+    facit et quærit ipse in palam esse. si hæc facis mani-
+    festa te ipsum. huic mundo. Neque enim fratres ejus.
     (b) tunc † credebant in eum. Dicit ergo eis Jesus.
-    Tempus meum nondum advenit. tempus autem
+    Tempus meum. nondum advenit. · tempus autem
     vestrum semper est paratum. Non potest hic mundus
     odire vos. me autem odit. quia ego testimonium
     perhibeo de illis quoniam opera eorum mala sunt.
     Vos autem ascendite. ad diem festum hunc. ego au-
     tem nondum ascendo ad diem festum hunc. quia
-    meum tempus. nondum impletum est. Haec autem
+    meum tempus. nondum impletum est. Hæc autem
     dixit eis cum esset (d) in Galilaeam †. Ut autem as-
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,1400,980,1700">
-    CODex CORBEIENSIS.
-    
-    4. * Nemo quid facit in occulo. Quid facit querit
+  <bloco tipo="texto_principal" script="latino" bbox="500,480,1000,700">
+    cenderunt fratres ejus. tunc et ipse ascendit ad diem
+    festum. non manifeste. sed quasi in occulto. Judæi
+    ergo. quærebant eum in die festo et dicebant. Ubi est
+    ille. Et murmur magnus de illo erat in plebe. Quidam
+    enim dicebant. Quia verax est. Alii autem dicebant
+    Non. sed seducit turbas. Nemo tamen fiducialiter lo-
+    quebatur de illo. propter metum Judæorum. Jam au-
+    tem. die festo mediante. ascendit Jesus in templum.
+    et docebat. Et mirabantur turbæ dicentes. Quomodo
+    hic. litteras scit. cum non didicerit. Respondit autem
+    (f) Jesus † et dixit. Mea doctrina. non est mea. sed
+    ejus qui me misit. Si quis voluerit. voluntatem ejus fa-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="0,700,500,800">
+    CODEX CORBEIENSIS.
+    4. * Nemo quid facit in occulto. Quid facit quærit
     ipse.
     5. Neque enim tunc fratres ejus.
-    
+    9. Haec cum dixisset illis.
+    12. seducit populum.
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="500,700,1000,800">
     VARIANTES LECTIONES.
-    
-    Blanchini Notæ.
-    
-    (a) Post opera, deest tua , in cod. quoque Cant. — (b) Addit tunc, etiam cod. Cant. — (c) Post Festum, deest
-    hunc, etiam in cod. Cant. — (d) Ita et cod. Cant. sic pro Kaldiacar. — (e) Ante occulte, deest quasi, in cod.
-    quoque Cant. — (f) Ante Jesus, deest eis, etiam in verg. Goth.
-    
+    ¹ Gal. quæ tu facis. Vulg. quæ facis.
+    ² Gal. mundo huic. Vulg. mundo.
+    ³ Gal. et Mm. quia opera. Vulg. quod opera.
+    ⁴ Gal. Nemo in occulto facit. Mm. Nemo ergo in.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="0,800,1000,950">
+    BLANCHINI NOTÆ.
+    (a) Post opera, deest tua, in cod. quoque Cant. — (b) Addit tunc, etiam cod. Cant. — (c) Post Festum, deest
+    hunc, etiam in cod. Cant. — (d) Ita et cod. Cant. εἰς τὴν Γαλιλαίαν. — (e) Ante occulte, deest quasi, in cod.
+    quoque Cant. — (f) Ante Jesus, deest eis, etiam in vers. Goth.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="0,950,1000,1000">
     Digitized by Google
   </bloco>
-  <notas>Script principal latino impresso; algumas abreviações e sinais críticos como † e (a),(b),(c),(d),(e) preservados. BBOXs estimadas em escala 0-1000. Mantida ordem: coluna esquerda (VERCELLENSIS), coluna direita (VERONENSIS), bloco inferior com BRIXIANUS e notas.</notas>
+  <notas>Transcrição fiel da página de edição crítica (Vetus Latina). Blocos divididos por colunas visuais. Texto grego presente nas notas de Blanchini.</notas>
 </pagina>

@@ -1,20 +1,18 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="100,20,900,50">
     207 EUSEBII VERCELL. EVANGELIUM CUM VARIIS COD. COLLATUM. 208
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="150,55,450,75">
+  <bloco tipo="texto_principal" script="latino" bbox="150,50,400,70">
     CODEX VERCELLENSIS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="600,55,900,75">
-    CODEX VERONENSIS.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,80,250,450">
+  <bloco tipo="texto_principal" script="latino" bbox="100,70,250,550">
     Baptista : qui
     autem mino. .
     est in regno
     caelorum,
     m. . r est il-
     12. lo. . . d. ebus. . .
+    hannis Ba. . .
     . . . ae. . . . . .
     . . . . . . . . . m co-
     gitur, et cogen-
@@ -49,9 +47,9 @@
     18. Venit enim
     Johannes neque
     manducans,
-    neque bibens,
+    neque bibens ,
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="260,80,450,450">
+  <bloco tipo="texto_principal" script="latino" bbox="260,70,450,550">
     et dicunt : Dae-
     monium ha-
     19. bet : Venit fili-
@@ -94,7 +92,10 @@
     die judicii, quam
     vobis.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,80,650,450">
+  <bloco tipo="texto_principal" script="latino" bbox="550,50,850,70">
+    CODEX VERONENSIS.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,70,650,550">
     tista : qui au-
     tem minor est
     in regno cae-
@@ -138,7 +139,7 @@
     18. xistis. Venit
     enim Johan-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,80,850,450">
+  <bloco tipo="texto_principal" script="latino" bbox="660,70,850,550">
     nes neque
     manducans,
     neque bibens,
@@ -182,17 +183,17 @@
     erit in die
     judicii, quam
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="150,460,450,480">
+  <bloco tipo="texto_principal" script="latino" bbox="150,550,400,570">
     CODEX CORBEIENSIS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,485,480,800">
-    Baptista : qui autem minor est in regno coelorum,
+  <bloco tipo="texto_principal" script="latino" bbox="100,570,480,800">
+    Baptista : qui autem minor est in regno coelorum ,
     majorestillo. A diebus autem Johannis Baptistae us-
     que nunc, regnum coelorum vim patitur, et violenti ¹
-    rapiuntillud.Omnesenimprophetaeet, lex, usque ad
-    Johannem, prophetaverunt : et si vultis ² recipere,
+    rapiuntillud. Omnes enim prophetae, et lex, usque ad
+    Johannem , prophetaverunt : et si vultis ² recipere ,
     ipse est Elias, qui venturus est. Qui habet aures au-
-    diendi, audiat. Cui autem similem aestimabo gene-
+    diendi , audiat. Cui autem similem aestimabo gene-
     rationem istam? Similis est pueris sedentibus in
     foro, ³ qui clamantes coequalibus dicunt : Cecinimus
     vobis, et non saltastis : lamentavimus, et non plan-
@@ -210,12 +211,13 @@
     Tyro et ⁷ Sydonae tolerabilius erit in die judicii,
     quam vobis.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="550,460,850,480">
+  <bloco tipo="texto_principal" script="latino" bbox="550,550,850,570">
     CODEX BRIXIANUS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,485,950,800">
+  <bloco tipo="texto_principal" script="latino" bbox="500,570,950,800">
     tista qui autem minor est in regno caelorum major
-    est illo. A diebus autem Johannis Baptistae usque nunc re-
+    est illo.
+    A diebus autem Johannis Baptistae usque nunc re-
     gnum caelorum vim patitur. et violenti rapiunt illud.
     Omnes enim prophetae et lex. usque ad Johannem
     prophetaverunt. et si vultis percipere ipse est Helias
@@ -237,10 +239,10 @@
     egissent. Verumtamen dico vobis. Tyro et Sydoni
     remissius erit in die judicii quam vobis.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,810,800,830">
+  <bloco tipo="aparato_critico" script="latino" bbox="200,820,800,840">
     VARIANTES LECTIONES CODICIS MS. S. GERMANENSIS.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="100,835,900,900">
+  <bloco tipo="aparato_critico" script="latino" bbox="100,840,900,890">
     ¹ diripiunt
     ² scire, ipse
     ³ et clamantibus ad invicem, et dicentibus : Cantavimus
@@ -249,19 +251,20 @@
     ⁶ Corozain
     ⁷ Sidoni remissius
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="400,910,600,930">
+  <bloco tipo="nota" script="latino" bbox="400,890,600,910">
     BLANCHINI NOTÆ.
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="150,935,850,960">
+  <bloco tipo="nota" script="misto" bbox="150,910,850,940">
     (a) Addunt, vobis. Et ita textus Græcus ὑμν. — (b) Ita et cod. Cant. xai.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="450,970,750,990">
+  <bloco tipo="rodape" script="latino" bbox="450,960,750,990">
     Digitized by Google
   </bloco>
   <notas>
     Transcrição de página comparativa de códices do Evangelho.
     Símbolos como † e números sobrescritos (¹, ², etc.) foram mantidos.
     Lacunas no Codex Vercellensis indicadas por pontos (. . .).
-    Texto grego "ὑμῖν" e "xai" (kai) preservados.
+    Texto grego "ὑμῖν" e "xai" (kai) preservados nas notas de Blanchini.
+    Layout dividido em colunas para Vercellensis e Veronensis.
   </notas>
 </pagina>

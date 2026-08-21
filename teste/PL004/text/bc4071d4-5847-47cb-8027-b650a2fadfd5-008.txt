@@ -1,119 +1,129 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="120,20,880,200">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,100">
     ELENCHUS RERUM
     QUÆ IN HOC VOLUMINE CONTINENTUR.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,200,920,420">
-    PRAEFATIO IN EDITIONES BALUCIANAM. — VITA S. CYPRIANI EX EJUS SCRIPTIS EXPRESSA.
+  <bloco tipo="texto_principal" script="latino" bbox="100,110,900,200">
+    PRÆFATIO IN EDITIONEM BALUZIANAM. — VITA S. CYPRIANI EX EJUS SCRIPTIS EXPRESSA.
     — ORDO RERUM IN HAC ET CÆTERIS EDITIONIBUS COLLATUS.
-    
     S. THASCI CÆCILII CYPRIANI OPERUM
     PARS PRIMA. — EPISTOLÆ.
     EPISTOLÆ I LXXXIII.
     EPISTOLÆ SUBLESTÆ FIDEI III.
-    
-    PARS II. — OPUSCULA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,210,600,230">
+    PARS II.—OPUSCULA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,240,450,330">
     Liber de Habitu Virginis.
     Liber de Lapsis.
-    Liber de Unitale Ecclesiæ.
+    Liber de Unitate Ecclesiæ.
     Ad Demetrianum.
     De idolorum Vanitate.
     De Mortalitate.
     De Opere et Eleemosynis.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,240,900,330">
     De Bono Patientiæ.
     De Zelo et Livore.
-    Ad Fortunatum, de Exhortatione Martyrij.
-    Ad Quirinum, Testimoniorum contra Judeos libri iii.
+    Ad Fortunatum, de Exhortatione Martyrii.
+    Ad Quirinum, Testimoniorum contra Judæos libri III.
   </bloco>
-  <bloco tipo="apendice" script="latino" bbox="80,420,920,660">
+  <bloco tipo="texto_principal" script="latino" bbox="450,330,550,350">
     APPENDICES.
-    
-    APP. I. De Disciplina et bono pudicitie.
-    {OPUSCULA.} Exhortatio ad poenitentiam.
-    DUBIA. (Libellus iste novissime Bononice editus, serius emisa opera repertus, ad calcem appendicum reponenda fuit.)
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,350,500,520">
+    APP. I. De Disciplina et bono pudicitiæ.
+    {OPUSCULA Exhortatio ad pœnitentiam.
+    DUBIA. (Libellus iste novissime Bononiæ editus, serius enixa opera repertus, ad calcem appendicum reponendus fuit.)
     APP. II. Liber de Aleatoribus.
     OPUSCULA De Singularitate clericorum.
-    SUPPOSITA. De XII Abusivonibus sæculi.
-    De duplici Martyro.
+    SUPPOSITA. De XII Abusionibus sæculi.
+    De duplici Martyrio.
     Oratio Cypriani Antiocheni pro martyribus.
     Ejusdem oratio quam sub die passionis suæ dixit.
-    De montibus Sina et Sion, adversus Judeos.
-    Tractatus adversus Judeos qui insecuti sunt Dominum nostrum Jesum Christum, incerto auctore.
-    Georg. Cypriano falso adscipta.
-    De revelatione capitis beati Johannis Baptistae tractatus.
+    De montibus Sina et Sion, adversus Judæos.
+    Tractatus adversus Judæos qui insecuti
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="550,350,900,520">
+    sunt Dominum nostrum Jesum Christum, incerto auctore.
+    Cœna, Cypriano falso adscripta.
+    De revelatione capitis beati Johannis Baptistæ tractatus.
     De Pascha computus.
-    
     APP. III. Dissertatio de Cypriani libris ad Demetrianum et de Idolorum vanitate, auctore D. Nic. Le Nourry, monacho O. S. B.
-    Carmen ad Felicem, e veterum scriptorum et monument. ampl. Collect. D. Ed. Martenii, mon. ejusd. ord.
-    
+    Carmen ad Felicem, e veterum scriptor. et monument. ampl. Collect. D. Ed. Martenii, mon. ejusd. ord.
     APP. IV. Oxoniensis editionis selectæ in Cyprianum notæ.
     Selectæ Jos. Mart. Routhii in quosdam Cypriani libros notæ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,660,920,980">
+  <bloco tipo="texto_principal" script="latino" bbox="350,530,650,550">
     SIGLIORUM EXPLICATIO.
-    
-    Qui plura de singulis istis siglis, de vario codicum librorumve indole, origine ac furluna voluerit, retro abeati, si vacat, ad præfationem tertio tomo inscripitam, singula nimirum sive manuscripta, sive typis expressa, quantum licuit, sedulo descripta eo loci reperieturs.
-    
-    Ar.    Cod. Bibl. Arundelianae.
-    Becc.  Cod. Beccensis.
-    Ben.   Codices Beneventani.
-    Bod.   Codd. Bodleiani.
-    Cant.  Cod. Cantabrigiensis.
-    Carn.  Cod. Carnotensis.
-    Cellar. Cellarii notæ.
-    Colb.  Codd. Cothertini.
-    Comp.  Cod. Compendiensis.
-    Corb.  Codd. Corbeienses.
-    Coll.  Cod. Bibl. Coltonianæ.
-    Drur.  Cod. Drurianus.
-    Ebor.  Cod. Eboracensis.
-    Er.    Ed. Erasmi.
-    Fab.   Cod. Nicol. Fabri.
-    Flor.  Cod. Floricensis.
-    Foss.  Cod. S. Mauri Fossatensis.
-    Fux.   Cod. Collegii Fuxensis.
-    Gold.  Edit. Lipsiensis Goldhorni.
-    Goul.  Editio Goulartii.
-    Grat.  Cod. Gratianopolitanus.
-    Grav.  Edit. Gravio adscriptæ.
-    Gron.  Correct. Gronovii.
-    Innom. Editio innominata.
-    Lam.   Cod. Lamoniani.
-    Lamb.  Cod. Bibl. Lambethanæ.
-    Lat.   Correctiones Latini Latinii.
-    Linc.  Cod. Collegii Lincolniensis.
-    Lindn. Ed. Lindneri.
-    
-    Lips.  Edit. Lipsiensis.
-    Lond.  Cod. Londinensis.
-    Man.   Edit. Manutii.
-    Meerm. Cod. Bibl. Meermanii.
-    Mel.   Cod. S. Arnulphi Metensis.
-    Mich.  Cod. S. Michaelis in periculo maris.
-    Mor.   Ed. Morelli.
-    Ms. Reg. Cod. Biblioth. Regis.
-    NC.   Cod. Novi Collegii Oxoniensis.
-    Oxon. Edit. Oxoniensis.
-    Pam.   Edit. Pamelii.
-    Paris. Edit. Parisiensis 1666.
-    Pemb.  Cod. Bibl. Pembrochianæ.
-    Pith.  Codd. Pithœani.
-    Remb.  Editio Rembolt.
-    Rem.   Codd. Remigiani.
-    Rig.   Editio Rigaltii.
-    Routh. Routhii notæ, lectiones.
-    Sar.   Cod. Sarisburienis.
-    Seg.   Cod. Seguieranus.
-    Spit.  Edit. Spirensis.
-    Tew.   Codd. Tewerani.
-    Thu.   Codd. Thuani.
-    Vat.   Codd. Vaticani.
-    Ver.   Cod. Veronensis.
-    Vict.  Cod. S. Victoris Paris.
-    Voss.  Codd. Vossii.
-    Wels.  Cod. Westmonasteriensis.
   </bloco>
-  <notas>Scriptus latino. Texto impresso com algumas abreviaturas antigas; mantenho ortografia e sinais tal como visíveis. Nenhuma outra coluna ou nota marginal aparente além dos blocos transcritos.</notas>
+  <bloco tipo="texto_principal" script="latino" bbox="100,550,900,600">
+    Qui plura de singulis istis sigliis, de varia codicum librorumve indole, origine ac fortuna voluerit, retro abeat, si vacat, ad præfationem tertio tomo inscriptam, singula nimirum sive manuscripta, sive typis expressa, quantum licuit, sedulo descripta eo loci reperturus.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,600,450,920">
+    Ar. Cod. Bibl. Arundelianæ.
+    Becc. Cod. Beccensis.
+    Ben. Codices Beneventani.
+    Bod. Codd. Bodleiani.
+    Cant. Cod. Cantabrigiensis.
+    Carn. Cod. Carnotensis.
+    Cellar. Cellarii notæ.
+    Colb. Codd. Colbertini.
+    Comp. Cod. Compendiensis.
+    Corb. Codd. Corbeienses.
+    Cott. Cod. Bibl. Cottonianæ.
+    Drur. Cod. Drurianus.
+    Ebor. Cod. Eboracensis.
+    Er. Ed. Erasmi.
+    Fab. Cod. Nicol. Fabri.
+    Flor. Cod. Floriacensis.
+    Foss. Cod. S. Mauri Fossatensis.
+    Fux. Cod. Collegii Fuxensis.
+    Gold. Edit. Lipsiensis Goldhorni.
+    Goul. Editio Goulartii.
+    Grat. Cod. Gratianopolitanus.
+    Grav. Edit. Gravio adscripta.
+    Gron. Correct. Gronovii.
+    Innom. Editio innominata.
+    Lam. Cod. Lamonianus.
+    Lamb. Cod. Bibl. Lambethanæ.
+    Lat. Correctiones Latini Latinii.
+    Linc. Cod. Collegii Lincolniensis.
+    Lindn. Ed. Lindneri.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,600,850,920">
+    Lips. Edit. Lipsiensis.
+    Lond. Cod. Londinensis.
+    Man. Edit. Manutii.
+    Meerm. Cod. Bibl. Meermanii.
+    Met. Cod. S. Arnulphi Metensis.
+    Mich. Cod. S. Michaelis in periculo maris.
+    Mor. Ed. Morelli.
+    Ms. Reg. Cod. Biblioth. Regis.
+    NC. Cod. Novi Collegii Oxoniensis.
+    Oxon. Edit. Oxoniensis.
+    Pam. Edit. Pamelii.
+    Paris. Edit. Parisiensis 1666.
+    Pemb. Cod. Bibl. Pembrochianæ.
+    Pith. Codd. Pithœani.
+    Remb. Editio Rembolt.
+    Rem. Codd. Remigiani.
+    Rig. Editio Rigaltii.
+    Routh. Routhii notæ, lectiones.
+    Sar. Cod. Sarisburiensis.
+    Seg. Cod. Seguieranus.
+    Spit. Edit. Spirensis.
+    Tew. Codd. Tewerani.
+    Thu. Codd. Thuani.
+    Vat. Codd. Vaticani.
+    Ver. Cod. Veronensis.
+    Vict. Cod. S. Victoris Paris.
+    Voss. Codd. Vossii.
+    Wets. Cod. Wetsmonasteriensis.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="550,950,800,980">
+    Digitized by Google
+  </bloco>
+  <notas>Transcrição fiel ao layout de duas colunas nas secções PARS II, APPENDICES e SIGLIORUM EXPLICATIO. Ortografia latina mantida (ex: æ, œ). BBOX aproximados na escala 0-1000.</notas>
 </pagina>

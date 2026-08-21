@@ -1,23 +1,16 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,200,60">
-    830
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="350,20,650,60">
-    ARNOBII ADVERSUS GENTES
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="800,20,950,60">
-    840
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,65,505,85">
-    A
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,65,480,480">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="140,40,180,65">839</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="430,40,700,65">ARNOBII ADVERSUS GENTES</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="930,40,970,65">840</bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="485,70,505,90">A</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,70,480,380">
     se numina, et æqualia principis summitati : quia
     grammaticam, musicam, oratoriam pepererant a, et
     geometricas formulas. In quibus artificiis quidnam
     insit admirabile, non videmus : ut ex eorum inven-
     tione credatur esse animas potiores et sole et sideri-
-    bus cunctis, hunc totum, cujus membra sunt hæc,
+    bus cunctis, hunc totum, cujus membra sunt hæc',
     mundum et dignitate et substantia præterire. Quid
     enim aliud se spondent vel insinuare posse, vel tra-
     dere, quam ut regulas nominum, differentiasque no-
@@ -34,13 +27,12 @@
     hæc esse locorum necessitate, ac temporum : neque
     divinas eruditas advolavisse huc animas : quod neque
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,230,505,250">
-    B
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,65,950,480">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="485,260,505,280">B</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="560,70,920,380">
     omnes doctæ sint, neque discere omnes possint, et
-    sint in his plurimæ acuminis obtusioris, et tardi, et
-    ad discendi b studium plagarum coercitione cogun-
+    sint in his plurimæ acuminis obtusioris, et bardi, et
+    ad discendi b studium plagarum coercitione cogan-
     tur. Quod si ea c, quæ discimus, reminiscentiæ esse
     constaret, ut antiquis opinionibus scitum est, conve-
     niebat nos omnes ab una veritate venientes unum
@@ -60,26 +52,23 @@
     et parietibus clausus; non algidus frigore, non fer-
     voris nimius in calore, sed ita temperatus, et medius,
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="50,485,480,530">
+
+  <bloco tipo="cabecalho" script="latino" bbox="400,390,650,410">LECTIONES VARIANTES.</bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="140,415,400,440">
     a Repererant Fulv.
-    b Ediscendi Fulv. Vide Not.
+    b Ediscendit Fulv. Vide Not.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="520,485,950,510">
-    LECTIONES VARIANTES.
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="520,510,950,530">
+  <bloco tipo="aparato_critico" script="latino" bbox="600,415,800,430">
     c Quod et si ea Ms.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="350,540,650,570">
-    COMMENTARIUS.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,600,505,620">
-    C
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,570,480,950">
+
+  <bloco tipo="cabecalho" script="latino" bbox="450,450,650,470">COMMENTARIUS.</bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="485,550,505,570">C</bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="120,480,480,940">
     Quia grammaticam, musicam, oratoriam pepererunt.
     Meursius, pag. 57, legendum conjicit : Quia gram-
-    maticam, musicam, oratoriam pepererunt, quia statim
+    maticam, musicam, oratoriam repererunt, quia statim
     subjungit Arnobius : ut ex earum inventione credatur
     animas esse potiores. ORELL.
     Dignitate et substantia præterire. Substantia idem
@@ -94,7 +83,7 @@
     Quid enim aliud se spondent vel insinuare posse vel
     tradere. Vide supra ad lib. I, c. 63. ORELL.
     Ut terrarum continentias metiamur. Continentiam
-    dicit hic Arnobius περιохὴν ut interpretantur Glossæ
+    dicit hic Arnobius περιοχὴν ut interpretantur Glossæ
     Philoxeni : quomodo retinentiam dicit Lucretius κα-
     τοχὴν. Lib. III, vers. 675 : Omnis ut actarum excide-
     rit retinentia rerum. HERALD. — Continentia apud illius
@@ -102,8 +91,8 @@
     gentii liber inscriptus de Virgiliana continentia, ubi
     vid. Munker., Mythogr. lat., pag. 137, vol. II, et ap-
     posite ad nostrum Æthicus Cosmograph. proœm : Ac
-    sic omnis orbis terræ intra annos 32 a dimensoribus per-
-    agratus est, et de omni ejus continentia perlatum est
+    sic omnis orbis terræ intra annos 32 a dimensoribus pe-
+    ragratus est, et de omni ejus continentia perlatum est
     ad senatum. ORELL.
     Neque divinas, eruditas. Ita cod. ms. et editio
     princeps. Fulv. Ursin. divinitus eruditas. Non male
@@ -120,38 +109,37 @@
     don., I, epist. 1 : Propter quod illum cæteri quique
     Frontinianorum, utpote consectaneum æmulati, cur re-
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,750,505,770">
-    D
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,570,950,950">
-    ternosum dicendi genus imitarentur, oratorum simia
+
+  <bloco tipo="nota_marginal" script="latino" bbox="485,750,505,770">D</bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="560,480,920,940">
+    ternosum dicendi genus imitarentur, oratorum simiam
     nuncupaverunt. Sed bene Gelenius, nam ut et ei sæ-
     pissime permutantur a librariis. ORELL.
     Bardi. Ita e ms. optime restituit Meursius et edi-
     tor Lugd. Bat. Vulgo tardi. Bardus stultus a tarditate
     ingenii appellatur..... trahitur autem a Græco, quod
-    illi βαρδὺς dicunt. Festus. Cf. Nonium. Ita Cic. de
-    Fato, cap. 5 : Zopyrus physiognomon..... stuporem
+    illi βαρδὺς dicunt. Festus. Cf. Nonium. Ita Cic de
+    Fato, cap. 5 : Zopyrus physiognomon..... stupidum
     esse Socratem dixit et bardum. Ubi videsis Turneb.
     ORELL.
     Ad discendi studium. Nescio, quid in mentem ve-
     nerit editori Lugduno-Batavo, non solum adstruendi
     in Variarum Lectionum libello, sed etiam in textum
-    intrudenti discendendi. ORELL.
-    Quod si ea, quæ discimus, reminiscentiæ esse consti-
+    intrudenti discedendi. ORELL.
+    Quod si ea, quæ discimus, reminiscentiæ esse consta-
     ret. Hoc Platonis dogma fuit, qui vixisse animas ho-
     minum, antequam corpus induissent, asserebat : di-
     cebatque, cum in nova corpora rursum irent, non
     novi aliquid addiscere, sed illa, quæ jam ante didi-
     cerant, saltem recognoscere. Vide illum in Menone
-    et Phædone, pag. 75 (ed. H. Steph.); Cic. I Tuscul.
+    et Phædone, pag. 73 (ed. H. Steph.); Cic. I Tuscul.
     Quæst.; Tertullian., de Anima, cap. 23. Refutant il-
     lum Augustin., de Trinitate, lib. X, c. 15; Theophi-
     lus, lib. III, ad Autolycum. ELMENH.
     Sed hic nata addiscere. Fulv. Ursin. natos discere.
     Sed nil mutandum. Sequitur enim et suspicionibus
-    coalita id est corroborata, confirmata. Ita Tert.
-    Annal. XII, cap. 26 : irreverentia coalita libertate. Liv.
+    coalita id est corroborata, confirmata. Ita Tacit.
+    Annal. XII, cap. 26 : irreverentia coalita libertate; et
     XIV, 1 : coalita vetustate imperii audacia; ubi Ernesti
     observat sumptam metaphoram ab arboribus et plan-
     tis, quæ coalescere dicuntur, cum radicibus adhæ-
@@ -159,20 +147,17 @@
     XX. — Non fervoris nimius in calore. Ita cor-
     rexit Th. Cantherus. Cod. ms : Non fervoris nimium
     in calore. Meursius legendum conjicit aut incalens
-    una voce, ut in juvenius lib. I, pro juventus, sed du-
-    spectata lectio; aut non fervens nimium in calore, ut
+    una voce, ut in juventus lib. I, pro juventus, sed ibi,
+    suspecta lectio; aut non fervens nimium in calore, ut
     τὸ ἐν παρόλκῳ sit, quemadmodum apud Apuleium
     non semel, verbi causa gravis in annis, viri cætera in
     ætate pretiosi. Fulv. Ursin. non fervens nimio calore.
     ORELL.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="300,960,700,990">
-    Digitized by Google
-  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="600,960,850,990">Digitized by Google</bloco>
+
   <notas>
-    Transcrição de página da Patrologia Latina (Arnobius Adversus Gentes).
-    Layout em duas colunas tanto para o texto principal quanto para o comentário.
-    Marcas marginais A, B, C, D identificadas como notas de seção no gutter.
-    Texto grego presente no comentário: περιохὴν, κατοχὴν, βαρδὺς, τὸ ἐν παρόλκῳ.
+    Transcrição diplomática. Texto principal flui da coluna esquerda para a direita. Letras marginais A, B, C, D isoladas. Texto grego preservado (περιοχὴν, κατοχὴν, βαρδὺς, τὸ ἐν παρόλκῳ).
   </notas>
 </pagina>

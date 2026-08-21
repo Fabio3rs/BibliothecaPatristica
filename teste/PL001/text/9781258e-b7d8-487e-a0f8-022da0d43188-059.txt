@@ -1,16 +1,18 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
     75 TERTULLIANI VITA. 76
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="50,70,490,900">
-    ctor, præterquam quod illic subjungat tanquam A
+  <bloco tipo="texto_principal" script="misto" bbox="50,70,490,920">
+    ctor, præterquam quod illic subjungat tanquam
     discipulos Blastum, et Theodotum, et Praxean, cum
     Victorino, illis qui secundum Æschinem pronuntia-
     bantur eamdem hæresim attribuit, et hoc libro im-
     pugnat.
-    Anno Domini CCXI.
+
+    Anno Domini ccxi.
+
     § XV. Ejus defectionis tempus et causa. — 29.
-    S. Zephirini Papæ Romani XII. Severi XVIII. M. ACI-
+    S. Zephirini Papæ Romani xii. Severi xviii. M. ACI-
     LIO M. F. M. N. FAUSTINO. ET C. CÆSONIO. C. F.
     TRIARIO RUFINO COSS. completum fuit, quod
     scribunt post Auctores supracitatos Cassiodorus in
@@ -18,18 +20,18 @@
     de Severo, quod vallum crebris turribus communi-
     tum in Britannia, per centum et amplius millia pas-
     suum de mari ad mare perduxerit, ut partem pro-
-    vinciae gravius præliis receptam a cæteris faceret
+    vinciæ gravius præliis receptam a cæteris faceret
     secutiorem, pro quo facit etiam lex Severi et Anto-
-    nini Aug. Eboraci lata hoc Consulatu Non. Maii,
+    nini Augg. Eboraci lata hoc Consulatu Non. Maii,
     quæ extat Cod. lib. 3. Tit. 32. lib. 1. Certe tunc
     primum leguntur Inscriptiones quibus appellatur Se-
     verus BRITANNICUS MAX. TRIB. POT. XVIII. ac
     Antoninus BRITANN. TRIB. POT. XIII. IMP. II.
     COS. III. denique et illa : P. SEPT. GETA PIUS
     AUG. BRIT. TRIB. POT. III. COS. II. uno ex latere,
-    et ex adversa parte : VICTORIÆ BRITAN. Utpute
+    et ex adversa parte : VICTORIÆ BRITAN. Utpote
     quum tertius fuerit duntaxat iste annus, ex quo
-    Geta Tribunitialm potestatem cum cæteris Imperii
+    Geta Tribunitiam potestatem cum cæteris Imperii
     insignibus acceperat. Porro hoc fere anno contigisse
     censemus, quod de TERTULLIANO scribunt B.
     Hieron. Sophronius Catal. Scriptor. Eccl. ac Niceph.
@@ -38,18 +40,19 @@
     tani dogma delapsum. Verumtamen magna est diffi-
     cultas, quomodo scribat B. Hieron. id factum invidia
     et contumeliis Clericorum Rom. Eccl. ac Sophronius :
-    φθόνῳ καὶ προπηλακισμοῖς τῶν κληρικῶν τῆς ἐν Ῥώμῃ
+    φθόνῳ κα προπηλακισμος τῶν κληρικῶν τῆς ἐν Ῥώμῃ
     ἐκκλησίας, et interpres Nicephori : « propter Cleri
     Romani invidiam; » præsertim quum de eo nusquam
     conqueratur Auctor etiam in lib. adver. Ecclesiam
     scriptis, maxime quum causam illam reticens Vin-
     centius Lirinensis, etsi B. Hieron. posterior, non
     aliud dicat, quam TERTULLIANUM Catholici dog-
-    matis et vetustæ fidei parum tenacem, ac disertiores
+    matis et vetustæ fidei parum tenacem, ac disertiorem
     multo quam feliciorem, mutata sententia in errorem
     delapsum, magnam fuisse in Ecclesia tentationem.
     Quem imitatur Abbas Trithemius.
-    D 30. Est quidam qui invidiæ causam fuisse pu-
+
+    30. Est quidam qui invidiæ causam fuisse pu-
     tet Auctori eloquentiam. Rhenani conjecturam, quan-
     tumvis suspectam, sequuntur etiam Catholici quidam,
     qui suspicantur illum quum initio favere cœpisset hæresi
@@ -62,7 +65,10 @@
     « ante diem judicii judicium quo ejectus de Ecclesia
     rabido dæmonis ore discerpitur, » non solum invidiæ
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="510,70,950,900">
+  <bloco tipo="nota_marginal" script="latino" bbox="500,60,520,80">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="510,70,950,920">
     (quam pro zelo etiam in sanctis agnoscit idem B. Hie-
     ronymus Epist. ad Damas. de prodigo et frugi filiis),
     sed et contumeliarum nomenclatura ipse traderet.
@@ -76,8 +82,13 @@
     in libris præcedentibus : quibus tacite quorumdam
     Clericorum, fortassis Romanorum, vitia reprehendit,
     non aliter atque postmodum BB. Hieronymo et Pau-
-    lino accidit eadem de causa (L. de Spect. c. 25.).
-    B Imprimis de frequentatione spectaculorum : Sed Tra-
+    lino accidit eadem de causa (L. de Spect. c. 25.);
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,300,520,320">
+    B
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="510,330,950,500">
+    Imprimis de frequentatione spectaculorum : Sed Tra-
     gœdo, inquit, vociferante, exclamaciones ille (nempe
     aliquis de Clero) alicujus Prophetæ retractabit. Inter
     effeminationis modos, Psalmum secum comminiscetur ;
@@ -86,14 +97,20 @@
     morsus ursorum et spongias retiariorum. Avertat Deus
     a suis tantam voluptatis exitiosæ cupiditatem. Quale est
     enim, de Ecclesia Dei in Ecclesiam diaboli tendere? de cælo
-    (quod aiunt) in cœnam ? illas manus quas ad Dominum
+    (quod aiunt) in cœnum ? illas manus quas ad Dominum
     extulerit, postmodum laudando histrionem defatigare ?
-    ex ore quo Amen in sanctum protulerit, gladiatorii
-    testimonium reddere ? si αἰῶνα; alio omnino di-
+    ex ore quo Amen in sanctum protulerit, gladiatori
+    testimonium reddere ? εἰς αἰῶνα; aliis omnino di-
     cere, nisi Deo Christo ? 1. de Idol. c. 7. (L. de Cor.
-    milit. 1.). Item illud in Artifices Idolorum : Tota,
+    milit. 1.).
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,500,520,520">
+    C
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="510,510,950,700">
+    Item illud in Artifices Idolorum : Tota,
     inquit, die ad hanc partem zelus fidei perorabit in-
-    C gemens Christianum ab Idolio in Ecclesiam venire, his
+    gemens Christianum ab Idolis in Ecclesiam venire, his
     manibus adorare, quæ foris adversus Deum adorantur,
     manus admovere corpori Domini, quæ dæmoniis cor-
     pora conferunt. Nec hoc sufficit. Parum sit, si ab aliis
@@ -104,8 +121,13 @@
     ejus lacessunt. O manus præscindendæ! Rursum illud
     de Pastoribus in persecutione fugientibus : Plane
     superest ut etiam martyria recusare meditetur, qui
-    Prophetas ejusdem Spiritus sancti respuit : novi et
-    Pastores etiam coram in pace leones, in prælio cervos.
+    Prophetias ejusdem Spiritus sancti respuit : novi et
+    Pastores etiam eorum in pace leones, in prælio cervos.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,700,520,720">
+    D
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="510,710,950,920">
     Denique de velandis Virginibus : Illam consuetudi-
     nem quæ virgines negat, dum ostendit, nemo pro-
     basset, nisi aliqui tales quales virgines ipsæ. Tales
@@ -117,7 +139,7 @@
     videtur interpretari Invidiam illam, quasi fuisset
     ipsius Auctoris in Clerum Romanum. Sic enim, inquit,
     Per invidiam charitatem corrumpentes, scientiam
-    ad nihilum deduxerant. Nam et Tertullianus et Nova-
+    ad nihilum deduxerunt. Nam et Tertullianus et Nova-
     tianus non parvæ scientiæ fuerunt; sed quia per ze-
     lum charitatis fœdera perdiderunt, in schisma versi,
     ad perditionem sui hæreses creaverunt. Ex quibus
@@ -128,8 +150,9 @@
   </bloco>
   <notas>
     Transcrição de página dupla (75-76) da Patrologia Latina. Texto em latim com citações em grego.
-    Letras marginais A, B, C, D identificadas no fluxo do texto ou margens.
+    Letras marginais A, B, C, D identificadas como nota_marginal.
     Ligaduras æ, œ preservadas.
     Abreviações mantidas conforme o original (e.g., Eccl., lib., cap.).
+    Correções feitas em relação ao OCR baseado na imagem (e.g., "Tribunitiam", "gladiatori", "Idolis", "eorum", "Prophetias", "deduxerunt").
   </notas>
 </pagina>

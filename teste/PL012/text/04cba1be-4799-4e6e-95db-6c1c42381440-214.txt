@@ -1,22 +1,26 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="35,20,965,115">
-    597       EVANGELIUM SECUNDUM JOHNEM.       598
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,50">
+    597 EVANGELIUM SECUNDUM JOHANNEM, 598
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="35,115,345,850">
+  <bloco tipo="nota" script="latino" bbox="0,50,500,80">
     CODEX VERCELLENSIS.
-    
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="500,50,1000,80">
+    CODEX VERONENSIS.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="20,80,240,600">
     pus meum
     est pro hujus
     mundi vita.
-    53. . . . i litigabant er-
+    53. . . . litigabant er-
     go Judaei ad
     invicem, di-
     centes : Quo-
     modo potest
     hic nobis cor-
     pus suum da-
-    re? (a) manducare ?]
-    54. Et ait illis J esus :
+    . . (a) manducare †?
+    54. Et ait illis Jesus :
     Amen, amen
     dico vobis
     Nisi accepe-
@@ -28,7 +32,7 @@
     biberitis, non
     habebitis vi-
     tam in vobis
-    55. ipsis. Qui. . de[?]
+    55. ipsis. Qui. . det
     meam car-
     nem, et bibet
     sanguem me-
@@ -43,7 +47,7 @@
     esca est : et san-
     guis meus ve-
     re et potus est.
-    57. Qui edit meam
+    57. Qui edet meam
     carnem, et
     bibet meum
     sanguinem,
@@ -53,7 +57,7 @@
     perit homo
     corpus Filii
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="345,115,665,850">
+  <bloco tipo="texto_principal" script="latino" bbox="240,80,460,600">
     hominis, quem-
     admodum
     panem vitae,
@@ -73,18 +77,18 @@
     Non sicut manducave-
     runt Patres
     vestri man-
-    nua, et mortui
+    na, et mortui
     sunt. Qui man-
     ducant hunc
     panem, vive-
     . . in aeter-
     num.
     60. Haec dixit in
-    synagoga docte-
-    cens, in Capha . . .
+    synagoga do-
+    cens, in Capha . .
     naum sabba-
     61. to. Multi
-    ergo audi . . .
+    ergo audi . .
     tes ex discipu-
     lis ejus, dixe-
     runt : Du. . . .
@@ -94,17 +98,15 @@
     dire?
     62. Cognovit Jesus
     intra se quod
-    a murmu-
-    raret de loc
+    murmu-
+    rarent de hoc
     discipuli ejus :
     dixit ad il-
     los : Hoc vos
     scandalizat?
     63. Quod si vide-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="665,115,965,850">
-    CODEX VERONENSIS.
-    
+  <bloco tipo="texto_principal" script="latino" bbox="480,80,700,600">
     caro mea
     est pro hu-
     jus mundi vita.
@@ -114,12 +116,12 @@
     Quomodo potest
     hic nobis dare
     carnem suam
-    (a) manducare + ?
+    (a) manducare †?
     54. Dixit autem eis
     Jesus : Amen,
     amen
     dico vobis : Nisi
-    edeceritis carnem
+    ederitis carnem
     Fili hominis,
     et biberitis
     sanguinem
@@ -131,11 +133,9 @@
     carnem meam,
     et biberit
     sanguinem
-    meum, habe-
-    bit vitam
+    meum, habebit vitam
     aeternam : et
-    ego resusci-
-    labo illum
+    ego resuscitabo illum
     in novissima
     die.
     56. Caro mea
@@ -143,67 +143,116 @@
     et sanguis
     meus vere
     est potus.
-    57. Qui edit car-
-    nem meam,
-    et bibit san-
-    guinem
+    57. Qui edit carnem meam,
+    et bibit sanguinem
     meum, in
     me manet,
     et ego in
     eum.
     58. Sicut misit
-    me vivus
-    Pater, et ego vivo propter Patrem.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="35,850,965,980">
+  <bloco tipo="texto_principal" script="latino" bbox="700,80,980,600">
+    me vivus
+    Pater, et
+    ego vivo
+    per Patrem :
+    et qui man-
+    ducaverit car-
+    nem meam,
+    et ipse (b)
+    vivit † per
+    59. me. Hic
+    est panis,
+    qui de caelo
+    descendit.
+    Non sicut
+    manducave-
+    runt Patres
+    vestri manna,
+    et mortui
+    sunt. Qui
+    vero manducaverit
+    hunc panem,
+    vivit in aeter-
+    num.
+    60. Haec ergo
+    dicebat in
+    synagoga
+    docens, in
+    Cafarnaum.
+    61. Multi ergo
+    ex discipulis ejus,
+    dixerunt : Durus
+    est hic sermo,
+    quis potest
+    eum audire?
+    62. Sciens (c)
+    igitur †
+    Jesus penes
+    se quia murmurarent de
+    hoc discipuli,
+    dixit eis :
+    Hoc vos scandalizat?
+    63. Quid si vide-
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="0,600,1000,630">
     CODEX BRIXIANUS.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="0,630,500,750">
     caro mea est. quam ego dabo pro hujus mundi
-    via. Litigabant itaque ad invicem Judaei. dicentes.
+    vita. Litigabant itaque ad invicem Judaei. dicentes.
     Quomodo potest hic nobis dare carnem suam ad
     manducandum. Dixit eis Jesus Amen amen dico vo-
-    bis. Nisi manducaveritis carnem Filii hominis, et
+    bis. Nisi manducaveritis carnem Filii hominis. et
     biberitis ejus sanguinem. non habebitis vitam in
     vobis ipsis. Qui manducat meam carnem et bibet
     meum sanguinem habet vitam aeternam. et ego re-
-    susc itabo eum in novissimo die. Caro enim mea,
+    suscitabo eum in novissimo die. Caro enim mea,
     vere est cibus et sanguis meus vere est potus. Qui
-    manducat meam carnem et bibet meum sanguinem,
+    manducat meam carnem et bibet meum sanguinem.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,630,1000,750">
     in me manet. et ego in illo. Sicut misit me vivus
     Pater. et ego vivo propter Patrem. et qui manducat
     me. et ipse vivet propter me. Hic est panis qui de
     caelo descendit. Non sicut manducaverunt Patres
     vestri manna. et mortui sunt. Qui autem manducat
     hunc panem vivet in aeternum. Haec dixit in syna-
-    goga. docens. in Capharnaum. Multi ergo audiunt es.
-    ex discipulis ejus. dixerunt Durus est hic sermo,
-    quis potest eum audire. Sciens autem Jesus. apu
-    semetipsum. quia murmuraverunt de huc discipuli
+    goga. docens. in Capharnaum. Multi ergo audientes.
+    ex discipulis ejus. dixerunt Durus est hic sermo.
+    quis potest eum audire. Sciens autem Jesus. apud
+    semetipsum. quia murmurarent de hoc discipuli
     ejus. dixit eis. Hoc vos scandalizat. Si autem vide-
-    
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="0,750,1000,780">
     CODEX CORBEIENSIS.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="0,780,500,850">
     53. carnem (recent. manu, suam) ad manducare.
     54. ut vobis ipsis.
     55. et biberit meum sanguinem.
-    57. Post haec versusum, addit : Si acceperit homo
+    57. Post hunc versum, addit : Si acceperit homo
     corpus Filii hominis, quemadmodum panem vitae,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,780,1000,850">
     habebit vitam in illo.
     60. docens, Sabbato in Capharnaum.
     62. Cognovit autem Jesus.
     63. Quid ergo cum videritis.
-    
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="0,850,1000,900">
     VARIANTES LECTIONES.
-    
     1 Gal. Loquebantur ergo. Vulg. Litigabant ergo.
     2 Mm. verus cibus... verus est potus. Vulg. vere est ci-
-    bus... vere est potus. 3 Gal. murmuraverunt. Vulg. murmuraverunt.
-    
-    BLANCHINI NOTE.
-    
-    (a) Ita et tex. Gr. φαγειν. — (b) Ita et cod. Cant. ξζ. — (c) Ita et cod. Cant. οιω.
-    
+    bus... vere est potus.
+    3 Gal. murmuraverunt. Vulg. murmurarent.
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="0,900,1000,950">
+    BLANCHINI NOTÆ.
+    (a) Ita et tex. Gr. φαγεῖν. — (b) Ita et cod. Cant. ζζ. — (c) Ita et cod. Cant. οὐν.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="0,950,1000,1000">
     Digitized by Google
   </bloco>
-  <notas>Script primarily latino. Layout three main columns: left (Codex Vercellensis), center (continuation), right (Codex Veronensis). Footer contains Codex Brixianus, Corbeiensis, variantes and notes. Some abbreviations and uncertain letters marked with brackets or punctuation as in image. Minor illegible characters rendered as punctuation or omitted; no non-Latin scripts present.</notas>
+  <notas>Transcription of a critical edition page comparing Codex Vercellensis, Veronensis, Brixianus, and Corbeiensis. Greek characters present in Blanchini Notæ. Dots indicate lacunae in manuscript sources as printed.</notas>
 </pagina>

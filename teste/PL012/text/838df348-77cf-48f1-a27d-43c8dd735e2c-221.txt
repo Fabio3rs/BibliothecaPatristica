@@ -1,16 +1,13 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,10,950,80">
-    411	EUSEBII VERCELL. EVANGELIUM CUM VARIIS COD. COLLATUM.	412
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,50">
+    411 EUSEBII VERCELL. EVANGELIUM CUM VARIIS COD. COLLATUM. 412
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,90,320,150">
+  <bloco tipo="texto_principal" script="latino" bbox="150,55,350,75">
     CODEX VERCELLENSIS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,90,620,150">
-    CODEX VERONENSIS.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,150,320,960">
+  <bloco tipo="texto_principal" script="latino" bbox="100,80,280,620">
     testis venire.
-    22. Dicebant . . . .
+    22. Diceban . . . .
     go Judaei : Num-
     quid occide-
     re se habet? quo-
@@ -38,8 +35,8 @@
     tis vestris.
     25. Dicebant ergo
     illi : Tu qui es?
-    Ait illi Jesus : I-
-    ilum, quod lo-
+    Ait illi Jesus : ¹ Ini-
+    tium, quod lo-
     quor vobis.
     26. Multa habeo
     de vobis loqui,
@@ -51,13 +48,13 @@
     loquor in hoc
     27. mundo. Et non
     cognoverunt
-    quod 9 Patrem
+    quod ² Patrem
     illis diceret
     28. Deum. Ait er-
     go Jesus : Cum exal-
-    laveritis Fi-
+    taveritis Fi-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,150,620,960">
+  <bloco tipo="texto_principal" script="latino" bbox="290,80,480,620">
     lium hominis,
     tunc scietis
     quod ego sum,
@@ -73,7 +70,7 @@
     quae placent
     illi, facio sem-
     per.
-    50. Haec illo loquen-
+    30. Haec illo loquen-
     te, multi cre-
     diderunt in
     31. eum. Dicebat
@@ -106,7 +103,10 @@
     catum, servus
     35. peccati est. Ser-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="630,150,960,960">
+  <bloco tipo="texto_principal" script="latino" bbox="550,55,750,75">
+    CODEX VERONENSIS.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,80,680,620">
     venire.
     22. Dicebant igitur
     Judaei : Num-
@@ -128,9 +128,9 @@
     vobis quia
     moriemini
     in peccato
-    25. si enim
+    vestro : si enim
     non credideritis
-    quoniam ego,
+    quoniam ego
     sum, moriemini
     in peccato vestro.
     25. Dicebant autem
@@ -150,11 +150,13 @@
     27. mundo. Et non
     intellexerunt
     quoniam de
-    (a) Deo + Patre
+    (a) Deo † Patre
     diceret eis.
     28. Dixit autem
     illis Jesus : Cum
-    exaltaveritis
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="690,80,880,620">
+    exaltaberitis
     Filium hominis,
     tunc scietis
     quoniam ego
@@ -170,10 +172,10 @@
     solum : quia
     ego, quae sunt
     ei placita, semper facio.
-    50. Haec eo lo-
+    30. Haec eo lo-
     quente, multi
     crediderunt in eum.
-    51. Dicebat autem
+    31. Dicebat autem
     Jesus ad eos,
     qui crediderant
     ei ex Judaeis :
@@ -181,30 +183,35 @@
     seritis in verbo
     meo, vere disci-
     puli mei
-    52. (b) estis + : et
+    32. (b) estis † : et
     scietis veritatem,
     et veritas ipsa
     liberabit vos.
     33. Responderunt illi
     Judaei dicentes :
     Semen (c) Abra-
-    ham + sumus, et
+    ham † sumus, et
     nemini umquam
-    servivimus : quomodo
-    tu dicis Quia liberi eritis ?
+    servivimus : quo-
+    modo tu dicis :
+    Liberi eritis ?
     34. Respondit
-    Jesus : Amen, amen dico vobis : quia
-    omnis, qui
+    Jesus : Amen,
+    amen dico
+    vobis : quia
+    omnes, qui
     facit peccatum,
-    servus (d) est.
+    servus (d) est †.
     35. Servus autem
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="30,960,960,1150">
+  <bloco tipo="texto_principal" script="latino" bbox="400,625,600,645">
     CODEX BRIXIANUS.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,650,500,800">
     stis venire Dicebant ergo Judaei. Numquid inter-
     ficiet se metipsum quia dixit. Quo ego vado. vos
     non potestis venire. Et dixit eis Jesus. Vos de
-    deorsum estis, ego autem de supernis sum. vos de
+    deorsum estis. ego autem de supernis sum. vos de
     hoc mundo estis. ego autem non sum de hoc mun-
     do. Dixi ergo vobis. quia moriemini in peccatis
     vestris. si enim non credideritis. quia ego sum.
@@ -214,35 +221,54 @@
     judicare. sed qui me misit. verax est. et ego quae
     audivi ab eo et loquor in hoc mundo. Et non intel-
     lexerunt. quia de Patre eis dicebat. Dixit ergo eis
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="510,650,900,800">
     Jesus. Cum exaltaveritis Filium hominis. tunc co-
     gnoscetis quia ego sum. et a me ipso nihil facio. sed
-    sicut docuit me Pater nemus. haec loquor. et qui me
+    sicut docuit me Pater meus. haec loquor. et qui me
     misit mecum est. non me reliquit solum Pater. quia
-    eo quae placita sunt ei, facio semper. Haec illo
+    ego quae placita sunt ei. facio semper. Haec illo
     loquente. multi crediderunt in eum. Dicebat autem
-    Jesus. ad eos qui ex Judaeis crediderunt ei. Si vos
+    Jesus. ad eos qui ex Judaeis. crediderunt ei. Si vos
     manseritis in verbo meo. vere discipuli mei (b)
-    estis. et cognoscetis veritatem. et veritas liberabit
+    estis †. et cognoscetis veritatem. et veritas liberabit
     vos. Responderunt ei Semen Abrahae sumus. et nemini
-    servivimus umquam. quomodo tu dicis Quia liberi eritis.
-    Respondit eis Jesus Amen amen dico vobis. quia
-    omnis qui facit peccatum servus est peccati. Ser-
+    servivimus umquam. quomodo tu dicis Quia liberi eri-
+    tis. Respondit eis Jesus Amen amen dico vobis. quia
+    omnis qui facit peccatum. servus est peccati. Ser-
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,1150,960,1380">
+  <bloco tipo="texto_principal" script="latino" bbox="400,805,600,825">
     CODEX CORBEIENSIS.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,830,450,870">
     23. ego de superioribus sum.
     26. haec eloquor in hunc mundum.
     28. sicut docuit me Pater, haec eloquor.
-    
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="510,830,900,870">
+    31. Si vos manseritis in verbo meo, vere discipuli
+    mei estis.
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="400,875,600,895">
     VARIANTES LECTIONES.
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="100,900,450,930">
     1 Gat. et Mm. Principium, quod loquor. Vulg. Princi-
     pium, qui et loquor.
-    
-    BLANCHINI NOTAE.
-    (a) Juxta cod. Cant. tov 6e0v ; Cant. lat. addit, suum. — (b) Ilia et text. Gr. 6e0t. — (c) Abraham. Et in
-    text. Gr. 4beqar. — (d) Post est, deest peccati, etiam in cod. Cant.
-    
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="510,900,900,930">
+    2 Gat et Mm. Patrem eis esse Deum dicebat. Vulg.
+    Patrem ejus dicebat Deum.
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="400,935,600,955">
+    BLANCHINI NOTÆ.
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="100,960,900,990">
+    (a) Juxta cod. Cant. <script script="grego">τὸν Θεόν</script> ; Cant. lat. addit, suum. — (b) Ita et text. Gr. <script script="grego">ἐστί</script>. — (c) Abraham. Et in
+    text. Gr. <script script="grego">Ἀβραάμ</script>. — (d) Post est, deest peccati, etiam in cod. Cant.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,960,850,990">
     Digitized by Google
   </bloco>
-  <notas>Transcrição feita mantendo quebras e pontuações tal qual visíveis. Algumas abreviações tipográficas modernizadas foram preservadas; notações entre parênteses e sinais de crítica reproduzem o original impresso. BBOXs estimadas em escala 0-1000.</notas>
+  <notas>Transcrição fiel da página de aparato crítico comparando códices latinos (Vercellensis, Veronensis, Brixianus, Corbeiensis). Texto em latim com notas críticas contendo grego. Marcadores de notas (a, b, c, d) e numerais superscritos (1, 2) preservados.</notas>
 </pagina>

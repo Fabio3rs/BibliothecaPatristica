@@ -1,34 +1,16 @@
-<pagina estado="com_texto">
-  <bloco tipo="outro" script="latino" bbox="0,0,1000,150">
-    tipo_pagina: capa_ou_guarda
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="65,33,273,81">
-    C550.1
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="299,244,701,610">
-    HARVARD COLLEGE
-    LIBRARY
+<pagina estado="com_texto" tipo="capa_ou_guarda">
+  <bloco tipo="nota_marginal" script="latino" bbox="140,70,270,110">C550.1</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="330,460,650,530">HARVARD COLLEGE
+LIBRARY</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,545,600,625">VE RI
+TAS</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="355,660,655,830">FROM THE BEQUEST OF
+JAMES WALKER
+(Class of 1814)
+President of Harvard College
 
-    VE RI TAS
-
-    FROM THE BEQUEST OF
-
-    JAMES WALKER
-    (Class of 1814)
-    President of Harvard College
-
-    "Preference being given to works in the Intellectual
-    and Moral Sciences"
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="833,921,990,986">
-    Digitized by Google
-  </bloco>
-  <notas>
-    - Tipo de página identificado como "capa_ou_guarda" (bookplate colado/página de guarda).
-    - Script: latino.
-    - A marca no canto superior esquerdo transcrita como "C550.1" (manuscrita; leitura levemente incerta quanto ao ponto/virgula).
-    - O brasão central contém as letras do lema organizadas em caixas; transcrito como "VE RI TAS" para refletir a disposição visível.
-    - Pequenas áreas escuras na margem esquerda e marcas na parte inferior são artefatos de digitalização e não foram transcritas como texto.
-    - BBOXs são estimativas relativas (escala 0-1000) da posição visual dos blocos.
-  </notas>
+"Preference being given to works in the Intellectual
+and Moral Sciences"</bloco>
+  <bloco tipo="rodape" script="latino" bbox="585,945,790,980">Digitized by Google</bloco>
+  <notas>A barra preta lateral esquerda e pequenos artefatos de digitalização foram ignorados por não conterem texto.</notas>
 </pagina>
