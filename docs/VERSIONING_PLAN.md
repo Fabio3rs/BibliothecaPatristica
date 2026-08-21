@@ -10,7 +10,7 @@
 
 O pipeline atual (`main2.py`) produz resultados de OCR que são salvos como arquivos `.txt` no diretório `text/` de cada volume. Não há controle sobre:
 
-- **Qual engine/modelo** produziu o texto (tesseract, ollama/qwen, gemini, openai/gpt-5 etc.)
+- **Qual engine/modelo** produziu o texto (Tesseract auxiliar, Ollama/Qwen ou OpenAI/GPT etc.)
 - **Qual versão do prompt** foi usada (`PROMPT`, `PROMPT_VERIFY_TESSERACT`, `PROMPT_VERIFY_LLM_VS_TESSERACT`)
 - **Quando** o texto foi gerado (apenas data do arquivo no filesystem)
 - **Histórico de revisões** — sobrescrever o `.txt` apaga o rastro anterior
@@ -43,8 +43,8 @@ Criar um módulo **`ocr_versions_db.py`** e o SQLite **`data/ocr_versions.db`** 
 -- não repetidos em cada ocr_result.
 CREATE TABLE IF NOT EXISTS ocr_engine_versions (
     id                    INTEGER PRIMARY KEY AUTOINCREMENT,
-    engine                TEXT NOT NULL,    -- "tesseract" | "ollama" | "openai" | "gemini"
-    model                 TEXT,             -- ex: "qwen3.5:397b-cloud", "gpt-5", "gemini-2.0-flash-lite", "lat"
+    engine                TEXT NOT NULL,    -- "tesseract" | "ollama" | "openai"
+    model                 TEXT,             -- ex: "qwen3.5:397b-cloud", "gpt-5", "lat"
     prompt_key            TEXT,             -- nome simbólico: "PROMPT", "PROMPT_VERIFY_TESSERACT", etc.
     system_prompt_hash    TEXT NOT NULL,    -- SHA256 hex completo do system prompt
     system_prompt_content TEXT NOT NULL,    -- conteúdo completo do system prompt (inline)
@@ -130,8 +130,8 @@ def open_versions_db() -> sqlite3.Connection:
 def get_or_create_engine_version(
     con: sqlite3.Connection,
     *,
-    engine: str,                # "tesseract" | "ollama" | "openai" | "gemini"
-    model: str | None,          # nome do modelo; None para Tesseract puro
+    engine: str,                # "tesseract" auxiliar | "ollama" | "openai"
+    model: str | None,          # modelo VLM ou idioma do Tesseract auxiliar
     prompt_key: str,            # nome simbólico
     system_prompt: str,         # conteúdo completo (armazenado inline + SHA256)
     user_prompt: str = "",      # conteúdo completo do user prompt (armazenado inline + SHA256)
@@ -264,16 +264,19 @@ def print_history(
 
 ## 5. Integração com `main2.py`
 
-### 5.1 Os três modos de `_ocr_one` e o que cada um produz
+### 5.1 Os modos VLM de `_ocr_one` e o registro auxiliar do Tesseract
 
 Antes de definir o ponto de integração, é necessário mapear exatamente o que acontece em cada modo — porque o registro de versão precisa refletir fielmente o contexto de cada execução:
 
 | Modo | Condição em `_ocr_one` | O que a LLM recebe | `prompt_key` | `reprocess_reason` |
 |------|----------------------|-------------------|--------------|-------------------|
 | **OCR inicial** | `algorithm in LLM` + `reprocess=False` | Apenas a imagem | `"PROMPT"` | `"initial"` |
-| **OCR inicial Tesseract** | `algorithm == "tesseract"` | — (OCR direto) | `"tesseract_direct"` | `"initial"` |
 | **Reprocess — só Tesseract** | `reprocess=True` + textos iguais após limpeza | Imagem + rascunho Tesseract | `"PROMPT_VERIFY_TESSERACT"` | `"reprocess"` (insuficiente — ver §5.3) |
 | **Reprocess — Tesseract + LLM anterior** | `reprocess=True` + textos divergem | Imagem + rascunho Tesseract + OCR anterior da LLM | `"PROMPT_VERIFY_LLM_VS_TESSERACT"` | `"reprocess"` (insuficiente — ver §5.3) |
+
+Tesseract não é mais um backend final selecionável por `--algorithm`. Suas
+leituras continuam versionadas como artefatos auxiliares, inclusive no aquecimento
+ou na reingestão do cache, para preservar a proveniência da reconciliação.
 
 > **Gap identificado:** o plano original usava `reprocess_reason="reprocess"` como string genérica para os dois sub-modos de reprocessamento. Eles são fundamentalmente diferentes — um usa só Tesseract como âncora, o outro usa Tesseract + o resultado anterior da LLM como contexto. Isso precisa estar rastreado.
 
@@ -308,7 +311,7 @@ Exemplos de conteúdo por modo:
   "prior_llm_text_hash": "sha256..."    // hash do texto anterior enviado (redundante mas conveniente)
 }
 
-// Modo: Tesseract direto (sem LLM)
+// Artefato auxiliar: Tesseract do cache (não é resultado final da pipeline)
 {
   "reprocess_mode": "tesseract_direct",
   "tesseract_lang": "lat",
@@ -337,7 +340,7 @@ A integração acontece **depois** que `page_txt_path.write_text(txt)` é chamad
 
 ```python
 # NOVO: determinar meta_json de acordo com o modo
-if reprocess and algorithm in {"ollama", "openai", "gemini"}:
+if reprocess and algorithm in {"ollama", "openai"}:
     prior_result = get_current_result(versions_con, volume_id, page_num)  # antes do INSERT
     if prompt_key == "PROMPT_VERIFY_TESSERACT":
         meta = {
@@ -353,12 +356,6 @@ if reprocess and algorithm in {"ollama", "openai", "gemini"}:
             "prior_llm_result_id": prior_result["id"] if prior_result else None,
             "prior_llm_text_hash": prior_result["text_hash"] if prior_result else None,
         }
-elif algorithm == "tesseract":
-    meta = {
-        "reprocess_mode": "tesseract_direct",
-        "tesseract_lang": lang,
-        "tesseract_config": "--psm 3 --oem 1",
-    }
 else:
     meta = None
 
@@ -393,7 +390,7 @@ except Exception as ver_err:
 | Cenário em `_ocr_one` | `prompt_key` | `reprocess_reason` |
 |----------------------|--------------|-------------------|
 | LLM sem rascunho (inicial) | `"PROMPT"` | `"initial"` |
-| Tesseract direto (inicial) | `"tesseract_direct"` | `"initial"` |
+| Tesseract auxiliar/cache | `"tesseract_direct"` ou `"tesseract_cache"` | motivo de cache/intermediário |
 | Reprocess só com Tesseract | `"PROMPT_VERIFY_TESSERACT"` | propagado pelo chamador |
 | Reprocess Tesseract + LLM anterior | `"PROMPT_VERIFY_LLM_VS_TESSERACT"` | propagado pelo chamador |
 

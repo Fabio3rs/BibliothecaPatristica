@@ -1,37 +1,113 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="50,50,950,90">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="misto" bbox="50,30,950,70">
     1093 [A. C. 1318] BYZANTINÆ HISTORIÆ LIB. XVI. [IMP. J. CANTACUZ. 2] 1094
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,90,460,680">
-    τοῦ ἵππου πεσόντος ἐς γῆν ἐκριφείς καὶ ἀπὸ γῆς μαχόμενος τοῖς ἐπιοῦσιν. Ἔνθα δὴ πολὺς ὁ ἀγὼν ἑκατέρωθεν συνέστη, τῶν μὲν πολεμίων ἀποκτείνειν ἐπειγομένων, τῶν δὲ Ῥωμαίων ἀντεχομένων μάλα γενναίως καὶ τὰς ἑαυτῶν πὲρ το στρατηγοῦ προδι-δόντων ψυχάς· ἕως ἵππου παρενεχθέντος ἐπιβάς μηδὲ λελείφθαι, ὃς γοῦν ἀπαγγελεῖ τῇ Ἀσί τὸ πάθος.
-    Δ'. Τοῦτο ωμαίοις δοξεν ἀγαθς οἰωνὸς καὶ μακρῶν ἐλπίδων προοίμιον. Τὸ μὲν γὰρ ἐπιοῦσαν ἐδέχθαι, πρὶν ἢ προσδοκῆσαι, καὶ ἀποκρούσασθαι τὴν τῶν πολεμίων ἔφοδον, μακρῷ τινι κραταιότερον, ἢ πολεμίῳ χώραν αὐτὸν τινὰ καταδραμόντα στῆ-σασθαι τρόπαιον. Οἷς γὰρ ἐς ὑπερορίους ἐκστρα-τείας παρασκευάζεσθαι μεμελέτηται, τούτοις δὴ καὶ περιττῶς τε μάλα καὶ σοβαρῶς ὁπλίζεσθαι ἀναγ-καῖον, καὶ πάντα πρὸς τ ἀνενδεὲς καὶ φιλοτιμό-τερον ἐκ πολλοῦ τοῦ χρόνου τελεῖν, ἅτ' ἐν ἀλλοτρίᾳ γῇ ποιήσθαι μέλλουσι τὰς ὑπαίθρους στρατοπε-δείας· οἷς καὶ εἰ νικῶεν, μέτριός μέν τις ἕπεται ἔπαινος, θαῦμα δ' οὐ, τῶν παραδόξων οὐδενς πε-πραγμένου, ἀλλ' ἑνς τῶν ὅσα τῶν προσδοκωμένων ἦν. Οἷς δ' οἴκοι καθημένοις ἀπροσδοκήτοις τὸ πολέ-μιον ἔπεισι πῦρ, θαυμαστὸν, εἰ μ ζημιωθεῖεν τὸ ζῆν. [P. 529] Εἰ δ γενναίως καὶ εὐθαρσῶς ἀντα-γωνισαμένοις μετὰ πάνυ μικρᾶς κα τῆς προστυ-χούσης δυνάμεως γένοιτο ἀποκρούσασθαι, τοῦτο δ' ἤδη καὶ θαυμάζεσθαι ἄξιον. Εἰ δὲ καὶ οὕτω κατα-τροπώσασθαι γένοιτο, ὡς μηδὲ πυρφόρον (!9) λελεί-φθαι, τὸ δὴ λεγόμενον, τοῦτο δ' ἐκείνων μακρῷ τινι βέλτιον.
-    Ε'. Καὶ ἡ μὲν πεζικὴ τν Περσῶν ἐκείνη δύναμις ἐς τοῦτο τύχης ἐλήλαται καὶ ἠφάνισται. Τῆς δ' ἱπ-πικῆς κατόπιν ὁ βασιλεὺς ἐξ Ὀρεστιάδος τὴν δίωξιν κατεσπουδασμένην μετὰ χιλίων ἱππέων πεποιηκώς, ἐπειδήπερ ἀσυντάκτοις ἐκ τῆς λείας ἀναζευγνύουσιν ἐντετύχηκε, τοὺς μὲν τριακοσίους ἀπηντηκότας εὐ-τόλμως ἔργον ἀπέφηνε ξίφους· οἷς δὲ πόρρωθεν αἰσθέσθαι ξυνήνεχθη τῆς μάχης, τούτοις δὲ φυγῇ τὴν σωτηρίαν δίχα τῆς λείας πορίσασθαι ἐξεγένετο σκορᾶσι καὶ ἀσυντάκτοις.
+  <bloco tipo="texto_principal" script="grego" bbox="50,70,460,680">
+    τοῦ ἵππου πεσόντος ἐς γῆν ἐκριφεὶς καὶ ἀπὸ γῆς
+    μαχόμενος τοῖς ἐπιοῦσιν. Ἔνθα δὴ πολὺς ὁ ἀγὼν
+    ἑκατέρωθεν συνέστη, τῶν μὲν πολεμίων ἀποκτείνειν
+    ἐπειγομένων, τῶν δὲ Ῥωμαίων ἀντεχομένων μάλα
+    γενναίως καὶ τὰς ἑαυτῶν ὑπὲρ τοῦ στρατηγοῦ προδι-
+    δόντων ψυχάς· ἕως ἵππου παρενεχθέντος ἐπιβὰς
+    μηδὲ λελείφθαι, ὃς γοῦν ἀπαγγελεῖ τῇ Ἀσίᾳ τὸ πάθος.
+    Δ'. Τοῦτο ωμαίοις δοξεν ἀγαθὸς οἰωνὸς καὶ
+    μακρῶν ἐλπίδων προοίμιον. Τὸ μὲν γὰρ ἐπιοῦσαν
+    δέχεσθαι, πρὶν ἢ προσδοκῆσαι, καὶ ἀποκρούσασθαι
+    τὴν τῶν πολεμίων ἔφοδον, μακρῷ τινι κραταιότερον,
+    ἢ πολεμίαν χώραν αὐτόν τινα καταδραμόντα στῆ-
+    σασθαι τρόπαιον. Οἷς γὰρ ἐς ὑπερορίους ἐκστρα-
+    τείας παρασκευάζεσθαι μεμελέτηται, τούτοις δὴ καὶ
+    περιττῶς τε μάλα καὶ σοβαρς ὁπλίζεσθαι ἀναγ-
+    καῖον, καὶ πάντα πρὸς τ ἀνενδεὲς καὶ φιλοτιμό-
+    τερον ἐκ πολλοῦ τοῦ χρόνου τελεῖν, ἅτ' ἐν ἀλλοτρίᾳ
+    γῇ ποιήσασθαι μέλλουσι τὰς ὑπαίθρους στρατοπε-
+    δείας· οἷς καὶ εἰ νικῷεν, μέτριός μέν τις ἕπεται
+    ἔπαινος, θαῦμα δ' οὐ, τῶν παραδόξων οὐδενὸς πε-
+    πραγμένου, ἀλλ' ἑνὸς τῶν σα τῶν προσδοκωμένων
+    ἦν. Οἷς δ' οἴκοι καθημένοις ἀπροσδοκήτοις τὸ πολέ-
+    μιον ἔπεισι πῦρ, θαυμαστόν, εἰ μ ζημιωθεῖεν τὸ
+    ζῆν. [P. 529] Εἰ δὲ γενναίως καὶ εὐθαρσῶς ἀντα-
+    γωνισαμένοις μετὰ πάνυ μικρᾶς κα τῆς προστυ-
+    χούσης δυνάμεως γένοιτο ἀποκρούσασθαι, τοῦτο δ'
+    ἤδη καὶ θαυμάζεσθαι ἄξιον. Εἰ δὲ καὶ οὕτω κατα-
+    τροπώσασθαι γένοιτο, ὡς μηδὲ πυρφόρον (90) λελεί-
+    φθαι, τὸ δὴ λεγόμενον, τοῦτο δ' ἐκείνων μακρῷ τινι
+    βέλτιον.
+    Ε'. Καὶ ἡ μν πεζικὴ τῶν Περσῶν ἐκείνη δύναμις
+    ἐς τοῦτο τύχης ἐλήλαται καὶ ἠφάνισται. Τῆς δ' ἱπ-
+    πικῆς κατόπιν ὁ βασιλεὺς ἐξ Ὀρεστιάδος τὴν δίωξιν
+    κατεσπουδασμένην μετὰ χιλίων ἱππέων πεποιηκώς,
+    ἐπειδήπερ ἀσυντάκτοις ἐκ τῆς λείας ἀναζευγνύουσιν
+    ἐντετύχηκε, τοὺς μν τριακοσίους ἀπηντηκότας εὐ-
+    τόλμως ἔργον ἀπέφηνε ξίφους· οἷς δὲ πόρρωθεν
+    αἰσθέσθαι ξυνήνεχθη τῆς μάχης, τούτοις δὲ φυγῇ
+    τὴν σωτηρίαν δίχα τῆς λείας πορίσασθαι ἐξεγένετο
+    σκορᾶσι καὶ ἀσυντάκτοις.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="480,90,900,680">
-    propugnantibus, et suas pro salute imperatoris animas ultro projicientibus, donec equus est ad-motus : quo ille conscenso, hostes effuse persecu-tus ita cecidit, ut nec relinqueretur, qui cladem illam Aske nuntiaret.
+  <bloco tipo="texto_principal" script="misto" bbox="480,70,950,680">
+    propugnantibus, et suas pro salute impera:oris
+    animas ultro projicientibus, donec equus est ad-
+    motus : quo ille conscenso, hostes effuse persecu-
+    tus ita cecidit, ut nec relinqueretur, qui cladem
+    illam Askæ nuntiaret.
     κατὰ κράτος ἤλαυνε κόπτων τοὺς πολεμίους· ὡς
-    IV. Bonum illud Romanis augurium 839 esse visum est, et magnæ spei præ ludium. Scilicet in-gruentem excipere, priusquam præ videris, et re-pellere hostium impetum, virtus est multo major, quam si quis facta in hostilem agrum excursione tropæum statuat. A quibus enim præ meditatis bel-lum adversus exteras gentes apparatur, eos cumu-late et splendide instructos esse necesse est, et omnia ad plenum longo ante diligenter sibi com-parasse ; ut quibus externo in solo sub dio ca-strametandum sit : et ii quidem, si vincant, me-diocrem laudem consequuntur ; nec mirum ; cum nihil præter opinionem, verum id quod prævisum erat, gestum ab iis fuerit. Quibus vero domi se-dentibus, nec opinatis, hostilis flamma supervenit, mirum nisi ii vita mulctentur. Quod si iidem stre-nue audacterque pugnando, parva admodum et fortuita hominum manus, hostem repulerint, id quidem jam admiratione dignum. At si ita debel-laverint, ut nec ignifer, quod aiunt, relictus sit, id vero longe præclarissimum est.
-    V. Ac pedestris quidem illa Persarum manus eum exitum sortita et in hunc modum deleta est. Equitatum autem ipse imperator ab urbe Orestia-de cum equitibus mille celeriter persecutus, et ut se a præda recipiebant inordinatos nactus, trecen-tos qui audacter occurrerant ferro delevit. Cæteri, cum e longinquo pugnam illam sensissent, præda amissa, palantes dispersique fuga saluti consu-luerunt.
+    IV. Bonum illud Romanis augurium 839 esse
+    visum est, et magnæ spei præ ludium. Scilicet in-
+    gruentem excipere, priusquam præ videris, et re-
+    pellere hostium impetum, virtus est multo major,
+    quam si quis facta in hostilem agrum excursione
+    tropæum statuat. A quibus enim præ meditati's bel-
+    lum adversus exteras gentes apparatur, eos cumu-
+    late et splendide instructos esse necesse est, et
+    omnia ad plenum longo ante diligenter sibi com-
+    parasse ; ut quibus externo in solo sub dio ca-
+    strametandum sit : et ii quidem, si vincant, me-
+    diocrem laudem consequuntur ; nec mirum ; cum
+    nihil præter opinionem, verum id quod prævisum
+    erat, gestum ab iis fuerit. Quibus vero domi se-
+    dentibus, nec opinatis, hostilis flamma supervenit,
+    mirum nisi ii vita mulctentur. Quod si iidem stre-
+    nue audacterque pugnando, parva admodum et
+    fortuita hominum manus, hostem repulerint, id
+    quidem jam admiratione dignum. At si ita debel-
+    laverint, ut nec ignifer, quod aiunt, relictus sit, id
+    vero longe præclarissimum est.
+    V. Ac pedestris quidem illa Persarum manus
+    eum exitum sortita et in hunc modum deleta est.
+    Equitatum autem ipse imperator ab urbe Orestia-
+    de cum equitibus mille celeriter persecutus, et ut
+    se a præda recipiebant inordinatos nactus, trecen-
+    tos qui audacter occurrerant ferro delevit. Cæteri,
+    cum e longinquo pugnam illam sensissent, præda
+    amissa, palantes dispersique fuga saluti consu-
+    luerunt.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="465,90,475,105">
+  <bloco tipo="nota_marginal" script="latino" bbox="470,70,480,90">
     A
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="465,290,475,305">
+  <bloco tipo="nota_marginal" script="latino" bbox="470,290,480,310">
     B
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="465,500,475,515">
+  <bloco tipo="nota_marginal" script="latino" bbox="470,510,480,530">
     C
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="390,690,560,710">
+  <bloco tipo="cabecalho" script="latino" bbox="400,690,600,710">
     Variorum notæ.
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="50,710,450,760">
-    (90) Qui ignem ante aciem præferebant, ii πυρ-φόροι ἱερὲς dicebantur. Vide Scholiastem ad illos versus Phænissarum Euripid. :
+  <bloco tipo="nota" script="misto" bbox="50,710,460,760">
+    (90) Qui ignem ante aciem præferebant, ii πυρ-
+    φόροι ἱερὲς dicebantur. Vide Scholiastem ad illos
+    versus Phænissarum Euripid. :
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="480,710,900,760">
-    Ἐπεὶ δ' ἀφεὶθη πυροδός, ὡς Τυρσηνικῆς Σάλπιγγος ἠχή, σῆμα φοινίου μάχης. Adde Lucianum, Tzetzem, Zenobium, etc. BOIVIN.
+  <bloco tipo="nota" script="misto" bbox="480,710,950,760">
+    Ἐπεὶ δ' ἀφείθη πυρσός, ὡς Τυρσηνικῆς
+    Σάλπιγγος ἠχή, σῆμα φοινίου μάχης.
+    Adde Lucianum, Tzetzem, Zenobium, etc. BOIVIN.
   </bloco>
   <bloco tipo="rodape" script="latino" bbox="600,960,800,980">
     Digitized by Google
   </bloco>
+  <notas>
+    Transcription reflects the bilingual layout (Greek left, Latin right). The line "κατὰ κράτος..." appears in the right column. "impera:oris" and "Askæ" transcribed as visible in the image despite likely being "imperatoris" and "Asiæ". Marginal letters A, B, C identified. Footnote (90) split into two blocks.
+  </notas>
 </pagina>

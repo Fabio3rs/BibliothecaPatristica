@@ -14,7 +14,6 @@ from pathlib import Path
 from typing import Iterable, List, Sequence, Tuple
 
 import numpy as np
-import pandas as pd
 
 
 # ---------------------------------------------------------------------------
@@ -298,6 +297,10 @@ def load_embeddings(
     chunksize: int,
     limit: int,
 ) -> Tuple[List[tuple[str, int]], np.ndarray]:
+    try:
+        import pandas as pd
+    except ImportError as exc:
+        raise RuntimeError("Instale pandas para carregar embeddings legados") from exc
     table = _embedding_table_name(kind)
     sql = f"SELECT documento, pagina_num, embedding FROM {table}"
     params: List[object] = []

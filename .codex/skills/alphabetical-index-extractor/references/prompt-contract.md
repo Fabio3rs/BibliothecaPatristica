@@ -107,6 +107,12 @@ Input: one compact shard. Output: exactly one result per owned `(entry_key, ref_
 Candidates and regex hits are evidence, not automatic decisions. Index source intervals are
 excluded. Filename suffixes are never treated as editorial pages.
 
+A candidate may contain `facsimile_hint` with an unambiguous sibling `image_path`, pairing basis,
+and `inspection_status=not_inspected`. This is an intermediate work hint, not visual evidence.
+Open the image when glyphs, headers, columns, punctuation, or layout matter. Do not copy the PNG
+path into the locator result or canonical payload; report the resulting observation against the
+OCR target file.
+
 ## Repair phase
 
 Input: only invalid or unresolved locator objects. Output: replacements for exactly those pairs.

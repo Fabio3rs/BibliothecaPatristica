@@ -1,0 +1,143 @@
+---
+import Layout from '../Layout.astro';
+import { getLocaleBase, getLocaleRouteUrl, useTranslations } from '../../i18n';
+import type { SupportedLocale } from '../../i18n';
+import type { SeoVolumePayload } from '../../lib/seoIndices';
+
+interface Props {
+  payload: SeoVolumePayload;
+}
+
+const { payload } = Astro.props as Props;
+const locale = (Astro.currentLocale ?? 'pt-br') as SupportedLocale;
+const t = useTranslations(locale);
+const base = import.meta.env.BASE_URL || '/';
+const basePath = base.endsWith('/') ? base.slice(0, -1) : base;
+const homeHref = getLocaleBase(locale, base);
+const indicesHref = getLocaleRouteUrl(locale, 'indices', base, `?volume=${encodeURIComponent(payload.volumeId)}`);
+const viewerHref = getLocaleRouteUrl(locale, 'viewer', base, `?doc=${encodeURIComponent(payload.volumeId)}`);
+const pageTitle = t.seoVolumePageTitle(payload.volumeId);
+const description = t.seoVolumeDescription(payload.volumeId);
+
+function withBase(path: string) {
+  const clean = path.startsWith('/') ? path : `/${path}`;
+  return `${basePath}${clean}`;
+}
+
+function workHref(work: SeoVolumePayload['works'][number]) {
+  return withBase(work.viewerHref || work.fallbackHref);
+}
+
+function pageRange(start: number | null, end: number | null) {
+  if (!start) return '';
+  return end && end !== start ? `p. ${start}–${end}` : `p. ${start}`;
+}
+---
+
+<Layout
+  title={pageTitle}
+  description={description}
+  breadcrumbs={[
+    { label: t.breadcrumbHome, href: homeHref },
+    { label: t.breadcrumbIndices, href: getLocaleRouteUrl(locale, 'indices', base) },
+    { label: payload.volumeId },
+  ]}
+  showPrimaryNav={false}
+>
+  <section class="seo-hero card" style="margin-top:var(--space-4);">
+    <div>
+      <p class="eyebrow">{t.seoCatalogEyebrow}</p>
+      <h1>{payload.heading}</h1>
+      <p>{t.seoCatalogIntro}</p>
+    </div>
+    <div class="hero-actions">
+      <a class="button" href={viewerHref}>{t.seoReadVolume}</a>
+      <a class="button secondary" href={indicesHref}>{t.seoExploreCatalog}</a>
+    </div>
+  </section>
+
+  <aside class="translation-note" aria-label={t.indicesTranslationNoticeTitle}>
+    <strong>{t.indicesTranslationNoticeTitle}</strong>
+    <span>{t.indicesTranslationNoticeBody}</span>
+  </aside>
+
+  <section class="seo-grid" aria-label={t.seoVolumeSummaryAria}>
+    <article class="card seo-metrics">
+      <h2>{t.seoOverview}</h2>
+      <div class="metric-grid">
+        <div><strong>{payload.collection || t.seoCollectionUnknown}</strong><span>{t.seoCollectionLabel}</span></div>
+        <div><strong>{payload.worksTotal}</strong><span>{t.seoWorksIdentified}</span></div>
+      </div>
+    </article>
+
+    <article class="card seo-notes">
+      <h2>{t.seoEditorialNote}</h2>
+      <p>{t.seoEditorialExtractionNote}</p>
+      <p>{t.seoEditorialPaginationNote}</p>
+    </article>
+  </section>
+
+  {payload.works.length > 0 && (
+    <section class="card seo-section-list" aria-label={t.seoWorksAria}>
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">{t.seoWorksEyebrow}</p>
+          <h2>{t.seoWorksHeading}</h2>
+        </div>
+        <a class="button secondary" href={indicesHref}>{t.seoInteractiveCatalog}</a>
+      </div>
+      <ul class="link-list">
+        {payload.works.map((work) => (
+          <li>
+            <a href={workHref(work)}>
+              <span class="work-copy">
+                {work.author && <span class="work-author">{work.author}</span>}
+                <strong>{work.title}</strong>
+                {(work.authorOriginal || work.titleOriginal) && (
+                  <span class="original-line">
+                    <span class="original-label">{t.indicesOriginalLabel}:</span>
+                    {work.authorOriginal && <span>{work.authorOriginal}</span>}
+                    {work.titleOriginal && <span>{work.titleOriginal}</span>}
+                  </span>
+                )}
+              </span>
+              {(work.pageStart || work.pageEnd) && <span class="page-range">{pageRange(work.pageStart, work.pageEnd)}</span>}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <style>
+    .seo-hero {
+      display: grid;
+      gap: var(--space-4);
+      padding: var(--space-6);
+      border: 1px solid var(--color-border);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 88%, var(--color-accent) 12%), var(--color-surface));
+    }
+    .seo-hero h1, .seo-metrics h2, .seo-notes h2, .seo-section-list h2 { margin: 0; font-family: var(--font-serif); }
+    .seo-hero p { margin: var(--space-2) 0 0; max-width: 72ch; color: var(--color-muted); line-height: 1.65; }
+    .eyebrow { margin: 0 0 var(--space-2); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent); font-weight: 700; font-size: 0.8rem; }
+    .hero-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center; }
+    .translation-note { display: grid; gap: var(--space-1); margin-top: var(--space-4); padding: var(--space-4); border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border)); border-radius: var(--radius-m); background: color-mix(in srgb, var(--color-accent) 8%, var(--color-surface)); }
+    .translation-note span { color: var(--color-muted); line-height: 1.55; }
+    .seo-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: var(--space-4); margin-top: var(--space-5); }
+    .seo-metrics, .seo-notes, .seo-section-list { padding: var(--space-5); }
+    .metric-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); margin-top: var(--space-4); }
+    .metric-grid div { display: grid; gap: 0.25rem; padding: var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-s); background: var(--color-surface-2); }
+    .metric-grid strong { font-size: 1.15rem; }
+    .metric-grid span, .page-range { color: var(--color-muted); }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: var(--space-4); margin-bottom: var(--space-4); }
+    .link-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+    .link-list a { display: flex; justify-content: space-between; gap: var(--space-3); align-items: start; padding: var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-s); background: var(--color-surface-2); text-decoration: none; color: var(--color-ink); }
+    .link-list a:hover { border-color: var(--color-accent); }
+    .work-copy, .original-line { display: grid; gap: var(--space-1); min-width: 0; }
+    .work-author { color: var(--color-muted); font-size: 0.9rem; }
+    .original-line { margin-top: var(--space-1); color: var(--color-muted); font-size: 0.86rem; line-height: 1.45; }
+    .original-label { color: var(--color-accent); font-weight: 700; }
+    @media (max-width: 900px) { .seo-grid { grid-template-columns: 1fr; } .link-list a, .section-head { flex-direction: column; align-items: start; } }
+    @media (max-width: 560px) { .metric-grid { grid-template-columns: 1fr; } }
+  </style>
+</Layout>

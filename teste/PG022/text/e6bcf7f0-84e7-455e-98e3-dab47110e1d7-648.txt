@@ -1,95 +1,389 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,60">
-    1233 EUSEBII CÆSARIENSIS OPP. PARS III. — EXEGETICA. 1234
-  </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="100,60,900,250">
-    MATTHÆUS. MARCUS LUCAS. A MT. MP. A.
-    ccxcvi clxxvii cclxxx σις ροζ σπ
-    ccxcvi clxxvii cclxxxiv σις ροζ σπδ
-    ccci clxxxii cclxxxvi τα ρπθ σπς
-    cccviii clxxxix cccv τη ρπθ τε
-    cccxii cxciii ccccix τιθ ριγ σιθ
-    cccxvi cxcvii cccciii τις ρις σιγ
-    cccxvii cxcviii cccxv τις ριη σιε
-    cccxxii ccii cccix τκθ σθ τθ
-    cccxxxviii cxcviii ccccxxii τλη σιη τκθ
-    cccxxxix ccxix cccxxv τλθ σιθ τκε
-    cccxl ccxx cccxxvii τμ σι τκς
-    cccxlii ccxlii cccxxiii τμβ σκθ τκγ
-    cccxliv cccxiv cccxxviii τμδ σκδ τκη
-    cccxlvi cccxv cccxxx τμς σκε τλ
-    cccliii cccxxiii cccxxxvii τνγ σλθ τλς
-    cccliv cccxxxiii cccxxxviii τνδ σλγ τλη
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="450,255,650,275">
-    Explicit Canon secundus.
-  </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="100,290,900,320">
-    INCIPIT CANON TERTIUS, IN QUO TRES. B Γ ΚΑΝΩΝ ΤΡΙΤΟΣ, ΕΝ Φ ΟΙ ΤΡΕΙΣ.
-    MATTHÆUS. LUCAS. JOANNES. MT. Λ ΙΩ.
-  </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="100,325,900,550">
-    i xiv i α ιδ α'
-    i xiv iii α ιδ γ
-    i xiv v α ιδ ε
-    vii vi ii ζ ς β
-    vii vi xxv ζ ς κε
-    lix lxiii cxvi γθ ξγ ρις
-    lxiv lxv xxxvii ξθ ξε λζ
-    xc lviii cxviii κ νη ριη
-    xc lviii cxxxix κ νη ρλθ
-    xcvii ccxi cv ιζ σια ρε
-    cxi cxix xxx ρια ριθ λ
-    cxi cxiv cxiv ρια ριθ ριδ
-    cxi cxix cxlviii ρια ριθ ρμη
-    cxii cxix v ριβ ριθ ε
-    cxii cxix xliv ριθ ριθ ιδ
-    cxii cxix lxi | C ριθ ριθ ξα
-    cxii cxix lxxvi ριθ ριθ ος
-    cxii cxix lxxxvii ριθ ριθ πζ
-    cxii cxix xc ριθ ριθ ς
-    cxii cxix xclii ριθ ριθ ρμβ
-    cxii cxix cliv ριθ ριθ ρνδ
-    cxlvi xcii xlvii ρμς ριθ μς
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="450,555,650,575">
-    Explicit Canon tertius.
-  </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="100,590,900,620">
-    INCIPIT CANON QUARTUS, IN QUO TRES. Δ ΚΑΝΩΝ ΤΕΤΑΡΤΟΣ, ΕΝ Φ ΟΙ ΤΡΕΙΣ
-    MATTHÆUS. MARCUS. JOANNES. MT. Λ. ΙΩ.
-  </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="100,625,900,850">
-    xviii viii xxvi ιη η κς
-    cxvii xxvi xciii ριζ κς ιγ
-    cxvii xxvi xcv ριζ κς ιε
-    clj lxvii li D ρν ξς να
-    clxi lxxvii xxiii ρξα ος κγ
-    clxi lxxvii liii ρξα ος νγ
-    cciv cxv xci σδ ριε ξα
-    cciv cxv cxxxv σδ ριε ρλε
-    ccxvi cxxv cxxviii σις ρκε ρκη
-    ccxvi cxxv cxxxiii σις ρκε ρλγ
-    ccxvi cxxv cxxxvii σις ρκε ρλζ
-    ccxvi cxxv cl σις ρκε ρν
-    cclxxvii clix xcviii σοζ ρνθ ιη
-    cclxxix clxi lxxii σοθ ρξα οβ
-    cclxxix clxi ccxi σοθ ρξα ρκα
-    cclxxxvii clxviii cliii σπζ ρξη ρνθ
-    cccxliii clxxiv cvii σιγ ροθ ρς
-    cccxlvii clxxviii lxx σιζ ροη ο
-    cccxix clxxx ciii' σλθ ρπ ργ
-    cccvii clxxxviii clxiv τς ρπη ρξδ
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="550,950,750,980">
-    Digitized by Google
-  </bloco>
-  <notas>
-    Transcrição de tabelas de cânones eusebianos.
-    Letras A, B, C, D aparecem como marcadores no meio das tabelas/cabeçalhos.
-    Em "Canon Tertius", linha 16, coluna 3: "lxi |" com barra vertical.
-    Em "Canon Quartus", linha 4, coluna 1: "clj" (provavelmente cli).
-    Em "Canon Quartus", linha 19, coluna 3: "ciii'" com marca de apóstrofo/primo.
-    Script misto (Latino e Grego).
-  </notas>
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="145,45,190,60">1283</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="325,44,800,61">EUSEBII CÆSARIENSIS OP. PARS III. — EXEGETICA.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="910,45,955,60">1284</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="155,63,265,97">MATTHÆUS.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="300,63,390,97">MARCUS</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="435,63,510,97">LUCAS.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="535,63,555,97">A</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="600,63,650,97">MT.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="730,63,780,97">MP.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="875,63,915,97">A.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="155,97,265,292">ccxcvi
+ccxcvi
+ccci
+cccviii
+cccxii
+cccxvi
+cccxvii
+cccxxii
+cccxxxviii
+cccxxxix
+cccxl
+cccxlii
+cccxliv
+cccxlvi
+cccliii
+cccliv</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="300,97,390,292">clxxvii
+clxxvii
+clxxxii
+clxxxix
+cxciii
+cxcvii
+cxcviii
+ccii
+ccxviii
+ccxix
+ccxx
+ccxlii
+ccxiv
+ccxxv
+ccxxxii
+ccxxxiii</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="435,97,510,292">cclxxx
+cclxxxiv
+cclxxxvi
+cccv
+ccxciii
+ccxciii
+cccxxv
+cccix
+cccxxxviii
+cccxxxix
+cccxxvii
+cccxxiii
+cccxxviii
+cccxxx
+cccxxxvii
+cccxxxviii</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="600,97,650,292">σις
+σις
+τα
+τη
+τιδ
+τις
+τιζ
+τκδ
+τλη
+τλθ
+τμ
+τμβ
+τμδ
+τμς
+τνγ
+τνδ</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="730,97,780,292">ροζ
+ροζ
+ρπθ
+ρπθ
+ριγ
+ρις
+ριη
+σθ
+σιη
+σιθ
+σι
+σκθ
+σκδ
+σκε
+σλθ
+σλγ</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="875,97,915,292">σπ
+σπδ
+σπς
+τε
+σιθ
+σιγ
+σιε
+τθ
+τκθ
+τκε
+τκς
+τκγ
+τκη
+τλ
+τλς
+τλη</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="445,296,650,315">Explicit Canon secundus.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="160,320,500,346">INCIPIT CANON TERTIUS, IN QUO TRES.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="535,320,555,346">B</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="600,320,915,346">Γ ΚΑΝΩΝ ΤΡΙΤΟΣ, ἘΝ ῼ ΟΙ ΤΡΕΙΣ.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="160,346,265,380">MATTHÆUS.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="300,346,390,380">LUCAS.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="430,346,520,380">JOANNES.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="600,346,650,380">MT.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="730,346,780,380">Λ</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="875,346,915,380">ΙΩ.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="160,380,265,635">i
+i
+i
+vii
+vii
+lix
+lxiv
+xc
+xc
+xcvii
+cxi
+cxi
+cxi
+cxii
+cxii
+cxii
+cxii
+cxii
+cxii
+cxii
+cxlvi</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="300,380,390,635">xiv
+xiv
+xiv
+vi
+vi
+lxiii
+lxv
+lviii
+lviii
+ccxi
+cxix
+cxix
+cxix
+cxix
+cxix
+cxix
+cxix
+cxix
+cxix
+cxix
+xcii</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="430,380,520,635">i
+iii
+v
+ii
+xxv
+cxvi
+xxxvii
+cxviii
+cxxxix
+cv
+xxx
+cxiv
+cxlviii
+v
+xliv
+lxi
+lxxvi
+lxxxvii
+xc
+xclii
+cliv
+xlvii</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="600,380,650,635">α
+α
+α
+ζ
+ζ
+γθ
+ξθ
+κ
+κ
+ιζ
+ρια
+ρια
+ρια
+ριβ
+ριβ
+ριβ
+ριβ
+ριβ
+ριβ
+ριβ
+ρμς</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="730,380,780,635">ιδ
+ιδ
+ιδ
+ς
+ς
+ξγ
+ξε
+νη
+νη
+σια
+ριθ
+ριθ
+ριθ
+ριθ
+ριθ
+ριθ
+ριθ
+ριθ
+ριθ
+ριθ
+ριθ</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="875,380,915,635">α
+γ
+ε
+β
+κε
+ρις
+λζ
+ριη
+ρλθ
+ρε
+λ
+ριδ
+ρμη
+ε
+ιδ
+ξα
+ος
+πζ
+ς
+ρμβ
+μς</bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="535,532,555,555">C</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="445,640,650,660">Explicit Canon tertius.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="160,680,500,708">INCIPIT CANON QUARTUS, IN QUO TRES.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="535,680,555,708">D</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="600,680,915,708">Δ ΚΑΝΩΝ ΤΕΤΑΡΤΟΣ, ἘΝ ῼ ΟΙ ΤΡΕΙΣ</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="160,708,265,742">MATTHÆUS.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="300,708,390,742">MARCUS.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="430,708,520,742">JOANNES.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="600,708,650,742">MT.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="730,708,780,742">Λ.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="875,708,915,742">ΙΩ.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="160,742,265,925">xviii
+cxvii
+cxvii
+cli
+clxi
+clxi
+cciv
+cciv
+ccxvi
+ccxvi
+ccxvi
+ccxvi
+cclxxvii
+cclxxix
+cclxxix
+cclxxxvii
+cccxliii
+cccxlvii
+cccxix
+cccvii</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="300,742,390,925">viii
+xxvi
+xxvi
+lxvii
+lxxvii
+lxxvii
+cxv
+cxv
+cxxv
+cxxv
+cxxv
+cxxv
+clix
+clxi
+clxi
+clxviii
+clxxiv
+clxxviii
+clxxx
+clxxxviii</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="430,742,520,925">xxvi
+xciii
+xcv
+li
+xxiii
+liii
+xci
+cxxxv
+cxxviii
+cxxxiii
+cxxxvii
+cl
+xcviii
+lxxii
+ccxi
+clii
+cvii
+lxx
+ciii!
+clxiv</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="600,742,650,925">ιη
+ριζ
+ριζ
+ρν
+ρξα
+ρξα
+σδ
+σδ
+σις
+σις
+σις
+σις
+σοζ
+σοθ
+σοθ
+σπζ
+σιγ
+σιζ
+σλθ
+ς</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="730,742,780,925">η
+κς
+κς
+ξς
+ος
+ος
+ριε
+ριε
+ρκε
+ρκε
+ρκε
+ρκε
+ρνθ
+ρξα
+ρξα
+ρξη
+ροθ
+ροη
+ρπ
+ρπη</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="875,742,915,925">κε
+ιγ
+ιε
+να
+κγ
+νγ
+ξα
+ρλε
+ρκη
+ρλγ
+ρλζ
+ρν
+ιη
+οβ
+ρκα
+ρνθ
+ρς
+ο
+ργ
+ρξδ</bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="580,960,790,985">Digitized by Google</bloco>
+  <notas>As letras A, B, C e D foram transcritas em blocos próprios de nota marginal; os identificadores não foram incluídos no texto das colunas.</notas>
 </pagina>

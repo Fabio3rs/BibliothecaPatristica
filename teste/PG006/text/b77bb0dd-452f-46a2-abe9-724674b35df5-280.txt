@@ -1,4 +1,4 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="50,20,950,50">
     517 S. JUSTINI PHILOSOPHI ET MARTYRIS 518
   </bloco>
@@ -8,14 +8,14 @@
     gere; alium quoque psalmum Davidi a Spiritu sancto
     dictatum commemorabo, quem quidem in Salomo-
     nem, 131 qui et ipse rex vester fuit, dictum esse con-
-    tenditis ; sed is quoque in Christum nostrum editus
+    tenditis; sed is quoque in Christum nostrum editus
     est. Vos autem ex æquivocis nominibus fucum vo-
     bis ipsis facitis. Ubi enim « lex Domini immaculata »
     dicitur¹, legem intelligitis non illam quæ post Moy-
     sen futura erat, sed eam quæ per ipsum data est,
     quamvis Deus clamet se novam legem ac Novum
     Testamentum instituturum. Et ubi dicitur : « Deus,
-    judicium tuum Regi da² ; quia rex fuit Salomon,
+    judicium tuum Regi da²; quia rex fuit Salomon,
     psalmum in eum dictum esse vultis, quamvis psalmi
     verba diserte declarent eum editum fuisse in æter-
     num regem, id est in Christum. Christus enim Rex
@@ -23,15 +23,15 @@
     et dux exercitus, et lapis et puer natus, ac primo
     perpessioni obnoxius, deinde in cœlum rediens, et
     rursus cum gloria veniens, ac regnum habens æter-
-    num prædicatus est ; quemadmodum ex omnibus
+    num prædicatus est; quemadmodum ex omnibus
     Scripturis demonstro. Ut autem id quod dico intel-
     ligatis, psalmi verba recitabo, quæ sic se habent :
     « Deus, judicium tuum Regi da, et justitiam tuam fi-
-    lio Regis ; judicare populum tuum in justitia, et
+    lio Regis; judicare populum tuum in justitia, et
     pauperes tuos in judicio. Suscipiant montes pacem
     populo, et colles justitiam. Judicabit pauperes po-
     puli, et salvos faciet filios pauperum, et humiliabit
-    calumniatorem ; et permanebit cum sole et ante lu-
+    calumniatorem; et permanebit cum sole et ante lu-
     nam in generationes generationum. Descendet sicut
     pluvia in vellus, et sicut stilla destillans super ter-
     ram. Orietur in diebus ejus justitia, et abundantia
@@ -41,14 +41,14 @@
     inimici ejus terram lingent. Reges Tharsis, et in-
     sulæ munera offerent : Reges Arabum et Saba dona
     adducent. Et adorabunt eum omnes reges terræ, et
-    omnes gentes servient ei ; quia liberavit egenum a
+    omnes gentes servient ei; quia liberavit egenum a
     potente et pauperem cui non erat adjutor. Parcet
     inopi et pauperi, et animas pauperum salvas faciet.
-    Ex usura et iniquitate redimet animas eorum ; et
+    Ex usura et iniquitate redimet animas eorum; et
     honorabile nomen ejus coram illis. Et vivet, et da-
     bitur ei de auro Arabiæ, et orabunt de ipso semper :
     tota die benedicent ei. Et erit firmamentum in ter-
-    ra : super summos montes extolletur ; super Liba-
+    ra : super summos montes extolletur; super Liba-
     num fructus ejus, et florebunt de civitate, sicut fœ-
     num terræ. Erit nomen ejus benedictum in sæcula :
     ante solem permanet nomen ejus. Et benedicentur
@@ -58,69 +58,79 @@
     ejus in æternum et in sæculum sæculi : et replebi-
     tur gloria ejus omnis terra : fiat, fiat. » Et in fine
   </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="495,65,505,80">
+    A
+  </bloco>
   <bloco tipo="texto_principal" script="grego" bbox="510,60,950,840">
-    οὐδὲν συνήκατε, καὶ ἄλλον ψαλμοῦ τῷ Δαβίδ (41) ὑπὸ τοῦ
-    ἁγίου Πνεύματος εἰρημένον ἀναμνήσομαι, ὅτι εἰς Σολο-
-    μῶνα, τὸν γενόμενον καὶ αὐτὸν βασιλέα ὑμν, εἰρήσθαι
-    λέγετε· εἰς δ τὸν Χριστὸν ἡμν καὶ ατὸς ερηται.
-    μεῖς δὲ ἀπὸ τῶν μωνύμων λέξεων ἑαυτοὺς ἐξα-
-    πατᾶτε · ὅπου γὰρ « ὁ νόμος τοῦ Κυρίου μωμος »
-    εἴρηται, οὐχὶ τὴν μετ' ἐκεῖνον μέλλουσα, ἀλλὰ τὴν
-    διὰ Μωϋσέως ἐξηγεῖσθε, τοῦ Θεοῦ βοῶντος, καινὴν
+    οὐδὲν συνήκατε, καὶ ἄλλον ψαλμοῦ τῷ Δαβίδ (41) ὑπὸ το
+    ἁγίου Πνεύματος εἰρημένου ἀναμνήσομαι, ὃν εἰς Σολο-
+    μῶνα, τὸν γενόμενον καὶ αὐτὸν βασιλέα ὑμν, εἰρῆσθαι
+    λέγετε· εἰς δὲ τὸν Χριστὸν μῶν κα αὐτὸς εἴρηται.
+    Ὑμεῖς δὲ ἀπὸ τῶν ὁμωνύμων λέξεων ἑαυτοὺς ἐξα-
+    πατᾶτε· που γὰρ «  νόμος τοῦ Κυρίου ἄμωμος »
+    εἴρηται, οὐχὶ τὸν μετ' ἐκεῖνον μέλλοντα, ἀλλὰ τὸν
+    διὰ Μωϋσέως ἐξηγεῖσθε, τοῦ Θεοῦ βοῶντος, καινὸν
     νόμον καὶ καινὴν διαθήκην διαθήσεσθαι. Καὶ ὅπου
     λέλεκται, « Ὁ Θεός, τὸ κρίμα σου τῷ βασιλεῖ δός, »
-    ἐπειδὴ βασιλεὺς Σολομὼν γέγονεν, εἰς αὐτὸν τν ψαλ-
-    μὸν εἰρῆσθαι φατε, τῶν λόγων τοῦ ψαλμοῦ διαῥή-
-    δην χρυσούντων εἰς τὸν αἰώνιον βασιλέα, τουτέστιν
-    εἰς τὸν Χριστόν, εἰρήσθαι. Ὁ γὰρ Χριστὸς βασιλεύς,
-    A καὶ ἱερεύς, καὶ Θεός, καὶ Κύριος, καὶ ἄγγελος, καὶ
-    νθρωπος, κα ἀρχιστράτηγος, καὶ λίθος, καὶ παι-
+    ἐπειδὴ βασιλεὺς Σολομὼν γέγονεν, εἰς αὐτὸν τὸν ψαλ-
+    μὸν εἰρσθαί φατε, τῶν λόγων τοῦ ψαλμοῦ διαῤῥή-
+    δην κηρυσσόντων εἰς τὸν αἰώνιον βασιλέα, τουτέστιν
+    εἰς τὸν Χριστόν, εἰρσθαι.  γὰρ Χριστς βασιλεύς,
+    καὶ ἱερεύς, καὶ Θεός, καὶ Κύριος, καὶ ἄγγελος, καὶ
+    ἄνθρωπος, καὶ ἀρχιστράτηγος, καὶ λίθος, καὶ παι-
     δίον γεννώμενον, καὶ παθητὸς γενόμενος πρῶτον, εἶτα
-    εἰς οὐρανὸν ἀνερχόμενος, καὶ πάλιν παραγινόμενος
+    εἰς ορανὸν ἀνερχόμενος, καὶ πάλιν παραγινόμενος
     μετὰ δόξης, καὶ αἰώνιον τὴν βασιλείαν ἔχων κεκή-
-    ρυκται, ὡς ἀπὸ πασν τῶν Γραφῶν ἀποδείκνυμι.
-    Ἵνα δὲ καὶ ὁ επων νοήσς, τοὺς τοῦ ψαλμοῦ λόγους
-    λέγω · εἰσὶ δ' οὗτοι · « Ὁ Θεός, τὸ κρίμα σου τῷ Βα-
-    σιλεῖ δός, καὶ τὴν δικαιοσύνην σου τῷ υἱ τοῦ Βασι-
+    ρυκται, ὡς ἀπὸ πασῶν τῶν Γραφῶν ἀποδείκνυμι.
+    Ἵνα δὲ καὶ ὃ εἶπον νοήσητε, τοὺς το ψαλμο λόγους
+    λέγω· εἰσὶ δ' οὗτοι· « Ὁ Θεός, τὸ κρίμα σου τῷ Βα-
+    σιλεῖ δός, καὶ τὴν δικαιοσύνην σου τῷ υἱῷ το Βασι-
     λέως, κρίνειν τὸν λαόν σου ἐν δικαιοσύνῃ κα τοὺς
-    B πτωχούς σου ἐν κρίσει. Ἀναλαβέτω τὰ ὄρη εἰρήνην
-    τῷ λα, καὶ ο βουνοὶ δικαιοσύνην · κρινεῖ τοὺς πτω-
-    χοὺς τοῦ λαοῦ, καὶ σώσει τοὺς υἱοὺς τῶν πενήτων,
-    καὶ ταπεινώσει συκοφάντην, καὶ συμπαραμενεῖ τῷ
-    ἡλίῳ καὶ πρὸ τῆς σελήνης εἰς γενεὰς γενεῶν. Κατα-
-    βήσεται ὡς ὑετὸς ἐπὶ πόκον, καὶ ὡσεὶ σταγὼν στά-
-    C ζουσα ἐπὶ τὴν γῆν. Ἀνατελεῖ ἐν ταῖς ἡμέραις αὐτοῦ
-    δικαιοσύνη καὶ πλῆθος εἰρήνης, ἕως οὗ ἀναιρεθῇ
+    πτωχούς σου ἐν κρίσει. Ἀναλαβέτω τὰ ὄρη ερήνην
+    τῷ λαῷ, καὶ οἱ βουνοὶ δικαιοσύνην· κρινεῖ τοὺς πτω-
+    χοὺς τοῦ λαοῦ, καὶ σώσει τοὺς υοὺς τν πενήτων,
+    καὶ ταπεινώσει συκοφάντην, καὶ συμπαραμενεῖ τ
+    ἡλί καὶ πρ τῆς σελήνης εἰς γενεὰς γενεῶν. Κατα-
+    βήσεται ὡς ετὸς ἐπὶ πόκον, καὶ ὡσεὶ σταγὼν στά-
+    ζουσα ἐπὶ τὴν γῆν. Ἀνατελεῖ ἐν ταῖς ἡμέραις αὐτοῦ
+    δικαιοσύνη καὶ πλῆθος εἰρήνης, ἕως οὗ ἀνταναιρεθῇ
     ἡ σελήνη. Καὶ κατακυριεύσει ἀπὸ θαλάσσης ἕως θα-
-    λάσσης, καὶ ἀπὸ ποταμῶν ως περάτων τς οἰκου-
+    λάσσης, καὶ ἀπὸ ποταμῶν ἕως περάτων τῆς οἰκου-
     μένης. Ἐνώπιον αὐτοῦ προπεσοῦνται Αἰθίοπες, καὶ
     οἱ ἐχθροὶ αὐτοῦ χον λείξουσι. Βασιλεῖς Θαρσεῖς καὶ
-    νῆσοι δῶρα προσάξουσι · βασιλεῖς Ἀράβων καὶ Σαβὰ
-    δῶρα προσάξουσι, καὶ προσκυνήσουσιν αὐτῷ πάντες
-    οἱ βασιλεῖς τς γῆς, καὶ πάντα τὰ ἔθνη δουλεύσουσιν
-    αὐτῷ · ὅτι ἐῤύσατο πτωχν ἐκ δυνάστου, καὶ πένητα
+    νῆσοι δῶρα προσάξουσι· βασιλεῖς Ἀράβων καὶ Σαβᾶ
+    δῶρα προσάξουσι, καὶ προσκυνήσουσιν αὐτ πάντες
+    ο βασιλεῖς τῆς γῆς, καὶ πάντα τὰ ἔθνη δουλεύσουσιν
+    αὐτῷ· ὅτι ἐῤύσατο πτωχν ἐκ δυνάστου, καὶ πένητα
     ᾧ οὐχ ὑπῆρχε βοηθός. Φείσεται πτωχοῦ καὶ πένητος,
-    καὶ ψυχὰς πενήτων σώσει · ἐκ τόκου καὶ ἐξ ἀδικίας
-    λυτρώσεται τὰς ψυχὰς αὐτῶν · καὶ ἔντιμον τὸ ὄνομα
+    καὶ ψυχὰς πενήτων σώσει· ἐκ τόκου καὶ ἐξ ἀδικίας
+    λυτρώσεται τὰς ψυχὰς αὐτῶν· καὶ ἔντιμον τὸ ὄνομα
     αὐτοῦ ἐνώπιον αὐτῶν. Καὶ ζήσεται, καὶ δοθήσεται
-    D αὐτ ἐκ τοῦ χρυσίου τῆς ραβίας, καὶ προσεύξον-
-    ται διαπαντὸς περὶ αὐτοῦ · λην τὴν ἡμέραν εὐλο-
+    αὐτ ἐκ τοῦ χρυσίου τῆς ραβίας, καὶ προσεύξον-
+    ται διαπαντὸς περὶ αὐτοῦ· ὅλην τὴν ἡμέραν εὐλο-
     γήσουσιν αὐτόν. Καὶ ἔσται στήριγμα ἐν τῇ γ, ἐπ'
-    κρων τῶν ὀρέων περθήσεται · πὲρ τὸν Λίβανον
-    ὁ καρπὸς αὐτοῦ, καὶ ἐξανθήσουσιν ἐκ πόλεως ὡσεὶ
-    χόρτος τῆς γς. Ἔσται τὸ ὄνομα αὐτοῦ εὐλογημένον
-    εἰς τος αἰνας. Πρὸ τοῦ ἡλίου διαμένει τὸ ὄνομα
-    αὐτο · καὶ ἐνυλογηθήσονται ἐν αὐτῷ πσαι αἱ φυ-
+    ἄκρων τῶν ρέων ὑπεραρθήσεται· ὑπὲρ τν Λίβανον
+    ὁ καρπὸς αὐτοῦ, καὶ ἐξανθήσουσιν ἐκ πόλεως ὡσε
+    χόρτος τῆς γῆς. Ἔσται τὸ ὄνομα αὐτοῦ εὐλογημένον
+    εἰς τοὺς αἰνας. Πρὸ τοῦ ἡλίου διαμένει τὸ ὄνομα
+    αὐτοῦ· καὶ ἐνευλογηθήσονται ἐν αὐτ πᾶσαι α φυ-
     λαὶ τῆς γῆς, πάντα τὰ ἔθνη μακαριοῦσιν αὐτόν. Εὐ-
-    λογητὸς Κύριος ὁ Θεὸς τοῦ Ἰσραὴλ ὁ ποιῶν θαυμά-
+    λογητὸς Κύριος ὁ Θες τοῦ σραὴλ  ποιῶν θαυμά-
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="50,850,490,940">
+  <bloco tipo="nota_marginal" script="latino" bbox="495,280,505,295">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="495,500,505,515">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="495,690,505,705">
+    D
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="50,850,950,940">
     ¹ Psal. xviii, 8. ² Psal. lxxi, 2.
-    (41) Τῷ Δαβίδ. Legendam conjicit Cl. Thirlbius
-    τοῦ διὰ Δαβὶδ ὑπὸ το. Sed mihi videtur Justinus
+    (41) Tῷ Δαβίδ. Legendum conjicit Cl. Thirlbius
+    τοῦ διὰ Δαβὶδ ὑπὸ τοῦ. Sed mihi videtur Justinus
     respicere ad psalmi titulum, Ψαλμὸς τῷ Δαυίδ,
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="510,900,950,940">
     quem proinde Davidi dictatum a Spiritu sancto in-
     telligebat.
   </bloco>
@@ -129,7 +139,7 @@
   </bloco>
   <notas>
     Transcrição de página bilingue (Latim/Grego) da Patrologia.
-    Letras A, B, C, D no texto grego marcam seções correspondentes ao texto latino.
-    Nota de rodapé (41) continua no canto inferior direito.
+    Letras A, B, C, D no espaço entre colunas funcionam como marcadores de alinhamento.
+    Nota de rodapé (41) inicia no canto inferior esquerdo e continua no direito.
   </notas>
 </pagina>

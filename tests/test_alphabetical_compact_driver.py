@@ -166,6 +166,7 @@ def test_onomastic_helper_queries_separate_name_from_editorial_description() -> 
 def test_compact_helper_candidate_preserves_internal_locator_evidence() -> None:
     candidate = {
         "file": "/corpus/page.txt",
+        "image_file": "/corpus/images/page.png",
         "probability": 0.99,
         "evidence": [
             {"kind": f"generic_{index}", "raw": str(index), "weight": 1.0}
@@ -188,6 +189,66 @@ def test_compact_helper_candidate_preserves_internal_locator_evidence() -> None:
     assert "body_locator_name_unique" in kinds
     assert "body_locator_match" in kinds
     assert "internal_locator_vs_editorial_sequence" in kinds
+    assert compact["facsimile_hint"] == {
+        "image_path": "/corpus/images/page.png",
+        "pairing_basis": "physical_sequence_suffix",
+        "editorial_page_inferred": False,
+        "inspection_status": "not_inspected",
+    }
+
+
+def test_facsimile_hint_survives_candidate_merge_and_is_intermediate_only(
+    tmp_path: Path,
+) -> None:
+    text_root = tmp_path / "PLX" / "text"
+    images_root = tmp_path / "PLX" / "images"
+    text_root.mkdir(parents=True)
+    images_root.mkdir()
+    ocr_file = text_root / "page-001.txt"
+    image_file = images_root / "PLX-001.png"
+    ocr_file.write_text("121 TEST 122\nGregorius secundus.", encoding="utf-8")
+    image_file.write_bytes(b"")
+    items = [
+        {
+            "locator_key": "e1::ref:000001",
+            "entry_key": "e1",
+            "entry_order": 1,
+            "section_key": "s1",
+            "section_kind": "onomastic_person",
+            "section_heading": "INDEX ONOMASTICUS",
+            "section_file_start": str(text_root / "index-010.txt"),
+            "section_file_end": str(text_root / "index-010.txt"),
+            "lemma_raw": "Gregorius II",
+            "entry_excerpt": "Gregorius II, 122",
+            "page_ref_raw": "122",
+            "page_ref_int": 122,
+            "cited_pages": [122],
+            "ref_kind": "editorial_page",
+            "ref_raw": "122",
+            "candidates": [
+                {
+                    "file": str(ocr_file),
+                    "probability": 0.8,
+                    "evidence": [{"kind": "header_pair", "detail": "121/122"}],
+                }
+            ],
+        }
+    ]
+
+    enriched, artifact = compact_driver.add_deterministic_text_candidates(
+        items,
+        volume_id="PLX",
+        source_root=text_root,
+    )
+
+    expected_hint = {
+        "image_path": str(image_file.resolve()),
+        "pairing_basis": "physical_sequence_suffix",
+        "editorial_page_inferred": False,
+        "inspection_status": "not_inspected",
+    }
+    assert enriched[0]["candidates"][0]["facsimile_hint"] == expected_hint
+    assert artifact["entries"][0]["candidates"][0]["facsimile_hint"] == expected_hint
 
 
 def test_helper_request_supplies_neighbor_name_groups_and_sibling_hints(
@@ -244,8 +305,12 @@ def test_locator_and_repair_prompts_preserve_genuine_ambiguity(tmp_path: Path) -
     assert "ambiguous keeps target_file null" in locator
     assert "readable competing_candidates" in locator
     assert "page-specific" in locator
+    assert "facsimile_hint" in locator
+    assert "PNG path into the locator result" in locator.replace("\n", " ")
     assert "Preserve ambiguous" in repair
     assert "false unrecoverable_ocr" in repair
+    assert "facsimile_hint" in repair
+    assert "do not copy the PNG path" in repair.replace("\n", " ")
     assert "Do not leave `ambiguous`" not in repair
 
 
@@ -274,6 +339,10 @@ def test_compact_driver_assembles_without_final_agent(
     target = source_root / "page-050.txt"
     target.parent.mkdir(parents=True)
     target.write_text("101 INDEX 102", encoding="utf-8")
+    images_root = source_root.parent / "images"
+    images_root.mkdir()
+    image_file = images_root / "PL001-050.png"
+    image_file.write_bytes(b"")
     phases: list[str] = []
     semantic_validations: list[Path] = []
 
@@ -310,6 +379,11 @@ def test_compact_driver_assembles_without_final_agent(
             expected_output.name.replace("_result.json", "_input.json")
         )
         shard = json.loads(shard_file.read_text(encoding="utf-8"))
+        assert all(
+            item["candidates"][0]["facsimile_hint"]["image_path"]
+            == str(image_file.resolve())
+            for item in shard["items"]
+        )
         write_json(
             expected_output,
             {
@@ -353,6 +427,7 @@ def test_compact_driver_assembles_without_final_agent(
     assert summary["repair_ran"] is False
     assert [ref["target_file"] for ref in payload["refs"]] == [str(target), str(target)]
     assert payload["entries"][0]["target_file_best"] == str(target)
+    assert str(image_file.resolve()) not in output_file.read_text(encoding="utf-8")
     scripture_evidence = json.loads(
         Path(summary["scripture_evidence_file"]).read_text(encoding="utf-8")
     )

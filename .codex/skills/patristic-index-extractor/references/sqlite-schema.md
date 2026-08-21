@@ -78,6 +78,17 @@ the primary database. The driver imports a payload only after all driver-side va
 - `notes` TEXT
 - `raw_json` TEXT
 
+### Translation and linguistic cache
+
+- `index_strings` stores each whitespace-canonicalized source string once.
+- `index_translations` stores one translation per `index_strings.id` and target language.
+- `index_string_analyses` stores the current language-detection/CLTK result for a string.
+- `index_string_tokens` stores queryable token annotations (surface, lemma, UPOS, morphology,
+  dependency data, offsets, and confidence) for successful analyses.
+
+These tables are global caches. Replacing one volume does not delete their rows; later translation
+or analysis runs reuse them and only request missing or stale work.
+
 ## Replace policy
 
 When an operator-authorized driver import replaces a volume, the driver uses `--replace` to remove

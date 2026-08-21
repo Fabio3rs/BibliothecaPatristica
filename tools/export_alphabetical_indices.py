@@ -24,6 +24,9 @@ from patristica_pipeline.scripture_book_catalog import (
     canonical_book_key,
     canonical_book_label,
 )
+from patristica_pipeline.index_pipeline_ownership import (
+    alphabetical_section_ownership,
+)
 
 TARGET_BYTES = 350_000
 PAGE_SPECIFIC_EVIDENCE_KINDS = {
@@ -46,6 +49,8 @@ select
   s.section_key,
   s.section_kind,
   s.heading_raw,
+  s.pipeline_owner,
+  s.alphabetical_role,
   s.file_start as section_file_start,
   s.file_end as section_file_end,
   e.entry_key,
@@ -89,6 +94,8 @@ left join alphabetical_scripture_refs sr
   on sr.entry_key = r.entry_key
  and sr.ref_order = r.scripture_ref_order
 where e.entry_kind not in ('heading_group', 'editorial_note')
+  and s.pipeline_owner = 'alphabetical'
+  and s.alphabetical_role = 'owned_section'
 """
 
 
@@ -269,6 +276,18 @@ def public_shard_path(domain: str, path: str) -> str:
 def classify_domain(row: sqlite3.Row) -> str | None:
     section_kind = row["section_kind"]
     entry_kind = row["entry_kind"]
+    owned_by_alphabetical, _ = alphabetical_section_ownership(
+        {
+            "section_kind": section_kind,
+            "heading_raw": row_value(row, "heading_raw"),
+            "raw_json": {
+                "pipeline_owner": row_value(row, "pipeline_owner"),
+                "alphabetical_role": row_value(row, "alphabetical_role"),
+            },
+        }
+    )
+    if not owned_by_alphabetical:
+        return None
     if (
         entry_kind in {"scripture_citation", "scripture_pericope"}
         and row_value(row, "ref_role") is None

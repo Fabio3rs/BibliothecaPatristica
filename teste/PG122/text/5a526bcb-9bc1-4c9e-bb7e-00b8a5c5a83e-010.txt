@@ -1,67 +1,25 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="150,40,850,110">
-    TRADITIO CATHOLICA
-    SAECULUM XI. ANNUS 1058.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="120,140,880,260">
-    ΓΕΩΡΓΙΟΥ
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="220,270,780,335">
-    ΤΟΥ ΚΕΔΡΗΝΟΥ
-    ΣΥΝΟΨΙΣ ΙΣΤΟΡΙΩΝ.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,360,880,430">
-    GEORGII CEDRENI
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="180,460,820,510">
-    COMPENDIUM HISTORIARUM,
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="260,520,740,540">
-    CUI SUBICUNTUR
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="130,560,870,612">
-    EXCERPTA EX BREVIARIO JOANNIS SCYLITZÆ, CUROPALATÆ.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="420,628,580,654">
-    ACCEDUNT
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="240,660,760,712">
-    MICHAELIS PSELLI
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="180,730,820,764">
-    OPERA QUÆ REPERIRI POTUERUNT OMNIA
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="300,774,700,796">
-    NUNC PRIMUM IN UNUM COLLECTA
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="150,808,850,844">
-    ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE,
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="260,848,740,872">
-    BIBLIOTHECÆ CLERI UNIVERSÆ,
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="420,876,580,892">
-    SIVE
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,900,880,934">
-    CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="220,946,780,976">
-    TOMUS POSTERIOR
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="340,992,660,1020">
-    PARISIIS
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,1028,880,1088">
-    APUD GARNIER FRATRES, EDITORES ET J.-P. MIGNE SUCCESSORES,
-    IN VIA DICTA : AVENUE DU MAINE, 189, OLIM CHAUSSÉE DU MAINE, 127.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="460,1100,540,1136">
-    1889
-  </bloco>
-  <notas>
-    Transcrição literal mantendo maiúsculas e sinais tal como na imagem.
-    Blocos com texto grego identificados com script="grego"; restante com script="latino".
-    Pequenas variações tipográficas (ligaduras Æ, acentos) mantidas conforme aparecimento: SCYLITZÆ, QUÆ, BIBLIOTHECÆ, CHAUSSÉE.
-  </notas>
+<pagina estado="com_texto" tipo="capa_ou_guarda">
+  <bloco tipo="cabecalho" script="latino" bbox="337,97,679,110">TRADITIO CATHOLICA</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="362,127,587,136">SÆCULUM XI. ANNUS 1058.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="190,156,772,199">ΓΕΩΡΓΙΟΥ</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="294,215,657,237">ΤΟΥ ΚΕΔΡΗΝΟΥ</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="237,255,714,272">ΣΥΝΟΨΙΣ ΙΣΤΟΡΙΩΝ.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="130,298,808,333">GEORGII CEDRENI</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="199,359,728,376">COMPENDIUM HISTORIARUM,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="417,395,541,403">CUI SUBJICIUNTUR</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="131,416,827,425">EXCERPTA EX BREVIARIO JOANNIS SCYLITZÆ, CUROPALATÆ.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="438,438,544,446">ACCEDUNT</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="288,457,700,477">MICHAELIS PSELLI</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="217,482,725,493">OPERA QUÆ REPERIRI POTUERUNT OMNIA</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="347,503,628,513">NUNC PRIMUM IN UNUM COLLECTA</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="251,529,692,539">ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="298,547,683,555">BIBLIOTHECÆ CLERI UNIVERSÆ,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="458,565,511,573">SIVE</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="128,579,818,590">CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="364,624,588,636">TOMUS POSTERIOR</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="424,699,575,714">PARISIIS</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="138,725,803,741">APUD GARNIER FRATRES, EDITORES ET J.-P. MIGNE SUCCESSORES,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="198,746,738,760">IN VIA DICTA : AVENUE DU MAINE, 189, OLIM CHAUSSÉE DU MAINE, 127.</bloco>
+  <bloco tipo="rodape" script="latino" bbox="441,793,562,807">1889</bloco>
+  <notas>Folha de rosto sem colunas e sem identificadores marginais A, B, C ou D visíveis. Ornamentos tipográficos e marcas periféricas da reprodução não foram transcritos como texto.</notas>
 </pagina>

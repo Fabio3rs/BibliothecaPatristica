@@ -39,7 +39,7 @@ def test_po_alphabetical_profile_detects_generic_table_and_index_headings(tmp_pa
     assert "INDEX" in markers
 
 
-def test_general_profile_adds_contents_families_without_changing_alpha_profile(
+def test_general_profile_owns_contents_and_alpha_marks_them_as_boundaries(
     tmp_path: Path,
 ) -> None:
     text_root = tmp_path / "PL001" / "text"
@@ -52,7 +52,11 @@ def test_general_profile_adds_contents_families_without_changing_alpha_profile(
     )
     general = build_fallback_filtered_pages("PL001", text_root, "PL", "general")
 
-    assert alphabetical["candidate_sections"] == []
+    assert alphabetical["candidate_sections"][0]["marker"] == "CONSPECTUS TOMI"
+    assert (
+        alphabetical["candidate_sections"][0]["role"]
+        == "alphabetical_stop_boundary"
+    )
     assert general["candidate_sections"][0]["marker"] == "CONSPECTUS TOMI"
 
 
@@ -87,9 +91,18 @@ def test_general_and_alphabetical_profiles_are_editorially_disjoint(tmp_path: Pa
     alphabetical = build_fallback_filtered_pages("PL001", text_root, "PL", "alphabetical")
 
     assert {item["marker"] for item in general["candidate_sections"]} == {"CONSPECTUS TOMI"}
-    assert {item["marker"] for item in alphabetical["candidate_sections"]} == {
+    assert {
+        item["marker"]
+        for item in alphabetical["candidate_sections"]
+        if item["role"] == "section_heading"
+    } == {
         "INDEX RERUM ET VERBORUM"
     }
+    assert any(
+        item["marker"] == "CONSPECTUS TOMI"
+        and item["role"] == "alphabetical_stop_boundary"
+        for item in alphabetical["candidate_sections"]
+    )
     assert general["head_files"]
     assert general["tail_files"] == []
     assert alphabetical["head_files"] == []
@@ -187,9 +200,18 @@ def test_alphabetical_profile_rejects_explicit_general_external_candidates(
 
     assert payload["source"] == "fallback_internal"
     assert payload["ignored_legacy_external_file"] == str(external)
-    assert {item["marker"] for item in payload["candidate_sections"]} == {
+    assert {
+        item["marker"]
+        for item in payload["candidate_sections"]
+        if item["role"] == "section_heading"
+    } == {
         "INDEX RERUM ET VERBORUM"
     }
+    assert any(
+        item["marker"] == "CONSPECTUS TOMI"
+        and item["role"] == "alphabetical_stop_boundary"
+        for item in payload["candidate_sections"]
+    )
 
 
 def test_pg_pl_ordo_rerum_is_tagged_as_alphabetical_stop_boundary(
@@ -210,6 +232,63 @@ def test_pg_pl_ordo_rerum_is_tagged_as_alphabetical_stop_boundary(
         if item["marker"] == "ORDO RERUM"
     )
     assert hit["role"] == "alphabetical_stop_boundary"
+
+
+def test_alphabetical_profile_detects_multiline_cer_works_boundary(
+    tmp_path: Path,
+) -> None:
+    text_root = tmp_path / "PL192" / "text"
+    text_root.mkdir(parents=True)
+    page = text_root / "pl-001.txt"
+    page.write_text(
+        """
+        <pagina estado="com_texto">
+          <bloco tipo="cabecalho">ELENCHUS.</bloco>
+          <bloco tipo="cabecalho">AUCT0RUM ET 0PERUM</bloco>
+          <bloco tipo="texto_principal">QUI IN HOC TOMO CONTINENTUR.</bloco>
+        </pagina>
+        """,
+        encoding="utf-8",
+    )
+
+    payload = build_fallback_filtered_pages(
+        "PL192", text_root, "PL", "alphabetical"
+    )
+
+    hit = next(
+        item
+        for item in payload["candidate_sections"]
+        if item["marker"] == "AUCTORUM ET OPERUM"
+    )
+    assert hit["role"] == "alphabetical_stop_boundary"
+    assert hit["line_end"] > hit["line"]
+
+
+def test_alphabetical_profile_joins_hyphenated_heading_lines(tmp_path: Path) -> None:
+    text_root = tmp_path / "PL001" / "text"
+    text_root.mkdir(parents=True)
+    page = text_root / "pl-001.txt"
+    page.write_text(
+        """
+        <pagina estado="com_texto">
+          <bloco tipo="cabecalho">INDEX ONO-</bloco>
+          <bloco tipo="cabecalho">MASTICUS</bloco>
+        </pagina>
+        """,
+        encoding="utf-8",
+    )
+
+    payload = build_fallback_filtered_pages(
+        "PL001", text_root, "PL", "alphabetical"
+    )
+
+    hit = next(
+        item
+        for item in payload["candidate_sections"]
+        if item["marker"] == "INDEX ONOMASTICUS"
+    )
+    assert hit["role"] == "section_heading"
+    assert hit["line_end"] > hit["line"]
 
 
 def test_ordo_rerum_remains_a_general_pipeline_section(tmp_path: Path) -> None:

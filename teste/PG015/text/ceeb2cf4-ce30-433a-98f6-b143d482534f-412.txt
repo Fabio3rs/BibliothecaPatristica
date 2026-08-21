@@ -1,47 +1,47 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,50,150,70">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="126,47,161,66">
     819
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="350,40,650,70">
+  <bloco tipo="cabecalho" script="latino" bbox="397,47,612,68">
     HEXAPLORUM QUÆ SUPERSUNT.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="850,50,900,70">
+  <bloco tipo="cabecalho" script="latino" bbox="906,53,938,70">
     820
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="380,80,620,100">
+  <bloco tipo="cabecalho" script="latino" bbox="397,72,659,91">
     CAPUT VI DEUTERONOMII.
   </bloco>
-  
-  [!-- Top Section: Hebrew, Greek transliteration, Aquila --]
-  <bloco tipo="texto_principal" script="misto" bbox="50,100,300,400">
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="117,96,390,469">
     TO ΕΒΡΑΙΚΟΝ.
     
     לבך 5
     
     ושננתם 7
-    בביתך ולכת בדרך
+    בביתך ובלכתך בדרך
     ובשכבך ובקומך
     
     וקשרתם 8
-    לטוטפת
+    לטטפת
     בין עיניך 9
     
     וכתבתם
     
-    השעריך 13
+    ובשעריך 13
     
-    מצות 15
+    מצותיו
     
-    חקותיו 17
+    חקתיו 17
+    את יהוה
     
     חקותיו 20
     
     ויצונו ה' 24
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="350,100,550,400">
-    TO ΕΒΡΑΙΚΟΝ
-    Ἑλληνικος γράμμασι.
+  <bloco tipo="texto_principal" script="grego" bbox="386,96,675,469">
+    ΤΟ ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
     
     5.
     
@@ -60,7 +60,7 @@
     24.
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="650,100,950,400">
+  <bloco tipo="texto_principal" script="grego" bbox="672,98,861,469">
     ΑΚΥΛΑΣ.
     
     5.
@@ -69,19 +69,21 @@
     
     8. Συνδήσεις.
     Ἄνακτα.
+    
     9.
     
-    13. Φυλαξαι.
+    13. Φύλαξαι.
     
     17. Ἀκριβώματα.
     
     20. Ἀκριβώματα.
+    
     24.
   </bloco>
 
-  [!-- Middle Section: Latin Versions --]
-  <bloco tipo="texto_principal" script="latino" bbox="50,430,300,750">
+  <bloco tipo="texto_principal" script="latino" bbox="117,474,390,799">
     VERSIO HEBRAICI TEXT.
+    
     5. Corde tuo.
     7. Repetes ea.
     In sedendo te in domo tua, et in
@@ -104,8 +106,9 @@
     24. Omnia statuta.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="350,430,600,750">
+  <bloco tipo="texto_principal" script="latino" bbox="386,474,675,800">
     VULGATA LATINA.
+    
     5. Corde tuo.
     7. Narrabis ea.
     Sedens in domo tua, et ambu-
@@ -128,8 +131,9 @@
     24. Omnia legitima.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="650,430,900,750">
+  <bloco tipo="texto_principal" script="latino" bbox="672,474,860,800">
     AQUILA.
+    
     5.
     7. Repetes.
     
@@ -145,32 +149,31 @@
     24.
   </bloco>
 
-  [!-- Bottom Section: Notes --]
-  <bloco tipo="aparato_critico" script="misto" bbox="50,770,950,950">
+  <bloco tipo="aparato_critico" script="misto" bbox="117,814,895,926">
     Notæ et variæ lectiones ad cap. VI Deuteronomii.
     
     V. 5. "Αλλος , τῆς καρδίας. Basil. Verisimile est
-    esse reliquorum omnium interpretum. — לְבָבְךָ. O',
-    ψυχῆς. Coislin. ad marg., διανοίας. .O'. δυ-
+    esse reliquorum omnium interpretum. — לבבך. O᾽,
+    ψυχῆς. Coislin. ad marg., διανοίας. ᾽O᾽. δυ-
     νάμεως. Coislin. marg., ἰσχύος.
-    V. 7. 'Α., δευτερώσεις. Coislin.
-    Ibid. "Αλλος, ἐν τῷκαθῆσθαι, etc. Videtur esse
     
-    Aquilæ, qui Hebraica , κατὰ πόδα , sequitur. Ex Ba-
-    siliensi. — O', καθήμενος ἐν οἴκῳ. Coislin. marg., ἐν
-    τῷ καθῆσθαι ἐν οἴκῳ, etc., et hæc notantur asteriscis.
-    V. 8. 'Α., ἄνακτα, melius, ἀτίνακτα. Σ., διασταλ-
-    μένα. Ex Basil. Vide quæ diximus Exod. xiii , 16.
-    — O', ἀσάλευτα. Coislin. marg., 'Α., ΗΑΚΤΑ , cor-
+    V. 7. ᾽A., δευτερώσεις. Coislin.
+    Ibid. ᾽Αλλος, ἐν τῷ καθῆσθαι, etc. Videtur esse
   </bloco>
-  <notas>
-    A página apresenta uma disposição poliglota típica das Hexaplas.
-    Coluna 1 (Topo): Texto Hebraico.
-    Coluna 2 (Topo): Transliteração do Hebraico em caracteres Gregos (apenas números visíveis nesta página).
-    Coluna 3 (Topo): Versão de Áquila em Grego.
-    Coluna 1 (Meio): Versão Latina do Texto Hebraico.
-    Coluna 2 (Meio): Vulgata Latina.
-    Coluna 3 (Meio): Versão Latina de Áquila.
-    Rodapé: Notas críticas em Latim e Grego.
-  </notas>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="526,814,895,926">
+    Aquilæ, qui Hebraica, κατὰ πόδα, sequitur. Ex Ba-
+    siliensi. — O᾽, καθήμενος ἐν οἴκῳ. Coislin. marg., ἐν
+    τῷ καθῆσθαι ἐν οἴκῳ, etc., et hæc notantur asteriscis.
+    
+    V. 8. ᾽A., ἄνακτα, melius, ἀτίνακτα. Σ., διεσταλ-
+    μένα. Ex Basil. Vide quæ diximus Exod. xiii, 16.
+    
+    — O᾽, ἀσάλευτα. Coislin. marg., ᾽A., ΗΑΚΤΑ, cor-
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="565,970,782,989">
+    Digitized by Google
+  </bloco>
+  <notas>O aparato crítico apresenta continuação cortada na margem inferior; a última palavra visível termina em “cor-”. Não se observam identificadores marginais A, B, C ou D.</notas>
 </pagina>

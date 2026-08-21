@@ -1,74 +1,192 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,40,100,60">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="60,55,95,90">
     201
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="350,40,650,60">
+  <bloco tipo="cabecalho" script="latino" bbox="360,55,650,100">
     DE SACRAMENTIS.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="850,40,900,60">
+  <bloco tipo="cabecalho" script="latino" bbox="865,55,905,90">
     202
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,80,495,100">
-    A
+
+  <bloco tipo="texto_principal" script="grego" bbox="60,95,470,175">
+    νοητῆς ὧν ἐκείνης, ἡμᾶς μὲν καθαροὺς αὐτῷ καὶ
+    γνησίως ἀκολουθοῦντας ἰσαγγέλους ποιήσει, παρ' οἷς
+    οὐδὲν προσπαθές, μόνη δὲ ἡ ἀπαθεστάτη ἀγάπη.
+    Ἐκείνων δὲ ὧν ὑπερορῶμεν ἡμεῖς δι' αὐτόν, προ-
+    νοήσεται δι' ἑτέρων.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,80,470,150">
-    νοητῆς· ὧν ἐκείνης, ἡμς μὲν καθαροὺς· αὐτῷ καὶ γνώσεως ἀκολουθοῦντας ἰσαγγέλους ποιήσει, παρ' οἷς οὐδὲν προσπαθές, μόνη δὲ ἡ ἀπαθεστάτη ἀγάπη. Ἐκείνων δὲ ὧν ὑπερορῶμεν ἡμες δι' αὐτὸν, προνοήσεται δι' ἑτέρων.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,160,470,190">
+
+  <bloco tipo="texto_principal" script="grego" bbox="60,205,320,245">
     ΚΕΦΑΛ. ΝΔ'.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,190,470,210">
-    Τί τὸ « φες τοὺς νεκροὺς θάψαι τοὺς ἑαυτῶν νεκρούς. »
+  <bloco tipo="texto_principal" script="grego" bbox="60,245,450,295">
+    Τί τὸ, « Ἄφες τοὺς νεκροὺς θάψαι τοὺς ἑαυτῶν
+    νεκρούς. »
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,210,470,280">
-    Διὸ καὶ κεκώλυκεν ἐκεῖνον εἰπών, « Ἄφες τοὺς νεκροὺς θάψαι τοὺς ἑαυτῶν νεκρούς. » Ἀνήγαγε γὰρ αὐτὸν εἰς τὴν ἀφθαρσίαν, καὶ τοῖς ἀθανάτοις συνήψεν ἀγγέλοις, μιμητὴν αὐτῶν δεδειγμένον διὰ τὸ ἄσκητον. Οὐ νεκρός, φησίν, εἰ· δι καὶ περὶ νεκρῶν τῶν λυουμένων πατέρων μὴ μερίμνα.
+  <bloco tipo="texto_principal" script="grego" bbox="60,295,455,405">
+    Διὸ καὶ κεκώλυκεν ἐκεῖνον εἰπών, « Ἄφες τοὺς
+    νεκροὺς θάψαι τοὺς ἑαυτῶν νεκρούς. » Ἀνήγαγε γὰρ
+    αὐτὸν εἰς τὴν ἀφθαρσίαν, καὶ τοῖς ἀθανάτοις συνή-
+    ψεν ἀγγέλοις, μιμητὴν αὐτῶν δεδειγμένον διὰ τὸ
+    ἄσκητον. Ὁ νεκρὸς, φησίν, εἶ· διὸ καὶ περὶ νε-
+    κρῶν τῶν λυομένων πατέρων μὴ μερίμνα.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,290,470,310">
+
+  <bloco tipo="texto_principal" script="grego" bbox="60,430,320,470">
     ΚΕΦΑΛ. ΝΕ'.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,310,470,330">
-    Τί τὸ, « Οὐδεὶς βαλὼν τὴν χεῖρα αὐτοῦ ἐπ' ἄροτρον. »
+  <bloco tipo="texto_principal" script="grego" bbox="60,470,450,515">
+    Τί τὸ, « Οὐδεὶς βαλὼν τὴν χεῖρα αὐτοῦ ἐπ'
+    ἄροτρον. »
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,330,470,920">
-    Καὶ τέρῳ δὲ τῷ βουλομένῳ ἀποτάξασθαι τοῖς εἰς τὸν οἶκον αὐτο, τουτέστι γυναικὶ καὶ τος ἄλλοις, τί φησιν; « Οὐδεὶς βαλὼν τὴν χεῖρα αὐτοῦ ἐπ' ἄροτρον καὶ στραφεὶς εἰς τὰ ὀπίσω, εὔθετός ἐστιν εἰς τὴν βασιλείαν τῶν οὐρανῶν. » Γεωργία; ἄρξω, 72 φησίν, οὐκ ἀνθρωπίνης, ἀλλ' ἐν τῷ οὐρανῷ γεωργίᾳ. Οὐκ εὔθετός ἐσῃ στραφόμενος πρὸς τὰ πρόσκαιρα. Μάθε δὲ καὶ τίνα εἶνον ἀνταλλάττην οἴκου σου καὶ τῶν ἐν τῷ οκῳ, βασιλείαν οὐρανῶν. Εὕρησομεν ἄρα, ὡς καὶ ἔζησεν ὁ Κύριος τὴν κατὰ μοναχοὺς ὁδόν, καὶ παρέδωκεν. Καὶ ἐν τοῖς ἀποστόλοις αὕτη ἡ ζω ἦν, διὸ καὶ τούτοις παρῄνει, μὴ δύο ἔχειν χιτῶνας, μηδὲ ῥάβδον, ἢ πήραν, ἢ ὑποδήματα, καὶ τὰ λοιπά, ὁ τῆς μοναχικῆς ἐστι βιοτῆς. Καὶ οὐχ ἁπλῶς· λόγος, μόνον καὶ εὐχας πρὸς τοῦτο ἐνίσχυε τὸ ἔργον, ὡς καὶ πρὸς τὸ διδάσκειν, ἀλλὰ καὶ εὐλογῶν αὐτοὺς ἐξαπέστειλε. Καὶ δύναμιν παρεῖχεν, ἐξαποστέλλων, κατὰ πνευμάτων ἀκαθάρτων, καὶ θεραπεύειν πᾶσαν νόσον καὶ πᾶσαν μαλακίαν, ὅπερ οὐ μόνον ἐν τοῖς ἀποστόλοις τότε ἦν, ἀλλὰ καὶ ἐν τοῖς γίοις στερον, καὶ μᾶλλον τοῖς ἀσκηταῖς. Ὅτι δὲ καὶ τελετὴ ἦν ἐξ ἀρχῆς, καὶ μυστήριον μοναχικῆς τελειώσεως, καὶ ἀπὸ τῶν ἀποστόλων αὐτῶν, ὁ μέγας τοῦτο μαρτυρεῖ Διονύσιος μετὰ τὰς ἄλλας ἱερὰς τελετάς, καὶ μυστήριον γράφων μοναχικῆς τελειώσεως. Πλανῶνται ἄρα οἱ λέγοντες ὡς καινότερόν ἐστι τὸ σχῆμα, καὶ οὐ παρὰ τοῦ Σωτῆρος ἢ τῶν ἀποστόλων αὐτοῦ δοθὲν. Ἀπεδείχθη γὰρ ὡς καὶ Χριστὸς ὁ Θεὸς ἡμν τοῦτο παραδεδοικὼς ἦν, καὶ οἱ ατοῦ μαθηταί, καὶ μυστήριον ἦν παραδεδομένον ὑπ' αὐτῶν τῆς τῶν μοναχῶν τελειώσεως, καὶ περιβολὴ σχήματος· ἑτέρα παρὰ τὸ σχῆμα τὸ κοσμικόν. Καὶ τοῦτο γὰρ ὁ θεός φησι Διονύσιος· Ὁ τι δὲ καὶ τῷ ἱερ Παχωμίῳ ἐν τοῖς τῶν Πατέρων γέγραπται λόγοις, ὕστερον τὸ σχμα παρ' ἀγγέλου δοθῆναι, καλῶς καὶ ἀληθῶς γέγραπται. Καὶ γὰρ τοῦ σχήματος σημεῖά τινα, τελειοτέραν διδασκαλίαν ἔχοντα παρὰ τὸ πρότερον σχῆμα, δίδεται. Ἐπεὶ γὰρ κατὰ μικρὸν ἐκ τῆς εσεβείας ηὔξανέ τε καὶ προέκοπτε, καὶ τῆς Ἐκκλησίας οἱ εὐσεβεῖς· μείζους ἐγίνοντο, καὶ τὰ τῆς ερουργίας καὶ τοῦ βαπτίσματος λαμπρότερον συνετίθετο, καὶ
+  <bloco tipo="texto_principal" script="grego" bbox="60,515,470,920">
+    Καὶ ἑτέρῳ δὲ τῷ βουλομένῳ ἀποτάξασθαι τοῖς εἰς
+    τὸν οἶκον αὐτοῦ, τουτέστι γυναικὶ καὶ τοῖς ἄλλοις, τί
+    φησιν; « Οὐδεὶς βαλὼν τὴν χεῖρα αὐτοῦ ἐπ' ἄροτρον
+    καὶ στραφεὶς εἰς τὰ ὀπίσω, εὔθετός ἐστιν εἰς τὴν
+    βασιλείαν τῶν οὐρανῶν. » Γεωργίας ἤρξω, [ilegivel]
+    οὐκ ἀνθρωπίνης, ἀλλ' ἐν τῷ οὐρανῷ γεωργεῖς. Οὐκ
+    εὔθετός εἶ στραφόμενος πρὸς τὰ πρόσκαιρα. Μάθε
+    δὲ καὶ τίνα τίνων ἀνταλλάττην οἴκου σου καὶ τῶν
+    ἐν τῷ οἴκῳ, βασιλείαν οὐρανῶν. Εὑρίσκομεν ἄρα,
+    ὡς καὶ ἔζησεν ὁ Κύριος τὴν κατὰ μοναχοὺς ὁδόν, καὶ
+    παρέδωκεν. Καὶ ἐν τοῖς ἀποστόλοις αὕτη ἡ ζωή ἦν,
+    διὸ καὶ τούτοις παρῄνει, μὴ δύο ἔχειν χιτῶνας, μηδὲ
+    ῥάβδον, ἢ πήραν, ἢ ὑποδήματα, καὶ τὰ λοιπά, ὅ
+    τῆς μοναχικῆς ἐστι βιοτῆς. Καὶ οὐχ ἁπλῶς λόγοις μόνον
+    καὶ εὐχαῖς πρὸς τοῦτο ἐνίσχυε τὸ ἔργον, ὡς καὶ
+    πρὸς τὸ διδάσκειν, ἀλλὰ καὶ εὐλογῶν αὐτοὺς ἐξαπέ-
+    στειλε. Καὶ δύναμιν παρεῖχεν, ἐξαποστέλλων, κατὰ
+    πνευμάτων ἀκαθάρτων, καὶ θεραπεύειν πᾶσαν νόσον
+    καὶ πᾶσαν μαλακίαν, ὅπερ οὐ μόνον ἐν τοῖς ἀποστό-
+    λοις τότε ἦν, ἀλλὰ καὶ ἐν τοῖς ἁγίοις ὕστερον, καὶ
+    μᾶλλον τοῖς ἀσκηταῖς. Ὅτι δὲ καὶ τελετὴ ἦν ἐξ ἀρ-
+    χῆς, καὶ μυστήριον μοναχικῆς τελειώσεως, καὶ ἀπὸ
+    τῶν ἀποστόλων αὐτῶν, ὁ μέγας τοῦτο μαρτυρεῖ Διο-
+    νύσιος μετὰ τὰς ἄλλας ἱερὰς τελετάς, καὶ μυστήριον
+    γράφων μοναχικῆς τελειώσεως. Πλανῶνται ἄρα οἱ
+    λέγοντες ὡς καινότερόν ἐστι τὸ σχῆμα, καὶ οὐ παρὰ
+    τοῦ Σωτῆρος ἢ τῶν ἀποστόλων αὐτοῦ δοθέν. Ἀπε-
+    δείχθη γὰρ ὡς καὶ Χριστὸς ὁ Θεὸς ἡμῶν τοῦτο παρα-
+    δεδωκὼς ἦν, καὶ οἱ αὐτοῦ μαθηταί, καὶ μυστήριον
+    ἦν παραδεδομένον ὑπ' αὐτῶν τῆς τῶν μοναχῶν τε-
+    λειώσεως, καὶ περιβολὴ σχήματος ἑτέρα παρὰ τὸ
+    σχῆμα τὸ κοσμικόν. Καὶ τοῦτο γὰρ ὁ θεῖος φησι
+    Διονύσιος. Ὅ τι δὲ καὶ τῷ ἱερῷ Παχωμίῳ ἐν τοῖς
+    τῶν Πατέρων γέγραπται λόγοις, ὕστερον τὸ σχῆμα
+    παρ' ἀγγέλου δοθῆναι, καλῶς καὶ ἀληθῶς γέγρα-
+    πται. Καὶ γὰρ τοῦ σχήματος σημεῖά τινα, τελειοτέ-
+    ραν διδασκαλίαν ἔχοντα παρὰ τὸ πρότερον σχῆμα,
+    δίδοται. Ἐπεὶ γὰρ κατὰ μικρὸν τὰ τῆς εὐσεβείας
+    ηὔξανέ τε καὶ προέκοπτε, καὶ τῆς Ἐκκλησίας αἱ
+    εὐταξίαι μείζους ἐγίνοντο, καὶ τὰ τῆς ἱερουργίας
+    καὶ τοῦ βαπτίσματος λαμπρότερον συνετίθετο, καὶ
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,290,495,310">
-    B
+
+  <bloco tipo="nota_marginal" script="latino" bbox="495,78,510,95">
+    A
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,500,495,520">
-    C
+
+  <bloco tipo="texto_principal" script="latino" bbox="530,95,950,175">
+    minime curare debemus, quia Deus ille providens
+    est qui nos, modo ipsum pure ac sincere secuti
+    erimus, similes angelis faciet, apud quos nullus
+    remanet appetitus, nisi solus divinissimus amor;
+    horum enim in locum quæ propter ipsum relique-
+    rimus, alia ab eo sufficientur.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,720,495,740">
-    D
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,80,950,150">
-    minime curare debemus, quia Deus ille providens est qui nos, modo ipsum pure ac sincere secuti erimus, similes angelis faciet, apud quos nullus remanet appetitus, nisi solus divinissimus amor; horum enim in locum quæ propter ipsum reliquerimus, alia ab eo sufficientur.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,160,950,180">
+
+  <bloco tipo="texto_principal" script="latino" bbox="610,220,860,255">
     CAPUT LIV.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,180,950,200">
-    Quæ sit sententia dicti Matth. VIII, 22 : « Sinite mortuos sepelire mortuos suos. »
+  <bloco tipo="texto_principal" script="latino" bbox="530,255,950,290">
+    Quæ sit sententia dicti Matth. VIII, 22 : « Sinite
+    mortuos sepelire mortuos suos. »
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,200,950,280">
-    Nunc autem cohibuit dicens : « Permittite mortuos sepelire mortuos suos, ut eum ad incorruptibilia raperet et immortalibus angelis conjungeret, cum horum etiam studii imitatorem sese præberet : » Mortuus non es, inquit; quare mortuos parentes jam solutos noli amplius curare.
+  <bloco tipo="texto_principal" script="latino" bbox="530,290,950,400">
+    Nunc autem cohibuit dicens : « Permittite mor-
+    tuos sepelire mortuos suos, ut eum ad incorrupti-
+    bilia raperet et immortalibus angelis conjungeret,
+    cum horum etiam studii imitatorem sese præberet : »
+    Mortuus non es, inquit; quare mortuos parentes
+    jam solutos noli amplius curare.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,290,950,310">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="495,410,510,430">
+    B
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="610,445,860,480">
     CAPUT LV.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,310,950,330">
-    Quæ dicti Luc. IX, 62 : « Nemo mittens manum suam ad aratrum. »
+  <bloco tipo="texto_principal" script="latino" bbox="530,480,950,515">
+    Quæ dicti Luc. IX, 62 : « Nemo mittens manum suam
+    ad aratrum. »
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,330,950,920">
-    Ad alterum autem vale dicere cupientem his quæ domi sunt, id est, uxori suæ et cæteris, quid dicit? « Nemo mittens manum suam ad aratrum, et respiciens retro, aptus est regno Dei. » Non humanam, inquit, incipe arationem, sed eam quæ desuper est cura; haud apta enim invenies, si ad momentanea deflexeris; disce igitur quænam nunc quorumdam in locum sufficiantur, loco domus tuæ et eorum quæ domi sunt, regnum cœlorum. Jamjam igitur invenimus quomodo Dominus juxta monachorum viam et ipse vixit et nobis tradidit; et ea fuit quoque apostolorum vita, quibus ipse suasit ne duas haberent tunicas, neque baculum, neque peram, neque calceamenta, neque alia hujusmodi, quod sane monachorum vitæ proprium est. Eos autem non suis sermonibus tantum precibusque ad opus illud roboravit, veluti ad docendum, sed etiam benedicens eos misit, mittensque, dedit illis potestatem spirituum immundorum ut ejicerent eos et curarent omnem languorem et omnem infirmitatem, quod tunc non tantum in apostolis fuit, sed etiam in sanctis postea, ac præcipue in ascetis. Quod autem ab initio fuerit hic status, quod etiam monachalis institutionis mysterium ab ipsis apostolis nobis tradatur, magnus testatur Dionysius, qui post sacra alia munera, ipsum monachalis institutionis mysterium perhibuit. Errant igitur qui habitum monachalem recentiorem esse, minime vero a Salvatore, vel ab ejus apostolis originem suam trahere contendunt. Innotuit enim nobis quomodo Christus Deus noster hoc nobis tradidit, et ejus discipuli. Talem namque decebat mysterium ab ipsis monachalis ordinis institutionibus tradi, et alium quidem habitus monachalis, alium mundani habitus esse indumentum. Et hæc habet divinus Dionysius : Quæ de sancto Pachomio in sermonibus Patrum scripta sunt, quod nempe habitum monachalem postea ab angelo susceperit, vere ac juste scripta sunt; quædam enim ipsi tradita sunt monachalis habitus signa, quæ perfectiorem ac prior habitus doctrinam præbebant. Postquam enim pie-
+  <bloco tipo="texto_principal" script="latino" bbox="530,515,950,660">
+    Ad alterum autem vale dicere cupientem his quæ
+    domi sunt, id est, uxori suæ et cæteris, quid dicit?
+    « Nemo mittens manum suam ad aratrum, et respi-
+    ciens retro, aptus est regno Dei. » Non humanam,
+    inquit, incipe arationem, sed eam quæ desuper est
+    cura; haud apta enim invenies, si ad momenta-
+    nea deflexeris; disce igitur quænam nunc quorun-
+    dam in locum sufficiantur, loco domus tuæ et eo-
+    rum quæ domi sunt, regnum cælorum. Jamjam
+    igitur invenimus quomodo Dominus juxta mona-
+    chorum viam et ipse vixit et nobis tradidit; et ea
+    fuit quoque apostolorum vita, quibus ipse suasit
+    ne duas haberent tunicas, neque baculum, neque
+    peram, neque calceamenta, neque alia hujusmodi,
+    quod sane monachorum vitæ proprium est.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="50,930,300,950">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,665,510,690">
+    C
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="530,660,950,820">
+    Eos autem non suis sermonibus tantum precibusque ad opus illud
+    roboravit, veluti ad docendum, sed etiam benedicens
+    eos misit, mittensque, dedit illis potestatem
+    spirituum immundorum ut ejicerent eos et curationent
+    omnem languorem et omnem infirmitatem, quod tunc
+    non tantum in apostolis fuit, sed etiam in sanctis postea, ac præcipue in ascetis. Quod autem
+    ab initio fuerit hic status, quod etiam monachalis
+    institutionis mysterium ab ipsis apostolis nobis
+    tradatur, magnus testatur Dionysius, qui post sacra
+    alia munera, ipsum monachalis institutionis mysterium scribit.
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,825,510,850">
+    D
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="530,820,950,920">
+    Errant igitur qui habitum monachalem recentiorem
+    esse, minime vero a Salvatore, vel ab ejus apostolis
+    originem suam trahere contendunt. Innotuit enim
+    nobis quomodo Christus Deus noster hoc nobis tradidit, et ejus discipuli. Talem namque decebat myste-
+    rium ab ipsis monachalis ordinis institutionibus tradi,
+    et alium quidem habitus monachalis, alium mundani
+    habitus esse indumentum. Et hæc habet divinus
+    Dionysius : Quæ de sancto Pachomio in sermonibus
+    Patrum scripta sunt, quod nempe habitum mona-
+    chalem postea ab angelo susceperit, vere ac juste
+    scripta sunt; quædam enim ipsi tradita sunt mono-
+    chalis habitus signa, quæ perfectiorem ac prior
+    habitus doctrinam præbebant. Postquam enim pie-
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="210,935,380,965">
     PATROL. GR. CLV.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="850,930,870,950">
+  <bloco tipo="rodape" script="latino" bbox="860,935,900,965">
     7
   </bloco>
+
   <notas>
-    Transcription of a bilingual page (Greek left, Latin right) from Patrologia Graeca Vol. 155. Marginal letters A, B, C, D indicate sections.
+    Marginal letters A, B, C, D transcribed as separate nota_marginal blocks. Lower “Digitized by Google” watermark omitted. A few Greek and Latin readings are conservative where the print is blurred or cut in the scan.
   </notas>
 </pagina>

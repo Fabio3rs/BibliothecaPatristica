@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "alphabetical_discovery_manifest.schema.json",
+  "title": "Alphabetical index discovery manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "prompt_contract_version",
+    "interpretation_contract_version",
+    "glossary_version",
+    "output_schema_version",
+    "stage",
+    "volume_id",
+    "source_root",
+    "input_fingerprint",
+    "status",
+    "inspected_files",
+    "segments",
+    "expansion_requests",
+    "unresolved"
+  ],
+  "properties": {
+    "schema_version": {"const": 2},
+    "prompt_contract_version": {"const": 4},
+    "interpretation_contract_version": {"const": 1},
+    "glossary_version": {"const": 1},
+    "output_schema_version": {"const": 2},
+    "stage": {"const": "discovery"},
+    "volume_id": {"type": "string", "minLength": 1},
+    "source_root": {"type": "string", "minLength": 1},
+    "input_fingerprint": {"type": "string", "minLength": 1},
+    "status": {"enum": ["complete", "needs_expansion"]},
+    "inspected_files": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "segments": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/segment"}
+    },
+    "expansion_requests": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/expansion_request"}
+    },
+    "unresolved": {
+      "type": "array",
+      "items": {"type": "object"}
+    }
+  },
+  "$defs": {
+    "expansion_request": {
+      "type": "object",
+      "required": [
+        "request_id",
+        "reason",
+        "anchor_files",
+        "direction",
+        "max_files"
+      ],
+      "properties": {
+        "request_id": {"type": "string", "minLength": 1},
+        "reason": {"type": "string", "minLength": 1},
+        "anchor_files": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "direction": {"enum": ["before", "after", "both", "specific"]},
+        "max_files": {"type": "integer", "minimum": 1, "maximum": 200}
+      },
+      "additionalProperties": true
+    },
+    "segment": {
+      "type": "object",
+      "required": [
+        "segment_id",
+        "file",
+        "line_start",
+        "line_end",
+        "role",
+        "reason"
+      ],
+      "properties": {
+        "segment_id": {"type": "string", "minLength": 1},
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "OCR .txt path under source_root; this is a storage file, not an editorial page."
+        },
+        "line_start": {"type": "integer", "minimum": 1},
+        "line_end": {"type": "integer", "minimum": 1},
+        "role": {
+          "enum": ["owned", "boundary", "context", "uncertain"]
+        },
+        "section_key": {"type": ["string", "null"]},
+        "heading_raw": {"type": ["string", "null"]},
+        "reason": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

@@ -1,66 +1,60 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="10,10,80,40">
+<pagina estado="com_texto" tipo="gravura">
+  <bloco tipo="cabecalho" script="latino" bbox="156,57,190,71">
 1151
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="260,10,740,40">
+  <bloco tipo="cabecalho" script="latino" bbox="453,56,641,72">
 LEONIS PHILOSOPHI
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="920,10,990,40">
+  <bloco tipo="cabecalho" script="latino" bbox="914,57,946,72">
 1152
   </bloco>
-
-  [!-- Nota marginal identifiers in the central gutter (A, B, C, D). Kept as separate nota_marginal blocks per instructions. --]
-  <bloco tipo="nota_marginal" script="latino" bbox="490,190,510,230">
+  <bloco tipo="nota_marginal" script="latino" bbox="335,164,345,175">
 A
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,420,510,460">
+  <bloco tipo="nota_marginal" script="latino" bbox="413,183,423,194">
 B
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,650,510,690">
+  <bloco tipo="nota_marginal" script="latino" bbox="355,405,365,416">
 C
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,880,510,920">
-D
-  </bloco>
-
-  [!-- Left column, top figure --]
-  <bloco tipo="texto_principal" script="latino" bbox="60,70,480,380">
-a
-b
-c
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="60,385,480,420">
+  <bloco tipo="rodape" script="latino" bbox="298,531,370,546">
 Figure 1.
   </bloco>
-
-  [!-- Right column, top figure --]
-  <bloco tipo="texto_principal" script="latino" bbox="520,70,940,380">
+  <bloco tipo="nota_marginal" script="latino" bbox="766,171,777,182">
+A
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="520,385,940,420">
+  <bloco tipo="nota_marginal" script="latino" bbox="811,308,822,320">
+B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="701,325,712,337">
+C
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="718,531,790,546">
 Figure 2.
   </bloco>
-
-  [!-- Left column, bottom figure --]
-  <bloco tipo="texto_principal" script="latino" bbox="60,470,480,915">
+  <bloco tipo="nota_marginal" script="latino" bbox="422,662,433,674">
+A
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="60,915,480,950">
+  <bloco tipo="nota_marginal" script="latino" bbox="303,801,314,813">
+B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="260,852,271,864">
+C
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="291,930,372,945">
 Figure 3.
   </bloco>
-
-  [!-- Right column, bottom figure --]
-  <bloco tipo="texto_principal" script="latino" bbox="520,470,940,915">
+  <bloco tipo="nota_marginal" script="latino" bbox="826,728,837,740">
+A
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="520,915,940,950">
+  <bloco tipo="nota_marginal" script="latino" bbox="759,875,770,887">
+B
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="718,930,800,945">
 Figure 4.
   </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="600,970,900,995">
+  <bloco tipo="rodape" script="latino" bbox="565,969,777,991">
 Digitized by Google
   </bloco>
-
-  <notas>
-- BBOX coordinates are approximate (scale 0-1000) and follow visual positions: headers (top), four figure quadrants (two columns x two rows), central gutter notes (A-D), and footnotes/captions.
-- The central letters A, B, C, D were transcribed as separate nota_marginal blocks as requested and not included in column text.
-- Small single-letter labels visible on some figures were not fully distinct everywhere; only the clearly legible central gutter letters and figure captions were transcribed unambiguously. Individual small labels within illustrations were omitted where illegible.
-  </notas>
+  <notas>As áreas principais correspondem a quatro gravuras, sem texto corrido. As letras identificadoras foram mantidas como blocos de nota marginal independentes e não foram incorporadas às colunas. Não se identifica uma letra D com segurança na imagem.</notas>
 </pagina>

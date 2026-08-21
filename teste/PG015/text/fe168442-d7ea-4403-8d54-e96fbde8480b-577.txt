@@ -1,107 +1,192 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,50,950,100">
-    1149 JUDICUM CAPUT IX 1150
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,110,950,140">
-    ΣΥΜΜΑΧΟΣ. O'. ΘΕΟΔΟΤΙΩΝ.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,150,300,500">
-    34.
-    35.
-    36.
-    37.
-    38.
-    39.
-    41.
-    42.
-    44.
-    45.
-    46.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="320,150,650,530">
-    34. Συχέμ. Ἄλλος, Σικιμα.
-    Τέσσαρες ἀρχαί. Ἄλλως, τέτρασιν ἀρχαῖς.
-    35. Ἐκ τῶν ἐνέδρων. Ἄλλως, ἀπὸ τοῦ ἀνδρῶν.
-    36. Ἀπὸ τῶν κεφαλῶν. Ἄλλως, ἀπὸ τῶν κορυφῶν.
-    37. Καὶ ἀρχὴ ἑτέρα ἔρχεται δι᾽ ὁδοῦ Ἠλν Μαωνανίμ.
-    38. Μὴ οὐχί. Ἄλλος, οὐχ ἰδού. Παρατάξαι αὐτ. Ἄλλος, πολέμησον αὐτόν.
-    39. Ἐνώπιον ἀνδρῶν Συχέμ. Ἄλλος, πρὸ προσώπου τῶν ἀνδρῶν Σικίμων.
-    41. Εἰσῆλθεν. Ἄλλος, ἐκάθισεν. Ἐν Σικίμοις. Ἄλλως, ἐν Συχέμ.
-    42. Εἰς τὸν ἀγρόν. Ἄλλος, εἰς τὸ πεδίον.
-    44. Αἱ ἀρχαί. Ἄλλως, οἱ ἀρχηγοί.
-    Ἐξέτειναν. Ἄλλος, ἐξετάθησαν.
-    Ἐξέτειναν. Ἄλλως, ἐξεχύθησαν.
-    45. Παρετάσσετο. Ἄλλος, ἐπολέμει.
-    46. Πύργου Σικίμων. Ἄλλως, πύργου Συχέμ.
-    Εἰς συνέλευσιν Βαιθηλβερίθ. Ἄλλος, τὸ ὀχύρωμα οἴκου Βηθηλβερείθ
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="680,150,950,500">
-    34. Τέσσαρες ἀρχαί.
-    35. Ἐκ τῶν ἐνέδρων.
-    36.
-    37.
-    38.
-    39.
-    41. Ἐν Σικίμοις.
-    42.
-    44. Αἱ ἀρχαί.
-    Ἐξεχύθησαν.
-    45.
-    46. Πύργου Σικίμων.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,540,950,570">
-    SYMMACHUS. LXX INTERPRETES. THEODOTIO.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,580,300,900">
-    34.
-    35.
-    36.
-    37.
-    38.
-    39.
-    41.
-    42.
-    44.
-    45.
-    46.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,580,650,930">
-    34. Sychem. Alius, Sicima.
-    Quatuor principia. Aliter, quatuor principiis.
-    35. De insidiis. Aliter, de insidiarum loco.
-    36. De capitibus. Alius, de verticibus.
-    37. Et principium aliud venit per viam Helon Maoneuini.
-    38. Nonne. Alius, annon ecce. Congredere cum eo. Alius, oppugna cum.
-    39. In conspectu virorum Sychem. Alius, ante faciem virorum Sicimorum.
-    41. Intravit. Alius, sedit. In Sicimis. Aliter, in Sychem.
-    42. In agrum. Alius, in campum.
-    44. Principia. Aliter, duces.
-    Extenderunt. Alius, extensi sunt.
-    Tetenderunt. Aliter, effusi sunt.
-    45. Praeliabatur. Alius, pugnabat.
-    46. Turris Sicimorum. Aliter, turris Sychem.
-    In conventum Bethelberith. Alius, munimentum domus Bethelberith.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,580,950,900">
-    34. Quatuor principia.
-    35. De insidiis.
-    36.
-    37.
-    38.
-    39.
-    41. In Sicimis.
-    42.
-    44. Principia.
-    Effusi sunt.
-    45.
-    46. Turris Sicimorum.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="500,950,900,980">
-    Digitized by Google
-  </bloco>
-  <notas>
-    A página apresenta uma disposição em três colunas principais (numeração à esquerda, texto central LXX com variantes, texto à direita Teodocião), repetida para o Grego (superior) e Latim (inferior).
-    Transcrição literal mantendo a ortografia original (ex: "Maoneuini", "Bethelberith").
-    Alguns versículos (40, 43) não possuem numeração visível na sequência.
-  </notas>
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="42,69,890,86">1149                                             JUDICUM CAPUT IX                                             1150</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="136,92,798,108">ΣΥΜΜΑΧΟΣ.                                 Ο'.                                 ΘΕΟΔΟΤΙΩΝ.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="63,126,104,632">34.
+
+35.
+
+36.
+
+37.
+
+38.
+
+39.
+
+41.
+
+42.
+
+44.
+
+45.
+
+46.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="332,126,609,648">Συχέμ. Ἄλλος, Σίκιμα.
+Τέσσαρες ἀρχαί. Ἄλλως, τέτρασιν ἀρχαῖς.
+
+Ἐκ τῶν ἐνέδρων. Ἄλλως,
+ἀπὸ τοῦ ἐνέδρου.
+
+Ἀπὸ τῶν κεφαλῶν. Ἄλλως,
+ἀπὸ τῶν κορυφῶν.
+
+Καὶ ἀρχὴ ἑτέρα ἔρχεται δι᾽
+ὁδοῦ Ἠλὼν Μαωνενίμ.
+
+Μὴ οὐχί. Ἄλλος, οὐκ ἰδού.
+Παρατάξαι αὐτῷ. Ἄλλος, πολέ-
+μησον αὐτόν.
+
+Ἐνώπιον ἀνδρῶν Συχέμ.
+Ἄλλος, πρὸ προσώπου τῶν ἀνδρῶν
+Σικίμων.
+
+Εἰσῆλθεν. Ἄλλος, ἐκάθισεν.
+Ἐν Σικίμοις. Ἄλλως, ἐν Συ-
+χέμ.
+
+Εἰς τὸν ἀγρόν. Ἄλλος, εἰς
+τὸ πεδίον.
+
+Αἱ ἀρχαί. Ἄλλως, οἱ ἀρχη-
+γοί.
+
+Ἐξέτειναν. Ἄλλος, ἐξετάθησαν.
+Τέτειναν. Ἄλλως, ἐξεχύθη-
+σαν.
+
+Παρετάσσετο. Ἄλλος, ἐπο-
+λέμει.
+
+Πύργου Σικίμων. Ἄλλως,
+πύργου Συχέμ.
+Εἰς συνέλευσιν Βαιθηλβερείθ. Ἄλ-
+λος, τὸ ὀχύρωμα οἴκου Βηθηλβε-
+ρείθ</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="634,126,662,582">34.
+
+35.
+
+36.
+
+37.
+
+38.
+
+39.
+
+41.
+
+42.
+
+44.
+
+45.
+
+46.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="678,126,858,582">Τέσσαρες ἀρχαί.
+
+Ἐκ τῶν ἐνέδρων.
+
+Ἐν Σικίμοις.
+
+Αἱ ἀρχαί.
+Ἐξεχύθησαν.
+
+Πύργου Σικίμων.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="126,665,797,684">SYMMACHUS.                                 LXX INTERPRETES.                                 THEODOTIO.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="63,698,104,953">34.
+
+35.
+
+36.
+
+37.
+
+38.
+
+39.
+
+41.
+
+42.
+
+44.
+
+45.
+
+46.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="330,696,608,978">Sychem. Alius, Sicima.
+Quatuor principia. Aliter, qua-
+tuor principiis.
+
+De insidiis. Aliter, de insi-
+diarum loco.
+
+De capitibus. Alius, de ver-
+ticibus.
+
+Et principium aliud venit
+per viam Helon Maoneuini.
+
+Nonne. Alius, annon ecce.
+Congredere cum eo. Alius, op-
+pugna eum.
+
+In conspectu virorum Sy-
+chem. Alius, ante faciem virorum
+Sicimorum.
+
+Intravit. Alius, sedit.
+In Sicimis. Aliter, in Sychem.
+
+In agrum. Alius, in cam-
+pum.
+
+Principia. Aliter, duces.
+Extenderunt. Alius, extensi sunt.
+Tetenderunt. Aliter, effusi sunt.
+
+Praeliabatur. Alius, pugna-
+bat.
+
+Turris Sicimorum. Aliter,
+turris Sychem.
+In conventum Bethelberith. Alius,
+munimentum domus Bethel-
+berith.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="634,698,665,953">34.
+
+35.
+
+36.
+
+37.
+
+38.
+
+39.
+
+41.
+
+42.
+
+44.
+
+45.
+
+46.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="679,696,865,953">Quatuor principia.
+
+De insidiis.
+
+In Sicimis.
+
+Principia.
+Effusi sunt.
+
+Turris Sicimorum.</bloco>
+  <bloco tipo="rodape" script="latino" bbox="590,983,807,997">Digitized by Google</bloco>
+  <notas>Disposição em três colunas, com a coluna de variantes central e a coluna de Theodotion à direita. Os números de versículo foram mantidos em blocos marginais separados para não os inserir no texto das colunas.</notas>
 </pagina>

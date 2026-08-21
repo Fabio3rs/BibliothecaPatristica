@@ -1,14 +1,15 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,100,50">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="58,120,105,156">
     659
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="350,20,650,50">
+  <bloco tipo="cabecalho" script="latino" bbox="375,116,634,156">
     S. DIONYSII AREOPAGITÆ
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="900,20,950,50">
+  <bloco tipo="cabecalho" script="latino" bbox="903,120,948,156">
     660
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,80,480,980">
+
+  <bloco tipo="texto_principal" script="latino" bbox="58,145,493,980">
     nem spectat, et varios populos, quos signis et pro-
     digiis ab ipso virtute sancti Spiritus editis, fidei,
     quæ in Christum est, conciliavit; dum primæ per-
@@ -19,7 +20,7 @@
     lum excitavit, qui et summos Christi discipulos de
     medio sustulit. Reliquas vero tempestates quæ sub-
     secutæ sunt, quas insania Domitiani contra fideles
-    adduxit, eum fortiter pertulisset, et in omnibusque
+    adduxit, cum fortiter pertulisset, in omnibusque
     probatus apparuisset, celeberrimam gloriam retu-
     lit. Quare fama velox quocunque permeans claris-
     simum ejus nomen asperrimis Trajani auribus in-
@@ -41,6 +42,7 @@
     rarent, ipsumque hominum corona stipatum ad se
     deducerent; sin minus pareret, ibidem capitis ob-
     truncatione puniretur.
+
     Igitur ministri, diaboli sævissima tyranni præ-
     cepta implentes, tanquam equi quidam stimulis
     agitati, vel famelicæ feræ ad venationem excitatæ,
@@ -58,7 +60,7 @@
     sus claudorum constringebantur, variis morbis
     obstricti, implorato Servatoris omnipotentis auxi-
     lio, per admirandæ sanctitatis ejus ministrum mira
-    facientem, ae in tenebris ignorantiae positos ad
+    facientem, ac in tenebris ignorantiae positos ad
     cognitionis et salutis lucem adducentem, libera-
     bantur. Interim enim fidelium multitudo augeba-
     tur, Deoque per Galliam, ac Germaniam provin-
@@ -69,10 +71,11 @@
     ducebatur. Quamobrem miser non ferens cernere
     suam ipsius potentiam dissolvi, obedientes et mi-
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,80,950,980">
-    ραστελων σαγηνεύσας πρὸς τὴν εἰς Χριστὸν πίστιν,
+
+  <bloco tipo="texto_principal" script="grego" bbox="506,145,948,980">
+    ραστείων σαγηνεύσας πρὸς τὴν εἰς Χριστὸν πίστιν,
     τοὺς τε μακροτάτους καὶ χαλεπωτάτους τοῦ τε πρώ-
-    του διωγμοῦ διαύλους διαπεράσας, οὓς  πρῶτος τῶν
+    του διωγμοῦ διαύλους διαπεράσας, οὓς ὁ πρῶτος τῶν
     διωκτῶν, καὶ πάντων κάκιστος τῶν πώποτε βεβασι-
     λευκότων, καὶ βεβηλότατος Νέρων κατὰ τοῦ Χριστω-
     νύμου πληρώματος διήγειρε, καὶ τοὺς κορυφαίους
@@ -81,67 +84,70 @@
     ἐπήγαγεν, ἀνδρείως ὑπομείνας, καὶ δόκιμος ἐν πᾶσι
     φανεὶς, διαβόητον ἀπήνέγκατο κλέος· ὅθεν ἡ ὑπό-
     πτερος φήμη, πανταχόθε θέουσα, τὴν πανεύφημον
-    αὐτοῦ προσηγορίαν ταῖς το Τραϊανο τραχυτάταις
-    ἀκοαῖς ἐνήχησε, βροντηδὸν ἀναγγέλλουσα τὴν ἀπο-
-    στολικὴν ὃν ἀπανταχοῦ μετῆγε πτερόεντα δρόμον, καὶ
-    τὸν πολν ἱδρτα, καὶ μόχθον, καὶ τὴν ἐν ἔργῳ τε
-    καὶ λόγῳ δύναμιν, δι' ὧν ἡ κηρυττομένη θεοστάτη
+    αὐτοῦ προσηγορίαν ταῖς τοῦ Τραϊανοῦ τραχυτάταις
+    ἀκοαῖς ἐνήχησε, βροντηδὸν ἀναγγέλλουσα τὸν ἀπο-
+    στολικὸν ἓν ἀπανταχῆ μετει πτερόεντα δρόμον, καὶ
+    τὸν πολὺν ἱδρῶτα, καὶ μόχθον, καὶ τὴν ἐν ἔργῳ τε
+    καὶ λόγῳ δύναμιν, δι' ὧν ἡ κηρυττομένη θειοτάτη
     καὶ σωτήριος πίστις σημείοις καὶ τέρασιν ὑπ' αὐτοῦ
     παραδόξως ἐνεργουμένοις ἐβεβαιοῦτο καὶ ἐπλατύ-
-    νετο, καὶ ὡς  τῶν λλήνων δεισιδαιμονία, καὶ εἰ-
-    δωλικὴ θρησκεία κατὰ κράτος ἐσσηλεῖτο καὶ
+    νετο, καὶ ὡς ἡ τῶν Ἑλλήνων δεισιδαιμονία, καὶ εἰ-
+    δωλικὴ θρησκεία κατὰ κράτος ἐστηλιτεύετο καὶ
     κατελύετο. Ἐφ' οἷς ἄγαν ταραχθεὶς ὁ λυσσώδης τύ-
     ραννος, θηριώδεις τινὰς τὴν γνώμην, Φάλαρίν τε καὶ
     Ἔχετον τοὺς ἐπὶ θηριωδίᾳ καὶ ἀσπλαγχνίᾳ καὶ ὠμό-
     τητι βουομένους ὑπεραίροντας, ἐξέπεμψεν ἐν τοῖς
-    πρὸς ἥλιον δύνοντα μέρεσιν ἰχνηλατεῖν κα καταδιώ-
-    κειν τὸν θεοκήρυκα, καὶ ε που τοῦτον εὕροιεν, εἴ-
+    πρὸς ἥλιον δύνοντα μέρεσιν ἰχνηλατεῖν καὶ καταδιώ-
+    κειν τὸν θεοκήρυκα, καὶ εἰ που τοῦτον εὕροιεν, εἴ-
     κοντα μὲν τοῖς βασιλικοῖς δόγμασι, καὶ λατρεύειν
     τοῖς δαίμοσι, καὶ θύειν ἀνεχόμενον, τιμαῖς καταγε-
     ραίρειν, καὶ ὡς αὐτὸν δορυφορούμενον ἀνάγειν, ἢ
     μὴ πειθόμενον αὐτῷ τῇ τοῦ ξίφους τιμωρεῖσθαι
     τομῇ.
-    Τοῖς οὖν τυραννικοῖς οἱ το διαβόλου θεράποντες
-    ἀθεωτάτοις παροτρυνθέντες προστάγμασιν, οἷον πποι
+
+    Τοῖς οὖν τυραννικοῖς οἱ τοῦ διαβόλου θεράποντες
+    ἀθεωτάτοις παροτρυνθέντες προστάγμασιν, οἷον ἵπποι
     τινὲς οἰστροπλατούμενοι, ἢ πειναλέοι θῆρες ἐπὶ θή-
     ραν ἐπειγόμενοι, κατὰ τὴν Γαλλικὴν ἔθεον χώραν,
-    κἀκεῖθεν ἠγλαωγήσαντες ἀγελαίους τινὰς καὶ δη-
-    μίους ἅμα, κατεζήτουν τὸν παναοιόιμώτατον θεοφάν-
+    κἀκεῖθεν ὀχλαγωγήσαντες ἀγελαίους τινὰς καὶ δη-
+    μίους ἅμα, κατεζήτουν τὸν παναοιδιμώτατον θεοφάν-
     τορα. Καὶ δὴ καταμηνυθέντος αὐτοῦ τοῖς διώκταις
-    ὑπάρχειν ἐν Παρισίοις (πολίγνη οὕτω καλουμένη), δρο-
+    ὑπάρχειν ἐν Παρισίοις (πολίχνῃ οὕτω καλουμένῃ), δρο-
     μαίως εἰσελάσαντες, ἐκεῖσε κατέλαβον αὐτὸν ἀπε-
     λαύνοντα τόν τε τῆς εἰδωλομανίας πλάνον καὶ ζόφον τῷ
-    τε τῆς ἀληθείας κηρύγματι, καὶ τ τῆς θείας διδασκα-
-    λίας διαυγάσματι, καὶ τος τῶν θαυμάτων τερατουργή-
-    μασιν. Ὀφθαλμοὶ γὰρ τυφλῶν ἀνεβλέπον. καὶ ὦτα κω-
-    φῶν ἠνοίγοντο, καὶ γλῶσσαι μογιλάλων ἐξρανοῦντο, καὶ
+    τε τῆς ἀληθείας κηρύγματι, καὶ τῷ τῆς θείας διδασκα-
+    λίας διαυγάσματι, καὶ τοῖς τῶν θαυμάτων τερατουργή-
+    μασιν. Ὀφθαλμοὶ γὰρ τυφλῶν ἀνέβλεπον, καὶ ὦτα κω-
+    φῶν ἠνοίγοντο, καὶ γλῶσσαι μογιλάλων ἐτρανοῦντο, καὶ
     βάσεις χωλῶν συνεσφίγγοντο, καὶ ποικίλων νοσημάτων
     ἀσθενοῦντες ἠλευθεροῦντο, τῇ τοῦ παντοδυνάμου Σωτῆ-
     ρος ἐπικλήσει, διὰ τοῦ θαυμασιωτάτου θεράποντος αὐ-
     τοῦ παραδοξοποιοῦντος, καὶ τοὺς ἐν σκότει τῆς ἀγνοίας
     καθημένους προσκαλουμένου πρὸς τὸ φῶς τῆς γνώ-
     σεως καὶ σωτηρίας· ἐπὶ τούτοις γὰρ τῶν πιστῶν
-    ἡ πλθος ηὔξανeto. καὶ ναοὶ τῷ Θε κατὰ Γαλλίαν,
+    ἡ πληθὺς ηὔξανετο, καὶ ναοὶ τῷ Θεῷ κατὰ Γαλλίαν,
     καὶ Γερμανίαν, τὴν μεγίστην ἐπαρχίαν, ἠγείροντο·
     ὁ δὲ τῶν δεισιδαιμόνων ἀριθμὸς ἠλαττοῦτο, καὶ τῶν
-    εἰδώλων οἱ σηκοὶ κατερρίπτούντο, καὶ τοῦ Βελίαρ τοῦ
+    εἰδώλων οἱ σηκοὶ κατερρίπτοντο, καὶ τοῦ Βελίαρ τοῦ
     δυσμενοῦς δυναστεία καὶ ἀπάτη κατεπατεῖτο καὶ
     ἐθριαμβεύετο. Δι' ὃ μὴ φέρων καταλυομένην ὁρῶν τὴν
-    ἑαυτοῦ δύναμιν ὀθείκως, τοὺς ὑπηκόους καὶ ὑπουργούς
+    ἑαυτοῦ δύναμιν ὀθλίκως, τοὺς ὑπηκόους καὶ ὑπουργούς
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,80,510,100">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="483,147,509,173">
     A
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,250,510,270">
+  <bloco tipo="nota_marginal" script="latino" bbox="486,504,509,530">
     B
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,450,510,470">
+  <bloco tipo="nota_marginal" script="latino" bbox="489,790,510,818">
     C
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,650,510,670">
+  <bloco tipo="nota_marginal" script="latino" bbox="489,935,510,964">
     D
   </bloco>
+
   <notas>
-    Transcription of bilingual page (Latin left, Greek right) from Patrologia Graeca. Marginal letters A, B, C, D indicate sections.
+    Coluna esquerda transcrita antes da direita. As letras marginais A, B, C e D foram separadas em blocos próprios. A primeira palavra grega no alto da coluna direita aparece cortada na margem e foi lida conforme visível.
   </notas>
 </pagina>

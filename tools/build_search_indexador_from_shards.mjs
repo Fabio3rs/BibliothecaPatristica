@@ -29,6 +29,12 @@ function parseArgs() {
     keepTerms: null,
     layout: 'split',
     collectionConfig: {},
+    includeV2Search: true,
+    includeTranslations: true,
+    includeOriginalHeader: false,
+    includeKeywords: true,
+    keywordLiterals: true,
+    suggestionWordlists: true,
   };
 
   const args = process.argv.slice(2);
@@ -50,6 +56,12 @@ function parseArgs() {
     else if (arg === '--keep-terms') params.keepTerms = args[++i].split(',').map((value) => value.trim()).filter(Boolean);
     else if (arg === '--no-keep-terms') params.keepTerms = [];
     else if (arg === '--layout') params.layout = args[++i];
+    else if (arg === '--no-v2-search') params.includeV2Search = false;
+    else if (arg === '--no-translations') params.includeTranslations = false;
+    else if (arg === '--include-original-header') params.includeOriginalHeader = true;
+    else if (arg === '--no-keywords') params.includeKeywords = false;
+    else if (arg === '--no-keyword-literals') params.keywordLiterals = false;
+    else if (arg === '--no-suggestion-wordlists') params.suggestionWordlists = false;
     else if (/^--(pg|pl|po)-(max-terms-per-shard|max-bytes-per-shard|documents-per-shard|min-importance)$/.test(arg)) {
       const [, collectionName, optionName] = arg.match(/^--(pg|pl|po)-(.+)$/);
       const collection = collectionName.toUpperCase();
@@ -108,7 +120,11 @@ function usage() {
     'Progresso: --progress-every 10000 (use 0 para desativar).',
     'Documentos: --documents-per-shard 500 (padrão ajustado para busca client-side).',
     'Layouts: --layout split (padrão) ou --layout unified.',
+    'Conteúdo v2/traduções entram por padrão; use --no-v2-search ou --no-translations para comparar.',
+    'Cabeçalho OCR é opt-in com --include-original-header; keywords podem ser excluídas com --no-keywords.',
+    'Keywords compostas ganham um token com _; use --no-keyword-literals para medir/desativar.',
     'No layout unified, preserva pg,pl,po por padrão; ajuste com --keep-terms ou --no-keep-terms.',
+    'Wordlists compactas de sugestão são geradas por padrão; use --no-suggestion-wordlists para omiti-las.',
     'Cada opção de shard aceita override por coleção, por exemplo:',
     '  --pg-max-bytes-per-shard 614400 --pl-documents-per-shard 10000',
   ].join('\n');
@@ -122,6 +138,13 @@ function unique(values) {
   return Array.from(new Set(values.filter(Boolean)));
 }
 
+const INDEXADOR_SEPARATORS = /[\s.,!?*\-+'"()[\];\\/=<>|#:«»“”$&@%‘’—]+/gu;
+
+export function keywordLiteral(label) {
+  const literal = normalizeWhitespace(label).replace(INDEXADOR_SEPARATORS, '_').replace(/^_+|_+$/g, '');
+  return literal.includes('_') ? literal : '';
+}
+
 function extractBookName(label) {
   if (!label || typeof label !== 'string') return null;
   let value = label.replace(/\s*\([^)]*\)\s*$/g, '');
@@ -130,22 +153,41 @@ function extractBookName(label) {
   return value || null;
 }
 
-function buildRecord(params, keywordMap, volumeId, page, metadataBlock) {
-  const keywordMetas = unique((page.keyword_ids || []).map((id) => keywordMap.get(id)))
-    .filter((item) => item?.label);
-  const keywordLabels = unique(keywordMetas.map((item) => item.label));
-  const bookNames = unique(keywordMetas.filter((item) => item.iscit).map((item) => extractBookName(item.label)));
-  const hint = keywordLabels.slice(0, 3).join(' • ') || unique([page.author, page.work]).join(' — ');
+export function buildRecord(params, keywordMap, volumeId, page, metadataBlock) {
+  const keywordLabels = unique(params.includeKeywords ? (page.keyword_labels || []) : []);
+  const canonicalIds = unique(params.includeKeywords ? (page.keyword_ids || []) : []);
+  const canonicalMetas = canonicalIds.map((id) => keywordMap.get(id)).filter((item) => item?.label);
+  const canonicalLabels = unique(canonicalMetas.map((item) => item.label));
+  const displayCount = Number.isInteger(page.keyword_display_count)
+    ? Math.max(0, page.keyword_display_count)
+    : keywordLabels.length;
+  const displayedLabels = keywordLabels.length ? keywordLabels.slice(0, displayCount) : canonicalLabels;
+  const literalLabels = unique([...displayedLabels, ...canonicalLabels]);
+  const keywordLiterals = params.keywordLiterals ? unique(literalLabels.map(keywordLiteral)) : [];
+  const bookNames = unique(canonicalMetas.filter((item) => item.iscit).map((item) => extractBookName(item.label)));
+  const hint = displayedLabels.slice(0, 3).join(' • ') || unique([page.author, page.work]).join(' — ');
   const name = (hint ? `${volumeId} p.${page.page} — ${hint}` : `${volumeId} p.${page.page}`).slice(0, 220);
+  const translatedTexts = params.includeTranslations
+    ? Object.values(page.translations || {}).flatMap((entry) => [
+        entry?.summary_page,
+        entry?.summary_global,
+        entry?.search_text,
+      ])
+    : [];
   const content = normalizeWhitespace(unique([
     name,
     volumeId,
     volumeId.slice(0, 2),
     page.summary_page,
     page.summary_global,
+    params.includeV2Search ? page.search_text_pt : '',
+    params.includeOriginalHeader ? page.header_original : '',
+    ...translatedTexts,
     page.author,
     page.work,
     keywordLabels.join(' '),
+    canonicalLabels.join(' '),
+    keywordLiterals.join(' '),
     bookNames.join(' '),
   ]).join(' '));
   const cleanBase = params.base === '/' ? '' : params.base.replace(/\/$/, '');
@@ -265,6 +307,7 @@ async function buildIndex(params, definition, keywordMap) {
     documentsPerShard: params.documentsPerShard,
     minImportance: params.minImportance,
     keepTerms: params.keepTerms,
+    suggestionWordlists: params.suggestionWordlists,
     ...(definition.collection ? params.collectionConfig[definition.collection] || {} : {}),
   };
   await fs.promises.mkdir(outDir, { recursive: true });
@@ -316,6 +359,7 @@ async function buildIndex(params, definition, keywordMap) {
         documents_per_shard: config.documentsPerShard,
         min_importance: config.minImportance,
         keep_terms: config.keepTerms,
+        write_suggestion_wordlists: config.suggestionWordlists,
       },
     });
     await client.shutdown();
@@ -336,6 +380,8 @@ async function buildIndex(params, definition, keywordMap) {
         documents_per_shard: config.documentsPerShard,
         min_importance: config.minImportance,
         keep_terms: config.keepTerms,
+        write_suggestion_wordlists: config.suggestionWordlists,
+        keyword_literals: params.keywordLiterals,
       },
     };
   } catch (error) {
@@ -420,6 +466,13 @@ async function main() {
       documents_per_shard: params.documentsPerShard,
       min_importance: params.minImportance,
       keep_terms: params.keepTerms,
+      write_suggestion_wordlists: params.suggestionWordlists,
+      keyword_literals: params.keywordLiterals,
+    },
+    suggestions: {
+      wordlists: params.suggestionWordlists,
+      pattern: 'words_{shard}.gz',
+      neighbor_radius: 1,
     },
     collections: unique(selected.map((volume) => volume.collection_id)),
     indexes,
@@ -431,7 +484,9 @@ async function main() {
   console.log(`[OK] Manifesto: ${path.join(params.outDir, 'manifest.json')}`);
 }
 
-main().catch((error) => {
-  console.error(`[ERRO] ${error.stack || error.message || error}`);
-  process.exitCode = 1;
-});
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch((error) => {
+    console.error(`[ERRO] ${error.stack || error.message || error}`);
+    process.exitCode = 1;
+  });
+}

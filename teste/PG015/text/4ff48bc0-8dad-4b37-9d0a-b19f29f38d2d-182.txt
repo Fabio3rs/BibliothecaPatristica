@@ -1,83 +1,192 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="90,45,910,125">
     359 HEXAPLORUM QUÆ SUPERSUNT. 360
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="50,60,950,130">
-    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
-    וְנִגְשׂוּ 13 13. 13. Καὶ οἱ εἰσπράκται.
-    אֵלֶיךָ
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="105,125,365,295">
+    TO ΕΒΡΑΙΚΩΝ.
+    וְהַנֹּגְשִׂים 13
+    אֹמְרִים
+    וְגַם עַבְדֶיךָ 16
+    נִכִּים
+    לְכוּ 18
+    לֵאמֹר לֹא תִגְרְעוּ 19
+    הִבְאַשְׁתֶּם 21
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="50,130,950,200">
-    הֲלֹא אֶת־דִּבְרֶיךָ 16 16. 16. Καὶ δοὺ ο δοῦλοί σου κεκίνηνται, καὶ ἁμαρτία λαῷ σου.
-    אָמַרְתָּ
+
+  <bloco tipo="texto_principal" script="grego" bbox="385,125,635,300">
+    ΤΟ ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+    13. [ilegivel]
+    16. [ilegivel]
+    18. [ilegivel]
+    19. [ilegivel]
+    21. [ilegivel]
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="50,200,950,260">
-    לֵךְ 18 18. 18.
-    לֹא־אֲנַחְנוּ 19 19. 19. Λέγοντες, Οὐκ ὀφελεῖτε.
-    הִבְאַשְׁתֶּם 21 21. 21. Ἐσαπρίσατε.
+
+  <bloco tipo="texto_principal" script="grego" bbox="655,125,915,300">
+    ΑΚΥΛΑΣ.
+    13. Καὶ οἱ εἰσπράκται.
+    16. Καὶ ἰδοὺ οἱ δοῦλοί σου πεπληγμένοι, καὶ ἁμαρτία λαῷ σου.
+    18.
+    19. Λέγοντες, Οὐχ ὑφελεῖτε.
+    21. Ἐσαπρίσατε.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,260,950,380">
-    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
-    13. Et exactores. 13. Præfecti quoque operum. 13. Et exactores.
-    Urgebant. Instabant.
-    16. Et ecce servi tui cæsi, et 16. En famuli tui flagellis cædimur, et injuste agitur contra 16. Et ecce servi tui percussi,
-    peccat populus tuus. populum tuum. et peccatum populo tuo.
-    18. Ite. 18. Ite. 18.
-    19. Dicendo non diminuetis. 19. Eo quod diceretur eis : Non 19. Dicentes, Non subtrahetis.
+
+  <bloco tipo="texto_principal" script="latino" bbox="105,300,365,470">
+    VERSIO HEBRAICI TEXT.
+    13. Et exactores.
+    Urgebant.
+    16. Et ecce servi tui cæsi, et
+    peccat populus tuus.
+    18. Ite.
+    19. Dicendo non diminuetis.
+    21. Fetere fecistis.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="385,300,640,470">
+    VULGATA LATINA.
+    13. Præfecti quoque operum.
+    Instabant.
+    16. En famuli tui flagellis cæ-
+    dimur, et injuste agitur contra
+    populum tuum.
+    18. Ite.
+    19. Eo quod diceretur eis : Non
     minuetur.
-    21. Fetere fecistis. 21. Fetere fecistis. 21. Putere fecistis.
+    21. Fetere fecistis.
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="50,380,950,500">
+
+  <bloco tipo="texto_principal" script="latino" bbox="655,300,915,470">
+    AQUILA.
+    13. Et exactores.
+    16. Et ecce servi tui percussi,
+    et peccatum populo tuo.
+    18.
+    19. Dicentes, Non subtrahetis.
+    21. Putere fecistis.
+  </bloco>
+
+  <bloco tipo="nota" script="misto" bbox="295,455,705,490">
     Notæ et variæ lectiones ad cap. V Exodi
-    V. 3. Ἐπικάλυψαι ἡμν. Ita Basiliensis codex, gitur, ἀποστρέψετε. Hic notes velim vocem γῆ
-    non allato interpretis nomine. alibi vertisse Aquilam, ἀποκατασθήσεται, dissipabitur.
-    Ibid. Ἄ., Σ., λοιμὸς ἡ μάχαιρα. Ita Coislinianus. Sed nihilominus sincera hujus versus lectio
-    Basiliensis codex, tacito, ut sæpe alias, interpretum ejusdem, ἀποπτὰξετε, quæ bis etiam reperitur
-    nomine. Iidem interpretes etiam alibi רָעָב solent infra Exod. xxxii, 25, eodem Aquila interprete. —
-    vertere λοιμόν, sic infra cap. ix, 3 et 15. Hanc Coislin. habet : Σ., ἀποτρέπετε, quemadmodum et
-    lectionem secutus est Vulgatus interpres, pestis aut Basiliensis. Chronicon Alex., ἀποστρέψετε· utram
-    gladius. malis lectionem elige.
-    V. 4. Ἄ., ἀποπετάξετε, etc., ita Basiliensis codex, V. 7. Ita codex Basiliensis, melius ut videtur
-    in quo lectio Symmachi sic habetur, ἀποτρέπετε. quam editio Rom. et Drusius, qui ad Aquilam habent,
-    Sed in Chronico Alexandrino melius, ni fallor, le- κατὰ ἰχθὺς κα τρίτης. Ad Symmachum,
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="400,500,600,520">
+
+  <bloco tipo="nota" script="misto" bbox="105,490,355,675">
+    V. 3. Ἐπικέκληκας ἡμῖν. Ita Basiliensis codex,
+    non allato interpretis nomine.
+
+    Ibid. ᾿Α., Σ., λοιμὸς ἢ μάχαιρα. Ita Coislinianus.
+    Basiliensis codex, tacito, ut sæpe alias, interpretum
+    nomine. Iidem interpretes etiam alibi ἱ solent
+    vertere λοιμόν, sic infra cap. ix, 3 et 15. Hanc
+    lectionem secutus est Vulgatus interpres, pestis aut
+    gladius.
+
+    V. 4. ᾿Α., ἀποπετάζετε, etc., ita Basiliensis codex,
+    in quo lectio Symmachi sic habetur, ἀποτρέπετε.
+    Sed in Chronico Alexandrino melius, ni fallor, legitur,
+    ἀποστρέφετε.
+  </bloco>
+
+  <bloco tipo="nota" script="misto" bbox="360,490,650,675">
+    Hic notes velim vocem [ilegivel] vertisse Aquilam,
+    ἀποσκεδνασθήσεται, dissipabitur. Sed nihilominus sincera
+    hujus versus lectio ejusdem, ἀποπετάζετε, quæ bis etiam
+    reperitur infra Exod. xxxii, 25, eodem Aquila interprete. —
+    Coislin. habet : Σ., ἀποτρέπετε , quemadmodum et
+    Basiliensis. Chronicon Alex., ἀποστρέφετε · utram
+    malis lectionem elige.
+  </bloco>
+
+  <bloco tipo="nota" script="latino" bbox="655,490,915,675">
+    V. 7. Ita codex Basiliensis, melius ut videtur
+    quam editio Rom. et Drusius, qui ad Aquilam habent,
+    κατὰ ἔχθες καὶ τρίτης. Ad Symmachum,
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="410,655,640,700">
     CAPUT VI EXODI.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="50,520,950,600">
-    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικος γράμμασι. ΑΚΥΛΑΣ.
-    Samar., Iadē. Ebr., Atá. 2 2 2.
-    וָאֵרָא אֶל־אַבְרָהָם 3 3 3. Καὶ ὤφθην πρὸς Ἀβραάμ,
-    וְגַם הֲקִמֹתִי 6 6. πρὸς Ἰσαάκ, πρὸς Ἰακὼβ ἐν τῷ
-    Θεῷ ἱκανῷ.
-    אֲשֶׁר 8 8. 6.
-    מִצֵּר 9 9. 8.
-    עַרְלֵי 12 12. 9. Ἀπὸ κολοβότητος πνεύματος.
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="105,700,365,1010">
+    TO ΕΒΡΑΙΚΟΝ.
+    Samar., יַהְוֶה. Hebr., אֲדָה. 2
+    וָאֵרָא אֶל־אַבְרָהָם 3
+    וְגַם הֲקִמֹתִי 6
+    מִתַּחַת סִבְלֹתֵיכֶם 8
+    מִקֹּצֶר רוּחַ 9
+    עֲרֵלֵי שְׂפָתַיִם 12
+    לְהוֹצִיא אֶת־בְּנֵי־יִשְׂרָאֵל 13
+    מֵאֶרֶץ מִצְרָיִם
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="385,700,635,1010">
+    ΤΟ ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+    2.
+    3. Καὶ ὤφθην πρὸς Ἀβραάμ, πρὸς Ἰσαὰκ, πρὸς Ἰακὼβ ἐν τῷ Θεῷ ἱκανῷ.
+    6.
+    8.
+    9. Ἀπὸ κολοβότητος πνεύματος.
     12. Ἀκρόβυστος χείλεσι.
-    לְהוֹצִיא 13 13. 13.
-    בְּנֵי־יִשְׂרָאֵל
+    13.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,650,950,950">
-    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
-    2. Dominus. Samar. Iabe. Hebr. 2. Dominus. 2.
-    Aia.
-    3. Et visus sum ad Abraham, 3. Qui apparui Abraham, Isaac 3. Et visus sum ad Abraham,
-    ad Isaac et ad Jacob in Deo po- et Jacob, in Deo omnipotente. ad Isaac, ad Jacob in Deo sufficienti.
-    tente.
-    6. De sub oneribus. 6. De ergastulo. 6.
-    8. Quam. 8. Super quam. 8.
-    9. Propter angustiam spiritus. 9. Propter angustiam spiritus. 9. A defectione spiritus.
-    12. Incircumcisus labiis. 12. Incircumcisum labiis. 12. Præputiatus labiis.
-    13. Ad educendum filios Israel 13. Ut educerent filios Israel 13.
-    de terra Ægypti. de terra Ægypti.
+
+  <bloco tipo="texto_principal" script="grego" bbox="655,700,915,1010">
+    ΑΚΥΛΑΣ.
+    2.
+    3. Καὶ ὤφθην πρὸς Ἀβραάμ,
+    πρὸς Ἰσαὰκ, πρὸς Ἰακὼβ ἐν τῷ
+    Θεῷ ἱκανῷ.
+    6.
+    8.
+    9. Ἀπὸ ἀποπτώσεως πνεύματος.
+    12. Ἀκρόβυστος χείλεσι.
+    13.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="450,960,750,990">
+
+  <bloco tipo="texto_principal" script="latino" bbox="105,1010,365,1370">
+    VERSIO HEBRAICI TEXT.
+    2. Dominus. Samar. Iabe. Hebr. Aia.
+    3. Et visus sum ad Abraham,
+    ad Isaac et ad Jacob in Deo potente.
+    6. De sub oneribus.
+    8. Quam.
+    9. Propter angustiam spiritus.
+    12. Incircumcisus labiis.
+    13. Ad educendum filios Israel
+    de terra Ægypti.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="385,1010,635,1370">
+    VULGATA LATINA.
+    2. Dominus.
+    3. Qui apparui Abraham, Isaac
+    et Jacob, in Deo omnipotente.
+    6. De ergastulo.
+    8. Super quam.
+    9. Propter angustiam spiritus.
+    12. Incircumcisum labiis.
+    13. Ut educerent filios Israel
+    de terra Ægypti.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="655,1010,915,1370">
+    AQUILA.
+    2.
+    3. Et visus sum ad Abraham,
+    ad Isaac, ad Jacob in Deo suffi-
+    ciente.
+    6.
+    8.
+    9. A defectione spiritus.
+    12. Præputiatus labiis.
+    13.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="610,927,860,983">
     Digitized by Google
   </bloco>
-  <notas>
-    Transcrição de página de Hexapla (Origenis Hexaplorum quæ supersunt).
-    Texto em Hebraico, Grego (transliteração e Aquila) e Latim (Versio Hebraici Text, Vulgata, Aquila Latim).
-    Notas críticas no centro da página.
-    Algumas colunas de transliteração grega parecem conter apenas números de versículo nesta edição.
-  </notas>
+
+  <notas>Transcrição conservadora a partir da leitura direta da imagem; trechos centrais em grego/hebraico na parte superior apresentam baixa legibilidade e foram marcados com [ilegivel] quando necessário.</notas>
 </pagina>

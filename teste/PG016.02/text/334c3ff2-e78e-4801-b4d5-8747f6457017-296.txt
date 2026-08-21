@@ -1,35 +1,33 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,80">
-    1859 HEXAPLORUM QUÆ SUPERSUNT. 1860
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="98,43,950,70">
+    1859　　　　　　　　　　 HEXAPLORUM QUÆ SUPERSUNT.　　　　　　　　　　 1860
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,90,650,110">
+  <bloco tipo="texto_principal" script="latino" bbox="406,78,595,104">
     HESAIÆ CAPUT XL.
   </bloco>
-  
-  [!-- Seção Superior: Hebraico, Transliteração, Aquila Grego --]
-  <bloco tipo="texto_principal" script="misto" bbox="50,115,330,500">
-    TO EBPAIKON.
+  <bloco tipo="texto_principal" script="hebraico" bbox="92,111,368,616">
+    טו EBPAIKON.
     נחמו נחמו עמי יאמר אלהיכם 1
     דברו על-לב ירושלם 2
     קול קורא 3
-    ישורו בערבה מסלה לאלהינו
+    ישרו בערבה מסלה לאלהינו
     לבקעה 4
     כי רוח יהוה נשבה בם 7
+    אכן חציר העם
     יבש חציר נבל ציץ 8
-    אך חציר העם
-    דבר אלהינו יקום לעולם
+    ודבר אלהינו יקום לעולם
     על הר-גבה עלי-לך מבשרת 9
     ציון הרימי בכח קולך מבשרת
     ירושלם
     הנה אדני 10
     ירעה עדרו יקבץ 11
+    טלאים
     ובחיקו ישא
     מי-מדד בשעלו מים 12
     בשלשו
   </bloco>
-
-  <bloco tipo="texto_principal" script="misto" bbox="380,115,620,480">
-    TO EBPAIKON
+  <bloco tipo="texto_principal" script="grego" bbox="397,112,523,608">
+    ΤΟ ΕΒΡΑΙΚΟΝ
     Ἑλληνικοῖς γράμμασι.
     1.
     2.
@@ -42,33 +40,30 @@
     11.
     12.
   </bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="650,115,950,500">
-    AKYΛAΣ.
+  <bloco tipo="texto_principal" script="grego" bbox="669,112,958,613">
+    ΑΚΥΛΑΣ.
     1.
     2.
-    3. Φωνη καλουντος.
-    4. Εις πεδιον.
+    3. Φωνὴ καλοῦντος,
+    4. Εἰς πεδίον.
     7.
     Πράσον ὁ λαός.
-    8. Ἐξηράνθη πράσον, ἀπέρρευ-
+    8. Ἐξηράνθη πράσον, ἀπέῤῥευ-
     σεν ἄνθος.
-    9. Ἐπ' ὄρος ὑψηλὸν ἀνάβηθι
+    9. Ἐπ’ ὄρος ὑψηλὸν ἀνάβηθι
     σεαυτῇ, εὐαγγελιζομένη Σιών, καὶ
-    ἕτερον ἰσχυρῶς τὴν φωνήν, εὐαγ-
+    ἔπαρον ἰσχυρῶς τὴν φωνήν, εὐαγ-
     γελιζομένη Ἰερουσαλήμ.
-    10. ✠ Αὐτοῦ.
+    10. ✠ Αὐτοῦ,
     11.
     Ἀρνία.
     ✠ Καὶ ἐν τῷ κόλπῳ αὐτοῦ βα-
     ✠ στάσει.
     12. ✠ Τίς ἐμέτρησε λιχανῷ αὐτοῦ
     ✠ ὕδατα;
-    Ἐν τρισάμῳ.
+    Ἐν τρισώμῳ.
   </bloco>
-
-  [!-- Seção Inferior: Versões Latinas --]
-  <bloco tipo="texto_principal" script="latino" bbox="50,510,330,930">
+  <bloco tipo="texto_principal" script="latino" bbox="91,623,368,956">
     VERSIO HEBRAICI TEXT.
     1. Consolamini, consolamini
     populum meum, dicet Deus ve-
@@ -97,8 +92,7 @@
     suo aquas?
     In mensura ternaria.
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="360,510,650,930">
+  <bloco tipo="texto_principal" script="latino" bbox="387,623,655,956">
     VULGATA LATINA.
     1. Consolamini, consolamini,
     popule meus, dicit Deus vester.
@@ -127,15 +121,14 @@
     aquas?
     Tribus digitis.
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="680,510,950,930">
+  <bloco tipo="texto_principal" script="latino" bbox="674,623,958,956">
     AQUILA.
     1.
     2.
     3. Vox vocantis.
     4. In campum.
     7.
-    Porrus populus.
+    Porrum populus.
     8. Exaruit porrum, defluxit
     flos.
     9. In montem excelsum ascende
@@ -150,14 +143,8 @@
     ✠ digito suo aquas?
     In triplici.
   </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="600,950,850,980">
+  <bloco tipo="rodape" script="latino" bbox="624,978,830,994">
     Digitized by Google
   </bloco>
-  
-  <notas>
-    Documento poliglota (Hexapla) contendo Hebraico, Grego (transliteração e tradução de Áquila) e Latim (Versão do Hebraico, Vulgata e tradução de Áquila).
-    Símbolo ✠ usado no texto grego e latino de Áquila para marcar variantes ou adições.
-    Numeração de versículos segue a sequência do texto (1, 2, 3, 4, 7, 8, 9, 10, 11, 12).
-  </notas>
+  <notas>Transcrição organizada em três colunas superiores e três colunas inferiores, seguindo o fluxo da coluna esquerda para a direita. Não foram identificados marcadores A, B, C ou D na imagem.</notas>
 </pagina>

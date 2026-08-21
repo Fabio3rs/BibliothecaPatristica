@@ -1,32 +1,45 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,40,900,70">
-    267 HEXAPLORUM QUÆ SUPERSUNT. 268
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="104,84,135,106">267</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="388,78,651,108">HEXAPLORUM QUÆ SUPERSUNT.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="952,84,975,106">268</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="108,112,470,160">
+    dum parvam mutationem duplici modo redditur, cum
+    brevi discrimine. Hebræus dicebat Jacobum He-
+    braice collem testem nuncupasse; Labanum vero Sy-
+    riace : quod non poterat Græce dupliciter exprimi ;
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,75,490,125">
-    dum parvam mutationem duplici modo redditur, cum brevi discrimine. Hebræus dicebat Jacobum Hebraice collem testem nuncupasse; Labanum vero Syriace : quod non poterat Græce dupliciter exprimi;
+  <bloco tipo="texto_principal" script="latino" bbox="520,112,904,160">
+    sed LXX Interpretes brevi facta violenter mutatione
+    idem ipsum significasse : nihil enim differt collis te-
+    stimonii a colle teste. Sequentia porro verba obe-
+    lis notantur in Coislin. utpote quæ quoad maxi-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,75,900,125">
-    sed LXX Interpretes brevi facta violenter mutatione idem ipsum significasse : nihil enim differt collis testimonii a colle teste. Sequentia porro verba obelis notantur in Coislin. utpote quæ quoad maxi-
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="400,140,600,160">
-    CAPUT XXXII GENESIS.
-  </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="150,170,850,190">
-    TO EBPAIKON. TO EBPAIKON ΑΚΥΛΑΣ.
+
+  <bloco tipo="gravura" script="latino" bbox="491,171,509,177">—</bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="395,189,647,218">CAPUT XXXII GENESIS.</bloco>
+
+  <bloco tipo="cabecalho" script="grego" bbox="201,239,351,262">ΤΟ ΕΒΡΑΙΚΟΝ.</bloco>
+  <bloco tipo="cabecalho" script="misto" bbox="439,238,645,289">
+    ΤΟ ΕΒΡΑΙΚΟΝ
     Ἑλληνικοῖς γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="120,195,350,400">
-    לירא 7
-    ממני חסד ואמת 10
-    תקטנ
+  <bloco tipo="cabecalho" script="grego" bbox="792,239,891,262">ΑΚΥΛΑΣ.</bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="164,289,368,494">
+    ויירא 7
+    קטנתי מכל החסדים 10
+    ומכל האמת
     אכפרה פניו 20
     יבק 22
-    ויאבק איש 24
-    כישרית עםאלהים 28
+    ויאבק איש עמו 24
+    כי שרית עם אלהים 28
     פניאל 30
     ויצלע 31
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="380,195,550,400">
+
+  <bloco tipo="texto_principal" script="grego" bbox="412,289,578,494">
     7.
     10.
     20.
@@ -36,21 +49,24 @@
     30.
     31.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="650,195,900,400">
+
+  <bloco tipo="texto_principal" script="grego" bbox="732,289,920,494">
     7.
     10. (Ἐσμικρύνθην ὑπὲρ πάντας
     ἐλέῳ, καὶ πάσῃ ἀληθείᾳ.)
     20.
     22.
     24. Ἐκυλίετο ἀνὴρ μετ' αὐτοῦ.
-    28. Ὅτι ρχας μετὰ Θεοῦ.
+    28. Ὅτι ἥρξας μετὰ Θεοῦ.
     30. Πρόσωπον ἰσχυροῦ.
     31.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="150,440,850,460">
-    VERSIO HEBRAICI TEXT VULGATA LATINA. AQUILA.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,465,350,700">
+
+  <bloco tipo="cabecalho" script="latino" bbox="158,620,385,646">VERSIO HEBRAICI TEXT</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="461,620,678,646">VULGATA LATINA.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="789,620,913,646">AQUILA.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="119,651,408,834">
     7. Et angustia fuit ei.
     10. Parvus sum præ omnibus
     misericordiis, et præ omni veritate.
@@ -63,7 +79,8 @@
     30. Pheniel.
     31. Claudicans.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="380,465,650,700">
+
+  <bloco tipo="texto_principal" script="latino" bbox="422,651,707,834">
     7. Et perterritus.
     10. Minor sum cunctis misera-
     tionibus et veritate tua.
@@ -75,7 +92,8 @@
     30. Phanuel.
     31. Claudicabat.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,465,900,700">
+
+  <bloco tipo="texto_principal" script="latino" bbox="730,651,920,834">
     7.
     10. Minor factus sum supra
     omnes misericordia et omni veri-
@@ -88,13 +106,13 @@
     30. Facies Dei.
     31.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="250,715,750,735">
-    Notæ et variæ lectiones ad cap. XXXII Genesis.
-  </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="100,740,490,930">
+
+  <bloco tipo="cabecalho" script="latino" bbox="294,840,748,868">Notæ et variæ lectiones ad cap. XXXII Genesis.</bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="116,870,490,1003">
     V. 7. Ἄλλος, θλιβώδες αὐτῷ. Ex Coislin.
     V. 10. Sic necessario restituenda Aquilæ lectio.
-    Interpretis Procopii male legerat, ἐμακρύνθην, qui
+    Interpres Procopii male legerat, ἐμακρύνθην, qui
     vertit elongatus sum. Quid autem illud cum verbo
     Hebraico ימעט, qui semper significat, minor sum,
     vel parvus sum? Ἄλλος· ἱκανοῦταί μοι : in Sche-
@@ -106,8 +124,9 @@
     In vocem Ἰαβώχ, hæc mss. habent ex Origene :
     Ἰαβώχ ποταμός ἐστι τῆς Ἀραβίας, ὁ νῦν καλούμενος
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="510,740,900,930">
-    Ἰαμβύχης. Id est : Jabec fluvius est Arabiæ, qui
+
+  <bloco tipo="aparato_critico" script="misto" bbox="509,870,919,1003">
+    Ἰαμβύχης. Id est : Jaboc fluvius est Arabiæ, qui
     nunc vocatur Jambyces. Combefisius legit Ἰαμβίχης.
     V. 24. Lectionem Aquilæ et Symmachi sic habent
     omnes mss. et editio Romana. — Ἐκυλίζετο ἀνήρ,
@@ -120,10 +139,8 @@
     quod adversus Angelum steterit. Quod ego diligenter
     excutiens, in Hebræo penitus invenire non potui.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="550,960,750,990">
-    Digitized by Google
-  </bloco>
-  <notas>
-    Transcrição de página da edição das Hexaplas. Contém colunas paralelas em Hebraico, Grego (transliteração e versão de Áquila) e Latino (Versio Hebraici, Vulgata, Áquila em Latim). O rodapé contém notas críticas em Latim com citações em Grego e Hebraico.
-  </notas>
+
+  <bloco tipo="rodape" script="latino" bbox="607,963,804,989">Digitized by Google</bloco>
+
+  <notas>Leitura do hebraico em 7 parcialmente ambígua; mantive as quebras e hifenizações visíveis no impresso. O rodapé “Digitized by Google” foi transcrito por estar impresso na imagem.</notas>
 </pagina>

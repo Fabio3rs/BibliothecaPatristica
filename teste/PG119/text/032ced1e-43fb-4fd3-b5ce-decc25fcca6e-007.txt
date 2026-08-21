@@ -1,60 +1,29 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="318,56,752,82">
-    TRADITIO CATHOLICA.
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="403,96,672,116">
-    SÆCULUM X. ANNUS 995.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="95,146,958,206">
-    ΟΙΚΟΥΜΕΝΙΟΥ,
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="379,226,696,250">
-    ΕΠΙΣΚΟΠΟΥ ΤΡΙΚΚΗΣ,
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="279,273,796,300">
-    ΤΑ ΕΥΡΙΣΚΟΜΕΝΑ ΠΑΝΤΑ.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,353,756,406">
-    ŒCUMENII,
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="283,426,814,453">
-    TRICCÆ IN THESSALIA EPISCOPI,
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="356,476,722,513">
-    OPERA OMNIA,
-  </bloco>
-  <bloco tipo="nota" script="latino" bbox="95,533,956,553">
-    JUXTA EDITIONEM PARISIENSEM ANNI 1631, PRÆVIA EMENDATIONE DILIGENTISSIMA, TYPIS REPETITA.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="237,576,838,596">
-    ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE,
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="190,603,886,653">
-    BIBLIOTHECÆ CLERI UNIVERSÆ,
-    SIVE
-    CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="856,556,990,646">
-    [Stamp: BIBLIOTHECA...]
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="413,723,682,746">
-    TOMUS POSTERIOR.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="325,803,742,820">
-    VENEUNT DUO VOLUMINA 22 FRANCIS GALLICIS.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="115,853,962,896">
-    EXCUDEBatur ET VENIT APUD J.-P. MIGNE EDITOREM,
-    IN VIA DICTA D'AMBOISE, OLIM PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER
-    NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MŒNIA PARISINA.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="526,903,568,919">
-    1864
-  </bloco>
-  <bloco tipo="outro" script="misto" bbox="622,959,826,986">
-    Digitized by Google
-  </bloco>
-  <notas>
-    The page is a title page. The large initial Omicron in the Greek title is decorative. Ligatures Œ and Æ are used in the Latin text (e.g., ŒCUMENII, TRICCÆ, LUTETIÆ, MŒNIA). The word "EXCUDEBatur" has the suffix 'atur' in smaller type. There is a library stamp on the right margin.
-  </notas>
+<pagina estado="com_texto" tipo="capa_ou_guarda">
+  <bloco tipo="cabecalho" script="latino" bbox="326,63,752,81">TRADITIO CATHOLICA.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="406,109,695,127">SÆCULUM X. ANNUS 995.</bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="92,150,936,221">ΟΙΚΟΥΜΕΝΙΟΥ,</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="384,234,652,261">ΕΠΙΣΚΟΠΟΥ ΤΡΙΚΚΗΣ,</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="279,281,778,310">ΤΑ ΕΥΡΙΣΚΟΜΕΝΑ ΠΑΝΤΑ.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="324,360,761,420">ŒCUMENII,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="268,435,735,458">TRICCÆ IN THESSALIA EPISCOPI,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="377,505,658,539">OPERA OMNIA,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="95,575,925,594">JUXTA EDITIONEM PARISIENSEM ANNI 1631, PRÆVIA EMENDATIONE DILIGENTISSIMA, TYPIS REPETITA.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="268,651,751,681">ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="327,710,761,738">BIBLIOTHECÆ CLERI UNIVERSÆ,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="490,760,523,778">SIVE</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="131,789,882,822">CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.</bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="394,837,611,862">TOMUS POSTERIOR.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="327,916,717,937">VENEUNT DUO VOLUMINA 22 FRANCIS GALLICIS.</bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="79,950,924,970">EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,</bloco>
+  <bloco tipo="rodape" script="latino" bbox="48,970,956,985">IN VIA DICTA D’AMBOISE, OLIM PROPE PORTAM LUTETIÆ PARISIORUM VULGO D’ENFER</bloco>
+  <bloco tipo="rodape" script="latino" bbox="83,985,926,998">NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MŒNIA PARISINA.</bloco>
+  <bloco tipo="rodape" script="latino" bbox="495,998,527,1000">1864</bloco>
+  <bloco tipo="rodape" script="latino" bbox="705,956,882,995">Digitized by Google</bloco>
+
+  <notas>Linhas ornamentais horizontais entre as seções não transcritas. Selo circular parcialmente visível no canto inferior direito, sobrepondo o rodapé digital.</notas>
 </pagina>

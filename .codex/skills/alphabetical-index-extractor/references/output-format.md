@@ -241,9 +241,10 @@ Rules:
 - Use conservative normalization.
 - If the parse is ambiguous, record the ambiguity in `raw_json` instead of inventing certainty.
 - When a paired page image resolves punctuation, a glyph, a note call, or layout, record
-  `raw_json.visual_evidence` with `image_path`, `physical_sequence`, `reason`, `observation`, and
-  `resolved_fields`. The image path is evidence; it never replaces an OCR `file`/`target_file`,
-  and the physical sequence never becomes an editorial page value.
+  `raw_json.visual_evidence` with `reason`, `observation`, and `resolved_fields` against the OCR
+  source. The PNG path remains only in the intermediate candidate's `facsimile_hint`; never copy
+  it into a locator result or canonical payload. A physical sequence never becomes an editorial
+  page value.
 - When `III/IV Esdras` or `III/IV Esdrae` is an explicit historical work, keep canonical
   `book_key` ownership with Python and record
   `raw_json.canonical_status=historical_noncanonical` and a stable
@@ -284,6 +285,20 @@ New locator inputs use `locator_format_version=2` and group coordinates under
 aliases. A shard-level `excluded_index_intervals` applies to every item and must be excluded from
 body targets.
 
+Candidate objects may contain an intermediate-only `facsimile_hint`:
+
+```json
+{
+  "image_path": "/.../images/PL001-001.png",
+  "pairing_basis": "physical_sequence_suffix",
+  "editorial_page_inferred": false,
+  "inspection_status": "not_inspected"
+}
+```
+
+The agent may open this path, but locator results must not reproduce it. Visual conclusions are
+reported against the OCR target file; Python rejects result envelopes containing PNG-path fields.
+
 Both phases write:
 
 ```json
@@ -293,7 +308,7 @@ Both phases write:
   "interpretation_contract_version": 1,
   "glossary_version": 1,
   "output_schema_version": 2,
-  "locator_contract_version": 3,
+  "locator_contract_version": 4,
   "volume_id": "PL001",
   "input_fingerprint": "<copied from input>",
   "results": []

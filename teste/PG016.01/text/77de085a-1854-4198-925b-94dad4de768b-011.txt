@@ -1,32 +1,10 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,10,1000,50">
-    ----------
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,240,880,530">
-    HEXAPLORUM
-
-    QUÆ SUPERSUNT
-
-    ———
-
-    LIBER II RĒGUM
-
-    SECUNDUM HEBRÆOS
-
-    II SAMUELIS.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,840,340,920">
-    PATROL. GR. XVI.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="500,840,600,920">
-    1
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="700,930,995,995">
-    Digitized by Google
-  </bloco>
-  <notas>
-    - Transcrições realizadas conforme visível: uso de ligatura "Æ" em "QUÆ" e "HEBRÆOS"; macron sobre "E" em "RĒGUM" representado com caractere U+0112.
-    - Ornamento horizontal abaixo de "QUÆ SUPERSUNT" transcrito como uma linha longa "———".
-    - BBOXs estimadas proporcionalmente à imagem (escala 0-1000).
-  </notas>
+<pagina estado="com_texto" tipo="capa_ou_guarda">
+  <bloco tipo="texto_principal" script="latino" bbox="255,361,743,423">HEXAPLORUM</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="332,449,668,510">QUÆ SUPERSUNT</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="283,578,717,641">LIBER II REGUM</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="332,686,668,744">SECUNDUM HEBRÆOS</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="365,787,635,857">II SAMUELIS.</bloco>
+  <bloco tipo="rodape" script="latino" bbox="143,893,334,928">Patrol. Gr. XVI.</bloco>
+  <bloco tipo="rodape" script="latino" bbox="622,936,845,978">Digitized by Google</bloco>
+  <notas>Ornamento horizontal central não transcrito por não ser texto. BBOXs estimadas em escala 0-1000.</notas>
 </pagina>

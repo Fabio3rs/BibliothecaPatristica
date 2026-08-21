@@ -8,6 +8,7 @@ export const GET: APIRoute = async ({ site }) => {
     buildCanonicalUrl(site, '/sitemap-main.xml'),
     buildCanonicalUrl(site, '/sitemap-seo-volumes.xml'),
     buildCanonicalUrl(site, '/sitemap-seo-volume-thematic.xml'),
+    buildCanonicalUrl(site, '/sitemap-scripture.xml'),
   ];
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

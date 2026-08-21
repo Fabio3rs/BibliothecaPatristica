@@ -1,11 +1,37 @@
 import pytest
 
 from scripture_ref_normalizer import (
+    _extract_citations_cached_core,
     extract_citations_from_value_cached as _extract,
     keywords_cite_books,
     lookup_book,
     normalize_scripture_book_name,
 )
+
+
+def test_cached_extractor_reuses_parse_without_leaking_source_path() -> None:
+    _extract_citations_cached_core.cache_clear()
+
+    first = _extract(
+        "Lucas 24,39",
+        source_kind="keywords",
+        source_path="keywords[0]",
+        support_mode=False,
+    )
+    second = _extract(
+        "Lucas 24,39",
+        source_kind="keywords",
+        source_path="categorias.obras[0]",
+        support_mode=False,
+    )
+
+    assert _extract_citations_cached_core.cache_info().hits == 1
+    assert first[0]["source_path"] == "keywords[0]"
+    assert second[0]["source_path"] == "categorias.obras[0]"
+    first[0]["normalized"] = "mutated"
+    first[0]["aliases"].append("mutated")
+    assert second[0]["normalized"] == "Lucas 24,39"
+    assert "mutated" not in second[0]["aliases"]
 
 
 @pytest.mark.parametrize(

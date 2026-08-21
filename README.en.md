@@ -48,7 +48,38 @@ Sources: [Bibliothèque Interuniversitaire de la Sorbonne — PL](https://www.bi
 - Download: follow `download/README.md`.
 - Website: `cd web && npm install && npm run build`; for local development, run `npm run dev`.
 
+## Two-pass VLM with three-way OCR reconciliation
+
+The multimodal flow is not a simple choice between Tesseract and an LLM. First,
+the VLM (*Vision-Language Model*, or vision-capable LLM) transcribes the facsimile
+without seeing auxiliary OCR. Logically in parallel, Tesseract produces an
+independent textual reading of the same image. XML, token overlap, coverage,
+noise, and visual checks compare both outputs. If the page fails validation, the
+VLM must receive the facsimile again, now alongside the Tesseract text and its
+previous XML, and produces a corrective transcription. There are therefore two
+visual passes; the Tesseract reading is the independent witness between them.
+The image is never replaced by the text drafts, including in the LLM judge.
+This is not *two-shot* or *three-shot prompting*: those terms count demonstrations
+in a prompt, whereas this workflow reconciles three pieces of evidence from the
+same page — facsimile, Tesseract text, and previous VLM XML — during its second
+VLM pass.
+
+This design and its thresholds were obtained empirically through exploratory
+inspection of pages informally selected from different parts of the corpus,
+without a formal sampling design, and visual comparison of generated text with
+each facsimile. No mathematical BCER evaluation or character-aligned ground-truth
+benchmark was performed; the thresholds are operational heuristics rather than
+statistical quality estimates.
+
+The second pass is selective and runs through `--verify-fix`. `--algorithm`
+selects the VLM provider (`ollama`, the default, or `openai`); Tesseract is an
+auxiliary stage rather than a final backend. The LLM judge is a separate layer:
+it rates fidelity/usability and routes `baixa` (low) or `descartar` (discard)
+assessments to reprocessing. See the diagram, commands, and exceptions in the
+[full English technical explanation](docs/PIPELINE.md#three-way-ocr-english).
+
 ## Related documentation
+- Two-pass VLM with three-way OCR reconciliation: `docs/PIPELINE.md#three-way-ocr-english`
 - OCR corpus and structured text format: `docs/CORPUS_OCR_FORMAT.md`
 - Semantic unification paper (English): `docs/LLM_unification_paper_en.md`
 - Versão em Português / Portuguese version: `docs/LLM_unification_paper.md`

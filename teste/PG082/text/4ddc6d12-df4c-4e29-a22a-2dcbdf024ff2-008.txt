@@ -1,40 +1,41 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="250,40,750,80">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="260,60,690,83">
     TRADITIO CATHOLICA.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,90,650,115">
+  <bloco tipo="texto_principal" script="latino" bbox="350,116,612,137">
     SÆCULUM V, ANNUS 458.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="370,135,630,175">
+  <bloco tipo="cabecalho" script="latino" bbox="377,168,567,198">
     ELENCHUS
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,185,900,210">
+  <bloco tipo="texto_principal" script="latino" bbox="100,230,858,250">
     AUCTORUM ET OPERUM QUI IN HOC TOMO LXXXII CONTINENTUR.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="380,230,620,245">
-    [Ornament]
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="280,265,720,290">
+  <bloco tipo="nota" script="latino" bbox="389,286,571,301"></bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="282,330,719,350">
     THEODORETUS, CYRENSIS EPISCOPUS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,290,900,380">
-    Commentarius in omnes sancti Pauli Epistolas.           col.   31
-    Historia ecclesiastica.                                 879
-    Historia religiosa.                                     1279
-    Oratio de divina et sancta charitate.                   1498
-    Henrici Valesii notæ ad Historiam ecclesiasticam Theodoret. 1521
+  <bloco tipo="texto_principal" script="latino" bbox="110,363,555,469">
+    Commentarius in omnes sancti Pauli Epistolas.
+    Historia ecclesiastica.
+    Historia religiosa.
+    Oratio de divina et sancta charitate.
+    Henrici Valesii notæ ad Historiam ecclesiasticam Theodoreti.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="120,600,600,700">
-    [Texto invertido/espelhado]: APPLIQUE
-    HENRY VON...
+  <bloco tipo="texto_principal" script="latino" bbox="755,363,850,464">
+    col. 31
+    879
+    1279
+    1498
+    1521
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="500,900,900,925">
+  <bloco tipo="rodape" script="latino" bbox="512,907,883,927">
     Parisiis. — Ex Typis J.-P. MIGNE.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="600,960,800,985">
+  <bloco tipo="rodape" script="latino" bbox="596,963,817,986">
     Digitized by Google
   </bloco>
   <notas>
-    Presença de números de página fantasma ("140" atrás de ELENCHUS, "80" atrás de Historia ecclesiastica) provenientes do verso ou página adjacente. Texto invertido no centro inferior parece ser um carimbo ou etiqueta colada na página oposta e visível por transparência ou colada nesta página de cabeça para baixo.
+    Há texto muito tênue, invertido, visível por transparência na região central inferior, e algarismos fantasma atrás de ELENCHUS e de Historia ecclesiastica; não foi incorporado à transcrição do texto principal. O ornamento tipográfico entre o título e o nome de Theodoretus foi mantido como bloco sem transcrição literal. Não se observam identificadores marginais A, B, C ou D.
   </notas>
 </pagina>

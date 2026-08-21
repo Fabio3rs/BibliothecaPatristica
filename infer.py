@@ -854,7 +854,7 @@ def save_line_version(
 
 
 def build_tesseract_config(tessdata_dir: str | None = None) -> str:
-    parts = ["--psm 13", "--oem 1"]
+    parts = ["--psm 6", "--oem 1"]
     if tessdata_dir:
         parts.append(f'--tessdata-dir "{tessdata_dir}"')
     return " ".join(parts)
@@ -1061,7 +1061,7 @@ def recalc_agreement_scores(
 _orig_connect = _uc.HTTPConnection.connect
 
 
-def make_session() -> requests.Session:
+def make_session(prefix:str = "https://") -> requests.Session:
     session = requests.Session()
     adapter = HTTPAdapter(max_retries=Retry(total=0))
 
@@ -1073,7 +1073,7 @@ def make_session() -> requests.Session:
         self.sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_KEEPCNT, 5)
 
     _uc.HTTPConnection.connect = _connect_with_keepalive
-    session.mount("https://", adapter)
+    session.mount(prefix, adapter)
     return session
 
 
@@ -1385,7 +1385,11 @@ def txt_path_for_image(img_path: Path, txt_dir: Path) -> Path:
 # ---------------------------------------------------------------------------
 # Backends
 # ---------------------------------------------------------------------------
+from requests.adapters import HTTPAdapter
 
+session = requests.Session()
+adapter = HTTPAdapter(pool_connections=10, pool_maxsize=10)
+session.mount('http://', adapter)
 
 def call_ollama_vision(
     image_bytes: bytes,
@@ -1403,15 +1407,20 @@ def call_ollama_vision(
         "stream": False,
         "options": {"top_p": DEFAULT_TOP_P, "temperature": DEFAULT_TEMP},
     }
-    data = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(
-        base_url.rstrip("/") + "/api/chat",
-        data=data,
-        headers={"Content-Type": "application/json"},
-        method="POST",
-    )
-    with urllib.request.urlopen(req, timeout=300) as resp:
-        body = json.loads(resp.read().decode("utf-8"))
+
+    # data = json.dumps(payload).encode("utf-8")
+    # req = urllib.request.Request(
+    #     base_url.rstrip("/") + "/api/chat",
+    #     data=data,
+    #     headers={"Content-Type": "application/json"},
+    #     method="POST",
+    # )
+    # with urllib.request.urlopen(req, timeout=300) as resp:
+    #     body = json.loads(resp.read().decode("utf-8"))
+
+    response = session.post(base_url.rstrip("/") + "/api/chat", json=payload)
+    body = response.json()
+
     return body.get("message", {}).get("content", "").strip()
 
 def openai_process_image(

@@ -4,11 +4,13 @@ import { useTranslations, serializeTranslations, getLocaleBase, getLocaleRouteUr
 const base = import.meta.env.BASE_URL || '/';
 const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
 const assetBase = baseWithSlash;
+const searchIndexVersion = import.meta.env.PUBLIC_INDEXADOR_SEARCH_VERSION || '';
+const searchIndexBase = `${baseWithSlash}indexador/search${searchIndexVersion ? `/${encodeURIComponent(searchIndexVersion)}` : ''}`;
 
 const t = useTranslations(Astro.currentLocale);
 const uiStrings = serializeTranslations(t);
 const uiLocale = Astro.currentLocale ?? 'pt-br';
-const locale = uiLocale === 'en' ? 'en' : uiLocale === 'it' ? 'it' : 'pt-br';
+const locale = uiLocale === 'en' ? 'en' : uiLocale === 'it' ? 'it' : uiLocale === 'fr' ? 'fr' : 'pt-br';
 const localeBase = getLocaleBase(locale, base);
 
 const startPointsByLocale = {
@@ -52,6 +54,20 @@ const startPointsByLocale = {
       { label: 'Cristologia', term: 'Cristologia' },
       { label: 'Eucaristia', term: 'Eucaristia' },
       { label: 'Gnosi', term: 'Gnosis' },
+    ],
+  },
+  fr: {
+    'Auteurs remarquables': [
+      { label: 'Augustin d’Hippone', term: 'Agostinho de Hipona' },
+      { label: 'Origène d’Alexandrie', term: 'Orígenes de Alexandria' },
+      { label: 'Jean Chrysostome', term: 'João Crisóstomo' },
+      { label: 'Jérôme', term: 'Jerônimo de Estridão' },
+    ],
+    'Thèmes centraux': [
+      { label: 'Trinité', term: 'Trindade' },
+      { label: 'Christologie', term: 'Cristologia' },
+      { label: 'Eucharistie', term: 'Eucaristia' },
+      { label: 'Gnose', term: 'Gnosis' },
     ],
   },
 };
@@ -370,6 +386,35 @@ const startPoints = startPointsByLocale[locale];
     background-color: var(--color-surface-raised);
   }
 
+  .methodology-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: var(--space-4);
+  }
+  .methodology-step {
+    padding: var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-m);
+    background: var(--color-surface-2);
+  }
+  .methodology-step h3 {
+    margin: 0 0 var(--space-2);
+    font-family: var(--font-serif);
+    font-size: 1.08rem;
+  }
+  .methodology-step p,
+  .methodology-caveat {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.65;
+  }
+  .methodology-caveat {
+    margin-top: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    border-left: 3px solid var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 8%, var(--color-surface));
+  }
+
   @media (max-width: 980px) {
     .hero {
       grid-template-columns: 1fr;
@@ -390,7 +435,7 @@ const startPoints = startPointsByLocale[locale];
 <Layout title="Bibliotheca Patristica" description={t.homeSubtitle.replace(/<[^>]*>/g, '')} breadcrumbs={[{label: t.breadcrumbHome, href: localeBase}]}>
   <Fragment slot="head">
     <link rel="prefetch" href={getLocaleRouteUrl(locale, 'search', base)} />
-    <link rel="prefetch" href={`${baseWithSlash}indexador/search/manifest.json`} />
+    <link rel="prefetch" href={`${searchIndexBase}/manifest.json`} />
     <link rel="modulepreload" href={`${baseWithSlash}indexador/runtime/indexador-pagefind.js`} />
   </Fragment>
 
@@ -443,7 +488,6 @@ const startPoints = startPointsByLocale[locale];
       <div class="stat-item"><h3>…</h3><p>{t.statVolumes}</p></div>
       <div class="stat-item"><h3>{t.statSeries}</h3><p>{t.statSeriesLabel}</p></div>
       <div class="stat-item"><h3>…</h3><p>{t.statPages}</p></div>
-      <div class="stat-item"><h3>{t.statTokens}</h3><p>{t.statTokensLabel}</p></div>
     </div>
   </section>
 
@@ -528,6 +572,34 @@ const startPoints = startPointsByLocale[locale];
     </div>
   </section>
 
+  <section id="metodologia" class="section-anchor card" style="margin-top:var(--space-5);" aria-labelledby="methodology-title">
+    <div class="section-heading">
+      <div>
+        <h2 id="methodology-title">{t.methodologyTitle}</h2>
+        <p>{t.methodologyIntro}</p>
+      </div>
+    </div>
+    <div class="methodology-grid">
+      <article class="methodology-step">
+        <h3>{t.methodologyOcrTitle}</h3>
+        <p>{t.methodologyOcrBody}</p>
+      </article>
+      <article class="methodology-step">
+        <h3>{t.methodologySummaryTitle}</h3>
+        <p>{t.methodologySummaryBody}</p>
+      </article>
+      <article class="methodology-step">
+        <h3>{t.methodologyKeywordsTitle}</h3>
+        <p>{t.methodologyKeywordsBody}</p>
+      </article>
+      <article class="methodology-step">
+        <h3>{t.methodologyIndicesTitle}</h3>
+        <p>{t.methodologyIndicesBody}</p>
+      </article>
+    </div>
+    <p class="methodology-caveat">{t.methodologyCaveat}</p>
+  </section>
+
   <script type="module" define:vars={{ assetBase, uiStrings, uiLocale, localeBase }}>
     const cloud = document.getElementById('tag-cloud');
     const statsGrid = document.getElementById('stats-grid');
@@ -538,11 +610,14 @@ const startPoints = startPointsByLocale[locale];
     const jsonCache = new Map();
     const isEn = uiLocale === 'en';
     const isIt = uiLocale === 'it';
+    const isFr = uiLocale === 'fr';
     const s = uiStrings;
     const ariaOccurrences = isEn
       ? (n) => `${n} occurrence(s)`
       : isIt
         ? (n) => (n === 1 ? '1 occorrenza' : `${n} occorrenze`)
+        : isFr
+          ? (n) => (n === 1 ? '1 occurrence' : `${n} occurrences`)
       : (n) => `${n} ocorrência(s)`;
     let authorsLoaded = false;
     let tagsLoaded = false;
@@ -552,7 +627,7 @@ const startPoints = startPointsByLocale[locale];
       if (dataCache?.getJsonOnce) return dataCache.getJsonOnce(url);
       if (!jsonCache.has(url)) {
         const promise = fetch(url).then(async (res) => {
-          if (!res.ok) throw new Error(`HTTP ${res.status} ao buscar ${url}`);
+          if (!res.ok) throw new Error(`HTTP ${res.status}: ${url}`);
           return res.json();
         }).catch((err) => {
           jsonCache.delete(url);
@@ -615,7 +690,7 @@ const startPoints = startPointsByLocale[locale];
       authorsList.innerHTML = '';
       authorsList.setAttribute('aria-busy', 'false');
       if (!unique.length) {
-        authorsList.innerHTML = `<p style="margin:0;color:var(--color-muted);">${isEn ? 'No authors found.' : isIt ? 'Nessun autore trovato.' : 'Nenhum autor encontrado.'}</p>`;
+        authorsList.innerHTML = `<p style="margin:0;color:var(--color-muted);">${isEn ? 'No authors found.' : isIt ? 'Nessun autore trovato.' : isFr ? 'Aucun auteur trouvé.' : 'Nenhum autor encontrado.'}</p>`;
         return;
       }
 
@@ -637,7 +712,7 @@ const startPoints = startPointsByLocale[locale];
       themeGroups.innerHTML = '';
       themeGroups.setAttribute('aria-busy', 'false');
       if (!visible.length) {
-        themeGroups.innerHTML = `<p style="margin:0;color:var(--color-muted);">${isEn ? 'No theme groups found.' : isIt ? 'Nessun gruppo tematico trovato.' : 'Nenhum grupo temático encontrado.'}</p>`;
+        themeGroups.innerHTML = `<p style="margin:0;color:var(--color-muted);">${isEn ? 'No theme groups found.' : isIt ? 'Nessun gruppo tematico trovato.' : isFr ? 'Aucun groupe thématique trouvé.' : 'Nenhum grupo temático encontrado.'}</p>`;
         return;
       }
 
@@ -648,10 +723,10 @@ const startPoints = startPointsByLocale[locale];
         card.className = 'card';
         card.style.margin = '0';
         const top = Array.isArray(group.top_keywords) ? group.top_keywords.slice(0, 4) : [];
-        const title = top[0]?.label || (isEn ? 'Theme group' : isIt ? 'Gruppo tematico' : 'Grupo temático');
+        const title = top[0]?.label || (isEn ? 'Theme group' : isIt ? 'Gruppo tematico' : isFr ? 'Groupe thématique' : 'Grupo temático');
         card.innerHTML = `
           <p class="eyebrow" style="margin:0 0 var(--space-2);">${title}</p>
-          <p style="margin:0 0 var(--space-2); color:var(--color-muted);">${group.total?.toLocaleString?.() || group.total || 0} ${isEn ? 'occurrences' : isIt ? 'occorrenze' : 'ocorrências'}</p>
+          <p style="margin:0 0 var(--space-2); color:var(--color-muted);">${group.total?.toLocaleString?.() || group.total || 0} ${isEn ? 'occurrences' : isIt ? 'occorrenze' : isFr ? 'occurrences' : 'ocorrências'}</p>
         `;
         const chips = document.createElement('div');
         chips.style.cssText = 'display:flex;flex-wrap:wrap;gap:0.4rem;';
@@ -677,7 +752,7 @@ const startPoints = startPointsByLocale[locale];
       } catch (err) {
         authorsLoaded = false;
         authorsList?.setAttribute('aria-busy', 'false');
-        authorsList.innerHTML = `<p style="margin:0;color:var(--color-muted);">${isEn ? 'Failed to load authors.' : isIt ? 'Impossibile caricare gli autori.' : 'Falha ao carregar autores.'}</p>`;
+        authorsList.innerHTML = `<p style="margin:0;color:var(--color-muted);">${isEn ? 'Failed to load authors.' : isIt ? 'Impossibile caricare gli autori.' : isFr ? 'Impossible de charger les auteurs.' : 'Falha ao carregar autores.'}</p>`;
         console.error(err);
       }
     }
@@ -709,7 +784,7 @@ const startPoints = startPointsByLocale[locale];
       } catch (err) {
         groupsLoaded = false;
         themeGroups?.setAttribute('aria-busy', 'false');
-        themeGroups.innerHTML = `<p style="margin:0;color:var(--color-muted);">${isEn ? 'Failed to load themes.' : isIt ? 'Impossibile caricare i temi.' : 'Falha ao carregar temas.'}</p>`;
+        themeGroups.innerHTML = `<p style="margin:0;color:var(--color-muted);">${isEn ? 'Failed to load themes.' : isIt ? 'Impossibile caricare i temi.' : isFr ? 'Impossible de charger les thèmes.' : 'Falha ao carregar temas.'}</p>`;
         console.error(err);
       }
     }

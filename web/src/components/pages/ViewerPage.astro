@@ -7,8 +7,22 @@ const localeBase = getLocaleBase(Astro.currentLocale, base);
 const t = useTranslations(Astro.currentLocale);
 const uiStrings = serializeTranslations(t);
 const uiLocale = Astro.currentLocale ?? 'pt-br';
+const viewerDocumentTitle = uiLocale === 'en'
+  ? 'Bibliotheca Patristica — Reader'
+  : uiLocale === 'it'
+    ? 'Bibliotheca Patristica — Lettura'
+    : uiLocale === 'fr'
+      ? 'Bibliotheca Patristica — Lecture'
+    : 'Bibliotheca Patristica — Leitura';
+const viewerDescription = uiLocale === 'en'
+  ? 'Page reader for the patristic collection, with automatic summaries and structured transcription.'
+  : uiLocale === 'it'
+    ? 'Lettore delle pagine della raccolta patristica, con riassunti automatici e trascrizione strutturata.'
+    : uiLocale === 'fr'
+      ? 'Lecteur de pages de la collection patristique, avec résumés automatiques et transcription structurée.'
+    : 'Leitor de páginas do acervo patrístico, com sínteses automáticas e transcrição estruturada.';
 ---
-<Layout title="Bibliotheca Patristica — Leitura" description="Visualizador de páginas do corpus patrístico com metadados enriquecidos e OCR." breadcrumbs={[{label: t.breadcrumbHome, href: localeBase},{label: t.breadcrumbViewer}]}>
+<Layout title={viewerDocumentTitle} description={viewerDescription} breadcrumbs={[{label: t.breadcrumbHome, href: localeBase},{label: t.breadcrumbViewer}]}>
   <div id="viewer-root" style="min-height:60vh;">
     <div style="padding:var(--space-8) 0;text-align:center;color:var(--color-muted);">
       <p>{t.viewerLoading}</p>
@@ -16,6 +30,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
   </div>
 
   <script type="module" define:vars={{ assetBase: baseWithSlash, localeBase, uiStrings, uiLocale }}>
+    const { parseOcrDocument, repairLineBreakHyphens } = await import(`${assetBase}scripts/ocr-text.mjs`);
     const viewerRoot = document.getElementById('viewer-root');
     let loadGeneration = 0;
     let rawOcrController = null;
@@ -29,7 +44,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     }
 
     async function decodeJsonResponse(res, url) {
-      if (!res.ok) throw new Error(`HTTP ${res.status} ao buscar ${url}`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}: ${url}`);
       const bytes = new Uint8Array(await res.arrayBuffer());
       const isGzipped = bytes.length >= 2 && bytes[0] === 0x1f && bytes[1] === 0x8b;
       const payload = isGzipped && typeof DecompressionStream !== 'undefined'
@@ -44,54 +59,71 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     // Reconstrói funções de formatação (não serializáveis via define:vars)
     const isEn = uiLocale === 'en';
     const isIt = uiLocale === 'it';
-    const localeTag = isEn ? 'en-US' : isIt ? 'it-IT' : 'pt-BR';
-    const seoHubLabel = 'SEO';
+    const isFr = uiLocale === 'fr';
+    function localizedPageSummary(page) {
+      if (!page) return '';
+      return page.translations?.[uiLocale]?.summary_page || page.summary_page || '';
+    }
+    function localizedGlobalSummary(page) {
+      if (!page) return '';
+      return page.translations?.[uiLocale]?.summary_global || page.summary_global || '';
+    }
+    const localeTag = isEn ? 'en-US' : isIt ? 'it-IT' : isFr ? 'fr-FR' : 'pt-BR';
+    const volumeCatalogLabel = isEn
+      ? (id) => `Catalog of ${id}`
+      : isIt
+        ? (id) => `Catalogo di ${id}`
+        : isFr
+          ? (id) => `Catalogue de ${id}`
+        : (id) => `Catálogo de ${id}`;
     const s = {
       ...uiStrings,
       viewerVolume: (id, title) => `Volume ${id}${title ? ' — ' + title : ''}`,
-      viewerPage: isEn ? (n) => `Page ${n}` : isIt ? (n) => `Pagina ${n}` : (n) => `Página ${n}`,
-      viewerPageOfTotal: isEn ? (n, t) => `Page ${n} of ${t}` : isIt ? (n, t) => `Pagina ${n} di ${t}` : (n, t) => `Página ${n} de ${t}`,
-      viewerFirst: isEn ? 'First' : isIt ? 'Prima' : 'Primeira',
-      viewerLast: isEn ? 'Last' : isIt ? 'Ultima' : 'Última',
-      viewerGo: isEn ? 'Go' : isIt ? 'Vai' : 'Ir',
-      viewerPageInputLabel: isEn ? 'Page number' : isIt ? 'Numero di pagina' : 'Número da página',
-      viewerFocusMode: isEn ? 'Reading mode' : isIt ? 'Modalità lettura' : 'Modo leitura',
-      viewerNormalMode: isEn ? 'Default mode' : isIt ? 'Modalità standard' : 'Modo padrão',
+      viewerPage: isEn ? (n) => `Page ${n}` : isIt ? (n) => `Pagina ${n}` : isFr ? (n) => `Page ${n}` : (n) => `Página ${n}`,
+      viewerPageOfTotal: isEn ? (n, t) => `Page ${n} of ${t}` : isIt ? (n, t) => `Pagina ${n} di ${t}` : isFr ? (n, t) => `Page ${n} sur ${t}` : (n, t) => `Página ${n} de ${t}`,
+      viewerFirst: isEn ? 'First' : isIt ? 'Prima' : isFr ? 'Première' : 'Primeira',
+      viewerLast: isEn ? 'Last' : isIt ? 'Ultima' : isFr ? 'Dernière' : 'Última',
+      viewerGo: isEn ? 'Go' : isIt ? 'Vai' : isFr ? 'Aller' : 'Ir',
+      viewerPageInputLabel: isEn ? 'Page number' : isIt ? 'Numero di pagina' : isFr ? 'Numéro de page' : 'Número da página',
+      viewerFocusMode: isEn ? 'Reading mode' : isIt ? 'Modalità lettura' : isFr ? 'Mode lecture' : 'Modo leitura',
+      viewerNormalMode: isEn ? 'Default mode' : isIt ? 'Modalità standard' : isFr ? 'Mode standard' : 'Modo padrão',
       viewerDecreaseFont: isEn ? 'A-' : 'A-',
       viewerIncreaseFont: isEn ? 'A+' : 'A+',
-      viewerDecreaseFontLabel: isEn ? 'Decrease text size' : isIt ? 'Riduci la dimensione del testo' : 'Diminuir tamanho do texto',
-      viewerIncreaseFontLabel: isEn ? 'Increase text size' : isIt ? 'Aumenta la dimensione del testo' : 'Aumentar tamanho do texto',
-      viewerFontSizeStatus: isEn ? (pct) => `Text size: ${pct}%` : isIt ? (pct) => `Dimensione del testo: ${pct}%` : (pct) => `Tamanho do texto: ${pct}%`,
-      viewerReadingTools: isEn ? 'Reading tools' : isIt ? 'Strumenti di lettura' : 'Ferramentas de leitura',
-      viewerPageNavigation: isEn ? 'Page navigation' : isIt ? 'Navigazione tra le pagine' : 'Navegação entre páginas',
-      viewerOcrDisplayLabel: isEn ? 'Text display' : isIt ? 'Visualizzazione del testo' : 'Exibição do texto',
-      viewerOcrTitle: isEn ? 'Page text' : isIt ? 'Testo della pagina' : 'Texto da página',
-      viewerOcrPlain: isEn ? 'Transcription code' : isIt ? 'Codice della trascrizione' : 'Código da transcrição',
-      viewerOcrStructured: isEn ? 'Continuous reading' : isIt ? 'Lettura continua' : 'Leitura contínua',
-      viewerOcrVisual: isEn ? 'Page layout' : isIt ? 'Disposizione della pagina' : 'Disposição da página',
-      viewerOcrOpenFile: isEn ? 'Open transcription file' : isIt ? 'Apri il file della trascrizione' : 'Abrir arquivo da transcrição',
-      viewerOcrTopAction: isEn ? 'Go to page text' : isIt ? 'Vai al testo della pagina' : 'Ir para o texto da página',
-      viewerOcrLoaded: isEn ? 'Page text loaded' : isIt ? 'Testo della pagina caricato' : 'Texto da página carregado',
-      viewerOcrAutomaticNote: isEn ? 'Automatic transcription; it may contain errors.' : isIt ? 'Trascrizione automatica; può contenere errori.' : 'Transcrição automática; pode conter erros.',
-      viewerOpenNewTab: isEn ? 'opens in a new tab' : isIt ? 'si apre in una nuova scheda' : 'abre em nova aba',
-      viewerPageSummaryDetails: isEn ? 'Page summary' : isIt ? 'Riassunto della pagina' : 'Resumo da página',
-      viewerGlobalSummaryDetails: isEn ? 'Context up to this page' : isIt ? 'Contesto fino a questa pagina' : 'Contexto da obra até aqui',
-      viewerCopySummary: isEn ? 'Copy summary' : isIt ? 'Copia il riassunto' : 'Copiar resumo',
-      viewerCiteSummary: isEn ? 'Copy summary with citation' : isIt ? 'Copia il riassunto con citazione' : 'Copiar resumo com citação',
-      viewerReportTranscription: isEn ? 'Report a transcription/page error' : isIt ? 'Segnala un errore di trascrizione/pagina' : 'Reportar erro de transcrição/página',
-      viewerEditorialNote: isEn ? 'Editorial note' : isIt ? 'Nota editoriale' : 'Nota editorial',
-      viewerContinueReading: isEn ? 'Continue reading' : isIt ? 'Continua la lettura' : 'Continuar lendo',
-      viewerProgress: isEn ? 'Progress' : isIt ? 'Progresso' : 'Progresso',
-      viewerSearchInVolume: isEn ? 'Search in this volume…' : isIt ? 'Cerca in questo volume…' : 'Buscar neste volume…',
-      viewerIndex: isEn ? 'Index' : isIt ? 'Indice' : 'Índice',
-      viewerNoIdentity: isEn ? 'Volume information not available' : isIt ? 'Informazioni sul volume non disponibili' : 'Informação do volume não disponível',
-      viewerRelatedSim: isEn ? (sim) => `similarity ${sim.toFixed(2)}` : isIt ? (sim) => `somiglianza ${sim.toFixed(2)}` : (sim) => `similaridade ${sim.toFixed(2)}`,
+      viewerDecreaseFontLabel: isEn ? 'Decrease text size' : isIt ? 'Riduci la dimensione del testo' : isFr ? 'Réduire la taille du texte' : 'Diminuir tamanho do texto',
+      viewerIncreaseFontLabel: isEn ? 'Increase text size' : isIt ? 'Aumenta la dimensione del testo' : isFr ? 'Augmenter la taille du texte' : 'Aumentar tamanho do texto',
+      viewerFontSizeStatus: isEn ? (pct) => `Text size: ${pct}%` : isIt ? (pct) => `Dimensione del testo: ${pct}%` : isFr ? (pct) => `Taille du texte : ${pct} %` : (pct) => `Tamanho do texto: ${pct}%`,
+      viewerReadingTools: isEn ? 'Reading tools' : isIt ? 'Strumenti di lettura' : isFr ? 'Outils de lecture' : 'Ferramentas de leitura',
+      viewerPageNavigation: isEn ? 'Page navigation' : isIt ? 'Navigazione tra le pagine' : isFr ? 'Navigation entre les pages' : 'Navegação entre páginas',
+      viewerOcrDisplayLabel: isEn ? 'Text display' : isIt ? 'Visualizzazione del testo' : isFr ? 'Affichage du texte' : 'Exibição do texto',
+      viewerOcrTitle: isEn ? 'Page text' : isIt ? 'Testo della pagina' : isFr ? 'Texte de la page' : 'Texto da página',
+      viewerOcrPlain: isEn ? 'Transcription code' : isIt ? 'Codice della trascrizione' : isFr ? 'Code de transcription' : 'Código da transcrição',
+      viewerOcrStructured: isEn ? 'Continuous reading' : isIt ? 'Lettura continua' : isFr ? 'Lecture continue' : 'Leitura contínua',
+      viewerOcrVisual: isEn ? 'Page layout' : isIt ? 'Disposizione della pagina' : isFr ? 'Disposition de la page' : 'Disposição da página',
+      viewerOcrOpenFile: isEn ? 'Open transcription file' : isIt ? 'Apri il file della trascrizione' : isFr ? 'Ouvrir le fichier de transcription' : 'Abrir arquivo da transcrição',
+      viewerOcrTopAction: isEn ? 'Go to page text' : isIt ? 'Vai al testo della pagina' : isFr ? 'Aller au texte de la page' : 'Ir para o texto da página',
+      viewerOcrLoaded: isEn ? 'Page text loaded' : isIt ? 'Testo della pagina caricato' : isFr ? 'Texte de la page chargé' : 'Texto da página carregado',
+      viewerOcrAutomaticNote: isEn ? 'Automatic transcription; it may contain errors.' : isIt ? 'Trascrizione automatica; può contenere errori.' : isFr ? 'Transcription automatique ; elle peut contenir des erreurs.' : 'Transcrição automática; pode conter erros.',
+      viewerOpenNewTab: isEn ? 'opens in a new tab' : isIt ? 'si apre in una nuova scheda' : isFr ? 's’ouvre dans un nouvel onglet' : 'abre em nova aba',
+      viewerPageSummaryDetails: isEn ? 'Page summary' : isIt ? 'Riassunto della pagina' : isFr ? 'Résumé de la page' : 'Resumo da página',
+      viewerGlobalSummaryDetails: isEn ? 'Context up to this page' : isIt ? 'Contesto fino a questa pagina' : isFr ? 'Contexte jusqu’à cette page' : 'Contexto da obra até aqui',
+      viewerCopySummary: isEn ? 'Copy summary' : isIt ? 'Copia il riassunto' : isFr ? 'Copier le résumé' : 'Copiar resumo',
+      viewerCiteSummary: isEn ? 'Copy summary with citation' : isIt ? 'Copia il riassunto con citazione' : isFr ? 'Copier le résumé avec la citation' : 'Copiar resumo com citação',
+      viewerReportTranscription: isEn ? 'Report a transcription/page error' : isIt ? 'Segnala un errore di trascrizione/pagina' : isFr ? 'Signaler une erreur de transcription/page' : 'Reportar erro de transcrição/página',
+      viewerEditorialNote: isEn ? 'Editorial note' : isIt ? 'Nota editoriale' : isFr ? 'Note éditoriale' : 'Nota editorial',
+      viewerContinueReading: isEn ? 'Continue reading' : isIt ? 'Continua la lettura' : isFr ? 'Continuer la lecture' : 'Continuar lendo',
+      viewerProgress: isEn ? 'Progress' : isIt ? 'Progresso' : isFr ? 'Progression' : 'Progresso',
+      viewerSearchInVolume: isEn ? 'Search in this volume…' : isIt ? 'Cerca in questo volume…' : isFr ? 'Rechercher dans ce volume…' : 'Buscar neste volume…',
+      viewerIndex: isEn ? 'Authors and works' : isIt ? 'Autori e opere' : isFr ? 'Auteurs et œuvres' : 'Autores e obras',
+      viewerNoIdentity: isEn ? 'Volume information not available' : isIt ? 'Informazioni sul volume non disponibili' : isFr ? 'Informations sur le volume indisponibles' : 'Informação do volume não disponível',
+      viewerRelatedSim: isEn ? (sim) => `similarity ${sim.toFixed(2)}` : isIt ? (sim) => `somiglianza ${sim.toFixed(2)}` : isFr ? (sim) => `similarité ${sim.toFixed(2)}` : (sim) => `similaridade ${sim.toFixed(2)}`,
       viewerRelatedTitle: isEn
         ? (doc, title, page) => `${doc}${title ? ' — ' + title : ''} · p. ${page}`
         : isIt
           ? (doc, title, page) => `${doc}${title ? ' — ' + title : ''} · pag. ${page}`
+          : isFr
+            ? (doc, title, page) => `${doc}${title ? ' — ' + title : ''} · p. ${page}`
         : (doc, title, page) => `${doc}${title ? ' — ' + title : ''} · pág. ${page}`,
-      viewerError: isEn ? (msg) => `Error loading viewer: ${msg}` : isIt ? (msg) => `Errore nel caricamento del visualizzatore: ${msg}` : (msg) => `Erro ao carregar viewer: ${msg}`,
+      viewerError: isEn ? (msg) => `Error loading viewer: ${msg}` : isIt ? (msg) => `Errore nel caricamento del visualizzatore: ${msg}` : isFr ? (msg) => `Erreur lors du chargement du lecteur : ${msg}` : (msg) => `Erro ao carregar viewer: ${msg}`,
       viewerVolumeLabel: (id, title) => `${isEn ? 'Volume' : 'Volume'} ${id}${title ? ' — ' + title : ''}`,
       viewerCitationVolumePage: isEn
         ? (volume, page) => `Volume ${volume}, p. ${page}`
@@ -102,6 +134,8 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         ? (date) => `Accessed ${date}`
         : isIt
           ? (date) => `Consultato il ${date}`
+          : isFr
+            ? (date) => `Consulté le ${date}`
           : (date) => `Acesso em ${date}`,
     };
 
@@ -189,7 +223,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     }
 
     function buildCitationMetadata({ page, volume, volumeAuthor, volumeWork, summaryGlobal }) {
-      const excerpt = normalizeWhitespace(page.excerpt || page.summary_page || summaryGlobal || page.summary_global || '');
+      const excerpt = normalizeWhitespace(page.excerpt || localizedPageSummary(page) || summaryGlobal || page.summary_global || '');
       const author = pickBestDescriptor(page.author, volumeAuthor);
       const work = pickBestDescriptor(page.work, volumeWork);
       const locator = isUsefulLocator(page.title) ? normalizeWhitespace(page.title) : '';
@@ -305,7 +339,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
       const summary = document.createElement('p');
       summary.style.cssText = 'margin:0;max-width:78ch;line-height:1.7;';
-      summary.textContent = page.summary_page || page.summary_global || s.viewerNoContent;
+      summary.textContent = localizedPageSummary(page) || page.summary_global || s.viewerNoContent;
 
       const status = document.createElement('p');
       status.style.cssText = 'margin:0;color:var(--color-muted);font-size:0.9rem;';
@@ -549,66 +583,64 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
     // ── Parser e renderer de OCR estruturado ──
     function parseOcrXml(xmlText) {
-      try {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(xmlText, 'application/xml');
-        const pagina = doc.querySelector('pagina');
-        if (!pagina) return null;
-        const estado = pagina.getAttribute('estado') || '';
-        const blocos = Array.from(pagina.querySelectorAll('bloco')).map((b) => {
-          const bbox = (b.getAttribute('bbox') || '').split(',').map(Number);
-          return {
-            tipo: b.getAttribute('tipo') || 'outro',
-            script: b.getAttribute('script') || 'desconhecido',
-            bbox: bbox.length === 4 ? bbox : null,
-            text: (b.textContent || '').trim(),
-          };
-        }).filter((b) => b.text.length > 0);
-        let width = 0;
-        let height = 0;
-        blocos.forEach((b) => {
-          if (b.bbox) {
-            width = Math.max(width, b.bbox[2]);
-            height = Math.max(height, b.bbox[3]);
-          }
-        });
-        return { estado, blocos, width, height };
-      } catch (e) {
-        console.warn('OCR XML parse error:', e);
-        return null;
-      }
+      const parsed = parseOcrDocument(xmlText);
+      if (!parsed.blocks.length || parsed.format !== 'structured_ocr_xml') return null;
+      const blocos = parsed.blocks.map((block) => ({
+        tipo: block.type,
+        script: block.script,
+        bbox: block.bbox,
+        text: block.text,
+      }));
+      let width = 0;
+      let height = 0;
+      blocos.forEach((block) => {
+        if (!block.bbox) return;
+        width = Math.max(width, block.bbox[2]);
+        height = Math.max(height, block.bbox[3]);
+      });
+      return { estado: '', blocos, width, height };
+    }
+
+    function createOcrBlockCopyButton(blockText) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'ocr-block-copy';
+      button.setAttribute('aria-label', s.viewerCopyOcrBlock);
+      button.title = s.viewerCopyOcrBlock;
+      button.innerHTML = '<svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16"><rect x="8" y="8" width="11" height="11" rx="2"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path></svg>';
+
+      const status = document.createElement('span');
+      status.className = 'sr-only';
+      status.setAttribute('role', 'status');
+      status.setAttribute('aria-live', 'polite');
+
+      button.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(blockText);
+          button.dataset.copyState = 'copied';
+          button.setAttribute('aria-label', s.viewerCopied);
+          status.textContent = s.viewerCopied;
+        } catch (_) {
+          button.dataset.copyState = 'failed';
+          button.setAttribute('aria-label', s.viewerCopyFailed);
+          status.textContent = s.viewerCopyFailed;
+        }
+        setTimeout(() => {
+          delete button.dataset.copyState;
+          button.setAttribute('aria-label', s.viewerCopyOcrBlock);
+          status.textContent = '';
+        }, 1200);
+      });
+
+      return { button, status };
     }
 
     function scriptLabel(script) {
-      const labels = {
-        latino: 'Latino', latin: 'Latino',
-        grego: 'Grego',
-        copta: 'Copta', copte: 'Copta', copto: 'Copta',
-        siriaco: 'Siríaco',
-        cirilico: 'Cirílico',
-        ethiopico: 'Etíope',
-        armenio: 'Armênio',
-        arabe: 'Árabe',
-        hebraico: 'Hebraico',
-        misto: 'Misto',
-        desconhecido: '?',
-      };
-      return labels[script?.toLowerCase()] || (script || '?');
+      return s.viewerOcrScriptLabels?.[script?.toLowerCase()] || (script || '?');
     }
 
     function typeLabel(tipo) {
-      const labels = {
-        cabecalho: 'Cabeçalho',
-        texto_principal: 'Texto',
-        aparato_critico: 'Aparato crítico',
-        rodape: 'Rodapé',
-        nota: 'Nota',
-        nota_marginal: 'Nota marginal',
-        outro: 'Outro',
-        titulo: 'Título',
-        capa_ou_guarda: 'Capa',
-      };
-      return labels[tipo?.toLowerCase()] || (tipo || 'Bloco');
+      return s.viewerOcrTypeLabels?.[tipo?.toLowerCase()] || (tipo || s.viewerOcrTypeLabels?.bloco || 'Block');
     }
 
     function applyScriptLanguage(element, script) {
@@ -721,10 +753,15 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           el.appendChild(meta);
         }
 
+        const repairedText = repairLineBreakHyphens(bloco.text);
         const text = document.createElement('div');
-        text.textContent = bloco.text;
+        text.className = 'ocr-block-text';
+        text.textContent = repairedText;
         applyScriptLanguage(text, bloco.script);
         el.appendChild(text);
+        const copyControl = createOcrBlockCopyButton(repairedText);
+        el.appendChild(copyControl.button);
+        el.appendChild(copyControl.status);
         wrap.appendChild(el);
       });
 
@@ -765,13 +802,14 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         el.style.padding = '2px 4px';
         el.style.boxSizing = 'border-box';
         el.style.zIndex = String(idx);
+        const repairedText = repairLineBreakHyphens(bloco.text);
         const text = document.createElement('span');
-        text.textContent = bloco.text;
+        text.textContent = repairedText;
         applyScriptLanguage(text, bloco.script);
         text.style.wordBreak = 'break-word';
         text.style.lineHeight = '1.15';
         el.appendChild(text);
-        el.title = `${typeLabel(bloco.tipo)} · ${scriptLabel(bloco.script)}\n${bloco.text}`;
+        el.title = `${typeLabel(bloco.tipo)} · ${scriptLabel(bloco.script)}\n${repairedText}`;
         wrap.appendChild(el);
       });
       container.appendChild(wrap);
@@ -796,7 +834,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         const volumes = await getJSON(`${assetBase}volumes.json`);
 
         const volume = volumes.volumes.find((v) => v.id === doc);
-        if (!volume) throw new Error(isIt ? 'Volume non trovato nei mock' : 'Volume não encontrado nos mocks');
+        if (!volume) throw new Error(isIt ? 'Volume non trovato nei mock' : isFr ? 'Volume introuvable dans les données de test' : 'Volume não encontrado nos mocks');
         const requestedPage = Number(url.searchParams.get('page'));
         const pageNumber = Number.isFinite(requestedPage) && requestedPage > 0
           ? Math.min(Math.max(requestedPage, volume.page_first || 1), volume.page_last || requestedPage)
@@ -813,20 +851,30 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
         const meta = await metaPromise;
         const block = meta.page_blocks.find((b) => pageNumber >= b.page_first && pageNumber <= b.page_last);
-        if (!block) throw new Error(isIt ? 'Blocco non trovato' : 'Bloco não encontrado');
+        if (!block) throw new Error(isIt ? 'Blocco non trovato' : isFr ? 'Bloc introuvable' : 'Bloco não encontrado');
 
         const resolvedBlockPath = String(block.file || '').replace(/^\//, '');
         if (!blockData || resolvedBlockPath !== directBlockPath) {
           blockData = await getJSON(`${assetBase}${resolvedBlockPath}`);
         }
         page = blockData.pages.find((p) => p.page === pageNumber) || blockData.pages[0];
-        if (!page) throw new Error(isIt ? 'Pagina non trovata' : 'Página não encontrada');
+        if (!page) throw new Error(isIt ? 'Pagina non trovata' : isFr ? 'Page introuvable' : 'Página não encontrada');
         if (!viewerRoot.querySelector('[data-viewer-preview]') && generation === loadGeneration) {
           renderCachedPagePreview(volume, page);
         }
 
+        const hasBakedKeywordLabels = Array.isArray(page.keyword_labels);
+        const allBakedKeywordLabels = Array.from(new Set(
+          (page.keyword_labels || []).map((label) => String(label || '').trim()).filter(Boolean),
+        ));
+        const displayCount = Number.isInteger(page.keyword_display_count)
+          ? Math.max(0, page.keyword_display_count)
+          : allBakedKeywordLabels.length;
+        const keywordLabelsPromise = hasBakedKeywordLabels
+          ? Promise.resolve(allBakedKeywordLabels.slice(0, displayCount))
+          : loadKeywordsForIds(page.keyword_ids || []);
         const [keywordsLabels, entities, collections] = await Promise.all([
-          loadKeywordsForIds(page.keyword_ids || []),
+          keywordLabelsPromise,
           getJSON(`${assetBase}dict/entities.json`),
           getJSON(`${assetBase}dict/collections.json`),
         ]);
@@ -839,8 +887,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         const pageSnapshots = snapshots.filter((s) => (page.snapshot_ids || []).includes(s.id));
 
         const entitiesLabels = labelize(page.entity_ids, entities.items);
-        const snapshotLabels = pageSnapshots.map((s) => s.label);
-        const summaryGlobal = page.summary_global || pageSnapshots[0]?.summary || '';
+        const summaryGlobal = localizedGlobalSummary(page) || pageSnapshots[0]?.summary || '';
         let viewerMode = initialViewerMode;
         const rawUrl = page.raw?.url || (
           page.raw?.file && blockData.raw_base_url
@@ -932,10 +979,18 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
             .viewer-index-list a { display: block; padding: 4px; text-align: center; border-radius: var(--radius-s); font-size: 0.8rem; text-decoration: none; color: var(--color-ink); background: var(--color-surface); border: 1px solid var(--color-border); transition: all 0.15s; }
             .viewer-index-list a:hover, .viewer-index-list a.current { background: var(--color-accent); color: white; border-color: var(--color-accent); }
             .viewer-ocr-body { font-family: var(--font-serif); line-height: 1.8; font-size: 1.05rem; }
-            .viewer-ocr-body .ocr-block { margin-bottom: 1em; }
+            .viewer-ocr-body .ocr-block { position: relative; margin-bottom: 1em; padding-right: 2.5rem; }
             .viewer-ocr-body .ocr-block.titulo { font-weight: 700; font-size: 1.2em; color: var(--color-accent); }
             .viewer-ocr-body .ocr-block.nota { font-size: 0.9em; color: var(--color-muted); border-left: 3px solid var(--color-border); padding-left: 1em; }
             .viewer-ocr-body .ocr-block.cabecalho { font-variant: small-caps; letter-spacing: 0.05em; }
+            .ocr-block-copy { position: absolute; top: 0; right: 0; display: inline-grid; place-items: center; width: 2rem; height: 2rem; padding: 0; border: 1px solid var(--color-border); border-radius: var(--radius-s); background: var(--color-surface); color: var(--color-muted); cursor: pointer; opacity: 0.68; transition: color 0.15s, border-color 0.15s, opacity 0.15s, background 0.15s; }
+            .ocr-block-copy svg { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.8; }
+            .ocr-block-copy:hover, .ocr-block-copy:focus-visible { color: var(--color-accent); border-color: var(--color-accent); opacity: 1; }
+            .ocr-block-copy:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+            .ocr-block-copy[data-copy-state="copied"] { color: var(--color-surface); border-color: var(--color-accent); background: var(--color-accent); opacity: 1; }
+            .ocr-block-copy[data-copy-state="copied"]::after { content: '✓'; font-family: var(--font-sans); font-size: 1rem; font-weight: 700; }
+            .ocr-block-copy[data-copy-state="copied"] svg { display: none; }
+            .ocr-block-copy[data-copy-state="failed"] { color: var(--color-focus); border-color: var(--color-focus); opacity: 1; }
             /* Chips to indicate script with a visible color */
             .ocr-script-chip { display:inline-block; width:10px; height:10px; border-radius:50%; margin-left:6px; vertical-align:middle; border:1px solid rgba(0,0,0,0.08); }
             .ocr-block .meta-script { display:inline-flex; align-items:center; gap:6px; }
@@ -1105,7 +1160,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         const breadcrumbsEl = document.querySelector('.breadcrumbs ol');
         if (breadcrumbsEl) {
           breadcrumbsEl.replaceChildren(
-            createBreadcrumbItem(uiStrings.breadcrumbHome || (isEn ? 'Home' : isIt ? 'Home' : 'Início'), { href: localeBase }),
+            createBreadcrumbItem(uiStrings.breadcrumbHome || (isEn ? 'Home' : isIt ? 'Home' : isFr ? 'Accueil' : 'Início'), { href: localeBase }),
             createBreadcrumbItem('', { separator: true }),
             createBreadcrumbItem(breadcrumbVolumeLabel),
             createBreadcrumbItem('', { separator: true }),
@@ -1134,7 +1189,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         const seoLink = document.createElement('a');
         seoLink.className = 'identity-badge';
         seoLink.href = `${assetBase}seo/volumes/${encodeURIComponent(volume.id)}`;
-        seoLink.textContent = seoHubLabel;
+        seoLink.textContent = volumeCatalogLabel(volume.id);
         if (viewerMode !== 'reading') identityMetaWrap.appendChild(seoLink);
 
         if (volumeSummary) {
@@ -1388,7 +1443,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         pageInput.setAttribute('aria-label', s.viewerPageInputLabel || 'Page number');
 
         const pageTotalSpan = document.createElement('span');
-        pageTotalSpan.textContent = `${isEn ? 'of' : isIt ? 'di' : 'de'} ${lastPage}`;
+        pageTotalSpan.textContent = `${isEn ? 'of' : isIt ? 'di' : isFr ? 'sur' : 'de'} ${lastPage}`;
 
         pageInput.addEventListener('change', () => {
           let v = parseInt(pageInput.value, 10);
@@ -1436,7 +1491,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         copyExcerptBtn.addEventListener('click', async () => {
           await writeClipboardWithFeedback(
             copyExcerptBtn,
-            () => normalizeWhitespace(page.excerpt || page.summary_page || summaryGlobal || ''),
+            () => normalizeWhitespace(page.excerpt || localizedPageSummary(page) || summaryGlobal || ''),
             viewerMode === 'reading' ? s.viewerCopySummary : s.viewerCopyExcerpt,
           );
         });
@@ -1513,7 +1568,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           return { wrap, p };
         }
 
-        const resPagina = createTextBlock(s.viewerSummaryPage, page.summary_page);
+        const resPagina = createTextBlock(s.viewerSummaryPage, localizedPageSummary(page));
         const resGlobal = createTextBlock(s.viewerSummaryGlobal, summaryGlobal);
         const trechoRes = createTextBlock(s.viewerExcerpt, page.excerpt, true);
 
@@ -1842,7 +1897,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
             const li = document.createElement('li');
             if (isKeywords) {
               const a = document.createElement('a');
-              const params = new URLSearchParams({ term: txt });
+              const params = new URLSearchParams({ keyword: txt });
               if (viewerMode === 'reading') params.set('view', 'reading');
               a.href = routeUrl('search', `?${params.toString()}`);
               a.textContent = txt;
@@ -1890,7 +1945,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
             const rangeSpan = document.createElement('span');
             rangeSpan.style.cssText = 'font-size:0.72rem; color:var(--color-muted);';
-            rangeSpan.textContent = `${isEn ? 'p.' : isIt ? 'pag.' : 'pág.'} ${seg.page_first}${seg.page_last !== seg.page_first ? '–' + seg.page_last : ''}`;
+            rangeSpan.textContent = `${isEn ? 'p.' : isIt ? 'pag.' : isFr ? 'p.' : 'pág.'} ${seg.page_first}${seg.page_last !== seg.page_first ? '–' + seg.page_last : ''}`;
 
             a.appendChild(labelSpan);
             a.appendChild(rangeSpan);
@@ -1907,10 +1962,6 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
         const entBlock = addMetaBlock(s.viewerMetaEntities, entitiesLabels);
         if (entBlock) sidebar.appendChild(entBlock);
-
-
-        const snapBlock = addMetaBlock(s.viewerMetaSnapshots, snapshotLabels);
-        if (snapBlock) sidebar.appendChild(snapBlock);
 
         // Páginas relacionadas (KNN cross-volume)
         const relatedPages = page.related_pages || [];

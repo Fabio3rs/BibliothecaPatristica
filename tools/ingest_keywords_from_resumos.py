@@ -20,7 +20,6 @@ import argparse
 import json
 import sqlite3
 import time
-import unicodedata
 import re
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional, Tuple
@@ -36,6 +35,12 @@ from keywords_serial import (
     clean_keywords_structure,
     normalize_keywords_payload,
 )
+from keyword_sanitization import (
+    clean_keyword_text,
+    keyword_normalization_key,
+    sanitize_keyword_item,
+    strip_markdown_wrappers as shared_strip_markdown_wrappers,
+)
 
 
 # -----------------------------------------------------------------------------
@@ -45,30 +50,13 @@ from keywords_serial import (
 
 def strip_markdown_wrappers(text: str) -> str:
     """Remove bullets/ênfase/code simples que podem envolver a keyword."""
-    t = (text or "").strip()
-    # Fences e blocos de code inline
-    t = re.sub(r"^```[\w-]*\s*|\s*```$", "", t, flags=re.DOTALL)
-    t = re.sub(r"`{1,3}([^`]+?)`{1,3}", r"\1", t)
-    # Bullets / headers iniciais
-    t = re.sub(r"^(?:[>#]+|\*+|[-+\u2022•]+|#+)\s*", "", t)
-    # Ênfase simples
-    t = re.sub(r"\*{1,3}([^*]+?)\*{1,3}", r"\1", t)
-    t = re.sub(r"_{1,3}([^_]+?)_{1,3}", r"\1", t)
-    # Aspas/fences simétricos
-    while len(t) >= 2 and t[0] == t[-1] and t[0] in "*_`'\"":
-        t = t[1:-1].strip()
-    return t
+    return shared_strip_markdown_wrappers(text)
 
 
 def clean_keyword_original(text: str) -> str:
     """Limpa keyword para armazenar como original (sem aspas/pontuação de borda)."""
-    text = strip_markdown_wrappers(text)
-    text = unicodedata.normalize("NFKC", text or "")
-    text = " ".join(text.split())
-    # Não remover parênteses fechantes/abertura que fazem parte do título
-    # (ex.: "De mendacio (Agostinho)") — evitar strip de ')' no final.
-    strip_chars = " \"'«»“”‘’[]{}|\\/–—-:;.,!?·•*&"
-    return text.strip(strip_chars)
+    cleaned, _issues = clean_keyword_text(text)
+    return cleaned
 
 
 def normalize_kw(text: str) -> str:
@@ -78,16 +66,7 @@ def normalize_kw(text: str) -> str:
     - NFKD + remoção de diacríticos (acentos) para colapsar variantes como "simōn"/"simón".
     - NFKC para recompor, trim de whitespace/pontuação leve/aspas envoltórias, casefold.
     """
-    text = strip_markdown_wrappers(text)
-    text = unicodedata.normalize("NFKD", text or "")
-    text = "".join(ch for ch in text if not unicodedata.combining(ch))
-    text = unicodedata.normalize("NFKC", text)
-    text = " ".join(text.split())
-    # remove aspas/pontuação só nas extremidades para evitar keywords iniciando por """
-    # Manter parênteses internos/fechamento nos termos canônicos.
-    strip_chars = " \"'«»“”‘’[]{}|\\/–—-:;.,!?·•*&"
-    text = text.strip(strip_chars)
-    return text.casefold()
+    return keyword_normalization_key(text)
 
 
 def normalize_word(text: str) -> str:
@@ -142,6 +121,9 @@ CATEGORY_TERM_STOPWORDS = {
 
 
 def is_noise_category_term(term: str) -> bool:
+    sanitized = sanitize_keyword_item(term)
+    if sanitized.value is None:
+        return True
     norm = normalize_word(term)
     if any(stop in norm for stop in CATEGORY_TERM_STOPWORDS):
         return True
@@ -542,9 +524,8 @@ def fetch_keywords_sql_batch(
                 )
              )
     """
-    if max_keywords_per_page:
-        sql += " WHERE CAST(json_each.key AS INT) < ?"
-        params.append(max_keywords_per_page)
+    # O limite é aplicado depois da sanitização em ``ingest``. Limitá-lo aqui
+    # permitiria que itens inválidos no início expulsassem keywords válidas.
     sql += " ORDER BY sub.documento, sub.pagina_num, CAST(json_each.key AS INT)"
 
     rows = list(con.execute(sql, params))
@@ -577,6 +558,7 @@ def ingest(
         "empty_keywords": 0,
         "alias_added": 0,
         "noise_keywords": 0,
+        "sanitization_issues": 0,
         "batches": 0,
     }
 
@@ -628,6 +610,20 @@ def ingest(
                             }
                     except Exception:
                         stats["parse_issue"] += 1
+                raw_keywords = [keyword for _rank, keyword in rec["keywords_ranked"]]
+                cleaned, clean_issues = clean_keywords_structure(
+                    {
+                        "keywords": raw_keywords,
+                        "categorias": rec.get("categorias") or {},
+                    }
+                )
+                stats["sanitization_issues"] += len(clean_issues)
+                clean_keywords = cleaned.get("keywords", [])
+                if max_keywords_per_page and len(clean_keywords) > max_keywords_per_page:
+                    clean_keywords = clean_keywords[:max_keywords_per_page]
+                    stats["truncated_pages"] += 1
+                rec["keywords_ranked"] = list(enumerate(clean_keywords))
+                rec["categorias"] = cleaned.get("categorias", {})
             page_records = list(grouped.values())
             pages_in_batch = len(page_records)
         else:
@@ -643,7 +639,8 @@ def ingest(
             for r in rows:
                 payload = r["keywords_json"]
                 parsed, parse_issue = normalize_keywords_payload(payload)
-                cleaned, _clean_issues = clean_keywords_structure(parsed)
+                cleaned, clean_issues = clean_keywords_structure(parsed)
+                stats["sanitization_issues"] += len(clean_issues)
                 keywords = cleaned.get("keywords_ranking") or cleaned.get("keywords") or []
                 categorias = cleaned.get("categorias", {})
                 if parse_issue:
@@ -926,6 +923,7 @@ def main() -> None:
         f"{kws} keywords tocadas/novas, {occs} ocorrências processadas, "
         f"{db_changes} mudanças reais no DB. "
         f"Parse_issues={stats['parse_issue']}, "
+        f"sanitization_issues={stats['sanitization_issues']}, "
         f"vazias={stats['empty_keywords']}, "
         f"truncadas={stats['truncated_pages']}."
     )

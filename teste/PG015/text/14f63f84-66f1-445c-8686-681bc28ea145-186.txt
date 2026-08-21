@@ -1,99 +1,122 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,60">
-    367 HEXAPLORUM QUÆ SUPERSUNT. 368
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="35,35,965,82">
+    367
+    HEXAPLORUM QUÆ SUPERSUNT.
+    368
   </bloco>
-  
-  [!-- Top Section: Exodus VII --]
-  <bloco tipo="texto_principal" script="misto" bbox="50,60,320,190">
-    TO EBPAIKON.
-    וַיַּעֲשׂוּ כֵן הַחַרְטֻמִּים בְּלָטֵיהֶם 22
-    וַיַּחְפְּרוּ כָל־מִצְרַיִם סְבִיבֹת הַיְאֹר מַיִם לִשְתּוֹת כִּי לֹא יָכְלוּ לִשְׁתּוֹת מִמֵּי הַיְאֹר 24
+
+  <bloco tipo="cabecalho" script="grego" bbox="120,88,365,145">
+    ΤΟ ΕΒΡΑΙΚΟΝ.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="330,60,550,190">
-    TO EBPAIKON
+  <bloco tipo="texto_principal" script="hebraico" bbox="110,145,360,285">
+    22. וַיַּעֲשׂוּ כֵן הַחַרְטֻמִּים בְּלָטֵיהֶם
+    24. וַיַּחְפְּרוּ כָל־מִצְרַיִם סְבִיבֹת הַיְאֹר מַיִם לִשְׁתֹּת כִּי לֹא יָכְלוּ לִשְׁתֹּת מִמֵּי הַיְאֹר
+  </bloco>
+
+  <bloco tipo="cabecalho" script="grego" bbox="390,88,640,160">
+    ΤΟ ΕΒΡΑΙΚΟΝ
     Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="400,160,620,285">
     22.
     24.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="560,60,950,190">
+
+  <bloco tipo="cabecalho" script="grego" bbox="710,88,920,145">
     ΑΚΥΛΑΣ.
-    22. Καί γε αὐτοὶ ο κρυφιαστα Αἰγύπτου καὶ ἐν ἠρεμίαις οὕτως
-    24. Καὶ ὤρυξε πᾶσα ἡ Αἴγυπτος κυκλόθεν τοῦ ποταμοῦ ὕδωρ τοῦ πιεῖν, ὅτι οὐκ ἠδύναντο πιεῖν ἐκ τοῦ ὕδατος τοῦ ποταμοῦ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="690,145,955,290">
+    22. Καὶ γε αὐτοὶ οἱ κρυφιασταὶ Αἰγύπτου καὶ ἐν ἠρεμίαις οὕτως
+    24. Καὶ ὤρυξε πᾶσα ἡ Αἴγυπτος κυκλόθεν τοῦ [ilegivel] τοῦ
+    πιεῖν, ὅτι οὐκ ἠδύναντο πιεῖν ἐκ τοῦ
+    ὕδατος τοῦ ποταμοῦ.
   </bloco>
 
-  [!-- Latin Translations Top --]
-  <bloco tipo="texto_principal" script="latino" bbox="50,200,320,340">
+  <bloco tipo="texto_principal" script="latino" bbox="110,305,365,470">
     VERSIO HEBRAICI TEXT.
     22. Et fecerunt sic genethliaci Ægypti incantationibus suis.
     Et non audivit.
     24. Et foderunt omnes Ægyptii circuitibus fluminis aquas ut biberent, quia non poterant bibere ex aquis fluminis.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,200,550,340">
+
+  <bloco tipo="texto_principal" script="latino" bbox="385,305,640,470">
     VULGATA LATINA.
     22. Feceruntque similiter malefici Ægyptiorum incantationibus suis.
     Nec audivit.
     24. Foderunt autem omnes Ægyptii per circuitum fluminis aquam ut biberent : non enim poterant bibere de aqua fluminis.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="560,200,950,340">
+
+  <bloco tipo="texto_principal" script="latino" bbox="690,305,955,470">
     AQUILA.
     22. Atque ipsi occultorum interpretes Ægypti et in incantationibus suis sic.
     24. Et fodit universa Ægyptus in circuitu alvei aquam ad bibendum, quia non poterant bibere ex aqua fluminis.
   </bloco>
 
-  [!-- Notes Section --]
-  <bloco tipo="cabecalho" script="latino" bbox="250,350,750,370">
+  <bloco tipo="cabecalho" script="latino" bbox="295,485,715,525">
     Notæ et variæ lectiones ad cap. VII Exodi.
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="50,370,480,480">
-    V. 1. Sic versionem Aquilæ habet codex Basiliensis. Alii omnes et Drusius, Θεὸν Φαραώ. Præstat lectio Basiliensis. Quæ Theodotionis sunt, ex uno Basiliensi prodeunt.
-    V. 7. Ἄλλος, ἐλάλησαν. Sic cæteræ nostræ mss. subscriptæ.
-    V. 9. Ἁ., κῆτος. Coislin.
+
+  <bloco tipo="nota" script="misto" bbox="95,525,500,760">
+    V. 1. Sic versionem Aquilæ habet codex Basiliensis. Alii omnes et Drusius, θεὸν Φαραώ. Præstat lectio Basiliensis. Quæ Theodotionis sunt, ex
+    uno Basiliensi prodeunt.
+    V. 7. Ἄλλος, ἐλέλησαν. Sic cæteræ nostræ manuscriptæ.
+    V. 9. Ἀ., κῆτος. Coislin.
     V. 11. Sic omnes lectiones plenas habet Basi-
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="490,370,950,480">
-    liensis cum nominibus interpretum. Codex quidam Colberlinus ad lectionem Symmachi habet ἐν ἀποκρύφῳ· Regius 1888, ἐν ἀποκρύφοις· sed hi ἀποκρύμματα tantum afferunt. Basiliensis vero lectiones integras exhibet, et διὰ τῶν ἀποκρύφων his habet; huc scilicet versu et 22; editio item Romana διὰ τῶν ἀποκρύφων. Vocem סתרַי חשׁפי- στὴς vertere solet Aquila. Sic Gen. xli, 8, et infra
+
+  <bloco tipo="nota" script="misto" bbox="505,525,955,760">
+    liensis cum nominibus interpretum. Codex quidam
+    Colbertinus ad lectionem Symmachi habet ἐν ἀποκρύφῳ· Regius 1888, ἐν ἀποκρύφοις· sed hi ἀπο-
+    σπασμάτια tantum afferunt. Basiliensis vero lectiones integras exhibet, et διὰ τῶν ἀποκρύφων bis
+    habet; huc scilicet versu et 22; editio item Ro-
+    mana διὰ τῶν ἀποκρύφων. Vocem [ilegivel] vertere solet Aquila. Sic Gen. xli, 8, et infra
   </bloco>
 
-  [!-- Caput VIII Header --]
-  <bloco tipo="cabecalho" script="latino" bbox="350,500,650,530">
+  <bloco tipo="cabecalho" script="latino" bbox="365,775,640,825">
     CAPUT VIII EXODI.
   </bloco>
 
-  [!-- Caput VIII Polyglot --]
-  <bloco tipo="texto_principal" script="hebraico" bbox="50,530,320,730">
-    TO EBPAIKON.
-    עַל־מַכֹּתיךָ 3
-    הַצְפַרְדְּעִים 7
-    וְשִׁלַּחְתִּי 8
-    וַיַּעְמִידוּ 14
-    וַיִּצְבְּרוּ אֹתָם 15
-    לַכִּנִּים 16
-    כָּל־עֲפַר הָאָרֶץ הָיָה כִנִּים 17
+  <bloco tipo="cabecalho" script="grego" bbox="120,835,365,885">
+    ΤΟ ΕΒΡΑΙΚΟΝ.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="330,530,550,730">
-    TO EBPAIKON
+  <bloco tipo="texto_principal" script="hebraico" bbox="105,885,360,1000">
+    3. עַל־מַכֹּתיךָ
+    7. הַצְפַרְדְּעִים
+    8. וְשִׁלַּחְתִּי
+    14. וַיַּעֲמִידוּ
+    15. וַיִּצְבְּרוּ אֹתָם
+    16. לַכִּנִּים
+    17. כָּל־עֲפַר הָאָרֶץ הָיָה כִנִּים
+  </bloco>
+
+  <bloco tipo="cabecalho" script="grego" bbox="390,835,640,895">
+    ΤΟ ΕΒΡΑΙΚΟΝ
     Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="400,895,620,1000">
     3.
-    7
+    7.
     8.
     14.
     15.
     16.
     17.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="560,530,950,730">
+
+  <bloco tipo="cabecalho" script="grego" bbox="710,835,920,885">
     ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="690,895,955,1000">
     3.
     7. Οἱ κρυφιασταὶ ἐν ἠρεμαίοις αὐτῶν.
     8.
-    14. Συνήχθεσαν. Κορους, κόρους.
+    14. Συνήχθησαν. Κόρους, κόρους.
     15. Ἀνάπνευσις.
     16.
     17.
   </bloco>
 
-  [!-- Bottom Latin Translations --]
-  <bloco tipo="texto_principal" script="latino" bbox="50,740,320,930">
+  <bloco tipo="texto_principal" script="latino" bbox="105,1010,365,1185">
     VERSIO HEBRAICI TEXT.
     3. In conspersiones tuas.
     7. Genethliaci incantationibus suis.
@@ -103,34 +126,38 @@
     16. In pediculos.
     17. Omnis pulvis terræ fuit pediculi.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,740,550,930">
+
+  <bloco tipo="texto_principal" script="latino" bbox="385,1010,640,1185">
     VULGATA LATINA.
-    3. Et in reliquiis ciborum tuorum.
-    7. Malefici per incantationes suas.
+    3. Et in reliquias ciborum tuo-
+    rum.
+    7. Malefici per incantationes
+    suas.
     8. Et dimittam populum.
-    14. Congregaveruntque. In immensos aggeres.
+    14. Congregaveruntque.
+    In immensos aggeres.
     15. Requies.
     16. Sciniphes.
-    17. Omnis pulvis terræ versus est in sciniphas.
+    17. Omnis pulvis terræ versus
+    est in sciniphes.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="560,740,950,930">
+
+  <bloco tipo="texto_principal" script="latino" bbox="690,1010,955,1185">
     AQUILA.
     3.
-    7. Occultorum interpretes in incantationibus suis.
+    7. Occultorum interpretes in
+    incantationibus suis.
     8.
-    14. Obruerunt. Cumulos, cumulos.
+    14. Obruerunt.
+    Cumulos, cumulos.
     15. Respiratio.
     16.
     17.
   </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="450,950,800,990">
+  <bloco tipo="rodape" script="latino" bbox="640,949,940,995">
     Digitized by Google
   </bloco>
-  
-  <notas>
-    Texto poliglota contendo Hebraico, Grego (incluindo transliteração) e Latino.
-    A seção de notas (Notæ) é dividida em duas colunas contínuas.
-    A coluna central superior e inferior (TO EBPAIKON Ἑλληνικοῖς γράμμασι) contém principalmente numeração de versículos nesta página específica.
-  </notas>
+
+  <notas>Transcrição conservadora em spread duplo: alguns trechos gregos/hebraicos do centro superior e de Exodi VIII estão parcialmente ilegíveis; mantive apenas o que se distingue com segurança e marquei uma palavra incerta com [ilegivel].</notas>
 </pagina>

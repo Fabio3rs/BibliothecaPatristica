@@ -23,3 +23,13 @@ def test_parse_llm_response_valid_json():
     assert sintese == "s"
     assert autor == "A"
     assert obra == "O"
+
+
+def test_parse_llm_response_accepts_fenced_json_with_trailing_markdown():
+    raw = """```json
+{"autor":"A","obra":"O","traducao_compacta":"pagina","sintese_acumulada":"s"}
+Observação residual.
+```"""
+    resumo, sintese, autor, obra, ok = parse_llm_response(raw)
+    assert ok is True
+    assert (resumo, sintese, autor, obra) == ("pagina", "s", "A", "O")

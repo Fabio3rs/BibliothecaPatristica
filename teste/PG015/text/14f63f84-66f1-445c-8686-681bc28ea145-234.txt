@@ -1,86 +1,80 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,40,900,80">
-    463 HEXAPLORUM QUÆ SUPERSUNT. 464
-  </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="80,80,320,400">
-    TO ΕΒΡΑΙΚΟΝ.
-    אֶשֶׁר אֶל־עֵבֶר הָאֵפֹד בַּיִת
-    27 וְעָשִׂיתָ שְׁנֵי טַבְּעֹת זָהָב וְנָתַתָּ
-    אֹתָם עַל־שְׁתֵּי כַּתְּפוֹת הָאֵפֹד מִלְּמָטָּה
-    מִמּוּל פָּנָיו לְעֵבֶר מַחְבַּרְתּוֹ מִמַּעַל
-    לַחֵשֶׁב הָאֵפֹד
-    לְעֵבֶר מַחְבַּרְתּוֹ
-    מִמַּעַל
-    28 וְיִרְכְּסוּ אֶת־הַחֹשֶׁן מִטַּבְּעֹתָיו
-    אֶל־טַבְּעֹת הָאֵפֹד בִּפְתִיל תְּכֵלֶת לִהְיוֹת
-    עַל־חֵשֶׁב הָאֵפֹד וְלֹא־יִזַּח הַחֹשֶׁן מעַל
-    הָאֵפֹד
-    וְלֹא־יִזַּח
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="350,80,600,400">
-    TO ΕΒΡΑΙΚΟΝ
-    Ἑλληνικοῖς γράμμασι.
-    27.
-    28.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="620,80,920,400">
-    ΑΚΥΛΑΣ.
-    Ὃ πρὸς πέραν τοῦ ἐπωμίδος;
-    οἰκοῦδε.
-    27.
-    28.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,500,320,900">
-    VERSIO HEBRAICI TEXT.
-    ejus, quod ad latus superhumeralis
-    intus.
-    27. Et facies duos annulos auri,
-    et dabis eos super duabus scapulis
-    superhumeralis ab infra e regione
-    facierum ejus contra conjunctionem
-    ejus desuper artificium superhume-
-    ralis.
-    Contra conjunctionem ejus.
-    Artificium.
-    28. Et stringent pectorale ab
-    annulis ejus ad annulos superhu-
-    meralis in filo hyacinthi ad exsi-
-    stendum super artificium super-
-    humeralis, et non tollatur pecto-
-    rale desuper superhumerali.
-    Et non tollatur.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,500,600,900">
-    VULGATA LATINA.
-    sunt superhumeralis, et posteriora
-    ejus aspiciunt.
-    27. Necnon et alios duos annu-
-    los aureos, qui ponendi sunt in
-    utroque latere superhumeralis de-
-    orsum, quod respicit juxta faciem
-    juncturæ inferioris, ut aptari pos-
-    sit cum superhumerali.
-    28. Et stringatur rationale an-
-    nulis suis cum annulis superhu-
-    meralis vitta hyacinthina, ut ma-
-    neant junctura fabrefacta, et a se
-    invicem rationale et superhume-
-    rale nequeant separari.
-    Ut nequeant separari,
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="620,500,920,900">
-    AQUILA.
-    Quod est ad oram superin-
-    dumenti intus.
-    27.
-    28.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="550,950,850,980">
-    Digitized by Google
-  </bloco>
-  <notas>
-    Documento poliglota (Hexapla) contendo colunas em Hebraico, Grego (transliteração e versão de Aquila) e Latim (Versão do Texto Hebraico, Vulgata e Versão de Aquila).
-    A coluna central superior (Hebraico em letras gregas) está quase vazia, apenas com números de versículo.
-    Texto hebraico inclui frases soltas no meio da coluna ("לְעֵבֶר מַחְבַּרְתּוֹ מִמַּעַל", "וְלֹא־יִזַּח").
-  </notas>
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="111,70,149,93">463</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="392,67,607,95">HEXAPLORUM QUÆ SUPERSUNT.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="861,70,903,93">464</bloco>
+
+  <bloco tipo="cabecalho" script="grego" bbox="188,104,401,140">ΤΟ ΕΒΡΑΙΚΟΝ.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="455,103,619,140">ΤΟ ΕΒΡΑΙΚΟΝ
+Ἑλληνικοῖς γράμμασι.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="734,104,840,140">ΑΚΥΛΑΣ.</bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="184,150,420,189">אשר אל עבר האפד בית</bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="179,244,449,387">ועשית שתי טבעות זהב ונתתה
+אתם על שתי כתפות האפד מלמטה
+ממול פניו לעמת מחברתו
+ממעל לחשב האפד</bloco>
+
+  <bloco tipo="nota_marginal" script="hebraico" bbox="244,339,389,382">לעבר מחברתו
+לחשב</bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="179,390,453,535">וירכסו את החשן מטבעותיו
+אל טבעות האפד בפתיל תכלת להיות
+על חשב האפד ולא יזח החשן מעל
+האפד</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="403,246,447,286">27.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="680,151,902,207">Ὁ πρὸς πέραν τοῦ ἐπενδύματος;
+οἰκοῦδε.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="688,246,729,286">27.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="113,621,377,818">VERSIO HEBRAICI TEXT.
+ejus, quod ad latus superhumeralis
+intus.
+
+27. Et facies duos annulos auri,
+et dabis eos super duabus scapulis
+superhumeralis ab infra e regione
+facierum ejus contra conjunctionem
+ejus desuper artificium superhume-
+ralis.
+
+28. Et stringatur pectorale ab
+annulis ejus ad annulos superhu-
+meralis in filo hyacinthi ad exsi-
+stendum super artificium super-
+humeralis, et non tollatur pecto-
+rale desuper superhumerali.</bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="136,837,377,897">Contra conjunctionem ejus.
+Artificium.</bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="140,936,274,967">Et non tollatur.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="391,621,620,818">VULGATA LATINA.
+sunt superhumeralis, &amp; posteriora
+ejus aspiciunt.
+
+27. Necnon et alios duos annu-
+los aureos, qui ponendi sunt in
+utroque latere superhumeralis de-
+orsum, quod respicit juxta faciem
+juncturæ inferioris, ut aptari pos-
+sit cum superhumerali.
+
+28. Et stringatur rationale an-
+nulis suis cum annulis superhu-
+meralis vitta hyacinthina, ut ma-
+neant junctura fabrefacta, et a se
+invicem rationale et superhume-
+rale nequeant separari.</bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="403,936,580,967">Ut nequeant separari,</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="651,621,909,731">AQUILA.
+Quod est ad oram superin-
+dumenti intus.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="656,702,701,729">27.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="656,853,701,879">28.</bloco>
+
+  <notas>Leitura de alguns trechos hebraicos e do grego à direita é aproximada devido à nitidez da imagem; mantive a disposição em blocos visíveis. Não se observam marcadores marginais A, B, C ou D.</notas>
 </pagina>

@@ -1,22 +1,16 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,20,300,90">
-□ 1st Pass   □ 2nd Pass
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,120,360,420">
-Book details:
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="5,0,101,30">□ 1st Pass</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="149,0,258,25">□ 2nd Pass</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="30,137,311,278">Book details:
+
 □ Multi Volume Work
+
 □ Tight Gutter
-□ Text in Gutter
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,450,780,570">
-PAGES TORN:
-_________________________
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="720,920,980,990">
-Digitized by Google
-  </bloco>
-  <notas>
-- The "Book details" box is slightly rotated on the page; transcription preserves content but not graphical rotation.
-- There are numerous faint dots and speckles on the page (scanning artefacts) not transcribed as they contain no legible text.
-  </notas>
+
+□ Text in Gutter</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="40,361,327,434">PAGES TORN:
+
+________________________</bloco>
+  <bloco tipo="rodape" script="latino" bbox="591,956,801,993">Digitized by Google</bloco>
+  <notas>Manchas e pontos isolados de tinta visíveis na página não constituem texto legível. A caixa de “Book details” está inclinada.</notas>
 </pagina>

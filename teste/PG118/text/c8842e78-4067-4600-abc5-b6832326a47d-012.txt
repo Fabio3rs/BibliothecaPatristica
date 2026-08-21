@@ -1,34 +1,24 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="120,20,880,300">
-TRADITIO CATHOLICA.
-
-SÆCULUM X. ANNUS 995.
-
-ELENCHUS
-
-AUCTORUM ET OPERUM QUI IN HOC TOMO CXVIII CONTINENTUR.
-
-— 
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="120,320,880,480">
-ECUMENIUS TRICCAR IN THESSALIA EPISCOPUS.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,480,620,740">
-PROLEGOMENA.
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="294,63,710,79">TRADITIO CATHOLICA.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="369,112,645,124">SÆCULUM X. ANNUS 995.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="403,157,600,177">ELENCHUS</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="129,206,869,223">AUCTORUM ET OPERUM QUI IN HOC TOMO CXVIII CONTINENTUR.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="255,291,738,304">ECUMENIUS TRICCAR IN THESSALIA EPISCOPUS.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="84,315,811,487">PROLEGOMENA.
 
 Donati Veronensis Epistola dedicatoria ad Clementum VII Pontificem Maximum.
-Joannis Hentenii, monachi Hieronymiani, qui Graeca Latina fecit, Prefatio ad D. Georgium ab Austria, Episcopum Leodiensem, Bullonensem ducem, etc.
-Ejusdem Praefatio ad Lectorem.
 
-„ECUMENII SCRIPTA :
+Joannis Hentenii, monachi Hieronymiani, qui Græca Latina fecit, Præfatio ad D.
+Georgium ab Austria, Episcopum Leodiensem, Bullonensem ducem, etc.
 
-Commentaria in Acta apostolorum,
-— in Epistolas Pauli.
-— in Epistolas Catholicas.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,440,940,740">
-col. 9
+Ejusdem Præfatio ad Lectorem.
 
+ECUMENII SCRIPTA :
+
+Commentaria in Acta apostolorum.
+—        in Epistolas Pauli.
+—        in Epistolas Catholicas.</bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="826,327,921,491">col.
 9
 9
 11
@@ -36,17 +26,8 @@ col. 9
 
 43
 307
-455
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="220,900,920,980">
-Parisiis. — Ex Typis J.-P. MIGNE.
-
-Digitized by Google
-  </bloco>
-  <notas>
-- Leitura sujeita a pequenas incertezas: transcrito "SÆCULUM" conforme impresso; pode aparecer como "SAECULUM" em variantes.
-- Nome do autor listado como "ECUMENIUS TRICCAR" (linha central) pouco nítido; foi transcrito conforme aparência tipográfica.
-- "Donati Veronensis" foi escolhido em vez de possível leitura alternativa "Donali" devido à expectativa onomástica; "Joannis Hentenii" transcrito conforme impressão (variante Hentenii / Hentenius).
-- Coluna da direita contém números de paginação/coluna: primeira entrada "col. 9" seguida dos numerais correspondentes às linhas da coluna esquerda.
-  </notas>
+455</bloco>
+  <bloco tipo="rodape" script="latino" bbox="508,930,900,953">Parisiis. — Ex Typis J.-P. MIGNE.</bloco>
+  <bloco tipo="rodape" script="latino" bbox="607,972,895,995">Digitized by Google</bloco>
+  <notas>Texto disposto em coluna esquerda, seguido pela coluna direita de referências numéricas.</notas>
 </pagina>

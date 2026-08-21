@@ -1,16 +1,16 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="100,40,900,70">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="misto" bbox="100,20,900,60">
     1103 [A. M. 6856, IND. 1] NICEPHORI GREGORÆ [IMP. J. CANTACUZ. 2] 1104
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="215,55,225,65">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,70,510,90">
     A
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="110,75,515,255">
+  <bloco tipo="texto_principal" script="latino" bbox="100,70,480,250">
     fluvii et marini sinus, magnæ arenæ et limi utrin-
     que accumulata vis ostia obstruit, ac vix angustum
     quendam et penetratu difficilem aditum relinquit;
-    quantum nempe currens fluvius sibi ipse necessa-
-    rio rumpit. Tota vero utrinque latitudo non modo
+    quantum nempe currens fluvius sibi ipse necessario
+    rumpit. Tota vero utrinque latitudo non modo
     magnis triremibus impervia remanet, sed et bire-
     mes quæcunque, et vacua etiam navigia, propter
     aquæ supernatantis paucitatem illac (ut opinor) dif-
@@ -19,14 +19,14 @@
     lius, hostilis flamma 848 absumpsit illa die cum
     cæteris omnibus, quæ cremata sunt.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="110,255,515,285">
+  <bloco tipo="texto_principal" script="grego" bbox="100,255,480,285">
     ἐγκαινιζομένων ἐκ παλαιότητος ἐπὶ τὸ βέλτιον
-    ἐκείνη γεγένηται τῇ μέρᾳ.
+    ἐκείνη γεγένηται τῇ ἡμέρᾳ.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="215,290,225,300">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,290,510,310">
     B
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="110,290,515,440">
+  <bloco tipo="texto_principal" script="latino" bbox="100,290,480,440">
     III. Nihil itaque hostes cunctati, quando omni
     fruebantur et quantacunque volebant licentia, nullo
     labore transvehuntur, et totam quoque oppositam
@@ -35,10 +35,10 @@
     tum majori dolore civium corda implevit, quantus
     videlicet is est, quem dedecus simul et damnum
     pariunt. Et videre erat una die exteriorem omnem
-    urbis ornatum statim deletum, ita ut hominum se-
+    urbis ornatum statim deletum, ita ut hominum sa-
     niorum oculis lacrymæ cierentur.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="110,450,515,645">
+  <bloco tipo="texto_principal" script="latino" bbox="100,450,480,640">
     IV. Nec vero illi hoc solum; sed et palis quam-
     plurimis et omnis generis asseribus longo ante
     provisis nunc demum ultra pristinos limites
@@ -53,10 +53,7 @@
     opus accelerent, nullum noctis ac diei discrimen
     statuunt.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="525,505,535,515">
-    C
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="110,655,515,865">
+  <bloco tipo="texto_principal" script="latino" bbox="100,650,480,860">
     V. Crebris interim oppugnationibus sollicitatæ
     Byzantii portæ, et præsertim illæ naves, quas a na-
     varchis subductas atque in tutum receptas et præ-
@@ -72,67 +69,70 @@
     que, factumque inde, ut frumenti et aliarum re-
     rum necessariarum inopia in urbe exsisteret.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="110,875,515,960">
+  <bloco tipo="texto_principal" script="latino" bbox="100,870,480,950">
     VI. Imperatrix autem Irene, cui istud negotium
     repentimum acciderat, cum ex omni parte commeatus
     essent interclusi, paucis militibus, qui forte
     aderant, Manueli filio urbi tum præfecto traditis,
     jubet Byzantium circumire, et ad hostem propul-
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="535,75,940,275">
-    καὶ τοῦ πορθμοῦ τ πέρας ἐστίν. κεῖ γὰρ ἐξ
+  <bloco tipo="texto_principal" script="grego" bbox="520,70,900,270">
+    καὶ τοῦ πορθμοῦ τὸ πέρας ἐστίν. Ἐκεῖ γὰρ ἐξ
     ἀντιπεριστάσεως τῶν δύο περάτων τοῦ τε ποταμοῦ
     καὶ τοῦ θαλαττίου κόλπου πολλὴ συσσωρευομένη
-    ψάμμος τε καὶ ἰλὺς ἑκατέρωθεν καὶ ἀποδιδοῦσα
+    ψάμμος τε καὶ ἰλὺς ἑκατέρωθεν καὶ ἀποθινοῦσα
     τὸ στόμα, καὶ μόλις στενήν τινα καὶ δυσέμβολον
-    ἀμφίσοα διέχειαν βίθους, ὅσην δὴ καταρρέων ὁ πο-
+    ἀφιεῖσα διέχειαν βόθους, ὅσην δὴ καταῤῥέων ὁ πο-
     ταμὸς ἐξ ἀνάγκης ῥήγνυσιν, ἑκατέρωθεν τὸ πᾶν
     εὖρος βατον οὐ μόνον μεγάλαις καταλείπει τριήρε-
-    σιν, ἀλλὰ καὶ σα δίκοτ' ν εἴη καὶ κενὰ τῶν
+    σιν, ἀλλὰ καὶ ὅσα δίκοτ' ἂν εἴη καὶ κενὰ τῶν
     πλοίων, διὰ τὴν τοῦ ἐπιπολάζοντος ὕδατος βραχυ-
-    τητα, καὶ ταῦτα δυσπόρευτον οἶμαι ἂν τὴν εσοδον
-    ἔχοι ὡς τὰ πολλά. Αἱ δ' ἕτεραι δύο μετὰ καὶ τν
-    πολεμίου πυρὸς ἔργον ἐμοὶ τοῖς φλεγομένοις ἅπασιν
+    τητα, καὶ ταῦτα δυσπόρευτον οἶμαι ν τὴν εσοδον
+    ἔχοι ὡς τὰ πολλά. Αἱ δ' ἕτεραι δύο μετὰ καὶ τῶν
+    πολεμίου πυρὸς ργον ἐμοὶ τοῖς φλεγομένοις ἅπασιν
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="535,285,940,445">
-    [P. 534] Γ'. Μηδὲν δ' οὖν ο πολέμιοι μέλλήσαντες,
-    ἐπεὶ γε ἀδείας ἁπάσης, ὁπόσης ἐβούλοντο, σφόδρα
-    ἀπέλαυον, ἀπονητὶ διαβάντες ἐμπιπρᾶσι κα τὴν
+  <bloco tipo="texto_principal" script="grego" bbox="520,280,900,440">
+    [P. 534] Γ'. Μηδὲν δ' οὖν οἱ πολέμιοι μελλήσαντες,
+    ἐπεί γε ἀδείας ἁπάσης, ὁπόσης ἐβούλοντο, σφόδρα
+    ἀπέλαυον, ἀπονητὶ διαβάντες ἐμπιπρᾶσι καὶ τὴν
     πέραν ἅπασαν ὁμοίως παράλιον. Πνεῦμα δὲ κατὰ
-    τύχην ἀπ' ἀρκτοῦ φύσαν σφοδρότερον πολλοῦ μὲν
-    καὶ τάχος ἐνέπλησε τὴν τν Βυζαντίων πόλιν
+    τύχην ἀπ' ἀρκτοῦ ῥεῦσαν σφοδρότερον πολλοῦ μὲν
+    καὶ τάχος ἐνέπλησε τὴν τῶν Βυζαντίων πόλιν
     καπνοῦ, πλείονος δὲ τὴν καρδίαν τῆς λύπης, ὅσην
-    αἰσχύνης θ' ὁμοῦ καὶ ζημίας προϊσχουσιν ἀθλίαις.
-    Καὶ ἦν ἰδεῖν αὐθημερὸν τὸν ἔξω πάντα κόσμον τῆς
+    αἰσχύνης θ' ὁμο καὶ ζημίας προϊσχοῦσιν ἀθλίαις.
+    Καὶ ἦν δεῖν αὐθημερὸν τὸν ἔξω πάντα κόσμον τῆς
     πόλεως ἐν βραχεῖ μαραινόμενόν τε καὶ δάκρυα
-    προχλυόμενον συντόνων ὀφθαλμῶν.
+    προκαλούμενον συνετῶν φθαλμῶν.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="535,450,940,650">
+  <bloco tipo="nota_marginal" script="latino" bbox="500,490,520,510">
+    C
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,450,900,650">
     Δ'. Οὐ μόνον δὲ, ἀλλὰ καὶ χαρακώματα πλεῖστα
-    καὶ σανίδας παντοίας προετοιμασάμενοι πρόσθεν,
+    καὶ σανίδας παντοίας προετοιμασάμενοι πόῤωθεν,
     ἐν τούτῳ τ χρόνῳ τὰ τείχη τῶν προτέρων παρ-
     εκβαλόντες ὅρων, πολλοῦ τινος ἐβράξαντο τόπου
-    πρὸς τῶν μετεωροτέρων· ὃν δ στύλοις πυκνοῖς
+    πρὸς τῶν μετεωροτέρων· ὃν δὴ στύλοις πυκνοῖς
     καὶ πολυπλόκοις διασταυρώσαντές τε καὶ περικλί-
     ναντες ἐς τρίγωνον σχῆμα, καὶ ἐπ' αὐτοῖς σανίσι
-    ἐλάσαντές τε καὶ προσηλώσαντες δίκην ἐπαλξίων
-    καὶ αθερίων περιπάτων, εἶτα σπουδῇ καὶ παν-
-    χειρίᾳ πσαν τὴν κύκλῳ περιταφρεύουσι χώραν,
-    ἄνδρες ὁμο καὶ γυνακες, ὅλας νύκτας ἄϋπνοι,
-    διατελοῦντες καὶ μηδν τῶν ἡμερῶν διαφερόντως,
+    ἐλάσαντές τε καὶ προσηλώσαντες δίκην ἐπάλξεων
+    καὶ αἰθερίων περιπάτων, εἶτα σπουδῇ καὶ παν-
+    χειρίᾳ πᾶσαν τὴν κύκλῳ περιταφρεύουσι χώραν,
+    ἄνδρες ὁμοῦ καὶ γυναῖκες, ὅλας νύκτας ἄϋπνοι,
+    διατελοῦντες καὶ μηδὲν τῶν μερῶν διαφερόντως,
     δεικνύντες ἐς τὴν κατεσπουδασμένην ἐργασίαν
     ἐκείνην.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="525,730,535,740">
+  <bloco tipo="nota_marginal" script="latino" bbox="500,720,520,740">
     D
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="535,660,940,875">
+  <bloco tipo="texto_principal" script="grego" bbox="520,660,900,870">
     Ε'. Ἐν τούτῳ συχναὶ προσβολαὶ κατὰ τῶν πυλῶν
     τῆς πόλεως ἐγίνοντο, καὶ μάλιστα κατὰ τῶν εἰρη-
-    μένων νεῶν, ἅς, ς εἰρήκαμεν, οἱ ναύαρχοι καθελ-
+    μένων νεῶν, ἅς, ὡς εἰρήκαμεν, οἱ ναύαρχοι καθελ-
     κύσαντες εἰς ἀσφάλειαν ἠγάγον τε καὶ φρουρὰν
     περὶ αὐτὰς ἔστησαν. Ἀμυνομένων δ' εὐρώστως
-    τῶν Βυζαντίων, ἐξεκροῦντο πανταχόθεν καὶ ἀπή-
+    τῶν Βυζαντίων, ἐξεκροῦντο πανταχόθεν καὶ ἀπῆ-
     εσαν τραύματα πλεῖστα λαβόντες· πλὴν ὅτι θαλασ-
     τοκρατήσαντες, ὡς ἐβούλοντό τε καὶ πάλαι ἐμηχα-
     νῶντο, οὐ μόνον πάσας ἐχειροῦντο τὰς ἐξ Ἑλλησ-
@@ -140,17 +140,20 @@
     γοὺς νῆας, ἀλλὰ καὶ ὅσαι τὴν σιτοπομπίαν ἐκόμιζον
     ἐκ τοῦ Εὐξείνου, πάσας ἐπίσης εἶργον τοῦ εσπλεῖν
     καὶ ἐξηνδραποδίζοντο· ὡς ἐντεῦθεν σπάνιν ἐγγε-
-    νέσθαι τῇ πόλει σίτου καὶ τῶν ἄλλως ἐχόντων ἐπι-
+    νέσθαι τῇ πόλει σίτου καὶ τν ἄλλως ἐχόντων ἐπι-
     τηδείων.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="535,885,940,960">
+  <bloco tipo="texto_principal" script="grego" bbox="520,880,900,950">
     Ϛ'. Ἡ δὲ βασίλισσα Εἰρήνη, τοῦ πράγματος αἰφνι-
-    δίου συμπεπτωκότος αὐτῇ κα τῶν κ.λ.δων ἀπο-
+    δίου συμπεπτωκότος αὐτ καὶ τῶν κ.λ.δων ἀπο-
     κεκλεισμένων πανταχόθεν, στρατιώτας μὲν ὀλίγους
-    ἐκ τῶν παρατυχόντων δοῦσα τῷ υῷ Μανουήλ,
+    ἐκ τῶν παρατυχόντων δοῦσα τῷ υἱῷ Μανουήλ,
     ἐπιτρόπῳ τυγχάντα γε ὄντι τῶν Βυζαντίων, τα-
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="400,970,600,990">
+  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
     Digitized by Google
   </bloco>
+  <notas>
+    Transcription follows the visual layout with left column (Latin) first, then right column (Greek). Marginal letters A, B, C, D are preserved as nota_marginal. Page numbers 1103 and 1104 are in the header. Embedded page numbers 848 and 849 are transcribed within the text. Greek accents and breathings are preserved as seen.
+  </notas>
 </pagina>

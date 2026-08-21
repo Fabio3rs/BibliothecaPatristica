@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Gera embeddings para resumos (página/global) em batches.
+"""Gera embeddings para resumos legados ou gerações v2 em batches.
 
 Leitura: tabela `resumos` em data/patristica_resumos.db.
 Saída: tabelas `resumo_pagina_embedding` e `resumo_global_embedding` (schema criado
@@ -30,15 +30,29 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from scripts.playgrounds.embedding_playground import DEFAULT_MODEL, DEFAULT_OLLAMA_URL, embed_documents
 
-from resumo_embedding_utils import (
-    connect_db,
-    ensure_resumo_embedding_tables,
-    ensure_resumos_embedding_schema,
-    fetch_pending,
-    pick_global_text,
-    pick_page_text,
-    upsert_embedding,
-)
+try:
+    from tools.resumo_embedding_utils import (
+        connect_db,
+        ensure_resumo_embedding_tables,
+        ensure_resumos_embedding_schema,
+        fetch_pending,
+        floats_to_blob,
+        pick_global_text,
+        pick_page_text,
+        upsert_embedding,
+    )
+except ImportError:  # execução direta: python tools/generate_resumo_embeddings.py
+    from resumo_embedding_utils import (  # type: ignore[no-redef]
+        connect_db,
+        ensure_resumo_embedding_tables,
+        ensure_resumos_embedding_schema,
+        fetch_pending,
+        floats_to_blob,
+        pick_global_text,
+        pick_page_text,
+        upsert_embedding,
+    )
+from resumo_v2 import init_v2_schema, sha256_text
 
 
 def parse_start_after(arg: str | None) -> Tuple[str, int] | None:
@@ -68,9 +82,9 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument(
         "--kind",
-        choices=["page", "global", "both"],
+        choices=["page", "global", "both", "v2"],
         default="both",
-        help="Tipo de embedding a gerar.",
+        help="Tipo: page/global/both legados ou v2 na própria geração.",
     )
     return p
 
@@ -157,11 +171,92 @@ def ingest_kind(
     return total_pages, total_batches
 
 
+def ingest_v2(
+    con,
+    model: str,
+    ollama_url: str,
+    batch_size: int,
+    limit: int | None,
+    start_after: Tuple[str, int] | None,
+) -> Tuple[int, int]:
+    total_pages = 0
+    total_batches = 0
+    cursor = start_after
+    while True:
+        sql = """
+            SELECT id, documento, pagina_num, embedding_text, embedding,
+                   embedding_model, embedding_source_hash
+              FROM resumo_generations
+             WHERE is_current=1
+               AND status IN ('valid','metadata_pending')
+               AND COALESCE(embedding_text,'')!=''
+        """
+        params: List[object] = []
+        if cursor:
+            sql += " AND (documento>? OR (documento=? AND pagina_num>?))"
+            params.extend([cursor[0], cursor[0], cursor[1]])
+        sql += " ORDER BY documento,pagina_num LIMIT ?"
+        params.append(batch_size)
+        candidates = list(con.execute(sql, params))
+        rows = []
+        for row in candidates:
+            expected = sha256_text(model, row["embedding_text"])
+            if row["embedding"] is not None and row["embedding_model"] == model and row["embedding_source_hash"] == expected:
+                cursor = (row["documento"], int(row["pagina_num"]))
+                continue
+            rows.append((row, expected))
+        if limit and total_pages + len(rows) > limit:
+            rows = rows[: max(0, limit - total_pages)]
+        if not rows:
+            if candidates:
+                last = candidates[-1]
+                cursor = (last["documento"], int(last["pagina_num"]))
+                continue
+            break
+        texts = [str(row["embedding_text"]) for row, _expected in rows]
+        embeddings = embed_documents(texts=texts, model=model, ollama_url=ollama_url)
+        if len(embeddings) != len(rows):
+            raise RuntimeError(f"Embedding count mismatch v2: {len(embeddings)} vs {len(rows)}")
+        for (row, expected), vector in zip(rows, embeddings):
+            con.execute(
+                """
+                UPDATE resumo_generations
+                   SET embedding=?, embedding_dim=?, embedding_model=?,
+                       embedding_source_hash=?, embedding_updated_at=CURRENT_TIMESTAMP
+                 WHERE id=? AND embedding_text=?
+                """,
+                (
+                    floats_to_blob(vector), len(vector), model, expected,
+                    row["id"], row["embedding_text"],
+                ),
+            )
+            cursor = (row["documento"], int(row["pagina_num"]))
+            total_pages += 1
+        con.commit()
+        total_batches += 1
+        print(f"[v2] batch {total_batches} -> {total_pages} páginas (last {cursor})")
+        if limit and total_pages >= limit:
+            break
+    return total_pages, total_batches
+
+
 def main() -> None:
     args = build_parser().parse_args()
     start_after = parse_start_after(args.start_after)
 
     with connect_db(args.db) as con:
+        if args.kind == "v2":
+            init_v2_schema(con)
+            pages, batches = ingest_v2(
+                con=con,
+                model=args.model,
+                ollama_url=args.ollama_url,
+                batch_size=args.batch_size,
+                limit=args.limit,
+                start_after=start_after,
+            )
+            print(f"v2: {pages} páginas processadas em {batches} batches")
+            return
         ensure_resumos_embedding_schema(con)
         ensure_resumo_embedding_tables(con)
 

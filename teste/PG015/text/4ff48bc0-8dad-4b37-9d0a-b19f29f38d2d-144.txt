@@ -1,27 +1,36 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,60">
-    225 HEXAPLORUM QUÆ SUPERSUNT. 226
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="110,40,940,95">
+    225
+    HEXAPLORUM QUÆ SUPERSUNT.
+    226
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="100,60,900,100">
-    TO EBPAIKON. TO EBPAIKON AKYΛAΣ.
+  <bloco tipo="texto_principal" script="misto" bbox="140,95,370,145">
+    TO ΕΒΡΑΙΚΟΝ.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="410,95,625,155">
+    TO ΕΒΡΑΙΚΟΝ
     Ἑλληνικοῖς γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="100,100,300,350">
-    3 כְּתֹנֶת פַּסִּים
-    9 וַיַּחֲלֹם
-    14 אֶת־שְׁלוֹם אַחֶיךָ וְאֶת־שְׁלוֹם הַצֹּאן
-    18 וַיִּתְנַכְּלוּ
-    25 וְהִנֵּה אֹרְחַת יִשְׁמְעֵאלִים
-    26 מַה־בֶּצַע
-    27 וַיִּשְׁמְעוּ
-    28 וּמִדְיָנִים
-    36 לְפוֹטִיפַר
+  <bloco tipo="texto_principal" script="misto" bbox="735,95,930,145">
+    ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="350,100,550,350">
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="145,145,385,325">
+    3. כְּתֹנֶת פַּסִּים
+    9. וַיַּחֲלֹם
+    14. אֶת־שְׁלֹם אַחֶיךָ וְאֶת־שְׁלֹם הַצֹּאן
+    18. וַיִּתְנַכְּלוּ
+    25. וְהִנֵּה אֹרְחַת יִשְׁמְעֵאלִים
+    26. מַה־בֶּצַע
+    27. וַיִּשְׁמְעוּ
+    28. מִדְיָנִים
+    36. לְפוֹטִיפַר
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="405,150,620,325">
     3.
     9.
     14.
-    ιαωθ
     18.
     25.
     26.
@@ -29,7 +38,8 @@
     28.
     36.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="600,100,900,350">
+
+  <bloco tipo="texto_principal" script="grego" bbox="720,145,945,325">
     3. Χιτῶνα ἀστραγάλειον.
     9.
     14.
@@ -41,7 +51,8 @@
     28.
     36. Φουτιφάρ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,350,900,550">
+
+  <bloco tipo="texto_principal" script="latino" bbox="120,325,945,515">
     VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
     3. Tunicam sericorum. 3. Tunicam polymitam. 3. Tunicam talarem.
     9. Somniavi. 9. Vidi per somnium. 9.
@@ -55,27 +66,31 @@
     28. Madianæi. 28. Madianitæ. 28.
     36. Phutiphar. 36. Putiphari. 36. Phutiphar.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="250,550,750,580">
+
+  <bloco tipo="texto_principal" script="latino" bbox="250,515,760,555">
     Notæ et variæ lectiones ad cap. XXXVII Genesis.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="100,580,500,750">
+
+  <bloco tipo="nota" script="misto" bbox="120,555,500,710">
     V. 2. Ἄλλος, τῶν παλλακῶν, pellicum. Hæc le-
     ctio prodit ex codice Reg. 1871, sine nomine inter-
     pretis, qui pellices vocavit concubinas, ut distin-
     gueret ab uxoribus Lia et Rachele.
+
     Ibid. Ἄ., καὶ ἤνεγκε, etc. Sic mss. nostri et editio
     Romana. Codex unus in lectione Aquilæ habet κατ-
-    ήνεγκεν pro καὶ ἤνεγκεν. In hæc verba Diodorus in
-    Catenis mss. Ἀκύλας καὶ Σύμμαχος, ἔτι δὲ καὶ ὁ
-    Σύρος, ἀντὶ τοῦ « κατήνεγκαν, » κατήνεγκεν ἔχει.
-    Τοῦτ᾽ ἔστιν· Ὁ Ἰωσὴφ διέβαλε τοὺς ἀδελφοὺς τῷ πα-
-    τρὶ, ς οὐκ ετάκτους ὄντας· ὅθεν κα ἐμισήθη παρ
+    ἤνεγκεν pro καὶ ἤνεγκεν. In hæc verba Diodorus in
+    Catenis mss. : Ἀκύλας καὶ Σύμμαχος, ἔτι δὲ καὶ ὁ
+    Σύρος, ἀντὶ τοῦ « κατήνεγκεν, » κατήνεγκεν ἔχει.
+    Τοῦτέστιν· Ὁ Ἰωσὴφ διέβαλε τοὺς ἀδελφοὺς τῷ πα-
+    τρὶ, ὡς οὐκ εὐτάκτους ὄντας· ὅθεν καὶ ἐμισήθη παρ'
     αὐτῶν. Id est : Aquila et Symmachus itemque Syrus,
-    pro illo « detulerunt, » habent, detulit.. Id est : Jo-
+    pro illo « detulerunt, » habent, detulit. Id est : Jo-
     seph criminatus est fratres suos apud patrem, ut qui
-  </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="520,580,900,750">
     non probe se gererent : unde invisus fuit illis.
+  </bloco>
+
+  <bloco tipo="nota" script="misto" bbox="505,555,940,710">
     V. 3. Ἄ., χιτῶνα, etc. Hieronymus in Quæst. :
     Pro « varia tunica, » Aquila interpretatus est « tuni-
     cam » ἀστραγάλειον, id est tunicam talarem. Sym-
@@ -84,24 +99,49 @@
     rietate distincta, sive quod haberet manicas. Antiqui
     enim magis colobiis utebantur. II Reg. XIII, 18, eam-
     dem Hebraicam vocem vertit A., cum LXX, καρπω-
-    τόν, Symmachus χειριδωτόν, alius, ἀστραγαλετόν.
+    τόν, Symmachus χειριδωτόν, alius, ἀστραγάλειον.
+
     V. 9. Ἄλλος, ἐνυπνιάσθην. Sic mss. Reg. 1871.
-    V. 14. Ἄλλος, « τὴν εἰρήνην τῶν ἀδελφῶν σου, καὶ
-    τὴν ερήνην τν βοσκημάτων. Unus Regius pro hac
+
+    V. 14. Ἄλλος, τὴν εἰρήνην τῶν ἀδελφῶν σου, καὶ
+    τὴν εἰρήνην τῶν βοσκημάτων. Unus Regius pro hac
     postrema voce habet προβάτων. Hanc autem lectio-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,750,650,780">
+
+  <bloco tipo="cabecalho" script="latino" bbox="220,700,780,745">
     CAPUT XXXVIII GENESIS.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="100,780,900,850">
-    TO EBPAIKON. TO EBPAIKON AKYΛAΣ.
-    Ἑλληνικοῖς γράμμασι.
-    5 וַיִּקְרָא אֶת־שְׁמוֹ שֵׁלָה 5. 5......
-    וַיְהִי בִכְזִיב בְּלִדְתָּהּ אֹתוֹ
-    9 וַיְשַׁחֵת 9. 9.
-    14 בַּצָּעִיף 14. 14.
+  <bloco tipo="texto_principal" script="misto" bbox="145,745,370,800">
+    TO ΕΒΡΑΙΚΟΝ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,850,900,950">
+  <bloco tipo="texto_principal" script="misto" bbox="410,745,650,805">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="735,745,930,800">
+    ΑΚΥΛΑΣ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="105,800,390,920">
+    5. וַיִּקְרָא אֶת־שְׁמוֹ שֵׁלָה
+    וַיְהִי בִּכְזִיב בְּלִדְתָּהּ אֹתוֹ
+    9. וַיְשַׁחֵת
+    14. בַּצָּעִיף
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="410,800,615,920">
+    5.
+    9.
+    14.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="735,800,950,920">
+    5......
+    9.
+    14.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="120,920,945,995">
     VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
     5. Et vocavit nomen ejus Selah, 5. Quem appellavit Sela : quo 5. Et vocavit nomen ejus Selom.
     et erat in Chezib, dum pareret nato parere ultra cessavit. Et factum est ut mentiretur in
@@ -109,13 +149,12 @@
     9. Corrumpebat. 9. Semen fundebat. 9.
     14. In velamine. 14. Theristrum. 14
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="500,950,800,980">
+
+  <bloco tipo="rodape" script="latino" bbox="610,955,930,995">
     Digitized by Google
   </bloco>
+
   <notas>
-    Transcrição de página da Patrologia Graeca contendo textos bíblicos em Hebraico, Grego e Latim (Hexapla).
-    A coluna do meio na parte superior (Hebraico em letras gregas) contém principalmente números, exceto na linha 14 onde há um vestígio de texto grego (ιαωθ?).
-    As notas (Notæ) estão em duas colunas densas com mistura de Latim, Grego e Hebraico.
-    A parte inferior repete a estrutura para o Capítulo 38 de Gênesis.
+    Lectio das notas conservada conforme a página; o trecho final do aparato à direita encontra-se cortado na imagem em “Hanc autem lectio-”.
   </notas>
 </pagina>

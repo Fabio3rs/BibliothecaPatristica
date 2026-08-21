@@ -1,159 +1,175 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,30,200,60">
-    255
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="380,30,680,60">
-    HEXAPLORUM QUÆ SUPERSUNT.
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="850,30,900,60">
-    256
-  </bloco>
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="145,50,180,67">255</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="412,50,713,68">HEXAPLORUM QUÆ SUPERSUNT.'</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="935,50,965,67">256</bloco>
 
-  [!-- Seção Superior: Texto Hebraico e Grego --]
-  <bloco tipo="texto_principal" script="graeco" bbox="220,65,350,90">
-    TO ΕΒΡΑΙΚΟΝ.
-  </bloco>
-  <bloco tipo="texto_principal" script="graeco" bbox="450,65,650,90">
-    TO ΕΒΡΑΙΚΟΝ
-    Ἑλληνικοῖς γράμμασι.
-  </bloco>
-  <bloco tipo="texto_principal" script="graeco" bbox="780,65,880,90">
-    ΑΚΥΛΑΣ.
-  </bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="210,70,360,88">ΤΟ ΕΒΡΑΙΚΟΝ.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="478,70,678,98">ΤΟ ΕΒΡΑΙΚΟΝ
+Ἑλληνικοῖς γράμμασι.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="798,70,880,88">ΑΚΥΛΑΣ.</bloco>
 
-  <bloco tipo="texto_principal" script="hebraico" bbox="100,95,400,400">
-    קדיק שער מתהלך באשמים 22
-    אמר אדני מבשן אשיב אשיב 23
-    במצולות ים
-    למען תמחץ רגלך בדם לשון 24
-    כלביך מאויביך מנו
-    ראו תלותיך אלהים תלותי 25
-    אלי מלכי
-    אחר נגנים 26
-    שם בנימן צעיר רדם 28
-    צוה אלהיך עזך אלהים 29
-    פעלת לנו
-    מהיכלך על-ירושלם 30
-    גער חית קנה עדת אבירים ו 31
-    בעגלי עמים מתרפס ברצי-כסף
-  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="140,98,415,443">קדקד שער מתהלך באשמים 22
 
-  <bloco tipo="texto_principal" script="latino" bbox="420,95,480,400">
-    22.
-    23.
-    24.
-    25.
-    26.
-    28.
-    29.
-    30.
-    31.
-  </bloco>
+אמר אדני מבשן אשיב אשיב 23
+במצולות ים
 
-  <bloco tipo="texto_principal" script="graeco" bbox="700,95,900,400">
-    22.
-    23.
-    24.
-    25.
-    26. Ὀπίσω ψαλλόντων.
-    28. Ἐκε Βενιαμιν βραχὺς ἐκ-
-    κρατῶν ατῶν.
-    29.
-    30.
-    31.
-  </bloco>
+למען תמחץ רגלך בדם לשון 24
+כלביך מאויבים מנו
 
-  [!-- Seção Inferior: Versões Latinas --]
-  <bloco tipo="cabecalho" script="latino" bbox="150,410,350,430">
-    VERSIO HEBRAICI TEXT.
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="450,410,650,430">
-    VULGATA LATINA.
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="780,410,880,430">
-    AQUILA.
-  </bloco>
+ראו הליכותיך אלהים הליכות 25
+אלי מלכי
 
-  <bloco tipo="texto_principal" script="latino" bbox="100,435,400,920">
-    salutis, et Domini Dei mortis e-
-    gressus.
-    22. Verticem crinis ambulantis
-    in deliciis suis. Hieron., verticem
-    crinis perambulantiuin in delictis
-    suis.
-    23. Dixit Dominus, Ex Basan
-    redire faciam, redire faciam de
-    profundis maris. Hieron., dixit
-    Dominus, De Basan convertam:
-    convertam de profundis maris.
-    24. Ut figas pedem tuum in
-    sanguine: lingua canum tuorum
-    ex inimicis ex ipso. Hieron., ut
-    calces pes tuus in sanguine, lingua
-    canum tuorum ex inimicis a te-
-    metipso.
-    25. Viderunt itinera tua, Deus,
-    itinera Dei mei Regis mei. Hieron.,
-    idem.
-    26. Post moderatores. Hieron.
-    qui post tergum psallebant.
-    28. Ibi Benjamin pusillus do-
-    minans eis. Hieron., ibi Benjamin
-    parvulus continens eos.
-    29. Præcipit Deus tuus fortitu-
-    dini tuæ : confirma Deus hoc quod
-    operatus es nobis. Hieron., præ-
-    cipit Deus tuus de fortitudine tua,
-    conforta Deus hoc quod operatus
-    es in nobis.
-    30. A templo tuo super Jeru-
-    salem. Hieron., de templo tuo,
-    quod est in Jerusalem.
-    31. Increpa feram cannæ : con-
-    gregationem robustorum in vitulis
-    populorum, se gloriantem in fra-
-    gmentis argenti. Hieron., increpa
-  </bloco>
+אחר נגנים 26
 
-  <bloco tipo="texto_principal" script="latino" bbox="420,435,700,920">
-    22. Verticem capilli perambulan-
-    tium in delictis suis.
-    23. Dixit Dominus, Ex Basan
-    convertam, convertam in profun-
-    dum maris.
-    24. Ut intingatur pes tuus in
-    sanguine, lingua canum tuorum
-    ex inimicis ab ipso.
-    25. Viderunt ingressus tuos
-    Deus, ingressus Dei mei Regis
-    mei.
-    26. Conjuncti psallentibus.
-    28. Ibi Benjamin adolescentulus
-    in mentis excessu.
-    29. Manda Deus virtuti tuæ,
-    confirma hoc Deus, quod opera
-    tus es in nobis.
-    30. A templo tuo in Jerusalem.
-    31. Increpa feras arundinis :
-    congregatio taurorum in vaccis
-    populorum, ut excludant eos qui
-    probati sunt argento.
-  </bloco>
+שם בנימן צעיר רדם 28
 
-  <bloco tipo="texto_principal" script="latino" bbox="720,435,900,920">
-    22.
-    23.
-    24.
-    25.
-    26. Post eos qui psallebant.
-    28. Ibi Benjamin parvus impe-
-    rans eis.
-    29.
-    30.
-    31.
-  </bloco>
+צוה אלהיך עזך אלהים 29
+פעלת לנו
 
-  <bloco tipo="rodape" script="latino" bbox="550,950,850,990">
-    Digitized by Google
-  </bloco>
+מהיכלך על־ירושלם 30
+
+גער חית קנה עדת אבירים 31
+בעגלי עמים מתרפס ברצי־כסף</bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="443,98,476,443">22.
+
+23.
+
+24.
+
+25.
+
+26.
+
+28.
+
+29.
+
+30.
+
+31.</bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="720,98,935,443">22.
+
+23.
+
+24.
+
+25.
+
+26. Ὀπίσω ψαλλόντων.
+
+28. Ἐκεῖ Βενιαμὶν βραχὺς ἐγκρατῶν αὐτῶν.
+
+29.
+
+30.
+
+31.</bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="170,468,390,486">VERSIO HEBRAICI TEXT.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="470,468,650,486">VULGATA LATINA.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="800,468,880,486">AQUILA.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="140,488,420,877">salutis, et Domini Dei mortis e-
+gressus.
+
+22. Verticem crinis ambulantis
+in delictis suis. Hieron., verticem
+crinis perambulantium in delictis
+suis.
+
+23. Dixit Dominus, Ex Basan
+redire faciam, redire faciam de
+profundis maris. Hieron., dixit
+Dominus, De Basan convertam:
+convertam de profundis maris.
+
+24. Ut figas pedem tuum in
+sanguine : lingua canum tuorum
+ex inimicis ex ipso. Hieron., ut
+calces pes tuus in sanguine, lingua
+canum tuorum ex inimicis a te-
+metipso.
+
+25. Viderunt itinera tua, Deus,
+itinera Dei mei Regis mei. Hieron.,
+idem.
+
+26. Post modulatores. Hieron.,
+qui post tergum psallebant.
+
+28. Ibi Benjamin pusillus do-
+minans eis. Hieron., ibi Benjamin
+parvulus continens eos.
+
+29. Præcipit Deus tuus fortitu-
+dini tuæ : confirma Deus hoc quod
+operatus es nobis. Hieron., præ-
+cipit Deus tuus de fortitudine tua,
+conforta Deus hoc quod operatus
+es in nobis.
+
+30. A templo tuo super Jeru-
+salem. Hieron., de templo tuo,
+quod est in Jerusalem.
+
+31. Increpa feram cannæ : con-
+gregationem robustorum in vitulis
+populorum, se gloriantem in fra-
+gmentis argenti. Hieron., increpa</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="427,488,711,877">22. Verticem capilli perambulan-
+tium in delictis suis.
+
+23. Dixit Dominus, Ex Basan
+convertam, convertam in profun-
+dum maris.
+
+24. Ut intingatur pes tuus in
+sanguine, lingua canum tuorum
+ex inimicis ab ipso.
+
+25. Viderunt ingressus tuos
+Deus, ingressus Dei mei Regis
+mei.
+
+26. Conjuncti psallentibus.
+
+28. Ibi Benjamin adolescentulus
+in mentis excessu.
+
+29. Manda Deus virtuti tuæ,
+confirma hoc Deus, quod opera-
+tus es in nobis.
+
+30. A templo tuo in Jerusalem.
+
+31. Increpa feras arundinis :
+congregatio taurorum in vaccis
+populorum, ut excludant eos qui
+probati sunt argento.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="720,488,940,877">22.
+
+23.
+
+24.
+
+25.
+
+26. Post eos qui psallebant.
+
+28. Ibi Benjamin parvus impe-
+rans eis.
+
+29.
+
+30.
+
+31.</bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="602,963,817,988">Digitized by Google</bloco>
+
+  <notas>Numeração de página, cabeçalhos e três colunas superiores e inferiores preservados. A página termina durante a nota “Hieron., increpa” na coluna esquerda.</notas>
 </pagina>

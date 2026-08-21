@@ -1,11 +1,14 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="misto" bbox="50,20,950,60">
     925 [A. C. 1345] BYZANTINÆ HISTORIÆ LIB. XIV. [IMP. J. PALÆOL. 5] 926
   </bloco>
   <bloco tipo="texto_principal" script="grego" bbox="50,60,480,100">
-    μεθ᾽ ἱκανὸν πρὸς τὰς συνήθεις καὶ τεταγμένας εὐ-
-    νὰς, ἦν ἰδεῖν ἰλὺς τὰ πάντα μεστὰ καὶ ἰχθύων νε-
+    μεθ' ἱκανὸν πρὸς τὰς συνήθεις καὶ τεταγμένας εὐ-
+    νὰς, ἦν δεῖν λὺς τὰ πάντα μεστὰ καὶ ἰχθύων νε-
     κρῶν.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,70,505,85">
+    A
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="510,60,950,90">
     A solitum definitumque alveum, omnia videre erat
@@ -13,14 +16,14 @@
   </bloco>
   <bloco tipo="texto_principal" script="grego" bbox="50,105,480,260">
     Γ. Αἴσθησιν μέντοι τοῦ τοιούτου γενέσθαι φασὶ
-    τιναγμοῦ κα σεισμοῦ μέχρι Λυσιμαχίας, καὶ βραχύ
-    τι Χερρονήσου ἐπέκεινα· ἥκιστα δ᾽ οὖν τν ἴσον γε
-    τρόπον· ἀλλ᾽ σπερ ἐξ ὁρμητηρίου καὶ ῥίζης τινὸς
-    ἀρξάμενον τοῦ Βυζαντίου ἥρεμα καὶ κατὰ βραχὺ
+    τιναγμοῦ καὶ σεισμοῦ μέχρι Λυσιμαχίας, καὶ βραχύ
+    τι Χερρονήσου ἐπέκεινα· ἥκιστα δ' οὖν τὸν ἴσον γε
+    τρόπον· ἀλλ' ὥσπερ ἐξ ὁρμητηρίου καὶ ῥίζης τινὸς
+    ἀρξάμενον τοῦ Βυζαντίου ἤρεμα καὶ κατὰ βραχὺ
     προϊόντα τε ἐνδιδόναι καὶ ὀρειμένως βαδίζουσαν
     κατὰ τὸ ἀνάλογον ἀεὶ ταῖς ἐφεξῆς παραπέμπειν χώ-
     ραις καὶ πόλεσι τὴν τοῦ κλόνου συνάφειαν· παρα-
-    μεῖναι δ᾽ ἄχρι καὶ αὐτοῦ γε τοῦ θέρους ἐφ᾽ ἡμέρα
+    μεῖναι δ' ἄχρι καὶ αὐτοῦ γε τοῦ θέρους ἐφ' ἡμέρᾳ
     καὶ νυκτί, μείζω τε καὶ ἐλάττω τὴν αἴσθησιν παρε-
     χόμενον.
   </bloco>
@@ -37,33 +40,27 @@
     modo majorem modo minorem sui sensum præ-
     beret.
   </bloco>
-  <notas>
-    Marginal letter A is faintly visible in the gutter near section Γ/III, followed by clear B, C, D.
-  </notas>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,265,505,280">
-    A
-  </bloco>
   <bloco tipo="texto_principal" script="grego" bbox="50,265,480,430">
-    [P. 435] Δ'. Κατὰ μέντοι περίοδον χρονικὴν τοῦ
-    κατόπιν βαδίζοντος φθινοπώρου ἐκ τῆς αὐτῆς ὡσαύ-
-    τως ἡμέρας ὁμοοι πάλιν ἀρξάμενοι τὴν γῆν συνε-
+    [P. 435] Δ'. Κατὰ μέντοι περίοδον χρονικὴν το
+    κατόπιν βαδίζοντος φθινοπώρου ἐκ τῆς αὐτῆς σαύ-
+    τως ἡμέρας μοιοι πάλιν ἀρξάμενοι τὴν γῆν συνε-
     τάραττόν τε καὶ ἐθορύβουν σεισμοί· ὡς ἐκ τῆς τῶν
-    τριώτων σεισμῶν συνεχείας τόν τ᾽ ἐπὶ τοῦ πυλιδω-
-    τοῦ κίονος ἐν ἀγγελικῷ τ σχήματι (45) χαλκοῦν
-    ἀνδριάντα καὶ ἅμα τὸν τοῦ προεδεδεικνυκότος Πα-
-    λαιολόγου τῇ βί καταγωνισθέντας τῷ μὲν ἐπὶ θατέ-
+    πρώτων σεισμῶν συνεχείας τόν τ' ἐπὶ τοῦ πλινθω-
+    τοῦ κίονος ἐν ἀγγελικῷ τῷ σχήματι (45) χαλκοῦν
+    ἀνδριάντα καὶ ἅμα τν τοῦ προδεδειχότος Πα-
+    λαιολόγου τῇ βίᾳ καταγωνισθέντας τῷ μὲν ἐπὶ θατέ-
     ρου τῶν ὤμων κεκλίσθαι τὴν κεφαλήν, τῷ δὲ πρὸ
-    ποδῶν ἐῤῥίφθαι τὸν ἐν χερσὶ τς πόλεως σχημα-
+    ποδῶν ἐῤῥίφθαι τὸν ἐν χερσὶ τῆς πόλεως σχημα-
     τισμόν· ὡς εἰκασμοῖς τισιν ἐντεῦθεν ἐννοίας τινὰς
-    ἀναλαμβάνοις ἐνίοις ἀποκεφάνθαι, μὴ εἰς μακρὰν
-    τῆς τν Παλαιολόγων αὐτοκρατορίας ἔσεσθαι τὴν
+    ἀναλαβόντας ἐνίοις ἀποπεφάνθαι, μὴ εἰς μακρὰν
+    τῆς τῶν Παλαιολόγων αὐτοκρατορίας ἔσεσθαι τὴν
     καταστροφήν.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,340,505,360">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,300,505,315">
     B
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="510,265,950,430">
-    IV. Enimvero revoluto insequentiis autumni tem-
+    IV. Enimvero revoluto insequentis autumni tem-
     pore, eadem pariter die iterum exorti similes tre-
     mores terram concusserunt ac turbaverunt; adeo
     ut continua illa agitatione ea quæ columnæ lateri-
@@ -78,16 +75,16 @@
     auctoritatem.
   </bloco>
   <bloco tipo="texto_principal" script="grego" bbox="50,435,480,560">
-    Ε'. Καὶ τούτοις τὸ προπεσπονδὸς τῆς ἑῴας ἀψί-
-    δος (46) τοῦ τῆς τοῦ Θεοῦ Σοφίας νεὼ καταπονούμε-
+    Ε'. Καὶ τούτοις τὸ προπεπονθὸς τῆς ῴας ἀψί-
+    δος (46) τοῦ τς τοῦ Θεοῦ Σοφίας νεὼ καταπονούμε-
     νον ἡσυχῇ παρεῤῥάγνυτο μᾶλλον ἀεί, καὶ πολλὰς
-    ἐκείθεν ψηφίδων καὶ πλίνθων κατερῥίπτει, μέχρι τῆς
+    ἐκεῖθεν ψηφίδων καὶ πλίνθων κατερῥίπτει, μέχρι τῆς
     παντελοῦς πτώσεως· περὶ ἧς ἡμῖν κατὰ χώραν ἰο-
-    σιν ἀποχρώντως λελέξεται (47). Νῦν δ᾽ ἐπανακτέον
+    σιν ἀποχρώντως λελέξεται (47). Νῦν δ' ἐπανακτέον
     τὸν λόγον καὶ διηγητέον, ὅσα ἐν τῷδε τοῦ χρόνου
     ἕξει συνεπεπτώκει γενέσθαι τοῖς Βυζαντίοις.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,480,505,500">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,480,505,495">
     C
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="510,435,950,560">
@@ -110,21 +107,21 @@
     perdidit. Christum imitari pontifex debet. Laudata ab Alexandro Magno Diogenis modestia. Fructus am-
     bitionis. Apocaucus Joanni Gabalæ filiam suam desponsurum se promittit; quid vicissim ab eo pactus.
     Rerum administrationem eidem committit. Ipse cum patriarcha et juniore imperatore Perinthum abit.
-    Secum maximum meditatur. Annæ imperatricis mens cæca. Spes inanes.
+    Scelus maximum meditatur. Annæ imperatricis mens cæca. Spes inanes.
   </bloco>
   <bloco tipo="texto_principal" script="grego" bbox="50,675,480,800">
-    Α'. Ἐπε γὰρ Ἀποκαύκης τὰ κατὰ γνώμην οὐκ
-    εἶδα κατὰ τοῦ βασιλέως ἐδίδιζεν· ἀλλ᾽ ἐκείνῳ μὲν
-    ἐκ τοῦ τῆς ἀπογνώσεως βυθοῦ δεξις ἀνέβαιεν ἥρε-
-    μα τὰ πράγματα καὶ ἀνεῤῥώννυτο πρὸς τὸ εὐθαρ-
-    σέστερον· τούτῳ δ᾽ οὔτε τὰ κατὰ θάλατταν ἐλπίδες
-    παρείχε θαῤῥούσας, οὔτε τοῖς κατ᾽ ἤπειρον δεξιόν
-    τι καθίστατο σύμβαιον· ἐφ᾽ ἑτέρας ἐτρέπετο μηχα-
-    νὰς. Ἔγνω γὰρ προεδιασμοῖς γερῶν καὶ προσόδων
-    πίροις ὑπελθεῖν τόν τε πατριάρχην καὶ ἅμα τὸν
-    Γαβαλᾶν ωάννην· ς γλωττοδαίδαλόν τινα πρὸς τῆς
+    Α'. Ἐπεὶ γὰρ Ἀποκαύκῃ τὰ κατὰ γνώμην οὐκ
+    εὖ δὰ κατὰ τοῦ βασιλέως ἐβάδιζεν· ἀλλ' ἐκείνῳ μν
+    ἐκ το τῆς ἀπογνώσεως βυθοῦ δεξιῶς ἀνέβαιεν ἤρε-
+    μα τὰ πράγματα καὶ ἀνεῥώννυτο πρὸς τὸ εὐθαρ-
+    σέστερον· τούτῳ δ' οὔτε τὰ κατὰ θάλατταν ἐλπίδες
+    παρείχε θαῤῥούσας, οὔτε τοῖς κατ' ἤπειρον δεξιόν
+    τι καθίστατο σύμβολον· ἐφ' ἑτέρας ἐτρέπετο μηχα-
+    νὰς. Ἔγνω γὰρ προδιασμοῖς γερῶν καὶ προσόδων
+    πείροις ὑπελθεῖν τόν τε πατριάρχην καὶ ἅμα τὸν
+    Γαβαλᾶν Ἰωάννην· ὃς γλωττοδαίδαλόν τινα πρὸς τῆς
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,720,505,740">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,720,505,735">
     D
   </bloco>
   <bloco tipo="texto_principal" script="latino" bbox="510,675,950,800">
@@ -140,15 +137,20 @@
     circumvenire patriarcham simul et Joannem Gaba-
   </bloco>
   <bloco tipo="aparato_critico" script="latino" bbox="50,810,950,950">
-    Variarum notæ.
+    Variorum notæ.
     (45) Istius statuæ nescio an alius scriptor memi-
     nerit DUCANG.
     (46) Vide Constantinopolim Christianam, lib. III,
     et notas nostras ad Zonaræ Annales, pag. 154. DU-
     CANG.
-    (17) Lib. XV, cap. 2. BOIVIN.
+    (47) Lib. XV, cap. 2. BOIVIN.
   </bloco>
   <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
     Digitized by Google
   </bloco>
+  <notas>
+    Marginal letters A, B, C, D are located in the gutter between the Greek and Latin columns.
+    Caput III summary spans the full width of the text area.
+    Footnotes reference markers (45), (46), (47) appear in the Greek text.
+  </notas>
 </pagina>

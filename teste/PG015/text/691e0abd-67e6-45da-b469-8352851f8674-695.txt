@@ -1,11 +1,10 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="50,20,950,60">
-    1381 LIB. I REGUM CAPUT XX. 1382
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="100,75,900,105">
+    1381                                     LIB. I REGUM CAPUT XX.                                     1382
   </bloco>
-  
-  <bloco tipo="texto_principal" script="grego" bbox="50,70,320,380">
+  <bloco tipo="texto_principal" script="grego" bbox="105,105,290,385">
     ΣΥΜΜΑΧΟΣ.
-    Προαιρεῖ τν υἱόν.
+    Προαιρεῖ τὸν υἱόν.
     Ἀσχημοσύνης.
     31. Ἐδρασθήσεται.
     34. Ὠδυνήθη.
@@ -13,24 +12,26 @@
     36. Ἀκόντια.
     41. Ἀπὸ μεσημβρίας.
   </bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="350,70,650,380">
-    υ.
-    Μέτοχος εἶ σύ τῷ υῷ.
-    ποκαλύψεως.
+  <bloco tipo="texto_principal" script="grego" bbox="365,105,640,385">
+    Οʹ.
+    Μέτοχος εἶ σὺ τῷ υἱῷ.
+    Ἀποκαλύψεως.
     31. Ἑτοιμασθήσεται.
-    34. Ἐδραύσθη.
+    34. Ἐθραύσθη.
     Συνετέλεσεν.
     35. Καθὼς ἐτάξατο εἰς τὸ μαρτύριον Δαυίδ. Ἄλλ., εἰς καιρὸν Δαυίδ.
     36. Τὰς σχίζας.
-    Τῇ σχίζῃ, κα παρῆγαγεν αὐτήν. Ἄλλος, τὰ βέλη, καὶ παργαγεν αὐτόν.
-    41. Ἀπὸ τοῦ Ἀργάβ. (Αl. Ἀννεγάβ.) Ἄλλος, ἀπὸ το ὕπνου. Ἄλλος, πλησίον τοῦ νότου.
+    Τῇ σχίζῃ, καὶ παρήγαγεν αὐτήν.
+    Ἄλλος, τὰ βέλη, καὶ παρήγαγεν αὐτόν.
+    41. Ἀπὸ τοῦ Ἀργάβ. (Ἄλ. Ἀννεγάβ.)
+    Ἄλλος, ἀπὸ τοῦ ὕπνου.
+    Ἄλλος, πλησίον τοῦ νότου.
     Τῷ πλησίον.
   </bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="680,70,950,380">
+  <bloco tipo="texto_principal" script="grego" bbox="665,105,865,385">
     ΘΕΟΔΟΤΙΩΝ.
-    31. Ἐλυπήθη.
+    31.
+    34. Ἐλυπήθη.
     Κατήσχυνεν.
     35.
     36. Τὰ βέλη.
@@ -38,8 +39,7 @@
     41.
     Ἀδελφῷ.
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="50,390,320,580">
+  <bloco tipo="texto_principal" script="latino" bbox="105,390,290,665">
     SYMMACHUS.
     Præeligit filium.
     Turpitudinis.
@@ -49,8 +49,7 @@
     36. Jacula.
     41. A meridie.
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="350,390,650,580">
+  <bloco tipo="texto_principal" script="latino" bbox="365,390,640,665">
     LXX INTERPRETES.
     Particeps es tu filio.
     Revelationis.
@@ -59,12 +58,13 @@
     Consummaverat.
     35. Sicut statuerat in testimonium David. Alius, in tempus David.
     36. Sagittas.
-    Sagitta, et prætergredi fecit eam. Alius, tela, et prætergredi fecit eum.
-    41. Ab Argab. (Al. Annegab.) Alius, a somno. Alius, proxime austrum.
+    Sagitta, et prætergredi fecit eam.
+    Alius, tela, et prætergredi fecit eum.
+    41. Ab Argab. (Al. Annegab.)
+    Alius, a somno. Alius, proximè austrum.
     Proximum.
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="680,390,950,580">
+  <bloco tipo="texto_principal" script="latino" bbox="665,390,865,665">
     THEODOTIO.
     31.
     34. Contristatus est.
@@ -75,39 +75,36 @@
     41.
     Fratrem.
   </bloco>
-
-  <bloco tipo="aparato_critico" script="misto" bbox="50,590,950,630">
-    Notæ et variæ lectiones ad cap. XX. lib. I Regum.
+  <bloco tipo="aparato_critico" script="misto" bbox="260,680,740,710">
+    Notæ et variæ lectiones ad cap. XX lib. I Regum.
   </bloco>
-
-  <bloco tipo="aparato_critico" script="misto" bbox="50,630,480,940">
-    mattára, ἔνθα Ἰωνάθαν ἠκόντιζε τὰς σχίζας. Ἀ., εἰς τὸν σκοπόν. Σ., εἰς τὸν συντεταγμένον. Hieronymus autem ita reddit : « Lammataar, ad quem locum Jonathan jacula dirigebat : pro quo Aquila interpretatus est, ad signum. Symmachus, ad condictum. » Theodoretus vero, τὰς δὲ σχίζας βέλη ὁ Ἀκύλας ἡρμήνευσεν· τὴν δὲ Ἀματταὰρ ἐν τῇ τν Ἑβραϊκῶν ὀνομάτων ρμηνεί, οὕτως ερον κειμένην, παρὰ μὲν τοῖς Ἕλλησι τάφρον, παρὰ δὲ Ῥωμαίοις, fossatum, παρὰ δὲ τῷ Σύρῳ σκοπόν, εἰς ν οἱ γυμναζόμενοι τὰ βέλη πέμπειν εἰώθασιν. I. e. « Schizas autem jacula vertit Aquila. Amattaarar vero in Hebraicorum nominum interpretatione sic inveni positam : apud Græcos quidem τάφρον, apud Romanos autem, fossatum, apud Syros vero, scopum, in quem qui exercentur, jacula mittere consueverunt. » Hinc mutuatus videtur Procopius, qui vocem ὀνομάτων prætermisit. Nec omittendum est Coislinianum hic habere, Ἀ., τὸν σκοπόν. Ἀ., Θ., φυλακήν.
-    V. 21. Ἄλλος, βαδίσας ἀνεῖλον etc. Reg.
+  <bloco tipo="aparato_critico" script="misto" bbox="95,710,485,935">
+    ματτᾶρα, ἔνθα Ἰωνάθαν ἠκόντιζε τὰς σχίζας. Ἀ., εἰς τὸν σκοπόν. Σ., εἰς τὸν συντεταγμένον. Hieronymus autem ita reddit: «Lammathara, ad quem locum Jonathan jacula dirigebat: pro quo Aquila interpretatus est, ad signum. Symmachus, ad condictum.» Theodoretus vero, τὰς δὲ σχίζας βέλη ὁ Ἀκύλας ἡρμήνευσεν· τὴν δὲ Ἀματταὰρ ἐν τῇ τῶν Ἑβραϊκῶν ὀνομάτων ἑρμηνείᾳ οὕτως εὗρον κειμένην, παρὰ μὲν τοῖς Ἕλλησι τάφρον, παρὰ δὲ Ῥωμαίοις, fossatum, παρὰ δὲ τῷ Σύρῳ σκοπόν, εἰς ὃν οἱ γυμναζόμενοι τὰ βέλη πέμπειν εἰώθασιν. I. e. «Schizas autem jacula vertit Aquila. Amathara vero in Hebraicorum nominum interpretatione sic inveni positam: apud Græcos quidem τάφρον, apud Romanos autem, fossatum, apud Syros vero, scopum, in quem qui exercentur, jacula mittere consueverunt.» Hinc mutuatus videtur Procopius, qui vocem ὀνομάτων prætermisit. Nec omittendum est Coislinianum hic habere, Ἀ., τὸν σκοπόν. Ἀ., Θ., φυλακήν.
+    V. 21. Ἄλλος, βαδίσας ἀνελοῦ etc. Reg.
     V. 22. Σ., οὐδέν. Coislin. 2.
     Ibid. Ἄλλως, ἄλλος. Coislin.
     V. 26. Σ., ὥσπερ εἰώθει. Idem.
     Ibid. Σ., παρεῖση δὲ. Idem.
     Ibid. Σ., ὑστέρησεν. Reg. et Coislin. 2.
-    V. 30. Ἀ., συνάντησις. Σ., συγχώρημα. Coisl. 2. Sed Drusius, ἀλλ, συνάντησις.
-    V. 39. Σ., ἀπολυσόν με. Coislin. 2.
+    V. 30. Ἀ., συνάντησις. Σ., συγχώρημα. Coisl. 2. Sed Drusius, ἄλλ., συνάντησις.
+    V. 39. Σ., ἀπόλυσόν με. Coislin. 2.
   </bloco>
-
-  <bloco tipo="aparato_critico" script="misto" bbox="500,630,950,940">
+  <bloco tipo="aparato_critico" script="misto" bbox="510,710,920,935">
     Ibid. Ἀ., Θ., θυσία συγγενείας. Σ., θυσία πάνδημος. Coislin. 2. Primam lectionem Reg. uni Aquilæ tribuit.
-    V. 30. Σ., ἀπαιδεύτων ἀποστατούντων. Θ., μετακινουμένων. Coislin. 2. Ἄλλος, υἱὸς πορασών αὐτομολοῦν, γυναικοτροφή. Suspicor legendum γυναικότροφε. Ἄλλος, γυναικοτραφές. Reg.
+    V. 30. Σ., ἀπαιδεύτων ἀποστατούντων. Θ., μετακινουμένων. Coislin. 2. Ἄλλος, υἱὸς πορασῶν αὐτομολούν, γυναικοτροφῇ. Suspicor legendum γυναικότροφε. Ἄλλος, γυναικοτραφές. Reg.
     Ibid. Σ., προαιρεῖ etc. Coislin. 2.
     Ibid. Σ., ἀσχημοσύνης. Idem.
     V. 31. Σ., ἐδρασθήσεται. Reg. et Coislin. 2. Vide etiam infra, II Reg. VII, 12.
     V. 34. Ἀ., διεπονήθη. Reg. et Coislin. 2. Drusius legit, ἐποννήθη. Σ., ὠδυνήθη. Θ., ἐλυπήθη.
     Ibid. Ἀ., ἐνέτρεψεν etc. Coislin. 2.
-    V. 35. Ἀ., κατὰ τὴν συνταγήν. Hæc ex eod. co I.
+    V. 35. Ἀ., κατὰ τὴν συνταγήν. Hæc ex eod. col.
     V. 36. Ἀ., Θ., τὰ βέλη etc. Idem.
-    Ibid. Ἄλλος, τὰ βέλη, καὶ παρῆγαγεν αὐτόν. ita Reg. Θ., ὑπερέβη. Drusius.
-    V. 41. Ἀ., ἐχόμενα τοῦ νότου. Theodoretus (qui habet νοτίου). Reg. Drusius, Procop. Σ., ἀπὸ μεσημβρίας. Sic Martianæus ex locis Hebraicis descripsit. Male Drusius, τὸ περίμετρον, deceptus loco supra allato ad v. 19, ubi dicitur Symmachum aliquando vertere, τὸ περίμετρον. Non quidem vocem Hebraicam בנה, sed eam quam LXX vertunt ἐργάδε, vel ἀργάδε, videlicet בִּרְאָה, ut Deut. III, 14. Hic autem legisse videntur iidem בִּרְאָה pro בִּנְאָה.
+    Ibid. Ἄλλος, τὰ βέλη, καὶ παρήγαγεν αὐτόν. Ita Reg. Θ., ὑπερέβη. Drusius.
+    V. 41. Ἀ., ἐχόμενα τοῦ νότου. Theodoretus (qui habet νοτίου). Reg. Drusius, Procop. Σ., ἀπὸ μεσημβρίας. Sic Martianæus ex locis Hebraicis descripsit. Male Drusius, τὸ περίμετρον, deceptus loco supra allato ad v. 19, ubi dicitur Symmachum aliquando vertere, τὸ περίμετρον. Non quidem vocem Hebraicam בנה, sed eam quam LXX vertunt ἐργάβ, vel ἀργάβ, videlicet בִּרְאָה, ut Deut. III, 14. Hic autem legisse videntur iidem בִּנְאָה pro בִּרְאָה.
     Ibid. Ἀ., ἑταίρῳ. Θ., ἀδελφῷ. Reg. et Coislin. qui addit, Σ., ἀδὸ δὲ ὑπερέβαλλεν, ἐμεγάλυνεν.
   </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="400,960,600,990">
+  <bloco tipo="rodape" script="latino" bbox="575,970,790,995">
     Digitized by Google
   </bloco>
+  <notas>Pagina com três colunas na secção superior e duas colunas no aparato crítico; leitura baseada na imagem. Não se observam identificadores marginais A, B, C ou D separados do texto.</notas>
 </pagina>

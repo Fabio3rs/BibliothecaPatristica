@@ -1,6 +1,7 @@
 import json
 import re
 import sqlite3
+from copy import deepcopy
 from pathlib import Path
 import unicodedata
 import ahocorasick
@@ -1335,7 +1336,7 @@ def _build_ref_specs() -> list[dict]:
             {
                 "idx": idx,
                 "pattern": re.compile(
-                    rf"(?P<raw>(?<!\w)(?:{fragment})(?:\s+|,\s*)(?P<main>{_REF_TOKEN})(?![A-Za-z])(?:\s*[:.,]\s*(?P<verse>\d{{1,3}}(?:-\d{{1,3}})?))?(?:\s*\(\s*(?P<alt>{_REF_TOKEN})\s*\))?)",
+                    rf"(?P<raw>(?<!\w)(?:{fragment})(?:\s+|,\s*)(?P<main>{_REF_TOKEN})(?![^\W\d_])(?:\s*[:.,]\s*(?P<verse>\d{{1,3}}(?:-\d{{1,3}})?))?(?:\s*\(\s*(?P<alt>{_REF_TOKEN})\s*\))?)",
                     re.IGNORECASE,
                 ),
             }
@@ -1595,6 +1596,25 @@ def _extract_citations_from_value(
     )
 
 
+@lru_cache(maxsize=32768)
+def _extract_citations_cached_core(
+    cleaned_value: str,
+    source_kind: str,
+    support_mode: bool,
+) -> tuple[dict, ...]:
+    """Cache real do parser, sem misturar a proveniência de cada chamada."""
+
+    if not cleaned_value:
+        return ()
+    records = _extract_citations_from_value(
+        cleaned_value,
+        source_kind=source_kind,
+        source_path="",
+        support_mode=support_mode,
+    )
+    return tuple(dict(record) for record in records)
+
+
 def extract_citations_from_value_cached(
     raw_value: str,
     *,
@@ -1602,73 +1622,18 @@ def extract_citations_from_value_cached(
     source_path: str,
     support_mode: bool,
 ) -> list[dict]:
-    # Key only on normalized input and mode flags to keep cache small and
-    # effective in real workloads where the same tokens repeat.
-    key = (clean_keyword_original(raw_value), source_kind, support_mode)
+    """Extrai com cache por valor/modo e reaplica ``source_path`` por chamada.
 
-    @lru_cache(maxsize=32768)
-    def _internal(key_tuple):
-        val, kind, support = key_tuple
-        # cheap prefilter: run Aho-Corasick to detect whether any book-name
-        # token exists in the normalized input. If none, skip the expensive
-        # regex-based explicit extractor entirely and fall back to title-only
-        # normalization. This greatly reduces the number of regex operations
-        # for inputs that don't mention any biblical book.
-        if not val:
-            return []
-        try:
-            _ensure_aho()
-            norm = _normalize(val)
-            has_book_match = False
-            for _ in _AHO_AUTOMATON.iter(norm):
-                has_book_match = True
-                break
-        except Exception:
-            # If AC fails for any reason, fall back to previous behaviour.
-            has_book_match = True
+    A versão anterior declarava a função decorada dentro deste wrapper; cada
+    chamada criava um cache novo e, portanto, nunca produzia hits.
+    """
 
-        # If AC finds no book-name tokens, avoid heavy regex work and try
-        # title-only extraction (fast). This preserves correctness for
-        # category anchors like 'Livro de Daniel'.
-        if not has_book_match:
-            return _extract_book_only_titles(val, source_kind=kind, source_path=source_path, support_mode=support)
-
-        # If AC found candidate(s), proceed with the usual order depending
-        # on support mode (conservative explicit-first for categories,
-        # AC-first for keywords), but now explicit will only run when there
-        # is at least one book token nearby.
-        if not support:
-            try:
-                explicit = _extract_explicit_citations(val, source_kind=kind, source_path=source_path)
-                if explicit:
-                    return explicit
-            except Exception:
-                pass
-            try:
-                ac_res = extract_citations_from_value_ac(val, source_kind=kind, source_path=source_path, support_mode=support)
-                if ac_res:
-                    return ac_res
-            except Exception:
-                pass
-            return _extract_book_only_titles(val, source_kind=kind, source_path=source_path, support_mode=support)
-        else:
-            try:
-                ac_res = extract_citations_from_value_ac(val, source_kind=kind, source_path=source_path, support_mode=support)
-                if ac_res:
-                    return ac_res
-            except Exception:
-                pass
-            explicit = _extract_explicit_citations(val, source_kind=kind, source_path=source_path)
-            if explicit:
-                return explicit
-            return _extract_book_only_titles(val, source_kind=kind, source_path=source_path, support_mode=support)
-
-    # lru_cache requires hashable args; we pass a tuple
-    res = _internal(key)
-    # Ensure callers always receive a list (guard against stale/broken cache entries)
-    if not isinstance(res, list):
-        return []
-    return res
+    cleaned = clean_keyword_original(raw_value)
+    cached = _extract_citations_cached_core(cleaned, source_kind, support_mode)
+    results = [deepcopy(record) for record in cached]
+    for record in results:
+        record["source_path"] = source_path
+    return results
 
 
 def _coerce_keywords_payload(payload: object) -> dict:

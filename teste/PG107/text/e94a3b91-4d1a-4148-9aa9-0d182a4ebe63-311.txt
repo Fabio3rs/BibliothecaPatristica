@@ -1,62 +1,137 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,80">
-541    NOVELLÆ CONSTITUTIONES.                                                                                          542
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="40,100,500,730">
-βουλήσεται, ἀλλὰ παρακατασχοι ὅλως καὶ ψεύδει τε τῷ εὐρήματι, τότε κενοὺς αὐτὸν γίνεσθαι τοὺς τῆχους, καὶ μὴδὲν ἄλλως αὐτὸν λαμβάνειν ὡς κακοῦργον καὶ τῶν ἀλλότριων κλέπτην, ἀλλ' εἶναι μόνον ἑκείνου τὴν εὐεργεσίαν, ἵνα ἔχῃ τοῦ χωρίου τὴν κυριότητα.
-
-ΔΙΑΤΑΞΙΣ NB.
-
-Περὶ τοῦ πάντ' εἴδους νομίσματος, ἀπαραποίητον ἢ καὶ ἀδικησιν, καὶ δίκην τεισθαι τὴν ἔχον, δι' ἴσου πολιτεύεσθαι, εἴτε εἶχε τῶν προτέρων, εἴτε τῶν μεταγενεστέρων βασιλέων εἶν.
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="55,70,950,105">541&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;NOVELLÆ CONSTITUTIONES.&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;342</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="45,105,460,755">βουλήσεται, ἀλλὰ παρακατασχοι δόλῳ καὶ ψεύδει ἐκ
+τοῦ εὐρήματος, τότε κενοὺς αὐτῷ γίνεσθαι τοὺς
+πόνους, καὶ μηδὲν ὅλως αὐτὸν λαμβάνειν ὡς κακοῦρ-
+γον καὶ τῶν ἀλλοτρίων κλέπτην, ἀλλ᾿ εἶναι μόνου
+ἐκείνου τὴν εὐεργεσίαν, ὃς ἔχει τοῦ χωρίου τὴν
+κυριότητα.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="175,180,330,205">ΔΙΑΤΑΞΙΣ ΝΒ'.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="45,205,460,755">Περὶ τοῦ πᾶν εἶδος νομίσματος, ἀπαραποίητον
+ἢ καὶ ἀκίβδηλον, καὶ δίκην τελείαν ἔχον, δι᾿
+ἴσου πολιτεύεσθαι, εἴτε τινὸς τῶν προγενε-
+στέρων, εἴτε τινὸς τῶν μεταγενεστέρων βασι-
+λέων εἴη.
 
 Ὁ αὐτὸς βασιλεὺς Στυλιανῷ τῷ αὐτῷ.
 
-Εἰ νεῦρα τῶν πραγμάτων ὡς οἱ τούτων ἐπίτροποι ἀφορμᾶς, εὐστάθεια δὲ πολιτείας ἂς τῆς τῶν πραγμάτων δυνάμεως, καλῶς ἂν οἱ παλαιοὶ τὴν ἐνδειαν ὡς νόμον καὶ φοβὸν κηρύξαι ἔθελον, ἐκ τοῦ βούλεσθαι πάντα ἴδια νομίσματα, ἵνα εἰς τοὺς παλαιοτέρους καὶ προτέρους ἀναφερομένους βεβαίως ἔχοι, ὁμοίως ὑπολειφθέντες. Ἀλλὰ τοῦτο μὴ χαλεπὸν ὅτι οὐκ ἐὰν πάθωσιν ἀπὸ πρός τα σκήπτρα ὕστερον καταστᾶντες οὐκ ἔδοσαν ἐπὶ τοῦ αὐτοῦ μέσου σχήματος, ἀλλ' ὥστερ ἢ σύστοιχα τῶν ὑπάρχων ἀναδιακλινοντες, τὰ ἀπολειψόμενα μὲν τοῖς φέρουσι τῶν πρὸ αὐτῶν ἀξιῶνται νομίσματα, τὴν μορφὴν κατεργάσαντο, μόνον δὲ τοῖς κατὰ ταῦτα ἀπετεινίσασθαι, οὐ βουληθέντες συνιδὲν τὴν ἐκ τούτου πεπιστευμένην καινοτομίαν τὰ πράγματα, οὐδαμῶς τὴν βλάβην, ὅση χωρεῖ μὲν διὰ πάντων, μάλιστα δὲ κατὰ τῶν ἀπορωτέρων καὶ χηρώτατων μιζόνος βοήθειας καὶ ἀντιλήψεως. Καὶ γὰρ τὰ τῶν ἐμπόρων πλήθῳ καὶ τοὺς ἄλλους ἐκ χειρῶν βιοῦντας καὶ ὅλης τῆς γεωργικῆς τέχνης εἰς μεγάλης ἀπορίας ἀνάγκην συνελάμβανε, οὕτω χρὴν ἐτίθετο ἱππαςθεῖν τὰ τῶν πραγμάτων εὐόλογα, τεχνὴς καταλιμπάνης τῆς ἀφορμῆς, ἣ τέως αὐτὸς συνηνεπλάμβανον.
+Εἰ νεῦρα τῶν πραγμάτων ᾖ αἱ τούτων εὔποροι
+ἀφορμαί, εὐστάθεια δὲ πολιτείας ἐκ τῆς τῶν πρα-
+γμάτων δυνάμεως, καλῶς ἄρα οἱ παλαιοὶ τὴν ἔν-
+δειαν ὡς νόσον καὶ φθορὰν κἀντεῦθεν ἐδίωκον, ἐκ τοῦ
+βούλεσθαι πᾶσαν ἰδέαν νομίσματος, κἂν εἰς τοὺς πἄ-
+λαι καὶ πρόπαλαι ἀναφέροιτο βασιλευχότας, ὁμοίως
+ἐμπολιτεύεσθαι. Ἀλλὰ τούτῳ τῷ καλῷ οὐκ οἶδα τί
+παθόντες οἱ πρὸς τὰ σκῆπτρα ὕστερον καταστάντες
+οὐκ ἔδοσαν ἐπὶ τοῦ αὐτοῦ μεῖναι σχήματος, ἀλλ᾿
+ὥσπερ τῇ εὐπορίᾳ τῶν ὑπηκόων διασκίσαντες,
+τὸ ἀπολίτευτον μὲν τοῖς φέρουσι τῶν πρὸ αὐτῶν
+ἀρξάντων νομίσμασι τὴν μορφὴν κατεψηφίσαντο,
+μόνοις δὲ τοῖς ἑαυτῶν ἀπένειμαν πολιτεύεσθαι, οὐ
+βουληθέντες συνιδεῖν τὴν ἐκ τούτου περιισταμένην
+καινοτομίαν τὰ πράγματα, οὐδὲ τὴν βλάβην, ὅση
+χωρεῖ μὲν διὰ πάντων, μάλιστα δὲ κατὰ τῶν ἀπο-
+ρωτέρων καὶ χρῃζόντων μείζονος βοηθείας καὶ ἀντι-
+λήψεως. Καὶ γὰρ τὸ τῶν ἐμπόρων πλῆθος καὶ τοὺς
+ἄλλως ἐκ χειρῶν βιοῦντας καὶ ὅλως τὸ γεωργικὸν
+γένος εἰς μεγάλην ἀπορίας ἀνάγκην συνελαύνει,
+οὐκ ἐχόντων ἑτέρωθεν ἐρανίζεσθαι τὴν τῶν πραγμά-
+των εὐπορίαν, ἐκείνης καταλυθείσης τῆς ἀφορμῆς,
+ἣ τέως αὐτοῖς συναντελάμβανετο.
 
-Διὰ τοῦτο ἠμέλει τῶν νεωτέρων τὴν καινοτομίαν οὐχ ἀγαπῶντες, ἀλλὰ τὴν προνοίαν τῶν ἀρχαίων τῆς τεθραμμένης πολιτείας, κατά τὴν τειχὴν φιλανθρωπίαν καὶ πολιτικωτάτην γνώμην πῶς εἶδος νομίσματος, ἀπαραποίητον τὴν μορφὴν ἔχον καὶ τὴν ἄλλην ἀκλόνητον καὶ τὴν ὀλκὴν τέλειον, ἂν τίς τινος ἦ τῶν προγενεστέρων.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,100,960,730">
+Διὰ τοῦτο ἡμεῖς τῶν νεωτέρων τὴν καινοτομίαν
+οὐκ ἀγαπῶντες, τῇ δὲ προνοίᾳ τῶν ἀρχαίων ἐπόμε-
+νοι θεσπίζομεν, κατὰ τὴν ἐκείνων φιλάνθρωπον καὶ
+πολιτικωτάτην γνώμην πᾶν εἶδος νομίσματος, ἀπα-
+ραποίητον τὴν μορφὴν ἔχον καὶ τὴν ὕλην ἀκίβδηλον
+καὶ τὴν ὁλκὴν τέλειον, ἅν τε τινὸς ᾖ τῶν προγενε-</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="448,275,465,295">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="448,390,465,410">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="448,525,465,545">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="448,680,465,700">D</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="475,105,950,755">vanum tunc ille laborarit, et tanquam malitiosus
+rerumque alienarum occultator et fur, nihil omnino acci-
+piat, et beneficium loci domino soli cedat.
+
 CONSTITUTIO LII.
 
-Uti nam veterum (45) principum quam recentiorum numismata modo ju sti ponderis, probasque materie sint, valeant (46).
+Ut tam veterum (45) principum quam recentiorum
+numismata modo justi ponderis, probæque mate-
+riæ sint, valeant (46).
 
 Idem imperator eidem Styliano.
 
-Si pecuniam nervi (47) sufficiens et copiosa illarum materia est, remque publicam pecuniarum vis stabilit; recte profecto veteres defectum, veluti morbum quemdam ac tubem, inde profugarunt, dum omne genus numismatis, etsi ad veteres et priscos principes referr e sur, similiter valere voluerunt (48). Verum egregium hoc institutum haud scio qua de causa posteriores principes in eadem forma consistere non permisserint, ac, lanquam subditorum opulentiae inadvertenit, quae numismati superiorum principum effigiem ferrent, iis publico usu interdixerint: sua vero sola in communi commercio esse voluerint. Ne illi, quantum hinc in communibus negotiis novitatis, quantum item detrimenti, quod cum ad omnes, tum præcipue ad pauperiores, potiusque auxilio et defensione indigentes pertineat, exsisteret, intelligere noluerunt. Certe mercatorum vulgus, quique alioqui inanibus victum quærirant, et deinun universa rusticorum natio, dum, antiquita ea qua hactenus usi sunt pecunia, alio modo res necessarias sibi parare non possunt, in perquam angustas adiguntur angustias.
+Si pecuniam nervi (47) sufficiens et copiosa
+illarum materia est, remque publicam pecuniarum
+vis stabilit; recte profecto veteres defectum, veluti
+morbum quemdam ac tabem, inde profugarunt,
+dum omne genus numismatis, etsi ad veteres et
+priscos principes referretur, similiter valere volue-
+runt (48). Verum egregium hoc institutum haud
+scio qua de causa posteriores principes in eadem
+forma consistere non permiserint, ac, tanquam
+subditorum opulentiæ inviderent, quæ numismata
+superiorum principum effigiem ferrent, iis publico
+usu interdixerint: sua vero sola in communi com-
+mercio esse voluerint. Ne illi, quantum hinc in
+communibus negotiis novitatis, quantum item de-
+trimenti, quod cum ad omnes, tum præcipue ad
+pauperiores, potiusque auxilio et defensione indi-
+gentes pertineat, exsisteret, intelligere noluerunt.
+Certe mercatorum vulgus, quique alioqui manibus
+victum quærirant, et demum universa rusticorum
+natio, dum, antiquata ea qua hactenus usi sunt
+pecunia, alio modo res necessarias sibi parare non
+possunt, in perquam angustas adiguntur angu-
+stias.
 
-Ea propter prœper nos novo recentiorum placito non acquiescentes, veterum autem providentiam sequentes, sancimus, ut secundum benignum illorum requie publicæ commodissimum judicium, nummis omnis genus quod (49) quidem formam (50) materiamque non adulteratam (51) et plenum posuere.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,200,515,240">
-A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,380,515,420">
-B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,520,515,560">
-C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,640,515,680">
-D
-  </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="40,740,960,920">
-VARIÆ LECTIONES.
+Ea propter nos novo recentiorum placito non
+acquiescentes, veterum autem providentiam se-
+quentes, sancimus, ut secundum benignum illorum
+reique publicæ commodissimum judicium, numi-
+smatis omne genus quod (49) quidem formam (50)
+materiamque non adulteratam (51) et plenum pon-</bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="50,755,470,940">VARIÆ LECTIONES.
 
-* Agyl. χρημάτων legi vult. ** Melius forte μορφῆς.
+⁎⁎ Agyl. χρημάτων legi vult.&amp;#160;&amp;#160;&amp;#160;&amp;#160;⁎⁎ Melius forte μορφῆς.
 
 NOTÆ.
 
 (45) Vid. l. 1, C. De veteris numism. pot.
-(46) Nummi veterum etiam principum, modo justi ponderis, probasqe materiae sint, recipiendi, reducitur usus desuetus cui Nov. Nicephori Phocae contraria est, l. 1.
-(47) Νεῦρα τῶν πραγμάτων, Scrimger, νεῦρα τῶν πραγμάτων. Aegy. et male. Plin. in Cieco men. ἐν πρὸς τα χρήματα νεῦρα τῶν πραγμάτων προσεπλεν, quod Diog. Laertius Zenoni tribuit. Demosthenes συνπέπενται, τὰ νεῦρα τῶν πραγμάτων. Aeschinus ὑποφερέται τὰ νεῦρα τῶν πραγμάτων. Nicetas in Emmanuele Conneno, καὶ χρημάτων ἐπιγρόψιν διαδοδειδεν τὰ νεῦρα τῶν πραγμάτων ἀρίστων τῶν πάλαι τῶν ἐχθροῦσιν. Eustath. 2, Iliados, τοῖς νεῦρα πραγμάτων εἶπεν τὰ χρήματα ὅστε, σκληρὸν ἀλλὰ καὶ ἀστοχότατον, ἢ αὐτα καὶ τὰς χολύρις πυροὶ καταγεγραψάμενοι ἔπρεπε τὰ κρήματα. Sic in l. 1, § 20, fl. De quaest.
 
-D In tributis dicuntur esse nervi reipubl. et alibi: sic in pecunia robur omne patrimonii veteres possuere l. 22, vers. huic accedit C. De admin. tut. Plura vide apud Cujac. 6, obs. 49, ubi notat Portoria reipub. nervos principaliter non esse, sed per consequentiam tantum. Adde Nov. 149, c. 2. Nov. 161, c. 2.
+(46) Nummi veterum etiam principum, modo
+justi ponderis, probæque materiæ sint, recipiendi,
+reducitur usus desuetus cui Nov. Nicephori Phocæ
+contraria c. 1, j.
 
-(48) L. 1, C. De veteris numismat. poteslat.
-(49) Ἀπαραποίητον τὴν μορφὴν ἔχον καὶ τὴν ἄλλην ἀκλόνητον τὴν ἄλλην τέλειον. Scrim.
-(50) Principium: quam imprimis numismatibus moris fuit, vid. l. 1, C. De vet. numism. potesl.
-(51) Olim lege Cornelia plectebatur qui monetam vulgi principum signatum (præter adulerationem) reprobasel Paul. 5, sent. 25, § 1, Arrian. 5, ad Epictetum, et tot Kalendras priscas non exeuntis ad probas, etc. Adde Edictum. 11, Inst. c. 3.
-  </bloco>
-  <notas>
-    Foram usadas aproximações em várias palavras gregas onde a impressão está densa; a transcrição grega foi feita com correspondência literal ao que se distingue visualmente, mas com possíveis lacunas em acentuação e pontuação. As letras marginais A, B, C, D foram isoladas em blocos próprios conforme instrução.
-  </notas>
+(47) Νεῦρα τῶν πραγμάτων, Scrimger, νεῦρα
+τῶν χρημάτων. Agyleus, et male. Plut. in Cleo-
+mene. Ὁ πρῶτος τὰ χρήματα νεῦρα τῶν πραγμά-
+των προσειπών, quod Diog. Laertius Zenoni tribuit.
+Demosthenes ὑποτέμνεται, τὰ νεῦρα τῶν πραγμά-
+των. Aeschines ὑποτέμνεται τὰ νεῦρα τῶν πραγμά-
+των. Nicetas in Emmanuele Comneno, καὶ χρημά-
+των ἐπιῤῥώννυσι διαδόσεσιν ἢ νεῦρα τῶν πραγ-
+μάτων ἄριστος τῶν πάλαι τις ὠνόμασε. Eustath.
+2, Iliados, τὸ νεῦρα πραγμάτων εἰπεῖν τὰ χρήματα
+οὔτε σκληρὸν ἀλλὰ καὶ ἀστοχώτατον, et ἦ γὰρ
+τις ἀκολουθῶν παλαιᾷ χρήσει νεῦρα πραγμάτων
+ἐρεῖ τὰ χρήματα. Sic in l. 1, § 20, ff. De quæst.</bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="475,755,950,940">D In tributis dicuntur esse nervi reipubl. et alibi:
+sic in pecunia robur omne patrimonii veteres posuere l. 22, vers. huic accedit C. De admin. tut.
+Plura vide apud Cujac. 6, obs. 19, ubi notat Portoria reipub. nervos principaliter non esse, sed
+per consequentiam tantum. Adde Nov. 149, c. 2.
+Nov. 161, c. 2.
+
+(48) L. 1, C. De veteris numismat. potestat.
+
+(49) Ἀπαραποίητον τὴν μορφὴν ἔχον καὶ τὴν
+ὕλην ἀκίβδηλον ἢ τὴν ὁλκὴν τέλειον. Scrim.
+
+(50) Principium: quam imprimis numismatibus
+moris fuit, vid. l. 1, C. De vet. numism. potest.
+
+(51) Olim lege Cornelia plectebatur qui monetam
+vultu principum signatum (præter adulterinam) reprobasset Paul. 5, sent. 25, § 1, Arrian. 5, ad Epictetum, τὸ τοῦ Καίσαρος νόμισμα οὐκ ἔξεστιν ἀποδοκιμάσαι, etc. Adde Edictum. 11, Inst. c. 3.</bloco>
+  <notas>Transcrição organizada pela ordem da coluna esquerda e depois da coluna direita; os identificadores marginais A, B, C e D foram mantidos em blocos próprios.</notas>
 </pagina>

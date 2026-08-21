@@ -8,7 +8,7 @@ export default defineConfig({
   trailingSlash: 'never',
   i18n: {
     defaultLocale: 'pt-br',
-    locales: ['pt-br', 'en', 'it'],
+    locales: ['pt-br', 'en', 'it', 'fr'],
     // Sem prefixo de URL para o locale padrão (pt-br permanece em /)
     routing: {
       prefixDefaultLocale: false,

@@ -1,15 +1,19 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,30,910,70">
-1173                          INDICES IN QUÆSTIONES.                          1174
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,75,300,490">
-Vaticamus.
-CLII, CLIII.
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="55,52,95,70">1173</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="346,52,640,88">INDICES IN QUÆSTIONES.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="857,52,900,70">1174</bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="146,79,244,99">Vaticanus.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="425,79,584,99">Coislinianus.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="719,79,841,99">Taurinensis.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="52,99,246,634">CLII, CLIII.
 CLIV-CLVI.
 CLVII.
 CLVIII-CLXIV.
 CLXV.
 CLXVI-CCXVII.
+—
 —
 CCXVIII-CCXXIII.
 CCXXIV, CCXXV.
@@ -19,7 +23,7 @@ CCXXXVIII.
 —
 CCXXXIX.
 CCXL.
-CCXLI. CXLII.
+CCXLI, CCXLII.
 CCXLIII.
 CCXLIV, CCXLV.
 —
@@ -47,11 +51,9 @@ CCXCII-CCXCV.
 —
 CCXCVI-CCCXIII.
 —
-CCCXIV-CCCXVII.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="310,75,620,490">
-Coislinianus.
-CLXI, CLXII.
+CCCXIV-CCCXVII.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="343,99,529,634">CLXI, CLXII.
 CLXXXIV-CLXXXVI.
 CLXXXVII.
 CLXXXVIII-CXCIV.
@@ -66,21 +68,21 @@ LXXVI-LXXXV.
 XCVI.
 XCVII.
 LXXXVI.
-CCCVIII.
+CCCVII.
 LXXXVII, LXXXVIII.
 —
 XCI, XCII.
 XCIII-XCV.
 CLIX.
 XCVIII, XCIX.
-CCLXXIV-CCLXXVI.
+CCLXIV-CCLXXVI.
 —
 CCCV, CCLXXVII-CCLXXIX.
 CCLXXX.
-CCXII.
+CLXX.
 CCLXXXI-CCLXXXIII.
 CCCVII.
-CCLXXXIV-CCXXXVI.
+CCLXXXIV-CCLXXXIX.
 CLXXI.
 CCLXXXVII-CCXC.
 —
@@ -88,18 +90,16 @@ CCXCI, CCCVI.
 —
 CCXCII-CCXCIV.
 CLXXII.
-CCXCV-CCC
+CCXCV-CCC.
 —
 CCCI-CCCIV.
 CIV-CVII.
 CVIII.
 CIX-CXXVI.
 CCLXVIII.
-—
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="630,75,900,490">
-Taurinensis.
-CLX, CLXI.
+—</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="631,99,840,634">CLX, CLXI.
 CLXXIII, CLXXV.
 CLXXVI, CLXXVII.
 CLXXVIII-CLXXXIV.
@@ -115,14 +115,14 @@ LXXVI-LXXXV.
 XCVI.
 XLVII.
 XCVII.
-CCXCVII
+CCXCVII.
 LXXXVII, LXXXVIII.
 —
 XCI, XCII.
 XCIII-XCV.
 CLVIII.
 XCVIII, XCIX.
-CCLXIV-CCXXVI.
+CCLXIV-CCLXXVI.
 —
 CCXCIV, CCLXVII-CCLXIX.
 —
@@ -132,7 +132,6 @@ CCXCVI.
 CCLXXIII-CCLXXV.
 CLXX.
 CCLXXVI-CCLXXIX.
-—
 CCLXXX, CCXCV.
 —
 CCLXXXI-CCLXXXIII.
@@ -144,21 +143,17 @@ CIV-CVII.
 CVIII.
 CIX-CXXVI.
 CCLIX.
-—
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="250,505,800,580">
-II.
+—</bloco>
 
-SYNOPSIS
+  <bloco tipo="cabecalho" script="latino" bbox="463,675,490,696">II.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="428,702,541,724">SYNOPSIS</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="75,728,842,751">QUÆSTIONUM A WOLFIO EDITARUM, PROUT NUNC JUXTA CODICEM VATICANUM SUNT DISPOSITÆ</bloco>
 
-QUÆSTIONUM A WOLFIO EDITARUM, PROUT NUNC JUXTA CODICEM VATICANUM SUNT DISPOSITÆ
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="130,590,520,880">
-1. q. 74 nunc est q. LXXIV.
+  <bloco tipo="texto_principal" script="latino" bbox="66,781,486,918">1. q. 74 nunc est q. LXXIV.
 2. q. 76 — LXXVI.
 3. q. 81 — CCXXXII.
 4. q. 86 — CCXXXVII.
-5. q. 87 — CCXXXVIII.
+5. q. 87 — CCXXXIX.
 6. q. 88 — CCXLI.
 7. q. 89 — CCXXVII.
 8. q. 91 — CCXLIV.
@@ -166,20 +161,19 @@ QUÆSTIONUM A WOLFIO EDITARUM, PROUT NUNC JUXTA CODICEM VATICANUM SUNT DISPOSIT�
 10. q. 94 — CCCXX.
 11. q. 99 — CCXLVIII.
 12. q. 102 — LXXIX.
-13. q. 111 — CCCVIII.
-14. q. 119 — CCCIV.
+13. q. 111 — CCXCVIII.
+14. q. 119 — CCCVI.
 15. q. 120 — CCCVII.
 16. q. 121 — CCCVIII.
-17. q. 122 — CCCIX.
-18. q. 125 — CCCX.
+17. q. 122 — CCXIX.
+18. q. 123 — CCCX.
 19. q. 124 — CCCXI.
-20. q. 141 — CCXIX.
+20. q. 141 — CXIX.
 21. q. 142 — CXX.
 22. q. 143 — CXXI.
-23. q. 144 — CXXII.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="540,590,830,880">
-24. q. 145 — CXXIII.
+23. q. 144 — CXXII.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="559,781,836,918">24. q. 145 — CXXIII.
 25. q. 146 — CXXIV.
 26. q. 147 — CXXV.
 27. q. 148 — CXXVI.
@@ -187,8 +181,8 @@ QUÆSTIONUM A WOLFIO EDITARUM, PROUT NUNC JUXTA CODICEM VATICANUM SUNT DISPOSIT�
 29. q. 150 — CXXVIII.
 30. q. 154 — CXXXII.
 31. q. 155 — CXXXIII.
-32 q. 157 — CXXXV.
-33. q. 158 — CXXXVI.*
+32. q. 157 — CXXXV.
+33. q. 158 — CXXXVI.
 34. q. 185 — CLV.
 35. q. 186 — CLVI.
 36. q. 187 — CLVII.
@@ -197,30 +191,22 @@ QUÆSTIONUM A WOLFIO EDITARUM, PROUT NUNC JUXTA CODICEM VATICANUM SUNT DISPOSIT�
 39. q. 190 — CLX.
 40. q. 191 — CLXI.
 41. q. 192 — CLXII.
-42 q. 193 — CLXIII.
+42. q. 193 — CLXIII.
 43. q. 194 — CLXIV.
 44. q. 196 — CLXVII.
 45. q. 197 — CLXVIII.
-46. q. 199 — CLXX.
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="180,885,820,935">
-III.
+46. q. 199 — CLXX.</bloco>
 
-INDEX EPISTOLARUM PHOTII, QUÆ AMPHILOCHIIS SUNT INSERTÆ.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,940,480,990">
-Epist. 30. Edit Londin. est q. CLXXI.
-    31. — CLXXII.
-    33. — CLXXIII.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,940,800,990">
-54. — CXCIII.
+  <bloco tipo="cabecalho" script="latino" bbox="462,928,490,946">III.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="210,956,790,979">INDEX EPISTOLARUM PHOTII, QUÆ AMPHILOCHIIS SUNT INSERTÆ.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="66,984,399,1000">Epist. 30. Edit Londin. est q. CLXXI.
+31. — CLXXII.
+33. — CLXXIII.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="548,984,771,1000">54. — CXCIII.
 55. — CXCIV.
-56. — CXCV.
-  </bloco>
-  <notas>
-Item 33 of the synopsis (right column) carries an asterisk immediately after the Roman numeral: CXXXVI.*.
-Items 32 and 42 in the synopsis are printed without a full stop after the ordinal: “32 q.” and “42 q.”.
-A modern digitization mark (“Digitized by Google”) appears in the lower right margin and is excluded as non-original.
-  </notas>
+56. — CXCV.</bloco>
+
+  <notas>Carimbo “Digitized by Google” no rodapé direito não transcrito. Dashes/traços impressos preservados como linhas “—”.</notas>
 </pagina>

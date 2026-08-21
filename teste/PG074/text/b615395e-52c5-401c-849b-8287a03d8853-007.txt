@@ -1,59 +1,27 @@
-<pagina estado="com_texto">
-  <bloco tipo="outro" script="desconhecido" bbox="0,0,1000,80">
-    capa_ou_guarda
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="150,80,850,170">
-    TRADITIO CATHOLICA.
-    SÆCULUM V, ANNUS 444.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="180,170,820,230">
-    ΤΟΥ ΕΝ ΑΓΙΟΙΣ ΠΑΤΡΟΣ ΗΜΩΝ
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="120,230,880,360">
-    ΚΥΡΙΛΛΟΥ
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="120,360,880,460">
-    ΑΡΧΙΕΠΙΣΚΟΠΟΥ ΑΛΕΞΑΝΔΡΕΙΑΣ
-    ΤΑ ΕΥΡΙΣΚΟΜΕΝΑ ΠΑΝΤΑ.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,480,880,600">
-    S. P. N. CYRILLI
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="160,600,840,700">
-    ALEXANDRIÆ ARCHIEPISCOPI
-    OPERA QUÆ REPERIRI POTUERUNT OMNIA;
-    CURA ET STUDIO
-    JOANNIS AUBERTI
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,700,920,860">
-    LAUDUNENSIS ECCLESIÆ PRESBYTERI CANONICI ET IN SCHOLA PARISIENSI LAUDUNENSIS COLLEGI MAGISTRI, AC INTERPRETIS REGII.
-    EDITIO PARISIENSIS ALTERA DUOBUS TOMIS AUCTIOR ET EMENDATIOR.
-    ACCURANTE ET RECOGNOSCENTE J.-P. MIGNE,
-    BIBLIOTHECÆ CLERI UNIVERSÆ,
-    SIVE CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="160,860,840,920">
-    ──◦◦──
-    TOMUS SEPTIMUS.
-    ──◦◦──
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="120,920,880,1000">
-    VENDUNT 10 VOLUMINA 100 FRANCIS GALLICIS.
-    
-    EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
-    IN VIA DICTA D'AMBOISE, OLIM PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER
-    NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MŒNIA PARISINA.
-    
-    1863
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="720,980,1000,1000">
-    Digitized by Google
-  </bloco>
-  <notas>
-    Tipo de página identificado como: capa_ou_guarda.
-    Scripts presentes: grego e latino (blocos separados conforme predominância).
-    Preservadas letras e ligaduras tal como aparecem (ex.: Æ, Œ, Æ-like forms, letras maiúsculas).
-    Nenhuma nota marginal A/B/C/D identificada nesta página.
-    Todas as linhas centrais e rodapés foram mapeadas; ornamento central transcrito como marcadores (──◦◦──).
-  </notas>
+<pagina estado="com_texto" tipo="capa_ou_guarda">
+  <bloco tipo="cabecalho" script="latino" bbox="157,76,683,123">TRADITIO CATHOLICA.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="364,110,629,126">SÆCULUM V. ANNUS 444.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="269,144,731,164">ΤΟΥ ΕΝ ΑΓΙΟΙΣ ΠΑΤΡΟΣ ΗΜΩΝ</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="198,190,795,248">ΚΥΡΙΛΛΟΥ</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="138,277,846,320">ΑΡΧΙΕΠΙΣΚΟΠΟΥ   ΑΛΕΞΑΝΔΡΕΙΑΣ</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="237,333,764,362">ΤΑ ΕΥΡΙΣΚΟΜΕΝΑ ΠΑΝΤΑ.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="143,417,857,484">S. P. N. CYRILLI</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="340,488,664,509">ALEXANDRIÆ ARCHIEPISCOPI</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="147,527,847,555">OPERA QUÆ REPERIRI POTUERUNT OMNIA;</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="421,570,577,585">CURA ET STUDIO</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="315,604,684,636">JOANNIS AUBERTI</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="113,650,884,666">LAUDUNENSIS ECCLESIÆ PRESBYTERI CANONICI ET IN SCHOLA PARISIENSI LAUDUNENSIS COLLEGII MAGISTRI,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="406,673,601,688">AC INTERPRETIS REGII.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="178,725,819,743">EDITIO PARISIENSIS ALTERA DUOBUS TOMIS AUCTIOR ET EMENDATIOR.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="266,775,737,796">ACCURANTE ET RECOGNOSCENTE J.-P. MIGNE,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="284,800,711,820">BIBLIOTHECÆ CLERI UNIVERSÆ,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="137,824,864,843">SIVE CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="325,867,673,921">TOMUS SEPTIMUS..</bloco>
+  <bloco tipo="rodape" script="latino" bbox="293,939,707,956">VENEUNT 10 VOLUMINA 100 FRANCIS GALLICIS.</bloco>
+  <bloco tipo="rodape" script="latino" bbox="205,977,796,999">EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
+IN VIA DICTA D’AMBOISE, OLIM PROPE PORTAM LUTETIÆ PARISIORUM VULGO D’ENFER
+NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MŒNIA PARISINA.</bloco>
+  <bloco tipo="rodape" script="latino" bbox="475,997,526,1000">1863</bloco>
+  <bloco tipo="rodape" script="latino" bbox="591,981,797,999">Digitized by Google</bloco>
+  <notas>Ornamentos tipográficos visíveis entre o texto editorial e “TOMUS SEPTIMUS”, e acima e abaixo desse título; manchas e pontos isolados da digitalização não foram transcritos.</notas>
 </pagina>

@@ -1,66 +1,83 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="50,20,950,80">
-    1269 RUTH CAPUT IV. 1270
-    Nota ad cap. XXI Judicum.
-    Alex. habet, ὡς κλῆρος πλημμελήσατε.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,110,950,140">
-    unus est num. 1825, alter vero 2240. Alius bombycinus 1868.
-  </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="50,160,950,280">
-    ΣΥΜΜΑΧΟΣ. CAPUT I RUTH. ΘΕΟΔΟΤΙΩΝ.
-    ι'.
-    10. 10. Καὶ εἶπαν αὐτῇ· Μετὰ σοῦ. 10.
-    Ἄλλος, καὶ εἶπον αὐτῇ· Οὐχί,
-    μετὰ σοῦ.
-    20. 20. Πικράν. Ἄλλος, πικρίαν. 20.
-    SYMMACHUS. LXX INTERPRETES. THEODOTIO.
-    10. 10. Et dixerunt ei : Tecum. Alius, Et dixerunt ei : Non, tecum. 10.
-    20. 20. Amaram. Al., amaritudinem. 20.
-  </bloco>
-  <bloco tipo="nota" script="misto" bbox="50,285,950,330">
-    Notæ et variæ lectiones ad cap. I Ruth.
-    γύμην λελειπωμένη ἀνδρί, m., Ἀ., βεέθλωμ. Σ., συλλαβεῖν. V. 20. Ἄλλος, πικρίαν, sic Reg. unus.
-  </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="50,350,950,500">
-    ΣΥΜΜΑΧΟΣ. CAPUT III RUTH. ΘΕΟΔΟΤΙΩΝ.
-    θ'.
-    7. 7. Τὰ πρὸς ποδῶν αὐτοῦ. Ἄλλος, 7.
-    τὰ πρὸς ποδῶν αὐτοῦ, καὶ ἐκοιμήθη.
-    9. 9. Ὅτι ἀγχιστεύς. Ἄλλος, ὅτι 9.
-    ἀγχιστευτής.
-    SYMMACHUS. LXX INTERPRETES. THEODOTIO.
-    7. 7. Quæ ad pedes ejus. Alius, 7.
-    quæ ad pedes ejus, et obdormivit.
-    9. 9. Quia propinquus. Alius, idem 9.
-    aliter.
-  </bloco>
-  <bloco tipo="nota" script="misto" bbox="50,505,950,540">
-    Notæ et variæ lectiones ad cap. III Ruth.
-    primitur in LXX. Codex Alex. habet, καὶ ἐκάθευδεν. V. 9. Ἄλλ. , ἀγχιστευτής. Sic idem Regius.
-  </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="50,560,950,680">
-    ΣΥΜΜΑΧΟΣ. CAPUT IV RUTH. ΘΕΟΔΟΤΙΩΝ.
-    γ'.
-    3. 3. Ἡ διδοται Νοεμίν. Ἄλλος, ἡ 3.
-    ἀπέδοτο Νοεμίν.
-    SYMMACHUS. LXX INTERPRETES. THEODOTIO.
-    3. 3. Quæ data est Noemin. Al., quæ 3.
-    tradita fuerat Noemin.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="50,750,950,900">
-    Eusebius et Hieronymus de locis Hebraicis.
-    Eusebius de Demonstr. Evang.
-    Jo. Chrysostomus Homil. de Anna.
-    Theodoretus editus anno 1642.
-    Procopius Gazæus in libros Regum et Paralipomenon editus a Jo. Meursio Lugd. Batavorum anno 1620.
-    Notæ edit. Romanæ et Drusii.
-    Schedæ Nic. Toinardi τοῦ μακαρίτου, quarum mihi copiam fecit illustrissimus vir D. Logé, in suprema curia patronus.
-  </bloco>
-  <notas>
-    Transcrição de página de aparato crítico bíblico (Livro de Rute).
-    Scripts mistos: Latino (títulos, traduções, notas) e Grego (texto bíblico, variantes).
-    Numerais gregos nos cabeçalhos das seções: ι' (10) para Caput I, θ' (9) para Caput III, γ' (3) para Caput IV.
-    Texto no rodapé contém uma frase em grego: "τοῦ μακαρίτου".
-  </notas>
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="misto" bbox="64,40,900,95">1269                                                RUTH CAPUT IV.                                                1270</bloco>
+  <bloco tipo="nota" script="misto" bbox="64,63,610,108">Nota ad cap. XXI Judicum.
+Alex. habet, ὡς κλῆρος πλημμελήσατε.</bloco>
+  <bloco tipo="nota" script="latino" bbox="65,174,545,197">unus est num. 1825, alter vero 2340. Alius bombycinus 1888.</bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="394,207,610,236">CAPUT I RUTH.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="139,222,258,405">SYMMACHUS.
+10.
+20.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="344,236,655,407">10. Καὶ εἶπαν αὐτῇ · Μετὰ σοῦ.
+Ἄλλος, καὶ εἶπον αὐτῇ · Οὐχὶ,
+μετὰ σοῦ.
+20. Πικράν. Ἄλλος, πικρίαν.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="695,223,841,405">ΘΕΟΔΟΤΙΩΝ.
+10.
+20.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="139,447,287,543">SYMMACHUS.
+10.
+20.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="343,446,656,543">LXX INTERPRETES.
+10. Et dixerunt ei : Tecum. Alius,
+Alius, Et dixerunt ei : Non, tecum.
+20. Amaram. Al., amaritudinem.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="695,447,841,542">THEODOTIO.
+10.
+20.</bloco>
+  <bloco tipo="nota" script="misto" bbox="68,543,850,603">Notæ et variæ lectiones ad cap. I Ruth.
+[ilegivel] ἀνδρί, m., Ἄ., βεθλεὲμ. Σ., συλλα-
+βεῖν. V. 20. Ἄλλος, πικρίαν, sic Reg. unus:</bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="398,630,602,658">CAPUT III RUTH.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="141,654,260,765">SYMMACHUS.
+7.
+9.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="344,654,655,778">7. Τὰ πρὸς ποδῶν αὐτοῦ. Ἄλλος,
+τὰ πρὸς ποδῶν αὐτοῦ, καὶ ἐκοιμήθη.
+9. Ὅτι ἀγχιστεύς. Ἄλλος, ὅτι
+ἀγχιστευτής.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="695,654,841,765">ΘΕΟΔΟΤΙΩΝ.
+7.
+9.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="141,783,287,879">SYMMACHUS.
+7.
+9.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="344,783,659,879">LXX INTERPRETES.
+7. Quæ ad pedes ejus. Alius,
+quæ ad pedes ejus, et obdormivit.
+9. Quia propinquus. Alius, idem
+aliter.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="695,783,841,879">THEODOTIO.
+7.
+9.</bloco>
+  <bloco tipo="nota" script="misto" bbox="67,883,850,924">Notæ et variæ lectiones ad cap. III Ruth.
+primitur in LXX. Codex Alex. habet, καὶ ἐκάθευδεν. V. 9. Ἄλλ., ἀγχιστευτής. Sic idem Regius.</bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="398,935,606,963">CAPUT IV RUTH.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="141,961,260,1075">SYMMACHUS.
+3.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="344,962,656,1078">3. Ἡ διδοται Νοεμίν. Ἄλλος, ἡ
+ἀπέδοτο Νοεμίν.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="695,961,841,1075">ΘΕΟΔΟΤΙΩΝ.
+3.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="141,1072,288,1145">SYMMACHUS.
+3.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="344,1072,659,1146">LXX INTERPRETES.
+3. Quæ data est Noemin. Al., quæ
+tradita fuerat Noemin.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="695,1072,841,1145">THEODOTIO.
+3.</bloco>
+
+  <bloco tipo="rodape" script="misto" bbox="72,913,900,988">Eusebius et Hieronymus de locis Hebraicis.
+Eusebius de Demonstr. Evang.
+Jo. Chrysostomus Homil. de Anna.
+Theodoretus editus anno 1642.
+Procopius Gazæus in libros Regum et Paralipomenon editus a Jo. Meursio Lugd. Batavorum anno
+1620.
+Notæ edit. Romanæ et Drusii.
+Schedæ Nic. Toinardi τοῦ μακαρίτου, quarum mihi copiam fecit illustrissimus vir D. Logé, in supremâ
+curia patronus.</bloco>
+  <bloco tipo="rodape" script="latino" bbox="580,976,805,999">Digitized by Google</bloco>
+  <notas>Não há identificadores marginais A, B, C ou D visíveis na imagem.</notas>
 </pagina>

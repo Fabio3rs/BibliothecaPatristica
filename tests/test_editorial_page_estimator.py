@@ -177,6 +177,23 @@ def test_estimator_reads_split_header_blocks_and_cer_digits(tmp_path: Path) -> N
     assert item["best_right_page"] == 122
 
 
+def test_estimator_reads_single_header_page_with_cer_digits(tmp_path: Path) -> None:
+    text_root = tmp_path / "PGC" / "text"
+    write_page(
+        text_root / "page-001.txt",
+        '<pagina><bloco tipo="cabecalho">I2O INDEX</bloco></pagina>',
+    )
+
+    result = estimate_editorial_pages(
+        source_root=text_root,
+        collection="PG",
+        db_path=tmp_path / "editorial_pages.db",
+        use_cache=False,
+    )
+
+    assert result["files"][0]["best_single_page"] == 120
+
+
 def test_estimator_supports_single_page_ocr_generators_with_neighbor_window(
     tmp_path: Path,
 ) -> None:

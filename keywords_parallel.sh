@@ -6,7 +6,7 @@
 # Cada volume roda como um processo independente com limite controlado.
 #
 # Uso:
-#   ./keywords_parallel.sh                       # defaults: gpt-5-mini, high, 40 jobs, source tudo
+#   ./keywords_parallel.sh                       # defaults: gpt-5-mini, minimal, 40 jobs, source tudo
 #   ./keywords_parallel.sh --jobs 20               # limitar paralelismo
 #   ./keywords_parallel.sh --source resumo_pagina  # altera nivel de extração
 #   ./keywords_parallel.sh --provider ollama --model qwen3:30b --jobs 4
@@ -15,6 +15,9 @@
 #   ./keywords_parallel.sh --verify-fix            # validar e aplicar dedupe/limpeza
 #   ./keywords_parallel.sh --rerun-bad              # (com verify) reprocessa páginas com issues via LLM
 #   ./keywords_parallel.sh --no-skip-noise         # processar páginas marcadas como ruído
+#   ./keywords_parallel.sh --facsimile              # anexar fac-símile convertido para JPEG
+#   ./keywords_parallel.sh --think                  # habilitar thinking no Ollama
+#   ./keywords_parallel.sh --llm-judge              # revisar todas as páginas (modo exclusivo)
 #   ./keywords_parallel.sh --dry-run               # mostra comandos sem executar
 # --------------------------------------------------------------------------
 set -euo pipefail
@@ -43,6 +46,7 @@ NOISE_FLAG=""   # vazio = comportamento padrão (pular ruído)
 RERUN_FLAG=""
 THINK_FLAG="" # --think
 LLM_JUDGE="" # --llm-judge
+FACSIMILE="" # --facsimile
 
 # ── Parse args ────────────────────────────────────────────────────────────
 while [[ $# -gt 0 ]]; do
@@ -64,14 +68,25 @@ while [[ $# -gt 0 ]]; do
         --rerun-bad)      RERUN_FLAG="--rerun-bad"; shift ;;
         --no-skip-noise)  NOISE_FLAG="--no-skip-noise"; shift ;;
         --dry-run)        DRY_RUN=1; WRITE_FLAG=""; shift ;;
-        --think)         THINK_FLAG="--think"; shift ;;
-        --llm-judge)    LLM_JUDGE="--llm-judge"; shift ;;
+        --think)          THINK_FLAG="--think"; shift ;;
+        --llm-judge)      LLM_JUDGE="--llm-judge"; WRITE_FLAG=""; shift ;;
+        --facsimile)      FACSIMILE="--facsimile"; shift ;;
         --help|-h)
-            head -18 "$0" | tail -14
+            sed -n '8,21{s/^# \{0,1\}//;p;}' "$0"
             exit 0 ;;
         *) echo "Argumento desconhecido: $1"; exit 1 ;;
     esac
 done
+
+if [[ -n "$LLM_JUDGE" && ( -n "$VERIFY_FLAG" || -n "$RERUN_FLAG" ) ]]; then
+    echo "Erro: --llm-judge é exclusivo; não combine com --verify, --verify-fix ou --rerun-bad." >&2
+    exit 1
+fi
+
+if [[ -n "$RERUN_FLAG" && -z "$VERIFY_FLAG" ]]; then
+    echo "Erro: --rerun-bad requer --verify ou --verify-fix." >&2
+    exit 1
+fi
 
 # ── Coleta volumes do DB (pois o script processa do banco) ───────────
 echo "Buscando documentos no banco de dados com padrão '$PATTERN'..."
@@ -98,16 +113,21 @@ echo "  Jobs paralelos:    $JOBS"
 echo "  DB:                $DB"
 echo "  Timeout:           ${TIMEOUT}s"
 echo "  Retries:           $RETRIES"
-echo "  LLM Judge:         $LLM_JUDGE"
+echo "  LLM Judge:         $(if [[ -n "$LLM_JUDGE" ]]; then echo "Sim"; else echo "Não"; fi)"
 MODE_LABEL="write"
-if [[ -n "$VERIFY_FLAG" ]]; then
+if [[ $DRY_RUN -eq 1 && -n "$LLM_JUDGE" ]]; then
+    MODE_LABEL="dry-run (llm-judge)"
+elif [[ -n "$LLM_JUDGE" ]]; then
+    MODE_LABEL="llm-judge"
+elif [[ -n "$VERIFY_FLAG" ]]; then
     MODE_LABEL="$VERIFY_FLAG"
 elif [[ -z "$WRITE_FLAG" ]]; then
     MODE_LABEL="dry-run"
 fi
+echo "  Facsimile:         $(if [[ -n "$FACSIMILE" ]]; then echo "Sim"; else echo "Não"; fi)"
 echo "  Writes/Modo:       $MODE_LABEL"
-echo "  Process noise:     $(if [[ -z \"$NOISE_FLAG\" ]]; then echo \"Sim\"; else echo \"Nao\"; fi)"
-echo "  Rerun bad (verify):$(if [[ -n \"$RERUN_FLAG\" ]]; then echo \"Sim\"; else echo \"Nao\"; fi)"
+echo "  Process noise:     $(if [[ -n "$NOISE_FLAG" ]]; then echo "Sim"; else echo "Não"; fi)"
+echo "  Rerun bad (verify):$(if [[ -n "$RERUN_FLAG" ]]; then echo "Sim"; else echo "Não"; fi)"
 echo "  Logs:              $LOG_DIR/"
 echo "═══════════════════════════════════════════════════════════════"
 
@@ -138,25 +158,30 @@ build_cmd() {
         ${NOISE_FLAG} \
         ${THINK_FLAG} \
         ${LLM_JUDGE} \
+        ${FACSIMILE} \
         > '${logfile}' 2>&1"
 }
 
 # ── Dry run ───────────────────────────────────────────────────────────────
 if [[ $DRY_RUN -eq 1 && -z "$WRITE_FLAG" ]]; then
+    SAMPLE_COUNT=$(( TOTAL < 5 ? TOTAL : 5 ))
+    REMAINING=$(( TOTAL - SAMPLE_COUNT ))
     echo ""
     echo "🔍  DRY RUN MODO BASH – Comandos que seriam executados:"
     echo "    (Nota: Rodando todos eles sem --write exibirá saídas do LLM no raw)"
     echo ""
-    for vol in "${VOLUMES[@]:0:5}"; do
+    for vol in "${VOLUMES[@]:0:SAMPLE_COUNT}"; do
         build_cmd "$vol"
     done
-    echo "... e mais $((TOTAL - 5)) comandos"
+    if [[ $REMAINING -gt 0 ]]; then
+        echo "... e mais ${REMAINING} comandos"
+    fi
     echo ""
-    read -p "Deseja testar a execucao real para esses primeiros 5? (s/N) " -n 1 -r
+    read -p "Deseja testar a execução real para esses até ${SAMPLE_COUNT} volumes? (s/N) " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Ss]$ ]]; then
-        TOTAL=5
-        VOLUMES=("${VOLUMES[@]:0:5}")
+        TOTAL=$SAMPLE_COUNT
+        VOLUMES=("${VOLUMES[@]:0:SAMPLE_COUNT}")
     else
         exit 0
     fi
@@ -174,8 +199,6 @@ run_with_bash_jobs() {
     local running=0
     local finished=0
     local failed=0
-    local pids=()
-    local vol_names=()
 
     for vol in "${VOLUMES[@]}"; do
         local logfile="${LOG_DIR}/${vol}.log"
@@ -197,10 +220,11 @@ run_with_bash_jobs() {
             ${VERIFY_FLAG} \
             ${RERUN_FLAG} \
             ${NOISE_FLAG} \
+            ${THINK_FLAG} \
+            ${LLM_JUDGE} \
+            ${FACSIMILE} \
             > "${logfile}" 2>&1 &
 
-        pids+=($!)
-        vol_names+=("$vol")
         running=$((running + 1))
 
         # Limita paralelismo
@@ -217,15 +241,17 @@ run_with_bash_jobs() {
         done
     done
 
-    # Espera todos os restantes
-    for pid in "${pids[@]}"; do
-        if wait "$pid" 2>/dev/null; then
+    # Espera apenas os filhos ainda não coletados por wait -n.
+    while [[ $running -gt 0 ]]; do
+        if wait -n 2>/dev/null; then
             : # sucesso
         else
             failed=$((failed + 1))
         fi
+        running=$((running - 1))
+        finished=$((finished + 1))
+        printf "  ⏳ Progresso: %d/%d concluídos (%d erros)\r" "$finished" "$TOTAL" "$failed"
     done
-    finished=$TOTAL
     echo ""
     echo ""
     echo "═══════════════════════════════════════════════════════════════"
@@ -260,6 +286,9 @@ if command -v parallel &>/dev/null; then
             ${VERIFY_FLAG} \
             ${RERUN_FLAG} \
             ${NOISE_FLAG} \
+            ${THINK_FLAG} \
+            ${LLM_JUDGE} \
+            ${FACSIMILE} \
             > '${LOG_DIR}/{}.log' 2>&1"
 
     echo ""

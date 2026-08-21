@@ -1,31 +1,32 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,100">
-    431 HEXAPLORUM QUÆ SUPERSUNT. 452
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="95,55,905,170">
+    431                                        HEXAPLORUM QUÆ SUPERSUNT.                                        432
     CAPUT XXIII EXODI.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="150,100,850,500">
-    TO ΕΒΡΑΙΚΟΝ.
-    להטת 2
-    לא תשא שמע שוא 3
-    השב תשיבנו 4
-    עזב 5
-    מדבר 7
-    ושחד 8
-    ואספת 10
-    תשמט השנה 11
-    ורצק 13
-    האסף 16 Σαμαρ., συνεισφοράς.
-    זבחי 18
-    לא־תבשל גדי בחלב אמו 19
-    להכין 20
-    אל־תמר 21
-    ועזתו לא־תעזב 22
-    והשמתי 23
-    משכלה 26
-    ימיך
-    אימתי 27
-
-    TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι.
+  <bloco tipo="texto_principal" script="misto" bbox="120,180,430,520">
+    ΤΟ ΕΒΡΑΙΚΟΝ.
+    2. משפט
+    3. לא תשא שמע שוא
+    4. השב תשיבנו
+    5. עזב
+    7. מדבר
+    8. ושחד
+    10. ואספת
+    11. תשמט השנה
+    13. ורצח
+    16. האסף Σαμαρ., συνεισφορᾶς.
+    18. זבחי
+    19. לא־תבשל גדי בחלב אמו
+    20. להכין
+    21. אל־תמר
+    22. ועזתו לא־תעזב
+    23. והשמתי
+    26. משכלה
+    27. ימיך
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="440,180,625,520">
+    ΤΟ ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
     2.
     3.
     4.
@@ -44,7 +45,8 @@
     23.
     26.
     27.
-
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="730,180,920,520">
     ΑΚΥΛΑΣ.
     2.
     3.
@@ -59,13 +61,13 @@
     18.
     19.
     20.
-    21. Μὴ προσείρῃς.
-    22. Καὶ ἐνδήσω τοὺς ἐνδεουμένους σε.
+    21. Μὴ προσερίσῃς.
+    22. Καὶ ἐνδήσω τοὺς ἐνδεσμοῦντάς σε.
     23.
     26.
     27. Τὴν κατάπληξιν
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,510,900,950">
+  <bloco tipo="texto_principal" script="latino" bbox="105,540,420,930">
     VERSIO HEBRAICI TEXT.
     2. Ad pervertendum.
     3. Non decorabis in causa sua.
@@ -76,9 +78,11 @@
     10. Congregabis.
     11. Animal agri.
     15. Vacue.
-    16. Collectionis. Samar., illationis.
+    16. Collectionis. Samar., illa-
+    tionis.
     18. Victimæ meæ.
-    19. Non coques hædum in lacte matris suæ.
+    19. Non coques hædum in lacte
+    matris suæ.
     20. Coram te.
     21. Ne rebellis sis.
     22. Et coarctabo coarctantes te.
@@ -86,7 +90,8 @@
     26. Abortiens.
     Dierum tuorum.
     27. Terrorem meum.
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="435,540,655,930">
     VULGATA LATINA.
     2. Ut a vero devies.
     3. Non misereberis in judicio.
@@ -99,7 +104,8 @@
     15. Vacuus.
     16. Quando congregaveris.
     18. Victimæ meæ.
-    19. Non coques hædum in lacte matris suæ.
+    19. Non coques hædum in lacte
+    matris suæ.
     20. Qui præcedat te.
     21. Nec contemnendum putes.
     22. Affligam affligentes te.
@@ -107,7 +113,8 @@
     26. Infecunda.
     Dierum tuorum.
     27. Terrorem meum.
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="735,540,925,930">
     AQUILA.
     2.
     3.
@@ -115,26 +122,21 @@
     5.
     7.
     8. Sapientium.
-    10
+    10.
     11. Animalia agri.
     15.
     16. Collectionis.
     18.
     19.
-    20
+    20.
     21. Ne contendas.
     22. Alligabo alligantes te.
     23.
     26.
     27. Terrorem.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="550,960,800,980">
+  <bloco tipo="rodape" script="latino" bbox="740,950,930,990">
     Digitized by Google
   </bloco>
-  <notas>
-    A página apresenta uma disposição em três colunas principais, divididas em duas seções (superior com textos originais/transliteração, inferior com versões latinas).
-    Na coluna hebraica, linha 3, o texto visualmente assemelha-se a "לא תשא שמע שוא" (Êxodo 23:1), embora a numeração seja 3 e a tradução latina ao lado corresponda a 23:3 ("Non decorabis").
-    Na coluna hebraica, linha 16, há texto grego misturado ("Σαμαρ., συνεισφοράς.").
-    Entre os versículos 26 e 27, há uma linha sem número "Dierum tuorum" (latim) e "ימיך" (hebraico).
-  </notas>
+  <notas>Disposição em três colunas superiores e três inferiores; leitura transcrita no fluxo esquerdo→direito. Não se observam marcas A/B/C/D separadas na imagem.</notas>
 </pagina>

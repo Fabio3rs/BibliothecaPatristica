@@ -197,9 +197,11 @@ phase names them. Never load a complete assembled payload during locator or repa
   visual confirmation only after actually opening the returned `image_path`.
 - Restrict image lookup to the sibling `images` directory of an owned OCR file. Do not batch-open
   a volume or expand phase ownership merely because images exist.
-- Record material visual evidence in `raw_json.visual_evidence` with `image_path`,
-  `physical_sequence`, `reason`, `observation`, and `resolved_fields`. Set
-  `editorial_page_inferred=false` unless the printed page number itself was read from the image.
+- Candidate `facsimile_hint.image_path` is an intermediate work hint only. After opening the
+  image, record material visual evidence with `reason`, `observation`, and `resolved_fields`
+  against the OCR file, but do not copy the PNG path into a locator result or canonical payload.
+  Set `editorial_page_inferred=false` unless the printed page number itself was read from the
+  image.
 
 ## What to Record
 

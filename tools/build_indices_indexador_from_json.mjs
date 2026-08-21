@@ -23,6 +23,7 @@ function parseArgs() {
     maxBytesPerShard: 307200,
     documentsPerShard: 500,
     minImportance: 2.01,
+    smokeQueries: [],
   };
 
   const args = process.argv.slice(2);
@@ -39,6 +40,7 @@ function parseArgs() {
     else if (arg === '--max-bytes-per-shard') params.maxBytesPerShard = Number(args[++i]);
     else if (arg === '--documents-per-shard') params.documentsPerShard = Number(args[++i]);
     else if (arg === '--min-importance') params.minImportance = Number(args[++i]);
+    else if (arg === '--smoke-query') params.smokeQueries.push(args[++i]);
     else if (arg === '--help' || arg === '-h') params.help = true;
     else throw new Error(`Argumento não suportado: ${arg}`);
   }
@@ -63,11 +65,74 @@ function usage() {
     '',
     `Sem --volumes/--all, indexa somente a amostra de desenvolvimento: ${DEFAULT_DEV_VOLUMES.join(', ')}.`,
     'Use --all explicitamente para processar todos os volumes do manifest.',
+    'Use --smoke-query <termo>[::trecho-da-url] repetidamente para validar o conteúdo antes de gravar os shards.',
   ].join('\n');
 }
 
 function normalizeWhitespace(value) {
   return String(value || '').replace(/\s+/g, ' ').trim();
+}
+
+function flattenSearchValues(values) {
+  const flattened = [];
+  const visit = (value) => {
+    if (value === null || value === undefined || value === '') return;
+    if (Array.isArray(value)) {
+      for (const item of value) visit(item);
+      return;
+    }
+    if (typeof value === 'object') {
+      for (const item of Object.values(value)) visit(item);
+      return;
+    }
+    const text = normalizeWhitespace(value);
+    if (text) flattened.push(text);
+  };
+  visit(values);
+  return [...new Set(flattened)];
+}
+
+function displaySearchValues(display) {
+  if (!display || typeof display !== 'object') return [];
+  return flattenSearchValues([
+    display.original,
+    display.search,
+    display.translation,
+  ]);
+}
+
+function workSearchValues(work) {
+  if (!work) return [];
+  return flattenSearchValues([
+    displaySearchValues(work.author_display),
+    displaySearchValues(work.title_display),
+  ]);
+}
+
+function sectionSearchValues(section, work) {
+  return flattenSearchValues([
+    workSearchValues(work),
+    section?.scope_kind,
+    section?.index_kind,
+    displaySearchValues(section?.heading_display),
+  ]);
+}
+
+function entrySearchValues(entry) {
+  return flattenSearchValues([
+    entry?.entry_raw,
+    entry?.normalized_target,
+    displaySearchValues(entry?.target_display),
+    displaySearchValues(entry?.note_display),
+  ]);
+}
+
+function parseSmokeCheck(value) {
+  const [query, ...urlParts] = String(value || '').split('::');
+  return {
+    query: normalizeWhitespace(query),
+    urlIncludes: normalizeWhitespace(urlParts.join('::')),
+  };
 }
 
 function buildUrl(base, volumeId, params = {}) {
@@ -82,13 +147,13 @@ function buildUrl(base, volumeId, params = {}) {
 function record(volume, base, title, values, params = {}) {
   const volumeId = volume.volume_id || volume.volumeId || volume.id;
   const name = normalizeWhitespace(`${volumeId} — ${title}`).slice(0, 500);
-  const contentParts = [
+  const contentParts = flattenSearchValues([
     volumeId,
     volume.collection,
     title,
     ...values,
-  ].map(normalizeWhitespace).filter(Boolean);
-  const content = [...new Set(contentParts)].join(' ');
+  ]);
+  const content = contentParts.join(' ');
   return { name, url: buildUrl(base, volumeId, params), content };
 }
 
@@ -98,40 +163,42 @@ function recordsForVolume(doc, manifestVolume, base) {
     collection: manifestVolume.collection || '',
   };
   const volumeId = volume.volume_id || manifestVolume.volume_id;
+  const works = doc.works || [];
+  const worksByKey = new Map(works.map((work) => [work.work_key, work]));
   const result = [record(
     volume,
     base,
     volume.display?.original || volume.volume_label || volumeId,
-    [volume.volume_label, volume.display?.original, volume.source_root],
+    [
+      volume.volume_label,
+      displaySearchValues(volume.display),
+      volume.notes,
+      works.map(workSearchValues),
+    ],
   )];
 
-  for (const work of doc.works || []) {
-    const title = `${work.author_raw ? `${work.author_raw} — ` : ''}${work.title_display?.original || work.title_raw || work.work_key || ''}`;
-    result.push(record(volume, base, title, [
-      work.author_raw,
-      work.title_raw,
-      work.title_norm,
-      work.source_section_key,
-    ], { work: work.work_key || '' }));
+  for (const work of works) {
+    const author = work.author_display?.original || '';
+    const title = `${author ? `${author} — ` : ''}${work.title_display?.original || work.work_key || ''}`;
+    result.push(record(volume, base, title, workSearchValues(work), { work: work.work_key || '' }));
   }
 
   for (const section of doc.sections || []) {
-    const sectionTitle = section.index_kind || section.heading_display?.original || section.heading_raw || section.section_key || '';
-    result.push(record(volume, base, sectionTitle, [
-      section.index_kind,
-      section.heading_raw,
-      section.heading_norm,
-    ], { section: section.section_key || '' }));
+    const work = worksByKey.get(section.work_key) || null;
+    const sectionTitle = section.index_kind || section.heading_display?.original || section.section_key || '';
+    result.push(record(
+      volume,
+      base,
+      sectionTitle,
+      sectionSearchValues(section, work),
+      { section: section.section_key || '' },
+    ));
 
     for (const entry of section.entries || []) {
-      const entryTitle = entry.target_display?.original || entry.target_raw || entry.entry_raw || entry.id || '';
+      const entryTitle = entry.target_display?.original || entry.entry_raw || entry.id || '';
       result.push(record(volume, base, entryTitle, [
-        section.index_kind,
-        section.heading_raw,
-        entry.entry_raw,
-        entry.target_raw,
-        entry.normalized_target,
-        entry.note_raw,
+        sectionSearchValues(section, work),
+        entrySearchValues(entry),
       ], {
         section: section.section_key || '',
         entry: String(entry.id || ''),
@@ -282,9 +349,38 @@ async function main() {
       await client.request({ type: 'AddBatch', documents: batch });
       total += batch.length;
     }
+    const smokeChecks = [];
+    for (const value of params.smokeQueries) {
+      const { query, urlIncludes } = parseSmokeCheck(value);
+      if (!query) throw new Error('Smoke query não pode ser vazia.');
+      const response = await client.request({ type: 'Search', query });
+      const matchedUrl = !urlIncludes || response.results?.some((item) => item.url?.includes(urlIncludes));
+      if (!response.total || !matchedUrl) {
+        const detail = urlIncludes ? ` com URL contendo "${urlIncludes}"` : '';
+        throw new Error(`Smoke query sem resultados esperados antes do dump: ${query}${detail}`);
+      }
+      smokeChecks.push({ query, url_contains: urlIncludes || null, total: response.total });
+      console.log(`[OK] Smoke query "${query}": ${response.total} documentos${urlIncludes ? `; URL contém "${urlIncludes}"` : ''}.`);
+    }
     const stats = await client.request({ type: 'Stats' });
     const dump = await client.request({ type: 'DumpIndex' });
     await client.shutdown();
+    await fs.promises.writeFile(path.join(outDir, 'manifest.json'), JSON.stringify({
+      schema_version: 1,
+      engine: 'PatrologiaIndexer',
+      generated_at: new Date().toISOString(),
+      source_generated_at: manifest.generated_at || null,
+      sample: Boolean(params.volumes),
+      volumes: volumes.length,
+      total_documents: total,
+      total_terms: stats.total_terms,
+      index_shards: dump.index_shards,
+      document_shards: dump.document_shards,
+      documents_per_shard: params.documentsPerShard,
+      min_importance: params.minImportance,
+      content_schema_version: 3,
+      smoke_checks: smokeChecks,
+    }, null, 2) + '\n');
     const bytes = await directorySize(outDir);
     const seconds = (performance.now() - startedAt) / 1000;
     console.log(`[OK] Indexador: ${total} documentos de ${volumes.length} volumes em ${seconds.toFixed(2)} s.`);

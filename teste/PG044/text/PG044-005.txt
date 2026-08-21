@@ -1,83 +1,26 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="310,45,690,75">
-    TRADITIO CATHOLICA,
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,78,650,100">
-    SÆCULA IV-V, ANNUS 401.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="270,110,730,135">
-    ΤΟΥ ΕΝ ΑΓΙΟΙΣ ΠΑΤΡΟΣ ΗΜΩΝ
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="140,150,860,220">
-    ΓΡΗΓΟΡΙΟΥ
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="380,235,620,255">
-    ΕΠΙΣΚΟΠΟΥ ΝΥΣΣΗΣ
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="240,280,760,310">
-    ΤΑ ΕΥΡΙΣΚΟΜΕΝΑ ΠΑΝΤΑ
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,350,900,420">
-    S. P. N. GREGORII
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="390,435,610,455">
-    EPISCOPI NYSSENI
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="140,485,860,515">
-    OPERA QUÆ REPERIRI POTUERUNT OMNIA
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="410,530,590,550">
-    ( Ed. Morell. 1658 )
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,565,800,585">
-    NUNC DENUO CORRECTIUS ET ACCURATIUS EDITA ET MULTIS AUCTA.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="320,615,680,640">
-    ACCURANTE J.-P. MIGNE,
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="260,650,740,670">
-    BIBLIOTHECÆ CLERI UNIVERSÆ,
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="470,675,530,690">
-    SIVE
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="180,695,820,715">
-    CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="400,750,600,775">
-    TOMUS PRIMUS
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="390,780,610,800">
-    Complectens scripta exegetica.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="280,830,720,850">
-    VENEUNT TRIA VOLUMINA 33 FRANCIS GALLICIS.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="210,875,790,895">
-    EXCUDEBatur ET VENIT APUD J.-P. MIGNE EDITOREM,
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="110,898,890,930">
-    IN VIA DICTA D'AMBOISE, OLIM PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER
-    NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MŒNIA PARISINA.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="460,940,540,960">
-    1863
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="550,970,850,990">
-    Digitized by Google
-  </bloco>
-  <notas>
-    A página é uma página de título (capa interna) contendo texto em Latim e Grego.
-    Correções feitas no OCR:
-    - "SECULA 1V-V, ANNUS ot." corrigido para "SÆCULA IV-V, ANNUS 401."
-    - Erros nos caracteres gregos (ex: "ATOIZ" para "ΑΓΙΟΙΣ", "EHIZKOHOY" para "ΕΠΙΣΚΟΠΟΥ").
-    - "QUJE" corrigido para "QUÆ".
-    - "DKNLO" corrigido para "DENUO", "MOLTIS" para "MULTIS".
-    - "BIBLIOTHEC/AE CLERE UNIVERSE" corrigido para "BIBLIOTHECÆ CLERI UNIVERSÆ".
-    - "CUNSUUM" corrigido para "CURSUUM", "SCIENTIA" para "SCIENTIÆ".
-    - "ΥΕΝΕΟΝΤ" corrigido para "VENEUNT".
-    - "ΠΡΙ ΤΑ" corrigido para "DICTA", "ORTAM" para "PORTAM".
-    - "MUENIA" corrigido para "MŒNIA".
-    - "EXCUDEBATUR" ajustado para "EXCUDEBatur" conforme variação tipográfica visível.
-  </notas>
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="331,54,677,72">TRADITIO CATHOLICA.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="365,87,637,102">SÆCULA IV-V, ANNUS 401.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="289,119,716,137">ΤΟΥ ΕΝ ΑΓΙΟΙΣ ΠΑΤΡΟΣ ΗΜΩΝ</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="159,165,847,266">ΓΡΗΓΟΡΙΟΥ</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="392,249,609,264">ΕΠΙΣΚΟΠΟΥ ΝΥΣΣΗΣ</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="248,294,752,319">ΤΑ ΕΥΡΙΣΚΟΜΕΝΑ ΠΑΝΤΑ</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="95,377,907,500">S. P. N. GREGORII</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="410,528,590,548">EPISCOPI NYSSENI</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="146,594,852,623">OPERA QUÆ REPERIRI POTUERUNT OMNIA</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="430,644,570,666">(Ed. Morell. 1658)</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="207,680,796,702">NUNC DENUO CORRECTIUS ET ACCURATIUS EDITA ET MULTIS AUCTA.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="340,744,662,764">ACCURANTE J.-P. MIGNE,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="289,785,712,806">BIBLIOTHECÆ CLERI UNIVERSÆ,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="481,815,518,827">SIVE</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="160,838,837,865">CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="402,899,596,920">TOMUS PRIMUS</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="387,928,612,945">Complectens scripta exegetica.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="294,976,704,993">VENEUNT TRIA VOLUMINA 33 FRANCIS GALLICIS.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="212,997,788,1000">EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="109,998,891,1000">IN VIA DICTA D’AMBOISE, OLIM PROPE PORTAM LUTETIÆ PARISIORUM VULGO D’ENFER
+NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MŒNIA PARISINA.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="484,999,516,1000">1863</bloco>
+  <bloco tipo="rodape" script="latino" bbox="586,990,792,999">Digitized by Google</bloco>
+  <notas>Folha de rosto com texto centralizado em uma coluna, em latim e grego. Há elementos ornamentais horizontais entre algumas secções; não constituem texto. Não se observam identificadores A, B, C ou D.</notas>
 </pagina>

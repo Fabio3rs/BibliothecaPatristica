@@ -250,6 +250,24 @@ def test_semantic_fragment_requires_traceable_entries_and_known_notation(
             known_notation_keys={"ibid"},
         )
 
+    fragment["refs"][0]["notation"][0]["notation_key"] = "ibid"
+    fragment["sections"][0].update(
+        {
+            "section_kind": "author_index",
+            "heading_raw": (
+                "INDEX AUCTORUM ET OPERUM QUAE IN HOC TOMO CONTINENTUR"
+            ),
+        }
+    )
+    with pytest.raises(CompactPipelineError, match="outside the alphabetical pipeline"):
+        validate_semantic_fragment_v2(
+            fragment,
+            source_root=source_root,
+            expected_input_fingerprint="fp",
+            expected_section_key="PL001:index",
+            known_notation_keys={"ibid"},
+        )
+
 
 def test_loader_accepts_versioned_traceable_semantic_manifest(
     tmp_path: Path,

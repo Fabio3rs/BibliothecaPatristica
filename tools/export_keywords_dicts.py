@@ -3,26 +3,24 @@
 Gera dicionários de keywords para o site a partir de `data/patristica_keywords.db`.
 
 Saídas em `web/public/dict/` (configurável via --out):
-  - keywords.json         : catálogo completo com contagem, grupo e flags (compatibilidade).
+  - keywords.json          : catálogo canônico com contagem, grupo e flags.
   - keywords_lookup.json   : lookup leve para renderizadores e indexadores.
   - keywords_manifest.json : manifesto dos shards de keywords por consumo.
   - keywords/*.json        : shards alfabéticos do catálogo navegável.
-  - keywords_top.json     : top N termos NÃO-escritura por frequência real (para nuvem de tags).
-  - keyword_groups.json   : metadados por grupo HDBSCAN.
+  - keywords_top.json      : top N termos NÃO-escritura por frequência real.
+  - keyword_groups.json    : metadados consumidos pelos grupos temáticos.
 
-A frequência real é calculada varrendo os page_blocks em --pages-dir (web/public).
-Se --pages-dir não for fornecido, usa o campo `count` do banco.
+A frequência real é calculada a partir de `keyword_occurrence` no SQLite.
 
 Uso típico:
   python tools/export_keywords_dicts.py --db data/patristica_keywords.db \
-      --out web/public/dict --pages-dir web/public --top 80 --min-count 1
+      --out web/public/dict --top 80 --min-count 1
 """
 
 from __future__ import annotations
 
 import argparse
 import json
-import re
 import sqlite3
 import unicodedata
 from dataclasses import dataclass
@@ -92,7 +90,7 @@ def connect(db_path: Path) -> sqlite3.Connection:
     return con
 
 
-def fetch_keywords(con: sqlite3.Connection, include_noise: bool) -> List[KeywordRow]:
+def fetch_keywords(con: sqlite3.Connection) -> List[KeywordRow]:
     sql = """
         SELECT
             k.id,
@@ -112,12 +110,10 @@ def fetch_keywords(con: sqlite3.Connection, include_noise: bool) -> List[Keyword
             GROUP BY keyword_id
         ) occ ON occ.keyword_id = k.id
         LEFT JOIN cluster_canonical_names cc ON cc.group_id = k.hdbscan_group_id
-        WHERE k.hdbscan_group_id IS NOT NULL AND k.hdbscan_group_id > 0
+        ORDER BY k.id
     """
     rows = []
     for r in con.execute(sql):
-        if (not include_noise) and int(r["is_noise"] or 0) == 1:
-            continue
         rows.append(
             KeywordRow(
                 id=int(r["id"]),
@@ -144,7 +140,7 @@ def build_groups(
     groups: Dict[int, dict] = {}
     for kw in rows:
         gid = kw.group_id
-        if gid is None or gid == -1:
+        if gid is None or gid < 0:
             continue
         agg = group_count.get(gid, 0)
         if agg < min_count:
@@ -156,7 +152,6 @@ def build_groups(
                 "total": agg,  # frequência agregada já calculada
                 "is_noise": 0,
                 "top_keywords": [],
-                "sample_ids": [],
             },
         )
         # total já está correto, não somar novamente
@@ -166,7 +161,7 @@ def build_groups(
     by_group: Dict[int, List[KeywordRow]] = {}
     for kw in rows:
         gid = kw.group_id
-        if gid is None or gid == -1 or group_count.get(gid, 0) < min_count:
+        if gid is None or gid < 0 or group_count.get(gid, 0) < min_count:
             continue
         by_group.setdefault(gid, []).append(kw)
 
@@ -175,7 +170,6 @@ def build_groups(
         groups[gid]["top_keywords"] = [
             {"label": k.label, "count": k.count} for k in kws_sorted[:top_per_group]
         ]
-        groups[gid]["sample_ids"] = [k.slug_id for k in kws_sorted[:top_per_group]]
     return groups
 
 
@@ -186,10 +180,73 @@ def write_json(path: Path, obj: dict) -> None:
     )
 
 
-def normalized_category_key(text: str) -> str:
-    nfkd = unicodedata.normalize("NFKD", str(text or ""))
-    ascii_approx = "".join(c for c in nfkd if not unicodedata.combining(c))
-    return re.sub(r"\s+", "_", ascii_approx).strip().casefold()
+def canonical_group_rows(rows: Iterable[KeywordRow]) -> Dict[int, KeywordRow]:
+    by_group: Dict[int, List[KeywordRow]] = {}
+    for kw in rows:
+        if kw.group_id is None or kw.group_id < 0 or kw.is_scripture_citation:
+            continue
+        by_group.setdefault(kw.group_id, []).append(kw)
+
+    representatives: Dict[int, KeywordRow] = {}
+    for gid, members in by_group.items():
+        representatives[gid] = max(
+            members,
+            key=lambda kw: (
+                bool(kw.nome_canonico_original),
+                kw.count,
+                -kw.id,
+            ),
+        )
+    return representatives
+
+
+def build_catalog_items(
+    rows: List[KeywordRow],
+    group_count: Dict[int, int],
+    min_count: int,
+) -> tuple[List[dict], Dict[int, str], Dict[int, str]]:
+    items: List[dict] = []
+    canonical_ids: Dict[int, str] = {}
+    scripture_ids: Dict[int, str] = {}
+
+    for gid, kw in canonical_group_rows(rows).items():
+        real_count = group_count.get(gid, kw.count)
+        if real_count < min_count:
+            continue
+        label = kw.nome_canonico_original or kw.label
+        item_id = kw.canonical_slug_id
+        canonical_ids[gid] = item_id
+        items.append(
+            {
+                "id": item_id,
+                "label": label,
+                "count": real_count,
+                "group_id": gid,
+                "iscit": False,
+            }
+        )
+
+    for kw in rows:
+        if not kw.is_scripture_citation or kw.count < min_count:
+            continue
+        item_id = kw.slug_id
+        scripture_ids[kw.id] = item_id
+        items.append(
+            {
+                "id": item_id,
+                "label": kw.label,
+                "count": kw.count,
+                "group_id": kw.group_id,
+                "iscit": True,
+            }
+        )
+
+    deduped = {item["id"]: item for item in items}
+    return (
+        sorted(deduped.values(), key=lambda item: item["label"].casefold()),
+        canonical_ids,
+        scripture_ids,
+    )
 
 
 def now_iso() -> str:
@@ -232,16 +289,14 @@ def main():
         default=5,
         help="Quantidade de palavras por grupo em keyword_groups.json",
     )
-    ap.add_argument("--include-noise", action="store_true", help="Incluir is_noise=1")
     ap.add_argument(
         "--dry-run",
         action="store_true",
         help="Executar em modo de teste (sem gravação)",
     )
     args = ap.parse_args()
-
     con = connect(args.db)
-    rows = fetch_keywords(con, include_noise=args.include_noise)
+    rows = fetch_keywords(con)
     con.close()
 
     # ── Pré-computar frequência agregada por group_id ──────────────────────────
@@ -250,54 +305,15 @@ def main():
     # a frequência real do conceito é a SOMA de todos os membros do mesmo grupo.
     group_count: Dict[int, int] = {}
     for kw in rows:
-        if kw.group_id is None or kw.group_id == -1:
+        if kw.group_id is None or kw.group_id < 0:
             continue
         group_count[kw.group_id] = group_count.get(kw.group_id, 0) + kw.count
 
-    # keywords.json
-    items = []
-    inserido_canonico: set[int] = set()
-    for kw in rows:
-        # Frequência real = soma de todas as variantes do grupo
-        real_count = group_count.get(kw.group_id, kw.count) if kw.group_id else kw.count
-        if real_count < args.min_count:
-            continue
-        if (not kw.is_scripture_citation) and kw.group_id in inserido_canonico:
-            continue
-
-        # Citações a escrituras passam direto fora do filtro de grupo
-
-        label = kw.label
-
-        if not kw.is_scripture_citation:
-            # Se não é escritura, vamos salvar o nome canônico original
-            label = kw.nome_canonico_original
-            inserido_canonico.add(kw.group_id)
-            # Canônico = a keyword que representa o grupo é a própria canônica
-            ecanonical = normalized_category_key(
-                kw.label_norm
-            ) == normalized_category_key(kw.nome_canonico)
-        else:
-            # Escritura sempre é canônica de si mesma
-            ecanonical = True
-
-        # Para não-scripture: slug vem do nome canônico (normalizado)
-        # Para scripture: slug vem da keyword_norm da própria keyword
-        item_id = kw.canonical_slug_id if not kw.is_scripture_citation else kw.slug_id
-
-        items.append(
-            {
-                "id": item_id,
-                "label": label,
-                "count": real_count,  # frequência agregada do grupo
-                "group_id": kw.group_id,
-                # "is_noise": kw.is_noise,
-                # "status": kw.status,
-                # "ecanonico": ecanonical,
-                "iscit": kw.is_scripture_citation,
-            }
-        )
-    items.sort(key=lambda x: x["label"].lower())
+    items, _, _ = build_catalog_items(
+        rows,
+        group_count=group_count,
+        min_count=args.min_count,
+    )
 
     lookup_items = [
         {
@@ -305,6 +321,7 @@ def main():
             "label": item["label"],
             "count": item["count"],
             "iscit": item["iscit"],
+            "group_id": item["group_id"],
         }
         for item in items
     ]
@@ -332,11 +349,6 @@ def main():
             f"[DRY RUN] keywords: {len(items)} | lookup: {len(lookup_items)} | "
             f"shards: {len(shard_manifest)} | top: {min(len(items), args.top)}"
         )
-
-        for kw in items:
-            print(
-                f"{kw['label']} (id={kw['id']}, group={kw['group_id']}, is_scripture={kw['iscit']})"
-            )
         return
 
     write_json(args.out / "keywords.json", {"items": items})
@@ -380,7 +392,8 @@ def main():
 
     print(
         f"[OK] keywords: {len(items)} | lookup: {len(lookup_items)} | "
-        f"shards: {len(shard_manifest)} | top: {len(top_items)} | groups: {len(groups_sorted)}"
+        f"shards: {len(shard_manifest)} | top: {len(top_items)} | "
+        f"groups: {len(groups_sorted)}"
     )
 
 

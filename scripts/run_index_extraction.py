@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import multiprocessing as mp
+import os
 import re
 import sqlite3
 import subprocess
@@ -12,7 +14,7 @@ import time
 import traceback
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterator
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
@@ -34,6 +36,20 @@ from patristica_pipeline.index_pipeline_ownership import general_section_ownersh
 from patristica_pipeline.index_work_anchor_reconciler import reconcile_work_anchors
 from patristica_pipeline.index_workplan import build_index_workplan, reconcile_workplan_progress
 from patristica_pipeline.index_chunk_driver import run_index_chunk_agents
+from scripts.index_translation.database import (
+    collect_pending_translations,
+    collect_volume_candidates,
+    connect_translation_db,
+    ensure_string_rows,
+    init_translation_schema,
+    load_analysis_summaries,
+    prepare_cltk_analyses,
+    upsert_translation_rows,
+)
+from scripts.index_translation.provider import (
+    normalize_language_list,
+    translate_candidate_worker,
+)
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 SKILL_DIR = PROJECT_ROOT / ".codex" / "skills" / "patristic-index-extractor"
@@ -46,6 +62,17 @@ DEFAULT_DB = PROJECT_ROOT / "data" / "patristic_indices.db"
 DEFAULT_LOG_DIR = PROJECT_ROOT / "data" / "index_logs"
 DEFAULT_INTERMEDIATE_ROOT = PROJECT_ROOT / "data" / "index_intermediate_payloads"
 DEFAULT_EDITORIAL_PAGE_DB = DEFAULT_ESTIMATOR_DB
+DEFAULT_TRANSLATION_DICTIONARY_DIR = Path(
+    os.getenv("PATRISTICA_DICTIONARY_DIR", "/mnt/projects/Projects/Dicionarios/dicionarios")
+)
+DEFAULT_CLTK_PYTHON = Path(
+    os.getenv("PATRISTICA_CLTK_PYTHON", PROJECT_ROOT / ".venv-cltk" / "bin" / "python")
+)
+CLTK_WORKER_SCRIPT = PROJECT_ROOT / "scripts" / "index_translation" / "cltk_worker.py"
+DEFAULT_TRANSLATION_WORKERS = 4
+DEFAULT_TRANSLATION_BACKOFF_BASE = 1.0
+DEFAULT_TRANSLATION_BACKOFF_MAX = 60.0
+DEFAULT_TRANSLATION_JITTER = 0.25
 EXISTING_PAYLOAD_SNIPPET_BYTES = 120_000
 PREVIOUS_FAILURE_DETAIL_MAX_CHARS = 12_000
 FAILURE_ARTIFACT_TRACEBACK_MAX_CHARS = 12_000
@@ -79,7 +106,11 @@ LIST_HEADING_RE = re.compile(
     re.I,
 )
 EMPTY_ENTRY_STATUSES = {"unrecoverable_ocr", "no_line_items"}
-VOLUME_STAGE_COUNT = 12
+VOLUME_STAGE_COUNT = 14
+
+
+def absolute_path_preserving_symlinks(path: Path) -> Path:
+    return Path(os.path.abspath(path.expanduser()))
 
 
 def emit_stage(
@@ -141,6 +172,37 @@ def select_volume_ids(root: Path, blob: str, limit: int | None) -> list[str]:
     if limit is not None and limit > 0:
         volume_ids = volume_ids[:limit]
     return volume_ids
+
+
+def select_db_volume_ids(db_path: Path, blob: str, limit: int | None) -> list[str]:
+    prefixes = [
+        part.strip().upper().removesuffix("*")
+        for part in blob.split(",")
+        if part.strip()
+    ]
+    if not db_path.is_file():
+        return []
+    with connect_translation_db(db_path) as con:
+        rows = con.execute("SELECT volume_id FROM volumes ORDER BY volume_id").fetchall()
+    volume_ids = [
+        str(row["volume_id"])
+        for row in rows
+        if not prefixes
+        or any(str(row["volume_id"]).upper().startswith(prefix) for prefix in prefixes)
+    ]
+    if limit is not None and limit > 0:
+        volume_ids = volume_ids[:limit]
+    return volume_ids
+
+
+def db_volume_collection(db_path: Path, volume_id: str) -> str | None:
+    if not db_path.is_file():
+        return None
+    with connect_translation_db(db_path) as con:
+        row = con.execute(
+            "SELECT collection FROM volumes WHERE volume_id = ?", (volume_id,)
+        ).fetchone()
+    return str(row["collection"]) if row is not None else None
 
 
 def read_json(path: Path) -> dict[str, Any]:
@@ -841,6 +903,184 @@ def import_payload(payload_file: Path, db_path: Path, replace: bool) -> None:
     print(result.stdout.strip())
 
 
+def format_translation_progress(
+    *, volume_id: str, completed: int, total: int, result: dict[str, Any]
+) -> str:
+    source = str(result.get("source_text") or "")[:90]
+    return (
+        f"[INFO] translation {completed}/{total} volume={volume_id} "
+        f"langs={sorted(dict(result.get('translations') or {}).keys())} "
+        f"attempts={result.get('attempts')} elapsed_s={result.get('elapsed_s')} "
+        f"retry_wait_s={result.get('retry_wait_s', 0)} "
+        f"tool_calls={result.get('tool_call_count', 0)} source={source!r}"
+    )
+
+
+def run_translation_stage(
+    *,
+    db_path: Path,
+    volume_id: str,
+    languages: list[str],
+    model: str,
+    base_url: str,
+    api_key: str,
+    workers: int,
+    timeout: int,
+    retries: int,
+    verbose: bool,
+    tools_enabled: bool,
+    dictionary_dir: Path,
+    max_tool_rounds: int,
+    cltk_enabled: bool,
+    cltk_python: Path,
+    cltk_workers: int,
+    cltk_max_tokens: int,
+    backoff_base_s: float = DEFAULT_TRANSLATION_BACKOFF_BASE,
+    backoff_max_s: float = DEFAULT_TRANSLATION_BACKOFF_MAX,
+    jitter_ratio: float = DEFAULT_TRANSLATION_JITTER,
+) -> dict[str, Any]:
+    with connect_translation_db(db_path) as con:
+        init_translation_schema(con)
+        candidates = ensure_string_rows(con, collect_volume_candidates(con, volume_id))
+        cltk_summary: dict[str, Any] = {
+            "status": "disabled",
+            "candidate_count": len(candidates),
+            "analyzed": 0,
+            "cached": 0,
+            "errors": 0,
+        }
+        if cltk_enabled:
+            cltk_summary = prepare_cltk_analyses(
+                con,
+                candidates=candidates,
+                python_executable=cltk_python,
+                worker_script=CLTK_WORKER_SCRIPT,
+                dictionary_dir=dictionary_dir,
+                workers=cltk_workers,
+                max_tokens=cltk_max_tokens,
+            )
+        pending = collect_pending_translations(con, candidates, languages)
+
+    if verbose and cltk_enabled:
+        print(
+            f"[INFO] cltk volume={volume_id} status={cltk_summary.get('status')} "
+            f"analyzed={cltk_summary.get('analyzed', 0)} "
+            f"cached={cltk_summary.get('cached', 0)} "
+            f"errors={cltk_summary.get('errors', 0)} "
+            f"model_missing={cltk_summary.get('model_missing', 0)}"
+        )
+    if cltk_summary.get("status") == "unavailable":
+        health = cltk_summary.get("health") or {}
+        print(
+            f"[WARN] CLTK unavailable for {volume_id}; translation will continue without "
+            "linguistic annotations: "
+            f"{health.get('error') or health.get('analyzer_version') or health}",
+            file=sys.stderr,
+        )
+
+    if not pending:
+        return {
+            "ran": False,
+            "candidate_strings": len(candidates),
+            "pending_strings": 0,
+            "completed_strings": 0,
+            "written_rows": 0,
+            "cltk": cltk_summary,
+        }
+
+    def iter_tasks() -> Iterator[dict[str, Any]]:
+        with connect_translation_db(db_path) as task_con:
+            for start in range(0, len(pending), 250):
+                chunk = pending[start : start + 250]
+                analysis_summaries = load_analysis_summaries(
+                    task_con, [int(item["string_id"]) for item in chunk]
+                )
+                for item in chunk:
+                    yield {
+                        "string_id": item["string_id"],
+                        "source_text": item["source_text"],
+                        "contexts": item["contexts"],
+                        "languages": item["missing_languages"],
+                        "linguistic_analysis": analysis_summaries.get(
+                            int(item["string_id"])
+                        ),
+                        "model": model,
+                        "base_url": base_url,
+                        "api_key": api_key,
+                        "timeout": timeout,
+                        "retries": retries,
+                        "backoff_base_s": backoff_base_s,
+                        "backoff_max_s": backoff_max_s,
+                        "jitter_ratio": jitter_ratio,
+                        "tools_enabled": tools_enabled,
+                        "dictionary_dir": str(dictionary_dir),
+                        "max_tool_rounds": max_tool_rounds,
+                    }
+
+    started = time.time()
+    completed = 0
+    written = 0
+    worker_count = min(max(1, workers), len(pending))
+    context = mp.get_context("fork" if sys.platform != "win32" else "spawn")
+    if verbose:
+        print(
+            f"[INFO] translation-start volume={volume_id} pending_strings={len(pending)} "
+            f"workers={worker_count} languages={languages} model={model} "
+            f"backoff={backoff_base_s:g}..{backoff_max_s:g}s jitter={jitter_ratio:g}"
+        )
+    with connect_translation_db(db_path) as con:
+        init_translation_schema(con)
+
+        def store_result(result: dict[str, Any]) -> None:
+            nonlocal completed, written
+            written += upsert_translation_rows(
+                con,
+                string_id=int(result["string_id"]),
+                translations=dict(result["translations"]),
+                model_name=str(result["model_name"]),
+                sample_context=(
+                    str(result["sample_context"])
+                    if result.get("sample_context") is not None else None
+                ),
+                commit=False,
+            )
+            completed += 1
+            if completed % 25 == 0:
+                con.commit()
+            if verbose:
+                print(
+                    format_translation_progress(
+                        volume_id=volume_id,
+                        completed=completed,
+                        total=len(pending),
+                        result=result,
+                    )
+                )
+
+        try:
+            if worker_count == 1:
+                for result in map(translate_candidate_worker, iter_tasks()):
+                    store_result(result)
+            else:
+                with context.Pool(processes=worker_count) as pool:
+                    for result in pool.imap_unordered(
+                        translate_candidate_worker, iter_tasks(), chunksize=1
+                    ):
+                        store_result(result)
+        finally:
+            con.commit()
+    return {
+        "ran": True,
+        "candidate_strings": len(candidates),
+        "pending_strings": len(pending),
+        "completed_strings": completed,
+        "written_rows": written,
+        "workers": worker_count,
+        "elapsed_s": round(time.time() - started, 3),
+        "cltk": cltk_summary,
+    }
+
+
 def write_pipeline_quality_reports(
     *,
     payload_file: Path,
@@ -886,6 +1126,10 @@ def write_pipeline_quality_reports(
 
 def infer_failure_stage(error: BaseException) -> str:
     text = str(error).casefold()
+    if "translation failed" in text or "translation keys mismatch" in text:
+        return "translation"
+    if "cltk" in text:
+        return "cltk_analysis"
     if "chunked codex extraction" in text:
         return "chunk_extraction"
     if "omitted stable objects" in text:
@@ -1037,6 +1281,73 @@ def main() -> None:
     ap.add_argument("--max-unverified-evidence-ratio", type=float, default=0.25)
     ap.add_argument("--skip-evidence-check", action="store_true")
     ap.add_argument(
+        "--translate",
+        action="store_true",
+        help="Translate frontend-facing general-index strings after import",
+    )
+    ap.add_argument(
+        "--translation-only",
+        action="store_true",
+        help="Translate pending strings already in the database without extraction or import",
+    )
+    ap.add_argument(
+        "--translation-languages",
+        default="en,fr,it,pt-br",
+        help="Comma-separated target language codes",
+    )
+    ap.add_argument("--translation-model", default=None)
+    ap.add_argument(
+        "--translation-openai-url", default="https://api.openai.com/v1"
+    )
+    ap.add_argument("--translation-openai-api-key", default=None)
+    ap.add_argument(
+        "--translation-workers",
+        type=int,
+        default=DEFAULT_TRANSLATION_WORKERS,
+        help=f"Parallel API request processes (default: {DEFAULT_TRANSLATION_WORKERS})",
+    )
+    ap.add_argument("--translation-timeout", type=int, default=180)
+    ap.add_argument("--translation-retries", type=int, default=3)
+    ap.add_argument(
+        "--translation-backoff-base",
+        type=float,
+        default=DEFAULT_TRANSLATION_BACKOFF_BASE,
+        help="Initial retry backoff in seconds",
+    )
+    ap.add_argument(
+        "--translation-backoff-max",
+        type=float,
+        default=DEFAULT_TRANSLATION_BACKOFF_MAX,
+        help="Maximum retry backoff in seconds",
+    )
+    ap.add_argument(
+        "--translation-jitter",
+        type=float,
+        default=DEFAULT_TRANSLATION_JITTER,
+        help="Random jitter ratio added to each exponential backoff",
+    )
+    ap.add_argument(
+        "--translation-tools",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Allow bounded read-only Latin dictionary tools during translation",
+    )
+    ap.add_argument(
+        "--translation-dictionary-dir",
+        type=Path,
+        default=DEFAULT_TRANSLATION_DICTIONARY_DIR,
+    )
+    ap.add_argument("--translation-max-tool-rounds", type=int, default=2)
+    ap.add_argument(
+        "--translation-cltk",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Cache CLTK lemma/POS/morphology when the isolated worker is available",
+    )
+    ap.add_argument("--cltk-python", type=Path, default=DEFAULT_CLTK_PYTHON)
+    ap.add_argument("--cltk-workers", type=int, default=1)
+    ap.add_argument("--cltk-max-tokens", type=int, default=512)
+    ap.add_argument(
         "--skip-work-anchor-reconciliation",
         action="store_true",
         help="Do not audit, annotate, or repair suspicious work page/file anchors before validation and import",
@@ -1048,13 +1359,48 @@ def main() -> None:
     args = ap.parse_args()
     if args.helper_workers < 1:
         raise SystemExit("--helper-workers must be at least 1")
+    if args.translation_only:
+        args.translate = True
+    if args.translation_only and args.dry_run:
+        raise SystemExit("--translation-only and --dry-run cannot be used together.")
+    args.translation_languages = normalize_language_list(args.translation_languages)
+    args.translation_openai_api_key = (
+        args.translation_openai_api_key or os.getenv("OPENAI_API_KEY")
+    )
+    args.translation_model = (
+        args.translation_model or os.getenv("OPENAI_MODEL") or "gpt-5-mini"
+    )
+    if args.translate and not args.translation_languages:
+        raise SystemExit("Use at least one language in --translation-languages.")
+    if args.translate and not args.dry_run and not args.translation_openai_api_key:
+        raise SystemExit(
+            "Translation requires --translation-openai-api-key or OPENAI_API_KEY."
+        )
+    if args.translation_workers < 1 or args.cltk_workers < 1:
+        raise SystemExit("Translation and CLTK worker counts must be at least 1.")
+    if args.translation_retries < 1:
+        raise SystemExit("--translation-retries must be at least 1.")
+    if (
+        args.translation_backoff_base < 0
+        or args.translation_backoff_max < args.translation_backoff_base
+        or args.translation_jitter < 0
+    ):
+        raise SystemExit(
+            "Translation backoff must satisfy 0 <= base <= max and jitter >= 0."
+        )
+    if args.translation_max_tool_rounds < 0 or args.cltk_max_tokens < 1:
+        raise SystemExit("Translation tool rounds and CLTK token limit are invalid.")
 
     if args.blob and not args.all_volumes:
         args.all_volumes = True
 
     if args.all_volumes:
         blob = args.blob or "PG*,PL*,PO*"
-        volume_ids = select_volume_ids(args.root, blob, args.limit)
+        volume_ids = (
+            select_db_volume_ids(args.db.expanduser().resolve(), blob, args.limit)
+            if args.translation_only
+            else select_volume_ids(args.root, blob, args.limit)
+        )
         if not volume_ids:
             raise SystemExit(f"No volumes selected for blob {blob!r}.")
     else:
@@ -1067,6 +1413,8 @@ def main() -> None:
     args.log_dir = args.log_dir.resolve()
     args.intermediate_root = args.intermediate_root.resolve()
     args.db = args.db.resolve()
+    args.translation_dictionary_dir = args.translation_dictionary_dir.expanduser().resolve()
+    args.cltk_python = absolute_path_preserving_symlinks(args.cltk_python)
     args.output_dir.mkdir(parents=True, exist_ok=True)
     args.log_dir.mkdir(parents=True, exist_ok=True)
     args.intermediate_root.mkdir(parents=True, exist_ok=True)
@@ -1075,13 +1423,17 @@ def main() -> None:
     for idx, volume_id in enumerate(volume_ids, start=1):
         volume_root = args.root / volume_id
         text_root = volume_root / "text"
-        if not text_root.exists():
-            raise SystemExit(f"Text directory not found: {text_root}")
-
-        info = parse_volume_info(volume_root)
-        if info is None:
-            raise SystemExit(f"Could not parse volume info from {volume_root}")
-        collection = info.series
+        if args.translation_only:
+            collection = db_volume_collection(args.db, volume_id)
+            if collection is None:
+                raise SystemExit(f"Volume {volume_id} is not present in {args.db}.")
+        else:
+            if not text_root.exists():
+                raise SystemExit(f"Text directory not found: {text_root}")
+            info = parse_volume_info(volume_root)
+            if info is None:
+                raise SystemExit(f"Could not parse volume info from {volume_root}")
+            collection = info.series
         print(f"[INFO] volume {idx}/{len(volume_ids)}: {volume_id} ({collection})")
         prescan_path = args.output_dir / f"{volume_id}_prescan.json"
         filtered_path = args.output_dir / f"{volume_id}_filtered_pages.json"
@@ -1100,6 +1452,76 @@ def main() -> None:
         workplan_path = intermediate_dir / "workplan.json"
         assembled_path = intermediate_dir / "assembled_fragments.json"
         failure_path = failure_artifact_path(args.output_dir, volume_id)
+
+        if args.translation_only:
+            try:
+                translation_summary = run_translation_stage(
+                    db_path=args.db,
+                    volume_id=volume_id,
+                    languages=args.translation_languages,
+                    model=args.translation_model,
+                    base_url=args.translation_openai_url,
+                    api_key=args.translation_openai_api_key,
+                    workers=args.translation_workers,
+                    timeout=args.translation_timeout,
+                    retries=args.translation_retries,
+                    verbose=args.verbose,
+                    tools_enabled=args.translation_tools,
+                    dictionary_dir=args.translation_dictionary_dir,
+                    max_tool_rounds=args.translation_max_tool_rounds,
+                    cltk_enabled=args.translation_cltk,
+                    cltk_python=args.cltk_python,
+                    cltk_workers=args.cltk_workers,
+                    cltk_max_tokens=args.cltk_max_tokens,
+                    backoff_base_s=args.translation_backoff_base,
+                    backoff_max_s=args.translation_backoff_max,
+                    jitter_ratio=args.translation_jitter,
+                )
+                failure_path.unlink(missing_ok=True)
+                print(
+                    json.dumps(
+                        {
+                            "status": "ok",
+                            "volume_id": volume_id,
+                            "collection": collection,
+                            "db": str(args.db),
+                            "translation_only": True,
+                            "translation": translation_summary,
+                        },
+                        ensure_ascii=False,
+                    )
+                )
+            except BaseException as error:
+                if isinstance(error, (KeyboardInterrupt, GeneratorExit)):
+                    raise
+                write_failure_artifact(
+                    path=failure_path,
+                    volume_id=volume_id,
+                    collection=collection,
+                    stage=infer_failure_stage(error),
+                    error=error,
+                    payload_file=None,
+                    prescan_file=None,
+                    filtered_pages_file=None,
+                    editorial_pages_file=None,
+                    helper_request_file=None,
+                    helper_output_file=None,
+                    last_message_file=None,
+                    stdout_log_file=None,
+                    stderr_log_file=None,
+                    stream_log_file=None,
+                )
+                if not args.continue_on_error:
+                    raise
+                failed_volumes.append(volume_id)
+                emit_volume_failure(
+                    volume_id=volume_id,
+                    collection=collection,
+                    error=error,
+                    artifact_path=failure_path,
+                )
+            continue
+
         existing_payload_for_prompt: dict[str, Any] | None = None
         if payload_file.is_file():
             try:
@@ -1249,6 +1671,8 @@ def main() -> None:
                 emit_stage(verbose=args.verbose, volume_id=volume_id, volume_index=idx, volume_total=len(volume_ids), stage_index=10, status="SKIP", label="validate acknowledgment", progress_log=progress_log)
                 emit_stage(verbose=args.verbose, volume_id=volume_id, volume_index=idx, volume_total=len(volume_ids), stage_index=11, status="SKIP", label="validate payload and evidence", progress_log=progress_log)
                 emit_stage(verbose=args.verbose, volume_id=volume_id, volume_index=idx, volume_total=len(volume_ids), stage_index=12, status="SKIP", label="import payload", progress_log=progress_log)
+                emit_stage(verbose=args.verbose, volume_id=volume_id, volume_index=idx, volume_total=len(volume_ids), stage_index=13, status="SKIP", label="cache CLTK analysis", progress_log=progress_log)
+                emit_stage(verbose=args.verbose, volume_id=volume_id, volume_index=idx, volume_total=len(volume_ids), stage_index=14, status="SKIP", label="translate index strings", progress_log=progress_log)
                 print(json.dumps({"status": "dry-run", "volume_id": volume_id, "prompt_file": str(prompt_path), "workplan_file": str(workplan_path)}, ensure_ascii=False))
                 continue
 
@@ -1295,8 +1719,44 @@ def main() -> None:
             emit_stage(verbose=args.verbose, volume_id=volume_id, volume_index=idx, volume_total=len(volume_ids), stage_index=11, status="DONE", label="validate payload and evidence", progress_log=progress_log)
             import_payload(payload_file, args.db, args.replace)
             emit_stage(verbose=args.verbose, volume_id=volume_id, volume_index=idx, volume_total=len(volume_ids), stage_index=12, status="DONE", label="import payload", progress_log=progress_log)
+            translation_summary: dict[str, Any] = {
+                "ran": False,
+                "pending_strings": 0,
+                "written_rows": 0,
+                "cltk": {"status": "disabled"},
+            }
+            if args.translate:
+                emit_stage(verbose=args.verbose, volume_id=volume_id, volume_index=idx, volume_total=len(volume_ids), stage_index=13, status="START", label="cache CLTK analysis", progress_log=progress_log)
+                emit_stage(verbose=args.verbose, volume_id=volume_id, volume_index=idx, volume_total=len(volume_ids), stage_index=14, status="START", label="translate index strings", progress_log=progress_log)
+                translation_summary = run_translation_stage(
+                    db_path=args.db,
+                    volume_id=volume_id,
+                    languages=args.translation_languages,
+                    model=args.translation_model,
+                    base_url=args.translation_openai_url,
+                    api_key=args.translation_openai_api_key,
+                    workers=args.translation_workers,
+                    timeout=args.translation_timeout,
+                    retries=args.translation_retries,
+                    verbose=args.verbose,
+                    tools_enabled=args.translation_tools,
+                    dictionary_dir=args.translation_dictionary_dir,
+                    max_tool_rounds=args.translation_max_tool_rounds,
+                    cltk_enabled=args.translation_cltk,
+                    cltk_python=args.cltk_python,
+                    cltk_workers=args.cltk_workers,
+                    cltk_max_tokens=args.cltk_max_tokens,
+                    backoff_base_s=args.translation_backoff_base,
+                    backoff_max_s=args.translation_backoff_max,
+                    jitter_ratio=args.translation_jitter,
+                )
+                emit_stage(verbose=args.verbose, volume_id=volume_id, volume_index=idx, volume_total=len(volume_ids), stage_index=13, status="DONE", label="cache CLTK analysis", progress_log=progress_log)
+                emit_stage(verbose=args.verbose, volume_id=volume_id, volume_index=idx, volume_total=len(volume_ids), stage_index=14, status="DONE", label="translate index strings", progress_log=progress_log)
+            else:
+                emit_stage(verbose=args.verbose, volume_id=volume_id, volume_index=idx, volume_total=len(volume_ids), stage_index=13, status="SKIP", label="cache CLTK analysis", progress_log=progress_log)
+                emit_stage(verbose=args.verbose, volume_id=volume_id, volume_index=idx, volume_total=len(volume_ids), stage_index=14, status="SKIP", label="translate index strings", progress_log=progress_log)
             failure_path.unlink(missing_ok=True)
-            print(json.dumps({"status": "ok", "volume_id": volume_id, "collection": collection, "payload_file": str(payload_file), "imported": True}, ensure_ascii=False))
+            print(json.dumps({"status": "ok", "volume_id": volume_id, "collection": collection, "payload_file": str(payload_file), "imported": True, "translation": translation_summary}, ensure_ascii=False))
         except BaseException as error:
             if isinstance(error, (KeyboardInterrupt, GeneratorExit)):
                 raise

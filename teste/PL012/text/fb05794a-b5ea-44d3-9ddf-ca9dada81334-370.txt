@@ -1,13 +1,14 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,60">
-    705 EVANGELIUM SECUNDUM LUCAM. 706
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,70">
+    705  EVANGELIUM SECUNDUM LUCAM.  706
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,60,490,450">
+
+  <bloco tipo="texto_principal" script="latino" bbox="20,70,490,430">
     CODEX VERCELLENSIS.
     28. Ad quas con-
     versus,
     dixit : Filiae
-    Hierusalem,
+    Ilierusalem,
     nolite flere
     (a) me ; verum
     vos flete , et
@@ -34,7 +35,7 @@
     do ligno haec
     faciunt, in
     arido quid
-    fiet ?
+    fiet? ;
     32. Ducebantur
     autem et ali-
     i duo latro-
@@ -56,7 +57,7 @@
     tes † vestimen-
     ta ipsius , mit-
     tebant sor-
-    35. tes. Ies. Et stabat
+    35. tes. Et stabat
     populus ⁵ ex-
     spectans. Sub-
     sannabant
@@ -91,12 +92,13 @@
     suspensi
     erant ma-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,60,980,450">
+
+  <bloco tipo="texto_principal" script="latino" bbox="510,70,980,430">
     CODEX VERONENSIS.
     28. Conversus au-
     tem ad illas
     Jesus dixit :
-    Filiae Israhel,
+    Filiae Istrahel,
     tacete : nolite
     flere (a) me
     sed vos ipsas
@@ -180,10 +182,12 @@
     39. Unus etiam
     de pendentibus
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,450,980,470">
+
+  <bloco tipo="texto_principal" script="latino" bbox="20,430,980,470">
     CODEX BRIXIANUS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,470,490,600">
+
+  <bloco tipo="texto_principal" script="latino" bbox="20,470,490,720">
     Conversus autem ad illas Jesus dixit. Filiae Jerusalem
     nolite flere super me. sed super vos ipsas flete. et fi-
     lios vestros. quia ecce venient dies. in quibus dicent
@@ -196,7 +200,8 @@
     catur Calvariae. ibi eum crucifixerunt. et latrones.
     unum a dextris. et alterum a sinistris. Jesus autem
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,470,980,600">
+
+  <bloco tipo="texto_principal" script="latino" bbox="510,470,980,720">
     dicebat. Pater dimitte illis non enim sciunt quid fa-
     ciunt. Dividentes autem vestimenta ejus. miserunt
     sortes. Et stabat populus expectans. Et deridebant
@@ -209,50 +214,59 @@
     breicis. Hic est Rex Judaeorum. Unus autem de his
     qui pendebant
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,600,980,620">
+
+  <bloco tipo="texto_principal" script="latino" bbox="20,720,980,750">
     CODEX CORBEIENSIS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="20,620,490,700">
+
+  <bloco tipo="texto_principal" script="latino" bbox="20,750,490,850">
     28. Filiae Israel, nolite flere me; sed vos ipsas
     flete, et filios vestros,
     29. Et ubera, quae non nutrierunt.
     31. si in humido ligno haec faciunt.
     37. Si tu es Rex Judaeorum, libera te.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,620,980,700">
+
+  <bloco tipo="texto_principal" script="latino" bbox="510,750,980,850">
     38. Litteris Graecis, et Hebraicis. Omittit et Latinis.
     Ibid. Rex Judaeorum hic est.
-    39. Unus autem de pendentibus latronibus...Nonne
+    39. Unus autem de pendentibus latronibus... Nonne
     tu es Christus ? libera te, et nos.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="20,700,980,850">
+
+  <bloco tipo="aparato_critico" script="latino" bbox="20,850,980,880">
     VARIANTES LECTIONES.
-    ¹ Mm. quoniam veniunt. Vulg. quoniam ecce venient.
-    ² Gnt. et Mm. Cooperite nos. Vulg. Operite nos.
-    ³ Gnt. ut crucifigerentur. Vulg. ut interficerentur.
-    ⁴ Gal. et Mm. qui dicitur Calvariae. Vulg. qui vocatur
-    Calvariae.
-    ⁵ Gal. expectantes... Principes Sacerdotum, cum Sad-
-    ducaeis... se ipsum salvum faciat. Mm. expectans... Sadu-
-    caeis... se non salvum facit. Vulg. spectans...Principes cum
-    eis... se salvum faciat.
-    ⁶ Gal. Si tu es Christus rex, etc.
-    ⁷ Gal. ex his qui pendebat. Mm. ex iis qui pendebant.
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="20,850,980,950">
+
+  <bloco tipo="aparato_critico" script="latino" bbox="20,880,490,970">
+    1 Mm. quoniam veniunt. Vulg. quoniam ecce venient.
+    2 Gat. et Mm. Cooperite nos. Vulg. Operite nos.
+    3 Gat. ut crucifigerentur. Vulg. ut interficerentur.
+    4 Gat. et Mm. qui dicitur Calvariae. Vulg. qui vocatur
+    Calvariae.
+    5 Gat. expectantes... Principes Sacerdotum, cum Sad-
+    ducacis... se ipsum salvum faciat. Mm. expectans... Sadu-
+    caeis... se non salvum facit. Vulg. spectans... Principes cum
+    eis... se salvum faciat.
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="510,880,980,950">
+    6 Gat. Si tu es Christus rex, etc.
+    7 Gat. ex his qui pendebat. Mm. ex iis qui pendebant.
+  </bloco>
+
+  <bloco tipo="nota" script="misto" bbox="20,950,980,985">
     BLANCHINI NOTÆ.
     (a) Deest ter super, etiam in cod. Cant. — (b) Ante dividentes, deest Jesus autem dicebat : Pater, dimitte
-    illis ; non enim sciunt, quid faciunt, etiam in cod. Cant.— (c) Ita et tex. Gr. κλῆρον. — (d) Ita et tex. Gr.
+    illis ; non enim sciunt, quid faciunt, etiam in cod. Cant. — (c) Ita et tex. Gr. κλῆρον. — (d) Ita et tex. Gr.
     προσέφερον. Ibid. post. illi, deest et, etiam in cod. Cant.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="20,950,980,1000">
+
+  <bloco tipo="rodape" script="latino" bbox="0,985,1000,1000">
     Digitized by Google
   </bloco>
+
   <notas>
-    Transcrição de página de edição crítica do Evangelho de Lucas comparando códices (Vercellensis, Veronensis, Brixianus, Corbeiensis).
-    Texto em latim com inserções de grego nas notas finais (Blanchini Notæ).
-    Símbolos críticos como †, ², ⁴, , ⁶,  mantidos.
-    Letras (a), (b), (c), (d) transcritas inline conforme aparecem no texto das colunas superiores.
-    A primeira letra da nota Blanchini foi transcrita como (a) por coerência sequencial com (b), (c), (d), embora graficamente ambígua.
+    Disposição transcrita em leitura esquerda→direita, respeitando a paginação e as colunas. Letras (a)-(d) mantidas inline no texto; não há letras centrais A/B/C/D visíveis como nota marginal nesta imagem.
   </notas>
 </pagina>

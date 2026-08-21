@@ -1,24 +1,24 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,80">
-    359 HEXAPLORUM QUÆ SUPERSUNT. 360
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="120,65,980,145">
+    859 HEXAPLORUM QUÆ SUPERSUNT. 860
   </bloco>
-  
-  [!-- Coluna Esquerda: Hebraico --]
-  <bloco tipo="texto_principal" script="hebraico" bbox="100,90,350,560">
-    TO EBPAIKON.
-    17 אני אל-אלהים אקרא ויהוה יושיעני
-    19, 20 כי-רבים הם עמדי : ישמע אל ויענם ושב קדם
+  <bloco tipo="texto_principal" script="hebraico" bbox="115,150,420,455">
+    ΤΟ ΕΒΡΑΙΚΟΝ.
+    17 אני אל אלהים אקרא ויהוה
+    יושיעני
+    19, 20 כי רבים היו עמדי :
+    ישמע אל ויענם וישב קדם
     אין חליפות למו ולא יראו אלהים
     21 שלח ידיו בשלמיו חלל בריתו
-    22 חלקו מחמאת פיו וקרבו רכז דבריו משכו שמנו פתחת
-    23 והשלך על-יהוה דרכך
-    לא-יתן לעולם מוט לצדיק
+    22 חלקו מחמאות פיו וקרב לבו
+    רכו דבריו משמן והמה פתיחות
+    23 יכלכלך
+    לא יתן לעולם מוט לצדיק
     24 ואתה אלהים תורידם לבאר שחת
+    אנשי דמים ומרמה לא יחצו ימיהם
   </bloco>
-
-  [!-- Coluna do Meio: Hebraico em Letras Gregas --]
-  <bloco tipo="texto_principal" script="grego" bbox="380,90,550,560">
-    TO EBPAIKON
+  <bloco tipo="texto_principal" script="grego" bbox="425,150,660,455">
+    ΤΟ ΕΒΡΑΙΚΟΝ
     Ἑλληνικοῖς γράμμασι.
     17.
     19, 20.
@@ -27,27 +27,23 @@
     23.
     24.
   </bloco>
-
-  [!-- Coluna Direita: Aquila (Grego) --]
-  <bloco tipo="texto_principal" script="grego" bbox="600,90,900,560">
+  <bloco tipo="texto_principal" script="grego" bbox="685,150,975,455">
     ΑΚΥΛΑΣ.
-    7. Ἐγὼ πρὸς τὸν Θεὸν καλέσω,
+    17. Ἐγὼ πρὸς τὸν Θεὸν καλέσω,
     καὶ Κύριος σώσει με.
     19, 20.
     Οἷς οὐκ εἰσὶν ἀλλαγαὶ αὐταῖς,
-    καὶ οὐκ ἐφοβήθησαν τὸν Θεόν.
+    καὶ οὐκ ἐφοήθησαν τὸν Θεόν.
     21. Ἀπέστειλε χεῖρα αὐτοῦ ἐν
     εἰρηνικοῖς αὐτοῦ.
     22. Λόγχαι.
     23. Ἀγαπήσει σε.
     24.
-    Ἄνδρες αἱμάτων καὶ ἐπιθέσεις
+    Ἄνδρες αἱμάτων καὶ ἐπιθέσεως
     οὐ μὴ ἡμισεύσουσι τὰς ἡμέρας αὐ-
     τῶν.
   </bloco>
-
-  [!-- Coluna Esquerda: Versio Hebraici Text --]
-  <bloco tipo="texto_principal" script="latino" bbox="100,570,350,930">
+  <bloco tipo="texto_principal" script="latino" bbox="115,455,410,930">
     VERSIO HEBRAICI TEXT.
     17. Ego ad Deum clamabo, et
     Dominus servabit me. Hieron., ego
@@ -58,7 +54,7 @@
     miliabit eos, et sedens quondam.
     Hieron., multi enim fuerunt ad-
     versum me. Exaudiet Deus et hu-
-    miliabit eos, qui Judex est ab ini-
+    miliabit eos, qui judex est ab ini-
     tio.
     Non mutationes eis, et non ti-
     muerunt Deum. Hieron., non enim
@@ -90,12 +86,10 @@
     sanguinum et dolosi non dimidia-
     bunt dies suos.
   </bloco>
-
-  [!-- Coluna do Meio: Vulgata Latina --]
-  <bloco tipo="texto_principal" script="latino" bbox="380,570,600,930">
+  <bloco tipo="texto_principal" script="latino" bbox="425,455,675,930">
     VULGATA LATINA.
     17. Ego autem ad Deum clama-
-    vi, et Dominus salvabit me.
+    vi, et Dominus salvavit me.
     19, 20. Quoniam inter multos
     erant mecum. Exaudiet Deus et
     humiliabit illos, qui est ante sæ-
@@ -117,9 +111,7 @@
     Viri sanguinum et dolosi non
     dimidiabunt dies suos.
   </bloco>
-
-  [!-- Coluna Direita: Aquila (Latim) --]
-  <bloco tipo="texto_principal" script="latino" bbox="620,570,900,930">
+  <bloco tipo="texto_principal" script="latino" bbox="685,455,975,930">
     AQUILA.
     17. Ego ad Deum clamabo, et
     Dominus salvabit me.
@@ -130,20 +122,12 @@
     ficos ejus.
     22. Lanceæ.
     23. Diliget te.
-    24
+    24.
     Viri sanguinum et doli non di-
     midiabunt dies suos.
   </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="550,950,850,980">
+  <bloco tipo="rodape" script="latino" bbox="620,955,940,995">
     Digitized by Google
   </bloco>
-  
-  <notas>
-    A página apresenta uma configuração poliglota complexa (Hexapla).
-    Coluna 1: Texto Hebraico (TO EBPAIKON) e sua tradução latina (VERSIO HEBRAICI TEXT).
-    Coluna 2: Título "Hebraico em letras gregas" (TO EBPAIKON Ellhnikois grammassi), mas apenas os números dos versículos aparecem na parte superior; abaixo está a Vulgata Latina.
-    Coluna 3: Versão de Áquila em Grego (AKYLAS) e sua tradução latina (AQUILA).
-    O texto hebraico visível para o versículo 23 parece ser "והשלך על-יהוה דרכך", embora a tradução latina ao lado diga "Educabit te" (que corresponderia a "yechalklecha"). Transcrevi o visível.
-  </notas>
+  <notas>Não se observam identificadores marginais A, B, C ou D na imagem; a leitura do hebraico superior é feita pela impressão visível, sem normalização.</notas>
 </pagina>

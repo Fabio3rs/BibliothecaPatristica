@@ -47,10 +47,14 @@ def embed_queries(
     keywords: list[str],
     model: str = DEFAULT_MODEL,
     ollama_url: str = DEFAULT_OLLAMA_URL,
+    task_description: str = INSTRUCT,
 ) -> list[list[float]]:
     payload = {
         "model": model,
-        "input": [build_instruct_query(k) for k in keywords],
+        "input": [
+            get_detailed_instruct(task_description=task_description, query=k)
+            for k in keywords
+        ],
     }
     resp = requests.post(ollama_url, json=payload, timeout=300)
     resp.raise_for_status()

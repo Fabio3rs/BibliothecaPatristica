@@ -40,6 +40,7 @@ img_b64 = base64.b64encode(Path(image_path).read_bytes()).decode("utf-8")
 
 payload = {
     "model": "qwen3.5:397b-cloud",
+    # "model": "gemma4:cloud",
     # "model": "kimi-k2.6:cloud",
     # "model": "qwen3.5:27b",
     "messages": [
@@ -50,6 +51,7 @@ payload = {
             "images": [img_b64],
         },
     ],
+    "options": {"max_soft_tokens": 560},
     "stream": False,
 }
 

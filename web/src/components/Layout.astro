@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Breadcrumbs from './Breadcrumbs.astro';
+import AgentChat from './AgentChat.astro';
 import { useTranslations, getLocaleBase, getLocaleRouteUrl, getLocaleUrl } from '../i18n';
 import type { SupportedLocale } from '../i18n';
 
@@ -18,13 +19,33 @@ const baseWithSlash = `${base}/`;
 const t = useTranslations(Astro.currentLocale);
 // Mapeia locale para tag BCP-47 válida no atributo lang do HTML
 const locale = (Astro.currentLocale ?? 'pt-br') as SupportedLocale;
-const htmlLang = locale === 'en' ? 'en' : locale === 'it' ? 'it-IT' : 'pt-BR';
+const htmlLang = locale === 'en' ? 'en' : locale === 'it' ? 'it-IT' : locale === 'fr' ? 'fr-FR' : 'pt-BR';
 const localeBase = getLocaleBase(locale, base);
+const ogLocale = locale === 'en' ? 'en_US' : locale === 'it' ? 'it_IT' : locale === 'fr' ? 'fr_FR' : 'pt_BR';
+const siteBase = Astro.site
+  ? (Astro.site.toString().endsWith('/') ? Astro.site.toString() : `${Astro.site.toString()}/`)
+  : `${Astro.url.origin}${baseWithSlash}`;
+
+function absoluteLocaleUrl(targetLocale: SupportedLocale) {
+  const appPath = getLocaleUrl(targetLocale, Astro.url.pathname, base);
+  const relative = appPath.startsWith(base) ? appPath.slice(base.length) : appPath;
+  return new URL(relative.replace(/^\//, ''), siteBase).toString();
+}
+
+const canonicalUrl = absoluteLocaleUrl(locale);
+const socialImageUrl = new URL('favicon.svg', siteBase).toString();
+const alternateLocales = [
+  { locale: 'pt-br', hreflang: 'pt-BR' },
+  { locale: 'en', hreflang: 'en' },
+  { locale: 'it', hreflang: 'it' },
+  { locale: 'fr', hreflang: 'fr' },
+] as const;
 
 const localeOptions = [
   { code: 'pt-br', label: t.langSwitchPt },
   { code: 'en', label: t.langSwitchEn },
   { code: 'it', label: t.langSwitchIt },
+  { code: 'fr', label: t.langSwitchFr },
 ] as const;
 ---
 <!doctype html>
@@ -34,13 +55,23 @@ const localeOptions = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {alternateLocales.map((alternate) => (
+      <link rel="alternate" hreflang={alternate.hreflang} href={absoluteLocaleUrl(alternate.locale)} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={absoluteLocaleUrl('pt-br')} />
     <link rel="icon" type="image/svg+xml" href={`${baseWithSlash}favicon.svg`} />
     <meta name="theme-color" content="#1f6b7a" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Bibliotheca Patristica" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={`${baseWithSlash}favicon.svg`} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content={ogLocale} />
+    {alternateLocales.filter((alternate) => alternate.locale !== locale).map((alternate) => (
+      <meta property="og:locale:alternate" content={alternate.locale === 'pt-br' ? 'pt_BR' : alternate.locale === 'en' ? 'en_US' : alternate.locale === 'it' ? 'it_IT' : 'fr_FR'} />
+    ))}
+    <meta property="og:image" content={socialImageUrl} />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
@@ -150,6 +181,7 @@ const localeOptions = [
         </div>
       </footer>
     </div>
+    <AgentChat />
     <script type="module" define:vars={{ basePath: base }}>
 
       const toggle = document.getElementById('nav-toggle');
@@ -160,6 +192,7 @@ const localeOptions = [
         const lower = String(locale || '').toLowerCase();
         if (lower === 'en' || lower.startsWith('en-')) return 'en';
         if (lower === 'it' || lower.startsWith('it-')) return 'it';
+        if (lower === 'fr' || lower.startsWith('fr-')) return 'fr';
         return 'pt-br';
       }
 
@@ -181,9 +214,10 @@ const localeOptions = [
           : pathname;
         const normalizedPath = withoutBase.startsWith('/') ? withoutBase : `/${withoutBase}`;
         let strippedPath = normalizedPath;
-        if (normalizedPath === '/en' || normalizedPath === '/it') strippedPath = '/';
+        if (normalizedPath === '/en' || normalizedPath === '/it' || normalizedPath === '/fr') strippedPath = '/';
         else if (normalizedPath.startsWith('/en/')) strippedPath = normalizedPath.slice(3) || '/';
         else if (normalizedPath.startsWith('/it/')) strippedPath = normalizedPath.slice(3) || '/';
+        else if (normalizedPath.startsWith('/fr/')) strippedPath = normalizedPath.slice(3) || '/';
         const targetBase = localeBase(targetLocale).replace(/\/$/, '');
         const routePath = strippedPath === '/' ? '' : strippedPath;
         return `${targetBase}${routePath}${search}${hash}` || '/';

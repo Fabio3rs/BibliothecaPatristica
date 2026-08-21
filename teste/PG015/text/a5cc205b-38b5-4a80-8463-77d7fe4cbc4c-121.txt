@@ -1,17 +1,34 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="50,30,950,60">
-    237 GENESIS CAP. XXII. 238
-  </bloco>
-  
-  [!-- Top Table Section --]
-  <bloco tipo="texto_principal" script="grego" bbox="100,70,300,180">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="80,78,130,118">237</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="360,78,640,118">GENESIS CAP. XXII.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="865,78,930,118">238</bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="90,130,300,320">
     ΣΥΜΜΑΧΟΣ.
     14. Βηρσαβεε.
     18.
     31. Βηρσαβεε.
     33. Δένδρων φυτείαν.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,190,300,300">
+
+  <bloco tipo="texto_principal" script="grego" bbox="330,130,720,320">
+    Ο.
+    14. Φρέαρ τοῦ ὅρκου.
+    18. Κράτησον τῇ χειρί σου αὐτό.
+    Ἄλλος, κράτησον τῆς χειρὸς αὐτοῦ.
+    31. Φρέαρ ὁρκισμοῦ.
+    33. Ἄρουραν.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="770,130,940,320">
+    ΘΕΟΔΟΤΙΩΝ.
+    14.
+    18.
+    31.
+    33.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="90,330,300,505">
     SYMMACHUS.
     14. Bersabee.
     18.
@@ -19,15 +36,7 @@
     33. Arborum plantationem.
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="350,70,600,180">
-    V.
-    14. Φρέαρ τοῦ ὅρκου.
-    18. Κράτησον τῇ χειρί σου αὐτό.
-    Ἄλλος, κράτησον τῆς χειρὸς αὐτοῦ.
-    31. Φρέαρ ὁρκισμοῦ.
-    33. Ἄρουραν.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,190,600,300">
+  <bloco tipo="texto_principal" script="latino" bbox="330,330,725,505">
     LXX INTERPRETES.
     14. Puteus juramenti.
     18. Tene illum manu tua. Alius,
@@ -36,14 +45,7 @@
     33. Agrum.
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="650,70,850,180">
-    ΘΕΟΔΟΤΙΟΝ.
-    14.
-    18.
-    31.
-    33.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,190,850,300">
+  <bloco tipo="texto_principal" script="latino" bbox="770,330,940,505">
     THEODOTIO.
     14.
     18.
@@ -51,39 +53,55 @@
     33.
   </bloco>
 
-  [!-- Middle Notes Section --]
-  <bloco tipo="cabecalho" script="latino" bbox="250,310,750,330">
-    Notæ et variæ lectiones ad cap. XXI Genesis.
-  </bloco>
-  <bloco tipo="nota" script="misto" bbox="100,340,480,420">
-    pan, agrum ; Θ. τὰς δρῦς, quercus.
+  <bloco tipo="cabecalho" script="latino" bbox="250,520,760,560">Notæ et variæ lectiones ad cap. XXI Genesis.</bloco>
+
+  <bloco tipo="nota" script="misto" bbox="85,560,490,840">
+    Ἄρουραν, agrum ; Θ. τὰς δρῦς, quercus.
     Coislin. Ἀ., δενδρῶνα, Σ., φυτείαν. Hæc videtur
     esse vera lectio. Nam ea quam ex editione Romana
     protulimus, Ἀ., Σ., δένδρων φυτείαν, vitio libra-
     riorum corrupta est, ut putamus. Lectum fuisse
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="520,340,900,420">
+
+  <bloco tipo="nota" script="misto" bbox="515,560,940,840">
     videtur initio. Ἀ., Σ., δενδρῶνα, φυτείαν, ita ut
     δενδρῶνα Aquilæ, φυτείαν Symmachi esset. Quæ
     vitio laborare existimantes qui descripsere, δένδρων
     φυτείαν posuerunt.
   </bloco>
 
-  [!-- Lower Table Section --]
-  <bloco tipo="cabecalho" script="misto" bbox="150,440,850,470">
-    CAPUT XXII GENESIS. V. ΘΕΟΔΟΤΙΟΝ.
-    ΣΥΜΜΑΧΟΣ.
-  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="280,875,740,915">CAPUT XXIII GENESIS.</bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="100,480,300,600">
+  <bloco tipo="texto_principal" script="grego" bbox="90,930,310,1095">
+    ΣΥΜΜΑΧΟΣ.
     1. Ἐδόξασεν.
     2. Τὸν μόνον σου.
-    Γῆν τς ὀπτασίας.
+    Τὴν τῆς ὀπτασίας.
     12. Μονογενοῦς.
     13.
     Ἐν δικτύῳ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,610,300,720">
+
+  <bloco tipo="texto_principal" script="grego" bbox="330,930,720,1095">
+    Ο.
+    1. Ἐπείρασε.
+    2. Τὸν ἀγαπητόν.
+    Εἰς τὴν γῆν ὑψηλήν.
+    12. Ἀγαπητοῦ.
+    13. Κριὸς κατεχόμενος.
+    Ἐν αὐτῷ Σαβεκ τῶν κεράτων.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="770,930,940,1095">
+    ΘΕΟΔΟΤΙΩΝ.
+    1.
+    2.
+    12.
+    13.
+    Ἐν φυτῷ Σαβεκ τῶν κεράτων αὐτοῦ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="90,1110,310,1295">
     SYMMACHUS.
     1. Glorificavit.
     2. Unicum tuum.
@@ -93,15 +111,7 @@
     In rete.
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="350,480,600,600">
-    1. Ἐπείρασε.
-    2. Τὸν ἀγαπητόν.
-    Εἰς τὴν γῆν ὑψηλήν.
-    12. Ἀγαπητοῦ.
-    13. Κριὸς κατεχόμενος.
-    Ἐν αὐτῷ Σαβεκ τῶν κεράτων.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,610,600,720">
+  <bloco tipo="texto_principal" script="latino" bbox="330,1110,720,1295">
     LXX INTERPRETES.
     1. Tentavit.
     2. Dilectum.
@@ -111,14 +121,7 @@
     In virgulto Sabec cornibus suis.
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="650,480,900,600">
-    1.
-    2.
-    12.
-    13.
-    Ἐν φυτῷ Σαβεκ τῶν κεράτων αὐτοῦ.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,610,900,720">
+  <bloco tipo="texto_principal" script="latino" bbox="770,1110,940,1295">
     THEODOTIO.
     1.
     2.
@@ -127,51 +130,66 @@
     In virgulto Sabec cornibus suis.
   </bloco>
 
-  [!-- Bottom Notes Section --]
-  <bloco tipo="cabecalho" script="latino" bbox="250,730,750,750">
-    Notæ et variæ lectiones ad cap. XXII Genesis.
-  </bloco>
-  <bloco tipo="nota" script="misto" bbox="100,760,480,930">
-    solet.
+  <bloco tipo="cabecalho" script="latino" bbox="250,1300,760,1340">Notæ et variæ lectiones ad cap. XXII Genesis.</bloco>
+
+  <bloco tipo="nota" script="misto" bbox="85,1340,500,1945">
     Ibid. In hunc locum Hieronymus Quæst. in Gen. :
     « Et elevans Abraham oculos suos : et ecce aries post
     tergum ejus tenebatur in virgulto Sabech cornibus
     suis. » Ridiculam rem in hoc loco Eusebius Emisenus
     est locutus : Sabech, inquiens, dicitur hircus, qui re-
     ctis cornibus et ad carpendas arboris frondes sublimis
-    attollitur. Rursus Aquila συγγενῶνα interpretatus est :
+    attollitur. Rursus Aquila συχνεῶνα interpretatus est :
     quem nos veprem possumus dicere, vel spinetum, et ut
     verbi vim interpretemur, condensa et inter se implexa
     virgulta. Unde et Symmachus in eamdem ductus
     opinionem : Et apparuit, ait, aries post hoc retentus
     cornibus suis. Verum quibusdam, in hoc dumtaxat
     loco, melius videntur interpretati esse LXX et Theo-
-    dotio qui ipsum nomen Sabech posuere dicentes : In
-    virgulto Sabech cornibus suis. » Etenim συγγενὴν,
-    sive ריע, quod Aquila posuit et Symmachus, per sin
-    litteram scribitur ; hic vero SAMECH littera posita est ;
-  </bloco>
-  <bloco tipo="nota" script="misto" bbox="520,760,900,930">
+    dotio qui ipsum nomen Sabech posuerc dicentes : In
+    virgulto Sabech cornibus suis. — Etenim συχνεῶνα,
+    sive veprem, quod Aquila posuit et Symmachus, per sin
+    litteram scribitur ; hic vero samech littera posita est ;
     ex quo manifestum est, non interpretationem stir-
     pium condensarum, et in modum retis inter se vir-
-    gulta contexta verbum Sabech , sed nomen sonare
+    gulta contexta verbum Sabech, sed nomen sonare
     virgulti, quod ita Hebraice dicitur. Ego vero diligen-
-    ter inquirens, συγγενῶνα per SAMECH litteram scribi
-    crebro reperi. In editio Hieronymi Plantiniano legi-
-    tur ἐν συγγενῷ. Mss. quamplurimi Græci ἐν συγγενῇ
+    ter inquirens, συχνεῶνα samech litteram scribi
+    crebro reperi. In edito Hieronymi Plantiniano legi-
+    tur ἐν συχνεῷ. Mss. quamplurimi Græci ἐν συχνεῷ
     habent. In hanc vocem hæc Diodorus in catenis
-    omnibus : Τὸ « ἐν φυτῷ » οὐκ ἔχει· ὁ Σύρος, μόνον
-    δὲ τὸ « Σαβεκ. » Τοῦτο δ τὸ ὄνομα τοῦ φυτοῦ εἶναι
-    νομίζω. Τοῖς δὲ Ἑβραίοις δοκεῖ τ Σαβεκ ἄφεσιν
+    omnibus : Τὸ « ἐν φυτῷ » οὐκ ἔχει ὁ Σύρος, μόνον
+    δὲ τὸ « Σαβεκ. » Τοῦτο δὲ τὸ ὄνομα τοῦ φυτοῦ εἶναι
+    νομίζω. Τοῖς δὲ Ἑβραίοις δοκεῖ τὸ Σαβεκ ἄφεσιν
     σημαίνειν. Id est : Syrus non habet « In virgulto, »
     sed tantum « Sabec. » Hoc autem nomen esse vir-
     gulti existimo. Hebræi putant Sabec significare « re-
-    missionem, » hoc postremum τοῦ Sabec apud He-
+    missionem, » hoc postremum τὸ Sabec apud He-
     bræos significatum, memorant alii interpretes in
     catenis.
   </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="450,960,750,990">
-    Digitized by Google
+  <bloco tipo="nota" script="misto" bbox="515,1340,940,1945">
+    ex quo manifestum est, non interpretationem stir-
+    pium condensarum, et in modum retis inter se vir-
+    gulta contexta verbum Sabech, sed nomen sonare
+    virgulti, quod ita Hebraice dicitur. Ego vero diligen-
+    ter inquirens, συχνεῶνα samech litteram scribi
+    crebro reperi. In edito Hieronymi Plantiniano legi-
+    tur ἐν συχνεῷ. Mss. quamplurimi Græci ἐν συχνεῷ
+    habent. In hanc vocem hæc Diodorus in catenis
+    omnibus : Τὸ « ἐν φυτῷ » οὐκ ἔχει ὁ Σύρος, μόνον
+    δὲ τὸ « Σαβεκ. » Τοῦτο δὲ τὸ ὄνομα τοῦ φυτοῦ εἶναι
+    νομίζω. Τοῖς δὲ Ἑβραίοις δοκεῖ τὸ Σαβεκ ἄφεσιν
+    σημαίνειν. Id est : Syrus non habet « In virgulto, »
+    sed tantum « Sabec. » Hoc autem nomen esse vir-
+    gulti existimo. Hebræi putant Sabec significare « re-
+    missionem, » hoc postremum τὸ Sabec apud He-
+    bræos significatum, memorant alii interpretes in
+    catenis.
   </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="720,954,965,995">Digitized by Google</bloco>
+
+  <notas>Algumas leituras gregas centrais e certas formas minúsculas no rodapé da nota estão ligeiramente incertas na imagem; mantidas conforme leitura visual, sem normalização.</notas>
 </pagina>

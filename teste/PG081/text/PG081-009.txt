@@ -1,61 +1,35 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="120,60,880,150">
-TRADITIO CATHOLICA.
-SÆCULUM V, ANNUS 458.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="80,160,920,390">
-ΘΕΟΔΩΡΗΤΟΥ
-ΕΠΙΣΚΟΠΟΥ ΚΥΡΟΥ
-ΑΠΑΝΤΑ
-—
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,420,880,680">
-THEODORETI
-CYRENSIS EPISCOPI
-OPERA OMNIA
-POST RECENSIONEM JACOBI SIRMONDI
-EDIDIT, GRÆCA E CODICIBUS LOCUPLETAVIT, ANTIQUIORES EDITIONES ADHIBUIT, VERSIONEM L. TINAM RECOGNOVIT, LECTIONUM VARIETATES, AMPLISSIMOS INDICES ADJECIT
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="140,700,860,860">
-JOAN. LUDOV. SCHULZE
-CR. ET OO. LL. IN ACAD. FRIDEN. P. P. O.
-(Halae 1769 et ann. seqq.)
-ACCESSIT AUCTARIUM THEODORETI QUOD OLIM ADORNAVIT JOAN. GARNERIUS
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,880,880,980">
-ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE.
-BIBLIOTHECÆ CLERI UNIVERSÆ,
-SIVE
-CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="200,1000,800,1080">
-──────
-TOMUS SECUNDUS.
-──────
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="120,1100,880,1310">
-VENERUNT QUINQUE VOLUMINA 60 FRANCIS GALLICIS.
-EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
-IN VIA DICTA D'AMBOISE, OLIM PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MOENIA PARISINA.
-1864
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="120,1340,240,1400">
-R
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="560,1340,920,1400">
-Digitized by Google
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="40,10,80,40">
-.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="760,1180,980,1410">
-BIBL. CA. BODL.
-  </bloco>
-  <notas>
-- Scriptos principais: blocos em grego transcritos com script="grego"; restantes em latim com script="latino".
-- Agrupei blocos por grupos tipográficos (título grego separado; título latino e informações editoriais em blocos sucessivos).
-- Leitura incerta: "VERSIONEM L. TINAM RECOGNOVIT" (possível leitura original LATINAM, mas transcrevi exatamente o que se observa: "L. TINAM").
-- Selo circular no canto inferior direito parcialmente legível; transcrição aproximada como "BIBL. CA. BODL." em bloco nota_marginal.
-- Linha horizontal e pequenos ornamentos representados por traços simples; não foram inventadas palavras.
-  </notas>
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="nota_marginal" script="latino" bbox="110,33,116,38">•</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="283,69,711,115">TRADITIO CATHOLICA.
+SÆCULUM V, ANNUS 458.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="101,128,898,181">ΘΕΟΔΩΡΗΤΟΥ</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="336,207,671,230">ΕΠΙΣΚΟΠΟΥ ΚΥΡΟΥ</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="361,247,630,280">ΑΠΑΝΤΑ</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="450,302,550,313">—</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="208,335,791,381">THEODORETI</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="374,409,626,424">CYRENSIS EPISCOPI</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="341,449,659,470">OPERA OMNIA</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="286,493,717,507">POST RECENSIONEM JACOBI SIRMONDI</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="78,527,917,551">EDIDIT, GRÆCA E CODICIBUS LOCUPLETAVIT, ANTIQUIORES EDITIONES ADHIBUIT, VERSIONEM
+LATINAM RECOGNOVIT, LECTIONUM VARIETATEM, AMPLISSIMOS INDICES ADJECIT</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="310,568,690,589">JOAN. LUDOV. SCHULZE</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="354,605,641,616">GR. ET OO. LL. IN ACAD. FRIDER. P. P. O.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="398,629,602,645">(Halæ 1769 et ann. seqq.)</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="186,657,820,676">ACCESSIT AUCTARIUM THEODORETI QUOD OLIM ADORNAVIT JOAN. GARNERIUS</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="223,704,777,722">ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="289,730,715,744">BIBLIOTHECÆ CLERI UNIVERSÆ,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="481,754,518,764">SIVE</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="157,774,834,792">CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="313,842,694,851">————————</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="373,850,630,872">TOMUS SECUNDUS.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="313,875,694,884">————————</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="840,773,982,884">[ilegivel]</bloco>
+  <bloco tipo="rodape" script="latino" bbox="282,909,718,924">VENERUNT QUINQUE VOLUMINA 60 FRANCIS GALLICIS.</bloco>
+  <bloco tipo="rodape" script="latino" bbox="208,934,867,975">EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM.
+IN VIA DICTA D’AMBOISE, OLIM PROPE PORTAM LUTETIÆ PARISIORUM VULGO D’ENFER
+NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MOENIA PARISINA.</bloco>
+  <bloco tipo="rodape" script="latino" bbox="480,978,522,993">1864</bloco>
+  <bloco tipo="rodape" script="latino" bbox="334,916,401,954">R</bloco>
+  <bloco tipo="rodape" script="latino" bbox="604,970,805,991">Digitized by Google</bloco>
+  <notas>Carimbo circular parcialmente legível no canto inferior direito; pequenas manchas e marcas isoladas não foram transcritas.</notas>
 </pagina>

@@ -1,0 +1,139 @@
+---
+import Layout from '../Layout.astro';
+import { getLocaleBase, getLocaleRouteUrl, useTranslations } from '../../i18n';
+import type { SupportedLocale } from '../../i18n';
+import type { SeoVolumePayload } from '../../lib/seoIndices';
+
+interface Props {
+  payload: SeoVolumePayload;
+}
+
+const { payload } = Astro.props as Props;
+const locale = (Astro.currentLocale ?? 'pt-br') as SupportedLocale;
+const t = useTranslations(locale);
+const base = import.meta.env.BASE_URL || '/';
+const basePath = base.endsWith('/') ? base.slice(0, -1) : base;
+const volumeSeoHref = getLocaleRouteUrl(locale, `seo/volumes/${encodeURIComponent(payload.volumeId)}`, base);
+const indicesHref = getLocaleRouteUrl(locale, 'indices', base, `?volume=${encodeURIComponent(payload.volumeId)}`);
+const pageTitle = t.seoThematicPageTitle(payload.volumeId);
+const description = t.seoThematicDescription(payload.volumeId);
+
+function withBase(path: string) {
+  const clean = path.startsWith('/') ? path : `/${path}`;
+  return `${basePath}${clean}`;
+}
+---
+
+<Layout
+  title={pageTitle}
+  description={description}
+  breadcrumbs={[
+    { label: t.breadcrumbHome, href: getLocaleBase(locale, base) },
+    { label: t.breadcrumbIndices, href: getLocaleRouteUrl(locale, 'indices', base) },
+    { label: payload.volumeId, href: volumeSeoHref },
+    { label: t.seoThematicBreadcrumb },
+  ]}
+  showPrimaryNav={false}
+>
+  <section class="card thematic-hero" style="margin-top:var(--space-4);">
+    <div>
+      <p class="eyebrow">{t.seoThematicBreadcrumb}</p>
+      <h1>{payload.volumeId} — {payload.title}</h1>
+      <p>{t.seoThematicIntro}</p>
+    </div>
+    <div class="hero-actions">
+      <a class="button secondary" href={volumeSeoHref}>{t.seoBackToVolumeCatalog}</a>
+      <a class="button secondary" href={indicesHref}>{t.seoExploreCatalog}</a>
+    </div>
+  </section>
+
+  <aside class="translation-note" aria-label={t.indicesTranslationNoticeTitle}>
+    <strong>{t.indicesTranslationNoticeTitle}</strong>
+    <span>{t.indicesTranslationNoticeBody}</span>
+  </aside>
+
+  <section class="card toc-card" aria-label={t.seoThematicSectionsAria}>
+    <p class="eyebrow">{t.seoContents}</p>
+    <ul class="toc-list">
+      {payload.sections.map((section) => (
+        <li>
+          <a href={`#${section.anchorId}`}>
+            <span>
+              <strong>{section.title}</strong>
+              {section.titleOriginal && <small><b>{t.indicesOriginalLabel}:</b> {section.titleOriginal}</small>}
+            </span>
+            <span>{section.entries.length} {t.indicesEntriesLabel.toLowerCase()}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <div class="thematic-sections">
+    {payload.sections.map((section) => (
+      <section id={section.anchorId} class="card thematic-section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">{section.kind || t.seoSectionFallback}</p>
+            <h2>{section.title}</h2>
+            {section.titleOriginal && <p class="original-line"><b>{t.indicesOriginalLabel}:</b> {section.titleOriginal}</p>}
+            {section.titleSecondary && <p class="subtle">{section.titleSecondary}</p>}
+          </div>
+          <div class="head-actions">
+            <a class="button secondary" href={withBase(section.sectionHref)}>{t.seoOpenSection}</a>
+          </div>
+        </div>
+
+        <ol class="entry-list">
+          {section.entries.map((entry) => (
+            <li id={entry.anchorId}>
+              <div class="entry-copy">
+                <a class="entry-title" href={withBase(entry.viewerHref || entry.fallbackHref)}>{entry.title}</a>
+                {entry.titleOriginal && <p class="original-line"><b>{t.indicesOriginalLabel}:</b> {entry.titleOriginal}</p>}
+                {entry.subtitle && entry.subtitle !== entry.titleOriginal && <small>{entry.subtitle}</small>}
+                {entry.note && <small><b>{t.indicesNoteLabel}:</b> {entry.note}</small>}
+              </div>
+              <div class="entry-actions">
+                {entry.viewerHref ? (
+                  <a class="button secondary" href={withBase(entry.viewerHref)}>{t.seoOpenPage(entry.page)}</a>
+                ) : (
+                  <>
+                    {entry.editorialPage && <span class="badge">{t.seoEditorialReference(entry.editorialPage)}</span>}
+                    <a class="button secondary" href={withBase(entry.fallbackHref)}>{t.seoOpenInIndex}</a>
+                  </>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))}
+  </div>
+
+  <style>
+    .thematic-hero, .toc-card, .thematic-section { padding: var(--space-5); }
+    .thematic-hero { display: grid; gap: var(--space-4); border: 1px solid var(--color-border); background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 88%, var(--color-accent) 12%), var(--color-surface)); }
+    .thematic-hero h1, .thematic-section h2 { margin: 0; font-family: var(--font-serif); }
+    .thematic-hero p, .subtle, .original-line { margin: var(--space-2) 0 0; color: var(--color-muted); line-height: 1.6; }
+    .original-line { font-size: 0.88rem; }
+    .original-line b { color: var(--color-accent); }
+    .eyebrow { margin: 0 0 var(--space-2); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent); font-weight: 700; font-size: 0.8rem; }
+    .hero-actions, .head-actions, .entry-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+    .translation-note { display: grid; gap: var(--space-1); margin-top: var(--space-4); padding: var(--space-4); border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border)); border-radius: var(--radius-m); background: color-mix(in srgb, var(--color-accent) 8%, var(--color-surface)); }
+    .translation-note span { color: var(--color-muted); line-height: 1.55; }
+    .toc-card, .thematic-sections { margin-top: var(--space-5); }
+    .toc-list, .entry-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+    .toc-list { grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); margin-top: var(--space-3); }
+    .toc-list a, .entry-list li { display: flex; justify-content: space-between; gap: var(--space-3); align-items: start; padding: var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-s); background: var(--color-surface-2); text-decoration: none; color: var(--color-ink); }
+    .toc-list a:hover, .entry-list li:hover { border-color: var(--color-accent); }
+    .toc-list a > span:first-child { display: grid; gap: var(--space-1); }
+    .toc-list small { color: var(--color-muted); line-height: 1.4; }
+    .thematic-sections { display: grid; gap: var(--space-4); }
+    .section-head { display: flex; justify-content: space-between; gap: var(--space-4); align-items: end; margin-bottom: var(--space-4); }
+    .entry-copy { display: grid; gap: 0.35rem; min-width: 0; }
+    .entry-title { color: var(--color-ink); text-decoration: none; font-weight: 700; }
+    .entry-title:hover { color: var(--color-accent); }
+    .entry-copy p, .entry-copy small, .toc-list > li > a > span:last-child { margin: 0; color: var(--color-muted); }
+    @media (max-width: 820px) { .section-head, .entry-list li { flex-direction: column; align-items: start; } }
+  </style>
+</Layout>

@@ -1,146 +1,218 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,60">
-    2671 HEXAPLORUM QUÆ SUPERSUNT. 2671
-  </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="50,60,950,100">
-    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
-  </bloco>
-  
-  [!-- Coluna Hebraica (Esquerda Superior) --]
-  <bloco tipo="texto_principal" script="hebraico" bbox="50,100,300,480">
-    וקדש 2
-    מקדש קדש קדשים 3
-    ארץ קדשך היא 4
-    לשכת 5
-    האיפה 11
-    עשרה וחמש 12
-    מחמר 13
-    חק 14
-    מעשר הבתין מן־הגורן ומן־היקב
-    חמר כר־עשרת הבתים חמר
-    מי משקה ישראל 15
-    ואת־המנחה 17
-    פר 18
-    העזרה 19
-    מאיש שגה וכפר 20
-    בחמשה עשר יום 25
-  </bloco>
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="120,45,165,72">2671</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="385,45,697,72">HEXAPLORUM QUÆ SUPERSUNT.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="195,75,320,96">ΤΟ ΕΒΡΑΙΚΟΝ.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="470,73,660,110">ΤΟ ΕΒΡΑΙΚΟΝ
+Ἑλληνικοῖς γράμμασι.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="828,75,965,110">ΑΚΥΛΑΣ.</bloco>
 
-  [!-- Coluna Grega Numérica (Centro Superior) --]
-  <bloco tipo="texto_principal" script="latino" bbox="350,100,450,480">
-    2.
-    3.
-    4.
-    5.
-    11.
-    12.
-    13.
-    14.
-    15.
-    17.
-    18.
-    19.
-    20.
-    25.
-  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="120,96,402,520">[ilegivel] 2
 
-  [!-- Coluna Aquila Grego (Direita Superior) --]
-  <bloco tipo="texto_principal" script="grego" bbox="600,100,950,480">
-    2.
-    3.
-    4.
-    5. Ἑξέδρας.
-    11.
-    12.
-    13.
-    14.
-    Ὁ βάτος  μετρήτης ἀπὶ τοῦ
-    ρου· ὅτι οἱ ι' μετρῆται κόρος.
-    15. Ἀπὸ τῶν ὑδάτων Ἰσραήλ.
-    17. Καὶ δῶρον.
-    18.
-    19.
-    20.
-    25.
-  </bloco>
+מגרש
 
-  [!-- Cabeçalhos Latinos Inferiores --]
-  <bloco tipo="cabecalho" script="latino" bbox="50,490,950,520">
-    VERSIO HEBRAICI TEXT. VULGATA LATINA. AQUILA.
-  </bloco>
+המקדש קדש קדשים 3
 
-  [!-- Coluna Versio Hebraici (Esquerda Inferior) --]
-  <bloco tipo="texto_principal" script="latino" bbox="50,520,300,850">
-    2. Sanctificationem.
-    Suburbanum.
-    3. Sanctuarium sanctitas sanctitatum.
-    4. Sanctitas de terra ipsa.
-    5. Cubicula.
-    11. Epha.
-    12. Decem et quinque.
-    13. De chorom.
-    14. Et statutum.
-    Decimum bati de coro : decem
-    bati chomor, quia decem bati
-    chomor.
-    15. De irriguo Israel.
-    17. Et munus.
-    18. Vitulum.
-    19. Atrii auxilii.
-    20. A viro errante et a simplici.
-    25. In quinta decima die.
-  </bloco>
+קדש מן הארץ היא 4
 
-  [!-- Coluna Vulgata (Centro Inferior) --]
-  <bloco tipo="texto_principal" script="latino" bbox="350,520,600,850">
-    2. Sanctificatum.
-    Suburbana.
-    3. Templum sanctumque sanctorum.
-    4. Sanctificatum de terra erit.
-    5. Gazophylacia.
-    11. Ephi.
-    12. Quindecim.
-    13. De coro.
-    14. Mensura.
-    Decima pars cori est : et decem
-    bati corum faciunt, quia decem
-    bati implent corum.
-    15. De his quæ nutriunt Israel.
-    17. Et sacrificium.
-    18. Vitulum.
-    19. Crepidinis altaris.
-    20. Pro unoquoque qui ignoravit, et errore deceptus est.
-    25. Quintadecima die.
-  </bloco>
+לשכת 5
 
-  [!-- Coluna Aquila Latino (Direita Inferior) --]
-  <bloco tipo="texto_principal" script="latino" bbox="650,520,950,850">
-    2.
-    3.
-    4.
-    5. Exedras.
-    11.
-    12.
-    13.
-    14.
-    Batus metreles a coro, quia
-    decem metrete corus.
-    15. De aquis Israel.
-    17. Et donum.
-    18.
-    19.
-    20.
-    25.
-  </bloco>
+האיפה 11
 
-  [!-- Notas de Rodapé --]
-  <bloco tipo="aparato_critico" script="misto" bbox="50,860,950,950">
-    Notæ et variæ lectiones ad cap. XLV Ezechielis.
-    V. 1. Ἄλλος, δέκα. Drusius. [Etiam C, cum Ald. et Complut., δέκα. Idem C, ἀπὸ τῆς γῆς πέντε [מ]חצה,; Hebr., longitudo. DRACH.]
-    V. 2. Ἄλλος, ἁγίασμα. Ἄλλος, ἅγιον. Idem. [C, Καὶ ἔσται ἐκ τούτου [ח] εἰς τὸ ἁγίασμα. DRACH.] Ibid. Hieronymus : « Præcipit ut 50 cubitis per
-  </bloco>
-  
-  <bloco tipo="rodape" script="latino" bbox="500,960,800,990">
-    Digitized by Google
-  </bloco>
+עשרה וחמשה 12
+
+מחמר 13
+
+וחק 14
+
+מעשר הבת מן הגרן ומן היקב
+ועשר כר עשרת הבתים חמר
+
+מי משקה ישראל 15
+
+והמנחה 17
+
+פר 18
+
+העזרה 19
+
+מאיש שגה וכשגה 20
+
+בחמשה עשר יום 25</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="420,235,465,520">2.
+
+3.
+
+4.
+
+5.
+
+11.
+
+12.
+
+13.
+
+14.
+
+15.
+
+17.
+
+18.
+
+19.
+
+20.
+
+25.</bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="700,235,980,520">2.
+
+3.
+
+4.
+
+5. Ἐξέδρας.
+
+11.
+
+12.
+
+13.
+
+14.
+
+Ὁ βάτος ὁ μετρητὴς ἀπὸ τοῦ κόρου· ὅτι οἱ ιʹ μετρηταὶ κόρος.
+
+15. Ἀπὸ τῶν ὑδάτων Ἰσραήλ.
+
+17. Καὶ δῶρον.
+
+18.
+
+19.
+
+20.
+
+25.</bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="745,255,770,285">B.</bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="120,615,411,640">VERSIO HEBRAICI TEXT.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="431,615,693,640">VULGATA LATINA.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="810,615,906,640">AQUILA.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="120,640,411,885">2. Sanctificationem.
+
+Suburbanum.
+
+3. Sanctuarium sanctitas san-
+ctitatum.
+
+4. Sanctitas de terra ipsa.
+
+5. Cubicula.
+
+11. Epha.
+
+12. Decem et quinque.
+
+13. De chomor.
+
+14. Et statutum.
+
+Decimum bati de coro : decem
+bati chomor, quia decem bati
+chomor.
+
+15. De irriguo Israel.
+
+17. Et munus.
+
+18. Vitulum.
+
+19. Atrii auxilii.
+
+20. A viro errante et a sim-
+plici.
+
+25. In quinta decima die.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="420,640,693,885">2. Sanctificatum.
+
+Suburbana.
+
+3. Templum sanctumque san-
+ctorum.
+
+4. Sanctificatum de terra erit.
+
+5. Gazophylacia.
+
+11. Ephi.
+
+12. Quindecim.
+
+13. De coro.
+
+14. Mensura.
+
+Decima pars cori est : et decem
+bati corum faciunt, quia decem
+bati implent corum.
+
+15. De his quæ nutriunt Israel.
+
+17. Et sacrificium.
+
+18. Vitulum.
+
+19. Crepidinis altaris.
+
+20. Pro unoquoque qui ignora-
+vit, et errore deceptus est.
+
+25. Quintadecima die.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="700,640,980,885">2.
+
+5. Exedras.
+
+11.
+
+12.
+
+13.
+
+14.
+
+Batus metretes a coro, qui
+decem metretæ corus.
+
+15. De aquis Israel.
+
+17. Et donum.
+
+18.
+
+19.
+
+20.
+
+25.</bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="120,900,540,982">Notæ et variæ lectiones ad cap. XLV Ezechielis.
+
+V. 1. Ἄλλος, δέκα. Drusius. [Etiam C, cum
+Ald. et Complut., δέκα. Idem C, ἀπὸ τῆς γῆς πέντε
+[ilegivel] μῆκος. Hebr., longitudo. Drach.]</bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="555,900,980,982">V. 2. Ἄλλος, ἁγίασμα. Ἄλλος, ἅγιον. Idem. [C,
+Καὶ ἔσται ἐκ τούτου [ilegivel] εἰς τὸ ἁγίασμα. Drach.]
+Ibid. Hieronymus : « Præcipit ut 50 cubitis per</bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="625,960,860,995">Digitized by Google</bloco>
+
+  <notas>B. visível na coluna direita superior. O aparato crítico encontra-se truncado na margem inferior; a coluna direita também termina cortada.</notas>
 </pagina>

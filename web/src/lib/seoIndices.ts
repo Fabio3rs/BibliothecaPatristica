@@ -2,6 +2,13 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { gunzipSync } from 'node:zlib';
+import type { SupportedLocale } from '../i18n';
+
+type DisplayText = {
+  original?: string;
+  translation?: Partial<Record<SupportedLocale, string>>;
+  search?: string | string[];
+};
 
 export type IndexManifestEntry = {
   volume_id: string;
@@ -11,6 +18,8 @@ export type IndexManifestEntry = {
   sections_total?: number;
   entries_total?: number;
   entries_with_page_ref?: number;
+  editorial_reference_coverage?: number;
+  target_coverage?: number;
   completeness?: number;
   updated_at?: string;
 };
@@ -19,12 +28,11 @@ type IndexEntry = {
   id?: string | number;
   entry_order?: number;
   entry_raw?: string;
-  target_raw?: string;
-  target_display?: { original?: string };
+  target_display?: DisplayText;
   reference_page?: number | string | null;
-  page_ref_int?: number | string | null;
+  editorial_reference_page?: number | string | null;
   normalized_target?: string;
-  note_raw?: string | string[] | null;
+  note_display?: DisplayText & { original?: string | string[] | null };
 };
 
 type IndexSection = {
@@ -33,7 +41,7 @@ type IndexSection = {
   index_kind?: string;
   heading_raw?: string;
   heading_norm?: string;
-  heading_display?: { original?: string };
+  heading_display?: DisplayText;
   reference_page_start?: number | string | null;
   reference_page_end?: number | string | null;
   page_start?: number | string | null;
@@ -43,9 +51,8 @@ type IndexSection = {
 
 type IndexWork = {
   work_key?: string;
-  author_raw?: string;
-  title_raw?: string;
-  title_display?: { original?: string };
+  author_display?: DisplayText;
+  title_display?: DisplayText;
   reference_start_page?: number | string | null;
   reference_end_page?: number | string | null;
 };
@@ -55,12 +62,13 @@ type IndexVolumeDoc = {
     volume_id?: string;
     collection?: string;
     volume_label?: string;
-    display?: { original?: string };
+    display?: DisplayText;
   };
   coverage?: {
     works_total?: number;
     sections_total?: number;
     entries_total?: number;
+    target_coverage?: number;
     completeness?: number;
   };
   works?: IndexWork[];
@@ -72,10 +80,12 @@ type IndexVolumeDoc = {
 export type SeoEntry = {
   id: string;
   title: string;
+  titleOriginal: string;
   subtitle: string;
   normalizedTarget: string;
   note: string;
   page: number | null;
+  editorialPage: number | null;
   viewerHref: string | null;
   fallbackHref: string;
   anchorId: string;
@@ -85,6 +95,7 @@ export type SeoSection = {
   sectionKey: string;
   kind: string;
   title: string;
+  titleOriginal: string;
   titleSecondary: string;
   pageStart: number | null;
   pageEnd: number | null;
@@ -97,7 +108,9 @@ export type SeoSection = {
 export type SeoWork = {
   key: string;
   author: string;
+  authorOriginal: string;
   title: string;
+  titleOriginal: string;
   pageStart: number | null;
   pageEnd: number | null;
   viewerHref: string | null;
@@ -109,7 +122,7 @@ export type SeoVolumePayload = {
   collection: string;
   title: string;
   heading: string;
-  completeness: number;
+  targetCoverage: number;
   worksTotal: number;
   sectionsTotal: number;
   entriesTotal: number;
@@ -126,6 +139,7 @@ type ManifestFile = {
 
 const PUBLIC_DIR = join(process.cwd(), 'public');
 const INDICES_DIR = join(PUBLIC_DIR, 'indices');
+const volumeDocCache = new Map<string, Promise<IndexVolumeDoc>>();
 
 const THEMATIC_KINDS = new Set([
   'INDEX ANALYTICUS',
@@ -181,16 +195,29 @@ function pickFirstPage(...values: unknown[]): number | null {
   return null;
 }
 
-function buildViewerHref(volumeId: string, page: number | null): string | null {
-  if (!page) return null;
-  const params = new URLSearchParams({ doc: volumeId, page: String(page) });
-  return `/viewer?${params.toString()}`;
+function localePrefix(locale: SupportedLocale): string {
+  return locale === 'pt-br' ? '' : `/${locale}`;
 }
 
-function buildIndicesHref(volumeId: string, sectionKey?: string): string {
+function buildViewerHref(volumeId: string, page: number | null, locale: SupportedLocale): string | null {
+  if (!page) return null;
+  const params = new URLSearchParams({ doc: volumeId, page: String(page) });
+  return `${localePrefix(locale)}/viewer?${params.toString()}`;
+}
+
+function buildIndicesHref(volumeId: string, locale: SupportedLocale, sectionKey?: string): string {
   const params = new URLSearchParams({ volume: volumeId });
   if (sectionKey) params.set('section', sectionKey);
-  return `/indices?${params.toString()}`;
+  return `${localePrefix(locale)}/indices?${params.toString()}`;
+}
+
+function displayText(display: DisplayText | undefined, locale: SupportedLocale, fallback = '') {
+  const original = normalizeWhitespace(display?.original || fallback);
+  const translated = normalizeWhitespace(display?.translation?.[locale]);
+  return {
+    text: translated || original,
+    original: translated && original && translated !== original ? original : '',
+  };
 }
 
 function compactEntryText(value: unknown): string {
@@ -225,41 +252,51 @@ export async function listIndexVolumes(): Promise<IndexManifestEntry[]> {
 }
 
 async function readVolumeDoc(volumeId: string): Promise<IndexVolumeDoc> {
-  return readJsonMaybeGz(join(INDICES_DIR, volumeId)) as Promise<IndexVolumeDoc>;
+  if (!volumeDocCache.has(volumeId)) {
+    volumeDocCache.set(
+      volumeId,
+      readJsonMaybeGz(join(INDICES_DIR, volumeId)) as Promise<IndexVolumeDoc>,
+    );
+  }
+  return volumeDocCache.get(volumeId)!;
 }
 
-function toSeoWork(volumeId: string, work: IndexWork): SeoWork {
+function toSeoWork(volumeId: string, work: IndexWork, locale: SupportedLocale): SeoWork {
   const pageStart = pickFirstPage(work.reference_start_page);
   const workKey = normalizeWhitespace(work.work_key);
+  const author = displayText(work.author_display, locale);
+  const title = displayText(work.title_display, locale, work.work_key);
   return {
     key: workKey,
-    author: normalizeWhitespace(work.author_raw),
-    title: normalizeWhitespace(work.title_display?.original || work.title_raw || work.work_key),
+    author: author.text,
+    authorOriginal: author.original,
+    title: title.text,
+    titleOriginal: title.original,
     pageStart,
     pageEnd: pickFirstPage(work.reference_end_page),
-    viewerHref: buildViewerHref(volumeId, pageStart),
-    fallbackHref: buildIndicesHref(volumeId),
+    viewerHref: buildViewerHref(volumeId, pageStart, locale),
+    fallbackHref: buildIndicesHref(volumeId, locale),
   };
 }
 
-function selectEntryTitle(entry: IndexEntry, idx: number): string {
-  const targetTitle = normalizeWhitespace(entry.target_display?.original || entry.target_raw);
-  if (targetTitle) return targetTitle;
+function selectEntryTitle(entry: IndexEntry, idx: number, locale: SupportedLocale) {
+  const targetTitle = displayText(entry.target_display, locale);
+  if (targetTitle.text) return targetTitle;
   const compactRaw = compactEntryText(entry.entry_raw);
-  if (compactRaw) return compactRaw;
-  return normalizeWhitespace(entry.id || `Entrada ${idx + 1}`);
+  if (compactRaw) return { text: compactRaw, original: '' };
+  return { text: normalizeWhitespace(entry.id || `Entrada ${idx + 1}`), original: '' };
 }
 
 function selectEntrySubtitle(entry: IndexEntry, title: string): string {
   const raw = normalizeWhitespace(entry.entry_raw);
-  const target = normalizeWhitespace(entry.target_raw);
   if (raw && raw !== title) return raw;
-  if (target && target !== title) return target;
   return '';
 }
 
 function buildEntryDedupKey(entry: IndexEntry, title: string, page: number | null): string {
-  const semanticKey = normalizeWhitespace(entry.normalized_target) || title;
+  const search = entry.target_display?.search;
+  const searchText = Array.isArray(search) ? search.join(' ') : normalizeWhitespace(search);
+  const semanticKey = normalizeWhitespace(entry.normalized_target) || normalizeWhitespace(searchText) || title;
   return `${toDedupKey(semanticKey)}::${page || ''}`;
 }
 
@@ -267,24 +304,33 @@ function isUsefulEntry(entry: IndexEntry, title: string): boolean {
   return !!(normalizeWhitespace(title) || normalizeWhitespace(entry.entry_raw) || normalizeWhitespace(entry.normalized_target));
 }
 
-function toSeoEntry(volumeId: string, sectionKey: string, sectionTitle: string, entry: IndexEntry, idx: number): SeoEntry | null {
-  const page = pickFirstPage(entry.reference_page, entry.page_ref_int);
-  const title = selectEntryTitle(entry, idx);
-  if (!isUsefulEntry(entry, title)) return null;
-  const subtitle = selectEntrySubtitle(entry, title);
-  const note = Array.isArray(entry.note_raw)
-    ? entry.note_raw.map((item) => normalizeWhitespace(item)).filter(Boolean).join(' · ')
-    : normalizeWhitespace(entry.note_raw);
+function toSeoEntry(volumeId: string, sectionKey: string, sectionTitle: string, entry: IndexEntry, idx: number, locale: SupportedLocale): SeoEntry | null {
+  const page = pickFirstPage(entry.reference_page);
+  const editorialPage = pickFirstPage(entry.editorial_reference_page);
+  const title = selectEntryTitle(entry, idx, locale);
+  if (!isUsefulEntry(entry, title.text)) return null;
+  const subtitle = selectEntrySubtitle(entry, title.text);
+  const noteOriginal = entry.note_display?.original;
+  const note = Array.isArray(noteOriginal)
+    ? noteOriginal.map((item) => normalizeWhitespace(item)).filter(Boolean).join(' · ')
+    : normalizeWhitespace(noteOriginal);
   return {
     id: String(entry.id ?? `${sectionKey}-${idx + 1}`),
-    title,
+    title: title.text,
+    titleOriginal: title.original,
     subtitle,
-    normalizedTarget: normalizeWhitespace(entry.normalized_target),
+    normalizedTarget: normalizeWhitespace(
+      entry.normalized_target
+        || (Array.isArray(entry.target_display?.search)
+          ? entry.target_display.search.join(' ')
+          : entry.target_display?.search),
+    ),
     note,
     page,
-    viewerHref: buildViewerHref(volumeId, page),
-    fallbackHref: buildIndicesHref(volumeId, sectionKey),
-    anchorId: `${slugify(sectionTitle)}-${slugify(title)}-${idx + 1}`,
+    editorialPage,
+    viewerHref: buildViewerHref(volumeId, page, locale),
+    fallbackHref: buildIndicesHref(volumeId, locale, sectionKey),
+    anchorId: `${slugify(sectionTitle)}-${slugify(title.text)}-${idx + 1}`,
   };
 }
 
@@ -297,7 +343,7 @@ function dedupeSeoEntries(entries: SeoEntry[]): SeoEntry[] {
         normalized_target: entry.normalizedTarget,
       },
       entry.title,
-      entry.page,
+      entry.page ?? entry.editorialPage,
     );
     if (seen.has(key)) continue;
     seen.add(key);
@@ -309,33 +355,34 @@ function dedupeSeoEntries(entries: SeoEntry[]): SeoEntry[] {
 function buildSectionSignature(section: SeoSection): string {
   const entrySig = section.entries
     .slice(0, 5)
-    .map((entry) => `${toDedupKey(entry.normalizedTarget || entry.title)}:${entry.page || ''}`)
+    .map((entry) => `${toDedupKey(entry.normalizedTarget || entry.title)}:${entry.page ?? entry.editorialPage ?? ''}`)
     .join('|');
   return `${toDedupKey(section.kind)}::${toDedupKey(section.title)}::${entrySig}`;
 }
 
-function toSeoSection(volumeId: string, section: IndexSection, idx: number): SeoSection | null {
-  const title = normalizeWhitespace(section.heading_display?.original || section.heading_raw || section.section_key || `Seção ${idx + 1}`);
+function toSeoSection(volumeId: string, section: IndexSection, idx: number, locale: SupportedLocale): SeoSection | null {
+  const title = displayText(section.heading_display, locale, section.heading_raw || section.section_key || `Seção ${idx + 1}`);
   const kind = normalizeWhitespace(section.index_kind);
-  const titleSecondary = kind && kind !== title ? kind : '';
+  const titleSecondary = kind && kind !== title.text ? kind : '';
   const sectionKey = normalizeWhitespace(section.section_key || `section-${idx + 1}`);
-  const pageStart = pickFirstPage(section.reference_page_start, section.page_start);
+  const pageStart = pickFirstPage(section.reference_page_start);
   const entries = dedupeSeoEntries(
     (Array.isArray(section.entries) ? section.entries : [])
-      .map((entry, entryIdx) => toSeoEntry(volumeId, sectionKey, title, entry, entryIdx))
+      .map((entry, entryIdx) => toSeoEntry(volumeId, sectionKey, title.text, entry, entryIdx, locale))
       .filter(Boolean) as SeoEntry[],
   );
   if (!entries.length) return null;
   return {
     sectionKey,
     kind,
-    title,
+    title: title.text,
+    titleOriginal: title.original,
     titleSecondary,
     pageStart,
-    pageEnd: pickFirstPage(section.reference_page_end, section.page_end),
-    viewerHref: buildViewerHref(volumeId, pageStart),
-    sectionHref: buildIndicesHref(volumeId, sectionKey),
-    anchorId: `${slugify(kind || title)}-${idx + 1}`,
+    pageEnd: pickFirstPage(section.reference_page_end),
+    viewerHref: buildViewerHref(volumeId, pageStart, locale),
+    sectionHref: buildIndicesHref(volumeId, locale, sectionKey),
+    anchorId: `${slugify(kind || title.text)}-${idx + 1}`,
     entries,
   };
 }
@@ -357,7 +404,9 @@ function thematicStats(sections: SeoSection[]): { validEntries: number; withPage
   let withPage = 0;
   for (const section of sections) {
     validEntries += section.entries.length;
-    withPage += section.entries.filter((entry) => entry.page !== null).length;
+    withPage += section.entries.filter(
+      (entry) => entry.page !== null || entry.editorialPage !== null
+    ).length;
   }
   return { validEntries, withPage };
 }
@@ -366,16 +415,16 @@ export function isThematicSection(section: IndexSection): boolean {
   return THEMATIC_KINDS.has(normalizeKind(section.index_kind));
 }
 
-export async function getSeoVolumePayload(volumeId: string): Promise<SeoVolumePayload> {
+export async function getSeoVolumePayload(volumeId: string, locale: SupportedLocale = 'pt-br'): Promise<SeoVolumePayload> {
   const manifestVolumes = await listIndexVolumes();
   const manifestEntry = manifestVolumes.find((item) => item.volume_id === volumeId);
   const doc = await readVolumeDoc(volumeId);
   const title = normalizeWhitespace(doc.volume?.display?.original || doc.volume?.volume_label || doc.volume?.volume_id || volumeId);
-  const works = Array.isArray(doc.works) ? doc.works.map((work) => toSeoWork(volumeId, work)) : [];
+  const works = Array.isArray(doc.works) ? doc.works.map((work) => toSeoWork(volumeId, work, locale)) : [];
   const candidateSections = Array.isArray(doc.sections)
     ? doc.sections
         .filter(isThematicSection)
-        .map((section, idx) => toSeoSection(volumeId, section, idx))
+        .map((section, idx) => toSeoSection(volumeId, section, idx, locale))
         .filter(Boolean) as SeoSection[]
     : [];
   const thematicSections = dedupeSeoSections(candidateSections);
@@ -388,7 +437,13 @@ export async function getSeoVolumePayload(volumeId: string): Promise<SeoVolumePa
     collection: normalizeWhitespace(doc.volume?.collection || manifestEntry?.collection),
     title,
     heading: `${volumeId} — ${title}`,
-    completeness: Number(doc.coverage?.completeness ?? manifestEntry?.completeness ?? 0),
+    targetCoverage: Number(
+      doc.coverage?.target_coverage ??
+      manifestEntry?.target_coverage ??
+      doc.coverage?.completeness ??
+      manifestEntry?.completeness ??
+      0
+    ),
     worksTotal: Number(doc.coverage?.works_total ?? manifestEntry?.works_total ?? works.length ?? 0),
     sectionsTotal: Number(doc.coverage?.sections_total ?? manifestEntry?.sections_total ?? 0),
     entriesTotal: Number(doc.coverage?.entries_total ?? manifestEntry?.entries_total ?? 0),

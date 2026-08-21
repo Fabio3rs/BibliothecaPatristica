@@ -1,8 +1,10 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,60">
-    2019 INDEX SCRIPTORUM. 2020
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="120,80,910,130">
+    2019    INDEX SCRIPTORUM.    2020
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,70,480,230">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="210,130,250,165">A</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="140,145,620,330">
     Æsopi fabula de cane umbram captante, II, 12.
     Alexander pontifex Rom. III, 3.
     Anacletus, Rom. pontifex, III, 3.
@@ -11,19 +13,21 @@
     Anaximander, II, 19.
     Anicetus pontifex Rom., III, 3.
     Antiphanes, in Theogonia, II, 19.
-    Apocryphorum et perperam scripturarum, quas hæretici finxerunt, inenarrabilis multitudo, II, 17.
+    Apocryphorum et perperum scripturarum, quas hæretici finxerunt, inenarrabilis multitudo, II, 17.
     Aquilæ Pontici, Judæi proselyti, interpretatio S. Scripturæ, III, 24.
     Aristoteles, I, 24; II, 19.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,240,480,310">
-    B
+
+  <bloco tipo="nota_marginal" script="latino" bbox="390,335,430,365">B</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="140,350,620,455">
     Barbelonitæ Gnostici, I, 33.
     Basilides hæreticus, I, 23, 32, etc.
     Blandina martyr. Irenæus apud Œcumen. ad I Petr. III.
     Blastus. Ad Blastum epistola Irenæi ab Eusebio v, 28, Hist.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,320,480,460">
-    C
+
+  <bloco tipo="nota_marginal" script="latino" bbox="390,455,430,485">C</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="140,470,620,635">
     Cadmus 16 litteras Græcis attulit, I, 12.
     Caiani, I, 33. Eorum conscriptiones, ibid.
     Carpocrates, I, 24, 32.
@@ -35,13 +39,15 @@
     Continentes (Encratitæ), I, 30.
     Cynici, II, 19.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="100,470,480,530">
-    D
+
+  <bloco tipo="nota_marginal" script="latino" bbox="390,635,430,665">D</bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="140,650,620,750">
     Demetrius, Viennæ diaconus. Ad eum scripsit Irenæus Λόγους περὶ πίστεως, teste S. Maximo, tom. II, pag. 152.
     Democritus, II, 19.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,540,480,690">
-    E
+
+  <bloco tipo="nota_marginal" script="latino" bbox="390,745,430,775">E</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="140,760,620,900">
     Ebionitæ, I, 26.
     Eleutherius pontifex Rom. sub quo scripsit Irenæus, III, 3.
     Empedocles, II, 19.
@@ -50,71 +56,83 @@
     Esdras sub Artaxerxe, Persarum rege, libros sacros restituit, III, 25.
     Evaristus, pontifex Rom., III, 3.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,700,480,740">
-    F
-    Florianus hæreticus, contra quem Irenæus apud Euseb. v, 20.
+
+  <bloco tipo="nota_marginal" script="latino" bbox="390,900,430,930">F</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="140,910,620,955">
+    Florinus hæreticus, contra quem Irenæus apud Euseb. v, 20.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,750,480,780">
-    G
+
+  <bloco tipo="nota_marginal" script="latino" bbox="390,955,430,985">G</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="140,965,620,1000">
     Gnosticorum genera, I, 33.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,790,480,880">
-    H
+
+  <bloco tipo="nota_marginal" script="latino" bbox="390,1005,430,1035">H</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="140,1010,620,1220">
     Heracleon hæreticus, II, 5.
     Hermas (sub Scripturæ nomine), IV, 37.
     Hesiodus, II, 19 et 37.
     Homerus, II, 19; I, 1, § 20; I, 6; II, 5 (Homeroceutones I, 1, § 20); II, 40; IV, 58.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,70,900,100">
-    Hyginus pontifex Rom, III, 3.
+
+  <bloco tipo="texto_principal" script="latino" bbox="640,135,900,172">
+    Hyginus pontifex Rom., III, 3.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,110,900,160">
-    I
-    Ignatius (nomine ejus tacito). v, 28.
+
+  <bloco tipo="nota_marginal" script="latino" bbox="760,175,800,205">I</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="640,190,930,250">
+    Ignatius (nomine ejus tacito). v, 38.
     Indifferentias inducentes, I, 28.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="520,170,900,250">
-    J
-    Judæ evangelium a Cainitis confictum, I, 35.
-    Josephus citatur ab Irenæo in fragm. quod e ms. Vindob. dat Grabin, pag. 472.
-    Justinus (martyr), v, 26. Ἐν τῷ Πρς Μαρκίωνα, IV, 14. Ejus auditor Tatianus, I, 31.
+
+  <bloco tipo="nota_marginal" script="latino" bbox="760,255,800,285">J</bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="640,290,930,405">
+    Judæ evangelium a Caianis confictum, I, 35.
+    Josephus citatur ab Irenæo in fragm. quod e ms. Vindob. dat Grabius, pag. 472.
+    Justinus (martyr), v, 26. Ἐν τῷ Πρὸς Μαρκίωνα, IV, 14. Ejus auditor Tatianus, I, 31.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,260,900,290">
-    L
+
+  <bloco tipo="nota_marginal" script="latino" bbox="760,410,800,440">L</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="640,425,930,460">
     Linus pontifex Rom., III, 3.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="520,300,900,390">
-    M
-    Marcianus. Ad Marcianum fratrem Irenæus scripserat λόγον εἰς ἔνδειξιν τοῦ ἀποστολικοῦ κηρύγματος, Euseb., v, 20, Hist.
+
+  <bloco tipo="nota_marginal" script="latin o" bbox="760,465,800,495">M</bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="640,500,940,650">
+    Marcianus. Ad Marcianum fratrem Irenæus scripserat λόγον εἰς ἐπίδειξιν τοῦ ἀποστολικοῦ κηρύγματος, Euseb., v, 26, Hist.
     Marcion, I, 29, etc.
-    Marcus, magicæ imposturæ peritiss., I, 8 sqq.
+    Marcus, magicæ, imposturæ peritiss., I, 8 sqq.
     Menander comicus, II, 27.
     Menander hæreticus, I, 21.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,400,900,430">
-    N
+
+  <bloco tipo="nota_marginal" script="latino" bbox="760,655,800,685">N</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="640,670,930,705">
     Nicolaitæ, I, 27.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,440,900,470">
-    O
+
+  <bloco tipo="nota_marginal" script="latino" bbox="760,710,800,740">O</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="640,725,930,760">
     Ophitæ, I, 35.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="520,480,900,650">
-    P
-    Poetæ et conscriptores, II, 19.
-    Palameles litterarum post Cadmum inventor, I 12.
-    Papias, Joannis auditor. Polycarpi contubernalis (ἑταῖρος) τῇ τετάρτῃ τν αὐτο βιβλίων. v, 33.
-    Polycarpus ab Irenæo visus, III, 3. Ejus epistula ad Philippenses, ibid. Vide et quæ ex Irenæo Euseb., v, 20, Hist.
+
+  <bloco tipo="nota_marginal" script="latino" bbox="760,765,800,795">P</bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="640,780,950,945">
+    Poetæ et coescriptores, II, 9.
+    Palamedes litterarum post Cadmum inventor, I, 12.
+    Papias, Joannis auditor. Polycarpi contubernalis (ἑταῖρος) ἐν τῇ τετάρτῃ τῶν αὐτοῦ βιβλίων. v, 33.
+    Polycarpus ab Irenæo visus, III, 5. Ejus epistola ad Philippenses, ibid. Vide et quæ ex Irenæo Euseb., v, 20, Hist.
     Pindarus lyricus, II, 37.
     Plato, II, 19; I, 24; II, 59; III, 45, 46.
-    Ptolomæus Valentinianus, I, 6; II, 5. Ejus locus citatur, I, 1, § 18.
+    Ptolemaeus Valentinianus, I, 6; II, 5. Ejus locus citatur, I, 1, § 18.
     Pythagoras, I, 24; II, 19. Ejus quaternio, ib. Pythagorici, ib.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,660,900,810">
-    S
+
+  <bloco tipo="nota_marginal" script="latino" bbox="760,950,800,980">S</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="640,965,950,1115">
     Saturninus, I, 22.
-    Septuaginta Interpretes sub Ptolomæo Lagi, Alexandriæ III, 25.
-    Selbiani tacita nomine perstringuntur, I, 34.
+    Septuaginta Interpretes sub Ptolemæo Lagi, Alexandriæ III, 25.
+    Sethiani tacita nomine perstringuntur, I, 34.
     Simon Samarita, magus, I, 20.
     Sixtus, pontifex Rom., III, 3.
     Sophoclis Œdipus, v, 13.
@@ -122,27 +140,26 @@
     Stoici, II, 19.
     Symbolum, I, 2. Vetus traditio apostolorum diligenter custodienda, III, 4.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="520,820,900,910">
-    T
-    Tragicum Ἰο Ἰοῦ, φαῦ φαῦ, I, 5.
+
+  <bloco tipo="nota_marginal" script="latino" bbox="760,1120,800,1150">T</bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="640,1135,950,1255">
+    Tragicum ἰοῦ ἰοῦ, φεῦ φεῦ, I, 5.
     Tatianus; Justini auditor, post ejus martyrium auctor sectæ, I, 31.
     Thales Milesius, II, 19.
     Theodotionis Ephesii, Judæi proselyti, interpretatio S. Scripturæ.
-  </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="520,920,900,950">
     Valentinianorum Ὑπομνήματα. Præf.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="350,960,650,980">
+
+  <bloco tipo="rodape" script="latino" bbox="380,1490,650,1530">
     FINIS TOMI SEPTIMI.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="550,990,850,1010">
+  <bloco tipo="rodape" script="latino" bbox="670,1600,940,1640">
     Imprimerie MIGNÉ, au Petit-Montrouge.
   </bloco>
+
   <notas>
-    Transcrição de índice alfabético (Index Scriptorum).
-    Texto em latim com inserções em grego (ex: Λόγους περὶ πίστεως, Ἐν τῷ Πρς Μαρκίωνα, ταῖρος, Ὑπομνήματα).
-    A grafia "Selbiani" foi mantida conforme visualizado, embora possa referir-se a seita gnóstica menos comum ou erro de impressão por "Sethiani" ou similar.
-    "Palameles" transcrito literalmente (usualmente Palamedes).
-    "Homeroceutones" transcrito conforme aparece.
+    Transcrição diplomática do índice; leitura em duas colunas.
+    Letras seccionais tratadas como nota_marginal.
+    Inserções em grego mantidas sem normalização.
   </notas>
 </pagina>

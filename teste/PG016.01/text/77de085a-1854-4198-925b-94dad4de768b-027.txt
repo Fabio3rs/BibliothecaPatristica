@@ -1,93 +1,100 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,100,50">
-    41
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="400,20,600,50">
-    LIB. II REGUM CAPUT VI.
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="850,20,900,50">
-    42
-  </bloco>
-  
-  [!-- Top Section: Greek --]
-  <bloco tipo="texto_principal" script="grego" bbox="50,60,300,150">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="55,55,85,80">41</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="360,55,640,85">LIB. II REGUM CAPUT VI.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="900,55,935,80">42</bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="60,95,320,220">
     ΣΥΜΜΑΧΟΣ.
-    24. Φόρον διαβήματος ἐν κεφαλαῖς τῶν φρουρήσεων. Συντεμεῖς.
+    24. Ψόφον διαδήματος ἐν κεφα-
+    λαῖς τῶν φρουρήσεων.
+    Συντεμεῖς.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="350,60,650,150">
-    Θ'.
-    24. Τὴν φωνὴν τοῦ συγκλεισμοῦ ἀπὸ τοῦ λσους το κλαυθμνος. Καταβήσῃ. Κόπτειν. Ἄλλος, τύπτειν.
+  <bloco tipo="texto_principal" script="grego" bbox="350,95,650,240">
+    Ο.
+    24. Τὴν φωνὴν τοῦ συγκλεισμοῦ
+    ἀπὸ τοῦ ἄλσους τοῦ κλαυθμῶνος.
+    Καταβήσῃ.
+    Κόπτειν. Ἄλλος, τύπτειν.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="700,60,950,150">
+  <bloco tipo="texto_principal" script="grego" bbox="740,95,955,210">
     ΘΕΟΔΟΤΙΩΝ.
     24.
   </bloco>
 
-  [!-- Top Section: Latin --]
-  <bloco tipo="texto_principal" script="latino" bbox="50,160,300,230">
+  <bloco tipo="texto_principal" script="latino" bbox="60,240,320,360">
     SYMMACHUS.
-    24. Strepitum incessus in capitibus præsidiorum. Concidés.
+    24. Strepitum incessus in capi-
+    tibus præsidiorum.
+    Concides.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,160,650,230">
+  <bloco tipo="texto_principal" script="latino" bbox="350,240,660,370">
     LXX INTERPRETES.
-    24. Vocem constrictionis a more fletus. Descendes. Ad cædendum. Alius, ad verberandum.
+    24. Vocem constrictionis a ne-
+    more fletus.
+    Descendes.
+    Ad cædendum. Alius, ad verbe-
+    randum.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="700,160,950,230">
+  <bloco tipo="texto_principal" script="latino" bbox="740,240,955,360">
     THEODOTIO.
     24.
   </bloco>
 
-  [!-- Notes Section --]
-  <bloco tipo="cabecalho" script="latino" bbox="250,240,750,260">
-    Notæ et variæ lectiones ad cap. V lib. II Regum.
-  </bloco>
-  
-  <bloco tipo="aparato_critico" script="misto" bbox="50,270,480,420">
+  <bloco tipo="cabecalho" script="latino" bbox="250,380,750,410">Notæ et variæ lectiones ad cap. V lib. II Regum.</bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="55,410,495,645">
     Coislin. 2.
-    V. 18 Ἁ., Σ., Ῥαρασίμ. Reg. et Coislin. 2, itemque v. 23.
-    V. 20. Ἁ., ἔχων διακοπάς. Reg.
-    V. 21. Ἁ., τὰ διαπονήματα αὐτν. Σ., τὰ γλυπτά. Coislin. 2.
-    V. 22. Ἁ., καὶ ἐπῆλθον. Reg. et Coislin. 2, qui Symmacho tribuit.
+    V. 18 'A., Σ., 'Ραφαείμ. Reg. et Coislin. 2,
+    itemque v. 22.
+    V. 20. 'A., ἔχων διακοπάς. Reg.
+    V. 21. 'A., τὰ διαπονήματα αὐτῶν. Σ., τὰ γλυπτά. Coislin. 2.
+    V. 22. 'A., καὶ ἐπῆλθον. Reg. et Coislin. 2, qui
+    Symmacho tribuit.
     V. 23. Σ., κύκλευσον etc. Coislin. 2.
-    Ibid. Ἁ., ἐξεναντίας τῶν ὅπλων. Ita Procop. et
+    Ibid. 'A., ἐξεναντίας τῶν ἀπίων. Ita Procop. et
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="500,270,950,420">
+  <bloco tipo="aparato_critico" script="misto" bbox="500,410,965,660">
     Regius codex. Ibid. Coislin. 2 ad marginem, κατεναντίον etc.
-    Ibid. Ἐξ ἐναντίας τοῦ κλαυθμῶνος. Edit. Rom., πλησίον τοῦ κλαυθμῶνος. Coislin. 2, κατεναντίον ἐν ταῖς φρουρήσεσι.
-    V. 24. Ἁ., Σ., φόρον διαβήματος etc. Coislin. 2
-    Ibid. Τὴν φωνὴν τοῦ συγκλεισμοῦ. Alii, συσσεισμοῦ, commotionis. Sic mss. et ed. Complut. et A. 2.
-    Ibid. Ἁ., Σ., συντεμεῖς. Coislin. 2.
+    Ibid. Ἐξ ἐναντίας τοῦ κλαυθμῶνος. Edit. Rom.,
+    πλησίον τοῦ κλαυθμῶνος. Coislin. 2, κατεναντίον ἐν
+    ταῖς φρουρήσεσι.
+    V. 24. 'A., Σ., ψόφον διαδήματος etc. Coislin. 2
+    Ibid. Τὴν φωνὴν τοῦ συγκλεισμοῦ. Alii, συσσει-
+    σμοῦ, commotionis. Sic mss. et ed. Complut. et A. 2.
+    Ibid. 'A., Σ., συντεμεῖς. Coislin. 2.
     Ibid. Ἄλλος, τύπτειν. Reg.
   </bloco>
 
-  [!-- Bottom Section Header --]
-  <bloco tipo="cabecalho" script="latino" bbox="350,430,650,450">
-    CAPUT VI LIB. II REGUM.
-  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="345,685,665,720">CAPUT VI LIB. II REGUM.</bloco>
 
-  [!-- Bottom Section: Greek --]
-  <bloco tipo="texto_principal" script="grego" bbox="50,460,300,650">
+  <bloco tipo="texto_principal" script="grego" bbox="60,735,280,995">
     ΣΥΜΜΑΧΟΣ.
     2. Ἐχόντων.
     3. Ἐπέθηκαν.
-    5. Ἐν παντοίοις ξύλοις. Καὶ ἐν σείστροις.
+    5. Ἐν παντοίοις ξύλοις.
+    Καὶ ἐν σείστροις.
     6.
     7.
-    8. Ὄργιλον τῷ Δαυΐδ.
+    8. Ὄργιλον τῷ Δαυίδ.
     10. Παραγαγεῖν.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="350,460,650,650">
-    Θ'.
-    2. Ἀπὸ τῶν ἀρχόντων. Κιβωτόν. Τῶν δυνάμεων. Ἄλλος, Σαβαώθ.
+  <bloco tipo="texto_principal" script="grego" bbox="330,735,685,1000">
+    Ο.
+    2. Ἀπὸ τῶν ἀρχόντων.
+    Κιβωτόν.
+    Τῶν δυνάμεων. Ἄλλος, Σαβαώθ.
     3. Ἐπεβίβασαν.
-    5. Ἐν ργάνοις ρμοσμένοις. Ἐν κυμβάλοις.
-    6. Ἕως ἄλω Ναχώρ. Ἄλλος. ἕως λωνος Ἀχώρ. Ἄλλος, ἕως τς ἄλω Ἐρνὰ τοῦ εβουσαίου. κράτησεν. Ἄλλος, ἐκραταίωσεν.
-    7. Καὶ ἐπαίσεν αὐτόν. Ἄλλος, καὶ ἐπάταξεν αὐτόν.
-    ☦ Ἐπὶ τῇ προπετείᾳ.
-    8. Ἠθύμησε Δαυΐδ. Οἱ λοιπ., ἐλυπήθη Δαυΐδ.
+    5. Ἐν ὀργάνοις ἡρμοσμένοις.
+    Ἐν κυμβάλοις.
+    6. Ἕως ἅλω Ναχώρ. Ἄλλος, ἕως ἅλωνος Ἀχώρ. Ἄλλος, ἕως τῆς ἅλω Ἐρνὰ τοῦ Ἰεβουσαίου.
+    Ἐκράτησεν. Ἄλλος, ἐκραταίωσεν.
+    7. Καὶ ἔπαισεν αὐτόν. Ἄλλος,
+    καὶ ἐπάταξεν αὐτόν.
+    ✠ Ἐπὶ τῇ προπετείᾳ.
+    8. Ἠθύμησε Δαυίδ. Οἱ λοιπ., ἐλυπήθη Δαυίδ.
     10. Ἐκκλίναι.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="700,460,950,650">
+  <bloco tipo="texto_principal" script="grego" bbox="740,735,955,1000">
     ΘΕΟΔΟΤΙΩΝ.
     2.
     3.
@@ -98,29 +105,36 @@
     10.
   </bloco>
 
-  [!-- Bottom Section: Latin --]
-  <bloco tipo="texto_principal" script="latino" bbox="50,660,300,850">
-    SYMMACHIUS.
+  <bloco tipo="texto_principal" script="latino" bbox="60,1010,285,1275">
+    SYMMACHUS.
     2. De habentibus.
     3. Imposuerunt.
-    5. In omnimodis lignis. Et in sistris.
+    5. In omnimodis lignis.
+    Et in sistris.
     6.
     7.
     8. Et ira fuit Davidi.
     10. Adducere.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,660,650,850">
+  <bloco tipo="texto_principal" script="latino" bbox="330,1010,690,1285">
     LXX INTERPRETES.
-    2. De principibus. Arcam. Virtutum. Alius, Sabaoth.
+    2. De principibus.
+    Arcam.
+    Virtutum. Alius, Sabaoth.
     3. Ascendere fecerunt.
-    5. In organis modulatis In cymbalis.
-    6. Usque ad aream Nachor. Alius, usque ad aream Achor. Alius usque ad aream Erna Jebusei. Tenuit. Alius, firmavit.
+    5. In organis modulatis
+    In cymbalis.
+    6. Usque ad aream Nachor. A
+    lius, usque ad aream Achor. Alius
+    usque ad aream Erna Jebusæi.
+    Tenuit. Alius, firmavit.
     7. Et percussit eum. Alius, id.
-    ☦ Super temeritate.
-    8. Contristatus est David. Reliqui, id.
+    ✠ Super temeritate.
+    8. Contristatus est David. Re
+    liqui, id.
     10. Divertere.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="700,660,950,850">
+  <bloco tipo="texto_principal" script="latino" bbox="740,1010,955,1265">
     THEODOTIO.
     2.
     3.
@@ -131,14 +145,8 @@
     10.
   </bloco>
 
-  [!-- Footer --]
-  <bloco tipo="rodape" script="latino" bbox="50,860,250,880">
-    PATROL. GR. XVI.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="800,860,820,880">
-    2
-  </bloco>
-  <notas>
-    O cabeçalho da coluna central grega apresenta "Θ'." (abreviatura de Theodotion?), porém o cabeçalho latino correspondente diz "LXX INTERPRETES." e o texto segue a versão da Septuaginta. O símbolo ☦ (diple) aparece nas notas e no texto grego/latino da seção inferior.
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="55,1280,240,1310">PATROL. GR. XVI.</bloco>
+  <bloco tipo="rodape" script="latino" bbox="900,1290,925,1315">2</bloco>
+
+  <notas>Leitura diplomática direta da imagem; paginação dupla 41-42 no topo e continuação do capítulo no terço inferior. A abreviação central é O.; o sinal em forma de cruz antes de Ἐπὶ τῇ προπετείᾳ é mantido como impresso.</notas>
 </pagina>

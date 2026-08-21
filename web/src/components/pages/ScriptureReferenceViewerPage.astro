@@ -1,0 +1,644 @@
+---
+import Layout from '../Layout.astro';
+import { getLocaleBase, getLocaleRouteUrl, serializeTranslations, useTranslations } from '../../i18n';
+
+const base = import.meta.env.BASE_URL || '/';
+const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
+const locale = (Astro.currentLocale ?? 'pt-br') as 'pt-br' | 'en' | 'it' | 'fr';
+const t = useTranslations(locale);
+const uiStrings = serializeTranslations(t);
+const localeBase = getLocaleBase(locale, base);
+const scriptureBaseRoute = getLocaleRouteUrl(locale, 'indices-alfabeticos/scripture', base);
+const viewerBaseRoute = getLocaleRouteUrl(locale, 'viewer', base);
+const breadcrumbs = [
+  { label: t.breadcrumbHome, href: localeBase },
+  { label: t.scriptureIndexTitle, href: scriptureBaseRoute },
+  { label: t.scriptureReferenceAllPages },
+];
+---
+
+<Layout
+  title={t.scriptureReferenceViewerDocumentTitle}
+  description={t.scriptureReferenceEvidenceNote}
+  breadcrumbs={breadcrumbs}
+>
+  <div
+    id="scripture-reference-viewer"
+    data-loading-label={t.scriptureReferenceLoading}
+    aria-busy="true"
+  >
+    <section class="reference-hero card" aria-labelledby="reference-title">
+      <div>
+        <p class="reference-eyebrow">{t.scriptureReferenceEyebrow}</p>
+        <h1 id="reference-title">{t.scriptureReferenceLoading}</h1>
+        <p id="reference-description" class="reference-lead">{t.scriptureReferenceEvidenceNote}</p>
+        <a id="reference-back" class="button secondary" href={scriptureBaseRoute} hidden>
+          {t.scriptureIndexTitle}
+        </a>
+      </div>
+      <dl class="reference-stats" aria-label={t.scriptureReferenceStatsLabel}>
+        <div>
+          <dt>{t.scriptureIndexOccurrences}</dt>
+          <dd id="reference-total">—</dd>
+        </div>
+        <div>
+          <dt>{t.scriptureIndexVolumes}</dt>
+          <dd id="reference-volumes">—</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="reference-content card" aria-labelledby="all-pages-title">
+      <div class="reference-heading">
+        <div>
+          <p class="reference-eyebrow">{t.scriptureReferenceCompleteList}</p>
+          <h2 id="all-pages-title">{t.scriptureReferenceAllPages}</h2>
+          <p id="reference-range" class="reference-range">{t.scriptureReferenceLoading}</p>
+        </div>
+        <p>{t.scriptureReferenceEvidenceNote}</p>
+      </div>
+
+      <div id="reference-pagination-top"></div>
+      <div id="reference-results" class="reference-status" role="status" aria-live="polite">
+        {t.scriptureReferenceLoading}
+      </div>
+      <div id="reference-pagination-bottom"></div>
+    </section>
+  </div>
+
+  <noscript>
+    <p class="card reference-noscript">{t.scriptureReferenceInvalidHint}</p>
+  </noscript>
+
+  <style>
+    .reference-hero,
+    .reference-content {
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+    }
+
+    .reference-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: var(--space-6);
+      align-items: start;
+      padding: var(--space-6);
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--color-accent) 13%, transparent), transparent 44%),
+        var(--color-surface);
+    }
+
+    .reference-eyebrow {
+      margin: 0 0 var(--space-2);
+      color: var(--color-accent);
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .reference-hero h1,
+    .reference-heading h2 {
+      margin: 0;
+    }
+
+    .reference-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+    }
+
+    .reference-lead {
+      max-width: 70ch;
+      margin: var(--space-3) 0 var(--space-5);
+      color: var(--color-muted);
+    }
+
+    .reference-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(120px, 1fr));
+      gap: var(--space-3);
+      margin: 0;
+    }
+
+    .reference-stats div {
+      min-width: 130px;
+      padding: var(--space-4);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-m);
+      background: var(--color-surface-2);
+    }
+
+    .reference-stats dt {
+      color: var(--color-muted);
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+
+    .reference-stats dd {
+      margin: var(--space-1) 0 0;
+      color: var(--color-ink);
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      font-weight: 700;
+    }
+
+    .reference-content {
+      margin-top: var(--space-5);
+      padding: var(--space-6);
+    }
+
+    .reference-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-5);
+      align-items: end;
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .reference-heading > p {
+      max-width: 52ch;
+      margin: 0;
+      color: var(--color-muted);
+      line-height: 1.55;
+    }
+
+    .reference-range {
+      margin: var(--space-2) 0 0;
+      color: var(--color-muted);
+    }
+
+    .reference-status {
+      min-height: 10rem;
+      padding: var(--space-5) 0;
+      color: var(--color-muted);
+    }
+
+    .reference-status.error {
+      display: grid;
+      justify-items: start;
+      gap: var(--space-3);
+      min-height: 0;
+    }
+
+    :global(.reference-pagination) {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      padding: var(--space-5) 0;
+    }
+
+    :global(.reference-pagination.bottom) {
+      padding-bottom: 0;
+    }
+
+    :global(.reference-pagination-pages) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-2);
+    }
+
+    :global(.reference-pagination a),
+    :global(.reference-pagination .disabled),
+    :global(.reference-pagination .current) {
+      display: inline-flex;
+      min-width: 2.75rem;
+      min-height: 2.75rem;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 0.75rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-s);
+      font-family: var(--font-sans);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    :global(.reference-pagination .current) {
+      border-color: var(--color-accent);
+      background: var(--color-accent);
+      color: var(--color-bg);
+    }
+
+    :global(.reference-pagination .disabled) {
+      color: var(--color-muted);
+      opacity: 0.55;
+    }
+
+    :global(.volume-groups) {
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    :global(.volume-group) {
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-m);
+      background: var(--color-surface-2);
+    }
+
+    :global(.volume-group > header) {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--space-3);
+      padding: var(--space-4) var(--space-5);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    :global(.volume-group h3) {
+      margin: 0;
+      font-size: 1.25rem;
+    }
+
+    :global(.volume-group header span) {
+      color: var(--color-muted);
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+    }
+
+    :global(.reference-page-list) {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1px;
+      margin: 0;
+      padding: 1px;
+      list-style: none;
+      background: var(--color-border);
+    }
+
+    :global(.reference-page-list li) {
+      min-width: 0;
+      background: var(--color-surface);
+    }
+
+    :global(.reference-page-list a) {
+      display: grid;
+      min-height: 7.25rem;
+      align-content: start;
+      gap: var(--space-2);
+      padding: var(--space-4);
+      color: var(--color-ink);
+      text-decoration: none;
+    }
+
+    :global(.reference-page-list a:hover),
+    :global(.reference-page-list a:focus-visible) {
+      background: color-mix(in srgb, var(--color-surface) 88%, var(--color-accent) 12%);
+    }
+
+    :global(.reference-page-number) {
+      color: var(--color-accent);
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    :global(.reference-page-title) {
+      overflow-wrap: anywhere;
+      font-family: var(--font-serif);
+      font-size: 1.02rem;
+      line-height: 1.35;
+    }
+
+    :global(.reference-page-meta) {
+      color: var(--color-muted);
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      line-height: 1.45;
+    }
+
+    .reference-noscript {
+      margin-top: var(--space-5);
+      padding: var(--space-5);
+    }
+
+    @media (max-width: 760px) {
+      .reference-hero {
+        grid-template-columns: 1fr;
+        padding: var(--space-5);
+      }
+
+      .reference-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .reference-stats div {
+        min-width: 0;
+      }
+
+      .reference-content {
+        padding: var(--space-4);
+      }
+
+      .reference-heading {
+        display: grid;
+        align-items: start;
+      }
+
+      :global(.reference-pagination) {
+        justify-content: center;
+      }
+
+      :global(.reference-pagination > a),
+      :global(.reference-pagination > .disabled) {
+        flex: 1 1 8rem;
+      }
+
+      :global(.reference-page-list) {
+        grid-template-columns: 1fr;
+      }
+
+      :global(.reference-page-list a) {
+        min-height: 0;
+      }
+    }
+  </style>
+
+  <script type="module" define:vars={{
+    assetBase: baseWithSlash,
+    scriptureBaseRoute,
+    viewerBaseRoute,
+    uiStrings,
+    locale,
+  }}>
+    const root = document.getElementById('scripture-reference-viewer');
+    const titleEl = document.getElementById('reference-title');
+    const descriptionEl = document.getElementById('reference-description');
+    const totalEl = document.getElementById('reference-total');
+    const volumesEl = document.getElementById('reference-volumes');
+    const rangeEl = document.getElementById('reference-range');
+    const resultsEl = document.getElementById('reference-results');
+    const backEl = document.getElementById('reference-back');
+    const topPagination = document.getElementById('reference-pagination-top');
+    const bottomPagination = document.getElementById('reference-pagination-bottom');
+    const params = new URLSearchParams(window.location.search);
+    const book = params.get('book') || '';
+    const reference = params.get('ref') || '';
+    const requestedPage = Number(params.get('page') || '1');
+    const numberFormat = new Intl.NumberFormat(locale === 'pt-br' ? 'pt-BR' : locale);
+    const dataCache = window.pdfocrDataCache;
+
+    const validBook = /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(book) && book.length <= 80;
+    const validReference = /^chapter-[a-z0-9-]+(?:--and--chapter-[a-z0-9-]+)*$/.test(reference)
+      && reference.length <= 240;
+    const validPage = Number.isInteger(requestedPage) && requestedPage > 0 && requestedPage <= 1000;
+
+    function format(value) {
+      return numberFormat.format(Number(value || 0));
+    }
+
+    function replaceTokens(template, values) {
+      return Object.entries(values).reduce(
+        (text, [key, value]) => String(text).replaceAll(`{${key}}`, String(value)),
+        String(template || ''),
+      );
+    }
+
+    function pageUrl(page) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('book', book);
+      url.searchParams.set('ref', reference);
+      url.searchParams.set('page', String(page));
+      return `${url.pathname}${url.search}`;
+    }
+
+    function viewerUrl(volume, page) {
+      const url = new URL(viewerBaseRoute, window.location.origin);
+      url.searchParams.set('doc', volume);
+      url.searchParams.set('page', String(page));
+      return `${url.pathname}${url.search}`;
+    }
+
+    function sourceLabels(mask) {
+      return [
+        ...(mask & 1 ? [uiStrings.scriptureIndexDirect] : []),
+        ...(mask & 2 ? [uiStrings.scriptureIndexAssociation] : []),
+        ...(mask & 4 ? [uiStrings.scriptureIndexOcr] : []),
+      ];
+    }
+
+    function titleSourceLabel(source) {
+      if (source === 1) return uiStrings.scriptureReferenceTitleOcr;
+      if (source === 2) return uiStrings.scriptureReferenceTitleWork;
+      return '';
+    }
+
+    function button(label, href, rel = '') {
+      const link = document.createElement('a');
+      link.href = href;
+      link.className = 'button secondary';
+      link.textContent = label;
+      if (rel) link.rel = rel;
+      return link;
+    }
+
+    function disabledButton(label) {
+      const span = document.createElement('span');
+      span.className = 'disabled';
+      span.setAttribute('aria-disabled', 'true');
+      span.textContent = label;
+      return span;
+    }
+
+    function renderPagination(target, pageNumber, pageCount, position) {
+      target.replaceChildren();
+      if (pageCount <= 1) return;
+      const nav = document.createElement('nav');
+      nav.className = `reference-pagination ${position}`;
+      nav.setAttribute('aria-label', uiStrings.scriptureReferencePaginationLabel);
+      nav.append(
+        pageNumber > 1
+          ? button(uiStrings.scriptureReferencePreviousPage, pageUrl(pageNumber - 1), 'prev')
+          : disabledButton(uiStrings.scriptureReferencePreviousPage),
+      );
+
+      const pages = document.createElement('div');
+      pages.className = 'reference-pagination-pages';
+      for (let page = 1; page <= pageCount; page += 1) {
+        if (page === pageNumber) {
+          const current = document.createElement('span');
+          current.className = 'current';
+          current.setAttribute('aria-current', 'page');
+          current.textContent = String(page);
+          pages.append(current);
+        } else {
+          const link = document.createElement('a');
+          link.href = pageUrl(page);
+          link.textContent = String(page);
+          link.setAttribute(
+            'aria-label',
+            replaceTokens(uiStrings.scriptureReferenceGoToPage, { page }),
+          );
+          pages.append(link);
+        }
+      }
+      nav.append(pages);
+      nav.append(
+        pageNumber < pageCount
+          ? button(uiStrings.scriptureReferenceNextPage, pageUrl(pageNumber + 1), 'next')
+          : disabledButton(uiStrings.scriptureReferenceNextPage),
+      );
+      target.append(nav);
+    }
+
+    function showError(title, hint, retry = false) {
+      root?.setAttribute('aria-busy', 'false');
+      titleEl.textContent = title;
+      descriptionEl.textContent = hint;
+      rangeEl.textContent = '';
+      topPagination.replaceChildren();
+      bottomPagination.replaceChildren();
+      resultsEl.className = 'reference-status error';
+      resultsEl.replaceChildren();
+      const message = document.createElement('p');
+      message.textContent = hint;
+      resultsEl.append(message);
+      if (retry) {
+        const retryButton = document.createElement('button');
+        retryButton.className = 'button secondary';
+        retryButton.type = 'button';
+        retryButton.textContent = uiStrings.scriptureReferenceRetry;
+        retryButton.addEventListener('click', () => window.location.reload());
+        resultsEl.append(retryButton);
+      }
+    }
+
+    function renderPayload(payload) {
+      if (payload?.v !== 1 || !Array.isArray(payload.b) || !Array.isArray(payload.r)
+        || !Array.isArray(payload.p) || !Array.isArray(payload.d)) {
+        throw new Error('Payload bíblico inválido');
+      }
+      const [bookKey, bookLabel] = payload.b;
+      const [referenceSlug, locator] = payload.r;
+      const [pageNumber, pageCount, total, rangeStart, rangeEnd] = payload.p.map(Number);
+      const [volumeNames, rows] = payload.d;
+      if (bookKey.replaceAll(' ', '-') !== book || referenceSlug !== reference || pageNumber !== requestedPage) {
+        throw new Error('Payload bíblico não corresponde à URL');
+      }
+
+      const referenceLabel = `${bookLabel} ${locator}`;
+      const description = replaceTokens(uiStrings.scriptureReferenceSubtitle, {
+        reference: referenceLabel,
+        total: format(total),
+      });
+      titleEl.textContent = referenceLabel;
+      descriptionEl.textContent = description;
+      totalEl.textContent = format(total);
+      volumesEl.textContent = format(new Set(rows.map((row) => volumeNames[row[0]])).size);
+      rangeEl.textContent = replaceTokens(uiStrings.scriptureReferenceShowingRange, {
+        start: format(rangeStart),
+        end: format(rangeEnd),
+        total: format(total),
+      });
+      backEl.hidden = false;
+      backEl.href = `${scriptureBaseRoute}/${encodeURIComponent(book)}`;
+      backEl.textContent = replaceTokens(uiStrings.scriptureReferenceBackToBook, { book: bookLabel });
+      document.title = `${replaceTokens(uiStrings.scriptureReferenceTitle, { reference: referenceLabel })} — Bibliotheca Patristica`;
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) metaDescription.setAttribute('content', description);
+
+      renderPagination(topPagination, pageNumber, pageCount, 'top');
+      renderPagination(bottomPagination, pageNumber, pageCount, 'bottom');
+
+      const groups = new Map();
+      for (const row of rows) {
+        const volume = volumeNames[row[0]];
+        if (!volume || !Number.isInteger(Number(row[1]))) continue;
+        if (!groups.has(volume)) groups.set(volume, []);
+        groups.get(volume).push({
+          page: Number(row[1]),
+          mask: Number(row[2] || 0),
+          title: String(row[3] || ''),
+          titleSource: Number(row[4] || 0),
+        });
+      }
+
+      const groupRoot = document.createElement('div');
+      groupRoot.className = 'volume-groups';
+      for (const [volume, pages] of groups) {
+        const section = document.createElement('section');
+        section.className = 'volume-group';
+        const headingId = `reference-volume-${volume}`;
+        section.setAttribute('aria-labelledby', headingId);
+        const header = document.createElement('header');
+        const heading = document.createElement('h3');
+        heading.id = headingId;
+        heading.textContent = volume;
+        const count = document.createElement('span');
+        const pageCountLabel = pages.length === 1
+          ? uiStrings.scriptureIndexPageShort
+          : uiStrings.scriptureIndexPagesShort;
+        count.textContent = `${format(pages.length)} ${pageCountLabel}`;
+        header.append(heading, count);
+        section.append(header);
+
+        const list = document.createElement('ul');
+        list.className = 'reference-page-list';
+        for (const item of pages) {
+          const sources = sourceLabels(item.mask);
+          const titleSource = titleSourceLabel(item.titleSource);
+          const listItem = document.createElement('li');
+          const link = document.createElement('a');
+          link.href = viewerUrl(volume, item.page);
+          link.title = uiStrings.scriptureIndexOpenPage;
+          const ariaBase = replaceTokens(uiStrings.scriptureReferenceOpenPageLabel, {
+            volume,
+            page: format(item.page),
+            sources: sources.join(', '),
+          });
+          link.setAttribute('aria-label', item.title ? `${ariaBase} ${item.title}` : ariaBase);
+
+          const pageNumberEl = document.createElement('span');
+          pageNumberEl.className = 'reference-page-number';
+          pageNumberEl.textContent = `${uiStrings.scriptureReferencePageLabel} ${format(item.page)}`;
+          const pageTitle = document.createElement('span');
+          pageTitle.className = 'reference-page-title';
+          pageTitle.textContent = item.title || uiStrings.scriptureReferenceUntitled;
+          const meta = document.createElement('small');
+          meta.className = 'reference-page-meta';
+          meta.textContent = [...sources, titleSource].filter(Boolean).join(' · ');
+          link.append(pageNumberEl, pageTitle, meta);
+          listItem.append(link);
+          list.append(listItem);
+        }
+        section.append(list);
+        groupRoot.append(section);
+      }
+      resultsEl.className = 'reference-status';
+      resultsEl.replaceChildren(groupRoot);
+      resultsEl.removeAttribute('role');
+      root?.setAttribute('aria-busy', 'false');
+    }
+
+    async function load() {
+      if (!validBook || !validReference || !validPage) {
+        showError(uiStrings.scriptureReferenceInvalid, uiStrings.scriptureReferenceInvalidHint);
+        return;
+      }
+      const payloadUrl = `${assetBase}scripture/references/v1/${encodeURIComponent(book)}/${encodeURIComponent(reference)}/page-${requestedPage}.json.gz`;
+      try {
+        const payload = dataCache?.getJsonOnce
+          ? await dataCache.getJsonOnce(payloadUrl)
+          : await fetch(payloadUrl).then(async (response) => {
+              if (!response.ok) throw new Error(`HTTP ${response.status}`);
+              const bytes = new Uint8Array(await response.arrayBuffer());
+              const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
+              return JSON.parse(await new Response(stream).text());
+            });
+        renderPayload(payload);
+      } catch (error) {
+        console.error(error);
+        showError(uiStrings.scriptureReferenceUnavailable, uiStrings.scriptureReferenceInvalidHint, true);
+      }
+    }
+
+    void load();
+  </script>
+</Layout>

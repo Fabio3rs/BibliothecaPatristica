@@ -35,6 +35,8 @@ def test_parse_ocr_page_xml_splits_zones() -> None:
 
 def test_normalize_for_search_folds_ligatures_and_diacritics() -> None:
     assert normalize_for_search("GRÆCITATIS") == "graecitatis"
+    assert normalize_for_search("GRÆCITATIS") == normalize_for_search("GRAECITATIS")
+    assert normalize_for_search("PROŒMIA") == normalize_for_search("PROOEMIA")
     assert normalize_for_search("Éphésiens") == "ephesiens"
 
 
@@ -208,6 +210,10 @@ def test_resolve_index_targets_tracks_parallel_editorial_numbering_sequences(
 def test_resolve_index_targets_uses_editorial_page_estimator_as_secondary_confirmation(tmp_path: Path) -> None:
     text_root = tmp_path / "PGE" / "text"
     text_root.mkdir(parents=True)
+    image_root = tmp_path / "PGE" / "images"
+    image_root.mkdir()
+    paired_image = image_root / "PGE-001.png"
+    paired_image.write_bytes(b"")
     write_page(
         text_root / "page-001.txt",
         """
@@ -230,9 +236,51 @@ def test_resolve_index_targets_uses_editorial_page_estimator_as_secondary_confir
     }
     result = resolve_index_targets(request)
     candidate = result["entries"][0]["candidates"][0]
+    assert candidate["image_file"] == str(paired_image.resolve())
+    assert result["entries"][0]["best_candidate"]["image_file"] == str(
+        paired_image.resolve()
+    )
     assert 122 in candidate["estimator_pages"]
     assert any(ev["kind"] == "estimator_page_match" for ev in candidate["evidence"])
     assert candidate["editorial_page_decision_source"] == "estimator_confirmed"
+
+
+def test_resolve_index_targets_uses_cer_tolerant_single_editorial_page(
+    tmp_path: Path,
+) -> None:
+    text_root = tmp_path / "PGC" / "text"
+    text_root.mkdir(parents=True)
+    write_page(
+        text_root / "page-001.txt",
+        """
+        <pagina estado="com_texto">
+          <bloco tipo="cabecalho">I2O INDEX</bloco>
+          <bloco tipo="texto_principal">Dionysius laudatur hic.</bloco>
+        </pagina>
+        """,
+    )
+
+    result = resolve_index_targets(
+        {
+            "volume_id": "PGC",
+            "source_root": str(text_root),
+            "entries": [
+                {
+                    "entry_id": "e1",
+                    "query_names": ["Dionysius"],
+                    "page_hint_ints": [120],
+                }
+            ],
+        }
+    )
+
+    candidate = result["entries"][0]["candidates"][0]
+    assert candidate["file"].endswith("page-001.txt")
+    assert 120 in candidate["estimator_pages"]
+    assert any(
+        evidence["kind"] == "estimator_page_match"
+        for evidence in candidate["evidence"]
+    )
 
 
 def test_resolve_index_targets_marks_local_only_when_estimator_is_not_used(tmp_path: Path) -> None:
@@ -303,6 +351,54 @@ def test_resolve_index_targets_unresolved_without_matches(tmp_path: Path) -> Non
     }
     result = resolve_index_targets(request)
     assert result["entries"][0]["status"] == "unresolved"
+
+
+def test_query_match_mode_best_does_not_add_equivalent_title_aliases(
+    tmp_path: Path,
+) -> None:
+    text_root = tmp_path / "PGA" / "text"
+    text_root.mkdir(parents=True)
+    write_page(
+        text_root / "page-001.txt",
+        """
+        <pagina estado="com_texto">
+          <bloco tipo="texto_principal">EPISTOLAE DUAE AD VIRGINES</bloco>
+        </pagina>
+        """,
+    )
+    base = {
+        "volume_id": "PGA",
+        "source_root": str(text_root),
+    }
+    single = resolve_index_targets(
+        {
+            **base,
+            "entries": [
+                {
+                    "entry_id": "single",
+                    "query_names": ["Epistolae duae ad virgines"],
+                    "query_match_mode": "best",
+                }
+            ],
+        }
+    )["entries"][0]["candidates"][0]
+    aliases = resolve_index_targets(
+        {
+            **base,
+            "entries": [
+                {
+                    "entry_id": "aliases",
+                    "query_names": [
+                        "Epistolae duae ad virgines",
+                        "Epistolæ duæ ad virgines",
+                    ],
+                    "query_match_mode": "best",
+                }
+            ],
+        }
+    )["entries"][0]["candidates"][0]
+
+    assert aliases["score"] == single["score"]
 
 
 def test_page_less_work_locator_excludes_index_and_crosses_three_hints(

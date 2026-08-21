@@ -1,26 +1,27 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="45,30,100,50">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="100,110,132,134">
     495
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="350,25,650,55">
+  <bloco tipo="cabecalho" script="latino" bbox="360,101,650,136">
     HEXAPLORUM QUÆ SUPERSUNT.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="890,30,950,50">
+  <bloco tipo="cabecalho" script="latino" bbox="938,108,966,134">
     496
   </bloco>
-  
-  [!-- Upper Section: Hebrew --]
-  <bloco tipo="texto_principal" script="misto" bbox="50,60,320,480">
+
+  <bloco tipo="cabecalho" script="latino" bbox="179,144,292,171">
     TO EBPAIKON.
-    אנשי חצי במו - פשע
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="135,171,440,610">
+    איש חצי ברי - פשע
     8.
-    9 כי אמר לא יכן-גבר ברעתו
+    9 כי אמר לא יסכן-גבר ברעתו
     עם-אלהים
     10 חלילה לא מרשע ושדי מעיל
     11 כי פעל אדם ישלם-לו ובארח
-    איש ימצאנו
-    16, 17 ואם-בינה שבעה-זאת
-    האזינה לקול מלי: האף שואה משפט
+    איש ימצאנ
+    16,17 ואם-בינה שבעה-זאת
+    האזינה לקול מלי: האף שוא משפט
     יחטש
     19 שרים
     22 ואין צלמות להכתר שם פעלי
@@ -34,10 +35,11 @@
     לביא עלי צעקת-לד צעקת עניים
   </bloco>
 
-  [!-- Upper Section: Transliteration --]
-  <bloco tipo="texto_principal" script="misto" bbox="330,60,550,480">
+  <bloco tipo="cabecalho" script="misto" bbox="428,145,640,190">
     TO EBPAIKON
-    Ελληνικοις γράμμασι.
+    Ελληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="430,210,650,610">
     8.
     9.
     10.
@@ -50,28 +52,24 @@
     25-34.
   </bloco>
 
-  [!-- Upper Section: Greek --]
-  <bloco tipo="texto_principal" script="grego" bbox="650,60,950,480">
-    8.
-    9.
-    10.
-    11.
-    16, 17. Εἰ μὴ συνίεις, ἄκουε. Ἆρα
-    ὁ μισῶν κρίσιν ἐπιδήσει εἰς ασιν;
+  <bloco tipo="texto_principal" script="grego" bbox="732,165,968,310">
+    16, 17. Εἰ μὴ συνιεῖς, ἄκουε. Ἆρα
+    ὁ μισῶν κρίσιν ἐπιδήσει εἰς ἴασιν ;
     19.
-    22. ⛤ Οὐδέ ἐστι σκιὰ θανάτου
-    ⛤ το κρυβῆναι τοὺς ποιοῦντας τὰ
-    ⛤ ἄνομα.
+    22. ✱ Οὐδέ ἐστι σκιὰ θανάτου
+    ✱ τοῦ κρυβῆναι τοὺς ποιοῦντας τὰ
+    ✱ ἄνομα.
     23.
     24.
     25-34.
   </bloco>
 
-  [!-- Lower Section: Versio Hebraici --]
-  <bloco tipo="texto_principal" script="latino" bbox="50,500,320,920">
+  <bloco tipo="cabecalho" script="latino" bbox="165,631,380,675">
     VERSIO HEBRAICI TEXT.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="110,678,455,938">
     Dolore plena sagitta mea absque
-    pravaricatione.
+    praevaricatione.
     8.
     9. Quia dixit, Non proficiet vir
     in complacendo ipso cum Deo.
@@ -102,9 +100,10 @@
     ipse requiescere faciet, et quis con-
   </bloco>
 
-  [!-- Lower Section: Vulgata Latina --]
-  <bloco tipo="texto_principal" script="latino" bbox="330,500,650,920">
+  <bloco tipo="cabecalho" script="latino" bbox="485,631,715,675">
     VULGATA LATINA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="395,678,745,938">
     Violenta sagitta mea absque
     ullo peccato.
     8.
@@ -116,7 +115,7 @@
     ei, et juxta vias singulorum re-
     stituet eis.
     16, 17. Si habes ergo intellec-
-    ctum, audi quod dicitur, et ausculta
+    tum, audi quod dicitur, et ausculta
     vocem eloquii mei. Numquid qui
     non amat judicium sanari potest?
     19. Principum.
@@ -138,32 +137,29 @@
     vocem pauperum. Ipso enim con-
   </bloco>
 
-  [!-- Lower Section: Aquila --]
-  <bloco tipo="texto_principal" script="misto" bbox="660,500,950,920">
+  <bloco tipo="cabecalho" script="latino" bbox="801,631,930,675">
     AQUILA.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="710,678,965,938">
     8.
     9.
     10.
     11.
     16, 17. Et si non intelligis, audi.
     Num qui odit judicium, alligabit
-    ad medelam?
+    ad medelam ?
     19.
-    22. ⛤ Et non est umbra mor-
-    ⛤ tis, ut latitent qui faciunt ini-
-    ⛤ qua.
+    22. ✱ Et non est umbra mor-
+    ✱ tis, ut latitent qui faciunt ini-
+    ✱ qua.
     23.
     24.
     25-34.
   </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="600,960,900,990">
+  <bloco tipo="rodape" script="latino" bbox="632,942,875,983">
     Digitized by Google
   </bloco>
 
-  <notas>
-    Símbolos obelos (⛤ ou similar) presentes no texto grego e na coluna de Aquila (versículo 22).
-    Texto hebraico na coluna superior esquerda apresenta variantes ortográficas.
-    Transcrição do latim mantém ortografia original (ex: "pravaricatione", "ausculta").
-  </notas>
+  <notas>Impressão em página dupla/espraiada: números de página 495 e 496 visíveis nos cantos superiores. Colunas lidas da esquerda para a direita em cada faixa horizontal. Na linha 22 das colunas gregas há sinais asteriscais/obelíscos tipográficos antes das linhas. O bloco superior direito contém apenas a passagem grega visível; o bloco inferior direito corresponde à seção AQUILA em latim.</notas>
 </pagina>

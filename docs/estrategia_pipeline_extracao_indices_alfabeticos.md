@@ -289,6 +289,11 @@ artefatos formam handoffs verificáveis e podem ser reutilizados separadamente:
    shards de localização;
 9. `assembly_report.json`: fingerprint do payload montado.
 
+Os candidatos em `locator_items.json`, `analysis_locator_items.json` e nos shards podem conter
+`facsimile_hint.image_path`. O pareamento é determinístico, mas permanece marcado como não
+inspecionado até o agente abrir a imagem. O hint não é copiado para resultados locator nem para o
+payload canônico; somente a conclusão editorial vinculada ao OCR pode influenciar a decisão.
+
 Os sidecars `*.checkpoint.json` validam tanto a entrada quanto o SHA-256 da saída. O snapshot de
 OCR invalida automaticamente as etapas dependentes quando um arquivo muda, mesmo que o payload
 filtrado permaneça igual. Checkpoints do agente continuam sujeitos aos fingerprints dos contratos

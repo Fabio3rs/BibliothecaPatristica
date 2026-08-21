@@ -1,12 +1,10 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,60">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="80,135,920,205">
     363 [A. M. 6791 AD 6836] NICEPHORI GREGORÆ [IMP. ANDRONIC. SEN.] 364
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="180,65,195,80">
-    A
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,65,480,460">
-    tio libertatis tabescebant, et impios abominaban-
+
+  <bloco tipo="texto_principal" script="latino" bbox="95,205,485,495">
+    rio libertatis tabescebant, et impios abominaban-
     tur. Petunt igitur locum sufficientem ad habitan-
     dum amplius decem millibus hominum, qui si im-
     peratori placuisset cum omni familia migraturi es-
@@ -24,16 +22,14 @@
     res laborare cœpit, et in extremum discrimen est
     adducta, ut post explicabitur.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="100,465,480,495">
-    μαίων, τὰ Ῥωμαίων ἐνόσησε πράγματα καὶ πρ; ἐσχατιὰ; κατηνίχθη κινδύνων, ὡς μπροσθεν δήλω θήσεται.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,505,480,830">
+
+  <bloco tipo="texto_principal" script="latino" bbox="95,500,485,910">
     II. Cæterum legatione tam cupide accepta Mas-
     sagetæ amplius decies mille cum uxoribus et libe-
     ris advenerunt. Cum autem eis et pecunia et equi et
     arma danda essent, ea partim ex imperatorio fisco da-
     bantur, partim e militaribus partim e publicis privatis-
-    que pecuniis. Hinc multi et post alios alii profligisce-
+    que pecuniis. Hinc multi et post alios alii proficisce-
     bantur, qui tributa e provinciis colligerent, eaque
     publicani augebant : omnia arma, omnes equi coge-
     bantur : perquirebantur pagi, urbes, ædes proce-
@@ -53,95 +49,112 @@
     esset quod ferebatur, non posse illos invadi : an
     vero dolis et insidiis Persicis circumveniendo et in
     fugam conjiciendi essent.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="100,835,480,875">
-    περιιόντες τοπόπον, εἶτα κατὰ τὴν φήμην ἀνεπιχείρητα εἴη τὰ πρὸς αὐτούς, εἴτε χρ ὅλοις καὶ λόχοις αὐτούς Περσικοῖς περιελθεῖν καὶ κατατροπώσασθαι.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,880,480,955">
+
     III. Cum autem eos vidissent nullo ordine præ-
     datum crebro exire (Romanos enim agros magis
     populabantur, quam si aperti essent hostes), belli-
-    cosissimi Turcorum consuetu ordine et disciplina
+    cosissimi Turcorum consueto ordine et disciplina
     militari de montibus descendunt, initio paululum,
     deinde longius, ac subinde majore et confidentiore
     cum impetu : nec obscurum erat, eos castra impe-
     ratoris circumdaturos. Verum nostri ne prima
     quidem hostium aggressione tolerata paulatim pe-
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,65,900,460">
-    ἐβούλευσαν ἄκοντες, τὴν δὲ γνώμην αὐτονομίας εἰς
-    κατεθίδρωκεν ἱερεῖς καὶ τῶν ἀσεβῶν ἀλλητριώσεις.
+
+  <bloco tipo="nota_marginal" script="latino" bbox="530,145,548,170">
+    A
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="510,205,960,500">
+    ἐδούλευσαν ἄκοντες, τὴν δὲ γνώμην αὐτονομίας ἐὶ
+    κατεβίβρωσκεν ἱρεῖς καὶ τῶν ἀσεβῶν ἀλλοτρίως.
     Πέμπουσιν οὖν χώραν ἄρχοντα ζητοῦντες εἰς οἴκη-
-    σιν ὑπὲρ τὰς δέκα χιλιάδας αὐτῶν βουλομένων ἐλθεῖν,
-    πανοικί, εἴ γε βουλομένῳ εη καὶ βασιλεῖ, καὶ ἅμα
-    συμμαχεῖν ὑπισχνούμενοι κατὰ τῶν Τούρκων ἰδίαις
-    χερσί, κραταιωθέντων ἤδη καὶ καταστρεφόντων ἰδίᾳ,
+    σιν ὑπὲρ τὰς δέκα χιλιάδας αὐτῶν βουλομένων ἐλθεῖν
+    πανοικί, εἴ γε βουλομένῳ εἴη καὶ βασιλεῖ, καὶ ἅμα
+    συμμαχήσειν ὑπισχνούμενοι κατὰ τῶν Τούρκων ἰδίαις
+    χερσί, κραταιωθέντων ἤδη καὶ καταστρεφόντων ἰδίᾳ
     καὶ πορθούντων ὅλην τὴν τῶν Ῥωμαίων Ἀσίαν.
-    Τῷ μὲν οὖν βασιλεῖ παρὰ, τοσοῦτον ἐφάνη τὰ τῆς
+    Τῷ μὲν οὖν βασιλεῖ παρά, τοσοῦτον ἐφάνη τὰ τῆς
     πρεσβείας καθ' ἡδονήν, παρόσον ἂν εἰ θεόθεν ἐτύ-
-    γχανε κατιοῦσα κα τὰ κατὰ πάσης Ἀσίας μνηστευο-
+    γχανε κατιοῦσα καὶ τὰ κατὰ πάσης Ἀσίας μνηστευο-
     μένη τρόπαια. Μετὰ γὰρ τὴν τοῦ Φιλανθρωπηνοῦ
-    - συμβάσαν ἐκείνην σύγχυσιν πάντες ἔλαγεν ὑπο-
+    συμβᾶσαν ἐκείνην σύγχυσιν πάντας ἔλεγεν ὑπο-
     πτεύειν Ῥωμαίους καὶ μηδένα νομίζειν ὀρθὴν πρὸς
     αὐτὸν διασώζειν ὑπόληψιν· διὸ καὶ συμμαχίᾳ ὑπὲρ
     ὁρίους ἀνεπιτρέπει νυκτὸς καὶ ἡμέρας, ὡς μὴ
     ὠφελεν. Ἀποδοκιμαζομένων γὰρ ἁπάντων Ῥω-
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,290,505,305">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="495,410,512,430">
     B
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,470,900,830">
-    B'. Τῆς μέντοι πρεσβείας οὕτως ἀσμένως δεχθε-
+
+  <bloco tipo="texto_principal" script="grego" bbox="510,505,960,760">
+    Τῆς μέντοι πρεσβείας οὕτως ἀσμένως δεχθε-
     ίσης ἤκουσιν οἱ Μασσαγέται τέκνοις ἅμα καὶ γυναιξὶ
     χιλιάδες ὑπὲρ τὰς δέκα. Ἐπεὶ δὲ ἔδει χρήματα καὶ
     ἵππους καὶ ὅπλα τούτοις διδόναι, τὰ μὲν ἐκ τοῦ βα-
     σιλικοῦ πρυτανείου ἐδίδοντο, τὰ δ' ἐκ τῶν στρατιω-
-    τικῶν, τὰ δ' ἐκ τῶν κοινῶν κα ἰδιωτικν. Ἐντεῦ-
-    θεν συχνοὶ καὶ ἄλλος ἐπ' ἄλλ ἧσαν ο τὰς χώρας
-    ἀργυρολογοῦντες· ἦδον οἱ φορολόγοι τὰ τέλη· πᾶν
+    τικῶν, τὰ δ' ἐκ τῶν κοινῶν καὶ ἰδιωτικῶν. Ἐντεῦ-
+    θεν συχνοὶ καὶ ἄλλος ἐπ' ἄλλῳ ἦσαν οἱ τὰς χώρας
+    ἀργυρολογοῦντες· ἦγον οἱ φορολόγοι τὰ τέλη· πᾶν
     ὅπλον καὶ πᾶς ἵππος ἠθροίζετο· ἠρευνῶντο κῶμαι,
     πόλεις, οἰκίαι τῶν μεγιστάνων, οἰκίαι τῶν ἐν στρα-
-    τείαις κατειλημμένων, ἱλαστήρια, δῆμοι (95), θέα-
-    τρα, ἀγοραί, καὶ [P. 127] πάντες ἐδίδουν ἵππους καὶ
+    τείαις κατειλημμένων, σκηνητήρια, δῆμοι (95), θέα-
+    τρα, ἀγοραὶ, καὶ [P. 127] πάντες ἐδίδουν ἵππους καὶ
     χρήματα, ἄκοντές τε καὶ ὀλοφυρόμενοι, οὐκ εὐχαῖς καὶ
     λόγοις εὐφήμοις, ἀλλὰ δάκρυα καὶ ἀρὰς παραπομ-
     ποὺς ἐφοδίους τῷ νέῳ στρατῷ συνεκπέμποντες.
     Ἐπεὶ δὲ καὶ ἐς Ἀσίαν διαβαίνουσιν ἐξ Εὐρώπης
     ἅμα τῷ βασιλεῖ Μιχαήλ, αὐτοὶ μὲν στρατοπεδεύουσι
-    περὶ Μαγνησίαν· οἱ δὲ Τοῦρκοι τὰ πρῶτα περὶ τὰ
+    περὶ Μαγνησίαν· οἱ δὲ Τούρκοι τὰ πρῶτα περὶ τὰ
     ὄρη καὶ τὰς λόχμας ἀναχωροῦσι, τοῦτο δὴ τὸ σύν-
-    ηθές σφισι ποιοῦντες, ἵν' ἐκεῖθεν αὐτοὶ τας δυσχω-
-    ρίαις φρουρούμενοι τὰ τούτων ὁρσι στρατεύματα
-    ὁπόσα τε καὶ οἷα τυγχάνουσι καὶ τὶ κατὰ στρατηγι-
-    κὴν ἐμπειρίαν στρατοπεδεύουσιν. Ἴσασι γὰρ ὡς
-    πολλὰ τῶν οκ ὄντων ἡ φήμη κομίζει ταῖς ἀκοαῖς
-    ὑπὲρ τὸ προσκον τὰ πράγματα αὔξουσα· ὅθεν
+    ηθές σφισι ποιοῦντες, ἵν' ἐκεῖθεν αὐτοὶ ταῖς δυσχω-
+    ρίαις φρουρούμενοι τὰ τούτων ὁρῶσι στρατεύματα
+    ὁπόσα τε καὶ οἷα τυγχάνειεν καὶ εἰ κατὰ στρατηγι-
+    κὴν ἐμπειρίαν στρατοπεδεύοιεν. Ἴσασι γὰρ ὡς
+    πολλὰ τῶν οὐκ ὄντων ἡ φήμη κομίζει ταῖς ἀκοαῖς
+    ὑπὲρ τὸ προσῆκον τὰ πράγματα αὔξουσα· ὅθεν
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,590,505,605">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="495,720,512,740">
     C
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,835,900,955">
-    Γ'. Ἐπεὶ δὲ ἴδοιεν τούτους ἀτάκτως ἐπὶ λείαν
-    παρεξόντας συχνά· καὶ γὰρ ἐληΐζοντο τὰ Ῥωμαίων
-    αὐτοὶ μεῖζον ἢ κατ' ἐχθρὸν προφανῆ· παρακαλέσαν-
-    τῶν ρῶν οἱ μαχιμώτατοι μετὰ τῆς συνήθους σφίσιν
-    ἐς τὰ πολέμια τάξεως, μικρὸν μὲν πρῶτον, ἔπειτα
-    πλεῖον· καὶ ἀε μεῖζον καὶ θαρσαλεωτέρῳ χρώμενοι
-    τῇ ρμῇ τ· ἐφόδ, δῆλοί ἦσαν τὰ τοῦ βασιλέως
-    κυκλώσοντες στρατόπεδα. Ἀλλ' οὐκ ἐνέμειναν οὐδὲ
-    τὴν πρώτην ἔφοδον τῶν βαρβάρων οἱ ἡμέτεροι,
+
+  <bloco tipo="texto_principal" script="grego" bbox="510,765,960,905">
+    περιιόντες ἐσκόπουν, εἶτα κατὰ τὴν φήμην ἀνεπιχείρητα εἴη τὰ πρὸς αὐτούς, εἴτε χρὴ δόλοις καὶ
+    λόχοις αὐτοὺς Περσικοῖς περιελθεῖν καὶ κατατροπώσασθαι.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,880,505,895">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="530,905,548,925">
     D
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="400,960,600,975">
+
+  <bloco tipo="texto_principal" script="grego" bbox="510,905,960,980">
+    Ἐπεὶ δὲ ἴδοιεν τούτους ἀτάκτως ἐπὶ λείαν
+    παρεξόντας συχνά· καὶ γὰρ ἐληΐζοντο τὰ Ῥωμαίων
+    αὐτοὶ μεῖζον ἢ κατ' ἐχθρὸν προφανῆ· παρακατίαι
+    τῶν ὀρῶν οἱ μαχιμώτατοι μετὰ τῆς συνήθους σφίσιν
+    ἐς τὰ πολέμια τάξεως, μικρὸν μὲν πρῶτον, ἔπειτα
+    πλείον· καὶ ἀεὶ μείζον καὶ θαρραλεωτέρᾳ χρώμενοι
+    τῇ ὁρμῇ τῆς ἐφόδου, δῆλοί ἦσαν τὰ τοῦ βασιλέως
+    κυκλώσοντες στρατόπεδα. Ἀλλ' οὐκ ἐνέμειναν οἱ
+    τὴν πρώτην ἔφοδον τῶν βαρβάρων οἱ ἡμέτεροι,
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="370,948,630,972">
     Variorum notæ.
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="100,975,480,995">
-    (95) Populi Wolfo. An potius curiæ? An tribus? Σῆμοι quoque dicebantur gradus Hippodromi, in
+
+  <bloco tipo="nota" script="misto" bbox="95,972,500,1000">
+    (95) Populi Wolfo. An potius curiæ ? An tribus ?
+    Σῆμοι quoque dicebantur gradus Hippodromi, in
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="520,975,900,995">
-    quibus sedere consueverant δῆμοι, seu factiones. Vide Glossarium med. Græcit. in v. Σῆμοι. BOIVIN.
+
+  <bloco tipo="nota" script="misto" bbox="505,972,930,1000">
+    quibus sedere consueverant δῆμοι, seu factiones.
+    Vide Giussarium med. Græcit. in v. Σῆμοι. Boivin.
   </bloco>
-  <notas>Transcription includes Latin and Greek text. Marginal letters A, B, C, D identified. Footnote (95) split across bottom columns.</notas>
+
+  <notas>Header and footer preserved; modern digitization watermark not transcribed. B/C/D marked as nota_marginal. A few readings remain uncertain where the print is clipped or blurred.</notas>
 </pagina>

@@ -16,6 +16,7 @@ if str(PROJECT_ROOT) not in sys.path:
 from patristica_pipeline.scripture_citation_index import (
     DEFAULT_CITATION_DB,
     DEFAULT_PAYLOAD_DIR,
+    MAX_SCAN_WORKERS,
     build_citation_database,
     citation_database_report,
     discover_volume_roots,
@@ -92,6 +93,8 @@ def main() -> int:
     args = build_parser().parse_args()
     if args.workers < 1:
         raise SystemExit("--workers must be >= 1")
+    if args.workers > MAX_SCAN_WORKERS:
+        raise SystemExit(f"--workers must be <= {MAX_SCAN_WORKERS}")
     if args.batch_size < 1 or args.chunksize < 1:
         raise SystemExit("--batch-size and --chunksize must be >= 1")
     volumes = discover_volume_roots(

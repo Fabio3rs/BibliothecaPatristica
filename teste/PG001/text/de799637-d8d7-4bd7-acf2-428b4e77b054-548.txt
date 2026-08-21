@@ -1,8 +1,11 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,50">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,60">
     1095 S. CLEMENTIS I ROM. PONT. OPERA DUBIA. 1096
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,60,500,500">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,70,510,90">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,70,480,500">
     paret mundum, cunctaque quæ in eo sunt 87. Nam
     tu es qui cœlum ut cameram statuisti 88, ac ut
     pellem extendisti; et terram supra nihilum collo-
@@ -33,52 +36,56 @@
     montium attollis, modo in planitiem sternis 91; modo
     in furorem tempestatis agis, modo, ut navigio cur-
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="550,60,900,500">
+  <bloco tipo="texto_principal" script="grego" bbox="520,70,900,500">
     τε καὶ ἐξουσίας, ἀρχάς τε καὶ θρόνους, ἀρχαγγέλους
     τε καὶ ἀγγέλους· καὶ μετὰ ταῦτα πάντα, ποιήσας δι'
     αὐτο τὸν φαινόμενον τοῦτον κόσμον, καὶ πάντα τὰ
-    ἐν αὐτ. Σὺ γάρ εἶ ὁ τὸν οὐρανὸν ς καμάραν στήσας,
+    ἐν αὐτῷ. Σὺ γάρ εἶ ὁ τὸν οὐρανὸν ς καμάραν στήσας,
     καὶ ὡς δέρριν ἐκτείνας, καὶ τὴν γῆν ἐπ' οὐδενὸς ἱδρύ-
-    σας γνώμῃ μόν· ὁ πήξας στερέωμα, καὶ νύκτα καὶ
+    σας γνώμῃ μόνῃ· ὁ πήξας στερέωμα, καὶ νύκτα καὶ
     μέραν κατασκευάσας· ὁ ἐξαγαγὼν φῶς ἐκ θησαυρῶν,
-    καὶ τῇ τούτου στολῇ (48) ἐπαγαγὼν τὸ σκότος, εἰς
-    ἀνάπαυσιν τῶν ἐν τῷ κόσμ κινουμένων ζώων· ὁ τν
-    ἥλιον τάξας εἰς ἀρχὰς τῆς ἡμέρας, ἐν οὐρανῷ, καὶ
-    τὴν σελήνην εἰς ἀρχὰς τῆς νυκτός, καὶ τὸν χορὸν τν
+    καὶ τῇ τούτου στολῇ (48) ἐπαγαγὼν τ σκότος, ες
+    ἀνάπαυλαν τῶν ἐν τῷ κόσμῳ κινουμένων ζώων· ὁ τὸν
+    ἥλιον τάξας εἰς ἀρχὰς τῆς μέρας, ἐν ορανῷ, κα
+    τὴν σελήνην εἰς ἀρχὰς τῆς νυκτός, καὶ τὸν χορὸν τῶν
     ἀστέρων ἐν οὐρανῷ καταγράψας, εἰς αἶνον τς σῆς
     μεγαλοπρεπείας· ὁ ποιήσας ὕδωρ πρὸς πόσιν καὶ κά-
     θαρσιν, ἀέρα ζωτικὸν πρὸς εἰσπνοήν (49) καὶ φωνῆς
     ἀπόδοσιν διὰ γλώττης πληττούσης τὸν ἀέρα, καὶ ἀκοὴν
-    συνεργουμένην ὑπ' αὐτο ὡς ἐπαίειν εἰσερχομένην
+    συνεργουμένην ὑπ' αὐτοῦ ς ἐπαίειν εἰσδεχομένην
     τὴν προσπίπτουσαν αὐτῇ λαλιάν· ὁ ποιήσας πῦρ πρὸς
     σκότους παραμυθίαν, πρὸς ἐνδείας ἀναπλήρωσιν, καὶ
-    τὸ θερμαίνεσθαι ἡμᾶς καὶ φωτίζεσθαι ὑπ' αὐτο· ὁ
-    τὴν μεγάλην θάλασσαν χωρίσας τῆς γῆς, καὶ τὴν μὲν
-    ἀναδείξας πλωτήν, τὴν δ ποσὶ βάσιμον ποιήσας,
+    τὸ θερμαίνεσθαι ἡμς καὶ φωτίζεσθαι ὑπ' αὐτοῦ· ὁ
+    τὴν μεγάλην θάλασσαν χωρίσας τῆς γς, καὶ τὴν μὲν
+    ἀναδείξας πλωτήν, τὴν δὲ ποσὶ βάσιμον ποιήσας,
     καὶ τὴν μὲν ζώοις μικροῖς καὶ μεγάλοις πληθύνας,
-    τὴν δὲ ἡμέροις καὶ ἀνιθάσσοις πληρώσας, φυτοῖς τε
+    τὴν δὲ ἡμέροις καὶ ἀτιθάσσοις πληρώσας, φυτοῖς τε
     διαφόροις στέψας, καὶ βοτάναις στεφανώσας, καὶ ἄν-
     θεσι καλλύνας, καὶ σπέρμασι πλουτίσας· ὁ συστησά-
     μενος ἄβυσσον, καὶ μέγα κῆτος (50) 90 αὐτῇ πε-
-    ριθείς, ἁλμυρῶν ὑδάτων σεσωρευμένα πλάτην, περι-
+    ριθείς, ἁλμυρῶν δάτων σεσωρευμένα πλάγη, περι-
     φράξας δὲ αὐτὴν πύλαις ἄμμου λεπτοτάτης· ὁ πνεύ-
-    ματι ποτὲ μὲν αὐτὴν κορυφῶν εἰς ρέων μέγεθος,
+    μασι ποτὲ μὲν ατὴν κορυφῶν εἰς ὀρέων μέγεθος,
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="100,505,500,530">
-    87 Gen. I. 88 IV Esd. XVI, 60. 89 Psal. CIII, 2. Jerem. V.
+  <bloco tipo="nota_marginal" script="latino" bbox="490,300,510,320">
+    B
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="550,505,900,530">
-    90 f. κύτος. Sic habet Vind. cod. 91 Job XXXVIII;
+  <bloco tipo="aparato_critico" script="misto" bbox="100,510,900,540">
+    87 Gen. I. 88 IV Esd. xvi, 60. 89 Psal. ciii, 2. 90 f. κύτος. Sic habet Vind. cod. 91 Job xxxviii;
+    Jerem. v.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="400,540,600,560">
+  <bloco tipo="cabecalho" script="latino" bbox="400,550,600,570">
     VARIORUM NOTÆ.
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="100,565,500,950">
-    ρον ἐπὶ τοῦ παρόντος καλεῖσθωσαν θρόνοι, καὶ τρίτον
-    χωρὶς διατάξεως ἀρχαί. Reddit Ferrarius : Univer-
+  <bloco tipo="nota_marginal" script="latino" bbox="490,580,510,600">
+    C
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="100,580,480,950">
+    ron ἐπὶ τοῦ παρόντος καλεἰσθωσαν θρόνοι, καὶ τρίτον
+    χωρὶς διατάσεως ἀρχαί. Reddit Ferrarius: Univer-
     sorum ergo Deus, genus primum quoddam rationale,
     quod cæteris honore excelleret, fecit; quod mea sen-
-    tentia eos complectetur qui vocantur dii ; alterum in
+    tentia eos complectatur qui vocantur dii; alterum in
     præsentia vocentur throni; tertium vero principatus
     sine dissidio. Legebat χωρὶς διαστάσεως, quemad-
     modum legi debet, hoc est absque ullo intermedio
@@ -89,36 +96,39 @@
     rio autem Dionysiano multi detrahunt, non solum
     omissione, sed et dum ordines duos compingunt in
     unum. Ita cherubim et seraphim confundi viden-
-    tur catechesi mystagogica 5 Cyrilli Jerosolymitani,
+    tur catechesi mystagogica 5 Cyrilli Jerosolymitani.
     Sic virtutes et seraphim miscentur per Grego-
-    rium Nyssenum lib. I Adversus Eunomium; itemque
-    throni et cherubim, suffragante Theodosio ad
-    Coloss. I, 16. Quin etiam magis turbat Augustinus
+    rium Nyssenum lib. 1 Adversus Eunomium; itemque
+    throni et cherubim, suffragante Theodorito ad
+    Coloss. 1, 16. Quin etiam magis turbat Augustinus
     Enarratione in psalmum LXXIX, et capite 58 Enchi-
     ridii ad Laurentium. Quid quod aperta Cæsarii
     verba sunt de septem duntaxat ordinibus, dialogo
-    4, respons. ad interrog. 44. Jam præteriti a Dio-
+    1, respons. ad interrog. 44. Jam præteriti a Dio-
     nysio, ab aliis memorati angelorum gradus inve-
-    niuntur hi : Vigiles, apud Syros; βασιλεῖαι, in Cle-
-    mentis Alexandrini Hypotyposibus. Θεότητες ac θεαί,
-    ibidem, necnon in discipulo Origene tom. I in Joannem,
+    niuntur hi : Vigiles, apud Syros; βασιλείαι, in Cle-
+    mentis Alexandrini Hypotyposibus. Θεότητες ac θεοί,
+    ibidem, necnon in discipulo Origene tom. 1 in Joannem,
     consentientibus Hebræis. Πνεύματα, Cyrillo cate-
     chesi 16; atque Spirituales, Maronitis, qui et Igni-
     tos sive Igneos a seraphimis distinctos agnoscunt;
     supra lib. VII, cap. 35 : πνεύματα νοερά, λειτουργοί,
-    λειτουργίαι ; de quibus Clemens Alexandr., libro ci-
+    λειτουργίαι; de quibus Clemens Alexandr., libro ci-
     tato, p. 796, col. 1, A; Methodius De Resurrectione
     apud Epiphanium hæres. 64, n. 33; necnon Gre-
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="550,565,900,950">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,750,510,770">
+    D
+  </bloco>
+  <bloco tipo="nota" script="misto" bbox="520,580,900,980">
     gorius Nyssenus homil. 15 in Canticum canticorum.
-    Λαμπρότητες, ἀναδάσεις, vocerat δυνάμεις ἢ νόες, apud
+    Λαμπρότητες, ἀναβάσεις, νοεραὶ δυνάμεις ἢ νόες, apud
     Gregorium Nazianzenum oratione 34 extrema, loco
     notando, quia ἀναβάσεις illæ, Ascensiones et Ascen-
     sus ex famosa Origenis doctrina descendunt. Στρα-
-   τιαί, hoc capite, indeque epistola interpolata Igna-
+    τιαί, hoc capite, indeque epistola interpolata Igna-
     tii ad Trallianos, n. 5. Αἰῶνες, αἰώνια, ibidem et
-    alibi. Hilarius n De Trinitate, ante medium : Ar-
+    alibi. Hilarius in De Trinitate, ante medium : Ar-
     changeli nesciunt, angeli non audierunt, sæcula non
     tenent. Eusebio De laudibus Constantini p. 606. di-
     cuntur, δυνάμεις ἀφανεῖς, οὐρανίων ἀψίδων ὑπέρτεροι
@@ -128,28 +138,30 @@
     omnes spirituales et rationabiles creaturæ quæ in sæ-
     culis fuerunt. Adde Dionysium De divinis nominibus,
     cap. 5 et 10; ibique interpretes, ac præsertim istud
-    eorum scholium, αἰῶνες γὰρ λέγονται καὶ ο ἄγγελοι.
+    eorum scholium, αἰῶνες γὰρ λέγονται καὶ οἱ ἄγγελοι.
     Unde mirum a Jacobo Usserio, tantæ lectionis ac
     doctrinæ viro, ad Ignatianam epistolam affirmari
     potuisse, Æonum istorum mentionem non occur-
-    rere. Denique Σαβαΐ : Origenis verba sunt, ubi su-
-    pra. Ὅν ἔν τι γένος ἐκάλει Σαβαΐ Ἑβραῖος, παρὰ
+    rere. Denique Σαβαώθ : Origenis verba sunt, ubi su-
+    pra. Ὅν ἕν τι γένος ἐκάλει Σαβαώθ Ἑβραῖος, παρὰ
     ἐσχηματίσθαι τὸν Σαβαώθ, ἄρχοντα ἐκείνων τυγχά-
     νοντα, οὐχ ἕτερον τοῦ Θεοῦ. Verum hi ab exerciti-
-    bus στρατιαῖς minime differunt. COT.
+    bus στρατιαῖς minime differunt. Cot.
     (48) Στολῇ. In Vind. cod. συστολῇ. CLER.
     (49) Εἰσπνοήν. Addit codex Vind. καὶ ἀναπνοήν,
-    ad inspirationem et respirationem, recte. ID.
+    ad inspirationem et respirationem, recte. Id.
     (50) Κῆτος vel κύτος. Favorini Lexicon, κῆτος,
-    ἀπὸ τοῦ κῆτος [f. κύτος], τὸ πλάτος· ὡς τοῦμπαλιν
-    ἀπὸ τοῦ στημι, στῆλος καὶ στύλος. Cot. Legen-
+    ἀπὸ τοῦ κήτος [f. κύτος], τὸ πλάτος· ὡς τομπαλιν
+    ἀπὸ τοῦ ἵστημι, στῆλος κα στῦλος. Cot. Legen-
     dum κύτος, hoc est capacitatem, amplitudinem, ex
     cod. Vind. CLER.
   </bloco>
   <notas>
-    Scripts: Latino e Grego.
-    A página contém texto principal em duas colunas (Latino à esquerda, Grego à direita) e uma seção de notas ("VARIORUM NOTÆ") na parte inferior, também em duas colunas.
-    As notas de rodapé do texto principal (87-91) estão localizadas entre o texto principal e as notas dos variorum.
-    A nota (50) no texto grego tem o número 90 impresso logo após, referindo-se à nota de rodapé correspondente.
+    Página com texto em duas colunas principais (Latino à esquerda, Grego à direita).
+    Letras marginais A e B no gutter entre as colunas principais.
+    Aparato crítico com referências bíblicas e notas textuais abaixo do texto principal.
+    Seção "VARIORUM NOTÆ" abaixo, também em duas colunas, com texto misto (Latino/Grego).
+    Letras marginais C e D no gutter entre as colunas das notas.
+    Transcrição fiel aos acentos e ligaduras visíveis.
   </notas>
 </pagina>

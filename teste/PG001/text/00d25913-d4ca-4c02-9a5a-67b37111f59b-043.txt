@@ -1,16 +1,20 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="80,15,920,45">
     88 PROŒMIA VARIORUM. 88
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="250,65,750,185">
+  <bloco tipo="texto_principal" script="latino" bbox="460,70,540,105">
     III.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="240,110,760,150">
     EX EDITIONE GALLANDI.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="330,155,670,180">
     (Vet. Patr., t. I, Venet. 1765, in-fol., p. xi.)
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="280,210,720,245">
+  <bloco tipo="texto_principal" script="latino" bbox="270,205,730,235">
     SYNOPSIS DISSERTATIONIS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,250,900,445">
+  <bloco tipo="texto_principal" script="latino" bbox="100,245,900,440">
     SECTIO I.
     I. Nonnulla de Clemente R. cujus quatuor supersunt epistolæ. Et primum quidem de duabus ad Corinthios. Studium in iis hic iterum evulgatis, adhibitum.
     II. Prioris epistolæ Corinthiacæ præstantia et integritas asserta. Conjecturæ de illius interpolatione, explosæ.
@@ -22,16 +26,18 @@
     VIII. Solvuntur argumenta, quibus notham suspicatur epistolam Hermannus Venema. Clemens origine gentilis, non Judæus. Christianismus, ejus ætate, longe lateque propagatus. Epistolæ locus insignis de Christi divinitate propugnatus.
     IX. Tempus quo utraque epistola scripta fuerit, inquiritur.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,445,900,595">
+  <bloco tipo="texto_principal" script="latino" bbox="100,445,900,590">
     SECTIO II.
     X. Ejusdem Clementis Epistolæ 2 ad Virgines, nuper editæ. Nova recensione hic denuo typis excusæ.
     XI. Argumenta quibus harum epistolarum ingenuitas confirmatur, alia externa, interna alia. Epiphanii testimonium excutitur ac defenditur.
-    XII. Testimonium item Hieronymi expensum, illustratum assertumque. Aliis etiam nonnullis Patribus antiquioribus eædem epistolæ haud incognitæ.
+    XII. Testimonium item Hieronymi expensum, illustratum assertumque. Aliis etiam nonnullis Patribus antiquioribus eædem epistolæ haud incompertæ.
     XIII. Characteres interni propositi. Aliquot sententiæ Syriacarum epistolarum, in Corinthiacis quoque occurrunt. Eadem utrobique scribendi et ratiocinandi methodus. Mores denique vere apostolici.
     XIV. Diluitur de Grapte cujus mentio apud Hermam, Clementis Romani uxore, lepidum Hermanni Venemæ commentum. Duo epistolæ 1 ad Corinthios loca vindicata. Quæ vero Virginibus inscribuntur, Græcis litteris fuisse primum exaratæ perhibentur, Ecclesia in pace constituta.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="300,605,700,665">
+  <bloco tipo="texto_principal" script="latino" bbox="420,610,580,635">
     SECTIO I.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="310,640,690,665">
     DE DUABUS EPISTOLIS AD CORINTINOS.
   </bloco>
   <bloco tipo="texto_principal" script="misto" bbox="100,670,490,940">
@@ -52,7 +58,10 @@
     nihil ferme aliud est reliqui nisi quatuor Epistolæ,
     quibus fidei ac pietatis institutionem quam ab
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,670,900,940">
+  <bloco tipo="nota_marginal" script="latino" bbox="495,670,505,685">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="510,670,900,940">
     apostolis hauserat, sancte custoditam et religiose
     servatam, fideliter ad nos usque transmisit. Harum
     duæ priores Corinthiis inscriptæ, circa elapsi sæculi
@@ -70,11 +79,12 @@
     ditas, ut ipsemet in præfatione testatur, et litteras
     vetustate exesas, spatiis et interstitiis accuratis-
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="110,950,250,980">
-    ¹⁰ Philipp. IV, 3.
+  <bloco tipo="rodape" script="latino" bbox="100,960,250,985">
+    ¹⁰ Philipp. iv, 3.
   </bloco>
   <notas>
-    Texto em latim com inserções em grego (συνεργός, θεόπνευστα).
-    Transcrição fiel à ortografia original (ex: æ, œ, pontuação).
+    Transcrição fiel incluindo ligaduras (æ, œ, Œ) e caracteres gregos (συνεργός, θεόπνευστα).
+    Letra 'A' entre colunas classificada como nota_marginal conforme instrução.
+    Nota de rodapé corresponde ao marcador ¹⁰ no texto.
   </notas>
 </pagina>

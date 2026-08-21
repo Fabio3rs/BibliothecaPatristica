@@ -902,6 +902,25 @@ def test_validation_requires_page_specific_evidence() -> None:
     )
 
 
+def test_validation_rejects_facsimile_path_in_locator_result() -> None:
+    items = build_locator_items(semantic_payload(ref_count=1))
+    result = resolved("VOL:index:e1", 1, "/page-a.txt", 0.9)
+    result["evidence"].append(
+        {
+            "kind": "visual_page_confirmation",
+            "image_path": "/corpus/images/page-a.png",
+            "detail": "printed header confirms page 101",
+        }
+    )
+
+    report = validate_locator_results(items, [result])
+
+    assert report["status"] == "pending_repair"
+    assert "must not copy intermediate facsimile paths" in report["pending"][0][
+        "reason"
+    ]
+
+
 @pytest.mark.parametrize("kind", ["scripture_regex", "body_citation_match"])
 def test_body_scripture_hit_is_not_page_specific_locator_evidence(kind: str) -> None:
     items = build_locator_items(semantic_payload(ref_count=1))

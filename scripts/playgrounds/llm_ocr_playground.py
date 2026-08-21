@@ -1,101 +1,202 @@
+import sys
+from pathlib import Path
+from typing import Optional
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
 import os
 import time
 import main2
-from pathlib import Path
 
 
-PROMPT_REWRITE = """
-Você é um especialista em paleografia e transcrição de documentos históricos e edições críticas (Patrologia Orientalis).
-Sua missão é comparar a imagem da página com o rascunho de OCR abaixo e produzir uma transcrição fiel, corrigindo erros do Tesseract e descartando qualquer trecho que não apareça na imagem.
 
+PROMPT = """
+You are an expert in palaeography and transcription of historical documents (Patrologia Graeca, Latina et Orientalis).
+
+Analyse the image and produce a faithful XML transcription. First identify the page type (cover/endpaper, text, illustration).
+
+If the page is truly blank: <pagina estado="vazio" tipo="capa_ou_guarda" />
+
+Allowed scripts: latino, grego, copta, siriaco, cirilico, ethiopico, armenio, arabe, hebraico, misto, desconhecido.
+Allowed types: cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal, outro.
+
+RULES:
+1. NEVER state that the page is blank if there is any trace of ink. Transcribe whatever is possible.
+2. Map every block: footnotes, critical apparatus, marginal notes. Omission is a serious failure.
+3. The root tag must have the attribute estado="com_texto" or estado="vazio".
+4. BBOX: x1,y1,x2,y2 (scale 0-1000).
+5. Two-column layout: transcribe the entire left column first, then the right. Full-width headers and footers stay at the visual position they occupy.
+6. Do not translate, normalise, or invent. Use [ilegivel] only for individual words, never for whole blocks.
+
+Layout note: Letters A, B, C, D placed vertically in the centre gutter are nota_marginal section identifiers.
+
+Output format:
+<pagina estado="com_texto">
+  <bloco tipo="..." script="..." bbox="x1,y1,x2,y2">
+    literal transcription
+  </bloco>
+  <notas>complex scripts or relevant corrections if made</notas>
+</pagina>
+
+Return ONLY the XML.
+""".strip()
+
+PROMPT_VERIFY_TESSERACT = """
+You are an expert in palaeography and transcription of historical documents (Patrologia Graeca, Latina et Orientalis).
+
+Analyse the image and produce a faithful XML transcription. First identify the page type (cover/endpaper, text, illustration).
+
+If the page is truly blank: <pagina estado="vazio" tipo="capa_ou_guarda" />
+
+Allowed scripts: latino, grego, copta, siriaco, cirilico, ethiopico, armenio, arabe, hebraico, misto, desconhecido.
+Allowed types: cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal, outro.
+
+RULES:
+1. NEVER state that the page is blank if there is any trace of ink. Transcribe whatever is possible.
+2. Map every block: footnotes, critical apparatus, marginal notes. Omission is a serious failure.
+3. The root tag must have the attribute estado="com_texto" or estado="vazio".
+4. BBOX: x1,y1,x2,y2 (scale 0-1000).
+5. The OCR draft is a hint — verify visually before using it. Tesseract makes mistakes with scripts, diacritics, and ligatures.
+6. Two-column layout: transcribe the entire left column first, then the right. Full-width headers and footers stay at the visual position they occupy.
+7. Do not translate, normalise, or invent. Use [ilegivel] only for individual words, never for whole blocks.
+
+Layout note: Letters A, B, C, D placed vertically in the centre gutter are nota_marginal section identifiers.
+
+Output format:
+<pagina estado="com_texto">
+  <bloco tipo="..." script="..." bbox="x1,y1,x2,y2">
+    literal transcription
+  </bloco>
+  <notas>complex scripts or relevant corrections if made</notas>
+</pagina>
+
+Return ONLY the XML.
+""".strip()
+
+PROMPT_VERIFY_LLM_VS_TESSERACT = """
+You are an expert in palaeography and transcription of historical documents (Patrologia Graeca, Latina et Orientalis).
+
+Analyse the image and produce a faithful XML transcription. First identify the page type (cover/endpaper, text, illustration).
+
+If the page is truly blank: <pagina estado="vazio" tipo="capa_ou_guarda" />
+
+Allowed scripts: latino, grego, copta, siriaco, cirilico, ethiopico, armenio, arabe, hebraico, misto, desconhecido.
+Allowed types: cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal, outro.
+
+RULES:
+1. NEVER state that the page is blank if there is any trace of ink. Transcribe whatever is possible.
+2. Map every block: footnotes, critical apparatus, marginal notes. Omission is a serious failure.
+3. The root tag must have the attribute estado="com_texto" or estado="vazio".
+4. BBOX: x1,y1,x2,y2 (scale 0-1000).
+5. The OCR drafts are hints — verify visually before using them. Tesseract makes mistakes with scripts, diacritics, and ligatures. The llm_ocr may hallucinate structure and content; the image is always the ground truth.
+6. Two-column layout: transcribe the entire left column first, then the right. Full-width headers and footers stay at the visual position they occupy.
+7. Do not translate, normalise, or invent. Use [ilegivel] only for individual words, never for whole blocks.
+
+Layout note: Letters A, B, C, D placed vertically in the centre gutter are nota_marginal section identifiers.
+
+Output format:
+<pagina estado="com_texto">
+  <bloco tipo="..." script="..." bbox="x1,y1,x2,y2">
+    literal transcription
+  </bloco>
+  <notas>complex scripts or relevant corrections if made</notas>
+</pagina>
+
+Return ONLY the XML.
+""".strip()
+
+
+PROMPT_CORRECAO_LLM_VS_TESSERACT = """
+Act as a palaeography expert (Patrologia). Transcribe the image to faithful XML, prioritising the image over the OCR drafts (Tesseract/LLM).
+
+Guidelines:
+1. State: Use `vazio` only if there is no ink; otherwise, `com_texto`.
+2. Layout: Map every block (cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal). Central letters A, B, C, D are `nota_marginal`.
+3. Flow: Transcribe the left column, then the right. BBOX on scale 0-1000.
+4. Fidelity: Translation and normalisation are forbidden. Use `[ilegivel]` only for individual words.
+5. Scripts: latino, grego, copta, siriaco, cirilico, ethiopico, armenio, arabe, hebraico, misto.
+
+Output format (ONLY XML):
+<pagina estado="com_texto/vazio" tipo="capa_ou_guarda/texto/gravura">
+  <bloco tipo="..." script="..." bbox="x1,y1,x2,y2">
+    literal transcription
+  </bloco>
+  <notas>technical details or corrections</notas>
+</pagina>
+""".strip()
+
+
+USER_PROMPT_CORRECAO_LLM_VS_TESSERACT = """
+<tesseract>
+{tesseract_text}
+</tesseract>
+
+<llm_ocr>
+{llm_ocr}
+</llm_ocr>
+
+Proceed as instructed in the system prompt. Return only the XML without markdown.
+Pay attention to the columns and the gutter (if any); A, B, C, D identifiers must be in their own nota_marginal block. Warning: do NOT place section identifiers inside the column text.
+""".strip()
+
+USER_PROMPT_VERIFY_LLM_VS_TESSERACT = """
 <rascunho_ocr>
 {tesseract_text}
 </rascunho_ocr>
 
-Falhas conhecidas do Tesseract:
-- Erros de reconhecimento em caracteres especiais
-- Dificuldade com fontes manuscritas
-- Problemas de alinhamento em documentos escaneados
-- Dificuldade em lidar com texto em várias colunas
-- Letras incorretas por causa de caracteres de grafia semelhante
+<llm_ocr>
+{llm_ocr}
+</llm_ocr>
 
-No caso específico da Patrística:
-- Mistura de idiomas (orientais e ocidentais) e scripts
-- Uso de caracteres especiais e diacríticos
-- Anotações manuscritas
-
-### ETAPA 1: ANÁLISE VISUAL OBRIGATÓRIA
-Antes de gerar o XML, identifique se a página é:
-- Uma capa ou página de guarda (pode estar em branco ou apenas amarelada).
-- Uma página de texto denso (mesmo que degradado ou com scripts complexos como Siriaco/Grego).
-- Uma página com gravuras ou tabelas.
-
-### ETAPA 2: TRANSCRIÇÃO ESTRUTURADA (XML)
-Se a página estiver REALMENTE em branco (apenas papel), use: <pagina estado="vazio" tipo="capa_ou_guarda" />
-Caso contrário, siga o formato abaixo.
-
-Valores permitidos para script: latino, grego, copta, siriaco, cirilico, ethiopico, armenio, arabe, hebraico, misto, desconhecido.
-Valores permitidos para tipo: cabecalho, texto_principal, aparato_critico, rodape, nota, nota_marginal, outro.
-
-REGRAS CRÍTICAS CONTRA OMISSÃO E ERROS DO OCR:
-1. PROIBIÇÃO DE NEGATIVA: É terminantemente proibido ignorar blocos de texto ou afirmar que a página está em branco se houver qualquer vestígio de tinta. Se o texto estiver difícil, transcreva o que for possível; NUNCA desista de um bloco.
-2. INTEGRIDADE: Cada nota de rodapé e aparato crítico deve ser mapeado. A omissão de blocos será considerada falha grave de processamento.
-3. ESTADO DA PÁGINA: A tag raiz <pagina> deve conter o atributo 'estado' ("com_texto" ou "vazio").
-4. USE O RASCUNHO COMO PISTA, NÃO COMO FONTE CONFIÁVEL: só aproveite palavras/trechos do <rascunho_ocr> que você confirma visualmente na imagem; corrija erros e descarte alucinações de caracteres, palavras, etc.
-5. COERÊNCIA VISUAL: se o rascunho tiver linhas ausentes ou extras, siga SEMPRE o que está na imagem.
-
-Formato de saída:
-<pagina estado="com_texto">
-  <bloco tipo="..." script="...">
-    transcrição literal preservando quebras de linha
-  </bloco>
-  <notas>
-    Explique aqui se houve scripts complexos identificados (ex: Siriaco Estrangelo) ou correções relevantes feitas sobre o rascunho do Tesseract.
-  </notas>
-</pagina>
-
-MAIS REGRAS:
-- Preserve a ordem visual (cima para baixo).
-- Não traduza, não normalize, não invente texto.
-- Use [ilegivel] apenas para palavras específicas, não para blocos inteiros.
-- Retorne APENAS o XML.
+Proceed as instructed in the system prompt. Return only the XML without markdown.
+Pay attention to the columns and the gutter (if any); A, B, C, D identifiers must be in their own nota_marginal block. Warning: do NOT place section identifiers inside the column text.
 """.strip()
 
+USER_PROMPT_VERIFY_TESSERACT = """
+<rascunho_ocr>
+{tesseract_text}
+</rascunho_ocr>
+
+Proceed as instructed in the system prompt. Return only the XML without markdown.
+Pay attention to the columns and the gutter (if any); A, B, C, D identifiers must be in their own nota_marginal block. Warning: do NOT place section identifiers inside the column text.
+""".strip()
 
 PROMPT_LLM_JUDGE = """
-Você é um especialista em paleografia e transcrição de documentos históricos (Patrologia Orientalis).
-Compare a imagem com a transcrição na tag <ocr> e avalie a fidelidade.
+You are an expert in palaeography and transcription of historical documents (Patrologia Graeca, Latina et Orientalis).
+Compare the image with the transcription in the <ocr> tag and assess its fidelity.
 
-# Critérios de avaliação
+# Evaluation criteria
 
-**Fidelidade** — quão bem a transcrição reflete o que está na imagem:
-- alta: texto principal correto, erros mínimos ou apenas em scripts difíceis
-- media: erros parciais, omissões menores, mas estrutura preservada
-- baixa: erros significativos, blocos omitidos, confusão de scripts
-- descartar: transcrição irreconhecível ou completamente incorreta
+**Fidelity** — how well the transcription reflects what is in the image:
+- alta: main text correct, minimal errors or only in difficult scripts
+- media: partial errors, minor omissions, but structure preserved
+- baixa: significant errors, omitted blocks, script confusion
+- descartar: transcription unrecognisable or completely incorrect
 
-**Usabilidade** — se o texto é aproveitável para produção de resumos:
-- alta: semântica preservada, termos principais identificáveis
-- media: compreensível com esforço, perdas pontuais de sentido
-- baixa: sentido comprometido por erros acumulados
-- descartar: inutilizável
+**Usability** — whether the text is usable for producing summaries:
+- alta: semantics preserved, main terms identifiable
+- media: understandable with effort, occasional loss of meaning
+- baixa: meaning compromised by accumulated errors
+- descartar: unusable
 
-# Notas importantes
-- Para blocos em scripts não-latinos (armênio, siríaco, grego), avalie apenas:
-  (a) se o bloco está presente na transcrição
-  (b) se a extensão aproximada parece compatível com a imagem
-  (c) se não há confusão óbvia de script (ex: caracteres árabes no meio de armênio)
-  Não avalie a correção caractere a caractere nesses scripts.
-- Para blocos em francês/latim/inglês, avalie semântica e fidelidade completas.
+# Important notes
+- For blocks in non-Latin scripts (Armenian, Syriac), assess only:
+  (a) whether the block is present in the transcription
+  (b) whether the approximate extent seems compatible with the image
+  (c) whether there is no obvious script confusion (e.g. Arabic characters in the middle of Armenian)
+  Do not evaluate character-level correctness for these scripts.
+- For blocks in French/Latin/English/Greek, evaluate semantics and fidelity fully.
 
-Formato de saída esperado (retorne apenas o XML válido preenchido de acordo com o julgamento da imagem):
+Expected output format (return only valid XML filled according to the image judgement):
 <avaliacao>
   <comentario>
-    Comentário específico por bloco: o que está correto, o que está errado ou omitido.
+    Specific comment per block: what is correct, what is wrong or omitted.
   </comentario>
   <idiomas_identificados>
-    <idioma>armênio</idioma>
-    <!-- outros idiomas em PT-BR, cite o idioma identificado no texto, exemplo: "francês" -->
+    <idioma>armenio</idioma>
+    <!-- other languages in PT-BR, cite the language identified in the text, e.g. "francês" -->
   </idiomas_identificados>
   <julgamento>
     <fidelidade>alta|media|baixa|descartar</fidelidade>
@@ -162,6 +263,21 @@ def judge_img(
     print(f"PROMPT_LLM_JUDGE  {prompt_llm_judge}\nSAÍDA DA LLM:\n{txt}")
 
 
+
+def find_text_by_num(text_dir: Path, page_num: int) -> Optional[Path]:
+    """
+    Retorna um texto já existente para a página, seja com UUID ou já normalizada.
+    Ex.: *-170.txt corresponde à página 170.
+    """
+    stable_name = f"*{page_num:03d}.txt"
+    matches = sorted(text_dir.glob(stable_name))
+    if matches:
+        return matches[0]
+    matches = sorted(text_dir.glob(f"*-{page_num}.txt"))
+    return matches[0] if matches else None
+
+
+
 def process_img(
     img_path: Path,
     algorithm: str = "ollama",
@@ -170,8 +286,9 @@ def process_img(
     openai_base_url: str = main2.DEFAULT_OPENAI_BASE_URL,
     openai_api_key: str = os.getenv("OPENAI_API_KEY"),
     reprocess: bool = False,
-    lang: str = "fra+lat+grc+ell+syr",
+    lang: str = "migne",
 ):
+    print(f"Provider: {algorithm}; Language: {lang}; Model: {llm_model}")
     tesseract_db = main2.open_tesseract_cache_db()
     main2.init_tesseract_cache(tesseract_db)
 
@@ -185,14 +302,16 @@ def process_img(
 
     print(f"Processing {img_path.name} {images_dir} {text_dir}...")
 
-    page_txt_path = text_dir / (img_path.stem + ".txt")
+    page_num = main2.parse_page_num_from_filename(img_path)
+    page_txt_path = find_text_by_num(text_dir, page_num) if page_num is not None else text_dir / (img_path.stem + ".txt")
+    txt = ""
+    print(page_txt_path)
     if page_txt_path.exists():
         txt = page_txt_path.read_text(encoding="utf-8", errors="ignore")
 
     txt = main2.clean_text_oriental(txt).strip()
 
-    # PROMPT_REWRITE
-    prompt_llm_judge = PROMPT_REWRITE.format(tesseract_text=tesseractres, llm_ocr=txt)
+    prompt_llm_judge = USER_PROMPT_CORRECAO_LLM_VS_TESSERACT.format(tesseract_text=tesseractres, llm_ocr=txt)
 
     print(f"PROMPT_REWRITE  {prompt_llm_judge}")
 
@@ -204,7 +323,8 @@ def process_img(
         url=ollama_url,
         openai_base_url=openai_base_url,
         openai_api_key=openai_api_key,
-        system_prompt=prompt_llm_judge,
+        system_prompt=PROMPT_CORRECAO_LLM_VS_TESSERACT,
+        user_prompt=prompt_llm_judge,
         reprocess=reprocess,
     )
     t5 = time.time()
@@ -216,11 +336,12 @@ def process_img(
 
 
 def main():
-    img_path = Path("teste/PO021/images/d306e9e5-aa17-41bf-9b1c-80816e85278c-728.png")
-    judge_img(
+    #img_path = Path("teste/PO021/images/d306e9e5-aa17-41bf-9b1c-80816e85278c-728.png")
+    img_path = Path('teste/PG001/images/PG001-129.png')
+    process_img(
         img_path,
         # llm_model="qwen3.5:27b"
-        llm_model=os.getenv("OPENAI_MODEL", "gpt-5-mini"),
+        llm_model=os.getenv("OPENAI_MODEL", "gpt-5.6-luna"),
         algorithm="openai",
     )
 

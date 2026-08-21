@@ -54,6 +54,33 @@ Beta 2</bloco>
     assert page.body_text == "Alpha 1\nBeta 2"
 
 
+def test_parse_ocr_xml_page_repairs_only_non_xml_ampersands() -> None:
+    xml = """
+    <pagina estado="com_texto">
+      <bloco tipo="texto_principal" script="latino">A &amp; B; C & D; E &nbsp; F; G &#160; H.</bloco>
+    </pagina>
+    """
+
+    page = parse_ocr_xml_page(xml, repair_non_xml_ampersands=True)
+
+    assert page.parse_ok is True
+    assert page.repairs == {"escaped_non_xml_ampersands": 2}
+    assert page.body_text == "A & B; C & D; E &nbsp; F; G H."
+    assert "&amp; B" in page.to_clean_xml()
+
+
+def test_parse_ocr_xml_page_does_not_hide_structural_malformation() -> None:
+    xml = """
+    <pagina estado="com_texto">
+      <bloco tipo="texto_principal">A & B</pagina>
+    """
+
+    page = parse_ocr_xml_page(xml)
+
+    assert page.parse_ok is False
+    assert page.repairs == {}
+
+
 def test_read_ocr_page_text_cli_outputs_clean_xml(tmp_path: Path) -> None:
     page_path = tmp_path / "page-001.txt"
     page_path.write_text(

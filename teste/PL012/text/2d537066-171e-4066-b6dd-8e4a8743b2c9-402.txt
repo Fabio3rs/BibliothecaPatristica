@@ -1,76 +1,72 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,20,970,90">
-    769 EVANGELIUM SECUNDUM MARCUM. 770
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,90,330,920">
+<pagina estado="com_texto" tipo="texto">
+  [cabecalho script="latino" bbox="0,55,1000,120"]
+    769                         EVANGELIUM SECUNDUM MARCUM.                         770
+  [/cabecalho]
+
+  [cabecalho script="latino" bbox="70,120,430,160"]
     CODEX VERCELLENSIS.
-    m. . . . . uter
-    se stubehant
+  [/cabecalho]
+  [texto_principal script="latino" bbox="10,160,135,610"]
+    Ill. . . . uter
+    se stubebant
     cum admi-
-    nitio. . . . .
+    ratio. . . . .
     52. enim intel-
     lexerunt
     de panibus;
     erat enim
     cor illorum
-    oblusum.
+    obtusum.
     53. Et (b) inde †, cum
     transfre-
-    tassent, † per-
+    tassent, ¹ per-
     venerunt
     ad terram
     Gennesa-
     54. ret. * Cum exis-
-    sen de na-
+    sent de na-
     vi, continuo
     cognoverunt
-    55. eum : circum-
+    55. eum ; circum-
     euntes au-
     tem univer-
     sam regio-
-    nem illam,
+    nem illam ,
     coeperunt
     super grab-
-    batus adfer-
-    re omnes,
+    batos adfer-
+    re omnes ,
     qui se ma-
     le habebant,
     circumfe-
     rebant enim
     eos, ubicum-
-    que audi-
+    que audis-
+    sent Jesum es-
     56. se. Et quocum-
-    que † introi-
+    que * introi-
     bat in muni-
     cipia, vel a-
-    plus magis intra se stupebant (a) et mirabantur †. non
-    enim intellexerant de panibus. erat enim cor illorum.
-    obcecautum. Et cum transfretassent, venerunt in terram
-    Genesareth. et applicuerunt. Et egressis eis de navi
-    continuo cognoverunt eum, et percurcentes universam
-    regionem illam. coeperunt in grabatis. eis qui male
-    habebant. circumferre. ubi audiebant eum esse. Et
-    quocumque introibat in castella. vel in civitates. aut
-    in villas. in plateis ponebant infirmos. et depreca-
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,90,650,920">
+  [/texto_principal]
+  [texto_principal script="latino" bbox="145,160,470,610"]
     gros, aut in
     civitates,
     in foro, et in
-    plateais po-
+    plataeis po-
     nebant ae-
     gros, et roga-
     bant eum, ut
-    vel fimbram
+    vel fimbriam
     vestimenti
     ejus tange-
     rent : et quicum-
     que tetige-
     runt, sanati
     sunt.
+
     CAPUT VII.
-    1. Et conveni-
-    unt ad eum
+    1. Et conve-
+    niunt ad eum
     Pharisaei,
     et quidam
     de Scribis,
@@ -94,19 +90,23 @@
     manus, non
     edunt (f) panem †,
     tenentes
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,90,970,920">
+  [/texto_principal]
+
+  [cabecalho script="latino" bbox="540,120,930,160"]
+    CODEX VERONENSIS.
+  [/cabecalho]
+  [texto_principal script="latino" bbox="515,160,700,640"]
     dantius in-
     tra se stu-
     pebant, (a) et
     mirabantur †,
     52. non enim
     intellexerant
-    in panibus ;
+    in panibus;
     cor autem
     illorum ob-
     tusum erat.
-    53. Et transfere-
+    53. Et transfre-
     tantes (b) in-
     de † vene-
     runt in ter-
@@ -148,6 +148,7 @@
     tangebant,
     salvi fle-
     bant.
+
     CAPUT VII.
     1. Et conve-
     nerunt ad
@@ -175,54 +176,95 @@
     manducant
     (f) panem †,
     tenentes
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="30,920,970,1180">
+  [/texto_principal]
+  [texto_principal script="latino" bbox="770,160,985,640"/]
+
+  [cabecalho script="latino" bbox="320,700,680,745"]
     CODEX BRIXIANUS.
-    plus magis intra se stupebant (a) et mirabantur. non
+  [/cabecalho]
+  [aparato_critico script="latino" bbox="20,745,495,1160"]
+    plus magis intra se stupebant (a) et mirabantur †. non
     enim intellexerant de panibus. erat enim cor illorum.
-    obcecautum. Et cum transfretassent. venerunt in terram
-    Genesareth. et applicuerunt. Et egressis eis de navi
-    continuo cognoverunt eum, et percurrentes universam
-    regionem illam. coeperunt in grabatis ferre omnes male habentes, circum-
-    ferebant autem eos, ubicumque audiebant illum
-    bantur eum. ut vel fimbram vestimenti ejus. tange-
-    rent. et quodquod tangebant eum. salvi flebant. Et
+    obcecatum. Et cum transfretassent. venerunt in terram
+    Genesareth. et adplicuerunt. Et egressis eis de navi
+    continuo cognoverunt eum, et percurrenles universam
+    regionem illam. coeperunt in grabatis. eos qui male
+    habebant. circumferre. ubi audiebant eum esse. Et
+    quocumque introibat in castella. vel in civitates. aut
+    in villas. in plateis ponebant infirmos. et depreca-
+  [/aparato_critico]
+  [aparato_critico script="latino" bbox="500,745,980,1160"]
+    bantur eum. ut vel fimbriam vestimenti ejus. tange-
+    rent. et quodquod tangebant eum. salvi liebant. Et
     convenerunt ad eum Pharisei. et quidam de Scribis.
-    qui venerant ab Hierosolymis. Qui cum vidissent.
+    qui venerant ab lierosolymis. Qui cum vidissent.
     quosdam ex discipulis ejus. communibus manibus.
-    idest non lotis manducare panes. . vituperaverunt.
-    Pharsaei enim. et omnes Judaei. nisi crebro laver-
+    idest non lotis manducare panes. , vVvituperaverunt.
+    Pharisaei enim. et omnes Judaei. nisi crebro laver-
     rint manus. non manducant. tenentes
+  [/aparato_critico]
+
+  [cabecalho script="latino" bbox="330,1160,670,1195"]
     CODEX CORBEIENSIS.
+  [/cabecalho]
+  [aparato_critico script="latino" bbox="20,1195,980,1325"]
     52. erat enim cor eorum collusum.
-    53. Omisit, et applicuerunt.
+    53. Omittit, et applicuerunt.
     55. et circumcurrentes universam regionem, coepe-
-    runt in grabatis ferre omnes male habentes, circumfe-
+    runt in grabbatis ferre omnes male habentes, circumfe-
     rebant autem eos, ubicumque audiebant Jesum esse.
+
+    CAP. VII. — 1. quidam de Scribis ab Jerosolymis.
+    2. manducare panem, vituperaverunt eos.
+    3. Judaei, nisi pugillo laverint manus, non man-
+    ducant panem, etc.
+  [/aparato_critico]
+
+  [cabecalho script="latino" bbox="300,1325,700,1360"]
     VARIANTES LECTIONES.
+  [/cabecalho]
+  [aparato_critico script="latino" bbox="20,1360,980,1485"]
     1 Mm. pervenerunt in terram Genezar. Vulg. venerunt
     in terram Genesareth.
-    2 Gai. et Mm. Cumque egressissent. Gal. cognoverunt
-    cum viri locijllus, et. Vulg. Cumque egressi essent.. co-
-    LECTIOES CODICIS VINDEB0NENSIS ABUENTES AB EDITIONE VULGATA.
+
+    2 Gal. et Mm. Cumque egressissent. Gal. cognoverunt
+    cum viri loci illius, et. Vulg. Cumque egressi essent.. co-
+    gnoverunt eum : et.
+
+    3 Gat. introiebat. Mm. introeat... in civitates, et in
+    plateas. Vulg. introibat... aut civitates, in plateis.
+  [/aparato_critico]
+
+  [cabecalho script="latino" bbox="180,1485,820,1520"]
+    LECTIONES CODICIS VINDEBONENSIS ABEUNTES AB EDITIONE VULGATA.
+  [/cabecalho]
+  [aparato_critico script="latino" bbox="20,1520,980,1655"]
     dit in navem ad illos, et. 52. erat enim cor illorum optu-
-    sum. 53. Et inde, cum transfretassent, pervenerunt,
-    54. deest Genesareth, et applicuerunt. 54. Cumque
+    sum. 53. Et inde, cum transfretassent, pervenerunt.
+    Ibid. deest Genesareth, et applicuerunt. 54. Cumque
     egressissent de navi. 55. et circumcurrentes circa uni-
     versam regionem, coeperunt in grabatis ferre male haben-
     tes, circumferebant autem eos, ubicumque audiebant illum
-    esse. 56. Et quocumque introivit... fimbrum. libid. deest
+    esse. 56. Et quocumque introivit... fimbrium. Ibid. deest
     eum.
-    CAP. VII. — 1. Et convenerunt ad eum. Ibid. deest,
-    venerientes. 2. Qui cum vidissent. 3. Pharisaei autem...
+
+    Cap. VII. — 1. Et convenerunt ad eum. Ibid. deest,
+    venientes. 2. Qui cum vidissent. 3. Pharisaei autem....
     nisi pugillo laverint... non manducant panem... tenentes
+  [/aparato_critico]
+
+  [cabecalho script="latino" bbox="330,1655,670,1690"]
     BLANCHINI NOTAE.
-    (a) Addit et mirabantur, etiam tex. Gr. και θαυμαζον. Verc. habet. cum admiratione.—(b) Addit inde, cod.
-    quoque Cant. deest. —(c) Ita et cod. Cant. Lat. ac Gr. Γενεσαρ. Ibid. in Vercell., Veron. et cnd. Cant. deest
-    et applicuerunt.—(d) Ita et cod. Cant. in iis tojs γραββατ:τοις παντας τους κακως εχοντας περσυρον γαρ αττοις
-    τον ανυσαν του Ιησούν· Cui concordat etiam Vercell.—(e) Post panem, deest vituperaverunt, etiam
-    in Goth., Copt., Aethiop., Alex. et aliis apud Millium.—(f) Addit panem, cod. quoque Cant. αφρων.
+  [/cabecalho]
+  [nota script="latino" bbox="20,1690,980,1900"]
+    (a) Addit et mirabantur, etiam tex. Gr. καὶ ἐθαύμαζον. Verc., habet, cum admiratione. — (b) Addit inde, cod. quoque Cant. deest. — (c) Ita et cod. Cant. Lat. ac Gr. Γενεσαρ. Ibid. in Vercell., Veron. et cod. Cant. deest et applicuerunt. — (d) Ita et cod. Cant. ἐπὶ τοῖς γραββάτοις πάντας τοὺς κακῶς ἔχοντας. περιέφερον γὰρ αὐτοὺς ὅπου ἂν ἤκουσαν τὸν Ἰησοῦν εἶναι. Cui concordat etiam Vercell. — (e) Post panem, deest vituperaverunt, etiam in Goth., Copt., Æthiop., Alex. et aliis apud Millium. — (f) Addit panem, cod. quoque Cant. ἄρτον.
+  [/nota]
+
+  [rodape script="latino" bbox="760,940,985,985"]
     Digitized by Google
-  </bloco>
-  <notas>Transcrição feita diretamente de impressão tipográfica em latino. Mantidas abreviações e sinais † e referências de notas entre parênteses conforme original. Algumas linhas compactas foram separadas por hífen para refletir quebras visuais.</notas>
+  [/rodape]
+
+  <notas>
+    BBox aproximada em escala 0-1000. Transcrição diplomática em latino, preservando sinais, abreviações aparentes e marcas editoriais.
+  </notas>
 </pagina>

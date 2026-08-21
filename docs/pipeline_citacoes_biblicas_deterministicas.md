@@ -22,6 +22,11 @@ gravado em `data/scripture_citations.db.report.json`. A retomada é automática:
 arquivos cujo tamanho, `mtime`, versão do detector e perfil do volume não
 mudaram são ignorados. `--force` obriga nova leitura.
 
+O relatório também expõe `stored_detector_versions`,
+`outdated_detector_file_count` e `outdated_detector_volume_count`. Uma mudança
+do detector invalida somente os arquivos em versão anterior; a reconstrução
+pode ser retomada normalmente e não requer apagar o banco.
+
 Os workers apenas leem e analisam OCR. Um único processo pai escreve no
 SQLite, em lotes, para evitar contenção e manter resultados reproduzíveis.
 
@@ -66,8 +71,20 @@ recebem uma normalização global inventada.
 
 ## Integração alfabética
 
-`alphabetical_compact_driver.py` consulta o banco depois de montar os
+`alphabetical_compact_driver.py` e a etapa nomeada `locate` de
+`alphabetical_analysis_pipeline.py` consultam o banco depois de montar os
 locators. Se `citation_volumes.scan_status` for `complete`, as ocorrências
 persistidas são usadas como candidatos compactos, excluindo as próprias
-páginas do índice. Se o volume estiver ausente ou parcial, o driver usa o
+páginas do índice. Se o volume estiver ausente ou parcial, a pipeline usa o
 localizador determinístico anterior.
+
+A fusão é persistida em `scripture_candidate_stage.json`, com sidecar de
+checkpoint validado pelo snapshot do OCR, assinatura do banco, perfis locais
+de citação e conteúdo dos locators. Assim, uma falha posterior em `locate`
+não obriga a repetir a consulta ou a varredura bíblica. `--force` invalida
+essa retomada interna.
+
+O comando nomeado `extract` não faz essa consulta: ele extrai a semântica do
+índice impresso. Para cruzar as referências extraídas com ocorrências no
+corpo do volume, execute `locate` em seguida ou use `run`, que percorre
+`discover`, `extract`, `locate`, `verify` e `assemble`.

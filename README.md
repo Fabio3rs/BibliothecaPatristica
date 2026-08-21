@@ -17,7 +17,7 @@ This repository contains the corpus, processing pipelines, and static Bibliothec
 
 - Versão completa em português (PT-BR): [README.pt-BR.md](README.pt-BR.md)
 - Full version in English: [README.en.md](README.en.md)
-- Pipeline técnico detalhado: [docs/PIPELINE.md](docs/PIPELINE.md)
+- Pipeline técnico detalhado, incluindo VLM em duas passagens e reconciliação tripla de OCR: [docs/PIPELINE.md](docs/PIPELINE.md#ocr-three-way)
 - Aplicação web Astro: [`web/`](web/)
 
 ## Notas rápidas
@@ -25,8 +25,12 @@ This repository contains the corpus, processing pipelines, and static Bibliothec
 - A maior parte dos prompts, resumos e keywords foi escrita originalmente em PT-BR; não há versão em inglês para estes no momento.
 - Os textos de OCR já estão versionados em `teste/` (páginas `P*/text/*`).
 - A limpeza/melhoria do OCR segue em progresso; PDFs/imagens originais não são versionados.
+- Na reconciliação tripla de OCR, o fac-símile está sempre presente: a VLM lê a imagem sem rascunhos, o Tesseract produz outra leitura da mesma imagem e páginas reprovadas voltam à VLM com o fac-símile e os dois textos para uma transcrição corretiva. É uma VLM em duas passagens, não *two-shot prompting*. A explicação completa está no [pipeline técnico](docs/PIPELINE.md#ocr-three-way).
+- O desenho e os limiares dessa pipeline são empíricos, obtidos por comparação visual exploratória de páginas com seus fac-símiles, sem amostragem formal; não resultam de benchmark matemático de BCER.
 
 ## Quick notes
 
 - Most prompts, summaries, and keywords were originally written in PT-BR; the English version is a reference translation.
 - The OCR texts are already versioned in `teste/` (pages `P*/text/*`).
+- In three-way OCR reconciliation, the facsimile is always present: the VLM first reads the image without OCR drafts, Tesseract independently reads the same image, and rejected pages return to the VLM with the facsimile and both texts. This is a two-pass VLM workflow, not two-shot prompting. See the [full English explanation](docs/PIPELINE.md#three-way-ocr-english).
+- The pipeline design and thresholds are empirical, based on exploratory visual comparisons of informally selected pages with their facsimiles and no formal sampling design; they were not derived from a mathematical BCER benchmark.

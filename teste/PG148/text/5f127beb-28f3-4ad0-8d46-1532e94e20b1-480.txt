@@ -1,9 +1,12 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
     947 [A. M. 6852, IND. 12] NICEPHORI GREGORÆ [IMP. J. PALÆOL. 4] 948
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,500">
-    huic historiæ intexuimus, ac porro intexemus, si
+  <bloco tipo="nota_marginal" script="latino" bbox="500,50,520,70">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="50,60,480,600">
+    huic historiæ intexuimus, ac po ro intexemus, si
     vita nobis detur, ea omnia simul, tam iis qui nunc
     legunt, quam iis quibus postea occurrent, magna
     videri quidem possint, et qualia hactenus nulla.
@@ -32,59 +35,62 @@
     nulla ornatus eorum qui ibi versantur, sensibus
     715 ambitiosissime (ut ita dicam) ex facili blan-
     ditur, et magnam statim offert suavissimamque vo-
-    luptatem. Illinc tanquam e thesauris undecunque
+    luptatem. Illinc tanquam ex thesauris undecunque
     affluit et odorum halitus dulcis, et florum amœ-
     nissimus color. Atque is locus purioribus solis
     radiis ut plurimum interest : et multiplicium ar-
-    borum coma tegitur, et salibus abundat et præ-
+    borum coma tegitur, et saltibus abundat et præ-
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,60,950,500">
-    A μεσον έρανισαμενοι τήδε τή ιστορία συνυφάναιέν τε
-    καί συνυφανούμεν, εί ζήν ήμίν έξείη, μεγάλα μέν
-    πως δόξειεν άν τοίς τε νύν όρώσιν άπανθ' όμού καί
-    τοίς έπειτ' έντευξομένοις, καί οία μήπω πρόν. "Ομως
-    ήν ά πως φορητά, εί μή πάσιν, άλλ' ούν οίς ή τών
-    πραγμάτων ένέθηκε πείρα σύνεσιν, καί ούς ή τής
-    ψυχής εύλάβεια πέπεικε, ταίς Γραφαίς έπομένους.
-    Κυρίου παιδείαν είναι νομίζειν καί τών συντρόφων
-    καί όμηλίκων κηλίδων ίατρείαν τινά (70), εί μή καί
-    τά τής 'Εκκλησίας ναυάγια προσετίθετο, καί τών
-    πάλαι κοιμηθέντων σκανδάλων άρτιγενείς όμοίως
-    έπιφύοντο κήρες, μακρούς όλέθρους ψυχής έπιφέ-
-    ρουσαι καί βότα πρός άπώλεια; πυθμένας κατα-
-    βαπτίζουσαι.
-    [P. 448] Β'. Άλλά τούτων ένία καί ήμίν κατ' έπιτο-
-    μήν ένταύθα λελέξεται. Πάντα γάρ όμού διεξιέναι,
-    πρός άλλην άσχολουμένοις πραγματείαν, ράδιον ούκ
-    άν είη, μεγίστην τε άν έργον καί μεγίστης δεόμενον
-    πραγματείας. Καί πρώτον μέν ένταύθα καΐσθα διή-
-    γημα τών περί τόν "Αθω τό όρος έν τούτοις διαλαβόν-
-    των τοίς χρόνοις Μασσαλιανών καί Βογομίλων (71).
-    IV. Τά τε γάρ άλλα τό όρο; ό "Αθως (72) θαυμά-
-    ζεσθαι άξιον είναι δοκεϊ μοι, ότι τε πρός άέρα κά-
-    κραται πάνυ τοι εύφυώς, καί ότι πολλή τινι καί
-    παντοδαπή τή χλόη κοσμεϊται, καί σφόδρα φιλοτί-
-    μως είπείν έκ τού ράστου τών έντυγχανόντων τήν
-    αίσθησιν δεξιοϋται, καί πολλήν εύθύς προβάλλεται
-    C τήν τής τέρψεως ήδονήν· καί ρεί πανταχόθεν ώσπερ
-    έκ θησαυρών τό τε είπωον τής όδμής καί τό τού
-    άνθους εύχρουν· καί καθαροίς τό πλείστον όμιλεϊ
-    ταίς ήλίου άκτίσι· δενδρεσί τε πολυειδέσι κομεΐ
-    καί άλη καί λειμώνες ποικίλους, έργα χειρών άν-
+  <bloco tipo="nota_marginal" script="latino" bbox="50,480,80,500">
+    715
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,240,520,260">
-    B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,420,500,440">
+  <bloco tipo="nota_marginal" script="latino" bbox="50,510,80,530">
     C
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="50,500,950,520">
+  <bloco tipo="texto_principal" script="grego" bbox="520,60,950,600">
+    μεσων ἐρανισαμενοι τῇδε τῇ ἱστορίᾳ συνυφάναμέν τε
+    καὶ συνυφανοῦμεν, εἰ ζν ἡμν ἐξείη, μεγάλα μέν
+    πως δόξειεν ἂν τοῖς τε νῦν ρῶσιν πανθ' ὁμοῦ καὶ
+    τοῖς πειτ' ἐντευξομένοις, καὶ οἷα μήπω πρίν. Ὅμως
+    ἦν ἂν πως φορητά, εἰ μὴ πᾶσιν, ἀλλ' οὖν ος ἡ τν
+    πραγμάτων ἐντέθεικε πεῖρα σύνεσιν, καὶ ος ἡ τς
+    ψυχς εὐλάβεια πέπεικε, ταῖς Γραφαῖς πομένους.
+    Κυρίου παιδείαν εἶναι νομίζειν καὶ τῶν συντρόφων
+    καὶ ὁμηλίκων κηλίδων ἰατρείαν τινὰ (70), εἰ μὴ καὶ
+    τὰ τῆς κκλησίας ναυάγια προσετίθετο, καὶ τν
+    πάλαι κοιμηθέντων σκανδάλων ἀρτιγενεῖς ὁμοίως
+    ἐπεφύοντο κῆρες, μακροὺς ὀλέθρους ψυχῆς ἐπιφέ-
+    ρουσαι καὶ ῥστα πρὸς ἀπωλείας πυθμένας κατα-
+    βαπτίζουσαι.
+    [P. 448] Β'. Ἀλλὰ τούτων ἔνια κα ἡμῖν κατ' ἐπιτο-
+    μὴν ἐνταῦθα λελέξεται. Πάντα γὰρ ὁμοῦ διεξιέναι,
+    πρὸς ἄλλην ἀσχολουμένοις πραγματείαν, ῥᾴδιον οὐκ
+    ἂν εἴη, μέγιστόν τε ὂν ἔργον καὶ μεγίστης δεόμενον
+    πραγματείας. Καὶ πρτον μὲν ἐνταῦθα κείσθω διή-
+    γημα τῶν περὶ τὸν θω τὸ ρος ἐν τούτοις ἑαλωκό-
+    των τοῖς χρόνοις Μασσαλιανῶν καὶ Βογομίλων (71).
+    IV. Τά τε γὰρ ἄλλα τὸ ὄρος  Ἄθως (72) θαυμά-
+    ζεσθαι ἄξιον εἶναι δοκεῖ μοι, ὅτι τε πρὸς ἀέρα κέ-
+    κραται πάνυ τοι εὐφυῶς, καὶ ὅτι πολλῇ τινι καὶ
+    παντοδαπῇ τῇ χλόῃ κοσμεῖται, καὶ σφόδρα φιλοτί-
+    μως εἰπεν ἐκ τοῦ ῥᾴστου τῶν ἐντυγχανόντων τὴν
+    αἴσθησιν δεξιοῦται, καὶ πολλὴν εὐθὺς προβάλλεται
+    τὴν τῆς τέρψεως ἡδονήν· καὶ ῥεῖ πανταχόθεν ὥσπερ
+    ἐκ θησαυρῶν τό τε εὔπνουν τῆς ὀσμῆς καὶ τὸ τοῦ
+    ἄνθους εὔχρουν· καὶ καθαραῖς τὸ πλεῖστον ὁμιλεῖ
+    ταῖς λίου ἀκτσι· δενδροῖς τε πολυειδέσι κομᾷ
+    καὶ ἅλση καὶ λειμῶνας ποικίλους, ἔργα χειρῶν ἀν-
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,300,520,320">
+    B
+  </bloco>
+  <bloco tipo="nota" script="latino" bbox="400,600,600,620">
     Variorum notæ.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="50,520,480,900">
+  <bloco tipo="aparato_critico" script="misto" bbox="50,620,480,950">
     (70) Verti, eam esse divinam castigationem. Ver-
-    tendum videtur, al quam esse divinam castigatio-
-    nem, etc. BOIVIN.
+    tendum videtur, al quam esse divinam castigationem,
+    etc. BOIVIN.
     (71) Consulendus hic in primis Cantacuz. lib. II,
     cap 39. DUCANGE -- De his Anna Comnena, Eu-
     thymius Zigabenus, Tollü iter Italicum etc. Vide
@@ -93,66 +99,67 @@
     (72) De laudibus montis Atho multa etiam pa-
     triar-ha Philotheus, Antirrhetic. lib XII (cod. reg.
     1996, fol. 283 v.), ubi Gregoram acriter insectatur,
-    quod et sanctam solitudinis monasticæ tranquillit-
+    quod et sanctam solitudinis monasticæ tranquilli-
     tatem, et montem ipsum Atho calumniari ausus
-    sit. 'Υβρίζει δ' αγροίκως, inquit, είς τήν ίεράν
-    ήσυχίαν διά τών αύτής άθλητών τε καί άσκητών·
-    μάλλον δέ ούκ είς τήν ήσυχίαν μόνον, άλλα καί τήν
-    έπ' τήν όμοΰ πάσα, όση τε τής θεωρίας· καί ίση
-    τής πράξεως, τόν ίερόν "Αθω τώ λόγω προύχει, τό
-    μόνον ώς άληθώς άπασης τής άρετής κοινόν έργα-
-    στήριον. τών καθ' ήμάς τις έφη σοφών· τίν τών
-    έκατέρωθεν τής οίκουμένης, πώς άν είποιμι, όμολο-
-    γουμένως έξειλεγμένον μάλιστα χώρον· τόν ίερόν
-    χηραμόν· τό μέγα καί θαυμαστόν όντως τής άρε-
-    τής παγκράτιον· τών 'Ολύμπου πραγμάτων τόν
-    διχρόντως νομί' μάλλον δέ ούκ οΐδ' ό τί τις άν
-    είρηκώς, έπειτ' άφέξεται. 'Ιί γάρ τών έποικούντων
-    άρετή πάσαν ύπερβολήν άμβλύνει. "Ον δήπου καί
-    βασιλεύς ό σοφός (CANTACUZENUS), ούπω τότε τοΰ
-    σκήπτρου καί τοΰ κράτους έπιλαβόμενος, άρετί
+    sit. Ὑβρίζει δ' ἀγροίκως, inquit, εἰς τὴν ἱερὰν
+    ἡσυχίαν διὰ τῶν ατῆς ἀθλητῶν τε καὶ ἀσκητῶν·
+    μᾶλλον δ οὐκ ες τὴν συχίαν μόνον, ἀλλὰ καὶ τὴν
+    ἐπ' τὴν ὁμοῦ πᾶσαν, ὅση τε τῆς θεωρίας· καὶ ἴση
+    τῆς πράξεως, τὸν ἱερν Ἄθω τῷ λόγῳ προύχει, τὸ
+    μόνον ὡς ἀληθῶς ἀπάσης τῆς ἀρετῆς κοινὸν ἐργα-
+    στήριον. τῶν καθ' ἡμς τις ἔφη σοφῶν· τὶν τῶν
+    ἑκατέρωθεν τῆς οἰκουμένης, πῶς ἂν εἴποιμι, ὁμολο-
+    γουμένως ἐξειλεγμένον μάλιστα χώρον· τὸν ερὸν
+    χηραμόν· τὸ μέγα καὶ θαυμαστὸν ντως τῆς ἀρε-
+    τῆς παγκράτιον· τῶν λύμπου πραγμάτων τὸν
+    διχρόντως νομί' μᾶλλον δὲ οὐκ οδ' ὅ τί τις ἂν
+    εἰρηκώς, ἔπειτ' ἀφέξεται. Ἢ γὰρ τῶν ἐποικούντων
+    ἀρετὴ πᾶσαν ὑπερβολὴν ἀμβλύνει. Ὃν δήπου καὶ
+    βασιλεὺς ὁ σοφὸς (CANTACUZENUS), οὔπω τότε τοῦ
+    σκήπτρου καὶ τοῦ κράτους ἐπιλαβόμενος, ἀρετὴ
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,720,500,740">
+  <bloco tipo="nota_marginal" script="latino" bbox="500,700,520,720">
     D
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="520,520,950,900">
-    πρώτης έπιθεωρητικῆς τοίς έκεί, καί τήν άρετήν
-    μεθ' ύπερβολής άπολαμπίζων τών ένοικούντων,
-    ς "Ελληνας· (') μέν (έλεγον έν μύθοις φασίν, "Ατλαντά
-    τίνα τών μετά Κρόνον θεών καθηρημένον, ταύτην
-    ύπό τών άθάντων τήν δίκην κατειληφέναι, φώς
-    τής γής άνέχειν κίονας, ώς άν πίζοιτο τώ τούοα-
-    ττ, βάρει. 'Εγώ δέ τούτους φαίην άν, καί τής άλη-
-    θείας έμοί συμμαρτυρούσης ταύτην τήν τιμήν λα-
-    χεΐν, τΰ βίου τής πολλής φιλοσοφίας ένεκα παρά
-    Θεού, τό τήν άνάγκην, εύχαίς ίλεουμένους αύτή
-    τό θεΐον. » Τόν γοΰν ούτως ύπό μεγάλων τε καί
-    σοφών άνδρών καί θαυμαστών όμού βασιλέων μεθ'
-    ύπερβολής θαυμαζόμενον θαυμαστόν "Αθω, διά τό
-    περιόν τής όρετής φήμη καί τής άγιότητος τών
-    έν τούκω (έώ γάρ νύν τούς πρό ήμών συγγραφεΐς,
-    τε κα; σοφούς λέγειν, ούδέν ήττον, εί μή καί μάλλον
-    τών νύν τούτων τεθαυμασται;. ό Γρηγοράς· είς
-    μέσον παρηγάς, όπερ έφη, ούδέν φησιν άρετής
-    έχον; διά τού οίκείου 'Αγαθαγγέλου, ουδέ μόριον
-    γούν άγαθού τι καί λείψανον παρά τοίς όσίοις έκεί-
-    νοις καί έπη ούν εύρεΐν, εί μή καί πάν φησι τού-
+  <bloco tipo="aparato_critico" script="misto" bbox="520,620,950,950">
+    πρώτης ἐπιθεωρητικῆς τοῖς ἐκεῖ, καὶ τὴν ἀρετὴν
+    μεθ' ὑπερβολῆς ἀποθαυμάζων τῶν ἐνοικούντων,
+    « Ἕλληνες· (*) μὲν (ἔλεγον) ἐν μύθοις φασίν, Ἄτλαντά
+    τινα τῶν μετὰ Κρόνον θεῶν καθηρημένον, ταύτην
+    ὑπὸ τῶν ἀθανάτων τὴν δίκην κατειληφέναι, φῶς
+    τῆς γς ἀνέχειν κίονας, ὡς ἂν πίθοιτο τῷ τοσού-
+    τῳ βάρει. Ἐγὼ δὲ τούτους φαίην ἂν, καὶ τς ἀλη-
+    θείας ἐμοὶ συμμαρτυρούσης ταύτην τὴν τιμὴν λα-
+    χεῖν, τῷ βίῳ τῆς πολλῆς φιλοσοφίας ἕνεκα παρὰ
+    Θεοῦ, τὸ τὴν γῆν ἀνέχειν, εὐχαῖς ἱλεουμένους αὐτῇ
+    τὸ θεῖον. » Τὸν γοῦν οὕτως ὑπὸ μεγάλων τε καὶ
+    σοφῶν ἀνδρῶν καὶ θαυμαστῶν ὁμοῦ βασιλέων μεθ'
+    ὑπερβολῆς θαυμαζόμενον θαυμαστὸν θω, διὰ τ
+    περιν τῆς ἀρετῆς φήμη καὶ τς ἁγιότητος τῶν
+    ἐνοίκων (ἐῶ γὰρ νῦν τοὺς πρὸ ἡμν συγγραφες,
+    τε καὶ σοφοὺς λέγειν, οὐδὲν ἧττον, εἰ μὴ καὶ μλλον
+    τν νῦν τούτων τεθαύμασται;. ὁ Γρηγορᾶς· εἰς
+    μέσον παρηγάς, ὅπερ ἔφη, οὐδὲν φησιν ἀρετῆς
+    ἔχον; διὰ τοῦ οκείου Ἀγαθαγγέλου, οὐδὲ μόριον
+    γοῦν ἀγαθοῦ τι καὶ λείψανον παρὰ τοῖς ὁσίοις ἐκεί-
+    νοις καὶ ἔπη οὖν εὑρεῖν, εἰ μ καὶ πᾶν φησι τοῦ-
     ναντίον. Reliqua omitto, quæ nimis multa sunt.
-    Porro hinc apparet Gregoram in libris Antirrheticis,
-    quibus Philotheus suos opposuit, aliter prorsus
-    atque in hac Historiæ parte de Atho monte lo-
+    Porro hinc apparet Gregoram in libris Antirrhe-
+    ticis, quibus Philotheus suos opposuit, aliter pror-
+    sus atque in hac Historiæ parte de Atho monte lo-
     cutum fuisse. Cantacuzenus eum montem a Gre-
     gora in libris quoque historicis infamatum signifi-
     cat lib. IV, cap. 24, p. 802, qua de re in ipsius
     Gregoræ Vita diximus. BOIVIN.
-    (*) Ipsa sunt Cantacuzeni verba, Histor. lib. II, cap. 4, edit. Reg. pag. 801. BOIVIN.
+    (*) Ipsa sunt Cantacuzeni verba, Histor. lib. IV, cap. 4, edit. Reg. pag. 801. BOIVIN.
   </bloco>
   <bloco tipo="rodape" script="latino" bbox="400,950,600,990">
     Digitized by Google
   </bloco>
   <notas>
     Transcrição fiel do texto em colunas (Latim e Grego).
-    Identificadores de seção A, B, C, D foram mapeados. A está no início da linha do texto grego. B, C, D estão no gutter (margem central).
+    Identificadores de seção A, B, C, D foram mapeados como nota_marginal.
     O bloco de notas inferiores ("Variorum notæ") contém texto misto (Latim e Grego).
+    A numeração 715 na margem esquerda foi transcrita como nota_marginal.
   </notas>
 </pagina>

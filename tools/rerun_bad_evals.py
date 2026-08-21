@@ -175,7 +175,12 @@ def main():
     ap.add_argument("--limit", type=int, default=None, help="Limitar quantidade de páginas.")
     ap.add_argument("--eval-db", type=Path, default=Path("data/ocr_eval.db"), help="Caminho do banco evaluations.")
 
-    ap.add_argument("--algorithm", choices=["tesseract", "ollama", "openai"], default="ollama")
+    ap.add_argument(
+        "--algorithm",
+        choices=list(main2.VLM_ALGORITHMS),
+        default="ollama",
+        help="Provedor VLM usado no reprocessamento e no judge.",
+    )
     ap.add_argument("--llm-model", type=str, default=main2.DEFAULT_LLM_MODEL)
     ap.add_argument("--ollama-url", type=str, default=main2.DEFAULT_OLLAMA_URL)
     ap.add_argument("--openai-base-url", type=str, default=main2.DEFAULT_OPENAI_BASE_URL)

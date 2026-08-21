@@ -1,45 +1,72 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="50,50,950,90">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="misto" bbox="110,70,890,120">
     375 [A. M. 6791 AD 6816] NICEPHORI GREGORÆ [IMP. ANDRONIC. SEN.] 376
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,90,480,430">
-    tam : quæ aliquando per imprudentiam in 217 A medium vas incidit, in quo autor ille atramentum habebat, tingendis coriis destinatum, unde et vix eluctata tota nigra evasit. Ac mures quidem opinabantur eam, monastico habitu sumpto mutatam, non commissuram esse deinceps, ut carnibus vesceretur. Itaque metu posito per pavimentum dispersi odorari et vestigare cœperunt ea quibus alerentur. Illa vero cum prodiisset, et tantam prædam oculis suis obversari vidisset, omnes simul comprehendere admodum cupiens haudquaquam poterat : attamen duobus comprehensis epulata est. Reliqui omnes fuga salutem quæsiverunt, admirantes, quo pacto sumpto monastico habitu crudelior evasisset. Vereor igitur, inquit, ne et Athanasius hic, prædictionum præmium sedem patriarchicam jam nunc consecutus, priorem illam asperitatem posteriore multo majore deleat, sumpta inde superbia elatus. »
+
+  <bloco tipo="texto_principal" script="latino" bbox="115,130,475,445">
+    tam : quæ aliquando per imprudentiam in medium vas incidit, in quo sutor ille atramentum habebat, tingendis coriis destinatum, unde et vix eluctata tota nigra evasit. Ac mures quidem opinabantur eam, monastico habitu sumpto mutatam, non commissuram esse deinceps, ut carnibus vesceretur. Itaque metu posito per pavimentum dispersi odorari et vestigare cœperunt ea quibus alerentur. Illa vero cum prodiisset, et tantam prædam oculis suis obversari vidisset, omnes simul comprehendere admodum cupiens haudquaquam poterat : attamen duobus comprehensis epulata est. Reliqui omnes fuga salutem quæsiverunt, admirantes, quo pacto sumpto monastico habitu crudelior evasisset. Vereor igitur, inquit, ne et Athanasius hic, prædictionum præemium sedem patriarchicam jam nunc consecutus, priorem illam asperitatem posteriore multo majore deleat, sumpta inde superbia elatus. »
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,90,505,110">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="480,135,505,165">
     A
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="510,90,950,430">
-    φιλοτιμίας οὕτωσί πως εἰπών· Ἦν τις ἀνὴρ τὴν τέχνην σκυτεύς γυλὴν ἔχων τὸ χρῶμα λευκήν, ἢ τν κατ' οκον μυῶν καθ' ἡμέραν ἐθήρευεν ἕνα. Αὕτη λαβοῦσά ποτε κατὰ μέσην κηρυνίζεται τὴν λεκάνην, ἐν ᾗ τὸ τὰ σκύτη μελαῖνον ὁ σκυτεὺς ἐκεῖνος εἶχεν ὄγρον, καὶ μόλις ἐκεῖθεν ἀνεῖσι μέλαν ἔχουσα χρῶμα. Ἔδοξεν οὖν τοῖς μυσί, ἐκείνη ἴσως μηκέτι κρεωφαγεῖν ἐθελήσειν εἰς μοναδικὸν ἑαυτὴν μεταμφιέσασα σχῆμα. θεν κα ἀδεῶς αυτοὺς ἐς τὸ ἔθος ἐφήπλωσαν βινπλατοῦντες ἄνω καὶ κάτω οἷς τραφήσονται· ἀλλ' ἐκείνη πρὸς τοσοῦτον ἄγρας παρελθοῦσα θέατρον πάντα, μὲν ὁμοῦ σαγηνεύειν οὐκ εἶχε καὶ μάλα ἐθίλουσα· δύο δ' οὖν ὅμως συλλαβοῦσα κατεοινώσατο. Οἱ δ' ἕτεροι πάντες ἔχοντε φεύγοντές τε καὶ ἅμα θαυμάζοντες, ὅπως ἀπηνεστέρα γεγονεν, ἀφ' οὗ τὸ μοναδικὸν περιθέτο σχῆμα. Δέδοικα τοίνυν, ἔφη, ὁ μὴ καὶ Ἀθανάσιος οὗτος ἤδη τῶν προῤήσεων γέρας πατριαρχικὸν εἰληφς θρόνον ἀποκρύψῃ τὴν προτέραν ἐκείνην σκληρότητα τῇ τῆς ὑστέρας ὑπερβολῇ διὰ τὴν ἐντεῦθεν ὄρηνιν.
+
+  <bloco tipo="texto_principal" script="grego" bbox="515,130,905,445">
+    φιλοτιμίας οὕτωσί πως εἰπών· «Ἦν τις ἀνὴρ τὴν τέχνην σκυτεύς γυλὴν ἔχων τὸ χρῶμα λευκήν, ἡ τῶν κατ' οἶκον μυῶν καθ' ἡμέραν ἐθήρευεν ἕνα. Αὕτη λαθοῦσά ποτε κατὰ μέσην κρημνίζεται τὴν λεκάνην, ἐν ᾗ τὸ τὰ σκύτη μελαῖνον ὁ σκυτεὺς ἐκεῖνος εἶχεν ὑγρόν, καὶ μόλις ἐκεῖθεν ἀνεῖσι μέλαν ἔχουσα χρῶμα. Ἔδοξεν οὖν τοῖς μυσὶν, ἐκείνην ἴσως μηκέτι κρεωφαγεῖν ἐθελήσειν εἰς μοναδικὸν ἑαυτὴν μεταμφιέσασαν σχῆμα. Ὅθεν καὶ ἀδεῶς ἑαυτοὺς ἐς τὸ ἔθος ἐφήπλωσαν ῥινηλατοῦντες ἄνω καὶ κάτω οἷς τραφήσονται· ἀλλ' ἐκείνη πρὸς τοσοῦτον ἄγρας παρελθοῦσα θέατρον πάντας μὲν ὁμοῦ σαγηνεύειν οὐκ εἶχε καὶ μάλα ἐθέλουσα· δύο δ' οὖν ὅμως συλλαβοῦσα κατεθοινήσατο. Οἱ δ' ἕτεροι πάντες φεύγοντές τε καὶ ἅμα θαυμάζοντες, ὅπως ἀπηνεστέρᾱ γέγονεν, ἀφ' οὗ τὸ μοναδικὸν περιέθετο σχῆμα. Δέδοικα τοίνυν, » φησί, « μὴ καὶ Ἀθανάσιος οὗτος ἤδη τῶν προῤῥήσεων γέρας πατριαρχικὸν εἰληφὼς θρόνον ἀποκρύψῃ τὴν προτέραν ἐκείνην σκληρότητα τῇ τῆς ὑστέρας ὑπερβολῇ διὰ τὴν ἐντεῦθεν αἴνιν.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,280,505,300">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="480,405,505,435">
     B
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="400,440,600,460">
+
+  <bloco tipo="cabecalho" script="latino" bbox="430,515,575,560">
     CAPUT II.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,470,480,780">
-    Italiæ rex Siciliæ regem imparatum terra marique oppugnat. Variis cladibus afficit per biennium. Rogerius Catalanus (11), maris et insularum terror. Quas copias secum habuerit. A Siciliæ rege arcessitur. Ejus adventu urbes redeunt ad dominum legitimum. Italiæ rex eas armis repetit. Re male gesta discedit Bellum reparat. Vincitur. Pacem petit et affinitatem.
 
-    I. His temporibus Carolus Italiæ et Theodoricus Siciliæ rex bellum inter se gesserunt. Est autem Sicilia magna et populosa insula, milliaribus non amplius triginta a continente distans : si quis fretum, quod inter Scyllæum Italiæ promontorium et Messanam Siciliæ maritimam urbem interfuit, metiatur. Carolus igitur, qui jampridem Siciliæ potiri cupiebat, et id consilium animo agitabat, clam naves longas ædificat : cæteraque ad 218 bellum tam mari quam terra gerendum necessaria pro virili comparat. Tandem cum inimicitiæ in apertum erupissent, Carolus Theodorico adhuc imparato formidabilis erat, et valde eum præmebat, e continente subinde in insulam trajiciendo cum omni et peditatu et equitatu suo : ac per biennium clamais illatis hieme domum se recipiebat; verno autem tempore majoribus semper copiis bellum redintegrabat.
-    ἐξαζόμενός ἦν, καὶ κακῶς τὰ ἐκείνου ποιῶν ἐπὶ δυσὶ τοῖς ἐνιαυτοῖς, χειμῶνος μὲν οἴκαδε ἐπανήκων, ἔαρος δ' ἀεὶ λαμπρότερας τὰς ἐκστρατείας ποιούμενος.
+  <bloco tipo="texto_principal" script="latino" bbox="115,560,475,875">
+    Italiæ rex Siciliæ regem imparatum terra marique oppugnat. Variis cladibus afficit per biennium. Rogerius Catalanus (11), maris et insularum terror. Quas copias secum habuerit. A Siciliæ rege arcessitur. Ejus adventu urbes redeunt ad dominum legitimum. Italiæ rex eas armis repetit. Re male gesta discedit. Bellum reparat. Vincitur. Pacem petit et affinitatem.
 
-    II. Illis porro temporibus accidit, ut Latinus D
+    I. His temporibus Carolus Italiæ et Theodoricus Siciliæ rex bellum inter se gesserunt. Est autem Sicilia magna et populosa insula, milliaribus non amplius triginta a continente distans : si quis fretum, quod inter Scyllæum Italiæ promontorium et Messanam Siciliæ maritimam urbem interfluit, metiatur. Carolus igitur, qui jampridem Siciliæ potiri cupiebat, et id consilium animo agitabat, clam naves longas ædificat : cæteraque ad 218 bellum tam mari quam terra gerendum necessaria pro virili comparat. Tandem cum inimicitiæ in apertum erupissent, Carolus Theodorico adhuc imparato formidabilis erat, et valde eum premebat, e continente subinde in insulam trajiciendo cum omni et peditatu et equitatu suo : ac per biennium illatis hieme domum se recipiebat; verno autem tempore majoribus semper copiis bellum redintegrabat.
+
+    II. Illis porro temporibus accidit, ut Latinus
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,550,505,570">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="475,710,500,745">
     C
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="510,470,950,780">
-    A'. Κατὰ μὶντοι γε τούτους τοὺς χρόνους συνέπεσε πολεμεῖν ἀλλήλοις ἄμφω τοὺς ῥήγας, Κάρολόν τε τὸν τῆς Ἰταλίας καὶ Θευδέριχον (12) τὸν τῆς Σικελίας. Νῆσος δ' ἡ Σικελία μεγάλη καὶ πολυάνθρωπος, μιλίοις οὐ πλέον ἀπέχουσα τῆς ἠπείρου τριάκοντα (13), εἴ τις ἐθέλοι μετρεῖν τ ἀπὸ Σκυλλαίου τοῦ παραλίου τῆς Ἰταλίας ἄκρου μέχρι Μεσσήνης τῆς πόλεως, παραλίου καὶ ταύτης οὔσης Σικελίας τῆς νήσου. [P. 133] Ὁ μὲν οὖν Κάρολος πολὺν ἐκ πολλοῦ τν Σικελίαν ποχείριον θέσθαι καὶ διὰ μελέτης ποιούμενος τοῦτο μακράς· λάθρα ἐνεπήγνυε ναῦς· (14) καὶ τλλα παρεσκεύαζεν, ὡς ἔνῃ, σα πρὸς τε ναυμαχίαν καὶ πεζομαχίαν αὐτάρκη. Ὁδὲ δὴ τῆς ἐχθρας ἐς προῦπτον ἀναῤαγείσης φοβερὸς ὁ Κάρολος· τὰ πρῶτα ἐδίδει τῷ Θευδερίχῳ ἀπαρασκευαστί τυγχάνοντι καὶ πολὺς ατῷ ἐνίκατο συχνὰ διαπεραιόμενος ἐς τὴν νσον ἐκ τς ἠπείρου, ὅσον τε πεζὸν καὶ ὅσον εἰς ἱππάς·
 
-    B'. Συνέπεσε δὲ (15) τηναυτὰ Λατῖνόν τινα,
+  <bloco tipo="nota_marginal" script="latino" bbox="515,555,560,590">
+    A´.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="50,790,950,950">
+
+  <bloco tipo="texto_principal" script="grego" bbox="515,560,905,880">
+    Κατὰ μὲντοι γε τούτους τοὺς χρόνους συνέπεσε πολεμεῖν ἀλλήλοις ἄμφω τοὺς ῥήγας, Κάρολόν τε τὸν τῆς Ἰταλίας καὶ Θεοδωρίχον (12) τὸν τῆς Σικελίας. Νῆσος δ᾽ ἡ Σικελία μεγάλη καὶ πολυάνθρωπος, μιλίοις οὐ πλέον ἀπέχουσα τῆς ἠπείρου τριάκοντα (13), εἴ τις ἐθέλοι μετρεῖν τὸ ἀπὸ Σκυλλαίου τοῦ παραλίου τῆς Ἰταλίας ἄκρου μέχρι Μεσσήνης τῆς πόλεως, παραλίου καὶ ταύτης οὔσης Σικελίας τῆς νήσου. [P. 133] Ὁ μὲν οὖν Κάρολος πόθῳ ἐκ πολλοῦ τὴν Σικελίαν ὑποχείριον θέσθαι καὶ διὰ μελέτης ποιούμενος τοῦτο μακρᾶς, λάθρα ἐνεπήγνυε ναῦς (14) καὶ τὰ ἄλλα παρεσκεύαζεν, ὡς ἔνι, ὅσα πρὸς τε ναυμαχίαν καὶ πεζομαχίαν αὐτάρκη. Ὁ δὲ τῆς ἐχθρᾶς ἐς πρόοπον ἀναῤῥαγείσης φοβερὸς ὁ Κάρολος τὰ πρῶτα ἐδόκει τῷ Θεοδωρίκῳ ἀπαρασκευῷ τυγχάνοντι καὶ πολὺς αὐτῷ ἐνέκειτο συχνὰ διαπεραιούμενος ἐς τὴν νῆσον ἐκ τῆς ἠπείρου, ὅσον τε πεζὸν καὶ ὅσον εἰς ἱππέας ἐξεταζόμενον ἦν, καὶ κακῶς τὰ ἐκείνου ποίων ἐπὶ δυσὶ τοῖς ἐνιαυτοῖς, χειμῶνος μὲν οἴκαδε ἐπανιὼν, ἔαρος δ᾽ ἀεὶ λαμπροτέρας τὰς ἐκστρατείας ποιούμενος.
+
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="grego" bbox="515,875,560,910">
+    Β´.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="515,880,905,975">
+    Συνέπεσε δὲ (15) τηναυτὰ Λατίνόν τινα,
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="110,885,470,1000">
     Variorum notæ.
-    (11) Rogerius re ipsa Catalanus non fuit. Gregoras tamen Catalaunum eum fuisse innuit pag. 154, C, ubi ait, Ἦλθε καὶ ἕτερος Κατελάνος, ὄνομα ὁ γκάρος Τέντζας. Venit et alter Catalanus, nomine Berengarius Entenza. Dixerat supra advenisse Rogerium. BOIVIN.
+
+    (11) Rogerius re ipsa Catalanus non fuit. Gregoras tamen Catalanum eum fuisse innuit pag. 154, C, ubi ait, Ἦλθε καὶ ἕτερος Κατελάνος, ὄνομα [ilegivel]. Venit et alter Catalanus, nomine Berengarius Entenza. Dixerat supra advenisse Rogerium. BOIVIN.
+
     (12) Fredericum hic et infra legendum, uti supra monuimus. De hoc bello inter Carolum et Fredericum passim agunt historici. DU CANGE.
+
     (13) A Scyllæo promontorio ad Messanam urbem vix numerantur 15 milliaria Italica, quamquam fretum ea parte latissimum sit. In Codice Regio, pro miliis οὐ πλέον, legitur σταδίους ἀπέχουσα τῆς ἠπείρου σλ'. Id est, stadiis ducentis et triginta distans, quod idem fere est. Itaque Gregoras distantiam dimidio majorem credidit quam revera esset. BOIVIN.
-    (14) Si legas, ut legitur in codice Regio, καὶ διὰ μελέτης ποιούμενος τοῦ.ο μακράς, λάθρα ἐναυπηγεῖτο, verum idem erit, cum rem annie præsumdians, naves clam construebat. BOIVIN.
-    (15) Pachymer. lib. XI. cap. 12, 21, 23, 24, 26. Rogerium vocat quomodo is appellabatur. DU CANGE.
   </bloco>
-  <notas>Transcription of a bilingual page (Latin/Greek) from Patrologia Graeca. Marginal letters A, B, C, D indicate sections. Footnotes contain critical apparatus.</notas>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="515,885,905,1000">
+    (14) Si legas, ut legitur in codice Regio, καὶ διὰ μελέτης ποιούμενος τοῦ.ο μακρᾶς, λάθρα ἐναυπηγεῖτο, verendum erit, cum rem anxie meditabundans, naves clam construebat. BOIVIN.
+
+    (15) Pachymer. l. XI, cap. 12, 21, 23, 24, 26. Rogerium vocat quomodo is appellabatur. DU CANGE.
+  </bloco>
+
+  <notas>Transcrição diplomática com separação das letras capitulares/marginais em blocos próprios. Algumas passagens gregas do corpo e do aparato estão parcialmente incertas; foi preservado o que é legível e usado [ilegivel] apenas em um vocábulo duvidoso.</notas>
 </pagina>

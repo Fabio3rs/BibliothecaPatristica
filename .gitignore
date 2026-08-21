@@ -6,6 +6,8 @@ __pycache__
 # SQLite databases and Parquet files exceed GitHub's size limit — not versioned
 data/*.db
 data/cache/*.db
+data/repair_backups/
+data/.resumo_locks/
 *.parquet
 .venv
 
@@ -63,4 +65,3 @@ secrets.json
 *.log
 logs/
 tmp/
-

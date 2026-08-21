@@ -1,78 +1,44 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="60,30,100,50">465</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="420,30,580,50">EXODI CAP. XXVIII.</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="900,30,940,50">466</bloco>
-  
-  <bloco tipo="cabecalho" script="grego" bbox="120,60,260,85">ΣΥΜΜΑΧΟΣ.</bloco>
-  <bloco tipo="cabecalho" script="grego" bbox="485,60,515,85">Ο</bloco>
-  <bloco tipo="cabecalho" script="grego" bbox="740,60,880,85">ΘΕΟΔΟΤΙΩΝ.</bloco>
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="84,60,112,75">465</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="158,85,276,101">ΣΥΜΜΑΧΟΣ.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="82,112,347,160">Ὅ ἐστιν εἰς τὸ ἀντικρὺς τοῦ ἐπενδύματος. * ὅ ἐστιν εἰς τὸ μέρος τῆς ἐπωμίδος ἔσωθεν·</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="101,181,139,202">27.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="99,441,139,462">28.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="158,684,275,704">SYMMACHUS.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,712,350,772">Quod est e regione superindumenti. * Quod est in partem * superhumeralis intrinsecus·</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="98,792,140,814">27.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="97,936,141,958">28.</bloco>
 
-  [!-- Coluna Grega Esquerda (Symmachus) --]
-  <bloco tipo="texto_principal" script="grego" bbox="60,100,300,160">
-    Ὁ ἐστιν εἰς τὸ ἀντικρὺς το ἐπενδύματος. ἢ ὅ ἐστιν εἰς τὸ μέρος τῆς ἐπωμίδος ἔσωθεν.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="60,200,90,220">27.</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="60,360,90,380">28.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="402,66,565,84">EXODI CAP. XXVIII.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="470,91,492,108">ο</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="352,113,618,185">* τοῦ λογίου ἐπὶ τοῦ χείλους αὐτοῦ· * Ἄλλος, καὶ ποιήσεις δύο δακτυλίους χρυσοῦς, καὶ ἐπιθήσεις ἐπὶ τὰ δύο πτερύγια τοῦ λογίου ἐπὶ τὸ ἄκρον.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="373,185,414,205">27.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="350,193,620,365">Καὶ ποιήσεις δακτυλίους χρυσοῦς καὶ δώσεις αὐτοὺς ἐπὶ τοὺς δύο ὤμους τῆς ἐπωμίδος κάτωθεν ἐκ τοῦ κατὰ πρόσωπον, κατὰ τὴν συμβολὴν αὐτῶν, ἐπάνω τοῦ μηχανώματος τῆς ἐπωμίδος· Ἄλλος, καὶ ποιήσεις δύο δακτυλίους χρυσοῦς, καὶ ἐπιθήσεις ἐπ᾽ ἀμφοτέρους τοὺς ὤμους τῆς ἐπωμίδος κάτωθεν αὐτοῦ, κατὰ πρόσωπον, κατὰ συμβολὴν ἄνωθεν τῆς συναφῆς τῆς ἐπωμίδος.</bloco>
+  <bloco tipo="aparato_critico" script="grego" bbox="351,368,620,410">Ἄλλος, συμφώνως. Ἄλλος, κατασκευάσματος. Ἄλλος, διαζώματος.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="371,430,414,451">28.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="350,445,620,640">Καὶ συσφίγξουσι τὸ λόγιον ἐκ τοῦ δακτυλίου αὐτοῦ εἰς τὸν δακτύλιον τῆς ἐπωμίδος ἐν κλώσματι ὑακινθίνῳ, ἵνα ᾖ ἐπὶ τοῦ μηχανώματος τῆς ἐπωμίδος· καὶ οὐ μὴ ἀποσπάσῃς τὸ λόγιον ἀπὸ τῆς ἐπωμίδος· Ἄλλος, καὶ σφίγξεις τὸ λόγιον ἀπὸ τῶν δακτυλίων τῶν ἐπ᾽ αὐτοῦ εἰς τοὺς δακτυλίους τῆς ἐπωμίδος συνεχομένους, ἐκ τῆς ὑακίνθου συμπεπλεγμένους εἰς τὸ ὕφασμα τῆς ἐπωμίδος, ἵνα μὴ χαλᾶται τὸ λόγιον ἀπὸ τῆς ἐπωμίδος.</bloco>
+  <bloco tipo="aparato_critico" script="grego" bbox="350,645,621,685">Ἄλλος, καὶ οὐ σαλευθήσεται. Ἄλλος, καὶ μὴ ἀποκλίνητε.</bloco>
 
-  [!-- Coluna Grega Central (LXX) --]
-  <bloco tipo="texto_principal" script="grego" bbox="330,100,650,180">
-    ✠ τοῦ λογίου ἐπὶ το χείλους αὐτοῦ. Ἄλλος, καὶ ποιήσεις δύο δακτυλίους χρυσοῦς, καὶ ἐπιθήσεις ἐπὶ τὰ δύο πτερύγια τοῦ λογίου ἐπὶ τὸ ἄκρον.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="330,190,650,330">
-    27. ✠ Καὶ ποιήσεις δακτυλίους χρυσοῦς καὶ δώσεις αὐτος ἐπὶ τοὺς δύο ὤμους τῆς ἐπωμίδος κάτωθεν ἐκ τοῦ κατὰ πρόσωπον, κατὰ τὴν συμβολὴν ατῶν, ἐπάνω τοῦ μηχανώματος τῆς ἐπωμίδος. Ἄλλος, καὶ ποιήσεις δύο δακτυλίους χρυσοῦς, καὶ ἐπιθήσεις ἐπ' ἀμφοτέρους τοὺς ὤμους τῆς ἐπωμίδος κάτωθεν αὐτοῦ, κατὰ πρόσωπον, κατὰ συμβολὴν ἄνωθεν τῆς συνάφης τῆς ἐπωμίδος.
-  </bloco>
-  <bloco tipo="aparato_critico" script="grego" bbox="330,335,650,365">
-    Ἄλλος, συμφώνως. Ἄλλος, κατασκευάσματος. Ἄλλος, διαζώματος.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="330,375,650,490">
-    28. ✠ Καὶ συσφίγξουσι τὸ λόγιον ἐκ τοῦ δακτυλίου αὐτοῦ εἰς τν δακτύλιον τῆς ἐπωμίδος ἐν κλάσματι ὑακινθίνῳ, ἵνα (ἢ) ἐπὶ τοῦ μηχανώματος τῆς ἐπωμίδος· καὶ οὐ μὴ ἀποσπάσῃς τὸ λόγιον ἀπὸ τς ἐπωμίδος. Ἄλλος, καὶ σφίγξεις τὸ λόγιον ἀπὸ τῶν δακτυλίων τῶν ἐπ' αὐτοῦ ες τοὺς δακτυλίους τῆς ἐπωμίδος συνεχομένους, ἐκ τῆς ἀκάνθου συμπεπλεγμένους εἰς τὸ ὕφασμα τῆς ἐπωμίδος, ἵνα μὴ χαλᾶται τ λόγιον ἀπὸ τῆς ἐπωμίδος. Ἄλλος, καὶ οὐ σαλευθήσεται. Ἄλλος, καὶ μὴ ἀποκλινήσει.
-  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="392,687,583,704">LXX INTERPRETES.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,712,620,770">* partes rationalis, super labium ejus· Alius, et facies duos annulos aureos, et impones super duas alas rationalis super summitatem.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="365,790,410,811">27.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,810,620,920">* Et facies annulos aureos, et dabis eos supra duos humeros superhumeralis deorsum, ex eo quod est secundum faciem, juxta commissuram eorum, supra structuram superhumeralis· Al. et facies duos annulos aureos, et impones super duos humeros superhumeralis infra ipsum, secundum faciem, juxta commissuram superne texturæ superhumeralis.</bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="350,921,620,958">Al., concorditer. Alius, apparatus. Alius, subligaculi.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="365,966,412,986">28.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="350,977,620,1000">* Et constringent rationale ex annulo ejus in annulum superhumeralis, in vitta byacintina, ut sit supra structuram superhumeralis, et ne abstrahas rationale a superhumerali· Alius, et stringes rationale ab angulis supra positis ad annulos superhumeralis hærentes, ex hyacintho contextos in texturam superhumeralis, ut non laxetur rationale a superhumerali.</bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="350,989,620,1000">Alius, et non commovebitur. Alius, et ne declinetis.</bloco>
 
-  [!-- Coluna Grega Direita (Theodotion) --]
-  <bloco tipo="texto_principal" script="grego" bbox="680,100,940,160">
-    Ὁ ἐστιν εἰς τὸ ἀντικρὺς τς ἐπωμίδος. Ἄλλος, ἀπ' ἄκρου τοῦ ὀπισθίου τῆς ἐπωμίδος ἔσωθεν.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="660,200,690,220">27.</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="660,360,690,380">28.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="700,91,820,108">ΘΕΟΔΟΤΙΩΝ.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="640,113,900,165">Ὅ ἐστιν εἰς τὸ ἀντικρὺς τῆς ἐπωμίδος. Ἄλλος, ἀπ᾽ ἄκρου τοῦ ὀπισθίου τῆς ἐπωμίδος ἔσωθεν.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="640,184,678,204">27.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="640,429,677,450">28.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="700,687,812,704">THEODOTIO.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="640,712,900,775">Quod est e regione superhumeralis. Alius, a summitate posterioris partis superhumeralis ab intus.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="640,791,678,812">27.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="640,966,678,987">28.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="850,70,883,84">466</bloco>
 
-  [!-- Coluna Latina Esquerda (Symmachus) --]
-  <bloco tipo="cabecalho" script="latino" bbox="120,510,260,535">SYMMACHUS.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,550,300,610">
-    Quod est e regione superindumenti. ✠ Quod est in partem superhumeralis intrinsecus :
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="60,640,90,660">27.</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="60,800,90,820">28.</bloco>
-
-  [!-- Coluna Latina Central (LXX) --]
-  <bloco tipo="cabecalho" script="latino" bbox="350,510,580,535">LXX INTERPRETES.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,550,650,600">
-    ✠ tates rationalis, super labium ejus. Alius, et facies duos annulos aureos, et impones super duas alas rationalis super summitatem.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,610,650,750">
-    27. ✠ Et facies annulos aureos, et dabis eos supra duos humeros superhumeralis deorsum, ex eo quod est secundum faciem, juxta commissuram eorum, supra structuram superhumeralis. Al. et facies duos annulos aureos, et impones super duos humeros superhumeralis infra ipsum, secundum faciem, juxta commissuram superne texturæ superhumeralis. Al., concorditer. Alius, apparatus. Alius, subligaculi.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,760,650,900">
-    28. ✠ Et constringent rationale ex annulo ejus in annulum superhumeralis, in vitta hyacinthina, ut sit supra structuram superhumeralis, et ne abstrahas rationale a superhumerali. Alius, et stringes rationale ab angulis supra positis ad annulos superhumeralis hærentes, ex hyacintho contortos in texturam superhumeralis, ut non laxetur rationale a superhumerali. Alius, et non commovebitur. Alius, et ne declinetis.
-  </bloco>
-
-  [!-- Coluna Latina Direita (Theodotio) --]
-  <bloco tipo="cabecalho" script="latino" bbox="700,510,880,535">THEODOTIO.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="680,550,940,610">
-    Quod est e regione superhumeralis. Alius, a summitate posterioris partis superhumeralis ab intus.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="660,640,690,660">27.</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="660,800,690,820">28.</bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="100,930,900,960">
-    * Hactenus Basileensis codex asteriscos notavit quos in exemplaribus usu tritis textus LXX Interpretum hic desiderat.
-  </bloco>
-  
-  <bloco tipo="outro" script="latino" bbox="400,970,600,995">Digitized by Google</bloco>
-
-  <notas>
-    Transcrição de página de edição poliglota (provavelmente Hexapla de Montfaucon), contendo colunas de Symmachus, LXX (Septuaginta) e Theodotion em Grego e Latim.
-    Símbolo ✠ usado para representar o asterisco/crux crítico no texto.
-    Abreviações latinas mantidas (Al., etc.).
-    O "O" no cabeçalho central refere-se à Septuaginta.
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="87,971,872,988">* Hactenus Basileensis codex asteriscos notavit quos in exemplaribus usu tritis textus LXX Interpretum hic desiderat.</bloco>
+  <bloco tipo="rodape" script="latino" bbox="570,989,775,1000">Digitized by Google</bloco>
+  <notas>Os asteriscos impressos foram mantidos como *. Os números 27 e 28 situados nas margens foram transcritos em blocos nota_marginal separados; não foram incluídos no fluxo dos textos.</notas>
 </pagina>

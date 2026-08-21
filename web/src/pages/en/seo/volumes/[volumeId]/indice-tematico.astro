@@ -1,0 +1,15 @@
+---
+import SeoThematicVolumePage from '../../../../../components/pages/SeoThematicVolumePage.astro';
+import { getSeoVolumePayload, listThematicVolumes } from '../../../../../lib/seoIndices';
+
+export async function getStaticPaths() {
+  const volumes = await listThematicVolumes();
+  return volumes.map((volume) => ({ params: { volumeId: volume.volume_id } }));
+}
+
+const { volumeId } = Astro.params;
+if (!volumeId) throw new Error('volumeId missing from the static thematic index route');
+const payload = await getSeoVolumePayload(volumeId, 'en');
+if (!payload.hasThematicSections) throw new Error(`Volume ${volumeId} has no publishable thematic sections.`);
+---
+<SeoThematicVolumePage payload={payload} />

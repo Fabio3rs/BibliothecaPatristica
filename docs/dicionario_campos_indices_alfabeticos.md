@@ -159,6 +159,11 @@ entre etapas deve ler primeiro `locator_contract`, dividido em cinco grupos:
 localizador deve excluí-los de buscas corporais, inclusive quando a referência não tem página
 editorial. Nos shards a lista comum é elevada ao envelope para evitar repetição volumosa.
 
+Cada candidato pode trazer `facsimile_hint` com `image_path`, `pairing_basis`,
+`editorial_page_inferred=false` e `inspection_status=not_inspected`. Esse objeto existe somente
+nos artefatos intermediários para permitir que o agente abra o fac-símile pareado. O caminho PNG
+não entra no resultado locator nem no payload/banco canônico.
+
 Para `target_locator` sem página impressa, `resolved` pode ser produzido mecanicamente somente com
 o conjunto independente completo: título/abreviação de obra no corpo, número interno do locator no
 mesmo candidato e confirmação da família de obra por cabeçalhos. Similaridade textual isolada ou

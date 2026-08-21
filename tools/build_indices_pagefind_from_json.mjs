@@ -104,13 +104,13 @@ function makeRecord({ base, volume, kind, title, content, params, metaExtra = {}
 function entryContent(volume, section, entry) {
   return [
     volume.volume_label,
-    volume.display?.original,
+    concatenateRecordValues(volume.display),
     section?.index_kind,
-    section?.heading_raw,
+    concatenateRecordValues(section?.heading_display),
     entry?.entry_raw,
-    entry?.target_raw,
     entry?.normalized_target,
-    entry?.note_raw,
+    concatenateRecordValues(entry?.target_display),
+    concatenateRecordValues(entry?.note_display),
   ].filter(Boolean).join(' ');
 }
 
@@ -220,13 +220,13 @@ async function buildIndexForAll(pagefindModule, params, outputDir) {
         volume: vol,
         kind: 'volume',
         title: vol.display?.original || vol.volume_label || volumeId,
-        content: [vol.display?.original, doc.coverage?.works_total, doc.coverage?.sections_total, doc.coverage?.entries_total].filter(Boolean).join(' '),
+        content: [concatenateRecordValues(vol.display), volume.works_total, volume.sections_total, volume.entries_total].filter(Boolean).join(' '),
         params: {},
         metaExtra: {
-          workCount: String(doc.coverage?.works_total || 0),
-          sectionCount: String(doc.coverage?.sections_total || 0),
-          entryCount: String(doc.coverage?.entries_total || 0),
-          completeness: String(doc.coverage?.completeness ?? ''),
+          workCount: String(volume.works_total || 0),
+          sectionCount: String(volume.sections_total || 0),
+          entryCount: String(volume.entries_total || 0),
+          completeness: String(volume.target_coverage ?? volume.completeness ?? ''),
         },
       });
       //await index.addCustomRecord(volumeRecord);
@@ -238,18 +238,16 @@ async function buildIndexForAll(pagefindModule, params, outputDir) {
           base: params.base,
           volume: vol,
           kind: 'work',
-          title: `${work.author_raw ? `${work.author_raw} — ` : ''}${work.title_display?.original || work.title_raw || work.work_key || ''}`,
+          title: `${work.author_display?.original ? `${work.author_display.original} — ` : ''}${work.title_display?.original || work.work_key || ''}`,
           content: [
-            work.author_raw,
-            work.title_raw,
-            work.title_norm,
-            work.source_section_key,
+            concatenateRecordValues(work.author_display),
+            concatenateRecordValues(work.title_display),
           ].filter(Boolean).join(' '),
           params: { work: work.work_key || '' },
           metaExtra: {
             workKey: work.work_key || '',
-            author: work.author_raw || '',
-            workTitle: work.title_display?.original || work.title_raw || '',
+            author: work.author_display?.original || '',
+            workTitle: work.title_display?.original || '',
             pageStart: String(work.reference_start_page || work.start_page || ''),
             pageEnd: String(work.reference_end_page || work.end_page || ''),
           },
@@ -264,16 +262,15 @@ async function buildIndexForAll(pagefindModule, params, outputDir) {
           base: params.base,
           volume: vol,
           kind: 'section',
-          title: `${section.index_kind || section.heading_display?.original || section.heading_raw || section.section_key || ''}`,
+          title: `${section.index_kind || section.heading_display?.original || section.section_key || ''}`,
           content: [
             section.index_kind,
-            section.heading_raw,
-            section.heading_norm,
+            concatenateRecordValues(section.heading_display),
           ].filter(Boolean).join(' '),
           params: { section: section.section_key || '' },
           metaExtra: {
             sectionKey: section.section_key || '',
-            sectionTitle: section.heading_display?.original || section.heading_raw || '',
+            sectionTitle: section.heading_display?.original || '',
             pageStart: String(section.reference_page_start || section.page_start || ''),
             pageEnd: String(section.reference_page_end || section.page_end || ''),
           },
@@ -287,7 +284,7 @@ async function buildIndexForAll(pagefindModule, params, outputDir) {
             base: params.base,
             volume: vol,
             kind: 'entry',
-            title: entry.target_display?.original || entry.target_raw || entry.entry_raw || entry.id || '',
+            title: entry.target_display?.original || entry.entry_raw || entry.id || '',
             content: entryContent(vol, section, entry),
             params: {
               section: section.section_key || '',
@@ -296,9 +293,9 @@ async function buildIndexForAll(pagefindModule, params, outputDir) {
           metaExtra: {
             sectionKey: section.section_key || '',
             entryId: String(entry.id || ''),
-            entryText: entry.target_display?.original || entry.target_raw || entry.entry_raw || '',
-            targetText: entry.target_display?.original || entry.target_raw || '',
-            page: String(entry.reference_page || entry.page_ref_int || ''),
+            entryText: entry.target_display?.original || entry.entry_raw || '',
+            targetText: entry.target_display?.original || '',
+            page: String(entry.reference_page || entry.editorial_reference_page || ''),
           },
           });
           //await index.addCustomRecord(entryRecord);

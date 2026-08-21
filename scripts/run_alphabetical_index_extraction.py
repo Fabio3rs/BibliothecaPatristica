@@ -52,7 +52,7 @@ from patristica_pipeline.index_localization_helpers import (
 )
 from patristica_pipeline.index_payload_evidence import verify_index_payload_evidence
 from patristica_pipeline.index_workplan import build_index_workplan, reconcile_workplan_progress
-from patristica_pipeline.translation_augmentation import (
+from scripts.index_translation.augmentation import (
     build_latin_lexicon_tools,
     run_tool_guided_chat,
 )

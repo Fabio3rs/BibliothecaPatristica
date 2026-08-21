@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from patristica_pipeline.translation_augmentation import (
+from scripts.index_translation.augmentation import (
     LatinLexiconTool,
     build_latin_lexicon_tools,
     run_tool_guided_chat,

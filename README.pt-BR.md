@@ -36,7 +36,7 @@ Fontes: [Bibliothèque Interuniversitaire de la Sorbonne — PL](https://www.bis
 - PDFs/imagens ficam fora do repositório por tamanho e direitos autorais.
 
 ## Scripts essenciais
-- `main2.py` — OCR página a página com Tesseract + OpenCV (lat/grc), paralelismo com limites OMP.
+- `main2.py` — OCR página a página com Tesseract, OpenCV e VLM, incluindo validação e reconciliação tripla em duas passagens visuais, com paralelismo limitado por OMP.
 - `resumo_serial.py` — Gera resumos/keywords por página a partir dos `.txt` (Ollama padrão ou OpenAI).
 - `download/` — Ver `download/README.md` para baixar PDFs (`download.py`) e checar faltantes (`checkfaltantes.py`).
 - `web/` — Site estático Astro com busca Pagefind e navegação multilíngue.
@@ -48,7 +48,37 @@ Fontes: [Bibliothèque Interuniversitaire de la Sorbonne — PL](https://www.bis
 - Download: siga o guia em `download/README.md`.
 - Site: `cd web && npm install && npm run build`; para desenvolvimento local, `npm run dev`.
 
+## VLM em duas passagens com reconciliação tripla de OCR
+
+O fluxo multimodal não é uma simples escolha entre Tesseract e uma LLM. Primeiro,
+a VLM (*Vision-Language Model*, ou LLM com visão) transcreve o fac-símile sem ver
+nenhum OCR auxiliar. Em paralelo lógico, o Tesseract produz uma leitura textual
+independente da mesma imagem. As duas saídas são comparadas por validações de XML,
+tokens, cobertura, ruído e classificação visual. Se a página for reprovada, a
+VLM recebe obrigatoriamente o fac-símile novamente, agora acompanhado pelo texto
+do Tesseract e pelo seu XML anterior, e produz uma transcrição corretiva. Assim,
+há duas passagens visuais; o Tesseract é a testemunha independente entre elas. A
+imagem nunca é substituída pelos rascunhos textuais, inclusive no LLM judge. Isso
+não é *two-shot* ou *three-shot prompting*: esses termos contam demonstrações no
+prompt, enquanto aqui existem três evidências da mesma página — fac-símile,
+Tesseract e XML anterior — reconciliadas na segunda passagem da VLM.
+
+O desenho e os limiares desse fluxo foram obtidos empiricamente, por inspeção
+exploratória de páginas escolhidas informalmente em diferentes pontos do corpus,
+sem desenho formal de amostragem, e por comparação visual entre texto e
+fac-símile. Não houve uma avaliação matemática formal de BCER ou benchmark com
+*ground truth* alinhado; portanto, os thresholds são heurísticas operacionais,
+não estimativas estatísticas de qualidade.
+
+A segunda passagem é seletiva e ocorre em `--verify-fix`. `--algorithm` escolhe
+o provedor VLM (`ollama`, padrão, ou `openai`); Tesseract é somente um estágio
+auxiliar, não um backend final. O LLM judge é outra camada:
+ele avalia fidelidade/usabilidade e encaminha avaliações `baixa` ou `descartar`
+para reprocessamento. Veja o diagrama, os comandos e as exceções no
+[pipeline técnico](docs/PIPELINE.md#ocr-three-way).
+
 ## Documentação relacionada
+- VLM em duas passagens com reconciliação tripla: `docs/PIPELINE.md#ocr-three-way`
 - Paper: "Unificação Semântica para Saídas de LLMs" (Português): `docs/LLM_unification_paper.md`
 - English version: `docs/LLM_unification_paper_en.md`
 

@@ -23,7 +23,7 @@
 ## Ingestão e OCR (`main2.py`)
 - **Conversão**: PDF → PNG via `pdf2image`/`pdftocairo` (cache em `out/<pdf>/images`), texto em `out/<pdf>/text`.
 - **Defaults**: `--dpi 300`, `--lang lat` (ajuste para fra+lat+grc+ell+syr), `--procs 12`, `--omp-threads 2` (limita OpenMP), `OMP_THREAD_LIMIT=4`.
-- **Motores**: `--algorithm {tesseract,ollama,openai,gemini}`; modelos padrão `DEFAULT_LLM_MODEL=qwen3.5:397b-cloud` (Ollama) ou `gpt-5` (OpenAI). `--ollama-url`, `--openai-base-url`, `--openai-api-key` para overrides.
+- **Provedor VLM**: `--algorithm {ollama,openai}`, com `ollama` como padrão; modelos padrão `DEFAULT_LLM_MODEL=qwen3.5:397b-cloud` (Ollama) ou `gpt-5` (OpenAI). Tesseract não é um backend final: ele funciona como leitura auxiliar para verificação/reconciliação ou, com `--tesseract-cache-only`, para aquecer o cache. `--ollama-url`, `--openai-base-url`, `--openai-api-key` permitem overrides.
 - **Flags úteis**: `--first/--last` (faixa), `--concat` (agrega em `texto_extraido.txt`), `--refresh-pages` (lista para reextrair), `--maxtasksperchild`, `--chunksize`, `--procs`.
 - **Gating/validação**:
   - `--verify`: compara `.txt` existentes com Tesseract; `--verify-fix`: reprocessa falhas.
@@ -31,6 +31,279 @@
   - Heurísticas: detecção de ruído/layout, sobreposição token/bloco LLM×Tesseract, CASOS_PERDIDOS (lista de páginas irrecuperáveis), classificação visual (vazia/capa/texto).
   - Avaliações gravadas em `data/ocr_eval.db` (campos: volume, página, provider, modelo, prompt_version, status, xml_raw/parse_result, duração).
 - **Avisos**: custo de LLM, risco de alucinação ou omissão, ausência de revisão humana integral. Sempre validar contra o PDF original para uso acadêmico.
+
+<a id="ocr-three-way"></a>
+
+### OCR com VLM em duas passagens e reconciliação tripla
+
+No contexto deste projeto, **VLM** (*Vision-Language Model*) significa uma LLM
+multimodal capaz de ler a imagem da página. Não confundir com **vLLM**, o software
+de serving/inferência de modelos. O nome descritivo adotado aqui é **VLM em duas
+passagens com reconciliação tripla de OCR**: a VLM pode examinar a imagem duas
+vezes e, na passagem corretiva, reconcilia três entradas — fac-símile, texto do
+Tesseract e XML produzido pela primeira passagem da VLM.
+
+Isso não é *one-shot*, *two-shot* ou *three-shot prompting*. Na terminologia de
+prompting, *shot* normalmente conta demonstrações ou exemplos de entrada/saída
+fornecidos no contexto. Aqui não há duas ou três demonstrações: há uma imagem
+fonte e duas leituras candidatas da mesma página. No contexto efetivamente
+processado pela segunda chamada, isso corresponde a duas evidências textuais mais
+os tokens visuais do fac-símile. A expressão **duas passagens** descreve a
+cronologia da VLM; **reconciliação tripla** descreve as evidências presentes na
+segunda passagem.
+
+> **Invariante do fluxo:** o fac-símile nunca é retirado do contexto. Tesseract,
+> cada passagem da VLM e o LLM judge recebem/processam a imagem da página. Na
+> segunda passagem, os textos anteriores são evidências suplementares anexadas à
+> imagem; eles nunca a substituem. Não existe, neste fluxo de OCR, uma etapa de
+> correção por VLM baseada somente nos dois textos.
+
+```text
+                         mesma imagem da página
+                         ┌──────────┴──────────┐
+                         │                     │
+                [A] Tesseract sozinho   [B] VLM — passagem 1
+                  texto de referência     XML inicial
+                         │                     │
+                         └──────────┬──────────┘
+                                    │
+                         comparação determinística
+                      (XML, tokens, cobertura e ruído)
+                                    │
+                         aprovada ───┴─── reprovada
+                            │                 │
+                       mantém XML      [C] VLM — passagem 2
+                                      imagem novamente
+                                      + texto Tesseract
+                                      + XML da VLM inicial
+                                              │
+                                       XML corrigido final
+```
+
+As etapas são independentes e têm papéis diferentes:
+
+1. **Tesseract sozinho — testemunha textual independente.** O fac-símile passa pelo
+   deskew/pré-processamento e pelo Tesseract, sem receber texto produzido pela
+   VLM. O resultado é texto simples, armazenado em `data/tesseract.db`. Ele é
+   especialmente útil para detectar termos latinos omitidos ou inventados, mas
+   pode perder colunas, diacríticos, layout e scripts complexos.
+2. **VLM sozinha, passagem 1 — transcrição visual estruturada.** A VLM recebe apenas
+   o fac-símile e as instruções de transcrição — “sozinha” significa sem rascunho
+   do Tesseract ou de outra VLM, nunca sem imagem. Ela produz XML com estado da
+   página, blocos, tipo, script e `bbox`. Como não vê o Tesseract, seu primeiro
+   resultado é uma leitura independente, sem ancoragem nos erros do OCR
+   tradicional.
+3. **Gating determinístico.** `--verify` valida o XML e confronta sua leitura com
+   o Tesseract por sobreposição/recall de tokens, discrepância de quantidade,
+   marcadores de ilegibilidade, classificação visual do fac-símile e heurísticas
+   de ruído. Uma página aprovada termina aqui: não há segunda chamada à VLM.
+4. **Reconciliação tripla, passagem 2 da VLM.** Com `--verify-fix`, somente as
+   páginas reprovadas voltam à VLM. Ela recebe obrigatoriamente o **fac-símile
+   outra vez**, junto com o texto independente do Tesseract e o XML produzido na
+   passagem 1. O prompt manda usar os dois textos apenas como rascunhos e tratar a
+   imagem como fonte de verdade. Essa etapa pode recuperar omissões apontadas pelo
+   Tesseract sem copiar automaticamente seus erros, além de corrigir estrutura,
+   ordem de colunas e gutter.
+
+Reconciliação tripla não significa votar cegamente entre dois OCRs nem concatenar
+suas saídas. A imagem continua sendo a evidência primária nas duas chamadas
+visuais; a segunda passagem é uma revisão informada por divergências. Isso reduz
+erros não correlacionados: o Tesseract tende a falhar em layout e scripts difíceis,
+enquanto a VLM pode alucinar, normalizar ou omitir conteúdo que visualmente parece
+pouco saliente.
+
+#### Base empírica e limites metodológicos
+
+Esta pipeline foi desenvolvida e ajustada **empiricamente**. A escolha das etapas,
+dos prompts e dos limiares de gating veio da inspeção visual exploratória de
+páginas escolhidas informalmente em diferentes pontos do corpus, sem desenho
+formal de amostragem. Os textos produzidos foram comparados com seus respectivos
+fac-símiles para observar padrões recorrentes de omissão, alucinação, mistura de
+colunas, gutter e scripts complexos.
+
+Ela **não** foi derivada de uma avaliação matemática formal de BCER, nem de um
+benchmark sistemático com *ground truth* alinhado caractere a caractere. Portanto,
+os limiares atuais devem ser entendidos como heurísticas operacionais calibradas
+para este corpus, e não como estimativas estatísticas de erro ou prova de
+superioridade sobre outra engine. Qualquer afirmação quantitativa de qualidade
+exigiria montar uma amostra anotada e representativa por coleção, idioma, script,
+layout e estado material, calcular BCER/CER por etapa e informar intervalos de
+confiança e protocolo de amostragem.
+
+Na implementação, a ordem cronológica mais comum é passagem 1 da VLM → Tesseract
+na verificação → passagem 2 nas falhas. O diagrama mostra a independência lógica
+das duas primeiras leituras, não uma obrigação de executar Tesseract antes da
+VLM. Se os textos normalizados forem idênticos, o segundo prompt omite o XML
+inicial por ser redundante. `--do-not-reprocess-compare` também desativa a dupla
+evidência e faz uma nova passagem visual sem os rascunhos anteriores.
+
+Exemplo operacional em duas passagens:
+
+```bash
+# Passagem 1: gera o XML inicial usando a VLM
+python main2.py input.pdf --out ocr_out \
+  --algorithm openai --llm-model gpt-5 \
+  --lang fra+lat+grc+ell+syr
+
+# Verifica com Tesseract e aplica a passagem 2 somente às páginas reprovadas
+python main2.py input.pdf --out ocr_out \
+  --algorithm openai --llm-model gpt-5 \
+  --lang fra+lat+grc+ell+syr --verify-fix
+```
+
+`--algorithm` escolhe apenas o provedor VLM (`ollama`, o padrão, ou `openai`). O
+Tesseract participa internamente da verificação e da reconciliação, mas não pode
+mais ser selecionado como backend que grava o resultado final. A operação
+`--tesseract-cache-only` continua disponível para preparar sua leitura auxiliar.
+
+O **LLM judge** é uma camada diferente. `--verify-judge-llm` envia à VLM o
+fac-símile junto com o XML existente e pede que ela classifique fidelidade e
+usabilidade. Avaliações `baixa` ou `descartar`, em qualquer um dos dois eixos,
+encaminham a página para a mesma pipeline de reprocessamento; `--judge-force`
+apenas força o julgamento em todas as páginas. O judge decide se deve haver nova
+tentativa, enquanto a passagem 2 é a tentativa de transcrição corretiva
+propriamente dita. Mesmo no judge, o modelo nunca avalia o texto sem acesso à
+imagem.
+
+Para auditoria, cada resultado fica associado à engine, modelo, prompt, hash da
+imagem, motivo do reprocessamento e duração em `data/ocr_versions.db`. A versão
+corrigida substitui o `.txt` corrente, mas o histórico permite comparar a passagem
+1, o Tesseract intermediário e a passagem 2.
+
+<a id="three-way-ocr-english"></a>
+
+### English: two-pass VLM with three-way OCR reconciliation
+
+In this project, **VLM** means *Vision-Language Model*: an LLM that can inspect a
+page image. It should not be confused with **vLLM**, the model serving/inference
+software. The descriptive name used here is **two-pass VLM with three-way OCR
+reconciliation**: the VLM may inspect the facsimile twice, and its corrective
+pass reconciles three inputs — the facsimile, Tesseract text, and XML from the
+first VLM pass.
+
+This is not *one-shot*, *two-shot*, or *three-shot prompting*. In prompting
+terminology, a *shot* normally counts input/output demonstrations included in the
+context. This workflow supplies no set of two or three demonstrations; it supplies
+one source image and two candidate readings of that same page. In the context
+actually processed by the corrective call, these are two textual pieces of
+evidence plus the facsimile's visual tokens. **Two-pass** describes the VLM
+chronology, while **three-way reconciliation** describes the evidence available
+during the second pass.
+
+> **Pipeline invariant:** the facsimile is never removed from the context.
+> Tesseract, every VLM pass, and the LLM judge receive or process the page image.
+> Text produced in earlier stages is supplementary evidence attached to that
+> image; it never replaces the image. The corrective VLM stage is therefore
+> never a text-only comparison between two OCR drafts.
+
+```text
+                          same page facsimile
+                         ┌──────────┴──────────┐
+                         │                     │
+                 [A] Tesseract alone    [B] VLM — pass 1
+                  reference text          initial XML
+                         │                     │
+                         └──────────┬──────────┘
+                                    │
+                         deterministic comparison
+                       (XML, tokens, coverage, noise,
+                          and visual classification)
+                                    │
+                          accepted ──┴── rejected
+                             │               │
+                         keep XML      [C] VLM — pass 2
+                                      facsimile again
+                                      + Tesseract text
+                                      + pass-1 VLM XML
+                                              │
+                                      corrected final XML
+```
+
+The stages have distinct responsibilities:
+
+1. **Tesseract alone — independent textual witness.** Tesseract processes the
+   facsimile after deskew/preprocessing and receives no VLM-generated draft. Its
+   plain-text result is cached in `data/tesseract.db`. It is useful for exposing
+   omitted or invented Latin terms, although it may lose columns, diacritics,
+   layout, and complex scripts.
+2. **VLM alone, pass 1 — structured visual transcription.** The VLM receives the
+   facsimile and transcription instructions, but no Tesseract or previous VLM
+   draft. Here “alone” means independent of other OCR text, not without the
+   image. It produces XML containing page state, blocks, type, script, and
+   normalized `bbox` coordinates.
+3. **Deterministic gating.** `--verify` validates the XML and compares it with
+   Tesseract using token overlap/recall, token-count discrepancy, illegibility
+   markers, noise heuristics, and visual classification of the facsimile. An
+   accepted page keeps the pass-1 XML and does not incur another VLM call.
+4. **Three-way reconciliation, VLM pass 2.** With `--verify-fix`, rejected pages
+   return to the VLM. The request always contains the facsimile again, plus the
+   independent Tesseract text and the XML from pass 1. The prompt treats both
+   texts as drafts and the image as ground truth. This lets the VLM recover
+   possible omissions without blindly copying Tesseract errors, while also
+   revisiting layout, column order, and gutter markers.
+
+Three-way reconciliation is not majority voting and does not concatenate OCR
+outputs. Both VLM calls remain grounded in the facsimile. The second call uses
+disagreements as diagnostic evidence because the two engines tend to fail
+differently: Tesseract is brittle around layout and difficult scripts, while a
+VLM may hallucinate, normalize, or omit visually inconspicuous content.
+
+#### Empirical basis and methodological limits
+
+This pipeline was developed and tuned **empirically**. Its stages, prompts, and
+gating thresholds came from exploratory visual inspection of pages informally
+selected from different parts of the corpus, without a formal sampling design.
+Generated text was compared against the corresponding facsimiles to identify
+recurring omissions, hallucinations, merged columns, gutter errors, and failures
+on complex scripts.
+
+It was **not** derived from a formal mathematical BCER evaluation or a systematic
+benchmark against character-aligned ground truth. The current thresholds should
+therefore be treated as operational heuristics calibrated for this corpus, not
+as statistical error estimates or proof that one OCR engine is superior to
+another. Quantitative quality claims would require a representative annotated
+sample stratified by collection, language, script, layout, and physical page
+condition, followed by per-stage BCER/CER measurements with a documented sampling
+protocol and confidence intervals.
+
+The usual chronological order is VLM pass 1 → Tesseract during verification →
+VLM pass 2 for failed pages. The first two readings are logically independent,
+even when they are not executed in the order shown by the forked diagram. If the
+normalized drafts are identical, the second prompt omits the redundant pass-1
+XML. `--do-not-reprocess-compare` explicitly disables the two-draft correction
+and performs another image-grounded pass without attaching the earlier drafts.
+
+Example using two passes over the command-line pipeline:
+
+```bash
+# Pass 1: initial image-grounded VLM XML
+python main2.py input.pdf --out ocr_out \
+  --algorithm openai --llm-model gpt-5 \
+  --lang fra+lat+grc+ell+syr
+
+# Tesseract verification; pass 2 only for rejected pages
+python main2.py input.pdf --out ocr_out \
+  --algorithm openai --llm-model gpt-5 \
+  --lang fra+lat+grc+ell+syr --verify-fix
+```
+
+`--algorithm` now selects only the VLM provider (`ollama`, the default, or
+`openai`). Tesseract participates internally in verification and reconciliation,
+but it can no longer be selected as the backend that writes the final result.
+The `--tesseract-cache-only` operation remains available to prepare its auxiliary
+reading.
+
+The **LLM judge** is separate from the three-way corrective transcription. With
+`--verify-judge-llm`, the judge receives both the facsimile and the current XML,
+then rates fidelity and usability. A `baixa` (low) or `descartar` (discard) value
+on either axis routes the page back to the reprocessing pipeline. `--judge-force`
+forces this image-grounded assessment for every page. The judge decides whether
+another attempt is needed; VLM pass 2 performs the corrective transcription.
+
+For provenance, `data/ocr_versions.db` records the image hash, engine, model,
+prompt, reprocessing reason, duration, and each OCR result. The corrected `.txt`
+becomes current, while the version history preserves VLM pass 1, the intermediate
+Tesseract witness, and VLM pass 2 for later comparison.
 
 ## Resumos e keywords
 - **Resumos**: gerados a partir do OCR por script do projeto (salvos em `data/patristica_resumos.db`, tabela `resumos`).
@@ -72,6 +345,22 @@
   - seleção: `--volume-id`, `--all-volumes`, `--blob`, `--limit`
   - execução: `--codex-bin`, `--model`, `--use-json`, `--replace`, `--skip-done`
   - operação: `--output-dir`, `--log-dir`, `--keep-temp`, `--dry-run`, `--verbose`
+- **Tradução e análise linguística**:
+  - A implementação fica isolada em `scripts/index_translation/` (persistência/cache, provedor,
+    ferramentas lexicais e worker/setup do CLTK).
+  - `--translate` traduz, após a importação, as strings semânticas ainda pendentes para
+    `en,fr,it,pt-br`; configure `OPENAI_API_KEY` e opcionalmente `OPENAI_MODEL`.
+  - `--translation-only` faz backfill diretamente de `patristic_indices.db`, sem OCR, extração,
+    validação ou nova importação. Exemplo: `python scripts/run_index_extraction.py --volume-id
+    PL001 --translation-only --db data/patristic_indices.db`.
+  - Traduções são cacheadas globalmente por string/idioma. Lemma, UPOS, morfologia e dependências
+    CLTK são cacheados por string e reaproveitados entre idiomas e volumes.
+  - O CLTK 1.5 deve usar uma venv Python 3.12 isolada: `python3.12 -m venv .venv-cltk`, instalar
+    `requirements-cltk.txt` e então executar `.venv-cltk/bin/python
+    scripts/index_translation/setup_cltk.py --languages lat,grc`. A pipeline nunca baixa modelos
+    sozinha.
+  - Se CLTK, seus modelos ou o script da língua não estiverem disponíveis, a tradução continua
+    sem a anotação linguística. Use `--no-translation-cltk` para desativá-la explicitamente.
 - **Avisos**:
   - o prescan é apenas ponto de partida; o volume precisa ser conferido em OCR antes do fechamento
   - números, colunas e referências internas devem ser mantidos literalmente quando houver dúvida
@@ -144,7 +433,7 @@
 - Build completo: `cd web && npm run build && node ../tools/build_pagefind_from_shards.mjs --public dist --out dist/pagefind --base /BibliothecaPatristica` (ajuste `--base` se trocar path de publicação), publicar `dist/` + `pagefind/` juntos.
 
 ## Operação e monitoração (happy path)
-1) OCR: `python main2.py input.pdf --out ocr_out --lang lat --algorithm tesseract` (ou `--verify-judge-llm` para gating).
+1) OCR: `python main2.py input.pdf --out ocr_out --lang lat --algorithm ollama` (ou `--algorithm openai`; acrescente `--verify-judge-llm` para gating).
 2) Resumos: rodar pipeline de resumos (ex.: `python resumo_serial.py --volume-dir teste/PL001 --provider openai --model gpt-5-mini`).
 3) Keywords: `./keywords_parallel.sh --pattern "PL%" --provider openai --model gpt-5-mini --jobs 20 --write` (ajuste flags/verify conforme necessidade).
 4) Embeddings/clusters: `python hdbscan_embedding.py --db data/patristica_keywords.db --model qwen3-embedding:8b --chunksize 50000 --umap-components 5 --min-cluster-size 50`.

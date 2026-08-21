@@ -1,18 +1,27 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,50">
-    713 DE DIVINIS NOMINIBUS, CAP. IV. 714
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="60,55,480,155">
+  [cabecalho tipo="cabecalho" script="latino" bbox="120,18,170,55"]
+    713
+  [/cabecalho]
+  [cabecalho tipo="cabecalho" script="latino" bbox="365,14,640,58"]
+    DE DIVINIS NOMINIBUS, CAP. IV.
+  [/cabecalho]
+  [cabecalho tipo="cabecalho" script="latino" bbox="905,18,955,55"]
+    714
+  [/cabecalho]
+
+  [texto_principal tipo="texto_principal" script="grego" bbox="120,65,495,185"]
     αὐτὸ ⁵⁸, καὶ προϊὼν ἀεί, καὶ μένων, καὶ ἀποκαθιστά-
     μενος. Ταῦτα καὶ ὁ κλεινὸς ἡμῶν ἱεροτελεστὴς ἐνθέως
-    ὑφηγήσατο κατὰ τοὺς ἐρωτικοὺς ὕμνους· ὧν οκ
-    ἄτοπον ἐπιμνησθῆναι, καὶ οον ἱεράν τινα κεφαλὴν
+    ὑφηγήσατο κατὰ τοὺς ἐρωτικοὺς ὕμνους· ὧν οὐκ
+    ἄτοπον ἐπιμνησθῆναι, καὶ οἷον ἱεράν τινα κεφαλὴν
     ἐπιθεῖναι τῷ περὶ ἔρωτος ἡμῶν λόγῳ.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,60,505,80">
+  [/texto_principal]
+
+  <nota_marginal tipo="nota_marginal" script="latino" bbox="500,88,520,112">
     A
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,55,940,175">
+  </nota_marginal>
+
+  [texto_principal tipo="texto_principal" script="latino" bbox="535,68,940,188"]
     A principio se carere divinus amor excellenter osten-
     dit, tanquam sempiternus circulus, propter bonum,
     ex bono, in bono, et ad bonum indeclinabili con-
@@ -21,133 +30,162 @@
     etiam inclytus noster in sacris initiator divino Spiritu afflatus in amatoriis suis hymnis exposuit, quos
     non abs re fuerit commemorare, et quasi sacrum quoddam caput huic nostro sermoni de amore at-
     texere.
-  </bloco>
-  <bloco tipo="nota" script="latino" bbox="480,180,520,200">
+  [/texto_principal]
+
+  [nota tipo="nota" script="latino" bbox="470,220,535,248"]
     § XV.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="60,205,480,235">
-    Ἱεροθέου τοῦ ἁγιωτάτου ἐκ τῶν ἐρωτικῶν μνων.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,205,940,235">
-    362 Hierothei sanctissimi viri verba ex hymnis amatoriis.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,250,505,270">
+  [/nota]
+
+  [texto_principal tipo="texto_principal" script="grego" bbox="120,255,500,292"]
+    Ἱεροθέου τοῦ ἁγιωτάτου ἐκ τῶν ἐρωτικῶν ὕμνων.
+  [/texto_principal]
+
+  [texto_principal tipo="texto_principal" script="latino" bbox="535,255,940,293"]
+    362 Hierothei sanctissimi viri verba ex hymnis
+    amatoriis.
+  [/texto_principal]
+
+  <nota_marginal tipo="nota_marginal" script="latino" bbox="500,320,520,345">
     B
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="60,235,480,350">
+  </nota_marginal>
+
+  [texto_principal tipo="texto_principal" script="grego" bbox="120,292,500,460"]
     Τὸν ἔρωτα, εἴτε θεῖον, εἴτε ἀγγελικὸν, εἴτε νοερὸν,
     εἴτε ψυχικὸν, εἴτε φυσικὸν εἴποιμεν, ἑνωτικήν τινα
     καὶ συγκρατικὴν ἐννοήσωμεν δύναμιν, τὰ μὲν ὑπέρ-
     τερα κινοῦσαν ἐπὶ πρόνοιαν τῶν καταδεεστέρων, τὰ
     δὲ ὁμόστοιχα πάλιν εἰς κοινωνικὴν ἀλληλουχίαν, καὶ
-    ἐπ' ἐσχάτων τὰ ὑφειμένα πρὸς τν τῶν κρειττόνων
+    ἐπ' ἐσχάτων τὰ ὑφειμένα πρὸς τὴν τῶν κρειττόνων
     καὶ ὑπερκειμένων ἐπιστροφήν.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,235,940,350">
+  [/texto_principal]
+
+  [texto_principal tipo="texto_principal" script="latino" bbox="535,292,940,460"]
     Amorem, sive divinum, sive angelicum, sive spiritalem, sive animalem, sive naturalem dixerimus,
-    vim quamdam sive potestatem copulantem et commiscemtem intelligamus, superiora quidem moventem ad providentiam inferiorum; ea vero quæ sunt
+    vim quamdam sive potestatem copulantem et commiscentem intelligamus, superiora quidem moventem ad providentiam inferiorum; ea vero quæ sunt
     ejusdem ordinis, ad mutuam communicationem, et
     novissime ea quæ sunt inferiora, ad convertendum
     se ad præstantiora et præposita.
-  </bloco>
-  <bloco tipo="nota" script="latino" bbox="480,360,520,380">
+  [/texto_principal]
+
+  [nota tipo="nota" script="latino" bbox="470,485,535,513"]
     § XVI.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="60,385,480,410">
-    Τοῦ αὐτοῦ ἐκ τῶν αὐτῶν ἐρωτικῶν μνων.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,385,940,410">
+  [/nota]
+
+  [texto_principal tipo="texto_principal" script="grego" bbox="120,520,500,555"]
+    Τοῦ αὐτοῦ ἐκ τῶν αὐτῶν ἐρωτικῶν ὕμνων.
+  [/texto_principal]
+
+  [texto_principal tipo="texto_principal" script="latino" bbox="535,520,940,555"]
     Ejusdem verba ex iisdem hymnis amatoriis.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,460,505,480">
+  [/texto_principal]
+
+  <nota_marginal tipo="nota_marginal" script="latino" bbox="500,555,520,580">
     C
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="60,410,480,655">
+  </nota_marginal>
+
+  [texto_principal tipo="texto_principal" script="grego" bbox="120,555,500,760"]
     Ἐπειδὴ τοὺς ἐκ τοῦ ἑνὸς πολλοὺς ἔρωτας διετά-
     ξαμεν, ἑξῆς εἰρηκότες, οἷαι ⁵⁹ μὲν αἱ τῶν ἐγκο-
     σμίων τε καὶ ὑπερκοσμίων ἐρώτων γνώσεις τε καὶ
     δυνάμεις, ᾧ ὑπερέχουσι κατὰ τὸν ἀποδοθέντα τοῦ λό-
     γου σκοπόν, αἱ τῶν νοερῶν τε καὶ νοητῶν ἐρώτων
-    τάξεις τε καὶ διακοσμήσεις, μεθ' οὓς ⁶⁰ ο αὐτονόητοι
-    καὶ θεοι τῶν ὄντως ἐκεῖ καλῶν ἐρώτων ὑπερεστάσι,
-    καὶ ἡμν οἰκείως ὕμνηνται. Νῦν αὖθις ⁶¹ ἀναλαβόν-
+    τάξεις τε καὶ διακοσμήσεις, μεθ' οὓς ⁶⁰ οἱ αὐτονόητοι
+    καὶ θεῖοι τῶν ὄντως ἐκεῖ καλῶν ἐρώτων ὑπερεστᾶσι,
+    καὶ ἡμῖν οἰκείως ὕμνηνται. Νῦν αὖθις ⁶¹ ἀναλαβόν-
     τες ἅπαντας εἰς τὸν ἕνα καὶ συνεπτυγμένον ἔρωτα,
-    καὶ πάντων αὐτῶν πατέρα συνελίξωμεν ⁶² μα καὶ
+    καὶ πάντων αὐτῶν πατέρα συνελίξωμεν ⁶² ἅμα καὶ
     συναγάγωμεν ἀπὸ τῶν πολλῶν, πρῶτον εἰς δύο συν-
-    αιροῦντες αὐτν τὰς ἐρωτικὰς καθόλου δυνάμεις,
-    ὧν ἐπικρατεῖ, κα προκατάρχει πάντως ⁶³ ἢ ἐκ τοῦ
+    αιροῦντες αὐτῶν τὰς ἐρωτικὰς καθόλου δυνάμεις,
+    ὧν ἐπικρατεῖ, καὶ προκατάρχει πάντως ⁶³ ἡ ἐκ τοῦ
     πάντων ἐπέκεινα παντὸς ἔρωτος ἄσχετος αἰτία, καὶ
-    πρὸς ἣν ἀνατείνεται συμφυῶς κάστ τῶν ντων ὁ
-    ἐκ τῶν ντων ἀπάντων λικὸς ἔρως.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,410,940,655">
-    Quoniam ex uno amores multos ordinavimus, ordine recensendo quales mundialium et supermundialium amorum notiones ac virtutes exsisterent,
+    πρὸς ἣν ἀνατείνεται συμφυῶς ἑκάστῳ τῶν ὄντων ὁ
+    ἐκ τῶν ὄντων ἁπάντων ὁλικὸς ἔρως.
+  [/texto_principal]
+
+  [texto_principal tipo="texto_principal" script="latino" bbox="535,555,940,760"]
+    Quoniam ex uno amores multos ordinavimus, or-
+    dine recensendo quales mundialium et supermun-
+    dialium amorum notiones ac virtutes exsisterent,
     quibus, juxta rationem assignatam, spiritualium et
-    intellectu præditorum amorum ordines distinctionesque præcellunt, inter quos illi qui seipsis intellectiles ac divini, bonis qui illic vere sunt amoribus
-    præfecti, et a nobis proprie laudati sunt. Modo iterum altius repetentes, omnes in unum conjunctumque amorem, et eorum omnium parentem colligamus simul, et conferamus ex multis; primum
-    in duas eorum amatorias omnino vires contrahentes, quibus omnibus præstat et antecellit incomprehensa illa omnis amoris causa, quod sit
+    intellectu præditorum amorum ordines distinctiones-
+    que præcellunt, inter quos illi qui seipsis intel-
+    lectiles ac divini, bonis qui illic vere sunt amoribus
+    præfecti, et a nobis proprie laudati sunt. Modo ite-
+    rum altius repetentes, omnes in unum conjun-
+    ctumque amorem, et eorum omnium parentem col-
+    ligamus simul, et conferamus ex multis; primum
+    in duas eorum amatorias omnino vires contra-
+    hentes, quibus omnibus præstat et antecellit in-
+    comprehensa illa omnis amoris causa, quod sit
     omnibus superior, et ad eam pro cujusque captu
     rerum omnium totalis amor tendat.
-  </bloco>
-  <bloco tipo="nota" script="latino" bbox="480,665,520,685">
+  [/texto_principal]
+
+  [nota tipo="nota" script="latino" bbox="470,777,535,805"]
     § XVII.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="60,690,480,715">
-    Τοῦ αὐτοῦ ἐκ τῶν ατῶν ἐρωτικῶν ὕμνων.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,690,940,715">
+  [/nota]
+
+  [texto_principal tipo="texto_principal" script="grego" bbox="120,815,500,850"]
+    Τοῦ αὐτοῦ ἐκ τῶν αὐτῶν ἐρωτικῶν ὕμνων.
+  [/texto_principal]
+
+  [texto_principal tipo="texto_principal" script="latino" bbox="535,815,940,850"]
     Ejusdem ex iisdem hymnis amatoriis.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,710,505,730">
+  [/texto_principal]
+
+  <nota_marginal tipo="nota_marginal" script="latino" bbox="500,842,520,868">
     D
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="60,715,480,825">
+  </nota_marginal>
+
+  [texto_principal tipo="texto_principal" script="grego" bbox="120,850,500,990"]
     Ἄγε δὴ καὶ ταύτας πάλιν εἰς ἓν συναγαγόντες, εἴ-
-    πωμεν ⁶⁴, ὅτι μία τίς ἐστιν ἁπλὴ δύναμις ἡ αὐτοκι-
+    πωμεν ⁶⁴, ὅτι μία τίς ἐστιν ἁπλῆ δύναμις ἡ αὐτοκι-
     νητικὴ πρὸς ἑνωτικήν τινα κρᾶσιν ἐκ τἀγαθοῦ μέχρι
-    τοῦ τν ὄντων ἐσχάτου, καὶ ἀπ' ἐκείνου πάλιν ἑξῆς
-    διὰ πάντων εἰς τἀγαθὸν ἐξ ἑαυτῆς, καὶ δι' αυτῆς,
-    καὶ ἐφ' ἑαυτῆς ἑαυτὴν ἀνακυκλοῦσα, καὶ ες ἑαυτὴν
-    ἀειταὐτῶς ἀνελιττομένη.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,715,940,825">
+    τοῦ τῶν ὄντων ἐσχάτου, καὶ ἀπ' ἐκείνου πάλιν ἑξῆς
+    διὰ πάντων εἰς τἀγαθὸν ἐξ ἑαυτῆς, καὶ δι' αὐτῆς,
+    καὶ ἐφ' ἑαυτῆς ἑαυτὴν ἀνακυκλοῦσα, καὶ εἰς ἑαυτὴν
+    ἀεὶ ταὐτῶς ἀνελιττομένη.
+  [/texto_principal]
+
+  [texto_principal tipo="texto_principal" script="latino" bbox="535,850,940,990"]
     Age vero, his iterum in unum collectis, dicamus,
     unam esse simplicem virtutem, per se moventem
     unitivam quamdam mistionem ex bono usque ad
-    extremum eorum quæ exsistunt, et ab illo rursus
+    extremum eorum quæ existunt, et ab illo rursus
     consequenter per omnia ad bonum, ex seipsa, per
     seipsam, et in seipsa seipsam revolventem, et ad
     seipsam semper eodem modo revertentem.
-  </bloco>
-  <bloco tipo="nota" script="latino" bbox="480,835,520,855">
+  [/texto_principal]
+
+  [nota tipo="nota" script="latino" bbox="470,1000,535,1029"]
     § XVIII.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="60,860,480,905">
+  [/nota]
+
+  [texto_principal tipo="texto_principal" script="grego" bbox="120,1035,500,1090"]
     Καίτοι φαίη τις· Εἰ πᾶσιν ἐστὶ τὸ καλὸν καὶ ἀγα-
     θὸν ἐραστὸν καὶ ἐφετὸν καὶ ἀγαπητόν (ἐφίεται γὰρ
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,860,940,905">
+  [/texto_principal]
+
+  [texto_principal tipo="texto_principal" script="latino" bbox="535,1035,940,1090"]
     Atqui aliquis objiciat : Si pulchrum et bonum
     omnibus amabile et desiderabile atque dilectum sit
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="60,915,940,965">
+  [/texto_principal]
+
+  [aparato_critico tipo="aparato_critico" script="misto" bbox="70,1115,955,1335"]
     VARIÆ LECTIONES.
     ⁵⁸ quæ ab hoc loco ad duas paginas et dimidiatam ante hæc verba, καὶ αὐτό ἐστι τὸ εἰδοποιόν,
     continentur, in impressis codicibus deerant, habent manuscripti, veteres interpretes expresserunt.
-    ⁵⁹ ὅσαι, P. ⁶⁰ καθ' οὓς, P. ⁶¹ κα νῦν αθις, P. Sc. ⁶² συλλέξωμεν, S. ⁶³ πάντων, S. ⁶⁴ επωμεν
+    ⁵⁹ ὅσαι, P. ⁶⁰ καθ' οὓς, P. ⁶¹ καὶ νῦν αὖθις, P. Sc. ⁶² συλλέξωμεν, S. ⁶³ πάντων, S. ⁶⁴ εἴπωμεν
     P. et Vien.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="60,975,400,995">
+  [/aparato_critico]
+
+  [rodape tipo="rodape" script="latino" bbox="120,1410,360,1450"]
     PATROL. GR. III.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="850,975,940,995">
+  [/rodape]
+
+  [rodape tipo="rodape" script="latino" bbox="905,1410,955,1450"]
     23
-  </bloco>
-  <notas>
-    - Transcrição fiel à imagem, preservando ligaturas latinas (æ) e acentuação grega.
-    - Números de referência (58-64) transcritos como superscritos onde visíveis.
-    - Layout de duas colunas respeitado (grego à esquerda, latino à direita).
-    - Letras marginais A, B, C, D posicionadas no gutter.
-    - Títulos de seção (§ XV, etc.) centralizados entre colunas.
-  </notas>
+  [/rodape]
+
+  <notas>BBOX aproximados em escala 0-1000; transcrição privilegiou a imagem sobre o OCR, separando as letras marginais A, B, C, D e os numerais seccionais em blocos próprios.</notas>
 </pagina>

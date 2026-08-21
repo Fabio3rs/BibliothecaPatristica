@@ -1,48 +1,52 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,40,950,80">
+<pagina estado="com_texto" tipo="texto">
+  [cabecalho tipo="cabecalho" script="latino" bbox="80,15,920,85"]
     255 HEXAPLORUM QUÆ SUPERSUNT. 256
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,85,650,110">
+  [/cabecalho]
+
+  <bloco tipo="texto_principal" script="latino" bbox="370,95,650,140">
     CAPUT XXVIII GENESIS.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="50,110,300,130">
-    TO EBPAIKON.
+
+  <bloco tipo="texto_principal" script="misto" bbox="90,135,320,185">
+    TO ΕΒΡΑΙΚΟΝ.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="350,110,600,130">
-    TO EBPAIKON
+  <bloco tipo="texto_principal" script="misto" bbox="370,135,650,195">
+    TO ΕΒΡΑΙΚΟΝ
     Ἑλληνικοῖς γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="650,110,950,130">
-    AKYΛAΣ
+  <bloco tipo="texto_principal" script="grego" bbox="760,135,935,185">
+    ΑΚΥΛΑΣ
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="50,135,300,200">
-    כִּי 16
-    בֵּית־אֵל 19
-    אוּלָם־לוּז שֵׁם־עִיר
-    וְשַׁבְתִּי 21
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="80,185,300,320">
+    16. אָכֵן
+    19. בֵּית־אֵל
+    21. בְּשָׁלוֹם
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="350,135,600,180">
+  <bloco tipo="texto_principal" script="grego" bbox="360,185,650,320">
     16.
     19.
-    Ουαλαμ λους σεμ αειρ.
+    Ουαλαμ λουζ σεμ αειρ.
     21.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="650,135,950,200">
+  <bloco tipo="texto_principal" script="grego" bbox="700,185,945,320">
     16. Ἄρα.
-    19. Βαιθηλ.
-    Πρότερον Λούζ ὄνομα τῇ πόλει.
-    21. Ἐν εἰρήν.
+    19. Βαιθήλ.
+    Πρότερον Λοὺζ ὄνομα τῇ πόλει.
+    21. Ἐν εἰρήνῃ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,205,300,225">
+
+  <bloco tipo="texto_principal" script="latino" bbox="75,340,330,375">
     VERSIO HEBRAICI TEXT.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,205,600,225">
+  <bloco tipo="texto_principal" script="latino" bbox="380,340,650,375">
     VULGATA LATINA.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,205,950,225">
+  <bloco tipo="texto_principal" script="latino" bbox="760,340,945,375">
     AQUILA.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,230,300,300">
+
+  <bloco tipo="texto_principal" script="latino" bbox="75,380,335,525">
     16. Vere.
     19. Bethel.
     Hebraicum Græcis lit. Ualam
@@ -50,170 +54,183 @@
     Et utique Luz nomen civitatis.
     21. In pace.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,230,600,300">
+  <bloco tipo="texto_principal" script="latino" bbox="380,380,650,525">
     16. Vere.
     19. Bethel.
     Quæ prius Luza vocabatur.
     21. Prospere.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,230,950,300">
+  <bloco tipo="texto_principal" script="latino" bbox="700,380,945,525">
     16. Num, sei, utique.
     19. Bethel.
     Prius Luz nomen urbi erat.
     21. In pace.
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="250,305,750,325">
+
+  <bloco tipo="nota" script="misto" bbox="70,520,485,720">
     Notæ et variæ lectiones ad cap. XXVIII Genesis.
-  </bloco>
-  <bloco tipo="nota" script="misto" bbox="50,330,480,410">
-    V. 16 Ἄ., ἄρα. Σ., ὅτως. Has lectiones affert
+
+    V. 16. Ἀ., ἄρα. Σ., ὄντως. Has lectiones affert
     Coislin.
+
     V. 19. Sic Drusius et editio Romana.
+
     Ibidem. Hanc Aquilæ lectionem habent codices
-    mss. quidam cum nota Thenlori, quæ sic habet :
-    Ἡ Βαιθηλ (Οὐαλὰμ Λοὺζ πρότερον λεγομένη διὰ τὴν
+    mss. quidam cum nota Thelori, quæ sic habet :
+    Ἡ Βαιθὴλ Οὐαλὰμ Λοὺζ πρότερον λεγομένη διὰ τὴν
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="500,330,950,410">
-    τῷ ακὼβ γενομένην ὀπτασίαν Βαιθηλ ὠνομάσθη.
-    Ἑβδομήκοντα. « Καὶ Οὐλαμ Λοὺζ ν ὄνομα τῇ πό-
-    λει. » Ἀκύλας. « Οὐλαμ Λοὺζ σεμ αειρ. » Ἰστέον,
-    ὅτι « Οὐλαμ » πρότερον εἶπον οἱ περὶ Ἀκύλαν, καὶ
-    οὐχ ς μέρος τοῦ ὀνόματος· Λοὺζα δὲ τὴν πόλιν ῥη-
-    τοῖς μετὰ ταῦτα καλεῖ. Id est : Βαιθηλ, quæ prius
+  <bloco tipo="nota" script="misto" bbox="495,520,945,720">
+    τῷ Ἰακώβ γενομένην ὀπτασίαν Βαιθὴλ ὠνομάσθη.
+    Ἑβδομήκοντα. « Καὶ Οὐαλὰμ Λοὺζ ἦν ὄνομα τῇ πό-
+    λει. » Ἀκύλας. « Οὐαλὰμ Λοὺζ σεμ αειρ. » Ἰστέον,
+    ὅτι « Οὐαλὰμ » πρότερον εἶπον οἱ περὶ Ἀκύλαν, καὶ
+    οὐχ ὡς μέρος τοῦ ὀνόματος· Λοὺζ δὲ τὴν πόλιν ῥη-
+    τοῖς μετὰ ταῦτα καλεῖ. Id est :
+    Βαιθὴλ, quæ prius
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,415,650,440">
+
+  <bloco tipo="texto_principal" script="latino" bbox="380,725,650,770">
     CAPUT XXIX GENESIS.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="50,440,300,460">
-    TO EBPAIKON.
+
+  <bloco tipo="texto_principal" script="misto" bbox="90,770,320,820">
+    TO ΕΒΡΑΙΚΟΝ.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="350,440,600,460">
-    TO EBPAIKON
+  <bloco tipo="texto_principal" script="misto" bbox="370,770,650,825">
+    TO ΕΒΡΑΙΚΟΝ
     Ἑλληνικοῖς γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="650,440,950,460">
-    AKYΛAΣ.
+  <bloco tipo="texto_principal" script="grego" bbox="760,770,935,820">
+    AKYΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="50,465,300,530">
-    רַכּוֹת 17
-    חֲתֻנָּתוֹ 22
-    רִמּיתַנִי 25
-    עַתָּה יִלָּוֶה אִישִׁי אֵלַי 34
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="75,825,345,955">
+    17. רַכּוֹת
+    22. מִשְׁתֶּה
+    25. רִמִּיתַנִי
+    34. יִלָּוֶה אִישִׁי אֵלַי
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,465,600,530">
+  <bloco tipo="texto_principal" script="latino" bbox="375,825,665,955">
     17.
     22.
     25.
     34.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="650,465,950,530">
+  <bloco tipo="texto_principal" script="grego" bbox="700,825,945,955">
     17. Ἀπαλοί.
     22. Πότον.
     25. Ἐπίθου μοι.
     34. [Συνάψεται μοι ὁ ἀνήρ μου.]
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,535,300,555">
+
+  <bloco tipo="texto_principal" script="latino" bbox="75,960,335,995">
     VERSIO HEBRAICI TEXT.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,535,600,555">
+  <bloco tipo="texto_principal" script="latino" bbox="375,960,650,995">
     VULGATA LATINA.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,535,950,555">
+  <bloco tipo="texto_principal" script="latino" bbox="760,960,945,995">
     AQUILA.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,560,300,620">
+
+  <bloco tipo="texto_principal" script="latino" bbox="75,995,335,1115">
     17. Teneri.
     22. Convivium.
     25. Decepisti me.
     34. Copulabitur vir meus mihi.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,560,600,630">
+  <bloco tipo="texto_principal" script="latino" bbox="375,995,650,1115">
     17. Lippis erat oculis.
     22. Nuptias.
     25. Imposuisti mihi.
-    34. Copulabitur mihi maritus
-    meus.
+    34. Copulabitur mihi maritus meus.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,560,950,620">
+  <bloco tipo="texto_principal" script="latino" bbox="700,995,945,1115">
     17. Delicati.
     22. Compotationem, vel convi-
     vium.
     25. Imposuisti mihi.
     34. Applicabitur mihi vir meus.
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="250,635,750,655">
+
+  <bloco tipo="nota" script="misto" bbox="70,1118,485,1330">
     Notæ et variæ lectiones ad cap. XXIX.
-  </bloco>
-  <bloco tipo="nota" script="misto" bbox="50,660,480,720">
+
     V. 17. Ἀ., Σ., ἀπαλοί. Ex Coislin.
+
     V. 22. Ἀ., Σ., πότον. Θ', γάμον. Notandum est
     LXX Interpretes, qui vocem חתֻנָּה hic vertunt γά-
     μον eamdem frequentissime vertere πότον. Sic Gen.
-    xix, 3, et xl, 20; Judicum xiv, 10, et alibi sæpe.
+    xix, 3, et xl, 20; Judicum xiv, 10, et alibi sæpis-
+    sime.
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="500,660,950,720">
+  <bloco tipo="nota" script="misto" bbox="495,1118,945,1330">
     V. 25. Ἀ., ἐπίθου μοι. Σ., ἐνήδρευσάς με. Ita
     Coislin. In edit. Rom. legitur solum ἐνήδρευσάς
     μοι, sine interpretis nomine.
-    V. 34. Sic lectionem [Aquilæ posuit Martianæus.
+    V. 34. Sic lectionem Aquilæ posuit Martianæus.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,725,650,750">
+
+  <bloco tipo="texto_principal" script="latino" bbox="380,1360,650,1405">
     CAPUT XXX GENESIS.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="50,750,300,770">
-    TO EBPAIKON.
+
+  <bloco tipo="texto_principal" script="misto" bbox="90,1410,320,1460">
+    TO ΕΒΡΑΙΚΟΝ.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="350,750,600,770">
-    TO EBPAIKON
+  <bloco tipo="texto_principal" script="misto" bbox="370,1410,650,1470">
+    TO ΕΒΡΑΙΚΟΝ
     Ἑλληνικοῖς γράμμασι.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="650,750,950,770">
-    AKYΛAΣ.
+  <bloco tipo="texto_principal" script="grego" bbox="760,1410,935,1460">
+    ΑΚΥΛΑΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="50,775,300,840">
-    נִפְתּוּלֵי אֱלֹהִים נִפְתַּלְתִּי 8
-    בָּגַד 11
-    לְשָׂכָר 15
-    זֶבֶד 20
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="75,1460,345,1590">
+    8. נִפְתּוּלֵי אֱלֹהִים נִפְתַּלְתִּי
+    11. בְּגָד
+    15. שָׂכָר
+    20. זָבַדְנִי
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,775,600,840">
+  <bloco tipo="texto_principal" script="latino" bbox="375,1460,650,1590">
     8.
     11.
     15.
     20.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="650,775,950,850">
-    8. Συνανέστραφέν με ὁ Θεός,
+  <bloco tipo="texto_principal" script="grego" bbox="700,1460,945,1600">
+    8. Συνανέστρεψέν με ὁ θεός,
     καὶ συνανεστράφην.
-    11. Ἦλθεν εὐζαλα.
+    11. Ἦλθεν εὐζία.
     [Ἦλθεν ἡ ζώσις.]
     15. Διὰ τοῦτο.
     20. Συνοικήσει μοι.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,845,300,865">
+
+  <bloco tipo="texto_principal" script="latino" bbox="75,1605,335,1640">
     VERSIO HEBRAICI TEXT.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,845,600,865">
+  <bloco tipo="texto_principal" script="latino" bbox="375,1605,650,1640">
     VULGATA LATINA.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,845,950,865">
+  <bloco tipo="texto_principal" script="latino" bbox="760,1605,945,1640">
     AQUILA.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,870,300,940">
-    8. Luctationibus Dei luctata
-    sum.
+
+  <bloco tipo="texto_principal" script="latino" bbox="75,1645,335,1775">
+    8. Luctationibus Dei luctata sum.
     11. Venit prosperitas.
     15. Idcirco.
     20. Habitabit mecum.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,870,600,940">
+  <bloco tipo="texto_principal" script="latino" bbox="375,1645,650,1775">
     8. Comparavit me Deus cum
     sorore mea, et invalui.
     11. Feliciter.
     15.
     20. Mecum erit.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,870,950,940">
+  <bloco tipo="texto_principal" script="latino" bbox="700,1645,945,1775">
     8. Convertit me Deus, et con-
     versa sum.
     11. Venit prosperitas.
@@ -221,10 +238,12 @@
     15. Propter hoc.
     20. Habitabit mecum.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="500,950,800,980">
+
+  [rodape tipo="rodape" script="latino" bbox="620,1860,920,1945"]
     Digitized by Google
-  </bloco>
+  [/rodape]
+
   <notas>
-    Scripts mistos em cabeçalhos de colunas (Grego/Latino). Texto hebraico transcrito conforme visível. Notas críticas contêm abreviações (e.g., Ἄ., Σ., Θ') referindo-se a versões (Aquila, Symmachus, Theodotion).
+    Transcrição feita prioritariamente a partir da imagem, com conservação dos grafemas vistos. O fólio é uma dupla página digitalizada; alguns termos hebraicos do cap. XXX estão parcialmente ilegíveis e foram mantidos na forma mais provável.
   </notas>
 </pagina>

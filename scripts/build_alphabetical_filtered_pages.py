@@ -86,6 +86,19 @@ GENERAL_PO_MARKERS = (
     "TABLE GENERALE",
     "TABLE OF CONTENTS",
 )
+PG_PL_ALPHABETICAL_BOUNDARY_MARKERS = (
+    "AUCTORUM ET OPERUM",
+    "CONSPECTUS TOMI",
+    "SYLLABUS AUCTORUM",
+    "ELENCHUS OPERUM",
+    "INDEX CAPITUM",
+    "ORDO OPERUM",
+    "ORDO RERUM",
+)
+PO_ALPHABETICAL_BOUNDARY_MARKERS = (
+    "TABLE DU TOME",
+    "TABLE OF CONTENTS",
+)
 AMBIGUOUS_GENERAL_FRONT_MARKERS = {"ELENCHUS RERUM", "SYLLABUS RERUM"}
 ALL_MARKERS = tuple(
     sorted({*PG_PL_MARKERS, *PO_MARKERS, *GENERAL_PG_PL_MARKERS, *GENERAL_PO_MARKERS})
@@ -149,6 +162,12 @@ OCR_HEADING_TRANSLATION = str.maketrans(
 
 
 def normalize_heading_for_cer(text: str) -> str:
+    text = re.sub(
+        r"(?<=[^\W\d_])[-‐‑]\s+(?=[^\W\d_])",
+        "",
+        text,
+        flags=re.UNICODE,
+    )
     normalized = normalize_for_match(text).translate(OCR_HEADING_TRANSLATION)
     normalized = re.sub(r"\bL(?=NDEX\b)", "I", normalized)
     return normalized
@@ -161,6 +180,11 @@ def _marker_match_quality(text: str, marker: str) -> tuple[bool, str]:
         return True, "normalized_exact"
     marker_tokens = marker_norm.split()
     text_tokens = normalized.split()
+    if len(marker_tokens) >= 2 and len(marker_norm) >= 10:
+        compact_marker = "".join(marker_tokens)
+        compact_text = "".join(text_tokens)
+        if compact_marker in compact_text:
+            return True, "ocr_split_joined"
     if len(marker_tokens) < 2 or not text_tokens:
         return False, "none"
     anchor = marker_tokens[0]
@@ -196,14 +220,24 @@ def _best_marker_match(text: str, markers: tuple[str, ...]) -> tuple[str, str]:
     best_quality = 0.0
     for marker in markers:
         matched, quality = _marker_match_quality(text, marker)
-        if not matched or not quality.startswith("cer_fuzzy:"):
+        if not matched:
             continue
-        score = float(quality.split(":", 1)[1])
+        score = (
+            0.995
+            if quality == "ocr_split_joined"
+            else float(quality.split(":", 1)[1])
+            if quality.startswith("cer_fuzzy:")
+            else 0.0
+        )
         if score > best_quality:
             best_marker = marker
             best_quality = score
     if best_marker:
-        return best_marker, f"cer_fuzzy:{best_quality:.3f}"
+        return best_marker, (
+            "ocr_split_joined"
+            if best_quality == 0.995
+            else f"cer_fuzzy:{best_quality:.3f}"
+        )
     return "", "none"
 
 
@@ -236,7 +270,7 @@ def load_external_filtered_pages(
 def _looks_like_heading_shape(stripped: str, collection: str) -> bool:
     if not stripped:
         return False
-    if len(stripped) > 140:
+    if len(stripped) > 280:
         return False
     if any(stripped.upper().startswith(prefix) for prefix in NOTE_PREFIXES):
         return False
@@ -268,8 +302,21 @@ def build_fallback_filtered_pages(
     files = sorted(text_root.glob("*.txt"), key=page_sort_key)
     if profile == "general":
         markers = GENERAL_PO_MARKERS if collection == "PO" else GENERAL_PG_PL_MARKERS
+        boundary_markers: set[str] = set()
     else:
-        markers = PO_MARKERS if collection == "PO" else PG_PL_MARKERS
+        owned_markers = PO_MARKERS if collection == "PO" else PG_PL_MARKERS
+        boundary_marker_values = (
+            PO_ALPHABETICAL_BOUNDARY_MARKERS
+            if collection == "PO"
+            else PG_PL_ALPHABETICAL_BOUNDARY_MARKERS
+        )
+        markers = tuple(
+            sorted(
+                {*owned_markers, *boundary_marker_values},
+                key=lambda value: (-len(normalize_for_match(value)), value),
+            )
+        )
+        boundary_markers = set(boundary_marker_values)
     candidate_sections: list[dict[str, Any]] = []
     candidate_files_seen: set[str] = set()
     candidate_files: list[str] = []
@@ -312,7 +359,9 @@ def build_fallback_filtered_pages(
             matched_marker = ""
             matched_text = ""
             match_quality = "none"
-            for width in (1, 2, 3):
+            matched_line_end = line_no
+            best_score: tuple[int, int, int] | None = None
+            for width in (1, 2, 3, 4, 5):
                 window = visible_lines[visible_index : visible_index + width]
                 if len(window) != width:
                     continue
@@ -320,12 +369,19 @@ def build_fallback_filtered_pages(
                 if not _looks_like_heading_shape(candidate_text, collection):
                     continue
                 marker, quality = _best_marker_match(candidate_text, markers)
-                if marker:
+                if not marker:
+                    continue
+                score = (
+                    len(normalize_for_match(marker)),
+                    1 if quality == "normalized_exact" else 0,
+                    -width,
+                )
+                if best_score is None or score > best_score:
+                    best_score = score
                     matched_marker = marker
                     matched_text = candidate_text
                     match_quality = quality
-                if matched_text:
-                    break
+                    matched_line_end = window[-1][0]
             if not matched_text:
                 continue
             marker = matched_marker
@@ -335,10 +391,19 @@ def build_fallback_filtered_pages(
                 and file_to_index[path_str] >= max(1, int(len(files) * 0.35))
             ):
                 continue
+            if any(
+                item["file"] == path_str
+                and item["marker"] == marker
+                and line_no <= int(item.get("line_end") or item["line"])
+                and matched_line_end >= int(item["line"])
+                for item in candidate_sections
+            ):
+                continue
             hit = {
                 "file": path_str,
                 "file_seq": page_number(path),
                 "line": line_no,
+                "line_end": matched_line_end,
                 "text": matched_text[:240],
                 "marker": marker,
                 "match_quality": match_quality,
@@ -352,14 +417,13 @@ def build_fallback_filtered_pages(
                     "file": path_str,
                     "file_seq": page_number(path),
                     "line": line_no,
+                    "line_end": matched_line_end,
                     "reason": reason,
                     "marker": marker,
                     "match_quality": match_quality,
                     "role": (
                         "alphabetical_stop_boundary"
-                        if profile == "alphabetical"
-                        and collection in {"PG", "PL"}
-                        and marker == "ORDO RERUM"
+                        if profile == "alphabetical" and marker in boundary_markers
                         else "section_heading"
                     ),
                 }

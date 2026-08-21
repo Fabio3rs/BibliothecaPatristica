@@ -1,11 +1,17 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,90">
-    4195 HEXAPLORUM QUÆ SUPERSUNT. 4196
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="110,62,920,108">
+    4195                                 HEXAPLORUM QUÆ SUPERSUNT.                                 4196
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="150,90,850,130">
-    TO ΕΒΡΑΙΚΟΝ. TO ΕΒΡΑΙΚΟΝ Ἑλληνικοῖς γράμμασι. ΑΚΥΛΑΣ.
+  <bloco tipo="cabecalho" script="grego" bbox="175,88,875,122">
+    ΤΟ ΕΒΡΑΙΚΟΝ                                 ΤΟ ΕΒΡΑΙΚΟΝ
   </bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="100,130,350,550">
+  <bloco tipo="cabecalho" script="grego" bbox="430,103,635,132">
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="750,88,875,115">
+    ΑΚΥΛΑΣ.
+  </bloco>
+  <bloco tipo="texto_principal" script="hebraico" bbox="205,121,373,642">
     ויאמר
     ישראל
     אתה 4
@@ -23,7 +29,7 @@
     שלשים מרעים
     חלפות בגדים 12
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="400,130,550,550">
+  <bloco tipo="texto_principal" script="grego" bbox="396,121,505,642">
     4.
     5.
     6.
@@ -34,7 +40,7 @@
     11.
     12.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="700,130,850,550">
+  <bloco tipo="texto_principal" script="grego" bbox="678,121,835,642">
     4. Πρόφασιν.
     5.
     6.
@@ -45,44 +51,64 @@
     11.
     12.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="100,560,850,590">
-    VERSIO HEBRAICI TEXT VULGATA LATINA. AQUILA.
+  <bloco tipo="cabecalho" script="latino" bbox="118,653,859,681">
+    VERSIO HEBRAICI TEXT                         VULGATA LATINA.                         AQUILA.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,600,350,950">
+  <bloco tipo="texto_principal" script="latino" bbox="110,687,377,949">
     Et in omni populo meo.
+    
     Recta.
     4. Occasionem.
     Dominantes in Israel.
+    
     5. Et venerunt usque ad vineas.
+    
     6. Et prospere egit.
     Et fudit eum ac si fidisset hœdum.
+    
     7. Et recta fuit in oculis.
+    
     8. Conventus.
+    
     9. Et accepit ipsum ad volas suas.
+    
     De corpore.
     Accepisset mel.
+    
     10. Facient.
+    
     11. Et fuit cum viderent ipsi eum, et acceperunt triginta socios.
+    
     12. Mutatorias vestes
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="400,600,650,950">
+  <bloco tipo="texto_principal" script="latino" bbox="391,687,665,949">
     Et in omni populo meo.
+    
     Placuit.
     4. Occasionem.
     Dominabantur Israeli.
+    
     5. Cumque venissent ad vineas.
+    
     6. Irruit.
     Et dilaceravit leonem quasi hœdum in frusta discerpens.
+    
     7. Quæ placuerat oculis ejus.
+    
     8. Examen.
+    
     9. Quem cum sumpsisset in manibus.
+    
     De corpore.
     Mel... assumpserat.
+    
     10. Facere consueverant.
+    
     11. Cum ergo cives loci illius vidissent eum, dederunt ei sodales triginta.
+    
     12. Tunicas.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="700,600,850,950">
+  <bloco tipo="texto_principal" script="latino" bbox="678,687,841,949">
     4. Occasionem.
     5.
     6.
@@ -93,10 +119,8 @@
     11.
     12.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="550,960,800,990">
+  <bloco tipo="rodape" script="latino" bbox="578,974,798,994">
     Digitized by Google
   </bloco>
-  <notas>
-    A página apresenta uma estrutura complexa de Hexapla. A seção superior contém texto Hebraico, transliteração Grega e a versão de Áquila em Grego. A seção inferior contém a Versão do Texto Hebraico (Latim), a Vulgata Latina e a versão de Áquila (Latim). Alguns números nas colunas de Áquila indicam versículos onde o texto pode estar faltando ou é idêntico ao anterior, conforme o padrão de transcrição de Field.
-  </notas>
+  <notas>Os números de página e o cabeçalho foram mantidos. A página apresenta três colunas superiores e três colunas inferiores; as colunas de Áquila contêm apenas a leitura do versículo 4 e os números dos versículos seguintes.</notas>
 </pagina>

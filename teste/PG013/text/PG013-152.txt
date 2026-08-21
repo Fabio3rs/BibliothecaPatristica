@@ -1,27 +1,28 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="180,40,220,60">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="225,90,250,120">
     295
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="480,40,560,60">
+  <bloco tipo="cabecalho" script="latino" bbox="520,95,665,130">
     ORIGENIS
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="880,40,920,60">
+  <bloco tipo="cabecalho" script="latino" bbox="900,90,930,120">
     296
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="180,70,480,130">
+  <bloco tipo="cabecalho" script="latino" bbox="360,135,510,220">
     HOMILIA V.
     In istud :
     Revertimini, filii, revertentes, et sanabo contritiones
     vestras ⁵⁹; usque ad illud : Accingite vos ciliciis ⁶⁰.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="580,70,920,130">
+  <bloco tipo="cabecalho" script="grego" bbox="720,135,940,220">
     ΟΜΙΛΙΑ Ε'.
     Εἰς τό·
     Ἐπιστράφητε, υἱοί, ἐπιστρέφοντες, καὶ ἰάσομαι τὰ
     συντρίμματα ὑμῶν· μέχρι τοῦ· Περιζώσασθε
     σάκκους.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="180,140,480,780">
+
+  <bloco tipo="texto_principal" script="latino" bbox="175,230,485,900">
     1. In Actibus apostolorum perspicue legimus,
     apostolos primum in synagogam Judæorum ingres-
     sos, eis tanquam cognatis propter Abraham, Isaac
@@ -29,11 +30,11 @@
     nent adventum : cum autem, illis dicta non reci-
     pientibus, alios oporteret esse dictorum auditores,
     tunc omni a se culpa remota reliquerunt eos; scri-
-    ptum est enim quia: Vobis oportebat annuntiari ver-
+    p tum est enim quia: Vobis oportebat annuntiari ver-
     bum Dei; sed quoniam indignos vos judicatis, ecce
     convertimur ad gentes ⁶¹. Hoc autem perspicue di-
-    ctum in Actis apostolorum, virtute etiam a propho-
-    tis sæpe dictum est. Etenim Spiritus sanctus per
+    ctum in Actis apostolorum, virtute etiam a pro-
+    phetis sæpe dictum est. Etenim Spiritus sanctus per
     prophetas potissimum loquitur iis qui de isto po-
     pulo sunt; si quando autem, postquam 148 multa
     dixerit, non est auditus, vaticinatur verbum genti-
@@ -70,75 +71,82 @@
     vertimini, filii, revertentes, et sanabo contritiones ve-
     stras.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,140,920,780">
+
+  <bloco tipo="texto_principal" script="grego" bbox="530,230,940,900">
     Σαφῶς μὲν ἐν ταῖς τῶν ἀποστόλων γέγραπται Πρά-
     ξεσιν ὅτι οἱ ἀπόστολοι εἰσῆλσαν πρῶτον εἰς τὴν τῶν
     Ἰουδαίων συναγωγήν, καταγγέλλοντες αὐτοῖς, ὡς
-    συγγενέσι διὰ τὸν Ἀβραάμ, καὶ Ἰσαάκ, καὶ Ἰακώβ,
+    συγγενέσι διὰ τὸν Ἀβραὰμ, καὶ Ἰσαὰκ, καὶ Ἰακώβ,
     τὰ περὶ τῆς (1) παρουσίας Ἰησοῦ Χριστοῦ· ὅτε δὲ
-    ἐκεῖνοι τὰ λεγόμενα μὴ δεχομένων ἔδει τέρους εἶναι
+    ἐκείνων τὰ λεγόμενα μὴ δεχομένων ἔδει ἐτέρους εἶναι
     τοὺς ἀκροατὰς τῶν λεγομένων, τότε ἀπολογησάμενοι
-    ἐκείνοις κατελίμανον (2) αὐτούς· γέγραπται γάρ, ὅτι,
-    Ὑμῖν ἔδει καταγγελθῆναι τὸν λόγον τοῦ Θεο·
-    ἐπε δὲ οὐκ ἀξίους κρίνετε ἑαυτούς, ἰδο στρε-
-    A φόμεθα εἰς τὰ ἔθνη. Τοῦτο δέ, σαφῶς εἰρημένον ἐν
+    ἐκείνοις κατελίμπανον (2) αὐτούς· γέγραπται γάρ, ὅτι,
+    Ὑμῖν ἔδει καταγγελθῆναι τὸν λόγον τοῦ Θεοῦ·
+    ἐπεὶ δὲ οὐκ ἀξίους κρίνετε ἑαυτούς, ἰδοὺ στρε-
+    φόμεθα εἰς τὰ ἔθνη. Τοῦτο δὲ, σαφῶς εἰρημένον ἐν
     ταῖς Πράξεσι τῶν ἀποστόλων, δυνάμει πολλαχοῦ καὶ
     τῶν προφητῶν λέλεκται· καὶ γὰρ προηγουμένως μὲν
-    λαλεῖ τ Πνεῦμα τὸ ἅγιον διὰ τῶν προφητῶν τοῖς ἀπὸ
-    τοῦ λαοῦ ἐκείνου· εἰ δέ ποτε μετὰ τὸ πολλὰ εἰρηκέ-
-    ναι, οὐκ ἠκούσθη, προφητεύει τὸν λόγον (3) τὸν κηρυσ-
-    σόμενον τοῖς ἔθνεσι. Τοῦτο δὲ καὶ ἐπὶ τῆς ἀρχῆς το
+    λαλεῖ τὸ Πνεῦμα τὸ ἅγιον διὰ τῶν προφητῶν τοῖς ἀπὸ
+    τοῦ λαοῦ ἐκείνου· εἰ δέ ποτε μετὰ τὸ πολλὰ εἰρηκέναι,
+    οὐκ ἠκούσθη, προφητεύει τὸν λόγον (3) τὸν κηρυσ-
+    σόμενον τοῖς ἔθνεσι. Τοῦτο δὲ καὶ ἐπὶ τῆς ἀρχῆς τοῦ
     σήμερον ἀναγνώσματος γέγονηται, ἐπειδήπερ πρὸ
     μὲν τοῦ αὐτοῦ τοῖς ἀπὸ τοῦ Ἰσραὴλ λέγεται τό·
-    B ε Πατέρα με καλέσετε, καὶ ἐμοῦ οὐκ ἀποστραφή-
+    Πατέρα με καλέσετε, καὶ ἐμοῦ οὐκ ἀποστραφή-
     σεσθε (4)· πλὴν ὡς ἀθετεῖ γυνὴ εἰς τὸν συνόντα αὐτῇ·
-    οὕτως θέτησεν ες ἐμὲ  οἶκος σραήλ, λέγει Κύ-
+    οὕτως ἠθέτησεν εἰς ἐμὲ ὁ οἶκος Ἰσραήλ, λέγει Κύ-
     ριος. » Καὶ ὅτε προηγουμένως ταῦτα εἴρηται τὰ περὶ
-    τοῦ Ἰσραήλ, καὶ ἤκουσαν οἱ υἱοὶ Ἰσραήλ, Ὅτι δί-
-    κησαν ἐν ταῖς δοῖς αὐτῶν, καὶ ἀπελάδοντο Θεοῦ
-    C ἁγίου αὐτῶν· ἑξῆς καὶ τὸ Πνεῦμα τὸ ἅγιον μετατί-
-    θησι τὸν λόγον ἐφ' ἡμς τοὺς ἀπὸ τῶν ἐθνῶν, καὶ
+    τοῦ Ἰσραήλ, καὶ ἤκουσαν οἱ υἱοὶ Ἰσραήλ, Ὅτι ἠδίκη-
+    σαν ἐν ταῖς ὁδοῖς αὐτῶν, καὶ ἐπελάθοντο Θεοῦ
+    ἁγίου αὐτῶν· ἑξῆς καὶ τὸ Πνεῦμα τὸ ἅγιον μετατί-
+    θησι τὸν λόγον ἐφ᾿ ἡμᾶς τοὺς ἀπὸ τῶν ἐθνῶν, καὶ
     φησιν· Ἐπιστράφητε υἱοὶ ἐπιστρέφοντες, καὶ ἰά-
     σομαι τὰ συντρίμματα ὑμῶν. Ἡμεῖς γάρ ἐσμεν
-    οἱ πεπληρωμένοι συντριμμάτων (5), ἕκαστος εἰπν ἄν,
+    οἱ πεπληρωμένοι συντριμμάτων (5), ἕκαστος εἴποι ἂν,
     εἰ καὶ νῦν κεκαθάρισται, καὶ ἴαται ἀπὸ τῶν συντριμ-
     μάτων· « Ἦμεν γὰρ καὶ ἡμεῖς ἀπειθεῖς, ἀνόητοι,
-    D πλανώμενοι, δουλεύοντες ἐπιθυμίαις καὶ ἡδοναῖς πολ-
+    πλανώμενοι, δουλεύοντες ἐπιθυμίαις καὶ ἡδοναῖς πολ-
     λαῖς καὶ ποικίλαις, ἐν κακίᾳ καὶ φθόνῳ διάγοντες,
     στυγητοί, μισοῦντες ἀλλήλους· ὅτε δὲ ἡ χρηστότης
-    καὶ ἡ φιλανθρωπία ἐπεφάνη τοῦ Σωτῆρος μῶν Θεοῦ,
-    διὰ λουτροῦ παλιγγενεσίας » ἐπέχεε τὸ ἔλεον αὐτοῦ
-    ἐφ' ἡμᾶς. Καίτοιγε κἀκεῖνο (6) τὸ ἀποστολικὸν, ἅπαξ
+    καὶ ἡ φιλανθρωπία ἐπεφάνη τοῦ Σωτῆρος ἡμῶν Θεοῦ,
+    διὰ λουτροῦ παλιγγενεσίας » ἐπέχεε τὸν ἔλεον αὐτοῦ
+    ἐφ᾿ ἡμᾶς. Καίτοιγε κἀκεῖνο (6) τὸ ἀποστολικὸν, ἅπαξ
     μνησθεὶς, σαφέστερον πειράσομαι παραστῆσαι. Οὐ
     γὰρ εἴρηκεν· Ἦμεν γάρ ποτε ἀνόητοι, ἀπειθεῖς·
     ἀλλὰ Παῦλος ὁ ἀπόστολος, ὁ ἀπὸ τοῦ Ἰσραήλ (7), ὁ κατὰ
     τὴν ἐν νόμῳ δικαιοσύνην γενόμενος ἄμεμπτος, λέγει·
     Ἦμεν γὰρ καὶ ἡμεῖς ποτε, οἱ ἀπὸ τοῦ Ἰσραήλ,
     ἀπειθεῖς, ἀνόητοι. Ἀλλ' οὐ μόνον οἱ ἀπὸ τῶν ἐθνῶν
-    ἀνόητοι ἦσαν, οὐδὲ μόνοι οἱ ἀπ τῶν ἐθνῶν ἀπειθεῖς,
-    οὐδὲ μόνοι ἐκεῖνοι ἁμαρτωλοί, καὶ ἡμες δὲ ο τὸν
+    ἀνόητοι ἦσαν, οὐδὲ μόνοι οἱ ἀπὸ τῶν ἐθνῶν ἀπειθεῖς,
+    οὐδὲ μόνοι ἐκεῖνοι ἁμαρτωλοί, καὶ ἡμεῖς δὲ οἱ τὸν
     νόμον δεδιδαγμένοι τοιοῦτοι ἐτυγχάνομεν πρὸ τῆς
+    παρουσίας τοῦ Χριστοῦ. Λέγεται οὖν μετὰ τὰ εἰρημένα τῷ Ἰσραὴλ πρὸς ἡμᾶς τοὺς ἀπὸ τῶν ἐθνῶν· Ἐπιστράφητε, υἱοὶ ἐπιστρέφοντες, καὶ ἰάσομαι τὰ συντρίμματα ὑμῶν.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="180,790,480,830">
-    παρουσίας τοῦ Χριστοῦ. Λέγεται οὖν μετὰ τὰ εἰρημένα τῷ Ἰσραὴλ πρὸς ἡμς τοὺς ἀπὸ τῶν ἐθνῶν· πι-
-    στράφητε, υἱο ἐπιστρέφοντες, καὶ ἰάσομαι τὰ συντρίμματα ὑμῶν.
+
+  <bloco tipo="nota_marginal" script="latino" bbox="555,155,575,185">
+    A
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="180,840,920,940">
+  <bloco tipo="nota_marginal" script="latino" bbox="460,425,480,455">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="500,630,520,660">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="525,820,545,850">
+    D
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="180,905,950,995">
     ⁵⁹ Jerem. III, 21. ⁶⁰ Jerem. IV, 8. ⁶¹ Act. XIII, 46. ⁶² Jerem. III, 19. ⁶³ Jerem. III, 22. ⁶⁴ Tit. III, 3, 4, 5.
-    (1) Cod. Vatic., τῶν γεγραμμένων τὰ περὶ τς.
+    (1) Cod. Vatic., τῶν γεγραμμένων τὰ περὶ τῆς.
     (2) Cod. Vatic., κατέλιπον.
     (3) In cod. Vatic. deest τὸν λόγον.
     (4) Cod. Vatic., εἰς Πατέρα με καλέσεις, καὶ ἀπ'
-    ἐμοῦ οὐκ ἀποστραφήσῃ.
+        ἐμοῦ οὐκ ἀποστραφήσῃ.
     (5) Codex Scorialensis, συντρίμματα.
     (6) Cod. Scorial., καίτοι κἀκεῖνο.
-    (7) Cod. Scorial., ὁ ατὸς ὁ ἀπὸ τοῦ Ἰσραήλ.
+    (7) Cod. Scorial., ὁ αὐτὸς ὁ ἀπὸ τοῦ Ἰσραήλ.
   </bloco>
-  <notas>
-    Transcrição de página bilingue (Latim/Grego) da Patrologia Graeca.
-    Marcas marginais A, B, C, D inseridas no fluxo do texto grego onde aparecem visualmente na margem interna.
-    Números de rodapé no texto principal transcritos como sobrescritos (ex: ⁵⁹).
-    Número "148" no meio da coluna latina transcrito literalmente.
-    Texto grego na parte inferior esquerda é continuação da coluna direita ("πρὸ τῆς" -> "παρουσίας").
-  </notas>
+
+  <notas>BBOX estimados em escala 0-1000. Letras marginais A, B, C e D separadas do corpo textual. Leitura priorizada pela imagem.</notas>
 </pagina>

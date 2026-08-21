@@ -362,6 +362,15 @@ def main() -> None:
 
     with connect_db(args.db) as con:
         init_schema(con)
+        already_imported = con.execute(
+            'SELECT 1 FROM volumes WHERE volume_id = ? LIMIT 1',
+            (volume_id,),
+        ).fetchone()
+        if already_imported and not args.replace:
+            raise SystemExit(
+                f'Volume {volume_id} is already imported. Refusing to append duplicate '
+                'index entries; use --replace or remove the volume from the database first.'
+            )
         if args.replace:
             clear_volume(con, volume_id)
         upsert_volume(con, volume)

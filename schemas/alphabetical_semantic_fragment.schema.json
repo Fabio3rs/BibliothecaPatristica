@@ -1,0 +1,201 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "alphabetical_semantic_fragment.schema.json",
+  "title": "Alphabetical semantic section fragment",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "prompt_contract_version",
+    "interpretation_contract_version",
+    "glossary_version",
+    "output_schema_version",
+    "task_id",
+    "input_fingerprint",
+    "consumed_spans",
+    "residual_spans",
+    "sections",
+    "nodes",
+    "entries",
+    "refs",
+    "scripture_refs",
+    "unresolved",
+    "decision_log",
+    "notes"
+  ],
+  "properties": {
+    "schema_version": {"const": 2},
+    "prompt_contract_version": {"const": 4},
+    "interpretation_contract_version": {"const": 1},
+    "glossary_version": {"const": 1},
+    "output_schema_version": {"const": 2},
+    "task_id": {"type": "string", "minLength": 1},
+    "input_fingerprint": {"type": "string", "minLength": 1},
+    "consumed_spans": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/source_span"},
+      "minItems": 1
+    },
+    "residual_spans": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {"$ref": "#/$defs/source_span"},
+          {
+            "type": "object",
+            "required": ["reason"],
+            "properties": {
+              "reason": {"type": "string", "minLength": 1}
+            }
+          }
+        ]
+      }
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {"$ref": "#/$defs/section"},
+      "description": "Exactly one owned alphabetical section; boundaries are not sections."
+    },
+    "nodes": {"type": "array"},
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["entry_key", "source_span", "entry_raw"],
+        "properties": {
+          "source_span": {"$ref": "#/$defs/source_span"}
+        }
+      }
+    },
+    "refs": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/material_ref"},
+      "description": "Printed material locators. Editorial numbers and OCR file paths are distinct coordinates."
+    },
+    "scripture_refs": {"type": "array"},
+    "unresolved": {"type": "array"},
+    "decision_log": {"type": "array"},
+    "notes": {"type": "array"}
+  },
+  "$defs": {
+    "section": {
+      "type": "object",
+      "required": ["section_key", "file_start", "file_end", "raw_json"],
+      "properties": {
+        "section_key": {"type": "string", "minLength": 1},
+        "page_start": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "description": "Printed editorial page on which the index section starts; never an OCR filename suffix."
+        },
+        "page_end": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "description": "Printed editorial page on which the index section ends."
+        },
+        "file_start": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Path of the first OCR .txt containing owned section material."
+        },
+        "file_end": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Path of the last OCR .txt containing owned section material."
+        },
+        "raw_json": {
+          "type": "object",
+          "required": [
+            "pipeline_owner",
+            "alphabetical_role",
+            "material_reference_mode",
+            "scripture_mode"
+          ],
+          "properties": {
+            "pipeline_owner": {"const": "alphabetical"},
+            "alphabetical_role": {"const": "owned_section"},
+            "material_reference_mode": {
+              "enum": ["remissive", "parallel", "source_only"]
+            },
+            "scripture_mode": {
+              "enum": [
+                "none",
+                "citation_index",
+                "pericope_index",
+                "concordance_component",
+                "textual_apparatus",
+                "incidental_mention"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "material_ref": {
+      "type": "object",
+      "required": ["entry_key", "ref_order", "ref_kind", "ref_raw"],
+      "properties": {
+        "entry_key": {"type": "string", "minLength": 1},
+        "ref_order": {"type": "integer", "minimum": 1},
+        "ref_kind": {
+          "enum": [
+            "editorial_page",
+            "editorial_column",
+            "editorial_page_column",
+            "editorial_range",
+            "editorial_page_line",
+            "target_locator",
+            "parallel_locator",
+            "unresolved"
+          ]
+        },
+        "ref_raw": {"type": "string", "minLength": 1},
+        "page_ref_raw": {
+          "type": ["string", "null"],
+          "description": "Legacy phase field: printed editorial page cited by the index, not an OCR file number."
+        },
+        "page_ref_int": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "description": "Conservative integer parse of page_ref_raw."
+        },
+        "line_ref_raw": {
+          "type": ["string", "null"],
+          "description": "Printed line notation inside the cited editorial page."
+        },
+        "range_start_raw": {
+          "type": ["string", "null"],
+          "description": "Legacy printed page-range start; never store a line endpoint here."
+        },
+        "range_end_raw": {
+          "type": ["string", "null"],
+          "description": "Legacy printed page-range end; never store a line endpoint here."
+        },
+        "target_file": {
+          "type": ["string", "null"],
+          "description": "OCR .txt selected for the cited body material; semantic fragments leave it null."
+        }
+      }
+    },
+    "source_span": {
+      "type": "object",
+      "required": ["file", "line_start", "line_end"],
+      "description": "Inclusive source region in the OCR index text, not in the cited body target.",
+      "properties": {
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Legacy phase name for an OCR .txt path under source_root; normalized as ocr_file_path in database v8."
+        },
+        "line_start": {"type": "integer", "minimum": 1},
+        "line_end": {"type": "integer", "minimum": 1},
+        "block_type": {"type": ["string", "null"]},
+        "text_sha256": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}

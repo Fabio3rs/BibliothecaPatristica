@@ -4,6 +4,8 @@ import FiltersPanel from '../FiltersPanel.astro';
 import { useTranslations, serializeTranslations, getLocaleBase } from '../../i18n';
 const base = import.meta.env.BASE_URL || '/';
 const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
+const searchIndexVersion = import.meta.env.PUBLIC_INDEXADOR_SEARCH_VERSION || '';
+const searchIndexBase = `${baseWithSlash}indexador/search${searchIndexVersion ? `/${encodeURIComponent(searchIndexVersion)}` : ''}`;
 const localeBase = getLocaleBase(Astro.currentLocale, base);
 const t = useTranslations(Astro.currentLocale);
 const uiStrings = serializeTranslations(t);
@@ -24,8 +26,21 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         </div>
         <div class="search-controls">
           <label class="sr-only" for="search-box">{t.searchPlaceholder}</label>
-          <input id="search-box" type="search" placeholder={t.searchPlaceholder} list="keywords-suggestions" class="search-input search-input-xl" />
-          <datalist id="keywords-suggestions"></datalist>
+          <div class="search-combobox">
+            <input
+              id="search-box"
+              type="search"
+              placeholder={t.searchPlaceholder}
+              class="search-input search-input-xl"
+              role="combobox"
+              autocomplete="off"
+              aria-autocomplete="list"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+              aria-controls="search-suggestions-list"
+            />
+            <ul id="search-suggestions-list" class="search-suggestions-list" role="listbox" aria-label={t.searchSuggestionsLabel} hidden></ul>
+          </div>
           <div class="search-toolbar">
             <label for="page-size" class="search-toolbar-label">{t.searchItemsLabel}</label>
             <select id="page-size" class="page-size-select">
@@ -126,6 +141,72 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       padding: 1rem 1.05rem;
       border-radius: var(--radius-m);
       font-size: 1.05rem;
+    }
+    .search-combobox {
+      position: relative;
+      min-width: 0;
+    }
+    .search-suggestions-list {
+      position: absolute;
+      z-index: 20;
+      inset: calc(100% + var(--space-2)) 0 auto;
+      max-height: min(18rem, 45vh);
+      margin: 0;
+      padding: var(--space-2);
+      overflow-y: auto;
+      list-style: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-m);
+      background: var(--color-surface);
+      box-shadow: var(--shadow-soft);
+    }
+    .search-suggestions-list[hidden] {
+      display: none;
+    }
+    .search-suggestions-list :global(.search-suggestion-option) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      width: 100%;
+      padding: 0.65rem 0.75rem;
+      border: 0;
+      border-radius: var(--radius-s);
+      background: transparent;
+      color: var(--color-ink);
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+    .search-suggestions-list :global(.search-suggestion-option:hover),
+    .search-suggestions-list :global(.search-suggestion-option[aria-selected="true"]) {
+      background: color-mix(in srgb, var(--color-accent) 12%, var(--color-surface));
+    }
+    .search-suggestions-list :global(.search-suggestion-value) {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .search-suggestions-list :global(.search-suggestion-kind) {
+      flex: 0 0 auto;
+      padding: 0.18rem 0.48rem;
+      border: 1px solid color-mix(in srgb, var(--color-accent) 32%, var(--color-border));
+      border-radius: 999px;
+      color: var(--color-accent);
+      background: color-mix(in srgb, var(--color-accent) 8%, var(--color-surface));
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.035em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+    .search-corrections {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
     }
     .search-toolbar {
       display: flex;
@@ -284,43 +365,60 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     }
   </style>
 
-  <script type="module" define:vars={{ assetBase: baseWithSlash, localeBase, uiStrings, uiLocale }}>
+  <script type="module" define:vars={{ assetBase: baseWithSlash, searchIndexBase, localeBase, uiStrings, uiLocale }}>
     const resultsEl = document.getElementById('results');
     const searchBox = document.getElementById('search-box');
     const pageSizeSel = document.getElementById('page-size');
     // uiStrings não contém filtersTitle pois é string (está em uiStrings), mas o aside
     // usa o atributo aria-label renderizado pelo servidor. Selecionamos pelo papel semântico.
     const filtersRoot = document.querySelector('aside[aria-label]');
-    const datalist = document.getElementById('keywords-suggestions');
+    const suggestionList = document.getElementById('search-suggestions-list');
     const quickCollectionButtons = Array.from(document.querySelectorAll('[data-collection]'));
     const suggestionButtons = Array.from(document.querySelectorAll('[data-term]'));
     const engineNote = document.getElementById('search-engine-note');
     let checkboxNodes = [];
-    let keywordOptions = [];
+    let displayedSuggestions = [];
+    let activeSuggestionIndex = -1;
     let volumesPayload = null;
     let renderGeneration = 0;
     const dataCache = window.pdfocrDataCache;
     const jsonCache = new Map();
     const RESULT_BATCH_SIZE = 8;
+    const SEARCH_SUGGESTION_DISPLAY_LIMIT = 8;
 
     // Reconstrói funções de formatação (não serializáveis via define:vars)
     const s = uiStrings;
     const isEn = uiLocale === 'en';
     const isIt = uiLocale === 'it';
+    const isFr = uiLocale === 'fr';
+    function localizedPageSummary(page) {
+      if (!page) return '';
+      return page.translations?.[uiLocale]?.summary_page || page.summary_page || '';
+    }
+    function localizedGlobalSummary(page) {
+      if (!page) return '';
+      return page.translations?.[uiLocale]?.summary_global || page.summary_global || '';
+    }
     const paginationShowing = isEn
       ? (start, end, total) => `Showing ${start}–${end} of ${total} results`
       : isIt
         ? (start, end, total) => `Mostrando ${start}–${end} di ${total} risultati`
+        : isFr
+          ? (start, end, total) => `Affichage de ${start} à ${end} sur ${total} résultats`
       : (start, end, total) => `Mostrando ${start}–${end} de ${total} resultados`;
     const paginationPage = isEn
       ? (page, total) => `Page ${page} / ${total}`
       : isIt
         ? (page, total) => `Pagina ${page} / ${total}`
+        : isFr
+          ? (page, total) => `Page ${page} / ${total}`
       : (page, total) => `Página ${page} / ${total}`;
     const ariaFilterBy = isEn
       ? (cat, val) => `Filter by ${cat}: ${val}`
       : isIt
         ? (cat, val) => `Filtra per ${cat}: ${val}`
+        : isFr
+          ? (cat, val) => `Filtrer par ${cat} : ${val}`
       : (cat, val) => `Filtrar por ${cat}: ${val}`;
     const escapeHtml = (value) => String(value)
       .replace(/&/g, '&amp;')
@@ -334,7 +432,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       if (dataCache?.getJsonOnce) return dataCache.getJsonOnce(url);
       if (!jsonCache.has(url)) {
         const promise = fetch(url).then(async (res) => {
-          if (!res.ok) throw new Error(`HTTP ${res.status} ao buscar ${url}`);
+          if (!res.ok) throw new Error(`HTTP ${res.status}: ${url}`);
           return res.json();
         }).catch((err) => {
           jsonCache.delete(url);
@@ -404,6 +502,103 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       syncDocumentTitle();
     }
 
+    function closeSuggestionList() {
+      displayedSuggestions = [];
+      activeSuggestionIndex = -1;
+      suggestionList.replaceChildren();
+      suggestionList.hidden = true;
+      searchBox.setAttribute('aria-expanded', 'false');
+      searchBox.removeAttribute('aria-activedescendant');
+    }
+
+    function applySuggestion(value) {
+      searchBox.value = value;
+      state.term = value;
+      state.exactPhrase = false;
+      state.page = 1;
+      closeSuggestionList();
+      syncUrl();
+      render();
+      searchBox.focus();
+    }
+
+    function selectSuggestion(index) {
+      if (!displayedSuggestions.length) return;
+      activeSuggestionIndex = (index + displayedSuggestions.length) % displayedSuggestions.length;
+      const options = Array.from(suggestionList.querySelectorAll('[role="option"]'));
+      options.forEach((option, optionIndex) => {
+        option.setAttribute('aria-selected', optionIndex === activeSuggestionIndex ? 'true' : 'false');
+      });
+      const active = options[activeSuggestionIndex];
+      if (active) {
+        searchBox.setAttribute('aria-activedescendant', active.id);
+        active.scrollIntoView({ block: 'nearest' });
+      }
+    }
+
+    function showSuggestionList(suggestions) {
+      const seen = new Set();
+      displayedSuggestions = suggestions.filter((suggestion) => {
+        const value = String(suggestion?.value || '').trim();
+        if (!value || seen.has(value) || value === searchBox.value.trim()) return false;
+        seen.add(value);
+        return true;
+      }).slice(0, SEARCH_SUGGESTION_DISPLAY_LIMIT);
+      activeSuggestionIndex = -1;
+      suggestionList.replaceChildren();
+      if (!displayedSuggestions.length || document.activeElement !== searchBox) {
+        displayedSuggestions = [];
+        suggestionList.hidden = true;
+        searchBox.setAttribute('aria-expanded', 'false');
+        return;
+      }
+      displayedSuggestions.forEach((suggestion, index) => {
+        const item = document.createElement('li');
+        item.id = `search-suggestion-${index}`;
+        item.className = 'search-suggestion-option';
+        item.setAttribute('role', 'option');
+        item.setAttribute('aria-selected', 'false');
+
+        const value = document.createElement('span');
+        value.className = 'search-suggestion-value';
+        value.textContent = suggestion.value;
+        const kind = document.createElement('span');
+        kind.className = 'search-suggestion-kind';
+        const kindLabel = suggestion.kind === 'correction'
+          ? s.searchSuggestionCorrection
+          : s.searchSuggestionCompletion;
+        kind.textContent = kindLabel;
+        kind.setAttribute('aria-hidden', 'true');
+        item.setAttribute('aria-label', `${suggestion.value} — ${kindLabel}`);
+        item.append(value, kind);
+        item.addEventListener('pointerdown', (event) => event.preventDefault());
+        item.addEventListener('click', () => applySuggestion(suggestion.value));
+        suggestionList.appendChild(item);
+      });
+      suggestionList.hidden = false;
+      searchBox.setAttribute('aria-expanded', 'true');
+    }
+
+    function mergeSuggestions(searchResults) {
+      const seen = new Set();
+      const merged = [];
+      for (const result of searchResults) {
+        for (const suggestion of result.suggestions || []) {
+          if (!suggestion?.value || seen.has(suggestion.value)) continue;
+          seen.add(suggestion.value);
+          merged.push(suggestion);
+        }
+      }
+      return merged.sort((left, right) => {
+        if (left.kind !== right.kind) return left.kind === 'prefix' ? -1 : 1;
+        if (left.distance !== right.distance) return left.distance - right.distance;
+        if (left.globalImportance !== right.globalImportance) {
+          return left.globalImportance - right.globalImportance;
+        }
+        return String(left.replacement).localeCompare(String(right.replacement), uiLocale);
+      });
+    }
+
     readStateFromUrl();
     syncDocumentTitle();
     searchBox.value = state.term;
@@ -442,16 +637,17 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         : normalized;
       const withLeadingSlash = withoutBase.startsWith('/') ? withoutBase : `/${withoutBase}`;
       let strippedPath = withLeadingSlash;
-      if (withLeadingSlash === '/en' || withLeadingSlash === '/it') strippedPath = '/';
+      if (withLeadingSlash === '/en' || withLeadingSlash === '/it' || withLeadingSlash === '/fr') strippedPath = '/';
       else if (withLeadingSlash.startsWith('/en/')) strippedPath = withLeadingSlash.slice(3) || '/';
       else if (withLeadingSlash.startsWith('/it/')) strippedPath = withLeadingSlash.slice(3) || '/';
+      else if (withLeadingSlash.startsWith('/fr/')) strippedPath = withLeadingSlash.slice(3) || '/';
       return `${localePath}${strippedPath === '/' ? '' : strippedPath}`;
     }
 
     async function loadIndexadorManifest() {
       if (indexadorManifest) return indexadorManifest;
       if (indexadorManifestPromise) return indexadorManifestPromise;
-      indexadorManifestPromise = getJsonOnce(`${assetBase}indexador/search/manifest.json`)
+      indexadorManifestPromise = getJsonOnce(`${searchIndexBase}/manifest.json`)
         .then((manifest) => {
           indexadorManifest = manifest;
           const volumeCount = new Set(manifestIndexes(manifest).flatMap((item) => item.volumes || [])).size;
@@ -538,9 +734,6 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         getJsonOnce(`${assetBase}dict/keywords_top.json`)
           .then((keywordsObj) => {
             const keywords = keywordsObj.items || [];
-            keywordOptions = keywords
-              .map((k) => k.label)
-              .filter((label) => typeof label === 'string' && label.trim().length > 0);
             const chipsContainer = document.getElementById('keywords-chips');
             if (!chipsContainer) return;
             const chips = keywords.slice(0, 300);
@@ -555,7 +748,6 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
                 toggleFilter('keyword', btn.dataset.keyword);
               });
             });
-            if (state.term) updateSuggestions();
           })
           .catch(() => {
             const chipsContainer = document.getElementById('keywords-chips');
@@ -593,9 +785,14 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         indexadorModulePromise = import(`${assetBase}indexador/runtime/indexador-pagefind.js`);
       }
       const { createIndexadorPagefind } = await indexadorModulePromise;
+      const indexCount = Math.max(1, manifestIndexes(indexadorManifest).length);
+      const cacheBudget = Math.max(
+        4 * 1024 * 1024,
+        Math.floor((16 * 1024 * 1024) / indexCount),
+      );
       const instance = createIndexadorPagefind({
         assetBaseUrl: `${assetBase}indexador/runtime`,
-        indexBaseUrl: `${assetBase}indexador/search/${entry.path}`,
+        indexBaseUrl: `${searchIndexBase}/${entry.path}`,
         PAGE_SIZE: 50,
         MAX_PER_TOKEN: 10000,
         MAX_CONCURRENT_FETCHES: 6,
@@ -603,6 +800,13 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         prefixMinLength: 3,
         prefixMaxTerms: 32,
         prefixMaxPerTerm: 10000,
+        suggestions: true,
+        suggestionLimit: 15,
+        suggestionMinLength: 3,
+        suggestionFallbackMin: 5,
+        suggestionWordlists: indexadorManifest?.suggestions?.wordlists === true,
+        suggestionWordlistRadius: indexadorManifest?.suggestions?.neighbor_radius || 1,
+        maxWasmCacheBytes: cacheBudget,
       });
       await instance.init();
       indexadorInstances.set(entry.id, instance);
@@ -615,9 +819,17 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       return terms.length === 1 ? `(${terms[0]})` : `(${terms.map((value) => `(${value})`).join(' || ')})`;
     }
 
-    function buildIndexadorQuery(term, filters, includeCollection) {
+    const indexadorSeparators = /[\s.,!?*\-+'"()[\];\\/=<>|#:«»“”$&@%‘’—]+/gu;
+
+    function keywordLiteralQuery(value) {
+      const literal = String(value || '').trim().replace(indexadorSeparators, '_').replace(/^_+|_+$/g, '');
+      return literal.includes('_') ? literal : '';
+    }
+
+    function buildIndexadorQuery(term, filters, includeCollection, useKeywordLiteral = false) {
       const parts = [];
-      if (term) parts.push(`(${term})`);
+      const literal = useKeywordLiteral ? keywordLiteralQuery(term) : '';
+      if (term) parts.push(`(${literal || term})`);
       const collections = includeCollection ? groupTerms(filters.collection) : '';
       const volumes = groupTerms(filters.volume);
       const books = groupTerms(filters.book);
@@ -732,7 +944,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       const titleLabels = titleHint.includes(' • ') ? titleHint.split(' • ').map((item) => item.trim()) : [];
       return {
         url: publicUrl,
-        excerpt: makeExcerpt([page?.summary_page, page?.summary_global].filter(Boolean).join(' '), term),
+        excerpt: makeExcerpt([localizedPageSummary(page), localizedGlobalSummary(page)].filter(Boolean).join(' '), term),
         meta: {
           title: document.name,
           author: page?.author || '',
@@ -754,6 +966,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     }
 
     function renderEmptyState() {
+      closeSuggestionList();
       resultsEl.innerHTML = `
         <div class="card search-empty-state">
           <span class="search-empty-state-icon" aria-hidden="true">🔍</span>
@@ -761,6 +974,26 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           <p>${escapeHtml(s.searchEmptyDescription || s.searchIndexadorPrompt)}</p>
         </div>
       `;
+    }
+
+    function renderNoResultSuggestions(suggestions) {
+      const root = document.getElementById('search-corrections');
+      if (!root) return;
+      const corrections = suggestions
+        .filter((suggestion) => suggestion.kind === 'correction')
+        .slice(0, 5);
+      if (!corrections.length) return;
+      const label = document.createElement('span');
+      label.textContent = s.searchDidYouMean;
+      root.appendChild(label);
+      corrections.forEach((suggestion) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'button secondary';
+        button.textContent = suggestion.value;
+        button.addEventListener('click', () => applySuggestion(suggestion.value));
+        root.appendChild(button);
+      });
     }
 
     function handleFilterChange() {
@@ -876,6 +1109,8 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         return;
       }
 
+      closeSuggestionList();
+
       // Feedback visual imediato
       resultsEl.innerHTML = `
         <div style="padding: var(--space-8) 0; text-align: center; color: var(--color-muted);">
@@ -894,7 +1129,12 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           const supported = entry.collections || [entry.id];
           return collections.some((collection) => supported.includes(collection));
         });
-        const query = buildIndexadorQuery(term, filters, manifest.layout === 'unified');
+        const query = buildIndexadorQuery(
+          term,
+          filters,
+          manifest.layout === 'unified',
+          state.exactPhrase && manifest.config?.keyword_literals === true,
+        );
         if (!query) {
           renderEmptyState();
           return;
@@ -904,8 +1144,12 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           resultsEl.textContent = s.searchIndexUnavailable;
           return;
         }
-        const searchResults = await Promise.all(engines.map((engine) => engine.search(query)));
+        const searchResults = await Promise.all(engines.map((engine) =>
+          engine.search(query, { suggestionsFor: term })));
         if (generation !== renderGeneration) return;
+
+        const suggestions = mergeSuggestions(searchResults);
+        showSuggestionList(suggestions);
 
         const total = searchResults.reduce((sum, result) => sum + result.total, 0);
 
@@ -915,9 +1159,11 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
             <div style="padding: var(--space-8) var(--space-4); text-align: center; color: var(--color-muted);">
               <h2 style="color: var(--color-ink); font-family: var(--font-serif);">${s.searchNoResults}</h2>
               <p>${s.searchNoResultsDesc}</p>
+              <div id="search-corrections" class="search-corrections"></div>
               <button class="button secondary" style="margin-top: var(--space-4);" onclick="window.clearAllFilters()">${s.searchClearFilters}</button>
             </div>
           `;
+          renderNoResultSuggestions(suggestions);
           return;
         }
         if (generation !== renderGeneration) return;
@@ -1159,32 +1405,46 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     }
 
     searchBox.addEventListener('input', () => {
+      closeSuggestionList();
       if (renderTimer) clearTimeout(renderTimer);
       renderTimer = setTimeout(() => {
         handleTermInput();
-        updateSuggestions();
       }, 120);
     });
 
-    // Suporte a Enter
     searchBox.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' && displayedSuggestions.length) {
+        e.preventDefault();
+        selectSuggestion(activeSuggestionIndex + 1);
+        return;
+      }
+      if (e.key === 'ArrowUp' && displayedSuggestions.length) {
+        e.preventDefault();
+        selectSuggestion(activeSuggestionIndex <= 0
+          ? displayedSuggestions.length - 1
+          : activeSuggestionIndex - 1);
+        return;
+      }
+      if (e.key === 'Escape') {
+        closeSuggestionList();
+        return;
+      }
       if (e.key === 'Enter') {
+        if (activeSuggestionIndex >= 0 && displayedSuggestions[activeSuggestionIndex]) {
+          e.preventDefault();
+          applySuggestion(displayedSuggestions[activeSuggestionIndex].value);
+          return;
+        }
         if (renderTimer) clearTimeout(renderTimer);
         handleTermInput();
       }
     });
 
-    pageSizeSel.addEventListener('change', handlePageSizeChange);
+    searchBox.addEventListener('blur', () => {
+      window.setTimeout(closeSuggestionList, 0);
+    });
 
-    function updateSuggestions() {
-      const term = (searchBox.value || '').toLowerCase();
-      if (!term || keywordOptions.length === 0) {
-        datalist.innerHTML = '';
-        return;
-      }
-      const suggestions = keywordOptions.filter((k) => k.toLowerCase().includes(term)).slice(0, 15);
-      datalist.innerHTML = suggestions.map((s) => `<option value="${s}"></option>`).join('');
-    }
+    pageSizeSel.addEventListener('change', handlePageSizeChange);
 
     quickCollectionButtons.forEach((btn) => {
       btn.addEventListener('click', () => {
@@ -1201,7 +1461,6 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         state.page = 1;
         syncUrl();
         render();
-        updateSuggestions();
       });
     });
 
@@ -1209,8 +1468,6 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     render();
 
     // Carga preguiçosa dos filtros para não travar o render inicial
-    loadFilters().then(() => {
-      if (state.term) updateSuggestions();
-    });
+    loadFilters();
   </script>
 </Layout>

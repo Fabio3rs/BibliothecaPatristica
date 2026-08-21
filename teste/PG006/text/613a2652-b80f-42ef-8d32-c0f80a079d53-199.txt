@@ -1,32 +1,145 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,60">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,50">
     385 APOLOGIA I PRO CHRISTIANIS. 386
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="0,60,500,850">
-    irovmen. Eisi de autai· Xaire sfodra, thygater Sion, kerysse, thygater Ierousalem· Idou ho basileus sou erchetai soi praos, epibebeekos epi onon, kai polon uion hupozygiou.
-    36. 'Otan de tas lexeis ton propheton legomenas hos apo prosopou akouetes, me ap' auton ton empenneumenon legeesthai nomizete, all' apo tou kinountos autous theiou logou (88). Pote men gar hos proegetikos ta mellonta genesthai legei, pote d' hos apo prosopou tou Despotou panton kai Patros theou phthenggetai, pote de hos apo prosopou tou Christou, pote de hos apo prosopou laon apokrinomenon to Kyrio, e te Patri autou· hoion kai epi ton par' hymin syngraphon idein estin, ena men ten ta panta syngraphonta onta, prosopa de ta dialogoumena parapheronta (89). 'Oper me noesantes oi echontes tas biblous ton propheton Ioudaioi, ouk egnorisan, oute paragenomenon ton Christon, alla kai hemas tous legontas paragegenesthai auton, hos prokekeerykto apodeiknyntas estaurousthai hyp' auton, misousin.
-    37. 'Ina de kai touto hymin phaneron genetai, apo prosopou tou Patros (90) elechthesan dia Esaiou tou proeiremenou prophetau ode oi logoi· Egno bous ton ktesamenon, kai bous ten phatnen tou kyriou autou· Israel de me ouk egno, kai o laos mou (91) ou syneken. O uai ethnos hamartolon, laos pleres hamartias, sperma poneron! uioi anomoi, egkataleipete ton Kyrion. Kai palin allachou, hotan lege o autos prophetes homoios apo tou Patros· Poion moi oikon oikodomeseite; legei Kyrios. O ouranos moi thronos, kai he ge hypodion ton podon mou. Kai palin allachou· Tas noumenias hymon kai ta sabbata misei e psyche mou, kai megalen hembran nesteias kai argian ouk anechomai· oud' an erchesthe ophthenai moi, eisakousomai hymon. Pleires aimatos ai cheires hymon. Kan pherete semidalin, thymiama, bdelygma moi esti· stear arnon kai haima tauron ou boulomai. Tis gar exezetese tauta ek ton cheiron hymon; Alla dialyete panta syndesmon adikias, diaspa strangalias bialon synallagmaton· asteion kai gymnon oike, didorrhte peinonti ton arton sou. 'Opoia men oun esti kai ta didaskomena dia ton propheton apo tou Theou (92), noein dynasthe.
-    38. 'Otan de kai prosopou tou Christou lege to prophētikon Pneuma, outos phthenggetai· Ego exepeptosa tas cheiras mou epi laon apeithounta kai an-
+  <bloco tipo="texto_principal" script="grego" bbox="0,50,480,750">
+    ἐροῦμεν. Εἰσὶ δὲ αὗται· Χαῖρε σφόδρα, θύγατερ
+    Σιών, κήρυσσε, θύγατερ Ἱερουσαλήμ· Ἰδοὺ ὁ βα-
+    σιλεύς σου ἔρχεταί σοι πρᾶος, ἐπιβεβηκὼς ἐπὶ
+    νον, καὶ πῶλον υἱὸν ὑποζυγίου.
+    36. Ὅταν δὲ τὰς λέξεις τῶν προφητῶν λεγομένας
+    ὡς ἀπὸ προσώπου ἀκούητε, μὴ ἀπ αὐτν τῶν ἐμ-
+    πεπνευσμένων λέγεσθαι νομίσητε, ἀλλ᾿ ἀπὸ τοῦ κι-
+    νοῦντος αὐτοὺς θείου λόγου (88). Ποτὲ μὲν γὰρ ὡς
+    προαγγελτικῶς τὰ μέλλοντα γενήσεσθαι λέγει, ποτὲ
+    ὡς ἀπὸ προσώπου τοῦ Δεσπότου πάντων καὶ Πα-
+    τρὸς Θεοῦ φθέγγεται, ποτὲ δὲ ὡς ἀπὸ προσώπου τοῦ
+    Χριστοῦ, ποτὲ δὲ ὡς ἀπὸ προσώπου λαῶν ἀποκρινο-
+    μένων τῷ Κυρί, ἢ τ Πατρὶ ατοῦ· ποῖον κα ἐπὶ
+    τῶν παρ᾿ μῖν συγγραφέων ἰδεῖν ἔστιν, ἕνα μὲν τὸν
+    τὰ πάντα συγγράφοντα ὄντα, πρόσωπα δὲ τὰ διαλε-
+    γόμενα παραφέροντα (89). Ὅπερ μὴ νοήσαντες οἱ
+    ἔχοντες τὰς βίβλους τῶν προφητῶν ουδαῖοι, οὐκ ἐγνώ-
+    ρισαν οὔτε παραγενόμενον τὸν Χριστόν, ἀλλὰ καὶ
+    μᾶς τοὺς λέγοντας παραγεγενῆσθαι αὐτόν, καὶ ὡς
+    προκεκήρυκτο ἀποδεικνύντας ἐσταυρῶσθαι ὑπ᾿ αὐ-
+    τῶν, μισοῦσιν.
+    37. Ἵνα δὲ καὶ τοῦτο μῖν φανερὸν γένηται, ἀπὸ
+    προσώπου τοῦ Πατρὸς (90) ἐλέχθησαν διὰ Ἠσαΐου
+    τοῦ προειρημένου προφήτου οἵδε ο λόγοι· Ἔγνω
+    βοῦς τὸν κτησάμενον, καὶ ὄνος τὴν φάτνην τοῦ
+    κυρίου αὐτοῦ· Ἰσραὴλ δέ με οὐκ ἔγνω, καὶ ὁ λαός
+    μου (91) οὐ συνῆκεν. Οὐαὶ ἔθνος ἁμαρτωλόν, λαὸς
+    πλήρης ἁμαρτιῶν, σπέρμα πονηρόν! υἱο ἄνομοι,
+    ἐγκατελίπετε τὸν Κύριον. Καὶ πάλιν ἀλλαχοῦ, ὅταν
+    λέγῃ ὁ αὐτὸς προφήτης ὁμοίως ἀπὸ τοῦ Πατρός·
+    Ποιόν μοι οἶκον οἰκοδομήσετε; λέγει Κύριος. Ὁ
+    οὐρανός μοι θρόνος, καὶ ἡ γῆ ὑποπόδιον τῶν πο-
+    δῶν μου. Καὶ πάλιν ἀλλαχοῦ· Τὰς νουμηνίας ὑμν
+    καὶ τὰ σάββατα μισεῖ ἡ ψυχή μου, καὶ μεγάλην
+    ἡμέραν νηστείας καὶ ἀργίαν οὐκ ἀνέχομαι· οὐδ᾿
+    ἂν ἔρχησθε ὀφθῆναί μοι, εἰσακούσομαι ὑμῶν.
+    Πλήρεις αἵματος αἱ χεῖρες ὑμῶν. Κἂν φέρητε σε-
+    μίδαλιν, θυμίαμα, βδέλυγμά μοι ἐστί· στέαρ ἀρνῶν καὶ αἷμα ταύρων οὐ βούλομαι. Τίς γὰρ ἐξε-
+    ζήτησε ταῦτα ἐκ τῶν χειρῶν ὑμῶν; Ἀλλὰ διάλυε
+    πάντα σύνδεσμον ἀδικίας, διάσπα στραγγαλιὰς
+    βιαίων συναλλαγμάτων· ἄστεγον καὶ γυμνὸν
+    σκέπε, διάθρυπτε πεινῶντι τὸν ρτον σου. ποῖα
+    μὲν οὖν ἐστι καὶ τὰ διδασκόμενα διὰ τῶν προφητῶν
+    ἀπὸ το Θεοῦ (92), νοεῖν δύνασθε.
+    38. Ὅταν δὲ ἀπὸ προσώπου τοῦ Χριστοῦ λέγῃ τὸ
+    προφητικὸν Πνεῦμα, οὕτως φθέγγεται· Ἐγὼ ἐξεπέ-
+    τασα τὰς χεῖράς μου ἐπὶ λαὸν ἀπειθοῦντα καὶ ἀν-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,60,1000,850">
-    lia Sion: praedica filia Jerusalem : Ecce rex tuus venit tibi mitis, asino insidens et pullo filio subjugalis 77.
-    36. Sed cum prophetarum verba velut aliqua ex persona efferri auditis, non ab his qui afflati fuerunt, sed ab eo, quod illos movebat, verbo divino dicta existimate. Interdum enim pronuntiantis more futura exponit, interdum ut ex persona Domini omnium et Patris Dei loquitur, interdum ut ex persona Christi, interdum 66 ut ex persona popolorum Domino aut ejus Patri respondentium loquitur. Quale est quod et apud vestros scriptores cernere licet, apud quos unus quidem scribit omnia, colloquentes autem personas inducit. Quod cum non intellexissent Judaei, quorum in manibus sunt libri prophetarum, nec Christum advenienlem cognoverunt, sed et nos, qui advenisse dicimus, et ab illis, ut praedictum fuerat, crucifixum demonstramus odio prosequuntur.
-    37. Atque ut id etiam perspectum habeatis; dicta sunt ex persona Patris per eum, quem diximus, prophetam Isaiam haec verba: Cognovit bos possessorem suum et asinus praesepe domini sui : Israel autem me non cognovit, et populus me non intellexit. Vae genti peccatrici, populo pleno peccatis, semini nequam. Filii iniqui, deseruistis Dominum 78. Et rursum alibi, cum idem propheta similiter ex persona Patris dicit: Qualem mihi aedificabitis domum? dicit Dominus. Caelum sedes mea, et terra scabellum pedum meorum 79. Ac rursum alibi: Neomenias vestras, et Sabbata odit anima mea. Et diem magnum jejunii, et otium non fero; neque si veniatis ut appareatis mihi, exaudiam vos. Plenae sunt manus vestrae sanguine. Etiamsi offeratis similam, incensum, abominatio mihi est. Adipem agnorum et sanguinem hircorum nolo. Quis enim quaesivit haec de manibus vestris? 80 Sed dissolvite omnem colligaturam iniquitatis; disrumpe obligationes violentorum contractuum; vagum et nudum tege; frange esurienti panem tuum 81. Qualia ergo sint ea, quae per prophetas docentur ex persona Dei, intelligere potestis.
-    38. Quando autem ex persona Christi loquitur Spiritus propheticus, sic fatur: Expandi manus meas ad populum incredulum et contradicentem, ad
+  <bloco tipo="texto_principal" script="latino" bbox="520,50,1000,750">
+    lia Sion : prædica filia Hierusalem : Ecce rex tuus
+    venit tibi mitis, asino insidens et pullo filio subjugalis 77.
+    36. Sed cum prophetarum verba velut aliqua ex
+    persona efferri auditis, non ab his qui afflati fue-
+    runt, sed ab eo, quod illos movebat, verbo divino
+    dicta existimate. Interdum enim prænuntiantis mo-
+    re futura exponit, interdum ut ex persona Domini
+    omnium et Patris Dei loquitur, interdum ut ex per-
+    sona Christi, interdum 66 ut ex persona populo-
+    rum Domino aut ejus Patri respondentium loquitur.
+    Quale est quod et apud vestros scriptores cernere
+    licet, apud quos unus quidem scribit omnia, collo-
+    quentes autem personas inducit. Quod cum non in-
+    tellexissent Judæi, quorum in manibus sunt libri
+    prophetarum, nec Christum advenientem cognove-
+    runt, sed et nos, qui advenisse dicimus, et ab illis,
+    ut prædictum fuerat, crucifixum demonstramus
+    odio prosequuntur.
+    37. Atque ut id etiam perspectum habeatis; dicta
+    sunt ex persona Patris per eum, quem diximus,
+    prophetam Isaiam hæc verba : Cognovit bos posses-
+    sorem suum et asinus præsepe domini sui : Israel au-
+    tem me non cognovit, et populus me non intellexit.
+    Væ genti peccatrici, populo pleno peccatis, semini
+    nequam. Filii iniqui, deseruistis Dominum 78. Et rur-
+    sum alibi, cum idem propheta similiter ex persona
+    Patris dicit : Qualem mihi ædificabitis domum? di-
+    cit Dominus. Cælum sedes mea, et terra scabellum
+    pedum meorum 79. Ac rursum alibi : Neomenias ve-
+    stras, et Sabbata odit anima mea. Et diem magnum
+    jejunii, et otium non fero; neque si veniatis ut appa-
+    reatis mihi, exaudiam vos. Plenæ sunt manus vestræ
+    sanguine. Etiamsi offeratis similam, incensum, abo-
+    minatio mihi est. Adipem agnorum et sanguinem hir-
+    corum nolo. Quis enim quæsivit hæc de manibus ve-
+    stris? 80 Sed dissolve omnem colligaturam iniquitatis;
+    disrumpe obligationes violentorum contractuum; va-
+    gum et nudum tege; frange esurienti panem tuum 81.
+    Qualia ergo sint ea, quæ per prophetas docentur ex
+    persona Dei, intelligere potestis.
+    38. Quando autem ex persona Christi loquitur
+    Spiritus propheticus, sic fatur : Expandi manus
+    meas ad populum incredulum et contradicentem, ad
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="0,850,1000,1000">
-    77 Zach. IX, 9.   78 Isa. I, 3.   79 Isa. LXVI, 1.   80 Isa. I, 14.   81 Isa. XVIII, 6.
-    (88) Kinountes autous theiou logou. Divinum verbum prophetas movere dicitur, quia quidquid verborum proferebant, id eis inspirabatur. Dicuntur n. 13 nulla alia re efferri quam verbo divino. Es loquebantur quae ipsis inspirabantur, inquit Athenagoras Legat. n. 8, &amp; enegrounto exepnysan.
-    (89) Parapheronta. Non male legeretur diapheronta, personae colloquentes diversae. Atque ita videtur legisse Langus. Sed tamen nihil mutandum duxi, quia verbum parapherein nonnunquam apud Justinum idem valet ac inducere. Vide Dialog., n. 69.
-    Illud ergo parapheronta refertur ad ton syggraphonta.
-    (90) Tou Patros. Miror unde in mentem venerit Lange et Sylburgio nomen Filii hic Patris nomini substituere. Utrumne merito reprehendit Grabeius.
-    (91) Laos mou. Legendum esse laos me monet Grabius, atque ita legi infra n. 59.
-    (92) Apo tou Theou. Non dicit hpo tou Theou, sed ita accipienda haec verba quasi scriptum esset apo prosopou tou Theou, Patris videlicet. Ita haec verba intellexit Thirlbius. Vide infra n 44.
+  <nota_marginal script="latino" bbox="460,60,480,80">
+    A
+  </nota_marginal>
+  <nota_marginal script="latino" bbox="490,300,510,320">
+    B
+  </nota_marginal>
+  <nota_marginal script="latino" bbox="490,500,510,520">
+    C
+  </nota_marginal>
+  <nota_marginal script="latino" bbox="490,700,510,720">
+    D
+  </nota_marginal>
+  <bloco tipo="aparato_critico" script="misto" bbox="0,750,1000,950">
+    77 Zach. IX, 9. 78 Isa. I, 3. 79 Isa. LXVI, 1. 80 Isa. I, 14. 81 Isa. XVIII, 6.
+    (88) Κινοῦντος αὐτοὺς θείου λόγου. Divinum
+    verbum prophetas movere dicitur, quia quidquid
+    verborum proferebant, id eis inspirabatur. Dicun-
+    tur n. 13 nulla alia re efferri quam verbo divino.
+    Ea loquebantur quæ ipsis inspirabantur, inquit
+    Athenagoras Legat. n. 8, ἃ ἐνηργοῦντο ἐξεφώνησαν.
+    (89) Παραφέροντα. Non male legeretur διαφέ-
+    ροντα, personæ colloquentes diversæ. Atque ita vide-
+    tur legisse Langus. Sed tamen nihil mutandum
+    duxi, quia verbum παραφέρειν nonnunquam apud
+    Justinum idem valet ac inducere. Vide Dialog., n. 69.
+    Illud ergo παραφέροντα refertur ad τὸν συγγρά-
+    φοντα.
+    (90) Τοῦ Πατρός. Miror unde in mentem venerit
+    Lango et Sylburgio nomen Filii hic Patris nomini
+    substituere. Utrumque merito reprehendit Grabius.
+    (91) Λαός μου. Legendum esse λαός με monet
+    Grabius, atque ita legi infra n. 59.
+    (92) Ἀπὸ τοῦ Θεοῦ. Non dicit ὑπὸ τοῦ Θεοῦ, sed
+    ita accipienda hæc verba quasi scriptum esset ἀπὸ
+    προσώπου τοῦ Θεοῦ, Patris videlicet. Ita hæc verba
+    intellexit Thirlbius. Vide infra n 44.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="650,960,900,990">
+    Digitized by Google
   </bloco>
   <notas>
     Texto em duas colunas: esquerda em grego, direita em latim.
-    Rodapé contém notas de rodapé numeradas (77-81) e notas entre parênteses (88-92).
-    A palavra "exepnysan" na nota (88) parece ser uma forma impressa antiga ou erro por "exepneusan".
-    O número "66" no parágrafo 36 (coluna direita) está em negrito.
+    Letras marginais A, B, C, D indicam colunas da edição original.
+    Número 66 em negrito no parágrafo 36 (coluna direita).
+    Notas de rodapé misturam grego e latim.
   </notas>
 </pagina>

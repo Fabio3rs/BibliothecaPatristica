@@ -1,21 +1,22 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,50,900,80">
-    219 HEXAPLORUM QUÆ SUPERSUNT. 220
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="120,40,890,84">
+    219        HEXAPLORUM QUÆ SUPERSUNT.        220
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="400,90,600,110">
+  <bloco tipo="texto_principal" script="latino" bbox="420,96,585,140">
     CAPUT XV GENESIS.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="100,110,300,250">
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="130,165,385,420">
     TO EBPAIKON.
-    בן־משק 2
-    אליעזר דמשק
-    תור. עוף. דמשקנו. 9
-    וישב 11
-    אותם
-    ויפל תרדמה 12
-    בשיבה טובה 13
+    הלך ערירי 2.
+    ובן משק ביתי
+    דמשק אליעזר 9.
+    וישב אותם 11.
+    ויפל תרדמה 12.
+    בשיבה טובה 15.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="350,110,550,250">
+
+  <bloco tipo="texto_principal" script="grego" bbox="430,165,620,285">
     TO EBPAIKON
     Ἑλληνικοῖς γράμμασι.
     2.
@@ -24,27 +25,31 @@
     12.
     15.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="600,110,900,250">
+
+  <bloco tipo="texto_principal" script="grego" bbox="705,165,930,420">
     ΑΚΥΛΑΣ.
     2. Ἀπέρχομαι ἄγονος.
     Υἱὸς τοῦ ποτίζοντος οἰκίαν μου.
     9. Περιστεράν.
-    11. Ἀπεώθησεν αὐτούς.
+    11. Ἀπεσόδησεν αὐτούς.
     12. Καταφορὰ ἐπέπεσε.
-    15. Ταφεὶς ἐν πολιᾷ ἀγαθῇ
+    15. Ταφεὶς ἐν πολιᾷ ἀγαθῇ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,260,300,450">
+
+  <bloco tipo="texto_principal" script="latino" bbox="135,425,400,705">
     VERSIO HEBRAICI TEXT.
     2. Vado absque liberis.
     Filius procurator domus meæ.
-    Damasec. Heb. ini., Damascenus.
+    Damesec. Heb. int., Damasce-
+    nus.
     9. Et pipionem.
     11. Super cadavera.
     Exsufflavit eas.
     12. Et sopor cecidit.
-    13. Sepelieris in canitie bona.
+    15. Sepelieris in canitie bona.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,260,550,450">
+
+  <bloco tipo="texto_principal" script="latino" bbox="430,425,645,705">
     VULGATA LATINA.
     2. Vadam absque liberis.
     Et filius procuratoris domus
@@ -56,7 +61,8 @@
     12. Sopor irruit.
     15. Sepultus in senectute bona.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="600,260,900,450">
+
+  <bloco tipo="texto_principal" script="latino" bbox="705,425,930,705">
     AQUILA.
     2. Vado absque liberis:
     Filius potantis domum meam.
@@ -66,24 +72,27 @@
     12. Somnus cecidit.
     15. Sepultus in canitie bona.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="300,460,700,480">
+
+  <bloco tipo="texto_principal" script="latino" bbox="360,705,760,742">
     Notæ et variæ lectiones ad cap. XV Genesis.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="100,490,500,650">
-    V. 2. Ἀ., ἀπέρχομαι ἄγονος. Σ., πορεύομαι. Et
+
+  <bloco tipo="nota" script="misto" bbox="125,742,500,970">
+    V. 2. 'A., ἀπέρχομαι ἄγονος. Σ., πορεύομαι. Et
     iterum Σ., ὁ δὲ συγγενής, etc. Ita Coislin. cod.
-    Ibid. Ἀ., υός, etc. Hanc lectionem sic efferunt
+    Ibid. 'A., υἱός, etc. Hanc lectionem sic efferunt
     tum editio Romana, tum mss. Catenæ autem mss.
     et schedæ Combefis. in hunc locum ita habent,
     καὶ υἱὸς ποτίζων τὸν οἶκόν μου, οὗτος Δαμασκὸς
-    Ἐλιέζερ. Ὁ δὲ συγγενής του οἴκου μου ἐστὶν οὗτος ὁ
-    Δαμασκὸς λιέζερ. Postremam lectionem, ὁ δὲ συγ-
+    Ἐλιέζερ. Ὁ δὲ συγγενής τοῦ οἴκου μου ἐστὶν οὗτος ὁ
+    Δαμασκὸς Ἐλιέζερ. Postremam lectionem, ὁ δὲ συγ-
     γενής, etc., Symmacho tribuit cod. Coislin., eam
     vero alii codices sine interpretis nomine afferunt.
-    Gelasius hoc modo legerat, οὕτω τινὲς ἑρμηνεύκασι·
+    Gelasius hoc modo legerat, οὕτω τινὲς ἡρμηνεύκασι·
     Υἱὸς Μασεκ τῆς οἰκογενοῦς μου, οὗτος Δαμασκὸς
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="510,490,900,650">
+
+  <bloco tipo="nota" script="misto" bbox="505,742,935,985">
     Ἐλιέζερ. Id est : Sic quidam interpretati sunt : Fi-
     lius Masec in domo mea natus, hic Damascus Eliezer.
     Ubi Masec nomen mulieris esse dicitur, in domo
@@ -92,24 +101,27 @@
     interpretationem afferre in Catenis mss. Alterutra
     autem ex his interpretationibus videtur Symmachi
     esse. Sed postrema sincerior videtur. Hieronymus
-    Quæst. in Genes. totum locum sic explicat : Quod
+    Quest. in Genes. totum locum sic explicat : Quod
     autem dicit hoc est, Ego sine liberis moriar, et filius
     procuratoris mei vel villici, qui universa dispensat
     et distribuit cibaria familiæ meæ, vocaturque Dama-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="400,660,600,680">
+
+  <bloco tipo="texto_principal" script="latino" bbox="420,960,585,1000">
     CAPUT XVI GENESIS.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="100,690,300,850">
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="130,995,385,1000">
     TO EBPAIKON.
-    וירא 2
-    לא אבנה
-    ותברח 6
-    שור 7
-    ויקרא 11
-    אדם פרא 12
+    עצר 2.
+    אולי אבנה
+    ברח 6.
+    שור 7.
+    ישמעאל 11.
+    פרא אדם 12.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="350,690,550,850">
+
+  <bloco tipo="texto_principal" script="grego" bbox="430,995,620,1000">
     TO EBPAIKON
     Ἑλληνικοῖς γράμμασι.
     2.
@@ -118,16 +130,18 @@
     11.
     12.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="600,690,900,850">
+
+  <bloco tipo="texto_principal" script="grego" bbox="705,995,930,1000">
     ΑΚΥΛΑΣ.
-    2. Ἐπίχε.
-    Ἴσως οἰκοδομηθήσομαι.
-    6. Μετὰ φυγῆς ἀπανεχώρησεν.
+    2. Ἐπείχε.
+    Εἴπως οἰκοδομηθήσομαι.
+    6. Μετὰ φυγῆς ὑπανεχώρησεν.
     7.
     11.
     12. Ἄγριος.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,860,300,950">
+
+  <bloco tipo="texto_principal" script="latino" bbox="130,995,395,1000">
     VERSIO HEBRAICI TEXT.
     2. Conclusit me.
     Si forte ædificabor.
@@ -136,7 +150,8 @@
     11. Ismael.
     12. Ferus homo.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,860,550,950">
+
+  <bloco tipo="texto_principal" script="latino" bbox="430,995,650,1000">
     VULGATA LATINA.
     2. Conclusit me.
     Si forte saltem ex illa suscipiam
@@ -144,9 +159,10 @@
     6. Fugam iniit.
     7. Sur.
     11. Ismael.
-    12. Ferus homo
+    12. Ferus homo.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="600,860,900,950">
+
+  <bloco tipo="texto_principal" script="latino" bbox="705,995,930,1000">
     AQUILA.
     2. Cohibuit.
     Si forte ædificabor.
@@ -155,14 +171,10 @@
     11.
     12. Agrestis.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="450,970,650,990">
+
+  <bloco tipo="rodape" script="latino" bbox="585,985,760,1000">
     Digitized by Google
   </bloco>
-  <notas>
-    Transcrição de página da Patrologia Graeca (Hexaplorum quæ supersunt).
-    Texto em colunas com Hebraico, Grego (transliteração e tradução de Aquila) e Latim (Versio Hebraici, Vulgata, Aquila Latin).
-    Notas críticas no centro da página.
-    Alguns números de versículos podem variar entre colunas (ex: 13 vs 15 em Gen 15).
-    Script "misto" usado para blocos com Hebraico e Latino/Grego juntos.
-  </notas>
+
+  <notas>A parte inferior da imagem mostra o início do cap. XVI; a transcrição segue a ordem visual esquerda→direita. Onde o corte da imagem impede certeza absoluta, mantive a leitura mais provável sem normalização.</notas>
 </pagina>

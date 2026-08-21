@@ -1,10 +1,11 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,30,1000,80">
+  <bloco tipo="cabecalho" script="latino" bbox="20,25,980,90">
     1197
     LIBER SEXTUS.
     1198
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="15,80,485,380">
+
+  <bloco tipo="texto_principal" script="latino" bbox="15,95,495,365">
     credulitatis vacuæ circumscriptione traducitis ? O
     utinam liceret in simulacri alicujus medias introire
     pendigines ! immo utinam liceret, Olympiacos illos et
@@ -19,9 +20,14 @@
     commissurarumque juncturas plumbum ire suffusum,
     et salutares moras signorum diuturnitatibus commo-
     dare. Videretis, inquam, jamdudum solas sine occi-
-    pitiis facies, manus sine brachiis semiplenas, ventres
+    pitiiis facies, manus sine brachiis semiplenas, ventres
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="515,80,985,380">
+
+  <nota_marginal script="latino" bbox="475,98,500,125">
+    A
+  </nota_marginal>
+
+  <bloco tipo="texto_principal" script="latino" bbox="515,95,985,365">
     cum lateribus dimidiatos, plantarum imperfecta
     vestigia, et quod maxime risum ferat, parte ligneos
     ex una, at ex altera saxeos inæquabili corporum con-
@@ -38,21 +44,22 @@
     et rubigine convulnerentur exesa ? Ita, inquam, non
     videtis sub istorum simulacrorum cavis stelliones,
   </bloco>
-  <nota_marginal script="latino" bbox="486,88,505,118">
-    A
-  </nota_marginal>
-  <nota_marginal script="latino" bbox="468,352,488,382">
+
+  <nota_marginal script="latino" bbox="475,340,500,370">
     B
   </nota_marginal>
-  <bloco tipo="aparato_critico" script="latino" bbox="0,400,1000,465">
+
+  <bloco tipo="aparato_critico" script="latino" bbox="20,385,980,470">
     LECTIONES VARIANTES.
-    a Injuria Fulv.
+    * Injuria Fulv.
     b Casis Fulv.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="0,465,1000,500">
+
+  <bloco tipo="cabecalho" script="latino" bbox="360,470,640,520">
     COMMENTARIUS.
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="0,500,490,900">
+
+  <bloco tipo="nota" script="misto" bbox="5,525,490,930">
     Sic Origenes contra Celsum, lib. III : πάντες γὰρ καθ'
     ἡμᾶς μεθύουσιν οἱ τοῖς ἀψύχοις ὡς θεοῖς προσλαλοῦντες·
     καὶ τί λέγω μεθύουσιν ; μᾶλλον γὰρ μεμήνασιν, εἰς τοὺς
@@ -106,15 +113,17 @@
     verum etiam pedes quandoque ipsos et plantas, ut
     ait Arnobius, et vestigia comprehenderent, et sæpe
   </bloco>
-  <nota_marginal script="latino" bbox="470,625,490,655">
+
+  <nota_marginal script="latino" bbox="472,635,492,665">
     C
   </nota_marginal>
-  <bloco tipo="texto_principal" script="misto" bbox="510,500,990,940">
+
+  <bloco tipo="nota" script="misto" bbox="510,525,990,940">
     osculabantur. Unde Prudentius contra Judæos :
     Augustum caput ante pedes curvare Minervæ,
     Fictilis et soleas Junonis lambere, plantis
     Herculis advolvi, genua incurvare Dianæ.
-    Nota Soleas Junonis lambere. Apuleius, Milesia VI :
+    Nota Soleas Junonis lambere. Apuleius, Milesia vi :
     Tunc Psyche pedes ejus advoluta et ubere fletu rigans
     deæ vestigia, humumque verrens crinibus suis ; et Miles.
     XI : Exin gaudio delibuti populares, thallos, verbenas,
@@ -122,7 +131,7 @@
     bus hærebant argento formata, ad suos discedunt lares.
     Hoc Græci dicunt τοῖς ἵχνεσι τοῦ ἀγάλματος προσφῦναι.
     Heliodorus, lib. V Æthiop. Hist. : Εἰς τὸ αὐτὸν πα-
-    ρελθών, καταλαμβάνει τοῖς ἵχνεσι τοῦ ἀγάλματος. προσ-
+    ρελθών, καταλαμβάνει τοῖς ἵχνεσι τοῦ ἀγάλματος προσ-
     πεφυκυῖαν. Et lib. VII : Τοῖς δὲ ἵχνεσι προσφὺς τοῦ
     ἀγάλματος, ὥρων τε ἐπιπλεῖστον οὕτως χων, ὀλίγον μὲν
     καὶ ἐκθανεῖν ἐδέησεν. Sic aliquando in supplicatione
@@ -161,13 +170,16 @@
     neæ intelligunt, nonne laudem magis quam pœnam
     merebatur repudium agniti erroris. ORELL.
   </bloco>
-  <nota_marginal script="latino" bbox="472,805,492,835">
+
+  <nota_marginal script="latino" bbox="472,815,492,845">
     D
   </nota_marginal>
-  <bloco tipo="rodape" script="latino" bbox="660,930,1000,990">
+
+  <bloco tipo="rodape" script="latino" bbox="700,950,985,990">
     Digitized by Google
   </bloco>
+
   <notas>
-    Layout transcribed in reading order: left column before right column in the main text and commentary. Marginal letters A, B, C, D are isolated in nota_marginal blocks. Greek passages in the commentary are preserved in script="misto" blocks.
+    Transcrição em ordem de leitura: coluna esquerda e depois coluna direita em cada faixa da página. As letras marginais A, B, C e D foram separadas em blocos próprios de nota_marginal.
   </notas>
 </pagina>

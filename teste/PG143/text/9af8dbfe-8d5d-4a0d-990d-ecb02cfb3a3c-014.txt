@@ -1,207 +1,133 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,20,150,50">13</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="400,20,600,50">CÆSARES.</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="850,20,900,50">14</bloco>
-
-  <!-- Greek Column Top -->
-  <bloco tipo="texto_principal" script="grego" bbox="150,60,450,120">
-    Μαρτυρίου στέφανον εὗρεν ἐκ λίθων·
-    Σοφοί τε γνωρίζοντο δύο προκρίτων
-    Ἰώσηπός τε καὶ Φίλων ἐξ Ἑβραίων.
-  </bloco>
-
-  <!-- Greek Section Claudius -->
-  <bloco tipo="texto_principal" script="grego" bbox="200,125,400,145">ΚΛΑΥΔΙΟΣ ΕΤ. ΙΔ'.</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="120,150,140,170">10</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="150,150,450,210">
-    Τούτου καταστρέψαντος ἄθλιος βίον,
-    Ἑρμο φίλος Κλαύδιος ἦν  φύσις,
-    σον τε φίλαις, ὑπερόπτης χρημάτων,
-    Τὰς ἡνίας εἴαγεν αὐτουργίαις.
-    Τούτου κρατοῦντος, Θευδᾶς καὶ Σίμων μάγοι;
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="120,215,140,235">15</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="150,215,450,270">
-    Πολλοὺς ἐλυμαίνοντο κακοτεχνίαις·
-    Πρῶτος δ' ἐπιβέβηκε τῆς ώμης Πέτρος
-    Σωτήριον κήρυγμα κυρύσσων ὅλοις.
-  </bloco>
-
-  <!-- Greek Section Nero -->
-  <bloco tipo="texto_principal" script="grego" bbox="200,275,400,295">ΝΕΡΩΝ ΕΤ. ΙΔ'.</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="150,300,450,340">
-    Μεθ' ὃν παρῆλθεν εἰς βασιλείον κράτος
-    Νέρων ἀσελγής, ἔμμορφος τῷ Γάνῳ,
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="120,345,140,365">20</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="150,345,450,400">
-    Θηλυδρίας ὢν καὶ θῆλυς; σαπρίας·
-    Πρῶτος διώκτης, εὐσεβῶν καθαιρέτης,
-    Χριστοῦ τε μυστῶν προκρίτων ἀναιρέτης.
-    Εἶτα Γάλβας, Ὄθων, σὺν Οὐϊτελλίῳ
-    Ἐπὶ βράχιστον τοῦ κράτους γεγενημένοι.
-  </bloco>
-
-  <!-- Greek Section Vespasian -->
-  <bloco tipo="texto_principal" script="grego" bbox="180,405,420,425">ΟΥΕΣΠΑΣΙΑΝΟΣ ΕΤ. Ρ'.</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="120,430,140,450">25</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="150,430,450,480">
-    Μεθ' οὓς κατηγάδιαε τὴν κραταρχίαν
-    Οὐεσπασιανὸς κλέος βασιλέων,
-    Ἀρχὴν δράσας εὖ καὶ πλατύνας εἰς μέγα·
-    Ἐχθρῶν νικητής, φίλτιμος τὴν χέρα,
-    Ἀνήρ τις εὐπρόσιτος, ἥδυ; τοῖς φίλοις
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="120,485,140,505">30</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="150,485,450,510">
-    Ἰσηκόως δ' ἅπασι καὶ περιτιμένος.
-  </bloco>
-
-  <!-- Greek Section Titus -->
-  <bloco tipo="texto_principal" script="grego" bbox="200,515,400,535">ΤΙΤΟΣ ΕΤ. Γ'.</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="150,540,450,590">
-    Μεθ' ὃν Τίτος; παῖς παραλαμβάνει κράτος;
-    Θάλασσα καλῶν, φιλανθρωπίας χύσις,
-    Εὐεργετικός, συμπαθής τις καρδία,
-    Χρηστὸς τρόποις ὡς ὠραΐζεται κράτων·
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="120,595,140,615">35</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="150,595,450,640">
-    Ἅπαξ ἀρίστευσε καὶ στρατηγὸς γεννάδας,
-    Ἰουδαϊκοῦ τοῦ θράσους καθαιρέτης·
-    Οὐ πᾶσιν ἀοίδιμον ἠξεῖαι τόδε,
-    « Τὸ σήμερον δὲ μὴ βεβασιλευκέναι,
-    Κἂν τινὰ μὴ δράσαντα ταῖς εὐποιαις; »
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="120,645,140,665">40</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="150,645,450,690">
-    Καί, « Δεῖ τινὰ πρόσωπον ἄνακτος; πάλιν
-    Ἰδόντα, μηδὲν στυγνὸν ἀνθυποστρέφειν. »
-  </bloco>
-
-  <!-- Greek Section Domitian -->
-  <bloco tipo="texto_principal" script="grego" bbox="180,695,420,715">ΔΟΜΕΤΙΑΝΟΣ ΕΤ. ΙΕ'.</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="150,720,450,760">
-    Τούτου τὸ βίον ἐκμετρήσαντος μόρῳ,
-    Δομετιανὸς ἡ βδελυρὰ καρδία,
-    Φύσιν Τίτου δύναμις, οὐ τρόποις ὅλως,
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="120,765,140,785">45</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="150,765,450,810">
-    Ἄναξιος εἴληφε τὴν αὐταρχίαν·
-    Χριστοῦ κολαστὴς οκετῶν καὶ μαρτύρων,
-    Ἐφ' οὗ φιλητὸν τὴν ἁγνόρον χάριν
-    Νήσος τις ἐξόριστον ἔσχεν  Πάτμος·
-    Ἤγεει δ' Ἀπολλώνιος τερθεῖαι; τότε
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="120,815,140,835">50</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="150,815,450,860">
-    Πυθαγορικὸς Τιανεὺς σοφός; γόης,
-    Ὃς καίπερ ὢν ἀρρώδιαν ἀναρουμένου
-    Δῆλοι παροῦσι τοῦ τυράννου τὸν μόρον.
-  </bloco>
-
-  <!-- Greek Section Nerva -->
-  <bloco tipo="texto_principal" script="grego" bbox="200,865,400,885">ΝΕΡΟΥΑΣ ΕΤ. Α'.</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="150,890,450,930">
-    Τούτου καταστρέψαντος αἰσχρῶς τὸν βίον,
-    Κλῆρον Νερουᾶς, εὐγενὲς ψυχὴν θέμας,
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="120,935,140,955">55</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="150,935,450,980">
-    Τὰ Ῥωμαϊκὰ σκῆπτρα παραλαμβάνει·
-    Ταμεῖον ὄντας ἀρετῶν Χριστοῦ δίχας,
-    Καλοῦ δὲ παντὸς αὐτοκράτορι τύπος·
-  </bloco>
-
-  <!-- Latin Column Top -->
-  <bloco tipo="nota_marginal" script="latino" bbox="480,60,500,80">A</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="550,60,850,120">
-    adeptus est coronam de lapidibus.
-    Item sapientes prævidebant dum,
-    Josephus atque Philo, uterque Hebræus.
-  </bloco>
-
-  <!-- Latin Section Claudius -->
-  <bloco tipo="texto_principal" script="latino" bbox="600,125,800,145">CLAUDIUS AN. XIV.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="550,150,850,270">
-    Postquam Caius misere abrupit vitam,
-    litteris Claudius et clementiæ præditus,
-    justique tenax, et pecuniæ contemptor,
-    Romani imperii habenas tractandas cepit.
-    Eo regnante Theudas et Simon magi
-    malis permultos artibus decipiebant.
-    Primus autem Romam accessit Petrus,
-    salubre cunctis nuntians Evangelium.
-  </bloco>
-
-  <!-- Latin Section Nero -->
-  <bloco tipo="nota_marginal" script="latino" bbox="480,280,500,300">B</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="600,275,800,295">NERO AN. XIV.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="550,300,850,390">
-    Post hunc pervenit ad potentiam regiam
-    Nero, luxuriæ incontinens et Calo par,
-    pathicus vir et sacculus putredinis;
-    primus piorum persecutor mortifer,
-    præcipuorum Christi asseclarum carnifex.
-    Deinceps Galba, Otho, Vitelliusque
-    degustaverunt sceptrum quam brevissime.
-  </bloco>
-
-  <!-- Latin Section Vespasian -->
-  <bloco tipo="texto_principal" script="latino" bbox="580,395,820,415">VESPASIANUS AN. X.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="550,420,850,500">
-    Post hos ornavit Cæsaream dignitatem
-    Vespasianus regnatorum decus,
-    sospitator imperii propagatorque,
-    hostium victor, et manu munificus,
-    accessu facilis, jucundusque amicis,
-    subditis cunctis admodum dilectus.
-  </bloco>
-
-  <!-- Latin Section Titus -->
-  <bloco tipo="nota_marginal" script="latino" bbox="480,520,500,540">C</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="600,515,800,535">TITUS AN. III.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="550,540,850,620">
-    Successit in imperium Titus filius
-    bonitatis mare, effusa liberalitas,
-    beneficus, clementi instructus animo,
-    bonisque moribus qui regnantem docent,
-    princeps egregius, imperator strenuus,
-    Judaicæ ferociæ debellator.
-    Hujus ab omnibus celebratur dictum :
-    « Equidem hodie miniæe regnavi,
-    quoniam beneficio affeci neminem. »
-    Itemque : « Qui ad conspectum regis venit,
-    eum non oportet tristem inde abscedere. »
-  </bloco>
-
-  <!-- Latin Section Domitian -->
-  <bloco tipo="texto_principal" script="latino" bbox="580,640,820,660">DOMITIANUS AN. XV.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="550,665,850,710">
-    Ubi cum vita mortem mutavit Titus,
-    Domitianus animum sceleratum gerens,
-    Titi natura frater, sed aliis moribus,
-    Christi servorum martyrumque carnifex,
-    imperio contra meritum est potitus.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,715,500,735">D</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="550,715,850,850">
-    Sub eo dilectus propheticus discipulus
-    in quadam exsulavit Patmo insula.
-    Tunc se jactavit præstigiis Apollonius
-    Tyaneus, Pythagoricus, impostor callidus;
-    qui procul licet degens nuntiavit tamen
-    tyranni cædem iis qui sibi aderant
-  </bloco>
-
-  <!-- Latin Section Nerva -->
-  <bloco tipo="texto_principal" script="latino" bbox="600,855,800,875">NERVA AN. I.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="550,880,850,980">
-    Postquam Domitianus fœde interiit,
-    Nerva animo et corpore præclaro lucens
-    Romanæ rei suscepit moderamen.
-    Hic plane egregius (nisi quod Christo caruit)
-    bonorumque principum typus fuit.
-  </bloco>
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="112,64,134,84">13</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="474,67,560,84">CÆSARES.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="896,70,918,88">14</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="163,87,461,128">Μαρτυρίου στέφανον εὗρεν ἐκ λίθων·
+Σοφοί τε γνωρίζοντο δύο προκρίτων
+Ἰώσηφός τε καὶ Φίλων ἐξ Ἑβραίων.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="231,135,397,153">ΚΛΑΥΔΙΟΣ ΕΤ. ΙΔ'.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="132,148,151,163">10</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="161,148,464,223">Τούτου καταστρέψαντος ἀθλίως βίον,
+Ἑρμοῦ φίλος Κλαύδιος ἠπία φύσις,
+Ἴσου τε φύλαξ, ὑπερόπτης χρημάτων,
+Τὰς ἡνίας εἴληφεν αὐτοναρχίας.
+Τούτου κρατοῦντος, Θευδᾶς καὶ Σίμων μάγοι</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="132,222,151,238">15</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="163,221,461,270">Πολλοὺς ἐλυμαίνοντο κακοτεχνίαις·
+Πρῶτος δ᾽ ἐπεδήμησε τῆς Ῥώμης Πέτρος
+Σωτήριον κήρυγμα κυρύσσων ὅλοις.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="237,273,403,292">ΝΕΡΩΝ ΕΤ. ΙΔ'.</bloco>
+  <bloco tipo="textoprincipal" script="grego" bbox="162,294,466,325">Μεθ᾽ ὃν παρῆλθεν εἰς βασίλειον κράτος,
+Νέρων ἀσελγὴς ἐμφερὴς τῷ Γαΐῳ,</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="130,317,150,334">20</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="161,317,466,390">θηλυδρίας ὢν καὶ θήλακος σαπρίας·
+Πρῶτος διώκτης, εὐσεβῶν καθαιρέτης,
+Χριστοῦ τε μυστῶν προκρίτων ἀναιρέτης.
+Εἶτα Γάλβας, Ὄθων, σὺν Οὐϊτελλίῳ
+Ἐπὶ βράχιστον τοῦ κράτους γεγενημένοι.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="207,399,410,417">ΟΥΕΣΠΑΣΙΑΝΟΣ ΕΤ. Κ'.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="130,418,150,435">25</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="161,418,466,496">Μεθ᾽ οὓς κατηγλάϊσε τὴν κραταρχίαν
+Οὐεσπασιανὸς κλέος βασιλέων,
+Ἀρχὴν δράσας εὖ καὶ πλατύνας εἰς μέγα·
+Ἐχθρῶν νικητής, φιλότιμος τὴν χέρα,
+Ἀνήρ τις εὐπρόσιτος, ἡδὺς τοῖς φίλοις
+Ὑπηκόοις δ᾽ ἅπασι καὶ πεφιλημένος.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="233,509,396,526">ΤΙΤΟΣ ΕΤ. Γ'.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="161,526,467,615">Μεθ᾽ ὃν Τίτος παῖς παραλαμβάνει κράτος·
+Θάλασσα καλῶν, φιλανθρωπίας χύσις,
+Εὐεργετικός, συμπαθής τις καρδία,
+Χρηστὸς τρόποις οἷς ὡραΐζεται κράτων·
+Ἄναξ ἀριστεὺς καὶ στρατηγὸς γεννάδας,
+Ἰουδαϊκοῦ τοῦ θράσους καθαιρέτης·
+Οὗ πᾶσιν ἀοίδιμον δέδοται τόδε,
+«Τὸ σήμερον δὲ μὴ βεβασιλευκέναι,
+Εἴ τινα μὴ δράσαντα ταῖς εὐποιίαις·»</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="131,592,151,608">35</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="161,613,467,677">Καί, «Δεῖ τινα πρόσωπον ἄνακτος πάλιν
+δόντα, μηδὲν στυγνὸν ἀνθυποστρέφειν.»</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="130,668,151,684">40</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="202,699,423,718">ΔΟΜΕΤΙΑΝΟΣ ΕΤ. ΙΕ'.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="159,715,465,782">Τούτου τὸ βιοῦν ἐκμετρήσαντος μόρῳ,
+Δομετιανὸς ἡ βδελυρὰ καρδία,
+Φύσιν Τίτου σύνειμος, οὐ τρόπους ὅλως,
+Ἀναξίως εἴληφε τὴν αὐταρχίαν·
+Χριστοῦ κολαστὴς οἰκετῶν καὶ μαρτύρων,
+Ἐφ᾽ οὗ φιλητὸν τὴν θεηγόρον χάριν
+Νῆσός τις ἐξόριστον ἔσχεν ἡ Πάτμος·</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="130,770,151,786">45</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="161,781,465,873">Ἤγειρε δ᾽ Ἀπολλώνιος τερθρείαις τόες
+Πυθαγορικὸς Τυανεὺς σοφὸς γόης,
+Ὃς καίπερ ὢν πόρρωθεν ἀναιρουμένου
+Δηλοῖ παροῦσι τοῦ τυράννου τὸν μόρον.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="130,853,151,870">50</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="210,886,415,903">ΝΕΡΟΥΑΣ ΕΤ. Α'.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="161,901,466,976">Τούτου καταστρέψαντος αἰσχρῶς τὸν βίον,
+Κλῆσιν Νερούας, εὐγενὴς ψυχὴν θέματος,
+Τὰ Ῥωμαϊκὰ σκῆπτρα παραλαμβάνει·
+Ταμεῖον ὄντως ἀρετῶν Χριστοῦ δίχας,
+Καλοῦ δὲ παντὸς αὐτοκράτορι τύπος·</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="130,959,151,976">55</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="503,91,520,111">A</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="523,88,865,132">adeptus est coronam de lapidibus.
+Item sapientes prædicebant duo,
+Josephus atque Philo, uterque Hebræus.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="638,137,806,154">CLAUDIUS AN. XIV.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="521,154,864,276">Postquam Caius misere abrupit vitam,
+litteris Claudius et clementia præditus,
+justique tenax, et pecuniæ contemptor,
+Romani imperii habenas tractandas cepit.
+Eo regnante Theudas et Simon magi
+malis permultos artibus decipiebant.
+Primus autem Romam accessit Petrus,
+salubre cunctis nuntians Evangelium.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="503,282,520,300">B</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="651,278,814,294">NERO AN. XIV.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,296,865,391">Post hunc pervenit ad potentiam regiam
+Nero, luxuriæ incontinentis et Caio par,
+pathicus vir et sacculus putredinis;
+primus piorum persecutor mortifer,
+præcipuorum Christi asseclarum carnifex.
+Deinceps Galba, Otho, Vitelliusque
+degustaverunt sceptrum quam brevissime.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="643,402,816,419">VESPASIANUS AN. X.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,418,862,500">Post hos ornavit Cæsaream dignitatem
+Vespasianus regnatorum decus,
+sospitator imperii propagatorque,
+hostium victor, et manu munificus,
+accessu facilis, jucundusque amicis,
+subditis cunctis admodum dilectus.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="503,522,520,540">C</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="643,521,814,538">TITUS AN. III.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,538,862,651">Successit in imperium Titus filius
+bonitatis mare, effusa liberalitas,
+beneficus, clementi instructus animo,
+bonisque moribus qui regnantem decent,
+princeps egregius, imperator strenuus,
+Judaicæ ferociæ debellator.
+Hujus ab omnibus celebratur dictum:
+«Equidem hodie minime regnavi,
+quoniam beneficio affeci neminem.»
+Itemque: «Qui ad conspectum regis venerit,
+eum non oportet tristem inde abscedere.»</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="631,665,821,682">DOMITIANUS AN. XV.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,682,864,750">Ubi cum vita mortem mutavit Titus,
+Domitianus animum scelestum gerens,
+Titi natura frater, sed aliis moribus,
+Christi servorum martyrumque carnifex,
+imperio contra meritum est potitus.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="503,746,520,764">D</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,750,865,875">Sub eo dilectus propheticus discipulus
+in quadam exsulavit Patmo insula.
+Tunc se jactavit præstigiis Apollonius
+Tyaneus, Pythagoricus, impostor callidus;
+qui procul licet degens nuntiavit tamen
+tyranni cædem iis qui sibi aderant.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="641,879,807,896">NERVA AN. I.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,894,864,976">Postquam Domitianus fœde interiit,
+Nerva animo et corpore præclaro lucens
+Romanæ rei suscepit moderamen.
+Hic plane egregius (nisi quod Christo caruit)
+bonorumque principum typus fuit.</bloco>
+  <notas>Pagina em duas colunas; a coluna esquerda foi transcrita antes da direita. As letras A, B, C e D são notas marginais independentes.</notas>
 </pagina>

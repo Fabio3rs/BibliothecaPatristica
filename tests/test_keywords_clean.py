@@ -31,6 +31,26 @@ def test_strip_markdown_and_quotes():
     assert issues == []
 
 
+@pytest.mark.parametrize(
+    "value",
+    ["num. VI", "nm 6", "col. 3", "Coluna IV", "columna 8"],
+)
+def test_remove_non_searchable_editorial_locators(value):
+    cleaned, issues = _clean_list([value, "Trindade"])
+
+    assert cleaned == ["Trindade"]
+    assert "removed_editorial_locator" in issues
+
+
+def test_keep_substantive_keyword_that_mentions_a_column():
+    cleaned, issues = _clean_list(
+        ["Comentário da coluna 3", "Número 666", "Num 6"]
+    )
+
+    assert cleaned == ["Comentário da coluna 3", "Número 666", "Num 6"]
+    assert "removed_editorial_locator" not in issues
+
+
 def test_keywords_with_numbers_trigger_issue():
     cleaned = {"keywords": ["4", "Ap 3", "Canon 35"]}
     issues = validate_keywords(cleaned, parse_issue=None)

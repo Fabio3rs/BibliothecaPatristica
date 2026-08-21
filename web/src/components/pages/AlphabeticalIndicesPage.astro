@@ -1,0 +1,1160 @@
+---
+import Layout from '../Layout.astro';
+import { getLocaleBase, getLocaleRouteUrl, serializeTranslations, useTranslations } from '../../i18n';
+
+interface Props {
+  mode: 'landing' | 'domain' | 'scripture-book';
+  domain?: 'subjects' | 'names' | 'scripture';
+  book?: string;
+  bookLabel?: string;
+}
+
+const { mode, domain, book = '', bookLabel = '' } = Astro.props as Props;
+const base = import.meta.env.BASE_URL || '/';
+const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
+const assetBase = baseWithSlash;
+const locale = (Astro.currentLocale ?? 'pt-br') as 'pt-br' | 'en' | 'it' | 'fr';
+const t = useTranslations(locale);
+const uiStrings = serializeTranslations(t);
+const localeBase = getLocaleBase(locale, base);
+const alphaBaseRoute = getLocaleRouteUrl(locale, 'indices-alfabeticos', base);
+const viewerBaseRoute = getLocaleRouteUrl(locale, 'viewer', base);
+const rawOcrBaseUrl = import.meta.env.PUBLIC_RAW_OCR_BASE_URL
+  || 'https://raw.githubusercontent.com/Fabio3rs/BibliothecaPatristica/refs/heads/codex/';
+
+const domainTitleMap = {
+  subjects: t.alphaIndicesDomainSubjects,
+  names: t.alphaIndicesDomainNames,
+  scripture: t.alphaIndicesDomainScripture,
+} as const;
+
+const pageTitle = mode === 'landing'
+  ? t.alphaIndicesTitle
+  : mode === 'scripture-book'
+    ? `${t.alphaIndicesDomainScripture} — ${bookLabel || book}`
+    : `${t.alphaIndicesTitle} — ${domain ? domainTitleMap[domain] : ''}`;
+
+const pageDescription = mode === 'landing'
+  ? t.alphaIndicesSubtitle
+  : mode === 'scripture-book'
+    ? `${t.alphaIndicesDomainScriptureDesc} ${bookLabel || book}`.trim()
+    : domain
+      ? `${domainTitleMap[domain]} · ${t.alphaIndicesBrowseHint}`
+      : t.alphaIndicesBrowseHint;
+
+const breadcrumbs: Array<{ label: string; href?: string }> = [
+  { label: t.breadcrumbHome, href: localeBase },
+  { label: t.alphaIndicesTitle, href: alphaBaseRoute },
+];
+
+if (mode === 'domain' && domain) {
+  breadcrumbs.push({ label: domainTitleMap[domain] });
+}
+if (mode === 'scripture-book') {
+  breadcrumbs.push({ label: t.alphaIndicesDomainScripture, href: `${alphaBaseRoute}/scripture` });
+  breadcrumbs.push({ label: bookLabel || book });
+}
+---
+
+<Layout title={pageTitle} description={pageDescription} breadcrumbs={breadcrumbs}>
+  <section class="alpha-hero card">
+    <div class="alpha-hero-copy">
+      <p class="eyebrow">{t.alphaIndicesEyebrow}</p>
+      <h1>{pageTitle}</h1>
+      <p>{mode === 'landing' ? t.alphaIndicesSubtitle : t.alphaIndicesBrowseHint}</p>
+    </div>
+    <div class="alpha-hero-panel">
+      <p class="panel-label">{t.alphaIndicesPanelTitle}</p>
+      <ul class="panel-list">
+        <li>{t.alphaIndicesPanelPointDomains}</li>
+        <li>{t.alphaIndicesPanelPointShards}</li>
+        <li>{t.alphaIndicesPanelPointViewer}</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="alpha-app card" id="alpha-indices-app">
+    <div class="alpha-toolbar">
+      <div id="alpha-summary" class="alpha-summary">
+        <p class="muted" style="margin:0;">{t.alphaIndicesLoading}</p>
+      </div>
+      <div class="alpha-toolbar-actions">
+        {mode !== 'landing' && <a class="button secondary" href={alphaBaseRoute}>{t.alphaIndicesBackToHub}</a>}
+        {mode !== 'landing' && <a class="button secondary" href={`${alphaBaseRoute}/scripture`}>{t.alphaIndicesBrowseBooks}</a>}
+      </div>
+    </div>
+
+    <div class="alpha-grid">
+      <aside class="alpha-sidebar">
+        <div id="alpha-nav" class="alpha-nav">
+          <p class="muted" style="margin:0;">{t.alphaIndicesLoading}</p>
+        </div>
+      </aside>
+      <div id="alpha-content" class="alpha-content" aria-live="polite">
+        <p class="muted" style="margin:0;">{t.alphaIndicesLoading}</p>
+      </div>
+    </div>
+  </section>
+
+  <style is:global>
+    .alpha-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      gap: var(--space-5);
+      padding: var(--space-6);
+      border: 1px solid var(--color-border);
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--color-accent) 12%, transparent) 0, transparent 42%),
+        linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 82%, var(--color-bg) 18%) 0%, var(--color-bg) 100%);
+    }
+    .alpha-hero-copy h1 {
+      margin: 0;
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.05;
+    }
+    .alpha-hero-copy p:last-child {
+      margin: var(--space-3) 0 0;
+      max-width: 62ch;
+      color: var(--color-muted);
+      line-height: 1.7;
+    }
+    .eyebrow,
+    .panel-label,
+    .section-kicker {
+      margin: 0 0 var(--space-2);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      color: var(--color-muted);
+      font-weight: 700;
+    }
+    .alpha-hero-panel {
+      padding: var(--space-5);
+      border-radius: var(--radius-m);
+      border: 1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-border));
+      background: linear-gradient(180deg, color-mix(in srgb, var(--color-accent) 10%, var(--color-surface) 90%), var(--color-surface));
+      align-self: stretch;
+    }
+    .panel-list {
+      margin: 0;
+      padding-left: 1rem;
+      color: var(--color-muted);
+      line-height: 1.7;
+      display: grid;
+      gap: var(--space-2);
+    }
+    .alpha-app {
+      display: grid;
+      gap: var(--space-5);
+      padding: var(--space-5);
+      border: 1px solid var(--color-border);
+      background: color-mix(in srgb, var(--color-surface) 88%, var(--color-bg) 12%);
+    }
+    .alpha-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+    .alpha-summary {
+      flex: 1 1 640px;
+      min-width: 0;
+    }
+    .alpha-toolbar-actions {
+      flex: 0 0 auto;
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+    .alpha-grid {
+      display: grid;
+      grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+      gap: var(--space-5);
+      align-items: start;
+    }
+    .alpha-sidebar,
+    .alpha-content {
+      display: grid;
+      gap: var(--space-4);
+      min-width: 0;
+    }
+    .alpha-panel {
+      padding: var(--space-4);
+      border-radius: var(--radius-m);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      box-shadow: var(--shadow-soft);
+    }
+    .alpha-panel h2,
+    .alpha-panel h3,
+    .alpha-content h2,
+    .alpha-content h3 {
+      margin: 0;
+      font-family: var(--font-serif);
+    }
+    .alpha-sidebar .alpha-panel {
+      padding: var(--space-3);
+      gap: var(--space-3);
+      box-shadow: none;
+    }
+    .alpha-sidebar {
+      position: sticky;
+      top: calc(var(--space-4) + 4rem);
+      align-self: start;
+    }
+    .alpha-stat-grid,
+    .alpha-domain-grid,
+    .alpha-book-grid,
+    .alpha-page-grid {
+      display: grid;
+      gap: var(--space-3);
+    }
+    .alpha-stat-grid {
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+    .alpha-stat-card,
+    .alpha-domain-card,
+    .alpha-book-card,
+    .alpha-page-card,
+    .alpha-entry {
+      padding: var(--space-4);
+      border-radius: var(--radius-m);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      box-shadow: var(--shadow-soft);
+    }
+    .alpha-stat-card strong {
+      display: block;
+      font-size: 1.65rem;
+      color: var(--color-accent);
+    }
+    .alpha-stat-card span,
+    .alpha-meta,
+    .alpha-entry p,
+    .alpha-section-note,
+    .muted {
+      color: var(--color-muted);
+    }
+    .alpha-domain-card,
+    .alpha-book-card,
+    .alpha-page-card,
+    .alpha-entry {
+      display: grid;
+      gap: var(--space-2);
+    }
+    .alpha-page-grid.compact,
+    .alpha-book-grid.compact {
+      gap: 1px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-m);
+      overflow: hidden;
+      background: var(--color-border);
+    }
+    .alpha-domain-card h3,
+    .alpha-book-card h3,
+    .alpha-page-card h3,
+    .alpha-entry h3 {
+      font-size: 1.1rem;
+    }
+    .alpha-meta {
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    .alpha-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+    .alpha-alpha-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+    }
+    .alpha-alpha-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.2rem;
+      min-height: 2.2rem;
+      padding: 0.25rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid var(--color-border);
+      background: color-mix(in srgb, var(--color-surface) 82%, var(--color-bg) 18%);
+      color: var(--color-ink);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .alpha-alpha-link:hover {
+      border-color: color-mix(in srgb, var(--color-accent) 40%, var(--color-border));
+      background: color-mix(in srgb, var(--color-accent) 10%, var(--color-surface));
+    }
+    .alpha-alpha-link.is-active {
+      border-color: var(--color-accent);
+      background: color-mix(in srgb, var(--color-accent) 14%, var(--color-surface));
+      color: var(--color-accent);
+    }
+    .alpha-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid var(--color-border);
+      background: color-mix(in srgb, var(--color-surface) 84%, var(--color-bg) 16%);
+      font-size: 0.78rem;
+    }
+    .alpha-nav-list,
+    .alpha-link-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-2);
+    }
+    .alpha-link-list a,
+    .alpha-page-link,
+    .alpha-action-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-2);
+      text-decoration: none;
+      color: var(--color-ink);
+      padding: 0.75rem 0.9rem;
+      border-radius: var(--radius-m);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+    }
+    .alpha-link-list.compact {
+      gap: 1px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-m);
+      overflow: hidden;
+      background: var(--color-border);
+    }
+    .alpha-link-list.compact li {
+      background: var(--color-surface);
+    }
+    .alpha-link-list.compact a,
+    .alpha-page-grid.compact .alpha-page-link,
+    .alpha-book-grid.compact .alpha-page-link {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 0.35rem var(--space-2);
+      width: 100%;
+      padding: 0.7rem 0.85rem;
+      border: 0;
+      border-radius: 0;
+      background: var(--color-surface);
+      box-shadow: none;
+    }
+    .alpha-link-list a:hover,
+    .alpha-page-link:hover,
+    .alpha-action-link:hover {
+      border-color: color-mix(in srgb, var(--color-accent) 40%, var(--color-border));
+      background: color-mix(in srgb, var(--color-accent) 10%, var(--color-surface));
+      transform: translateY(-1px);
+    }
+    .alpha-link-list.compact a:hover,
+    .alpha-page-grid.compact .alpha-page-link:hover,
+    .alpha-book-grid.compact .alpha-page-link:hover {
+      transform: none;
+    }
+    .alpha-page-link.is-active {
+      border-color: var(--color-accent);
+      background: color-mix(in srgb, var(--color-accent) 12%, var(--color-surface));
+    }
+    .alpha-list-primary,
+    .alpha-list-title {
+      min-width: 0;
+      font-weight: 600;
+    }
+    .alpha-list-secondary {
+      grid-column: 1 / -1;
+      color: var(--color-muted);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+    .alpha-list-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--color-muted);
+      font-size: 0.82rem;
+      white-space: nowrap;
+    }
+    .alpha-sidebar-section {
+      display: grid;
+      gap: var(--space-2);
+    }
+    .alpha-nav-disclosure {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-m);
+      background: var(--color-surface);
+      overflow: hidden;
+    }
+    .alpha-nav-disclosure summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-2);
+      padding: 0.8rem 0.95rem;
+      font-weight: 600;
+    }
+    .alpha-nav-disclosure summary::-webkit-details-marker {
+      display: none;
+    }
+    .alpha-nav-disclosure summary::after {
+      content: '+';
+      color: var(--color-muted);
+      font-weight: 700;
+    }
+    .alpha-nav-disclosure[open] summary::after {
+      content: '−';
+    }
+    .alpha-nav-disclosure-body {
+      padding: 0 0.75rem 0.75rem;
+    }
+    .alpha-sidebar-note {
+      margin: 0;
+      color: var(--color-muted);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+    .alpha-detail-summary {
+      display: grid;
+      gap: var(--space-1);
+    }
+    .alpha-detail-summary h2 {
+      font-size: clamp(1.3rem, 2vw, 1.8rem);
+    }
+    .alpha-detail-summary .alpha-meta {
+      max-width: 74ch;
+    }
+    .alpha-context-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .alpha-context-path {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      color: var(--color-muted);
+      font-size: 0.92rem;
+    }
+    .alpha-context-path strong {
+      color: var(--color-ink);
+    }
+    .alpha-content-section {
+      display: grid;
+      gap: var(--space-4);
+    }
+    .alpha-entry {
+      padding: var(--space-3);
+      box-shadow: none;
+    }
+    .alpha-entry + .alpha-entry {
+      margin-top: calc(var(--space-3) * -1);
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    .alpha-entry header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+    .alpha-entry header h3 {
+      margin: 0;
+    }
+    .alpha-entry p {
+      margin: 0;
+      line-height: 1.65;
+    }
+    .alpha-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+    .alpha-detail-header {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      align-items: start;
+    }
+    .alpha-group-block {
+      display: grid;
+      gap: var(--space-3);
+    }
+    .alpha-group-block + .alpha-group-block {
+      margin-top: var(--space-2);
+    }
+    .alpha-section-anchor {
+      scroll-margin-top: 6rem;
+    }
+    .alpha-actions .alpha-action-link {
+      padding: 0.55rem 0.8rem;
+    }
+    @media (max-width: 960px) {
+      .alpha-hero,
+      .alpha-grid {
+        grid-template-columns: 1fr;
+      }
+      .alpha-sidebar {
+        position: static;
+      }
+      .alpha-sidebar {
+        order: 2;
+      }
+      .alpha-content {
+        order: 1;
+      }
+      .alpha-link-list.compact a,
+      .alpha-page-grid.compact .alpha-page-link,
+      .alpha-book-grid.compact .alpha-page-link {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .alpha-list-meta {
+        justify-self: start;
+      }
+      .alpha-alpha-strip {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 0.3rem;
+      }
+      .alpha-alpha-link {
+        flex: 0 0 auto;
+      }
+    }
+    @media (max-width: 640px) {
+      .alpha-hero {
+        gap: var(--space-4);
+        padding: var(--space-4);
+      }
+      .alpha-hero-copy h1 {
+        font-size: clamp(1.7rem, 10vw, 2.7rem);
+        line-height: 1;
+      }
+      .alpha-hero-copy p:last-child {
+        margin-top: var(--space-2);
+        line-height: 1.55;
+      }
+      .alpha-hero-panel {
+        padding: var(--space-4);
+      }
+      .panel-list {
+        gap: 0.35rem;
+        line-height: 1.5;
+      }
+      .alpha-app {
+        gap: var(--space-4);
+        padding: var(--space-4);
+      }
+      .alpha-toolbar {
+        gap: var(--space-3);
+      }
+      .alpha-toolbar-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+      }
+      .alpha-toolbar-actions .button,
+      .alpha-toolbar-actions .alpha-action-link {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        padding: 0.75rem 0.65rem;
+      }
+      .alpha-panel {
+        padding: var(--space-3);
+      }
+      .alpha-stat-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-2);
+      }
+      .alpha-stat-card,
+      .alpha-domain-card,
+      .alpha-book-card,
+      .alpha-page-card {
+        padding: var(--space-3);
+      }
+      .alpha-stat-card strong {
+        font-size: 1.25rem;
+      }
+      .alpha-content {
+        gap: var(--space-3);
+      }
+      .alpha-sidebar {
+        gap: var(--space-3);
+      }
+      .alpha-sidebar .alpha-panel,
+      .alpha-nav-disclosure {
+        border-radius: var(--radius-m);
+      }
+      .alpha-nav-disclosure summary {
+        padding: 0.7rem 0.8rem;
+        font-size: 0.96rem;
+      }
+      .alpha-nav-disclosure-body {
+        padding: 0 0.55rem 0.55rem;
+      }
+      .alpha-page-grid.compact .alpha-page-link,
+      .alpha-link-list.compact a,
+      .alpha-book-grid.compact .alpha-page-link {
+        padding: 0.6rem 0.7rem;
+      }
+      .alpha-list-secondary {
+        font-size: 0.82rem;
+      }
+      .alpha-context-bar {
+        gap: var(--space-2);
+        padding-bottom: var(--space-2);
+      }
+      .alpha-context-path {
+        font-size: 0.84rem;
+        line-height: 1.45;
+      }
+      .alpha-alpha-strip {
+        gap: 0.3rem;
+        margin-inline: calc(var(--space-3) * -1);
+        padding-inline: var(--space-3);
+        scroll-snap-type: x proximity;
+      }
+      .alpha-alpha-link {
+        min-width: 2rem;
+        min-height: 2rem;
+        padding: 0.2rem 0.5rem;
+        font-size: 0.84rem;
+        scroll-snap-align: start;
+      }
+      .alpha-detail-header {
+        gap: var(--space-2);
+      }
+      .alpha-detail-summary h2 {
+        font-size: 1.45rem;
+      }
+      .alpha-chip-row {
+        gap: 0.35rem;
+      }
+      .alpha-chip {
+        padding: 0.16rem 0.45rem;
+        font-size: 0.73rem;
+      }
+      .alpha-entry {
+        padding: 0.85rem;
+      }
+      .alpha-entry p {
+        line-height: 1.55;
+      }
+      .alpha-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .alpha-actions .alpha-action-link {
+        justify-content: center;
+        text-align: center;
+        padding: 0.65rem 0.55rem;
+      }
+    }
+  </style>
+
+  <script type="module" define:vars={{ mode, domain, book, bookLabel, assetBase, alphaBaseRoute, viewerBaseRoute, rawOcrBaseUrl, uiStrings }}>
+    const app = document.getElementById('alpha-indices-app');
+    const navEl = document.getElementById('alpha-nav');
+    const contentEl = document.getElementById('alpha-content');
+    const summaryEl = document.getElementById('alpha-summary');
+
+    const strings = {
+      title: uiStrings.alphaIndicesTitle,
+      loading: uiStrings.alphaIndicesLoading,
+      unavailable: uiStrings.alphaIndicesUnavailable,
+      browseHint: uiStrings.alphaIndicesBrowseHint,
+      browseDomain: uiStrings.alphaIndicesBrowseDomain,
+      browseBooks: uiStrings.alphaIndicesBrowseBooks,
+      backToHub: uiStrings.alphaIndicesBackToHub,
+      pageListTitle: uiStrings.alphaIndicesPageListTitle,
+      pageDetailTitle: uiStrings.alphaIndicesPageDetailTitle,
+      noPageSelected: uiStrings.alphaIndicesNoPageSelected,
+      booksTitle: uiStrings.alphaIndicesBookListTitle,
+      items: uiStrings.alphaIndicesItems,
+      pages: uiStrings.alphaIndicesPages,
+      shards: uiStrings.alphaIndicesShards,
+      volumes: uiStrings.alphaIndicesVolumes,
+      sections: uiStrings.alphaIndicesSections,
+      other: uiStrings.alphaIndicesOtherBucket,
+      openViewer: uiStrings.alphaIndicesOpenViewer,
+      openRaw: uiStrings.alphaIndicesOpenRaw,
+      prevPage: uiStrings.alphaIndicesPrevPage,
+      nextPage: uiStrings.alphaIndicesNextPage,
+      selectedPage: uiStrings.alphaIndicesSelectedPage,
+      noTranslation: uiStrings.alphaIndicesNoTranslation,
+      groupJump: uiStrings.alphaIndicesGroupJump,
+      heading: uiStrings.alphaIndicesHeading,
+      scriptureByBook: uiStrings.alphaIndicesScriptureByBook,
+      browsePage: uiStrings.alphaIndicesBrowsePage,
+      domainSubjects: uiStrings.alphaIndicesDomainSubjects,
+      domainSubjectsDesc: uiStrings.alphaIndicesDomainSubjectsDesc,
+      domainNames: uiStrings.alphaIndicesDomainNames,
+      domainNamesDesc: uiStrings.alphaIndicesDomainNamesDesc,
+      domainScripture: uiStrings.alphaIndicesDomainScripture,
+      domainScriptureDesc: uiStrings.alphaIndicesDomainScriptureDesc,
+    };
+
+    const domainCopy = {
+      subjects: { title: strings.domainSubjects, desc: strings.domainSubjectsDesc },
+      names: { title: strings.domainNames, desc: strings.domainNamesDesc },
+      scripture: { title: strings.domainScripture, desc: strings.domainScriptureDesc },
+    };
+
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function fmt(value) {
+      return new Intl.NumberFormat().format(Number(value || 0));
+    }
+
+    async function fetchJson(url) {
+      if (window.pdfocrDataCache?.getJsonOnce) return window.pdfocrDataCache.getJsonOnce(url);
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    }
+
+    function currentPageId() {
+      return new URL(window.location.href).searchParams.get('page');
+    }
+
+    function currentGroupId() {
+      return new URL(window.location.href).searchParams.get('group');
+    }
+
+    function hrefWithPage(pageId, groupId = '') {
+      const url = new URL(window.location.href);
+      if (pageId) url.searchParams.set('page', pageId);
+      else url.searchParams.delete('page');
+      if (groupId) url.searchParams.set('group', groupId);
+      return `${url.pathname}${url.search}${url.hash}`;
+    }
+
+    function hrefWithGroup(groupId) {
+      const url = new URL(window.location.href);
+      if (groupId) url.searchParams.set('group', groupId);
+      else url.searchParams.delete('group');
+      url.searchParams.delete('page');
+      return `${url.pathname}${url.search}${url.hash}`;
+    }
+
+    function replaceUrl(pageId, groupId) {
+      const url = new URL(window.location.href);
+      if (groupId) url.searchParams.set('group', groupId);
+      else url.searchParams.delete('group');
+      if (pageId) url.searchParams.set('page', pageId);
+      else url.searchParams.delete('page');
+      window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
+    }
+
+    function makeViewerUrl(item) {
+      if (!item.viewer_page) return '';
+      const url = new URL(viewerBaseRoute, window.location.origin);
+      url.searchParams.set('doc', item.volume_id);
+      url.searchParams.set('page', String(item.viewer_page));
+      return `${url.pathname}${url.search}${url.hash}`;
+    }
+
+    function makeRawUrl(item) {
+      if (!item.target_file) return '';
+      const path = String(item.target_file)
+        .replace(/^\/+/, '')
+        .split('/')
+        .map((segment) => encodeURIComponent(segment))
+        .join('/');
+      const rawBase = rawOcrBaseUrl.endsWith('/') ? rawOcrBaseUrl : `${rawOcrBaseUrl}/`;
+      return `${rawBase}${path}`;
+    }
+
+    function makeAlphaAssetUrl(path, assetDomain = domain) {
+      const normalized = String(path || '').replace(/^\/+/, '');
+      if (!normalized) return '';
+      if (normalized.startsWith('alpha/')) return `${assetBase}${normalized}`;
+      if (normalized.startsWith('shards/') && assetDomain) {
+        return `${assetBase}alpha/${assetDomain}/${normalized}`;
+      }
+      return `${assetBase}${normalized}`;
+    }
+
+    function renderSummaryCards(stats) {
+      return `
+        <div class="alpha-stat-grid">
+          <article class="alpha-stat-card"><strong>${fmt(stats.item_count)}</strong><span>${escapeHtml(strings.items)}</span></article>
+          <article class="alpha-stat-card"><strong>${fmt(stats.page_count)}</strong><span>${escapeHtml(strings.pages)}</span></article>
+          <article class="alpha-stat-card"><strong>${fmt(stats.shard_count)}</strong><span>${escapeHtml(strings.shards)}</span></article>
+          <article class="alpha-stat-card"><strong>${fmt(stats.volume_count || 0)}</strong><span>${escapeHtml(strings.volumes)}</span></article>
+        </div>
+      `;
+    }
+
+    function renderLanding(manifest) {
+      summaryEl.innerHTML = `
+        <div class="alpha-panel">
+          <p class="section-kicker">${escapeHtml(strings.title)}</p>
+          ${renderSummaryCards({
+            item_count: manifest.domains.reduce((sum, entry) => sum + Number(entry.item_count || 0), 0),
+            page_count: manifest.domains.reduce((sum, entry) => sum + Number(entry.page_count || 0), 0),
+            shard_count: manifest.domains.reduce((sum, entry) => sum + Number(entry.shard_count || 0), 0),
+            volume_count: manifest.domains.reduce((sum, entry) => sum + Number(entry.volume_count || 0), 0),
+          })}
+        </div>
+      `;
+      navEl.innerHTML = `
+        <div class="alpha-panel">
+          <p class="section-kicker">${escapeHtml(strings.browseDomain)}</p>
+          <ul class="alpha-link-list">
+            ${manifest.domains.map((entry) => {
+              const copy = domainCopy[entry.id] || { title: entry.id, desc: '' };
+              return `
+                <li>
+                  <a href="${escapeHtml(`${alphaBaseRoute}/${entry.id}`)}">
+                    <span>${escapeHtml(copy.title)}</span>
+                    <span class="alpha-chip">${fmt(entry.item_count)} ${escapeHtml(strings.items)}</span>
+                  </a>
+                </li>
+              `;
+            }).join('')}
+          </ul>
+        </div>
+      `;
+      contentEl.innerHTML = `
+        <section class="alpha-panel">
+          <p class="section-kicker">${escapeHtml(strings.browseDomain)}</p>
+          <div class="alpha-domain-grid">
+            ${manifest.domains.map((entry) => {
+              const copy = domainCopy[entry.id] || { title: entry.id, desc: '' };
+              return `
+                <article class="alpha-domain-card">
+                  <h3>${escapeHtml(copy.title)}</h3>
+                  <p class="alpha-meta">${escapeHtml(copy.desc)}</p>
+                  <div class="alpha-chip-row">
+                    <span class="alpha-chip">${fmt(entry.item_count)} ${escapeHtml(strings.items)}</span>
+                    <span class="alpha-chip">${fmt(entry.page_count)} ${escapeHtml(strings.pages)}</span>
+                    <span class="alpha-chip">${fmt(entry.shard_count)} ${escapeHtml(strings.shards)}</span>
+                  </div>
+                  <a class="alpha-action-link" href="${escapeHtml(`${alphaBaseRoute}/${entry.id}`)}">${escapeHtml(strings.browsePage)}</a>
+                </article>
+              `;
+            }).join('')}
+          </div>
+        </section>
+      `;
+    }
+
+    function renderPageList(pages, selectedId) {
+      return `
+        <div class="alpha-page-grid compact">
+          ${pages.map((page) => `
+            <a class="alpha-page-link ${selectedId === page.id ? 'is-active' : ''}" href="${escapeHtml(hrefWithPage(page.id, page.group?.toLowerCase?.() || ''))}">
+              <span class="alpha-list-title">${escapeHtml(page.headword_start)} - ${escapeHtml(page.headword_end)}</span>
+              <span class="alpha-list-meta">${fmt(page.item_count)} ${escapeHtml(strings.items)}</span>
+              <span class="alpha-list-secondary">${escapeHtml(page.id)}</span>
+            </a>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function renderAlphaStrip(groups, activeGroupId) {
+      return `
+        <div class="alpha-alpha-strip" aria-label="${escapeHtml(strings.groupJump)}">
+          ${groups.map((group) => `
+            <a
+              class="alpha-alpha-link ${group.id === activeGroupId ? 'is-active' : ''}"
+              href="${escapeHtml(hrefWithGroup(group.id))}"
+              title="${escapeHtml(`${group.label || strings.other} · ${fmt(group.item_count || 0)} ${strings.items}`)}"
+            >${escapeHtml(group.label || strings.other)}</a>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function renderDetail(page, pageMeta) {
+      const prevLink = pageMeta?.prev_page_id ? `<a class="alpha-action-link" href="${escapeHtml(hrefWithPage(pageMeta.prev_page_id, pageMeta.prev_group_id))}">${escapeHtml(strings.prevPage)}</a>` : '';
+      const nextLink = pageMeta?.next_page_id ? `<a class="alpha-action-link" href="${escapeHtml(hrefWithPage(pageMeta.next_page_id, pageMeta.next_group_id))}">${escapeHtml(strings.nextPage)}</a>` : '';
+      return `
+        <section class="alpha-panel">
+          <div class="alpha-detail-header">
+            <div class="alpha-detail-summary">
+              <p class="section-kicker">${escapeHtml(strings.pageDetailTitle)}</p>
+              <h2>${escapeHtml(page.headword_start)} - ${escapeHtml(page.headword_end)}</h2>
+              <p class="alpha-meta">${fmt(page.item_count)} ${escapeHtml(strings.items)} · ${escapeHtml(page.group || pageMeta?.group || '')}</p>
+            </div>
+            <div class="alpha-actions">${prevLink}${nextLink}</div>
+          </div>
+        </section>
+        ${page.items.map((item) => `
+          <article class="alpha-entry">
+            <header>
+              <div>
+                <h3>${escapeHtml(item.label)}</h3>
+                <div class="alpha-chip-row">
+                  <span class="alpha-chip">${escapeHtml(item.collection)}</span>
+                  <span class="alpha-chip">${escapeHtml(item.volume_id)}</span>
+                  <span class="alpha-chip">${escapeHtml(item.section_kind)}</span>
+                  ${item.page_ref ? `<span class="alpha-chip">p. ${escapeHtml(item.page_ref)}</span>` : ''}
+                </div>
+              </div>
+            </header>
+            ${item.heading ? `<p><strong>${escapeHtml(strings.heading)}:</strong> ${escapeHtml(item.heading)}</p>` : ''}
+            ${item.snippet ? `<p>${escapeHtml(item.snippet)}</p>` : `<p class="muted">${escapeHtml(strings.noTranslation)}</p>`}
+            <div class="alpha-actions">
+              ${item.viewer_page ? `<a class="alpha-action-link" href="${escapeHtml(makeViewerUrl(item))}">${escapeHtml(strings.openViewer)}</a>` : ''}
+              ${item.target_file ? `<a class="alpha-action-link" href="${escapeHtml(makeRawUrl(item))}" target="_blank" rel="noopener noreferrer">${escapeHtml(strings.openRaw)}</a>` : ''}
+            </div>
+          </article>
+        `).join('')}
+      `;
+    }
+
+    function renderCompactGroupList(groups, activeGroupId) {
+      return `
+        <ul class="alpha-link-list compact">
+          ${groups.map((group) => `
+            <li>
+              <a class="${group.id === activeGroupId ? 'alpha-page-link is-active' : 'alpha-page-link'}" href="${escapeHtml(hrefWithGroup(group.id))}">
+                <span class="alpha-list-primary">${escapeHtml(group.label || strings.other)}</span>
+                <span class="alpha-list-meta">${fmt(group.page_count)} ${escapeHtml(strings.pages)}</span>
+                <span class="alpha-list-secondary">${fmt(group.item_count || 0)} ${escapeHtml(strings.items)}</span>
+              </a>
+            </li>
+          `).join('')}
+        </ul>
+      `;
+    }
+
+    function renderDomainNav(manifest, groupManifest, selectedId) {
+      const activeGroupId = resolveActiveGroupId(manifest);
+      const activeGroup = manifest.groups.find((group) => group.id === activeGroupId);
+      const pages = groupManifest?.pages || [];
+      const pagesOpen = window.innerWidth > 960 ? ' open' : '';
+      return `
+        <section class="alpha-panel alpha-sidebar-section">
+          <p class="section-kicker">${escapeHtml(strings.groupJump)}</p>
+          ${renderCompactGroupList(manifest.groups, activeGroupId)}
+        </section>
+        ${activeGroup ? `
+          <details class="alpha-panel alpha-sidebar-section alpha-nav-disclosure"${pagesOpen}>
+            <summary>
+              <span>${escapeHtml(`${strings.pageListTitle} · ${activeGroup.label || strings.other}`)}</span>
+            </summary>
+            <div class="alpha-nav-disclosure-body">
+              <p class="alpha-sidebar-note">${fmt(activeGroup.page_count)} ${escapeHtml(strings.pages)} · ${fmt(activeGroup.item_count || 0)} ${escapeHtml(strings.items)}</p>
+              ${pages.length ? renderPageList(pages, selectedId) : `<p class="alpha-sidebar-note">${escapeHtml(strings.loading)}</p>`}
+            </div>
+          </details>
+        ` : ''}
+      `;
+    }
+
+    function resolveActiveGroupId(manifest) {
+      const requested = currentGroupId();
+      if (requested && manifest.groups.some((group) => group.id === requested)) return requested;
+      return manifest.groups[0]?.id || '';
+    }
+
+    async function loadPageFromShard(groupManifest, pageId) {
+      const pageMeta = groupManifest.pages.find((page) => page.id === pageId);
+      if (!pageMeta) return { page: null, pageMeta: null };
+      const shard = await fetchJson(makeAlphaAssetUrl(pageMeta.shard_path, domain));
+      const page = Array.isArray(shard.pages) ? shard.pages.find((entry) => entry.id === pageId) : null;
+      return { page, pageMeta };
+    }
+
+    function renderDomainContent(manifest, groupManifest, selectedId, pageDetailHtml) {
+      const group = groupManifest?.group;
+      const activeGroupId = resolveActiveGroupId(manifest);
+      const selectedMeta = groupManifest?.pages?.find((page) => page.id === selectedId);
+      return `
+        <section class="alpha-panel alpha-content-section">
+          <p class="section-kicker">${escapeHtml(strings.browseDomain)}</p>
+          <div class="alpha-context-bar">
+            <div class="alpha-detail-summary">
+              <h2>${escapeHtml(domainCopy[manifest.domain]?.title || manifest.domain)}</h2>
+              <p class="alpha-meta">${escapeHtml(domainCopy[manifest.domain]?.desc || strings.browseHint)}</p>
+            </div>
+            <div class="alpha-context-path">
+              <span>${escapeHtml(domainCopy[manifest.domain]?.title || manifest.domain)}</span>
+              ${group ? `<span>/</span><strong>${escapeHtml(group.label)}</strong>` : ''}
+              ${selectedMeta ? `<span>/</span><span>${escapeHtml(selectedMeta.id)}</span>` : ''}
+            </div>
+          </div>
+          ${renderAlphaStrip(manifest.groups, activeGroupId)}
+        </section>
+        ${pageDetailHtml || `
+          <section class="alpha-panel">
+            <p class="section-kicker">${escapeHtml(strings.pageDetailTitle)}</p>
+            <p class="alpha-meta">${escapeHtml(strings.noPageSelected)}</p>
+          </section>
+        `}
+      `;
+    }
+
+    function renderScriptureBooks(manifest) {
+      summaryEl.innerHTML = `
+        <div class="alpha-panel">
+          <p class="section-kicker">${escapeHtml(strings.scriptureByBook)}</p>
+          ${renderSummaryCards(manifest.stats)}
+        </div>
+      `;
+      navEl.innerHTML = `
+        <div class="alpha-panel">
+          <p class="section-kicker">${escapeHtml(strings.booksTitle)}</p>
+          <ul class="alpha-link-list compact">
+            ${manifest.books.map((bookEntry) => `
+              <li>
+                <a href="${escapeHtml(`${alphaBaseRoute}/scripture/${encodeURIComponent(bookEntry.slug)}`)}">
+                  <span class="alpha-list-primary">${escapeHtml(bookEntry.label)}</span>
+                  <span class="alpha-list-meta">${fmt(bookEntry.page_count)} ${escapeHtml(strings.pages)}</span>
+                  <span class="alpha-list-secondary">${fmt(bookEntry.item_count)} ${escapeHtml(strings.items)}</span>
+                </a>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+      `;
+      contentEl.innerHTML = `
+        <section class="alpha-panel">
+          <p class="section-kicker">${escapeHtml(strings.booksTitle)}</p>
+          <div class="alpha-book-grid compact">
+            ${manifest.books.map((bookEntry) => `
+              <a class="alpha-page-link" href="${escapeHtml(`${alphaBaseRoute}/scripture/${encodeURIComponent(bookEntry.slug)}`)}">
+                <span class="alpha-list-primary">${escapeHtml(bookEntry.label)}</span>
+                <span class="alpha-list-meta">${fmt(bookEntry.page_count)} ${escapeHtml(strings.pages)}</span>
+                <span class="alpha-list-secondary">${escapeHtml(bookEntry.headword_start)} - ${escapeHtml(bookEntry.headword_end)}</span>
+              </a>
+            `).join('')}
+          </div>
+        </section>
+      `;
+    }
+
+    async function loadDomainPage() {
+      const manifest = await fetchJson(`${assetBase}alpha/${domain}/manifest.json`);
+      if (mode === 'domain' && domain === 'scripture') {
+        renderScriptureBooks(manifest);
+        return;
+      }
+      const activeGroupId = resolveActiveGroupId(manifest);
+      const activeGroup = manifest.groups.find((entry) => entry.id === activeGroupId) || manifest.groups[0];
+      const groupManifest = activeGroup?.manifest_path ? await fetchJson(`${assetBase}${activeGroup.manifest_path}`) : null;
+      const fallbackPageId = groupManifest?.pages?.[0]?.id || '';
+      const selectedId = currentPageId() || fallbackPageId;
+      if (!currentPageId() && selectedId) replaceUrl(selectedId, activeGroupId);
+      summaryEl.innerHTML = `
+        <div class="alpha-panel">
+          <p class="section-kicker">${escapeHtml(strings.browseDomain)}</p>
+          ${renderSummaryCards(manifest.stats)}
+        </div>
+      `;
+      navEl.innerHTML = renderDomainNav(manifest, groupManifest, selectedId);
+      let detailHtml = '';
+      if (selectedId && groupManifest) {
+        const { page, pageMeta } = await loadPageFromShard(groupManifest, selectedId);
+        if (page) detailHtml = renderDetail(page, pageMeta);
+      }
+      contentEl.innerHTML = renderDomainContent(manifest, groupManifest, selectedId, detailHtml);
+    }
+
+    async function loadBookPage() {
+      const manifest = await fetchJson(`${assetBase}alpha/scripture/manifest.json`);
+      const currentBook = Array.isArray(manifest.books) ? manifest.books.find((entry) => entry.slug === book) : null;
+      const groupManifest = currentBook?.manifest_path ? await fetchJson(`${assetBase}${currentBook.manifest_path}`) : null;
+      const fallbackPageId = groupManifest?.pages?.[0]?.id || '';
+      const selectedId = currentPageId() || fallbackPageId;
+      if (!currentPageId() && selectedId) replaceUrl(selectedId, book);
+      summaryEl.innerHTML = `
+        <div class="alpha-panel">
+          <p class="section-kicker">${escapeHtml(strings.scriptureByBook)}</p>
+          ${renderSummaryCards({
+            item_count: currentBook?.item_count || 0,
+            page_count: currentBook?.page_count || 0,
+            shard_count: groupManifest?.pages?.length ? new Set(groupManifest.pages.map((page) => page.shard_id)).size : 0,
+            volume_count: manifest.stats.volume_count || 0,
+          })}
+        </div>
+      `;
+      navEl.innerHTML = `
+        <div class="alpha-panel">
+          <p class="section-kicker">${escapeHtml(strings.booksTitle)}</p>
+          <ul class="alpha-link-list compact">
+            ${manifest.books.map((entry) => `
+              <li>
+                <a class="${entry.slug === book ? 'alpha-page-link is-active' : 'alpha-page-link'}" href="${escapeHtml(`${alphaBaseRoute}/scripture/${encodeURIComponent(entry.slug)}`)}">
+                  <span class="alpha-list-primary">${escapeHtml(entry.label)}</span>
+                  <span class="alpha-list-meta">${fmt(entry.page_count)} ${escapeHtml(strings.pages)}</span>
+                  <span class="alpha-list-secondary">${fmt(entry.item_count)} ${escapeHtml(strings.items)}</span>
+                </a>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+        ${renderDomainNav({ groups: [{ id: book, label: currentBook?.label || book, page_count: currentBook?.page_count || 0, item_count: currentBook?.item_count || 0 }] }, groupManifest, selectedId)}
+      `;
+      let detailHtml = '';
+      if (selectedId && groupManifest) {
+        const { page, pageMeta } = await loadPageFromShard(groupManifest, selectedId);
+        if (page) detailHtml = renderDetail(page, pageMeta);
+      }
+      contentEl.innerHTML = renderDomainContent(
+        { ...manifest, domain: 'scripture' },
+        groupManifest,
+        selectedId,
+        detailHtml,
+      );
+    }
+
+    async function init() {
+      try {
+        if (mode === 'landing') {
+          const manifest = await fetchJson(`${assetBase}alpha/manifest.json`);
+          renderLanding(manifest);
+          return;
+        }
+        if (mode === 'scripture-book') {
+          await loadBookPage();
+          return;
+        }
+        await loadDomainPage();
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        summaryEl.innerHTML = `<div class="alpha-panel"><p class="alpha-meta">${escapeHtml(strings.unavailable)}</p></div>`;
+        navEl.innerHTML = `<div class="alpha-panel"><p class="alpha-meta">${escapeHtml(strings.unavailable)}</p></div>`;
+        contentEl.innerHTML = `<div class="alpha-panel"><p class="alpha-meta">${escapeHtml(strings.unavailable)}: ${escapeHtml(message)}</p></div>`;
+      }
+    }
+
+    if (app && navEl && contentEl && summaryEl) {
+      init();
+    }
+  </script>
+</Layout>

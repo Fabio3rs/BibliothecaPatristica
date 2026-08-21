@@ -43,13 +43,25 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 from statistics import mean, median
-from typing import List, Optional, Tuple, Any
+from typing import Any, List, Optional, TextIO, Tuple
 
 # Validação linguística de keywords (NLTK + CLTK)
 from keyword_integrity import IntegrityStatus, ValidationEvidence
+from facsimile_transport import encode_facsimile_for_transport
+from keyword_sanitization import (
+    HARD_SANITIZATION_ISSUES,
+    clean_keyword_text,
+    keyword_normalization_key,
+    remove_unicode_format_chars,
+    sanitize_keyword_item,
+    strip_markdown_wrappers,
+)
 
 # Heurísticas de ruído/rejeição de página OCR
 from scripts.limpeza_ocr import clean_ocr_text_optimized, classify_page_noise
+from patristica_pipeline.index_target_locator import resolve_paired_page_image
+from patristica_pipeline.scripture_book_catalog import canonical_book_key
+from patristica_pipeline.scripture_citation_index import ScanTask, scan_file_task
 from scripture_ref_normalizer import (
     extract_citations_from_value_cached,
 )
@@ -60,6 +72,7 @@ from scripture_ref_normalizer import (
 PROJECT_ROOT = Path(__file__).resolve().parent
 DEFAULT_RESUMOS_DB = PROJECT_ROOT / "data" / "patristica_resumos.db"
 DEFAULT_KEYWORDS_DB = PROJECT_ROOT / "data" / "patristica_keywords.db"
+DEFAULT_CORPUS_ROOT = PROJECT_ROOT / "teste"
 DEFAULT_MODEL = "qwen3:30b"
 DEFAULT_OLLAMA_URL = "http://localhost:11434"
 DEFAULT_TIMEOUT_OLLAMA = 120  # Ollama local é rápido
@@ -76,6 +89,11 @@ OUTLIER_LOW_RATIO = 0.4
 OUTLIER_HIGH_RATIO = 2.0
 
 MAX_TOKENS_DEFAULT = 6 * 1024
+MAX_FACSIMILE_BYTES = 20 * 1024 * 1024
+MAX_SCRIPTURE_EVIDENCE_GROUPS = 12
+AMBIGUOUS_CHAPTER_ONLY_SCRIPTURE_RE = re.compile(
+    r"(?i)^\s*(?:num|nm|col)\.?\s+[ivxlcdm\d]+\s*$"
+)
 
 # Integridade via serviço HTTP (opcional)
 INTEGRITY_HTTP_URL = os.getenv("KW_INTEGRITY_HTTP_URL", "").strip()
@@ -214,6 +232,235 @@ def fetch_pages(
         params.append(limit)
     rows = con.execute(sql, params).fetchall()
     return [dict(r) for r in rows]
+
+
+# ---------------------------------------------------------------------------
+# Evidência física da página (OCR, citações e fac-símile)
+# ---------------------------------------------------------------------------
+
+
+def resolve_page_ocr_path(
+    row: dict,
+    corpus_root: Path = DEFAULT_CORPUS_ROOT,
+) -> Path | None:
+    """Resolve ``pagina_file`` sem confundir sufixo físico com página editorial."""
+
+    raw = str(row.get("pagina_file") or "").strip()
+    document = str(row.get("documento") or "").strip()
+    if not raw or not document:
+        return None
+
+    source = Path(raw).expanduser()
+    candidates: list[Path] = []
+    if source.is_absolute():
+        candidates.append(source)
+    else:
+        candidates.extend(
+            [
+                PROJECT_ROOT / source,
+                corpus_root / document / "text" / source.name,
+                corpus_root / document / source,
+            ]
+        )
+
+    existing = list(
+        dict.fromkeys(path.resolve() for path in candidates if path.is_file())
+    )
+    return existing[0] if len(existing) == 1 else None
+
+
+def resolve_page_facsimile(
+    row: dict,
+    corpus_root: Path = DEFAULT_CORPUS_ROOT,
+) -> Path | None:
+    ocr_path = resolve_page_ocr_path(row, corpus_root=corpus_root)
+    if ocr_path is None:
+        return None
+    paired = resolve_paired_page_image(str(ocr_path))
+    if not paired:
+        return None
+    image_path = Path(paired)
+    if not image_path.is_file() or image_path.stat().st_size > MAX_FACSIMILE_BYTES:
+        return None
+    return image_path
+
+
+def collect_page_scripture_evidence(
+    row: dict,
+    *,
+    corpus_root: Path = DEFAULT_CORPUS_ROOT,
+    max_groups: int = MAX_SCRIPTURE_EVIDENCE_GROUPS,
+) -> dict[str, Any]:
+    """Executa o detector conservador de citações sobre uma única página OCR.
+
+    Reusa o mesmo detector que conhece blocos XML, aparato crítico, limites de
+    capítulos e convenções históricas PG/PL/PO. O retorno é compacto e serve
+    como evidência para o agente; não altera keywords nem bases.
+    """
+
+    document = str(row.get("documento") or "").strip()
+    ocr_path = resolve_page_ocr_path(row, corpus_root=corpus_root)
+    image_path = resolve_page_facsimile(row, corpus_root=corpus_root)
+    base: dict[str, Any] = {
+        "status": "ok" if ocr_path else "missing_ocr_file",
+        "ocr_file": str(ocr_path) if ocr_path else None,
+        "image_file": str(image_path) if image_path else None,
+        "candidates": [],
+    }
+    if ocr_path is None:
+        return base
+
+    collection_match = re.match(r"[A-Za-z]+", document)
+    collection = (collection_match.group(0) if collection_match else "").upper()
+    if collection not in {"PG", "PL", "PO"}:
+        collection = "PG"
+    volume_root = ocr_path.parent.parent if ocr_path.parent.name == "text" else ocr_path.parent
+    try:
+        scan = scan_file_task(
+            ScanTask(
+                volume_id=document,
+                collection=collection,
+                source_root=str(volume_root),
+                file_path=str(ocr_path),
+                physical_index=int(row.get("pagina_num") or 0),
+                is_index_source=False,
+                observed_aliases=(),
+                estimator_pages=(),
+                profile_fingerprint="keywords-scripture-evidence-v1",
+            )
+        )
+    except Exception as exc:
+        log.warning(
+            "[%s] p%s detector bíblico falhou em %s: %s",
+            document,
+            row.get("pagina_num"),
+            ocr_path,
+            exc,
+        )
+        base["status"] = "detector_error"
+        base["error"] = type(exc).__name__
+        return base
+
+    priority = {
+        "critical_apparatus": 0,
+        "note": 1,
+        "body": 2,
+        "header": 3,
+        "footer": 4,
+        "index": 5,
+    }
+    groups = [
+        group
+        for group in scan.get("groups") or []
+        if not (
+            group.get("detector_rule") == "explicit_book_chapter"
+            and AMBIGUOUS_CHAPTER_ONLY_SCRIPTURE_RE.fullmatch(
+                str(group.get("citation_raw") or "")
+            )
+        )
+    ]
+    groups = sorted(
+        groups,
+        key=lambda item: (
+            priority.get(str(item.get("context_kind") or ""), 9),
+            -float(item.get("confidence") or 0.0),
+            int(item.get("source_start") or 0),
+        ),
+    )
+    candidates: list[dict[str, Any]] = []
+    for group in groups[: max(0, max_groups)]:
+        occurrences = []
+        for occurrence in group.get("occurrences") or []:
+            occurrences.append(
+                {
+                    "book_key": occurrence.get("book_key"),
+                    "ref_norm": occurrence.get("ref_norm"),
+                    "chapter": occurrence.get("chapter_start"),
+                    "verse": occurrence.get("verse_start"),
+                    "chapter_end": occurrence.get("chapter_end"),
+                    "verse_end": occurrence.get("verse_end"),
+                    "status": occurrence.get("normalization_status"),
+                }
+            )
+        candidates.append(
+            {
+                "raw": group.get("citation_raw"),
+                "snippet": group.get("snippet_raw"),
+                "context": group.get("context_kind"),
+                "rule": group.get("detector_rule"),
+                "confidence": group.get("confidence"),
+                "occurrences": occurrences,
+            }
+        )
+    base["candidates"] = candidates
+    base["candidate_count"] = len(groups)
+    base["truncated"] = len(groups) > len(candidates)
+    return base
+
+
+def _scripture_evidence_prompt_block(evidence: dict[str, Any]) -> str:
+    candidates = evidence.get("candidates") or []
+    if not candidates:
+        return (
+            "<evidencia_citacoes_regex>\n"
+            "Nenhuma citação segura foi detectada automaticamente no OCR. "
+            "Isto não prova ausência; não invente livro, capítulo ou versículo.\n"
+            "</evidencia_citacoes_regex>\n"
+        )
+    compact = json.dumps(candidates, ensure_ascii=False, separators=(",", ":"))
+    return (
+        "<evidencia_citacoes_regex>\n"
+        "Candidatos determinísticos extraídos do OCR; são evidência para conferir, "
+        "não uma ordem para incluir todos. `context` distingue corpo, nota e aparato. "
+        "Só devolva capítulo/versículo sustentado pelo OCR ou pelo fac-símile anexado.\n"
+        f"{compact}\n"
+        "</evidencia_citacoes_regex>\n"
+    )
+
+
+def validate_scripture_warrant(
+    payload: KeywordsResult,
+    evidence: dict[str, Any],
+) -> list[str]:
+    """Sinaliza referências explícitas sem par livro/capítulo/versículo no OCR."""
+
+    supported: set[tuple[str, int, str | None]] = set()
+    for group in evidence.get("candidates") or []:
+        for occurrence in group.get("occurrences") or []:
+            book_key = str(occurrence.get("book_key") or "")
+            chapter = occurrence.get("chapter")
+            verse = occurrence.get("verse")
+            if book_key and isinstance(chapter, int):
+                supported.add((book_key, chapter, str(verse) if verse is not None else None))
+
+    values: list[str] = list(payload.get("keywords") or [])
+    for items in (payload.get("categorias") or {}).values():
+        if isinstance(items, list):
+            values.extend(item for item in items if isinstance(item, str))
+
+    issues: set[str] = set()
+    for value in values:
+        records = extract_citations_from_value_cached(
+            value,
+            source_kind="keyword_warrant",
+            source_path="keywords",
+            support_mode=True,
+        )
+        for record in records:
+            chapter = record.get("number")
+            if not isinstance(chapter, int):
+                continue
+            book_key = canonical_book_key(
+                record.get("book_canonical") or record.get("book"),
+                tradition="vulgate_migne",
+            )
+            if not book_key:
+                continue
+            verse = record.get("verse")
+            key = (book_key, chapter, str(verse) if verse is not None else None)
+            if key not in supported:
+                issues.add(f"scripture_without_ocr_warrant[{record.get('normalized') or value}]")
+    return sorted(issues)
 
 
 def is_already_done(
@@ -362,15 +609,21 @@ def ollama_chat(
     think: bool = False,
     top_p: float = TOP_P_DEFAULT,
     temperature: float = TEMPERATURE_DEFAULT,
+    image_path: Path | None = None,
 ) -> str:
     url = f"{base_url}/api/chat"
+    user_message: dict[str, Any] = {"role": "user", "content": prompt_user}
+    if image_path is not None:
+        encoded, _mime_type = encode_facsimile_for_transport(image_path)
+        user_message["images"] = [encoded]
+
     payload: dict = {
         "model": model,
         "stream": False,
         "format": "json",
         "messages": [
             {"role": "system", "content": prompt_system},
-            {"role": "user", "content": prompt_user},
+            user_message,
         ],
         "options": {
             "temperature": temperature,
@@ -440,6 +693,7 @@ def openai_chat(
     json_schema: dict | None = None,
     top_p: float = TOP_P_DEFAULT,
     temperature: float = TEMPERATURE_DEFAULT,
+    image_path: Path | None = None,
 ) -> str:
     api_key = os.getenv(api_key_env)
     if not api_key:
@@ -451,11 +705,22 @@ def openai_chat(
     # if json_schema:
     #     response_format = {"type": "json_schema", "json_schema": json_schema}
 
+    user_content: str | list[dict[str, Any]] = prompt_user
+    if image_path is not None:
+        encoded, mime_type = encode_facsimile_for_transport(image_path)
+        user_content = [
+            {"type": "text", "text": prompt_user},
+            {
+                "type": "image_url",
+                "image_url": {"url": f"data:{mime_type};base64,{encoded}"},
+            },
+        ]
+
     payload: dict = {
         "model": model,
         "messages": [
             {"role": "system", "content": prompt_system},
-            {"role": "user", "content": prompt_user},
+            {"role": "user", "content": user_content},
         ],
         "response_format": response_format,
     }
@@ -472,8 +737,6 @@ def openai_chat(
         payload["service_tier"] = "flex"
 
     data = json.dumps(payload).encode("utf-8")
-    with open("debug.json", "w") as f:
-        f.write(data.decode("utf-8"))
     # Alguns provedores (ex.: Cerebras via Cloudflare) bloqueiam user-agents
     # padrão do urllib. Enviamos um UA explícito e cabeçalho Accept para
     # evitar falsos positivos de WAF.
@@ -505,7 +768,6 @@ def openai_chat(
         raise RuntimeError(f"OpenAI HTTP {exc.code}: {detail}") from exc
     except Exception as exc:
         raise RuntimeError(f"OpenAI falhou: {exc}") from exc
-    print(body)
     choices = body.get("choices") or []
     if not choices:
         raise RuntimeError("OpenAI retornou sem choices")
@@ -533,6 +795,7 @@ def llm_chat(
     json_schema: dict | None = None,
     top_p: float = TOP_P_DEFAULT,
     temperature: float = TEMPERATURE_DEFAULT,
+    image_path: Path | None = None,
 ) -> str:
     # print(f'{prompt_system} {prompt_user}')
     if provider == "openai":
@@ -547,6 +810,7 @@ def llm_chat(
             json_schema=json_schema,
             top_p=top_p,
             temperature=temperature,
+            image_path=image_path,
         )
     return ollama_chat(
         prompt_system=prompt_system,
@@ -558,6 +822,7 @@ def llm_chat(
         think=think,
         top_p=top_p,
         temperature=temperature,
+        image_path=image_path,
     )
 
 
@@ -613,6 +878,9 @@ Regras de Normalização:
 - Normalize nomes de pessoas em forma canônica PT-BR quando houver forma consagrada.
 - Obras e referências bíblicas por extenso, sem abreviações. Capítulo e versículo separados por vírgula quando explicitamente citados no texto original.
 - Não separar nome dos livros dos seus capítulos e versículos, devem ficar em mesmo valor JSON para fazer sentido.
+- Trate citações no texto principal, notas e aparato crítico como material pesquisável, mas não confunda números de nota, coluna ou página com capítulo/versículo.
+- A seção evidencia_citacoes_regex contém candidatos mecânicos, não uma lista obrigatória. Confira o contexto e inclua apenas os que a página realmente sustenta.
+- Se houver fac-símile anexado, use-o para conferir leitura, bloco e pontuação ambíguos do OCR; o fac-símile não autoriza inferir referência ausente.
 - Preserve termos técnicos patrísticos consagrados em latim/grego transliterado quando for o uso mais estável.
 - Corrija pequenas falhas de OCR sem inventar conteúdo.
 - Qualquer explicação vai apenas em notas.
@@ -680,6 +948,8 @@ Regras:
 - Normalize nomes próprios para a forma canônica PT-BR quando inequívoca.
 - Obras e referências bíblicas por extenso, sem abreviações. Capítulo e versículo separados por vírgula quando explicitamente citados no texto original.
 - Não separar nome dos livros dos seus capítulos e versículos, devem ficar em mesmo valor JSON para fazer sentido.
+- Confira referências bíblicas contra evidencia_citacoes_regex e texto_original. A regex é candidata, não autoridade; capítulo/versículo sem suporte deve ser deletado ou corrigido.
+- Considere texto principal, notas e aparato crítico. Se houver fac-símile anexado, use-o apenas para resolver OCR/pontuação ambíguos.
 - Se houver duplicatas semânticas, faça merge no termo mais técnico e estável.
 - Preserve termos técnicos patrísticos consagrados em latim/grego transliterado.
 - Delete ruído editorial e marcadores de edição: Migne, Patrologia Latina, Patrologia Graeca, PL, PG, série, tomo, volume, coluna, caput etc.
@@ -708,7 +978,10 @@ def replace_linebreak(text: str) -> str:
 
 
 def build_user_review_prompt(
-    row: dict, keywords_originais: str, doc_name: str = ""
+    row: dict,
+    keywords_originais: str,
+    doc_name: str = "",
+    scripture_evidence: dict[str, Any] | None = None,
 ) -> str:
     """
     Monta o prompt para o Revisor Crítico.
@@ -720,6 +993,9 @@ def build_user_review_prompt(
     # 1. Identificação do Contexto (Ajuda a identificar ruídos de coleção como Migne)
     if doc_name:
         parts.append(f"--- CONTEXTO: {doc_name} ---\n")
+
+    evidence = scripture_evidence or collect_page_scripture_evidence(row)
+    parts.append(_scripture_evidence_prompt_block(evidence))
 
     # 2. Texto Original (A âncora)
     parts.append("<texto_original>")
@@ -854,21 +1130,11 @@ def _pretty_keywords_json(raw: str) -> str:
         return raw.strip()
 
 
-def _pretty_keywords_json(raw: str) -> str:
-    """Deixa o JSON legível para o prompt; cai para string crua se não parsear."""
-    if not raw or not raw.strip():
-        return "[]"
-    try:
-        parsed = json.loads(raw)
-        return json.dumps(parsed, ensure_ascii=False, indent=2)
-    except Exception:
-        return raw.strip()
-
-
 def build_user_prompt(
     row: dict,
     source: str,
     doc_name: str,
+    scripture_evidence: dict[str, Any] | None = None,
 ) -> str:
     """Monta o prompt de usuário com o conteúdo conforme --source."""
 
@@ -889,6 +1155,8 @@ def build_user_prompt(
     parts.append(
         f"Documento: {doc_name} | Coleção: {serie_nome} | Página: {row['pagina_num']}\n"
     )
+    evidence = scripture_evidence or collect_page_scripture_evidence(row)
+    parts.append(_scripture_evidence_prompt_block(evidence))
 
     if source == "resumo_pagina":
         parts.append("<conteúdo>")
@@ -1009,8 +1277,8 @@ def _parse_categories(raw: str) -> dict:
         if re.match(r"^\d+\.", cat_name):
             continue
 
-        # Split por , ou ; (respeitando itens entre aspas)
-        items = re.split(r"\s*[,;]\s*", cat_content)
+        # Vírgula entre algarismos pertence à citação ("Lucas 24,39").
+        items = re.split(r"\s*;\s*|\s*,\s*(?!\d)", cat_content)
         items = [it.strip().strip("*").strip() for it in items if it.strip()]
         # Remove itens vazios ou muito longos (noise)
         items = [it for it in items if 1 < len(it) < 200]
@@ -1024,6 +1292,16 @@ def _parse_categories(raw: str) -> dict:
 def _strip_think_block(raw: str) -> str:
     """Remove blocos <think>...</think> da resposta (chain-of-thought vazado)."""
     return re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL).strip()
+
+
+def _strip_json_code_fence(raw: str) -> str:
+    """Remove um fence Markdown externo sem alterar JSON interno."""
+    match = re.fullmatch(
+        r"\s*```(?:json)?\s*(.*?)\s*```\s*",
+        raw or "",
+        flags=re.DOTALL | re.IGNORECASE,
+    )
+    return match.group(1).strip() if match else (raw or "").strip()
 
 
 def _is_admin_or_blank_page(row: dict) -> bool:
@@ -1061,7 +1339,7 @@ def parse_keywords_response(raw: str) -> Tuple[KeywordsResult, str]:
     }
     """
     # Remove blocos de raciocínio que o modelo pode vazar mesmo com think=false
-    clean = _strip_think_block(raw)
+    clean = _strip_json_code_fence(_strip_think_block(raw))
 
     # Tenta parsing direto de JSON no formato esperado do system prompt
     try:
@@ -1071,7 +1349,9 @@ def parse_keywords_response(raw: str) -> Tuple[KeywordsResult, str]:
 
     if isinstance(data, dict):
         kws_from_json: List[str] = []
-        if isinstance(data.get("keywords_ranking"), list):
+        if isinstance(data.get("keywords_ranking"), list) and data.get(
+            "keywords_ranking"
+        ):
             kws_from_json = [
                 kw for kw in data["keywords_ranking"] if isinstance(kw, str)
             ]
@@ -1139,7 +1419,7 @@ def parse_judge_response(raw: str) -> Tuple[List[dict], List[str]]:
     if not raw or not raw.strip():
         return [], ["empty_response"]
 
-    cleaned = _strip_think_block(raw)
+    cleaned = _strip_json_code_fence(_strip_think_block(raw))
 
     # Rejeita respostas com caracteres de controle (ex.: \u0000, \u007f) para forçar retry
     if re.search(
@@ -1259,7 +1539,10 @@ def normalize_keywords_payload(raw: str) -> Tuple[KeywordsResult, Optional[str]]
         return result, parse_issue
 
     if isinstance(data, dict):
-        kws = data.get("keywords") or data.get("keywords_ranking")
+        if "keywords" in data:
+            kws = data.get("keywords")
+        else:
+            kws = data.get("keywords_ranking")
         if isinstance(kws, list):
             clean_kws = [_deep_clean_keyword(kw) for kw in kws if isinstance(kw, str)]
             clean_kws = [kw for kw in clean_kws if kw]
@@ -1286,6 +1569,10 @@ def normalize_keywords_payload(raw: str) -> Tuple[KeywordsResult, Optional[str]]
             if clean_cats:
                 result["categorias"] = clean_cats
 
+        notes = _clean_keyword_notes(data.get("notas") or data.get("notes"))
+        if notes:
+            result["notas"] = notes
+
         return result, parse_issue
 
     return {"keywords": []}, "unexpected_structure"
@@ -1293,31 +1580,30 @@ def normalize_keywords_payload(raw: str) -> Tuple[KeywordsResult, Optional[str]]
 
 def _strip_markdown_wrappers(text: str) -> str:
     """Remove bullets/ênfase/code simples que podem envolver a keyword."""
-    t = (text or "").strip()
-    # Fences e blocos de code inline
-    t = re.sub(r"^```[\w-]*\s*|\s*```$", "", t, flags=re.DOTALL)
-    t = re.sub(r"`{1,3}([^`]+?)`{1,3}", r"\1", t)
-    # Bullets / headers iniciais
-    t = re.sub(r"^(?:[>#]+|\*+|[-+\u2022•]+|#+)\s*", "", t)
-    # Ênfase simples
-    t = re.sub(r"\*{1,3}([^*]+?)\*{1,3}", r"\1", t)
-    t = re.sub(r"_{1,3}([^_]+?)_{1,3}", r"\1", t)
-    # Aspas/fences simétricos
-    while len(t) >= 2 and t[0] == t[-1] and t[0] in "*_`'\"":
-        t = t[1:-1].strip()
-    return t
+    return strip_markdown_wrappers(text)
 
 
 def _deep_clean_keyword(text: str) -> str:
     """Normalização agressiva para keywords vindas do LLM (quotes/ênfase/whitespace)."""
-    t = _strip_markdown_wrappers(text)
-    t = unicodedata.normalize("NFKC", t or "")
-    t = t.replace("\u00a0", " ")
-    t = re.sub(r"\s+", " ", t).strip()
-    # Keep parentheses intact to avoid stripping closing ")" from keywords that carry context
-    strip_chars = " \"'«»“”‘’[]{}|\\/–—-:;.,!?·•*&"
-    t = t.strip(strip_chars)
-    return t
+    cleaned, _issues = clean_keyword_text(text)
+    return cleaned
+
+
+def _clean_keyword_notes(raw_notes: Any) -> dict[str, str]:
+    """Preserva notas como metadado não pesquisável, sem caracteres invisíveis."""
+    if not isinstance(raw_notes, dict):
+        return {}
+    cleaned: dict[str, str] = {}
+    for raw_key, raw_value in raw_notes.items():
+        if not isinstance(raw_key, str) or not isinstance(raw_value, str):
+            continue
+        key = _deep_clean_keyword(raw_key)
+        value = unicodedata.normalize("NFKC", raw_value)
+        value, _removed_format = remove_unicode_format_chars(value)
+        value = re.sub(r"\s+", " ", value).strip()
+        if key and value:
+            cleaned[key] = value
+    return cleaned
 
 
 def _contains_control_chars(text: str) -> bool:
@@ -1354,9 +1640,10 @@ def _clean_list(items: List[str]) -> Tuple[List[str], List[str]]:
             issues.add("removed_non_string")
             continue
 
-        kw = _deep_clean_keyword(raw)
+        sanitized = sanitize_keyword_item(raw)
+        issues.update(sanitized.issues)
+        kw = sanitized.value
         if not kw:
-            issues.add("removed_empty")
             continue
 
         parts, did_split = _split_conjoined_keywords(raw, kw)
@@ -1373,7 +1660,7 @@ def _clean_list(items: List[str]) -> Tuple[List[str], List[str]]:
                 issues.add("removed_non_alpha")
                 continue
 
-            key = part.casefold()
+            key = keyword_normalization_key(part)
             if key in seen:
                 issues.add("removed_duplicate")
                 continue
@@ -1501,8 +1788,15 @@ def clean_keywords_structure(
         if clean_cats:
             cleaned["categorias"] = clean_cats
 
+    notes = _clean_keyword_notes(result.get("notas"))
+    if notes:
+        cleaned["notas"] = notes
+
     cleaned, citation_issues = extract_citations(cleaned)
     issues.extend(citation_issues)
+
+    if notes:
+        cleaned["notas"] = notes
 
     # Normaliza duplicatas de issues
     issues = sorted(set(issues))
@@ -2153,7 +2447,9 @@ def verify_documents(
     limit: Optional[int] = None,
     provider: str | None = None,
     model: str | None = None,
-) -> None:
+    report_output: TextIO | None = None,
+    check_scripture_warrant: bool = False,
+) -> dict[str, int]:
     """Valida keywords já gravadas e, opcionalmente, aplica correções leves."""
 
     total_pages = 0
@@ -2179,6 +2475,9 @@ def verify_documents(
             issues = clean_issues + validate_keywords(
                 cleaned, parse_issue, doc_name=doc
             )
+            if check_scripture_warrant:
+                scripture_evidence = collect_page_scripture_evidence(row)
+                issues.extend(validate_scripture_warrant(cleaned, scripture_evidence))
 
             page_reports.append(
                 {
@@ -2216,6 +2515,21 @@ def verify_documents(
             if rep["issues"]:
                 issue_pages_doc += 1
                 total_issue_pages += 1
+                if report_output is not None:
+                    report_output.write(
+                        json.dumps(
+                            {
+                                "documento": doc,
+                                "pagina_num": rep["pagina"],
+                                "keyword_count": rep["count"],
+                                "issues": sorted(rep["issues"]),
+                                "source": rep["source"],
+                                "modelo": rep["modelo"],
+                            },
+                            ensure_ascii=False,
+                        )
+                        + "\n"
+                    )
                 log.warning(
                     "[%s] p%d  %d keywords  issues: %s",
                     doc,
@@ -2293,6 +2607,7 @@ def verify_documents(
                         think=process_params["think"],
                         source=src,
                         verbose=False,
+                        facsimile=bool(process_params.get("facsimile", False)),
                     )
                     judge_llm_with_retry_and_save(
                         args=judge_args,
@@ -2318,6 +2633,7 @@ def verify_documents(
                         api_key_env=process_params["api_key_env"],
                         retries=process_params["retries"],
                         think=process_params["think"],
+                        include_facsimile=bool(process_params.get("facsimile", False)),
                     )
                 except Exception as exc:
                     log.error("[%s] p%d rerun falhou: %s", doc, rep["pagina"], exc)
@@ -2370,6 +2686,12 @@ def verify_documents(
     if rerun_bad:
         log.info("Reruns via LLM: %d páginas", total_reruns)
     log.info("─" * 60)
+    return {
+        "pages": total_pages,
+        "issue_pages": total_issue_pages,
+        "fixes": total_fixes,
+        "reruns": total_reruns,
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -2390,10 +2712,24 @@ def process_page(
     api_key_env: str,
     retries: int,
     think: bool = False,
+    include_facsimile: bool = False,
 ) -> Tuple[KeywordsResult, str]:
     """Processa uma página e retorna (resultado_estruturado, raw_response)."""
     doc_name = row["documento"]
-    user_prompt = build_user_prompt(row, source, doc_name)
+    scripture_evidence = collect_page_scripture_evidence(row)
+    user_prompt = build_user_prompt(
+        row,
+        source,
+        doc_name,
+        scripture_evidence=scripture_evidence,
+    )
+    image_path = (
+        Path(scripture_evidence["image_file"])
+        if include_facsimile and scripture_evidence.get("image_file")
+        else None
+    )
+    if include_facsimile and image_path is None:
+        log.info("[%s] p%d fac-símile não encontrado; seguindo só com OCR", doc_name, row["pagina_num"])
 
     # Trunca se necessário (Ollama)
     ctx_window = num_ctx if provider == "ollama" else 128000
@@ -2432,6 +2768,7 @@ def process_page(
                 api_key_env=api_key_env,
                 num_ctx=num_ctx,
                 think=think,
+                image_path=image_path,
             )
         except Exception as exc:
             log.warning(
@@ -2479,7 +2816,29 @@ def process_page(
                 row["pagina_num"],
                 ",".join(clean_issues),
             )
+        hard_sanitization_issues = sorted(
+            set(clean_issues).intersection(HARD_SANITIZATION_ISSUES)
+        )
+        if hard_sanitization_issues and attempt < retries:
+            log.warning(
+                "[%s] p%d tentativa %d/%d – resposta rejeitada pela sanitização: %s",
+                doc_name,
+                row["pagina_num"],
+                attempt,
+                retries,
+                ",".join(hard_sanitization_issues),
+            )
+            time.sleep(2 * attempt)
+            continue
         result = cleaned_result
+        warrant_issues = validate_scripture_warrant(result, scripture_evidence)
+        if warrant_issues:
+            log.warning(
+                "[%s] p%d citações sem suporte no detector OCR: %s",
+                doc_name,
+                row["pagina_num"],
+                ", ".join(warrant_issues),
+            )
         if len(result["keywords"]) >= MIN_KEYWORDS:
             break  # sucesso: resposta parseável com keywords suficientes
 
@@ -2542,11 +2901,23 @@ def preview_llm_judge(
     api_key_env: str,
     think: bool = False,
     retry: int = 0,
+    include_facsimile: bool = False,
 ) -> Tuple[str, str]:
     """Constrói o prompt de verificação e chama o LLM apenas para preview."""
     doc_name = row.get("documento", "")
     keywords_originais = _pretty_keywords_json(row.get("keywords_json", ""))
-    user_prompt = build_user_review_prompt(row, keywords_originais, doc_name=doc_name)
+    scripture_evidence = collect_page_scripture_evidence(row)
+    user_prompt = build_user_review_prompt(
+        row,
+        keywords_originais,
+        doc_name=doc_name,
+        scripture_evidence=scripture_evidence,
+    )
+    image_path = (
+        Path(scripture_evidence["image_file"])
+        if include_facsimile and scripture_evidence.get("image_file")
+        else None
+    )
 
     log.debug("[%s] p%d  prompt: %s", doc_name, row.get("pagina_num"), user_prompt)
 
@@ -2642,6 +3013,7 @@ def preview_llm_judge(
         json_schema=json_schema,
         top_p=top_p,
         temperature=temperature,
+        image_path=image_path,
     )
     return user_prompt, response
 
@@ -2672,6 +3044,7 @@ def judge_llm_with_retry_and_save(
                 api_key_env=args.api_key_env,
                 think=args.think,
                 retry=attempt,
+                include_facsimile=args.facsimile,
             )
             decisions, parse_issues = parse_judge_response(response)
             if decisions:
@@ -2884,6 +3257,25 @@ Exemplos:
         help="Valida e aplica auto-fix leve (dedupe/limpeza) nas keywords já gravadas.",
     )
     p.add_argument(
+        "--verify-report",
+        type=Path,
+        help="Grava JSONL das páginas problemáticas; requer --verify/--verify-fix.",
+    )
+    p.add_argument(
+        "--verify-scripture-warrant",
+        action="store_true",
+        help=(
+            "Com --verify/--verify-fix, compara citações explícitas das keywords "
+            "com o detector conservador aplicado ao OCR da página. Apenas reporta; "
+            "não apaga citações automaticamente."
+        ),
+    )
+    p.add_argument(
+        "--fail-on-issues",
+        action="store_true",
+        help="Retorna exit code 1 se a verificação encontrar problemas.",
+    )
+    p.add_argument(
         "-v",
         "--verbose",
         action="store_true",
@@ -2967,6 +3359,15 @@ Exemplos:
         "Desligado por padrão pois keywords não precisam de raciocínio profundo.",
     )
     p.add_argument(
+        "--facsimile",
+        action="store_true",
+        help=(
+            "Anexa ao modelo a imagem pareada da página quando existir (OpenAI ou "
+            "Ollama multimodal), convertida para JPEG em memória. O pareamento usa "
+            "o artefato físico, não a página editorial."
+        ),
+    )
+    p.add_argument(
         "--no-integrity-check",
         action="store_true",
         help="Desliga a checagem linguística (NLTK/CLTK) das keywords.",
@@ -3031,6 +3432,15 @@ def main() -> None:
         )
         sys.exit(1)
 
+    if (
+        args.verify_report or args.fail_on_issues or args.verify_scripture_warrant
+    ) and not verify_mode:
+        log.error(
+            "--verify-report/--fail-on-issues/--verify-scripture-warrant "
+            "requer --verify ou --verify-fix."
+        )
+        sys.exit(1)
+
     # Conexões
     if preview_mode:
         resumos_con = connect_readonly(args.resumos_db)
@@ -3059,7 +3469,8 @@ def main() -> None:
             mode_label += " (auto-fix ON)"
         if rerun_bad:
             mode_label += " + RERUN LLM"
-        ensure_keywords_columns(resumos_con)
+        if needs_write:
+            ensure_keywords_columns(resumos_con)
     else:
         use_separate_db = args.separate_db and args.write
         use_resumos_inline = args.write and not args.separate_db
@@ -3149,6 +3560,7 @@ def main() -> None:
                         reasoning_effort=args.reasoning_effort,
                         api_key_env=args.api_key_env,
                         think=args.think,
+                        include_facsimile=args.facsimile,
                     )
                 except Exception as exc:
                     log.error("[%s] p%d preview LLM-judge falhou: %s", doc, pnum, exc)
@@ -3221,17 +3633,31 @@ def main() -> None:
             "retries": args.retries,
             "think": args.think,
             "source": args.source,
+            "facsimile": args.facsimile,
         }
-        verify_documents(
-            con=resumos_con,
-            docs=docs,
-            apply_fix=apply_fix,
-            rerun_bad=rerun_bad,
-            process_params=process_params,
-            page=args.page,
-            limit=args.limit,
+        report_output = (
+            args.verify_report.open("w", encoding="utf-8")
+            if args.verify_report
+            else None
         )
+        try:
+            summary = verify_documents(
+                con=resumos_con,
+                docs=docs,
+                apply_fix=apply_fix,
+                rerun_bad=rerun_bad,
+                process_params=process_params,
+                page=args.page,
+                limit=args.limit,
+                report_output=report_output,
+                check_scripture_warrant=args.verify_scripture_warrant,
+            )
+        finally:
+            if report_output is not None:
+                report_output.close()
         resumos_con.close()
+        if args.fail_on_issues and summary["issue_pages"]:
+            raise SystemExit(1)
         return
 
     total_kw = 0
@@ -3293,6 +3719,7 @@ def main() -> None:
                 api_key_env=args.api_key_env,
                 retries=args.retries,
                 think=args.think,
+                include_facsimile=args.facsimile,
             )
             elapsed = time.time() - t0
 

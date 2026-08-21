@@ -14,17 +14,19 @@
 import { ptBR } from './pt-br';
 import { en } from './en';
 import { it } from './it';
+import { fr } from './fr';
 import type { Translations } from './pt-br';
 
 export type { Translations };
 
 /** Locales suportados */
-export type SupportedLocale = 'pt-br' | 'en' | 'it';
+export type SupportedLocale = 'pt-br' | 'en' | 'it' | 'fr';
 
 const dict: Record<SupportedLocale, Translations> = {
   'pt-br': ptBR,
   en,
   it,
+  fr,
 };
 
 /** Normaliza o locale recebido do Astro para nosso conjunto suportado */
@@ -33,6 +35,7 @@ function normalizeLocale(locale: string | undefined): SupportedLocale {
   const lower = locale.toLowerCase();
   if (lower === 'en' || lower.startsWith('en-')) return 'en';
   if (lower === 'it' || lower.startsWith('it-')) return 'it';
+  if (lower === 'fr' || lower.startsWith('fr-')) return 'fr';
   return 'pt-br';
 }
 
@@ -66,6 +69,7 @@ function detectLocaleFromPath(
   const normalizedPath = withoutBase.startsWith('/') ? withoutBase : `/${withoutBase}`;
   if (normalizedPath === '/en' || normalizedPath.startsWith('/en/')) return 'en';
   if (normalizedPath === '/it' || normalizedPath.startsWith('/it/')) return 'it';
+  if (normalizedPath === '/fr' || normalizedPath.startsWith('/fr/')) return 'fr';
   return 'pt-br';
 }
 
@@ -78,9 +82,10 @@ function stripLocaleFromPath(
     ? currentPath.slice(baseNoSlash.length)
     : currentPath;
   const normalizedPath = withoutBase.startsWith('/') ? withoutBase : `/${withoutBase}`;
-  if (normalizedPath === '/en' || normalizedPath === '/it') return '/';
+  if (normalizedPath === '/en' || normalizedPath === '/it' || normalizedPath === '/fr') return '/';
   if (normalizedPath.startsWith('/en/')) return normalizedPath.slice(3) || '/';
   if (normalizedPath.startsWith('/it/')) return normalizedPath.slice(3) || '/';
+  if (normalizedPath.startsWith('/fr/')) return normalizedPath.slice(3) || '/';
   return normalizedPath || '/';
 }
 
@@ -110,19 +115,27 @@ export function getLocaleRouteUrl(
 }
 
 /**
- * Serializa apenas as chaves de string/number do objeto de traduções para
- * injeção segura via `define:vars` nos scripts cliente.
- * Funções (ex: paginationShowing, viewerError) são excluídas aqui e
- * recriadas no cliente por `clientTranslations()`.
+ * Serializa strings, números, arrays e objetos simples do dicionário para
+ * injeção segura via `define:vars`. Funções são excluídas e recriadas no
+ * cliente por `clientTranslations()`.
  */
 export function serializeTranslations(
   t: Translations,
-): Record<string, string | number> {
-  const out: Record<string, string | number> = {};
-  for (const [k, v] of Object.entries(t)) {
-    if (typeof v === 'string' || typeof v === 'number') {
-      out[k] = v;
+): Record<string, unknown> {
+  const serializable = (value: unknown): unknown => {
+    if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean' || value === null) return value;
+    if (Array.isArray(value)) return value.map(serializable).filter((item) => item !== undefined);
+    if (value && typeof value === 'object') {
+      return Object.fromEntries(
+        Object.entries(value).map(([key, entry]) => [key, serializable(entry)]).filter(([, entry]) => entry !== undefined),
+      );
     }
+    return undefined;
+  };
+  const out: Record<string, unknown> = {};
+  for (const [k, v] of Object.entries(t)) {
+    const value = serializable(v);
+    if (value !== undefined) out[k] = value;
   }
   return out;
 }
@@ -134,8 +147,9 @@ export function serializeTranslations(
  *  - PT-BR (padrão): /search, /viewer, /
  *  - EN:             /en/search, /en/viewer, /en
  *  - IT:             /it/search, /it/viewer, /it
+ *  - FR:             /fr/search, /fr/viewer, /fr
  *
- * @param currentLocale  locale atual ('pt-br' | 'en' | 'it')
+ * @param currentLocale  locale atual ('pt-br' | 'en' | 'it' | 'fr')
  * @param currentPath    pathname completo, incluindo o base do Astro (ex: /BibliothecaPatristica/search)
  * @param base           BASE_URL do Astro, ex: /BibliothecaPatristica
  * @param search         query string atual (ex: ?doc=PG144&page=1)
@@ -147,7 +161,7 @@ export function getLocaleSwitchUrl(
   search: string = '',
 ): string {
   const locale = normalizeLocale(currentLocale);
-  const locales: SupportedLocale[] = ['pt-br', 'en', 'it'];
+  const locales: SupportedLocale[] = ['pt-br', 'en', 'it', 'fr'];
   const nextLocale = locales[(locales.indexOf(locale) + 1) % locales.length];
   return getLocaleUrl(nextLocale, currentPath, base, search);
 }
@@ -182,6 +196,7 @@ export function buildClientTranslations(
 ) {
   const isEn = locale === 'en';
   const isIt = locale === 'it';
+  const isFr = locale === 'fr';
   return {
     ...s,
     paginationShowing: isEn
@@ -190,54 +205,71 @@ export function buildClientTranslations(
       : isIt
         ? (start: number, end: number, total: number) =>
             `Mostrando ${start}–${end} di ${total} risultati`
+        : isFr
+          ? (start: number, end: number, total: number) =>
+              `Affichage de ${start} à ${end} sur ${total} résultats`
       : (start: number, end: number, total: number) =>
           `Mostrando ${start}–${end} de ${total} resultados`,
     paginationPage: isEn
       ? (page: number, total: number) => `Page ${page} / ${total}`
       : isIt
         ? (page: number, total: number) => `Pagina ${page} / ${total}`
+        : isFr
+          ? (page: number, total: number) => `Page ${page} / ${total}`
       : (page: number, total: number) => `Página ${page} / ${total}`,
     viewerVolume: isEn
       ? (id: string, title: string) => `Volume ${id}${title ? ' — ' + title : ''}`
       : isIt
         ? (id: string, title: string) => `Volume ${id}${title ? ' — ' + title : ''}`
+        : isFr
+          ? (id: string, title: string) => `Volume ${id}${title ? ' — ' + title : ''}`
       : (id: string, title: string) => `Volume ${id}${title ? ' — ' + title : ''}`,
     viewerPage: isEn
       ? (n: number) => `Page ${n}`
       : isIt
         ? (n: number) => `Pagina ${n}`
+        : isFr
+          ? (n: number) => `Page ${n}`
       : (n: number) => `Página ${n}`,
     viewerPageOfTotal: isEn
       ? (n: number, total: number) => `Page ${n} of ${total}`
       : isIt
         ? (n: number, total: number) => `Pagina ${n} di ${total}`
+        : isFr
+          ? (n: number, total: number) => `Page ${n} sur ${total}`
       : (n: number, total: number) => `Página ${n} de ${total}`,
-    viewerFirst: isEn ? 'First' : isIt ? 'Prima' : 'Primeira',
-    viewerLast: isEn ? 'Last' : isIt ? 'Ultima' : 'Última',
-    viewerGo: isEn ? 'Go' : isIt ? 'Vai' : 'Ir',
-    viewerPageInputLabel: isEn ? 'Page number' : isIt ? 'Numero di pagina' : 'Número da página',
-    viewerFocusMode: isEn ? 'Reading mode' : isIt ? 'Modalità lettura' : 'Modo leitura',
-    viewerNormalMode: isEn ? 'Default mode' : isIt ? 'Modalità standard' : 'Modo padrão',
+    viewerFirst: isEn ? 'First' : isIt ? 'Prima' : isFr ? 'Première' : 'Primeira',
+    viewerLast: isEn ? 'Last' : isIt ? 'Ultima' : isFr ? 'Dernière' : 'Última',
+    viewerGo: isEn ? 'Go' : isIt ? 'Vai' : isFr ? 'Aller' : 'Ir',
+    viewerPageInputLabel: isEn ? 'Page number' : isIt ? 'Numero di pagina' : isFr ? 'Numéro de page' : 'Número da página',
+    viewerFocusMode: isEn ? 'Reading mode' : isIt ? 'Modalità lettura' : isFr ? 'Mode lecture' : 'Modo leitura',
+    viewerNormalMode: isEn ? 'Default mode' : isIt ? 'Modalità standard' : isFr ? 'Mode standard' : 'Modo padrão',
     viewerDecreaseFont: 'A-',
     viewerIncreaseFont: 'A+',
-    viewerContinueReading: isEn ? 'Continue reading' : isIt ? 'Continua la lettura' : 'Continuar lendo',
-    viewerProgress: isEn ? 'Progress' : isIt ? 'Progresso' : 'Progresso',
-    viewerSearchInVolume: isEn ? 'Search in this volume…' : isIt ? 'Cerca in questo volume…' : 'Buscar neste volume…',
-    viewerIndex: isEn ? 'Index' : isIt ? 'Indice' : 'Índice',
+    viewerContinueReading: isEn ? 'Continue reading' : isIt ? 'Continua la lettura' : isFr ? 'Continuer la lecture' : 'Continuar lendo',
+    viewerProgress: isEn ? 'Progress' : isIt ? 'Progresso' : isFr ? 'Progression' : 'Progresso',
+    viewerSearchInVolume: isEn ? 'Search in this volume…' : isIt ? 'Cerca in questo volume…' : isFr ? 'Rechercher dans ce volume…' : 'Buscar neste volume…',
+    viewerIndex: isEn ? 'Authors and works' : isIt ? 'Autori e opere' : isFr ? 'Auteurs et œuvres' : 'Autores e obras',
     viewerNoIdentity: isEn
       ? 'Volume information not available'
       : isIt
         ? 'Informazioni sul volume non disponibili'
-        : 'Informação do volume não disponível',
+        : isFr
+          ? 'Informations sur le volume indisponibles'
+      : 'Informação do volume não disponível',
     viewerOcrError: isEn
       ? (msg: string) => `Error loading OCR: ${msg}`
       : isIt
         ? (msg: string) => `Errore nel caricamento dell'OCR: ${msg}`
+        : isFr
+          ? (msg: string) => `Erreur lors du chargement de l’OCR : ${msg}`
       : (msg: string) => `Erro ao carregar OCR: ${msg}`,
     viewerRelatedSim: isEn
       ? (sim: number) => `similarity ${sim.toFixed(2)}`
       : isIt
         ? (sim: number) => `somiglianza ${sim.toFixed(2)}`
+        : isFr
+          ? (sim: number) => `similarité ${sim.toFixed(2)}`
       : (sim: number) => `similaridade ${sim.toFixed(2)}`,
     viewerRelatedTitle: isEn
       ? (doc: string, title: string, page: number) =>
@@ -245,22 +277,31 @@ export function buildClientTranslations(
       : isIt
         ? (doc: string, title: string, page: number) =>
             `${doc}${title ? ' — ' + title : ''} · pag. ${page}`
+        : isFr
+          ? (doc: string, title: string, page: number) =>
+              `${doc}${title ? ' — ' + title : ''} · p. ${page}`
       : (doc: string, title: string, page: number) =>
           `${doc}${title ? ' — ' + title : ''} · pág. ${page}`,
     viewerError: isEn
       ? (msg: string) => `Error loading viewer: ${msg}`
       : isIt
         ? (msg: string) => `Errore nel caricamento del visualizzatore: ${msg}`
-      : (msg: string) => `Erro ao carregar viewer: ${msg}`,
+        : isFr
+          ? (msg: string) => `Erreur lors du chargement du lecteur : ${msg}`
+      : (msg: string) => `Erro ao carregar o leitor: ${msg}`,
     ariaFilterBy: isEn
       ? (cat: string, val: string) => `Filter by ${cat}: ${val}`
       : isIt
         ? (cat: string, val: string) => `Filtra per ${cat}: ${val}`
+        : isFr
+          ? (cat: string, val: string) => `Filtrer par ${cat} : ${val}`
       : (cat: string, val: string) => `Filtrar por ${cat}: ${val}`,
     ariaOccurrences: isEn
       ? (n: number) => `${n} occurrence(s)`
       : isIt
         ? (n: number) => (n === 1 ? '1 occorrenza' : `${n} occorrenze`)
+        : isFr
+          ? (n: number) => (n === 1 ? '1 occurrence' : `${n} occurrences`)
       : (n: number) => `${n} ocorrência(s)`,
   };
 }

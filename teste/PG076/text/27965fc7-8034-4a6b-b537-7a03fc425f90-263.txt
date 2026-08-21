@@ -1,105 +1,61 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="20,10,980,70">
-    500     CONTRA JULIANUM LIB. I.     510
-  </bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="120,90,880,420">
-    ΤΟΥ ΕΝ ΑΓΙΟΙΣ ΠΑΤΡΟΣ ΗΜΩΝ
-    ΚΥΡΙΛΛΟΥ
-    ΑΡΧΙΕΠΙΣΚΟΠΟΥ ΑΛΕΞΑΝΔΡΕΙΑΣ
-    ΥΠΕΡ ΤΗΣ
-    ΤΩΝ ΧΡΙΣΤΙΑΝΩΝ ΕΥΑΓΟΥΣ ΘΡΗΣΚΕΙΑΣ
-    ΠΡΟΣ ΤΑ ΤΟΥ ΕΝ ΑΘΕΟΙΣ ΙΟΥΛΙΑΝΟΥ
-    ΛΟΓΟΣ ΠΡΩΤΟΣ.
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="160,440,840,740">
-    S. P. N. CYRILLI
-    ALEXANDRIÆ ARCHIEPISCOPI,
-    PRO SANCTA CHRISTIANORUM RELIGIONE
-    ADVERSUS LIBROS ATHEI JULIANI*
-    LIBER PRIMUS.
-  </bloco>
-
-  [!-- Marginal section identifiers in the centre gutter (vertical) --]
-  <bloco tipo="nota_marginal" script="latino" bbox="490,800,520,840">
-    A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,960,520,1000">
-    B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,1120,520,1160">
-    C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,1280,520,1320">
-    D
-  </bloco>
-
-  [!-- Left column: Greek main text --]
-  <bloco tipo="texto_principal" script="grego" bbox="40,760,470,1360">
-    Οἱ μὲν σοφοὶ καὶ ἄγγινοι, καὶ τῶν ἱερῶν δογμάτων Α
-    ἐπιστήμονες, τὸ κάλλος τῆς ἀληθείας θαυμάζουσι,
-    καὶ ἐν παντὶ λόγῳ πεποίθηται, τὸ συνιέναι δύνασθαι
-    παραβολὴν καὶ σκοτεινὸν λόγον, ρήσεις τε σοφῶν
-    αἴνιγματα. Οὕτω γὰρ οὕτω ταῖς θεοπνεύστοις Γρα-
-    φαῖς ἀκριβῆ καὶ διωριωμένοις τὸν νοῦν ἐνεργεῖσθω,
-    φωτὸς μὲν τοῦ θείου τάς ἑαυτῶν ἀναπληρῶσι ψυχὰς·
-    ἀξιοζήλωτον δὲ πολιτείας ὀρθῆς καὶ εὐνοημένων
-    ἀρετῶν καύχημα, εἰεν ἄν καὶ ἄτερσις ὠφελείας
-    τῆς ἀναστάσεως πρόξενοι. Γέγραπται γὰρ, ὅτι «Εἰς
-    σοφὰς γένῃ σεαυτῷ, υἱὲ, σοϕὸς γένη καὶ τὸ νῦν ἔσῃ
-    οἷ ὃ διώρισαν, τὰ καρδίας καὶ τὴν εἰς νοῦν ἀνα-
-    ϕέρουσιν ἐμπειραν, ἀμέτοχοι τῆς ὅλης τοῦ θείου
-    φωτός, τοῖς δόγμασιν μὲν τῆς εὐσεβείας ἀπανταῖς
-    ταῖς ὑπαρξίαις, θρασυστομοῦσι δὲ λίαν καὶ τῆς ἀρρήτου χαρ-
-    ας καὶ παλαιφρόνων· ἔσται ὅπως...
-  </bloco>
-
-  [!-- Right column: Latin main text --]
-  <bloco tipo="texto_principal" script="latino" bbox="520,760,960,1360">
-    5 Cordatis et sagacibus divinaque dogmata cal-
-    lentibus viris, veritatis pulchritudo admirationi est,
-    neque quidquam antiquius dicitur, quam parabola
-    lan aliquam, et obscuram orationem, dicta sapien-
-    tum ac aenigmatia posse intelligere: usque adeo
-    vero divinis Scripturis attentio erectoque animo
-    incumbunt, ut totas perfusi animas divino lumine,
-    ac prætereà suspiciendum juste legumque obser-
-    vantissimus vitæ decus adepti, cæteris porro saluti-
-    supræmæque utilitatis parari ac conciliatores ex-
-    sistant. Scriptum est enim, « Fili, si tibi sapiens
-    fueris, sapiens esto et proximo tuo ». At depre-
-    vali corde, nullaque animum imbuit experiantia,
-    6 omninoque divinæ lucis expertes, adversus pie-
-    tatis placita insurgunt, et ore superbo nimium quan-
-    tum inestabili gloriæ insulant, contumeliosique
-    vocibus emissi, injustitiam in alium loquuntur », ut
-    David in Psalmiis cecinit. Quos ego existimo
-    hanc insanire insanum, et hoc laborare morbo,
-    ex ninia inscitia et manus stupore, aut, ut verius
-    ...
-  </bloco>
-
-  [!-- Footnotes / apparatus under columns --]
-  <bloco tipo="aparato_critico" script="latino" bbox="120,1240,500,1390">
-    * Prov. ix, 12.  * Psal. LXXII, 8 sec. LXX.
-  </bloco>
-
-  <bloco tipo="aparato_critico" script="latino" bbox="520,1240,940,1390">
-    * Dividuntur hi libri in aliis aliter codicibus. Sunt
-    enim qui in duos libros, singulos in quinque tomos
-    hoc adversus Julianum opus dividunt. In Regio li-
-    brario est. 'Αντιφθεγγίων' in quibusdam, Κατὰ τῶν
-    βλασφημιῶν τοῦ ἀσεβεστάτου 'Ιουλιανοῦ, in aliis,
-    ...
-  </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="700,1420,980,1480">
-    Digitized by Google
-  </bloco>
-
-  <notas>
-    Página com texto composto por títulos gregos e latinos e texto principal em duas colunas:
-    coluna esquerda em grego, coluna direita em latim. Letras A, B, C, D no gutter centrais transcritas como nota_marginal; pequenas incertezas em trechos longos do texto corrido foram mantidas literais conforme impresso.
-  </notas>
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="55,67,825,104">500　　　　　　　　　CONTRA JULIANUM LIB. I.　　　　　　　　　510</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="140,124,772,359">ΤΟΥ ΕΝ ΑΓΙΟΙΣ ΠΑΤΡΟΣ ΗΜΩΝ
+ΚΥΡΙΛΛΟΥ
+ΑΡΧΙΕΠΙΣΚΟΠΟΥ ΑΛΕΞΑΝΔΡΕΙΑΣ
+ΥΠΕΡ ΤΗΣ
+ΤΩΝ ΧΡΙΣΤΙΑΝΩΝ ΕΥΑΓΟΥΣ ΘΡΗΣΚΕΙΑΣ
+ΠΡΟΣ ΤΑ ΤΟΥ ΕΝ ΑΘΕΟΙΣ ΙΟΥΛΙΑΝΟΥ
+ΛΟΓΟΣ ΠΡΩΤΟΣ.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="135,401,758,575">S. P. N. CYRILLI
+ALEXANDRIÆ ARCHIEPISCOPI,
+PRO SANCTA CHRISTIANORUM RELIGIONE
+ADVERSUS LIBROS ATHEI JULIANI*
+LIBER PRIMUS.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="59,614,450,866">Οἱ μὲν σοφοὶ καὶ ἀγχίνοι, καὶ τῶν ἱερῶν δογμάτων
+ἐπιστήμονες, τὸ κάλλος τῆς ἀληθείας θαυμάζουσι,
+καὶ ἐν παντὶ λόγῳ πεποίηνται, τὸ συνιέναι δύνασθαι
+παραβολὴν καὶ σκοτεινὸν λόγον, ῥήσεις τε σοφῶν
+αἰνίγματα. Οὕτω γὰρ οὕτω ταῖς θεοπνεύστοις Γρα-
+φαῖς ἀκριβῆ καὶ διωρθωμένον τὸν νοῦν ἐνερείδοντες,
+φωτὸς μὲν τοῦ θείου τὰς ἑαυτῶν ἀναπιμπλᾶσι ψυχάς·
+ἀξιοζήλωτον δὲ πολιτείας ὀρθῆς καὶ εὐνομωτάτης
+ἀράμενοι καύχημα, εἶεν ἂν καὶ ἑτέροις ὠφελείας
+τῆς ἀνωτάτω πρόξενοι. Γέγραπται γὰρ, ὅτι « Ἐὰν
+σοφὸς γένῃ σεαυτῷ, υἱέ, σοφὸς γένῃ καὶ τῷ πλησίον.»
+οἱ δὲ διάστροφοι τῇ καρδίᾳ καὶ τὴν εἰς νοῦν οὐκ
+ἔχοντες ἐμπειρίαν, ἀμέτοχοί τε εἰς ἅπαν τοῦ θείου
+φωτός, τοῖς δόγμασι μὲν τῆς εὐσεβείας ἀντανίσταν-
+ται, θρασυστομοῦσι δὲ λίαν καὶ τῆς ἀρρήτου κατ-
+επαίρονται δόξης, καὶ παλιμφήμους ἱέντες φωνὰς,
+« ἀδικίαν εἰς τὸ ὕψος λαλοῦσι, » κατὰ τὸ ἐν Ψαλμοῖς
+ὑπὸ Δαυὶδ ὑμνούμενον. Ἀῤῥωστῆσαι δὲ οἶμαι τοῦτο
+αὐτοὺς ἐκ πολλῆς ἄγαν ἀποπληξίας καὶ τῆς ἐνοῦσης
+αὐτοῖς ἀμαθίας· μᾶλλον δὲ, εἰ χρὴ τ᾽ ἀληθὲς εἰπεῖν,</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="447,616,466,634">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="447,785,466,803">B</bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="76,868,448,954">⁽*⁾ Prov. IX, 12.  ⁽*⁾ Psal. LXXII, 8 sec. LXX.</bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="77,900,944,961">⁽*⁾ Dividuntur hi libri in aliis aliter codicibus. Sunt enim qui in duos libros, singulos in quinque tomos hoc adversus Julianum opus dividunt. In Regio librario titulus est. Ἀντιῤῥητικῶν; in quibusdam, Κατὰ τῶν βλασφημιῶν τοῦ ἀσεβεστάτου Ἰουλιανοῦ, in aliis, Ὑπὲρ τῆς τῶν Χριστιανῶν εὐαγοῦς θρησκείας πρὸς τὰ τοῦ ἐν ἀθέοις Ἰουλιανοῦ. Nos viri clarissimi Nicolai Borbonii, qui librum i Græce cum interpretatione Latina primus in lucem dedit, auctoritatem secuti, postremum hunc retinuimus. AUBERTUS.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="474,614,951,865">5 Cordatis et sagacibus divinaque dogmata cal-
+lentibus viris, veritatis pulchritudo admirationi est,
+neque quidquam antiquius ducitur, quam parabola-
+lam aliquam, et obscuram orationem, dicti sapien-
+tum ac aenigmata posse intelligere: usque adeo
+vero divinis Scripturis attento erectoque animo
+incumbunt, ut totas perfusi animas divino lumine,
+ac prætereà suspiciendum juste legumque obser-
+vantissimæ vitæ decus adepti, cæteris porro salutis
+supremæque utilitatis pararii ac conciliatores ex-
+sistant. Scriptum est enim, « Fili, si tibi sapiens
+fueris, sapiens esto et proximo tuoᵃ. » At depre-
+vati corde, nullaque animum imbuit experientia,
+6 omninoque divinæ lucis expertes, adversus pie-
+tatis placita insurgunt, et ore superbo nimium quan-
+tum ineffabili gloriæ insultant, contumeliosisque
+vocibus emissis, « injustitiam in altum loquunturᵇ, »
+ut David in Psalmis cecinit. Quos ego existimo
+hanc insanire insaniam, et hoc laborare morbo,
+ex nimia inscitia et mentis stupore, aut, ut verius</bloco>
+  <bloco tipo="rodape" script="latino" bbox="697,968,949,997">Digitized by Google</bloco>
+  <notas>Apenas as letras A e B aparecem como identificadores marginais visíveis na imagem; não há tinta correspondente a C ou D.</notas>
 </pagina>

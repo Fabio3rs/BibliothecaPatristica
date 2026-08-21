@@ -1,20 +1,26 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="100,40,900,80">
-    431 HEXAPLORUM QUÆ SUPERSUNT. 433
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="100,40,200,70">
+    131
   </bloco>
-  
-  <bloco tipo="texto_principal" script="misto" bbox="100,90,900,280">
+  <bloco tipo="cabecalho" script="latino" bbox="380,40,680,70">
+    HEXAPLORUM QUÆ SUPERSUNT.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="880,40,950,70">
+    133
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="100,80,350,300">
     TO EBPAIKON.
-    בבעתת שאול
-    וימלך הכל על-כפינשת 7
-    ויקרעם 9
-    לא-נתנה עוף השמים לנוח 10
-    ויעף 15
-    משקל 16
-    חדשה
-    ולא כבה אור-ני ישראל 17
-    איש מידן 20
-
+    בְּגֶבַע שָׁאוּל
+    7 וַיַּחְמֹל הַמֶּלךְ עַל־מְפִיבֹשֶׁת
+    9 וַיֹּקִיעֵם
+    10 לֹא־נָתַן עוֹף הַשָּׁמַיִם לָנוּחַ
+    15 וַיָּעֶף
+    16 מִשְׁקָל
+    חֲדָשָׁה
+    17 וְלֹא כָבָה אוֹר־נֵר יִשְׂרָאֵל
+    20 אִישׁ מָדוֹן
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="380,80,650,300">
     TO EBPAIKON
     Ἑλληνικοῖς γράμμασι.
     7.
@@ -24,7 +30,8 @@
     16.
     17.
     20.
-
+  </bloco>
+  <bloco tipo="texto_principal" script="greco" bbox="680,80,920,300">
     ἈΚΥΛΑΣ.
     Ἐν Γαβαὼν Σαούλ.
     7.
@@ -36,32 +43,38 @@
     17.
     20. Ἀνὴρ ἀντίδικος.
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="100,290,900,540">
+  <bloco tipo="texto_principal" script="latino" bbox="100,310,380,530">
     VERSIO HEBRAICI TEXT.
     In Gabaa Saul.
-    7. Et pepercit rex super Miphiboseth.
+    7. Et pepercit rex super Miphi-
+    boseth.
     9. Et strangulaverunt eos.
-    10. Non dedit volucrem cælorum requiescere.
+    10. Non dedit volucrem cœlo-
+    rum requiescere.
     15. Et deficiebat.
     16. Ponderis.
     Novo.
-    17. Nec extinguas lucernam Israel.
+    17. Nec extinguas lucernam
+    Israel.
     20. Vir mensuræ.
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,310,680,530">
     VULGATA LATINA.
     In Gabaa Saul.
-    7. Pepercitque rex Miphiboseth.
+    7. Pepercitque rex Miphibo-
+    seth.
     9. Qui crucifixerunt eos.
     10. Non dimisit aves lacerare.
     15. Deficiente autem David.
     16. Uncias.
     Ense novo.
-    17. Ne extinguas lucernam Israel.
+    17. Ne extinguas lucernam
+    Israeli.
     20. Vir excelsus.
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,310,920,530">
     AQUILA.
-    In Gabaaon Saul.
+    In Gabaoon Saul.
     7.
     9. Et suffixerunt eos.
     10.
@@ -71,58 +84,65 @@
     17.
     20. Vir adversarius.
   </bloco>
-
-  <bloco tipo="nota" script="misto" bbox="100,550,900,660">
+  <bloco tipo="nota" script="misto" bbox="100,540,950,640">
     Notæ et variæ lectiones ad cap. XXI lib. II Regum.
-    V. 2. Ἄλλος, ἐκ τοῦ αἵματος. Ἄλλος, ἐκ τῶν καταλοίπων. Hanc postremam lectionem sequuntur quædam τῶν O' editiones.
-    Ibid. Ἀ., καὶ ἐζήτησε etc. Hasce trium lectiones exhibet Coislin. 2.
+    V. 2. Ἄλλος, ἐκ τοῦ αματος. Ἄλλος, ἐκ τῶν
+    καταλοίπων. Hanc postremam lectionem sequuntur
+    quædam τῶν Ο editiones.
+    Ibid. Ἀ., καὶ ἐζήτησε etc. Hasce trium lectiones
+    exhibet Coislin. 2.
     V. 4. Ἄλλος, θέλετε. Reg.
-    V. 5. Ἄλλος, τοῦ μὴ ἀντικαθίστασθαι. Coisl. 2.
+    V. 5. Ἄλλος, τοῦ μ ἀντικαθίστασθαι. Coisl. 2.
     V. 6. Ἀ., καὶ ἀναπήξωμεν etc. Reg. et Coisl. 2.
-    Σ., ἵνα κρεμάσωμεν etc. Θ., καὶ ἐξηλιάσωμεν etc. Coislin. 2.
-    Ibid. Ἀ., Σ., Ο', ἐν Γαβαὼν Σαούλ etc. Coisl. 2. Edit. Rom., ἐν τῷ Γαβ.
+    Σ., ἵνα κρεμάσωμεν etc. Θ., καὶ ἐξηλιάσωμεν etc.
+    Coislin. 2.
+    Ibid. Ἀ., Σ., Ο᾽, ἐν Γαβαὼν Σαοὺλ etc. Coisl. 2.
+    Edit. Rom., ἐν τῷ Γαβ.
     V. 7. Ἄλλος, καὶ περιεποιήσατο etc. Reg.
     V. 9. Ἀ., καὶ ἀνέπηξαν αὐτούς. Sic Reg. et Drusius.
   </bloco>
-
-  <bloco tipo="cabecalho" script="latino" bbox="350,670,650,690">
+  <bloco tipo="cabecalho" script="latino" bbox="350,650,700,680">
     CAPUT XXII LIB. II REGUM.
   </bloco>
-
-  <bloco tipo="texto_principal" script="misto" bbox="100,700,900,800">
+  <bloco tipo="texto_principal" script="misto" bbox="100,680,350,780">
     TO EBPAIKON.
-    בני שאול מנני קרמני מחת 6
-    וירא אפני ים 16
-
+    6 חֶבְלֵי שְׁאוֹל סְבָבוּנִי קִדְּמוּנִי מוֹקְשֵׁי
+    מָוֶת
+    16 וַיֵּרָאוּ אֲפִיקֵי יָם
+  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="380,680,650,780">
     TO EBPAIKON
-    Ἑλληνικοῖς γράμμασι.
-    6.
-    16.
-
-    AKYLAΣ.
+    Ἑλληνικος γράμμασι.
     6.
     16.
   </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="100,810,900,950">
+  <bloco tipo="texto_principal" script="greco" bbox="680,680,920,780">
+    ΑΚΥΛΑΣ.
+    6.
+    16.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="100,790,380,880">
     VERSIO HEBRAICI TEXT.
-    6. Funes inferi circumdederunt me : præ venerunt me laquei mortis.
+    6. Funes inferi circumdederunt
+    me : prævenerunt me laquei mor-
+    tis.
     16. Et apparuerunt alvei maris.
-
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="400,790,680,880">
     VULGATA LATINA.
-    6. Funes inferni circumdederunt me : præ venerunt me laquei mortis.
-    46. Et apparuerunt effusiones maris.
-
+    6. Funes inferni circumdede-
+    runt me : prævenerunt me laquei
+    mortis.
+    16. Et apparuerunt effusiones
+    maris.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="700,790,920,880">
     AQUILA.
     6.
     16.
   </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="500,960,800,990">
+  <bloco tipo="rodape" script="latino" bbox="600,950,850,990">
     Digitized by Google
   </bloco>
-  
-  <notas>
-    Transcrição de página poliglota (Hexapla). O texto hebraico apresenta variantes ortográficas (ex: "בני שאול" em vez de "חבלי שאול" em 2 Reg 22:6). Números de versículos foram mantidos conforme impressos. Na coluna central superior, apenas os números dos versículos aparecem sob o título "TO EBPAIKON Ἑλληνικοῖς γράμμασι", sugerindo omissão da transliteração nestes versículos específicos nesta edição. No rodapé, o número "46" na coluna central parece ser um erro de impressão para "16", mas foi transcrito literalmente.
-  </notas>
+  <notas>Transcrição fiel da página impressa contendo textos paralelos em Hebraico, Grego e Latim (Hexapla). A coluna central superior e inferior sob "TO EBPAIKON Ἑλληνικος γράμμασι" apresenta apenas os números dos versículos na imagem fornecida.</notas>
 </pagina>

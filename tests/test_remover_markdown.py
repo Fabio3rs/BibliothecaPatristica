@@ -54,3 +54,24 @@ def test_remover_markdown_no_fences_returns_trimmed():
     src = "   Texto sem fences\n\n"
     out = main2.remover_markdown(src)
     assert out == "Texto sem fences"
+
+
+@pytest.mark.parametrize(
+    "nbsp_run",
+    [
+        "&amp;#160;" * 10_000,
+        "&#160;" * 10_000,
+        "&amp;nbsp;" * 10_000,
+        "&nbsp;" * 10_000,
+        "&amp;#xA0;" * 10_000,
+        "&#xA0;" * 10_000,
+        "\u00a0" * 10_000,
+        "&amp;#160; \t &#160; &nbsp; \u00a0",
+    ],
+)
+def test_remover_markdown_collapses_unbounded_nbsp_run(nbsp_run):
+    src = f'<pagina estado="com_texto"><bloco>123 {nbsp_run} título 160</bloco></pagina>'
+
+    out = main2.remover_markdown(src)
+
+    assert out == '<pagina estado="com_texto"><bloco>123 título 160</bloco></pagina>'

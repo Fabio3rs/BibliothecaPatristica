@@ -27,7 +27,7 @@ from scripts.playgrounds.embedding_playground import (
     DEFAULT_OLLAMA_URL,
     build_instruct_query,
 )
-from patristica_pipeline.vulgate_clementine import (
+from scripts.scripture_keywords.vulgate_clementine import (
     DEFAULT_VULGATE_JSON,
     VULGATE_EMBEDDING_PROFILE,
     VulgateClementine,

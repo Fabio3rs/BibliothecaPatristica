@@ -8,6 +8,7 @@ import pytest
 import patristica_pipeline.alphabetical_analysis_pipeline as analysis_pipeline
 from patristica_pipeline.alphabetical_analysis_db import (
     connect_analysis_db,
+    ensure_volume,
     init_analysis_schema,
     replace_semantic_payload,
     review_occurrences,
@@ -21,6 +22,7 @@ from patristica_pipeline.alphabetical_analysis_pipeline import (
     verify_stage,
 )
 from patristica_pipeline.alphabetical_prompt_contract import (
+    LOCATOR_CONTRACT_VERSION,
     OUTPUT_SCHEMA_VERSION,
     prompt_reference_bundle,
 )
@@ -109,6 +111,118 @@ def test_discovery_redispatches_actionable_expansion_checkpoint(
     assert discovery["status"] == "complete"
     assert phases == ["extract/discovery", "extract/discovery/expansion-0001"]
     assert "DISCOVERY EXPANSION ROUND 1" in prompts[1]
+
+
+def test_discovery_fingerprint_uses_prefilter_content_not_mtime(
+    tmp_path: Path,
+) -> None:
+    source_root = tmp_path / "PG001" / "text"
+    source_file = source_root / "page-001.txt"
+    source_file.parent.mkdir(parents=True)
+    source_file.write_text("INDEX NOMINUM\nAARON 10\n", encoding="utf-8")
+    filtered_file = tmp_path / "filtered.json"
+    write_json(filtered_file, {"candidate_files": [str(source_file)]})
+    phases: list[str] = []
+
+    def agent_runner(prompt: str, expected_output: Path, phase_id: str) -> None:
+        phases.append(phase_id)
+        discovery_input = json.loads(
+            (expected_output.parent / "discovery_input.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        write_json(
+            expected_output,
+            {
+                "schema_version": OUTPUT_SCHEMA_VERSION,
+                **prompt_reference_bundle(),
+                "stage": "discovery",
+                "volume_id": "PG001",
+                "source_root": str(source_root),
+                "input_fingerprint": discovery_input["input_fingerprint"],
+                "status": "complete",
+                "inspected_files": [str(source_file)],
+                "segments": [],
+                "expansion_requests": [],
+                "unresolved": [],
+            },
+        )
+
+    kwargs = {
+        "volume_id": "PG001",
+        "collection": "PG",
+        "source_root": source_root,
+        "filtered_pages_file": filtered_file,
+        "intermediate_dir": tmp_path / "intermediate",
+        "agent_runner": agent_runner,
+        "force": False,
+    }
+    first = analysis_pipeline._ensure_agent_discovery(**kwargs)
+    stat = filtered_file.stat()
+    filtered_file.touch()
+    assert filtered_file.stat().st_mtime_ns >= stat.st_mtime_ns
+    second = analysis_pipeline._ensure_agent_discovery(**kwargs)
+
+    assert phases == ["extract/discovery"]
+    assert second[2] == first[2]
+
+
+def test_discovery_skip_fingerprint_reuses_completed_manifest(
+    tmp_path: Path,
+) -> None:
+    source_root = tmp_path / "PG001" / "text"
+    source_file = source_root / "page-001.txt"
+    source_file.parent.mkdir(parents=True)
+    source_file.write_text("INDEX NOMINUM\nAARON 10\n", encoding="utf-8")
+    filtered_file = tmp_path / "filtered.json"
+    write_json(filtered_file, {"candidate_files": [str(source_file)]})
+    phases: list[str] = []
+
+    def agent_runner(prompt: str, expected_output: Path, phase_id: str) -> None:
+        phases.append(phase_id)
+        discovery_input = json.loads(
+            (expected_output.parent / "discovery_input.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        write_json(
+            expected_output,
+            {
+                "schema_version": OUTPUT_SCHEMA_VERSION,
+                **prompt_reference_bundle(),
+                "stage": "discovery",
+                "volume_id": "PG001",
+                "source_root": str(source_root),
+                "input_fingerprint": discovery_input["input_fingerprint"],
+                "status": "complete",
+                "inspected_files": [str(source_file)],
+                "segments": [],
+                "expansion_requests": [],
+                "unresolved": [],
+            },
+        )
+
+    kwargs = {
+        "volume_id": "PG001",
+        "collection": "PG",
+        "source_root": source_root,
+        "filtered_pages_file": filtered_file,
+        "intermediate_dir": tmp_path / "intermediate",
+        "agent_runner": agent_runner,
+        "force": False,
+    }
+    first = analysis_pipeline._ensure_agent_discovery(**kwargs)
+    write_json(
+        filtered_file,
+        {"candidate_files": [str(source_file)], "contract_changed": True},
+    )
+    second = analysis_pipeline._ensure_agent_discovery(
+        **kwargs,
+        skip_fingerprint=True,
+    )
+
+    assert phases == ["extract/discovery"]
+    assert second[2] == first[2]
 
 
 def scripture_semantic(source_root: Path, *, ref_count: int = 3) -> dict:
@@ -463,7 +577,7 @@ def test_named_stages_resume_and_assemble_without_locator_agent(
                     "source_root": str(source_root),
                     "input_fingerprint": discovery_input["input_fingerprint"],
                     "status": "complete",
-                    "inspected_files": [str(index_file)],
+                    "inspected_files": [str(index_file), str(target_file)],
                     "segments": [
                         {
                             "segment_id": "PL001:index",
@@ -480,6 +594,26 @@ def test_named_stages_resume_and_assemble_without_locator_agent(
             )
             return
         assert phase_id == "extract/semantic"
+        semantic_input = json.loads(
+            (intermediate / "semantic_input.json").read_text(encoding="utf-8")
+        )
+        discovery_file = intermediate / "discovery" / "discovery_manifest.json"
+        source_snapshot = json.loads(
+            (intermediate / "ocr_source_snapshot.json").read_text(encoding="utf-8")
+        )
+        assert semantic_input["discovery_sha256"] == analysis_pipeline.file_sha256(
+            discovery_file
+        )
+        assert semantic_input["source_snapshot_fingerprint"] == source_snapshot[
+            "source_snapshot_fingerprint"
+        ]
+        mechanical_file = intermediate / "mechanical_analysis.json"
+        assert semantic_input["mechanical_analysis_sha256"] == (
+            analysis_pipeline.file_sha256(mechanical_file)
+        )
+        assert str(mechanical_file) in prompt
+        mechanical = json.loads(mechanical_file.read_text(encoding="utf-8"))
+        assert mechanical["inspected_file_count"] == 2
         write_semantic_manifest(expected_output, source_root=source_root)
 
     monkeypatch.setattr(
@@ -534,6 +668,13 @@ def test_named_stages_resume_and_assemble_without_locator_agent(
         agent_runner=agent_runner,
     )
     assert located["resolved"] == 1
+    scripture_candidate_stage = Path(
+        located["scripture_candidate_stage_file"]
+    )
+    assert scripture_candidate_stage.is_file()
+    assert scripture_candidate_stage.with_suffix(
+        ".json.checkpoint.json"
+    ).is_file()
     verified = verify_stage(
         analysis_db=analysis_db,
         volume_id="PL001",
@@ -580,3 +721,184 @@ def test_named_stages_resume_and_assemble_without_locator_agent(
     assert stale_status["stages"]["discover"]["status"] == "complete"
     assert stale_status["stages"]["extract"]["status"] == "stale"
     assert stale_status["stages"]["assemble"]["status"] == "stale"
+
+
+def test_locate_resumes_scripture_fusion_after_later_failure(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    source_root = tmp_path / "PL001" / "text"
+    source_root.mkdir(parents=True)
+    (source_root / "index-001.txt").write_text(
+        "INDEX SCRIPTURAE\nI Cor. 1, 4 ... 101",
+        encoding="utf-8",
+    )
+    (source_root / "page-050.txt").write_text(
+        "101 HOMILIA 102\nI Cor. 1, 4",
+        encoding="utf-8",
+    )
+    analysis_db = tmp_path / "analysis.db"
+    with connect_analysis_db(analysis_db) as con:
+        init_analysis_schema(con)
+        replace_semantic_payload(
+            con,
+            payload=scripture_semantic(source_root, ref_count=1),
+        )
+
+    monkeypatch.setattr(
+        analysis_pipeline,
+        "estimate_editorial_pages",
+        lambda **kwargs: {"entries": []},
+    )
+    fallback_calls = 0
+    original_fallback = analysis_pipeline.add_scripture_evidence_candidates
+
+    def counted_fallback(*args, **kwargs):
+        nonlocal fallback_calls
+        fallback_calls += 1
+        return original_fallback(*args, **kwargs)
+
+    monkeypatch.setattr(
+        analysis_pipeline,
+        "add_scripture_evidence_candidates",
+        counted_fallback,
+    )
+    monkeypatch.setattr(
+        analysis_pipeline,
+        "run_scripture_table_repairs",
+        lambda **kwargs: (_ for _ in ()).throw(RuntimeError("later failure")),
+    )
+    kwargs = {
+        "analysis_db": analysis_db,
+        "scripture_db": tmp_path / "missing.db",
+        "volume_id": "PL001",
+        "collection": "PL",
+        "source_root": source_root,
+        "intermediate_dir": tmp_path / "intermediate",
+        "agent_runner": lambda *args: None,
+    }
+    with pytest.raises(RuntimeError, match="later failure"):
+        locate_stage(**kwargs)
+    assert fallback_calls == 1
+
+    monkeypatch.setattr(
+        analysis_pipeline,
+        "run_scripture_table_repairs",
+        lambda **kwargs: {"status": "not_needed", "groups": []},
+    )
+    result = locate_stage(**kwargs)
+
+    assert result["status"] == "complete"
+    assert fallback_calls == 1
+
+
+def test_verify_upgrades_legacy_item_and_supplies_facsimile_hint(
+    tmp_path: Path,
+) -> None:
+    source_root = tmp_path / "PG003" / "text"
+    images_root = tmp_path / "PG003" / "images"
+    source_root.mkdir(parents=True)
+    images_root.mkdir()
+    index_file = source_root / "index-010.txt"
+    target_file = source_root / "page-001.txt"
+    image_file = images_root / "PG003-001.png"
+    index_file.write_text("INDEX\nGregorius 101", encoding="utf-8")
+    target_file.write_text("101 TEST 102\nGregorius", encoding="utf-8")
+    image_file.write_bytes(b"")
+    db_path = tmp_path / "analysis.db"
+    legacy_item = {
+        "locator_key": "PG003:e1::ref:000001",
+        "entry_key": "PG003:e1",
+        "ref_order": 1,
+        "ref_kind": "editorial_page",
+        "ref_raw": "101",
+        "page_ref_raw": "101",
+        "page_ref_int": 101,
+        "cited_pages": [101],
+        "candidates": [
+            {
+                "file": str(target_file),
+                "probability": 0.6,
+                "evidence": [{"kind": "header_pair", "detail": "101/102"}],
+            }
+        ],
+    }
+    with connect_analysis_db(db_path) as con:
+        init_analysis_schema(con)
+        ensure_volume(
+            con,
+            volume_id="PG003",
+            collection="PG",
+            source_root=source_root,
+        )
+        con.execute(
+            """INSERT INTO analysis_sections(
+                section_key, volume_id, section_order, section_kind,
+                heading_raw, file_start, file_end, semantic_json
+            ) VALUES ('PG003:index', 'PG003', 1, 'onomastic_person',
+                      'INDEX ONOMASTICUS', ?, ?, '{}')""",
+            (str(index_file), str(index_file)),
+        )
+        con.execute(
+            """INSERT INTO analysis_entries(
+                entry_key, volume_id, section_key, entry_order, entry_kind,
+                lemma_raw, entry_raw, source_file, semantic_json
+            ) VALUES ('PG003:e1', 'PG003', 'PG003:index', 1, 'person',
+                      'Gregorius', 'Gregorius 101', ?, '{}')""",
+            (str(index_file),),
+        )
+        con.execute(
+            """INSERT INTO analysis_occurrences(
+                occurrence_key, volume_id, entry_key, ref_order, ref_kind,
+                ref_raw, locator_status, ref_json, locator_item_json
+            ) VALUES (?, 'PG003', 'PG003:e1', 1, 'editorial_page', '101',
+                      'pending', '{}', ?)""",
+            (legacy_item["locator_key"], json.dumps(legacy_item)),
+        )
+        con.commit()
+
+    seen_item: dict[str, object] = {}
+
+    def agent_runner(prompt: str, expected_output: Path, phase_id: str) -> None:
+        shard = json.loads(
+            expected_output.with_name("locator-0001_input.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        item = shard["items"][0]
+        seen_item.update(item)
+        write_json(
+            expected_output,
+            {
+                "schema_version": OUTPUT_SCHEMA_VERSION,
+                **prompt_reference_bundle(),
+                "locator_contract_version": LOCATOR_CONTRACT_VERSION,
+                "volume_id": "PG003",
+                "input_fingerprint": shard["input_fingerprint"],
+                "results": [
+                    {
+                        "entry_key": "PG003:e1",
+                        "ref_order": 1,
+                        "status": "unrecoverable_ocr",
+                        "target_file": None,
+                        "reason": "test keeps the locator terminal",
+                        "attempted_files": [str(target_file)],
+                    }
+                ],
+            },
+        )
+
+    summary = verify_stage(
+        analysis_db=db_path,
+        volume_id="PG003",
+        source_root=source_root,
+        intermediate_dir=tmp_path / "intermediate",
+        agent_runner=agent_runner,
+    )
+
+    assert summary["contract_upgrade"]["updated"] == 1
+    assert seen_item["locator_format_version"] == 2
+    assert "locator_contract" in seen_item
+    assert seen_item["candidates"][0]["facsimile_hint"]["image_path"] == str(
+        image_file.resolve()
+    )

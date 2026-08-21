@@ -1,60 +1,45 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="120,20,880,120">
-TRADITIO CATHOLICA.
-SÆCULUM XII. ANNI 1190-1200.
--
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="260,65,870,110">
+    TRADITIO CATHOLICA.
+    SÆCULUM XII. ANNI 1190-1200.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="60,120,940,360">
-ΤΟΥ ΣΟΦΩΤΑΤΟΥ ΚΑΙ ΛΟΓΙΩΤΑΤΟΥ
-
-ΕΥΣΤΑΘΙΟΥ
-
-ΜΗΤΡΟΠΟΛΙΤΟΥ ΘΕΣΣΑΛΟΝΙΚΗΣ
-
-ΑΠΑΝΤΑ
-
-ΟΣΑ ΕΚΚΛΗΣΙΑΣΤΙΚΗΣ ΕΣΤΙΝ ΥΠΟΘΕΣΕΩΣ.
+  <bloco tipo="texto_principal" script="grego" bbox="245,140,875,345">
+    ΤΟΥ ΣΟΦΩΤΑΤΟΥ ΚΑΙ ΛΟΓΙΩΤΑΤΟΥ
+    ΕΥΣΤΑΘΙΟΥ
+    ΜΗΤΡΟΠΟΛΙΤΟΥ ΘΕΣΣΑΛΟΝΙΚΗΣ
+    ΑΠΑΝΤΑ
+    ΟΣΑ ΕΚΚΛΗΣΙΑΣΤΙΚΗΣ ΕΣΤΙΝ ΥΠΟΘΕΣΕΩΣ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,360,940,580">
-SAPIENTISSIMI ET DOCTISSIMI
-
-EUSTATHII
-
-THESSALONICENSIS METROPOLITÆ
-
-OPERA
-
-QUOTCUNQUE ARGUMENTI SUNT ECCLESIASTICI.
-
-ACCESSIT
-
-ANTONII MONACHI
-
-COGNOMENTO MELISSÆ
-
-LOCI COMMUNES EX SACRIS ET PROFANIS AUCTORIBUS COLLECTI.
+  <bloco tipo="texto_principal" script="latino" bbox="110,370,890,680">
+    SAPIENTISSIMI ET DOCTISSIMI
+    EUSTATHII
+    THESSALONICENSIS METROPOLITÆ
+    OPERA
+    QUOTCUNQUE ARGUMENTI SUNT ECCLESIASTICI.
+    ACCESSIT
+    ANTONII MONACHI
+    COGNOMENTO MELISSÆ
+    LOCI COMMUNES EX SACRIS ET PROFANIS AUCTORIBUS COLLECTI.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,580,920,760">
-ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE,
-BIBLIOTHECÆ CLERI UNIVERSÆ,
-SIVE
-CURSUMUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
+  <bloco tipo="texto_principal" script="latino" bbox="115,690,875,785">
+    ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE,
+    BIBLIOTHECÆ CLERI UNIVERSÆ,
+    SIVE
+    CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="60,760,920,820">
-EUSTATHII TOMUS POSTERIOR. ANTONII TOMUS UNICUS.
+  <bloco tipo="texto_principal" script="latino" bbox="160,815,840,850">
+    EUSTATHII TOMUS POSTERIOR. ANTONII TOMUS UNICUS.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="60,820,940,980">
-VENIT 22 FRANCIS GALLICIS.
--
-EXCUDEBATUR; ET VENIT APUD J.-P. MIGNE EDITOREM,
-IN VIA DICTA THIBAUD, OLIM D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MONIA PARISINA.
-º1865
+  <bloco tipo="rodape" script="latino" bbox="350,875,650,900">
+    VENIT 22 FRANCIS GALLICIS.
   </bloco>
-  <notas>
-- Scriptos distinguidos em blocos: grego para o título e legendas gregas, latino para o restante.
-- A palavra transcrita como "ACCESSIT" (linha antes de "ANTONII MONACHI") é a leitura provável a partir do impresso.
-- "MELISSÆ" foi transcrita com a ligatura/forma visível no original; a forma pode aparecer com sinal que lembra "MELISSA" com ligadura.
-- Linha do rodapé editorial (EXCUDEBATUR; ET VENIT APUD...) contém sinais e pontuação tipográficos um pouco desgastados; transcrição procurou respeitar a grafia visível sem normalização.
-- Todas as caixas (bbox) estão em escala 0-1000 e são aproximações visuais do posicionamento dos blocos no folio.
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="45,910,925,974">
+    EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
+    IN VIA DICTA THIBAUD, OLIM D’AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO
+    D’ENFER NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MOENIA PARISINA.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="425,975,565,995">
+    O1865
+  </bloco>
+  <notas>Há filetes ornamentais entre os grupos de texto e pequenos sinais tipográficos dispersos na margem; não foram transcritos como texto.</notas>
 </pagina>

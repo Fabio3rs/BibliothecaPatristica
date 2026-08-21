@@ -18,9 +18,11 @@ jobs:
   build_site:
     runs-on: ubuntu-latest
     env:
-      INDEXADOR_VERSION: v0.5
-      INDEXADOR_NATIVE_SHA256: d1d7f89caa992ff977f09fafdc7e5cf26bf074c931d91ced1f7bde244bd6c0e5
-      INDEXADOR_ASSETS_SHA256: 9b2f9cc5ec25be54230bd94c4d6801b3696d1b9b486368f860abaefe2fbc87f5
+      INDEXADOR_VERSION: v0.6
+      INDEXADOR_NATIVE_SHA256: 9c87b719e6a05dd7e0b729d270db4e869ab723f47aecc8563a199187da92b427
+      INDEXADOR_ASSETS_SHA256: 1f292cc362353a2ef3b2c36b11d41bb562b7bda2a0d9459119361f4f0823198c
+      PUBLIC_INDEXADOR_INDICES_VERSION: ${{ github.sha }}
+      PUBLIC_INDEXADOR_SEARCH_VERSION: ${{ github.sha }}
     defaults:
       run:
         working-directory: web
@@ -72,15 +74,22 @@ jobs:
           test -x "${INDEXADOR_BINARY}"
           node ../tools/build_indices_indexador_from_json.mjs \
             --source-manifest ./public/indices/manifest.json \
-            --out ./public/indexador/indices \
+            --out "./public/indexador/indices/${PUBLIC_INDEXADOR_INDICES_VERSION}" \
             --binary "${INDEXADOR_BINARY}" \
             --base /BibliothecaPatristica \
             --documents-per-shard 500 \
+            --smoke-query 'clemens::volume=PG001' \
+            --smoke-query 'clementis::volume=PG001' \
+            --smoke-query 'corinthios::volume=PG001' \
+            --smoke-query 'Primeira Epístola aos Coríntios::volume=PG001' \
+            --smoke-query 'First Epistle to the Corinthians::volume=PG001' \
+            --smoke-query 'Prima Lettera ai Corinzi::volume=PG001' \
+            --smoke-query 'Première épître aux Corinthiens::volume=PG001' \
             --all
           node ../tools/build_search_indexador_from_shards.mjs \
             --public ./public \
             --source-manifest ./public/volumes.json \
-            --out ./public/indexador/search \
+            --out "./public/indexador/search/${PUBLIC_INDEXADOR_SEARCH_VERSION}" \
             --binary "${INDEXADOR_BINARY}" \
             --base /BibliothecaPatristica \
             --layout unified \
@@ -90,11 +99,16 @@ jobs:
       - name: Validate custom index assets
         run: |
           set -euo pipefail
-          test -s ./public/indexador/indices/index.map
-          test -s ./public/indexador/search/manifest.json
-          find ./public/indexador/indices -name '*.gz' -type f -print0 | xargs -0 -n1 gzip -t
-          find ./public/indexador/search -name '*.gz' -type f -print0 | xargs -0 -n1 gzip -t
-          node -e "const fs=require('fs'); const m=JSON.parse(fs.readFileSync('./public/indexador/search/manifest.json')); if(m.engine!=='PatrologiaIndexer'||m.sample||m.total_documents<1) process.exit(1); console.log('Search index:', m.total_documents, 'documents');"
+          indices_dir="./public/indexador/indices/${PUBLIC_INDEXADOR_INDICES_VERSION}"
+          test -s "${indices_dir}/index.map"
+          test -s "${indices_dir}/manifest.json"
+          search_dir="./public/indexador/search/${PUBLIC_INDEXADOR_SEARCH_VERSION}"
+          test -s "${search_dir}/manifest.json"
+          test -s "${search_dir}/all/words_0.gz"
+          find "${indices_dir}" -name '*.gz' -type f -print0 | xargs -0 -n1 gzip -t
+          find "${search_dir}" -name '*.gz' -type f -print0 | xargs -0 -n1 gzip -t
+          node -e "const fs=require('fs'); const source=JSON.parse(fs.readFileSync('./public/indices/manifest.json')); const built=JSON.parse(fs.readFileSync(process.argv[1])); const expected=(source.volumes||[]).reduce((n,v)=>n+1+Number(v.works_total||0)+Number(v.sections_total||0)+Number(v.entries_total||0),0); if(built.engine!=='PatrologiaIndexer'||built.sample||built.content_schema_version!==3||built.total_documents!==expected||built.source_generated_at!==source.generated_at) process.exit(1); console.log('Indices index:', built.total_documents, 'documents from', built.volumes, 'volumes');" "${indices_dir}/manifest.json"
+          node -e "const fs=require('fs'); const m=JSON.parse(fs.readFileSync(process.argv[1])); if(m.engine!=='PatrologiaIndexer'||m.sample||m.total_documents<1||m.suggestions?.wordlists!==true) process.exit(1); console.log('Search index:', m.total_documents, 'documents with suggestion wordlists');" "${search_dir}/manifest.json"
 
       - name: Build
         run: npm run build

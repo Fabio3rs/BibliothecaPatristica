@@ -1,11 +1,9 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="110,45,960,120">
+  <bloco tipo="cabecalho" script="latino" bbox="100,20,900,60">
     607 EUSEBII VERCELL. EVANGELIUM CUM VARIIS COD. COLLATUM. 608
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="190,105,860,150">
-    CODEX VERCELLENSIS. CODEX VERONENSIS.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="130,150,340,625">
+  <bloco tipo="texto_principal" script="latino" bbox="100,60,480,600">
+    CODEX VERCELLENSIS.
     ciderunt
     eos, vos autem
     (a) aedificatis †.
@@ -13,11 +11,11 @@
     tia Dei dicit :
     Mittam in
     illis Prophe-
-    tas, et Apo sto-
+    tas, et Aposto-
     los ;
     et ex illis occi-
     dent, et per-
-    sequuntur :
+    sequentur :
     50. ut exquira-
     tur sanguis
     omnium
@@ -50,8 +48,6 @@
     hibuistis.
     53. Dicente autem
     illo haec co-
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="350,150,530,720">
     ram omni po-
     pulo, coepe-
     runt tam Scri-
@@ -62,7 +58,7 @@
     minare illi
     de pluribus,
     54. quaerentes
-    occansionem
+    occansonem
     aliquam in-
     venire ab il-
     lo, ut accusa-
@@ -74,9 +70,8 @@
     turba. . . . .
     tinen. . . . . um
     in. . . . . . t
-    ita, ut. . . . al-
-    ium. . . . . . . .
-    culcarent,
+    ita, ut. . . . .al-
+    ium. . . . . . . .culcarent,
     coepit dice-
     re ad discen-
     tes : Primum
@@ -94,11 +89,12 @@
     3. Qua. . . . n tene-
     bris. . . . ritis,
     in lu. . . . rae-
-    t. . . huntur ; et
+    t. . . . buntur ; et
     quod ad aurem
     locu. . fueri-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="565,150,770,625">
+  <bloco tipo="texto_principal" script="latino" bbox="520,60,900,600">
+    CODEX VERONENSIS.
     occiderunt
     eos, vos autem
     (a) aedificatis †.
@@ -108,7 +104,7 @@
     et Apostolos;
     et ex illis
     occident, et
-    persequuntur :
+    persequentur :
     50. ut inquira-
     tur sanguis
     omnium Pro-
@@ -143,8 +139,6 @@
     introibant,
     prohibuistis.
     53. Cum ad illos
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="780,150,960,720">
     diceret coram
     (f) omni ple-
     be, † coepe-
@@ -188,11 +182,11 @@
     in tenebris
     dixistis, in
     lumine dicen-
-    tur; et quod
+    tur ; et quod
     in aure locuti
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="120,660,960,850">
-    CODEX BRIXIANUS. !
+  <bloco tipo="texto_principal" script="latino" bbox="100,610,900,740">
+    CODEX BRIXIANUS.!
     occiderunt | eos. vos autem aedificatis † eorum
     monumenta. Propterea et sapientia Dei dixit. Mit-
     tam ad illos Prophetas. et Apostolos. et ex illis oc-
@@ -215,24 +209,37 @@
     quod non sciatur. Ideoque quae in tenebris
     dixistis in lumine audientur. et quod in aurem locuti
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="120,850,960,1110">
+  <bloco tipo="texto_principal" script="latino" bbox="100,750,900,780">
     CODEX CORBEIENSIS.
     Mutilus est cod. usque ad versum 8 capitis XII.
-
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="100,785,900,820">
     VARIANTES LECTIONES.
-
-    (a) Gat. et Mm. ex ore ejus. Vulg. de ore ejus. — (b) Gat. et Mm. quae est. Vulg. quod est.
-
+    ¹ Gat. et Mm. ex ore ejus. Vulg. de ore ejus.
+    ² Gat. et Mm. quae est. Vulg. quod est.
+  </bloco>
+  <bloco tipo="aparato_critico" script="latino" bbox="100,825,900,910">
     LECTIONES CODICIS VINDEBONENSIS ABEUNTES AB EDITIONE VULGATA.
-
-    49. in illos. 50. usque ad generationem istam. 51. Abel justi. 52. quia abstulistis.... et ipsi... et introeuntes (sic) perhibuistis. 53. Cum haec ad illos diceret, et coram omni plebe, coeperunt Legisperiti, et Pharisaei graviter habere, et committere cum illo de multis. 54. quaerentes occasionem aliquam invenire in illo, ut eum accusarent.
-
-    CAP. XII. — 1. ad discipulos : Primum attendite. 5. lu- ce... in aure... in cellariis, praedicabitur super tecta, et in plateis.
+    49. in illos. 50. usque ad generationem istam. 51.
+    Abel justi. 52. quia abstulistis.... et ipsi... et introeuntes
+    (sic) perhibuistis. 53. Cum haec ad illos diceret, et coram
+    omni plebe, coeperunt Legisperiti, et Pharisaei graviter
+    habere, et committere cum illo de multis. 54. quaeren-
+    tes occasionem aliquam invenire in illo, ut eum accus-
+    rent.
+    CAP. XII. — 1. ad discipulos : Primum attendite. 5. lu-
+    ce... in aure... in cellariis, praedicabitur super tecta,
+    et in plateis.
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="120,1110,960,1320">
+  <bloco tipo="nota" script="misto" bbox="100,915,900,970">
     BLANCHINI NOTÆ.
-
-    (a) Post aedificatis, deest sepulcra eorum, etiam in cod. Cant. — (b) Post ideo, deest, et sapientia Dei dixit, pariter in cod. Cant. — (c) Ita et cod. Cant. ἕως τῆς γενεᾶς ταύτης. — (d) Ita et cod. Cant. [ilegivel]. — (e) Addit et, cod. quoque Cant. καί. — (f) Ita et cod. Cant. ἐνώπιον παντὸς τοῦ λαοῦ. — (g) Ita et cod. Cant. κακῶς ἔχειν, καὶ συμβάλλειν αὐτῷ, ζητοῦντες ἀφορμὴν τινα λαβεῖν αὐτοῦ. — (h) Addit vobis, etiam tex. Gr. [ilegivel].
+    (a) Post aedificatis, deest sepulcra eorum, etiam in cod. Cant. — (b) Post ideo, deest, et sapientia Dei dixit,
+    pariter in cod. Cant. — (c) Ita et cod. Cant. ἕως τῆς γενεᾶς ταύτης. — (d) Ita et cod. Cant. ἐκρύψατε. —
+    (e) Addit et, cod. quoque Cant. καί. — (f) Ita et cod. Cant. ἐνώπιον παντὸς τοῦ λαο. — (g) Ita et cod. Cant.
+    κακῶς ἔχειν, καὶ συμβάλλειν αὐτῷ, ζητοῦντες ἀφορμήν τινα λαβεῖν αὐτοῦ. — (h) Addit vobis, etiam tex. Gr. ἑαυτοῖς.
   </bloco>
-  <notas>Transcrição diplomática com preservação de quebras de linha e sinais editoriais. As passagens truncadas no impresso foram mantidas com [ilegivel] apenas onde a leitura não é segura.</notas>
+  <bloco tipo="rodape" script="latino" bbox="600,975,800,995">
+    Digitized by Google
+  </bloco>
+  <notas>Transcrição fiel da edição crítica impressa. Texto grego nas notas de Blanchini preservado. Lacunas indicadas por pontos no original mantidas.</notas>
 </pagina>

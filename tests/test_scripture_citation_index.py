@@ -9,8 +9,10 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from patristica_pipeline.scripture_citation_index import (
+    DETECTOR_VERSION,
     ScanTask,
     build_citation_database,
+    citation_database_report,
     citation_logical_text,
     enrich_locator_items_from_citation_db,
     scan_file_task,
@@ -151,6 +153,55 @@ Rom. 5, 8
     assert occurrence["book_raw"] == "I Corin-\nthios"
     assert group["citation_raw"] == "I Corin-\nthios 13, 4"
     assert group["evidence_json"]["matching_pipeline"].endswith("+regex")
+
+
+def test_scanner_normalizes_abbreviated_books_and_rejects_page_numbers_as_verses(
+    tmp_path: Path,
+) -> None:
+    source_root = tmp_path / "teste" / "PL996" / "text"
+    source_root.mkdir(parents=True)
+    path = source_root / "PL996-001.txt"
+    path.write_text(
+        """<pagina tipo="conteudo">
+<cabecalho>781 PSALMUS XLII. 782</cabecalho>
+<bloco tipo="cabecalho">PSALMUS XLII. 782</bloco>
+<bloco tipo="cabecalho">45 Matth. V. 46</bloco>
+<bloco tipo="texto_principal">Matth. V, 3; Ioan. III, 16; Ps. XLII, 3.</bloco>
+<bloco tipo="aparato_critico">50 Matth. v, 13. 51 Matth. xiii, 12.</bloco>
+</pagina>""",
+        encoding="utf-8",
+    )
+
+    result = scan_file_task(
+        ScanTask(
+            volume_id="PL996",
+            collection="PL",
+            source_root=str(source_root),
+            file_path=str(path),
+            physical_index=0,
+            is_index_source=False,
+            observed_aliases=(),
+            estimator_pages=(),
+            profile_fingerprint="fixture",
+        )
+    )
+    refs = {
+        occurrence["ref_norm"]
+        for group in result["groups"]
+        for occurrence in group["occurrences"]
+    }
+
+    assert {
+        "Salmos 42",
+        "Salmos 42,3",
+        "São Mateus 5",
+        "São Mateus 5,3",
+        "São Mateus 5,13",
+        "São Mateus 13,12",
+        "São João 3,16",
+    } <= refs
+    assert "Salmos 42,782" not in refs
+    assert "São Mateus 5,46" not in refs
 
 
 def test_malformed_xml_fallback_remains_body_citation_source(tmp_path: Path) -> None:
@@ -391,6 +442,12 @@ def test_database_is_incremental_searchable_and_excludes_index_sources(
     assert first["seed_link_count"] >= 1
     assert second["scanned_file_count"] == 0
     assert second["skipped_file_count"] == 2
+    report = citation_database_report(db_path)
+    assert report["outdated_detector_file_count"] == 0
+    assert report["outdated_detector_volume_count"] == 0
+    assert report["stored_detector_versions"] == [
+        {"detector_version": DETECTOR_VERSION, "files": 2, "volumes": 1}
+    ]
     editorial = search_citations(
         db_path=db_path,
         volume_id="PO999",
@@ -456,6 +513,14 @@ def test_database_is_incremental_searchable_and_excludes_index_sources(
     )
     assert stale_artifact["coverage_status"] == "stale"
     assert stale_artifact["stale_file_count"] == 1
+    with sqlite3.connect(db_path) as con:
+        con.execute(
+            "UPDATE citation_files SET detector_version = ? WHERE file_id = 1",
+            (DETECTOR_VERSION - 1,),
+        )
+    outdated_report = citation_database_report(db_path)
+    assert outdated_report["outdated_detector_file_count"] == 1
+    assert outdated_report["outdated_detector_volume_count"] == 1
 
 
 def test_body_and_ocr_note_call_are_persisted_in_database(tmp_path: Path) -> None:
@@ -519,3 +584,17 @@ def test_one_and_two_workers_produce_identical_semantic_rows(
     )
 
     assert _semantic_rows(serial_db) == _semantic_rows(parallel_db)
+
+
+def test_scanner_refuses_more_than_twenty_workers(tmp_path: Path) -> None:
+    try:
+        build_citation_database(
+            db_path=tmp_path / "citations.db",
+            volumes=[],
+            workers=21,
+            payload_dir=tmp_path / "payloads",
+        )
+    except ValueError as exc:
+        assert "between 1 and 20" in str(exc)
+    else:
+        raise AssertionError("worker cap should be enforced")

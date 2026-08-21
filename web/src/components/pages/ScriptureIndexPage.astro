@@ -1,0 +1,841 @@
+---
+import Layout from '../Layout.astro';
+import { getLocaleBase, getLocaleRouteUrl, serializeTranslations, useTranslations } from '../../i18n';
+
+interface Props {
+  book?: string;
+  bookLabel?: string;
+}
+
+const { book = '', bookLabel = '' } = Astro.props as Props;
+const base = import.meta.env.BASE_URL || '/';
+const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
+const locale = (Astro.currentLocale ?? 'pt-br') as 'pt-br' | 'en' | 'it' | 'fr';
+const t = useTranslations(locale);
+const uiStrings = serializeTranslations(t);
+const localeBase = getLocaleBase(locale, base);
+const alphaBaseRoute = getLocaleRouteUrl(locale, 'indices-alfabeticos', base);
+const scriptureBaseRoute = getLocaleRouteUrl(locale, 'indices-alfabeticos/scripture', base);
+const viewerBaseRoute = getLocaleRouteUrl(locale, 'viewer', base);
+const pageTitle = book
+  ? `${t.scriptureIndexTitle} — ${bookLabel || book}`
+  : t.scriptureIndexTitle;
+const breadcrumbs: Array<{ label: string; href?: string }> = [
+  { label: t.breadcrumbHome, href: localeBase },
+  { label: t.scriptureIndexTitle, href: alphaBaseRoute },
+];
+if (book) breadcrumbs.push({ label: bookLabel || book });
+const scriptureClientConfig = {
+  uiStrings,
+  locale,
+  assetBase: baseWithSlash,
+  fixedBook: book,
+  scriptureBaseRoute,
+  viewerBaseRoute,
+};
+---
+
+<Layout title={pageTitle} description={t.scriptureIndexSubtitle} breadcrumbs={breadcrumbs}>
+  <section class="scripture-hero card">
+    <div>
+      <p class="scripture-eyebrow">{t.scriptureIndexEyebrow}</p>
+      <h1>{pageTitle}</h1>
+      <p class="scripture-lead">{t.scriptureIndexSubtitle}</p>
+    </div>
+    <div class="scripture-hero-note">
+      <strong>{t.scriptureIndexPhysicalPageTitle}</strong>
+      <p>{t.scriptureIndexPhysicalPageNote}</p>
+    </div>
+  </section>
+
+  <section class="scripture-search card" aria-labelledby="scripture-search-title">
+    <div class="scripture-section-heading">
+      <div>
+        <p class="scripture-eyebrow">{t.scriptureIndexSearchKicker}</p>
+        <h2 id="scripture-search-title">{t.scriptureIndexSearchTitle}</h2>
+      </div>
+      {book && <a class="button secondary" href={scriptureBaseRoute}>{t.scriptureIndexAllBooks}</a>}
+    </div>
+
+    <form id="scripture-search-form" class="scripture-form" role="search">
+      <label>
+        <span>{t.scriptureIndexBookLabel}</span>
+        <select id="scripture-book" name="book" disabled>
+          <option value="">{t.scriptureIndexChooseBook}</option>
+        </select>
+      </label>
+      <label class="scripture-query-field">
+        <span>{t.scriptureIndexReferenceLabel}</span>
+        <input
+          id="scripture-query"
+          name="q"
+          type="search"
+          inputmode="search"
+          autocomplete="off"
+          placeholder={t.scriptureIndexSearchPlaceholder}
+        />
+      </label>
+      <label>
+        <span>{t.scriptureIndexSourceLabel}</span>
+        <select id="scripture-source" name="source">
+          <option value="all">{t.scriptureIndexAllSources}</option>
+          <option value="direct">{t.scriptureIndexDirectOnly}</option>
+          <option value="associated">{t.scriptureIndexAssociationsOnly}</option>
+          <option value="ocr">{t.scriptureIndexOcrOnly}</option>
+        </select>
+      </label>
+      <button class="button" type="submit">{t.scriptureIndexSearchButton}</button>
+    </form>
+    <p class="scripture-source-note">{t.scriptureIndexSourceNote}</p>
+  </section>
+
+  <section
+    class="scripture-app card"
+    id="scripture-app"
+    data-scripture-config={JSON.stringify(scriptureClientConfig)}
+  >
+    <div id="scripture-summary" class="scripture-summary" aria-live="polite">
+      <p class="muted">{t.scriptureIndexLoading}</p>
+    </div>
+    <div class="scripture-layout">
+      <aside id="scripture-books" class="scripture-books" aria-label={t.scriptureIndexBooksTitle}>
+        <p class="muted">{t.scriptureIndexLoading}</p>
+      </aside>
+      <div id="scripture-results" class="scripture-results" aria-live="polite" aria-busy="true">
+        <p class="muted">{t.scriptureIndexLoading}</p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .scripture-hero,
+    .scripture-search,
+    .scripture-app {
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+    }
+
+    .scripture-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: var(--space-5);
+      padding: var(--space-6);
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--color-accent) 13%, transparent), transparent 44%),
+        var(--color-surface);
+    }
+
+    .scripture-hero h1,
+    .scripture-section-heading h2 {
+      margin: 0;
+      font-family: var(--font-serif);
+    }
+
+    .scripture-hero h1 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.06;
+    }
+
+    .scripture-eyebrow {
+      margin: 0 0 var(--space-2);
+      color: var(--color-muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .scripture-lead,
+    .scripture-hero-note p,
+    .scripture-source-note {
+      color: var(--color-muted);
+      line-height: 1.65;
+    }
+
+    .scripture-lead {
+      max-width: 68ch;
+      margin: var(--space-3) 0 0;
+    }
+
+    .scripture-hero-note {
+      align-self: stretch;
+      padding: var(--space-4);
+      border: 1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-border));
+      border-radius: var(--radius-m);
+      background: color-mix(in srgb, var(--color-accent) 8%, var(--color-surface));
+    }
+
+    .scripture-hero-note p {
+      margin: var(--space-2) 0 0;
+    }
+
+    .scripture-search,
+    .scripture-app {
+      padding: var(--space-5);
+    }
+
+    .scripture-section-heading {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .scripture-section-heading .button {
+      white-space: nowrap;
+    }
+
+    .scripture-form {
+      display: grid;
+      grid-template-columns: minmax(180px, 0.8fr) minmax(260px, 1.5fr) minmax(180px, 0.8fr) auto;
+      gap: var(--space-3);
+      align-items: end;
+    }
+
+    .scripture-form label {
+      display: grid;
+      gap: var(--space-2);
+      color: var(--color-ink);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .scripture-form input,
+    .scripture-form select {
+      min-width: 0;
+      width: 100%;
+      min-height: 2.75rem;
+    }
+
+    .scripture-form .button {
+      min-height: 2.75rem;
+    }
+
+    .scripture-source-note {
+      margin: var(--space-3) 0 0;
+      font-size: 0.9rem;
+    }
+
+    .scripture-app {
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .scripture-summary {
+      min-height: 3rem;
+    }
+
+    .scripture-summary .muted,
+    .scripture-results .muted,
+    .scripture-books .muted {
+      margin: 0;
+      color: var(--color-muted);
+    }
+
+    .scripture-layout {
+      display: grid;
+      grid-template-columns: minmax(225px, 290px) minmax(0, 1fr);
+      gap: var(--space-5);
+      align-items: start;
+    }
+
+    .scripture-books {
+      position: sticky;
+      top: calc(4rem + var(--space-4));
+      display: grid;
+      gap: var(--space-2);
+      max-height: min(72vh, 780px);
+      overflow: auto;
+      padding: var(--space-3);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-m);
+      background: var(--color-surface-2);
+    }
+
+    .scripture-results {
+      display: grid;
+      gap: var(--space-3);
+      min-width: 0;
+    }
+
+    @media (max-width: 920px) {
+      .scripture-form {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .scripture-query-field {
+        grid-column: 1 / -1;
+        grid-row: 1;
+      }
+
+      .scripture-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .scripture-books {
+        position: static;
+        display: flex;
+        max-height: none;
+        overflow-x: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .scripture-hero {
+        grid-template-columns: 1fr;
+        padding: var(--space-5);
+      }
+
+      .scripture-search,
+      .scripture-app {
+        padding: var(--space-4);
+      }
+
+      .scripture-form {
+        grid-template-columns: 1fr;
+      }
+
+      .scripture-query-field {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .scripture-form .button {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <style is:global>
+    .scripture-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+      gap: var(--space-3);
+    }
+
+    .scripture-stat {
+      padding: var(--space-3);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-s);
+      background: var(--color-surface-2);
+    }
+
+    .scripture-stat strong,
+    .scripture-stat span {
+      display: block;
+    }
+
+    .scripture-stat strong {
+      color: var(--color-ink);
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+    }
+
+    .scripture-stat span {
+      margin-top: 0.15rem;
+      color: var(--color-muted);
+      font-size: 0.82rem;
+    }
+
+    .scripture-book-link {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-2);
+      padding: 0.7rem 0.75rem;
+      border: 1px solid transparent;
+      border-radius: var(--radius-s);
+      color: var(--color-ink);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .scripture-book-link:hover,
+    .scripture-book-link[aria-current="page"] {
+      border-color: var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-accent);
+    }
+
+    .scripture-book-link small {
+      color: var(--color-muted);
+    }
+
+    .scripture-book-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--space-3);
+    }
+
+    .scripture-book-card {
+      display: grid;
+      gap: var(--space-2);
+      padding: var(--space-4);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-m);
+      background: var(--color-surface);
+      color: var(--color-ink);
+    }
+
+    .scripture-book-card:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+
+    .scripture-book-card strong {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+    }
+
+    .scripture-book-card span {
+      color: var(--color-muted);
+      font-size: 0.84rem;
+    }
+
+    .scripture-result {
+      padding: var(--space-4);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-m);
+      background: var(--color-surface);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .scripture-result-header {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: var(--space-3);
+    }
+
+    .scripture-result h3 {
+      margin: 0;
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+    }
+
+    .scripture-result-meta {
+      margin: var(--space-2) 0 0;
+      color: var(--color-muted);
+      font-size: 0.88rem;
+    }
+
+    .scripture-badges {
+      display: flex;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+      justify-content: end;
+    }
+
+    .scripture-badge {
+      padding: 0.2rem 0.45rem;
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      background: var(--color-surface-2);
+      color: var(--color-muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .scripture-badge.direct {
+      border-color: color-mix(in srgb, var(--color-accent) 40%, var(--color-border));
+      color: var(--color-accent);
+    }
+
+    .scripture-badge.ocr {
+      border-color: color-mix(in srgb, var(--color-success, #2f7d5c) 42%, var(--color-border));
+      color: var(--color-success, #2f7d5c);
+    }
+
+    .scripture-locations {
+      margin-top: var(--space-3);
+      border-top: 1px solid var(--color-border);
+      padding-top: var(--space-3);
+    }
+
+    .scripture-locations summary {
+      cursor: pointer;
+      color: var(--color-accent);
+      font-weight: 700;
+    }
+
+    .scripture-page-list {
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      margin-top: var(--space-3);
+    }
+
+    .scripture-page-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.42rem 0.6rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-s);
+      background: var(--color-surface-2);
+      color: var(--color-ink);
+      font-size: 0.82rem;
+    }
+
+    .scripture-page-link:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+
+    .scripture-more-note,
+    .scripture-empty {
+      color: var(--color-muted);
+      line-height: 1.6;
+    }
+
+    .scripture-load-more {
+      justify-self: start;
+      margin-top: var(--space-2);
+    }
+
+    .scripture-view-all {
+      display: inline-flex;
+      margin-top: var(--space-3);
+    }
+
+    @media (max-width: 640px) {
+      .scripture-result-header {
+        display: grid;
+      }
+
+      .scripture-badges {
+        justify-content: start;
+      }
+
+      .scripture-page-link {
+        flex: 1 1 130px;
+        justify-content: center;
+      }
+    }
+  </style>
+
+  <script>
+    // @ts-nocheck
+    import {
+      findScriptureBook,
+      parseScriptureLocators,
+      relationForScriptureSegments,
+      scriptureReferenceSlug,
+    } from '../../scripts/scripture-index.js';
+
+    const scriptureApp = document.getElementById('scripture-app');
+    const {
+      uiStrings,
+      locale,
+      assetBase,
+      fixedBook,
+      scriptureBaseRoute,
+      viewerBaseRoute,
+    } = JSON.parse(scriptureApp?.dataset.scriptureConfig || '{}');
+    const manifestUrl = `${assetBase}scripture/v3/manifest.json`;
+    const form = document.getElementById('scripture-search-form');
+    const bookSelect = document.getElementById('scripture-book');
+    const queryInput = document.getElementById('scripture-query');
+    const sourceSelect = document.getElementById('scripture-source');
+    const summary = document.getElementById('scripture-summary');
+    const booksPanel = document.getElementById('scripture-books');
+    const results = document.getElementById('scripture-results');
+    const params = new URLSearchParams(window.location.search);
+    const numberFormat = new Intl.NumberFormat(locale === 'pt-br' ? 'pt-BR' : locale);
+    let manifest = null;
+    let shard = null;
+    let visibleLimit = 40;
+
+    queryInput.value = params.get('q') || '';
+    sourceSelect.value = ['direct', 'associated', 'ocr'].includes(params.get('source'))
+      ? params.get('source')
+      : 'all';
+
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
+
+    function fold(value) {
+      return String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLocaleLowerCase()
+        .replace(/[.]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    function formatCount(value) {
+      return numberFormat.format(Number(value || 0));
+    }
+
+    function bookUrl(slug, query = '', source = 'all') {
+      const routeSlug = String(slug).replace(/\s+/g, '-');
+      const url = new URL(`${scriptureBaseRoute}/${encodeURIComponent(routeSlug)}`, window.location.origin);
+      if (query.trim()) url.searchParams.set('q', query.trim());
+      if (source !== 'all') url.searchParams.set('source', source);
+      return `${url.pathname}${url.search}`;
+    }
+
+    function referenceUrl(bookKey, segments) {
+      const bookSlug = String(bookKey || '').replace(/\s+/g, '-');
+      const referenceSlug = scriptureReferenceSlug(segments);
+      const url = new URL(`${scriptureBaseRoute}/reference`, window.location.origin);
+      url.searchParams.set('book', bookSlug);
+      url.searchParams.set('ref', referenceSlug);
+      url.searchParams.set('page', '1');
+      return `${url.pathname}${url.search}`;
+    }
+
+    function formatSegment(segment) {
+      const [startChapter, startVerse, endChapter, endVerse] = segment;
+      if (!startVerse && !endVerse) {
+        return startChapter === endChapter ? `${startChapter}` : `${startChapter}–${endChapter}`;
+      }
+      const start = `${startChapter}:${startVerse}`;
+      if (startChapter === endChapter && startVerse === endVerse) return start;
+      return startChapter === endChapter
+        ? `${start}–${endVerse}`
+        : `${start}–${endChapter}:${endVerse}`;
+    }
+
+    function decodeSegments(flatSegments) {
+      const decoded = [];
+      for (let index = 0; index < flatSegments.length; index += 4) {
+        decoded.push(flatSegments.slice(index, index + 4));
+      }
+      return decoded;
+    }
+
+    function formatLocator(segments) {
+      return segments.map((segment, index) => {
+        if (index === 0) return formatSegment(segment);
+        const previous = segments[index - 1];
+        const sameChapter = segment[0] === previous[0] && segment[2] === previous[2];
+        if (sameChapter && segment[1]) {
+          return segment[1] === segment[3] ? `${segment[1]}` : `${segment[1]}–${segment[3]}`;
+        }
+        return formatSegment(segment);
+      }).join('; ');
+    }
+
+    function decodeLocations(reference) {
+      const locations = [];
+      for (const volumePosting of reference[2] || []) {
+        const volume = shard.volumes[volumePosting[0]];
+        const postings = volumePosting[1] || [];
+        let page = 0;
+        for (let index = 0; index < postings.length; index += 2) {
+          page += postings[index];
+          locations.push({ volume, page, mask: postings[index + 1] || 0 });
+        }
+      }
+      return locations;
+    }
+
+    function sourceMatches(mask, source) {
+      if (source === 'direct') return Boolean(mask & 1);
+      if (source === 'associated') return Boolean(mask & 2);
+      if (source === 'ocr') return Boolean(mask & 4);
+      return true;
+    }
+
+    function relationRank(segments, query, locator, label) {
+      const trimmed = query.trim();
+      if (!trimmed) return 10;
+      const parsed = parseScriptureLocators(trimmed);
+      if (parsed) return relationForScriptureSegments(segments, parsed).rank;
+
+      const haystack = fold(`${label} ${locator}`);
+      const tokens = fold(trimmed).split(' ').filter(Boolean);
+      return tokens.every((token) => haystack.includes(token)) ? 4 : 99;
+    }
+
+    function compareSegments(left, right) {
+      const a = left.segments.flat();
+      const b = right.segments.flat();
+      for (let index = 0; index < Math.max(a.length, b.length); index += 1) {
+        if ((a[index] ?? -1) !== (b[index] ?? -1)) return (a[index] ?? -1) - (b[index] ?? -1);
+      }
+      return 0;
+    }
+
+    function renderStats(items) {
+      const route = manifest.routes[fixedBook];
+      const stats = fixedBook
+        ? [
+            [route.references, uiStrings.scriptureIndexReferences],
+            [route.reference_page_pairs, uiStrings.scriptureIndexPageLinks],
+            [route.volumes, uiStrings.scriptureIndexVolumes],
+            [items, uiStrings.scriptureIndexResults],
+          ]
+        : [
+            [manifest.stats.shards, uiStrings.scriptureIndexBooks],
+            [Object.values(manifest.routes).reduce((sum, item) => sum + item.references, 0), uiStrings.scriptureIndexReferences],
+            [Object.values(manifest.routes).reduce((sum, item) => sum + item.reference_page_pairs, 0), uiStrings.scriptureIndexPageLinks],
+            [manifest.stats.gzip_bytes, uiStrings.scriptureIndexCompressedBytes],
+          ];
+      summary.innerHTML = `<div class="scripture-stat-grid">${stats.map(([value, label]) => `
+        <div class="scripture-stat"><strong>${formatCount(value)}</strong><span>${escapeHtml(label)}</span></div>
+      `).join('')}</div>`;
+    }
+
+    function renderBookNavigation() {
+      const entries = Object.entries(manifest.routes);
+      booksPanel.innerHTML = entries.map(([slug, route]) => `
+        <a class="scripture-book-link" href="${escapeHtml(bookUrl(slug))}" ${slug === fixedBook ? 'aria-current="page"' : ''}>
+          <span>${escapeHtml(route.label)}</span>
+          <small>${formatCount(route.references)}</small>
+        </a>
+      `).join('');
+    }
+
+    function renderLanding() {
+      const entries = Object.entries(manifest.routes);
+      renderStats(0);
+      results.innerHTML = `
+        <div>
+          <p class="scripture-eyebrow">${escapeHtml(uiStrings.scriptureIndexBrowseKicker)}</p>
+          <h2>${escapeHtml(uiStrings.scriptureIndexBooksTitle)}</h2>
+        </div>
+        <div class="scripture-book-grid">
+          ${entries.map(([slug, route]) => `
+            <a class="scripture-book-card" href="${escapeHtml(bookUrl(slug))}">
+              <strong>${escapeHtml(route.label)}</strong>
+              <span>${formatCount(route.references)} ${escapeHtml(uiStrings.scriptureIndexReferences)} · ${formatCount(route.reference_page_pairs)} ${escapeHtml(uiStrings.scriptureIndexPagesShort)}</span>
+            </a>
+          `).join('')}
+        </div>`;
+      results.setAttribute('aria-busy', 'false');
+    }
+
+    function renderResults() {
+      const query = queryInput.value;
+      const source = sourceSelect.value;
+      const label = shard.book[1];
+      const matches = (shard.references || []).map((reference) => {
+        const segments = decodeSegments(reference[1]);
+        const locator = formatLocator(segments);
+        const rank = relationRank(segments, query, locator, label);
+        const allLocations = decodeLocations(reference);
+        const locations = allLocations.filter((location) => sourceMatches(location.mask, source));
+        return { reference, segments, locator, rank, locations, totalLocations: allLocations.length };
+      }).filter((item) => item.rank < 99 && item.locations.length)
+        .sort((left, right) => left.rank - right.rank || compareSegments(left, right));
+
+      renderStats(matches.length);
+      if (!matches.length) {
+        results.innerHTML = `<div class="scripture-empty"><h2>${escapeHtml(uiStrings.scriptureIndexNoResults)}</h2><p>${escapeHtml(uiStrings.scriptureIndexNoResultsHint)}</p></div>`;
+        results.setAttribute('aria-busy', 'false');
+        return;
+      }
+
+      const visible = matches.slice(0, visibleLimit);
+      results.innerHTML = `
+        <div>
+          <p class="scripture-eyebrow">${escapeHtml(uiStrings.scriptureIndexResultsKicker)}</p>
+          <h2>${formatCount(matches.length)} ${escapeHtml(uiStrings.scriptureIndexResults)}</h2>
+        </div>
+        ${visible.map((item) => {
+          const shownLocations = item.locations.slice(0, 120);
+          const volumes = new Set(item.locations.map((location) => location.volume)).size;
+          const hasDirect = item.locations.some((location) => location.mask & 1);
+          const hasAssociated = item.locations.some((location) => location.mask & 2);
+          const hasOcr = item.locations.some((location) => location.mask & 4);
+          return `<article class="scripture-result">
+            <div class="scripture-result-header">
+              <div>
+                <h3>${escapeHtml(label)} ${escapeHtml(item.locator)}</h3>
+                <p class="scripture-result-meta">${formatCount(item.locations.length)} ${escapeHtml(uiStrings.scriptureIndexOccurrences)} · ${formatCount(volumes)} ${escapeHtml(uiStrings.scriptureIndexVolumes)}</p>
+              </div>
+              <div class="scripture-badges">
+                ${hasDirect ? `<span class="scripture-badge direct">${escapeHtml(uiStrings.scriptureIndexDirect)}</span>` : ''}
+                ${hasAssociated ? `<span class="scripture-badge">${escapeHtml(uiStrings.scriptureIndexAssociation)}</span>` : ''}
+                ${hasOcr ? `<span class="scripture-badge ocr">${escapeHtml(uiStrings.scriptureIndexOcr)}</span>` : ''}
+              </div>
+            </div>
+            <details class="scripture-locations">
+              <summary>${escapeHtml(uiStrings.scriptureIndexViewPages)}</summary>
+              <div class="scripture-page-list">
+                ${shownLocations.map((location) => {
+                  const url = new URL(viewerBaseRoute, window.location.origin);
+                  url.searchParams.set('doc', location.volume);
+                  url.searchParams.set('page', String(location.page));
+                  return `<a class="scripture-page-link" href="${escapeHtml(`${url.pathname}${url.search}`)}" title="${escapeHtml(uiStrings.scriptureIndexOpenPage)}">${escapeHtml(location.volume)} · p. ${formatCount(location.page)}</a>`;
+                }).join('')}
+              </div>
+              ${item.locations.length > shownLocations.length ? `<p class="scripture-more-note">${escapeHtml(uiStrings.scriptureIndexPageLimitNote).replace('{count}', formatCount(shownLocations.length)).replace('{total}', formatCount(item.locations.length))}</p>` : ''}
+              ${item.totalLocations > shownLocations.length ? `<a class="button secondary scripture-view-all" href="${escapeHtml(referenceUrl(fixedBook, item.segments))}">${escapeHtml(uiStrings.scriptureIndexViewAllPages).replace('{total}', formatCount(item.totalLocations))}</a>` : ''}
+            </details>
+          </article>`;
+        }).join('')}
+        ${matches.length > visible.length ? `<button type="button" class="button secondary scripture-load-more" id="scripture-load-more">${escapeHtml(uiStrings.scriptureIndexShowMore)}</button>` : ''}`;
+
+      document.getElementById('scripture-load-more')?.addEventListener('click', () => {
+        visibleLimit += 40;
+        renderResults();
+      });
+      results.setAttribute('aria-busy', 'false');
+    }
+
+    function detectedBook(query) {
+      return findScriptureBook(manifest, query);
+    }
+
+    async function loadShard() {
+      const route = manifest.routes[fixedBook];
+      if (!route) throw new Error(uiStrings.scriptureIndexUnavailable);
+      shard = await window.pdfocrDataCache.getJsonOnce(`${assetBase}scripture/v3/${route.url}`);
+      renderResults();
+    }
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const selectedBook = fixedBook || bookSelect.value || detectedBook(queryInput.value);
+      if (!selectedBook) {
+        bookSelect.focus();
+        results.innerHTML = `<p class="scripture-empty">${escapeHtml(uiStrings.scriptureIndexChooseBookHint)}</p>`;
+        return;
+      }
+      if (!fixedBook || selectedBook !== fixedBook) {
+        window.location.assign(bookUrl(selectedBook, queryInput.value, sourceSelect.value));
+        return;
+      }
+      const url = new URL(window.location.href);
+      queryInput.value.trim() ? url.searchParams.set('q', queryInput.value.trim()) : url.searchParams.delete('q');
+      sourceSelect.value !== 'all' ? url.searchParams.set('source', sourceSelect.value) : url.searchParams.delete('source');
+      window.history.replaceState({}, '', `${url.pathname}${url.search}`);
+      visibleLimit = 40;
+      renderResults();
+    });
+
+    async function init() {
+      try {
+        manifest = await window.pdfocrDataCache.getJsonOnce(manifestUrl);
+        for (const [slug, route] of Object.entries(manifest.routes)) {
+          const option = document.createElement('option');
+          option.value = slug;
+          option.textContent = route.label;
+          option.selected = slug === fixedBook;
+          bookSelect.append(option);
+        }
+        bookSelect.disabled = Boolean(fixedBook);
+        if (fixedBook) bookSelect.value = fixedBook;
+        renderBookNavigation();
+        fixedBook ? await loadShard() : renderLanding();
+      } catch (error) {
+        console.error('Scripture index failed', error);
+        summary.innerHTML = `<p class="scripture-empty">${escapeHtml(uiStrings.scriptureIndexUnavailable)}</p>`;
+        results.innerHTML = `<p class="scripture-empty">${escapeHtml(uiStrings.scriptureIndexUnavailableHint)}</p>`;
+        results.setAttribute('aria-busy', 'false');
+      }
+    }
+
+    init();
+  </script>
+</Layout>

@@ -1,0 +1,14 @@
+---
+import SeoVolumePage from '../../../../components/pages/SeoVolumePage.astro';
+import { getSeoVolumePayload, listIndexVolumes } from '../../../../lib/seoIndices';
+
+export async function getStaticPaths() {
+  const volumes = await listIndexVolumes();
+  return volumes.map((volume) => ({ params: { volumeId: volume.volume_id } }));
+}
+
+const { volumeId } = Astro.params;
+if (!volumeId) throw new Error('volumeId absent de la route statique du catalogue');
+const payload = await getSeoVolumePayload(volumeId, 'fr');
+---
+<SeoVolumePage payload={payload} />

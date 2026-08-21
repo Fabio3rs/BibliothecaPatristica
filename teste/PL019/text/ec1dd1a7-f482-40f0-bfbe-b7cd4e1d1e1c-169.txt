@@ -1,12 +1,18 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="80,40,920,95">
     525 EVANGELICÆ HISTORIÆ LIB. IV. 526
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,70,480,300">
+
+  <bloco tipo="texto_principal" script="latino" bbox="80,110,540,145">
     366 Vera : tamen veniet vobis visenda per
-    [auras
-    Majestas prolis hominis, cum dextra sanctæ
-    560 Virtutis assidet sub nubibus ignicoloris.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="510,108,540,145">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,145,500,305">
+    [ auras
+    Majestas prolis hominis, cum dextera sanctæ
+    560 Virtuti assidet sub nubibus ignicoloris.
     Talibus auditis, scindit de pectore vestem,
     Insultat furiis, et cæco corde sacerdos,
     Atque ait : Audistis pugnantis fœda profani
@@ -19,15 +25,13 @@
     Insultant, verbisque omnes illudere certant.
     570 Christe, prophetabis, cujus tibi palma sonarit.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="460,70,480,90">
-    A
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,70,950,300">
+
+  <bloco tipo="texto_principal" script="latino" bbox="540,110,920,305">
     At Petrum mulier tristem quod viderat intus,
     Tunc etiam, juvenis, fueras comes additus, in-
     [quit,
     Isti, quem ludens procerum sententia damnat?
-    Ille negat, tectique foras se promere tentat.
+    Ille negat, tectisque foras se promere tentat.
     575 Ecce sed egressum primo sub lumine cernens
     Altera consimili prodebat voce ministris.
     Rursus ait, jurans illum se nosse negabat.
@@ -39,137 +43,161 @@
     Et Petrus jurans devotis omnia verbis
     Nescire affirmat, quisquis foret ille, negando.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="350,310,650,330">
+
+  <bloco tipo="cabecalho" script="latino" bbox="350,310,650,340">
     LECTIONES VARIANTES.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="50,340,480,640">
+
+  <bloco tipo="aparato_critico" script="latino" bbox="80,340,470,380">
     adeoque adjectivum vera conjungendum est cum
     verba, præsertim quia vocabulum sola indicat, solum
     id vere a Pontifice dictum fuisse.
-    538. Reg. et, ut videtur, Ott., a pr. m., Vera tuo
-    renitet vobis. Rom., Ottob. a sec. m., cum editis,
-    Vera tamen veniet vobis.
-    539. Reg., Ottob., Torn., Rom., Majestas prolis
-    hominis cum dextra sanctæ — Virtutis assidet sub
-    nubibus ignicoloris. In Rom., proles pro prolis. Poelm.,
-    pro d. s. : Majestas prolis hominis dum dextra sanc-
-    tæ — Virtutis sidet sub nubibus ignicoloris. Poelm. in
-    textu, Fabr., Haiam., Majestas, proles hominis vir-
-    tutis ad alta — Cum sedeat dextram per nubes igni-
-    colores. Sic Ald., Daventr., Reusch., Bas., sed ho-
-    minis proles pro proles hominis. Scriptura mss.
-    exemplarium retinenda est, in qua assidet est futurum
-    abassido, assidis; et ignicoloris est ab ignicolorus, quo
-    vocabulo usus est Juvencus h. l. vers. 155; Dextera
-    non est substantive, sed adjective accipiendum, sci-
-    licet cum majestas prolis hominis dextera assidet
-    sanctæ virtuti : sic enim reddit verba : Sedentem a
-    dextris virtutis Dei.
-    563. Reg. et, a pr. m., Rom., audistis : cæteri au-
-    distis, quod magis accedit ad sententiam Evangelii,
-    etiam in antiquis versionibus.
-    564. Reg., Rom., Ald., pollutæ magis : alii cum
-    Ott. pollutæ malis.
-    565. Rom. victi : emenda cuncti.
-    568. Mss., Et palmæ malis. Editi, Et palmæ in malis.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="460,340,480,360">
+  <bloco tipo="nota_marginal" script="latino" bbox="470,344,495,372">
     B
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="520,340,950,640">
+
+  <bloco tipo="aparato_critico" script="latino" bbox="80,380,470,640">
+    538. Reg. et, ut videtur, Ott., a pr. m., Vera tuo
+    veniet vobis. Rom., Ottob. a sec. m., cum editis,
+    Vera tamen veniet vobis. —
+
+    539. Reg., Onob., Torn., Rom., Majestas prolis
+    hominis cum dextera sanctæ — Virtuti assidet sub
+    nubibus ignicoloris. m om., proles pro prolis. Poelm.,
+    pro d. s.: Majestas prolis hominis dum dextera sanctæ
+    — Virtutis sidet sub nubibus ignicoloris. Poelm. in
+    textu, Fabr., Hadam., Majestas, proles hominis virtutis
+    ad alta — Cum sedeat dextram per nubes ignicolores.
+    Sic Ald., Daventr., Reusch., Bas., sed hominis proles
+    pro proles hominis. Scriptura mss. exemplarium retinenda
+    est, in qua assidet est futurum abassido, assidis; et
+    ignicoloris est ab ignicolorus, quo vocabulo usus est
+    Juvencus h. l. vers. 155; Dextera non est substantiva,
+    sed adjectiva accipiendum, scilicet cum majestas prolis
+    hominis dextera assidet sanctæ virtuti : sic enim reddit
+    verba : Sedentem a dextris virtutis Dei.
+
+    563. Reg. et, a pr. m., Rom., auditis : cæteri
+    audistis, quod magis accedit ad sententiam Evangelii,
+    etiam in antiquis versionibus.
+
+    564. Reg., Rom., Ald., polluta magis : alii cum
+    Ott. polluta malis.
+
+    565. Rom. victi : emenda cuncti.
+
+    568. Mss., Et palmæ malis. Editi, Et palmæ in malis.
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="488,560,510,588">
+    C
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="540,340,920,640">
     570. Mss. nostri, cujus tibi palma sonarit. Alii
     editi, cujus te palma cecidit, quod ait Reuschius sa-
     pere glossam; qui scripturam nostram confirmat ex
     Ovidio Heroid. ep. 10, vers. 15 : Protinus adductis
     sonuerunt pectora palmis. Frequentius sono habet so-
-    nai, sed habet etiam sonavi.
+    nuit, sed habet etiam sonavit.
+
     571. Mss. nostri, Ad Petrum. Editi, At Petrum.
     Rom., viderit : alii, viderat.
+
     572. Rom., Reg., et, a pr. m., Ott., Tunc etiam
     juvenis, quod intelligo sine interrogatione, ut in
     Evangelio : Et tu cum Jesu Galilæo eras. Ott., a sec. m.
     cum editis, Tunc etiam, etc. cum interrogationis nota.
-    575. In Helmst., laudans, ex quo Reuschius su-
+
+    575. In Helmst., laudens, ex quo Reuschius su-
     spicatur gaudens. Sive hoc, sive ludens opponitur
     Petro tristi.
+
     576. Rom., Altera tum simili : alii, Altera consimili.
+
     577. Mss., Rursus ait, jurans. Sic plures editi :
     nonnulli, Rursus perjurans cum Torn., Poelm. pro
     d. s. Mss. nostri, negabat : editi alii sic; alii, ne-
     gavit.
+
     578. Rom., Tum percunctantum; Reg., Ald., Tum
-    percuntantum; Ott., Tum percuntatum. Plerique editi,
-    Tunc percunctatum, vel percuntatum, quod supinum
-    vult Ouëlsius contra Badiium, qui passive accipiebat.
-    Rom., Ald., Bas., frequen:es. Alii mss. et editi, se-
+    percuntantum; Ott., Tum percuntantum. Plerique editi,
+    Tunc percunctatum, vel percontatum, quod supinum
+    vult Ouesius contra Badiium, qui passive accipiebat.
+    Rom., Ald., Bas., frequentes. Alii mss. et editi, se-
     quentes.
+
     579. Fabr., Deque sono : Rom., Atqui sono, ex
     quo conjicio Atque sono. Plerique mss. et editi, Æque
     sono.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,580,520,600">
-    C
+
+  <bloco tipo="cabecalho" script="latino" bbox="430,650,570,680">
+    NOTÆ.
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="50,650,480,940">
-    560. Confer vers. 135 h. 1.
-    563. Pugnantis Deo : h. e., repugnantis, adver-
-    santis. Poeticum est hoc sensu pugnare cum dativo,
+
+  <bloco tipo="nota" script="latino" bbox="80,690,470,940">
+    560. Confer vers. 155 h. l.
+    563. Pugnantis Deo : h. e., repugnantis, adversantis. Poeticum est hoc sensu pugnare cum dativo,
     sed a multis usurpatum, Catullo, Virgilio, Ovidio,
     Statio, Silio : adeoque eleganter sic adhibetur.
     564. Libr. II, vers. 697 : Polluta malis generatio
-    querit. Hoc I. IV, vers. 615 : Plebs incensa malo;
-    lib. I, vers. 535 : Nequis consurgere in iras—Ardent.
-    568. Colaphi indignanter manu in pugnum com-
+    querit. Hoc l. IV, vers. 615 : Plebs incensa malo;
+    lib. I, vers. 535 : Nequis consurgere in iras—
+    Ardeat.
+    568. Colaphi infliguntur manu in pugnum com-
     pressa; alapa manu expansa, et in maxillam in-
     cussa. Utrumque Juvencus explicat, uti Sedulius
     I. V, vers. 96 : Non denique passim — Vel colaphis
-    pulsare caput, vel cædere palmis. — Aut spuere in fa-
-    ciem plebs execranda solet.
+    pulsare caput, vel cædere palmis, — Aut spuere in fa-
+    ciem plebs execranda quivit.
     570. Prophetabis : de hoc verbo dixi in comment.
     ad Prudent. hymn. 15 Perist. vers. 401.
-    574. CAPUT XVII. Petrus ter Christum abnegat.
-    Matth. xxvi, 69; Marc. xiv, 68; Luc. xxii, 58;
+    571. CAPUT XVII. Petrus ter Christum abnegat.
+    Matth. xxvi, 69; Marc. xiv, 65; Luc. xxii, 55;
     Joann. xviii, 25. Juvencus probabilem rationem af-
     fert, cur ancilla cognoverit, Petrum discipulum Jesu
     esse, Tristem quod viderat. Matthæus ait : Petrus
     vero sedebat foris in atrio, videlicet extra locum,
-    in quo Christus interrogabatur, sed in atrio, adoo-
+    in quo Christus interrogabatur, sed in atrio, adeo-
     que intra palatium, quod ait Juvencus, Tristem quod
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="460,780,480,800">
+  <bloco tipo="nota_marginal" script="latino" bbox="488,780,510,808">
     D
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="520,650,950,940">
-    NOTÆ.
-    viderat intus. Supra, vers. 541 : Occulte mœstus aedit
+
+  <bloco tipo="nota" script="latino" bbox="540,690,920,940">
+    viderat intus. Supra, vers. 541 : Occulte mœstus cedit
     cum plebe ministra.
     574. Supra, vers. 594, Tuque ipse foras te prome
     sepulcro.
     575. Marcus post primam negationem ait : Et
     exiit foras ante atrium, et gallus cantavit. Juvencus
-    exposuit primo sub limine. Recesserat ergo ab atrio
+    exponit primo sub limine. Recesserat ergo ab atrio
     Petrus, et in vestibulo domus iterum interrogatur.
     Matthæus ita narrat : Exeunte autem illo januam, vi-
     dit eum alia ancilla, etc.
-    381. Devotis verbis : Matthæus ait : Cœpit detes-
-    tari, et jurare. Marcus : Ille autem cœpit anathemati-
+    581. Devotis verbis : Matthæus ait : Cœpit dete-
+    stari, et jurare. Marcus : Ille autem cœpit anathemati-
     zare, et jurare. Versio Itala Matthæi : Tunc cœpit
-    devolare se, et jurare, quod non nosset hominem.
-    Idem verbum devolare se legitur in Versione veteri
+    devotare se, et jurare, quod non nosset hominem.
+    Idem verbum devotare se legitur in Versione veteri
     Marci. Inde Juvencus sumpsit, jurans devotis omnia
     verbis; Petrus enim se diris devovebat, atque omnia
     mala sibi precabatur, si verum non erat, quod as-
     serebat. Proprie devotus est diris, et imprecationi-
     bus impetitus : quo sensu passim occurrit hoc ver-
-    bum apud antiquos. Catullus, carm. 65. de nuptiis
+    bum apud antiquos. Catullus, carm. 63, de nuptiis
     Pel. et Thet., vers. 155 : Immemor, ab devota do-
-    mum perjuria portat. Apud Juvencum: devotis verbis
+    mum perjuria portas. Apud Juvencum devotis verbis
     videtur positum pro verbis quibus Petrus se devovit.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="350,960,650,990">
+
+  <bloco tipo="rodape" script="latino" bbox="610,955,900,995">
     Digitized by Google
   </bloco>
+
   <notas>
-    Transcrição literal. O número "381" na seção NOTÆ foi transcrito conforme aparece visualmente (semelhante ao '3' de '366'), embora o contexto sugira que possa ser um erro de impressão para '581' ou similar. As letras A, B, C, D foram isoladas em blocos nota_marginal conforme instrução.
+    Transcrição literal conforme a imagem, com os marcadores centrais A, B, C e D isolados como blocos de nota_marginal. Algumas leituras muito pequenas do aparato crítico foram mantidas de modo conservador segundo o impresso visível.
   </notas>
 </pagina>

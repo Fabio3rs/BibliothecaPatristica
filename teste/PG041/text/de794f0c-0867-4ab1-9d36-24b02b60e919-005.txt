@@ -1,57 +1,70 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="290,50,700,110">
-TRADITIO CATHOLICA.
-SÆCULUM V, ANNUS 403.
+  <bloco tipo="cabecalho" script="latino" bbox="308,67,662,114">
+    TRADITIO CATHOLICA.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="250,120,740,310">
-ΤΟΥ ΕΝ ΑΓΙΟΙΣ ΠΑΤΡΟΣ ΗΜΩΝ
-ΕΠΙΦΑΝΙΟΥ
-ΕΠΙΣΚΟΠΟΥ ΚΩΝΣΤΑΝΤΙΑΣ ΤΗΣ ΚΥΠΡΟΥ
-ΤΑ ΣΩΖΟΜΕΝΑ ΠΑΝΤΑ.
+  <bloco tipo="cabecalho" script="latino" bbox="352,112,649,143">
+    SÆCULUM V, ANNUS 403.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="70,340,920,480">
-S. P. N. EPIPHANII
-CONSTANTIÆ IN CYPRO EPISCOPI
-OPERA QUÆ REPERIRI POTUERUNT OMNIA.
+  <bloco tipo="texto_principal" script="grego" bbox="263,166,731,200">
+    ΤΟΥ ΕΝ ΑΓΙΟΙΣ ΠΑΤΡΟΣ ΗΜΩΝ
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,490,890,560">
-DIONYSIUS PETAVIUS AURELIANENSIS
-SOCIETATIS JESU THEOLOGUS,
-EX VETERIBUS LIBRIS RECENSUIT, LATINE VERTIT ET ANIMADVERSIONIBUS ILLUSTRavit.
+  <bloco tipo="texto_principal" script="grego" bbox="178,229,833,285">
+    ΕΠΙΦΑΝΙΟΥ
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="300,570,690,590">
-(Paris. MDCXXII; Colon. [Lipsiæ] MDCLXXXII.)
+  <bloco tipo="texto_principal" script="grego" bbox="279,300,717,341">
+    ΕΠΙΣΚΟΠΟΥ ΚΩΝΣΤΑΝΤΕΙΑΣ ΤΗΣ ΚΥΠΡΟΥ
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="200,610,790,680">
-ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE,
-Bibliothecæ Cleri universæ,
+  <bloco tipo="texto_principal" script="grego" bbox="238,362,769,405">
+    ΤΑ ΣΩΖΟΜΕΝΑ ΠΑΝΤΑ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="460,680,530,690">
-SIVE
+  <bloco tipo="texto_principal" script="latino" bbox="79,485,905,567">
+    S. P. N. EPIPHANII
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="130,700,860,720">
-CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ [ilegivel]
+  <bloco tipo="texto_principal" script="latino" bbox="292,592,721,625">
+    CONSTANTIÆ IN CYPRO EPISCOPI
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="290,740,600,800">
-TOMUS PRIMUS.
+  <bloco tipo="texto_principal" script="latino" bbox="124,630,877,678">
+    OPERA QUÆ REPERIRI POTUERUNT OMNIA.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="260,820,730,840">
-VENEUNT TRIA VOLUMINA [ilegivel]
+  <bloco tipo="texto_principal" script="latino" bbox="204,703,777,749">
+    DIONYSIUS PETAVIUS AURELIANENSIS
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="70,860,630,910">
-EXCUDEBATUR ET [ilegivel]
-IN VIA DICTA D'AMBOISE, OLIM [ilegivel]
-NOMINATAM, SEU PETIT-MU[ilegivel]
+  <bloco tipo="texto_principal" script="latino" bbox="374,756,642,781">
+    SOCIETATIS JESU THEOLOGUS,
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="580,950,790,980">
-Digitized by Google
+  <bloco tipo="texto_principal" script="latino" bbox="128,815,875,858">
+    EX VETERIBUS LIBRIS RECENSUIT, LATINE VERTIT ET ANIMADVERSIONIBUS ILLUSTRAVIT.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="307,867,717,903">
+    (Paris. MDCXIII; Colon. [Lipsiæ] MDCLXXIII.)
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="201,929,810,967">
+    ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="335,991,666,1022">
+    Bibliothecæ Cleri universæ,
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="485,1033,554,1059">
+    SIVE
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="125,1068,887,1116">
+    CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="279,1173,745,1211">
+    TOMUS PRIMUS.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="86,1236,841,1274">
+    VENEUNT TRIA VOLUMINA [ilegivel]
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="87,1368,868,1456">
+    EXCUDEBATUR ET [ilegivel]
+    IN VIA DICTA D'AMBOISE, OLIM [ilegivel]
+    NOMINATAM, SEU [ilegivel]
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="648,956,931,995">
+    Digitized by Google
   </bloco>
   <notas>
-- Transcrição fiel da página de título.
-- Script grego identificado nos títulos principais superiores.
-- Script latino no restante, incluindo ligaduras (Æ, œ) preservadas onde visíveis (CONSTANTIÆ, QUÆ, Bibliothecæ, SCIENTIÆ).
-- Danos na parte inferior da página (impressão e vendas) marcados com [ilegivel].
-- Linha "SOCIETATIS JESU THEOLOGUS," inserida conforme visível na imagem (omissa no Tesseract, presente no LLM).
-- "Digitized by Google" transcrito como parte da imagem digitalizada.
+    Página-título com texto central em uma coluna. As linhas inferiores estão parcialmente obliteradas pelas manchas e pelo carimbo digital; a transcrição dessas secções foi limitada ao que permanece legível.
   </notas>
 </pagina>

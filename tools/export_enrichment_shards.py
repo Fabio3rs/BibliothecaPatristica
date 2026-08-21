@@ -18,12 +18,18 @@ import datetime as dt
 import hashlib
 import json
 import sqlite3
+import sys
 from pathlib import Path
 from typing import Iterable, List, Optional
 
 
 DEFAULT_DB = Path(__file__).resolve().parent.parent / "data" / "patristica_resumos.db"
 DEFAULT_OUT = Path(__file__).resolve().parent.parent / "data" / "shards" / "enrichment"
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from resumo_v2 import current_summary_select_sql  # noqa: E402
 
 
 def now_iso() -> str:
@@ -43,8 +49,46 @@ def list_docs(con: sqlite3.Connection) -> List[str]:
 
 
 def fetch_rows(con: sqlite3.Connection, doc: str) -> List[sqlite3.Row]:
+    has_v2 = con.execute(
+        "SELECT 1 FROM sqlite_master WHERE type='table' AND name='resumo_generations'"
+    ).fetchone()
+    if not has_v2:
+        return con.execute(
+            "SELECT * FROM resumos WHERE documento = ? ORDER BY pagina_num",
+            (doc,),
+        ).fetchall()
+    translation_columns = {
+        str(row[1]) for row in con.execute("PRAGMA table_info(resumo_translations)")
+    }
+    cumulative_en = "en.cumulative_summary" if "cumulative_summary" in translation_columns else "''"
+    cumulative_fr = "fr.cumulative_summary" if "cumulative_summary" in translation_columns else "''"
+    cumulative_it = "it.cumulative_summary" if "cumulative_summary" in translation_columns else "''"
+    hybrid = current_summary_select_sql()
     return con.execute(
-        "SELECT * FROM resumos WHERE documento = ? ORDER BY pagina_num",
+        f"""
+        WITH hybrid AS ({hybrid})
+        SELECT h.*,
+               en.summary_display AS summary_en, {cumulative_en} AS cumulative_en,
+               en.search_text AS search_en,
+               fr.summary_display AS summary_fr, {cumulative_fr} AS cumulative_fr,
+               fr.search_text AS search_fr,
+               it.summary_display AS summary_it, {cumulative_it} AS cumulative_it,
+               it.search_text AS search_it
+          FROM hybrid h
+          LEFT JOIN resumo_translations en ON en.id=(
+              SELECT MAX(t.id) FROM resumo_translations t
+               WHERE t.generation_id=h.v2_generation_id AND t.locale='en' AND t.status='completed'
+          )
+          LEFT JOIN resumo_translations fr ON fr.id=(
+              SELECT MAX(t.id) FROM resumo_translations t
+               WHERE t.generation_id=h.v2_generation_id AND t.locale='fr' AND t.status='completed'
+          )
+          LEFT JOIN resumo_translations it ON it.id=(
+              SELECT MAX(t.id) FROM resumo_translations t
+               WHERE t.generation_id=h.v2_generation_id AND t.locale='it' AND t.status='completed'
+          )
+         WHERE h.documento=? ORDER BY h.pagina_num
+        """,
         (doc,),
     ).fetchall()
 
@@ -88,7 +132,7 @@ def filtra_duplicado_resumos(text : str, author : str , work : str) -> str:
     # Remove informações duplicadas do resumo
     if not text:
         return ""
-    text = text.replace(author, "").replace(work, "").strip()
+    text = text.replace(author or "", "").replace(work or "", "").strip()
     text = text.replace("Autor:", "").replace("Livro/obra identificada:", "").strip()
     return text
 
@@ -107,20 +151,52 @@ def export_doc(
         fpath = out_dir / fname
         with fpath.open("w", encoding="utf-8") as f:
             for r in rows_chunk:
+                keys = set(r.keys())
+                has_v2 = "v2_generation_id" in keys and r["v2_generation_id"] is not None
+                summary_page = (
+                    r["effective_summary_page"] if has_v2 else r["resumo_pagina"]
+                )
+                summary_global = (
+                    r["effective_cumulative_summary"] if has_v2 else r["resumo_global"]
+                )
                 rec = {
                     "doc": r["documento"],
                     "page": r["pagina_num"],
                     "file": r["pagina_file"],
-                    "summary_page": filtra_duplicado_resumos(r["resumo_pagina"], r["author_detected"], r["work_detected"]),
-                    "summary_global": filtra_duplicado_resumos(r["resumo_global"], r["author_detected"], r["work_detected"]),
+                    "summary_page": filtra_duplicado_resumos(summary_page, r["author_detected"], r["work_detected"]),
+                    "summary_global": filtra_duplicado_resumos(summary_global, r["author_detected"], r["work_detected"]),
                     "keywords": normalize_keywords(r["keywords_json"]),
                     "keywords_source": r["keywords_source"],
                     "keywords_model": r["keywords_modelo"],
-                    "model": r["modelo"],
-                    "created_at": r["criado_em"],
+                    "model": r["v2_model"] if has_v2 else r["modelo"],
+                    "created_at": r["v2_created_at"] if has_v2 else r["criado_em"],
                     "author": r["author_detected"],
                     "work": r["work_detected"],
+                    "summary_generation": "v2" if has_v2 else "legacy",
                 }
+                if has_v2:
+                    static_analysis = json.loads(r["effective_static_analysis_json"] or "{}")
+                    rec.update(
+                        {
+                            "summary_generation_id": r["v2_generation_id"],
+                            "summary_status": r["v2_status"],
+                            "summary_prompt_version": r["v2_prompt_version"],
+                            "search_text_pt": r["effective_search_text"],
+                            "embedding_text": r["effective_embedding_text"],
+                            "header_original": static_analysis.get("header_original", ""),
+                            "page_kinds": json.loads(r["effective_page_kinds_json"] or "[]"),
+                            "segments": json.loads(r["effective_segments_json"] or "[]"),
+                            "translations": {
+                                locale: {
+                                    "summary_page": r[f"summary_{locale}"],
+                                    "summary_global": r[f"cumulative_{locale}"],
+                                    "search_text": r[f"search_{locale}"],
+                                }
+                                for locale in ("en", "fr", "it")
+                                if r[f"summary_{locale}"] or r[f"search_{locale}"]
+                            },
+                        }
+                    )
                 if include_text:
                     rec["text"] = r["pagina_texto"]
                 f.write(json.dumps(rec, ensure_ascii=False) + "\n")
@@ -144,7 +220,7 @@ def export_doc(
 
 def build_index(volumes_meta: List[dict]) -> dict:
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "generated_at": now_iso(),
         "volumes": volumes_meta,
     }

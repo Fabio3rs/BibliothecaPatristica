@@ -15,10 +15,12 @@ Uso (Ollama – padrão):
 Uso (OpenAI):
     python resumo_serial.py --provider openai --model gpt-5-mini --volume-dir teste/PL001
     python resumo_serial.py --provider openai --model gpt-5-mini --reasoning-effort high
+    python resumo_serial.py --provider openai --model gpt-5-mini --facsimile --page 5 --dry-run
 """
 from __future__ import annotations
 
 import argparse
+import fcntl
 import json
 import logging
 import os
@@ -26,19 +28,56 @@ import re
 import sqlite3
 import sys
 import time
+import unicodedata
 import urllib.error
 import urllib.request
+from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import List, Optional, Tuple
+from typing import Any, List, Optional, TextIO, Tuple
 
 # Permite importar utilitários de limpeza compartilhados
 PROJECT_ROOT = Path(__file__).resolve().parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.limpeza_ocr import (  # type: ignore  # noqa: E402
+    clean_ocr_text_optimized,
     clean_summary_global_for_search,
     clean_summary_page_for_embedding,
+)
+from patristica_pipeline.index_target_locator import (  # type: ignore  # noqa: E402
+    resolve_paired_page_image,
+)
+from facsimile_transport import (  # noqa: E402
+    DEFAULT_FACSIMILE_JPEG_QUALITY,
+    encode_facsimile_for_transport,
+)
+from resumo_v2 import (  # noqa: E402
+    SUMMARY_PROMPT_VERSION,
+    SummaryCandidate,
+    analyze_page,
+    build_embedding_text,
+    build_summary_search_text,
+    canonical_labels_from_hints,
+    extract_json_object_response,
+    generation_for_page,
+    get_or_create_run,
+    generation_last_work_key,
+    initial_active_work_key,
+    init_v2_schema,
+    invalidate_generation_range,
+    load_volume_index_hints,
+    mark_run_blocked,
+    mark_run_complete,
+    next_trusted_work_start,
+    open_indices_readonly,
+    parse_summary_candidate,
+    promote_segment,
+    reconcile_candidate_work_keys,
+    resume_page_number,
+    sha256_text,
+    store_context_anchor,
+    store_generation,
 )
 
 # Importa módulo de versionamento OCR (opcional — degrada graciosamente)
@@ -52,14 +91,18 @@ except ImportError:
 # ---------------------------------------------------------------------------
 DEFAULT_DB = PROJECT_ROOT / "data" / "patristica_resumos.db"
 DEFAULT_ROOT = PROJECT_ROOT / "teste"
-DEFAULT_MODEL = "qwen3:30b"
+DEFAULT_MODEL = "gemma4:cloud"
+DEFAULT_INDICES_DB = PROJECT_ROOT / "data" / "patristic_indices.db"
 DEFAULT_OLLAMA_URL = "http://localhost:11434"
 DEFAULT_TIMEOUT = 300  # segundos – resumos longos podem demorar
 
 DEFAULT_NUM_CTX = 16384  # janela de contexto padrão do Ollama (tokens)
+DEFAULT_V2_GEMMA4_NUM_CTX = 131072  # metade da janela anunciada de 256K
 TOKEN_RESERVE_OUTPUT = 2048  # tokens reservados para a resposta do modelo
 TOKEN_RESERVE_SYSTEM = 600  # estimativa p/ system prompt + boilerplate
 CHARS_PER_TOKEN = 3.8  # heurística: ~3.8 chars/token (latim/grego/pt misturados)
+MAX_FACSIMILE_BYTES = 20 * 1024 * 1024
+FACSIMILE_JPEG_QUALITY = DEFAULT_FACSIMILE_JPEG_QUALITY
 
 SERIES_RE = re.compile(r"^(PG|PL|PO)(\d+)(.*)$")
 PAGE_NUM_RE = re.compile(r"-(\d+)\.txt$", re.IGNORECASE)
@@ -76,6 +119,39 @@ logging.basicConfig(
 )
 log = logging.getLogger("resumo_serial")
 
+
+@dataclass(frozen=True)
+class TokenUsage:
+    """Contagem de tokens de uma ou mais chamadas ao modelo."""
+
+    input_tokens: int = 0
+    output_tokens: int = 0
+    requests: int = 0
+    estimated: bool = False
+
+    @property
+    def total_tokens(self) -> int:
+        return self.input_tokens + self.output_tokens
+
+    def __add__(self, other: "TokenUsage") -> "TokenUsage":
+        return TokenUsage(
+            input_tokens=self.input_tokens + other.input_tokens,
+            output_tokens=self.output_tokens + other.output_tokens,
+            requests=self.requests + other.requests,
+            estimated=self.estimated or other.estimated,
+        )
+
+
+class LLMResponse(str):
+    """String compatível com os consumidores antigos, acrescida do usage."""
+
+    usage: TokenUsage
+
+    def __new__(cls, content: str, usage: TokenUsage) -> "LLMResponse":
+        instance = super().__new__(cls, content)
+        instance.usage = usage
+        return instance
+
 # ---------------------------------------------------------------------------
 # SQLite
 # ---------------------------------------------------------------------------
@@ -87,12 +163,40 @@ def _now_iso() -> str:
 
 def connect_db(path: Path) -> sqlite3.Connection:
     path.parent.mkdir(parents=True, exist_ok=True)
-    con = sqlite3.connect(path)
+    con = sqlite3.connect(path, timeout=30.0)
     con.row_factory = sqlite3.Row
-    con.execute("PRAGMA journal_mode = WAL")
     con.execute("PRAGMA busy_timeout = 30000")  # 30s de espera em caso de lock
+    con.execute("PRAGMA journal_mode = WAL")
     con.execute("PRAGMA foreign_keys = ON")
     return con
+
+
+def acquire_volume_processing_lock(db_path: Path, documento: str) -> TextIO:
+    """Impede duas cadeias graváveis para o mesmo volume no mesmo DB."""
+    lock_dir = db_path.resolve().parent / ".resumo_locks"
+    lock_dir.mkdir(parents=True, exist_ok=True)
+    safe_db = re.sub(r"[^A-Za-z0-9_.-]+", "_", db_path.name)
+    safe_documento = re.sub(r"[^A-Za-z0-9_.-]+", "_", documento)
+    lock_path = lock_dir / f"{safe_db}.{safe_documento}.lock"
+    handle = lock_path.open("a+", encoding="utf-8")
+    try:
+        fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError as exc:
+        handle.close()
+        raise RuntimeError(
+            f"Volume {documento} já está sendo processado por outra execução "
+            f"(lock: {lock_path})"
+        ) from exc
+    return handle
+
+
+def release_volume_processing_lock(handle: TextIO | None) -> None:
+    if handle is None:
+        return
+    try:
+        fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+    finally:
+        handle.close()
 
 
 def init_resumo_schema(con: sqlite3.Connection) -> None:
@@ -219,12 +323,24 @@ def save_resumo(
     ocr_result_id: Optional[int] = None,
 ) -> None:
     con.execute(
-        """INSERT OR REPLACE INTO resumos
+        """INSERT INTO resumos
            (documento, pagina_num, pagina_file, pagina_texto,
             resumo_pagina, resumo_global, modelo, criado_em,
             author_detected, work_detected, summary_page_clean,
             summary_global_clean, ocr_result_id)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+           ON CONFLICT(documento, pagina_num) DO UPDATE SET
+             pagina_file=excluded.pagina_file,
+             pagina_texto=excluded.pagina_texto,
+             resumo_pagina=excluded.resumo_pagina,
+             resumo_global=excluded.resumo_global,
+             modelo=excluded.modelo,
+             criado_em=excluded.criado_em,
+             author_detected=excluded.author_detected,
+             work_detected=excluded.work_detected,
+             summary_page_clean=excluded.summary_page_clean,
+             summary_global_clean=excluded.summary_global_clean,
+             ocr_result_id=excluded.ocr_result_id""",
         (
             documento,
             pagina_num,
@@ -244,6 +360,20 @@ def save_resumo(
     con.commit()
 
 
+def resolve_page_facsimile(page_path: Path) -> Path | None:
+    """Resolve a imagem física pareada sem inferir número editorial."""
+    paired = resolve_paired_page_image(str(page_path))
+    if not paired:
+        return None
+    image_path = Path(paired)
+    try:
+        if not image_path.is_file() or image_path.stat().st_size > MAX_FACSIMILE_BYTES:
+            return None
+    except OSError:
+        return None
+    return image_path.resolve()
+
+
 # ---------------------------------------------------------------------------
 # Ollama (texto livre, sem forçar JSON)
 # ---------------------------------------------------------------------------
@@ -256,16 +386,21 @@ def ollama_chat(
     base_url: str = DEFAULT_OLLAMA_URL,
     timeout: int = DEFAULT_TIMEOUT,
     num_ctx: int = DEFAULT_NUM_CTX,
-) -> str:
+    image_path: Path | None = None,
+) -> LLMResponse:
     """Chama Ollama /api/chat e retorna a resposta como texto puro."""
     url = f"{base_url}/api/chat"
+    user_message: dict = {"role": "user", "content": prompt_user}
+    if image_path is not None:
+        encoded, _mime_type = encode_facsimile_for_transport(image_path)
+        user_message["images"] = [encoded]
     payload = {
         "model": model,
         "stream": False,
         "format": "json",
         "messages": [
             {"role": "system", "content": prompt_system},
-            {"role": "user", "content": prompt_user},
+            user_message,
         ],
         "options": {
             "temperature": TEMPERATURE_DEFAULT,
@@ -296,10 +431,26 @@ def ollama_chat(
 
     # Se o conteúdo principal estiver vazio, mas houver raciocínio,
     # usamos o raciocínio como resposta.
-    if not content.strip() and thinking.strip():
-        return thinking.strip()
-
-    return content.strip()
+    response_text = (
+        thinking.strip()
+        if not content.strip() and thinking.strip()
+        else content.strip()
+    )
+    has_usage = "prompt_eval_count" in body or "eval_count" in body
+    usage = TokenUsage(
+        input_tokens=int(body.get("prompt_eval_count") or 0),
+        output_tokens=int(body.get("eval_count") or 0),
+        requests=1,
+        estimated=not has_usage,
+    )
+    if not has_usage:
+        usage = TokenUsage(
+            input_tokens=estimate_tokens(prompt_system + "\n" + prompt_user),
+            output_tokens=estimate_tokens(response_text),
+            requests=1,
+            estimated=True,
+        )
+    return LLMResponse(response_text, usage)
 
 
 # ---------------------------------------------------------------------------
@@ -315,7 +466,8 @@ def openai_chat(
     timeout: int = DEFAULT_TIMEOUT,
     reasoning_effort: str = "high",
     api_key_env: str = "OPENAI_API_KEY",
-) -> str:
+    image_path: Path | None = None,
+) -> LLMResponse:
     """Chama OpenAI /chat/completions e retorna a resposta como texto puro."""
     api_key = os.getenv(api_key_env)
     if not api_key:
@@ -325,11 +477,22 @@ def openai_chat(
         )
 
     url = f"{base_url}/chat/completions"
+    user_content: str | list[dict] = prompt_user
+    if image_path is not None:
+        encoded, mime_type = encode_facsimile_for_transport(image_path)
+        user_content = [
+            {"type": "text", "text": prompt_user},
+            {
+                "type": "image_url",
+                "image_url": {"url": f"data:{mime_type};base64,{encoded}"},
+            },
+        ]
+
     payload: dict = {
         "model": model,
         "messages": [
             {"role": "system", "content": prompt_system},
-            {"role": "user", "content": prompt_user},
+            {"role": "user", "content": user_content},
         ],
         "response_format": {"type": "json_object"},
         "service_tier": "flex",
@@ -371,8 +534,23 @@ def openai_chat(
     choices = body.get("choices") or []
     if not choices:
         raise RuntimeError("OpenAI retornou sem choices")
-    content = choices[0].get("message", {}).get("content", "")
-    return content.strip()
+    content = choices[0].get("message", {}).get("content", "").strip()
+    raw_usage = body.get("usage") or {}
+    has_usage = bool(raw_usage)
+    usage = TokenUsage(
+        input_tokens=int(raw_usage.get("prompt_tokens") or 0),
+        output_tokens=int(raw_usage.get("completion_tokens") or 0),
+        requests=1,
+        estimated=not has_usage,
+    )
+    if not has_usage:
+        usage = TokenUsage(
+            input_tokens=estimate_tokens(prompt_system + "\n" + prompt_user),
+            output_tokens=estimate_tokens(content),
+            requests=1,
+            estimated=True,
+        )
+    return LLMResponse(content, usage)
 
 
 # ---------------------------------------------------------------------------
@@ -391,7 +569,8 @@ def llm_chat(
     reasoning_effort: str = "high",
     api_key_env: str = "OPENAI_API_KEY",
     num_ctx: int = DEFAULT_NUM_CTX,
-) -> str:
+    image_path: Path | None = None,
+) -> LLMResponse:
     """Despacha para Ollama ou OpenAI conforme o provider."""
     if provider == "openai":
         return openai_chat(
@@ -402,6 +581,7 @@ def llm_chat(
             timeout=timeout,
             reasoning_effort=reasoning_effort,
             api_key_env=api_key_env,
+            image_path=image_path,
         )
     # default: ollama
     return ollama_chat(
@@ -411,6 +591,7 @@ def llm_chat(
         base_url=base_url,
         timeout=timeout,
         num_ctx=num_ctx,
+        image_path=image_path,
     )
 
 
@@ -429,6 +610,46 @@ def estimate_tokens(text: str, chars_per_token: float = CHARS_PER_TOKEN) -> int:
     if not text:
         return 0
     return int(len(text) / chars_per_token) + 1
+
+
+def response_token_usage(
+    response: str, prompt_system: str, prompt_user: str
+) -> TokenUsage:
+    """Obtém usage real da resposta ou estima quando um provider/mock não o envia."""
+    usage = getattr(response, "usage", None)
+    if isinstance(usage, TokenUsage):
+        return usage
+    return TokenUsage(
+        input_tokens=estimate_tokens(prompt_system + "\n" + prompt_user),
+        output_tokens=estimate_tokens(str(response)),
+        requests=1,
+        estimated=True,
+    )
+
+
+def format_duration(seconds: float) -> str:
+    if seconds < 60:
+        return f"{seconds:.1f}s"
+    rounded = int(round(seconds))
+    hours, remainder = divmod(rounded, 3600)
+    minutes, secs = divmod(remainder, 60)
+    if hours:
+        return f"{hours}h {minutes:02d}m {secs:02d}s"
+    return f"{minutes}m {secs:02d}s"
+
+
+def _format_token_count(value: int) -> str:
+    return f"{value:,}".replace(",", ".")
+
+
+def format_token_usage(usage: TokenUsage) -> str:
+    approximation = "≈" if usage.estimated else "="
+    requests = f"; chamadas={usage.requests}" if usage.requests > 1 else ""
+    return (
+        f"tokens{approximation}{_format_token_count(usage.total_tokens)} "
+        f"(entrada={_format_token_count(usage.input_tokens)}, "
+        f"saída={_format_token_count(usage.output_tokens)}{requests})"
+    )
 
 
 def truncate_context(
@@ -566,6 +787,7 @@ def build_user_prompt(
     doc_name: str,
     author: str,
     work: str,
+    facsimile_attached: bool = False,
 ) -> str:
     parts: List[str] = []
 
@@ -591,6 +813,17 @@ def build_user_prompt(
     if author and work:
         parts.append(f"### DADOS DA OBRA: Autor: {author} | Obra: {work}")
 
+    if facsimile_attached:
+        parts.append(
+            "<facsimile_anexado>\n"
+            "A imagem anexada é o fac-símile desta mesma página física. Use-a "
+            "para conferir texto, diacríticos, colunas, títulos, autor e obra "
+            "quando o OCR estiver truncado ou ambíguo. Não descreva a imagem "
+            "nem mencione OCR/fac-símile na resposta; não invente trechos que "
+            "não estejam legíveis em nenhuma das duas fontes.\n"
+            "</facsimile_anexado>"
+        )
+
     # Contexto Prévio (Sintese Acumulada das páginas anteriores)
     parts.append("<contexto_prévio_acumulado>")
     if contexto_previo:
@@ -601,7 +834,7 @@ def build_user_prompt(
 
     # Conteúdo da Página Atual
     parts.append("<conteudo_pagina_atual>")
-    parts.append(page_text)
+    parts.append(page_text or "(OCR vazio; confira o fac-símile anexado.)")
     parts.append("</conteudo_pagina_atual>\n")
 
     # Instrução de fechamento alinhada ao JSON
@@ -632,36 +865,19 @@ def parse_llm_response(raw: str) -> Tuple[str, str, str, str, bool]:
     if len(clean) == 0:
         print(f"Raw response was empty: {raw}")
 
-    # ------------------------------------------------------------
-    # Utilitários de limpeza simples (mínimo de regex)
-    # ------------------------------------------------------------
     def clean_summary_text(text: str) -> str:
         if not text:
             return ""
         return " ".join(text.replace("\r", "\n").replace("\n", " ").split()).strip()
-
-    def strip_code_fence(text: str) -> str:
-        if "```" in text:
-            m = re.search(r"```(?:json)?(.*?)```", text, re.DOTALL)
-            if m:
-                return m.group(1)
-        return text
 
     resumo_pagina = ""
     sintese = ""
     autor = ""
     obra = ""
 
-    cand = strip_code_fence(clean).strip()
-    if not (cand.startswith("{") and cand.endswith("}")):
-        return "", "", "", "", False
-
     try:
-        parsed = json.loads(cand)
-    except Exception:
-        return "", "", "", "", False
-
-    if not isinstance(parsed, dict):
+        parsed = extract_json_object_response(clean)
+    except ValueError:
         return "", "", "", "", False
 
     resumo_pagina = clean_summary_text(str(parsed.get("traducao_compacta", "")))
@@ -680,8 +896,10 @@ def parse_llm_response(raw: str) -> Tuple[str, str, str, str, bool]:
 
 
 def is_page_administrative(text: str) -> bool:
-    t = (text or "").lower()
-    return "administrativ" in t  # cobre "administrativo", "administrativa", etc.
+    marker = unicodedata.normalize("NFKD", text or "")
+    marker = "".join(char for char in marker if not unicodedata.combining(char))
+    marker = " ".join(marker.casefold().split())
+    return marker == "conteudo administrativo"
 
 
 def is_page_ilegible(text: str) -> bool:
@@ -758,6 +976,724 @@ def discover_volumes(
 
 
 # ---------------------------------------------------------------------------
+# Pipeline v2 (shadow, esquema reduzido e cadeia serial verificável)
+# ---------------------------------------------------------------------------
+
+SYSTEM_PROMPT_V2 = """\
+Você é o editor de metadados de uma biblioteca patrística digital. Produza um
+resumo canônico em português do Brasil, útil ao leitor, à busca lexical e à
+similaridade semântica. Trabalhe somente com as evidências fornecidas.
+
+GUARDRAILS:
+1. Prefácio, proêmio, introdução editorial, dedicatória, página de título,
+   bibliografia, índice e aparato crítico têm conteúdo descritível. Não os
+   chame de administrativos apenas por não serem o corpo principal da obra.
+2. "administrative" é reservado a página vazia, encadernação, aviso técnico de
+   digitalização ou ruído sem conteúdo bibliográfico, histórico, editorial,
+   filosófico ou teológico recuperável. Explique administrative_reason.
+3. Hints de catálogo e regex são evidência auxiliar. Confirme-os no OCR ou no
+   fac-símile; registre contradições em source_conflicts e não invente.
+4. Uma página pode terminar uma obra e iniciar outra. Nesse caso, devolva os
+   segmentos na ordem física da página.
+5. work_key só pode ser copiado literalmente da lista allowed_work_keys. Se a
+   obra for incerta ou não estiver na lista, use string vazia.
+6. Diferencie autor da obra de editor, tradutor, dedicante, dedicatário,
+   comentador e impressor. Só registre contributors explicitamente sustentados.
+7. cumulative_summary descreve somente a obra corrente. Prefira uma síntese
+   de até 1.800 caracteres, mas preserve conteúdo indispensável em vez de
+   cortar frases. Reinicie-o numa mudança segura de obra; fora disso, atualize-o
+   com o conteúdo novo sem repetir mecanicamente a página anterior.
+8. Referências bíblicas só entram quando sustentadas pelo OCR/fac-símile ou
+   pelos candidatos determinísticos fornecidos.
+9. Não descreva OCR, fac-símile ou seu raciocínio na saída. Não gere Markdown.
+
+Retorne JSON puro exatamente com esta estrutura:
+{
+  "page_kinds": ["body|work_start|transition|preface|dedication|title_page|index|bibliography|critical_apparatus|administrative|illegible|other"],
+  "segments": [
+    {"order": 1, "kind": "body", "work_key": "", "summary": "resumo concreto do conteúdo novo"}
+  ],
+  "contributors": [
+    {"name": "Nome", "role": "editor|translator|dedicant|dedicatee|commentator|printer"}
+  ],
+  "cumulative_summary": "síntese concisa da obra corrente",
+  "source_conflicts": [],
+  "administrative_reason": ""
+}
+""".strip()
+
+
+def build_v2_user_prompt(
+    *,
+    documento: str,
+    pagina_num: int,
+    ocr_clean: str,
+    previous_context: str,
+    analysis: Any,
+    index_hints: dict[str, Any],
+    facsimile_attached: bool,
+    active_work_key: str = "",
+    lookahead: list[dict[str, Any]] | None = None,
+    context_window: int | None = None,
+) -> str:
+    allowed_work_keys = sorted(
+        {
+            str(item.get("work_key") or "")
+            for item in [
+                *(index_hints.get("exact_start_candidates") or []),
+                *(index_hints.get("containing_work_candidates") or []),
+            ]
+            if item.get("work_key")
+        }
+        | ({active_work_key} if active_work_key else set())
+    )
+    evidence = {
+        "active_work_key": active_work_key,
+        "header_original": analysis.header_original,
+        "page_kind_hints": list(analysis.page_kind_hints),
+        "exact_start_candidates": list(analysis.exact_start_candidates),
+        "containing_work_candidates": list(analysis.containing_work_candidates),
+        "scripture_candidates": list(analysis.scripture_candidates),
+        "facsimile_reasons": list(analysis.facsimile_reasons),
+    }
+    parts_before_context = [
+        f'<page document="{documento}" physical_page="{pagina_num}">',
+        "<allowed_work_keys>",
+        json.dumps(allowed_work_keys, ensure_ascii=False),
+        "</allowed_work_keys>",
+        "<deterministic_evidence>",
+        json.dumps(evidence, ensure_ascii=False, separators=(",", ":")),
+        "</deterministic_evidence>",
+        "<previous_context>",
+    ]
+    parts_after_context = ["</previous_context>"]
+    if facsimile_attached:
+        parts_after_context.extend(
+            [
+                "<facsimile_attached>",
+                "A imagem anexada corresponde à página física atual. Use-a para "
+                "conferir títulos, hierarquia, colunas, nomes e transições; não a descreva.",
+                "</facsimile_attached>",
+            ]
+        )
+    if lookahead:
+        parts_after_context.extend(
+            [
+                "<deterministic_lookahead>",
+                "As páginas seguintes servem apenas para resolver a fronteira/contexto "
+                "da página atual. Não resuma seu conteúdo como se pertencesse à página atual.",
+                json.dumps(lookahead, ensure_ascii=False, separators=(",", ":")),
+                "</deterministic_lookahead>",
+            ]
+        )
+    parts_after_context.extend(
+        [
+            "<current_page>",
+            (ocr_clean or "(sem texto OCR recuperável)")[:30000],
+            "</current_page>",
+            "</page>",
+        ]
+    )
+    context = previous_context or "(início do volume; sem contexto anterior)"
+    if context_window is not None:
+        fixed_prompt = "\n".join([*parts_before_context, *parts_after_context])
+        context = fit_v2_previous_context(context, fixed_prompt, context_window)
+    return "\n".join([*parts_before_context, context, *parts_after_context])
+
+
+def fit_v2_previous_context(
+    previous_context: str,
+    fixed_user_prompt: str,
+    context_window: int,
+    chars_per_token: float = CHARS_PER_TOKEN,
+) -> str:
+    """Reduz o contexto anterior somente quando a janela real exigir.
+
+    O texto persistido nunca é alterado. Quando necessário, preservamos início
+    e fim da síntese: o início identifica a obra e o fim contém o estado mais
+    recente da corrente serial.
+    """
+    available_tokens = (
+        context_window
+        - TOKEN_RESERVE_OUTPUT
+        - estimate_tokens(SYSTEM_PROMPT_V2, chars_per_token)
+        - estimate_tokens(fixed_user_prompt, chars_per_token)
+    )
+    context_tokens = estimate_tokens(previous_context, chars_per_token)
+    if context_tokens <= max(0, available_tokens):
+        return previous_context
+    if available_tokens <= 32:
+        log.warning(
+            "Prompt v2 ocupa a janela de %d tokens; enviando sem contexto anterior",
+            context_window,
+        )
+        return ""
+
+    marker = "\n[... contexto intermediário omitido para caber na janela ...]\n"
+    max_chars = max(0, int(available_tokens * chars_per_token) - len(marker))
+    if max_chars <= 64:
+        return previous_context[-max_chars:] if max_chars else ""
+    head_chars = max_chars // 3
+    tail_chars = max_chars - head_chars
+    fitted = previous_context[:head_chars].rstrip() + marker + previous_context[-tail_chars:].lstrip()
+    log.info(
+        "Contexto v2 ajustado à janela: %d→%d tokens (janela=%d)",
+        context_tokens,
+        estimate_tokens(fitted, chars_per_token),
+        context_window,
+    )
+    return fitted
+
+
+def _scripture_evidence_for_page(
+    documento: str, pagina_num: int, pagina_file: str
+) -> dict[str, Any]:
+    try:
+        from keywords_serial import collect_page_scripture_evidence
+
+        return collect_page_scripture_evidence(
+            {
+                "documento": documento,
+                "pagina_num": pagina_num,
+                "pagina_file": pagina_file,
+            }
+        )
+    except Exception as exc:
+        log.warning(
+            "[%s] p%d detector bíblico indisponível: %s",
+            documento,
+            pagina_num,
+            exc,
+        )
+        return {"status": "detector_error", "candidates": [], "candidate_count": 0}
+
+
+def _empty_page_candidate(previous_context: str) -> SummaryCandidate:
+    summary = "Página física sem conteúdo textual ou bibliográfico recuperável."
+    return SummaryCandidate(
+        page_kinds=("administrative",),
+        segments=(
+            {"order": 1, "kind": "administrative", "work_key": "", "summary": summary},
+        ),
+        contributors=(),
+        summary_display_pt=summary,
+        cumulative_summary=previous_context,
+        source_conflicts=(),
+        administrative_reason="Página vazia ou sem conteúdo recuperável.",
+        primary_page_kind="administrative",
+        status="valid",
+        validation_issues=(),
+        context_reset=False,
+        context_reset_confidence=0.0,
+    )
+
+
+def _lookahead_payload(pages: list[Path], current_index: int, amount: int) -> list[dict[str, Any]]:
+    payload: list[dict[str, Any]] = []
+    for path in pages[current_index + 1 : current_index + 1 + max(0, amount)]:
+        try:
+            raw = path.read_text(encoding="utf-8", errors="replace")
+            clean, _meta = clean_ocr_text_optimized(raw)
+        except OSError:
+            continue
+        payload.append(
+            {
+                "physical_page": page_number(path),
+                "header": clean.splitlines()[0][:300] if clean else "",
+                "text_preview": clean[:1800],
+            }
+        )
+    return payload
+
+
+def _call_v2_candidate(
+    *,
+    user_prompt: str,
+    analysis: Any,
+    allowed_work_keys: set[str],
+    provider: str,
+    model: str,
+    base_url: str,
+    timeout: int,
+    retries: int,
+    reasoning_effort: str,
+    api_key_env: str,
+    num_ctx: int,
+    image_path: Path | None,
+) -> tuple[SummaryCandidate, str, TokenUsage]:
+    last_error = ""
+    last_raw = ""
+    usage = TokenUsage()
+    for attempt in range(1, retries + 1):
+        try:
+            last_raw = llm_chat(
+                prompt_system=SYSTEM_PROMPT_V2,
+                prompt_user=user_prompt,
+                provider=provider,
+                model=model,
+                base_url=base_url,
+                timeout=timeout,
+                reasoning_effort=reasoning_effort,
+                api_key_env=api_key_env,
+                num_ctx=num_ctx,
+                image_path=image_path,
+            )
+            usage += response_token_usage(last_raw, SYSTEM_PROMPT_V2, user_prompt)
+            candidate = parse_summary_candidate(last_raw, analysis, allowed_work_keys)
+            return candidate, last_raw, usage
+        except Exception as exc:
+            last_error = str(exc)
+            log.warning("Tentativa v2 %d/%d falhou: %s", attempt, retries, exc)
+            if attempt < retries:
+                time.sleep(min(10, 2 * attempt))
+    raise ValueError(f"Falha na geração/validação v2: {last_error}; raw={last_raw[:500]}")
+
+
+def _legacy_context_before(
+    con: sqlite3.Connection, documento: str, pagina_num: int
+) -> tuple[str, str]:
+    row = con.execute(
+        """
+        SELECT id, resumo_global FROM resumos
+         WHERE documento=? AND pagina_num<?
+         ORDER BY pagina_num DESC LIMIT 1
+        """,
+        (documento, pagina_num),
+    ).fetchone()
+    if row is None:
+        return "", ""
+    context = str(row["resumo_global"] or "")
+    return context, sha256_text("legacy-context", row["id"], context)
+
+
+def _promote_v2_run_segments(
+    con: sqlite3.Connection, run_id: int, documento: str
+) -> int:
+    rows = con.execute(
+        "SELECT pagina_num, context_reset FROM resumo_generations WHERE run_id=? AND documento=? ORDER BY pagina_num",
+        (run_id, documento),
+    ).fetchall()
+    if not rows:
+        return 0
+    boundaries = [0]
+    boundaries.extend(
+        index
+        for index, row in enumerate(rows)
+        if index > 0 and int(row["context_reset"] or 0) == 1
+    )
+    boundaries.append(len(rows))
+    promoted = 0
+    for start_index, end_index in zip(boundaries, boundaries[1:]):
+        segment = rows[start_index:end_index]
+        promoted += promote_segment(
+            con,
+            run_id,
+            documento,
+            int(segment[0]["pagina_num"]),
+            int(segment[-1]["pagina_num"]),
+        )
+    return promoted
+
+
+def process_volume_v2(
+    *,
+    volume_dir: Path,
+    con: sqlite3.Connection,
+    model: str,
+    base_url: str,
+    timeout: int,
+    retries: int,
+    provider: str,
+    reasoning_effort: str,
+    api_key_env: str,
+    num_ctx: int,
+    dry_run: bool,
+    page_filter: int | None,
+    verbose: bool,
+    versions_con: sqlite3.Connection | None,
+    facsimile_mode: str,
+    facsimile_threshold: int,
+    lookahead_pages: int,
+    force_replace_from: int | None,
+    force_replace_through: str,
+    promote: bool,
+    indices_db: Path,
+) -> None:
+    documento = volume_dir.name
+    all_pages = discover_pages(volume_dir / "text")
+    if not all_pages:
+        log.warning("Nenhuma página encontrada em %s", volume_dir / "text")
+        return
+    if dry_run and page_filter is not None:
+        selected = [path for path in all_pages if page_number(path) == page_filter]
+        if not selected:
+            log.warning("[%s] Página %d não encontrada", documento, page_filter)
+            return
+    else:
+        selected = all_pages
+
+    indices = open_indices_readonly(indices_db)
+    try:
+        hints_by_page = load_volume_index_hints(indices, documento, all_pages)
+    finally:
+        if indices is not None:
+            indices.close()
+
+    if dry_run:
+        start_page = page_filter if page_filter is not None else page_number(selected[0])
+        run = None
+    else:
+        init_v2_schema(con)
+        force_through_num: int | None = None
+        if force_replace_from is not None:
+            if force_replace_through == "next-work":
+                next_start = next_trusted_work_start(hints_by_page, force_replace_from)
+                force_through_num = next_start - 1 if next_start is not None else page_number(all_pages[-1])
+            elif force_replace_through == "end":
+                force_through_num = page_number(all_pages[-1])
+            else:
+                force_through_num = int(force_replace_through)
+            if force_through_num < force_replace_from:
+                raise ValueError("--force-replace-through anterior a --force-replace-from")
+            invalidated = invalidate_generation_range(
+                con, documento, force_replace_from, force_through_num
+            )
+            log.info(
+                "[%s] Reparação explícita p%d–p%d; %d geração(ões) promovida(s) invalidadas",
+                documento,
+                force_replace_from,
+                force_through_num,
+                invalidated,
+            )
+        run = get_or_create_run(
+            con,
+            documento=documento,
+            pages=all_pages,
+            provider=provider,
+            model=model,
+            force_from_page=force_replace_from,
+            force_through_page=force_through_num,
+        )
+        start_page = resume_page_number(con, run, all_pages, force_replace_from)
+        if start_page is None:
+            if promote:
+                promoted = _promote_v2_run_segments(con, run["id"], documento)
+                log.info(
+                    "[%s] Run v2 já concluído; %d página(s) promovida(s) agora",
+                    documento,
+                    promoted,
+                )
+            else:
+                log.info("[%s] Run v2 já concluído; nada a retomar", documento)
+            return
+        selected = [
+            path
+            for path in all_pages
+            if page_number(path) >= start_page
+            and (force_through_num is None or page_number(path) <= force_through_num)
+        ]
+
+    legacy_rows = {
+        int(row["pagina_num"]): row
+        for row in con.execute(
+            "SELECT id, pagina_num, resumo_global, ocr_result_id FROM resumos WHERE documento=?",
+            (documento,),
+        ).fetchall()
+    }
+    previous_generation = None
+    previous_context, legacy_chain = _legacy_context_before(con, documento, start_page)
+    if run is not None:
+        prior = con.execute(
+            "SELECT * FROM resumo_generations WHERE run_id=? AND documento=? AND pagina_num<? ORDER BY pagina_num DESC LIMIT 1",
+            (run["id"], documento, start_page),
+        ).fetchone()
+        if prior is not None:
+            previous_generation = prior
+            previous_context = str(prior["cumulative_summary"] or "")
+            legacy_chain = ""
+    active_work_key = generation_last_work_key(previous_generation)
+
+    processed = 0
+    measured_items = 0
+    volume_usage = TokenUsage()
+    volume_llm_seconds = 0.0
+    for page_path in selected:
+        pagina_num = page_number(page_path)
+        item_usage = TokenUsage()
+        item_llm_seconds = 0.0
+        try:
+            raw_ocr = page_path.read_text(encoding="utf-8", errors="replace")
+        except OSError as exc:
+            if run is not None:
+                mark_run_blocked(con, run["id"], pagina_num, f"read_error:{exc}")
+            raise
+        clean_ocr, _clean_meta = clean_ocr_text_optimized(raw_ocr)
+        hints = hints_by_page.get(pagina_num, {})
+        scripture_evidence = _scripture_evidence_for_page(
+            documento, pagina_num, page_path.name
+        )
+        analysis = analyze_page(
+            documento=documento,
+            pagina_num=pagina_num,
+            pagina_file=page_path.name,
+            page_text=raw_ocr,
+            ocr_clean=clean_ocr,
+            index_hints=hints,
+            scripture_evidence=scripture_evidence,
+        )
+        if not active_work_key:
+            active_work_key = initial_active_work_key(previous_generation, analysis)
+        incoming_work_key = active_work_key
+        ocr_result_id = None
+        if versions_con is not None and _vdb is not None:
+            try:
+                current_ocr = _vdb.get_current_result(
+                    versions_con, documento, pagina_num
+                )
+                if current_ocr is not None:
+                    ocr_result_id = int(current_ocr["id"])
+            except Exception as exc:
+                log.debug(
+                    "[%s] p%d ocr_result_id v2 indisponível: %s",
+                    documento,
+                    pagina_num,
+                    exc,
+                )
+        attach_image = facsimile_mode == "always" or (
+            facsimile_mode == "auto" and analysis.facsimile_score >= facsimile_threshold
+        )
+        image_path = resolve_page_facsimile(page_path) if attach_image else None
+        labels = canonical_labels_from_hints(hints)
+        allowed_keys = {
+            str(item.get("work_key"))
+            for item in [
+                *(hints.get("exact_start_candidates") or []),
+                *(hints.get("containing_work_candidates") or []),
+            ]
+            if item.get("work_key")
+        }
+        if active_work_key:
+            allowed_keys.add(active_work_key)
+        if analysis.is_empty and image_path is None:
+            candidate = _empty_page_candidate(previous_context)
+            raw_response = ""
+            log.info(
+                "[%s] p%d v2 sem chamada LLM; página vazia",
+                documento,
+                pagina_num,
+            )
+        else:
+            prompt = build_v2_user_prompt(
+                documento=documento,
+                pagina_num=pagina_num,
+                ocr_clean=clean_ocr,
+                previous_context=previous_context,
+                analysis=analysis,
+                index_hints=hints,
+                facsimile_attached=image_path is not None,
+                active_work_key=active_work_key,
+                context_window=num_ctx if provider == "ollama" else 128000,
+            )
+            log.info(
+                "[%s] p%d v2 %s; fac-símile=%s score=%d (%s); iniciando",
+                documento,
+                pagina_num,
+                model,
+                "sim" if image_path else "não",
+                analysis.facsimile_score,
+                ",".join(analysis.facsimile_reasons) or "sem gatilhos",
+            )
+            try:
+                call_started = time.monotonic()
+                candidate, raw_response, call_usage = _call_v2_candidate(
+                    user_prompt=prompt,
+                    analysis=analysis,
+                    allowed_work_keys=allowed_keys,
+                    provider=provider,
+                    model=model,
+                    base_url=base_url,
+                    timeout=timeout,
+                    retries=retries,
+                    reasoning_effort=reasoning_effort,
+                    api_key_env=api_key_env,
+                    num_ctx=num_ctx,
+                    image_path=image_path,
+                )
+                item_llm_seconds += time.monotonic() - call_started
+                item_usage += call_usage
+                if candidate.status == "context_provisional":
+                    absolute_index = all_pages.index(page_path)
+                    lookahead = _lookahead_payload(all_pages, absolute_index, lookahead_pages)
+                    if lookahead:
+                        prompt = build_v2_user_prompt(
+                            documento=documento,
+                            pagina_num=pagina_num,
+                            ocr_clean=clean_ocr,
+                            previous_context=previous_context,
+                            analysis=analysis,
+                            index_hints=hints,
+                            facsimile_attached=image_path is not None,
+                            active_work_key=active_work_key,
+                            lookahead=lookahead,
+                            context_window=num_ctx if provider == "ollama" else 128000,
+                        )
+                        call_started = time.monotonic()
+                        candidate, raw_response, call_usage = _call_v2_candidate(
+                            user_prompt=prompt,
+                            analysis=analysis,
+                            allowed_work_keys=allowed_keys,
+                            provider=provider,
+                            model=model,
+                            base_url=base_url,
+                            timeout=timeout,
+                            retries=retries,
+                            reasoning_effort=reasoning_effort,
+                            api_key_env=api_key_env,
+                            num_ctx=num_ctx,
+                            image_path=image_path,
+                        )
+                        item_llm_seconds += time.monotonic() - call_started
+                        item_usage += call_usage
+            except Exception as exc:
+                if run is not None:
+                    mark_run_blocked(con, run["id"], pagina_num, str(exc))
+                raise
+
+        measured_items += 1
+        volume_usage += item_usage
+        volume_llm_seconds += item_llm_seconds
+        log.info(
+            "[%s] p%d concluída em %s; %s",
+            documento,
+            pagina_num,
+            format_duration(item_llm_seconds),
+            format_token_usage(item_usage),
+        )
+
+        candidate, active_work_key, work_resolution = reconcile_candidate_work_keys(
+            candidate,
+            analysis,
+            incoming_work_key,
+        )
+
+        search_text = build_summary_search_text(
+            candidate.summary_display_pt, candidate.segments, analysis, labels
+        )
+        embedding_text = build_embedding_text(candidate.summary_display_pt, labels)
+        previous_chain = (
+            str(previous_generation["chain_hash"] or "")
+            if previous_generation is not None
+            else legacy_chain
+        )
+        source_hash = sha256_text(
+            SUMMARY_PROMPT_VERSION,
+            documento,
+            pagina_num,
+            raw_ocr,
+            ocr_result_id,
+            json.dumps(hints, ensure_ascii=False, sort_keys=True),
+            json.dumps(scripture_evidence, ensure_ascii=False, sort_keys=True),
+            incoming_work_key,
+            previous_chain,
+        )
+        if dry_run:
+            print(
+                json.dumps(
+                    {
+                        "documento": documento,
+                        "pagina_num": pagina_num,
+                        "status": candidate.status,
+                        "facsimile_score": analysis.facsimile_score,
+                        "facsimile_used": image_path is not None,
+                        "page_kinds": candidate.page_kinds,
+                        "segments": candidate.segments,
+                        "contributors": candidate.contributors,
+                        "cumulative_summary": candidate.cumulative_summary,
+                        "validation_issues": candidate.validation_issues,
+                        "search_text_pt": search_text,
+                        "embedding_text": embedding_text,
+                        **({"raw_response": raw_response} if verbose else {}),
+                    },
+                    ensure_ascii=False,
+                    indent=2,
+                )
+            )
+            previous_context = candidate.cumulative_summary
+            continue
+
+        legacy = legacy_rows.get(pagina_num)
+        generation = store_generation(
+            con,
+            run_id=run["id"],
+            legacy_resumo_id=int(legacy["id"]) if legacy is not None else None,
+            ocr_result_id=ocr_result_id,
+            documento=documento,
+            pagina_num=pagina_num,
+            pagina_file=page_path.name,
+            previous_generation=previous_generation,
+            previous_chain_hash_override=legacy_chain,
+            source_hash=source_hash,
+            provider=provider,
+            model=model,
+            candidate=candidate,
+            search_text_pt=search_text,
+            embedding_text=embedding_text,
+            analysis=analysis,
+            raw_response=raw_response,
+            facsimile_used=image_path is not None,
+            tainted_by_page=pagina_num if candidate.status == "context_provisional" else None,
+        )
+        store_context_anchor(
+            con,
+            documento=documento,
+            pagina_num=pagina_num,
+            pagina_file=page_path.name,
+            source_hash=source_hash,
+            resolution=work_resolution,
+        )
+        processed += 1
+        previous_generation = generation
+        previous_context = candidate.cumulative_summary
+        legacy_chain = ""
+        if candidate.status == "context_provisional":
+            mark_run_blocked(
+                con,
+                run["id"],
+                pagina_num,
+                "Contexto permaneceu provisório após lookahead determinístico",
+            )
+            log.warning("[%s] p%d mantida em shadow; cadeia pausada", documento, pagina_num)
+            break
+    else:
+        if not dry_run:
+            last_manifest_page = page_number(all_pages[-1])
+            if force_replace_from is not None and force_through_num is not None and force_through_num < last_manifest_page:
+                con.execute(
+                    "UPDATE resumo_runs SET status='partial', next_page_num=? WHERE id=?",
+                    (force_through_num + 1, run["id"]),
+                )
+                con.commit()
+            else:
+                mark_run_complete(con, run["id"])
+
+    if not dry_run and promote:
+        promoted = _promote_v2_run_segments(con, run["id"], documento)
+        log.info("[%s] %d página(s) v2 promovida(s) em segmentos seguros", documento, promoted)
+    log.info("[%s] %d página(s) processada(s) pelo v2", documento, processed)
+    if measured_items:
+        item_label = "item" if measured_items == 1 else "itens"
+        log.info(
+            "[%s] Métricas v2: %d %s; LLM em %s; %s; média=%s tokens/item",
+            documento,
+            measured_items,
+            item_label,
+            format_duration(volume_llm_seconds),
+            format_token_usage(volume_usage),
+            _format_token_count(volume_usage.total_tokens // measured_items),
+        )
+
+
+# ---------------------------------------------------------------------------
 # Pipeline principal
 # ---------------------------------------------------------------------------
 
@@ -780,6 +1716,7 @@ def process_volume(
     fill_gaps: bool = False,
     fill_gaps_overlap: int = 10,
     versions_con: Optional[sqlite3.Connection] = None,
+    include_facsimile: bool = False,
 ) -> None:
     """Processa todas as páginas de um volume sequencialmente.
 
@@ -787,6 +1724,7 @@ def process_volume(
     page_filter filtra uma página específica (para testes rápidos).
     page_limit limita a quantidade de páginas a processar.
     fill_gaps verifica individualmente e preenche páginas que faltam no DB.
+    include_facsimile anexa a imagem física pareada após conversão JPEG em memória.
     """
     doc_name = volume_dir.name
     text_dir = volume_dir / "text"
@@ -843,6 +1781,9 @@ def process_volume(
         )
 
     pages_done = 0
+    measured_items = 0
+    volume_usage = TokenUsage()
+    volume_llm_seconds = 0.0
     redo_until_page = 0
     overlap_forward = max(0, fill_gaps_overlap)
     for idx, page_path in enumerate(pages):
@@ -875,6 +1816,14 @@ def process_volume(
             log.error("[%s] Erro lendo %s: %s", doc_name, page_path.name, exc)
             continue
 
+        image_path = resolve_page_facsimile(page_path) if include_facsimile else None
+        if include_facsimile and image_path is None:
+            log.debug(
+                "[%s] p%d  fac-símile pareado indisponível; usando apenas OCR",
+                doc_name,
+                pnum,
+            )
+
         # Tenta obter o ocr_result_id da versão corrente no versions DB
         ocr_result_id: Optional[int] = None
         if versions_con is not None and _vdb is not None:
@@ -885,7 +1834,7 @@ def process_volume(
             except Exception as exc:
                 log.debug("[%s] p%d  ocr_result_id lookup falhou: %s", doc_name, pnum, exc)
 
-        if not page_text:
+        if not page_text and image_path is None:
             log.info(
                 "[%s] Página %d vazia, marcando como administrativa e seguindo",
                 doc_name,
@@ -913,7 +1862,22 @@ def process_volume(
                 )
                 if fill_gaps:
                     processed_set.add(pnum)
+            measured_items += 1
+            log.info(
+                "[%s] p%d concluída em %s; %s",
+                doc_name,
+                pnum,
+                format_duration(0.0),
+                format_token_usage(TokenUsage()),
+            )
             continue
+
+        if not page_text and image_path is not None:
+            log.info(
+                "[%s] Página %d com OCR vazio; consultando o fac-símile",
+                doc_name,
+                pnum,
+            )
 
         # Trunca contexto se necessário para caber na janela (relevante p/ Ollama)
         ctx_window = (
@@ -923,7 +1887,13 @@ def process_volume(
 
         # Monta prompt
         user_prompt = build_user_prompt(
-            contexto_safe, page_text, pnum, doc_name, author_ctx, work_ctx
+            contexto_safe,
+            page_text,
+            pnum,
+            doc_name,
+            author_ctx,
+            work_ctx,
+            facsimile_attached=image_path is not None,
         )
 
         prompt_tokens_est = estimate_tokens(user_prompt)
@@ -939,6 +1909,8 @@ def process_volume(
         raw_response = ""
         resumo_pagina = ""
         parsed_ok = False
+        item_usage = TokenUsage()
+        item_started = time.monotonic()
         for attempt in range(1, retries + 1):
             try:
                 raw_response = llm_chat(
@@ -951,6 +1923,10 @@ def process_volume(
                     reasoning_effort=reasoning_effort,
                     api_key_env=api_key_env,
                     num_ctx=num_ctx,
+                    image_path=image_path,
+                )
+                item_usage += response_token_usage(
+                    raw_response, SYSTEM_PROMPT, user_prompt
                 )
                 log.info(
                     "[%s] Página %d tentativa %d/%d – resposta LLM: %s",
@@ -1073,6 +2049,18 @@ def process_volume(
             )
             raise ValueError("Conteúdo mínimo ausente, pulando este volume")
 
+        item_llm_seconds = time.monotonic() - item_started
+        measured_items += 1
+        volume_usage += item_usage
+        volume_llm_seconds += item_llm_seconds
+        log.info(
+            "[%s] p%d concluída em %s; %s",
+            doc_name,
+            pnum,
+            format_duration(item_llm_seconds),
+            format_token_usage(item_usage),
+        )
+
         # Atualiza contexto para a próxima iteração
         contexto = sintese_pura
         author_ctx = autor_detectado
@@ -1137,6 +2125,17 @@ def process_volume(
             )
 
     log.info("[%s] %d página(s) processada(s).", doc_name, pages_done)
+    if measured_items:
+        item_label = "item" if measured_items == 1 else "itens"
+        log.info(
+            "[%s] Métricas: %d %s; LLM em %s; %s; média=%s tokens/item",
+            doc_name,
+            measured_items,
+            item_label,
+            format_duration(volume_llm_seconds),
+            format_token_usage(volume_usage),
+            _format_token_count(volume_usage.total_tokens // measured_items),
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -1153,6 +2152,12 @@ def build_parser() -> argparse.ArgumentParser:
         choices=["ollama", "openai"],
         default="ollama",
         help="Provider LLM: ollama (default) ou openai.",
+    )
+    p.add_argument(
+        "--pipeline",
+        choices=["v2", "legacy"],
+        default="v2",
+        help="Pipeline de resumo: v2 shadow (default) ou legacy.",
     )
     p.add_argument(
         "--volume-dir",
@@ -1184,6 +2189,12 @@ def build_parser() -> argparse.ArgumentParser:
         help=f"Caminho do SQLite de resumos (default: {DEFAULT_DB}).",
     )
     p.add_argument(
+        "--indices-db",
+        type=Path,
+        default=DEFAULT_INDICES_DB,
+        help=f"Índices de obras abertos somente para leitura (default: {DEFAULT_INDICES_DB}).",
+    )
+    p.add_argument(
         "--model",
         default=None,
         help=f"Modelo a usar (default: {DEFAULT_MODEL} para ollama, gpt-5-mini para openai).",
@@ -1212,9 +2223,12 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument(
         "--num-ctx",
         type=int,
-        default=DEFAULT_NUM_CTX,
-        help=f"Janela de contexto em tokens para Ollama (default: {DEFAULT_NUM_CTX}). "
-        "O contexto prévio será truncado automaticamente se o total estimado exceder este valor.",
+        default=None,
+        help=(
+            "Janela de contexto em tokens para Ollama. Default automático: "
+            f"{DEFAULT_V2_GEMMA4_NUM_CTX} no v2 com gemma4:cloud; "
+            f"{DEFAULT_NUM_CTX} nos demais casos."
+        ),
     )
     p.add_argument(
         "--timeout",
@@ -1257,6 +2271,48 @@ def build_parser() -> argparse.ArgumentParser:
         help="Processar apenas a página N (ex: --page 5).",
     )
     p.add_argument(
+        "--force-replace-from",
+        type=int,
+        default=None,
+        help="Reinicia explicitamente a cadeia v2 na página física N.",
+    )
+    p.add_argument(
+        "--force-replace-through",
+        default="next-work",
+        help="Fim da reparação v2: next-work (default), end ou número físico.",
+    )
+    p.add_argument(
+        "--lookahead-pages",
+        type=int,
+        default=3,
+        help="Páginas futuras consultadas somente quando o contexto fica provisório (default: 3).",
+    )
+    p.add_argument(
+        "--facsimile-mode",
+        choices=["auto", "always", "never"],
+        default="auto",
+        help="Uso do fac-símile no v2 (default: auto por score determinístico).",
+    )
+    p.add_argument(
+        "--facsimile-threshold",
+        type=int,
+        default=2,
+        help="Score mínimo para anexar fac-símile em --facsimile-mode auto (default: 2).",
+    )
+    p.add_argument(
+        "--promote",
+        action="store_true",
+        help="Promove somente segmentos v2 completos e seguros após o processamento.",
+    )
+    p.add_argument(
+        "--facsimile",
+        action="store_true",
+        help=(
+            "Compatibilidade: equivale a --facsimile-mode always no v2; no "
+            "legacy anexa a imagem em todas as páginas disponíveis."
+        ),
+    )
+    p.add_argument(
         "-v",
         "--verbose",
         action="store_true",
@@ -1268,12 +2324,40 @@ def build_parser() -> argparse.ArgumentParser:
 def main() -> None:
     args = build_parser().parse_args()
 
+    if args.lookahead_pages < 0:
+        raise SystemExit("--lookahead-pages deve ser não negativo")
+    if args.facsimile_threshold < 0:
+        raise SystemExit("--facsimile-threshold deve ser não negativo")
+    if args.pipeline == "v2" and args.page is not None and not args.dry_run:
+        raise SystemExit(
+            "No v2, --page isolada é apenas para --dry-run; use "
+            "--force-replace-from para reparar a cadeia persistida."
+        )
+    if args.pipeline == "v2" and args.fill_gaps:
+        raise SystemExit(
+            "--fill-gaps pertence ao pipeline legacy. No v2 use "
+            "--force-replace-from; o alcance padrão vai até a próxima obra segura."
+        )
+    if args.facsimile:
+        args.facsimile_mode = "always"
+
     # Resolve modelo default conforme provider
     if args.model is None:
         if args.provider == "openai":
             args.model = "gpt-5-mini"
         else:
             args.model = DEFAULT_MODEL
+    if args.num_ctx is None:
+        if (
+            args.pipeline == "v2"
+            and args.provider == "ollama"
+            and str(args.model).lower().startswith("gemma4:")
+        ):
+            args.num_ctx = DEFAULT_V2_GEMMA4_NUM_CTX
+        else:
+            args.num_ctx = DEFAULT_NUM_CTX
+    if args.num_ctx <= 0:
+        raise SystemExit("--num-ctx deve ser positivo")
 
     # Resolve base_url conforme provider
     if args.provider == "openai":
@@ -1299,9 +2383,26 @@ def main() -> None:
         con = connect_db(args.db)
         init_resumo_schema(con)
         ensure_resumos_embedding_schema(con)
+        if args.pipeline == "v2":
+            init_v2_schema(con)
         log.info("DB: %s", args.db)
 
     log.info("Provider: %s   Modelo: %s", args.provider, args.model)
+    if args.provider == "ollama":
+        log.info("Janela de contexto: %d tokens", args.num_ctx)
+    if args.pipeline == "v2":
+        log.info(
+            "Pipeline: v2 shadow (%s; promoção=%s; fac-símile=%s score≥%d)",
+            SUMMARY_PROMPT_VERSION,
+            "ativa" if args.promote else "desativada",
+            args.facsimile_mode,
+            args.facsimile_threshold,
+        )
+    elif args.facsimile:
+        log.info(
+            "Fac-símile: ativo (JPEG quality=%d; modelo deve aceitar imagens)",
+            FACSIMILE_JPEG_QUALITY,
+        )
     if args.provider == "openai":
         log.info("Reasoning effort: %s", args.reasoning_effort)
 
@@ -1331,45 +2432,87 @@ def main() -> None:
 
     log.info("Volumes a processar: %d", len(volumes))
 
+    fatal_errors = 0
+    interrupted = False
     for vol in volumes:
         log.info("=" * 60)
         log.info("Iniciando volume: %s", vol.name)
         log.info("=" * 60)
         t0 = time.time()
+        volume_lock: TextIO | None = None
         try:
-            process_volume(
-                volume_dir=vol,
-                con=con,
-                model=args.model,
-                base_url=base_url,
-                timeout=args.timeout,
-                retries=args.retries,
-                provider=args.provider,
-                reasoning_effort=args.reasoning_effort,
-                api_key_env=args.api_key_env,
-                num_ctx=args.num_ctx,
-                dry_run=args.dry_run,
-                page_filter=args.page,
-                page_limit=args.limit if args.dry_run else None,
-                verbose=args.verbose,
-                fill_gaps=args.fill_gaps,
-                fill_gaps_overlap=args.fill_gaps_overlap,
-                versions_con=versions_con,
-            )
+            if not args.dry_run:
+                volume_lock = acquire_volume_processing_lock(args.db, vol.name)
+            if args.pipeline == "v2":
+                if con is None:
+                    raise RuntimeError("Conexão de resumos indisponível")
+                process_volume_v2(
+                    volume_dir=vol,
+                    con=con,
+                    model=args.model,
+                    base_url=base_url,
+                    timeout=args.timeout,
+                    retries=args.retries,
+                    provider=args.provider,
+                    reasoning_effort=args.reasoning_effort,
+                    api_key_env=args.api_key_env,
+                    num_ctx=args.num_ctx,
+                    dry_run=args.dry_run,
+                    page_filter=args.page,
+                    verbose=args.verbose,
+                    versions_con=versions_con,
+                    facsimile_mode=args.facsimile_mode,
+                    facsimile_threshold=args.facsimile_threshold,
+                    lookahead_pages=args.lookahead_pages,
+                    force_replace_from=args.force_replace_from,
+                    force_replace_through=args.force_replace_through,
+                    promote=args.promote,
+                    indices_db=args.indices_db,
+                )
+            else:
+                process_volume(
+                    volume_dir=vol,
+                    con=con,
+                    model=args.model,
+                    base_url=base_url,
+                    timeout=args.timeout,
+                    retries=args.retries,
+                    provider=args.provider,
+                    reasoning_effort=args.reasoning_effort,
+                    api_key_env=args.api_key_env,
+                    num_ctx=args.num_ctx,
+                    dry_run=args.dry_run,
+                    page_filter=args.page,
+                    page_limit=args.limit if args.dry_run else None,
+                    verbose=args.verbose,
+                    fill_gaps=args.fill_gaps,
+                    fill_gaps_overlap=args.fill_gaps_overlap,
+                    versions_con=versions_con,
+                    include_facsimile=args.facsimile,
+                )
         except KeyboardInterrupt:
             log.info("Interrompido pelo usuário. Progresso salvo no DB.")
+            interrupted = True
             break
         except Exception as exc:
             log.error("Erro fatal no volume %s: %s", vol.name, exc, exc_info=True)
+            fatal_errors += 1
             continue
+        finally:
+            release_volume_processing_lock(volume_lock)
         elapsed = time.time() - t0
-        log.info("Volume %s concluído em %.1f s", vol.name, elapsed)
+        log.info("Volume %s concluído em %s", vol.name, format_duration(elapsed))
 
     if con is not None:
         con.close()
     if versions_con is not None:
         versions_con.close()
     log.info("Fim.")
+    if interrupted:
+        raise SystemExit(130)
+    if fatal_errors:
+        log.error("%d volume(s) terminaram com erro fatal.", fatal_errors)
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":

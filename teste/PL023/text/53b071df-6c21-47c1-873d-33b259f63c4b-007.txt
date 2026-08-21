@@ -1,51 +1,58 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="80,20,920,160">
-ELENCHUS OPERUM.
-QUÆ IN HOC VOLUMINE CONTINENTUR.
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="100,40,900,140">
+    ELENCHUS OPERUM
+    QUÆ IN HOC VOLUMINE CONTINENTUR.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,180,880,960">
-S. HIERONYMI OPERUM TOMUS II.
-
-Vilæ S. Pauli, S. Hilarionis et Malchi, monachorum.                                col.    13
-Regulæ S. Pachomii translatio Latina.                                             61
-SS. Pachomii et Theodori epistolæ et verba mystica.                                87
-Interpretatio libri Didymi de Spiritu sancto.                                      101
-Dialogus contra Luciferianos.                                                     135
-Liber de perpetua Virginitate B. Mariæ,                                           183
-Libri duo adversus Jovinianum.                                                    211
-Liber contra Vigilantium.                                                         337
-Liber contra Joannem Hierosolymitanum.                                           355
-Apologia adversus libros Rufini.                                                  397
-Dialogus adversus Pelagianos.                                                     495
-Theodori Mopsuesteni fragmenta.                                                   569
-Liber de Viris illustribus.                                                       602
-De Vitiis apostolorum.                                                            719
-Epistola ad Desiderium.                                                           723
-
-
-S. HIERONYMI OPERUM TOMUS III.
-
-Liber de Nominibus Hebraicis.                                                     771
-Liber Hebraicarum Quæstionum in Genesim.                                         935
-Commentarius in Ecclesiasten.                                                    1009
-Interpretatio H[omil]arum duarum Origenis in Canticum.                           1117
-Græca fragmenta libri Nominum Hebraicorum.                                       1145
-Liber Nominum Græcorum ex Actis.                                                1297
-De Benedictionibus Jacobi patriarchæ.                                            1307
-De decem Tentationibus populi Israel in deserto.                                 1319
-Commentarius in Canticum Eboræ.                                                  1321
-Quæstiones Hebraicæ in libros Regum et Paralipomenon.                            1329
-Expositio interlinearis in librum Job.                                           1401
-Commentarii in S. Hieronymi libros, auctore Mar[ti]no.                            1479
+  <bloco tipo="texto_principal" script="latino" bbox="300,200,700,230">
+    S. HIERONYMI OPERUM TOMUS II.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="80,960,920,1100">
-Col. 87, init.: Theodoric; leg. Theodori.
-Col. 1138, lin. 12 ( ascendendo ) : oivάvσv ; lege oivάvσv
-Col. ---- 1153, numeros ad notas revocantes lege hor[um] : 1, 2, 3, 4, pro : 1, 2, 3,
-eosdem ... ordine lege in notis, pro : 1, 2, 3.
-Col.----: OPUSCULUM; lege: OPUSCULUM.
-MIGNE, succursaliste, a [imprinte?] de Vrain et Sucy,
-imprimé a Paris.
+  <bloco tipo="texto_principal" script="latino" bbox="150,240,900,490">
+    Vitæ S. Pauli , S. Hilarionis et Malchi , monachorum. col. 13
+    Regulæ S. Pachomii translatio Latina. 61
+    SS. Pachomii et Theodori epistolæ et verba mystica. 87
+    Interpretatio libri Didymi de Spiritu sancto. 101
+    Dialogus contra Luciferianos. 135
+    Liber de perpetua Virginitate B. Mariæ. 183
+    Libri duo adversus Jovinianum. 211
+    Liber contra Vigilantium. 337
+    Liber contra Joannem Hierosolymitanum. 355
+    Apologia adversus libros Rufini. 397
+    Dialogus adversus Pelagianos. 495
+    Theodori Mopsuesteni fragmenta. 589
+    Liber de Viris illustribus. 602
+    De Vitis apostolorum. 719
+    Epistola ad Desiderium. 723
   </bloco>
-  <notas>Transcrição feita a partir de impressão tipográfica; algumas linhas e abreviaturas parcialmente danificadas foram restituidas conservativamente (por exemplo "Interpretatio Homiliarum duarum Origenis" onde origem tipográfica mostra lacuna). Marcas de paginação "col." mantidas. Não foram normalizadas maiúsculas, abreviaturas ou ortografia antiga. BBOX estimadas na escala 0-1000.</notas>
+  <bloco tipo="texto_principal" script="latino" bbox="300,510,700,540">
+    S. HIERONYMI OPERUM TOMUS III.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="150,550,900,760">
+    Liber de Nominibus Hebraicis. 771
+    Liber Hebraicarum Quæstionum in Genesim. 935
+    Commentarius in Ecclesiasten. 1009
+    Interpretatio Homiliarum duarum Origenis in Canticum. 1117
+    Græca fragmenta libri Nominum Hebraicorum. 1145
+    Liber Nominum Græcorum ex Actis. 1207
+    De Benedictionibus Jacobi patriarchæ. 1307
+    De decem Tentationibus populi Israel in deserto. 1319
+    Commentarius in Canticum Deboræ. 1321
+    Quæstiones Hebraicæ in libros Regum et Paralipomenon. 1339
+    Expositio interlinearis in librum Job. 1401
+    Commentarii in S. Hieronymi libros , auctore Martino. 1479
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="150,790,900,880">
+    Col. 87, init. : Theodorici ; leg. Theodori.
+    Col. 1138, lin. 12 ( ascendendo ) : οἰνάνων ; lege οἰνάνθω.
+    Col. 1155, numeros ad notas revocantes lege hoc ordine : 1, 2, 3, 4, pro : 1, 2, 2, 3 ;
+    eosdem [ilegivel] ordine lege in notis, pro : 1, 2, 3, 5.
+    Col. 1507 media : OPUSCULUH ; lege. OPUSCULUM.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="450,900,880,950">
+    MIGNE, succursaliste, à Montrouge, de VRAYET DE SURCY,
+    imprimé à Paris.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="600,960,820,990">
+    Digitized by Google
+  </bloco>
+  <notas>Transcrição fiel ao fac-símile. O aparato crítico contém texto em grego. Algumas áreas do aparato estão danificadas/ilegíveis.</notas>
 </pagina>

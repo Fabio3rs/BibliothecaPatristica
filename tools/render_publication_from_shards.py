@@ -13,10 +13,12 @@ Uso:
         --page-block-size 100 \
         --raw-base-url "https://raw.githubusercontent.com/Fabio3rs/BibliothecaPatristica/refs/heads/codex/teste"
 
-O dicionário canônico de keywords vem do SQLite (patristica_keywords.db) +
-keywords_lookup.json gerado por export_keywords_dicts.py.  Cada keyword bruta dos
-shards é resolvida para o ID canônico do seu grupo HDBSCAN (não-escritura) ou
-para o ID da própria citação (escritura), colapsando variantes no canônico.
+O catálogo de keywords vem do SQLite (patristica_keywords.db) +
+keywords_lookup.json gerado por export_keywords_dicts.py. Cada keyword bruta dos
+shards e de `keyword_occurrence` preserva seu texto em `keyword_labels`; as labels
+selecionadas no shard ficam primeiro e `keyword_display_count` limita o que o
+viewer exibe. Quando houver um líder publicado, `keyword_ids` também guarda o ID
+canônico do grupo para busca e filtros.
 
 Cada bloco de páginas guarda `raw_base_url` uma única vez. Em cada página,
 `raw.file` identifica o OCR original e `raw.url` fica reservado a overrides
@@ -55,7 +57,20 @@ class PageRecord:
     keywords: List[str]
     keyword_categories: Dict[str, List[str]]
     created_at: str
+    search_text_pt: str = ""
+    embedding_text: str = ""
+    header_original: str = ""
+    summary_generation: str = "legacy"
+    page_kinds: List[str] = field(default_factory=list)
+    segments: List[dict] = field(default_factory=list)
+    translations: Dict[str, dict] = field(default_factory=dict)
     raw_url: str = ""
+
+
+@dataclass(frozen=True)
+class KeywordResolution:
+    label: str
+    canonical_id: Optional[str]
 
 
 def now_iso() -> str:
@@ -107,6 +122,13 @@ def load_shard(shard_path: Path) -> List[PageRecord]:
                     keywords=r.get("keywords") or [],
                     keyword_categories=kw_cats_norm,
                     created_at=r.get("created_at", ""),
+                    search_text_pt=r.get("search_text_pt", ""),
+                    embedding_text=r.get("embedding_text", ""),
+                    header_original=r.get("header_original", ""),
+                    summary_generation=r.get("summary_generation", "legacy"),
+                    page_kinds=r.get("page_kinds") or [],
+                    segments=r.get("segments") or [],
+                    translations=r.get("translations") or {},
                     raw_url=(
                         r.get("raw_url", "")
                         or (
@@ -128,19 +150,10 @@ def ensure_dirs(out: Path) -> None:
         sub.mkdir(parents=True, exist_ok=True)
 
 
-def build_keyword_lookup(db_path: Path, keywords_json_path: Path) -> Dict[str, str]:
-    """Constrói mapa  keyword_original (bruta do shard) → canonical_id.
-
-    Estratégia:
-    - Para não-escritura: usa o canonical_slug_id do grupo HDBSCAN
-      (mesmo ID presente no keywords.json gerado por export_keywords_dicts.py).
-    - Para escritura: usa o slug_id da própria keyword_norm.
-    - Keywords sem grupo (hdbscan_group_id NULL) são ignoradas — não aparecem
-      no dicionário canônico e portanto não devem ser emitidas nas páginas.
-
-    O mapeamento é feito via SQLite para resolver corretamente as variantes
-    para o nome canônico do grupo.
-    """
+def build_keyword_lookup(
+    db_path: Path, keywords_json_path: Path
+) -> Dict[str, KeywordResolution]:
+    """Preserva a label bruta e associa, quando existir, seu ID canônico."""
 
     def slugify(label: str) -> str:
         norm = (
@@ -171,11 +184,14 @@ def build_keyword_lookup(db_path: Path, keywords_json_path: Path) -> Dict[str, s
     # Carrega o conjunto de IDs válidos do lookup publicado para garantir
     # que só emitimos IDs que realmente existem no dicionário publicado.
     valid_ids: set[str] = set()
+    canonical_by_group: Dict[int, str] = {}
     if keywords_json_path.exists():
         data = json.loads(keywords_json_path.read_text(encoding="utf-8"))
         for item in data.get("items") or []:
             if item.get("id"):
                 valid_ids.add(item["id"])
+            if item.get("group_id") is not None and not item.get("iscit", False):
+                canonical_by_group[int(item["group_id"])] = item["id"]
     else:
         raise FileNotFoundError(
             f"keywords lookup não encontrado em {keywords_json_path}. "
@@ -196,12 +212,11 @@ def build_keyword_lookup(db_path: Path, keywords_json_path: Path) -> Dict[str, s
             cc.nome_canonico_original
         FROM keywords k
         LEFT JOIN cluster_canonical_names cc ON cc.group_id = k.hdbscan_group_id
-        WHERE k.hdbscan_group_id IS NOT NULL AND k.hdbscan_group_id > 0
-          AND k.keyword_original IS NOT NULL
+        WHERE k.keyword_original IS NOT NULL
     """
 
-    lookup: Dict[str, str] = {}
-    skipped = 0
+    lookup: Dict[str, KeywordResolution] = {}
+    without_canonical = 0
     for row in con.execute(sql):
         original = row["keyword_original"]
         if not original:
@@ -211,28 +226,67 @@ def build_keyword_lookup(db_path: Path, keywords_json_path: Path) -> Dict[str, s
 
         if is_scripture:
             kid = f"k:{slugify(row['keyword_norm'] or original)}"
+        elif row["hdbscan_group_id"] is None or row["hdbscan_group_id"] < 0:
+            kid = None
         else:
-            kid = canonical_slug_id(
-                row["nome_canonico"] or "",
-                row["keyword_norm"] or "",
-                original,
-                row["hdbscan_group_id"],
+            gid = int(row["hdbscan_group_id"])
+            kid = canonical_by_group.get(
+                gid,
+                canonical_slug_id(
+                    row["nome_canonico"] or "",
+                    row["keyword_norm"] or "",
+                    original,
+                    gid,
+                ),
             )
 
         if kid not in valid_ids:
-            skipped += 1
-            continue
+            kid = None
+            without_canonical += 1
 
-        lookup[original] = kid
+        lookup[original] = KeywordResolution(
+            label=original,
+            canonical_id=kid,
+        )
 
     con.close()
 
-    if skipped:
+    if without_canonical:
         log(
-            f"[WARN] {skipped} keywords do DB não encontradas no lookup publicado (ignoradas)."
+            f"[INFO] {without_canonical} keywords-fonte não têm líder publicado; "
+            "seus labels serão preservados."
         )
 
     return lookup
+
+
+def load_keyword_occurrences(db_path: Path, volume_id: str) -> Dict[int, List[str]]:
+    """Carrega o pacote fechado de labels por página sem reter o corpus inteiro."""
+    con = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
+    con.row_factory = sqlite3.Row
+    con.execute("PRAGMA busy_timeout = 30000;")
+    rows = con.execute(
+        """
+        SELECT o.pagina_num, k.keyword_original
+        FROM keyword_occurrence o
+        JOIN keywords k ON k.id = o.keyword_id
+        WHERE o.documento = ?
+          AND o.pagina_num IS NOT NULL
+          AND k.keyword_original IS NOT NULL
+        ORDER BY
+          o.pagina_num,
+          COALESCE(o.rank_in_page, o.rank_position, 2147483647),
+          o.id
+        """,
+        (volume_id,),
+    )
+    by_page: Dict[int, List[str]] = {}
+    for row in rows:
+        label = str(row["keyword_original"] or "").strip()
+        if label:
+            by_page.setdefault(int(row["pagina_num"]), []).append(label)
+    con.close()
+    return by_page
 
 
 # ---------------------------------------------------------------------------
@@ -251,7 +305,7 @@ class PageKNN:
     diversidade cross-volume nas sugestões do front-end.
     """
 
-    def __init__(self, db_path: Path, topk_internal: int = 30) -> None:
+    def __init__(self, db_path: Path, topk_internal: int = 30, source: str = "legacy") -> None:
         """topk_internal: vizinhos buscados internamente antes de filtrar
         mesmo-doc; deve ser maior que o topk real para absorver exclusões."""
         from sklearn.neighbors import NearestNeighbors
@@ -259,11 +313,27 @@ class PageKNN:
         log(f"[KNN] Carregando embeddings UMAP de página de {db_path} ...")
         con = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
         con.execute("PRAGMA busy_timeout = 30000;")
-        rows = con.execute(
-            "SELECT documento, pagina_num, n_components, embedding "
-            "FROM resumo_pagina_embedding_reduced "
-            "ORDER BY rowid"
-        ).fetchall()
+        if source == "v2":
+            latest = con.execute(
+                "SELECT MAX(id) FROM resumo_cluster_runs WHERE kind='v2-page' AND status='completed'"
+            ).fetchone()[0]
+            if latest is None:
+                raise RuntimeError("Nenhum resumo_cluster_run v2 concluído")
+            rows = con.execute(
+                """
+                SELECT c.documento,c.pagina_num,c.reduced_dim,c.reduced_embedding
+                  FROM resumo_generation_clusters c
+                  JOIN resumo_generations g ON g.id=c.generation_id AND g.is_current=1
+                 WHERE c.cluster_run_id=? ORDER BY c.rowid
+                """,
+                (latest,),
+            ).fetchall()
+        else:
+            rows = con.execute(
+                "SELECT documento, pagina_num, n_components, embedding "
+                "FROM resumo_pagina_embedding_reduced "
+                "ORDER BY rowid"
+            ).fetchall()
         con.close()
 
         if not rows:
@@ -369,7 +439,8 @@ def page_blocks(
     recs: List[PageRecord],
     block_size: int,
     volume_id: str,
-    keyword_ids: Dict[str, str],
+    keyword_ids: Dict[str, KeywordResolution | str],
+    keyword_occurrences: Optional[Dict[int, List[str]]] = None,
     raw_base_url: str = "",
     knn: Optional["PageKNN"] = None,
     related_topk: int = 5,
@@ -392,7 +463,7 @@ def page_blocks(
         chunk = recs_sorted[start : start + block_size]
         file_name = f"meta/{volume_id}-pages-{idx:03d}.json.gz"
         block = {
-            "schema_version": 1,
+            "schema_version": 2,
             "volume_id": volume_id,
             "block_type": "pages",
             "block_index": idx,
@@ -405,11 +476,45 @@ def page_blocks(
         if base:
             block["raw_base_url"] = f"{base}/{volume_id}/text"
         for r in chunk:
-            kws = [keyword_ids[k] for k in r.keywords if k in keyword_ids]
-
+            selected_labels = list(
+                dict.fromkeys(
+                    label
+                    for keyword in r.keywords
+                    if (label := str(keyword or "").strip())
+                )
+            )
+            keyword_labels = list(
+                dict.fromkeys(
+                    selected_labels
+                    + list((keyword_occurrences or {}).get(r.page, []))
+                )
+            )
+            resolved = [keyword_ids[k] for k in keyword_labels if k in keyword_ids]
+            kws = list(
+                dict.fromkeys(
+                    canonical_id
+                    for value in resolved
+                    if (
+                        canonical_id := (
+                            value.canonical_id
+                            if isinstance(value, KeywordResolution)
+                            else value
+                        )
+                    )
+                )
+            )
             kw_cats_ids: Dict[str, List[str]] = {}
             for cat, items in r.keyword_categories.items():
-                ids = [keyword_ids[k] for k in items if k in keyword_ids]
+                ids = []
+                for keyword in items:
+                    value = keyword_ids.get(keyword)
+                    canonical_id = (
+                        value.canonical_id
+                        if isinstance(value, KeywordResolution)
+                        else value
+                    )
+                    if canonical_id and canonical_id not in ids:
+                        ids.append(canonical_id)
                 if ids:
                     kw_cats_ids[cat] = ids
 
@@ -421,7 +526,10 @@ def page_blocks(
                 "author": r.author,
                 "work": r.work,
                 "created_at": r.created_at,
+                "summary_generation": r.summary_generation,
                 "keyword_ids": kws,
+                "keyword_labels": keyword_labels,
+                "keyword_display_count": len(selected_labels),
                 "keyword_categories": kw_cats_ids,
                 "snapshot_ids": [f"snap:{volume_id}:global"],
                 # HDBSCAN group IDs ficam comentados: são dados de pipeline intermediário.
@@ -429,6 +537,18 @@ def page_blocks(
                 # "resumo_pagina_hdbscan_group_id": r.resumo_pagina_hdbscan_group_id,
                 # "resumo_global_hdbscan_group_id": r.resumo_global_hdbscan_group_id,
             }
+            if r.search_text_pt:
+                page_entry["search_text_pt"] = r.search_text_pt
+            if r.embedding_text:
+                page_entry["embedding_text"] = r.embedding_text
+            if r.header_original:
+                page_entry["header_original"] = r.header_original
+            if r.page_kinds:
+                page_entry["page_kinds"] = r.page_kinds
+            if r.segments:
+                page_entry["segments"] = r.segments
+            if r.translations:
+                page_entry["translations"] = r.translations
 
             # Páginas relacionadas: resultado pré-calculado no batch acima
             related = knn_results.get((volume_id, r.page))
@@ -464,8 +584,7 @@ def write_json(path: Path, obj: dict) -> None:
     # Grava JSON compacto para economizar espaço em disco/banda
     payload = json.dumps(obj, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
     if path.suffix == ".gz":
-        with gzip.open(path, "wb", compresslevel=9) as f:
-            f.write(payload)
+        path.write_bytes(gzip.compress(payload, compresslevel=9, mtime=0))
         return
     path.write_bytes(payload)
 
@@ -483,6 +602,21 @@ def main():
         "--index", type=Path, default=Path("data/shards/enrichment/index.json")
     )
     ap.add_argument("--out", type=Path, default=Path("web/public"))
+    ap.add_argument(
+        "--volumes",
+        type=str,
+        default="",
+        help="Lista CSV opcional de volumes; vazia processa todos.",
+    )
+    ap.add_argument(
+        "--keyword-scope",
+        choices=["closed", "selected"],
+        default="closed",
+        help=(
+            "closed incorpora keyword_occurrence completo; selected preserva "
+            "somente as labels escolhidas nos shards."
+        ),
+    )
     ap.add_argument("--page-block-size", type=int, default=100)
     ap.add_argument(
         "--db",
@@ -511,6 +645,15 @@ def main():
         type=int,
         default=5,
         help="Número de páginas relacionadas a emitir por página (padrão: 5).",
+    )
+    ap.add_argument(
+        "--related-source",
+        choices=["legacy", "v2"],
+        default="legacy",
+        help=(
+            "Espaço reduzido usado no KNN. O default legacy mantém as relações "
+            "atuais durante a migração; use v2 após gerar embeddings e clustering v2."
+        ),
     )
     ap.add_argument(
         "--related-knn-pool",
@@ -553,21 +696,41 @@ def main():
 
     ensure_dirs(args.out)
     idx = load_index(args.index)
+    requested_volumes = {
+        value.strip() for value in args.volumes.split(",") if value.strip()
+    }
+    selected_volumes = [
+        volume
+        for volume in idx.get("volumes", [])
+        if not requested_volumes or volume.get("id") in requested_volumes
+    ]
+    if requested_volumes:
+        found = {volume.get("id") for volume in selected_volumes}
+        missing = sorted(requested_volumes - found)
+        if missing:
+            ap.error(f"volumes ausentes do índice: {', '.join(missing)}")
 
     # KNN para páginas relacionadas (opcional)
     knn: Optional[PageKNN] = None
     if args.resumos_db is not None:
         try:
-            knn = PageKNN(args.resumos_db, topk_internal=args.related_knn_pool)
+            knn = PageKNN(
+                args.resumos_db,
+                topk_internal=args.related_knn_pool,
+                source=args.related_source,
+            )
         except Exception as e:
-            log(f"[WARN] KNN desativado — falha ao carregar {args.resumos_db}: {e}")
+            raise RuntimeError(
+                f"KNN solicitado por --resumos-db, mas não pôde ser carregado de "
+                f"{args.resumos_db}: {e}"
+            ) from e
 
     # Carregar todos os records por volume
     volumes_pages: Dict[str, List[PageRecord]] = {}
     base_dir = args.index.parent
-    shard_total = sum(len(vol.get("shards", [])) for vol in idx.get("volumes", []))
+    shard_total = sum(len(vol.get("shards", [])) for vol in selected_volumes)
     shard_done = 0
-    for vol in idx.get("volumes", []):
+    for vol in selected_volumes:
         vid = vol["id"]
         recs: List[PageRecord] = []
         for shard in vol.get("shards", []):
@@ -587,7 +750,7 @@ def main():
     dump_authors_lookup(args.export_authors_json)
 
     volumes_out = []
-    for vol in idx.get("volumes", []):
+    for vol in selected_volumes:
         vid = vol["id"]
         recs = volumes_pages.get(vid, [])
         if not recs:
@@ -614,11 +777,17 @@ def main():
         write_json(snapshot_path, snapshot_obj)
 
         # blocos de páginas
+        keyword_occurrences = (
+            load_keyword_occurrences(args.db, vid)
+            if args.keyword_scope == "closed"
+            else {}
+        )
         blocks, page_files = page_blocks(
             recs,
             args.page_block_size,
             vid,
             kw_map,
+            keyword_occurrences,
             args.raw_base_url,
             knn=knn,
             related_topk=args.related_topk,
@@ -657,7 +826,7 @@ def main():
                 "page_last": page_last,
                 "page_count": len(recs),
                 "meta_url": f"meta/{vid}.json.gz",
-                "search_bundle": "pagefind/main",
+                "search_bundle": "indexador/search",
                 "viewer_url_template": f"/pdfocr/viewer?doc={vid}&page={{page}}",
             }
         )

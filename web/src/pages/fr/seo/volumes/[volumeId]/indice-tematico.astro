@@ -1,0 +1,15 @@
+---
+import SeoThematicVolumePage from '../../../../../components/pages/SeoThematicVolumePage.astro';
+import { getSeoVolumePayload, listThematicVolumes } from '../../../../../lib/seoIndices';
+
+export async function getStaticPaths() {
+  const volumes = await listThematicVolumes();
+  return volumes.map((volume) => ({ params: { volumeId: volume.volume_id } }));
+}
+
+const { volumeId } = Astro.params;
+if (!volumeId) throw new Error('volumeId absent de la route statique de l’index thématique');
+const payload = await getSeoVolumePayload(volumeId, 'fr');
+if (!payload.hasThematicSections) throw new Error(`Le volume ${volumeId} ne contient aucune section thématique publiable.`);
+---
+<SeoThematicVolumePage payload={payload} />

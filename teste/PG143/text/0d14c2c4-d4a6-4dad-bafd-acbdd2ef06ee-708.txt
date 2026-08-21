@@ -1,12 +1,13 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,40,900,160">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="180,70,820,180">
 ELENCHUS CÆSARUM
 
 SECUNDUM EPHRÆMII CHRONOLOGIAM.
 
--
+—
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,160,330,760">
+
+  <bloco tipo="texto_principal" script="latino" bbox="55,200,320,650">
 1. Julius Cæsar.
 2. Octavianus Augustus.
 3. Tiberius I (1).
@@ -42,7 +43,7 @@ SECUNDUM EPHRÆMII CHRONOLOGIAM.
 33. Philippus.
 34. Decius.
 35. Gallus.
-36. Aemilianus.
+36. Æmilianus.
 37. Valerianus.
 38. Gallienus I.
 39. Claudius II.
@@ -59,9 +60,10 @@ SECUNDUM EPHRÆMII CHRONOLOGIAM.
 50. Galerius Maximinus.
 51. Maxentius.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,160,670,760">
+
+  <bloco tipo="texto_principal" script="latino" bbox="345,200,620,650">
 52. Licinius.
-53. Constantius I.
+53. Constantinus I.
 54. Constantius II.
 55. Constans I.
 56. Constantinus II.
@@ -86,7 +88,7 @@ SECUNDUM EPHRÆMII CHRONOLOGIAM.
 75. Mauricius.
 76. Phocas.
 77. Heraclius.
-78. Constantius III.
+78. Constantinus III.
 79. Constans II.
 80. Constantinus IV.
 81. Justinianus II.
@@ -108,11 +110,12 @@ SECUNDUM EPHRÆMII CHRONOLOGIAM.
 97. Michael II.
 98. Theophilus.
 99. Michael III.
-100. Basilus I.
+100. Basilius I.
 101. Leo VI.
 102. Alexander II.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="670,160,950,760">
+
+  <bloco tipo="texto_principal" script="latino" bbox="665,200,950,775">
 103. Romanus I.
 104. Constantinus VII.
 105. Romanus II.
@@ -143,6 +146,7 @@ SECUNDUM EPHRÆMII CHRONOLOGIAM.
 130. Alexius V.
 
 CÆSARES LATINI.
+
 131. Balduinus I.
 132. Henricus.
 133. Petrus.
@@ -150,45 +154,55 @@ CÆSARES LATINI.
 135. Balduinus II.
 
 CÆSARES GRÆCI.
+
 136. Theodorus I.
-137. Joannes II.
+137. Joannes III.
 138. Theodorus II.
 139. Joannes IV.
 140. Michael VIII.
 141. Andronicus II (2).
 142. Andronicus III.
 143. Joannes V.
-144. Joannes VI: Cantacuzenus tyrannus.
+144. Joannes VI: Cantacuzenus tyran-
+nus.
 145. Manuel II.
 146. Joannes VII.
-147. Constantinus XI. sub quo Turcae Constantinopoli positi sunt.
+147. Constantinus XI. sub quo Turcæ Constantinopoli potiti sunt.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,220,515,260">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="470,215,530,245">
 A
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,320,515,360">
+  <bloco tipo="nota_marginal" script="latino" bbox="470,295,530,325">
 B
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,420,515,460">
+  <bloco tipo="nota_marginal" script="latino" bbox="470,375,530,405">
 C
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,520,515,560">
+  <bloco tipo="nota_marginal" script="latino" bbox="470,455,530,485">
 D
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="100,780,900,860">
-ELENCHUS PATRIARCHARUM CONSTANTINOPOLEOS.
 
+  <bloco tipo="cabecalho" script="latino" bbox="220,675,780,735">
+ELENCHUS PATRIARCHARUM CONSTANTINOPOLEOS.
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="430,740,610,790">
 Series fabulosa.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,860,330,1020">
+
+  <bloco tipo="texto_principal" script="latino" bbox="65,790,320,945">
 1. Andreas apostolus.
 2. Stachys.
 3. Onesimus.
 4. Polycarpus I.
 5. Plutarchus.
-6. Sedechon.
+6. Sedecion.
 7. Diogenes.
 8. Eleutherius.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="345,790,620,945">
 9. Felix.
 10. Polycarpus.
 11. Atheodorus.
@@ -198,7 +212,8 @@ Series fabulosa.
 15. Pertinax.
 16. Olympianus.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,860,670,1020">
+
+  <bloco tipo="texto_principal" script="latino" bbox="665,790,950,945">
 17. Marcus.
 18. Cyrillianus.
 19. Castinus.
@@ -207,31 +222,36 @@ Series fabulosa.
 22. Probus.
 23. Metrophanes.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="100,1020,900,1060">
+
+  <bloco tipo="cabecalho" script="latino" bbox="430,955,610,1000">
 Series vera.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,1060,470,1180">
+
+  <bloco tipo="texto_principal" script="latino" bbox="65,1000,320,1125">
 1. Philadelphus.
 2. Eugenius.
 3. Rufinus.
 4. Metrophanes I.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="345,1000,620,1125">
 5. Alexander.
 6. Paulus I.
 7. Eusebius.
 8. Macedonius I.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="470,1060,900,1180">
+
+  <bloco tipo="texto_principal" script="latino" bbox="665,1000,950,1125">
 9. Eudoxius.
 10. Demophilus.
 11. Evagrius.
 12. Gregorius Theologus.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="100,1180,900,1280">
+
+  <bloco tipo="rodape" script="latino" bbox="70,1125,920,1210">
 (1) Tres hi Cæsares desunt apud Ephræmium ob amissum primum codicis folium.
-(2) Septem consequentres Cæsares vixerunt post Ephræmium.
+(2) Septem consequentes Cæsares vixerunt post Ephræmium.
   </bloco>
-  <notas>
-- Leitura incerta: item 15 da primeira coluna impresso "Hadrianus" aqui transcrito como tal (impressão dá variante poss.: "Haurianus"); termo 36 da lista patriarcharum transcrito "Sedechon" conforme impressão pouco legível.
-- Letras A, B, C, D no gutter foram colocadas em blocos de nota_marginal separados, conforme instruções.
-  </notas>
+
+  <notas>Letras marginais A–D separadas em blocos próprios, conforme instrução; transcrição fiel ao impresso, com quebras de linha preservadas onde visíveis.</notas>
 </pagina>

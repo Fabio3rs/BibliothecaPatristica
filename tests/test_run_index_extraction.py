@@ -12,6 +12,7 @@ sys.path.insert(0, str(ROOT))
 
 import scripts.run_index_extraction as run_index_extraction
 from scripts.run_index_extraction import (
+    absolute_path_preserving_symlinks,
     build_editorial_pages_artifact,
     build_hyphen_rerun_recovery_block,
     build_previous_failure_prompt_block,
@@ -26,6 +27,21 @@ from scripts.run_index_extraction import (
 )
 
 PROMPT_SCRIPT = ROOT / ".codex/skills/patristic-index-extractor/scripts/build_volume_prompt.py"
+
+
+def test_absolute_path_preserving_symlinks_keeps_virtualenv_python(
+    tmp_path: Path,
+) -> None:
+    system_python = tmp_path / "system-python"
+    system_python.touch()
+    venv_python = tmp_path / "venv" / "bin" / "python"
+    venv_python.parent.mkdir(parents=True)
+    venv_python.symlink_to(system_python)
+
+    normalized = absolute_path_preserving_symlinks(venv_python)
+
+    assert normalized == venv_python.absolute()
+    assert normalized != venv_python.resolve()
 
 
 def test_infer_failure_stage_covers_chunk_and_quality_failures() -> None:
@@ -786,12 +802,87 @@ def test_verbose_dry_run_reports_every_volume_stage_with_position(
     run_index_extraction.main()
 
     captured = capsys.readouterr()
-    assert "[VOLUME 1/1 PL001] [STAGE 1/12] START prescan OCR" in captured.out
-    assert "[VOLUME 1/1 PL001] [STAGE 1/12] DONE prescan OCR" in captured.out
-    assert "[VOLUME 1/1 PL001] [STAGE 6/12] SKIP extract semantic chunks" in captured.out
-    assert "[VOLUME 1/1 PL001] [STAGE 12/12] SKIP import payload" in captured.out
+    assert "[VOLUME 1/1 PL001] [STAGE 1/14] START prescan OCR" in captured.out
+    assert "[VOLUME 1/1 PL001] [STAGE 1/14] DONE prescan OCR" in captured.out
+    assert "[VOLUME 1/1 PL001] [STAGE 6/14] SKIP extract semantic chunks" in captured.out
+    assert "[VOLUME 1/1 PL001] [STAGE 12/14] SKIP import payload" in captured.out
+    assert "[VOLUME 1/1 PL001] [STAGE 13/14] SKIP cache CLTK analysis" in captured.out
+    assert "[VOLUME 1/1 PL001] [STAGE 14/14] SKIP translate index strings" in captured.out
 
     progress_log = tmp_path / "logs" / "PL001_progress.log"
     progress = progress_log.read_text(encoding="utf-8")
-    assert "[STAGE 1/12] START prescan OCR" in progress
-    assert "[STAGE 12/12] SKIP import payload" in progress
+    assert "[STAGE 1/14] START prescan OCR" in progress
+    assert "[STAGE 12/14] SKIP import payload" in progress
+    assert "[STAGE 14/14] SKIP translate index strings" in progress
+
+
+def test_translation_only_uses_existing_db_without_ocr_root(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    db_path = tmp_path / "indices.db"
+    with run_index_extraction.connect_translation_db(db_path) as con:
+        con.execute(
+            """
+            CREATE TABLE volumes(
+                volume_id TEXT PRIMARY KEY, collection TEXT NOT NULL,
+                source_root TEXT NOT NULL, volume_label TEXT, notes TEXT,
+                created_at TEXT NOT NULL, updated_at TEXT NOT NULL
+            )
+            """
+        )
+        con.execute(
+            "INSERT INTO volumes VALUES (?, ?, ?, ?, ?, ?, ?)",
+            ("PL001", "PL", "/missing", "PL001", None, "now", "now"),
+        )
+        con.commit()
+
+    translation_calls: list[dict[str, object]] = []
+    monkeypatch.setattr(
+        run_index_extraction,
+        "run_translation_stage",
+        lambda **kwargs: translation_calls.append(kwargs)
+        or {
+            "ran": True,
+            "pending_strings": 1,
+            "written_rows": 4,
+            "cltk": {"status": "unavailable"},
+        },
+    )
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "run_index_extraction.py",
+            "--volume-id",
+            "PL001",
+            "--translation-only",
+            "--translation-openai-api-key",
+            "test-key",
+            "--db",
+            str(db_path),
+            "--root",
+            str(tmp_path / "does-not-exist"),
+            "--output-dir",
+            str(tmp_path / "out"),
+            "--log-dir",
+            str(tmp_path / "logs"),
+            "--intermediate-root",
+            str(tmp_path / "intermediate"),
+        ],
+    )
+
+    run_index_extraction.main()
+
+    assert [call["volume_id"] for call in translation_calls] == ["PL001"]
+    assert translation_calls[0]["workers"] == 4
+    assert translation_calls[0]["backoff_base_s"] == 1.0
+    assert translation_calls[0]["backoff_max_s"] == 60.0
+    assert translation_calls[0]["jitter_ratio"] == 0.25
+    result = [
+        json.loads(line)
+        for line in capsys.readouterr().out.splitlines()
+        if line.startswith("{")
+    ][-1]
+    assert result["translation_only"] is True

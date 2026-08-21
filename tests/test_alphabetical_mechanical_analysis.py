@@ -85,6 +85,47 @@ def test_pipe_table_extracts_each_material_column() -> None:
     assert [item["page_ref_int"] for item in locators] == [221, 221, 224]
 
 
+def test_mechanical_analysis_normalizes_cer_locators_and_soft_wraps(
+    tmp_path: Path,
+) -> None:
+    source_file = tmp_path / "page-001.txt"
+    source_file.write_text(
+        '<bloco tipo="cabecalho">INDEX ONO-</bloco>\n'
+        '<bloco tipo="cabecalho">MASTICUS</bloco>\n'
+        '<bloco tipo="texto_principal">Alexan-</bloco>\n'
+        '<bloco tipo="texto_principal">der .... I2I-I23.</bloco>',
+        encoding="utf-8",
+    )
+
+    analysis = analyze_index_file(source_file)
+
+    heading = next(
+        item for item in analysis["candidates"] if item["role"] == "owned_heading"
+    )
+    assert heading["heading"]["section_kind"] == "onomastic_mixed"
+    assert heading["line_end"] > heading["line"]
+    wrapped = next(
+        item
+        for item in analysis["candidates"]
+        if item.get("wrapped_locator_candidate")
+    )
+    locator = wrapped["material_locators"][0]
+    assert locator["kind"] == "editorial_range"
+    assert locator["range_start_raw"] == "121"
+    assert locator["range_end_raw"] == "123"
+    assert locator["ocr_normalized"] is True
+
+
+def test_mechanical_analysis_marks_works_inventory_as_boundary() -> None:
+    assert detect_heading(
+        "ELENCHUS. AUCTORUM ET OPERUM QUI IN HOC TOMO CONTINENTUR"
+    ) == {
+        "phrase": "auctorum et operum",
+        "role": "stop_boundary",
+        "section_kind": "editorial_closure",
+    }
+
+
 def test_real_pg_pl_po_pages_expose_expected_mechanical_grammar() -> None:
     root = ROOT
     pg = analyze_index_file(
@@ -134,3 +175,24 @@ def test_mechanical_analysis_limits_work_to_filtered_candidates(tmp_path: Path) 
     assert analysis["inspected_file_count"] == 1
     assert analysis["material_locator_count"] == 2
     assert analysis["section_leads"][0]["section_kind"] == "analytic_subject"
+
+
+def test_mechanical_analysis_accepts_project_relative_candidate_paths(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    source_root = tmp_path / "PL001" / "text"
+    source_root.mkdir(parents=True)
+    selected = source_root / "page-001.txt"
+    selected.write_text("INDEX ONOMASTICUS\nAaron 12", encoding="utf-8")
+    monkeypatch.chdir(tmp_path)
+
+    analysis = build_mechanical_analysis(
+        volume_id="PL001",
+        collection="PL",
+        source_root=Path("PL001/text"),
+        filtered_pages={"candidate_files": ["PL001/text/page-001.txt"]},
+    )
+
+    assert analysis["inspected_file_count"] == 1
+    assert analysis["files"][0]["file"] == str(selected.resolve())

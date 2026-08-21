@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import argparse
-from concurrent.futures import ProcessPoolExecutor, as_completed
+from concurrent.futures import FIRST_COMPLETED, ProcessPoolExecutor, wait
 import json
 import os
 import subprocess
@@ -279,9 +279,31 @@ def main() -> None:
         )
         for path in payload_paths
     ]
+    print(
+        json.dumps(
+            {
+                "event": "start",
+                "payload_count": len(jobs),
+                "workers": args.workers,
+                "apply": bool(args.apply),
+            }
+        ),
+        flush=True,
+    )
     if args.workers == 1:
         processed = []
-        for job in jobs:
+        for index, job in enumerate(jobs, start=1):
+            print(
+                json.dumps(
+                    {
+                        "event": "progress",
+                        "completed": index - 1,
+                        "total": len(jobs),
+                        "current": job[0].name,
+                    }
+                ),
+                flush=True,
+            )
             result = _process_payload_job(job)
             processed.append(result)
             _print_result(result)
@@ -294,11 +316,33 @@ def main() -> None:
                 executor.submit(_process_payload_job, job): index
                 for index, job in enumerate(jobs)
             }
-            for future in as_completed(future_indexes):
-                index = future_indexes[future]
-                result = future.result()
-                ordered[index] = result
-                _print_result(result)
+            pending = set(future_indexes)
+            completed_count = 0
+            while pending:
+                done, pending = wait(
+                    pending,
+                    timeout=30,
+                    return_when=FIRST_COMPLETED,
+                )
+                if not done:
+                    print(
+                        json.dumps(
+                            {
+                                "event": "heartbeat",
+                                "completed": completed_count,
+                                "remaining": len(pending),
+                                "total": len(jobs),
+                            }
+                        ),
+                        flush=True,
+                    )
+                    continue
+                for future in done:
+                    index = future_indexes[future]
+                    result = future.result()
+                    ordered[index] = result
+                    completed_count += 1
+                    _print_result(result)
         processed = [result for result in ordered if result is not None]
 
     reports = [report for report, _failure in processed]
@@ -319,6 +363,20 @@ def main() -> None:
     }
     if args.report_json:
         _write_json_atomic(args.report_json.resolve(), output)
+    print(
+        json.dumps(
+            {
+                "event": "complete",
+                "payload_count": len(payload_paths),
+                "changed_volume_count": output["changed_volume_count"],
+                "failure_count": len(failures),
+                "report_json": str(args.report_json.resolve())
+                if args.report_json
+                else None,
+            }
+        ),
+        flush=True,
+    )
     if failures:
         raise SystemExit(1)
 

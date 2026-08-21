@@ -1,172 +1,164 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,45,900,75">
-    1209 TETRASTICHA IN NOVUM TESTAMENTUM. 1210
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="250,95,650,125">
-    ΠΡΑΞΕΙΣ ΑΠΟΣΤΟΛΩΝ.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="230,140,650,170">
-    ACTUS APOSTOLORUM.
-  </bloco>
-  
-  <!-- Coluna Esquerda - Grego -->
-  <bloco tipo="texto_principal" script="grego" bbox="30,190,400,250">
-    Εἰς τὴν Πεντηκοστήν.
-    Περιστερὰ τὸ Πνεμα τῷ διδασκάλῳ,
-    Γλῶσσαι πυρὸς τὸ Πνεῦμα τοῖς ἀποστόλοις·
-    Κατέρχεται γὰρ εἰς ὑπηρέτας Λόγου,
-    Καὶ συμφλέγειν μέλλοντας εἰδώλων πλάνην.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="30,255,400,325">
-    Εἰς τὸ αὐτό.
-    Πέρσαι πυρολάτραι, πυρὸς ἄλλου τίσατε φύσιν,
-    Ὁ πρὸ διὰ στομάτων θεοφήταις ἔρχεται Ἰησο,
-    Τίσατε, ὄφρα φάος μηδὲ φλόγα ἔνθεν ἄροιτε,
-    Δυσσεβέας πρήθουσαν, ἀγρώστιδος ἠΰτε χόρτον.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="30,330,400,405">
-    Εἰς Ματθίαν τὸν ούδα τόπον ἀναπλη-
-    ροῦντα.
-    Ἰδοτε, καὶ σ καλὸς, ἀλλ' ὁ Ματθίας
-    Τὸν κύκλον ἐκλήρωσε τῶν ἀποστόλων·
-    Τὴν ἀξίαν γὰρ λαμβάνει καὶ τὴν χάριν
-    Ἀφ' ἧς Ἰούδας ἀφρόνως ἐξεῤῥάγη.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="30,410,400,495">
-    Εἰς τὸ αὐτό.
-    Μωϋσέως παλάμῃ τροπώσατο ἔθνεα πάλαι,
-    Νῦν δὲ Πέτρου παλάμῃ θεουδὸς λκετ' ἄνωθεν
-    Πνεῦμα μέγας Παράκλητος ἐπ' ἀνδρομήϊσι καρα-
-    ρῇς·
-    Ματθαίου ἀμφὶ κόρυμβα κόρας βαλεῦ, ς κε δαείης.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="30,500,400,535">
-    Εἰς τὴν κατήχησιν Πέτρου.
-    Πέτρος κατηχεῖ, καὶ τίς ἀπειθὴς μένει;
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="misto" bbox="20,20,980,175">
+1209
+
+TETRASTICHA IN NOVUM TESTAMENTUM.
+
+1210
+
+ΠΡΑΞΕΙΣ ΑΠΟΣΤΟΛΩΝ.
+
+ACTUS APOSTOLORUM.
   </bloco>
 
-  <!-- Coluna Direita - Grego -->
-  <notas_marginais>
-    <bloco tipo="nota_marginal" script="latino" bbox="420,195,440,210">A</bloco>
-    <bloco tipo="nota_marginal" script="latino" bbox="420,395,440,410">B</bloco>
-  </notas_marginais>
-  <bloco tipo="texto_principal" script="grego" bbox="440,190,850,240">
-    Πέτρος διδάσκει, καὶ τίς οὐ τρέμει κλύων,
-    Τοῦ Πνεύματος λαλοῦντος ἐν γλώσσῃ Πέτρου;
-    Ὡ γλῶσσα σεπτή, πῦρ λαλεῖς τε καὶ πνέεις.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="440,245,850,315">
-    Εἰς τὸ αὐτό.
-    Πέτρος δ' ἀτρεκέεσσιν ὑπὸ στομάτεσσιν διδάσκει
-    Χριστόν, ἄθρει δ' ἄδηλον ἀπὸ φλόγα, λῷστε, κιού-
-    [σαγ.
-    Γλώσσης, ἥ μιν ἀνῆψ' ἐπὶ σταυροῖο βεβῶτα.
-    Κέκλυτε τῶνδε λόγων ἀλίης, κέκλυτε πάντες.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="440,320,850,390">
-    Εἰς τὸν ὑπὸ Πέτρου καὶ Ἰωάννου ἰαθέντα
-    χωλόν.
-    Χωλὲ, προσάιτει, Πέτρος ἐγγύς ἐστί σου·
-    Ἀργύριον μὲν οὐ λάβης, ἢ χρυσίον,
-    Ἀνάργυρον δὲ τὴν ἰατρείαν λάβης·
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="440,395,850,415">
-    Λόγῳ γὰρ ἄρτι σῶσαι δείξει καὶ μόνῳ.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="440,420,850,485">
-    Εἰς τὸ αὐτό.
-    Χωλὸς ἀνὴρ ἀνὰ σηκὸν ἐβήσατο, ἐκ δ' ἄρα σηκοῦ
-    Ἀρτίπος ἦλθε· Πέτρος γὰρ ἐκέκλετο ὀρθὰ βαδίζειν·
-    Ἀτὰρ ἀτασθαλίη κακομήχανος ἀρχιερήων
-    Ἐν κραδίῃ χώλευσε, καὶ ἔμπαλι βῆττο † χωλ.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="440,490,850,535">
-    Εἰς τὰ κατὰ Ἀνανίαν καὶ Σάπφειραν.
-    Τί ταῦτα; Πέτρε, θανατοῖς νανίαν
-    παξ ἁμαρτήσαντα; Καὶ μὴν οὐχ ἅπαξ,
+  <bloco tipo="texto_principal" script="grego" bbox="35,180,470,520">
+Εἰς τὴν Πεντηκοστήν.
+Περιστερὰ τὸ Πνεῦμα τῷ διδασκάλῳ,
+Γλῶσσαι πυρὸς τὸ Πνεῦμα τοῖς ἀποστόλοις·
+Κατέρχεται γὰρ εἰς ὑπηρέτας Λόγου,
+Καὶ συμφλέγειν μέλλοντας εἰδώλων πλάνην.
+
+Εἰς τὸ αὐτό.
+Πέρσαι πυρολάτραι, πυρὸς ἄλλου τίσατε φύσιν,
+Ὁ πρὸ διὰ στομάτων προφήταις ἔρχετ᾿ Ἰησοῦ,
+Τίσατε, ὄφρα φάος μηδὲ φλόγα ἔνθεν ἄροιτε,
+Δυσσεβέας πρήθουσαν, ἀγρώστιδος ἠΰτε χόρτον.
+
+Εἰς Ματθίαν τὸν Ἰούδα τόπον ἀναπλη-
+ροῦντα.
+Ἰοῦστε, καὶ σὺ καλός, ἀλλ᾽ ὁ Ματθίας
+Τὸν κύκλον ἐπλήρωσε τῶν ἀποστόλων·
+Τὴν ἀξίαν γὰρ λαμβάνει καὶ τὴν χάριν
+Ἀφ᾽ ἧς Ἰούδας ἀφρόνως ἐπεῤῥάγη.
+
+Εἰς τὸ αὐτό.
+Μωσέως παλάμῃσι [ilegivel] ἔθνεα πάλαι,
+Νῦν δὲ Πέτρου παλάμῃσι θεουδέος εἵλκετ᾿ ἄνωθεν
+Πνεῦμα μέγας Παράκλητος ἐπ᾽ ἀνδρομήϊσι κεφα-
+[ilegivel]
+Ματθίου ἀμφὶ κόρυμβα κόρας βαλεῦ, ὡς κε δαείης.
+
+Εἰς τὴν κατήχησιν Πέτρου.
+Πέτρος κατηχεῖ, καὶ τίς ἀπειθὴς μένει;
   </bloco>
 
-  <!-- Coluna Esquerda - Latino -->
-  <bloco tipo="texto_principal" script="latino" bbox="30,545,420,625">
-    De die Pentecostes.
-    Columba Christo magistro advenientis Spiritus
-    symbolum fuit, apostolis vero igneæ linguæ Spiri-
-    tum sanctum demonstrant, qui in Verbi ministros e
-    cœlo descendit, apostolos, inquam, idolorum concre-
-    maturos errorem.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,630,420,710">
-    In idem.
-    Qui flammas adoratis, o Persæ, aliam ignem co-
-    lite qui per interpretem Christi ora progreditur,
-    colite, ut inde lumen, non candentes prunas re-
-    portetis, quæ impíos, graminis instar aut feni,
-    comburant.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,715,420,785">
-    De Mathia in Judæ locum suffecto.
-    Sanctimoniæ merito celebris eras, o juste Joseph,
-    Mathias tamen apostolorum numerum supplevit;
-    actepia dignitate et gratia, a qua Judas per incon-
-    sultam temeritatem deciderat.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,790,420,885">
-    In idem.
-    Gentes olim Mosis manibus in fugam dabantur;
-    nunc autem religiosi Petri manibus cœlitus extra-
-    bitur in hominum cervices magnus consolator
-    Spiritus; in Mathiæ verticem oculos intende, quo
-    resciscas.
-  </bloco>
-  <notas_marginais>
-    <bloco tipo="nota_marginal" script="latino" bbox="420,830,440,845">D</bloco>
-  </notas_marginais>
-  <bloco tipo="texto_principal" script="latino" bbox="30,890,420,915">
-    In Petri catechesim.
-    Dicente Petro, quis contumaciter incredulus per-
+  <bloco tipo="nota_marginal" script="latino" bbox="430,295,458,330">
+A
   </bloco>
 
-  <!-- Coluna Direita - Latino -->
-  <notas_marginais>
-    <bloco tipo="nota_marginal" script="latino" bbox="420,605,440,620">C</bloco>
-  </notas_marginais>
-  <bloco tipo="texto_principal" script="latino" bbox="440,545,850,600">
-    severet? docente Petro, quis vel seditione non tre-
-    mit, cum ejus eloquatur lingua Spiritus sanctus?
-    O veneranda lingua! Ignem loqueris, et ignem
-    inspiras.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="440,605,850,685">
-    In idem.
-    En ipse Petrus ore intrepido Christi fidem docet;
-    considera, vir bone, perstringentem oculos flam-
-    mam e lingua prosilientem, quæ ipsum de ligno
-    pendentem negaverat; piscatoris audite sermones,
-    omnes auscultate.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="440,690,850,770">
-    In claudum a Petro et Joanne sanatum.
-    Stipem pete, loripes, tibi præsto est Petrus;
-    argentum quidem aut aurum non es accepturus,
-    sed nullo redemptam argento medicinam; nunc
-    enim manifestum faciet se vel solo posse verbo
-    sanare.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="440,775,850,855">
-    In idem.
-    Homo claudus in templum ingressus, e templo
-    pedibus valens regressus est, nam eum Petrus re-
-    ctum ire jusserat, sed ad malum ingeniosa sacer-
-    dotum pravitas, animo claudicantium, contra quam
-    iret hic claudus, ambulabat.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="440,860,850,915">
-    De iis, quæ Ananiæ et Sapphiræ acciderunt.
-    Quid isthuc, Petre? Ananiam morte multas, qui
-    semel offenderat? Næ non tantum semel, sed iuli-
+  <bloco tipo="texto_principal" script="grego" bbox="510,180,965,380">
+Πέτρος διδάσκει, καὶ τίς οὐ τρέμει κλύων,
+Τοῦ Πνεύματος λαλοῦντος ἐν γλώσσῃ Πέτρου;
+Ὦ γλῶσσα σεπτὴ, πῦρ λαλεῖς τε καὶ πνέεις.
+
+Εἰς τὸ αὐτό.
+Πέτρος δ᾽ ἀτρεκέεσσιν ὑπὸ στομάτεσσιν διδάσκει
+Χριστόν, ἄθρει δ᾽ [ilegivel] ἀπὸ φλόγα, λώστε, κιού-
+[ilegivel]
+Γλώσσης, ἥ μιν ἀνῆψ᾽ ἐπὶ σταυροῖο βεβῶτα.
+Κέκλυτε τῶνδε λόγων ἀλιῆος, κέκλυτε πάντες.
   </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="600,960,800,985">
-    Digitized by Google
+  <bloco tipo="nota_marginal" script="latino" bbox="430,455,458,490">
+B
   </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="510,385,965,575">
+Εἰς τὸν ὑπὸ Πέτρου καὶ Ἰωάννου ἰαθέντα
+χωλόν.
+Χωλὲ, προσάιτει, Πέτρος ἐγγύς ἐστι σου·
+Ἀργύριον μὲν οὐ λάβῃς, ἢ χρυσίον,
+Ἀνάργυρον δὲ τὴν ἰατρείαν λάβῃς·
+Λόγῳ γὰρ ἄρτι σῶσαι δείξει καὶ μόνῳ.
+
+Εἰς τὸ αὐτό.
+Χωλὸς ἀνὴρ ἀνὰ σηκὸν ἐβήσατο, ἐκ δ᾽ ἄρα σηκοῦ
+Ἄρτιπος ἦλθε· Πέτρος γὰρ ἐκέκλετο ὀρθὰ βαδίζειν·
+Ἀτὰρ ἀτασθαλίη κακομήχανος ἀρχιερέων
+Ἐν κραδίῃ χώλευσε, καὶ ἔμπαλι βήσατο † χωλοῦ.
+
+Εἰς τὰ κατὰ Ἀνανίαν καὶ Σαπφείραν.
+Τί ταῦτα; Πέτρε, θανατοῖς Ἀνανίαν
+παξ ἁμαρτήσαντα; Καὶ μὴν οὔχ ἅπαξ,
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="35,540,470,742">
+De die Pentecostes.
+Columba Christo magistro advenientis Spiritus
+symbolum fuit, apostolis vero igneæ linguæ Spiri-
+tum sanctum demonstrat, qui in Verbi ministros e
+cœlo descendit, apostolos, inquam, idolorum concre-
+maturos errorem.
+
+In idem.
+Qui flammas adoratis, o Persæ, alium ignem co-
+lite qui per interpretem Christi ora progreditur,
+colite, ut inde lumen, non candentes prunas re-
+portetis, quæ impios, graminis instar aut feni,
+comburunt.
+
+De Mathia in Judæ locum suffecto.
+Sanctimoniæ merito celebris eras, o juste Joseph,
+Mathias tamen apostolorum numerum supplevit ;
+accepta dignitate et gratia, a qua Judas per incon-
+sultam temeritatem deciderat.
+
+In idem.
+Gentes olim Mosis manibus in fugam dabantur ;
+nunc autem religiosi Petri manibus cœlitus extra-
+bitur in hominum cervices magnus consolator
+Spiritus ; in Mathiæ verticem oculos intende, quo
+resciscas.
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="425,845,455,875">
+D
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="35,742,470,900">
+In Petri catechesim.
+Dicente Petro, quis contumaciter incredulus per-
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="430,705,458,735">
+C
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="510,580,965,900">
+perseveret? docente Petro, quis vel auditione non tre-
+mit, cum ejus eloquatur lingua Spiritus sanctus?
+O veneranda lingua! Ignem loqueris, et ignem
+inspiras.
+
+In idem.
+En ipse Petrus ore intrepido Christi fidem docet;
+considera, vir bone, perstringentem oculos flam-
+mam e lingua prosilientem, quæ ipsum de ligno
+pendentem negaverat; piscatoris audite sermones,
+omnes auscultate.
+
+In claudum a Petro et Joanne sanatum.
+Stipem pete, loripes, tibi præsto est Petrus;
+argentum quidem aut aurum non es accepturus,
+sed nullo redemptam argento medicinam; nunc
+enim manifestum faciet se vel solo posse verbo
+sanare.
+
+In idem.
+Homo claudus in templum ingressus, e templo
+pedibus valens regressus est, nam eum Petrus re-
+ctum ire jusserat, sed ad malum ingeniosa sacer-
+dotum pravitas, animo claudicantium, contra quam
+iret hic claudus, ambulabat.
+
+De iis, quæ Ananiæ et Sapphiræ acciderunt.
+Quid isthuc, Petre? Ananiam morte multas, qui
+semel offenderat? Næ non tantum semel, sed iuli-
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="650,950,940,995">
+Digitized by Google
+  </bloco>
+
+  <notas>Leituras incertas marcadas com [ilegivel] onde o impresso está danificado ou ambíguo.</notas>
 </pagina>

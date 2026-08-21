@@ -10,12 +10,12 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from patristica_pipeline.vulgate_clementine import (
+from scripts.scripture_keywords.vulgate_clementine import (
     VULGATE_EMBEDDING_PROFILE,
     VulgateClementine,
     enrich_keyword,
 )
-from scripts.audit_keyword_scripture_enrichment import audit_keywords
+from scripts.scripture_keywords.audit_keyword_scripture_enrichment import audit_keywords
 from tools import generate_keyword_embeddings as embeddings_module
 
 

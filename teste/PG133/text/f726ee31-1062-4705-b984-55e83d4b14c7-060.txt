@@ -1,75 +1,63 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="140,25,180,45">103</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="450,25,650,45">ARISTENI MONACHI</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="920,25,960,45">104</bloco>
-  
-  <bloco tipo="texto_principal" script="latino" bbox="140,55,540,75">jaceat : eodem modo et qui juramenta extorquet.</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="550,55,960,90">Α πιπτέτω· κατὰ ταυτὰ καὶ ὁ ρκους [al. ρκους] ἐπι-συρόμενος.</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="545,60,560,80">A</bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="140,85,540,235">55. Qui circulatoribus et nebulonibus adhaeret, ac fato et fortunis credit, ab Ecclesiæ conventu arcendus est.
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="143,39,176,53">103</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="455,39,651,54">ARISTENI MONACHI</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="933,39,966,54">104</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="143,58,542,76">jaceat : eodem modo et qui juramenta extorquet.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="143,86,544,235">55. Qui circulatoribus et nebulonibus adhæret, ac fato et fortunis credit, ab Ecclesiæ conventu arcendus est.
 56. A fidelium vitæ ratione auferantur pascha et brumalia, et saltationes in deorum honorem necnon comicæ, satiricæ et tragicæ personæ, atque invocatio Bacchi in torcularibus, risusque in doliis. Qui vero post hunc canonem in his persisterint, crimini erunt obnoxii.
 57. Conficta a Græcis Martyrologia, in ecclesiis ne recitentur.
-58. Laicus ne doceat : non enim omnes prophetæ, neque omnes apostoli.</bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="550,90,960,240">νε'. Ὁ γυτευταῖς καὶ νεφεδιώκταις κωλύομενος, καὶ εἱμαρμένη καὶ τύχῃ πιστεύων, τῆς Ἐκκλησίας ἀποσυνάγωγος.
-vs'. Περιαιρείσθω τῆς τῶν πιστῶν τὰ βοτὰ πολιτείας, καὶ τὰ βρουμάλια, καὶ αἱ ἀρχήσεις αἱ εἰς θεούς, καὶ τὰ κωμικά, καὶ σατυρικά, καὶ τὰ τραγικὰ πρόσωπα, καὶ ἡ ἐπὶ ληνοῖς τοῦ Διονύσου ἐπίκλησις, καὶ ὁ ἐπ τοῖς πίθοις γέλως. Οἱ δ ἐπιμένοντες μετὰ τὸν κανόνα, ὑπεύθυνοι.
-νζ'. Τὰ ὑφ' Ἑλλήνων συμπλασθέντα μαρτυρολόγια, μὴ ἐκκλησιάζετο.
-νη'. Λαϊκὸς μὴ διδάσκοι· μὴ γὰρ πάντες προφῆται, μὴ πάντες ἀπόστολοι.</bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="545,270,560,290">B</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="140,265,540,295">59. Rogi qui in tabernis noviluniis exstruuntur, quique eos transiliunt, abrogentur.</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="550,270,960,310">νθ'. Αἱ ἐν τοῖς ἐργαστηρίοις ἐν νεομηνίαις πυρκαϊαί, καὶ οἱ ταύτας ὑπεραλλόμενοι, καταργείσθωσαν.</bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="140,300,540,450">60. Tota post Resurrectionem hebdomada, quilibet fidelis ecclesiastico conventui intersit.
+58. Laicus ne doceat : non enim omnes prophetæ, neque omnes apostoli.
+59. Rogi qui in tabernis noviluniis exstruuntur, quique eos transiliunt, abrogentur.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="548,299,561,313">B</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="143,302,544,463">60. Tota post Resurrectionem hebdomada, quilibet fidelis ecclesiastico conventui intersit.
 61. Clericus sanguinem manducans deponitur : laicus vero excommunicatur.
-62. Non corrumpes divinum codicem, neque corrumpendum dabis, nisi prorsus inutilis sit reddita.
+62. Non corrumpes divinum codicem, neque corrumpendum dabis, nisi prorsus inutilis sit redditus.
 63. Præter imperatorem, nullus laicorum propitiatorium ingrediatur.
 64. Mulieribus loqui in ecclesia non permissum est.</bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="550,315,960,460">ξ'. Τὴν μετὰ τὴν Ἀνάστασιν ἑβδομάδα πᾶσαν, πᾶς ἐκκλησιαζέσθω πιστός.
-ξα'. Ὁ κληρικὸς αμα ἐσθίων καθαιρεῖται· ὁ δὲ λαϊκός, ἀφορίζεται.
-ξβ'. Οὐ διαφθερεῖς θεῖον βιβλίον, οὔτε δοίης διαφθαρῆναι, εἰ μὴ τέλεον κατηχρείωται.
-ξγ'. Εἰ μὴ βασιλεύς, ὅστις τῶν λαϊκῶν ες ἰδιαστήριον εἴσεισιν.
-ξδ'. Γυναιξὶ λαλεῖν ἐπ' ἐκκλησίας οὐκ ἐπιτρέπεται.</bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="545,470,560,490">C</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="140,455,540,515">65. Excommunicatur logisperitus, qui more gentili utitur, ac theatris adhibet et sese volutat.
-66. Invalidum cum hæreticis matrimonium; qui autem antea contraxerunt, si velint, in eo permaneant.</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="550,465,960,515">ξε'. Ἀφορίζεται νομομαθὴς θει Ἑλληνικ χρώμενος, καὶ θεάτροις ἐπαγόμενος, καὶ κυλίων.
-ξς'. Ἄκυρος ὁ μετὰ τῶν αἱρετικῶν γάμος· οἱ δ προλαβόντες εἰ ἐθέλοιεν, μένοιεν.</bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="140,520,540,610">67. Crux solo impressa, obliteratur.
+  <bloco tipo="texto_principal" script="latino" bbox="143,475,544,635">65. Excommunicatur legisperitus, qui more gentili utitur, ac theatris adhibet et sese volutat.
+66. Invalidum cum hæreticis matrimonium ; qui autem antea contraxerunt, si velint, in eo permaneant.
+67. Crux solo impressa, obliteratur.
 68. Agapæ et accubitus Dominicis non peraguntur.
 69. Inconditus clamor canentis impudenter, quique ea quæ in ecclesia dicuntur effert, minime congruunt.</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="550,520,960,615">ξζ'. Ὁ ἐν ἐδάφει σταυρός, ἀφανίζεται.
-ξη'. Ἀγάπαι καὶ ἀκούβιτα Κυριακαῖς οὐ τελεῖται.
-ξθ'. Ἄτακτος κραυγὴ τοῦ ψάλλοντος ἀναξίως, καὶ ὁ ἐπιλέγων τὰ τῆς ἐκκλησίας, ἀνάρμοστα.</bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="140,615,540,745">70. Intra sacrum septum caupona constitui non debet : ac ibidem cibos vendi, ineptum.
+  <bloco tipo="nota_marginal" script="latino" bbox="548,593,561,608">C</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="143,648,544,804">70. Intra sacrum septum caupona constitui non debet : ac ibidem cibos vendi, ineptum.
 71. Christianus cum mulieribus non lavatur.
 72. Illuminatus quinta hebdomadæ fidem profiteatur.
 73. Excommunicatur qui post festum Deiparæ similam aut aliud apparat, propter ea quæ vocantur post partum purgamenta.</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="550,620,960,745">ο'. Ἐν ἱερῷ περιβόλῳ καπηλεῖον ἀσύστατον· καὶ πωλούμενα βρώματα, μάταια.
-οα'. Χριστιανὸς γυναιξὶν ο συλλούεται.
-οβ'. Ὁ φωτισθεὶς τὴν πίστιν ἀπαγγελλάτω τῇ πέμπτῃ τῆς ἑβδομάδος.
-ογ'. Ἀφορίζεται ὁ μετὰ τὴν ἑορτὴν τῆς Θεοτόκου σεμίδαλιν, ἄλλο σκευάζων διὰ τὰ λεγόμενα λόχεια.</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="545,680,560,700">D</bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="140,740,540,770">74. Si quis citra necessitatem per tres Dominicas ab ecclesia abiit, excommunicatur.</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="550,745,960,775">οδ'. Εἰ μ δι' ἀνάγκην ἀπολιμπάνεταί τις τῆς ἐκκλησίας ἐπὶ τρισ Κυριακαῖς, ἀκοινώνητος.</bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="140,775,540,910">75. Qui ad Trisagion hymnum adjicit illud : Crucifixus, hæreticus censetur.
+  <bloco tipo="nota_marginal" script="latino" bbox="548,747,561,762">D</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="143,810,544,931">74. Si quis citra necessitatem per tres Dominicas ab ecclesia absit, excommunicatur.
+75. Qui ad Trisagion hymnum adjicit illud : Crucifixus, hæreticus censetur.
 76. Non sculpes agnum in figuram Christi, sed illum ipsum.
 77. Servus a domino manumissus coram tribus testibus, servitutis expers sit.
-78. Qui congregat meretrices in porniciem animalium, excommunicatur.
+78. Qui congregat meretrices in porniciem animarum, excommunicatur.
 79. Quæ a viro ad alium se confert, adultera</bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="550,780,960,910">οε'. Τῷ Τρισαγίῳ ὕμνῳ ὁ συνάπτων τό· Σταυρωθείς, ἑτερόδοξος.
+  <bloco tipo="texto_principal" script="grego" bbox="555,57,963,91">Α πεκκτέτω · κατὰ ταυτὰ καὶ ὁ ἅρτους [al. ὅρκους] ἐκι-[br/]συρόμενος.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="548,61,559,72">A</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="555,94,964,297">νε'. Ὁ γυτευταῖς καὶ νεφοδιώκταις κωλυόμενος, καὶ εἱμαρμένῃ καὶ τύχῃ πιστεύων, τῆς Ἐκκλησίας ἀποσυνάγωγος.
+νς'. Περιαιρείσθω τῆς τῶν πιστῶν τὰ βοτὰ πολιτείας, καὶ τὰ βρουμάλια, καὶ αἱ ἀρχήσεις αἱ εἰς θεούς, καὶ τὰ κωμικά, καὶ σατυρικά, καὶ τὰ τραγικὰ πρόσωπα, καὶ ἡ ἐπὶ ληνοῖς τοῦ Διονύσου ἐπίκλησις, καὶ ὁ ἐπὶ τοῖς πίθοις γέλως. Οἱ δὲ ἐπιμένοντες μετὰ τὸν κανόνα, ὑπεύθυνοι.
+νζ'. Τὰ ὑφ' Ἑλλήνων συμπλασθέντα μαρτυρολόγια, μὴ ἐκκλησιάζετο.
+νη'. Λαϊκὸς μὴ διδάσκοι· μὴ γὰρ πάντες προφῆται, μὴ πάντες ἀπόστολοι.
+νθ'. Αἱ ἐν τοῖς ἐργαστηρίοις ἐν νεομηνίαις πυρκαϊαί, καὶ οἱ ταύτας ὑπεραλλόμενοι, καταργείσθωσαν.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="555,316,964,466">ξ'. Τὴν μετὰ τὴν Ἀνάστασιν ἑβδομάδα πᾶσαν, πᾶς ἐκκλησιαζέσθω πιστός.
+ξα'. Ὁ κληρικὸς αἷμα ἐσθίων καθαιρεῖται· ὁ δὲ λαϊκός, ἀφορίζεται.
+ξβ'. Οὐ διαφθερεῖς θεῖον βιβλίον, οὔτε δοίης διαφθαρῆναι, εἰ μὴ τέλεον κατηχρείωται.
+ξγ'. Εἰ μὴ βασιλεύς, οὔτις τῶν λαϊκῶν εἰς ἱλαστήριον εἴσεισιν.
+ξδ'. Γυναιξὶ λαλεῖν ἐπ' ἐκκλησίας οὐκ ἐπιτέτραπται.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="555,477,964,636">ξε'. Ἀφορίζεται νομομαθὴς ἔθει Ἑλληνικῷ χρώμενος, καὶ θεάτροις ἐπαγόμενος, καὶ κυλίων.
+ξς'. Ἄκυρος ὁ μετὰ τῶν αἱρετικῶν γάμος· οἱ δὲ προλαβόντες εἰ ἐθέλοιεν, μένοιεν.
+ξζ'. Ὁ ἐν ἐδάφει σταυρὸς, ἀφανίζεται.
+ξη'. Ἀγάπαι καὶ ἀκούβιτα Κυριακαῖς οὐ τελεῖται.
+ξθ'. Ἄτακτος κραυγὴ τοῦ ψάλλοντος ἀναξίως, καὶ ὁ ἐπιλέγων τὰ τῆς ἐκκλησίας, ἀνάρμοστα.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="555,648,964,806">ο'. Ἐν ἱερῷ περιβόλῳ καπηλεῖον ἀσύστατον· καὶ πωλούμενα βρώματα, μάταια.
+οα'. Χριστιανὸς γυναιξὶν οὐ συλλούεται.
+οβ'. Ὁ φωτισθεὶς τὴν πίστιν ἀπαγγελλάτω τῇ πέμπτῃ τῆς ἑβδομάδος.
+ογ'. Ἀφορίζεται ὁ μετὰ τὴν ἑορτὴν τῆς Θεοτόκου σεμίδαλιν, ἄλλο σκευάζων διὰ τὰ λεγόμενα λόχεια.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="555,811,964,932">οδ'. Εἰ μὴ δι' ἀνάγκην ἀπολιμπάνεταί τις τῆς ἐκκλησίας ἐπὶ τρισὶ Κυριακαῖς, ἀκοινώνητος.
+οε'. Τῷ Τρισαγίῳ ὕμνῳ ὁ συνάπτων τό· Σταυρωθείς, ἑτερόδοξος.
 ος'. Οὐ χαράξεις ἀμνὸν εἰς τύπον Χριστοῦ, ἀλλ' ἐκεῖνον αὐτόν.
 οζ'. Ἐλευθερούμενος ὑπὸ τοῦ δεσπότου δοῦλος ἐπὶ τρισὶ μάρτυσιν, εἴη ἀδούλωτος.
-οη'. Ὁ συνάγων πόρνας ἐπ' ἀλοίσῳ ψυχῶν, ἀφορίζεται.
-οθ'. Ἡ ἐξ ἀνδρὸς ἐπ' ἄλλον ἰοῦσα, μοιχαλὶς·</bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="590,960,790,985">Digitized by Google</bloco>
+οη'. Ὁ συνάγων πόρνας ἐπ' ἀλοίσθῳ ψυχῶν, ἀφορίζεται.
+οθ'. Ἡ ἐξ ἀνδρὸς ἐπ' ἄλλον ἰοῦσα, μοιχαλίς.</bloco>
+  <bloco tipo="rodape" script="latino" bbox="591,968,792,987">Digitized by Google</bloco>
+  <notas>As letras A, B, C e D foram mantidas em blocos marginais próprios.</notas>
 </pagina>

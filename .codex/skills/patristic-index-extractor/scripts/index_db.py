@@ -76,6 +76,79 @@ CREATE TABLE IF NOT EXISTS index_entries (
 CREATE INDEX IF NOT EXISTS idx_entries_section_key ON index_entries(section_key);
 CREATE INDEX IF NOT EXISTS idx_entries_page_ref_int ON index_entries(page_ref_int);
 
+CREATE TABLE IF NOT EXISTS index_strings (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    source_text TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL
+);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_index_strings_source_text
+    ON index_strings(source_text);
+
+CREATE TABLE IF NOT EXISTS index_translations (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    string_id INTEGER NOT NULL REFERENCES index_strings(id) ON DELETE CASCADE,
+    language TEXT NOT NULL,
+    translated_text TEXT NOT NULL,
+    model_name TEXT NOT NULL,
+    sample_context TEXT,
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL
+);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_index_translations_string_language
+    ON index_translations(string_id, language);
+CREATE INDEX IF NOT EXISTS idx_index_translations_language
+    ON index_translations(language);
+CREATE INDEX IF NOT EXISTS idx_index_translations_model_name
+    ON index_translations(model_name);
+
+CREATE TABLE IF NOT EXISTS index_string_analyses (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    string_id INTEGER NOT NULL REFERENCES index_strings(id) ON DELETE CASCADE,
+    detected_language TEXT NOT NULL,
+    detector_name TEXT NOT NULL,
+    detector_version TEXT NOT NULL,
+    analyzer_name TEXT,
+    analyzer_version TEXT,
+    status TEXT NOT NULL CHECK (
+        status IN ('ok', 'unsupported', 'mixed', 'unrecognized', 'error')
+    ),
+    error_message TEXT,
+    is_truncated INTEGER NOT NULL DEFAULT 0 CHECK (is_truncated IN (0, 1)),
+    raw_json TEXT NOT NULL DEFAULT '{}',
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL
+);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_index_string_analyses_string
+    ON index_string_analyses(string_id);
+CREATE INDEX IF NOT EXISTS idx_index_string_analyses_language_status
+    ON index_string_analyses(detected_language, status);
+
+CREATE TABLE IF NOT EXISTS index_string_tokens (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    analysis_id INTEGER NOT NULL REFERENCES index_string_analyses(id) ON DELETE CASCADE,
+    token_order INTEGER NOT NULL,
+    sentence_index INTEGER,
+    surface TEXT NOT NULL,
+    lemma TEXT,
+    upos TEXT,
+    xpos TEXT,
+    features_json TEXT,
+    dependency_relation TEXT,
+    governor_token_order INTEGER,
+    char_start INTEGER,
+    char_end INTEGER,
+    is_stop INTEGER CHECK (is_stop IN (0, 1)),
+    confidence_json TEXT,
+    annotation_sources_json TEXT
+);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_index_string_tokens_analysis_order
+    ON index_string_tokens(analysis_id, token_order);
+CREATE INDEX IF NOT EXISTS idx_index_string_tokens_lemma
+    ON index_string_tokens(lemma);
+CREATE INDEX IF NOT EXISTS idx_index_string_tokens_upos
+    ON index_string_tokens(upos);
+
 CREATE TABLE IF NOT EXISTS runs (
     run_id INTEGER PRIMARY KEY AUTOINCREMENT,
     volume_id TEXT NOT NULL,

@@ -1,70 +1,26 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="310,30,690,60">
-    SÆCULUM V, ANNUS 407.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="250,75,750,110">
-    ΤΟΥ ΕΝ ΑΓΙΟΙΣ ΠΑΤΡΟΣ ΗΜΩΝ
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="120,115,880,195">
-    ΙΩΑΝΝΟΥ
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="250,200,750,230">
-    ΑΡΧΙΕΠΙΣΚΟΠΟΥ ΚΩΝΣΤΑΝΤΙΝΟΥΠΟΛΕΩΣ,
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="100,250,900,295">
-    ΤΟΥ ΧΡΥΣΟΣΤΟΜΟΥ,
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="250,300,750,330">
-    ΤΑ ΕΥΡΙΣΚΟΜΕΝΑ ΠΑΝΤΑ.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,360,950,410">
-    S. P. N. JOANNIS CHRYSOSTOMI,
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="250,420,750,450">
-    ARCHIEPISCOPI CONSTANTINOPOLITANI,
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="150,460,850,495">
-    OPERA OMNIA QUÆ EXSTANT,
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="250,500,750,525">
-    VEL QUÆ EJUS NOMINE CIRCUMFERUNTUR,
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,530,950,585">
-    AD MSS. CODICES GALLICOS, VATICANOS, ANGLICOS GERMANICOSQUE; NECNON AD SAVILIANAM ET FRONTONIANAM EDITIONES CASTIGATA, INNUMERIS AUCTA; NOVA INTERPRETATIONE UBI OPUS ERAT, PRÆFATIONIBUS, MONITIS, NOTIS, VARIIS LECTIONIBUS ILLUSTRATA; NOVA SANCTI DOCTORIS VITA, APPENDICIBUS, ONOMASTICO ET COPIOSISSIMIS INDICIBUS LOCUPLETATA;
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,590,900,615">
-    OPERA ET STUDIO D. BERN. DE MONTFAUCON, MONACHI BENEDICTINI E CONGR. S. MAURI.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,620,950,665">
-    EDITIO NOVISSIMA, IIS OMNIBUS ILLUSTRATA QUÆ RECENTIUS TUM ROMÆ, TUM OXONII, TUM ALIBI, A DIVERSIS IN LUCEM PRIMUM EDITA SUNT, VEL JAM EDITA, AD MANUSCRIPTORUM DILIGENTIIOREM CRISIM REVOCATA SUNT,
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="150,670,850,725">
-    ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE,
-    BIBLIOTHECÆ CLERI UNIVERSÆ,
-    SIVE
-    CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,760,900,825">
-    TOMUS DECIMUS.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="250,840,750,870">
-    VENEUNT 18 VOLUMINA 160 FRANCIS GALLICIS.
-  </bloco>
-  <bloco tipo="nota" script="latino" bbox="250,855,750,895">
-    HARVARD COLLEGE LIBRARY
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="50,900,950,965">
-    EXCUDEBatur ET VENIT APUD J.-P. MIGNE EDITOREM,
-    EN VIA DICTA D'AMBOISE, OLIM PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MOENIA PARISINA.
-    1862
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="600,970,950,995">
-    Digitized by Google
-  </bloco>
-  <notas>
-    Página de título (frontispício) com texto em grego e latim.
-    Carimbo de biblioteca "HARVARD COLLEGE LIBRARY" sobreposto ao texto de preço na parte inferior.
-    Ornamentos gráficos (linhas decorativas) acima e abaixo de "TOMUS DECIMUS".
-    Ligaturas Æ utilizadas frequentemente no texto latino (SÆCULUM, QUÆ, PRÆFATIONIBUS, BIBLIOTHECÆ, SCIENTIÆ, ECCLESIASTICÆ, LUTETIÆ).
-  </notas>
+<pagina estado="com_texto" tipo="capa_ou_guarda">
+  <bloco tipo="cabecalho" script="latino" bbox="315,70,590,104">SÆCULUM V, ANNUS 407.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="235,135,760,170">ΤΟΥ ΕΝ ΑΓΙΟΙΣ, ΠΑΤΡΟΣ ΗΜΩΝ</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="365,220,640,260">ΙΩΑΝΝΟΥ</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="285,305,720,345">ΑΡΧΙΕΠΙΣΚΟΠΟΥ ΚΩΝΣΤΑΝΤΙΝΟΥΠΟΛΕΩΣ,</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="190,385,820,470">ΤΟΥ ΧΡΥΣΟΣΤΟΜΟΥ,</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="285,505,720,545">ΤΑ ΕΥΡΙΣΚΟΜΕΝΑ ΠΑΝΤΑ.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="40,585,960,630">S. P. N. JOANNIS CHRYSOSTOMI,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="285,660,715,700">ARCHIEPISCOPI CONSTANTINOPOLITANI,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="255,735,750,780">OPERA OMNIA QUÆ EXSTANT,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="260,805,745,850">VEL QUÆ EJUS NOMINE CIRCUMFERUNTUR,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="45,875,955,945">AD MSS. CODICES GALLICOS, VATICANOS, ANGLICOS GERMANICOSQUE; NECNON AD SAVILIANAM ET FRONTONIANAM EDITIONES CASTIGATA, INNUMERIS AUCTA; NOVA INTERPRETATIONE UBI OPUS ERAT, PRÆFATIONIBUS, MONITIS, NOTIS, VARIIS LECTIONIBUS ILLUSTRATA; NOVA SANCTI DOCTORIS VITA, APPENDICIBUS, ONOMASTICO ET COPIOSISSIMIS INDICIBUS LOCUPLETATA;</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="105,965,895,1005">OPERA ET STUDIO D. BERN. DE MONTFAUCON, MONACHI BENEDICTINI E CONGR. S. MAURI.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="55,1025,950,1115">EDITIO NOVISSIMA, IIS OMNIBUS ILLUSTRATA QUÆ RECENTIUS TUM ROMÆ, TUM OXONII, TUM ALIBI, A DIVERSIS IN LUCEM PRIMUM EDITA SUNT, VEL JAM EDITA, AD MANUSCRIPTORUM DILIGENTIOREM CRISIM REVOCATA SUNT,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="175,1130,825,1170">ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="290,1190,710,1228">BIBLIOTHECÆ CLERI UNIVERSÆ,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="470,1240,530,1270">SIVE</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,1290,870,1330">CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="330,1410,675,1450">TOMUS DECIMUS.</bloco>
+  <bloco tipo="nota" script="latino" bbox="120,1700,880,1760">HARVARD COLLEGE LIBRARY</bloco>
+  <bloco tipo="rodape" script="latino" bbox="55,1820,955,1935">EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
+IN VIA DICTA D'AMBOISE, OLIM PROPE PORTAM LUTETIÆ PARISIORUM VULGO D'ENFER
+NOMINATAM, SEU PETIT-MONTROUGE, NUNC VERO INTRA MOENIA PARISINA.
+1862</bloco>
+  <notas>Folha de rosto sem colunas; transcrição feita pela leitura direta da imagem. A marca pontilhada "HARVARD COLLEGE LIBRARY" está presente como carimbo/nota no centro inferior. A marca "Digitized by Google" é watermark digital e não foi transcrita como texto principal.</notas>
 </pagina>

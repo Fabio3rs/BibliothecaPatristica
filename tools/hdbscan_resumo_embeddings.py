@@ -14,22 +14,34 @@ Exemplo:
 from __future__ import annotations
 
 import argparse
+import json
 import sqlite3
+import sys
 import time
 from pathlib import Path
 from typing import Iterable, List, Tuple
 
 import numpy as np
-import tqdm
-import umap
-from hdbscan import HDBSCAN
 
-from resumo_embedding_utils import (
-    connect_db,
-    ensure_resumo_embedding_tables,
-    ensure_resumos_embedding_schema,
-    load_embeddings,
-)
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+try:
+    from tools.resumo_embedding_utils import (
+        connect_db,
+        ensure_resumo_embedding_tables,
+        ensure_resumos_embedding_schema,
+        load_embeddings,
+    )
+except ImportError:
+    from resumo_embedding_utils import (  # type: ignore[no-redef]
+        connect_db,
+        ensure_resumo_embedding_tables,
+        ensure_resumos_embedding_schema,
+        load_embeddings,
+    )
+from resumo_v2 import init_v2_schema, sha256_text
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -44,9 +56,10 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument(
         "--limit", type=int, default=0, help="Limite opcional de embeddings (0 = todos)"
     )
-    p.add_argument("--kind", choices=["page", "global", "both"], default="both")
+    p.add_argument("--kind", choices=["page", "global", "both", "v2"], default="both")
     p.add_argument("--umap-components-page", type=int, default=10)
     p.add_argument("--umap-components-global", type=int, default=10)
+    p.add_argument("--umap-components-v2", type=int, default=15)
     p.add_argument("--umap-neighbors", type=int, default=70)
     p.add_argument(
         "--min-cluster-size",
@@ -94,6 +107,10 @@ def build_parser() -> argparse.ArgumentParser:
 def run_umap(
     X: np.ndarray, n_components: int, n_neighbors: int, low_memory: bool
 ) -> np.ndarray:
+    try:
+        import umap
+    except ImportError as exc:
+        raise RuntimeError("Instale umap-learn para executar o clustering") from exc
     reducer = umap.UMAP(
         n_neighbors=n_neighbors,
         n_components=n_components,
@@ -161,6 +178,10 @@ def run_hdbscan(
     min_samples: int,
     cluster_selection_epsilon: float = 0.0,
 ) -> HDBSCAN:
+    try:
+        from hdbscan import HDBSCAN
+    except ImportError as exc:
+        raise RuntimeError("Instale hdbscan para executar o clustering") from exc
     clusterer = HDBSCAN(
         min_cluster_size=min_cluster_size,
         min_samples=min_samples,
@@ -317,9 +338,145 @@ def process_kind(
     print(f"{kind}: UMAP {t1 - t0:.1f}s | HDBSCAN {t2 - t1:.1f}s")
 
 
+def load_v2_embeddings(
+    con: sqlite3.Connection, model: str | None, limit: int
+) -> tuple[list[sqlite3.Row], np.ndarray]:
+    sql = """
+        SELECT id,documento,pagina_num,embedding_dim,embedding,
+               embedding_model,embedding_source_hash
+          FROM resumo_generations
+         WHERE is_current=1 AND status IN ('valid','metadata_pending')
+           AND embedding IS NOT NULL
+    """
+    params: list[object] = []
+    if model:
+        sql += " AND embedding_model=?"
+        params.append(model)
+    sql += " ORDER BY documento,pagina_num"
+    if limit:
+        sql += " LIMIT ?"
+        params.append(limit)
+    rows = list(con.execute(sql, params))
+    if not rows:
+        raise RuntimeError("Nenhum embedding v2 promovido disponível")
+    dimensions = {int(row["embedding_dim"]) for row in rows}
+    models = {str(row["embedding_model"]) for row in rows}
+    if len(dimensions) != 1 or len(models) != 1:
+        raise RuntimeError(
+            f"Embeddings v2 incompatíveis: dimensões={dimensions}, modelos={models}"
+        )
+    dim = next(iter(dimensions))
+    matrix = np.stack(
+        [np.frombuffer(row["embedding"], dtype=np.float32, count=dim) for row in rows]
+    )
+    return rows, matrix
+
+
+def save_v2_cluster_run(
+    con: sqlite3.Connection,
+    rows: list[sqlite3.Row],
+    reduced: np.ndarray,
+    clusterer: HDBSCAN,
+    args: argparse.Namespace,
+) -> int:
+    params = {
+        "umap_components": args.umap_components_v2,
+        "umap_neighbors": args.umap_neighbors,
+        "min_cluster_size": args.min_cluster_size_page or args.min_cluster_size,
+        "min_samples": args.min_samples,
+        "cluster_selection_epsilon": args.cluster_selection_epsilon,
+        "low_memory": bool(args.low_memory),
+    }
+    params_json = json.dumps(params, sort_keys=True, separators=(",", ":"))
+    set_hash = sha256_text(
+        *(
+            f"{row['id']}:{row['embedding_source_hash']}:{row['embedding_model']}"
+            for row in rows
+        )
+    )
+    model = str(rows[0]["embedding_model"])
+    params_hash = sha256_text(params_json)
+    con.execute(
+        """
+        INSERT INTO resumo_cluster_runs
+            (kind,embedding_model,embedding_set_hash,params_json,params_hash,status)
+        VALUES ('v2-page',?,?,?,?, 'running')
+        ON CONFLICT(kind,embedding_model,embedding_set_hash,params_hash)
+        DO UPDATE SET status='running', params_json=excluded.params_json
+        """,
+        (model, set_hash, params_json, params_hash),
+    )
+    run = con.execute(
+        """
+        SELECT id FROM resumo_cluster_runs
+         WHERE kind='v2-page' AND embedding_model=? AND embedding_set_hash=? AND params_hash=?
+        """,
+        (model, set_hash, params_hash),
+    ).fetchone()
+    run_id = int(run["id"])
+    con.execute("DELETE FROM resumo_generation_clusters WHERE cluster_run_id=?", (run_id,))
+    reduced_f32 = reduced.astype(np.float32)
+    con.executemany(
+        """
+        INSERT INTO resumo_generation_clusters
+            (cluster_run_id,generation_id,documento,pagina_num,cluster_id,
+             membership_probability,outlier_score,reduced_dim,reduced_embedding)
+        VALUES (?,?,?,?,?,?,?,?,?)
+        """,
+        [
+            (
+                run_id,
+                int(row["id"]),
+                row["documento"],
+                int(row["pagina_num"]),
+                None if int(label) == -1 else int(label),
+                float(probability),
+                float(outlier),
+                reduced_f32.shape[1],
+                reduced_f32[index].tobytes(),
+            )
+            for index, (row, label, probability, outlier) in enumerate(
+                zip(
+                    rows,
+                    clusterer.labels_.tolist(),
+                    clusterer.probabilities_.tolist(),
+                    clusterer.outlier_scores_.tolist(),
+                )
+            )
+        ],
+    )
+    con.execute("UPDATE resumo_cluster_runs SET status='completed' WHERE id=?", (run_id,))
+    con.commit()
+    return run_id
+
+
+def process_v2(con: sqlite3.Connection, args: argparse.Namespace) -> None:
+    rows, matrix = load_v2_embeddings(con, args.model, args.limit)
+    t0 = time.time()
+    reduced = run_umap(
+        matrix,
+        n_components=args.umap_components_v2,
+        n_neighbors=args.umap_neighbors,
+        low_memory=args.low_memory,
+    )
+    clusterer = run_hdbscan(
+        reduced,
+        min_cluster_size=args.min_cluster_size_page or args.min_cluster_size,
+        min_samples=args.min_samples,
+        cluster_selection_epsilon=args.cluster_selection_epsilon,
+    )
+    run_id = save_v2_cluster_run(con, rows, reduced, clusterer, args)
+    summarize(clusterer.labels_, "v2")
+    print(f"v2: cluster_run={run_id}, páginas={len(rows)}, tempo={time.time()-t0:.1f}s")
+
+
 def main() -> None:
     args = build_parser().parse_args()
     with connect_db(args.db) as con:
+        if args.kind == "v2":
+            init_v2_schema(con)
+            process_v2(con, args)
+            return
         ensure_resumos_embedding_schema(con)
         ensure_resumo_embedding_tables(con)
 

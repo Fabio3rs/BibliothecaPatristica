@@ -1,0 +1,15 @@
+---
+import ScriptureIndexPage from '../../../../components/pages/ScriptureIndexPage.astro';
+import { listAlphaScriptureBooks } from '../../../../lib/alphaStaticPaths';
+
+export async function getStaticPaths() {
+  const books = await listAlphaScriptureBooks();
+  return books.map((book) => ({
+    params: { book: book.slug },
+    props: { bookKey: book.bookKey, bookLabel: book.label },
+  }));
+}
+
+const { bookKey = Astro.params.book, bookLabel = Astro.params.book } = Astro.props;
+---
+<ScriptureIndexPage book={bookKey} bookLabel={bookLabel} />

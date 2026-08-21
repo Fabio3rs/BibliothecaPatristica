@@ -5,7 +5,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from patristica_pipeline.index_work_anchor_reconciler import reconcile_work_anchors
+from patristica_pipeline.index_work_anchor_reconciler import (
+    _candidate_has_material_start_sequence,
+    reconcile_work_anchors,
+)
 
 
 def _write_page(path: Path, body: str) -> None:
@@ -85,11 +88,12 @@ def test_reconciler_uses_index_hint_text_and_editorial_map(tmp_path: Path) -> No
         return {
             "entries": [
                 {
-                    "entry_id": "work:0",
-                    "status": "resolved",
-                    "candidates": [
+                        "entry_id": "work:0",
+                        "status": "resolved",
+                        "candidates": [
                         {
                             "file": str(target_file),
+                            "image_file": str(source_root.parent / "images" / "PG001-175.png"),
                             "score": 11.5,
                             "probability": 0.95,
                             "inferred_printed_page": 349,
@@ -129,6 +133,324 @@ def test_reconciler_uses_index_hint_text_and_editorial_map(tmp_path: Path) -> No
     assert work["end_file"] == str(index_file)
     assert "end_file" not in report["items"][0]["changes"]
     assert "deterministic_anchor_reconciliation" in work["raw_json"]
+
+
+def test_reconciler_preserves_resolved_manual_anchor_review(tmp_path: Path) -> None:
+    source_root = tmp_path / "PG001" / "text"
+    index_file = source_root / "page-010.txt"
+    target_file = source_root / "page-175.txt"
+    _write_page(index_file, "ORDO RERUM OPUS REVISUM 349")
+    _write_page(target_file, "OPUS REVISUM")
+    payload = {
+        "volume": {"volume_id": "PG001", "source_root": str(source_root)},
+        "works": [
+            {
+                "work_key": "PG001:work:revisum",
+                "work_order": 1,
+                "title_raw": "OPUS REVISUM",
+                "start_page": 349,
+                "start_file": str(target_file),
+                "source_section_key": "PG001:index:end",
+                "raw_json": {
+                    "manual_anchor_review": {
+                        "status": "resolved",
+                        "evidence": "OCR and paired image inspected",
+                    },
+                    "work_anchor_rerun": {"status": "unresolved"},
+                },
+            }
+        ],
+        "sections": [
+            {
+                "section_key": "PG001:index:end",
+                "scope_kind": "volume_end",
+                "file_start": str(index_file),
+                "file_end": str(index_file),
+            }
+        ],
+    }
+
+    def locator_must_not_run(_request: dict) -> dict:
+        raise AssertionError("manual review must bypass automatic relocation")
+
+    report = reconcile_work_anchors(
+        payload,
+        editorial_pages={
+            "files": [
+                {
+                    "file": str(target_file),
+                    "best_guess": [351, 352],
+                    "confidence": 0.9,
+                }
+            ]
+        },
+        locator=locator_must_not_run,
+    )
+
+    assert report["changed_count"] == 0
+    assert report["items"][0]["status"] == "manually_resolved"
+    assert report["items"][0]["decision_reason"] == "manual_anchor_review"
+    assert payload["works"][0]["start_page"] == 349
+    assert payload["works"][0]["start_file"] == str(target_file)
+    assert "work_anchor_rerun" not in payload["works"][0]["raw_json"]
+
+
+def test_reconciler_does_not_exclude_material_volume_end_appendix(
+    tmp_path: Path,
+) -> None:
+    source_root = tmp_path / "PG031" / "text"
+    appendix_start = source_root / "page-773.txt"
+    target_file = source_root / "page-830.txt"
+    appendix_end = source_root / "page-937.txt"
+    _write_page(appendix_start, "APPENDIX OPERUM")
+    _write_page(target_file, "LITURGIA S BASILII")
+    _write_page(appendix_end, "APPENDIX FINIS")
+    payload = {
+        "volume": {"volume_id": "PG031", "source_root": str(source_root)},
+        "works": [
+            {
+                "work_key": "PG031:work:liturgia",
+                "title_raw": "Liturgia S. Basilii",
+                "start_page": 1630,
+                "start_file": None,
+                "raw_json": {},
+            }
+        ],
+        "sections": [
+            {
+                "section_key": "PG031:appendix",
+                "scope_kind": "volume_end",
+                "index_kind": "APPENDIX OPERUM S. BASILII",
+                "heading_raw": "APPENDIX OPERUM S. BASILII",
+                "file_start": str(appendix_start),
+                "file_end": str(appendix_end),
+            }
+        ],
+    }
+
+    def fake_locator(_request: dict) -> dict:
+        return {
+            "entries": [
+                {
+                    "entry_id": "work:0",
+                    "status": "resolved",
+                    "candidates": [
+                        {
+                            "file": str(target_file),
+                            "score": 12.0,
+                            "probability": 0.99,
+                            "candidate_role": "target_candidate",
+                            "estimator_pages": [1629, 1630],
+                            "estimator_confidence": 0.99,
+                            "evidence": [
+                                {"kind": "header_name_match", "weight": 4.0}
+                            ],
+                        }
+                    ],
+                }
+            ]
+        }
+
+    report = reconcile_work_anchors(
+        payload,
+        editorial_pages={"files": []},
+        locator=fake_locator,
+    )
+
+    assert report["changed_count"] == 1
+    assert payload["works"][0]["start_file"] == str(target_file.resolve())
+    assert report["items"][0]["chosen_candidate"]["excluded_index_source"] is False
+
+
+def test_reconciler_accepts_confirmed_material_start_sequence_despite_score_gap(
+    tmp_path: Path,
+) -> None:
+    source_root = tmp_path / "PG030" / "text"
+    target_file = source_root / "page-024.txt"
+    runner_up = source_root / "page-026.txt"
+    _write_page(target_file, "ORATIO II")
+    _write_page(runner_up, "ORATIO II")
+    payload = {
+        "volume": {"volume_id": "PG030", "source_root": str(source_root)},
+        "works": [
+            {
+                "work_key": "PG030:work:oratio_ii",
+                "title_raw": "Oratio II",
+                "start_page": 38,
+                "start_file": None,
+                "raw_json": {},
+            }
+        ],
+        "sections": [],
+    }
+
+    def fake_locator(_request: dict) -> dict:
+        return {
+            "entries": [
+                {
+                    "entry_id": "work:0",
+                    "status": "ambiguous",
+                    "ambiguity_reason": "candidate_probability_gap",
+                    "candidates": [
+                        {
+                            "file": str(target_file),
+                            "score": 15.0,
+                            "probability": 0.55,
+                            "candidate_role": "target_candidate",
+                            "estimator_pages": [37, 38],
+                            "estimator_confidence": 0.94,
+                            "header_sequence": {
+                                "start_file": str(target_file),
+                                "end_file": str(runner_up),
+                                "is_sequence_start": True,
+                                "match_count": 6,
+                            },
+                            "evidence": [
+                                {"kind": "header_name_match", "weight": 4.0},
+                                {"kind": "header_sequence_start", "weight": 1.5},
+                            ],
+                        },
+                        {
+                            "file": str(runner_up),
+                            "score": 14.2,
+                            "probability": 0.45,
+                            "candidate_role": "mixed_signal",
+                            "estimator_pages": [41, 42],
+                            "estimator_confidence": 0.95,
+                            "evidence": [
+                                {"kind": "header_name_match", "weight": 4.0}
+                            ],
+                        },
+                    ],
+                }
+            ]
+        }
+
+    report = reconcile_work_anchors(
+        payload,
+        editorial_pages={"files": []},
+        locator=fake_locator,
+    )
+
+    assert report["changed_count"] == 1
+    assert report["items"][0]["decision_reason"] == (
+        "resolved_by_material_start_sequence"
+    )
+    assert payload["works"][0]["start_file"] == str(target_file.resolve())
+    assert payload["works"][0]["start_page"] == 38
+
+
+def test_material_start_sequence_does_not_rewrite_unsupported_declared_page() -> None:
+    candidate = {
+        "candidate_role": "target_candidate",
+        "estimator_pages": [1797, 1798],
+        "estimator_confidence": 0.9,
+        "header_sequence": {"is_sequence_start": True, "match_count": 8},
+        "evidence": [{"kind": "header_name_match"}],
+    }
+
+    assert not _candidate_has_material_start_sequence(
+        candidate,
+        preferred_page=1795,
+    )
+
+
+def test_reconciler_searches_stable_title_nucleus_for_descriptive_index_title(
+    tmp_path: Path,
+) -> None:
+    source_root = tmp_path / "PG001" / "text"
+    index_file = source_root / "page-004.txt"
+    target_file = source_root / "page-175.txt"
+    _write_page(index_file, "ELENCHUS EPISTOLAE DUAE AD VIRGINES 349")
+    _write_page(target_file, "EPISTOLAE DUAE AD VIRGINES")
+    long_title = (
+        "Epistolae duae ad virgines (Syriace et Latine), interprete "
+        "D. Cl. Villecourt, S. R. E. cardinali."
+    )
+    payload = {
+        "volume": {
+            "volume_id": "PG001",
+            "collection": "PG",
+            "source_root": str(source_root),
+        },
+        "works": [
+            {
+                "work_key": "PG001:work:epistolae_duae_ad_virgines",
+                "work_order": 1,
+                "title_raw": long_title,
+                "title_norm": long_title,
+                "start_page": 349,
+                "end_page": None,
+                "start_file": None,
+                "end_file": None,
+                "source_section_key": "PG001:index",
+                "raw_json": {},
+            }
+        ],
+        "sections": [
+            {
+                "section_key": "PG001:index",
+                "scope_kind": "volume_front",
+                "file_start": str(index_file),
+                "file_end": str(index_file),
+                "entries": [],
+            }
+        ],
+        "notes": [],
+    }
+
+    def fake_locator(request: dict) -> dict:
+        entry = request["entries"][0]
+        assert entry["query_match_mode"] == "best"
+        assert "Epistolae duae ad virgines" in entry["query_names"]
+        return {
+            "entries": [
+                {
+                    "entry_id": "work:0",
+                    "status": "resolved",
+                    "candidates": [
+                        {
+                            "file": str(index_file),
+                            "score": 12.5,
+                            "probability": 0.7,
+                            "estimator_pages": [7, 8],
+                            "estimator_confidence": 0.9,
+                            "evidence": [
+                                {"kind": "body_name_match", "weight": 2.5}
+                            ],
+                        },
+                        {
+                            "file": str(target_file),
+                            "image_file": str(
+                                source_root.parent / "images" / "PG001-175.png"
+                            ),
+                            "score": 11.5,
+                            "probability": 0.3,
+                            "inferred_printed_page": 349,
+                            "estimator_pages": [349, 350],
+                            "estimator_confidence": 0.9,
+                            "evidence": [
+                                {"kind": "header_name_fuzzy", "weight": 1.9}
+                            ],
+                        },
+                    ],
+                }
+            ]
+        }
+
+    report = reconcile_work_anchors(
+        payload,
+        editorial_pages={"files": []},
+        locator=fake_locator,
+    )
+
+    assert report["changed_count"] == 1
+    assert report["items"][0]["decision_reason"] == "resolved"
+    assert report["items"][0]["chosen_candidate"]["image_file"].endswith(
+        "PG001-175.png"
+    )
+    assert payload["works"][0]["start_file"] == str(target_file.resolve())
+    assert payload["works"][0]["start_page"] == 349
 
 
 def test_reconciler_marks_ambiguous_anchor_for_agent_rerun(tmp_path: Path) -> None:
@@ -220,6 +542,7 @@ def test_reconciler_marks_ambiguous_anchor_for_agent_rerun(tmp_path: Path) -> No
     assert marker["locator"]["ambiguity_reason"] == "candidate_probability_gap"
     assert len(marker["locator"]["candidates"]) == 2
     assert marker["locator"]["candidates"][0]["header_sequence"]["match_count"] == 4
+    assert any("paired page image" in check for check in marker["agent_checks"])
 
 
 def test_reconciler_preserves_declared_start_at_beginning_of_header_sequence(
@@ -600,3 +923,80 @@ def test_reconciler_rejects_candidate_start_after_declared_end(tmp_path: Path) -
     )
     assert payload["works"][0]["start_file"] == str(index_file)
     assert payload["works"][0]["start_page"] == 433
+
+
+def test_reconciler_rejects_running_header_index_page_candidate(
+    tmp_path: Path,
+) -> None:
+    source_root = tmp_path / "PGH" / "text"
+    current_file = source_root / "page-013.txt"
+    later_header = source_root / "page-015.txt"
+    _write_page(current_file, "FRAGMENTA IN PROVERBIA SALOMONIS")
+    _write_page(later_header, "FRAGMENTA IN PROVERBIA")
+    payload = {
+        "volume": {
+            "volume_id": "PGH",
+            "collection": "PG",
+            "source_root": str(source_root),
+        },
+        "works": [
+            {
+                "work_key": "PGH:work:proverbia",
+                "work_order": 1,
+                "title_raw": "Fragmenta in Proverbia Salomonis",
+                "start_page": 17,
+                "end_page": 34,
+                "start_file": str(current_file),
+                "end_file": None,
+                "source_section_key": None,
+                "raw_json": {},
+            }
+        ],
+        "sections": [],
+        "notes": [],
+    }
+
+    def fake_locator(_request: dict) -> dict:
+        return {
+            "entries": [
+                {
+                    "entry_id": "work:0",
+                    "status": "resolved",
+                    "candidates": [
+                        {
+                            "file": str(later_header),
+                            "score": 8.5,
+                            "probability": 1.0,
+                            "candidate_role": "index_page_candidate",
+                            "inferred_printed_page": 21,
+                            "estimator_pages": [21, 22],
+                            "estimator_confidence": 0.9,
+                            "evidence": [
+                                {"kind": "header_sequence_start", "weight": 1.5}
+                            ],
+                        }
+                    ],
+                }
+            ]
+        }
+
+    report = reconcile_work_anchors(
+        payload,
+        editorial_pages={
+            "files": [
+                {
+                    "file": str(current_file),
+                    "best_guess": [47, 48],
+                    "confidence": 0.9,
+                }
+            ]
+        },
+        locator=fake_locator,
+    )
+
+    assert report["changed_count"] == 0
+    assert report["items"][0]["decision_reason"] == (
+        "no_non_index_candidate_with_title_evidence"
+    )
+    assert payload["works"][0]["start_file"] == str(current_file)
+    assert payload["works"][0]["start_page"] == 17

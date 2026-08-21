@@ -1,8 +1,11 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,90">
-    827    EUSEBII VERCELL. EVANGELIUM CUM VARIIS COD. COLLATUM.    829
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="110,95,920,175">
+    827  EUSEBII VERCELL. EVANGELIUM CUM VARIIS COD. COLLATUM.  829
+    CODEX VERCELLENSIS.                           CODEX VERCELLENSIS.
+    DEFICIT VERONENSIS.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="30,90,330,910">
+
+  <bloco tipo="texto_principal" script="latino" bbox="95,180,330,590">
     quatuor
     ventis, ab an-
     gulis terrae,
@@ -34,7 +37,7 @@
     transiet; ver-
     bum autem
     meum non
-    praeieribit.
+    praeteribit.
     32. De die autem
     illo, et hora,
     nemo novit,
@@ -42,7 +45,8 @@
     caelorum,
     nec Filius, ni-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="330,90,660,910">
+
+  <bloco tipo="texto_principal" script="latino" bbox="340,180,565,610">
     si Pater solus.
     33. Videte; vigi-
     late : nescitis
@@ -50,7 +54,7 @@
     do tempus.
     34. Quemadmo-
     dum homo,
-    peregrie iiu-
+    peregre itu-
     rus, reliquid
     domum su-
     am, et dedit
@@ -76,12 +80,17 @@
     vos dormi-
     entes. Ego
     37. cites. Ego
-    autem ! dico
+    autem 1 dico
     vobis: Vigila-
+    CAPUT XIV.
+    1. le. Erat
+    autem * Pas-
+    cha post bidu-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="660,90,970,910">
-    un; et quae-
-    rehbant Pon-
+
+  <bloco tipo="texto_principal" script="latino" bbox="575,190,795,610">
+    um; et quae-
+    rebant Pon-
     tifices, et Scri-
     bae quomo-
     do eum con-
@@ -107,27 +116,35 @@
     trum, infu-
     dit super ca-
     put ejus.
+    4. Discipuli au-
+    tem illius
+    fremebant
+    inter se, dicen-
+    tes : Ut quid
+    perditio is-
+    5. ta? Potuit enim
+    hoc ungu-
+    entum ve-
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="30,910,970,994">
-    CODEX VERCELLENSIS.    CODEX VERCELLENSIS.
-    DEFICIT VERONENSIS.
+
+  <bloco tipo="texto_principal" script="latino" bbox="800,190,970,610">
     niri ampli-
     us denariis
     trecentis,
     et dari pau-
     peribus. Et ad-
-    miniban-
-    lur eis.
+    minaban-
+    tur ei.
     6. Jesus autem ait
-    illis : Simile
+    illis : Sinite
     eam : quid ei
     molesti es-
     tis? Bonum
     opus opera-
-    ra est in me:
+    ta est in me:
     7. semper e-
     nim paupe-
-    res ♥ habetis
+    res * habetis
     vobiscum;
     et, cum volue-
     ritis, potes-
@@ -135,71 +152,94 @@
     facere : me
     autem non
     semper ha-
-    8. bebits. Quod
+    8. bebitis. Quod
     habuit, fecit :
-    praeoccupati
-    vt unguen-
+    praeoccupa-
+    vit unguen-
     to unguere
     corpus me-
     um in sepul-
     turam.
-    9. Amen dico
-    vobis,
+    9. Amen autem
+    dico vobis,
     quia, ubicum-
     que praedi-
     catum fuerit Evange-
-    CODex BRIXIANUS.
-    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="85,615,975,845">
+    CODEX BRIXIANUS.
+    ............................................................
     nemo scit. neque Angeli in caelo. neque Filius. nisi
     Pater. Videte ergo. vigilate et orate. nescitis enim
-    quando tempus sit. Sicut homo peregrre profectus
-    relinqunit domum suam. data servis suis potestale,
-    cujusque operis. et ostiario praecepit ut vigilarot.
+    quando tempus sit. Sicut homo peregre profectus.
+    relinquit domum suam. data servis suis potestate.
+    cujusque operis. et ostiario praecepit ut vigilaret.
     Vigilate ergo. nescitis enim. quando Dominus domus
-    veniet. sero. an media nocte. an galli cantu. an
-    mane. ne cum venerit. repentine inveniat vos dor-
+    veniat. sero. an media nocte. an galli cantu. an
+    mane. ne cum venerit. repente inveniat vos dor-
     mientes. Quod autem vobis dico. omnibus dico.
-    Vigilate. Fituram autem. erat Pascha. et azyma
+    Vigilate. Futurum autem. erat Pascha. et azyma
     post biduum. et quaerebant Summi Sacerdotes.
-    et Scribae. quomo do eum dolo tenerent et oc-
+    et Scribae. quomodo eum dolo tenerent et oc-
     ciderent. Dicebant enim. Non in die festo. ne forte
     tumultus fiat in populo. Et cum esset Jesus in Be-
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="560,615,975,845">
     thania. in domo Simonis leprosi. recumbente eo.
     venit mulier. habens alabastrum unguenti. nardi
     pistici multum praetiosi. et frangens alabastrum.
     effudit super caput ejus. Erant autem quidam in-
     digne ferentes intra semetipsos et dicentes. Ut quid
-    ista perdidio inquinuitia facta est. Poterat enim venu-
+    ista perditio unguenti facta est. Poterat enim venu-
     dari unguentum istud. plusquam trecentis denariis.
     et dari pauperibus. Et fremebant in eam. Jesus au-
-    tem dixit illis. Simile eam. quid illi molesti estis?
+    tem dixit illis. Sinite eam. quid illi molesti estis?
     Bonum opus operata est in me. semper enim pau-
     peres habetis vobiscum. et cum volueritis. postes-
     tis illis bene facere. me autem non semper habebi-
     tis Quod habuit haec fecit. praevenit enim unguere
     corpus meum. in sepulturam. Amen dico vobis.
     quod ubicumque praedicatum fuerit hoc Evange-
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="80,830,520,925">
     CODEX CORBEIENSIS.
     29. quoniam in proximo est in januis.
-    34. dants servis suis potestatem, unicuique opus
+    34. dans servis suis potestatem, unicuique opus
     suum; et janitori praecepiat, ut vigilet.
-    37. Ecce autem vobis dico : Vigilate.
+    37. Ecce autem vobis dico : Vigilate. !
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="530,830,975,925">
     VARIANTES LECTIONES.
     1 Gat. dico : Vigilate, omnibus dico : Vigilate. Vulg.
     dico, omnibus dico : Vigilate.
-    2 Gat. Azaemorurn post... et occiderent eum dolo. Vulg.
+    2 Gat. Azaemorum post... et occiderent eum dolo. Vulg.
     Azyma post... eum dolo tenerent, et occiderent.
     3 Gat. nardi pistici. Vulg. nardi spicati.
-    4 Gat. habebtis... habebitis. Vulg. habetis... habetis.
+    4 Gat. habetis... habebitis. Vulg. habetis... habetis.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="70,930,975,995">
     LECTIONES CODICIS VINDEBONENSIS ABEUNTES AB EDITIONE VULGATA.
     rum. 28. a ficus autem arbore discite... cognoscitis, quod
     in proximo. 29. omnia haec. 30. non transiet gene-
     ratio haec, donec omnia fiant ista. 32. de die autem illo,
     et hora. 33. videte ergo. 34. homo profectus peregre,
-    relinqunit domum suam, et det... potestatem, et unicuique
-    opus suum; et janitor praecepit, ut. 35. Vesti, aut mane.
+    relinquat domum suam, et det... potestatem, et unicuique
+    opera sua; et janitori praecepiat, ut. 35. Deest, an mane.
     37. Ecce autem vobis dico : Vigilate.
-    CAP. XIV. — 1. quomodo tenerent, et occiderent eum.
+    2. Dicebant enim,... non in die festo; ne tumultus ope-
+    retur in. 3. Et, cum esset Jesus in Bethania in... recum-
+    bente eo, venit mulier... nardi pistici... profudit super ca-
+    put ejus. 4. Discipuli autem ejus indigne ferebant... ut
+    quid... unguenti : Poterat enim veniri unguentum istud
+    plusquam denariis trecentis, et dari. 6. dixit illis. 7. ha-
+    betis pauperes... non semper habebitis. 8. praevenit un-
+    guento ungere, 9. Amen dico vobis, quod ubicumque...
   </bloco>
-  <notas>Texto tipográfico moderno impresso; coluna esquerda, central e direita mapeadas conforme disposição. Algumas letras e símbolos tipográficos modernizados mantidos tal quais no original (pontos, travessões, etc.). Foram mantidos erros de impressão presentes no original (ex.: "iive" → "iuu"/forma próxima). Uso de caracteres especiais (♥) presente no original digitalizado reproduzido como apresentado.</notas>
+
+  <notas>Imagem tipográfica impressa com mancha de página e várias colunas; a transcrição segue a disposição visual, conservando abreviações, pontuação e sinais de chamada/nota visíveis. Trechos truncados no recorte foram mantidos como aparecem.</notas>
 </pagina>

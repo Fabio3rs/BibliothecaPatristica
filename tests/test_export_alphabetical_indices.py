@@ -132,6 +132,33 @@ def test_ordo_rerum_is_not_exported_as_an_alphabetical_subject() -> None:
     ) is None
 
 
+def test_volume_works_inventory_is_not_exported_as_names() -> None:
+    assert classify_domain(
+        {
+            "section_kind": "author_index",
+            "entry_kind": "lemma",
+            "heading_raw": (
+                "ELENCHUS AUCTORUM ET OPERUM QUI IN HOC TOMO CCIV "
+                "CONTINENTUR."
+            ),
+            "pipeline_owner": "alphabetical",
+            "alphabetical_role": "owned_section",
+        }
+    ) is None
+
+
+def test_explicit_general_boundary_is_not_exported_as_names() -> None:
+    assert classify_domain(
+        {
+            "section_kind": "author_index",
+            "entry_kind": "lemma",
+            "heading_raw": "INDEX AUCTORUM",
+            "pipeline_owner": "general",
+            "alphabetical_role": "stop_boundary",
+        }
+    ) is None
+
+
 def test_export_prunes_only_stale_generated_files(tmp_path: Path) -> None:
     generated = tmp_path / "shards"
     generated.mkdir()

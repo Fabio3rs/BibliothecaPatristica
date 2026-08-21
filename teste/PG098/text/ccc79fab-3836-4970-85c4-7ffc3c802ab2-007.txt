@@ -1,97 +1,30 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="120,20,880,120">
-TRADITIO CATHOLICA.
-SÆCULUM VIII-IX, ANNUS 745-806.
-  </bloco>
-
-  <bloco tipo="cabecalho" script="grego" bbox="180,130,820,180">
-ΤΟΥ ΕΝ ΑΓΙΟΙΣ ΠΑΤΡΟΣ ΗΜΩΝ
-  </bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="110,190,890,340">
-ΓΕΡΜΑΝΟΥ
-  </bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="200,350,800,390">
-ΑΡΧΙΕΠΙΣΚΟΠΟΥ ΚΩΝΣΤΑΝΤΙΝΟΥΠΟΛΕΩΣ,
-  </bloco>
-
-  <bloco tipo="texto_principal" script="grego" bbox="200,395,800,430">
-ΤΑ ΕΥΡΙΣΚΟΜΕΝΑ ΠΑΝΤΑ.
-  </bloco>
-
-  <bloco tipo="cabecalho" script="latino" bbox="60,450,940,560">
-S. P. N. GERMANI
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="220,570,780,610">
-ARCHIEPISCOPI CONSTANTINOPOLITANI,
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="220,620,780,670">
-OPERA OMNIA,
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="140,690,860,760">
-Juxta editiones card. Ang. Mai, Joan. Dominici Mansi, Jacobi Grelseri, Francisci Combefisii, ad prelvm revocata.
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="440,780,560,800">
-ACCEDUNT
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="60,810,940,880">
-SS. GREGORII AGRIGENTINI, TARASI CP., COSMÆ HIEROSOLYMITANI, PANTALEONIS DIACONI CP., ADRIANI MONACHI, EPIPHANII CATANENSIS DIACONI, PACHOMII MONACHI, PHILOTHEI MONACHI, ANONYMI BECUCCIANI,
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="300,900,700,935">
-SCRIPTA QUE SUPERSUNT.
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="100,950,900,995">
-ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE,
-Bibliothecæ Clerj universæ,
-SIVE
-CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="200,1010,800,1070">
-TOMUS UNICUS.
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="320,1090,680,1120">
-VENIT II FRANCIS GALLICIS
-  </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="60,1180,940,1280">
-EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,
-IN VIA DICTA THIBAUT, OLIM D'AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO AD VENET. NOMINATAM, SEU PETIT-MONTROUGE, NUNC VICO INTRA MOENIA PARISINA.
-1865
-  </bloco>
-
-  <bloco tipo="outro" script="latino" bbox="760,1300,980,1330">
-Digitized by Google
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="10,150,40,190">
-A
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="10,320,40,360">
-B
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="10,520,40,560">
-C
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="10,740,40,780">
-D
-  </bloco>
-
-  <notas>
-- Linhas com pontilhado e manchas (entre "ACCURANTE..." e "TOMUS UNICUS.") apresentam degradação e alguma perda de leitura; transcrição feita segundo a leitura visível e pode conter incertezas.
-- Alguns nomes e formas latinas (ex.: "Jacobi Grelseri", "Francisci Combefisii", "prelvm") foram transcritos conforme impresso; letras u/v e j representam formas tipográficas da edição.
-- "VENIT II FRANCIS GALLICIS" apresenta possível ambiguidade tipográfica (algarismos romanos vs. cifra), transcrito como lido.
-  </notas>
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="272,66,726,110">TRADITIO CATHOLICA.
+SÆCULUM VIII-IX, ANNUS 745-806.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="253,137,711,153">ΤΟΥ ΕΝ ΑΓΙΟΙΣ ΠΑΤΡΟΣ ΗΜΩΝ</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="160,180,821,239">ΓΕΡΜΑΝΟΥ</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="251,265,673,276">ΑΡΧΙΕΠΙΣΚΟΠΟΥ ΚΩΝΣΤΑΝΤΙΝΟΥΠΟΛΕΩΣ,</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="224,304,771,324">ΤΑ ΕΥΡΙΣΚΟΜΕΝΑ ΠΑΝΤΑ.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="66,384,915,433">S. P. N. GERMANI</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="277,465,724,476">ARCHIEPISCOPI CONSTANTINOPOLITANI,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="337,506,659,530">OPERA OMNIA,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="104,557,889,584">Juxta editiones card. Ang. Mai, Joan. Dominici Mansi, Jacobi Gretseri, Francisci
+Combefisii, ad prelum revocata.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="442,609,558,619">ACCEDUNT</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="70,640,915,678">SS. GREGORII AGRIGENTINI, TARASII CP., COSMÆ HIEROSOLYMITANI, PANTALEONIS DIACONI
+CP., ADRIANI MONACHI, EPIPHANII CATANENSIS DIACONI, PACHOMII MONACHI, PHILOTHEI
+MONACHI, ANONYMI BECUCCIANI,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="327,695,670,709">SCRIPTA QUÆ SUPERSUNT.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="215,747,788,760">ACCURANTE ET DENUO RECOGNOSCENTE J.-P. MIGNE,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="339,770,665,782">Bibliothecæ Cleri universæ,</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="471,792,526,802">SIVE</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="148,809,834,825">CURSUUM COMPLETORUM IN SINGULOS SCIENTIÆ ECCLESIASTICÆ RAMOS EDITORE.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="380,875,591,891">TOMUS UNICUS.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="365,947,614,959">VENIT II FRANCIS GALLICIS</bloco>
+  <bloco tipo="rodape" script="latino" bbox="201,969,814,997">EXCUDEBATUR ET VENIT APUD J.-P. MIGNE EDITOREM,</bloco>
+  <bloco tipo="rodape" script="latino" bbox="55,987,916,1025">IN VIA DICTA THIBAUT, OLIM D’AMBOISE, PROPE PORTAM LUTETIÆ PARISIORUM VULGO
+D’ENFER NOMINATA, SEU PETIT-MONTROUGE, NUNC VERO INTRA MOENIA PARISINA.</bloco>
+  <bloco tipo="rodape" script="latino" bbox="466,1029,535,1045">1865</bloco>
+  <bloco tipo="rodape" script="latino" bbox="607,976,815,1000">Digitized by Google</bloco>
+  <notas>O texto apresenta forte degradação por manchas e lacunas, sobretudo no trecho entre “Bibliothecæ Cleri universæ” e “TOMUS UNICUS.”. As linhas ornamentais foram omitidas por não constituírem texto. Não há identificadores marginais A, B, C ou D visíveis na imagem.</notas>
 </pagina>

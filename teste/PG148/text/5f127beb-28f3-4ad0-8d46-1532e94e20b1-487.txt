@@ -1,30 +1,34 @@
-<pagina estado="com_texto">
+<pagina estado="com_texto" tipo="texto">
   <bloco tipo="cabecalho" script="misto" bbox="50,20,950,60">
-    961 [A. C. 1345] BYZANTINÆ HISTORIÆ LIB. XIV. [IMP. J. P. GR. OL. 4] 962
+    961 [A. C. 1345] BYZANTINÆ HISTORIÆ LIB. XIV. [IMP. J. PALÆOL. 4] 962
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,60,480,280">
+  <bloco tipo="texto_principal" script="grego" bbox="50,60,480,110">
     προϊόντες ἐν τοῖς καθήκουσι τόποις ἐροῦμεν, τὰ με-
     ταξὺ διηγησάμενοι πρότερον.
-    Η'. Ἀλλὰ ταῦτα μὲν ἐς τόδε λεχθέντα ἀρκεῖν οἴμαι
-    δυοῖν ἕνεκα· ἑνὸς μν, ὅτι πρὸς ἀναγκαιοτέρας τή-
-    μερον ἡμς ὑποθέσεις  λόγος ἀνθίλκει, πρὸς ἃς καὶ
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,65,510,80">
+    A
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,60,950,110">
+    peratricis altius infixerit. Alteram ac postremam
+    suo loco infra subjiciemus, ubi ea quæ intermedio
+    tempore acciderunt, narraverimus.
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,110,480,290">
+    Η'. Ἀλλὰ ταῦτα μὲν ἐς τόδε λεχθέντα ἀρκεῖν ομαι
+    δυον ἕνεκα · ἑνὸς μὲν, ὅτι πρὸς ἀναγκαιοτέρας τή-
+    μερον ἡμς ὑποθέσεις ὁ λόγος ἀνθέλκει, πρὸς ἃς καὶ
     ὁ το λόγου μάλιστα καὶ τῆς ἐξ ἀρχῆς προθέσεως
-    τείνει σκοπός· δευτέρου δ', ὅτι πολλὰ πολλῶν εἰρη-
-    κότων καὶ ἀγωνισαμένων ὑπὲρ τῆς ὑποθέσεως, ὡ;
-    ἐνῆν, οὐ μακρὺν οἴμαι ν ἔτι τῶν ἡμετέρων δεήσε-
-    σθαι λόγων· ἀλλ' ὡς ἐν προσθήκης μέρει, καὶ κριτι-
-    κῆς τινος ψήφου, καὶ τουτωνὶ ξυνεβουληκότων, εἰ καὶ
-    βραχέα δοκεῖ πως, ἀλλ' οὖν τόν γε ἴσον δυνησεσθαι
+    τείνει σκοπός · δευτέρου δ', ὅτι πολλὰ πολλῶν εἰρη-
+    κότων καὶ ἀγωνισαμένων ὑπὲρ τῆς ὑποθέσεως, ὡς
+    ἐνῆν, οὐ μακρῶν οἴμαι ἂν ἔτι τῶν ἡμετέρων δεήσε-
+    σθαι λόγων · ἀλλ' ὡς ἐν προσθήκης μέρει, καὶ κριτι-
+    κῆς τινος ψήφου, καὶ τουτωνὶ ξυνεῤυηκότων, ε καὶ
+    βραχέα δοκεῖ πως, ἀλλ' οὖν τόν γε ἴσον δυνήσεσθαι
     τρόπον εἰς τὴν ἀληθείας ἐνάργειαν. Διόπερ ἐκεῖσε
     ἐπανιτέον.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,60,510,75">
-    A
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,60,950,280">
-    peratricis altius infixerit. Alteram ac postremam
-    suo loco infra subjiciemus, ubi ea quæ intermedio
-    tempore occiderunt, narraverimus.
+  <bloco tipo="texto_principal" script="latino" bbox="520,110,950,290">
     VIII. Hæc vero, quæ hactenus dicta sunt suffi-
     cere puto duplici de causa : primum quia nos ora-
     tio nostra hodie retrahit ad argumentum magis
@@ -38,59 +42,48 @@
     etsi exigua videantur, eamdem tamen habitura vim
     ad veritatem declarandam.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="400,290,600,310">
+  <bloco tipo="cabecalho" script="latino" bbox="400,300,600,320">
     CAPUT IX.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,310,950,370">
-    Gabalas, metu Apocauci, monasticum habitum induit. S. Sophiæ templum, asylum olim inviolatum; a Gabala
+  <bloco tipo="texto_principal" script="latino" bbox="50,320,950,380">
+    Gabalas, metu Apocauci, monasticum habitum induit. S. Sophiæ templum, asylum olim inviolatum ; a Gabala
     et a patriarcha temeratum. Amurius, in Thraciam reversus, Byzantium usque cum Cantacuzeno progre-
-    ditur. Orbis aspectu obstupescit. Pauci murorum custodes. Apocauci diffidentia. Cantacuzenus et Amurius
+    ditur. Urbis aspectu obstupescit. Pauci murorum custodes. Apocauci diffidentia. Cantacuzenus et Amurius
     Momitilam debellatum eunt. Romanas urbes invadentem. Juxta Peritherium castrametantur. Momitilæ
-    audacia. Ejusdem circumventi consternatio. Acris pugna. Cædit Momitilas. Ejus milites omnes fere
+    audacia. Ejusdem circumventi consternatio. Acris pugna. Cadit Momitilas. Ejus milites omnes fere
     cæsi.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="50,380,480,800">
-    A'. Ἐπε γὰρ ὁ πόκαυκος ἐς βυθοὺς πρὸς το
-    Γαβαλᾶ κατενεχθείη δυστυχημάτων παρεκινδύνευσε
-    μὲν, ἀνήνξε δ' οὖν καὶ ἐς τὴν πρὶν ἀφίκετο εὐδο-
-    ξίαν, ὡς γε εἴρηται, δι' ὧν λοιπὸν αὐτὸν ἀμύνεται
-    πάσαις κεκίνησε μηχαναῖς· ἵως, μὴ τὰ μεῖζω τῶν
-    δεινῶν ὑποστῇ, δείσας αὐτὸς ἐς τὸν μέγιστον τῆς τοῦ
-    Θεοῦ Σοφίας (79) κατεφεύγει νεών. Ἔνθα μετὰ
-    συχνὸν τινα χρόνον, πολλὰς καὶ ποικίλας ἀκούων τὰς
-    καθ' ἑαυτοῦ ἀπειλάς, καὶ δείσας αὖθις, μὴ κἀκεῖθεν
-    ἀνάρπαστος ἐξαπίνης γενόμενος ἐς ταρτάρους καὶ
-    ζόφους δεσμωτηρίων ῥιφῇ, κἀκεῖνο πιεῖν ἐγγῦταί
-    τις τουτὶ τὸ ποτήριον, ὅπερ ἄλλοις αὐτὸς κεκέρακε
-    πλεῖσι, τὸ μοναδικὸν ἐξ ἀνάγκης ὑπέδυ σχῆμα.
-    Φθάσας γὰρ αὐτὸς καταλαβεῖν τὴν τοιαύτην ἄσυλον
-    ἐκ πολλοῦ, τῶν προσφύγειν ἀρχαίαν ἀσφάλειαν, ἐν-
-    διδόντες καὶ αὐτο τοῦ τν πατριαρχικν διέποντος
-    θρόνον. Διὸ καὶ αὐτοὶ πρὸς ἐσχάτας ἐνεπιπτώκεσαν
-    ἀτιμίας καὶ περιαγωγὰς κακοδαίμονας (80), ὡς εἰ-
-    ρήσεται. Τοῖς γὰρ τὰ θεῖα προφανῶς οὕτωσι περι-
-    φρονοῦσι εκὸς ἐν ἐσχάτοις τοιαύταις ἐκείναις τίσεις,
-    εἰς παιδαγωγίαν τοῦ βίου, δραστικωτέραν πως κατα-
-    στέλλειν τὸ θηριῶδες τῆς τύχης ἰσχύουσαν.
-    B'. Ἀλλὰ γὰρ ἔαρος ἐπιστάντος (81) ἐν τούτοις
-    [Ρ. 456] τὸν λλήσποντον μετὰ πολλῆς ὁ σατράπης
-    Ἀμοὺρ (82) τῆς Ἀσιανῆς δυνάμεως περαιωσάμενος
-    ἧκεν ἐς Διδυμότειχον· κἀκεῖθεν εὐθὺς ἧκε μετὰ βα-
-    σιλέως ἄχρι καὶ ἐς Βυζάντιον, θέα; τε ἕνεκα καὶ
-    πείρας εἶ ἴδιοι. Ἐπεὶ γε μὴν ἐληλύθει κἀκ συμμί-
-    τρου τοῦ διαπήγματος νῦν μὲν ἱστάμενοι, νῦν δὲ πε-
-    ριῶν ἐσκόπει καὶ συνεώρα, πολλή τις αὐτὸν συνέσχε
   </bloco>
   <bloco tipo="nota_marginal" script="latino" bbox="490,390,510,405">
     B
   </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,390,480,700">
+    Α'. Ἐπε γὰρ ὁ πόκαυκος ἐς βυθοὺς πρὸς τοῦ
+    Γαβαλᾶ κατενεχθῆναι δυστυχημάτων παρεκινδύνευσε
+    μὲν, ἀνήνυξε δ' οὖν καὶ ἐς τὴν πρὶν ἀφίκετο εὐδο-
+    ξίαν, ὡς γε εἴρηται, δι' ὧν λοιπὸν ατὸν ἀμυνεῖται
+    πάσας κεκίνηκε μηχανάς · ἕως, μὴ τὰ μείζω τῶν
+    δεινῶν ὑποστῇ, δείσας αὐτὸς ἐς τὸν μέγιστον τῆς τοῦ
+    Θεοῦ Σοφίας (79) κατεφεύγει νεών. Ἔνθα μετὰ
+    συχνόν τινα χρόνον, πολλὰς καὶ ποικίλας ἀκούων τὰς
+    καθ' ἑαυτοῦ ἀπειλάς, καὶ δείσας αὖθις, μὴ κἀκεῖθεν
+    ἀνάρπαστος ἐξαπίνης γενόμενος ἐς ταρτάρους καὶ
+    ζόφους δεσμωτηρίων ῥιφῇ, κἀκεῖνο πιεῖν ἐγγένηται
+    τουτῳὶ τὸ ποτήριον, ὅπερ λλοις ατὸς κεκέρακε
+    πλείοσι, τὸ μοναδικὸν ἐξ ἀνάγκης ὑπέδυ σχῆμα.
+    Φθάσας γὰρ αὐτὸς καταλέλυκε τὴν τοιαύτην ἄσυλον
+    ἐκ πολλοῦ, τῶν προσφύγων ἀρχαίαν ἀσφάλειαν, ἐν-
+    διδόντος καὶ αὐτοῦ τοῦ τὸν πατριαρχικὸν διέποντος
+    θρόνον. Διὸ καὶ αὐτοὶ πρὸς ἐσχάτας ἐνεπεπτώκεισαν
+    ἀτιμίας καὶ περιαγωγὰς κακοδαίμονας (80), ὡς εἰ-
+    ρήσεται. Τοῖς γὰρ τὰ θεῖα προφανῶς οὕτωσι περι-
+    φρονηταῖς εκὸς ἐν ἐσχάτοις τοιαύτας ἐπιέναι τίσεις,
+    εἰς παιδαγωγίαν τοῦ βίου, δραστικώτερόν πως κατα-
+    στέλλειν τὸ θηριῶδες τς τύχης σχύουσαν.
+  </bloco>
   <bloco tipo="nota_marginal" script="latino" bbox="490,600,510,615">
     C
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,780,510,795">
-    D
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,380,950,800">
+  <bloco tipo="texto_principal" script="latino" bbox="520,390,950,700">
     I. Cum Apocausus exitio prope demersus fuisset
     a Gabala, mox tamen emersisset, et in priorem
     gratiæ et honoris locum restitutus esset, ut jam
@@ -103,7 +96,7 @@
     custodiarum tenebras conjiceretur, atque idem sibi
     poculum hauriendum esset, quod aliis ipse pluri-
     bus miscuerat, monasticum cogente necessitate
-    habitum induit. Prior enim ipse sus tulerat asylum
+    habitum induit. Prior enim ipse sustulerat asylum
     illud longo ante, profugorum vetus præsidium,
     ipso quoque obsecundante patriarcha. Quam ob
     causam et ipsi in summas ignominias ac vicissitu-
@@ -113,7 +106,22 @@
     ire, ut humanum genus his exemplis erudiatur,
     quæ efficaciorem quamdam vim habent ad compri-
     mendam fortunæ ferociam.
-    II. Sed enim cum interea ver advenisset, Amu-
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="490,760,510,775">
+    D
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="50,700,480,840">
+    Β'. Ἀλλὰ γὰρ ἔαρος ἐπιστάντος (81) ἐν τούτοις
+    [P. 456] τὸν Ἑλλήσποντον μετὰ πολλῆς  σατράπης
+    Ἀμοὺρ (82) τῆς Ἀσιανῆς δυνάμεως περαιωσάμενος
+    ἧκεν ἐς Διδυμότειχον · κἀκεῖθεν εὐθὺς κε μετὰ βα-
+    σιλέως ἄχρι καὶ ἐς Βυζάντιον, θέας τε ἕνεκα καὶ
+    πείρας εἰ δέοι. Ἐπεί γε μὴν ἐληλύθει κἀκ συμμί-
+    τρου τοῦ διαστήματος νῦν μὲν ἱστάμενος, νῦν δὲ πε-
+    ριῶν ἐσκόπει καὶ συνεώρα, πολλή τις αὐτὸν συνέσχε
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,700,950,840">
+    II. Sedenim cum interea ver advenisset, Amu-
     rius 727 satrapa, trajecto magnis cum copiis
     Asiaticis Hellesponto, Didymotichum venit, atque
     inde rursus cum imperatore Byzantium usque pro-
@@ -122,21 +130,21 @@
     justo spatio interjecto, modo stans modo circum-
     eundo, specularetur et oculis lustraret, majorem
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="400,810,600,830">
+  <bloco tipo="cabecalho" script="latino" bbox="400,850,600,870">
     Variorum notæ.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="50,830,480,950">
+  <bloco tipo="aparato_critico" script="misto" bbox="50,870,480,950">
     (79) Cantacuz. lib. III, cap. 80. DUCANGE.
-    (80) Hoc loco περιχωραὶ videntur esse ignomi-
+    (80) Hoc loco περιαγωγαὶ videntur esse ignomi-
     niosæ per compita et fora traductiones, aut etiam
     exsilia et deportationes. BOIVIN.
     (81) Cantacuzen. lib. III, cap. 81. DUCANGE.
     (82) Hic errat Gregoras. Neque enim Amurius
     Bithyniæ fuit, sed Orchane orientalis Bithyniæ sa-
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="520,830,950,950">
+  <bloco tipo="aparato_critico" script="latino" bbox="520,870,950,950">
     trapa, quique a Paphlagonia usque in Phrygiam
-    imperat ut, ut testatur ipse Cantacuzenus non uno
+    imperabat, ut testatur ipse Cantacuzenus non uno
     loco. Amur vero postmodum cum viginti millibus
     equitum venit, et Cantacuzeno adfuit contra Momit-
     zilan, ut scribit idem Cantacuzenus cap. 81. DU-

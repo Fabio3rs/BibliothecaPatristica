@@ -26,6 +26,9 @@ from patristica_pipeline.scripture_book_catalog import (
     historical_noncanonical_book_key,
     normalize_book_alias,
 )
+from patristica_pipeline.index_pipeline_ownership import (
+    alphabetical_section_ownership,
+)
 
 SECTION_KINDS = {
     "analytic_subject",
@@ -515,11 +518,13 @@ def collect_section_keys(sections: list[Any], volume_id: str, source_root: str, 
                 f"sections[{idx}].section_kind",
                 SECTION_KINDS,
             )
-            if section_kind in {"ordo_rerum", "editorial_closure"}:
+            owned_by_alphabetical, ownership_reason = (
+                alphabetical_section_ownership(section)
+            )
+            if not owned_by_alphabetical:
                 raise ValueError(
-                    f"sections[{idx}].section_kind={section_kind!r} belongs outside "
-                    "the alphabetical-index pipeline and is accepted only as legacy "
-                    "database evidence."
+                    f"sections[{idx}] belongs outside the alphabetical-index "
+                    f"pipeline: {ownership_reason}."
                 )
             require_non_empty_text(section.get("heading_raw"), f"sections[{idx}].heading_raw")
             if section.get("page_start") is None and to_text(section.get("file_start")) is None:

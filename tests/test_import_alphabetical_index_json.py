@@ -177,6 +177,20 @@ def test_new_payload_rejects_general_pipeline_boundary_sections() -> None:
             )
 
 
+def test_new_payload_rejects_volume_works_inventory_disguised_as_author_index() -> None:
+    payload = minimal_payload()
+    payload["sections"][0]["section_kind"] = "author_index"
+    payload["sections"][0]["heading_raw"] = (
+        "ELENCHUS AUCTORUM ET OPERUM QUI IN HOC TOMO CCIV CONTINENTUR."
+    )
+
+    with pytest.raises(
+        ValidationErrors,
+        match="structural works/contents inventory",
+    ):
+        build_validation_summary(payload)
+
+
 def test_scripture_entry_requires_a_scripture_ref() -> None:
     payload = minimal_payload()
     payload["refs"] = [

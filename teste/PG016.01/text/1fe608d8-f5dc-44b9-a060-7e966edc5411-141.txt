@@ -1,132 +1,130 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="misto" bbox="50,20,950,60">
-    265 LIB. II PARALIP. CAPUT IV. 266
-  </bloco>
-  <bloco tipo="cabecalho" script="latin" bbox="250,60,750,90">
-    CAPUT XXIX LIB. I PARALIP.
-  </bloco>
-  
-  [!-- Top Section: Greek --]
-  <bloco tipo="texto_principal" script="greek" bbox="50,90,200,120">
-    ΣΥΜΜΑΧΟΣ.
-    1, 2.
-    6.
-    11.
-  </bloco>
-  <bloco tipo="texto_principal" script="greek" bbox="350,90,650,300">
-    1, 2. Ὅτι οὐκ ἀνθρώπῳ, ἀλλ' ἢ Κυρί Θεῷ, κατὰ πᾶσαν τὴν δύναμιν. Ἄλλοι, ὅτι οὐκ ἀνθρώπῳ, ἀλλ' ἢ Κυρίῳ τῷ Θεῷ οἰκοδομεῖς. Καὶ ἐγὼ κατὰ πᾶσαν. Ἄλλοι, ὅτι οὐκ ἀνθρώπῳ ἡ οἰκοδομή, ἀλλ' ἢ Κυρίῳ τῷ Θεῷ.
-    Σοάμ. Ἄλλως, σάμ. Ἄλλος, ὄνυχος.
-    6. Καὶ οἱ οἰκοδόμοι τοῦ βασιλέως. Ἄλλος, καὶ ο οἰκονόμοι τοῦ βασιλέως
-    11. Vacat. Ἄλλος, καὶ ἡ ἐξομολόγησις.
-    Vacat. Ἄλλοι, σοί, Κύριε, ἡ βασιλεία, καὶ ἡ ἔπαρσις εἰς πάντα, καὶ εἰς πᾶσαν ἀρχήν.
-  </bloco>
-  <bloco tipo="texto_principal" script="greek" bbox="700,90,850,120">
-    ΘΕΟΔΟΤΙΩΝ.
-    1, 2.
-    6.
-    11.
-  </bloco>
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="nota_marginal" script="latino" bbox="45,70,85,95">265</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="915,70,955,95">266</bloco>
 
-  [!-- Top Section: Latin --]
-  <bloco tipo="texto_principal" script="latin" bbox="50,310,200,460">
-    SYMMACHUS.
-    1, 2.
-    6.
-    11.
-  </bloco>
-  <bloco tipo="texto_principal" script="latin" bbox="350,310,650,480">
-    LXX INTERPRETES.
-    1, 2. Quia non homini, sed Domino Deo, secundum omnem virtutem. Alii, quia non homini, sed Domino Deo ædificas. Et ego secundum omnem. Alii, quia non homini ædificatio, sed Domino Deo.
-    Soam. Aliter, som. Alius, onychis.
-    6. Et ædificatores regis. Alius, et œconomi regis.
-    11. Vacat. Alius, et confessio.
-    Vacat. Alii, tibi, Domine, regnum et elevatio super omnia, et in omne imperium.
-  </bloco>
-  <bloco tipo="texto_principal" script="latin" bbox="700,310,850,460">
-    THEODOTIO.
-    1, 2.
-    6.
-    11.
-  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="330,80,670,120">LIB. II PARALIP. CAPUT IV.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="300,125,700,165">CAPUT XXIX LIB. I PARALIP.</bloco>
 
-  [!-- Apparatus Criticus --]
-  <bloco tipo="aparato_critico" script="misto" bbox="200,490,800,510">
-    Notæ et variæ lectiones ad cap. XXIX lib. I Paralip.
-  </bloco>
-  <bloco tipo="nota" script="misto" bbox="20,510,490,550">
-    edit. Rom.
-    V. 11. Ἄλλος, καὶ ἡ ἐξομολόγησις. Ex notis edit. Rom.
-  </bloco>
-  <bloco tipo="nota" script="misto" bbox="510,510,980,550">
-    Ibid. Ἄλλοι, σοί, Κύριε. † βασιλεία etc In notis edit. Rom.
-  </bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="120,175,250,215">ΣΥΜΜΑΧΟΣ.</bloco>
+  <bloco tipo="nota_marginal" script="grego" bbox="460,180,540,220">Ο´.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="720,175,860,215">ΘΕΟΔΟΤΙΩΝ.</bloco>
 
-  [!-- Divider Line (Implicit) --]
+  <bloco tipo="nota_marginal" script="grego" bbox="55,245,110,445">1, 2.
+6.
+11.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="300,225,690,520">1, 2. Ὅτι οὐκ ἀνθρώπῳ, ἀλλ᾿ ἢ
+Κυρίῳ Θεῷ, κατὰ πᾶσαν τὴν δύνα-
+μιν. Ἄλλοι, ὅτι οὐκ ἀνθρώπῳ,
+ἀλλ᾿ ἢ Κυρίῳ τῷ Θεῷ οἰκοδομεῖς.
+Καὶ ἐγὼ κατὰ πᾶσαν. Ἄλλοι, ὅτι
+οὐκ ἀνθρώπῳ ἡ οἰκοδομὴ, ἀλλ᾿ ἢ
+Κυρίῳ τῷ Θεῷ.
 
-  [!-- Bottom Section: Title --]
-  <bloco tipo="cabecalho" script="latin" bbox="100,580,900,620">
-    LIBER SECUNDUS PARALIPOMENON.
-  </bloco>
+Σοάμ. Ἄλλως, σώμ. Ἄλλος,
+ὄνυχος.
 
-  [!-- Bottom Section: Caput Secundum --]
-  <bloco tipo="cabecalho" script="latin" bbox="400,630,600,650">
-    CAPUT SECUNDUM.
-  </bloco>
-  
-  <bloco tipo="texto_principal" script="misto" bbox="50,650,200,730">
-    ΣΥΜΜΑΧΟΣ.
-    13.
-    SYMMACHUS.
-    13.
-  </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="300,650,700,750">
-    Ϛ'.
-    13. Χιρὰμ τὸν πατέρα μου. Ἄλλος, Χιρὰμ τὸν παῖδά μου.
-    LXX INTERPRETES.
-    13. Chiram patrem meum. Alius, Chiram puerum meum.
-  </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="700,650,850,730">
-    ΘΕΟΔΟΤΙΩΝ.
-    13.
-    THEODOTIO.
-    13.
-  </bloco>
+6. Καὶ οἱ οἰκοδόμοι τοῦ βασιλέως.
+Ἄλλος, καὶ οἱ οἰκονόμοι τοῦ βα-
+σιλέως
 
-  [!-- Bottom Section: Caput IV --]
-  <bloco tipo="cabecalho" script="latin" bbox="350,770,650,790">
-    CAPUT IV LIB. II PARALIP.
-  </bloco>
+11. Vacat. Ἄλλος, καὶ ἡ ἐξομο-
+λόγησις.
 
-  <bloco tipo="texto_principal" script="misto" bbox="50,790,200,870">
-    ΣΥΜΜΑΧΟΣ.
-    2.
-    SYMMACHUS.
-    2.
-  </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="300,790,700,900">
-    Ϛ'.
-    2. Τριάκοντα πήχεων. Ἄλλος, τριάκοντα πήχεων ἐκύκλουν αὐτὴν κύκλῳ.
-    LXX INTERPRETES.
-    2. Triginta cubitorum. Alius, triginta cubitorum circumdabant illud in circuitu.
-  </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="700,790,850,870">
-    ΘΕΟΔΟΤΙΩΝ.
-    2.
-    THEODOTIO.
-    2.
-  </bloco>
+Vacat. Ἄλλοι, σοί, Κύριε, ἡ βα-
+σιλεία, καὶ ἡ ἔπαρσις εἰς πάντα, καὶ
+εἰς πᾶσαν ἀρχήν.</bloco>
+  <bloco tipo="nota_marginal" script="grego" bbox="890,245,945,445">1, 2.
+6.
+11.</bloco>
 
-  [!-- Footer --]
-  <bloco tipo="rodape" script="latin" bbox="50,920,250,950">
-    PATROL. GR. XVI.
-  </bloco>
-  <bloco tipo="rodape" script="latin" bbox="850,920,900,950">
-    9
-  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="110,485,250,525">SYMMACHUS.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,485,630,525">LXX INTERPRETES.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="720,485,860,525">THEODOTIO.</bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="55,525,110,720">1, 2.
+6.
+11.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="300,520,690,740">1, 2. Quia non homini, sed
+Domino Deo, secundum omnem
+virtutem. Alii, quia non homini,
+sed Domino Deo ædificas. Et ego
+secundum omnem. Alii, quia non
+homini ædificatio, sed Domino
+Deo.
+
+Soam. Aliter, som. Alius,
+onychis.
+
+6. Et ædificatores regis. Alius,
+et œconomi regis.
+
+11. Vacat. Alius, et confessio.
+
+Vacat. Alii, tibi, Domine, re-
+gnum et elevatio super omnia, et
+in omne imperium.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="890,525,945,720">1, 2.
+6.
+11.</bloco>
+
+  <bloco tipo="nota" script="misto" bbox="250,735,780,780">Notæ et variæ lectiones ad cap. XXIX lib. I Paralip.</bloco>
+  <bloco tipo="nota" script="misto" bbox="35,775,470,845">edit. Rom.
+V. 11. Ἄλλος, καὶ ἡ ἐξομολόγησις. Ex notis edit.
+Rom.</bloco>
+  <bloco tipo="nota" script="misto" bbox="500,775,965,845">Ibid. Ἄλλοι, σοί, Κύριε. ἡ βασιλεία etc In notis
+edit. Rom.</bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="70,850,240,885">PATROL. GR. XVI.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="890,848,915,885">9</bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="185,905,815,950">LIBER SECUNDUS PARALIPOMENON.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="470,952,530,972">—</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="360,980,640,1020">CAPUT SECUNDUM.</bloco>
+
+  <bloco tipo="cabecalho" script="grego" bbox="120,1030,250,1070">ΣΥΜΜΑΧΟΣ.</bloco>
+  <bloco tipo="nota_marginal" script="grego" bbox="465,1030,540,1068">Ο´.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="720,1030,860,1070">ΘΕΟΔΟΤΙΩΝ.</bloco>
+
+  <bloco tipo="nota_marginal" script="grego" bbox="55,1090,95,1140">13.</bloco>
+  <bloco type="texto_principal" script="grego" bbox="320,1085,700,1170">13. Χιρὰμ τὸν πατέρα μου. Ἄλ-
+λος, Χιρὰμ τὸν παῖδά μου.</bloco>
+  <bloco tipo="nota_marginal" script="grego" bbox="890,1090,930,1140">13.</bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="120,1185,250,1225">SYMMACHUS.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,1185,630,1225">LXX INTERPRETES.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="720,1185,860,1225">THEODOTIO.</bloco>
+
+  <bloco type="nota_marginal" script="latino" bbox="55,1250,95,1300">13.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="320,1245,705,1325">13. Chiram patrem meum. Alius,
+Chiram puerum meum.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="890,1250,930,1300">13.</bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="330,1355,680,1395">CAPUT IV LIB. II PARALIP.</bloco>
+
+  <bloco tipo="cabecalho" script="grego" bbox="120,1410,250,1450">ΣΥΜΜΑΧΟΣ.</bloco>
+  <bloco tipo="nota_marginal" script="grego" bbox="465,1410,540,1448">Ο´.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="720,1410,860,1450">ΘΕΟΔΟΤΙΩΝ.</bloco>
+
+  <bloco tipo="nota_marginal" script="grego" bbox="55,1470,95,1515">2.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="320,1460,705,1555">2. Τριάκοντα πήχεων. Ἄλλος,
+τριάκοντα πήχεων ἐκύκλουν αὐτὴν
+κύκλῳ.</bloco>
+  <bloco tipo="nota_marginal" script="grego" bbox="890,1470,930,1515">2.</bloco>
+
+  <bloco type="cabecalho" script="latino" bbox="120,1575,250,1610">SYMMACHUS.</bloco>
+  <bloco type="cabecalho" script="latino" bbox="350,1575,630,1610">LXX INTERPRETES.</bloco>
+  <bloco type="cabecalho" script="latino" bbox="720,1575,860,1610">THEODOTIO.</bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="55,1635,95,1680">2.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="320,1628,715,1715">2. Triginta cubitorum. Alius,
+triginta cubitorum circumdabant
+illud in circuitu.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="890,1635,930,1680">2.</bloco>
+
   <notas>
-    A página contém uma edição poliglota (Grego/Latim) comparando versões (Symmachus, LXX, Theodotion).
-    O caractere 'Ϛ' (stigma) aparece como numeral de seção ou capítulo nas partes inferiores.
-    A pontuação e acentuação grega foram transcritas conforme visível.
-    'œ' em 'œconomi' foi mantido como ligadura ou dígrafo conforme a impressão.
+    A leitura segue a imagem, com preservação de grafia, acentuação e pontuação visíveis.
+    Os separadores centrais e números de seção foram tratados como blocos marginais para não serem incorporados ao texto corrido.
+    A marca d'água do Google foi ignorada.
+    Há alguma incerteza em abreviações e em certos vocábulos impressos no corpo latino; a forma transcrita acompanha a impressão mais legível.
   </notas>
 </pagina>
