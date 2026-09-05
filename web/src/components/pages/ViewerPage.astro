@@ -311,6 +311,15 @@ const viewerDescription = uiLocale === 'en'
       return getJsonOnce(path);
     }
 
+    async function optionalData(promise, fallback, label) {
+      try {
+        return await promise;
+      } catch (error) {
+        console.warn(`[Viewer] Metadado opcional indisponível: ${label}`, error);
+        return fallback;
+      }
+    }
+
     function metadataBlockPath(value, volumeId) {
       if (!/^[A-Za-z0-9.]+$/.test(volumeId)) return '';
       const path = String(value || '').replace(/^\/+/, '');
@@ -872,21 +881,33 @@ const viewerDescription = uiLocale === 'en'
           : allBakedKeywordLabels.length;
         const keywordLabelsPromise = hasBakedKeywordLabels
           ? Promise.resolve(allBakedKeywordLabels.slice(0, displayCount))
-          : loadKeywordsForIds(page.keyword_ids || []);
-        const [keywordsLabels, entities, collections] = await Promise.all([
-          keywordLabelsPromise,
-          getJSON(`${assetBase}dict/entities.json`),
-          getJSON(`${assetBase}dict/collections.json`),
-        ]);
+          : optionalData(
+              loadKeywordsForIds(page.keyword_ids || []),
+              (page.keyword_ids || []).slice(0, displayCount),
+              'palavras-chave',
+            );
 
         const segmentsFile = meta.segment_blocks?.[0]?.file;
         const snapshotFile = meta.snapshot_blocks?.[0]?.file;
-        const segments = segmentsFile ? (await getJSON(`${assetBase}${segmentsFile.replace(/^\//, '')}`)).segments : [];
-        const snapshots = snapshotFile ? (await getJSON(`${assetBase}${snapshotFile.replace(/^\//, '')}`)).snapshots : [];
+        const [keywordsLabels, entities, collections, segmentData, snapshotData] = await Promise.all([
+          keywordLabelsPromise,
+          optionalData(getJSON(`${assetBase}dict/entities.json`), { items: [] }, 'entidades'),
+          optionalData(getJSON(`${assetBase}dict/collections.json`), { items: [] }, 'coleções'),
+          segmentsFile
+            ? optionalData(getJSON(`${assetBase}${segmentsFile.replace(/^\//, '')}`), { segments: [] }, 'segmentos')
+            : Promise.resolve({ segments: [] }),
+          snapshotFile
+            ? optionalData(getJSON(`${assetBase}${snapshotFile.replace(/^\//, '')}`), { snapshots: [] }, 'snapshots')
+            : Promise.resolve({ snapshots: [] }),
+        ]);
+        const segments = Array.isArray(segmentData?.segments) ? segmentData.segments : [];
+        const snapshots = Array.isArray(snapshotData?.snapshots) ? snapshotData.snapshots : [];
+        const entityItems = Array.isArray(entities?.items) ? entities.items : [];
+        const collectionItems = Array.isArray(collections?.items) ? collections.items : [];
 
         const pageSnapshots = snapshots.filter((s) => (page.snapshot_ids || []).includes(s.id));
 
-        const entitiesLabels = labelize(page.entity_ids, entities.items);
+        const entitiesLabels = labelize(page.entity_ids, entityItems);
         const summaryGlobal = localizedGlobalSummary(page) || pageSnapshots[0]?.summary || '';
         let viewerMode = initialViewerMode;
         const rawUrl = page.raw?.url || (
@@ -1168,7 +1189,7 @@ const viewerDescription = uiLocale === 'en'
           );
         }
 
-        const volCollectionLabel = collections.items.find((c) => c.id === volume.collection_id)?.label || volume.collection_id;
+        const volCollectionLabel = collectionItems.find((c) => c.id === volume.collection_id)?.label || volume.collection_id;
         const identityTitle = document.createElement('h1');
         identityTitle.textContent = volumeAuthor && volumeWork ? `${volumeAuthor} — ${volumeWork}` : (volumeWork || volumeAuthor || s.viewerVolumeLabel(volume.id, volume.title || ''));
         identityCard.appendChild(identityTitle);

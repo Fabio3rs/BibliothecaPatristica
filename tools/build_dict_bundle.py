@@ -35,6 +35,7 @@ def main():
         "entities": dict_dir / "entities.json",
         "authors": dict_dir / "authors.json",
         "themes": dict_dir / "themes.json",
+        "collections": dict_dir / "collections.json",
     }
 
     data = {}
