@@ -194,7 +194,7 @@ export function buildRecord(params, keywordMap, volumeId, page, metadataBlock) {
   const routing = metadataBlock?.file
     ? `&mb=${encodeURIComponent(String(metadataBlock.file).replace(/^\/+/, ''))}`
     : '';
-  const url = `${cleanBase}/viewer?doc=${encodeURIComponent(volumeId)}&page=${encodeURIComponent(String(page.page))}${routing}`;
+  const url = `${cleanBase}/viewer/?doc=${encodeURIComponent(volumeId)}&page=${encodeURIComponent(String(page.page))}${routing}`;
   return { name, url, content };
 }
 

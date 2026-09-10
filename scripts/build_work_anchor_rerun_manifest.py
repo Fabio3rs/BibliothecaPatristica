@@ -176,7 +176,7 @@ def main() -> None:
         "clean_corrected_volume_ids": clean_corrected,
         "recommended_command": (
             "python scripts/run_index_extraction.py --all-volumes "
-            "--skip-done --helper-workers 12 --chunk-workers 12 "
+            "--skip-done --fresh-extraction --helper-workers 12 --chunk-workers 12 "
             "--continue-on-error"
         ),
         "volumes": volume_reports,

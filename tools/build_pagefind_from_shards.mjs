@@ -87,7 +87,7 @@ function unique(values) {
 
 function buildRecordUrl(base, docId, page) {
   const cleanBase = base === '/' ? '' : base.replace(/\/$/, '');
-  return `${cleanBase}/viewer?doc=${encodeURIComponent(docId)}&page=${encodeURIComponent(String(page))}`;
+  return `${cleanBase}/viewer/?doc=${encodeURIComponent(docId)}&page=${encodeURIComponent(String(page))}`;
 }
 
 function buildCustomRecord(params, kwMap, docId, page) {

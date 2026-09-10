@@ -2,9 +2,9 @@
   "schema": "bibliotheca-scripture-book-shards-v3",
   "v": 3,
   "strategy": "one-shard-per-book",
-  "parser": "2.1.3-poc",
-  "detector": "5",
-  "v11n": "unknown",
+  "parser": "2.1.4-poc",
+  "detector": "7",
+  "v11n": "vulgate-clementine",
   "page": "physical",
   "source_mask": [
     "standalone_keyword",
@@ -13,8 +13,9 @@
   ],
   "source": {
     "scope": "summary-v1-keywords+deterministic-ocr",
-    "database_sha256": "b690a7a2f15104324b84c6b97f95a674aa538c3d863db5545b5a0f58abfc8225",
-    "database_schema": "summary-scripture-v3-offline-2"
+    "database_sha256": "08fd10a30d0ac812a8e494573693b7e077ff51b19089dd1b98ba26690ce10071",
+    "database_schema": "summary-scripture-v3-offline-2",
+    "versification_sha256": "742a5d5aa2bb6342bd89bf38b109900a7db9342ada55385e40c82fb905a33ef8"
   },
   "routes": {
     "genesis": {
@@ -27,14 +28,14 @@
         "genesis",
         "gn"
       ],
-      "url": "000-genesis.b8f91d15cb66.json.gz",
-      "raw_bytes": 305642,
-      "gzip_bytes": 85590,
-      "sha256": "b8f91d15cb6679ab63451de816fceee7e6372a36835d6fb000a51f691bbe77b6",
-      "references": 1787,
-      "reference_page_pairs": 26122,
+      "url": "000-genesis.fef1a99e7f01.json.gz",
+      "raw_bytes": 306769,
+      "gzip_bytes": 85854,
+      "sha256": "fef1a99e7f0135bb49385430069f56dc5dc1dc56f6c72801725fa5575cf5b120",
+      "references": 1793,
+      "reference_page_pairs": 26228,
       "volumes": 399,
-      "largest_reference_posting": 1101
+      "largest_reference_posting": 1095
     },
     "exodo": {
       "book_id": 1,
@@ -47,14 +48,14 @@
         "exodo",
         "exodus"
       ],
-      "url": "001-exodo.61244a2c2ee6.json.gz",
-      "raw_bytes": 195919,
-      "gzip_bytes": 54546,
-      "sha256": "61244a2c2ee6e8024e605b93d06d322e545c277cd9a656c22ce496025e5ee51c",
-      "references": 1341,
-      "reference_page_pairs": 15497,
-      "volumes": 393,
-      "largest_reference_posting": 530
+      "url": "001-exodo.0c9249a09867.json.gz",
+      "raw_bytes": 197530,
+      "gzip_bytes": 55032,
+      "sha256": "0c9249a0986728dcffd4f91ffbc2c6ea9b653045b872f35ffc8d2c3c5aa09cdd",
+      "references": 1355,
+      "reference_page_pairs": 15610,
+      "volumes": 394,
+      "largest_reference_posting": 527
     },
     "levitico": {
       "book_id": 2,
@@ -67,13 +68,13 @@
         "levitique",
         "lv"
       ],
-      "url": "002-levitico.775efd73fa8f.json.gz",
-      "raw_bytes": 73480,
-      "gzip_bytes": 21079,
-      "sha256": "775efd73fa8f49d3a83d811b09eb5a68edd2cf5e9699fcee89267efa9d09f148",
-      "references": 788,
-      "reference_page_pairs": 4804,
-      "volumes": 367,
+      "url": "002-levitico.80a9598e5f3d.json.gz",
+      "raw_bytes": 74112,
+      "gzip_bytes": 21216,
+      "sha256": "80a9598e5f3da67b01d967de2ea86906cf25a2d11cddefacc5cb7e44e731e527",
+      "references": 803,
+      "reference_page_pairs": 4836,
+      "volumes": 366,
       "largest_reference_posting": 189
     },
     "numeros": {
@@ -88,14 +89,14 @@
         "numerorum",
         "numeros"
       ],
-      "url": "003-numeros.b38172aeeb82.json.gz",
-      "raw_bytes": 185911,
-      "gzip_bytes": 51656,
-      "sha256": "b38172aeeb82a4fd3ceb8027e5c5407f164e10524905ac47790cd6c05617db33",
-      "references": 1046,
-      "reference_page_pairs": 18747,
+      "url": "003-numeros.f8033e1246c4.json.gz",
+      "raw_bytes": 187237,
+      "gzip_bytes": 51945,
+      "sha256": "f8033e1246c4ad75377ff55d64f3cfde57bd2c88ef0b15b9c4c5c51fcb60ef86",
+      "references": 1054,
+      "reference_page_pairs": 18963,
       "volumes": 396,
-      "largest_reference_posting": 962
+      "largest_reference_posting": 973
     },
     "deuteronomio": {
       "book_id": 4,
@@ -109,14 +110,14 @@
         "deuteronomy",
         "dt"
       ],
-      "url": "004-deuteronomio.50a0c415cd62.json.gz",
-      "raw_bytes": 115951,
-      "gzip_bytes": 33197,
-      "sha256": "50a0c415cd62f4d7f62f6273fe96644ae48c3d412f7a7fe69347656abe6da697",
-      "references": 938,
-      "reference_page_pairs": 8581,
-      "volumes": 379,
-      "largest_reference_posting": 499
+      "url": "004-deuteronomio.b35a498d6f0b.json.gz",
+      "raw_bytes": 116684,
+      "gzip_bytes": 33416,
+      "sha256": "b35a498d6f0b2d91a809f3952e8717b5a50ceb09a5af1008c515c359a21de6f0",
+      "references": 947,
+      "reference_page_pairs": 8641,
+      "volumes": 380,
+      "largest_reference_posting": 492
     },
     "josue": {
       "book_id": 5,
@@ -128,14 +129,14 @@
         "joshua",
         "josue"
       ],
-      "url": "005-josue.98be8975c6ea.json.gz",
-      "raw_bytes": 31748,
-      "gzip_bytes": 9149,
-      "sha256": "98be8975c6ea64e7b505417581ad7eb14b385e57e0c9226fe77b8d33c007e2b2",
-      "references": 377,
+      "url": "005-josue.1897e599282c.json.gz",
+      "raw_bytes": 31950,
+      "gzip_bytes": 9212,
+      "sha256": "1897e599282c0071ce37f930d28e8fd50e81fb306208454163b9b04c6a5115ee",
+      "references": 386,
       "reference_page_pairs": 1819,
       "volumes": 301,
-      "largest_reference_posting": 82
+      "largest_reference_posting": 80
     },
     "juizes": {
       "book_id": 6,
@@ -149,13 +150,13 @@
         "juizes",
         "jz"
       ],
-      "url": "006-juizes.a45fc58a2c18.json.gz",
-      "raw_bytes": 3731,
-      "gzip_bytes": 1306,
-      "sha256": "a45fc58a2c188bacdd16eaf5d65647b3cc0a47155241d0cf9b874e11c485b0fd",
+      "url": "006-juizes.930b4714f0d4.json.gz",
+      "raw_bytes": 3763,
+      "gzip_bytes": 1316,
+      "sha256": "930b4714f0d4e23d4028eb0f2d5b4a450c5540ba37dadbdefa520ef761214726",
       "references": 67,
-      "reference_page_pairs": 180,
-      "volumes": 71,
+      "reference_page_pairs": 181,
+      "volumes": 72,
       "largest_reference_posting": 11
     },
     "rute": {
@@ -167,13 +168,13 @@
         "rute",
         "ruth"
       ],
-      "url": "007-rute.13e0615c0026.json.gz",
-      "raw_bytes": 4158,
-      "gzip_bytes": 1419,
-      "sha256": "13e0615c0026b2c2c3fcb2dfa5a932b460e02b4403d9cfa805d83ec21db00a7f",
-      "references": 46,
-      "reference_page_pairs": 215,
-      "volumes": 96,
+      "url": "007-rute.b31def199103.json.gz",
+      "raw_bytes": 4220,
+      "gzip_bytes": 1438,
+      "sha256": "b31def199103981897cb6c4d75ce1e8c85477a637ccac4dee0e0347efbe050cb",
+      "references": 47,
+      "reference_page_pairs": 217,
+      "volumes": 97,
       "largest_reference_posting": 58
     },
     "1 samuel": {
@@ -210,14 +211,14 @@
         "primus samuel",
         "primus sm"
       ],
-      "url": "008-1-samuel.5c5912f7a7eb.json.gz",
-      "raw_bytes": 57829,
-      "gzip_bytes": 16592,
-      "sha256": "5c5912f7a7ebc9efd77fb3d7e063074d8eb93c8ec1392abf31ce7f60307c35dd",
-      "references": 601,
-      "reference_page_pairs": 3757,
-      "volumes": 340,
-      "largest_reference_posting": 192
+      "url": "008-1-samuel.4dbdd9ee513c.json.gz",
+      "raw_bytes": 58747,
+      "gzip_bytes": 16845,
+      "sha256": "4dbdd9ee513c3d300c2b9415296faced784010364041a56480dbb531155f83ad",
+      "references": 611,
+      "reference_page_pairs": 3816,
+      "volumes": 341,
+      "largest_reference_posting": 190
     },
     "2 samuel": {
       "book_id": 9,
@@ -250,14 +251,14 @@
         "segundo samuel",
         "segundo sm"
       ],
-      "url": "009-2-samuel.049fc43d2405.json.gz",
-      "raw_bytes": 42593,
-      "gzip_bytes": 12229,
-      "sha256": "049fc43d24057d1b07a44590e03d70515c1d687e99411d216ff6170a882e32c8",
-      "references": 499,
-      "reference_page_pairs": 2615,
+      "url": "009-2-samuel.0ec9af4729e7.json.gz",
+      "raw_bytes": 42904,
+      "gzip_bytes": 12336,
+      "sha256": "0ec9af4729e77731fc2b20c138129a1f34e7bc763accd1dba8cd6139ba91aa67",
+      "references": 501,
+      "reference_page_pairs": 2634,
       "volumes": 310,
-      "largest_reference_posting": 119
+      "largest_reference_posting": 117
     },
     "1 reis": {
       "book_id": 10,
@@ -297,14 +298,14 @@
         "primus kings",
         "primus reis"
       ],
-      "url": "010-1-reis.e56a544fc2c1.json.gz",
-      "raw_bytes": 57632,
-      "gzip_bytes": 16482,
-      "sha256": "e56a544fc2c105be306689cd6eaa60a015d99680a3f89de81ddf26fbd43a8075",
-      "references": 595,
-      "reference_page_pairs": 3872,
+      "url": "010-1-reis.7e21366cdbad.json.gz",
+      "raw_bytes": 58098,
+      "gzip_bytes": 16638,
+      "sha256": "7e21366cdbadb9aba51c8067bb4e428b29aaf7c2f766e1cf188b035d53d5cca9",
+      "references": 605,
+      "reference_page_pairs": 3892,
       "volumes": 344,
-      "largest_reference_posting": 241
+      "largest_reference_posting": 236
     },
     "2 reis": {
       "book_id": 11,
@@ -341,14 +342,14 @@
         "segundo kings",
         "segundo reis"
       ],
-      "url": "011-2-reis.351a6b7d9fb4.json.gz",
-      "raw_bytes": 48094,
-      "gzip_bytes": 13777,
-      "sha256": "351a6b7d9fb468869fefa605f8a878c3236298139b2b7c64a33cf2d038bddfb6",
-      "references": 524,
-      "reference_page_pairs": 3133,
-      "volumes": 320,
-      "largest_reference_posting": 181
+      "url": "011-2-reis.3e312c5eea4a.json.gz",
+      "raw_bytes": 48329,
+      "gzip_bytes": 13791,
+      "sha256": "3e312c5eea4a99ac701962fd06cde6dad2a8e23d3e7a886409b3ec78c6411ea4",
+      "references": 537,
+      "reference_page_pairs": 3120,
+      "volumes": 319,
+      "largest_reference_posting": 176
     },
     "1 cronicas": {
       "book_id": 12,
@@ -428,13 +429,13 @@
         "primus paralipomenes",
         "primus paralipomenon"
       ],
-      "url": "012-1-cronicas.d537714ed83b.json.gz",
-      "raw_bytes": 2787,
-      "gzip_bytes": 1019,
-      "sha256": "d537714ed83b6040f108af35c9f73e33c9dc92fb52355c6e49149c7f3759e26b",
+      "url": "012-1-cronicas.37bfb9242b35.json.gz",
+      "raw_bytes": 2839,
+      "gzip_bytes": 1037,
+      "sha256": "37bfb9242b350962dd783769e79c6b020640b1a2ef918a1ac619b7f0a88b3db3",
       "references": 63,
-      "reference_page_pairs": 90,
-      "volumes": 48,
+      "reference_page_pairs": 92,
+      "volumes": 50,
       "largest_reference_posting": 4
     },
     "2 cronicas": {
@@ -507,13 +508,13 @@
         "segundo paralipomenes",
         "segundo paralipomenon"
       ],
-      "url": "013-2-cronicas.4b42a03a165d.json.gz",
-      "raw_bytes": 4177,
-      "gzip_bytes": 1420,
-      "sha256": "4b42a03a165dd1e86b1e802e3b088ca7b5999fb040d2332d99b2e1c49a2a2ddd",
-      "references": 96,
-      "reference_page_pairs": 134,
-      "volumes": 67,
+      "url": "013-2-cronicas.c3711b7567f0.json.gz",
+      "raw_bytes": 4447,
+      "gzip_bytes": 1498,
+      "sha256": "c3711b7567f0a223ef6d1435c5e5c58755d6927e38cd9b11cccf64c05206d68c",
+      "references": 102,
+      "reference_page_pairs": 142,
+      "volumes": 72,
       "largest_reference_posting": 10
     },
     "esdras": {
@@ -526,13 +527,13 @@
         "esdras",
         "ezra"
       ],
-      "url": "014-esdras.56426cd0845f.json.gz",
-      "raw_bytes": 3554,
-      "gzip_bytes": 1216,
-      "sha256": "56426cd0845fc05498182f13b93748f3f5e1733455256f65b7d94fbf43f6cfc7",
+      "url": "014-esdras.c40a5ae099da.json.gz",
+      "raw_bytes": 3544,
+      "gzip_bytes": 1219,
+      "sha256": "c40a5ae099da389691791b9cec3cd2f98280b029c1e21d6ddc4aca6c4cec8d1a",
       "references": 69,
-      "reference_page_pairs": 149,
-      "volumes": 61,
+      "reference_page_pairs": 148,
+      "volumes": 60,
       "largest_reference_posting": 11
     },
     "neemias": {
@@ -547,10 +548,10 @@
         "nehemiah",
         "nehemie"
       ],
-      "url": "015-neemias.90d5490c1bea.json.gz",
-      "raw_bytes": 3902,
-      "gzip_bytes": 1370,
-      "sha256": "90d5490c1bea437f5f6ee757ad158ed11b5cbbd1ca2e07d4e5fec1a316586286",
+      "url": "015-neemias.a21dcedb042f.json.gz",
+      "raw_bytes": 3913,
+      "gzip_bytes": 1380,
+      "sha256": "a21dcedb042f1a7f2a4c1f5aedd55748473b4e0fc9d7d829b0aa852e86c30a9e",
       "references": 56,
       "reference_page_pairs": 322,
       "volumes": 53,
@@ -568,13 +569,13 @@
         "tobie",
         "tobit"
       ],
-      "url": "016-tobias.e1b4d497682a.json.gz",
-      "raw_bytes": 14206,
-      "gzip_bytes": 4402,
-      "sha256": "e1b4d497682a54a05dda2e4c4d55f68e6b75e68d45e56ad2a3eec35b0d0144f3",
-      "references": 166,
-      "reference_page_pairs": 801,
-      "volumes": 215,
+      "url": "016-tobias.169891fa54e5.json.gz",
+      "raw_bytes": 14200,
+      "gzip_bytes": 4412,
+      "sha256": "169891fa54e5919afc1d4864c6bf9a11254e606bfd6b1c6232ce1aae2e12ffab",
+      "references": 165,
+      "reference_page_pairs": 800,
+      "volumes": 216,
       "largest_reference_posting": 114
     },
     "judite": {
@@ -587,13 +588,13 @@
         "judite",
         "judith"
       ],
-      "url": "017-judite.69cc7e71cbe2.json.gz",
-      "raw_bytes": 6253,
-      "gzip_bytes": 1963,
-      "sha256": "69cc7e71cbe237a073b5e966d5977d04ab409d7b92b62d9e417f0cd525106e8e",
+      "url": "017-judite.3d5780af3390.json.gz",
+      "raw_bytes": 6255,
+      "gzip_bytes": 1973,
+      "sha256": "3d5780af339087fa6fc389651c31a530d86f9774b18c0d39fa8acbf238520df5",
       "references": 98,
       "reference_page_pairs": 266,
-      "volumes": 125,
+      "volumes": 124,
       "largest_reference_posting": 25
     },
     "ester": {
@@ -604,14 +605,14 @@
         "ester",
         "esther"
       ],
-      "url": "018-ester.5016737d7b55.json.gz",
-      "raw_bytes": 41381,
-      "gzip_bytes": 12698,
-      "sha256": "5016737d7b55729d54a8b86ab6dba3eedcb76932513ab2e95008438f48b209a9",
-      "references": 142,
-      "reference_page_pairs": 3641,
-      "volumes": 350,
-      "largest_reference_posting": 440
+      "url": "018-ester.9284c343861f.json.gz",
+      "raw_bytes": 40564,
+      "gzip_bytes": 12431,
+      "sha256": "9284c343861f735f94a68b7c0017e092481f515762c1ca248b5cda035f3015cd",
+      "references": 143,
+      "reference_page_pairs": 3558,
+      "volumes": 348,
+      "largest_reference_posting": 430
     },
     "1 macabeus": {
       "book_id": 19,
@@ -727,12 +728,12 @@
         "primus machabeorum",
         "primus machabeus"
       ],
-      "url": "019-1-macabeus.7d1246051b71.json.gz",
-      "raw_bytes": 6488,
-      "gzip_bytes": 2078,
-      "sha256": "7d1246051b71a9986bdc2ce5ed862a5e1714064e287eedfa4ccd7f38944d5151",
+      "url": "019-1-macabeus.5b3258ff3864.json.gz",
+      "raw_bytes": 6473,
+      "gzip_bytes": 2086,
+      "sha256": "5b3258ff38648963250a80f26494c308a85d7c5398ca448ccf1a70cc32052ef0",
       "references": 110,
-      "reference_page_pairs": 300,
+      "reference_page_pairs": 298,
       "volumes": 110,
       "largest_reference_posting": 39
     },
@@ -838,14 +839,14 @@
         "segundo machabeorum",
         "segundo machabeus"
       ],
-      "url": "020-2-macabeus.f44dde8cb896.json.gz",
-      "raw_bytes": 8171,
-      "gzip_bytes": 2622,
-      "sha256": "f44dde8cb8965234a9a8079444d5a50de2dd5847d779d5538e82ede7b92ba181",
-      "references": 116,
+      "url": "020-2-macabeus.ac05340359d5.json.gz",
+      "raw_bytes": 8210,
+      "gzip_bytes": 2641,
+      "sha256": "ac05340359d50ebda4716b313a665594a054ca88f04a0ffeb895d4c2e5c75291",
+      "references": 118,
       "reference_page_pairs": 403,
-      "volumes": 148,
-      "largest_reference_posting": 57
+      "volumes": 147,
+      "largest_reference_posting": 56
     },
     "jo": {
       "book_id": 21,
@@ -857,14 +858,14 @@
         "jo",
         "job"
       ],
-      "url": "021-jo.c9127e57ecd1.json.gz",
-      "raw_bytes": 139828,
-      "gzip_bytes": 38509,
-      "sha256": "c9127e57ecd1254c8f13681fe85136c20ae80b6d8f71134357f0150ce5e812e6",
-      "references": 1267,
-      "reference_page_pairs": 10237,
+      "url": "021-jo.f2bf4e01ed35.json.gz",
+      "raw_bytes": 140485,
+      "gzip_bytes": 38779,
+      "sha256": "f2bf4e01ed355a5215fa4f61c819f971f63b43bfc87f21b159afc13f37afa352",
+      "references": 1271,
+      "reference_page_pairs": 10287,
       "volumes": 376,
-      "largest_reference_posting": 339
+      "largest_reference_posting": 334
     },
     "salmos": {
       "book_id": 22,
@@ -886,12 +887,12 @@
         "salmos",
         "sl"
       ],
-      "url": "022-salmos.1ecbd47022aa.json.gz",
-      "raw_bytes": 1192657,
-      "gzip_bytes": 330345,
-      "sha256": "1ecbd47022aa9f86db2b5ac7de571a628d000140ebb70e101e8eed70b41554a3",
-      "references": 3302,
-      "reference_page_pairs": 113520,
+      "url": "022-salmos.563449ec46ec.json.gz",
+      "raw_bytes": 1196391,
+      "gzip_bytes": 331523,
+      "sha256": "563449ec46ec97f3841f2f240e9a32c384579bab531ffbfa5d581f60817d51d4",
+      "references": 3384,
+      "reference_page_pairs": 113695,
       "volumes": 407,
       "largest_reference_posting": 2047
     },
@@ -908,14 +909,14 @@
         "proverbs",
         "prv"
       ],
-      "url": "023-proverbios.dd95d510796e.json.gz",
-      "raw_bytes": 194019,
-      "gzip_bytes": 55050,
-      "sha256": "dd95d510796e5c62e5e6bdb68936de2f8937208267722bb6d54084dec3700d72",
-      "references": 1080,
-      "reference_page_pairs": 17541,
+      "url": "023-proverbios.c8f9a7c7ddb1.json.gz",
+      "raw_bytes": 194403,
+      "gzip_bytes": 55168,
+      "sha256": "c8f9a7c7ddb107ac1ba71a65884ef248c01579390a32fd44af432118614a6319",
+      "references": 1078,
+      "reference_page_pairs": 17571,
       "volumes": 401,
-      "largest_reference_posting": 3508
+      "largest_reference_posting": 3486
     },
     "eclesiastes": {
       "book_id": 24,
@@ -928,13 +929,13 @@
         "qoh",
         "qohelet"
       ],
-      "url": "024-eclesiastes.5b2c4f313156.json.gz",
-      "raw_bytes": 5653,
-      "gzip_bytes": 1734,
-      "sha256": "5b2c4f313156949c72ece11f1bde19ae696a7bc2ebbdd96502049d52b944ed18",
-      "references": 130,
-      "reference_page_pairs": 213,
-      "volumes": 72,
+      "url": "024-eclesiastes.653b62459e9d.json.gz",
+      "raw_bytes": 5573,
+      "gzip_bytes": 1724,
+      "sha256": "653b62459e9d0b2108a255f987316afad5e6c5aab690d066dcf0389ca19dd00b",
+      "references": 129,
+      "reference_page_pairs": 210,
+      "volumes": 70,
       "largest_reference_posting": 9
     },
     "cantico dos canticos": {
@@ -949,14 +950,14 @@
         "song of solomon",
         "song of songs"
       ],
-      "url": "025-cantico-dos-canticos.328323721aa4.json.gz",
-      "raw_bytes": 62322,
-      "gzip_bytes": 17739,
-      "sha256": "328323721aa49636a55cb8c5435990332fb78278d991dcc7d8dd36105c552017",
-      "references": 161,
-      "reference_page_pairs": 6204,
-      "volumes": 299,
-      "largest_reference_posting": 522
+      "url": "025-cantico-dos-canticos.90dfaaf1a85d.json.gz",
+      "raw_bytes": 62385,
+      "gzip_bytes": 17779,
+      "sha256": "90dfaaf1a85ddfa4f5b10f4f22115eebc9d610a13e1e97429103e8c344727905",
+      "references": 162,
+      "reference_page_pairs": 6198,
+      "volumes": 303,
+      "largest_reference_posting": 521
     },
     "sabedoria": {
       "book_id": 26,
@@ -972,14 +973,14 @@
         "wis",
         "wisdom"
       ],
-      "url": "026-sabedoria.33cd5037599d.json.gz",
-      "raw_bytes": 68531,
-      "gzip_bytes": 19973,
-      "sha256": "33cd5037599d5c0f37b441e0aa8865d0a7476a22946f9f16c98c958540d6d5b4",
-      "references": 445,
-      "reference_page_pairs": 5361,
-      "volumes": 351,
-      "largest_reference_posting": 336
+      "url": "026-sabedoria.b3cc227aee30.json.gz",
+      "raw_bytes": 68850,
+      "gzip_bytes": 20104,
+      "sha256": "b3cc227aee3070cde9013f10933c4f623b834f1c2f8bd9fd7a81c14b14cd4d5b",
+      "references": 453,
+      "reference_page_pairs": 5379,
+      "volumes": 352,
+      "largest_reference_posting": 338
     },
     "eclesiastico": {
       "book_id": 27,
@@ -998,13 +999,13 @@
         "siracida",
         "siracide"
       ],
-      "url": "027-eclesiastico.ef5644326170.json.gz",
-      "raw_bytes": 112867,
-      "gzip_bytes": 31722,
-      "sha256": "ef56443261709de987c27a61ea82b249017179a283a8f8fa455acbddc5180645",
-      "references": 1245,
-      "reference_page_pairs": 7484,
-      "volumes": 359,
+      "url": "027-eclesiastico.0a2bef7fcce0.json.gz",
+      "raw_bytes": 114198,
+      "gzip_bytes": 32086,
+      "sha256": "0a2bef7fcce0c5e147c61025977001915b313c3ae9524685fd744c24a5258e93",
+      "references": 1258,
+      "reference_page_pairs": 7571,
+      "volumes": 361,
       "largest_reference_posting": 187
     },
     "isaias": {
@@ -1020,14 +1021,14 @@
         "isaias",
         "isaie"
       ],
-      "url": "028-isaias.aad2783274ad.json.gz",
-      "raw_bytes": 298256,
-      "gzip_bytes": 84028,
-      "sha256": "aad2783274ad5c152e47af25851fd1a567b42363f0733d1996c2a3c9c886c4fd",
-      "references": 1809,
-      "reference_page_pairs": 24725,
+      "url": "028-isaias.fa3d9fb97640.json.gz",
+      "raw_bytes": 297418,
+      "gzip_bytes": 83887,
+      "sha256": "fa3d9fb97640df386bb9427df05bedc04fc29bb944ceb62cc1d1c7d9d8f9bf37",
+      "references": 1785,
+      "reference_page_pairs": 24714,
       "volumes": 397,
-      "largest_reference_posting": 576
+      "largest_reference_posting": 571
     },
     "jeremias": {
       "book_id": 29,
@@ -1042,14 +1043,14 @@
         "jeremie",
         "jr"
       ],
-      "url": "029-jeremias.223022f39fc6.json.gz",
-      "raw_bytes": 134405,
-      "gzip_bytes": 38354,
-      "sha256": "223022f39fc64a1a0c357aa49893165937b404c344c45b091235b3b439b8e2d3",
-      "references": 1150,
-      "reference_page_pairs": 9676,
+      "url": "029-jeremias.a25021a160d6.json.gz",
+      "raw_bytes": 134017,
+      "gzip_bytes": 38356,
+      "sha256": "a25021a160d63e7a76f8a7a720f44b329baf304bf1dbbaa9a2daa207747ec5af",
+      "references": 1148,
+      "reference_page_pairs": 9642,
       "volumes": 382,
-      "largest_reference_posting": 250
+      "largest_reference_posting": 249
     },
     "lamentacoes": {
       "book_id": 30,
@@ -1061,10 +1062,10 @@
         "lamentations",
         "lamentazioni"
       ],
-      "url": "030-lamentacoes.2e2f59f78bee.json.gz",
-      "raw_bytes": 1449,
-      "gzip_bytes": 621,
-      "sha256": "2e2f59f78bee526c6601d59362b5eb395e92ecb19cc791e89e201d5e3206c3a5",
+      "url": "030-lamentacoes.fa429ed6ce5f.json.gz",
+      "raw_bytes": 1460,
+      "gzip_bytes": 628,
+      "sha256": "fa429ed6ce5f82ed41698ccc560619e17281ee7b70fd79bf5960a36b85941d5c",
       "references": 23,
       "reference_page_pairs": 52,
       "volumes": 32,
@@ -1078,14 +1079,14 @@
         "baruc",
         "baruch"
       ],
-      "url": "031-baruc.8c67e01c43b6.json.gz",
-      "raw_bytes": 10991,
-      "gzip_bytes": 3506,
-      "sha256": "8c67e01c43b652c73e8fb6a23cca388d9f59875b3ea65f2019360f160b4ac8d3",
-      "references": 100,
-      "reference_page_pairs": 662,
+      "url": "031-baruc.1d260a8e7b1f.json.gz",
+      "raw_bytes": 11232,
+      "gzip_bytes": 3575,
+      "sha256": "1d260a8e7b1ff24c302c7fd54be627c3acd3ad43422ed6adf3c4b962537de596",
+      "references": 106,
+      "reference_page_pairs": 674,
       "volumes": 217,
-      "largest_reference_posting": 141
+      "largest_reference_posting": 139
     },
     "ezequiel": {
       "book_id": 32,
@@ -1098,14 +1099,14 @@
         "ezekiel",
         "ezequiel"
       ],
-      "url": "032-ezequiel.9a9664fc52d0.json.gz",
-      "raw_bytes": 114839,
-      "gzip_bytes": 33101,
-      "sha256": "9a9664fc52d0ef2e131dd621f88c105c1e5fd1f6567a7b74c890f3d9b82f101c",
-      "references": 1039,
-      "reference_page_pairs": 8670,
+      "url": "032-ezequiel.a5df57eee6c2.json.gz",
+      "raw_bytes": 114748,
+      "gzip_bytes": 33095,
+      "sha256": "a5df57eee6c2a49a4f8a92ff67b20e6e44413bc883e51428128804ea4e36405c",
+      "references": 1052,
+      "reference_page_pairs": 8630,
       "volumes": 398,
-      "largest_reference_posting": 1343
+      "largest_reference_posting": 1326
     },
     "daniel": {
       "book_id": 33,
@@ -1115,14 +1116,14 @@
         "daniel",
         "daniele"
       ],
-      "url": "033-daniel.5acde7e3c97c.json.gz",
-      "raw_bytes": 67018,
-      "gzip_bytes": 19483,
-      "sha256": "5acde7e3c97c2aebf3084ea458c206a76091ccdb05701c204e20c203cf88783a",
-      "references": 544,
-      "reference_page_pairs": 4916,
+      "url": "033-daniel.715856b36f75.json.gz",
+      "raw_bytes": 67793,
+      "gzip_bytes": 19699,
+      "sha256": "715856b36f754c6d4a73524c4c60e9b08b56db35f5467f8323adc221164cb3a4",
+      "references": 553,
+      "reference_page_pairs": 4967,
       "volumes": 361,
-      "largest_reference_posting": 333
+      "largest_reference_posting": 327
     },
     "oseias": {
       "book_id": 34,
@@ -1136,14 +1137,14 @@
         "osee",
         "oseias"
       ],
-      "url": "034-oseias.b906f79f406f.json.gz",
-      "raw_bytes": 38476,
-      "gzip_bytes": 11528,
-      "sha256": "b906f79f406fb8e1c45b4163f6c3de4ba49e1c34f7a0073efe3d3186f7c548c7",
-      "references": 239,
-      "reference_page_pairs": 2782,
-      "volumes": 326,
-      "largest_reference_posting": 145
+      "url": "034-oseias.24fe0e4137c6.json.gz",
+      "raw_bytes": 38459,
+      "gzip_bytes": 11542,
+      "sha256": "24fe0e4137c6e2fa9e38c67a6e16357bfa0687e83b9fefebf531f4422c7f2482",
+      "references": 238,
+      "reference_page_pairs": 2778,
+      "volumes": 327,
+      "largest_reference_posting": 143
     },
     "joel": {
       "book_id": 35,
@@ -1154,14 +1155,14 @@
         "jl",
         "joel"
       ],
-      "url": "035-joel.719a7824e80d.json.gz",
-      "raw_bytes": 15129,
-      "gzip_bytes": 4833,
-      "sha256": "719a7824e80d43bffeaa39e2ec294a67ff395b56eb61a802997159bc9d76fff2",
-      "references": 88,
-      "reference_page_pairs": 1031,
-      "volumes": 272,
-      "largest_reference_posting": 198
+      "url": "035-joel.002d15f6ab43.json.gz",
+      "raw_bytes": 15279,
+      "gzip_bytes": 4875,
+      "sha256": "002d15f6ab434f223033d60e969b992c4fb1a972b6d8c1cab5104328f4002a0a",
+      "references": 90,
+      "reference_page_pairs": 1040,
+      "volumes": 273,
+      "largest_reference_posting": 195
     },
     "amos": {
       "book_id": 36,
@@ -1170,14 +1171,14 @@
         "am",
         "amos"
       ],
-      "url": "036-amos.093208000a38.json.gz",
-      "raw_bytes": 23463,
-      "gzip_bytes": 7176,
-      "sha256": "093208000a38c1c7e1a146e26f56483bc50437512932a2210d9b37135e5ecc21",
+      "url": "036-amos.59c8b98e5aa3.json.gz",
+      "raw_bytes": 23434,
+      "gzip_bytes": 7204,
+      "sha256": "59c8b98e5aa31845ef18f81282cbd4825c1c5a2c6854e920989ebcda6eae7cd9",
       "references": 185,
       "reference_page_pairs": 1527,
-      "volumes": 286,
-      "largest_reference_posting": 91
+      "volumes": 284,
+      "largest_reference_posting": 92
     },
     "abdias": {
       "book_id": 37,
@@ -1189,13 +1190,13 @@
         "obad",
         "obadiah"
       ],
-      "url": "037-abdias.4e8e611d673b.json.gz",
-      "raw_bytes": 1129,
-      "gzip_bytes": 497,
-      "sha256": "4e8e611d673b8629bd7ba4f1abada441b4f7196fbeb11deabe0353925b70dd0a",
+      "url": "037-abdias.5e922f0185e2.json.gz",
+      "raw_bytes": 1120,
+      "gzip_bytes": 501,
+      "sha256": "5e922f0185e28da50046cd5037febac986aad9f7298280560acdc46f9ce7fd24",
       "references": 15,
-      "reference_page_pairs": 40,
-      "volumes": 27,
+      "reference_page_pairs": 39,
+      "volumes": 26,
       "largest_reference_posting": 12
     },
     "jonas": {
@@ -1208,13 +1209,13 @@
         "jonah",
         "jonas"
       ],
-      "url": "038-jonas.3cdced764ad6.json.gz",
-      "raw_bytes": 7333,
-      "gzip_bytes": 2402,
-      "sha256": "3cdced764ad6e24fb5f41663f78c391a2ef506dbc292edf091ef98e3910c94bc",
-      "references": 54,
-      "reference_page_pairs": 427,
-      "volumes": 161,
+      "url": "038-jonas.938db619358f.json.gz",
+      "raw_bytes": 7501,
+      "gzip_bytes": 2441,
+      "sha256": "938db619358f35433eacf2551d8739eb0f3ce604ed8fa274c28b1d7b3dae4c0e",
+      "references": 56,
+      "reference_page_pairs": 434,
+      "volumes": 164,
       "largest_reference_posting": 75
     },
     "miqueias": {
@@ -1230,14 +1231,14 @@
         "michee",
         "miqueias"
       ],
-      "url": "039-miqueias.a53eee9d79e8.json.gz",
-      "raw_bytes": 18399,
-      "gzip_bytes": 5644,
-      "sha256": "a53eee9d79e8db0aa71ef72f63acfdba999ea7b91684a43a61aba7d0eab69463",
-      "references": 151,
-      "reference_page_pairs": 1201,
+      "url": "039-miqueias.09b720663fe8.json.gz",
+      "raw_bytes": 18457,
+      "gzip_bytes": 5687,
+      "sha256": "09b720663fe8895b7003d7263074022f9c0ea30439ae506d93b7c75107b2eed5",
+      "references": 153,
+      "reference_page_pairs": 1205,
       "volumes": 246,
-      "largest_reference_posting": 142
+      "largest_reference_posting": 145
     },
     "naum": {
       "book_id": 40,
@@ -1247,14 +1248,14 @@
         "nahum",
         "naum"
       ],
-      "url": "040-naum.866ff394f0ab.json.gz",
-      "raw_bytes": 5090,
-      "gzip_bytes": 1741,
-      "sha256": "866ff394f0ab152b8f48e3340163e1400e5d21fd05c8a9241382f1468518a6b7",
-      "references": 43,
-      "reference_page_pairs": 271,
-      "volumes": 133,
-      "largest_reference_posting": 58
+      "url": "040-naum.1d398501bf71.json.gz",
+      "raw_bytes": 5110,
+      "gzip_bytes": 1751,
+      "sha256": "1d398501bf717920097187cbfb2bfc6709d44469c01e719958f21edb9ffedd30",
+      "references": 45,
+      "reference_page_pairs": 269,
+      "volumes": 132,
+      "largest_reference_posting": 57
     },
     "habacuc": {
       "book_id": 41,
@@ -1268,14 +1269,14 @@
         "habakkuk",
         "habaquq"
       ],
-      "url": "041-habacuc.cfa722dd6206.json.gz",
-      "raw_bytes": 16975,
-      "gzip_bytes": 5406,
-      "sha256": "cfa722dd6206ac106f8245de2799c7a4d6cde66afa459422781a59834612eb93",
-      "references": 79,
-      "reference_page_pairs": 1249,
-      "volumes": 278,
-      "largest_reference_posting": 251
+      "url": "041-habacuc.04669be94757.json.gz",
+      "raw_bytes": 17078,
+      "gzip_bytes": 5443,
+      "sha256": "04669be9475753d2ffbdcd1c46c19252a8dcbefa0abb84c7094303afc3dd5db7",
+      "references": 80,
+      "reference_page_pairs": 1252,
+      "volumes": 279,
+      "largest_reference_posting": 249
     },
     "sofonias": {
       "book_id": 42,
@@ -1288,12 +1289,12 @@
         "sophonie",
         "zephaniah"
       ],
-      "url": "042-sofonias.a02139d1563a.json.gz",
-      "raw_bytes": 4813,
-      "gzip_bytes": 1635,
-      "sha256": "a02139d1563a62edc62d8e90cbc192b3b8f55ec25e1a9b17cbea3e930608ba80",
+      "url": "042-sofonias.e4aa5dd2df93.json.gz",
+      "raw_bytes": 4779,
+      "gzip_bytes": 1642,
+      "sha256": "e4aa5dd2df93847417656d5b73939ce8bbe7891597e0c31e4afd835e3cf352d6",
       "references": 53,
-      "reference_page_pairs": 238,
+      "reference_page_pairs": 234,
       "volumes": 115,
       "largest_reference_posting": 52
     },
@@ -1308,13 +1309,13 @@
         "aggeo",
         "haggai"
       ],
-      "url": "043-ageu.063a773b3c73.json.gz",
-      "raw_bytes": 1315,
-      "gzip_bytes": 514,
-      "sha256": "063a773b3c73b245a6fa087cb0928ad99992961ba176e3ce4ab40a475b1d560a",
-      "references": 30,
-      "reference_page_pairs": 40,
-      "volumes": 18,
+      "url": "043-ageu.12a14f8ae0fc.json.gz",
+      "raw_bytes": 1292,
+      "gzip_bytes": 522,
+      "sha256": "12a14f8ae0fcada0e409429e448810b418131e759c9cbecb3c75d7b7877ceab5",
+      "references": 29,
+      "reference_page_pairs": 39,
+      "volumes": 17,
       "largest_reference_posting": 3
     },
     "zacarias": {
@@ -1330,14 +1331,14 @@
         "zech",
         "zechariah"
       ],
-      "url": "044-zacarias.2e3735ce82d8.json.gz",
-      "raw_bytes": 12852,
-      "gzip_bytes": 3987,
-      "sha256": "2e3735ce82d8b6bbcf1220161bc56980f6a69f89bc504dc9a475021e848e53bf",
-      "references": 180,
-      "reference_page_pairs": 648,
-      "volumes": 197,
-      "largest_reference_posting": 34
+      "url": "044-zacarias.0e954dc078aa.json.gz",
+      "raw_bytes": 13406,
+      "gzip_bytes": 4147,
+      "sha256": "0e954dc078aadff34a722ae220aaac0e6086e31666451fa795bf471b788ff334",
+      "references": 188,
+      "reference_page_pairs": 685,
+      "volumes": 198,
+      "largest_reference_posting": 37
     },
     "malaquias": {
       "book_id": 45,
@@ -1351,14 +1352,14 @@
         "malachie",
         "malaquias"
       ],
-      "url": "045-malaquias.a23d33665650.json.gz",
-      "raw_bytes": 20334,
-      "gzip_bytes": 6310,
-      "sha256": "a23d3366565077e78dc83da5b33e86c2d01844b261b08f2c61fb0579043e6d27",
-      "references": 85,
-      "reference_page_pairs": 1486,
+      "url": "045-malaquias.061535913f43.json.gz",
+      "raw_bytes": 20531,
+      "gzip_bytes": 6396,
+      "sha256": "061535913f43c929091d06c0fdd513f8a0c01830d0bb80d61eb2dfe6caba576c",
+      "references": 87,
+      "reference_page_pairs": 1501,
       "volumes": 305,
-      "largest_reference_posting": 134
+      "largest_reference_posting": 139
     },
     "mateus": {
       "book_id": 46,
@@ -1376,14 +1377,14 @@
         "saint matthieu",
         "sao mateus"
       ],
-      "url": "046-mateus.02bc15b22bd8.json.gz",
-      "raw_bytes": 708841,
-      "gzip_bytes": 197974,
-      "sha256": "02bc15b22bd8c4006fd9ebed0a8a56fe591b7bfb3c66277646900da617820f8e",
-      "references": 2019,
-      "reference_page_pairs": 70617,
+      "url": "046-mateus.7d9a3e05651c.json.gz",
+      "raw_bytes": 715848,
+      "gzip_bytes": 199919,
+      "sha256": "7d9a3e05651c3641525af3a2006f4db852e486391b87ab5c8b2a8c229f98ba66",
+      "references": 2057,
+      "reference_page_pairs": 71236,
       "volumes": 405,
-      "largest_reference_posting": 2311
+      "largest_reference_posting": 2294
     },
     "marcos": {
       "book_id": 47,
@@ -1400,14 +1401,14 @@
         "saint marc",
         "sao marcos"
       ],
-      "url": "047-marcos.a050eca0c611.json.gz",
-      "raw_bytes": 143298,
-      "gzip_bytes": 39964,
-      "sha256": "a050eca0c611c3d1cae021fa0a52746f2e347886ccfe9ea6d35565727bcbabcb",
-      "references": 974,
-      "reference_page_pairs": 13140,
+      "url": "047-marcos.9a7dbcf271e8.json.gz",
+      "raw_bytes": 143724,
+      "gzip_bytes": 40082,
+      "sha256": "9a7dbcf271e8850158d1e8ef380bd09c82937e5cf68341dc4bb21a26a9fb9ef8",
+      "references": 977,
+      "reference_page_pairs": 13175,
       "volumes": 388,
-      "largest_reference_posting": 426
+      "largest_reference_posting": 425
     },
     "lucas": {
       "book_id": 48,
@@ -1423,14 +1424,14 @@
         "saint luc",
         "sao lucas"
       ],
-      "url": "048-lucas.ce6159720fe3.json.gz",
-      "raw_bytes": 475200,
-      "gzip_bytes": 131631,
-      "sha256": "ce6159720fe386b5e9533463597527c819e2126f78c7cec704a04aea4f8a12a9",
-      "references": 2012,
-      "reference_page_pairs": 46791,
+      "url": "048-lucas.07140067ea64.json.gz",
+      "raw_bytes": 476754,
+      "gzip_bytes": 132035,
+      "sha256": "07140067ea646437e20530223a2931ab3eec2dac2d51f1e9952de8a996cac344",
+      "references": 2030,
+      "reference_page_pairs": 46872,
       "volumes": 404,
-      "largest_reference_posting": 1184
+      "largest_reference_posting": 1160
     },
     "joao": {
       "book_id": 49,
@@ -1450,14 +1451,14 @@
         "saint jean",
         "sao joao"
       ],
-      "url": "049-joao.5bd22399acdc.json.gz",
-      "raw_bytes": 618885,
-      "gzip_bytes": 173369,
-      "sha256": "5bd22399acdc1135af5b679bce76bbbf3437a8b206eb943dfbd1de7e6e32f30a",
-      "references": 1687,
-      "reference_page_pairs": 68330,
+      "url": "049-joao.f60262694310.json.gz",
+      "raw_bytes": 621487,
+      "gzip_bytes": 174178,
+      "sha256": "f6026269431067b86f6005a1555ebc0078e6dbd4f69870abff85a60fe52a6317",
+      "references": 1701,
+      "reference_page_pairs": 68654,
       "volumes": 407,
-      "largest_reference_posting": 6508
+      "largest_reference_posting": 6495
     },
     "atos": {
       "book_id": 50,
@@ -1475,14 +1476,14 @@
         "atos dos apostolos",
         "atti degli apostoli"
       ],
-      "url": "050-atos.0e6bff0c131d.json.gz",
-      "raw_bytes": 206438,
-      "gzip_bytes": 58627,
-      "sha256": "0e6bff0c131d0ab8a357162733b672d527aa22abd78d0bfc9a009e2a95392096",
-      "references": 1235,
-      "reference_page_pairs": 17285,
+      "url": "050-atos.2c05fc43b0ad.json.gz",
+      "raw_bytes": 207917,
+      "gzip_bytes": 59130,
+      "sha256": "2c05fc43b0ad744f79cd89ce2b2b0e529f65c4b19e5740d07481578a0512009c",
+      "references": 1244,
+      "reference_page_pairs": 17396,
       "volumes": 401,
-      "largest_reference_posting": 775
+      "largest_reference_posting": 774
     },
     "romanos": {
       "book_id": 51,
@@ -1495,14 +1496,14 @@
         "romanos",
         "romans"
       ],
-      "url": "051-romanos.fe8182c1c19e.json.gz",
-      "raw_bytes": 336011,
-      "gzip_bytes": 94136,
-      "sha256": "fe8182c1c19e9fd3602e003f3cb60889f84305fbd02d575bfeb173cbe1a633f3",
-      "references": 967,
-      "reference_page_pairs": 33888,
+      "url": "051-romanos.f6f3a42da55c.json.gz",
+      "raw_bytes": 337814,
+      "gzip_bytes": 94669,
+      "sha256": "f6f3a42da55ce677188352a978f16f0ec5ce724431e13dda7432638410554320",
+      "references": 982,
+      "reference_page_pairs": 34047,
       "volumes": 399,
-      "largest_reference_posting": 1440
+      "largest_reference_posting": 1427
     },
     "1 corintios": {
       "book_id": 52,
@@ -1565,14 +1566,14 @@
         "primus corinthios",
         "primus corintios"
       ],
-      "url": "052-1-corintios.3a079cdbdf06.json.gz",
-      "raw_bytes": 328360,
-      "gzip_bytes": 91783,
-      "sha256": "3a079cdbdf0678900fd78be3e7b04f1fe4161de3ab4901a52c153caebf99c188",
-      "references": 778,
-      "reference_page_pairs": 33067,
+      "url": "052-1-corintios.1d22ff74582a.json.gz",
+      "raw_bytes": 329874,
+      "gzip_bytes": 92410,
+      "sha256": "1d22ff74582aca96c85222447ea7e8bd473c4f29d56d009de0b33f04b99548ec",
+      "references": 791,
+      "reference_page_pairs": 33207,
       "volumes": 394,
-      "largest_reference_posting": 1279
+      "largest_reference_posting": 1262
     },
     "2 corintios": {
       "book_id": 53,
@@ -1629,14 +1630,14 @@
         "segundo corinthios",
         "segundo corintios"
       ],
-      "url": "053-2-corintios.26776f75036e.json.gz",
-      "raw_bytes": 142209,
-      "gzip_bytes": 40942,
-      "sha256": "26776f75036eac6a9b788a97f7f18847f3b78065220cc245842bef4d3b29445f",
-      "references": 369,
-      "reference_page_pairs": 13384,
+      "url": "053-2-corintios.7ac92dca2320.json.gz",
+      "raw_bytes": 143439,
+      "gzip_bytes": 41306,
+      "sha256": "7ac92dca23201579d11cffe7fe1e93fff086ddad5fb65e89d421d0f14e73f80e",
+      "references": 378,
+      "reference_page_pairs": 13499,
       "volumes": 382,
-      "largest_reference_posting": 534
+      "largest_reference_posting": 529
     },
     "galatas": {
       "book_id": 54,
@@ -1650,14 +1651,14 @@
         "galati",
         "galatians"
       ],
-      "url": "054-galatas.a65637442e2d.json.gz",
-      "raw_bytes": 108960,
-      "gzip_bytes": 31837,
-      "sha256": "a65637442e2dba24578394b04a35179f0eb99e97a65817803d29669dac026107",
-      "references": 271,
-      "reference_page_pairs": 11007,
+      "url": "054-galatas.201310b454bb.json.gz",
+      "raw_bytes": 109671,
+      "gzip_bytes": 32058,
+      "sha256": "201310b454bbbbb279254c3ee95a1674a854e3b16b60338d4af266af4b401611",
+      "references": 275,
+      "reference_page_pairs": 11069,
       "volumes": 385,
-      "largest_reference_posting": 774
+      "largest_reference_posting": 765
     },
     "efesios": {
       "book_id": 55,
@@ -1673,14 +1674,14 @@
         "ephesii",
         "ephesios"
       ],
-      "url": "055-efesios.eb6e43b0e286.json.gz",
-      "raw_bytes": 128824,
-      "gzip_bytes": 37255,
-      "sha256": "eb6e43b0e286dbe95571e96e967fe8839e51117f70a48ca3fbb29576320ce9f7",
-      "references": 349,
-      "reference_page_pairs": 12882,
+      "url": "055-efesios.1c464d934684.json.gz",
+      "raw_bytes": 129950,
+      "gzip_bytes": 37607,
+      "sha256": "1c464d9346841a94b53c2ba8fc2e4bb3caf9b4fd455caeb3dc440ee6417728a9",
+      "references": 362,
+      "reference_page_pairs": 12960,
       "volumes": 387,
-      "largest_reference_posting": 882
+      "largest_reference_posting": 872
     },
     "filipenses": {
       "book_id": 56,
@@ -1695,14 +1696,14 @@
         "philippians",
         "philippiens"
       ],
-      "url": "056-filipenses.20a6ff3c2e65.json.gz",
-      "raw_bytes": 85839,
-      "gzip_bytes": 25478,
-      "sha256": "20a6ff3c2e6524618dce4a7ec2a9ddba88d1ad98b5e5675022ff8b7a70cb97fe",
-      "references": 198,
-      "reference_page_pairs": 8998,
-      "volumes": 372,
-      "largest_reference_posting": 1186
+      "url": "056-filipenses.ba7846263d67.json.gz",
+      "raw_bytes": 86700,
+      "gzip_bytes": 25776,
+      "sha256": "ba7846263d67a012ea4248b268881cc92acd935ad345b6c662970d6dfbb41bbb",
+      "references": 202,
+      "reference_page_pairs": 9085,
+      "volumes": 373,
+      "largest_reference_posting": 1141
     },
     "colossenses": {
       "book_id": 57,
@@ -1715,14 +1716,14 @@
         "colossians",
         "colossiens"
       ],
-      "url": "057-colossenses.50943667001c.json.gz",
-      "raw_bytes": 65795,
-      "gzip_bytes": 19369,
-      "sha256": "50943667001c5b51519c7ff331876ae6c0590de07c431ff62c1fc2328aa1566b",
-      "references": 161,
-      "reference_page_pairs": 6673,
+      "url": "057-colossenses.f7511634ce3b.json.gz",
+      "raw_bytes": 66380,
+      "gzip_bytes": 19532,
+      "sha256": "f7511634ce3bcb04faba844ff29465be1baeedbce5f363f02377cb14a68c4e8b",
+      "references": 165,
+      "reference_page_pairs": 6737,
       "volumes": 374,
-      "largest_reference_posting": 698
+      "largest_reference_posting": 690
     },
     "1 tessalonicenses": {
       "book_id": 58,
@@ -1802,14 +1803,14 @@
         "primus thessalonicenses",
         "primus thessaloniciens"
       ],
-      "url": "058-1-tessalonicenses.996edd2c33af.json.gz",
-      "raw_bytes": 30394,
-      "gzip_bytes": 9223,
-      "sha256": "996edd2c33afeb375edc7c9f6546d94fa42a193341642e954caf8910e006ec7f",
-      "references": 117,
-      "reference_page_pairs": 2396,
-      "volumes": 307,
-      "largest_reference_posting": 344
+      "url": "058-1-tessalonicenses.be2007389c1c.json.gz",
+      "raw_bytes": 30676,
+      "gzip_bytes": 9320,
+      "sha256": "be2007389c1c5236d96143bc349ab3861faf404407c6bf644a0a42411821dd14",
+      "references": 118,
+      "reference_page_pairs": 2423,
+      "volumes": 310,
+      "largest_reference_posting": 341
     },
     "2 tessalonicenses": {
       "book_id": 59,
@@ -1881,14 +1882,14 @@
         "segundo thessalonicenses",
         "segundo thessaloniciens"
       ],
-      "url": "059-2-tessalonicenses.977e2717d7a3.json.gz",
-      "raw_bytes": 15546,
-      "gzip_bytes": 4831,
-      "sha256": "977e2717d7a32f89499d413c528e717f462a7169697b697077d33848336c7e12",
+      "url": "059-2-tessalonicenses.b6dfe932ff1d.json.gz",
+      "raw_bytes": 15841,
+      "gzip_bytes": 4915,
+      "sha256": "b6dfe932ff1df567d4ba2448c256300f3d4deaf2295a2ef7ece09513fd2771ef",
       "references": 65,
-      "reference_page_pairs": 1119,
-      "volumes": 266,
-      "largest_reference_posting": 186
+      "reference_page_pairs": 1141,
+      "volumes": 268,
+      "largest_reference_posting": 184
     },
     "1 timoteo": {
       "book_id": 60,
@@ -1958,14 +1959,14 @@
         "primus timothy",
         "primus tm"
       ],
-      "url": "060-1-timoteo.f55882f6de51.json.gz",
-      "raw_bytes": 74160,
-      "gzip_bytes": 21925,
-      "sha256": "f55882f6de518421e0a030a2ed046dc9218a1cbc308e98d56e2dbcafdaabfd95",
-      "references": 171,
-      "reference_page_pairs": 6930,
+      "url": "060-1-timoteo.ce912044c1ae.json.gz",
+      "raw_bytes": 74561,
+      "gzip_bytes": 22085,
+      "sha256": "ce912044c1ae4cf95300aa42786468fc9716aec56f0f0699716c4c47df16d448",
+      "references": 176,
+      "reference_page_pairs": 6973,
       "volumes": 379,
-      "largest_reference_posting": 466
+      "largest_reference_posting": 464
     },
     "2 timoteo": {
       "book_id": 61,
@@ -2028,14 +2029,14 @@
         "segundo timothy",
         "segundo tm"
       ],
-      "url": "061-2-timoteo.9e4780b46145.json.gz",
-      "raw_bytes": 42346,
-      "gzip_bytes": 12797,
-      "sha256": "9e4780b46145210777ae0046d3d76f31bffa002a9e47bb1ee3691c19c1ee600d",
-      "references": 117,
-      "reference_page_pairs": 3619,
+      "url": "061-2-timoteo.c1909aefba2a.json.gz",
+      "raw_bytes": 42655,
+      "gzip_bytes": 12890,
+      "sha256": "c1909aefba2ab74335e31a2820d5493b7fe57d48e3cb74991ba6fee9baa529b7",
+      "references": 123,
+      "reference_page_pairs": 3636,
       "volumes": 357,
-      "largest_reference_posting": 418
+      "largest_reference_posting": 415
     },
     "tito": {
       "book_id": 62,
@@ -2046,14 +2047,14 @@
         "tito",
         "titus"
       ],
-      "url": "062-tito.0986cf5f9c36.json.gz",
-      "raw_bytes": 28599,
-      "gzip_bytes": 8654,
-      "sha256": "0986cf5f9c3693c3f2c75257bc2e9dab97ec74a2a66b10f0e82b1ae130c8f0f3",
-      "references": 77,
-      "reference_page_pairs": 2747,
+      "url": "062-tito.bf94155cc75d.json.gz",
+      "raw_bytes": 28782,
+      "gzip_bytes": 8716,
+      "sha256": "bf94155cc75dc754d6cdc77f9234cf20dcb9623fdeaa8ea0ce74f22d35965a80",
+      "references": 78,
+      "reference_page_pairs": 2768,
       "volumes": 335,
-      "largest_reference_posting": 588
+      "largest_reference_posting": 590
     },
     "filemon": {
       "book_id": 63,
@@ -2065,14 +2066,14 @@
         "philemon",
         "phm"
       ],
-      "url": "063-filemon.f6412243c49f.json.gz",
-      "raw_bytes": 631,
-      "gzip_bytes": 338,
-      "sha256": "f6412243c49f6f79ba2d7cf4e3ce2f4ebdf7fce4889f650087ec7069a3283673",
-      "references": 6,
+      "url": "063-filemon.c1e59e629d28.json.gz",
+      "raw_bytes": 661,
+      "gzip_bytes": 353,
+      "sha256": "c1e59e629d286fdfd60281a84426cd8d6cb60995d2b9e711892d688e22963a8a",
+      "references": 7,
       "reference_page_pairs": 19,
       "volumes": 15,
-      "largest_reference_posting": 11
+      "largest_reference_posting": 10
     },
     "hebreus": {
       "book_id": 64,
@@ -2087,14 +2088,14 @@
         "hebreux",
         "hebrews"
       ],
-      "url": "064-hebreus.2e970d12dbec.json.gz",
-      "raw_bytes": 127381,
-      "gzip_bytes": 36872,
-      "sha256": "2e970d12dbec4433667978071b58e3680ea6052d034121352c38f762d6f7e855",
-      "references": 479,
-      "reference_page_pairs": 11380,
+      "url": "064-hebreus.9f7e4a96e8aa.json.gz",
+      "raw_bytes": 128662,
+      "gzip_bytes": 37183,
+      "sha256": "9f7e4a96e8aa2bc719aaeb56497e4acd9dfdc7b90b16d8bf338eee3b3906ea04",
+      "references": 497,
+      "reference_page_pairs": 11498,
       "volumes": 386,
-      "largest_reference_posting": 532
+      "largest_reference_posting": 524
     },
     "tiago": {
       "book_id": 65,
@@ -2112,14 +2113,14 @@
         "sao tiago",
         "tiago"
       ],
-      "url": "065-tiago.a9a33b3edecd.json.gz",
-      "raw_bytes": 43767,
-      "gzip_bytes": 13303,
-      "sha256": "a9a33b3edecdb3af8b7329eefafe826c5f2d908794e0b28308887abc424b8d40",
-      "references": 144,
-      "reference_page_pairs": 3836,
-      "volumes": 338,
-      "largest_reference_posting": 524
+      "url": "065-tiago.ef932d679082.json.gz",
+      "raw_bytes": 44076,
+      "gzip_bytes": 13391,
+      "sha256": "ef932d679082168dce9ebf1ac5086ed694aca491a11f232bb743ddc5a0c802ae",
+      "references": 148,
+      "reference_page_pairs": 3860,
+      "volumes": 337,
+      "largest_reference_posting": 518
     },
     "1 pedro": {
       "book_id": 66,
@@ -2208,14 +2209,14 @@
         "primus saint pierre",
         "primus sao pedro"
       ],
-      "url": "066-1-pedro.249df7091488.json.gz",
-      "raw_bytes": 52615,
-      "gzip_bytes": 15745,
-      "sha256": "249df70914881de99b40babf4f6a621c81f1512dfeb560e4d67ce798e5c2822a",
-      "references": 158,
-      "reference_page_pairs": 4815,
-      "volumes": 357,
-      "largest_reference_posting": 738
+      "url": "066-1-pedro.00b61f7275d6.json.gz",
+      "raw_bytes": 52936,
+      "gzip_bytes": 15843,
+      "sha256": "00b61f7275d62a5432157c4ec183eee4fd05c484b2395771f08323b290ac9196",
+      "references": 161,
+      "reference_page_pairs": 4840,
+      "volumes": 356,
+      "largest_reference_posting": 736
     },
     "2 pedro": {
       "book_id": 67,
@@ -2295,14 +2296,14 @@
         "segundo saint pierre",
         "segundo sao pedro"
       ],
-      "url": "067-2-pedro.2242ec6259d3.json.gz",
-      "raw_bytes": 17905,
-      "gzip_bytes": 5750,
-      "sha256": "2242ec6259d38ea23170e1b5f39dbdb23589fd072d6742b958b894ba49db7c78",
-      "references": 80,
-      "reference_page_pairs": 1321,
+      "url": "067-2-pedro.bc2099d015f4.json.gz",
+      "raw_bytes": 18048,
+      "gzip_bytes": 5812,
+      "sha256": "bc2099d015f447190d287ad17117fdd305b833972ec4e67bb10e0e4701974766",
+      "references": 81,
+      "reference_page_pairs": 1336,
       "volumes": 283,
-      "largest_reference_posting": 203
+      "largest_reference_posting": 209
     },
     "1 joao": {
       "book_id": 68,
@@ -2400,14 +2401,14 @@
         "primus saint john",
         "primus sao joao"
       ],
-      "url": "068-1-joao.2eb80ad80a4b.json.gz",
-      "raw_bytes": 53911,
-      "gzip_bytes": 15931,
-      "sha256": "2eb80ad80a4b0052a09655bc8f99b316bd41f5da15ad2ccfb3b0f5861185ca8f",
-      "references": 135,
-      "reference_page_pairs": 5037,
-      "volumes": 335,
-      "largest_reference_posting": 440
+      "url": "068-1-joao.3e4b33994254.json.gz",
+      "raw_bytes": 54477,
+      "gzip_bytes": 16107,
+      "sha256": "3e4b33994254b98e12b15bff1b0d8d7deedd9dd6c6bf09baea43d73b1c5ed74f",
+      "references": 139,
+      "reference_page_pairs": 5087,
+      "volumes": 336,
+      "largest_reference_posting": 432
     },
     "2 joao": {
       "book_id": 69,
@@ -2495,14 +2496,14 @@
         "segundo saint john",
         "segundo sao joao"
       ],
-      "url": "069-2-joao.fc1d14336b92.json.gz",
-      "raw_bytes": 1540,
-      "gzip_bytes": 646,
-      "sha256": "fc1d14336b9207b3be8d5385713e556d18744b5a0290c93e9902d1f57a97855a",
+      "url": "069-2-joao.18802f459c85.json.gz",
+      "raw_bytes": 1565,
+      "gzip_bytes": 660,
+      "sha256": "18802f459c8584dfaa8167def1c0c6e9f7ee5d43dac5be6c28fcf3f4ef1d11c7",
       "references": 13,
-      "reference_page_pairs": 70,
+      "reference_page_pairs": 71,
       "volumes": 45,
-      "largest_reference_posting": 24
+      "largest_reference_posting": 25
     },
     "3 joao": {
       "book_id": 70,
@@ -2590,14 +2591,14 @@
         "troisieme saint john",
         "troisieme sao joao"
       ],
-      "url": "070-3-joao.41f133257727.json.gz",
-      "raw_bytes": 1461,
+      "url": "070-3-joao.ff4b95f12d97.json.gz",
+      "raw_bytes": 1449,
       "gzip_bytes": 615,
-      "sha256": "41f133257727dcf3157f48703d6db886b949e43f5d75e2b9e919e8d5ac7fb49a",
+      "sha256": "ff4b95f12d979e61cb71d7f4c2948c0611e92db9f91ea207a331c3bbc11ef86f",
       "references": 16,
-      "reference_page_pairs": 61,
-      "volumes": 36,
-      "largest_reference_posting": 14
+      "reference_page_pairs": 62,
+      "volumes": 33,
+      "largest_reference_posting": 13
     },
     "judas": {
       "book_id": 71,
@@ -2610,13 +2611,13 @@
         "saint jude",
         "sao judas"
       ],
-      "url": "071-judas.80b83057a766.json.gz",
-      "raw_bytes": 772,
-      "gzip_bytes": 392,
-      "sha256": "80b83057a76626097ae6164442fbde48b748ee727b3ff3ae40a4e693b331d317",
+      "url": "071-judas.a69c8eb5a928.json.gz",
+      "raw_bytes": 741,
+      "gzip_bytes": 386,
+      "sha256": "a69c8eb5a928418080a4fa28c5aa248df6a12f0ca0923089f261e6bf4ceb5be5",
       "references": 11,
-      "reference_page_pairs": 22,
-      "volumes": 17,
+      "reference_page_pairs": 20,
+      "volumes": 15,
       "largest_reference_posting": 8
     },
     "apocalipse": {
@@ -2631,20 +2632,20 @@
         "rev",
         "revelation"
       ],
-      "url": "072-apocalipse.76e2c5e09fa0.json.gz",
-      "raw_bytes": 82335,
-      "gzip_bytes": 23683,
-      "sha256": "76e2c5e09fa076a3c36efa140020ede1251e4c9ac1336c91eb09fe69e0b28b33",
-      "references": 509,
-      "reference_page_pairs": 6678,
-      "volumes": 336,
-      "largest_reference_posting": 307
+      "url": "072-apocalipse.7d3304f777ae.json.gz",
+      "raw_bytes": 81337,
+      "gzip_bytes": 23397,
+      "sha256": "7d3304f777aee9de414ed527d5939ffc28db484b80e7fea4c1d200e71f6ad682",
+      "references": 503,
+      "reference_page_pairs": 6592,
+      "volumes": 335,
+      "largest_reference_posting": 304
     }
   },
   "stats": {
     "shards": 73,
-    "raw_bytes": 7703773,
-    "gzip_bytes": 2184718,
+    "raw_bytes": 7742212,
+    "gzip_bytes": 2196645,
     "books_over_gzip_threshold": {
       "131072": 4,
       "262144": 1,
@@ -2653,63 +2654,63 @@
     "largest": [
       {
         "book_key": "salmos",
-        "gzip_bytes": 330345,
-        "references": 3302,
-        "reference_page_pairs": 113520
+        "gzip_bytes": 331523,
+        "references": 3384,
+        "reference_page_pairs": 113695
       },
       {
         "book_key": "mateus",
-        "gzip_bytes": 197974,
-        "references": 2019,
-        "reference_page_pairs": 70617
+        "gzip_bytes": 199919,
+        "references": 2057,
+        "reference_page_pairs": 71236
       },
       {
         "book_key": "joao",
-        "gzip_bytes": 173369,
-        "references": 1687,
-        "reference_page_pairs": 68330
+        "gzip_bytes": 174178,
+        "references": 1701,
+        "reference_page_pairs": 68654
       },
       {
         "book_key": "lucas",
-        "gzip_bytes": 131631,
-        "references": 2012,
-        "reference_page_pairs": 46791
+        "gzip_bytes": 132035,
+        "references": 2030,
+        "reference_page_pairs": 46872
       },
       {
         "book_key": "romanos",
-        "gzip_bytes": 94136,
-        "references": 967,
-        "reference_page_pairs": 33888
+        "gzip_bytes": 94669,
+        "references": 982,
+        "reference_page_pairs": 34047
       },
       {
         "book_key": "1 corintios",
-        "gzip_bytes": 91783,
-        "references": 778,
-        "reference_page_pairs": 33067
+        "gzip_bytes": 92410,
+        "references": 791,
+        "reference_page_pairs": 33207
       },
       {
         "book_key": "genesis",
-        "gzip_bytes": 85590,
-        "references": 1787,
-        "reference_page_pairs": 26122
+        "gzip_bytes": 85854,
+        "references": 1793,
+        "reference_page_pairs": 26228
       },
       {
         "book_key": "isaias",
-        "gzip_bytes": 84028,
-        "references": 1809,
-        "reference_page_pairs": 24725
+        "gzip_bytes": 83887,
+        "references": 1785,
+        "reference_page_pairs": 24714
       },
       {
         "book_key": "atos",
-        "gzip_bytes": 58627,
-        "references": 1235,
-        "reference_page_pairs": 17285
+        "gzip_bytes": 59130,
+        "references": 1244,
+        "reference_page_pairs": 17396
       },
       {
         "book_key": "proverbios",
-        "gzip_bytes": 55050,
-        "references": 1080,
-        "reference_page_pairs": 17541
+        "gzip_bytes": 55168,
+        "references": 1078,
+        "reference_page_pairs": 17571
       }
     ]
   }

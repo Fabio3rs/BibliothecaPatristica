@@ -8,7 +8,7 @@ const STATIC_ROUTES = ['', '/search', '/indices', '/viewer'] as const;
 
 export const GET: APIRoute = async ({ site }) => {
   const paths = LOCALE_PREFIXES.flatMap((prefix) =>
-    STATIC_ROUTES.map((route) => `${prefix}${route}` || '/')
+    STATIC_ROUTES.map((route) => `${prefix}${route}/`.replace(/\/{2,}/g, '/'))
   );
   const urls = paths.map((path) => buildCanonicalUrl(site, path));
   const body = `<?xml version="1.0" encoding="UTF-8"?>

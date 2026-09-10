@@ -5,7 +5,7 @@ export default defineConfig({
   site: 'https://Fabio3rs.github.io/BibliothecaPatristica',
   base: '/BibliothecaPatristica',
   prefetch: true,
-  trailingSlash: 'never',
+  trailingSlash: 'always',
   i18n: {
     defaultLocale: 'pt-br',
     locales: ['pt-br', 'en', 'it', 'fr'],

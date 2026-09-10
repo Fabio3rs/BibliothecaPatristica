@@ -21,6 +21,7 @@ const breadcrumbs = [
   title={t.scriptureReferenceViewerDocumentTitle}
   description={t.scriptureReferenceEvidenceNote}
   breadcrumbs={breadcrumbs}
+  indexable={false}
 >
   <div
     id="scripture-reference-viewer"
@@ -401,6 +402,12 @@ const breadcrumbs = [
       );
     }
 
+    function childRoute(baseRoute, segment) {
+      const normalizedBase = String(baseRoute || '').replace(/\/+$/, '');
+      const normalizedSegment = String(segment || '').replace(/^\/+|\/+$/g, '');
+      return `${normalizedBase}/${encodeURIComponent(normalizedSegment)}/`;
+    }
+
     function pageUrl(page) {
       const url = new URL(window.location.href);
       url.searchParams.set('book', book);
@@ -538,11 +545,20 @@ const breadcrumbs = [
         total: format(total),
       });
       backEl.hidden = false;
-      backEl.href = `${scriptureBaseRoute}/${encodeURIComponent(book)}`;
+      backEl.href = childRoute(scriptureBaseRoute, book);
       backEl.textContent = replaceTokens(uiStrings.scriptureReferenceBackToBook, { book: bookLabel });
       document.title = `${replaceTokens(uiStrings.scriptureReferenceTitle, { reference: referenceLabel })} — Bibliotheca Patristica`;
-      const metaDescription = document.querySelector('meta[name="description"]');
-      if (metaDescription) metaDescription.setAttribute('content', description);
+      const socialTitle = replaceTokens(uiStrings.scriptureReferenceTitle, { reference: referenceLabel });
+      const setMeta = (selector, content) => {
+        const element = document.querySelector(selector);
+        if (element) element.setAttribute('content', content);
+      };
+      setMeta('meta[name="description"]', description);
+      setMeta('meta[property="og:title"]', socialTitle);
+      setMeta('meta[property="og:description"]', description);
+      setMeta('meta[property="og:url"]', window.location.href);
+      setMeta('meta[name="twitter:title"]', socialTitle);
+      setMeta('meta[name="twitter:description"]', description);
 
       renderPagination(topPagination, pageNumber, pageCount, 'top');
       renderPagination(bottomPagination, pageNumber, pageCount, 'bottom');

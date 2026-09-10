@@ -224,6 +224,16 @@ def _key_set(items: list[Any], fields: tuple[str, ...]) -> set[str]:
     }
 
 
+def _entries_by_key(sections: list[Any]) -> dict[str, dict[str, Any]]:
+    return {
+        str(entry["entry_key"]): entry
+        for section in sections
+        if isinstance(section, dict)
+        for entry in section.get("entries") or []
+        if isinstance(entry, dict) and str(entry.get("entry_key") or "").strip()
+    }
+
+
 def verify_payload_consumes_fragments(
     payload: dict[str, Any],
     assembled: dict[str, Any],
@@ -298,6 +308,47 @@ def verify_payload_consumes_fragments(
                 "actual_stable_keys": len(actual),
                 "missing_stable_keys": sorted(expected - actual),
             }
+        assembled_entries = _entries_by_key(owned_sections)
+        payload_entries = _entries_by_key(payload.get("sections") or [])
+        target_mismatches: list[str] = []
+        evidence_mismatches: list[str] = []
+        for entry_key, expected_entry in assembled_entries.items():
+            expected_target = str(expected_entry.get("target_file") or "").strip()
+            if not expected_target:
+                continue
+            actual_entry = payload_entries.get(entry_key)
+            if (
+                actual_entry is None
+                or str(actual_entry.get("target_file") or "").strip()
+                != expected_target
+            ):
+                target_mismatches.append(entry_key)
+                continue
+            expected_raw = expected_entry.get("raw_json")
+            expected_evidence = (
+                expected_raw.get("physical_target_evidence")
+                if isinstance(expected_raw, dict)
+                else None
+            )
+            if expected_evidence is None:
+                continue
+            actual_raw = actual_entry.get("raw_json")
+            actual_evidence = (
+                actual_raw.get("physical_target_evidence")
+                if isinstance(actual_raw, dict)
+                else None
+            )
+            if actual_evidence != expected_evidence:
+                evidence_mismatches.append(entry_key)
+        checks["entry_targets"] = {
+            "expected_resolved_targets": sum(
+                bool(str(entry.get("target_file") or "").strip())
+                for entry in assembled_entries.values()
+            ),
+            "target_mismatch_entry_keys": target_mismatches,
+            "evidence_mismatch_entry_keys": evidence_mismatches,
+            "missing_stable_keys": sorted(set(target_mismatches + evidence_mismatches)),
+        }
         checks["ownership"] = {
             "excluded_non_owned_section_count": len(excluded_sections),
             "excluded_non_owned_sections": excluded_sections,

@@ -75,7 +75,7 @@ function buildUrl(base, volumeId, params = {}) {
   for (const [key, value] of Object.entries(params)) {
     if (value) qp.set(key, value);
   }
-  return `${cleanBase}/indices?${qp.toString()}`;
+  return `${cleanBase}/indices/?${qp.toString()}`;
 }
 
 function makeRecord({ base, volume, kind, title, content, params, metaExtra = {}, filters = {} }) {

@@ -10,11 +10,10 @@ export const GET: APIRoute = async ({ site }) => {
   const books = await listAlphaScriptureBooks();
   const routes = [
     '/indices-alfabeticos/scripture',
-    '/indices-alfabeticos/scripture/reference',
     ...books.map((book) => `/indices-alfabeticos/scripture/${book.slug}`),
   ];
   const urls = routes.flatMap((route) => LOCALE_PREFIXES.map((prefix) => (
-    buildCanonicalUrl(site, `${prefix}${route}`)
+    buildCanonicalUrl(site, `${prefix}${route}/`)
   )));
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

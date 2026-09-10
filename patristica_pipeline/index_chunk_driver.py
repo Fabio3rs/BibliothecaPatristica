@@ -23,6 +23,7 @@ def run_index_chunk_agents(
     log_dir: Path,
     workers: int = 1,
     verbose: bool = False,
+    reuse_complete_chunks: bool = True,
 ) -> subprocess.CompletedProcess[str]:
     command = [
         sys.executable,
@@ -31,12 +32,13 @@ def run_index_chunk_agents(
         str(workplan_file),
         "--codex-bin",
         codex_bin,
-        "--skip-complete",
         "--log-dir",
         str(log_dir),
         "--workers",
         str(max(1, workers)),
     ]
+    if reuse_complete_chunks:
+        command.append("--skip-complete")
     if model:
         command.extend(["--model", model])
     if verbose:

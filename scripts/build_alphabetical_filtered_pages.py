@@ -13,6 +13,7 @@ from typing import Any
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from patristica_pipeline.common import page_number, page_sort_key, parse_volume_info
+from patristica_pipeline.structural_target_repair import scan_dense_structural_headings
 
 
 PG_PL_MARKERS = (
@@ -76,7 +77,11 @@ GENERAL_PG_PL_MARKERS = (
     "ELENCHUS AUCTORUM",
     "ELENCHUS OPERUM",
     "ELENCHUS RERUM",
+    "INCIPIUNT CAPITULA",
+    "EXPLICIUNT CAPITULA",
+    "TITULI CAPITUM",
     "INDEX CAPITUM",
+    "CAPITULA",
     "ORDO OPERUM",
     "ORDO RERUM",
 )
@@ -115,6 +120,22 @@ NOTE_PREFIXES = (
     "OCR ",
     "DIGITIZED BY",
 )
+DENSE_STRUCTURAL_MIN_ENTRIES = 12
+DENSE_STRUCTURAL_MARKER = "DENSE STRUCTURAL LIST"
+DENSE_STRUCTURAL_ENTRY_RE = re.compile(
+    r"^(?:CAP(?:UT|ITA)?|CAPP?|TIT(?:ULUS|ULUM)?|CHAPTER|CHAPITRE)"
+    r"\s*\.?\s*(?P<ordinal>[IVXLCDM]{1,16}|\d{1,4})(?=\s|\.|[-‐‑‒–—]|$)",
+    re.IGNORECASE,
+)
+STRUCTURAL_CONTAINER_MARKERS = {
+    "INCIPIUNT CAPITULA",
+    "EXPLICIUNT CAPITULA",
+    "TITULI CAPITUM",
+    "INDEX CAPITUM",
+    "CAPITULA",
+    "ORDO OPERUM",
+    "ORDO RERUM",
+}
 
 
 def read_json(path: Path) -> dict[str, Any]:
@@ -291,6 +312,49 @@ def _looks_like_heading_candidate(stripped: str, marker: str, collection: str) -
     return matched
 
 
+def _dense_structural_list_evidence(
+    path: Path,
+    visible_lines: list[tuple[int, str]],
+) -> dict[str, Any] | None:
+    matches: list[tuple[int, str, str]] = []
+    distinct_ordinals: set[str] = set()
+    for line_no, stripped in visible_lines:
+        match = DENSE_STRUCTURAL_ENTRY_RE.match(stripped)
+        if match is None:
+            continue
+        ordinal = normalize_for_match(match.group("ordinal"))
+        distinct_ordinals.add(ordinal)
+        matches.append((line_no, stripped, ordinal))
+    if (
+        len(matches) < DENSE_STRUCTURAL_MIN_ENTRIES
+        or len(distinct_ordinals) < DENSE_STRUCTURAL_MIN_ENTRIES
+    ):
+        return None
+    dense_candidates = scan_dense_structural_headings(path)
+    dense_ordinals = {
+        str(candidate.ordinal)
+        for candidate in dense_candidates
+        if candidate.ordinal is not None
+    }
+    if (
+        len(dense_candidates) < DENSE_STRUCTURAL_MIN_ENTRIES
+        or len(dense_ordinals) < DENSE_STRUCTURAL_MIN_ENTRIES
+    ):
+        return None
+    first = dense_candidates[0]
+    last = dense_candidates[-1]
+    return {
+        "entry_count": len(dense_candidates),
+        "distinct_ordinal_count": len(dense_ordinals),
+        "line": first.line,
+        "line_end": last.line,
+        "first_entry": first.heading_raw[:240],
+        "last_entry": last.heading_raw[:240],
+        "first_ordinal_raw": str(first.ordinal),
+        "last_ordinal_raw": str(last.ordinal),
+    }
+
+
 def build_fallback_filtered_pages(
     volume_id: str,
     text_root: Path,
@@ -321,6 +385,7 @@ def build_fallback_filtered_pages(
     candidate_files_seen: set[str] = set()
     candidate_files: list[str] = []
     all_hits: list[dict[str, Any]] = []
+    dense_structural_pages: list[dict[str, Any]] = []
 
     window_count = min(32, len(files))
     head_files = files[:window_count] if profile == "general" else []
@@ -355,6 +420,17 @@ def build_fallback_filtered_pages(
         ]
         visible_lines = [(line_no, line) for line_no, line in visible_lines if line]
         path_str = str(path)
+        if profile == "general" and collection in {"PG", "PL"}:
+            dense_evidence = _dense_structural_list_evidence(path, visible_lines)
+            if dense_evidence is not None:
+                dense_structural_pages.append(
+                    {
+                        "file": path_str,
+                        "file_seq": page_number(path),
+                        "position": file_to_index[path_str],
+                        **dense_evidence,
+                    }
+                )
         for visible_index, (line_no, stripped) in enumerate(visible_lines):
             matched_marker = ""
             matched_text = ""
@@ -428,6 +504,65 @@ def build_fallback_filtered_pages(
                     ),
                 }
             )
+
+    if dense_structural_pages:
+        structural_heading_positions = {
+            file_to_index[str(item["file"])]
+            for item in candidate_sections
+            if item.get("marker") in STRUCTURAL_CONTAINER_MARKERS
+            and str(item.get("file") or "") in file_to_index
+        }
+        dense_structural_pages.sort(key=lambda item: int(item["position"]))
+        dense_runs: list[list[dict[str, Any]]] = []
+        for item in dense_structural_pages:
+            if (
+                dense_runs
+                and int(item["position"])
+                == int(dense_runs[-1][-1]["position"]) + 1
+            ):
+                dense_runs[-1].append(item)
+            else:
+                dense_runs.append([item])
+        for run in dense_runs:
+            run_positions = {int(item["position"]) for item in run}
+            if any(
+                abs(dense_position - heading_position) <= 1
+                for dense_position in run_positions
+                for heading_position in structural_heading_positions
+            ):
+                continue
+            first = run[0]
+            path = Path(str(first["file"]))
+            add_neighbors(path)
+            candidate_sections.append(
+                {
+                    "heading": (
+                        f"Dense structural list: {first['first_entry']} ... "
+                        f"{run[-1]['last_entry']}"
+                    )[:240],
+                    "file": str(path),
+                    "file_seq": first["file_seq"],
+                    "line": first["line"],
+                    "line_end": run[-1]["line_end"],
+                    "reason": "dense_structural_list",
+                    "marker": DENSE_STRUCTURAL_MARKER,
+                    "match_quality": "deterministic_dense_sequence",
+                    "role": "section_heading",
+                    "dense_run_files": [str(item["file"]) for item in run],
+                    "dense_entry_count": sum(int(item["entry_count"]) for item in run),
+                    "distinct_ordinal_count": max(
+                        int(item["distinct_ordinal_count"]) for item in run
+                    ),
+                }
+            )
+            all_hits.append(candidate_sections[-1].copy())
+
+        candidate_sections.sort(
+            key=lambda item: (
+                file_to_index.get(str(item.get("file") or ""), len(files)),
+                int(item.get("line") or 0),
+            )
+        )
 
     if not candidate_sections:
         for path in seed_files:

@@ -191,6 +191,48 @@ O que ele deve fazer é:
 - separar cabeçalho, entrada e referência numérica
 - registrar incertezas de OCR em vez de normalizar cedo demais
 
+### 6.1 Localização física de capítulos durante o chunking
+
+O chunk semântico está autorizado a pesquisar, em modo somente leitura, qualquer arquivo dentro do
+`source_root` do volume para localizar o cabeçalho corporal correspondente a uma entrada que ele
+possui. O limite do chunk determina quais entradas ele pode emitir, não quais páginas do mesmo
+volume ele pode consultar como evidência.
+
+Para `INDEX CAPITUM` e estruturas equivalentes:
+
+- separar livros/partes quando a numeração reiniciar;
+- normalizar ligaturas, caixa, espaços, pontuação e ruído OCR apenas em memória;
+- procurar frases distintivas do título, não apenas o numeral;
+- excluir ocorrências no próprio índice, em outros sumários, catálogos ou cabeçalhos correntes;
+- exigir sequência física monotônica e apoio dos capítulos vizinhos;
+- aceitar deslocamento ordinal somente quando o texto e a sequência provarem inserção, omissão ou
+  reordenação editorial;
+- preencher `target_file` mesmo sem página editorial quando houver evidência forte;
+- manter `target_file` nulo quando restarem candidatos empatados ou apenas coincidência numérica.
+
+Todo destino resolvido pelo chunk deve registrar `raw_json.physical_target_evidence` com a consulta
+literal, o cabeçalho encontrado, o método, os arquivos inspecionados e a razão da decisão. O formato
+completo está em
+`.codex/skills/patristic-index-extractor/references/chapter-target-localization.md`.
+
+### 6.2 Fronteira entre obra bíblica e índice de citações
+
+A presença de um livro bíblico, de `Scriptura` ou de `Psalmus` não define a pipeline. A função
+editorial define:
+
+- `HOMILIA IN PSALMUM X`, `EXPOSITIO IN MATTHAEUM`, `COMMENTARIUS IN SCRIPTURAM` e seus capítulos
+  são obras ou unidades estruturais e pertencem ao índice geral de obras;
+- `INDEX LOCORUM SCRIPTURAE`, `TABLE DES CITATIONS DE LA BIBLE`, concordâncias e listas remissivas
+  de passagens pertencem à pipeline alfabética;
+- uma citação completa como `Psal. X, 3` dentro de uma entrada onomástica, analítica ou temática
+  continua pertencendo à pipeline alfabética e pode gerar uma referência bíblica associada àquela
+  entrada;
+- a simples menção lexical a um salmo ou livro bíblico, sem passagem analisável, permanece apenas
+  no texto/contexto da entrada e não deve ser promovida a obra nem a referência bíblica navegável.
+
+Assim, regexes bíblicas podem ajudar a reconhecer a forma da entrada, mas nunca funcionam sozinhas
+como veto de ownership da pipeline geral.
+
 ## 7. Resposta curta à pergunta principal
 
 Sim, a Patrologia Latina usa o mesmo padrão geral da Graeca:

@@ -380,7 +380,11 @@ def _ensure_reference(
     cache: dict[str, int],
     versification_id: str,
 ) -> int:
-    cached = cache.get(reference.canonical_key)
+    _legacy_profile, separator, locator = reference.canonical_key.partition("|")
+    if not separator:
+        raise ValueError(f"invalid reference canonical key: {reference.canonical_key}")
+    canonical_key = f"{versification_id}|{locator}"
+    cached = cache.get(canonical_key)
     if cached is not None:
         return cached
     cursor = destination.execute(
@@ -393,7 +397,7 @@ def _ensure_reference(
             versification_id,
             reference.book_key,
             reference.granularity,
-            reference.canonical_key,
+            canonical_key,
             reference.normalized,
         ),
     )
@@ -421,12 +425,12 @@ def _ensure_reference(
     else:
         row = destination.execute(
             "SELECT id FROM scripture_references WHERE canonical_key = ?",
-            (reference.canonical_key,),
+            (canonical_key,),
         ).fetchone()
         if row is None:
-            raise RuntimeError(f"reference disappeared: {reference.canonical_key}")
+            raise RuntimeError(f"reference disappeared: {canonical_key}")
         reference_id = int(row[0])
-    cache[reference.canonical_key] = reference_id
+    cache[canonical_key] = reference_id
     return reference_id
 
 
@@ -733,7 +737,7 @@ def build_database(
                         destination,
                         reference,
                         reference_cache,
-                        "unknown",
+                        bounds.profile,
                     )
                     if _insert_mention(
                         destination,
@@ -841,7 +845,7 @@ def build_database(
                 destination,
                 reference,
                 reference_cache,
-                "unknown",
+                bounds.profile,
             )
             if _insert_mention(
                 destination,

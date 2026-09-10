@@ -141,7 +141,7 @@ function buildUrl(base, volumeId, params = {}) {
   for (const [key, value] of Object.entries(params)) {
     if (value !== undefined && value !== null && String(value) !== '') query.set(key, String(value));
   }
-  return `${cleanBase}/indices?${query.toString()}`;
+  return `${cleanBase}/indices/?${query.toString()}`;
 }
 
 function record(volume, base, title, values, params = {}) {

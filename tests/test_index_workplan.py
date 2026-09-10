@@ -157,6 +157,11 @@ def test_general_and_alphabetical_workplans_use_opposite_physical_directions(
     ]
     assert general["pipeline_purpose"].startswith("Read opening/front-matter")
     assert alphabetical["pipeline_purpose"].startswith("Read closing alphabetical")
+    assert general["chunks"][0]["chunk_contract_version"] == 3
+    assert general["chunks"][0]["target_search_policy"]["enabled"] is True
+    assert general["chunk_policy"]["target_search"]["may_inspect_unowned_files"] is True
+    assert alphabetical["chunks"][0]["chunk_contract_version"] == 2
+    assert alphabetical["chunks"][0]["target_search_policy"]["enabled"] is False
 
 
 def test_workplan_extends_heading_through_contiguous_candidate_continuations(
@@ -230,6 +235,51 @@ def test_workplan_extends_section_beyond_prefilter_neighbors(tmp_path: Path) -> 
 
     assert workplan["sections"][0]["physical_files"] == [
         str(page) for page in pages[:4]
+    ]
+
+
+def test_structural_workplan_stops_after_dense_list_continuation(tmp_path: Path) -> None:
+    source_root = tmp_path / "PL177" / "text"
+    source_root.mkdir(parents=True)
+    first = source_root / "pl-195.txt"
+    continuation = source_root / "pl-196.txt"
+    body = source_root / "pl-197.txt"
+    _write_page(
+        first,
+        "INCIPIUNT CAPITULA",
+        "\n" + "\n".join(f"CAP. {value}. Titulus" for value in range(1, 16)),
+    )
+    _write_page(
+        continuation,
+        "APPENDIX AD OPERA",
+        "\n" + "\n".join(f"CAP. {value}. Titulus" for value in range(16, 58)),
+    )
+    _write_page(
+        body,
+        "APPENDIX AD OPERA",
+        "CAP. I. Titulus\nLong body prose without a structural list.",
+    )
+
+    workplan = build_index_workplan(
+        volume_id="PL177",
+        source_root=source_root,
+        collection="PL",
+        filtered_pages={
+            "candidate_sections": [
+                {
+                    "heading": "INCIPIUNT CAPITULA",
+                    "marker": "INCIPIUNT CAPITULA",
+                    "file": str(first),
+                }
+            ]
+        },
+        pipeline_kind="general",
+        chunk_output_dir=tmp_path / "chunks",
+    )
+
+    assert workplan["sections"][0]["physical_files"] == [
+        str(first),
+        str(continuation),
     ]
 
 

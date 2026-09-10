@@ -113,6 +113,11 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Validate Scripture publication
+        run: |
+          npm run test:scripture
+          npm run validate:scripture
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:

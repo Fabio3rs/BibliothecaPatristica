@@ -202,13 +202,13 @@ function localePrefix(locale: SupportedLocale): string {
 function buildViewerHref(volumeId: string, page: number | null, locale: SupportedLocale): string | null {
   if (!page) return null;
   const params = new URLSearchParams({ doc: volumeId, page: String(page) });
-  return `${localePrefix(locale)}/viewer?${params.toString()}`;
+  return `${localePrefix(locale)}/viewer/?${params.toString()}`;
 }
 
 function buildIndicesHref(volumeId: string, locale: SupportedLocale, sectionKey?: string): string {
   const params = new URLSearchParams({ volume: volumeId });
   if (sectionKey) params.set('section', sectionKey);
-  return `${localePrefix(locale)}/indices?${params.toString()}`;
+  return `${localePrefix(locale)}/indices/?${params.toString()}`;
 }
 
 function displayText(display: DisplayText | undefined, locale: SupportedLocale, fallback = '') {

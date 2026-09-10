@@ -605,7 +605,7 @@ const startPoints = startPointsByLocale[locale];
     const statsGrid = document.getElementById('stats-grid');
     const authorsList = document.getElementById('authors-list');
     const themeGroups = document.getElementById('theme-groups');
-    const searchUrl = (tag) => `${localeBase}search?keyword=${encodeURIComponent(tag)}&term=${encodeURIComponent(tag)}`;
+    const searchUrl = (tag) => `${localeBase}search/?keyword=${encodeURIComponent(tag)}&term=${encodeURIComponent(tag)}`;
     const dataCache = window.pdfocrDataCache;
     const jsonCache = new Map();
     const isEn = uiLocale === 'en';

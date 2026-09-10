@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "description": "Preferências editoriais identificadas por texto; não dependem dos IDs instáveis do HDBSCAN.",
+  "overrides": [
+    {"anchor_norm": "profetas", "canonical_norm": "profetas"},
+    {"anchor_norm": "heresia", "canonical_norm": "heresia"},
+    {"anchor_norm": "salmos", "canonical_norm": "salmos"},
+    {"anchor_norm": "paulo (sao paulo apostolo)", "canonical_norm": "paulo (sao paulo apostolo)"},
+    {"anchor_norm": "joao", "canonical_norm": "joao"},
+    {"anchor_norm": "trindade", "canonical_norm": "trindade"},
+    {"anchor_norm": "cristo", "canonical_norm": "cristo"},
+    {"anchor_norm": "cristologia", "canonical_norm": "cristologia"},
+    {"anchor_norm": "pecado", "canonical_norm": "pecado"},
+    {"anchor_norm": "igreja", "canonical_norm": "igreja"}
+  ]
+}

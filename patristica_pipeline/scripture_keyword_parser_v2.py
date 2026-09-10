@@ -14,7 +14,7 @@ from patristica_pipeline.scripture_book_catalog import (
 )
 
 
-PARSER_VERSION = "2.1.3-poc"
+PARSER_VERSION = "2.1.4-poc"
 
 
 @dataclass(frozen=True, order=True)
@@ -401,12 +401,19 @@ def _source_kind(text: str, references: list[ScriptureReference]) -> str:
 def _looks_like_person_ordinal(reference: ScriptureReference, text: str) -> bool:
     if reference.book_key != "joao" or not reference.chapter_was_roman:
         return False
-    if reference.granularity != "chapter":
+    context = _fold(text[max(0, reference.start - 32) : reference.end + 32])
+    if re.search(r"\bpapas?\b", context):
+        return True
+    if reference.granularity not in {"chapter", "range"}:
+        return False
+    if any(
+        segment.start_verse is not None or segment.end_verse is not None
+        for segment in reference.segments
+    ):
         return False
     raw_book = _fold(text[reference.start : reference.end]).strip()
     if raw_book.startswith(("ioan", "joh", "jn")):
         return False
-    context = _fold(text[max(0, reference.start - 32) : reference.end + 32])
     scripture_cues = ("evangelho", "epistola", "capitulo", "versiculo")
     return not any(cue in context for cue in scripture_cues)
 

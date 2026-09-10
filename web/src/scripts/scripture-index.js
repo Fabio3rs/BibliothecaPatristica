@@ -12,6 +12,12 @@ export function scriptureBookSlug(bookKey) {
   return String(bookKey || '').trim().replace(/\s+/g, '-');
 }
 
+export function joinScriptureRoute(baseRoute, segment) {
+  const base = String(baseRoute || '').replace(/\/+$/, '');
+  const child = String(segment || '').replace(/^\/+|\/+$/g, '');
+  return `${base}/${encodeURIComponent(child)}/`;
+}
+
 function scriptureSegmentSlug(segment) {
   const [startChapter, startVerse, endChapter, endVerse] = segment;
   if (!startVerse && !endVerse) {

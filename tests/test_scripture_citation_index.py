@@ -338,6 +338,55 @@ col. 689; la sagesse 10 divine; mes os. 9 guérissent; Gen. 2.
     }
 
 
+def test_verse_ranges_do_not_consume_the_next_footnote_number(
+    tmp_path: Path,
+) -> None:
+    source_root = tmp_path / "teste" / "PG996" / "text"
+    source_root.mkdir(parents=True)
+    path = source_root / "PG996-001.txt"
+    path.write_text(
+        """<pagina tipo="conteudo">
+<bloco tipo="rodape">
+18 Joan. 1, 1-3. 19 Act. ii, 22.
+5 Isa. v, 26-29. 6 ibid. 3, 4.
+21 Joan. II, 14-17. 22 Matth. I, 20-21.
+13 Eccli. vii, 31-36. 14 Innoc. I, ep. 2.
+</bloco>
+<bloco tipo="texto_principal">Joan. 3, 16-4, 2.</bloco>
+</pagina>""",
+        encoding="utf-8",
+    )
+
+    result = scan_file_task(
+        ScanTask(
+            volume_id="PG996",
+            collection="PG",
+            source_root=str(source_root),
+            file_path=str(path),
+            physical_index=0,
+            is_index_source=False,
+            observed_aliases=(),
+            estimator_pages=(),
+            profile_fingerprint="fixture",
+        )
+    )
+    refs = {
+        occurrence["ref_norm"]
+        for group in result["groups"]
+        for occurrence in group["occurrences"]
+    }
+
+    assert "São João 1,1-3" in refs
+    assert "Isaías 5,26-29" in refs
+    assert "São João 2,14-17" in refs
+    assert "São João 3,16-4,2" in refs
+    assert "Eclesiástico 7,31-36" in refs
+    assert "São João 1,1-3,19" not in refs
+    assert "Isaías 5,26-29,6" not in refs
+    assert "São João 2,14-17,22" not in refs
+    assert "Eclesiástico 7,31-36,14" not in refs
+
+
 def test_scanner_handles_lists_historical_names_and_roman_boundaries(
     tmp_path: Path,
 ) -> None:

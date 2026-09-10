@@ -211,3 +211,15 @@ For `PO`:
 9. `work_index_analytic`
 10. `editorial_closure`
 11. `retrospective_table`
+
+## 5. Physical targets for structural entries
+
+When an owned table enumerates chapters, books, parts, homilies, epistles, questions, or similar
+units, the semantic chunk may inspect the whole current volume to find the corresponding body
+headings. Follow `chapter-target-localization.md`.
+
+- Use in-memory OCR normalization only for searching; preserve source literals.
+- Split numbering restarts into independent book/part runs.
+- Require title evidence and monotonic neighboring matches, not ordinal equality alone.
+- Exclude the source index and other lists from candidate targets.
+- Record structured evidence for resolved targets; leave ambiguous targets null.

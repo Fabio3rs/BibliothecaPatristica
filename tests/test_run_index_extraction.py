@@ -629,6 +629,8 @@ def test_run_index_extraction_batch_stops_on_first_failure_without_continue_on_e
         "argv",
         [
             "run_index_extraction.py",
+            "--lock-file",
+            str(tmp_path / "index.lock"),
             "--all-volumes",
             "--root",
             str(root),
@@ -663,7 +665,14 @@ def test_run_index_extraction_batch_continue_on_error_writes_failure_artifact_an
     _make_text_volume(root, "PL002")
     imported = _configure_successful_batch_stubs(monkeypatch, tmp_path / "out")
 
-    def fake_import(payload_file: Path, db_path: Path, replace: bool) -> None:
+    def fake_import(
+        payload_file: Path,
+        db_path: Path,
+        replace: bool,
+        *,
+        caller_holds_lock: bool = False,
+    ) -> None:
+        assert caller_holds_lock is True
         volume_id = payload_file.stem.replace("_indices", "")
         if volume_id == "PL001":
             raise SystemExit("import_index_json.py failed for PL001_indices.json\nSTDOUT:\n\nSTDERR:\ninvalid payload")
@@ -675,6 +684,8 @@ def test_run_index_extraction_batch_continue_on_error_writes_failure_artifact_an
         "argv",
         [
             "run_index_extraction.py",
+            "--lock-file",
+            str(tmp_path / "index.lock"),
             "--all-volumes",
             "--continue-on-error",
             "--root",
@@ -720,7 +731,7 @@ def test_run_index_extraction_single_volume_continue_on_error_still_exits_with_f
     monkeypatch.setattr(
         run_index_extraction,
         "import_payload",
-        lambda payload_file, db_path, replace: (_ for _ in ()).throw(
+        lambda payload_file, db_path, replace, *, caller_holds_lock=False: (_ for _ in ()).throw(
             SystemExit("import_index_json.py failed for PL001_indices.json\nSTDOUT:\n\nSTDERR:\nsingle failure")
         ),
     )
@@ -729,6 +740,8 @@ def test_run_index_extraction_single_volume_continue_on_error_still_exits_with_f
         "argv",
         [
             "run_index_extraction.py",
+            "--lock-file",
+            str(tmp_path / "index.lock"),
             "--volume-id",
             "PL001",
             "--continue-on-error",
@@ -784,6 +797,8 @@ def test_verbose_dry_run_reports_every_volume_stage_with_position(
         "argv",
         [
             "run_index_extraction.py",
+            "--lock-file",
+            str(tmp_path / "index.lock"),
             "--volume-id",
             "PL001",
             "--root",
@@ -855,6 +870,8 @@ def test_translation_only_uses_existing_db_without_ocr_root(
         "argv",
         [
             "run_index_extraction.py",
+            "--lock-file",
+            str(tmp_path / "index.lock"),
             "--volume-id",
             "PL001",
             "--translation-only",

@@ -30,6 +30,12 @@ from patristica_pipeline.common import page_sort_key
 _TERMINAL_WRITE_LOCK = threading.Lock()
 HEARTBEAT_INTERVAL_SECONDS = 30.0
 STALL_WARNING_SECONDS = 300.0
+GENERAL_TARGET_SEARCH_SEMANTICS = {
+    "scope": "same_volume_source_root",
+    "entry_ownership": "owned_physical_files_only",
+    "numeric_equality_mapping_forbidden": True,
+    "structured_evidence_required_for_resolved_targets": True,
+}
 
 
 def _path_candidates(value: Any, source_root: Path) -> set[str]:
@@ -41,6 +47,97 @@ def _path_candidates(value: Any, source_root: Path) -> set[str]:
         str((source_root / path).resolve()),
         str((source_root / path.name).resolve()),
     }
+
+
+def _existing_volume_file(value: Any, source_root: Path) -> Path | None:
+    if value is None or not str(value).strip():
+        return None
+    for candidate in _path_candidates(value, source_root):
+        path = Path(candidate).resolve()
+        try:
+            path.relative_to(source_root)
+        except ValueError:
+            continue
+        if path.is_file():
+            return path
+    return None
+
+
+def _validate_general_entry_target(
+    entry: dict[str, Any],
+    *,
+    source_root: Path,
+    source_files: list[Any],
+    path: Path,
+) -> None:
+    target_raw = entry.get("target_file")
+    if target_raw is None or not str(target_raw).strip():
+        return
+    target = _existing_volume_file(target_raw, source_root)
+    if target is None:
+        raise ValueError(
+            f"entry {entry.get('entry_key')!r} target_file must be an existing file "
+            f"inside source_root in {path}: {target_raw!r}"
+        )
+    raw_json = entry.get("raw_json")
+    evidence = (
+        raw_json.get("physical_target_evidence")
+        if isinstance(raw_json, dict)
+        else None
+    )
+    if not isinstance(evidence, dict):
+        raise ValueError(
+            f"entry {entry.get('entry_key')!r} with target_file must declare "
+            f"raw_json.physical_target_evidence in {path}"
+        )
+    required_text = ("method", "query_raw", "matched_heading_raw")
+    missing = [
+        field
+        for field in required_text
+        if not str(evidence.get(field) or "").strip()
+    ]
+    inspected_files = evidence.get("inspected_files")
+    if (
+        evidence.get("status") != "resolved"
+        or missing
+        or not isinstance(inspected_files, list)
+        or not inspected_files
+    ):
+        raise ValueError(
+            f"entry {entry.get('entry_key')!r} has incomplete physical_target_evidence "
+            f"in {path}; status=resolved, {required_text}, and inspected_files are required"
+        )
+    forbidden_methods = {"numeric_equality", "ordinal_only", "physical_suffix_equality"}
+    if str(evidence.get("method") or "").strip().casefold() in forbidden_methods:
+        raise ValueError(
+            f"entry {entry.get('entry_key')!r} uses forbidden numeric-only target evidence in {path}"
+        )
+    evidence_target = _existing_volume_file(evidence.get("target_file"), source_root)
+    if evidence_target != target:
+        raise ValueError(
+            f"entry {entry.get('entry_key')!r} physical_target_evidence.target_file "
+            f"does not match target_file in {path}"
+        )
+    inspected = {
+        resolved
+        for value in inspected_files
+        if (resolved := _existing_volume_file(value, source_root)) is not None
+    }
+    if target not in inspected:
+        raise ValueError(
+            f"entry {entry.get('entry_key')!r} target_file is absent from "
+            f"physical_target_evidence.inspected_files in {path}"
+        )
+    source_candidates = {
+        candidate
+        for value in source_files
+        for candidate in _path_candidates(value, source_root)
+    }
+    if str(target) in source_candidates and evidence.get("same_scan_body_opening") is not True:
+        raise ValueError(
+            f"entry {entry.get('entry_key')!r} resolves to its own index source file in {path}; "
+            "set same_scan_body_opening=true only when direct body-opening evidence proves it"
+        )
 
 
 def _has_justified_out_of_scope_disposition(
@@ -258,6 +355,52 @@ def _chunk_prompt(workplan_path: Path, workplan: dict[str, Any], chunk: dict[str
         chunk.get("required_boundary_decisions") or [], ensure_ascii=False, indent=2
     )
     recovery_block = _existing_fragment_recovery_block(chunk)
+    if pipeline_kind == "general":
+        target_phase_ownership = (
+            "- For entries emitted from this chunk's owned files, you are authorized to search "
+            "anywhere inside this volume's `source_root` and populate a proven physical "
+            "`target_file`. This investigation does not transfer entry ownership."
+        )
+        target_localization_block = f"""
+ENTRY TARGET LOCALIZATION (GENERAL PIPELINE: AUTHORIZED)
+- Resolve targets while the index semantics and chapter sequence are still in context. This is
+  especially important for page-less `INDEX CAPITUM`, `CAPITULA`, chapter, book, part, homily,
+  epistle, and similar structural entries.
+- Start with distinctive title words, author/work context, incipits, and explicit body headings.
+  Normalize only in memory for searching: Unicode/ligatures, case, whitespace, punctuation, common
+  OCR confusions, and removable `CAP.`, `CAPUT`, `CHAPTER`, or `CHAPITRE` labels. Preserve the OCR
+  literal in canonical and evidence fields.
+- Group numbering restarts into separate books/parts before aligning. Require a monotonic physical
+  sequence and compare heading text across neighboring entries. Never accept same-numeral equality
+  by itself. A small ordinal shift is allowed only when strong title evidence and the surrounding
+  sequence both support an insertion, omission, or editorial reorder.
+- Exclude occurrences in the source index, another table, `ORDO`, `ELENCHUS`, catalogue, running
+  header, or retrospective list. A target may equal the entry's source file only when the body
+  demonstrably opens later on that same scan; then set `same_scan_body_opening` to true.
+- Search only inside `source_root`. Do not scan another volume and do not derive a physical file
+  from a printed page, column, ordinal, or filename suffix alone.
+- If evidence is strong, set `entry.target_file` and record
+  `entry.raw_json.physical_target_evidence` with: `status: "resolved"`, `method`, `query_raw`,
+  `matched_heading_raw`, `target_file`, `inspected_files`, and the textual/sequence reason. For a
+  sequence alignment, also record the index ordinal, matched body ordinal, segment, and neighboring
+  matches. If the evidence is tied or weak, keep `target_file` null and record the ambiguity rather
+  than guessing.
+- Do not invoke a mutating workflow or edit helper artifacts. Read-only OCR readers, `rg`, and
+  in-memory normalization/search are permitted.
+- Copy this exact top-level contract into the fragment as `target_search_semantics`:
+  {json.dumps(GENERAL_TARGET_SEARCH_SEMANTICS, ensure_ascii=False, separators=(',', ':'))}
+"""
+        fragment_contract_field = ", target_search_semantics"
+    else:
+        target_phase_ownership = (
+            "- Do not run material target localization from this alphabetical chunk; its separate "
+            "locator/reconciliation stages own that work."
+        )
+        target_localization_block = """
+TARGET LOCALIZATION BOUNDARY
+- Do not run the material target locator in this phase.
+"""
+        fragment_contract_field = ""
     return f"""${skill}
 
 TASK
@@ -267,8 +410,8 @@ CHUNK PHASE OWNERSHIP
 - Write exactly one semantic fragment at `{output_file}`.
 - Do not edit the workplan, other chunk fragments, assembled fragments, or the canonical volume
   payload.
-- Do not run the final-agent phase, work-anchor reconciliation, payload evidence validation, or
-  material target localization from this chunk.
+- Do not run the final-agent phase, work-anchor reconciliation, or payload evidence validation.
+{target_phase_ownership}
 - Never initialize, import into, replace, rebuild, or otherwise modify any SQLite database. Never
   invoke `init_index_db.py`, `import_index_json.py`, or `rebuild_index_db_from_payloads.py`.
 - The final acknowledgment means only that this fragment was written; the chunk runner still owns
@@ -354,9 +497,10 @@ INSTRUCTIONS
 - For payload recovery after OCR verification, the optional helper is:
   `python scripts/pipeline_index_extraction/fix_linebreak_hyphens.py INPUT_JSON OUTPUT_JSON`.
   It is not evidence and must not be applied blindly to ambiguous lexical hyphens.
-- Do not run the material target locator in this phase.
+{target_localization_block}
 - Write a JSON object with schema_version, volume_id, section_id, chunk_id, input_fingerprint,
-  status, physical_files, numbering_semantics, boundary_decisions, {fragment_fields}.
+  status, physical_files, numbering_semantics, boundary_decisions{fragment_contract_field},
+  {fragment_fields}.
 - Set `input_fingerprint` exactly to `{chunk.get("input_fingerprint")}`. It binds this fragment to
   the current OCR and chunk contract; never copy a fingerprint from an older fragment.
 - Set `numbering_semantics` exactly to:
@@ -540,6 +684,13 @@ def _validate_fragment(
     pipeline_kind = workplan.get("pipeline_kind")
     if pipeline_kind not in {"general", "alphabetical"}:
         raise ValueError(f"Unsupported pipeline_kind in workplan: {pipeline_kind!r}")
+    chunk_contract_version = int(chunk.get("chunk_contract_version") or 0)
+    if (
+        pipeline_kind == "general"
+        and chunk_contract_version >= 3
+        and payload.get("target_search_semantics") != GENERAL_TARGET_SEARCH_SEMANTICS
+    ):
+        raise ValueError(f"target_search_semantics missing or invalid in {path}")
     if pipeline_kind == "alphabetical":
         entries = payload.get("entries") or []
     else:
@@ -553,10 +704,10 @@ def _validate_fragment(
             entries.extend(section["entries"])
     if any(not isinstance(entry, dict) for entry in entries):
         raise ValueError(f"every fragment entry must be an object in {path}")
-    if int(chunk.get("chunk_contract_version") or 0) >= 2 and any(
+    if chunk_contract_version >= 2 and any(
         not str(entry.get("entry_key") or "").strip() for entry in entries
     ):
-        raise ValueError(f"every v2 fragment entry must have a stable entry_key in {path}")
+        raise ValueError(f"every v2+ fragment entry must have a stable entry_key in {path}")
     stable_keys = [
         str(entry.get("entry_key"))
         for entry in entries
@@ -574,7 +725,7 @@ def _validate_fragment(
         raw_json = entry.get("raw_json")
         source_files = raw_json.get("source_files") if isinstance(raw_json, dict) else None
         if not isinstance(source_files, list) or not source_files:
-            if int(chunk.get("chunk_contract_version") or 0) >= 2:
+            if chunk_contract_version >= 2:
                 raise ValueError(
                     f"entry {entry.get('entry_key')!r} must declare "
                     f"raw_json.source_files in {path}"
@@ -589,6 +740,13 @@ def _validate_fragment(
             raise ValueError(
                 f"entry source ownership violation in {path}: "
                 f"ascending first source {ordered_sources[0]} is not owned by the chunk"
+            )
+        if pipeline_kind == "general" and chunk_contract_version >= 3:
+            _validate_general_entry_target(
+                entry,
+                source_root=source_root,
+                source_files=source_files,
+                path=path,
             )
     entry_count = len(entries)
     estimate = (chunk.get("deterministic_entry_estimate") or {}).get("estimated_entry_count") or {}

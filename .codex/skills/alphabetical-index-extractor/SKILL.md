@@ -11,6 +11,11 @@ This is the closing alphabetical/citation-index pipeline. Start at the physical 
 and move toward its beginning. Its primary objects are indexes of names, subjects, citations,
 scripture, places, words, concordances, and editorial cross-references. Tables of works, subworks,
 books, parts, chapters, and `ORDO RERUM` belong to the general works-index pipeline.
+Classify by editorial function, not by biblical vocabulary. `HOMILIA IN PSALMUM X`, `EXPOSITIO IN
+MATTHAEUM`, and similar work titles remain general works. A complete biblical citation embedded in
+an owned onomastic, analytical, subject, or citation-index entry remains alphabetical material and
+may produce `scripture_refs`; a mere mention of a psalm or biblical book without a safely parsed
+passage remains `incidental_mention` and produces no `scripture_ref`.
 In this pipeline `ORDO RERUM`, addenda/corrigenda, errata, and other `editorial_closure` blocks
 are non-owned stop/boundary material, including when they begin in the middle of a physical OCR
 file; never emit their sections or entries here. The corresponding enum values exist only for
@@ -211,6 +216,8 @@ phase names them. Never load a complete assembled payload during locator or repa
 - one or more material references per entry in `refs`
 - parsed biblical references in `scripture_refs` when present
 - `scripture_refs` only when the biblical book context is explicit or safely inherited from a real biblical heading
+- a complete biblical locator embedded in an owned onomastic/analytical entry is still a citation
+  in this pipeline; use an entry-level `scripture_mode` override and emit the parsed passage
 - no `scripture_ref` for an incidental biblical mention whose effective `scripture_mode` is
   `incidental_mention`; preserve it only in the semantic entry/context
 - coverage notes and residual uncertainty in `coverage` and `notes`

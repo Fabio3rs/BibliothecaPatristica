@@ -11,6 +11,7 @@ const {
   breadcrumbs = [],
   showPrimaryNav = true,
   showLocaleSwitch = true,
+  indexable = true,
 } = Astro.props;
 const rawBase = import.meta.env.BASE_URL || '/';
 const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
@@ -55,11 +56,12 @@ const localeOptions = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalUrl} />
-    {alternateLocales.map((alternate) => (
+    {indexable && <link rel="canonical" href={canonicalUrl} />}
+    {!indexable && <meta name="robots" content="noindex,follow" />}
+    {indexable && alternateLocales.map((alternate) => (
       <link rel="alternate" hreflang={alternate.hreflang} href={absoluteLocaleUrl(alternate.locale)} />
     ))}
-    <link rel="alternate" hreflang="x-default" href={absoluteLocaleUrl('pt-br')} />
+    {indexable && <link rel="alternate" hreflang="x-default" href={absoluteLocaleUrl('pt-br')} />}
     <link rel="icon" type="image/svg+xml" href={`${baseWithSlash}favicon.svg`} />
     <meta name="theme-color" content="#1f6b7a" />
     <meta property="og:type" content="website" />

@@ -9,8 +9,10 @@ description: Extract structured indices from a single patrística OCR volume (`t
 
 This is the opening/general works-index pipeline. Start at the physical beginning of the volume and
 move forward through tables of works, fascicles, books, parts, chapters, capitula, and work-level
-contents. Closing alphabetical, analytical, onomastic, scripture, and citation indexes belong to
-the separate alphabetical-index pipeline.
+contents. A work remains here when its subject is biblical: `HOMILIA IN PSALMUM X`, `EXPOSITIO IN
+MATTHAEUM`, and the chapters of such works are works/structural units, not scripture-index rows.
+Closing alphabetical, analytical, onomastic, scripture-reference, and citation indexes belong to
+the separate alphabetical-index pipeline. Biblical vocabulary by itself never transfers ownership.
 
 ## Phase Ownership
 
@@ -21,7 +23,10 @@ Respect the runtime phase boundary:
   do not turn them into a final payload or database state.
 - **Semantic chunk extraction:** when `RUNTIME` names a `chunk_id` and fragment `output_file`, write
   only that fragment. Do not assemble the volume, edit the workplan, write the canonical payload,
-  run reconciliation, or touch any database.
+  run reconciliation, or touch any database. For general-index entries owned by the chunk, search
+  anywhere inside the current volume's `source_root` when needed to resolve a physical target.
+  Extra OCR files are investigation evidence only and do not transfer entry ownership. Follow
+  `references/chapter-target-localization.md` for structural and page-less entries.
 - **Deterministic assembly:** the driver validates chunk fingerprints and merges complete fragments
   into `assembled_fragments.json`. Agents must not replace or bypass this artifact.
 - **Final payload:** consume every stable object from the validated assembly, resolve only the
@@ -30,6 +35,9 @@ Respect the runtime phase boundary:
   - Copy every owned `work_key`, `section_key`, and `entry_key` exactly. Stable keys are immutable
     identities, including provisional keys containing `candidate-section`; refine classification
     fields and `raw_json`, never the key.
+  - Preserve every validated chunk `target_file` and its exact
+    `raw_json.physical_target_evidence`. Resolve only entries that remain unresolved; do not
+    silently replace or discard a chunk target during final assembly.
   - A clearly mislocalized closing alphabetical/citation section is not owned merely because it
     appears in the assembly. Omit it from the general payload, record its stable key and exclusion
     reason in `notes`, and leave its extraction to the alphabetical pipeline.
@@ -66,6 +74,9 @@ runtime assignment and exact validator feedback, then stops after writing its fr
 - Treat the `PRESCAN` section as the starting map, not as ground truth; inspect the files it names before finalizing the result.
 - In the final-payload phase, write the full extraction payload to the file named in the
   `OUTPUT FILE` section. In a chunk phase, write only the named fragment.
+- In a version-3 general chunk, treat `target_search_policy.enabled` as explicit authorization to
+  resolve `target_file` for entries beginning in owned files. Read and follow
+  `references/chapter-target-localization.md`; preserve structured physical-target evidence.
 - Validate the written payload with non-mutating checks before acknowledging completion. Use
   validators named by the runtime prompt and `scripts/verify_index_payload_evidence.py` when
   applicable; validation may read the primary database but must not change it.
@@ -96,8 +107,11 @@ bounded runtime prompt instead, then stops after its fragment passes acknowledgm
 4. For each work, read its opening pages and enough body pages to distinguish its title/front matter
    from a recurring running-header range, then mark that TODO item complete.
 5. For `PO`, identify fascicle inventory pages, internal work tables, and retrospective tables before recording final sections.
-6. Do not extract closing alphabetical, analytical, onomastic, scripture, citation, concordance,
-   names, subjects, or cross-reference indexes; the alphabetical-index pipeline owns them.
+6. Do not extract closing alphabetical, analytical, onomastic, scripture-reference, citation,
+   concordance, names, subjects, or cross-reference indexes; the alphabetical-index pipeline owns
+   them. Distinguish those remissive/index contexts from works about Scripture: a homily,
+   exposition, commentary, sermon, book, or chapter on a psalm or biblical passage remains owned
+   here.
    Publisher advertisements and catalogues printed after an explicit `FINIS TOMI` are external
    post-volume matter and belong to neither corpus-index payload.
 7. Construct the canonical JSON from the validated assembly and verified volume-level evidence,
@@ -175,6 +189,21 @@ requested number of workers.
 - Use numeric clues only as secondary evidence because CER, page wear, and scan defects can corrupt printed digits inside OCR.
 - When a target is not obvious, try several queries: full title, shortened title, normalized title, author plus title token, and nearby heading phrases.
 - Record the evidence of the located files in `raw_json`, including the strings that matched and any uncertainty about numbering.
+- This rule applies during semantic chunk extraction as well as final-payload review. Chunk bounds
+  restrict emitted entries, not read-only investigation inside the current volume.
+
+## Structural Entry Target Rule
+
+- For `INDEX CAPITUM`, `CAPITULA`, chapter, book, part, homily, epistle, question, and equivalent
+  work-internal tables, use `references/chapter-target-localization.md`.
+- Resolve page-less entries from textual body headings and monotonic sequence evidence when strong;
+  do not postpone all such entries to the page-number helper.
+- Split numbering restarts into separate segments and allow an ordinal offset only when title and
+  neighboring sequence evidence establish an editorial insertion, omission, or reorder.
+- Never use same-numeral coincidence, printed-page equality, or OCR filename suffix equality as
+  sufficient evidence.
+- Every populated target from a version-3 chunk must include
+  `raw_json.physical_target_evidence`; unresolved cases keep `target_file` null.
 
 ## Deterministic Work-Anchor Evidence
 

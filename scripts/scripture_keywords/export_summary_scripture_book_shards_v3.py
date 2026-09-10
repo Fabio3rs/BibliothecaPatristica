@@ -57,6 +57,7 @@ def _book_payload(
     *,
     parser_version: str,
     detector_version: str,
+    versification_profile: str,
     book_key: str,
 ) -> tuple[dict[str, Any], dict[str, int]]:
     reference_rows = connection.execute(
@@ -139,7 +140,7 @@ def _book_payload(
         "v": 3,
         "parser": parser_version,
         "detector": detector_version,
-        "v11n": "unknown",
+        "v11n": versification_profile,
         "page": "physical",
         "source_mask": ["standalone_keyword", "embedded_keyword", "ocr"],
         "book": [book_key, canonical_book_label(book_key) or book_key],
@@ -169,6 +170,7 @@ def export_book_shards(
         metadata = _metadata(connection)
         parser_version = metadata.get("parser_version", "unknown")
         detector_version = metadata.get("detector_version", "unknown")
+        versification_profile = metadata.get("versification_profile", "unknown")
         present_books = [
             str(row[0])
             for row in connection.execute(
@@ -186,6 +188,7 @@ def export_book_shards(
                 connection,
                 parser_version=parser_version,
                 detector_version=detector_version,
+                versification_profile=versification_profile,
                 book_key=book_key,
             )
             raw = json.dumps(
@@ -240,13 +243,14 @@ def export_book_shards(
         "strategy": "one-shard-per-book",
         "parser": parser_version,
         "detector": detector_version,
-        "v11n": "unknown",
+        "v11n": versification_profile,
         "page": "physical",
         "source_mask": ["standalone_keyword", "embedded_keyword", "ocr"],
         "source": {
             "scope": "summary-v1-keywords+deterministic-ocr",
             "database_sha256": _sha256_file(db_path),
             "database_schema": metadata.get("schema_version", "unknown"),
+            "versification_sha256": metadata.get("versification_sha256", "unknown"),
         },
         "routes": ordered_routes,
         "stats": {

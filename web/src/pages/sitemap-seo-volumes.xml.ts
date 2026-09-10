@@ -7,7 +7,7 @@ const LOCALE_PREFIXES = ['', '/en', '/it', '/fr'] as const;
 export const GET: APIRoute = async ({ site }) => {
   const volumes = await listIndexVolumes();
   const urls = volumes.flatMap((volume) => LOCALE_PREFIXES.map((prefix) => ({
-    loc: buildCanonicalUrl(site, `${prefix}/seo/volumes/${volume.volume_id}`),
+    loc: buildCanonicalUrl(site, `${prefix}/seo/volumes/${volume.volume_id}/`),
     lastmod: volume.updated_at || '',
   })));
   const body = `<?xml version="1.0" encoding="UTF-8"?>

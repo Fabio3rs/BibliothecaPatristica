@@ -202,6 +202,61 @@ def test_general_consumption_excludes_post_volume_publisher_advertisement() -> N
     )
 
 
+def test_general_consumption_preserves_chunk_target_and_evidence() -> None:
+    evidence = {
+        "status": "resolved",
+        "method": "monotonic_chapter_heading_sequence",
+        "query_raw": "CAP. I. De fide.",
+        "matched_heading_raw": "CAPUT I. De fide.",
+        "target_file": "/volume/body-010.txt",
+        "inspected_files": ["/volume/body-010.txt"],
+    }
+    assembled = {
+        "volume_id": "PL001",
+        "pipeline_kind": "general",
+        "data": {
+            "works": [],
+            "sections": [
+                {
+                    "section_key": "PL001:index-capitum",
+                    "scope_kind": "work_front",
+                    "index_kind": "INDEX CAPITUM",
+                    "heading_raw": "INDEX CAPITUM",
+                    "entries": [
+                        {
+                            "entry_key": "PL001:index-capitum:001",
+                            "target_file": "/volume/body-010.txt",
+                            "raw_json": {"physical_target_evidence": evidence},
+                        }
+                    ],
+                }
+            ],
+        },
+    }
+    payload = {
+        "works": [],
+        "sections": [
+            {
+                "section_key": "PL001:index-capitum",
+                "entries": [
+                    {
+                        "entry_key": "PL001:index-capitum:001",
+                        "target_file": None,
+                        "raw_json": {},
+                    }
+                ],
+            }
+        ],
+    }
+
+    report = verify_payload_consumes_fragments(payload, assembled)
+
+    assert report["status"] == "missing_fragment_objects"
+    assert report["checks"]["entry_targets"]["target_mismatch_entry_keys"] == [
+        "PL001:index-capitum:001"
+    ]
+
+
 def test_general_assembly_accepts_and_deduplicates_string_notes(tmp_path: Path) -> None:
     first = tmp_path / "first.json"
     second = tmp_path / "second.json"

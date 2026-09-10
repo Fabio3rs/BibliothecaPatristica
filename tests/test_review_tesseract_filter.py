@@ -22,6 +22,7 @@ def _make_db(path: Path) -> None:
             bbox TEXT,
             status TEXT,
             agreement_score REAL,
+            score_llm REAL,
             line_image BLOB,
             image_path TEXT,
             tesseract_text TEXT,
@@ -50,12 +51,12 @@ def _make_db(path: Path) -> None:
         """
     )
     rows = [
-        (1, "PAGE-001", 1, "V1", "lat", "{}", "inferred", 0.2, b"a", "img1.png", "", "q1", None),
-        (2, "PAGE-002", 2, "V1", "lat", "{}", "inferred", 0.3, b"b", "img2.png", "texto", "q2", "rev texto"),
-        (3, "PAGE-003", 3, "V2", "lat", "{}", "approved", 0.4, b"c", "img3.png", "", "special needle", None),
+        (1, "PAGE-001", 1, "V1", "lat", "{}", "inferred", 0.2, 0.0, b"a", "img1.png", "", "q1", None),
+        (2, "PAGE-002", 2, "V1", "lat", "{}", "inferred", 0.3, 0.0, b"b", "img2.png", "texto", "q2", "rev texto"),
+        (3, "PAGE-003", 3, "V2", "lat", "{}", "approved", 0.4, 0.0, b"c", "img3.png", "", "special needle", None),
     ]
     con.executemany(
-        "INSERT INTO lines(id, page_id, line_index, volume, detected_lang, bbox, status, agreement_score, line_image, image_path, tesseract_text, qwen_text, reviewed_text) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        "INSERT INTO lines(id, page_id, line_index, volume, detected_lang, bbox, status, agreement_score, score_llm, line_image, image_path, tesseract_text, qwen_text, reviewed_text) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         rows,
     )
     con.commit()
@@ -95,6 +96,49 @@ def test_review_filters_tesseract_filled(tmp_path, monkeypatch):
     assert resp.status_code == 200
     assert "PAGE-002" in body
     assert "PAGE-001" not in body
+
+
+def test_queue_offsets_select_distinct_lines_after_consensus_ranking(tmp_path):
+    db_path = tmp_path / "ocr.db"
+    _make_db(db_path)
+    con = _open_db(str(db_path))
+    con.executemany(
+        """
+        INSERT INTO line_versions(
+            id, line_id, provider, model, text_content, source_score,
+            is_current, created_at, run_id
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """,
+        [
+            (1, 1, "provider-a", "model-a", "consenso", 1.0, 1, "2026-01-01", "run-1"),
+            (2, 1, "provider-b", "model-b", "consenso", 1.0, 1, "2026-01-01", "run-1"),
+            (3, 2, "provider-a", "model-a", "alternativa", 1.0, 1, "2026-01-01", "run-1"),
+        ],
+    )
+    con.commit()
+
+    first, total = review.fetch_queue_line(con, 0, "inferred", "all", "V1")
+    second, _ = review.fetch_queue_line(con, 1, "inferred", "all", "V1")
+    con.close()
+
+    assert total == 2
+    assert first["id"] == 2
+    assert second["id"] == 1
+
+
+def test_queue_hides_forward_navigation_at_last_offset(tmp_path, monkeypatch):
+    db_path = tmp_path / "ocr.db"
+    _make_db(db_path)
+    monkeypatch.setattr(review, "get_conn", lambda path=str(db_path): _open_db(path))
+
+    client = review.app.test_client()
+    resp = client.get("/?status=inferred&tesseract=all&volume=V1&offset=1")
+    body = resp.get_data(as_text=True)
+
+    assert resp.status_code == 200
+    assert "2 / 2" in body
+    assert "próxima →" not in body
+    assert "→ Pular" not in body
 
 
 def test_line_detail_existing(tmp_path, monkeypatch):

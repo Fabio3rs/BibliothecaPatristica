@@ -42,7 +42,7 @@ from .scripture_book_catalog import (
 DEFAULT_CITATION_DB = PROJECT_ROOT / "data" / "scripture_citations.db"
 DEFAULT_PAYLOAD_DIR = PROJECT_ROOT / "data" / "alphabetical_index_payloads"
 SCHEMA_VERSION = 1
-DETECTOR_VERSION = 6
+DETECTOR_VERSION = 7
 MAX_SCAN_WORKERS = 20
 
 _PHYSICAL_SUFFIX_RE = re.compile(r"-(\d+)\.txt$", re.IGNORECASE)
@@ -710,7 +710,7 @@ def _compiled_alias_pattern(
         r"\s*(?P<cv_separator>[,.:]|\s+)\s*"
         r"(?P<verse>[0-9oil|sb]{1,3})(?!\w)"
         r"(?:\s*[-–—]\s*(?P<range_chapter>[ivxlcdm]{1,10}|\d{1,3})"
-        r"\s*[,.:]\s*(?P<range_verse>\d{1,3})"
+        r"\s*(?P<range_cv_separator>[,.:])\s*(?P<range_verse>\d{1,3})"
         r"|\s*[-–—]\s*(?P<verse_end>\d{1,3}))?",
         re.IGNORECASE,
     )
@@ -804,6 +804,32 @@ def _dot_verse_is_next_footnote_call(
         suffix,
         alias_records,
     )
+
+
+def _range_endpoint_is_next_footnote_call(
+    logical_text: str,
+    match: re.Match[str],
+) -> bool:
+    """Detect ``18 Joan. 1, 1-3. 19 Act.``-style note chains."""
+
+    if (
+        match.group("range_chapter") is None
+        or match.group("range_verse") is None
+        or match.group("range_cv_separator") != "."
+    ):
+        return False
+    leading = _leading_note_call(logical_text, match.start("book"))
+    if leading is None:
+        return False
+    _leading_match, _prefix_start, leading_number = leading
+    trailing_number = _verse_number(match.group("range_verse"))
+    if (
+        leading_number is None
+        or trailing_number is None
+        or trailing_number != leading_number + 1
+    ):
+        return False
+    return True
 
 
 def _resolve_book(
@@ -1069,18 +1095,26 @@ def _extract_explicit_citations(
             # ``PSALMUS XLII. 782``.  Comma/colon forms remain preserved below
             # as incomplete evidence instead of being silently rewritten.
             continue
-        chapter_end = (
-            _chapter_number(match.group("range_chapter"))
-            if match.group("range_chapter")
-            else None
+        footnote_endpoint = _range_endpoint_is_next_footnote_call(
+            logical.text,
+            match,
         )
-        verse_end = (
-            _verse_number(match.group("range_verse"))
-            if match.group("range_verse")
-            else _verse_number(match.group("verse_end"))
-            if match.group("verse_end")
-            else None
-        )
+        if footnote_endpoint:
+            chapter_end = chapter
+            verse_end = _verse_number(match.group("range_chapter"))
+        else:
+            chapter_end = (
+                _chapter_number(match.group("range_chapter"))
+                if match.group("range_chapter")
+                else None
+            )
+            verse_end = (
+                _verse_number(match.group("range_verse"))
+                if match.group("range_verse")
+                else _verse_number(match.group("verse_end"))
+                if match.group("verse_end")
+                else None
+            )
         if verse_end is not None and chapter_end is None:
             chapter_end = chapter
         if chapter_end is not None and not _plausible_chapter(
@@ -1088,16 +1122,21 @@ def _extract_explicit_citations(
             chapter_end,
         ):
             continue
-        list_items, logical_end = _extend_list_items(
-            logical.text,
-            match.end(),
-            chapter=chapter,
-        )
-        implicit_items, logical_end = _extend_implicit_reference_items(
-            logical.text,
-            logical_end,
-            chapter=chapter,
-        )
+        if footnote_endpoint:
+            list_items = []
+            implicit_items = []
+            logical_end = match.end("range_chapter")
+        else:
+            list_items, logical_end = _extend_list_items(
+                logical.text,
+                match.end(),
+                chapter=chapter,
+            )
+            implicit_items, logical_end = _extend_implicit_reference_items(
+                logical.text,
+                logical_end,
+                chapter=chapter,
+            )
         if any(
             not _plausible_chapter(book_key, item_chapter)
             or (

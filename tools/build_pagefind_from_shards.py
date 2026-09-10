@@ -327,7 +327,7 @@ def build_page_record(args: tuple[dict[str, Any], str, dict[str, Any], dict[str,
     if book_names:
         page_meta["books"] = " • ".join(book_names)
 
-    url = f'{PUBLIC_BASE}/viewer?doc={vid}&page={p["page"]}'
+    url = f'{PUBLIC_BASE}/viewer/?doc={vid}&page={p["page"]}'
     html = build_record_html(url, page_meta, filters, content)
     return PageRecord(url=url, html=html, page=int(p["page"]))
 

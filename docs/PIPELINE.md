@@ -343,8 +343,11 @@ Tesseract witness, and VLM pass 2 for later comparison.
   - referência editorial em vez de numeração do arquivo OCR: o sufixo `*.txt` é apenas identificação técnica
 - **Flags úteis**:
   - seleção: `--volume-id`, `--all-volumes`, `--blob`, `--limit`
-  - execução: `--codex-bin`, `--model`, `--use-json`, `--replace`, `--skip-done`
+  - execução: `--codex-bin`, `--model`, `--use-json`, `--replace`, `--skip-done`, `--fresh-extraction`, `--import-existing`
   - operação: `--output-dir`, `--log-dir`, `--keep-temp`, `--dry-run`, `--verbose`
+  - `--fresh-extraction` é obrigatório para reextrações motivadas por fragmentos ou payloads
+    semanticamente defeituosos: ignora o conteúdo do JSON anterior e não reutiliza chunks
+    completos, mas preserva o payload antigo até o novo passar por validação e importação
 - **Tradução e análise linguística**:
   - A implementação fica isolada em `scripts/index_translation/` (persistência/cache, provedor,
     ferramentas lexicais e worker/setup do CLTK).
@@ -363,8 +366,12 @@ Tesseract witness, and VLM pass 2 for later comparison.
     sem a anotação linguística. Use `--no-translation-cltk` para desativá-la explicitamente.
 - **Avisos**:
   - o prescan é apenas ponto de partida; o volume precisa ser conferido em OCR antes do fechamento
+  - em PG/PL, o pré-filtro também reconhece `INCIPIUNT CAPITULA`, `TITULI CAPITUM` e
+    listas estruturais densas sem título explícito; seções de capítulos só avançam para o scan
+    seguinte quando esse scan ainda apresenta evidência estrutural de lista
   - números, colunas e referências internas devem ser mantidos literalmente quando houver dúvida
   - a importação substitui por volume quando `--replace` é usado; sem isso, o fluxo preserva o que já existe
+  - `--import-existing --replace` valida o payload canônico já existente, executa os gates de consumo de fragments e evidência, e substitui somente esse volume no SQLite sem rodar prescan, chunks ou Codex novamente
   - a documentação canônica da classificação editorial continua em `docs/taxonomia_indices.md`
   - para o desenho ainda em aberto de um fluxo separado para índices alfabéticos, remissivos, onomásticos e bíblicos, ver `docs/levantamento_indices_alfabeticos.md`
 
@@ -415,6 +422,17 @@ Tesseract witness, and VLM pass 2 for later comparison.
 - Pipeline: UMAP (`--umap-components`, `--umap-neighbors`) → HDBSCAN (`--min-cluster-size`, `--min-samples`, `--cluster-selection-epsilon`).
 - Saídas: recria `keyword_clusters`, `keyword_cluster_meta`; atualiza `keywords.hdbscan_group_id` (NULL para noise -1).
 - Recursos: `--chunksize` (default 50k) para equilibrar RAM/tempo; usar máquinas com RAM adequada.
+
+## Reparo determinístico de capítulos e outras divisões
+
+- Dry-run por volume: `python scripts/repair_structural_targets.py --volume PL020 --workers 20 --report /tmp/PL020_structural_targets.json`.
+- Apply protegido por hash e backup: `python scripts/repair_structural_targets.py --apply-report /tmp/PL020_structural_targets.json --backup-dir /tmp/PL020_structural_targets_backup --reimport-db data/patristic_indices.db`.
+- Validação pós-apply: `python scripts/validate_structural_target_apply.py --report /tmp/PL020_structural_targets.json --db data/patristic_indices.db`.
+- Varreduras interrompidas podem continuar com `--resume`; transações interrompidas são recuperadas com `--recover-only`. `--workers` é um orçamento híbrido: volumes pesados usam pool interno e volumes pequenos usam um pool persistente entre volumes.
+- Scan e matching usam processos; a agregação retorna à ordem estável e a escrita final permanece determinística sob lock.
+- Apply/importador usam lock cooperativo, journal recuperável, `fsync` e promoção atômica do SQLite; resultados negativos permanecem no relatório sidecar.
+- O contrato, formatos cobertos, estados de evidência e limites estão em `docs/pipeline_reparo_alvos_estruturais.md`.
+- Rode esse reparo depois da extração/validação do payload e antes de materializar os shards que leem `patristic_indices.db`.
 
 ## Geração dos shards do site
 1) Dicionário canônico: `python tools/export_keywords_dicts.py --db data/patristica_keywords.db --out web/public/dict --min-count 1` (ajuste `--include-noise`/`--top` conforme necessidade).

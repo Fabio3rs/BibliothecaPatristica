@@ -260,7 +260,7 @@ def main() -> None:
         "evidence_refresh_volume_ids": [r["volume_id"] for r in reports if r["evidence_stale"]],
         "recommended_rerun_command": (
             "python scripts/run_index_extraction.py --all-volumes --skip-done "
-            "--helper-workers 12 --chunk-workers 12 --continue-on-error"
+            "--fresh-extraction --helper-workers 12 --chunk-workers 12 --continue-on-error"
         ),
         "volumes": reports,
     }

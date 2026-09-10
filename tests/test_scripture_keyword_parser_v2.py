@@ -165,6 +165,14 @@ def test_quarantines_ambiguous_joao_person_ordinals(raw):
     assert [issue.code for issue in result.issues] == ["ambiguous_person_ordinal"]
 
 
+def test_quarantines_ambiguous_joao_person_ordinal_range():
+    for raw in ("Papas João I-XIX", "Papas (João IX, X e XII)"):
+        result = parse_scripture_keyword(raw)
+
+        assert not result.references
+        assert [issue.code for issue in result.issues] == ["ambiguous_person_ordinal"]
+
+
 def test_accepts_roman_chapter_with_a_scriptural_cue():
     result = parse_scripture_keyword("Evangelho de João VI")
 

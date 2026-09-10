@@ -161,6 +161,13 @@ sobrescritos no `raw_json` da entrada. A precedência efetiva é `entry.raw_json
 `scripture_mode=incidental_mention` preserva a menção em `entry_raw`/`context_raw`, mas não cria
 `scripture_refs` nem uma ocorrência navegável no índice bíblico.
 
+A distinção é sintática e editorial. Uma citação completa (`Psal. X, 3`, por exemplo) embutida no
+parágrafo de uma entrada onomástica, analítica ou temática é material da pipeline alfabética: a
+entrada pode sobrescrever `scripture_mode` e deve serializar a passagem em `scripture_refs`. Já a
+mera referência lexical a um salmo ou livro bíblico, sem locator seguro, usa
+`incidental_mention`. Títulos de obras como `HOMILIA IN PSALMUM X` ou `EXPOSITIO IN MATTHAEUM` não
+são citações: pertencem à pipeline geral de obras, mesmo contendo vocabulário bíblico.
+
 Seções possuídas exigem `file_start` e `file_end`. `stop_boundary` não é seção possuída: deve
 aparecer somente em `manifest.boundary_decisions`, com heading literal, arquivo, linha/bloco e
 motivo.

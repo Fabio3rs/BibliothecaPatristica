@@ -64,3 +64,25 @@ def test_verbose_chunk_driver_propagates_verbose_and_inherits_terminal_streams(
 
     assert "--verbose" in captured["command"]
     assert captured["kwargs"]["capture_output"] is False
+
+
+def test_chunk_driver_can_force_fresh_chunk_execution(
+    tmp_path: Path, monkeypatch
+) -> None:
+    captured: dict[str, object] = {}
+
+    def fake_run(command, **kwargs):
+        captured["command"] = command
+        return subprocess.CompletedProcess(command, 0, stdout='{"status":"ok"}\n', stderr="")
+
+    monkeypatch.setattr(driver.subprocess, "run", fake_run)
+
+    driver.run_index_chunk_agents(
+        workplan_file=tmp_path / "workplan.json",
+        codex_bin="codex-test",
+        model=None,
+        log_dir=tmp_path / "logs",
+        reuse_complete_chunks=False,
+    )
+
+    assert "--skip-complete" not in captured["command"]

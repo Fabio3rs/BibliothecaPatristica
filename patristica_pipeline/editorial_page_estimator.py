@@ -804,6 +804,7 @@ def estimate_editorial_pages(
     conn = _connect_db(resolved_db)
     try:
         observations: list[FileObservation] = []
+        uncached_observations: list[FileObservation] = []
         for idx, path in enumerate(loaded_files):
             cached = _read_cached_observation(conn, path=path) if use_cache else None
             if cached is not None:
@@ -813,6 +814,13 @@ def estimate_editorial_pages(
             observed = _observe_file(path, idx)
             observations.append(observed)
             if use_cache:
+                uncached_observations.append(observed)
+        # Do all filesystem reads before opening SQLite's write transaction.
+        # This matters when callers parallelize independent volumes: the old
+        # loop held the single WAL writer lock while parsing the remainder of
+        # a cold volume, effectively serializing all workers.
+        if use_cache:
+            for observed in uncached_observations:
                 _write_cached_observation(
                     conn,
                     volume_id=inferred_volume_id,
@@ -820,7 +828,6 @@ def estimate_editorial_pages(
                     source_root=resolved_source_root,
                     observation=observed,
                 )
-        if use_cache:
             conn.commit()
         overrides = _load_overrides(conn, volume_id=inferred_volume_id)
     finally:

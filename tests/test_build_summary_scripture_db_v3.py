@@ -10,7 +10,10 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from patristica_pipeline.scripture_citation_index import build_citation_database
+from patristica_pipeline.scripture_citation_index import (
+    DETECTOR_VERSION,
+    build_citation_database,
+)
 from scripts.scripture_keywords.build_summary_scripture_db_v3 import build_database
 from scripts.scripture_keywords.export_summary_scripture_book_shards_v3 import (
     export_book_shards,
@@ -151,6 +154,10 @@ PSALMUS XLII. Matth. V, 3. Ioan. III, 99. Psal. XLII, 14. Psal. L, 12-14. 4.
         versifications = connection.execute(
             "SELECT DISTINCT versification_id FROM scripture_references"
         ).fetchall()
+        nonprofile_keys = connection.execute(
+            "SELECT COUNT(*) FROM scripture_references "
+            "WHERE canonical_key NOT LIKE 'vulgate-clementine|%'"
+        ).fetchone()[0]
         rejected = connection.execute(
             """
             SELECT source_origin, raw_reference, issue_code
@@ -173,7 +180,8 @@ PSALMUS XLII. Matth. V, 3. Ioan. III, 99. Psal. XLII, 14. Psal. L, 12-14. 4.
         ("São João 3:16", 1),
         ("São Mateus 5:3", 4),
     ]
-    assert versifications == [("unknown",)]
+    assert versifications == [("vulgate-clementine",)]
+    assert nonprofile_keys == 0
     assert ("ocr", "Ioan. III, 99", "verse_out_of_profile") in rejected
     assert ("ocr", "Psal. XLII, 14", "detector_incomplete") in rejected
     assert (
@@ -185,7 +193,8 @@ PSALMUS XLII. Matth. V, 3. Ioan. III, 99. Psal. XLII, 14. Psal. L, 12-14. 4.
     shards = tmp_path / "shards"
     manifest = export_book_shards(output_db, shards)
     assert manifest["v"] == 3
-    assert manifest["detector"] == "5"
+    assert manifest["detector"] == str(DETECTOR_VERSION)
+    assert manifest["v11n"] == "vulgate-clementine"
     assert manifest["source_mask"] == [
         "standalone_keyword",
         "embedded_keyword",

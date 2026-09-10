@@ -87,6 +87,7 @@ const scriptureClientConfig = {
       <button class="button" type="submit">{t.scriptureIndexSearchButton}</button>
     </form>
     <p class="scripture-source-note">{t.scriptureIndexSourceNote}</p>
+    <p class="scripture-source-note"><strong>{t.scriptureIndexVersificationLabel}</strong> {t.scriptureIndexVersificationNote}</p>
   </section>
 
   <section
@@ -285,6 +286,14 @@ const scriptureClientConfig = {
       .scripture-hero {
         grid-template-columns: 1fr;
         padding: var(--space-5);
+      }
+
+      .scripture-section-heading {
+        display: grid;
+      }
+
+      .scripture-section-heading .button {
+        width: 100%;
       }
 
       .scripture-search,
@@ -518,6 +527,7 @@ const scriptureClientConfig = {
     // @ts-nocheck
     import {
       findScriptureBook,
+      joinScriptureRoute,
       parseScriptureLocators,
       relationForScriptureSegments,
       scriptureReferenceSlug,
@@ -576,7 +586,7 @@ const scriptureClientConfig = {
 
     function bookUrl(slug, query = '', source = 'all') {
       const routeSlug = String(slug).replace(/\s+/g, '-');
-      const url = new URL(`${scriptureBaseRoute}/${encodeURIComponent(routeSlug)}`, window.location.origin);
+      const url = new URL(joinScriptureRoute(scriptureBaseRoute, routeSlug), window.location.origin);
       if (query.trim()) url.searchParams.set('q', query.trim());
       if (source !== 'all') url.searchParams.set('source', source);
       return `${url.pathname}${url.search}`;
@@ -585,7 +595,7 @@ const scriptureClientConfig = {
     function referenceUrl(bookKey, segments) {
       const bookSlug = String(bookKey || '').replace(/\s+/g, '-');
       const referenceSlug = scriptureReferenceSlug(segments);
-      const url = new URL(`${scriptureBaseRoute}/reference`, window.location.origin);
+      const url = new URL(joinScriptureRoute(scriptureBaseRoute, 'reference'), window.location.origin);
       url.searchParams.set('book', bookSlug);
       url.searchParams.set('ref', referenceSlug);
       url.searchParams.set('page', '1');

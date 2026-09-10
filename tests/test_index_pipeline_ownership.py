@@ -37,6 +37,114 @@ def test_general_pipeline_rejects_onomastic_index() -> None:
     assert "alphabetical" in str(reason)
 
 
+def test_general_pipeline_keeps_capitula_heading_that_mentions_scripture() -> None:
+    owned, reason = general_section_ownership(
+        section(
+            "work_internal",
+            "CAPITULA",
+            (
+                "LIBER SEXTUS. — Adnotationes elucidatoriæ in Scripturam, "
+                "tractatum moralium fragmenta, etc."
+            ),
+        )
+    )
+
+    assert owned is True
+    assert reason is None
+
+
+def test_general_pipeline_rejects_explicit_scripture_index_mislabeled_capitula() -> None:
+    owned, reason = general_section_ownership(
+        section("volume_end", "CAPITULA", "INDEX LOCORUM SCRIPTURÆ")
+    )
+
+    assert owned is False
+    assert "scripture-reference" in str(reason)
+
+
+def test_general_pipeline_keeps_work_about_a_psalm() -> None:
+    owned, reason = general_section_ownership(
+        section("work_internal", "contents", "HOMILIA X IN PSALMUM L")
+    )
+
+    assert owned is True
+    assert reason is None
+
+
+def test_general_pipeline_keeps_index_capitum_of_a_scripture_commentary() -> None:
+    owned, reason = general_section_ownership(
+        section(
+            "work_internal",
+            "index_capitum",
+            "INDEX CAPITUM COMMENTARII IN SCRIPTURAM SACRAM",
+        )
+    )
+
+    assert owned is True
+    assert reason is None
+
+
+def test_general_pipeline_keeps_index_capitum_scripturae_sacrae() -> None:
+    owned, reason = general_section_ownership(
+        section(
+            "work_internal",
+            "index_capitum",
+            "INDEX CAPITUM SCRIPTURAE SACRAE",
+        )
+    )
+
+    assert owned is True
+    assert reason is None
+
+
+def test_general_pipeline_keeps_inventory_of_commentaries_on_scripture() -> None:
+    owned, reason = general_section_ownership(
+        section(
+            "volume_front",
+            "INDEX COMMENTAR. IN SCRIPTURAS",
+            "INDEX COMMENTAR. IN SCRIPTURAS",
+        )
+    )
+
+    assert owned is True
+    assert reason is None
+
+
+def test_general_pipeline_rejects_explicit_bible_citation_table() -> None:
+    owned, reason = general_section_ownership(
+        section("volume_end", "citation_index", "TABLE DES CITATIONS DE LA BIBLE")
+    )
+
+    assert owned is False
+    assert "scripture-reference" in str(reason)
+
+
+def test_general_pipeline_rejects_index_sacrae_scripturae() -> None:
+    owned, reason = general_section_ownership(
+        section(
+            "volume_end",
+            "INDEX SACRAE SCRIPTURAE",
+            "INDEX SACRAE SCRIPTURAE CAPITUM ET LOCORUM NOTABILIUM",
+        )
+    )
+
+    assert owned is False
+    assert "scripture-reference" in str(reason)
+
+
+def test_general_pipeline_rejects_index_verborum_in_reverse_word_order() -> None:
+    owned, reason = general_section_ownership(
+        section(
+            "volume_end",
+            "INDEX VERBORUM, SENTENTIARUM ET RERUM",
+            "INDEX VERBORUM, SENTENTIARUM ET RERUM",
+        )
+    )
+
+    assert owned is False
+    assert "alphabetical" in str(reason)
+
+
 def test_alphabetical_pipeline_rejects_volume_works_inventory() -> None:
     owned, reason = alphabetical_section_ownership(
         {
@@ -82,6 +190,39 @@ def test_alphabetical_pipeline_keeps_cited_author_index() -> None:
             "raw_json": {
                 "pipeline_owner": "alphabetical",
                 "alphabetical_role": "owned_section",
+            },
+        }
+    )
+
+    assert owned is True
+    assert reason is None
+
+
+def test_alphabetical_pipeline_rejects_work_whose_subject_is_a_psalm() -> None:
+    owned, reason = alphabetical_section_ownership(
+        {
+            "section_kind": "scripture_index",
+            "heading_raw": "EXPOSITIO IN PSALMUM CXVIII",
+            "raw_json": {
+                "pipeline_owner": "alphabetical",
+                "alphabetical_role": "owned_section",
+            },
+        }
+    )
+
+    assert owned is False
+    assert "work or structural unit" in str(reason)
+
+
+def test_alphabetical_pipeline_keeps_onomastic_index_with_biblical_citations() -> None:
+    owned, reason = alphabetical_section_ownership(
+        {
+            "section_kind": "onomastic_mixed",
+            "heading_raw": "INDEX RERUM ET NOMINUM",
+            "raw_json": {
+                "pipeline_owner": "alphabetical",
+                "alphabetical_role": "owned_section",
+                "scripture_mode": "incidental_mention",
             },
         }
     )

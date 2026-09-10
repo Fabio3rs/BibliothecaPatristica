@@ -777,7 +777,7 @@ const renderedVolumes = volumes.map((item) => renderVolume(item)).join('');
         ? works.slice(0, 8).map((work) => {
             const startPage = pickReferencePage(work.reference_start_page);
             const endPage = pickReferencePage(work.reference_end_page);
-            const href = `${baseUrl}viewer?doc=${encodeURIComponent(volumeId)}${startPage ? `&page=${encodeURIComponent(startPage)}` : ''}`;
+            const href = `${baseUrl}viewer/?doc=${encodeURIComponent(volumeId)}${startPage ? `&page=${encodeURIComponent(startPage)}` : ''}`;
             const pageRange = `${startPage ? escapeHtml(startPage) : ''}${endPage ? `–${escapeHtml(endPage)}` : ''}`;
             const active = state.work && state.work === work.work_key ? ' data-active="true"' : '';
             const title = displayParts(work.title_display, work.title_raw);
@@ -801,7 +801,7 @@ const renderedVolumes = volumes.map((item) => renderVolume(item)).join('');
         ? sections.map((section) => {
             const entries = (section.entries || []).slice(0, 8).map((entry) => {
               const page = pickReferencePage(entry.reference_page);
-              const href = page ? `${baseUrl}viewer?doc=${encodeURIComponent(volumeId)}&page=${encodeURIComponent(page)}` : `${baseUrl}viewer?doc=${encodeURIComponent(volumeId)}`;
+              const href = page ? `${baseUrl}viewer/?doc=${encodeURIComponent(volumeId)}&page=${encodeURIComponent(page)}` : `${baseUrl}viewer/?doc=${encodeURIComponent(volumeId)}`;
               const active = state.entry && state.entry === String(entry.id || '') ? ' data-active="true"' : '';
               const target = displayParts(entry.target_display, entry.target_raw || entry.entry_raw || strings.untitledItem);
               const note = displayParts(entry.note_display, entry.note_raw);
@@ -1038,7 +1038,7 @@ const renderedVolumes = volumes.map((item) => renderVolume(item)).join('');
         if (hit.sectionKey) targetParams.set('section', hit.sectionKey);
         if (hit.entryId) targetParams.set('entry', hit.entryId);
       }
-      link.href = `${baseUrl}indices?${targetParams.toString()}`;
+      link.href = `${baseUrl}indices/?${targetParams.toString()}`;
       link.textContent = strings.searchOpen;
       link.addEventListener('click', (event) => {
         if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;

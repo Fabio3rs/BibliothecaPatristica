@@ -827,7 +827,7 @@ def main():
                 "page_count": len(recs),
                 "meta_url": f"meta/{vid}.json.gz",
                 "search_bundle": "indexador/search",
-                "viewer_url_template": f"/pdfocr/viewer?doc={vid}&page={{page}}",
+                "viewer_url_template": f"/pdfocr/viewer/?doc={vid}&page={{page}}",
             }
         )
         log(f"Volume {vid}: snapshots/meta/page-blocks escritos.")

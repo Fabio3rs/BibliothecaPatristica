@@ -131,6 +131,25 @@ def fetch_keywords(con: sqlite3.Connection) -> List[KeywordRow]:
     return rows
 
 
+def fetch_group_page_counts(con: sqlite3.Connection) -> Dict[int, int]:
+    """Conta páginas distintas por tema, sem inflar sinônimos na mesma página."""
+    sql = """
+        SELECT
+            k.hdbscan_group_id AS group_id,
+            COUNT(DISTINCT o.pagina_id) AS page_count
+        FROM keywords k
+        JOIN keyword_occurrence o ON o.keyword_id = k.id
+        WHERE k.hdbscan_group_id IS NOT NULL
+          AND k.hdbscan_group_id >= 0
+          AND COALESCE(k.is_scripture_citation, 0) = 0
+        GROUP BY k.hdbscan_group_id
+    """
+    return {
+        int(row["group_id"]): int(row["page_count"] or 0)
+        for row in con.execute(sql)
+    }
+
+
 def build_groups(
     rows: Iterable[KeywordRow],
     group_count: Dict[int, int],
@@ -140,7 +159,7 @@ def build_groups(
     groups: Dict[int, dict] = {}
     for kw in rows:
         gid = kw.group_id
-        if gid is None or gid < 0:
+        if gid is None or gid < 0 or kw.is_scripture_citation:
             continue
         agg = group_count.get(gid, 0)
         if agg < min_count:
@@ -161,7 +180,12 @@ def build_groups(
     by_group: Dict[int, List[KeywordRow]] = {}
     for kw in rows:
         gid = kw.group_id
-        if gid is None or gid < 0 or group_count.get(gid, 0) < min_count:
+        if (
+            gid is None
+            or gid < 0
+            or kw.is_scripture_citation
+            or group_count.get(gid, 0) < min_count
+        ):
             continue
         by_group.setdefault(gid, []).append(kw)
 
@@ -297,17 +321,12 @@ def main():
     args = ap.parse_args()
     con = connect(args.db)
     rows = fetch_keywords(con)
+    group_count = fetch_group_page_counts(con)
     con.close()
 
     # ── Pré-computar frequência agregada por group_id ──────────────────────────
-    # O campo kw.count é a frequência da keyword individual no banco.
-    # Como o HDBSCAN agrupa variantes canônicas do mesmo conceito/referência,
-    # a frequência real do conceito é a SOMA de todos os membros do mesmo grupo.
-    group_count: Dict[int, int] = {}
-    for kw in rows:
-        if kw.group_id is None or kw.group_id < 0:
-            continue
-        group_count[kw.group_id] = group_count.get(kw.group_id, 0) + kw.count
+    # Um conceito conta no máximo uma vez por página. Somar ocorrências dos
+    # sinônimos inflava os temas e ainda misturava citações bíblicas no total.
 
     items, _, _ = build_catalog_items(
         rows,

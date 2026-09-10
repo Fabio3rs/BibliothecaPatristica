@@ -1000,6 +1000,61 @@ Resultados:
 | Tamanho lógico do índice | 127.124.985 bytes (121,24 MiB) |
 | Espaço alocado do índice | 129.654.784 bytes (~123,65 MiB) |
 
+### Benchmark da ingestão paralela do RPC em 2026-09-05
+
+O step `Build custom indices` de `.github/workflows/pages.yml` foi reproduzido
+localmente com seus argumentos exatos, incluindo os dois `--all`, layout
+unificado, `documents_per_shard=500`, wordlists e as sete smoke queries. A
+máquina foi um Ryzen 9 5900X; o build final usou Clang 21, libstdc++ 14 e
+oneTBB 2021.8 (`libtbb.so.12`).
+
+O corpus dessa rodada continha 170.269 documentos editoriais em 406 volumes e
+288.278 páginas em 407 volumes. A busca indexou 281.682 páginas e omitiu 6.596
+páginas administrativas. Todas as variantes produziram as mesmas contagens,
+920.725 termos na busca, 603 arquivos editoriais e 3.564 arquivos de busca.
+
+| Implementação | Índices editoriais | Busca principal | Indexação total | Validação | Total validado |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Baseline sequencial, Clang 19 | 30,12 s | 188,68 s | 218,80 s | 6,43 s | 225,23 s |
+| TBB, mutex por termo, Clang 21 | 35,27 s | 203,34 s | 238,61 s | 6,26 s | 244,87 s |
+| Implementação final TBB/OpenMP, TBB ativo, mutex por documento, Clang 21 | 27,98 s | 160,81 s | 188,79 s | 6,29 s | 195,08 s |
+
+O resultado final reduziu a indexação em 30,01 segundos, ou 13,7%, frente ao
+baseline. O mutex por termo foi 9,1% mais lento que o baseline e acumulou muito
+tempo de sistema por contenção. A versão mantida tokeniza e calcula frequências
+em paralelo, escreve cada documento em um slot previamente reservado por
+`resize` e adquire o mutex uma vez por documento para atualizar o mapa e seus
+postings.
+
+Os 603 arquivos editoriais e 3.564 arquivos de busca foram comparados com o
+baseline por `diff -qr --exclude=manifest.json`: não houve nenhuma diferença.
+Os manifestos foram excluídos porque registram metadados da execução.
+
+O range inicial baseado em `std::views::iota` também era um falso paralelo com
+a PSTL/libstdc++ usada: o algoritmo selecionava o backend serial por causa da
+categoria legada do iterador. O backend TBB final usa um pequeno
+`std::vector<size_t>` de índices, com iteradores random-access. Quando TBB não
+está disponível, o CMake seleciona OpenMP; só cai no loop serial se nenhum dos
+dois backends existir.
+
+Os releases do indexador são ELF estáticos construídos em Alpine 3.21. O pacote
+`onetbb-dev` oferece somente `libtbb.so`, enquanto `build-base` oferece
+`/usr/lib/libgomp.a`. Por isso os três jobs estáticos passam explicitamente
+`OpenMP_gomp_LIBRARY=/usr/lib/libgomp.a`. Um build de validação no mesmo
+container Alpine produziu um executável x86-64 totalmente estático e sem seção
+dinâmica, com a ingestão OpenMP habilitada.
+
+Validação do código final:
+
+- Clang 21: 53/53 testes C++/JS;
+- Clang 19: 53/53 testes C++/JS;
+- GCC 14, com TBB desabilitada e OpenMP ativa: 53/53 testes C++/JS;
+- Emscripten: target `indexador_wasm` compilado;
+- Alpine 3.21/GCC 14/OpenMP: executável estático compilado e inspecionado;
+- regressão nova: dois batches com 512 documentos, termos compartilhados e
+  exclusivos, verificando continuidade de IDs, metadados, frequências e ausência
+  de postings perdidos ou duplicados.
+
 O runtime WASM adiciona 7 arquivos e aproximadamente 0,62 MiB, portanto a
 entrega custom completa observada fica em cerca de 121,86 MiB e 1.289 arquivos.
 

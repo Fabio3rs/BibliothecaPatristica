@@ -3,12 +3,26 @@ import test from 'node:test';
 
 import {
   findScriptureBook,
+  joinScriptureRoute,
   parseScriptureLocator,
   parseScriptureLocators,
   scriptureBookSlug,
   scriptureReferenceSlug,
   searchScriptureShard,
 } from '../src/scripts/scripture-index.js';
+
+test('compõe rotas filhas com uma única barra e barra final', () => {
+  const base = '/BibliothecaPatristica/indices-alfabeticos/scripture/';
+
+  assert.equal(
+    joinScriptureRoute(base, 'joao'),
+    '/BibliothecaPatristica/indices-alfabeticos/scripture/joao/',
+  );
+  assert.equal(
+    joinScriptureRoute(`${base}/`, '/reference/'),
+    '/BibliothecaPatristica/indices-alfabeticos/scripture/reference/',
+  );
+});
 
 const manifest = {
   routes: {

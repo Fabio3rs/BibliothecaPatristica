@@ -21,6 +21,7 @@ from .index_entry_estimator import (
     estimate_page_entries,
 )
 from .ocr_xml_utils import read_ocr_page
+from .structural_target_repair import scan_dense_structural_headings
 
 
 HEADER_NUMBER_RE = re.compile(r"(?<!\d)(\d{1,4})(?!\d)")
@@ -31,9 +32,18 @@ CLOSURE_HEADING_RE = re.compile(
 )
 WORKPLAN_SCHEMA_VERSION = 2
 CHUNK_CONTRACT_VERSION = 2
+GENERAL_CHUNK_CONTRACT_VERSION = 3
 SECTION_CONTINUATION_LOOKAHEAD = 24
 ALPHABETICAL_STOP_MARKER = "ordo rerum"
 RUNNING_INDEX_MARKERS = {"index", "indices", "index rerum"}
+STRUCTURAL_LIST_MARKERS = {
+    "incipiunt capitula",
+    "expliciunt capitula",
+    "tituli capitum",
+    "index capitum",
+    "capitula",
+    "dense structural list",
+}
 
 
 def _normalize_heading(value: Any) -> str:
@@ -82,6 +92,7 @@ def _chunk_input_fingerprint(
     paths: list[Path],
     *,
     cache: dict[str, dict[str, Any]],
+    contract_version: int = CHUNK_CONTRACT_VERSION,
 ) -> tuple[str, list[dict[str, Any]]]:
     records: list[dict[str, Any]] = []
     for path in _unique_paths(paths):
@@ -97,7 +108,7 @@ def _chunk_input_fingerprint(
             cache[key] = record
         records.append(record)
     envelope = {
-        "contract_version": CHUNK_CONTRACT_VERSION,
+        "contract_version": contract_version,
         "files": records,
     }
     digest = hashlib.sha256(
@@ -231,6 +242,20 @@ def build_index_workplan(
     if pipeline_kind not in {"general", "alphabetical"}:
         raise ValueError(f"Unsupported pipeline_kind: {pipeline_kind}")
     reverse_extraction = pipeline_kind == "alphabetical"
+    chunk_contract_version = (
+        GENERAL_CHUNK_CONTRACT_VERSION
+        if pipeline_kind == "general"
+        else CHUNK_CONTRACT_VERSION
+    )
+    target_search_policy = {
+        "enabled": pipeline_kind == "general",
+        "scope": "same_volume_source_root",
+        "entry_ownership": "owned_physical_files_only",
+        "may_inspect_unowned_files": pipeline_kind == "general",
+        "may_emit_entries_from_unowned_files": False,
+        "numeric_equality_mapping_forbidden": True,
+        "structured_evidence_required_for_resolved_targets": pipeline_kind == "general",
+    }
     source_root = source_root.resolve()
     source_files = sorted(source_root.glob("*.txt"), key=page_sort_key)
     position_by_path = {str(path): index for index, path in enumerate(source_files)}
@@ -313,6 +338,16 @@ def build_index_workplan(
         likely = int((estimate.get("estimated_entry_count") or {}).get("likely") or 0)
         return line_count > 0 and likely >= 1 and likely / line_count >= 0.25
 
+    def is_likely_structural_list_continuation(path: Path, marker: str) -> bool:
+        try:
+            header = _normalize_heading(read_ocr_page(path).header_text)
+        except OSError:
+            return False
+        marker_norm = _normalize_heading(marker)
+        if marker_norm != "dense structural list" and marker_norm in header:
+            return True
+        return len(scan_dense_structural_headings(path)) >= 4
+
     def add_section(
         *,
         heading: str,
@@ -377,6 +412,7 @@ def build_index_workplan(
             input_fingerprint, input_files = _chunk_input_fingerprint(
                 [*owned_paths, *overlap_context_paths, *part_context_paths],
                 cache=fingerprint_cache,
+                contract_version=chunk_contract_version,
             )
             chunks.append(
                 {
@@ -387,7 +423,8 @@ def build_index_workplan(
                         "physical_end_to_start" if reverse_extraction else "physical_start_to_end"
                     ),
                     "status": "pending",
-                    "chunk_contract_version": CHUNK_CONTRACT_VERSION,
+                    "chunk_contract_version": chunk_contract_version,
+                    "target_search_policy": target_search_policy,
                     "input_fingerprint": input_fingerprint,
                     "input_files": input_files,
                     "physical_files": [str(path) for path in owned_paths],
@@ -485,6 +522,8 @@ def build_index_workplan(
             position for position in boundary_positions if position >= section_start
         ]
         section_stop_boundaries: list[dict[str, Any]] = []
+        group_marker = str(group[0].get("marker") or "")
+        structural_list_section = _normalize_heading(group_marker) in STRUCTURAL_LIST_MARKERS
         if following_boundary_positions:
             boundary_position = following_boundary_positions[0]
             max_section_end = min(max_section_end, boundary_position)
@@ -496,6 +535,11 @@ def build_index_workplan(
         while section_end < max_section_end:
             next_position = section_end + 1
             next_path = source_files[next_position]
+            if structural_list_section:
+                if is_likely_structural_list_continuation(next_path, group_marker):
+                    section_end = next_position
+                    continue
+                break
             if is_likely_continuation_page(next_path):
                 section_end = next_position
                 continue
@@ -595,6 +639,7 @@ def build_index_workplan(
             "context_window_physical_files": max(0, context_window),
             "fresh_context_required": True,
             "resume_session": False,
+            "target_search": target_search_policy,
             "processing_order": (
                 "descending_physical_file_sequence"
                 if reverse_extraction

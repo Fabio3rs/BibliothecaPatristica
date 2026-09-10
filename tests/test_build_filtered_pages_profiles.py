@@ -305,3 +305,68 @@ def test_ordo_rerum_remains_a_general_pipeline_section(tmp_path: Path) -> None:
         if item["marker"] == "ORDO RERUM"
     )
     assert hit["role"] == "section_heading"
+
+
+def test_general_profile_detects_incipiunt_capitula_and_its_continuation(
+    tmp_path: Path,
+) -> None:
+    text_root = tmp_path / "PL177" / "text"
+    text_root.mkdir(parents=True)
+    first = text_root / "pl-195.txt"
+    continuation = text_root / "pl-196.txt"
+    _write_page(
+        first,
+        "INCIPIUNT CAPITULA",
+        "\n".join(f"CAP. {ordinal}. Titulus" for ordinal in range(1, 16)),
+    )
+    _write_page(
+        continuation,
+        "APPENDIX AD OPERA",
+        "\n".join(f"CAP. {ordinal}. Titulus" for ordinal in range(16, 58)),
+    )
+
+    payload = build_fallback_filtered_pages("PL177", text_root, "PL", "general")
+
+    hits = payload["candidate_sections"]
+    assert any(item["marker"] == "INCIPIUNT CAPITULA" for item in hits)
+    assert not any(item["marker"] == "DENSE STRUCTURAL LIST" for item in hits)
+
+
+def test_general_profile_seeds_an_untitled_dense_structural_list(tmp_path: Path) -> None:
+    text_root = tmp_path / "PL177" / "text"
+    text_root.mkdir(parents=True)
+    page = text_root / "pl-207.txt"
+    _write_page(
+        page,
+        "LIBER SECUNDUS",
+        "\n" + "\n".join(f"CAP. {ordinal}. Titulus" for ordinal in range(1, 42)),
+    )
+
+    payload = build_fallback_filtered_pages("PL177", text_root, "PL", "general")
+
+    hit = next(
+        item
+        for item in payload["candidate_sections"]
+        if item["marker"] == "DENSE STRUCTURAL LIST"
+    )
+    assert hit["reason"] == "dense_structural_list"
+    assert hit["dense_entry_count"] == 41
+    assert hit["distinct_ordinal_count"] == 41
+
+
+def test_general_profile_does_not_seed_short_body_heading_runs(tmp_path: Path) -> None:
+    text_root = tmp_path / "PL177" / "text"
+    text_root.mkdir(parents=True)
+    page = text_root / "pl-374.txt"
+    _write_page(
+        page,
+        "APPENDIX AD OPERA",
+        "\n".join(f"TIT. {ordinal}. Titulus et corpus" for ordinal in range(88, 92)),
+    )
+
+    payload = build_fallback_filtered_pages("PL177", text_root, "PL", "general")
+
+    assert not any(
+        item["marker"] == "DENSE STRUCTURAL LIST"
+        for item in payload["candidate_sections"]
+    )

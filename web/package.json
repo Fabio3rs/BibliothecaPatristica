@@ -24,7 +24,8 @@
     "test:agent-ui": "node --test tests/agent-chat-ui-contract.test.mjs",
     "benchmark:agent": "node ../scripts/playgrounds/agent_rag_benchmark.mjs",
     "test:i18n": "node --test tests/i18n-parity.test.mjs",
-    "test:scripture": "node --test tests/scripture-index.test.mjs"
+    "test:scripture": "node --test tests/scripture-index.test.mjs",
+    "validate:scripture": "python3 ../tools/validate_scripture_publication.py --public ./public --dist ./dist"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.8",

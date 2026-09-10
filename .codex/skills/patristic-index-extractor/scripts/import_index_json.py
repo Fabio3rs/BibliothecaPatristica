@@ -2,11 +2,18 @@
 from __future__ import annotations
 
 import argparse
+from contextlib import nullcontext
 import json
 import sys
 import re
 from pathlib import Path
 from typing import Any
+
+PROJECT_ROOT = Path(__file__).resolve().parents[4]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from patristica_pipeline.index_operation_lock import index_operation_lock
 
 from index_db import (
     DEFAULT_DB,
@@ -343,7 +350,16 @@ def main() -> None:
     ap.add_argument('--db', type=Path, default=DEFAULT_DB, help='Database path')
     ap.add_argument('--input', type=Path, help='JSON payload file (defaults to stdin)')
     ap.add_argument('--replace', action='store_true', help='Replace existing rows for the same volume_id')
+    ap.add_argument('--lock-file', type=Path, help='Advisory corpus write lock')
+    ap.add_argument('--lock-timeout', type=float, default=0.0)
+    ap.add_argument(
+        '--caller-holds-lock',
+        action='store_true',
+        help=argparse.SUPPRESS,
+    )
     args = ap.parse_args()
+    if args.lock_timeout < 0:
+        ap.error('--lock-timeout cannot be negative')
 
     payload = load_payload(args.input)
     volume = normalize_volume(payload['volume'])
@@ -360,7 +376,13 @@ def main() -> None:
     validate_section_work_refs(sections, works, volume_id)
     validate_work_page_ranges(works, volume_id)
 
-    with connect_db(args.db) as con:
+    lock_path = args.lock_file or args.db.resolve().parent / '.patristic-index-write.lock'
+    lock_context = (
+        nullcontext()
+        if args.caller_holds_lock
+        else index_operation_lock(lock_path, exclusive=True, timeout=args.lock_timeout)
+    )
+    with lock_context, connect_db(args.db) as con:
         init_schema(con)
         already_imported = con.execute(
             'SELECT 1 FROM volumes WHERE volume_id = ? LIMIT 1',

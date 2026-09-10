@@ -96,8 +96,11 @@ export function getLocalizedPath(
 ): string {
   const localeBase = getLocaleBase(targetLocale, base).replace(/\/$/, '');
   const strippedPath = stripLocaleFromPath(currentPath, base);
-  const cleanPath = strippedPath === '/' ? '' : strippedPath;
-  return `${localeBase}${cleanPath}` || '/';
+  const cleanPath = strippedPath === '/'
+    ? ''
+    : `/${strippedPath.replace(/^\/+|\/+$/g, '')}`;
+  const localized = `${localeBase}${cleanPath}` || '/';
+  return localized.endsWith('/') ? localized : `${localized}/`;
 }
 
 export function getLocaleRouteUrl(
@@ -110,8 +113,10 @@ export function getLocaleRouteUrl(
   const localeBase = getLocaleBase(targetLocale, base).replace(/\/$/, '');
   const cleanRoute = !route || route === '/'
     ? ''
-    : `/${String(route).replace(/^\/+/, '')}`;
-  return `${localeBase}${cleanRoute}${search}${hash}` || '/';
+    : `/${String(route).replace(/^\/+|\/+$/g, '')}`;
+  const pathname = `${localeBase}${cleanRoute}` || '/';
+  const pathnameWithSlash = pathname.endsWith('/') ? pathname : `${pathname}/`;
+  return `${pathnameWithSlash}${search}${hash}`;
 }
 
 /**
@@ -258,12 +263,12 @@ export function buildClientTranslations(
           ? 'Informations sur le volume indisponibles'
       : 'Informação do volume não disponível',
     viewerOcrError: isEn
-      ? (msg: string) => `Error loading OCR: ${msg}`
+      ? () => 'The page text could not be loaded right now. Check your connection and try again. You can also open the transcription file in a new tab.'
       : isIt
-        ? (msg: string) => `Errore nel caricamento dell'OCR: ${msg}`
+        ? () => 'Non è stato possibile caricare il testo della pagina. Controlla la connessione e riprova. Puoi anche aprire il file della trascrizione in una nuova scheda.'
         : isFr
-          ? (msg: string) => `Erreur lors du chargement de l’OCR : ${msg}`
-      : (msg: string) => `Erro ao carregar OCR: ${msg}`,
+          ? () => 'Le texte de la page n’a pas pu être chargé pour le moment. Vérifiez votre connexion et réessayez. Vous pouvez aussi ouvrir le fichier de transcription dans un nouvel onglet.'
+      : () => 'Não foi possível carregar o texto desta página agora. Verifique sua conexão e tente novamente. Se preferir, abra o arquivo da transcrição em uma nova aba.',
     viewerRelatedSim: isEn
       ? (sim: number) => `similarity ${sim.toFixed(2)}`
       : isIt

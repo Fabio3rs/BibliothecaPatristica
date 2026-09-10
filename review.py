@@ -317,7 +317,9 @@ REVIEW_TEMPLATE = """
   {% if offset > 0 %}
   <a href="{{ url_for('review', offset=offset-1, status=filter_status, tesseract=filter_tesseract, volume=filter_volume) }}">← anterior</a>
   {% endif %}
+  {% if has_next %}
   <a href="{{ url_for('review', offset=offset+1, status=filter_status, tesseract=filter_tesseract, volume=filter_volume) }}">próxima →</a>
+  {% endif %}
   <span class="current-info">{{ offset + 1 }} / {{ total }}</span>
 </div>
 {% elif line %}
@@ -491,12 +493,12 @@ REVIEW_TEMPLATE = """
       <button class="btn btn-approve" onclick="submitAction('approved')">✓ Aprovar</button>
       <button class="btn btn-correct" onclick="submitAction('corrected')">✎ Corrigir</button>
       <button class="btn btn-reject" onclick="submitAction('rejected')">✗ Rejeitar</button>
-      {% if is_queue %}
+      {% if has_next %}
       <button class="btn btn-skip" onclick="skip()">→ Pular</button>
       {% endif %}
     </div>
 
-    <p class="hint">Atalhos: <b>A</b> aprovar · <b>R</b> rejeitar{% if is_queue %} · <b>→</b> pular{% endif %}</p>
+    <p class="hint">Atalhos: <b>A</b> aprovar · <b>R</b> rejeitar{% if has_next %} · <b>→</b> pular{% endif %}</p>
 
     {% if line.reviewed_text %}
     <h2>Revisão anterior</h2>
@@ -532,7 +534,7 @@ function submitAction(action) {
   document.getElementById('action-form').submit();
 }
 function skip() {
-  if (!{{ 'true' if is_queue else 'false' }}) return;
+  if (!{{ 'true' if has_next else 'false' }}) return;
   window.location = "{{ skip_url }}";
 }
 function copyTo(el) {
@@ -558,7 +560,7 @@ document.addEventListener('keydown', function(e) {
   if (e.target.tagName === 'TEXTAREA') return;
   if (e.key === 'a' || e.key === 'A') submitAction('approved');
   if (e.key === 'r' || e.key === 'R') submitAction('rejected');
-  if ({{ 'true' if is_queue else 'false' }} && e.key === 'ArrowRight') skip();
+  if ({{ 'true' if has_next else 'false' }} && e.key === 'ArrowRight') skip();
 });
 </script>
 </body>
@@ -681,6 +683,7 @@ SEARCH_TEMPLATE = """
 app = Flask(__name__)
 DB_PATH = "ocr.db"
 SEARCH_PAGE_SIZE = 50
+QUEUE_BATCH_SIZE = 250
 
 
 def get_conn(path: str = DB_PATH) -> sqlite3.Connection:
@@ -1283,6 +1286,11 @@ def fetch_queue_line(
     where, params = build_line_filters(filter_status, filter_tesseract, filter_volume)
     where_clause = build_where_clause(where)
     total = conn.execute(f"SELECT COUNT(*) FROM lines {where_clause}", params).fetchone()[0]
+    if offset >= total:
+        return None, total
+
+    batch_start = (offset // QUEUE_BATCH_SIZE) * QUEUE_BATCH_SIZE
+    batch_index = offset - batch_start
     candidates = conn.execute(
         f"""
         SELECT * FROM lines
@@ -1292,9 +1300,9 @@ def fetch_queue_line(
             CASE WHEN TRIM(IFNULL(tesseract_text, '')) = '' THEN 0 ELSE 1 END ASC,
             agreement_score ASC,
             id ASC
-        LIMIT 250 OFFSET ?
+        LIMIT ? OFFSET ?
         """,
-        params + [offset],
+        params + [QUEUE_BATCH_SIZE, batch_start],
     ).fetchall()
     if not candidates:
         return None, total
@@ -1332,7 +1340,7 @@ def fetch_queue_line(
             item["id"],
         )
     )
-    return ranked_candidates[0], total
+    return ranked_candidates[batch_index], total
 
 
 def fetch_line_by_id(conn: sqlite3.Connection, line_id: int) -> Optional[sqlite3.Row]:
@@ -1467,6 +1475,7 @@ def render_review_page(
     ensure_search_schema(conn)
     detail = load_line_context(conn, line)
     title = line["page_id"] if line else "sem resultado"
+    has_next = is_queue and offset is not None and offset + 1 < total
     skip_url = (
         url_for(
             "review",
@@ -1475,7 +1484,7 @@ def render_review_page(
             tesseract=filter_tesseract,
             volume=filter_volume,
         )
-        if is_queue
+        if has_next
         else ""
     )
     html_out = render_template_string(
@@ -1483,6 +1492,7 @@ def render_review_page(
         title=title,
         line=line,
         is_queue=is_queue,
+        has_next=has_next,
         offset=offset,
         total=total,
         filter_status=filter_status,

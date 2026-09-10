@@ -252,6 +252,7 @@ class TranslationAudit:
     languages: tuple[str, ...]
     strings_total: int
     rows_total: int
+    fallback_strings: int
     models: tuple[str, ...]
 
 
@@ -314,17 +315,45 @@ def audit_translations(
             languages,
         )
     }
-    incomplete = {
-        language: counts.get(language, 0)
-        for language in languages
-        if counts.get(language, 0) != strings_total
-    }
-    if incomplete:
-        details = ", ".join(
-            f"{language}={count}/{strings_total}"
-            for language, count in incomplete.items()
+    partial_rows = con.execute(
+        f"""
+        SELECT s.id, s.source_text, COUNT(DISTINCT t.language) AS language_count
+        FROM index_strings s
+        LEFT JOIN index_translations t
+          ON t.string_id = s.id
+         AND t.language IN ({placeholders})
+        GROUP BY s.id, s.source_text
+        HAVING language_count > 0 AND language_count < ?
+        LIMIT 5
+        """,
+        (*languages, len(languages)),
+    ).fetchall()
+    if partial_rows:
+        samples = "; ".join(
+            f"id={row['id']} ({row['language_count']}/{len(languages)}): "
+            f"{row['source_text'][:100]!r}"
+            for row in partial_rows
         )
-        raise RuntimeError(f"Traduções incompletas: {details}")
+        raise RuntimeError(
+            "Há strings com traduções parciais; remova ou refaça o conjunto completo: "
+            f"{samples}"
+        )
+
+    fallback_strings = int(
+        con.execute(
+            f"""
+            SELECT COUNT(*)
+            FROM index_strings s
+            WHERE NOT EXISTS (
+                SELECT 1
+                FROM index_translations t
+                WHERE t.string_id = s.id
+                  AND t.language IN ({placeholders})
+            )
+            """,
+            languages,
+        ).fetchone()[0]
+    )
 
     malformed = int(
         con.execute(
@@ -359,6 +388,7 @@ def audit_translations(
         languages=languages,
         strings_total=strings_total,
         rows_total=sum(counts.values()),
+        fallback_strings=fallback_strings,
         models=models,
     )
 
@@ -414,19 +444,20 @@ def fetch_translation_map(
                 str(row["language"])
             ] = str(row["translated_text"])
 
-    incomplete = [
-        text
-        for text in texts
-        if any(language not in translations.get(text, {}) for language in languages)
+    partial = [
+        text for text in texts
+        if translations.get(text, {})
+        and any(language not in translations[text] for language in languages)
     ]
-    if incomplete:
-        samples = "; ".join(repr(text[:120]) for text in incomplete[:5])
+    if partial:
+        samples = "; ".join(repr(text[:120]) for text in partial[:5])
         raise RuntimeError(
-            f"{len(incomplete)} string(s) do volume não possuem todas as traduções: {samples}"
+            f"{len(partial)} string(s) do volume possuem traduções parciais: {samples}"
         )
     return {
         text: {language: translations[text][language] for language in languages}
         for text in texts
+        if translations.get(text)
     }
 
 
@@ -901,7 +932,8 @@ def main() -> None:
         print(
             "[export] traduções válidas: "
             f"{translation_audit.strings_total} strings, "
-            f"{translation_audit.rows_total} relações",
+            f"{translation_audit.rows_total} relações, "
+            f"{translation_audit.fallback_strings} fallback(s) para a origem",
             flush=True,
         )
         volume_rows = fetch_volume_rows(con)
@@ -990,6 +1022,7 @@ def main() -> None:
             "languages": list(translation_audit.languages),
             "strings_total": translation_audit.strings_total,
             "rows_total": translation_audit.rows_total,
+            "fallback_strings": translation_audit.fallback_strings,
             "models": list(translation_audit.models),
         },
         "volumes": manifest_items,

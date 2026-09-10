@@ -11,6 +11,7 @@ sys.path.insert(0, str(ROOT))
 
 import scripts.run_index_extraction_chunks as chunk_runner
 from scripts.run_index_extraction_chunks import (
+    GENERAL_TARGET_SEARCH_SEMANTICS,
     _chunk_prompt,
     _coverage_check,
     _run_codex_command,
@@ -84,6 +85,143 @@ def test_general_chunk_prompt_names_general_skill_first(tmp_path: Path) -> None:
     assert "`init_index_db.py`, `import_index_json.py`" in prompt
     assert "`rebuild_index_db_from_payloads.py`" in prompt
     assert "acknowledgment means only that this fragment was written" in prompt
+    assert "ENTRY TARGET LOCALIZATION (GENERAL PIPELINE: AUTHORIZED)" in prompt
+    assert "same-numeral equality" in prompt
+    assert "numbering restarts" in prompt
+    assert "physical_target_evidence" in prompt
+    assert "target_search_semantics" in prompt
+    assert "Do not run the material target locator in this phase" not in prompt
+
+
+def _general_v3_target_fragment(
+    tmp_path: Path,
+    *,
+    target_file: Path,
+    include_evidence: bool = True,
+) -> tuple[dict, dict, Path]:
+    workplan, chunk = _workplan(tmp_path)
+    workplan["pipeline_kind"] = "general"
+    chunk["chunk_contract_version"] = 3
+    owned = Path(chunk["physical_files"][0])
+    owned.write_text("INDEX CAPITUM", encoding="utf-8")
+    output = Path(chunk["output_file"])
+    raw_json = {"source_files": [str(owned)]}
+    if include_evidence:
+        raw_json["physical_target_evidence"] = {
+            "status": "resolved",
+            "method": "monotonic_chapter_heading_sequence",
+            "query_raw": "CAP. I. De fide.",
+            "matched_heading_raw": "CAPUT I. De fide.",
+            "target_file": str(target_file),
+            "inspected_files": [str(target_file)],
+            "reason": "Title and neighboring sequence agree.",
+        }
+    payload = {
+        "schema_version": 3,
+        "volume_id": "PL001",
+        "chunk_id": chunk["chunk_id"],
+        "section_id": chunk["section_id"],
+        "status": "complete",
+        "physical_files": chunk["physical_files"],
+        "numbering_semantics": {
+            "physical_file_fields": "physical_files_and_explicit_file_locators",
+            "entry_number_system": "editorial",
+            "numeric_equality_mapping_forbidden": True,
+        },
+        "target_search_semantics": GENERAL_TARGET_SEARCH_SEMANTICS,
+        "boundary_decisions": [],
+        "works": [],
+        "sections": [
+            {
+                "section_key": "PL001:index-capitum",
+                "entries": [
+                    {
+                        "entry_key": "PL001:index-capitum:001",
+                        "entry_raw": "CAP. I. De fide.",
+                        "target_file": str(target_file),
+                        "raw_json": raw_json,
+                    }
+                ],
+            }
+        ],
+        "notes": [],
+    }
+    output.write_text(json.dumps(payload), encoding="utf-8")
+    return workplan, chunk, output
+
+
+def test_general_v3_fragment_accepts_evidenced_target_inside_volume(
+    tmp_path: Path,
+) -> None:
+    target = tmp_path / "scan-010.txt"
+    target.write_text("CAPUT I. De fide.", encoding="utf-8")
+    workplan, chunk, output = _general_v3_target_fragment(
+        tmp_path,
+        target_file=target,
+    )
+
+    _validate_fragment(output, workplan, chunk)
+
+
+def test_general_v3_fragment_rejects_target_without_structured_evidence(
+    tmp_path: Path,
+) -> None:
+    target = tmp_path / "scan-010.txt"
+    target.write_text("CAPUT I. De fide.", encoding="utf-8")
+    workplan, chunk, output = _general_v3_target_fragment(
+        tmp_path,
+        target_file=target,
+        include_evidence=False,
+    )
+
+    with pytest.raises(ValueError, match="physical_target_evidence"):
+        _validate_fragment(output, workplan, chunk)
+
+
+def test_general_v3_fragment_rejects_target_outside_volume(tmp_path: Path) -> None:
+    source_root = tmp_path / "volume"
+    source_root.mkdir()
+    outside = tmp_path / "other-volume.txt"
+    outside.write_text("CAPUT I. De fide.", encoding="utf-8")
+    workplan, chunk, output = _general_v3_target_fragment(
+        source_root,
+        target_file=outside,
+    )
+
+    with pytest.raises(ValueError, match="inside source_root"):
+        _validate_fragment(output, workplan, chunk)
+
+
+def test_general_v3_fragment_rejects_index_self_hit_without_body_evidence(
+    tmp_path: Path,
+) -> None:
+    target = tmp_path / "scan-001.txt"
+    workplan, chunk, output = _general_v3_target_fragment(
+        tmp_path,
+        target_file=target,
+    )
+
+    with pytest.raises(ValueError, match="own index source file"):
+        _validate_fragment(output, workplan, chunk)
+
+
+def test_general_v3_fragment_rejects_numeric_only_target_method(
+    tmp_path: Path,
+) -> None:
+    target = tmp_path / "scan-010.txt"
+    target.write_text("CAPUT I. De fide.", encoding="utf-8")
+    workplan, chunk, output = _general_v3_target_fragment(
+        tmp_path,
+        target_file=target,
+    )
+    payload = json.loads(output.read_text(encoding="utf-8"))
+    payload["sections"][0]["entries"][0]["raw_json"][
+        "physical_target_evidence"
+    ]["method"] = "ordinal_only"
+    output.write_text(json.dumps(payload), encoding="utf-8")
+
+    with pytest.raises(ValueError, match="numeric-only target evidence"):
+        _validate_fragment(output, workplan, chunk)
 
 
 def test_chunk_prompt_includes_existing_fragment_validation_failure(tmp_path: Path) -> None:

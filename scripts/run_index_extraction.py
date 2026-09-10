@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import multiprocessing as mp
 import os
@@ -36,6 +37,7 @@ from patristica_pipeline.index_pipeline_ownership import general_section_ownersh
 from patristica_pipeline.index_work_anchor_reconciler import reconcile_work_anchors
 from patristica_pipeline.index_workplan import build_index_workplan, reconcile_workplan_progress
 from patristica_pipeline.index_chunk_driver import run_index_chunk_agents
+from patristica_pipeline.index_operation_lock import index_operation_lock
 from scripts.index_translation.database import (
     collect_pending_translations,
     collect_volume_candidates,
@@ -207,6 +209,16 @@ def db_volume_collection(db_path: Path, volume_id: str) -> str | None:
 
 def read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def file_sha256(path: Path) -> str | None:
+    if not path.is_file():
+        return None
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def write_json(path: Path, payload: dict[str, Any]) -> None:
@@ -884,7 +896,13 @@ def validate_payload(payload: dict[str, Any], volume_id: str, expected_file: Pat
         raise SystemExit(f"Expected output file not found: {expected_file}")
 
 
-def import_payload(payload_file: Path, db_path: Path, replace: bool) -> None:
+def import_payload(
+    payload_file: Path,
+    db_path: Path,
+    replace: bool,
+    *,
+    caller_holds_lock: bool = False,
+) -> None:
     cmd = [
         sys.executable,
         str(IMPORT_SCRIPT),
@@ -895,12 +913,54 @@ def import_payload(payload_file: Path, db_path: Path, replace: bool) -> None:
     ]
     if replace:
         cmd.append("--replace")
+    if caller_holds_lock:
+        cmd.append("--caller-holds-lock")
     result = run_cmd(cmd, cwd=PROJECT_ROOT)
     if result.returncode != 0:
         raise SystemExit(
             f"import_index_json.py failed for {payload_file.name}\nSTDOUT:\n{result.stdout}\nSTDERR:\n{result.stderr}"
         )
     print(result.stdout.strip())
+
+
+def validate_and_import_existing_payload(
+    *,
+    payload_file: Path,
+    assembled_file: Path | None,
+    intermediate_dir: Path,
+    db_path: Path,
+    volume_id: str,
+    evidence_sample_size: int,
+    max_unverified_ratio: float,
+    skip_evidence_check: bool,
+) -> dict[str, int]:
+    """Validate and replace one DB volume without rerunning extraction agents."""
+
+    payload = read_json(payload_file)
+    validate_payload(payload, volume_id, payload_file)
+    write_pipeline_quality_reports(
+        payload_file=payload_file,
+        assembled_file=assembled_file,
+        intermediate_dir=intermediate_dir,
+        evidence_sample_size=evidence_sample_size,
+        max_unverified_ratio=max_unverified_ratio,
+        skip_evidence_check=skip_evidence_check,
+    )
+    import_payload(
+        payload_file,
+        db_path,
+        True,
+        caller_holds_lock=True,
+    )
+    return {
+        "works": len(payload.get("works") or []),
+        "sections": len(payload.get("sections") or []),
+        "entries": sum(
+            len(section.get("entries") or [])
+            for section in payload.get("sections") or []
+            if isinstance(section, dict)
+        ),
+    }
 
 
 def format_translation_progress(
@@ -1258,8 +1318,18 @@ def main() -> None:
     ap.add_argument("--model", default=None, help="Optional Codex model override")
     ap.add_argument("--use-json", action="store_true", help="Pass --json to codex exec")
     ap.add_argument("--replace", action="store_true", help="Replace existing rows for the volume on import")
+    ap.add_argument(
+        "--import-existing",
+        action="store_true",
+        help=(
+            "Validate the existing canonical payload and import it with replacement, "
+            "without running prescan, chunk extraction, or Codex. Requires --replace."
+        ),
+    )
     ap.add_argument("--skip-done", action="store_true", help="Skip volumes already imported into the SQLite DB")
     ap.add_argument("--db", type=Path, default=DEFAULT_DB, help="SQLite database used to detect already imported volumes")
+    ap.add_argument("--lock-file", type=Path, help="Advisory payload/SQLite write lock")
+    ap.add_argument("--lock-timeout", type=float, default=0.0)
     ap.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR, help="Directory for the payload JSON file")
     ap.add_argument("--log-dir", type=Path, default=DEFAULT_LOG_DIR, help="Directory for persistent Codex logs")
     ap.add_argument("--intermediate-root", type=Path, default=DEFAULT_INTERMEDIATE_ROOT)
@@ -1268,6 +1338,14 @@ def main() -> None:
     ap.add_argument("--editorial-page-db", type=Path, default=DEFAULT_EDITORIAL_PAGE_DB)
     ap.add_argument("--no-editorial-page-cache", action="store_true")
     ap.add_argument("--legacy-single-context", action="store_true")
+    ap.add_argument(
+        "--fresh-extraction",
+        action="store_true",
+        help=(
+            "Ignore existing payload content and completed chunk checkpoints while preserving "
+            "the old payload until the replacement passes validation and import."
+        ),
+    )
     ap.add_argument("--max-files-per-chunk", type=int, default=6)
     ap.add_argument("--chunk-overlap", type=int, default=1)
     ap.add_argument("--chunk-workers", type=int, default=1)
@@ -1359,10 +1437,23 @@ def main() -> None:
     args = ap.parse_args()
     if args.helper_workers < 1:
         raise SystemExit("--helper-workers must be at least 1")
+    if args.lock_timeout < 0:
+        raise SystemExit("--lock-timeout cannot be negative")
     if args.translation_only:
         args.translate = True
     if args.translation_only and args.dry_run:
         raise SystemExit("--translation-only and --dry-run cannot be used together.")
+    if args.translation_only and args.fresh_extraction:
+        raise SystemExit("--translation-only and --fresh-extraction cannot be used together.")
+    if args.import_existing and not args.replace:
+        raise SystemExit("--import-existing requires --replace to avoid retaining stale volume rows.")
+    if args.import_existing and (
+        args.dry_run or args.fresh_extraction or args.translation_only or args.translate
+    ):
+        raise SystemExit(
+            "--import-existing cannot be combined with --dry-run, --fresh-extraction, "
+            "--translate, or --translation-only."
+        )
     args.translation_languages = normalize_language_list(args.translation_languages)
     args.translation_openai_api_key = (
         args.translation_openai_api_key or os.getenv("OPENAI_API_KEY")
@@ -1413,6 +1504,11 @@ def main() -> None:
     args.log_dir = args.log_dir.resolve()
     args.intermediate_root = args.intermediate_root.resolve()
     args.db = args.db.resolve()
+    args.lock_file = (
+        args.lock_file.resolve()
+        if args.lock_file is not None
+        else args.db.parent / ".patristic-index-write.lock"
+    )
     args.translation_dictionary_dir = args.translation_dictionary_dir.expanduser().resolve()
     args.cltk_python = absolute_path_preserving_symlinks(args.cltk_python)
     args.output_dir.mkdir(parents=True, exist_ok=True)
@@ -1421,6 +1517,7 @@ def main() -> None:
 
     failed_volumes: list[str] = []
     for idx, volume_id in enumerate(volume_ids, start=1):
+        write_lock = None
         volume_root = args.root / volume_id
         text_root = volume_root / "text"
         if args.translation_only:
@@ -1455,7 +1552,10 @@ def main() -> None:
 
         if args.translation_only:
             try:
-                translation_summary = run_translation_stage(
+                with index_operation_lock(
+                    args.lock_file, exclusive=True, timeout=args.lock_timeout
+                ):
+                    translation_summary = run_translation_stage(
                     db_path=args.db,
                     volume_id=volume_id,
                     languages=args.translation_languages,
@@ -1476,7 +1576,7 @@ def main() -> None:
                     backoff_base_s=args.translation_backoff_base,
                     backoff_max_s=args.translation_backoff_max,
                     jitter_ratio=args.translation_jitter,
-                )
+                    )
                 failure_path.unlink(missing_ok=True)
                 print(
                     json.dumps(
@@ -1522,18 +1622,89 @@ def main() -> None:
                 )
             continue
 
-        existing_payload_for_prompt: dict[str, Any] | None = None
-        if payload_file.is_file():
+        if args.import_existing:
             try:
-                candidate_payload = read_json(payload_file)
-                if isinstance(candidate_payload, dict):
-                    existing_payload_for_prompt = candidate_payload
-            except (OSError, json.JSONDecodeError):
-                pass
-        existing_payload, checkpoint_validation_failure = prevalidate_existing_payload(
-            payload_file,
-            volume_id,
-        )
+                assembled_file = assembled_path if assembled_path.is_file() else None
+                with index_operation_lock(
+                    args.lock_file, exclusive=True, timeout=args.lock_timeout
+                ):
+                    counts = validate_and_import_existing_payload(
+                        payload_file=payload_file,
+                        assembled_file=assembled_file,
+                        intermediate_dir=intermediate_dir,
+                        db_path=args.db,
+                        volume_id=volume_id,
+                        evidence_sample_size=args.evidence_sample_size,
+                        max_unverified_ratio=args.max_unverified_evidence_ratio,
+                        skip_evidence_check=args.skip_evidence_check,
+                    )
+                failure_path.unlink(missing_ok=True)
+                print(
+                    json.dumps(
+                        {
+                            "status": "ok",
+                            "volume_id": volume_id,
+                            "collection": collection,
+                            "payload_file": str(payload_file),
+                            "imported": True,
+                            "replace": True,
+                            "import_existing": True,
+                            "counts": counts,
+                        },
+                        ensure_ascii=False,
+                    )
+                )
+            except BaseException as error:
+                if isinstance(error, (KeyboardInterrupt, GeneratorExit)):
+                    raise
+                write_failure_artifact(
+                    path=failure_path,
+                    volume_id=volume_id,
+                    collection=collection,
+                    stage=infer_failure_stage(error),
+                    error=error,
+                    payload_file=payload_file,
+                    prescan_file=None,
+                    filtered_pages_file=None,
+                    editorial_pages_file=None,
+                    helper_request_file=None,
+                    helper_output_file=None,
+                    last_message_file=None,
+                    stdout_log_file=None,
+                    stderr_log_file=None,
+                    stream_log_file=None,
+                )
+                if not args.continue_on_error:
+                    raise
+                failed_volumes.append(volume_id)
+                emit_volume_failure(
+                    volume_id=volume_id,
+                    collection=collection,
+                    error=error,
+                    artifact_path=failure_path,
+                )
+            continue
+
+        with index_operation_lock(
+            args.lock_file, exclusive=False, timeout=args.lock_timeout
+        ):
+            existing_payload_for_prompt: dict[str, Any] | None = None
+            if payload_file.is_file() and not args.fresh_extraction:
+                try:
+                    candidate_payload = read_json(payload_file)
+                    if isinstance(candidate_payload, dict):
+                        existing_payload_for_prompt = candidate_payload
+                except (OSError, json.JSONDecodeError):
+                    pass
+            if args.fresh_extraction:
+                existing_payload = None
+                checkpoint_validation_failure = None
+            else:
+                existing_payload, checkpoint_validation_failure = prevalidate_existing_payload(
+                    payload_file,
+                    volume_id,
+                )
+            payload_checkpoint_sha256 = file_sha256(payload_file)
 
         if args.skip_done and not args.replace and volume_already_imported(args.db, volume_id):
             print(json.dumps({"status": "skipped", "reason": "already_imported", "volume_id": volume_id}, ensure_ascii=False))
@@ -1559,7 +1730,11 @@ def main() -> None:
                 write_json(filtered_path, filtered)
             emit_stage(verbose=args.verbose, volume_id=volume_id, volume_index=idx, volume_total=len(volume_ids), stage_index=2, status="DONE", label="localize candidate pages", started_at=stage_started, progress_log=progress_log)
 
-            previous_workplan = read_json(workplan_path) if workplan_path.is_file() else None
+            previous_workplan = (
+                read_json(workplan_path)
+                if workplan_path.is_file() and not args.fresh_extraction
+                else None
+            )
             workplan = build_index_workplan(
                 volume_id=volume_id,
                 source_root=text_root,
@@ -1614,6 +1789,7 @@ def main() -> None:
                     log_dir=args.log_dir / volume_id / "chunks",
                     workers=args.chunk_workers,
                     verbose=args.verbose,
+                    reuse_complete_chunks=not args.fresh_extraction,
                 )
                 workplan = read_json(workplan_path)
                 assembled = assemble_index_fragments(workplan, assembled_path)
@@ -1636,13 +1812,17 @@ def main() -> None:
                     "`section_key`, and `entry_key` exactly; these identities are immutable, "
                     "including keys containing `candidate-section`. Refine semantic fields or "
                     "`raw_json`, never the stable key. Do not reconstruct entries without their "
-                    "`entry_key`. If a fragment clearly contains a closing alphabetical, "
+                    "`entry_key`. Preserve every validated chunk `target_file` together with its "
+                    "exact `raw_json.physical_target_evidence`; resolve only entries that remain "
+                    "unresolved. If a fragment clearly contains a closing alphabetical, "
                     "analytical, scripture, citation, names, words, or concordance index, do not "
                     "emit that non-owned section; record its stable key and exclusion reason in "
                     "`notes`. Do not silently drop any owned work, section, or entry."
                 )
-            previous_failure = load_failure_artifact(failure_path)
-            if payload_file.exists():
+            previous_failure = (
+                None if args.fresh_extraction else load_failure_artifact(failure_path)
+            )
+            if payload_file.exists() and not args.fresh_extraction:
                 prompt += "\n\n" + build_existing_payload_prompt_block(payload_file, volume_id)
             if existing_payload_for_prompt is not None:
                 anchor_rerun_block = build_work_anchor_rerun_prompt_block(
@@ -1676,6 +1856,14 @@ def main() -> None:
                 print(json.dumps({"status": "dry-run", "volume_id": volume_id, "prompt_file": str(prompt_path), "workplan_file": str(workplan_path)}, ensure_ascii=False))
                 continue
 
+            write_lock = index_operation_lock(
+                args.lock_file, exclusive=True, timeout=args.lock_timeout
+            )
+            write_lock.__enter__()
+            if file_sha256(payload_file) != payload_checkpoint_sha256:
+                raise RuntimeError(
+                    f"payload changed after prompt snapshot; rerun volume instead of overwriting: {payload_file}"
+                )
             result = run_codex(
                 codex_bin=args.codex_bin, prompt=prompt, last_message_path=last_message_path,
                 cwd=PROJECT_ROOT, use_json=args.use_json, model=args.model, verbose=args.verbose,
@@ -1717,7 +1905,12 @@ def main() -> None:
                 skip_evidence_check=args.skip_evidence_check or not chunks,
             )
             emit_stage(verbose=args.verbose, volume_id=volume_id, volume_index=idx, volume_total=len(volume_ids), stage_index=11, status="DONE", label="validate payload and evidence", progress_log=progress_log)
-            import_payload(payload_file, args.db, args.replace)
+            import_payload(
+                payload_file,
+                args.db,
+                args.replace,
+                caller_holds_lock=True,
+            )
             emit_stage(verbose=args.verbose, volume_id=volume_id, volume_index=idx, volume_total=len(volume_ids), stage_index=12, status="DONE", label="import payload", progress_log=progress_log)
             translation_summary: dict[str, Any] = {
                 "ran": False,
@@ -1756,8 +1949,12 @@ def main() -> None:
                 emit_stage(verbose=args.verbose, volume_id=volume_id, volume_index=idx, volume_total=len(volume_ids), stage_index=13, status="SKIP", label="cache CLTK analysis", progress_log=progress_log)
                 emit_stage(verbose=args.verbose, volume_id=volume_id, volume_index=idx, volume_total=len(volume_ids), stage_index=14, status="SKIP", label="translate index strings", progress_log=progress_log)
             failure_path.unlink(missing_ok=True)
+            write_lock.close()
+            write_lock = None
             print(json.dumps({"status": "ok", "volume_id": volume_id, "collection": collection, "payload_file": str(payload_file), "imported": True, "translation": translation_summary}, ensure_ascii=False))
         except BaseException as error:
+            if write_lock is not None:
+                write_lock.close()
             if isinstance(error, (KeyboardInterrupt, GeneratorExit)):
                 raise
             stage = infer_failure_stage(error)
