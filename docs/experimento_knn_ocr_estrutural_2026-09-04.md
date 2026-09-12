@@ -34,7 +34,7 @@ comparaveis, nao pre-condicoes do primeiro embedding.
 
 ## Arquivos
 
-- `patristica_pipeline/ocr_embedding_ir.py`: extracao da IR, normalizacao e
+- `tools/ocr_embedding_ir.py`: extracao da IR, normalizacao e
   montagem de V0/V1/V2;
 - `tools/generate_ocr_embedding_experiment.py`: auditoria, preparacao do SQLite,
   embedding e centroides;

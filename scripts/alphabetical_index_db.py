@@ -12,7 +12,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from patristica_pipeline.scripture_book_catalog import (
+from tools.scripture.book_catalog import (
     canonical_book_key,
     contextual_book_tradition,
     historical_noncanonical_book_key,

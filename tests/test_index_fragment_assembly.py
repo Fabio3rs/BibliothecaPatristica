@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from patristica_pipeline.index_fragment_assembly import (
+from tools.indexing.index_fragment_assembly import (
     assemble_index_fragments,
     verify_payload_consumes_fragments,
 )

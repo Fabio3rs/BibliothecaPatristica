@@ -6,7 +6,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from patristica_pipeline.alphabetical_mechanical_analysis import (
+from tools.indexing.alphabetical_mechanical_analysis import (
     analyze_index_file,
     build_mechanical_analysis,
     detect_heading,

@@ -8,7 +8,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from patristica_pipeline.editorial_page_estimator import (
+from tools.indexing.editorial_page_estimator import (
     _connect_db,
     estimate_editorial_pages,
     list_page_overrides,

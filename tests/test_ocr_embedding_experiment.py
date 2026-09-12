@@ -7,13 +7,13 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from patristica_pipeline.ocr_embedding_ir import (
+from tools.ocr_embedding_ir import (
     build_variant_chunks,
     embedding_visible_text,
     extract_page_segments,
     structural_visible_text,
 )
-from patristica_pipeline.ocr_xml_utils import parse_ocr_xml_page
+from tools.ocr_xml_utils import parse_ocr_xml_page
 from tools.benchmark_ocr_parallel_pages import benchmark_parallel_pages
 from tools.generate_ocr_embedding_experiment import (
     ParsedPage,

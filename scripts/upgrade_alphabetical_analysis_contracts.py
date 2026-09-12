@@ -10,7 +10,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from patristica_pipeline.alphabetical_analysis_db import (
+from tools.indexing.alphabetical_analysis_db import (
     DEFAULT_ANALYSIS_DB,
     connect_analysis_db,
     init_analysis_schema,

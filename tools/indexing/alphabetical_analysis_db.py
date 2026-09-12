@@ -15,10 +15,10 @@ from .alphabetical_compact_pipeline import (
     locator_key,
     standardize_locator_item,
 )
-from .common import page_number
+from tools.corpus_utils import page_number
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_ANALYSIS_DB = PROJECT_ROOT / "data" / "alphabetical_analysis.db"
 ANALYSIS_SCHEMA_VERSION = 3
 STAGES = ("discover", "extract", "locate", "verify", "assemble")

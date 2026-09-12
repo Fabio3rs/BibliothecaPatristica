@@ -180,7 +180,7 @@ O valor dele é permitir retomada rápida sem depender de memória implícita do
 
 Em muitos volumes, o pior caminho é pedir que o agente reescreva um JSON enorme manualmente.
 
-Scripts e módulos em `scripts/pipeline_index_extraction/` e `patristica_pipeline/` existem para
+Scripts e módulos em `scripts/pipeline_index_extraction/` e `tools/indexing/` existem para
 tratar etapas mecânicas e repetíveis, como:
 
 - criar shards de citações com ownership exato

@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from patristica_pipeline.index_entry_estimator import analyze_page_boundary
+from tools.indexing.index_entry_estimator import analyze_page_boundary
 
 
 def _write_page(path: Path, body: str) -> None:

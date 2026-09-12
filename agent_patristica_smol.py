@@ -9,7 +9,7 @@ import traceback
 from pathlib import Path
 from typing import Dict, List
 
-from patristica_pipeline.common import parse_volume_info
+from tools.corpus_utils import parse_volume_info
 from patristica_pipeline.db import connect_db, init_catalog_schema, init_databases
 from patristica_pipeline.ingest import ingest_ocr_to_text_db
 from patristica_pipeline.smol_loops import (

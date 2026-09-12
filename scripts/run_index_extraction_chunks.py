@@ -24,7 +24,7 @@ from typing import Any
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from patristica_pipeline.common import page_sort_key
+from tools.corpus_utils import page_sort_key
 
 
 _TERMINAL_WRITE_LOCK = threading.Lock()

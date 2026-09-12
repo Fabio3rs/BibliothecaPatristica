@@ -23,8 +23,8 @@ from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from patristica_pipeline.editorial_page_estimator import estimate_editorial_pages
-from patristica_pipeline.index_target_locator import parse_ocr_page_xml
+from tools.indexing.editorial_page_estimator import estimate_editorial_pages
+from tools.indexing.index_target_locator import parse_ocr_page_xml
 
 
 ROOT = Path("/homessddata/Projects/pdfocr")

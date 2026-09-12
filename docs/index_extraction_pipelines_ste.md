@@ -195,7 +195,7 @@ Do not treat all entry numbers as editorial pages.
 
 ## 6. File-to-page resolution
 
-`patristica_pipeline/editorial_page_estimator.py` estimates editorial pages for physical files.
+`tools/indexing/editorial_page_estimator.py` estimates editorial pages for physical files.
 
 It reads headers, footers, body-top numbers, and neighboring sequences.
 
@@ -215,7 +215,7 @@ The general driver does not run this estimator for PO.
 
 PO volumes can contain parallel number systems.
 
-`patristica_pipeline/index_target_locator.py` resolves references in both directions.
+`tools/indexing/index_target_locator.py` resolves references in both directions.
 
 It finds candidate physical files for editorial references.
 

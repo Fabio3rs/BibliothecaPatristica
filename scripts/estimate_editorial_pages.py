@@ -8,7 +8,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from patristica_pipeline.editorial_page_estimator import (
+from tools.indexing.editorial_page_estimator import (
     clear_page_override,
     estimate_editorial_pages_json,
     list_page_overrides,

@@ -24,7 +24,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from patristica_pipeline.ocr_embedding_ir import (
+from tools.ocr_embedding_ir import (
     IR_VERSION,
     SUPPORTED_VARIANTS,
     LogicalSegment,
@@ -35,7 +35,7 @@ from patristica_pipeline.ocr_embedding_ir import (
     stable_hash,
     write_ir_jsonl,
 )
-from patristica_pipeline.ocr_xml_utils import OcrPage, parse_ocr_xml_page
+from tools.ocr_xml_utils import OcrPage, parse_ocr_xml_page
 from scripts.playgrounds.embedding_playground import (
     DEFAULT_MODEL,
     DEFAULT_OLLAMA_URL,

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from patristica_pipeline.index_localization_helpers import build_helper_request_artifact
+from tools.indexing.index_localization_helpers import build_helper_request_artifact
 
 
 def _write_page(path: Path, header: str, body: str) -> None:

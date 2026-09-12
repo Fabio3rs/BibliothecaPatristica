@@ -118,7 +118,7 @@ python .codex/skills/alphabetical-index-extractor/scripts/locate-ocr-page-image.
 ```
 
 A mesma regra está em
-`patristica_pipeline.index_target_locator.resolve_paired_page_image()`. Ela usa
+`tools.indexing.index_target_locator.resolve_paired_page_image()`. Ela usa
 o sufixo físico apenas para parear `text/` e `images/`; não infere a página
 editorial. Se retornar `ambiguous` ou `missing`, não escolher uma imagem por
 suposição.

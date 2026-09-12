@@ -79,7 +79,7 @@ do corpo grego/latino.
 
 O filtro do piloto:
 
-1. parseia XML e texto legado com `patristica_pipeline.ocr_xml_utils`;
+1. parseia XML e texto legado com `tools.ocr_xml_utils`;
 2. preserva latim, grego e outros scripts no corpo;
 3. ignora o elemento externo `<notas>`, mas preserva notas/aparato substanciais;
 4. remove boilerplate do Google, avisos de reconhecimento, selos, URLs,

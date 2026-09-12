@@ -17,7 +17,7 @@ from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from patristica_pipeline.editorial_page_estimator import build_estimator_page_map
+from tools.indexing.editorial_page_estimator import build_estimator_page_map
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -697,7 +697,7 @@ def rebuild_payload() -> dict[str, Any]:
     notes.extend(
         [
             "Rebuilt refs for sections 002-005 from entry_raw instead of reusing the fragment-stage placeholder targets.",
-            "Used patristica_pipeline.editorial_page_estimator to map cited editorial pages to OCR files across the full PL055 volume.",
+            "Used tools.indexing.editorial_page_estimator to map cited editorial pages to OCR files across the full PL055 volume.",
             "Ran index_target_locator only for refs that remained unresolved after estimator exact/nearby lookup and preserved helper evidence in raw_json.",
         ]
     )

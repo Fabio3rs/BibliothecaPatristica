@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 from typing import Any, Callable
 
-from .common import page_sort_key
+from tools.corpus_utils import page_sort_key
 from .index_target_locator import normalize_for_search, resolve_index_targets
 
 

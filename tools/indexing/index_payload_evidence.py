@@ -13,9 +13,9 @@ import unicodedata
 from pathlib import Path
 from typing import Any
 
-from .common import page_sort_key
+from tools.corpus_utils import page_sort_key
 from .index_work_anchor_reconciler import inspect_declared_work_anchors
-from .ocr_xml_utils import read_ocr_page
+from tools.ocr_xml_utils import read_ocr_page
 
 
 ENTRY_BOUNDARY_RE = re.compile(

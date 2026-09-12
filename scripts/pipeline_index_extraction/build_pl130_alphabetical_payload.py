@@ -22,7 +22,7 @@ from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from patristica_pipeline.index_target_locator import parse_ocr_page_xml
+from tools.indexing.index_target_locator import parse_ocr_page_xml
 
 VOLUME_ID = "PL130"
 COLLECTION = "PL"

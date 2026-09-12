@@ -313,7 +313,7 @@ def build_work_instructions(source_root: Path) -> str:
         "- In confirmed Latin PG/PL scripture context, `Jo.` means São João while explicit `Job`/`Iob` means Jó. Derived lookup may fold `æ→ae` and `œ→oe`, but raw fields preserve the ligatures.",
         "- Explicit `III/IV Esdras` or `III/IV Esdrae` are historical noncanonical works, not Esdras/Neemias. Preserve them with `raw_json.canonical_status=historical_noncanonical`.",
         "- If a scripture-like line does not have a safe explicit or inherited biblical book context, omit that `scripture_ref` instead of inventing one.",
-        "- Use the PT-BR canonical names and contextual profiles defined by `patristica_pipeline/scripture_book_catalog.py` for `book_norm` and `ref_norm`; preserve the original printed form in `book_raw` and `ref_raw`.",
+        "- Use the PT-BR canonical names and contextual profiles defined by `tools/scripture/book_catalog.py` for `book_norm` and `ref_norm`; preserve the original printed form in `book_raw` and `ref_raw`.",
         "- Treat verse-apparatus sections such as `LOCA EX PSALMIS` / `VARIANTIA IN PSALTERIIS` as a dedicated scripture-apparatus pattern, not as an ordinary alphabetical subject index.",
         "- In those apparatus sections, references like `v. 2.` and `v. 5.` inherit the current psalm/book from the local heading, for example `EX PSALMO I.`.",
         "- Do not leave an entry anchorless if a page number, column, line, range, target locator, or biblical citation can still be recovered from the printed material.",

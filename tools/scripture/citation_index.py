@@ -25,10 +25,10 @@ try:
 except ImportError:  # pragma: no cover - dependency is installed in production
     ahocorasick = None
 
-from .common import PROJECT_ROOT, page_number, page_sort_key
-from .editorial_page_estimator import best_guess_pages, estimate_editorial_pages
-from .ocr_xml_utils import normalize_visible_text, parse_ocr_xml_page
-from .scripture_book_catalog import (
+from tools.corpus_utils import PROJECT_ROOT, page_number, page_sort_key
+from tools.indexing.editorial_page_estimator import best_guess_pages, estimate_editorial_pages
+from tools.ocr_xml_utils import normalize_visible_text, parse_ocr_xml_page
+from .book_catalog import (
     BOOKS,
     aliases_for_book,
     canonical_book_key,

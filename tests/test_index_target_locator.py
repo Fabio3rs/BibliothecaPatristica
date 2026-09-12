@@ -5,7 +5,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from patristica_pipeline.index_target_locator import (
+from tools.indexing.index_target_locator import (
     _contains_normalized_phrase,
     normalize_for_search,
     parse_ocr_page_xml,

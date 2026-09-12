@@ -1,4 +1,4 @@
-from patristica_pipeline.index_pipeline_ownership import (
+from tools.indexing.index_pipeline_ownership import (
     alphabetical_section_ownership,
     general_section_ownership,
 )

@@ -20,11 +20,11 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from patristica_pipeline.scripture_book_catalog import (
+from tools.scripture.book_catalog import (
     canonical_book_key,
     canonical_book_label,
 )
-from patristica_pipeline.index_pipeline_ownership import (
+from tools.indexing.index_pipeline_ownership import (
     alphabetical_section_ownership,
 )
 

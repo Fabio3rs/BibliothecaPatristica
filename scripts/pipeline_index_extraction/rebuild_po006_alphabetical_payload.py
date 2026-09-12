@@ -19,8 +19,8 @@ from pathlib import Path
 import sys
 
 sys.path.insert(0, str(ROOT := Path("/homessddata/Projects/pdfocr")))
-from patristica_pipeline.common import page_number
-from patristica_pipeline.ocr_xml_utils import read_ocr_page
+from tools.corpus_utils import page_number
+from tools.ocr_xml_utils import read_ocr_page
 
 PAYLOAD_PATH = ROOT / "data/alphabetical_index_payloads/PO006_alphabetical_indices.json"
 HELPER_REQUEST_PATH = ROOT / "data/alphabetical_index_payloads/PO006_helper_request.json"

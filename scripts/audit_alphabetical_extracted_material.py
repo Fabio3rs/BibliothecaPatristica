@@ -12,7 +12,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from patristica_pipeline.alphabetical_material_audit import audit_extracted_material
+from tools.indexing.alphabetical_material_audit import audit_extracted_material
 
 
 def build_parser() -> argparse.ArgumentParser:

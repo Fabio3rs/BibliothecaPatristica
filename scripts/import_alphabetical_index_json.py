@@ -20,13 +20,13 @@ from alphabetical_index_db import (
     refresh_volume_quality,
     upsert_volume,
 )
-from patristica_pipeline.scripture_book_catalog import (
+from tools.scripture.book_catalog import (
     canonical_book_key,
     contextual_book_tradition,
     historical_noncanonical_book_key,
     normalize_book_alias,
 )
-from patristica_pipeline.index_pipeline_ownership import (
+from tools.indexing.index_pipeline_ownership import (
     alphabetical_section_ownership,
 )
 

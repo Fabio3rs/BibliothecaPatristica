@@ -7,13 +7,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from patristica_pipeline.scripture_book_catalog import (
+from tools.scripture.book_catalog import (
     BOOKS,
     CANONICAL_BOOK_LABELS,
     canonical_book_key,
     historical_noncanonical_book_key,
 )
-from patristica_pipeline.scripture_evidence_locator import (
+from tools.scripture.evidence_locator import (
     ScriptureEvidenceConfig,
     add_scripture_evidence_candidates,
     build_scripture_table_repair_prompt,

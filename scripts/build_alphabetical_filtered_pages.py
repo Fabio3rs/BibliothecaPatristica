@@ -12,8 +12,8 @@ from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from patristica_pipeline.common import page_number, page_sort_key, parse_volume_info
-from patristica_pipeline.structural_target_repair import scan_dense_structural_headings
+from tools.corpus_utils import page_number, page_sort_key, parse_volume_info
+from tools.indexing.structural_target_repair import scan_dense_structural_headings
 
 
 PG_PL_MARKERS = (

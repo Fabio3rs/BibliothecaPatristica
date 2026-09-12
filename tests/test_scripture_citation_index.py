@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from patristica_pipeline.scripture_citation_index import (
+from tools.scripture.citation_index import (
     DETECTOR_VERSION,
     ScanTask,
     build_citation_database,

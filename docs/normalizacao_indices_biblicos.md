@@ -226,7 +226,7 @@ Mas a saída canônica deve ser unificada em um nome português estável.
 ### 6.2 Base de nomes
 
 A fonte canônica da pipeline alfabética é
-[scripture_book_catalog.py](/homessddata/Projects/pdfocr/patristica_pipeline/scripture_book_catalog.py:1).
+[scripture_book_catalog.py](/homessddata/Projects/pdfocr/tools/scripture/book_catalog.py:1).
 Ela contém exatamente os 73 livros do cânon católico e aliases editoriais em português, latim,
 francês e inglês. `scripture_ref_normalizer.py` continua útil para texto corrido, mas não é a
 autoridade do índice estruturado.
@@ -730,7 +730,7 @@ Ela deve:
 - associar cada ocorrência material à passagem por `scripture_ref_order`
 - omitir `scripture_refs` para `scripture_mode=incidental_mention`, preservando a menção somente
   no literal/contexto da entrada
-- usar `patristica_pipeline/scripture_book_catalog.py` como autoridade para nomes canônicos e
+- usar `tools/scripture/book_catalog.py` como autoridade para nomes canônicos e
   perfis editoriais; `scripture_ref_normalizer.py` permanece apenas como apoio para texto corrido
 
 Ela não deve:

@@ -13,7 +13,7 @@ import unicodedata
 from pathlib import Path
 from typing import Any
 
-from .ocr_xml_utils import read_ocr_page
+from tools.ocr_xml_utils import read_ocr_page
 
 
 _SPACE_RE = re.compile(r"\s+")

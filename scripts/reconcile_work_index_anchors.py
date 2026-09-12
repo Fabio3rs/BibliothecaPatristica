@@ -13,11 +13,11 @@ from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from patristica_pipeline.editorial_page_estimator import (
+from tools.indexing.editorial_page_estimator import (
     DEFAULT_ESTIMATOR_DB,
     estimate_editorial_pages,
 )
-from patristica_pipeline.index_work_anchor_reconciler import reconcile_work_anchors
+from tools.indexing.index_work_anchor_reconciler import reconcile_work_anchors
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]

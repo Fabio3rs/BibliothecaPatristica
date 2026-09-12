@@ -18,7 +18,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from patristica_pipeline.scripture_keyword_parser_v2 import (  # noqa: E402
+from tools.scripture.keyword_parser_v2 import (  # noqa: E402
     PARSER_VERSION,
     ScriptureReference,
     parse_scripture_keyword,

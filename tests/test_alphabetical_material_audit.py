@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from patristica_pipeline.alphabetical_material_audit import audit_extracted_material
+from tools.indexing.alphabetical_material_audit import audit_extracted_material
 from scripts.alphabetical_index_db import connect_db, init_schema
 
 

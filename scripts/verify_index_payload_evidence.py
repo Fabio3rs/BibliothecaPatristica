@@ -15,7 +15,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from patristica_pipeline.index_payload_evidence import verify_index_payload_evidence
+from tools.indexing.index_payload_evidence import verify_index_payload_evidence
 
 
 def main() -> None:

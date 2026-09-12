@@ -9,8 +9,8 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-import patristica_pipeline.alphabetical_compact_driver as compact_driver
-from patristica_pipeline.alphabetical_compact_driver import (
+import tools.indexing.alphabetical_compact_driver as compact_driver
+from tools.indexing.alphabetical_compact_driver import (
     build_discovery_prompt,
     build_locator_prompt,
     build_repair_prompt,
@@ -18,7 +18,7 @@ from patristica_pipeline.alphabetical_compact_driver import (
     run_compact_extraction,
     run_scripture_table_repairs,
 )
-from patristica_pipeline.alphabetical_prompt_contract import (
+from tools.indexing.alphabetical_prompt_contract import (
     LOCATOR_CONTRACT_VERSION,
     OUTPUT_SCHEMA_VERSION,
     prompt_reference_bundle,

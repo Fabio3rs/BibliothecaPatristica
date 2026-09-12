@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Mapping
 
-from .common import page_sort_key
+from tools.corpus_utils import page_sort_key
 
 
 CHECKPOINT_SCHEMA_VERSION = 1

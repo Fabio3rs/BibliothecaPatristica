@@ -25,7 +25,7 @@ from typing import Any, Iterable
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from patristica_pipeline.editorial_page_estimator import estimate_editorial_pages
+from tools.indexing.editorial_page_estimator import estimate_editorial_pages
 
 
 ROOT = Path("/homessddata/Projects/pdfocr")

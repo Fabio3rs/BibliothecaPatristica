@@ -15,7 +15,7 @@ from difflib import SequenceMatcher
 from pathlib import Path
 from typing import Any, Callable, Mapping, Sequence
 
-from .scripture_book_catalog import (
+from .book_catalog import (
     aliases_for_book,
     canonical_book_key,
     normalize_book_alias,

@@ -59,9 +59,9 @@ from keyword_sanitization import (
 
 # Heurísticas de ruído/rejeição de página OCR
 from scripts.limpeza_ocr import clean_ocr_text_optimized, classify_page_noise
-from patristica_pipeline.index_target_locator import resolve_paired_page_image
-from patristica_pipeline.scripture_book_catalog import canonical_book_key
-from patristica_pipeline.scripture_citation_index import ScanTask, scan_file_task
+from tools.indexing.index_target_locator import resolve_paired_page_image
+from tools.scripture.book_catalog import canonical_book_key
+from tools.scripture.citation_index import ScanTask, scan_file_task
 from scripture_ref_normalizer import (
     extract_citations_from_value_cached,
 )

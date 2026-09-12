@@ -6,14 +6,14 @@ from pathlib import Path
 
 import pytest
 
-from patristica_pipeline.alphabetical_artifact_validation import (
+from tools.indexing.alphabetical_artifact_validation import (
     validate_discovery_manifest,
     validate_semantic_fragment_v2,
     validate_source_span,
 )
-from patristica_pipeline.alphabetical_compact_driver import load_semantic_manifest
-from patristica_pipeline.alphabetical_compact_pipeline import CompactPipelineError
-from patristica_pipeline.alphabetical_prompt_contract import (
+from tools.indexing.alphabetical_compact_driver import load_semantic_manifest
+from tools.indexing.alphabetical_compact_pipeline import CompactPipelineError
+from tools.indexing.alphabetical_prompt_contract import (
     GLOSSARY_VERSION,
     OUTPUT_SCHEMA_VERSION,
     prompt_reference_bundle,

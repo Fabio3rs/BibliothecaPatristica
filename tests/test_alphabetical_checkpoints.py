@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from patristica_pipeline.alphabetical_checkpoints import (
+from tools.indexing.alphabetical_checkpoints import (
     read_checkpointed_json,
     update_source_snapshot,
     write_checkpointed_json,

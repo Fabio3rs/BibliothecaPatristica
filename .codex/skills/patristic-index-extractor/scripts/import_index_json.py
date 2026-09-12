@@ -13,7 +13,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[4]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from patristica_pipeline.index_operation_lock import index_operation_lock
+from tools.indexing.index_operation_lock import index_operation_lock
 
 from index_db import (
     DEFAULT_DB,

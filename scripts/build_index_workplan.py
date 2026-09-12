@@ -15,7 +15,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from patristica_pipeline.index_workplan import build_index_workplan
+from tools.indexing.index_workplan import build_index_workplan
 
 
 def main() -> None:

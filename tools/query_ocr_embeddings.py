@@ -23,7 +23,7 @@ from scripts.playgrounds.embedding_playground import (
     INSTRUCT,
     embed_queries,
 )
-from patristica_pipeline.ocr_xml_utils import parse_ocr_xml_page
+from tools.ocr_xml_utils import parse_ocr_xml_page
 from tools.generate_ocr_embeddings import (
     DEFAULT_DB,
     ParsedSource,

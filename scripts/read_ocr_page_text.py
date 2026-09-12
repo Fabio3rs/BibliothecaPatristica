@@ -9,8 +9,8 @@ from typing import Any, Iterable
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from patristica_pipeline.common import page_number, page_sort_key
-from patristica_pipeline.ocr_xml_utils import read_ocr_page
+from tools.corpus_utils import page_number, page_sort_key
+from tools.ocr_xml_utils import read_ocr_page
 
 
 def parse_pages_spec(spec: str) -> set[int]:

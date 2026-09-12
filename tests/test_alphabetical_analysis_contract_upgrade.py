@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from patristica_pipeline.alphabetical_analysis_db import (
+from tools.indexing.alphabetical_analysis_db import (
     connect_analysis_db,
     ensure_volume,
     init_analysis_schema,

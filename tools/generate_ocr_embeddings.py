@@ -35,8 +35,8 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from patristica_pipeline.common import page_number
-from patristica_pipeline.ocr_xml_utils import (
+from tools.corpus_utils import page_number
+from tools.ocr_xml_utils import (
     OcrBlock,
     OcrPage,
     join_linebreak_hyphenation,

@@ -1,3 +1,5 @@
+"""Parsing and normalization helpers for OCR XML pages."""
+
 from __future__ import annotations
 
 import html

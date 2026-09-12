@@ -18,8 +18,8 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
-from patristica_pipeline.common import page_number
-from patristica_pipeline.index_localization_helpers import run_helper_locator
+from tools.corpus_utils import page_number
+from tools.indexing.index_localization_helpers import run_helper_locator
 
 VOLUME_ID = "PL015"
 SOURCE_ROOT = ROOT / "teste" / VOLUME_ID / "text"

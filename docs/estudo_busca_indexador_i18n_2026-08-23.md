@@ -503,19 +503,18 @@ Foram executados 28 testes focados com sucesso. Há regressões para título
 descritivo versus núcleo, aliases sem soma de scores, normalização `æ/ae` e
 `œ/oe`, propagação de `image_file` e instrução de inspeção visual.
 
-### 14.1 Localização do código e migração pendente
+### 14.1 Localização do código
 
 Os executáveis versionados `scripts/index_target_locator.py` e
 `scripts/reconcile_work_index_anchors.py` ainda são wrappers. Eles importam a
-implementação de `patristica_pipeline/index_target_locator.py` e
-`patristica_pipeline/index_work_anchor_reconciler.py`. O diretório
+implementação de `tools/indexing/index_target_locator.py` e
+`tools/indexing/index_work_anchor_reconciler.py`. O diretório
 `patristica_pipeline/` inteiro aparece atualmente como não rastreado pelo Git.
 
-Logo, a solicitação anterior de retirar esse material de
-`patristica_pipeline/` e concentrá-lo em `scripts/` não está concluída. Essa
-migração deve ser feita separadamente, atualizando os muitos imports existentes
-e preservando um shim temporário se payloads ou utilitários antigos ainda
-importarem o namespace anterior.
+Os helpers reutilizáveis foram retirados de `patristica_pipeline/`: módulos de
+índices ficam em `tools/indexing/`, módulos bíblicos em `tools/scripture/` e os
+utilitários comuns de corpus/OCR em `tools/`. `patristica_pipeline/` permanece
+local e reservado à pipeline de agentes smoltools.
 
 ## 15. Auditoria ampliada, reparo do banco e exportação
 
@@ -787,7 +786,7 @@ no fac-símile PG001/074, `col. 695` é uma coluna da edição, não uma citaç�
 ### 19.1 Camada de evidência anterior ao agente
 
 O fluxo de keywords passou a reutilizar, por página, o detector moderno de
-`patristica_pipeline/scripture_citation_index.py`. Esse detector já oferece:
+`tools/scripture/citation_index.py`. Esse detector já oferece:
 
 - normalização OCR com offsets preservados;
 - aliases PT/latim/francês/inglês e convenções históricas da Vulgata;

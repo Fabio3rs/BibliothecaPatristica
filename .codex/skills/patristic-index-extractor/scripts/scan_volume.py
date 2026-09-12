@@ -11,7 +11,7 @@ from typing import Iterable
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[4]))
 
-from patristica_pipeline.common import page_sort_key, parse_volume_info
+from tools.corpus_utils import page_sort_key, parse_volume_info
 
 
 PATTERN_GROUPS: dict[str, list[tuple[str, re.Pattern[str]]]] = {

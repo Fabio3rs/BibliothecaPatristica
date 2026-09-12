@@ -5,7 +5,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from patristica_pipeline.index_work_anchor_reconciler import (
+from tools.indexing.index_work_anchor_reconciler import (
     _candidate_has_material_start_sequence,
     reconcile_work_anchors,
 )

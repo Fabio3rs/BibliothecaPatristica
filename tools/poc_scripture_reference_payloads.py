@@ -28,7 +28,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from patristica_pipeline.ocr_xml_utils import parse_ocr_xml_page  # noqa: E402
+from tools.ocr_xml_utils import parse_ocr_xml_page  # noqa: E402
 
 
 SPACE_RE = re.compile(r"\s+")

@@ -32,7 +32,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from patristica_pipeline.index_pipeline_ownership import general_section_ownership
+from tools.indexing.index_pipeline_ownership import general_section_ownership
 
 DEFAULT_DB = Path("data/patristic_indices.db")
 DEFAULT_OUT = Path("web/public/indices")

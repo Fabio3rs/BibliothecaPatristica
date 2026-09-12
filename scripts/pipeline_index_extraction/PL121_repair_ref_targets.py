@@ -17,7 +17,7 @@ import sys
 
 sys.path.insert(0, str(ROOT := Path("/homessddata/Projects/pdfocr")))
 
-from patristica_pipeline.editorial_page_estimator import estimate_editorial_pages
+from tools.indexing.editorial_page_estimator import estimate_editorial_pages
 
 
 VOLUME_ID = "PL121"

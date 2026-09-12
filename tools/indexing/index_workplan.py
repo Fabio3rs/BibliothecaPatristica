@@ -14,13 +14,13 @@ import unicodedata
 from pathlib import Path
 from typing import Any
 
-from .common import page_number, page_sort_key
+from tools.corpus_utils import page_number, page_sort_key
 from .index_entry_estimator import (
     analyze_page_boundary,
     combine_entry_estimates,
     estimate_page_entries,
 )
-from .ocr_xml_utils import read_ocr_page
+from tools.ocr_xml_utils import read_ocr_page
 from .structural_target_repair import scan_dense_structural_headings
 
 

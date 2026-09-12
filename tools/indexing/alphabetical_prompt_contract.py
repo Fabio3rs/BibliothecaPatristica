@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 PROMPT_CONTRACT_VERSION = 4
 INTERPRETATION_CONTRACT_VERSION = 1

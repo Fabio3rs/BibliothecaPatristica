@@ -13,7 +13,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from patristica_pipeline.scripture_citation_index import (
+from tools.scripture.citation_index import (
     DEFAULT_CITATION_DB,
     DEFAULT_PAYLOAD_DIR,
     MAX_SCAN_WORKERS,

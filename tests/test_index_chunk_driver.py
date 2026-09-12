@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-import patristica_pipeline.index_chunk_driver as driver
+import tools.indexing.index_chunk_driver as driver
 
 
 def test_chunk_driver_uses_ephemeral_chunk_runner_and_persistent_log_dir(

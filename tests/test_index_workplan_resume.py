@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from patristica_pipeline.index_workplan import reconcile_workplan_progress
+from tools.indexing.index_workplan import reconcile_workplan_progress
 
 
 def _plan(tmp_path: Path, fingerprint: str) -> dict:

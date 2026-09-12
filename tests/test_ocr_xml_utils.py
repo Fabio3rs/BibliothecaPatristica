@@ -7,7 +7,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from patristica_pipeline.ocr_xml_utils import clean_visible_text, parse_ocr_xml_page
+from tools.ocr_xml_utils import clean_visible_text, parse_ocr_xml_page
 
 
 def test_clean_visible_text_preserves_non_hyphen_linebreaks() -> None:

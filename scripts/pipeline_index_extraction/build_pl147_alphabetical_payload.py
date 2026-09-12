@@ -32,7 +32,7 @@ SCRIPT_TARGET_LOCATOR = ROOT / "scripts/index_target_locator.py"
 
 sys.path.insert(0, str(ROOT))
 
-from patristica_pipeline.index_target_locator import parse_ocr_page_xml  # noqa: E402
+from tools.indexing.index_target_locator import parse_ocr_page_xml  # noqa: E402
 
 SECTION_DEFS = [
     {

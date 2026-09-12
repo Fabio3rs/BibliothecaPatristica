@@ -9,7 +9,7 @@ from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from patristica_pipeline.index_target_locator import resolve_index_targets
+from tools.indexing.index_target_locator import resolve_index_targets
 
 
 def load_json(path: Path) -> dict[str, Any]:

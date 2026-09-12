@@ -8,7 +8,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from patristica_pipeline.scripture_keyword_parser_v2 import parse_scripture_keyword
+from tools.scripture.keyword_parser_v2 import parse_scripture_keyword
 
 
 @pytest.mark.parametrize(

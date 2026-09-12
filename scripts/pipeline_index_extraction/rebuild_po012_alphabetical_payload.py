@@ -21,8 +21,8 @@ from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from patristica_pipeline.common import page_number, page_sort_key
-from patristica_pipeline.ocr_xml_utils import read_ocr_page
+from tools.corpus_utils import page_number, page_sort_key
+from tools.ocr_xml_utils import read_ocr_page
 
 VOLUME_ID = "PO012"
 COLLECTION = "PO"

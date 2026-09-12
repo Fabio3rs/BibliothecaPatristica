@@ -45,7 +45,7 @@ from scripts.limpeza_ocr import (  # type: ignore  # noqa: E402
     clean_summary_global_for_search,
     clean_summary_page_for_embedding,
 )
-from patristica_pipeline.index_target_locator import (  # type: ignore  # noqa: E402
+from tools.indexing.index_target_locator import (  # type: ignore  # noqa: E402
     resolve_paired_page_image,
 )
 from facsimile_transport import (  # noqa: E402

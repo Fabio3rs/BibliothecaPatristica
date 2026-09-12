@@ -16,7 +16,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Iterable, Sequence
 
-from patristica_pipeline.ocr_xml_utils import OcrBlock, OcrPage, normalize_visible_text
+from tools.ocr_xml_utils import OcrBlock, OcrPage, normalize_visible_text
 from scripts.limpeza_ocr import strip_google_boilerplate
 
 

@@ -18,8 +18,8 @@ try:
 except ImportError:  # pragma: no cover - requirements install it in production
     ahocorasick = None
 
-from .common import page_sort_key
-from .scripture_book_catalog import BOOKS, normalize_book_alias
+from tools.corpus_utils import page_sort_key
+from tools.scripture.book_catalog import BOOKS, normalize_book_alias
 
 
 HEADING_RULES: tuple[tuple[str, str, str], ...] = (

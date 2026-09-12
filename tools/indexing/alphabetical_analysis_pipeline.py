@@ -64,11 +64,11 @@ from .alphabetical_prompt_contract import (
     prompt_reference_bundle,
 )
 from .editorial_page_estimator import estimate_editorial_pages
-from .scripture_citation_index import (
+from tools.scripture.citation_index import (
     DEFAULT_CITATION_DB,
     enrich_locator_items_from_citation_db,
 )
-from .scripture_evidence_locator import (
+from tools.scripture.evidence_locator import (
     ScriptureEvidenceConfig,
     add_scripture_evidence_candidates,
     infer_citation_format_profiles,

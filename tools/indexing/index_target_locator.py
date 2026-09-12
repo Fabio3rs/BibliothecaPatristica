@@ -40,8 +40,8 @@ try:
 except ImportError:  # pragma: no cover - exercised only in minimal fallback environments
     _RapidLevenshtein = None
 
-from .common import page_number, page_sort_key
-from .ocr_xml_utils import parse_ocr_page_xml_dict
+from tools.corpus_utils import page_number, page_sort_key
+from tools.ocr_xml_utils import parse_ocr_page_xml_dict
 
 _NUMBER_RE = re.compile(r"\b\d{1,4}\b")
 _SPACE_RE = re.compile(r"\s+")

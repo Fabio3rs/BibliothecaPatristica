@@ -29,9 +29,9 @@ from alphabetical_index_db import (
     upsert_translation_rows,
     volume_already_imported,
 )
-from patristica_pipeline.common import parse_volume_info
-from patristica_pipeline.alphabetical_compact_driver import run_compact_extraction
-from patristica_pipeline.alphabetical_analysis_db import (
+from tools.corpus_utils import parse_volume_info
+from tools.indexing.alphabetical_compact_driver import run_compact_extraction
+from tools.indexing.alphabetical_analysis_db import (
     DEFAULT_ANALYSIS_DB,
     connect_analysis_db,
     export_seed_rows,
@@ -39,19 +39,19 @@ from patristica_pipeline.alphabetical_analysis_db import (
     review_occurrences,
     volume_status,
 )
-from patristica_pipeline.alphabetical_analysis_pipeline import (
+from tools.indexing.alphabetical_analysis_pipeline import (
     assemble_stage,
     discover_stage,
     extract_stage,
     locate_stage,
     verify_stage,
 )
-from patristica_pipeline.index_localization_helpers import (
+from tools.indexing.index_localization_helpers import (
     build_helper_request_artifact,
     run_helper_locator,
 )
-from patristica_pipeline.index_payload_evidence import verify_index_payload_evidence
-from patristica_pipeline.index_workplan import build_index_workplan, reconcile_workplan_progress
+from tools.indexing.index_payload_evidence import verify_index_payload_evidence
+from tools.indexing.index_workplan import build_index_workplan, reconcile_workplan_progress
 from scripts.index_translation.augmentation import (
     build_latin_lexicon_tools,
     run_tool_guided_chat,

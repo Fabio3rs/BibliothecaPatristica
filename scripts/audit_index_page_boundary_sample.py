@@ -16,7 +16,7 @@ from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from patristica_pipeline.index_entry_estimator import analyze_page_boundary
+from tools.indexing.index_entry_estimator import analyze_page_boundary
 
 
 def audit_reference(reference: dict[str, Any], project_root: Path) -> dict[str, Any]:

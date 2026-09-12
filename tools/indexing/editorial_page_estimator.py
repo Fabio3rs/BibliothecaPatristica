@@ -8,7 +8,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
-from .common import PROJECT_ROOT, now_iso, page_number, page_sort_key
+from tools.corpus_utils import PROJECT_ROOT, now_iso, page_number, page_sort_key
 from .index_target_locator import parse_ocr_page_xml
 
 COLLECTIONS_SUPPORTED = {"PG", "PL"}

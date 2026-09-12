@@ -19,25 +19,25 @@ from typing import Any, Iterator
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from patristica_pipeline.common import parse_volume_info
-from patristica_pipeline.editorial_page_estimator import (
+from tools.corpus_utils import parse_volume_info
+from tools.indexing.editorial_page_estimator import (
     DEFAULT_ESTIMATOR_DB,
     estimate_editorial_pages,
 )
-from patristica_pipeline.index_localization_helpers import (
+from tools.indexing.index_localization_helpers import (
     build_helper_request_artifact,
     run_helper_locator,
 )
-from patristica_pipeline.index_fragment_assembly import (
+from tools.indexing.index_fragment_assembly import (
     assemble_index_fragments,
     verify_payload_consumes_fragments,
 )
-from patristica_pipeline.index_payload_evidence import verify_index_payload_evidence
-from patristica_pipeline.index_pipeline_ownership import general_section_ownership
-from patristica_pipeline.index_work_anchor_reconciler import reconcile_work_anchors
-from patristica_pipeline.index_workplan import build_index_workplan, reconcile_workplan_progress
-from patristica_pipeline.index_chunk_driver import run_index_chunk_agents
-from patristica_pipeline.index_operation_lock import index_operation_lock
+from tools.indexing.index_payload_evidence import verify_index_payload_evidence
+from tools.indexing.index_pipeline_ownership import general_section_ownership
+from tools.indexing.index_work_anchor_reconciler import reconcile_work_anchors
+from tools.indexing.index_workplan import build_index_workplan, reconcile_workplan_progress
+from tools.indexing.index_chunk_driver import run_index_chunk_agents
+from tools.indexing.index_operation_lock import index_operation_lock
 from scripts.index_translation.database import (
     collect_pending_translations,
     collect_volume_candidates,

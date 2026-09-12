@@ -31,8 +31,8 @@ SCRIPT_TARGET_LOCATOR = ROOT / "scripts/index_target_locator.py"
 
 sys.path.insert(0, str(ROOT))
 
-from patristica_pipeline.editorial_page_estimator import build_estimator_page_map as estimator_page_map
-from patristica_pipeline.index_target_locator import parse_ocr_page_xml
+from tools.indexing.editorial_page_estimator import build_estimator_page_map as estimator_page_map
+from tools.indexing.index_target_locator import parse_ocr_page_xml
 
 SECTION_DEFS = [
     {

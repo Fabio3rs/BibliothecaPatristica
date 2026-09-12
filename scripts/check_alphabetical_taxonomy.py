@@ -12,7 +12,7 @@ from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from patristica_pipeline.common import parse_volume_info, page_sort_key
+from tools.corpus_utils import parse_volume_info, page_sort_key
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 LEVANTAMENTO_DOC = PROJECT_ROOT / "docs" / "levantamento_indices_alfabeticos.md"

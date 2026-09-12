@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from patristica_pipeline.index_entry_estimator import (
+from tools.indexing.index_entry_estimator import (
     combine_entry_estimates,
     estimate_page_entries,
 )

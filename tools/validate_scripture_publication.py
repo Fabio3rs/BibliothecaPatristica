@@ -9,19 +9,87 @@ import hashlib
 import json
 from pathlib import Path
 import re
-import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-
-from patristica_pipeline.scripture_book_catalog import BOOKS  # noqa: E402
-from patristica_pipeline.scripture_citation_index import DETECTOR_VERSION  # noqa: E402
-from patristica_pipeline.scripture_keyword_parser_v2 import PARSER_VERSION  # noqa: E402
-
-
+EXPECTED_PARSER = "2.1.4-poc"
+EXPECTED_DETECTOR = "7"
 EXPECTED_VERSIFICATION = "vulgate-clementine"
+EXPECTED_BOOKS = {
+    "1 corintios",
+    "1 cronicas",
+    "1 joao",
+    "1 macabeus",
+    "1 pedro",
+    "1 reis",
+    "1 samuel",
+    "1 tessalonicenses",
+    "1 timoteo",
+    "2 corintios",
+    "2 cronicas",
+    "2 joao",
+    "2 macabeus",
+    "2 pedro",
+    "2 reis",
+    "2 samuel",
+    "2 tessalonicenses",
+    "2 timoteo",
+    "3 joao",
+    "abdias",
+    "ageu",
+    "amos",
+    "apocalipse",
+    "atos",
+    "baruc",
+    "cantico dos canticos",
+    "colossenses",
+    "daniel",
+    "deuteronomio",
+    "eclesiastes",
+    "eclesiastico",
+    "efesios",
+    "esdras",
+    "ester",
+    "exodo",
+    "ezequiel",
+    "filemon",
+    "filipenses",
+    "galatas",
+    "genesis",
+    "habacuc",
+    "hebreus",
+    "isaias",
+    "jeremias",
+    "jo",
+    "joao",
+    "joel",
+    "jonas",
+    "josue",
+    "judas",
+    "judite",
+    "juizes",
+    "lamentacoes",
+    "levitico",
+    "lucas",
+    "malaquias",
+    "marcos",
+    "mateus",
+    "miqueias",
+    "naum",
+    "neemias",
+    "numeros",
+    "oseias",
+    "proverbios",
+    "romanos",
+    "rute",
+    "sabedoria",
+    "salmos",
+    "sofonias",
+    "tiago",
+    "tito",
+    "tobias",
+    "zacarias",
+}
 
 
 def load_json(path: Path) -> object:
@@ -39,15 +107,14 @@ def validate_book_shards(public_dir: Path) -> tuple[int, int]:
     manifest = load_json(manifest_path)
     if not isinstance(manifest, dict):
         raise ValueError("scripture manifest must be an object")
-    expected_books = {book.key for book in BOOKS}
     routes = manifest.get("routes")
-    if not isinstance(routes, dict) or set(routes) != expected_books:
-        missing = sorted(expected_books - set(routes or {}))
-        extra = sorted(set(routes or {}) - expected_books)
+    if not isinstance(routes, dict) or set(routes) != EXPECTED_BOOKS:
+        missing = sorted(EXPECTED_BOOKS - set(routes or {}))
+        extra = sorted(set(routes or {}) - EXPECTED_BOOKS)
         raise ValueError(f"book route mismatch: missing={missing}, extra={extra}")
     expected_metadata = {
-        "parser": PARSER_VERSION,
-        "detector": str(DETECTOR_VERSION),
+        "parser": EXPECTED_PARSER,
+        "detector": EXPECTED_DETECTOR,
         "v11n": EXPECTED_VERSIFICATION,
     }
     for key, expected in expected_metadata.items():
@@ -149,7 +216,7 @@ def main() -> int:
     print(
         json.dumps(
             {
-                "books": len(BOOKS),
+                "books": len(EXPECTED_BOOKS),
                 "references": references,
                 "reference_page_pairs": postings,
                 "detail_payloads": payloads,

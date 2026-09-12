@@ -5,8 +5,8 @@ from pathlib import Path
 
 import pytest
 
-import patristica_pipeline.alphabetical_analysis_pipeline as analysis_pipeline
-from patristica_pipeline.alphabetical_analysis_db import (
+import tools.indexing.alphabetical_analysis_pipeline as analysis_pipeline
+from tools.indexing.alphabetical_analysis_db import (
     connect_analysis_db,
     ensure_volume,
     init_analysis_schema,
@@ -14,14 +14,14 @@ from patristica_pipeline.alphabetical_analysis_db import (
     review_occurrences,
     volume_status,
 )
-from patristica_pipeline.alphabetical_analysis_pipeline import (
+from tools.indexing.alphabetical_analysis_pipeline import (
     assemble_stage,
     discover_stage,
     extract_stage,
     locate_stage,
     verify_stage,
 )
-from patristica_pipeline.alphabetical_prompt_contract import (
+from tools.indexing.alphabetical_prompt_contract import (
     LOCATOR_CONTRACT_VERSION,
     OUTPUT_SCHEMA_VERSION,
     prompt_reference_bundle,

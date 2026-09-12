@@ -22,7 +22,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from patristica_pipeline.editorial_page_estimator import build_estimator_page_map as estimator_page_map
+from tools.indexing.editorial_page_estimator import build_estimator_page_map as estimator_page_map
 
 VOLUME_ID = "PL095"
 COLLECTION = "PL"

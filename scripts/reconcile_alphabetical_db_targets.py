@@ -11,12 +11,12 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from patristica_pipeline.alphabetical_compact_pipeline import (
+from tools.indexing.alphabetical_compact_pipeline import (
     build_deterministic_locator_results,
     normalize_editorial_page_map,
 )
-from patristica_pipeline.editorial_page_estimator import estimate_editorial_pages
-from patristica_pipeline.scripture_evidence_locator import (
+from tools.indexing.editorial_page_estimator import estimate_editorial_pages
+from tools.scripture.evidence_locator import (
     ScriptureEvidenceConfig,
     add_scripture_evidence_candidates,
 )

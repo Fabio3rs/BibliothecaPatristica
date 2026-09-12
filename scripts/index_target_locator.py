@@ -8,7 +8,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from patristica_pipeline.index_target_locator import load_request_json, resolve_index_targets
+from tools.indexing.index_target_locator import load_request_json, resolve_index_targets
 
 
 def main() -> None:

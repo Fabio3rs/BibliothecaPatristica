@@ -28,7 +28,7 @@ from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from patristica_pipeline.index_target_locator import parse_ocr_page_xml  # noqa: E402
+from tools.indexing.index_target_locator import parse_ocr_page_xml  # noqa: E402
 
 ROOT = Path("/homessddata/Projects/pdfocr")
 VOLUME_ID = "PL144"

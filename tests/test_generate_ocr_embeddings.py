@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from patristica_pipeline.ocr_xml_utils import parse_ocr_xml_page
+from tools.ocr_xml_utils import parse_ocr_xml_page
 from tools.generate_ocr_embeddings import (
     ParsedSource,
     SourceChoice,

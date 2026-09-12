@@ -8,7 +8,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from patristica_pipeline.alphabetical_compact_pipeline import (
+from tools.indexing.alphabetical_compact_pipeline import (
     CompactPipelineError,
     assemble_compact_payload,
     build_deterministic_locator_results,

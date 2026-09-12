@@ -22,7 +22,7 @@ from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from patristica_pipeline.editorial_page_estimator import build_estimator_page_map as estimator_page_map
+from tools.indexing.editorial_page_estimator import build_estimator_page_map as estimator_page_map
 
 VOLUME_ID = "PL069"
 COLLECTION = "PL"

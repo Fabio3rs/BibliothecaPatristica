@@ -3,6 +3,9 @@ service/__pycache__
 tools/__pycache__
 __pycache__
 
+# Local OCR pipeline; publication artifacts are versioned separately.
+patristica_pipeline/
+
 # SQLite databases and Parquet files exceed GitHub's size limit — not versioned
 data/*.db
 data/cache/*.db

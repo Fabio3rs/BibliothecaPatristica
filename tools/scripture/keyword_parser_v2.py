@@ -1,10 +1,12 @@
+"""Parser for normalized Scripture keyword references."""
+
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
 import re
 import unicodedata
 
-from patristica_pipeline.scripture_book_catalog import (
+from tools.scripture.book_catalog import (
     BOOKS,
     MAX_CHAPTER_BY_BOOK,
     canonical_book_key,
