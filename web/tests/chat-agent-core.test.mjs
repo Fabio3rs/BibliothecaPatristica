@@ -220,6 +220,41 @@ test('streams text and reassembles fragmented OpenAI tool-call deltas', async ()
   assert.equal(events.filter((event) => event.type === 'model_delta').map((event) => event.payload.content).join(''), 'Encontrei PG001.');
 });
 
+test('forwards tool progress without adding it to provider messages', async () => {
+  const events = [];
+  const requestBodies = [];
+  let requests = 0;
+  await runChatCompletionLoop({
+    apiUrl: 'http://provider.test/v1',
+    model: 'mock-model',
+    systemPrompt: 'Use tools.',
+    conversationMessages: [{ role: 'user', content: 'Search.' }],
+    toolDefinitions: [{ type: 'function', function: { name: 'search_corpus', parameters: { type: 'object' } } }],
+    executeTool: async (_name, _args, context) => {
+      assert.equal(context.operationId, 'call-progress');
+      context.onProgress({ phase: 'scope', state: 'done', matched_documents: 3 });
+      return { ok: true, data: { total: 3, items: [] } };
+    },
+    fetchImpl: async (_url, request) => {
+      requestBodies.push(JSON.parse(request.body));
+      requests += 1;
+      return requests === 1
+        ? jsonResponse(completion({
+          role: 'assistant',
+          content: null,
+          tool_calls: [{ id: 'call-progress', type: 'function', function: { name: 'search_corpus', arguments: '{"query":"gratia"}' } }],
+        }))
+        : jsonResponse(completion({ role: 'assistant', content: 'Done.' }));
+    },
+    onEvent: (event) => events.push(event),
+  });
+
+  const progress = events.find((event) => event.type === 'tool_progress');
+  assert.equal(progress.payload.phase, 'scope');
+  assert.equal(progress.payload.matched_documents, 3);
+  assert.equal(JSON.stringify(requestBodies).includes('tool_progress'), false);
+});
+
 test('preserves provider reasoning only inside an explicit tool-call sequence', async () => {
   const requestBodies = [];
   let requests = 0;

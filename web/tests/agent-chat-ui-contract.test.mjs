@@ -31,10 +31,10 @@ test('declares that no viewer page exists on indices and after user removal', ()
   assert.deepEqual(disabled.page_context, { kind: 'none', reason: 'user_disabled' });
 });
 
-test('keeps the evidence contract when the editable BYO prompt is replaced', () => {
+test('keeps the mandatory RAG contracts when the editable BYO prompt is replaced', () => {
   assert.equal(
-    composeAgentSystemPrompt('My custom instructions', 'Mandatory evidence contract'),
-    'My custom instructions\n\nMandatory evidence contract',
+    composeAgentSystemPrompt('My custom instructions', 'Mandatory Scripture routing. Mandatory evidence contract.'),
+    'My custom instructions\n\nMandatory Scripture routing. Mandatory evidence contract.',
   );
   assert.equal(
     composeAgentSystemPrompt('  My custom instructions  ', ''),

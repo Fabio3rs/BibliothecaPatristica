@@ -56,7 +56,8 @@ test('search_corpus exposes bounded C++WASM corrections without repeating the sh
   assert.equal(created[0].maxWasmCacheBytes, 16 * 1024 * 1024);
   assert.equal(created[0].indexBaseUrl, '/BibliothecaPatristica/indexador/search/build-123/all');
   assert.equal(searches.length, 1);
-  assert.deepEqual(searches[0].searchOptions, { suggestionsFor: 'agostino' });
+  assert.equal(searches[0].searchOptions.suggestionsFor, 'agostino');
+  assert.match(searches[0].searchOptions.operationId, /^search-corpus:/);
   assert.match(searches[0].query, /\(agostino\)/);
   assert.deepEqual(result.data.query_suggestions, [
     {

@@ -685,7 +685,15 @@ async function executeOneTool(call, executeTool, onEvent, signal, toolCache) {
   emit(onEvent, 'tool_start', { tool: name, call_id: call?.id, arguments: args });
   try {
     if (signal?.aborted) throw new AgentChatError('aborted', 'Request aborted.');
-    const pending = Promise.resolve(executeTool(name, args, { signal })).then((result) => (
+    const pending = Promise.resolve(executeTool(name, args, {
+      signal,
+      operationId: call?.id,
+      onProgress: (progress) => emit(onEvent, 'tool_progress', {
+        tool: name,
+        call_id: call?.id,
+        ...progress,
+      }),
+    })).then((result) => (
       result && typeof result === 'object' ? result : { ok: true, data: result, error: null }
     ));
     toolCache?.set(cacheKey, pending);

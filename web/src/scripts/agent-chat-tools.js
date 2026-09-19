@@ -11,6 +11,10 @@ import {
   searchScriptureShard,
   scriptureBookLabel,
 } from './scripture-index.js';
+import {
+  decodeScriptureDocIdSidecar,
+  mapScriptureLocationsToDocumentIds,
+} from './scripture-docids.js';
 
 const COLLECTIONS = ['PG', 'PL', 'PO'];
 const AGENT_SUGGESTION_LIMIT = 5;
@@ -40,6 +44,35 @@ function requiredString(value, field) {
   const normalized = String(value || '').trim();
   if (!normalized) throw toolError('invalid_arguments', `${field} is required.`);
   return normalized;
+}
+
+function abortReason(signal) {
+  if (signal?.reason instanceof Error) return signal.reason;
+  return new DOMException('Request aborted.', 'AbortError');
+}
+
+function throwIfAborted(signal) {
+  if (signal?.aborted) throw abortReason(signal);
+}
+
+function awaitWithSignal(value, signal) {
+  const pending = Promise.resolve(value);
+  if (!signal) return pending;
+  if (signal.aborted) return Promise.reject(abortReason(signal));
+  return new Promise((resolve, reject) => {
+    const onAbort = () => reject(abortReason(signal));
+    signal.addEventListener('abort', onAbort, { once: true });
+    pending.then(
+      (result) => {
+        signal.removeEventListener('abort', onAbort);
+        resolve(result);
+      },
+      (error) => {
+        signal.removeEventListener('abort', onAbort);
+        reject(error);
+      },
+    );
+  });
 }
 
 function validateCollection(value) {
@@ -161,6 +194,7 @@ export function createAgentTools(options) {
   const indicesVersion = String(options.indicesVersion || '').trim();
   const searchIndexVersion = String(options.searchIndexVersion || '').trim();
   const searchIndexBase = `${assetBase}indexador/search${searchIndexVersion ? `/${encodeURIComponent(searchIndexVersion)}` : ''}`;
+  const scriptureDocIdBase = `${searchIndexBase}/scripture-docids`;
   const fetchImpl = options.fetchImpl || fetch;
   const origin = String(options.origin || globalThis.location?.origin || 'https://bibliotheca.invalid');
   const searchStrategy = options.searchStrategy === 'multi_query_rrf' ? 'multi_query_rrf' : 'legacy_dsl';
@@ -168,6 +202,7 @@ export function createAgentTools(options) {
     ? options.indexadorOptions
     : {};
   const jsonCache = new Map();
+  const binaryCache = new Map();
   const decodeJsonResponse = async (response, url) => {
     if (!response.ok) throw new Error(`HTTP ${response.status} ao buscar ${url}`);
     const raw = new Uint8Array(await response.arrayBuffer());
@@ -192,7 +227,26 @@ export function createAgentTools(options) {
     return jsonCache.get(url);
   };
   const getJson = typeof options.getJsonImpl === 'function' ? options.getJsonImpl : defaultGetJson;
+  const defaultGetBinary = async (url) => {
+    if (!binaryCache.has(url)) {
+      const pending = fetchImpl(url).then(async (response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status} ao buscar ${url}`);
+        const raw = new Uint8Array(await response.arrayBuffer());
+        if (raw.length < 2 || raw[0] !== 0x1f || raw[1] !== 0x8b) return raw;
+        return new Uint8Array(await new Response(
+          new Blob([raw]).stream().pipeThrough(new DecompressionStream('gzip')),
+        ).arrayBuffer());
+      }).catch((error) => {
+        binaryCache.delete(url);
+        throw error;
+      });
+      binaryCache.set(url, pending);
+    }
+    return binaryCache.get(url);
+  };
+  const getBinary = typeof options.getBinaryImpl === 'function' ? options.getBinaryImpl : defaultGetBinary;
   const corpusEngines = new Map();
+  const runtimeProgressCallbacks = new Map();
   let corpusManifestPromise = null;
   let indexadorModulePromise = null;
   let ocrTextModulePromise = null;
@@ -201,6 +255,7 @@ export function createAgentTools(options) {
   let indicesManifestPromise = null;
   let keywordLookupPromise = null;
   let scriptureManifestPromise = null;
+  let scriptureDocIdManifestPromise = null;
 
   const route = (name) => `${assetBase}${locale === 'pt-br' ? '' : `${locale}/`}${name}`;
   const viewerUrl = (volumeId, page) => `${route('viewer')}?${new URLSearchParams({
@@ -217,13 +272,19 @@ export function createAgentTools(options) {
     if (!indicesManifestPromise) indicesManifestPromise = getJson(`${assetBase}indices/manifest.json`);
     return indicesManifestPromise;
   };
-  const corpusManifest = () => {
+  const corpusManifest = (context = {}) => {
     if (!corpusManifestPromise) corpusManifestPromise = getJson(`${searchIndexBase}/manifest.json`);
-    return corpusManifestPromise;
+    return awaitWithSignal(corpusManifestPromise, context.signal);
   };
-  const scriptureManifest = () => {
+  const scriptureManifest = (context = {}) => {
     if (!scriptureManifestPromise) scriptureManifestPromise = getJson(`${assetBase}scripture/v3/manifest.json`);
-    return scriptureManifestPromise;
+    return awaitWithSignal(scriptureManifestPromise, context.signal);
+  };
+  const scriptureDocIdManifest = (context = {}) => {
+    if (!scriptureDocIdManifestPromise) {
+      scriptureDocIdManifestPromise = getJson(`${scriptureDocIdBase}/manifest.json`);
+    }
+    return awaitWithSignal(scriptureDocIdManifestPromise, context.signal);
   };
   const indexadorModule = () => {
     if (!indexadorModulePromise) {
@@ -281,35 +342,170 @@ export function createAgentTools(options) {
     return unique.map((id) => labels.get(id) || id.replace(/^k:/, '').replace(/-/g, ' '));
   }
 
-  async function ensureCorpusEngine(entry, suggestionConfig = {}, indexCount = 1) {
-    if (corpusEngines.has(entry.id)) return corpusEngines.get(entry.id);
-    const mod = await indexadorModule();
-    if (typeof mod.createIndexadorPagefind !== 'function') throw toolError('unavailable', 'Corpus search runtime is unavailable.');
-    const engine = mod.createIndexadorPagefind({
-      assetBaseUrl: `${assetBase}indexador/runtime`,
-      indexBaseUrl: `${searchIndexBase}/${entry.path}`,
-      PAGE_SIZE: 20,
-      MAX_PER_TOKEN: 10_000,
-      MAX_CONCURRENT_FETCHES: 6,
-      prefixMatch: true,
-      prefixMinLength: 3,
-      prefixMaxTerms: 32,
-      prefixMaxPerTerm: 10_000,
-      suggestions: true,
-      suggestionLimit: AGENT_SUGGESTION_LIMIT,
-      suggestionMinLength: 3,
-      suggestionFallbackMin: 3,
-      suggestionWordlists: suggestionConfig.wordlists === true,
-      suggestionWordlistRadius: suggestionConfig.neighbor_radius || 1,
-      maxWasmCacheBytes: Math.max(
-        4 * 1024 * 1024,
-        Math.floor((16 * 1024 * 1024) / Math.max(1, indexCount)),
-      ),
-      ...indexadorOptions,
+  function reportProgress(context, phase, detail = {}) {
+    context?.onProgress?.({ phase, state: detail.state || 'progress', ...detail });
+  }
+
+  function reportProgressFailure(context, phase, error, detail = {}) {
+    reportProgress(context, phase, {
+      state: error?.name === 'AbortError' || context?.signal?.aborted ? 'aborted' : 'error',
+      ...detail,
+      error: { name: String(error?.name || 'Error'), message: String(error?.message || error) },
     });
-    await engine.init();
-    corpusEngines.set(entry.id, engine);
-    return engine;
+  }
+
+  async function ensureCorpusEngine(entry, suggestionConfig = {}, indexCount = 1, context = {}) {
+    throwIfAborted(context.signal);
+    if (corpusEngines.has(entry.id)) return corpusEngines.get(entry.id);
+    const operationId = `${context.operationId || 'search-corpus'}:init:${entry.id}`;
+    if (context.onProgress) {
+      runtimeProgressCallbacks.set(operationId, (event) => context.onProgress({ ...event, index: entry.id }));
+    }
+    try {
+      const mod = await awaitWithSignal(indexadorModule(), context.signal);
+      if (typeof mod.createIndexadorPagefind !== 'function') throw toolError('unavailable', 'Corpus search runtime is unavailable.');
+      const engine = mod.createIndexadorPagefind({
+        assetBaseUrl: `${assetBase}indexador/runtime`,
+        indexBaseUrl: `${searchIndexBase}/${entry.path}`,
+        PAGE_SIZE: 20,
+        MAX_PER_TOKEN: 10_000,
+        MAX_CONCURRENT_FETCHES: 6,
+        prefixMatch: true,
+        prefixMinLength: 3,
+        prefixMaxTerms: 32,
+        prefixMaxPerTerm: 10_000,
+        suggestions: true,
+        suggestionLimit: AGENT_SUGGESTION_LIMIT,
+        suggestionMinLength: 3,
+        suggestionFallbackMin: 3,
+        suggestionWordlists: suggestionConfig.wordlists === true,
+        suggestionWordlistRadius: suggestionConfig.neighbor_radius || 1,
+        indexBuildId: entry.build_id,
+        requireIndexBuildId: Boolean(entry.build_id),
+        onProgress: (event) => runtimeProgressCallbacks.get(event?.operation_id)?.(event),
+        maxWasmCacheBytes: Math.max(
+          4 * 1024 * 1024,
+          Math.floor((16 * 1024 * 1024) / Math.max(1, indexCount)),
+        ),
+        ...indexadorOptions,
+      });
+      await engine.init({ operationId, signal: context.signal });
+      corpusEngines.set(entry.id, engine);
+      return engine;
+    } finally {
+      runtimeProgressCallbacks.delete(operationId);
+    }
+  }
+
+  async function resolveScriptureLocations(args, context = {}) {
+    const reference = requiredString(args.reference, 'reference');
+    if (reference.length > 400) throw toolError('invalid_arguments', 'reference must contain at most 400 characters.');
+    const source = ['direct', 'associated', 'ocr'].includes(args.source) ? args.source : 'all';
+    const matchMode = args.match_mode === 'overlap' ? 'overlap' : 'exact';
+    reportProgress(context, 'scripture_scope', { state: 'start', reference });
+    try {
+      const manifest = await scriptureManifest(context);
+      const isBoolean = containsScriptureBooleanSyntax(reference);
+      const shards = new Map();
+      let bookKeys;
+      let matches;
+      let locations;
+      let ast = null;
+      let references = [];
+
+      if (isBoolean) {
+        try {
+          ast = parseScriptureBooleanQuery(reference);
+        } catch (error) {
+          throw toolError('invalid_arguments', error?.message || 'The Scripture boolean query is invalid.');
+        }
+        references = collectScriptureBooleanReferences(ast);
+        const resolved = await Promise.all(references.map(async (operand) => {
+          const bookKey = findScriptureBook(manifest, operand) || findScriptureBook(manifest, operand, args.book);
+          if (!bookKey) throw toolError('invalid_arguments', `The biblical book in "${operand}" could not be identified. Include a book in every boolean operand.`);
+          const routeEntry = manifest?.routes?.[bookKey];
+          if (!routeEntry?.url) throw toolError('not_found', `Scripture shard for ${bookKey} was not found.`);
+          const shard = await awaitWithSignal(getJson(`${assetBase}scripture/v3/${routeEntry.url}`), context.signal);
+          shards.set(bookKey, shard);
+          return {
+            operand,
+            bookKey,
+            matches: matchScriptureShard(shard, operand, {
+              source,
+              matchMode,
+              bookLabel: scriptureBookLabel(routeEntry, locale, bookKey),
+            }),
+          };
+        }));
+        const matchesByReference = new Map(resolved.map((entry) => [entry.operand, entry.matches]));
+        bookKeys = [...new Set(resolved.map((entry) => entry.bookKey))];
+        matches = resolved.flatMap((entry) => entry.matches);
+        locations = evaluateScriptureBooleanMatches(ast, matchesByReference);
+      } else {
+        const bookKey = findScriptureBook(manifest, reference, args.book);
+        if (!bookKey) throw toolError('invalid_arguments', 'The biblical book could not be identified. Include it in reference or pass book using a manifest key such as joao, salmos, or romanos.');
+        const routeEntry = manifest?.routes?.[bookKey];
+        if (!routeEntry?.url) throw toolError('not_found', `Scripture shard for ${bookKey} was not found.`);
+        const shard = await awaitWithSignal(getJson(`${assetBase}scripture/v3/${routeEntry.url}`), context.signal);
+        shards.set(bookKey, shard);
+        bookKeys = [bookKey];
+        matches = matchScriptureShard(shard, reference, {
+          source,
+          matchMode,
+          bookLabel: scriptureBookLabel(routeEntry, locale, bookKey),
+        });
+        locations = matches.flatMap((entry) => entry.locations || []);
+      }
+      const uniqueLocations = [...new Map(locations.map((location) => [`${location.volume_id}:${location.page}`, location])).values()];
+      reportProgress(context, 'scripture_scope', { state: 'done', books: bookKeys.length, pages: uniqueLocations.length });
+      return { reference, source, matchMode, manifest, isBoolean, ast, references, bookKeys, shards, matches, locations: uniqueLocations };
+    } catch (error) {
+      reportProgressFailure(context, 'scripture_scope', error, { reference });
+      throw error;
+    }
+  }
+
+  async function loadScriptureDocumentScope(resolved, entries, context = {}) {
+    reportProgress(context, 'scope_mapping', {
+      state: 'start',
+      indexes: entries.length,
+      books: resolved.bookKeys.length,
+      pages: resolved.locations.length,
+    });
+    try {
+      const manifest = await scriptureDocIdManifest(context);
+      const byIndex = new Map();
+      let searchablePages = 0;
+      let missingPages = 0;
+      for (const entry of entries) {
+        throwIfAborted(context.signal);
+        const sidecarIndex = manifest?.indexes?.[entry.id];
+        if (!entry.build_id || !sidecarIndex?.build_id || entry.build_id !== sidecarIndex.build_id) {
+          throw toolError('unavailable', `Scripture scope does not match search index ${entry.id}. Rebuild the scripture doc_id sidecars.`);
+        }
+        const maps = await Promise.all(resolved.bookKeys.map(async (bookKey) => {
+          const book = sidecarIndex.books?.[bookKey];
+          if (!book?.url) throw toolError('not_found', `Scripture document scope for ${bookKey} was not found.`);
+          const bytes = await awaitWithSignal(getBinary(`${scriptureDocIdBase}/${book.url}`), context.signal);
+          return decodeScriptureDocIdSidecar(bytes, resolved.shards.get(bookKey)?.volumes || []);
+        }));
+        const mapped = mapScriptureLocationsToDocumentIds(resolved.locations, maps);
+        byIndex.set(entry.id, mapped.ids);
+        searchablePages += mapped.ids.length;
+        missingPages += mapped.missing.length;
+      }
+      reportProgress(context, 'scope_mapping', {
+        state: 'done',
+        indexes: entries.length,
+        pages: resolved.locations.length,
+        searchable_pages: searchablePages,
+        missing_pages: missingPages,
+      });
+      return { byIndex, manifest };
+    } catch (error) {
+      reportProgressFailure(context, 'scope_mapping', error, { pages: resolved.locations.length });
+      throw error;
+    }
   }
 
   async function ensureIndicesEngine() {
@@ -373,42 +569,98 @@ export function createAgentTools(options) {
     };
   }
 
-  async function searchCorpus(args) {
+  async function searchCorpus(args, context = {}) {
+    throwIfAborted(context.signal);
     const querySpec = searchStrategy === 'multi_query_rrf'
       ? normalizeQuerySet(args)
       : { queries: [requiredString(args.query, 'query')], strategy: 'single_query', truncated: false };
+    const hasScriptureScope = args.scripture_reference != null && String(args.scripture_reference).trim() !== '';
+    if (!hasScriptureScope && [args.scripture_book, args.scripture_source, args.scripture_match_mode].some((value) => value != null)) {
+      throw toolError('invalid_arguments', 'scripture_reference is required when Scripture scope options are used.');
+    }
     const requestedCollections = stringArray(args.collections, 'collections').map(validateCollection);
     const requestedVolumes = stringArray(args.volumes, 'volumes').map((id) => cleanVolumeId(id));
     const offset = integer(args.offset, 0, 0, 10_000);
     const limit = integer(args.limit, 5, 1, 10);
-    const manifest = await corpusManifest();
+    const manifest = await corpusManifest(context);
     const collections = requestedCollections.length ? requestedCollections : COLLECTIONS;
     const entries = manifestIndexes(manifest).filter((entry) => {
       const supported = entry.collections || [entry.id];
       return collections.some((collection) => supported.includes(collection));
     });
     if (!entries.length) throw toolError('not_found', 'No search index matches the requested collections.');
-    const collectionPart = manifest.layout === 'unified' ? groupTerms(collections) : '';
+    const collectionPart = manifest.layout === 'unified' && requestedCollections.length
+      ? groupTerms(requestedCollections)
+      : '';
     const volumePart = groupTerms(requestedVolumes);
+    const resolvedScope = hasScriptureScope
+      ? await resolveScriptureLocations({
+        reference: args.scripture_reference,
+        book: args.scripture_book,
+        source: args.scripture_source,
+        match_mode: args.scripture_match_mode,
+      }, context)
+      : null;
+    const documentScope = resolvedScope
+      ? await loadScriptureDocumentScope(resolvedScope, entries, context)
+      : null;
     const engines = await Promise.all(entries.map((entry) =>
-      ensureCorpusEngine(entry, manifest.suggestions, entries.length)));
+      ensureCorpusEngine(entry, manifest.suggestions, entries.length, context)));
     const scanPerQuery = querySpec.queries.length === 1
       ? offset + limit
       : Math.min(100, Math.max(20, offset + limit * 4));
-    const perQuery = await Promise.all(querySpec.queries.map(async (query) => {
+    const perQuery = await Promise.all(querySpec.queries.map(async (query, queryIndex) => {
       const parts = [`(${query})`];
       if (collectionPart) parts.push(collectionPart);
       if (volumePart) parts.push(volumePart);
-      const results = await Promise.all(engines.map((engine) =>
-        engine.search(parts.join(' && '), { suggestionsFor: query })));
-      const documents = (await Promise.all(results.map((result) => result.getRange(0, scanPerQuery)))).flat()
+      const searched = await Promise.all(engines.map(async (engine, engineIndex) => {
+        const entry = entries[engineIndex];
+        const operationBase = `${context.operationId || 'search-corpus'}:${queryIndex}:${entry.id}`;
+        const operationIds = {
+          search: `${operationBase}:search`,
+          scope: `${operationBase}:scope`,
+          documents: `${operationBase}:documents`,
+        };
+        if (context.onProgress) {
+          for (const operationId of Object.values(operationIds)) {
+            runtimeProgressCallbacks.set(operationId, (event) => context.onProgress({
+              ...event,
+              index: entry.id,
+              query_index: queryIndex,
+            }));
+          }
+        }
+        try {
+          let result = await engine.search(parts.join(' && '), {
+            suggestionsFor: query,
+            signal: context.signal,
+            operationId: operationIds.search,
+          });
+          if (documentScope) {
+            result = result.filterDocumentIds(documentScope.byIndex.get(entry.id) || [], {
+              algorithm: 'set',
+              indexBuildId: entry.build_id,
+              signal: context.signal,
+              operationId: operationIds.scope,
+            });
+          }
+          const documents = await result.getRange(0, scanPerQuery, {
+            signal: context.signal,
+            operationId: operationIds.documents,
+          });
+          return { result, documents };
+        } finally {
+          for (const operationId of Object.values(operationIds)) runtimeProgressCallbacks.delete(operationId);
+        }
+      }));
+      const documents = searched.flatMap((entry) => entry.documents)
         .sort((left, right) => right.score - left.score)
         .filter((item, index, items) => items.findIndex((candidate) => candidate.url === item.url) === index);
       return {
         query,
-        total: results.reduce((sum, result) => sum + result.total, 0),
+        total: searched.reduce((sum, entry) => sum + entry.result.total, 0),
         documents,
-        suggestions: results.flatMap((result) => result.suggestions || []),
+        suggestions: searched.flatMap((entry) => entry.result.suggestions || []),
       };
     }));
     const fused = querySpec.queries.length === 1
@@ -450,7 +702,7 @@ export function createAgentTools(options) {
       viewer: item.viewer_url,
       rawOcr: item.raw_ocr_url,
       metadata: { excerpt: item.excerpt, excerptKind: item.excerpt_kind, matchedTerms: item.matched_terms },
-      provenance: ['search_corpus'],
+      provenance: resolvedScope ? ['search_corpus', 'search_scripture_scope'] : ['search_corpus'],
       evidence: ['search', 'metadata'],
     }));
     const total = querySpec.queries.length === 1 ? perQuery[0].total : fused.length;
@@ -469,6 +721,15 @@ export function createAgentTools(options) {
         ...(querySpec.truncated ? { queries_truncated: true } : {}),
         ...(totalIsLowerBound ? { total_is_lower_bound: true } : {}),
         ...(querySuggestions.length ? { query_suggestions: querySuggestions } : {}),
+        ...(resolvedScope ? {
+          scripture_scope: {
+            reference: resolvedScope.reference,
+            book_keys: resolvedScope.bookKeys,
+            source: resolvedScope.source,
+            match_mode: resolvedScope.matchMode,
+            pages: resolvedScope.locations.length,
+          },
+        } : {}),
         next_offset: offset + items.length < total ? offset + items.length : null,
       },
       modelContext: {
@@ -477,6 +738,15 @@ export function createAgentTools(options) {
         supports: ['discovery', 'triage'],
         total,
         offset,
+        ...(resolvedScope ? {
+          retrieval_scope: {
+            kind: 'scripture_reference',
+            reference: resolvedScope.reference,
+            source: resolvedScope.source,
+            match_mode: resolvedScope.matchMode,
+            associated_pages: resolvedScope.locations.length,
+          },
+        } : {}),
         ...(querySuggestions.length ? { query_suggestions: querySuggestions } : {}),
         items: items.map((item) => ({
           source_key: item.source_key,
@@ -498,18 +768,21 @@ export function createAgentTools(options) {
     };
   }
 
-  async function searchScripture(args) {
+  async function searchScripture(args, context = {}) {
+    throwIfAborted(context.signal);
     const reference = requiredString(args.reference, 'reference');
     if (reference.length > 400) {
       throw toolError('invalid_arguments', 'reference must contain at most 400 characters.');
     }
+    reportProgress(context, 'scripture_search', { state: 'start', reference });
+    try {
     const source = ['direct', 'associated', 'ocr'].includes(args.source) ? args.source : 'all';
     const matchMode = args.match_mode === 'overlap' ? 'overlap' : 'exact';
     const offset = integer(args.offset, 0, 0, 10_000);
     const limit = integer(args.limit, matchMode === 'exact' ? 1 : 5, 1, 20);
     const locationOffset = integer(args.location_offset, 0, 0, 100_000);
     const locationsPerReference = integer(args.locations_per_reference, 10, 1, 50);
-    const manifest = await scriptureManifest();
+    const manifest = await scriptureManifest(context);
     const isBoolean = containsScriptureBooleanSyntax(reference);
     let bookKeys = [];
     let found;
@@ -531,7 +804,7 @@ export function createAgentTools(options) {
         }
         const routeEntry = manifest?.routes?.[bookKey];
         if (!routeEntry?.url) throw toolError('not_found', `Scripture shard for ${bookKey} was not found.`);
-        const shard = await getJson(`${assetBase}scripture/v3/${routeEntry.url}`);
+        const shard = await awaitWithSignal(getJson(`${assetBase}scripture/v3/${routeEntry.url}`), context.signal);
         return {
           operand,
           bookKey,
@@ -576,7 +849,7 @@ export function createAgentTools(options) {
       }
       const routeEntry = manifest?.routes?.[bookKey];
       if (!routeEntry?.url) throw toolError('not_found', `Scripture shard for ${bookKey} was not found.`);
-      const shard = await getJson(`${assetBase}scripture/v3/${routeEntry.url}`);
+      const shard = await awaitWithSignal(getJson(`${assetBase}scripture/v3/${routeEntry.url}`), context.signal);
       bookKeys = [bookKey];
       found = searchScriptureShard(shard, reference, {
         source,
@@ -619,6 +892,11 @@ export function createAgentTools(options) {
         }));
       }
     }
+    reportProgress(context, 'scripture_search', {
+      state: 'done',
+      references: found.total,
+      pages: [...uniqueSources.keys()].length,
+    });
     return {
       ok: true,
       data: {
@@ -640,6 +918,10 @@ export function createAgentTools(options) {
       },
       sources: [...uniqueSources.values()],
     };
+    } catch (error) {
+      reportProgressFailure(context, 'scripture_search', error, { reference });
+      throw error;
+    }
   }
 
   async function getPageMetadata(args) {
@@ -1114,7 +1396,7 @@ export function createAgentTools(options) {
       type: 'function',
       function: {
         name: 'search_corpus',
-        description: `Search the client-side discovery index. It searches automated PT-BR summaries and keywords plus author/work metadata; returned excerpt fields are automated PT-BR summaries, never OCR quotations. query_suggestions are compact C++WASM vocabulary corrections or completions: when results are absent or weak, retry at most once with a relevant suggested_query, without claiming that the user's spelling is wrong. Use get_page_ocr only when the user asks to read, quote, or verify page text. ${searchStrategy === 'multi_query_rrf' ? multiQueryHelp : QUERY_DSL_HELP}`,
+        description: `Search the client-side discovery index. It searches automated PT-BR summaries and keywords plus author/work metadata; returned excerpt fields are automated PT-BR summaries, never OCR quotations. Optionally constrain retrieval to physical pages associated with one Scripture citation or boolean citation expression using scripture_reference. This scope is applied to ranked document IDs before page metadata is loaded. query_suggestions are compact C++WASM vocabulary corrections or completions: when results are absent or weak, retry at most once with a relevant suggested_query, without claiming that the user's spelling is wrong. Use get_page_ocr only when the user asks to read, quote, or verify page text. ${searchStrategy === 'multi_query_rrf' ? multiQueryHelp : QUERY_DSL_HELP}`,
         parameters: {
           type: 'object',
           properties: {
@@ -1124,6 +1406,10 @@ export function createAgentTools(options) {
             ...(searchStrategy === 'multi_query_rrf' ? { alternatives: alternativesProperty } : {}),
             collections: { type: 'array', items: { type: 'string', enum: COLLECTIONS } },
             volumes: { type: 'array', items: { type: 'string' } },
+            scripture_reference: { type: 'string', maxLength: 400, description: 'Optional Scripture scope. Search results are restricted to physical pages associated with this citation or boolean expression.' },
+            scripture_book: { type: 'string', description: 'Optional shared book key or label when scripture_reference does not identify its book.' },
+            scripture_match_mode: { type: 'string', enum: ['exact', 'overlap'], description: 'Defaults to exact. Use overlap only when the user explicitly requests related or overlapping citations.' },
+            scripture_source: { type: 'string', enum: ['all', 'direct', 'associated', 'ocr'], description: 'Evidence filter for the Scripture scope. OCR means automatic citation detection, not verified wording.' },
             offset: { type: 'integer', minimum: 0 },
             limit: { type: 'integer', minimum: 1, maximum: 10 },
           },

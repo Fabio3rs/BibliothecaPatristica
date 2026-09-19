@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "suite": "screening-27",
+  "suite": "screening-31",
   "cases": [
     {"id":"work-augustine-trinity-pt","tags":["work","pt"],"turns":[{"user":"Onde está a obra De Trinitate de Agostinho?","page_context":{"kind":"none"}}],"expect":{"must_use_any":["search_indices","search_corpus"],"must_cite":true}},
     {"id":"work-augustine-trinity-en","tags":["work","en"],"turns":[{"user":"Where can I find Augustine's De Trinitate in this collection?","page_context":{"kind":"none"}}],"expect":{"must_use_any":["search_indices","search_corpus"],"must_cite":true}},
@@ -23,6 +23,10 @@
     {"id":"scripture-john-3-16","tags":["scripture"],"turns":[{"user":"Em quais três páginas aparece João 3:16?","page_context":{"kind":"none"}}],"expect":{"must_use":["search_scripture"],"must_cite":true}},
     {"id":"scripture-romans-8","tags":["scripture","pagination"],"turns":[{"user":"Mostre as primeiras quatro páginas associadas a Romanos 8 e indique se o índice ainda tem continuação.","page_context":{"kind":"none"}}],"expect":{"must_use":["search_scripture"],"must_cite":true}},
     {"id":"scripture-quote-verify","tags":["scripture","ocr","multihop"],"turns":[{"user":"Encontre uma página associada a João 1:1 e leia o OCR para dizer como a referência aparece no contexto. Não invente se o trecho não for encontrado.","page_context":{"kind":"none"}}],"expect":{"must_use":["search_scripture","get_page_ocr"],"must_cite":true}},
+    {"id":"scripture-scope-theme","tags":["scripture","scope","theme"],"turns":[{"user":"Entre as páginas associadas a João 3:16, quais parecem tratar de caridade segundo os resumos? Dê até três candidatos.","page_context":{"kind":"none"}}],"expect":{"must_use":["search_corpus"],"must_not_use":["search_scripture","get_page_ocr"],"must_cite":true}},
+    {"id":"scripture-scope-author","tags":["scripture","scope","author"],"turns":[{"user":"Procure Agostinho apenas nas páginas associadas a Romanos 5:8.","page_context":{"kind":"none"}}],"expect":{"must_use":["search_corpus"],"must_not_use":["search_scripture"],"must_cite":true}},
+    {"id":"scripture-scope-boolean","tags":["scripture","scope","boolean"],"turns":[{"user":"Nas páginas associadas simultaneamente a João 3:16 e Romanos 5:8, procure resumos sobre graça.","page_context":{"kind":"none"}}],"expect":{"must_use":["search_corpus"],"must_not_use":["search_scripture","get_page_ocr"],"must_cite":true}},
+    {"id":"scripture-scope-then-read","tags":["scripture","scope","ocr","multihop"],"turns":[{"user":"Entre as páginas ligadas a João 1:1, localize pelo tema Logos a melhor candidata e então leia o OCR antes de explicar o texto.","page_context":{"kind":"none"}}],"expect":{"must_use":["search_corpus","get_page_ocr"],"must_not_use":["search_scripture"],"must_cite":true}},
 
     {"id":"context-outside-viewer","tags":["context","negative"],"turns":[{"user":"O que esta página diz?","page_context":{"kind":"none"}}],"expect":{"must_not_use":["get_page_ocr"],"acceptable_outcome":"explain_missing_page_context"}},
     {"id":"context-printed-vs-digitized","tags":["context","pagination"],"turns":[{"user":"No índice de PG001, diferencie a página editorial da página digitalizada ao localizar o início de uma obra de Clemente.","page_context":{"kind":"none"}}],"expect":{"must_use_any":["search_indices","get_volume_index"],"must_cite":true}},

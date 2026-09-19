@@ -37,7 +37,7 @@ Também é possível chamar pelo diretório `web`: `npm run benchmark:agent -- p
 
 ## Screening e custo
 
-A suíte tem 27 casos. Por padrão o runner executa somente os três finalistas do primeiro screening: `current_web__legacy_dsl`, `compact_strict__legacy_dsl` e `compact_strict__multi_query_rrf`, totalizando 81 execuções por repetição. `compact_strict` é o prompt compacto acrescido da regra explícita que impede inferir autenticidade, autoria e datação a partir de resumo ou OCR.
+A suíte tem 31 casos. Por padrão o runner executa somente os três finalistas do primeiro screening: `current_web__legacy_dsl`, `compact_strict__legacy_dsl` e `compact_strict__multi_query_rrf`, totalizando 93 execuções por repetição. `compact_strict` é o prompt compacto acrescido da regra explícita que impede inferir autenticidade, autoria e datação a partir de resumo ou OCR.
 
 Use `--all-configs` para cruzar os quatro prompts com as duas estratégias, ou `--configs` para escolher um subconjunto. Faça primeiro recortes baratos:
 
@@ -50,11 +50,14 @@ node scripts/playgrounds/agent_rag_benchmark.mjs run \
 
 O benchmark é retomável. Uma execução já concluída é ignorada; `--retry-errors` repete somente erros. `--reasoning-effort none` permite a comparação posterior com o padrão inicial `low`.
 
-Os casos adicionais verificam três regressões observadas no primeiro screening:
+Os casos adicionais verificam regressões observadas no primeiro screening e o novo escopo bíblico da busca ampla:
 
 - query ausente no OCR deve retornar `matched_query=false`, nunca um trecho plausível do início;
 - uma pergunta sobre a página inteira deve cobrir o OCR completo ou declarar a cobertura parcial;
 - o mesmo `source_id` não pode mudar de significado entre turnos.
+- perguntas por tema, autor ou obra dentro de uma referência devem usar diretamente `search_corpus` com `scripture_reference`;
+- expressões bíblicas booleanas devem restringir os resultados antes do carregamento dos documentos;
+- leitura ou explicação textual ainda exige `get_page_ocr` após a triagem pelo escopo.
 
 As validações mecânicas também conferem os argumentos produzidos pelo modelo contra o JSON Schema publicado pelas tools. A execução continua mesmo quando os argumentos são inválidos, para registrar como o runtime real os tratou.
 

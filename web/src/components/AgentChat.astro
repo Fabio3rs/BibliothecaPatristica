@@ -15,6 +15,15 @@ const strings = {
   usingTool: t.agentChatUsingTool,
   toolDone: t.agentChatToolDone,
   toolFailed: t.agentChatToolFailed,
+  progressPhases: {
+    scripture_scope: t.agentChatProgressScriptureScope,
+    scope_mapping: t.agentChatProgressScopeMapping,
+    init: t.agentChatProgressLoadingIndex,
+    search: t.agentChatProgressSearching,
+    scope: t.agentChatProgressFiltering,
+    documents: t.agentChatProgressLoadingDocuments,
+    scripture_search: t.agentChatProgressScriptureScope,
+  },
   debugRequest: t.agentChatDebugRequest,
   debugResponse: t.agentChatDebugResponse,
   debugToolStart: t.agentChatDebugToolStart,
@@ -101,8 +110,8 @@ const clientConfig = JSON.stringify({
   locale,
   indicesVersion,
   searchIndexVersion,
-  defaultPrompt: `${t.agentChatDefaultSystemPrompt} ${t.agentChatScriptureSystemPrompt}`,
-  requiredPrompt: t.agentChatEvidenceSystemPrompt,
+  defaultPrompt: t.agentChatDefaultSystemPrompt,
+  requiredPrompt: `${t.agentChatScriptureSystemPrompt} ${t.agentChatEvidenceSystemPrompt}`,
   strings,
 });
 ---

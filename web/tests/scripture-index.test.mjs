@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import { createAgentTools } from '../src/scripts/agent-chat-tools.js';
+import { encodeScriptureDocIdSidecar } from '../src/scripts/scripture-docids.js';
 import {
   collectScriptureBooleanReferences,
   containsScriptureBooleanSyntax,
@@ -189,6 +190,160 @@ test('search_scripture aceita booleanos entre shards e usa uma referência por p
   ]);
   assert.equal(combined.data.items[0].locations[0].source_mask, 5);
   assert.equal(combined.sources.length, 1);
+});
+
+test('search_corpus aplica escopo bíblico por doc_id antes de carregar documentos', async () => {
+  const buildId = 'sha256:test-build';
+  const searchVersion = 'commit-abc123';
+  const payloads = new Map([
+    [`/indexador/search/${searchVersion}/manifest.json`, {
+      layout: 'unified',
+      indexes: [{ id: 'ALL', path: 'all', collections: ['PG', 'PL', 'PO'], build_id: buildId }],
+    }],
+    ['/scripture/v3/manifest.json', {
+      routes: { joao: { label: 'São João', url: 'joao.json' } },
+    }],
+    ['/scripture/v3/joao.json', {
+      book: ['joao', 'São João'],
+      volumes: ['PG001'],
+      references: [[2, [3, 16, 3, 16], [[0, [100, 4]]]]],
+    }],
+    [`/indexador/search/${searchVersion}/scripture-docids/manifest.json`, {
+      indexes: { ALL: { build_id: buildId, books: { joao: { url: 'all/joao.bin.gz' } } } },
+    }],
+    ['/volumes.json', {
+      volumes: [{ id: 'PG001', collection_id: 'PG', page_first: 1, page_last: 200, meta_url: 'meta/PG001.json' }],
+    }],
+    ['/meta/PG001.json', { page_blocks: [{ page_first: 1, page_last: 200, file: 'meta/PG001-pages.json' }] }],
+    ['/meta/PG001-pages.json', {
+      raw_base_url: '/raw/PG001',
+      pages: [{ page: 100, author: 'Augustinus', work: 'De test', summary_page: 'Resumo sobre caridade.' }],
+    }],
+  ]);
+  const sidecar = encodeScriptureDocIdSidecar(['PG001'], [
+    { volume_id: 'PG001', page: 100, doc_id: 42 },
+  ]);
+  const observed = { baseRangeCalls: 0, progress: [] };
+  const engine = {
+    async init(options) {
+      observed.initOptions = options;
+      engineOptions.onProgress({
+        phase: 'init',
+        state: 'start',
+        operation_id: options.operationId,
+      });
+      engineOptions.onProgress({
+        phase: 'init',
+        state: 'done',
+        operation_id: options.operationId,
+      });
+    },
+    async search(query, options) {
+      observed.query = query;
+      observed.searchOptions = options;
+      return {
+        total: 2,
+        suggestions: [],
+        async getRange() {
+          observed.baseRangeCalls += 1;
+          return [];
+        },
+        filterDocumentIds(ids, filterOptions) {
+          observed.ids = ids;
+          observed.filterOptions = filterOptions;
+          return {
+            total: 1,
+            suggestions: [],
+            async getRange(_from, _to, options) {
+              observed.documentOptions = options;
+              return [{ id: 42, name: 'PG001 p.100', url: '/viewer?doc=PG001&page=100', score: 3, hits: ['agostinho'] }];
+            },
+          };
+        },
+      };
+    },
+  };
+  let engineOptions;
+  const tools = createAgentTools({
+    assetBase: '/',
+    origin: 'https://example.test',
+    searchIndexVersion: searchVersion,
+    getJsonImpl: async (url) => payloads.get(url),
+    getBinaryImpl: async (url) => {
+      observed.sidecarUrl = url;
+      return sidecar;
+    },
+    loadIndexadorModule: async () => ({
+      createIndexadorPagefind(options) {
+        engineOptions = options;
+        return engine;
+      },
+    }),
+  });
+
+  const result = await tools.execute('search_corpus', {
+    query: 'agostinho',
+    scripture_reference: 'João 3:16',
+  }, {
+    operationId: 'call-1',
+    onProgress: (event) => observed.progress.push(event),
+  });
+
+  assert.equal(engineOptions.indexBuildId, buildId);
+  assert.equal(engineOptions.requireIndexBuildId, true);
+  assert.equal(observed.initOptions.operationId, 'call-1:init:ALL');
+  assert.equal(observed.query, '(agostinho)');
+  assert.equal(observed.searchOptions.operationId, 'call-1:0:ALL:search');
+  assert.deepEqual(observed.ids, [42]);
+  assert.equal(observed.filterOptions.indexBuildId, buildId);
+  assert.equal(observed.filterOptions.operationId, 'call-1:0:ALL:scope');
+  assert.equal(observed.documentOptions.operationId, 'call-1:0:ALL:documents');
+  assert.equal(observed.sidecarUrl, `/indexador/search/${searchVersion}/scripture-docids/all/joao.bin.gz`);
+  assert.equal(observed.baseRangeCalls, 0);
+  assert.equal(result.data.total, 1);
+  assert.equal(result.data.items[0].volume_id, 'PG001');
+  assert.equal(result.data.scripture_scope.reference, 'João 3:16');
+  assert.equal(result.modelContext.retrieval_scope.kind, 'scripture_reference');
+  assert.ok(observed.progress.some((event) => event.phase === 'init' && event.state === 'start'));
+  assert.ok(observed.progress.some((event) => event.phase === 'scope_mapping' && event.state === 'start'));
+  assert.ok(observed.progress.some((event) => event.phase === 'scope_mapping' && event.state === 'done'));
+});
+
+test('aborta a preparação do escopo bíblico sem esperar o fetch compartilhado', async () => {
+  const controller = new AbortController();
+  const progress = [];
+  const never = new Promise(() => {});
+  let markScriptureStarted;
+  const scriptureStarted = new Promise((resolve) => { markScriptureStarted = resolve; });
+  const tools = createAgentTools({
+    assetBase: '/',
+    origin: 'https://example.test',
+    getJsonImpl: async (url) => {
+      if (url === '/indexador/search/manifest.json') {
+        return { layout: 'unified', indexes: [{ id: 'ALL', path: 'all', collections: ['PG'], build_id: 'sha256:test' }] };
+      }
+      if (url === '/scripture/v3/manifest.json') {
+        markScriptureStarted();
+        return never;
+      }
+      throw new Error(`Unexpected URL: ${url}`);
+    },
+  });
+
+  const pending = tools.execute('search_corpus', {
+    query: 'gratia',
+    scripture_reference: 'João 3:16',
+  }, {
+    operationId: 'abort-scope',
+    signal: controller.signal,
+    onProgress: (event) => progress.push(event),
+  });
+  await scriptureStarted;
+  controller.abort();
+
+  await assert.rejects(pending, (error) => error?.name === 'AbortError');
+  assert.ok(progress.some((event) => event.phase === 'scripture_scope' && event.state === 'start'));
+  assert.ok(progress.some((event) => event.phase === 'scripture_scope' && event.state === 'aborted'));
 });
 
 test('aceita vírgula e dois-pontos como separador de capítulo e versículo', () => {

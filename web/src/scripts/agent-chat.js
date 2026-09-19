@@ -13,7 +13,7 @@ import { createAgentTools } from './agent-chat-tools.js';
 
 const STORAGE_KEY = 'bibliotheca:agent-chat:v2';
 const LEGACY_STORAGE_KEY = 'bibliotheca:agent-chat:v1';
-const PROMPT_VERSION = 7;
+const PROMPT_VERSION = 8;
 
 export function composeAgentSystemPrompt(editablePrompt, requiredPrompt = '') {
   return [editablePrompt, requiredPrompt]
@@ -627,6 +627,12 @@ function initializeAgentChat(root) {
     if (event.type === 'tool_start') {
       chip.dataset.state = 'busy';
       chip.textContent = strings.usingTool.replace('{tool}', publicLabel);
+    } else if (event.type === 'tool_progress') {
+      chip.dataset.state = 'busy';
+      const phase = strings.progressPhases?.[event.payload?.phase] || '';
+      chip.textContent = phase
+        ? `${strings.usingTool.replace('{tool}', publicLabel)} · ${phase}`
+        : strings.usingTool.replace('{tool}', publicLabel);
     } else if (event.type === 'tool_end') {
       chip.dataset.state = 'done';
       const resultCount = event.payload?.result?.data?.total

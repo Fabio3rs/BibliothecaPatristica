@@ -18,9 +18,9 @@ jobs:
   build_site:
     runs-on: ubuntu-latest
     env:
-      INDEXADOR_VERSION: v0.6
-      INDEXADOR_NATIVE_SHA256: 9c87b719e6a05dd7e0b729d270db4e869ab723f47aecc8563a199187da92b427
-      INDEXADOR_ASSETS_SHA256: 1f292cc362353a2ef3b2c36b11d41bb562b7bda2a0d9459119361f4f0823198c
+      INDEXADOR_VERSION: v0.8
+      INDEXADOR_NATIVE_SHA256: 82b446463ba42d7c90739a3c1f868d3c76ced0a42db99c66023c3bdc5d22b53b
+      INDEXADOR_ASSETS_SHA256: e246f645e56ba35938f51adf211f94cf02d492bf0a77da4ed5ec3be35653704f
       PUBLIC_INDEXADOR_INDICES_VERSION: ${{ github.sha }}
       PUBLIC_INDEXADOR_SEARCH_VERSION: ${{ github.sha }}
     defaults:
@@ -68,7 +68,7 @@ jobs:
           test -f ./public/indexador/runtime/indexador-pagefind.js
           echo "INDEXADOR_BINARY=${release_dir}/indexador" >> "${GITHUB_ENV}"
 
-      - name: Build custom indices
+      - name: Build editorial indices
         run: |
           set -euo pipefail
           test -x "${INDEXADOR_BINARY}"
@@ -86,6 +86,11 @@ jobs:
             --smoke-query 'Prima Lettera ai Corinzi::volume=PG001' \
             --smoke-query 'Première épître aux Corinthiens::volume=PG001' \
             --all
+
+      - name: Build corpus search and Scripture doc_id scopes
+        run: |
+          set -euo pipefail
+          test -x "${INDEXADOR_BINARY}"
           node ../tools/build_search_indexador_from_shards.mjs \
             --public ./public \
             --source-manifest ./public/volumes.json \
@@ -95,6 +100,10 @@ jobs:
             --layout unified \
             --documents-per-shard 500 \
             --all
+          node ../tools/build_scripture_docid_sidecars.mjs \
+            --public ./public \
+            --search-manifest "./public/indexador/search/${PUBLIC_INDEXADOR_SEARCH_VERSION}/manifest.json" \
+            --out "./public/indexador/search/${PUBLIC_INDEXADOR_SEARCH_VERSION}/scripture-docids"
 
       - name: Validate custom index assets
         run: |
@@ -105,18 +114,41 @@ jobs:
           search_dir="./public/indexador/search/${PUBLIC_INDEXADOR_SEARCH_VERSION}"
           test -s "${search_dir}/manifest.json"
           test -s "${search_dir}/all/words_0.gz"
+          test -s "${search_dir}/scripture-docids/manifest.json"
           find "${indices_dir}" -name '*.gz' -type f -print0 | xargs -0 -n1 gzip -t
           find "${search_dir}" -name '*.gz' -type f -print0 | xargs -0 -n1 gzip -t
           node -e "const fs=require('fs'); const source=JSON.parse(fs.readFileSync('./public/indices/manifest.json')); const built=JSON.parse(fs.readFileSync(process.argv[1])); const expected=(source.volumes||[]).reduce((n,v)=>n+1+Number(v.works_total||0)+Number(v.sections_total||0)+Number(v.entries_total||0),0); if(built.engine!=='PatrologiaIndexer'||built.sample||built.content_schema_version!==3||built.total_documents!==expected||built.source_generated_at!==source.generated_at) process.exit(1); console.log('Indices index:', built.total_documents, 'documents from', built.volumes, 'volumes');" "${indices_dir}/manifest.json"
           node -e "const fs=require('fs'); const m=JSON.parse(fs.readFileSync(process.argv[1])); if(m.engine!=='PatrologiaIndexer'||m.sample||m.total_documents<1||m.suggestions?.wordlists!==true) process.exit(1); console.log('Search index:', m.total_documents, 'documents with suggestion wordlists');" "${search_dir}/manifest.json"
+          node ../tools/build_scripture_docid_sidecars.mjs \
+            --public ./public \
+            --search-manifest "${search_dir}/manifest.json" \
+            --out "${search_dir}/scripture-docids" \
+            --min-global-coverage 0.99 \
+            --min-book-coverage 0.95 \
+            --validate-only
+          node ../tools/smoke_scripture_docid_scope.mjs \
+            --public ./public \
+            --search-manifest "${search_dir}/manifest.json" \
+            --query PG \
+            --reference 'João 3:16'
 
       - name: Build
         run: npm run build
 
       - name: Validate Scripture publication
         run: |
+          set -euo pipefail
           npm run test:scripture
+          npm run test:chat
+          npm run test:agent-search
+          npm run test:agent-suggestions
+          npm run test:agent-ui
+          npm run test:agent-benchmark
+          npm run test:i18n
           npm run validate:scripture
+          test -s "./dist/indexador/search/${PUBLIC_INDEXADOR_SEARCH_VERSION}/scripture-docids/manifest.json"
+          find "./dist/indexador/search/${PUBLIC_INDEXADOR_SEARCH_VERSION}/scripture-docids" \
+            -name '*.gz' -type f -print0 | xargs -0 -n1 gzip -t
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
