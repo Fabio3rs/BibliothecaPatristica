@@ -201,6 +201,12 @@ PSALMUS XLII. Matth. V, 3. Ioan. III, 99. Psal. XLII, 14. Psal. L, 12-14. 4.
         "ocr",
     ]
     salmos_route = manifest["routes"]["salmos"]
+    assert salmos_route["labels"] == {
+        "pt-br": "Salmos",
+        "en": "Psalms",
+        "it": "Salmi",
+        "fr": "Psaumes",
+    }
     payload = json.loads(gzip.decompress((shards / salmos_route["url"]).read_bytes()))
     assert payload["v"] == 3
     assert payload["source_mask"] == manifest["source_mask"]

@@ -13,7 +13,14 @@ import { createAgentTools } from './agent-chat-tools.js';
 
 const STORAGE_KEY = 'bibliotheca:agent-chat:v2';
 const LEGACY_STORAGE_KEY = 'bibliotheca:agent-chat:v1';
-const PROMPT_VERSION = 6;
+const PROMPT_VERSION = 7;
+
+export function composeAgentSystemPrompt(editablePrompt, requiredPrompt = '') {
+  return [editablePrompt, requiredPrompt]
+    .map((value) => String(value || '').trim())
+    .filter(Boolean)
+    .join('\n\n');
+}
 
 function parseJson(value, fallback = {}) {
   try {
@@ -870,7 +877,7 @@ function initializeAgentChat(root) {
         apiUrl: settings.apiUrl,
         apiKey,
         model: settings.model,
-        systemPrompt: settings.systemPrompt,
+        systemPrompt: composeAgentSystemPrompt(settings.systemPrompt, config.requiredPrompt),
         routeContext: routeContext(),
         conversationMessages,
         sourceRegistry: conversationSources,

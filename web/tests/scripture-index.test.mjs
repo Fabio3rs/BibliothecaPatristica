@@ -1,15 +1,82 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
+import { createAgentTools } from '../src/scripts/agent-chat-tools.js';
 import {
+  collectScriptureBooleanReferences,
+  containsScriptureBooleanSyntax,
+  evaluateScriptureBooleanAst,
+  evaluateScriptureBooleanMatches,
   findScriptureBook,
   joinScriptureRoute,
+  matchScriptureShard,
+  parseScriptureBooleanQuery,
   parseScriptureLocator,
   parseScriptureLocators,
   scriptureBookSlug,
+  scriptureBookLabel,
   scriptureReferenceSlug,
   searchScriptureShard,
 } from '../src/scripts/scripture-index.js';
+
+test('resolve o nome bíblico pelo idioma com fallback compatível', () => {
+  const route = {
+    label: 'São João',
+    labels: { 'pt-br': 'São João', en: 'John', it: 'Giovanni', fr: 'Jean' },
+  };
+  assert.equal(scriptureBookLabel(route, 'en', 'joao'), 'John');
+  assert.equal(scriptureBookLabel(route, 'it', 'joao'), 'Giovanni');
+  assert.equal(scriptureBookLabel(route, 'fr', 'joao'), 'Jean');
+  assert.equal(scriptureBookLabel({ label: 'São João' }, 'en', 'joao'), 'São João');
+  assert.equal(scriptureBookLabel(null, 'en', 'joao'), 'joao');
+});
+
+test('preserva referências inteiras na DSL booleana e aplica precedência', () => {
+  const ast = parseScriptureBooleanQuery('João 3:16 || Romanos 8:1 && (Gálatas 5:22 || Efésios 4:3)');
+  assert.deepEqual(ast, {
+    type: 'or',
+    left: { type: 'reference', value: 'João 3:16' },
+    right: {
+      type: 'and',
+      left: { type: 'reference', value: 'Romanos 8:1' },
+      right: {
+        type: 'or',
+        left: { type: 'reference', value: 'Gálatas 5:22' },
+        right: { type: 'reference', value: 'Efésios 4:3' },
+      },
+    },
+  });
+  assert.deepEqual(collectScriptureBooleanReferences(ast), [
+    'João 3:16',
+    'Romanos 8:1',
+    'Gálatas 5:22',
+    'Efésios 4:3',
+  ]);
+  assert.equal(containsScriptureBooleanSyntax('João 3:16'), false);
+  assert.equal(containsScriptureBooleanSyntax('João 3:16 && Romanos 8:1'), true);
+});
+
+test('rejeita operadores incompletos, parênteses inválidos e mais de quatro referências', () => {
+  assert.throws(() => parseScriptureBooleanQuery('João 3:16 & Romanos 8:1'), /&& or \|\|/);
+  assert.throws(() => parseScriptureBooleanQuery('(João 3:16 || Romanos 8:1'), /parentheses/);
+  assert.throws(
+    () => parseScriptureBooleanQuery('A 1:1 || B 1:1 || C 1:1 || D 1:1 || E 1:1'),
+    /at most 4/,
+  );
+});
+
+test('avalia união e interseção sem interpretar espaços como operadores', () => {
+  const ast = parseScriptureBooleanQuery('João 3:16 || Romanos 8:1 && Gálatas 5:22');
+  const values = new Map([
+    ['João 3:16', new Set(['PG001:10'])],
+    ['Romanos 8:1', new Set(['PG001:20', 'PG001:30'])],
+    ['Gálatas 5:22', new Set(['PG001:30'])],
+  ]);
+  assert.deepEqual(
+    [...evaluateScriptureBooleanAst(ast, (reference) => values.get(reference))].sort(),
+    ['PG001:10', 'PG001:30'],
+  );
+});
 
 test('compõe rotas filhas com uma única barra e barra final', () => {
   const base = '/BibliothecaPatristica/indices-alfabeticos/scripture/';
@@ -51,6 +118,78 @@ const shard = {
     [2, [13, 16, 13, 16], [[0, [200, 1]]]],
   ],
 };
+
+test('combina páginas físicas e preserva as referências que justificam cada página', () => {
+  const booleanShard = {
+    book: ['joao', 'São João'],
+    volumes: ['PG001'],
+    references: [
+      [2, [3, 16, 3, 16], [[0, [100, 1, 20, 4]]]],
+      [2, [13, 16, 13, 16], [[0, [100, 2, 30, 1]]]],
+    ],
+  };
+  const expression = 'João 3:16 && João 13:16';
+  const ast = parseScriptureBooleanQuery(expression);
+  const matches = new Map([
+    ['João 3:16', matchScriptureShard(booleanShard, 'João 3:16', { matchMode: 'exact' })],
+    ['João 13:16', matchScriptureShard(booleanShard, 'João 13:16', { matchMode: 'exact' })],
+  ]);
+
+  assert.deepEqual(evaluateScriptureBooleanMatches(ast, matches), [{
+    volume_id: 'PG001',
+    page: 100,
+    source_mask: 3,
+    source_types: ['direct', 'keyword_association'],
+    matched_references: ['São João 3:16', 'São João 13:16'],
+  }]);
+});
+
+test('search_scripture aceita booleanos entre shards e usa uma referência por padrão no modo exato', async () => {
+  const payloads = new Map([
+    ['/scripture/v3/manifest.json', {
+      routes: {
+        joao: { label: 'São João', labels: { en: 'John' }, url: 'joao.json', aliases: ['john'] },
+        romanos: { label: 'Romanos', labels: { en: 'Romans' }, url: 'romanos.json', aliases: ['romans'] },
+      },
+    }],
+    ['/scripture/v3/joao.json', {
+      book: ['joao', 'São João'],
+      volumes: ['PG001'],
+      references: [[2, [3, 16, 3, 16], [[0, [100, 1, 20, 1]]]]],
+    }],
+    ['/scripture/v3/romanos.json', {
+      book: ['romanos', 'Romanos'],
+      volumes: ['PG001'],
+      references: [[2, [5, 8, 5, 8], [[0, [100, 4, 30, 4]]]]],
+    }],
+  ]);
+  const tools = createAgentTools({
+    assetBase: '/',
+    origin: 'https://example.test',
+    locale: 'en',
+    getJsonImpl: async (url) => payloads.get(url),
+  });
+
+  const simple = await tools.execute('search_scripture', { reference: 'João 3:16' });
+  assert.equal(simple.data.reference_matches_limit, 1);
+  assert.equal(simple.data.items.length, 1);
+
+  const combined = await tools.execute('search_scripture', {
+    reference: 'João 3:16 && Romanos 5:8',
+    locations_per_reference: 10,
+  });
+  assert.equal(combined.data.boolean_expression, true);
+  assert.deepEqual(combined.data.book_keys, ['joao', 'romanos']);
+  assert.equal(simple.data.book_label, 'John');
+  assert.equal(simple.data.items[0].reference, 'John 3:16');
+  assert.equal(combined.data.items[0].relation, 'boolean_expression');
+  assert.deepEqual(combined.data.items[0].locations[0].matched_references, [
+    'John 3:16',
+    'Romans 5:8',
+  ]);
+  assert.equal(combined.data.items[0].locations[0].source_mask, 5);
+  assert.equal(combined.sources.length, 1);
+});
 
 test('aceita vírgula e dois-pontos como separador de capítulo e versículo', () => {
   assert.deepEqual(parseScriptureLocator('João 3,16'), [3, 16, 3, 16]);

@@ -6,6 +6,7 @@
  * estão em português do Brasil, independentemente do idioma da UI.
  */
 import {
+  AGENT_EVIDENCE_CONTRACT_PT_BR,
   AGENT_SCRIPTURE_PROMPT_PT_BR,
   AGENT_SYSTEM_PROMPT_PT_BR,
 } from '../scripts/agent-chat-prompts.js';
@@ -381,6 +382,10 @@ export const ptBR: Record<string, any> = {
   scriptureIndexAssociationsOnly: 'Associação por keyword',
   scriptureIndexOcrOnly: 'Detecção no OCR',
   scriptureIndexSearchButton: 'Pesquisar',
+  scriptureIndexBooleanHelp: 'Opcional: combine até quatro referências com && (na mesma página), || (qualquer uma) e parênteses. Inclua o livro em cada referência se combinar livros diferentes.',
+  scriptureIndexBooleanInvalid: 'Expressão bíblica inválida',
+  scriptureIndexBooleanKicker: 'Combinação de referências',
+  scriptureIndexBooleanMatches: 'páginas que satisfazem a expressão',
   scriptureIndexSourceNote: '“Citação direta” vem de uma keyword isolada; “associação por keyword” vem de uma keyword mais ampla; “detecção no OCR” é extraída deterministicamente da transcrição automática. OCR e normalização podem conter erros e não substituem a conferência do fac-símile.',
   scriptureIndexVersificationLabel: 'Numeração bíblica:',
   scriptureIndexVersificationNote: 'as referências seguem a Vulgata Clementina. A numeração dos Salmos e a nomenclatura histórica dos livros de Samuel e Reis podem diferir das Bíblias modernas.',
@@ -405,6 +410,7 @@ export const ptBR: Record<string, any> = {
   scriptureIndexPageLimitNote: 'Exibindo {count} de {total} páginas desta referência.',
   scriptureIndexViewAllPages: 'Ver todas as {total} páginas',
   scriptureIndexShowMore: 'Mostrar mais referências',
+  scriptureIndexShowMorePages: 'Mostrar mais páginas',
   scriptureIndexNoResults: 'Nenhuma referência encontrada',
   scriptureIndexNoResultsHint: 'Tente somente o capítulo e o versículo, ou altere o tipo de evidência.',
   scriptureIndexUnavailable: 'O índice das Escrituras está indisponível.',
@@ -631,6 +637,7 @@ export const ptBR: Record<string, any> = {
   agentChatToolVolumeIndex: 'Abrindo o índice do volume',
   agentChatToolPageOcr: 'Lendo a transcrição automática',
   agentChatScriptureSystemPrompt: AGENT_SCRIPTURE_PROMPT_PT_BR,
+  agentChatEvidenceSystemPrompt: AGENT_EVIDENCE_CONTRACT_PT_BR,
   agentChatDefaultSystemPrompt: AGENT_SYSTEM_PROMPT_PT_BR,
 };
 

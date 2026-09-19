@@ -18,6 +18,141 @@ export function joinScriptureRoute(baseRoute, segment) {
   return `${base}/${encodeURIComponent(child)}/`;
 }
 
+const MAX_BOOLEAN_QUERY_CHARS = 400;
+const MAX_BOOLEAN_REFERENCES = 4;
+
+function scriptureQueryError(message) {
+  const error = new Error(message);
+  error.code = 'invalid_scripture_query';
+  return error;
+}
+
+export function containsScriptureBooleanSyntax(value) {
+  return /&&|\|\||[()]/u.test(String(value || ''));
+}
+
+function tokenizeScriptureBooleanQuery(value) {
+  const query = String(value || '').normalize('NFC').trim();
+  if (!query) throw scriptureQueryError('Scripture query is empty.');
+  if (query.length > MAX_BOOLEAN_QUERY_CHARS) {
+    throw scriptureQueryError(`Scripture query exceeds ${MAX_BOOLEAN_QUERY_CHARS} characters.`);
+  }
+
+  const tokens = [];
+  let buffer = '';
+  const flushReference = () => {
+    const reference = buffer.replace(/\s+/g, ' ').trim();
+    if (reference) tokens.push({ type: 'REFERENCE', value: reference });
+    buffer = '';
+  };
+
+  for (let index = 0; index < query.length; index += 1) {
+    const character = query[index];
+    const pair = query.slice(index, index + 2);
+    if (pair === '&&' || pair === '||') {
+      flushReference();
+      tokens.push({ type: pair === '&&' ? 'AND' : 'OR' });
+      index += 1;
+      continue;
+    }
+    if (character === '(' || character === ')') {
+      flushReference();
+      tokens.push({ type: character === '(' ? 'LPAREN' : 'RPAREN' });
+      continue;
+    }
+    if (character === '&' || character === '|') {
+      throw scriptureQueryError('Use && or || as complete boolean operators.');
+    }
+    buffer += character;
+  }
+  flushReference();
+  return tokens;
+}
+
+export function parseScriptureBooleanQuery(value) {
+  const tokens = tokenizeScriptureBooleanQuery(value);
+  let position = 0;
+  let referenceCount = 0;
+
+  function parsePrimary() {
+    const token = tokens[position];
+    if (!token) throw scriptureQueryError('Scripture query is incomplete.');
+    if (token.type === 'REFERENCE') {
+      position += 1;
+      referenceCount += 1;
+      if (referenceCount > MAX_BOOLEAN_REFERENCES) {
+        throw scriptureQueryError(`Use at most ${MAX_BOOLEAN_REFERENCES} biblical references.`);
+      }
+      return { type: 'reference', value: token.value };
+    }
+    if (token.type === 'LPAREN') {
+      position += 1;
+      const expression = parseOr();
+      if (tokens[position]?.type !== 'RPAREN') {
+        throw scriptureQueryError('Scripture query has unbalanced parentheses.');
+      }
+      position += 1;
+      return expression;
+    }
+    throw scriptureQueryError('Expected a biblical reference.');
+  }
+
+  function parseAnd() {
+    let node = parsePrimary();
+    while (tokens[position]?.type === 'AND') {
+      position += 1;
+      node = { type: 'and', left: node, right: parsePrimary() };
+    }
+    return node;
+  }
+
+  function parseOr() {
+    let node = parseAnd();
+    while (tokens[position]?.type === 'OR') {
+      position += 1;
+      node = { type: 'or', left: node, right: parseAnd() };
+    }
+    return node;
+  }
+
+  const ast = parseOr();
+  if (position !== tokens.length) throw scriptureQueryError('Scripture query has an unexpected token.');
+  return ast;
+}
+
+export function collectScriptureBooleanReferences(ast, output = []) {
+  if (!ast) return output;
+  if (ast.type === 'reference') {
+    if (!output.includes(ast.value)) output.push(ast.value);
+    return output;
+  }
+  collectScriptureBooleanReferences(ast.left, output);
+  collectScriptureBooleanReferences(ast.right, output);
+  return output;
+}
+
+function unionSets(left, right) {
+  const output = new Set(left);
+  for (const value of right) output.add(value);
+  return output;
+}
+
+function intersectSets(left, right) {
+  const output = new Set();
+  const [small, large] = left.size <= right.size ? [left, right] : [right, left];
+  for (const value of small) {
+    if (large.has(value)) output.add(value);
+  }
+  return output;
+}
+
+export function evaluateScriptureBooleanAst(ast, lookupReference) {
+  if (ast.type === 'reference') return new Set(lookupReference(ast.value) || []);
+  const left = evaluateScriptureBooleanAst(ast.left, lookupReference);
+  const right = evaluateScriptureBooleanAst(ast.right, lookupReference);
+  return ast.type === 'and' ? intersectSets(left, right) : unionSets(left, right);
+}
+
 function scriptureSegmentSlug(segment) {
   const [startChapter, startVerse, endChapter, endVerse] = segment;
   if (!startVerse && !endVerse) {
@@ -336,18 +471,19 @@ function compareSegments(left, right) {
   return 0;
 }
 
-export function searchScriptureShard(shard, reference, options = {}) {
+export function scriptureBookLabel(route, locale = 'pt-br', fallback = '') {
+  const normalizedLocale = ['en', 'it', 'fr'].includes(locale) ? locale : 'pt-br';
+  return String(route?.labels?.[normalizedLocale] || route?.label || fallback || '').trim();
+}
+
+export function matchScriptureShard(shard, reference, options = {}) {
   const source = ['direct', 'associated', 'ocr'].includes(options.source) ? options.source : 'all';
   const matchMode = options.matchMode === 'exact' ? 'exact' : 'overlap';
-  const offset = optionInteger(options.offset, 0, 0, 10_000);
-  const limit = optionInteger(options.limit, 5, 1, 20);
-  const locationOffset = optionInteger(options.locationOffset, 0, 0, 100_000);
-  const locationsPerReference = optionInteger(options.locationsPerReference, 10, 1, 50);
   const querySegments = parseScriptureLocators(reference);
-  const label = shard?.book?.[1] || shard?.book?.[0] || '';
+  const label = options.bookLabel || shard?.book?.[1] || shard?.book?.[0] || '';
   const normalizedReference = foldScriptureText(reference);
 
-  const matches = (shard?.references || []).map((row) => {
+  return (shard?.references || []).map((row) => {
     const segments = decodeScriptureSegments(row[1]);
     const locator = formatScriptureLocator(segments);
     const relation = relationForScriptureSegments(segments, querySegments);
@@ -359,11 +495,67 @@ export function searchScriptureShard(shard, reference, options = {}) {
       relation: textMatches ? 'text_match' : relation.relation,
       rank: textMatches ? 4 : relation.rank,
       locations,
+      reference: `${label} ${locator}`.trim(),
+      page_count: locations.length,
+      volume_count: new Set(locations.map((location) => location.volume_id)).size,
     };
   }).filter((item) => item.locations.length
       && item.rank < 99
       && (matchMode !== 'exact' || item.relation === 'exact'))
     .sort((left, right) => left.rank - right.rank || compareSegments(left, right));
+}
+
+function locationKey(location) {
+  return `${location.volume_id}:${location.page}`;
+}
+
+function sourceTypes(mask) {
+  return [
+    ...(mask & 1 ? ['direct'] : []),
+    ...(mask & 2 ? ['keyword_association'] : []),
+    ...(mask & 4 ? ['ocr'] : []),
+  ];
+}
+
+export function evaluateScriptureBooleanMatches(ast, matchesByReference) {
+  const locations = new Map();
+  const keysByReference = new Map();
+
+  for (const reference of collectScriptureBooleanReferences(ast)) {
+    const keys = new Set();
+    for (const match of matchesByReference.get(reference) || []) {
+      for (const location of match.locations || []) {
+        const key = locationKey(location);
+        keys.add(key);
+        const current = locations.get(key) || {
+          ...location,
+          source_mask: 0,
+          matched_references: [],
+        };
+        current.source_mask |= Number(location.source_mask || 0);
+        if (!current.matched_references.includes(match.reference)) {
+          current.matched_references.push(match.reference);
+        }
+        current.source_types = sourceTypes(current.source_mask);
+        locations.set(key, current);
+      }
+    }
+    keysByReference.set(reference, keys);
+  }
+
+  const selected = evaluateScriptureBooleanAst(ast, (reference) => keysByReference.get(reference));
+  return [...selected]
+    .map((key) => locations.get(key))
+    .filter(Boolean)
+    .sort((left, right) => left.volume_id.localeCompare(right.volume_id) || left.page - right.page);
+}
+
+export function searchScriptureShard(shard, reference, options = {}) {
+  const offset = optionInteger(options.offset, 0, 0, 10_000);
+  const limit = optionInteger(options.limit, 5, 1, 20);
+  const locationOffset = optionInteger(options.locationOffset, 0, 0, 100_000);
+  const locationsPerReference = optionInteger(options.locationsPerReference, 10, 1, 50);
+  const matches = matchScriptureShard(shard, reference, options);
 
   return {
     total: matches.length,
@@ -371,7 +563,7 @@ export function searchScriptureShard(shard, reference, options = {}) {
     limit,
     next_offset: offset + limit < matches.length ? offset + limit : null,
     items: matches.slice(offset, offset + limit).map((item) => ({
-      reference: `${label} ${item.locator}`.trim(),
+      reference: item.reference,
       locator: item.locator,
       relation: item.relation,
       page_count: item.locations.length,

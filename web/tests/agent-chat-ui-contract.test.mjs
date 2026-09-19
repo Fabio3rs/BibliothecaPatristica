@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { buildRouteContext } from '../src/scripts/agent-chat.js';
+import { buildRouteContext, composeAgentSystemPrompt } from '../src/scripts/agent-chat.js';
 
 function contextPayload(context) {
   return JSON.parse(context.split('\n').slice(1).join('\n'));
@@ -29,4 +29,15 @@ test('declares that no viewer page exists on indices and after user removal', ()
     include: false,
   }));
   assert.deepEqual(disabled.page_context, { kind: 'none', reason: 'user_disabled' });
+});
+
+test('keeps the evidence contract when the editable BYO prompt is replaced', () => {
+  assert.equal(
+    composeAgentSystemPrompt('My custom instructions', 'Mandatory evidence contract'),
+    'My custom instructions\n\nMandatory evidence contract',
+  );
+  assert.equal(
+    composeAgentSystemPrompt('  My custom instructions  ', ''),
+    'My custom instructions',
+  );
 });

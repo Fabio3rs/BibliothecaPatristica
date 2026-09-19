@@ -19,6 +19,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from tools.scripture.book_catalog import (  # noqa: E402
     BOOKS,
+    CANONICAL_BOOK_NAMES_BY_LOCALE,
     aliases_for_book,
     canonical_book_label,
 )
@@ -31,6 +32,19 @@ from scripts.scripture_keywords.export_summary_scripture_json_v2 import (  # noq
 DEFAULT_DB = PROJECT_ROOT / "data" / "summary_scripture_citations_v3.db"
 DEFAULT_OUTPUT = PROJECT_ROOT / "web" / "public" / "scripture" / "v3"
 SIZE_THRESHOLDS = (128 * 1024, 256 * 1024, 512 * 1024)
+PUBLIC_LOCALES = ("pt-br", "en", "it", "fr")
+
+
+def localized_book_labels(book_key: str) -> dict[str, str]:
+    portuguese = canonical_book_label(book_key) or book_key
+    return {
+        locale: (
+            portuguese
+            if locale == "pt-br"
+            else CANONICAL_BOOK_NAMES_BY_LOCALE[locale][book_key]
+        )
+        for locale in PUBLIC_LOCALES
+    }
 
 
 def _book_order() -> dict[str, int]:
@@ -210,6 +224,7 @@ def export_book_shards(
             route = {
                 "book_id": ordinal,
                 "label": canonical_book_label(book_key) or book_key,
+                "labels": localized_book_labels(book_key),
                 "aliases": sorted(aliases_for_book(book_key)),
                 "url": filename,
                 "raw_bytes": len(raw),

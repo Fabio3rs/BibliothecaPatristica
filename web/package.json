@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "npm run build:scripture-references && astro build",
+    "build": "npm run build:scripture-labels && npm run build:scripture-references && astro build",
+    "build:scripture-labels": "python3 ../tools/sync_scripture_book_labels.py --public ./public",
     "build:scripture-references": "python3 ../tools/build_scripture_reference_payloads.py --public ./public --ocr-root ../teste --out ./public/scripture/references/v1",
     "build:dicts": "python3 ../tools/export_keywords_dicts.py --db ../data/patristica_keywords.db --out ./public/dict",
     "build:indices": "python3 ../tools/export_indices_from_db.py --db ../data/patristic_indices.db --out ./public/indices",

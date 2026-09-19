@@ -517,7 +517,7 @@ const breadcrumbs = [
       }
     }
 
-    function renderPayload(payload) {
+    function renderPayload(payload, manifest) {
       if (payload?.v !== 1 || !Array.isArray(payload.b) || !Array.isArray(payload.r)
         || !Array.isArray(payload.p) || !Array.isArray(payload.d)) {
         throw new Error('Payload bíblico inválido');
@@ -530,7 +530,10 @@ const breadcrumbs = [
         throw new Error('Payload bíblico não corresponde à URL');
       }
 
-      const referenceLabel = `${bookLabel} ${locator}`;
+      const localizedBookLabel = manifest?.routes?.[bookKey]?.labels?.[locale]
+        || manifest?.routes?.[bookKey]?.label
+        || bookLabel;
+      const referenceLabel = `${localizedBookLabel} ${locator}`;
       const description = replaceTokens(uiStrings.scriptureReferenceSubtitle, {
         reference: referenceLabel,
         total: format(total),
@@ -546,7 +549,7 @@ const breadcrumbs = [
       });
       backEl.hidden = false;
       backEl.href = childRoute(scriptureBaseRoute, book);
-      backEl.textContent = replaceTokens(uiStrings.scriptureReferenceBackToBook, { book: bookLabel });
+      backEl.textContent = replaceTokens(uiStrings.scriptureReferenceBackToBook, { book: localizedBookLabel });
       document.title = `${replaceTokens(uiStrings.scriptureReferenceTitle, { reference: referenceLabel })} — Bibliotheca Patristica`;
       const socialTitle = replaceTokens(uiStrings.scriptureReferenceTitle, { reference: referenceLabel });
       const setMeta = (selector, content) => {
@@ -639,16 +642,21 @@ const breadcrumbs = [
         return;
       }
       const payloadUrl = `${assetBase}scripture/references/v1/${encodeURIComponent(book)}/${encodeURIComponent(reference)}/page-${requestedPage}.json.gz`;
+      const manifestUrl = `${assetBase}scripture/v3/manifest.json`;
       try {
-        const payload = dataCache?.getJsonOnce
-          ? await dataCache.getJsonOnce(payloadUrl)
-          : await fetch(payloadUrl).then(async (response) => {
+        const fetchJson = (url) => fetch(url).then(async (response) => {
               if (!response.ok) throw new Error(`HTTP ${response.status}`);
               const bytes = new Uint8Array(await response.arrayBuffer());
+              const isGzip = bytes.length >= 2 && bytes[0] === 0x1f && bytes[1] === 0x8b;
+              if (!isGzip) return JSON.parse(new TextDecoder('utf-8').decode(bytes));
               const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
               return JSON.parse(await new Response(stream).text());
             });
-        renderPayload(payload);
+        const [payload, manifest] = await Promise.all([
+          dataCache?.getJsonOnce ? dataCache.getJsonOnce(payloadUrl) : fetchJson(payloadUrl),
+          dataCache?.getJsonOnce ? dataCache.getJsonOnce(manifestUrl) : fetchJson(manifestUrl),
+        ]);
+        renderPayload(payload, manifest);
       } catch (error) {
         console.error(error);
         showError(uiStrings.scriptureReferenceUnavailable, uiStrings.scriptureReferenceInvalidHint, true);

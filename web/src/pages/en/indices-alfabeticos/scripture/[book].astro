@@ -3,7 +3,7 @@ import ScriptureIndexPage from '../../../../components/pages/ScriptureIndexPage.
 import { listAlphaScriptureBooks } from '../../../../lib/alphaStaticPaths';
 
 export async function getStaticPaths() {
-  const books = await listAlphaScriptureBooks();
+  const books = await listAlphaScriptureBooks('en');
   return books.map((book) => ({
     params: { book: book.slug },
     props: { bookKey: book.bookKey, bookLabel: book.label },

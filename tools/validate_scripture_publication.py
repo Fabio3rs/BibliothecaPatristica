@@ -9,9 +9,18 @@ import hashlib
 import json
 from pathlib import Path
 import re
+import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from tools.scripture.book_catalog import (  # noqa: E402
+    CANONICAL_BOOK_NAMES_BY_LOCALE,
+    canonical_book_label,
+)
+
 EXPECTED_PARSER = "2.1.4-poc"
 EXPECTED_DETECTOR = "7"
 EXPECTED_VERSIFICATION = "vulgate-clementine"
@@ -128,6 +137,16 @@ def validate_book_shards(public_dir: Path) -> tuple[int, int]:
     for book_key, route in routes.items():
         if not isinstance(route, dict):
             raise ValueError(f"invalid route for {book_key}")
+        expected_labels = {
+            "pt-br": canonical_book_label(book_key),
+            "en": CANONICAL_BOOK_NAMES_BY_LOCALE["en"][book_key],
+            "it": CANONICAL_BOOK_NAMES_BY_LOCALE["it"][book_key],
+            "fr": CANONICAL_BOOK_NAMES_BY_LOCALE["fr"][book_key],
+        }
+        if route.get("labels") != expected_labels:
+            raise ValueError(f"localized labels mismatch for {book_key}")
+        if route.get("label") != expected_labels["pt-br"]:
+            raise ValueError(f"legacy label mismatch for {book_key}")
         filename = str(route.get("url") or "")
         if Path(filename).name != filename or not filename.endswith(".json.gz"):
             raise ValueError(f"unsafe shard URL for {book_key}: {filename!r}")

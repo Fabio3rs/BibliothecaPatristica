@@ -1,7 +1,16 @@
 import { filterIndexHitsByScope } from './agent-chat-core.js';
 import { fetchOcrWithRetry } from './agent-chat-resilient-fetch.js';
 import { fuseRankedResults, normalizeQuerySet, QUERY_STRATEGY_LIMITS } from './agent-query-strategies.js';
-import { findScriptureBook, searchScriptureShard } from './scripture-index.js';
+import {
+  collectScriptureBooleanReferences,
+  containsScriptureBooleanSyntax,
+  evaluateScriptureBooleanMatches,
+  findScriptureBook,
+  matchScriptureShard,
+  parseScriptureBooleanQuery,
+  searchScriptureShard,
+  scriptureBookLabel,
+} from './scripture-index.js';
 
 const COLLECTIONS = ['PG', 'PL', 'PO'];
 const AGENT_SUGGESTION_LIMIT = 5;
@@ -491,28 +500,95 @@ export function createAgentTools(options) {
 
   async function searchScripture(args) {
     const reference = requiredString(args.reference, 'reference');
+    if (reference.length > 400) {
+      throw toolError('invalid_arguments', 'reference must contain at most 400 characters.');
+    }
     const source = ['direct', 'associated', 'ocr'].includes(args.source) ? args.source : 'all';
     const matchMode = args.match_mode === 'overlap' ? 'overlap' : 'exact';
     const offset = integer(args.offset, 0, 0, 10_000);
-    const limit = integer(args.limit, 5, 1, 20);
+    const limit = integer(args.limit, matchMode === 'exact' ? 1 : 5, 1, 20);
     const locationOffset = integer(args.location_offset, 0, 0, 100_000);
     const locationsPerReference = integer(args.locations_per_reference, 10, 1, 50);
     const manifest = await scriptureManifest();
-    const bookKey = findScriptureBook(manifest, reference, args.book);
-    if (!bookKey) {
-      throw toolError('invalid_arguments', 'The biblical book could not be identified. Include it in reference or pass book using a manifest key such as joao, salmos, or romanos.');
+    const isBoolean = containsScriptureBooleanSyntax(reference);
+    let bookKeys = [];
+    let found;
+
+    if (isBoolean) {
+      let ast;
+      try {
+        ast = parseScriptureBooleanQuery(reference);
+      } catch (error) {
+        throw toolError('invalid_arguments', error?.message || 'The Scripture boolean query is invalid.');
+      }
+      const references = collectScriptureBooleanReferences(ast);
+      const matchesByReference = new Map();
+      const resolved = await Promise.all(references.map(async (operand) => {
+        const bookKey = findScriptureBook(manifest, operand)
+          || findScriptureBook(manifest, operand, args.book);
+        if (!bookKey) {
+          throw toolError('invalid_arguments', `The biblical book in "${operand}" could not be identified. Include a book in every boolean operand.`);
+        }
+        const routeEntry = manifest?.routes?.[bookKey];
+        if (!routeEntry?.url) throw toolError('not_found', `Scripture shard for ${bookKey} was not found.`);
+        const shard = await getJson(`${assetBase}scripture/v3/${routeEntry.url}`);
+        return {
+          operand,
+          bookKey,
+          matches: matchScriptureShard(shard, operand, {
+            source,
+            matchMode,
+            bookLabel: scriptureBookLabel(routeEntry, locale, bookKey),
+          }),
+        };
+      }));
+      for (const entry of resolved) matchesByReference.set(entry.operand, entry.matches);
+      bookKeys = [...new Set(resolved.map((entry) => entry.bookKey))];
+      const allLocations = evaluateScriptureBooleanMatches(ast, matchesByReference);
+      const locations = allLocations.slice(locationOffset, locationOffset + locationsPerReference);
+      const hasLocations = allLocations.length > 0;
+      found = {
+        total: hasLocations ? 1 : 0,
+        offset: 0,
+        limit: 1,
+        next_offset: null,
+        items: hasLocations ? [{
+          reference,
+          locator: reference,
+          relation: 'boolean_expression',
+          matched_references: references,
+          page_count: allLocations.length,
+          volume_count: new Set(allLocations.map((location) => location.volume_id)).size,
+          location_offset: locationOffset,
+          locations_limit: locationsPerReference,
+          next_location_offset: locationOffset + locationsPerReference < allLocations.length
+            ? locationOffset + locationsPerReference
+            : null,
+          locations,
+          locations_truncated: locationOffset > 0
+            || locationOffset + locationsPerReference < allLocations.length,
+        }] : [],
+      };
+    } else {
+      const bookKey = findScriptureBook(manifest, reference, args.book);
+      if (!bookKey) {
+        throw toolError('invalid_arguments', 'The biblical book could not be identified. Include it in reference or pass book using a manifest key such as joao, salmos, or romanos.');
+      }
+      const routeEntry = manifest?.routes?.[bookKey];
+      if (!routeEntry?.url) throw toolError('not_found', `Scripture shard for ${bookKey} was not found.`);
+      const shard = await getJson(`${assetBase}scripture/v3/${routeEntry.url}`);
+      bookKeys = [bookKey];
+      found = searchScriptureShard(shard, reference, {
+        source,
+        matchMode,
+        offset,
+        limit,
+        locationOffset,
+        locationsPerReference,
+        bookLabel: scriptureBookLabel(routeEntry, locale, bookKey),
+      });
     }
-    const routeEntry = manifest?.routes?.[bookKey];
-    if (!routeEntry?.url) throw toolError('not_found', `Scripture shard for ${bookKey} was not found.`);
-    const shard = await getJson(`${assetBase}scripture/v3/${routeEntry.url}`);
-    const found = searchScriptureShard(shard, reference, {
-      source,
-      matchMode,
-      offset,
-      limit,
-      locationOffset,
-      locationsPerReference,
-    });
+
     const items = found.items.map((item) => ({
       ...item,
       locations: item.locations.map((location) => ({
@@ -534,6 +610,7 @@ export function createAgentTools(options) {
           metadata: {
             scriptureReference: item.reference,
             scriptureRelation: item.relation,
+            ...(item.matched_references ? { scriptureMatchedReferences: item.matched_references } : {}),
             scriptureSourceTypes: location.source_types,
             notice: 'Association detected in summary keywords and/or OCR. OCR detection is automatic and has not been visually verified against the facsimile.',
           },
@@ -546,8 +623,12 @@ export function createAgentTools(options) {
       ok: true,
       data: {
         query: reference,
-        book_key: bookKey,
-        book_label: routeEntry.label,
+        book_key: bookKeys.length === 1 ? bookKeys[0] : null,
+        book_keys: bookKeys,
+        book_label: bookKeys.length === 1
+          ? scriptureBookLabel(manifest.routes[bookKeys[0]], locale, bookKeys[0])
+          : null,
+        boolean_expression: isBoolean,
         match_mode: matchMode,
         source,
         reference_matches_total: found.total,
@@ -1055,12 +1136,12 @@ export function createAgentTools(options) {
       type: 'function',
       function: {
         name: 'search_scripture',
-        description: 'Find physical volume/page locations for one biblical reference in the combined deterministic OCR and summary-keyword index. For a normal question such as "which pages have João 3:16?", use match_mode="exact", limit=1, location_offset=0, and locations_per_reference equal to the number of pages requested. To continue, keep the same reference, match_mode, limit, and locations_per_reference; copy item.next_location_offset exactly into location_offset. Never use reference_matches_total or next_reference_offset to count or paginate pages. Use match_mode="overlap" only when the user asks for related, containing, contained, or overlapping references. Use source="ocr" only when the user specifically wants OCR detections. A result is not visual verification; use get_page_ocr before describing or quoting page text. Cite returned source_id values as [sN]. Never write or construct a URL; the runtime renders source links.',
+        description: 'Find physical volume/page associations for biblical references in the combined deterministic OCR and summary-keyword index. reference may be one citation or a boolean expression of at most four citations: && means that all operands are associated with the same physical page, || means either operand, and parentheses group them. In a boolean expression, include the book in every operand unless book supplies one shared fallback. For a normal question such as "which pages are associated with João 3:16?", use match_mode="exact", limit=1, location_offset=0, and locations_per_reference equal to the number of pages requested. To continue, copy item.next_location_offset exactly into location_offset. Never use reference_matches_total or next_reference_offset to count or paginate pages. Use match_mode="overlap" only when the user asks for related, containing, contained, or overlapping references. A returned location is an index association, not proof that wording appears on the page. Only say that a citation was detected in OCR when source="ocr"; use get_page_ocr before describing, quoting, or verifying page text. Cite returned source_id values as [sN]. Never write or construct a URL; the runtime renders source links.',
         parameters: {
           type: 'object',
           properties: {
-            reference: { type: 'string', description: 'One biblical reference, including the book when possible. Accepted examples: João 3:16, João 3,16, João 3,14-18.' },
-            book: { type: 'string', description: 'Optional manifest book key or label when it cannot be inferred from reference, for example joao, salmos, or 1-samuel.' },
+            reference: { type: 'string', maxLength: 400, description: 'One biblical reference or up to four references combined with &&, ||, and parentheses. Examples: João 3:16; João 3:16 && Romanos 5:8; (João 3:16 || João 3:18) && Romanos 5:8.' },
+            book: { type: 'string', description: 'Optional shared manifest book key or label when it cannot be inferred from reference, for example joao, salmos, or 1-samuel. Boolean operands may name their own books.' },
             match_mode: { type: 'string', enum: ['exact', 'overlap'], description: 'Defaults to exact. Use exact for requests asking where a citation occurs. Use overlap only when the user explicitly asks for similar or overlapping references.' },
             source: { type: 'string', enum: ['all', 'direct', 'associated', 'ocr'], description: 'Evidence filter: direct = standalone summary keyword; associated = reference embedded in a broader summary keyword; ocr = deterministic citation detection in page OCR; all = any source.' },
             offset: { type: 'integer', minimum: 0, description: 'Offset of canonical reference matches, not pages. Leave at 0 for exact citation lookup. Continue only from data.next_reference_offset.' },
