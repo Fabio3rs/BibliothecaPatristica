@@ -589,6 +589,21 @@ def write_json(path: Path, obj: dict) -> None:
     path.write_bytes(payload)
 
 
+def remove_stale_page_blocks(
+    meta_dir: Path, volume_id: str, expected_blocks: List[dict]
+) -> List[Path]:
+    """Remove blocos de uma geração anterior que excedem o manifesto atual."""
+    expected_names = {Path(item["file"]).name for item in expected_blocks}
+    stale = sorted(
+        path
+        for path in meta_dir.glob(f"{volume_id}-pages-*.json.gz")
+        if path.is_file() and path.name not in expected_names
+    )
+    for path in stale:
+        path.unlink()
+    return stale
+
+
 def dump_authors_lookup(path: Path) -> None:
     authors = sorted(authors_global_lookup)
     write_json(path, authors)
@@ -796,6 +811,7 @@ def main():
         for b in blocks:
             out_path = args.out / "meta" / f"{vid}-pages-{b['block_index']:03d}.json.gz"
             write_json(out_path, b)
+        stale_blocks = remove_stale_page_blocks(args.out / "meta", vid, page_files)
 
         # manifesto do volume
         meta_obj = {
@@ -830,7 +846,8 @@ def main():
                 "viewer_url_template": f"/pdfocr/viewer/?doc={vid}&page={{page}}",
             }
         )
-        log(f"Volume {vid}: snapshots/meta/page-blocks escritos.")
+        cleanup = f"; obsoletos removidos={len(stale_blocks)}" if stale_blocks else ""
+        log(f"Volume {vid}: snapshots/meta/page-blocks escritos{cleanup}.")
 
     volumes_json = {
         "schema_version": 1,

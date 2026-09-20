@@ -20,6 +20,7 @@ page_blocks = render_publication.page_blocks
 build_keyword_lookup = render_publication.build_keyword_lookup
 load_keyword_occurrences = render_publication.load_keyword_occurrences
 write_json = render_publication.write_json
+remove_stale_page_blocks = render_publication.remove_stale_page_blocks
 
 
 def make_page(page: int, file: str = "page.txt") -> PageRecord:
@@ -191,3 +192,24 @@ def test_write_json_gzip_is_deterministic(tmp_path) -> None:
 
     assert first.read_bytes() == second.read_bytes()
     assert first.read_bytes()[4:8] == b"\0\0\0\0"
+
+
+def test_remove_stale_page_blocks_keeps_current_manifest_only(tmp_path) -> None:
+    meta_dir = tmp_path / "meta"
+    meta_dir.mkdir()
+    current = meta_dir / "PL020-pages-001.json.gz"
+    stale = meta_dir / "PL020-pages-002.json.gz"
+    other_volume = meta_dir / "PL021-pages-002.json.gz"
+    for path in (current, stale, other_volume):
+        path.write_bytes(b"data")
+
+    removed = remove_stale_page_blocks(
+        meta_dir,
+        "PL020",
+        [{"file": "meta/PL020-pages-001.json.gz"}],
+    )
+
+    assert removed == [stale]
+    assert current.is_file()
+    assert not stale.exists()
+    assert other_volume.is_file()
