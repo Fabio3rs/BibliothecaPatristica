@@ -1,11 +1,9 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="misto" bbox="130,70,960,95">
-    311                                                             S. BASILII MAGNI
-  </bloco>
-  <bloco tipo="cabecalho" script="misto" bbox="915,70,960,95">
-    312
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="132,96,530,794">
+  <bloco tipo="cabecalho" script="latino" bbox="130,76,185,102">311</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="470,74,660,106">S. BASILII MAGNI</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="942,76,972,102">312</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="130,100,503,799">
     tico statui convenit. Clamavi ad te, et sanasti me.
     Nihil intercessit medii inter vocem meam et tuam
     gratiam, sed simul atque clamavi, medela acces-
@@ -50,8 +48,12 @@
     que arborem bonam, et fructus ejus bonos ²⁹. Pur-
     gate corda ut in spiritu fructum feratis, et possitis
     sancti effecti, prudenter Domino psallere.
+    4. Et confitemini memoriæ sanctitatis ejus. Non
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="550,96,956,794">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="544,107,559,129">A</bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="548,100,956,799">
     καὶ πρέπουσα τῇ προφητικῇ καταστάσει. Ἐκέκραξα
     πρὸς σὲ, καὶ ἰάσω με. Οὐδὲν ἐγένετο μέσον τῆς
     ἐμῆς φωνῆς καὶ τῆς σῆς χάριτος, ἀλλ᾿ ὁμοῦ τε ἐκέ-
@@ -76,7 +78,7 @@
     πτεροῦσα ἡμᾶς πρὸς τὸν Θεόν. Ἔσωσας οὖν ἐμὲ πρό-
     τερον ὄντα ἐν βίῳ πονηρῷ, χωρίσας ἀπὸ τῶν κατα-
     βαινόντων εἰς τὸν ἐσκοτισμένον καὶ κατεψυγμένον
-    τόπον. Τοῦτο οὖν ἐστι τὸ, Ὑπέλαθές με· τουτέστιν,
+    τόπον. Τοῦτο οὖν ἐστι τὸ, Ὑπέλαβές με· τουτέστιν,
     Ἐπανήγαγές με ἀπὸ τῆς εἰς τὸ κάτω φορᾶς, ὡς μὴ
     δοῦναι καιρὸν ἐπευφρανθῆναί μοι τοὺς ἐχθρούς. Ὃ
     οὖν ἀλλαχοῦ εἴρηκεν, ὅτι Καταρτιζόμενος τοὺς πέ-
@@ -98,26 +100,32 @@
     ἐκβάλλειν. Ποιήσατε οὖν τὸ δένδρον καλόν, καὶ
     τοὺς καρποὺς αὐτοῦ καλούς. Καθάρατε τὰς καρδίας, ἵνα
     καρποφορῆτε τῷ πνεύματι, καὶ δυνηθῆτε,
+    4. Καὶ ἐξομολογεῖσθε τῇ μνήμῃ τῆς ἁγιωσύ-
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="548,322,560,344">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="548,537,560,559">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="548,735,560,757">D</bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="145,811,954,857">
-    ²² Isa. LVIII, 9.     ²³ Exod. XII, 29.     ²⁴ Jerem. XXXVIII, 6.     ²⁵ Gen. XXXVII, 24.     ²⁷ Psal. XVII, 34.     ²⁸ Matth. VII, 18.     ²⁹ Matth. XII, 33.
+
+  <bloco tipo="nota_marginal" script="latino" bbox="555,458,567,479">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="553,716,567,737">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="563,905,577,926">D</bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="140,806,957,845">
+    ²² Isa. LVIII, 9. ²³ Exod. XII, 29. ²⁴ Jerem. XXXVIII, 6. ²⁵ Gen. XXXVII, 24. ²⁷ Psal. XVII, 34. ²⁸ Matth. VII, 18. ²⁹ Matth. XII, 33.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="145,865,954,953">
+
+  <bloco tipo="aparato_critico" script="misto" bbox="140,850,957,969">
     (45) Legitur in duobus mss. ἐπανατέλλῃ.
 
-    (46) Editio et nonnulli mss. βαρύνουσα ἡμᾶς· sed deest ἡμᾶς in majori parte mss. Mox Reg. secundus Ἔσωσάς με οὖν πρότερον ὄντα ἐν τῷ βίῳ τῷ πονηρῷ.
+    (46) Editi et nonnulli mss. βαρύνουσα ἡμᾶς· sed deest ἡμᾶς in majori parte mss. Mox Reg. secundus Ἔσωσάς με οὖν πρότερον ὄντα ἐν τῷ βίῳ τῷ πονηρῷ.
 
     (47) Editio Paris. ἐπὶ τὰ ὕψη με ἰστῶν. At mss. septem ut in contextu. Nec ita multo post aliqui mss. προσφέρει τά.
 
-    (48) Colb. secundus ἀλλ᾿ οἱ ἀπὸ καρδίας καθαρᾶς ἀναπέμπουσι τὰς ψαλμῳδίας· καὶ ὅσοι εἰσὶ δίκαιοι ἐγγίζοντες τῇ πρὸς Θεὸν δικαιοσύνῃ, οὗτοι, etc. Sed qui ex corde puro depromunt psalmodiam, et quotquot sunt justi qui ad Dei justitiam appropinquant, ἵ etc. Aliquanto post Colb. secundus ῥυθμοῖς τοῦ πνεύματος.
+    (48) Colb. secundus ἀλλ᾿ οἱ ἀπὸ καρδίας καθαρᾶς ἀναπέμπουσι τὰς ψαλμῳδίας· καὶ ὅσοι εἰσὶ δίκαιοι ἐγγίζοντες τῇ πρὸς Θεὸν δικαιοσύνῃ, οὗτοι, etc. Sed qui ex corde puro depromunt psalmodiam, et quotquot sunt justi qui ad Dei justitiam appropinquant, hi, etc. Aliquanto post Colb. secundus ῥυθμοῖς τοῦ πνεύματος.
 
     (49) Editio Paris. πέσοι δὲ ἀπό. Sed vocula δὲ non legitur in sex mss., neque in editione Basil.
 
     (50) Reg. tertius πρὸς ψαλμῳδίαν. Nec procul Reg. secundus καθαρίσατε, sed ita, ut lectio alia, καθάρατε, in margine ascripta sit.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="590,976,805,995">Digitized by Google</bloco>
-  <notas>Coluna esquerda em latim e coluna direita em grego; identificadores marginais B, C e D separados do texto principal. O identificador A integra a linha inicial do bloco grego e não se distingue com segurança como marca marginal independente.</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="600,947,861,986">Digitized by Google</bloco>
+
+  <notas>Coluna esquerda em latim e coluna direita em grego; blocos A, B, C, D separados como nota_marginal. O texto visível termina com a continuação do próximo item parcialmente cortada na parte inferior.</notas>
 </pagina>

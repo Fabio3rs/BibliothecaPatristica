@@ -1,8 +1,8 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="120,48,940,78">
-15                                SS. MACARIORUM AEGYPTII ET ALEXANDRINI.                                16
+  <bloco tipo="cabecalho" script="latino" bbox="120,30,950,68">
+15 SS. MACARIORUM AEGYPTII ET ALEXANDRINI. 16
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="120,77,520,758">
+  <bloco tipo="texto_principal" script="misto" bbox="120,70,500,380">
 Operum Meursii ex recensione Joannis La-
 mi (1). Caveo teste in Isaaci Vossii bibliotheca
 codex Lausiacae inveniebatur, qui editis duplo
@@ -13,7 +13,7 @@ igitur, difficultatem maximam hic nobis ob-
 oriri. Sed commode evenit, ut in bibliotheca
 Caesarea Vindobonensi genuinam, quod mihi
 quidem videtur, Historiam Lausiacam adhuc in-
-cognitam repererim in duobus Codd. Mss., quo-
+cognitam repererim in duobus Codd.Mss., quo-
 rum utroque integra continetur, membranaceo
 et pervetusto uno, chartaceo altero (3). Ac ge-
 nuitatis 15 notam huic inedito textui vindico
@@ -43,7 +43,7 @@ Meursiana editio affert, prius, quod a verbis :
 ᾿Εν ταύτῃ τῇ βίβλῳ κ. τ. λ. incipit (6), equidem
 Heraclidi tribuerim. Nam Palladium ambas
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="535,77,945,758">
+  <bloco tipo="texto_principal" script="misto" bbox="505,70,945,380">
 dedicatorias epistolas, quae ibi leguntur,
 operi suo praefixisse vix credideris : Vindo-
 bonenses vero codices, priore omissa, statim
@@ -82,19 +82,25 @@ et Pambus, Antonii discipuli, per Aegyptum
 et maxime in Nitriae deserti partibus habe-
 bantur viri, qui consortium vitae et actuum
 non cum ceteris mortalibus, sed cum supernis
-angelis habere credebantur ; quae praesens
+angelis habere credebantur; quae praesens
 vidi loquor, et eorum gesta refero, quorum
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="523,77,542,100">A</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="523,358,542,380">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="523,646,542,668">C</bloco>
-  <bloco tipo="rodape" script="latino" bbox="120,775,520,950">
+  <bloco tipo="nota_marginal" script="latino" bbox="498,18,510,29">
+A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="498,88,510,99">
+B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="498,158,510,169">
+C
+  </bloco>
+  <bloco tipo="rodape" script="misto" bbox="120,380,500,980">
 (1) Jo. Meursii Opp. ex rec. Jo. Lami T. VIII
 Florentiae 1746, fol., p. 534 — 670.
 
-(2) Guill. Cave, Script. eccles. Hist. litt. de Pal-
+(2) Guill. Cave, Scriptt. eccles. Hist. litt. de Pal-
 ladio ed. Bas. 1741 T. I p. 376. Meursius quoque
-Palladii quandam διήγησιν περὶ τῶν κατ’ Αἴγυπτον
+Palladii quandam διήγησιν περὶ τῶν κατ' Αἴγυπτον
 διαλαμψάντων πατέρων invenit. Atque Meursius :
 « id quoque opus », inquit, « si placere hanc Hi-
 storiae Lausiacae editionem intellexero, communi-
@@ -107,12 +113,12 @@ nostrae editionis Historiae Lausiacae].
 Vindob. Nr. 84, olim 29, membran., pervetustus,
 optimae notae, 4°, et constat foliis 123. Alter char-
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="535,775,945,950">
+  <bloco tipo="rodape" script="latino" bbox="505,380,945,980">
 taceus est Cod. ms. hist. graec. N. 9, olim 42, an-
 tiquus, fol. maiore, quo Lausiaca continetur fol.
 163 — 230. Cf. Commentt. Lambeckii Vindob. 1782
 T. VIII p. 663. 840; de Nessel Catal. P. V. p.
-145. 34.
+143. 31.
 
 (4) Ordinem, quo res in textu codicum Vindo-
 bonensium narrantur, legis in Palladii Helenopoli-
@@ -128,5 +134,5 @@ editioni Historiae Lausiacae praeposita.
 
 (8) VV. PP. Rosw. p. 448-485.
   </bloco>
-  <notas>Texto transcrito mantendo a ordem das colunas, a hifenização e as quebras de linha visíveis. As letras A, B e C foram separadas como notas marginais.</notas>
+  <notas>Transcrição em ordem visual das colunas, preservando quebras de linha e hifenização. As letras marginais A, B e C foram separadas em blocos próprios.</notas>
 </pagina>

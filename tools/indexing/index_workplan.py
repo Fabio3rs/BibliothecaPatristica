@@ -14,7 +14,7 @@ import unicodedata
 from pathlib import Path
 from typing import Any
 
-from tools.corpus_utils import page_number, page_sort_key
+from tools.corpus_utils import discover_preferred_pages, page_number, page_sort_key
 from .index_entry_estimator import (
     analyze_page_boundary,
     combine_entry_estimates,
@@ -257,7 +257,10 @@ def build_index_workplan(
         "structured_evidence_required_for_resolved_targets": pipeline_kind == "general",
     }
     source_root = source_root.resolve()
-    source_files = sorted(source_root.glob("*.txt"), key=page_sort_key)
+    source_files = discover_preferred_pages(
+        source_root,
+        volume_id=volume_id,
+    )
     position_by_path = {str(path): index for index, path in enumerate(source_files)}
     candidate_sections = filtered_pages.get("candidate_sections") or []
     if not isinstance(candidate_sections, list):

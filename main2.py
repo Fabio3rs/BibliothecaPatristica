@@ -22,6 +22,7 @@ from PIL import Image
 import pytesseract
 from pdf2image import convert_from_path
 from tools.classify_scan_kind import process as classify_scan_page
+from tools.corpus_utils import resolve_page_file
 import difflib
 import sqlite3
 import multiprocessing as mp
@@ -648,12 +649,23 @@ def find_image_by_page(images_dir: Path, page_num: int) -> Optional[Path]:
     Retorna uma imagem já existente para a página, seja com UUID ou já normalizada.
     Ex.: *-170.png corresponde à página 170.
     """
-    stable_name = f"*{page_num:03d}.{IMAGE_FMT}"
-    matches = sorted(images_dir.glob(stable_name))
-    if matches:
-        return matches[0]
-    matches = sorted(images_dir.glob(f"*-{page_num}.{IMAGE_FMT}"))
-    return matches[0] if matches else None
+    volume_id = images_dir.parent.name
+    match, ambiguous = resolve_page_file(
+        images_dir,
+        volume_id=volume_id,
+        page_num=page_num,
+        suffixes=(f".{IMAGE_FMT}",),
+    )
+    if ambiguous:
+        names = sorted(
+            path.name
+            for path in images_dir.iterdir()
+            if parse_page_num_from_filename(path) == page_num
+        )
+        raise RuntimeError(
+            f"{volume_id}:{page_num} tem imagens ambíguas: {', '.join(names)}"
+        )
+    return match
 
 
 def purge_tesseract_cache(
@@ -693,21 +705,23 @@ def txt_path_for_image(img_path: Path, txt_dir: Path) -> Path:
     - Caso contrário, procura qualquer txt que termine com o número da página.
     - Fallback: path estável mesmo que ainda não exista (para escrita).
     """
-    stable = txt_dir / (img_path.stem + ".txt")
-    if stable.exists():
-        return stable
-
     page_num = parse_page_num_from_filename(img_path)
     if page_num is not None:
-        # prioriza zero-padding, depois sem padding
-        candidates = sorted(txt_dir.glob(f"*-{page_num:03d}.txt"))
-        if candidates:
-            return candidates[0]
-        candidates = sorted(txt_dir.glob(f"*-{page_num}.txt"))
-        if candidates:
-            return candidates[0]
+        volume_id = txt_dir.parent.name
+        match, ambiguous = resolve_page_file(
+            txt_dir,
+            volume_id=volume_id,
+            page_num=page_num,
+            suffixes=(".txt",),
+        )
+        if match is not None:
+            return match
+        if ambiguous:
+            raise RuntimeError(
+                f"{volume_id}:{page_num} tem textos OCR ambíguos e nenhum canônico"
+            )
 
-    return stable
+    return txt_dir / (img_path.stem + ".txt")
 
 
 NUM_RE = re.compile(r"-(\d+)\.txt$", re.IGNORECASE)
@@ -1588,7 +1602,7 @@ def parse_page_num_from_filename(image_path: Path) -> Optional[int]:
     """
     Extrai o sufixo numérico final da imagem, ex.: foo-076.png -> 76.
     """
-    m = re.search(r"-([0-9]{1,4})$", image_path.stem)
+    m = re.search(r"-(\d+)$", image_path.stem)
     return int(m.group(1)) if m else None
 
 

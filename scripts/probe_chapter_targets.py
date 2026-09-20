@@ -14,7 +14,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from tools.corpus_utils import page_number, page_sort_key
+from tools.corpus_utils import discover_preferred_pages, page_number, page_sort_key
 from tools.indexing.index_target_locator import normalize_for_search
 from tools.ocr_xml_utils import clean_visible_text, read_ocr_page
 
@@ -1234,7 +1234,10 @@ def run_probe(payload_path: Path) -> dict[str, Any]:
     if not source_root.is_absolute():
         source_root = project_root / source_root
     source_root = source_root.resolve()
-    files = sorted(source_root.glob("*.txt"), key=page_sort_key)
+    files = discover_preferred_pages(
+        source_root,
+        volume_id=str(volume.get("volume_id") or source_root.parent.name),
+    )
     if not files:
         raise FileNotFoundError(f"No OCR text files found in {source_root}")
     positions = {path.resolve(): index for index, path in enumerate(files)}

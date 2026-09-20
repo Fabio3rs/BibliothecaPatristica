@@ -1,10 +1,22 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="90,45,910,125">
-    359 HEXAPLORUM QUÆ SUPERSUNT. 360
+  <bloco tipo="cabecalho" script="latino" bbox="70,40,930,95">
+    359      HEXAPLORUM QUÆ SUPERSUNT.      360
   </bloco>
 
-  <bloco tipo="texto_principal" script="hebraico" bbox="105,125,365,295">
+  <bloco tipo="cabecalho" script="misto" bbox="95,110,360,165">
     TO ΕΒΡΑΙΚΩΝ.
+  </bloco>
+
+  <bloco tipo="cabecalho" script="misto" bbox="380,105,655,175">
+    TO ΕΒΡΑΙΚΟΝ
+    Ἑλληνικοῖς γράμμασι.
+  </bloco>
+
+  <bloco tipo="cabecalho" script="grego" bbox="700,110,930,165">
+    ΑΚΥΛΑΣ.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="80,150,360,360">
     וְהַנֹּגְשִׂים 13
     אֹמְרִים
     וְגַם עַבְדֶיךָ 16
@@ -14,26 +26,24 @@
     הִבְאַשְׁתֶּם 21
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="385,125,635,300">
-    ΤΟ ΕΒΡΑΙΚΟΝ
-    Ἑλληνικοῖς γράμμασι.
-    13. [ilegivel]
-    16. [ilegivel]
-    18. [ilegivel]
-    19. [ilegivel]
-    21. [ilegivel]
+  <bloco tipo="texto_principal" script="grego" bbox="390,150,620,360">
+    13.
+    16.
+    18.
+    19.
+    21.
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="655,125,915,300">
-    ΑΚΥΛΑΣ.
+  <bloco tipo="texto_principal" script="grego" bbox="680,150,940,360">
     13. Καὶ οἱ εἰσπράκται.
-    16. Καὶ ἰδοὺ οἱ δοῦλοί σου πεπληγμένοι, καὶ ἁμαρτία λαῷ σου.
+    16. Καὶ ἰδοὺ οἱ δοῦλοί σου πε-
+    πληγμένοι, καὶ ἁμαρτία λαῷ σου.
     18.
     19. Λέγοντες, Οὐχ ὑφελεῖτε.
     21. Ἐσαπρίσατε.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="105,300,365,470">
+  <bloco tipo="texto_principal" script="latino" bbox="80,360,360,540">
     VERSIO HEBRAICI TEXT.
     13. Et exactores.
     Urgebant.
@@ -44,7 +54,7 @@
     21. Fetere fecistis.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="385,300,640,470">
+  <bloco tipo="texto_principal" script="latino" bbox="390,360,660,540">
     VULGATA LATINA.
     13. Præfecti quoque operum.
     Instabant.
@@ -57,7 +67,7 @@
     21. Fetere fecistis.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="655,300,915,470">
+  <bloco tipo="texto_principal" script="latino" bbox="680,360,940,540">
     AQUILA.
     13. Et exactores.
     16. Et ecce servi tui percussi,
@@ -67,11 +77,11 @@
     21. Putere fecistis.
   </bloco>
 
-  <bloco tipo="nota" script="misto" bbox="295,455,705,490">
+  <bloco tipo="cabecalho" script="latino" bbox="250,540,760,585">
     Notæ et variæ lectiones ad cap. V Exodi
   </bloco>
 
-  <bloco tipo="nota" script="misto" bbox="105,490,355,675">
+  <bloco tipo="nota" script="misto" bbox="80,585,340,810">
     V. 3. Ἐπικέκληκας ἡμῖν. Ita Basiliensis codex,
     non allato interpretis nomine.
 
@@ -80,37 +90,36 @@
     nomine. Iidem interpretes etiam alibi ἱ solent
     vertere λοιμόν, sic infra cap. ix, 3 et 15. Hanc
     lectionem secutus est Vulgatus interpres, pestis aut
-    gladius.
+    gladius. . .
 
     V. 4. ᾿Α., ἀποπετάζετε, etc., ita Basiliensis codex,
     in quo lectio Symmachi sic habetur, ἀποτρέπετε.
-    Sed in Chronico Alexandrino melius, ni fallor, legitur,
-    ἀποστρέφετε.
+    in Chronico Alexandrino melius, ni fallor, le
   </bloco>
 
-  <bloco tipo="nota" script="misto" bbox="360,490,650,675">
-    Hic notes velim vocem [ilegivel] vertisse Aquilam,
-    ἀποσκεδνασθήσεται, dissipabitur. Sed nihilominus sincera
-    hujus versus lectio ejusdem, ἀποπετάζετε, quæ bis etiam
-    reperitur infra Exod. xxxii, 25, eodem Aquila interprete. —
+  <bloco tipo="nota" script="misto" bbox="350,585,660,810">
+    ιitur, ἀποστρέφετε. Hic notas velim vocem yplibi
+    vertisse Aquilam, ἀποσκεδνασθήσεται, dissipabitur.
+    Sed nihilominus sincera hujus versus lectio
+    ejusdem, ἀποπετάζετε, quæ bis etiam reperitur
+    infra Exod. xxxii, 25, eodem Aquila interprete. —
     Coislin. habet : Σ., ἀποτρέπετε , quemadmodum et
     Basiliensis. Chronicon Alex., ἀποστρέφετε · utram
     malis lectionem elige.
   </bloco>
 
-  <bloco tipo="nota" script="latino" bbox="655,490,915,675">
-    V. 7. Ita codex Basiliensis, melius ut videtur
+  <bloco tipo="nota" script="latino" bbox="680,585,940,810">
+    V. 7. Ita codex Basiliensis, melius ut videtuc
     quam editio Rom. et Drusius, qui ad Aquilam habent,
-    κατὰ ἔχθες καὶ τρίτης. Ad Symmachum,
+    κατὰ ἐχθὲς καὶ τρίτης. Ad Symmachum,
   </bloco>
 
-  <bloco tipo="cabecalho" script="latino" bbox="410,655,640,700">
+  <bloco tipo="cabecalho" script="latino" bbox="390,805,650,850">
     CAPUT VI EXODI.
   </bloco>
 
-  <bloco tipo="texto_principal" script="hebraico" bbox="105,700,365,1010">
-    TO ΕΒΡΑΙΚΟΝ.
-    Samar., יַהְוֶה. Hebr., אֲדָה. 2
+  <bloco tipo="texto_principal" script="misto" bbox="80,860,360,1180">
+    Σαμαρ., [ilegivel]. Hebr., [ilegivel]. 2
     וָאֵרָא אֶל־אַבְרָהָם 3
     וְגַם הֲקִמֹתִי 6
     מִתַּחַת סִבְלֹתֵיכֶם 8
@@ -120,11 +129,11 @@
     מֵאֶרֶץ מִצְרָיִם
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="385,700,635,1010">
-    ΤΟ ΕΒΡΑΙΚΟΝ
-    Ἑλληνικοῖς γράμμασι.
+  <bloco tipo="texto_principal" script="grego" bbox="390,860,650,1180">
     2.
-    3. Καὶ ὤφθην πρὸς Ἀβραάμ, πρὸς Ἰσαὰκ, πρὸς Ἰακὼβ ἐν τῷ Θεῷ ἱκανῷ.
+    3. Καὶ ὤφθην πρὸς Ἀβραάμ,
+    πρὸς Ἰσαὰκ, πρὸς Ἰακὼβ ἐν τῷ
+    Θεῷ ἱκανῷ.
     6.
     8.
     9. Ἀπὸ κολοβότητος πνεύματος.
@@ -132,8 +141,7 @@
     13.
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="655,700,915,1010">
-    ΑΚΥΛΑΣ.
+  <bloco tipo="texto_principal" script="grego" bbox="680,860,940,1180">
     2.
     3. Καὶ ὤφθην πρὸς Ἀβραάμ,
     πρὸς Ἰσαὰκ, πρὸς Ἰακὼβ ἐν τῷ
@@ -145,11 +153,13 @@
     13.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="105,1010,365,1370">
+  <bloco tipo="texto_principal" script="latino" bbox="80,1180,360,1530">
     VERSIO HEBRAICI TEXT.
-    2. Dominus. Samar. Iabe. Hebr. Aia.
+    2. Dominus. Samar. Iabe. Hebr.
+    Aia.
     3. Et visus sum ad Abraham,
-    ad Isaac et ad Jacob in Deo potente.
+    ad Isaac et ad Jacob in Deo po-
+    tente.
     6. De sub oneribus.
     8. Quam.
     9. Propter angustiam spiritus.
@@ -158,7 +168,7 @@
     de terra Ægypti.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="385,1010,635,1370">
+  <bloco tipo="texto_principal" script="latino" bbox="390,1180,650,1530">
     VULGATA LATINA.
     2. Dominus.
     3. Qui apparui Abraham, Isaac
@@ -171,7 +181,7 @@
     de terra Ægypti.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="655,1010,915,1370">
+  <bloco tipo="texto_principal" script="latino" bbox="680,1180,940,1530">
     AQUILA.
     2.
     3. Et visus sum ad Abraham,
@@ -184,9 +194,9 @@
     13.
   </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="610,927,860,983">
+  <bloco tipo="rodape" script="latino" bbox="640,935,930,985">
     Digitized by Google
   </bloco>
 
-  <notas>Transcrição conservadora a partir da leitura direta da imagem; trechos centrais em grego/hebraico na parte superior apresentam baixa legibilidade e foram marcados com [ilegivel] quando necessário.</notas>
+  <notas>Transcrição diplomática baseada na imagem; as notas em corpo pequeno e alguns trechos hebraicos/centrais têm leitura parcialmente incerta.</notas>
 </pagina>

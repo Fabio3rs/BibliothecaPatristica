@@ -15,7 +15,7 @@ from .alphabetical_compact_pipeline import (
     locator_key,
     standardize_locator_item,
 )
-from tools.corpus_utils import page_number
+from tools.corpus_utils import discover_preferred_pages, page_number
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -631,13 +631,7 @@ def replace_discovery(
         collection=collection,
         source_root=source_root,
     )
-    files = sorted(
-        source_root.glob("*.txt"),
-        key=lambda path: (
-            page_number(path) if page_number(path) is not None else 2**31 - 1,
-            str(path),
-        ),
-    )
+    files = discover_preferred_pages(source_root, volume_id=volume_id)
     physical_index = {str(path.resolve()): index for index, path in enumerate(files)}
     evidence_by_file: dict[str, list[dict[str, Any]]] = {}
     roles: dict[str, str] = {}

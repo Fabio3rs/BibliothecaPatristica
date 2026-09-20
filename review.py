@@ -31,6 +31,7 @@ import cv2
 import numpy as np
 from flask import Flask, Response, jsonify, redirect, render_template_string, request, url_for
 from PIL import Image
+from tools.corpus_utils import resolve_page_file
 
 try:
     # prefer local import when running script directly
@@ -1038,24 +1039,25 @@ def build_version_choices(line: sqlite3.Row, versions: list[sqlite3.Row], consen
 
 
 def parse_page_num_from_filename(image_path: Path) -> Optional[int]:
-    match = re.search(r"-([0-9]{1,4})$", image_path.stem)
+    match = re.search(r"-(\d+)$", image_path.stem)
     return int(match.group(1)) if match else None
 
 
 def txt_path_for_image(img_path: Path, txt_dir: Path) -> Path:
-    stable = txt_dir / (img_path.stem + ".txt")
-    if stable.exists():
-        return stable
-
     page_num = parse_page_num_from_filename(img_path)
     if page_num is not None:
-        padded = sorted(txt_dir.glob(f"*-{page_num:03d}.txt"))
-        if padded:
-            return padded[0]
-        plain = sorted(txt_dir.glob(f"*-{page_num}.txt"))
-        if plain:
-            return plain[0]
-    return stable
+        volume_id = txt_dir.parent.name
+        match, ambiguous = resolve_page_file(
+            txt_dir,
+            volume_id=volume_id,
+            page_num=page_num,
+            suffixes=(".txt",),
+        )
+        if match is not None:
+            return match
+        if ambiguous:
+            raise RuntimeError(f"{volume_id}:{page_num} tem textos OCR ambíguos")
+    return txt_dir / (img_path.stem + ".txt")
 
 
 def normalize_text(text: str) -> tuple[str, list[int]]:

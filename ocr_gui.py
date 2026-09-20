@@ -20,6 +20,7 @@ from PIL import Image, ImageTk
 import difflib
 from pathlib import Path
 import xml.etree.ElementTree as ET
+from tools.corpus_utils import discover_unique_pages, page_number, resolve_page_file
 
 # Caminho base dos volumes
 BASE_DIR = Path("teste")
@@ -35,18 +36,24 @@ def get_pages(volume):
     text_dir = volume / "text"
     if not text_dir.exists():
         return []
-    return sorted(text_dir.glob("*.txt"))
+    return discover_unique_pages(text_dir, volume_id=volume.name)
 
 
 def get_image_for_page(volume, txt_path):
     # Tenta encontrar a imagem correspondente pelo sufixo
-    page_num = txt_path.stem.split("-")[-1]
+    page_num = page_number(txt_path)
     img_dir = volume / "images"
     if not img_dir.exists():
         return None
-    for img in img_dir.glob(f"*-{page_num}.png"):
-        return img
-    return None
+    if page_num is None:
+        return None
+    match, ambiguous = resolve_page_file(
+        img_dir,
+        volume_id=volume.name,
+        page_num=page_num,
+        suffixes=(".png",),
+    )
+    return None if ambiguous else match
 
 
 def read_file(path):
@@ -223,7 +230,7 @@ def scan_pages(base_dir: Path):
         text_dir = vol / "text"
         if not text_dir.exists():
             continue
-        for txt in sorted(text_dir.glob("*.txt")):
+        for txt in discover_unique_pages(text_dir, volume_id=vol.name):
             old = read_file(txt)
             new, fixes = auto_fix_text(old, txt)
 

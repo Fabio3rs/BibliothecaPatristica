@@ -18,12 +18,19 @@ import argparse
 import os
 import sqlite3
 import stat
+import sys
 import tempfile
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterator, Sequence
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from tools.corpus_utils import resolve_page_file
 
 
 DEFAULT_DB = Path("data/ocr_versions.db")
@@ -137,14 +144,12 @@ def find_target(base_dir: Path, volume_id: str, page_num: int) -> tuple[Path | N
     if not text_dir.is_dir():
         return None, False
 
-    matches = list(text_dir.glob(f"*-{page_num:03d}.txt"))
-    unpadded = list(text_dir.glob(f"*-{page_num}.txt"))
-    unique_matches = sorted(set(matches + unpadded))
-    if len(unique_matches) > 1:
-        return None, True
-    if not unique_matches:
-        return None, False
-    return unique_matches[0], False
+    return resolve_page_file(
+        text_dir,
+        volume_id=volume_id,
+        page_num=page_num,
+        suffixes=(".txt",),
+    )
 
 
 def find_latest_valid_fallback(

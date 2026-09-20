@@ -12,7 +12,12 @@ from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from tools.corpus_utils import page_number, page_sort_key, parse_volume_info
+from tools.corpus_utils import (
+    discover_preferred_pages,
+    page_number,
+    page_sort_key,
+    parse_volume_info,
+)
 from tools.indexing.structural_target_repair import scan_dense_structural_headings
 
 
@@ -363,7 +368,7 @@ def build_fallback_filtered_pages(
 ) -> dict[str, Any]:
     if profile not in {"alphabetical", "general"}:
         raise ValueError(f"Unsupported filtered-pages profile: {profile}")
-    files = sorted(text_root.glob("*.txt"), key=page_sort_key)
+    files = discover_preferred_pages(text_root, volume_id=volume_id)
     if profile == "general":
         markers = GENERAL_PO_MARKERS if collection == "PO" else GENERAL_PG_PL_MARKERS
         boundary_markers: set[str] = set()

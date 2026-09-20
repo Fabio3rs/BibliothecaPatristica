@@ -25,12 +25,17 @@ from resumo_v2 import (  # noqa: E402
     build_embedding_text,
     build_summary_search_text,
     canonical_labels_from_hints,
+    extract_json_object_response,
+    generation_last_work_key,
+    initial_active_work_key,
     load_volume_index_hints,
+    normalize_whitespace,
     open_indices_readonly,
     page_number,
     reconcile_candidate_work_keys,
     sha256_text,
 )
+from tools.corpus_utils import discover_unique_pages  # noqa: E402
 
 DEFAULT_DB = PROJECT_ROOT / "data" / "patristica_resumos.db"
 DEFAULT_INDICES_DB = PROJECT_ROOT / "data" / "patristic_indices.db"
@@ -52,12 +57,27 @@ def _json_dict(value: Any) -> dict[str, Any]:
     return parsed if isinstance(parsed, dict) else {}
 
 
-def _candidate_from_row(row: sqlite3.Row) -> SummaryCandidate:
+def _candidate_from_row(
+    row: sqlite3.Row, rejected_work_keys: set[str]
+) -> SummaryCandidate:
+    stored_segments = [
+        dict(item) for item in _json_list(row["segments_json"]) if isinstance(item, dict)
+    ]
+    try:
+        raw_payload = extract_json_object_response(str(row["raw_response"] or ""))
+        raw_segments = raw_payload.get("segments") or []
+    except (TypeError, ValueError, json.JSONDecodeError):
+        raw_segments = []
+    if isinstance(raw_segments, list) and len(raw_segments) == len(stored_segments):
+        for stored, raw in zip(stored_segments, raw_segments):
+            if isinstance(raw, dict):
+                stored["work_key"] = normalize_whitespace(raw.get("work_key"))
+    for segment in stored_segments:
+        if normalize_whitespace(segment.get("work_key")) in rejected_work_keys:
+            segment["work_key"] = ""
     return SummaryCandidate(
         page_kinds=tuple(str(item) for item in _json_list(row["page_kinds_json"])),
-        segments=tuple(
-            dict(item) for item in _json_list(row["segments_json"]) if isinstance(item, dict)
-        ),
+        segments=tuple(stored_segments),
         contributors=tuple(
             dict(item)
             for item in _json_list(row["contributors_json"])
@@ -82,22 +102,41 @@ def _candidate_from_row(row: sqlite3.Row) -> SummaryCandidate:
 
 
 def _analysis_from_stored(
-    row: sqlite3.Row, hints: dict[str, Any]
-) -> tuple[SimpleNamespace, dict[str, Any]]:
+    row: sqlite3.Row,
+    hints: dict[str, Any],
+    rejected_work_keys: set[str],
+) -> tuple[SimpleNamespace, dict[str, Any], dict[str, Any]]:
+    filtered_hints = dict(hints)
+    for field in ("exact_start_candidates", "containing_work_candidates"):
+        filtered_hints[field] = [
+            item
+            for item in (hints.get(field) or [])
+            if normalize_whitespace(item.get("work_key")) not in rejected_work_keys
+        ]
+    filtered_hints["expired_work_keys"] = [
+        value
+        for value in (hints.get("expired_work_keys") or [])
+        if normalize_whitespace(value) not in rejected_work_keys
+    ]
     static = _json_dict(row["static_analysis_json"])
-    static["exact_start_candidates"] = list(hints.get("exact_start_candidates") or [])
-    static["containing_work_candidates"] = list(
-        hints.get("containing_work_candidates") or []
+    static["exact_start_candidates"] = list(
+        filtered_hints.get("exact_start_candidates") or []
     )
+    static["containing_work_candidates"] = list(
+        filtered_hints.get("containing_work_candidates") or []
+    )
+    static["expired_work_keys"] = list(filtered_hints.get("expired_work_keys") or [])
     static["index_ambiguous"] = bool(
-        hints.get("exact_start_ambiguous") or hints.get("range_ambiguous")
+        len(static["exact_start_candidates"]) > 1
+        or len(static["containing_work_candidates"]) > 1
     )
     analysis = SimpleNamespace(
         exact_start_candidates=tuple(static["exact_start_candidates"]),
         containing_work_candidates=tuple(static["containing_work_candidates"]),
+        expired_work_keys=tuple(static["expired_work_keys"]),
         scripture_candidates=tuple(static.get("scripture_candidates") or []),
     )
-    return analysis, static
+    return analysis, static, filtered_hints
 
 
 def plan_repair(
@@ -106,7 +145,14 @@ def plan_repair(
     run_id: int,
     volume_dir: Path,
     indices_db: Path,
+    from_page: int = 1,
+    rejected_work_keys: set[str] | None = None,
 ) -> tuple[sqlite3.Row, list[dict[str, Any]], dict[str, Any]]:
+    rejected = {
+        normalize_whitespace(value)
+        for value in (rejected_work_keys or set())
+        if normalize_whitespace(value)
+    }
     run = con.execute("SELECT * FROM resumo_runs WHERE id=?", (run_id,)).fetchone()
     if run is None:
         raise ValueError(f"Run inexistente: {run_id}")
@@ -123,7 +169,7 @@ def plan_repair(
     if any(int(row["is_current"] or 0) for row in rows):
         raise ValueError("O reparador recusa gerações já promovidas")
 
-    pages = sorted((volume_dir / "text").glob("*.txt"), key=page_number)
+    pages = discover_unique_pages(volume_dir / "text", volume_id=documento)
     page_names = {path.name for path in pages}
     missing = [str(row["pagina_file"]) for row in rows if row["pagina_file"] not in page_names]
     if missing:
@@ -136,24 +182,40 @@ def plan_repair(
         if indices is not None:
             indices.close()
 
-    active_work_key = ""
-    previous_chain = str(rows[0]["previous_chain_hash"] or "")
+    target_rows = [row for row in rows if int(row["pagina_num"]) >= from_page]
+    if not target_rows:
+        raise ValueError(f"Run {run_id} não possui gerações desde a página {from_page}")
+    prior_rows = [row for row in rows if int(row["pagina_num"]) < from_page]
+    prior = prior_rows[-1] if prior_rows else None
+    active_work_key = generation_last_work_key(prior)
+    previous_chain = (
+        str(prior["chain_hash"] or "")
+        if prior is not None
+        else str(target_rows[0]["previous_chain_hash"] or "")
+    )
     changes: list[dict[str, Any]] = []
     blank_before = 0
     blank_after = 0
     state_changes: list[dict[str, Any]] = []
     previous_state = ""
 
-    for row in rows:
+    for row_index, row in enumerate(target_rows):
         pagina_num = int(row["pagina_num"])
         hints = hints_by_page.get(pagina_num, {})
-        analysis, static = _analysis_from_stored(row, hints)
-        candidate = _candidate_from_row(row)
+        analysis, static, filtered_hints = _analysis_from_stored(
+            row, hints, rejected
+        )
+        candidate = _candidate_from_row(row, rejected)
+        initialize_from_index = prior is None and row_index == 0
+        if not active_work_key and initialize_from_index:
+            active_work_key = initial_active_work_key(None, analysis)
         blank_before += sum(not item.get("work_key") for item in candidate.segments)
         candidate, active_work_key, resolution = reconcile_candidate_work_keys(
             candidate,
             analysis,
             active_work_key,
+            allow_index_initialization=initialize_from_index,
+            rejected_work_keys=rejected,
         )
         blank_after += sum(not item.get("work_key") for item in candidate.segments)
         if active_work_key != previous_state:
@@ -167,7 +229,7 @@ def plan_repair(
             )
             previous_state = active_work_key
 
-        labels = canonical_labels_from_hints(hints)
+        labels = canonical_labels_from_hints(filtered_hints)
         search_text = build_summary_search_text(
             candidate.summary_display_pt,
             candidate.segments,
@@ -223,6 +285,7 @@ def plan_repair(
                 "static_analysis_json": static_json,
                 "resolution": resolution,
                 "anchor_source_hash": anchor_source_hash,
+                "source_hash": str(row["source_hash"] or ""),
             }
         )
         previous_chain = chain_hash
@@ -230,7 +293,9 @@ def plan_repair(
     report = {
         "run_id": run_id,
         "documento": documento,
-        "generations": len(rows),
+        "from_page": from_page,
+        "rejected_work_keys": sorted(rejected),
+        "generations": len(target_rows),
         "changed_generations": sum(bool(item["changed"]) for item in changes),
         "blank_work_keys_before": blank_before,
         "blank_work_keys_after": blank_after,
@@ -298,9 +363,22 @@ def apply_repair(
     run_id: int,
     documento: str,
     changes: list[dict[str, Any]],
+    rejected_work_keys: set[str] | None = None,
 ) -> None:
+    rejected = sorted(
+        normalize_whitespace(value)
+        for value in (rejected_work_keys or set())
+        if normalize_whitespace(value)
+    )
     con.execute("BEGIN IMMEDIATE")
     try:
+        if rejected and changes:
+            placeholders = ",".join("?" for _value in rejected)
+            con.execute(
+                f"DELETE FROM resumo_context_anchors "
+                f"WHERE documento=? AND pagina_num>=? AND work_key IN ({placeholders})",
+                [documento, min(item["pagina_num"] for item in changes), *rejected],
+            )
         for item in changes:
             if item["changed"]:
                 con.execute(
@@ -336,6 +414,27 @@ def apply_repair(
                     "WHERE generation_id=? AND status!='stale'",
                     (item["id"],),
                 )
+                for issue in json.loads(item["validation_issues_json"]):
+                    con.execute(
+                        """
+                        INSERT INTO resumo_review_queue
+                            (generation_id,documento,pagina_num,issue_kind,severity,evidence_json)
+                        VALUES (?, ?, ?, ?, 'metadata', ?)
+                        ON CONFLICT(generation_id,issue_kind) DO UPDATE SET
+                            severity='metadata', evidence_json=excluded.evidence_json,
+                            status='pending', updated_at=CURRENT_TIMESTAMP
+                        """,
+                        (
+                            item["id"],
+                            documento,
+                            item["pagina_num"],
+                            issue,
+                            json.dumps(
+                                {"repair": "deterministic_work_key"},
+                                ensure_ascii=False,
+                            ),
+                        ),
+                    )
             resolution = item["resolution"]
             if resolution.get("work_key"):
                 con.execute(
@@ -380,6 +479,13 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--volume-dir", type=Path, required=True)
     parser.add_argument("--db", type=Path, default=DEFAULT_DB)
     parser.add_argument("--indices-db", type=Path, default=DEFAULT_INDICES_DB)
+    parser.add_argument("--from-page", type=int, default=1)
+    parser.add_argument(
+        "--reject-work-key",
+        action="append",
+        default=[],
+        help="work_key comprovadamente inválida desde --from-page; pode repetir",
+    )
     parser.add_argument("--apply", action="store_true")
     parser.add_argument("--backup", type=Path)
     return parser
@@ -387,6 +493,8 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main() -> None:
     args = build_parser().parse_args()
+    if args.from_page < 1:
+        raise SystemExit("--from-page deve ser um inteiro positivo")
     uri = f"file:{args.db.resolve()}?mode={'rw' if args.apply else 'ro'}"
     con = sqlite3.connect(uri, uri=True)
     con.row_factory = sqlite3.Row
@@ -399,6 +507,8 @@ def main() -> None:
             run_id=args.run_id,
             volume_dir=args.volume_dir.resolve(),
             indices_db=args.indices_db.resolve(),
+            from_page=args.from_page,
+            rejected_work_keys=set(args.reject_work_key),
         )
         if args.apply:
             stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -419,6 +529,7 @@ def main() -> None:
                 run_id=args.run_id,
                 documento=str(run["documento"]),
                 changes=changes,
+                rejected_work_keys=set(args.reject_work_key),
             )
             report["applied"] = True
             report["backup"] = str(backup_path)

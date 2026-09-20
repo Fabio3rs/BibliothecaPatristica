@@ -40,7 +40,12 @@ try:
 except ImportError:  # pragma: no cover - exercised only in minimal fallback environments
     _RapidLevenshtein = None
 
-from tools.corpus_utils import page_number, page_sort_key
+from tools.corpus_utils import (
+    discover_preferred_pages,
+    page_number,
+    page_sort_key,
+    resolve_page_file,
+)
 from tools.ocr_xml_utils import parse_ocr_page_xml_dict
 
 _NUMBER_RE = re.compile(r"\b\d{1,4}\b")
@@ -232,23 +237,13 @@ def resolve_paired_page_image(ocr_file: str) -> str | None:
     if not images_dir.is_dir():
         return None
 
-    exact_candidates = [
-        images_dir / f"{volume_dir.name}-{sequence:03d}.png",
-        images_dir / f"{volume_dir.name}-{sequence}.png",
-    ]
-    exact = list(dict.fromkeys(path.resolve() for path in exact_candidates if path.is_file()))
-    if len(exact) == 1:
-        return str(exact[0])
-    if len(exact) > 1:
-        return None
-
-    matches = sorted(
-        {
-            *(path.resolve() for path in images_dir.glob(f"*-{sequence:03d}.png")),
-            *(path.resolve() for path in images_dir.glob(f"*-{sequence}.png")),
-        }
+    match, ambiguous = resolve_page_file(
+        images_dir,
+        volume_id=volume_dir.name,
+        page_num=sequence,
+        suffixes=(".png",),
     )
-    return str(matches[0]) if len(matches) == 1 else None
+    return str(match.resolve()) if match is not None and not ambiguous else None
 
 
 def _contains_normalized_phrase(zone_norm: str, query_norm: str) -> bool:
@@ -1432,7 +1427,11 @@ def _softmax_probabilities(scores: list[float]) -> list[float]:
 
 def _load_volume_pages(source_root: Path, adjacency_window: int) -> list[PageCandidate]:
     pages: list[PageCandidate] = []
-    for physical_index, path in enumerate(sorted(source_root.glob("*.txt"), key=page_sort_key)):
+    source_files = discover_preferred_pages(
+        source_root,
+        volume_id=source_root.parent.name,
+    )
+    for physical_index, path in enumerate(source_files):
         parsed = parse_ocr_page_path(path)
         header_text = parsed["header_text"]
         body_text = parsed["body_text"]

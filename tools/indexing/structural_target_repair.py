@@ -12,7 +12,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any, Iterable
 
-from tools.corpus_utils import PROJECT_ROOT, page_sort_key
+from tools.corpus_utils import PROJECT_ROOT, discover_preferred_pages, page_sort_key
 from .index_pipeline_ownership import general_section_ownership
 from .index_target_locator import normalize_for_search
 from tools.ocr_xml_utils import read_ocr_page
@@ -2302,7 +2302,10 @@ def build_repair_manifest(
         source_root = (payload_path.parents[2] / source_root).resolve()
     if not source_root.is_dir():
         raise FileNotFoundError(f"source_root not found: {source_root}")
-    files = sorted(source_root.glob("*.txt"), key=page_sort_key)
+    files = discover_preferred_pages(
+        source_root,
+        volume_id=str(volume.get("volume_id") or source_root.parent.name),
+    )
     if not files:
         raise FileNotFoundError(f"No OCR text files found in {source_root}")
     segments, dispositions = classify_segments(payload)

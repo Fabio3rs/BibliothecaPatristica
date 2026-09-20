@@ -25,7 +25,12 @@ try:
 except ImportError:  # pragma: no cover - dependency is installed in production
     ahocorasick = None
 
-from tools.corpus_utils import PROJECT_ROOT, page_number, page_sort_key
+from tools.corpus_utils import (
+    PROJECT_ROOT,
+    discover_preferred_pages,
+    page_number,
+    page_sort_key,
+)
 from tools.indexing.editorial_page_estimator import best_guess_pages, estimate_editorial_pages
 from tools.ocr_xml_utils import normalize_visible_text, parse_ocr_xml_page
 from .book_catalog import (
@@ -2179,7 +2184,7 @@ def _scan_tasks(
     con: sqlite3.Connection,
     force: bool,
 ) -> tuple[list[ScanTask], int]:
-    files = sorted(source_root.glob("*.txt"), key=page_sort_key)
+    files = discover_preferred_pages(source_root, volume_id=volume_id)
     existing = {
         str(row["file_path"]): row
         for row in con.execute(
@@ -2363,7 +2368,9 @@ def build_citation_database(
                 con=con,
                 force=force,
             )
-            file_count = len(list(source_root.glob("*.txt")))
+            file_count = len(
+                discover_preferred_pages(source_root, volume_id=volume_id)
+            )
             volume_occurrences = 0
             for result_index, result in enumerate(
                 _iter_results(
@@ -2742,8 +2749,7 @@ def enrich_locator_items_from_citation_db(
         )
         current_files = {
             str(path.resolve()): path
-            for path in source_root.glob("*.txt")
-            if path.is_file()
+            for path in discover_preferred_pages(source_root, volume_id=volume_id)
         }
         stored_paths = {str(Path(str(row["file_path"])).resolve()) for row in stored_files}
         stale_files = 0

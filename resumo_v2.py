@@ -310,6 +310,7 @@ class StaticPageAnalysis:
     has_date_or_roman: bool
     exact_start_candidates: tuple[dict[str, Any], ...]
     containing_work_candidates: tuple[dict[str, Any], ...]
+    expired_work_keys: tuple[str, ...]
     index_ambiguous: bool
     facsimile_score: int
     facsimile_reasons: tuple[str, ...]
@@ -337,6 +338,7 @@ class StaticPageAnalysis:
             "has_date_or_roman": self.has_date_or_roman,
             "exact_start_candidates": list(self.exact_start_candidates),
             "containing_work_candidates": list(self.containing_work_candidates),
+            "expired_work_keys": list(self.expired_work_keys),
             "index_ambiguous": self.index_ambiguous,
             "facsimile_score": self.facsimile_score,
             "facsimile_reasons": list(self.facsimile_reasons),
@@ -517,6 +519,7 @@ def load_volume_index_hints(
             "pagina_fisica": page_number(path),
             "exact_start_candidates": [],
             "containing_work_candidates": [],
+            "expired_work_keys": [],
             "exact_start_ambiguous": False,
             "range_ambiguous": False,
         }
@@ -574,9 +577,10 @@ def load_volume_index_hints(
         else:
             next_start = next((value for value in starts if value > start_phys), None)
             if next_start is not None:
-                # A página de fronteira pode terminar a obra anterior e iniciar a
-                # seguinte. Mantemos ambas como candidatas somente nessa página.
-                end_phys = next_start
+                # O início da obra seguinte é exclusivo. Uma eventual transição
+                # na mesma página continua sendo descrita pelos segmentos do modelo,
+                # sem transformar duas obras em candidatas determinísticas iguais.
+                end_phys = max(start_phys, next_start - 1)
                 range_source = "inferred_next_start"
                 range_confidence = min(
                     normalize_confidence(work.get("confidence")), 0.65
@@ -606,6 +610,9 @@ def load_volume_index_hints(
             by_page[start_phys]["exact_start_candidates"].append(
                 {**compact, "exact_physical_start": True}
             )
+        expiry_page = end_phys + 1
+        if range_source == "index_explicit" and expiry_page in by_page:
+            by_page[expiry_page]["expired_work_keys"].append(compact["work_key"])
         for pagina_num in range(start_phys, end_phys + 1):
             if pagina_num in by_page:
                 by_page[pagina_num]["containing_work_candidates"].append(
@@ -733,12 +740,13 @@ def resume_page_number(
     pages: Sequence[Path],
     force_from_page: int | None = None,
 ) -> int | None:
-    ordered = [page_number(path) for path in pages]
+    # O banco é a fonte de verdade da retomada. O marcador de bloqueio é
+    # diagnóstico e pode ficar obsoleto se houver queda entre a persistência da
+    # página e a atualização do run. Preservamos a ordem do manifesto e
+    # eliminamos números repetidos defensivamente.
+    ordered = list(dict.fromkeys(page_number(path) for path in pages))
     if force_from_page is not None:
         return next((value for value in ordered if value >= force_from_page), None)
-    blocked = run["blocking_page_num"]
-    if blocked is not None:
-        return next((value for value in ordered if value >= int(blocked)), None)
     rows = con.execute(
         "SELECT pagina_num, status FROM resumo_generations WHERE run_id=? AND documento=?",
         (int(run["id"]), str(run["documento"])),
@@ -746,7 +754,7 @@ def resume_page_number(
     done = {
         int(row["pagina_num"])
         for row in rows
-        if row["status"] in {"valid", "metadata_pending", "context_provisional"}
+        if row["status"] in {"valid", "metadata_pending"}
     }
     return next((value for value in ordered if value not in done), None)
 
@@ -958,6 +966,7 @@ def analyze_page(
         has_date_or_roman=has_date_or_roman,
         exact_start_candidates=starts,
         containing_work_candidates=containing,
+        expired_work_keys=tuple(hints.get("expired_work_keys") or ()),
         index_ambiguous=len(starts) > 1 or bool(hints.get("range_ambiguous")),
         facsimile_score=score,
         facsimile_reasons=tuple(reasons),
@@ -1206,9 +1215,10 @@ def initial_active_work_key(
     analysis: StaticPageAnalysis,
 ) -> str:
     """Reconstrói a obra corrente ao retomar ou iniciar no meio do volume."""
-    previous_key = generation_last_work_key(previous_generation)
-    if previous_key:
-        return previous_key
+    if previous_generation is not None:
+        # Uma chave vazia na geração anterior pode ser deliberada (conflito ou
+        # transição ainda sem identificação). Não a reative pelo índice.
+        return generation_last_work_key(previous_generation)
     containing_keys = {
         normalize_whitespace(item.get("work_key"))
         for item in analysis.containing_work_candidates
@@ -1228,30 +1238,48 @@ def reconcile_candidate_work_keys(
     candidate: SummaryCandidate,
     analysis: StaticPageAnalysis,
     active_work_key: str,
+    *,
+    allow_index_initialization: bool = True,
+    rejected_work_keys: set[str] | None = None,
 ) -> tuple[SummaryCandidate, str, dict[str, Any]]:
     """Preenche omissões de ``work_key`` sem delegar continuidade ao modelo.
 
     Uma chave explícita e permitida continua sendo respeitada. Em sua ausência,
-    a obra anterior permanece ativa. Um início exato e não ambíguo troca a obra
-    na página de fronteira; a chave anterior ainda pode aparecer em segmentos
-    anteriores ao marcador de transição.
+    a obra anterior permanece ativa, salvo quando o intervalo expirou, o modelo
+    registrou conflito ou marcou uma transição sem identificar a nova obra. Um
+    início exato e não ambíguo troca a obra na página de fronteira.
     """
+    rejected = {
+        normalize_whitespace(value)
+        for value in (rejected_work_keys or set())
+        if normalize_whitespace(value)
+    }
     active = normalize_whitespace(active_work_key)
+    expired = {
+        normalize_whitespace(value)
+        for value in getattr(analysis, "expired_work_keys", ())
+        if normalize_whitespace(value)
+    }
+    active_expired = active in expired or active in rejected
+    if active_expired:
+        active = ""
     incoming_active = active
     exact_candidates = {
         normalize_whitespace(item.get("work_key")): item
         for item in analysis.exact_start_candidates
         if normalize_whitespace(item.get("work_key"))
+        and normalize_whitespace(item.get("work_key")) not in rejected
     }
     containing_candidates = {
         normalize_whitespace(item.get("work_key")): item
         for item in analysis.containing_work_candidates
         if normalize_whitespace(item.get("work_key"))
+        and normalize_whitespace(item.get("work_key")) not in rejected
     }
     sole_containing = (
         next(iter(containing_candidates)) if len(containing_candidates) == 1 else ""
     )
-    if not active and sole_containing:
+    if not active and sole_containing and allow_index_initialization:
         active = sole_containing
 
     trusted_exact = ""
@@ -1266,8 +1294,25 @@ def reconcile_candidate_work_keys(
         for index, segment in enumerate(segments)
         if segment.get("kind") not in {"administrative", "illegible"}
     ]
+    model_work_keys = {
+        normalize_whitespace(segments[index].get("work_key"))
+        for index in eligible
+        if normalize_whitespace(segments[index].get("work_key"))
+    }
+    rejected_by_model = bool(model_work_keys & rejected)
+    for index in eligible:
+        if normalize_whitespace(segments[index].get("work_key")) in rejected:
+            segments[index]["work_key"] = ""
+    has_explicit_model_key = any(
+        normalize_whitespace(segments[index].get("work_key")) for index in eligible
+    )
+    conflict_without_key = bool(candidate.source_conflicts) and not has_explicit_model_key
+    unresolved_model_transition = bool(
+        ("transition" in candidate.page_kinds or "work_start" in candidate.page_kinds)
+        and not has_explicit_model_key
+    )
     switch_at: int | None = None
-    if trusted_exact and eligible:
+    if trusted_exact and eligible and not conflict_without_key:
         marked = [
             index
             for index in eligible
@@ -1302,9 +1347,13 @@ def reconcile_candidate_work_keys(
             current = trusted_exact
             segment["work_key"] = current
             final_source = "index_exact_start"
+        elif conflict_without_key or (unresolved_model_transition and not trusted_exact):
+            segment["work_key"] = ""
+            current = ""
+            final_source = "model_conflict" if conflict_without_key else "unresolved_transition"
         elif current:
             segment["work_key"] = current
-        elif sole_containing:
+        elif sole_containing and allow_index_initialization:
             current = sole_containing
             segment["work_key"] = current
             final_source = str(
@@ -1327,9 +1376,13 @@ def reconcile_candidate_work_keys(
     )
     if possible_change and "possible_work_transition_unresolved" not in issues:
         issues.append("possible_work_transition_unresolved")
+    if conflict_without_key and "source_work_conflict" not in issues:
+        issues.append("source_work_conflict")
+    if (active_expired or rejected_by_model) and "work_key_expired_or_rejected" not in issues:
+        issues.append("work_key_expired_or_rejected")
 
     status = candidate.status
-    if possible_change and status == "valid":
+    if (possible_change or conflict_without_key or active_expired or rejected_by_model) and status == "valid":
         status = "metadata_pending"
 
     context_reset = candidate.context_reset

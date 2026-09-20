@@ -13,7 +13,7 @@ import unicodedata
 from pathlib import Path
 from typing import Any
 
-from tools.corpus_utils import page_sort_key
+from tools.corpus_utils import discover_preferred_pages, page_sort_key
 from .index_work_anchor_reconciler import inspect_declared_work_anchors
 from tools.ocr_xml_utils import read_ocr_page
 
@@ -124,7 +124,12 @@ def verify_index_payload_evidence(
     source_root_key = str(source_root)
     if source_root_key not in _SOURCE_FILES_CACHE:
         _SOURCE_FILES_CACHE[source_root_key] = (
-            sorted(source_root.glob("*.txt"), key=page_sort_key) if source_root.exists() else []
+            discover_preferred_pages(
+                source_root,
+                volume_id=volume_id or source_root.parent.name,
+            )
+            if source_root.exists()
+            else []
         )
     source_files = _SOURCE_FILES_CACHE[source_root_key]
     position_by_path = {str(path): index for index, path in enumerate(source_files)}

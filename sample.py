@@ -30,6 +30,7 @@ from PIL import Image
 import cv2
 import numpy as np
 import pytesseract
+from tools.corpus_utils import discover_unique_pages, page_number
 
 # ---------------------------------------------------------------------------
 # Constantes
@@ -216,17 +217,17 @@ def find_page_pairs(vol: Path) -> list[tuple[Path, Path, str]]:
         return []
 
     # índice txt por número de página
-    txt_by_page: dict[str, Path] = {}
-    for f in txt_dir.glob("*.txt"):
-        m = re.search(r"-(\d+)\.txt$", f.name)
-        if m:
-            txt_by_page[m.group(1)] = f
+    txt_by_page = {
+        number: path
+        for path in discover_unique_pages(txt_dir, volume_id=vol.name)
+        if (number := page_number(path)) is not None
+    }
 
     pairs = []
     for img in sorted(img_dir.glob("*.png")):
         m = re.search(r"-(\d+)\.png$", img.name)
         if m:
-            pnum = m.group(1)
+            pnum = int(m.group(1))
             if pnum in txt_by_page:
                 page_id = f"{vol.name}-{pnum}"
                 pairs.append((img, txt_by_page[pnum], page_id))

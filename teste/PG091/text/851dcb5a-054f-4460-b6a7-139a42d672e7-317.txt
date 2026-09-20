@@ -1,5 +1,5 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="25,72,845,99">
+  <bloco tipo="cabecalho" script="latino" bbox="25,72,85,99">
     585
   </bloco>
   <bloco tipo="cabecalho" script="latino" bbox="387,70,500,99">
@@ -8,10 +8,11 @@
   <bloco tipo="cabecalho" script="latino" bbox="811,71,847,99">
     586
   </bloco>
+
   <bloco tipo="texto_principal" script="grego" bbox="30,105,443,911">
     μετὰ τῆς ἁγίας καθολικῆς καὶ ἀποστολικῆς Ἐκκλη-
     σίας ἐνώσασαν· καὶ ἤδη καταῤῥυείσας φθινάδι
-    νώσῳ πλάνης τε καὶ ἀγνοίας ῥώσασαν, καὶ μέλος εὔ-
+    νόσῳ πλάνης τε καὶ ἀγνοίας ῥώσασαν, καὶ μέλος εὔ-
     χρηστον τοῦ κοινοῦ τῆς Ἐκκλησίας σώματος ποιη-
     σαμένην· καθ᾿ ἣν ὁ εὐσεβὴς, καὶ ὀρθὸς καὶ ἀληθὴς
     καὶ σωτήριος τῆς ἀποστολικῆς πίστεως ἀκμάζων
@@ -51,7 +52,7 @@
     τὴν σάρκωσιν. Οὐ γὰρ ταὐτὸν θεότης καὶ ἀνθρωπό-
     της ἐστίν. Κἂν γὰρ γέγονεν ἄνθρωπος ὁ τοῦ Θεοῦ Λόγος,
     καὶ ὅλα κατὰ πρόσληψιν σαρκὸς νοερῶς καθ᾿ ὑπόστασιν
-    ἀσπὰστως ἐνωθείσης αὐτῷ γέγονεν ἄνθρωπος,
+    ἀσπάστως ἐνωθείσης αὐτῷ γέγονεν ἄνθρωπος,
     διὸ καὶ Θεός ἐστιν ὁ αὐτὸς κυρίως καὶ ἄνθρωπος, ὡς
     γνήσιον ὧν καὶ τοῦτο γενόμενος· καὶ τοῦτο κἀκεῖνο
     ὑπάρχων ἀνελλιπῶς· μήτε τῷ ἄκρως μοναδικῷ τῆς
@@ -67,17 +68,36 @@
     λόγος, δίκαιον εἶναι τὸ ποσὸν τῶν φυσικῶς διαφε-
     ρόντων καὶ ἐν Χριστῷ σωζομένων καθ᾿ ἕνωσιν ἀδιά-
   </bloco>
+
+  <notas>
+    A: note marginale no vão entre colunas, transcrita à parte.
+    B, C e D: notas marginais igualmente isoladas; não incorporadas ao texto das colunas.
+    A marca d’água "Digitized by Google" não foi transcrita.
+  </notas>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="447,101,462,118">
+    A
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="447,351,462,368">
+    B
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="447,594,462,611">
+    C
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="447,811,462,828">
+    D
+  </bloco>
+
   <bloco tipo="texto_principal" script="latino" bbox="449,105,853,914">
-    A ciuercul : jamque tabico erroris ac ignorantiae
+    ciaverat : jamque tabico erroris ac ignorantiæ
     morbo diffluentes sanaverat, ac communis Ecclesiæ
     corporis membrum utile reddiderat; in qua pia
     rectaque et vera ac salutaris apostolicæ fidei vigens
-    prædicatur doctrina, universum terrarum orbem
-    intra suum cogens gremium; semperque, quod
+    prædicatur doctrina, universam terrarum orbem
+    intra suum cogens gremium ; semperque, quod
     desideratur, eorum quos jam complexa est, cœtui
     adjungens, unamque omnium a finibus terræ usque
-    ad fines ejus animam linguamque spiritu, concor-
-    dia fidei atque consensu esse ostendens: quam
+    ad fines ejus animam linguamque spiritu, concordia fidei atque consensu esse ostendens: quam
     nempe nullis verbis explicabili ratione ex homini-
     bus hominum causa, simili hominum ratione, as-
     sumpta vere carne, anima rationali prædita et
@@ -127,24 +147,12 @@
     afferri potest, cur non justum æquumve videatur
     confiteri eorum quantitatem, quæ ipsa natura dis-
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="447,101,462,118">
-    A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="447,351,462,368">
-    B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="447,594,462,611">
-    C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="447,811,462,828">
-    D
-  </bloco>
+
   <bloco tipo="rodape" script="latino" bbox="274,918,725,944">
     VARIÆ LECTIONES.
   </bloco>
   <bloco tipo="aparato_critico" script="latino" bbox="50,944,739,984">
-    ⁕ Greg. or. 36, p. 582.
-    PATROL. GR. XCI.                                                         19
+    * Greg. or. 36, p. 582.
+    PATROL. GR. XCI. 19
   </bloco>
-  <notas>Imagem em duas colunas: coluna esquerda em grego, seguida pela coluna direita em latino. As letras A, B, C e D encontram-se no gutter e foram transcritas em blocos próprios de nota_marginal; não foram incluídas no texto das colunas.</notas>
 </pagina>

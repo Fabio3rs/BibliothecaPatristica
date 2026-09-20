@@ -9,6 +9,7 @@ if str(PROJECT_ROOT) not in sys.path:
 import os
 import time
 import main2
+from tools.corpus_utils import resolve_page_file
 
 
 
@@ -269,12 +270,15 @@ def find_text_by_num(text_dir: Path, page_num: int) -> Optional[Path]:
     Retorna um texto já existente para a página, seja com UUID ou já normalizada.
     Ex.: *-170.txt corresponde à página 170.
     """
-    stable_name = f"*{page_num:03d}.txt"
-    matches = sorted(text_dir.glob(stable_name))
-    if matches:
-        return matches[0]
-    matches = sorted(text_dir.glob(f"*-{page_num}.txt"))
-    return matches[0] if matches else None
+    match, ambiguous = resolve_page_file(
+        text_dir,
+        volume_id=text_dir.parent.name,
+        page_num=page_num,
+        suffixes=(".txt",),
+    )
+    if ambiguous:
+        raise RuntimeError(f"{text_dir.parent.name}:{page_num} tem textos ambíguos")
+    return match
 
 
 

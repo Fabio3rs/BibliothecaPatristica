@@ -3,6 +3,8 @@ import argparse
 import re
 from pathlib import Path
 
+from tools.corpus_utils import discover_preferred_pages
+
 NUM_RE = re.compile(r"-(\d+)\.txt$", re.IGNORECASE)
 
 def page_number(p: Path) -> int | None:
@@ -14,13 +16,7 @@ def page_number(p: Path) -> int | None:
     return int(m2.group(1)) if m2 else None
 
 def find_text_files(text_dir: Path) -> list[Path]:
-    # pega só .txt (não recursivo por padrão; mude para rglob se quiser)
-    files = [p for p in text_dir.glob("*.txt")]
-    # filtra os que têm número detectável
-    files = [p for p in files if page_number(p) is not None]
-    # ordena por número; em empate, por nome (estável)
-    files.sort(key=lambda p: (page_number(p), p.name))
-    return files
+    return discover_preferred_pages(text_dir, volume_id=text_dir.parent.name)
 
 def concat(files: list[Path], out_path: Path, with_headers: bool = True, encoding="utf-8"):
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -53,7 +49,15 @@ def main():
 
     if args.recursive:
         # versão recursiva (se preferir): use rglob
-        files = [p for p in text_dir.rglob("*.txt") if page_number(p) is not None]
+        directories = sorted({path.parent for path in text_dir.rglob("*.txt")})
+        files = [
+            page
+            for directory in directories
+            for page in discover_preferred_pages(
+                directory,
+                volume_id=directory.parent.name,
+            )
+        ]
         files.sort(key=lambda p: (page_number(p), p.name))
     else:
         files = find_text_files(text_dir)

@@ -17,11 +17,16 @@ import os
 from pathlib import Path
 import re
 import shutil
+import sys
 import tempfile
 from typing import Any, Iterable, Sequence
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from tools.corpus_utils import discover_unique_pages
 DEFAULT_MANIFEST = (
     PROJECT_ROOT
     / "data"
@@ -208,7 +213,9 @@ def _ocr_page_counts(root: Path, volume_ids: Sequence[str]) -> dict[str, dict[st
             continue
         counts[volume_id] = {
             "images": len(list((volume_dir / "images").glob("*.png"))),
-            "texts": len(list((volume_dir / "text").glob("*.txt"))),
+            "texts": len(
+                discover_unique_pages(volume_dir / "text", volume_id=volume_id)
+            ),
         }
     return counts
 

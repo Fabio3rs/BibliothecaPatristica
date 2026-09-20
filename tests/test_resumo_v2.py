@@ -1,4 +1,5 @@
 import json
+import re
 import sqlite3
 import sys
 import time
@@ -14,6 +15,7 @@ from tools import export_enrichment_shards
 from tools import render_publication_from_shards
 from tools import hdbscan_resumo_embeddings
 from tools import repair_resumo_cumulative_from_raw
+from tools import repair_resumo_work_keys
 from tools.translate_resumos_v2 import (
     build_translation_prompt,
     load_glossaries,
@@ -33,6 +35,7 @@ from resumo_v2 import (
     reconcile_candidate_work_keys,
     promote_segment,
     parse_summary_candidate,
+    resume_page_number,
     store_context_anchor,
     store_generation,
 )
@@ -60,7 +63,7 @@ def _analysis() -> StaticPageAnalysis:
         ocr_clean="Texto latino introdutório da obra e de sua dedicatória. " * 20,
         index_hints={
             "exact_start_candidates": [
-                {
+                        {
                     "work_key": "work:virgines",
                     "title_original": "Epistolae ad Virgines",
                     "confidence": 0.99,
@@ -174,7 +177,7 @@ def _blank_key_candidate(*, kinds=("body",), segment_kinds=("body",)) -> Summary
     )
 
 
-def test_missing_end_file_uses_next_start_with_boundary_overlap(tmp_path):
+def test_missing_end_file_stops_before_the_next_exact_start(tmp_path):
     pages = [tmp_path / f"page-{number}.txt" for number in range(1, 6)]
     indices = sqlite3.connect(":memory:")
     indices.row_factory = sqlite3.Row
@@ -205,10 +208,9 @@ def test_missing_end_file_uses_next_start_with_boundary_overlap(tmp_path):
 
     assert [item["work_key"] for item in hints[2]["containing_work_candidates"]] == ["work:a"]
     assert {item["work_key"] for item in hints[4]["containing_work_candidates"]} == {
-        "work:a",
         "work:b",
     }
-    assert hints[4]["range_ambiguous"] is True
+    assert hints[4]["range_ambiguous"] is False
     assert hints[4]["exact_start_candidates"][0]["alias_work_keys"] == ["work:b_alias"]
     assert hints[2]["containing_work_candidates"][0]["range_source"] == "inferred_next_start"
     assert hints[5]["containing_work_candidates"][0]["range_source"] == "inferred_volume_end"
@@ -295,7 +297,7 @@ def test_exact_index_start_resets_context_even_if_model_omits_work_start_kind():
     assert candidate.context_reset_confidence == 0.95
 
 
-def test_unresolved_transition_keeps_active_key_without_blocking_context():
+def test_unresolved_transition_suspends_active_key_without_blocking_context():
     analysis = analyze_page(
         documento="PGX",
         pagina_num=3,
@@ -311,11 +313,81 @@ def test_unresolved_transition_keeps_active_key_without_blocking_context():
         "work:a",
     )
 
-    assert candidate.segments[0]["work_key"] == "work:a"
-    assert next_key == "work:a"
+    assert candidate.segments[0]["work_key"] == ""
+    assert next_key == ""
     assert candidate.status == "metadata_pending"
     assert "possible_work_transition_unresolved" in candidate.validation_issues
     assert resolution["possible_change"] is True
+
+
+def test_source_conflict_with_blank_model_key_vetoes_automatic_fill():
+    analysis = analyze_page(
+        documento="PGX",
+        pagina_num=3,
+        pagina_file="page-3.txt",
+        page_text="O cabeçalho identifica outra obra. " * 20,
+        ocr_clean="O cabeçalho identifica outra obra. " * 20,
+        index_hints={"containing_work_candidates": []},
+    )
+    source = replace(
+        _blank_key_candidate(),
+        source_conflicts=({"conflict": "A work_key ativa contradiz o cabeçalho."},),
+    )
+
+    candidate, next_key, resolution = reconcile_candidate_work_keys(
+        source, analysis, "work:a"
+    )
+
+    assert candidate.segments[0]["work_key"] == ""
+    assert next_key == ""
+    assert candidate.status == "metadata_pending"
+    assert "source_work_conflict" in candidate.validation_issues
+    assert resolution["source"] == "model_conflict"
+
+
+def test_explicit_index_end_expires_active_work_on_the_next_page(tmp_path):
+    pages = [tmp_path / f"page-{number}.txt" for number in range(1, 4)]
+    indices = sqlite3.connect(":memory:")
+    indices.row_factory = sqlite3.Row
+    indices.executescript(
+        """
+        CREATE TABLE works(
+            volume_id TEXT, work_order INTEGER, work_key TEXT,
+            author_raw TEXT, title_raw TEXT, start_page INTEGER,
+            end_page INTEGER, start_file TEXT, end_file TEXT,
+            confidence REAL
+        );
+        CREATE TABLE index_strings(id INTEGER PRIMARY KEY, source_text TEXT);
+        CREATE TABLE index_translations(
+            id INTEGER PRIMARY KEY, string_id INTEGER,
+            language TEXT, translated_text TEXT
+        );
+        INSERT INTO works VALUES
+            ('PGX', 1, 'work:a', 'Autor A', 'Obra A', 1, 2,
+             'page-1.txt', 'page-2.txt', 0.95);
+        """
+    )
+    hints = load_volume_index_hints(indices, "PGX", pages)
+    analysis = analyze_page(
+        documento="PGX",
+        pagina_num=3,
+        pagina_file="page-3.txt",
+        page_text="Texto de outra obra ainda não catalogada. " * 20,
+        ocr_clean="Texto de outra obra ainda não catalogada. " * 20,
+        index_hints=hints[3],
+    )
+
+    candidate, next_key, _resolution = reconcile_candidate_work_keys(
+        _blank_key_candidate(),
+        analysis,
+        "work:a",
+        allow_index_initialization=False,
+    )
+
+    assert hints[3]["expired_work_keys"] == ["work:a"]
+    assert candidate.segments[0]["work_key"] == ""
+    assert next_key == ""
+    assert candidate.status == "metadata_pending"
 
 
 def test_inferred_work_key_provenance_is_stored_as_untrusted_anchor():
@@ -516,6 +588,83 @@ def test_cumulative_repair_restores_raw_and_rechains_tail():
     )
     assert second_report["restored_summaries"] == 0
     assert second_report["changed_generations"] == 0
+
+
+def test_work_key_repair_restores_model_blank_and_rejects_bad_key(tmp_path):
+    con = _connection()
+    run = _run(con)
+    volume_dir = tmp_path / "PG001"
+    (volume_dir / "text").mkdir(parents=True)
+    (volume_dir / "text" / "page-175.txt").write_text("OCR", encoding="utf-8")
+    bad_key = "work:virgines"
+    source = replace(
+        _candidate(status="valid"),
+        source_conflicts=({"conflict": "A work_key contradiz o cabeçalho."},),
+    )
+    raw = json.dumps(
+        {
+            "page_kinds": ["body"],
+            "segments": [
+                {
+                    "order": 1,
+                    "kind": "body",
+                    "work_key": "",
+                    "summary": source.segments[0]["summary"],
+                }
+            ],
+            "contributors": [],
+            "cumulative_summary": source.cumulative_summary,
+            "source_conflicts": list(source.source_conflicts),
+            "administrative_reason": "",
+        },
+        ensure_ascii=False,
+    )
+    generation = store_generation(
+        con,
+        run_id=run["id"],
+        legacy_resumo_id=None,
+        ocr_result_id=None,
+        documento="PG001",
+        pagina_num=175,
+        pagina_file="page-175.txt",
+        previous_generation=None,
+        source_hash="source-a",
+        provider="ollama",
+        model="gemma4:cloud",
+        candidate=source,
+        search_text_pt="busca",
+        embedding_text="embedding",
+        analysis=_analysis(),
+        raw_response=raw,
+        facsimile_used=False,
+        tainted_by_page=None,
+    )
+
+    _run_row, changes, report = repair_resumo_work_keys.plan_repair(
+        con,
+        run_id=run["id"],
+        volume_dir=volume_dir,
+        indices_db=tmp_path / "missing-indices.db",
+        from_page=175,
+        rejected_work_keys={bad_key},
+    )
+
+    assert report["changed_generations"] == 1
+    repaired_segments = json.loads(changes[0]["segments_json"])
+    assert repaired_segments[0]["work_key"] == ""
+    assert changes[0]["status"] == "metadata_pending"
+    repair_resumo_work_keys.apply_repair(
+        con,
+        run_id=run["id"],
+        documento="PG001",
+        changes=changes,
+        rejected_work_keys={bad_key},
+    )
+    repaired = con.execute(
+        "SELECT * FROM resumo_generations WHERE id=?", (generation["id"],)
+    ).fetchone()
+    assert json.loads(repaired["segments_json"])[0]["work_key"] == ""
+    assert repaired["status"] == "metadata_pending"
 
 
 def test_schema_uses_wal_safe_timestamps_and_clears_stale_embedding():
@@ -795,6 +944,221 @@ def test_v2_pipeline_is_serial_resumable_and_keeps_results_in_shadow(tmp_path, m
     resumo_serial.process_volume_v2(**{**kwargs, "promote": True})
     assert len(calls) == 2
     assert con.execute("SELECT COUNT(*) FROM resumo_generations WHERE is_current=1").fetchone()[0] == 2
+
+
+def test_resume_uses_first_unfinished_page_instead_of_stale_block_marker():
+    con = _connection()
+    pages = [Path(f"page-{page}.txt") for page in (175, 176, 177)]
+    run = get_or_create_run(
+        con,
+        documento="PG001",
+        pages=pages,
+        provider="ollama",
+        model="gemma4:cloud",
+    )
+    first = store_generation(
+        con,
+        run_id=run["id"],
+        legacy_resumo_id=None,
+        ocr_result_id=None,
+        documento="PG001",
+        pagina_num=175,
+        pagina_file="page-175.txt",
+        previous_generation=None,
+        source_hash="source-175",
+        provider="ollama",
+        model="gemma4:cloud",
+        candidate=_candidate(),
+        search_text_pt="busca 175",
+        embedding_text="embedding 175",
+        analysis=_analysis(),
+        raw_response="{}",
+        facsimile_used=False,
+        tainted_by_page=None,
+    )
+    store_generation(
+        con,
+        run_id=run["id"],
+        legacy_resumo_id=None,
+        ocr_result_id=None,
+        documento="PG001",
+        pagina_num=176,
+        pagina_file="page-176.txt",
+        previous_generation=first,
+        source_hash="source-176",
+        provider="ollama",
+        model="gemma4:cloud",
+        candidate=_candidate(),
+        search_text_pt="busca 176",
+        embedding_text="embedding 176",
+        analysis=_analysis(),
+        raw_response="{}",
+        facsimile_used=False,
+        tainted_by_page=None,
+    )
+    con.execute(
+        "UPDATE resumo_runs SET status='blocked', blocking_page_num=175, next_page_num=175 WHERE id=?",
+        (run["id"],),
+    )
+    con.commit()
+    refreshed = con.execute("SELECT * FROM resumo_runs WHERE id=?", (run["id"],)).fetchone()
+
+    assert resume_page_number(con, refreshed, pages) == 177
+
+
+def test_resume_retries_context_provisional_and_fills_an_earlier_gap():
+    con = _connection()
+    pages = [Path(f"page-{page}.txt") for page in (175, 176, 177)]
+    run = get_or_create_run(
+        con,
+        documento="PG001",
+        pages=pages,
+        provider="ollama",
+        model="gemma4:cloud",
+    )
+    first = store_generation(
+        con,
+        run_id=run["id"],
+        legacy_resumo_id=None,
+        ocr_result_id=None,
+        documento="PG001",
+        pagina_num=175,
+        pagina_file="page-175.txt",
+        previous_generation=None,
+        source_hash="source-175",
+        provider="ollama",
+        model="gemma4:cloud",
+        candidate=_candidate(),
+        search_text_pt="busca",
+        embedding_text="embedding",
+        analysis=_analysis(),
+        raw_response="{}",
+        facsimile_used=False,
+        tainted_by_page=None,
+    )
+    store_generation(
+        con,
+        run_id=run["id"],
+        legacy_resumo_id=None,
+        ocr_result_id=None,
+        documento="PG001",
+        pagina_num=176,
+        pagina_file="page-176.txt",
+        previous_generation=first,
+        source_hash="source-176",
+        provider="ollama",
+        model="gemma4:cloud",
+        candidate=_candidate(status="context_provisional"),
+        search_text_pt="busca",
+        embedding_text="embedding",
+        analysis=_analysis(),
+        raw_response="{}",
+        facsimile_used=False,
+        tainted_by_page=176,
+    )
+    refreshed = con.execute("SELECT * FROM resumo_runs WHERE id=?", (run["id"],)).fetchone()
+    assert resume_page_number(con, refreshed, pages) == 176
+
+    con.execute("DELETE FROM resumo_generations WHERE pagina_num=176")
+    con.commit()
+    assert resume_page_number(con, refreshed, pages) == 176
+
+
+def test_v2_resumes_a_volume_after_a_429_without_repeating_valid_pages(tmp_path, monkeypatch):
+    text_dir = tmp_path / "PGX" / "text"
+    text_dir.mkdir(parents=True)
+    for page in (1, 2, 3):
+        (text_dir / f"page-{page:03d}.txt").write_text(
+            '<pagina estado="com_texto"><bloco tipo="texto_principal" '
+            f'bbox="60,80,940,920">Conteúdo patrístico da página {page}. '
+            + ("Argumento histórico e teológico explícito. " * 20)
+            + "</bloco></pagina>",
+            encoding="utf-8",
+        )
+    con = sqlite3.connect(tmp_path / "resumos.db")
+    con.row_factory = sqlite3.Row
+    resumo_serial.init_resumo_schema(con)
+    fail_page_two = {"enabled": True}
+    calls: list[int] = []
+
+    def fake_chat(prompt_system, prompt_user, **_kwargs):
+        del prompt_system
+        match = re.search(r'physical_page="(\d+)"', prompt_user)
+        assert match is not None
+        page = int(match.group(1))
+        calls.append(page)
+        if page == 2 and fail_page_two["enabled"]:
+            raise RuntimeError("Ollama HTTP 429: monthly usage limit reached")
+        return json.dumps(
+            {
+                "page_kinds": ["body"],
+                "segments": [
+                    {
+                        "order": 1,
+                        "kind": "body",
+                        "work_key": "",
+                            "summary": (
+                                f"A página {page} desenvolve um argumento histórico e teológico "
+                                "concreto, identificando seus conceitos e sua progressão textual."
+                            ),
+                    }
+                ],
+                "contributors": [],
+                "cumulative_summary": (
+                    f"Síntese acumulada até a página {page}, com o desenvolvimento "
+                    "histórico e teológico suficientemente detalhado da obra corrente."
+                ),
+                "source_conflicts": [],
+                "administrative_reason": "",
+            },
+            ensure_ascii=False,
+        )
+
+    monkeypatch.setattr(resumo_serial, "llm_chat", fake_chat)
+    monkeypatch.setattr(
+        resumo_serial,
+        "_scripture_evidence_for_page",
+        lambda *_args, **_kwargs: {"status": "ok", "candidates": [], "candidate_count": 0},
+    )
+    kwargs = dict(
+        volume_dir=text_dir.parent,
+        con=con,
+        model="gemma4:cloud",
+        base_url="http://unused",
+        timeout=1,
+        retries=1,
+        provider="ollama",
+        reasoning_effort="high",
+        api_key_env="UNUSED",
+        num_ctx=16384,
+        dry_run=False,
+        page_filter=None,
+        verbose=False,
+        versions_con=None,
+        facsimile_mode="never",
+        facsimile_threshold=2,
+        lookahead_pages=0,
+        force_replace_from=None,
+        force_replace_through="next-work",
+        promote=False,
+        indices_db=tmp_path / "missing-indices.db",
+    )
+
+    with pytest.raises(ValueError, match="429"):
+        resumo_serial.process_volume_v2(**kwargs)
+    run = con.execute("SELECT * FROM resumo_runs WHERE documento='PGX'").fetchone()
+    assert run["status"] == "blocked"
+    assert run["blocking_page_num"] == 2
+    assert con.execute("SELECT group_concat(pagina_num) FROM resumo_generations").fetchone()[0] == "1"
+
+    fail_page_two["enabled"] = False
+    resumo_serial.process_volume_v2(**kwargs)
+
+    assert calls == [1, 2, 2, 3]
+    run = con.execute("SELECT * FROM resumo_runs WHERE documento='PGX'").fetchone()
+    assert run["status"] == "completed"
+    assert run["blocking_page_num"] is None
+    assert con.execute("SELECT group_concat(pagina_num) FROM resumo_generations").fetchone()[0] == "1,2,3"
 
 
 def test_translation_pass_receives_only_summary_search_and_glossary():

@@ -1,8 +1,15 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,45,900,80">831                                        HEXAPLORUM QUÆ SUPERSUNT.                                        832</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="365,90,650,120">CAPUT IX DEUTERONOMII.</bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="120,115,350,435">TO ΕΒΡΑΙΚΟΝ.
-גדולים ועצומים ממך 1
+  <bloco tipo="cabecalho" script="latino" bbox="75,55,135,98">831</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="360,52,640,108">HEXAPLORUM QUÆ SUPERSUNT.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="885,55,945,98">832</bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="370,120,640,175">CAPUT IX DEUTERONOMII.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="150,175,315,220">ΤΟ ΕΒΡΑΙΚΟΝ.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="395,175,615,230">ΤΟ ΕΒΡΑΙΚΟΝ.
+Ἑλληνικοῖς γράμμασι.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="760,175,875,220">ΑΚΥΛΑΣ.</bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="120,225,340,490">גוים גדולים ועצמים ממך 1
 ובצדקתך 5
 ברשעת הגוים האלה
 עורף 6
@@ -11,30 +18,11 @@
 ואשברם 17
 בעצם היום הזה 19
 ואתנפל 25
-אל יהוה 26</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="385,115,505,435">TO ΕΒΡΑΙΚΟΝ
-Ἑλληνικοῖς γράμμασι.
-1.
-5.
-6.
-12.
-15.
-17.
-19.
-25.
-26.</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="650,115,830,435">ΑΚΥΛΛΑΣ.
-1.
-5. Διὰ τὴν εὐθύτητα.
-6. Τένον.
-12. Διέφθειρεν.
-15. Τῆς συνθήκης.
-17. Κατέαξα
-19. Καθόδῳ.
-25. Συνέπιπτον.
-26.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="105,445,355,755">VERSIO HEBRAICI TEXT.
-1. Magnas et firmas ossibus præ
+אל יהוה 26
+נחלתך.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="95,445,360,700">VERSIO HEBRAICI TEXT.
+1. Magnas et firmas ossibus prae
 te.
 5. Et rectitudine.
 In impietate gentium istarum.
@@ -46,7 +34,18 @@ In impietate gentium istarum.
 25. Procubui.
 26. Domine Domine.
 Hæreditatem tuam.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="385,445,620,755">VULGATA LATINA.
+
+  <bloco tipo="texto_principal" script="grego" bbox="405,225,560,490">1.
+5.
+6.
+12.
+15.
+17.
+19.
+25.
+26.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="390,445,650,700">VULGATA LATINA.
 1. Maximas et fortiores te.
 5. Æquitatem.
 Quia illæ egerunt inique.
@@ -58,46 +57,73 @@ Quia illæ egerunt inique.
 25. Jacui.
 26. Domine Deus.
 Hæreditatem tuam.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,445,850,755">AQUILA.
+
+  <bloco tipo="texto_principal" script="grego" bbox="700,225,890,490">1.
+5. Διὰ τὴν εὐθύτητα.
+6. [ilegivel].
+12. Διέφθειρεν.
+15. Τῆς συνθήκης.
+17. Κατέαξα.
+19. Καθόδῳ.
+25. Συνέπιπτον.
+26.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="685,445,915,700">AQUILA.
 1.
 5. Propter rectitudinem.
 6. Tendon.
-12. Córrupit.
+12. Corrupit.
 15. Pacti.
 17. Confregi.
 19. Descensu.
 25. Procubui.
 26.</bloco>
-  <bloco tipo="nota" script="latino" bbox="95,770,505,880">Notæ et variæ lectiones ad cap. IX Deuteronomii.
-V. 1. Οʹ, μεγάλα καὶ ἰσχυρότερά σου. Sic Basiliensis lectionem LXX Interpretum habet: Ἄλλος, μεγάλα καὶ ὀστοῦνὰ ὑπὲρ σέ. Hæc lectio omnino videtur Aquilæ esse, qui vocem עצם vertere solet, ὀστοῦνόν, vel, ὀστεῖνόν. Sic Gen. xviii, 18, et Exod.</bloco>
-  <bloco tipo="nota" script="latino" bbox="510,770,905,880">1, 9. Tertia lectio est LXX Romanæ edit.
-V. 5. Διὰ τὴν ἀνομίαν αὐτῶν. Sic lectionem LXX Interpretum effert Basiliensis: alteram vero, quæ est Romanæ editionis, ad marginem locat. Ibid. Ἁ., διὰ τὴν εὐθύτητα. Ex Coislin.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="365,895,650,925">CAPUT X DEUTERONOMII.</bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="120,925,350,995">TO ΕΒΡΑΙΚΟΝ.
-כתבתי על הלוחות 2
+
+  <bloco tipo="nota" script="misto" bbox="70,705,480,865">Notæ et variæ lectiones ad cap. IX Deuteronomii.
+V. 1. Οʹ, μεγάλα καὶ ἰσχυρότερα σου. Sic Basiliensis lectionem LXX Interpretum habet: Ἄλλος, μεγάλα καὶ ὀστοῖνα ὑπὲρ σέ. Hæc lectio omnino vi-
+detur Aquilæ esse, qui vocem [ilegivel] vertere solet,
+ὀστοῖνον, vel, ὀστεῖνον. Sic Gen. xviii, 18, et Exod. [ilegivel]</bloco>
+
+  <bloco tipo="nota" script="misto" bbox="510,705,930,865">1. 9. Tertia lectio est LXX Romanæ edit.
+V. 5. Διὰ τὴν ἀνομίαν αὐτῶν. Sic lectionem
+LXX Interpretum effert Basiliensis : alteram vero,
+quæ est Romanæ editionis, ad marginem locat.
+Ibid. Ἀ., διὰ τὴν εὐθύτητα. Ex Coislin.</bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="370,865,640,920">CAPUT X DEUTERONOMII.</bloco>
+  <bloco tipo="cabecalho" script="hebraico" bbox="145,920,315,955">TO ΕΒΡΑΙΚΟΝ.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="395,920,615,970">ΤΟ ΕΒΡΑΙΚΟΝ.
+Ἑλληνικοῖς γράμμασι.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="760,920,875,955">ΑΚΥΛΑΣ.</bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="120,955,335,1000">ואכתב על הלוחות 2
 שטים 3
 מכתב 4</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="385,925,505,995">TO ΕΒΡΑΙΚΟΝ
-Ἑλληνικοῖς γράμμασι.
-2.
+
+  <bloco tipo="texto_principal" script="grego" bbox="405,955,555,1000">2.
 3.
 4.</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="650,925,830,995">ΑΚΥΛΛΑΣ.
-2.
+
+  <bloco tipo="texto_principal" script="grego" bbox="700,955,890,1000">2.
 3. Σεττίμ.
 4. Τὸ γράφιον.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="105,975,355,999">VERSIO HEBRAICI TEXT.
+
+  <bloco tipo="texto_principal" script="latino" bbox="95,1000,360,1270">VERSIO HEBRAICI TEXT.
 2. Et scribam super tabulis.
-3. Sitim.
+3. Sittim.
 4. Juxta scripturam.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="385,975,620,999">VULGATA LATINA.
+
+  <bloco tipo="texto_principal" script="latino" bbox="390,1000,650,1270">VULGATA LATINA.
 2. Et scribam in tabulis.
 3. Settim.
 4. Juxta id quod prius scripserat.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="650,975,850,999">AQUILA.
+
+  <bloco tipo="texto_principal" script="latino" bbox="685,1000,915,1270">AQUILA.
 2.
 3. Settim.
 4. Stylum.</bloco>
-  <bloco tipo="rodape" script="latino" bbox="565,985,790,999">Digitized by Google</bloco>
-  <notas>Texto poliglota em três colunas; a leitura hebraica e grega foi mantida nos respectivos alfabetos. A parte inferior da página encontra-se parcialmente junto à margem inferior da imagem.</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="640,938,905,990">Digitized by Google</bloco>
+
+  <notas>O ficheiro contém duas páginas consecutivas no mesmo scan; a ordem dos blocos segue a leitura visual de cima para baixo e, em cada faixa, da esquerda para a direita. Alguns vocábulos gregos do aparato e do capítulo X estão parcialmente legíveis e foram marcados com [ilegivel].</notas>
 </pagina>

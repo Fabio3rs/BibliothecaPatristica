@@ -12,7 +12,7 @@ from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from tools.corpus_utils import parse_volume_info, page_sort_key
+from tools.corpus_utils import discover_preferred_pages, parse_volume_info, page_sort_key
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 LEVANTAMENTO_DOC = PROJECT_ROOT / "docs" / "levantamento_indices_alfabeticos.md"
@@ -75,7 +75,7 @@ def get_volume_files(volume_root: Path) -> list[Path]:
     text_root = volume_root / "text"
     if not text_root.exists():
         return []
-    return sorted(text_root.glob("*.txt"), key=page_sort_key)
+    return discover_preferred_pages(text_root, volume_id=volume_root.name)
 
 
 def find_marker_hits(files: list[Path], marker: str) -> list[dict[str, Any]]:

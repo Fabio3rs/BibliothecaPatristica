@@ -1,51 +1,144 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="60,25,100,50">705</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="310,20,690,50">IN CARMINA ARCANA S. GREGORII.</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="900,25,940,50">706</bloco>
-  
-  <bloco tipo="texto_principal" script="grego" bbox="50,60,480,440">
-    31 Ἀλλὰ τὰ μὲν μετέσιθο' 1 δ' ὡς νόμον εἶχον [ἄτιμον, κτλ.[br]
-    Τὰ μὲν εἰρημένα, φησὶν  τῆς θεοσοφίας λύχνος, ἥ τε τῶν ἐθνῶν πάντων εἴσοδος εἰς Χριστόν, ἥ τε τοῦ καταλείμματος Ἰσραλ διὰ ζῆλον καὶ ἐπιστροφῆς πρὸς Θεὸν σωτηρία, ταῦτα μὲν ἐν ὑστέροις ἀποκαλυφθήσεται καιροῖς· κατὰ μέντοι τὸν πρῶτον τς ἐπιφανείας τοῦ Σωτῆρος ἐνανθρωπήσαντος καιρὸν τῶν ἐθνῶν μὲν ταῖς ἀθέσμοις εἰδωλολατρείαις σφόδρα σφοδρῶς ἐδεδουλωμένων, τῶν ἐξ Ἰσραὴλ δὲ ταῖς τοῦ νόμου ποικίλαις παραβάσεσιν ἀτιμούντων τὸν Θεόν, ὥστε ν τότε, να ἡ ὑπερβολὴ τς ἀπείρου χρηστότητος ἀναφανῇ, τοιαύτης ἡ ἀνθρωπίνη φύσις διελήχει τιμῆς· εὐδοκιὰ μὲν τοῦ ἀθανάτου Πατρός, τοῦ γίου· ἐνεργείᾳ Πνεύματος ὁ μονογενὴς το Θεοῦ Λόγος, ὅσων τῆς θείας μοίρας κτίζων τὸν νθρωπον ἐξ ἀρχῆς τ αὐτοῦ σώματι κατέθεν, τοῦτο ταῖς ψυχοφθόροις ἁμαρτίαις λελυμασμένον ὁρῶν, κατατυραννοῦντα δὲ τῶν πάντων βροτῶν τὸν δράκοντα τὸν ἀποστάτην ἰδών, καὶ ἠλεηκώς, οὐκέτι ἄλλοις τὴν ἀρρώστιαν ταύτην ἐφῆσι βοηθεῖν· οὐ γὰρ αὐτάρκες εἰς μεγάλων παθῶν θεραπείαν ἴαμα μικρόν· ὡς ν δὲ κληρονομίαν ἰδίαν αυτῷ ἐξ ἀνθρώπων ὁ ἐκ Πατρὸς Υὸς ἀμήτωρ ἀναστήσηται, καὶ τὴν εκόνα ἑαυτοῦ τς τυραννικς ἀπολυτρώσηται κατοχῆς, ἐκένωσεν ἑαυτὸν Υἱὸς ἀνθρώπου δίχα πατρὸς γεννώμενος ἡμν καινοπρεπῶς μὲν καὶ ξένως, ὅτι τερ ἀνδρός, ὡ νως δὲ παντάπασιν, ὅτι ἐξ ἐμοῦ, οὗτος διὰ παρθενικῆς καὶ ἁγίας βροτούμενος μητρός, ὅλος λον τὸν ἐξ ἁμαρτίας πεσόντα προσείληφεν Ἀδάμ, ἵν' λῳ περιποιήσηται τὴν σωτηρίαν. Τοῦ δ χάριν ἀνθρωπίνως καὶ οὐκ ἀνθρωπίνοις νόμοις ἐξ ἁγνῶν καὶ παρθενικῶν σπλάγχνων (ὦ θαῦμα ἄπιστον βεβήλοις βροτοῖς!) ὁ ἄμβροτος βρωθεὶς προῆλθε Θεὸς ὁμοῦ καὶ ἄνθρωπος, δύο φύσεις εἷς ἐν πρόσωπον συνάγων, τὴν μὲν κρυπτομένην καὶ ἀόρατον, τὴν δ' ἀναφανδὸν ἀνθρώποις ὁρωμένην· ὃν ἡ μὲν Θεὸς ἦν τῷ ἀνάρχως γεννῶντι ὁμοούσιος, ἡ δὲ ἄνθρωπος ἐκτίσται τῇ ἐν χρόνῳ τεκούσῃ καὶ ἡμν ὁμοφυής.
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="40,135,90,175">705</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="250,135,750,180">IN CARMINA ARCANA S. GREGORII.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="825,135,875,175">706</bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="40,175,495,910">
+31 Ἀλλὰ τὰ μὲν μετόπισθ᾽ ἰ δ᾽ ὡς νόμον εἶχον
+[ἄτιμον, κτλ.
+Τὰ μὲν εἰρημένα, φησὶν ὁ τῆς θεοσοφίας λύχνος,
+ἥ τε τῶν ἐθνῶν ἀπάντων εἴσοδος εἰς Χριστόν, ἥ τε
+τοῦ καταλείμματος Ἰσραὴλ διὰ ζήλου καὶ ἐπιστρο-
+φῆς πρὸς θεὸν σωτηρία, ταῦτα μὲν ἐν ὑστέροις ἀπο-
+καλυφθήσεται καιροῖς· κατὰ μέντοι τὸν πρῶτον τῆς
+ἐπιφανείας τοῦ Σωτῆρος ἐνανθρωπήσαντος καιρὸν
+τῶν ἐθνῶν μὲν ταῖς ἀθέσμοις εἰδωλολατρείαις σφόδρα
+σφοδρῶς ἐδεδυγμένων, τῶν ἐξ Ἰσραὴλ δὲ ταῖς τοῦ
+νόμου ποικίλαις παραβάσεσιν ἀτιμούντων τὸν θεόν,
+τότε δὴ τότε, ἵνα ἡ ὑπερβολὴ τῆς ἀπείρου χρηστότη-
+τος ἀναφανῇ, τοιαύτης ἡ ἀνθρωπίνη φύσις διελήχει
+τιμῆς· εὐδοκίᾳ μὲν τοῦ ἀθανάτου Πατρός, τοῦ ἁγίου·
+ἐνεργείᾳ Πνεύματος ὁ μονογενὴς τοῦ Θεοῦ Λόγος,
+ὅσον τῆς θείας μοίρας κτίζων τὸν ἄνθρωπον ἐξ
+ἀρχῆς τῷ αὐτοῦ σώματι κατέθετο, τοῦτο ταῖς ψυχο-
+φθόροις ἁμαρτίαις λελυμασμένον ὁρῶν, κατατυραν-
+νοῦντα δὲ τῶν πάντων βροτῶν τὸν δράκοντα τὸν
+ἀποστάτην ἰδών, καὶ ἠλεηκώς, οὐκέτι ἄλλοις τὴν ἀρ-
+ρωστίαν ταύτην ἐφῆσι βοηθεῖν· οὐ γὰρ αὐτάρκες
+εἰς μεγάλων παθῶν θεραπείαν ἴαμα μικρόν· ὡς ἂν
+δὲ κληρονομίαν ἰδίαν ἑαυτῷ ἐξ ἀνθρώπων ὁ ἐκ Πα-
+τρὸς Υἱὸς ἀμήτωρ ἀναστήσηται, καὶ τὴν εἰκόνα ἑαυ-
+τοῦ τῆς τυραννικῆς ἀπολυτρώσηται κατοχῆς, ἐκένω-
+σεν ἑαυτὸν Υἱὸς ἀνθρώπου δίχα πατρὸς γεννώμενος
+ἡμῖν καινοπρεπῶς μὲν καὶ ξένως, ὅτι ἄτερ ἀνδρός,
+ὡς ξένος δὲ παντάπασιν, ὅτι ἐξ ἐμοῦ, οὗτος διὰ παρ-
+θενικῆς καὶ ἁγίας βροτούμενος μητρός, ὅλος ὅλον τὸν
+ἐξ ἁμαρτίας πεσόντα προσείληφεν Ἀδάμ, ἵν' ὅλῳ
+περιποιήσηται τὴν σωτηρίαν. Τοῦ δὴ χάριν ἀνθρω-
+πίνως καὶ οὐκ ἀνθρωπίνοις νόμοις ἐξ ἁγνῶν καὶ
+παρθενικῶν σπλάγχνων (ὦ θαῦμα ἄπιστον βεβήλοις
+βροτοῖς!) ὁ ἄμβροτος βροτωθεὶς προῆλθε Θεὸς ὁμοῦ
+καὶ ἄνθρωπος, δύο φύσεις εἰς ἓν πρόσωπον συνάγων,
+τὴν μὲν κρυπτομένην καὶ ἀθέατον, τὴν δ' ἀναφανδὸν
+ἀνθρώποις ὁρωμένην· ὧν ἡ μὲν Θεὸς ἦν τῷ ἀνάρχως
+γεννῶντι ὁμοούσιος, ἡ δὲ ἄνθρωπος ἐκτίσται τῇ ἐν
+χρόνῳ τεκούσῃ καὶ ἡμῖν ὁμοφυής.
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="50,450,480,485">
-    51 (21) Εἷς Θεὸς ἀμφοτέρωθεν, ἐπεὶ θεότητι κερασθεὶς [πόστη, κτλ.
+  <bloco tipo="texto_principal" script="grego" bbox="40,900,495,972">
+51 (21) Εἷς Θεὸς ἀμφοτέρωθεν, ἐπεὶ θεότητι κερα-
+σθεὶς
+[ὑπέστη, κτλ.
+
+52 Καὶ βροτὸς ἐκ θεότητος ἄναξ καὶ Χριστὸς
+[ὑπέστη, κτλ.
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="50,490,480,525">
-    52 Καὶ βροτὸς ἐκ θεότητος ἄναξ καὶ Χριστὸς [ὁπόστη, κτλ.
+  <bloco tipo="texto_principal" script="grego" bbox="40,972,495,995">
+Εἷς Θεὸς ὁμολογουμένως ἐκ δυοῖν φύσεων ὑπέστη
+ὁ Χριστός· ἡ γὰρ ἐν αὐτῷ βροτεία φύσις, τῇ θεότητι
+καθ᾿ ὑπόστασιν συνενουμένη, καὶ ἡ θεότης παραδόξως
+τῇ ἀνθρωπότητι συγκιρναμένη, ὁ αὐτὸς βασιλεὺς καὶ
+θεὸς καὶ ἄλλος νέος Ἀδὰμ τὸν παλαιὸν ἐξιώμενος
+πιστεύεται, ὡς ὑπὸ παραπετάσματι δὲ τῷ ἀνθρωπίνῳ
+προβλήματι κεκάλυπτο, πρῶτον μὲν ὅτι μὴ καθαρὰν
+αὐτοῦ τὴν θεότητα φέρειν οἷόν τε, μηδὲ χωρητὸν εἶναι
+τοῦτον τοῖς ἐμπαθέσι γυμνῇ προσεγγίσαι τῇ θεότητι·
+ἔπειτα ὡς ἂν τὸν ἀρχέκακον ὄφιν φρονιμώτατον εἶναι
+τῶν ἀπάντων θηρίων νοητῶν κατοιόμενον, τῷ φαινο-
+μένῳ δελεάσας, τῇ οἰκείᾳ θεότητι ὡς ἐν ἀγκίστρῳ
+περιπείρῃ, καὶ ὡς Ἀδὰμ μὲν αὐτῷ προσπηδήσαντα,
+ὡς Θεῷ δὲ ἀντιβολήσαντα, τοῦτον κατανικήσας καὶ
+βάξις ἐκτίλῃ τῆς ἀρχῆς. « Τῷ πέρι κάρτος, » κ. τ. ἐξ.
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="50,530,480,900">
-    Εἷς Θεὸς ὁμολογουμένως ἐκ δυσὶν φύσεων ὑπέστη ὁ Χριστός· ἡ γὰρ ἐν αὐτῷ βροτεία φύσις, τῇ θεότητι καθ' ὑπόστασιν συνενουμένη, καὶ ἡ θεότης παραδόξως τῇ ἀνθρωπότητι συγχιραμένη, ὁ αὐτὸς βασιλεὺς καὶ Θεὸς κα ἄλλος νέος Ἀδὰμ τὸν παλαιὸν ἐξώμενος πιστεύεται, ὡς πὸ παραπετάσματι δὲ τῷ ἀνθρωπίνῳ προβλήματι κεκάλυπτο, πρῶτον μὲν ὅτι μὴ καθαρὰν αὐτοῦ τν θεότητα φέρειν οἷόν τε, μηδὲ χωρητὸν εἶναι τοῦτον τοῖς ἐμπαθέσι γυμνῇ προσεγγίσαι τῇ θεότητι· ἔπειτα ὡς ἂν τὸν ἀρχέκακον ὄφιν φρονιμώτατον εἶναι τῶν ἀπάντων θηρίων νοητῶν κατοιόμενον, τῷ φαινομένῳ δελεάσας, τῇ οκείᾳ θεότητι ὡς ἐν ἀγκίστρῳ περιτείνῃ, καὶ ὡς Ἀδὰμ μὲν αὐτῷ προστηθήσαντα, ὡς Θεῷ δ ἀντιβολήσαντα, τοῦτον κατανικήσας καὶ βάξις ἐκτίλῃ τῆς ἀρχῆς. « Τῷ πέρι χάριτος, » κ. τ. ἐξ.
+  <bloco tipo="texto_principal" script="latino" bbox="520,175,960,910">
+31 Verum hæc postea. Cum igitur Hebræi vilem
+[habuissent legem], etc.
+Quæ enarrata sunt, ait sapientiæ Dei lucerna, sive
+populorum omnium transitus ad Christum, sive reli-
+quiarum Israel salvatio per zelum et conversionem
+ad Deum, ultimis temporibus revelabuntur. Attamen
+primis manifestationis incarnati Salvatoris tempore-
+bus, cum hinc gentes odio valde essent præ illicita
+idololatria, inde vero Israel variis legis transgres-
+sionibus Deum inhonoraret, tunc ut thesaurus immen-
+sæ bonitatis illustraretur, tantum humana natura sor-
+tita est honorem : juxta æterni Patris beneplacitum,
+cooperante Spiritu sancto, Verbum, unigenitus Dei
+Filius, quam divinæ intelligentiæ scintillam ab ini-
+tio creans hominem in ipsius corpore constituerat,
+eam letalibus erroribus evacuatam cernens, videns et
+tyrannice opprimentem omnes quotquot vivunt draco-
+nem apostatam, misericordia motus alios non sinit in
+tanta auxiliari infirmitate destitutis : non sufficit
+enim ad magnorum malorum curam leve remedium ;
+nimirum, ut ex hominibus suscitaret sibi gentes hære-
+ditatem suam. Filius Patris sine matre, ut imaginem
+suam redimeret a tyrannica possessione, exinanivit
+semetipsum Filius hominis sine patre natus nobis,
+novum super terram, alienigena quia sine viro, et non
+alienigena, quia natura mihi similis, ipse per Vir-
+ginem sanctam matrem factus mortalis, totus to-
+tum Adam per peccatum lapsum assumpsit, ita ut
+omni homini salutem acquireret. Quamobrem juxta
+leges humani generis, et humano generi alienas, e
+sinu casto et virginali, o mirum supra fidem pro
+profanis mortalibus! æternus mortalis factus egressus
+est Deus simul et homo, duas naturas in unam per-
+sonam adducens, quarum altera velata et invisibilis,
+altera palam cerneretur ab hominibus, illa Deus es-
+set genitori ante omne principium consubstantialis,
+hæc homo per creationem esset, eam naturam cum
+matre quæ divinam prolem genuit in tempore nobis-
+cumque sortiens.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="520,60,950,440">
-    31 Verum hæc postea. Cum igitur Hebræi vilem [habuissent legem], etc.[br]
-    QUÆ enarrata sunt, ait sapientiæ Dei lucerna, sive populorum omnium transitus ad Christum, sive reliquiarum Israel salvatio per zelum et conversionem ad Deum, ultimis temporibus revelabuntur. Attamen primis manifestationis incarnati Salvatoris temporibus, cum hinc gentes odio valde essent præ illicita idololatria, inde vero Israel variis legis transgressionibus Deum inhonoraret, tunc ut thesaurus immensæ bonitatis illustraretur, tantum humana natura sortita est honorem : justa æterni Patris beneplacitum, cooperante Spiritu sancto, Verbum, unigenitus Dei Filius, quam divinæ intelligentiæ scintillam ab initio creans hominem in ipsius corpore constituerat, eam letalibus erroribus evacuatam cernens, videns e tyrannide opprimentem omnes quotquot vivunt draconem apostatam, misericordia motus alios non sinit in tanta auxiliai infirmitate destitutis : non sufficit enim ad magnorum malorum curam leve remedium ; nimirum, ut ex hominibus suscitaret sibi gentis hæred t. ionem suam. Filius Patris sine matre, ut imaginem suam redimeret a tyrannica possessione, exinanivit semetipsum Filius hominis sine patre natus nobis, novum super terram, alienigena quia sine viro, et non alienigena, quia naturæ mihi similis, ipse per Virginem sanctam matrem factus mortalis, totus totum Adam per peccatum lapsum assumpsit, ita ut omni homini salutem acquireret. Quamobrem juxta leges humani generis, et humano generi alienas, e sinu casto et virginali, o mirum supra fidem pro profanis mortalibus ! æternus mortalis factus egressus est Deus simul et homo, duas naturas in unam personam adducens, quarum altera velata et invisibilis, altera palam cerneretur ab hominibus, illa Deus esset genitori ante omne principium consubstantialis, hæc homo per creationem esset, eam naturam cum matre quæ divinam prolem genuit in tempore nobiscumque sortiens.
+  <bloco tipo="texto_principal" script="latino" bbox="520,900,960,972">
+51 Unus Deus utrinque, siquidem deitati mistus.
+
+52 Et homo per deitatem rex et Christus exstitit, etc.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="520,450,950,485">
-    51 Unus Deus utrinque, siquidem deitati mistus.
+  <bloco tipo="texto_principal" script="latino" bbox="520,972,960,995">
+Unus Deus, duabus constans naturis ab hominibus
+prædicatur Christus. Namque in ipso natura mor-
+talis divinitati secundum hypostasim unita et
+divinitas mirabiliter humanitati conjuncta, ecce rex,
+Deus, novus Adam alter, alterum veterem sanans
+creditur. Sic sub velamine hominis forma myste-
+rio plena latebat, primo quidem, quia puram ejus
+divinitatem ferre nefas, neque cum affectionibus
+nostris simpliciter manifestata divinitas appropin-
+quari potest. Deinde ut summum in malitia serpen-
+tem, qui putabatur callidissimus omnium animan-
+tium intelligentia præditorum, specie delusum pro-
+prio numine quasi hamo transfigeret, et eumdem
+irruentem in Christum tanquam in Adamum, tan-
+quam Deo autem cum obsecrationibus obviantem
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="520,490,950,525">
-    52 Et homo per deitatem rex et Christus exstitit, etc.
-  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="40,982,760,999">(21) Iidem versus repetuntur carm. 2 [1], vers. 153, 154.</bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="520,530,950,900">
-    Unus Deus, duabus constans naturis ab hominibus prædicatur Christus. Namque in ipso natura mortalis divinitati secundum hypostasim unita et divinitas mirabiliter humanitati conjuncta, ecce rex, Deus, novus Adam alter, alterum veterem sanans creditur. Sic sub velamine hominis forma mysterio plena latebat, primo quidem, quia puram ejus divinitatem ferre nefas, neque cum affectionibus nostris simpliciter manifestata divinitas appropi-[br/]quari potest. Deinde ut summum in malitia serpentem, qui putabatur callidissimus omnium animantium intelligentia præditorum, specie delusum proprio numine quasi hamo transfigeret. et eumdem irruentem in Christum tanquam in Adamum, tanquam Deo autem cum obsecrationibus obviantem
-  </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="50,920,500,960">
-    (21) Iidem versus repetuntur carm. 2 [1], vers. 153, 154.
-  </bloco>
-
-  <bloco tipo="outro" script="latino" bbox="600,950,900,990">
-    Digitized by Google
-  </bloco>
-
-  <notas>
-    Transcrição literal mantendo abreviações visíveis (ex: "hæred t. ionem", "appropi- / quari"). O caractere na linha 1 da coluna grega foi transcrito como "1" devido à aparência visual, embora philologicamente possa ser "ἢ".
-  </notas>
+  <notas>Transcrição diplomática; bboxes estimados em escala 0-1000.</notas>
 </pagina>

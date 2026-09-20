@@ -1,7 +1,10 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="misto" bbox="70,55,920,85">443                                             SECTIO I. POEMATA DOGMATICA.</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="850,55,910,85">445</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="70,85,480,295">80 Ἐρχόμενοι καλέουσιν, ἀπεχθαίρουσι δ' ἄγοντες·
+  <bloco tipo="cabecalho" script="latino" bbox="70,55,120,90">443</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="330,52,670,92">SECTIO I. POEMATA DOGMATICA.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="880,55,930,90">446</bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="70,105,485,370">
+80 Ἐρχόμενοι καλέουσιν, ἀπεχθαίρουσι δ' ἄγοντες·
 Νὺξ, φάος, ὥς κεν ἕλωσιν, ἢ ἀμφαδὸν, ἢ λοχῶντες.
 Τοίη μὲν κείνων στρατιὴ, τοῖος δὲ καὶ ἀρχὸς,
 Χριστὸς δ' οὔτε μιν ἔσχεν αἰστώσας ἰότητι,
@@ -12,9 +15,13 @@
 Δῶκε δ' ἐπ' ἀλλήλοισι κακὸν μόθον, ὡς ὁ μὲν αἰνὸν
 Αἶσχος ἔχῃ, καὶ τῇδε, χερείονί περ πολεμίζων,
 90 Οἱ δ' ἀρετῇ μογέοντες ἐὸν κλέος αἰὲν ἔχωσιν,
-Ὥς χρυσὸς, χοάνοισι καθαιρόμενοι βιότοιο,</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,82,500,105">A</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="495,85,915,295">Ἢ τάχα κεν μετέπειτα δίκας τίσειεν ἀτειρής,
+Ὥς χρυσός, χοάνοισι καθαιρόμενοι βιότοιο,
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="485,122,505,150">A</bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="505,105,935,395">
+Ἢ τάχα κεν μετέπειτα δίκας τίσειεν ἀτειρής,
 Ὕλης δ' ἀπτομένης, ὅτε ἔμπυρός ἐστιν ἄμειψις,
 Πολλὰ πάροιθεν ἑοῖσιν ἐνὶ δρηστῆρσι δαμασθεὶς
 95 Τειρομένοις· τὸ γάρ ἐστι κακοῦ γεννήτορι τίσις.
@@ -22,49 +29,55 @@
 Πρώτης θ', ὑστατίης τε. Μέτρον δέ τε κἀνάδ' ἀνεῦρε.
 Μέτρον δ' αὖ Θεός ἐστιν. Ὅσον πελάει τις ἄνακτι,
 Τοσσάτιον φάος ἐστὶν, ὅσον φάος, εὖχος ὁμοῖον.
+  </bloco>
 
-Ἡ'. Περὶ ψυχῆς.
+  <bloco tipo="cabecalho" script="misto" bbox="620,405,795,445">H'. Περὶ ψυχῆς.</bloco>
 
+  <bloco tipo="texto_principal" script="grego" bbox="520,445,930,565">
 Ψυχὴ δ' ἐστὶν ἄεημα Θεοῦ, καὶ μίξιν ἀνέτλη
-Οὐρανίη χθονίοιο, φάος σπήλυγγι καλυφθέν,</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="190,285,755,600">80 Veniunt, cum vocantur, odere cum abducunt;
-Nox et lux, ut capiant, vel aperte, vel ex insidiis.
-Talis quidem illorum exercitus, talisque dux:
-Quem quidem Christus eodem consilio quo mundum
-Universum creavit, nec prorsus delevit: perdidisset autem
-85 Protinus, si voluisset (difficile enim Dei iram fugere):
-Neque etiam liberum reliquit hostem meum,
-Sed medium dimisit inter bonos pariter et malos;
-Movitque grave bellum inter eos, ut ille quidem magnum
-Etiam in hac re probrum haberet, dum certat cum debiliore,
-90 Illi vero virtutis laboribus æternam gloriam consequantur,
-Velut aurum, vitæ fornacibus expurgati;
-Et fortasse pœnas deinceps indomitus Satan persolvet,
-Materia accensa, cum ignea erit merces,
-Multa prius in suis ministris perpessus
-95 Dum illi torquentur. Hoc mali parenti supplicium est.
-Atque hæc quidem me de angelico lumine Spiritus edocuit
-Primo et posteriore. Mensuram hic quoque invenit;
-Mensura autem hæc est, Deus ipse. Quantum quis ad regem accedit,
-Tantum habet lucis, quantum lucis, tantum gloriæ.</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="405,560,600,585">VIII. De anima.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="195,585,625,625">Anima flatus est Dei, mistionemque cœlestis
-Pertulit cum terrestri, lux antro cooperta,</bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="70,625,485,825">• Alias Bill. 76, p. 170.
+Οὐρανίη χθονίοιο, φάος σπήλυγγι καλυφθέν,
+  </bloco>
 
-80 Ἐρχόμενοι καλέουσιν. Int. ἡμᾶς πρὸς ἡδονὰς, μισοῦσι δὲ λαβόντες.
-81 Νὺξ, etc. Int. ὅπερ εἰσὶ, φαινόμενοι, ἢ φῶς, ὅπερ δοκοῦσιν, ὑποκρινόμενοι. Veniunt ut lux, quod sunt, cum ad apertum scelus nos trahere conantur, ut nox autem, cum per objectam virtutis speciem falsam, ad vitium callide nos alliciunt.
+  <bloco tipo="aparato_critico" script="misto" bbox="65,585,485,770">
+• Alias Bill. 76, p. 170.
+
+80 Ἐρχόμενοι καλέουσιν. Int. ἡμᾶς πρὸς ἡδο-
+νὰς, μισοῦσι δὲ λαβόντες.
+81 Νὺξ, etc. Int. ὅπερ εἰσὶ, φαινόμενοι, ἢ φῶς,
+ὅπερ δοκοῦσιν, ὑποκρινόμενοι. Veniunt ut lux, quod
+sunt, cum ad apertum scelus nos trahere conantur,
+ut nox autem, cum per objectam virtutis speciem fal-
+sam, ad vitium callide nos alliciunt.
 82 Τοῖος δὲ καὶ. Sic Reg. 992. Edit. τοῖος δέ τε.
-83 Χριστὸς δ' οὔτε. Int. ὁ Χριστὸς δὲ καὶ ὁ Θεὸς ἡμῶν οὔτε ἐπέσχεν αὐτόν, καὶ ἠφάνισεν (ἴσχυσε γὰρ, εἰ ἐβούλετο, τῇ παντουργῷ αὐτοῦ δυνάμει ἀνελεῖν ἐκεῖνον). Christus autem et Deus noster neque eum repressit et penitus sustulit (poterat enim, si voluisset, omnipotenti sua virtute eum delere).</bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="500,625,925,825">91 Χοάνοισι. Sic Coisl. et Vaticanus. Mendose editi χράνοισι.
-92 Δίκας τίσειεν ἀτειρής. Int. ἢ τάχα διὰ τοῦτο, καὶ ἵνα πλείονα δίκην δῷ κατὰ τὸν αἰῶνα μέλλοντα. Ei fortasse ut acrioribus suppliciis in ævo futuro afficiatur.
+83 Χριστὸς δ' οὔτε. Int. ὁ Χριστὸς δὲ καὶ ὁ Θεὸς
+ἡμῶν οὔτε ἐπέσχεν αὐτόν, καὶ ἠφάνισεν (ἴσχυσε γὰρ,
+εἰ ἐβούλετο, τῇ παντουργῷ αὐτοῦ δυνάμει ἀνελεῖν
+ἐκεῖνον). Christus autem et Deus noster neque eum
+repressit et penitus sustulit (poterat enim, si voluis-
+set, omnipotenti sua virtute eum delere).
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="505,585,935,785">
+91 Χοάνοισι. Sic Coisl. et Vaticanus. Mendose
+editi χράνοισι.
+92 Δίκας τίσειεν ἀτειρής. Int. ἢ τάχα διὰ τοῦτο,
+καὶ ἵνα πλείονα δίκην δῷ κατὰ τὸν αἰῶνα μέλλοντα.
+Ei fortasse ut acrioribus suppliciis in ævo futuro af-
+ficiatur.
 93 Ὕλης δ' ἀπτομένης. Forte ὕλης δαπτομένης.
 95 Κακοῦ. Sic Coisl. Mendose editi κακῶν.
-97 Πρώτης θ' ὑστατίης τε. Primos vocat bonos; ultimos vero malos.
-98 Μέτρον δ' αὖ Θεός. Coisl. Hesych. μέτρον αὖθις ἐστιν ὅσον.
-VIII. 2 Σπήλυγγι. Sic Coisl. et Vat. cum tribus aliis. Edit. σπήλιγγι.</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="400,835,610,865">METRICA VERSIO.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="70,860,485,990">Tartarei, clausique antris, sine fronte, ducesque
+97 Πρώτης θ' ὑστατίης τε. Primos vocat bonos
+angelos, ultimos vero malos.
+98 Μέτρον δ' αὖ Θεός. Coisl. Hesych. μέτρον
+αὖθις ἐστιν ὅσον.
+VIII. 2 Σπήλυγγι. Sic Coisl. et Vat. cum tribus
+aliis. Edit. σπήλιγγι.
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="380,800,620,835">METRICA VERSIO.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="70,835,485,995">
+Tartarei, clausique antris, sine fronte, ducesque
 Præstigiosorum; veniunt cum forte vocantur:
 Atque odere tamen quos ad certissima damna
 Exitiumque trahunt; nox sunt et lumen, aperto
@@ -83,9 +96,13 @@ Inferiore cadit præceps dum victus ab hoste:
 Qui vero ærumnas subeunt virtutis amore,
 Ut fulvum rapidis purgatur in ignibus aurum,
 Sic illi ardenti vitæ in fornace probati,
-Insignem obtineant mansura in sæcula laudem.</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="485,858,505,880">B</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,860,925,990">Postea quin etiam pœnas dabit ille perennes
+Insignem obtineant mansura in sæcula laudem.
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,845,510,875">B</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="505,835,935,995">
+Postea quin etiam pœnas dabit ille perennes
 (Tum cum materiæ tandem accendetur, eritque
 Flamma ultrix scelerum) graviter cruciatus eorum
 Ante oculos, habuit quos ad sua jussa ministros.
@@ -93,15 +110,20 @@ Namque ea pœna decet culpæ scelerisque parentem.
 Hæc me de primis, de posterioribus atque
 Mentibus angelicis docuit sanctissimus ille
 Spiritus. At vero quis sit modus alta petendi,
-Ipse quoque invenit. Namque hic modus est Deus ipse.
+Ipse quoque invenit. Namque hic modus est Deus
+ipse.
 Quanto etenim Triadi propior mens quæque est,
 Lucidior tanto est etiam: quantoque vicissim
 Lucidior, tanto majori gaudet honore.
+  </bloco>
 
-VIII. DE ANIMA.
-(Billio interprete.)
+  <bloco tipo="cabecalho" script="latino" bbox="405,995,600,1025">VIII. DE ANIMA.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="445,1025,555,1055">(Billio interprete.)</bloco>
 
+  <bloco tipo="texto_principal" script="latino" bbox="190,1055,820,1115">
 Numinis est animus flatus, qui, cœlitus ortus,
-Nexum terrena subiit cum carne jugalem,</bloco>
-  <notas>As letras marginais A e B foram mantidas em blocos próprios. Os identificadores C e D não apresentam tinta visível nesta página.</notas>
+Nexum terrena subiit cum carne jugalem,
+  </bloco>
+
+  <notas>Bases visuais: leitura em duas colunas, da esquerda para a direita em cada faixa horizontal. As notas marginais A e B foram separadas em blocos próprios; C e D não apresentam tinta visível nesta página. BBOX aproximado em escala 0-1000.</notas>
 </pagina>

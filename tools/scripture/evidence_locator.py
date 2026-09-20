@@ -15,6 +15,8 @@ from difflib import SequenceMatcher
 from pathlib import Path
 from typing import Any, Callable, Mapping, Sequence
 
+from tools.corpus_utils import discover_preferred_pages_recursive
+
 from .book_catalog import (
     aliases_for_book,
     canonical_book_key,
@@ -853,7 +855,7 @@ def add_scripture_evidence_candidates(
         }
     citation_pattern, alias_to_book = _compile_book_pattern(refs_by_book)
     files = sorted(
-        (path.resolve() for path in root.rglob("*.txt") if path.is_file()),
+        (path.resolve() for path in discover_preferred_pages_recursive(root)),
         key=lambda path: str(path),
     )
     file_texts = {path: reader(path) for path in files}

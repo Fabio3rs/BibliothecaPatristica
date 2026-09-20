@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Mapping
 
-from tools.corpus_utils import page_sort_key
+from tools.corpus_utils import discover_preferred_pages, page_sort_key
 
 
 CHECKPOINT_SCHEMA_VERSION = 1
@@ -76,7 +76,7 @@ def build_source_snapshot(
     reused_hash_count = 0
     hashed_file_count = 0
     total_bytes = 0
-    for path in sorted(root.glob("*.txt"), key=page_sort_key):
+    for path in discover_preferred_pages(root, volume_id=root.parent.name):
         stat = path.stat()
         relative = path.relative_to(root).as_posix()
         previous = previous_by_path.get(relative)

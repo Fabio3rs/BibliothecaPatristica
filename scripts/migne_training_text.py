@@ -31,6 +31,12 @@ from typing import Iterable, List
 from multiprocessing import Pool, cpu_count
 import xml.etree.ElementTree as ET
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from tools.corpus_utils import discover_preferred_pages_recursive
+
 
 _BULLETISH = {
     "†",
@@ -968,8 +974,9 @@ def main() -> None:
             print(f"XML dir não encontrado: {xml_dir}")
         else:
             # aceitar tanto .xml quanto .txt (XML embutido em .txt)
-            files = list(sorted(xml_dir.rglob("*.xml"))) + list(
-                sorted(xml_dir.rglob("*.txt"))
+            files = list(sorted(xml_dir.rglob("*.xml"))) + discover_preferred_pages_recursive(
+                xml_dir,
+                suffixes=(".txt",),
             )
             for p in files:
                 if p.suffix.lower() == ".xml":

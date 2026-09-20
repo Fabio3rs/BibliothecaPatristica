@@ -8,7 +8,13 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
-from tools.corpus_utils import PROJECT_ROOT, now_iso, page_number, page_sort_key
+from tools.corpus_utils import (
+    PROJECT_ROOT,
+    discover_preferred_pages,
+    now_iso,
+    page_number,
+    page_sort_key,
+)
 from .index_target_locator import parse_ocr_page_xml
 
 COLLECTIONS_SUPPORTED = {"PG", "PL"}
@@ -354,7 +360,10 @@ def _load_files(source_root: Path | None, files: list[Path] | None) -> list[Path
         return sorted(files, key=page_sort_key)
     if not source_root:
         return []
-    return sorted(source_root.glob("*.txt"), key=page_sort_key)
+    return discover_preferred_pages(
+        source_root,
+        volume_id=source_root.parent.name,
+    )
 
 
 def _extract_pair_candidates(text: str) -> list[tuple[int, int]]:

@@ -25,6 +25,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import ocr_versions_db as vdb
+from tools.corpus_utils import discover_unique_pages, page_number, resolve_page_file
 
 BATCH_SIZE = 5000
 SENTINEL = None  # sinaliza fim de dados
@@ -36,8 +37,7 @@ SENTINEL = None  # sinaliza fim de dados
 
 
 def parse_page_num(txt_path: Path) -> int | None:
-    m = re.search(r"-([0-9]{1,4})$", txt_path.stem)
-    return int(m.group(1)) if m else None
+    return page_number(txt_path)
 
 
 def find_image_for_txt(txt_path: Path, images_dir: Path) -> Path | None:
@@ -45,14 +45,15 @@ def find_image_for_txt(txt_path: Path, images_dir: Path) -> Path | None:
     if page_num is None:
         return None
     volume = txt_path.parent.parent.name
-    stable = images_dir / f"{volume}-{page_num:03d}.png"
-    if stable.exists():
-        return stable
-    candidates = sorted(images_dir.glob(f"*-{page_num:03d}.png"))
-    if candidates:
-        return candidates[0]
-    candidates = sorted(images_dir.glob(f"*-{page_num}.png"))
-    return candidates[0] if candidates else None
+    match, ambiguous = resolve_page_file(
+        images_dir,
+        volume_id=volume,
+        page_num=page_num,
+        suffixes=(".png",),
+    )
+    if ambiguous:
+        raise RuntimeError(f"{volume}:{page_num} tem imagens ambíguas")
+    return match
 
 
 # ---------------------------------------------------------------------------
@@ -92,7 +93,7 @@ def _compute_worker(
         if not text_dir.is_dir():
             continue
 
-        txt_files = sorted(text_dir.glob("*.txt"))
+        txt_files = discover_unique_pages(text_dir, volume_id=vol_dir.name)
         if not txt_files:
             continue
 
@@ -298,7 +299,10 @@ def main() -> None:
         sys.exit(0)
 
     if args.dry_run:
-        total = sum(len(list((d / "text").glob("*.txt"))) for d in volume_dirs)
+        total = sum(
+            len(discover_unique_pages(d / "text", volume_id=d.name))
+            for d in volume_dirs
+        )
         print(f"[DRY-RUN] {len(volume_dirs)} volumes, {total} arquivos .txt")
         return
 

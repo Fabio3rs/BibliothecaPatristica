@@ -20,6 +20,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Iterable, List, Tuple
 
+from tools.corpus_utils import resolve_page_file
+
 PROJECT_ROOT = Path(__file__).resolve().parent
 DEFAULT_DB = PROJECT_ROOT / "data" / "patristica_resumos.db"
 DEFAULT_ROOT = PROJECT_ROOT / "teste"
@@ -54,13 +56,15 @@ def page_file_exists(doc: str, page_num: int, root: Path = DEFAULT_ROOT) -> bool
     doc_dir = root / doc / "text"
     if not doc_dir.exists():
         return False
-    pattern_list = list(doc_dir.glob(f"*-{page_num}.txt")) + list(doc_dir.glob(f"*{page_num}.txt"))
-    for f in pattern_list:
-        # evita falso positivo (ex: 1234.txt quando procuramos 34.txt)
-        if re.search(rf"[^0-9]?{page_num}\.txt$", f.name):
-            if f.stat().st_size > 0:
-                return True
-    return False
+    page_file, ambiguous = resolve_page_file(
+        doc_dir,
+        volume_id=doc,
+        page_num=page_num,
+        suffixes=(".txt",),
+    )
+    if ambiguous:
+        raise RuntimeError(f"{doc}:{page_num} tem textos OCR ambíguos")
+    return page_file is not None and page_file.stat().st_size > 0
 
 
 def count_from_page(con: sqlite3.Connection, doc: str, start_page: int) -> int:

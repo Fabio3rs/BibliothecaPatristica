@@ -9,7 +9,7 @@ from typing import Any, Iterable
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from tools.corpus_utils import page_number, page_sort_key
+from tools.corpus_utils import discover_preferred_pages, page_number, page_sort_key
 from tools.ocr_xml_utils import read_ocr_page
 
 
@@ -35,7 +35,7 @@ def files_for_args(args: argparse.Namespace) -> list[Path]:
         text_root = args.root / args.volume / "text"
         if not text_root.exists():
             raise SystemExit(f"Text directory not found: {text_root}")
-        volume_files = sorted(text_root.glob("*.txt"), key=page_sort_key)
+        volume_files = discover_preferred_pages(text_root, volume_id=args.volume)
         if args.pages:
             wanted = parse_pages_spec(args.pages)
             volume_files = [path for path in volume_files if page_number(path) in wanted]

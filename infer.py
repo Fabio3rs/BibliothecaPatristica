@@ -6,6 +6,7 @@ Suporta paralelismo via --jobs (workers independentes, lotes atômicos via WAL)
 
 import argparse
 import base64
+from collections import Counter
 import email.utils
 import json
 import math
@@ -41,6 +42,8 @@ import cv2
 import numpy as np
 import io
 from PIL import Image
+from rapidfuzz.distance import Levenshtein as RapidFuzzLevenshtein
+from tools.corpus_utils import resolve_page_file
 
 # ---------------------------------------------------------------------------
 # Constantes
@@ -60,6 +63,8 @@ DEFAULT_API_CONCURRENCY = None
 DEFAULT_RATE_LIMIT_RETRIES = 8
 DEFAULT_RATE_LIMIT_BACKOFF_BASE = 1.0
 DEFAULT_RATE_LIMIT_BACKOFF_MAX = 60.0
+DEFAULT_AUTO_REFUSE_MAX_CONSENSUS = 0.05
+DEFAULT_AUTO_REFUSE_UNKNOWN_MARKER_COUNT = 3
 CROP_PADDING = 2
 MAX_ERROR_BODY_CHARS = 2000
 SYSTEM_PROMPT = """You are a precise OCR post-processor specializing in classical Latin and Ancient Greek manuscripts and printed editions.
@@ -1081,6 +1086,21 @@ def strip_think(text: str) -> str:
     return re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL).strip()
 
 
+class UnexpectedAPIResponseError(TypeError):
+    """Resposta HTTP válida, porém incompatível com o formato esperado."""
+
+    def __init__(
+        self,
+        message: str,
+        *,
+        response: requests.Response,
+        request_payload: dict,
+    ) -> None:
+        super().__init__(message)
+        self.response = response
+        self.request_payload = request_payload
+
+
 def _safe_url(url: str | None) -> str | None:
     if not url:
         return None
@@ -1115,6 +1135,45 @@ def _interesting_http_headers(headers) -> dict[str, str]:
         if str(key).lower().startswith("x-ratelimit")
         or str(key).lower() in {"retry-after", "x-request-id"}
     }
+
+
+def _response_headers_for_diagnostic(headers) -> dict[str, str]:
+    """Cabeçalhos de resposta, removendo valores que possam ser credenciais."""
+    if not headers:
+        return {}
+    return {
+        str(key): (
+            "<redacted>"
+            if any(
+                secret in str(key).lower()
+                for secret in ("authorization", "cookie", "api-key", "token", "secret")
+            )
+            else str(value)
+        )
+        for key, value in headers.items()
+    }
+
+
+def _diagnostic_request_payload(payload: dict) -> dict:
+    """Versão registrável do payload, sem o base64 da imagem."""
+    sanitized = json.loads(json.dumps(payload))
+    for message in sanitized.get("messages", []):
+        content = message.get("content")
+        if not isinstance(content, list):
+            continue
+        for item in content:
+            image_url = item.get("image_url") if isinstance(item, dict) else None
+            url = image_url.get("url") if isinstance(image_url, dict) else None
+            if isinstance(url, str) and url.startswith("data:"):
+                image_url["url"] = f"<data-url omitted; chars={len(url)}>"
+    return sanitized
+
+
+def _response_body_for_diagnostic(response: requests.Response) -> str:
+    return _compact_error_body(
+        response.content[: MAX_ERROR_BODY_CHARS * 4 + 1],
+        response.encoding or "utf-8",
+    )
 
 
 def _http_status_code(exc: Exception) -> int | None:
@@ -1228,9 +1287,19 @@ def format_inference_error(
     url = None
     body = ""
     headers = {}
+    response_payload = ""
+    request_payload = None
 
     try:
-        if isinstance(exc, urllib.error.HTTPError):
+        if isinstance(exc, UnexpectedAPIResponseError):
+            response = exc.response
+            status = response.status_code
+            reason = response.reason
+            url = _safe_url(response.url)
+            headers = _response_headers_for_diagnostic(response.headers)
+            response_payload = _response_body_for_diagnostic(response)
+            request_payload = exc.request_payload
+        elif isinstance(exc, urllib.error.HTTPError):
             status = exc.code
             reason = exc.reason
             url = _safe_url(exc.geturl())
@@ -1265,6 +1334,10 @@ def format_inference_error(
         fields.append(f"body={body!r}")
     if headers:
         fields.append(f"headers={headers!r}")
+    if response_payload:
+        fields.append(f"response_payload={response_payload!r}")
+    if request_payload is not None:
+        fields.append(f"request_payload={request_payload!r}")
     if status is None:
         fields.append(f"message={str(exc)!r}")
 
@@ -1328,6 +1401,281 @@ def agreement_score(a: str, b: str) -> float:
     return round(1.0 - levenshtein(a, b) / max_len, 4)
 
 
+def connect_read_only_db(path: str) -> sqlite3.Connection:
+    """Abre o SQLite sem alterar journal mode, schema ou dados."""
+    db_path = Path(path).resolve()
+    if not db_path.is_file():
+        raise FileNotFoundError(f"Banco SQLite não encontrado: {db_path}")
+    conn = sqlite3.connect(f"{db_path.as_uri()}?mode=ro", uri=True)
+    conn.row_factory = sqlite3.Row
+    conn.execute("PRAGMA query_only = ON")
+    return conn
+
+
+def _auto_refuse_source_rows(
+    conn: sqlite3.Connection,
+    limit: int | None,
+):
+    """Itera versões atuais de linhas inferred com ao menos duas engines."""
+    limit_sql = ""
+    params: tuple[object, ...] = ()
+    if limit is not None:
+        limit_sql = "LIMIT ?"
+        params = (limit,)
+    return conn.execute(
+        f"""
+        WITH eligible AS (
+            SELECT l.id, l.page_id, l.volume
+            FROM lines AS l
+            JOIN line_versions AS lv ON lv.line_id = l.id
+            WHERE l.status = 'inferred'
+              AND lv.is_current = 1
+            GROUP BY l.id
+            HAVING COUNT(DISTINCT lv.provider || char(31) || lv.model) >= 2
+            ORDER BY l.id ASC
+            {limit_sql}
+        )
+        SELECT
+            eligible.id AS line_id,
+            eligible.page_id,
+            eligible.volume,
+            lv.id AS version_id,
+            lv.provider,
+            lv.model,
+            lv.text_content,
+            lv.updated_at
+        FROM eligible
+        JOIN line_versions AS lv ON lv.line_id = eligible.id
+        WHERE lv.is_current = 1
+        ORDER BY eligible.id ASC, lv.provider ASC, lv.model ASC,
+                 lv.updated_at DESC, lv.id DESC
+        """,
+        params,
+    )
+
+
+def _auto_refuse_decision(
+    line_id: int,
+    page_id: str,
+    volume: str,
+    versions: list[sqlite3.Row],
+    *,
+    max_consensus: float,
+    unknown_marker_count: int,
+) -> dict | None:
+    """Retorna o registro auditável quando uma linha deve ser rejeitada."""
+    latest_by_engine: dict[tuple[str, str], sqlite3.Row] = {}
+    for version in versions:
+        identity = (version["provider"] or "", version["model"] or "")
+        latest_by_engine.setdefault(identity, version)
+
+    current = []
+    for (provider, model), version in sorted(latest_by_engine.items()):
+        text = version["text_content"] or ""
+        current.append(
+            {
+                "provider": provider,
+                "model": model,
+                "text": text,
+                "normalized_text": normalize_for_consensus(text),
+                "unknown_marker_count": text.count("[?]"),
+            }
+        )
+    if len(current) < 2:
+        return None
+
+    has_strong_unknown_markers = any(
+        item["unknown_marker_count"] >= unknown_marker_count for item in current
+    )
+    best_pair: dict | None = None
+    for left_index, left in enumerate(current):
+        for right in current[left_index + 1 :]:
+            left_text = left["normalized_text"]
+            right_text = right["normalized_text"]
+            if not left_text and not right_text:
+                score = 1.0
+            elif not left_text or not right_text:
+                score = 0.0
+            else:
+                max_length = max(len(left_text), len(right_text))
+                score = round(
+                    1.0
+                    - RapidFuzzLevenshtein.distance(left_text, right_text) / max_length,
+                    4,
+                )
+            pair = {
+                "left_engine": f"{left['provider']}:{left['model']}",
+                "right_engine": f"{right['provider']}:{right['model']}",
+                "score": score,
+            }
+            if best_pair is None or score > best_pair["score"]:
+                best_pair = pair
+            # Sem marcador forte, basta um único par acima do limiar: o maior
+            # consenso não pode mais caracterizar discordância total.
+            if score > max_consensus and not has_strong_unknown_markers:
+                return None
+
+    reasons: list[str] = []
+    if best_pair is not None and best_pair["score"] <= max_consensus:
+        reasons.append("all_engines_disagree")
+    if has_strong_unknown_markers:
+        reasons.append("strong_unknown_markers")
+    if not reasons:
+        return None
+
+    return {
+        "line_id": line_id,
+        "page_id": page_id or "",
+        "volume": volume or "",
+        "status_before": "inferred",
+        "decision": "rejected",
+        "reasons": reasons,
+        "engine_count": len(current),
+        "max_consensus": best_pair["score"] if best_pair is not None else None,
+        "most_similar_pair": best_pair,
+        "versions": current,
+    }
+
+
+def find_auto_refuse_candidates(
+    conn: sqlite3.Connection,
+    *,
+    max_consensus: float = DEFAULT_AUTO_REFUSE_MAX_CONSENSUS,
+    unknown_marker_count: int = DEFAULT_AUTO_REFUSE_UNKNOWN_MARKER_COUNT,
+    limit: int | None = None,
+) -> tuple[list[dict], int, Counter]:
+    """Avalia consenso completo entre engines atuais, sem escrever no banco."""
+    decisions: list[dict] = []
+    reasons: Counter = Counter()
+    eligible_lines = 0
+    current_line_id: int | None = None
+    current_page_id = ""
+    current_volume = ""
+    versions: list[sqlite3.Row] = []
+
+    def finish_line() -> None:
+        nonlocal eligible_lines, versions
+        if current_line_id is None:
+            return
+        eligible_lines += 1
+        decision = _auto_refuse_decision(
+            current_line_id,
+            current_page_id,
+            current_volume,
+            versions,
+            max_consensus=max_consensus,
+            unknown_marker_count=unknown_marker_count,
+        )
+        if decision is not None:
+            decisions.append(decision)
+            reasons.update(decision["reasons"])
+        versions = []
+
+    for row in _auto_refuse_source_rows(conn, limit):
+        line_id = int(row["line_id"])
+        if current_line_id is not None and line_id != current_line_id:
+            finish_line()
+        if current_line_id != line_id:
+            current_line_id = line_id
+            current_page_id = row["page_id"] or ""
+            current_volume = row["volume"] or ""
+        versions.append(row)
+    finish_line()
+    return decisions, eligible_lines, reasons
+
+
+def write_auto_refuse_report(
+    report_path: Path,
+    decisions: list[dict],
+    *,
+    dry_run: bool,
+    overwrite: bool,
+) -> None:
+    if report_path.exists() and not overwrite:
+        raise FileExistsError(
+            f"Relatório já existe: {report_path}. Use --overwrite-auto-refuse-report para substituí-lo."
+        )
+    if not report_path.parent.is_dir():
+        raise FileNotFoundError(f"Diretório do relatório não existe: {report_path.parent}")
+    with report_path.open("w", encoding="utf-8") as handle:
+        for decision in decisions:
+            record = dict(decision)
+            record["action"] = "would_reject" if dry_run else "rejected"
+            handle.write(json.dumps(record, ensure_ascii=False, sort_keys=True) + "\n")
+
+
+def auto_refuse_lines(
+    db: str,
+    report_path: str,
+    *,
+    dry_run: bool,
+    max_consensus: float = DEFAULT_AUTO_REFUSE_MAX_CONSENSUS,
+    unknown_marker_count: int = DEFAULT_AUTO_REFUSE_UNKNOWN_MARKER_COUNT,
+    limit: int | None = None,
+    overwrite_report: bool = False,
+) -> tuple[int, int, Counter]:
+    """Rejeita linhas inferred com consenso multi-engine defeituoso."""
+    if not 0.0 <= max_consensus <= 1.0:
+        raise ValueError("max_consensus deve estar entre 0.0 e 1.0")
+    if unknown_marker_count < 1:
+        raise ValueError("unknown_marker_count deve ser maior que zero")
+    if limit is not None and limit < 1:
+        raise ValueError("limit deve ser maior que zero")
+
+    conn = connect_read_only_db(db) if dry_run else connect_db(db)
+    try:
+        decisions, eligible_lines, reasons = find_auto_refuse_candidates(
+            conn,
+            max_consensus=max_consensus,
+            unknown_marker_count=unknown_marker_count,
+            limit=limit,
+        )
+    finally:
+        conn.close()
+
+    resolved_report = Path(report_path).resolve()
+    write_auto_refuse_report(
+        resolved_report,
+        decisions,
+        dry_run=dry_run,
+        overwrite=overwrite_report,
+    )
+
+    changed = 0
+    if not dry_run and decisions:
+        conn = connect_db(db)
+        try:
+            def _apply() -> int:
+                conn.execute("BEGIN IMMEDIATE")
+                cursor = conn.executemany(
+                    """
+                    UPDATE lines
+                    SET status = 'rejected', updated_at = datetime('now')
+                    WHERE id = ? AND status = 'inferred'
+                    """,
+                    ((decision["line_id"],) for decision in decisions),
+                )
+                conn.commit()
+                return cursor.rowcount
+
+            changed = _run_db_with_retry(conn, _apply)
+        finally:
+            conn.close()
+
+    label = "[DRY-RUN]" if dry_run else "[DONE]"
+    print(
+        f"{label} Auto-refuse: elegíveis={eligible_lines} "
+        f"candidatas={len(decisions)} alteradas={changed} "
+        f"relatório={resolved_report}"
+    )
+    if reasons:
+        print(
+            f"{label} Motivos: "
+            + ", ".join(f"{reason}={count}" for reason, count in sorted(reasons.items()))
+        )
+    return len(decisions), changed, reasons
+
+
 def encoded_image_dimensions(image_bytes: bytes | None) -> tuple[int, int]:
     """Lê largura e altura da imagem codificada sem decodificar todos os pixels."""
     if not image_bytes:
@@ -1344,7 +1692,7 @@ def parse_page_num_from_filename(image_path: Path) -> Optional[int]:
     """
     Extrai o sufixo numérico final da imagem, ex.: foo-076.png -> 76.
     """
-    m = re.search(r"-([0-9]{1,4})$", image_path.stem)
+    m = re.search(r"-(\d+)$", image_path.stem)
     return int(m.group(1)) if m else None
 
 
@@ -1365,21 +1713,21 @@ def txt_path_for_image(img_path: Path, txt_dir: Path) -> Path:
     - Caso contrário, procura qualquer txt que termine com o número da página.
     - Fallback: path estável mesmo que ainda não exista (para escrita).
     """
-    stable = txt_dir / (img_path.stem + ".txt")
-    if stable.exists():
-        return stable
-
     page_num = parse_page_num_from_filename(img_path)
     if page_num is not None:
-        # prioriza zero-padding, depois sem padding
-        candidates = sorted(txt_dir.glob(f"*-{page_num:03d}.txt"))
-        if candidates:
-            return candidates[0]
-        candidates = sorted(txt_dir.glob(f"*-{page_num}.txt"))
-        if candidates:
-            return candidates[0]
+        volume_id = txt_dir.parent.name
+        match, ambiguous = resolve_page_file(
+            txt_dir,
+            volume_id=volume_id,
+            page_num=page_num,
+            suffixes=(".txt",),
+        )
+        if match is not None:
+            return match
+        if ambiguous:
+            raise RuntimeError(f"{volume_id}:{page_num} tem textos OCR ambíguos")
 
-    return stable
+    return txt_dir / (img_path.stem + ".txt")
 
 
 # ---------------------------------------------------------------------------
@@ -1483,7 +1831,23 @@ def openai_process_image(
         )
 
     r.raise_for_status()
-    return r.json()["choices"][0]["message"]["content"]
+    try:
+        response_payload = r.json()
+        content = response_payload["choices"][0]["message"]["content"]
+    except (IndexError, KeyError, TypeError, ValueError) as exc:
+        raise UnexpectedAPIResponseError(
+            f"resposta OpenAI incompatível: {exc}",
+            response=r,
+            request_payload=_diagnostic_request_payload(payload),
+        ) from exc
+    if not isinstance(content, str):
+        raise UnexpectedAPIResponseError(
+            "resposta OpenAI incompatível: choices[0].message.content "
+            f"é {type(content).__name__}, esperado str",
+            response=r,
+            request_payload=_diagnostic_request_payload(payload),
+        )
+    return content
 
 
 # ---------------------------------------------------------------------------
@@ -1850,6 +2214,42 @@ def main() -> None:
         help="Atualiza agreement_score no DB sem rerodar OCR.",
     )
     parser.add_argument(
+        "--auto-refuse",
+        action="store_true",
+        help=(
+            "Rejeita linhas inferred quando as engines atuais discordam "
+            "totalmente ou retornam muitos marcadores [?]."
+        ),
+    )
+    parser.add_argument(
+        "--auto-refuse-report",
+        default=None,
+        help="Arquivo JSONL obrigatório para a auditoria de --auto-refuse.",
+    )
+    parser.add_argument(
+        "--auto-refuse-max-consensus",
+        type=float,
+        default=DEFAULT_AUTO_REFUSE_MAX_CONSENSUS,
+        help=(
+            "Maior consenso par-a-par ainda considerado discordância total "
+            f"(default: {DEFAULT_AUTO_REFUSE_MAX_CONSENSUS})."
+        ),
+    )
+    parser.add_argument(
+        "--auto-refuse-unknown-marker-count",
+        type=int,
+        default=DEFAULT_AUTO_REFUSE_UNKNOWN_MARKER_COUNT,
+        help=(
+            "Quantidade de [?] em qualquer engine que dispara rejeição "
+            f"(default: {DEFAULT_AUTO_REFUSE_UNKNOWN_MARKER_COUNT})."
+        ),
+    )
+    parser.add_argument(
+        "--overwrite-auto-refuse-report",
+        action="store_true",
+        help="Permite substituir um relatório JSONL existente de --auto-refuse.",
+    )
+    parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Mostra o que seria reprocessado sem gravar mudanças.",
@@ -1948,6 +2348,30 @@ def main() -> None:
             "--rate-limit-backoff-max deve ser maior ou igual a "
             "--rate-limit-backoff-base"
         )
+
+    auto_refuse = getattr(args, "auto_refuse", False)
+    if auto_refuse:
+        if args.rerun_tesseract or args.rerun_tesseract_empty or args.recalc_agreement_score:
+            parser.error("--auto-refuse não pode ser combinado com modos de rerun ou recálculo")
+        if args.reprocess_below is not None:
+            parser.error("--auto-refuse não pode ser combinado com --reprocess-below")
+        if not getattr(args, "auto_refuse_report", None):
+            parser.error("--auto-refuse exige --auto-refuse-report CAMINHO")
+        if not 0.0 <= args.auto_refuse_max_consensus <= 1.0:
+            parser.error("--auto-refuse-max-consensus deve estar entre 0.0 e 1.0")
+        if args.auto_refuse_unknown_marker_count < 1:
+            parser.error("--auto-refuse-unknown-marker-count deve ser maior que zero")
+        auto_refuse_lines(
+            args.db,
+            args.auto_refuse_report,
+            dry_run=args.dry_run,
+            max_consensus=args.auto_refuse_max_consensus,
+            unknown_marker_count=args.auto_refuse_unknown_marker_count,
+            limit=args.limit,
+            overwrite_report=getattr(args, "overwrite_auto_refuse_report", False),
+        )
+        return
+
     run_id = args.run_id or f"run-{uuid.uuid4().hex}"
 
     # Garantir que a coluna `runs` exista antes de tocar no banco

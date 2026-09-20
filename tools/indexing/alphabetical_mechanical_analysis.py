@@ -18,7 +18,7 @@ try:
 except ImportError:  # pragma: no cover - requirements install it in production
     ahocorasick = None
 
-from tools.corpus_utils import page_sort_key
+from tools.corpus_utils import discover_preferred_pages, page_sort_key
 from tools.scripture.book_catalog import BOOKS, normalize_book_alias
 
 
@@ -554,7 +554,9 @@ def _candidate_paths(
                 selected.add(resolved)
                 break
     if not selected:
-        selected.update(sorted(root.glob("*.txt"), key=page_sort_key)[-32:])
+        selected.update(
+            discover_preferred_pages(root, volume_id=root.parent.name)[-32:]
+        )
     return sorted(selected, key=page_sort_key)
 
 

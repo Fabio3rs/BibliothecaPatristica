@@ -1,9 +1,7 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="190,65,970,105">
-    847                                                     S. CYRILLI ALEXANDRINI ARCHIEP.                                                     848
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="195,105,570,850">
-Sicut enim semper agunt juvenes,
+  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,70">847 S. CYRILLI ALEXANDRINI ARCHIEP. 848</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="45,80,480,730">Sicut enim semper agunt juvenes,
 ut canit Homerus ; ita et hominis mens senilis.
 Et quidem juvenis cum esset Salomon, ac velut
 in pubertate mentis, celeberrimum illud templum
@@ -22,8 +20,8 @@ Deo suo, sicut cor David patris sui. Et declinare
 fecerunt mulieres alienæ cor ejus post deos suos.
 Et dixit Dominus ad Salomonem : Pro eo, quod
 facta sunt hæc tecum, et non custodisti mandata
-mea, et præcepta mea quæ mandavi tibi, discindam
-discindam regnum tuum de manu tua ; et
+mea, et præcepta mea quæ mandavi tibi, discin-
+dens discindam regnum tuum de manu tua ; et
 dabo illud servo tuo¹. » Quid porro mandatum est
 illi et omnibus qui sub lege vivebant ? Ne cum
 alienigena matrimonium contraherent. Dixit enim :
@@ -47,13 +45,14 @@ o bone. Qui autem ? Quippe invidiæ opus non esse
 contendimus, quod divina et immortalis mens non
 ferat errantes, et qui nescio quo pacto divinos ho-
 nores aliis tribuunt, sed ejus potius qui illud ob-
-servet :
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="585,105,960,850">
-. . . αἰεὶ γάρ τε νεώτεροι ἀφραδέουσι,
-κατὰ τὸν Ὁμήρου στίχον (1) · οὕτω καὶ ἀνδρὸς ἀς-
-λικος νοῦς. Νέος μὲν οὖν ὧν ἔτι Σαλομῶν, καὶ ὥσπερ
-ἐν ἥβῃ φρενὸς, τὸν διαβόητον ἐκεῖνον ἐν τοῖς Ἱερο-
+servet :</bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="506,82,530,112">A</bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="535,80,960,730">. . . αἰεὶ γάρ τε νεώτεροι ἀφραδέουσι,
+κατὰ τὸν Ὁμήρου στίχον (1) · οὕτω καὶ ἀνδρὸς ἀή-
+λικος νοῦς. Νέος μὲν οὖν ὢν ἔτι Σολομὼν, καὶ ὥσπερ
+ἐν ἥβῃ φρενός, τὸν διαβόητον ἐκεῖνον ἐν τοῖς Ἱερο-
 σολύμοις νεὼν εἰργάζετο, καὶ τὰ εἰς δόξαν Θεοῦ
 πληροῦν ἐπείγετο. Ἐπειδὴ δὲ γέγονεν ἐπ’ αὐτῷ τέρ-
 ματι καὶ δυσμαῖς βίου ἡ ἡλικία, ῥώμης τε ἦν ὁμοῦ
@@ -61,11 +60,11 @@ servet :
 γυναικῶν ἀρτίσας, ὁ Σατανᾶς παρεκόμισε τοῦ εἰκό-
 τος. Ὅτι δὲ οὐχ, ὡς αὐτὸς διατείνεται, Θεοῦ χρή-
 σαντος αὐτῷ κατεκομίσθη πρὸς ἀπόστασιν, καὶ εἰς
-πᾶν ἠνέχθη κακοῦ, διαδείξειεν ἂν εὐκόλως τὸ κεκι-
+πᾶν ἠνέχθη κακόν, διαδείξειεν ἂν εὐκόλως τὸ κεκι-
 νῆσθαι λίαν ἐπ’ αὐτῷ τὸν τῶν ὅλων Θεὸν καὶ δίκην
 εὐθὺς ἐπαρτῆσαι τῷ πλημμελήματι. Γέγραπται γὰρ
 ἐν τῇ τρίτῃ τῶν Βασιλειῶν « Καὶ ἐγενήθη ἐν καιρῷ
-γήρως Σαλομὼν, οὐκ ἦν ἡ καρδία αὐτοῦ τελεία μετὰ
+γήρως Σολομὼν, οὐκ ἦν ἡ καρδία αὐτοῦ τελεία μετὰ
 Κυρίου τοῦ Θεοῦ αὐτοῦ, καθὼς ἡ καρδία Δαυὶδ τοῦ
 πατρὸς αὐτοῦ · καὶ ἐξέκλιναν αἱ γυναῖκες αἱ ἀλλό-
 τριαι τὴν καρδίαν αὐτοῦ ὀπίσω θεῶν αὐτῶν. Καὶ
@@ -93,17 +92,24 @@ servet :
 λεγέτω τὸ πιθανὸν εἶναι δοκεῖν πανταχόθεν ἑαυτῷ
 θηρώμενος· φθόνος γὰρ καὶ ζῆλος, οὐδὲ ἄχρι τῶν
 ἀρίστων ἀνδρῶν ἀφικνεῖται, τοσοῦτον ἅπεστι θεῶν
-καὶ τῶν ἀγγέλων. Οὐ φθόνος ἦν, ὦ κράτιστε. Πόθεν;
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="570,120,590,145">A</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="570,335,590,360">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="570,590,590,615">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="570,785,590,810">D</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="585,820,960,900">
-Οὔτε μὴν βασκανίας ἔργον εἶναί φαμεν, τὸ μὴ ἀνα-
+καὶ τῶν ἀγγέλων. Οὐ φθόνος ἦν, ὦ κράτιστε. Πόθεν;</bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="506,340,530,370">B</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="45,740,480,880">Bona res non est multorum dominatus ; unus domi-
+nus esto,
+Rex unus.
+
+Cum ergo, ut ait ipse, in bonos viros non cadat
+invidia, nihil sua referre putent terreni principes,
+quamvis aliquis regiæ potestatis jugum excutiat,
+aut suæ regios honores velit arripere. Atqui eo
+animo non erat Julianus, cum imperaret, sed si</bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="535,740,960,880">Οὔτε μὴν βασκανίας ἔργον εἶναί φαμεν, τὸ μὴ ἀνα-
 σχέσθαι τὸν θεῖον καὶ ἀκήρατον νοῦν τῶν πεπλανημένων,
 καὶ προσκυνεῖν, οὐκ οἶδ’ ὅπως, ἑτέροις ἐσπου-
-δακότων, τηροῦντος δὲ μᾶλλον τό·
+δακότων, τηροῦντος δὲ μᾶλλον τό·-
 
 Οὐκ ἀγαθὸν πολυκοιρανίη· εἷς κοίρανος ἔστω,
 Εἷς βασιλεύς (2).
@@ -111,26 +117,16 @@ servet :
 Οὐκοῦν ἐπειδήπερ, καθά φησιν αὐτός, οὐδὲ ἄχρι τῶν
 ἀρίστων ἀνδρῶν ἀφικνεῖται φθόνος, ἔστω τοῖς ἐπὶ
 γῆς κρατοῦσιν ἀδιάφορον, κἂν εἰ ἔξω φέροιτό τις τῆς
-ὑπ’ αὐτοῖς βασιλείας, μᾶλλον δὲ τὰς αὐτῶν ἀρπά-
-ζειν ἕλοιτο τιμάς. Ἀλλ’ οὐ τοιοῦτος ἦν αὐτὸς, ὅτε
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="195,820,570,900">
-Bona res non est multorum dominatus ; unus domi-
-[nus esto,
-Rex unus.
+ὑπ’ αὐτοῖς βασιλείας, μᾶλλον δὲ τὰς αὐτῶν ἁρπά-
+ζειν ἕλοιτο τιμάς. Ἀλλ’ οὐ τοιοῦτος ἦν αὐτός, ὅτε</bloco>
 
-Cum ergo, ut ait ipse, in bonos viros non cadat
-invidia, nihil sua referre putent terreni principes,
-quamvis aliquis regiæ potestatis jugum excutiat,
-aut suæ regios honores velit arripere. Atqui eo
-animo non erat Julianus, cum imperaret, sed si
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="200,920,570,965">
-a III Reg. xi, 4 seqq.       b Deut. vii, 3, 4.
-(1) Odys., H', v. 294.
-  </bloco>
-  <bloco tipo="aparato_critico" script="grego" bbox="585,920,960,965">
-(2) Homerus, Iliad., B', v. 204.
-  </bloco>
-  <notas>Transcrição diplomática baseada na imagem; hifenizações de fim de linha e sinais de remissão foram conservados. Os identificadores A, B, C e D aparecem em blocos próprios no gutter central.</notas>
+  <bloco tipo="nota_marginal" script="latino" bbox="506,555,530,585">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="506,785,530,815">D</bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="45,885,520,970">a III Reg. xi, 4 seqq. b Deut. vii, 3, 4.
+(1) Odys., H', v. 294.</bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="700,900,960,970">(2) Homerus, Iliad., B', v. 204.</bloco>
+
+  <notas>Transcrição diplomática baseada na imagem; mantidas hifenizações de fim de linha e pontuação visível. As letras A, B, C e D foram tratadas como nota_marginal no intercolúnio central. O texto segue a ordem da coluna esquerda e depois da direita.</notas>
 </pagina>

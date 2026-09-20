@@ -447,6 +447,27 @@ def test_missing_and_ambiguous_targets_are_reported(
     assert stats.would_update == 0
 
 
+def test_canonical_target_wins_over_four_digit_uuid_variant(
+    versions_db: Path, tmp_path: Path
+) -> None:
+    base_dir = tmp_path / "teste"
+    insert_result(versions_db, volume="PG013", page=1)
+    canonical = make_text_file(
+        base_dir,
+        volume="PG013",
+        page=1,
+        prefix="PG013",
+        mtime=utc_timestamp("2024-01-01 00:00:00"),
+    )
+    legacy = base_dir / "PG013" / "text" / "uuid-0001.txt"
+    legacy.write_text("legado", encoding="utf-8")
+
+    target, ambiguous = syncer.find_target(base_dir, "PG013", 1)
+
+    assert target == canonical
+    assert ambiguous is False
+
+
 def test_parse_datetime_normalizes_offset_to_utc() -> None:
     parsed = syncer.parse_datetime("2024-02-01T03:00:00-03:00")
     assert parsed == datetime(2024, 2, 1, 6, 0, tzinfo=timezone.utc)

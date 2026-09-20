@@ -1,8 +1,9 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="misto" bbox="100,45,915,72">
-    331                                        EUSEBII ALEXANDRINI                                        332
+  <bloco tipo="cabecalho" script="latino" bbox="100,48,900,74">
+    331 EUSEBII ALEXANDRINI 332
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="102,72,508,476">
+
+  <bloco tipo="texto_principal" script="latino" bbox="103,81,500,444">
     sustinere nequivi, et tu eum hic includere cogi-
     tas? Noli hoc facere, miserere mei, non possum
     eum ego huc accipere. Si ille venerit, quoscunque
@@ -16,15 +17,20 @@
     lut aquila evolavit, deposita imbecillitate in ocu-
     lorum ictu. Illum hic includere non possum.
 
-    Cui diabolus : Timide et ignave et pusillanimi;
+    Cui diabolus : Timide et ignave et pusillanimis;
     tantis me malis affecit, nec recessi de mundo, nec
     cessavi homines impugnare, et tu, accepta una
     clade tantum, animum dejicis? Tantas ego calami-
     tates perpessus, non cessavi hominibus invidere.
     At videns eum externas corporum infirmitates cu-
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,72,930,476">
-    Ἀ φωνὴ κατεπτόησέν με, καὶ παρέλυσέν μου τὴν δύνα-
+
+  <bloco tipo="nota_marginal" script="latino" bbox="500,86,514,106">
+    A
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="515,82,917,446">
+    Ἡ φωνὴ κατεπτόησέν με, καὶ παρέλυσέν μου τὴν δύνα-
     μιν· τὴν φωνὴν αὐτοῦ ἐνέγκαι οὐκ ἠδυνήθην, καὶ
     αὐτὸν ἐπαγγέλλεις μοι ἐνταῦθα κλεῖσαι; Μὴ γένοιτο,
     ἐλέησόν με, ἐγὼ οὐ δύναμαι ἐνταῦθα αὐτὸν ὑποδέξα-
@@ -34,7 +40,7 @@
     τὸν ἐν ἀσφαλείᾳ. Ἤδη ἤρξατο ὄζειν, ἤρξατο παρα-
     λύεσθαι τὰ ἄρθρα τῶν μελῶν αὐτοῦ, κατεκυρίευσα
     αὐτοῦ παντελῶς· καὶ ὅταν ἦλθεν ἐκεῖνος εἰς τὴν θύ-
-    ραν μου, καὶ ἐφώνησεν αὐτὸν, Δεῦρο Ἔξω, καὶ οὗτος
+    ραν μου, καὶ ἐφώνησεν αὐτὸν, Δεῦρο ἔξω, καὶ οὗτος
     διασαπεὶς Λάζαρος, οὕτως ἐξεπήδησεν ἐκ τοῦ κόλ-
     που μου, ὡς λέων ἐκ σπηλαίου εἰς θήραν ἐπειγόμενος, ὡς ἀετὸς ἐξήλατο, πᾶσαν ἀσθένειαν ἀποθέμενος
     ἐν ῥοπῇ ὀφθαλμοῦ· ἐκεῖνον ἐνταῦθα κατακλεῖσαι οὐ δύναμαι.
@@ -46,56 +52,60 @@
     αὐτοῦ οὕτως ἐδειλίασας; Ἐγὼ τοσαῦτα παθὼν παρ᾽
     αὐτοῦ, οὐκ ἐπαυσάμην φιλονικεῖν τοῖς ἀνθρώποις.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="509,73,524,90">
-    A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="509,344,524,361">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="500,358,514,377">
     B
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="410,492,590,515">
+
+  <bloco tipo="cabecalho" script="latino" bbox="409,499,591,524">
     EDITIO ALTERA.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="102,520,932,684">
+
+  <bloco tipo="texto_principal" script="grego" bbox="100,529,919,717">
     ἔπληξέν [non κατέπηξέν] με, καὶ παρέλυσέ μου τὴν δύναμιν· τὴν φωνὴν αὐτοῦ ἐνέγκαι οὐκ ἠδυνήθην.
-    Καὶ αὐτὸν ἐπαγγέλλεις μοι ἐνταῦθα ἐγκλεῖραι; μὴ γένοιτο· ἐκεῖνος, ἐὰν ἔλθῃ ὧδε, καὶ οὓς ἔχω ἐγκε-
-    κλεισμένους [non ἐγκατακλεισμένους] ἐκαλεῖ. Ἐγὼ τότε [τὸ] λοιπὸν κατέσηψα τὸ σῶμα τοῦ Λαζάρου
+    Καὶ αὐτὸν ἐπαγγέλλεις μοι ¹⁶ ἐνταῦθα ἐγκλεῖσαι; μὴ γένοιτο· ἐκεῖνος, ἐὰν ἔλθῃ ὧδε, καὶ οὓς ἔχω ἐγκε-
+    κλεισμένους [non ἐγκατακλεισμένους] ἐκβάλλει. Ἐγὼ τότε [τὸ] λοιπὸν κατέσηψα τὸ σῶμα τοῦ Λαζάρου
     ἐν τέσσαρσιν ἡμέραις, ἔχων αὐτὸν ἐν ἀσφαλείᾳ· ἤδη ἤρξατο ὄζειν, ἤρξατο παραλύεσθαι τὰ ἄρθρα τῶν
     μελῶν αὐτοῦ¹⁷, κατεκυρίευσα αὐτοῦ παντελῶς, καὶ ὅτε ἦλθε ἐκεῖνος εἰς τὴν θύραν μου καὶ ἐφώνησεν
     αὐτὸν ἔξω, ἐγένετο ἡ φωνὴ αὐτοῦ φοβερά, καὶ ἡ ἄβυσσος ἐσείσθη, καὶ ἡ γῆ ἐτρόμαξεν [non ἐτρόμισεν],
     καὶ ἐγὼ αὐτὸς παρελύθην ἐκ τοῦ φόβου, ἐξέστησάν μου αἱ φρένες, ἀναστῆναι καὶ τὰς θύρας κλεῖσαι οὐκ
     ἴσχυσα¹⁸, οὔτε ἐκεῖνον κρατῆσαι ἠδυνήθην· ἐν γὰρ ᾗ ὥρᾳ ἐγένετο ἡ φωνὴ αὐτοῦ¹⁹, καὶ οὗτος ὁ διασαπεὶς
-    Λάζαρος καὶ διαλυθεὶς καὶ ὀζέσας [male ὀξέσας], οὗτος ἐξεπήδησεν ἐκ τοῦ κόλπου μου, ὡς λέων ἐκ
+    Λάζαρος καὶ διαλυθεὶς καὶ ὀζέσας [male ὀξέσας], οὕτος ἐξεπήδησεν ἐκ τοῦ κόλπου μου, ὡς λέων ἐκ
     σπηλαίου, ἐπὶ θήραν ἐπειγόμενος²⁰, ὡς ἀετὸς ἐξήλατο, πᾶσαν ἀσθένειαν ἀποθέμενος ἐν ῥοπῇ ὀφθαλμοῦ²¹.
     Ἐκεῖνον ἐνταῦθα κατακλεῖσαι οὐ δύναμαι.
 
     Λέγει αὐτῷ ὁ Διάβολος· Δειλὲ καὶ ἄνανδρε, καὶ ὀλιγόψυχε· ἐμοὶ τοσαῦτα κακὰ ἐποίησεν καὶ οὐκ ἀν-
-    εχώρησα τοῦ κόσμου, οὐδὲ ἐπαυσάμην φιλονεικῶν [φιλονικεῖν] αὐτόν· καὶ σὺ ἐν κακὸν παρ᾽ αὐτοῦ παθὼν,
+    εχώρησα τοῦ κόσμου, οὐδὲ ἐπαυσάμην φιλονεικῶν [φιλονικεῖν] αὐτόν· καὶ σὺ ἐν κακὸν παθὼν,
     τοσοῦτο ἐδειλίασας [non ἐδειλειάσας]. Ἐγὼ τοσαῦτα παρ᾽ αὐτοῦ ἔπαθον, καὶ οὐκ ἐπαυσάμην ἀδικεῖν τοὺς
     ἀνθρώπους.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="413,730,588,750">
+
+  <bloco tipo="cabecalho" script="latino" bbox="411,742,588,767">
     EDITIO TERTIA.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="102,758,931,873">
+
+  <bloco tipo="texto_principal" script="grego" bbox="100,781,918,889">
     ναμιν. Διὰ τοῦτο ὑπενεγκεῖν τὴν φωνὴν αὐτοῦ οὐ δύναμαι· καὶ αὐτὸν ἀπαγγέλλεις με ἐνταῦθα κατακλί-
-    νειν; Μὴ γένοιτό μοι ἐγὼ ἵνα ὑποδέξασθαι αὐτὸν ἐνταῦθα, ἵνα μὴ καὶ τοὺς κάτω [non κράτει] ὧδε ἁρπάσει.
+    νειν; Μὴ γένοιτό μοι ἐγὼ ³¹ ὑποδέξασθαι αὐτὸν ἐνταῦθα, ἵνα μὴ καὶ τοὺς κάτω [non κράτει] ὧδε ἁρπάσει.
     Τοῦτον, ὃν λέγεις, Λάζαρον, τὸ σῶμα αὐτοῦ κατεσάπησα ἐν ἡμέραις τέσσαρσι, καὶ δυσωδίαν ἐκπέ-
     μπων [ἔπεμπεν]· κατεκυρίευσα αὐτὸν παντελῶς· καὶ ὅταν ἦλθεν ἐκεῖνος εἰς τὴν θύραν μου καὶ ἐφώ-
-    νησεν αὐτὸν, καὶ ὥσπερ λέων ἐκ τοῦ σπηλαίου, καὶ ὡς ἀετὸς ἀνεπήδησεν ἐκ τοῦ μνήματος· καὶ σὺ λέγεις,
+    νησεν αὐτόν, καὶ ὥσπερ λέων ἐκ τοῦ σπηλαίου, καὶ ὡς ἀετὸς ἀνεπήδησεν ἐκ τοῦ μνήματος· καὶ σὺ λέγεις,
     ἵνα ὑποδεχθῶ αὐτὸν ἐνταῦθα; Οὐ δύναμαι, λέγω σοι, ὦ Διάβολε, δέξασθαι αὐτὸν ἐνταῦθα· ὕπαγε καὶ ὡς
     θέλεις, ποίησον.
     Λέγει αὐτῷ ὁ Διάβολος· Δειλὲ, καὶ ἄνανδρε καὶ ὀλιγόπιστε· τοσαῦτά μοι κακὰ ἐνεδείξατο, καὶ οὐκ
     ἀνεχώρησα τοῦ κόσμου, οὐδὲ ἐπαυσάμην φιλονεικῶν [φιλονικεῖν] τοὺς ἀνθρώπους· καὶ σὺ δειλιᾷς καὶ τρέ-
     μεις; Ἄκουσόν μοι [μου] καὶ τὰς ἄλλας μου ἀριστείας.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="420,891,585,910">
+
+  <bloco tipo="cabecalho" script="latino" bbox="409,894,591,918">
     VARIÆ LECTIONES.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="102,920,505,993">
+
+  <bloco tipo="aparato_critico" script="misto" bbox="100,921,495,997">
     ¹⁶ Cum scriptum sit in nostro codice : ἐπαγγέ-
     λημη et in altera editione ἀπαγγέλλεις με, nil scio,
     quod præferam lectioni, quam dedi. Ut in verbis
-    annuntiandi sæpius significatio iubendi inest, ita in
+    annuntiandi sæpius significatio jubendi inest, ita in
     specie in ἐπαγγέλλειν, ubi tamen et significatio
     promissionis jam sufficit.
 
@@ -104,7 +114,7 @@
     αὐτοῦ incuria librarii primi erant omissa.
 
     ¹⁸ Idem valet de verbis post φόβου sequentibus :
-    ἐξέστησάν μοι αἱ φρένες, ἀναστῆναι καὶ τὰς θύρας
+    ἐξέστησάν μου αἱ φρένες, ἀναστῆναι καὶ τὰς θύρας
     κλεῖσαι οὐκ ἴσχυσα.
 
     ¹⁹ Pariter verba, ἐν ᾗ γὰρ ὥρᾳ ἐγένετο ἡ φωνὴ
@@ -113,7 +123,12 @@
     ²⁰ Ex eadem oscitantia deerant verba : ἐπὶ θήραν
     ἐπειγόμενος.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="514,920,930,993">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="501,915,515,932">
+    C
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="511,921,918,997">
     ²¹ Post ἐξήλατο nunc ad fidem codicis adjectum :
     Πᾶσαν ἀσθένειαν α. ε. ῥοπῇ [male ῥυπὴ in cod.
     expressum] ὀφθαλμοῦ.
@@ -128,17 +143,16 @@
     Ita reposui, cum codex ὀλιγόπιστε exhibeat.
     Cæterum, si ad subtilitatem revocare velis, ὀλιγό-
     ψυχε, quod conjeceram, præferendum esset, cum
-    δειλὲ et ἄνανδρε, tum ideo, quod tali collocu-
+    ob δειλὲ et ἄνανδρε, tum ideo, quod tali collocu-
     tori ἀπιστοτάτῳ ne minima quidem fides tribuenda
     videatur. Discipulos suos, quando ὀλιγοπίστους
     increpat Christus, tamen non omni, omnino fide
     destitutos supponit.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="509,921,524,941">
-    C
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="590,984,805,998">
+
+  <bloco tipo="rodape" script="latino" bbox="612,966,816,995">
     Digitized by Google
   </bloco>
-  <notas>Transcrição organizada segundo o fluxo da coluna esquerda e depois da coluna direita; os títulos de edição foram separados do texto principal. A, B e C aparecem como letras marginais independentes.</notas>
+
+  <notas>Transcrição por colunas: bloco inicial da coluna esquerda, depois a coluna direita; letras marginais A, B e C separadas em nota_marginal. Títulos centrais (EDITIO ALTERA / TERTIA / VARIÆ LECTIONES) foram tratados como cabecalho. Pontuação, hordens e marcadores numéricos foram preservados conforme visíveis.</notas>
 </pagina>

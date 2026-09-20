@@ -7,7 +7,7 @@ import time
 from pathlib import Path
 from typing import Any
 
-from tools.corpus_utils import page_sort_key
+from tools.corpus_utils import discover_preferred_pages, page_sort_key
 from .index_target_locator import parse_ocr_page_path, resolve_index_targets
 
 HELPER_TOP_K = 5
@@ -97,7 +97,10 @@ def _candidate_files_near_sections(
     source_root: Path,
     filtered_pages: dict[str, Any],
 ) -> list[Path]:
-    source_files = sorted(source_root.glob("*.txt"), key=page_sort_key)
+    source_files = discover_preferred_pages(
+        source_root,
+        volume_id=source_root.parent.name,
+    )
     position_by_path = {str(path.resolve()): index for index, path in enumerate(source_files)}
     section_positions: list[int] = []
     for section in filtered_pages.get("candidate_sections") or []:
@@ -215,7 +218,10 @@ def build_helper_request_artifact(
     if not candidate_files:
         candidate_files = [Path(item) for item in (filtered_pages.get("tail_files") or [])]
     if not candidate_files:
-        candidate_files = sorted(source_root.glob("*.txt"))
+        candidate_files = discover_preferred_pages(
+            source_root,
+            volume_id=source_root.parent.name,
+        )
 
     entries: list[dict[str, Any]] = []
     seen: set[tuple[str, int, str]] = set()

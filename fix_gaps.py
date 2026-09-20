@@ -7,6 +7,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import argparse
 import re
 
+from tools.corpus_utils import discover_unique_page_map
+
 def process_doc(doc_name, idx, total):
     print(f"[{idx}/{total}] Solicitando gaps em {doc_name}...")
     
@@ -60,6 +62,7 @@ def run_fix_gaps(workers_count):
         
         if not doc_dir.exists():
             continue
+        disk_pages = discover_unique_page_map(doc_dir, volume_id=doc_name)
             
         # Busca páginas processadas
         pages = [row["pagina_num"] for row in con.execute(
@@ -71,12 +74,9 @@ def run_fix_gaps(workers_count):
         has_real_gap = False
         for p in range(min_pg, max_pg + 1):
             if p not in pages:
-                matching_files = list(doc_dir.glob(f"*-{p}.txt")) + list(doc_dir.glob(f"*{p}.txt"))
-                for f in matching_files:
-                    if re.search(rf"[^0-9]?{p}\.txt$", f.name):
-                        if f.stat().st_size > 0:
-                            has_real_gap = True
-                        break
+                page_file = disk_pages.get(p)
+                if page_file is not None and page_file.stat().st_size > 0:
+                    has_real_gap = True
             if has_real_gap:
                 break
                 

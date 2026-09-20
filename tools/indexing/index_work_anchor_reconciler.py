@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 from typing import Any, Callable
 
-from tools.corpus_utils import page_sort_key
+from tools.corpus_utils import discover_preferred_pages, page_sort_key
 from .index_target_locator import normalize_for_search, resolve_index_targets
 
 
@@ -82,7 +82,10 @@ def _best_guess_pages(item: dict[str, Any]) -> list[int]:
 
 
 def _source_files_and_positions(source_root: Path) -> tuple[list[Path], dict[str, int]]:
-    files = sorted(source_root.glob("*.txt"), key=page_sort_key)
+    files = discover_preferred_pages(
+        source_root,
+        volume_id=source_root.parent.name,
+    )
     return files, {str(path.resolve()): index for index, path in enumerate(files)}
 
 

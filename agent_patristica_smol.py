@@ -9,7 +9,7 @@ import traceback
 from pathlib import Path
 from typing import Dict, List
 
-from tools.corpus_utils import parse_volume_info
+from tools.corpus_utils import discover_unique_pages, parse_volume_info
 from patristica_pipeline.db import connect_db, init_catalog_schema, init_databases
 from patristica_pipeline.ingest import ingest_ocr_to_text_db
 from patristica_pipeline.smol_loops import (
@@ -97,7 +97,7 @@ def _volume_listing_payload(root: Path, volume_ids: List[str]) -> Dict[str, obje
     for volume_id in volume_ids:
         text_dir = root / volume_id / "text"
         txt_files = (
-            sum(1 for p in text_dir.glob("*.txt") if p.name != "texto_extraido.txt")
+            len(discover_unique_pages(text_dir, volume_id=volume_dir.name))
             if text_dir.exists()
             else 0
         )

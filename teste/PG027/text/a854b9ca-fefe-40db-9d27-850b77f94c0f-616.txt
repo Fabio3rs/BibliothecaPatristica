@@ -1,6 +1,7 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="80,38,950,65">1215                                                S. ATHANASII OPP. PARS III. — EXEGETICA.                                                1216</bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="80,65,505,345">125. Ὅμοσα, etc. Juravi, etc.
+  <bloco tipo="cabecalho" script="latino" bbox="80,110,920,155">1215 S. ATHANASII OPP. PARS III. — EXEGETICA. 1216</bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="80,160,475,455">125. Ὤμοσα, etc. Juravi, etc.
 126. Ἐταπεινώθην, etc. Humiliatus sum, etc.
 127. Τὰ ἑκούσια, etc. Voluntaria, etc.
 128. Καὶ τὰ κρίματα, etc. Et judicia, etc.
@@ -9,7 +10,7 @@
 131. Ἐκληρονόμησα, etc. Hæreditavi, etc.
 132. Ἔκλινα, etc. Inclinavi, etc.
 133. Παρανόμους, etc. Iniquos, etc.
-134. Βοηθός μου, etc. Adiutor, etc.
+134. Βοηθός μου, etc. Adjutor, etc.
 135. Ἐκκλίνατε ἀπ᾿ ἐμοῦ, etc. Declinate, etc.
 136. Ἀντιλαβοῦ, etc., καὶ ζήσομαι, etc. Suscipe, etc.
 137. Βοήθησόν μοι, etc. Adjuva me, etc.
@@ -17,7 +18,10 @@
 139. Παραβαίνοντας, etc. Prævaricantes, etc.
 140. Καθήλωσον, etc. Confige, etc.
 141. Ἐποίησα, etc. Feci, etc.</bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="530,65,920,345">142. Ἔκδεξαι, etc. Suscipe, etc.
+
+  <bloco tipo="nota_marginal" script="latino" bbox="485,168,515,192">A</bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="525,160,930,455">142. Ἔκδεξαι, etc. Suscipe, etc.
 143. Οἱ ὀφθαλμοί μου, etc. Oculi mei, etc.
 144. Ποίησον, etc. Fac, etc.
 145. Δοῦλός σου, etc. Servus tuus, etc.
@@ -30,14 +34,22 @@
 152. Ἐπίλεψον, etc., τὸ ὄνομά σου, etc. Aspice, etc., nomen tuum, etc.
 153. Τὰ διαβήματά μου, etc. Gressus meos, etc.
 154. Λύτρωσαί με, etc. Redime me, etc.
-159. Ἐξέτηξέ με, etc. Tabescere me, etc.
-160. Πεπυρωμένον, etc. Ignitum, etc.
-161. Καὶ ὁ δοῦλός σου, etc. Et servus tuus, etc.</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="510,55,525,70">A</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="335,355,665,380">ATHANASII INTERPRETATIO.</bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="75,380,505,925">125. Ὁ ὅρκος, etc. Juramentum, etc.
-126. Κυριευθείς, etc., ἐνώπιόν σου· καὶ ζῆσόν με, καθὼς εἴρηκας· ὁ, etc. Anteà cum dominaretur, etc., coram te; et vivifica me : quemadmodum dixisti, etc.
-127. Κατευθυνθήτω ἡ προσευχή μου, ὡς θυμίαμα ἐνώπιόν σου. Dirigatur oratio mea, sicut incensum in conspectu tuo.
+159. Ἐξέτηξέ με, etc. Tabescere me, etc.</bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="495,585,525,615">B</bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="525,620,930,455">160. Πεπυρωμένον, etc. Ignitum, etc.
+161. Καὶ ὁ δοῦλός σου, etc. Et servus tuus, et c.</bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="360,500,700,535">— ATHANASII INTERPRETATIO.</bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="75,540,505,930">125. Ὁ ὅρκος, etc. Juramentum, etc.
+126. Κυριευθείς, etc., ἐνώπιόν σου · καὶ ζῆσόν με,
+καθὼς εἴρηκας· ὁ, etc. Antea cum dominaretur, etc., coram te; et vivifica me : quemadmodum
+dixisti, etc.
+127. Κατευθυνθήτω ἡ προσευχή μου, ὡς θυμίαμα
+ἐνώπιόν σου. Dirigatur oratio mea, sicut incensum
+in conspectu tuo.
 128. Καὶ τὰ ἄδηλα, etc. Et incerta, etc.
 129. Σὺ ἐξέδωκας, etc. Tu tradidisti, etc.
 130. Οἱ δαίμονες ἐπέβαλόν μοι, etc. Dæmones injecerunt mihi, etc.
@@ -55,23 +67,29 @@
 142. Μακροθύμησον, etc., κατηγορῆσαί μου πρὸς σέ. Patienter me exspecta, etc.
 143. Ὅλος ὁ πόθος μου ἐστι τὸ δέξασθαί με τήν, etc. Omne, etc.
 144. Ποίησον μετ᾿ ἐμοῦ, etc., τοῦ ἐλέους σου, etc.,</bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="525,380,930,925">τὰ δικαιώματά σου. Fac mecum, etc., misericordiæ tuæ, etc., ut justificationes tuas efficiam.
-145. Ἐξηγόρασας, etc., τιμίῳ σου, etc., τὴν χάριν σου, etc., τὸ πῶς, etc. Redemisti, etc., pretioso tuo, etc., gratiam tuam, etc.
+
+  <bloco tipo="texto_principal" script="misto" bbox="525,540,930,740">τὰ δικαιώματά σου. Fac mecum, etc., misericordiæ tuæ, etc., ut justificationes tuas efficiam.
+145. Ἐξηγόρασας, etc., τιμίῳ σου, etc., τὴν χάριν σου, etc., τὸ πῶς, etc. Redemisti, etc., pretioso σου, etc., gratiam tuam, etc.
 146. Νῦν ἐστιν, etc. Nunc tempus est, etc.
-147. Διὰ τοῦτο, etc. Ἐπειδὴ οὖν οὗτος ὁ πλοῦτος πρόσκαιρος, ὁ δὲ διὰ τῶν ἐντολῶν σου πλοῦτος αἰώνιος ὑπάρχει, διὰ τοῦτο μᾶλλον, etc. Nunc est, etc., quia igitur præsentes divitiæ temporariæ sunt, divitiæ autem ex præceptis tuis æternæ exsistunt, propterea magis dilexi, etc.
-148. Διὰ τοῦτο, etc., ἀπέβλεπον. Propterea, etc., respiciebam.
+147. Διὰ τοῦτο, etc. Ἐπειδὴ οὖν οὗτος ὁ πλοῦτος πρόσκαιρος, ὁ δὲ διὰ τῶν ἐντολῶν σου πλοῦτος αἰώνιος ὑπάρχει, διὰ τοῦτο μᾶλλον, etc. Nunc est, etc., quia igitur præses divitiæ temporariæ sunt, divitiæ autem ex præceptis tuis æternæ exsistunt, propterea magis dilexi, etc.</bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="495,745,525,772">C</bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="525,748,930,845">148. Διὰ τοῦτο, etc., ἀπέβλεπον. Propterea, etc., respiciebam.
 149. Πάσης ἐκπλήξεως μεστά εἰσι, etc., τῷ δυναμένῳ, etc. Διὰ τοῦτο οὖν, etc., τῶν Γραφῶν. Testimonia tua plena sunt, etc., propterea igitur, etc.
 150. Ἡ ἑρμηνεία περὶ τὸ νοῆσαι. Interpretatio, etc.
-151. Διψῶν, etc., ἐπειδὴ ἐπεθύμουν ἐπιγνῶναι τὴν ἑρμηνείαν τῶν Γραφῶν σου. Sitiens, etc., quoniam desiderabam agnoscere interpretationem tuarum Scripturarum.
-152. Καθὼς ἐφόρεσας τούς, etc., καὶ ἐλέησόν με. Quemadmodum respexisti, etc., et miserere mei.
+151. Διψῶν, etc., ἐπειδὴ ἐπεθύμουν ἐπιγνῶναι τὴν ἑρμηνείαν τῶν Γραφῶν σου. Sitiens, etc., quoniam desiderabam agnoscere interpretationem tuarum Scripturarum.</bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="500,848,527,875">D</bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="525,846,930,930">152. Καθὼς ἐφόρεσας τούς, etc., καὶ ἐλέησόν με. Quemadmodum respexisti, etc., et miserere mei.
 153. Τὴν προθυμίαν, etc. Fac cor meum, etc.
 154. Λύτρωσαί με ἀπὸ πάσης συκοφαντίας καὶ ἀφορμῆς, etc. Libera me ab omni fraude et incursu, etc.
 159. Ἐμαράνθην, etc., λαλοῦντας περί, etc. Emarcui totus, etc., hæreticos contraria Scripturis tuis loquentes de fide tua.
 160. Ἐπειδή, etc., ὑπάρχεις, etc., καλάμην, τουτέστιν αἱ πράξεις αἱ πονηραί. Quoniam ignis ipse exsistis, etc., stipulam, hoc est pravas operationes.
 161. Ὁ δὲ δοῦλός σου, etc., τὰς ἐν ἑαυτῷ ἀκάνθας τοῦ βίου. Qui autem servus, etc., vitæ spinas in se ipso comburit.</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="505,505,518,520">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="505,675,518,690">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="505,790,518,805">D</bloco>
-  <bloco tipo="rodape" script="latino" bbox="645,955,865,980">Digitized by Google</bloco>
-  <notas>Transcrição baseada na imagem. A, B, C e D foram separados como notas marginais; a continuidade textual entre as colunas foi preservada.</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="650,955,865,985">Digitized by Google</bloco>
+
+  <notas>Transcrição feita a partir da imagem; letras marginais A, B, C e D separadas em blocos próprios. Leitura de alguns termos gregos mantida conforme o impresso visível.</notas>
 </pagina>

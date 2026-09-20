@@ -1,7 +1,14 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="80,45,890,75">
-    1257                                     SECTIO I. POEMATA DE SEIPSO.                                     1258
+  <bloco tipo="cabecalho" script="latino" bbox="80,45,130,80">
+    1257
   </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="350,45,650,80">
+    SECTIO I. POEMATA DE SEIPSO.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="865,45,920,80">
+    1258
+  </bloco>
+
   <bloco tipo="texto_principal" script="grego" bbox="80,75,470,325">
     35 Θνησκούσης ὠδῖνος ἀναυδέος, οἱ δὲ μάχοντο
     Οἷα καθισταμένου κύματος ἐξ ἀνέμων.
@@ -18,14 +25,18 @@
     Ταῦτ᾽ ἔχον· ἐκ δέ μοι ὕπνον ἀπὸ βλεφάρων ἐτίναξε
     Γῆρυς ἀλεκτρυόνων, τῷ δ᾽ ἅμ᾽ Ἀναστασίαν.
   </bloco>
-  <bloco tipo="nota_marginal" script="grego" bbox="480,78,500,92">A</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="505,75,910,325">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="470,88,500,115">
+    A
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="505,75,925,325">
     Φάσμα δὲ φάσματος εἶχον ἐπὶ χρόνον, αὐτὰρ ἔπειτα
     50 Καὶ τὸ φύγε κραδίην ἦκα μαραινόμενον,
     Μοῦνον δ᾽ ἄλγος ἔμεινεν ἐμοί, καὶ γῆρας ἀνιγρόν.
-    Ὦ μοι ἐμῆς Τριάδος! ὦ μοι ἐμῶν τεκέων!
-    Ὦ φθόνε, τίπτε μ᾽ ἔοργας; ἔχεις τόσον· ἄλλο χέρεον
-    Μή τι βάλης ἐπ᾽ ἐμῷ δυσθανεῖ βιότῳ.
+    Ὦ μοι ἐμῆς Τριάδος! Ὦ μοι ἐμῶν τεκέων!
+    Ὦ φθόνε, τίπτε μ᾽ ἔοργας; ἔχεις τόσον· ἄλλο χέρειον
+    Μή τι βάλῃς ἐπ᾽ ἐμῷ δυσθανεῖ βιότῳ.
     55 Ἡ μὲν δὴ πολλοῖσιν ἀγαλλομένη μεγάλοις τε
     Κάλλεσι δαιδαλέοις ἡ βασίλεια πόλις,
     Νηοῖς οὐρανίοισιν ἀγάλλεται ἔξοχον ἄλλων,
@@ -35,18 +46,19 @@
     Ἀλλ᾽ οὐ τόσσος ἔμοιγε πόθος καὶ ἄλγος ἐκείνων,
     Ὅσσος Ἀναστασίης, Βηθλεὲμ ὑστατίης.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,340,800,735">
+
+  <bloco tipo="texto_principal" script="latino" bbox="80,340,470,735">
     35 Mortuo sine voce conatu : alii pugnabant
     Instar fluctus a ventis agitati.
     Omnes autem facundia demulcebat, disertos
     Et sacrorum pietatis dogmatum peritos,
-    Nostros et exteros, et qui remotissimi ab ovili,
+    Nostros et exteros, et qui, procul a grege nostro,
     40 Miseri cultores infirmorum simulacrorum.
     Quemadmodum racemus calidis sub radiis infuscatus
     Neque omnino acerba est uva sensim maturescens,
     Neque omnino maturus est, sed partim niger, partim rubescens,
     Atque aliud seminigrum, aliud acerbum :
-    846-847 45 Sic illi decertabant, dum excoqueretur pravitas,
+    846·847 45 Sic illi decertabant, dum excoqueretur pravitas,
     Prælisque latioribus jam gaudebam.
     Atque equidem sic habebam : mihi autem somnum ex palpebris excussit
     Cantus gallorum, simul atque Anastasiam.
@@ -65,46 +77,78 @@
     Sed ea non tantum mihi desiderium et dolorem incutiunt,
     Quantum Anastasia, novissima Bethlehem.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="80,745,480,870">
-    35 Θνησκούσης ὠδῖνος ἀναυδέος. Emoriente loquendi cupiditate, atque, ut ita dicam, prurigine.
+
+  <bloco tipo="aparato_critico" script="misto" bbox="80,745,470,980">
+    35 Θνησκούσης ὠδῖνος ἀναυδέος. Emoriiente
+    loquendi cupiditate, atque, ut ita dicam, prurigine.
     41 Μελαγχθείς. Reg. 990 μαλαχθείς.
-    44 Ἄλλο ἔχει. Tres Regg. et Coisl. ἄλλος, et sup. lin. ἄλλου ἄλλο γʹ.
+    44 Ἄλλο ἔχει. Tres Regg. et Coisl. ἄλλος, et
+    sup. lin. ἄλλου ἄλλο γʹ.
     47 Ταῦτ᾽ ἔχον. Sic se res habebat.
     51 Ἀνιγρόν. Coisl. sup. lin. λυπηρόν, ἀνιαρόν.
     53 Ἔχεις. Reg. 990 ἔχοις.
-    60 Σταυροτύποις. Sic Reg. 990, et Coisl. Lateribus cruciformibus quadrifariam sectum. Ita
+    60 Σταυροτύποις. Sic Reg. 990, et Coisl. La-
+    teribus cruciformibus quadrifariam sectum. Ita
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="505,745,920,870">
-    nostræ basilicæ forma sua solent crucem referre, et in quatuor partes distingui. Edit. σταυροτύπος.
+
+  <bloco tipo="aparato_critico" script="misto" bbox="505,745,925,980">
+    nostræ basilicæ forma sua solent crucem referre,
+    et in quatuor partes distingui. Edit. σταυροτύπος.
     Ibidem τεμνόμενον. Duo Regg. κοσμόμενον.
-    62 Βηθλεὲμ ὑστατίης. Quasi Verbo in ea fidelium mentibus postremo concepto et nato. Combef. ita et Gaulyer. Sic autem, inquit Billius, Anastasiæ templum appellat, quia ut Christus in Bethlehem natus est, sic etiam salutifera ipsius doctrina ab hæreticis oppressa ac velut exstincta, in Anastasiæ æde, Gregorii labore ac industria, in lucem revocata est.
+    62 Βηθλεὲμ ὑστατίης. Quasi Verbo in ea fidelium
+    mentibus postremo concepto et nato. Combef. ita et
+    Gaulyer. Sic autem, inquit Billius, Anastasiæ tem-
+    plum appellat, quia ut Christus in Bethlehem natus
+    est, sic etiam salutifera ipsius doctrina ab hæreti-
+    cis oppressa ac velut exstincta, in Anastasiæ æde,
+    Gregorii labore ac industria, in lucem revocata est.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="400,875,600,900">
+
+  <bloco tipo="cabecalho" script="latino" bbox="390,870,610,905">
     METRICA VERSIO.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="80,905,470,985">
-    Denique pugnabant alii : nec dispar erat res,
-    Quam cum stante oritur sæva procella noto.
-    Eloquium at cunctos mulcebat, sive disertos,
-    Seu gnaros rerum quas sacra scripta docent :
-    Nostros atque nothos, et qui, procul a grege nostro,
-    Numina ter miseri robore cassa colunt.
-    Tacta velut Phœbi radiis ardentibus uva,
-    Nec prorsus cocta est, nec peracerba manet :
-    Sed partim nigra est, partim quoque tincta rubore;
-    Partim ὄμφαξ rursum, parte subatra alia :
-    Sic hi, dum vitium coqueretur, bella ciebant,
-    Prælaque lætus eram jam mage lata videns.
-    Hæc ego : sed galli sonitum mihi cantus ademit,
-    Cumque sopore simul dempsit Anastasiam.
+
+  <bloco tipo="texto_principal" script="latino" bbox="80,905,470,997">
+    35 Mortuo sine voce conatu : alii pugnabant
+    Instar fluctus a ventis agitati.
+    Omnes autem facundia demulcebat, disertos
+    Et sacrorum pietatis dogmatum peritos,
+    Nostros et exteros, et qui, procul a grege nostro,
+    40 Miseri cultores infirmorum simulacrorum.
+    Quemadmodum racemus calidis sub radiis infuscatus
+    Neque omnino acerba est uva sensim maturescens,
+    Neque omnino maturus est, sed partim niger, partim rubescens,
+    Atque aliud seminigrum, aliud acerbum :
+    45 Sic illi decertabant, dum excoqueretur pravitas,
+    Prælisque latioribus jam gaudebam.
+    Atque equidem sic habebam : mihi autem somnum ex palpebris excussit
+    Cantus gallorum, simul atque Anastasiam.
+    Simulacrum autem simulacri aliquandiu retinui; sed postea
+    50 Ex corde evanuit leniter marcescens.
+    Mihique nihil superfuit præter dolorem et tristem senectam.
+    O mea Trinitas ! o filii mei !
+    O invidia, quid in me patrasti ? Jam tot et tanta habes : ne quid pejus
+    Inferas meæ miserabili vitæ.
+    55 Multis quidem ornata magnisque
+    Dædaleis monumentis regia civitas,
+    Templis cœlestibus supra alias gloriatur,
+    Templis aliquando meis, nunc alienis :
+    Inter quæ magnifica ædes Christi discipulorum,
+    60 Lateribus formam crucis habentibus, in quatuor partes divisa.
+    Sed ea non tantum mihi desiderium et dolorem incutiunt,
+    Quantum Anastasia, novissima Bethlehem.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="480,910,500,925">B</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="505,905,900,985">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="490,875,515,905">
+    B
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="505,905,925,997">
     Ac spectrum spectri quodam mihi tempore mansit :
     Post etiam hoc liquit pectus inane fuga,
     Ac mihi duntaxat mansit dolor atque senectus.
     Heu mea sancta Trias ! Heu mea progenies !
-    Quid mihi fecisti, livor ! Jam tanta tulisti,
+    Quid mihi fecisti, livor ? Jam tanta tulisti,
     Ne misero immittas asperiora precor.
     Dotibus ampla quidem multis urbs regia gestit,
     Multaque, quæ visu sint speciosa, tenet.
@@ -115,7 +159,13 @@
     Ast ob ea haud tantus cruciat mea pectora mœror,
     Quantus ob ereptam vexat Anastasiam.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="80,985,360,998">PATROL. GR. XXXVII.</bloco>
-  <bloco tipo="rodape" script="latino" bbox="790,985,820,998">40</bloco>
-  <notas>Texto grego e tradução latina em prosa, seguidos de aparato crítico e versão métrica latina. Os identificadores A e B aparecem como notas marginais independentes.</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="185,980,395,998">
+    PATROL. GR. XXXVII.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="880,980,915,998">
+    40
+  </bloco>
+
+  <notas>A e B transcritos como notas marginais independentes; manteve-se a ordem por colunas e o marcador 846·847 como impresso.</notas>
 </pagina>

@@ -2,6 +2,8 @@ import sqlite3
 import os
 from pathlib import Path
 
+from tools.corpus_utils import discover_unique_page_map
+
 def find_gaps():
     con = sqlite3.connect("data/patristica_resumos.db")
     con.row_factory = sqlite3.Row
@@ -26,6 +28,11 @@ def find_gaps():
         ).fetchall()]
         
         doc_dir = Path("teste") / doc_name / "text"
+        disk_pages = (
+            discover_unique_page_map(doc_dir, volume_id=doc_name)
+            if doc_dir.is_dir()
+            else {}
+        )
         
         gaps = []
         zero_bytes = []
@@ -36,16 +43,9 @@ def find_gaps():
                 # (já pulado intencionalmente)
                 is_zero_byte = False
                 
-                if doc_dir.exists():
-                    import glob
-                    import re
-                    # Usa uma busca flexível para encontrar o TXT correto desta página
-                    matching_files = list(doc_dir.glob(f"*-{p}.txt")) + list(doc_dir.glob(f"*{p}.txt"))
-                    for f in matching_files:
-                        if re.search(rf"[^0-9]?{p}\.txt$", f.name):
-                            if f.stat().st_size == 0:
-                                is_zero_byte = True
-                            break
+                page_file = disk_pages.get(p)
+                if page_file is not None and page_file.stat().st_size == 0:
+                    is_zero_byte = True
                             
                 if is_zero_byte:
                     zero_bytes.append(p)
@@ -79,5 +79,5 @@ def find_gaps():
             if zero_bytes:
                  print(f"    (Ignoradas {len(zero_bytes)} páginas de 0 bytes: {', '.join(z_ranges)})")
 
-find_gaps()
-
+if __name__ == "__main__":
+    find_gaps()

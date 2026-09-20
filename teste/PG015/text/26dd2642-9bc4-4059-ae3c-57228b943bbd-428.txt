@@ -1,11 +1,18 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="110,65,920,85">851                                                                     HEXAPLORUM QUÆ SUPERSUNT.                                                                     852</bloco>
-  <bloco tipo="cabecalho" script="grego" bbox="175,87,330,111">ΤΟ ΕΒΡΑΙΚΟΝ.</bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="230,120,365,405">הפרסה 7
+  <bloco tipo="cabecalho" script="latino" bbox="60,22,90,40">851</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="360,18,640,48">HEXAPLORUM QUÆ SUPERSUNT.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="920,22,960,40">852</bloco>
+
+  <bloco tipo="cabecalho" script="grego" bbox="185,52,355,80">ΤΟ ΕΒΡΑΙΚΟΝ.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="420,52,665,82">ΤΟ ΕΒΡΑΙΚΟΝ
+Ἑλληνικοῖς γράμμασι.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="760,52,900,80">ΑΚΥΛΑΣ.</bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="220,85,380,320">הפרסה 7
 ואת־הארנבת 8
 והשפן 9
 והחזיר 12
-ואת־הנשר 13
+והנשר 13
 ואת־הפרס 14
 והעזניה 15
 לגר 21
@@ -13,7 +20,34 @@
 [ilegivel] 24
 ובשרך 26
 ושבעו 29</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="110,425,390,705">VERSIO HEBRAICI TEXT.
+
+  <bloco tipo="texto_principal" script="grego" bbox="405,85,455,320">7.
+8.
+9.
+12.
+13.
+14.
+15.
+21.
+24.
+26.
+29.</bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="665,85,920,320">7.
+Λογίων.
+8. Νεκριμαίων.
+9. Φολίδες.
+12. Ἴξον.
+13.
+14. Καὶ σύμπαντας κόρακα.
+15. Στρουθοκάμηλον
+21. Τῷ προσηλύτῳ.
+Ξένῳ.
+24.
+26. Μεθύσματι.'
+29.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="110,320,390,500">VERSIO HEBRAICI TEXT.
 
 7. Ungulam.
 
@@ -32,7 +66,7 @@ Et leporem.
 15. Ululam.
 
 21. Peregrino.
-Alienigenæ.
+Alienigene.
 Matris suæ.
 
 24. Multa fuerit præ te via.
@@ -40,47 +74,8 @@ Matris suæ.
 26. Et sechar.
 
 29. Et saturabuntur.</bloco>
-  <bloco tipo="nota" script="latino" bbox="220,730,800,755">Notæ et variæ lectiones ad cap. XIV Deuteronomii.</bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="105,770,485,930">Aquilæ lectiones versuum 1, 6, 7, 8, 9, 12, 14,
-15, 21, 26, præfert cod. Coislinianus.
 
-V. 2. Ἄλλος, προείλατο. Basil. Est forte Sym-
-machi, qui vocem יתום προσελήμην vertit Job
-XXIX. 25.
-
-Ibid. Ἄλλος, εἶναι. Basil.
-
-Ibid. Ἄλλος, ἐξαίρετον. Basil. tacito interprete,
-id affert. Coislin. autem: Σ., ἐξαίρετον. Sic etiam</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="365,955,660,980">CAPUT XV DEUTERONOMII.</bloco>
-  <bloco tipo="cabecalho" script="grego" bbox="175,990,330,1015">ΤΟ ΕΒΡΑΙΚΟΝ</bloco>
-  <bloco tipo="texto_principal" script="hebraico" bbox="230,1025,365,1135">שמטה 1
-לנכרי 3
-עמך 7</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="110,1150,390,1270">VERSIO HEBRAICI TEXT.
-
-1. Remissionem.
-
-5. Alienigenam.
-
-7. Roborabis.</bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="105,2070,485,2225">Ibid. Ἄλλος, εἶναι. Basil.
-Ibid. Ἄλλος, ἐξαίρετον. Basil. tacito interprete,
-id affert. Coislin. autem: Σ., ἐξαίρετον. Sic etiam</bloco>
-  <bloco tipo="cabecalho" script="grego" bbox="440,87,650,111">ΤΟ ΕΒΡΑΙΚΟΝ
-Ἑλληνικοῖς γράμμασι.</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="395,120,445,405">7.
-8.
-9.
-12.
-13.
-14.
-15.
-21.
-24.
-26.
-29.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="395,425,665,705">VULGATA LATINA.
+  <bloco tipo="texto_principal" script="latino" bbox="395,320,675,500">VULGATA LATINA.
 
 7. Ungulam.
 
@@ -100,63 +95,15 @@ Leporem.
 
 21. Peregrino.
 Ei.
-Malis suæ.
+Matris suæ.
 
 24. Longior fuerit via.
 
 26. Sicera.
 
 29. Et saturabuntur.</bloco>
-  <bloco tipo="cabecalho" script="grego" bbox="395,990,650,1015">ΤΟ ΕΒΡΑΙΚΟΝ
-Ἑλληνικοῖς γράμμασι.</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="395,1025,445,1135">1.
-3.
-7.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="395,1150,665,1270">VULGATA LATINA.
 
-1. Remissionem.
-
-3. A peregrino et advena.
-
-7. Obdurabis.</bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="500,770,900,930">vocem יתום vertit Symmachus, Exod. XII, 5.
-
-V. 5. Ἄλλος, αἴγαγρον. Coislin.
-
-V. 7. Ἄλλος, τὰς δύο χήλας. Ex Basil.
-
-V. 12. Ἄ., ἴξον. Coislin. Sed Basil. id ad vocem
-העטלף versu sequente videtur referre, præmisso
-asterisco sine interpretis nomine : et eo referendum
-suadet etiam Vulgata, quæ העטלף reddit ixion.
-
-V. 15. Sic Ern. Grab. הרחם, alii milvum, alii</bloco>
-  <bloco tipo="cabecalho" script="grego" bbox="755,87,875,111">ΑΚΥΛΑΣ.</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="665,120,920,405">7.
-
-Λογίων.
-
-8. Νεκριμαίων.
-
-9. Φολίδες.
-
-12. Ἴξον.
-
-13.
-
-14. Καὶ σύμπαντα κόρακα.
-
-15. Στρουθοκάμηλον
-
-21. Τῷ προσηλύτῳ.
-Ξένῳ.
-
-24.
-
-26. Μεθύσματι.
-
-29.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="665,425,930,705">AQUILA.
+  <bloco tipo="texto_principal" script="latino" bbox="690,320,920,500">AQUILA.
 
 7.
 
@@ -182,19 +129,80 @@ Hospiti.
 26. Ebrietate.
 
 29</bloco>
-  <bloco tipo="cabecalho" script="grego" bbox="665,990,900,1015">ΑΚΥΛΑΣ.</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="665,1025,930,1135">1. Ὑποσπασμόν.
 
+  <bloco tipo="cabecalho" script="latino" bbox="230,540,780,575">Notæ et variæ lectiones ad cap. XIV Deuteronomii.</bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="110,585,490,780">Aquilæ lectiones versuum 1, 6, 7, 8, 9, 12, 14,
+15, 21, 26, præfert cod. Coislinianus.
+
+V. 2. Ἄλλος, προείλατο. Basil. Est forte Sym-
+machi, qui vocem יתום προεἵλομην vertit Job
+XXIX. 25.
+
+Ibid. Ἄλλος, εἶναι. Basil.
+
+Ibid. Ἄλλος, ἐξαίρετον. Basil. tacito interprete,
+id affert. Coislin. autem: Σ., ἐξαίρετον. Sic etiam</bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="520,585,905,780">vocem יתום vertit Symmachvs, Exod. XII, 5.
+
+V. 5. Ἄλλος, αἴγαγρον. Coislin.
+
+V. 7. Ἄλλος, τὰς δύο χήλας. Ex Basil.
+
+V. 12. Ἄ., ἴξον. Coislin. Sed Basil. id ad vocem
+העטלף versu sequente videtur referre, præmisso
+asterisco sine interpretis nomine : et eo referen-
+dum suadet etiam Vulgata, quæ העטלף reddit ixion.
+
+V. 15. Sic Ern. Grab. רחם, alii milvum, alii</bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="360,790,670,815">CAPUT XV DEUTERONONII.</bloco>
+
+  <bloco tipo="cabecalho" script="grego" bbox="185,835,355,860">ΤΟ ΕΒΡΑΙΚΟΝ</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="420,835,665,865">ΤΟ ΕΒΡΑΙΚΟΝ
+Ἑλληνικοῖς γράμμασι.</bloco>
+  <bloco tipo="cabecalho" script="grego" bbox="760,835,900,860">ΑΚΥΛΑΣ.</bloco>
+
+  <bloco tipo="texto_principal" script="hebraico" bbox="220,865,360,955">שמטה 1
+לנכרי 3
+עמך 7</bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="405,865,455,955">1.
 3.
+7.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="110,900,390,980">VERSIO HEBRAICI TEXT.
+
+1. Remissionem.
+
+5. Alienigenam.
+
+7. Roborabis.</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="395,900,675,980">VULGATA LATINA.
+
+1. Remissionem.
+
+3. A peregrino et advena.
+
+7. Obdurabis.</bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="700,865,920,955">1. Ὑποσπασμόν.
+
+5.
 
 7.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="665,1150,930,1270">AQUILA.
+
+  <bloco tipo="texto_principal" script="latino" bbox="700,900,920,980">AQUILA.
 
 1. Subtractionem.
 
-3.
+5.
 
 7.</bloco>
-  <bloco tipo="rodape" script="latino" bbox="570,975,800,995">Digitized by Google</bloco>
-  <notas>Texto disposto em três colunas; a leitura segue da coluna esquerda para a direita. Não se observam identificadores marginais A, B, C ou D.</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="665,955,855,985">Digitized by Google</bloco>
+
+  <notas>Texto em colunas; a leitura segue da esquerda para a direita dentro de cada faixa. Em alguns trechos pequenos do hebraico e do aparato crítico a leitura é parcialmente incerta; foi mantido [ilegivel] apenas onde não foi possível distinguir a palavra com segurança.</notas>
 </pagina>

@@ -48,6 +48,7 @@ from scripts.limpeza_ocr import (  # type: ignore  # noqa: E402
 from tools.indexing.index_target_locator import (  # type: ignore  # noqa: E402
     resolve_paired_page_image,
 )
+from tools.corpus_utils import discover_unique_pages  # type: ignore  # noqa: E402
 from facsimile_transport import (  # noqa: E402
     DEFAULT_FACSIMILE_JPEG_QUALITY,
     encode_facsimile_for_transport,
@@ -948,9 +949,8 @@ def page_number(path: Path) -> int:
 
 
 def discover_pages(text_dir: Path) -> List[Path]:
-    """Retorna as páginas .txt ordenadas numericamente."""
-    pages = sorted(text_dir.glob("*.txt"), key=page_sort_key)
-    return pages
+    """Retorna uma única fonte canônica por página lógica."""
+    return discover_unique_pages(text_dir, volume_id=text_dir.parent.name)
 
 
 def discover_volumes(
@@ -1376,6 +1376,7 @@ def process_volume_v2(
         )
         start_page = resume_page_number(con, run, all_pages, force_replace_from)
         if start_page is None:
+            mark_run_complete(con, run["id"])
             if promote:
                 promoted = _promote_v2_run_segments(con, run["id"], documento)
                 log.info(
@@ -1441,7 +1442,8 @@ def process_volume_v2(
             index_hints=hints,
             scripture_evidence=scripture_evidence,
         )
-        if not active_work_key:
+        initialize_work_from_index = previous_generation is None
+        if not active_work_key and initialize_work_from_index:
             active_work_key = initial_active_work_key(previous_generation, analysis)
         incoming_work_key = active_work_key
         ocr_result_id = None
@@ -1574,6 +1576,7 @@ def process_volume_v2(
             candidate,
             analysis,
             incoming_work_key,
+            allow_index_initialization=initialize_work_from_index,
         )
 
         search_text = build_summary_search_text(
