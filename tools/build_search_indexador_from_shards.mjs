@@ -360,12 +360,26 @@ async function buildIndex(params, definition, keywordMap) {
         min_importance: config.minImportance,
         keep_terms: config.keepTerms,
         write_suggestion_wordlists: config.suggestionWordlists,
+        write_document_locations: true,
       },
     });
+    const documentLocations = dump.document_locations;
+    if (!documentLocations?.build_id || Number(documentLocations.documents) !== total) {
+      throw new Error(
+        `Índice ${definition.id}: DumpIndex não publicou document_locations.bin.gz compatível `
+        + `(${documentLocations?.documents ?? 'ausente'}/${total} documentos).`,
+      );
+    }
+    const documentLocationsPath = path.join(outDir, 'document_locations.bin.gz');
+    const documentLocationsStat = await fs.promises.stat(documentLocationsPath);
+    if (!documentLocationsStat.isFile() || documentLocationsStat.size !== Number(documentLocations.gzip_bytes)) {
+      throw new Error(`Índice ${definition.id}: document_locations.bin.gz ausente ou com tamanho incompatível.`);
+    }
     await client.shutdown();
     return {
       id: definition.id,
       path: definition.path,
+      build_id: documentLocations.build_id,
       collections: definition.collections,
       volumes: definition.volumes.map((volume) => volume.id),
       documents: total,
@@ -373,6 +387,14 @@ async function buildIndex(params, definition, keywordMap) {
       terms: stats.total_terms,
       index_shards: dump.index_shards,
       document_shards: dump.document_shards,
+      document_locations: {
+        url: `${definition.path}/document_locations.bin.gz`,
+        build_id: documentLocations.build_id,
+        documents: Number(documentLocations.documents),
+        volumes: Number(documentLocations.volumes),
+        raw_bytes: Number(documentLocations.raw_bytes),
+        gzip_bytes: Number(documentLocations.gzip_bytes),
+      },
       bytes: await directorySize(outDir),
       config: {
         max_terms_per_shard: config.maxTermsPerShard,
@@ -381,6 +403,7 @@ async function buildIndex(params, definition, keywordMap) {
         min_importance: config.minImportance,
         keep_terms: config.keepTerms,
         write_suggestion_wordlists: config.suggestionWordlists,
+        write_document_locations: true,
         keyword_literals: params.keywordLiterals,
       },
     };
@@ -467,6 +490,7 @@ async function main() {
       min_importance: params.minImportance,
       keep_terms: params.keepTerms,
       write_suggestion_wordlists: params.suggestionWordlists,
+      write_document_locations: true,
       keyword_literals: params.keywordLiterals,
     },
     suggestions: {
