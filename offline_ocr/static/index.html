@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>OCR · Oficina de layout</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body>
+<header><div><span class="eyebrow">BIBLIOTECA / PROCESSAMENTO OFFLINE</span><h1>Oficina de OCR</h1><p>Compare as transcrições e siga cada palavra até a página.</p></div><span class="badge">Arquivo original preservado</span></header>
+<main>
+<section class="toolbar" aria-label="Comparação e camadas">
+<div class="page-search"><label>Filtrar páginas<input id="page-prefix" type="search" placeholder="Ex.: PG013-941"></label><button id="search-pages">Buscar</button><button id="next-pages">Mais páginas</button></div>
+<label class="page-select">Página e versão<select id="comparison"><option value="">Carregando…</option></select></label>
+<fieldset><legend>Camadas sobre a imagem</legend>
+<label><input type="checkbox" id="blocks" checked> Blocos LLM</label>
+<label><input type="checkbox" id="anchors" checked> Aproximação textual</label>
+<label><input type="checkbox" id="lines"> Linhas Tesseract</label>
+<label><input type="checkbox" id="words"> Palavras Tesseract</label>
+<label><input type="checkbox" id="differences" checked> Divergências</label>
+<label><input type="checkbox" id="corrections" checked> Ajustes</label>
+</fieldset>
+<label>Opacidade<input id="opacity" type="range" min="10" max="90" value="40"></label>
+<label>Zoom<select id="zoom"><option value="1">Ajustar</option><option value="1.5">150%</option><option value="2">200%</option><option value="3">300%</option></select></label>
+</section>
+<p id="status" role="status" aria-live="polite">Carregando comparações…</p>
+<div class="workspace">
+<section class="image-panel" aria-label="Página com overlays"><div class="panel-heading"><h2>Página original</h2><span>Azul: LLM · Verde: aproximação · Vermelho: diferença</span></div><div id="image-scroll"><div id="sheet"><img id="page" alt="Página original digitalizada"><svg id="overlay" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-label="Caixas de layout"></svg></div></div></section>
+<section class="review-panel" aria-label="Inspeção de palavras">
+<div class="panel-heading"><h2>Inspeção</h2><div class="exports"><a id="download" download="ocr-layout.json">JSON</a><a id="download-xml">XML ajustado</a><a id="download-raster">PNG com overlays</a></div></div>
+<div id="stats" class="stats"></div>
+<details><summary>Observações e limites</summary><ul id="warnings"></ul></details>
+<div id="selection" class="selection" tabindex="-1"><h3>Selecione uma palavra</h3><p>Use o texto, a lista de divergências ou uma caixa na imagem para inspecionar os fragmentos.</p></div>
+<details id="edit-panel" class="editor"><summary>Ajustar palavras e bbox</summary>
+<form id="word-form"><label>Texto corrigido da seleção<textarea id="correction-text" rows="2" placeholder="Selecione uma palavra ou trecho" disabled></textarea></label><div class="actions"><button type="button" id="use-tesseract" disabled>Usar texto Tesseract</button><button id="save-word" disabled>Salvar correção</button><button type="button" id="undo-word" disabled>Restaurar original</button></div></form>
+<form id="box-form"><label>Bloco para ajustar<select id="block-select"></select></label><div class="coordinates"><label>x1<input type="number" id="x1" min="0" max="1000" step="0.1" required></label><label>y1<input type="number" id="y1" min="0" max="1000" step="0.1" required></label><label>x2<input type="number" id="x2" min="0" max="1000" step="0.1" required></label><label>y2<input type="number" id="y2" min="0" max="1000" step="0.1" required></label></div><p id="box-evidence"></p><div class="actions"><button type="button" id="suggest-box">Usar aproximação</button><button type="button" id="draw-box">Desenhar na página</button><button>Salvar bbox</button><button type="button" id="undo-box">Restaurar bbox</button></div></form>
+<label>Nota da revisão<input id="review-note" type="text" placeholder="Motivo do ajuste (opcional)"></label><p id="review-status" role="status" aria-live="polite"></p><button id="refine">Recomparar ajustes em nova versão</button><details><summary>Histórico de ajustes</summary><ul id="history"></ul></details>
+</details>
+<div class="tabs" role="group" aria-label="Modo de inspeção"><button id="show-flow" aria-pressed="true">Texto corrido LLM</button><button id="show-diff" aria-pressed="false">Divergências</button><button id="show-raw" aria-pressed="false">XML original</button></div>
+<label class="filter">Filtrar palavras<input id="filter" type="search" placeholder="Texto da LLM ou do Tesseract"></label>
+<div id="content"></div>
+</section>
+</div>
+</main><footer>Uma divergência é um sinal para revisão. A posição de uma palavra LLM é inferida; a imagem continua sendo a referência.</footer>
+</body></html>
