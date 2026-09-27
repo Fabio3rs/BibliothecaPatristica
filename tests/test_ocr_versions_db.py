@@ -859,3 +859,26 @@ class TestPrintHistory:
         vdb.print_history("PO999", 99, db_path)
         captured = capsys.readouterr()
         assert "Nenhum registro" in captured.out
+
+
+def test_engine_insert_race_does_not_leave_transaction_open(tmp_path):
+    class StaleReadConnection(sqlite3.Connection):
+        miss_next_engine_read = False
+
+        def execute(self, sql, parameters=()):
+            if self.miss_next_engine_read and sql.lstrip().startswith("SELECT id FROM ocr_engine_versions"):
+                self.miss_next_engine_read = False
+                return super().execute("SELECT id FROM ocr_engine_versions WHERE 0")
+            return super().execute(sql, parameters)
+
+    con = sqlite3.connect(tmp_path / "engine-race.db", factory=StaleReadConnection)
+    con.row_factory = sqlite3.Row
+    vdb.init_versions_schema(con)
+    options = dict(engine="llm", model="test", prompt_key="test", system_prompt="test")
+    expected = vdb.get_or_create_engine_version(con, **options)
+    con.miss_next_engine_read = True
+    assert vdb.get_or_create_engine_version(con, **options) == expected
+    assert not con.in_transaction
+    con.execute("BEGIN IMMEDIATE")
+    con.rollback()
+    con.close()

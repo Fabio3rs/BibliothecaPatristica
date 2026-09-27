@@ -175,6 +175,7 @@ def get_or_create_engine_version(
         con.commit()
         return cur.lastrowid  # type: ignore[return-value]
     except sqlite3.IntegrityError:
+        con.rollback()
         # Race condition: outro processo/thread inseriu entre o SELECT e o INSERT.
         # Re-consulta para obter o id que foi inserido pelo outro.
         row = con.execute(
