@@ -20,6 +20,7 @@ from typing import Any, Iterable, Sequence
 
 SUMMARY_SCHEMA_VERSION = "summary-v2"
 SUMMARY_PROMPT_VERSION = "summary-v2-gemma4-2026-08-25"
+SUMMARY_VALIDATION_VERSION = "summary-v2-validation-2026-10-31"
 TRANSLATION_PROMPT_VERSION = "translation-v2-multilingual-2026-08-24"
 CUMULATIVE_SUMMARY_SOFT_TARGET = 1800
 CUMULATIVE_SUMMARY_REVIEW_LIMIT = 6000
@@ -317,6 +318,7 @@ class StaticPageAnalysis:
 
     def to_dict(self) -> dict[str, Any]:
         return {
+            "validation_version": SUMMARY_VALIDATION_VERSION,
             "header_original": self.header_original,
             # O texto integral já existe no corpus e não deve ser duplicado em
             # cada geração de uma base que hoje tem centenas de milhares de
@@ -359,6 +361,10 @@ class SummaryCandidate:
     validation_issues: tuple[str, ...]
     context_reset: bool
     context_reset_confidence: float
+
+    @property
+    def is_administrative_only(self) -> bool:
+        return _is_administrative_only(self.page_kinds, self.segments)
 
 
 def sha256_text(*values: object) -> str:
@@ -1062,6 +1068,27 @@ def extract_json_object_response(raw_response: str) -> dict[str, Any]:
     raise ValueError(detail)
 
 
+def _is_administrative_only(
+    page_kinds: Iterable[str], segments: Iterable[dict[str, Any]]
+) -> bool:
+    return set(page_kinds) == {"administrative"} and all(
+        segment.get("kind") == "administrative" for segment in segments
+    )
+
+
+def _has_corroborated_work_start(analysis: StaticPageAnalysis) -> bool:
+    header = normalize_match_text(analysis.header_original)
+    source = f" {header} {normalize_match_text(analysis.ocr_clean)} "
+    for item in analysis.exact_start_candidates:
+        title = normalize_match_text(str(item.get("title_original") or ""))
+        if not title:
+            continue
+        # Uma palavra genérica no corpo não confirma o título do catálogo.
+        if title == header or (len(title.split()) >= 2 and f" {title} " in source):
+            return True
+    return False
+
+
 def parse_summary_candidate(
     raw_response: str,
     analysis: StaticPageAnalysis,
@@ -1132,13 +1159,21 @@ def parse_summary_candidate(
     display_parts = [segment["summary"] for segment in segments if segment["summary"]]
     summary_display = normalize_whitespace(" ".join(display_parts))
     is_administrative = "administrative" in page_kinds
-    if is_administrative and (analysis.exact_start_candidates or analysis.ocr_chars >= 500):
-        issues.append("false_administrative_risk")
+    administrative_only = _is_administrative_only(page_kinds, segments)
+    if administrative_only:
+        if analysis.exact_start_candidates:
+            issues.append(
+                "false_administrative_risk"
+                if _has_corroborated_work_start(analysis)
+                else "administrative_index_conflict"
+            )
+        if analysis.ocr_chars >= 500:
+            issues.append("administrative_long_text_review")
     if is_administrative and not admin_reason:
         issues.append("administrative_without_reason")
-    if not is_administrative and len(summary_display) < 80:
+    if not administrative_only and len(summary_display) < 80:
         issues.append("summary_too_short")
-    if not cumulative and not is_administrative:
+    if not cumulative and not administrative_only:
         issues.append("missing_cumulative_summary")
 
     chosen_keys = [segment["work_key"] for segment in segments if segment["work_key"]]
@@ -1191,6 +1226,12 @@ def generation_last_work_key(generation: Any | None) -> str:
     """Obtém a última obra ativa gravada sem depender do texto cumulativo."""
     if generation is None:
         return ""
+    try:
+        analysis = json.loads(str(generation["static_analysis_json"] or "{}"))
+    except (KeyError, IndexError, TypeError, ValueError):
+        analysis = {}
+    if isinstance(analysis, dict) and "active_work_key" in analysis:
+        return normalize_whitespace(analysis["active_work_key"])
     try:
         raw_segments = generation["segments_json"]
     except (KeyError, IndexError, TypeError):
@@ -1449,6 +1490,7 @@ def store_generation(
     facsimile_used: bool,
     tainted_by_page: int | None,
     previous_chain_hash_override: str = "",
+    active_work_key: str | None = None,
 ) -> sqlite3.Row:
     previous_chain = (
         str(previous_generation["chain_hash"] or "")
@@ -1462,6 +1504,9 @@ def store_generation(
         json.dumps(candidate.segments, ensure_ascii=False, sort_keys=True),
     )
     chain_hash = sha256_text(previous_chain, source_hash, output_hash)
+    analysis_payload = analysis.to_dict()
+    if active_work_key is not None:
+        analysis_payload["active_work_key"] = normalize_whitespace(active_work_key)
     values = (
         run_id,
         legacy_resumo_id,
@@ -1492,12 +1537,21 @@ def store_generation(
         embedding_text,
         candidate.administrative_reason,
         json.dumps(candidate.source_conflicts, ensure_ascii=False),
-        json.dumps(analysis.to_dict(), ensure_ascii=False),
+        json.dumps(analysis_payload, ensure_ascii=False),
         json.dumps(candidate.validation_issues, ensure_ascii=False),
         raw_response,
         int(facsimile_used),
     )
     con.execute("BEGIN IMMEDIATE")
+    previous = con.execute(
+        "SELECT validation_issues_json FROM resumo_generations WHERE run_id=? AND documento=? AND pagina_num=?",
+        (run_id, documento, pagina_num),
+    ).fetchone()
+    try:
+        old_issues = json.loads(previous["validation_issues_json"] or "[]") if previous else []
+    except (TypeError, ValueError):
+        old_issues = []
+    old_issues = {item for item in old_issues if isinstance(item, str)} if isinstance(old_issues, list) else set()
     con.execute(
         """
         INSERT INTO resumo_generations (
@@ -1554,6 +1608,22 @@ def store_generation(
     if row is None:
         con.rollback()
         raise RuntimeError("Geração v2 não foi persistida")
+    resolution = json.dumps({
+        "resolution": "superseded_by_revalidation",
+        "validation_version": SUMMARY_VALIDATION_VERSION,
+        "source_hash": source_hash,
+        "output_hash": output_hash,
+    }, ensure_ascii=False)
+    con.executemany(
+        """
+        UPDATE resumo_review_queue SET status='resolved', resolution_json=?
+         WHERE generation_id=? AND issue_kind=? AND status='pending'
+        """,
+        [
+            (resolution, int(row["id"]), issue)
+            for issue in sorted(old_issues - set(candidate.validation_issues))
+        ],
+    )
     for issue in candidate.validation_issues:
         con.execute(
             """
@@ -1561,7 +1631,8 @@ def store_generation(
                 (generation_id, documento, pagina_num, issue_kind, severity, evidence_json)
             VALUES (?, ?, ?, ?, ?, ?)
             ON CONFLICT(generation_id, issue_kind) DO UPDATE SET
-                severity=excluded.severity, evidence_json=excluded.evidence_json, status='pending'
+                severity=excluded.severity, evidence_json=excluded.evidence_json,
+                status='pending', resolution_json='{}'
             """,
             (
                 int(row["id"]),

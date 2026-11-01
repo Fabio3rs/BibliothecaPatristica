@@ -1,0 +1,175 @@
+{
+  "schema_version": "kg-extraction-v2",
+  "concepts": [
+    {
+      "id": "c1",
+      "label": "Divindade do Filho",
+      "meaning": "Condição divina do Filho afirmada no argumento",
+      "grounding": "explicit",
+      "salience": "primary",
+      "evidence_ids": [
+        "ev4"
+      ],
+      "model_confidence": {
+        "score": 0.5,
+        "rationale": "Valor sintético para testar armazenamento e interface; não foi estimado por um modelo e não avalia a passagem."
+      }
+    }
+  ],
+  "entities": [
+    {
+      "id": "e1",
+      "type": "PERSON",
+      "label": "Atanásio",
+      "origin": "current_page",
+      "evidence_ids": [
+        "ev1"
+      ],
+      "model_confidence": {
+        "score": 0.5,
+        "rationale": "Valor sintético para testar armazenamento e interface; não foi estimado por um modelo e não avalia a passagem."
+      }
+    },
+    {
+      "id": "e2",
+      "type": "GROUP",
+      "label": "Arianos",
+      "origin": "current_page",
+      "evidence_ids": [
+        "ev2"
+      ],
+      "model_confidence": {
+        "score": 0.5,
+        "rationale": "Valor sintético para testar armazenamento e interface; não foi estimado por um modelo e não avalia a passagem."
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "p1",
+      "proposition": "O Filho é uma criatura",
+      "mode": "reported",
+      "evidence_ids": [
+        "ev3"
+      ],
+      "model_confidence": {
+        "score": 0.5,
+        "rationale": "Valor sintético para testar armazenamento e interface; não foi estimado por um modelo e não avalia a passagem."
+      }
+    },
+    {
+      "id": "p2",
+      "proposition": "O Filho possui plena divindade",
+      "mode": "asserted",
+      "evidence_ids": [
+        "ev4"
+      ],
+      "model_confidence": {
+        "score": 0.5,
+        "rationale": "Valor sintético para testar armazenamento e interface; não foi estimado por um modelo e não avalia a passagem."
+      }
+    }
+  ],
+  "events": [],
+  "relations": [
+    {
+      "id": "r1",
+      "source_id": "e1",
+      "predicate": "REFUTES",
+      "target_id": "p1",
+      "grounding": "explicit",
+      "evidence_ids": [
+        "ev5",
+        "ev8"
+      ],
+      "model_confidence": {
+        "score": 0.5,
+        "rationale": "Valor sintético para testar armazenamento e interface; não foi estimado por um modelo e não avalia a passagem."
+      }
+    },
+    {
+      "id": "r2",
+      "source_id": "e1",
+      "predicate": "AFFIRMS",
+      "target_id": "p2",
+      "grounding": "explicit",
+      "evidence_ids": [
+        "ev7"
+      ],
+      "model_confidence": {
+        "score": 0.5,
+        "rationale": "Valor sintético para testar armazenamento e interface; não foi estimado por um modelo e não avalia a passagem."
+      }
+    },
+    {
+      "id": "r3",
+      "source_id": "e2",
+      "predicate": "REPORTED_TO_HOLD",
+      "target_id": "p1",
+      "grounding": "explicit",
+      "evidence_ids": [
+        "ev6"
+      ],
+      "model_confidence": {
+        "score": 0.5,
+        "rationale": "Valor sintético para testar armazenamento e interface; não foi estimado por um modelo e não avalia a passagem."
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "source": "summary_segment",
+      "locator": "s1",
+      "quote": "Atanásio"
+    },
+    {
+      "id": "ev2",
+      "source": "summary_segment",
+      "locator": "s1",
+      "quote": "arianos"
+    },
+    {
+      "id": "ev3",
+      "source": "summary_segment",
+      "locator": "s1",
+      "quote": "o Filho é uma criatura"
+    },
+    {
+      "id": "ev4",
+      "source": "summary_segment",
+      "locator": "s1",
+      "quote": "plena divindade do Filho"
+    },
+    {
+      "id": "ev5",
+      "source": "summary_segment",
+      "locator": "s1",
+      "quote": "Atanásio contesta a tese atribuída aos arianos de que o Filho é uma criatura"
+    },
+    {
+      "id": "ev6",
+      "source": "summary_segment",
+      "locator": "s1",
+      "quote": "tese atribuída aos arianos de que o Filho é uma criatura"
+    },
+    {
+      "id": "ev7",
+      "source": "summary_segment",
+      "locator": "s1",
+      "quote": "afirma a plena divindade do Filho"
+    },
+    {
+      "id": "ev8",
+      "source": "ocr_block",
+      "locator": "b1",
+      "quote": "Athanasius refutat sententiam eorum qui Filium creaturam esse dicunt."
+    }
+  ],
+  "warnings": [
+    {
+      "code": "OTHER",
+      "message": "Demonstração sintética: todas as notas de confiança são valores de teste, não avaliações de um modelo."
+    }
+  ]
+}

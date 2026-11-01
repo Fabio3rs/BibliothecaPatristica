@@ -1,4 +1,5 @@
 import json
+import logging
 import re
 import sqlite3
 import sys
@@ -30,6 +31,7 @@ from resumo_v2 import (
     current_summary_select_sql,
     extract_json_object_response,
     get_or_create_run,
+    generation_last_work_key,
     init_v2_schema,
     load_volume_index_hints,
     reconcile_candidate_work_keys,
@@ -149,6 +151,99 @@ def test_volume_processing_lock_rejects_a_second_writer(tmp_path):
 
     second = resumo_serial.acquire_volume_processing_lock(db_path, "PG001")
     resumo_serial.release_volume_processing_lock(second)
+
+
+def test_cli_reports_context_block_as_failure_without_claiming_completion(
+    tmp_path, monkeypatch, caplog,
+):
+    volume = tmp_path / "PG999"
+    (volume / "text").mkdir(parents=True)
+    for page in (1, 2):
+        (volume / "text" / f"page-{page:03d}.txt").write_text("Texto recuperável. " * 30)
+    db = tmp_path / "resumos.sqlite"
+    calls = []
+
+    def provisional(**kwargs):
+        calls.append(kwargs["user_prompt"])
+        return _candidate(status="context_provisional"), "{}", resumo_serial.TokenUsage()
+
+    monkeypatch.setattr(resumo_serial, "_call_v2_candidate", provisional)
+    monkeypatch.setattr(resumo_serial, "_scripture_evidence_for_page", lambda *_args: {})
+    monkeypatch.setattr(resumo_serial, "_vdb", None)
+    monkeypatch.setattr(sys, "argv", [
+        "resumo_serial.py", "--pipeline", "v2", "--volume-dir", str(volume),
+        "--db", str(db), "--indices-db", str(tmp_path / "missing.db"),
+        "--lookahead-pages", "0", "--facsimile-mode", "never",
+    ])
+    caplog.set_level(logging.INFO)
+
+    with pytest.raises(SystemExit) as exc_info:
+        resumo_serial.main()
+
+    assert exc_info.value.code == 1
+    assert len(calls) == 1
+    assert "Volume PG999 concluído" not in caplog.text
+    assert "bloqueado" in caplog.text
+    with sqlite3.connect(db) as con:
+        assert con.execute("SELECT status,blocking_page_num FROM resumo_runs").fetchone() == (
+            "blocked", 1,
+        )
+        assert con.execute("SELECT count(*) FROM resumo_generations").fetchone()[0] == 1
+
+
+def test_revalidation_resolves_obsolete_automatic_issues_and_preserves_manual_review():
+    con = _connection()
+    run = _run(con)
+    kwargs = dict(
+        con=con, run_id=run["id"], legacy_resumo_id=None, ocr_result_id=None,
+        documento="PG001", pagina_num=175, pagina_file="page-175.txt",
+        previous_generation=None, source_hash="source", provider="ollama", model="test",
+        search_text_pt="texto", embedding_text="texto", analysis=_analysis(),
+        raw_response="{}", facsimile_used=False,
+    )
+    old = replace(_candidate("context_provisional"), validation_issues=("false_administrative_risk",))
+    first = store_generation(**kwargs, candidate=old, tainted_by_page=175)
+    con.execute(
+        """INSERT INTO resumo_review_queue
+           (generation_id,documento,pagina_num,issue_kind,severity)
+           VALUES (?,'PG001',175,'manual_attribution_question','metadata')""",
+        (first["id"],),
+    )
+    con.commit()
+    new = replace(_candidate("metadata_pending"), validation_issues=("administrative_long_text_review",))
+    second = store_generation(**kwargs, candidate=new, tainted_by_page=None)
+    assert first["id"] == second["id"]
+    issues = {r["issue_kind"]: r for r in con.execute("SELECT * FROM resumo_review_queue")}
+    assert issues["false_administrative_risk"]["status"] == "resolved"
+    resolution = json.loads(issues["false_administrative_risk"]["resolution_json"])
+    assert resolution["resolution"] == "superseded_by_revalidation"
+    assert issues["administrative_long_text_review"]["status"] == "pending"
+    assert issues["manual_attribution_question"]["status"] == "pending"
+
+    store_generation(**kwargs, candidate=old, tainted_by_page=175)
+    recurring = con.execute(
+        "SELECT status,resolution_json FROM resumo_review_queue WHERE issue_kind='false_administrative_risk'"
+    ).fetchone()
+    assert tuple(recurring) == ("pending", "{}")
+    con.close()
+
+
+@pytest.mark.parametrize("active_key", ["work:continued", ""])
+def test_saved_active_work_state_takes_precedence_over_segment_keys(active_key):
+    con = _connection()
+    row = store_generation(
+        con, run_id=_run(con)["id"], legacy_resumo_id=None, ocr_result_id=None,
+        documento="PG001", pagina_num=175, pagina_file="page-175.txt",
+        previous_generation=None, source_hash="source", provider="ollama", model="test",
+        candidate=_candidate(), search_text_pt="texto", embedding_text="texto",
+        analysis=_analysis(), raw_response="{}", facsimile_used=False,
+        tainted_by_page=None, active_work_key=active_key,
+    )
+
+    assert generation_last_work_key(row) == active_key
+    assert json.loads(row["static_analysis_json"])["active_work_key"] == active_key
+    assert row["source_hash"] == "source"
+    con.close()
 
 
 def _blank_key_candidate(*, kinds=("body",), segment_kinds=("body",)) -> SummaryCandidate:
@@ -638,6 +733,7 @@ def test_work_key_repair_restores_model_blank_and_rejects_bad_key(tmp_path):
         raw_response=raw,
         facsimile_used=False,
         tainted_by_page=None,
+        active_work_key=bad_key,
     )
 
     _run_row, changes, report = repair_resumo_work_keys.plan_repair(
@@ -664,6 +760,8 @@ def test_work_key_repair_restores_model_blank_and_rejects_bad_key(tmp_path):
         "SELECT * FROM resumo_generations WHERE id=?", (generation["id"],)
     ).fetchone()
     assert json.loads(repaired["segments_json"])[0]["work_key"] == ""
+    assert generation_last_work_key(repaired) == ""
+    assert json.loads(repaired["static_analysis_json"])["active_work_key"] == ""
     assert repaired["status"] == "metadata_pending"
 
 

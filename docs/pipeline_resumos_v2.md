@@ -45,6 +45,34 @@ gravada para auditoria, a execução recebe `status=blocked` e a página seguint
 não é processada. Erro de leitura, erro de provider e JSON irrecuperável também
 bloqueiam. Ambiguidades apenas bibliográficas não bloqueiam.
 
+Uma página exclusivamente administrativa com 500 ou mais caracteres recebe
+`administrative_long_text_review` (`metadata_pending`), sem pausar a cadeia.
+Comprimento não distingue um aviso legal de conteúdo de uma obra. Um início de
+obra indicado apenas pelo índice recebe `administrative_index_conflict`, também
+não bloqueante. `false_administrative_risk` bloqueia quando esse início é
+corroborado pelo título original no OCR ou no cabeçalho. Não há exceção baseada
+na palavra “Google”.
+
+Páginas exclusivamente administrativas aceitas preservam a síntese cumulativa
+anterior, mesmo se o modelo devolver uma síntese vazia ou um resumo do aviso.
+Páginas mistas com conteúdo e trechos administrativos continuam obrigadas a
+fornecer síntese cumulativa. Essas regras valem para novas validações; não
+reclassificam gerações já persistidas nem promovem resultados automaticamente.
+A versão dessas regras fica registrada em `static_analysis_json.validation_version`,
+separadamente da versão do prompt, para conservar a identidade dos runs existentes.
+
+A obra ativa ao final de cada página é persistida em
+`static_analysis_json.active_work_key`, inclusive quando fica explicitamente
+indeterminada (`""`). A retomada usa esse estado, evitando perder a obra ao parar
+depois de uma página administrativa sem `work_key` nos segmentos. Gerações antigas
+sem esse campo continuam usando as chaves dos segmentos. Reparações de chaves
+também atualizam esse estado.
+
+Ao revalidar uma página, pendências automáticas da validação anterior que não se
+repetem são encerradas com motivo `superseded_by_revalidation`. Questões manuais
+fora daquela lista permanecem abertas. Uma pendência recorrente é reaberta sem
+reutilizar a resolução anterior; isso não equivale a aprovação histórica do resumo.
+
 `--resume` não é necessário: a retomada é automática pelo manifesto e pelo run.
 
 ## Evidências determinísticas e fac-símile
@@ -173,8 +201,9 @@ não podem avançar a mesma cadeia. Falhas de um volume não interrompem os
 demais por padrão; o lote termina com status diferente de zero e conserva um
 `jobs-*.tsv` quando GNU Parallel está disponível. Use `--fail-fast` quando for
 preferível parar de agendar novos volumes depois da primeira falha. Uma cadeia
-que continuar provisória apó o lookahead também é reportada como problema no
-resumo final. `--fill-gaps` e `--page` são rejeitados no v2 porque quebrariam a
+que continuar provisória após o lookahead também faz o processo terminar com
+código 1, preservando o bloqueio no banco e sem anunciar o volume como concluído.
+Os demais volumes continuam sendo processados. `--fill-gaps` e `--page` são rejeitados no v2 porque quebrariam a
 semântica da corrente; reparos usam `--force-replace-from`.
 
 Para inspecionar execução e pendências sem escrever no banco:

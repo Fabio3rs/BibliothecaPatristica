@@ -31,7 +31,7 @@ import time
 import unicodedata
 import urllib.error
 import urllib.request
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, List, Optional, TextIO, Tuple
@@ -1295,6 +1295,10 @@ def _promote_v2_run_segments(
     return promoted
 
 
+class V2RunBlockedError(RuntimeError):
+    """A geração foi persistida, mas a cadeia precisa de revisão antes de avançar."""
+
+
 def process_volume_v2(
     *,
     volume_dir: Path,
@@ -1415,6 +1419,7 @@ def process_volume_v2(
     active_work_key = generation_last_work_key(previous_generation)
 
     processed = 0
+    blocked_page: int | None = None
     measured_items = 0
     volume_usage = TokenUsage()
     volume_llm_seconds = 0.0
@@ -1572,6 +1577,9 @@ def process_volume_v2(
             format_token_usage(item_usage),
         )
 
+        if candidate.is_administrative_only and candidate.status != "context_provisional":
+            candidate = replace(candidate, cumulative_summary=previous_context)
+
         candidate, active_work_key, work_resolution = reconcile_candidate_work_keys(
             candidate,
             analysis,
@@ -1645,6 +1653,7 @@ def process_volume_v2(
             raw_response=raw_response,
             facsimile_used=image_path is not None,
             tainted_by_page=pagina_num if candidate.status == "context_provisional" else None,
+            active_work_key=active_work_key,
         )
         store_context_anchor(
             con,
@@ -1666,6 +1675,7 @@ def process_volume_v2(
                 "Contexto permaneceu provisório após lookahead determinístico",
             )
             log.warning("[%s] p%d mantida em shadow; cadeia pausada", documento, pagina_num)
+            blocked_page = pagina_num
             break
     else:
         if not dry_run:
@@ -1693,6 +1703,11 @@ def process_volume_v2(
             format_duration(volume_llm_seconds),
             format_token_usage(volume_usage),
             _format_token_count(volume_usage.total_tokens // measured_items),
+        )
+    if blocked_page is not None:
+        raise V2RunBlockedError(
+            f"[{documento}] Run v2 bloqueado na página física {blocked_page}; "
+            "contexto provisório persistido para revisão"
         )
 
 
@@ -2436,6 +2451,7 @@ def main() -> None:
     log.info("Volumes a processar: %d", len(volumes))
 
     fatal_errors = 0
+    blocked_volumes = 0
     interrupted = False
     for vol in volumes:
         log.info("=" * 60)
@@ -2497,6 +2513,10 @@ def main() -> None:
             log.info("Interrompido pelo usuário. Progresso salvo no DB.")
             interrupted = True
             break
+        except V2RunBlockedError as exc:
+            log.error("%s", exc)
+            blocked_volumes += 1
+            continue
         except Exception as exc:
             log.error("Erro fatal no volume %s: %s", vol.name, exc, exc_info=True)
             fatal_errors += 1
@@ -2515,6 +2535,9 @@ def main() -> None:
         raise SystemExit(130)
     if fatal_errors:
         log.error("%d volume(s) terminaram com erro fatal.", fatal_errors)
+    if blocked_volumes:
+        log.error("%d volume(s) permanecem bloqueados por contexto provisório.", blocked_volumes)
+    if fatal_errors or blocked_volumes:
         raise SystemExit(1)
 
 

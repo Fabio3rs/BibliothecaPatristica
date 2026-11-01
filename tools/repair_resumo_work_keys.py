@@ -239,6 +239,7 @@ def plan_repair(
         embedding_text = build_embedding_text(candidate.summary_display_pt, labels)
         segments_json = json.dumps(candidate.segments, ensure_ascii=False)
         issues_json = json.dumps(candidate.validation_issues, ensure_ascii=False)
+        static["active_work_key"] = active_work_key
         static_json = json.dumps(static, ensure_ascii=False)
         output_hash = sha256_text(
             candidate.summary_display_pt,

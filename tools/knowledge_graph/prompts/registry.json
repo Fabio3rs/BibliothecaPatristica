@@ -1,0 +1,14 @@
+{
+  "registry_version": "kg-prompts-1",
+  "variants": [
+    {"id": "concepts-v1", "version": "1", "description": "Starter contract, no examples", "system_file": "../../../scripts/playgrounds/extract_concepts_v1.system.txt", "few_shot": false},
+    {"id": "concepts-v1-fewshot", "version": "1", "description": "Starter contract plus explicitly synthetic attribution example", "system_file": "../../../scripts/playgrounds/extract_concepts_v1.system.txt", "few_shot": true},
+    {"id": "concepts-v1.1", "version": "1.1", "description": "Explicit ID namespaces and exact-quote constraints", "system_file": "../../../scripts/playgrounds/extract_concepts_v1.system.txt", "contract_rules_file": "page_contract_v1.1.txt", "few_shot": false},
+    {"id": "concepts-v1.2", "version": "1.2", "description": "Attribution, claim scope and sufficient contextual evidence", "system_file": "extract_concepts_v1.2.system.txt", "few_shot": false},
+    {"id": "concepts-v2-confidence", "version": "2", "description": "v1.2 extraction with experimental, uncalibrated model confidence per item", "system_file": "extract_concepts_v1.2.system.txt", "contract_rules_file": "model_confidence_v2.txt", "schema_file": "../schemas/kg-extraction-v2.schema.json", "few_shot": false},
+    {"id": "concepts-v1.3", "version": "1.3", "description": "Actor and stance coverage using current summaries and work-specific attribution context", "system_file": "extract_concepts_v1.3.system.txt", "few_shot": false},
+    {"id": "concepts-v2.1-confidence", "version": "2.1", "description": "v1.3 actor and stance coverage with experimental, uncalibrated model confidence per item", "system_file": "extract_concepts_v1.3.system.txt", "contract_rules_file": "model_confidence_v2.txt", "schema_file": "../schemas/kg-extraction-v2.schema.json", "few_shot": false},
+    {"id": "concepts-v1.4", "version": "1.4", "description": "Actor coverage plus original/translation distinctions on bilingual pages", "system_file": "extract_concepts_v1.4.system.txt", "few_shot": false},
+    {"id": "concepts-v2.2-confidence", "version": "2.2", "description": "v1.4 bilingual-page instructions with experimental, uncalibrated model confidence per item", "system_file": "extract_concepts_v1.4.system.txt", "contract_rules_file": "model_confidence_v2.txt", "schema_file": "../schemas/kg-extraction-v2.schema.json", "few_shot": false}
+  ]
+}

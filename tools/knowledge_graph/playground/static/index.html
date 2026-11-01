@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>KG Lab · Bibliotheca Patristica</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/playground.css" />
+    <script src="/playground.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div>
+        <span class="eyebrow">BIBLIOTHECA PATRISTICA / RESEARCH TOOLS</span>
+        <h1>Knowledge Graph Lab <span class="badge">LOCAL</span></h1>
+        <p>Da página física à evidência. Extraia, inspecione e compare.</p>
+      </div>
+      <label class="switch"
+        ><input id="evaluation" type="checkbox" /> Modo avaliação · liberar
+        holdout</label
+      >
+    </header>
+    <div id="message" role="status" aria-live="polite">
+      Carregando o laboratório…
+    </div>
+    <main>
+      <aside class="panel controls">
+        <h2><span class="step">01</span> Fonte</h2>
+        <label for="page">Página física</label>
+        <div class="inline">
+          <input id="page" value="PG026:71" placeholder="PG026:71" /><button
+            id="find-generations"
+            class="secondary"
+            title="Listar gerações v2"
+          >
+            Gerações
+          </button>
+        </div>
+        <label for="generation">Geração v2</label
+        ><select id="generation">
+          <option value="">Automática: current → shadow elegível</option>
+        </select>
+        <div class="inline actions">
+          <button id="load-page">Carregar página</button
+          ><button id="load-demo" class="secondary">Demo sintética</button>
+        </div>
+        <details>
+          <summary>Benchmark e lote de páginas</summary>
+          <p class="muted">
+            Snapshots congelados do benchmark. Holdout oculto durante
+            calibração.
+          </p>
+          <label for="collection">Coleção</label
+          ><select id="collection">
+            <option value="">Todas</option>
+            <option>PG</option>
+            <option>PL</option>
+            <option>PO</option>
+          </select>
+          <label for="category">Categoria</label
+          ><select id="category">
+            <option value="">Todas</option>
+          </select>
+          <label for="kind-filter">Tipo de página</label
+          ><select id="kind-filter">
+            <option value="">Todos</option>
+          </select>
+          <label for="work-filter">Obra / work_key</label
+          ><input id="work-filter" placeholder="Filtrar obra" />
+          <label for="benchmark">Amostra</label
+          ><select id="benchmark"></select
+          ><button id="load-benchmark" class="secondary">
+            Carregar amostra
+          </button>
+          <label for="batch-pages">Outras páginas (uma por linha)</label
+          ><textarea
+            id="batch-pages"
+            rows="3"
+            placeholder="PG001:175&#10;PL020:47"
+          ></textarea
+          ><button id="add-pages" class="secondary">Adicionar ao lote</button>
+        </details>
+        <div id="case-list" class="case-list"></div>
+        <hr />
+        <h2><span class="step">02</span> Experimento</h2>
+        <label for="provider">Provedor</label
+        ><select id="provider">
+          <option value="ollama">Ollama local / cloud</option>
+          <option value="openai">OpenAI</option>
+          <option value="compatible">OpenAI-compatible / vLLM</option>
+          <option value="meta">Meta Muse</option>
+          <option value="fixture">Fixture sintética · sem inferência</option>
+        </select>
+        <label for="model">Modelo</label
+        ><input id="model" value="gemma4:31b" list="priced-models" />
+        <datalist id="priced-models"></datalist>
+        <label for="variant">Prompt versionado</label
+        ><select id="variant"></select>
+        <label for="mode">Modo de extração</label
+        ><select id="mode">
+          <option value="concepts_relations">Conceitos e relações</option>
+          <option value="concepts_only">Somente conceitos</option>
+          <option value="full_multimodal">Completo multimodal</option>
+        </select>
+        <div class="two-fields">
+          <div>
+            <label for="facsimile">Fac-símile</label
+            ><select id="facsimile">
+              <option value="off">Off</option>
+              <option value="auto">Auto · sinais v2</option>
+              <option value="on">On</option>
+            </select>
+          </div>
+          <div>
+            <label for="repetitions">Repetições</label
+            ><input
+              id="repetitions"
+              type="number"
+              min="1"
+              max="100"
+              value="1"
+            />
+          </div>
+        </div>
+        <details>
+          <summary>Configuração do provedor</summary>
+          <label for="base-url">Base URL</label
+          ><input id="base-url" value="http://127.0.0.1:11434" />
+          <label for="api-key-env">Variável de ambiente da chave</label
+          ><input
+            id="api-key-env"
+            value="OLLAMA_API_KEY"
+            placeholder="Nome da variável, nunca a chave"
+          />
+          <label class="check"
+            ><input id="vision" type="checkbox" /> Este modelo aceita
+            imagens</label
+          >
+          <label for="structured">Resposta estruturada</label
+          ><select id="structured">
+            <option value="schema">JSON Schema nativo</option>
+            <option value="json">JSON object</option>
+            <option value="none">Instrução no prompt</option>
+          </select>
+          <label class="check"
+            ><input id="reasoning-support" type="checkbox" /> Modelo aceita
+            reasoning effort</label
+          >
+          <label for="reasoning">Reasoning effort</label
+          ><select id="reasoning">
+            <option value="">Padrão do modelo</option>
+            <option value="minimal">minimal</option>
+            <option>low</option>
+            <option>medium</option>
+            <option>high</option>
+            <option>xhigh</option>
+            <option>max</option>
+            <option>none</option>
+            <option>true</option>
+            <option>false</option>
+          </select>
+          <label class="check"
+            ><input id="temperature-support" type="checkbox" checked /> Modelo
+            aceita temperature</label
+          >
+          <label for="temperature">Temperature (vazio = padrão)</label
+          ><input id="temperature" type="number" min="0" max="2" step="0.1" />
+          <div class="two-fields">
+            <div>
+              <label for="max-tokens">Máximo de tokens de saída</label
+              ><input
+                id="max-tokens"
+                type="number"
+                value="32768"
+                min="1"
+                max="262144"
+              />
+              <small
+                >Em modelos de raciocínio, o orçamento inclui raciocínio e
+                resposta.</small
+              >
+            </div>
+            <div>
+              <label for="timeout">Timeout (s)</label
+              ><input id="timeout" type="number" value="180" min="1" />
+            </div>
+          </div>
+          <label for="num-ctx">num_ctx · apenas Ollama</label
+          ><input
+            id="num-ctx"
+            type="number"
+            min="512"
+            placeholder="Padrão do servidor"
+          />
+          <div class="two-fields">
+            <div>
+              <label for="concurrency">Concorrência</label
+              ><input
+                id="concurrency"
+                type="number"
+                value="1"
+                min="1"
+                max="16"
+              />
+            </div>
+            <div>
+              <label for="retries">Retries de transporte</label
+              ><input id="retries" type="number" value="1" min="0" max="4" />
+            </div>
+          </div>
+          <label for="prices">Preços configuráveis · USD / milhão</label
+          ><textarea
+            id="prices"
+            rows="4"
+            aria-describedby="price-note"
+            placeholder='{"input_per_million":0,"output_per_million":0}'
+          ></textarea>
+          <p id="price-note" class="muted" aria-live="polite"></p>
+          <button id="reset-prices" class="secondary">
+            Usar tarifa cadastrada
+          </button>
+          <label class="check"
+            ><input id="bypass-cache" type="checkbox" /> Ignorar cache
+            (automático em repetições)</label
+          >
+        </details>
+        <details>
+          <summary>Comparar modelos e editar prompt</summary>
+          <p class="muted">
+            Adicione perfis ao mesmo lote. Cada perfil recebe todas as páginas
+            selecionadas.
+          </p>
+          <button id="add-model" class="secondary">
+            Adicionar modelo à matriz
+          </button>
+          <div id="model-list"></div>
+          <label class="check"
+            ><input id="both-prompts" type="checkbox" /> Comparar com e sem
+            few-shot</label
+          >
+          <label for="custom-system">System prompt customizado (inglês)</label
+          ><textarea
+            id="custom-system"
+            rows="6"
+            placeholder="Vazio = prompt do registro. Cada revisão é salva com hash."
+          ></textarea>
+        </details>
+        <label for="experiment-name">Nome</label
+        ><input id="experiment-name" value="Exploração de conceitos" />
+        <button id="preview" class="wide">Preparar e inspecionar prompt</button
+        ><button id="execute" class="wide accent" disabled>
+          Executar extração · pode ter custo
+        </button>
+        <p class="muted small">
+          Preparar salva um dry run. Inferência começa somente ao executar.
+        </p>
+      </aside>
+      <div class="workspace">
+        <nav class="tabs" aria-label="Áreas do laboratório">
+          <button data-tab="source" class="active">Fontes</button
+          ><button data-tab="prompt">Prompt final</button
+          ><button data-tab="extraction">Extração & grafo</button
+          ><button data-tab="comparison">Comparação</button
+          ><button data-tab="history">Histórico & relatórios</button>
+        </nav>
+        <section id="tab-source" class="tab active">
+          <div class="section-title">
+            <div>
+              <span class="eyebrow">PÁGINA ATÔMICA</span>
+              <h2 id="source-title">Escolha uma página para começar</h2>
+            </div>
+            <span id="source-scope" class="badge">SEM FONTE</span>
+          </div>
+          <div id="source-meta" class="muted"></div>
+          <div id="source-warnings"></div>
+          <div class="source-grid">
+            <div>
+              <h3>Resumo v2 · segmentos atuais</h3>
+              <div id="segments" class="stack">
+                <div class="empty">
+                  Carregue uma página real ou explore a demo sintética.
+                </div>
+              </div>
+              <details>
+                <summary>
+                  Contexto bibliográfico · não é evidência atual
+                </summary>
+                <pre id="metadata"></pre>
+              </details>
+              <h3>Blocos OCR <span id="block-count" class="badge">0</span></h3>
+              <div id="blocks" class="stack"></div>
+            </div>
+            <div>
+              <h3>Fac-símile</h3>
+              <div id="facsimile-status" class="muted">
+                Nenhuma imagem carregada.
+              </div>
+              <div id="image-frame">
+                <img
+                  id="page-image"
+                  alt="Fac-símile da página física selecionada"
+                  hidden
+                />
+                <div id="bbox-highlight" hidden></div>
+              </div>
+              <label for="bbox-scale">Coordenadas do OCR</label
+              ><select id="bbox-scale">
+                <option value="1000">Convenção do corpus: 0–1000</option>
+                <option value="pixels">Pixels da imagem</option>
+                <option value="off">Não destacar</option>
+              </select>
+              <p class="muted small">
+                A geometria vem do OCR e pode estar imprecisa. Confira a
+                sobreposição.
+              </p>
+              <div id="block-detail" class="card"></div>
+            </div>
+          </div>
+        </section>
+        <section id="tab-prompt" class="tab">
+          <h2>Inspecionar antes de executar</h2>
+          <p class="muted">
+            Prompts, payload e schema exatos são preservados por execução.
+            Nenhuma inferência nesta etapa.
+          </p>
+          <label for="preview-run">Execução preparada</label
+          ><select id="preview-run"></select>
+          <div id="prompt-meta"></div>
+          <h3>System prompt</h3>
+          <pre id="system-prompt"></pre>
+          <h3>Payload da página</h3>
+          <pre id="user-payload"></pre>
+          <details>
+            <summary>Schema e configuração efetiva</summary>
+            <pre id="request-config"></pre>
+          </details>
+        </section>
+        <section id="tab-extraction" class="tab">
+          <div class="section-title">
+            <h2>Extração da página</h2>
+            <button id="revalidate" class="secondary" disabled>
+              Revalidar
+            </button>
+          </div>
+          <div id="run-summary" class="metrics"></div>
+          <p id="run-cost-note" class="muted"></p>
+          <div id="validation" class="card empty">
+            Execute um modelo ou abra um resultado do histórico.
+          </div>
+          <div class="graph-toolbar">
+            <strong>Grafo local</strong
+            ><label for="graph-filter">Filtrar nós</label
+            ><input id="graph-filter" placeholder="Nome ou conceito" /><button
+              id="zoom-in"
+              class="secondary"
+              aria-label="Ampliar grafo"
+            >
+              +</button
+            ><button id="zoom-out" class="secondary" aria-label="Reduzir grafo">
+              −</button
+            ><button id="graph-reset" class="secondary">Ajustar</button>
+          </div>
+          <div class="legend">
+            <span class="concept">Conceito</span
+            ><span class="entity">Entidade</span
+            ><span class="claim">Proposição</span
+            ><span class="event">Evento</span>
+          </div>
+          <svg
+            id="graph"
+            role="img"
+            aria-label="Grafo de conceitos e relações; selecione nós e predicados"
+            tabindex="0"
+          ></svg>
+          <p class="muted small">
+            Arraste para mover; use a roda para zoom. Somente relações presentes
+            no JSON são desenhadas.
+          </p>
+          <div class="result-grid">
+            <div id="extraction-list" class="stack"></div>
+            <div class="inspection">
+              <h3>Objeto e evidência</h3>
+              <div id="object-detail" class="card">
+                Selecione um nó ou uma relação.
+              </div>
+              <div id="evidence-detail"></div>
+              <h3>Revisão semântica</h3>
+              <p class="muted small">
+                A validação automática não confirma a interpretação histórica.
+              </p>
+              <label for="review-target">Objeto</label
+              ><input id="review-target" value="page" readonly /><label
+                for="review-decision"
+                >Decisão</label
+              ><select id="review-decision">
+                <option value="uncertain">Incerto</option>
+                <option value="correct">Correto</option>
+                <option value="incorrect">Incorreto</option>
+                <option value="partially_correct">Parcialmente correto</option>
+                <option value="duplicate">Duplicado</option>
+                <option value="unsupported">Sem suporte</option>
+              </select>
+              <label for="review-dimension">Critério</label
+              ><select id="review-dimension">
+                <option value="overall">Geral</option>
+                <option value="concept_correctness">
+                  Correção do conceito
+                </option>
+                <option value="redundancy">Redundância</option>
+                <option value="missing_subject">Assunto ausente</option>
+                <option value="attribution">Atribuição</option>
+                <option value="stance">DEFENDS / REFUTES</option>
+                <option value="interpretation">Interpretação</option>
+                <option value="too_broad">Conceito amplo demais</option>
+                <option value="missing_relation">Relação ausente</option>
+                <option value="evidence">Evidência</option>
+              </select>
+              <label for="review-comment">Justificativa</label
+              ><textarea id="review-comment" rows="3"></textarea
+              ><button id="save-review" disabled>Salvar revisão</button>
+              <div id="reviews"></div>
+            </div>
+          </div>
+          <details>
+            <summary>JSON e resposta original</summary>
+            <pre id="result-json"></pre>
+            <pre id="raw-response"></pre>
+          </details>
+        </section>
+        <section id="tab-comparison" class="tab">
+          <h2>Comparar execuções</h2>
+          <p>
+            Selecione pelo menos duas execuções da mesma página no histórico.
+            Correspondências por descrição são conservadoras; semelhanças são
+            marcadas como incertas.
+          </p>
+          <button id="compare" class="secondary">Comparar selecionadas</button>
+          <div id="comparison"></div>
+        </section>
+        <section id="tab-history" class="tab">
+          <div class="section-title">
+            <h2>Campanhas do corpus</h2>
+            <button id="refresh-campaigns" class="secondary">
+              Atualizar campanhas
+            </button>
+          </div>
+          <p class="muted">
+            Progresso salvo pelo executor CLI. Atualização a cada 5 segundos
+            nesta aba; abrir o monitor não inicia inferência.
+          </p>
+          <label for="campaign-filter">Campanha</label>
+          <select id="campaign-filter">
+            <option value="">Nenhuma campanha</option>
+          </select>
+          <p id="campaign-status" role="status"></p>
+          <progress
+            id="campaign-progress"
+            max="1"
+            value="0"
+            aria-label="Páginas com tentativa encerrada"
+          ></progress>
+          <div id="campaign-metrics" class="metrics"></div>
+          <div id="campaign-jobs" class="table-scroll"></div>
+          <details>
+            <summary>Erros e tentativas recentes</summary>
+            <pre id="campaign-attempts"></pre>
+          </details>
+          <hr />
+          <div class="section-title">
+            <h2>Histórico de pesquisa</h2>
+            <button id="refresh-history" class="secondary">Atualizar</button>
+          </div>
+          <label for="experiment-filter">Experimento</label
+          ><select id="experiment-filter">
+            <option value="">Todos</option>
+          </select>
+          <div class="inline actions">
+            <button id="resume" class="secondary">
+              Retomar planejados / interrompidos</button
+            ><button id="show-report" class="secondary">Ver relatório</button
+            ><button id="compare-history" class="secondary">
+              Comparar selecionadas
+            </button>
+          </div>
+          <div id="exports" class="inline actions"></div>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Comparar</th>
+                  <th>Run</th>
+                  <th>Página</th>
+                  <th>Modelo</th>
+                  <th>Prompt / modo</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="history"></tbody>
+            </table>
+          </div>
+          <div class="inline actions">
+            <button id="history-recent" class="secondary">
+              Runs mais recentes
+            </button>
+            <button id="history-older" class="secondary">
+              Runs anteriores
+            </button>
+            <span id="history-page-note" class="muted"></span>
+          </div>
+          <pre id="report"></pre>
+        </section>
+      </div>
+    </main>
+    <footer>
+      KG Lab · Evidência rastreável · IDs locais à página · Anotações revisáveis
+    </footer>
+  </body>
+</html>

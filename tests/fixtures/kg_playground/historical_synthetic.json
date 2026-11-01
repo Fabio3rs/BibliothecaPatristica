@@ -1,0 +1,341 @@
+[
+  {
+    "capability": "equivalent_spellings",
+    "source": {
+      "source": {
+        "documento": "DEMO",
+        "physical_page": 1,
+        "v2_generation_id": null,
+        "v2_output_hash": "synthetic-demo",
+        "ocr_sha256": "synthetic-demo",
+        "synthetic": true
+      },
+      "v2": {
+        "page_kinds": [
+          "body"
+        ],
+        "segments": [
+          {
+            "id": "s1",
+            "order": 1,
+            "kind": "body",
+            "work_key": "",
+            "summary": "As grafias gratia e gracia designam aqui o mesmo dom."
+          }
+        ],
+        "metadata_context": {}
+      },
+      "ocr": {
+        "blocks": [
+          {
+            "id": "b1",
+            "type": "texto_principal",
+            "script": "latino",
+            "bbox": [
+              100,
+              120,
+              900,
+              300
+            ],
+            "text": "Gratia, quae etiam gracia scribitur, hic donum significat."
+          }
+        ]
+      },
+      "facsimile": {
+        "attached": false
+      }
+    },
+    "output": {
+      "schema_version": "kg-extraction-v1",
+      "concepts": [
+        {
+          "id": "c1",
+          "label": "gratia",
+          "meaning": "Dom no contexto desta passagem",
+          "grounding": "explicit",
+          "salience": "primary",
+          "evidence_ids": [
+            "ev1"
+          ]
+        }
+      ],
+      "entities": [],
+      "claims": [],
+      "events": [],
+      "relations": [],
+      "evidence": [
+        {
+          "id": "ev1",
+          "source": "ocr_block",
+          "locator": "b1",
+          "quote": "Gratia, quae etiam gracia scribitur, hic donum significat."
+        }
+      ],
+      "warnings": []
+    },
+    "review_status": "synthetic_test_fixture_not_historical_gold"
+  },
+  {
+    "capability": "same_label_different_meanings",
+    "source": {
+      "source": {
+        "documento": "DEMO",
+        "physical_page": 1,
+        "v2_generation_id": null,
+        "v2_output_hash": "synthetic-demo",
+        "ocr_sha256": "synthetic-demo",
+        "synthetic": true
+      },
+      "v2": {
+        "page_kinds": [
+          "body"
+        ],
+        "segments": [
+          {
+            "id": "s1",
+            "order": 1,
+            "kind": "body",
+            "work_key": "",
+            "summary": "λόγος significa razão numa sentença e discurso em outra."
+          }
+        ],
+        "metadata_context": {}
+      },
+      "ocr": {
+        "blocks": [
+          {
+            "id": "b1",
+            "type": "texto_principal",
+            "script": "latino",
+            "bbox": [
+              100,
+              120,
+              900,
+              300
+            ],
+            "text": "λόγος hic rationem significat; in altera sententia λόγος orationem significat."
+          }
+        ]
+      },
+      "facsimile": {
+        "attached": false
+      }
+    },
+    "output": {
+      "schema_version": "kg-extraction-v1",
+      "concepts": [
+        {
+          "id": "c1",
+          "label": "λόγος",
+          "meaning": "Razão",
+          "grounding": "explicit",
+          "salience": "primary",
+          "evidence_ids": [
+            "ev1"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "λόγος",
+          "meaning": "Discurso",
+          "grounding": "explicit",
+          "salience": "primary",
+          "evidence_ids": [
+            "ev2"
+          ]
+        }
+      ],
+      "entities": [],
+      "claims": [],
+      "events": [],
+      "relations": [],
+      "evidence": [
+        {
+          "id": "ev1",
+          "source": "ocr_block",
+          "locator": "b1",
+          "quote": "λόγος hic rationem significat"
+        },
+        {
+          "id": "ev2",
+          "source": "ocr_block",
+          "locator": "b1",
+          "quote": "λόγος orationem significat"
+        }
+      ],
+      "warnings": []
+    },
+    "review_status": "synthetic_test_fixture_not_historical_gold"
+  },
+  {
+    "capability": "editorial_attribution",
+    "source": {
+      "source": {
+        "documento": "DEMO",
+        "physical_page": 1,
+        "v2_generation_id": null,
+        "v2_output_hash": "synthetic-demo",
+        "ocr_sha256": "synthetic-demo",
+        "synthetic": true
+      },
+      "v2": {
+        "page_kinds": [
+          "body"
+        ],
+        "segments": [
+          {
+            "id": "s1",
+            "order": 1,
+            "kind": "body",
+            "work_key": "",
+            "summary": "O editor considera incerta a autoria do livro."
+          }
+        ],
+        "metadata_context": {}
+      },
+      "ocr": {
+        "blocks": [
+          {
+            "id": "b1",
+            "type": "nota",
+            "script": "latino",
+            "bbox": [
+              100,
+              120,
+              900,
+              300
+            ],
+            "text": "Nota editoris: auctor huius libri incertus est."
+          }
+        ]
+      },
+      "facsimile": {
+        "attached": false
+      }
+    },
+    "output": {
+      "schema_version": "kg-extraction-v1",
+      "concepts": [],
+      "entities": [
+        {
+          "id": "e_editor",
+          "type": "PERSON",
+          "label": "Editor não identificado",
+          "origin": "current_page",
+          "evidence_ids": [
+            "ev1"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "p1",
+          "proposition": "A autoria do livro é incerta",
+          "mode": "asserted",
+          "evidence_ids": [
+            "ev1"
+          ]
+        }
+      ],
+      "events": [],
+      "relations": [
+        {
+          "id": "r1",
+          "source_id": "e_editor",
+          "predicate": "AFFIRMS",
+          "target_id": "p1",
+          "grounding": "explicit",
+          "evidence_ids": [
+            "ev1"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "id": "ev1",
+          "source": "ocr_block",
+          "locator": "b1",
+          "quote": "Nota editoris: auctor huius libri incertus est."
+        }
+      ],
+      "warnings": []
+    },
+    "review_status": "synthetic_test_fixture_not_historical_gold"
+  },
+  {
+    "capability": "concept_without_modern_name",
+    "source": {
+      "source": {
+        "documento": "DEMO",
+        "physical_page": 1,
+        "v2_generation_id": null,
+        "v2_output_hash": "synthetic-demo",
+        "ocr_sha256": "synthetic-demo",
+        "synthetic": true
+      },
+      "v2": {
+        "page_kinds": [
+          "body"
+        ],
+        "segments": [
+          {
+            "id": "s1",
+            "order": 1,
+            "kind": "body",
+            "work_key": "",
+            "summary": "Define-se aquilo sem o qual outra coisa não pode acontecer."
+          }
+        ],
+        "metadata_context": {}
+      },
+      "ocr": {
+        "blocks": [
+          {
+            "id": "b1",
+            "type": "texto_principal",
+            "script": "latino",
+            "bbox": [
+              100,
+              120,
+              900,
+              300
+            ],
+            "text": "Quod prius est et sine quo alterum fieri non potest, causam appellamus."
+          }
+        ]
+      },
+      "facsimile": {
+        "attached": false
+      }
+    },
+    "output": {
+      "schema_version": "kg-extraction-v1",
+      "concepts": [
+        {
+          "id": "c1",
+          "label": "Condição necessária",
+          "meaning": "Aquilo sem o qual o efeito não pode ocorrer",
+          "grounding": "inferred",
+          "salience": "primary",
+          "evidence_ids": [
+            "ev1"
+          ]
+        }
+      ],
+      "entities": [],
+      "claims": [],
+      "events": [],
+      "relations": [],
+      "evidence": [
+        {
+          "id": "ev1",
+          "source": "ocr_block",
+          "locator": "b1",
+          "quote": "sine quo alterum fieri non potest"
+        }
+      ],
+      "warnings": []
+    },
+    "review_status": "synthetic_test_fixture_not_historical_gold"
+  }
+]

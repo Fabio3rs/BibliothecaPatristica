@@ -1,0 +1,604 @@
+{
+  "captured_at_utc": "2026-11-01T17:06:08.286126+00:00",
+  "purpose": "Documentation snapshot; queue status is not semantic accuracy or final corpus completion.",
+  "database_access": "mode=ro, query_only=ON; single read transaction on playground database",
+  "benchmark": {
+    "created_at": "2026-10-31T20:36:29.776194+00:00",
+    "version": "kg-benchmark-discovery-v1.0",
+    "scope": "shadow",
+    "seed": 20261031,
+    "shadow_run_count": 252,
+    "packets": 39,
+    "estimated_review_input_tokens": 1929891,
+    "source": ".work/kg_benchmark_v1/manifest.json"
+  },
+  "shadow_audit": {
+    "audited_at_utc": "2026-10-31T20:46:19.333367+00:00",
+    "all_v2_promotion_counts": {
+      "total": 168998,
+      "current": 0,
+      "with_promotion_timestamp": 0
+    },
+    "latest_pg_run_status_counts": {
+      "completed": 149,
+      "blocked": 15
+    },
+    "latest_pg_manifest_totals": {
+      "expected_pages": 119517,
+      "stored_pages": 112728,
+      "eligible_pages": 112715,
+      "missing_pages": 6789,
+      "ineligible_stored_pages": 13
+    }
+  },
+  "administrative_revalidation": {
+    "mode": "read-only replay of stored model responses with current OCR; no database changes or model calls",
+    "pages": 13,
+    "outcomes": {
+      "metadata_pending": 12,
+      "context_provisional": 1
+    }
+  },
+  "campaign": {
+    "id": "EXP-76db1db8b118",
+    "provider": "meta",
+    "model": "muse-spark-1.3-contributor",
+    "prompt": {
+      "contract_rules_file": "model_confidence_v2.txt",
+      "description": "v1.4 bilingual-page instructions with experimental, uncalibrated model confidence per item",
+      "few_shot": false,
+      "id": "concepts-v2.2-confidence",
+      "schema_file": "../schemas/kg-extraction-v2.schema.json",
+      "system_file": "extract_concepts_v1.4.system.txt",
+      "version": "2.2"
+    },
+    "mode": "concepts_relations",
+    "schema_version": "kg-extraction-v2",
+    "facsimile_policy": "on",
+    "evaluation": false,
+    "max_output_tokens": 32768,
+    "queue": [
+      {
+        "status": "completed",
+        "count": 69
+      },
+      {
+        "status": "invalid",
+        "count": 24
+      },
+      {
+        "status": "pending",
+        "count": 154409
+      },
+      {
+        "status": "running",
+        "count": 20
+      }
+    ],
+    "source_policies": [
+      {
+        "id": 1,
+        "allow_source_drift": 1,
+        "created_at": "2026-11-01T17:00:08.362370+00:00"
+      }
+    ],
+    "run_statuses": [
+      {
+        "status": "completed",
+        "count": 69
+      },
+      {
+        "status": "invalid",
+        "count": 24
+      },
+      {
+        "status": "running",
+        "count": 20
+      }
+    ],
+    "usage_and_saved_cost": {
+      "calls_with_reported_usage": 93,
+      "input_tokens": 1219735,
+      "output_tokens": 935340,
+      "reasoning_tokens": 541707,
+      "saved_estimated_cost_usd": 0.3090415
+    }
+  },
+  "pilot_runs": [
+    {
+      "id": 5,
+      "experiment_id": "EXP-a267f329c594",
+      "status": "completed",
+      "input_hash": "e03d3721edb937942da279ce510d3091d42d889851883cec4e19cf595dd4b29c",
+      "provider": "ollama",
+      "model": "gemma4:cloud",
+      "max_output_tokens": 8192,
+      "usage": {
+        "cached_input_tokens": null,
+        "input_tokens": 9535,
+        "output_tokens": 2103
+      },
+      "cost_usd": null,
+      "latency_seconds": 10.23340093799925,
+      "finish_reason": "stop",
+      "facsimile_attached": false,
+      "inference_performed": true,
+      "object_counts": {
+        "concepts": 5,
+        "entities": 9,
+        "claims": 3,
+        "events": 0,
+        "relations": 4,
+        "evidence": 8,
+        "warnings": 0
+      },
+      "latest_validation": {
+        "version": "kg-validation-2",
+        "valid": true,
+        "structural_valid": true,
+        "source_valid": true,
+        "evidence_counts": null,
+        "semantic_status": "pending_review",
+        "gold_status": "not_gold",
+        "created_at": "2026-11-01T00:01:57.832665+00:00"
+      }
+    },
+    {
+      "id": 6,
+      "experiment_id": "EXP-e327fdd98f68",
+      "status": "invalid",
+      "input_hash": "f238e1ffd22b3cf1a1324293bc2c088d262f0e1bc3713af7fbe1205a69b51b8e",
+      "provider": "meta",
+      "model": "muse-spark-1.3-contributor",
+      "max_output_tokens": 8192,
+      "usage": {
+        "cached_input_tokens": 0,
+        "input_tokens": 9412,
+        "output_tokens": 8192,
+        "reasoning_tokens": 6824
+      },
+      "cost_usd": null,
+      "latency_seconds": 58.37620361899985,
+      "finish_reason": "length",
+      "facsimile_attached": false,
+      "inference_performed": true,
+      "object_counts": {
+        "concepts": 0,
+        "entities": 0,
+        "claims": 0,
+        "events": 0,
+        "relations": 0,
+        "evidence": 0,
+        "warnings": 0
+      },
+      "latest_validation": {
+        "version": "kg-validation-3",
+        "valid": false,
+        "structural_valid": false,
+        "source_valid": null,
+        "evidence_counts": null,
+        "semantic_status": "pending_review",
+        "gold_status": "not_gold",
+        "created_at": "2026-11-01T13:44:47.006024+00:00"
+      }
+    },
+    {
+      "id": 8,
+      "experiment_id": "EXP-114c7baaac6c",
+      "status": "invalid",
+      "input_hash": "3dad0960bd810dda4f0f6ce61cabaacefa1890a71b8004690c6d6a58452ed589",
+      "provider": "meta",
+      "model": "muse-spark-1.3-contributor",
+      "max_output_tokens": 32768,
+      "usage": {
+        "cached_input_tokens": 13425,
+        "input_tokens": 13525,
+        "output_tokens": 19323,
+        "reasoning_tokens": 15365
+      },
+      "cost_usd": 0.0052171000000000006,
+      "latency_seconds": 128.7618912199996,
+      "finish_reason": "stop",
+      "facsimile_attached": true,
+      "inference_performed": true,
+      "object_counts": {
+        "concepts": 11,
+        "entities": 14,
+        "claims": 10,
+        "events": 0,
+        "relations": 6,
+        "evidence": 30,
+        "warnings": 0
+      },
+      "latest_validation": {
+        "version": "kg-validation-4",
+        "valid": true,
+        "structural_valid": true,
+        "source_valid": true,
+        "evidence_counts": {
+          "ambiguous": 0,
+          "exact": 27,
+          "fuzzy": 1,
+          "normalized": 2,
+          "not_found": 0,
+          "unknown_locator": 0
+        },
+        "semantic_status": "pending_review",
+        "gold_status": "not_gold",
+        "created_at": "2026-11-01T14:14:56.600735+00:00"
+      }
+    },
+    {
+      "id": 9,
+      "experiment_id": "EXP-8e64b911a893",
+      "status": "completed",
+      "input_hash": "3dad0960bd810dda4f0f6ce61cabaacefa1890a71b8004690c6d6a58452ed589",
+      "provider": "meta",
+      "model": "muse-spark-1.3-contributor",
+      "max_output_tokens": 32768,
+      "usage": {
+        "cached_input_tokens": 0,
+        "input_tokens": 13525,
+        "output_tokens": 13766,
+        "reasoning_tokens": 11036
+      },
+      "cost_usd": 0.0041057,
+      "latency_seconds": 102.96926024699997,
+      "finish_reason": "stop",
+      "facsimile_attached": true,
+      "inference_performed": true,
+      "object_counts": {
+        "concepts": 7,
+        "entities": 7,
+        "claims": 6,
+        "events": 0,
+        "relations": 5,
+        "evidence": 17,
+        "warnings": 1
+      },
+      "latest_validation": {
+        "version": "kg-validation-4",
+        "valid": true,
+        "structural_valid": true,
+        "source_valid": true,
+        "evidence_counts": {
+          "ambiguous": 0,
+          "exact": 17,
+          "fuzzy": 0,
+          "normalized": 0,
+          "not_found": 0,
+          "unknown_locator": 0
+        },
+        "semantic_status": "pending_review",
+        "gold_status": "not_gold",
+        "created_at": "2026-11-01T14:19:52.659116+00:00"
+      }
+    },
+    {
+      "id": 13,
+      "experiment_id": "EXP-36f6a1ece743",
+      "status": "invalid",
+      "input_hash": "038fed88ea2575353db62b8f20881b903a1eb5a0408753d4df2365c38d4c86bb",
+      "provider": "meta",
+      "model": "muse-spark-1.3-contributor",
+      "max_output_tokens": 32768,
+      "usage": {
+        "cached_input_tokens": 0,
+        "input_tokens": 15448,
+        "output_tokens": 10872,
+        "reasoning_tokens": 7398
+      },
+      "cost_usd": 0.0037192,
+      "latency_seconds": 82.82206472500002,
+      "finish_reason": "stop",
+      "facsimile_attached": true,
+      "inference_performed": true,
+      "object_counts": {
+        "concepts": 7,
+        "entities": 3,
+        "claims": 10,
+        "events": 0,
+        "relations": 3,
+        "evidence": 13,
+        "warnings": 0
+      },
+      "latest_validation": {
+        "version": "kg-validation-5",
+        "valid": false,
+        "structural_valid": true,
+        "source_valid": false,
+        "evidence_counts": {
+          "ambiguous": 0,
+          "exact": 9,
+          "fuzzy": 0,
+          "normalized": 3,
+          "not_found": 1,
+          "unknown_locator": 0
+        },
+        "semantic_status": "pending_review",
+        "gold_status": "not_gold",
+        "created_at": "2026-11-01T15:11:32.204012+00:00"
+      }
+    },
+    {
+      "id": 16,
+      "experiment_id": "EXP-2a376dea09b5",
+      "status": "invalid",
+      "input_hash": "038fed88ea2575353db62b8f20881b903a1eb5a0408753d4df2365c38d4c86bb",
+      "provider": "meta",
+      "model": "muse-spark-1.3-contributor",
+      "max_output_tokens": 32768,
+      "usage": {
+        "cached_input_tokens": 0,
+        "input_tokens": 15448,
+        "output_tokens": 6828,
+        "reasoning_tokens": 5388
+      },
+      "cost_usd": 0.0029104000000000005,
+      "latency_seconds": 50.85518452499855,
+      "finish_reason": "stop",
+      "facsimile_attached": true,
+      "inference_performed": true,
+      "object_counts": {
+        "concepts": 5,
+        "entities": 0,
+        "claims": 0,
+        "events": 0,
+        "relations": 0,
+        "evidence": 11,
+        "warnings": 0
+      },
+      "latest_validation": {
+        "version": "kg-validation-6",
+        "valid": true,
+        "structural_valid": true,
+        "source_valid": true,
+        "evidence_counts": {
+          "ambiguous": 0,
+          "exact": 10,
+          "fuzzy": 1,
+          "normalized": 0,
+          "not_found": 0,
+          "unknown_locator": 0
+        },
+        "semantic_status": "pending_review",
+        "gold_status": "not_gold",
+        "created_at": "2026-11-01T16:04:08.948476+00:00"
+      }
+    },
+    {
+      "id": 18,
+      "experiment_id": "EXP-859c48817a54",
+      "status": "invalid",
+      "input_hash": "1e63b3e208139c6ff558b2f6771eda9807c9d812e7a5c8ccc7a203ac53e916f1",
+      "provider": "meta",
+      "model": "muse-spark-1.3-contributor",
+      "max_output_tokens": 32768,
+      "usage": {
+        "cached_input_tokens": 0,
+        "input_tokens": 15871,
+        "output_tokens": 5965,
+        "reasoning_tokens": 3029
+      },
+      "cost_usd": 0.0027801,
+      "latency_seconds": 48.5855163870001,
+      "finish_reason": "stop",
+      "facsimile_attached": true,
+      "inference_performed": true,
+      "object_counts": {
+        "concepts": 8,
+        "entities": 4,
+        "claims": 5,
+        "events": 0,
+        "relations": 3,
+        "evidence": 9,
+        "warnings": 2
+      },
+      "latest_validation": {
+        "version": "kg-validation-6",
+        "valid": false,
+        "structural_valid": true,
+        "source_valid": false,
+        "evidence_counts": {
+          "ambiguous": 0,
+          "exact": 4,
+          "fuzzy": 0,
+          "normalized": 3,
+          "not_found": 2,
+          "unknown_locator": 0
+        },
+        "semantic_status": "pending_review",
+        "gold_status": "not_gold",
+        "created_at": "2026-11-01T16:04:08.990308+00:00"
+      }
+    },
+    {
+      "id": 19,
+      "experiment_id": "EXP-ac1289be5bbb",
+      "status": "invalid",
+      "input_hash": "1e63b3e208139c6ff558b2f6771eda9807c9d812e7a5c8ccc7a203ac53e916f1",
+      "provider": "meta",
+      "model": "muse-spark-1.3-contributor",
+      "max_output_tokens": 32768,
+      "usage": {
+        "cached_input_tokens": 15857,
+        "input_tokens": 15871,
+        "output_tokens": 12439,
+        "reasoning_tokens": 8497
+      },
+      "cost_usd": 0.0040749,
+      "latency_seconds": 92.26369523500034,
+      "finish_reason": "stop",
+      "facsimile_attached": true,
+      "inference_performed": true,
+      "object_counts": {
+        "concepts": 8,
+        "entities": 4,
+        "claims": 3,
+        "events": 0,
+        "relations": 3,
+        "evidence": 15,
+        "warnings": 2
+      },
+      "latest_validation": {
+        "version": "kg-validation-6",
+        "valid": true,
+        "structural_valid": true,
+        "source_valid": true,
+        "evidence_counts": {
+          "ambiguous": 0,
+          "exact": 10,
+          "fuzzy": 2,
+          "normalized": 3,
+          "not_found": 0,
+          "unknown_locator": 0
+        },
+        "semantic_status": "pending_review",
+        "gold_status": "not_gold",
+        "created_at": "2026-11-01T16:04:09.020222+00:00"
+      }
+    },
+    {
+      "id": 20,
+      "experiment_id": "EXP-ce0816661a7c",
+      "status": "invalid",
+      "input_hash": "b2bc76567f31c00a7e0aa58b353877daeb431b388a3eef547763cc32233d2e64",
+      "provider": "meta",
+      "model": "muse-spark-1.3-contributor",
+      "max_output_tokens": 32768,
+      "usage": {
+        "cached_input_tokens": 0,
+        "input_tokens": 16078,
+        "output_tokens": 15408,
+        "reasoning_tokens": 8895
+      },
+      "cost_usd": 0.004689400000000001,
+      "latency_seconds": 126.60439246999886,
+      "finish_reason": "stop",
+      "facsimile_attached": true,
+      "inference_performed": true,
+      "object_counts": {
+        "concepts": 6,
+        "entities": 5,
+        "claims": 7,
+        "events": 0,
+        "relations": 6,
+        "evidence": 13,
+        "warnings": 3
+      },
+      "latest_validation": {
+        "version": "kg-validation-6",
+        "valid": false,
+        "structural_valid": true,
+        "source_valid": false,
+        "evidence_counts": {
+          "ambiguous": 0,
+          "exact": 6,
+          "fuzzy": 2,
+          "normalized": 1,
+          "not_found": 4,
+          "unknown_locator": 0
+        },
+        "semantic_status": "pending_review",
+        "gold_status": "not_gold",
+        "created_at": "2026-11-01T16:09:39.018933+00:00"
+      }
+    },
+    {
+      "id": 21,
+      "experiment_id": "EXP-3ddb5769fef3",
+      "status": "completed",
+      "input_hash": "b2bc76567f31c00a7e0aa58b353877daeb431b388a3eef547763cc32233d2e64",
+      "provider": "meta",
+      "model": "muse-spark-1.3-contributor",
+      "max_output_tokens": 32768,
+      "usage": {
+        "cached_input_tokens": 15985,
+        "input_tokens": 16078,
+        "output_tokens": 11300,
+        "reasoning_tokens": 7322
+      },
+      "cost_usd": 0.0038678000000000002,
+      "latency_seconds": 96.58417337699939,
+      "finish_reason": "stop",
+      "facsimile_attached": true,
+      "inference_performed": true,
+      "object_counts": {
+        "concepts": 8,
+        "entities": 4,
+        "claims": 5,
+        "events": 0,
+        "relations": 5,
+        "evidence": 22,
+        "warnings": 3
+      },
+      "latest_validation": {
+        "version": "kg-validation-6",
+        "valid": true,
+        "structural_valid": true,
+        "source_valid": true,
+        "evidence_counts": {
+          "ambiguous": 0,
+          "exact": 21,
+          "fuzzy": 1,
+          "normalized": 0,
+          "not_found": 0,
+          "unknown_locator": 0
+        },
+        "semantic_status": "pending_review",
+        "gold_status": "not_gold",
+        "created_at": "2026-11-01T16:12:55.903142+00:00"
+      }
+    }
+  ],
+  "recorded_test_evidence": [
+    {
+      "path": ".work/kg_corpus_runner/junit.xml",
+      "sha256": "e311e4f92392ebff7f9d51f2091868efadf5a5455f21d059d381d465dea04d39",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "274",
+          "time": "19.254",
+          "timestamp": "2026-11-01T13:45:06.986098-03:00",
+          "hostname": "native-lab"
+        }
+      ]
+    },
+    {
+      "path": ".work/kg_corpus_runner/corpus-junit.xml",
+      "sha256": "d8eb2ec9afcee4079ad73f64a2a952ca99483554607f43d4ce2a31b645e3f09f",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "16",
+          "time": "13.504",
+          "timestamp": "2026-11-01T13:47:09.610537-03:00",
+          "hostname": "native-lab"
+        }
+      ]
+    },
+    {
+      "path": ".work/kg_source_drift/junit.xml",
+      "sha256": "294d54c47fe68c8b5b7aaa973a604253d389923036d8fa80d08038b175479c72",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "103",
+          "time": "20.852",
+          "timestamp": "2026-11-01T13:59:16.429998-03:00",
+          "hostname": "native-lab"
+        }
+      ]
+    }
+  ]
+}

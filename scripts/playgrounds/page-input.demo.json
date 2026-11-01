@@ -1,0 +1,43 @@
+{
+  "source": {
+    "documento": "DEMO",
+    "physical_page": 1,
+    "v2_generation_id": null,
+    "v2_output_hash": "synthetic-demo",
+    "ocr_sha256": "synthetic-demo"
+  },
+  "v2": {
+    "page_kinds": [
+      "body"
+    ],
+    "segments": [
+      {
+        "id": "s1",
+        "order": 1,
+        "kind": "body",
+        "work_key": "",
+        "summary": "Atanásio contesta a tese atribuída aos arianos de que o Filho é uma criatura e afirma a plena divindade do Filho."
+      }
+    ],
+    "metadata_context": {}
+  },
+  "ocr": {
+    "blocks": [
+      {
+        "id": "b1",
+        "type": "texto_principal",
+        "script": "latino",
+        "bbox": [
+          100,
+          120,
+          900,
+          300
+        ],
+        "text": "Athanasius refutat sententiam eorum qui Filium creaturam esse dicunt."
+      }
+    ]
+  },
+  "facsimile": {
+    "attached": false
+  }
+}

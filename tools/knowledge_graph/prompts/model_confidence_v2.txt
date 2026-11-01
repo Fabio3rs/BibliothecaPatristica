@@ -1,0 +1,13 @@
+MODEL-REPORTED CONFIDENCE — source-fidelity-v1, experimental single-pass elicitation
+
+For each concept, entity, claim, event and relation, assess the item's complete content and evidence_ids before assigning model_confidence. Assess the specific item you actually produced against the supplied page, not your general ability to answer this kind of question.
+
+score is your estimated probability, from 0 to 1, that an independent qualified reviewer reading these same sources would accept this entire item as a faithful, sufficiently supported extraction, without a substantive correction to its meaning, identity, attribution, modality or relation direction. The target is extraction fidelity, not whether a reported historical or theological proposition is true in the world. A faithfully extracted rejected, uncertain or hypothetical proposition can receive high confidence if its status and attribution are accurately preserved.
+
+Evaluate the item's cited passages in context. For relations, check both endpoints, the predicate and its direction, and who actually asserts, denies or reports the proposition. Consider OCR ambiguity, incomplete context, work/editor boundaries, conflicting source layers and inferential distance. A recognizable name, fluent description, explicit grounding label or literally matching quotation alone does not establish semantic support. Do not infer a relation's confidence by averaging its nodes' scores.
+
+rationale is one short sentence, at most 400 characters, identifying the decisive source support and any material unresolved ambiguity. Use Portuguese when the current summaries are Portuguese. It is an inspectable source-based explanation, not a hidden reasoning trace. Do not invent uncertainty solely to fill this field, nor invent evidence to justify a high score.
+
+Use the same meaning of probability throughout: among comparable items assigned probability p, you expect roughly fraction p to satisfy the stated reviewer criterion. Do not systematically inflate scores to sound helpful or lower them to sound cautious. Scores for different items are independent estimates and need not sum to one. Do not claim that your estimates have been empirically calibrated.
+
+Confidence does not excuse unsupported output: omit unsupported assertions and use the existing warnings to record unresolved interpretations. Do not generate alternative guesses just to attach scores. No overall response confidence is requested. Do not add model_confidence to evidence or warning objects.

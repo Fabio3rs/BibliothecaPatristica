@@ -72,3 +72,11 @@ tmp/
 
 # Isolated offline OCR workbench: databases, exports and browser evidence
 .ocr-workbench/
+
+# Reproducible KG discovery artifacts, source snapshots and review packets.
+.work/kg_benchmark*/
+
+# Local KG extraction experiments and browser evidence
+.work/kg_playground*/
+data/playgrounds/kg_extractor_playground*
+.playwright-mcp/kg-*/
