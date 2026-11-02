@@ -862,3 +862,82 @@ O campo `image_hash` (sha256 da imagem) garante que, se a imagem mudar, o result
 | `data/ocr_versions.db` ← **NOVO** | **Todas as versões de OCR com engine, model, prompt, diff, timestamps** | ✅ Completa |
 
 A lacuna crítica é a ausência de elo entre `patristica_text.db` (que é consumido pelo pipeline de resumos/agentes) e a proveniência do OCR. O `ocr_versions.db` fecha essa lacuna para o pipeline de OCR, mas a integração com `ingest.py` (item 15.1) é necessária para fechar a cadeia completa até os resumos.
+
+## 17. Reprocessamento seletivo por modelo vigente (2026-11-02)
+
+`scripts/reprocess_current_ocr.py` seleciona somente `ocr_results.is_current=1`
+cujo `ocr_engine_versions.model` corresponde exatamente a `gpt-5-mini`, nas
+coleções PG e PL. Inclui volumes subdivididos como `PG007.01` e `PL115-1`.
+Não basta haver uma versão histórica desse modelo. A consulta lê apenas
+metadados, em conexão SQLite somente leitura, mantendo um volume por vez em memória.
+
+Simulação (padrão; nenhuma chamada a modelo ou alteração de OCR):
+
+```bash
+python scripts/reprocess_current_ocr.py --dry-run --jobs 11 --procs 2
+```
+
+Execução com o mesmo modelo destino padrão de `patristicagrega.sh`:
+
+```bash
+python scripts/reprocess_current_ocr.py --execute \
+  --algorithm ollama --llm-model qwen3.5:397b-cloud \
+  --jobs 11 --procs 2 --omp-threads 2
+```
+
+Para OpenAI, informe explicitamente o modelo destino com `--algorithm openai`
+e `--llm-model MODELO`; a chave é herdada de `OPENAI_API_KEY`. O script não armazena
+seu valor. `JOBS`, `PROCS`, `OMP_THREADS`, `ALGORITHM` e `LLM_MODEL` também podem
+definir os padrões por variáveis de ambiente.
+
+Cada volume roda em um subprocesso Python independente. `--jobs` controla os
+volumes simultâneos; `--procs` controla o multiprocessing Pool dentro de cada
+`main2.py`. Assim, `--jobs 11 --procs 2` permite até 22 workers de páginas.
+As threads do supervisor apenas aguardam subprocessos, sem executar o OCR.
+Não há teto arbitrário de concorrência.
+
+As chamadas usam `--verify-fix --force --pages 4,15,638`, por exemplo. `--pages`
+restringe exatamente as páginas físicas, prepara imagens ausentes e não inclui
+as páginas intermediárias. `--first`/`--last`, quando usados diretamente no
+`main2.py`, restringem adicionalmente essa lista. `--refresh-pages` não equivale
+a esse filtro e não pode ser combinado com `--pages`.
+
+`--force` pula a verificação determinística inicial. A correção continua usando
+o texto anterior e o Tesseract; `--do-not-reprocess-compare` desativa esse uso.
+O motivo registrado é `verify_forced`. A gravação permanece a cargo do
+versionamento existente do `main2.py`, com WAL e `busy_timeout`.
+
+Filtros adicionais: `--collections PG`, `--volumes PG001 PL020`, `--limit 10`
+(páginas em ordem de volume/página), `--source-model`, `--pdf-dir` e `--out`.
+Os padrões são `/homessddata/patristica` para PDFs e `teste/` para saída.
+Um `--db` alternativo só é permitido na simulação, pois o `main2.py` grava
+em `data/ocr_versions.db` relativo à raiz do repositório.
+
+Cada invocação cria um diretório novo em `.work/ocr_reprocess_current/` contendo:
+
+- `plan.json`: contagens e configuração;
+- `volumes/VOLUME.json`: páginas, IDs e hashes de origem, comando previsto;
+- `volumes/VOLUME.execution.json`: comando e seleção efetivamente executados;
+- `logs/VOLUME.log`: saída do `main2.py`, sem buffering do Python;
+- `volumes/VOLUME.results.json`: conferência de cada página;
+- `results.jsonl` e `execution_summary.json`: progresso e resultado por volume;
+- `excluded.jsonl`: registros com localizadores inválidos ou `current` ambíguo.
+
+PDFs ausentes ficam registrados no plano do volume e não são executados.
+Antes de iniciar cada volume, a seleção é conferida novamente; páginas cuja
+versão atual mudou são puladas. Um lock por volume evita duas instâncias deste
+script escrevendo nele simultaneamente. Esse lock não coordena invocações
+independentes do `main2.py` ou dos shells antigos.
+
+Após cada processo, o script confere a nova versão corrente, seu modelo e o hash
+do arquivo exportado. Código de saída zero do `main2.py` sozinho não confirma
+sucesso: falhas de worker podem ser capturadas internamente. `recorded` significa
+gravação confirmada, **não** aprovação da qualidade da transcrição.
+
+Para acompanhar, use `tail -f CAMINHO_DA_EXECUCAO/logs/PG001.log` ou
+`tail -f CAMINHO_DA_EXECUCAO/results.jsonl`. Ctrl+C encerra os grupos de processos
+ativos e interrompe o envio de novos volumes. Para continuar, repita o comando:
+a seleção é reconstruída pelo banco, e páginas cujo modelo corrente já mudou
+saem da fila. Isso não garante exatamente uma cobrança após interrupção durante
+uma requisição. Não há retry adicional do supervisor; o `main2.py` conserva
+seus retries internos. Examine resultados `unconfirmed` antes de repetir.

@@ -1,0 +1,49 @@
+{
+  "reference_role": "Geometry controls, manually inspected facsimiles; not full OCR ground truth.",
+  "pages": [
+    {
+      "page": "PG001:18",
+      "image_path": "teste/PG001/images/PG001-018.png",
+      "image_sha256": "ebe146374c289651880cf25de158bbe4894dcfa0298a50e49dffe260fa9039f0",
+      "image_size": [
+        2480,
+        3509
+      ],
+      "tsv_file": "PG001_018_migne_raw.tsv",
+      "tsv_sha256": "4c05ec0b1542d3f9df05eb57ff5b75c7258fb5e2cf9c2d8d384f37751d242af2",
+      "tesseract": "5.3.4",
+      "lang": "migne",
+      "psm": 3,
+      "oem": 1,
+      "preprocessing": "none",
+      "command": "OMP_THREAD_LIMIT=2 tesseract teste/PG001/images/PG001-018.png OUTPUT -l migne --psm 3 --oem 1 tsv",
+      "visually_observed_columns": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "page": "PG001:129",
+      "image_path": "teste/PG001/images/PG001-129.png",
+      "image_sha256": "9b59fec834367f6771024c44db851fed98c607c8a5d5ea3d8e60bb74844dd007",
+      "image_size": [
+        2480,
+        3509
+      ],
+      "tsv_file": "PG001_129_migne_raw.tsv",
+      "tsv_sha256": "15001f0e58880ea2ab46f1b94ac97372d7eb9f479339f919786af834dc6878ca",
+      "tesseract": "5.3.4",
+      "lang": "migne",
+      "psm": 3,
+      "oem": 1,
+      "preprocessing": "none",
+      "command": "OMP_THREAD_LIMIT=2 tesseract teste/PG001/images/PG001-129.png OUTPUT -l migne --psm 3 --oem 1 tsv",
+      "visually_observed_columns": [
+        1,
+        2
+      ]
+    }
+  ],
+  "migne_sha256": "6346cb1ad8e9c4add636272fbbcf884e4e8f25d8376e02bdd20f4c4e5727ec19"
+}

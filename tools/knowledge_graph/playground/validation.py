@@ -58,9 +58,10 @@ def completion_details(result, prepared):
             'visible_output_tokens_basis': 'output_minus_reasoning' if visible is not None else 'unavailable'}
 
 
-def evaluate_response(source, result, prepared):
+def evaluate_response(source, result, prepared, *, matching_policy=None):
     """Use the same response-aware checks for execution and offline revalidation."""
-    checked = evaluate(source, result.get('raw_response', ''), prepared['schema'], prepared['mode'])
+    checked = evaluate(source, result.get('raw_response', ''), prepared['schema'], prepared['mode'],
+                       matching_policy=matching_policy or prepared.get('validation_policy', MATCHING_POLICY))
     completion = completion_details(result, prepared)
     checked['completion'] = completion
     if completion['output_limit_reached']:
@@ -80,7 +81,10 @@ def evaluate_response(source, result, prepared):
     return checked
 
 
-def evaluate(source, raw, schema=None, mode=None):
+def evaluate(source, raw, schema=None, mode=None, *, matching_policy=MATCHING_POLICY):
+    from .evidence_locator import POLICIES, editorial_notes, locate_quote as locate_versioned
+    if matching_policy not in POLICIES:
+        raise ValueError('Unknown evidence matching policy')
     schema = schema if schema is not None else read_json(SCHEMA_PATH)
     errors, source_errors, warnings, diagnostics, evidence_matches = [], [], [], [], []
     text, response_format = response_text(raw)
@@ -148,15 +152,21 @@ def evaluate(source, raw, schema=None, mode=None):
             'ocr_block': {b['id']: b['text'] for b in source['ocr']['blocks']},
             'summary_segment': {s['id']: s['summary'] for s in source['v2']['segments']},
         }
+        definitions = editorial_notes(source['ocr']['blocks']) if matching_policy != MATCHING_POLICY else {}
+        names = [e['label'] for e in groups['entities'] if e['type'] in {'PERSON','PLACE','GROUP','INSTITUTION'}]
         for ev in groups['evidence']:
             text = originals.get(ev['source'], {}).get(ev['locator'])
-            match = dict(locate_quote(ev['quote'], text), evidence_id=ev['id'], source=ev['source'], locator=ev['locator'])
+            match = dict(locate_versioned(ev['quote'], text, policy=matching_policy,
+                                         definitions=definitions if ev['source']=='ocr_block' else {}, names=names),
+                         evidence_id=ev['id'], source=ev['source'], locator=ev['locator'])
             evidence_matches.append(match)
             if not match['accepted']:
                 source_errors.append(f'{ev["id"]}: {match["reason"]} ({ev["source"]}:{ev["locator"]})')
                 if match.get('review_candidate'):
                     diagnostics.append({'object_id': ev['id'], 'code': 'protected_quote_difference',
-                                        'message': f'{ev["id"]}: trecho semelhante localizado, mas há diferenças em números, operadores ou negações. Revisar o diff normalizado em evidence_matches; a correspondência não foi aceita automaticamente.'})
+                                        'message': (f'{ev["id"]}: candidato localizado para revisão ({match.get("reason")}); offsets, diferenças e chamadas de nota estão em evidence_matches. A posição não foi aceita automaticamente.'
+                                                    if matching_policy != MATCHING_POLICY else
+                                                    f'{ev["id"]}: trecho semelhante localizado, mas há diferenças em números, operadores ou negações. Revisar o diff normalizado em evidence_matches; a correspondência não foi aceita automaticamente.')})
             elif match['method'] != 'exact':
                 diagnostics.append({'object_id': ev['id'], 'code': 'approximate_quote_match',
                                     'message': f'{ev["id"]}: trecho localizado por correspondência aproximada ({match["method"]}); citação original preservada.'})
@@ -165,15 +175,17 @@ def evaluate(source, raw, schema=None, mode=None):
         for c in groups['concepts']:
             if c['evidence_ids'] and all(next((e['source'] for e in groups['evidence'] if e['id'] == eid), '') == 'summary_segment' for eid in c['evidence_ids']):
                 warnings.append(f'summary_only_grounding:{c["id"]}')
-    return {'version': VALIDATION_VERSION, 'response_format': response_format,
+    return {'version': VALIDATION_VERSION if matching_policy == MATCHING_POLICY else 'kg-validation-7', 'response_format': response_format,
             'format_compliant': isinstance(result, dict) and response_format != 'markdown_fence',
             'schema_valid': well_shaped, 'graph_inspectable': inspectable,
             'id_conflicts': conflicts, 'structural_valid': not errors,
             'source_valid': not source_errors if well_shaped else None,
             'source_exact': all(m['method'] == 'exact' for m in evidence_matches) if well_shaped else None,
-            'matching_policy': MATCHING_POLICY, 'evidence_matches': evidence_matches,
+            'matching_policy': matching_policy, 'evidence_matches': evidence_matches,
             'evidence_counts': {method: sum(m['method'] == method for m in evidence_matches)
-                                for method in ('exact', 'normalized', 'fuzzy', 'ambiguous', 'not_found', 'unknown_locator')},
+                                for method in (('exact', 'normalized', 'fuzzy', 'ambiguous', 'not_found', 'unknown_locator')
+                                               if matching_policy == MATCHING_POLICY else
+                                               ('exact', 'normalized', 'fuzzy', 'note_marker', 'ambiguous', 'review_only', 'not_found', 'unknown_locator'))},
             'valid': not errors and not source_errors,
             'structural_errors': errors, 'source_errors': source_errors,
             'warnings': warnings, 'diagnostics': diagnostics,

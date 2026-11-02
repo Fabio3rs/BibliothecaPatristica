@@ -22,7 +22,7 @@ from PIL import Image
 import pytesseract
 from pdf2image import convert_from_path
 from tools.classify_scan_kind import process as classify_scan_page
-from tools.corpus_utils import resolve_page_file
+from tools.corpus_utils import choose_page_file, page_files, resolve_page_file
 import difflib
 import sqlite3
 import multiprocessing as mp
@@ -744,6 +744,7 @@ def pages_to_images(
     last_page: Optional[int] = None,
     text_dir: Optional[Path] = None,
     refresh_pages: Optional[set[int]] = None,
+    selected_pages: Optional[set[int]] = None,
 ) -> List[Path]:
     """
     Converte páginas do PDF em imagens no disco e retorna a lista de caminhos.
@@ -781,6 +782,34 @@ def pages_to_images(
             normalized.append(target.resolve())
 
         return sorted(normalized, key=sort_key)
+
+    if selected_pages is not None:
+        requested = sorted(
+            page for page in selected_pages
+            if (first_page is None or page >= first_page)
+            and (last_page is None or page <= last_page)
+        )
+        indexed = page_files(images_dir, suffixes=(f".{IMAGE_FMT}",))
+        selected = []
+        for page in requested:
+            image, ambiguous = choose_page_file(
+                indexed.get(page, []), volume_id=pdf_path.stem, page_num=page
+            )
+            if ambiguous:
+                raise RuntimeError(f"{pdf_path.stem}:{page} tem imagens ambíguas")
+            selected.append((page, image))
+        result = []
+        for page, image in selected:
+            raw = [str(image)] if image else convert_from_path(
+                str(pdf_path), dpi=dpi, fmt=IMAGE_FMT,
+                output_folder=str(images_dir), paths_only=True,
+                use_pdftocairo=USE_PDFTOCAIRO, thread_count=1,
+                first_page=page, last_page=page,
+            )
+            result.extend(rename_to_stable(list(raw)))
+        if {parse_page_num_from_filename(p) for p in result} != set(requested):
+            raise RuntimeError("Não foi possível preparar todas as páginas selecionadas")
+        return result
 
     # 1) Normaliza arquivos já existentes (remove UUID) e retorna cedo se nada a fazer
     existing = rename_to_stable([str(p) for p in list_existing_images(images_dir)])
@@ -2625,7 +2654,7 @@ def _ocr_one(
                 init_tesseract_cache(tesseract_db)
 
                 identified_lang = identificar_idioma_tesseract(
-                    txtoriginal, lang_inicial=lang
+                    txtoriginal or "", lang_inicial=lang
                 )
                 tesseractres = strip_bidi_markers(
                     run_tesseract_cached(
@@ -3215,6 +3244,7 @@ def main():
     ap.add_argument("--lang", type=str, default=DEFAULT_LANG)
     ap.add_argument("--first", type=int, default=None)
     ap.add_argument("--last", type=int, default=None)
+    ap.add_argument("--pages", help="Somente estas páginas físicas, separadas por vírgula (ex.: 4,15,638).")
     ap.add_argument("--concat", action="store_true")
     ap.add_argument("--procs", type=int, default=12, help="processos no Pool")
     ap.add_argument(
@@ -3263,6 +3293,11 @@ def main():
         action="store_true",
         default=False,
         help="Verifica e corrige a integridade dos textos comparando resultados .txt prontos com o Tesseract.",
+    )
+    ap.add_argument(
+        "--force",
+        action="store_true",
+        help="Com --verify-fix, reprocessa todas as páginas selecionadas sem verificar a qualidade antes.",
     )
     ap.add_argument(
         "--verify-judge-llm",
@@ -3332,6 +3367,20 @@ def main():
     )
     args = ap.parse_args()
 
+    if args.force and (not args.verify_fix or args.tesseract_cache_only):
+        ap.error("--force requer --verify-fix e não pode ser usado com --tesseract-cache-only")
+
+    selected_pages = None
+    if args.pages is not None:
+        try:
+            selected_pages = {int(p) for p in re.split(r"[,\s]+", args.pages.strip()) if p}
+        except ValueError:
+            ap.error("--pages requer números inteiros separados por vírgula")
+        if not selected_pages or min(selected_pages) < 1:
+            ap.error("--pages requer pelo menos uma página positiva")
+        if args.refresh_pages:
+            ap.error("Use --pages ou --refresh-pages; --pages já prepara as imagens ausentes")
+
     pdf_path = Path(args.pdf).resolve()
     if not pdf_path.exists():
         print(f"PDF não encontrado: {pdf_path}", file=sys.stderr)
@@ -3391,6 +3440,7 @@ def main():
         last_page=args.last,
         text_dir=text_dir,
         refresh_pages=refresh_pages,
+        selected_pages=selected_pages,
     )
     print(f"Total de imagens: {len(images)}")
 
@@ -3474,33 +3524,37 @@ def main():
         return
 
     if args.verify or args.verify_fix:
-        print("Verificando integridade dos textos...")
-        failures = verify_all_parallel(
-            images,
-            text_dir,
-            lang=args.lang,
-            processes=args.procs,
-            omp_threads_per_proc=args.omp_threads,
-            chunksize=args.chunksize,
-            maxtasksperchild=args.maxtasksperchild,
-            tesseract_preprocess_mode=args.tesseract_preprocess_mode,
-            tesseract_clahe_clip=args.tesseract_clahe_clip,
-            tesseract_block_size=args.tesseract_block_size,
-            tesseract_c_value=args.tesseract_c_value,
-        )
+        if args.force:
+            print("Reprocessamento forçado: ignorando a verificação de qualidade.")
+            failures = images
+        else:
+            print("Verificando integridade dos textos...")
+            failures = verify_all_parallel(
+                images,
+                text_dir,
+                lang=args.lang,
+                processes=args.procs,
+                omp_threads_per_proc=args.omp_threads,
+                chunksize=args.chunksize,
+                maxtasksperchild=args.maxtasksperchild,
+                tesseract_preprocess_mode=args.tesseract_preprocess_mode,
+                tesseract_clahe_clip=args.tesseract_clahe_clip,
+                tesseract_block_size=args.tesseract_block_size,
+                tesseract_c_value=args.tesseract_c_value,
+            )
 
-        if failures:
+        if failures and not args.force:
             print(f"Verificação falhou para as seguintes imagens: {failures}")
 
         if failures and args.verify_fix:
-            print("Reprocessando imagens com falha...")
+            print("Reprocessando páginas selecionadas..." if args.force else "Reprocessando imagens com falha...")
 
             algorithm = args.algorithm
             if algorithm == "openai" and args.llm_model == DEFAULT_LLM_MODEL:
                 args.llm_model = DEFAULT_OPENAI_MODEL
 
             # do_not_reprocess_compare
-            reprocess_reason = "verify_failed"
+            reprocess_reason = "verify_forced" if args.force else "verify_failed"
 
             if args.do_not_reprocess_compare:
                 reprocess_reason += "_do_not_reprocess_compare"

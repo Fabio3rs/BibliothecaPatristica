@@ -1,0 +1,138 @@
+{
+  "page": "PG001:638",
+  "experiment_sha256": "8661208ce4774a4e70d23427bba86e310f3104cf063e070922e9ef917a426bd3",
+  "source_experiment": ".work/ocr_diff_v2/ab_pg001_638_v2",
+  "source_run": ".work/ocr_diff_v2/ab_pg001_638_gpt54mini_r1",
+  "requested_model": "gpt-5.4-mini",
+  "image_detail": "original",
+  "repeats": 1,
+  "image_sha256": "504f7abd1986eea57e89cf388f55512fd5eb454468f1b7d18831b2c902e9ed26",
+  "annotations": [
+    "Facsimile inspected: printed header columns are 1275 and 1276; title S. CLEMENTIS I ROM. PONT. OPERA DUBIA.",
+    "Gutter A, B, C, D are visible; micro_xml emits only A as nota_marginal.",
+    "Raw_text omits ditor exigit etiam legem impleri. Et Petrus: Ergo but contains adulteros and homicidas.",
+    "Ordered_text merges most of both physical columns into a single output block; spatial gaps are not a count of true textual omissions."
+  ],
+  "files": {
+    "r001_block_tsv.xml": "1454c770f844e42f3ec2e96d58e09feeb53b3874e2539184a93c894618408530",
+    "r001_ordered_text.xml": "63c224f6e213f36d99e6c1bfa97ae6355d62ee1ab402f82e3ae969fae1d47fef",
+    "r001_line_tsv.xml": "e6f51152be724ee7db3ffa6bd31bfd26294b37d87609c69d3a5d74fa7c1e8b74",
+    "r001_micro_xml.xml": "7ff6ea8a12a559da438fca38c2502f80f143e9e5c0f91151e2d8111143acbae6",
+    "r001_raw_text.xml": "cf7b11b5b77a7a153d247e5e28c39da0042a4c260aa4442e63273e3bb172e959",
+    "layout.json": "3f348a309cd060a545cc1324172b814f7dc2d851e80d200555e36d07560ebefe"
+  },
+  "cases": [
+    {
+      "arm": "block_tsv",
+      "file": "r001_block_tsv.xml",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "usage": {
+        "prompt_tokens": 14479,
+        "completion_tokens": 2147,
+        "total_tokens": 16626,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "seconds": 12.932396252000217,
+      "finish_reason": "stop"
+    },
+    {
+      "arm": "ordered_text",
+      "file": "r001_ordered_text.xml",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "usage": {
+        "prompt_tokens": 14308,
+        "completion_tokens": 1886,
+        "total_tokens": 16194,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "seconds": 13.142499804000181,
+      "finish_reason": "stop"
+    },
+    {
+      "arm": "line_tsv",
+      "file": "r001_line_tsv.xml",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "usage": {
+        "prompt_tokens": 15811,
+        "completion_tokens": 2096,
+        "total_tokens": 17907,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "seconds": 11.278700199000014,
+      "finish_reason": "stop"
+    },
+    {
+      "arm": "micro_xml",
+      "file": "r001_micro_xml.xml",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "usage": {
+        "prompt_tokens": 14499,
+        "completion_tokens": 2096,
+        "total_tokens": 16595,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "seconds": 14.11481142699995,
+      "finish_reason": "stop"
+    },
+    {
+      "arm": "raw_text",
+      "file": "r001_raw_text.xml",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "usage": {
+        "prompt_tokens": 14301,
+        "completion_tokens": 1883,
+        "total_tokens": 16184,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "seconds": 11.723030066999854,
+      "finish_reason": "stop"
+    }
+  ],
+  "source_layout_sha256": "a9560a9e61964092687b146cda6d24d8487cb82eeb4bc2970bb4afe2fbd38def",
+  "layout_fixture_note": "Projection of the frozen experiment layout: block IDs, boxes and text only; full word geometry remains in the TSV fixture."
+}

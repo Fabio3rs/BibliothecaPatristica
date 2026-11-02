@@ -1,0 +1,142 @@
+{
+  "version": "navigation-query-review-v1",
+  "instruction": "Independent source review required. These examples are proposals, not adjudicated relevance. Query wording was prepared before new A/B outputs. No metric is authorized by these suggestions.",
+  "queries": [
+    {
+      "id": "q-fatalismo",
+      "text": "Debates sobre fatalismo astrológico e providência divina",
+      "intent": "Localizar exposição e confronto do governo do mundo pela gênese e pela providência; não pressupõe uma refutação já concluída.",
+      "examples": [
+        {
+          "page": "PG001:686",
+          "run_id": 707,
+          "suggested_grade": 2,
+          "rationale": "O ancião defende a gênese contra a providência; Pedro abre o debate e Niceta pede responder. A página inicia o confronto, sem concluir a refutação.",
+          "evidence": {
+            "source": "ocr_block",
+            "locator": "b7",
+            "quote": "Ego dico, non secundum Dei\n    providentiam gubernari mundum, quia multa in eo\n    injuste et inordinatè geri videmus, sed genesim\n    dico esse, quæ omnia agit et continet.",
+            "start": 2046,
+            "end": 2219
+          },
+          "snapshot_hash": "84d13bd03244b27a7ce1d778b557c3ca2ceb1287ab00c02cd418da7c076200cd",
+          "review_status": "assistant_provisional_not_ground_truth"
+        },
+        {
+          "page": "PG001:2",
+          "run_id": 22,
+          "suggested_grade": 0,
+          "rationale": "Página sem conteúdo recuperável no snapshot; controle negativo a confirmar pelo revisor.",
+          "evidence": {
+            "source": "summary_segment",
+            "locator": "s1",
+            "quote": "Página sem conteúdo bibliográfico recuperável."
+          },
+          "snapshot_hash": "0caabab0f8f4a46bf455183f13febebc715b58f5ca92776ef5d61d75ebd55414",
+          "review_status": "assistant_provisional_not_ground_truth"
+        }
+      ]
+    },
+    {
+      "id": "q-autenticidade",
+      "text": "Autoria e autenticidade das Recognitiones atribuídas a Clemente Romano",
+      "intent": "Discutir atribuição, datação e autoridade da obra, além de menção bibliográfica.",
+      "examples": [
+        {
+          "page": "PG001:595",
+          "run_id": 616,
+          "suggested_grade": 2,
+          "rationale": "O proêmio distingue o autor de Clemente e argumenta sobre a datação. O resumo v2 inverte a anterioridade a Orígenes; avaliar contra o OCR.",
+          "evidence": {
+            "source": "ocr_block",
+            "locator": "b2",
+            "quote": "I. Libri Recognitionum alium plane a sancto Cle-\nmente, post Petrum tertio vel quarto Romanæ\nEcclesiæ pontifice, architectum habuerunt. Ad ejus\nætatem quod attinet",
+            "start": 1,
+            "end": 164
+          },
+          "snapshot_hash": "ccff238be4f303761d1faece9e1e9f9f67eb9080c74b126a1991ae36ff0ef6d4",
+          "review_status": "assistant_provisional_not_ground_truth"
+        },
+        {
+          "page": "PG001:2",
+          "run_id": 22,
+          "suggested_grade": 0,
+          "rationale": "Página sem conteúdo recuperável no snapshot; controle negativo a confirmar pelo revisor.",
+          "evidence": {
+            "source": "summary_segment",
+            "locator": "s1",
+            "quote": "Página sem conteúdo bibliográfico recuperável."
+          },
+          "snapshot_hash": "0caabab0f8f4a46bf455183f13febebc715b58f5ca92776ef5d61d75ebd55414",
+          "review_status": "assistant_provisional_not_ground_truth"
+        }
+      ]
+    },
+    {
+      "id": "q-cognicao",
+      "text": "Diferença entre conhecimento divino e conhecimento humano",
+      "intent": "Buscar discussão epistemológica contextualizada, não qualquer menção a Deus.",
+      "examples": [
+        {
+          "page": "PG004:221",
+          "run_id": 984,
+          "suggested_grade": 2,
+          "rationale": "O segmento distingue os modos humano e divino de conhecer; confirmar os argumentos no OCR.",
+          "evidence": {
+            "source": "summary_segment",
+            "locator": "s1",
+            "quote": "Diferencia a cognição humana (sensível ou inteligível via estudo e instrução) da cognição divina, que é acomodada à Sua própria natureza."
+          },
+          "snapshot_hash": "33be10148fea61e49d13fa2778f76af29b43f707862b6b3eea525d519e551fae",
+          "review_status": "assistant_provisional_not_ground_truth"
+        },
+        {
+          "page": "PG001:2",
+          "run_id": 22,
+          "suggested_grade": 0,
+          "rationale": "Página sem conteúdo recuperável no snapshot; controle negativo a confirmar pelo revisor.",
+          "evidence": {
+            "source": "summary_segment",
+            "locator": "s1",
+            "quote": "Página sem conteúdo bibliográfico recuperável."
+          },
+          "snapshot_hash": "0caabab0f8f4a46bf455183f13febebc715b58f5ca92776ef5d61d75ebd55414",
+          "review_status": "assistant_provisional_not_ground_truth"
+        }
+      ]
+    },
+    {
+      "id": "q-cosmogonia",
+      "text": "Interpretação alegórica das cosmogonias de Orfeu e Hesíodo",
+      "intent": "Buscar discussão de mitos cosmogônicos e significados alegóricos, não mero nome de poeta.",
+      "examples": [
+        {
+          "page": "PG001:719",
+          "run_id": 740,
+          "suggested_grade": 2,
+          "rationale": "A página desenvolve cosmogonias e alegorias dos deuses como elementos, tempo e matéria; confirmar contra os blocos originais.",
+          "evidence": {
+            "source": "summary_segment",
+            "locator": "s1",
+            "quote": "Em seguida, examina a perspectiva de Hesíodo, que descreve a origem do céu e da terra e a genealogia de onze ou doze divindades primordiais, interpretadas alegoricamente como a natureza e seus acidentes, com Saturno e Reia representando o tempo e a matéria."
+          },
+          "snapshot_hash": "35a9e763d66b3913d0901a415fdbdad8b99f872507c8d39ddbce331b8ebc6d8f",
+          "review_status": "assistant_provisional_not_ground_truth"
+        },
+        {
+          "page": "PG001:2",
+          "run_id": 22,
+          "suggested_grade": 0,
+          "rationale": "Página sem conteúdo recuperável no snapshot; controle negativo a confirmar pelo revisor.",
+          "evidence": {
+            "source": "summary_segment",
+            "locator": "s1",
+            "quote": "Página sem conteúdo bibliográfico recuperável."
+          },
+          "snapshot_hash": "0caabab0f8f4a46bf455183f13febebc715b58f5ca92776ef5d61d75ebd55414",
+          "review_status": "assistant_provisional_not_ground_truth"
+        }
+      ]
+    }
+  ]
+}

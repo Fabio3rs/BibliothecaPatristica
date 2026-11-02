@@ -16,6 +16,10 @@ global, publicação e avaliação semântica ampla continuam pendentes.
 | [Fotografia dos registros](snapshot_2026-11-01.json) | Contagens e metadados selecionados, consultados em leitura; inclui momento da captura e resultados dos testes já registrados. |
 | [Manual do playground](../kg_extractor_playground.md) | Arquitetura, CLI/UI, providers, fontes, persistência, comparação, execução contínua e limites operacionais. |
 | [Confiança autodeclarada](../kg_model_confidence.md) | Pesquisa consultada, protocolo por item, implementação e plano de calibração. |
+| [A/B de navegação v2.3](navigation_ab_v23.md) | Experimento de assuntos e comparação offline do localizador de evidências. |
+| [A/B/C de atribuição v2.4](stance_ab_v24.md) | Novo experimento preparado, prompts com conferência final e exemplos contrastivos, comandos e defeito conhecido do resumo no caso Dodwell. |
+| [A/B/C/D de semântica v2.5](semantics_ab_v25.md) | Ampliação com definições operacionais dos objetos e cobertura de argumentos; 256 chamadas preparadas, comandos e critérios de revisão. |
+| [Benchmark de conferência v1](verification_benchmark_v1.md) | D congelado versus D com uma segunda passagem; 24 chamadas planejadas, revisão cega e diagnóstico de busca A/D. |
 | [Ferramentas de benchmark](../../tools/knowledge_graph/benchmarks/README.md) | Comandos de descoberta, seleção, preparação e validação dos artefatos. |
 
 ## Relatórios e evidências locais
@@ -36,6 +40,9 @@ Git. São registros de trabalho; não substituem uma avaliação independente.
 | [Executor e browser — Native Lab](../../.work/kg_corpus_runner/validation.md) | Testes, processos, retomada, WAL, monitor e capturas desktop/mobile. |
 | [Dry-run com OCR divergente](../../.work/kg_source_drift/real-proof.json) | PG001:3 preparada com as duas proveniências preservadas, sem inferência. |
 | [Política aplicada à campanha](../../.work/kg_source_drift/campaign-policy.json) | Autorização persistida para usar OCR atual quando difere do histórico. |
+| [Preflight A/B/C v2.4](../../.work/kg_ab_stance_v24/preflight.json) | 32 páginas, 192 chamadas independentes congeladas, sem inferência na preparação. |
+| [Preflight A/B/C/D v2.5](../../.work/kg_ab_semantics_v25/preflight.json) | Mesmas 32 páginas e braços A/B/C, mais D; usar este novo experimento para a comparação ampliada. |
+| [Resumo e Dodwell — PG001:595](../../.work/kg_ab_stance_v24/source_quality_note.md) | Contradição resumo/OCR e distinção entre erro da entrada e atribuição incorreta na run 1083. |
 
 ## Contratos e prompts
 

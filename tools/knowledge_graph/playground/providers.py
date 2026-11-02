@@ -97,6 +97,41 @@ def normalize_config(value):
     return config
 
 
+def meta_transport_schema(schema):
+    """Project Meta's schema without weakening the separately stored local contract.
+
+    Meta rejected uniqueItems in the real stance-review requests (HTTP 400).
+    Walk schema positions only: a property/enum value named uniqueItems is data.
+    """
+    projected, removed = deepcopy(schema), []
+
+    def visit(node, path):
+        if not isinstance(node, dict):
+            return
+        if 'uniqueItems' in node:
+            removed.append({'path': path + '/uniqueItems', 'keyword': 'uniqueItems',
+                            'value': node.pop('uniqueItems')})
+        for key in ('properties', 'patternProperties', '$defs', 'definitions', 'dependentSchemas'):
+            for name, child in node.get(key, {}).items():
+                escaped = name.replace('~', '~0').replace('/', '~1')
+                visit(child, path + '/' + key + '/' + escaped)
+        for key in ('items', 'additionalProperties', 'additionalItems', 'contains',
+                    'propertyNames', 'not', 'if', 'then', 'else',
+                    'unevaluatedItems', 'unevaluatedProperties'):
+            child = node.get(key)
+            if isinstance(child, list):
+                for index, item in enumerate(child):
+                    visit(item, path + '/' + key + '/' + str(index))
+            else:
+                visit(child, path + '/' + key)
+        for key in ('anyOf', 'allOf', 'oneOf', 'prefixItems'):
+            for index, child in enumerate(node.get(key, [])):
+                visit(child, path + '/' + key + '/' + str(index))
+
+    visit(projected, '')
+    return projected, removed
+
+
 def request_spec(config, prompt, image=None):
     """Return exactly the body that will be sent, without authentication headers."""
     provider = config['provider']
@@ -117,6 +152,9 @@ def request_spec(config, prompt, image=None):
         schema['properties']['schema_version'] = {'type': 'string', 'enum': [prompt['schema']['properties']['schema_version']['const']]}
         schema.pop('$schema', None)
     structured = config['structured_output']
+    removed = []
+    if provider == 'meta' and structured == 'schema':
+        schema, removed = meta_transport_schema(schema)
     if provider == 'ollama':
         if structured != 'none':
             body['format'] = schema if structured == 'schema' else 'json'
@@ -139,12 +177,32 @@ def request_spec(config, prompt, image=None):
             if config[key] is not None:
                 body[key] = config[key]
         endpoint = config['base_url'].rstrip('/') + '/chat/completions'
-    return {'adapter_version': ADAPTER_VERSION, 'url': endpoint, 'body': body}
+    request = {'adapter_version': ADAPTER_VERSION, 'url': endpoint, 'body': body}
+    if removed:
+        request['schema_projection'] = {'version': 'meta-structured-schema-1',
+                                        'local_validation_preserved': True,
+                                        'removed_constraints': removed}
+    return request
 
 
 def redact(text, config):
     secret = os.getenv(config.get('api_key_env', ''), '')
     return text.replace(secret, '[REDACTED]') if secret else text
+
+
+def provider_error_message(message, response, config):
+    """Expose the provider's diagnostic, never headers or a whole response body."""
+    try:
+        envelope = json.loads(response) if isinstance(response, str) else response
+        error = envelope.get('error') if isinstance(envelope, dict) else None
+        detail = error.get('message') if isinstance(error, dict) else None
+    except (ValueError, TypeError):
+        detail = None
+    if isinstance(detail, str) and detail.strip():
+        detail = ' '.join(detail.split())
+        if detail not in message:
+            message += ': ' + detail
+    return redact(message, config)[:1000]
 
 
 class ProviderError(RuntimeError):
@@ -222,7 +280,8 @@ def send(config, request, *, transport=None, sleeper=time.sleep, uniform=random.
             server_delay = retry_after_seconds(exc.headers.get('Retry-After') if exc.headers else None, clock())
             exc.close()
             if exc.code not in {408, 429, 500, 502, 503, 504} or attempt == config['retries']:
-                raise ProviderError(f'Provider HTTP {exc.code}', response=body, attempts=attempt + 1, retry_log=retry_log) from None
+                message = provider_error_message(f'Provider HTTP {exc.code}', body, config)
+                raise ProviderError(message, response=body, attempts=attempt + 1, retry_log=retry_log) from None
             if server_delay > config.get('retry_after_max', 300):
                 raise ProviderError('Retry-After exceeds configured wait budget; no early retry was sent',
                                     response=body, attempts=attempt + 1, retry_log=retry_log) from None

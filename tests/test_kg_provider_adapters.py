@@ -103,6 +103,62 @@ def test_provider_errors_redact_key(monkeypatch):
     assert 'SECRET-VALUE' not in error.value.response
 
 
+def test_meta_transport_schema_preserves_local_constraints_and_schema_data():
+    from jsonschema import Draft202012Validator
+    from tools.knowledge_graph.playground.providers import meta_transport_schema
+    schema = {'type': 'object', 'properties': {
+        'uniqueItems': {'type': 'string', 'enum': ['uniqueItems']},
+        'refs': {'type': 'array', 'items': {'type': 'string'}, 'uniqueItems': True, 'minItems': 1}},
+        '$defs': {'a/b': {'type': 'array', 'items': {'type': 'string'}, 'uniqueItems': True}},
+        'required': ['uniqueItems', 'refs'], 'additionalProperties': False}
+    before = deepcopy(schema)
+    projected, removed = meta_transport_schema(schema)
+    assert schema == before
+    assert projected['properties']['uniqueItems'] == before['properties']['uniqueItems']
+    assert projected['properties']['refs']['minItems'] == 1
+    assert projected['$defs']['a/b'] == {'type': 'array', 'items': {'type': 'string'}}
+    assert {r['path'] for r in removed} == {'/properties/refs/uniqueItems', '/$defs/a~1b/uniqueItems'}
+    repeated = {'uniqueItems': 'uniqueItems', 'refs': ['ev1', 'ev1']}
+    assert Draft202012Validator(projected).is_valid(repeated)
+    assert not Draft202012Validator(schema).is_valid(repeated)
+
+
+def test_meta_review_request_projects_unique_items_only():
+    from tools.knowledge_graph.playground.verification_contract import review_schema
+    p = render(demo_snapshot(), 'concepts-v2.2-confidence', 'concepts_relations')
+    original = request_spec(normalize_config({'provider': 'meta', 'model': 'test'}), p)
+    assert 'schema_projection' not in original
+    assert original['body']['response_format']['json_schema']['schema'] == p['schema']
+    p['schema'] = review_schema(p['schema'])
+    before = deepcopy(p)
+    r = request_spec(normalize_config({'provider': 'meta', 'model': 'test'}), p)
+    wire = deepcopy(r['body']['response_format']['json_schema']['schema'])
+    assert 'uniqueItems' not in dumps(wire)
+    for group in ('claim_decisions', 'relation_decisions'):
+        wire['properties'][group]['items']['properties']['evidence_ids']['uniqueItems'] = True
+    assert wire == p['schema'] == before['schema']
+    assert p == before
+    assert len(r['schema_projection']['removed_constraints']) == 2
+    assert r['schema_projection']['local_validation_preserved']
+    ollama = request_spec(normalize_config({'provider': 'ollama', 'model': 'test'}), p)
+    assert ollama['body']['format'] == p['schema']
+
+
+def test_schema_http_400_exposes_redacted_detail_without_retry(monkeypatch):
+    monkeypatch.setenv('KG_KEY', 'SECRET-VALUE')
+    c = normalize_config({'provider': 'meta', 'model': 'test', 'api_key_env': 'KG_KEY', 'retries': 4})
+    calls = []
+    body = dumps({'error': {'message': 'JSON schema keyword `uniqueItems` is not supported SECRET-VALUE'}})
+    def transport(req, timeout):
+        calls.append(1)
+        raise urllib.error.HTTPError(req.full_url, 400, 'bad schema', {}, io.BytesIO(body.encode()))
+    with pytest.raises(ProviderError, match='uniqueItems') as error:
+        send(c, request_spec(c, prompt()), transport=transport, sleeper=lambda _: pytest.fail('No retry'))
+    assert len(calls) == error.value.attempts == 1
+    assert 'SECRET-VALUE' not in str(error.value) + error.value.response
+    assert '[REDACTED]' in str(error.value)
+
+
 def test_cost_requires_rates_and_usage():
     assert estimate_cost({}, {}) is None
     assert estimate_cost({'input_tokens':100,'output_tokens':20}, {}) is None

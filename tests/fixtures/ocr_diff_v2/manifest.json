@@ -1,0 +1,49 @@
+{
+  "page": "PG001:638",
+  "printed_columns": [
+    1275,
+    1276
+  ],
+  "image_path": "teste/PG001/images/PG001-638.png",
+  "image_size": [
+    2480,
+    3509
+  ],
+  "image_sha256": "504f7abd1986eea57e89cf388f55512fd5eb454468f1b7d18831b2c902e9ed26",
+  "tsv_command": [
+    "tesseract",
+    "teste/PG001/images/PG001-638.png",
+    "OUTPUT",
+    "-l",
+    "migne",
+    "--psm",
+    "3",
+    "--oem",
+    "1",
+    "txt",
+    "tsv"
+  ],
+  "tesseract_version": "5.3.4",
+  "migne_sha256": "6346cb1ad8e9c4add636272fbbcf884e4e8f25d8376e02bdd20f4c4e5727ec19",
+  "annotation": "Facsimile inspected 2026-11-02: first two lines of right column contain ditor exigit etiam legem impleri. Et Petrus: Ergo / et adulteros et homicidas salvat, si cognoverint. Tests adjudicate these target tokens only; other mismatches are not gold labels.",
+  "cases": [
+    {
+      "candidate": "PG001_638_current.xml",
+      "version_id": 809912,
+      "model": "gpt-5-mini",
+      "target_status": "reference_only"
+    },
+    {
+      "candidate": "PG001_638_previous.xml",
+      "version_id": 357449,
+      "model": "qwen3.5:cloud",
+      "target_status": "equal"
+    }
+  ],
+  "files": {
+    "PG001_638_current.xml": "7852ff176921e7d109a9fce0a3c52c25b5876228e3149263c803c8873b8fba65",
+    "PG001_638_previous.xml": "ec06f7407b18e93608433ee5e5b69a3cca3b6c70cb55d374c919e36e10098f6c",
+    "PG001_638_migne_raw.tsv": "d9af3847498ab1e33a4e1360dd023bb11aefd021524d8ab1e3de0c02a0381436",
+    "PG001_638_migne_cached.txt": "953e77cc87fd98776c037289bc5c554b4f10e5ef5418f28317aa7c25c094cb1d"
+  }
+}

@@ -85,6 +85,8 @@ def plan_experiment(store, cases, configs, *, variants=('concepts-v1',), modes=(
 def execute_run(store, identifier, *, bypass_cache=False, caller=send):
     run = store.get_run(identifier)
     prepared, config = run['prepared'], run['config']
+    if prepared.get('task') == 'stance_review':
+        raise ValueError('Use verify-run for frozen second-pass review requests')
     case = store.get_case(run['case_id'])
     store.start(identifier)
     started = time.perf_counter()
@@ -137,8 +139,12 @@ def execute_experiment(store, experiment, *, concurrency=1, resume=False, retry_
     if type(concurrency) is not int or not 1 <= concurrency <= 16:
         raise ValueError('Concurrency must be between 1 and 16')
     plan = store.experiment_plan(experiment)
+    if plan.get('kind') == 'verification':
+        raise ValueError('Use verify-run --experiment to preserve the second-pass protocol')
     if plan.get('kind') == 'corpus':
         raise ValueError('Use corpus-run --campaign to execute this persistent corpus queue')
+    if plan.get('kind') == 'ab':
+        raise ValueError('Use ab-run --experiment to preserve the frozen A/B schedule and cache bypass')
     # Same experiment cannot be driven by the UI and CLI simultaneously.
     lock_dir = store.path.parent / (store.path.stem + '_locks')
     lock_dir.mkdir(exist_ok=True)

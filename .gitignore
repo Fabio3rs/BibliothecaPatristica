@@ -78,5 +78,14 @@ tmp/
 
 # Local KG extraction experiments and browser evidence
 .work/kg_playground*/
+.work/kg_ab_*/
+.work/kg_campaign_prompt_audit/locator_comparison*
 data/playgrounds/kg_extractor_playground*
 .playwright-mcp/kg-*/
+
+# Local OCR alignment reports, Tesseract runs and preprocessed raster artifacts.
+.work/ocr_diff_v2/
+
+# Selective OCR reprocessing plans, per-volume logs and execution locks.
+.work/ocr_reprocess_current/
+.work/ocr_reprocess_locks/

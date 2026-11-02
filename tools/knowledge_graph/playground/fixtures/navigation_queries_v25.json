@@ -1,0 +1,18 @@
+{
+  "version": "navigation-queries-v25-diagnostic-1",
+  "instruction": "Exploratory queries proposed after inspecting this diagnostic corpus, not held-out queries or independent truth. Judge every page-query pair against the archived sources, before viewing arm rankings. Grade 0 for no useful discussion, 1 for a useful secondary subject or topical heading, 2 for substantive discussion. Do not assume a positive page from the wording. Preserve negative judgments and uncertainty; pending is not negative.",
+  "queries": [
+    {"id": "q-tradicao", "text": "Como a tradição oral transmitiu os ensinamentos dos primeiros cristãos?", "intent": "Transmissão oral como assunto próprio, inclusive em argumentos sobre perda de escritos."},
+    {"id": "q-martirio", "text": "Martírio e testemunho da fé comparados à escrita", "intent": "Função do testemunho dos mártires, não mera menção a uma pessoa mártir."},
+    {"id": "q-perda", "text": "Perda dos escritos cristãos antigos e providência divina", "intent": "Argumentos sobre a sobrevivência dos textos, não qualquer menção à providência."},
+    {"id": "q-autenticidade", "text": "Quem escreveu as Recognitiones atribuídas a Clemente e quando?", "intent": "Autoria e datação, distinguindo crítica editorial de narrativa da obra."},
+    {"id": "q-fatalismo", "text": "Destino astrológico, liberdade humana e providência", "intent": "Debate substantivo ou secundário útil, sem pressupor que toda página conclui a refutação."},
+    {"id": "q-condicao", "text": "Objeções aos milagres do sol e da lua", "intent": "Objeções hipotéticas e suas respostas, distinguindo-as de eventos históricos afirmados."},
+    {"id": "q-mal", "text": "O mal como privação do bem e os dois princípios", "intent": "Análise do mal e da oposição de princípios, não toda ocorrência do vocábulo mal."},
+    {"id": "q-alma", "text": "Distinção entre alma, espírito, sentidos e intelecto", "intent": "Conceitos antropológicos desenvolvidos ou distinções secundárias úteis."},
+    {"id": "q-mestres", "text": "Por que honrar os mestres cristãos e os pais?", "intent": "Comparação da função dos mestres e pais, não somente pessoas que ensinam."},
+    {"id": "q-cismas", "text": "Cismas, unidade da comunidade e julgamento imparcial", "intent": "Disciplina e relações comunitárias, incluindo exortações e exemplos narrados."},
+    {"id": "q-criacao", "text": "Criação do ser humano à imagem de Deus e origem da alma", "intent": "Antropologia da criação, distinguindo-a da criação do cosmos em geral."},
+    {"id": "q-conhecimento", "text": "Como diferem o conhecimento divino e o humano?", "intent": "Discussão epistemológica, não qualquer referência genérica a Deus."}
+  ]
+}

@@ -26,9 +26,22 @@ def freeze_template(variant_id, mode, *, system_override=None):
     system = system_override if system_override is not None else (REGISTRY.parent / variant['system_file']).resolve().read_text(encoding='utf-8')
     if not isinstance(system, str) or not system.strip():
         raise ValueError('System prompt must be nonempty text')
-    if variant.get('contract_rules_file'):
+    modes = dict(MODES)
+    if variant.get('mode_instructions_file'):
+        overrides = read_json(REGISTRY.parent / variant['mode_instructions_file'])
+        if (not isinstance(overrides, dict) or set(overrides) - set(MODES)
+                or any(not isinstance(value, str) or not value.strip() for value in overrides.values())):
+            raise ValueError('Variant mode instructions must map known modes to nonempty text')
+        modes.update(overrides)
+    if variant.get('complete_system_prompt'):
+        prefix, marker, suffix = system.rpartition('\n\nEXPERIMENT MODE\n')
+        if not marker or system.count('EXPERIMENT MODE\n') != 1 or suffix not in modes.values():
+            raise ValueError('Complete prompt must contain exactly one recognized experiment mode')
+        system = prefix + marker + modes[mode]
+    elif variant.get('contract_rules_file'):
         system += '\n\n' + (REGISTRY.parent / variant['contract_rules_file']).resolve().read_text(encoding='utf-8')
-    system += '\n\nEXPERIMENT MODE\n' + MODES[mode]
+    if not variant.get('complete_system_prompt'):
+        system += '\n\nEXPERIMENT MODE\n' + modes[mode]
     if variant['few_shot']:
         sample = read_json(KIT / 'page-output.demo.json')
         if mode == 'concepts_only':

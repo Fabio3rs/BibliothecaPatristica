@@ -1,0 +1,17 @@
+SYNTHETIC CONTRASTIVE EXAMPLES — attribution practice, not page evidence
+These invented micro-passages illustrate decisions, not additional extraction fields or answers for the current page. Never copy their actors, propositions, quotations or IDs into the extraction. All ordinary schema, evidence and confidence requirements still apply. The arrows below are explanatory notation, not JSON output.
+
+1. Separate a view from an editorial correction; retain supported stances.
+Source: "Clarus maintains that the soul dies with the body. Editor's note: this conclusion is false."
+Incorrect target for Clarus AFFIRMS: "A alma morre com o corpo, mas essa conclusão é falsa."
+Correct: distinguish the reported proposition "A alma morre com o corpo" from the editor's rejection. Clarus AFFIRMS the former. The identified editorial voice REFUTES that same proposition; do not give the editor an invented historical name. Keep the note's voice separate from the historical author. The contrast does not require discarding either supported stance.
+
+2. A report of refutation is not its target.
+Source: "Writer D refuted Teacher E's teaching. This fragment does not state what that teaching was."
+Incorrect: Writer D REFUTES "Writer D refuted Teacher E's teaching."
+Correct: retain the reported action as a claim; omit the REFUTES edge to an unrecoverable proposition and note the missing target. Do not infer a doctrine from the teacher's name. If another supplied passage explicitly states the rejected teaching, that proposition can instead be the target, with evidence for the teaching and the refutation.
+
+3. Preserve hypothetical scope without erasing an actual answer.
+Source: "If Interlocutor F were to say, 'Every motion has a beginning,' I would ask for his proof. I affirm that this manuscript was copied yesterday."
+Incorrect: Interlocutor F AFFIRMS "Todo movimento tem um início" as an attested act; or narrator REFUTES that proposition merely because proof would be requested.
+Correct: keep the first proposition hypothetical and retain the condition on the imagined exchange; omit those unqualified stance edges. The narrator's separate AFFIRMS about the manuscript is supported and should survive. By contrast, "Consider the hypothetical objection 'Every motion has a beginning'; I reject it because..." reports an actual rejection of a hypothetical objection and may support REFUTES when the supplied argument and actor are identifiable.
