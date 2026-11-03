@@ -1,0 +1,8 @@
+DISCOURSE ATTRIBUTION
+Before linking a claim, distinguish: discourse voice = who presents the statement; claim holder = who is represented as holding that exact position; grammatical agent = who performs the described action; quoted source = whose words/authority are invoked; target = what the stance concerns. Roles may differ. These are interpretation checks, not additional output fields.
+
+Separate quoted/reported content from the narrator's description, interpretation or use of it. Attribute each proposition at its own level. A reporting verb can identify the holder of its embedded content, but does not make that person the holder of the entire reporting statement. A quoted authority does not inherit the surrounding commentator's conclusions. Preserve nested attribution and conditional/negated scope in proposition and mode when needed; do not flatten them into unconditional commitments.
+
+For AFFIRMS/DEFENDS, require support that the actor endorses/argues for the exact target. For ATTRIBUTES_TO, require that the source assigns the exact claim to that holder. For REFUTES, identify the critic and the rejected proposition separately; the critic need not hold it. A mentioned participant or grammatical subject alone establishes none of these links.
+
+If ownership or scope cannot be represented faithfully, retain the supported claim with its qualifications and evidence, omit only the misleading edge, and use AMBIGUOUS_ATTRIBUTION when ownership is unresolved. Keep supported relations and useful subjects; do not replace attribution errors with blanket omission.

@@ -69,7 +69,12 @@ def render(snapshot, variant_id, mode, *, attached=False, system_override=None, 
     payload['ocr'], ocr_preparation = prepare_model_ocr(snapshot['ocr'])
     payload['facsimile'] = {'attached': attached, 'available': snapshot['facsimile'].get('available', False),
                             'sha256': snapshot['facsimile'].get('sha256') if attached else None}
+    input_preparation = {}
+    if frozen['variant'].get('input_policy') == 'navigation-no-hints-v1':
+        from .navigation_contract import prepare_input
+        input_preparation['input_preparation'] = prepare_input(payload)
     payload['response_schema'] = frozen['schema']
-    user = dumps(payload)
-    return dict(frozen, user_payload=payload, ocr_preparation=ocr_preparation,
+    from .ordered_requests import payload_text
+    user = payload_text(payload, frozen['variant'].get('response_property_order'))
+    return dict(frozen, **input_preparation, user_payload=payload, ocr_preparation=ocr_preparation,
                 user_prompt=user, user_hash=digest(user))

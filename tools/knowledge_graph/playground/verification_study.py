@@ -10,7 +10,7 @@ from pathlib import Path
 from .ab_runner import input_hash, policy_manifest, verify_source
 from .common import ROOT, digest, dumps, now, read_json, readonly
 from .providers import normalize_config, request_spec
-from .validation import evaluate_response
+from .validation_dispatch import evaluate_response
 from .verification_contract import VERSION, candidate_payload, review_schema
 
 SOURCE_EXPERIMENT = 'EXP-55b6938cd135'

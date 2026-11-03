@@ -40,6 +40,24 @@ def test_normalize_for_search_folds_ligatures_and_diacritics() -> None:
     assert normalize_for_search("Éphésiens") == "ephesiens"
 
 
+def test_text_score_cache_preserves_scores_and_does_not_share_mutable_evidence():
+    from tools.indexing.index_target_locator import (
+        _TextZones, _cached_text_evidence, _text_evidence_for_query,
+    )
+    page = _TextZones("historia", "athanasius contra arianos", "")
+    _cached_text_evidence.cache_clear()
+    expected_score, expected_evidence = _cached_text_evidence.__wrapped__("Athanasius", page)
+    score, evidence = _text_evidence_for_query("Athanasius", page)
+    assert score == expected_score
+    assert evidence == expected_evidence
+    evidence[0].raw = "caller changed it"
+    evidence.clear()
+    assert _text_evidence_for_query("Athanasius", page) == (expected_score, expected_evidence)
+    assert _cached_text_evidence.cache_info().hits == 1
+    changed = page._replace(body_norm="alius episcopus")
+    assert _text_evidence_for_query("Athanasius", changed)[0] != expected_score
+
+
 def test_short_name_match_requires_complete_normalized_tokens() -> None:
     body = normalize_for_search(
         "The conclusion is manifest and never a matter of doubt."

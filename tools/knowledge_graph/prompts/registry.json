@@ -1,17 +1,229 @@
 {
   "variants": [
-    {"id": "concepts-v1", "version": "1", "description": "Starter contract, no examples", "system_file": "../../../scripts/playgrounds/extract_concepts_v1.system.txt", "few_shot": false},
-    {"id": "concepts-v1-fewshot", "version": "1", "description": "Starter contract plus explicitly synthetic attribution example", "system_file": "../../../scripts/playgrounds/extract_concepts_v1.system.txt", "few_shot": true},
-    {"id": "concepts-v1.1", "version": "1.1", "description": "Explicit ID namespaces and exact-quote constraints", "system_file": "../../../scripts/playgrounds/extract_concepts_v1.system.txt", "contract_rules_file": "page_contract_v1.1.txt", "few_shot": false},
-    {"id": "concepts-v1.2", "version": "1.2", "description": "Attribution, claim scope and sufficient contextual evidence", "system_file": "extract_concepts_v1.2.system.txt", "few_shot": false},
-    {"id": "concepts-v2-confidence", "version": "2", "description": "v1.2 extraction with experimental, uncalibrated model confidence per item", "system_file": "extract_concepts_v1.2.system.txt", "contract_rules_file": "model_confidence_v2.txt", "schema_file": "../schemas/kg-extraction-v2.schema.json", "few_shot": false},
-    {"id": "concepts-v1.3", "version": "1.3", "description": "Actor and stance coverage using current summaries and work-specific attribution context", "system_file": "extract_concepts_v1.3.system.txt", "few_shot": false},
-    {"id": "concepts-v2.1-confidence", "version": "2.1", "description": "v1.3 actor and stance coverage with experimental, uncalibrated model confidence per item", "system_file": "extract_concepts_v1.3.system.txt", "contract_rules_file": "model_confidence_v2.txt", "schema_file": "../schemas/kg-extraction-v2.schema.json", "few_shot": false},
-    {"id": "concepts-v1.4", "version": "1.4", "description": "Actor coverage plus original/translation distinctions on bilingual pages", "system_file": "extract_concepts_v1.4.system.txt", "few_shot": false},
-    {"id": "concepts-v2.2-confidence", "version": "2.2", "description": "v1.4 bilingual-page instructions with experimental, uncalibrated model confidence per item", "system_file": "extract_concepts_v1.4.system.txt", "contract_rules_file": "model_confidence_v2.txt", "schema_file": "../schemas/kg-extraction-v2.schema.json", "few_shot": false},
-    {"id": "concepts-v2.3-navigation-confidence", "version": "2.3", "description": "Research subjects, contextual labels and argument scope; experimental navigation A/B", "system_file": "extract_concepts_v2.3.system.txt", "schema_file": "../schemas/kg-extraction-v2.schema.json", "few_shot": false, "complete_system_prompt": true, "frozen_mode": "concepts_relations", "base_system_hash": "a0d9c13066957dfac30c9185c553cff7bf05b305bddaf6b538eab4db36afda89"},
-    {"id": "concepts-v2.4-stance-confidence", "version": "2.4", "description": "v2.3 subjects with a consolidated atomic-claim and stance check", "system_file": "extract_concepts_v2.4.system.txt", "schema_file": "../schemas/kg-extraction-v2.schema.json", "few_shot": false, "complete_system_prompt": true, "frozen_mode": "concepts_relations", "synthetic_contrastive_examples": false, "base_system_hash": "1ad5574d6d6c686769ec26514408282fdded3b4686147e3dbf65790560626c61"},
-    {"id": "concepts-v2.4-stance-examples-confidence", "version": "2.4", "description": "v2.4 stance check plus three synthetic contrastive demonstrations", "system_file": "extract_concepts_v2.4-examples.system.txt", "schema_file": "../schemas/kg-extraction-v2.schema.json", "few_shot": false, "complete_system_prompt": true, "frozen_mode": "concepts_relations", "synthetic_contrastive_examples": true, "base_system_hash": "1ad5574d6d6c686769ec26514408282fdded3b4686147e3dbf65790560626c61"},
-    {"id": "concepts-v2.5-semantics-confidence", "version": "2.5", "description": "v2.3 plus operational object semantics and argument coverage; experimental arm D", "system_file": "extract_concepts_v2.5.system.txt", "schema_file": "../schemas/kg-extraction-v2.schema.json", "mode_instructions_file": "semantics_v2.5_modes.json", "few_shot": false, "complete_system_prompt": true, "frozen_mode": "concepts_relations", "base_system_hash": "1ad5574d6d6c686769ec26514408282fdded3b4686147e3dbf65790560626c61"}
+    {
+      "id": "concepts-v1",
+      "version": "1",
+      "description": "Starter contract, no examples",
+      "system_file": "../../../scripts/playgrounds/extract_concepts_v1.system.txt",
+      "few_shot": false
+    },
+    {
+      "id": "concepts-v1-fewshot",
+      "version": "1",
+      "description": "Starter contract plus explicitly synthetic attribution example",
+      "system_file": "../../../scripts/playgrounds/extract_concepts_v1.system.txt",
+      "few_shot": true
+    },
+    {
+      "id": "concepts-v1.1",
+      "version": "1.1",
+      "description": "Explicit ID namespaces and exact-quote constraints",
+      "system_file": "../../../scripts/playgrounds/extract_concepts_v1.system.txt",
+      "contract_rules_file": "page_contract_v1.1.txt",
+      "few_shot": false
+    },
+    {
+      "id": "concepts-v1.2",
+      "version": "1.2",
+      "description": "Attribution, claim scope and sufficient contextual evidence",
+      "system_file": "extract_concepts_v1.2.system.txt",
+      "few_shot": false
+    },
+    {
+      "id": "concepts-v2-confidence",
+      "version": "2",
+      "description": "v1.2 extraction with experimental, uncalibrated model confidence per item",
+      "system_file": "extract_concepts_v1.2.system.txt",
+      "contract_rules_file": "model_confidence_v2.txt",
+      "schema_file": "../schemas/kg-extraction-v2.schema.json",
+      "few_shot": false
+    },
+    {
+      "id": "concepts-v1.3",
+      "version": "1.3",
+      "description": "Actor and stance coverage using current summaries and work-specific attribution context",
+      "system_file": "extract_concepts_v1.3.system.txt",
+      "few_shot": false
+    },
+    {
+      "id": "concepts-v2.1-confidence",
+      "version": "2.1",
+      "description": "v1.3 actor and stance coverage with experimental, uncalibrated model confidence per item",
+      "system_file": "extract_concepts_v1.3.system.txt",
+      "contract_rules_file": "model_confidence_v2.txt",
+      "schema_file": "../schemas/kg-extraction-v2.schema.json",
+      "few_shot": false
+    },
+    {
+      "id": "concepts-v1.4",
+      "version": "1.4",
+      "description": "Actor coverage plus original/translation distinctions on bilingual pages",
+      "system_file": "extract_concepts_v1.4.system.txt",
+      "few_shot": false
+    },
+    {
+      "id": "concepts-v2.2-confidence",
+      "version": "2.2",
+      "description": "v1.4 bilingual-page instructions with experimental, uncalibrated model confidence per item",
+      "system_file": "extract_concepts_v1.4.system.txt",
+      "contract_rules_file": "model_confidence_v2.txt",
+      "schema_file": "../schemas/kg-extraction-v2.schema.json",
+      "few_shot": false
+    },
+    {
+      "id": "concepts-v2.3-navigation-confidence",
+      "version": "2.3",
+      "description": "Research subjects, contextual labels and argument scope; experimental navigation A/B",
+      "system_file": "extract_concepts_v2.3.system.txt",
+      "schema_file": "../schemas/kg-extraction-v2.schema.json",
+      "few_shot": false,
+      "complete_system_prompt": true,
+      "frozen_mode": "concepts_relations",
+      "base_system_hash": "a0d9c13066957dfac30c9185c553cff7bf05b305bddaf6b538eab4db36afda89"
+    },
+    {
+      "id": "concepts-v2.4-stance-confidence",
+      "version": "2.4",
+      "description": "v2.3 subjects with a consolidated atomic-claim and stance check",
+      "system_file": "extract_concepts_v2.4.system.txt",
+      "schema_file": "../schemas/kg-extraction-v2.schema.json",
+      "few_shot": false,
+      "complete_system_prompt": true,
+      "frozen_mode": "concepts_relations",
+      "synthetic_contrastive_examples": false,
+      "base_system_hash": "1ad5574d6d6c686769ec26514408282fdded3b4686147e3dbf65790560626c61"
+    },
+    {
+      "id": "concepts-v2.4-stance-examples-confidence",
+      "version": "2.4",
+      "description": "v2.4 stance check plus three synthetic contrastive demonstrations",
+      "system_file": "extract_concepts_v2.4-examples.system.txt",
+      "schema_file": "../schemas/kg-extraction-v2.schema.json",
+      "few_shot": false,
+      "complete_system_prompt": true,
+      "frozen_mode": "concepts_relations",
+      "synthetic_contrastive_examples": true,
+      "base_system_hash": "1ad5574d6d6c686769ec26514408282fdded3b4686147e3dbf65790560626c61"
+    },
+    {
+      "id": "concepts-v2.5-semantics-confidence",
+      "version": "2.5",
+      "description": "v2.3 plus operational object semantics and argument coverage; experimental arm D",
+      "system_file": "extract_concepts_v2.5.system.txt",
+      "schema_file": "../schemas/kg-extraction-v2.schema.json",
+      "mode_instructions_file": "semantics_v2.5_modes.json",
+      "few_shot": false,
+      "complete_system_prompt": true,
+      "frozen_mode": "concepts_relations",
+      "base_system_hash": "1ad5574d6d6c686769ec26514408282fdded3b4686147e3dbf65790560626c61"
+    },
+    {
+      "id": "concepts-v2.6-field-contract-confidence",
+      "version": "2.6",
+      "description": "v2.5 plus explicit field/enum meanings and directed predicate conventions; experimental",
+      "system_file": "extract_concepts_v2.6.system.txt",
+      "schema_file": "../schemas/kg-extraction-v2.schema.json",
+      "mode_instructions_file": "semantics_v2.5_modes.json",
+      "few_shot": false,
+      "complete_system_prompt": true,
+      "frozen_mode": "concepts_relations",
+      "base_system_hash": "8926f528d8a0a540b836f5d288acdacf869fe56998f538d3089148cfed4111ec"
+    },
+    {
+      "id": "concepts-v2.7-compact-confidence",
+      "version": "2.7",
+      "description": "Consolidated v2.6 field semantics, source grounding and attribution rules with compact modes",
+      "system_file": "extract_concepts_v2.7.system.txt",
+      "schema_file": "../schemas/kg-extraction-v2.schema.json",
+      "mode_instructions_file": "compact_v2.7_modes.json",
+      "few_shot": false,
+      "base_system_hash": "51125df51535774c83a1a2802cbce7b51818e720d55bfd4eeaf78d389aec23ab"
+    },
+    {
+      "id": "concepts-v2.8-discourse-confidence",
+      "version": "2.8",
+      "description": "Compact v2.7 plus source/holder/agent separation and nested attribution; experimental",
+      "system_file": "extract_concepts_v2.7.system.txt",
+      "contract_rules_file": "discourse_v2.8_contract.txt",
+      "schema_file": "../schemas/kg-extraction-v2.schema.json",
+      "mode_instructions_file": "compact_v2.7_modes.json",
+      "few_shot": false,
+      "base_system_hash": "8915bea0741cdf51a3f7812f99d0b96d81814b97adf7c70a7d0d0b1a61438732"
+    },
+    {
+      "id": "concepts-v3-statements-confidence",
+      "version": "3",
+      "description": "Experimental statements with qualified attributions and participant roles; offline graph projection",
+      "system_file": "extract_statements_v3.system.txt",
+      "schema_file": "../schemas/kg-extraction-v3.schema.json",
+      "mode_instructions_file": "statements_v3_modes.json",
+      "few_shot": false,
+      "synthetic_contrastive_examples": true
+    },
+    {
+      "id": "concepts-v3.1-order-confidence",
+      "version": "3.1-order",
+      "description": "v3 contract with explicit discourse/reference/proposition/stance analysis order",
+      "system_file": "extract_statements_v3.1-order.system.txt",
+      "schema_file": "../schemas/kg-extraction-v3.schema.json",
+      "mode_instructions_file": "statements_v3_modes.json",
+      "few_shot": false,
+      "synthetic_contrastive_examples": true
+    },
+    {
+      "id": "concepts-v3.1-discourse-actions-confidence",
+      "version": "3.1",
+      "description": "Experimental discourse units and anchored event arguments; qualified graph projection",
+      "system_file": "extract_discourse_v3.1.system.txt",
+      "schema_file": "../schemas/kg-extraction-v3.1.schema.json",
+      "mode_instructions_file": "discourse_v3.1_modes.json",
+      "few_shot": false,
+      "response_property_order": [
+        "schema_version",
+        "discourse_units",
+        "entities",
+        "claims",
+        "events",
+        "concepts",
+        "relations",
+        "evidence",
+        "warnings"
+      ]
+    },
+    {
+      "id": "navigation-v1-topics-arguments",
+      "version": "navigation-1",
+      "description": "Experimental searchable subjects and qualified arguments; no attribution, relations or confidence",
+      "system_file": "extract_navigation_v1.system.txt",
+      "schema_file": "../schemas/kg-navigation-v1.schema.json",
+      "mode_instructions_file": "navigation_v1_modes.json",
+      "few_shot": false,
+      "input_policy": "navigation-no-hints-v1",
+      "response_property_order": [
+        "schema_version",
+        "concepts",
+        "arguments",
+        "evidence",
+        "warnings"
+      ]
+    },
+    {
+      "id": "navigation-v1.1-unicode-topics-arguments",
+      "version": "navigation-1.1",
+      "description": "Navigation v1 with literal Unicode output instructions; unchanged response schema",
+      "system_file": "extract_navigation_v1.system.txt",
+      "schema_file": "../schemas/kg-navigation-v1.schema.json",
+      "mode_instructions_file": "navigation_v1_modes.json",
+      "few_shot": false,
+      "input_policy": "navigation-no-hints-v1",
+      "response_property_order": [
+        "schema_version",
+        "concepts",
+        "arguments",
+        "evidence",
+        "warnings"
+      ],
+      "contract_rules_file": "navigation_unicode_v1.rules.txt"
+    }
   ]
 }

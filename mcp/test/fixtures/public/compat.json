@@ -1,0 +1,46 @@
+{
+  "contract_version": 1,
+  "dataset": "bibliotheca-patristica",
+  "build": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "commit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "indexador": {
+    "version": "v0.8.5",
+    "commit": "028cd943561c546974ad78eefc32e33eb6b5a1a6",
+    "format": 1
+  },
+  "schemas": {
+    "catalog": 1,
+    "metadata": 1,
+    "pages": 2,
+    "search": 2,
+    "indices": 1,
+    "editorial": 3,
+    "scripture": "bibliotheca-scripture-book-shards-v3",
+    "sidecars": "bibliotheca-scripture-docids-v1"
+  },
+  "search": {
+    "path": "indexador/search/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/manifest.json",
+    "indexes": [
+      {
+        "id": "ALL",
+        "path": "all",
+        "build_id": "sha256:e7cdf09e992cb1d725d92c0d6e033dcdc332da7f86390a237b61390b946809a2"
+      }
+    ]
+  },
+  "indices": {
+    "path": "indexador/indices/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/manifest.json",
+    "build_id": "sha256:7517e109bc65375b7d46f965cbee79a2becc102da8d0429082737204f6d5a5b8"
+  },
+  "sidecars": {
+    "path": "indexador/search/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/scripture-docids/manifest.json",
+    "indexes": {
+      "ALL": "sha256:e7cdf09e992cb1d725d92c0d6e033dcdc332da7f86390a237b61390b946809a2"
+    }
+  },
+  "integrity": {
+    "path": "compat/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/integrity.json",
+    "sha256": "707361604101910859286518c5a68f6186c9c3974c3fdee70ee4f55d9336e56f",
+    "bytes": 3143
+  }
+}

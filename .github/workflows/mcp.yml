@@ -1,0 +1,116 @@
+name: Bibliotheca Patristica MCP
+
+on:
+  push:
+    branches: [codex]
+    paths:
+      - 'mcp/**'
+      - 'web/src/scripts/agent-chat-*.js'
+      - 'web/src/scripts/agent-query-strategies.js'
+      - 'web/src/scripts/scripture-*.js'
+      - 'web/public/scripts/ocr-text.mjs'
+      - 'web/public/indexador/runtime/**'
+      - 'web/tests/**'
+      - 'tools/build_*indexador*.mjs'
+      - 'tools/build_scripture_docid_sidecars.py'
+      - 'tools/build_mcp_compat.mjs'
+      - 'tools/json_io.mjs'
+      - 'tools/search_record_policy.mjs'
+      - '.github/workflows/mcp.yml'
+      - '.github/workflows/pages.yml'
+  pull_request:
+    paths:
+      - 'mcp/**'
+      - 'web/src/scripts/agent-chat-*.js'
+      - 'web/src/scripts/agent-query-strategies.js'
+      - 'web/src/scripts/scripture-*.js'
+      - 'web/public/scripts/ocr-text.mjs'
+      - 'web/public/indexador/runtime/**'
+      - 'web/tests/**'
+      - 'tools/build_*indexador*.mjs'
+      - 'tools/build_scripture_docid_sidecars.py'
+      - 'tools/build_mcp_compat.mjs'
+      - 'tools/json_io.mjs'
+      - 'tools/search_record_policy.mjs'
+      - '.github/workflows/mcp.yml'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    if: github.event_name != 'release' || startsWith(github.event.release.tag_name, 'mcp/v')
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: mcp
+    outputs:
+      artifact: ${{ steps.metadata.outputs.artifact }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event_name == 'release' && github.event.release.tag_name || github.sha }}
+      # setup-node v7 requires runner >=2.327.1; GitHub-hosted Ubuntu supplies it.
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: mcp/package-lock.json
+      - name: Check version and identify artifact
+        id: metadata
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          const p = JSON.parse(fs.readFileSync('package.json'));
+          if (process.env.RELEASE_TAG && process.env.RELEASE_TAG !== `mcp/v${p.version}`) throw new Error('Release tag/package version mismatch');
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `artifact=bibliotheca-patristica-mcp-${p.version}-${process.env.GITHUB_RUN_ID}-${process.env.GITHUB_RUN_ATTEMPT}\n`);
+          JS
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npm run build
+      - name: Unit, stdio, offline integration and real WASM tests
+        run: npm test
+      - name: Existing shared site tests
+        run: node --test ../web/tests/*.test.mjs
+      - name: Inspect, pack and checksum
+        run: npm run pack:check
+      - name: Install tarball outside checkout and exercise stdio/WASM
+        run: npm run test:install
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.metadata.outputs.artifact }}
+          path: |
+            mcp/artifacts/*.tgz
+            mcp/artifacts/*.sha256
+            mcp/artifacts/build-manifest.json
+          if-no-files-found: error
+          retention-days: 7
+
+  release-assets:
+    if: github.event_name == 'release' && startsWith(github.event.release.tag_name, 'mcp/v')
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.release.tag_name }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.build.outputs.artifact }}
+          path: mcp/artifacts
+      - name: Verify existing Release and attach tested assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: node mcp/scripts/release.mjs

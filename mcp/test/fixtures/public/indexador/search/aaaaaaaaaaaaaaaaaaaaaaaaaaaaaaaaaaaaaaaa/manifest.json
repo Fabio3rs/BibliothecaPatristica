@@ -1,0 +1,71 @@
+{
+  "schema_version": 2,
+  "engine": "PatrologiaIndexer",
+  "generated_at": "2026-11-03T15:16:04.965Z",
+  "sample": false,
+  "layout": "unified",
+  "config": {
+    "max_terms_per_shard": 5000,
+    "max_bytes_per_shard": 307200,
+    "documents_per_shard": 500,
+    "min_importance": 0,
+    "keep_terms": [
+      "pg",
+      "pl",
+      "po"
+    ],
+    "write_suggestion_wordlists": true,
+    "write_document_locations": true,
+    "keyword_literals": true
+  },
+  "suggestions": {
+    "wordlists": true,
+    "pattern": "words_{shard}.gz",
+    "neighbor_radius": 1
+  },
+  "collections": [
+    "PG"
+  ],
+  "indexes": [
+    {
+      "id": "ALL",
+      "path": "all",
+      "build_id": "sha256:e7cdf09e992cb1d725d92c0d6e033dcdc332da7f86390a237b61390b946809a2",
+      "collections": [
+        "PG"
+      ],
+      "volumes": [
+        "PG001"
+      ],
+      "documents": 3,
+      "skipped_administrative": 0,
+      "terms": 15,
+      "index_shards": 1,
+      "document_shards": 1,
+      "document_locations": {
+        "url": "all/document_locations.bin.gz",
+        "build_id": "sha256:e7cdf09e992cb1d725d92c0d6e033dcdc332da7f86390a237b61390b946809a2",
+        "documents": 3,
+        "volumes": 1,
+        "raw_bytes": 22,
+        "gzip_bytes": 48
+      },
+      "bytes": 557,
+      "config": {
+        "max_terms_per_shard": 5000,
+        "max_bytes_per_shard": 307200,
+        "documents_per_shard": 500,
+        "min_importance": 0,
+        "keep_terms": [
+          "pg",
+          "pl",
+          "po"
+        ],
+        "write_suggestion_wordlists": true,
+        "write_document_locations": true,
+        "keyword_literals": true
+      }
+    }
+  ],
+  "total_documents": 3
+}

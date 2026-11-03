@@ -1,0 +1,21 @@
+diff --git a/wasmsrc/indexador-lib.js b/wasmsrc/indexador-lib.js
+index 4ec9602..6aa61c1 100644
+--- a/wasmsrc/indexador-lib.js
++++ b/wasmsrc/indexador-lib.js
+@@ -206,6 +206,7 @@ export function createIndexador(opts = {}) {
+     const wasmScriptUrl = opts.wasmScriptUrl || 'indexador_wasm.js';
+     const indexMapUrl = opts.indexMapUrl || '/build/index.map';
+     const fetchRoot = opts.fetchRoot || '/build';
++    const fetchImpl = opts.fetchImpl || ((...args) => globalThis.fetch(...args));
+     const wasmModuleLoader = typeof opts.wasmModuleLoader === 'function'
+         ? opts.wasmModuleLoader
+         : null;
+@@ -343,7 +344,7 @@ export function createIndexador(opts = {}) {
+             if (destroyed) throw new Error('Indexador destruído');
+             progress('asset', 'start', { asset: path }, operation);
+             try {
+-                const response = await fetch(url, { cache: 'force-cache' });
++                const response = await fetchImpl(url, { cache: 'force-cache' });
+                 if (!response.ok) {
+                     throw new Error(`HTTP ${response.status}: ${url}`);
+                 }

@@ -61,7 +61,8 @@ def create_campaign(app, config, *, variant='concepts-v2.2-confidence', mode='co
         raise ValueError('Invalid collection')
     with closing(readonly(app.summaries_db)) as con:
         check_schema(con)
-    plan = {'kind': 'corpus', 'version': 'kg-corpus-1', 'config': config,
+    from .validation_dispatch import DEFAULT_POLICY
+    plan = {'kind': 'corpus', 'version': 'kg-corpus-1', 'config': config, 'validation_policy': DEFAULT_POLICY,
             'template': freeze_template(variant, mode), 'facsimile': facsimile,
             'volumes': volumes, 'collections': collections, 'max_pages': max_pages,
             'page_from': page_from, 'page_to': page_to, 'evaluation': evaluation,

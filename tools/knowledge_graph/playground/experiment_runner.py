@@ -13,8 +13,9 @@ from . import VERSION
 from .common import KIT, digest, dumps, read_json
 from .prompt_registry import render
 from .pricing import reference
-from .providers import ProviderError, estimate_cost, normalize_config, request_spec, send
-from .validation import evaluate_response
+from .providers import ProviderError, estimate_cost, normalize_config
+from .ordered_requests import request_spec, send
+from .validation_current import DEFAULT_POLICY, evaluate_response
 
 
 def prepare(case, config, *, variant='concepts-v1', mode='concepts_relations',
@@ -40,7 +41,8 @@ def prepare(case, config, *, variant='concepts-v1', mode='concepts_relations',
     request = request_spec(config, prompt, image)
     prepared = dict(prompt, playground_version=VERSION, config=config, request=request, facsimile_policy=facsimile,
                     facsimile_selected=attached, image_transport_sha256=image['transport_sha256'] if image else None,
-                    warnings=warnings, case_hash=case['snapshot_hash'], pricing_reference=reference(config))
+                    warnings=warnings, case_hash=case['snapshot_hash'], pricing_reference=reference(config),
+                    validation_policy=DEFAULT_POLICY if prompt['schema_version'] == 'kg-navigation-v1' else 'local-quote-v5')
     prepared['input_hash'] = digest({'case_hash': case['snapshot_hash'], 'request': request,
                                      'schema_hash': prompt['schema_hash'], 'config': config,
                                      'ocr_preparation': prompt['ocr_preparation'],
@@ -85,7 +87,7 @@ def plan_experiment(store, cases, configs, *, variants=('concepts-v1',), modes=(
 def execute_run(store, identifier, *, bypass_cache=False, caller=send):
     run = store.get_run(identifier)
     prepared, config = run['prepared'], run['config']
-    if prepared.get('task') == 'stance_review':
+    if prepared.get('task') in ('stance_review', 'statement_review'):
         raise ValueError('Use verify-run for frozen second-pass review requests')
     case = store.get_case(run['case_id'])
     store.start(identifier)
@@ -103,10 +105,20 @@ def execute_run(store, identifier, *, bypass_cache=False, caller=send):
             fixture_path = KIT / 'page-output.demo.json'
             if prepared['schema_version'] == 'kg-extraction-v2':
                 fixture_path = Path(__file__).parent / 'fixtures/page-output.confidence.demo.json'
+            elif prepared['schema_version'] == 'kg-extraction-v3':
+                fixture_path = Path(__file__).parent / 'fixtures/page-output.statements.demo.json'
+            elif prepared['schema_version'] == 'kg-extraction-v3.1':
+                fixture_path = Path(__file__).parent / 'fixtures/page-output.discourse.demo.json'
+            elif prepared['schema_version'] == 'kg-navigation-v1':
+                fixture_path = Path(__file__).parent / 'fixtures/page-output.navigation.demo.json'
             data = read_json(fixture_path)
-            if prepared['mode'] == 'concepts_only':
+            if prepared['mode'] == 'concepts_only' and prepared['schema_version'] == 'kg-navigation-v1':
+                data['arguments'] = []
+            elif prepared['mode'] == 'concepts_only':
                 for key in ('entities', 'claims', 'events', 'relations'):
                     data[key] = []
+                if 'discourse_units' in data:
+                    data['discourse_units'] = []
                 data['evidence'] = [e for e in data['evidence'] if e['id'] == 'ev4']
             result = {'raw_response': dumps(data), 'provider_response': None, 'usage': {},
                       'latency_seconds': time.perf_counter() - started, 'cost_usd': 0,
@@ -127,6 +139,7 @@ def execute_run(store, identifier, *, bypass_cache=False, caller=send):
         message = str(exc) if isinstance(exc, (ProviderError, ValueError)) else type(exc).__name__
         from .providers import redact
         result = {'error': redact(message, config), 'provider_response': getattr(exc, 'response', ''),
+                  'http_response': getattr(exc, 'http_response', None),
                   'raw_response': '', 'usage': {}, 'cost_usd': None, 'attempts': getattr(exc, 'attempts', 0),
                   'latency_seconds': time.perf_counter() - started, 'inference_performed': None,
                   'facsimile_attached': None, 'retry_log': getattr(exc, 'retry_log', [])}

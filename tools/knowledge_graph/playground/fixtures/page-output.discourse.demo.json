@@ -1,0 +1,251 @@
+{
+  "schema_version": "kg-extraction-v3.1",
+  "concepts": [
+    {
+      "id": "c1",
+      "label": "Divindade do Filho",
+      "meaning": "Condição divina do Filho afirmada no argumento",
+      "grounding": "explicit",
+      "salience": "primary",
+      "evidence_ids": [
+        "ev4"
+      ],
+      "model_confidence": {
+        "score": 0.5,
+        "rationale": "Valor sintético para testar armazenamento e interface; não foi estimado por um modelo e não avalia a passagem."
+      }
+    }
+  ],
+  "entities": [
+    {
+      "id": "e1",
+      "type": "PERSON",
+      "label": "Atanásio",
+      "origin": "current_page",
+      "evidence_ids": [
+        "ev1"
+      ],
+      "model_confidence": {
+        "score": 0.5,
+        "rationale": "Valor sintético para testar armazenamento e interface; não foi estimado por um modelo e não avalia a passagem."
+      }
+    },
+    {
+      "id": "e2",
+      "type": "GROUP",
+      "label": "Arianos",
+      "origin": "current_page",
+      "evidence_ids": [
+        "ev2"
+      ],
+      "model_confidence": {
+        "score": 0.5,
+        "rationale": "Valor sintético para testar armazenamento e interface; não foi estimado por um modelo e não avalia a passagem."
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "p1",
+      "proposition": "O Filho é uma criatura",
+      "mode": "reported",
+      "evidence_ids": [
+        "ev3"
+      ],
+      "model_confidence": {
+        "score": 0.5,
+        "rationale": "Valor sintético para testar armazenamento e interface; não foi estimado por um modelo e não avalia a passagem."
+      },
+      "attributions": [
+        {
+          "entity_id": "e1",
+          "stance": "REFUTES",
+          "scope": "direct",
+          "evidence_ids": [
+            "ev5",
+            "ev8"
+          ]
+        },
+        {
+          "entity_id": "e2",
+          "stance": "AFFIRMS",
+          "scope": "reported",
+          "evidence_ids": [
+            "ev6"
+          ]
+        }
+      ],
+      "participants": [],
+      "discourse_unit_id": "u2"
+    },
+    {
+      "id": "p2",
+      "proposition": "O Filho possui plena divindade",
+      "mode": "asserted",
+      "evidence_ids": [
+        "ev4"
+      ],
+      "model_confidence": {
+        "score": 0.5,
+        "rationale": "Valor sintético para testar armazenamento e interface; não foi estimado por um modelo e não avalia a passagem."
+      },
+      "attributions": [
+        {
+          "entity_id": "e1",
+          "stance": "AFFIRMS",
+          "scope": "direct",
+          "evidence_ids": [
+            "ev7"
+          ]
+        }
+      ],
+      "participants": [],
+      "discourse_unit_id": "u1"
+    }
+  ],
+  "events": [
+    {
+      "id": "v1",
+      "description": "Atanásio refuta a tese atribuída aos arianos.",
+      "discourse_unit_id": "u1",
+      "claim_ids": [],
+      "action": "REFUTE",
+      "trigger": {
+        "evidence_id": "ev8",
+        "text": "refutat"
+      },
+      "modality": "narrated",
+      "condition_anchor": null,
+      "arguments": [
+        {
+          "role": "agent",
+          "node_id": "e1",
+          "mention": {
+            "evidence_id": "ev8",
+            "text": "Athanasius"
+          },
+          "antecedent": null,
+          "evidence_ids": [
+            "ev8"
+          ]
+        },
+        {
+          "role": "opponent",
+          "node_id": "e2",
+          "mention": {
+            "evidence_id": "ev8",
+            "text": "eorum"
+          },
+          "antecedent": {
+            "evidence_id": "ev6",
+            "text": "arianos"
+          },
+          "evidence_ids": [
+            "ev8",
+            "ev6"
+          ]
+        },
+        {
+          "role": "content",
+          "node_id": "p1",
+          "mention": {
+            "evidence_id": "ev8",
+            "text": "Filium creaturam esse"
+          },
+          "antecedent": null,
+          "evidence_ids": [
+            "ev8"
+          ]
+        }
+      ],
+      "time_expression": null,
+      "evidence_ids": [
+        "ev8",
+        "ev6"
+      ],
+      "model_confidence": {
+        "score": 0.5,
+        "rationale": "Valor sintético para testar armazenamento e interface; não foi estimado por um modelo e não avalia a passagem."
+      }
+    }
+  ],
+  "relations": [],
+  "evidence": [
+    {
+      "id": "ev1",
+      "source": "summary_segment",
+      "locator": "s1",
+      "quote": "Atanásio"
+    },
+    {
+      "id": "ev2",
+      "source": "summary_segment",
+      "locator": "s1",
+      "quote": "arianos"
+    },
+    {
+      "id": "ev3",
+      "source": "summary_segment",
+      "locator": "s1",
+      "quote": "o Filho é uma criatura"
+    },
+    {
+      "id": "ev4",
+      "source": "summary_segment",
+      "locator": "s1",
+      "quote": "plena divindade do Filho"
+    },
+    {
+      "id": "ev5",
+      "source": "summary_segment",
+      "locator": "s1",
+      "quote": "Atanásio contesta a tese atribuída aos arianos de que o Filho é uma criatura"
+    },
+    {
+      "id": "ev6",
+      "source": "summary_segment",
+      "locator": "s1",
+      "quote": "tese atribuída aos arianos de que o Filho é uma criatura"
+    },
+    {
+      "id": "ev7",
+      "source": "summary_segment",
+      "locator": "s1",
+      "quote": "afirma a plena divindade do Filho"
+    },
+    {
+      "id": "ev8",
+      "source": "ocr_block",
+      "locator": "b1",
+      "quote": "Athanasius refutat sententiam eorum qui Filium creaturam esse dicunt."
+    }
+  ],
+  "warnings": [
+    {
+      "code": "OTHER",
+      "message": "Demonstração sintética: todas as notas de confiança são valores de teste, não avaliações de um modelo."
+    }
+  ],
+  "discourse_units": [
+    {
+      "id": "u1",
+      "kind": "narration",
+      "speaker_id": "e1",
+      "parent_unit_id": null,
+      "evidence_ids": [
+        "ev5",
+        "ev7",
+        "ev8"
+      ]
+    },
+    {
+      "id": "u2",
+      "kind": "reported_speech",
+      "speaker_id": "e2",
+      "parent_unit_id": "u1",
+      "evidence_ids": [
+        "ev6"
+      ]
+    }
+  ]
+}

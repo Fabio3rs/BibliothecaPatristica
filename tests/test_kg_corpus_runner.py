@@ -113,6 +113,21 @@ def test_holdout_exclusion_and_ambiguous_current(app):
     assert discover(app.store, campaign)['ambiguous_current'] == 1
 
 
+@pytest.mark.parametrize('historical', [True, False])
+def test_campaign_freezes_validation_policy_including_legacy_default(app, fake_api, historical):
+    campaign = create_campaign(app, fake_api[0])
+    plan = app.store.experiment_plan(campaign)
+    assert plan['validation_policy'] == 'local-quote-v5'
+    if historical:
+        plan.pop('validation_policy')
+        with app.store.connect() as con:
+            con.execute('UPDATE experiments SET plan_json=? WHERE id=?', (dumps(plan), campaign))
+    assert run_campaign(app.store, campaign)['states'] == {'completed': 1}
+    run = app.store.get_run(app.store.list_runs(campaign)[0]['id'])
+    assert run['prepared']['validation_policy'] == ('local-quote-v2' if historical else 'local-quote-v5')
+    assert run['validation']['matching_policy'] == run['prepared']['validation_policy']
+
+
 def test_discovery_crosses_volume_boundaries_without_offset_or_duplicates(app):
     add_generation(app, 2, page=72)
     add_generation(app, 3, page=1, volume='PL001')

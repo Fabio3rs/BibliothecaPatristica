@@ -1,0 +1,592 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Experimental discourse units and anchored actions v3.1",
+  "description": "Experimental page-local statements: distinguish stance towards a proposition from participation in its content. Confidence is uncalibrated; no global IDs. Derived edges are application-owned and never part of the model response.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "kg-extraction-v3.1"
+    },
+    "discourse_units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "narration",
+              "quotation",
+              "reported_speech",
+              "editorial",
+              "uncertain"
+            ]
+          },
+          "speaker_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "parent_unit_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "speaker_id",
+          "parent_unit_id",
+          "evidence_ids"
+        ]
+      }
+    },
+    "entities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "PERSON",
+              "GROUP",
+              "INSTITUTION",
+              "WORK",
+              "PLACE",
+              "SOURCE_REFERENCE",
+              "OTHER"
+            ]
+          },
+          "label": {
+            "type": "string"
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "current_page",
+              "bibliographic_context"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "model_confidence": {
+            "$ref": "#/$defs/model_confidence"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "label",
+          "origin",
+          "evidence_ids",
+          "model_confidence"
+        ]
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "proposition": {
+            "type": "string"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "asserted",
+              "reported",
+              "hypothetical",
+              "questioned",
+              "uncertain",
+              "conditional"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "model_confidence": {
+            "$ref": "#/$defs/model_confidence"
+          },
+          "attributions": {
+            "type": "array",
+            "description": "Actors and their stances toward the exact proposition; never infer these from participants. Empty if unresolved.",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "entity_id": {
+                  "type": "string"
+                },
+                "stance": {
+                  "type": "string",
+                  "enum": [
+                    "AFFIRMS",
+                    "DEFENDS",
+                    "REFUTES",
+                    "REPORTS",
+                    "QUESTIONS"
+                  ]
+                },
+                "scope": {
+                  "type": "string",
+                  "enum": [
+                    "direct",
+                    "reported",
+                    "hypothetical",
+                    "conditional",
+                    "uncertain"
+                  ]
+                },
+                "evidence_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "entity_id",
+                "stance",
+                "scope",
+                "evidence_ids"
+              ]
+            }
+          },
+          "participants": {
+            "type": "array",
+            "description": "Non-action subjects and cited authorities only. Action roles belong to events.arguments.",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "entity_id": {
+                  "type": "string"
+                },
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "cited_authority",
+                    "subject"
+                  ]
+                },
+                "evidence_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "entity_id",
+                "role",
+                "evidence_ids"
+              ]
+            }
+          },
+          "discourse_unit_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "proposition",
+          "mode",
+          "evidence_ids",
+          "model_confidence",
+          "attributions",
+          "participants",
+          "discourse_unit_id"
+        ]
+      }
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "discourse_unit_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "claim_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "action": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]*$"
+          },
+          "trigger": {
+            "$ref": "#/$defs/anchor"
+          },
+          "modality": {
+            "type": "string",
+            "enum": [
+              "narrated",
+              "hypothetical",
+              "conditional",
+              "uncertain"
+            ]
+          },
+          "condition_anchor": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/anchor"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "arguments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "agent",
+                    "opponent",
+                    "recipient",
+                    "content",
+                    "theme",
+                    "instrument",
+                    "location",
+                    "other"
+                  ]
+                },
+                "node_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "mention": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/$defs/anchor"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "antecedent": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/$defs/anchor"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "evidence_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "role",
+                "node_id",
+                "mention",
+                "antecedent",
+                "evidence_ids"
+              ]
+            }
+          },
+          "time_expression": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "model_confidence": {
+            "$ref": "#/$defs/model_confidence"
+          }
+        },
+        "required": [
+          "id",
+          "description",
+          "discourse_unit_id",
+          "claim_ids",
+          "action",
+          "trigger",
+          "modality",
+          "condition_anchor",
+          "arguments",
+          "time_expression",
+          "evidence_ids",
+          "model_confidence"
+        ]
+      }
+    },
+    "concepts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "meaning": {
+            "type": "string"
+          },
+          "grounding": {
+            "type": "string",
+            "enum": [
+              "explicit",
+              "inferred"
+            ]
+          },
+          "salience": {
+            "type": "string",
+            "enum": [
+              "primary",
+              "secondary",
+              "incidental"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "model_confidence": {
+            "$ref": "#/$defs/model_confidence"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "meaning",
+          "grounding",
+          "salience",
+          "evidence_ids",
+          "model_confidence"
+        ]
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "source_id": {
+            "type": "string"
+          },
+          "predicate": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]*$"
+          },
+          "target_id": {
+            "type": "string"
+          },
+          "grounding": {
+            "type": "string",
+            "enum": [
+              "explicit",
+              "inferred"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "model_confidence": {
+            "$ref": "#/$defs/model_confidence"
+          }
+        },
+        "required": [
+          "id",
+          "source_id",
+          "predicate",
+          "target_id",
+          "grounding",
+          "evidence_ids",
+          "model_confidence"
+        ]
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "ocr_block",
+              "summary_segment"
+            ]
+          },
+          "locator": {
+            "type": "string"
+          },
+          "quote": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "source",
+          "locator",
+          "quote"
+        ]
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OCR_AMBIGUITY",
+              "SOURCE_CONFLICT",
+              "AMBIGUOUS_ATTRIBUTION",
+              "WORK_BOUNDARY",
+              "OTHER"
+            ]
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "discourse_units",
+    "entities",
+    "claims",
+    "events",
+    "concepts",
+    "relations",
+    "evidence",
+    "warnings"
+  ],
+  "$defs": {
+    "model_confidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Model-estimated probability that this entire item faithfully represents its cited sources, including attribution and modality. Uncalibrated."
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400,
+          "description": "One short sentence about decisive source support and any material uncertainty; not a reasoning trace."
+        }
+      },
+      "required": [
+        "score",
+        "rationale"
+      ]
+    },
+    "anchor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "evidence_id": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "evidence_id",
+        "text"
+      ]
+    }
+  }
+}

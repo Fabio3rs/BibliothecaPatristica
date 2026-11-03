@@ -338,8 +338,8 @@
         <section id="tab-extraction" class="tab">
           <div class="section-title">
             <h2>Extração da página</h2>
-            <button id="revalidate" class="secondary" disabled>
-              Revalidar
+            <button id="revalidate" class="secondary" title="Anexa uma validação de localização tolerante; preserva a resposta e as validações anteriores. Não chama o modelo." disabled>
+              Revalidar citações (v5)
             </button>
           </div>
           <div id="run-summary" class="metrics"></div>
@@ -348,7 +348,7 @@
             Execute um modelo ou abra um resultado do histórico.
           </div>
           <div class="graph-toolbar">
-            <strong>Grafo local</strong
+            <strong id="graph-title">Grafo local</strong
             ><label for="graph-filter">Filtrar nós</label
             ><input id="graph-filter" placeholder="Nome ou conceito" /><button
               id="zoom-in"
@@ -360,11 +360,11 @@
               −</button
             ><button id="graph-reset" class="secondary">Ajustar</button>
           </div>
-          <div class="legend">
+          <div class="legend" id="graph-legend">
             <span class="concept">Conceito</span
             ><span class="entity">Entidade</span
             ><span class="claim">Proposição</span
-            ><span class="event">Evento</span>
+            ><span class="event">Evento</span><span class="discourse">Unidade discursiva</span><span class="claim" data-navigation="true" hidden>Argumento</span>
           </div>
           <svg
             id="graph"
@@ -372,9 +372,9 @@
             aria-label="Grafo de conceitos e relações; selecione nós e predicados"
             tabindex="0"
           ></svg>
-          <p class="muted small">
-            Arraste para mover; use a roda para zoom. Somente relações presentes
-            no JSON são desenhadas.
+          <p class="muted small" id="graph-caption">
+            Arraste para mover; use a roda para zoom. Conexões vêm das relações
+            ou dos papéis explicitamente registrados no JSON.
           </p>
           <div class="result-grid">
             <div id="extraction-list" class="stack"></div>

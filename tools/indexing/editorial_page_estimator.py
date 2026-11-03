@@ -650,6 +650,46 @@ def _apply_override(
     item.add(20.0, "override_rule", override.get("note") or "sqlite override")
 
 
+def _sequence_validation(observations, index, pages, *, window=16, anchors_per_side=2):
+    """Validate a guess against independent observed headers on both sides."""
+    rejected = {"validated": False}
+    if len(pages) != 2 or pages[1] != pages[0] + 1:
+        return rejected
+    buckets = defaultdict(dict)
+    for neighbor in range(max(0, index - window), min(len(observations), index + window + 1)):
+        if neighbor == index:
+            continue
+        obs = observations[neighbor]
+        for left, right in obs.header_pairs:
+            if right == left + 1:
+                buckets[left - 2 * neighbor][neighbor] = (left, right)
+    supported = {}
+    for offset, members in buckets.items():
+        before = sorted((i for i in members if i < index), reverse=True)
+        after = sorted(i for i in members if i > index)
+        if len(before) >= anchors_per_side and len(after) >= anchors_per_side:
+            supported[offset] = sorted(before[:anchors_per_side] + after[:anchors_per_side])
+    expected_offset = pages[0] - 2 * index
+    if len(supported) != 1 or expected_offset not in supported:
+        return rejected
+    selected = supported[expected_offset]
+    lower, upper = selected[0], selected[-1]
+    # A gap in physical files invalidates arithmetic based on list positions.
+    sequences = [obs.file_seq for obs in observations[lower:upper + 1]]
+    if any(a is None or b is None or b != a + 1 for a, b in zip(sequences, sequences[1:])):
+        return rejected
+    if any(offset != expected_offset and sum(lower <= i <= upper for i in members) >= 2
+           for offset, members in buckets.items()):
+        return rejected
+    return {
+        "validated": True, "method": "bracketed_header_sequence", "pages": list(pages),
+        "window": window, "anchors_per_side": anchors_per_side,
+        "anchors": [{"file": str(observations[i].path), "file_seq": observations[i].file_seq,
+                     "delta": index - i, "observed_pages": list(buckets[expected_offset][i]),
+                     "header_text": observations[i].header_text} for i in selected],
+    }
+
+
 def _finalize_file_result(obs: FileObservation, hypotheses: dict[tuple[int, ...], Hypothesis]) -> dict[str, Any]:
     items = sorted(hypotheses.values(), key=lambda item: (-item.score, item.pages))
     if not items:
@@ -853,6 +893,10 @@ def estimate_editorial_pages(
         _finalize_file_result(obs, hypotheses)
         for obs, hypotheses in zip(observations, all_hypotheses)
     ]
+    for index, item in enumerate(file_results):
+        item["sequence_validation"] = _sequence_validation(
+            observations, index, best_guess_pages(item["best_guess"])
+        )
 
     summary_counts = defaultdict(int)
     for item in file_results:

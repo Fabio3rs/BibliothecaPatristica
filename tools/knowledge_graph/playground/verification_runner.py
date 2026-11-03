@@ -28,7 +28,10 @@ def execute_review(store, identifier, *, caller=send):
         result = caller(config, p['request'])
         result.update(cost_usd=estimate_cost(result['usage'], config['prices']),
                       inference_performed=True, facsimile_attached=p['facsimile_selected'])
-        validation = evaluate_review(case['snapshot'], result, p)
+        evaluator = evaluate_review
+        if p.get('task') == 'statement_review':
+            from .statement_review_contract import evaluate_review as evaluator
+        validation = evaluator(case['snapshot'], result, p)
         result['parsed_json'] = validation['parsed']
         result['derived_extraction'] = validation['derived_extraction']
         result['semantic_status'] = 'pending_independent_review'
@@ -38,6 +41,7 @@ def execute_review(store, identifier, *, caller=send):
         # If local validation fails unexpectedly, retain the received raw response and its usage.
         result = result or {'raw_response': '', 'usage': {}, 'cost_usd': None,
                             'provider_response': getattr(exc, 'response', ''),
+                            'http_response': getattr(exc, 'http_response', None),
                             'attempts': getattr(exc, 'attempts', 0), 'retry_log': getattr(exc, 'retry_log', []),
                             'latency_seconds': time.perf_counter() - started, 'inference_performed': None}
         result['error'] = redact(message, config)
@@ -71,17 +75,25 @@ def execute_verification(store, experiment, *, concurrency=2, max_calls=None, re
     plan = store.experiment_plan(experiment)
     if plan.get('kind') != 'verification':
         raise ValueError('verify-run requires a prepared verification experiment')
-    if plan['policy'] != verification_policy():
+    statement_study = plan.get('study') == 'statement-boundaries-v1'
+    expected_policy, checker = verification_policy(), check_prepared
+    if statement_study:
+        from .statement_review_study import policy, check_schedule, check_prepared as checker
+        expected_policy = policy()
+        check_schedule(plan)
+    if plan['policy'] != expected_policy:
         raise ValueError('Frozen validation implementation changed; prepare a new experiment')
     tasks = plan['schedule']
-    if (len(tasks) != plan['size'] or plan['size'] != 24 or len(set(plan['pages'])) != 12
+    if not statement_study and (len(tasks) != plan['size'] or plan['size'] != 24 or len(set(plan['pages'])) != 12
             or {t['schedule_index'] for t in tasks} != set(range(24))
             or len({t['source_run_id'] for t in tasks}) != 24
             or Counter(t['page'] for t in tasks) != dict.fromkeys(plan['pages'], 2)):
         raise ValueError('Invalid frozen verification schedule')
-    if digest(store.experiment_plan(plan['source_experiment'])) != plan['source_plan_hash']:
-        raise ValueError('Source experiment plan changed')
-    by_source = {t['source_run_id']: t for t in tasks}
+    sources = plan['source_plans'] if statement_study else {plan['source_experiment']: plan['source_plan_hash']}
+    for source, frozen_hash in sources.items():
+        if digest(store.experiment_plan(source)) != frozen_hash:
+            raise ValueError('Source experiment plan changed')
+    by_source = {(t['source_run_id'], t['repetition']): t for t in tasks}
     lock_dir = store.path.parent / (store.path.stem + '_locks')
     lock_dir.mkdir(exist_ok=True)
     stop = stop_event or threading.Event()
@@ -97,10 +109,10 @@ def execute_verification(store, experiment, *, concurrency=2, max_calls=None, re
         for row in rows:
             if row['status'] in ('planned', 'running', 'interrupted'):
                 run = store.get_run(row['id'])
-                source_id = run['prepared'].get('source_run_id')
-                if source_id not in by_source:
+                key = (run['prepared'].get('source_run_id'), run['repetition'])
+                if key not in by_source:
                     raise ValueError('Unknown source run in prepared task')
-                check_prepared(store, run, plan, by_source[source_id])
+                checker(store, run, plan, by_source[key])
         retried = store.retried_runs(experiment)
         for row in rows:
             if row['status'] == 'running':
@@ -115,7 +127,7 @@ def execute_verification(store, experiment, *, concurrency=2, max_calls=None, re
         for row in store.list_runs(experiment):
             if row['status'] == 'planned':
                 p = store.get_run(row['id'])['prepared']
-                pending.append((by_source[p['source_run_id']]['schedule_index'], row['id']))
+                pending.append((by_source[p['source_run_id'], row['repetition']]['schedule_index'], row['id']))
         pending.sort()
         if max_calls is not None:
             pending = pending[:max_calls]

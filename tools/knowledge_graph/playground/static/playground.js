@@ -223,6 +223,28 @@ function addCase(c, replace = false) {
 function highlighted(target, text, focus) {
   target.replaceChildren();
   const match = focus?.match;
+  if (match?.position_resolved === false) {
+    target.textContent = text;
+    return;
+  }
+  if (match?.accepted && match.segments?.length) {
+    const chars = Array.from(text);
+    let cursor = 0;
+    const pieces = [];
+    for (const segment of match.segments) {
+      if (!Number.isInteger(segment.start) || !Number.isInteger(segment.end) ||
+          segment.start < cursor || segment.end < segment.start ||
+          chars.slice(segment.start, segment.end).join("") !== segment.matched_quote) {
+        target.textContent = text;
+        return;
+      }
+      pieces.push(document.createTextNode(chars.slice(cursor, segment.start).join("")),
+        el("mark", segment.matched_quote));
+      cursor = segment.end;
+    }
+    target.append(...pieces, document.createTextNode(chars.slice(cursor).join("")));
+    return;
+  }
   if (
     match?.accepted &&
     Number.isInteger(match.start) &&
@@ -459,12 +481,13 @@ function showPreview(index) {
   if (!item) return;
   const p = item.prepared;
   $("system-prompt").textContent = p.system_prompt;
-  $("user-payload").textContent = json(p.user_payload);
+  $("user-payload").textContent = json(JSON.parse(p.user_prompt));
   $("request-config").textContent = json({
     config: p.config,
     pricing_reference: p.pricing_reference,
     schema: p.schema,
     request_endpoint: p.request.url,
+    request_presentation: p.request.presentation,
     image_transport_sha256: p.image_transport_sha256,
   });
   $("prompt-meta").replaceChildren(
@@ -556,7 +579,14 @@ async function poll(exp) {
   $("execute").disabled = true;
 }
 function extraction() {
-  return state.currentRun?.validation?.parsed;
+  const v = state.currentRun?.validation;
+  if (!v?.graph_projection) return v?.parsed;
+  return { ...v.parsed, relations: [...v.parsed.relations, ...v.graph_projection.relations] };
+}
+function relationLabel(obj) {
+  return obj.derived_from
+    ? `${obj.predicate} [${[obj.scope, obj.claim_mode && `conteúdo ${obj.claim_mode}`, obj.action].filter(Boolean).join("; ")}]`
+    : obj.predicate;
 }
 function canInspectGraph() {
   const v = state.currentRun?.validation;
@@ -571,6 +601,12 @@ async function openRun(id) {
   const run = await api({ path: "/api/run", params: { id } });
   const c = await api({ path: "/api/case", params: { id: run.case_id } });
   state.currentRun = run;
+  invalidate();
+  state.previews = [{ run_id: run.id, prepared: run.prepared }];
+  const option = el("option", `Run ${run.id} · ${run.prepared.variant.id} · prompt arquivado`);
+  option.value = "0";
+  $("preview-run").replaceChildren(option);
+  showPreview(0);
   displaySource(c);
   const v = run.validation,
     r = run.result || {};
@@ -615,11 +651,14 @@ async function openRun(id) {
       $("validation").append(
         el(
           "p",
-          `${counts.exact} exatas · ${counts.normalized + counts.fuzzy} aproximadas · ${counts.ambiguous} ambíguas · ${counts.not_found + counts.unknown_locator} não localizadas. ${v.version}. Localizar uma citação não confirma sua interpretação.`,
+          `${counts.exact || 0} exatas · ${(counts.normalized || 0) + (counts.fuzzy || 0) + (counts.note_marker || 0)} aproximadas · ${counts.segmented || 0} descontínuas · ${counts.ambiguous || 0} posições ambíguas · ${counts.review_only || 0} para revisão · ${(counts.not_found || 0) + (counts.unknown_locator || 0)} não localizadas. ${v.version}. Localização não confirma fidelidade da citação nem interpretação.`,
           "muted small",
         ),
       );
     }
+    if (v.graph_projection)
+      $("validation").append(el("p",
+        `${v.graph_projection.relations.length} conexões derivadas dos campos explícitos do resultado. A modalidade acompanha cada vínculo; a projeção não confirma sua interpretação.`, "muted small"));
     if (run.status === "invalid" && v.valid)
       $("validation").append(
         el(
@@ -674,7 +713,8 @@ async function openRun(id) {
   renderReviews();
   tab("extraction");
 }
-const nameOf = (o) => o.label || o.proposition || o.description || o.id;
+const nameOf = (o) => o.label || o.proposition || o.description || o.text ||
+  (o.kind ? `${o.kind} · ${o.speaker_id ? nodeName(o.speaker_id) : "voz não resolvida"}` : o.id);
 function confidenceLabel(obj) {
   const score = obj.model_confidence?.score;
   return typeof score === "number" && Number.isFinite(score)
@@ -690,24 +730,28 @@ function renderExtraction() {
     return;
   }
   const names = {
+    discourse_units: "Unidades discursivas",
     concepts: "Conceitos",
+    arguments: "Argumentos",
     entities: "Entidades",
     claims: "Proposições",
     events: "Eventos",
     relations: "Relações",
     warnings: "Avisos",
   };
-  for (const group of Object.keys(names)) {
+  const groups = data.schema_version === "kg-navigation-v1"
+    ? ["concepts", "arguments", "warnings"] : Object.keys(names).filter((g) => g !== "arguments");
+  for (const group of groups) {
     const section = el("section");
-    section.append(el("h3", names[group] + " · " + data[group].length));
-    for (const obj of data[group]) {
+    section.append(el("h3", names[group] + " · " + (data[group] || []).length));
+    for (const obj of data[group] || []) {
       if (group === "warnings") {
         section.append(el("div", obj.code + ": " + obj.message, "warning"));
         continue;
       }
       const label =
         group === "relations"
-          ? `${nodeName(obj.source_id)} → ${obj.predicate} → ${nodeName(obj.target_id)}`
+          ? `${nodeName(obj.source_id)} → ${relationLabel(obj)} → ${nodeName(obj.target_id)}`
           : nameOf(obj);
       const btn = el("button", label, "item-button");
       btn.append(
@@ -715,7 +759,7 @@ function renderExtraction() {
           "small",
           group === "relations"
             ? obj.id
-            : `${obj.id} · ${obj.meaning || obj.type || obj.mode || obj.narrative_status || ""}`,
+            : `${obj.id} · ${obj.meaning || obj.type || obj.mode || obj.modality || obj.narrative_status || obj.kind || ""}`,
         ),
       );
       if (obj.model_confidence) btn.append(el("small", confidenceLabel(obj)));
@@ -727,15 +771,11 @@ function renderExtraction() {
 }
 function nodeName(id) {
   const d = extraction();
-  return (
-    ["concepts", "entities", "claims", "events"]
-      .flatMap((k) => d[k])
-      .find((o) => o.id === id)?.label ||
-    ["claims", "events"].flatMap((k) => d[k]).find((o) => o.id === id)
-      ?.proposition ||
-    id
-  );
+  const obj = ["concepts", "arguments", "entities", "claims", "events", "discourse_units"]
+    .flatMap((k) => d[k] || []).find((o) => o.id === id);
+  return obj ? nameOf(obj) : id;
 }
+
 function selectObject(obj) {
   document.querySelectorAll("#graph [data-object-id]").forEach((node) => {
     node.classList.toggle("selected", node.dataset.objectId === obj.id);
@@ -743,19 +783,62 @@ function selectObject(obj) {
   const conflict = state.currentRun.validation.id_conflicts?.some(
     (c) => c.id === obj.id,
   );
-  const group = ["concepts", "entities", "claims", "events", "relations"].find(
-    (k) => extraction()[k].includes(obj),
+  const group = ["concepts", "arguments", "entities", "claims", "events", "discourse_units", "relations"].find(
+    (k) => (extraction()[k] || []).includes(obj),
   );
   $("review-target").value = conflict && group ? `${group}/${obj.id}` : obj.id;
   $("object-detail").replaceChildren(
     el(
       "strong",
       obj.predicate
-        ? `${nodeName(obj.source_id)} → ${obj.predicate} → ${nodeName(obj.target_id)}`
+        ? `${nodeName(obj.source_id)} → ${relationLabel(obj)} → ${nodeName(obj.target_id)}`
         : nameOf(obj),
     ),
   );
-  $("object-detail").append(el("p", confidenceLabel(obj), "small"));
+  if (extraction().schema_version !== "kg-navigation-v1") $("object-detail").append(el("p", obj.derived_from
+    ? "Conexão derivada: sem estimativa de confiança independente."
+    : confidenceLabel(obj), "small"));
+  if (obj.derived_from)
+    $("object-detail").append(el("p",
+      `Conexão derivada de ${obj.derived_from.object_id || obj.derived_from.claim_id}.${obj.derived_from.field}[${obj.derived_from.index}]. Escopo: ${obj.scope || "—"}; conteúdo: ${obj.claim_mode || "—"}; ação: ${obj.action || "—"}; modalidade: ${obj.event_modality || "—"}. Nenhuma postura foi inferida do papel de participante.`, "muted small"));
+  for (const id of obj.concept_ids || []) {
+    const concept = (extraction().concepts || []).find((c) => c.id === id);
+    const button = el("button", "Assunto: " + nodeName(id), "item-button");
+    button.onclick = () => concept && selectObject(concept);
+    $("object-detail").append(button);
+  }
+  if (obj.attributions || obj.participants) {
+    for (const attribution of obj.attributions || [])
+      $("object-detail").append(el("p", `${nodeName(attribution.entity_id)} · ${attribution.stance} · ${attribution.scope}`));
+    for (const participant of obj.participants || [])
+      $("object-detail").append(el("p", `${nodeName(participant.entity_id)} · papel: ${participant.role}`));
+  }
+  if (obj.kind) {
+    $("object-detail").append(el("p", `Voz: ${obj.speaker_id ? nodeName(obj.speaker_id) : "não resolvida"}; introduzida por: ${obj.parent_unit_id ? nodeName(obj.parent_unit_id) : "—"}. Voz não equivale a endosso.`));
+  }
+  if (obj.discourse_unit_id)
+    $("object-detail").append(el("p", `Unidade discursiva: ${nodeName(obj.discourse_unit_id)}`));
+  if (obj.action && obj.arguments) {
+    $("object-detail").append(el("p", `Ação: ${obj.action}; modalidade: ${obj.modality}; expressão: ${obj.trigger.text}`));
+    for (const arg of obj.arguments)
+      $("object-detail").append(el("p", `${arg.role}: ${arg.node_id ? nodeName(arg.node_id) : "referente não resolvido"} · expressão: ${arg.mention?.text || "implícita"} · antecedente: ${arg.antecedent?.text || "—"}`));
+  }
+  const anchorOwner = obj.derived_from?.object_id || obj.id;
+  const anchors = (state.currentRun.validation.anchor_matches || []).filter((a) => a.path.startsWith(`events/${anchorOwner}/`));
+  for (const anchor of anchors) {
+    const card = el("div", undefined, "card");
+    card.append(el("p", `${anchor.path}: ${anchor.text} · ${anchor.accepted ? (anchor.position_resolved ? "localizada" : "posição ambígua") : "não localizada"}`));
+    const positions = anchor.position_resolved ? [anchor] : anchor.candidates;
+    for (const [i, position] of (positions || []).entries()) {
+      const button = el("button", `Localizar expressão ${i + 1} · ${position.locator}`, "secondary");
+      button.onclick = () => displaySource(state.currentCase, {
+        source: anchor.source, locator: position.locator, quote: anchor.text,
+        match: { ...position, accepted: true, position_resolved: true },
+      });
+      card.append(button);
+    }
+    $("object-detail").append(card);
+  }
   if (obj.model_confidence) {
     $("object-detail").append(
       el("p", obj.model_confidence.rationale),
@@ -769,7 +852,13 @@ function selectObject(obj) {
   $("object-detail").append(el("pre", json(obj)));
   $("evidence-detail").replaceChildren();
   const data = extraction();
-  for (const id of obj.evidence_ids || []) {
+  const evidenceIds = [...new Set([
+    ...(obj.evidence_ids || []),
+    ...(obj.attributions || []).flatMap((item) => item.evidence_ids),
+    ...(obj.participants || []).flatMap((item) => item.evidence_ids),
+    ...(obj.arguments || []).flatMap((item) => item.evidence_ids),
+  ])];
+  for (const id of evidenceIds) {
     const ev = data.evidence.find((e) => e.id === id);
     if (!ev) continue;
     const card = el("div", undefined, "card evidence-card");
@@ -785,36 +874,75 @@ function selectObject(obj) {
       (m) => m.evidence_id === id,
     );
     const located = match ? match.accepted : exact;
-    const label =
-      match?.accepted && match.method !== "exact"
+    const label = match?.method === "segmented"
+      ? `localizada · ${match.segments.length} fragmentos separados`
+      : match?.method === "ambiguous"
+      ? (located ? "localizada · posição ambígua" : "LOCALIZAÇÃO AMBÍGUA")
+      : match?.accepted && match.method !== "exact"
         ? match.method === "normalized"
           ? "aproximada · acentos ou tipografia"
           : `aproximada · similaridade textual ${(match.score * 100).toFixed(1)}%`
-        : exact
+        : exact || match?.method === "exact"
           ? "exata"
-          : match?.method === "ambiguous"
-            ? "LOCALIZAÇÃO AMBÍGUA"
-            : "NÃO LOCALIZADA";
+          : "NÃO LOCALIZADA";
     card.append(
       el("div", `${id} · ${ev.source}:${ev.locator} · ${label}`, "card-top"),
       el("div", "Citação do modelo", "muted small"),
       el("blockquote", ev.quote),
     );
-    if (match?.accepted && match.method !== "exact")
+    if (match?.accepted && match.position_resolved && match.segments?.length) {
+      card.append(el("p", "Citação descontínua: os intervalos omitidos não estão sendo citados. Confira se a omissão preserva o sentido.", "muted small"));
+      for (const [index, segment] of match.segments.entries())
+        card.append(el("div", `Fragmento ${index + 1} · ${segment.start}–${segment.end}`, "muted small"),
+          el("blockquote", segment.matched_quote));
+    } else if (match?.accepted && match.position_resolved && match.method !== "exact")
       card.append(
         el("div", "Trecho encontrado na fonte", "muted small"),
         el("blockquote", match.matched_quote),
       );
+    if (match?.resolved_locator && match.resolved_locator !== ev.locator)
+      card.append(el("p", `Trecho encontrado em ${match.resolved_locator}; o modelo indicou ${ev.locator}.`, "warning"));
+    if (match && (match.edit_operations?.length || match.diagnostics?.length || match.ignored_note_markers?.length)) {
+      const details = el("details");
+      details.append(
+        el("summary", "Diferenças e diagnóstico da localização"),
+        el("p", "O texto foi localizado. Alterações em palavras, negações ou números ainda precisam de revisão; a interpretação não foi validada.", "muted small"),
+        el("pre", json({
+          edit_operations: match.edit_operations,
+          ignored_note_markers: match.ignored_note_markers,
+          diagnostics: match.diagnostics,
+          segments: match.segments,
+          omitted_spans: match.omitted_spans,
+        })),
+      );
+      card.append(details);
+    }
+    if (match?.method === "ambiguous") {
+      card.append(el("p", "Há mais de uma ocorrência possível. Escolha uma para destacar; nenhuma posição foi atribuída automaticamente.", "muted small"));
+      for (const [index, candidate] of (match.candidates || []).entries()) {
+        const locator = candidate.locator || ev.locator;
+        if (candidate.segments?.length) {
+          for (const segment of candidate.segments) card.append(el("blockquote", segment.matched_quote));
+        } else card.append(el("blockquote", candidate.matched_quote));
+        const occurrence = el("button", `Ocorrência ${index + 1} · ${locator}`, "secondary");
+        occurrence.onclick = () => displaySource(state.currentCase, {
+          ...ev, locator, match: { ...candidate, accepted: true, position_resolved: true },
+        });
+        card.append(occurrence);
+      }
+    }
     const button = el(
       "button",
       located ? "Localizar na fonte" : "Inspecionar fonte indicada",
       "secondary",
     );
-    button.onclick = () => displaySource(state.currentCase, { ...ev, match });
+    button.onclick = () => displaySource(state.currentCase, {
+      ...ev, locator: match?.resolved_locator || ev.locator, match,
+    });
     card.append(button);
     $("evidence-detail").append(card);
   }
-  if (!(obj.evidence_ids || []).length)
+  if (!evidenceIds.length)
     $("evidence-detail").append(
       el("div", "Sem evidência referenciada.", "warning"),
     );
@@ -846,18 +974,31 @@ function renderGraph() {
   if (!canInspectGraph()) return;
   const d = extraction(),
     filter = $("graph-filter").value.toLowerCase();
-  const kinds = ["concepts", "entities", "claims", "events"],
-    colors = ["#e1ebbc", "#dceaf4", "#f3e1cf", "#e9dff3"];
-  const nodes = kinds.flatMap((kind, k) =>
-    d[kind]
+  const navigation = d.schema_version === "kg-navigation-v1";
+  $("graph-title").textContent = navigation ? "Conceitos e argumentos" : "Grafo local";
+  $("graph-caption").textContent = navigation
+    ? "Selecione um conceito ou argumento para inspecionar suas evidências. Os assuntos associados aparecem nos detalhes do argumento; nenhuma relação de postura é criada. Arraste para mover; use a roda para zoom."
+    : "Arraste para mover; use a roda para zoom. Conexões vêm das relações ou dos papéis explicitamente registrados no JSON.";
+  for (const item of $("graph-legend").children) {
+    item.hidden = item.dataset.navigation ? !navigation : navigation && !item.classList.contains("concept");
+  }
+  const kinds = ["concepts", "entities", "discourse_units", "claims", "events", "arguments"],
+    colors = ["#e1ebbc", "#dceaf4", "#d9efea", "#f3e1cf", "#e9dff3", "#f3e1cf"];
+  const groups = kinds.map((kind) =>
+    (d[kind] || [])
       .filter(
         (o) =>
           !filter ||
           nameOf(o).toLowerCase().includes(filter) ||
           o.id.includes(filter),
-      )
-      .map((o, i) => ({ o, k, x: 40 + k * 400, y: 50 + i * 120 })),
+      ),
   );
+  let column = 0;
+  const nodes = groups.flatMap((group, k) => {
+    const x = 40 + column * 400;
+    if (group.length) column++;
+    return group.map((o, i) => ({ o, k, x, y: 50 + i * 120 }));
+  });
   const positions = new Map(nodes.map((n) => [n.o.id, n]));
   const height = Math.max(440, ...nodes.map((n) => n.y + 100));
   state.graphDefault = [
@@ -883,7 +1024,10 @@ function renderGraph() {
   graph.append(defs);
   const edgeLayer = svg("g");
   graph.append(edgeLayer);
-  d.relations.forEach((r, i) => {
+  const labelBoxes = [...positions.values()].map((p) => ({
+    x: p.x, y: p.y, width: 220, height: 56,
+  }));
+  (d.relations || []).forEach((r, i) => {
     const a = positions.get(r.source_id),
       b = positions.get(r.target_id);
     if (!a || !b) return;
@@ -903,7 +1047,7 @@ function renderGraph() {
       "data-object-id": r.id,
       tabindex: 0,
       role: "button",
-      "aria-label": `${nodeName(r.source_id)} ${r.predicate} ${nodeName(r.target_id)}`,
+      "aria-label": `${nodeName(r.source_id)} ${relationLabel(r)} ${nodeName(r.target_id)}`,
     });
     let path, lx, ly;
     if (a === b) {
@@ -918,13 +1062,35 @@ function renderGraph() {
       lx = (sx + 2 * cx + tx) / 4;
       ly = (sy + 2 * cy + ty) / 4 - 7;
     }
+    const qualification = r.derived_from ? [r.scope, r.claim_mode, r.action].filter(Boolean).join(" / ") : "";
+    const labelWidth = Math.max(r.predicate.length, qualification.length) * 6 + 12;
+    const labelHeight = qualification ? 29 : 17;
+    const originalY = ly;
+    for (const shift of [0, -32, 32, -64, 64, -96, 96, -128, 128]) {
+      const box = { x: lx - labelWidth / 2, y: originalY + shift - 12,
+        width: labelWidth, height: labelHeight };
+      if (!labelBoxes.some((b) => box.x < b.x + b.width && box.x + box.width > b.x &&
+          box.y < b.y + b.height && box.y + box.height > b.y)) {
+        ly = originalY + shift;
+        labelBoxes.push(box);
+        break;
+      }
+    }
+    if (a !== b && ly !== originalY) {
+      const cx = (sx + tx) / 2;
+      const cy = (sy + ty) / 2 + ((i % 3) - 1) * 60 + 2 * (ly - originalY);
+      path = `M ${sx} ${sy} Q ${cx} ${cy} ${tx} ${ty}`;
+    }
+    const label = svg("text", { x: lx, y: ly, "text-anchor": "middle" }, r.predicate);
+    if (qualification) label.append(svg("tspan", { x: lx, dy: 12 }, qualification));
     g.append(
+      svg("title", {}, relationLabel(r)),
       svg("path", { d: path, "marker-end": "url(#arrow)" }),
       svg("path", {
         d: path,
         style: "stroke:transparent;stroke-width:16;fill:none",
       }),
-      svg("text", { x: lx, y: ly, "text-anchor": "middle" }, r.predicate),
+      label,
     );
     g.onclick = (e) => {
       e.stopPropagation();
@@ -1219,7 +1385,7 @@ async function compare() {
       card.append(
         el(
           "p",
-          `${v.evidence_counts.exact} citações exatas · ${v.evidence_counts.normalized + v.evidence_counts.fuzzy} aproximadas · ${v.version}`,
+          `${v.evidence_counts.exact} citações exatas · ${v.evidence_counts.normalized + v.evidence_counts.fuzzy} aproximadas · ${v.evidence_counts.segmented || 0} descontínuas · ${v.version}`,
           "muted small",
         ),
       );
@@ -1229,6 +1395,8 @@ async function compare() {
       if (c.model_confidence) item.append(el("p", confidenceLabel(c), "small"));
       list.append(item);
     }
+    for (const argument of v?.parsed?.arguments || [])
+      list.append(el("li", "Argumento: " + argument.text));
     card.append(list);
     for (const warning of [
       ...(v?.warnings || []),
@@ -1428,7 +1596,7 @@ action("save-review", async () => {
   );
 });
 action("revalidate", async () => {
-  await api("/api/validate", { run_id: state.currentRun.id });
+  await api("/api/validate", { run_id: state.currentRun.id, matching_policy: "local-quote-v6" });
   await openRun(state.currentRun.id);
   showMessage("Nova validação anexada ao histórico.");
 });

@@ -1,0 +1,25 @@
+{
+  "name": "@fabiors/bibliotheca-patristica-mcp",
+  "version": "0.1.0",
+  "description": "Local MCP tools for Bibliotheca Patristica: corpus, Scripture, editorial indices and OCR, powered by PatrologiaIndexer WASM.",
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "bin": { "bibliotheca-patristica-mcp": "dist/cli.js" },
+  "license": "MIT",
+  "publishConfig": { "access": "public" },
+  "files": ["dist/", "vendor/indexador/", "licenses/", "LICENSE", "THIRD_PARTY_NOTICES.md", "README.md"],
+  "repository": { "type": "git", "url": "git+https://github.com/Fabio3rs/BibliothecaPatristica.git", "directory": "mcp" },
+  "homepage": "https://github.com/Fabio3rs/BibliothecaPatristica/tree/codex/mcp",
+  "bugs": { "url": "https://github.com/Fabio3rs/BibliothecaPatristica/issues" },
+  "keywords": ["mcp", "patristics", "bibliotheca", "ocr", "wasm"],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test test/*.test.mjs",
+    "validate": "npm run build && npm test",
+    "pack:check": "node scripts/pack.mjs",
+    "test:install": "node scripts/test-install.mjs",
+    "smoke:live": "node scripts/smoke-live.mjs"
+  },
+  "dependencies": { "@modelcontextprotocol/server": "2.4.0" },
+  "devDependencies": { "@modelcontextprotocol/client": "2.4.0" }
+}

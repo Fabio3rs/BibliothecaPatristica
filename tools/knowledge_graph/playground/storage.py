@@ -245,7 +245,7 @@ class Store:
         known = {'page'}
         if isinstance(parsed, dict):
             targets = []
-            for group in ('concepts', 'entities', 'claims', 'events', 'relations', 'evidence'):
+            for group in ('concepts', 'arguments', 'entities', 'claims', 'events', 'discourse_units', 'relations', 'evidence'):
                 if isinstance(parsed.get(group), list):
                     targets.extend((group, o['id']) for o in parsed[group]
                                    if isinstance(o, dict) and isinstance(o.get('id'), str))
@@ -255,6 +255,8 @@ class Store:
             known.update(identifier for identifier, count in counts.items() if count == 1)
             known.update(identifier for identifier, count in qualified.items()
                          if count == 1 and identifier not in counts)
+            projection = (run['validation'] or {}).get('graph_projection') or {}
+            known.update(edge['id'] for edge in projection.get('relations', []))
         if object_id not in known or decision not in DECISIONS or dimension not in DIMENSIONS:
             raise ValueError('Invalid review target, decision or dimension')
         if not all(isinstance(v, str) and len(v) <= 10000 for v in (comment, reviewer)):

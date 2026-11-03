@@ -54,6 +54,16 @@ test('does not retry a permanent client error', async () => {
   assert.equal(calls, 1);
 });
 
+test('does not retry an explicit non-retryable transport error', async () => {
+  let calls = 0;
+  const error = Object.assign(new Error('Rate limited; retry after the published reset'), { retryable: false });
+  await assert.rejects(fetchOcrWithRetry(async () => {
+    calls++;
+    throw error;
+  }, 'https://example.test/page.txt', { delays: [0, 0] }), value => value === error);
+  assert.equal(calls, 1);
+});
+
 test('stops retrying when the request is aborted', async () => {
   const controller = new AbortController();
   let calls = 0;

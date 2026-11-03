@@ -87,6 +87,7 @@ def process_job(job_id, dry_run=False):
                 prepared = prepare(case, plan['config'], variant=template['variant']['id'], mode=template['mode'],
                                    facsimile=plan['facsimile'], template=template)
                 prepared['corpus_selection'] = generation
+                prepared['validation_policy'] = plan.get('validation_policy', 'local-quote-v2')
                 prepared['corpus_source_policy'] = plan['source_policy']
                 run_id = store.add_run(campaign, case, prepared, 1, queue_job=job_id)
             if dry_run:

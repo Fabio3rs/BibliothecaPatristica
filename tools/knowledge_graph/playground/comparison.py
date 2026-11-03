@@ -6,7 +6,9 @@ import unicodedata
 from collections import defaultdict
 from itertools import combinations
 from .common import digest
-from .validation import NODES
+from .validation import NODES as LEGACY_NODES
+NODES = (*LEGACY_NODES, 'discourse_units', 'arguments')
+from .statement_contract import graph_view
 
 
 def norm(text):
@@ -14,12 +16,12 @@ def norm(text):
 
 
 def label(obj):
-    return obj.get('label') or obj.get('proposition') or obj.get('description') or obj['id']
+    return obj.get('label') or obj.get('proposition') or obj.get('description') or obj.get('text') or obj['id']
 
 
 def signature(kind, obj):
     return (kind, obj.get('type', ''), norm(label(obj)), norm(obj.get('meaning', '')),
-            obj.get('origin', ''), obj.get('mode', ''), obj.get('narrative_status', ''), obj.get('time_expression'))
+            obj.get('origin', ''), obj.get('mode', ''), obj.get('narrative_status', ''), obj.get('time_expression'), obj.get('action', ''), obj.get('modality', ''), obj.get('kind', ''))
 
 
 def evidence(obj, result):
@@ -31,6 +33,12 @@ def compare_pair(left, right):
     b = (right.get('validation') or {}).get('parsed')
     if not isinstance(a, dict) or not isinstance(b, dict) or not (left.get('validation') or {}).get('structural_valid') or not (right.get('validation') or {}).get('structural_valid'):
         return {'left': left['id'], 'right': right['id'], 'error': 'Both runs need structurally valid extractions for object matching'}
+    a, b = graph_view(left['validation']), graph_view(right['validation'])
+    for view in (a, b):
+        entities = {e['id']: e for e in view.get('entities', [])}
+        for unit in view.get('discourse_units', []):
+            speaker = entities.get(unit['speaker_id'])
+            unit['label'] = unit['kind'] + ' · ' + (label(speaker) if speaker else 'unresolved voice')
     aligned, uncertain, changes, confidence_changes = [], [], [], []
     def compare_confidence(kind, obj, other):
         if obj.get('model_confidence') != other.get('model_confidence'):
@@ -42,10 +50,10 @@ def compare_pair(left, right):
     unique_a, unique_b = [], []
     for kind in NODES:
         used = set()
-        for obj in a[kind]:
-            matches = [o for o in b[kind] if o['id'] not in used and signature(kind, o) == signature(kind, obj)]
+        for obj in a.get(kind, []):
+            matches = [o for o in b.get(kind, []) if o['id'] not in used and signature(kind, o) == signature(kind, obj)]
             # A repeated same label+meaning is ambiguous, even before semantic review.
-            if len(matches) == 1 and sum(signature(kind, x) == signature(kind, obj) for x in a[kind]) == 1:
+            if len(matches) == 1 and sum(signature(kind, x) == signature(kind, obj) for x in a.get(kind, [])) == 1:
                 other = matches[0]
                 used.add(other['id'])
                 key = digest(signature(kind, obj))
@@ -58,7 +66,7 @@ def compare_pair(left, right):
                                     'right_evidence': evidence(other, b), 'left_grounding': obj.get('grounding'), 'right_grounding': other.get('grounding')})
             else:
                 unique_a.append({'kind': kind, **obj})
-        unique_b.extend({'kind': kind, **o} for o in b[kind] if o['id'] not in used)
+        unique_b.extend({'kind': kind, **o} for o in b.get(kind, []) if o['id'] not in used)
     for obj in unique_a:
         tokens = set(re.findall(r'\w+', norm(label(obj))))
         for other in unique_b:
@@ -73,9 +81,10 @@ def compare_pair(left, right):
                                   'reason': 'shared quote or lexical overlap; contextual equivalence requires review'})
     def triples(result, mapping, side):
         grouped = defaultdict(list)
-        for r in result['relations']:
+        for r in result.get('relations', []):
             key = (mapping.get(r['source_id'], side + ':' + r['source_id']), r['predicate'],
-                   mapping.get(r['target_id'], side + ':' + r['target_id']))
+                   mapping.get(r['target_id'], side + ':' + r['target_id']),
+                   r.get('scope', ''), r.get('claim_mode', ''), r.get('event_modality', ''), r.get('action', ''))
             grouped[key].append(r)
         return grouped
     ra, rb = triples(a, mapping_a, 'left'), triples(b, mapping_b, 'right')
@@ -87,14 +96,15 @@ def compare_pair(left, right):
         only_right.extend(right_group[shared:])
         for rel_a, rel_b in zip(left_group, right_group):
             compare_confidence('relations', rel_a, rel_b)
-            if evidence(rel_a, a) != evidence(rel_b, b) or rel_a['grounding'] != rel_b['grounding']:
+            if evidence(rel_a, a) != evidence(rel_b, b) or rel_a.get('grounding') != rel_b.get('grounding'):
                 relation_changes.append({'left': rel_a, 'right': rel_b,
                                          'left_evidence': evidence(rel_a, a), 'right_evidence': evidence(rel_b, b)})
     return {'left': left['id'], 'right': right['id'], 'matched': aligned,
             'uncertain_correspondences': uncertain, 'unique_left': unique_a, 'unique_right': unique_b,
             'evidence_differences': changes, 'model_confidence_differences': confidence_changes,
             'relations_only_left': only_left, 'relations_only_right': only_right,
-            'relation_evidence_differences': relation_changes}
+            'relation_evidence_differences': relation_changes,
+            'projection_note': 'v3/v3.1 edges are projected from explicit fields. Scope, claim mode and action modality are part of relation comparison; absent v2 qualifiers are not silently equated. Navigation arguments are compared only with arguments; they are not treated as claims or projected into stance edges.'}
 
 
 def compare_runs(store, identifiers):

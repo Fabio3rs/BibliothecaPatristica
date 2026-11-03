@@ -36,7 +36,7 @@ export async function fetchOcrWithRetry(fetchImpl, url, options = {}) {
         return response;
       }
     } catch (error) {
-      if (error?.name === 'AbortError') throw error;
+      if (error?.name === 'AbortError' || error?.retryable === false) throw error;
       lastError = error;
       if (attempt === attempts - 1) throw error;
     }

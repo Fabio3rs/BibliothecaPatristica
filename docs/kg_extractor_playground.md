@@ -64,6 +64,9 @@ Overlay coordinates come only from parsed OCR. The default is the repository's n
 
 ## Prompts and response contract
 
+- `concepts-v2.8-discourse-confidence`: v2.7 plus a 225-word attribution check distinguishing voice, position holder, action participant, quoted source and target. Same v2 schema and compact modes; no new output fields. The complete system in `concepts_relations` is 9,870 characters / 1,299 whitespace-delimited words. Explicit selection only; no paid evaluation of this variant has been performed. See the discourse experiment below.
+- `concepts-v2.7-compact-confidence`: consolidated v2.6 instructions with the same response schema. In `concepts_relations`, the complete system prompt is 8,287 characters / 1,074 whitespace-delimited words, versus 27,534 / 3,864 in v2.6 (about 70% fewer characters and 72% fewer words; not tokenizer counts). It retains field/enum definitions, source boundaries, attribution, bilingual handling and uncalibrated item confidence while removing repeated checks and using compact mode instructions. Select with `--prompts concepts-v2.7-compact-confidence`. Previous prompts, prepared runs, payloads and validation policies are unchanged. Stored user run 1653 exercises this variant on PG026:72; one page does not establish general quality or cost improvements.
+- `concepts-v2.6-field-contract-confidence`: experimental v2.5 plus a concise glossary for input roles, every output field and enum, and the direction of central predicates. Keeps the same v2 schema, mode instructions and confidence protocol. Select explicitly; historical prompts and prepared experiments remain unchanged. See the [field-contract audit, definitions and offline tests](kg_field_contract_v26.md).
 - `concepts-v1`: starter system prompt without examples.
 - `concepts-v1-fewshot`: same prompt plus the explicitly synthetic starter example, adapted for concepts-only mode.
 - `concepts-v1.1`: starter plus explicit namespaces (`e*` for entities, `ev*` for evidence), literal-quote copying and bare-JSON instructions. Select with `--prompts concepts-v1.1`; the original variants and default are preserved for comparison.
@@ -82,6 +85,46 @@ Each run stores the exact final system prompt, user JSON payload, canonical sche
 The **v1 schema has no confidence field**. In experimental v2, confidence concerns the fidelity of an extracted item to its sources, including meaning, attribution, modality and relation direction. It does not assess whether a reported theological or historical assertion is objectively true. The interface labels it **autodeclarada / não calibrada**, shows its rationale when selecting a node or relation, and displays differences for matched items in comparisons without treating higher confidence as better accuracy. The default remains v1 for reproducibility.
 
 `grounding` describes explicit versus inferred support; `salience` describes importance; claim modes and warnings express modality or ambiguity. The validator's quote-matching score measures lexical similarity. These remain separate from model confidence and independent semantic review. A score of 1 never overrides invalid evidence or marks an item as gold; 0 never fails structural validation solely for low confidence. JSONL exports preserve each self-report and its exact elicitation prompt. No calibration metrics or acceptance thresholds are inferred without adjudicated references.
+
+### Discourse attribution experiment (v2.8)
+
+The added instructions live in `tools/knowledge_graph/prompts/discourse_v2.8_contract.txt`. The registry reuses the unmodified v2.7 system file and modes, appending the delta once before the mode. Removing the delta reproduces v2.7 byte for byte. There are no page-specific examples, names or answers in the addition.
+
+The intended correction is to distinguish a proposition's holder from an actor described within it. On PG026:72, run 1653's `p6` describes Paul refuting opponents, while `r5` attributes that entire description to Paul. The narrator's conditional invocation of Paul's words and the content attributed to Paul require separate treatment. A chain such as `[narrator, Paul]` applies to the attributed content, not automatically to every statement the narrator makes about Paul.
+
+Two refinements prevent overcorrection:
+
+- Reporting verbs remain valid attribution cues for their embedded content. They do not automatically assign the whole reporting statement to the person reported.
+- `REFUTES` connects a critic to the rejected proposition; the critic need not hold that position. The ownership check for `AFFIRMS`, `DEFENDS` and `ATTRIBUTES_TO` must not require a critic to endorse the refuted claim.
+
+The new roles are interpretation instructions, not JSON fields or new enum values. Conditional scope stays in `proposition` with an existing `mode`. Unsupported edges may be omitted while preserving claims, evidence, useful subjects and supported relations. This reduces the risk of treating fewer edges as better extraction. The rule-based validator still cannot determine historical ownership from syntax or name overlap; no such rejection heuristic was added. A future optional attribution object needs its own schema experiment.
+
+Research checked on 2026-11-02:
+
+- [Ruppenhofer, Somasundaran and Wiebe (2008)](https://aclanthology.org/L08-1087/): sources/targets and recovery of the actual proposition being argued for or against. Semantic roles alone do not settle discourse attribution.
+- [GRaSP (2017)](https://aclanthology.org/W17-7803/): separates perspectives and their sources. Its representation motivates the distinction; adding instructions does not implement GRaSP.
+- [Ahmadnia et al. (2024), section 2.1](https://aclanthology.org/2024.lrec-main.1093.pdf): MPQA nested sources form ordered “according-to” chains. These are not flat lists of people mentioned in a sentence. The experiments use BERT/T5; they do not test this Muse prompt.
+- [Rozonoyer et al. (2023)](https://aclanthology.org/2023.dmr-1.12/): modal dependencies connect events to their conceivers, complementing syntactic dependencies.
+- [SEER (2026)](https://doi.org/10.1016/j.knosys.2026.116890): the publisher lists 25 October 2026 and reports 78.22% macro-F1 for news claim extraction using three extractors and an aggregator. Its nested-attribution example selects the outer reporter in the gold annotation. Our holder convention must be defined independently; neither that scoring convention nor the reported score transfers automatically to Patristics. These findings do not demonstrate that one prompt addition fixes Muse.
+- [Claimify (2025)](https://aclanthology.org/2025.acl-long.348/): ambiguity, contextual completeness and coverage matter when evaluating extracted claims. This is guidance for review, not an implementation of Claimify here.
+
+Offline validation: 137 tests passed through Native Lab MCP in 33.30 seconds (`test_kg_field_contract.py`, `test_kg_confidence.py`, `test_kg_provider_adapters.py`, `test_kg_ab_runner.py`). They check prompt/schema isolation, all modes, mock provider construction, cache invalidation, independent repetitions and preservation of historical runs. Synthetic completions test plumbing, not semantic accuracy. A read-only preflight reproduced run 1653's archived snapshot, image transport and provider request, then verified that only the candidate system content changes. Local hashes are in `.work/kg_discourse_v28/frozen_preflight.json`; no inference or historical validation was written.
+
+Prepare a paired smoke experiment with the current page snapshot, two independent repetitions per prompt (four calls when explicitly executed):
+
+```bash
+python scripts/playgrounds/kg_extractor_playground.py run \
+  --pages PG026:72 --provider meta --model muse-spark-1.3-contributor \
+  --prompts concepts-v2.7-compact-confidence concepts-v2.8-discourse-confidence \
+  --mode concepts_relations --facsimile on --reasoning-effort medium \
+  --repetitions 2 --bypass-cache --dry-run
+```
+
+Inspect the prepared prompts, then explicitly execute `resume --experiment EXP_ID` when desired. This exploratory matrix is not the randomized frozen `ab-run` campaign. Both arms use the same loaded snapshot, but corrected current OCR is not silently treated as identical to run 1653. Frozen historical comparisons require the archived snapshot. The offline preflight above did not create a runnable experiment.
+
+Review the new outputs without looking at their prompt labels. Count wrong-holder edges, incorrectly flattened conditions, supported stance relations retained/lost, and useful subjects retained/lost; also compare quote localization, tokens and cost. Include PG026:72 as a known diagnostic, plus already reviewed positive controls: genuine direct statements, reports with clearly attributable embedded content, an actual refutation of an imagined objection, and distinct editorial corrections. Cases used to design the prompt are regression controls, not independent evidence of generalization. Keep blind holdouts excluded. Repeated wrong attribution is a reason to test a structured discourse layer or an independent verifier, not evidence that an automatic lexical check can safely decide ownership.
+
+### Earlier confidence variants
 
 Prepare the confidence variant on the real page without inference:
 
@@ -346,6 +389,60 @@ Validation tiers:
 2. Nonempty quotations located in the referenced current OCR block or current segment, existing locators, and schema exclusion of model-supplied document/work/page/bbox metadata. `kg-validation-6` accepts exact or sufficiently similar local passages under `local-quote-v2`, per the revised user requirement. Missing evidence, summary-only grounding and duplicate labels generate review warnings.
 3. Human semantic assessment of attribution, endorsement/refutation, concept specificity, redundancy, missing subjects and supported relations. Stance relations automatically receive review questions. Structural/source validity is **not** historical correctness.
 
+### Current location policy: `local-quote-v5` (`kg-validation-9`)
+
+New ordinary experiments and new corpus campaigns freeze v5. Already prepared runs,
+A/B studies and campaigns retain their original policy; missing historical policy
+means v2. No stored prompt, response, snapshot, OCR or historical status is rewritten.
+
+V5 answers **whether the quotation can be located**, separately from whether it was
+copied faithfully and whether it supports the assertion. It reuses the bounded
+normalized Levenshtein search and its 0.90 threshold. Small lexical differences,
+including changed names, numbers or negation, no longer veto an otherwise located
+passage. They remain visible as original-text edit operations and diagnostics;
+`quote_fidelity=requires_review` and `semantic_support=not_evaluated` prevent treating
+location as semantic approval. Unrelated passages and transliterations without a
+sufficiently similar source still fail. Word fragments are not completed silently.
+
+Editorial-note recognition includes `aparato_critico` and multiple superscript
+definitions on one line. A marker is ignored as editorial only with a same-page
+definition and suitable prose context; numerical/operator contexts are retained.
+The model quote, OCR, Unicode offsets, ignored-marker locations and diff remain
+unchanged in exports. A facsimile-corrected quote can thus be locatable even when
+the frozen OCR contains a small error, without silently correcting that OCR.
+
+OCR lookup starts in the indicated block. If no passage is located there, it tries
+other blocks of that same frozen physical page, preserving `locator` and recording
+`resolved_locator`, `search_scope` and `locator_mismatch`. It never uses cumulative
+context, another page, or a translated summary to rescue an OCR quotation. Current
+summary-segment matching retains v3's policy. Repeated passages can be **located**
+without a resolved **position**: candidate offsets are retained, no unique offset
+is invented, and the UI asks the reviewer to choose an occurrence for highlighting.
+
+The UI's **Revalidar citações (v5)** appends a new validation without inference.
+Restart `serve` after updating the code. CLI revalidation keeps the frozen policy
+unless an explicit alternative is supplied:
+
+```bash
+# Read-only preview; neither initializes Store nor appends validation history.
+python scripts/playgrounds/kg_extractor_playground.py validate \
+  --run 1666 --matching-policy local-quote-v5 --dry-run \
+  --output .work/kg_locator_v5/run1666.json
+
+# Append the new validation so the viewer uses it; original status stays intact.
+python scripts/playgrounds/kg_extractor_playground.py validate \
+  --run 1666 --matching-policy local-quote-v5
+```
+
+Offline check of PG026:72 runs 1659–1666 located all 125 quotations (92 exact,
+11 normalized, 12 fuzzy, 10 with editorial markers), including 15 rejected by the
+original policy. All eight pass location validation; this does not resolve their
+known attribution errors. Fifteen real cases are preserved in
+`tests/fixtures/kg_locator_page_v5.json`, alongside synthetic controls for semantic
+differences, repeated occurrences, unrelated text and cross-block recovery.
+
+### Historical v2 behavior (preserved for replay)
+
 Source matching first tries an exact substring, then a unique full-token sequence after case/diacritic/ligature, whitespace, punctuation and line-break hyphenation normalization. The fuzzy fallback uses the existing RapidFuzz dependency to calculate character-level Levenshtein distance over normalized candidate passages. Its score is `1 - distance / max(normalized lengths)`, with a minimum of 0.90. Exact-token anchors retrieve at most 512 starts; passage windows allow two to four tokens of length variation. Queries require at least 3 tokens and 20 non-space normalized characters, and at most 160 tokens / 4096 normalized characters. This is a bounded local search, not an exhaustive corpus or block-wide edit-distance matrix.
 
 Token alignment also guards against misleadingly high whole-passage similarity. At most one fifth of tokens may change (minimum allowance three); individual substitutions require 3–128 character words, at most three edits and at most 40% difference. Short non-protected token insertions/deletions (up to three characters) and unchanged words split/joined by OCR are permitted. Changes involving digits, numeric separators, operators or recognized negations require review, including moved negations. A likely passage blocked by that guard is stored as an unaccepted `review_candidate`, with its original span and normalized diff; source validation remains unsuccessful. Numbers that resemble footnote markers are not automatically discarded. No heuristic here establishes that an omitted number is editorial rather than substantive.
@@ -358,7 +455,7 @@ Fuzzy matches additionally store `edit_distance`, `score_metric`, `normalized_qu
 
 The `kg-validation-2` reader accepts one complete outer Markdown fence (`json` or unlabelled), records `markdown_fence_removed` and `format_compliant=false`, and preserves the raw response exactly. It does not extract JSON from surrounding prose, choose between multiple responses, repair invalid JSON, rename IDs or change quotations. All schema/reference/source checks still apply.
 
-To revalidate an existing response **without calling a model**, use the UI's **Revalidar** button or `python scripts/playgrounds/kg_extractor_playground.py validate --run 3`. Validation history is appended; the original run status and original result remain unchanged. The latest validation controls the viewer. Schema-valid outputs with unambiguous graph nodes, endpoints and evidence references can be inspected even when other validation checks fail; the interface labels them as invalid. Duplicate graph IDs, duplicate evidence IDs or ambiguous endpoints still block graph rendering. Reviews of IDs shared by different object categories require qualified targets such as `entities/e1` or `evidence/e1`.
+Revalidation appends history; the original run status and original result remain unchanged. The latest validation controls the viewer. Schema-valid outputs with unambiguous graph nodes, endpoints and evidence references can be inspected even when other validation checks fail; the interface labels them as invalid. Duplicate graph IDs, duplicate evidence IDs or ambiguous endpoints still block graph rendering. Reviews of IDs shared by different object categories require qualified targets such as `entities/e1` or `evidence/e1`.
 
 Observed user runs 3 and 4 with `gemma4:cloud` returned fenced JSON. Offline revalidation found entity/evidence ID collisions in both; run 3 also contained three nonliteral quotations under the original strict policy. ID collisions remain invalid under the new source-matching policy. The response schema itself was satisfied by both parsed objects. No further provider calls were made while diagnosing or fixing this case.
 
@@ -390,6 +487,292 @@ HTTP tests use localhost and can run under Native Lab. Native Lab Playwright was
 
 Ignored evidence is under `.work/kg_playground_v1/`. It includes a synthetic SQLite demonstration, JSONL/review exports, comparison/report artifacts, a real-page dry-run snapshot, browser screenshots and a validation report. The source demo successfully loaded **PG026:71, generation 45218, summary run 268, shadow/valid**, with **1 current segment, 11 OCR blocks, a matching historical OCR record and an available archived facsimile**. Its OCR SHA256 is `6ecc0fc3b0f591cdedfc8c197b198ef0a8ac00aae8a431c88c4949326b13aad7`. This demonstrates source preparation only; it is not a KG result for that real page.
 
+## Experimental v3: statements, attribution and participation
+
+`concepts-v3-statements-confidence` uses
+[`kg-extraction-v3.schema.json`](../tools/knowledge_graph/schemas/kg-extraction-v3.schema.json)
+and [`extract_statements_v3.system.txt`](../tools/knowledge_graph/prompts/extract_statements_v3.system.txt).
+It is an opt-in experiment; historical v1/v2 responses and prompts are unchanged.
+Concept extraction remains the primary navigation layer. This variant tests a
+different representation of argument ownership, rather than another set of
+warnings attached to freely generated stance edges.
+
+Each `claims[]` item retains `proposition`, `mode`, evidence and uncalibrated
+confidence, and adds two required arrays that may be empty:
+
+| Field | Meaning | Qualified values |
+| --- | --- | --- |
+| `attributions` | An identified entity's stance toward this exact proposition | `AFFIRMS`, `DEFENDS`, `REFUTES`, `REPORTS`, `QUESTIONS` |
+| `attributions[].scope` | How the source presents that stance | `direct`, `reported`, `hypothetical`, `conditional`, `uncertain` |
+| `participants` | Entities participating in the proposition's content, without implied endorsement | `agent`, `target`, `cited_authority`, `subject` |
+| `mode` | The proposition's modality | v2 values plus `conditional` |
+
+Every attribution/participant contains `entity_id` and `evidence_ids`. The model
+must emit the referenced entity and evidence. Unknown speakers can remain
+unassigned; a warning preserves the uncertainty. Several actors may take distinct
+stances toward the same atomic proposition. A rebuttal and its opponent's position
+must not be combined into a single target.
+
+For example, in a **constructed synthetic fixture**, Helena writes that if the
+opponents object again, Lucius's words will answer them. Helena can be assigned
+`AFFIRMS/direct` toward a `conditional` proposition. Lucius is its `agent` and
+`cited_authority`, and the opponents its `target`. None of these participant roles
+creates `Lucius AFFIRMS [the narrator's claim about Lucius]`. Direct assertion of
+conditional content differs from a conditional attribution: the first has
+`scope=direct` and `mode=conditional`; the latter qualifies the stance itself.
+
+`statement_contract.py` validates references, duplicate roles, reserved IDs and
+reserved predicates, then creates **a separate deterministic graph projection**:
+
+```text
+Helena --AFFIRMS [direct; conditional content]--> proposition
+proposition --HAS_AGENT [conditional content]--> Lucius
+proposition --CITES_AUTHORITY [conditional content]--> Lucius
+proposition --HAS_TARGET [conditional content]--> opponents
+```
+
+The model puts these facts in explicit claim fields, not duplicate stance/role
+edges in `relations`. Other supported relations, such as `CITES` and `ABOUT`, remain
+available. Generated projection IDs use the application-owned `@v3:` prefix and
+record the originating claim/field/index. `parsed`, `raw_response` and
+`validated_extraction` retain the original model JSON; projected edges live in
+`validation.graph_projection`. Reports count model relations and projected
+relations separately. Comparisons include scope and claim mode, so qualified
+edges are not silently equated to unqualified historical ones.
+
+The UI displays the projection, qualifiers, originating fields and evidence.
+Reviews can target individual projected edges and are stored separately. There is
+no invented edge confidence: claim confidence covers the entire model item, and
+the derived edge has no independent estimate. Selecting a claim also exposes its
+attributions/participants and their evidence. Empty graph columns are collapsed;
+long qualified labels are split and spaced to reduce overlap.
+
+**This schema cannot prove the speaker is correct.** A model can still supply the
+wrong existing entity ID in `attributions`. Structural success and located evidence
+leave `semantic_status=pending_review` and `gold_status=not_gold`. The representation
+also does not yet encode arbitrarily nested attribution chains or modal scope for
+every possible non-stance predicate. It is page-local and does not publish or merge
+anything into a global graph.
+
+### PG026:72 control and prepared diagnostic
+
+Read-only inspection of `EXP-78dd4268ef15` (runs 1667–1674) found:
+
+| Check | v2.7 (4 runs) | v2.8 (4 runs) |
+| --- | --- | --- |
+| JSON/schema conformance | 4/4 | 4/4 |
+| Structural/reference validity | 3/4 | 4/4 |
+| All quotations located | 4/4 | 4/4 |
+| Focal inappropriate attribution to Paul, assistant inspection | 3/4 | 3/4 |
+
+All 113 quotes were located (93 exact, 8 normalized, 8 fuzzy, 4 note-marker).
+Run 1670 reused `ev10` for different Latin and Greek passages, making references
+ambiguous; automatically renumbering would require choosing their intended targets.
+The attribution problem survives quote localization. Seven outputs omit the
+introductory conditional from the selected evidence, although it was available in
+the supplied OCR. Even preserving the quotation does not guarantee correct modal
+interpretation. These are focal observations on one repeatedly inspected page,
+not independently adjudicated accuracy measurements or a blind benchmark.
+Detailed per-run findings are in
+`.work/kg_discourse_v28/review_exp_78dd4268ef15.json`.
+
+Prepared experiment **`EXP-0dca3ed59a3c`** contains eight planned calls:
+
+| Arm | Runs | Contract |
+| --- | --- | --- |
+| v2.7 control | 1675–1678 | `kg-extraction-v2` |
+| v3 statements | 1679–1682 | `kg-extraction-v3` |
+
+Both use frozen case **1034**, page **PG026:72**, all its current summary segments,
+OCR and archived facsimile, Muse Spark 1.3 Contributor, reasoning `medium`, four
+independent repetitions and cache bypass. Preflight confirms the control request
+exactly reproduces run 1667 and the candidate changes only the system prompt and
+response schema. Input/image/configuration hashes are recorded in
+`.work/kg_statement_v3/preflight.json`; its companion `preflight.py` performs only
+read-only checks. No model calls were made during preparation.
+
+Execute the **already prepared** experiment explicitly:
+
+```bash
+python scripts/playgrounds/kg_extractor_playground.py resume \
+  --experiment EXP-0dca3ed59a3c --concurrency 4
+```
+
+This reads `META_API_KEY` at execution time. It schedules eight independent
+inferences, with the configured bounded retries for transient transport failures.
+The previous eight calls cost US$0.031223 at the supplied rates; that is a rough
+budget reference, not a measured v3 cost or a guarantee about retry billing.
+
+To prepare another matrix from exactly the same archived source, without loading
+new OCR or summaries, use the added `--case-ids` option:
+
+```bash
+python scripts/playgrounds/kg_extractor_playground.py run \
+  --case-ids 1034 --provider meta --model muse-spark-1.3-contributor \
+  --prompts concepts-v2.7-compact-confidence concepts-v3-statements-confidence \
+  --mode concepts_relations --facsimile on --reasoning-effort medium \
+  --repetitions 4 --bypass-cache --dry-run
+```
+
+After execution, use `serve`, its history/comparison views, or:
+
+```bash
+python scripts/playgrounds/kg_extractor_playground.py report \
+  --experiment EXP-0dca3ed59a3c --format markdown \
+  --output .work/kg_statement_v3/report.md
+python scripts/playgrounds/kg_extractor_playground.py compare \
+  --runs 1675 1679 --output .work/kg_statement_v3/comparison.json
+```
+
+This uses the general experiment matrix (`resume`/`report`), not the older frozen
+v2-only `ab-run`/`ab-report` study protocol. It tests the prompt/schema combination;
+it does not isolate which of those changes causes an observed difference. Review
+all repetitions for the narrator's conditional claim, distinct quoted Pauline
+content, actor roles, preserved major/secondary subjects, omitted useful relations,
+duplicate IDs, token use and truncation. More projected edges alone is not success.
+If the focused diagnostic improves attribution, test other pages with reported
+speech, editorial corrections and hypothetical objections before wider use.
+
+### Offline validation evidence
+
+Native Lab passed all **399 tests** in the relevant suite (57.28 seconds), including
+36 v3 tests. JUnit evidence is in `.work/kg_statement_v3/tests.xml`. No provider
+request was sent. Tests cover prompt/schema isolation, v2 compatibility, field enums, role and
+evidence references, empty output, incorrect-but-existing speaker IDs remaining a
+semantic review problem, four mocked provider payloads, fixture execution,
+repetitions, snapshot reuse, holdout protection, storage, reviews, export and
+scope-sensitive comparisons.
+
+The synthetic fixture at `.work/kg_statement_v3/demo.db` has one completed run,
+four projected connections and no inference. Native Lab Playwright exercised it at
+`http://127.0.0.1:8877`, including clicking stance/participant edges, locating the
+original source text and saving a review. Desktop (1920×1080) and mobile (375×812)
+had no horizontal document overflow; console had no warnings/errors and API/assets
+returned HTTP 200. `node --check` passed. This standard-library/static UI has no
+separate frontend build. Screenshots, console, network and command evidence are in
+`.work/kg_statement_v3/`; the temporary test server was stopped. To inspect it separately:
+
+```bash
+python scripts/playgrounds/kg_extractor_playground.py serve \
+  --db .work/kg_statement_v3/demo.db \
+  --benchmark-dir .work/kg_statement_v3/no-benchmark --port 8877
+```
+
+## Second-pass v3 statement-boundary experiment
+
+`verify-prepare --study statement-boundaries-v1` tests whether a focused second
+pass separates quotation content, narrator commentary and conditional scope
+before assigning holders. It reuses completed v3 extractions as control A;
+intervention B reviews those exact outputs against the same frozen page. It is
+not another prompt/schema comparison or an independent semantic adjudication.
+
+The default diagnostic uses **1679–1682, PG026:72, twice each: eight new calls**.
+These are four outputs of one already studied page, not four independent pages.
+The prepared instance is **`EXP-b0c351d7a231`**, runs **1683–1690**, all planned
+with zero inference calls at delivery. Its preflight and initial report are in
+`.work/kg_statement_review_v1/`. Use that ID directly with `verify-run`; the
+preparation command below is for a new instance with a different output path.
+In particular, retain correct quotation attribution (the focal quotation in
+1679/p8 is a preservation control), while examining the mixed quotation/comment
+and ownership problems in 1680/p9, 1681/p9 and 1682/p7. Check all other claims too:
+moving every attribution to the narrator or simply deleting claims would fail
+the preservation criterion. These audit observations are provisional review
+targets, not gold annotations and not supplied as answers to the model.
+
+The versioned system prompt is
+`tools/knowledge_graph/prompts/review_statement_boundaries_v1.system.txt`.
+The new response envelope `kg-statement-review-v1` contains decisions over the
+unchanged **kg-extraction-v3** claim/relation definitions. A decision can keep,
+remove, replace or split a claim, and keep/remove/replace raw relations. Python
+applies these decisions to a separate copy and projects the corrected explicit
+attributions/participants. Concepts, entities, events and original evidence
+cannot be changed. Consequently this experiment cannot repair the
+“Alteração/Alteridade” concept label or demonstrate improved subject retrieval.
+
+Prepare without inference:
+
+```bash
+python scripts/playgrounds/kg_extractor_playground.py verify-prepare \
+  --study statement-boundaries-v1 \
+  --source-runs 1679 1680 1681 1682 --repetitions 2 \
+  --output .work/kg_statement_review_v1/preflight.json
+```
+
+Preparation checks archived snapshots, images and transport bytes, rejects
+holdout sources, preserves provider settings and prices, freezes a randomized
+schedule and stores all eight exact requests in a new WAL experiment. It does
+not read `META_API_KEY` or call a provider. The current sources preserve Muse
+Spark 1.3 Contributor, reasoning `medium`, image attached and output limit 32768.
+The previous system prompt is replaced, not appended. Generator confidence and
+warnings are withheld; expected answers are not inserted. Each review receives
+the entire page, all current summary segments and the candidate extraction.
+Cumulative context remains context only. Frozen implementation hashes protect
+the new validation policy; historical v1 review studies remain supported.
+
+Use the printed experiment ID to explicitly execute. A first-call smoke test
+and subsequent resume operate on the same schedule:
+
+```bash
+python scripts/playgrounds/kg_extractor_playground.py verify-run \
+  --experiment EXP_ID --concurrency 1 --max-calls 1
+python scripts/playgrounds/kg_extractor_playground.py verify-run \
+  --experiment EXP_ID --concurrency 4
+python scripts/playgrounds/kg_extractor_playground.py verify-report \
+  --experiment EXP_ID --output .work/kg_statement_review_v1/report.md
+```
+
+`META_API_KEY` is read at execution only. Result-cache reuse is disabled. The two
+reviews of each baseline have identical inputs and independent calls. Successful
+or invalid terminal outputs are not repeated on resume; transient transport
+retries retain the original bounded provider settings. Unknown interrupted
+outcomes require `--retry-interrupted` and create a new attempt without replacing
+history. Eight original v3 calls would cost approximately **US$0.03685** at the
+stored prices; this is only a historical cost proxy for eight reviews, whose
+input/output lengths and possible retry billing differ.
+
+The report is read-only and exports Markdown/JSON, `blind/packets.jsonl`,
+`blind/judgments.template.json` and `private/unblinding.json`. It reports
+schema/reference/evidence validation, derived claim and attribution counts,
+token/reasoning usage, latency, cost and exact repetition agreement ignoring
+IDs/order/confidence. None of these automatically establishes historical accuracy.
+The original request, raw response, decisions, derived extraction and validation
+remain separately inspectable with the existing `inspect --run RUN_ID` command.
+Use the paired packets for this study; no dedicated review-patch graph UI is added.
+
+For independent review, give only the blind packet and a **copy** of the judgment
+template to the reviewer. Arm labels, IDs, object order, confidence and edit
+reasons are hidden; style and length can still provide clues. The template has
+separate units for each claim, attribution, participant and raw relation. Judge
+quotation versus narration, whole-proposition ownership, stance, conditions and
+negation, roles, evidence support and lost useful content. Mark `adjudicated`
+only after checking the cited sources, with reviewer identity and comments.
+
+```bash
+python scripts/playgrounds/kg_extractor_playground.py verify-report \
+  --experiment EXP_ID --output .work/kg_statement_review_v1/report.md \
+  --reviews .work/kg_statement_review_v1/decisions.json
+```
+
+This computes reviewed corrections, preserved correct content, damage and
+removals separately; unreviewed items stay pending. Role-specific counts and
+qualitative omission notes complement whole-claim transitions. Even reviewed
+decisions are revisable and are not automatically promoted to gold. If this
+small diagnostic preserves good attributions while fixing mixed voices, prepare
+a separate study with v3 outputs of other pages before drawing corpus-wide
+conclusions. The same command accepts other explicit source run IDs.
+
+Native Lab passed **523 relevant tests**, including 17 new statement-review
+tests; the focused 17-test suite was also rerun after the report adjustment.
+JUnit results are in `.work/kg_statement_review_v1/tests.xml` and
+`review_tests.xml`. Tests use synthetic sources and mocked provider responses,
+including correct quote attribution, splitting a narrator's conditional frame,
+an incorrect existing holder remaining a semantic review issue, immutable
+objects, broken references, frozen image/input drift, independent repetitions,
+interruption/resume, blinded adjudication and old verification compatibility.
+`historical_integrity.json` confirms that the source runs, snapshots, validation
+histories and source experiment records retained their exact hashes; all eight
+prepared real requests passed frozen-source verification without inference.
+
 ## Current limits
 
 - Local research server for a trusted workstation, not a multiuser production service. It binds to localhost, checks Host/Origin and CSRF headers, uses CSP and renders documentary/model content through text nodes.
@@ -398,3 +781,16 @@ Ignored evidence is under `.work/kg_playground_v1/`. It includes a synthetic SQL
 - Complete request bodies, OCR snapshots and image archives intentionally consume disk space. Review/export files can be large; none should be committed automatically.
 - Character-count token estimates exclude images. Actual provider usage takes precedence. Price estimates omit unknown failed-request billing and cannot predict a heterogeneous full corpus precisely.
 - Tolerant OCR boundaries, source metadata conflicts, parser-provided rectangles and semantic interpretations require review. A source-exact quotation can still support a wrong interpretation.
+
+## Experimental v3.1: discourse units and action-specific arguments
+
+See [the v3.1 contract, commands and validation notes](knowledge_graph/discourse_actions_v31.md).
+`concepts-v3.1-order-confidence` adds an analysis-order instruction to the unchanged
+v3 response contract. `concepts-v3.1-discourse-actions-confidence` uses schema v3.1:
+`discourse_units`, claim-to-unit references, and anchored action arguments in
+`events`. The existing page/model/prompt matrix supports comparison across these
+schemas and providers. All historical variants remain available; no historical
+extraction or campaign is migrated. Native structured-output requests and the
+user payload preserve the new discourse-before-claims presentation order, with
+an additional frozen wire hash. Location and reference checks do not adjudicate
+historical interpretation.

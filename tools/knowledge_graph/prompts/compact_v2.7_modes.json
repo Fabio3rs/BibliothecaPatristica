@@ -1,0 +1,5 @@
+{
+  "concepts_only": "Extract concepts and evidence; keep entities, claims, events and relations empty. Retain necessary warnings.",
+  "concepts_relations": "Analyze every segment for subjects and relevant participants. Represent expressed arguments as supported claims and actors, not only concept meanings. Add other useful claims/events and supported relations. Leave unsupported structures empty.",
+  "full_multimodal": "Analyze every segment for subjects, relevant participants and expressed arguments; represent supported claims, events and relations. Use the attached image to clarify ambiguities while preserving textual evidence. Leave unsupported structures empty."
+}

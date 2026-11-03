@@ -1,0 +1,35 @@
+{
+  "schema_version": "kg-navigation-v1",
+  "concepts": [
+    {
+      "id": "c1",
+      "label": "Criaturalidade do Filho",
+      "meaning": "Contestação da tese de que o Filho é uma criatura.",
+      "salience": "primary",
+      "evidence_ids": [
+        "ev1"
+      ]
+    }
+  ],
+  "arguments": [
+    {
+      "id": "a1",
+      "text": "A tese de que o Filho é uma criatura é apresentada e contestada, não assumida como conclusão.",
+      "concept_ids": [
+        "c1"
+      ],
+      "evidence_ids": [
+        "ev1"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "source": "ocr_block",
+      "locator": "b1",
+      "quote": "Athanasius refutat sententiam eorum qui Filium creaturam esse dicunt."
+    }
+  ],
+  "warnings": []
+}

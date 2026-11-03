@@ -17,6 +17,7 @@ import urllib.request
 from copy import deepcopy
 
 from .common import dumps
+from .http_capture import MAX_BODY_BYTES, capture_body
 from .pricing import estimate_cost, lookup
 
 ADAPTER_VERSION = 'kg-providers-1'
@@ -31,7 +32,7 @@ DEFAULTS = {
 ALLOWED = {'provider', 'model', 'base_url', 'api_key_env', 'structured_output', 'vision',
            'reasoning_support', 'temperature_support', 'token_parameter', 'reasoning_effort',
            'temperature', 'max_output_tokens', 'timeout', 'num_ctx', 'retries', 'prices', 'seed',
-           'retry_backoff_base', 'retry_backoff_max', 'retry_after_max'}
+           'retry_backoff_base', 'retry_backoff_max', 'retry_after_max', 'service_tier'}
 
 
 def normalize_config(value):
@@ -45,6 +46,9 @@ def normalize_config(value):
                   num_ctx=None, seed=None, prices={}, retry_backoff_base=1,
                   retry_backoff_max=60, retry_after_max=300)
     config.update(value)
+    if 'service_tier' in config:
+        if provider != 'openai' or not isinstance(config['service_tier'], str) or config['service_tier'] not in {'auto', 'default', 'flex'}:
+            raise ValueError('service_tier requires OpenAI and must be auto, default or flex')
     if 'prices' not in value:
         config['prices'] = (lookup(config) or {}).get('prices', {})
     if not isinstance(config['model'], str) or not config['model'].strip():
@@ -155,6 +159,18 @@ def request_spec(config, prompt, image=None):
     removed = []
     if provider == 'meta' and structured == 'schema':
         schema, removed = meta_transport_schema(schema)
+    if provider == 'openai' and structured == 'schema' and prompt.get('schema_version') == 'kg-navigation-v1':
+        # These constraints remain enforced by the local navigation validator.
+        schema, removed = meta_transport_schema(schema)
+        def project_strings(node, path=''):
+            if 'minLength' in node:
+                removed.append({'path': path + '/minLength', 'keyword': 'minLength',
+                                'value': node.pop('minLength')})
+            for name, child in node.get('properties', {}).items():
+                project_strings(child, path + '/properties/' + name)
+            if isinstance(node.get('items'), dict):
+                project_strings(node['items'], path + '/items')
+        project_strings(schema)
     if provider == 'ollama':
         if structured != 'none':
             body['format'] = schema if structured == 'schema' else 'json'
@@ -178,8 +194,10 @@ def request_spec(config, prompt, image=None):
                 body[key] = config[key]
         endpoint = config['base_url'].rstrip('/') + '/chat/completions'
     request = {'adapter_version': ADAPTER_VERSION, 'url': endpoint, 'body': body}
+    if provider == 'openai' and 'service_tier' in config:
+        body['service_tier'] = config['service_tier']
     if removed:
-        request['schema_projection'] = {'version': 'meta-structured-schema-1',
+        request['schema_projection'] = {'version': 'meta-structured-schema-1' if provider == 'meta' else 'openai-navigation-schema-1',
                                         'local_validation_preserved': True,
                                         'removed_constraints': removed}
     return request
@@ -206,11 +224,12 @@ def provider_error_message(message, response, config):
 
 
 class ProviderError(RuntimeError):
-    def __init__(self, message, *, response='', attempts=0, retry_log=None):
+    def __init__(self, message, *, response='', attempts=0, retry_log=None, http_response=None):
         super().__init__(message)
         self.response = response
         self.attempts = attempts
         self.retry_log = retry_log or []
+        self.http_response = http_response
 
 
 class NoRedirect(urllib.request.HTTPRedirectHandler):
@@ -237,7 +256,8 @@ def send(config, request, *, transport=None, sleeper=time.sleep, uniform=random.
     secret = os.getenv(config['api_key_env'], '') if config['api_key_env'] else ''
     if config['provider'] in {'openai', 'meta'} and not secret:
         raise ProviderError('Required API key environment variable is not set')
-    headers = {'Content-Type': 'application/json'}
+    headers = {'Content-Type': 'application/json', 'Accept': 'application/json',
+               'Accept-Charset': 'utf-8'}
     if secret:
         headers['Authorization'] = 'Bearer ' + secret
     transport = transport or urllib.request.build_opener(NoRedirect()).open
@@ -245,12 +265,21 @@ def send(config, request, *, transport=None, sleeper=time.sleep, uniform=random.
     retry_log = []
     for attempt in range(config['retries'] + 1):
         server_delay, status = 0, None
-        req = urllib.request.Request(request['url'], data=dumps(request['body']).encode(), headers=headers, method='POST')
+        req = urllib.request.Request(request['url'], data=dumps(request['body']).encode('utf-8', errors='strict'), headers=headers, method='POST')
         try:
             with transport(req, timeout=config['timeout']) as response:
-                response_text = redact(response.read(32_000_001).decode('utf-8'), config)
-            if len(response_text) > 32_000_000:
-                raise ProviderError('Provider response exceeded limit', attempts=attempt + 1, retry_log=retry_log)
+                body_bytes = response.read(MAX_BODY_BYTES + 1)
+            capture = capture_body(body_bytes, config, complete=len(body_bytes) <= MAX_BODY_BYTES)
+            if len(body_bytes) > MAX_BODY_BYTES:
+                raise ProviderError('Provider response exceeded byte limit', attempts=attempt + 1,
+                                    retry_log=retry_log, http_response=capture)
+            try:
+                response_text = redact(body_bytes.decode('utf-8', errors='strict'), config)
+                capture['utf8_valid'] = True
+            except UnicodeDecodeError as exc:
+                capture.update(utf8_valid=False, decode_error_start=exc.start, decode_error_end=exc.end)
+                raise ProviderError('Provider response is not valid UTF-8; original body retained when safe',
+                                    attempts=attempt + 1, retry_log=retry_log, http_response=capture) from None
             try:
                 data = json.loads(response_text)
                 if config['provider'] == 'ollama':
@@ -270,8 +299,8 @@ def send(config, request, *, transport=None, sleeper=time.sleep, uniform=random.
                 usage = {key: value if type(value) is int and value >= 0 else None
                          for key, value in usage.items()}
             except (ValueError, KeyError, TypeError, IndexError, AttributeError) as exc:
-                raise ProviderError(f'Unrecognized response envelope: {type(exc).__name__}', response=response_text, attempts=attempt + 1, retry_log=retry_log) from None
-            return {'raw_response': raw, 'provider_response': response_text, 'usage': usage,
+                raise ProviderError(f'Unrecognized response envelope: {type(exc).__name__}', response=response_text, attempts=attempt + 1, retry_log=retry_log, http_response=capture) from None
+            return {'raw_response': raw, 'provider_response': response_text, 'http_response': capture, 'usage': usage,
                     'finish_reason': finish, 'latency_seconds': time.perf_counter() - started,
                     'attempts': attempt + 1, 'retry_log': retry_log}
         except urllib.error.HTTPError as exc:

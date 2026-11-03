@@ -11,7 +11,7 @@ from tools.knowledge_graph.playground.common import ROOT, digest, dumps, readonl
 from tools.knowledge_graph.playground.storage import Store
 from tools.knowledge_graph.playground.snapshot_v2 import demo_snapshot
 from tools.knowledge_graph.playground.experiment_runner import prepare, execute_experiment, execute_run
-from tools.knowledge_graph.playground.validation import evaluate_response
+from tools.knowledge_graph.playground.validation_dispatch import evaluate_response
 from tools.knowledge_graph.playground.verification_contract import (
     apply_decisions, candidate_payload, evaluate_review, review_schema,
 )

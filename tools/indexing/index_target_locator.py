@@ -33,7 +33,7 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 from dataclasses import dataclass, field
 from functools import lru_cache
 from pathlib import Path
-from typing import Any
+from typing import Any, NamedTuple
 
 try:
     from rapidfuzz.distance import Levenshtein as _RapidLevenshtein
@@ -187,6 +187,7 @@ class PageCandidate:
     estimator_pages: list[int] = field(default_factory=list)
     estimator_confidence: float = 0.0
     estimator_evidence: list[str] = field(default_factory=list)
+    sequence_validation: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass(slots=True)
@@ -276,17 +277,21 @@ def parse_ocr_page_xml(text: str) -> dict[str, str]:
 
 
 @lru_cache(maxsize=4096)
-def _read_ocr_page_text(path_str: str) -> str:
+def _read_ocr_page_text(path_str: str, signature: tuple[int, int, int]) -> str:
     return Path(path_str).read_text(encoding="utf-8", errors="replace")
 
 
 @lru_cache(maxsize=4096)
-def _parse_ocr_page_xml_cached(path_str: str) -> dict[str, str]:
-    return parse_ocr_page_xml(_read_ocr_page_text(path_str))
+def _parse_ocr_page_xml_cached(path_str: str, signature: tuple[int, int, int]) -> dict[str, str]:
+    return parse_ocr_page_xml(_read_ocr_page_text(path_str, signature))
 
 
 def parse_ocr_page_path(path: Path) -> dict[str, str]:
-    return _parse_ocr_page_xml_cached(str(path.resolve()))
+    resolved = path.resolve()
+    stat = resolved.stat()
+    return _parse_ocr_page_xml_cached(
+        str(resolved), (stat.st_size, stat.st_mtime_ns, stat.st_ctime_ns)
+    )
 
 
 def extract_zone_numbers(text: str) -> list[int]:
@@ -706,7 +711,22 @@ def _fuzzy_text_evidence(
     return score, evidence
 
 
+class _TextZones(NamedTuple):
+    header_norm: str
+    body_norm: str
+    footer_norm: str
+
+
 def _text_evidence_for_query(query: str, page: PageCandidate) -> tuple[float, list[Evidence]]:
+    score, evidence = _cached_text_evidence(
+        query, _TextZones(page.header_norm, page.body_norm, page.footer_norm)
+    )
+    # Repeated references share text scores, but callers own their evidence objects.
+    return score, [Evidence(item.kind, item.raw, item.weight) for item in evidence]
+
+
+@lru_cache(maxsize=8192)
+def _cached_text_evidence(query: str, page: _TextZones) -> tuple[float, list[Evidence]]:
     norm = normalize_for_search(query)
     if not norm:
         return 0.0, []
@@ -1425,7 +1445,10 @@ def _softmax_probabilities(scores: list[float]) -> list[float]:
     return [value / denom for value in exps]
 
 
-def _load_volume_pages(source_root: Path, adjacency_window: int) -> list[PageCandidate]:
+def _load_volume_pages(
+    source_root: Path, adjacency_window: int, *, estimator_db_path: Path | None = None,
+    require_estimator: bool = False,
+) -> list[PageCandidate]:
     pages: list[PageCandidate] = []
     source_files = discover_preferred_pages(
         source_root,
@@ -1465,11 +1488,13 @@ def _load_volume_pages(source_root: Path, adjacency_window: int) -> list[PageCan
         try:
             from .editorial_page_estimator import estimate_editorial_pages
 
+            estimator_options = {"db_path": estimator_db_path} if estimator_db_path is not None else {}
             estimate_payload = estimate_editorial_pages(
                 volume_id=volume_id,
                 source_root=source_root,
                 collection=collection,
                 window=adjacency_window,
+                **estimator_options,
             )
             by_file = {item["file"]: item for item in estimate_payload.get("files") or []}
             for page in pages:
@@ -1485,6 +1510,7 @@ def _load_volume_pages(source_root: Path, adjacency_window: int) -> list[PageCan
                     page.estimator_pages = []
                 page.estimator_confidence = float(est.get("confidence") or 0.0)
                 page.estimator_evidence = [item.get("kind", "") for item in est.get("evidence") or [] if item.get("kind")]
+                page.sequence_validation = est.get("sequence_validation") or {}
 
                 if page.inferred_printed_page is None and page.estimator_pages:
                     page.inferred_printed_page = page.estimator_pages[0]
@@ -1512,6 +1538,8 @@ def _load_volume_pages(source_root: Path, adjacency_window: int) -> list[PageCan
                         page.inferred_confidence = max(page.inferred_confidence, min(0.82, page.estimator_confidence))
                         page.inferred_evidence.append(f"estimator_override_weak_local:{page.estimator_pages}")
         except Exception:
+            if require_estimator:
+                raise
             # The locator still works without estimator support; keep it best-effort.
             pass
     return pages
@@ -2178,6 +2206,7 @@ def resolve_entry_candidates(entry: dict[str, Any], pages: list[PageCandidate], 
                 "inferred_page_candidates": page.inferred_page_candidates,
                 "estimator_pages": page.estimator_pages,
                 "estimator_confidence": round(page.estimator_confidence, 4),
+                "sequence_validation": page.sequence_validation,
                 "editorial_page_decision_source": decision_source,
                 "candidate_role": assessment.candidate_role,
                 "role_score": assessment.role_score,
@@ -2287,6 +2316,8 @@ def resolve_index_targets(
     request: dict[str, Any],
     *,
     progress_callback: Any | None = None,
+    estimator_db_path: Path | None = None,
+    require_estimator: bool = False,
 ) -> dict[str, Any]:
     if not isinstance(request, dict):
         raise ValueError("request must be a JSON object")
@@ -2300,7 +2331,10 @@ def resolve_index_targets(
         raise FileNotFoundError(f"source_root not found: {source_root}")
 
     top_k, adjacency_window, requested_workers = _request_options(request)
-    pages = _load_volume_pages(source_root, adjacency_window=adjacency_window)
+    pages = _load_volume_pages(
+        source_root, adjacency_window=adjacency_window, estimator_db_path=estimator_db_path,
+        require_estimator=require_estimator,
+    )
 
     entries = list(request.get("entries") or [])
     total_entries = len(entries)
@@ -2373,6 +2407,9 @@ def resolve_index_targets(
             "editorial_page_estimator": True,
         },
         "entries": [result for result in results if result is not None],
+        **({"editorial_page_map": {page.file: page.sequence_validation for page in pages
+                                   if page.sequence_validation.get("validated")}}
+           if (request.get("options") or {}).get("include_editorial_page_map") else {}),
     }
 
 

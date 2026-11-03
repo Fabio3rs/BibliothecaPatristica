@@ -18,7 +18,7 @@ from .providers import DEFAULTS, DEFAULT_MAX_OUTPUT_TOKENS
 from .pricing import catalog as price_catalog, lookup as price_lookup
 from .reporting import csv_report, export_jsonl, markdown, report
 from .snapshot_v2 import guard_holdout
-from .validation import evaluate_response
+from .validation_current import evaluate_response
 from .corpus_queue import list_campaigns, status as corpus_status
 
 STATIC = Path(__file__).parent / 'static'
@@ -237,7 +237,8 @@ def make_server(app, host='127.0.0.1', port=8766):
                 if path == '/api/validate':
                     run = self.run_access(data['run_id'], evaluation)
                     case = self.case_access(run['case_id'], evaluation)
-                    validation = evaluate_response(case['snapshot'], run['result'] or {}, run['prepared'])
+                    validation = evaluate_response(case['snapshot'], run['result'] or {}, run['prepared'],
+                                                   matching_policy=data.get('matching_policy'))
                     app.store.add_validation(run['id'], validation)
                     return self.reply(validation)
                 return self.reply({'error': 'Not found'}, 404)

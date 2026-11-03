@@ -125,6 +125,43 @@ def test_estimator_uses_neighbors_to_fill_missing_header(tmp_path: Path) -> None
     assert item["best_left_page"] == 67
     assert item["best_right_page"] == 68
     assert any(ev["kind"] == "neighbor_fit" for ev in item["evidence"])
+    assert not item["sequence_validation"]["validated"]
+
+
+@pytest.mark.parametrize("middle_header", ["", "405 HISTORIA 406"])
+def test_independent_headers_validate_target_without_correct_header(tmp_path, middle_header):
+    text_root = tmp_path / "PGN/text"
+    headers = ["101 HISTORIA 102", "103 HISTORIA 104", middle_header,
+               "107 HISTORIA 108", "109 HISTORIA 110"]
+    for seq, header in enumerate(headers, 1):
+        write_page(text_root / f"page-{seq:03}.txt",
+                   f'<pagina><bloco tipo="cabecalho">{header}</bloco>'
+                   '<bloco tipo="texto_principal">Athanasius.</bloco></pagina>')
+    result = estimate_editorial_pages(source_root=text_root, collection="PG", db_path=tmp_path / "cache.db")
+    middle = result["files"][2]
+    proof = middle["sequence_validation"]
+    assert middle["best_guess"] == proof["pages"] == [105, 106]
+    assert proof["validated"]
+    assert [anchor["delta"] for anchor in proof["anchors"]] == [2, 1, -1, -2]
+    assert all(anchor["file"] != middle["file"] for anchor in proof["anchors"])
+    assert not result["files"][0]["sequence_validation"]["validated"]
+    assert not result["files"][-1]["sequence_validation"]["validated"]
+
+
+@pytest.mark.parametrize("scenario", ["gap", "competing"])
+def test_neighbor_validation_rejects_gaps_and_competing_sequences(tmp_path, scenario):
+    text_root = tmp_path / "PGN/text"
+    sequences = [1, 2, 4, 5, 6] if scenario == "gap" else list(range(1, 10))
+    target = 2 if scenario == "gap" else 4
+    for index, seq in enumerate(sequences):
+        left = 101 + 2 * index
+        if scenario == "competing" and index % 2:
+            left += 200
+        header = "" if index == target else f"{left} HISTORIA {left + 1}"
+        write_page(text_root / f"page-{seq:03}.txt",
+                   f'<pagina><bloco tipo="cabecalho">{header}</bloco></pagina>')
+    result = estimate_editorial_pages(source_root=text_root, collection="PG", db_path=tmp_path / "cache.db")
+    assert not result["files"][target]["sequence_validation"]["validated"]
 
 
 def test_estimator_overrides_consecutive_cer_pair_with_bracketed_sequence(

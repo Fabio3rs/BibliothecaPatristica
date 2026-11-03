@@ -1,0 +1,17 @@
+{
+  "repository": "https://github.com/Fabio3rs/PatrologiaIndexer",
+  "version": "v0.8.5",
+  "commit": "028cd943561c546974ad78eefc32e33eb6b5a1a6",
+  "changes": [
+    "indexador_wasm.js renamed to .cjs; original bytes preserved",
+    "indexador-lib.js: injectable fetchImpl (node-fetch.patch)"
+  ],
+  "sha256": {
+    "indexador-lib.js": "a6328a087b4ea464a211fca5ba80d091871294fc09d654f96e941d300f8f2328",
+    "indexador-pagefind.js": "7d85e8385dbad6a26e6a8a3f69b5a7ea9884838832200c7fff3534a88574e4dd",
+    "indexador_wasm.cjs": "bbd8ff67b3b2c7d1eea0fe21ea04fd1a7901e4ed74fca3abb6c3865668b86d21",
+    "indexador_wasm.wasm": "3ac42a3d75faf41017341a7e5bd2e084d1cfa7c47ea711e71132658c4f8358d1",
+    "node-fetch.patch": "bd0834c904133c0db843f03a59cd6af766c2547d690b821824d183f51916bb85",
+    "query-dsl.mjs": "949b6b6feb500bb62f219e0ff0a64649145f778f3cb233f7c2093528b63e445a"
+  }
+}

@@ -154,6 +154,9 @@ jobs:
           find "./dist/indexador/search/${PUBLIC_INDEXADOR_SEARCH_VERSION}/scripture-docids" \
             -name '*.gz' -type f -print0 | xargs -0 -n1 gzip -t
 
+      - name: Generate MCP compatibility from built publication
+        run: node ../tools/build_mcp_compat.mjs ./dist
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:

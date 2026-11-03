@@ -26,10 +26,20 @@ def run_metrics(run, case):
             'validation_version': validation.get('version'), 'latest_validation_valid': validation.get('valid'),
             'exact_evidence_valid': validation.get('source_exact', validation.get('source_valid')),
             'exact_quotes': validation.get('evidence_counts', {}).get('exact'),
-            'approximate_quotes': (sum(validation['evidence_counts'].get(k, 0) for k in ('normalized', 'fuzzy'))
+            'approximate_quotes': (sum(validation['evidence_counts'].get(k, 0) for k in ('normalized', 'fuzzy', 'note_marker'))
                                    if 'evidence_counts' in validation else None),
+            'ambiguous_quotes': validation.get('evidence_counts', {}).get('ambiguous'),
+            'segmented_quotes': validation.get('evidence_counts', {}).get('segmented', 0),
             'concepts': len(extraction.get('concepts', [])) if valid_shape else None,
+            'arguments': len(extraction.get('arguments', [])) if valid_shape else None,
+            'schema_version': run['prepared'].get('schema_version'),
             'relations': len(extraction.get('relations', [])) if valid_shape else None,
+            'discourse_units': len(extraction.get('discourse_units', [])) if valid_shape else None,
+            'events': len(extraction.get('events', [])) if valid_shape else None,
+            'anchor_count': len(validation.get('anchor_matches', [])),
+            'anchors_located': sum(a['accepted'] for a in validation.get('anchor_matches', [])),
+            'anchors_ambiguous': sum(a['accepted'] and not a['position_resolved'] for a in validation.get('anchor_matches', [])),
+            'projected_relations': len((validation.get('graph_projection') or {}).get('relations', [])),
             'duplicate_label_warnings': sum(w.startswith('duplicate_concept') for w in validation.get('warnings', [])),
             'latency_seconds': result.get('latency_seconds'), 'cost_usd': cost['cost_usd'],
             'cost_basis': cost['basis'], 'price_source': pricing.get('source'),
@@ -56,7 +66,15 @@ def aggregate(rows, corpus_pages):
             'located_evidence_valid_fraction_of_structural_valid': mean([int(r['evidence_valid']) for r in shaped]),
             'exact_evidence_valid_fraction_of_structural_valid': mean([int(r['exact_evidence_valid']) for r in shaped]),
             'approximate_quotes': sum(r['approximate_quotes'] or 0 for r in rows),
+            'segmented_quotes': sum(r.get('segmented_quotes', 0) for r in rows),
+            'ambiguous_quotes': sum(r.get('ambiguous_quotes') or 0 for r in rows),
             'average_concepts': mean([r['concepts'] for r in shaped]), 'average_relations': mean([r['relations'] for r in shaped]),
+            'average_arguments': mean([r.get('arguments', 0) for r in shaped]),
+            'average_projected_relations': mean([r['projected_relations'] for r in shaped]),
+            'average_discourse_units': mean([r.get('discourse_units', 0) for r in shaped]),
+            'average_events': mean([r.get('events', 0) for r in shaped]),
+            'anchors_located': sum(r.get('anchors_located', 0) for r in rows),
+            'anchors_ambiguous': sum(r.get('anchors_ambiguous', 0) for r in rows),
             'duplicate_label_warnings': sum(r['duplicate_label_warnings'] for r in rows),
             'actual_inference_runs': len(actual), 'priced_runs': len(costs),
             'latency_median_seconds': statistics.median(latencies) if latencies else None,
@@ -87,13 +105,15 @@ def report(store, experiment, corpus_pages=288000):
 
 def markdown(data):
     lines = [f"# KG experiment {data['experiment']}", '', data['note'], '',
-             '| Run | Page | Provider / model | Original status | Latest validation | Schema | Located evidence | Exact / approximate quotes | Concepts | Relations | Tokens in/out total | Reasoning included | Output limit | Limit reached | Seconds | USD | Cost basis / rate date |',
-             '|---|---|---|---|---|---|---|---|---:|---:|---|---:|---:|---|---:|---:|---|']
+             'Navigation arguments are separate textual records, not claims or stance relations. Model relations are emitted in relations[]. Projected relations come from explicit v3 claim attributions/participants and v3.1 discourse/action fields; they are separate, qualified connections, not additional verified assertions. Ambiguous quotes are shown separately from exact/approximate matches; location may be accepted while the precise position remains unresolved.', '',
+             '| Run | Page | Provider / model | Original status | Latest validation | Schema | Located evidence | Exact / approximate / ambiguous / segmented quotes | Concepts | Arguments | Model relations | Projected relations | Tokens in/out total | Reasoning included | Output limit | Limit reached | Seconds | USD | Cost basis / rate date |',
+             '|---|---|---|---|---|---|---|---|---:|---:|---:|---:|---|---:|---:|---|---:|---:|---|']
     def cell(value):
         return str(value if value is not None else '—').replace('|', '\\|').replace('\n', ' ').replace('<', '&lt;')
     for r in data['runs']:
         values = [r['run_id'], r['page'], r['provider'] + ' / ' + r['model'], r['status'], r['latest_validation_valid'], r['schema_valid'],
-                  r['evidence_valid'], f"{r['exact_quotes']} / {r['approximate_quotes']}", r['concepts'], r['relations'], f"{r['input_tokens']}/{r['output_tokens']}",
+                  r['evidence_valid'], f"{r['exact_quotes']} / {r['approximate_quotes']} / {r.get('ambiguous_quotes', '—')} / {r.get('segmented_quotes', 0)}",
+                  r['concepts'], r.get('arguments', 0), r['relations'], r.get('projected_relations', 0), f"{r['input_tokens']}/{r['output_tokens']}",
                   r['reasoning_tokens'], r['max_output_tokens'], r['output_limit_reached'], r['latency_seconds'], r['cost_usd'],
                   f"{r['cost_basis']} / {r['price_recorded_on'] or r['price_source'] or '—'}"]
         lines.append('| ' + ' | '.join(cell(x) for x in values) + ' |')

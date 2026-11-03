@@ -1,0 +1,5 @@
+{
+  "concepts_only": "Extract concepts and evidence; keep entities, claims, events and relations empty. Retain necessary warnings.",
+  "concepts_relations": "Analyze every segment for useful subjects and participants. Represent expressed arguments as atomic claims with explicit attributions and participant roles. Put only other supported links in relations. Empty unsupported structures are valid.",
+  "full_multimodal": "Analyze every segment for subjects and arguments. Populate claim attributions and participants separately. Use the attached image to clarify reading, preserving evidence from the supplied text. Empty unsupported structures are valid."
+}

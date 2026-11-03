@@ -1,0 +1,2 @@
+UNICODE OUTPUT
+Emit non-ASCII characters directly as literal Unicode in valid UTF-8 JSON, not as \uXXXX escapes. Preserve Portuguese accents, Latin ligatures (æ, œ), Greek letters, breathings and combining diacritics as supplied. Copy quotations without transliteration or character substitution. Use normal JSON escaping only where required, such as quotation marks, backslashes and control characters. Do not insert control characters into words. Do not repair or reinterpret source spellings while copying evidence.

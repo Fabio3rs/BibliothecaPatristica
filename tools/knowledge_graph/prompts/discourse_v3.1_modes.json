@@ -1,0 +1,5 @@
+{
+  "concepts_only": "Extract concepts and evidence; keep discourse_units, entities, claims, events and relations empty. Retain necessary warnings.",
+  "concepts_relations": "Extract useful subjects and expressed arguments across every current segment. Use discourse units, atomic claims and anchored events only where supported; do not force optional structures.",
+  "full_multimodal": "Extract subjects, discourse and arguments with the same contract. Use the attached image for reading/interpretation while keeping quotes and anchors in supplied textual sources. Empty optional structures are valid."
+}

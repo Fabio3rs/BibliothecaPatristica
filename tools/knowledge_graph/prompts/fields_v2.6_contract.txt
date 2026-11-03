@@ -1,0 +1,41 @@
+FIELD AND ENUM MEANINGS — concepts-v2.6-field-contract-confidence
+These definitions specify the output vocabulary, without changing the schema. Importance, semantic support, source modality and model confidence are separate dimensions.
+
+INPUT ROLES
+- source: application-owned page identity and provenance, distinct from evidence.source below. v2.segments: current summaries and work boundaries; v2.summary_display_pt is their display text, not additional evidence. v2.metadata_context: bibliographic identity, contributors and conflicts; v2.context_only: accumulated context, never current-page evidence. ocr.blocks: supplied id/text pairs with parser-owned metadata. facsimile.available means an image exists; facsimile.attached means this request includes it. response_schema defines the output contract; do not copy input metadata into extra output fields.
+
+COMMON FIELDS
+- schema_version: copy the response_schema version constant.
+- id: unique within this extraction, never a global identity or input locator; use the namespaces below.
+- evidence_ids: supporting evidence entry IDs; reuse an entry when its passage supports several objects.
+- grounding: explicit = content or relationship directly expressed by the cited passage; inferred = derived through a defensible interpretive step. Translation or a modern Portuguese label alone does not make content inferred. Neither value certifies historical truth.
+- model_confidence: uncalibrated source fidelity, following the protocol below: score estimates reviewer acceptance of the entire item; rationale identifies support and material uncertainty. It is not the source author's certainty, salience or quote similarity.
+
+CONCEPT FIELDS
+- label: concise, reusable Portuguese subject name. meaning: its page-specific sense, scope and qualifications.
+- salience: primary = central to a substantive discussion; secondary = meaningfully treated as support, comparison or a subsidiary topic; incidental = merely mentioned. Several subjects can be primary, including across works. Measure treatment on this page, not fame, frequency or corpus-wide importance. Retain useful secondary subjects; ordinarily omit incidental concepts.
+
+ENTITY FIELDS
+- label: identifiable name or bibliographic designation with identity-critical qualifications. type: PERSON = individual actor, including a narrative figure; GROUP = collective or school; INSTITUTION = organized body; WORK = individual textual work; PLACE = location; SOURCE_REFERENCE = citation or particular textual passage; OTHER = identifiable participant fitting none of these, not a concept.
+- origin: current_page = identity supported by current OCR or a current summary segment; bibliographic_context = identity supplied only by the relevant work's metadata. This is the basis for identity, not historical origin. Metadata-only identity may have empty evidence_ids with a warning; it does not establish stance. Cumulative context alone cannot identify a current actor.
+
+CLAIM FIELDS
+- proposition: one coherent position, including necessary conditions and negation; separate opposing voices and editorial corrections.
+- mode: asserted = the current speaking voice's own assertion; reported = attributed to another voice, without implying reporter endorsement; hypothetical = entertained supposition or imagined objection; questioned = raised as an open question or doubt, without settling it; uncertain = tentative content or unresolved reading/status. An editor's own assertion can be asserted; an opponent's rejected position can remain reported.
+- If modes overlap, preserve all qualifications in proposition; prefer hypothetical or questioned for that operative status even within a report, uncertain for unresolved status, otherwise distinguish reported/asserted by voice. An actually affirmed conditional is not automatically hypothetical; an imagined act of speaking is. This is source modality, not model confidence.
+
+EVENT FIELDS
+- description: narrated occurrence with supported participants and qualifications. narrative_status: reported = narrated as having occurred, without independent confirmation; hypothetical = imagined/conditional occurrence; uncertain = doubtful occurrence or unresolved reading.
+- time_expression: supplied wording for the event's time, retaining approximation; null if absent. An edition date is not automatically the event's date.
+
+RELATION FIELDS AND DIRECTION
+- source_id and target_id: emitted node IDs, never evidence, input locators or relations. predicate: English UPPER_SNAKE_CASE, read from source to target; an open string, not an enum or a coverage quota.
+- actor -> AFFIRMS -> claim: states/endorses it; actor -> DEFENDS -> claim: argues for it; actor -> REFUTES -> claim: argues against that exact proposition, not its rebuttal or nearby bibliography. REFUTES describes an argumentative act, not independently proven success. Avoid redundant AFFIRMS/DEFENDS for one act.
+- claim -> ATTRIBUTES_TO -> actor: assigns this exact position to its holder, not to the reporter or person criticized; does not imply the reporter's endorsement.
+- actor/work/claim -> CITES -> work/source reference: invokes that text; actor/work/claim -> INTERPRETS -> text/concept: explains its meaning; translator -> TRANSLATES -> work: renders it in another language, not exegesis.
+- claim/event/work -> ABOUT -> concept: substantively concerns that subject; actor -> PARTICIPATES_IN -> event: participates in that occurrence. Co-occurrence alone supports neither.
+- Other predicates need equally clear direction and support; explain a necessary convention or ambiguity in warnings. Avoid synonymous/reverse duplicates. A hypothetical target does not qualify the incoming act: retain faithful actual responses to hypotheses, omit misleading imagined stances.
+
+EVIDENCE AND WARNING FIELDS
+- evidence.source: ocr_block = supplied block.text; summary_segment = current segment.summary. locator: its exact input id, not an evidence id or page number. quote: faithful contiguous text in the original script, retaining note markers; never transliterate or translate. Metadata and cumulative summaries are not evidence locators. Locating a quote does not validate its interpretation.
+- warnings.code: OCR_AMBIGUITY = ambiguous/damaged reading; SOURCE_CONFLICT = material source disagreement; AMBIGUOUS_ATTRIBUTION = unresolved speaker/author/holder; WORK_BOUNDARY = uncertain work/segment separation; OTHER = another material limitation. message: concise Portuguese explanation naming the affected item/locator. A warning cannot justify an unsupported edge; ordinary bilingual or multiwork layout is not itself a warning.
