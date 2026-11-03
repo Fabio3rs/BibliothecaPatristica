@@ -75,6 +75,12 @@ jobs:
       - run: npm run build
       - name: Unit, stdio, offline integration and real WASM tests
         run: npm test
+      - name: Prepare Indexador DSL for shared site tests
+        # Pages downloads this generated asset. MCP uses its vendored copy,
+        # whose provenance hash was already verified by npm run build.
+        run: |
+          mkdir -p ../web/public/indexador/runtime
+          cp vendor/indexador/query-dsl.mjs ../web/public/indexador/runtime/query-dsl.mjs
       - name: Existing shared site tests
         run: node --test ../web/tests/*.test.mjs
       - name: Inspect, pack and checksum
