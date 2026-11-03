@@ -17,7 +17,7 @@ from tools.knowledge_graph.playground.experiment_runner import execute_experimen
 from tools.knowledge_graph.playground.reporting import csv_report, export_jsonl, markdown, report
 from tools.knowledge_graph.playground.service import Playground
 from tools.knowledge_graph.playground.providers import DEFAULT_MAX_OUTPUT_TOKENS
-from tools.knowledge_graph.playground.validation import evaluate_response
+from tools.knowledge_graph.playground.validation_current import POLICIES, evaluate_response
 
 
 def parser():
@@ -33,6 +33,8 @@ def parser():
     serve.add_argument('--port', type=int, default=8766)
     run = sub.add_parser('run', parents=[shared], help='Prepare or execute page/model/prompt matrix')
     run.add_argument('--pages', nargs='+', default=[])
+    run.add_argument('--case-ids', nargs='+', type=int, default=[],
+                     help='Reuse frozen source snapshots and archived images from this playground DB')
     run.add_argument('--benchmark-ids', nargs='+', default=[])
     run.add_argument('--generation-id', type=int)
     run.add_argument('--run-id', type=int)
@@ -45,6 +47,8 @@ def parser():
     run.add_argument('--api-key-env')
     run.add_argument('--model-configs', type=Path, help='JSON array of complete provider profiles')
     run.add_argument('--reasoning-effort')
+    run.add_argument('--service-tier', choices=['auto', 'default', 'flex'],
+                     help='OpenAI processing tier; omitted by default. Flex is preserved on retries.')
     run.add_argument('--temperature', type=float)
     run.add_argument('--max-output-tokens', type=int, default=DEFAULT_MAX_OUTPUT_TOKENS,
                      help='Output budget, including reasoning where reported (default: %(default)s)')
@@ -86,8 +90,10 @@ def parser():
     compare.add_argument('--output', type=Path)
     validate = sub.add_parser('validate', parents=[shared])
     validate.add_argument('--run', type=int, required=True)
-    validate.add_argument('--matching-policy', choices=['local-quote-v2','local-quote-v3','local-quote-v4'],
+    validate.add_argument('--matching-policy', choices=POLICIES,
                           help='Explicitly append a versioned validation; never changes raw output or original run status')
+    validate.add_argument('--dry-run', action='store_true', help='Evaluate without appending validation history')
+    validate.add_argument('--output', type=Path)
     inspect = sub.add_parser('inspect', parents=[shared])
     inspect.add_argument('--run', type=int, required=True)
     inspect.add_argument('--output', type=Path)
@@ -97,6 +103,7 @@ def parser():
     create.add_argument('--base-url')
     create.add_argument('--api-key-env')
     create.add_argument('--reasoning-effort')
+    create.add_argument('--service-tier', choices=['auto', 'default', 'flex'])
     create.add_argument('--temperature', type=float)
     create.add_argument('--num-ctx', type=int)
     create.add_argument('--vision', action='store_true', default=None)
@@ -170,11 +177,14 @@ def parser():
     search_prepare.add_argument('--arms', nargs='+', help='Extraction arms to compare in addition to summary')
     search_prepare.add_argument('--missing-output-policy', choices=['strict', 'summary_only'], default='strict',
                                 help='Explicitly retain summary-only pages when an extraction is truncated')
-    vp = sub.add_parser('verify-prepare', parents=[shared], help='Freeze 24 checks of existing D outputs; zero inference')
-    vp.add_argument('--source-experiment', default='EXP-55b6938cd135')
-    vp.add_argument('--seed', type=int, default=20261103)
-    vp.add_argument('--name', default='KG D + source verification v1')
-    vp.add_argument('--output', type=Path, default=ROOT/'.work/kg_verify_stance_v1/preflight.json')
+    vp = sub.add_parser('verify-prepare', parents=[shared], help='Freeze second-pass checks; zero inference')
+    vp.add_argument('--study', choices=['stance-v1', 'statement-boundaries-v1'], default='stance-v1')
+    vp.add_argument('--source-experiment', help='Original stance-v1 study only')
+    vp.add_argument('--source-runs', type=int, nargs='+', help='Frozen v3 outputs for statement-boundaries-v1 (default: 1679–1682)')
+    vp.add_argument('--repetitions', type=int, help='Independent reviews per v3 output (default: 2)')
+    vp.add_argument('--seed', type=int)
+    vp.add_argument('--name')
+    vp.add_argument('--output', type=Path)
     vr = sub.add_parser('verify-run', parents=[shared], help='Explicitly execute/resume only the prepared second-pass calls')
     vr.add_argument('--experiment', required=True)
     vr.add_argument('--concurrency', type=int, default=2)
@@ -182,7 +192,7 @@ def parser():
     vr.add_argument('--retry-interrupted', action='store_true')
     report_v = sub.add_parser('verify-report', parents=[shared], help='Offline paired results, blinded packets and adjudications')
     report_v.add_argument('--experiment', required=True)
-    report_v.add_argument('--output', type=Path, default=ROOT/'.work/kg_verify_stance_v1/report.md')
+    report_v.add_argument('--output', type=Path, help='Defaults to the directory for the selected study')
     report_v.add_argument('--reviews', type=Path, help='Independent decisions copied from the blinded template')
     report_v.add_argument('--matching-policy', choices=['local-quote-v4'],
                           help='Compare the micro-OCR policy offline; does not write validation history')
@@ -193,7 +203,7 @@ def provider_config(args):
     keys = ['provider', 'model', 'base_url', 'api_key_env', 'reasoning_effort', 'temperature',
             'max_output_tokens', 'timeout', 'retries', 'num_ctx', 'vision', 'reasoning_support',
             'temperature_support', 'structured_output', 'token_parameter',
-            'retry_backoff_base', 'retry_backoff_max', 'retry_after_max']
+            'retry_backoff_base', 'retry_backoff_max', 'retry_after_max', 'service_tier']
     config = {k: getattr(args, k) for k in keys if getattr(args, k) is not None}
     if args.prices:
         config['prices'] = read_json(args.prices)
@@ -212,18 +222,57 @@ def output(value, path=None):
 def main(argv=None):
     args = parser().parse_args(argv)
     # Read-only diagnostics must never initialize Store or touch production databases.
+    if args.command == 'validate' and args.dry_run:
+        from tools.knowledge_graph.playground.common import readonly
+        with readonly(args.db) as con:
+            row = con.execute('SELECT r.prepared_json,r.result_json,c.snapshot_json FROM runs r '
+                              'JOIN cases c ON c.id=r.case_id WHERE r.id=?', (args.run,)).fetchone()
+        if row is None:
+            raise ValueError('Run not found')
+        result = evaluate_response(json.loads(row['snapshot_json']), json.loads(row['result_json'] or '{}'),
+                                   json.loads(row['prepared_json']), matching_policy=args.matching_policy)
+        output(result, args.output)
+        return 0 if result['valid'] else 1
     if args.command == 'verify-report':
-        from tools.knowledge_graph.playground.verification_reporting import write_verification_report
-        output(write_verification_report(args.db,args.experiment,args.output,reviews=args.reviews,
-                                         matching_policy=args.matching_policy))
+        from tools.knowledge_graph.playground.common import readonly
+        with readonly(args.db) as con:
+            row = con.execute('SELECT plan_json FROM experiments WHERE id=?', (args.experiment,)).fetchone()
+        if row is None:
+            raise ValueError('Experiment not found')
+        if json.loads(row[0]).get('study') == 'statement-boundaries-v1':
+            if args.matching_policy:
+                raise ValueError('Statement review reports preserve the frozen locator policy')
+            from tools.knowledge_graph.playground.statement_review_reporting import write_report
+            output(write_report(args.db, args.experiment,
+                                args.output or ROOT/'.work/kg_statement_review_v1/report.md', reviews=args.reviews))
+        else:
+            from tools.knowledge_graph.playground.verification_reporting import write_verification_report
+            output(write_verification_report(args.db,args.experiment,
+                                             args.output or ROOT/'.work/kg_verify_stance_v1/report.md',
+                                             reviews=args.reviews, matching_policy=args.matching_policy))
         return 0
     if args.command in {'verify-prepare','verify-run'}:
         from tools.knowledge_graph.playground.storage import Store
         store = Store(args.db)
         if args.command == 'verify-prepare':
-            from tools.knowledge_graph.playground.verification_study import prepare_verification
-            data = prepare_verification(store,source_experiment=args.source_experiment,seed=args.seed,
-                                        name=args.name,output=args.output,benchmark_dir=args.benchmark_dir)
+            if args.study == 'statement-boundaries-v1':
+                if args.source_experiment:
+                    raise ValueError('Use --source-runs for statement-boundaries-v1')
+                from tools.knowledge_graph.playground.statement_review_study import prepare_statement_review, DEFAULT_RUNS
+                data = prepare_statement_review(store, source_runs=args.source_runs or DEFAULT_RUNS,
+                    repetitions=args.repetitions if args.repetitions is not None else 2,
+                    seed=args.seed if args.seed is not None else 20261104,
+                    name=args.name or 'KG v3 statement boundaries and attribution',
+                    output=args.output or ROOT/'.work/kg_statement_review_v1/preflight.json',
+                    benchmark_dir=args.benchmark_dir)
+            else:
+                if args.source_runs or args.repetitions is not None:
+                    raise ValueError('--source-runs/--repetitions require statement-boundaries-v1')
+                from tools.knowledge_graph.playground.verification_study import prepare_verification
+                data = prepare_verification(store,source_experiment=args.source_experiment or 'EXP-55b6938cd135',
+                    seed=args.seed if args.seed is not None else 20261103,
+                    name=args.name or 'KG D + source verification v1',
+                    output=args.output or ROOT/'.work/kg_verify_stance_v1/preflight.json',benchmark_dir=args.benchmark_dir)
             output({k:data[k] for k in ('experiment','size','status','inference_calls','estimated_calls_usd','checks')})
             return 0
         from tools.knowledge_graph.playground.verification_runner import execute_verification
@@ -291,6 +340,14 @@ def main(argv=None):
             raise ValueError('--generation-id requires exactly one physical page')
         cases = [app.load(page=p, generation_id=args.generation_id, run_id=args.run_id,
                           evaluation=args.evaluation, allow_source_drift=args.allow_source_drift) for p in args.pages]
+        for identifier in args.case_ids:
+            case = store.get_case(identifier)
+            from tools.knowledge_graph.playground.snapshot_v2 import guard_holdout
+            if not case['synthetic']:
+                guard_holdout(app.benchmark_dir, case['page'], args.evaluation)
+            if case['snapshot']['source'].get('split') == 'blind_holdout' and not args.evaluation:
+                raise ValueError('Blind holdout requires evaluation mode')
+            cases.append(case)
         cases += [app.load(benchmark_id=i, evaluation=args.evaluation) for i in args.benchmark_ids]
         if args.demo:
             cases.append(app.load(demo=True))
@@ -343,21 +400,10 @@ def main(argv=None):
         output(compare_runs(store, args.runs), args.output)
     elif args.command == 'validate':
         run = store.get_run(args.run)
-        if args.matching_policy == 'local-quote-v4':
-            from tools.knowledge_graph.playground import validation_micro
-            evaluator = (validation_micro.evaluate_review if run['prepared'].get('task') == 'stance_review'
-                         else validation_micro.evaluate_response)
-            result = evaluator(store.get_case(run['case_id'])['snapshot'], run['result'] or {}, run['prepared'])
-        elif run['prepared'].get('task') == 'stance_review':
-            from tools.knowledge_graph.playground.verification_contract import evaluate_review
-            if args.matching_policy and args.matching_policy != run['prepared']['validation_policy']:
-                raise ValueError('Review benchmark revalidation must preserve its frozen matching policy')
-            result = evaluate_review(store.get_case(run['case_id'])['snapshot'], run['result'] or {}, run['prepared'])
-        else:
-            result = evaluate_response(store.get_case(run['case_id'])['snapshot'], run['result'] or {}, run['prepared'],
-                                       matching_policy=args.matching_policy)
+        result = evaluate_response(store.get_case(run['case_id'])['snapshot'], run['result'] or {}, run['prepared'],
+                                   matching_policy=args.matching_policy)
         store.add_validation(args.run, result)
-        output(result)
+        output(result, args.output)
         return 0 if result['valid'] else 1
     elif args.command == 'inspect':
         run = store.get_run(args.run)

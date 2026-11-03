@@ -19,6 +19,7 @@ def no_network(monkeypatch):
     def forbidden(*args, **kwargs):
         raise AssertionError("unexpected network access")
     monkeypatch.setattr(requests.Session, "post", forbidden)
+    monkeypatch.setattr(requests.Session, "get", forbidden)
 
 
 @pytest.fixture
@@ -38,6 +39,11 @@ def material(tmp_path):
             'report': 'fixture.json', 'report_sha256': 'abc',
             'locator_reason': 'no_body_text_match', 'proposal': False}
     args = jev.parser().parse_args(['--no-api', '--log', str(tmp_path / 'result.jsonl')])
+    args.corrected_report_dir = tmp_path / 'corrected'
+    args.diagnosis = tmp_path / 'diagnosis.json'
+    args.diagnosis.write_text('{}')
+    args.marker_report = tmp_path / 'markers.json'
+    args.marker_report.write_text(json.dumps({'results': [], 'profile': {'volume': 'PG040'}}))
     return spec, args
 
 
@@ -253,7 +259,7 @@ def test_readonly_report_adapter_and_stale_db(material, tmp_path):
     con = connect_db(args.db)
     init_schema(con)
     con.execute("INSERT INTO alphabetical_volumes (volume_id,collection,source_root,created_at,updated_at) VALUES ('PG001','PG',?,'now','now')", (spec['root'],))
-    con.execute("INSERT INTO alphabetical_sections (section_key,volume_id,section_order,section_kind,heading_raw,file_start,raw_json) VALUES ('PG001:s','PG001',1,'analytic_subject','INDEX',?,'{}')", (str(Path(spec['root'])/'page-099.txt'),))
+    con.execute("INSERT INTO alphabetical_sections (section_key,volume_id,section_order,section_kind,heading_raw,file_start,file_end,raw_json) VALUES ('PG001:s','PG001',1,'analytic_subject','INDEX',?,?,'{}')", (str(Path(spec['root'])/'page-099.txt'),)*2)
     con.execute("INSERT INTO alphabetical_entries (entry_key,section_key,entry_order,entry_kind,lemma_raw,entry_raw,raw_json) VALUES ('PG001:e','PG001:s',1,'lemma','Athanasius','Athanasius 101','{}')")
     con.execute("INSERT INTO alphabetical_refs (entry_key,ref_order,ref_kind,ref_raw,page_ref_int,raw_json) VALUES ('PG001:e',1,'editorial_page','101',101,'{}')")
     con.commit()
@@ -273,10 +279,121 @@ def test_readonly_report_adapter_and_stale_db(material, tmp_path):
     (args.report_dir/'PG001.json').write_text(json.dumps(report))
     stale, _ = jev.collect_specs(args, time.monotonic()+10)
     assert jev.prepare(stale[0], args)[0]['skip_reason'] == 'report_does_not_match_current_db'
+    args.corrected_report_dir.mkdir()
+    row['lemma_raw'] = 'Athanasius'
+    report['job']['rows'][0] = row
+    (args.corrected_report_dir/'PG001.json').write_text(json.dumps(report))
+    corrected, _ = jev.collect_specs(args, time.monotonic()+10)
+    assert len(corrected) == 1 and not corrected[0]['stale']
+    assert corrected[0]['report'] == str(args.corrected_report_dir/'PG001.json')
+    with sqlite3.connect(args.db) as con:
+        con.execute("UPDATE alphabetical_refs SET ref_kind='target_locator'")
+    filtered, _ = jev.collect_specs(args, time.monotonic()+10)
+    assert filtered == []
 
 
 @pytest.mark.parametrize('argv', [['--limit','-1'], ['--threshold','nan'], ['--max-seconds','inf'], ['--max-retries','6']])
 def test_invalid_cli_options(argv):
     with pytest.raises(SystemExit) as exc:
         jev.main(argv)
+    assert exc.value.code == 2
+
+
+def test_reviewed_marker_payload(material):
+    spec, args = material
+    source = Path(spec['root']) / 'index-099.txt'
+    source.write_text('Numeri signant paginas editionis Antverpiensis.')
+    spec['marker'] = {'status': 'unique', 'reference': 101}
+    spec['visual_check'] = {'target_physical_sequence': 2, 'cited_page': 101}
+    spec['numbering_scope'] = {'source_file': str(source), 'source_sha256': jev.sha(source.read_bytes())}
+    out, payload = jev.prepare(spec, args)
+    assert payload and out['candidate_source'] == 'internal-marker'
+    source.write_text('changed')
+    out, payload = jev.prepare(spec, args)
+    assert payload is None and out['skip_reason'] == 'numbering_scope_source_changed'
+
+
+def test_payload_size_guard_does_not_truncate(material):
+    spec, args = material
+    args.max_input_bytes = Path(spec['files'][0]['file']).stat().st_size + 10
+    out, payload = jev.prepare(spec, args)
+    assert payload is None and out['skip_reason'] == 'payload_too_large_no_truncation'
+
+
+def test_expired_budget_never_calls_http(material):
+    _, args = material
+    client = jev.Gateway(args, time.monotonic()-1, 'secret')
+    assert client.evaluate({}) == [] and client.calls == 0
+
+
+def test_mixed_prioritizes_reviewed_marker():
+    specs = [{'category': 'internal-marker', 'visual_check': None, 'id': i} for i in range(100)]
+    reviewed = {'category': 'internal-marker', 'visual_check': {'ref_id': 1}, 'id': 101}
+    specs.append(reviewed)
+    assert jev.mixed_order(specs, 42, 'mixed')[0] == reviewed
+
+
+@pytest.mark.parametrize('status,reason', [(401, 'authentication_error'), (402, 'billing_error'), (403, 'authorization_error')])
+def test_terminal_http_error_details_and_stop(material, monkeypatch, capsys, status, reason):
+    spec, _ = material
+    args = run_fixture(material, monkeypatch, [spec, spec])
+    args.no_api = False
+    args.verbose = True
+    args.limit = 1
+    key = 'TEST_GATEWAY_SECRET'
+    monkeypatch.setenv('AI_GATEWAY_API_KEY', key)
+    body = {'error': {'code': 'access_denied', 'message': f'Request denied for Bearer {key}'}}
+    reply = SimpleNamespace(status_code=status, json=lambda: body,
+                            headers={'x-request-id': 'req-test', 'authorization': key})
+    calls = fake_session(monkeypatch, [reply])
+    summary = jev.run(args)
+    assert len(calls) == 1 and summary['stop_reason'] == reason
+    log = args.log.read_text()
+    output = capsys.readouterr().out
+    assert key not in log + output
+    assert 'access_denied' in log and 'req-test' in log
+    assert f'HTTP: {status}' in output and 'Request denied' in output
+    row = next(json.loads(line) for line in log.splitlines() if json.loads(line).get('record_type') == 'association')
+    assert row['review_reasons'] == ['header_only_location_without_neighbor_confirmation', reason]
+    assert row['gateway_error']['code'] == 'access_denied'
+
+
+def test_non_json_error_is_bounded_and_redacted_before_truncation():
+    key = 'A' * 1800
+    reply = SimpleNamespace(text=f'Forbidden Bearer {key}\napi_key="ANOTHER_SECRET" ' + 'x'*3000)
+    out = jev.safe_gateway_error(reply, None, key)
+    assert len(out['message']) <= 1500
+    assert key not in str(out) and 'A'*100 not in str(out) and 'ANOTHER_SECRET' not in str(out)
+    assert '[REDACTED]' in out['message']
+
+
+def test_check_credits_only_gets_metadata(material, monkeypatch, capsys):
+    _, args = material
+    monkeypatch.setenv('AI_GATEWAY_API_KEY', 'secret')
+    calls = []
+    def get(self, url, **kwargs):
+        calls.append((url, kwargs))
+        return SimpleNamespace(status_code=200, json=lambda: {'balance': '0.00', 'total_used': '5.00', 'unexpected': 'secret'})
+    monkeypatch.setattr(requests.Session, 'get', get)
+    jev.main(['--check-credits', '--log', str(args.log), '--db', '/does/not/exist'])
+    output = json.loads(capsys.readouterr().out)
+    assert output['balance'] == '0.00' and output['inference_calls'] == 0
+    assert 'secret' not in str(output) and not args.log.exists()
+    assert len(calls) == 1 and calls[0][0].endswith('/v1/credits')
+    assert calls[0][1]['allow_redirects'] is False
+
+
+def test_check_credits_error_sanitized(material, monkeypatch, capsys):
+    _, args = material
+    monkeypatch.setenv('AI_GATEWAY_API_KEY', 'secret')
+    monkeypatch.setattr(requests.Session, 'get', lambda *a, **kw: SimpleNamespace(
+        status_code=403, json=lambda: {'error': {'code': 'access_denied', 'message': 'Denied secret'}}))
+    out = jev.check_credits(args)
+    assert out['http_status'] == 403 and out['gateway_error']['code'] == 'access_denied'
+    assert 'secret' not in capsys.readouterr().out
+
+
+def test_no_api_blocks_credit_lookup():
+    with pytest.raises(SystemExit) as exc:
+        jev.main(['--no-api', '--check-credits'])
     assert exc.value.code == 2

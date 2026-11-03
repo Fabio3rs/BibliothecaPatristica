@@ -194,3 +194,53 @@ def test_entry_filter_requires_existing_eligible_entry(tmp_path):
     with pytest.raises(ValueError, match='entry keys'):
         repairer.repair(db, ['PG001'], output, tmp_path / 'report.json', entry_keys=['missing'])
     assert not output.exists()
+
+
+def test_apply_reviewed_backup_and_idempotence(tmp_path):
+    db, _ = make_db(tmp_path, 'Anaxagoras. 533.\nAnchialus. 487.', 'Anaxagoras', [533, 487])
+    run_repair(tmp_path, db)
+    result = repairer.apply_reviewed(db, [tmp_path/'report.json'], tmp_path/'backup.db', tmp_path/'applied.json')
+    assert result['applied_entries'] == 1 and result['counts']['new_entries'] == 2
+    with sqlite3.connect(tmp_path/'backup.db') as con:
+        assert con.execute('SELECT count(*) FROM alphabetical_entries').fetchone()[0] == 1
+    with sqlite3.connect(db) as con:
+        assert con.execute('SELECT count(*) FROM alphabetical_entries').fetchone()[0] == 3
+        assert not con.execute('PRAGMA foreign_key_check').fetchall()
+    from scripts.resolve_alphabetical_unresolved import connect_readonly, load_job
+    from contextlib import closing
+    with closing(connect_readonly(db)) as con:
+        job = load_job(con, 'PG001', repaired_only=True)
+        assert len(job['rows']) == 2 and job['repaired_only'] is True
+        assert all(':repair:' in r['entry_key'] for r in job['rows'])
+    again = repairer.apply_reviewed(db, [tmp_path/'report.json'], tmp_path/'backup2.db', tmp_path/'applied2.json')
+    assert again['applied_entries'] == 0 and again['already_applied'] == 1
+
+
+@pytest.mark.parametrize('changed', ['row', 'ocr'])
+def test_apply_reviewed_rejects_changed_inputs(tmp_path, changed):
+    db, source = make_db(tmp_path, 'Anaxagoras. 533.\nAnchialus. 487.', 'Anaxagoras', [533, 487])
+    run_repair(tmp_path, db)
+    if changed == 'row':
+        with sqlite3.connect(db) as con:
+            con.execute("UPDATE alphabetical_entries SET lemma_raw='Changed'")
+    else:
+        source.write_text('changed')
+    before = db.read_bytes()
+    with pytest.raises(ValueError, match='changed'):
+        repairer.apply_reviewed(db, [tmp_path/'report.json'], tmp_path/'backup.db', tmp_path/'apply.json')
+    assert db.read_bytes() == before
+    assert not (tmp_path/'apply.json').exists()
+
+
+def test_apply_reviewed_rolls_back_failure_after_mutation(tmp_path, monkeypatch):
+    db, _ = make_db(tmp_path, 'Anaxagoras. 533.\nAnchialus. 487.', 'Anaxagoras', [533, 487])
+    run_repair(tmp_path, db)
+    def fail(*args):
+        raise ValueError('forced failure')
+    monkeypatch.setattr(repairer, 'refresh_volume_quality', fail)
+    with pytest.raises(ValueError, match='forced failure'):
+        repairer.apply_reviewed(db, [tmp_path/'report.json'], tmp_path/'backup.db', tmp_path/'apply.json')
+    with sqlite3.connect(db) as con:
+        assert con.execute('SELECT count(*) FROM alphabetical_entries').fetchone()[0] == 1
+        assert not con.execute("SELECT 1 FROM sqlite_master WHERE name='alphabetical_deterministic_repairs'").fetchone()
+    assert (tmp_path/'backup.db').is_file()
