@@ -17,9 +17,9 @@ const temporary = await mkdtemp(path.join(tmpdir(), 'bibliotheca-install-'));
 const fixture = await startFixtureServer();
 let client;
 try {
-  // npm ci populated the registry cache already. No network or lifecycle scripts
-  // are needed to install this tarball into an unrelated directory.
-  execFileSync(process.platform === 'win32' ? 'npm.cmd' : 'npm', ['install', '--prefix', temporary, '--ignore-scripts', '--offline', '--no-audit', '--no-fund', '--no-package-lock', archive], { cwd: temporary, stdio: 'inherit' });
+  // Installing a tarball needs registry metadata that npm ci may not cache.
+  // Use a fresh cache and allow dependency downloads, with lifecycle scripts disabled.
+  execFileSync(process.platform === 'win32' ? 'npm.cmd' : 'npm', ['install', '--prefix', temporary, '--cache', path.join(temporary, 'npm-cache'), '--ignore-scripts', '--no-audit', '--no-fund', '--no-package-lock', archive], { cwd: temporary, stdio: 'inherit' });
   const executable = path.join(temporary, 'node_modules', '.bin', 'bibliotheca-patristica-mcp');
   assert.equal(execFileSync(executable, ['--version'], { cwd: temporary, encoding: 'utf8' }).trim(), manifest.version);
   const transport = new StdioClientTransport({ command: executable, args: [], cwd: temporary, stderr: 'pipe', env: {

@@ -30,9 +30,11 @@ npm install --prefix "$HOME/.local/share/bibliotheca-mcp" --ignore-scripts \
 
 O tarball contém o servidor e o WASM; npm ainda instala as dependências públicas
 do SDK, caso elas não estejam em cache. Não precisa do checkout deste repositório.
-O teste `test:install` instala o tarball em um diretório temporário, com npm offline
-e os scripts desativados, e verifica CLI, handshake, sete ferramentas registradas
-e buscas WASM reais por stdio. No Windows, o executável instalado é o shim `.cmd`.
+O teste `test:install` instala o tarball em um diretório temporário, com cache npm
+vazio e scripts desativados. A instalação acessa o registry para obter metadados
+e dependências do SDK; não depende do cache deixado por `npm ci`. Depois verifica
+CLI, handshake, sete ferramentas registradas e buscas WASM reais por stdio usando
+dados locais de teste. No Windows, o executável instalado é o shim `.cmd`.
 
 ## Cadastrar nos clientes
 
@@ -80,7 +82,7 @@ node dist/cli.js --help
 O build copia a interface `createAgentTools(options)` e seu fechamento de imports
 de `web/` para `dist/shared/`; não mantém uma segunda implementação das ferramentas.
 O pacote instalado usa exclusivamente `dist/`, `vendor/` e dependências npm.
-Os testes são determinísticos e offline; um servidor HTTP temporário vinculado
+Os testes de `npm test` são determinísticos e offline; um servidor HTTP temporário vinculado
 a `127.0.0.1` verifica rede local e transporte stdio. No ambiente Native Lab,
 execute esses comandos na mesma sessão de loopback.
 
