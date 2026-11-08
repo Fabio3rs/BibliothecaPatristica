@@ -383,6 +383,27 @@ def test_open_notation_without_page_anchor_is_valid() -> None:
     assert summary["status"] == "valid"
 
 
+@pytest.mark.parametrize('literal,kind,accepted', [
+    ('cf. 68₂', 'unresolved', True), ('cf. 95₁₀', 'unresolved', True),
+    ('cf. 58₆₋₁₀', 'unresolved', True), ('cf. 68₂', 'editorial_page', False),
+    ('cf. Roma', 'unresolved', False), ('cf. Roma 68₂', 'unresolved', False),
+    ('id. 4)', 'unresolved', False), ('cf. 68₂₋', 'unresolved', False),
+])
+def test_numeric_cf_is_retained_only_as_unresolved_literal(literal, kind, accepted):
+    payload = minimal_payload()
+    payload['entries'][0]['entry_kind'] = 'lemma'
+    payload['coverage'] = {'locator_status': 'partial'}
+    payload['refs'] = [{'entry_key':'PO009:entry:001','ref_order':1,'ref_kind':kind,
+        'ref_raw':literal,'page_ref_raw':None,'target_file':None,'target_file_probability':None,'raw_json':{}}]
+    if accepted:
+        assert build_validation_summary(payload)['status'] == 'valid'
+        assert payload['refs'][0]['page_ref_raw'] is None
+        assert payload['refs'][0]['ref_raw'] == literal
+    else:
+        with pytest.raises(ValueError):
+            build_validation_summary(payload)
+
+
 def test_editorial_page_ref_without_page_anchor_is_rejected() -> None:
     payload = minimal_payload()
     payload["entries"][0]["entry_kind"] = "lemma"

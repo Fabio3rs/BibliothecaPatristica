@@ -1081,8 +1081,18 @@ def volume_status(con: sqlite3.Connection, volume_id: str) -> dict[str, Any]:
         GROUP BY locator_status""",
         (volume_id,),
     ).fetchall()
+    semantic_check = None
+    if con.execute("SELECT 1 FROM sqlite_master WHERE name='analysis_semantic_runs'").fetchone():
+        last = con.execute(
+            "SELECT * FROM analysis_semantic_runs WHERE volume_id=? ORDER BY rowid DESC LIMIT 1",
+            (volume_id,),
+        ).fetchone()
+        if last:
+            semantic_check = {**dict(last), "summary": json.loads(last["summary_json"] or "{}")}
+            semantic_check.pop("summary_json", None)
     return {
         **dict(volume),
+        "last_semantic_check": semantic_check,
         "stages": {
             row["stage"]: {
                 "status": row["status"],

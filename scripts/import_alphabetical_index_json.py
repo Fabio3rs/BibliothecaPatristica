@@ -86,6 +86,10 @@ CROSS_REFERENCE_MARKER_RE = re.compile(
     re.IGNORECASE,
 )
 
+UNRESOLVED_NUMERIC_CF_RE = re.compile(
+    r"cf\.\s*[1-9][0-9]*[₀₁₂₃₄₅₆₇₈₉]+(?:₋[₀₁₂₃₄₅₆₇₈₉]+)?", re.IGNORECASE
+)
+
 SCRIPTURE_REF_ROLES = {
     "citation",
     "pericope",
@@ -686,7 +690,10 @@ def validate_refs(
                 and to_text(ref.get("range_start_raw")) is None
                 and to_text(ref.get("range_end_raw")) is None
             ):
-                if looks_like_cross_reference_without_anchor(ref_raw):
+                # A literal numeric cf. locator may be retained unresolved without
+                # guessing its axes. Named remissions still require an anchor.
+                if (looks_like_cross_reference_without_anchor(ref_raw)
+                        and not (ref_kind == 'unresolved' and UNRESOLVED_NUMERIC_CF_RE.fullmatch(ref_raw.strip()))):
                     raise ValueError(
                         f"refs[{idx}] looks like a cross-reference without a material anchor: {ref_raw!r}. "
                         "Do not serialize `vid./vide/voir/id.` style remissions as refs unless they also carry a real locator. "

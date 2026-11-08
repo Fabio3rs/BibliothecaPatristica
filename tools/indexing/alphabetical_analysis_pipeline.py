@@ -58,6 +58,7 @@ from .alphabetical_checkpoints import (
     write_checkpointed_json,
 )
 from .alphabetical_mechanical_analysis import build_mechanical_analysis
+from .alphabetical_stage_lock import locked_stage
 from .alphabetical_prompt_contract import (
     DISCOVERY_CONTRACT_VERSION,
     LOCATOR_CONTRACT_VERSION,
@@ -259,6 +260,7 @@ DISCOVERY EXPANSION ROUND {expansion_round}
     return discovery, discovery_file, checkpoint_input_fingerprint
 
 
+@locked_stage
 def discover_stage(
     *,
     analysis_db: Path,
@@ -428,6 +430,7 @@ def discover_stage(
             raise
 
 
+@locked_stage
 def extract_stage(
     *,
     analysis_db: Path,
@@ -692,6 +695,7 @@ ANALYSIS DATABASE HANDOFF
             raise
 
 
+@locked_stage
 def locate_stage(
     *,
     analysis_db: Path,
@@ -1014,6 +1018,7 @@ def locate_stage(
             raise
 
 
+@locked_stage
 def verify_stage(
     *,
     analysis_db: Path,
@@ -1028,10 +1033,13 @@ def verify_stage(
 ) -> dict[str, Any]:
     with connect_analysis_db(analysis_db) as con:
         init_analysis_schema(con)
+        from .alphabetical_semantic_check import check_stored_decisions, semantic_hints
+        check_stored_decisions(con, volume_id)
         contract_upgrade = upgrade_locator_contracts(con, volume_id=volume_id)
         if contract_upgrade["updated"]:
             con.commit()
         facsimile_fingerprint = facsimile_inventory_fingerprint(source_root)
+        jev_hints = semantic_hints(con, volume_id)
 
         def prepare_items(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
             enriched = attach_candidate_facsimile_hints(items)
@@ -1039,6 +1047,8 @@ def verify_stage(
                 [
                     {
                         **item,
+                        **({"semantic_checks": jev_hints[item["locator_key"]]}
+                           if item.get("locator_key") in jev_hints else {}),
                         "facsimile_inventory_fingerprint": (
                             facsimile_fingerprint
                         ),
@@ -1228,6 +1238,7 @@ def verify_stage(
             raise
 
 
+@locked_stage
 def assemble_stage(
     *,
     analysis_db: Path,
@@ -1241,6 +1252,8 @@ def assemble_stage(
 ) -> dict[str, Any]:
     with connect_analysis_db(analysis_db) as con:
         init_analysis_schema(con)
+        from .alphabetical_semantic_check import check_stored_decisions
+        check_stored_decisions(con, volume_id)
         semantic = load_semantic_payload(con, volume_id)
         locator_items = load_locator_items(con, volume_id)
         locator_results = load_locator_results(con, volume_id)

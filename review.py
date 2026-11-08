@@ -23,56 +23,31 @@ import re
 import sqlite3
 import unicodedata
 from difflib import SequenceMatcher
+from functools import lru_cache
+from contextlib import closing
 from pathlib import Path
 from typing import Optional
 from urllib.parse import urlencode
 
 import cv2
 import numpy as np
-from flask import Flask, Response, jsonify, redirect, render_template_string, request, url_for
+from flask import (
+    Flask, Response, abort, jsonify, redirect, render_template,
+    render_template_string, request, url_for,
+)
 from PIL import Image
 from tools.corpus_utils import resolve_page_file
 
 try:
     # prefer local import when running script directly
-    from sample import preprocess_image
+    from sample import preprocess_image, deskew_like_sample_color
 except Exception:
     # fallback to package-relative import
     try:
-        from .sample import preprocess_image
+        from .sample import preprocess_image, deskew_like_sample_color
     except Exception:
         preprocess_image = None
-
-
-def deskew_like_sample_color(img: np.ndarray, border_size: int = 50) -> np.ndarray:
-    """Aplica o mesmo deskew do modo sample.py, mas preserva as cores originais."""
-    _ = border_size
-    arr = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) if len(img.shape) == 3 else img
-    thresh = cv2.threshold(arr, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
-
-    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (30, 5))
-    dilate = cv2.dilate(thresh, kernel, iterations=2)
-
-    contours, _ = cv2.findContours(dilate, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
-    angles = []
-    for cnt in contours:
-        area = cv2.contourArea(cnt)
-        if 500 < area < 50000:
-            rect = cv2.minAreaRect(cnt)
-            angle = rect[-1]
-            rw, rh = rect[1]
-            if rw < rh:
-                angle = angle + 90
-            if abs(angle) <= 10:
-                angles.append(angle)
-
-    median_angle = np.median(angles) if angles else 0.0
-    h, w = img.shape[:2]
-    center = (w // 2, h // 2)
-    matrix = cv2.getRotationMatrix2D(center, median_angle, 1.0)
-    return cv2.warpAffine(
-        img, matrix, (w, h), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE
-    )
+        deskew_like_sample_color = None
 
 
 BASE_STYLE = """
@@ -277,12 +252,14 @@ REVIEW_TEMPLATE = """
   </form>
 
   <a href="{{ url_for('search_lines') }}">Busca</a>
+  <a href="{{ url_for('page_list') }}">Páginas</a>
 </div>
 
 <div class="toolbar">
   <a href="{{ url_for('review') }}">Fila</a>
   {% if line %}
   <a href="{{ url_for('line_detail', line_id=line.id) }}">Análise direta</a>
+  <a href="{{ url_for('page_review', page_id=line.page_id, line=line.id) }}">Revisar página</a>
   {% endif %}
   <a href="{{ url_for('search_lines') }}">Pesquisar `lines`</a>
   {% if is_queue %}
@@ -687,8 +664,8 @@ SEARCH_PAGE_SIZE = 50
 QUEUE_BATCH_SIZE = 250
 
 
-def get_conn(path: str = DB_PATH) -> sqlite3.Connection:
-    con = sqlite3.connect(path, timeout=30.0)
+def get_conn(path: str | None = None) -> sqlite3.Connection:
+    con = sqlite3.connect(path or DB_PATH, timeout=30.0)
     con.row_factory = sqlite3.Row
     con.execute("PRAGMA busy_timeout = 30000")
     con.execute("PRAGMA journal_mode = WAL")
@@ -697,6 +674,9 @@ def get_conn(path: str = DB_PATH) -> sqlite3.Connection:
 
 
 def ensure_search_schema(conn: sqlite3.Connection) -> None:
+    columns = {row[1] for row in conn.execute("PRAGMA table_info(lines)")}
+    if "score_llm" not in columns:
+        conn.execute("ALTER TABLE lines ADD COLUMN score_llm REAL")
     conn.execute(
         """
         CREATE VIRTUAL TABLE IF NOT EXISTS lines_fts USING fts5(
@@ -1455,7 +1435,7 @@ def load_line_context(conn: sqlite3.Connection, line: Optional[sqlite3.Row]) -> 
 
 
 def safe_return_to(value: str) -> str:
-    if value and value.startswith("/"):
+    if value and value.startswith("/") and not value.startswith("//") and "\\" not in value:
         return value
     return ""
 
@@ -1719,31 +1699,169 @@ def search_lines():
     )
 
 
+@lru_cache(maxsize=4)
+def processed_page_image(path: str, mtime_ns: int, size: int) -> tuple[bytes, int, int]:
+    """O mtime e o tamanho invalidam o cache quando o facsímile muda."""
+    if deskew_like_sample_color is None:
+        raise ValueError("Pré-processamento de sample.py indisponível")
+    img = cv2.imread(path)
+    if img is None:
+        raise ValueError("Não foi possível abrir o facsímile")
+    img = deskew_like_sample_color(img)
+    height, width = img.shape[:2]
+    ok, encoded = cv2.imencode(".png", img)
+    if not ok:
+        raise ValueError("Não foi possível preparar o facsímile")
+    return encoded.tobytes(), width, height
+
+
+def load_page_image(image_path: str) -> tuple[bytes, int, int]:
+    path = Path(image_path).resolve()
+    stat = path.stat()
+    return processed_page_image(str(path), stat.st_mtime_ns, stat.st_size)
+
+
+def valid_page_bbox(value: str, width: int, height: int) -> dict | None:
+    try:
+        box = json.loads(value)
+        x, y, w, h = (float(box[key]) for key in ("x", "y", "w", "h"))
+        if not all(math.isfinite(v) for v in (x, y, w, h)):
+            return None
+        if x < 0 or y < 0 or w <= 0 or h <= 0 or x + w > width or y + h > height:
+            return None
+        return dict(x=x, y=y, w=w, h=h)
+    except (ValueError, TypeError, KeyError):
+        return None
+
+
+@app.route("/pages")
+def page_list():
+    volume = request.args.get("volume", "")
+    session = request.args.get("session", "")
+    query = request.args.get("q", "").strip()
+    offset = parse_int(request.args.get("offset"), 0)
+    where, params = [], []
+    for column, value in (("volume", volume), ("session_id", session)):
+        if value:
+            where.append(f"{column} = ?")
+            params.append(value)
+    if query:
+        where.append("page_id LIKE ?")
+        params.append(f"%{query}%")
+    with closing(get_conn()) as conn:
+        rows = conn.execute(
+            f"""SELECT page_id, volume, COUNT(*) AS total,
+                       SUM(status IN ('approved', 'corrected', 'rejected')) AS reviewed
+                FROM lines {build_where_clause(where)}
+                GROUP BY page_id, volume ORDER BY volume, MIN(id)
+                LIMIT ? OFFSET ?""", params + [51, offset],
+        ).fetchall()
+        volumes = [r[0] for r in conn.execute("SELECT DISTINCT volume FROM lines ORDER BY volume")]
+        sessions = conn.execute("SELECT id, description FROM sessions ORDER BY id DESC").fetchall()
+    return render_template("review_pages.html", pages=rows[:50], has_next=len(rows) > 50,
+                           offset=offset, volumes=volumes, sessions=sessions,
+                           volume=volume, session=session, query=query)
+
+
+@app.route("/page/<page_id>")
+def page_review(page_id: str):
+    with closing(get_conn()) as conn:
+        rows = conn.execute(
+            """SELECT id, page_id, volume, image_path, line_index, bbox, status,
+                      tesseract_text, qwen_text, reviewed_text, agreement_score
+               FROM lines WHERE page_id = ? ORDER BY line_index, id""", (page_id,),
+        ).fetchall()
+        if not rows:
+            abort(404, description="Página não encontrada")
+        versions = []
+        has_versions = conn.execute(
+            "SELECT 1 FROM sqlite_master WHERE type='table' AND name='line_versions'"
+        ).fetchone()
+        if has_versions:
+            versions = conn.execute(
+                """SELECT lv.* FROM line_versions lv JOIN lines l ON l.id = lv.line_id
+                   WHERE l.page_id = ? ORDER BY lv.is_current DESC, lv.created_at DESC, lv.id DESC""",
+                (page_id,),
+            ).fetchall()
+    by_line = {}
+    for version in versions:
+        by_line.setdefault(version["line_id"], []).append(version)
+    width, height, image_error = 0, 0, ""
+    try:
+        paths = {str(Path(row["image_path"]).resolve()) for row in rows if row["image_path"]}
+        if len(paths) != 1:
+            raise ValueError("Página sem facsímile único; confira os caminhos das linhas")
+        _, width, height = load_page_image(paths.pop())
+    except (OSError, ValueError, cv2.error) as exc:
+        image_error = f"Facsímile indisponível: {exc}"
+    lines = []
+    for row in rows:
+        item = dict(row)
+        line_versions = by_line.get(row["id"], [])
+        consensus = build_consensus_summary(row, line_versions)
+        item["choices"] = build_version_choices(row, line_versions, consensus["winning_text"])
+        if row["qwen_text"] and not any(c["text_content"] == row["qwen_text"] for c in item["choices"]):
+            item["choices"].append(dict(provider="lines", model="qwen_text", text_content=row["qwen_text"]))
+        item["text"] = row["reviewed_text"] or consensus["winning_text"] or row["qwen_text"] or row["tesseract_text"] or ""
+        item["box"] = valid_page_bbox(row["bbox"], width, height)
+        lines.append(item)
+    return render_template("review_page.html", page_id=page_id, lines=lines,
+                           width=width, height=height, image_error=image_error,
+                           selected=parse_int(request.args.get("line"), lines[0]["id"]),
+                           reviewed=sum(r["status"] in {"approved", "corrected", "rejected"} for r in rows))
+
+
+@app.route("/page/<page_id>/image")
+def page_image(page_id: str):
+    with closing(get_conn()) as conn:
+        row = conn.execute("SELECT image_path FROM lines WHERE page_id = ? ORDER BY id LIMIT 1", (page_id,)).fetchone()
+    if not row or not row[0]:
+        abort(404)
+    try:
+        image, _, _ = load_page_image(row[0])
+    except (OSError, ValueError, cv2.error):
+        abort(404, description="Facsímile indisponível")
+    return Response(image, mimetype="image/png")
+
+
+@app.route("/line/<int:line_id>/image")
+def line_image(line_id: int):
+    with closing(get_conn()) as conn:
+        row = conn.execute("SELECT line_image FROM lines WHERE id = ?", (line_id,)).fetchone()
+    if not row or not row[0]:
+        abort(404)
+    return Response(row[0], mimetype="image/png")
+
+
 @app.route("/submit", methods=["POST"])
 def submit_review():
-    line_id = int(request.form["line_id"])
+    line_id = parse_int(request.form.get("line_id"), 0)
     # Revisoes alimentam diretamente o ground truth e devem obedecer a mesma
     # forma canonica usada pelas versoes geradas na inferencia.
     reviewed_text = unicodedata.normalize(
         "NFC", request.form["reviewed_text"]
     ).strip()
     action = request.form["action"]
-    next_offset = int(request.form.get("next_offset", 0))
+    if action not in {"approved", "corrected", "rejected"}:
+        return jsonify(error="Ação de revisão inválida"), 400
+    if action != "rejected" and not reviewed_text:
+        return jsonify(error="Informe o texto revisado antes de aprovar ou corrigir"), 400
+    next_offset = parse_int(request.form.get("next_offset"), 0)
     status = request.form.get("status", "inferred")
     tesseract = request.form.get("tesseract", "all")
     volume = request.form.get("volume", "")
     return_to = safe_return_to(request.form.get("return_to", ""))
 
-    conn = sqlite3.connect(DB_PATH)
-    conn.execute(
-        """
-        UPDATE lines
-        SET reviewed_text = ?, status = ?, updated_at = datetime('now')
-        WHERE id = ?
-        """,
-        (reviewed_text, action, line_id),
-    )
-    conn.commit()
+    with closing(get_conn()) as conn:
+        updated = conn.execute(
+            """UPDATE lines SET reviewed_text = ?, status = ?, updated_at = datetime('now')
+               WHERE id = ?""", (reviewed_text, action, line_id),
+        ).rowcount
+        conn.commit()
+    if not updated:
+        return jsonify(error="Linha não encontrada"), 404
+    if request.accept_mimetypes.best == "application/json":
+        return jsonify(line_id=line_id, status=action, reviewed_text=reviewed_text)
 
     if return_to:
         return redirect(return_to)

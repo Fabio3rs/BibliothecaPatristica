@@ -839,6 +839,7 @@ def estimate_editorial_pages(
     window: int = 4,
     db_path: Path | None = None,
     use_cache: bool = True,
+    readonly_cache: bool = False,
 ) -> dict[str, Any]:
     resolved_source_root = _resolve_source_root(volume_id, source_root, files)
     loaded_files = _load_files(resolved_source_root, files)
@@ -850,13 +851,22 @@ def estimate_editorial_pages(
         raise ValueError(f"unsupported collection {inferred_collection!r}; supported collections: {supported}")
 
     resolved_db = db_path or DEFAULT_ESTIMATOR_DB
-    conn = _connect_db(resolved_db)
+    if readonly_cache:
+        conn = (sqlite3.connect(resolved_db.resolve().as_uri() + "?mode=ro", timeout=30)
+                if resolved_db.exists() else None)
+        if conn is not None:
+            conn.row_factory = sqlite3.Row
+            conn.execute("PRAGMA query_only=ON")
+    else:
+        conn = _connect_db(resolved_db)
+    cache_hits = 0
     try:
         observations: list[FileObservation] = []
         uncached_observations: list[FileObservation] = []
         for idx, path in enumerate(loaded_files):
-            cached = _read_cached_observation(conn, path=path) if use_cache else None
+            cached = _read_cached_observation(conn, path=path) if use_cache and conn is not None else None
             if cached is not None:
+                cache_hits += 1
                 cached.physical_index = idx
                 observations.append(cached)
                 continue
@@ -868,7 +878,7 @@ def estimate_editorial_pages(
         # This matters when callers parallelize independent volumes: the old
         # loop held the single WAL writer lock while parsing the remainder of
         # a cold volume, effectively serializing all workers.
-        if use_cache:
+        if use_cache and not readonly_cache:
             for observed in uncached_observations:
                 _write_cached_observation(
                     conn,
@@ -878,9 +888,10 @@ def estimate_editorial_pages(
                     observation=observed,
                 )
             conn.commit()
-        overrides = _load_overrides(conn, volume_id=inferred_volume_id)
+        overrides = _load_overrides(conn, volume_id=inferred_volume_id) if conn is not None else {}
     finally:
-        conn.close()
+        if conn is not None:
+            conn.close()
 
     all_hypotheses = [_add_local_hypotheses(item) for item in observations]
     _propagate_neighbor_pairs(observations, all_hypotheses, window=max(1, window))
@@ -910,6 +921,9 @@ def estimate_editorial_pages(
         "source_root": str(resolved_source_root) if resolved_source_root else None,
         "db": str(resolved_db),
         "use_cache": use_cache,
+        "readonly_cache": readonly_cache,
+        "cache_hits": cache_hits,
+        "observations_recomputed": len(loaded_files) - cache_hits,
         "window": window,
         "file_count": len(loaded_files),
         "summary": {

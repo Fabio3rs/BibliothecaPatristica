@@ -1810,7 +1810,7 @@ def openai_process_image(
     }
     timeout = 120
 
-    if "gpt-5" not in model:
+    if "gpt-5" not in model and "gpt-6" not in model:
         payload["temperature"] = temperature
         payload["top_p"] = top_p
     else:

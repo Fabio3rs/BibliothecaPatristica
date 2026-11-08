@@ -74,6 +74,7 @@ DEFAULT_TRANSLATION_DICTIONARY_DIR = Path(
 )
 COMPLETE_COVERAGE_STATUSES = {"ok", "complete", "extracted", "recovered"}
 ANALYSIS_COMMANDS = {
+    "semantic-check",
     "discover",
     "extract",
     "locate",
@@ -1297,6 +1298,20 @@ def build_analysis_arg_parser() -> argparse.ArgumentParser:
     ap.add_argument("--model")
     ap.add_argument("--use-json", action="store_true")
     ap.add_argument("--workers", type=int, default=1)
+    ap.add_argument("--with-jev", action="store_true", help="Run semantic-check between locate and verify")
+    ap.add_argument("--jev-workers", type=int, default=4, help="Jev HTTP workers, independent of --workers (Codex)")
+    ap.add_argument("--jev-limit", type=int, default=20, help="Command-wide HTTP attempt cap, including retries")
+    ap.add_argument("--jev-max-cost-usd", type=float, default=0.05)
+    ap.add_argument("--jev-max-seconds", type=float, default=1800)
+    ap.add_argument("--jev-timeout", type=float, default=30)
+    ap.add_argument("--jev-max-retries", type=int, default=2)
+    ap.add_argument("--jev-threshold", type=float, default=0.5)
+    ap.add_argument("--jev-review-band", type=float, default=0.1)
+    ap.add_argument("--jev-max-input-bytes", type=int, default=200000)
+    ap.add_argument("--jev-location-map", type=Path, help="Reviewed section/edition mappings with source hashes")
+    ap.add_argument("--jev-no-api", action="store_true", help="Standalone semantic-check inspection; no DB writes")
+    ap.add_argument("--jev-apply", action="store_true", help="Apply eligible YES results to analysis DB only")
+    ap.add_argument("--jev-include-payload", action="store_true", help="Include full OCR and question in audit output")
     ap.add_argument("--locator-chunk-size", type=int, default=40)
     ap.add_argument("--force", action="store_true")
     ap.add_argument(
@@ -1413,6 +1428,18 @@ def _analysis_read_command(
 
 def run_analysis_cli(argv: list[str]) -> None:
     args = build_analysis_arg_parser().parse_args(argv)
+    from tools.indexing.alphabetical_semantic_check import JevBudget, JevOptions, semantic_check_stage
+    jev_options = JevOptions(**{
+        field: getattr(args, 'jev_' + field) for field in (
+            'workers', 'limit', 'max_cost_usd', 'max_seconds', 'timeout', 'max_retries',
+            'threshold', 'review_band', 'max_input_bytes', 'no_api', 'apply', 'include_payload')
+    }, verbose=args.verbose)
+    jev_options.validate()
+    if args.jev_no_api and args.command != 'semantic-check':
+        raise SystemExit('--jev-no-api requires standalone semantic-check; other stages may call Codex.')
+    if args.with_jev and args.command not in {'run', 'verify'}:
+        raise SystemExit('--with-jev is supported by run or verify; otherwise use semantic-check.')
+    jev_budget = JevBudget(jev_options)
     for field in (
         "root",
         "analysis_db",
@@ -1424,6 +1451,7 @@ def run_analysis_cli(argv: list[str]) -> None:
         "filtered_pages_json",
         "filtered_pages_dir",
         "output",
+        "jev_location_map",
     ):
         value = getattr(args, field)
         if isinstance(value, Path):
@@ -1439,14 +1467,17 @@ def run_analysis_cli(argv: list[str]) -> None:
     args.output_dir.mkdir(parents=True, exist_ok=True)
     args.log_dir.mkdir(parents=True, exist_ok=True)
     args.intermediate_root.mkdir(parents=True, exist_ok=True)
-    with connect_analysis_db(args.analysis_db) as con:
-        init_analysis_schema(con)
+    if args.command != 'semantic-check':
+        with connect_analysis_db(args.analysis_db) as con:
+            init_analysis_schema(con)
 
     commands = (
         ["discover", "extract", "locate", "verify", "assemble"]
         if args.command == "run"
         else [args.command]
     )
+    if args.with_jev:
+        commands.insert(commands.index('verify'), 'semantic-check')
     failed: list[str] = []
     for volume_id in volume_ids:
         try:
@@ -1517,6 +1548,13 @@ def run_analysis_cli(argv: list[str]) -> None:
                         force=args.force,
                         skip_fingerprint=args.skip_fingerprint,
                     )
+                elif command == "semantic-check":
+                    summary = semantic_check_stage(
+                        analysis_db=args.analysis_db, volume_id=volume_id,
+                        source_root=source_root, intermediate_dir=intermediate_dir,
+                        options=jev_options, budget=jev_budget,
+                        location_map_path=args.jev_location_map,
+                    )
                 elif command == "verify":
                     summary = verify_stage(
                         analysis_db=args.analysis_db,
@@ -1546,6 +1584,11 @@ def run_analysis_cli(argv: list[str]) -> None:
                     )
                 summaries.append(summary)
                 print(json.dumps(summary, ensure_ascii=False))
+                if command == "semantic-check":
+                    if summary.get("stop_reason") == "interrupted":
+                        raise KeyboardInterrupt
+                    if summary.get("stop_reason") in {"authentication_error", "authorization_error", "billing_error"}:
+                        raise ValueError("Jev stopped: " + summary["stop_reason"])
             print(
                 json.dumps(
                     {
@@ -1560,6 +1603,7 @@ def run_analysis_cli(argv: list[str]) -> None:
                 )
             )
         except KeyboardInterrupt:
+            jev_budget.close()
             raise
         except BaseException as exc:
             if isinstance(exc, GeneratorExit):
@@ -1571,7 +1615,9 @@ def run_analysis_cli(argv: list[str]) -> None:
                 error=exc,
             )
             if not args.all_volumes:
+                jev_budget.close()
                 raise
+    jev_budget.close()
     if failed:
         raise SystemExit(1)
 

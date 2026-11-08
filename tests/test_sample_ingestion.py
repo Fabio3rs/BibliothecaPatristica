@@ -12,6 +12,71 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import sample
 
 
+def make_page_pairs(root):
+    volume = root / "PG002"
+    (volume / "images").mkdir(parents=True)
+    (volume / "text").mkdir()
+    for number in (377, 378, 489):
+        (volume / "images" / f"scan-uuid-{number}.png").write_bytes(b"image")
+        (volume / "text" / f"text-uuid-{number}.txt").write_text("verbum", encoding="utf-8")
+    return volume
+
+
+def test_explicit_pages_use_existing_pairs_without_sampling(tmp_path, monkeypatch):
+    volume = make_page_pairs(tmp_path / "teste")
+    conn = sample.open_db(str(tmp_path / "ocr.db"))
+    report = sample.create_ingestion_report(db_path=str(tmp_path / "ocr.db"), root=str(volume.parent), mode="append", per_volume=1)
+    monkeypatch.setattr(sample, "select_prioritized_pages", lambda *a, **kw: pytest.fail("Não deve sortear"))
+    sample.sample_and_ingest(volume.parent, conn, 1, "manual", volume_names={"PG002"},
+                             page_numbers={377, 489}, dry_run=True, report=report)
+    assert report["volumes"]["PG002"]["page_ids"] == ["PG002-377", "PG002-489"]
+    assert report["summary"]["pages_planned"] == 2
+    assert conn.execute("SELECT COUNT(*) FROM sessions").fetchone()[0] == 0
+    conn.close()
+
+
+def test_explicit_page_missing_text_fails_before_session(tmp_path):
+    volume = make_page_pairs(tmp_path / "teste")
+    (volume / "text" / "text-uuid-377.txt").unlink()
+    conn = sample.open_db(str(tmp_path / "ocr.db"))
+    with pytest.raises(sample.IngestionError, match="sem par imagem/texto"):
+        sample.sample_and_ingest(volume.parent, conn, 10, "manual", volume_names={"PG002"}, page_numbers={377, 489})
+    assert conn.execute("SELECT COUNT(*) FROM sessions").fetchone()[0] == 0
+    conn.close()
+
+
+def test_explicit_page_repeat_preserves_human_review(tmp_path):
+    volume = make_page_pairs(tmp_path / "teste")
+    conn = sample.open_db(str(tmp_path / "ocr.db"))
+    session = sample.create_session(conn, "original", 1, ["PG002"])
+    sample.insert_line(conn, session, make_line(page_id="PG002-0377", image_path=str(volume / "images" / "scan-uuid-377.png")))
+    conn.execute("UPDATE lines SET reviewed_text='correção humana', status='corrected'")
+    conn.commit()
+    sample.sample_and_ingest(volume.parent, conn, 10, "manual", volume_names={"PG002"}, page_numbers={377})
+    assert tuple(conn.execute("SELECT reviewed_text, status FROM lines").fetchone()) == ("correção humana", "corrected")
+    assert conn.execute("SELECT COUNT(*) FROM sessions").fetchone()[0] == 1
+    conn.close()
+
+
+def test_manual_dry_run_does_not_create_database(tmp_path, monkeypatch, capsys):
+    volume = make_page_pairs(tmp_path / "teste")
+    db = tmp_path / "new.db"
+    monkeypatch.setattr(sys, "argv", ["sample.py", "--root", str(volume.parent), "--db", str(db),
+                                      "--volume", "PG002", "--page", "377", "--page", "377", "--dry-run"])
+    sample.main()
+    assert not db.exists()
+    assert "1 página(s) seriam processadas" in capsys.readouterr().out
+
+
+@pytest.mark.parametrize("options", [[], ["--volume", "PG001", "--volume", "PG002"],
+                                    ["--volume", "PG002", "--resample"]])
+def test_manual_pages_reject_ambiguous_or_destructive_options(tmp_path, monkeypatch, options):
+    monkeypatch.setattr(sys, "argv", ["sample.py", "--root", str(tmp_path), "--page", "377", *options])
+    with pytest.raises(SystemExit) as exc:
+        sample.main()
+    assert exc.value.code == 2
+
+
 def make_line(
     *,
     page_id: str = "PG001-001",

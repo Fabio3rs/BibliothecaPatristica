@@ -9,6 +9,7 @@ import sqlite3
 import sys
 
 from PIL import Image
+import pytest
 import tifffile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -81,6 +82,65 @@ def add_version(
         """,
         (line_id, provider, model, text, text_hash, score, run_id),
     )
+
+
+def test_reviewed_only_requires_human_status_and_filters_before_limit():
+    conn = make_consensus_db()
+    conn.executemany("UPDATE lines SET reviewed_text=?, status=? WHERE id=?", [
+        ("Transcrição humana aprovada", "approved", 2),
+        ("Transcrição humana corrigida", "corrected", 3),
+        ("Texto rejeitado manualmente", "rejected", 4),
+        ("Rascunho ainda não aprovado", "pending", 1),
+    ])
+    add_version(conn, 5, "tesseract", "migne", "Consenso apenas automático", 1, "a")
+    add_version(conn, 5, "openai", "gpt", "Consenso apenas automático", 1, "b")
+    candidates, _, _, decisions = et.select_weighted_candidates(conn, reviewed_only=True, limit=2)
+    assert {c.line_id for c in candidates} == {2, 3}
+    assert all(c.text_source == "manual_review" for c in candidates)
+    assert any(d.get("reason") == "reviewed_only" for d in decisions)
+    conn.close()
+
+
+def test_lines_reviewed_only_exports_correction_without_score(tmp_path):
+    import sample
+    conn = sample.open_db(str(tmp_path / "ocr.db"))
+    session = sample.create_session(conn, "manual", 0, ["PG002"])
+    for index, status in enumerate(["corrected", "approved", "pending", "rejected"]):
+        sample.insert_line(conn, session, dict(page_id="PG002-377", volume="PG002", image_path="/tmp/page.png",
+            line_index=index, bbox=dict(x=0, y=index * 20, w=40, h=12), line_image=png_bytes(),
+            tesseract_text="OCR anterior da linha", detected_lang="Latin"))
+        conn.execute("UPDATE lines SET reviewed_text=?, status=? WHERE line_index=?",
+                     (f"Texto humano revisado {index}", status, index))
+    conn.commit()
+    conn.close()
+    out = tmp_path / "gold"
+    out.mkdir()
+    et.export(str(tmp_path / "ocr.db"), out, 150, 1.0, 0, reviewed_only=True)
+    assert len(list(out.glob("*.gt.txt"))) == 2
+    assert (out / "line_0000001.gt.txt").read_text() == "Texto humano revisado 0"
+
+
+@pytest.mark.parametrize("reviewed_only", [False, True])
+def test_lines_refuses_nonempty_output_without_touching_existing_files(tmp_path, reviewed_only):
+    out = tmp_path / "gold"
+    out.mkdir()
+    (out / "line_0000002.gt.txt").write_text("OCR automático anterior", encoding="utf-8")
+    (out / "line_0000002.png").write_bytes(png_bytes())
+    (out / "manifest.json").write_text('[{"id": 2}]', encoding="utf-8")
+    original = {path.name: path.read_bytes() for path in out.iterdir()}
+    db = tmp_path / "not_created.db"
+    with pytest.raises(ValueError, match="diretório de saída vazio"):
+        et.export(str(db), out, 150, 1.0, 0, reviewed_only=reviewed_only)
+    assert {path.name: path.read_bytes() for path in out.iterdir()} == original
+    assert not db.exists()
+
+
+def test_lines_refuses_output_that_is_a_file(tmp_path):
+    out = tmp_path / "gold"
+    out.write_text("preservar", encoding="utf-8")
+    with pytest.raises(ValueError, match="diretório de saída vazio"):
+        et.export(str(tmp_path / "missing.db"), out, 150, 1.0, 0, reviewed_only=True)
+    assert out.read_text(encoding="utf-8") == "preservar"
 
 
 def test_weighted_consensus_deduplicates_runs_and_keeps_line_id_isolation():

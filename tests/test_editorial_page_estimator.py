@@ -16,6 +16,37 @@ from tools.indexing.editorial_page_estimator import (
 )
 
 
+@pytest.fixture(autouse=True)
+def isolate_default_cache(tmp_path, monkeypatch):
+    monkeypatch.setattr("tools.indexing.editorial_page_estimator.DEFAULT_ESTIMATOR_DB",
+                        tmp_path / "default-estimator.sqlite")
+
+
+def test_readonly_cache_recomputes_stale_without_writing(tmp_path):
+    source = tmp_path / "PGX" / "text" / "page-001.txt"
+    write_page(source, '<pagina><bloco tipo="cabecalho">121 TITULUS 122</bloco></pagina>')
+    cache = tmp_path / "cache.sqlite"
+    estimate_editorial_pages(source_root=source.parent, collection="PG", db_path=cache)
+    cached = estimate_editorial_pages(source_root=source.parent, collection="PG", db_path=cache, readonly_cache=True)
+    assert cached["cache_hits"] == 1
+    before = cache.read_bytes()
+    write_page(source, '<pagina><bloco tipo="cabecalho">123 TITULUS 124</bloco></pagina>')
+    result = estimate_editorial_pages(source_root=source.parent, collection="PG", db_path=cache, readonly_cache=True)
+    assert result["observations_recomputed"] == 1
+    assert result["files"][0]["best_guess"] == [123, 124]
+    assert cache.read_bytes() == before
+
+
+def test_readonly_missing_cache_is_not_created(tmp_path):
+    source = tmp_path / "PGX" / "text" / "page-001.txt"
+    write_page(source, '<pagina><bloco tipo="cabecalho">121 TITULUS 122</bloco></pagina>')
+    cache = tmp_path / "absent" / "cache.sqlite"
+    result = estimate_editorial_pages(source_root=source.parent, collection="PG", db_path=cache, readonly_cache=True)
+    assert result["cache_hits"] == 0
+    assert result["observations_recomputed"] == 1
+    assert not cache.parent.exists()
+
+
 def write_page(path: Path, body: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(body, encoding="utf-8")

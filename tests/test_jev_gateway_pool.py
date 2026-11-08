@@ -18,7 +18,7 @@ from test_jev_index_results import bundle
 
 @pytest.fixture
 def server():
-    state = {'active': 0, 'peak': 0, 'requests': [], 'counts': Counter(), 'status': 200, 'cost': .01}
+    state = {'active': 0, 'peak': 0, 'requests': [], 'authorizations': [], 'counts': Counter(), 'status': 200, 'cost': .01}
     lock = threading.Lock()
 
     class Handler(BaseHTTPRequestHandler):
@@ -32,6 +32,7 @@ def server():
                 state['active'] += 1
                 state['peak'] = max(state['peak'], state['active'])
                 state['requests'].append(payload)
+                state['authorizations'].append(self.headers.get('Authorization'))
                 state['counts'][key] += 1
                 count = state['counts'][key]
             time.sleep(.15)

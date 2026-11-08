@@ -6,6 +6,7 @@ Uso:
     python sample.py --root ./teste --db ocr.db --session "amostra inicial" --per-volume 10
     python sample.py --root ./teste --db ocr.db --append --per-volume 10
     python sample.py --root ./teste --db ocr.db --append --dry-run --volume PG004
+    python sample.py --root ./teste --db ocr.db --append --volume PG002 --page 377 --page 489
 
 Estrutura esperada:
     {root}/P{G|L}{vol}/images/*-{page}.png
@@ -1206,7 +1207,10 @@ def sample_and_ingest(
     dry_run: bool = False,
     jobs: int | None = None,
     report: dict | None = None,
+    page_numbers: set[int] | None = None,
 ) -> dict | None:
+    if page_numbers and (not volume_names or len(volume_names) != 1):
+        raise ValueError("A seleção de páginas exige exatamente um --volume")
     if per_volume <= 0:
         raise ValueError("per_volume deve ser > 0")
     rng = random.Random(seed)
@@ -1236,6 +1240,14 @@ def sample_and_ingest(
     selections: list[tuple[Path, list[tuple[Path, Path, str]], dict[str, int], int]] = []
     for vol in volumes:
         pairs = find_page_pairs(vol)
+        if page_numbers:
+            available = {page_number(img) for img, _, _ in pairs}
+            missing_pages = sorted(page_numbers - available)
+            if missing_pages:
+                message = f"Páginas sem par imagem/texto em {vol.name}: {missing_pages}"
+                add_report_issue(report, "error", "pages_not_found", message)
+                raise IngestionError(message)
+            pairs = [pair for pair in pairs if page_number(pair[0]) in page_numbers]
         if not pairs:
             add_report_issue(
                 report,
@@ -1248,13 +1260,35 @@ def sample_and_ingest(
         existing_page_ids, existing_image_paths = existing_material_for_volume(
             conn, vol.name
         )
-        selected, class_counts, existing_count = select_prioritized_pages(
-            pairs,
-            per_volume,
-            rng,
-            existing_page_ids=existing_page_ids,
-            existing_image_paths=existing_image_paths,
-        )
+        if page_numbers:
+            # O número físico também identifica IDs legados com zero à esquerda.
+            existing_numbers = {
+                int(pid.rsplit("-", 1)[-1]) for pid in existing_page_ids
+                if pid.rsplit("-", 1)[-1].isdigit()
+            }
+            selected = []
+            class_counts = dict.fromkeys(PRIORITY_ORDER, 0)
+            existing_count = 0
+            for pair in sorted(pairs, key=lambda item: page_number(item[0])):
+                image_path, txt_path, page_id = pair
+                number = page_number(image_path)
+                if number in existing_numbers or normalize_source_path(image_path) in existing_image_paths:
+                    existing_count += 1
+                    add_report_issue(report, "info", "page_already_ingested",
+                                     "Página já ingerida; preservando linhas e revisões.",
+                                     page_id=page_id)
+                    continue
+                selected.append(pair)
+                existing_numbers.add(number)
+                class_counts[classify_ocr_file(txt_path)] += 1
+        else:
+            selected, class_counts, existing_count = select_prioritized_pages(
+                pairs,
+                per_volume,
+                rng,
+                existing_page_ids=existing_page_ids,
+                existing_image_paths=existing_image_paths,
+            )
         selections.append((vol, selected, class_counts, existing_count))
         if report is not None:
             report["volumes"][vol.name] = {
@@ -1263,6 +1297,7 @@ def sample_and_ingest(
                 "existing_pages_excluded": existing_count,
                 "lines_inserted": 0,
                 "bbox_conflicts": 0,
+                "page_ids": [pair[2] for pair in selected],
             }
         print(
             f"[PLAN] {vol.name}: mixed={class_counts['mixed']} "
@@ -1474,6 +1509,10 @@ def main() -> None:
         help="Restringe a um volume; pode ser repetido (ex.: --volume PG004).",
     )
     parser.add_argument(
+        "--page", action="append", type=int, dest="pages",
+        help="Página física específica; exige um --volume e pode ser repetida. Ignora o sorteio e --per-volume.",
+    )
+    parser.add_argument(
         "--preprocess-mode",
         choices=["adaptive_soft", "sample"],
         default=DEFAULT_PREPROCESS_MODE,
@@ -1528,6 +1567,13 @@ def main() -> None:
         help="Nível dos logs emitidos no stderr.",
     )
     args = parser.parse_args()
+    if args.pages:
+        if len(set(args.volumes or [])) != 1:
+            parser.error("--page exige exatamente um --volume")
+        if any(page < 0 for page in args.pages):
+            parser.error("--page deve ser maior ou igual a zero")
+        if args.resample or args.refresh_images or args.recalc_tesseract:
+            parser.error("--page não pode ser combinado com resample, refresh ou recálculo")
 
     logging.basicConfig(
         level=getattr(logging, args.log_level),
@@ -1557,7 +1603,14 @@ def main() -> None:
     conn: sqlite3.Connection | None = None
     exit_code = 0
     try:
-        conn = open_db(args.db, read_only=args.dry_run)
+        if args.dry_run and not Path(args.db).expanduser().exists() and not (
+            args.refresh_images or args.recalc_tesseract
+        ):
+            conn = sqlite3.connect(":memory:")
+            conn.row_factory = sqlite3.Row
+            conn.executescript(DDL)
+        else:
+            conn = open_db(args.db, read_only=args.dry_run)
 
         if args.refresh_images:
             refresh_line_images(
@@ -1603,6 +1656,7 @@ def main() -> None:
                 dry_run=args.dry_run,
                 jobs=args.jobs,
                 report=report,
+                page_numbers=set(args.pages or []),
             )
     except Exception as exc:
         if report.get("status") != "failed":

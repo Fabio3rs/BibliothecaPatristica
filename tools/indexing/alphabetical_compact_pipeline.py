@@ -1480,9 +1480,16 @@ def validate_locator_results(
             reason = f"invalid status {status!r}"
         elif status == "resolved":
             target_text = str(normalized_result.get("target_file") or "").strip()
+            semantic_error = None
+            semantic_checked = "semantic_validation" in normalized_result
+            if semantic_checked:
+                from .alphabetical_semantic_check import validate_decision
+                semantic_error = validate_decision(normalized_result, item)
             if not target_text:
                 reason = "resolved result is missing target_file"
-            elif _confidence(normalized_result) is None:
+            elif semantic_error:
+                reason = semantic_error
+            elif _confidence(normalized_result) is None and not semantic_checked:
                 reason = "resolved result requires confidence between 0 and 1"
             elif not (
                 _has_page_specific_evidence(normalized_result)
@@ -1696,16 +1703,17 @@ def assemble_compact_payload(
                 "attempted_searches": deepcopy(
                     result.get("attempted_searches") or []
                 ),
+                "semantic_validation": deepcopy(result.get("semantic_validation")),
             },
         }
         if status == "resolved":
             target_file = str(result["target_file"]).strip()
             probability = _confidence(result)
-            assert probability is not None
+            assert probability is not None or result.get("semantic_validation")
             ref["target_file"] = target_file
             ref["target_file_probability"] = probability
             resolved_by_entry.setdefault(pair[0], []).append(
-                (probability, pair[1], target_file)
+                (probability if probability is not None else 0.0, pair[1], target_file)
             )
         else:
             ref["target_file"] = None

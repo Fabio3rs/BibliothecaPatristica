@@ -19,7 +19,7 @@ MATCH_FIELDS = ('ref_id', 'entry_key', 'section_key', 'tome', 'entry_sha256',
                 'instruction_version', 'instruction_sha256', 'model')
 
 
-def read_evaluations(paths):
+def read_evaluations(paths, record_types=('association',)):
     """Newest valid evaluation wins; a torn final JSONL line is recoverable."""
     results = {}
     for path in paths:
@@ -32,7 +32,7 @@ def read_evaluations(paths):
                     if not line.endswith('\n'):
                         break
                     raise ValueError(f'Invalid JSONL record: {path}:{number}') from None
-                if record.get('record_type') != 'association' or record.get('status') != 'evaluated':
+                if record.get('record_type') not in record_types or record.get('status') != 'evaluated':
                     continue
                 key = (record.get('tome'), record.get('ref_id'), record.get('payload_sha256'))
                 record = dict(record)
