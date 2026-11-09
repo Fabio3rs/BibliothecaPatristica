@@ -134,6 +134,23 @@ function normalizeWhitespace(value) {
   return String(value || '').replace(/\s+/g, ' ').trim();
 }
 
+function normalizeIndexText(value) {
+  return String(value ?? '')
+    // Corrige palavras quebradas entre linhas
+    .replace(/(\p{L})[-\u2010][ \t]*\r?\n[ \t]*(?=\p{L})/gu, '$1')
+    // Normaliza espaços e demais quebras
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function uniqueNormalizedText(values) {
+  return [...new Set(
+    values
+      .map(normalizeIndexText)
+      .filter(Boolean)
+  )];
+}
+
 function unique(values) {
   return Array.from(new Set(values.filter(Boolean)));
 }
@@ -174,7 +191,7 @@ export function buildRecord(params, keywordMap, volumeId, page, metadataBlock) {
         entry?.search_text,
       ])
     : [];
-  const content = normalizeWhitespace(unique([
+  const content = normalizeWhitespace(uniqueNormalizedText([
     name,
     volumeId,
     volumeId.slice(0, 2),
