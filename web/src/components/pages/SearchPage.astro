@@ -779,8 +779,9 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       return localizeRoutePath(`${basePath}${path}`);
     }
 
-    async function ensureIndexador(entry) {
-      if (indexadorInstances.has(entry.id)) return indexadorInstances.get(entry.id);
+    async function ensureIndexador(entry, exactTerms = false) {
+      const cacheKey = `${entry.id}:${exactTerms ? 'exact' : 'prefix'}`;
+      if (indexadorInstances.has(cacheKey)) return indexadorInstances.get(cacheKey);
       if (!indexadorModulePromise) {
         indexadorModulePromise = import(`${assetBase}indexador/runtime/indexador-pagefind.js`);
       }
@@ -796,7 +797,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         PAGE_SIZE: 50,
         MAX_PER_TOKEN: 10000,
         MAX_CONCURRENT_FETCHES: 6,
-        prefixMatch: true,
+        prefixMatch: !exactTerms,
         prefixMinLength: 3,
         prefixMaxTerms: 32,
         prefixMaxPerTerm: 10000,
@@ -809,7 +810,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         maxWasmCacheBytes: cacheBudget,
       });
       await instance.init();
-      indexadorInstances.set(entry.id, instance);
+      indexadorInstances.set(cacheKey, instance);
       return instance;
     }
 
@@ -1139,7 +1140,10 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           renderEmptyState();
           return;
         }
-        const engines = (await Promise.all(entries.map(ensureIndexador))).filter(Boolean);
+        // Prefix expansion can omit the literal term when its vocabulary limit is hit.
+        // Boolean intersections must keep every exact posting to avoid false negatives.
+        const exactTerms = /&&|\|\||[()]/.test(term);
+        const engines = (await Promise.all(entries.map((entry) => ensureIndexador(entry, exactTerms)))).filter(Boolean);
         if (!engines.length) {
           resultsEl.textContent = s.searchIndexUnavailable;
           return;
