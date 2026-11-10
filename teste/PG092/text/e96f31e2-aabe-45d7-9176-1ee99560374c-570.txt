@@ -1,11 +1,13 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,110">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="90,0,910,120">
 1123
+
 SELECTA AD ILLUSTRATIONEM
+
 1124
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="60,110,480,220">
+  <bloco tipo="texto_principal" script="latino" bbox="110,120,410,470">
 Decio.
 Lampadio et Oreste.
 P. C. Lampadio et Oreste.
@@ -14,22 +16,27 @@ Paulino Juniore.
 Paulino I et Bisilario I.
 Paulino II et Bisilario II.
 Paulino III et Bisilario III.
-Paulino III et Joanne.
+Paulino IIII et Joanne.
 Paulino V et Joanne II.
 Paulino VI et Appione.
-Paulino VII et Appioque II.
+Paulino VII et Appione II.
 Basilio.
 P. C.
 It. P. C.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="520,110,900,220">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,130,530,180">
+A
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="640,120,820,470">
 Ter. P. C.
-III. P. C.
+IIII. P. C.
 V. P. C.
 VI. P. C.
 VII. P. C.
 VIII. P. C.
+VIIII. P. C.
 X. P. C.
 XI. P. C.
 XII. P. C.
@@ -40,17 +47,19 @@ XVI. P. C.
 XVII. P. C.
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="470,100,530,170">
-A
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="80,230,920,300">
+  <bloco tipo="texto_principal" script="latino" bbox="380,490,650,610">
 XX.
+
 LATERCULUS ALTER CONSULUM,
+
 POST CHRONICON SENATORIS.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="60,320,480,580">
+  <bloco tipo="nota_marginal" script="latino" bbox="500,620,540,670">
+B
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="100,640,470,900">
 Rusticus et Vitalis Augg. conss.
 Valerius et Justinianus VV. CC.
 Symmachus et Boetius VV. CC.
@@ -58,7 +67,7 @@ Maximus V. C.
 Opilio et Justinus Augg. VV. CC.
 Probus et Filoxenus VV. CC.
 Olibrius V. C.
-Maburtus V. C.
+Maburtius V. C.
 Justinianus Augg. II. V. C.
 Decius V. C.
 Lampadius et Orestis VV. CC.
@@ -66,75 +75,87 @@ P. C. Lampadi et Orestis VV. CC.
 Justinianus Aug. II. conss.
 Justinianus Aug. IIII et Paulinus conss.
 Belisarius V. C.
-P. C. Bilsari V. C.
-It. P. C. Bilsari V. C.
+P. C. Bilisari V. C.
+It. P. C. Bilisari V. C.
 Johannis V. C.
 Appius V. C.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="520,320,900,580">
+  <bloco tipo="texto_principal" script="latino" bbox="565,640,900,910">
 Justinus Junior V. C.
 Basilius V. C.
-P. C. Basilii V. C.
-Et It. P. C. Basilii V. C.
-III. P. C. Basilii V. C.
-IIII. P. C. Basilii V. C.
-V. P. C. Basilii V. C.
-VI. P. C. Basilii V. C.
-VII. P. C. Basilii V. C.
-VIII. P. C. Basilii V. C.
-VIIII. P. C. Basilii V. C.
-X. P. C. Basilii V. C.
-XI. P. C. Basilii V. C.
-XII. P. C. Basilii V. C.
-XIII. P. C. Basilii V. C.
-XIIII. P. C. Basilii V. C.
-XV. P. C. Basilii V. C.
-XVI. P. C. Basilii V. C.
+P. C. Basili V. C.
+Et It. P. C. Basili V. C.
+III. P. C. Basili V. C.
+IIII. P. C. Basili V. C.
+V. P. C. Basili V. C.
+VI. P. C. Basili V. C.
+VII. P. C. Basili V. C.
+VIII. P. C. Basili V. C.
+VIIII. P. C. Basili V. C.
+X. P. C. Basili V. C.
+XI. P. C. Basili V. C.
+XII. P. C. Basili V. C.
+XIII. P. C. Basili V. C.
+XIIII. P. C. Basili V. C.
+XV. P. C. Basili V. C.
+XVI. P. C. Basili V. C.
 XVII. P. C. V. C.
   </bloco>
 
-  <bloco tipo="nota_marginal" script="latino" bbox="470,320,530,380">
-B
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="460,600,540,640">
+  <bloco tipo="nota_marginal" script="latino" bbox="485,910,525,950">
 C
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="120,650,880,700">
+  <bloco tipo="texto_principal" script="latino" bbox="95,940,490,1000">
 XXI.
-  </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="60,700,470,940">
 METHODUS
 
 Qua invenitur cujusque mensis quæcunque dies, et
 in quam septimanæ feriam incurrit, et in quem
 annum incidit bissextus.
 
-In expeditio Ptolemaei canone post canones inertantium stellarum, habentur etiam præterea et alii canones, quorum ope intelligi possit cujusvis mensis dies in quem septimanæ diem incurrit. Quonium vero sine illis tabulis non poterit dies expetita reperiri, proutinde methodum expeditionem nos exegimus, qua inveniri facile possit, in quacunque indictione, cujusunque mensis diem in quam septimanæ feriam conveniat; quin et illud de quoque, in quo anno sit bissextus interpolandus. Ergo ab initio tertii anni nostri, quod Dei gratia administramus, imperii, repetendi sunt anni, inque an eam summam colligendi, a prima viz. indictione, et collectæ annorum summæ pro quarto quoque anno, unitas per perpetuam regulam addenda. Qua facta additione unitatis quartæ, alia
+In expedito Ptolemæi canone post canones inerrantium stellarum, habentur etiam præterea et alii
+canones, quorum ope intelligi possit cujusvis mensis dies in quem septimanæ diem incurrit. Quoniam vero sine illis tabulis non poterit dies expetita reperiri, proinde methodum expeditiorem nos
+excogitavimus, qua inveniri facile possit, in quacunque indictione, cujuscunque mensis diem in
+quam septimanæ feriam conveniat; quin et illud
+quoque, in quo anno sit bissextus interpolandus.
+Ergo ab initio tertii anni nostri, quod Dei gratia
+administramus, imperii, repetendi sunt anni, inque unam summam colligendi, a prima viz. indictione, et collectæ annorum summæ pro quarto
+quoque anno, unitas per perpetuam regulam addenda. Qua facta additione unitatis quartæ, alia
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="520,700,940,940">
+  <bloco tipo="nota_marginal" script="latino" bbox="515,955,545,995">
+D
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="545,935,960,1000">
 474 ΜΕΘΟΔΟΣ
 
-Δι' ἧς εὑρίσκεται ἑκάστου μηνός, ὅσα δηλώσει ἡμέρας, καὶ εἰς ποίαν τῆς ἑβδομάδος ἡμέραν, καὶ ποῖον ἔτει ἐνιαυτόν τὸ διςσεκτόν.
+Δι᾿ ἧς εὑρίσκεται ἑκάστου μηνὸς οἵα δήποτε
+ἡμέρα, καὶ εἰς ποίαν τῆς ἑβδομάδος ἡμέραν,
+καὶ ποῖον ἔτει γίνεται τὸ βίσεξτον.
 
-Ἐν τῷ προκειμένῳ κανόνι τοῦ Πτολεμαίου μετὰ τοὺς κανόνας τῶν ἀπλανῶν ἀστέρων ἔχειται κανόνας, δι' οὓς δύναται τις γνώμαι τῶν ἑκάστου μηνὸς ἡμέρων, εἰς ποίαν τῶν ἑβδομάδος ἡμέραν, καὶ ποῖον ἔτει ἐνιαυτόν τὸ διςσεκτόν. Ἀλλ' ἐπείδαν ὧν τούτων τῶν κανόνων οὐκ εὑρεθῇ εὐθέως ἡ ἡμέρα, ὑπάρχει ἑτέρων μεθόδων ἐφαρμογή, ὅπως τὸ ζητούμενον εὑρεθῇ.
-  </bloco>
-
-  <bloco tipo="rodape" script="latino" bbox="60,940,980,995">
-VARIÆ LECTIONES.
-
-* Marg. habent: ἦγον γ' ἔτος τῆς εὐδοκίας θεοῦ ἡμερᾶς βασιλείας ἐστ', τὸ ἀπὸ χίλιων κόσμου · quæ textui videntur inserenda.
-
-Digitized by Google
+Ἐν τῷ προχείρῳ κανόνι τοῦ Πτολεμαίου μετὰ
+τοὺς κανόνας τῶν ἀπλανῶν ἀστέρων ἔγκειται κανό-
+νια, δι᾿ ὧν δύναταί τις γνῶναι τὴν ἐκάστου μηνὸς
+ἡμέραν, εἰς ποίαν ἡμέραν τῆς ἑβδομάδος καταντᾷ.
+Ἀλλ᾿ ἐπειδὴ ἄνευ τῶν τοιούτων κανονίων οὐ δύνα-
+ταί τις εὑρίσκειν τὴν ἐπιζητουμένην ἡμέραν, ἐφεύ-
+ρομεν ἡμεῖς συντομωτέραν μέθοδον, ὥστε χωρὶς τοῦ
+τοιούτου κανόνος εὑρίσκειν εὐχερῶς τὴν ἐν οἵᾳ δή-
+ποτε ἐπινεμήσει ἐκάστου μηνὸς ἡμέραν ἐν ποίᾳ τῆς
+ἑβδομάδος ἡμέρῳ καταντᾷ, οὐ μόνον ἀλλὰ καὶ τὸ δί-
+σεξτον ἐν ποίῳ γίνεται ἔτει. Δεῖ τοίνυν λαμβάνειν τὰ
+συναγόμενα ἔτη ἀπὸ ἀρχῆς τοῦ γ' ἔτους τῆς ἡμε-
+τέρας βασιλείας, τουτέστιν, ἀπὸ τῆς α' ἐπινεμήσεως,
+καὶ τῷ συναγομένῳ ποσῷ τῶν ἐτῶν ἀεὶ προστιθέναι
+τὸ ἴδιον δ καὶ μετὰ τῆς [τὴν] πρόσ-
+θεσιν τοῦ δ, δέον ἑκάστῳ τὸ ἓν ἀφαιρεῖν, καὶ εἰθ᾿
   </bloco>
 
   <notas>
-- Letras marginais A, B, C foram transcritas em blocos próprios nota_marginal e não integradas nas colunas de texto.
-- Leituras incertas/contestáveis: "Opilio" (pode também ler-se outra grafia), "Maburtus" (grafia incerta), algumas abreviações e siglas (P. C., V. C., VV. CC.) mantidas tal como aparecem no impresso. Onde a leitura é difícil procurei conservar a forma gráfica visível em vez de normalizar.
-- O texto grego foi transcrito alfabeticamente conforme aparência; variantes paleográficas e abreviações editoriais não foram normalizadas.
+Transcrição diplomática; letras centrais A, B, C e D separadas em blocos próprios de tipo nota_marginal.
   </notas>
 </pagina>

@@ -1,8 +1,8 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="130,50,870,90">
+  <bloco tipo="cabecalho" script="latino" bbox="130,50,875,95">
     3765    S. SOPHRONII PATRIARCHÆ HIEROSOL.    3766
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="160,95,510,800">
+  <bloco tipo="texto_principal" script="latino" bbox="150,95,510,805">
     Oblivione rejecta,
     In corde custodi omnia,
     Maria, et puero accepto
@@ -54,8 +54,8 @@
     Citharis inclytis acceptis,
     Sacros cantemus hymnos.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="560,95,930,800">
-    110 [ilegivel] ἐξελοῦσα λήθης
+  <bloco tipo="texto_principal" script="grego" bbox="560,95,950,805">
+    [ilegivel] ἐξελοῦσα λήθης
     Κραδίῃ φύλασσε πάντα
     Μαρίη, βρέφος δ᾽ ἐοῦσα
     Ἐπὶ Ναζαρέθ πορεύου.
@@ -64,6 +64,7 @@
     Μαρίη κλυτὴ σὺν Ἄννῃ,
     Συμεὼν, ἄναξ Ἰωσὴφ,
     Ἱκέταις γένοισθε τεῖχος.
+
     Εʹ. — Εἰς τὴν Χριστοῦ τοῦ Θεοῦ ἡμῶν βάπτι-
     σιν (41).
 
@@ -106,27 +107,28 @@
     Κιθάρας κλυτὰς λαβόντες,
     Ἱεροὺς λέγοιμεν ὕμνους.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="565,78,590,98">A</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="530,430,555,450">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="530,610,555,630">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="530,785,555,805">D</bloco>
-  <bloco tipo="rodape" script="latino" bbox="430,820,700,850">
+  <bloco tipo="nota_marginal" script="latino" bbox="580,105,605,135">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="545,430,570,460">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="545,620,570,650">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="560,840,585,870">D</bloco>
+  <bloco tipo="rodape" script="latino" bbox="400,805,740,855">
     350
     P. MATRANGÆ NOTÆ.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="135,860,535,980">
-    (41) In sanctum Joannem præcursorem, cujus laudes maximæ odæ pars continet : orationem nostri
+  <bloco tipo="aparato_critico" script="misto" bbox="125,860,540,980">
+    (41) In sanctum Joannem præcursorem, cujus lau-
+    des maxima odæ pars continet : orationem nostri
     melodi in præc. nunc primum in hoc volumine
     editam habes.
 
     (42) Ἀκρίδες· ἀπὸ τοῦ ἄκρα ας παράγεται ἀκρίς
-    ἴδος. καὶ ἄκρις ιος ὑποκοριστικῶς) ὥστε ἀκρίδες
+    ἴδος. καὶ ἄκρις ιος ὑποκοριστικῶς) στε ἀκρίδες
     ἐνθάδε σημαίνειν τὰ ἄκρα τῶν βοτανῶν, καὶ φυτῶν
     βλαστήματα, ἃ αἱ λαχανοπωλήτραι ἐν Ῥώμῃ κοι-
     νοδημεὶ καλοῦσι puntarelle, mazzichi. Cf. præf. de
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="560,860,940,980">
-    hac et seq. voce et Bocharti hieroz. t. III, pag.
+  <bloco tipo="aparato_critico" script="misto" bbox="560,860,950,980">
+    hac et q. voce et Bocharti hieroz. t. III, pag.
     264 et seqq.
 
     (43) Μελεαγρίου· Μελεάγριον δὲ γένος ἐστὶ δεν-
@@ -138,5 +140,5 @@
     fuse adnotavit doctissimus Heyne in vv. 137 et
     187. Iliados iv.
   </bloco>
-  <notas>Leitura priorizou a imagem; A, B, C e D foram isolados em blocos `nota_marginal`. Os números de linha do grego foram mantidos no bloco principal.</notas>
+  <notas>Leitura baseada diretamente na imagem; a primeira palavra da primeira linha grega está parcialmente ilegível e foi marcada como [ilegivel]. A, B, C e D foram separados em `nota_marginal` conforme solicitado.</notas>
 </pagina>

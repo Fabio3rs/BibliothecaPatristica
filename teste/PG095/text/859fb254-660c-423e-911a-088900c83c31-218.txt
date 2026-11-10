@@ -1,8 +1,9 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,20,950,60">
-    431 S. JOANNIS DAMASCENI 432
+  <bloco tipo="cabecalho" script="latino" bbox="95,55,905,95">
+    431                         S. JOANNIS DAMASCENI                         432
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,70,490,580">
+
+  <bloco tipo="texto_principal" script="latino" bbox="95,100,470,565">
     dum quantitatem naturarum. Hinc fit ut dicamus
     Filium Dei, qui unus est de sancta Trinitate, duas
     habere naturas quæ unitæ sunt secundum hyposta-
@@ -21,10 +22,11 @@
     quoque per se et vere natura est : essentia unius
     est essentia alterius, ita ut natura una non sit
     diversarum naturarum essentia.
+
     X. Duæ voluntates et operationes. — Confiteor ita-
     que Jesum Christum Dominum nostrum, unam esse
     hypostasim, duasque naturas in ejus hypostasi unitas;
-    quia unio duarum [***] ejus naturarum in una
+    quia unio duarum ejus naturarum in una
     hypostasi medium locum obtinet inter permistio-
     nem et divisionem, et utramque participat; quia
     custodit et servat unitatem, nec non existentiam
@@ -32,15 +34,13 @@
     neque natura sic distinguuntur ut separentur; at
     vero omni modo integræ manent. Quod si integræ
     manent, omnino numerantur. Neque dicimus post
-    unionem distinctionem naturæ, sed naturarum.
-    Cum autem duas naturas dicimus, unam proinde
-    non dicimus, quandoquidem duæ sunt; quia nu-
-    merus locum non habet in una natura. Illi vero
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,70,515,90">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="485,120,515,145">
     A
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="515,70,950,580">
+
+  <bloco tipo="texto_principal" script="latino" bbox="525,100,910,565">
     qui dicunt duas perfectas post unionem ipsarum,
     necessario cogentur fateri duas naturas esse. Nam
     qui naturas duas memorat, de una sola non lo-
@@ -71,25 +71,34 @@
     qui medius fuit inter subtilitatem divinitatis il-
     lius, et crassitiem corporis ejus, quemadmodum
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,290,515,310">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="485,395,515,420">
     B
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="515,480,950,580">
+
+  <bloco tipo="texto_principal" script="latino" bbox="95,565,470,640">
+    Illi vero
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="525,565,910,640">
     Gregorius Theologus (4) tradidit. Præditus porro
     est duabus voluntatibus (5), quia non reperitur
     natura operationis expers. Etenim vita hæc pri-
     mum quidpiam est in natura humana, ipsaque ejus
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,500,515,520">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="485,620,515,645">
     C
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="450,590,550,610">
+
+  <bloco tipo="cabecalho" script="latino" bbox="450,645,550,680">
     NOTÆ.
   </bloco>
-  <bloco tipo="nota" script="latino" bbox="50,610,490,950">
+
+  <bloco tipo="nota" script="latino" bbox="95,680,470,980">
     (1) Quemadmodum Gregorius Theologus tradi-
     dit. Hoc etiam docet Damascenus lib. III De fide,
-    cap. 6 et 22, sed omisso Gregorii nomine, cujus
+    cap. 6 et 28, sed omisso Gregorii nomine, cujus
     locos e pluribus aliquot subjeci in adnotationibus,
     una cum Ruffino, qui ejus quondam discipulus fue-
     rat, verbis. Liberet et alios e Latinis adducere,
@@ -120,10 +129,12 @@
     et corpus in Christo citra confusionem aut direm-
     ptionem copulata sint, nisi quia Verbum in primis
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,750,515,770">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="485,850,515,875">
     D
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="515,610,950,950">
+
+  <bloco tipo="nota" script="misto" bbox="525,680,910,980">
     unitum est animæ, et per eam corpori. Viam, inquit,
     regiam mediamque gradientes, et confusionem et se-
     ctionem abominamur, μόνη δὲ κατὰ ψυχὴν ἁπταζό-
@@ -157,10 +168,12 @@
     eis quia unaquæque natura per semetipsam operatur,
     et hæc quidem passa est, impassibilis illa permansit;
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="600,960,800,990">
+
+  <bloco tipo="rodape" script="latino" bbox="705,945,935,985">
     Digitized by Google
   </bloco>
+
   <notas>
-    Transcription follows the visual layout. Decorative element in left column represented as [***]. Greek text in notes transcribed with accents. Marginal letters A, B, C, D placed in gutter blocks.
+    Two-column layout transcribed left column first, then right. Marginal letters A, B, C, D are placed as separate nota_marginal blocks in the gutter. Greek in the right note column kept as mixed script. Line-end hyphenation preserved where visible.
   </notas>
 </pagina>

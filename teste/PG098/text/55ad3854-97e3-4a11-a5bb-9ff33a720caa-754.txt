@@ -1,14 +1,14 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,38,930,60">1499                                     INDEX ANALYTICUS                                     1500</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="90,82,510,535">ave, sole splendidior; ave, luna micantior. Ave,
+  <bloco tipo="cabecalho" script="latino" bbox="75,95,925,155">1499 INDEX ANALYTICUS 1500</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="80,160,505,585">ave, sole splendidior; ave, luna micantior. Ave,
 multiplex astrorum nitor; ave, levis nubes, quæ
 cœlestem pluviam inspergis; ave, fulgur suaviter
 emicans in fidelium oculos; ave, spiritale tonitru
 hominum auribus resonans sine strepitu; ave, aura
 sancta, quæ spiritus malitiæ e terra dissipasti. Ave,
 nobile præconium prophetarum; ave, apostolorum
-auditus per totum orbem sonus; ave, martyrum ex-
-cellens confessio; ave, patriarcharum laudatissima
+auditus per totum orbem sonus; ave, martyrum
+excellens confessio; ave, patriarcharum laudatissima
 prædicatio; ave, sanctorum summum ornamentum;
 ave, justorum verissima voluptas; ave, virginum
 beatissima gloriatio; ave, regum sceptrum ac firmi-
@@ -23,27 +23,27 @@ splendor immaculatus. Ave, Verbi sedes amplissi-
 ma; ave, senum tutum fulcimentum; ave, juvenum
 divina institutio; ave, infantium illustris custodia;
 ave, mediatrix omnium qui sub cœlo sunt; ave,
-totius orbis reparatio; ave, cœli terræque magnifi-
-centissima celebritas; ave, gratia plena, Dominus
+totius orbis reparatio; ave, cœli terræque magni-
+ficentissima celebritas; ave, gratia plena, Dominus
 tecum, qui ante te, et ex te, et nobiscum. Ipsi laus
 cum Patre et sanctissimo et benefico et vivifico Spi-
 ritu, nunc et semper et in infinita sæcula sæculo-
 rum. Amen.</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,280,515,302">B</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="520,82,930,536">Α Χαῖρε, οὐρανοῦ πλατυτέρα· χαῖρε, ἡλίου λαμπροτέ-
+  <bloco tipo="nota_marginal" script="greco" bbox="485,455,510,500">B</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="520,160,930,585">Α Χαῖρε, οὐρανοῦ πλατυτέρα· χαῖρε, ἡλίου λαμπροτέ-
 ρα· χαῖρε, τῆς σελήνης φωτεινοτέρα· χαῖρε, τῶν
 ἀστέρων πολυαρίθμητος ἔλλαμψις· χαῖρε, νεφέλη
 κούφη, ἡ τὸν ὄμβρον τὸν οὐράνιον ἐπιβράνασα· χαῖ-
-ρε, ἀστραπή, ἡ τὰς ὄψεις τῶν πιστῶν ἠρέμα καταυ-
-γάζουσα· χαῖρε, βροντὴ πνευματική, ἡ ἀψοφητὶ
+ρε, ἀστραπή, ἡ τὰς ὄψεις τῶν πιστῶν ἠρέμα κατα-
+αυγάζουσα· χαῖρε, βροντὴ πνευματική, ἡ ἀψοφητὶ
 ἐνηχοῦσα τοῖς ὠσὶ τῶν ἀνθρώπων· χαῖρε, ἔμπνευσις
 ἁγία, ἡ τὰ πνεύματα τῆς κακίας ἐκ γῆς ἐξαφανίσα-
 σα· χαῖρε, προφητῶν τὸ περίδοξο κήρυγμα· χαῖρε,
 ἀποστόλων τὸ παγκόσμιον περιήχημα· χαῖρε, τῶν
 μαρτύρων ἡ ὑπέρτιμος ὁμολογία· χαῖρε, πατριαρ-
 χῶν ἡ πολυύμνητος δοξολογία· χαῖρε, τῶν ὁσίων ὁ
-ὑπέρτατος κόσμος· χαῖρε, τῶν δικαίων ἡ ἀληθ-
-εστάτη τρυφή· χαῖρε, τῶν παρθένων πανόλβιον καύ-
+ὑπέρτατος κόσμος· χαῖρε, τῶν δικαίων ἡ ἀληθέ-
+στατη τρυφή· χαῖρε, τῶν παρθένων πανόλβιον καύ-
 χημα· χαῖρε, βασιλέων κραταίωσις· χαῖρε, ἀρχ-
 ιερέων λειτούργημα μέγιστον· χαῖρε, ἁμαρτωλῶν
 καταφύγιον ἄρρηκτον· χαῖρε, πλεόντων κυβέρνησις
@@ -59,31 +59,65 @@ rum. Amen.</bloco>
 ρανὸν πάντων ἡ μεσίτις· χαῖρε, τῆς οἰκουμένης ἡ
 ἀνάκλησις· χαῖρε, οὐρανοῦ καὶ γῆς πανήγυρις ἔνδο-
 ξος· χαῖρε, κεχαριτωμένη, ὁ Κύριος μετὰ σοῦ, ὁ πρὸ
-σου, καὶ ἐκ σοῦ, καὶ μεθ᾿ ἡμῶν· ὕμνος σὺν τῷ Πατρὶ,
+σοῦ, καὶ ἐκ σοῦ, καὶ μεθ᾿ ἡμῶν· ὕμνος σὺν τῷ Πατρὶ,
 καὶ τῷ παναγίῳ, καὶ ἀγαθῷ, καὶ ζωοποιῷ Πνεύ-
 ματι, νῦν καὶ ἀεὶ, καὶ εἰς τοὺς ἀτελευτήτους αἰῶνας
 τῶν αἰώνων. Ἀμήν.</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="300,585,700,615">INDEX ANALYTICUS</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="350,620,650,645">AD SANCTI GERMANI OPERA.</bloco>
-  <bloco tipo="nota" script="latino" bbox="90,650,920,685">Numeri Arabici ad columnas hujusce editionis lectorem revocant; litteræ a, b, c, d, paginarum divisiones indicant.</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="292,715,310,738">A</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="90,750,510,950">Aaron manus Moysis sustinens, præfigurabat spontaneam Christi passionem Deo et Patri oblatam, a qua mors perniciosa cohibita fuit, 126, a.
-Ablutio manuum in sacrificio Missæ quid significet, 423, c, d.
-Abraham, princeps Christi sepulturæ et resurrectionis pictor, et quomodo, 279, a.
-Acacius Melitinensis, vir vere religiosus et ad omnem pietatem et tranquillitatem compositus, 63, c.
-Adamum naturaliter innocentem et cum libera voluntate creavit Deus, 143, c; illum naturaliter metuentem mortem fecit, 144, b. Adami calvaria defossa in loco qui postea Calvarius est dictus, ubi Christus crucifixus, 255, a, b, c.
-Alleluia quomodo interpreteur, et quid significet, 411, b, c.
-Altare propitiatorium, 390, a. Altare est et dicitur præsepe et sepulcrum Domini, ibid., b.
+  <bloco tipo="cabecalho" script="latino" bbox="305,610,695,660">INDEX ANALYTICUS</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="345,665,655,705">AD SANCTI GERMANI OPERA.</bloco>
+  <bloco tipo="nota" script="latino" bbox="85,710,915,755">Numeri Arabici ad columnas hujusce editionis lectorem revocant; litteræ a, b, c, d, paginarum divisiones indicant.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="285,865,315,910">A</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="85,920,500,1275">Aaron manus Moysis sustinens, præfigurabat spon-
+taneam Christi passionem Deo et Patri oblatam, a qua
+mors perniciosa cohibita fuit, 126, a.
+Ablutio manuum in sacrificio Missæ quid significet,
+423, c, d.
+Abraham, princeps Christi sepulturæ et resurrectionis
+pictor, et quomodo, 279, a.
+Acacius Melitinensis, vir vere religiosus et ad omnem
+pietatem et tranquillitatem compositus, 63, c.
+Adamum naturaliter innocentem et cum libera vo-
+luntate creavit Deus, 143, c; illum naturaliter metuen-
+tem mortem fecit, 144, b. Adami calvaria defossa in loco
+qui postea Calvarius est dictus, ubi Christus crucifixus,
+255, a, b, c.
+Alleluia quomodo interpreteur, et quid significet, 411,
+b, c.
+Altare propitiatorium, 390, a. Altare est et dicitur
+præsepe et sepulcrum Domini, ibid., b.
 Ambo in templo Dei quid significet, 391, a.
-Angeli sunt immortales, 263, a. Angeli cum timore Mariæ in templo consecratæ deserviebant, victum illi suppeditandæ, 303, b, c; 315, c. Angeli descendebant in cruce et ascendebant, dum illi Christus affigeretur, 254, b, c. Angelici ordines hominum amantes, ex peccatorum</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="520,705,930,950">pœnitentia festi et gaudii occasionem sumunt, 223, d.
-Anima corporis substantia est, cum et ea abeunte dissolvatur quod subsistens erat, 259, a, b. Animæ separatio a corpore morbis non omnino præcipue tribuenda, 95, c.
-Anna, Virginis Mariæ mater, ex tribu Aaronitica, prophetica et regia stirpe orta est, 314, a. Deum precatur ut sterilitatis opprobrium auferat ab ea, ibid. b; exauditur, ibid. c, d. Anna diuturnam sterilitatem felici partu compensans, immenso gestiens gaudio, Mariam ad templum Domini consecrandam duci, 294 et seqq. 299, b; 315, a, b, c.
-Annuntiatio Dei genitricis Mariæ exsultabundo animo spiritualiter celebranda, 319 et seqq. Colloquium inter Mariam et angelum de hoc mysterio, 322 et seqq.
-Antiphonæ sunt prophetarum prædictiones prænuntiantes adventum Filii Dei, 402, d.
-Apollinaris hæreticus; illius circa Christi humanitatem errores, 62, a, b.
-Apostoli per nubes miraculose translati, ad Mariam Virginem morituram confluxerunt, 366, b, c. Sublato in humeros feretro, corpus ejus cum canticis et luminibus honesto cultu ac reverentia ad monumentum pompa efferunt, 367, c, d. Petrus et Paulus cadaver inserunt in tumulo, sed, omnibus spectantibus, corpus assumptum est, et nemo vidit quisnam rapuerit illud, 370, b, c.
+Angeli sunt immortales, 263, a. Angeli cum timore
+Mariæ in templo consecratæ deserviebant, victum illi
+suppeditandæ, 303, b, c; 315, c. Angeli descendebant in
+cruce et ascendebant, dum illi Christus affigeretur, 254,
+b, c. Angelici ordines hominum amantes, ex peccatorum</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="520,845,940,1285">pœnitentia festi et gaudii occasionem sumunt, 223, d.
+Anima corporis substantia est, cum et ea abeunte dis-
+solvatur quod subsistens erat, 259, a, b. Animæ sepa-
+ratio a corpore morbis non omnino præcipue tribuenda,
+95, c.
+Anna, Virginis Mariæ mater, ex tribu Aaronitica, pro-
+phetica et regia stirpe orta est, 314, a. Deum precatur
+ut sterilitatis opprobrium auferat ab ea, ibid. b; exau-
+ditur, ibid. c, d. Anna diuturnam sterilitatem felici
+partu compensans, immenso gestiens gaudio, Mariam
+ad templum Domini consecrandam duci, 294 et seqq.
+299, b; 315, a, b, c.
+Annuntiatio Dei genitricis Mariæ exsultabundo animo
+spiritualiter celebranda, 319 et seqq. Colloquium inter
+Mariam et angelum de hoc mysterio, 322 et seqq.
+Antiphonæ sunt prophetarum prædictiones prænuntian-
+tes adventum Filii Dei, 402, d.
+Apollinaris hæreticus; illius circa Christi humanitatem
+errores, 62, a, b.
+Apostoli per nubes miraculose translati, ad Mariam
+Virginem morituram confluunt, 366, b, c. Sublato in
+humeros feretro, corpus ejus cum canticis et luminibus
+honesto cultu ac reverentia ad monumentum pompa
+efferunt, 367, c, d. Petrus et Paulus cadaver inserunt
+in tumulo, sed, omnibus spectantibus, corpus assumptum
+est, et nemo vidit quisnam rapuerit illud, 370, b, c.
 Aqua baptismalis mystice nobis declarat mysticum</bloco>
-  <bloco tipo="rodape" script="latino" bbox="610,965,900,988">Digitized by Google</bloco>
-  <notas>Transcrição organizada por ordem de leitura: coluna esquerda, depois coluna direita. As letras marginais visíveis são A e B; não há tinta identificável para C ou D. Hifenizações de fim de linha preservadas quando legíveis.</notas>
+  <bloco tipo="rodape" script="latino" bbox="625,955,895,995">Digitized by Google</bloco>
+  <notas>Transcrição em ordem de leitura: cabeçalho superior, composição bilíngue, depois o cabeçalho repetido do índice e as duas colunas do índice. As letras marginais visíveis foram separadas como A e B; C e D não aparecem no recorte. O texto “Digitized by Google” é um marcador de digitalização visível na imagem.</notas>
 </pagina>

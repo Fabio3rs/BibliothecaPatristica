@@ -1,9 +1,9 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,40,950,60">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="70,75,930,115">
     [21] LE LIVRE DE JOB, III, 3-11. 581
   </bloco>
-  <bloco tipo="texto_principal" script="ethiopico" bbox="50,70,900,310">
-    X : * መዓልቲ : ይጥፋእ : ፀሐይ : እንተ : ተወ : ተወልድኩ :: ወሊለይ : እ
+  <bloco tipo="texto_principal" script="ethiopico" bbox="55,125,950,520">
+    * መዓልቲ : ይጥፋእ : ፀሐይ : እንተ : ተወ : ተወልድኩ :: ወሊለይ : እ
     ንተ : ወ : ደቂር : ተባህለ : ወእቲ :: * ለትጽልም : ይጥፋእ : ፀሐይ :: ወአርዳእሙ :
     እግዚአ : ብሑረ : በላዕ :: ወአይደልዮ : ብርሃን : ወሰቀጦ :: * መዓርግዎ : ጽልመ
     ት : ወጽልምት : ሞት :: ወይወሕ : ፀባር :: * ገጽዎት : ለትኩን : ይጥፋእ : ፀሐይ :: ወይ
@@ -15,19 +15,30 @@
     * አይደልዱ : ቤታ : እግዚ : ይሠርቅ :: * ዘአይጽትቱ : ሕሙ : እምአጽምተ :: * ለ
     ምንት : በውስጠ : ክርሥ : አሞትኩ :: ወወሊደኒ : እምክርሠ : ዘአተሐዘነ : ስለ
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="50,320,900,460">
-    2. መዓልቲ : A. — 3. ለትጥፋእ : A, ለትፋ : B    ወሊለይ : A, ወሊለይ : B    ውስ :] om. A. — 4. ወይትጽልም : A    ወአይደልዮ :] አይወሕዶ : B. — 5. ወይርግሙ :] ይርግሙ : A    ወይወሕዶ : B. — 6. ለትኩን :] ትኩን : B    ለሊት :] ለሊት : A    አሒሁለ : A    ዓመት : B    ወአት
-    ትኩለሉ : A. — 7. ለሊት :] ለሊት : ወሕ : B    ጾር : A    ውስጠ : B    ወሕጎሰት : A, ፍሥ :
-    B. — 8. ዘርግሙ : A    ዘሀለወ : B    ለወደይ : ወደይ : A    አንገ : B. — 9a. ወይብሩ : B    አይ
-    ደልዱ : A B. — 10a. አስሙ :] አስሙ : A    አአጸወ : B    ሕነ :] አንነ : B. — 9c. አይደልዱ :] አይደል
-    ዱ : A, ወአይደልዱ : B. — 10b. እምአዕጽምተ :] እምአዕጽምተ : P, እምነ : አዕጽምተ : A, አዕጽምተ : B.
+  <bloco tipo="nota_marginal" script="latino" bbox="930,145,985,520">
+    2.3
+    4
+    5
+    6
+    7
+    8
+    9 a
+    9 b
+    10 a
+    9 c
+    10 b
+    11
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="100,490,700,920">
+  <bloco tipo="aparato_critico" script="misto" bbox="55,530,950,790">
+    2. መዓልቲ : A. — 3. ለትጥፋእ : A, ለትፋ : B    ወሊለይ : A, ወሊለይ : B    ውስ :] om. A. — 4. ወይትጽልም : A    ወአይደልዮ :] አይወሕዶ : B. — 5. ወይርግሙ :] ይርግሙ : A    ወይወሕዶ : B. — 6. ለትኩን :] ትኩን : B    ለሊት :] ለሊት : A    አሒሁለ : A    ዓመት : B    ወአት
+    ትኩለሉ : A. — 7. ለሊት :] ለሊት : ወሕ : B    ጾር : A    ውስጠ : B    ወሕጎሰት : A, ፍሥ : B. — 8. ዘርግሙ : A    ዘሀለወ : B    ለወደይ : ወደይ : A    አንገ : B. — 9a. ወይብሩ : B    አይደልዱ : A B. — 10a. አስሙ :] አስሙ : A    አአጸወ : B    ሕነ :] አንነ : B. — 9c. አይደልዱ :] አይደልዱ : A, ወአይደልዱ : B. — 10b. እምአዕጽምተ :] እምአዕጽምተ : P, እምነ : አዕጽምተ : A, አዕጽምተ : B.
+  </bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="75,815,950,1525">
     « Périsse le jour où je suis né,
     et aussi la nuit où il fut dit : C'est un enfant mâle.
     Que ce jour soit ténèbres,
     et que Dieu ne le cherche pas en haut,
-    et que la lumière ne vienne pas pour lui;
+    et que la lumière ne vienne pas pour lui ;
     et que les ténèbres et l'ombre de la mort s'en emparent,
     et que l'obscurité vienne à lui.
     Maudit soit ce jour,
@@ -45,11 +56,19 @@
     parce qu'ils n'écartèrent pas la douleur de mes yeux.
     Pourquoi ne suis-je pas mort dans le sein,
   </bloco>
-  <notas>
-    A página contém uma edição crítica do Livro de Jó (capítulo 3, versículos 3-11).
-    - O bloco superior é o texto original em Ge'ez (Etíope).
-    - O bloco do meio é o aparato crítico com variantes manuscritas (indicadas por A, B, P) misturando caracteres latinos e etíopes.
-    - O bloco inferior é a tradução francesa.
-    - Números de versículos aparecem nas margens direita de ambos os blocos de texto principal.
-  </notas>
+  <bloco tipo="nota_marginal" script="latino" bbox="930,825,985,1525">
+    3
+    4
+    5
+    6
+    7
+    8
+    9 a
+    9 b
+    10 a
+    9 c
+    10 b
+    11
+  </bloco>
+  <notas>Transcrição diplomática a partir da imagem; a numeração marginal foi separada em blocos próprios. Algumas sequências ge'ez no texto principal e no aparato permanecem parcialmente incertas devido à resolução/contraste da digitalização.</notas>
 </pagina>

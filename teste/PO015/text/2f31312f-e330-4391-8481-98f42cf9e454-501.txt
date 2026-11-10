@@ -1,14 +1,9 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="360,45,600,65">
-    DISSERTATIO PRIMA.
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="75,50,110,70">
-    [51]
-  </bloco>
-  <bloco tipo="outro" script="latino" bbox="850,50,880,65">
-    489
-  </bloco>
-  <bloco tipo="texto_principal" script="siriaco" bbox="70,80,460,820">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="nota_marginal" script="latino" bbox="65,70,98,95">[51]</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="355,60,650,92">DISSERTATIO PRIMA.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="840,66,890,96">489</bloco>
+
+  <bloco tipo="texto_principal" script="siriaco" bbox="62,120,445,930">
     ܘܠܐ ܣܚܡܬܐ ܗܝ ܕܡܣܢܐ ܒܡܕܡ
     ܒܡܕܢܚܐ: ܡܒܝܢ ܐܦ ܡܢܗ: ܕܠܐ ܥܡܐ
     ܡܡܪ. ܗܟܢܐ ܗܠܝܢ: ܘܐܢ ܚܕ
@@ -35,7 +30,8 @@
     ܡܕܪܐ ܡܣܬܥܡܢ: ܡܕܠܚܗ ܐܡܡܝܢܐ ܗܕ
     ܟܕ ܗܘ ܘܗܘܗܗ ܩܕܠ ܐܣܬܢܣܪܐ ܡܢ
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="480,80,900,540">
+
+  <bloco tipo="texto_principal" script="latino" bbox="472,112,905,780">
     tuo, nec status rectus opinioni tuae.
     Visa est enim anima tua non sana
     esse ex amore eius quod scripsisti,
@@ -53,20 +49,18 @@
     An (ἄρα) est aliquis miser sicut tu?
     (An est doctrina aliqua) debilis atque
     infirma sicut doctrina vestra, haec
-    quae nullo modo potest stare¹? Si
+    quae nullo modo potest stare'? Si
     credis doctrinam tuam, in ea persta,
     et noli mutare et * cum unoquoque
     esse sicut ille.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="480,550,900,670">
+
     69. Etenim me obiurgas, quod no-
     vam fidem scripserim; et, cum nescias
     vim anathematis a patribus nostris
     sanctis prolati, propter nos accusas
     multos doctores, qui in scriptis suis
     veram fidem tradiderunt.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="480,680,900,820">
+
     70. Nam patres nostri beati, qui
     Nicaeam convenerunt, statuerunt,
     ne quis aliam fidem scriberet et
@@ -74,21 +68,12 @@
     centum et quinquaginta, qui eam-
     dem fidem rescripserunt et verba
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="910,240,970,270">
-    * L f. 10
-    rº b.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="910,500,970,530">
-    * V f. 9
-    rº b.
-  </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="100,840,600,860">
-    1. V ܡܢܗ. — 2. V ܡܘܠܕܗ. — 3. V ܒܣܢܝܩܘܬܐ. 4. V ܠܠܐܥܡܪ.
-  </bloco>
-  <bloco tipo="nota" script="latino" bbox="100,870,520,890">
-    1. Ad verbum : Haec cui non est status in ulla (re).
-  </bloco>
-  <notas>
-    A página apresenta um layout bilíngue com texto em Siriaco (coluna da esquerda, script Estrangelo) e Latim (coluna da direita). O texto latino contém inserções em Grego entre parênteses, como (πρόσωπον) e (ἄρα). Há notas marginais referenciando manuscritos (L f. 10, V f. 9) e um aparato crítico na parte inferior com variantes siríacas indicadas por "V".
-  </notas>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="876,395,966,445">* L. f. 10 rº b.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="876,620,966,670">* V f. 9 rº b.</bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="60,940,835,975">1. V ܡܢܗ. — 2. V ܡܘܠܕܗ. — 3. V ܒܣܢܝܩܘܬܐ. 4. V ܠܠܐܥܡܪ.</bloco>
+  <bloco tipo="nota" script="latino" bbox="70,978,520,996">1. Ad verbum : Haec cui non est status in ulla (re).</bloco>
+
+  <notas>Coluna esquerda em siriaco, coluna direita em latim; asteriscos no texto latino remetem às notas marginais com referências manuscritas. O aparato crítico no rodapé contém quatro variantes numeradas.</notas>
 </pagina>

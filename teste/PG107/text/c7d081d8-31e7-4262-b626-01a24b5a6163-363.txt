@@ -1,9 +1,10 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="65,70,870,105">
-    645                                                         NOVELLÆ CONSTITUTIONES.                                                         646
+  <bloco tipo="cabecalho" script="latino" bbox="50,60,950,110">
+    645 NOVELLÆ CONSTITUTIONES. 646
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="65,105,465,845">
-    τας. Καλά μὲν ταῦτα, ἃ θεῖα παρὰ τοῦ Θεοῦ εἴρηται,
+
+  <bloco tipo="texto_principal" script="grego" bbox="55,100,470,790">
+    τας. Καλὰ μὲν ταῦτα, ἃ θεῖα παρὰ τοῦ Θεοῦ εἴρηται,
     οὐ καλῶς δ᾽ αὐτὰ οὐδὲ κατὰ τὸν θεῖον σκοπὸν οἱ προ-
     τεινόμενοι ἐνταῦθα τὴν τούτων ποιοῦνται πρότασιν.
     Εἰ μὲν γὰρ ἡ μνηστεία τοιαύτην σώζει τὴν κατά-
@@ -54,11 +55,12 @@
     καὶ συνοικῶν καὶ συνδιαταλαιπωρούμενος καὶ τὴν
     ὀφειλομένην ἴασιν πρὸς ἴασιν τοῦ οἰκείου πάσῃ
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="475,105,875,845">
+
+  <bloco tipo="texto_principal" script="latino" bbox="490,100,940,790">
     quidem hæc et divina, utpote quæ a Deo pronuntiata
     sint: verum non recte, neque secundum divinum pro-
     positum hic in medium adducuntur. Si enim matrimo-
-    nium talem statum conserveret, qualem ejus in princi-
+    nium talem statum conservaret, qualem ejus in princi-
     pio pronuba exhibuisset, quisquis separaret, impro-
     bus profecto esset, neque reprehensionem effuge-
     ret; jam vero cum præ furore ne vocem quidem
@@ -103,28 +105,33 @@
     arti resistit, conjugem poterit deserere, cœlibem
     vitam acturus. Ubi autem tertio quoque anno mor-
     bus non cessarit, ad secundas pergere nuptias
-    poterit. Et hæc quidem de divortio alteriusque
+    poterit. Et hæc quidem de divortio alterisque
     nuptiis. Quod si mulier furiosa parentes habeat con-
     sobrinosve, ad hosce perducetur utpote ejus tutores
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="455,98,470,120">A</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="455,320,470,345">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="455,535,470,560">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="455,755,470,780">D</bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="45,850,900,930">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="455,98,468,120">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="455,350,468,375">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="455,640,468,665">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="455,785,468,810">D</bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="55,820,945,915">
     VARIÆ LECTIONES.
 
-    aa Zuich. Meerm. καὶ παρὰ. Haud inepte ᵃᵃ Agyl. εἰ μέν vult legi. ᵇᵇ Apud Scrimg. sequentia desunt.
+    aa Zuich. Meerm. καὶ παρὰ. Haud inepte aa Agyl. εἰ μὲν vult legi. bb Apud Scrimg. sequentia desunt.
     Supplentur ex Zuich. et Meerm., qui ea perperam Spangenbergio teste intercalant Novellæ sequenti.
-    ᶜᶜ Codd. δυνατόν. ᵈᵈ Codd. τιμωρίαν καὶ ζημίαν. ᵉᵉ Forte ἔσται.
+    cc Codd. δυνατόν. dd Codd. τιμωρίαν καὶ ζημίαν. ee Forte ἔσται.
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="65,940,600,970">
+
+  <bloco tipo="nota" script="misto" bbox="55,920,930,970">
     NOTÆ.
 
     (18-21) Adde Nov. 22, c. 15, § 1, 3, l. II. ad l. Corn. De Sicariis.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="570,980,850,1000">
+
+  <bloco tipo="rodape" script="latino" bbox="700,965,955,995">
     Digitized by Google
   </bloco>
-  <notas>As letras A, B, C e D encontram-se no gutter e foram transcritas como notas marginais; a letra A inicial da coluna latina não foi incluída no texto principal.</notas>
+
+  <notas>A, B, C e D aparecem no gutter e foram transcritas como blocos próprios de nota_marginal. Mantida a ordem de leitura da coluna esquerda para a direita; sem normalização ou tradução.</notas>
 </pagina>

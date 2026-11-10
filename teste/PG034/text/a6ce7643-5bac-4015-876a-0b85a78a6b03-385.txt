@@ -1,33 +1,67 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,10,960,80">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="280,70,720,115">
     HOMILIAE. — HOM. XXXVI, XXXVII.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="40,80,490,930">
-    ΟΜΙΛΙΑ ΛΣ'. 
-    Περὶ διπλῆς ἀναστάσεως τῶν ψυχῶν καὶ σωμάτων, καὶ διαφοροῦ δόξης τῶν ἀνασταμένων.
-    Α'. Ἀνάστασις τῶν νεκρῶν ψυχῶν ἀπὸ τοῦ νῦν γίνεται. Ἀνάστασις δὲ τῶν σωμάτων ἐν ἐκείνῃ τῇ ἡμέρᾳ. Ὅστε δεῖν τὸν ὁρατὸν τεπηγημένον ὄντα οἱ ἀστέρες, οὖτοι ἂν πάντες εἶσιν, ἀλλ' εἰς τοῦ ἑνὸς διαφέρει ἐν τῇ λαμπρότητι καὶ μεγαλειότητι· οὕτω καὶ τοῖς πνευματικοῖς, κατὰ τὸ μέτρον τῆς πίστεως εἰσι προχωταὶ ἐν αὐτῷ τῷ Πνεύματι, εἰς πλουσιώτερος τοῦ ἑτέρου. Καὶ ἡ Γραφὴ λέγει, ὅτι Ὁ λαλοῦν ἐπ' γλώσσῃ, Πνεύματι Θεοῦ λαλεῖ· Ὅτι πνευματικός ἐστιν ἐστὶν θεῷ λαλῶν· Ὅ δὲ προφητεύων, Ἐκκλησίᾳ οἰκοδομεῖ. Ὅσοι περισσοτερα ἔσχον τῆς χάριτος ὁ μὲν γὰρ ἑαυτὸν μόνον οἰκοδομεῖ, ὁ δὲ ἑαυτὸν καὶ τὸν πλησίον. Τοῦτο δὲ ἔστιν, ὥσπερ κόκκος σίτου σπειρόμενος ἐν τῇ γῇ, καὶ ὁ αὐτός ἐκ τῆς μιᾶς καρδίας πολλοὺς καὶ διαφόρους κόκκους ἐκφέρεῖ. Καὶ πάλιν αἴτιοι οἱ στάχυες, οἱ μὲν εἰσι μικρότεροι, οἱ δὲ μίκροτερον, ὅλο δὲ εἷς μιᾶν συναγόμεναὶ ἄλωναι, εἰς μιᾶν ἀποθήκην, διάφοροι ὄντες ἕκ ἐξ αὐτων γίνεται ἔαρτος.
-    Β'. Ἦ οὕτως εἰσὶν ἔν πόλει πλήθει ἀνθρώπων, καὶ οἱ μὲν εἰσι παίδια νηπια, οἱ δὲ ἄνδρες, ἡ νεανίσκοι· πάντες δὲ ἀπὸ μιᾶς πηγῆς ὕδωρ πίνουσι, καὶ ἀπὸ ἐκ δότρου ἐξόισουν, ἑνα ἄφερα ἔχοντες· ἡ ὕστερα εἰσι λυχνίαι, καὶ ὅ μὲν ἔχει δύο μυκτήρας, ὁ δὲ ἐπτά· ἀλλ' ὅπου ἐστὶν ἡ περίσεια τοῦ φωτός ἄλλως φωτίζει· οὕτως ἄσοι εἰσιν ἐν πυρὶ καὶ φωτὶ, οὐ δύνανται εἶναι ἐν σκότει· ἀλλὰ διαφορά πολλὴν ἐστίν. Ὅστε σὺ ἂν εἶ τις παπῆρ ὧν υἱοὶ ἔχει δύο, τὸν μὲν παιδίον, τὸν δὲ νεανίσκον, καὶ τὸν μὲν εἰς πόλεις ἀποστέλλει καὶ τραπέζας, τὸ δὲ ὑπτίον πάντοτε δοφορεύει, ἔπεὶ μηδὲν δύνασαι ποιεῖν. Δόξα τῷ Θεῷ. Ἀμήν.
+
+  <bloco tipo="nota_marginal" script="latino" bbox="484,145,515,175">
+    A
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,80,960,930">
+
+  <bloco tipo="cabecalho" script="grego" bbox="55,135,490,205">
+    ΟΜΙΛΙΑ Λς'.
+    Περὶ δισσῆς ἀναστάσεως τῶν ψυχῶν καὶ σωμάτων, καὶ διαφόρου δόξης τῶν ἀνισταμένων.
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="510,135,950,205">
     HOMILIA XXXVI.
     De duplici resurrectione animarum et corporum, et diversa resurgentium gloria.
-    I. Resurrectio mortuorum animarum ab hoc momento fit: resurrectio vero corporum in illa die. Quemadmodum vero in caelo, quæ fixæ sunt stellæ, non sunt omnes æquales, sed una ab altera differt splendore et magnitudine; sic in rebus spiritualibus pro modo fidei sunt promotiones in ipso Spiritu, unus locuplerior altero. Scriptura quoque ait: Qui loquitur lingua, Spiritu Dei loquitur. Hic spiritualis est, qui cum Deo loquitur: Al 127 qui prophetat, ecclesiam ædificat. Iste abundantiam adeptus est gratiæ. Ille enim se ipsum dunctaxat ædificat, hic vero se ipsum et proximum. Hoc porro se habet, ut granum frumenti in terram conjectum: idem ex uno corde plura et diversa grana producit. Et rursum ex spicis ipsis aliæ sunt ampliore, aliæ leniores; universæ vero in unam congregantur aream, ut unum horreum; et licet diversæ sint, unus ex ipsis conficiatur panis.
-    II. Aut quemadmodum in civitate sunt hominum multitudines, et nonnulli sunt pueri pusilli, alii vero viri vel adolescentes; omnes vero ex uno fonte aquam bibunt, unum panem comedunt, unnumque aerem spirant. Aut perinde ut sunt lucernæ, et hæc quidem habet duo luminaria, illa vero septem, at ubi est abundantia lucis, ibi aliter illuminat: sic quicunque sunt in igne et lumine, nequeunt esse in tenebris: verum magna inter eos est discrepantia. Veluti ac si pater quipsiam habeat duos filios, hunc pusillum, alterum adolescentem, hunc quidem in urbes mittit et regiones, pusillum autem semper tuctur, quia nihil potest agere. Gloria Deo. Amen.
   </bloco>
-  <bloco tipo="cabecalho" script="grego" bbox="40,930,490,1010">
+
+  <bloco tipo="texto_principal" script="grego" bbox="55,205,490,600">
+    Α'. Ἀνάστασις τῶν νεκρῶν ψυχῶν ἀπὸ τοῦ νῦν γίνεται. Ἀνάστασις δὲ τῶν σωμάτων ἐν ἐκείνῃ τῇ ἡμέρᾳ. Ὥσπερ δὲ ἐν τῷ οὐρανῷ πεπηγμένοι ὄντες οἱ ἀστέρες, οὐκ ἴσοι πάντες εἰσὶν, ἀλλ᾿ εἷς τοῦ ἑνὸς διαφέρει ἐν τῇ λαμπρότητι καὶ μεγαλειότητι· οὕτω κἂν τοῖς πνευματικοῖς, κατὰ τὸ μέτρον τῆς πίστεώς εἰσι προκοπαὶ ἐν αὐτῷ τῷ Πνεύματι, εἷς πλουσιώτερος τοῦ ἑτέρου. Καὶ ἡ Γραφὴ λέγει, ὅτι Ὁ λαλῶν ἐν γλώσσῃ, Πνεύματι Θεοῦ λαλεῖ. Οὗτος πνευματικός ἐστι, θεῷ λαλῶν· Ὁ δὲ προφητεύων, Ἐκκλησίαν οἰκοδομεῖ. Οὗτος περίσσειαν ἔσχε τῆς χάριτος· ὁ μὲν γὰρ ἑαυτὸν μόνον οἰκοδομεῖ, ὁ δὲ ἑαυτὸν καὶ τὸν πλησίον. Τοῦτο δέ ἐστιν, ὥσπερ κόκκος σίτου σπειρόμενος ἐν τῇ γῇ, καὶ ὁ αὐτὸς ἐκ τῆς μιᾶς καρδίας πολλοὺς καὶ διαφόρους κόκκους ἐκφέρει. Καὶ πάλιν αὐτοὶ οἱ στάχυες, οἱ μὲν εἰσι μειζότεροι, οἱ δὲ μικρότεροι, ὅλοι δὲ εἰς μίαν συνάγονται ἅλωνα, εἰς μίαν ἀποθήκην, διάφοροι ὄντες ἐξ αὐτῶν γίνεται ἄρτος.
+    
+    Β'. Ἢ ὥσπερ εἰσὶν ἐν πόλει πλήθη ἀνθρώπων, καὶ οἱ μὲν εἰσι παιδία νήπια, οἱ δὲ ἄνδρες, ἢ νεανίσκοι· πάντες δὲ ἀπὸ μιᾶς πηγῆς ὕδωρ πίνουσι, καὶ ἀπὸ ἑνὸς ἄρτου ἐσθίουσιν, ἕνα ἀέρα ἔχοντες· ἢ ὥσπερ εἰσὶ λύχνοι, καὶ ὁ μὲν ἔχει δύο μυκτῆρας, ὁ δὲ ἐπτά· ἀλλ᾿ ὅπου ἐστὶν ἡ περίσσεια τοῦ φωτὸς ἄλλως φωτίζει· οὕτως ὅσοι εἰσὶν ἐν πυρὶ καὶ φωτὶ, οὐ δύνανται εἶναι ἐν σκότει· ἀλλὰ διαφορὰ πολλή ἐστιν. Ὥσπερ ἄν εἴ τις πατὴρ ὢν υἱοὺς ἔχει δύο, τὸν μὲν παιδίον, τὸν δὲ νεανίσκον, καὶ τὸν μὲν εἰς πόλεις ἀποστέλλει καὶ πατρίδας, τὸ δὲ νήπιον πάντοτε δορυφορεῖ, ἐπεὶ μηδὲν δύναται ποιεῖν. Δόξα τῷ Θεῷ. Ἀμήν.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="510,205,950,600">
+    I. Resurrectio mortuarum animarum ab hoc momento fit: resurrectio vero corporum in illa die. Quemadmodum vero in cœlo, quæ fixæ sunt stellæ, non sunt omnes æquales, sed una ab altera differt splendore et magnitudine; sic in rebus spiritualibus pro modo fidei sunt promotiones in ipso Spiritu, unus locupletior altero. Scriptura quoque ait: Qui loquitur lingua, Spiritu Dei loquitur 31. Hic spiritualis est, qui cum Deo loquitur: At 127 qui prophetat, ecclesiam ædificat. Iste abundantiam adeptus est gratiæ. Ille enim se ipsum duntaxat ædificat, hic vero se ipsum et proximum. Hoc porro se habet, ut granum frumenti in terram conjectum: idem ex uno corde plura et diversa grana producit. Et rursum ex spicis ipsis aliæ sunt ampliores, aliæ tenuiores; universæ vero in unam congregantur aream, in unum horreum; et licet diversæ sint, unus ex ipsis conficitur panis.
+    
+    II. Aut quemadmodum in civitate sunt hominum multitudines, et nonnulli sunt pueri pusilli, alii vero viri vel adolescentes; omnes vero ex uno fonte aquam bibunt, unum panem comedunt, unumque aerem spirant. Aut perinde ut sunt lucernæ, et hæc quidem habet duo luminaria, illa vero septem, at ubi est abundantia lucis, ibi aliter illuminat: sic quicunque sunt in igne et lumine, nequeunt esse in tenebris: verum magna inter eos est discrepantia. Veluti ac si pater quispiam habeat duos filios, hunc pusillum, alterum adolescentem, hunc quidem in urbes mittit et regiones, pusillum autem semper tuetur, quia nihil potest agere. Gloria Deo. Amen.
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="475,455,505,490">
+    B
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="480,595,510,625">
+    C
+  </bloco>
+
+  <bloco tipo="cabecalho" script="grego" bbox="55,620,490,680">
     ΟΜΙΛΙΑ ΛΖ'.
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="40,1010,490,1860">
     Περὶ τοῦ παραδείσου, καὶ νόμου πνευματικοῦ.
-    Α'. Ἡ φιλα τοῦ κόσμου, κατὰ τὸ γεγραμμένον, Ἐκβασθεῖλης Θεοῦ. Διὸ ἡ Γραφὴ κελεύει πάσῃ φυλακῇ τὴν ἔκαστον τὴν ἑαυτοῦ καρδίαν, Ἵνα τις ὡς παραδείσιον φυλάσσωσιν ἐν αὐτῷ τὸν λόγον, ἀποκάλυψιν τῆς χάριτος, ἣν ἄκουσιν τοῦ Εὐσον ἐκλιπομένου ξύρον συμβουλεύουσιν· τὰ πρὸ χάριτος, δι' ἣ γεννᾶται ὁμόνοια ὁ ἀδελφοκτόνος, καὶ ὄντως ψυχὴ ἡ τέχουσα· ἀλλ' ἄκουσιν τοῦ Κύριου λέγοντος, Ἐπιμεληθήσομαί σε ἴσως καὶ ἐλπίδος, δι'ὃν γεννάται ἡ φιλόθεος καὶ φιλάθρωπος ἀγάπη, ἡ τῆς αἰωνίου ζωῆς παραχοῦσα. Εἷς τοῖσιν τῶν παραδείσων εἶπεν Νῆε, ἡν ἐντυπὰν φυλάσσων καὶ ἐργάζομενος, καὶ δὲ τῆς ἀγάπης ἐλυπρόην τῆς ὀργῆς. Τούτον φυλάσσων Ἰσραὴλ φωνὴν θεοῦ ἤκουσεν. Τοῦτον φυλάσσων Μωϋσῆς ἔδειξεν εἰς τὸ προσώπου ἐκλαμψάμενος. Ὅμοιος Δαβὶδ τοῖς τούτοις φυλάσσων ἐργασία, ὅθεν τῶν ἐχθρῶν ἐχρήσεται· ἀλλὰ καὶ Σαούλ εἷς ὡς ἐφυλάσσεται τὴν καρδίαν, εὐωχούμενος. Ὅτε δὲ εἰς τέλος παρέβη, εἷς τἐλος ἐγκατελείφθη. Ἐν μέτρῳ γὰρ κατὰ ἀναλογίας
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="500,1010,960,1860">
+
+  <bloco tipo="cabecalho" script="latino" bbox="510,620,950,680">
     HOMILIA XXXVII.
     De paradiso et lege spirituali.
-    Amicitia hujus mundi, ut scriptum est, inimicitia est Dei. Quapropter Scriptura jubet nunquamneque omni custodía observare cor suum, ut quis, velut paradisiam, conservans in eo verbum, fruatur gratia, nec audial serpentem: intus se implicantem, et consulentem quæ voluptati inservivnt, ex qua nascitur iracundia ad fratricidium committendum adigens, et moritur anima pariens; verum audiat Dominum dicentem: Curam habete fidei ac spei, et quibus proficiscitur charitas, et Dei et hominum amans, quæ vitam æternam largitur. In hujusmodi paradisum ingressus est Noe, mandatum observans atque exsequens, atque per charitatem servatus est ab ira. Hunc conservans Abraham divinae voti obtinere paravit. Hunc custodiens Moses, gloriam in faucibus recepit. Itidem et David hunc custodis, effici, unde dominum in hostes adeptus est. Verum etiam Saul, quando custodivit cor, felici rerum successu utebatur; quando vero sub finem trans-
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="420,1860,960,1980">
-    Digitized by Google
+
+  <bloco tipo="texto_principal" script="grego" bbox="55,680,490,945">
+    Α'. Ἡ φιλία τοῦ κόσμου, κατὰ τὸ γεγραμμένον, ἔχθρα ἐστὶν εἰς Θεόν. Διὸ ἡ Γραφὴ κελεύει πάσῃ φυλακῇ τηρεῖν ἕκαστον τὴν ἑαυτοῦ καρδίαν, ἵνα τις ὡς παράδεισον φυλάσσων ἐν αὐτῇ τὸν λόγον, ἀπολαύσῃ τῆς χάριτος, μὴ ἀκούων τοῦ ἔνδον εἱλισσομένου ὄφεως συμβουλεύοντος τὰ πρὸς ἡδονὴν, δι᾿ ἧς γεννᾶται θυμὸς ὁ ἀδελφοκτόνος, καὶ θνήσκει ψυχὴ ἡ τίκτουσα· ἀλλ᾿ ἀκούων τοῦ Κυρίου λέγοντος, Ἐπιμελεῖσθε πίστεως καὶ ἐλπίδος, δι᾿ ὧν γεννᾶται ἡ φιλόθεος καὶ φιλάνθρωπος ἀγάπη, ἡ τὴν αἰώνιον ζωὴν παρέχουσα. Εἰς τοῦτον τὸν παράδεισον εἰσῆλθε Νῶε, τὴν ἐντολὴν φυλάσσων καὶ ἐργαζόμενος, καὶ διὰ τῆς ἀγάπης ἐλυτρώθη τῆς ὀργῆς. Τοῦτον φυλάσσων Ἀβραὰμ φωνὴν θεοῦ ἤκουσε. Τοῦτον φυλάσσων Μωϋσῆς δόξαν εἰς τὸ πρόσωπον ἐλάμψεν. Ὁμοίως Δαβὶδ τοῦτον φυλάσσων εἰργάζετο, ὅθεν τῶν ἐχθρῶν ἐκυρίευεν· ἀλλὰ καὶ Σαοὺλ ἕως οὗ ἐφύλασσε τὴν καρδίαν, εὐωδοῦτο. Ὅτε δὲ εἰς τέλος παρέβη, εἰς τέλος ἐγκατελήφθη. Ἐν μέτρῳ γὰρ κατὰ ἀναλογίαν
   </bloco>
-  <notas>Scripts identificados como grego e latino. BBOX estimadas proporcionalmente à imagem (escala 0-1000). Algumas linhas gregas apresentam ligaturas e abreviaturas; mantida ortografia visível. Onde texto continuava cortado no fim de coluna latina, transcrição retém quebra final "trans-".</notas>
+
+  <bloco tipo="texto_principal" script="latino" bbox="510,680,950,945">
+    Amicitia hujus mundi, ut scriptum est, inimicitia est Dei 32. Quapropter Scriptura jubet omni custodia observare cor suum 33, ut quis, velut paradisum, conservans in eo verbum, fruatur gratia, nec audiat serpentem intus se implicantem, et consulentem quæ voluptati inserviunt, ex qua nascitur iracundia ad fratricidium committendum adigens, et moritur anima pariens; verum audiat Dominum dicentem: Curam habete fidei ac spei, e quibus proficiscitur charitas, et Dei et hominum amans, quæ vitam æternam largitur. In hujusmodi paradisum ingressus est Noe, mandatum observans atque exsequens, atque per charitatem servatus est ab ira. Hunc conservans Abraham divinæ voci obtemperavit. Hunc custodiens Moses, gloriam in facie recepit. Itidem et David hunc custodiens, effecit, unde dominium in hostes adeptus est. Verum etiam Saul, quandiu custodivit cor, felici rerum successu utebatur; quando vero sub finem trans-
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="480,770,510,800">
+    D
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="140,950,860,985">
+    31 I Cor. xiv. 2. 32 Jac. iv, 4. 33 Prov. iv, 25.
+  </bloco>
+
+  <notas>Bloques dispostos por colunas, da esquerda para a direita, e por ordem vertical. As letras marginais A, B, C e D são transcritas em blocos próprios. A numeração de página 749/750 foi omitida. Mantiveram-se as quebras finais visíveis do texto latino e grego, incluindo a interrupção em "trans-".</notas>
 </pagina>

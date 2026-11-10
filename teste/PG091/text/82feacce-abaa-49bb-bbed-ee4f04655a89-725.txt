@@ -1,11 +1,15 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="misto" bbox="25,75,850,105">
-    1329                                             AMBIGUORUM LIBER.
+  <bloco tipo="cabecalho" script="latino" bbox="18,72,60,108">
+    1329
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="805,75,850,105">
+  <bloco tipo="cabecalho" script="latino" bbox="340,70,670,112">
+    AMBIGUORUM LIBER.
+  </bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="825,72,875,108">
     1330
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="20,105,435,920">
+
+  <bloco tipo="texto_principal" script="grego" bbox="18,98,485,870">
     Πάντων οὖν τῶν κατ᾿ οὐσίαν ὑπαρκτικῶς ὄντων τε
     καὶ ἐσομένων, ἢ γενομένων⁸⁹, ἢ γενησομένων ἢ φαι-
     νομένων, ἢ φανησομένων, ἐν τῷ Θεῷ προϋπάρχουσι
@@ -61,19 +65,13 @@
     μῶς καθηγήσατο. Τὸ γὰρ παρὰ πρόθεσιν θείαν
     γινόμενον, λόγου καὶ σοφίας παντελῶς ἐστέρηταί τε
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="420,105,440,125">
-    A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="430,325,445,345">
-    B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="430,545,445,565">
-    C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="430,775,445,795">
-    D
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="450,105,875,920">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="432,118,446,138">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="432,388,446,408">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="432,664,446,684">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="432,820,446,840">D</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="505,98,975,870">
     Omnium igitur rerum secundum essentiam sub-
     stantialiter exsistentium et exstiturarum, sive na-
     tarum sive nasciturarum, sive apparentium sive
@@ -129,12 +127,15 @@
     dum propositum non effecit, et non volens domi-
     nationem passus est, quippe vi coactus ad facienda
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="30,915,875,970">
+
+  <bloco tipo="aparato_critico" script="misto" bbox="25,875,975,965">
     VARIAE LECTIONES.
-    ⁸⁹ ἢ γενομένων non habet ed. Gall. ⁹⁰ καὶ διαμένουσιν non habet ed. Gall. ⁹¹ παρέξοντος habet apographum cod. Gud. ⁹² διατέθηται ed. Gall. ⁹³ Verba μὴ δυναμένων, καὶ ἀπολαύσεως τῶν non compar(ent) in ed. Gall. ⁹⁴ ἀναμφηρίστως ed. Gall. ⁹⁵ σαφῶς abest ab ed. Gall. ⁹⁶ ἀδιάφθοροι ed. Gall. ⁹⁷ εἰς ed. Gall. ⁹⁸ πεποίηκεν ed. Gall. ⁹⁹ ἤθελεν ed. Gall.
+    ⁸⁹ ἢ γενομένων non habet ed. Gall. ⁹⁰ καὶ διαμένουσιν non habet ed. Gall. ⁹¹ παρέξοντος habet apographum cod. Gud. ⁹² διατέθηται ed. Gall. ⁹³ Verba μὴ δυναμένων, καὶ ἀπολαύσεως τῶν non compar. in ed. Gall. ⁹⁴ ἀναμφηρίστως ed. Gall. ⁹⁵ σαφῶς abest ab ed. Gall. ⁹⁶ ἀδιάφθοροι ed. Gall. ⁹⁷ εἰς ed. Gall. ⁹⁸ πεποίηκεν ed. Gall. ⁹⁹ ἤθελεν ed. Gall.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="605,975,825,995">
+
+  <bloco tipo="rodape" script="latino" bbox="610,970,865,995">
     Digitized by Google
   </bloco>
-  <notas>Pagina impressa em duas colunas; a coluna grega foi transcrita antes da latina. Os marcadores A, B, C e D pertencem à margem interna e foram isolados em blocos nota_marginal.</notas>
+
+  <notas>Transcrição diplomática em duas colunas; a coluna grega foi colocada antes da latina. As letras marginais A–D foram isoladas como nota_marginal.</notas>
 </pagina>

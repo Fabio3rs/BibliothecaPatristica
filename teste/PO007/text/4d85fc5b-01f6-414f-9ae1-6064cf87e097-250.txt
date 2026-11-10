@@ -1,9 +1,8 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="140,30,850,60">
-    240 LE LIVRE DU SYNAXAIRE. [224]
-  </bloco>
-  <bloco tipo="texto_principal" script="ethiopico" bbox="70,70,930,300">
-    (?) 29, b. h : * መልአከ : ሀገረ : አምሳ : በእያቱ : ወዓዐ : ጓን :: ወበዝንቱ : አንስት :
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="120,35,915,75">240 LE LIVRE DU SYNAXAIRE. 224</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="55,92,145,130">o 29, b.</bloco>
+  <bloco tipo="texto_principal" script="ethiopico" bbox="90,95,940,385">
+    መልአከ : ሀገረ : አምሳ : በእያቱ : ወዓዐ : ጓን :: ወበዝንቱ : አንስት :
     ተማከሐ : አምልኮቲሆን :: ወበእንተነገረ : ነገረ : ተማከሩ : ከመ : ይቀትል : ወለአ
     ንስት : በእለቲቱ : አልጋብዮስ : አርከ : ግንሖ : ጐቦ : እርዕ : አዘ : ትመክሮ :
     ከመ : ግእ : አምሀገረ : ሮማ :: ወአኅወት : ምእመናን : ይበልዎ : ከምሁ : ወተ
@@ -16,10 +15,8 @@
     ብ : በእለጊዜኑ :: ወስዐ : ተመለሰ : ጐቦ : ገረ : ነገረ : ለአኅወ : ዘኮነ : ዘኮነ :
     አምእንተ : ክርስስ : ወተዘዙ : ተ : ]
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="140,410,930,450">
-    3. አለአይበቅን] አለውትበቅን A. — 4. ይግእ] ይግእ O. — 11. ወ (a. ግዛ) om. O. — 12-14. ወብዐ : በኃ — ወእንበ] : ወብዐ : ሰማዕ : ዜና : አርዐ : O, A, BM.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="140,510,930,860">
+  <bloco tipo="aparato_critico" script="misto" bbox="145,398,940,455">3. አለአይበቅን] አለውትበቅን A. — 4. ይግእ] ይግእ O. — 11. ወ (a. ግዛ) om. O. — 12-14. ወብዐ : በኃ — ወእንበ] : ወብዐ : ሰማዕ : ዜና : አርዐ : O, A, BM.</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="126,500,928,900">
     s'éloignèrent de leurs maris. C'est pourquoi on conféra, afin de le tuer;
     mais la femme d'Altabyos¹, ami du roi, envoya un message à Pierre, lui
     conseillant de sortir de la ville de Rome; les frères, les fidèles lui dirent
@@ -39,12 +36,6 @@
     crucifié debout; il est juste que je sois crucifié la tête en bas. » Quand on
     le crucifia, il prononça aux fidèles des paroles de vie et les fortifia dans
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="160,870,560,895">
-    1. A : Eusèbe (Albinus). — 2. Jean. xxi, 18.
-  </bloco>
-  <notas>
-    A página contém texto em script Etíope (Ge'ez) na metade superior e texto em Francês na metade inferior.
-    Há um aparato crítico entre os dois blocos de texto principais contendo variantes em Etíope e siglas de manuscritos (A, O, BM).
-    Números de linha (5, 10, 15) aparecem na margem direita do bloco Etíope.
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="125,920,860,960">1. A : Eusèbe (Albinus). — 2. Jean. xxi, 18.</bloco>
+  <notas>Le bloc supérieur est en écrit éthiopien; la lecture de plusieurs mots y reste incertaine à cause de la définition de l'image. Le marqueur marginal “o 29, b.” a été isolé. Le texte français du bas est interrompu à la fin de la page après “dans”.</notas>
 </pagina>

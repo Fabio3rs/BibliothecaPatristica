@@ -1,91 +1,80 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,30,900,60">
-    118 TABLE DES NOMS PROPRES. [118]
-  </bloco>
-  <bloco tipo="texto_principal" script="arabe" bbox="600,80,900,900">
-    محمد 70₂
-    معاوية بن صخر 87₄
-    معاوية 70 var. cf. Noel
-    موهوب 70₄
-    ܡܗܠܢܐ ܒܨܠܘܬܢ 92₁₃
-    ؛
-    حمران 64₃
-    حصين 28₂ ; 41₁₁ ; 70₇ ; 77₁₃
-    حبة (أم) 29₁₀
-    ،
-    فزارة 61₂ ; 64₇ ; 69₇
-    فيء 28₁
-    فضالة 35₁₀
-    قيس (أبو) 75₅ ; 76₂
-    مقدام 64₁₁
-    أبو بكر (عبد) الله 64₈
-    عبد الله بن خازم 77₅
-    محمد بن زائدة 71₅
-    ل
-    لقيط بن عامر 71₃
-    ليلى 48₈ ; 49₅ ; 61₄,₅ ; 79₆ ; 80₁₃ ; 81₈
-    82₁₁ ; 83₄ ; 90₁₂ ; 91₃ ; 92₆ ; 94₁₁ ; 96₁₀,₁₂
-    الليث بن سعد 48₁₀ ; 50₁₀ ; 61₆
-    لا إله 66₇
-    اللات 28₁₁
-  </bloco>
-  <bloco tipo="texto_principal" script="arabe" bbox="350,80,600,900">
-    ع
-    عمر (أبو حفص) 27 n. 1 ; 6 ; 28₁ ; 29₁₆
-    7-8-10 ; 64₉ ; 85₁₄
-    عثمان pour خالد 32 n. 1
-    حمران cf. حباب ; نحمان ; منيخا
-    حمة اصغر : احد ؛ نبراس ؛ ميع
-    عبيد الله 85₈
-    حنظلة 29₅ ; 30₁
-    حمل 78₁ ; 86₁₀
-    حموشة 28₁₁
-    حتما (؟) 24₈ ; 35₁₁
-    حمة هنا 19₉ ; 29₁
-    ف
-    فلينة 18₁
-    أنا بعلسا 21₄
-    فهد 15₅ ; 18₄-₈ ; 20₄ ; 22₁₅ ; 66₃
-    69₁₂ ; 78₈ ; 83₁₁ ; 92₁
-    فجوة 73₁₄
-    فندجديد 26₅ ; فندجاوه 26 var.
-    فهر 67₅
-    قصي 20₁ ; 29 n. 7
-    قريش 28₂ ; 33₁₂ ; 67₇ ; 77₁₂-₁₃
-    فيل 21₁₀ ; 86₁₁ ; 87₆ ; 81₁
-    و
-    (فيل ؟ / لهب) 83₉
-    م
-    محمد بن مسلمة مدنا 75₁₃
-  </bloco>
-  <bloco tipo="texto_principal" script="arabe" bbox="100,80,350,900">
-    ح
-    حمران (أحد) 27₁₃
-    دهدهز 75₁₀ ; 77₆
-    دهعناه هنا 35₁₂
-    حمة ني محاة cf. نهول et حمة
-    م
-    مبعث مذنب خدرة 67₂
-    ص
-    مهنا 36₁₆
-    مهدد 17₇ ; 72₄
-    مسور 30₅ ; 48₁₁
-    مصعدنا 67₁₀ ; 68₅
-    مدها 63₅-₇ V. مهذا
-    مهذا 61₃-₈ ; 64₁ ; 93₇ ; 96₁₀ V. مهذا
-    منذر (أبو سفيان) بن الحارث 80₁₂ ; 91₇
-    محمد (بن) حباب 27₁₃ ; 74₅ ; 75₁
-    ر
-    ربيعة 63₅
-    ربيعة 65₁₀ ; 70₄ ; 92₁₃
-    ريحان 67₄
-    زهير 70₁₅ V. زهير
-    زهير (أحد) 66₁₃ ; 68₄ ; 69₁₀ V. زهير
-    و
-    وجه انغبنا 86₅
-    وهب 15₆ ; 30₁₁ ; 31₃ ; 46₃-₄
-  </bloco>
-  <notas>
-    A página é um índice onomástico ("TABLE DES NOMS PROPRES") contendo entradas em script árabe, com algumas inserções em siríaco (ex: ܡܗܠܢܐ ܒܨܠܘܬܢ) e anotações em francês/latim (ex: "pour", "cf.", "var.", "V."). O OCR anterior falhou significativamente, marcando quase tudo como ilegível. A transcrição foi feita visualmente, preservando a estrutura de três colunas e os grandes caracteres árabes que servem como cabeçalhos alfabéticos para cada seção (ex: ع, ف, ل, م, etc.). Os números subscritos nas referências de página foram mantidos onde visíveis.
-  </notas>
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="80,35,920,120">118      TABLE DES NOMS PROPRES.      [118]</bloco>
+
+  <bloco tipo="nota_marginal" script="arabe" bbox="110,185,150,245">ح</bloco>
+  <bloco tipo="nota_marginal" script="arabe" bbox="470,235,520,305">ع</bloco>
+  <bloco tipo="nota_marginal" script="arabe" bbox="850,300,900,375">م</bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="75,150,360,980">حمران (أحد) 27,13 ; 28,3 ; 29,
+دهدهز 75,10 ; 77,6
+دهعناه هنا 35,12
+حمة ني محاة cf. نهول et حمة
+مبعث مذنب خذرة 67,2
+مهنا 36,16
+مهدد 17,7 ; 72,4
+مسور 30,5 ; 48,11
+مصعدنا 67,10 ; 68,5
+مدها 63,5-7 V. مهذا
+مهذا 61,3-8 ; 64,1 ; 93,7 ; 96,10 V. مهذا
+منذر (أبو سفيان) بن الحارث 80,12 ; 91,7
+محمد (بن) حباب 27,13 ; 74,5 ; 75,1
+ربيعة 63,5
+ربيعة 65,10 ; 70,4 ; 92,13
+ريحان 67,4
+زهير 70,15 V. زهير
+زهير (أحد) 66,13 ; 68,4 ; 69,10 V. زهير
+وجه انغبنا 86,5
+وهب 15,6 ; 30,11 ; 31,3 ; 46,3-4</bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="380,150,690,980">عمر (أبو حفص) 27 n. 6 ; 28,3 ; 29, 7, 8, 10 ; 64,9 ; 85,14
+عثمان pour خالد 32 n. 1
+حمران cf. حباب ; نحمان ; منيخا
+حمة اصغر : أحد ؛ نبراس ؛ ميع
+عبيد الله 85,8
+حنظلة 29,5 ; 30,1
+حمل 78,1 ; 86,10
+حموشة 28,11
+حتما (؟) 24,8 ; 35,11
+حمة هنا 19,9 ; 29,1
+فلينة 18,1
+أنا بعلسا 21,4
+فهد 15,5 ; 18,4-8 ; 20,4 ; 22,15 ; 66,3
+69,12 ; 78,8 ; 83,11 ; 92,1
+فجوة 73,14
+فندجديد 26,5 ; فندجاوه 26 var.
+فهر 67,5
+قصي 20,1 ; 29 n. 7
+قريش 28,2 ; 33,12 ; 67,7 ; 77,12-13
+فيل 21,10 ; 86,11 ; 87,6 ; 81,1
+(فيل ؟ / لهب) 83,9
+محمد بن مسلمة مدنا 75,13</bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="700,150,985,990">محمد 70,2
+معاوية بن صخر 87,4
+معاوية 70 var. cf. Noel
+موهوب 70,4
+[ilegivel] 92,13
+حمران 64,3
+حصين 28,2 ; 41,11 ; 70,7 ; 77,13
+حبة (أم) 29,10
+فزارة 61,2 ; 64,7 ; 69,7
+فيء 28,1
+فضالة 35,10
+قيس (أبو) 75,5 ; 76,2
+مقدام 64,11
+أبو بكر (عبد) الله 64,8
+عبد الله بن خازم 77,5
+محمد بن زائدة 71,5
+لقيط بن عامر 71,3
+ليلى 48,8 ; 49,5 ; 61,4,5 ; 79,6 ; 80,13 ; 81,8
+82,11 ; 83,4 ; 90,12 ; 91,3 ; 92,6 ; 94,11 ; 96,10,12
+الليث بن سعد 48,10 ; 50,10 ; 61,6
+لا إله 66,7
+اللات 28,11</bloco>
+
+  <bloco tipo="nota_marginal" script="arabe" bbox="220,445,300,505">ب</bloco>
+  <bloco tipo="nota_marginal" script="arabe" bbox="495,455,560,520">ه</bloco>
+  <bloco tipo="nota_marginal" script="arabe" bbox="845,540,910,610">ل</bloco>
+
+  <notas>Lectura conservadora basada en la imagen; los grandes signos aislados se tratan como nota_marginal. Algunas lecturas dudosas se conservan como [ilegivel].</notas>
 </pagina>

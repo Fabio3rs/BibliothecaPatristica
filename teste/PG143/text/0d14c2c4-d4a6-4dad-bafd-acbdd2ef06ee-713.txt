@@ -1,7 +1,9 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="140,50,950,82">1367&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;INDEX IN EPHRÆMIUM.&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;&amp;#xA0;1368</bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="125,84,405,930">Pamphylia 3795
-P&amp;#x00B4;nium 7814.
+  <bloco tipo="cabecalho" script="latino" bbox="110,45,940,95">1367
+INDEX IN EPHRÆMIUM.
+1368</bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="60,105,345,930">Pamphylia 3795
+P'nium 7814.
 Pannonia 502, 585.
 Pantanius 146.
 Paphlagonia 1318, 1329, 1364, 4882,
@@ -28,12 +30,12 @@ Pernicus 2918.
 Persæ 210, 458, 2407, 2699, 3569,
 3781, 3931, 4262, 4481, 4643, 4663,
 9538, etc.
-Pers&amp;#x00B7;romenii 5867, 5890.
+Persormenii 5867, 5890.
 Persia 241, 480, 1221, 1316, 1356, 1577,
 9119, 9123, etc.
 Pertinax 147. pontifex 9592.
 Petebius 4221.
-Petaliphus 8309, 8457, 8698.
+Petraliphus 8309, 8457, 8698.
 Petrium 6827, 7076, 9600.
 Petronas 226, 266, 372.
 Petrus apost. 16, 361, 5769, 5796, 5800,
@@ -53,7 +55,7 @@ Phileremus 8657.
 Philes Theodorus 9364.
 Philippicus 1281. Bordanes 1564,
 1569, 9888.
-Philippopolis 5880, 5951, 6168, 6182,
+Philipopolis 5880, 5951, 6168, 6182,
 6398, 6195, 7210, 7810.
 Philippus 182. frater regis Alam.
 6406.
@@ -88,7 +90,7 @@ Priapus 6589, 7669, 8489, 9602, 9025,
 9151, 9166, 9597.
 Principis insula 1989, 5080.
 Proclus 747, 752, 9707.</bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="412,84,675,930">Prœconnesus 2128, 10296.
+  <bloco tipo="texto_principal" script="misto" bbox="350,105,660,930">Præconnesus 2128, 10296.
 Propontis 4934, 5896, 6268, 6649, 6991.
 Prosacon 6456, 6461, 6171, 8516.
 Prota insula 3592.
@@ -176,7 +178,7 @@ Sisinnius 732, 9690. patr. 10070.
 Sisyphus 4881.
 Smoleni 6602.
 Smyrna 112, 7760.</bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="687,84,950,930">Smyrnæi 778.
+  <bloco tipo="texto_principal" script="misto" bbox="690,105,945,930">Smyrnæi 778.
 Solomonteum convivium 5662.
 Sophia 1164, 1212.
 Sophocles 6641.
@@ -249,7 +251,7 @@ Theodorus Angelus 5119, 8027, 8060,
 — Lydus 6039.
 — Magnus 2450.
 — Mancaphas 7263.
-— Michaelis Aug. fr. 7638, 7659.
+— Michaelis Ang. fr. 7638, 7659.
 — monachus 2059.
 — Mopsuestiæ episc. 1144, 1791.
 — νέος 9196.
@@ -263,5 +265,7 @@ Theod. exactor 1920. Cæsar 1627.
 Theod. Atramyttenus 1656.
 Theodotus Casiteras 9984. Melissenus
 patr. 10172.</bloco>
-  <notas>Três colunas tipográficas; leitura na ordem esquerda, centro, direita. As letras seccionais R e T pertencem ao fluxo do índice e não são identificadores marginais A–D.</notas>
+  <bloco tipo="nota_marginal" script="latino" bbox="515,250,535,285">R</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="878,655,895,690">T</bloco>
+  <notas>Leitura em três colunas; os marcadores R e T foram tratados como nota_marginal, fora do fluxo do texto.</notas>
 </pagina>

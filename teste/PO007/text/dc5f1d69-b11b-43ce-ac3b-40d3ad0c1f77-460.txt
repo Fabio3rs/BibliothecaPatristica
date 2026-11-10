@@ -1,8 +1,8 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="140,40,860,65">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="90,20,920,60">
     450 LE LIVRE DU SYNAXAIRE. [434]
   </bloco>
-  <bloco tipo="texto_principal" script="ethiopico" bbox="140,70,940,260">
+  <bloco tipo="texto_principal" script="ethiopico" bbox="95,55,905,210">
     ወረስዕ : ለይኢት : ግሥጉር : ዘርአነ : በቅበ : አግባእ : ጊንቱ : አለ : ሰበ : ንተና
     ር : ባተ : ታንቀልቃል : ማይ :: ወይበልው : ማኅተም : የሁ : እእመርኮ : አእትየ : ዘን
     ተ : ያእሙ : አነ : አብል : ለእመ : ነነ : ጊንቱ : አለ : አልጽ
@@ -12,8 +12,7 @@
     ተናረሁ : በተናሣሪተ : የዕለት : አነ : አልጹ : ብሐ : አንደርያስ : ወወደ : ይፅ
     አ : አምበቱ : ምቅሕ : ለከ : ወለዘአሙ : አለ : ግሥስኅ : ወና : በጽሕ : ርእ
     ዘትነር ::
-  </bloco>
-  <bloco tipo="texto_principal" script="ethiopico" bbox="190,265,940,400">
+    
     ወእንዘይርኢ : ነገረ : ንበ : ሰበ : አቡነ : አለ : ውስተ : ምቅሕ : አስተ
     ን : አመ : እንዘሐ : ወእቅድሶ : ይውግዝ : ሰበ : ሠራየ : ወከሠቱ :
     ወእንበረ : እደሆሙ : ላዕለ : በ : ዘበውስተ : ምቅሕ : ወከፈቱ : ዓይነ
@@ -21,13 +20,13 @@
     ወጹ : ቲያስ : አንድርያስ : ወዘአው : ከመ : ይፈል : ዘይኩን
     ዝንቱ : ዘይሆውን ::
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="140,410,960,490">
-    1. ante አለ. O add. ጊንቱ. — 1-2. ንተና] O አት . — 5. ተኃ ] A ተኀላኂ. — 5-6. ወይይ] O ወይይሁ.
-    ወይይ. — 6. እግ] A ለእዚአብር. — 7. ለት] A ዕለታ. — ib. አን] A om. — 8. ምስለ] O
-    — ሰሊ. — 12. መማኅር] A om. ኢ. — 13. ወከሠ] O — ተ. — 14. አልቦሀ] A — ናቸሁ.
+  <bloco tipo="aparato_critico" script="misto" bbox="95,205,915,255">
+    1. ante ለё. O add. πι. — 1-2. ὥι] O hr. — 5. ל ] À at. — 2-0. ορ] 0
+    ܝ — 6. An] À ܡ 4 — 7. 007] À 0 — id. [לת À om. — 8. pan] 1
+    — ԲՍ. — 12. εη μεὈ] À om. 2. — 13. nur] O — T. — 14. à a su] À — κοo..
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="140,530,940,765">
-    fera sortir, on me tuera comme une bête de boucherie et on mangera ma
+  <bloco tipo="texto_principal" script="latino" bbox="95,430,915,690">
+    fera sortir. on me tuera comme une bête de boucherie et on mangera ma
     chair. Tu as oublié le mystère que nous avons vu auprès de Notre-Seigneur;
     quand nous en parlons, le ciel tremble. » Matthias lui répondit : « Je le
     connais bien, ô mon frère, mais, moi de mon côté, je dis : Si c'est la volonté
@@ -38,8 +37,7 @@
     André auprès de toi et il te fera sortir, te délivrera de la prison, toi et tous
     ceux qui sont en ta compagnie; te voici arrivé, vois donc ce que tu vas
     faire. »
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="140,770,940,890">
+
     André regarda les gens qui étaient dans la prison, liés comme des bêtes;
     il commença par maudire le diable et toute son armée. André et Matthias
     supplièrent Dieu, qui exauça leur prière; ils imposèrent leurs mains sur les
@@ -48,6 +46,6 @@
     André sortirent dans la rue de la ville, pour connaître ce qui arriverait.
   </bloco>
   <notas>
-    A página contém texto em Ge'ez (Etíope) na parte superior, seguido de um aparato crítico misto (Latim/Ge'ez) e uma tradução em Francês na parte inferior. O cabeçalho indica "LE LIVRE DU SYNAXAIRE".
+    Transcription diplomatique avec bboxes approximadas na escala 0-1000. O bloco etíope superior, o aparato crítico e a tradução francesa aparecem como áreas distintas na página.
   </notas>
 </pagina>

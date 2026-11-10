@@ -1,16 +1,15 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="80,40,900,60">
-    392 LE LIVRE DU SYNAXAIRE. 596
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="70,60,930,110">
+    392  LE LIVRE DU SYNAXAIRE.  596
   </bloco>
-  <bloco tipo="texto_principal" script="ethiopico" bbox="130,70,650,145">
+  <bloco tipo="nota_marginal" script="latino" bbox="15,145,110,190">
+    + A 151 a.
+  </bloco>
+  <bloco tipo="texto_principal" script="ethiopico" bbox="120,120,920,405">
     ወግብረ፡ አበይት፡ እንደርያስ፡ ጻድቅ።
     በዓት፡ ቂላ፡ ወወ፡ በመቅዉፍታት ተመ*ገረ፡
     ወለግለ፡ ወርቅ፡ ተረስየ፡ ዘአኃዉ፡ ገቦ።]
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="10,95,80,110">
-    * A 151 a.
-  </bloco>
-  <bloco tipo="texto_principal" script="ethiopico" bbox="110,160,900,400">
+    
     በዓቲ፡ ዕለተ፡ አዕረፈ፡ አባ፡ ብዓን፡ ደብሪ፡ ምኑን፡ በዓለ፡
     ቀ፡ ቅስ፡ ክ፡ አበቂሁ፡ ክርስቶስን፡ መነኮሳትን፡ ፊደታን፡ እግዚአብሔር፡ ወ
     በ፡ ዑል፡ ግብሩ አባ፡ ፊተወ፡ ክመ ይልበስ አለባስ ምንኩና፡ ገብረ
@@ -23,28 +22,29 @@
     ሠቅ፡ ዘጸጉር፡ ወይትነን፡ በ፡ ዲብ፡ ሐኒቱ። ወነ፡ የወውይ፡ ውስተ፡ አብያተ
     ጾመ፡ ወበዓታተጾመ ለመነሳት፡ ይነብር ግቦ ጥሩተ፡ አብያተጾመ፡ እንበ፡
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="10,230,80,245">
-    * () 71 a.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="930,170,950,185">
+  <bloco tipo="nota_marginal" script="latino" bbox="920,240,965,270">
     5
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="930,300,950,315">
+  <bloco tipo="nota_marginal" script="latino" bbox="920,410,965,440">
     10
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="110,420,900,500">
-    2. [በመቅዉፍት] P — አ. — 4. አረፈ.] O ሰማ፡ ኮነ. — ib. ደብ.] — (); P, A ተቀናጸ.. —
-    6. ክመ] _ P, O, A. — 8-9. መተለአከ] P, O, A — አነ. — 9. ወተለአከ] &gt; P, O, A (ar. وخدم
-    الخدم). — 12. ወእሊመጽሐፈ] P, O, ወእሊመጽሐፈ, A ወመጽሐፈ (ar. كتاب). — 13. ውስተ] P, O,
-    A ዲብ. — 14. ግቦ] P, O, A ውስተ.
+  <bloco tipo="aparato_critico" script="misto" bbox="105,420,930,560">
+    2.  ሙል  ua;:·m] P — ét. — 4. θΑ] )( age « ny. — ib. xo-e] OP, # pie. —
+    . Που). PP, بن A. — 8-9. mnmλ] P, 0, À — Ann. — 9. adm] &gt; P. 0. À (ar. כ
+
+    &gt;&lt;). — 12. 039 ® 0. ܝ À ית (ar. 3 ·ΩΤ] ® 0.
+
+    (72 ο)
+
+    P. ο. À want. ]40 .14 — ريق
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="110,550,900,650">
+  <bloco tipo="rodape" script="latino" bbox="120,735,920,990">
     Grands compagnons de croix d'Adrien!
     En échange de ce qu'il a été blessé et de ce qu'il a souffert, en étant tor-
     turé par les coups,
+
     (Son) côté s'est changé en la verdeur de l'or.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="110,670,900,950">
+
     En ce jour mourut le Père saint (et) dévot Abba Bessarion le Grand. Les
     parents de ce saint étaient des chrétiens fidèles (et) craignant le Seigneur.
     Lorsque ce Père eut grandi, il désira revêtir les habits du monasticat, c'est-
@@ -58,8 +58,6 @@
     ses reins. Il parcourait les maisons et les grottes des moines, et il s'asseyait
   </bloco>
   <notas>
-    Página contendo texto em Ge'ez (Etíope) no topo e meio, seguido de aparato crítico misto (Ge'ez, Latino, Árabe) e tradução/francês na parte inferior.
-    Script principal: Ethiopico (Ge'ez).
-    Script secundário: Latino (Francês/Latin), Arábico (no aparato).
+    Page de texte en une colonne centrale avec en-tête, texte principal en gé'ez, apparatus critique en bas de page et traduction française au bas de la page. Les numéros marginaux visibles à droite sont transcrits comme notas marginais.
   </notas>
 </pagina>

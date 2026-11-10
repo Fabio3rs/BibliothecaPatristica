@@ -1,8 +1,8 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="misto" bbox="95,35,920,55">
-    1003                                     THEOPHANIS CERAMEI                                     1004
+  <bloco tipo="cabecalho" script="latino" bbox="90,30,930,70">
+    1003 THEOPHANIS CERAMEI 1004
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="95,60,500,320">
+  <bloco tipo="texto_principal" script="latino" bbox="90,70,485,340">
     non ostendat. Templa ac sacella (19) ad sacrum
     cultum magnus Pancratius excitavit : effice te
     ipsum templum Deo, et compara habitaculum
@@ -15,23 +15,14 @@
     tuam, ut te sanctorum tabernacula, et regnum
     cœlorum, et æterna voluptas excipiat, qua nobis
     frui detur gratia 392 Domini nostri Jesu Christi,
-    quocum Patri, et Spiritui sancto gloria est,
-    et imperium, et laus in sæcula sæculorum.
+    quocum Patri, et Spiritui sancto gloria est, et
+    imperium, et laus in sæcula sæculorum.
     Amen.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,55,515,70">
+  <bloco tipo="nota_marginal" script="latino" bbox="487,100,513,125">
     A
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="95,325,500,425">
-    HOMILIA LVIII.
-
-    In illa verba : « Ecce ego mitto vos sicut oves in
-    medio luporum. » — Dicta est in festo S. magni
-    martyris Panteleemonis (22).
-
-    Qui ad solemnem hanc celebritatem (23) con-
-  </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="510,60,925,320">
+  <bloco tipo="texto_principal" script="grego" bbox="510,70,930,340">
     μὴ καλὰ ἔργα ἐπιδεικνύοντα. Ἀνήγειρεν ὁ μέγας
     Παγκράτιος ἱερὰ τεμένη, καὶ θείους σηκούς· κατα-
     σκεύασον σὺ σεαυτὸν ναὸν τοῦ Θεοῦ, οἰκητήριον τῆς
@@ -48,30 +39,39 @@
     τῷ ἁγίῳ Πνεύματι δόξα, καὶ κράτος, καὶ αἴνεσις εἰς
     τοὺς αἰῶνας τῶν αἰώνων. Ἀμήν.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,330,515,350">
+  <bloco tipo="nota_marginal" script="latino" bbox="487,355,513,380">
     B
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="510,325,925,425">
+  <bloco tipo="texto_principal" script="latino" bbox="95,360,480,430">
+    HOMILIA LVIII.
+
+    In illa verba : « Ecce ego mitto vos sicut oves in
+    medio luporum. » — Dicta est in festo S. magni
+    martyris Panteleemonis (22).
+
+    Qui ad solemnem hanc celebritatem (23) con-
+  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="510,360,930,430">
     ΟΜΙΛΙΑ ΝΗ'.
-    
+
     Εἰς τὸ, « Ἰδοὺ ἐγὼ ἀποστέλλω ὑμᾶς ὡς πρόβατα
     ἐν μέσῳ λύκων. » — Ἐλέχθη ἐν τῇ ἑορτῇ τοῦ
     ἁγίου μεγαλομάρτυρος Παντελεήμονος.
 
     Οἱ πρὸς τὴν πάνδημον ταύτην ἀθροισθέντες πα-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="385,430,620,450">
+  <bloco tipo="nota" script="latino" bbox="390,430,640,455">
     Francisci Scorsi notæ.
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="90,450,505,995">
+  <bloco tipo="aparato_critico" script="misto" bbox="90,455,485,945">
     (19) Templa ac sacella. S. Pancratius triginta
     ferme annos Tauromenio præsedit. Quo tam longo
     spatio credibile est ejus opera Christianam religio-
     nem maxime ibi propagatam, et multa ab eo tem-
     pla ædesque sacras fuisse erecta, ex quibus esse
     quod hodie Tauromenii visitur, traditum accepi
-    extra urbem est situm ut nunc res sunt, qua Sep-
-    tentrionem Messanamque spectat; quadratis
+    extra urbem est situm ut nunc res sunt, quæ Se-
+    pentrionem Messanamque spectat; quadratis
     lapidibus, seu duris cautibus potius palmos duos
     usquequaque latis, ea arte commissis, ut nullum
     exstet interlitæ calcis signum. Multo amplius alti-
@@ -115,10 +115,10 @@
     torrentes terræ a verbo χαράσσω. Itaque ex hoc
     verbo profectum χαράδρωμα rite cavernam, spe-
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,575,515,590">
+  <bloco tipo="nota_marginal" script="latino" bbox="487,595,513,620">
     C
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="510,450,925,995">
+  <bloco tipo="aparato_critico" script="misto" bbox="510,455,930,810">
     luncam, foveam, et similem hiatum rupium notat.
     Escur. Hisp. recte χαραδρώματα explicat σχίσματα
     πετρῶν. Eaque significatio congruit cum historia
@@ -144,12 +144,16 @@
     athletæ mirabilium operum effectoris Panteleemonis
     festum agitur. Meminit et de eo Nicephor. Hist.
     eccl. cap. 14, lib. vii : Eadem tempestate Pantale-
-    leon, qui et Panteleemon dictus est, enituit. Ex hoc
+    on, qui et Panteleemon dictus est, enituit. Ex hoc
     duplici nomine etiam noster infra documenta ad
-    mores accomoda deducit. Sed in titulo Παντε-
+    mores accommodata deducit. Sed in titulo Παντε-
     λεήμων, ut dixi, inscribitur, idque videtur a Græ-
     cis usurpatum : unde et Panteleemon ego verti.
-
+  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="487,790,513,815">
+    D
+  </bloco>
+  <bloco tipo="aparato_critico" script="misto" bbox="510,810,930,945">
     (23) Qui ad solemnem hanc celebritatem. Desum-
     ptum hujus homiliæ proœmium a tempore : quo
     nimirum nundinæ erant Tauromenii festo die S.
@@ -169,11 +173,8 @@
     suesse nundinas prorogari. Ex qua conjectura jam
     lux huic proœmio allata.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,785,515,800">
-    D
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="600,975,810,995">
+  <bloco tipo="rodape" script="latino" bbox="610,952,840,995">
     Digitized by Google
   </bloco>
-  <notas>As letras A, B, C e D foram tratadas como notas marginais independentes e não foram incluídas no texto das colunas.</notas>
+  <notas>Letras A, B, C e D mantidas em blocos próprios de nota marginal. A nota 21 é contínua entre as duas colunas do aparato crítico; conservou-se a quebra visível em "spe-" / "luncam".</notas>
 </pagina>

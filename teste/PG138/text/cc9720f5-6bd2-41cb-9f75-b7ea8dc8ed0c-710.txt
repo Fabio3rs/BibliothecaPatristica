@@ -1,51 +1,84 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="160,57,970,72">1251 THEOD. BALSAMONIS 1252</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="415,112,700,137">LIBER TERTIUS.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="555,151,575,160">—</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="523,176,609,189">ΕΚ ΤΩΝ</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="254,204,862,224">ΜΕΤΑ ΤΟΝ ΚΩΔΙΚΑ ΝΕΑΡΩΝ ΔΙΑΤΑΞΕΩΝ.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="552,244,576,254">EX</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="298,285,838,307">EDITIS POST CODICEM NOVELLIS.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="555,321,575,329">—</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="155,50,955,90">1251 THEOD. BALSAMONIS 1252</bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="360,95,740,315">LIBER TERTIUS.
+—
+ΕΚ ΤΩΝ
+ΜΕΤΑ ΤΟΝ ΚΩΔΙΚΑ ΝΕΑΡΩΝ ΔΙΑΤΑΞΕΩΝ.
+—
+EX
+EDITIS POST CODICEM NOVELLIS.
+—</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="530,310,560,345">A</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,325,505,620">TITULUS I.
+De episcopis, et clericis, et monachis, et monastriis.
 
-  <bloco tipo="texto_principal" script="latino" bbox="157,338,554,380">TITULUS I.[br/]De episcopis, et clericis, et monachis, et monasteriis.</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="555,337,570,350">A</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="157,387,554,430">I. Lex, quomodo sint ordinandi episcopi, et presbyteri, et diaconi, tam mares, quam feminæ.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="157,438,554,450">II. De episcopis, et clericis.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="157,451,554,495">III. Ut cum accedentis ad se jura præsides audire differunt, ab episcopis compellantur, ut id faciant, et quæ deinceps sequuntur.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="157,508,554,526">IV. Ut clerici apud episcopos respondeant</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="157,537,554,564">V. De Anthimi, et Severi, et Petri, et Zoorae depositione.</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="552,566,568,578">B</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="157,566,554,598">VI. Ne in privatis domibus res sacra mysteriorum peragatur.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="157,607,554,630">VII. Ne quisquam ædificet oratorium domum absque voluntate episcopi, et quæ deinceps.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="157,643,554,690">VIII. Ut quæ circa Viminacium sub Romanis sunt civitates, sub speciali sint archiepiscopo, non sub Thessalonicensi.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="157,697,554,734">IX. Quod definitus sit numerus clericorum Majoris Ecclesiæ, atque reliquarum ecclesiarum.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="157,753,554,788">X. Ut clerici ex alia ecclesia in aliam transferantur, in deficientium statutum numerum.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="157,801,554,828">XI. Ut quæ insinuativa vocantur in clericis, et quæ deinceps sequuntur.</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="551,829,568,841">C</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="157,831,554,862">XII. Ubi clerici quidam abscedunt, aliis autem suo loco substituunt, et quæ deinceps.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="157,875,554,906">XIII. De monasteriis et monachis, et quæ deinceps.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="157,916,554,932">XIV. Quomodo vivere monachos oporteat.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="157,936,554,966">XV. Constitutio, apud quosnam litigare monachi vel ascetriæ debeunt.</bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="157,975,554,1000">XVI. Hæc constitutio priorem interpretatur constitutionem, de his, qui ingrediuntur in monasteria, et quæ deinceps.</bloco>
+I. Lex, quomodo sint ordinandi episcopi, et presbyteri, et diaconi, tam mares, quam feminæ.
 
-  <bloco tipo="texto_principal" script="grego" bbox="570,338,958,380">ΤΙΤΛΟΣ Α'.[br/]Περὶ ἐπισκόπων καὶ κληρικῶν, καὶ μοναχῶν,[br/]καὶ μοναστηρίων.</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="570,386,958,430">Α'. Νόμος περὶ τοῦ πῶς δεῖ χειροτονεῖσθαι ἐπισκόπους, καὶ πρεσβυτέρους, καὶ διακόνους, ἄρρενάς τε καὶ θηλείας.</bloco>
-  <bloco tipo="texto_principal" script="gregο" bbox="570,437,958,450">Β'. Περὶ ἐπισκόπων καὶ κληρικῶν.</bloco>
-  <bloco tipo="texto_principal" script="gregο" bbox="570,451,958,505">Γ'. Ὅτε ὑπερτιθεμένους τοὺς ἄρχοντας ἀκούειν τῶν τοῦ προσώπου δικαίων, συνελαύνεσθαι ὑπὸ τῶν ἐπισκόπων τοῦτο πράττειν, καὶ τὰ ἐξῆς.</bloco>
-  <bloco tipo="texto_principal" script="gregο" bbox="570,510,958,543">Δ'. Περὶ τοῦ τοὺς κληρικοὺς τοῖς ἐπισκόποις ἀποκρίνασθαι.</bloco>
-  <bloco tipo="texto_principal" script="gregο" bbox="570,539,958,567">Ε'. Περὶ καθαιρέσεως Ἀνθίμου, καὶ Σεουήρου, καὶ Πέτρου, καὶ Ζωορᾶ.</bloco>
-  <bloco tipo="texto_principal" script="gregο" bbox="570,568,958,599">Ϛ'. Περὶ τοῦ ἐν ἰδιωτικοῖς οἴκοις ἱερὰν μυσταγωγίαν μὴ γίνεσθαι.</bloco>
-  <bloco tipo="texto_principal" script="gregο" bbox="570,607,958,630">Ζ'. Περὶ τοῦ μηδένα κτίζειν εὐκτήριον οἶκον χωρὶς γνώμης τοῦ ἐπισκόπου, καὶ τὰ ἐξῆς.</bloco>
-  <bloco tipo="texto_principal" script="gregο" bbox="570,643,958,690">Η'. Ὅτε τὰς περὶ τὸ Viminacium γενομένας ὑπὸ Ῥωμαίους πόλεις ὑπὸ ἴδιον ἀρχιεπίσκοπον εἶναι, μὴ μὴν ὑπὸ τὸν Θεσσαλονίκης.</bloco>
-  <bloco tipo="texto_principal" script="gregο" bbox="570,698,958,735">Θ'. Περὶ τοῦ ὡρισμένον εἶναι τὸν ἀριθμὸν τῶν κληρικῶν τῆς Μεγάλης ἐκκλησίας, καὶ τῶν λοιπῶν Ἐκκλησιῶν.</bloco>
-  <bloco tipo="texto_principal" script="gregο" bbox="570,753,958,789">Ι'. Περὶ τοῦ κληρικοὺς ἐξ ἑτέρας ἐκκλησίας μετατίθεσθαι εἰς ἑτέραν, εἰς τὸν τῶν λειπόντων καὶ στατούντων ἀριθμόν.</bloco>
-  <bloco tipo="texto_principal" script="gregο" bbox="570,801,958,828">ΙΑ'. Ὥστε τὰ καλούμενα ἐμφανιστικὰ ἐπὶ τῶν κληρικῶν, καὶ τὰ ἐξῆς.</bloco>
-  <bloco tipo="texto_principal" script="gregο" bbox="570,831,958,862">ΙΒ'. Ἔνθα τινὲς ἀφίστανται κληρικοί, ἕτεροι δὲ ἀντικαθίστανται, καὶ τὰ ἐξῆς.</bloco>
-  <bloco tipo="texto_principal" script="gregο" bbox="570,875,958,906">ΙΓ'. Περὶ μοναστηρίων, καὶ μοναχῶν, καὶ τὰ ἐξῆς.</bloco>
-  <bloco tipo="texto_principal" script="gregο" bbox="570,916,958,932">ΙΔ'. Περὶ τοῦ πῶς δεῖ βιοῦν μοναχούς.</bloco>
-  <bloco tipo="texto_principal" script="gregο" bbox="570,936,958,966">ΙΕ'. Διάταξις, παρὰ τίσι δικάζεσθαι μοναχοὺς ἢ ἀσκητρίας.</bloco>
-  <bloco tipo="texto_principal" script="gregο" bbox="570,975,958,1000">ΙϚ'. Ἡ διάταξις ἑρμηνεύει τὴν προτέραν διάταξιν, τὴν περὶ τῶν εἰσιόντων εἰς μοναστήρια, καὶ τὰ ἐξῆς.[br/]ΙΖ'. Περὶ χειροτονίας ἐπισκόπων, καὶ κληρικῶν καὶ περὶ συνόδων, καὶ προσκομιδῆς.</bloco>
-  <bloco tipo="rodape" script="latino" bbox="585,982,800,997">Digitized by Google</bloco>
-  <notas>As letras A, B e C foram transcritas em blocos próprios de nota marginal. A transcrição segue a coluna esquerda e depois a coluna direita.</notas>
+II. De episcopis, et clericis.
+
+III. Ut cum accedentis ad se jura præsides audire differunt, ab episcopis compellantur, ut id faciant, et quæ deinceps sequuntur.
+
+IV. Ut clerici apud episcopos respondeant
+
+V. De Anthimi, et Severi, et Petri, et Zoorae depositione.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="530,560,560,595">B</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,605,505,840">VI. Ne in privatis domibus res sacra mysteriorum peragatur.
+
+VII. Ne quisquam ædificet oratoriam domum absque voluntate episcopi, et quæ deinceps.
+
+VIII. Ut quæ circa Viminacium sub Romanis sunt civitates, sub speciali sint archiepiscopo, non sub Thessalonicensi.
+
+IX. Quod definitus sit numerus clericorum Majoris Ecclesiæ, atque reliquarum ecclesiarum.
+
+X. Ut clerici ex alia ecclesia in aliam transferantur, in deficientium statutum numerum.
+
+XI. Ut quæ insinuativa vocantur in clericis, et quæ deinceps sequuntur.</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="530,805,560,840">C</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="120,835,505,948">XII. Ubi clerici quidam abscedunt, alios autem suo loco substituunt, et quæ deinceps.
+
+XIII. De monasteriis et monachis, et quæ deinceps.
+
+XIV. Quomodo vivere monachos oporteat.
+
+XV. Constitutio, apud quosnam litigare monachi vel ascetriæ debeant.
+
+XVI. Hæc constitutio priorem interpretatur constitutionem, de his, qui ingrediuntur in monasteria, et quæ deinceps.</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="560,325,955,948">ΤΙΤΛΟΣ Α'.
+Περὶ ἐπισκόπων καὶ κληρικῶν, καὶ μοναχῶν, καὶ μοναστηρίων.
+
+Α'. Νόμος περὶ τοῦ πῶς δεῖ χειροτονεῖσθαι ἐπισκόπους, καὶ πρεσβυτέρους, καὶ διακόνους, ἄρρενάς τε καὶ θηλείας.
+
+Β'. Περὶ ἐπισκόπων καὶ κληρικῶν.
+
+Γ'. Ὅτε ὑπερτιθεμένους τοὺς ἄρχοντας ἀκούειν τῶν τοῦ προσιέντος δικαίων, συνελαύνεσθαι ὑπὸ τῶν ἐπισκόπων τοῦτο πράττειν, καὶ τὰ ἐξῆς.
+
+Δ'. Περὶ τοῦ τοὺς κληρικοὺς τοῖς ἐπισκόποις ἀποκρίνασθαι.
+
+Ε'. Περὶ καθαιρέσεως Ἀνθίμου, καὶ Σευήρου, καὶ Πέτρου, καὶ Ζωορᾶ.
+
+Ϛ'. Περὶ τοῦ ἐν ἰδιωτικοῖς οἴκοις ἱερὰν μυσταγωγίαν μὴ γίνεσθαι.
+
+Ζ'. Περὶ τοῦ μηδένα κτίζειν εὐκτήριον οἶκον χωρὶς γνώμης τοῦ ἐπισκόπου, καὶ τὰ ἐξῆς.
+
+Η'. Ὅτε τὰς περὶ τὸ Viminacium γενομένας ὑπὸ Ῥωμαίους πόλεις ὑπὸ ἴδιον ἀρχιεπίσκοπον εἶναι, μὴ μὴν ὑπὸ τὸν Θεσσαλονίκης.
+
+Θ'. Περὶ τοῦ ὡρισμένον εἶναι τὸν ἀριθμὸν τῶν κληρικῶν τῆς Μεγάλης ἐκκλησίας, καὶ τῶν λοιπῶν Ἐκκλησιῶν.
+
+Ι'. Περὶ τοῦ κληρικοὺς ἐξ ἑτέρας ἐκκλησίας μετατίθεσθαι εἰς ἑτέραν, εἰς τὸν τῶν λειπόντων καὶ στατούντων ἀριθμόν.
+
+ΙΑ'. Ὥστε τὰ καλούμενα ἐμφανιστικὰ ἐπὶ τῶν κληρικῶν, καὶ τὰ ἐξῆς.
+
+ΙΒ'. Ἔνθα τινὲς ἀφίστανται κληρικοί, ἕτεροι δὲ ἀντικαθίστανται, καὶ τὰ ἐξῆς.
+
+ΙΓ'. Περὶ μοναστηρίων, καὶ μοναχῶν, καὶ τὰ ἐξῆς.
+
+ΙΔ'. Περὶ τοῦ πῶς δεῖ βιοῦν μοναχούς.
+
+ΙΕ'. Διάταξις, παρὰ τίσι δικάζεσθαι μοναχοὺς ἢ ἀσκητρίας.
+
+ΙϚ'. Ἡ διάταξις ἑρμηνεύει τὴν προτέραν διάταξιν, τὴν περὶ τῶν εἰσιόντων εἰς μοναστήρια, καὶ τὰ ἐξῆς.
+
+ΙΖ'. Περὶ χειροτονίας ἐπισκόπων, καὶ κληρικῶν καὶ περὶ συνόδων, καὶ προσκομιδῆς.</bloco>
+  <bloco tipo="rodape" script="latino" bbox="580,945,860,985">Digitized by Google</bloco>
+  <notas>Leitura conservadora do impresso. Mantive grafias ambíguas conforme visível na página, sem normalização; as letras marginais A, B e C foram isoladas em blocos próprios.</notas>
 </pagina>

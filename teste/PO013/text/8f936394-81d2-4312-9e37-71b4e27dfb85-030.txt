@@ -1,12 +1,8 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="150,20,850,50">
-    20 SARGIS D'ABERGA. 120
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="50,200,120,230">
-    fol. 47,
-    v b.
-  </bloco>
-  <bloco tipo="texto_principal" script="ethiopico" bbox="140,60,950,400">
+<pagina estado="com_texto" tipo="texto">
+  [cabecalho script="latino" bbox="150,60,850,110"]
+    20 SARGIS D'ABERGA. 1207
+  [/cabecalho]
+  [texto_principal script="ethiopico" bbox="150,120,950,530"]
     ፀሐ፡ በታ ፡ ያዕብ ። ወእንዘከመ ፡ አስተውአሁ ፡ ይፈርሁ ፡ ወይእመኑ ፡ ኅቡእ ፡
     እግዚአብሔር ፡ ዘእስራኤል ። ወእነዘኑ ፡ ያእኅዋትሁ ፡ ዘተማረኩ ፡ ይተማኩ ።
     ወከመ ፡ ይብ ። ወይእ ፡ አሜ ፡ አጥብቀ ፡ እንበ ፡ እዚአብሔር ፡ ተርፋ  አስተውአ
@@ -21,21 +17,20 @@
     ተ ፡⁵ ፡ አስርዕቶሱ ፡ አስሠ ፡ ውእቱ ፡ ወነበ ፡ ሰላም  ወሀቢ ፡ ለሎሙ ፡ እግዚአብሔር ፡
     ነ ፡ በ ። ወበእንተዝ ፡ ይፈርሁ ፡ ወይወርሱ ፡ ይወተ ፡ ዘዓለም ። ወይስብሁ ፡
     አብ ፡ ወወልድ ፡ ወመንስ ፡ ቅዱስ ።
-    በከመ ፡ [ይብ ፡] አዕራይሱ ፡ ነበሩ ። በእንተ ፡ እዚአብር ፡ አብቀ 
-  </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="140,410,950,460">
-    1. Ms. ግልጸው። — 2. Ms. ኅሉፋ። — 3. Dittologie (après በጽሕ it y a dans le ms. ፡ አስ ፡ ወተፈ ፡ ገለፀ)። — 4. Ms. አስሠ። — 5. Ms. ምሕረ።
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="140,470,950,530">
+    በከመ ፡ [ይብ ፡] አዕራይሱ ፡ ነበሩ ። በእንተ ፡ እዚአብር ፡ አብቀ
+  [/texto_principal]
+  [aparato_critico script="misto" bbox="150,530,950,600"]
+    1. Ms. [ilegivel]. — 2. Ms. [ilegivel]. — 3. Dittologie (après [ilegivel] il y a dans le ms. : [ilegivel]). — 4. Ms. [ilegivel]. — 5. Ms. [ilegivel].
+  [/aparato_critico]
+  <nota_marginal script="latino" bbox="55,560,135,650">
+    • Is., x, 20-25.
+    v b.
+  </nota_marginal>
+  [texto_principal script="latino" bbox="150,590,950,865"]
     de Jacob; ils craindront aussi le Dieu d'Israël. Ceux dont l'esprit était égaré¹
     connaîtront la sagesse (du Seigneur); ceux encore qui murmuraient apprendront
     (sa) Loi².
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="50,600,120,630">
-    fol. 47,
-    v b.
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="140,540,950,780">
+
     De nouveau il dit : Ce jour-là, ceux qui seront restés d'Israël et ceux qui
     auront été sauvés de Jacob ne continueront plus à avoir confiance en ceux qui les ont
     égarés, mais ils se confieront au Seigneur, le Saint d'Israël, avec justice. Ceux
@@ -50,18 +45,17 @@
     la paix et le réconciliateur pour tous ceux qui croient en lui. C'est pourquoi
     ils seront sauvés; ils hériteront de la vie éternelle et ils glorifieront le
     Père, le Fils et l'Esprit-Saint.
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="140,790,950,820">
+  [/texto_principal]
+  [cabecalho script="latino" bbox="170,865,950,910"]
     62. LE SALUT PAR LE BAPTÊME ET PAR LA LOI NOUVELLE. — Comme (dit) le
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="140,830,950,880">
+  [/cabecalho]
+  [aparato_critico script="latino" bbox="150,910,950,975"]
     1. M. à m. : qui étaient égarés dans leur esprit. — 2. Is., xxix, 22-24. — 3. M. à m. :
-    seront forts. — 4. Is., x, 20-23.
-  </bloco>
+    seront forts. — 4. Is., x, 20-25.
+  [/aparato_critico]
   <notas>
-    Página contendo texto em script Etíope (Ge'ez) na parte superior e tradução/comentário em Francês na parte inferior.
-    Identificadas notas marginais indicando "fol. 47, v b.".
-    Presença de aparato crítico com variantes de manuscritos (Ms.) e referências bíblicas (Is.).
-    Uso de colchetes [] para restaurações editoriais no texto etíope.
+    Transcription partiellement incertaine dans la section éthiopienne supérieure à cause du contraste faible et des ruptures de ligne.
+    La mention marginale de gauche se lit comme une référence biblique et un repère de folio.
+    Les nombres en exposant dans la traduction française renvoient aux notes de bas de page.
   </notas>
 </pagina>

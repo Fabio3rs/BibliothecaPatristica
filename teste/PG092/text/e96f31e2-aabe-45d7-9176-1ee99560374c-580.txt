@@ -1,17 +1,17 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="80,20,920,120">
-1143   SELECTA AD ILLUSTRATIONEM.   1144
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="120,40,880,110">
+1143   SELECTA AD ILLUSTRATIONEM   1144
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,120,490,820">
+  <bloco tipo="texto_principal" script="latino" bbox="70,115,470,790">
 Ol.    B. C.
 4    33 Cæsar II and Tullus.
 187 1 32 Ahenobarbus and Sossius.
      2 31 Cæsar III and Messala.
      3 30 Cæsar IV and Crassus.
-     5 29 Cæsar V and Apuleius.
+     4 29 Cæsar V and Apuleius.
 188 1 28 Cæsar VI and Agrippa II.
      2 27 Cæsar VII and Agrippa III.
-     5 26 Cæsar VIII and Taurus.
+     3 26 Cæsar VIII and Taurus.
      4 25 Cæsar IX and Silanus.
 189 1 24 Cæsar X and Flaccus.
      2 23 Cæsar XI and Murena.
@@ -29,7 +29,7 @@ Ol.    B. C.
      2 11 Tubero and Maximus.
      3 10 Antonius and Africanus.
      4 9 Drusus and Crispinus.
-193 1 2 Censorinus and Gallus.
+193 1 8 Censorinus and Gallus.
      2 7 Nero II and Piso II.
      3 6 Veter and Balbus.
      4 5 Augustus XII and Sulla.
@@ -44,7 +44,7 @@ Ol.    B. C.
 196 1 5 Magnus and Valerius.
      2 6 Lepidus and Amantius.
      3 7 Creticus and Nerva.
-     4 8 Camillus and Nonus.
+     4 8 Camillus and Nonius.
 197 1 9 Sabinus and Camerinus.
      2 10 Dolabella and Silanus.
      3 11 Lepidus and Taurus.
@@ -62,27 +62,27 @@ Ol.    B. C.
      3 23 Pollio and Veter.
      4 24 Cethegus and Varro.
 201 1 25 Lentulus and Agrippa.
-     2 26 Sabinus and Catullicus.
+     2 26 Sabinus and Gætulicus
      3 27 Piso and Crassus.
      4 28 Silanus and Nerva.
 202 1 29 Rubell. Geminus and Fusius Geminus.
      2 30 Vinicius and Longinus.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,160,520,210">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,145,520,185">
 A
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,360,520,410">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,315,520,355">
 B
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,540,520,590">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,560,520,600">
 C
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,720,520,770">
+  <bloco tipo="nota_marginal" script="latino" bbox="490,760,520,800">
 D
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,120,960,820">
+  <bloco tipo="texto_principal" script="latino" bbox="520,115,960,790">
 Ol.    Aug.
-A 3 5 Octavianus Augustus and Cicero.
+3 5 Octavianus Augustus and Cicero.
 4 6 Octav. Aug. II and Corvilius.
 186 1 7 Octav. Aug. III and Crassus.
 2 8 Octav. Aug. IV and Crassus II.
@@ -101,7 +101,7 @@ A 3 5 Octavianus Augustus and Cicero.
 3 21 Saturnilus and Lucretius.
 4 22 Lentulus and Lentulus.
 190 1 23 Lentulus II and Cornelius.
-B 2 24 Popœtios (Furnius) and Silanus.
+2 24 Φορνίκιος (Furnius) and Silanus.
 3 25 Domitius and Ahenobarbus.
 4 26 Libo and Piso.
 191 1 27 Crassus and Lentulus.
@@ -120,7 +120,7 @@ B 2 24 Popœtios (Furnius) and Silanus.
 2 40 Lentulus and Piso.
 3 41 P. Cæsar and Paullus.
 4 42 Vinicius and Varus.
-C 195 1 43 Lamia and Servilius.
+195 1 43 Lamia and Servilius.
 2 44 Magnus and Valerius.
 3 45 Lepidus and Plancus.
 4 46 Tiberius Cæsar and Capito.
@@ -139,36 +139,34 @@ C 195 1 43 Lamia and Servilius.
 2 3 (15) Tiber. IV and Rufus (Drusus) II.
 3 4 Messala and Gratus.
 4 5 Tiberius Cæsar IV and Drusus.
-D 3 6 (16) ...............
+6 (16) ...............
 200 1 7 Agrippa and Galba.
 2 8 Pollio and Veter.
 3 9 Cethegus and Varus (Varro).
 4 10 Agrippa II and Lentulus.
-201 1 11 Catuleus and Sabinus.
+201 1 11 Getulicus and Sabinus.
 2 12 Crassus and Piso.
 3 13 Silanus and Nerva.
 4 14 Geminus and Geminus.
 202 1 15 Rufus and Rubellinus.
 2 16 Vinicius and Longinus.
   </bloco>
-  <bloco tipo="rodape" script="misto" bbox="40,820,960,980">
+  <bloco tipo="rodape" script="misto" bbox="55,820,470,940">
 (10) Omitted in the Chronicle.
 (11) Ibid.
 (12) Κέλσου, Chron. Pasch.
-(13) Νένος, Chron. Pasch.
-(14) ΦΛΑΚΟΝ ΚΑΙ ΣΙΛΑΝΟΝ ; perhaps a cor-
-ruption for ΠΛΑΚΟΝ ΚΑΙ ΣΙΛΙΟΝ.
-(15) Tiber. IV. Sic Scal. Tiber. III, Chron. Pasch.
-(16) Perhaps Silanus and Norbanus were here omi-
-tted by the transcriber. In Chron. Pasch., p. 206 D,
+(13) Πίσωνος. Chron. Pasch.
+(14) ΦΛΑΚΟΥ ΚΑΙ ΣΙΛΑΝΟΥ͂; perhaps a corruption for ΠΛΑΓΚΟΥ ΚΑΙ ΣΙΛΙΟΥ͂.
+  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="520,820,965,955">
+(15) Tib. IV. Sic Scal. Tib. III, Chron. Pasch.
+(16) Perhaps Silanus and Norbanus were here omitted by the transcriber. In Chron. Pasch., p. 206 D,
 they are omitted at Ol. 199, 2. The editor observes
 p. 523 : Hic apponi debuit nota defectus, non vero,
 ut in ed. Scalig., post annum Tib. IV et Drusi.
   </bloco>
-  <bloco tipo="outro" script="latino" bbox="760,960,980,995">
+  <bloco tipo="rodape" script="latino" bbox="720,960,960,995">
 Digitized by Google
   </bloco>
-  <notas>
-Greek words and a few abbreviated names in the footnotes have been transcribed as in the image. Some numeral readings (e.g. lines with small or faded numbers) are rendered as they appear; a few minor ambiguities in numerals were preserved rather than emended.
-  </notas>
+  <notas>Layout transcribed in left-to-right column order; A, B, C, D preserved as separate marginal blocks. Some Greek forms and the dotted omission line are reproduced as visible in the scan.</notas>
 </pagina>

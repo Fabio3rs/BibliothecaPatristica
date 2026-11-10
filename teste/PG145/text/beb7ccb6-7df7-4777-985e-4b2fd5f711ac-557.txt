@@ -1,51 +1,43 @@
 <pagina estado="com_texto" tipo="texto">
-  [cabecalho script="latino" bbox="40,30,960,70"]
+  <bloco tipo="cabecalho" script="latino" bbox="250,35,760,72">
     1097  ECCLESIASTICÆ HISTORIÆ LIB. V.  1098
-  [/cabecalho]
-
-  <bloco tipo="texto_principal" script="grego" bbox="60,75,430,105">
-    ΚΕΦΑΛ. ΙΔ'.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="470,78,500,100">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="470,80,500,105">
     A
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="575,75,950,130">
-    CAPUT XIV.
 
-    Quod in Arabiam Origenes quoque venerit, et quod
-    Cæsareæ nondum presbyter sacras Litteras publice
-    in ecclesia exponendo tractarit.
-  </bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="20,88,490,735">
+    ΚΕΦΑΛ. ΙΔ'.
 
-  <bloco tipo="texto_principal" script="grego" bbox="45,105,490,610">
     Ὅτι καὶ ἐν Ἀραβίᾳ ἦκεν Ὠριγένης· καὶ ὡς ἐν
-    Καισαρείᾳ, μήπω πρεσβύτερος ὤν, τὰς Γραφὰς
-    ἐπὶ κοινοῦ τῆς Ἐκκλησίας ἡρμήνευε.
+    Καισαρείᾳ, μήπω πρεσβύτερος ὤν, τὰς Γρα-
+    φὰς ἐπὶ κοινοῦ τῆς Ἐκκλησίας ἡρμήνευε.
     Ἐντεῦθεν δ᾿ ἐξ Ἀραβίας ἥκοντα γράμματα, ὡς
     κοινωνήσῃ λόγων τῷ τυγχάνοντι ἐκείνης ἡγουμένῳ,
-    προσπεμφθείς, ἐπὶ τὴν Ἀράβων ἐστέλλετο. Οὐ πολὺν
+    προσπεμφθεὶς, ἐπὶ τὴν Ἀράβων ἐστέλλετο. Οὐ πολὺν
     δ᾿ ἐκεῖ παραμείνας χρόνον, εἰς Ἀλεξάνδρειαν αὖθις
-    ἀνῇλθε. Κἀκεῖθεν πάλιν διὰ τὸν ἐπαναστάντα πόλεμον
-    ἐξιών, καὶ τὴν Αἴγυπτον ὡς σφαλερὰν ὑποπτεύων,
-    ἐπὶ Παλαιστίνην ἐχώρει· καὶ ἐν Καισαρείᾳ
+    ἀνῇλθε. Κἀκεῖθεν πάλιν διὰ τὸν ἐπαναστάντα πό-
+    λεμον ἐξιών, καὶ τὴν Αἴγυπτον ὡς σφαλερὰν ὑπο-
+    πτεύων, ἐπὶ Παλαιστίνην ἐχώρει· καὶ ἐν Καισαρείᾳ
     τὰς διατριβὰς ἐποιεῖτο· διαλέγεσθαί τε καὶ ἐπὶ
-    κοινοῦ τῆς ἐκκλησίας τὰς θείας ἑρμηνεύειν Γραφάς,
-    καίπερ μηδέπω τῆς τοῦ πρεσβυτερίου ἠξιωμένου
-    τιμῆς, οἱ τῆδε ἐπίσκοποι σὺν πρεσβείᾳ παρεκαλοῦντο·
-    ἦσαν. Καὶ τοῦτο παρίσταται ἐξ ὧν τοῦ Δημητρίου
-    κατὰ Ὠριγένους κεκινημένου, ὡς μικρὸν ἄνωθεν
-    διελάβομεν, καὶ τοῖς ἐν Παλαιστίνῃ γράφοντος
-    σὺν ἄλλοις, ὅτι Τοῦτο οὐδέποτε ἠκούσθη, οὐδὲ
+    κοινοῦ τῆς ἐκκλησίας τὰς θείας ἑρμηνεύειν Γρα-
+    φάς, καίπερ μηδέπω τῆς τοῦ πρεσβυτερίου ἠξιωμέ-
+    νου τιμῆς, οἱ τῇδε ἐπίσκοποι σὺν πρεσβείᾳ παρεχω-
+    ροῦντες ἦσαν. Καὶ τοῦτο παρίσταται ἐξ ὧν τοῦ Δη-
+    μητρίου κατὰ Ὠριγένους κεκινημένου, ὡς μικρὸν
+    ἄνωθεν διελάβομεν, καὶ τοῖς ἐν Παλαιστίνῃ γράφον-
+    τος σὺν ἄλλοις, ὅτι Τοῦτο οὐδέποτε ἠκούσθη, οὐδὲ
     μέχρι νῦν γεγένηται, τὸ, παρόντων ἐπισκόπων,
-    λαϊκοὺς ὁμιλεῖν. Ἐκεῖνοι ἀπόλογον ὑπὲρ τούτου
-    τιθέντες, ὅ τε Ἱεροσολύμων Ἀλέξανδρος, καὶ ὁ
-    Καισαρείας Θεόκτιστος, οὐκ ἀληθῆ λέγειν ἐκεῖνον
-    διασχυρίζονται. « Ὅπου γοῦν, φασίν, εὑρίσκονται οἱ
-    ἐπιτήδειοι πρὸς τὸ ὠφελεῖν τοὺς ἀδελφοὺς, καὶ
-    παρακαλοῦνται τῷ λαῷ ὑπὸ τῶν ἁγίων ἐπισκόπων,
-    τοῦτο οὐ πρόσκομμα· ὥσπερ ἐν Λαράνδοις Εὐέλπις
-    ὑπὸ Νέωνος, καὶ ἐν Ἰκονίῳ Παυλῖνος ὑπὸ Κέλσου,
-    καὶ ἐν Συνάδοις Θεόδωρος ὑπὸ Ἀττικοῦ, τῶν μακαρίων
+    λαϊκοὺς ὁμιλεῖν. Ἐκεῖνοι ἀπόλογον ὑπὲρ τούτου τι-
+    θέντες, ὅ τε Ἱεροσολύμων Ἀλέξανδρος, καὶ ὁ Κα-
+    σαρείας Θεόκτιστος, οὐκ ἀληθῆ λέγειν ἐκεῖνον διασυ-
+    ρίζονται. « Ὅπου γοῦν, φασίν, εὑρίσκονται οἱ ἐπι-
+    τήδειοι πρὸς τὸ ὠφελεῖν τοὺς ἀδελφοὺς, καὶ παρακα-
+    λοῦνται τῷ λαῷ ὑπὸ τῶν ἁγίων ἐπισκόπων, τοῦτο οὐ
+    πρόσκομμα· ὥσπερ ἐν Λαράνδοις Εὐέλπις ὑπὸ
+    Νέωνος, καὶ ἐν Ἰκονίῳ Παυλῖνος ὑπὸ Κέλσου, καὶ
+    ἐν Συνάδοις Θεόδωρος ὑπὸ Ἀττικοῦ, τῶν μακαρίων
     ἀδελφῶν. Εἰκὸς δὲ καὶ ἐν ἄλλοις τόποις τοῦτο γίνε-
     σθαι, ἡμᾶς δὲ μὴ εἰδέναι τοῦτο. » Τοιαύτη τις ἦν τῷ
     Ὠριγένει οὐ παρὰ τῶν ἐπιχωρίων μόνον ἐπισκόπων,
@@ -54,13 +46,46 @@
     τῶν συνήθων ἔσχετο ἔργων. Ἐς τοῦτο δὲ τοῦ χρόνου
     καὶ μυρίοι ἄλλοι περὶ λόγους ἦσαν ἀκμάζοντες· ὧν
     καὶ συγγράμματα καὶ ἐπιστολὰς ἐν τῇ κατ᾿ Αἴγυπτον
-    βιβλιοθήκῃ εἴσειτι παρακυλάπτεσθαι Εὐσέβιος
+    βιβλιοθήκῃ εἰσέτι τότε παραφυλάττεσθαι Εὐσέβιος
     ὁ Παμφίλου ἱστόρησεν· ἐξ ἧς ἐκείνῳ καὶ τῆς ὕλης
     τῶν ἐκκλησιαστικῶν ὑποθέσεων πορισθῆναί φησι.
+    Τὴν δὲ βιβλιοθήκην ἐπισκευάσασθαι λέει Ἀλέξαν-
+    δρον τὸν σὺν Ναρκίσσῳ τὰ τῆς ἐπισκοπῆς κατὰ θεῖον
+    χρησμὸν διεξάγοντα.
   </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="540,135,950,525">
-    Porro cum ex Arabia litteræ venirent, ut verbi
+  <bloco tipo="nota_marginal" script="latino" bbox="470,720,500,745">
+    C
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="20,748,490,930">
+    ΚΕΦΑΛ. ΙΕ'.
+
+    Περὶ Βηρύλλου τοῦ Βόστρων· καὶ Ἀμβροσίου·
+    καὶ ὅσα Ὠριγένης ἐπ᾿ Ἀλεξανδρείας ἐξηγή-
+    σατο.
+
+    Πολλῶν οὖν περὶ λόγους ἀκμαζόντων, καὶ πολλὰ
+    τῇ Ἐκκλησίᾳ συνταττόντων βιβλία, καὶ κατὰ τῶν
+    αἱρέσεων διαγωνιζομένων τὰ μάλιστα, ἐν οἷς ὁ τε
+    τῆς κατὰ Βόστραν Ἀράβων ἦν Βήρυλλος, φιλοκαλου
+    σπουδῆς συγγράμματα καταλείψας· Ἱππόλυτός τε
+    ὁ Πόρτου Ῥώμης ἐπίσκοπος, καὶ Γάϊος, ἐκκλησια-
+    στικοὶ συγγραφεῖς, περὶ ὧν ἡ προλαβοῦσά μοι διε-
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="470,900,500,925">
+    D
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,88,970,360">
+    CAPUT XIV.
+
+    Quod in Arabiam Origenes quoque venerit, et quod
+    Cæsareæ nondum presbyter sacras Litteras publice
+    in ecclesia exponendo tractarit.
+
+    Porro cum ex Arabia litt ræ venirent, ut verbi
     doctrinam cum præside regionis ejus communica-
     ret, profectus est eo, ea ipsa de causa. Sed non
     diu ibi moratus, Alexandriam rediit. Atque inde
@@ -71,14 +96,22 @@
     ad eum missa, ei permisere, ut de sacris Litteris
     dissereret, et publice eas in ecclesia interpretare-
     tur, quamvis nondum presbyteri honorem esset
-    consecutus. Id quod comprobatur ex scriptis eis,
+    consecutus.
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="470,405,500,430">
+    B
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,360,970,735">
+    Id quod comprobatur ex scriptis eis,
     quæ Demetrius male erga Origenem affectus, ut
     paulo ante meminimus, episcopis Palæstinis misit;
-    in quibus scriptis, præter alia, illud erat : Num-
+    in quibus scriptis, præter alia, illud erat : Nunn-
     quam ante auditum, nunquam factum esse, ut
     præsentibus episcopis laici concionarentur. Qua-
-    propter illi, et potissimum Alexander Hierosolymi-
-    tanus et Theoctistus Cæsariensis antistites, defen-
+    propter illi, et potissimum Alexander Hierosoly-
+    mitanus et Theoctistus Cæsariensis antistites, defen-
     sionem ejus rei ad eum scripserunt, non vera illum
     dicere asseverantes : « Ubi enim, inquiunt, reperi-
     untur idonei homines, qui doctrina sua prodesse
@@ -90,11 +123,7 @@
     fratribus invitati fecerunt. Verisimile autem est in
     aliis quoque locis, quod nos ignoramus, itidem
     esse factum. »
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="470,295,500,320">
-    B
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="540,520,950,820">
+
     Tanto in honore Origenes non so-
     lum apud cives et provinciales suos, sed etiam
     apud externos episcopos fuit. Ceterum cum ei
@@ -112,38 +141,13 @@
     responso, episcopalem administravit
     provinciam.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="470,700,500,725">
-    C
-  </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="45,820,430,875">
-    ΚΕΦΑΛ. ΙΕ'.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="470,825,500,850">
-    D
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="575,820,950,885">
+  <bloco tipo="texto_principal" script="latino" bbox="520,748,970,930">
     CAPUT XV.
 
     De Beryllo Bostrensi; de Ambrosio, et quæ Origenes
     scripta sacrarum Litterarum Alexandriæ exposuerit.
-  </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="45,875,490,970">
-    Περὶ Βηρύλλου τοῦ Βόστρων· καὶ Ἀμβροσίου·
-    καὶ ὅσα Ὠριγένης ἐπ᾿ Ἀλεξανδρείας ἐξηγή-
-    σατο.
-
-    Πολλῶν οὖν περὶ λόγους ἀκμαζόντων, καὶ πολλὰ
-    τῇ Ἐκκλησίᾳ συνταττόντων βιβλία, καὶ κατὰ τῶν
-    αἱρέσεων διαγωνιζομένων τὰ μάλιστα, ἐν οἷς ὁ τε
-    τῆς κατὰ Βόστραν Ἀράβων ἦν Βήρυλλος, φιλοκαλου
-    σπουδῆς συγγράμματα καταλείψας· Ἱππόλυτός τε
-    ὁ Πόρτου Ῥώμης ἐπίσκοπος, καὶ Γάϊος, ἐκκλησια-
-    στικοὶ συγγραφεῖς, περὶ ὧν ἡ προλαβοῦσά μοι διε-
-  </bloco>
-
-  <bloco tipo="texto_principal" script="latino" bbox="540,875,950,970">
     Verum enimvero cum permulti eloquentiæ et
     eruditionis laude florerent, plurimaque Ecclesiæ
     componerent monumenta, in quibus contra hære-
@@ -153,20 +157,19 @@
     episcopus (1), et Caius, scriptores ecclesiastici
   </bloco>
 
-  <bloco tipo="nota" script="misto" bbox="75,970,925,995">
-    (1) Ἱππόλυτος ἕτερος που καὶ αὐτὸς ἐπίσκοπος [ilegivel]. (Euseb. lib. vi, cap. 21.)
+  <bloco tipo="nota" script="misto" bbox="60,932,940,970">
+    (1)· Ἱππόλυτος ἕτερος που καὶ αὐτὸς ἐπίσκοπος παροικίας. (Euseb. lib. vi, cap. 21.)
   </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="210,982,420,998">
+  <bloco tipo="rodape" script="latino" bbox="210,965,420,990">
     PATROL. GR. CXLV
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="900,982,940,998">
+
+  <bloco tipo="rodape" script="latino" bbox="900,965,940,990">
     35
   </bloco>
 
   <notas>
-    A, B, C, D estão no eixo central entre colunas e foram separados como nota_marginal.
-    A leitura segue o impresso, com a continuação latina de cap. XIV ocupando a zona inferior esquerda da página.
-    Alguns pontos pouco nítidos foram marcados com [ilegivel].
+    Leitura revista contra o impresso; as letras A, B, C e D foram mantidas em blocos próprios como nota_marginal. A nota de rodapé foi separada em bloco de nota. BBOX em escala 0-1000.
   </notas>
 </pagina>

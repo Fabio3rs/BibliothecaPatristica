@@ -1,8 +1,9 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,40,950,65">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="60,35,940,85">
     [101] LE LIVRE DE JOB, XXXIV, 10-18. 661
   </bloco>
-  <bloco tipo="texto_principal" script="ethiopico" bbox="50,70,900,300">
+
+  <bloco tipo="texto_principal" script="ethiopico" bbox="55,105,940,470">
     ይግባእ : አገልግ : ጥሕር :: *ይአዘን : ምዐ : በ : ኃቢ :: እግር : ተ
     አጠቀ : ጥበቀ : አገልግ : ጥሕር :: ወአጉባኒ : አደሪፍ : ጠቅዓው : ዘተሰለ :
     አው : ፍየቱ :: *ትረስዮ : አሠገ : አገልግ : ጥሕር : ዐፍዕ :: ወዘተሰለ : ውል
@@ -13,7 +14,20 @@
     አ : እንበለ : ዐውል :: *ዘመውቱ : ዘተ : ዘመን : ወእቱ : ወሰነ : ውል
     አ : እንበለ : ዐውል :: *ዘመውቱ : ዘተ : ዘመን : ወእቱ : ወሰነ : ውል
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="50,310,900,460">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="950,135,985,470">
+    10
+    11
+    12
+    13
+    14
+    15
+    16
+    17
+    18
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="70,485,950,705">
     10. ይአዘን :] መይአዘን : A B   አጠቀ :] om. A B   ጥበቀ :] ምጥበ : A B   ወይጉባኒ :] ወአጉባኒ : A   ጠቅው :] ዘጠቅዓው : A. — 11. ሰበ :]
     om. A B   ጥበቀ :] ምጥበቀ : A B   ወይጉባኒ :] ወአጉባኒ : A   ጠቅው :] ዘጠቅዓው : A. — 12. ጥረ
     ሰበ :] ትረስዮ : A, ትረስዮ : B   አሠገ :] አሠገ : A, አሠገ : B   ዐፍዕ :] ዐፍዕ : A. — 13. ረ
@@ -23,30 +37,60 @@
     አጉ : A. — 17. ዘይፀልኡ : A, ዘይፀልኡ : B   በሰዉ : A   ወዘይጠፍኡ : A. — 18. ጸረ : B   ዘይ
     ጠለ : A   ወእኩይ :] ወእኩይ : B   ጥሩ : A.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,520,900,920">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="940,720,985,760">
+    10
+    11
+    12
+    13
+    14
+    15
+    16
+    17
+    18
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="70,740,950,980">
     et Dieu ne le visitera pas.
+
     Et maintenant aussi écoutez-moi, sages de cœur;
+
     ne veuillez pas pécher devant Dieu,
+
     ni troubler le juste devant Celui qui domine tout.
+
     Et il rend à chaque homme selon ses œuvres;
+
     et il atteint l'homme selon sa voie.
+
     Est-ce que vous jugez ainsi : Dieu commet l'injustice,
+
     et Celui qui domine tout, viole le droit?
+
     C'est lui qui a créé la terre;
+
     qui est-ce qui a fait ce qui est sous le ciel, et tout ce qu'il y a en elle?
+
     S'il le veut, il retiendra ce que l'esprit, qui vient de lui, prendra.
+
     Et tout ce qui est de chair mourra à la fois;
+
     et tout mortel retournera à la poussière dont il est créé.
+
     Mais s'il n'en est pas ainsi, corrige-toi, et entends cela;
+
     et écoute les paroles de mon discours.
+
     Celui qui hait l'iniquité,
+
     et qui anéantit les mauvais, c'est l'éternel Juste.
+
     Blasphémateur est celui qui dit au roi : Tu as péché;
+
     et il est mal aussi de le dire au prince.
   </bloco>
+
   <notas>
-    Scripts identificados: Ethiopico (Ge'ez) para o texto bíblico e aparato crítico; Latino (Francês) para títulos, aparato crítico e tradução.
-    O texto Ge'ez apresenta variantes marcadas com asterisco (*) no corpo do texto, correspondentes ao aparato crítico abaixo.
-    Números de versículos (10-18) aparecem na margem direita do bloco Ge'ez e do bloco Francês.
+    Transcription diplomatique structurée selon la mise en page visible. Le texte éthiopique et le aparato crítico ont été conservés avec une fidélité prudente; les sigles A/B sont maintenus dans l'apparat.
   </notas>
 </pagina>

@@ -1,8 +1,9 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="60,57,938,82">
-    157                                     ORATIO XIV. — IN B. MARIÆ ASSUMPTIONEM.                                     158
+  <bloco tipo="cabecalho" script="latino" bbox="60,150,942,205">
+    157                              ORATIO XIV. — IN B. MARIÆ ASSUMPTIONEM.                              158
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="61,82,461,514">
+
+  <bloco tipo="texto_principal" script="grego" bbox="60,210,488,518">
     τοῦ βίου τῇ ἔλμῃ, τοσοῦτον συμπαθείας ἐτέροις
     μετάδος· μὴ παρίδῃς, μηδὲ καταφρονήσῃς τῆς σοι
     ὁμοτίμου ἐῤῥιμμένης εἰκόνος. Εἰκών ἐστι καὶ οὗτός
@@ -10,10 +11,10 @@
     ἔῤῥιπται, σὺ δὲ ἐν θαλάμοις πολυωρεῖ. Καὶ ἴσως γε
     ὁμοιότερον τὸ τοῦ ἀρχετύπου κάλλος ἔχουσα. Καὶ τοῦ
     λόγου μαρτύριον ὁ γυμνὸς Λάζαρος, καὶ ὁ τὴν βύσ-
-    σον ἐνδεδυσκόμενος. Οὕτω διασωσώμεθα τὴν πρὸς
+    σον ἐνδεδυκόμενος. Οὕτω διασωσώμεθα τὴν πρὸς
     τὸν Πατέρα οἰκειότητα. Τοιούτοις χαρακτῆρσι διαμορφώσαντες ἑαυτούς, μὴ ψευσώμεθα τὴν υἱότητα·
     Οὕτω τοὺς ἀδελφοὺς ἡμᾶς προσλαβόμενον καὶ ἀποκαταλλάξαντα Υἱὸν θεραπεύσωμεν· οὕτω τὸν κεκομι-
-    κότα τῆς καταλλαγῆς τὸ ἐχέγγυον Παράκλητον τιμήσωμεν, τῇ ἑαυτῶν τιμῇ καὶ θεραπεῖᾳ καὶ σωτη-
+    κότα τῆς καταλλαγῆς τὸ ἐχέγγυον Παράκλητον τιμήσωμεν, τῇ ἑαυτῶν τιμῇ καὶ θεραπείᾳ καὶ σωτη-
     ρίᾳ, δι᾿ ἣν ἅπαντα οἰκονομεῖται καὶ πράττεται.
     Ἀλλ᾿, ὦ σύνθρονε τῷ Πατρὶ καὶ τῷ Λόγῳ Παρά-
     κλητε, τοσοῦτον μὲν τὴν σὴν ἐπιδημίαν τιμῶν ὁ λόγος ἐχέτω. Σὺ δ᾿ ἡμῖν τῷ σῷ ἡγεμονικῷ τὸν ἡγεμόνα
@@ -33,7 +34,12 @@
     ἅπαντες τῇ σῇ χάριτι καὶ χρηστότητι, κἀκεῖ τὴν σὴν
     δοξάζοντες θεαρχίαν εἰς τοὺς αἰῶνας.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="481,82,941,514">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="468,223,485,242">
+    A
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="505,210,942,518">
     et qui bysso amiciebatur, testantur. Ita nos ipsos
     conformantes, affinitatem cum Patre servemus, nec
     a filiorum dignitate deficiamus unquam. Reconcili-
@@ -59,32 +65,53 @@
     tua, ut illic supremam divinitatem tuam laudibus
     perenniter cumulemus.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="462,84,476,101">A</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="462,326,476,344">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="462,516,476,535">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="462,738,476,755">D</bloco>
-  <bloco tipo="cabecalho" script="grego" bbox="211,518,305,537">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="471,433,489,452">
+    B
+  </bloco>
+
+  <bloco tipo="cabecalho" script="grego" bbox="214,525,316,560">
     ΛΟΓΟΣ ΙΔ᾿.
   </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="620,518,738,537">
+
+  <bloco tipo="cabecalho" script="latino" bbox="632,525,748,560">
     ORATIO XIV.
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="61,540,462,999">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="502,528,520,555">
+    C
+  </bloco>
+
+  <bloco tipo="cabecalho" script="grego" bbox="60,562,430,648">
     Ὁμιλία εἰς τὴν κοίμησιν τῆς παναγίας Θεοτό-
     κου καὶ ἀειπαρθένου Μαρίας· ὅτε ἀπὸ τῶν
-    ἐπιγείων καὶ ἐπικήρων, ἐν ταῖς φαινοτάταις
+    ἐπιγείων καὶ ἐπικήρων, ἐν ταῖς ἀεινοτάταις
     καὶ ἀκηράτοις λήξεσι τῶν οὐρανῶν μετέστη.
     Μηνὸς Αὐγούστου ιε᾿.
+  </bloco>
+
+  <bloco tipo="cabecalho" script="latino" bbox="517,562,954,656">
+    Homilia in sacrosanctæ Deiparæ, semperque virginis
+    Mariæ obdormitionem : quando e terrenis caducisque,
+    in illustrissimas et immortales cœlorum sedes
+    translata est. Augusti mensis 15.
+  </bloco>
+
+  <bloco tipo="nota" script="latino" bbox="625,658,830,685">
+    (COMBER. Auctar. col. 1734.)
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="61,688,469,996">
     Μητρὸς Θεοῦ ἑορτὴν τιμῶμεν. Ποία γλῶσσα τὴν
     τιμὴν ἐξισώσει, πρὸς τὴν ἀξίαν οὐκ ἐνδέουσα τῆς
     εὐφημουμένης; Δεσποτικὴ καὶ νῦν ἐκτελεῖται παν-
-    ἠγυρις· ἡ γὰρ πάντων δεσπόζουσα χορηγεῖ τὴν ὑπό-
+    ήγυρις· ἡ γὰρ πάντων δεσπόζουσα χορηγεῖ τὴν ὑπό-
     θεσιν. Τίς λόγος τῷ μεγέθει ταύτης συνεκταθήσεται;
     Εἰ γὰρ καὶ ἐπ᾿ ἄλλων, δι᾿ ἀρετὴν εὐδοκίμων, ὧν ἡ
     ἀξία, τοσοῦτον ἔχει τὸ ἔλαττον, ὅσον εἰκὸς Δεσπότου
     ἠλαττῶσθαι δοῦλον, ὅμως ἡ τοῦ λόγου εὐφημία κατ-
     ὀπιν ἔρχεται, τί χρὴ τοῦτον παθεῖν, τῇ τῶν ἀρετῶν
-    ἀκρότητι προσιόντα; Πλὴν εἰ καὶ μὴ ἐλπίς, ὅσον
+    ἀκρότητι προσιόντα; Πλὴν εἰ καὶ μὴ ἐλπὶς, ὅσον
     ἄξιον, ὑπηχῆσαι, ἀλλ᾿ ἡμεῖς γε παρέχομεν ἑαυτοὺς
     εἰς τιμὴν, τῆς δι᾿ ἣν ἑορτάζειν ἠξιώμεθα λελυτρω-
     μένοι τῆς ἀνεόρτου κατηφείας καὶ σκυθρωπότητος·
@@ -96,12 +123,8 @@
     καθὼς ὁ ἐκείνης βούλεται νόμος, τῆς ἐνύλου ζωῆς,
     ἐκδημεῖ πρὸς τὴν ἄϋλον. Τῆς μόνης κεχαριτωμένης,
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="481,540,941,999">
-    Homilia in sacrosanctæ Deiparæ, semperque virginis
-    Mariæ obdormitionem : quando e terrenis caducisque,
-    in illustrissimas et immortales cœlorum sedes
-    translata est. Augusti mensis 15.
-    (COMBER. Auctar. col. 1734.)
+
+  <bloco tipo="texto_principal" script="latino" bbox="504,690,954,996">
     Dei Matris festum diem honoramus. At quæ
     qualisve lingua, illius quæ celebratur honorem,
     pro ipsius dignitate ac meritis exæquabit ? Et vero
@@ -127,8 +150,14 @@
     modum naturæ ejusdem lex exigit, a materiali ac
     mortali in corpore vita ad immaterialem ac statū
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="573,978,792,996">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="468,760,486,785">
+    D
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="660,965,857,993">
     Digitized by Google
   </bloco>
-  <notas>Transcrição baseada na imagem; a página contém duas colunas gregas e latinas, com continuação de texto no topo e início da Oratio XIV na parte inferior. As letras A, B, C e D foram mantidas em blocos nota_marginal independentes.</notas>
+
+  <notas>Transcrição paleográfica baseada na imagem; mantiveram-se as quebras e hifenizações visíveis. As letras A, B, C e D foram separadas como nota_marginal. O rodapé “Digitized by Google” foi preservado; a última linha latina e a última linha grega estão truncadas na imagem.</notas>
 </pagina>

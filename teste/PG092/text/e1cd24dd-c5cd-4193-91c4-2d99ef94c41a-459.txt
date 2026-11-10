@@ -1,6 +1,6 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="65,63,863,86">901                                             CHRONICON PASCHALE.                                             902</bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="68,88,465,694">
+  <bloco tipo="cabecalho" script="latino" bbox="40,45,960,90">901 CHRONICON PASCHALE. 902</bloco>
+  <bloco tipo="texto_principal" script="grego" bbox="52,88,485,640">
 καὶ Θεοδώρου τοῦ δυσσεβοῦς καὶ τῶν Ἰουδαϊκῶν αὐ-
 τοῦ συγγραμμάτων καὶ τῆς ἀκαθάρτου ἐπιστολῆς τῆς
 πρὸς Μάριν ¹ τὸν Πέρσην Ἴβα λεγομένης ² 345
@@ -14,8 +14,8 @@
 Καῖσαρ, Φλ. ⁴ Ἰουστινιανός, Ἀλαμανικός, Γοτθι-
 κός, Φραγκικός ⁵ Γερμανικός, Ἀντικός, Ἀλανικός,
 Οὐανδαλικός, Ἀφρικανός, εὐσεβής, εὐτυχής, ἔνδοξος,
-νικητής, τροπαιοῦχος, ἀεισέβαστος, Αὔγουστος, παντὶ
-τῷ κληρώματι τῆς καθολικῆς καὶ ἀποστολικῆς Ἐκ-
+νικητής, τροπαιοῦχος, ἀεισέβαστος, Αὔγουστος, παν-
+τὶ τῷ κληρώματι τῆς καθολικῆς καὶ ἀποστολικῆς Ἐκ-
 κλησίας.
 
 « Εἰδότες ὡς οὐδὲν οὕτω θεραπεύει τὸν φιλάνθρω-
@@ -39,8 +39,9 @@
 ζοντες, εἰς ἃ βαπτιζόμεθα, εἰς ἃ πεπιστεύκαμεν,
 καὶ οἷς συντετάγμεθα, τὰς μὲν ἰδιότητας χωρίζον-
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="480,88,905,694">
-A ram epistolam ad Maren Persam Iba dictam, ac
+  <bloco tipo="nota_marginal" script="latino" bbox="470,140,490,170">A</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="500,95,955,610">
+ram epistolam ad Maren Persam Iba dictam, ac
 inepta Theodoreti scripta adversus xii capita Cyrilli
 sanctissimi Patris nostri et doctoris. Edictum, sive
 Doctrina et accurata expositio immaculatae ac rectae
@@ -75,63 +76,18 @@ tutem et potestatem in tribus subsistentiis sive per-
 sonis adorantes, in quibus baptizati sumus, in quas
 credimus, in quibus confessionem [in quæ credimus,
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="465,99,480,125">A</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="465,350,480,375">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="465,575,480,602">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="465,814,480,842">D</bloco>
-  <bloco tipo="nota" script="latino" bbox="398,701,607,730">DUCANGII NOTÆ.</bloco>
-  <bloco tipo="nota" script="misto" bbox="72,743,466,936">
-(61) Πρόγραμμα. Hoc edictum, Justiniani fidei
-confessionem continens, et refutationem trium capitulorum, et hæresium sui temporis, ad annum
-DXII Vigilii papæ VII revocat Baronius, qui de eo
-multis agit, ex Facundo Hermiansi, Liberato dia-
-cono, Isidoro, De scriptoribus eccl., et aliis, ut et ex
-eo Binius post epist. 9 ejusdem Vigilii. Edictum
-vero illud Justiniani pridem Latinæ ex veteri ver-
-sione in conciliis editionis Crabbei, Surii, et Ve-
-neta prodierat: cum primus Græca ex hoc Chroni-
-co tum inedito publicavit Leunclavius in jure Græco-
-Rom. præfixa Ant. Contii de ea observatione, et
-addita eadem veteri Latina interpretatione, qua
-omissa, suam ipse Raderus Chronico a se edito in-
-seruit, quam non omnino probasse virum doctissi-
-mum Franc. Pithœum, ut quæ nævis aliquot (quod
-semel ac iterum monet) haud careret, observare est
-in Pithœanis hactenus ineditis, et a V. C. affini Pe-
-tro Pithœo senatore Parisiensi collectis sub annum
-MD CXVI. Ex Leunclaviana, deinde in Romana anni
-MDCCVI, et ex ea in Coloniensi ac Parisiensi conci-
-liorum editione utraque lingua descriptum est,
+  <bloco tipo="nota_marginal" script="latino" bbox="470,460,490,490">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,740,490,770">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="470,910,490,940">D</bloco>
+  <bloco tipo="nota" script="latino" bbox="395,665,615,700">DUCANGII NOTÆ.</bloco>
+  <bloco tipo="nota" script="misto" bbox="55,705,485,925">
+(61) Πρόγραμμα. Hoc edictum, Justiniani fidei confessionem continens, et refutationem trium capitulorum, et hæresium sui temporis, ad annum MDCXVI Vigilii papæ VII revocat Baronius, qui de eo multis agit, ex Facundo Hermiansi, Liberato diacono, Isidoro, De scriptoribus eccl., et aliis, ut et ex eo Binius post epist. 9 ejusdem Vigilii. Edictum vero illud Justiniani pridem Latine ex veteri versione in conciliis editionis Crabbei, Surii, et Veneta prodierat: cum primus Græca ex hoc Chron. tum inedito publicavit Leunclavius in jure Græco-Rom. præfixa Ant. Contii de ea observatione, et addita eadem veteri Latina interpretatione, qua omissa, suam ipse Raderus Chronico a se edito inseruit, quam non omnino probasse virum doctissimum Franc. Pithœum, ut quæ nævis aliquot (quod semel ac iterum monet) haud careret, observare est in Pithœanis hactenus ineditis, et a V. C. affini Petro Pithœo senatore Parisiensi collectis sub annum MDCXVI. Ex Leunclaviana, deinde in Romana anni MDCCVI, et ex ea in Coloniensi ac Parisiensi conciliorum editione utraque lingua descriptum est,
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="480,743,907,936">
-nulla cæterum nota apposita, quæ codicem unde
-Græca tum primum desumpta essent, lectorem do-
-ceret. Nos vero illud hic editum non modo cum
-Leunclaviana editione, sed et cum Romana et Pari-
-siensi contulimus, et ex iis perinde ac ex ipso Vati-
-cano cod., prout a viro doctissimo Claudio Stepha-
-notio Benedictino exscriptus est, hiatum sat ma-
-gnum, quem in Augustano codice reperiri, monuerat
-Raderus, supplevimus, veteremque interpretem,
-quem pro Raderiana versione, utpote majoris aucto-
-ritatis adjunximus, cum Colberteo codice non modi-
-cæ vetustatis pariter comparatum, variis lectionibus
-subinde appositis. In eo, ut et apud Leunclav., et in
-cod. Boheriano, quem laudat Labbeus, præfigitur
-hic titulus: Edictum piissimi imperatoris Justiniani,
-rectæ fidei confessionem continens, et refutationem
-hæresium quæ adversantur catholicæ Ecclesiæ. Ubi
-Græca duntaxat habent: Ὁμολογία πίστεως Ἰου-
-στινιανοῦ αὐτοκράτορος κατὰ τριῶν κεφαλαίων, quæ
-esse editoris Romani videntur, cum apud Leunclavium
-hicque aliter legantur.
+  <bloco tipo="nota" script="misto" bbox="500,705,955,925">
+nulla cæterum nota apposita, quæ codicem unde Græca tum primum desumpta essent, lectorem doceret. Nos vero illud hic editum non modo cum Leunclaviana editione, sed et cum Romana et Parisiensi contulimus, et ex iis perinde ac ex ipso Vaticano cod., prout a viro doctissimo Claudio Stephanotio Benedictino exscriptus est, hiatum sat magnum, quem in Augustano codice reperiri, monuerat Raderus, supplevimus, veteremque interpretem, quem pro Raderiana versione, utpote majoris auctoritatis adjunximus, cum Colberteo codice non modicæ vetustatis pariter comparatum, variis lectionibus subinde appositis. In eo, ut et apud Leunclav., et in cod. Boheriano, quem laudat Labbeus, præfigitur hic titulus: Edictum piissimi imperatoris Justiniani, rectæ fidei confessionem continens, et refutationem hæresium quæ adversantur catholicæ Ecclesiæ. Ubi Græca duntaxat habent: Ὁμολογία πίστεως Ἰουστινιανοῦ αὐτοκράτορος κατὰ τριῶν κεφαλαίων, quæ esse editoris Romani videntur, cum apud Leunclavium hicque aliter legantur.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="74,949,901,986">
-VARIÆ LECTIONES.
+  <bloco tipo="aparato_critico" script="misto" bbox="40,875,960,985">VARIÆ LECTIONES.
 
-¹ Μάρην PV. Conf., pag. 294 A, 362 A. ² κατὰ ιβʹ R. ³ Præponit P: Πρόγραμμα, ἤτοι διδασκαλία
-καὶ ἔκδοσις ἀκριβὴς περὶ τῆς ἀμωμήτου καὶ ὀρθοδόξου πίστεως ἡμῶν τῶν Χριστιανῶν, quæ V habet in
-margine ab alia manu. ⁴ φιλόχριστος P, Φλ. V, alterum in margine ponens. ⁵ Ἀλαμανικός, Φραγκικός V.
-  </bloco>
-  <notas>Transcrição organizada pela ordem da coluna esquerda e depois da direita. As letras A, B, C e D foram mantidas em blocos nota_marginal próprios. O carimbo “Digitized by Google” não foi incluído.</notas>
+¹ Μάρην PV. Conf., pag. 294 A, 362 A. ² κατὰ ιβʹ R. ³ Præponit P: Πρόγραμμα, ἤτοι διδασκαλία καὶ ἔκδοσις ἀκριβὴς περὶ τῆς ἀμωμήτου καὶ ὀρθοδόξου πίστεως ἡμῶν τῶν Χριστιανῶν, quæ V habet in margine ab alia manu. ⁴ φιλόχριστος P, Φλ. V, alterum in margine ponens. ⁵ Ἀλαμανικός, Φραγκικός V.</bloco>
+  <notas>As letras marginais A, B, C e D foram separadas em blocos próprios. A leitura começou pela coluna esquerda e seguiu pela direita. O título, as notas de Ducange e as variantes finais foram preservados; o carimbo “Digitized by Google” foi omitido.</notas>
 </pagina>

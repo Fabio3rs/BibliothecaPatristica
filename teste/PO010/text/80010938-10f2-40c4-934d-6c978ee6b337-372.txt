@@ -1,17 +1,18 @@
-<pagina estado="com_texto">
-  <bloco tipo="texto_principal" script="latino" bbox="360,415,640,535">
-A = Paris, arabe 301.
-B = Brit. Mus., add. 26 100.
-C =       —    or. 1338.
-D = Vatican. arabe 620.
-E =       —       686.
-F = Paris, arabe 4773.
-G =       —    4772.
-  </bloco>
-  <bloco tipo="rodape" script="latino" bbox="680,890,850,910">
-Tous droits réservés.
-  </bloco>
-  <notas>
-    A página apresenta uma lista de sigla (testemunhos manuscritos) utilizados numa edição crítica, identificando bibliotecas (Paris, Brit. Mus., Vatican) e números de catálogo. O script é latino. O rodapé indica direitos autorais em francês.
-  </notas>
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="nota_marginal" script="latino" bbox="362,466,382,609">A
+B
+C
+D
+E
+F
+G</bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="392,466,627,609">— Paris, arabe 301.
+— Brit. Mus., add. 26 100.
+— — or. 1338.
+— Vatican. arabe 620.
+— — 686.
+— Paris, arabe 4773.
+— — 4772.</bloco>
+  <bloco tipo="rodape" script="latino" bbox="692,857,868,872">Tous droits réservés.</bloco>
+  <notas>Letras de referência separadas do texto principal conforme visível; mantidos travessões, pontos e espaçamentos aparentes.</notas>
 </pagina>

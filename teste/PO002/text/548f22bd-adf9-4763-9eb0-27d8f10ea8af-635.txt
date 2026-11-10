@@ -1,8 +1,6 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="50,40,950,70">
-    [65] LE LIVRE DE JOB, XX, 12-23. 625
-  </bloco>
-  <bloco tipo="texto_principal" script="ethiopico" bbox="50,80,900,240">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="70,30,930,75">[65] LE LIVRE DE JOB, XX, 12-23. 625</bloco>
+  <bloco tipo="texto_principal" script="ethiopico" bbox="75,95,930,290">
     ወይኃንስ : ኃጥእ : ቡ :: * ወይስተምሕሩ : መአከለ : ርዖሁ :: * ወኢትስል : ጎሮ
     ይኣ :: አምሀ : አርዐ : ድር : ወስቱ :: * ብልሐ : ዘይበሶ : በመገ : ይደልዎ
     ለለ :: ወይፈትሖ፡ መልአከ : አምላኩ :: * ወይሀሞ፡ አግዓዘ : አርዐ : ወይ
@@ -11,7 +9,7 @@
     ይበልዕ : ወኢይሰምዕ : መልእክተ : ሰማይ :: * ወኢይብር : ፍቅረ : ጽድቅ : ወብ
     ቅ :: * ወኢይትፍ : ለሰው : በክራቱ : አግባቦ :: * አመ : ይብ :
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="50,260,900,380">
+  <bloco tipo="aparato_critico" script="ethiopico" bbox="80,585,930,810">
     13. ወይስተምሕሩ A B : መአከለ : A B ጉርሁ : A. — 14. ቅር : A ወስቱ :] ወ
     ይስተ : ልቡ : ወስቱ : A, ኃጥእ : ፍጽ : B. — 15. በልሐ : A ይበግሶ : A ዘበልዎ :
     A ይደልዎ : A መልአከ :] መልአክ : ግብ : B. — 16. ልቡ : A አናግቶ : B. — 17. አንሣ : A
@@ -20,7 +18,7 @@
     B ማሕደረ : A B. — 20. ዘይሃበሎ : B ሰግደ :] ዘግደ : A, አምሳግደ : B ወኢይደልዎ :] ወኢ
     ይደልዎ : A. — 21. ተረፈ : A B በክራቱ :] ወበክራቱ : B. — 22. ወለተሡ : A B አምሳ : A.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="50,460,900,880">
+  <bloco tipo="texto_principal" script="latino" bbox="80,835,930,972">
     et il [le] cachera sous sa langue.
     Et il [le] ramènera au milieu de sa gorge ;
     et il ne pourra pas l'aider.
@@ -43,10 +41,6 @@
     Et s'il dit : Je suis sain, alors il sera tourmenté ;
     et toute la douleur lui arrivera,
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="50,890,950,920">
-    PATR. OR. — T. II. 42
-  </bloco>
-  <notas>
-    A página contém texto em script etiópico (Ge'ez) no topo e no aparato crítico, e tradução em francês na parte inferior. O cabeçalho indica "LE LIVRE DE JOB, XX, 12-23". O aparato crítico lista variantes entre manuscritos A e B.
-  </notas>
+  <bloco tipo="rodape" script="latino" bbox="120,970,560,990">PATR. OR. — T. II. 42</bloco>
+  <notas>Le texte supérieur est en ge&amp;#39;ez (éthiopique) avec apparat critique; la lecture de plusieurs mots est incertaine.</notas>
 </pagina>

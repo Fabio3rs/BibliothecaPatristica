@@ -1,8 +1,9 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="122,72,160,86">1659</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="406,71,671,87">NOTÆ IN LIB. DE ORATIONE.</bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="930,72,955,87">1664</bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="120,94,538,896">hunc locum ab editionis Oxoniensis mendis purga-
+  <bloco tipo="cabecalho" script="latino" bbox="120,126,160,153">1659</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="410,126,691,154">NOTÆ IN LIB. DE ORATIONE.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="931,126,959,153">1664</bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="97,160,507,900">hunc locum ab editionis Oxoniensis mendis purga-
 vimus. Ruæus.
 
 Ibid. D, lin. 1, δέ. Lege δή. — Ita etiam nos le-
@@ -14,7 +15,7 @@ Col. 480 A, lin. 9, ὀφθήσεται. Ms. ὁφθήσηται.
 
 Ibid. B, lin. 4, θεάτρῳ. Habet quidem codex ms.
 θεάτρου, sed illud ου ab alia manu superscribitur,
-deleto, ut opinor, ω, quasi loco non conveniret,
+deletō, ut opinor, ω, quasi loco non conveniret,
 cum tamen aptius certe legatur θεάτρῳ.
 
 Ibid., lin. 8, ἑαυτῷ. Lege ἑαυτόν... εὐτρεπίζων.
@@ -76,31 +77,37 @@ Strom. vii, pag. 833, τούτοις μάλιστα προσήκει εὔ-
 χεσθαι τοῖς εἰδόσι τὸ θεῖον ὡς χρὴ, ... οἷ ἔοικε τίνα
 τὰ ὄντως ἀγαθά, καὶ τίνα αἰτητέον, καὶ πότε, καὶ
 πῶς ἕκαστα. Sed hic fortasse rectius legatur...
-ἀγνοεῖ τὸν Θεὸν καὶ τὰ τοῦ Θεοῦ, ἀγνοεῖ δὴ τὰ ὧν
+ἀγνοεῖ τὸν Θεὸν καὶ τὰ τοῦ Θεοῦ, ἀγνοεῖ δή τὰ ὧν
 χρείαν ἔχει.
 
 Ibid. C, lin. 9, τὴν ἀπὸ τοῦ Σωτῆρος ... οὐχ εὕ-
 ρομέν πω. Pro ἀπὸ lege ὑπό, sicut supra τοὺς ὑπὸ
 τοῦ Σωτῆρος ἀπηγγελμένους λόγους. Sæpe vero hæ
-præpositiones scribarum incuria, non (quod in Idio-
+προθέσεις scribarum incuria, non (quod in Idio-
 tism. vult Viger.) ab ipsis auctoribus inter se per-
 mutantur. Quod vero e Vetere Testamento hic ob-
 servat Origenes, nullum ibi exstare exemplum cu-
-juspíam precantis, qui Deum appellaverit Patrem,
+juspam precantis, qui Deum appellaverit Patrem,
 idem iterum tom. x in Joan., num. 1, notat, fusius-
 que exponit his verbis : Μυρίων γοῦν οὐσῶν εὐχῶν
 ἀναγεγραμμένων ἐν τοῖς Ψαλμοῖς, καὶ τοῖς προφή-
-ταις· ἀλλὰ καὶ τῷ νόμῳ οὐ πάνυ τι εὕρομεν εὐξαμέ-
-νόν τινα λέγοντα τὸν Θεὸν Πατέρα .. τάχα ἐπεὶ οὐκ
+ταις· ἀλλὰ καὶ τῷ νόμῳ οὐ πάνυ τι εὕρομεν εὐξάμε-
+νόν τινα λέγοντα τὸν Θεὸν Πατέρα .. τάχα ἐπει οὐκ
 ἔγνωσαν τὸν Πατέρα· εὔχονται δὲ αὐτῷ ὡς Θεῷ, καὶ
 Κυρίῳ, περιμένοντες τὸν τὸ πνεῦμα τῆς υἱοθεσίας</bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="558,94,954,896">Ἐκχέοντα, etc. Hæc utique est illa παῤῥησία Chri-
+
+  <bloco tipo="nota_marginal" script="latino" bbox="506,176,534,194">A</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="506,360,534,377">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="506,742,534,761">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="506,874,534,892">D</bloco>
+
+  <bloco tipo="texto_principal" script="misto" bbox="542,160,958,900">Ἐκχέοντα, etc. Hæc utique est illa παῤῥησία Chri-
 stianis reservata, ut ii demum soli, virtute suæ per
 Christum adoptionis, Deum in precibus compella-
-tes dicerent, Πάτερ ἡμῶν. Quamvis enim sub veteri
-lege Deus interdum populi se Judaici Patrem di-
-xerit, tamen, ut paulo post dicit Origen., τὸ βέδι-
-τε [lege γε] τῆς υἱότητος οὐκ ἔστιν ἰδεῖν παρὰ τοῖς
+tes dicerent, Πάτερ ἡμῶν. Quamvis enim sub ve-
+teri lege Deus interdum populi se Judaici Patrem di-
+xerit, tamen, ut paulo post dicit Origen., τὸ βέδιτε
+[lege γε] τῆς υἱότητος οὐκ ἔστιν ἰδεῖν παρὰ τοῖς
 ἀρχαίοις. Quippe, ante effusum υἱοθεσίας πνεῦμα,
 ne ipsis quidem patriarchis ea erat filiationis suæ
 πληροφορία, ut, quod Christianis postea datum est,
@@ -169,7 +176,7 @@ in homil. 10 in Jerem. dicit, ἐγγὺς εἶ σὺ τοῦ στό-
 οὐ γὰρ ὁμολογοῦσιν αὐτὸν ὡς Χριστόν.
 
 Ibid. D, lin. 1, κύριον, τὸ κύριος. Deesse hic
-aliquid videtur ad expleudam sententiam, fortasse
+aliquid videtur ad explendam sententiam, forte
 hinc, καλῶς εἰπόντων, ut sit, μόνον τῶν ἀπὸ διαθέ-
 σεως λεγόντων... Κύριον, καλῶς εἰπόντων τὸ, Κύριος
 Ἰησοῦς, nam ita ferme ipse Origen. in loco huic
@@ -180,10 +187,7 @@ gemino, Comm. in Joan. tom. xxxii, num. 7, ὁ ἐν
 13, φωνεῖτέ με... ὁ Κύριος· καὶ καλῶς λέγετε·
 
 Ibid., lin. 4, ὁ τοιούσδε. Rectius videtur τοιούτῳ</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="542,95,554,108">A</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="542,304,554,319">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="542,525,554,540">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="542,742,554,758">D</bloco>
-  <bloco tipo="rodape" script="latino" bbox="613,970,940,999">Digitized by Google</bloco>
-  <notas>Transcrição diplomática em duas colunas, da esquerda para a direita. As letras centrais A, B, C e D foram mantidas em blocos próprios de nota marginal.</notas>
+
+  <bloco tipo="rodape" script="latino" bbox="637,946,942,998">Digitized by Google</bloco>
+  <notas>Transcrição diplomática em duas colunas, da esquerda para a direita. As letras centrais A, B, C e D foram separadas em blocos próprios de nota marginal; a página mostra ainda os números correntes 1659 e 1664 no alto.</notas>
 </pagina>

@@ -1,96 +1,131 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="30,10,970,70">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="100,115,900,170">
     939 S. CYRILLI ALEXANDRINI ARCHIEP. 940
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,80,490,860">
-    partem alteram roborari, id est vim spiritus. Cum itaque asceticis laboribus exterior noster homo corrumpitur, tunc consequenter necessarioque interior noster homo renovatur de die in diem. Alio adhuc sensu praedicta intelligere potes. Quoniam Judaeis et ethnicis Jesum praedicabant apostoli, graves intolerandasque pertulere persecutiones, corpusque ipsorum hos inter labores persumdatum fuit. Sed quanto maior labor, tanto, ut puto, abundantioren sequi par erat gratiae repensationem (1).
+
+  <bloco tipo="texto_principal" script="latino" bbox="90,175,490,800">
+    partem alteram roborari, id est vim spiritus. Cum itaque asceticis laboribus exterior noster homo corrumpitur, tunc consequenter necessarioque interior noster homo renovatur de die in diem.
+    Alio adhuc sensu praedicta intelligere potes. Quoniam Judaeis et ethnicis Jesum praedicabant apostoli, graves intolerandasque pertulere persecutiones, corpusque ipsorum hos inter labores pessumdatum fuit. Sed quanto major labor, tanto, ut puto, abundantior sequi par erat gratiae repensationem (1).
 
     V, 1. Scimus enim quoniam si terrestris domus nostra tabernaculi dissolvetur, etc.
 
-    Terrestrem nostram tabernaculi domum, per periphrasim appellat ipsum tabernaculum, id est corpus. Scriptum est enim apud Jobum : « Habitantes autem in luteis domibus » ; ex quibus et nos ipsi constamus, id est ex eodem luto. Scimus itaque, inquit, quod cum mors terrenum hanc tabernaculi habitationem, id est corpus, dissolvet, recipiet nos, et quidem haud multo post, nempe tempore resurrectionis, coeleste habitaculum, id est incorruptione. Superum autem hoc dicit, primo quidem quia donatica res est : deinde quia cuncti supernae urbis incolae, id est sanctorum angelorum ordines, in incorruptis et non perituris corporibus sunt ; caret enim hac terrena crassitie angelorum natura (2). Ergo Dei ædificium et domum non manufactam, imo et sempiternam, dicit pro incorruptione.
+    Terrestrem nostram tabernaculi domum, per periphrasim appellat ipsum tabernaculum, id est corpus. Scriptum est enim apud Jobum : « Habitantes autem in luteis domibus » ; ex quibus et nos ipsi constamus, id est ex eodem luto. Scimus itaque, inquit, quod cum mors terrenam hanc tabernaculi habitationem, id est corpus, dissolvet, recipiet nos, et quidem haud multo post, nempe tempore resurrectionis, cœleste habitaculum, id est incorruptio. Supernum autem hoc dicit, primo quidem quia donatica res est : deinde quia cuncti supernae urbis incolae, id est sanctorum angelorum ordines, in incorruptis et non perituris corporibus sunt ; caret enim hac terrena crassitie angelorum natura (2). Ergo Dei ædificium et domum non manufactam, imo et sempiternam, dicit pro incorruptione.
 
     V, 3. Siquidem et vestiti, non nudi, inveniemur.
 
-    Vocabulum, siquidem, posuit pro, quando, ita ut loci sententia sit : Nequaquam rei prioris depositionem experiemur, neque praesexistente corpore expoliabimur. Absorbetur autem mortale a vita, non quia annihilletur, sed quia ad incorruptibilitatem potius transferetur. Quippe sic etiam initio rerum id fieri contigerat. Scriptum est enim, sumpsisse Deum pulverem de terra, ex eoque hominem formavisse. Ut autem mortale absorberetur a vita, caro siquidem naturaliter est corruptibilis, insufflavit in ejus faciem vitae spiritum, factusque est homo anima vivens. Sed subintravit ver peccum et mors. Postea, Deo Patri placuit, ut ait dominus Paulus, instaurare omnia in Christo, qui venit, ut nos per Spiritum (3) ad antiquum
-    ...
-    " Job iv, 19. " Gen. 11, 7. " Ephes. 1, 10.
-
-    (1) Partem hanc Cyrilli pertinere ad ejus librum seu sermonem tertium (si recte se habent numeri) explanationis in hanc Epistolam diximus, teste Severo Antiocheno, p. 103, n. 1.
-
-    (2) Verba non faciam de veterum Patrum circa angelorum substantiam sententiis, quas accurate more suo recenset Petavius in tractatu De angelis, lib. i, capp. 2, 3, 4. Cyrillus quidem nosler in lib. iv, cap. 2, ed. Aubert. t. IV, p. 351, angelos vesci posse terrenis cibis ; et hoc
+    Vocabulum, siquidem, posuit pro, quando, ita ut loci sententia sit : Nequaquam rei prioris depositionem experiemur, neque praexistente corpore exspoliabimur. Absorbetur autem mortale a vita, non quia annihiletur, sed quia ad incorruptibilitatem potius transferetur. Quippe sic etiam initio rerum id fieri contigerat. Scriptum est enim, sumpsisse Deum pulverem de terra, ex eoque hominem formavisse. Ut autem mortale absorberetur a vita, caro siquidem naturaliter est corruptibilis, insufflavit in ejus faciem vitæ spiritum, factusque est homo anima vivens. Sed subintravit per peccatum mors. Postea, Deo Patri placuit, ut ait divus Paulus, instaurare omnia in Christo, qui venit, ut nos per Spiritum (3) ad antiquam
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,140,515,190">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="486,140,505,170">
     A
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="510,80,960,860">
-    Α τοτε δη μᾶλιστα μειζονως ἐρυθσθαι τὸ ἐτερον,
-    τουτοστε τὸ φρόνημα τοῦ πνεύματος. Ὅταν τοίνυν
-    τοις τῷ διαχρηρῃ πόνῳ ὁ ἔξω ἄνθρωπος δια-
-    φθείρεται, τότε λοιπὸν ἀναγκαιως ὁ ἔσω ἄνθρωπος
-    ἀνακαινεῖται ἡμέρᾳ καὶ ἡμέρᾳ. Καὶ ἐπὶ-
-    πρὸς τε μὴν τοῖς ἐπιμελεσιν ἐπιδελεσκε. Βωαὶ
-    Ἰουδαῖοι τε καὶ Ἕλληνες δυστυχουσιν τὸν Ἰησοῦν,
-    διεινῶς καὶ ἀφορητῶς ὑπομεμψαμενοι διωγμοῖς, καὶ
-    διεφθαρεν τοῖς εἰς τοῦτο πόνους τὸ σῶμα αὐτῶν.
-    Ἀλλ' ὅσῳ μείζων ὁ πόνος, τοσαύτη, ὁμοιῶς παρα
-    πεπτωκὸς ἐν ἐλκῶσιν ἀμφιλαφεστέρᾳ τῆς χάριτος ἡ
-    ἀντίκρισις.
 
-    Οἴδαμεν γὰρ ὅτι ἐὰν ἡ ἐπίγειος ἡμῶν σκηνὴ τοῦ
-    σκήνου καταλυθῇ, κ. τ. λ.
+  <bloco tipo="texto_principal" script="grego" bbox="515,175,950,805">
+    Α τότε δὴ μάλιστα μειζόνως ἐρρῶσθαι τὸ ἕτερον,
+    τουτέστι τὸ φρόνημα τοῦ πνεύματος. Ὅταν τοίνυν
+    τοῖς εἰς ἄσκησιν πόνοις ὁ ἔξω ἡμῶν ἄνθρωπος δια-
+    φθείρεται, τότε λοιπὸν ἀναγκαίως ὁ ἔσω ἡμῶν
+    ἄνθρωπος ἀνακαινοῦται ἡμέρᾳ καὶ ἡμέρᾳ. Καὶ ἑτέ-
+    ρως γε μὴν τοῖς εἰρημένοις ἐπιδαλεῖς. Ἐπειδὴ
+    Ἰουδαίοις τε καὶ Ἕλλησι διεκήρυττον τὸν Ἰησοῦν,
+    δεινοὺς καὶ ἀφορήτους ὑπεμείνασαν διωγμούς, καὶ
+    διέφθαρτο τοῖς εἰς τοῦτο πόνοις τὸ σῶμα αὐτῶν.
+    Ἀλλ' ὅσῳ μείζων ὁ πόνος, τοσούτῳ, οἶμαι που,
+    παρέποιτο ἂν εἰκότως ἀμφιλαφεστέρα τῆς χάριτος ἡ
+    ἀντέκτισις.
 
-    (Cod. f. 569.) Ἐπίγειον ἡμῶν οἰκιαν τοῦ σκήνους,
-    αὐτὸ περιφραστικῶς ὀνομάζει τὸ σκήνος, ἦτοι τὸ
-    σῶμα. Γέγραπται γὰρ ἐν τῷ Ἰώβ : « Τοῦς δὲ κατο-
-    λέγοντας οἰκίας περνέας » : ἐξ ἧς καὶ ἡμεῖς ἐσμεν,
-    αὐτοὶ πάλοι ἐσμεν. Ἰσομεν οὖν ἂρα, φησίν, ὅτι ἡ ἀπο-
-    λυσαντος τοῦ θανάτου τὴν ἐπίγειαν ἡμῶν τοῦ σκη-
-    νὸς οἰκίαν, τουτὲστι τὸ σῶμα, διαδώσει και ὅτι
-    εἴς μακρόν, κατὰ τὸν καιρὸν τῆς ἀναστάσεως, οἴκησιν
-    οὐκινήτῳ, οἰκητήριον τοῦ Ἀ ἐὑ οὐρανοῦ, τούτοθεν ἡ ἀφθαρ-
-    σία. Ἀνέσθη δὲ αὐτὴν εἶπεν φησίν, πρῶτον μὲν ὅτι
-    ἔστιν δωρὸν τὸ χρημα, ἔπειτα πρὸς τοὺς τοιούτους ἔδωκεν ὁ
-    πάνας τοὺς τὴν ἄνωθεν οἰκουύντας πόλιν, ἔμφυ τε ὑπὸ
-    τὰ τῶν ἁγίων ἀγγέλων συντάγματα, ἵνα ἀφθαρτος τε
-    καὶ ἀνελεύθερος εἶναι σώμασιν· ἀπελάκται παρ τῆς
-    γεώδους ταυτης ταχύτητος ἡ ἀφθαρτης φύσις. Οἷοι
-    δογμα τοσαυτὸν ἐξ θεοῦ καὶ ἀχειροποιήτου οἰκίας
-    καὶ μὴν καὶ αἰωνίαν ὀνομάζει, τὴν ἀφθαρστα.
-    Εἰ γὰρ καὶ ενδυσάμενοι, οὑ γυμνοὶ εὑρεθησό-
-    μεθα.
+    Οἴδαμεν γὰρ ὅτι ἐὰν ἡ ἐπίγειος ἡμῶν οἰκία τοῦ
+    σκήνους καταλυθῇ, κ. τ. λ.
 
-    (Cod. f. 569 b.) Ὁ, τε γὰρ, ἔδειξεν ἀντὶ τοῦ
-    ὅπου, τῇ τῳουτο διηρημένον· Ὅπότε καὶ ἡνωδα-
-    μενοι, οὖν ἀπόθεσις τοῦ πρώτου πείσεισθε, ὅπου
-    μὴν ἐσθμενα γυμνοὶ τοῦ προϋπάρχοντος σώματος.
-    Καταπίπτεται δὲ τὸ σἰν ἐκ τῆς ζωῆς, ὥς ἀφαντι-
-    ζόμενον, μεταστοιχείουσιν δὲ μᾶλλον εἰς ἀφθαρ-
-    σίαν. Πεποιηκέν γὰρ οὖν καὶ ὑπὲρ ἀρχαίς. Γέγραπται
-    γὰρ ὅτι καὶ Ἐλαβεν ὁ θεῷ χοὺν ἀπὸ τῆς γῆς καὶ
+    (Cod. f. 369.) Ἐπίγειον ἡμῶν οἰκίαν τοῦ σκήνους,
+    αὐτὸ περιφραστικῶς ὀνομάζει τὸ σκήνος, ἤτοι τὸ
+    σῶμα. Γέγραπται γὰρ ἐν τῷ Ἰώβ : « Τοὺς δὲ κατο-
+    ικοῦντας οἰκίας πηλίνας » ; ἐξ ὧν καὶ αὐτοὶ ἐκ τοῦ
+    αὐτοῦ πηλοῦ ἐσμεν. Ἵσμεν οὖν ἄρα, φησὶν, ὡς κατα-
+    λυθέντος τοῦ θανάτου τὴν ἐπίγειον ἡμῶν τοῦ σκή-
+    νους οἰκίαν, τουτέστι τὸ σῶμα, διαδέξεται καὶ οὐκ
+    εἰς μακρὸν, κατὰ τὸν τῆς ἀναστάσεως δῆλον ὅτι κα-
+    ρόν, οἰκητήριον τὸ ἐξ οὐρανοῦ, τουτέστιν ἡ ἀφθαρ-
+    σία. Ἄνωθεν δὲ αὐτὴν εἶναί φησι, πρῶτον μὲν ὅτι
+    δοτὸν τὸ χρῆμά ἐστιν· εἶτα πρὸς τούτῳ διὰ τὸ
+    πάντας τοὺς τὴν ἄνωθεν οἰκοῦντας πόλιν, φημὶ δὴ
+    τὰ τῶν ἁγίων ἀγγέλων συντάγματα, ἐν ἀφθάρτοις τε
+    καὶ ἀνωλέθροις εἶναι σώμασιν· ἀπήλλακται γὰρ τῆς
+    γεώδους ταυτησὶ παχύτητος ἡ ἀγγέλων φύσις. Οἰκο-
+    δομὴν τοιγαροῦν ἐκ Θεοῦ καὶ ἀχειροποίητον οἰκίαν
+    καὶ μὴν καὶ αἰώνιον ὀνομάζει, τὴν ἀφθαρσίαν.
+
+    Εἰ γὰρ καὶ ἐνδυσάμενοι, οὐ γυμνοὶ εὑρεθησόμε-
+    θα.
+
+    (Cod. f. 369 b.) Τὸ, εἰ γε, τέθεικεν ἀντὶ τοῦ
+    ὁπότε, ἵνα ᾖ τοιοῦτον εἰρημένον· Ὅπότε καὶ ἐνδυσά-
+    μενοι, οὐκ ἀπόθεσιν τοῦ πρώτου πεισόμεθα, οὔτε
+    μὴν ἐσόμεθα γυμνοὶ τοῦ προϋποκειμένου σώματος.
+    Καταπίνεται δὲ τὸ θνητὸν ὑπὸ τῆς ζωῆς, οὐκ ἀφανι-
+    ζόμενον, μεταστοιχειούμενον δὲ μᾶλλον εἰς ἀφθαρ-
+    σίαν. Πεποίηται γὰρ οὕτω καὶ ἐν ἀρχαῖς. Γέγραπται
+    γὰρ ὅτι καὶ ἔλαβεν ὁ Θεὸς χοῦν ἀπὸ τῆς γῆς καὶ
     ἔπλασεν τὸν ἄνθρωπον. Ἵνα δὲ τὸ φθαρτὸν ὑπὸ τῆς
-    ζωῆς καταπνιγῇ (φαρᾶτι γὰρ ἡ αὑρε κατὰ φύσιν),
-    ἐνεφύσησεν εἰς τὰ πρόσωπον αὐτοῦ πνοὴν ζωῆς, καὶ
-    ἐγένετο ὁ ἄνθρωπος εἰς ψυχὴν ζῶσαν. Ἀλλ' ἔπειτα
-    χρῆναι μετὰξὺ διὰ τῆς ἁμαρτίας ὁ θάνατος. Εἰσω-
-    χα, ἡμῖν ὁ θεσπὲσιος Παῦλος, εὐδόκησεν ὁ θε-
-    ὸς πατὴρ ἀνακεφαλαιώσαι τὰ πάντα ἐν τῷ
+    ζωῆς καταπίνεται (φθαρτὴ γὰρ ἡ σὰρξ κατὰ φύσιν),
+    ἐνεφύσησεν εἰς τὸ πρόσωπον αὐτοῦ πνοὴν ζωῆς, καὶ
+    ἐγένετο ὁ ἄνθρωπος εἰς ψυχὴν ζῶσαν. Ἀλλ' εἰσέ-
+    κριται μεταξὺ διὰ τῆς ἁμαρτίας ὁ θάνατος. Εἶτα,
+    καθά φησιν ὁ θεσπέσιος Παῦλος, εὐδόκησεν ὁ Θεὸς
+    καὶ Πατὴρ ἀνακεφαλαιώσασθαι τὰ πάντα ἐν τῷ
+    Χριστῷ, ὃς ἦλθεν, ἵνα ἡμᾶς διὰ τοῦ Πνεύματος (3)
+    πρὸς τὴν ἀρχαίαν
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,300,515,350">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="486,330,505,360">
     B
   </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="40,860,490,980">
-    (3) In Graeco Cyrilli textu, nostro scilicet quem denuo inspeximus codice, legitur διὰ Πνεύματος. Verumtamen Severus Antiochenus in codice Syr. Vat. CXL I, f. 103, operis sui contra Julianum Halic. recitans hunc ineditum Cyrilli locum, ex ejus libro seu sermone quarto in Epistolam II ad Corinthios, legabat διὰ πνεύματος, quam nos lectionem utpote veriorrem secuti sumus in Latina hac nostra interpretatione.
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,460,515,510">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="486,610,505,640">
     C
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="40,920,960,995">
-    Digitized by Google
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="495,620,515,680">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="486,840,505,870">
     D
   </bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="90,805,730,845">
+    * Job iv, 19. * Gen. ii, 7. * Ephes. i, 10.
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="90,845,500,980">
+    (1) Partem hanc Cyrilli pertinere ad ejus librum
+    seu sermonem tertium (si recte se habent numeri)
+    explanationis in hanc Epistolam diximus, teste
+    Severo Antiocheno, p. 103, n. 1.
+
+    (2) Verba non faciam de veterum Patrum circa
+    angelorum substantiam sententiis, quas accurate
+    more suo recenset Petavius in tractatu De angelis,
+    lib. I, capp. 2, 3, 4. Cyrillus quidem noster in
+    lib. iv, cap. 2, ed. Aubert. t. IV, p. 351,
+    angelos vesci posse terrenis cibis ; et hoc
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="latino" bbox="510,845,950,980">
+    demum qui nunc vulgatur a nobis loco negat eosdem crassa et terrena corpora habere.
+
+    (3) In Graeco Cyrilli textu, nostro scilicet quem
+    denuo inspeximus codice, legitur διὰ Πατρός. Ve-
+    rumtamen Severus Antiochenus in codice Syr.
+    Vat. CXLI, f. 103, operis sui contra Julianum
+    Halic., recitans hunc ineditum Cyrilli locum, ex
+    ejus libro seu sermone quarto in Epistolam II ad
+    Corinthios, legebat διὰ πνεύματος, quam nos le-
+    ctionem utpote veriorem secuti sumus in Latina
+    hac nostra interpretatione.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="705,940,965,990">
+    Digitized by Google
+  </bloco>
+
   <notas>
-    Foi identificado layout em duas colunas: coluna esquerda em latino, coluna direita em grego. Letras A, B, C, D identificadas como notas marginais e colocadas em blocos próprios. Algumas palavras e frases do texto latino e grego estavam parcialmente ilegíveis ou incertas; procurei transcrever literalmente conforme visível. Onde a leitura era duvidosa mantive aproximacões letterais sem normalizar. O bloco de aparato crítico (rodapé de notas sobre variantes) transcrito em latino conforme o impresso. Greek text preservado com acentos e sinais conforme imagem, com pequenas lacunas onde a impressão se mostra menos legível.
+    Transcrição em duas colunas, com blocos separados para as letras marginais A, B, C e D. As notas críticas da parte inferior foram repartidas conforme a disposição visível no impresso: referências centrais, nota 1-2 à esquerda e continuação da nota 2 com a nota 3 à direita. Mantive a grafia e a pontuação tal como legíveis na imagem, sem normalização.
   </notas>
 </pagina>

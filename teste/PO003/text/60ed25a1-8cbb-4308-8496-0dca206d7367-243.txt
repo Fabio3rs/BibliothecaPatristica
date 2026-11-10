@@ -1,52 +1,43 @@
-<pagina>
-  <bloco script="latino" bbox="50,30,900,60">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="35,55,965,140">
     [113] DU MANUSCRIT DU VATICAN. 233
   </bloco>
-  <bloco script="latino" bbox="50,70,200,95">
-    Pag. lin.
-  </bloco>
-  <bloco script="misto" bbox="50,100,800,180">
+  <bloco tipo="aparato_critico" script="misto" bbox="35,145,965,930">
+    Pag.
+    lin.
+
     39 7 add. [جبه] وانظر الطعنة
-    » 8 ...[المسامير] وادخل يدك الى ..
+    » 8 om. ...[المسامير] وادخل يدك الى ..
     » 10 om. طوبى لمن يومن بى ولم ينظرنى
-    40 1 ...ابن الله ان لكم الحياة باسمه الى دهر الداهرين
-  </bloco>
-  <bloco script="misto" bbox="50,185,800,300">
-    » 8 add. الازلي
-    » 10 ولدى
-    » » add. الذى به سرت
+    40 1 om. ...ابن الله ان لكم الحياة باسمه الى دهر الداهرين
+    » 8 add. الازلى
+    » 10 add. ولدى
     » 11 om. التلاميذ
     41 1 om. جميعها
-    » » om. هذه الاقاويل فى
+    » 1 om. هذه الاقاويل فى
     » 2 om. بسيدنا يسوع المسيح له المجد
-    » 8 بقليطيانوس ومكسيمانوس
-    » » add. ومقسيموس
-    » 9 om. مدة —— خلق كثير
-    » 10 om. ابن هيلائة
-  </bloco>
-  <bloco script="misto" bbox="50,305,800,480">
+    » 8 om. بقليطيانوس ومكسيمانوس
+    » 8 add. ومقسيموس
+    » 9 om. مده —— خلق كثير
+    » 10 om. ابن هيلانة
     42 1 om. وجود
-    » » add. الطاهر المقدس
+    » 1 add. الطاهر المقدس
     » 2 add. بالسيد
-    » 5 قوله وامانته القبيحة ومقالته الفظيعة قوما..
-    » 6 لدقليطيانوس
+    » 5 om. قوله وامانته القبيحة ومقالته الفظيعة قوما..
+    » 6 om. لدقليطيانوس
     » 7 om. وكلمن
-    » 8 ويستدلوا
-    » 10 السماء
+    » 8 om. ويستدلوا
+    » 10 om. السماء
     43 6 om. وكل صلاة
     » 11 om. مدينة
     44 2 om. النير
     » 4 om. Ce qui est entre parenthèses.
-    » 5 بالطانيوس
-    » » om. الملك الكبير
-    » 7 غرغوريوس
+    » 5 om. بالطانيوس
+    » 5 om. الملك الكبير
+    » 7 om. غرغوريوس
   </bloco>
-  <bloco script="latino" bbox="100,900,900,930">
-    PATR. OR. — T. III. 16
+  <bloco tipo="rodape" script="latino" bbox="70,935,930,985">
+    PATR. OR. — T. III.     16
   </bloco>
-  <notas>
-    O texto principal é árabe, mas como não há opção de script "árabe" na lista permitida e o bloco contém também numerais e abreviações em latim/francês (add., om., Pag., lin.), utilizou-se "misto".
-    Os símbolos «» foram usados para representar as aspas/ditos nas colunas de paginação e linha.
-    As linhas tracejadas no texto árabe foram representadas por traços longos.
-  </notas>
+  <notas>Leitura de alguns vocábulos árabes e da separação entre add./om. é aproximada nos pontos menos nítidos; mantiveram-se os sinais de repetição de página (»), os colchetes e a pontuação vista na imagem.</notas>
 </pagina>

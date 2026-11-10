@@ -1,72 +1,174 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="0,0,1000,70">
+  <bloco tipo="cabecalho" script="latino" bbox="40,55,960,110">
     1061  ORATIO XIX. — AD JULIANUM TRIBUTORUM EXÆQUATOREM. 1062
   </bloco>
 
-  <bloco tipo="texto_principal" script="grego" bbox="20,70,480,620">
-    γεννᾶσθαι (32) μόχθῳ, καὶ ζῆν, καὶ λύεσθαι. Αὕτη μήτηρ χρείας, ἡ δὲ πλεονεξίας, ἡ δὲ πολέμων, πόλεμοι δὲ φόρων (33) πατέρες, οἱ δὲ τῆς κατακρίσεως τὸ βαρύτατον. Ἀλλ᾽ ἡμεῖς γε μὴ τὸ πρόστιμον ἐπιτείνωμεν, ὑπὸ τὴν αὐτὴν κείμενοι καταδίκην, μηδὲ ἄλλοις κακοὶ γενώμεθα. Φιλανθρωπίαν ἡμᾶς τὴν εἰς ἀλλήλους ἀπαιτεῖ Θεὸς, κἂν ὑπ᾽ αὐτοῦ κολαζώμεθα.
-    
-    Ἔσται καὶ ἄλλη τις ἐγγραφή, καὶ ἄλλος ἀπογραφεύς· εἴ τινα βίβλον ζώντων ἀκούεις, καὶ βίβλον οὐ σωζομένων. Ἐκεῖ πάντες ἐγγραφησόμεθα, μᾶλλον δὲ ἤδη γεγράμμεθα κατ᾽ ἀξίαν τῶν ἐνταῦθα βεβιωμένων (34) ἕκαστος. Οὐ πλοῦτος ἔχει τὸ πλέον ἐκεῖ, οὐ πενία τὸ ἔλαττον, οὐ χάρις, οὐκ ἔχθρα, οὐκ ἄλλο τι τῶν ἁπάντων, οἷς ἐνταῦθα τὸ δίκαιον κλέπτεται. Δακτύλῳ Θεοῦ πάντες γεγράμμεθα, καὶ ἀνοιγήσεται ἡμῖν βίβλος ἐν ἡμέρᾳ ἀποκαλύψεως. Μικρὸς μὲν καὶ μέγας ἐκεῖ ἐστὶ, καὶ θεράπων ὁμοῦ δεσπότῃ, φθέγξομαι Σολομῶντος (35), καὶ βασιλεὺς ἀρχομένῳ, καὶ ἀπογραφεύς (36) ἀπογραφομένῳ, καὶ ἡ λαμπρότης ἐγγύθεν. Καὶ τὸ δύσφημον σιωπήσομαι· πλὴν οἷα γράφομεν, τοιαῦτα καὶ γραφησόμεθα. Ταύτην ποίησον σεαυτῷ τὴν ἐγγραφήν χρηστότερον, ἡμῖν φανεῖς χρηστὸς καὶ φιλάνθρωπος.
-    
-    σὺ μὲν ἔδωκας μισθὸν τοῖς ἐμοῖς λόγοις, ὄντινα δέδωκας· οἱ δὲ σοι διδάσκαλοι καὶ προσάγουσι πένητας, πάντα χορὸν ἱερέων, χορὸν φιλοσόφων, οὐδενὶ δεσμῷ κάτω κατεχομένων, μόνα κεκτημένων τὰ σώματα, καὶ οὐδ᾽ αὐτὰ παντελῶς· οὐδὲν ἔχοντων Καίσαρι, πάντα Θεῷ, ὕμνους, εὐχὰς, ἀγρυπνίας, δάκρυα.
+  <bloco tipo="texto_principal" script="grego" bbox="40,120,470,360">
+    γεννᾶσθαι (32) μόχθῳ, καὶ ζῆν, καὶ λύεσθαι. Αὕτη
+    μήτηρ χρείας, ἡ δὲ πλεονεξίας, ἡ δὲ πολέμων, πόλε-
+    μοι δὲ φόρων (33) πατέρες, οἱ δὲ τῆς κατακρίσεως τὸ
+    βαρύτατον. Ἀλλ᾽ ἡμεῖς γε μὴ τὸ πρόστιμον ἐπιτεί-
+    νωμεν, ὑπὸ τὴν αὐτὴν κείμενοι καταδίκην, μηδὲ ἄλ-
+    λοις κακοὶ γενώμεθα. Φιλανθρωπίαν ἡμᾶς τὴν εἰς
+    ἀλλήλους ἀπαιτεῖ Θεός, κἂν ὑπ᾽ αὐτοῦ κολαζώ-
+    μεθα.
   </bloco>
 
-  <bloco tipo="nota" script="grego" bbox="40,310,120,350">
-    ΙΕ.
+  <bloco tipo="texto_principal" script="latino" bbox="520,120,965,355">
+    meam amicitiam irrepsit, ac per arboris gustum in
+    fraudem me induxit, bellum gerere sit necesse.
+    Hoc mihi peccati præmium. Hinc factum est, ut
+    in labore et ærumna nascar, et vivam, ac moriar.
+    Hinc indigentia nata est; ex indigentia cupiditas,
+    ex cupiditate bella, ex bellis porro tributa, quibus
+    in divina condemnatione nihil gravius est et acer-
+    bius. At nos saltem, ne multam augeamus, cum
+    eidem pœnæ obnoxii simus, nec male cum aliis agamus. Mutuam erga nos ipsos benignitatem Deus
+    a nobis exposcit, etiamsi ab ipso puniamur.
   </bloco>
 
-  <bloco tipo="nota" script="grego" bbox="40,480,120,520">
-    ΙΓ.
-  </bloco>
-
-  <bloco tipo="nota_marginal" script="latino" bbox="500,100,520,130">
+  <bloco tipo="nota_marginal" script="latino" bbox="505,135,530,165">
     A
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,340,520,370">
+
+  <bloco tipo="nota" script="grego" bbox="40,375,110,415">
+    ΙΕ'.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="40,410,470,735">
+    Ἔσται καὶ ἄλλη τις ἐγγραφή, καὶ ἄλλος ἀπο-
+    γραφεύς· εἴ τινα βίβλον ζώντων ἀκούεις, καὶ βίβλον
+    οὐ σωζομένων. Ἐκεῖ πάντες ἐγγραφησόμεθα, μᾶλ-
+    λον δὲ ἤδη γεγράμμεθα κατ᾽ ἀξίαν τῶν ἐνταῦθα βε-
+    βιωμένων (34) ἕκαστος. Οὐ πλοῦτος ἔχει τὸ πλέον
+    ἐκεῖ, οὐ πενία τὸ ἔλαττον, οὐ χάρις, οὐκ ἔχθρα, οὐκ
+    ἄλλο τι τῶν ἁπάντων, οἷς ἐνταῦθα τὸ δίκαιον κλέ-
+    πτεται. Δακτύλῳ Θεοῦ πάντες γεγράμμεθα, καὶ ἀνοι-
+    γήσεται ἡμῖν βίβλος ἐν ἡμέρᾳ ἀποκαλύψεως. Μικρὸς
+    μὲν καὶ μέγας ἐκεῖ ἐστι, καὶ θεράπων ὁμοῦ δεσπότῃ,
+    τὸ Σολομῶντος φθέγξομαι (35), καὶ βασιλεὺς ἀρχο-
+    μένῳ, καὶ ἀπογραφεύς (36) ἀπογραφομένῳ, καὶ ἡ
+    λαμπρότης ἐγγύθεν. Καὶ τὸ δύσφημον σιωπήσομαι·
+    πλὴν οἷα γράφομεν, τοιαῦτα καὶ γραφησόμεθα. Ταύ-
+    την ποίησον σεαυτῷ τὴν ἐγγραφήν χρηστότερον,
+    ἡμῖν φανεὶς χρηστὸς καὶ φιλάνθρωπος.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,395,970,725">
+    XV. Erit alia quoque descriptio, et descriptor
+    alins : nisi forte de quodam viventium pereuntium-
+    que libro nihil unquam audisti. Illic omnes in-
+    scribemur, vel, ut rectius dicam, jam inscripti su-
+    mus, pro merito quo quisque hic vitam confecit.
+    Illic non meliori conditione sunt divitiæ, nec dete-
+    riori paupertas, non gratia, non odium, non denique
+    alia omnia quibus judiciorum fides ac religio hic
+    subripitur et labefactatur. Omnes Dei digito descri-
+    pti sumus, nobisque in revelationis die liber aper-
+    lielur. Illic parvus et magnus est, et servus una
+    cum hero, ut est apud Salomonem [Job], et rex
+    una cum subdito, et descriptor una cum profitente,
+    et splendor in propinquo ; nam quod dictu omino-
+    sum est, silentio præteribo. Cæterum quo modo
+    alios descripserimus, eodem ipsi quoque describe-
+    mur. Hanc inscriptionem si facilem et commodam esperiri cupis, fac te commodum nobis et humanum
+    præbeas.
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="495,515,525,545">
     B
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,560,520,590">
-    C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,720,520,750">
-    D
-  </bloco>
 
-  <bloco tipo="texto_principal" script="latino" bbox="520,70,980,620">
-    meam amicitiam irrepsit, ac per arboris gustum in fraudem me induxit, bellum gerere sit necesse. Hoc mihi peccati præmium. Hinc factum est, ut in labore et ærumna nascar, et vivam, ac moriar. Hinc indigentia nata est; ex indigentia cupiditas, ex cupiditate bella, ex bellis porro tributa, quibus in divina condemnatione nihil gravius est et acerbius. At nos saltem, ne multam augeamus, cum eidem poenae obnoxii simus, nec male cum aliis agamus. Mutuam erga nos ipsos benignitatem Deus a nobis exposcit, etiamsi ab ipso puniamur.
-    
-    erit alia quoque descriptio, et descriptor alius: nisi forte de quodam viventium perenninumque libro nihil umquam audisti. Illic omnes inscribemur, vel, ut rectius dicam, jam inscripti sumus, pro merito quo quisque hic vitam confecit. Illic non meliori conditione sunt divitiæ, nec deteriori paupertas, non gratia, non odium, non denique alia omnia quibus judiciorum fides ac religio hic subripitur et labefactatur. Omnes Dei digito descripti sumus, nobisque in revelationis die liber aperietur. Illic parvus et magnus est, et servus una cum hero, ut est apud Salomonem [Job], et rex una cum subdito, et descriptor una cum profitente, et splendor in propinquo; nam quod dictu ominosum est, silentio præteribo. Cæterum quo modo alios descripserimus, eodem ipsi quoque describemur. Hanc inscriptionem si facilem et commodam experiri cupis, fac te commodum nobis et humanum præbeas.
-    
-    Quid ad hæc dicis? Quid scribis, amicorum et æqualium optime, atque iisdem nobiscum usæ magistris et disciplinis? Tametsi nunc præstantiori gradu atque ordine (vereor enim dicere, graviori), nos Deus collocarit, ut vos, qui magistratum geritis, ista doceamus. O tu, qui pia patria et familia ortus es, o sancta sanctorum parentum planta, o sanctiorum liberorum radix! Quo pacto nunc sermones meos excipis? Nonquid te flectunt? An longiori oratione mihi deliniendus ac velut incantandus eris? Equidem te jamdiu sermonibus meis correptum teneri, non conjectura quadam assequor, sed certum et exploratum habeo; fretus quidem, si nulla alia re, litteris certe ipsis et doctrina, quæ te facile semper ad optima quæque ducit, vel tua ipsius sponte incedentem, vel alios sequentem. Hoc enim est, quo sapientes vulgus superant. Ego vero nonnihil etiam ad ea, quæ jam dixi, adjiciam. Tu quidem orationi meæ mercedem persolvisti, quamcunque tandem, persolvisti; at illa tibi dono pauperes offert, totum sacerdotum chorum
-  </bloco>
-
-  <bloco tipo="nota" script="latino" bbox="720,170,780,210">
+  <bloco tipo="nota" script="latino" bbox="620,370,680,410">
     XV.
   </bloco>
 
-  <bloco tipo="nota" script="latino" bbox="760,460,820,500">
+  <bloco tipo="nota" script="grego" bbox="42,760,110,800">
+    ΙΓ'.
+  </bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="40,810,470,1110">
+    Τί πρὸς ταῦτα λέγει; Τί γράφεις, ὦ φίλων
+    ἄριστε καὶ ἡλίκων καὶ παιδευτῶν ἡμῖν κοινωνὲ καὶ
+    παιδευμάτων, εἰ καὶ νῦν ἡμᾶς εἰς τὴν κρείττω μοῖ-
+    ραν ὁ Θεὸς ἔταξεν, ὑμᾶς ταῦτα παιδεύειν τοὺς ἐν
+    ἐξουσίᾳ (ὀκνῶ γὰρ εἰπεῖν βαρυτέραν); Ὦ πατρίδος
+    εὐσεβοῦς (37) καὶ γένους, ὦ γονέων ἱερῶν ἱερὸν φυ-
+    τόν, ὦ ῥίζα τέκνων ἱερωτέρων (38), πῶς ποτε ἀπο-
+    δέχῃ τοὺς ἐμοὺς λόγους; Ἆρά τι πείθομεν, ἢ δεήσει
+    κατεπᾴδειν μακρότερα; Τοῦτο μὲν οὐκ εἰκάζειν,
+    ἀλλ᾽ εὖ εἰδέναι χρὴ, ὅτι σε οἱ παρ᾽ ἐμοῦ λόγοι ἐκ
+    πλείονος ἔχουσιν. Καὶ γὰρ εἰ μή τινι ἄλλῳ θαῤῥεῖν
+    εἴχομεν (39), ἀλλὰ τοῖς (40) λόγοις αὐτοῖς, οἵ σε ἀεὶ
+    πρὸς τὰ καλὰ ῥᾳδίως ἄγουσιν, ἢ ἀρχόμενον, ἢ ἐπό-
+    μενον· τοῦτο γάρ ἐστιν, ᾧ τῶν πολλῶν οἱ σοφοὶ δια-
+    φέρουσιν. Ἐγὼ δὲ μικρὸν ἔτι προσθήσω τοῖς εἰρη-
+    μένοις· σὺ μὲν ἔδωκας μισθὸν τοῖς ἐμοῖς λόγοις, ὄν-
+    τινα δέδωκας· οἱ δὲ σοι διδάσκαλοι καὶ προσάγουσι πέ-
+    νητας, πάντα χορὸν ἱερέων, χορὸν φιλοσόφων, οὐδενὶ
+    δεσμῷ κάτω κατεχομένων, μόνα κεκτημένων τὰ σώ-
+    ματα, καὶ οὐδ᾽ αὐτὰ παντελῶς· οὐδὲν ἐχόντων Καί-
+    σαρι, πάντα Θεῷ, ὕμνους, εὐχὰς, ἀγρυπνίας, δάκρυα,
+  </bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="520,755,970,1110">
+    XVI. Quid ad hæc dicis? Quid scribis, amicorum
+    et æqualium optime, atque iisdem nobiscum use
+    magistris et disciplinis? Tametsi nunc præstantiori
+    gradu atque ordine (vereor enim dicere, graviori),
+    nos Deus collocarit, ut vos, qui magistratum geri-
+    tis, ista doceamus. O tu, qui pia patria et familia
+    ortus es, o sancta sanctorum parentum planta, o
+    sanctiorum liberorum radix! Quo pacto nunc ser-
+    mones meos excipis? Nunquid te flectunt? An
+    longiori oratione mihi deliniendus ac velut in-
+    cantandus eris? Equidem te jamdiu sermonibus
+    meis correptum teneri, non conjectura quadam as-
+    sequor, sed certum et exploratum habeo; fretus
+    quidem, si nulla alia re, litteris certe ipsis et do-
+    ctrina, quæ te facile semper ad optima quæque du-
+    cit, vel tua ipsius sponte incedentem, vel alios
+    sequentem. Hoc enim est, quo sapientes vulgus su-
+    perant. Ego vero nonnihil etiam ad ea, quæ jam
+    dixi, adjiciam. Tu quidem orationi meæ mercedem
+    persolvisti, quamcunque tandem, persolvisti ; at illa
+    tibi dono pauperes offert, totum sacerdotum chorum
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="grego" bbox="495,790,525,825">
+    C
+  </bloco>
+
+  <bloco tipo="nota" script="latino" bbox="615,755,700,795">
     XVI.
   </bloco>
 
-  <bloco tipo="aparato_critico" script="misto" bbox="20,620,980,940">
-    (32) ᾿Εντεῦθεν τὸ γεννᾶσθαι, etc. Sic exponit Nicetas: Ἄνθρωπος γεννᾶται μόχθῳ, καὶ ζῇ ἐν λύπῃ. «Homo in labore nascitur, in ærumna vivit.»
-    (33) Φόρων. Coisl. 1, et Or. 1, φόνων, «caedes, homicidia.»
-    (34) Τῶν ἐνταῦθα βεβιωμένων. Sic Coisl. 1 et Jes., quod etiam Combefisio placet. In ed., τῶν δη βεβαιωμένων.
-    (35) Σολομῶντος φθέγξομαι. Pass., προσφθέγξομαι. Lapsus memoria hic videtur Gregorius, dum Salomoni tribuit verba quæ in libro Job occurrunt.
-    (36) Ἀπογραφεύς. Sic Coisl. 1 et 2, decem Colb., Or. 1, Jes., etc. In Par. ed. deest.
-    (37) Εὐσεβοῦς. Coisl. 3, εὐγενοῦς, "celebr."
-    (38) Ἱερατέων. Coisl. 1, ἱερωτάτων.
-    (39) Ἔχομεν. Pass., ἔχομεν. In aliis, ἔχοιμεν.
-    (40) Τοῖς. Deest in Reg. bm et Or. 1.
-    
-    ¹⁹ Job III, 19.
+  <bloco tipo="nota_marginal" script="latino" bbox="490,1030,525,1065">
+    D
   </bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="600,940,980,1000">
+  <bloco tipo="aparato_critico" script="misto" bbox="35,1135,485,1950">
+    ¹⁹ Job III, 19.
+
+    (32) Ἐντεῦθεν τὸ γεννᾶσθαι, etc. Sic exponit Nicetas : Ἄνθρωπος γεννᾶται μόχθῳ, καὶ ζῇ ἐν λύπῃ. ‹ Homo in labore nascitur, in ærumna vivit. ›
+    (33) Φόρων. Coisl. 1, et Or. 1, φόνων, ‹ caedes, homicidia. ›
+    (34) Τῶν ἐνταῦθα βεβιωμένων. Sic Coisl. 1 et Jes., quod etiam Combefisio placet. In ed., τῶν ἤδη βεβαιωμένων.
+    (35) Σολομῶντος φθέγξομαι. Pass., προσφθέγξομαι. Lapsus memoria hic videtur Gregorius, dum Salomoni tribuit verba quæ in libro Job occurrunt.
+  </bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="500,1135,965,1960">
+    (36) Ἀπογραφεύς. Sic Coisl. 1 et 2, decem Colb., Or. 1, Jes., etc. In Par. ed. deest.
+    (37) Εὐσεβοῦς. Coisl. 3, εὐγενοῦς, ‹ celebri. ›
+    (38) Ἱερωτέρων. Coisl. 1, ἱερωτάτων.
+    (39) Ἐίχομεν. Pass., ἔχομεν. In aliis, ἔχομεν.
+    (40) Τοῖς. Deest in Reg. bm et Or. 1.
+  </bloco>
+
+  <bloco tipo="rodape" script="latino" bbox="640,2280,960,2365">
     Digitized by Google
   </bloco>
 
   <notas>
-    Layout: colunagem dupla — coluna sinistra predominantemente grega (texto principal), coluna dextra latina (texto principal). As letras marginais centrais A, B, C, D foram extraites para blocos nota_marginal separados. Os sinais de seção (ΙΕ., ΙΓ., XV., XVI.) foram colocados em blocos tipo="nota" fora do fluxo do texto principal, conforme instrução. Aparato crítico (notas de edição) transcrito na parte inferior em bloco "aparato_critico" (scripto misto).
+    Duas colunas principais respeitadas: grego à esquerda, latino à direita. As letras marginais A, B, C, D foram isoladas em blocos próprios de tipo="nota_marginal". Os indicadores de secção ΙΕ', XV, ΙΓ' e XVI foram transcritos em blocos separados de tipo="nota", fora do fluxo principal.
   </notas>
 </pagina>

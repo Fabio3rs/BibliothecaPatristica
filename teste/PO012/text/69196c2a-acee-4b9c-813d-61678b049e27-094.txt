@@ -1,14 +1,9 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="130,50,160,70">
-    84
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="400,50,650,70">
-    SÉVÈRE D'ANTIOCHE.
-  </bloco>
-  <bloco tipo="cabecalho" script="latino" bbox="880,50,940,70">
-    [366]
-  </bloco>
-  <bloco tipo="texto_principal" script="siriaco" bbox="130,80,940,480">
+<pagina estado="com_texto" tipo="texto">
+  <bloco tipo="cabecalho" script="latino" bbox="134,87,160,111">84</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="410,83,648,114">SÉVÈRE D'ANTIOCHE.</bloco>
+  <bloco tipo="cabecalho" script="latino" bbox="887,86,945,113">[366]</bloco>
+
+  <bloco tipo="texto_principal" script="siriaco" bbox="126,128,947,627">
     ܡܢܗܪܐ. ܕܐܦܠܗܐ ܒܐܝܕܐ ܡܪܚܡܬܗ ܡܕܢܚܗ. ܘܒܥܕܢܗ ܡܕܒܪܗ ܕܐܢܘܢ..
     ܘܡܩܡܝܢ ܒܝܬܗܘܢ. ܡܫܒܚܝܢܐ ¹ ܘܐܣܝܢܐ ܗܘ ܒܟܠ ܡܢܗܪܐ. ܡܠܦܐ
     ܐܠܗܐ. ܘܒܐܝܡܪ ܐܠܡܢ.. ܕܐܢܘܢ ܒܥܝܢܐ ܡܩܕܡܐ ܡܫܡܝܢ: ܡܠܟܝܐ
@@ -24,14 +19,23 @@
     ܐܢ ܐܦܢܚܐ ܐܩܬܘܝ ܐܡܪ ܒܡܢ ܢܘܬܢܐ.. ܗܠ ܦܝܤܢܝܠܐ ܐܙܥܙ.. ܘܠܐܘܡܬܗܘܢ
     * ܡܬܝܡܐ ܡܪܕܘܬܗ. ܚܡܪ. ܚܕ ܡܢܗܘ ܐܒܪ ܠܡܩܡܐ ܒܕܓܗܘܢ ܠܗܕܐ. ܠܐ
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="50,440,120,470">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="958,247,987,809">
+    5
+    10
+    15
+  </bloco>
+
+  <bloco tipo="nota_marginal" script="latino" bbox="52,748,176,819">
     * V fol. 117
-    vo a.
+    v° a.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="150,480,450,500">
-    1. V ܘܡܩܕܡܝܢ. — 2. L (sic) ܚܣܝܡܬܗ.
+
+  <bloco tipo="aparato_critico" script="misto" bbox="207,651,427,678">
+    1. V ܘܫܘܠܛܢܐ. — 2. L (sic) ܠܚܬܬܝܘܬܐ.
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="130,580,960,900">
+
+  <bloco tipo="texto_principal" script="latino" bbox="129,718,948,932">
     (στολή) de pourpre et royale, les orne d'une couronne et met dans leur main
     droite la marque de l'autorité et du pouvoir universel. C'est pour ces raisons
     et d'autres semblables que ceux qui honorent les anges dans une telle folie,
@@ -49,14 +53,12 @@
     de celle-ci comme d'un étranger, ils se sont conduits d'une manière incorpo-
     relle et ils opèrent de nombreux * miracles. Cependant même à cause de
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="50,900,120,930">
-    * V fol. 117
-    vo a.
-  </bloco>
-  <bloco tipo="aparato_critico" script="latino" bbox="150,940,300,960">
+
+  <bloco tipo="aparato_critico" script="latino" bbox="210,944,382,968">
     1. Ps. CII, 20-21.
   </bloco>
+
   <notas>
-    A página contém texto bilíngue: Siriaco (metade superior) e Francês com inserções em Grego (metade inferior). O texto siríaco está na escrita Estrangelo/Serto. Há números marginais (5, 10) indicando versículos ou linhas no bloco siríaco. Notas de rodapé presentes para ambos os blocos de texto.
+    Le texte du haut est en syriaque et comporte plusieurs lectures incertaines; les chiffres marginaux 5, 10 et 15 sont visibles dans la marge droite. Le signe étoile du texte français renvoie à la note marginale "V fol. 117 vo a.".
   </notas>
 </pagina>

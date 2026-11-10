@@ -1,8 +1,9 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="misto" bbox="88,70,910,105">
-    347                                     GRÆCORUM EPISCOPATUUM NOTITIÆ                                     348
+  <bloco tipo="cabecalho" script="latino" bbox="80,40,920,110">
+347 GRÆCORUM EPISCOPATUUM NOTITIÆ 348
   </bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="88,105,480,855">
+
+  <bloco tipo="texto_principal" script="misto" bbox="60,120,490,900">
 Ἐπαρχία Κιλικίας δευτέρα.
 Provincia Ciliciæ secundæ.
 
@@ -20,14 +21,14 @@ Rhossus. Ῥόσσος.
 
 Ἐπαρχία Ἰσαυρίας.
 Provincia Isauriæ.
-
 Seleucia metropolis. Σελεύκεια μητρόπολις.
+
 Cilendres. Κιλένδρης.
 Anemorium. Ἀνεμώριον.
 Titiopolis. Τιτιούπολις.
 Lamus. Λάμος.
 Antiochia. Ἀντιόχεια.
-Eliosebaste (81). Ἡλιοσεβαστή.
+Eliosebaste (81). Ἡλιοσεβάστη.
 Sestra. Κέστρα.
 Selenuntes. Σελινούντης.
 Jostape (82). Ἰωστάπη.
@@ -40,7 +41,7 @@ Claudiopolis. Κλαυδιούπολις.
 Irenopolis. Εἰρηνούπολις.
 Germanicopolis. Γερμανικούπολις.
 Zenopolis. Ζηνωνόπολις.
-Sbidæ. Σθῖδη.
+Sbidæ. Σβίδη.
 Philadeliphia. Φιλαδέλφεια.
 Adrasus. Ἀδρασός.
 Meloe. Μελέη.
@@ -54,8 +55,8 @@ Costradis. Κοστράδος.
 Ἐπαρχία Συρίας πρώτη.
 Provincia Syriæ primæ.
 
-Antiochia apud Daphnem. Ἀντιόχεια, ἡ πρὸς Δάφνην,
-Thronus Patriarchalis. θρόνος Πατριαρχικός.
+Antiochia apud Daphnem. Ἀντιόχεια, ἡ πρὸς Δά-
+Thronus Patriarchalis. φνην, θρόνος Πατριαρχικός.
 Seleucia. Σελεύκεια.
 Berroa. Βέροια.
 Chalcis. Χαλκίς.
@@ -71,29 +72,31 @@ Mariamme. Μαριάμμη.
 Seleucobelus. Σελευκόβουλος.
 Rhamphaneæ. Ῥαμφανεαί.
 
-Ἐπαρχία Εὐφρασίας καὶ Ἀγιοπόλεως.
+[358] Ἐπαρχία Εὐφρασίας καὶ Ἀγιοπόλεως.
 Provincia Euphratesiæ et Agiopolis.
 
 Hierapolis. Ἱεράπολις.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="477,100,510,125">A</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="477,365,510,390">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="477,635,510,660">C</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="477,755,510,780">D</bloco>
-  <bloco tipo="texto_principal" script="misto" bbox="510,105,925,855">
-Cyrus sive Agiopolis. Κύρος, ἤτοι Ἀγιούπολις.
-Samosata. Σαμόσατα.
-Doliche. Δολίχη.
-Germanicia. Γερμανίκεια.
-Zeuma. Ζεῦμα.
-Perre. Πέρρη.
-Europus. Εὔρωπος.
-Nicopolis. Νικόπολις.
-Scenarchia. Σκηνάρχια.
-Cæsarea. Καισάρεια.
-Sergiopolis. Σεργιούπολις.
-Orimorum. Ὀρίμων.
-Santorum. Σάντων.
+
+  <nota_marginal script="latino" bbox="500,150,525,185">A</nota_marginal>
+  <nota_marginal script="latino" bbox="500,392,525,427">B</nota_marginal>
+  <nota_marginal script="latino" bbox="500,648,525,683">C</nota_marginal>
+  <nota_marginal script="latino" bbox="500,842,525,877">D</nota_marginal>
+
+  <bloco tipo="texto_principal" script="misto" bbox="505,120,945,900">
+Cyrus sive Agiopolis.
+Samosata.
+Doliche.
+Germanicia.
+Zeuma.
+Perre.
+Europus.
+Nicopolis.
+Scenarchia.
+Cæsarea.
+Sergiopolis.
+Orimorum.
+Santorum.
 
 Ἐπαρχία Θεοδωριάδος.
 Provincia Theodoriadis.
@@ -107,10 +110,11 @@ Gabala. Γάβαλα.
 Provincia Osroenes.
 
 Edessa metropolis. Ἔδεσσα μητρόπολις.
-Carae. Κάρα.
+Carae. Κάραι.
 Constantia. Κωνστάντια.
 Theodosiopolis. Θεοδοσιούπολις.
-Batnæ. Βάτναι.
+
+Batnæ.
 Callinicus, sive Leontopolis. Καλλιόνικος, ἤτοι Λεοντούπολις.
 Nova Valentia. Νέα Βαλεντία.
 Birborum. Βίρδων.
@@ -120,15 +124,14 @@ Moniauga. Μονιαῦγα.
 Macarta. Μάκαρτα.
 Marcopolis. Μαρκούπολις.
 Anastasia. Ἀναστασία.
-H emer ius. Ἡμέριος.
+Hemerius. Ἡμέριος.
 Circisia. Κιρκισία.
 
 Μέχρι τῶν ὧδε ἐστὶ τὸ πλήρωμα Μεσοποταμίας
 καὶ ἀρχὴ τῆς γῆς Περσίδος.
-Huc usque est complementum Mesopotamiæ, initiumque
-terræ Persidis.
+Huc usque est complementum Mesopotamiæ, initiumque terræ Persidis.
 
-Ἐπαρχία Μεσοποταμίας τῆς ἄνω, ἤτοι
+[359] Ἐπαρχία Μεσοποταμίας τῆς ἄνω, ἤτοι
 τετάρτης Ἀρμενίας.
 Provincia Mesopotamiæ superioris,
 sive quartæ Armeniæ.
@@ -138,7 +141,8 @@ Martyropolis, ad 15 millia ab hac civitate oritur Tigris fluvius.
 Μαρτυρόπολις, ἀπὸ δεκαπέντε μιλίων τῆς αὐτῆς
 πόλεως γεννᾶται ὁ Τίγρις ποταμός.
 
-Daras, sex millibus ab urbe ista sunt confinia et termini Persidis atque Assyriæ.
+Daras, sex millibus ab urbe ista sunt confinia
+et termini Persidis atque Assyriæ.
 Δάρας, ἀπὸ ἕξ μιλίων τῆς αὐτῆς πόλεως εἰσὶ τὰ
 μεθόρια καὶ οἱ ὅροι Περσίδος καὶ Ἀσσυρίας.
 
@@ -147,21 +151,24 @@ Castrum Thuritidis. Κάστρον Τουριτίδις.
 Castrum Mardes. Κάστρον Μάρδης.
 Castrum Lornes. Κάστρον Λόρνης.
 Castrum Riphthon. Κάστρον Ῥίφθον.
-Castrum Isphrios. Κάστρον Ἰσφριος.
+Castrum Isphrios. Κάστρον Ἴσφριος.
 Castrum Tzauræ. Κάστρον Τζαύρας.
 Castrum Audasorum. Κάστρον Αὐδάσσων.
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="95,850,910,920">
+
+  <bloco tipo="aparato_critico" script="misto" bbox="320,785,700,845">
 VARIÆ LECTIONES.
 
 † Πατριαρχῆ. * Εὐφράτης.
   </bloco>
-  <bloco tipo="nota" script="misto" bbox="95,915,910,970">
+
+  <bloco tipo="nota" script="misto" bbox="80,860,920,950">
 NOTÆ.
 
-(80) Anazarbus.                                     (83) Olpus.
-(81) Juliosebaste.                                  (84) Domitiopolis.
-(82) Jotape.                                         (85) Lausadæ.
+(80) Anazarbus. (83) Olpus.
+(81) Juliosebaste. (84) Domitiopolis.
+(82) Jotape. (85) Lausadæ.
   </bloco>
-  <notas>As letras A, B, C e D ocupam blocos marginais próprios no gutter central. A página contém duas colunas principais, transcritas da esquerda para a direita.</notas>
+
+  <notas>Imagem em dupla página; as letras centrais A, B, C e D foram separadas em blocos de nota_marginal. Os colchetes [357], [358] e [359] foram preservados como impressos.</notas>
 </pagina>

@@ -1,30 +1,61 @@
 <pagina estado="com_texto" tipo="texto">
-  <bloco tipo="cabecalho" script="latino" bbox="100,45,930,105">
-    627     A. C.                             CHRONICON PASCHALE:                             628
+  <bloco tipo="cabecalho" script="misto" bbox="90,15,935,120">
+    627
+    A. C.
+    CHRONICON PASCHALE:
+    [Ol. Iph.]
+    628
   </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="105,105,485,675">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="520,72,540,102">A</bloco>
+
+  <bloco tipo="texto_principal" script="latino" bbox="95,105,490,625">
     CCXXXV Olympias.
 
-    161. I. Ind. XIII. Marco Aurelio Vero et
-    Lucio Commodo Augusto II coss.         1. 255.
+    161. 1. Ind. XIII. Marco Aurelio Vero et
+    Lucio Commodo Augusto II coss. 1. 255.
 
     II. Ind. XIV. Marco Aurelio Vero et
-    Lucio Commodo Augusto III coss.         2.
+    Lucio Commodo Augusto III coss. 2.
 
     162. III. Ind. XV. Rusticio et Aquilino
-    coss.                                                                 3.
+    coss. 3.
 
-    163. IV. Ind. I. Æliano et Pastore coss.   5.
+    163. IV. Ind. I. Æliano et Pastore coss. 5.
 
-    Anno CXXXIII post Domini in cœlos Assumptionem, maximis Asiam turbanitibus persecutionibus, multi martyrio vitam finierunt : in quibus exstitit Polycarpus Smyrnæ episcopus, apostoli Joannis discipulus, et ab eo constitutus episcopus, qui comprehensus sub Tatio Quadrato proconsule, et Herode Irenarcha, Nicetæ filio, multaque passus propter fidem in Christum, ex a. d. VII. Kal. Apriles, magno Sabbato, hora VIII coactorum Judæorum et gentilium pertinaciam spectante centurione, in medio ab iis constitutus, vivus exustus est, annum agens LXXXVII, cum illi revelatum fuisset fore ut vivus igne absumeretur.
-
-    De annis vero illius proconsuli sibi dicenti, « Maledic Christo, » respondit; « Sextum supra octogesimum annum Christo servio, nec unquam is ulla me injuria affecit. Quomodo ergo maledicere queam regi, cui salutem meam debeo? » Eunti porro ad Smyrnense stadium, vox de cœlo edita est in hæcce verba : « Firma animum, Polycarpe, et viriliter age. » Et qui hæc dixerit nemo alius vidit, vocem autem multi e nostris audierunt. Cum sancto autem Polycarpo, alii novem ex Philadelphia Smyrnæ martyrium subiere : Pergami vero alii, in quibus fuit Papias, aliique multi, quorum martyria scriptis commendata exstant. Plurimi quoque
+    Anno cxxxiii post Domini in cœlos Assumptionem, maximis Asiam turbantibus persecutionibus, multi martyrio vitam finierunt : in quibus
+    exstitit Polycarpus Smyrnæ episcopus, apostoli
+    Joannis discipulus, et ab eo constitutus episcopus,
+    qui comprehensus sub Tatio Quadrato
+    proconsule, et Herode Irenarcha, Nicetæ filio,
+    multaque passus propter fidem in Christum, ex a.
+    d. vii. Kal. Apriles, magno Sabbato, hora vi co-
+    actorum Judaeorum et gentilium pertinaciam spe-
+    ctante centurione, in medio ab iis constitutus, vi-
+    vus exustus est, annum agens LXXXVII, cum illi
+    revelatum fuisset fore ut vivus igne absumeretur.
+    De annis vero illius proconsuli sibi dicenti, « Ma-
+    ledic Christo, » respondit; « Sextum supra octogesi-
+    mum annum Christo servio, nec unquam is ulla
+    me injuria affecit. Quomodo ergo maledicere queam
+    regi, cui salutem meam debeo? » Eunti porro ad
+    Smyrnense stadium, vox de cœlo edita est in
+    hæcce verba : « Firma animum, Polycarpe, et vi-
+    riliter age. » Et qui hæc dixerit nemo alius vidit,
+    vocem autem multi e nostris audierunt. Cum san-
+    cto autem Polycarpo, alii novem ex Philadelphia
+    Smyrnæ martyrium subiere : Pergami vero alii,
+    in quibus fuit Papias, aliique multi, quorum mar-
+    tyria scriptis commendata exstant. Plurimi quoque
   </bloco>
-  <bloco tipo="texto_principal" script="grego" bbox="515,105,935,675">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="486,370,508,395">B</bloco>
+
+  <bloco tipo="texto_principal" script="grego" bbox="505,105,945,650">
     σλεʹ Ὀλυμπιάς.
 
     Ἰνδ. ιγʹ. αʹ. ὑπ. Μάρκου Αὐρηλίου Οὐήρου καὶ
-    Λουκίου Κομμόδου Αὐγούστου ϛʹ.
+    Λουκίου Κομμόδου Αὐγούστου ᾽.
 
     Ἰνδ. ιδʹ. βʹ. ὑπ. Μάρκου Αὐρηλίου Οὐήρου καὶ
     Λουκίου Κομμόδου Αὐγούστου τὸ βʹ.
@@ -33,35 +64,104 @@
 
     Ἰνδ. αʹ. δʹ. ὑπ. Αἰλιανοῦ καὶ Πάστορος.
 
-    Ἔτους ρλγʹ τῆς εἰς οὐρανοὺς ἀναλήψεως τοῦ Κυρίου μεγίστων τὴν Ἀσίαν ἀνασοδησάντων διωγμῶν πολλοὶ ἐμαρτύρησαν, ἐν οἷς Πολύκαρπος Σμύρνης ἐπίσκοπος καὶ τοῦ ἀποστόλου Ἰωάννου μαθητὴς καὶ ὑπʼ αὐτοῦ κατασταθεὶς ἐπίσκοπος, συλληφθεὶς ἐπὶ ἀνθυπάτου Τατίου Κοδράτου ὑπὸ Ἡρώδου εἰρηνάρχου, υἱοῦ ὄντος Νικήτου, καὶ πολλὰ ὑπομείνας διὰ τὴν εἰς Χριστὸν πίστιν, τῇ πρὸ ζʹ Καλανδῶν Ἀπριλίων (77) τῷ μεγάλῳ Σαββάτῳ, ὥραν δεκάτην τοῦ κεντυρίωνος τὴν τῶν ἐπισυναχθέντων Ἰουδαίων καὶ ἐθνικῶν φιλονεικίαν θεασαμένου, τεθεὶς ὑπʼ αὐτῶν ἐν μέσῳ ἐκάη ζῶν, ὢν ἐτῶν πζʹ (78). Οὕτω γὰρ καὶ ἀπεκαλύφθη αὐτῷ τελειοῦσθαι αὐτὸν ζῶντα καιόμενον.
-
-    Περὶ δὲ τῶν ἐτῶν αὐτοῦ εἶπε τῷ ἀνθυπάτῳ εἰπόντι αὐτῷ· «Βλασφήμησον τὸν Χριστόν.» Ὁ δὲ εἶπεν· «πςʹ (79) ἔτη δουλεύω τῷ Χριστῷ, οὐδέν με ἠδίκησε· καὶ πῶς δύναμαι βλασφημῆσαι τὸν σώσαντά με βασιλέα;» Τούτῳ καὶ φωνὴ ἐκ τοῦ οὐρανοῦ ἐδόθη ἐν τῷ σταδίῳ Σμυρναίων εἰσιόντι· «Ἴσχυε, Πολύκαρπε, καὶ ἀνδρίζου.» Καὶ τὸν μὲν εἰπόντα οὐδεὶς τῶν ἄλλων εἶδεν, τὴν δὲ φωνὴν πολλοὶ καὶ τῶν ἡμετέρων ἤκουσαν. Σὺν τῷ ἁγίῳ δὲ Πολυκάρπῳ καὶ ἄλλοι θʹ ἀπὸ Φιλαδελφείας μαρτυροῦσιν ἐν Σμύρνῃ· καὶ ἐν Περγάμῳ δὲ ἕτεροι, ἐν οἷς ἦν καὶ Παπίας καὶ ἄλλοι πολλοί, ὧν καὶ ἔγγραφα φέρονται τὰ μαρτύρια. Πλεῖστοι καὶ αὐτῶν ἀνάγραπτοι εἰς
+    Ἔτους ρλγʹ τῆς εἰς οὐρανοὺς ἀναλήψεως τοῦ Κυ-
+    ρίου μεγίστων τὴν Ἀσίαν ἀνασοδησάντων διωγμῶν
+    πολλοὶ ἐμαρτύρησαν, ἐν οἷς Πολύκαρπος Σμύρνης
+    ἐπίσκοπος καὶ τοῦ ἀποστόλου Ἰωάννου μαθητὴς
+    καὶ ὑπʼ αὐτοῦ κατασταθεὶς ἐπίσκοπος, συλληφθεὶς
+    ἐπὶ ἀνθυπάτου Τατίου Κοδράτου ὑπὸ Ἡρώδου εἰρη-
+    νάρχου, υἱοῦ ὄντος Νικήτου, καὶ πολλὰ ὑπομείνας διὰ
+    τὴν εἰς Χριστὸν πίστιν, τῇ πρὸ ζʹ Καλανδῶν Ἀπρι-
+    λίων (77) τῷ μεγάλῳ Σαββάτῳ, ὥραν δε ηʹ τοῦ
+    κεντυρίωνος τὴν τῶν ἐπισυναχθέντων Ἰουδαίων καὶ
+    ἐθνικῶν φιλονεικίαν θεασαμένου, τεθεὶς ὑπʼ αὐτῶν ἐν
+    μέσῳ ἐκάη ζῶν, ὢν ἐτῶν πςʹ (78). Οὕτω γὰρ καὶ
+    ἀπεκαλύφθη αὐτῷ τελειοῦσθαι αὐτὸν ζῶντα καιόμε-
+    νον. Περὶ δὲ τῶν ἐτῶν αὐτοῦ εἶπε τῷ ἀνθυπάτῳ εἰ-
+    πόντι αὐτῷ· « Βλασφήμησον τὸν Χριστόν. » Ὁ δὲ
+    εἶπεν· « πςʹ (79) ἔτη δουλεύω τῷ Χριστῷ, οὐδέν
+    με ἠδίκησε· καὶ πῶς δύναμαι βλασφημῆσαι τὸν
+    σώσαντά με βασιλέα; » Τούτῳ καὶ φωνὴ ἐκ τοῦ
+    οὐρανοῦ ἐδόθη ἐν τῷ σταδίῳ Σμυρναίων εἰσιόντι·
+    « Ἴσχυε, Πολύκαρπε, καὶ ἀνδρίζου. » Καὶ τὸν μὲν εἰ-
+    πόντα οὐδεὶς τῶν ἄλλων εἶδεν, τὴν δὲ φωνὴν πολλοὶ
+    καὶ τῶν ἡμετέρων ἤκουσαν. Σὺν τῷ ἁγίῳ δὲ Πολυ-
+    κάρπῳ καὶ ἄλλοι θʹ ἀπὸ Φιλαδελφείας μαρτυροῦσιν
+    ἐν Σμύρνῃ· καὶ ἐν Περγάμῳ δὲ ἕτεροι, ἐν οἷς ἦν καὶ
+    Παπίας καὶ ἄλλοι πολλοί, ὧν καὶ ἔγγραφα φέρονται
+    τὰ μαρτύρια. Πλείστοι καὶ αὐτῶν ἀνάγραπτοι εἰς
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="505,78,525,100">A</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,435,520,455">B</bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="500,665,520,685">C</bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="105,680,490,900">
+
+  <bloco tipo="nota_marginal" script="latino" bbox="488,635,510,660">C</bloco>
+
+  <bloco tipo="aparato_critico" script="misto" bbox="95,665,500,930">
     DUCANGII NOTÆ.
 
-    patet. et ipso Galeno lib. de scriptis suis, ubi de Marco : Ὅς ἐκαλεῖτο μὲν ἐξ ἀρχῆς Βῆρος· ἐπεὶ δὲ Ἀντωνῖνος ὁ μετὰ τὸν Ἀδριανὸν ἄρξας διάδοχον αὐτὸν ἕθετο τῆς ἀρχῆς, τὸν μὲν ἔμπροσθεν ὀνομαζόμενον Λούκιον κοινωνὸν ἐποιήσατο, καλέσας Βῆρον, ἑαυτὸν δὲ μετωνόμασεν Ἀντωνῖνον. Spartianus in eodem Vero, in eamdem sententiam scribens : Verus, inquit, certe cum Marco æquale gessit imperium : nam ipsi sunt qui primi duo Augusti appellati sunt, et quorum Fastis consularibus sic nomina præscribuntur, ut dicantur non tantum duo Antonini, sed duo Augusti : tantumque hujus rei novitas et dignitas valuit, ut Fasti consulares nonnulli ab his sumerent exordium consulatum. Quæ postrema verba ita interpretatur Casaubonus, ut fuisse velit, qui in digerendis consularibus Fastis, basim supputationis suæ ponerent consulatum Marci et L. Veri duorum Augustorum, ab eo capite annos posteriores numerarent, ut dicerent, hoc illudve accidisse anno post consulatum duorum Augustorum tali. Ad quam
+    patet. et ipso Galeno lib. de scriptis suis, ubi de
+    Marco : Ὅς ἐκαλεῖτο μὲν ἐξ ἀρχῆς Βῆρος· ἐπεὶ δὲ
+    Ἀντωνῖνος ὁ μετὰ τὸν Ἀδριανὸν ἄρξας διάδοχον αὐ-
+    τὸν ἔθετο τῆς ἀρχῆς, τὸν μὲν ἔμπροσθεν ὀνομαζό-
+    μενον Λούκιον κοινωνὸν ἐποιήσατο, καλέσας Βῆρον,
+    ἑαυτὸν δὲ μετωνόμασεν Ἀντωνῖνον. Spartianus in
+    eodem Vero, in eamdem sententiam scribens : Verus,
+    inquit, certe cum Marco æquale gessit imperium :
+    nam ipsi sunt qui primi duo Augusti appellati sunt,
+    et quorum Fastis consularibus sic nomina præscribuntur, ut dicantur non tantum duo Antonini, sed
+    duo Augusti : tantumque hujus rei novitas et dignitas
+    valuit, ut Fasti consulares nonnulli ab his sumerent
+    exordium consulum. Quæ postrema verba ita inter-
+    pretatur Casaubonus, ut fuisse velit, qui in dige-
+    rendis consularibus Fastis, basim supputationis suæ
+    ponerent consulatum Marci et L. Veri duorum Au-
+    gustorum, ab eo capite annos posteriores numera-
+    rent, ut dicerent, hoc illudve accidisse anno post
+    consulatum duorum Augustorum tali. Ad quam
   </bloco>
-  <bloco tipo="aparato_critico" script="misto" bbox="515,680,935,900">
-    sane formuam referri fortean possit, quod scriptores laudati, descripto consulatu M. Antonini (qui non alius est a successore Pii) et L. Aurelii Veri, addidere, P. C. eorumdem, et Duobus Augustis : non quod essent diversi consulatus, sed ut indicarent formulam exinde receptam in describendis Fastis, ita ut loco ejusdem consulatus scriberetur duntaxat : Duobus Augustis coss., ut in Fastis Cassiodori; et anno dein proximo, P. C. duorum Augustorum : quæ cum non adverterent, totidem esse consulatus existimarunt.
 
-    (76) Ῥουστικίου. Rusticum vocant Fasti omnes, atque Capitolinus in Pio, a quo Junius Rusticus appellatur : solus Idatius Rufinum vocat.
+  <bloco tipo="nota_marginal" script="latino" bbox="500,655,525,680">D</bloco>
 
-    (77) Πρὸ ζʹ Kal. Ἰουνί. Locum hunc multis expendunt Scaliger ad Eusebium, pag. 221, et Henric. Valesius ad ejusdem Eusebii Hist. eccl. lib. IV, cap. 15, quos adire cuivis licet.
+  <bloco tipo="aparato_critico" script="misto" bbox="505,665,950,930">
+    sane formulam referri fortean possit, quod scripto-
+    res laudati, descripto consulatu M. Antonini (qui
+    non alius est a successore Pii) et L. Aurelii Veri,
+    addidere, P. C. eorumdem, et Duobus Augustis :
+    non quod essent diversi consulatus, sed ut indica-
+    rent formulam exinde receptam in describendis
+    Fastis, ita ut loco ejusdem consulatus scribere-
+    tur
+    duntaxat : Duobus Augustis coss., ut in Fastis Cas-
+    siodori; et anno dein proximo, P. C. duorum Au-
+    gustorum : quæ cum non adverterent, totidem esse
+    consulatus existimarunt.
 
-    (78) πζʹ. Holsten., πςʹ.
+    (76) Ῥουστικίου. Rusticum vocant Fasti omnes,
+    atque Capitolinus in Pio, a quo Junius Rusticus ap-
+    pellatur : solus Idatius Rufinum vocat.
+
+    (77) Πρὸ ζʹ Καλ. Ἰουνί. Locum hunc multis
+    expendunt Scaliger ad Eusebium, pag. 221, et Hen-
+    ric. Valesius ad ejusdem Eusebii Hist. eccl. lib. iv,
+    cap. 15, quos adire cuivis licet.
+
+    (78) πςʹ. Holsten., πςʹ.
 
     (79) πςʹ. Holsten., πςʹ ἔτη δουλεύω. Ex Eusebio.
   </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="505,900,525,920">D</bloco>
-  <bloco tipo="nota" script="misto" bbox="105,900,935,965">
+
+  <bloco tipo="nota" script="misto" bbox="90,930,955,995">
     VARIÆ LECTIONES.
 
-    81 Οὐήρου om. R. 82 Αὐγούστου τὸ δεύτερον P. 83 Αὐγούστου τὸ βʹ. τὸ γʹ P sola. 84 Ἰωάννου. παρεπόντι alia manu V. 85 Χριστὸν om. R. 86 ὥρα P. 87 πςʹ P. 88 πςʹ δουλεύων R. 89 δύναμαι καὶ καὶ — διαμένουσιν. δὲ καὶ κατὰ Γαλλίαν καὶ Ἰταλίαν διαπρεπῶς ἐμαρτύρησαν P et m. V alia manu.
+    81 Οὐήρου om. R.
+    82 Αὐγούστου τὸ δεύτερον P.
+    83 Αὐγούστου τὸ βʹ. τὸ γʹ P sola.
+    84 Ἰωάννου. [ilegivel] alia manu V.
+    85 Χριστὸν om. R.
+    86 ὥρα P.
+    87 πςʹ P.
+    88 πςʹ δουλεύων R.
+    89 δύναμαι καὶ [ilegivel]. δὲ καὶ κατὰ Γαλλίαν καὶ
+    Ἰταλίαν διαπρεπῶς ἐμαρτύρησαν P et m. V alia manu.
   </bloco>
-  <bloco tipo="rodape" script="latino" bbox="570,970,760,995">Digitized by Google</bloco>
-  <notas>Transcrição organizada em fluxo de coluna esquerda e depois coluna direita; as letras centrais A, B, C e D foram isoladas como notas marginais.</notas>
+
+  <notas>Leitura direta da imagem; os marcadores A, B, C e D foram transcritos em blocos próprios de nota_marginal. Algumas passagens do aparato e das variantes permanecem parcialmente incertas.</notas>
 </pagina>
