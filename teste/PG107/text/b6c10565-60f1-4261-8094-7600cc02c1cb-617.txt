@@ -1,61 +1,26 @@
-<pagina estado="com_texto">
-  <bloco tipo="cabecalho" script="latino" bbox="40,20,960,80">
-    1153    ORACULA.    1154
-  </bloco>
+<pagina estado="com_texto" tipo="gravura">
+  <bloco tipo="cabecalho" script="latino" bbox="50,30,950,90">1153 ORACULA. 1154</bloco>
 
-  [!-- Coluna esquerda (toda a coluna esquerda primeiro) --]
-  <bloco tipo="texto_principal" script="desconhecido" bbox="40,90,490,440">
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,450,490,490">
-    Figure 5.
-  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="55,110,470,660"></bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,665,390,705">Figure 5.</bloco>
 
-  <bloco tipo="texto_principal" script="desconhecido" bbox="40,500,490,840">
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="40,850,490,900">
-    Figure 7.
-  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="510,110,945,660"></bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="690,665,830,705">Figure 6.</bloco>
 
-  <bloco tipo="rodape" script="latino" bbox="40,910,620,980">
-    PATROL. Gr. CVII.
-  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="55,700,470,930"></bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="250,935,390,975">Figure 7.</bloco>
 
-  [!-- Notas marginais no gutter (A, B, C, D) como blocos separados --]
-  <bloco tipo="nota_marginal" script="latino" bbox="490,130,520,180">
-    A
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,360,520,420">
-    B
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,600,520,660">
-    C
-  </bloco>
-  <bloco tipo="nota_marginal" script="latino" bbox="490,840,520,900">
-    D
-  </bloco>
+  <bloco tipo="texto_principal" script="misto" bbox="510,700,945,930"></bloco>
+  <bloco tipo="texto_principal" script="latino" bbox="690,935,830,975">Figure 8.</bloco>
 
-  [!-- Coluna direita (após completar a coluna esquerda) --]
-  <bloco tipo="texto_principal" script="desconhecido" bbox="510,90,960,440">
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,450,960,490">
-    Figure 6.
-  </bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="155,840,180,870">C</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="320,875,345,905">D</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="740,835,765,865">B</bloco>
+  <bloco tipo="nota_marginal" script="latino" bbox="705,875,730,905">A</bloco>
 
-  <bloco tipo="texto_principal" script="desconhecido" bbox="510,500,960,840">
-  </bloco>
-  <bloco tipo="texto_principal" script="latino" bbox="510,850,960,900">
-    Figure 8.
-  </bloco>
+  <bloco tipo="rodape" script="latino" bbox="145,980,470,1020">PATROL. Gr. CVII.</bloco>
+  <bloco tipo="rodape" script="latino" bbox="860,980,930,1020">87</bloco>
+  <bloco tipo="nota" script="latino" bbox="560,985,760,1030">Digitized by Google</bloco>
 
-  [!-- Rodapé direito: numeração de página e marca do scanner --]
-  <bloco tipo="rodape" script="latino" bbox="820,910,960,980">
-    87
-  </bloco>
-  <bloco tipo="nota" script="latino" bbox="360,980,660,1000">
-    Digitized by Google
-  </bloco>
-
-  <notas>
-    Os blocos que contêm as ilustrações foram mantidos como texto_principal com script="desconhecido" e sem transcrição interna, uma vez que contêm apenas imagens e pequenos rótulos gráficos (letras indicativas) não legíveis com segurança. As legendas das figuras foram transcritas exactamente como aparecem: "Figure 5.", "Figure 6.", "Figure 7.", "Figure 8.". As quatro identificações verticais no gutter foram transcritas como notas marginais separadas: A, B, C, D.
-  </notas>
+  <notas>As figuras ocupam áreas imagéticas sem transcrição interna; apenas as legendas e os números/linhas de cabeçalho e rodapé foram transcritos. As letras visíveis nas gravuras foram isoladas em blocos de nota_marginal.</notas>
 </pagina>
