@@ -1,11 +1,21 @@
 ---
 import Layout from '../Layout.astro';
+import volumesData from '../../../public/volumes.json';
 import { useTranslations, serializeTranslations, getLocaleBase, getLocaleRouteUrl } from '../../i18n';
 const base = import.meta.env.BASE_URL || '/';
 const baseWithSlash = base.endsWith('/') ? base : `${base}/`;
 const assetBase = baseWithSlash;
 const searchIndexVersion = import.meta.env.PUBLIC_INDEXADOR_SEARCH_VERSION || '';
 const searchIndexBase = `${baseWithSlash}indexador/search${searchIndexVersion ? `/${encodeURIComponent(searchIndexVersion)}` : ''}`;
+
+// Estatísticas calculadas no build estático do Astro a partir dos manifestos
+const buildVolumes = volumesData.volumes || [];
+const buildVolumeCount = buildVolumes.length || 407;
+const buildPageCount = buildVolumes.reduce((acc: number, v: any) => acc + ((v.page_last || 0) - (v.page_first || 1) + 1), 0) || 288278;
+const formattedVolumes = `${buildVolumeCount}+`;
+const formattedPages = buildPageCount >= 1000
+  ? `${Math.round(buildPageCount / 1000)}k+`
+  : String(buildPageCount);
 
 const t = useTranslations(Astro.currentLocale);
 const uiStrings = serializeTranslations(t);
@@ -82,7 +92,7 @@ const plCountLabel = isEnLocale ? '221 Volumes' : isItLocale ? '221 Tomi' : isFr
 const poCountLabel = isEnLocale ? 'Eastern Traditions' : isItLocale ? 'Tradizioni Orientali' : isFrLocale ? 'Traditions Orientales' : 'Tradições Orientais';
 
 const themeLabels = {
-  default: isEnLocale ? 'Default' : isItLocale ? 'Predefinito' : isFrLocale ? 'Défaut' : 'Padrão',
+  group: isEnLocale ? 'Site reading theme' : isItLocale ? 'Tema di lettura del sito' : isFrLocale ? 'Thème de lecture du site' : 'Tema de leitura do site',
   pergaminho: isEnLocale ? 'Parchment' : isItLocale ? 'Pergamena' : isFrLocale ? 'Parchemin' : 'Pergaminho',
   sepia: isEnLocale ? 'Sepia' : isItLocale ? 'Seppia' : isFrLocale ? 'Sépia' : 'Sépia',
   noturno: isEnLocale ? 'Night' : isItLocale ? 'Notte' : isFrLocale ? 'Nuit' : 'Noturno',
@@ -364,42 +374,84 @@ const apparatusLabel = isEnLocale
 
   .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(3, minmax(130px, 1fr));
     gap: var(--space-4);
     margin-top: var(--space-4);
     text-align: center;
+    padding: var(--space-3) 0;
+  }
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-2) var(--space-3);
+  }
+  .stat-item-divider {
+    border-left: 1px solid var(--color-border);
   }
   .stat-item h3 {
-    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-family: var(--font-serif);
+    font-size: clamp(2.1rem, 4.5vw, 3.1rem);
     font-weight: 700;
+    line-height: 1.05;
     margin: 0;
     color: var(--color-accent);
+    font-variant-numeric: tabular-nums;
   }
   .stat-item p {
-    margin: var(--space-1) 0 0;
-    font-size: 0.85rem;
+    margin: var(--space-2) 0 0;
+    font-size: 0.82rem;
     color: var(--color-muted);
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.09em;
+    font-weight: 600;
+  }
+  @media (max-width: 640px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+    }
+    .stat-item-divider {
+      border-left: none;
+      border-top: 1px solid var(--color-border);
+      padding-top: var(--space-3);
+    }
   }
 
   .migne-note {
     display: grid;
-    grid-template-columns: minmax(170px, 0.35fr) minmax(0, 1fr);
+    grid-template-columns: auto minmax(0, 1fr);
     gap: var(--space-5);
     align-items: center;
     border-left: 3px solid var(--color-accent);
     background:
-      linear-gradient(90deg, color-mix(in srgb, var(--color-accent) 10%, var(--color-surface)) 0%, var(--color-surface) 48%);
+      linear-gradient(90deg, color-mix(in srgb, var(--color-accent) 8%, var(--color-surface)) 0%, var(--color-surface) 60%);
+    padding: var(--space-5);
+  }
+  .migne-illustration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 140px;
+    height: 140px;
+    flex-shrink: 0;
+  }
+  .migne-engraving {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-s);
   }
   .migne-note header {
     display: grid;
-    gap: var(--space-2);
+    gap: var(--space-1);
   }
   .migne-note .eyebrow {
     margin: 0;
     color: var(--color-accent);
-    text-transform: uppercase;
+    font-variant-caps: all-small-caps;
     letter-spacing: 0.1em;
-    font-size: 0.76rem;
+    font-size: 0.78rem;
     font-weight: 700;
   }
   .migne-note h2 {
@@ -409,11 +461,22 @@ const apparatusLabel = isEnLocale
     line-height: 1.2;
   }
   .migne-note p {
-    margin: 0;
-    max-width: 76ch;
+    margin: var(--space-2) 0 0;
+    max-width: 68ch;
     color: var(--color-muted);
-    line-height: 1.7;
+    line-height: 1.75;
   }
+
+  .collection-monogram {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .collection-pg .collection-monogram { color: var(--color-pg); }
+  .collection-pl .collection-monogram { color: var(--color-pl); }
+  .collection-po .collection-monogram { color: var(--color-po); }
 
   .collection-badge {
     display: inline-flex;
@@ -452,15 +515,14 @@ const apparatusLabel = isEnLocale
     border-radius: var(--radius-m);
     padding: var(--space-5);
     background: var(--color-surface);
-    box-shadow: var(--shadow-soft);
+    box-shadow: none;
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
-    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    transition: transform 0.15s ease, border-color 0.15s ease;
   }
   .collection-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
   }
   .collection-card-header {
     display: flex;
@@ -469,14 +531,15 @@ const apparatusLabel = isEnLocale
     gap: var(--space-2);
   }
   .collection-volume-count {
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     color: var(--color-muted);
     font-weight: 600;
+    font-variant-numeric: tabular-nums;
   }
 
-  /* Diferenciação cromática das coleções */
+  /* Diferenciação cromática das coleções (3px border superior) */
   .collection-card.collection-pg {
-    border-top: 4px solid var(--color-pg);
+    border-top: 3px solid var(--color-pg);
   }
   .collection-card.collection-pg:hover {
     border-color: var(--color-pg-border);
@@ -489,7 +552,7 @@ const apparatusLabel = isEnLocale
   }
 
   .collection-card.collection-pl {
-    border-top: 4px solid var(--color-pl);
+    border-top: 3px solid var(--color-pl);
   }
   .collection-card.collection-pl:hover {
     border-color: var(--color-pl-border);
@@ -502,7 +565,7 @@ const apparatusLabel = isEnLocale
   }
 
   .collection-card.collection-po {
-    border-top: 4px solid var(--color-po);
+    border-top: 3px solid var(--color-po);
   }
   .collection-card.collection-po:hover {
     border-color: var(--color-po-border);
@@ -512,6 +575,7 @@ const apparatusLabel = isEnLocale
     border-color: var(--color-po);
     color: var(--color-po);
     background: var(--color-po-bg);
+  }
   }
 
   .collection-card h3 {
@@ -679,11 +743,10 @@ const apparatusLabel = isEnLocale
     <aside class="hero-side hero-preview-panel" aria-label={t.homePreviewTitle}>
       <header class="hero-preview-header">
         <span class="eyebrow">{t.homePreviewTitle}</span>
-        <div class="hero-preview-themes" role="group" aria-label="Modo de leitura da prévia">
-          <button type="button" class="theme-pill is-active" data-set-theme="default" title={themeLabels.default}>{themeLabels.default}</button>
-          <button type="button" class="theme-pill" data-set-theme="pergaminho" title={themeLabels.pergaminho}>{themeLabels.pergaminho}</button>
-          <button type="button" class="theme-pill" data-set-theme="sepia" title={themeLabels.sepia}>{themeLabels.sepia}</button>
-          <button type="button" class="theme-pill" data-set-theme="noturno" title={themeLabels.noturno}>{themeLabels.noturno}</button>
+        <div class="hero-preview-themes" role="group" aria-label={themeLabels.group}>
+          <button type="button" class="theme-pill is-active" data-set-theme="pergaminho" aria-pressed="true" title={themeLabels.pergaminho}>{themeLabels.pergaminho}</button>
+          <button type="button" class="theme-pill" data-set-theme="sepia" aria-pressed="false" title={themeLabels.sepia}>{themeLabels.sepia}</button>
+          <button type="button" class="theme-pill" data-set-theme="noturno" aria-pressed="false" title={themeLabels.noturno}>{themeLabels.noturno}</button>
         </div>
       </header>
 
@@ -719,26 +782,30 @@ const apparatusLabel = isEnLocale
     </aside>
   </section>
 
-  <!-- Stats -->
-  <section class="card-plain section-anchor" style="margin-top:var(--space-5);">
+  <hr class="editorial-divider" />
+
+  <!-- Stats geradas estaticamente no build -->
+  <section class="card-plain section-anchor" style="margin-top:var(--space-4);">
     <div class="stats-grid" id="stats-grid">
-      <div class="stat-item"><h3>…</h3><p>{t.statVolumes}</p></div>
-      <div class="stat-item"><h3>{t.statSeries}</h3><p>{t.statSeriesLabel}</p></div>
-      <div class="stat-item"><h3>…</h3><p>{t.statPages}</p></div>
+      <div class="stat-item">
+        <h3 class="tabular-nums">{formattedVolumes}</h3>
+        <p>{t.statVolumes}</p>
+      </div>
+      <div class="stat-item stat-item-divider">
+        <h3 class="tabular-nums">{t.statSeries}</h3>
+        <p>{t.statSeriesLabel}</p>
+      </div>
+      <div class="stat-item stat-item-divider">
+        <h3 class="tabular-nums">{formattedPages}</h3>
+        <p>{t.statPages}</p>
+      </div>
     </div>
   </section>
 
-  <!-- Contexto histórico -->
-  <aside class="migne-note card" aria-labelledby="migne-note-title">
-    <header>
-      <p class="eyebrow">{t.homeMigneEyebrow}</p>
-      <h2 id="migne-note-title">{t.homeMigneTitle}</h2>
-    </header>
-    <p>{t.homeMigneText}</p>
-  </aside>
+  <hr class="editorial-divider cross" />
 
-  <!-- Coleções -->
-  <section id="volumes" class="section-anchor card" style="margin-top:var(--space-5);">
+  <!-- Coleções (com borda 3px na cor e monograma grande) -->
+  <section id="volumes" class="section-anchor card" style="margin-top:var(--space-4);">
     <div class="section-heading">
       <div>
         <h2>{t.homeCollectionsTitle}</h2>
@@ -748,7 +815,7 @@ const apparatusLabel = isEnLocale
     <div class="collections-grid">
       <article class="collection-card collection-pg">
         <div class="collection-card-header">
-          <span class="collection-badge badge-pg">PG</span>
+          <span class="collection-monogram" aria-hidden="true">PG</span>
           <span class="collection-volume-count">{pgCountLabel}</span>
         </div>
         <h3>Patrologia Graeca</h3>
@@ -757,7 +824,7 @@ const apparatusLabel = isEnLocale
       </article>
       <article class="collection-card collection-pl">
         <div class="collection-card-header">
-          <span class="collection-badge badge-pl">PL</span>
+          <span class="collection-monogram" aria-hidden="true">PL</span>
           <span class="collection-volume-count">{plCountLabel}</span>
         </div>
         <h3>Patrologia Latina</h3>
@@ -766,7 +833,7 @@ const apparatusLabel = isEnLocale
       </article>
       <article class="collection-card collection-po">
         <div class="collection-card-header">
-          <span class="collection-badge badge-po">PO</span>
+          <span class="collection-monogram" aria-hidden="true">PO</span>
           <span class="collection-volume-count">{poCountLabel}</span>
         </div>
         <h3>Patrologia Orientalis</h3>
@@ -775,6 +842,36 @@ const apparatusLabel = isEnLocale
       </article>
     </div>
   </section>
+
+  <hr class="editorial-divider" />
+
+  <!-- Contexto histórico (Jacques-Paul Migne com gravura duotone vetorial) -->
+  <aside class="migne-note card" aria-labelledby="migne-note-title" style="margin-top:var(--space-4);">
+    <div class="migne-illustration" aria-hidden="true">
+      <svg class="migne-engraving" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="140" height="140" rx="6" fill="color-mix(in srgb, var(--color-accent) 8%, var(--color-surface))" stroke="var(--color-border)" />
+        <g stroke="var(--color-accent)" stroke-width="1.3" opacity="0.85" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M35 115h70M45 115V50M95 115V50M32 50h76M52 50V32h36v18" />
+          <path d="M70 32v38M58 70h24M54 78h32M50 86h40" stroke-width="1.5" />
+          <path d="M40 38l18 12M100 38l-18 12" stroke-width="1.8" />
+          <path d="M40 102h60" stroke-dasharray="2 3" />
+          <circle cx="70" cy="22" r="6" stroke-width="1.3" />
+          <path d="M68 22h4M70 20v4" />
+          <path d="M54 96c5-2.5 10-2.5 16 0c5-2.5 10-2.5 16 0v12c-5-2.5-10-2.5-16 0c-5-2.5-10-2.5-16 0z" fill="color-mix(in srgb, var(--color-accent) 14%, transparent)" stroke-width="1.1" />
+          <line x1="70" y1="96" x2="70" y2="108" stroke-width="1" />
+        </g>
+      </svg>
+    </div>
+    <div class="migne-copy">
+      <header>
+        <p class="eyebrow">{t.homeMigneEyebrow}</p>
+        <h2 id="migne-note-title">{t.homeMigneTitle}</h2>
+      </header>
+      <p class="prose">{t.homeMigneText}</p>
+    </div>
+  </aside>
+
+  <hr class="editorial-divider cross" />
 
   <!-- Básicos -->
   <section id="autores" class="section-anchor card" style="margin-top:var(--space-5);">
@@ -806,7 +903,7 @@ const apparatusLabel = isEnLocale
         <p>{t.homePreviewFallback}</p>
       </div>
     </div>
-    <div style="display:flex; flex-direction:column; gap:var(--space-4); color:var(--color-ink); line-height:1.7; max-width:80ch;">
+    <div class="prose" style="display:flex; flex-direction:column; gap:var(--space-4); color:var(--color-ink); line-height:1.75; max-width:68ch;">
       <p set:html={t.aboutP1}></p>
       <p set:html={t.aboutP2}></p>
       <p set:html={t.aboutP3}></p>
@@ -1087,23 +1184,31 @@ const apparatusLabel = isEnLocale
       });
     }
 
-    // Alternância interativa dos modos de leitura na prévia da Home
-    const previewContainer = document.getElementById('hero-preview-container');
+    // Os botões da prévia controlam o mesmo tema global usado no cabeçalho.
     const themePills = Array.from(document.querySelectorAll('.theme-pill[data-set-theme]'));
+
+    function syncHomeTheme(theme) {
+      themePills.forEach((p) => {
+        const isCurrent = p.dataset.setTheme === theme;
+        p.classList.toggle('is-active', isCurrent);
+        p.setAttribute('aria-pressed', String(isCurrent));
+      });
+    }
+
     themePills.forEach((pill) => {
       pill.addEventListener('click', () => {
-        const theme = pill.dataset.setTheme || 'default';
-        themePills.forEach((p) => p.classList.remove('is-active'));
-        pill.classList.add('is-active');
-        if (previewContainer) {
-          if (theme === 'default') {
-            delete previewContainer.dataset.readingTheme;
-          } else {
-            previewContainer.dataset.readingTheme = theme;
-          }
-        }
+        const theme = pill.dataset.setTheme;
+        if (!theme) return;
+        syncHomeTheme(theme);
+        window.dispatchEvent(new CustomEvent('bibliotheca:settheme', { detail: { theme } }));
       });
     });
+
+    window.addEventListener('bibliotheca:themechange', (e) => {
+      syncHomeTheme(e.detail?.theme || 'pergaminho');
+    });
+
+    syncHomeTheme(document.documentElement.dataset.readingTheme || 'pergaminho');
 
     loadStats();
     observeLazyLoad('authors-list', loadAuthors);

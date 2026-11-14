@@ -1,9 +1,19 @@
 @import './tokens.css';
 
 * { box-sizing: border-box; }
-html { font-family: var(--font-sans); background: var(--color-bg); color: var(--color-ink); }
-body { margin: 0; line-height: 1.6; }
-a { color: var(--color-accent); text-decoration: none; }
+html {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-ink);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+body {
+  margin: 0;
+  line-height: 1.6;
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+a { color: var(--color-accent); text-decoration: none; transition: color 0.15s ease; }
 a:hover { color: var(--color-accent-strong); }
 img { max-width: 100%; height: auto; }
 
@@ -26,3 +36,120 @@ img { max-width: 100%; height: auto; }
   box-shadow: var(--shadow-soft);
 }
 .skip-link:focus { left: var(--space-4); }
+
+/* ── Hierarquia Tipográfica Editorial ── */
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  text-wrap: balance;
+  color: var(--color-ink);
+}
+h1 {
+  font-size: clamp(2rem, 4vw + 1rem, 3.25rem);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+h2 {
+  font-size: clamp(1.4rem, 2.5vw + 0.5rem, 2rem);
+  line-height: 1.25;
+  font-weight: 700;
+}
+h3 {
+  font-size: clamp(1.15rem, 1.8vw + 0.3rem, 1.5rem);
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.prose, .viewer-ocr-body {
+  max-width: 68ch;
+  line-height: 1.75;
+  hyphens: auto;
+  text-wrap: pretty;
+  font-family: var(--font-serif);
+}
+
+.vol-id, .stat-item h3 {
+  font-variant-numeric: tabular-nums;
+}
+
+.eyebrow {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: var(--color-muted);
+}
+
+/* ── Tipografia e Escrita Multilíngue ── */
+[lang="grc"] {
+  font-family: var(--font-greek);
+  font-size: 1.08em;
+  line-height: 1.85;
+}
+
+[lang="syr"], .script-siriaco {
+  font-family: var(--font-syriac);
+  font-size: 1.15em;
+  line-height: 1.9;
+}
+
+[lang="ar"], .script-arabe {
+  font-family: var(--font-arabic);
+  font-size: 1.15em;
+  line-height: 1.9;
+}
+
+[lang="he"], .script-hebraico {
+  font-family: var(--font-hebrew);
+  font-size: 1.15em;
+  line-height: 1.9;
+}
+
+[lang="cop"], .script-copta, .script-copte, .script-copto {
+  font-family: var(--font-coptic);
+  font-size: 1.1em;
+  line-height: 1.8;
+}
+
+[lang="hy"], .script-armenio {
+  font-family: var(--font-armenian);
+  font-size: 1.1em;
+  line-height: 1.8;
+}
+
+[lang="gez"], .script-ethiopico {
+  font-family: var(--font-ethiopic);
+  font-size: 1.1em;
+  line-height: 1.8;
+}
+
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* ── Divisores Editoriais e Ornamentos ── */
+.editorial-divider {
+  border: 0;
+  text-align: center;
+  margin: var(--space-8) auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border) 20%, var(--color-border) 80%, transparent);
+  position: relative;
+  overflow: visible;
+  width: 100%;
+  max-width: 68ch;
+}
+.editorial-divider::after {
+  content: '❦';
+  display: inline-block;
+  position: relative;
+  top: -0.75em;
+  padding: 0 0.8rem;
+  background: var(--color-bg);
+  color: var(--color-accent);
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+}
+.editorial-divider.cross::after {
+  content: '†';
+}

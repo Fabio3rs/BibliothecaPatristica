@@ -89,8 +89,8 @@ function withBase(path: string) {
             <li id={entry.anchorId}>
               <div class="entry-copy">
                 <a class="entry-title" href={withBase(entry.viewerHref || entry.fallbackHref)}>{entry.title}</a>
-                {entry.titleOriginal && <p class="original-line"><b>{t.indicesOriginalLabel}:</b> {entry.titleOriginal}</p>}
-                {entry.subtitle && entry.subtitle !== entry.titleOriginal && <small>{entry.subtitle}</small>}
+                {entry.titleOriginal && <p class="original-line"><b>{t.indicesOriginalLabel}:</b> <em>{entry.titleOriginal}</em></p>}
+                {entry.subtitle && entry.subtitle !== entry.titleOriginal && <small class="subordinate-subtitle"><em>{entry.subtitle}</em></small>}
                 {entry.note && <small><b>{t.indicesNoteLabel}:</b> {entry.note}</small>}
               </div>
               <div class="entry-actions">
@@ -117,6 +117,7 @@ function withBase(path: string) {
     .thematic-hero p, .subtle, .original-line { margin: var(--space-2) 0 0; color: var(--color-muted); line-height: 1.6; }
     .original-line { font-size: 0.88rem; }
     .original-line b { color: var(--color-accent); }
+    .original-line em, .subordinate-subtitle em { font-style: italic; opacity: 0.88; }
     .eyebrow { margin: 0 0 var(--space-2); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent); font-weight: 700; font-size: 0.8rem; }
     .hero-actions, .head-actions, .entry-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
     .translation-note { display: grid; gap: var(--space-1); margin-top: var(--space-4); padding: var(--space-4); border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border)); border-radius: var(--radius-m); background: color-mix(in srgb, var(--color-accent) 8%, var(--color-surface)); }

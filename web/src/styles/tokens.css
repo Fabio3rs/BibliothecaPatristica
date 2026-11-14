@@ -1,22 +1,34 @@
 :root {
-  --font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-  --font-serif: 'Source Serif 4', 'Georgia', 'Times New Roman', serif;
-  --font-greek: 'GFSDidot', 'New Athena Unicode', 'Palatino Linotype', 'Source Serif 4', serif;
-  --font-syriac: 'Estrangelo Edessa', 'East Syriac Adiabene', 'Serto Batnan', 'Segoe UI Historic', serif;
-  --font-coptic: 'Antinoou', 'Coptic Unicode', 'Segoe UI Historic', sans-serif;
-  --font-hebrew: 'Taamey Frank CLM', 'David CLM', 'Times New Roman', serif;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Gentium Plus', 'Source Serif 4', 'Georgia', 'Times New Roman', serif;
+  --font-greek: 'Gentium Plus', 'GFSDidot', 'New Athena Unicode', serif;
+  --font-syriac: 'Noto Sans Syriac', 'Estrangelo Edessa', 'East Syriac Adiabene', 'Serto Batnan', 'Segoe UI Historic', serif;
+  --font-coptic: 'Noto Sans Coptic', 'Antinoou', 'Coptic Unicode', 'Segoe UI Historic', sans-serif;
+  --font-hebrew: 'Noto Serif Hebrew', 'Taamey Frank CLM', 'David CLM', serif;
+  --font-arabic: 'Noto Naskh Arabic', 'Traditional Arabic', 'Scheherazade New', serif;
+  --font-armenian: 'Noto Serif Armenian', serif;
+  --font-ethiopic: 'Noto Serif Ethiopic', 'Abyssinica SIL', serif;
 
-  --color-bg: #f7f5f2;
-  --color-surface: #ffffff;
-  --color-surface-raised: #eeeae4;
-  --color-ink: #1f1b16;
-  --color-muted: #5c584f;
-  --color-accent: #1f6b7a;
-  --color-accent-strong: #0f4e59;
-  --color-border: #d7d1c8;
+  /* Tema padrão claro: Paleta Pergaminho */
+  --color-bg: #f8f4e9;
+  --color-surface: #fffdf9;
+  --color-surface-raised: #efe8d5;
+  --color-ink: #2b2319;
+  --color-muted: #645745;
+  --color-accent: #8b5528;
+  --color-accent-strong: #6d421e;
+  --color-accent-secondary: #1f6b7a;
+  --color-on-accent: #ffffff;
+  --color-border: #dfd4bf;
   --color-focus: #c94f3d;
   --color-focus-bg: color-mix(in srgb, var(--color-focus) 12%, transparent);
   --color-surface-2: color-mix(in srgb, var(--color-surface) 90%, var(--color-bg) 10%);
+
+  /* XML syntax highlighting variables (alto contraste no claro) */
+  --xml-comment: #4d7338;
+  --xml-name: #8b3c1b;
+  --xml-attr: #74421b;
+  --xml-value: #963820;
 
   /* Cores por Coleção (PG, PL, PO) */
   --color-pg: #1a5276;
@@ -42,7 +54,7 @@
   --theme-parchment-surface: #fffdf9;
   --theme-parchment-surface-raised: #efe8d5;
   --theme-parchment-ink: #2b2319;
-  --theme-parchment-muted: #695e4e;
+  --theme-parchment-muted: #645745;
   --theme-parchment-border: #dfd4bf;
   --theme-parchment-accent: #8b5528;
   --theme-parchment-accent-strong: #6d421e;
@@ -52,7 +64,7 @@
   --theme-sepia-surface: #f7f1e3;
   --theme-sepia-surface-raised: #e3d5be;
   --theme-sepia-ink: #382b20;
-  --theme-sepia-muted: #6b5747;
+  --theme-sepia-muted: #63503f;
   --theme-sepia-border: #cdbfa3;
   --theme-sepia-accent: #784723;
   --theme-sepia-accent-strong: #5a3418;
@@ -62,7 +74,7 @@
   --theme-night-surface: #1a1e24;
   --theme-night-surface-raised: #242a33;
   --theme-night-ink: #ece9e2;
-  --theme-night-muted: #9e9a90;
+  --theme-night-muted: #a8a49c;
   --theme-night-border: #2e3540;
   --theme-night-accent: #62b3d6;
   --theme-night-accent-strong: #7ec5e5;
@@ -83,17 +95,24 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #0f1114;
-    --color-surface: #161a1f;
-    --color-surface-raised: #1e242b;
-    --color-ink: #f2f0eb;
-    --color-muted: #a6a39b;
-    --color-border: #2c323a;
-    --color-accent: #5fb0c2;
-    --color-accent-strong: #4393a4;
-    --color-surface-2: color-mix(in srgb, var(--color-surface) 75%, #000 25%);
+  :root:not([data-reading-theme="pergaminho"]):not([data-reading-theme="sepia"]) {
+    --color-bg: #121519;
+    --color-surface: #1a1e24;
+    --color-surface-raised: #242a33;
+    --color-ink: #ece9e2;
+    --color-muted: #a8a49c;
+    --color-border: #2e3540;
+    --color-accent: #62b3d6;
+    --color-accent-strong: #7ec5e5;
+    --color-accent-secondary: #5fb0c2;
+    --color-on-accent: #0f141c;
+    --color-surface-2: color-mix(in srgb, var(--color-surface) 85%, #000 15%);
     --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.45);
+
+    --xml-comment: #85e89d;
+    --xml-name: #79b8ff;
+    --xml-attr: #b392f0;
+    --xml-value: #ffab70;
 
     /* Cores por Coleção em Modo Escuro */
     --color-pg: #64b5f6;
@@ -127,7 +146,12 @@
   --color-border: var(--theme-parchment-border);
   --color-accent: var(--theme-parchment-accent);
   --color-accent-strong: var(--theme-parchment-accent-strong);
+  --color-accent-secondary: #1f6b7a;
   --color-surface-2: color-mix(in srgb, var(--theme-parchment-surface) 88%, var(--theme-parchment-bg) 12%);
+  --xml-comment: #4d7338;
+  --xml-name: #8b3c1b;
+  --xml-attr: #74421b;
+  --xml-value: #963820;
   background-color: var(--theme-parchment-bg);
   color: var(--theme-parchment-ink);
 }
@@ -142,7 +166,12 @@
   --color-border: var(--theme-sepia-border);
   --color-accent: var(--theme-sepia-accent);
   --color-accent-strong: var(--theme-sepia-accent-strong);
+  --color-accent-secondary: #1f6b7a;
   --color-surface-2: color-mix(in srgb, var(--theme-sepia-surface) 88%, var(--theme-sepia-bg) 12%);
+  --xml-comment: #466b30;
+  --xml-name: #7d3314;
+  --xml-attr: #6c3b16;
+  --xml-value: #8b311b;
   background-color: var(--theme-sepia-bg);
   color: var(--theme-sepia-ink);
 }
@@ -157,7 +186,13 @@
   --color-border: var(--theme-night-border);
   --color-accent: var(--theme-night-accent);
   --color-accent-strong: var(--theme-night-accent-strong);
+  --color-accent-secondary: #5fb0c2;
+  --color-on-accent: #0f141c;
   --color-surface-2: color-mix(in srgb, var(--theme-night-surface) 85%, #000 15%);
+  --xml-comment: #85e89d;
+  --xml-name: #79b8ff;
+  --xml-attr: #b392f0;
+  --xml-value: #ffab70;
   background-color: var(--theme-night-bg);
   color: var(--theme-night-ink);
 }

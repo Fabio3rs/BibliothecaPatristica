@@ -48,6 +48,13 @@ const localeOptions = [
   { code: 'it', label: t.langSwitchIt },
   { code: 'fr', label: t.langSwitchFr },
 ] as const;
+
+const themeText = {
+  label: locale === 'en' ? 'Reading theme' : locale === 'it' ? 'Tema di lettura' : locale === 'fr' ? 'Thème de lecture' : 'Tema de leitura',
+  parchment: locale === 'en' ? 'Parchment' : locale === 'it' ? 'Pergamena' : locale === 'fr' ? 'Parchemin' : 'Pergaminho',
+  sepia: locale === 'en' ? 'Sepia' : locale === 'it' ? 'Seppia' : locale === 'fr' ? 'Sépia' : 'Sépia',
+  night: locale === 'en' ? 'Night' : locale === 'it' ? 'Notte' : locale === 'fr' ? 'Nuit' : 'Noturno',
+};
 ---
 <!doctype html>
 <html lang={htmlLang}>
@@ -63,7 +70,7 @@ const localeOptions = [
     ))}
     {indexable && <link rel="alternate" hreflang="x-default" href={absoluteLocaleUrl('pt-br')} />}
     <link rel="icon" type="image/svg+xml" href={`${baseWithSlash}favicon.svg`} />
-    <meta name="theme-color" content="#1f6b7a" />
+    <meta name="theme-color" content="#8b5528" id="meta-theme-color" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Bibliotheca Patristica" />
     <meta property="og:title" content={title} />
@@ -78,14 +85,219 @@ const localeOptions = [
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <link rel="manifest" href={`${baseWithSlash}manifest.json`} />
+
+    <!-- Preload das fontes principais para leitura e UI -->
+    <link rel="preload" href={`${baseWithSlash}fonts/GentiumPlus-Regular.woff2`} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={`${baseWithSlash}fonts/Inter-Regular.woff2`} as="font" type="font/woff2" crossorigin />
+
+    <!-- Script de restauração do tema antes do paint para eliminar flash -->
+    <script is:inline>
+      (function() {
+        try {
+          const stored = localStorage.getItem('bibliotheca:theme') || 'pergaminho';
+          if (['pergaminho', 'sepia', 'noturno'].includes(stored)) {
+            document.documentElement.setAttribute('data-reading-theme', stored);
+            const meta = document.getElementById('meta-theme-color');
+            if (meta) {
+              meta.content = stored === 'noturno' ? '#121519' : (stored === 'sepia' ? '#eee4d0' : '#8b5528');
+            }
+          }
+        } catch (e) {}
+      })();
+    </script>
+
     <script>
       import '../utils/dataCache.ts';
     </script>
 
     <slot name="head" />
-    <style>
-      @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 400; src: local('Source Serif 4'); }
-      @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; src: local('Inter'); }
+    <style is:global define:vars={{ baseWithSlash }}>
+      /* Fontes locais OFL com unicode-range e font-display: swap */
+      @font-face {
+        font-family: 'Gentium Plus';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/BibliothecaPatristica/fonts/GentiumPlus-Regular.woff2') format('woff2'),
+             url('/fonts/GentiumPlus-Regular.woff2') format('woff2');
+        unicode-range: U+0000-02AF, U+0370-03FF, U+1E00-1FFF, U+2000-214F, U+2600-26FF;
+      }
+      @font-face {
+        font-family: 'Gentium Plus';
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/BibliothecaPatristica/fonts/GentiumPlus-Italic.woff2') format('woff2'),
+             url('/fonts/GentiumPlus-Italic.woff2') format('woff2');
+        unicode-range: U+0000-02AF, U+0370-03FF, U+1E00-1FFF, U+2000-214F, U+2600-26FF;
+      }
+      @font-face {
+        font-family: 'Gentium Plus';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url('/BibliothecaPatristica/fonts/GentiumPlus-Bold.woff2') format('woff2'),
+             url('/fonts/GentiumPlus-Bold.woff2') format('woff2');
+        unicode-range: U+0000-02AF, U+0370-03FF, U+1E00-1FFF, U+2000-214F, U+2600-26FF;
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/BibliothecaPatristica/fonts/Inter-Regular.woff2') format('woff2'),
+             url('/fonts/Inter-Regular.woff2') format('woff2');
+        unicode-range: U+0000-02AF, U+1E00-1EFF, U+2000-206F, U+20A0-20CF;
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url('/BibliothecaPatristica/fonts/Inter-SemiBold.woff2') format('woff2'),
+             url('/fonts/Inter-SemiBold.woff2') format('woff2');
+        unicode-range: U+0000-02AF, U+1E00-1EFF, U+2000-206F, U+20A0-20CF;
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url('/BibliothecaPatristica/fonts/Inter-Bold.woff2') format('woff2'),
+             url('/fonts/Inter-Bold.woff2') format('woff2');
+        unicode-range: U+0000-02AF, U+1E00-1EFF, U+2000-206F, U+20A0-20CF;
+      }
+      @font-face {
+        font-family: 'Noto Sans Syriac';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/BibliothecaPatristica/fonts/NotoSansSyriac-Regular.woff2') format('woff2'),
+             url('/fonts/NotoSansSyriac-Regular.woff2') format('woff2');
+        unicode-range: U+0700-074F, U+0860-086F;
+      }
+      @font-face {
+        font-family: 'Noto Sans Coptic';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/BibliothecaPatristica/fonts/NotoSansCoptic-Regular.woff2') format('woff2'),
+             url('/fonts/NotoSansCoptic-Regular.woff2') format('woff2');
+        unicode-range: U+03E2-03EF, U+2C80-2CFF;
+      }
+      @font-face {
+        font-family: 'Noto Naskh Arabic';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/BibliothecaPatristica/fonts/NotoNaskhArabic-Regular.woff2') format('woff2'),
+             url('/fonts/NotoNaskhArabic-Regular.woff2') format('woff2');
+        unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+      }
+      @font-face {
+        font-family: 'Noto Serif Hebrew';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/BibliothecaPatristica/fonts/NotoSerifHebrew-Regular.woff2') format('woff2'),
+             url('/fonts/NotoSerifHebrew-Regular.woff2') format('woff2');
+        unicode-range: U+0590-05FF, U+FB1D-FB4F;
+      }
+      @font-face {
+        font-family: 'Noto Serif Armenian';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/BibliothecaPatristica/fonts/NotoSerifArmenian-Regular.woff2') format('woff2'),
+             url('/fonts/NotoSerifArmenian-Regular.woff2') format('woff2');
+        unicode-range: U+0530-058F, U+FB13-FB17;
+      }
+      @font-face {
+        font-family: 'Noto Serif Ethiopic';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/BibliothecaPatristica/fonts/NotoSerifEthiopic-Regular.woff2') format('woff2'),
+             url('/fonts/NotoSerifEthiopic-Regular.woff2') format('woff2');
+        unicode-range: U+1200-137F, U+1380-139F, U+2D80-2DDF, U+AB00-AB2F;
+      }
+
+      /* Logo e Wordmark */
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-family: var(--font-serif);
+        color: var(--color-ink);
+        text-decoration: none;
+        line-height: 1.15;
+      }
+      .logo-mark {
+        width: 1.85rem;
+        height: 1.85rem;
+        color: var(--color-accent);
+        flex-shrink: 0;
+        transition: transform 0.2s ease, color 0.2s ease;
+      }
+      .logo:hover .logo-mark {
+        transform: rotate(4deg) scale(1.06);
+        color: var(--color-accent-strong);
+      }
+      .logo-wordmark {
+        font-variant-caps: all-small-caps;
+        letter-spacing: 0.08em;
+        font-weight: 600;
+        font-size: 1.35rem;
+        color: var(--color-ink);
+      }
+      .logo-tagline {
+        color: var(--color-muted);
+        font-size: 0.88rem;
+        margin-top: 0.15rem;
+      }
+
+      /* Seletor Global de Tema no Cabeçalho */
+      .theme-switcher-global {
+        display: inline-flex;
+        align-items: center;
+        gap: 2px;
+        padding: 2px;
+        background: var(--color-surface-raised);
+        border: 1px solid var(--color-border);
+        border-radius: 999px;
+      }
+      .theme-switcher-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        background: transparent;
+        border: none;
+        padding: 0.25rem 0.6rem;
+        border-radius: 999px;
+        color: var(--color-muted);
+        font-size: 0.78rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+        line-height: 1.2;
+      }
+      .theme-switcher-btn:hover {
+        color: var(--color-ink);
+      }
+      .theme-switcher-btn[aria-checked="true"] {
+        background: var(--color-surface);
+        color: var(--color-accent);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      }
+      @media (max-width: 680px) {
+        .theme-switcher-btn .theme-btn-label {
+          display: none;
+        }
+        .theme-switcher-btn {
+          padding: 0.3rem 0.45rem;
+        }
+      }
+
       .lang-switch {
         display: inline-flex;
         align-items: center;
@@ -126,9 +338,15 @@ const localeOptions = [
         <div class="wrapper header-grid">
           <div>
             <a href={localeBase} class="logo" aria-label={t.logoLabel}>
-              <span aria-hidden="true">📚</span> {t.logoText}
+              <svg class="logo-mark" aria-hidden="true" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                <circle cx="16" cy="16" r="14" stroke-width="1.5" opacity="0.4" />
+                <path d="M16 5v22M16 5c3.8 0 6.5 2 6.5 6s-2.7 6-6.5 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M9 23l14-14M23 23L9 9" stroke-width="1.8" stroke-linecap="round" />
+                <path d="M6 16h3M23 16h3" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+              <span class="logo-wordmark">{t.logoText}</span>
             </a>
-            <div style="color: var(--color-muted); font-size: 0.95rem;">{t.tagline}</div>
+            <div class="logo-tagline">{t.tagline}</div>
           </div>
           {showPrimaryNav && (
             <nav aria-label={t.navMenuLabel}>
@@ -138,6 +356,47 @@ const localeOptions = [
               <div class="nav-links" id="primary-nav">
                 <a href={getLocaleRouteUrl(locale, 'search', base)}>{t.navSearch}</a>
                 <a href={getLocaleRouteUrl(locale, 'indices', base)}>{t.navIndices}</a>
+
+                <!-- Seletor global de tema de leitura -->
+                <div class="theme-switcher-global" role="radiogroup" aria-label={themeText.label}>
+                  <button
+                    type="button"
+                    class="theme-switcher-btn"
+                    data-theme="pergaminho"
+                    role="radio"
+                    aria-checked="false"
+                    title={themeText.parchment}
+                    aria-label={themeText.parchment}
+                  >
+                    <span aria-hidden="true">📜</span>
+                    <span class="theme-btn-label">{themeText.parchment}</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="theme-switcher-btn"
+                    data-theme="sepia"
+                    role="radio"
+                    aria-checked="false"
+                    title={themeText.sepia}
+                    aria-label={themeText.sepia}
+                  >
+                    <span aria-hidden="true">🏺</span>
+                    <span class="theme-btn-label">{themeText.sepia}</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="theme-switcher-btn"
+                    data-theme="noturno"
+                    role="radio"
+                    aria-checked="false"
+                    title={themeText.night}
+                    aria-label={themeText.night}
+                  >
+                    <span aria-hidden="true">🌙</span>
+                    <span class="theme-btn-label">{themeText.night}</span>
+                  </button>
+                </div>
+
                 {showLocaleSwitch && (
                   <div class="lang-switch" role="group" aria-label={t.langSwitchLabel}>
                     {localeOptions.map((option) => (
@@ -185,10 +444,60 @@ const localeOptions = [
     </div>
     <AgentChat />
     <script type="module" define:vars={{ basePath: base }}>
-
       const toggle = document.getElementById('nav-toggle');
       const nav = document.getElementById('primary-nav');
       const localeLinks = Array.from(document.querySelectorAll('.lang-switch .ls-option[data-locale-code]'));
+
+      /* ── Gestão e Persistência do Tema de Leitura ── */
+      const THEME_KEY = 'bibliotheca:theme';
+      function applyReadingTheme(theme, save = true) {
+        const valid = ['pergaminho', 'sepia', 'noturno'].includes(theme) ? theme : 'pergaminho';
+        document.documentElement.setAttribute('data-reading-theme', valid);
+        if (save) {
+          try { localStorage.setItem(THEME_KEY, valid); } catch (e) {}
+        }
+        const metaTheme = document.getElementById('meta-theme-color');
+        if (metaTheme) {
+          metaTheme.content = valid === 'noturno' ? '#121519' : (valid === 'sepia' ? '#eee4d0' : '#8b5528');
+        }
+        // Atualiza botões no header
+        document.querySelectorAll('.theme-switcher-btn[data-theme]').forEach((btn) => {
+          const isCurrent = btn.getAttribute('data-theme') === valid;
+          btn.setAttribute('aria-checked', String(isCurrent));
+        });
+        // Atualiza pílulas na home page hero preview
+        document.querySelectorAll('.theme-pill[data-set-theme]').forEach((btn) => {
+          const isCurrent = btn.getAttribute('data-set-theme') === valid;
+          btn.classList.toggle('is-active', isCurrent);
+          btn.setAttribute('aria-pressed', String(isCurrent));
+        });
+        window.dispatchEvent(new CustomEvent('bibliotheca:themechange', { detail: { theme: valid } }));
+      }
+
+      // Inicializa botões com o tema ativo
+      const currentTheme = document.documentElement.getAttribute('data-reading-theme') ||
+        (function() {
+          try { return localStorage.getItem(THEME_KEY) || 'pergaminho'; } catch(e) { return 'pergaminho'; }
+        })();
+      applyReadingTheme(currentTheme, false);
+
+      // Eventos para botões do header
+      document.querySelectorAll('.theme-switcher-btn[data-theme]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const theme = btn.getAttribute('data-theme');
+          if (theme) applyReadingTheme(theme, true);
+        });
+      });
+
+      // Permite que botões de tema externos (ex: na home) chamem ou sincronizem
+      window.addEventListener('bibliotheca:settheme', (e) => {
+        if (e.detail?.theme) applyReadingTheme(e.detail.theme, true);
+      });
+      window.addEventListener('storage', (e) => {
+        if (e.key === THEME_KEY && e.newValue) {
+          applyReadingTheme(e.newValue, false);
+        }
+      });
 
       function normalizeLocale(locale) {
         const lower = String(locale || '').toLowerCase();

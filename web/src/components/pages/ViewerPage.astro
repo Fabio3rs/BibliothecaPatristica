@@ -1044,21 +1044,64 @@ const viewerDescription = uiLocale === 'en'
             /* Estilização tipográfica e estrutural dos blocos de OCR */
             .viewer-ocr-body { font-family: var(--font-serif); line-height: 1.8; font-size: 1.05rem; }
             .viewer-ocr-body .ocr-block { position: relative; margin-bottom: 1.15em; padding-right: 2.5rem; }
+
+            /* Modo Leitura Contínua (padrão): sem molduras nem caixas */
+            .viewer-ocr-body:not(.is-structured-view) .ocr-block {
+              border: none !important;
+              background: transparent !important;
+              box-shadow: none !important;
+              border-radius: 0 !important;
+              padding-inline: 0 !important;
+              margin-bottom: 1.25em;
+            }
+            .viewer-ocr-body:not(.is-structured-view) .ocr-block:hover {
+              box-shadow: none !important;
+              border-color: transparent !important;
+            }
+            .viewer-ocr-body:not(.is-structured-view) .ocr-block-meta {
+              display: none;
+            }
+
+            /* Modo Vista Estruturada: molduras, caixas e metadados */
+            .viewer-ocr-body.is-structured-view .ocr-block {
+              border: 1px solid var(--color-border);
+              border-radius: var(--radius-s);
+              padding: var(--space-3);
+              margin-bottom: var(--space-3);
+              background: var(--color-surface);
+              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            }
+            .viewer-ocr-body.is-structured-view .ocr-block:hover {
+              border-color: var(--color-accent);
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            }
+
             .viewer-ocr-body .ocr-block.titulo,
             .viewer-ocr-body .ocr-block.type-titulo { font-weight: 700; font-size: 1.25em; color: var(--color-accent); margin-top: 0.5em; margin-bottom: 0.75em; }
 
-            /* Cabeçalho */
+            /* Cabeçalho e Rodapé */
             .viewer-ocr-body .ocr-block.cabecalho,
-            .viewer-ocr-body .ocr-block.type-cabecalho {
+            .viewer-ocr-body .ocr-block.type-cabecalho,
+            .viewer-ocr-body .ocr-block.rodape,
+            .viewer-ocr-body .ocr-block.type-rodape {
               text-align: center;
-              font-variant: small-caps;
+              font-variant-caps: all-small-caps;
               letter-spacing: 0.08em;
               font-size: 0.92rem;
               font-weight: 600;
               color: var(--color-muted);
+            }
+            .viewer-ocr-body .ocr-block.cabecalho,
+            .viewer-ocr-body .ocr-block.type-cabecalho {
               border-bottom: 1px solid var(--color-border);
               padding-bottom: var(--space-2);
               margin-bottom: var(--space-4);
+            }
+            .viewer-ocr-body .ocr-block.rodape,
+            .viewer-ocr-body .ocr-block.type-rodape {
+              border-top: 1px solid var(--color-border);
+              padding-top: var(--space-2);
+              margin-top: var(--space-4);
             }
 
             /* Aparato Crítico */
@@ -1068,10 +1111,12 @@ const viewerDescription = uiLocale === 'en'
               font-size: 0.84rem;
               line-height: 1.6;
               color: var(--color-muted);
-              border-top: 1px dashed var(--color-border);
+              border-top: 1px solid var(--color-border);
+              max-width: 45ch;
               padding-top: var(--space-2);
               margin-top: var(--space-4);
               font-family: var(--font-serif);
+              font-variant-numeric: tabular-nums;
             }
             .viewer-ocr-body .ocr-block.type-aparato_critico::before,
             .viewer-ocr-body .ocr-block.type-aparato-critico::before {
@@ -1085,7 +1130,7 @@ const viewerDescription = uiLocale === 'en'
               margin-bottom: 4px;
             }
 
-            /* Nota Marginal */
+            /* Nota Marginal com Sidenotes via CSS Grid no Desktop */
             .viewer-ocr-body .ocr-block.nota,
             .viewer-ocr-body .ocr-block.nota_marginal,
             .viewer-ocr-body .ocr-block.type-nota_marginal,
@@ -1099,6 +1144,30 @@ const viewerDescription = uiLocale === 'en'
               border-radius: 0 var(--radius-s) var(--radius-s) 0;
               font-style: italic;
               margin: var(--space-2) 0;
+            }
+            @media (min-width: 1024px) {
+              .viewer-ocr-body {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) 220px;
+                column-gap: var(--space-5);
+              }
+              .viewer-ocr-body > * {
+                grid-column: 1;
+              }
+              .viewer-ocr-body .ocr-block.nota,
+              .viewer-ocr-body .ocr-block.nota_marginal,
+              .viewer-ocr-body .ocr-block.type-nota_marginal,
+              .viewer-ocr-body .ocr-block.type-nota-marginal,
+              .viewer-ocr-body .ocr-block.type-nota {
+                grid-column: 2;
+                border-left: 2px solid var(--color-accent);
+                background: color-mix(in srgb, var(--color-accent) 4%, transparent);
+                padding: var(--space-2) var(--space-3);
+                font-size: 0.84rem;
+                line-height: 1.5;
+                margin: 0;
+                align-self: start;
+              }
             }
 
             /* Fontes por escrita (alfabetos) */
@@ -1216,11 +1285,12 @@ const viewerDescription = uiLocale === 'en'
             /* XML syntax highlight for plain OCR view */
             pre.viewer-ocr-xml { font-family:var(--font-mono, monospace); font-size:0.82rem; line-height:1.6; white-space:pre-wrap; word-break:break-word; }
             pre.viewer-ocr-xml.viewer-ocr-error { margin:0; padding:var(--space-3) var(--space-4); border:1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border)); border-radius:var(--radius-s); background:color-mix(in srgb, var(--color-accent) 8%, var(--color-surface)); color:var(--color-ink); font-family:var(--font-sans); font-size:0.9rem; line-height:1.6; }
-            pre.viewer-ocr-xml .xml-tag { color: #0b5; }
-            pre.viewer-ocr-xml .xml-name { color: #07f; }
-            pre.viewer-ocr-xml .xml-attr { color: #c67; }
-            pre.viewer-ocr-xml .xml-value { color: #a31515; }
-            pre.viewer-ocr-xml .xml-text { color: var(--color-text); }
+            pre.viewer-ocr-xml .xml-tag { color: var(--xml-name, #8b3c1b); }
+            pre.viewer-ocr-xml .xml-name { color: var(--xml-name, #8b3c1b); font-weight: 600; }
+            pre.viewer-ocr-xml .xml-attr { color: var(--xml-attr, #74421b); font-weight: 500; }
+            pre.viewer-ocr-xml .xml-value { color: var(--xml-value, #963820); }
+            pre.viewer-ocr-xml .xml-comment { color: var(--xml-comment, #4d7338); font-style: italic; }
+            pre.viewer-ocr-xml .xml-text { color: var(--color-ink); }
             .viewer-toolbar { display: flex; gap: var(--space-2); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-border); }
             @media (max-width: 480px) { .viewer-toolbar { flex-direction: column; align-items: stretch; } .viewer-search-local { width: 100%; } }
             @media (max-width: 480px) { .viewer-reading-mode .viewer-toolbar { flex-direction: row; align-items: center; } }
@@ -2265,6 +2335,8 @@ const viewerDescription = uiLocale === 'en'
                     pre.hidden = true;
                     structContainer.hidden = false;
                     visualContainer.hidden = true;
+                    const body = structContainer.querySelector('.viewer-ocr-body');
+                    if (body) body.classList.add('is-structured-view');
                     setActiveBtn(btnStruct);
                   }
                   function showVisual() {

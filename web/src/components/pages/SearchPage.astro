@@ -1025,6 +1025,7 @@ const booleanLabels = {
           work: page?.work || '',
           doc: volumeId,
           page: String(pageNumber || ''),
+          editorialPage: page?.label && String(page.label) !== String(pageNumber) ? String(page.label) : '',
           collection: volumeId.slice(0, 2),
           rawUrl: resolveRawUrl(page?.raw, metadata.rawBaseUrl),
           keywords: titleLabels.slice(0, 3).join(' • '),
@@ -1350,7 +1351,12 @@ const booleanLabels = {
 
     function buildCard(hit, term) {
       const article = document.createElement('article');
-      article.className = 'card search-result-card';
+      const volUpper = String(hit.meta?.doc || '').toUpperCase();
+      let collectionClass = '';
+      if (volUpper.startsWith('PG')) collectionClass = 'card-collection-pg';
+      else if (volUpper.startsWith('PL')) collectionClass = 'card-collection-pl';
+      else if (volUpper.startsWith('PO')) collectionClass = 'card-collection-po';
+      article.className = `card search-result-card ${collectionClass}`.trim();
 
       const h3 = document.createElement('h3');
       h3.className = 'result-title';
@@ -1400,6 +1406,8 @@ const booleanLabels = {
       const work = hit.meta?.work || '';
       const volume = hit.meta?.doc || '';
       const page = hit.meta?.page || '';
+      const editorialPage = hit.meta?.editorialPage || '';
+
       if (author) {
         const authorSpan = document.createElement('div');
         authorSpan.className = 'result-meta-item';
@@ -1415,13 +1423,62 @@ const booleanLabels = {
       if (volume || page) {
         const volSpan = document.createElement('div');
         volSpan.className = 'result-meta-item';
-        volSpan.innerHTML = `<span class="result-meta-label">${s.searchResultVolume}:</span><span class="result-meta-value">${escapeHtml(volume)}${page ? ` · p. ${escapeHtml(page)}` : ''}</span>`;
+        let pageMarkup = '';
+        if (page && editorialPage) {
+          pageMarkup = ` · <span class="pagination-digital">p. ${escapeHtml(page)}</span> · <span class="pagination-editorial">Ed. ${escapeHtml(editorialPage)}</span>`;
+        } else if (page) {
+          pageMarkup = ` · <span class="pagination-digital">p. ${escapeHtml(page)}</span>`;
+        } else if (editorialPage) {
+          pageMarkup = ` · <span class="pagination-editorial">Ed. ${escapeHtml(editorialPage)}</span>`;
+        }
+        volSpan.innerHTML = `<span class="result-meta-label">${s.searchResultVolume}:</span><span class="result-meta-value result-vol-code tabular-nums">${escapeHtml(volume)}</span>${pageMarkup}`;
         metaLine.appendChild(volSpan);
       }
+
+      const evidenceType = hit.evidence || hit.meta?.evidence;
+      if (['direct', 'associated', 'ocr'].includes(evidenceType)) {
+        const evidenceBadge = document.createElement('span');
+        evidenceBadge.className = `badge-evidence badge-evidence--${evidenceType}`;
+        if (evidenceType === 'direct') {
+          evidenceBadge.textContent = isEn ? 'Direct citation' : isIt ? 'Citazione diretta' : isFr ? 'Citation directe' : 'Citação direta';
+        } else if (evidenceType === 'associated') {
+          evidenceBadge.textContent = isEn ? 'Associated keyword' : isIt ? 'Associazione tematica' : isFr ? 'Association thématique' : 'Associação temática';
+        } else {
+          evidenceBadge.textContent = isEn ? 'OCR Detection' : isIt ? 'Rilevamento OCR' : isFr ? 'Détection OCR' : 'Detecção OCR';
+        }
+        metaLine.appendChild(evidenceBadge);
+      }
+
+      // Trecho original em serifa (se disponível no payload de OCR ou metadados)
+      const sourceLang = volUpper.startsWith('PG') ? 'grc' : (volUpper.startsWith('PO') ? 'syr' : 'la');
+      const ocrExcerpt = hit.meta?.ocrExcerpt || hit.meta?.originalText;
+      let sourceP = null;
+      if (ocrExcerpt) {
+        sourceP = document.createElement('p');
+        sourceP.className = 'result-source-text';
+        sourceP.lang = sourceLang;
+        sourceP.innerHTML = ocrExcerpt;
+      }
+
+      // Síntese automática em sans-serif menor com selo e fundo levemente tingido
+      const autoSummaryDiv = document.createElement('div');
+      autoSummaryDiv.className = 'result-auto-summary';
+      if (uiLocale !== 'pt-br') {
+        autoSummaryDiv.lang = 'pt-BR';
+      }
+
+      const summaryBadge = document.createElement('div');
+      summaryBadge.className = 'badge-auto-summary';
+      summaryBadge.innerHTML = `<span>✦</span><span>${isEn ? 'Automatic summary' : isIt ? 'Sintesi automatica' : isFr ? 'Synthèse automatique' : 'Síntese automática'}</span>`;
+      if (uiLocale !== 'pt-br') {
+        summaryBadge.innerHTML += ` <span class="badge-lang-fallback" title="Texto em português">[PT-BR]</span>`;
+      }
+      autoSummaryDiv.appendChild(summaryBadge);
 
       const snippet = document.createElement('p');
       snippet.className = 'result-snippet';
       snippet.innerHTML = hit.excerpt || (hit.content ? hit.content.slice(0, 180) : s.searchNoSnippet);
+      autoSummaryDiv.appendChild(snippet);
 
       const chips = document.createElement('ul');
       chips.className = 'chips result-chips';
@@ -1442,8 +1499,11 @@ const booleanLabels = {
       badgeItems.slice(0, 8).forEach((b) => {
         const li = document.createElement('li');
         li.textContent = b.value;
-        li.style.cursor = 'pointer';
+        li.className = `chip--clickable chip--${b.category === 'author' ? 'author' : (b.category === 'scripture' ? 'scripture' : 'theme')}`;
         li.title = ariaFilterBy(b.category, b.value);
+        if (uiLocale !== 'pt-br') {
+          li.lang = 'pt-BR';
+        }
         li.onclick = (e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -1474,7 +1534,8 @@ const booleanLabels = {
 
       article.appendChild(h3);
       if (metaLine.childNodes.length) article.appendChild(metaLine);
-      article.appendChild(snippet);
+      if (sourceP) article.appendChild(sourceP);
+      article.appendChild(autoSummaryDiv);
       if (chips.childNodes.length) article.appendChild(chips);
       article.appendChild(actions);
 
