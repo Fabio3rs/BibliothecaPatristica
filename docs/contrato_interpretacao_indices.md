@@ -21,6 +21,29 @@ preservar, interpretar e tornar auditável o conteúdo.
    somente os artefatos pertencentes à fase.
 6. Python valida ownership, versões, fingerprints, cobertura e chaves; Python
    também monta o payload canônico.
+7. O volume que contém o índice e o volume de destino são independentes. O tomo
+   de uma obra também não é o número do volume da coleção. Uma referência pode
+   apontar a outro volume, desde que essa ligação tenha evidência editorial.
+
+### Identidade bibliográfica e referências entre volumes
+
+Para estabelecer a ligação, conservar separadamente: volume de origem do índice,
+obra citada, tomo da obra, edição/paginação citada e volume de destino. A folha de
+rosto pode estabelecer obra e tomo; a declaração do índice estabelece a convenção
+da referência. Uma fonte não substitui automaticamente a outra.
+
+Exemplo documentado: a nota do `INDEX RERUM ET SENTENTIARUM` em PL010/462 declara
+que romanos indicam o tomo de Hilário e arábicos as páginas de Verona. As folhas
+de rosto PL009/7 e PL010/7 identificam `TOMUS I.` e `TOMUS II ET ULTIMUS.` das
+obras de Hilário. Nesse escopo, `I, 205` exige procurar o marcador Verona 205 em
+PL009; não significa arquivo 205 de PL010, coluna Migne 205, ou volume PL001.
+
+Conservar o literal, a origem e o hash das evidências que sustentam a ligação.
+Tomo ausente/ambíguo continua pendente, salvo herança comprovada no contexto da
+própria entrada. Não presumir o volume do índice como destino quando a ligação
+bibliográfica não está estabelecida. Datas/editoras da folha de rosto descrevem
+o exemplar transcrito e não devem ser atribuídas à edição histórica citada sem
+evidência adicional. Reconhecer o volume de destino não resolve a página física.
 
 ## 2. Descoberta e fronteiras
 

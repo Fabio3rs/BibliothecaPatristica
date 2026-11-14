@@ -1,5 +1,8 @@
 # Pipeline determinística de citações bíblicas
 
+Para comparar os resultados persistidos com as referências dos índices sem
+alterar os bancos, veja [Comparação dos índices com citações OCR](scripture_index_comparison.md).
+
 Esta etapa cria um índice persistente de ocorrências bíblicas no OCR de PG,
 PL e PO. O banco é evidência auxiliar para a pipeline alfabética: o índice
 impresso continua sendo a autoridade semântica.

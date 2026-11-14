@@ -1,0 +1,1404 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "enum": [
+        "alphabetical-multimodal-v1"
+      ]
+    },
+    "segments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "page_id": {
+            "type": "string"
+          },
+          "line_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "owned",
+              "boundary",
+              "context",
+              "uncertain"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "page_id": {
+                  "type": "string"
+                },
+                "block_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "line_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "quote": {
+                  "type": "string"
+                },
+                "visual_region_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "visual_reading": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "corrected_fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "uncertain": {
+                  "type": "boolean"
+                },
+                "ocr_char_start": {
+                  "type": "integer"
+                },
+                "ocr_char_end": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "page_id",
+                "block_id",
+                "line_ids",
+                "quote",
+                "visual_region_id",
+                "visual_reading",
+                "corrected_fields",
+                "uncertain"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "page_id",
+          "line_ids",
+          "role",
+          "reason",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "segment_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "heading_raw": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "analytic_subject",
+              "alphabetical_general",
+              "onomastic_person",
+              "onomastic_place",
+              "onomastic_mixed",
+              "author_index",
+              "scripture_index",
+              "pericope_index",
+              "concordance_index",
+              "foreign_terms",
+              "crosswalk_index"
+            ]
+          },
+          "taxonomy": {
+            "type": "object",
+            "properties": {
+              "pipeline_owner": {
+                "type": "string",
+                "enum": [
+                  "alphabetical"
+                ]
+              },
+              "alphabetical_role": {
+                "type": "string",
+                "enum": [
+                  "owned_section"
+                ]
+              },
+              "material_reference_mode": {
+                "type": "string",
+                "enum": [
+                  "remissive",
+                  "parallel",
+                  "source_only"
+                ]
+              },
+              "scripture_mode": {
+                "type": "string",
+                "enum": [
+                  "none",
+                  "citation_index",
+                  "pericope_index",
+                  "concordance_component",
+                  "textual_apparatus",
+                  "incidental_mention"
+                ]
+              }
+            },
+            "required": [
+              "pipeline_owner",
+              "alphabetical_role",
+              "material_reference_mode",
+              "scripture_mode"
+            ],
+            "additionalProperties": false
+          },
+          "index_page_raw": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "scripture_profile": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "page_id": {
+                  "type": "string"
+                },
+                "block_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "line_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "quote": {
+                  "type": "string"
+                },
+                "visual_region_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "visual_reading": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "corrected_fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "uncertain": {
+                  "type": "boolean"
+                },
+                "ocr_char_start": {
+                  "type": "integer"
+                },
+                "ocr_char_end": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "page_id",
+                "block_id",
+                "line_ids",
+                "quote",
+                "visual_region_id",
+                "visual_reading",
+                "corrected_fields",
+                "uncertain"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "segment_ids",
+          "heading_raw",
+          "kind",
+          "taxonomy",
+          "index_page_raw",
+          "scripture_profile",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "section_id": {
+            "type": "string"
+          },
+          "parent_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "order": {
+            "type": "integer"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "lemma",
+              "sublemma",
+              "cross_reference",
+              "editorial_note",
+              "heading_group",
+              "scripture_citation",
+              "scripture_pericope",
+              "concordance_item"
+            ]
+          },
+          "lemma_raw": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "lemma_display": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "entry_raw": {
+            "type": "string"
+          },
+          "visual_entry_reading": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "cross_reference_target": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "scripture_mode": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "page_id": {
+                  "type": "string"
+                },
+                "block_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "line_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "quote": {
+                  "type": "string"
+                },
+                "visual_region_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "visual_reading": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "corrected_fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "uncertain": {
+                  "type": "boolean"
+                },
+                "ocr_char_start": {
+                  "type": "integer"
+                },
+                "ocr_char_end": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "page_id",
+                "block_id",
+                "line_ids",
+                "quote",
+                "visual_region_id",
+                "visual_reading",
+                "corrected_fields",
+                "uncertain"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "section_id",
+          "parent_id",
+          "order",
+          "kind",
+          "lemma_raw",
+          "lemma_display",
+          "entry_raw",
+          "visual_entry_reading",
+          "cross_reference_target",
+          "scripture_mode",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "entry_id": {
+            "type": "string"
+          },
+          "order": {
+            "type": "integer"
+          },
+          "ref_raw": {
+            "type": "string"
+          },
+          "visual_ref_reading": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "editorial_page",
+              "editorial_column",
+              "editorial_page_column",
+              "editorial_range",
+              "editorial_page_line",
+              "target_locator",
+              "parallel_locator",
+              "unresolved"
+            ]
+          },
+          "page_start": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "page_end": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "column": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "line_start": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "line_end": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "edition": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tome": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "series": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "rule_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "scripture_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "interpretation_evidence": {
+            "type": "string"
+          },
+          "alternatives": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "page_id": {
+                  "type": "string"
+                },
+                "block_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "line_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "quote": {
+                  "type": "string"
+                },
+                "visual_region_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "visual_reading": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "corrected_fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "uncertain": {
+                  "type": "boolean"
+                },
+                "ocr_char_start": {
+                  "type": "integer"
+                },
+                "ocr_char_end": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "page_id",
+                "block_id",
+                "line_ids",
+                "quote",
+                "visual_region_id",
+                "visual_reading",
+                "corrected_fields",
+                "uncertain"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "entry_id",
+          "order",
+          "ref_raw",
+          "visual_ref_reading",
+          "kind",
+          "page_start",
+          "page_end",
+          "column",
+          "line_start",
+          "line_end",
+          "edition",
+          "tome",
+          "series",
+          "rule_ids",
+          "scripture_id",
+          "interpretation_evidence",
+          "alternatives",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "scripture_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "entry_id": {
+            "type": "string"
+          },
+          "ref_raw": {
+            "type": "string"
+          },
+          "book_raw": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "citation",
+              "pericope",
+              "concordance_component"
+            ]
+          },
+          "chapter_start": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "verse_start": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "chapter_end": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "verse_end": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "book_evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "page_id": {
+                  "type": "string"
+                },
+                "block_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "line_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "quote": {
+                  "type": "string"
+                },
+                "visual_region_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "visual_reading": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "corrected_fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "uncertain": {
+                  "type": "boolean"
+                },
+                "ocr_char_start": {
+                  "type": "integer"
+                },
+                "ocr_char_end": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "page_id",
+                "block_id",
+                "line_ids",
+                "quote",
+                "visual_region_id",
+                "visual_reading",
+                "corrected_fields",
+                "uncertain"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "page_id": {
+                  "type": "string"
+                },
+                "block_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "line_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "quote": {
+                  "type": "string"
+                },
+                "visual_region_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "visual_reading": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "corrected_fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "uncertain": {
+                  "type": "boolean"
+                },
+                "ocr_char_start": {
+                  "type": "integer"
+                },
+                "ocr_char_end": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "page_id",
+                "block_id",
+                "line_ids",
+                "quote",
+                "visual_region_id",
+                "visual_reading",
+                "corrected_fields",
+                "uncertain"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "entry_id",
+          "ref_raw",
+          "book_raw",
+          "role",
+          "chapter_start",
+          "verse_start",
+          "chapter_end",
+          "verse_end",
+          "book_evidence",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "continuations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "entry_id": {
+            "type": "string"
+          },
+          "direction": {
+            "type": "string",
+            "enum": [
+              "leading",
+              "trailing"
+            ]
+          },
+          "peer_page_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "peer_entry_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "peer_quote": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "open",
+              "confirmed"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "page_id": {
+                  "type": "string"
+                },
+                "block_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "line_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "quote": {
+                  "type": "string"
+                },
+                "visual_region_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "visual_reading": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "corrected_fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "uncertain": {
+                  "type": "boolean"
+                },
+                "ocr_char_start": {
+                  "type": "integer"
+                },
+                "ocr_char_end": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "page_id",
+                "block_id",
+                "line_ids",
+                "quote",
+                "visual_region_id",
+                "visual_reading",
+                "corrected_fields",
+                "uncertain"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "entry_id",
+          "direction",
+          "peer_page_id",
+          "peer_entry_id",
+          "peer_quote",
+          "status",
+          "reason",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "editorial_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "section_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "segment_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "explicit_declaration",
+              "printed_marker",
+              "edition_correspondence",
+              "sequence_inference",
+              "unverified_hypothesis"
+            ]
+          },
+          "literal": {
+            "type": "string"
+          },
+          "edition": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tome": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "series": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "notation": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "page_id": {
+                  "type": "string"
+                },
+                "block_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "line_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "quote": {
+                  "type": "string"
+                },
+                "visual_region_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "visual_reading": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "corrected_fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "uncertain": {
+                  "type": "boolean"
+                },
+                "ocr_char_start": {
+                  "type": "integer"
+                },
+                "ocr_char_end": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "page_id",
+                "block_id",
+                "line_ids",
+                "quote",
+                "visual_region_id",
+                "visual_reading",
+                "corrected_fields",
+                "uncertain"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "section_ids",
+          "segment_ids",
+          "kind",
+          "literal",
+          "edition",
+          "tome",
+          "series",
+          "notation",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edition_mappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "rule_id": {
+            "type": "string"
+          },
+          "from_edition": {
+            "type": "string"
+          },
+          "from_locator": {
+            "type": "string"
+          },
+          "to_edition": {
+            "type": "string"
+          },
+          "to_locator": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "observed",
+              "uncertain"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "page_id": {
+                  "type": "string"
+                },
+                "block_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "line_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "quote": {
+                  "type": "string"
+                },
+                "visual_region_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "visual_reading": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "corrected_fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "uncertain": {
+                  "type": "boolean"
+                },
+                "ocr_char_start": {
+                  "type": "integer"
+                },
+                "ocr_char_end": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "page_id",
+                "block_id",
+                "line_ids",
+                "quote",
+                "visual_region_id",
+                "visual_reading",
+                "corrected_fields",
+                "uncertain"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "rule_id",
+          "from_edition",
+          "from_locator",
+          "to_edition",
+          "to_locator",
+          "status",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "unresolved": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          },
+          "related_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "page_id": {
+                  "type": "string"
+                },
+                "block_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "line_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "quote": {
+                  "type": "string"
+                },
+                "visual_region_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "visual_reading": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "corrected_fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "uncertain": {
+                  "type": "boolean"
+                },
+                "ocr_char_start": {
+                  "type": "integer"
+                },
+                "ocr_char_end": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "page_id",
+                "block_id",
+                "line_ids",
+                "quote",
+                "visual_region_id",
+                "visual_reading",
+                "corrected_fields",
+                "uncertain"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "detail",
+          "related_ids",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "coverage": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "page_id": {
+            "type": "string"
+          },
+          "line_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "disposition": {
+            "type": "string",
+            "enum": [
+              "entry",
+              "heading",
+              "rule",
+              "continuation",
+              "boundary",
+              "context",
+              "unreadable",
+              "unassigned",
+              "exclusion"
+            ]
+          },
+          "object_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "page_id",
+          "line_ids",
+          "disposition",
+          "object_ids",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "expansion_requests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "page_id": {
+            "type": "string"
+          },
+          "direction": {
+            "type": "string",
+            "enum": [
+              "before",
+              "after"
+            ]
+          },
+          "max_files": {
+            "type": "integer"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "page_id",
+          "direction",
+          "max_files",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "visual_coverage": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "region_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "inspected",
+              "unreadable",
+              "not_inspected"
+            ]
+          },
+          "missing_ocr_content": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "region_id",
+          "status",
+          "missing_ocr_content",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "segments",
+    "sections",
+    "entries",
+    "references",
+    "scripture_refs",
+    "continuations",
+    "editorial_rules",
+    "edition_mappings",
+    "unresolved",
+    "coverage",
+    "expansion_requests",
+    "visual_coverage"
+  ],
+  "additionalProperties": false
+}

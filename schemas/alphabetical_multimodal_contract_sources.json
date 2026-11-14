@@ -1,0 +1,48 @@
+{
+  "prompt_contract_version": 4,
+  "interpretation_contract_version": 1,
+  "glossary_version": 1,
+  "output_schema_version": 2,
+  "references": {
+    "skill": {
+      "path": ".codex/skills/alphabetical-index-extractor/SKILL.md",
+      "sha256": "9def1c313c95d90ad8ba3a2f1b10fbb81ed890d2b1693689934bd805fc19c009"
+    },
+    "prompt_contract": {
+      "path": ".codex/skills/alphabetical-index-extractor/references/prompt-contract.md",
+      "sha256": "e42093ec6ef1cda9c5043bc5cab418011224e3778c00bfe82719ee449095e35c"
+    },
+    "output_format": {
+      "path": ".codex/skills/alphabetical-index-extractor/references/output-format.md",
+      "sha256": "536f68bc1e755ac3be809834f6aa39ded7fc7ab269f0bf0531d3522746b2520a"
+    },
+    "interpretation_contract": {
+      "path": "docs/contrato_interpretacao_indices.md",
+      "sha256": "c88ce7514d3ef166ed72bcc942a9a1c2d9dbdb12d2699d95c25185b1e8569eda"
+    },
+    "glossary_document": {
+      "path": "docs/glossario_notacao_editorial_indices.md",
+      "sha256": "e50f1728aff3c218cd2ce24091f55929884b50aa2a8ab2514db4d6109764c147"
+    },
+    "glossary_data": {
+      "path": "data/editorial_notation_glossary.json",
+      "sha256": "c27668daf7f2400146597811f86fd5a386e9bf2513aaec0429fb291bc08c14f6"
+    },
+    "spatial_field_dictionary": {
+      "path": "docs/dicionario_campos_indices_alfabeticos.md",
+      "sha256": "7d009d114e65d92dcbf6c960b6b65d64bd4115911ef30a508eef7818334cab35"
+    },
+    "extractor_contract": {
+      "path": "docs/contrato_extrator_indices_alfabeticos.md",
+      "sha256": "33827bc714e536ebdf5f7babadf8b3eb65243f7cfe8cc0a6a6665550725f1cb6"
+    },
+    "discovery_schema": {
+      "path": "schemas/alphabetical_discovery_manifest.schema.json",
+      "sha256": "6a45c454fa415a80d0fefb925abba918db82bd237f361656c4f1bdcf0bef52a3"
+    },
+    "semantic_fragment_schema": {
+      "path": "schemas/alphabetical_semantic_fragment.schema.json",
+      "sha256": "4d7e2556234d04903f6a66c780617838dffd528674ff36ce1cae43183a44d413"
+    }
+  }
+}

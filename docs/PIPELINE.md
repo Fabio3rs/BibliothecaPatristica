@@ -417,6 +417,20 @@ Tesseract witness, and VLM pass 2 for later comparison.
   - a estratégia operacional de chunking, intermediários, `todo.json` e builders está em `docs/estrategia_pipeline_extracao_indices_alfabeticos.md`
   - o fluxo canônico está documentado em `docs/levantamento_indices_alfabeticos.md`, `docs/contrato_extrator_indices_alfabeticos.md` e `docs/normalizacao_indices_biblicos.md`
 
+## Busca navegável de candidatos de índices
+
+A disponibilização para busca é independente da certificação canônica. Não usar
+`verified=false` ou `import_ready=false` para excluir candidatos úteis do buscador.
+Paginação aproximada, OCR fuzzy, ambiguidades e ausência de apoio lexical são
+sinalizações para ranking/apresentação; modificações permanentes mantêm seus contratos.
+`scripts/index_candidate_search.py` exporta os experimentos existentes para SQLite
+FTS5, preserva alternativas e avalia Recall@K, Precision@K, MRR e cobertura com
+amostras revisadas. Política, pesos e comandos em
+[`index_candidate_search_policy.md`](index_candidate_search_policy.md).
+Gramáticas de tomo/página, página/linha e PO, recuperação de candidatos com
+incerteza e comparação por ocorrência estão em
+[`index_candidate_recovery_20261106.md`](index_candidate_recovery_20261106.md).
+
 ## Embeddings e clustering (`hdbscan_embedding.py`)
 - Entrada: tabela `keyword_embedding` (BLOB float32) em `data/patristica_keywords.db` (pode filtrar por `--model`).
 - Pipeline: UMAP (`--umap-components`, `--umap-neighbors`) → HDBSCAN (`--min-cluster-size`, `--min-samples`, `--cluster-selection-epsilon`).

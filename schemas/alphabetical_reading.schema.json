@@ -1,0 +1,455 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "enum": [
+        "alphabetical-reading-v2"
+      ]
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "heading": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "analytic_subject",
+              "alphabetical_general",
+              "onomastic_person",
+              "onomastic_place",
+              "onomastic_mixed",
+              "author_index",
+              "scripture_index",
+              "pericope_index",
+              "concordance_index",
+              "foreign_terms",
+              "crosswalk_index"
+            ]
+          },
+          "material_reference_mode": {
+            "type": "string",
+            "enum": [
+              "remissive",
+              "parallel",
+              "source_only"
+            ]
+          },
+          "scripture_mode": {
+            "type": "string",
+            "enum": [
+              "none",
+              "citation_index",
+              "pericope_index",
+              "concordance_component",
+              "textual_apparatus",
+              "incidental_mention"
+            ]
+          },
+          "scripture_profile": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "index_page": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "conventions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "explicit_declaration",
+                    "printed_marker",
+                    "edition_correspondence",
+                    "sequence_inference",
+                    "unverified_hypothesis"
+                  ]
+                },
+                "literal": {
+                  "type": "string"
+                },
+                "edition": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "tome": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "series": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "notation": {
+                  "type": "string"
+                },
+                "physical_source_page": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "kind",
+                "literal",
+                "edition",
+                "tome",
+                "series",
+                "notation",
+                "physical_source_page"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "entries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/entry"
+            }
+          },
+          "edition_mappings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "from_edition": {
+                  "type": "string"
+                },
+                "from_locator": {
+                  "type": "string"
+                },
+                "to_edition": {
+                  "type": "string"
+                },
+                "to_locator": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "observed",
+                    "uncertain"
+                  ]
+                },
+                "quotes": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "from_edition",
+                "from_locator",
+                "to_edition",
+                "to_locator",
+                "status",
+                "quotes"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "heading",
+          "kind",
+          "material_reference_mode",
+          "scripture_mode",
+          "scripture_profile",
+          "index_page",
+          "conventions",
+          "entries",
+          "edition_mappings"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "exclusions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "boundary",
+              "context",
+              "uncertain"
+            ]
+          }
+        },
+        "required": [
+          "text",
+          "reason",
+          "role"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "uncertainties": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "sections",
+    "exclusions",
+    "uncertainties"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "entry": {
+      "type": "object",
+      "properties": {
+        "lemma": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "text": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "lemma",
+            "sublemma",
+            "cross_reference",
+            "editorial_note",
+            "heading_group",
+            "scripture_citation",
+            "scripture_pericope",
+            "concordance_item"
+          ]
+        },
+        "cross_reference_target": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "ref_raw": {
+                "type": "string"
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "editorial_page",
+                  "editorial_column",
+                  "editorial_page_column",
+                  "editorial_range",
+                  "editorial_page_line",
+                  "target_locator",
+                  "parallel_locator",
+                  "unresolved"
+                ]
+              },
+              "page_start": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "page_end": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "column": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "line_start": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "line_end": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "edition": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "tome": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "series": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "interpretation_evidence": {
+                "type": "string"
+              },
+              "alternatives": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "scripture_ref_number": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "ref_raw",
+              "kind",
+              "page_start",
+              "page_end",
+              "column",
+              "line_start",
+              "line_end",
+              "edition",
+              "tome",
+              "series",
+              "interpretation_evidence",
+              "alternatives",
+              "scripture_ref_number"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "scripture_refs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "ref_raw": {
+                "type": "string"
+              },
+              "book_raw": {
+                "type": "string"
+              },
+              "role": {
+                "type": "string",
+                "enum": [
+                  "citation",
+                  "pericope",
+                  "concordance_component"
+                ]
+              },
+              "chapter_start": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "verse_start": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "chapter_end": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "verse_end": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "ref_raw",
+              "book_raw",
+              "role",
+              "chapter_start",
+              "verse_start",
+              "chapter_end",
+              "verse_end"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/entry"
+          }
+        },
+        "continuation": {
+          "type": "string",
+          "enum": [
+            "none",
+            "leading",
+            "trailing",
+            "both"
+          ]
+        },
+        "uncertainties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "lemma",
+        "text",
+        "kind",
+        "cross_reference_target",
+        "references",
+        "scripture_refs",
+        "children",
+        "continuation",
+        "uncertainties"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

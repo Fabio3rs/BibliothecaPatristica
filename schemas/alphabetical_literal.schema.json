@@ -1,0 +1,247 @@
+{
+  "type": "object",
+  "properties": {
+    "elements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/element"
+      }
+    },
+    "uncertainties": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "elements",
+    "uncertainties"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "element": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "heading"
+              ]
+            },
+            "text": {
+              "type": "string"
+            },
+            "role": {
+              "type": "string",
+              "enum": [
+                "section",
+                "group",
+                "running_header",
+                "page_label",
+                "uncertain"
+              ]
+            },
+            "children": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/element"
+              }
+            }
+          },
+          "required": [
+            "type",
+            "text",
+            "role",
+            "children"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "entry"
+              ]
+            },
+            "name": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Headword printed in this item; null if absent. Do not inherit a parent name."
+            },
+            "text": {
+              "type": "string",
+              "description": "Complete printed entry, including its name and references. Exclude child entries. Do not return only the description or numbers."
+            },
+            "references_raw": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Verbatim printed reference notation for this entry, intentionally repeated from text. Keep page/line pairs, Roman numerals, series labels, ranges and qualifiers together; do not parse numbers. Null only if no reference is printed or its reading/separation is uncertain; explain uncertainty."
+            },
+            "children": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/element"
+              }
+            },
+            "continuation": {
+              "type": "string",
+              "enum": [
+                "none",
+                "leading",
+                "trailing",
+                "both",
+                "uncertain"
+              ]
+            }
+          },
+          "required": [
+            "type",
+            "name",
+            "text",
+            "references_raw",
+            "children",
+            "continuation"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "note"
+              ]
+            },
+            "marker": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "marker",
+            "text"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "table"
+              ]
+            },
+            "headers": {
+              "type": "array",
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "rows": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "required": [
+            "type",
+            "headers",
+            "rows"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "fragment"
+              ]
+            },
+            "text": {
+              "type": "string"
+            },
+            "edge": {
+              "type": "string",
+              "enum": [
+                "leading",
+                "trailing",
+                "both",
+                "uncertain"
+              ]
+            }
+          },
+          "required": [
+            "type",
+            "text",
+            "edge"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "boundary"
+              ]
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "text"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}
