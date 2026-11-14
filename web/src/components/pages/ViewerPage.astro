@@ -1040,11 +1040,167 @@ const viewerDescription = uiLocale === 'en'
             .viewer-location-footer small { flex: 1 1 10rem; color: var(--color-muted); font-size: 0.66rem; line-height: 1.4; }
             .viewer-location-footer a { color: var(--color-accent); font-size: 0.75rem; font-weight: 700; }
             @media (max-width: 1100px) { .viewer-location-panel { margin-bottom: var(--space-4); } }
+
+            /* Estilização tipográfica e estrutural dos blocos de OCR */
             .viewer-ocr-body { font-family: var(--font-serif); line-height: 1.8; font-size: 1.05rem; }
-            .viewer-ocr-body .ocr-block { position: relative; margin-bottom: 1em; padding-right: 2.5rem; }
-            .viewer-ocr-body .ocr-block.titulo { font-weight: 700; font-size: 1.2em; color: var(--color-accent); }
-            .viewer-ocr-body .ocr-block.nota { font-size: 0.9em; color: var(--color-muted); border-left: 3px solid var(--color-border); padding-left: 1em; }
-            .viewer-ocr-body .ocr-block.cabecalho { font-variant: small-caps; letter-spacing: 0.05em; }
+            .viewer-ocr-body .ocr-block { position: relative; margin-bottom: 1.15em; padding-right: 2.5rem; }
+            .viewer-ocr-body .ocr-block.titulo,
+            .viewer-ocr-body .ocr-block.type-titulo { font-weight: 700; font-size: 1.25em; color: var(--color-accent); margin-top: 0.5em; margin-bottom: 0.75em; }
+
+            /* Cabeçalho */
+            .viewer-ocr-body .ocr-block.cabecalho,
+            .viewer-ocr-body .ocr-block.type-cabecalho {
+              text-align: center;
+              font-variant: small-caps;
+              letter-spacing: 0.08em;
+              font-size: 0.92rem;
+              font-weight: 600;
+              color: var(--color-muted);
+              border-bottom: 1px solid var(--color-border);
+              padding-bottom: var(--space-2);
+              margin-bottom: var(--space-4);
+            }
+
+            /* Aparato Crítico */
+            .viewer-ocr-body .ocr-block.aparato_critico,
+            .viewer-ocr-body .ocr-block.type-aparato_critico,
+            .viewer-ocr-body .ocr-block.type-aparato-critico {
+              font-size: 0.84rem;
+              line-height: 1.6;
+              color: var(--color-muted);
+              border-top: 1px dashed var(--color-border);
+              padding-top: var(--space-2);
+              margin-top: var(--space-4);
+              font-family: var(--font-serif);
+            }
+            .viewer-ocr-body .ocr-block.type-aparato_critico::before,
+            .viewer-ocr-body .ocr-block.type-aparato-critico::before {
+              content: 'Aparato Crítico';
+              display: block;
+              font-size: 0.68rem;
+              text-transform: uppercase;
+              letter-spacing: 0.08em;
+              color: var(--color-accent);
+              font-weight: 700;
+              margin-bottom: 4px;
+            }
+
+            /* Nota Marginal */
+            .viewer-ocr-body .ocr-block.nota,
+            .viewer-ocr-body .ocr-block.nota_marginal,
+            .viewer-ocr-body .ocr-block.type-nota_marginal,
+            .viewer-ocr-body .ocr-block.type-nota-marginal,
+            .viewer-ocr-body .ocr-block.type-nota {
+              font-size: 0.88rem;
+              color: var(--color-muted);
+              border-left: 3px solid color-mix(in srgb, var(--color-accent) 45%, var(--color-border));
+              background: color-mix(in srgb, var(--color-accent) 4%, transparent);
+              padding: var(--space-2) var(--space-3);
+              border-radius: 0 var(--radius-s) var(--radius-s) 0;
+              font-style: italic;
+              margin: var(--space-2) 0;
+            }
+
+            /* Fontes por escrita (alfabetos) */
+            .viewer-ocr-body .script-grego,
+            .viewer-ocr-body [lang="grc"],
+            [lang="grc"] {
+              font-family: var(--font-greek, 'GFSDidot', 'New Athena Unicode', var(--font-serif));
+              line-height: 1.85;
+            }
+            .viewer-ocr-body .script-siriaco,
+            .viewer-ocr-body [lang="syr"],
+            [lang="syr"] {
+              font-family: var(--font-syriac, 'Estrangelo Edessa', 'East Syriac Adiabene', serif);
+              direction: rtl;
+              font-size: 1.15em;
+              line-height: 2;
+            }
+            .viewer-ocr-body .script-copta,
+            .viewer-ocr-body [lang="cop"],
+            [lang="cop"] {
+              font-family: var(--font-coptic, 'Antinoou', 'Coptic Unicode', sans-serif);
+              font-size: 1.1em;
+              line-height: 1.75;
+            }
+            .viewer-ocr-body .script-hebraico,
+            .viewer-ocr-body [lang="he"],
+            [lang="he"] {
+              font-family: var(--font-hebrew, 'Taamey Frank CLM', 'David CLM', serif);
+              direction: rtl;
+              font-size: 1.15em;
+              line-height: 1.9;
+            }
+
+            /* Badge Bipartido (Digital vs. Editorial / Impresso) */
+            .identity-badge-split {
+              display: inline-flex;
+              align-items: stretch;
+              padding: 0 !important;
+              overflow: hidden;
+              border: 1px solid var(--color-border);
+              border-radius: var(--radius-s);
+              background: var(--color-surface);
+              font-size: 0.78rem;
+              line-height: 1.3;
+            }
+            .identity-badge-split .badge-part-digital {
+              padding: 3px 8px;
+              background: var(--color-surface-2);
+              color: var(--color-muted);
+              border-right: 1px solid var(--color-border);
+            }
+            .identity-badge-split .badge-part-editorial {
+              padding: 3px 8px;
+              background: var(--color-surface);
+              color: var(--color-ink);
+              font-weight: 600;
+            }
+
+            /* Seletor de Temas de Leitura no Viewer */
+            .viewer-theme-group {
+              display: inline-flex;
+              gap: 3px;
+              padding: 2px;
+              border-radius: 999px;
+              border: 1px solid var(--color-border);
+              background: var(--color-surface-2);
+            }
+            .viewer-theme-btn {
+              border: none !important;
+              background: transparent !important;
+              padding: 0.25rem 0.65rem !important;
+              font-size: 0.76rem !important;
+              font-weight: 600 !important;
+              border-radius: 999px !important;
+              color: var(--color-muted) !important;
+              cursor: pointer;
+              transition: background-color 0.15s, color 0.15s;
+            }
+            .viewer-theme-btn:hover {
+              color: var(--color-ink) !important;
+            }
+            .viewer-theme-btn.is-active {
+              background: var(--color-surface) !important;
+              color: var(--color-accent) !important;
+              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            }
+
+            /* Refinamentos do Modo Leitura */
+            .viewer-reading-mode {
+              max-width: 820px;
+              margin: 0 auto;
+            }
+            .viewer-reading-mode .viewer-ocr-body {
+              font-size: 1.15rem;
+              line-height: 1.95;
+            }
+            .viewer-reading-mode .identity-card {
+              border: none;
+              background: transparent;
+              box-shadow: none;
+              padding-inline: 0;
+            }
             .ocr-block-copy { position: absolute; top: 0; right: 0; display: inline-grid; place-items: center; width: 2rem; height: 2rem; padding: 0; border: 1px solid var(--color-border); border-radius: var(--radius-s); background: var(--color-surface); color: var(--color-muted); cursor: pointer; opacity: 0.68; transition: color 0.15s, border-color 0.15s, opacity 0.15s, background 0.15s; }
             .ocr-block-copy svg { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.8; }
             .ocr-block-copy:hover, .ocr-block-copy:focus-visible { color: var(--color-accent); border-color: var(--color-accent); opacity: 1; }
@@ -1245,8 +1401,17 @@ const viewerDescription = uiLocale === 'en'
         identityMetaWrap.appendChild(badgeCollection);
 
         const badgePage = document.createElement('span');
-        badgePage.className = 'identity-badge';
-        badgePage.textContent = s.viewerPageOfTotal(pageNumber, lastPage);
+        badgePage.className = 'identity-badge identity-badge-split';
+        const digitalPrefix = isEn ? 'Digital' : isIt ? 'Digitale' : isFr ? 'Numérique' : 'Digital';
+        const editorialPrefix = isEn ? 'Edição' : isIt ? 'Edizione' : isFr ? 'Édition' : 'Edição';
+        const editorialLabel = page.label || page.page_label || pageNumber;
+        const digitalPart = document.createElement('span');
+        digitalPart.className = 'badge-part-digital';
+        digitalPart.textContent = `${digitalPrefix}: ${pageNumber}/${lastPage}`;
+        const editorialPart = document.createElement('span');
+        editorialPart.className = 'badge-part-editorial';
+        editorialPart.textContent = `${editorialPrefix}: ${editorialLabel}`;
+        badgePage.append(digitalPart, editorialPart);
         identityMetaWrap.appendChild(badgePage);
 
         const seoLink = document.createElement('a');
@@ -1372,6 +1537,50 @@ const viewerDescription = uiLocale === 'en'
         toolbar.appendChild(fontDown);
         toolbar.appendChild(fontUp);
         toolbar.appendChild(fontSizeStatus);
+
+        const currentTheme = (() => {
+          try { return localStorage.getItem('viewerReadingTheme') || 'default'; } catch (_) { return 'default'; }
+        })();
+        if (currentTheme !== 'default') {
+          viewerRoot.dataset.readingTheme = currentTheme;
+          document.body.dataset.readingTheme = currentTheme;
+        }
+
+        const themeGroup = document.createElement('div');
+        themeGroup.className = 'viewer-theme-group';
+        themeGroup.setAttribute('role', 'group');
+        themeGroup.setAttribute('aria-label', isEn ? 'Reading theme' : isIt ? 'Tema di lettura' : isFr ? 'Thème de lecture' : 'Tema de leitura');
+
+        const themeChoices = [
+          ['default', isEn ? 'Default' : isIt ? 'Predefinito' : isFr ? 'Défaut' : 'Padrão'],
+          ['pergaminho', isEn ? 'Parchment' : isIt ? 'Pergamena' : isFr ? 'Parchemin' : 'Pergaminho'],
+          ['sepia', isEn ? 'Sepia' : isIt ? 'Seppia' : isFr ? 'Sépia' : 'Sépia'],
+          ['noturno', isEn ? 'Night' : isIt ? 'Notte' : isFr ? 'Nuit' : 'Noturno'],
+        ];
+
+        themeChoices.forEach(([tKey, tLabel]) => {
+          const tBtn = document.createElement('button');
+          tBtn.type = 'button';
+          tBtn.className = `viewer-theme-btn ${currentTheme === tKey ? 'is-active' : ''}`;
+          tBtn.dataset.theme = tKey;
+          tBtn.textContent = tLabel;
+          tBtn.addEventListener('click', () => {
+            try { localStorage.setItem('viewerReadingTheme', tKey); } catch (_) {}
+            if (tKey === 'default') {
+              delete viewerRoot.dataset.readingTheme;
+              delete document.body.dataset.readingTheme;
+            } else {
+              viewerRoot.dataset.readingTheme = tKey;
+              document.body.dataset.readingTheme = tKey;
+            }
+            themeGroup.querySelectorAll('.viewer-theme-btn').forEach((b) => {
+              b.classList.toggle('is-active', b.dataset.theme === tKey);
+            });
+          });
+          themeGroup.appendChild(tBtn);
+        });
+
+        toolbar.appendChild(themeGroup);
         if (viewerMode !== 'reading') toolbar.appendChild(localSearchWrap);
 
         const actionBar = document.createElement('div');

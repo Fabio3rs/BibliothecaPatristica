@@ -4,7 +4,7 @@ import { buildCanonicalUrl } from '../lib/seoIndices';
 export const prerender = true;
 
 const LOCALE_PREFIXES = ['', '/en', '/it', '/fr'] as const;
-const STATIC_ROUTES = ['', '/search', '/indices', '/viewer'] as const;
+const STATIC_ROUTES = ['', '/search', '/indices', '/indices-alfabeticos', '/viewer'] as const;
 
 export const GET: APIRoute = async ({ site }) => {
   const paths = LOCALE_PREFIXES.flatMap((prefix) =>

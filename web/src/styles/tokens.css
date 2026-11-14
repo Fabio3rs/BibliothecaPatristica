@@ -1,6 +1,10 @@
 :root {
   --font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-  --font-serif: 'Source Serif 4', 'Georgia', serif;
+  --font-serif: 'Source Serif 4', 'Georgia', 'Times New Roman', serif;
+  --font-greek: 'GFSDidot', 'New Athena Unicode', 'Palatino Linotype', 'Source Serif 4', serif;
+  --font-syriac: 'Estrangelo Edessa', 'East Syriac Adiabene', 'Serto Batnan', 'Segoe UI Historic', serif;
+  --font-coptic: 'Antinoou', 'Coptic Unicode', 'Segoe UI Historic', sans-serif;
+  --font-hebrew: 'Taamey Frank CLM', 'David CLM', 'Times New Roman', serif;
 
   --color-bg: #f7f5f2;
   --color-surface: #ffffff;
@@ -13,6 +17,55 @@
   --color-focus: #c94f3d;
   --color-focus-bg: color-mix(in srgb, var(--color-focus) 12%, transparent);
   --color-surface-2: color-mix(in srgb, var(--color-surface) 90%, var(--color-bg) 10%);
+
+  /* Cores por Coleção (PG, PL, PO) */
+  --color-pg: #1a5276;
+  --color-pg-hover: #143e59;
+  --color-pg-bg: #eaf2f8;
+  --color-pg-border: #aed6f1;
+  --color-pg-ink: #0f2f44;
+
+  --color-pl: #78281f;
+  --color-pl-hover: #5d1f18;
+  --color-pl-bg: #f9ebea;
+  --color-pl-border: #f5b7b1;
+  --color-pl-ink: #491813;
+
+  --color-po: #7e5109;
+  --color-po-hover: #603e07;
+  --color-po-bg: #fef9e7;
+  --color-po-border: #f9e79f;
+  --color-po-ink: #482f05;
+
+  /* Paleta Modo Pergaminho (Parchment) */
+  --theme-parchment-bg: #f8f4e9;
+  --theme-parchment-surface: #fffdf9;
+  --theme-parchment-surface-raised: #efe8d5;
+  --theme-parchment-ink: #2b2319;
+  --theme-parchment-muted: #695e4e;
+  --theme-parchment-border: #dfd4bf;
+  --theme-parchment-accent: #8b5528;
+  --theme-parchment-accent-strong: #6d421e;
+
+  /* Paleta Modo Sépia (Sepia) */
+  --theme-sepia-bg: #eee4d0;
+  --theme-sepia-surface: #f7f1e3;
+  --theme-sepia-surface-raised: #e3d5be;
+  --theme-sepia-ink: #382b20;
+  --theme-sepia-muted: #6b5747;
+  --theme-sepia-border: #cdbfa3;
+  --theme-sepia-accent: #784723;
+  --theme-sepia-accent-strong: #5a3418;
+
+  /* Paleta Modo Noturno (Night Editorial) */
+  --theme-night-bg: #121519;
+  --theme-night-surface: #1a1e24;
+  --theme-night-surface-raised: #242a33;
+  --theme-night-ink: #ece9e2;
+  --theme-night-muted: #9e9a90;
+  --theme-night-border: #2e3540;
+  --theme-night-accent: #62b3d6;
+  --theme-night-accent-strong: #7ec5e5;
 
   --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
   --radius-s: 6px;
@@ -41,5 +94,70 @@
     --color-accent-strong: #4393a4;
     --color-surface-2: color-mix(in srgb, var(--color-surface) 75%, #000 25%);
     --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.45);
+
+    /* Cores por Coleção em Modo Escuro */
+    --color-pg: #64b5f6;
+    --color-pg-hover: #90caf9;
+    --color-pg-bg: #102636;
+    --color-pg-border: #1a4260;
+    --color-pg-ink: #e3f2fd;
+
+    --color-pl: #ef9a9a;
+    --color-pl-hover: #ffcdd2;
+    --color-pl-bg: #331515;
+    --color-pl-border: #5c2424;
+    --color-pl-ink: #ffebee;
+
+    --color-po: #ffcc80;
+    --color-po-hover: #ffe0b2;
+    --color-po-bg: #31210e;
+    --color-po-border: #563919;
+    --color-po-ink: #fff8e1;
   }
+}
+
+/* Aplicadores de Tema de Leitura */
+[data-reading-theme="pergaminho"],
+.reading-theme-pergaminho {
+  --color-bg: var(--theme-parchment-bg);
+  --color-surface: var(--theme-parchment-surface);
+  --color-surface-raised: var(--theme-parchment-surface-raised);
+  --color-ink: var(--theme-parchment-ink);
+  --color-muted: var(--theme-parchment-muted);
+  --color-border: var(--theme-parchment-border);
+  --color-accent: var(--theme-parchment-accent);
+  --color-accent-strong: var(--theme-parchment-accent-strong);
+  --color-surface-2: color-mix(in srgb, var(--theme-parchment-surface) 88%, var(--theme-parchment-bg) 12%);
+  background-color: var(--theme-parchment-bg);
+  color: var(--theme-parchment-ink);
+}
+
+[data-reading-theme="sepia"],
+.reading-theme-sepia {
+  --color-bg: var(--theme-sepia-bg);
+  --color-surface: var(--theme-sepia-surface);
+  --color-surface-raised: var(--theme-sepia-surface-raised);
+  --color-ink: var(--theme-sepia-ink);
+  --color-muted: var(--theme-sepia-muted);
+  --color-border: var(--theme-sepia-border);
+  --color-accent: var(--theme-sepia-accent);
+  --color-accent-strong: var(--theme-sepia-accent-strong);
+  --color-surface-2: color-mix(in srgb, var(--theme-sepia-surface) 88%, var(--theme-sepia-bg) 12%);
+  background-color: var(--theme-sepia-bg);
+  color: var(--theme-sepia-ink);
+}
+
+[data-reading-theme="noturno"],
+.reading-theme-noturno {
+  --color-bg: var(--theme-night-bg);
+  --color-surface: var(--theme-night-surface);
+  --color-surface-raised: var(--theme-night-surface-raised);
+  --color-ink: var(--theme-night-ink);
+  --color-muted: var(--theme-night-muted);
+  --color-border: var(--theme-night-border);
+  --color-accent: var(--theme-night-accent);
+  --color-accent-strong: var(--theme-night-accent-strong);
+  --color-surface-2: color-mix(in srgb, var(--theme-night-surface) 85%, #000 15%);
+  background-color: var(--theme-night-bg);
+  color: var(--theme-night-ink);
 }

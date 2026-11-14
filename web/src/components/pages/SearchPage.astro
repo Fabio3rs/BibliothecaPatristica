@@ -10,6 +10,14 @@ const localeBase = getLocaleBase(Astro.currentLocale, base);
 const t = useTranslations(Astro.currentLocale);
 const uiStrings = serializeTranslations(t);
 const uiLocale = Astro.currentLocale ?? 'pt-br';
+
+const booleanLabels = {
+  barLabel: uiLocale === 'en' ? 'Boolean Operators:' : uiLocale === 'it' ? 'Operatori Booleani:' : uiLocale === 'fr' ? 'Opérateurs Booléens :' : 'Operadores Booleanos:',
+  and: uiLocale === 'en' ? 'AND' : uiLocale === 'it' ? 'E' : uiLocale === 'fr' ? 'ET' : 'E',
+  or: uiLocale === 'en' ? 'OR' : uiLocale === 'it' ? 'O' : uiLocale === 'fr' ? 'OU' : 'OU',
+  andTitle: uiLocale === 'en' ? 'Requires both terms (AND)' : uiLocale === 'it' ? 'Richiede entrambi i termini (AND)' : uiLocale === 'fr' ? 'Exige les deux termes (AND)' : 'Exige ambos os termos (E)',
+  orTitle: uiLocale === 'en' ? 'Accepts either term (OR)' : uiLocale === 'it' ? 'Accetta uno dei termini (OR)' : uiLocale === 'fr' ? 'Accepte l’un ou l’autre terme (OR)' : 'Aceita qualquer um dos termos (OU)',
+};
 ---
 <Layout title={t.searchTitle} description={t.searchSubtitle} breadcrumbs={[{label: t.breadcrumbHome, href: localeBase},{label: t.breadcrumbSearch}]}>
   <div class="main-grid search-layout">
@@ -25,6 +33,27 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
           <p id="search-engine-note" class="search-engine-note">{t.searchIndexadorPoc}</p>
         </div>
         <div class="search-controls">
+          <div class="search-toolbar">
+            <div class="search-boolean-bar" role="toolbar" aria-label={booleanLabels.barLabel}>
+              <span class="boolean-bar-label">{booleanLabels.barLabel}</span>
+              <button type="button" class="boolean-op-btn" data-operator=" && " title={booleanLabels.andTitle}>
+                <code>&amp;&amp;</code> ({booleanLabels.and})
+              </button>
+              <button type="button" class="boolean-op-btn" data-operator=" || " title={booleanLabels.orTitle}>
+                <code>||</code> ({booleanLabels.or})
+              </button>
+            </div>
+
+            <div class="search-page-size-wrap">
+              <label for="page-size" class="search-toolbar-label">{t.searchItemsLabel}</label>
+              <select id="page-size" class="page-size-select">
+                <option value="10">10</option>
+                <option value="25" selected>25</option>
+                <option value="50">50</option>
+              </select>
+            </div>
+          </div>
+
           <label class="sr-only" for="search-box">{t.searchPlaceholder}</label>
           <div class="search-combobox">
             <input
@@ -40,14 +69,6 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
               aria-controls="search-suggestions-list"
             />
             <ul id="search-suggestions-list" class="search-suggestions-list" role="listbox" aria-label={t.searchSuggestionsLabel} hidden></ul>
-          </div>
-          <div class="search-toolbar">
-            <label for="page-size" class="search-toolbar-label">{t.searchItemsLabel}</label>
-            <select id="page-size" class="page-size-select">
-              <option value="10">10</option>
-              <option value="25" selected>25</option>
-              <option value="50">50</option>
-            </select>
           </div>
           <div class="search-quick-filters" aria-label={t.searchHeroLabel}>
             <button type="button" class="chip-button" data-collection="">{t.searchAllCollections}</button>
@@ -208,11 +229,61 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       gap: var(--space-2);
       margin-top: var(--space-4);
     }
+    .search-boolean-bar {
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-1);
+    }
+    .boolean-bar-label {
+      color: var(--color-muted);
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.02em;
+    }
+    .boolean-op-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.65rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-s);
+      background: var(--color-surface);
+      color: var(--color-ink);
+      font-size: 0.82rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+    .boolean-op-btn:hover {
+      border-color: var(--color-accent);
+      background: color-mix(in srgb, var(--color-accent) 8%, var(--color-surface));
+      color: var(--color-accent);
+    }
+    .boolean-op-btn:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
+    }
+    .boolean-op-btn code {
+      font-family: monospace;
+      font-weight: 700;
+      color: var(--color-accent);
+      background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+    }
     .search-toolbar {
       display: flex;
       align-items: center;
-      gap: var(--space-2);
+      justify-content: space-between;
+      gap: var(--space-3);
       flex-wrap: wrap;
+    }
+    .search-page-size-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
     }
     .search-toolbar-label {
       color: var(--color-muted);
@@ -375,6 +446,7 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
     const suggestionList = document.getElementById('search-suggestions-list');
     const quickCollectionButtons = Array.from(document.querySelectorAll('[data-collection]'));
     const suggestionButtons = Array.from(document.querySelectorAll('[data-term]'));
+    const booleanOpButtons = Array.from(document.querySelectorAll('.boolean-op-btn'));
     const engineNote = document.getElementById('search-engine-note');
     let checkboxNodes = [];
     let displayedSuggestions = [];
@@ -829,8 +901,9 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
 
     function buildIndexadorQuery(term, filters, includeCollection, useKeywordLiteral = false) {
       const parts = [];
-      const literal = useKeywordLiteral ? keywordLiteralQuery(term) : '';
-      if (term) parts.push(`(${literal || term})`);
+      const cleanTerm = term ? term.trim().replace(/(?:\s*(?:&&|\|\|)\s*)+$/g, '').trim() : '';
+      const literal = useKeywordLiteral ? keywordLiteralQuery(cleanTerm) : '';
+      if (cleanTerm) parts.push(`(${literal || cleanTerm})`);
       const collections = includeCollection ? groupTerms(filters.collection) : '';
       const volumes = groupTerms(filters.volume);
       const books = groupTerms(filters.book);
@@ -1448,6 +1521,12 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
       window.setTimeout(closeSuggestionList, 0);
     });
 
+    document.addEventListener('pointerdown', (e) => {
+      if (!e.target?.closest?.('.search-combobox')) {
+        closeSuggestionList();
+      }
+    });
+
     pageSizeSel.addEventListener('change', handlePageSizeChange);
 
     quickCollectionButtons.forEach((btn) => {
@@ -1465,6 +1544,26 @@ const uiLocale = Astro.currentLocale ?? 'pt-br';
         state.page = 1;
         syncUrl();
         render();
+      });
+    });
+
+    booleanOpButtons.forEach((btn) => {
+      btn.addEventListener('pointerdown', () => {
+        closeSuggestionList();
+      });
+      btn.addEventListener('click', () => {
+        closeSuggestionList();
+        const op = btn.dataset.operator || '';
+        if (!op) return;
+        const start = searchBox.selectionStart ?? searchBox.value.length;
+        const end = searchBox.selectionEnd ?? searchBox.value.length;
+        const val = searchBox.value;
+        const nextVal = val.slice(0, start) + op + val.slice(end);
+        searchBox.value = nextVal;
+        const nextPos = start + op.length;
+        searchBox.focus();
+        searchBox.setSelectionRange(nextPos, nextPos);
+        handleTermInput();
       });
     });
 

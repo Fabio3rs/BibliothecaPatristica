@@ -109,8 +109,13 @@ function appendInlineContent(container, value, sourceMap, strings, citationScope
         } else {
           button.addEventListener('click', () => {
             const card = citationScope?.querySelector(`[data-source-citation="${citation}"]`);
-            card?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            card?.focus({ preventScroll: true });
+            if (card) {
+              card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+              card.classList.remove('is-highlighted');
+              void card.offsetWidth;
+              card.classList.add('is-highlighted');
+              card.focus({ preventScroll: true });
+            }
           });
         }
         container.appendChild(button);
@@ -683,13 +688,18 @@ function initializeAgentChat(root) {
 
   function openDrawer() {
     previousFocus = document.activeElement;
-    previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    backdrop.hidden = false;
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 720;
+    if (isMobile) {
+      previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      backdrop.hidden = false;
+    } else {
+      backdrop.hidden = true;
+    }
     drawer.hidden = false;
     drawer.setAttribute('aria-hidden', 'false');
     launcher.setAttribute('aria-expanded', 'true');
-    if (!settings.apiUrl || !settings.model) activateTab('debug');
+    activateTab('conversation');
     requestAnimationFrame(() => {
       root.dataset.open = 'true';
       (settings.apiUrl && settings.model ? input : apiUrlInput).focus();
@@ -703,7 +713,10 @@ function initializeAgentChat(root) {
     window.setTimeout(() => {
       drawer.hidden = true;
       backdrop.hidden = true;
-      document.body.style.overflow = previousOverflow;
+      if (previousOverflow !== undefined) {
+        document.body.style.overflow = previousOverflow;
+        previousOverflow = undefined;
+      }
       previousFocus?.focus?.();
     }, 180);
   }
@@ -902,7 +915,8 @@ function initializeAgentChat(root) {
             if (!streamingMessage) streamingMessage = createStreamingMessage();
             streamingMessage.round = Number(agentEvent.payload?.round || streamingMessage.round || 0);
             streamingMessage.text += String(agentEvent.payload?.content || '');
-            streamingMessage.body.textContent = streamingMessage.text;
+            streamingMessage.body.replaceChildren();
+            appendSafeMarkdown(streamingMessage.body, streamingMessage.text, conversationSources, strings, streamingMessage.article);
             scrollTranscript();
             return;
           }
