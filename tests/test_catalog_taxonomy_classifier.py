@@ -244,3 +244,94 @@ def test_metadata_json_preservation():
     assert d["original_sample_id"] == "abc123xyz"
     assert d["index_category"] == "AUCTORES"
     assert d["entity_type"] == "AUCTOR_PATRISTICUS"
+
+# ==============================================================================
+# TESTES DE SOBERANIA DA CATEGORIA EDITORIAL E SEGMENTAÇÃO INTRA-PÁGINA
+# ==============================================================================
+
+def test_editor_category_sovereignty_in_author_index():
+    """Verifica que a categoria de autor definida pelo editor prevalece sobre heurísticas de perícopa/persona bíblica."""
+    author_entries = [
+        ("Joannes evangelista", "AUCTOR_PATRISTICUS"),
+        ("Lucas evangelista", "AUCTOR_PATRISTICUS"),
+        ("Marcus evangelista", "AUCTOR_PATRISTICUS"),
+        ("Matthæus evangelista", "AUCTOR_PATRISTICUS"),
+        ("Paulus apostolus", "AUCTOR_PATRISTICUS"),
+        ("Actus apostolorum", "AUCTOR_PATRISTICUS"),
+        ("Jacobi Epistola", "AUCTOR_PATRISTICUS"),
+        ("Auctor Epistolæ ad Hebræos", "AUCTOR_PATRISTICUS"),
+        ("Cicero", "AUCTOR_CLASSICUS"),
+        ("Apuleius", "AUCTOR_CLASSICUS"),
+        ("Livius", "AUCTOR_CLASSICUS"),
+        ("Ambrosius", "AUCTOR_PATRISTICUS"),
+        ("Hoven (Joannes Daniel van)", "AUCTOR_PATRISTICUS"),
+        ("Wetstenius (Joannes Jacobus)", "AUCTOR_PATRISTICUS"),
+        ("Vossius (Gerhardus Joannes)", "AUCTOR_PATRISTICUS"),
+        ("Barthius (Casparus)", "AUCTOR_PATRISTICUS"),
+    ]
+    for lbl, expected in author_entries:
+        res = LemmaEntityClassifier.classify(lbl, "PL068", "AUCTORES", "INDEX AUCTORUM VETERUM")
+        assert res == expected, f"Failed for {lbl}: got {res}, expected {expected}"
+
+
+def test_intra_page_section_segmentation(tmp_path):
+    """Verifica segmentação exata de arquivos que contêm transições de índice dentro da mesma página."""
+    p566 = tmp_path / "PL068-566.txt"
+    p567 = tmp_path / "PL068-567.txt"
+    p568 = tmp_path / "PL068-568.txt"
+
+    # p566: INDEX RERUM ET VERBORUM
+    p566.write_text('<pagina><bloco tipo="cabecalho" bbox="50,20,950,60">INDEX RERUM ET VERBORUM.</bloco></pagina>')
+
+    # p567: metade superior INDEX RERUM ET VERBORUM, metade inferior INDEX AUCTORUM VETERUM
+    p567_content = (
+        '<pagina>'
+        '<bloco tipo="cabecalho" bbox="50,20,950,60">1113 INDEX AUCTORUM VETERUM QUI IN NOTIS LAUDANTUR. 1114</bloco>'
+        '<bloco tipo="texto_principal" bbox="50,60,320,260">Vos et nos, permutantur, 115.</bloco>'
+        '<bloco tipo="cabecalho" bbox="200,580,800,640">INDEX AUCTORUM VETERUM QUI IN NOTIS EMENDANTUR AUT ILLUSTRANTUR.</bloco>'
+        '<bloco tipo="texto_principal" bbox="50,650,320,950">Joannes evangelista, 51.</bloco>'
+        '</pagina>'
+    )
+    p567.write_text(p567_content)
+
+    # p568: metade superior INDEX AUCTORUM VETERUM, metade inferior INDEX AUCTORUM RECENTIORUM
+    p568_content = (
+        '<pagina>'
+        '<bloco tipo="cabecalho" bbox="250,10,750,40">INDICES IN ARATORIS EPISTOLAS ET LIBROS.</bloco>'
+        '<bloco tipo="texto_principal" bbox="30,50,320,250">Virgilius, 11, 12, 45.</bloco>'
+        '<bloco tipo="cabecalho" bbox="200,260,800,300">INDEX AUCTORUM RECENTIORUM QUI IN NOTIS LAUDANTUR.</bloco>'
+        '<bloco tipo="texto_principal" bbox="30,330,320,920">Hoven (Joannes Daniel van), 2, 11.</bloco>'
+        '</pagina>'
+    )
+    p568.write_text(p568_content)
+
+    sources = {"PL068": [str(p566), str(p567), str(p568)]}
+    classifier = SourceFileClassifier(sources)
+
+    # p566 é inteiramente RERUM ET VERBORUM
+    assert classifier.get_file_classification(str(p566)) == ("RERUM_ET_SENTENTIARUM", "INDEX RERUM ET VERBORUM")
+
+    # p567: entrada antes do cabeçalho intra-página (ex: offset 100) -> herda RERUM ET VERBORUM da p566
+    offset_vos_et_nos = p567_content.find("Vos et nos")
+    cat_top, sec_top = classifier.get_entry_classification(str(p567), offset_vos_et_nos)
+    assert cat_top == "RERUM_ET_SENTENTIARUM"
+    assert sec_top == "INDEX RERUM ET VERBORUM"
+
+    # p567: entrada depois do cabeçalho intra-página (ex: Joannes evangelista) -> AUCTORUM VETERUM
+    offset_joannes = p567_content.find("Joannes evangelista")
+    cat_bot, sec_bot = classifier.get_entry_classification(str(p567), offset_joannes)
+    assert cat_bot == "AUCTORES"
+    assert sec_bot == "INDEX AUCTORUM VETERUM"
+
+    # p568: entrada na metade superior (Virgilius) -> continua AUCTORUM VETERUM
+    offset_virgilius = p568_content.find("Virgilius")
+    cat_568_top, sec_568_top = classifier.get_entry_classification(str(p568), offset_virgilius)
+    assert cat_568_top == "AUCTORES"
+    assert sec_568_top == "INDEX AUCTORUM VETERUM"
+
+    # p568: entrada na metade inferior (Hoven) -> AUCTORUM RECENTIORUM
+    offset_hoven = p568_content.find("Hoven")
+    cat_568_bot, sec_568_bot = classifier.get_entry_classification(str(p568), offset_hoven)
+    assert cat_568_bot == "AUCTORES"
+    assert sec_568_bot == "INDEX AUCTORUM RECENTIORUM"
+

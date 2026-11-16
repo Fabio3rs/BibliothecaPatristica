@@ -105,6 +105,8 @@ def build_translation_prompt(
     languages: list[str],
     linguistic_analysis: dict[str, Any] | None = None,
     tools_enabled: bool = False,
+    catalog_context: dict[str, Any] | None = None,
+    legacy_hints: dict[str, str] | None = None,
 ) -> tuple[str, str]:
     language_lines = "\n".join(f"- {language}" for language in languages)
     context_block = "\n".join(contexts[:3]).strip() or "(no extra context)"
@@ -146,6 +148,26 @@ def build_translation_prompt(
         "</original_string>"
         f"{analysis_block}"
     )
+    if catalog_context:
+        user_prompt += (
+            "\n\n<catalog_context_advisory>\n"
+            + json.dumps(catalog_context, ensure_ascii=False, sort_keys=True)
+            + "\n</catalog_context_advisory>"
+        )
+        system_prompt += (
+            " Catalog context may contain nearby OCR entries; use it to disambiguate the "
+            "original string, never to add words absent from the original."
+        )
+    if legacy_hints:
+        user_prompt += (
+            "\n\n<legacy_translation_hints_unverified>\n"
+            + json.dumps(legacy_hints, ensure_ascii=False, sort_keys=True)
+            + "\n</legacy_translation_hints_unverified>"
+        )
+        system_prompt += (
+            " Legacy translations are unverified hints from other editorial contexts; "
+            "follow the current occurrence when they disagree."
+        )
     return system_prompt, user_prompt
 
 
@@ -224,6 +246,8 @@ def translate_candidate_worker(task: dict[str, Any]) -> dict[str, Any]:
         languages=languages,
         linguistic_analysis=task.get("linguistic_analysis"),
         tools_enabled=bool(tools),
+        catalog_context=task.get("catalog_context"),
+        legacy_hints=task.get("legacy_hints"),
     )
     base_payload: dict[str, Any] = {"model": model, "top_p": 1.0}
     if "gpt-5" in model:
@@ -302,6 +326,7 @@ def translate_candidate_worker(task: dict[str, Any]) -> dict[str, Any]:
                 "retry_wait_s": round(retry_wait_s, 3),
                 "elapsed_s": round(time.time() - started, 3),
                 "tool_call_count": len(guided.tool_calls),
+                "usage": list(guided.usage),
             }
         except Exception as exc:
             last_error = str(exc)

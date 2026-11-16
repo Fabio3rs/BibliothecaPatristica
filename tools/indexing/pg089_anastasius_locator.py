@@ -1,0 +1,194 @@
+"""
+PG089 S. Anastasius Sinaita (Index Analyticus) Locator
+Sprint 147 of Onomastic Catalog Recovery
+
+Resolves the residual source_only item from PG089:
+1. Editorial Context:
+   - PG089 contains the works of S. Anastasius Sinaita (cols 9-1830).
+   - In the 'INDEX ANALYTICUS' (cols 1831-1860 / physical pp. 937-947):
+     Entries cite either Migne columns or homily numbers.
+   - At col. 1839 (physical p. 941 / 9fd8816f-85fa-4a8a-b054-60a099977063-941.txt):
+     'Clericus. — De ordinatione Clerici, 1230 seq.'
+     And at col. 1851 (physical p. 944):
+     'Ordinatione (de) clerici, 1230.'
+   - The citation '1230 seq.' refers to:
+     a) Substantive treatise target: 'HOMILIA CXXIII (123). — DE ORDINATIONE CLERICI'
+        (cols 1817-1820 / physical pp. 915-916), where '1230' represents a typographic confusion
+        for Homilia CXXIII (123) / col. 1818, as confirmed by the Index Homiliarum on p. 950:
+        'Homilia CXXIII. — De ordinatione clerici. 1818.'
+     b) Literal column target: col. 1230 on physical p. 621 (Disputatio adversus Judaeos).
+   - The residual item:
+     id: group:1aa852d128f5a6d35b3e060ddb9a2a33e8f49b5a9618305e08ffde7e85ecbd6c
+     'Clericus. — De ordinatione Clerici' -> '1230 seq'
+"""
+
+import os
+import json
+import zlib
+import sqlite3
+from datetime import datetime, timezone
+from typing import Dict, List, Any
+
+SUMMARY_PATH = "data/index_catalog/unified_onomastic_catalog_20261110/catalog_summary.json"
+DB_PATH = "data/index_catalog/unified_onomastic_catalog_20261110/search.sqlite"
+
+TARGET_ITEMS: Dict[str, Dict[str, Any]] = {
+    "group:1aa852d128f5a6d35b3e060ddb9a2a33e8f49b5a9618305e08ffde7e85ecbd6c": {
+        "label": "Clericus. — De ordinatione Clerici",
+        "ref_raw": "1230 seq",
+        "destinations": [
+            {
+                "file": "/homessddata/Projects/pdfocr/teste/PG089/text/9fd8816f-85fa-4a8a-b054-60a099977063-915.txt",
+                "physical": 915,
+                "score": 100.0,
+                "rank": 1,
+                "reasons": [
+                    "homilia_cxxiii_de_ordinatione_clerici",
+                    "migne_cols_1817_1818",
+                    "substantive_homily_match",
+                    "erratum_cxxiii_123_as_1230"
+                ],
+                "snippet": "1817 HOMILIA CXXIII. — DE ORDINATIONE CLERICI. 1818 ... Ποιμάνατε τὸ ἐν ὑμῖν ποίμνιον τοῦ θεοῦ, ἐπισκοποῦντες, μὴ ἀναγκαστῶς, ἀλλ᾿ ἑκουσίως κατὰ θεόν...",
+                "witness": "PG089 cols 1817-1818, Homilia CXXIII De ordinatione clerici (physical p. 915)"
+            },
+            {
+                "file": "/homessddata/Projects/pdfocr/teste/PG089/text/9fd8816f-85fa-4a8a-b054-60a099977063-916.txt",
+                "physical": 916,
+                "score": 90.0,
+                "rank": 2,
+                "reasons": [
+                    "homilia_cxxiii_cont",
+                    "migne_cols_1819_1820"
+                ],
+                "snippet": "1819 ANTIOCHI MONACHI 1820 ... partes præcerpant et occupent, prætextu tuendi cultus divini; sed omnia, juxta Apostolum, honeste et secundum ordinem fiant...",
+                "witness": "PG089 cols 1819-1820, Homilia CXXIII cont. (physical p. 916)"
+            },
+            {
+                "file": "/homessddata/Projects/pdfocr/teste/PG089/text/7d3ab43e-ba7c-43c9-a2d9-97669e375cdd-621.txt",
+                "physical": 621,
+                "score": 85.0,
+                "rank": 3,
+                "reasons": [
+                    "literal_migne_col_1230",
+                    "disputatio_adversus_judaeos"
+                ],
+                "snippet": "1229 DISPUTATIO ADVERSUS JUDÆOS. 1230 ... καὶ ὅτι ἔμελλον τὰ ἔθνη πιστεῦσαι καὶ ἀποστῆναι ὑμᾶς τοὺς Ἰουδαίους διὰ τὴν ὑμῶν ἀπιστίαν...",
+                "witness": "PG089 col. 1230, Disputatio adversus Judaeos (physical p. 621)"
+            },
+            {
+                "file": "/homessddata/Projects/pdfocr/teste/PG089/text/9fd8816f-85fa-4a8a-b054-60a099977063-941.txt",
+                "physical": 941,
+                "score": 80.0,
+                "rank": 4,
+                "reasons": [
+                    "index_primary_source",
+                    "index_analyticus_migne_col_1839"
+                ],
+                "snippet": "Clericus. — De ordinatione Clerici, 1230 seq.",
+                "witness": "PG089 col. 1839, Index Analyticus (physical p. 941)"
+            }
+        ]
+    }
+}
+
+
+def locate_all() -> Dict[str, Dict[str, Any]]:
+    return TARGET_ITEMS
+
+
+def sync_catalog_summary(db_path: str = DB_PATH, summary_path: str = SUMMARY_PATH, campaign_name: str = "sprint_147_pg089_anastasius"):
+    if not os.path.exists(summary_path):
+        return
+
+    with open(summary_path, "r", encoding="utf-8") as f:
+        summary = json.load(f)
+
+    conn = sqlite3.connect(db_path)
+    c = conn.cursor()
+
+    c.execute("SELECT COUNT(*) FROM items")
+    total_items = c.fetchone()[0]
+
+    c.execute("SELECT COUNT(*) FROM items WHERE state = 'with_destinations'")
+    items_with_dest = c.fetchone()[0]
+
+    c.execute("SELECT COUNT(*) FROM items WHERE state = 'source_only'")
+    items_src_only = c.fetchone()[0]
+
+    c.execute("SELECT COUNT(*) FROM candidate_storage")
+    cand_count = c.fetchone()[0]
+
+    c.execute("SELECT COUNT(DISTINCT volume) FROM items")
+    vol_count = c.fetchone()[0]
+    conn.close()
+
+    summary["total_items"] = total_items
+    summary["items_with_destinations"] = items_with_dest
+    summary["items_source_only"] = items_src_only
+    summary["candidate_storage_records"] = cand_count
+    summary["total_volumes"] = vol_count
+    summary["coverage_percentage"] = round((items_with_dest / total_items) * 100, 4) if total_items else 0.0
+    summary["last_campaign"] = campaign_name
+    summary["last_sync"] = datetime.now(timezone.utc).isoformat()
+
+    with open(summary_path, "w", encoding="utf-8") as f:
+        json.dump(summary, f, indent=2, ensure_ascii=False)
+
+
+def apply_destinations(db_path: str = DB_PATH, dry_run: bool = True):
+    conn = sqlite3.connect(db_path)
+    c = conn.cursor()
+
+    fixed_count = 0
+    new_candidates_count = 0
+
+    for item_id, item_data in TARGET_ITEMS.items():
+        c.execute("SELECT state, metadata_json FROM items WHERE id = ?", (item_id,))
+        row = c.fetchone()
+        if not row:
+            continue
+
+        current_state, meta_str = row
+        meta = json.loads(meta_str) if meta_str else {}
+
+        meta["verified"] = True
+        meta["status"] = "resolved_single_target"
+        meta["destinations"] = item_data["destinations"]
+        meta["resolution_campaign"] = "sprint_147_pg089_anastasius"
+
+        if not dry_run:
+            c.execute(
+                "UPDATE items SET state = 'with_destinations', metadata_json = ? WHERE id = ?",
+                (json.dumps(meta, ensure_ascii=False), item_id)
+            )
+
+            # Insert candidates into candidate_storage
+            for dest in item_data["destinations"]:
+                cand_blob = zlib.compress(json.dumps(dest, ensure_ascii=False).encode("utf-8"))
+                c.execute(
+                    """
+                    INSERT OR REPLACE INTO candidate_storage (item_id, file, rank, score, navigable, candidate_json)
+                    VALUES (?, ?, ?, ?, ?, ?)
+                    """,
+                    (item_id, dest["file"], dest["rank"], dest["score"], 1, cand_blob)
+                )
+                new_candidates_count += 1
+
+        fixed_count += 1
+
+    if not dry_run:
+        conn.commit()
+    conn.close()
+
+    if not dry_run:
+        sync_catalog_summary(db_path, SUMMARY_PATH, "sprint_147_pg089_anastasius")
+
+    return fixed_count, new_candidates_count
+
+
+if __name__ == "__main__":
+    import sys
+    dry_run = "--apply" not in sys.argv
+    fixed, cand = apply_destinations(dry_run=dry_run)
+    mode = "DRY-RUN" if dry_run else "APPLIED"
+    print(f"[{mode}] Fixed {fixed} items, {cand} candidate entries in PG089.")

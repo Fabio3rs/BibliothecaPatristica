@@ -61,8 +61,11 @@ def extract_page_num(path: str) -> int:
     return int(m.group(1)) if m else -1
 
 def clean_header_text(raw_text: str) -> str:
-    headers = re.findall(r'<bloco tipo=\"cabecalho\"[^>]*>(.*?)</bloco>', raw_text, flags=re.DOTALL)
-    combined = ' '.join(' '.join(h.split()) for h in headers)
+    headers = re.findall(r'<bloco tipo=[\"\']cabecalho[\"\'][^>]*>(.*?)</bloco>', raw_text, flags=re.DOTALL)
+    if headers:
+        combined = ' '.join(' '.join(h.split()) for h in headers)
+    else:
+        combined = raw_text
     # Remove colunas e números isolados
     combined = re.sub(r'\b\d+\b', '', combined)
     # Normalizar ligaduras latinas
@@ -74,14 +77,18 @@ def clean_header_text(raw_text: str) -> str:
 def identify_specific_header(hdr: str, volume: str) -> Tuple[Optional[str], Optional[str]]:
     h = hdr.upper().replace('Æ', 'AE').replace('Œ', 'OE')
     if any(k in h for k in ['AUCTOR', 'ELENCHUS AUCTORUM', 'SCRIPTOR', 'PATRES', 'POETARUM GENTILIUM']):
+        if 'AUCTORUM VETERUM' in h:
+            return 'AUCTORES', 'INDEX AUCTORUM VETERUM'
+        if 'AUCTORUM RECENTIORUM' in h:
+            return 'AUCTORES', 'INDEX AUCTORUM RECENTIORUM'
         if 'ALPHABETICUS AUCTORUM' in h or 'INDEX ALPHABETICUS AUCTORUM' in h:
             return 'AUCTORES', 'INDEX ALPHABETICUS AUCTORUM'
         if 'CHRONOLOGICUS AUCTORUM' in h:
             return 'AUCTORES', 'INDEX CHRONOLOGICUS AUCTORUM'
-        if 'POETARUM' in h or 'ETHNIC' in h:
+        if 'POETARUM' in h or 'ETHNIC' in h or 'PROFANIS' in h:
             return 'AUCTORES', 'INDEX SCRIPTORUM ETHNICORUM'
         return 'AUCTORES', 'INDEX AUCTORUM'
-    if any(k in h for k in ['SCRIPTUR', 'BIBLIC', 'TESTAMENT']):
+    if any(k in h for k in ['SCRIPTUR', 'BIBLIC', 'TESTAMENT', 'LOCORUM EX SCRIPTURA']):
         return 'SCRIPTURA', 'INDEX SCRIPTURAE SACRAE'
     if 'INDEX VERBORUM' in h and 'RERUM' not in h:
         return 'LEXICA', 'INDEX VERBORUM'
@@ -112,12 +119,17 @@ def identify_specific_header(hdr: str, volume: str) -> Tuple[Optional[str], Opti
 def identify_generic_header(hdr: str) -> Tuple[str, str]:
     return 'INDEX_GENERALIS', 'INDEX GENERALIS'
 
+def parse_bbox_y(attribs: str) -> int:
+    m = re.search(r'bbox=[\"\']([0-9]+),([0-9]+),([0-9]+),([0-9]+)[\"\']', attribs)
+    return int(m.group(2)) if m else 0
+
 class SourceFileClassifier:
-    """Classifica os arquivos de origem com propagação bidirecional de cabeçalho."""
+    """Classifica os arquivos de origem com propagação bidirecional de cabeçalho e segmentação intra-página."""
     
     def __init__(self, sources_by_volume: Dict[str, List[str]]):
         self.sources_by_volume = sources_by_volume
         self.classification_map: Dict[str, Tuple[str, str]] = {}
+        self.intra_sections_map: Dict[str, List[Tuple[int, Tuple[str, str]]]] = {}
         self._build_map()
 
     def _build_map(self):
@@ -125,16 +137,36 @@ class SourceFileClassifier:
             sorted_srcs = sorted(srcs, key=extract_page_num)
             raw_hdrs = {}
             specs = {}
+            file_inner_headers = {}
+
             for s in sorted_srcs:
+                content = ""
                 if os.path.exists(s):
                     try:
                         with open(s, 'r', encoding='utf-8', errors='ignore') as f:
-                            raw_hdrs[s] = clean_header_text(f.read(4000))
+                            content = f.read()
                     except Exception:
-                        raw_hdrs[s] = ''
+                        content = ""
+
+                matches = list(re.finditer(r'<bloco\s+tipo=[\"\']cabecalho[\"\']([^>]*)>(.*?)</bloco>', content, re.DOTALL))
+                if matches:
+                    top_text = ' '.join(matches[0].group(2).split())
+                    raw_hdrs[s] = clean_header_text(top_text)
+                    specs[s] = identify_specific_header(raw_hdrs[s], vol)
+
+                    inner_headers = []
+                    for m in matches[1:]:
+                        y = parse_bbox_y(m.group(1))
+                        if y > 150:
+                            m_clean = clean_header_text(m.group(2))
+                            m_spec = identify_specific_header(m_clean, vol)
+                            if m_spec[0] is not None:
+                                inner_headers.append((m.start(), m_spec))
+                    if inner_headers:
+                        file_inner_headers[s] = inner_headers
                 else:
                     raw_hdrs[s] = ''
-                specs[s] = identify_specific_header(raw_hdrs[s], vol)
+                    specs[s] = (None, None)
 
             # Propagação direta para páginas subsequentes próximas (<= 2 páginas)
             last_spec = None
@@ -168,19 +200,41 @@ class SourceFileClassifier:
                 else:
                     backward_specs[s] = None
 
-            # Combinar especificidade
+            # Combinar especificidade para base da página
             for s in sorted_srcs:
                 if specs[s][0] is not None:
                     self.classification_map[s] = specs[s]
-                elif backward_specs[s] is not None:
-                    self.classification_map[s] = backward_specs[s]
                 elif forward_specs[s] is not None:
                     self.classification_map[s] = forward_specs[s]
+                elif backward_specs[s] is not None:
+                    self.classification_map[s] = backward_specs[s]
                 else:
                     self.classification_map[s] = identify_generic_header(raw_hdrs[s])
 
+            # Construir segmentos intra-página
+            for i, s in enumerate(sorted_srcs):
+                if s in file_inner_headers:
+                    inner_hdrs = file_inner_headers[s]
+                    prev_spec = self.classification_map[sorted_srcs[i - 1]] if i > 0 else self.classification_map[s]
+                    segments = [(0, prev_spec)]
+                    for start_offset, in_spec in inner_hdrs:
+                        segments.append((start_offset, in_spec))
+                    self.intra_sections_map[s] = segments
+
     def get_file_classification(self, source_path: str) -> Tuple[str, str]:
         return self.classification_map.get(source_path, ('INDEX_GENERALIS', 'INDEX GENERALIS'))
+
+    def get_entry_classification(self, source_path: str, char_offset: int = 0) -> Tuple[str, str]:
+        if source_path in self.intra_sections_map:
+            segments = self.intra_sections_map[source_path]
+            chosen = segments[0][1]
+            for start_offset, spec in segments:
+                if char_offset >= start_offset:
+                    chosen = spec
+                else:
+                    break
+            return chosen
+        return self.get_file_classification(source_path)
 
 # ==============================================================================
 # CAMADA 2: ONTOLOGIA MICRO DE ENTIDADES (entity_type)
@@ -286,7 +340,7 @@ def match_stem_tokens(text: str, stem_set: Set[str]) -> bool:
     return False
 
 class LemmaEntityClassifier:
-    """Classifica um verbete individual na ontologia patrística."""
+    """Classifica um verbete individual na ontologia patrística respeitando a soberania da categoria impressa pelo editor."""
     
     @staticmethod
     def classify(label: str, volume: str, macro_category: str, section: str) -> str:
@@ -301,43 +355,53 @@ class LemmaEntityClassifier:
         words = re.findall(r'[a-z\u0370-\u03ff\u1f00-\u1fff]+', l_lower)
         first_word = words[0] if words else ""
 
-        # 2. Sentenças e tratados dogmáticos iniciando por "De ..." ou termos teológicos
+        # 2. ÍNDICES DE AUTORES (AUCTORES): A categoria impressa pelo editor é SOBERANA
+        if macro_category == "AUCTORES":
+            # Autores clássicos pagãos
+            if match_stem_tokens(l_lower, CLASSICAL_AUTHORS_STEMS) or section in {
+                "INDEX SCRIPTORUM ETHNICORUM", "INDEX POETARUM GENTILIUM"
+            }:
+                return "AUCTOR_CLASSICUS"
+            # Em índices de autores, todos os verbetes representam autores (patrísticos, eclesiásticos,
+            # comentadores modernos, ou autoridades canônicas/bíblicas tratadas como autores de livros).
+            # Jamais devem ser convertidos em LOCUS_SCRIPTURAE ou PERSONA_BIBLICA.
+            return "AUCTOR_PATRISTICUS"
+
+        # 3. ÍNDICES DE ESCRITURAS (SCRIPTURA): A categoria impressa pelo editor é SOBERANA
+        if macro_category == "SCRIPTURA":
+            return "LOCUS_SCRIPTURAE"
+
+        # 4. Sentenças e tratados dogmáticos iniciando por "De ..." ou termos teológicos
         if l_strip.startswith(('De ', 'DE ', 'de ')):
             return "TEMA_DOGMATICO"
         if first_word in DOGMATIC_TERMS_STEMS:
             return "TEMA_DOGMATICO"
 
-        # 3. Citações e perícopas bíblicas
+        # 5. Citações e perícopas bíblicas explícitas (capítulo e versículo)
         if SCRIPTURE_CITATION_RE.search(label):
             return "LOCUS_SCRIPTURAE"
-        if macro_category == "SCRIPTURA":
-            return "LOCUS_SCRIPTURAE"
+
+        # 6. Livros bíblicos (quando em índice geral ou temático)
         if match_stem_tokens(l_lower, SCRIPTURE_BOOKS_STEMS):
             return "LOCUS_SCRIPTURAE"
 
-        # 4. Padres da Igreja e autores patrísticos (verificados antes de autores clássicos e personagens)
+        # 7. Padres da Igreja e autores patrísticos (em índices gerais / temáticos)
         if match_stem_tokens(l_lower, PATRISTIC_AUTHORS_STEMS):
             return "AUCTOR_PATRISTICUS"
 
-        # 5. Autores clássicos pagãos
+        # 8. Autores clássicos pagãos (em índices gerais / temáticos)
         if match_stem_tokens(l_lower, CLASSICAL_AUTHORS_STEMS):
             return "AUCTOR_CLASSICUS"
-        if section in {"INDEX SCRIPTORUM ETHNICORUM", "INDEX POETARUM GENTILIUM"}:
-            return "AUCTOR_CLASSICUS"
 
-        # 6. Personagens bíblicos
+        # 9. Personagens bíblicos (em índices gerais / temáticos)
         if match_stem_tokens(l_lower, BIBLICAL_PERSONS_STEMS):
             return "PERSONA_BIBLICA"
 
-        # 7. Topônimos e geografia patrística
+        # 10. Topônimos e geografia patrística
         if first_word in TOPONYMS_STEMS:
             return "TOPONYMUS"
 
-        # 8. Índices de autores padrão
-        if macro_category == "AUCTORES":
-            return "AUCTOR_PATRISTICUS"
-
-        # 9. Padrão onomástico histórico
+        # 11. Padrão onomástico histórico
         return "ONOMASTICA_HISTORICA"
 
 # ==============================================================================
@@ -383,8 +447,17 @@ def run_taxonomy_pipeline(db_path: str, summary_path: str, dry_run: bool = True,
     sample_per_entity: Dict[str, List[Tuple[str, str, str, str]]] = {}
 
     for item_id, label, volume, old_section, source, meta_str in items_rows:
-        # Camada 1: Categoria Macro e Seção Padronizada
-        macro_cat, std_section = source_classifier.get_file_classification(source or "")
+        meta_dict = {}
+        if meta_str:
+            try:
+                meta_dict = json.loads(meta_str)
+            except Exception:
+                meta_dict = {}
+        span = meta_dict.get('source_span', [0, 0])
+        char_offset = span[0] if isinstance(span, (list, tuple)) and len(span) > 0 else 0
+
+        # Camada 1: Categoria Macro e Seção Padronizada (com sensibilidade intra-página)
+        macro_cat, std_section = source_classifier.get_entry_classification(source or "", char_offset)
         
         # Camada 2: Ontologia Micro
         entity_type = LemmaEntityClassifier.classify(label or "", volume or "", macro_cat, std_section)
@@ -397,13 +470,6 @@ def run_taxonomy_pipeline(db_path: str, summary_path: str, dry_run: bool = True,
             sample_per_entity[entity_type].append((volume, label, macro_cat, std_section))
 
         # Atualização de metadata_json preservando tudo existente
-        meta_dict = {}
-        if meta_str:
-            try:
-                meta_dict = json.loads(meta_str)
-            except Exception:
-                meta_dict = {}
-        
         meta_dict["index_category"] = macro_cat
         meta_dict["entity_type"] = entity_type
         new_meta_str = json.dumps(meta_dict, ensure_ascii=False)

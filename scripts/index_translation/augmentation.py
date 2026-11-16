@@ -20,6 +20,7 @@ ToolHandler = Callable[[dict[str, Any]], dict[str, Any]]
 class GuidedChatResult:
     content: str
     tool_calls: tuple[dict[str, Any], ...]
+    usage: tuple[dict[str, Any], ...] = ()
 
 
 def run_tool_guided_chat(
@@ -41,6 +42,7 @@ def run_tool_guided_chat(
     conversation = [dict(message) for message in messages]
     tool_specs = [dict(tool) for tool in tools]
     trace: list[dict[str, Any]] = []
+    usage: list[dict[str, Any]] = []
     rounds = 0
 
     while True:
@@ -51,6 +53,8 @@ def run_tool_guided_chat(
             request_payload["tool_choice"] = "auto"
 
         body = request_chat(request_payload)
+        if isinstance(body.get("usage"), dict):
+            usage.append(dict(body["usage"]))
         choices = body.get("choices") or []
         if not choices:
             raise ValueError("model returned no choices")
@@ -64,7 +68,9 @@ def run_tool_guided_chat(
                     item.get("text", "") if isinstance(item, dict) else str(item)
                     for item in content
                 )
-            return GuidedChatResult(content=str(content or ""), tool_calls=tuple(trace))
+            return GuidedChatResult(
+                content=str(content or ""), tool_calls=tuple(trace), usage=tuple(usage)
+            )
 
         if rounds >= max(0, max_tool_rounds):
             raise ValueError("model requested tools after the tool-round limit")
