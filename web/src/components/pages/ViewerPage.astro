@@ -685,11 +685,16 @@ const viewerDescription = uiLocale === 'en'
 
       const wrap = document.createElement('div');
       wrap.className = 'viewer-ocr-body';
+      const hasMarginalNotes = ocrData.blocos.some((b) => (b.tipo || '').toLowerCase() === 'nota_marginal');
+      if (hasMarginalNotes) {
+        wrap.classList.add('has-marginal-notes');
+      }
 
       // Legenda compacta de scripts
       const scriptsSeen = new Set(ocrData.blocos.map((b) => b.script));
       if (scriptsSeen.size > 1) {
         const legend = document.createElement('div');
+        legend.className = 'viewer-ocr-legend';
         legend.style.cssText = 'display:flex; gap:var(--space-2); flex-wrap:wrap; margin-bottom:var(--space-3); font-size:0.75rem; color:var(--color-muted);';
         scriptsSeen.forEach((sc) => {
           const chip = document.createElement('span');
@@ -724,58 +729,83 @@ const viewerDescription = uiLocale === 'en'
 
       ocrData.blocos.forEach((bloco) => {
         const el = document.createElement('div');
-        const tipoNorm = bloco.tipo.toLowerCase().replace(/[^a-z0-9]/g, '_');
+        const tipoNorm = (bloco.tipo || 'outro').toLowerCase().replace(/[^a-z0-9]/g, '_');
         const scriptNorm = (bloco.script || '').toLowerCase().replace(/[^a-z0-9]/g, '_');
         el.className = `ocr-block type-${tipoNorm} script-${scriptNorm}`;
+        el.setAttribute('data-block-type', tipoNorm);
 
-        // Apenas mostrar meta para tipos não-comuns ou scripts não-latinos
-        const isCommon = ['corpo', 'texto', 'paragrafo', 'outro'].includes(tipoNorm);
-        const isLatin = ['latino', 'latin', 'desconhecido'].includes(bloco.script?.toLowerCase());
-        const showMeta = !isCommon || !isLatin;
-
-        if (showMeta) {
+        // No modo Leitura contínua, os rótulos técnicos (CABEÇALHO, Texto, RODAPÉ) ficam ocultos
+        const isLatin = ['latino', 'latin', 'desconhecido'].includes((bloco.script || '').toLowerCase());
+        if (!isLatin && bloco.script) {
           const meta = document.createElement('div');
+          meta.className = 'ocr-block-meta';
           meta.style.cssText = 'font-size:0.72rem; color:var(--color-muted); margin-bottom:0.25em; display:flex; gap:var(--space-2);';
-          // adicionar chip colorido ao lado do script
-          if (!isLatin && bloco.script) {
-            const span = document.createElement('span');
-            span.className = 'meta-script';
-            const dot = document.createElement('span');
-            dot.className = 'ocr-script-chip';
-            const scriptColors = {
-              latino: '#2b8cbe',
-              latin: '#2b8cbe',
-              grego: '#8da0cb',
-              copta: '#e78ac3',
-              siriaco: '#66c2a5',
-              cirilico: '#a6d854',
-              ethiopico: '#fc8d62',
-              armenio: '#ffd92f',
-              arabe: '#e5c494',
-              hebraico: '#b3b3b3',
-              misto: '#999999',
-              desconhecido: '#999999'
-            };
-            dot.style.background = scriptColors[(bloco.script || '').toLowerCase()] || '#b0b0b0';
-            const lbl = document.createElement('span'); lbl.textContent = `· ${scriptLabel(bloco.script)}`;
-            span.appendChild(dot);
-            span.appendChild(lbl);
-            meta.appendChild(document.createElement('span'));
-            meta.firstChild.textContent = typeLabel(bloco.tipo);
-            meta.appendChild(span);
-          } else {
-            meta.innerHTML = `<span>${typeLabel(bloco.tipo)}</span>`;
-          }
+          const span = document.createElement('span');
+          span.className = 'meta-script';
+          const dot = document.createElement('span');
+          dot.className = 'ocr-script-chip';
+          const scriptColors = {
+            latino: '#2b8cbe',
+            latin: '#2b8cbe',
+            grego: '#8da0cb',
+            copta: '#e78ac3',
+            siriaco: '#66c2a5',
+            cirilico: '#a6d854',
+            ethiopico: '#fc8d62',
+            armenio: '#ffd92f',
+            arabe: '#e5c494',
+            hebraico: '#b3b3b3',
+            misto: '#999999',
+            desconhecido: '#999999'
+          };
+          dot.style.background = scriptColors[(bloco.script || '').toLowerCase()] || '#b0b0b0';
+          const lbl = document.createElement('span');
+          lbl.textContent = `· ${scriptLabel(bloco.script)}`;
+          span.appendChild(dot);
+          span.appendChild(lbl);
+          meta.appendChild(span);
           el.appendChild(meta);
         }
 
-        const repairedText = repairLineBreakHyphens(bloco.text);
+        const isPoeticOrHeader = ['cabecalho', 'rodape', 'titulo', 'poesia', 'verso'].includes(tipoNorm);
+        const repairedRaw = repairLineBreakHyphens(bloco.text).replace(/\r\n?/g, '\n').trim();
+
         const text = document.createElement('div');
         text.className = 'ocr-block-text';
-        text.textContent = repairedText;
         applyScriptLanguage(text, bloco.script);
+
+        let copyText = '';
+        if (isPoeticOrHeader) {
+          // Mantém quebras explícitas em blocos titulares/poéticos
+          const cleanLines = repairedRaw
+            .split('\n')
+            .map((line) => line.trim())
+            .filter(Boolean);
+          text.textContent = cleanLines.join('\n');
+          copyText = cleanLines.join('\n');
+        } else {
+          // Reflui quebras simples do OCR em texto corrido e preserva parágrafos distintos
+          const paragraphs = repairedRaw
+            .split(/\n[\t ]*\n+/)
+            .map((p) => p.replace(/[\t ]*\n[\t ]*/g, ' ').replace(/[\t ]{2,}/g, ' ').trim())
+            .filter(Boolean);
+
+          if (paragraphs.length <= 1) {
+            text.textContent = paragraphs[0] || '';
+            copyText = paragraphs[0] || '';
+          } else {
+            paragraphs.forEach((pText) => {
+              const p = document.createElement('p');
+              p.className = 'ocr-paragraph';
+              p.textContent = pText;
+              text.appendChild(p);
+            });
+            copyText = paragraphs.join('\n\n');
+          }
+        }
+
         el.appendChild(text);
-        const copyControl = createOcrBlockCopyButton(repairedText);
+        const copyControl = createOcrBlockCopyButton(copyText);
         el.appendChild(copyControl.button);
         el.appendChild(copyControl.status);
         wrap.appendChild(el);
@@ -1041,85 +1071,162 @@ const viewerDescription = uiLocale === 'en'
             .viewer-location-footer a { color: var(--color-accent); font-size: 0.75rem; font-weight: 700; }
             @media (max-width: 1100px) { .viewer-location-panel { margin-bottom: var(--space-4); } }
 
-            /* Estilização tipográfica e estrutural dos blocos de OCR */
-            .viewer-ocr-body { font-family: var(--font-serif); line-height: 1.8; font-size: 1.05rem; }
-            .viewer-ocr-body .ocr-block { position: relative; margin-bottom: 1.15em; padding-right: 2.5rem; }
+            /* Estilização tipográfica e ergonômica da Leitura contínua */
+            .viewer-ocr-body {
+              font-family: var(--font-serif);
+              font-size: var(--viewer-font-size, 1.125rem);
+              line-height: 1.75;
+              display: grid;
+              grid-template-columns: minmax(0, 68ch);
+              justify-content: center;
+              width: 100%;
+              margin: 0 auto;
+              box-sizing: border-box;
+            }
 
-            /* Modo Leitura Contínua (padrão): sem molduras nem caixas */
-            .viewer-ocr-body:not(.is-structured-view) .ocr-block {
+            .viewer-ocr-body > * {
+              grid-column: 1;
+            }
+
+            /* Segunda coluna (minmax(180px, 240px)) para nota marginal apenas quando existir nota_marginal */
+            @media (min-width: 1024px) {
+              .viewer-ocr-body:has([data-block-type="nota_marginal"]),
+              .viewer-ocr-body.has-marginal-notes {
+                grid-template-columns: minmax(0, 68ch) minmax(180px, 240px);
+                column-gap: var(--space-5);
+              }
+              .viewer-ocr-body:has([data-block-type="nota_marginal"]) [data-block-type="nota_marginal"],
+              .viewer-ocr-body.has-marginal-notes [data-block-type="nota_marginal"],
+              .viewer-ocr-body:has([data-block-type="nota_marginal"]) .type-nota_marginal,
+              .viewer-ocr-body.has-marginal-notes .type-nota_marginal,
+              .viewer-ocr-body:has([data-block-type="nota_marginal"]) .type-nota-marginal,
+              .viewer-ocr-body.has-marginal-notes .type-nota-marginal {
+                grid-column: 2;
+                align-self: start;
+                margin: 0;
+              }
+            }
+
+            /* Modo Leitura contínua: sem bordas de cartão, fundos ou paddings */
+            .viewer-ocr-body .ocr-block {
+              position: relative;
               border: none !important;
               background: transparent !important;
               box-shadow: none !important;
               border-radius: 0 !important;
-              padding-inline: 0 !important;
-              margin-bottom: 1.25em;
+              padding: 0 !important;
+              margin-block: 1.25em;
+              box-sizing: border-box;
             }
-            .viewer-ocr-body:not(.is-structured-view) .ocr-block:hover {
+
+            .viewer-ocr-body .ocr-block:hover {
               box-shadow: none !important;
               border-color: transparent !important;
             }
-            .viewer-ocr-body:not(.is-structured-view) .ocr-block-meta {
-              display: none;
+
+            /* Ocultar rótulos técnicos na Leitura contínua */
+            .viewer-ocr-body .ocr-block-meta {
+              display: none !important;
             }
 
-            /* Modo Vista Estruturada: molduras, caixas e metadados */
-            .viewer-ocr-body.is-structured-view .ocr-block {
-              border: 1px solid var(--color-border);
-              border-radius: var(--radius-s);
-              padding: var(--space-3);
-              margin-bottom: var(--space-3);
-              background: var(--color-surface);
-              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            /* Refluxo natural do texto e suporte a parágrafos */
+            .viewer-ocr-body .ocr-block-text {
+              white-space: normal;
+              word-break: normal;
+              overflow-wrap: break-word;
             }
-            .viewer-ocr-body.is-structured-view .ocr-block:hover {
-              border-color: var(--color-accent);
-              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+            .viewer-ocr-body .ocr-paragraph {
+              margin: 0 0 1em;
+            }
+            .viewer-ocr-body .ocr-paragraph:last-child {
+              margin-bottom: 0;
+            }
+
+            /* Botão de cópia discreto: visível apenas em :hover ou :focus-within com transição suave */
+            .viewer-ocr-body .ocr-block .ocr-block-copy {
+              opacity: 0;
+              pointer-events: none;
+              transition: opacity 0.2s ease-in-out, color 0.15s, border-color 0.15s, background 0.15s;
+            }
+            .viewer-ocr-body .ocr-block:hover .ocr-block-copy,
+            .viewer-ocr-body .ocr-block:focus-within .ocr-block-copy,
+            .viewer-ocr-body .ocr-block .ocr-block-copy:focus-visible,
+            .viewer-ocr-body .ocr-block .ocr-block-copy[data-copy-state="copied"] {
+              opacity: 1;
+              pointer-events: auto;
             }
 
             .viewer-ocr-body .ocr-block.titulo,
-            .viewer-ocr-body .ocr-block.type-titulo { font-weight: 700; font-size: 1.25em; color: var(--color-accent); margin-top: 0.5em; margin-bottom: 0.75em; }
+            .viewer-ocr-body .ocr-block.type-titulo,
+            .viewer-ocr-body .ocr-block[data-block-type="titulo"] {
+              font-weight: 700;
+              font-size: 1.25em;
+              color: var(--color-accent);
+              margin-top: 0.5em;
+              margin-bottom: 0.75em;
+            }
 
-            /* Cabeçalho e Rodapé */
+            /* Cabeçalho e Rodapé em corpo menor (0.85rem), small-caps e opacidade suavizada */
             .viewer-ocr-body .ocr-block.cabecalho,
             .viewer-ocr-body .ocr-block.type-cabecalho,
+            .viewer-ocr-body .ocr-block[data-block-type="cabecalho"],
             .viewer-ocr-body .ocr-block.rodape,
-            .viewer-ocr-body .ocr-block.type-rodape {
+            .viewer-ocr-body .ocr-block.type-rodape,
+            .viewer-ocr-body .ocr-block[data-block-type="rodape"] {
               text-align: center;
               font-variant-caps: all-small-caps;
               letter-spacing: 0.08em;
-              font-size: 0.92rem;
+              font-size: 0.85rem;
               font-weight: 600;
               color: var(--color-muted);
+              opacity: 0.85;
+              line-height: 1.6;
             }
             .viewer-ocr-body .ocr-block.cabecalho,
-            .viewer-ocr-body .ocr-block.type-cabecalho {
-              border-bottom: 1px solid var(--color-border);
-              padding-bottom: var(--space-2);
+            .viewer-ocr-body .ocr-block.type-cabecalho,
+            .viewer-ocr-body .ocr-block[data-block-type="cabecalho"] {
+              border-bottom: 1px solid var(--color-border) !important;
+              padding-bottom: var(--space-3) !important;
               margin-bottom: var(--space-4);
             }
             .viewer-ocr-body .ocr-block.rodape,
-            .viewer-ocr-body .ocr-block.type-rodape {
-              border-top: 1px solid var(--color-border);
-              padding-top: var(--space-2);
+            .viewer-ocr-body .ocr-block.type-rodape,
+            .viewer-ocr-body .ocr-block[data-block-type="rodape"] {
+              border-top: 1px solid var(--color-border) !important;
+              padding-top: var(--space-3) !important;
               margin-top: var(--space-4);
+            }
+            .viewer-ocr-body .ocr-block.cabecalho .ocr-block-text,
+            .viewer-ocr-body .ocr-block.type-cabecalho .ocr-block-text,
+            .viewer-ocr-body .ocr-block[data-block-type="cabecalho"] .ocr-block-text,
+            .viewer-ocr-body .ocr-block.rodape .ocr-block-text,
+            .viewer-ocr-body .ocr-block.type-rodape .ocr-block-text,
+            .viewer-ocr-body .ocr-block[data-block-type="rodape"] .ocr-block-text,
+            .viewer-ocr-body .ocr-block.titulo .ocr-block-text,
+            .viewer-ocr-body .ocr-block.type-titulo .ocr-block-text,
+            .viewer-ocr-body .ocr-block[data-block-type="titulo"] .ocr-block-text {
+              white-space: pre-line;
             }
 
             /* Aparato Crítico */
             .viewer-ocr-body .ocr-block.aparato_critico,
             .viewer-ocr-body .ocr-block.type-aparato_critico,
-            .viewer-ocr-body .ocr-block.type-aparato-critico {
-              font-size: 0.84rem;
+            .viewer-ocr-body .ocr-block.type-aparato-critico,
+            .viewer-ocr-body .ocr-block[data-block-type="aparato_critico"] {
+              font-size: 0.85rem;
               line-height: 1.6;
               color: var(--color-muted);
-              border-top: 1px solid var(--color-border);
+              border-top: 1px solid var(--color-border) !important;
               max-width: 45ch;
-              padding-top: var(--space-2);
+              padding-top: var(--space-2) !important;
               margin-top: var(--space-4);
               font-family: var(--font-serif);
               font-variant-numeric: tabular-nums;
             }
             .viewer-ocr-body .ocr-block.type-aparato_critico::before,
-            .viewer-ocr-body .ocr-block.type-aparato-critico::before {
+            .viewer-ocr-body .ocr-block.type-aparato-critico::before,
+            .viewer-ocr-body .ocr-block[data-block-type="aparato_critico"]::before {
               content: 'Aparato Crítico';
               display: block;
               font-size: 0.68rem;
@@ -1130,75 +1237,73 @@ const viewerDescription = uiLocale === 'en'
               margin-bottom: 4px;
             }
 
-            /* Nota Marginal com Sidenotes via CSS Grid no Desktop */
-            .viewer-ocr-body .ocr-block.nota,
-            .viewer-ocr-body .ocr-block.nota_marginal,
-            .viewer-ocr-body .ocr-block.type-nota_marginal,
-            .viewer-ocr-body .ocr-block.type-nota-marginal,
-            .viewer-ocr-body .ocr-block.type-nota {
+            /* Nota regular (exclui nota_marginal) */
+            .viewer-ocr-body .ocr-block.type-nota:not(.type-nota_marginal):not(.type-nota-marginal):not([data-block-type="nota_marginal"]),
+            .viewer-ocr-body .ocr-block[data-block-type="nota"] {
               font-size: 0.88rem;
               color: var(--color-muted);
-              border-left: 3px solid color-mix(in srgb, var(--color-accent) 45%, var(--color-border));
-              background: color-mix(in srgb, var(--color-accent) 4%, transparent);
-              padding: var(--space-2) var(--space-3);
-              border-radius: 0 var(--radius-s) var(--radius-s) 0;
+              border-left: 3px solid color-mix(in srgb, var(--color-accent) 45%, var(--color-border)) !important;
+              background: color-mix(in srgb, var(--color-accent) 4%, transparent) !important;
+              padding: var(--space-2) var(--space-3) !important;
+              border-radius: 0 var(--radius-s) var(--radius-s) 0 !important;
               font-style: italic;
               margin: var(--space-2) 0;
             }
+
+            /* Nota Marginal com Sidenotes via CSS Grid no Desktop */
+            .viewer-ocr-body .ocr-block.type-nota_marginal,
+            .viewer-ocr-body .ocr-block.type-nota-marginal,
+            .viewer-ocr-body .ocr-block[data-block-type="nota_marginal"] {
+              font-size: 0.84rem;
+              line-height: 1.5;
+              color: var(--color-muted);
+              border-left: 2px solid var(--color-accent) !important;
+              background: color-mix(in srgb, var(--color-accent) 4%, transparent) !important;
+              padding: var(--space-2) var(--space-3) !important;
+              border-radius: 0 var(--radius-s) var(--radius-s) 0 !important;
+              font-style: italic;
+              margin: var(--space-2) 0;
+              box-sizing: border-box;
+            }
             @media (min-width: 1024px) {
-              .viewer-ocr-body {
-                display: grid;
-                grid-template-columns: minmax(0, 1fr) 220px;
-                column-gap: var(--space-5);
-              }
-              .viewer-ocr-body > * {
-                grid-column: 1;
-              }
-              .viewer-ocr-body .ocr-block.nota,
-              .viewer-ocr-body .ocr-block.nota_marginal,
               .viewer-ocr-body .ocr-block.type-nota_marginal,
               .viewer-ocr-body .ocr-block.type-nota-marginal,
-              .viewer-ocr-body .ocr-block.type-nota {
-                grid-column: 2;
-                border-left: 2px solid var(--color-accent);
-                background: color-mix(in srgb, var(--color-accent) 4%, transparent);
-                padding: var(--space-2) var(--space-3);
-                font-size: 0.84rem;
-                line-height: 1.5;
+              .viewer-ocr-body .ocr-block[data-block-type="nota_marginal"] {
                 margin: 0;
-                align-self: start;
               }
             }
 
             /* Fontes por escrita (alfabetos) */
             .viewer-ocr-body .script-grego,
-            .viewer-ocr-body [lang="grc"],
-            [lang="grc"] {
+            .viewer-ocr-body [lang="grc"] {
               font-family: var(--font-greek, 'GFSDidot', 'New Athena Unicode', var(--font-serif));
               line-height: 1.85;
             }
             .viewer-ocr-body .script-siriaco,
-            .viewer-ocr-body [lang="syr"],
-            [lang="syr"] {
+            .viewer-ocr-body [lang="syr"] {
               font-family: var(--font-syriac, 'Estrangelo Edessa', 'East Syriac Adiabene', serif);
               direction: rtl;
               font-size: 1.15em;
-              line-height: 2;
+              line-height: 1.9;
             }
             .viewer-ocr-body .script-copta,
-            .viewer-ocr-body [lang="cop"],
-            [lang="cop"] {
+            .viewer-ocr-body [lang="cop"] {
               font-family: var(--font-coptic, 'Antinoou', 'Coptic Unicode', sans-serif);
               font-size: 1.1em;
               line-height: 1.75;
             }
             .viewer-ocr-body .script-hebraico,
             .viewer-ocr-body [lang="he"],
-            [lang="he"] {
+            .viewer-ocr-body .script-arabe,
+            .viewer-ocr-body [lang="ar"],
+            .viewer-ocr-body [dir="rtl"] {
+              line-height: 1.9;
+            }
+            .viewer-ocr-body .script-hebraico,
+            .viewer-ocr-body [lang="he"] {
               font-family: var(--font-hebrew, 'Taamey Frank CLM', 'David CLM', serif);
               direction: rtl;
               font-size: 1.15em;
-              line-height: 1.9;
             }
 
             /* Badge Bipartido (Digital vs. Editorial / Impresso) */
@@ -1556,12 +1661,14 @@ const viewerDescription = uiLocale === 'en'
 
         let fontSizeLevel = parseInt(localStorage.getItem('viewerFontSize') || '0', 10) || 0;
         function applyFontSize() {
-          const sizes = ['0.95rem', '1.05rem', '1.15rem', '1.3rem'];
+          const sizes = ['1.0rem', '1.125rem', '1.25rem', '1.4rem'];
           const idx = Math.max(0, Math.min(fontSizeLevel + 1, sizes.length - 1));
           mainContent.style.fontSize = sizes[idx];
+          mainContent.style.setProperty('--viewer-font-size', sizes[idx]);
+          viewerRoot.style.setProperty('--viewer-font-size', sizes[idx]);
           fontDown.disabled = fontSizeLevel <= -1;
           fontUp.disabled = fontSizeLevel >= 2;
-          fontSizeStatus.textContent = s.viewerFontSizeStatus(Math.round(parseFloat(sizes[idx]) / 1.05 * 100));
+          fontSizeStatus.textContent = s.viewerFontSizeStatus(Math.round(parseFloat(sizes[idx]) / 1.125 * 100));
           try { localStorage.setItem('viewerFontSize', String(fontSizeLevel)); } catch (_) {}
         }
         applyFontSize();
@@ -2267,9 +2374,33 @@ const viewerDescription = uiLocale === 'en'
               pre.classList.remove('viewer-ocr-error');
               pre.textContent = s.viewerOcrLoading;
               try {
-                const res = await fetch(rawHref, { signal: controller.signal });
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                const txt = await res.text();
+                let txt = '';
+                const isLocal = ['localhost', '127.0.0.1', '::1'].includes(window.location.hostname);
+                const localFallback = `${assetBase}raw/${doc}/text/${encodeURIComponent(String(page.raw?.file || ''))}`;
+                if (isLocal) {
+                  try {
+                    const localRes = await fetch(localFallback, { signal: controller.signal });
+                    if (localRes.ok) txt = await localRes.text();
+                  } catch (_) {}
+                }
+                if (!txt) {
+                  try {
+                    const res = await fetch(rawHref, { signal: controller.signal });
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                    txt = await res.text();
+                  } catch (fetchErr) {
+                    if (!isLocal) {
+                      const localRes = await fetch(localFallback, { signal: controller.signal }).catch(() => null);
+                      if (localRes && localRes.ok) {
+                        txt = await localRes.text();
+                      } else {
+                        throw fetchErr;
+                      }
+                    } else {
+                      throw fetchErr;
+                    }
+                  }
+                }
                 if (controller.signal.aborted || generation !== loadGeneration) return;
 
                 const ocrData = parseOcrXml(txt);
@@ -2305,7 +2436,7 @@ const viewerDescription = uiLocale === 'en'
                   const structContainer = document.createElement('div');
                   structContainer.id = `viewer-ocr-structured-${doc}-${pageNumber}`;
                   structContainer.dataset.ocrView = 'structured';
-                  structContainer.style.cssText = 'max-height:60vh; overflow-y:auto;';
+                  structContainer.style.cssText = '';
                   renderOcrStructured(structContainer, ocrData);
                   structContainer.hidden = true;
                   btnStruct.setAttribute('aria-controls', structContainer.id);
@@ -2335,8 +2466,6 @@ const viewerDescription = uiLocale === 'en'
                     pre.hidden = true;
                     structContainer.hidden = false;
                     visualContainer.hidden = true;
-                    const body = structContainer.querySelector('.viewer-ocr-body');
-                    if (body) body.classList.add('is-structured-view');
                     setActiveBtn(btnStruct);
                   }
                   function showVisual() {
